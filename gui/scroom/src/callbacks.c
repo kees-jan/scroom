@@ -87,7 +87,8 @@ on_about_activate                      (GtkMenuItem     *menuitem,
 {
   GtkWidget *aboutdialog;
   aboutdialog = create_aboutdialog ();
-  gtk_widget_show (aboutdialog);
+  gtk_dialog_run (GTK_DIALOG (aboutdialog ));
+  gtk_widget_destroy (aboutdialog);
 }
 
 
