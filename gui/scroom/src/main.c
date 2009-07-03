@@ -16,7 +16,6 @@ int
 main (int argc, char *argv[])
 {
   GtkWidget *scroom;
-  GtkWidget *aboutdialog;
 
 #ifdef ENABLE_NLS
   bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
@@ -36,8 +35,6 @@ main (int argc, char *argv[])
    */
   scroom = create_scroom ();
   gtk_widget_show (scroom);
-  aboutdialog = create_aboutdialog ();
-  gtk_widget_show (aboutdialog);
 
   gtk_main ();
   return 0;

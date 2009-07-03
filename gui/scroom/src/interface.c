@@ -71,6 +71,8 @@ create_scroom (void)
   accel_group = gtk_accel_group_new ();
 
   scroom = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_widget_set_size_request (scroom, 500, 500);
+  gtk_widget_set_events (scroom, GDK_VISIBILITY_NOTIFY_MASK);
   gtk_window_set_title (GTK_WINDOW (scroom), _("Scroom"));
 
   vbox1 = gtk_vbox_new (FALSE, 0);
@@ -203,14 +205,14 @@ create_scroom (void)
   gtk_table_attach (GTK_TABLE (table1), vruler, 0, 1, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
-  gtk_ruler_set_range (GTK_RULER (vruler), 0, 100, 6.05505, 100);
+  gtk_ruler_set_range (GTK_RULER (vruler), 0, 100, 71.5084, 100);
 
   hruler = gtk_hruler_new ();
   gtk_widget_show (hruler);
   gtk_table_attach (GTK_TABLE (table1), hruler, 1, 2, 0, 1,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
-  gtk_ruler_set_range (GTK_RULER (hruler), 0, 10, 0.395833, 10);
+  gtk_ruler_set_range (GTK_RULER (hruler), 0, 10, 3.57664, 10);
 
   hbox2 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox2);
@@ -224,6 +226,9 @@ create_scroom (void)
   gtk_widget_show (statusbar1);
   gtk_box_pack_start (GTK_BOX (hbox2), statusbar1, FALSE, FALSE, 0);
 
+  g_signal_connect ((gpointer) scroom, "hide",
+                    G_CALLBACK (on_scroom_hide),
+                    NULL);
   g_signal_connect ((gpointer) new, "activate",
                     G_CALLBACK (on_new_activate),
                     NULL);

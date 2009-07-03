@@ -45,7 +45,7 @@ void
 on_quit_activate                       (GtkMenuItem     *menuitem,
                                         gpointer         user_data)
 {
-
+  gtk_main_quit();
 }
 
 
@@ -85,6 +85,16 @@ void
 on_about_activate                      (GtkMenuItem     *menuitem,
                                         gpointer         user_data)
 {
+  GtkWidget *aboutdialog;
+  aboutdialog = create_aboutdialog ();
+  gtk_widget_show (aboutdialog);
+}
 
+
+void
+on_scroom_hide                         (GtkWidget       *widget,
+                                        gpointer         user_data)
+{
+  gtk_main_quit();
 }
 
