@@ -307,7 +307,7 @@
 	      <property name="visible">True</property>
 	      <property name="lower">0</property>
 	      <property name="upper">100</property>
-	      <property name="position">6.05504608154</property>
+	      <property name="position">1.46788990498</property>
 	      <property name="max_size">100</property>
 	    </widget>
 	    <packing>
