@@ -5,9 +5,12 @@
 #include <cairo.h>
 #include <gtk/gtk.h>
 
+extern "C"
+{
 #include "callbacks.h"
 #include "interface.h"
 #include "support.h"
+}
 
 #include "view.hh"
 
