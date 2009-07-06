@@ -11,7 +11,8 @@ scroom_SOURCES = \
 	main.c \
 	support.c support.h \
 	interface.c interface.h \
-	callbacks.c callbacks.h
+	callbacks.cc callbacks.h \
+	view.cc view.hh
 
 scroom_LDADD = @PACKAGE_LIBS@ $(INTLLIBS)
 

@@ -4,7 +4,10 @@
 <glade-interface>
 
 <widget class="GtkWindow" id="scroom">
+  <property name="width_request">500</property>
+  <property name="height_request">500</property>
   <property name="visible">True</property>
+  <property name="events">GDK_VISIBILITY_NOTIFY_MASK</property>
   <property name="title" translatable="yes">Scroom</property>
   <property name="type">GTK_WINDOW_TOPLEVEL</property>
   <property name="window_position">GTK_WIN_POS_NONE</property>
@@ -18,6 +21,8 @@
   <property name="gravity">GDK_GRAVITY_NORTH_WEST</property>
   <property name="focus_on_map">True</property>
   <property name="urgency_hint">False</property>
+  <signal name="hide" handler="on_scroom_hide" last_modification_time="Fri, 03 Jul 2009 19:50:55 GMT"/>
+  <signal name="destroy_event" handler="on_scroom_destroy_event" last_modification_time="Mon, 06 Jul 2009 18:09:23 GMT"/>
 
   <child>
     <widget class="GtkVBox" id="vbox1">
@@ -257,18 +262,6 @@
 	  <property name="column_spacing">0</property>
 
 	  <child>
-	    <widget class="GtkDrawingArea" id="drawingarea">
-	      <property name="visible">True</property>
-	    </widget>
-	    <packing>
-	      <property name="left_attach">1</property>
-	      <property name="right_attach">2</property>
-	      <property name="top_attach">1</property>
-	      <property name="bottom_attach">2</property>
-	    </packing>
-	  </child>
-
-	  <child>
 	    <widget class="GtkHScrollbar" id="hscrollbar">
 	      <property name="visible">True</property>
 	      <property name="update_policy">GTK_UPDATE_CONTINUOUS</property>
@@ -303,20 +296,19 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkVRuler" id="vruler">
+	    <widget class="GtkDrawingArea" id="drawingarea">
 	      <property name="visible">True</property>
-	      <property name="lower">0</property>
-	      <property name="upper">100</property>
-	      <property name="position">6.05504608154</property>
-	      <property name="max_size">100</property>
+	      <property name="events">GDK_EXPOSURE_MASK | GDK_BUTTON_MOTION_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+	      <signal name="expose_event" handler="on_drawingarea_expose_event" last_modification_time="Sat, 04 Jul 2009 16:28:39 GMT"/>
+	      <signal name="configure_event" handler="on_drawingarea_configure_event" last_modification_time="Mon, 06 Jul 2009 18:18:07 GMT"/>
 	    </widget>
 	    <packing>
-	      <property name="left_attach">0</property>
-	      <property name="right_attach">1</property>
+	      <property name="left_attach">1</property>
+	      <property name="right_attach">2</property>
 	      <property name="top_attach">1</property>
 	      <property name="bottom_attach">2</property>
-	      <property name="x_options">fill</property>
-	      <property name="y_options">fill</property>
+	      <property name="x_options">expand|shrink|fill</property>
+	      <property name="y_options">expand|shrink|fill</property>
 	    </packing>
 	  </child>
 
@@ -325,7 +317,7 @@
 	      <property name="visible">True</property>
 	      <property name="lower">0</property>
 	      <property name="upper">10</property>
-	      <property name="position">0.395833343267</property>
+	      <property name="position">3.5683760643</property>
 	      <property name="max_size">10</property>
 	    </widget>
 	    <packing>
@@ -333,8 +325,26 @@
 	      <property name="right_attach">2</property>
 	      <property name="top_attach">0</property>
 	      <property name="bottom_attach">1</property>
-	      <property name="x_options">fill</property>
+	      <property name="x_options">expand|shrink|fill</property>
 	      <property name="y_options">fill</property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkVRuler" id="vruler">
+	      <property name="visible">True</property>
+	      <property name="lower">0</property>
+	      <property name="upper">100</property>
+	      <property name="position">33.5917320251</property>
+	      <property name="max_size">100</property>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">0</property>
+	      <property name="right_attach">1</property>
+	      <property name="top_attach">1</property>
+	      <property name="bottom_attach">2</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options">expand|shrink|fill</property>
 	    </packing>
 	  </child>
 	</widget>

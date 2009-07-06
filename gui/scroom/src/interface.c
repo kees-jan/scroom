@@ -58,11 +58,11 @@ create_scroom (void)
   GtkWidget *zoombox;
   GtkWidget *combobox1;
   GtkWidget *table1;
-  GtkWidget *drawingarea;
   GtkWidget *hscrollbar;
   GtkWidget *vscrollbar;
-  GtkWidget *vruler;
+  GtkWidget *drawingarea;
   GtkWidget *hruler;
+  GtkWidget *vruler;
   GtkWidget *hbox2;
   GtkWidget *progressbar;
   GtkWidget *statusbar1;
@@ -182,12 +182,6 @@ create_scroom (void)
   gtk_widget_show (table1);
   gtk_box_pack_start (GTK_BOX (vbox1), table1, TRUE, TRUE, 0);
 
-  drawingarea = gtk_drawing_area_new ();
-  gtk_widget_show (drawingarea);
-  gtk_table_attach (GTK_TABLE (table1), drawingarea, 1, 2, 1, 2,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
-
   hscrollbar = gtk_hscrollbar_new (GTK_ADJUSTMENT (gtk_adjustment_new (0, 0, 0, 0, 0, 0)));
   gtk_widget_show (hscrollbar);
   gtk_table_attach (GTK_TABLE (table1), hscrollbar, 1, 2, 2, 3,
@@ -200,19 +194,26 @@ create_scroom (void)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
 
-  vruler = gtk_vruler_new ();
-  gtk_widget_show (vruler);
-  gtk_table_attach (GTK_TABLE (table1), vruler, 0, 1, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-  gtk_ruler_set_range (GTK_RULER (vruler), 0, 100, 71.5084, 100);
+  drawingarea = gtk_drawing_area_new ();
+  gtk_widget_show (drawingarea);
+  gtk_table_attach (GTK_TABLE (table1), drawingarea, 1, 2, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK | GTK_FILL),
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK | GTK_FILL), 0, 0);
+  gtk_widget_set_events (drawingarea, GDK_EXPOSURE_MASK | GDK_BUTTON_MOTION_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK);
 
   hruler = gtk_hruler_new ();
   gtk_widget_show (hruler);
   gtk_table_attach (GTK_TABLE (table1), hruler, 1, 2, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK | GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
-  gtk_ruler_set_range (GTK_RULER (hruler), 0, 10, 3.57664, 10);
+  gtk_ruler_set_range (GTK_RULER (hruler), 0, 10, 3.56838, 10);
+
+  vruler = gtk_vruler_new ();
+  gtk_widget_show (vruler);
+  gtk_table_attach (GTK_TABLE (table1), vruler, 0, 1, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK | GTK_FILL), 0, 0);
+  gtk_ruler_set_range (GTK_RULER (vruler), 0, 100, 33.5917, 100);
 
   hbox2 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox2);
@@ -228,6 +229,9 @@ create_scroom (void)
 
   g_signal_connect ((gpointer) scroom, "hide",
                     G_CALLBACK (on_scroom_hide),
+                    NULL);
+  g_signal_connect ((gpointer) scroom, "destroy_event",
+                    G_CALLBACK (on_scroom_destroy_event),
                     NULL);
   g_signal_connect ((gpointer) new, "activate",
                     G_CALLBACK (on_new_activate),
@@ -259,6 +263,12 @@ create_scroom (void)
   g_signal_connect ((gpointer) about, "activate",
                     G_CALLBACK (on_about_activate),
                     NULL);
+  g_signal_connect ((gpointer) drawingarea, "expose_event",
+                    G_CALLBACK (on_drawingarea_expose_event),
+                    NULL);
+  g_signal_connect ((gpointer) drawingarea, "configure_event",
+                    G_CALLBACK (on_drawingarea_configure_event),
+                    NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
   GLADE_HOOKUP_OBJECT_NO_REF (scroom, scroom, "scroom");
@@ -289,11 +299,11 @@ create_scroom (void)
   GLADE_HOOKUP_OBJECT (scroom, zoombox, "zoombox");
   GLADE_HOOKUP_OBJECT (scroom, combobox1, "combobox1");
   GLADE_HOOKUP_OBJECT (scroom, table1, "table1");
-  GLADE_HOOKUP_OBJECT (scroom, drawingarea, "drawingarea");
   GLADE_HOOKUP_OBJECT (scroom, hscrollbar, "hscrollbar");
   GLADE_HOOKUP_OBJECT (scroom, vscrollbar, "vscrollbar");
-  GLADE_HOOKUP_OBJECT (scroom, vruler, "vruler");
+  GLADE_HOOKUP_OBJECT (scroom, drawingarea, "drawingarea");
   GLADE_HOOKUP_OBJECT (scroom, hruler, "hruler");
+  GLADE_HOOKUP_OBJECT (scroom, vruler, "vruler");
   GLADE_HOOKUP_OBJECT (scroom, hbox2, "hbox2");
   GLADE_HOOKUP_OBJECT (scroom, progressbar, "progressbar");
   GLADE_HOOKUP_OBJECT (scroom, statusbar1, "statusbar1");

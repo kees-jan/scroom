@@ -5,4 +5,5 @@
   <name>Scroom</name>
   <program_name>scroom</program_name>
   <gnome_support>FALSE</gnome_support>
+  <handler_source_file>callbacks.cc</handler_source_file>
 </glade-project>
