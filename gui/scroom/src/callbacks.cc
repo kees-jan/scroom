@@ -4,6 +4,7 @@
 
 #include <cairo.h>
 #include <gtk/gtk.h>
+#include <gdk/gdk.h>
 
 extern "C"
 {
@@ -123,8 +124,23 @@ on_drawingarea_expose_event            (GtkWidget       *widget,
                                         gpointer         user_data)
 {
   printf("expose\n");
+
+  ////////////////////////////////////////////////////////////////////////
+
+  GdkWindow* win = gtk_widget_get_window(widget);
+  GdkGC* gc =  gdk_gc_new(GDK_DRAWABLE(win));
+  // gdk_gc_set_foreground(gc, ??);
+  // gdk_gc_set_background(gc, ??);
+  gdk_draw_line(GDK_DRAWABLE(win), gc,  50,  50,  50, 100);
+  gdk_draw_line(GDK_DRAWABLE(win), gc,  50, 100, 100, 100);
+  gdk_draw_line(GDK_DRAWABLE(win), gc, 100,  50, 100, 100);
+  gdk_draw_line(GDK_DRAWABLE(win), gc,  50,  50, 100,  50);
+  ////////////////////////////////////////////////////////////////////////
+  
+
+  ////////////////////////////////////////////////////////////////////////
   cairo_t *cr;
-  char* buffer = "Hello world!";
+  char buffer[] = "Hello world!";
 
   cr = gdk_cairo_create(widget->window);
 
@@ -132,7 +148,7 @@ on_drawingarea_expose_event            (GtkWidget       *widget,
   cairo_show_text(cr, buffer);
 
   cairo_destroy(cr);
-
+  ////////////////////////////////////////////////////////////////////////
   return FALSE;
 }
 

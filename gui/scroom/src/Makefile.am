@@ -15,4 +15,4 @@ scroom_SOURCES = \
 	view.cc view.hh
 
 scroom_LDADD = @PACKAGE_LIBS@ $(INTLLIBS)
-
+#scroom_LDFLAGS = -Lbla/bla

@@ -3,7 +3,6 @@
 
 namespace scroom
 {
-  
   class View
   {
   };
