@@ -158,7 +158,7 @@ on_drawingarea_configure_event         (GtkWidget       *widget,
                                         GdkEventConfigure *event,
                                         gpointer         user_data)
 {
-
+  printf("configure\n");
   return FALSE;
 }
 
