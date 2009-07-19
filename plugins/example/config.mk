@@ -5,3 +5,4 @@ SONAME=libspexample.so.0
 CXXFLAGS += -I ../../inc $(shell pkg-config --cflags glib-2.0)
 LDFLAGS += $(shell pkg-config --libs gmodule-2.0)
 
+LIBDIR := ../../_lib

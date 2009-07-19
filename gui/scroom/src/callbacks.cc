@@ -13,8 +13,10 @@ extern "C"
 #include "support.h"
 }
 
-#include "view.hh"
+#include <workinterface.hh>
 
+#include "view.hh"
+#include "pluginmanager.hh"
 
 
 void
@@ -162,3 +164,25 @@ on_drawingarea_configure_event         (GtkWidget       *widget,
   return FALSE;
 }
 
+
+gboolean
+on_idle                                (gpointer         user_data)
+{
+  if(user_data==NULL)
+  {
+    return 0;
+  }
+  else
+  {
+    return reinterpret_cast<WorkInterface*>(user_data)->doWork();
+  }
+}
+
+
+void
+on_scroom_bootstrap ()
+{
+  printf("Bootstrapping Scroom...\n");
+  startPluginManager();
+}
+  

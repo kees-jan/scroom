@@ -65,6 +65,13 @@ extern "C"
                                           GdkEventConfigure *event,
                                           gpointer         user_data);
 
+  gboolean
+  on_idle                                (gpointer         user_data);
+
+  void
+  on_scroom_bootstrap                    ();
+  
+
 #ifdef __cplusplus
 }
 #endif

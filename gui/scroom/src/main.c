@@ -12,6 +12,8 @@
 #include "interface.h"
 #include "support.h"
 
+#include "callbacks.h"
+
 int
 main (int argc, char *argv[])
 {
@@ -23,19 +25,19 @@ main (int argc, char *argv[])
   textdomain (GETTEXT_PACKAGE);
 #endif
 
+  g_thread_init(NULL);
+  gdk_threads_init();
+  
+    
   gtk_set_locale ();
   gtk_init (&argc, &argv);
 
   add_pixmap_directory (PACKAGE_DATA_DIR "/" PACKAGE "/pixmaps");
 
-  /*
-   * The following code was added by Glade to create one of each component
-   * (except popup menus), just so that you see something after building
-   * the project. Delete any components that you don't want shown initially.
-   */
   scroom = create_scroom ();
   gtk_widget_show (scroom);
-
+  on_scroom_bootstrap();
+  
   gtk_main ();
   return 0;
 }

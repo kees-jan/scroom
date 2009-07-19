@@ -1,7 +1,7 @@
 
 #include <stdio.h>
 
-#include <scroomplugin.h>
+#include <scroomplugin.hh>
 
 G_MODULE_EXPORT const gchar* g_module_check_init(GModule *module)
 {
