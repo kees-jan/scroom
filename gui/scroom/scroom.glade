@@ -317,7 +317,7 @@
 	      <property name="visible">True</property>
 	      <property name="lower">0</property>
 	      <property name="upper">10</property>
-	      <property name="position">3.5683760643</property>
+	      <property name="position">2.71367526054</property>
 	      <property name="max_size">10</property>
 	    </widget>
 	    <packing>
@@ -335,7 +335,7 @@
 	      <property name="visible">True</property>
 	      <property name="lower">0</property>
 	      <property name="upper">100</property>
-	      <property name="position">33.5917320251</property>
+	      <property name="position">58.6563301086</property>
 	      <property name="max_size">100</property>
 	    </widget>
 	    <packing>
@@ -377,14 +377,14 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkStatusbar" id="statusbar1">
+	    <widget class="GtkStatusbar" id="statusbar">
 	      <property name="visible">True</property>
 	      <property name="has_resize_grip">True</property>
 	    </widget>
 	    <packing>
 	      <property name="padding">0</property>
-	      <property name="expand">False</property>
-	      <property name="fill">False</property>
+	      <property name="expand">True</property>
+	      <property name="fill">True</property>
 	    </packing>
 	  </child>
 	</widget>

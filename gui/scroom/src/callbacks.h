@@ -69,7 +69,7 @@ extern "C"
   on_idle                                (gpointer         user_data);
 
   void
-  on_scroom_bootstrap                    ();
+  on_scroom_bootstrap                    (GtkWidget       *scroom);
   
 
 #ifdef __cplusplus

@@ -28,7 +28,7 @@ main (int argc, char *argv[])
   g_thread_init(NULL);
   gdk_threads_init();
   
-    
+  gdk_threads_enter();
   gtk_set_locale ();
   gtk_init (&argc, &argv);
 
@@ -36,9 +36,10 @@ main (int argc, char *argv[])
 
   scroom = create_scroom ();
   gtk_widget_show (scroom);
-  on_scroom_bootstrap();
+  on_scroom_bootstrap(scroom);
   
   gtk_main ();
+  gdk_threads_leave();
   return 0;
 }
 

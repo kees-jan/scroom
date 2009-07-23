@@ -1,0 +1,1 @@
+export SCROOM_PLUGIN_DIRS="/some/bogus/value:$(pwd)/../../_lib"

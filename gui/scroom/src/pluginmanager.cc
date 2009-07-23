@@ -1,23 +1,110 @@
 #include "pluginmanager.hh"
 
 #include <stdio.h>
+#include <stdlib.h>
 
+#include <string>
+
+extern "C"
+{
 #include <callbacks.h>
+#include <support.h>
+}
+
+const std::string SCROOM_PLUGIN_DIRS = "SCROOM_PLUGIN_DIRS";
 
 static PluginManager pluginManager;
 
+PluginManager::PluginManager()
+  : progressbar(NULL), statusbar(NULL)
+{
+}
+
+void startPluginManager(GtkWidget* scroom)
+{
+  pluginManager.addHook(scroom);
+}
+
 bool PluginManager::doWork()
 {
-  printf("Hello world...\n");
-  return true;
+  bool retval = true;
+  char* path = NULL;
+  char* i=NULL;
+  
+  gdk_threads_enter();
+  switch(state)
+  {
+  case FINDING_DIRECTORIES:
+    setStatusBarMessage("Locating plugin directories");
+    path = getenv(SCROOM_PLUGIN_DIRS.c_str());
+    dirs.clear();
+    if(path!=NULL)
+    {
+      printf("%s=%s\n", SCROOM_PLUGIN_DIRS.c_str(), path);
+      for(i=path; *i!=0; i++)
+      {
+        if(*i==':')
+        {
+          *i=0;
+          dirs.push_back(path);
+          path=i+1;
+        }
+      }
+      dirs.push_back(path);
+    }
+    currentDir = dirs.begin();
+    files.clear();
+    state = SCANNING_DIRECTORIES;
+    break;
+    
+  case SCANNING_DIRECTORIES:
+    setStatusBarMessage("Scanning plugin directories");
+    if(currentDir!=dirs.end())
+    {
+      printf("Scanning directory: %s\n", currentDir->c_str());
+      currentDir++;
+    }
+    else
+    {
+      state = LOADING_FILES;
+      currentFile=files.begin();
+    }
+    break;
+  case LOADING_FILES:
+    setStatusBarMessage("Loading Plugins");
+    if(currentFile!=files.end())
+    {
+      printf("Reading file: %s\n", currentFile->c_str());
+      currentFile++;
+    }
+    else
+    {
+      state = DONE;
+    }
+    break;
+  case DONE:
+    setStatusBarMessage("Done loading plugins");
+    retval = false;
+    break;
+  }
+  gdk_threads_leave();
+  return retval;
 }
 
-void PluginManager::addHook()
+void PluginManager::setStatusBarMessage(const char* message)
+{
+  gtk_statusbar_pop(statusbar, status_context_id);
+  gtk_statusbar_push(statusbar, status_context_id, message);
+  printf("Statusbar update: %s\n", message);
+}
+
+void PluginManager::addHook(GtkWidget* scroom)
 {
   gtk_idle_add(on_idle, static_cast<WorkInterface*>(this));
+  progressbar = GTK_PROGRESS_BAR(lookup_widget(scroom, "progressbar"));
+  statusbar = GTK_STATUSBAR(lookup_widget(scroom, "statusbar"));
+
+  status_context_id = gtk_statusbar_get_context_id(statusbar, "Plugin Manager");
+  state = FINDING_DIRECTORIES;
 }
 
-void startPluginManager()
-{
-  pluginManager.addHook();
-}

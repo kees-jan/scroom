@@ -180,9 +180,9 @@ on_idle                                (gpointer         user_data)
 
 
 void
-on_scroom_bootstrap ()
+on_scroom_bootstrap                    (GtkWidget       *scroom)
 {
   printf("Bootstrapping Scroom...\n");
-  startPluginManager();
+  startPluginManager(scroom);
 }
   

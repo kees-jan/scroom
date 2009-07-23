@@ -65,7 +65,7 @@ create_scroom (void)
   GtkWidget *vruler;
   GtkWidget *hbox2;
   GtkWidget *progressbar;
-  GtkWidget *statusbar1;
+  GtkWidget *statusbar;
   GtkAccelGroup *accel_group;
 
   accel_group = gtk_accel_group_new ();
@@ -206,14 +206,14 @@ create_scroom (void)
   gtk_table_attach (GTK_TABLE (table1), hruler, 1, 2, 0, 1,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK | GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
-  gtk_ruler_set_range (GTK_RULER (hruler), 0, 10, 3.56838, 10);
+  gtk_ruler_set_range (GTK_RULER (hruler), 0, 10, 2.71368, 10);
 
   vruler = gtk_vruler_new ();
   gtk_widget_show (vruler);
   gtk_table_attach (GTK_TABLE (table1), vruler, 0, 1, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK | GTK_FILL), 0, 0);
-  gtk_ruler_set_range (GTK_RULER (vruler), 0, 100, 33.5917, 100);
+  gtk_ruler_set_range (GTK_RULER (vruler), 0, 100, 58.6563, 100);
 
   hbox2 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox2);
@@ -223,9 +223,9 @@ create_scroom (void)
   gtk_widget_show (progressbar);
   gtk_box_pack_start (GTK_BOX (hbox2), progressbar, FALSE, FALSE, 0);
 
-  statusbar1 = gtk_statusbar_new ();
-  gtk_widget_show (statusbar1);
-  gtk_box_pack_start (GTK_BOX (hbox2), statusbar1, FALSE, FALSE, 0);
+  statusbar = gtk_statusbar_new ();
+  gtk_widget_show (statusbar);
+  gtk_box_pack_start (GTK_BOX (hbox2), statusbar, TRUE, TRUE, 0);
 
   g_signal_connect ((gpointer) scroom, "hide",
                     G_CALLBACK (on_scroom_hide),
@@ -306,7 +306,7 @@ create_scroom (void)
   GLADE_HOOKUP_OBJECT (scroom, vruler, "vruler");
   GLADE_HOOKUP_OBJECT (scroom, hbox2, "hbox2");
   GLADE_HOOKUP_OBJECT (scroom, progressbar, "progressbar");
-  GLADE_HOOKUP_OBJECT (scroom, statusbar1, "statusbar1");
+  GLADE_HOOKUP_OBJECT (scroom, statusbar, "statusbar");
 
   gtk_window_add_accel_group (GTK_WINDOW (scroom), accel_group);
 
