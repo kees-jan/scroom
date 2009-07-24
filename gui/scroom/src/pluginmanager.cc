@@ -2,8 +2,12 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <dirent.h>
 
 #include <string>
+
+#include <plugininterface.hh>
 
 extern "C"
 {
@@ -30,6 +34,9 @@ bool PluginManager::doWork()
   bool retval = true;
   char* path = NULL;
   char* i=NULL;
+  DIR* dir;
+  struct dirent* content;
+  GModule* plugin;
   
   gdk_threads_enter();
   switch(state)
@@ -62,6 +69,22 @@ bool PluginManager::doWork()
     if(currentDir!=dirs.end())
     {
       printf("Scanning directory: %s\n", currentDir->c_str());
+      dir = opendir(currentDir->c_str());
+      if(dir!=NULL)
+      {
+        while( (content=readdir(dir)))
+        {
+          if(content->d_type==DT_REG || content->d_type==DT_UNKNOWN)
+          {
+            files.push_back(g_module_build_path(currentDir->c_str(), content->d_name));
+          }
+        }
+        closedir(dir);
+      }
+      else
+      {
+        printf("Can't open directory...\n");
+      }
       currentDir++;
     }
     else
@@ -75,6 +98,34 @@ bool PluginManager::doWork()
     if(currentFile!=files.end())
     {
       printf("Reading file: %s\n", currentFile->c_str());
+      plugin = g_module_open(currentFile->c_str(), G_MODULE_BIND_LOCAL);
+      if(plugin)
+      {
+        PluginFunc gpi;
+        if(g_module_symbol(plugin, "getPluginInformation", (gpointer*)&gpi))
+        {
+          if(gpi)
+          {
+            Scroom::PluginInterface* pi = (*gpi)();
+            if(pi)
+            {
+              printf("Got the PluginInterface!\n");
+            }
+          }
+          else
+          {
+            printf("Can't find the getPluginInterface function: %s\n", g_module_error());
+          }
+        }
+        else
+        {
+          printf("Can't lookup symbols: %s\n", g_module_error());
+        }
+      }
+      else
+      {
+        printf("Something went wrong: %s\n", g_module_error());
+      }
       currentFile++;
     }
     else

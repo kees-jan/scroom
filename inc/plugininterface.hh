@@ -1,16 +1,18 @@
-#ifndef _RC/SCROOM.GIT/INC/PLUGININTERFACE.H
-#define _RC/SCROOM.GIT/INC/PLUGININTERFACE.H
+#ifndef _PLUGININTERFACE_H
+#define _PLUGININTERFACE_H
 
 namespace Scroom
 {
   class PluginInterface
   {
-  }
+  };
 }
 
 extern "C"
 {
-  PluginInterface* getPluginInterface();
+  typedef Scroom::PluginInterface* (*PluginFunc)();
+  
+  Scroom::PluginInterface* getPluginInterface();
 }
 
 
