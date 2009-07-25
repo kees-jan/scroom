@@ -7,6 +7,8 @@ class PluginInformationInterface;
 
 extern "C"
 {
+  typedef PluginInformationInterface* (*PluginFunc)();
+
   G_MODULE_IMPORT PluginInformationInterface* getPluginInformation();
 }
 

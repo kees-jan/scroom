@@ -7,8 +7,6 @@
 
 #include <string>
 
-#include <plugininterface.hh>
-
 extern "C"
 {
 #include <callbacks.h>
@@ -106,10 +104,14 @@ bool PluginManager::doWork()
         {
           if(gpi)
           {
-            Scroom::PluginInterface* pi = (*gpi)();
+            PluginInformationInterface* pi = (*gpi)();
             if(pi)
             {
               printf("Got the PluginInterface!\n");
+              pluginInformationList.push_back(PluginInformation(plugin, pi));
+              plugin = NULL;
+              gpi = NULL;
+              pi=NULL;
             }
           }
           else
@@ -120,6 +122,11 @@ bool PluginManager::doWork()
         else
         {
           printf("Can't lookup symbols: %s\n", g_module_error());
+        }
+
+        if(plugin)
+        {
+          g_module_close(plugin);
         }
       }
       else

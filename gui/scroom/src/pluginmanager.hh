@@ -6,7 +6,20 @@
 #include <list>
 #include <string>
 
+#include <scroomplugin.hh>
+
 #include <workinterface.hh>
+
+struct PluginInformation
+{
+  GModule* plugin;
+  PluginInformationInterface* pluginInformation;
+
+  PluginInformation(GModule* plugin, PluginInformationInterface* pluginInformation)
+    : plugin(plugin), pluginInformation(pluginInformation)
+  {
+  }
+};
 
 class PluginManager : public WorkInterface
 {
@@ -28,6 +41,7 @@ private:
   std::list<std::string>::iterator currentDir;
   std::list<std::string> files;
   std::list<std::string>::iterator currentFile;
+  std::list<PluginInformation> pluginInformationList;
 
 private:
   void setStatusBarMessage(const char* message);
