@@ -317,7 +317,7 @@
 	      <property name="visible">True</property>
 	      <property name="lower">0</property>
 	      <property name="upper">10</property>
-	      <property name="position">2.71367526054</property>
+	      <property name="position">1.0897436142</property>
 	      <property name="max_size">10</property>
 	    </widget>
 	    <packing>
@@ -335,7 +335,7 @@
 	      <property name="visible">True</property>
 	      <property name="lower">0</property>
 	      <property name="upper">100</property>
-	      <property name="position">58.6563301086</property>
+	      <property name="position">19.8966407776</property>
 	      <property name="max_size">100</property>
 	    </widget>
 	    <packing>

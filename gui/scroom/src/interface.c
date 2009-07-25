@@ -206,14 +206,14 @@ create_scroom (void)
   gtk_table_attach (GTK_TABLE (table1), hruler, 1, 2, 0, 1,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK | GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
-  gtk_ruler_set_range (GTK_RULER (hruler), 0, 10, 2.71368, 10);
+  gtk_ruler_set_range (GTK_RULER (hruler), 0, 10, 1.08974, 10);
 
   vruler = gtk_vruler_new ();
   gtk_widget_show (vruler);
   gtk_table_attach (GTK_TABLE (table1), vruler, 0, 1, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK | GTK_FILL), 0, 0);
-  gtk_ruler_set_range (GTK_RULER (vruler), 0, 100, 58.6563, 100);
+  gtk_ruler_set_range (GTK_RULER (vruler), 0, 100, 19.8966, 100);
 
   hbox2 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox2);

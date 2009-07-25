@@ -5,10 +5,12 @@
 
 #include <list>
 #include <string>
+#include <map>
 
 #include <scroomplugin.hh>
-
+#include <scroominterface.hh>
 #include <workinterface.hh>
+#include <view.hh>
 
 struct PluginInformation
 {
@@ -21,7 +23,7 @@ struct PluginInformation
   }
 };
 
-class PluginManager : public WorkInterface
+class PluginManager : public WorkInterface, public ScroomInterface
 {
 private:
   typedef enum
@@ -42,6 +44,9 @@ private:
   std::list<std::string> files;
   std::list<std::string>::iterator currentFile;
   std::list<PluginInformation> pluginInformationList;
+  std::map<NewInterface*, std::string> newInterfaces;
+  std::map<OpenInterface*, std::string> openInterfaces;
+  std::list<View*> views;
 
 private:
   void setStatusBarMessage(const char* message);
@@ -53,6 +58,15 @@ public:
   virtual bool doWork();
 
   void addHook(GtkWidget* scroom);
+
+  virtual void registerNewInterface(const std::string& identifier, NewInterface* newInterface);
+  virtual void unregisterNewInterface(NewInterface* newInterface);
+
+  virtual void registerOpenInterface(const std::string& extension, OpenInterface* openInterface);
+  virtual void unregisterOpenInterface(OpenInterface* openInterface);
+
+  void registerView(View* view);
+  void unregisterView(View* view);
 };
 
 void startPluginManager(GtkWidget* scroom);

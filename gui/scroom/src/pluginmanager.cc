@@ -166,3 +166,23 @@ void PluginManager::addHook(GtkWidget* scroom)
   state = FINDING_DIRECTORIES;
 }
 
+void PluginManager::registerNewInterface(const std::string& identifier, NewInterface* newInterface)
+{
+  newInterfaces[newInterface] = identifier;
+}
+
+void PluginManager::unregisterNewInterface(NewInterface* newInterface)
+{
+  newInterfaces.erase(newInterface);
+}
+
+void PluginManager::registerOpenInterface(const std::string& extension, OpenInterface* openInterface)
+{
+  openInterfaces[openInterface] = extension;
+}
+
+void PluginManager::unregisterOpenInterface(OpenInterface* openInterface)
+{
+  openInterfaces.erase(openInterface);
+}
+

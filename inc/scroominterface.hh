@@ -7,6 +7,7 @@
 
 class NewInterface
 {
+public:
   virtual ~NewInterface()
   {
   }
@@ -16,6 +17,7 @@ class NewInterface
 
 class OpenInterface
 {
+public:
   virtual ~OpenInterface()
   {
   }
@@ -25,6 +27,7 @@ class OpenInterface
 
 class ScroomInterface
 {
+public:
   virtual ~ScroomInterface()
   {
   }
@@ -34,7 +37,7 @@ class ScroomInterface
 
   virtual void registerOpenInterface(const std::string& extension, OpenInterface* openInterface)=0;
   virtual void unregisterOpenInterface(OpenInterface* openInterface)=0;
-}
+};
 
 
 #endif
