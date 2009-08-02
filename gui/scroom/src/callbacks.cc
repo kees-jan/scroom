@@ -189,12 +189,7 @@ void create_scroom(PresentationInterface* presentation)
   GtkWidget* aboutMenuItem = glade_xml_get_widget(xml, "about");
   GtkWidget* drawingArea = glade_xml_get_widget(xml, "drawingarea");
 
-  g_signal_connect ((gpointer) scroom, "hide",
-                    G_CALLBACK (on_scroom_hide),
-                    view);
-  // g_signal_connect ((gpointer) new, "activate",
-  //                   G_CALLBACK (on_new_activate),
-  //                   view);
+  g_signal_connect ((gpointer) scroom, "hide", G_CALLBACK (on_scroom_hide), view);
   // g_signal_connect ((gpointer) open, "activate",
   //                   G_CALLBACK (on_open_activate),
   //                   view);
@@ -204,12 +199,8 @@ void create_scroom(PresentationInterface* presentation)
   // g_signal_connect ((gpointer) save_as, "activate",
   //                   G_CALLBACK (on_save_as_activate),
   //                   view);
-  g_signal_connect ((gpointer) newMenuItem, "activate",
-                    G_CALLBACK (on_new_activate),
-                    view);
-  g_signal_connect ((gpointer) quitMenuItem, "activate",
-                    G_CALLBACK (on_quit_activate),
-                    view);
+  g_signal_connect ((gpointer) newMenuItem, "activate", G_CALLBACK (on_new_activate), view);
+  g_signal_connect ((gpointer) quitMenuItem, "activate", G_CALLBACK (on_quit_activate), view);
   // g_signal_connect ((gpointer) cut, "activate",
   //                   G_CALLBACK (on_cut_activate),
   //                   view);
@@ -222,13 +213,7 @@ void create_scroom(PresentationInterface* presentation)
   // g_signal_connect ((gpointer) delete, "activate",
   //                   G_CALLBACK (on_delete_activate),
   //                   view);
-  g_signal_connect ((gpointer) aboutMenuItem, "activate",
-                    G_CALLBACK (on_about_activate),
-                    view);
-  g_signal_connect ((gpointer) drawingArea, "expose_event",
-                    G_CALLBACK (on_drawingarea_expose_event),
-                    view);
-  g_signal_connect ((gpointer) drawingArea, "configure_event",
-                    G_CALLBACK (on_drawingarea_configure_event),
-                    view);
+  g_signal_connect ((gpointer) aboutMenuItem, "activate", G_CALLBACK (on_about_activate), view);
+  g_signal_connect ((gpointer) drawingArea, "expose_event", G_CALLBACK (on_drawingarea_expose_event), view);
+  g_signal_connect ((gpointer) drawingArea, "configure_event", G_CALLBACK (on_drawingarea_configure_event), view);
 }

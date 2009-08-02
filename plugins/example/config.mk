@@ -2,7 +2,9 @@
 # a main() function - common1.c and common2.c
 SONAME=libspexample.so.0
 
-CXXFLAGS += -I ../../inc $(shell pkg-config --cflags glib-2.0)
-LDFLAGS += $(shell pkg-config --libs gmodule-2.0)
+PACKAGES=glib-2.0 gmodule-2.0 cairo
+
+CXXFLAGS += -I ../../inc $(shell pkg-config --cflags $(PACKAGES))
+LDFLAGS += $(shell pkg-config --libs $(PACKAGES))
 
 LIBDIR := ../../_lib

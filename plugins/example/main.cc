@@ -3,6 +3,8 @@
 
 #include <scroomplugin.hh>
 
+#include "example.hh"
+
 G_MODULE_EXPORT const gchar* g_module_check_init(GModule *module)
 {
   printf("Example plugin check_init function\n");
@@ -18,5 +20,5 @@ G_MODULE_EXPORT void g_module_unload(GModule *module)
 G_MODULE_EXPORT PluginInformationInterface* getPluginInformation()
 {
   printf("Example plugin says \"Hi\"\n");
-  return NULL;
+  return new Example();
 }

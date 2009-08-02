@@ -7,6 +7,8 @@
 
 #include <string>
 
+#include <plugininformationinterface.hh>
+
 #include <callbacks.hh>
 
 const std::string SCROOM_PLUGIN_DIRS = "SCROOM_PLUGIN_DIRS";
@@ -103,10 +105,15 @@ bool PluginManager::doWork()
             if(pi)
             {
               printf("Got the PluginInterface!\n");
-              pluginInformationList.push_back(PluginInformation(plugin, pi));
-              plugin = NULL;
-              gpi = NULL;
-              pi=NULL;
+              if(pi->pluginApiVersion == PLUGIN_API_VERSION)
+              {
+                printf("Requesting registration\n");
+                pluginInformationList.push_back(PluginInformation(plugin, pi));
+                pi->registerCapabilities(this);
+                plugin = NULL;
+                gpi = NULL;
+                pi=NULL;
+              }
             }
           }
           else
@@ -163,21 +170,28 @@ void PluginManager::addHook()
 
 void PluginManager::registerNewInterface(const std::string& identifier, NewInterface* newInterface)
 {
+  printf("I learned how to create a new %s!\n", identifier.c_str());
   newInterfaces[newInterface] = identifier;
 }
 
 void PluginManager::unregisterNewInterface(NewInterface* newInterface)
 {
+  printf("I just forgot how to create a new %s!\n", newInterfaces[newInterface].c_str());
+
   newInterfaces.erase(newInterface);
 }
 
 void PluginManager::registerOpenInterface(const std::string& extension, OpenInterface* openInterface)
 {
+  printf("I learned how to open a %s file!\n", extension.c_str());
+
   openInterfaces[openInterface] = extension;
 }
 
 void PluginManager::unregisterOpenInterface(OpenInterface* openInterface)
 {
+  printf("I just forgot how to open a %s file!\n", openInterfaces[openInterface].c_str());
+
   openInterfaces.erase(openInterface);
 }
 
