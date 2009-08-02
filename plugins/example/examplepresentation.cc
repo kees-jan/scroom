@@ -14,7 +14,7 @@ int ExamplePresentation::getWidth()
   return 1000;
 }
 
-void ExamplePresentation::redraw(cairo_t* cr, int left, int top, int right, int bottom, int zoomIn, int zoomOut)
+void ExamplePresentation::redraw(cairo_t* cr, GdkRectangle presentationArea, int zoomIn, int zoomOut)
 {
   char buffer[] = "Hello world!";
 

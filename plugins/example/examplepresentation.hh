@@ -10,7 +10,7 @@ public:
 
   virtual int getHeight();
   virtual int getWidth();
-  virtual void redraw(cairo_t* cr, int left, int top, int right, int bottom, int zoomIn, int zoomOut);
+  virtual void redraw(cairo_t* cr, GdkRectangle presentationArea, int zoomIn, int zoomOut);
 };
 
 #endif

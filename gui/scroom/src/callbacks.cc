@@ -111,21 +111,17 @@ gboolean on_drawingarea_expose_event (GtkWidget* widget, GdkEventExpose* event, 
   GdkGC* gc = gdk_gc_new(GDK_DRAWABLE(win));
   // gdk_gc_set_foreground(gc, ??);
   // gdk_gc_set_background(gc, ??);
-  gdk_draw_line(GDK_DRAWABLE(win), gc, 50, 50, 50, 100);
-  gdk_draw_line(GDK_DRAWABLE(win), gc, 50, 100, 100, 100);
-  gdk_draw_line(GDK_DRAWABLE(win), gc, 100, 50, 100, 100);
-  gdk_draw_line(GDK_DRAWABLE(win), gc, 50, 50, 100, 50);
+  gdk_draw_line(GDK_DRAWABLE(win), gc, 60, 60, 60, 100);
+  gdk_draw_line(GDK_DRAWABLE(win), gc, 60, 100, 100, 100);
+  gdk_draw_line(GDK_DRAWABLE(win), gc, 100, 60, 100, 100);
+  gdk_draw_line(GDK_DRAWABLE(win), gc, 60, 60, 100, 60);
   ////////////////////////////////////////////////////////////////////////
  
 
   ////////////////////////////////////////////////////////////////////////
-  cairo_t* cr;
-  char buffer[] = "Hello world!";
-
-  cr = gdk_cairo_create(widget->window);
-
-  cairo_move_to(cr, 30, 30);
-  cairo_show_text(cr, buffer);
+  cairo_t* cr = gdk_cairo_create(widget->window);
+  View* view = static_cast<View*>(user_data);
+  view->redraw(cr);
 
   cairo_destroy(cr);
   ////////////////////////////////////////////////////////////////////////
