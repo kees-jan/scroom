@@ -323,13 +323,12 @@
       </widget>
     </child>
   </widget>
-  <widget class="GtkAboutDialog" id="aboutdialog">
-    <property name="visible">True</property>
+  <widget class="GtkAboutDialog" id="aboutDialog">
     <property name="border_width">5</property>
     <property name="destroy_with_parent">True</property>
     <property name="type_hint">normal</property>
     <property name="copyright" translatable="yes">(C)2009 Kees-Jan Dijkzeul</property>
-    <property name="authors"></property>
+    <property name="authors">Kees-Jan Dijkzeul</property>
     <property name="translator_credits" translatable="yes" comments="TRANSLATORS: Replace this string with your names, one name per line.">translator-credits</property>
     <property name="wrap_license">True</property>
     <child internal-child="vbox">

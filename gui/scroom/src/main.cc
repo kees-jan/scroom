@@ -8,7 +8,6 @@
 #endif
 
 #include <gtk/gtk.h>
-#include <glade/glade.h>
 
 #include "callbacks.hh"
 
@@ -25,17 +24,8 @@ int main (int argc, char *argv[])
   // scroom = create_scroom ();
   // gtk_widget_show (scroom);
 
-  GladeXML* xml = glade_xml_new("scroom.glade", NULL, NULL);
-  if(xml!=NULL)
-  {
-    // glade_xml_signal_autoconnect(xml);
-  }
-  else
-  {
-    printf("Opening xml failed\n");
-  }
-  
-  GtkWidget *scroom = on_scroom_bootstrap(NULL);
+  on_scroom_bootstrap();
+  create_scroom(NULL);
   
   gtk_main ();
   gdk_threads_leave();

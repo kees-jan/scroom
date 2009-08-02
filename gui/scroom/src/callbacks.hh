@@ -1,11 +1,8 @@
 #include <gtk/gtk.h>
-#include <glade/glade.h>
 
-#include "view.hh"
+#include <presentationinterface.hh>
 
 void on_scroom_hide(GtkWidget* widget, gpointer user_data);
-
-gboolean on_scroom_destroy_event(GtkWidget* widget, GdkEvent* event, gpointer user_data);
 
 void on_new_activate(GtkMenuItem* menuitem, gpointer user_data);
 
@@ -33,7 +30,6 @@ gboolean on_drawingarea_configure_event(GtkWidget* widget, GdkEventConfigure* ev
 
 gboolean on_idle(gpointer user_data);
 
-GtkWidget* on_scroom_bootstrap(View* view);
+void on_scroom_bootstrap();
  
-
-
+void create_scroom(PresentationInterface* presentation);

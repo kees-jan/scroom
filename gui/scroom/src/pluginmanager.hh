@@ -35,9 +35,6 @@ private:
     } PluginManagerState;
   
 private:
-  GtkProgressBar* progressbar;
-  GtkStatusbar* statusbar;
-  guint status_context_id;
   PluginManagerState state;
   std::list<std::string> dirs;
   std::list<std::string>::iterator currentDir;
@@ -57,7 +54,7 @@ public:
   
   virtual bool doWork();
 
-  void addHook(GtkWidget* scroom);
+  void addHook();
 
   virtual void registerNewInterface(const std::string& identifier, NewInterface* newInterface);
   virtual void unregisterNewInterface(NewInterface* newInterface);
@@ -69,6 +66,6 @@ public:
   void unregisterView(View* view);
 };
 
-void startPluginManager(GtkWidget* scroom);
+void startPluginManager();
 
 #endif

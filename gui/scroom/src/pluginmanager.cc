@@ -14,13 +14,12 @@ const std::string SCROOM_PLUGIN_DIRS = "SCROOM_PLUGIN_DIRS";
 static PluginManager pluginManager;
 
 PluginManager::PluginManager()
-  : progressbar(NULL), statusbar(NULL)
 {
 }
 
-void startPluginManager(GtkWidget* scroom)
+void startPluginManager()
 {
-  pluginManager.addHook(scroom);
+  pluginManager.addHook();
 }
 
 bool PluginManager::doWork()
@@ -152,7 +151,7 @@ void PluginManager::setStatusBarMessage(const char* message)
   printf("Statusbar update: %s\n", message);
 }
 
-void PluginManager::addHook(GtkWidget* scroom)
+void PluginManager::addHook()
 {
   gtk_idle_add(on_idle, static_cast<WorkInterface*>(this));
   // progressbar = GTK_PROGRESS_BAR(lookup_widget(scroom, "progressbar"));
