@@ -11,7 +11,7 @@ AM_PROG_CC_STDC
 AC_HEADER_STDC
 AC_PROG_CXX
 
-pkg_modules="gtk+-2.0 >= 2.0.0"
+pkg_modules="gtk+-2.0 >= 2.0.0, gthread-2.0, libglade-2.0"
 PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
 AC_SUBST(PACKAGE_CFLAGS)
 AC_SUBST(PACKAGE_LIBS)

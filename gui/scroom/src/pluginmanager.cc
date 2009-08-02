@@ -7,11 +7,7 @@
 
 #include <string>
 
-extern "C"
-{
-#include <callbacks.h>
-#include <support.h>
-}
+#include <callbacks.hh>
 
 const std::string SCROOM_PLUGIN_DIRS = "SCROOM_PLUGIN_DIRS";
 
@@ -151,18 +147,18 @@ bool PluginManager::doWork()
 
 void PluginManager::setStatusBarMessage(const char* message)
 {
-  gtk_statusbar_pop(statusbar, status_context_id);
-  gtk_statusbar_push(statusbar, status_context_id, message);
+  // gtk_statusbar_pop(statusbar, status_context_id);
+  // gtk_statusbar_push(statusbar, status_context_id, message);
   printf("Statusbar update: %s\n", message);
 }
 
 void PluginManager::addHook(GtkWidget* scroom)
 {
   gtk_idle_add(on_idle, static_cast<WorkInterface*>(this));
-  progressbar = GTK_PROGRESS_BAR(lookup_widget(scroom, "progressbar"));
-  statusbar = GTK_STATUSBAR(lookup_widget(scroom, "statusbar"));
-
-  status_context_id = gtk_statusbar_get_context_id(statusbar, "Plugin Manager");
+  // progressbar = GTK_PROGRESS_BAR(lookup_widget(scroom, "progressbar"));
+  // statusbar = GTK_STATUSBAR(lookup_widget(scroom, "statusbar"));
+  // 
+  // status_context_id = gtk_statusbar_get_context_id(statusbar, "Plugin Manager");
   state = FINDING_DIRECTORIES;
 }
 
