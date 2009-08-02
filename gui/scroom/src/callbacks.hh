@@ -1,5 +1,9 @@
 #include <gtk/gtk.h>
 
+#include <map>
+
+#include <scroominterface.hh>
+
 #include <presentationinterface.hh>
 
 void on_scroom_hide(GtkWidget* widget, gpointer user_data);
@@ -33,3 +37,5 @@ gboolean on_idle(gpointer user_data);
 void on_scroom_bootstrap();
  
 void create_scroom(PresentationInterface* presentation);
+
+void on_newInterfaces_update(const std::map<NewInterface*, std::string>& newInterfaces);

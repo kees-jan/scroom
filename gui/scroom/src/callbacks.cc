@@ -39,7 +39,19 @@ void on_scroom_hide (GtkWidget* widget, gpointer user_data)
 
 void on_new_activate (GtkMenuItem* menuitem, gpointer user_data)
 {
-  create_scroom(NULL);
+  NewInterface* newInterface = static_cast<NewInterface*>(user_data);
+  PresentationInterface* presentation = newInterface->createNew();
+
+//   for(std::list<View*>::iterator cur = views.begin(); cur != views.end(); cur++)
+//   {
+//     if(!(*cur)->hasPresentation())
+//     {
+//       (*cur)->setPresentation(presentation);
+//       return;
+//     }
+//   }
+
+  create_scroom(presentation);
 }
 
 
@@ -195,7 +207,7 @@ void create_scroom(PresentationInterface* presentation)
   // g_signal_connect ((gpointer) save_as, "activate",
   //                   G_CALLBACK (on_save_as_activate),
   //                   view);
-  g_signal_connect ((gpointer) newMenuItem, "activate", G_CALLBACK (on_new_activate), view);
+  // g_signal_connect ((gpointer) newMenuItem, "activate", G_CALLBACK (on_new_activate), view);
   g_signal_connect ((gpointer) quitMenuItem, "activate", G_CALLBACK (on_quit_activate), view);
   // g_signal_connect ((gpointer) cut, "activate",
   //                   G_CALLBACK (on_cut_activate),
@@ -212,4 +224,12 @@ void create_scroom(PresentationInterface* presentation)
   g_signal_connect ((gpointer) aboutMenuItem, "activate", G_CALLBACK (on_about_activate), view);
   g_signal_connect ((gpointer) drawingArea, "expose_event", G_CALLBACK (on_drawingarea_expose_event), view);
   g_signal_connect ((gpointer) drawingArea, "configure_event", G_CALLBACK (on_drawingarea_configure_event), view);
+}
+
+void on_newInterfaces_update(const std::map<NewInterface*, std::string>& newInterfaces)
+{
+  for(std::list<View*>::iterator cur = views.begin(); cur != views.end(); cur++)
+  {
+    (*cur)->on_newInterfaces_update(newInterfaces);
+  }
 }

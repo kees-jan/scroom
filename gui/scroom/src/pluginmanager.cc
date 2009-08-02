@@ -172,6 +172,8 @@ void PluginManager::registerNewInterface(const std::string& identifier, NewInter
 {
   printf("I learned how to create a new %s!\n", identifier.c_str());
   newInterfaces[newInterface] = identifier;
+
+  on_newInterfaces_update(newInterfaces);
 }
 
 void PluginManager::unregisterNewInterface(NewInterface* newInterface)
@@ -179,6 +181,8 @@ void PluginManager::unregisterNewInterface(NewInterface* newInterface)
   printf("I just forgot how to create a new %s!\n", newInterfaces[newInterface].c_str());
 
   newInterfaces.erase(newInterface);
+
+  on_newInterfaces_update(newInterfaces);
 }
 
 void PluginManager::registerOpenInterface(const std::string& extension, OpenInterface* openInterface)
