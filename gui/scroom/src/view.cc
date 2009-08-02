@@ -1,10 +1,14 @@
 #include "view.hh"
 
+#include "pluginmanager.hh"
 #include "callbacks.hh"
 
 View::View(GladeXML* scroomXml, PresentationInterface* presentation)
   : scroomXml(scroomXml), presentation(presentation)
 {
+  PluginManager& pluginManager = PluginManager::getInstance();
+
+  on_newInterfaces_update(pluginManager.getNewInterfaces());
 }
 
 void View::redraw(cairo_t* cr)
@@ -35,6 +39,9 @@ void View::setPresentation(PresentationInterface* presentation)
   }
 
   this->presentation = presentation;
+
+  GtkWidget* drawingArea = glade_xml_get_widget(scroomXml, "drawingarea");
+  gdk_window_invalidate_rect(gtk_widget_get_window(drawingArea), NULL, false);
 }
 
 ////////////////////////////////////////////////////////////////////////

@@ -43,7 +43,6 @@ private:
   std::list<PluginInformation> pluginInformationList;
   std::map<NewInterface*, std::string> newInterfaces;
   std::map<OpenInterface*, std::string> openInterfaces;
-  std::list<View*> views;
 
 private:
   void setStatusBarMessage(const char* message);
@@ -62,8 +61,12 @@ public:
   virtual void registerOpenInterface(const std::string& extension, OpenInterface* openInterface);
   virtual void unregisterOpenInterface(OpenInterface* openInterface);
 
-  void registerView(View* view);
-  void unregisterView(View* view);
+  const std::map<NewInterface*, std::string>& getNewInterfaces();
+  const std::map<OpenInterface*, std::string>& getOpenInterfaces();
+
+
+public:
+  static PluginManager& getInstance();
 };
 
 void startPluginManager();

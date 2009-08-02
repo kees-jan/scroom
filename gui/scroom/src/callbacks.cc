@@ -42,14 +42,14 @@ void on_new_activate (GtkMenuItem* menuitem, gpointer user_data)
   NewInterface* newInterface = static_cast<NewInterface*>(user_data);
   PresentationInterface* presentation = newInterface->createNew();
 
-//   for(std::list<View*>::iterator cur = views.begin(); cur != views.end(); cur++)
-//   {
-//     if(!(*cur)->hasPresentation())
-//     {
-//       (*cur)->setPresentation(presentation);
-//       return;
-//     }
-//   }
+  for(std::list<View*>::iterator cur = views.begin(); cur != views.end(); cur++)
+  {
+    if(!(*cur)->hasPresentation())
+    {
+      (*cur)->setPresentation(presentation);
+      return;
+    }
+  }
 
   create_scroom(presentation);
 }

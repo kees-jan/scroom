@@ -199,3 +199,17 @@ void PluginManager::unregisterOpenInterface(OpenInterface* openInterface)
   openInterfaces.erase(openInterface);
 }
 
+const std::map<NewInterface*, std::string>& PluginManager::getNewInterfaces()
+{
+  return newInterfaces;
+}
+
+const std::map<OpenInterface*, std::string>& PluginManager::getOpenInterfaces()
+{
+  return openInterfaces;
+}
+
+PluginManager& PluginManager::getInstance()
+{
+  return pluginManager;
+}
