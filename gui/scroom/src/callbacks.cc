@@ -117,26 +117,11 @@ gboolean on_drawingarea_expose_event (GtkWidget* widget, GdkEventExpose* event, 
 {
   printf("expose\n");
 
-  ////////////////////////////////////////////////////////////////////////
-
-  GdkWindow* win = gtk_widget_get_window(widget);
-  GdkGC* gc = gdk_gc_new(GDK_DRAWABLE(win));
-  // gdk_gc_set_foreground(gc, ??);
-  // gdk_gc_set_background(gc, ??);
-  gdk_draw_line(GDK_DRAWABLE(win), gc, 60, 60, 60, 100);
-  gdk_draw_line(GDK_DRAWABLE(win), gc, 60, 100, 100, 100);
-  gdk_draw_line(GDK_DRAWABLE(win), gc, 100, 60, 100, 100);
-  gdk_draw_line(GDK_DRAWABLE(win), gc, 60, 60, 100, 60);
-  ////////////////////////////////////////////////////////////////////////
- 
-
-  ////////////////////////////////////////////////////////////////////////
   cairo_t* cr = gdk_cairo_create(widget->window);
   View* view = static_cast<View*>(user_data);
   view->redraw(cr);
 
   cairo_destroy(cr);
-  ////////////////////////////////////////////////////////////////////////
   return FALSE;
 }
 
@@ -144,6 +129,8 @@ gboolean on_drawingarea_expose_event (GtkWidget* widget, GdkEventExpose* event, 
 gboolean on_drawingarea_configure_event (GtkWidget* widget, GdkEventConfigure* event, gpointer user_data)
 {
   printf("configure\n");
+  View* view = static_cast<View*>(user_data);
+  view->on_configure();
   return FALSE;
 }
 

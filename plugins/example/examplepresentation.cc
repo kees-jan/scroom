@@ -1,22 +1,27 @@
 #include "examplepresentation.hh"
 
+#include <unused.h>
+
 ExamplePresentation::~ExamplePresentation()
 {
 }
 
-int ExamplePresentation::getHeight()
+GdkRectangle ExamplePresentation::getRect()
 {
-  return 1000;
+  GdkRectangle rect;
+  rect.x=-500;
+  rect.y=-500;
+  rect.width=1000;
+  rect.height=1000;
+
+  return rect;
 }
 
-int ExamplePresentation::getWidth()
-{
-  return 1000;
-}
-
-void ExamplePresentation::redraw(cairo_t* cr, GdkRectangle presentationArea, int zoomIn, int zoomOut)
+void ExamplePresentation::redraw(cairo_t* cr, GdkRectangle presentationArea, int zoom)
 {
   char buffer[] = "Hello world!";
+  UNUSED(presentationArea);
+  UNUSED(zoom);
 
   cairo_move_to(cr, 30, 30);
   cairo_show_text(cr, buffer);

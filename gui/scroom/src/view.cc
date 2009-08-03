@@ -4,24 +4,28 @@
 #include "callbacks.hh"
 
 View::View(GladeXML* scroomXml, PresentationInterface* presentation)
-  : scroomXml(scroomXml), presentation(presentation)
+  : scroomXml(scroomXml), presentation(presentation), drawingAreaWidth(0), drawingAreaHeight(0)
 {
   PluginManager& pluginManager = PluginManager::getInstance();
+  drawingArea = glade_xml_get_widget(scroomXml, "drawingarea");
 
   on_newInterfaces_update(pluginManager.getNewInterfaces());
+  on_configure();
 }
 
 void View::redraw(cairo_t* cr)
 {
-  char buffer[] = "View says \"Hi\"";
-
-  cairo_move_to(cr, 50, 50);
-  cairo_show_text(cr, buffer);
-
   if(presentation)
   {
     GdkRectangle rect;
-    presentation->redraw(cr, rect, 1,1);
+    presentation->redraw(cr, rect, 0);
+  }
+  else
+  {
+    char buffer[] = "View says \"Hi\"";
+
+    cairo_move_to(cr, 50, 50);
+    cairo_show_text(cr, buffer);
   }
 }
 
@@ -40,8 +44,7 @@ void View::setPresentation(PresentationInterface* presentation)
 
   this->presentation = presentation;
 
-  GtkWidget* drawingArea = glade_xml_get_widget(scroomXml, "drawingarea");
-  gdk_window_invalidate_rect(gtk_widget_get_window(drawingArea), NULL, false);
+  invalidate();
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -73,11 +76,38 @@ void View::on_newInterfaces_update(const std::map<NewInterface*, std::string>& n
 
       g_signal_connect ((gpointer) menu_item, "activate", G_CALLBACK (on_new_activate), cur->first);
     }
-    
   }
+}
 
+void View::on_configure()
+{
+  // There should be a simpler way to do this...
+  GdkRegion* r = gdk_drawable_get_visible_region(GDK_DRAWABLE(gtk_widget_get_window(drawingArea)));
+  GdkRectangle rect;
+  gdk_region_get_clipbox(r, &rect);
+
+  int newWidth = rect.width;
+  int newHeight = rect.height;
+
+  if(drawingAreaHeight != newHeight || drawingAreaWidth != newWidth)
+    on_window_size_changed(newWidth, newHeight);
+  
+  gdk_region_destroy(r);
+}
+
+void View::on_window_size_changed(int newWidth, int newHeight)
+{
+  printf("New drawing area size: %d, %d\n", newWidth, newHeight);
+  drawingAreaHeight = newHeight;
+  drawingAreaWidth = newWidth;
+  invalidate();
 }
 
 
 ////////////////////////////////////////////////////////////////////////
 // Presentation events
+
+void View::invalidate()
+{
+  gdk_window_invalidate_rect(gtk_widget_get_window(drawingArea), NULL, false);
+}

@@ -11,9 +11,8 @@ public:
   {
   }
 
-  virtual int getHeight()=0;
-  virtual int getWidth()=0;
-  virtual void redraw(cairo_t* cr, GdkRectangle presentationArea, int zoomIn, int zoomOut)=0;
+  virtual GdkRectangle getRect()=0;
+  virtual void redraw(cairo_t* cr, GdkRectangle presentationArea, int zoom)=0;
   
 };
 
