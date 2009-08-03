@@ -25,11 +25,18 @@
                   <widget class="GtkMenu" id="file_menu">
                     <child>
                       <widget class="GtkImageMenuItem" id="new">
-                        <property name="label">gtk-new</property>
+                        <property name="label">_New</property>
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
+                        <property name="use_stock">False</property>
+                        <child internal-child="image">
+                          <widget class="GtkImage" id="image1">
+                            <property name="visible">True</property>
+                            <property name="stock">gtk-new</property>
+                            <property name="icon-size">1</property>
+                          </widget>
+                        </child>
                       </widget>
                     </child>
                     <child>
