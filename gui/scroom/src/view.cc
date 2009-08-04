@@ -3,14 +3,84 @@
 #include "pluginmanager.hh"
 #include "callbacks.hh"
 
+static const char *zoomfactor[] =
+  {
+    "8:1",
+    "4:1",
+    "2:1",
+    "1:1",
+    "1:2",
+    "1:4",
+    "1:8",
+    "1:16",
+    "1:32",
+    "1:64",
+    "1:128",
+    "1:250",
+    "1:500",
+    "1:1000",
+    "1:2000",
+    "1:4000",
+    "1:8000",
+    "1:16000",
+    "1:32000",
+    "1:64000",
+    "1:128000",
+    "1:250000",
+    "1:500000",
+    "1:1 million",
+    "1:2 million",
+    "1:4 million",
+    "1:8 million",
+    "1:16 million",
+    "1:32 million",
+    "1:64 million",
+    "1:128 million",
+    "1:250 million",
+    "1:500 million",
+    "1:1 billion",
+  };
+static const int absMaxZoom=3;
+static const int absMinZoom=-30;
+
+enum
+  {
+    COLUMN_TEXT,
+    COLUMN_ZOOM,
+    N_COLUMNS
+  };
+
+  
 View::View(GladeXML* scroomXml, PresentationInterface* presentation)
-  : scroomXml(scroomXml), presentation(presentation), drawingAreaWidth(0), drawingAreaHeight(0)
+  : scroomXml(scroomXml), presentation(presentation), drawingAreaWidth(0), drawingAreaHeight(0),
+    zoom(0), minZoom(absMaxZoom)
 {
   PluginManager& pluginManager = PluginManager::getInstance();
   drawingArea = glade_xml_get_widget(scroomXml, "drawingarea");
+  vscrollbar = GTK_VSCROLLBAR(glade_xml_get_widget(scroomXml, "vscrollbar"));
+  hscrollbar = GTK_HSCROLLBAR(glade_xml_get_widget(scroomXml, "hscrollbar"));
+  vscrollbaradjustment = gtk_range_get_adjustment(GTK_RANGE(vscrollbar));
+  hscrollbaradjustment = gtk_range_get_adjustment(GTK_RANGE(hscrollbar));
+  zoomBox = GTK_COMBO_BOX(glade_xml_get_widget(scroomXml, "zoomboxcombo"));
+  zoomItems = gtk_list_store_new(N_COLUMNS, G_TYPE_STRING, G_TYPE_INT);
 
+  gtk_combo_box_set_model(zoomBox, GTK_TREE_MODEL(zoomItems));
+  GtkCellRenderer* txt = GTK_CELL_RENDERER(gtk_cell_renderer_text_new());
+  gtk_cell_layout_pack_end(GTK_CELL_LAYOUT(zoomBox),
+                           txt,
+                           true);
+  gtk_cell_layout_set_attributes(GTK_CELL_LAYOUT(zoomBox), txt,
+                                 "text", COLUMN_TEXT,
+                                 NULL);
+  
+  if(presentation)
+  {
+    presentationRect = presentation->getRect();
+  }
+  
   on_newInterfaces_update(pluginManager.getNewInterfaces());
   on_configure();
+
 }
 
 void View::redraw(cairo_t* cr)
@@ -43,9 +113,56 @@ void View::setPresentation(PresentationInterface* presentation)
   }
 
   this->presentation = presentation;
-
+  presentationRect = presentation->getRect();
+  
+  updateZoom();
+  updateScrollbars();
   invalidate();
 }
+
+void View::updateScrollbars()
+{
+  if(!presentation)
+  {
+    presentationRect.x=0;
+    presentationRect.y=0;
+    presentationRect.width=0;
+    presentationRect.height=0;
+  }
+
+  gtk_adjustment_configure(vscrollbaradjustment, 100, 0, 500, 1, 100, 100);
+  gtk_adjustment_configure(hscrollbaradjustment, 100, 0, 500, 1, 100, 100);
+}
+
+void View::updateZoom()
+{
+  int newMinZoom = -15;
+  printf("updateZoom\n");
+
+  int zMax = absMaxZoom - newMinZoom;
+  zMax = std::max(zMax, absMaxZoom-zoom);
+  zMax = std::min((unsigned int)zMax, sizeof(zoomfactor)/sizeof(zoomfactor[0]));
+  bool zoomFound = false;
+  
+  gtk_list_store_clear(zoomItems);
+  for(int z=0; z<zMax; z++)
+  {
+    GtkTreeIter iter;
+    gtk_list_store_insert_with_values(zoomItems, &iter, z,
+                                      COLUMN_TEXT, zoomfactor[z],
+                                      COLUMN_ZOOM, absMaxZoom-z,
+                                      -1);
+
+    if(zoom == absMaxZoom-z)
+    {
+      gtk_combo_box_set_active_iter(zoomBox, &iter);
+      zoomFound = true;
+    }
+  }
+  
+  minZoom = newMinZoom;
+}
+
 
 ////////////////////////////////////////////////////////////////////////
 // Scroom events
@@ -100,6 +217,8 @@ void View::on_window_size_changed(int newWidth, int newHeight)
   printf("New drawing area size: %d, %d\n", newWidth, newHeight);
   drawingAreaHeight = newHeight;
   drawingAreaWidth = newWidth;
+  updateZoom();
+  updateScrollbars();
   invalidate();
 }
 

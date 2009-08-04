@@ -18,6 +18,15 @@ private:
   GtkWidget* drawingArea;
   int drawingAreaWidth;
   int drawingAreaHeight;
+  GdkRectangle presentationRect;
+  GtkVScrollbar* vscrollbar;
+  GtkHScrollbar* hscrollbar;
+  GtkAdjustment* vscrollbaradjustment;
+  GtkAdjustment* hscrollbaradjustment;
+  GtkComboBox* zoomBox;
+  GtkListStore* zoomItems;
+  int zoom;
+  int minZoom;
   
 public:
 
@@ -26,6 +35,9 @@ public:
   void redraw(cairo_t* cr);
   bool hasPresentation();
   void setPresentation(PresentationInterface* presentation);
+
+  void updateScrollbars();
+  void updateZoom();
 
 
   ////////////////////////////////////////////////////////////////////////

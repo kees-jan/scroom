@@ -188,8 +188,10 @@
               <widget class="GtkToolItem" id="zoombox">
                 <property name="visible">True</property>
                 <child>
-                  <widget class="GtkComboBox" id="combobox1">
+                  <widget class="GtkComboBox" id="zoomboxcombo">
                     <property name="visible">True</property>
+                    <property name="add_tearoffs">True</property>
+                    <property name="tearoff_title">Zoom</property>
                   </widget>
                 </child>
               </widget>
