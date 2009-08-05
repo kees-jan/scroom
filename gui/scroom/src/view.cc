@@ -136,31 +136,50 @@ void View::updateScrollbars()
 
 void View::updateZoom()
 {
-  int newMinZoom = -15;
-  printf("updateZoom\n");
-
-  int zMax = absMaxZoom - newMinZoom;
-  zMax = std::max(zMax, absMaxZoom-zoom);
-  zMax = std::min((unsigned int)zMax, sizeof(zoomfactor)/sizeof(zoomfactor[0]));
-  bool zoomFound = false;
-  
-  gtk_list_store_clear(zoomItems);
-  for(int z=0; z<zMax; z++)
+  if(presentation)
   {
-    GtkTreeIter iter;
-    gtk_list_store_insert_with_values(zoomItems, &iter, z,
-                                      COLUMN_TEXT, zoomfactor[z],
-                                      COLUMN_ZOOM, absMaxZoom-z,
-                                      -1);
+    unsigned int presentationHeight = presentationRect.height;
+    unsigned int presentationWidth = presentationRect.width;
+    int newMinZoom = 0;
 
-    if(zoom == absMaxZoom-z)
+    while(presentationHeight > drawingAreaHeight/2 || presentationWidth > drawingAreaWidth/2)
     {
-      gtk_combo_box_set_active_iter(zoomBox, &iter);
-      zoomFound = true;
+      presentationHeight >>= 1;
+      presentationWidth >>= 1;
+      newMinZoom--;
     }
-  }
+    
+    gtk_widget_set_sensitive(GTK_WIDGET(zoomBox), true);
+    
+    printf("updateZoom\n");
+
+    int zMax = absMaxZoom - newMinZoom;
+    zMax = std::max(zMax, absMaxZoom-zoom);
+    zMax = std::min((unsigned int)zMax, sizeof(zoomfactor)/sizeof(zoomfactor[0]));
+    bool zoomFound = false;
   
-  minZoom = newMinZoom;
+    gtk_list_store_clear(zoomItems);
+    for(int z=0; z<zMax; z++)
+    {
+      GtkTreeIter iter;
+      gtk_list_store_insert_with_values(zoomItems, &iter, z,
+                                        COLUMN_TEXT, zoomfactor[z],
+                                        COLUMN_ZOOM, absMaxZoom-z,
+                                        -1);
+
+      if(zoom == absMaxZoom-z)
+      {
+        gtk_combo_box_set_active_iter(zoomBox, &iter);
+        zoomFound = true;
+      }
+    }
+  
+    minZoom = newMinZoom;
+  }
+  else
+  {
+    gtk_widget_set_sensitive(GTK_WIDGET(zoomBox), false);
+  }
 }
 
 
