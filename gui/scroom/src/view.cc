@@ -179,6 +179,13 @@ void View::updateZoom()
   else
   {
     gtk_widget_set_sensitive(GTK_WIDGET(zoomBox), false);
+    gtk_list_store_clear(zoomItems);
+    GtkTreeIter iter;
+    gtk_list_store_insert_with_values(zoomItems, &iter, 0,
+                                        COLUMN_TEXT, zoomfactor[0],
+                                        COLUMN_ZOOM, absMaxZoom-0,
+                                        -1);
+
   }
 }
 
@@ -241,6 +248,28 @@ void View::on_window_size_changed(int newWidth, int newHeight)
   invalidate();
 }
 
+void View::on_zoombox_changed()
+{
+  GtkTreeIter iter;
+  GValue value={0};
+  gtk_combo_box_get_active_iter(zoomBox, &iter);
+  
+  if(gtk_list_store_iter_is_valid(zoomItems, &iter))
+  {
+    gtk_tree_model_get_value(GTK_TREE_MODEL(zoomItems), &iter, COLUMN_ZOOM, &value);
+    int newZoom = g_value_get_int(&value);
+    on_zoombox_changed(newZoom, drawingAreaWidth/2, drawingAreaHeight/2);
+  }
+}
+
+void View::on_zoombox_changed(int newZoom, int mousex, int mousey)
+{
+  if(newZoom!=zoom)
+  {
+    printf("New zoom: %d\n", newZoom);
+    zoom = newZoom;
+  }
+}
 
 ////////////////////////////////////////////////////////////////////////
 // Presentation events

@@ -46,6 +46,8 @@ public:
   void on_newInterfaces_update(const std::map<NewInterface*, std::string>& newInterfaces);
   void on_configure();
   void on_window_size_changed(int newWidth, int newHeight);
+  void on_zoombox_changed();
+  void on_zoombox_changed(int newZoom, int mousex, int mousey);
 
   ////////////////////////////////////////////////////////////////////////
   // Presentation events
