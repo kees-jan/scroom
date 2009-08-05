@@ -40,8 +40,7 @@ static const char *zoomfactor[] =
     "1:500 million",
     "1:1 billion",
   };
-static const int absMaxZoom=3;
-static const int absMinZoom=-30;
+static const int MaxZoom=3;
 
 enum
   {
@@ -52,8 +51,8 @@ enum
 
   
 View::View(GladeXML* scroomXml, PresentationInterface* presentation)
-  : scroomXml(scroomXml), presentation(presentation), drawingAreaWidth(0), drawingAreaHeight(0),
-    zoom(0), minZoom(absMaxZoom)
+  : scroomXml(scroomXml), presentation(NULL), drawingAreaWidth(0), drawingAreaHeight(0),
+    zoom(0), x(0), y(0)
 {
   PluginManager& pluginManager = PluginManager::getInstance();
   drawingArea = glade_xml_get_widget(scroomXml, "drawingarea");
@@ -73,14 +72,13 @@ View::View(GladeXML* scroomXml, PresentationInterface* presentation)
                                  "text", COLUMN_TEXT,
                                  NULL);
   
-  if(presentation)
-  {
-    presentationRect = presentation->getRect();
-  }
-  
   on_newInterfaces_update(pluginManager.getNewInterfaces());
   on_configure();
 
+  if(presentation)
+  {
+    setPresentation(presentation);
+  }
 }
 
 void View::redraw(cairo_t* cr)
@@ -120,18 +118,43 @@ void View::setPresentation(PresentationInterface* presentation)
   invalidate();
 }
 
+void View::updateScrollbar(GtkAdjustment* adj, int zoom, int value, int presentationStart, int presentationSize, int windowSize)
+{
+  if(zoom>=0)
+  {
+    // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
+    int pixelSize = 1<<zoom;
+    gtk_adjustment_configure(adj, value, presentationStart, presentationStart+presentationSize,
+                             1, 3*windowSize/pixelSize/4, windowSize/pixelSize);
+  }
+  else
+  {
+    // Zooming out. Smallest step is 1 window-pixel, which is more than one presentation-pixel
+    int pixelSize = 1<<(-zoom);
+    value -= value%pixelSize;
+    gtk_adjustment_configure(adj, value, presentationStart, presentationStart+presentationSize,
+                             pixelSize, 3*windowSize*pixelSize/4, windowSize*pixelSize);
+  }
+}
+
 void View::updateScrollbars()
 {
-  if(!presentation)
+  if(presentation)
   {
-    presentationRect.x=0;
-    presentationRect.y=0;
-    presentationRect.width=0;
-    presentationRect.height=0;
+    gtk_widget_set_sensitive(GTK_WIDGET(vscrollbar), true);
+    gtk_widget_set_sensitive(GTK_WIDGET(hscrollbar), true);
+
+    updateScrollbar(vscrollbaradjustment, zoom, x,
+                    presentationRect.x, presentationRect.width, drawingAreaWidth);
+    updateScrollbar(hscrollbaradjustment, zoom, y,
+                    presentationRect.y, presentationRect.height, drawingAreaHeight);
+  }
+  else
+  {
+    gtk_widget_set_sensitive(GTK_WIDGET(vscrollbar), false);
+    gtk_widget_set_sensitive(GTK_WIDGET(hscrollbar), false);
   }
 
-  gtk_adjustment_configure(vscrollbaradjustment, 100, 0, 500, 1, 100, 100);
-  gtk_adjustment_configure(hscrollbaradjustment, 100, 0, 500, 1, 100, 100);
 }
 
 void View::updateZoom()
@@ -140,21 +163,21 @@ void View::updateZoom()
   {
     unsigned int presentationHeight = presentationRect.height;
     unsigned int presentationWidth = presentationRect.width;
-    int newMinZoom = 0;
+    int minZoom = 0;
 
     while(presentationHeight > drawingAreaHeight/2 || presentationWidth > drawingAreaWidth/2)
     {
       presentationHeight >>= 1;
       presentationWidth >>= 1;
-      newMinZoom--;
+      minZoom--;
     }
     
     gtk_widget_set_sensitive(GTK_WIDGET(zoomBox), true);
     
     printf("updateZoom\n");
 
-    int zMax = absMaxZoom - newMinZoom;
-    zMax = std::max(zMax, absMaxZoom-zoom);
+    int zMax = MaxZoom - minZoom;
+    zMax = std::max(zMax, MaxZoom-zoom);
     zMax = std::min((unsigned int)zMax, sizeof(zoomfactor)/sizeof(zoomfactor[0]));
     bool zoomFound = false;
   
@@ -164,17 +187,15 @@ void View::updateZoom()
       GtkTreeIter iter;
       gtk_list_store_insert_with_values(zoomItems, &iter, z,
                                         COLUMN_TEXT, zoomfactor[z],
-                                        COLUMN_ZOOM, absMaxZoom-z,
+                                        COLUMN_ZOOM, MaxZoom-z,
                                         -1);
 
-      if(zoom == absMaxZoom-z)
+      if(zoom == MaxZoom-z)
       {
         gtk_combo_box_set_active_iter(zoomBox, &iter);
         zoomFound = true;
       }
     }
-  
-    minZoom = newMinZoom;
   }
   else
   {
@@ -183,7 +204,7 @@ void View::updateZoom()
     GtkTreeIter iter;
     gtk_list_store_insert_with_values(zoomItems, &iter, 0,
                                         COLUMN_TEXT, zoomfactor[0],
-                                        COLUMN_ZOOM, absMaxZoom-0,
+                                        COLUMN_ZOOM, MaxZoom,
                                         -1);
 
   }
@@ -268,6 +289,8 @@ void View::on_zoombox_changed(int newZoom, int mousex, int mousey)
   {
     printf("New zoom: %d\n", newZoom);
     zoom = newZoom;
+    updateScrollbars();
+    invalidate();
   }
 }
 

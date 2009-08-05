@@ -26,7 +26,8 @@ private:
   GtkComboBox* zoomBox;
   GtkListStore* zoomItems;
   int zoom;
-  int minZoom;
+  int x;
+  int y;
   
 public:
 
@@ -36,6 +37,8 @@ public:
   bool hasPresentation();
   void setPresentation(PresentationInterface* presentation);
 
+  void updateScrollbar(GtkAdjustment* adj, int zoom, int value,
+                       int presentationStart, int presentationSize, int windowSize);
   void updateScrollbars();
   void updateZoom();
 
