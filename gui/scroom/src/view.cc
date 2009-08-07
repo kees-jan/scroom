@@ -89,7 +89,24 @@ void View::redraw(cairo_t* cr)
   if(presentation)
   {
     GdkRectangle rect;
-    presentation->redraw(cr, rect, 0);
+    rect.x=x;
+    rect.y=y;
+    if(zoom>=0)
+    {
+      // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
+      int pixelSize = 1<<zoom;
+      rect.width = drawingAreaWidth/pixelSize;
+      rect.height = drawingAreaHeight/pixelSize;
+    }
+    else
+    {
+      // Zooming out. Smallest step is 1 window-pixel, which is more than one presentation-pixel
+      int pixelSize = 1<<(-zoom);
+      rect.width = drawingAreaWidth*pixelSize;
+      rect.height = drawingAreaHeight*pixelSize;
+    }
+    
+    presentation->redraw(cr, rect, zoom);
   }
   else
   {
