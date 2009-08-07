@@ -60,6 +60,9 @@ View::View(GladeXML* scroomXml, PresentationInterface* presentation)
   hscrollbar = GTK_HSCROLLBAR(glade_xml_get_widget(scroomXml, "hscrollbar"));
   vscrollbaradjustment = gtk_range_get_adjustment(GTK_RANGE(vscrollbar));
   hscrollbaradjustment = gtk_range_get_adjustment(GTK_RANGE(hscrollbar));
+  vruler = GTK_RULER(glade_xml_get_widget(scroomXml, "vruler"));
+  hruler = GTK_RULER(glade_xml_get_widget(scroomXml, "hruler"));
+
   zoomBox = GTK_COMBO_BOX(glade_xml_get_widget(scroomXml, "zoomboxcombo"));
   zoomItems = gtk_list_store_new(N_COLUMNS, G_TYPE_STRING, G_TYPE_INT);
 
@@ -131,7 +134,7 @@ void View::updateScrollbar(GtkAdjustment* adj, int zoom, int value, int presenta
   {
     // Zooming out. Smallest step is 1 window-pixel, which is more than one presentation-pixel
     int pixelSize = 1<<(-zoom);
-    value -= value%pixelSize;
+    // value -= value%pixelSize;
     gtk_adjustment_configure(adj, value, presentationStart, presentationStart+presentationSize,
                              pixelSize, 3*windowSize*pixelSize/4, windowSize*pixelSize);
   }
@@ -148,6 +151,7 @@ void View::updateScrollbars()
                     presentationRect.x, presentationRect.width, drawingAreaWidth);
     updateScrollbar(hscrollbaradjustment, zoom, y,
                     presentationRect.y, presentationRect.height, drawingAreaHeight);
+    updateRulers();
   }
   else
   {
@@ -177,7 +181,7 @@ void View::updateZoom()
     printf("updateZoom\n");
 
     int zMax = MaxZoom - minZoom;
-    zMax = std::max(zMax, MaxZoom-zoom);
+    zMax = std::max(zMax, 1+MaxZoom-zoom);
     zMax = std::min((unsigned int)zMax, sizeof(zoomfactor)/sizeof(zoomfactor[0]));
     bool zoomFound = false;
   
@@ -210,6 +214,23 @@ void View::updateZoom()
   }
 }
 
+void View::updateRulers()
+{
+  if(zoom>=0)
+  {
+    // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
+    int pixelSize = 1<<zoom;
+    gtk_ruler_set_range(hruler, x, x + 1.0*drawingAreaWidth/pixelSize, 0, presentationRect.x + presentationRect.width);
+    gtk_ruler_set_range(vruler, y, y + 1.0*drawingAreaHeight/pixelSize, 0, presentationRect.y + presentationRect.height);
+  }
+  else
+  {
+    // Zooming out. Smallest step is 1 window-pixel, which is more than one presentation-pixel
+    int pixelSize = 1<<(-zoom);
+    gtk_ruler_set_range(hruler, x, x + drawingAreaWidth*pixelSize, 0, presentationRect.x + presentationRect.width);
+    gtk_ruler_set_range(vruler, y, y + drawingAreaHeight*pixelSize, 0, presentationRect.y + presentationRect.height);
+  }
+}
 
 ////////////////////////////////////////////////////////////////////////
 // Scroom events
@@ -306,6 +327,7 @@ void View::on_scrollbar_value_changed(GtkAdjustment* adjustment)
     x = (int)gtk_adjustment_get_value(adjustment);
     printf("Horizontal Scrollbar value %d\n", x);
   }
+  updateRulers();
 }
 
 ////////////////////////////////////////////////////////////////////////

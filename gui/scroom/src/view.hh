@@ -23,6 +23,8 @@ private:
   GtkHScrollbar* hscrollbar;
   GtkAdjustment* vscrollbaradjustment;
   GtkAdjustment* hscrollbaradjustment;
+  GtkRuler* hruler;
+  GtkRuler* vruler;
   GtkComboBox* zoomBox;
   GtkListStore* zoomItems;
   int zoom;
@@ -41,8 +43,7 @@ public:
                        int presentationStart, int presentationSize, int windowSize);
   void updateScrollbars();
   void updateZoom();
-
-
+  void updateRulers();
 
   ////////////////////////////////////////////////////////////////////////
   // Scroom events

@@ -259,8 +259,7 @@
               <widget class="GtkHRuler" id="hruler">
                 <property name="visible">True</property>
                 <property name="upper">10</property>
-                <property name="position">1.0897436142000001</property>
-                <property name="max_size">10</property>
+                <property name="position">5</property>
               </widget>
               <packing>
                 <property name="left_attach">1</property>
@@ -272,9 +271,8 @@
             <child>
               <widget class="GtkVRuler" id="vruler">
                 <property name="visible">True</property>
-                <property name="upper">100</property>
-                <property name="position">19.896640777599998</property>
-                <property name="max_size">100</property>
+                <property name="upper">10</property>
+                <property name="position">5</property>
               </widget>
               <packing>
                 <property name="top_attach">1</property>
