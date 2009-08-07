@@ -36,6 +36,8 @@ gboolean on_idle(gpointer user_data);
 
 void on_zoombox_changed(GtkComboBox* widget, gpointer user_data);
 
+void on_scrollbar_value_changed(GtkAdjustment* adjustment, gpointer user_data);
+
 void on_scroom_bootstrap();
  
 void create_scroom(PresentationInterface* presentation);

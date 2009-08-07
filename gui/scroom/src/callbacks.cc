@@ -153,6 +153,11 @@ void on_zoombox_changed(GtkComboBox* widget, gpointer user_data)
   view->on_zoombox_changed();
 }
 
+void on_scrollbar_value_changed(GtkAdjustment* adjustment, gpointer user_data)
+{
+  View* view = static_cast<View*>(user_data);
+  view->on_scrollbar_value_changed(adjustment);
+}
 
 
 void on_scroom_bootstrap ()
@@ -192,6 +197,10 @@ void create_scroom(PresentationInterface* presentation)
   GtkWidget* aboutMenuItem = glade_xml_get_widget(xml, "about");
   GtkWidget* drawingArea = glade_xml_get_widget(xml, "drawingarea");
   GtkWidget* zoomBox = glade_xml_get_widget(xml, "zoomboxcombo");
+  GtkWidget* vscrollbar = glade_xml_get_widget(xml, "vscrollbar");
+  GtkWidget* hscrollbar = glade_xml_get_widget(xml, "hscrollbar");
+  GtkAdjustment* vscrollbaradjustment = gtk_range_get_adjustment(GTK_RANGE(vscrollbar));
+  GtkAdjustment* hscrollbaradjustment = gtk_range_get_adjustment(GTK_RANGE(hscrollbar));
 
   g_signal_connect ((gpointer) scroom, "hide", G_CALLBACK (on_scroom_hide), view);
   // g_signal_connect ((gpointer) open, "activate",
@@ -206,6 +215,8 @@ void create_scroom(PresentationInterface* presentation)
   // g_signal_connect ((gpointer) newMenuItem, "activate", G_CALLBACK (on_new_activate), view);
   g_signal_connect ((gpointer) quitMenuItem, "activate", G_CALLBACK (on_quit_activate), view);
   g_signal_connect ((gpointer) zoomBox, "changed", G_CALLBACK (on_zoombox_changed), view);
+  g_signal_connect ((gpointer) vscrollbaradjustment, "value-changed", G_CALLBACK(on_scrollbar_value_changed), view);
+  g_signal_connect ((gpointer) hscrollbaradjustment, "value-changed", G_CALLBACK(on_scrollbar_value_changed), view);
   // g_signal_connect ((gpointer) cut, "activate",
   //                   G_CALLBACK (on_cut_activate),
   //                   view);

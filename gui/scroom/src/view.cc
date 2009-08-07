@@ -294,6 +294,20 @@ void View::on_zoombox_changed(int newZoom, int mousex, int mousey)
   }
 }
 
+void View::on_scrollbar_value_changed(GtkAdjustment* adjustment)
+{
+  if(adjustment == vscrollbaradjustment)
+  {
+    y = (int)gtk_adjustment_get_value(adjustment);
+    printf("Vertical Scrollbar value %d\n", y);
+  }
+  else
+  {
+    x = (int)gtk_adjustment_get_value(adjustment);
+    printf("Horizontal Scrollbar value %d\n", x);
+  }
+}
+
 ////////////////////////////////////////////////////////////////////////
 // Presentation events
 

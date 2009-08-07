@@ -43,6 +43,7 @@ public:
   void updateZoom();
 
 
+
   ////////////////////////////////////////////////////////////////////////
   // Scroom events
   
@@ -51,6 +52,7 @@ public:
   void on_window_size_changed(int newWidth, int newHeight);
   void on_zoombox_changed();
   void on_zoombox_changed(int newZoom, int mousex, int mousey);
+  void on_scrollbar_value_changed(GtkAdjustment* adjustment);
 
   ////////////////////////////////////////////////////////////////////////
   // Presentation events
