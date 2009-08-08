@@ -345,6 +345,7 @@ void View::on_scrollbar_value_changed(GtkAdjustment* adjustment)
     printf("Horizontal Scrollbar value %d\n", x);
   }
   updateRulers();
+  invalidate();
 }
 
 ////////////////////////////////////////////////////////////////////////
