@@ -139,7 +139,7 @@ vpath %.hh .
 vpath %.o $(OBJDIR)
 
 ifneq "$(MAKECMDGOALS)" "clean"
--include $(addprefix $(OBJDIR)/,$(SOURCES:.c=.d) $(SOURCES_MAIN:.c=.d))
+-include $(addprefix $(OBJDIR)/,$(SOURCES:.c=.d) $(SOURCES_MAIN:.c=.d) $(SOURCES_CXX:.cc=.d) $(SOURCES_MAIN_CXX:.cc=.d))
 endif
 
 .PHONY: clean
