@@ -27,7 +27,7 @@ static std::list<View*> views;
 
 void on_scroom_hide (GtkWidget* widget, gpointer user_data)
 {
-  printf("hide\n");
+  // printf("hide\n");
   View* view = static_cast<View*>(user_data);
   views.remove(view);
   delete view;
@@ -115,7 +115,7 @@ void on_about_activate (GtkMenuItem* menuitem, gpointer user_data)
 
 gboolean on_drawingarea_expose_event (GtkWidget* widget, GdkEventExpose* event, gpointer user_data)
 {
-  printf("expose\n");
+  // printf("expose\n");
 
   cairo_t* cr = gdk_cairo_create(widget->window);
   View* view = static_cast<View*>(user_data);
@@ -128,7 +128,7 @@ gboolean on_drawingarea_expose_event (GtkWidget* widget, GdkEventExpose* event, 
 
 gboolean on_drawingarea_configure_event (GtkWidget* widget, GdkEventConfigure* event, gpointer user_data)
 {
-  printf("configure\n");
+  // printf("configure\n");
   View* view = static_cast<View*>(user_data);
   view->on_configure();
   return FALSE;

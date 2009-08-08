@@ -30,7 +30,7 @@ void ExamplePresentation::redraw(cairo_t* cr, GdkRectangle presentationArea, int
   else
     pp /= 1<<(-zoom);
 
-  printf("One presentation pixel amounts to %f screen pixels\n", pp);
+  // printf("One presentation pixel amounts to %f screen pixels\n", pp);
 
   int xorig = (int)(-presentationArea.x*pp);
   int yorig = (int)(-presentationArea.y*pp);

@@ -5,6 +5,7 @@
 
 static const char *zoomfactor[] =
   {
+    "16:1",
     "8:1",
     "4:1",
     "2:1",
@@ -40,7 +41,7 @@ static const char *zoomfactor[] =
     "1:500 million",
     "1:1 billion",
   };
-static const int MaxZoom=3;
+static const int MaxZoom=4;
 
 enum
   {
@@ -164,9 +165,9 @@ void View::updateScrollbars()
     gtk_widget_set_sensitive(GTK_WIDGET(vscrollbar), true);
     gtk_widget_set_sensitive(GTK_WIDGET(hscrollbar), true);
 
-    updateScrollbar(vscrollbaradjustment, zoom, x,
+    updateScrollbar(hscrollbaradjustment, zoom, x,
                     presentationRect.x, presentationRect.width, drawingAreaWidth);
-    updateScrollbar(hscrollbaradjustment, zoom, y,
+    updateScrollbar(vscrollbaradjustment, zoom, y,
                     presentationRect.y, presentationRect.height, drawingAreaHeight);
     updateRulers();
   }
@@ -325,7 +326,7 @@ void View::on_zoombox_changed(int newZoom, int mousex, int mousey)
 {
   if(newZoom!=zoom)
   {
-    printf("New zoom: %d\n", newZoom);
+    // printf("New zoom: %d\n", newZoom);
     zoom = newZoom;
     updateScrollbars();
     invalidate();
@@ -337,12 +338,12 @@ void View::on_scrollbar_value_changed(GtkAdjustment* adjustment)
   if(adjustment == vscrollbaradjustment)
   {
     y = (int)gtk_adjustment_get_value(adjustment);
-    printf("Vertical Scrollbar value %d\n", y);
+    // printf("Vertical Scrollbar value %d\n", y);
   }
   else
   {
     x = (int)gtk_adjustment_get_value(adjustment);
-    printf("Horizontal Scrollbar value %d\n", x);
+    // printf("Horizontal Scrollbar value %d\n", x);
   }
   updateRulers();
   invalidate();
