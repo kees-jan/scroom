@@ -41,23 +41,69 @@ void on_new_activate (GtkMenuItem* menuitem, gpointer user_data)
 {
   NewInterface* newInterface = static_cast<NewInterface*>(user_data);
   PresentationInterface* presentation = newInterface->createNew();
-
-  for(std::list<View*>::iterator cur = views.begin(); cur != views.end(); cur++)
-  {
-    if(!(*cur)->hasPresentation())
-    {
-      (*cur)->setPresentation(presentation);
-      return;
-    }
-  }
-
-  create_scroom(presentation);
+  find_or_create_scroom(presentation);
 }
 
 
 void on_open_activate (GtkMenuItem* menuitem, gpointer user_data)
 {
+  GtkWidget* dialog;
+  GtkWidget* scroom = static_cast<GtkWidget*>(user_data);
 
+  printf("Creating the open dialog\n");
+  dialog = gtk_file_chooser_dialog_new ("Open File",
+                                        GTK_WINDOW(scroom),
+                                        GTK_FILE_CHOOSER_ACTION_OPEN,
+                                        GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+                                        GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
+                                        NULL);
+  const std::map<OpenInterface*, std::string>& openInterfaces = PluginManager::getInstance().getOpenInterfaces();
+
+  for(std::map<OpenInterface*, std::string>::const_iterator cur=openInterfaces.begin();
+      cur != openInterfaces.end();
+      cur++)
+  {
+    std::list<GtkFileFilter*> filters = cur->first->getFilters();
+    for(std::list<GtkFileFilter*>::iterator f = filters.begin();
+        f != filters.end();
+        f++)
+    {
+      gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dialog), *f);
+    }
+  }
+
+  if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT)
+  {
+    GFile* file = g_file_new_for_path(gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog)));
+    GFileInfo* fileInfo = g_file_query_info(file, "standard::*", G_FILE_QUERY_INFO_NONE, NULL, NULL);
+    GtkFileFilterInfo filterInfo;
+    filterInfo.filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER (dialog));
+    filterInfo.mime_type = g_content_type_get_mime_type(g_file_info_get_content_type (fileInfo));
+    filterInfo.display_name = g_file_info_get_display_name(fileInfo);
+    filterInfo.contains =
+      (GtkFileFilterFlags)(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_MIME_TYPE);
+    printf("Opening file %s (%s)\n", filterInfo.filename, filterInfo.mime_type);
+
+    PresentationInterface* presentation = NULL;
+    for(std::map<OpenInterface*, std::string>::const_iterator cur=openInterfaces.begin();
+        cur != openInterfaces.end() && presentation==NULL;
+        cur++)
+    {
+      std::list<GtkFileFilter*> filters = cur->first->getFilters();
+      for(std::list<GtkFileFilter*>::iterator f = filters.begin();
+          f != filters.end() && presentation==NULL;
+          f++)
+      {
+        if(gtk_file_filter_filter(*f, &filterInfo))
+        {
+          presentation = cur->first->open(filterInfo.filename);
+          find_or_create_scroom(presentation);
+        }
+      }
+    }
+    
+  }
+  gtk_widget_destroy (dialog);
 }
 
 
@@ -177,7 +223,20 @@ void on_scroom_bootstrap ()
     exit(-1);
   }
 }
- 
+
+void find_or_create_scroom(PresentationInterface* presentation)
+{
+  for(std::list<View*>::iterator cur = views.begin(); cur != views.end(); cur++)
+  {
+    if(!(*cur)->hasPresentation())
+    {
+      (*cur)->setPresentation(presentation);
+      return;
+    }
+  }
+  create_scroom(presentation);
+}
+
 void create_scroom(PresentationInterface* presentation)
 {
   GladeXML* xml = glade_xml_new(xmlFileName.c_str(), "scroom", NULL);
@@ -193,6 +252,7 @@ void create_scroom(PresentationInterface* presentation)
 
   GtkWidget* scroom = glade_xml_get_widget(xml, "scroom");
   GtkWidget* newMenuItem = glade_xml_get_widget(xml, "new");
+  GtkWidget* openMenuItem = glade_xml_get_widget(xml, "open");
   GtkWidget* quitMenuItem = glade_xml_get_widget(xml, "quit");
   GtkWidget* aboutMenuItem = glade_xml_get_widget(xml, "about");
   GtkWidget* drawingArea = glade_xml_get_widget(xml, "drawingarea");
@@ -214,6 +274,7 @@ void create_scroom(PresentationInterface* presentation)
   //                   view);
   // g_signal_connect ((gpointer) newMenuItem, "activate", G_CALLBACK (on_new_activate), view);
   g_signal_connect ((gpointer) quitMenuItem, "activate", G_CALLBACK (on_quit_activate), view);
+  g_signal_connect ((gpointer) openMenuItem, "activate", G_CALLBACK (on_open_activate), scroom);
   g_signal_connect ((gpointer) zoomBox, "changed", G_CALLBACK (on_zoombox_changed), view);
   g_signal_connect ((gpointer) vscrollbaradjustment, "value-changed", G_CALLBACK(on_scrollbar_value_changed), view);
   g_signal_connect ((gpointer) hscrollbaradjustment, "value-changed", G_CALLBACK(on_scrollbar_value_changed), view);

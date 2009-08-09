@@ -172,19 +172,6 @@
             <property name="visible">True</property>
             <property name="toolbar_style">both</property>
             <child>
-              <widget class="GtkToolItem" id="toolitem2">
-                <property name="visible">True</property>
-                <child>
-                  <widget class="GtkFileChooserButton" id="filechooserbutton1">
-                    <property name="visible">True</property>
-                  </widget>
-                </child>
-              </widget>
-              <packing>
-                <property name="expand">False</property>
-              </packing>
-            </child>
-            <child>
               <widget class="GtkToolItem" id="zoombox">
                 <property name="visible">True</property>
                 <child>
