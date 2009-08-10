@@ -36,14 +36,12 @@ void on_scroom_hide (GtkWidget* widget, gpointer user_data)
     gtk_main_quit();
 }
 
-
 void on_new_activate (GtkMenuItem* menuitem, gpointer user_data)
 {
   NewInterface* newInterface = static_cast<NewInterface*>(user_data);
   PresentationInterface* presentation = newInterface->createNew();
   find_or_create_scroom(presentation);
 }
-
 
 void on_open_activate (GtkMenuItem* menuitem, gpointer user_data)
 {
@@ -101,53 +99,44 @@ void on_open_activate (GtkMenuItem* menuitem, gpointer user_data)
         }
       }
     }
-    
   }
   gtk_widget_destroy (dialog);
 }
-
 
 void on_save_activate (GtkMenuItem* menuitem, gpointer user_data)
 {
 
 }
 
-
 void on_save_as_activate (GtkMenuItem* menuitem, gpointer user_data)
 {
 
 }
-
 
 void on_quit_activate (GtkMenuItem* menuitem, gpointer user_data)
 {
   gtk_main_quit();
 }
 
-
 void on_cut_activate (GtkMenuItem* menuitem, gpointer user_data)
 {
 
 }
-
 
 void on_copy_activate (GtkMenuItem* menuitem, gpointer user_data)
 {
 
 }
 
-
 void on_paste_activate (GtkMenuItem* menuitem, gpointer user_data)
 {
 
 }
 
-
 void on_delete_activate (GtkMenuItem* menuitem, gpointer user_data)
 {
 
 }
-
 
 void on_about_activate (GtkMenuItem* menuitem, gpointer user_data)
 {
@@ -157,7 +146,6 @@ void on_about_activate (GtkMenuItem* menuitem, gpointer user_data)
   gtk_widget_hide(aboutDialog);
   // gtk_widget_destroy (aboutdialog);
 }
-
 
 gboolean on_drawingarea_expose_event (GtkWidget* widget, GdkEventExpose* event, gpointer user_data)
 {
@@ -171,7 +159,6 @@ gboolean on_drawingarea_expose_event (GtkWidget* widget, GdkEventExpose* event, 
   return FALSE;
 }
 
-
 gboolean on_drawingarea_configure_event (GtkWidget* widget, GdkEventConfigure* event, gpointer user_data)
 {
   // printf("configure\n");
@@ -179,7 +166,6 @@ gboolean on_drawingarea_configure_event (GtkWidget* widget, GdkEventConfigure* e
   view->on_configure();
   return FALSE;
 }
-
 
 gboolean on_idle (gpointer user_data)
 {
@@ -204,7 +190,6 @@ void on_scrollbar_value_changed(GtkAdjustment* adjustment, gpointer user_data)
   View* view = static_cast<View*>(user_data);
   view->on_scrollbar_value_changed(adjustment);
 }
-
 
 void on_scroom_bootstrap ()
 {

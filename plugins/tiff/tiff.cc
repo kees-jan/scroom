@@ -23,7 +23,7 @@ std::string Tiff::getPluginVersion()
 void Tiff::registerCapabilities(ScroomInterface* host)
 {
   host->registerNewInterface("Tiff", this);
-  host->registerOpenInterface("Tiff", this);
+  host->registerOpenInterface("Tiff viewer", this);
 }
 
 void Tiff::unregisterCapabilities(ScroomInterface* host)
@@ -50,7 +50,13 @@ std::list<GtkFileFilter*> Tiff::getFilters()
   
 PresentationInterface* Tiff::open(const std::string& fileName)
 {
-  return new TiffPresentation();
+  TiffPresentation* p = new TiffPresentation();
+  if(!p->load(fileName))
+  {
+    delete p;
+    p=NULL;
+  }
+  return p;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -59,6 +65,12 @@ PresentationInterface* Tiff::open(const std::string& fileName)
 
 PresentationInterface* Tiff::createNew()
 {
-  return new TiffPresentation();
+  TiffPresentation* p = new TiffPresentation();
+  if(!p->load("tissuebox.tif"))
+  {
+    delete p;
+    p=NULL;
+  }
+  return p;
 }
   

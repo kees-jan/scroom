@@ -1,6 +1,8 @@
 #ifndef _TIFFPRESENTATION_HH
 #define _TIFFPRESENTATION_HH
 
+#include <string>
+
 #include <presentationinterface.hh>
 
 class TiffPresentation : public PresentationInterface
@@ -8,6 +10,8 @@ class TiffPresentation : public PresentationInterface
 public:
 
   virtual ~TiffPresentation();
+
+  bool load(std::string fileName);
   
   ////////////////////////////////////////////////////////////////////////
   // PresentationInterface

@@ -6,6 +6,15 @@ TiffPresentation::~TiffPresentation()
 {
 }
 
+bool TiffPresentation::load(std::string fileName)
+{
+  return false;
+}
+  
+////////////////////////////////////////////////////////////////////////
+// PresentationInterface
+////////////////////////////////////////////////////////////////////////
+
 GdkRectangle TiffPresentation::getRect()
 {
   GdkRectangle rect;

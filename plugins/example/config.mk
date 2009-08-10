@@ -7,4 +7,4 @@ PACKAGES=glib-2.0 gmodule-2.0 gtk+-2.0 cairo
 CXXFLAGS += -I ../../inc $(shell pkg-config --cflags $(PACKAGES))
 LDFLAGS += $(shell pkg-config --libs $(PACKAGES))
 
-LIBDIR := ../../_lib
+LIBDIR := ../../_lib/scroom

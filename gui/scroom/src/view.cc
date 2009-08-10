@@ -132,8 +132,11 @@ void View::setPresentation(PresentationInterface* presentation)
   }
 
   this->presentation = presentation;
-  presentationRect = presentation->getRect();
-  
+
+  if(this->presentation)
+  {
+    presentationRect = presentation->getRect();
+  }
   updateZoom();
   updateScrollbars();
   invalidate();
@@ -196,7 +199,7 @@ void View::updateZoom()
     
     gtk_widget_set_sensitive(GTK_WIDGET(zoomBox), true);
     
-    printf("updateZoom\n");
+    // printf("updateZoom\n");
 
     int zMax = MaxZoom - minZoom;
     zMax = std::max(zMax, 1+MaxZoom-zoom);
