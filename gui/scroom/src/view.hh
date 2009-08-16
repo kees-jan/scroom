@@ -30,10 +30,12 @@ private:
   int zoom;
   int x;
   int y;
+  ViewIdentifier* vid;
   
 public:
 
   View(GladeXML* scroomXml, PresentationInterface* presentation);
+  virtual ~View();
 
   void redraw(cairo_t* cr);
   bool hasPresentation();

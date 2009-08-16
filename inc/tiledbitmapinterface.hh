@@ -6,6 +6,8 @@
 
 #include <vector>
 
+#include <viewinterface.hh>
+#include <presentationinterface.hh>
 #include <tile.hh>
 
 typedef enum
@@ -15,6 +17,16 @@ typedef enum
     TILE_LOADED,
     TILE_OUT_OF_BOUNDS
   } TileState;
+
+class TiledBitmapViewData : public ViewIdentifier
+{
+public:
+  ViewInterface* viewInterface;
+
+public:
+  TiledBitmapViewData(ViewInterface* viewInterface);
+};
+
 
 class LayerOperations
 {

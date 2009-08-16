@@ -53,7 +53,7 @@ enum
   
 View::View(GladeXML* scroomXml, PresentationInterface* presentation)
   : scroomXml(scroomXml), presentation(NULL), drawingAreaWidth(0), drawingAreaHeight(0),
-    zoom(0), x(0), y(0)
+    zoom(0), x(0), y(0), vid(NULL)
 {
   PluginManager& pluginManager = PluginManager::getInstance();
   drawingArea = glade_xml_get_widget(scroomXml, "drawingarea");
@@ -85,6 +85,11 @@ View::View(GladeXML* scroomXml, PresentationInterface* presentation)
   }
 }
 
+View::~View()
+{
+  setPresentation(NULL);
+}
+
 void View::redraw(cairo_t* cr)
 {
   if(presentation)
@@ -107,7 +112,7 @@ void View::redraw(cairo_t* cr)
       rect.height = drawingAreaHeight*pixelSize;
     }
     
-    presentation->redraw(cr, rect, zoom);
+    presentation->redraw(vid, cr, rect, zoom);
   }
   else
   {
@@ -127,6 +132,7 @@ void View::setPresentation(PresentationInterface* presentation)
 {
   if(this->presentation)
   {
+    this->presentation->close(vid);
     delete this->presentation;
     this->presentation=NULL;
   }
@@ -135,6 +141,7 @@ void View::setPresentation(PresentationInterface* presentation)
 
   if(this->presentation)
   {
+    vid = presentation->open(this);
     presentationRect = presentation->getRect();
   }
   updateZoom();

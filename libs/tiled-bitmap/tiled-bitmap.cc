@@ -10,6 +10,14 @@ TiledBitmapInterface* createTiledBitmap(int bitmapWidth, int bitmapHeight, Layer
 }
 
 ////////////////////////////////////////////////////////////////////////
+// TiledBitmapViewData
+
+TiledBitmapViewData::TiledBitmapViewData(ViewInterface* viewInterface)
+  : viewInterface(viewInterface)
+{
+}
+
+////////////////////////////////////////////////////////////////////////
 // TiledBitmap
 
 TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
@@ -175,7 +183,7 @@ void TiledBitmap::redraw(cairo_t* cr, GdkRectangle presentationArea, int zoom)
         {
           layerOperations->draw(cr, tile.getTile(), tileArea, viewArea, zoom);
         }
-        else
+        else if (tile.state != TILE_OUT_OF_BOUNDS)
         {
           layerOperations->drawState(cr, tile.state, viewArea);
         }

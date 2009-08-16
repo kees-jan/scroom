@@ -88,7 +88,21 @@ GdkRectangle TiffPresentation::getRect()
   return rect;
 }
 
-void TiffPresentation::redraw(cairo_t* cr, GdkRectangle presentationArea, int zoom)
+ViewIdentifier* TiffPresentation::open(ViewInterface* viewInterface)
+{
+  TiledBitmapViewData* vd = new TiledBitmapViewData(viewInterface);
+  viewData[vd] = viewInterface;
+  return vd;
+}
+
+void TiffPresentation::close(ViewIdentifier* vid)
+{
+  TiledBitmapViewData* vd = dynamic_cast<TiledBitmapViewData*>(vid);
+  viewData.erase(vd);
+  delete vd;
+}
+
+void TiffPresentation::redraw(ViewIdentifier* vid, cairo_t* cr, GdkRectangle presentationArea, int zoom)
 {
   if(tbi)
     tbi->redraw(cr, presentationArea, zoom);

@@ -2,6 +2,7 @@
 #define _TIFFPRESENTATION_HH
 
 #include <string>
+#include <map>
 
 #include <tiledbitmapinterface.hh>
 #include <presentationinterface.hh>
@@ -17,6 +18,7 @@ private:
   bool negative;
   TiledBitmapInterface* tbi;
   LayerSpec ls;
+  std::map<TiledBitmapViewData*, ViewInterface*> viewData;
   
 public:
 
@@ -30,7 +32,9 @@ public:
   ////////////////////////////////////////////////////////////////////////
 
   virtual GdkRectangle getRect();
-  virtual void redraw(cairo_t* cr, GdkRectangle presentationArea, int zoom);
+  virtual ViewIdentifier* open(ViewInterface* viewInterface);
+  virtual void redraw(ViewIdentifier* vid, cairo_t* cr, GdkRectangle presentationArea, int zoom);
+  virtual void close(ViewIdentifier* vid);
 };
 
 #endif
