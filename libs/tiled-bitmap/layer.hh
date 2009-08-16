@@ -18,9 +18,12 @@ private:
   int horTileCount;
   int verTileCount;
   TileGrid tiles;
+  TileInternal outOfBounds;
   
 public:
   Layer(int depth, int layerWidth, int layerHeight, int bpp);
+
+  TileInternal& getTile(int i, int j);
 };
 
 

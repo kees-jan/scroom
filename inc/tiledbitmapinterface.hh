@@ -12,7 +12,8 @@ typedef enum
   {
     TILE_UNINITIALIZED,
     TILE_UNLOADED,
-    TILE_LOADED
+    TILE_LOADED,
+    TILE_OUT_OF_BOUNDS
   } TileState;
 
 class LayerOperations
