@@ -3,17 +3,20 @@
 
 #include <string>
 
+#include <tiledbitmapinterface.hh>
 #include <presentationinterface.hh>
 
 typedef struct tiff TIFF;
 
-class TiffPresentation : public PresentationInterface
+class TiffPresentation : public PresentationInterface, public SourcePresentation
 {
 private:
   TIFF* tif;
   int height;
   int width;
   bool negative;
+  TiledBitmapInterface* tbi;
+  LayerSpec ls;
   
 public:
 

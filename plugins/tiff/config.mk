@@ -5,6 +5,7 @@ SONAME=libsptiff.so.0
 PACKAGES=glib-2.0 gmodule-2.0 gtk+-2.0 cairo
 
 CXXFLAGS += -I ../../inc $(shell pkg-config --cflags $(PACKAGES))
-LDFLAGS += $(shell pkg-config --libs $(PACKAGES)) -ltiff
+LDFLAGS += $(shell pkg-config --libs $(PACKAGES)) -ltiff 
+LDFLAGS += -L ../../_lib -lstiledbitmap
 
 LIBDIR := ../../_lib/scroom

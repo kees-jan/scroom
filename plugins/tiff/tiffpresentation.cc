@@ -4,8 +4,10 @@
 
 #include <unused.h>
 
+#include "layeroperations.hh"
+
 TiffPresentation::TiffPresentation()
-  : tif(NULL), height(0), width(0), negative(false)
+  : tif(NULL), height(0), width(0), negative(false), tbi(NULL)
 {
 }
 
@@ -15,6 +17,12 @@ TiffPresentation::~TiffPresentation()
   {
     TIFFClose(tif);
     tif=NULL;
+  }
+
+  while(!ls.empty())
+  {
+    delete ls.back();
+    ls.pop_back();
   }
 }
 
@@ -58,7 +66,10 @@ bool TiffPresentation::load(std::string fileName)
   }
 
   printf("This bitmap has size %d*%d\n", width, height);
-  
+  ls.clear();
+  ls.push_back(new Operations1bpp());
+  ls.push_back(new Operations8bpp());
+  tbi = createTiledBitmap(width, height, ls);
   return true;
 }
   
@@ -79,36 +90,6 @@ GdkRectangle TiffPresentation::getRect()
 
 void TiffPresentation::redraw(cairo_t* cr, GdkRectangle presentationArea, int zoom)
 {
-  // char buffer[] = "Hello world!";
-  // 
-  // cairo_move_to(cr, 30, 30);
-  // cairo_show_text(cr, buffer);
-
-  double pp=1.0;
-  if(zoom >=0)
-    pp *= 1<<zoom;
-  else
-    pp /= 1<<(-zoom);
-
-  // printf("One presentation pixel amounts to %f screen pixels\n", pp);
-
-  int xorig = (int)(-presentationArea.x*pp);
-  int yorig = (int)(-presentationArea.y*pp);
-
-  for(int i=0; i<width; i+=50)
-  {
-    cairo_move_to(cr, xorig+i*pp, yorig);
-    cairo_line_to(cr, xorig+i*pp, yorig+height*pp);
-  }
-  for(int i=0; i<height; i+=50)
-  {
-    cairo_move_to(cr, xorig, yorig+i*pp);
-    cairo_line_to(cr, xorig+width*pp, yorig+i*pp);
-  }
-  cairo_move_to(cr, xorig, yorig);
-  cairo_line_to(cr, xorig+width*pp, yorig+height*pp);
-  cairo_move_to(cr, xorig, yorig+height*pp);
-  cairo_line_to(cr, xorig+width*pp, yorig);
-
-  cairo_stroke(cr);
+  if(tbi)
+    tbi->redraw(cr, presentationArea, zoom);
 }
