@@ -5,10 +5,19 @@
 
 #include <presentationinterface.hh>
 
+typedef struct tiff TIFF;
+
 class TiffPresentation : public PresentationInterface
 {
+private:
+  TIFF* tif;
+  int height;
+  int width;
+  bool negative;
+  
 public:
 
+  TiffPresentation();
   virtual ~TiffPresentation();
 
   bool load(std::string fileName);
