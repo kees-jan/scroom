@@ -3,12 +3,15 @@
 
 #include <tiledbitmapinterface.hh>
 
+#include "layer.hh"
+
 class TiledBitmap : public TiledBitmapInterface
 {
 private:
   int bitmapWidth;
   int bitmapHeight;
   LayerSpec ls;
+  std::vector<Layer*> layers;
   
 public:
   TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls);

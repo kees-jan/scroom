@@ -11,10 +11,29 @@ TiledBitmapInterface* createTiledBitmap(int bitmapWidth, int bitmapHeight, Layer
 TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
   :bitmapWidth(bitmapWidth), bitmapHeight(bitmapHeight), ls(ls)
 {
+  int width = bitmapWidth;
+  int height = bitmapHeight;
+  unsigned int i = 0;
+  int bpp = 0;
+  do
+  {
+    if(i<ls.size())
+      bpp = ls[i]->getBpp();
+    
+    layers.push_back(new Layer(i, width, height, bpp));
+    width = (width+7)/8; // Round up
+    height = (height+7)/8;
+    i++;
+  } while (std::max(width, height) > TILESIZE);
 }
 
 TiledBitmap::~TiledBitmap()
 {
+  while(!layers.empty())
+  {
+    delete layers.back();
+    layers.pop_back();
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////
