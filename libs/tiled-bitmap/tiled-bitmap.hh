@@ -23,6 +23,7 @@ public:
   
   virtual void setSource(SourcePresentation* sp);
   virtual void redraw(cairo_t* cr, GdkRectangle presentationArea, int zoom);
+
 };
 
 #endif

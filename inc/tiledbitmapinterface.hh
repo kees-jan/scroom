@@ -48,6 +48,8 @@ class SourcePresentation
 public:
   virtual ~SourcePresentation()
   {}
+
+  virtual void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile*>& tiles)=0;
 };
 
 class TiledBitmapInterface

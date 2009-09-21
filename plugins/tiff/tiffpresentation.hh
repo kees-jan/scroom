@@ -35,6 +35,13 @@ public:
   virtual ViewIdentifier* open(ViewInterface* viewInterface);
   virtual void redraw(ViewIdentifier* vid, cairo_t* cr, GdkRectangle presentationArea, int zoom);
   virtual void close(ViewIdentifier* vid);
+
+  ////////////////////////////////////////////////////////////////////////
+  // SourcePresentation
+  ////////////////////////////////////////////////////////////////////////
+private:
+  virtual void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile*>& tiles);
+
 };
 
 #endif

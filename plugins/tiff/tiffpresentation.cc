@@ -70,6 +70,7 @@ bool TiffPresentation::load(std::string fileName)
   ls.push_back(new Operations1bpp());
   ls.push_back(new Operations8bpp());
   tbi = createTiledBitmap(width, height, ls);
+  tbi->setSource(this);
   return true;
 }
   
@@ -107,3 +108,17 @@ void TiffPresentation::redraw(ViewIdentifier* vid, cairo_t* cr, GdkRectangle pre
   if(tbi)
     tbi->redraw(cr, presentationArea, zoom);
 }
+
+////////////////////////////////////////////////////////////////////////
+// SourcePresentation
+////////////////////////////////////////////////////////////////////////
+
+void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile*>& tiles)
+{
+  printf("Filling lines %d to %d, tile %d to %d (tileWidth = %d)\n",
+         startLine, startLine+lineCount,
+         firstTile, firstTile+tiles.size(),
+         tileWidth);
+}
+
+
