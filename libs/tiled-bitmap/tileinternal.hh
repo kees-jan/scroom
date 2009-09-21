@@ -14,11 +14,15 @@ public:
   int y;
   int bpp;
   TileState state;
+  Tile::WeakPtr tile;
+  byte* data;
   
 public:
   TileInternal(int depth, int x, int y, int bpp, TileState state=TILE_UNINITIALIZED);
 
-  Tile getTile();
+  void initialize();
+  
+  Tile::Ptr getTile();
   
 };
 

@@ -19,7 +19,7 @@ int Operations1bpp::getBpp()
   return 1;
 }
 
-void Operations1bpp::draw(cairo_t* cr, Tile tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom)
+void Operations1bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom)
 {
 }
 
@@ -31,6 +31,6 @@ int Operations8bpp::getBpp()
   return 8;
 }
 
-void Operations8bpp::draw(cairo_t* cr, Tile tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom)
+void Operations8bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom)
 {
 }

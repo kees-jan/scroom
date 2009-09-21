@@ -40,7 +40,7 @@ public:
   // SourcePresentation
   ////////////////////////////////////////////////////////////////////////
 private:
-  virtual void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile*>& tiles);
+  virtual void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles);
 
 };
 

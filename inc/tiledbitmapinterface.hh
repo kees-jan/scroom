@@ -37,7 +37,7 @@ public:
 
   virtual int getBpp()=0;
   virtual void initializeCairo(cairo_t* cr)=0;
-  virtual void draw(cairo_t* cr, const Tile tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom)=0;
+  virtual void draw(cairo_t* cr, const Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom)=0;
   virtual void drawState(cairo_t* cr, TileState s, GdkRectangle viewArea)=0;
 };
 
@@ -49,7 +49,7 @@ public:
   virtual ~SourcePresentation()
   {}
 
-  virtual void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile*>& tiles)=0;
+  virtual void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles)=0;
 };
 
 class TiledBitmapInterface

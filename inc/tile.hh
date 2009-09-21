@@ -1,11 +1,17 @@
 #ifndef _TILE_HH
 #define _TILE_HH
 
+#include <boost/shared_ptr.hpp>
+#include <boost/weak_ptr.hpp>
+
 typedef unsigned char byte;
 
 class Tile
 {
 public:
+  typedef boost::shared_ptr<Tile> Ptr;
+  typedef boost::weak_ptr<Tile> WeakPtr;
+  
   int width;
   int height;
   int bpp;

@@ -26,7 +26,7 @@ public:
   // LayerOperations
 
   virtual int getBpp();
-  virtual void draw(cairo_t* cr, Tile tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom);
+  virtual void draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom);
 };
 
 class Operations8bpp : public CommonOperations
@@ -39,7 +39,7 @@ public:
   // LayerOperations
 
   virtual int getBpp();
-  virtual void draw(cairo_t* cr, Tile tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom);
+  virtual void draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom);
 };
 
 
