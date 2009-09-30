@@ -6,6 +6,6 @@ PACKAGES=glib-2.0 gtk+-2.0 cairo # gmodule-2.0
 
 CXXFLAGS += -I ../../inc $(shell pkg-config --cflags $(PACKAGES))
 LDFLAGS += $(shell pkg-config --libs $(PACKAGES))
-LDFLAGS += -L ../../_lib -lsmemman
+LDFLAGS += -L ../../_lib -lsmemman -lsthreadpool
 
 LIBDIR := ../../_lib
