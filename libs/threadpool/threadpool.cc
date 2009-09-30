@@ -1,14 +1,39 @@
+#include <threadpool.hh>
+
 #include <stdio.h>
 
 #include <boost/thread.hpp>
+#include <queue>
 
 #include <scroom-semaphore.hh>
+
+#include <workinterface.hh>
+
+struct Job
+{
+public:
+  int priority;
+  WorkInterface* wi;
+
+public:
+  Job(int priority, WorkInterface* wi)
+    : priority(priority), wi(wi)
+  {
+  }
+
+  bool operator< (const Job& other) const
+  {
+    return priority < other.priority;
+  }
+};
 
 class ThreadPool
 {
 private:
   std::list<boost::thread*> threads;
   Scroom::Semaphore jobcount;
+  std::priority_queue<Job> jobs;
+  boost::mutex mut;
 
 private:
   static void work();
@@ -17,11 +42,12 @@ public:
   ThreadPool();
 
   bool perform_one();
+  void schedule(Job j);
+  void schedule(int priority, WorkInterface* wi);
   
 public:
   static ThreadPool& instance();
 };
-
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -54,9 +80,48 @@ void ThreadPool::work()
   printf("ThreadPool: Thread terminating...\n");
 }
 
+void ThreadPool::schedule(Job j)
+{
+  boost::unique_lock<boost::mutex> lock(mut);
+  jobs.push(j);
+  lock.unlock();
+  jobcount.V();
+}
+
+void ThreadPool::schedule(int priority, WorkInterface* wi)
+{
+  schedule(Job(priority, wi));
+}
+
 bool ThreadPool::perform_one()
 {
   jobcount.P();
+  boost::unique_lock<boost::mutex> lock(mut);
+  if(!jobs.empty())
+  {
+    Job j = jobs.top();
+    jobs.pop();
+    lock.unlock();
+
+    bool result = j.wi->doWork();
+    if(result)
+    {
+      schedule(j);
+    }
+    else
+    {
+      delete j.wi;
+    }
+  }
+  else
+  {
+    printf("PANIC: JobQueue empty while it shouldn't be\n");
+  }
   
   return true;
+}
+
+void schedule(WorkInterface* wi, int priority)
+{
+  ThreadPool::instance().schedule(Job(priority, wi));
 }

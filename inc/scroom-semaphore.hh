@@ -18,12 +18,12 @@ namespace Scroom
     void V();
   };
 
-  Semaphore::Semaphore(unsigned int count)
+  inline Semaphore::Semaphore(unsigned int count)
     :count(count)
   {
   }
 
-  void Semaphore::P()
+  inline void Semaphore::P()
   {
     boost::unique_lock<boost::mutex> lock(mut);
     while(count==0)
@@ -33,7 +33,7 @@ namespace Scroom
     count--;
   }
 
-  void Semaphore::V()
+  inline void Semaphore::V()
   {
     boost::unique_lock<boost::mutex> lock(mut);
     count++;

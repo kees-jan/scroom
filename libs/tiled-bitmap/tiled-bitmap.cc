@@ -4,6 +4,8 @@
 
 #include <unused.h>
 
+#include <threadpool.hh>
+
 TiledBitmapInterface* createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
 {
   return new TiledBitmap(bitmapWidth, bitmapHeight, ls);
