@@ -37,11 +37,11 @@ private:
 
 private:
   static void work();
+  ThreadPool();
+  bool perform_one();
   
 public:
-  ThreadPool();
 
-  bool perform_one();
   void schedule(Job j);
   void schedule(int priority, WorkInterface* wi);
   
@@ -54,10 +54,10 @@ public:
 /// ThreadPool
 ////////////////////////////////////////////////////////////////////////
 
-static ThreadPool threadpool;
-
 ThreadPool& ThreadPool::instance()
 {
+  static ThreadPool threadpool;
+
   return threadpool;
 }
 
