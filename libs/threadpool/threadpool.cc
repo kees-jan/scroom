@@ -63,7 +63,7 @@ ThreadPool& ThreadPool::instance()
 
 ThreadPool::ThreadPool()
 {
-  int count = boost::thread::hardware_concurrency();
+  int count = std::max(boost::thread::hardware_concurrency(),(unsigned int)2);
   printf("Starting ThreadPool with %d threads\n", count);
   for(int i=0; i<count; i++)
   {

@@ -3,14 +3,17 @@
 
 #include <vector>
 
+#include <tiledbitmapinterface.hh>
+
 #include "tileinternal.hh"
 
 class Layer
 {
-private:
-  typedef std::vector<std::vector<TileInternal> > TileGrid;
+public:
   typedef std::vector<TileInternal> TileLine;
+  typedef std::vector<TileLine> TileGrid;
   
+private:
   int depth;
   int width;
   int height;
@@ -19,11 +22,14 @@ private:
   int verTileCount;
   TileGrid tiles;
   TileInternal outOfBounds;
+  TileLine lineOutOfBounds;
   
 public:
   Layer(int depth, int layerWidth, int layerHeight, int bpp);
 
   TileInternal& getTile(int i, int j);
+  TileLine& getTileLine(int j);
+  void fetchData(SourcePresentation* sp);
 };
 
 

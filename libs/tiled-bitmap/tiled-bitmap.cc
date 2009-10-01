@@ -4,8 +4,6 @@
 
 #include <unused.h>
 
-#include <threadpool.hh>
-
 TiledBitmapInterface* createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
 {
   return new TiledBitmap(bitmapWidth, bitmapHeight, ls);
@@ -55,6 +53,7 @@ TiledBitmap::~TiledBitmap()
 
 void TiledBitmap::setSource(SourcePresentation* sp)
 {
+  layers[0]->fetchData(sp);
 }
 
 inline void computeAreasBeginningZoomingIn(int presentationBegin, int tileOffset, int pixelSize,
