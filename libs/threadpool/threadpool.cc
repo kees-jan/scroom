@@ -27,6 +27,12 @@ public:
   }
 };
 
+class NoWork : public WorkInterface
+{
+public:
+  virtual bool doWork();
+};
+
 class ThreadPool
 {
 private:
@@ -34,14 +40,15 @@ private:
   Scroom::Semaphore jobcount;
   std::priority_queue<Job> jobs;
   boost::mutex mut;
+  bool alive;
 
 private:
   static void work();
   ThreadPool();
+  ~ThreadPool();
   bool perform_one();
   
 public:
-
   void schedule(Job j);
   void schedule(int priority, WorkInterface* wi);
   
@@ -64,11 +71,29 @@ ThreadPool& ThreadPool::instance()
 ThreadPool::ThreadPool()
 {
   int count = std::max(boost::thread::hardware_concurrency(),(unsigned int)2);
+  alive=true;
   printf("Starting ThreadPool with %d threads\n", count);
   for(int i=0; i<count; i++)
   {
     threads.push_back(new boost::thread(work));
   }
+}
+
+ThreadPool::~ThreadPool()
+{
+  printf("Attempting to destroy the threadpool...\n");
+  alive = false;
+  for(unsigned int i=0; i<threads.size(); i++)
+    schedule(PRIO_NORMAL, new NoWork());
+
+  while(!threads.empty())
+  {
+    boost::thread* t = threads.front();
+    threads.pop_front();
+    t->join();
+    delete t;
+  }
+  printf("Done destroying threadpool\n");
 }
 
 void ThreadPool::work()
@@ -118,8 +143,21 @@ bool ThreadPool::perform_one()
     printf("PANIC: JobQueue empty while it shouldn't be\n");
   }
   
-  return true;
+  return alive;
 }
+
+////////////////////////////////////////////////////////////////////////
+/// NoWork
+////////////////////////////////////////////////////////////////////////
+
+bool NoWork::doWork()
+{
+  return false;
+}
+
+////////////////////////////////////////////////////////////////////////
+/// C-style functions
+////////////////////////////////////////////////////////////////////////
 
 void schedule(WorkInterface* wi, int priority)
 {

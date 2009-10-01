@@ -100,7 +100,7 @@ DataFetcher::DataFetcher(Layer* layer,
 
 bool DataFetcher::doWork()
 {
-  printf("Attempting to fetch bitmap data for tileRow %d...\n", currentRow);
+  // printf("Attempting to fetch bitmap data for tileRow %d...\n", currentRow);
 
   Layer::TileLine& tileLine = layer->getTileLine(currentRow);
   std::vector<Tile::Ptr> tiles;
