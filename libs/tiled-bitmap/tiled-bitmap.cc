@@ -124,6 +124,7 @@ inline void computeAreasEndZoomingOut(int presentationBegin, int presentationSiz
 
 void drawTile(cairo_t* cr, const TileInternal& tile, const GdkRectangle viewArea)
 {
+  cairo_set_source_rgb(cr, 0, 0, 0); // Black
   cairo_move_to(cr, viewArea.x, viewArea.y);
   cairo_line_to(cr, viewArea.x+viewArea.width, viewArea.y);
   cairo_line_to(cr, viewArea.x+viewArea.width, viewArea.y+viewArea.height);
