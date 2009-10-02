@@ -1,6 +1,7 @@
 #include "tiffpresentation.hh"
 
 #include <tiffio.h>
+#include <string.h>
 
 #include <unused.h>
 
@@ -117,8 +118,37 @@ void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth, in
 {
   printf("Filling lines %d to %d, tile %d to %d (tileWidth = %d)\n",
          startLine, startLine+lineCount,
-         firstTile, firstTile+tiles.size(),
+         firstTile, (int)(firstTile+tiles.size()),
          tileWidth);
+
+  int dataLength = (width+7)/8;
+  byte row[dataLength];
+
+  int tileCount = tiles.size();
+  byte* dataPtr[tileCount];
+  for(int tile=0; tile<tileCount; tile++)
+  {
+    dataPtr[tile] = tiles[tile]->data;
+  }
+
+  for(int i=0; i<lineCount; i++)
+  {
+    TIFFReadScanline(tif, (tdata_t)row, startLine+i);
+    if(negative)
+    {
+      for(int j=0; j<dataLength; j++)
+        row[j] = ~row[j];
+    }
+
+    for(int tile=0; tile<tileCount-1; tile++)
+    {
+      memcpy(dataPtr[tile], row+(firstTile+tile)*tileWidth/8, tileWidth/8);
+      dataPtr[tile]++;
+    }
+    memcpy(dataPtr[tileCount-1],
+           row+(firstTile+tileCount-1)*tileWidth/8,
+           dataLength - (firstTile+tileCount-1)*tileWidth/8);
+  }
 }
 
 

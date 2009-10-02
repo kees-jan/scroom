@@ -1,5 +1,7 @@
 #include "layeroperations.hh"
 
+#include <stdio.h>
+
 ////////////////////////////////////////////////////////////////////////
 // CommonOperations
 
@@ -9,6 +11,7 @@ void CommonOperations::initializeCairo(cairo_t* cr)
 
 void CommonOperations::drawState(cairo_t* cr, TileState s, GdkRectangle viewArea)
 {
+  printf("DrawState\n");
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -21,6 +24,7 @@ int Operations1bpp::getBpp()
 
 void Operations1bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom)
 {
+  printf("Draw1bpp\n");
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -33,4 +37,5 @@ int Operations8bpp::getBpp()
 
 void Operations8bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom)
 {
+  printf("Draw8bpp\n");
 }
