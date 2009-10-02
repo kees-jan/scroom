@@ -9,6 +9,11 @@ public:
   virtual ~CommonOperations()
   {}
 
+  void drawPixel(cairo_t* cr, int x, int y, int size, byte greyShade=0);
+  void drawPixel(cairo_t* cr, int x, int y, int size, double greyShade);
+  void fillRect(cairo_t* cr, int x, int y, int width, int height);
+  void fillRect(cairo_t* cr, const GdkRectangle& area);
+  
   ////////////////////////////////////////////////////////////////////////
   // LayerOperations
 
