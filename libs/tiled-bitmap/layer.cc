@@ -26,8 +26,7 @@ public:
 ////////////////////////////////////////////////////////////////////////
 /// Layer 
 Layer::Layer(int depth, int layerWidth, int layerHeight, int bpp)
-  : depth(depth), width(layerWidth), height(layerHeight), bpp(bpp),
-    outOfBounds(depth, -1, -1, bpp, TILE_OUT_OF_BOUNDS)
+  : depth(depth), width(layerWidth), height(layerHeight), bpp(bpp)
 {
   horTileCount = (width+TILESIZE-1)/TILESIZE;
   verTileCount = (height+TILESIZE-1)/TILESIZE;
@@ -38,10 +37,11 @@ Layer::Layer(int depth, int layerWidth, int layerHeight, int bpp)
     TileLine& tl = tiles[j];
     for(int i=0; i<horTileCount; i++)
     {
-      tl.push_back(TileInternal(depth, i, j, bpp));
+      tl.push_back(new TileInternal(depth, i, j, bpp));
     }
   }
 
+  outOfBounds = new TileInternal(depth, -1, -1, bpp, TILE_OUT_OF_BOUNDS);
   for(int i=0; i<horTileCount; i++)
   {
     lineOutOfBounds.push_back(outOfBounds);
@@ -51,7 +51,7 @@ Layer::Layer(int depth, int layerWidth, int layerHeight, int bpp)
          depth, bpp, width, height, horTileCount, verTileCount);
 }
 
-TileInternal& Layer::getTile(int i, int j)
+TileInternal* Layer::getTile(int i, int j)
 {
   if(0<=i && i<horTileCount &&
      0<=j && j<verTileCount)
@@ -106,9 +106,9 @@ bool DataFetcher::doWork()
   std::vector<Tile::Ptr> tiles;
   for(int x = 0; x < horTileCount; x++)
   {
-    TileInternal& ti = tileLine[x];
-    ti.initialize();
-    tiles.push_back(ti.getTile());
+    TileInternal* ti = tileLine[x];
+    ti->initialize();
+    tiles.push_back(ti->getTile());
   }
   int lineCount = std::min(TILESIZE, height-currentRow*TILESIZE);
 

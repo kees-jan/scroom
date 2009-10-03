@@ -2,6 +2,18 @@
 
 #include <string.h>
 
+#include <unused.h>
+
+////////////////////////////////////////////////////////////////////////
+/// TileInternalObserver
+
+void TileInternalObserver::tileFinished(TileInternal* tile)
+{
+  UNUSED(tile);
+}
+
+////////////////////////////////////////////////////////////////////////
+/// TileInternal
 TileInternal::TileInternal(int depth, int x, int y, int bpp, TileState state)
   : depth(depth), x(x), y(y), bpp(bpp), state(state), tile(), data(NULL)
 {
@@ -40,3 +52,12 @@ void TileInternal::initialize()
   t.reset();
 }
   
+void TileInternal::reportFinished()
+{
+  std::list<TileInternalObserver*> observers = getObservers();
+  while(!observers.empty())
+  {
+    observers.front()->tileFinished(this);
+    observers.pop_front();
+  }
+}
