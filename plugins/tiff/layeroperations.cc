@@ -157,7 +157,7 @@ inline void CommonOperations::drawPixel(cairo_t* cr, int x, int y, int size, dou
 
 inline void CommonOperations::drawPixel(cairo_t* cr, int x, int y, int size, byte greyShade)
 {
-  drawPixel(cr, x, y, size, (double)greyShade/255.0);
+  drawPixel(cr, x, y, size, (double)(255-greyShade)/255.0);
 }
   
 inline void CommonOperations::fillRect(cairo_t* cr, int x, int y,
@@ -187,8 +187,6 @@ int Operations1bpp::getBpp()
 
 void Operations1bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom)
 {
-  printf("Draw1bpp\n");
-
   cairo_set_source_rgb(cr, 1, 1, 1); // White
   fillRect(cr, viewArea);
   
@@ -239,7 +237,9 @@ void Operations1bpp::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int
   byte* sourceBase = source->data;
 
   int targetStride = target->width;
-  byte* targetBase = target->data + y*targetStride + x;
+  byte* targetBase = target->data +
+    target->height*y*targetStride/8 +
+    target->width*x/8;
 
   for(int j=0; j<source->height/8;
       j++, targetBase+=targetStride, sourceBase+=sourceStride*8)
@@ -279,6 +279,49 @@ int Operations8bpp::getBpp()
 void Operations8bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom)
 {
   printf("Draw8bpp\n");
+  cairo_set_source_rgb(cr, 1, 1, 1); // White
+  fillRect(cr, viewArea);
+  
+  if(zoom>=0)
+  {
+    // Iterate over pixels in the tileArea, drawing each as we go ahead
+    int pixelSize = 1<<zoom;
+
+    for(int j=0; j<tileArea.height; j++)
+    {
+      byte* cur = tile->data+(tileArea.y+j)*tile->width + tileArea.x;
+    
+      for(int i=0; i<tileArea.width; i++, cur++)
+      {
+        if(*cur)
+          drawPixel(cr, viewArea.x+i*pixelSize, viewArea.y+j*pixelSize,
+                    pixelSize, *cur);
+      }
+    }
+  }
+  else
+  {
+    // zoom < 0
+    // Iterate over pixels in the viewArea, determining which color
+    // each should get
+    int pixelCount = 1<<-zoom;
+
+    for(int j=0; j<viewArea.height; j++)
+    {
+      byte* cur = tile->data +
+        (tileArea.y+j*pixelCount)*tile->width +
+        tileArea.x;
+    
+      for(int i=0; i<viewArea.width; i++)
+      {
+        if(*cur)
+        {
+          drawPixel(cr, viewArea.x+i, viewArea.y+j, 1, *cur);
+        }
+        cur+=pixelCount;
+      }
+    }
+  }
 }
 
 void Operations8bpp::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y)
