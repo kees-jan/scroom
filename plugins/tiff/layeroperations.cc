@@ -80,6 +80,39 @@ BitIterator& BitIterator::operator+=(int x)
 }
 
 ////////////////////////////////////////////////////////////////////////
+// BitCountLut
+
+class BitCountLut
+{
+private:
+  byte lut[256];
+public:
+  BitCountLut();
+
+  byte lookup(byte index);
+};
+
+BitCountLut bcl;
+
+BitCountLut::BitCountLut()
+{
+  for(int i=0; i<256; i++)
+  {
+    int sum=0;
+    for(int v=i;v;v>>=1)
+    {
+      sum += v&1;
+    }
+    lut[i]=sum;
+  }
+}
+
+inline byte BitCountLut::lookup(byte index)
+{
+  return lut[index];
+}
+
+////////////////////////////////////////////////////////////////////////
 // CommonOperations
 
 void CommonOperations::initializeCairo(cairo_t* cr)
@@ -201,8 +234,39 @@ void Operations1bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, Gd
 
 void Operations1bpp::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y)
 {
-}
+  // Reducing by a factor 8. Source tile is 1bpp. Target tile is 8bpp
+  int sourceStride = source->width/8;
+  byte* sourceBase = source->data;
 
+  int targetStride = target->width;
+  byte* targetBase = target->data + y*targetStride + x;
+
+  for(int j=0; j<source->height/8;
+      j++, targetBase+=targetStride, sourceBase+=sourceStride*8)
+  {
+    // Iterate vertically over target
+    byte* sourcePtr = sourceBase;
+    byte* targetPtr = targetBase;
+
+    for(int i=0; i<source->width/8;
+        i++, sourcePtr++, targetPtr++)
+    {
+      // Iterate horizontally over target
+
+      // Goal is to compute a 8-bit grey value from a 8*8 black/white
+      // image. To do so, we take each of the 8 bytes, count the
+      // number of 1's in each, and add them. Finally, we divide that
+      // by 64 (the maximum number of ones in that area
+
+      byte* current = sourcePtr;
+      int sum = 0;
+      for(int k=0; k<8; k++, current+=sourceStride)
+        sum += bcl.lookup(*current);
+
+      *targetPtr = sum*255/64;
+    }
+  }
+}
 
 ////////////////////////////////////////////////////////////////////////
 // Operations8bpp
