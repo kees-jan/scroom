@@ -60,7 +60,6 @@ void LayerCoordinator::addSourceTile(int x, int y, TileInternal* tile)
 
 void LayerCoordinator::tileFinished(TileInternal* tile)
 {
-  printf("Received a \"tileFinished\" message!\n");
   targetTile->initialize();
   std::pair<int,int> location = sourceTiles[tile];
 
@@ -94,7 +93,6 @@ bool TileReducer::doWork()
   unfinishedSourceTiles--;
   if(!unfinishedSourceTiles)
   {
-    printf("Propagating a \"tileFinished\" message!\n");
     targetTile->reportFinished();
   }
   return false;

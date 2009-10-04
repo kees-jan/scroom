@@ -117,14 +117,12 @@ inline byte BitCountLut::lookup(byte index)
 
 void CommonOperations::initializeCairo(cairo_t* cr)
 {
-  printf("InitializeCairo\n");
   cairo_set_antialias(cr, CAIRO_ANTIALIAS_NONE);
   cairo_set_line_cap(cr, CAIRO_LINE_CAP_SQUARE);
 }
 
 void CommonOperations::drawState(cairo_t* cr, TileState s, GdkRectangle viewArea)
 {
-  printf("DrawState\n");
   switch(s)
   {
   case TILE_UNINITIALIZED:
@@ -278,7 +276,6 @@ int Operations8bpp::getBpp()
 
 void Operations8bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom)
 {
-  printf("Draw8bpp\n");
   cairo_set_source_rgb(cr, 1, 1, 1); // White
   fillRect(cr, viewArea);
   

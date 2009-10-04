@@ -116,10 +116,10 @@ void TiffPresentation::redraw(ViewIdentifier* vid, cairo_t* cr, GdkRectangle pre
 
 void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles)
 {
-  printf("Filling lines %d to %d, tile %d to %d (tileWidth = %d)\n",
-         startLine, startLine+lineCount,
-         firstTile, (int)(firstTile+tiles.size()),
-         tileWidth);
+  // printf("Filling lines %d to %d, tile %d to %d (tileWidth = %d)\n",
+  //        startLine, startLine+lineCount,
+  //        firstTile, (int)(firstTile+tiles.size()),
+  //        tileWidth);
 
   int dataLength = (width+7)/8;
   byte row[dataLength];
