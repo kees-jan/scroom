@@ -32,6 +32,7 @@ public:
 
   virtual int getBpp();
   virtual void draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom);
+  virtual void reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y);
 };
 
 class Operations8bpp : public CommonOperations
@@ -45,6 +46,7 @@ public:
 
   virtual int getBpp();
   virtual void draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom);
+  virtual void reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y);
 };
 
 

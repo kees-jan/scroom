@@ -21,6 +21,8 @@ TileInternal::TileInternal(int depth, int x, int y, int bpp, TileState state)
 
 Tile::Ptr TileInternal::getTile()
 {
+  boost::unique_lock<boost::mutex> lock(mut);
+
   if(state!=TILE_LOADED)
     printf("ERROR: Tile not loaded\n");
   
@@ -38,18 +40,16 @@ Tile::Ptr TileInternal::getTile()
 
 void TileInternal::initialize()
 {
-  Tile::Ptr t = tile.lock();
-  if(state != TILE_UNINITIALIZED)
-    printf("ERROR: Tile already initialized!\n");
-  if(t)
-    printf("ERROR: Tile already in use\n");
+  boost::unique_lock<boost::mutex> lock(mut);
 
-  int dataSize = TILESIZE*TILESIZE * bpp / 8;
+  if(state == TILE_UNINITIALIZED)
+  {
+    int dataSize = TILESIZE*TILESIZE * bpp / 8;
 
-  data = (byte*)malloc(dataSize*sizeof(byte));
-  memset(data, 0, dataSize*sizeof(byte));
-  state = TILE_LOADED;
-  t.reset();
+    data = (byte*)malloc(dataSize*sizeof(byte));
+    memset(data, 0, dataSize*sizeof(byte));
+    state = TILE_LOADED;
+  }
 }
   
 void TileInternal::reportFinished()

@@ -1,5 +1,31 @@
 #include "layercoordinator.hh"
 
+#include <workinterface.hh>
+#include <threadpool.hh>
+
+class TileReducer : public WorkInterface
+{
+private:
+  LayerOperations* lo;
+  TileInternal* targetTile;
+  TileInternal* sourceTile;
+  int x;
+  int y;
+  boost::mutex& mut;
+  int& unfinishedSourceTiles;
+  
+public:
+  TileReducer(LayerOperations* lo,
+              TileInternal* targetTile, TileInternal* sourceTile,
+              int x, int y,
+              boost::mutex& mut, int& unfinishedSourceTiles);
+
+  // WorkInterface ///////////////////////////////////////////////////////
+  virtual bool doWork();
+};
+
+////////////////////////////////////////////////////////////////////////
+
 LayerCoordinator::LayerCoordinator(TileInternal* targetTile,
                                    LayerOperations* lo)
   : targetTile(targetTile), lo(lo)
@@ -22,8 +48,11 @@ LayerCoordinator::~LayerCoordinator()
 
 void LayerCoordinator::addSourceTile(int x, int y, TileInternal* tile)
 {
+  boost::unique_lock<boost::mutex> lock(mut);
+
   sourceTiles[tile] = std::make_pair(x,y);
   tile->registerObserver(this);
+  unfinishedSourceTiles++;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -32,4 +61,41 @@ void LayerCoordinator::addSourceTile(int x, int y, TileInternal* tile)
 void LayerCoordinator::tileFinished(TileInternal* tile)
 {
   printf("Received a \"tileFinished\" message!\n");
+  targetTile->initialize();
+  std::pair<int,int> location = sourceTiles[tile];
+
+  TileReducer* tr = new TileReducer(lo, targetTile, tile,
+                                    location.first, location.second,
+                                    mut, unfinishedSourceTiles);
+
+  schedule(tr, PRIO_LOW);
+}
+
+////////////////////////////////////////////////////////////////////////
+/// TileReducer
+
+TileReducer::TileReducer(LayerOperations* lo,
+                         TileInternal* targetTile, TileInternal* sourceTile,
+                         int x, int y,
+                         boost::mutex& mut, int& unfinishedSourceTiles)
+  : lo(lo), targetTile(targetTile), sourceTile(sourceTile),
+    x(x), y(y), mut(mut), unfinishedSourceTiles(unfinishedSourceTiles)
+{
+}
+
+bool TileReducer::doWork()
+{
+  Tile::Ptr target = targetTile->getTile();
+  Tile::Ptr source = sourceTile->getTile();
+
+  lo->reduce(target, source, x, y);
+
+  boost::unique_lock<boost::mutex> lock(mut);
+  unfinishedSourceTiles--;
+  if(!unfinishedSourceTiles)
+  {
+    printf("Propagating a \"tileFinished\" message!\n");
+    targetTile->reportFinished();
+  }
+  return false;
 }

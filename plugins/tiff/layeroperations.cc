@@ -199,6 +199,11 @@ void Operations1bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, Gd
   }
 }
 
+void Operations1bpp::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y)
+{
+}
+
+
 ////////////////////////////////////////////////////////////////////////
 // Operations8bpp
 
@@ -210,4 +215,8 @@ int Operations8bpp::getBpp()
 void Operations8bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom)
 {
   printf("Draw8bpp\n");
+}
+
+void Operations8bpp::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y)
+{
 }

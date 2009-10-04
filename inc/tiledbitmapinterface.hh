@@ -39,6 +39,7 @@ public:
   virtual void initializeCairo(cairo_t* cr)=0;
   virtual void draw(cairo_t* cr, const Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom)=0;
   virtual void drawState(cairo_t* cr, TileState s, GdkRectangle viewArea)=0;
+  virtual void reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y)=0;
 };
 
 typedef std::vector<LayerOperations*> LayerSpec;

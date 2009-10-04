@@ -3,6 +3,8 @@
 
 #include <vector>
 
+#include <boost/thread.hpp>
+
 #include <tiledbitmapinterface.hh>
 #include <tile.hh>
 
@@ -29,6 +31,7 @@ public:
   TileState state;
   Tile::WeakPtr tile;
   byte* data;
+  boost::mutex mut;
   
 public:
   TileInternal(int depth, int x, int y, int bpp, TileState state=TILE_UNINITIALIZED);

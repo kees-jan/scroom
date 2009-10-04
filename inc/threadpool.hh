@@ -5,9 +5,11 @@
 
 enum
   {
-    PRIO_LOWEST,
+    PRIO_LOWEST=100,
     PRIO_LOWER,
+    PRIO_LOW,
     PRIO_NORMAL,
+    PRIO_HIGH,
     PRIO_HIGHER,
     PRIO_HIGHEST
   };

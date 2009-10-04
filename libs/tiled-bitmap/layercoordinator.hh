@@ -4,6 +4,8 @@
 #include <map>
 #include <utility>
 
+#include <boost/thread.hpp>
+
 #include "tileinternal.hh"
 
 class LayerCoordinator: private TileInternalObserver
@@ -12,6 +14,8 @@ private:
   TileInternal* targetTile;
   std::map<TileInternal*,std::pair<int,int> > sourceTiles;
   LayerOperations* lo;
+  boost::mutex mut;
+  int unfinishedSourceTiles;
 
 public:
   LayerCoordinator(TileInternal* targetTile, LayerOperations* lo);
