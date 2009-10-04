@@ -28,7 +28,7 @@ public:
 
 LayerCoordinator::LayerCoordinator(TileInternal* targetTile,
                                    LayerOperations* lo)
-  : targetTile(targetTile), lo(lo)
+  : targetTile(targetTile), lo(lo), unfinishedSourceTiles(0)
 {
 }
 

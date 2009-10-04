@@ -326,4 +326,38 @@ void Operations8bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, Gd
 
 void Operations8bpp::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y)
 {
+  // Reducing by a factor 8. Source tile is 8bpp. Target tile is 8bpp
+  int sourceStride = source->width;
+  byte* sourceBase = source->data;
+
+  int targetStride = target->width;
+  byte* targetBase = target->data +
+    target->height*y*targetStride/8 +
+    target->width*x/8;
+
+  for(int j=0; j<source->height/8;
+      j++, targetBase+=targetStride, sourceBase+=sourceStride*8)
+  {
+    // Iterate vertically over target
+    byte* sourcePtr = sourceBase;
+    byte* targetPtr = targetBase;
+
+    for(int i=0; i<source->width/8;
+        i++, sourcePtr+=8, targetPtr++)
+    {
+      // Iterate horizontally over target
+
+      // Goal is to compute a 8-bit grey value from a 8*8 grey image.
+      byte* base = sourcePtr;
+      int sum = 0;
+      for(int k=0; k<8; k++, base+=sourceStride)
+      {
+        byte* current=base;
+        for(int l=0; l<8; l++, current++)
+          sum += *current;
+      }
+
+      *targetPtr = sum/64;
+    }
+  }
 }
