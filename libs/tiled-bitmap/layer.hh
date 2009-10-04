@@ -9,10 +9,6 @@
 
 class Layer
 {
-public:
-  typedef std::vector<TileInternal*> TileLine;
-  typedef std::vector<TileLine> TileGrid;
-  
 private:
   int depth;
   int width;
@@ -20,15 +16,17 @@ private:
   int bpp;
   int horTileCount;
   int verTileCount;
-  TileGrid tiles;
+  TileInternalGrid tiles;
   TileInternal* outOfBounds;
-  TileLine lineOutOfBounds;
+  TileInternalLine lineOutOfBounds;
   
 public:
   Layer(int depth, int layerWidth, int layerHeight, int bpp);
+  int getHorTileCount();
+  int getVerTileCount();
 
   TileInternal* getTile(int i, int j);
-  TileLine& getTileLine(int j);
+  TileInternalLine& getTileLine(int j);
   void fetchData(SourcePresentation* sp);
 };
 

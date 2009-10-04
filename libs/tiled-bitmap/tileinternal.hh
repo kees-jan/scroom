@@ -1,7 +1,7 @@
 #ifndef _TILEINTERNAL_HH
 #define _TILEINTERNAL_HH
 
-#include <boost/shared_ptr.hpp>
+#include <vector>
 
 #include <tiledbitmapinterface.hh>
 #include <tile.hh>
@@ -40,5 +40,7 @@ public:
   void reportFinished();
 };
 
+typedef std::vector<TileInternal*> TileInternalLine;
+typedef std::vector<TileInternalLine> TileInternalGrid;
 
 #endif

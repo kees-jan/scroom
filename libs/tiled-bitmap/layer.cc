@@ -33,8 +33,8 @@ Layer::Layer(int depth, int layerWidth, int layerHeight, int bpp)
 
   for(int j=0; j<verTileCount; j++)
   {
-    tiles.push_back(TileLine());
-    TileLine& tl = tiles[j];
+    tiles.push_back(TileInternalLine());
+    TileInternalLine& tl = tiles[j];
     for(int i=0; i<horTileCount; i++)
     {
       tl.push_back(new TileInternal(depth, i, j, bpp));
@@ -51,6 +51,16 @@ Layer::Layer(int depth, int layerWidth, int layerHeight, int bpp)
          depth, bpp, width, height, horTileCount, verTileCount);
 }
 
+int Layer::getHorTileCount()
+{
+  return horTileCount;
+}
+
+int Layer::getVerTileCount()
+{
+  return verTileCount;
+}
+
 TileInternal* Layer::getTile(int i, int j)
 {
   if(0<=i && i<horTileCount &&
@@ -64,7 +74,7 @@ TileInternal* Layer::getTile(int i, int j)
   }
 }
 
-Layer::TileLine& Layer::getTileLine(int j)
+TileInternalLine& Layer::getTileLine(int j)
 {
   if(0<=j && j<verTileCount)
   {
@@ -102,7 +112,7 @@ bool DataFetcher::doWork()
 {
   // printf("Attempting to fetch bitmap data for tileRow %d...\n", currentRow);
 
-  Layer::TileLine& tileLine = layer->getTileLine(currentRow);
+  TileInternalLine& tileLine = layer->getTileLine(currentRow);
   std::vector<Tile::Ptr> tiles;
   for(int x = 0; x < horTileCount; x++)
   {
@@ -114,6 +124,11 @@ bool DataFetcher::doWork()
 
   sp->fillTiles(currentRow * TILESIZE, lineCount, TILESIZE, 0, tiles);
 
+  for(int x = 0; x < horTileCount; x++)
+  {
+    tileLine[x]->reportFinished();
+  }
+  
   currentRow++;
   return currentRow<verTileCount;
 }

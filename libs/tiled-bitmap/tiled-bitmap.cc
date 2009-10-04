@@ -27,12 +27,25 @@ TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
   int height = bitmapHeight;
   unsigned int i = 0;
   int bpp = 0;
+  LayerOperations* lo = NULL;
+  Layer* prevLayer = NULL;
+  LayerOperations* prevLo = NULL;
   do
   {
     if(i<ls.size())
-      bpp = ls[i]->getBpp();
+      lo = ls[i];
     
-    layers.push_back(new Layer(i, width, height, bpp));
+    bpp = lo->getBpp();
+
+    Layer* layer = new Layer(i, width, height, bpp);
+    layers.push_back(layer);
+    if(prevLayer)
+    {
+      connect(layer, prevLayer, prevLo);
+    }
+    
+    prevLayer = layer;
+    prevLo = lo;
     width = (width+7)/8; // Round up
     height = (height+7)/8;
     i++;
@@ -41,12 +54,58 @@ TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
 
 TiledBitmap::~TiledBitmap()
 {
+  while(!coordinators.empty())
+  {
+    delete coordinators.back();
+    coordinators.pop_back();
+  }
   while(!layers.empty())
   {
     delete layers.back();
     layers.pop_back();
   }
 }
+
+void TiledBitmap::connect(Layer* layer, Layer* prevLayer,
+                          LayerOperations* prevLo)
+{
+  int horTileCount = prevLayer->getHorTileCount();
+  int verTileCount = prevLayer->getVerTileCount();
+
+  std::vector<LayerCoordinator*> coordinators;
+  
+  for(int j=0; j<verTileCount; j++)
+  {
+    int voffset = j%8;
+    if(!voffset)
+    {
+      // New line of target tiles
+      coordinators.clear();
+      TileInternalLine& til = layer->getTileLine(j/8);
+      for(unsigned int z=0; z<til.size(); z++)
+      {
+        LayerCoordinator* lc = new LayerCoordinator(til[z], prevLo);
+        coordinators.push_back(lc);
+        this->coordinators.push_back(lc);
+      }
+    }
+
+    LayerCoordinator* lc=NULL;
+    
+    for(int i=0; i<horTileCount; i++)
+    {
+      int hoffset = i%8;
+      if(!hoffset)
+      {
+        // New target tile
+        lc = coordinators[i/8];
+      }
+
+      lc->addSourceTile(hoffset, voffset, prevLayer->getTile(i,j));
+    }
+  }
+}
+
 
 ////////////////////////////////////////////////////////////////////////
 // TiledBitmapInterface
