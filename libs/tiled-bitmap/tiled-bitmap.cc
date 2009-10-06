@@ -176,7 +176,7 @@ inline void computeAreasEndZoomingOut(int presentationBegin, int presentationSiz
   }
   else
   {
-    tileSize = presentationBegin + presentationSize - tileOffset;
+    tileSize = presentationBegin + presentationSize - tileOffset - tileBegin;
   }
   viewSize = tileSize/pixelSize;
 }
@@ -257,8 +257,8 @@ void TiledBitmap::redraw(cairo_t* cr, GdkRectangle presentationArea, int zoom)
     // Zooming out.
 
     // 1. Pick the correct layer
-    int layerNr=0;
-    while(zoom<=-3)
+    unsigned int layerNr=0;
+    while(zoom<=-3 && layerNr<layers.size()-1)
     {
       layerNr++;
       zoom+=3;
