@@ -10,8 +10,11 @@
 
 #include <observable.hh>
 
+#include <memorymanagerinterface.hh>
 
-#define TILESIZE 1024
+
+#define TILESIZE 4096
+// #define TILESIZE 1024
 
 class TileInternal;
 
@@ -21,7 +24,7 @@ public:
   virtual void tileFinished(TileInternal* tile);
 };
 
-class TileInternal : public Observable<TileInternalObserver>
+class TileInternal : public Observable<TileInternalObserver>, public MemoryManagedInterface
 {
 public:
   int depth;
@@ -30,7 +33,7 @@ public:
   int bpp;
   TileState state;
   Tile::WeakPtr tile;
-  byte* data;
+  FileBackedMemory data;
   boost::mutex mut;
   
 public:
@@ -41,6 +44,9 @@ public:
   Tile::Ptr getTile();
 
   void reportFinished();
+
+  // MemoryManagedInterface //////////////////////////////////////////////
+  virtual bool do_unload();
 };
 
 typedef std::vector<TileInternal*> TileInternalLine;

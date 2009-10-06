@@ -15,24 +15,26 @@ void TileInternalObserver::tileFinished(TileInternal* tile)
 ////////////////////////////////////////////////////////////////////////
 /// TileInternal
 TileInternal::TileInternal(int depth, int x, int y, int bpp, TileState state)
-  : depth(depth), x(x), y(y), bpp(bpp), state(state), tile(), data(NULL)
+  : depth(depth), x(x), y(y), bpp(bpp), state(state), tile(), data(TILESIZE*TILESIZE * bpp / 8)
 {
+  registerMMI(this, TILESIZE*TILESIZE * bpp / 8, 1);
 }
 
 Tile::Ptr TileInternal::getTile()
 {
-  boost::unique_lock<boost::mutex> lock(mut);
-
-  if(state!=TILE_LOADED)
-    printf("ERROR: Tile not loaded\n");
-  
   Tile::Ptr result = tile.lock();
   if(!result)
   {
-    if(!data)
-      printf("ERROR: Tile data not available\n");
-    result = Tile::Ptr(new Tile(TILESIZE, TILESIZE, bpp, data));
-    tile = result;
+    // Apparently, tile isn't in use
+    boost::unique_lock<boost::mutex> lock(mut);
+    result = tile.lock();
+    if(!result && (state == TILE_UNLOADED || state == TILE_LOADED)) // Double checked locking
+    {
+      result = Tile::Ptr(new Tile(TILESIZE, TILESIZE, bpp, data.load()));
+      tile = result;
+      state = TILE_LOADED;
+      loadNotification(this);
+    }
   }
   
   return result;
@@ -44,11 +46,9 @@ void TileInternal::initialize()
 
   if(state == TILE_UNINITIALIZED)
   {
-    int dataSize = TILESIZE*TILESIZE * bpp / 8;
-
-    data = (byte*)malloc(dataSize*sizeof(byte));
-    memset(data, 0, dataSize*sizeof(byte));
+    data.initialize(0);
     state = TILE_LOADED;
+    loadNotification(this);
   }
 }
   
@@ -60,4 +60,26 @@ void TileInternal::reportFinished()
     observers.front()->tileFinished(this);
     observers.pop_front();
   }
+}
+
+bool TileInternal::do_unload()
+{
+  bool isUnloaded = false;
+  Tile::Ptr result = tile.lock();
+  if(!result)
+  {
+    // Apparently, tile isn't in use
+    boost::unique_lock<boost::mutex> lock(mut);
+    result = tile.lock();
+    if(!result && state == TILE_LOADED) // Double checked locking
+    {
+      // Tile not in use. We can unload now...
+      data.unload();
+      state = TILE_UNLOADED;
+      loadNotification(this);
+      isUnloaded=true;
+    }
+  }
+
+  return isUnloaded;
 }

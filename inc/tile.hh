@@ -4,7 +4,7 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
 
-typedef unsigned char byte;
+#include <global.hh>
 
 class Tile
 {

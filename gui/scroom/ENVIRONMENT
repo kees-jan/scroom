@@ -1,3 +1,7 @@
 export SCROOM_PLUGIN_DIRS="/some/bogus/value:$(pwd)/../../_lib/scroom"
-export SCROOM_MEMORY_LIMIT=2048
 export LD_LIBRARY_PATH=":$(pwd)/../../_lib"
+export SCROOM_MEMORY_HWM=2048
+export SCROOM_MEMORY_LWM=1024
+export SCROOM_FILES_HWM=800
+export SCROOM_FILES_LWM=500
+
