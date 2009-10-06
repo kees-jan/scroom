@@ -148,6 +148,7 @@ void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth, in
     memcpy(dataPtr[tileCount-1],
            row+(firstTile+tileCount-1)*tileWidth/8,
            dataLength - (firstTile+tileCount-1)*tileWidth/8);
+    dataPtr[tileCount-1]+=tileWidth/8;
   }
 }
 
