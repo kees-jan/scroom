@@ -3,6 +3,7 @@
 #include <boost/thread.hpp>
 
 #include <memorymanagerinterface.hh>
+#include <threadpool.hh>
 
 const std::string SCROOM_MEMORY_HWM = "SCROOM_MEMORY_HWM";
 const std::string SCROOM_MEMORY_LWM = "SCROOM_MEMORY_LWM";
@@ -29,10 +30,10 @@ public:
   typedef std::map<MemoryManagedInterface*,ManagedInfo> ManagedInfoMap;
   
 private:
-  unsigned int memHwm;
-  unsigned int memLwm;
-  unsigned int filesHwm;
-  unsigned int filesLwm;
+  unsigned long memHwm;
+  unsigned long memLwm;
+  unsigned long filesHwm;
+  unsigned long filesLwm;
 
   unsigned long memCurrent;
   unsigned long memTotal;
@@ -43,6 +44,7 @@ private:
 
   boost::mutex mut;
   ManagedInfoMap managedInfo;
+  bool isGarbageCollecting;
   
 public:
   static MemoryManager* instance();
@@ -56,8 +58,20 @@ public:
   void loadNotification(MemoryManagedInterface* object);
   void unloadNotification(MemoryManagedInterface* object);
 
+  void garbageCollect();
+  
 private:
   int fetchFromEnvironment(std::string v);
+  void checkForOutOfResources();
+};
+
+class GarbageCollector : public WorkInterface
+{
+  virtual bool doWork()
+  {
+    MemoryManager::instance()->garbageCollect();
+    return false;
+  }
 };
 
 ////////////////////////////////////////////////////////////////////////
@@ -73,15 +87,15 @@ MemoryManager::MemoryManager()
 {
   printf("Creating memory manager\n");
 
-  memHwm = fetchFromEnvironment(SCROOM_MEMORY_HWM);
-  memLwm = fetchFromEnvironment(SCROOM_MEMORY_LWM);
+  memHwm = 1024*1024*(unsigned long)fetchFromEnvironment(SCROOM_MEMORY_HWM);
+  memLwm = 1024*1024*(unsigned long)fetchFromEnvironment(SCROOM_MEMORY_LWM);
   filesHwm = fetchFromEnvironment(SCROOM_FILES_HWM);
   filesLwm = fetchFromEnvironment(SCROOM_FILES_LWM);
 
   if(!memHwm)
   {
-    memHwm = 2048;
-    memLwm = 1920;
+    memHwm = (unsigned long)2048*1024*1024;
+    memLwm = (unsigned long)1920*1024*1024;
   }
   if(!memLwm)
   {
@@ -97,9 +111,9 @@ MemoryManager::MemoryManager()
     filesLwm = filesHwm*8/10;
   }
 
-  printf("Memory watermarks: High %dMB, Low %dMB\n", memHwm, memLwm);
-  printf("File watermarks: High %d, Low %d\n", filesHwm, filesLwm);
-  
+  printf("Memory watermarks: High %lu, Low %lu\n", memHwm, memLwm);
+  printf("File watermarks: High %lu, Low %lu\n", filesHwm, filesLwm);
+
   memCurrent = 0;
   memTotal = 0;
   filesCurrent = 0;
@@ -150,6 +164,9 @@ void MemoryManager::loadNotification(MemoryManagedInterface* object)
     memCurrent += m.size;
     filesCurrent += m.fdcount;
   }
+  m.timestamp = ++timestamp;
+
+  checkForOutOfResources();
 }
 
 void MemoryManager::unloadNotification(MemoryManagedInterface* object)
@@ -170,6 +187,61 @@ int MemoryManager::fetchFromEnvironment(std::string v)
   std::string value = getenv(v.c_str());
   return atoi(value.c_str());
 }
+
+void MemoryManager::checkForOutOfResources()
+{
+  if(!isGarbageCollecting && (memCurrent>memHwm || filesCurrent>filesHwm))
+  {
+    isGarbageCollecting=true;
+    schedule(new GarbageCollector(), PRIO_HIGHEST);
+  }
+}
+
+void MemoryManager::garbageCollect()
+{
+  printf("Garbage collector activating.\n");
+  printf("Files: %lu/%lu, thresholds %lu-%lu\n",
+         filesCurrent, filesTotal, filesLwm, filesHwm);
+  printf("Memory: %lu/%lu, thresholds %lu-%lu\n",
+         memCurrent, memTotal, memLwm, memHwm);
+
+  {
+    boost::unique_lock<boost::mutex> lock(mut);
+    std::map<unsigned long, std::list<MemoryManagedInterface*> > sortedInterfaces;
+
+    for(ManagedInfoMap::iterator cur = managedInfo.begin();
+        cur != managedInfo.end();
+        ++cur)
+    {
+      sortedInterfaces[cur->second.timestamp].push_back(cur->first);
+    }
+    std::map<unsigned long, std::list<MemoryManagedInterface*> >::iterator cur = sortedInterfaces.begin();
+    std::map<unsigned long, std::list<MemoryManagedInterface*> >::iterator end = sortedInterfaces.end();
+
+    for(;cur!=end && (filesCurrent > filesLwm || memCurrent > memHwm); ++cur)
+    {
+      std::list<MemoryManagedInterface*>& list = cur->second;
+      for(std::list<MemoryManagedInterface*>::iterator c = list.begin();
+          c!=list.end();
+          ++c)
+      {
+        if(managedInfo[*c].isLoaded)
+        {
+          (*c)->do_unload();
+        }
+      }
+    }
+
+    isGarbageCollecting = false;
+  }
+
+  printf("Garbage collector terminating.\n");
+  printf("Files: %lu/%lu, thresholds %lu-%lu\n",
+         filesCurrent, filesTotal, filesLwm, filesHwm);
+  printf("Memory: %lu/%lu, thresholds %lu-%lu\n",
+         memCurrent, memTotal, memLwm, memHwm);
+}
+  
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -194,4 +266,3 @@ void unloadNotification(MemoryManagedInterface* object)
 {
   MemoryManager::instance()->unloadNotification(object);
 }
-
