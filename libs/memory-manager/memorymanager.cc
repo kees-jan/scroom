@@ -45,6 +45,11 @@ private:
   boost::mutex mut;
   ManagedInfoMap managedInfo;
   bool isGarbageCollecting;
+
+  unsigned long unloaders;
+  boost::condition_variable unloadersCond;
+  boost::mutex unloadersMut;
+
   
 public:
   static MemoryManager* instance();
@@ -59,6 +64,7 @@ public:
   void unloadNotification(MemoryManagedInterface* object);
 
   void garbageCollect();
+  void unload(MemoryManagedInterface* i);
   
 private:
   int fetchFromEnvironment(std::string v);
@@ -67,9 +73,26 @@ private:
 
 class GarbageCollector : public WorkInterface
 {
+public:
   virtual bool doWork()
   {
     MemoryManager::instance()->garbageCollect();
+    return false;
+  }
+};
+
+class Unloader : public WorkInterface
+{
+private:
+  MemoryManagedInterface* i;
+public:
+  Unloader(MemoryManagedInterface* i)
+    : i(i)
+  {}
+
+  virtual bool doWork()
+  {
+    MemoryManager::instance()->unload(i);
     return false;
   }
 };
@@ -217,18 +240,36 @@ void MemoryManager::garbageCollect()
     }
     std::map<unsigned long, std::list<MemoryManagedInterface*> >::iterator cur = sortedInterfaces.begin();
     std::map<unsigned long, std::list<MemoryManagedInterface*> >::iterator end = sortedInterfaces.end();
+    unloaders = 0;
+    unsigned long filesExpected = filesCurrent;
+    unsigned long memExpected = memCurrent;
 
-    for(;cur!=end && (filesCurrent > filesLwm || memCurrent > memHwm); ++cur)
+    for(;cur!=end && (filesExpected > filesLwm || memExpected > memHwm); ++cur)
     {
       std::list<MemoryManagedInterface*>& list = cur->second;
       for(std::list<MemoryManagedInterface*>::iterator c = list.begin();
           c!=list.end();
           ++c)
       {
-        if(managedInfo[*c].isLoaded)
+        ManagedInfo& mi = managedInfo[*c];
+        
+        if(mi.isLoaded)
         {
-          (*c)->do_unload();
+          boost::unique_lock<boost::mutex> lock(unloadersMut);
+          unloaders++;
+          schedule(new Unloader(*c), PRIO_HIGHEST);
+          filesExpected -= mi.fdcount;
+          memExpected -= mi.size;
         }
+      }
+    }
+
+    {
+      // Wait for unloaders to finish
+      boost::unique_lock<boost::mutex> lock(unloadersMut);
+      while(unloaders>0)
+      {
+        unloadersCond.wait(lock);
       }
     }
 
@@ -242,6 +283,13 @@ void MemoryManager::garbageCollect()
          memCurrent, memTotal, memLwm, memHwm);
 }
   
+void MemoryManager::unload(MemoryManagedInterface* i)
+{
+  i->do_unload();
+  boost::unique_lock<boost::mutex> lock(unloadersMut);
+  unloaders--;
+  unloadersCond.notify_all();
+}
 
 
 ////////////////////////////////////////////////////////////////////////
