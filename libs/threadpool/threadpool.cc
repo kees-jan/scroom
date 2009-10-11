@@ -16,6 +16,12 @@ public:
   virtual bool doWork();
 };
 
+class CleanUp : public WorkInterface
+{
+public:
+  virtual bool doWork();
+};
+
 class ThreadPool
 {
 private:
@@ -23,6 +29,7 @@ private:
   Scroom::Semaphore jobcount;
   std::map<int, std::queue<WorkInterface*> > jobs;
   boost::mutex mut;
+  boost::mutex threadsMut;
   bool alive;
 
 private:
@@ -33,9 +40,21 @@ private:
   
 public:
   void schedule(int priority, WorkInterface* wi);
-  
+  void schedule_on_new_thread(WorkInterface* wi);
+
+  void cleanUp();
+    
 public:
   static ThreadPool& instance();
+};
+
+class BoostWrapper
+{
+private:
+  WorkInterface* wi;
+public:
+  BoostWrapper(WorkInterface* wi);
+  void operator()();
 };
 
 
@@ -95,6 +114,37 @@ void ThreadPool::schedule(int priority, WorkInterface* wi)
   jobcount.V();
 }
 
+void ThreadPool::schedule_on_new_thread(WorkInterface* wi)
+{
+  boost::unique_lock<boost::mutex> lock(threadsMut);
+  threads.push_back(new boost::thread(BoostWrapper(wi)));
+}
+
+void ThreadPool::cleanUp()
+{
+  boost::unique_lock<boost::mutex> lock(threadsMut);
+  std::list<boost::thread*>::iterator cur = threads.begin();
+  std::list<boost::thread*>::iterator end = threads.end();
+
+  boost::thread::id nat; // represents not-a-thread
+
+  while(cur!=end)
+  {
+    if((*cur)->get_id()==nat)
+    {
+      printf("Cleaning up finished thread\n");
+      std::list<boost::thread*>::iterator tmp = cur;
+      ++cur;
+      delete *tmp;
+      threads.erase(tmp);
+    }
+    else
+    {
+      ++cur;
+    }
+  }
+}
+
 bool ThreadPool::perform_one()
 {
   jobcount.P();
@@ -141,10 +191,44 @@ bool NoWork::doWork()
 }
 
 ////////////////////////////////////////////////////////////////////////
+/// CleanUp
+////////////////////////////////////////////////////////////////////////
+
+bool CleanUp::doWork()
+{
+  ThreadPool::instance().cleanUp();
+  return false;
+}
+
+////////////////////////////////////////////////////////////////////////
+/// BoostWrapper
+////////////////////////////////////////////////////////////////////////
+
+BoostWrapper::BoostWrapper(WorkInterface* wi)
+  : wi(wi)
+{
+}
+
+void BoostWrapper::operator()()
+{
+  while(wi->doWork())
+  {
+    // repeat
+  }
+  delete wi;
+  schedule(new CleanUp(), PRIO_HIGHEST);
+}
+
+////////////////////////////////////////////////////////////////////////
 /// C-style functions
 ////////////////////////////////////////////////////////////////////////
 
 void schedule(WorkInterface* wi, int priority)
 {
   ThreadPool::instance().schedule(priority, wi);
+}
+
+void schedule_on_new_thread(WorkInterface* wi)
+{
+  ThreadPool::instance().schedule_on_new_thread(wi);
 }

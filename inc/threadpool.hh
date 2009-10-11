@@ -16,5 +16,6 @@ enum
 
 void schedule(WorkInterface* wi, int priority=PRIO_NORMAL);
 
+void schedule_on_new_thread(WorkInterface* wi);
 
 #endif
