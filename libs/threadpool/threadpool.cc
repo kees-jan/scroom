@@ -4,28 +4,11 @@
 
 #include <boost/thread.hpp>
 #include <queue>
+#include <map>
 
 #include <scroom-semaphore.hh>
 
 #include <workinterface.hh>
-
-struct Job
-{
-public:
-  int priority;
-  WorkInterface* wi;
-
-public:
-  Job(int priority, WorkInterface* wi)
-    : priority(priority), wi(wi)
-  {
-  }
-
-  bool operator< (const Job& other) const
-  {
-    return priority < other.priority;
-  }
-};
 
 class NoWork : public WorkInterface
 {
@@ -38,7 +21,7 @@ class ThreadPool
 private:
   std::list<boost::thread*> threads;
   Scroom::Semaphore jobcount;
-  std::priority_queue<Job> jobs;
+  std::map<int, std::queue<WorkInterface*> > jobs;
   boost::mutex mut;
   bool alive;
 
@@ -49,7 +32,6 @@ private:
   bool perform_one();
   
 public:
-  void schedule(Job j);
   void schedule(int priority, WorkInterface* wi);
   
 public:
@@ -105,37 +87,39 @@ void ThreadPool::work()
   printf("ThreadPool: Thread terminating...\n");
 }
 
-void ThreadPool::schedule(Job j)
-{
-  boost::unique_lock<boost::mutex> lock(mut);
-  jobs.push(j);
-  lock.unlock();
-  jobcount.V();
-}
-
 void ThreadPool::schedule(int priority, WorkInterface* wi)
 {
-  schedule(Job(priority, wi));
+  boost::unique_lock<boost::mutex> lock(mut);
+  jobs[priority].push(wi);
+  lock.unlock();
+  jobcount.V();
 }
 
 bool ThreadPool::perform_one()
 {
   jobcount.P();
   boost::unique_lock<boost::mutex> lock(mut);
-  if(!jobs.empty())
+
+  while(!jobs.empty() && jobs.begin()->second.empty())
+    jobs.erase(jobs.begin());
+
+  // At this point, either the jobs map is empty, or jobs.begin()->second contains tasks.
+  
+  if(!jobs.empty() && !jobs.begin()->second.empty())
   {
-    Job j = jobs.top();
-    jobs.pop();
+    int priority = jobs.begin()->first;
+    WorkInterface* wi = jobs.begin()->second.front();
+    jobs.begin()->second.pop();
     lock.unlock();
 
-    bool result = j.wi->doWork();
+    bool result = wi->doWork();
     if(result)
     {
-      schedule(j);
+      schedule(priority, wi);
     }
     else
     {
-      delete j.wi;
+      delete wi;
     }
   }
   else
@@ -161,5 +145,5 @@ bool NoWork::doWork()
 
 void schedule(WorkInterface* wi, int priority)
 {
-  ThreadPool::instance().schedule(Job(priority, wi));
+  ThreadPool::instance().schedule(priority, wi);
 }

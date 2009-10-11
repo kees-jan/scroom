@@ -5,13 +5,13 @@
 
 enum
   {
-    PRIO_LOWEST=100,
-    PRIO_LOWER,
-    PRIO_LOW,
-    PRIO_NORMAL,
-    PRIO_HIGH,
+    PRIO_HIGHEST = 100,
     PRIO_HIGHER,
-    PRIO_HIGHEST
+    PRIO_HIGH,
+    PRIO_NORMAL,
+    PRIO_LOW,
+    PRIO_LOWER,
+    PRIO_LOWEST,
   };
 
 void schedule(WorkInterface* wi, int priority=PRIO_NORMAL);
