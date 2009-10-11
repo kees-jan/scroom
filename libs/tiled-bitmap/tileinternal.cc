@@ -66,7 +66,7 @@ bool TileInternal::do_unload()
 {
   bool isUnloaded = false;
   Tile::Ptr result = tile.lock();
-  if(!result)
+  if(!result && state == TILE_LOADED)
   {
     // Apparently, tile isn't in use
     boost::unique_lock<boost::mutex> lock(mut);
@@ -76,7 +76,7 @@ bool TileInternal::do_unload()
       // Tile not in use. We can unload now...
       data.unload();
       state = TILE_UNLOADED;
-      loadNotification(this);
+      unloadNotification(this);
       isUnloaded=true;
     }
   }

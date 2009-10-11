@@ -30,23 +30,24 @@ public:
   typedef std::map<MemoryManagedInterface*,ManagedInfo> ManagedInfoMap;
   
 private:
-  unsigned long memHwm;
-  unsigned long memLwm;
-  unsigned long filesHwm;
-  unsigned long filesLwm;
+  uint64_t memHwm;
+  uint64_t memLwm;
+  uint64_t filesHwm;
+  uint64_t filesLwm;
 
-  unsigned long memCurrent;
-  unsigned long memTotal;
-  unsigned long filesCurrent;
-  unsigned long filesTotal;
+  uint64_t memCurrent;
+  uint64_t memTotal;
+  uint64_t filesCurrent;
+  uint64_t filesTotal;
+  boost::mutex currentMut;
 
-  unsigned long timestamp;
+  uint64_t timestamp;
 
   boost::mutex mut;
   ManagedInfoMap managedInfo;
   bool isGarbageCollecting;
 
-  unsigned long unloaders;
+  uint64_t unloaders;
   boost::condition_variable unloadersCond;
   boost::mutex unloadersMut;
 
@@ -110,15 +111,15 @@ MemoryManager::MemoryManager()
 {
   printf("Creating memory manager\n");
 
-  memHwm = 1024*1024*(unsigned long)fetchFromEnvironment(SCROOM_MEMORY_HWM);
-  memLwm = 1024*1024*(unsigned long)fetchFromEnvironment(SCROOM_MEMORY_LWM);
+  memHwm = 1024*1024*(uint64_t)fetchFromEnvironment(SCROOM_MEMORY_HWM);
+  memLwm = 1024*1024*(uint64_t)fetchFromEnvironment(SCROOM_MEMORY_LWM);
   filesHwm = fetchFromEnvironment(SCROOM_FILES_HWM);
   filesLwm = fetchFromEnvironment(SCROOM_FILES_LWM);
 
   if(!memHwm)
   {
-    memHwm = (unsigned long)2048*1024*1024;
-    memLwm = (unsigned long)1920*1024*1024;
+    memHwm = (uint64_t)2048*1024*1024;
+    memLwm = (uint64_t)1920*1024*1024;
   }
   if(!memLwm)
   {
@@ -134,8 +135,8 @@ MemoryManager::MemoryManager()
     filesLwm = filesHwm*8/10;
   }
 
-  printf("Memory watermarks: High %lu, Low %lu\n", memHwm, memLwm);
-  printf("File watermarks: High %lu, Low %lu\n", filesHwm, filesLwm);
+  printf("Memory watermarks: High %llu, Low %llu\n", memHwm, memLwm);
+  printf("File watermarks: High %llu, Low %llu\n", filesHwm, filesLwm);
 
   memCurrent = 0;
   memTotal = 0;
@@ -166,8 +167,10 @@ void MemoryManager::unregisterMMI(MemoryManagedInterface* object)
     ManagedInfo& m = info->second;
     if(m.isLoaded)
     {
+      boost::unique_lock<boost::mutex> lock(currentMut);
       memCurrent-=m.size;
       filesCurrent-=m.fdcount;
+      m.isLoaded = false;
     }
     
     memTotal-=m.size;
@@ -184,6 +187,7 @@ void MemoryManager::loadNotification(MemoryManagedInterface* object)
   if(!m.isLoaded)
   {
     m.isLoaded = true;
+    boost::unique_lock<boost::mutex> lock(currentMut);
     memCurrent += m.size;
     filesCurrent += m.fdcount;
   }
@@ -200,6 +204,7 @@ void MemoryManager::unloadNotification(MemoryManagedInterface* object)
   if(m.isLoaded)
   {
     m.isLoaded = false;
+    boost::unique_lock<boost::mutex> lock(currentMut);
     memCurrent -= m.size;
     filesCurrent -= m.fdcount;
   }
@@ -222,15 +227,12 @@ void MemoryManager::checkForOutOfResources()
 
 void MemoryManager::garbageCollect()
 {
-  printf("Garbage collector activating.\n");
-  printf("Files: %lu/%lu, thresholds %lu-%lu\n",
-         filesCurrent, filesTotal, filesLwm, filesHwm);
-  printf("Memory: %lu/%lu, thresholds %lu-%lu\n",
-         memCurrent, memTotal, memLwm, memHwm);
+  printf("+Garbage collector activating. (%llu/%llu files, %llu/%llu MB)\n",
+         filesCurrent, filesTotal, memCurrent/1024/1024, memTotal/1024/1024);
 
   {
     boost::unique_lock<boost::mutex> lock(mut);
-    std::map<unsigned long, std::list<MemoryManagedInterface*> > sortedInterfaces;
+    std::map<uint64_t, std::list<MemoryManagedInterface*> > sortedInterfaces;
 
     for(ManagedInfoMap::iterator cur = managedInfo.begin();
         cur != managedInfo.end();
@@ -238,11 +240,11 @@ void MemoryManager::garbageCollect()
     {
       sortedInterfaces[cur->second.timestamp].push_back(cur->first);
     }
-    std::map<unsigned long, std::list<MemoryManagedInterface*> >::iterator cur = sortedInterfaces.begin();
-    std::map<unsigned long, std::list<MemoryManagedInterface*> >::iterator end = sortedInterfaces.end();
+    std::map<uint64_t, std::list<MemoryManagedInterface*> >::iterator cur = sortedInterfaces.begin();
+    std::map<uint64_t, std::list<MemoryManagedInterface*> >::iterator end = sortedInterfaces.end();
     unloaders = 0;
-    unsigned long filesExpected = filesCurrent;
-    unsigned long memExpected = memCurrent;
+    uint64_t filesExpected = filesCurrent;
+    uint64_t memExpected = memCurrent;
 
     for(;cur!=end && (filesExpected > filesLwm || memExpected > memHwm); ++cur)
     {
@@ -265,6 +267,9 @@ void MemoryManager::garbageCollect()
     }
 
     {
+      printf("=Garbage collector waiting. Expecting %llu files, %llu MB)\n",
+             filesExpected, memExpected/1024/1024);
+      
       // Wait for unloaders to finish
       boost::unique_lock<boost::mutex> lock(unloadersMut);
       while(unloaders>0)
@@ -276,11 +281,8 @@ void MemoryManager::garbageCollect()
     isGarbageCollecting = false;
   }
 
-  printf("Garbage collector terminating.\n");
-  printf("Files: %lu/%lu, thresholds %lu-%lu\n",
-         filesCurrent, filesTotal, filesLwm, filesHwm);
-  printf("Memory: %lu/%lu, thresholds %lu-%lu\n",
-         memCurrent, memTotal, memLwm, memHwm);
+  printf("-Garbage collector terminating. (%llu/%llu files, %llu/%llu MB)\n",
+         filesCurrent, filesTotal, memCurrent/1024/1024, memTotal/1024/1024);
 }
   
 void MemoryManager::unload(MemoryManagedInterface* i)

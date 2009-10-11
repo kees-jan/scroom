@@ -136,6 +136,7 @@ bool ThreadPool::perform_one()
 
 bool NoWork::doWork()
 {
+  printf("Executing dummy job...\n");
   return false;
 }
 
