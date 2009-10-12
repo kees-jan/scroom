@@ -6,8 +6,6 @@
 #include <queue>
 #include <map>
 
-#include <scroom-semaphore.hh>
-
 #include <workinterface.hh>
 
 class NoWork : public WorkInterface
@@ -127,7 +125,8 @@ void ThreadPool::cleanUp()
   std::list<boost::thread*>::iterator end = threads.end();
 
   boost::thread::id nat; // represents not-a-thread
-
+  printf("Cleanup started\n");
+  
   while(cur!=end)
   {
     if((*cur)->get_id()==nat)
@@ -143,6 +142,7 @@ void ThreadPool::cleanUp()
       ++cur;
     }
   }
+  printf("Cleanup done\n");
 }
 
 bool ThreadPool::perform_one()
@@ -217,6 +217,62 @@ void BoostWrapper::operator()()
   }
   delete wi;
   schedule(new CleanUp(), PRIO_HIGHEST);
+  printf("Thread terminating. Cleanup scheduled...\n");
+}
+
+////////////////////////////////////////////////////////////////////////
+/// QueueJumper
+////////////////////////////////////////////////////////////////////////
+
+QueueJumper::QueueJumper()
+  : wi(NULL), mut(), inQueue(true), priority(PRIO_NORMAL)
+{}
+
+bool QueueJumper::setWork(WorkInterface* wi)
+{
+  boost::unique_lock<boost::mutex> lock(mut);
+  if(inQueue)
+  {
+    // Our turn hasn't passed yet. Accept work.
+    this->wi = wi;
+  }
+  else
+  {
+    // Our turn has passed. We cannot do the work
+  }
+
+  return inQueue;
+}
+
+bool QueueJumper::isDone()
+{
+  return !inQueue;
+}
+
+void QueueJumper::waitForDone()
+{
+  done.P();
+}
+
+void QueueJumper::schedule(int priority)
+{
+  this->priority = priority;
+  ::schedule(new Wrapper(this), priority);
+}
+
+bool QueueJumper::doWork()
+{
+  boost::unique_lock<boost::mutex> lock(mut);
+  if(wi)
+  {
+    if(wi->doWork())
+      ::schedule(wi, priority);
+    else
+      delete wi;
+  }
+  inQueue=false;
+  done.V();
+  return false;
 }
 
 ////////////////////////////////////////////////////////////////////////

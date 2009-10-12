@@ -221,7 +221,7 @@ void MemoryManager::checkForOutOfResources()
   if(!isGarbageCollecting && (memCurrent>memHwm || filesCurrent>filesHwm))
   {
     isGarbageCollecting=true;
-    schedule(new GarbageCollector(), PRIO_HIGHEST);
+    schedule_on_new_thread(new GarbageCollector());
   }
 }
 
