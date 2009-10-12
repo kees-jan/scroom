@@ -14,9 +14,19 @@ public:
   virtual bool doWork();
 };
 
-class CleanUp : public WorkInterface
+class GcCleanUp : public WorkInterface
 {
 public:
+  virtual bool doWork();
+};
+
+class QjCleanUp : public WorkInterface
+{
+private:
+  QueueJumper* qj;
+
+public:
+  QjCleanUp(QueueJumper* qj);
   virtual bool doWork();
 };
 
@@ -191,12 +201,29 @@ bool NoWork::doWork()
 }
 
 ////////////////////////////////////////////////////////////////////////
-/// CleanUp
+/// GcCleanUp
 ////////////////////////////////////////////////////////////////////////
 
-bool CleanUp::doWork()
+bool GcCleanUp::doWork()
 {
   ThreadPool::instance().cleanUp();
+  return false;
+}
+
+////////////////////////////////////////////////////////////////////////
+/// QjCleanUp
+////////////////////////////////////////////////////////////////////////
+
+QjCleanUp::QjCleanUp(QueueJumper* qj)
+  :qj(qj)
+{
+}
+
+bool QjCleanUp::doWork()
+{
+  qj->waitForDone();
+  delete qj;
+  qj=NULL;
   return false;
 }
 
@@ -216,7 +243,7 @@ void BoostWrapper::operator()()
     // repeat
   }
   delete wi;
-  schedule(new CleanUp(), PRIO_HIGHEST);
+  schedule(new GcCleanUp(), PRIO_HIGHEST);
   printf("Thread terminating. Cleanup scheduled...\n");
 }
 
@@ -254,6 +281,11 @@ void QueueJumper::waitForDone()
   done.P();
 }
 
+void QueueJumper::asynchronousCleanup()
+{
+  schedule_on_new_thread(new QjCleanUp(this));
+}
+
 void QueueJumper::schedule(int priority)
 {
   this->priority = priority;
@@ -271,6 +303,7 @@ bool QueueJumper::doWork()
       delete wi;
   }
   inQueue=false;
+  lock.unlock();
   done.V();
   return false;
 }

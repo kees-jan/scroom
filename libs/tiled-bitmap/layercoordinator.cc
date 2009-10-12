@@ -3,6 +3,8 @@
 #include <workinterface.hh>
 #include <threadpool.hh>
 
+#include "local.hh"
+
 class TileReducer : public WorkInterface
 {
 private:
@@ -67,7 +69,7 @@ void LayerCoordinator::tileFinished(TileInternal* tile)
                                     location.first, location.second,
                                     mut, unfinishedSourceTiles);
 
-  schedule(tr, PRIO_LOW);
+  schedule(tr, REDUCE_PRIO);
 }
 
 ////////////////////////////////////////////////////////////////////////

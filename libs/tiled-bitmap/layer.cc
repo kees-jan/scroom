@@ -4,6 +4,8 @@
 
 #include <threadpool.hh>
 
+#include "local.hh"
+
 class DataFetcher : public WorkInterface
 {
 private:
@@ -19,7 +21,8 @@ public:
   DataFetcher(Layer* layer,
               int width, int height,
               int horTileCount, int verTileCount,
-              SourcePresentation* sp);
+              SourcePresentation* sp,
+              int currentRow = 0);
   virtual bool doWork();
 };
 
@@ -92,7 +95,7 @@ void Layer::fetchData(SourcePresentation* sp)
                                     width, height,
                                     horTileCount, verTileCount,
                                     sp);
-  schedule(df, PRIO_NORMAL);
+  schedule(df, DATAFETCH_PRIO);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -101,17 +104,19 @@ void Layer::fetchData(SourcePresentation* sp)
 DataFetcher::DataFetcher(Layer* layer,
                          int width, int height,
                          int horTileCount, int verTileCount,
-                         SourcePresentation* sp)
+                         SourcePresentation* sp, int currentRow)
   : layer(layer), width(width), height(height),
     horTileCount(horTileCount), verTileCount(verTileCount),
-    currentRow(0), sp(sp)
+    currentRow(currentRow), sp(sp)
 {
 }
 
 bool DataFetcher::doWork()
 {
   // printf("Attempting to fetch bitmap data for tileRow %d...\n", currentRow);
-
+  QueueJumper* qj = new QueueJumper();
+  qj->schedule(REDUCE_PRIO);
+ 
   TileInternalLine& tileLine = layer->getTileLine(currentRow);
   std::vector<Tile::Ptr> tiles;
   for(int x = 0; x < horTileCount; x++)
@@ -130,5 +135,14 @@ bool DataFetcher::doWork()
   }
   
   currentRow++;
-  return currentRow<verTileCount;
+  if(currentRow<verTileCount)
+  {
+    DataFetcher* successor = new DataFetcher(*this);
+    if(!qj->setWork(successor))
+      schedule(successor, DATAFETCH_PRIO);
+
+    qj->asynchronousCleanup();
+  }
+  
+  return false;
 }

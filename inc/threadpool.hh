@@ -48,6 +48,7 @@ public:
   bool setWork(WorkInterface* wi);
   bool isDone();
   void waitForDone();
+  void asynchronousCleanup();
 
   void schedule(int priority=PRIO_NORMAL);
   
