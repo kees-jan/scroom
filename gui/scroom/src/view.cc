@@ -316,6 +316,20 @@ void View::on_configure()
 void View::on_window_size_changed(int newWidth, int newHeight)
 {
   printf("New drawing area size: %d, %d\n", newWidth, newHeight);
+
+  if(zoom>=0)
+  {
+    const int pixelSize = 1<<zoom;
+    x+=(drawingAreaWidth-newWidth)/pixelSize/2;
+    y+=(drawingAreaHeight-newHeight)/pixelSize/2;
+  }
+  else
+  {
+    const int pixelSize = 1<<-zoom;
+    x+=(drawingAreaWidth-newWidth)*pixelSize/2;
+    y+=(drawingAreaHeight-newHeight)*pixelSize/2;
+  }
+  
   drawingAreaHeight = newHeight;
   drawingAreaWidth = newWidth;
   updateZoom();
