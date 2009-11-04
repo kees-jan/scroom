@@ -56,6 +56,7 @@ public:
   void on_zoombox_changed();
   void on_zoombox_changed(int newZoom, int mousex, int mousey);
   void on_scrollbar_value_changed(GtkAdjustment* adjustment);
+  void on_scrollwheel(GdkEventScroll* event);
 
   ////////////////////////////////////////////////////////////////////////
   // Presentation events

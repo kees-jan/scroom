@@ -191,6 +191,26 @@ void on_scrollbar_value_changed(GtkAdjustment* adjustment, gpointer user_data)
   view->on_scrollbar_value_changed(adjustment);
 }
 
+gboolean on_button_press_event(GtkWidget* widget, GdkEventButton* event, gpointer user_data)
+{
+  printf("ButtonPress event %d, %d\n", event->type, event->button);
+  return true;
+}
+
+gboolean on_button_release_event(GtkWidget* widget, GdkEventButton* event, gpointer user_data)
+{
+  View* view = static_cast<View*>(user_data);
+  printf("ButtonPress event %d, %d\n", event->type, event->button);
+  return true;
+}
+
+gboolean on_scroll_event(GtkWidget* widget, GdkEventScroll* event, gpointer user_data)
+{
+  View* view = static_cast<View*>(user_data);
+  view->on_scrollwheel(event);
+  return true;
+}
+
 void on_scroom_bootstrap ()
 {
   printf("Bootstrapping Scroom...\n");
@@ -278,6 +298,9 @@ void create_scroom(PresentationInterface* presentation)
   g_signal_connect ((gpointer) aboutMenuItem, "activate", G_CALLBACK (on_about_activate), view);
   g_signal_connect ((gpointer) drawingArea, "expose_event", G_CALLBACK (on_drawingarea_expose_event), view);
   g_signal_connect ((gpointer) drawingArea, "configure_event", G_CALLBACK (on_drawingarea_configure_event), view);
+  g_signal_connect ((gpointer) drawingArea, "button-press-event", G_CALLBACK (on_button_press_event), view);
+  g_signal_connect ((gpointer) drawingArea, "button-release-event", G_CALLBACK (on_button_release_event), view);
+  g_signal_connect ((gpointer) drawingArea, "scroll-event", G_CALLBACK (on_scroll_event), view);
 }
 
 void on_newInterfaces_update(const std::map<NewInterface*, std::string>& newInterfaces)

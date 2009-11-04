@@ -337,6 +337,36 @@ void View::on_window_size_changed(int newWidth, int newHeight)
   invalidate();
 }
 
+void View::on_scrollwheel(GdkEventScroll* event)
+{
+  if(event->direction == GDK_SCROLL_UP ||
+     event->direction == GDK_SCROLL_DOWN)
+  {
+    int newZoom = zoom + ((event->direction == GDK_SCROLL_UP)?1:-1);
+    newZoom = std::min(MaxZoom, newZoom);
+
+    GtkTreeIter iter;
+    bool found = false;
+    for(bool valid = gtk_tree_model_get_iter_first(GTK_TREE_MODEL(zoomItems), &iter);
+        valid;
+        valid = gtk_tree_model_iter_next(GTK_TREE_MODEL(zoomItems), &iter))
+    {
+      GValue value={0};
+      gtk_tree_model_get_value(GTK_TREE_MODEL(zoomItems), &iter, COLUMN_ZOOM, &value);
+      int foundZoom = g_value_get_int(&value);
+
+      if(foundZoom==newZoom)
+      {
+        printf("Zoom: %d (%d, %d)\n", newZoom, (int)event->x, (int)event->y);
+        on_zoombox_changed(newZoom, event->x, event->y);
+        gtk_combo_box_set_active_iter(zoomBox, &iter);
+        break;
+      }
+    }
+  }
+}
+
+
 void View::on_zoombox_changed()
 {
   GtkTreeIter iter;
