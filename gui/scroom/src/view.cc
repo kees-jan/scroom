@@ -1,5 +1,7 @@
 #include "view.hh"
 
+#include <cmath>
+
 #include "pluginmanager.hh"
 #include "callbacks.hh"
 
@@ -53,7 +55,7 @@ enum
   
 View::View(GladeXML* scroomXml, PresentationInterface* presentation)
   : scroomXml(scroomXml), presentation(NULL), drawingAreaWidth(0), drawingAreaHeight(0),
-    zoom(0), x(0), y(0), vid(NULL)
+    zoom(0), x(0), y(0), vid(NULL), modifiermove(0), cachedx(0), cachedy(0)
 {
   PluginManager& pluginManager = PluginManager::getInstance();
   drawingArea = glade_xml_get_widget(scroomXml, "drawingarea");
@@ -433,6 +435,72 @@ void View::on_scrollbar_value_changed(GtkAdjustment* adjustment)
   updateRulers();
   invalidate();
 }
+
+void View::on_buttonPress(GdkEventButton* event)
+{
+  if(event->button==1 && modifiermove==0)
+  {
+    // Begin left-dragging
+    modifiermove = GDK_BUTTON1_MASK;
+    cachedx = event->x;
+    cachedy = event->y;
+  }
+}
+
+void View::on_buttonRelease(GdkEventButton* event)
+{
+  if(event->button==1 && modifiermove==GDK_BUTTON1_MASK)
+  {
+    // End left-dragging
+    modifiermove = 0;
+    cachedx = 0;
+    cachedy = 0;
+  }
+}
+
+void View::on_motion_notify(GdkEventMotion* event)
+{
+  if((event->state & GDK_BUTTON1_MASK) && modifiermove == GDK_BUTTON1_MASK)
+  {
+    bool moved=false;
+    
+    if(zoom>=0)
+    {
+      const int pixelSize=1<<zoom;
+      if(std::abs(event->x-cachedx)>=pixelSize)
+      {
+        int delta = (int(event->x)-cachedx)/pixelSize;
+        cachedx += delta*pixelSize;
+        x-=delta;
+        moved=true;
+      }
+      if(std::abs(event->y-cachedy)>=pixelSize)
+      {
+        int delta = (int(event->y)-cachedy)/pixelSize;
+        cachedy += delta*pixelSize;
+        y-=delta;
+        moved=true;
+      }
+    }
+    else
+    {
+      const int pixelSize=1<<-zoom;
+      x-=(event->x-cachedx)*pixelSize;
+      cachedx=event->x;
+      y-=(event->y-cachedy)*pixelSize;
+      cachedy=event->y;
+      moved=true;
+    }
+
+    if(moved)
+    {
+      updateScrollbars();
+      updateRulers();
+      invalidate();
+    }
+  }
+}
+
 
 ////////////////////////////////////////////////////////////////////////
 // Presentation events

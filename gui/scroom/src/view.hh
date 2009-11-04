@@ -31,6 +31,10 @@ private:
   int x;
   int y;
   ViewIdentifier* vid;
+
+  gint modifiermove;
+  int cachedx;
+  int cachedy;
   
 public:
 
@@ -57,6 +61,9 @@ public:
   void on_zoombox_changed(int newZoom, int mousex, int mousey);
   void on_scrollbar_value_changed(GtkAdjustment* adjustment);
   void on_scrollwheel(GdkEventScroll* event);
+  void on_buttonPress(GdkEventButton* event);
+  void on_buttonRelease(GdkEventButton* event);
+  void on_motion_notify(GdkEventMotion* event);
 
   ////////////////////////////////////////////////////////////////////////
   // Presentation events
