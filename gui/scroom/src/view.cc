@@ -155,6 +155,9 @@ void View::updateScrollbar(GtkAdjustment* adj, int zoom, int value, int presenta
   {
     // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
     int pixelSize = 1<<zoom;
+    presentationStart -= windowSize/pixelSize/2;
+    presentationSize += windowSize/pixelSize;
+    
     gtk_adjustment_configure(adj, value, presentationStart, presentationStart+presentationSize,
                              1, 3*windowSize/pixelSize/4, windowSize/pixelSize);
   }
@@ -162,7 +165,9 @@ void View::updateScrollbar(GtkAdjustment* adj, int zoom, int value, int presenta
   {
     // Zooming out. Smallest step is 1 window-pixel, which is more than one presentation-pixel
     int pixelSize = 1<<(-zoom);
-    // value -= value%pixelSize;
+    presentationStart -= windowSize*pixelSize/2;
+    presentationSize += windowSize*pixelSize;
+
     gtk_adjustment_configure(adj, value, presentationStart, presentationStart+presentationSize,
                              pixelSize, 3*windowSize*pixelSize/4, windowSize*pixelSize);
   }
