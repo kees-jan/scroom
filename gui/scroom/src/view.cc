@@ -337,6 +337,32 @@ void View::on_zoombox_changed(int newZoom, int mousex, int mousey)
   if(newZoom!=zoom)
   {
     // printf("New zoom: %d\n", newZoom);
+    if(zoom>=0)
+    {
+      const int pixelSize = 1<<zoom;
+      x+=mousex/pixelSize;
+      y+=mousey/pixelSize;
+    }
+    else
+    {
+      const int pixelSize = 1<<-zoom;
+      x+=mousex*pixelSize;
+      y+=mousey*pixelSize;
+    }
+
+    if(newZoom>=0)
+    {
+      const int pixelSize = 1<<newZoom;
+      x-=mousex/pixelSize;
+      y-=mousey/pixelSize;
+    }
+    else
+    {
+      const int pixelSize = 1<<-newZoom;
+      x-=mousex*pixelSize;
+      y-=mousey*pixelSize;
+    }
+    
     zoom = newZoom;
     updateScrollbars();
     invalidate();
