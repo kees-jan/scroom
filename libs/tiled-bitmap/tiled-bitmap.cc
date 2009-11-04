@@ -143,7 +143,7 @@ inline void computeAreasEndZoomingIn(int presentationBegin, int presentationSize
   }
   else
   {
-    tileSize = presentationBegin + presentationSize - tileOffset;
+    tileSize = presentationBegin + presentationSize - tileOffset - tileBegin;
   }
   viewSize = tileSize*pixelSize;
 }
@@ -207,27 +207,73 @@ void TiledBitmap::redraw(cairo_t* cr, GdkRectangle presentationArea, int zoom)
   if(zoom>0)
   {
     // Zooming in. This is always done using layer 0
-    int left = presentationArea.x;
-    int top = presentationArea.y;
-    int right = presentationArea.x+presentationArea.width;
-    int bottom = presentationArea.y+presentationArea.height;
-
-    int imin = left/TILESIZE;
-    int imax = (right+TILESIZE-1)/TILESIZE;
-    int jmin = top/TILESIZE;
-    int jmax = (bottom+TILESIZE-1)/TILESIZE;
-
     Layer* layer = layers[0];
     LayerOperations* layerOperations = ls[0];
 
+    const int origWidth = presentationArea.width;
+    const int origHeight = presentationArea.height;
+    presentationArea.width = std::min(presentationArea.width, layer->getWidth()-presentationArea.x);
+    presentationArea.height = std::min(presentationArea.height, layer->getHeight()-presentationArea.y);
+    
+    const int left = presentationArea.x;
+    const int top = presentationArea.y;
+    const int right = presentationArea.x+presentationArea.width;
+    const int bottom = presentationArea.y+presentationArea.height;
+
+    const int imin = std::min(0, left/TILESIZE);
+    const int imax = (right+TILESIZE-1)/TILESIZE;
+    const int jmin = std::min(0, top/TILESIZE);
+    const int jmax = (bottom+TILESIZE-1)/TILESIZE;
+
+    const int pixelSize = 1<<zoom;
+    
     layerOperations->initializeCairo(cr);
+
+    if(presentationArea.width < origWidth)
+    {
+      GdkRectangle viewArea;
+      viewArea.x = presentationArea.width*pixelSize;
+      viewArea.width = (origWidth - presentationArea.width)*pixelSize;
+      viewArea.y = 0;
+      viewArea.height = origHeight*pixelSize;
+      
+      layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
+    }
+    if(presentationArea.height < origHeight)
+    {
+      GdkRectangle viewArea;
+      viewArea.y = presentationArea.height*pixelSize;
+      viewArea.height = (origHeight - presentationArea.height)*pixelSize;
+      viewArea.x = 0;
+      viewArea.width = presentationArea.width*pixelSize;
+      
+      layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
+    }
+    if(presentationArea.x<0)
+    {
+      GdkRectangle viewArea;
+      viewArea.x=0;
+      viewArea.width = -presentationArea.x*pixelSize;
+      viewArea.y=0;
+      viewArea.height = presentationArea.height*pixelSize;
+
+      layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
+    }
+    if(presentationArea.y<0)
+    {
+      GdkRectangle viewArea;
+      viewArea.y=0;
+      viewArea.height = -presentationArea.y*pixelSize;
+      viewArea.x = std::max(0, -presentationArea.x*pixelSize);
+      viewArea.width = presentationArea.width*pixelSize;
+                            
+      layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
+    }
     
     for(int i=imin; i<imax; i++)
     {
       for(int j=jmin; j<jmax; j++)
       {
-        int pixelSize = 1<<zoom;
-        
         GdkRectangle tileArea;
         GdkRectangle viewArea;
 
@@ -244,7 +290,7 @@ void TiledBitmap::redraw(cairo_t* cr, GdkRectangle presentationArea, int zoom)
         {
           layerOperations->draw(cr, tile->getTile(), tileArea, viewArea, zoom);
         }
-        else if (tile->state != TILE_OUT_OF_BOUNDS)
+        else
         {
           layerOperations->drawState(cr, tile->state, viewArea);
         }
@@ -270,23 +316,71 @@ void TiledBitmap::redraw(cairo_t* cr, GdkRectangle presentationArea, int zoom)
     Layer* layer = layers[layerNr];
     LayerOperations* layerOperations = ls[std::min(ls.size()-1, (size_t)layerNr)];
 
-    int left = presentationArea.x;
-    int top = presentationArea.y;
-    int right = presentationArea.x+presentationArea.width;
-    int bottom = presentationArea.y+presentationArea.height;
+    const int origWidth = presentationArea.width;
+    const int origHeight = presentationArea.height;
+    presentationArea.width = std::min(presentationArea.width, layer->getWidth()-presentationArea.x);
+    presentationArea.height = std::min(presentationArea.height, layer->getHeight()-presentationArea.y);
+    
+    const int left = presentationArea.x;
+    const int top = presentationArea.y;
+    const int right = presentationArea.x+presentationArea.width;
+    const int bottom = presentationArea.y+presentationArea.height;
 
-    int imin = left/TILESIZE;
-    int imax = (right+TILESIZE-1)/TILESIZE;
-    int jmin = top/TILESIZE;
-    int jmax = (bottom+TILESIZE-1)/TILESIZE;
+    const int imin = left/TILESIZE;
+    const int imax = (right+TILESIZE-1)/TILESIZE;
+    const int jmin = top/TILESIZE;
+    const int jmax = (bottom+TILESIZE-1)/TILESIZE;
 
+    const int pixelSize = 1<<-zoom;
+    
     layerOperations->initializeCairo(cr);
+    
+    if(presentationArea.width < origWidth)
+    {
+      GdkRectangle viewArea;
+      viewArea.x = presentationArea.width/pixelSize;
+      viewArea.width = (origWidth - presentationArea.width)/pixelSize;
+      viewArea.y = 0;
+      viewArea.height = origHeight/pixelSize;
+      
+      layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
+    }
+    if(presentationArea.height < origHeight)
+    {
+      GdkRectangle viewArea;
+      viewArea.y = presentationArea.height/pixelSize;
+      viewArea.height = (origHeight - presentationArea.height)/pixelSize;
+      viewArea.x = 0;
+      viewArea.width = presentationArea.width/pixelSize;
+      
+      layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
+    }
+    if(presentationArea.x<0)
+    {
+      GdkRectangle viewArea;
+      viewArea.x=0;
+      viewArea.width = -presentationArea.x/pixelSize;
+      viewArea.y=0;
+      viewArea.height = presentationArea.height/pixelSize;
+
+      layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
+    }
+    if(presentationArea.y<0)
+    {
+      GdkRectangle viewArea;
+      viewArea.y=0;
+      viewArea.height = -presentationArea.y/pixelSize;
+      viewArea.x = std::max(0, -presentationArea.x/pixelSize);
+      viewArea.width = presentationArea.width/pixelSize;
+                            
+      layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
+    }
+    
     
     for(int i=imin; i<imax; i++)
     {
       for(int j=jmin; j<jmax; j++)
       {
-        int pixelSize = 1<<-zoom;
         
         GdkRectangle tileArea;
         GdkRectangle viewArea;

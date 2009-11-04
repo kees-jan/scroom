@@ -28,6 +28,14 @@ public:
   TileInternal* getTile(int i, int j);
   TileInternalLine& getTileLine(int j);
   void fetchData(SourcePresentation* sp);
+
+public:
+  int getWidth()
+  { return width; }
+
+  int getHeight()
+  { return height; }
+    
 };
 
 
