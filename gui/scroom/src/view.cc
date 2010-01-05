@@ -213,8 +213,6 @@ void View::updateZoom()
     
     gtk_widget_set_sensitive(GTK_WIDGET(zoomBox), true);
     
-    // printf("updateZoom\n");
-
     int zMax = MaxZoom - minZoom;
     zMax = std::max(zMax, 1+MaxZoom-zoom);
     zMax = std::min((size_t)zMax, sizeof(zoomfactor)/sizeof(zoomfactor[0]));
@@ -317,8 +315,6 @@ void View::on_configure()
 
 void View::on_window_size_changed(int newWidth, int newHeight)
 {
-  printf("New drawing area size: %d, %d\n", newWidth, newHeight);
-
   if(zoom>=0)
   {
     const int pixelSize = 1<<zoom;
@@ -359,7 +355,6 @@ void View::on_scrollwheel(GdkEventScroll* event)
 
       if(foundZoom==newZoom)
       {
-        printf("Zoom: %d (%d, %d)\n", newZoom, (int)event->x, (int)event->y);
         on_zoombox_changed(newZoom, event->x, event->y);
         gtk_combo_box_set_active_iter(zoomBox, &iter);
         break;
@@ -387,7 +382,6 @@ void View::on_zoombox_changed(int newZoom, int mousex, int mousey)
 {
   if(newZoom!=zoom)
   {
-    // printf("New zoom: %d\n", newZoom);
     if(zoom>=0)
     {
       const int pixelSize = 1<<zoom;
@@ -425,12 +419,10 @@ void View::on_scrollbar_value_changed(GtkAdjustment* adjustment)
   if(adjustment == vscrollbaradjustment)
   {
     y = (int)gtk_adjustment_get_value(adjustment);
-    // printf("Vertical Scrollbar value %d\n", y);
   }
   else
   {
     x = (int)gtk_adjustment_get_value(adjustment);
-    // printf("Horizontal Scrollbar value %d\n", x);
   }
   updateRulers();
   invalidate();
