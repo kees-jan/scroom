@@ -1,6 +1,8 @@
 #ifndef _VIEWINTERFACE_HH
 #define _VIEWINTERFACE_HH
 
+#include <gtk/gtk.h>
+
 class ViewInterface
 {
 public:
@@ -10,6 +12,8 @@ public:
   }
 
   virtual void invalidate()=0;
+
+  virtual GtkProgressBar* getProgressBar()=0;
 };
 
 

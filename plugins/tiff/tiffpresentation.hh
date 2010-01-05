@@ -2,7 +2,6 @@
 #define _TIFFPRESENTATION_HH
 
 #include <string>
-#include <map>
 
 #include <tiledbitmapinterface.hh>
 #include <presentationinterface.hh>
@@ -18,7 +17,6 @@ private:
   bool negative;
   TiledBitmapInterface* tbi;
   LayerSpec ls;
-  std::map<TiledBitmapViewData*, ViewInterface*> viewData;
   
 public:
 

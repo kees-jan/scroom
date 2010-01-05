@@ -27,6 +27,7 @@ private:
   GtkRuler* vruler;
   GtkComboBox* zoomBox;
   GtkListStore* zoomItems;
+  GtkProgressBar* progressBar;
   int zoom;
   int x;
   int y;
@@ -69,6 +70,8 @@ public:
   // Presentation events
 
   virtual void invalidate();
+  virtual GtkProgressBar* getProgressBar();
+  
 };
 
 #endif

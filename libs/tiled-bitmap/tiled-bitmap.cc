@@ -15,13 +15,24 @@ TiledBitmapInterface* createTiledBitmap(int bitmapWidth, int bitmapHeight, Layer
 TiledBitmapViewData::TiledBitmapViewData(ViewInterface* viewInterface)
   : viewInterface(viewInterface)
 {
+  progressBar = viewInterface->getProgressBar();
+}
+
+TiledBitmapViewData::~TiledBitmapViewData()
+{
+  ::gtk_progress_bar_set_fraction(progressBar, 0.0);
+}
+
+void TiledBitmapViewData::gtk_progress_bar_set_fraction(double fraction)
+{
+  ::gtk_progress_bar_set_fraction(progressBar, fraction);
 }
 
 ////////////////////////////////////////////////////////////////////////
 // TiledBitmap
 
 TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
-  :bitmapWidth(bitmapWidth), bitmapHeight(bitmapHeight), ls(ls)
+  :bitmapWidth(bitmapWidth), bitmapHeight(bitmapHeight), ls(ls), progressBar(NULL), tileCount(0), tileFinishedCount(0)
 {
   int width = bitmapWidth;
   int height = bitmapHeight;
@@ -37,7 +48,7 @@ TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
     
     bpp = lo->getBpp();
 
-    Layer* layer = new Layer(i, width, height, bpp);
+    Layer* layer = new Layer(this, i, width, height, bpp);
     layers.push_back(layer);
     if(prevLayer)
     {
@@ -104,6 +115,21 @@ void TiledBitmap::connect(Layer* layer, Layer* prevLayer,
       lc->addSourceTile(hoffset, voffset, prevLayer->getTile(i,j));
     }
   }
+}
+
+void TiledBitmap::gtk_progress_bar_set_fraction(double fraction)
+{
+  gdk_threads_enter();
+  boost::mutex::scoped_lock lock(viewDataMutex);
+  std::map<TiledBitmapViewData*, ViewInterface*>::iterator cur = viewData.begin();
+  std::map<TiledBitmapViewData*, ViewInterface*>::iterator end = viewData.end();
+
+  for(; cur!=end; ++cur)
+  {
+    // EEK! This is not thread safe!
+    cur->first->gtk_progress_bar_set_fraction(fraction);
+  }
+  gdk_threads_leave();
 }
 
 
@@ -198,7 +224,7 @@ void TiledBitmap::drawTile(cairo_t* cr, const TileInternal* tile, const GdkRecta
 
 }
 
-void TiledBitmap::redraw(cairo_t* cr, GdkRectangle presentationArea, int zoom)
+void TiledBitmap::redraw(ViewIdentifier* vid, cairo_t* cr, GdkRectangle presentationArea, int zoom)
 {
   // presentationArea.width-=200;
   // presentationArea.height-=200;
@@ -408,4 +434,49 @@ void TiledBitmap::redraw(cairo_t* cr, GdkRectangle presentationArea, int zoom)
       }
     }
   }
+}
+
+ViewIdentifier* TiledBitmap::open(ViewInterface* viewInterface)
+{
+  boost::mutex::scoped_lock lock(viewDataMutex);
+  TiledBitmapViewData* vd = new TiledBitmapViewData(viewInterface);
+  viewData[vd] = viewInterface;
+  return vd;
+}
+
+void TiledBitmap::close(ViewIdentifier* vid)
+{
+  boost::mutex::scoped_lock lock(viewDataMutex);
+  TiledBitmapViewData* vd = dynamic_cast<TiledBitmapViewData*>(vid);
+  viewData.erase(vd);
+  delete vd;
+}
+
+////////////////////////////////////////////////////////////////////////
+// TileInternalObserver
+
+void TiledBitmap::tileCreated(TileInternal* tile)
+{
+  UNUSED(tile);
+  tileCount++;
+}
+
+void TiledBitmap::tileFinished(TileInternal* tile)
+{
+  UNUSED(tile);
+  boost::mutex::scoped_lock lock(tileFinishedMutex);
+  tileFinishedCount++;
+  if(tileFinishedCount>tileCount)
+  {
+    printf("ERROR: Too many tiles are finished!\n");
+  }
+  else
+  {
+    gtk_progress_bar_set_fraction(((double)tileFinishedCount)/tileCount);
+    if(tileFinishedCount==tileCount)
+    {
+      gtk_progress_bar_set_fraction(0.0);
+      printf("INFO: Finished loading file\n");
+    }
+  }  
 }

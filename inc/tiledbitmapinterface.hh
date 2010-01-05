@@ -2,6 +2,7 @@
 #define _TILEMANAGERINTERFACE_HH
 
 #include <gdk/gdk.h>
+#include <gtk/gtk.h>
 #include <cairo.h>
 
 #include <vector>
@@ -17,16 +18,6 @@ typedef enum
     TILE_LOADED,
     TILE_OUT_OF_BOUNDS
   } TileState;
-
-class TiledBitmapViewData : public ViewIdentifier
-{
-public:
-  ViewInterface* viewInterface;
-
-public:
-  TiledBitmapViewData(ViewInterface* viewInterface);
-};
-
 
 class LayerOperations
 {
@@ -60,8 +51,9 @@ public:
   {}
 
   virtual void setSource(SourcePresentation* sp)=0;
-  virtual void redraw(cairo_t* cr, GdkRectangle presentationArea, int zoom)=0;
-
+  virtual ViewIdentifier* open(ViewInterface* viewInterface)=0;
+  virtual void close(ViewIdentifier* vid)=0;
+  virtual void redraw(ViewIdentifier* vid, cairo_t* cr, GdkRectangle presentationArea, int zoom)=0;
 };
 
 TiledBitmapInterface* createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls);

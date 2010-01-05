@@ -18,6 +18,9 @@ class TileInternal;
 class TileInternalObserver
 {
 public:
+  virtual ~TileInternalObserver() {}
+
+  virtual void tileCreated(TileInternal* tile);
   virtual void tileFinished(TileInternal* tile);
 };
 
@@ -38,6 +41,8 @@ public:
 
   void initialize();
   
+  void registerObserver(TileInternalObserver* observer);
+
   Tile::Ptr getTile();
 
   void reportFinished();

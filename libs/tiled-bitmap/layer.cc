@@ -25,7 +25,7 @@ public:
 
 ////////////////////////////////////////////////////////////////////////
 /// Layer 
-Layer::Layer(int depth, int layerWidth, int layerHeight, int bpp)
+Layer::Layer(TileInternalObserver* observer, int depth, int layerWidth, int layerHeight, int bpp)
   : depth(depth), width(layerWidth), height(layerHeight), bpp(bpp)
 {
   horTileCount = (width+TILESIZE-1)/TILESIZE;
@@ -37,7 +37,9 @@ Layer::Layer(int depth, int layerWidth, int layerHeight, int bpp)
     TileInternalLine& tl = tiles[j];
     for(int i=0; i<horTileCount; i++)
     {
-      tl.push_back(new TileInternal(depth, i, j, bpp));
+      TileInternal* tile = new TileInternal(depth, i, j, bpp);
+      tile->registerObserver(observer);
+      tl.push_back(tile);
     }
   }
 

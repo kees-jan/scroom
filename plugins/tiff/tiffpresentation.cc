@@ -14,10 +14,16 @@ TiffPresentation::TiffPresentation()
 
 TiffPresentation::~TiffPresentation()
 {
-  if(tif !=NULL)
+  if(tif != NULL)
   {
     TIFFClose(tif);
     tif=NULL;
+  }
+
+  if(tbi != NULL)
+  {
+    delete tbi;
+    tbi=NULL;
   }
 
   while(!ls.empty())
@@ -92,22 +98,29 @@ GdkRectangle TiffPresentation::getRect()
 
 ViewIdentifier* TiffPresentation::open(ViewInterface* viewInterface)
 {
-  TiledBitmapViewData* vd = new TiledBitmapViewData(viewInterface);
-  viewData[vd] = viewInterface;
-  return vd;
+  if(tbi)
+    return tbi->open(viewInterface);
+  else
+  {
+    printf("ERROR: TiffPresentation::open(): No TiledBitmapInterface available!\n");
+    return NULL;
+  }
 }
 
 void TiffPresentation::close(ViewIdentifier* vid)
 {
-  TiledBitmapViewData* vd = dynamic_cast<TiledBitmapViewData*>(vid);
-  viewData.erase(vd);
-  delete vd;
+  if(tbi)
+    tbi->close(vid);
+  else
+  {
+    printf("ERROR: TiffPresentation::close(): No TiledBitmapInterface available!\n");
+  }
 }
 
 void TiffPresentation::redraw(ViewIdentifier* vid, cairo_t* cr, GdkRectangle presentationArea, int zoom)
 {
   if(tbi)
-    tbi->redraw(cr, presentationArea, zoom);
+    tbi->redraw(vid, cr, presentationArea, zoom);
 }
 
 ////////////////////////////////////////////////////////////////////////

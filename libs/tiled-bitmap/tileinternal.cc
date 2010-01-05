@@ -12,6 +12,11 @@ void TileInternalObserver::tileFinished(TileInternal* tile)
   UNUSED(tile);
 }
 
+void TileInternalObserver::tileCreated(TileInternal* tile)
+{
+  UNUSED(tile);
+}
+
 ////////////////////////////////////////////////////////////////////////
 /// TileInternal
 TileInternal::TileInternal(int depth, int x, int y, int bpp, TileState state)
@@ -60,4 +65,10 @@ void TileInternal::reportFinished()
     observers.front()->tileFinished(this);
     observers.pop_front();
   }
+}
+
+void TileInternal::registerObserver(TileInternalObserver* observer)
+{
+  Observable<TileInternalObserver>::registerObserver(observer);
+  observer->tileCreated(this);
 }

@@ -21,7 +21,7 @@ private:
   TileInternalLine lineOutOfBounds;
   
 public:
-  Layer(int depth, int layerWidth, int layerHeight, int bpp);
+  Layer(TileInternalObserver* observer, int depth, int layerWidth, int layerHeight, int bpp);
   int getHorTileCount();
   int getVerTileCount();
 

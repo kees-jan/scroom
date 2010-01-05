@@ -77,6 +77,9 @@ View::View(GladeXML* scroomXml, PresentationInterface* presentation)
   gtk_cell_layout_set_attributes(GTK_CELL_LAYOUT(zoomBox), txt,
                                  "text", COLUMN_TEXT,
                                  NULL);
+
+  progressBar = GTK_PROGRESS_BAR(glade_xml_get_widget(scroomXml, "progressbar"));
+
   
   on_newInterfaces_update(pluginManager.getNewInterfaces());
   on_configure();
@@ -500,4 +503,9 @@ void View::on_motion_notify(GdkEventMotion* event)
 void View::invalidate()
 {
   gdk_window_invalidate_rect(gtk_widget_get_window(drawingArea), NULL, false);
+}
+
+GtkProgressBar* View::getProgressBar()
+{
+  return progressBar;
 }
