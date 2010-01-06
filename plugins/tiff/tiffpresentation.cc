@@ -33,7 +33,7 @@ TiffPresentation::~TiffPresentation()
   }
 }
 
-bool TiffPresentation::load(std::string fileName)
+bool TiffPresentation::load(std::string fileName, FileOperationObserver* observer)
 {
   tif = TIFFOpen(fileName.c_str(), "r");
     if (!tif)
@@ -76,7 +76,7 @@ bool TiffPresentation::load(std::string fileName)
   ls.clear();
   ls.push_back(new Operations1bpp());
   ls.push_back(new Operations8bpp());
-  tbi = createTiledBitmap(width, height, ls);
+  tbi = createTiledBitmap(width, height, ls, observer);
   tbi->setSource(this);
   return true;
 }

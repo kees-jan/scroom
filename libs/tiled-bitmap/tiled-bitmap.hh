@@ -1,6 +1,7 @@
 #ifndef _TILED_BITMAP_HH
 #define _TILED_BITMAP_HH
 
+#include <scroominterface.hh>
 #include <tiledbitmapinterface.hh>
 
 #include <list>
@@ -38,9 +39,10 @@ private:
   int tileCount;
   boost::mutex tileFinishedMutex;
   int tileFinishedCount;
+  FileOperationObserver* observer;
   
 public:
-  TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls);
+  TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver* observer);
   virtual ~TiledBitmap();
 
 private:

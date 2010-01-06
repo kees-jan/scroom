@@ -4,9 +4,21 @@
 
 #include <unused.h>
 
-TiledBitmapInterface* createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
+TiledBitmapInterface* createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver* observer)
 {
-  return new TiledBitmap(bitmapWidth, bitmapHeight, ls);
+  return new TiledBitmap(bitmapWidth, bitmapHeight, ls, observer);
+}
+
+////////////////////////////////////////////////////////////////////////
+
+gboolean reportComplete(gpointer data)
+{
+  if(data)
+  {
+    ((FileOperationObserver*)data)->fileOperationComplete();
+  }
+
+  return FALSE;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -31,8 +43,9 @@ void TiledBitmapViewData::gtk_progress_bar_set_fraction(double fraction)
 ////////////////////////////////////////////////////////////////////////
 // TiledBitmap
 
-TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
-  :bitmapWidth(bitmapWidth), bitmapHeight(bitmapHeight), ls(ls), progressBar(NULL), tileCount(0), tileFinishedCount(0)
+TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver* observer)
+  :bitmapWidth(bitmapWidth), bitmapHeight(bitmapHeight), ls(ls), progressBar(NULL), tileCount(0), tileFinishedCount(0),
+   observer(observer)
 {
   int width = bitmapWidth;
   int height = bitmapHeight;
@@ -476,6 +489,10 @@ void TiledBitmap::tileFinished(TileInternal* tile)
     if(tileFinishedCount==tileCount)
     {
       gtk_progress_bar_set_fraction(0.0);
+      if(observer)
+      {
+        gdk_threads_add_idle(reportComplete, observer);
+      }
       printf("INFO: Finished loading file\n");
     }
   }  

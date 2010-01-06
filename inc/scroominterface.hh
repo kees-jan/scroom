@@ -8,34 +8,36 @@
 
 #include <presentationinterface.hh>
 
+class FileOperationObserver
+{
+public:
+  virtual ~FileOperationObserver() {}
+
+  virtual void fileOperationComplete()=0;
+};
+
 class NewInterface
 {
 public:
-  virtual ~NewInterface()
-  {
-  }
+  virtual ~NewInterface() {}
   
-  virtual PresentationInterface* createNew()=0;
+  virtual PresentationInterface* createNew(FileOperationObserver* observer)=0;
 };
 
 class OpenInterface
 {
 public:
-  virtual ~OpenInterface()
-  {
-  }
+  virtual ~OpenInterface() {}
 
   virtual std::list<GtkFileFilter*> getFilters()=0;
   
-  virtual PresentationInterface* open(const std::string& fileName)=0;
+  virtual PresentationInterface* open(const std::string& fileName, FileOperationObserver* observer)=0;
 };
 
 class ScroomInterface
 {
 public:
-  virtual ~ScroomInterface()
-  {
-  }
+  virtual ~ScroomInterface() {}
 
   virtual void registerNewInterface(const std::string& identifier, NewInterface* newInterface)=0;
   virtual void unregisterNewInterface(NewInterface* newInterface)=0;

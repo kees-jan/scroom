@@ -3,6 +3,7 @@
 
 #include <string>
 
+#include <scroominterface.hh>
 #include <tiledbitmapinterface.hh>
 #include <presentationinterface.hh>
 
@@ -23,7 +24,7 @@ public:
   TiffPresentation();
   virtual ~TiffPresentation();
 
-  bool load(std::string fileName);
+  bool load(std::string fileName, FileOperationObserver* observer);
   
   ////////////////////////////////////////////////////////////////////////
   // PresentationInterface

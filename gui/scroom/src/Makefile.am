@@ -11,8 +11,9 @@ scroom_SOURCES = \
 	main.cc \
 	callbacks.cc callbacks.hh \
 	view.cc view.hh \
-	pluginmanager.hh pluginmanager.cc
+	pluginmanager.hh pluginmanager.cc \
+	loader.cc loader.hh
 
 scroom_CXXFLAGS = -I ../../../inc
 
-scroom_LDADD = @PACKAGE_LIBS@ $(INTLLIBS)
+scroom_LDADD = @PACKAGE_LIBS@ $(INTLLIBS) -lboost_thread-mt

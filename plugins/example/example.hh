@@ -3,6 +3,7 @@
 
 #include <plugininformationinterface.hh>
 #include <presentationinterface.hh>
+#include <workinterface.hh>
 
 class Example : public PluginInformationInterface, public NewInterface
 {
@@ -12,8 +13,8 @@ public:
   virtual void registerCapabilities(ScroomInterface* host);
   virtual void unregisterCapabilities(ScroomInterface* host);
 
-  virtual PresentationInterface* createNew();
-  
+  virtual PresentationInterface* createNew(FileOperationObserver* observer);
+
   virtual ~Example();
 };
 

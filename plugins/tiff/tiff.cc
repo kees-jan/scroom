@@ -48,10 +48,10 @@ std::list<GtkFileFilter*> Tiff::getFilters()
   return result;
 }
   
-PresentationInterface* Tiff::open(const std::string& fileName)
+PresentationInterface* Tiff::open(const std::string& fileName, FileOperationObserver* observer)
 {
   TiffPresentation* p = new TiffPresentation();
-  if(!p->load(fileName))
+  if(!p->load(fileName, observer))
   {
     delete p;
     p=NULL;
@@ -63,10 +63,10 @@ PresentationInterface* Tiff::open(const std::string& fileName)
 // NewInterface
 ////////////////////////////////////////////////////////////////////////
 
-PresentationInterface* Tiff::createNew()
+PresentationInterface* Tiff::createNew(FileOperationObserver* observer)
 {
   TiffPresentation* p = new TiffPresentation();
-  if(!p->load("tissuebox.tif"))
+  if(!p->load("tissuebox.tif", observer))
   {
     delete p;
     p=NULL;

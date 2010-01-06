@@ -7,6 +7,7 @@
 
 #include <vector>
 
+#include <scroominterface.hh>
 #include <viewinterface.hh>
 #include <presentationinterface.hh>
 #include <tile.hh>
@@ -56,7 +57,7 @@ public:
   virtual void redraw(ViewIdentifier* vid, cairo_t* cr, GdkRectangle presentationArea, int zoom)=0;
 };
 
-TiledBitmapInterface* createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls);
+TiledBitmapInterface* createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver* observer);
 
 
 #endif

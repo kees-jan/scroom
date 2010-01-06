@@ -20,12 +20,12 @@ public:
   // OpenInterface
   
   virtual std::list<GtkFileFilter*> getFilters();
-  virtual PresentationInterface* open(const std::string& fileName);
+  virtual PresentationInterface* open(const std::string& fileName, FileOperationObserver* observer);
 
   ////////////////////////////////////////////////////////////////////////
   // NewInterface (for development only)
   
-  virtual PresentationInterface* createNew();
+  virtual PresentationInterface* createNew(FileOperationObserver* observer);
 
   ////////////////////////////////////////////////////////////////////////
   

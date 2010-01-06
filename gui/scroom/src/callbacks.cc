@@ -18,6 +18,7 @@
 
 #include "view.hh"
 #include "pluginmanager.hh"
+#include "loader.hh"
 
 static std::string xmlFileName;
 static GladeXML* aboutDialogXml=NULL;
@@ -39,7 +40,7 @@ void on_scroom_hide (GtkWidget* widget, gpointer user_data)
 void on_new_activate (GtkMenuItem* menuitem, gpointer user_data)
 {
   NewInterface* newInterface = static_cast<NewInterface*>(user_data);
-  PresentationInterface* presentation = newInterface->createNew();
+  PresentationInterface* presentation = newInterface->createNew(NULL);
   find_or_create_scroom(presentation);
 }
 
@@ -81,24 +82,7 @@ void on_open_activate (GtkMenuItem* menuitem, gpointer user_data)
     filterInfo.contains =
       (GtkFileFilterFlags)(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_MIME_TYPE);
     printf("Opening file %s (%s)\n", filterInfo.filename, filterInfo.mime_type);
-
-    PresentationInterface* presentation = NULL;
-    for(std::map<OpenInterface*, std::string>::const_iterator cur=openInterfaces.begin();
-        cur != openInterfaces.end() && presentation==NULL;
-        cur++)
-    {
-      std::list<GtkFileFilter*> filters = cur->first->getFilters();
-      for(std::list<GtkFileFilter*>::iterator f = filters.begin();
-          f != filters.end() && presentation==NULL;
-          f++)
-      {
-        if(gtk_file_filter_filter(*f, &filterInfo))
-        {
-          presentation = cur->first->open(filterInfo.filename);
-          find_or_create_scroom(presentation);
-        }
-      }
-    }
+    Loader::getInstance().load(filterInfo);
   }
   gtk_widget_destroy (dialog);
 }
