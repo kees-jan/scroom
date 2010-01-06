@@ -14,7 +14,17 @@ enum
     PRIO_HIGHEST
   };
 
+class SeqJob : public WorkInterface
+{
+public:
+  virtual ~SeqJob() {}
+
+protected:
+  virtual void done();
+};
+
 void schedule(WorkInterface* wi, int priority=PRIO_NORMAL);
 
+void sequentially(SeqJob* job);
 
 #endif

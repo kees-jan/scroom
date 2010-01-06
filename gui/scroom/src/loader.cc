@@ -2,94 +2,108 @@
 
 #include <stdio.h>
 
+#include <threadpool.hh>
+
 #include "callbacks.hh"
 #include "pluginmanager.hh"
 
+
 ////////////////////////////////////////////////////////////////////////
 
-gboolean next(gpointer data)
+class FileOperation : public SeqJob, public FileOperationObserver
 {
-  if(data)
+public:
+  virtual ~FileOperation() {}
+
+  virtual void fileOperationComplete()
   {
-    ((Loader*)data)->next();
+    done();
+  }
+};
+
+////////////////////////////////////////////////////////////////////////
+
+class LoadOperation : public FileOperation
+{
+private:
+  GtkFileFilterInfo info;
+
+public:
+  LoadOperation(const GtkFileFilterInfo& info);
+  virtual ~LoadOperation() {}
+
+  virtual bool doWork();
+};
+
+LoadOperation::LoadOperation(const GtkFileFilterInfo& info)
+  : info(info)
+{
+}
+
+bool LoadOperation::doWork()
+{
+  const std::map<OpenInterface*, std::string>& openInterfaces = PluginManager::getInstance().getOpenInterfaces();
+  PresentationInterface* presentation = NULL;
+  for(std::map<OpenInterface*, std::string>::const_iterator cur=openInterfaces.begin();
+      cur != openInterfaces.end() && presentation==NULL;
+      cur++)
+  {
+    std::list<GtkFileFilter*> filters = cur->first->getFilters();
+    for(std::list<GtkFileFilter*>::iterator f = filters.begin();
+        f != filters.end() && presentation==NULL;
+        f++)
+    {
+      if(gtk_file_filter_filter(*f, &info))
+      {
+        presentation = cur->first->open(info.filename, this);
+        find_or_create_scroom(presentation);
+        return FALSE;
+      }
+    }
+    // Failed??? Try next one...
+    fileOperationComplete();
   }
 
+  return FALSE;
+}
+  
+
+////////////////////////////////////////////////////////////////////////
+
+class CreateOperation : public FileOperation
+{
+private:
+  NewInterface* interface;
+
+public:
+  CreateOperation(NewInterface* interface);
+  virtual ~CreateOperation() {}
+
+  virtual bool doWork();
+};
+
+CreateOperation::CreateOperation(NewInterface* interface)
+  : interface(interface)
+{
+}
+
+bool CreateOperation::doWork()
+{
+  PresentationInterface* presentation = interface->createNew(this);
+  find_or_create_scroom(presentation);
   return FALSE;
 }
 
 ////////////////////////////////////////////////////////////////////////
 
-
-Loader::Loader()
-  : currentlyLoading(false)
+void create(NewInterface* interface)
 {
+  sequentially(new CreateOperation(interface));
 }
 
-Loader::~Loader()
+void load(const GtkFileFilterInfo& info)
 {
-  if(currentlyLoading)
-    printf("ERROR: Still loading!\n");
+  sequentially(new LoadOperation(info));
 }
 
-void Loader::load(const GtkFileFilterInfo& info)
-{
-  boost::mutex::scoped_lock lock(remainingFilesMutex);
-  remainingFiles.push_back(info);
-  if(!currentlyLoading)
-    gdk_threads_add_idle(::next, this);
-}
 
-Loader& Loader::getInstance()
-{
-  static Loader instance;
-  return instance;
-}
-
-void Loader::next()
-{
-  GtkFileFilterInfo info;
-  bool infoAvailable = false;
-
-  { // New scope for scoped lock
-    boost::mutex::scoped_lock lock(remainingFilesMutex);
-    if(!remainingFiles.empty())
-    {
-      info = remainingFiles.front();
-      remainingFiles.pop_front();
-      infoAvailable = true;
-      currentlyLoading = true;
-    }
-  }
-
-  if(infoAvailable)
-  {
-    const std::map<OpenInterface*, std::string>& openInterfaces = PluginManager::getInstance().getOpenInterfaces();
-    PresentationInterface* presentation = NULL;
-    for(std::map<OpenInterface*, std::string>::const_iterator cur=openInterfaces.begin();
-        cur != openInterfaces.end() && presentation==NULL;
-        cur++)
-    {
-      std::list<GtkFileFilter*> filters = cur->first->getFilters();
-      for(std::list<GtkFileFilter*>::iterator f = filters.begin();
-          f != filters.end() && presentation==NULL;
-          f++)
-      {
-        if(gtk_file_filter_filter(*f, &info))
-        {
-          presentation = cur->first->open(info.filename, this);
-          find_or_create_scroom(presentation);
-          return;
-        }
-      }
-      // Failed??? Try next one...
-      fileOperationComplete();
-    }
-  }
-}
-
-void Loader::fileOperationComplete()
-{
-  boost::mutex::scoped_lock lock(remainingFilesMutex);
-  currentlyLoading=false;
-  gdk_threads_add_idle(::next, this);
-}

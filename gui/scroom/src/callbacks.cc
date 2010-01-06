@@ -40,8 +40,7 @@ void on_scroom_hide (GtkWidget* widget, gpointer user_data)
 void on_new_activate (GtkMenuItem* menuitem, gpointer user_data)
 {
   NewInterface* newInterface = static_cast<NewInterface*>(user_data);
-  PresentationInterface* presentation = newInterface->createNew(NULL);
-  find_or_create_scroom(presentation);
+  create(newInterface);
 }
 
 void on_open_activate (GtkMenuItem* menuitem, gpointer user_data)
@@ -82,7 +81,7 @@ void on_open_activate (GtkMenuItem* menuitem, gpointer user_data)
     filterInfo.contains =
       (GtkFileFilterFlags)(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_MIME_TYPE);
     printf("Opening file %s (%s)\n", filterInfo.filename, filterInfo.mime_type);
-    Loader::getInstance().load(filterInfo);
+    load(filterInfo);
   }
   gtk_widget_destroy (dialog);
 }
