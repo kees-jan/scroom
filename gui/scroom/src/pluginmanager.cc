@@ -144,6 +144,7 @@ bool PluginManager::doWork()
     break;
   case DONE:
     setStatusBarMessage("Done loading plugins");
+    on_done_loading_plugins();
     retval = false;
     break;
   }

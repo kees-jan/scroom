@@ -7,5 +7,6 @@
 
 void create(NewInterface* interface);
 void load(const GtkFileFilterInfo& info);
+void load(const std::string& filename);
 
 #endif

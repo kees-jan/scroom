@@ -1,6 +1,8 @@
 #include <gtk/gtk.h>
 
 #include <map>
+#include <list>
+#include <string>
 
 #include <scroominterface.hh>
 
@@ -34,11 +36,13 @@ gboolean on_drawingarea_configure_event(GtkWidget* widget, GdkEventConfigure* ev
 
 gboolean on_idle(gpointer user_data);
 
+void on_done_loading_plugins();
+
 void on_zoombox_changed(GtkComboBox* widget, gpointer user_data);
 
 void on_scrollbar_value_changed(GtkAdjustment* adjustment, gpointer user_data);
 
-void on_scroom_bootstrap();
+void on_scroom_bootstrap (const std::list<std::string>& newFilenames);
  
 void find_or_create_scroom(PresentationInterface* presentation);
 

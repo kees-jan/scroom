@@ -25,6 +25,7 @@ static GladeXML* aboutDialogXml=NULL;
 static GtkWidget* aboutDialog=NULL;
 
 static std::list<View*> views;
+static std::list<std::string> filenames;
 
 void on_scroom_hide (GtkWidget* widget, gpointer user_data)
 {
@@ -162,6 +163,17 @@ gboolean on_idle (gpointer user_data)
   }
 }
 
+void on_done_loading_plugins()
+{
+  while(!filenames.empty())
+  {
+    load(filenames.front());
+    filenames.pop_front();
+  }
+}
+
+
+
 void on_zoombox_changed(GtkComboBox* widget, gpointer user_data)
 {
   View* view = static_cast<View*>(user_data);
@@ -202,9 +214,10 @@ gboolean on_scroll_event(GtkWidget* widget, GdkEventScroll* event, gpointer user
   return true;
 }
 
-void on_scroom_bootstrap ()
+void on_scroom_bootstrap (const std::list<std::string>& newFilenames)
 {
   printf("Bootstrapping Scroom...\n");
+  filenames = newFilenames;
   startPluginManager();
 
   aboutDialogXml = glade_xml_new("scroom.glade", "aboutDialog", NULL);
@@ -217,6 +230,11 @@ void on_scroom_bootstrap ()
   {
     printf("Opening xml failed\n");
     exit(-1);
+  }
+
+  if(filenames.empty())
+  {
+    create_scroom(NULL);
   }
 }
 
