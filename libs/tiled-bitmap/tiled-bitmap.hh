@@ -9,8 +9,19 @@
 
 #include <boost/thread/mutex.hpp>
 
+#include <threadpool.hh>
+
 #include "layer.hh"
 #include "layercoordinator.hh"
+
+class FileOperation : public SeqJob
+{
+public:
+  virtual ~FileOperation() {}
+
+  virtual void finishedLoading() { done(); }
+};
+
 
 class TiledBitmapViewData : public ViewIdentifier
 {
@@ -23,6 +34,7 @@ public:
   virtual ~TiledBitmapViewData();
 
   void gtk_progress_bar_set_fraction(double fraction);
+  void gtk_progress_bar_pulse();
 };
 
 class TiledBitmap : public TiledBitmapInterface, private TileInternalObserver
@@ -40,6 +52,7 @@ private:
   boost::mutex tileFinishedMutex;
   int tileFinishedCount;
   FileOperationObserver* observer;
+  FileOperation* fileOperation;
   
 public:
   TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver* observer);
@@ -49,6 +62,9 @@ private:
   void drawTile(cairo_t* cr, const TileInternal* tile, const GdkRectangle viewArea);
   void connect(Layer* layer, Layer* prevLayer, LayerOperations* prevLo);
   void gtk_progress_bar_set_fraction(double fraction);
+
+public:
+  void gtk_progress_bar_pulse();
 
   ////////////////////////////////////////////////////////////////////////
   // TiledBitmapInterface

@@ -2,11 +2,65 @@
 
 #include <stdio.h>
 
+#include <boost/thread/mutex.hpp>
+
 #include <unused.h>
 
 TiledBitmapInterface* createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver* observer)
 {
   return new TiledBitmap(bitmapWidth, bitmapHeight, ls, observer);
+}
+
+////////////////////////////////////////////////////////////////////////
+
+class LoadOperation : public FileOperation
+{
+private:
+  TiledBitmap* parent;
+  Layer* target;
+  SourcePresentation* thePresentation;
+  boost::mutex waitingMutex;
+  bool waiting;
+  
+public:
+  LoadOperation(Layer* l, SourcePresentation* sp, TiledBitmap* parent);
+  virtual ~LoadOperation() {}
+
+  virtual bool doWork();
+  virtual bool timerExpired();
+};
+
+gboolean timerExpired(gpointer data)
+{
+  return ((LoadOperation*)data)->timerExpired();
+}
+
+LoadOperation::LoadOperation(Layer* l, SourcePresentation* sp, TiledBitmap* parent)
+  : parent(parent), target(l), thePresentation(sp), waitingMutex(), waiting(true)
+{
+  // timerExpired();
+  gtk_timeout_add(100, ::timerExpired, this);
+}
+
+bool LoadOperation::timerExpired()
+{
+  boost::mutex::scoped_lock lock(waitingMutex);
+  if(waiting)
+    parent->gtk_progress_bar_pulse();
+
+  return waiting;
+}
+
+bool LoadOperation::doWork()
+{
+  {
+    boost::mutex::scoped_lock lock(waitingMutex);
+    waiting = false;
+  }
+
+  target->fetchData(thePresentation);
+  
+  return FALSE;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -40,12 +94,17 @@ void TiledBitmapViewData::gtk_progress_bar_set_fraction(double fraction)
   ::gtk_progress_bar_set_fraction(progressBar, fraction);
 }
 
+void TiledBitmapViewData::gtk_progress_bar_pulse()
+{
+  ::gtk_progress_bar_pulse(progressBar);
+}
+
 ////////////////////////////////////////////////////////////////////////
 // TiledBitmap
 
 TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver* observer)
   :bitmapWidth(bitmapWidth), bitmapHeight(bitmapHeight), ls(ls), progressBar(NULL), tileCount(0), tileFinishedCount(0),
-   observer(observer)
+   observer(observer), fileOperation(NULL)
 {
   int width = bitmapWidth;
   int height = bitmapHeight;
@@ -145,13 +204,36 @@ void TiledBitmap::gtk_progress_bar_set_fraction(double fraction)
   gdk_threads_leave();
 }
 
+void TiledBitmap::gtk_progress_bar_pulse()
+{
+  gdk_threads_enter();
+  boost::mutex::scoped_lock lock(viewDataMutex);
+  std::map<TiledBitmapViewData*, ViewInterface*>::iterator cur = viewData.begin();
+  std::map<TiledBitmapViewData*, ViewInterface*>::iterator end = viewData.end();
+
+  for(; cur!=end; ++cur)
+  {
+    // EEK! This is not thread safe!
+    cur->first->gtk_progress_bar_pulse();
+  }
+  gdk_threads_leave();
+}
+
 
 ////////////////////////////////////////////////////////////////////////
 // TiledBitmapInterface
 
 void TiledBitmap::setSource(SourcePresentation* sp)
 {
-  layers[0]->fetchData(sp);
+  if(fileOperation==NULL)
+  {
+    fileOperation = new LoadOperation(layers[0], sp, this);
+    sequentially(fileOperation);
+  }
+  else
+  {
+    printf("PANIC: Another operation is already in process\n");
+  }
 }
 
 inline void computeAreasBeginningZoomingIn(int presentationBegin, int tileOffset, int pixelSize,
@@ -492,6 +574,11 @@ void TiledBitmap::tileFinished(TileInternal* tile)
       if(observer)
       {
         gdk_threads_add_idle(reportComplete, observer);
+      }
+      if(fileOperation)
+      {
+        fileOperation->finishedLoading();
+        fileOperation = NULL;
       }
       printf("INFO: Finished loading file\n");
     }
