@@ -8,7 +8,7 @@
 #include "layeroperations.hh"
 
 TiffPresentation::TiffPresentation()
-  : tif(NULL), height(0), width(0), negative(false), tbi(NULL)
+  : tif(NULL), height(0), width(0), negative(false), tbi(NULL), bpp(0)
 {
 }
 
@@ -55,13 +55,8 @@ bool TiffPresentation::load(std::string fileName, FileOperationObserver* observe
 
   uint16 bpp;
   TIFFGetField(tif, TIFFTAG_BITSPERSAMPLE, &bpp);
+  this->bpp = bpp;
 
-  if(bpp!=1)
-  {
-    // Todo: Grayscale/colourmap not yet supported
-    return false;
-  }
-  
   uint16 photometric;
   TIFFGetField(tif, TIFFTAG_PHOTOMETRIC, &photometric);
   // In the TIFF file: black = 1, white = 0. If the values are the other way around in the TIFF file,
@@ -74,8 +69,25 @@ bool TiffPresentation::load(std::string fileName, FileOperationObserver* observe
 
   printf("This bitmap has size %d*%d\n", width, height);
   ls.clear();
-  ls.push_back(new Operations1bpp());
-  ls.push_back(new Operations8bpp());
+
+  if(bpp==1)
+  {
+    ls.push_back(new Operations1bpp());
+    ls.push_back(new Operations8bpp());
+  }
+  else if(bpp==8)
+  {
+    ls.push_back(new Operations8bpp());
+  }
+  else if(bpp==2 || bpp==4)
+  {
+    ls.push_back(new Operations(bpp));
+  }
+  else
+  {
+    return false;
+  }
+
   tbi = createTiledBitmap(width, height, ls, observer);
   tbi->setSource(this);
   return true;
@@ -134,7 +146,8 @@ void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth, in
   //        firstTile, (int)(firstTile+tiles.size()),
   //        tileWidth);
 
-  int dataLength = (width+7)/8;
+  int pixelsPerByte = 8/bpp;
+  int dataLength = (width+pixelsPerByte-1)/pixelsPerByte;
   byte row[dataLength];
 
   int tileCount = tiles.size();
@@ -155,13 +168,13 @@ void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth, in
 
     for(int tile=0; tile<tileCount-1; tile++)
     {
-      memcpy(dataPtr[tile], row+(firstTile+tile)*tileWidth/8, tileWidth/8);
-      dataPtr[tile]+=tileWidth/8;
+      memcpy(dataPtr[tile], row+(firstTile+tile)*tileWidth/pixelsPerByte, tileWidth/pixelsPerByte);
+      dataPtr[tile]+=tileWidth/pixelsPerByte;
     }
     memcpy(dataPtr[tileCount-1],
-           row+(firstTile+tileCount-1)*tileWidth/8,
-           dataLength - (firstTile+tileCount-1)*tileWidth/8);
-    dataPtr[tileCount-1]+=tileWidth/8;
+           row+(firstTile+tileCount-1)*tileWidth/pixelsPerByte,
+           dataLength - (firstTile+tileCount-1)*tileWidth/pixelsPerByte);
+    dataPtr[tileCount-1]+=tileWidth/pixelsPerByte;
   }
 }
 

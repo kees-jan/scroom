@@ -18,6 +18,7 @@ private:
   bool negative;
   TiledBitmapInterface* tbi;
   LayerSpec ls;
+  int bpp;
   
 public:
 

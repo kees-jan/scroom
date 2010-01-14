@@ -49,5 +49,27 @@ public:
   virtual void reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y);
 };
 
+class Operations : public CommonOperations
+{
+private:
+  const int bpp;
+  const int pixelsPerByte;
+  const int pixelOffset;
+  const int pixelMask;
+  
+public:
+  Operations(int bpp);
+  
+  virtual ~Operations()
+  {}
+  
+  ////////////////////////////////////////////////////////////////////////
+  // LayerOperations
+
+  virtual int getBpp();
+  virtual void draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom);
+  virtual void reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y);
+};
+
 
 #endif

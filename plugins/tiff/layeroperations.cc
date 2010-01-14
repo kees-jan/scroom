@@ -1,80 +1,94 @@
 #include "layeroperations.hh"
 
 #include <stdio.h>
+#include <string.h>
 
 ////////////////////////////////////////////////////////////////////////
-// BitIterator
+// PixelIterator
 
-class BitIterator
+class PixelIterator
 {
 private:
   byte* currentByte;
-  byte currentBit;
+  byte currentOffset;
+  const int bpp;
+  const int pixelsPerByte;
+  const int pixelOffset;
+  const int pixelMask;
 
 public:
-  BitIterator();
-  BitIterator(byte* base, int offset=0);
+  PixelIterator();
+  PixelIterator(byte* base, int offset=0, int bpp=1);
   byte get();
-  BitIterator& operator++();
-  BitIterator operator++(int);
-  BitIterator& operator+=(int x);
+  void set(byte value);
+  PixelIterator& operator++();
+  PixelIterator operator++(int);
+  PixelIterator& operator+=(int x);
   byte operator*();
 };
 
-BitIterator::BitIterator()
-  : currentByte(NULL), currentBit(0)
+PixelIterator::PixelIterator()
+  : currentByte(NULL), currentOffset(0), bpp(0), pixelsPerByte(0), pixelOffset(0), pixelMask(0)
 {
 }
 
-BitIterator::BitIterator(byte* base, int offset)
+PixelIterator::PixelIterator(byte* base, int offset, int bpp)
+  : currentByte(NULL), currentOffset(0), bpp(bpp), pixelsPerByte(8/bpp), pixelOffset(bpp), pixelMask((1<<bpp)-1)
 {
-  div_t d = div(offset, 8);
+  div_t d = div(offset, pixelsPerByte);
   currentByte = base+d.quot;
-  currentBit = 7-d.rem;
+  currentOffset = pixelsPerByte-1-d.rem;
 }
 
-inline byte BitIterator::get()
+inline byte PixelIterator::get()
 {
-  return (*currentByte>>currentBit) & 1;
+  return (*currentByte>>(currentOffset*pixelOffset)) & pixelMask;
 }
 
-inline byte BitIterator::operator*()
+inline void PixelIterator::set(byte value)
 {
-  return (*currentByte>>currentBit) & 1;
+  *currentByte =
+    (*currentByte & ~(pixelMask << (currentOffset*pixelOffset))) |
+    (value  << (currentOffset*pixelOffset));
 }
 
-inline BitIterator& BitIterator::operator++()
+inline byte PixelIterator::operator*()
+{
+  return (*currentByte>>(currentOffset*pixelOffset)) & pixelMask;
+}
+
+inline PixelIterator& PixelIterator::operator++()
 {
   // Prefix operator
-  if(!(currentBit--))
+  if(!(currentOffset--))
   {
-    currentBit=7;
+    currentOffset=pixelsPerByte-1;
     ++currentByte;
   }
   
   return *this;
 }
 
-inline BitIterator BitIterator::operator++(int)
+inline PixelIterator PixelIterator::operator++(int)
 {
   // Postfix operator
-  BitIterator result = *this;
+  PixelIterator result = *this;
   
-  if(!(currentBit--))
+  if(!(currentOffset--))
   {
-    currentBit=7;
+    currentOffset=pixelsPerByte-1;
     ++currentByte;
   }
   
   return result;
 }
 
-BitIterator& BitIterator::operator+=(int x)
+PixelIterator& PixelIterator::operator+=(int x)
 {
-  int offset = 7-currentBit+x;
-  div_t d = div(offset, 8);
+  int offset = pixelsPerByte-1-currentOffset+x;
+  div_t d = div(offset, pixelsPerByte);
   currentByte += d.quot;
-  currentBit = 7-d.rem;
+  currentOffset = pixelsPerByte-1-d.rem;
 
   return *this;
 }
@@ -195,7 +209,7 @@ void Operations1bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, Gd
 
     for(int j=0; j<tileArea.height; j++)
     {
-      BitIterator bit(tile->data+(tileArea.y+j)*tile->width/8, tileArea.x);
+      PixelIterator bit(tile->data+(tileArea.y+j)*tile->width/8, tileArea.x);
       for(int i=0; i<tileArea.width; i++)
       {
         if(*bit)
@@ -213,7 +227,7 @@ void Operations1bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, Gd
 
     for(int j=0; j<viewArea.height; j++)
     {
-      BitIterator b(tile->data+(tileArea.y+j*pixelCount)*tile->width/8,
+      PixelIterator b(tile->data+(tileArea.y+j*pixelCount)*tile->width/8,
                     tileArea.x);
       
       for(int i=0; i<viewArea.width; i++)
@@ -358,3 +372,111 @@ void Operations8bpp::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int
     }
   }
 }
+
+////////////////////////////////////////////////////////////////////////
+// Operations
+
+Operations::Operations(int bpp)
+  :bpp(bpp), pixelsPerByte(8/bpp), pixelOffset(bpp), pixelMask((1<<bpp)-1)
+{
+}
+
+int Operations::getBpp()
+{
+  return bpp;
+}
+
+void Operations::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom)
+{
+  cairo_set_source_rgb(cr, 1, 1, 1); // White
+  fillRect(cr, viewArea);
+  
+  if(zoom>=0)
+  {
+    // Iterate over pixels in the tileArea, drawing each as we go ahead
+    int pixelSize = 1<<zoom;
+
+    for(int j=0; j<tileArea.height; j++)
+    {
+      PixelIterator pixel(tile->data+(tileArea.y+j)*tile->width/pixelsPerByte, tileArea.x, bpp);
+      for(int i=0; i<tileArea.width; i++)
+      {
+        if(*pixel)
+          drawPixel(cr, viewArea.x+i*pixelSize, viewArea.y+j*pixelSize, pixelSize, (double)(pixelMask-*pixel)/pixelMask);
+        ++pixel;
+      }
+    }
+  }
+  else
+  {
+    // zoom < 0
+    // Iterate over pixels in the viewArea, determining which color
+    // each should get
+    int pixelCount = 1<<-zoom;
+
+    for(int j=0; j<viewArea.height; j++)
+    {
+      PixelIterator pixel(tile->data+(tileArea.y+j*pixelCount)*tile->width/pixelsPerByte,
+                          tileArea.x, bpp);
+      
+      for(int i=0; i<viewArea.width; i++)
+      {
+        if(*pixel)
+        {
+          drawPixel(cr, viewArea.x+i, viewArea.y+j, 1, (double)(pixelMask-*pixel)/pixelMask);
+        }
+        pixel+=pixelCount;
+      }
+    }
+  }
+}
+
+void Operations::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y)
+{
+  // Reducing by a factor 8. Source and target have same bpp
+  int sourceStride = source->width/pixelsPerByte;
+  byte* sourceBase = source->data;
+
+  int targetStride = target->width/pixelsPerByte;
+  byte* targetBase = target->data +
+    target->height*y*targetStride/8 +
+    target->width*x/8/pixelsPerByte;
+
+  for(int j=0; j<source->height/8;
+      j++, targetBase+=targetStride, sourceBase+=sourceStride*8)
+  {
+    // Iterate vertically over target
+    byte* sourcePtr = sourceBase;
+    PixelIterator targetPtr(targetBase, 0, bpp);
+
+    for(int i=0; i<source->width/8;
+        i++, sourcePtr+=8, ++targetPtr)
+    {
+      // Iterate horizontally over target
+
+      // Goal is to determine which value occurs most often in a 8*8
+      // rectangle, and pick that value.
+      byte* base = sourcePtr;
+      byte lookup[pixelMask+1];
+      memset(lookup, 0, sizeof(lookup));
+      byte maxValue=0;
+      byte maxCount;
+
+      for(int k=0; k<8; k++, base+=sourceStride)
+      {
+        PixelIterator current(base, 0, bpp);
+        for(int l=0; l<8; l++, ++current)
+        {
+          if(++(lookup[*current])>maxCount)
+          {
+            maxCount=lookup[*current];
+            maxValue=*current;
+          }
+        }
+      }
+
+      targetPtr.set(maxValue);
+    }
+  }
+}
+
