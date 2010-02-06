@@ -14,11 +14,22 @@
 #include "layer.hh"
 #include "layercoordinator.hh"
 
+class TiledBitmap;
+
 class FileOperation : public SeqJob
 {
+private:
+  TiledBitmap* parent;
+  boost::mutex waitingMutex;
+  bool waiting;
+  int timer;
+  
 public:
+  FileOperation(TiledBitmap* parent);
   virtual ~FileOperation() {}
 
+  virtual void doneWaiting();
+  virtual bool timerExpired();
   virtual void finishedLoading() { done(); }
 };
 

@@ -13,36 +13,28 @@ TiledBitmapInterface* createTiledBitmap(int bitmapWidth, int bitmapHeight, Layer
 
 ////////////////////////////////////////////////////////////////////////
 
-class LoadOperation : public FileOperation
-{
-private:
-  TiledBitmap* parent;
-  Layer* target;
-  SourcePresentation* thePresentation;
-  boost::mutex waitingMutex;
-  bool waiting;
-  
-public:
-  LoadOperation(Layer* l, SourcePresentation* sp, TiledBitmap* parent);
-  virtual ~LoadOperation() {}
-
-  virtual bool doWork();
-  virtual bool timerExpired();
-};
-
 gboolean timerExpired(gpointer data)
 {
-  return ((LoadOperation*)data)->timerExpired();
+  return ((FileOperation*)data)->timerExpired();
 }
 
-LoadOperation::LoadOperation(Layer* l, SourcePresentation* sp, TiledBitmap* parent)
-  : parent(parent), target(l), thePresentation(sp), waitingMutex(), waiting(true)
+FileOperation::FileOperation(TiledBitmap* parent)
+  : parent(parent), waitingMutex(), waiting(true)
 {
-  // timerExpired();
-  gtk_timeout_add(100, ::timerExpired, this);
+  timer = gtk_timeout_add(100, ::timerExpired, this);
 }
 
-bool LoadOperation::timerExpired()
+void FileOperation::doneWaiting()
+{
+  boost::mutex::scoped_lock lock(waitingMutex);
+  if(waiting)
+  {
+    gtk_timeout_remove(timer);
+    waiting = false;
+  }
+}
+
+bool FileOperation::timerExpired()
 {
   boost::mutex::scoped_lock lock(waitingMutex);
   if(waiting)
@@ -51,12 +43,29 @@ bool LoadOperation::timerExpired()
   return waiting;
 }
 
+////////////////////////////////////////////////////////////////////////
+
+class LoadOperation : public FileOperation
+{
+private:
+  Layer* target;
+  SourcePresentation* thePresentation;
+  
+public:
+  LoadOperation(Layer* l, SourcePresentation* sp, TiledBitmap* parent);
+  virtual ~LoadOperation() {}
+
+  virtual bool doWork();
+};
+
+LoadOperation::LoadOperation(Layer* l, SourcePresentation* sp, TiledBitmap* parent)
+  : FileOperation(parent), target(l), thePresentation(sp)
+{
+}
+
 bool LoadOperation::doWork()
 {
-  {
-    boost::mutex::scoped_lock lock(waitingMutex);
-    waiting = false;
-  }
+  doneWaiting();
 
   target->fetchData(thePresentation);
   
