@@ -113,8 +113,8 @@ void View::redraw(cairo_t* cr)
     {
       // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
       int pixelSize = 1<<zoom;
-      rect.width = drawingAreaWidth/pixelSize;
-      rect.height = drawingAreaHeight/pixelSize;
+      rect.width = (drawingAreaWidth+pixelSize-1)/pixelSize;
+      rect.height = (drawingAreaHeight+pixelSize-1)/pixelSize;
     }
     else
     {
@@ -130,7 +130,6 @@ void View::redraw(cairo_t* cr)
     {
       GdkPoint start = presentationPointToWindowPoint(measurement->start);
       GdkPoint end = presentationPointToWindowPoint(measurement->end);
-      printf("-->(%d, %d) - (%d,%d)\n", start.x,start.y, end.x, end.y);
       cairo_set_line_width(cr, 1);
       cairo_set_source_rgb(cr, 0.75, 0, 0); // Dark Red
       drawCross(cr, start);

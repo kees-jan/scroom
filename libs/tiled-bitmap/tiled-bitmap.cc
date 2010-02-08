@@ -424,7 +424,7 @@ void TiledBitmap::redraw(ViewIdentifier* vid, cairo_t* cr, GdkRectangle presenta
         {
           layerOperations->drawState(cr, tile->state, viewArea);
         }
-        drawTile(cr, tile, viewArea);
+        // drawTile(cr, tile, viewArea);
       }
     }
   }
@@ -534,7 +534,7 @@ void TiledBitmap::redraw(ViewIdentifier* vid, cairo_t* cr, GdkRectangle presenta
         {
           layerOperations->drawState(cr, tile->state, viewArea);
         }
-        drawTile(cr, tile, viewArea);
+        // drawTile(cr, tile, viewArea);
       }
     }
   }
