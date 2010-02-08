@@ -55,7 +55,7 @@ enum
   
 View::View(GladeXML* scroomXml, PresentationInterface* presentation)
   : scroomXml(scroomXml), presentation(NULL), drawingAreaWidth(0), drawingAreaHeight(0),
-    zoom(0), x(0), y(0), vid(NULL), modifiermove(0), cachedx(0), cachedy(0)
+    zoom(0), x(0), y(0), vid(NULL), measurement(NULL), modifiermove(0)
 {
   PluginManager& pluginManager = PluginManager::getInstance();
   drawingArea = glade_xml_get_widget(scroomXml, "drawingarea");
@@ -80,6 +80,8 @@ View::View(GladeXML* scroomXml, PresentationInterface* presentation)
 
   progressBar = GTK_PROGRESS_BAR(glade_xml_get_widget(scroomXml, "progressbar"));
 
+  cachedPoint.x=0;
+  cachedPoint.y=0;
   
   on_newInterfaces_update(pluginManager.getNewInterfaces());
   on_configure();
@@ -118,6 +120,22 @@ void View::redraw(cairo_t* cr)
     }
     
     presentation->redraw(vid, cr, rect, zoom);
+
+    if(measurement)
+    {
+      GdkPoint start = presentationPointToWindowPoint(measurement->start);
+      GdkPoint end = presentationPointToWindowPoint(measurement->end);
+      printf("-->(%d, %d) - (%d,%d)\n", start.x,start.y, end.x, end.y);
+      cairo_set_line_width(cr, 1);
+      cairo_set_source_rgb(cr, 0.75, 0, 0); // Dark Red
+      drawCross(cr, start);
+      drawCross(cr, end);
+      cairo_stroke(cr);
+      cairo_set_source_rgb(cr, 1, 0, 0); // Red
+      cairo_move_to(cr, start.x, start.y);
+      cairo_line_to(cr, end.x, end.y);
+      cairo_stroke(cr);
+    }
   }
   else
   {
@@ -437,8 +455,18 @@ void View::on_buttonPress(GdkEventButton* event)
   {
     // Begin left-dragging
     modifiermove = GDK_BUTTON1_MASK;
-    cachedx = event->x;
-    cachedy = event->y;
+    cachedPoint = eventToPoint(event);
+  }
+  else if(event->button==3 && modifiermove==0)
+  {
+    // Begin measuring distance
+    modifiermove = GDK_BUTTON3_MASK;
+    if(measurement)
+    {
+      delete measurement;
+    }
+    cachedPoint = windowPointToPresentationPoint(eventToPoint(event));
+    measurement = new Measurement(cachedPoint);
   }
 }
 
@@ -448,8 +476,19 @@ void View::on_buttonRelease(GdkEventButton* event)
   {
     // End left-dragging
     modifiermove = 0;
-    cachedx = 0;
-    cachedy = 0;
+    cachedPoint.x=0;
+    cachedPoint.y=0;
+  }
+  else if(event->button==3 && modifiermove==GDK_BUTTON3_MASK)
+  {
+    // End measuring distance
+    modifiermove = 0;
+    if(measurement)
+    {
+      measurement->end = windowPointToPresentationPoint(eventToPoint(event));
+    }
+    cachedPoint.x=0;
+    cachedPoint.y=0;
   }
 }
 
@@ -462,17 +501,17 @@ void View::on_motion_notify(GdkEventMotion* event)
     if(zoom>=0)
     {
       const int pixelSize=1<<zoom;
-      if(std::abs(event->x-cachedx)>=pixelSize)
+      if(std::abs(event->x-cachedPoint.x)>=pixelSize)
       {
-        int delta = (int(event->x)-cachedx)/pixelSize;
-        cachedx += delta*pixelSize;
+        int delta = (int(event->x)-cachedPoint.x)/pixelSize;
+        cachedPoint.x += delta*pixelSize;
         x-=delta;
         moved=true;
       }
-      if(std::abs(event->y-cachedy)>=pixelSize)
+      if(std::abs(event->y-cachedPoint.y)>=pixelSize)
       {
-        int delta = (int(event->y)-cachedy)/pixelSize;
-        cachedy += delta*pixelSize;
+        int delta = (int(event->y)-cachedPoint.y)/pixelSize;
+        cachedPoint.y += delta*pixelSize;
         y-=delta;
         moved=true;
       }
@@ -480,10 +519,9 @@ void View::on_motion_notify(GdkEventMotion* event)
     else
     {
       const int pixelSize=1<<-zoom;
-      x-=(event->x-cachedx)*pixelSize;
-      cachedx=event->x;
-      y-=(event->y-cachedy)*pixelSize;
-      cachedy=event->y;
+      x-=(event->x-cachedPoint.x)*pixelSize;
+      y-=(event->y-cachedPoint.y)*pixelSize;
+      cachedPoint = eventToPoint(event);
       moved=true;
     }
 
@@ -491,6 +529,22 @@ void View::on_motion_notify(GdkEventMotion* event)
     {
       updateScrollbars();
       updateRulers();
+      invalidate();
+    }
+  }
+  else if((event->state & GDK_BUTTON3_MASK) && modifiermove == GDK_BUTTON3_MASK)
+  {
+    bool moved=false;
+
+    cachedPoint = windowPointToPresentationPoint(eventToPoint(event));
+    if(measurement && !measurement->endsAt(cachedPoint))
+    {
+      measurement->end = cachedPoint;
+      moved = true;
+    }
+    
+    if(moved)
+    {
       invalidate();
     }
   }
@@ -508,4 +562,66 @@ void View::invalidate()
 GtkProgressBar* View::getProgressBar()
 {
   return progressBar;
+}
+
+////////////////////////////////////////////////////////////////////////
+// Helpers
+
+GdkPoint View::windowPointToPresentationPoint(GdkPoint wp)
+{
+  GdkPoint result = {0,0};
+
+  if(zoom>=0)
+  {
+    const int pixelSize=1<<zoom;
+    result.x = x+(wp.x+pixelSize/2)/pixelSize; // Round to make measurements snap
+    result.y = y+(wp.y+pixelSize/2)/pixelSize; // in the expected direction
+  }
+  else
+  {
+    const int pixelSize=1<<-zoom;
+    result.x = x+wp.x*pixelSize;
+    result.y = y+wp.y*pixelSize;
+  }
+  return result;
+}
+
+GdkPoint View::presentationPointToWindowPoint(GdkPoint pp)
+{
+  GdkPoint result = {0,0};
+
+  if(zoom>=0)
+  {
+    const int pixelSize=1<<zoom;
+    result.x = (pp.x-x)*pixelSize;
+    result.y = (pp.y-y)*pixelSize;
+  }
+  else
+  {
+    const int pixelSize=1<<-zoom;
+    result.x = (pp.x-x)/pixelSize;
+    result.y = (pp.y-y)/pixelSize;
+  }
+  return result;
+}
+  
+GdkPoint View::eventToPoint(GdkEventButton* event)
+{
+  GdkPoint result = {event->x, event->y};
+  return result;
+}
+
+GdkPoint View::eventToPoint(GdkEventMotion* event)
+{
+  GdkPoint result = {event->x, event->y};
+  return result;
+}
+
+void View::drawCross(cairo_t* cr, GdkPoint p)
+{
+  static const int size = 10;
+  cairo_move_to(cr, p.x-size, p.y);
+  cairo_line_to(cr, p.x+size, p.y);
+  cairo_move_to(cr, p.x, p.y-size);
+  cairo_line_to(cr, p.x, p.y+size);
 }

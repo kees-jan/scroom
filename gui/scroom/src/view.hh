@@ -4,11 +4,25 @@
 #include <map>
 
 #include <glade/glade.h>
+#include <gdk/gdk.h>
 #include <cairo.h>
 
 #include <scroominterface.hh>
 #include <viewinterface.hh>
 #include <presentationinterface.hh>
+
+struct Measurement
+{
+public:
+  GdkPoint start;
+  GdkPoint end;
+
+public:
+  Measurement(int x, int y) { start.x=x; start.y=y; end=start; }
+  Measurement(GdkPoint start) : start(start), end(start) {}
+
+  bool endsAt(GdkPoint p) { return end.x==p.x && end.y==p.y; }
+};
 
 class View : public ViewInterface
 {
@@ -32,10 +46,10 @@ private:
   int x;
   int y;
   ViewIdentifier* vid;
+  Measurement* measurement;
 
   gint modifiermove;
-  int cachedx;
-  int cachedy;
+  GdkPoint cachedPoint;
   
 public:
 
@@ -71,7 +85,16 @@ public:
 
   virtual void invalidate();
   virtual GtkProgressBar* getProgressBar();
-  
+
+  ////////////////////////////////////////////////////////////////////////
+  // Helpers
+
+private:
+  GdkPoint windowPointToPresentationPoint(GdkPoint wp);
+  GdkPoint presentationPointToWindowPoint(GdkPoint pp);
+  GdkPoint eventToPoint(GdkEventButton* event);
+  GdkPoint eventToPoint(GdkEventMotion* event);
+  void drawCross(cairo_t* cr, GdkPoint p);
 };
 
 #endif
