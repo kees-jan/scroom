@@ -1,7 +1,11 @@
 #ifndef _VIEW_HH
 #define _VIEW_HH
 
+#include <stdlib.h>
+
 #include <map>
+#include <string>
+#include <cmath>
 
 #include <glade/glade.h>
 #include <gdk/gdk.h>
@@ -22,6 +26,10 @@ public:
   Measurement(GdkPoint start) : start(start), end(start) {}
 
   bool endsAt(GdkPoint p) { return end.x==p.x && end.y==p.y; }
+
+  int width() { return abs(end.x-start.x); }
+  int height() { return abs(end.y-start.y); }
+  double length() { return std::sqrt(std::pow(double(width()),2) + std::pow(double(height()),2)); }
 };
 
 class View : public ViewInterface
@@ -42,6 +50,8 @@ private:
   GtkComboBox* zoomBox;
   GtkListStore* zoomItems;
   GtkProgressBar* progressBar;
+  GtkStatusbar* statusBar;
+  int statusBarContextId;
   int zoom;
   int x;
   int y;
@@ -95,6 +105,8 @@ private:
   GdkPoint eventToPoint(GdkEventButton* event);
   GdkPoint eventToPoint(GdkEventMotion* event);
   void drawCross(cairo_t* cr, GdkPoint p);
+  void setStatusMessage(const std::string& message);
+  void displayMeasurement();
 };
 
 #endif

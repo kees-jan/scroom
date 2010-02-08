@@ -2,6 +2,8 @@
 
 #include <cmath>
 
+#include <sstream>
+
 #include "pluginmanager.hh"
 #include "callbacks.hh"
 
@@ -79,6 +81,8 @@ View::View(GladeXML* scroomXml, PresentationInterface* presentation)
                                  NULL);
 
   progressBar = GTK_PROGRESS_BAR(glade_xml_get_widget(scroomXml, "progressbar"));
+  statusBar = GTK_STATUSBAR(glade_xml_get_widget(scroomXml, "statusbar"));
+  statusBarContextId = gtk_statusbar_get_context_id(statusBar, "View");
 
   cachedPoint.x=0;
   cachedPoint.y=0;
@@ -546,6 +550,7 @@ void View::on_motion_notify(GdkEventMotion* event)
     if(moved)
     {
       invalidate();
+      displayMeasurement();
     }
   }
 }
@@ -624,4 +629,28 @@ void View::drawCross(cairo_t* cr, GdkPoint p)
   cairo_line_to(cr, p.x+size, p.y);
   cairo_move_to(cr, p.x, p.y-size);
   cairo_line_to(cr, p.x, p.y+size);
+}
+
+void View::setStatusMessage(const std::string& message)
+{
+  gtk_statusbar_pop(statusBar, statusBarContextId);
+  gtk_statusbar_push(statusBar, statusBarContextId, message.c_str());
+}
+
+void View::displayMeasurement()
+{
+  std::ostringstream s;
+  s.precision(1);
+  fixed(s);
+
+  if(measurement)
+  {
+    s << "l: " << measurement->length()
+      << ", dx: " << measurement->width()
+      << ", dy: " << measurement->height()
+      << ", from: ("<< measurement->start.x << "," << measurement->start.y << ")"
+      << ", to: ("<< measurement->end.x << "," << measurement->end.y << ")";
+  }
+
+  setStatusMessage(s.str());
 }
