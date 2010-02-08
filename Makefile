@@ -1,4 +1,5 @@
 SUBDIRS=plugins libs
+GUI=gui/scroom
 
 include master-dir.mk
 
@@ -7,8 +8,11 @@ all: gui
 plugins: libs
 
 gui:
-	$(Q)echo ""
-	$(Q)echo "Don't forget to build gui/scroom separately!"
-	$(Q)echo "It is not included (yet) in the overall build"
+	$(Q)if [ ! -e $(GUI)/Makefile ] ; then ( cd $(GUI) && ./autogen.sh ) ; fi && $(MAKE) -C $(GUI)
 
-.PHONY: gui
+clean: guiclean
+
+guiclean:
+	$(Q)make -C $(GUI) distclean
+
+.PHONY: gui guiclean
