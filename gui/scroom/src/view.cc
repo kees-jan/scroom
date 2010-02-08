@@ -55,8 +55,8 @@ enum
   };
 
   
-View::View(GladeXML* scroomXml, PresentationInterface* presentation)
-  : scroomXml(scroomXml), presentation(NULL), drawingAreaWidth(0), drawingAreaHeight(0),
+View::View(GladeXML* scroomXml, PresentationInterface::Ptr presentation)
+  : scroomXml(scroomXml), presentation(), drawingAreaWidth(0), drawingAreaHeight(0),
     zoom(0), x(0), y(0), vid(NULL), measurement(NULL), modifiermove(0)
 {
   PluginManager& pluginManager = PluginManager::getInstance();
@@ -99,7 +99,7 @@ View::View(GladeXML* scroomXml, PresentationInterface* presentation)
 
 View::~View()
 {
-  setPresentation(NULL);
+  setPresentation(PresentationInterface::Ptr());
 }
 
 void View::redraw(cairo_t* cr)
@@ -155,13 +155,12 @@ bool View::hasPresentation()
   return presentation!=NULL;
 }
 
-void View::setPresentation(PresentationInterface* presentation)
+void View::setPresentation(PresentationInterface::Ptr presentation)
 {
   if(this->presentation)
   {
     this->presentation->close(vid);
-    delete this->presentation;
-    this->presentation=NULL;
+    this->presentation.reset();
   }
 
   this->presentation = presentation;

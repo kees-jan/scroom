@@ -44,8 +44,8 @@ void on_scrollbar_value_changed(GtkAdjustment* adjustment, gpointer user_data);
 
 void on_scroom_bootstrap (const std::list<std::string>& newFilenames);
  
-void find_or_create_scroom(PresentationInterface* presentation);
+void find_or_create_scroom(PresentationInterface::Ptr presentation);
 
-void create_scroom(PresentationInterface* presentation);
+void create_scroom(PresentationInterface::Ptr presentation);
 
 void on_newInterfaces_update(const std::map<NewInterface*, std::string>& newInterfaces);

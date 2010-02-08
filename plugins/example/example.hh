@@ -13,7 +13,7 @@ public:
   virtual void registerCapabilities(ScroomInterface* host);
   virtual void unregisterCapabilities(ScroomInterface* host);
 
-  virtual PresentationInterface* createNew(FileOperationObserver* observer);
+  virtual PresentationInterface::Ptr createNew(FileOperationObserver* observer);
 
   virtual ~Example();
 };

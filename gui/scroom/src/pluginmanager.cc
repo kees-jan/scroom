@@ -200,6 +200,30 @@ void PluginManager::unregisterOpenInterface(OpenInterface* openInterface)
   openInterfaces.erase(openInterface);
 }
 
+void PluginManager::registerViewObserver(const std::string& identifier, ViewObserver* observer)
+{
+  printf("Observing Views for %s!\n", identifier.c_str());
+  viewObservers[observer] = identifier;
+}
+
+void PluginManager::unregisterViewObserver(ViewObserver* observer)
+{
+  printf("I stopped observing views for %s!\n", viewObservers[observer].c_str());
+  viewObservers.erase(observer);
+}
+
+void PluginManager::registerPresentationObserver(const std::string& identifier, PresentationObserver* observer)
+{
+  printf("Observing Presentations for %s!\n", identifier.c_str());
+  presentationObservers[observer] = identifier;
+}
+
+void PluginManager::unregisterPresentationObserver(PresentationObserver* observer)
+{
+  printf("I stopped observing presentations for %s!\n", presentationObservers[observer].c_str());
+  presentationObservers.erase(observer);
+}
+
 const std::map<NewInterface*, std::string>& PluginManager::getNewInterfaces()
 {
   return newInterfaces;

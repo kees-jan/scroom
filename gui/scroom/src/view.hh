@@ -36,7 +36,7 @@ class View : public ViewInterface
 {
 private:
   GladeXML* scroomXml;
-  PresentationInterface* presentation;
+  PresentationInterface::Ptr presentation;
   GtkWindow* window;
   GtkWidget* drawingArea;
   int drawingAreaWidth;
@@ -64,12 +64,12 @@ private:
   
 public:
 
-  View(GladeXML* scroomXml, PresentationInterface* presentation);
+  View(GladeXML* scroomXml, PresentationInterface::Ptr presentation);
   virtual ~View();
 
   void redraw(cairo_t* cr);
   bool hasPresentation();
-  void setPresentation(PresentationInterface* presentation);
+  void setPresentation(PresentationInterface::Ptr presentation);
 
   void updateScrollbar(GtkAdjustment* adj, int zoom, int value,
                        int presentationStart, int presentationSize, int windowSize);

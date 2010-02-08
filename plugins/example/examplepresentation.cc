@@ -61,3 +61,17 @@ void ExamplePresentation::redraw(ViewIdentifier* vid, cairo_t* cr, GdkRectangle 
 
   cairo_stroke(cr);
 }
+
+bool ExamplePresentation::getProperty(const std::string& name, std::string& value)
+{
+  UNUSED(name);
+  UNUSED(value);
+  
+  return false;
+}
+bool ExamplePresentation::isPropertyDefined(const std::string& name)
+{
+  UNUSED(name);
+    
+  return false;
+}

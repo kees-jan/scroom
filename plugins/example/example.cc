@@ -42,12 +42,12 @@ void Example::unregisterCapabilities(ScroomInterface* host)
   host->unregisterNewInterface(this);
 }
 
-PresentationInterface* Example::createNew(FileOperationObserver* observer)
+PresentationInterface::Ptr Example::createNew(FileOperationObserver* observer)
 {
   if(observer)
   {
     gdk_threads_add_idle(reportComplete, observer);
   }
-  return new ExamplePresentation();
+  return PresentationInterface::Ptr(new ExamplePresentation());
 }
   

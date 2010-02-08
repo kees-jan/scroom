@@ -137,6 +137,21 @@ void TiffPresentation::redraw(ViewIdentifier* vid, cairo_t* cr, GdkRectangle pre
     tbi->redraw(vid, cr, presentationArea, zoom);
 }
 
+bool TiffPresentation::getProperty(const std::string& name, std::string& value)
+{
+  UNUSED(name);
+  UNUSED(value);
+  
+  return false;
+}
+
+bool TiffPresentation::isPropertyDefined(const std::string& name)
+{
+  std::string value;
+  return getProperty(name, value);
+}
+
+
 ////////////////////////////////////////////////////////////////////////
 // SourcePresentation
 ////////////////////////////////////////////////////////////////////////

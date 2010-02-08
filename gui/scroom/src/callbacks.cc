@@ -25,6 +25,7 @@ static GladeXML* aboutDialogXml=NULL;
 static GtkWidget* aboutDialog=NULL;
 
 static std::list<View*> views;
+static std::list<PresentationInterface::Ptr> presentations;
 static std::list<std::string> filenames;
 
 void on_scroom_hide (GtkWidget* widget, gpointer user_data)
@@ -234,11 +235,11 @@ void on_scroom_bootstrap (const std::list<std::string>& newFilenames)
 
   if(filenames.empty())
   {
-    create_scroom(NULL);
+    create_scroom(PresentationInterface::Ptr());
   }
 }
 
-void find_or_create_scroom(PresentationInterface* presentation)
+void find_or_create_scroom(PresentationInterface::Ptr presentation)
 {
   for(std::list<View*>::iterator cur = views.begin(); cur != views.end(); cur++)
   {
@@ -251,7 +252,7 @@ void find_or_create_scroom(PresentationInterface* presentation)
   create_scroom(presentation);
 }
 
-void create_scroom(PresentationInterface* presentation)
+void create_scroom(PresentationInterface::Ptr presentation)
 {
   GladeXML* xml = glade_xml_new(xmlFileName.c_str(), "scroom", NULL);
 

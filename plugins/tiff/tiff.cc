@@ -48,7 +48,7 @@ std::list<GtkFileFilter*> Tiff::getFilters()
   return result;
 }
   
-PresentationInterface* Tiff::open(const std::string& fileName, FileOperationObserver* observer)
+PresentationInterface::Ptr Tiff::open(const std::string& fileName, FileOperationObserver* observer)
 {
   TiffPresentation* p = new TiffPresentation();
   if(!p->load(fileName, observer))
@@ -56,14 +56,14 @@ PresentationInterface* Tiff::open(const std::string& fileName, FileOperationObse
     delete p;
     p=NULL;
   }
-  return p;
+  return PresentationInterface::Ptr(p);
 }
 
 ////////////////////////////////////////////////////////////////////////
 // NewInterface
 ////////////////////////////////////////////////////////////////////////
 
-PresentationInterface* Tiff::createNew(FileOperationObserver* observer)
+PresentationInterface::Ptr Tiff::createNew(FileOperationObserver* observer)
 {
   TiffPresentation* p = new TiffPresentation();
   if(!p->load("tissuebox.tif", observer))
@@ -71,6 +71,6 @@ PresentationInterface* Tiff::createNew(FileOperationObserver* observer)
     delete p;
     p=NULL;
   }
-  return p;
+  return PresentationInterface::Ptr(p);
 }
   

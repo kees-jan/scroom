@@ -11,7 +11,7 @@
 
 void create(NewInterface* interface)
 {
-  PresentationInterface* presentation = interface->createNew(NULL);
+  PresentationInterface::Ptr presentation = interface->createNew(NULL);
   find_or_create_scroom(presentation);
   //  sequentially(new CreateOperation(interface));
 }
@@ -19,7 +19,7 @@ void create(NewInterface* interface)
 void load(const GtkFileFilterInfo& info)
 {
   const std::map<OpenInterface*, std::string>& openInterfaces = PluginManager::getInstance().getOpenInterfaces();
-  PresentationInterface* presentation = NULL;
+  PresentationInterface::Ptr presentation;
   for(std::map<OpenInterface*, std::string>::const_iterator cur=openInterfaces.begin();
       cur != openInterfaces.end() && presentation==NULL;
       cur++)
