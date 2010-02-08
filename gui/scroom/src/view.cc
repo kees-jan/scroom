@@ -60,6 +60,7 @@ View::View(GladeXML* scroomXml, PresentationInterface* presentation)
     zoom(0), x(0), y(0), vid(NULL), measurement(NULL), modifiermove(0)
 {
   PluginManager& pluginManager = PluginManager::getInstance();
+  window = GTK_WINDOW(glade_xml_get_widget(scroomXml, "scroom"));
   drawingArea = glade_xml_get_widget(scroomXml, "drawingarea");
   vscrollbar = GTK_VSCROLLBAR(glade_xml_get_widget(scroomXml, "vscrollbar"));
   hscrollbar = GTK_HSCROLLBAR(glade_xml_get_widget(scroomXml, "hscrollbar"));
@@ -557,7 +558,7 @@ void View::on_motion_notify(GdkEventMotion* event)
 
 
 ////////////////////////////////////////////////////////////////////////
-// Presentation events
+// ViewInterface
 
 void View::invalidate()
 {
@@ -568,6 +569,13 @@ GtkProgressBar* View::getProgressBar()
 {
   return progressBar;
 }
+
+void View::setTitle(const std::string& title)
+{
+  std::string s = "Scroom - " + title;
+  gtk_window_set_title(window, s.c_str());
+}
+
 
 ////////////////////////////////////////////////////////////////////////
 // Helpers

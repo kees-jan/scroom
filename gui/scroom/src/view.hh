@@ -37,6 +37,7 @@ class View : public ViewInterface
 private:
   GladeXML* scroomXml;
   PresentationInterface* presentation;
+  GtkWindow* window;
   GtkWidget* drawingArea;
   int drawingAreaWidth;
   int drawingAreaHeight;
@@ -91,10 +92,11 @@ public:
   void on_motion_notify(GdkEventMotion* event);
 
   ////////////////////////////////////////////////////////////////////////
-  // Presentation events
+  // ViewInterface
 
   virtual void invalidate();
   virtual GtkProgressBar* getProgressBar();
+  virtual void setTitle(const std::string& title);
 
   ////////////////////////////////////////////////////////////////////////
   // Helpers

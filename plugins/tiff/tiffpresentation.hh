@@ -12,6 +12,7 @@ typedef struct tiff TIFF;
 class TiffPresentation : public PresentationInterface, public SourcePresentation
 {
 private:
+  std::string fileName;
   TIFF* tif;
   int height;
   int width;

@@ -8,7 +8,7 @@
 #include "layeroperations.hh"
 
 TiffPresentation::TiffPresentation()
-  : tif(NULL), height(0), width(0), negative(false), tbi(NULL), bpp(0)
+  : fileName(), tif(NULL), height(0), width(0), negative(false), tbi(NULL), bpp(0)
 {
 }
 
@@ -35,6 +35,7 @@ TiffPresentation::~TiffPresentation()
 
 bool TiffPresentation::load(std::string fileName, FileOperationObserver* observer)
 {
+  this->fileName = fileName;
   tif = TIFFOpen(fileName.c_str(), "r");
     if (!tif)
   {
@@ -110,6 +111,7 @@ GdkRectangle TiffPresentation::getRect()
 
 ViewIdentifier* TiffPresentation::open(ViewInterface* viewInterface)
 {
+  viewInterface->setTitle(fileName);
   if(tbi)
     return tbi->open(viewInterface);
   else
