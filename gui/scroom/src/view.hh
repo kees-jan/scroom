@@ -81,6 +81,8 @@ public:
   // Scroom events
   
   void on_newInterfaces_update(const std::map<NewInterface*, std::string>& newInterfaces);
+  void on_presentation_created(PresentationInterface::Ptr p);
+  void on_presentation_destroyed();
   void on_configure();
   void on_window_size_changed(int newWidth, int newHeight);
   void on_zoombox_changed();

@@ -7,6 +7,7 @@
 #include <scroominterface.hh>
 
 #include <presentationinterface.hh>
+#include "view.hh"
 
 void on_scroom_hide(GtkWidget* widget, gpointer user_data);
 
@@ -49,3 +50,9 @@ void find_or_create_scroom(PresentationInterface::Ptr presentation);
 void create_scroom(PresentationInterface::Ptr presentation);
 
 void on_newInterfaces_update(const std::map<NewInterface*, std::string>& newInterfaces);
+
+void on_presentation_created(PresentationInterface::Ptr p);
+
+void on_view_created(View* v);
+
+void on_view_destroyed(View* v);

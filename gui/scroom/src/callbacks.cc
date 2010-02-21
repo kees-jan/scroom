@@ -25,15 +25,14 @@ static GladeXML* aboutDialogXml=NULL;
 static GtkWidget* aboutDialog=NULL;
 
 static std::list<View*> views;
-static std::list<PresentationInterface::Ptr> presentations;
+static std::list<PresentationInterface::WeakPtr> presentations;
 static std::list<std::string> filenames;
 
 void on_scroom_hide (GtkWidget* widget, gpointer user_data)
 {
   // printf("hide\n");
   View* view = static_cast<View*>(user_data);
-  views.remove(view);
-  delete view;
+  on_view_destroyed(view);
 
   if(views.empty())
     gtk_main_quit();
@@ -241,6 +240,8 @@ void on_scroom_bootstrap (const std::list<std::string>& newFilenames)
 
 void find_or_create_scroom(PresentationInterface::Ptr presentation)
 {
+  on_presentation_created(presentation);
+  
   for(std::list<View*>::iterator cur = views.begin(); cur != views.end(); cur++)
   {
     if(!(*cur)->hasPresentation())
@@ -263,7 +264,7 @@ void create_scroom(PresentationInterface::Ptr presentation)
   }
 
   View* view = new View(xml, presentation);
-  views.push_back(view);
+  on_view_created(view);
 
   GtkWidget* scroom = glade_xml_get_widget(xml, "scroom");
   GtkWidget* newMenuItem = glade_xml_get_widget(xml, "new");
@@ -319,5 +320,58 @@ void on_newInterfaces_update(const std::map<NewInterface*, std::string>& newInte
   for(std::list<View*>::iterator cur = views.begin(); cur != views.end(); cur++)
   {
     (*cur)->on_newInterfaces_update(newInterfaces);
+  }
+}
+
+void on_presentation_created(PresentationInterface::Ptr p)
+{
+  presentations.push_back(p);
+
+  for(std::list<View*>::iterator cur = views.begin(); cur != views.end(); cur++)
+  {
+    (*cur)->on_presentation_created(p);
+  }
+}
+
+void on_view_created(View* v)
+{
+  views.push_back(v);
+
+  for(std::list<PresentationInterface::WeakPtr>::iterator cur = presentations.begin();
+      cur != presentations.end(); cur++)
+  {
+    PresentationInterface::Ptr p = cur->lock();
+    if(p)
+    {
+      v->on_presentation_created(p);
+    }
+  }
+}
+
+void on_view_destroyed(View* v)
+{
+  views.remove(v);
+  delete v;
+
+  bool presentationDestroyed = false;
+  for(std::list<PresentationInterface::WeakPtr>::iterator cur = presentations.begin();
+      cur != presentations.end(); cur++)
+  {
+    PresentationInterface::Ptr p = cur->lock();
+    if(!p)
+    {
+      presentationDestroyed = true;
+      std::list<PresentationInterface::WeakPtr>::iterator temp = cur;
+      temp--;
+      presentations.erase(cur);
+      cur = temp;
+    }
+  }
+  if(presentationDestroyed)
+  {
+    for(std::list<View*>::iterator cur = views.begin(); cur != views.end(); cur++)
+    {
+      (*cur)->on_presentation_destroyed();
+    }
   }
 }

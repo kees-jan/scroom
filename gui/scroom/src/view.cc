@@ -321,6 +321,16 @@ void View::on_newInterfaces_update(const std::map<NewInterface*, std::string>& n
   }
 }
 
+void View::on_presentation_created(PresentationInterface::Ptr p)
+{
+  printf("Apparently a presentation was created\n");
+}
+
+void View::on_presentation_destroyed()
+{
+  printf("Apparently, a presentation was destroyed\n");
+}
+
 void View::on_configure()
 {
   // There should be a simpler way to do this...
