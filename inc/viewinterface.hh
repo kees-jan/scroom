@@ -16,8 +16,6 @@ public:
   virtual void invalidate()=0;
 
   virtual GtkProgressBar* getProgressBar()=0;
-
-  virtual void setTitle(const std::string& title)=0;
 };
 
 

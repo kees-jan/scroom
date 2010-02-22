@@ -38,6 +38,7 @@ public:
   virtual void close(ViewIdentifier* vid);
   virtual bool getProperty(const std::string& name, std::string& value);
   virtual bool isPropertyDefined(const std::string& name);
+  virtual std::string getTitle();
 
   ////////////////////////////////////////////////////////////////////////
   // SourcePresentation

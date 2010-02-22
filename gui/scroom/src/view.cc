@@ -56,6 +56,21 @@ enum
     N_COLUMNS
   };
 
+////////////////////////////////////////////////////////////////////////
+/// Helpers
+
+// This one has too much View-internal knowledge to hide in callbacks.cc
+static void on_newWindow_activate(GtkMenuItem* menuitem, gpointer user_data)
+{
+  PresentationInterface::WeakPtr& wp = *static_cast<PresentationInterface::WeakPtr*>(user_data); // Yuk!
+  PresentationInterface::Ptr p = wp.lock();
+  if(p)
+  {
+    find_or_create_scroom(p);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
   
 View::View(GladeXML* scroomXml, PresentationInterface::Ptr presentation)
   : scroomXml(scroomXml), presentation(), drawingAreaWidth(0), drawingAreaHeight(0),
@@ -172,6 +187,12 @@ void View::setPresentation(PresentationInterface::Ptr presentation)
   {
     vid = presentation->open(this);
     presentationRect = presentation->getRect();
+    std::string s = presentation->getTitle();
+    if(s.length())
+      s = "Scroom - " + s;
+    else
+      s = "Scroom";
+    gtk_window_set_title(window, s.c_str());
   }
   updateZoom();
   updateScrollbars();
@@ -326,14 +347,12 @@ void View::on_newInterfaces_update(const std::map<NewInterface*, std::string>& n
 
 void View::on_presentation_created(PresentationInterface::Ptr p)
 {
-  printf("Apparently a presentation was created\n");
   presentations[p]=NULL;
   updateNewWindowMenu();
 }
 
 void View::on_presentation_destroyed()
 {
-  printf("Apparently, a presentation was destroyed\n");
   updateNewWindowMenu();
 }
 
@@ -584,13 +603,6 @@ GtkProgressBar* View::getProgressBar()
   return progressBar;
 }
 
-void View::setTitle(const std::string& title)
-{
-  std::string s = "Scroom - " + title;
-  gtk_window_set_title(window, s.c_str());
-}
-
-
 ////////////////////////////////////////////////////////////////////////
 // Helpers
 
@@ -679,16 +691,11 @@ void View::displayMeasurement()
 
 void View::updateNewWindowMenu()
 {
-  printf("Updating NewWindowMenu (%d)\n", presentations.size());
-  
   GtkWidget* newWindow_menu_item = glade_xml_get_widget(scroomXml, "newWindow");
 
   GtkWidget* newWindow_menu = gtk_menu_item_get_submenu(GTK_MENU_ITEM(newWindow_menu_item));
   if(!newWindow_menu)
-  {
-    printf("--> Creating a new submenu!\n");
     newWindow_menu=gtk_menu_new();
-  }
   g_object_ref_sink(G_OBJECT(newWindow_menu));
 
   std::map<PresentationInterface::WeakPtr,GtkWidget*>::iterator cur = presentations.begin();
@@ -702,7 +709,6 @@ void View::updateNewWindowMenu()
     //// Update menu
     PresentationInterface::Ptr p = cur->first.lock();
     GtkWidget* m = cur->second;
-    printf("P: %d - M: %p\n", (bool)p, m);
     if(p && m)
     {
       // Do nothing
@@ -710,18 +716,21 @@ void View::updateNewWindowMenu()
     else if(p && !m)
     {
       // Add a menu item
-      printf("Adding a menu item...\n");
-      m=gtk_menu_item_new_with_label("Default");
+      std::string s = p->getTitle();
+      if(!s.length())
+        s = "Default";
+      m=gtk_menu_item_new_with_label(s.c_str());
       gtk_widget_show(m);
       cur->second = m;
       gtk_container_add(GTK_CONTAINER(newWindow_menu), m);
 
-      // g_signal_connect ((gpointer) menu_item, "activate", G_CALLBACK (on_new_activate), cur->first);
+      g_signal_connect ((gpointer)m, "activate",
+                        G_CALLBACK (on_newWindow_activate),
+                        const_cast<PresentationInterface::WeakPtr*>(&cur->first));
     }
     else if(!p && m)
     {
       // Remove menu item, then remove this element from the map
-      printf("Removing a menu item...\n");
       cur->second = NULL;
       gtk_widget_destroy(m);
       presentations.erase(cur);
@@ -729,7 +738,6 @@ void View::updateNewWindowMenu()
     else if(!p && !m)
     {
       // Remove this element from the map (menu already gone)
-      printf("Weird... Removing a map item...\n");
       presentations.erase(cur);
     }
     else

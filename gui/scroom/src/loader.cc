@@ -12,6 +12,7 @@
 void create(NewInterface* interface)
 {
   PresentationInterface::Ptr presentation = interface->createNew(NULL);
+  on_presentation_created(presentation);
   find_or_create_scroom(presentation);
   //  sequentially(new CreateOperation(interface));
 }
@@ -32,6 +33,7 @@ void load(const GtkFileFilterInfo& info)
       if(gtk_file_filter_filter(*f, &info))
       {
         presentation = cur->first->open(info.filename, NULL);
+        on_presentation_created(presentation);
         find_or_create_scroom(presentation);
       }
     }

@@ -75,3 +75,9 @@ bool ExamplePresentation::isPropertyDefined(const std::string& name)
     
   return false;
 }
+
+std::string ExamplePresentation::getTitle()
+{
+  return "";
+}
+

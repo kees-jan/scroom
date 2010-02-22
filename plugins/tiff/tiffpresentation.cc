@@ -111,7 +111,6 @@ GdkRectangle TiffPresentation::getRect()
 
 ViewIdentifier* TiffPresentation::open(ViewInterface* viewInterface)
 {
-  viewInterface->setTitle(fileName);
   if(tbi)
     return tbi->open(viewInterface);
   else
@@ -149,6 +148,11 @@ bool TiffPresentation::isPropertyDefined(const std::string& name)
 {
   std::string value;
   return getProperty(name, value);
+}
+
+std::string TiffPresentation::getTitle()
+{
+  return fileName;
 }
 
 

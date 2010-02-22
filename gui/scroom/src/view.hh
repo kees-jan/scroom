@@ -100,7 +100,6 @@ public:
 
   virtual void invalidate();
   virtual GtkProgressBar* getProgressBar();
-  virtual void setTitle(const std::string& title);
 
   ////////////////////////////////////////////////////////////////////////
   // Helpers

@@ -240,8 +240,6 @@ void on_scroom_bootstrap (const std::list<std::string>& newFilenames)
 
 void find_or_create_scroom(PresentationInterface::Ptr presentation)
 {
-  on_presentation_created(presentation);
-  
   for(std::list<View*>::iterator cur = views.begin(); cur != views.end(); cur++)
   {
     if(!(*cur)->hasPresentation())
