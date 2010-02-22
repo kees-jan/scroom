@@ -50,9 +50,24 @@
                       </widget>
                     </child>
                     <child>
+                      <widget class="GtkImageMenuItem" id="newWindow">
+                        <property name="label" translatable="yes">New _Window</property>
+                        <property name="visible">True</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">False</property>
+                        <child internal-child="image">
+                          <widget class="GtkImage" id="image3">
+                            <property name="visible">True</property>
+                            <property name="stock">gtk-new</property>
+                          </widget>
+                        </child>
+                      </widget>
+                    </child>
+                    <child>
                       <widget class="GtkImageMenuItem" id="open-with">
                         <property name="label" translatable="yes">Open with</property>
                         <property name="visible">True</property>
+                        <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
                         <child internal-child="image">
                           <widget class="GtkImage" id="image2">

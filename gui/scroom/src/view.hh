@@ -61,6 +61,8 @@ private:
 
   gint modifiermove;
   GdkPoint cachedPoint;
+
+  std::map<PresentationInterface::WeakPtr,GtkWidget*> presentations;
   
 public:
 
@@ -111,6 +113,7 @@ private:
   void drawCross(cairo_t* cr, GdkPoint p);
   void setStatusMessage(const std::string& message);
   void displayMeasurement();
+  void updateNewWindowMenu();
 };
 
 #endif

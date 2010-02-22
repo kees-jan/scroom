@@ -4,6 +4,8 @@
 
 #include <sstream>
 
+#include <glib-object.h>
+
 #include "pluginmanager.hh"
 #include "callbacks.hh"
 
@@ -89,6 +91,7 @@ View::View(GladeXML* scroomXml, PresentationInterface::Ptr presentation)
   cachedPoint.y=0;
   
   on_newInterfaces_update(pluginManager.getNewInterfaces());
+  updateNewWindowMenu();  
   on_configure();
 
   if(presentation)
@@ -324,11 +327,14 @@ void View::on_newInterfaces_update(const std::map<NewInterface*, std::string>& n
 void View::on_presentation_created(PresentationInterface::Ptr p)
 {
   printf("Apparently a presentation was created\n");
+  presentations[p]=NULL;
+  updateNewWindowMenu();
 }
 
 void View::on_presentation_destroyed()
 {
   printf("Apparently, a presentation was destroyed\n");
+  updateNewWindowMenu();
 }
 
 void View::on_configure()
@@ -669,4 +675,83 @@ void View::displayMeasurement()
   }
 
   setStatusMessage(s.str());
+}
+
+void View::updateNewWindowMenu()
+{
+  printf("Updating NewWindowMenu (%d)\n", presentations.size());
+  
+  GtkWidget* newWindow_menu_item = glade_xml_get_widget(scroomXml, "newWindow");
+
+  GtkWidget* newWindow_menu = gtk_menu_item_get_submenu(GTK_MENU_ITEM(newWindow_menu_item));
+  if(!newWindow_menu)
+  {
+    printf("--> Creating a new submenu!\n");
+    newWindow_menu=gtk_menu_new();
+  }
+  g_object_ref_sink(G_OBJECT(newWindow_menu));
+
+  std::map<PresentationInterface::WeakPtr,GtkWidget*>::iterator cur = presentations.begin();
+  std::map<PresentationInterface::WeakPtr,GtkWidget*>::iterator end = presentations.end();
+
+  while(cur!=end)
+  {
+    std::map<PresentationInterface::WeakPtr,GtkWidget*>::iterator next = cur;
+    next++;
+
+    //// Update menu
+    PresentationInterface::Ptr p = cur->first.lock();
+    GtkWidget* m = cur->second;
+    printf("P: %d - M: %p\n", (bool)p, m);
+    if(p && m)
+    {
+      // Do nothing
+    }
+    else if(p && !m)
+    {
+      // Add a menu item
+      printf("Adding a menu item...\n");
+      m=gtk_menu_item_new_with_label("Default");
+      gtk_widget_show(m);
+      cur->second = m;
+      gtk_container_add(GTK_CONTAINER(newWindow_menu), m);
+
+      // g_signal_connect ((gpointer) menu_item, "activate", G_CALLBACK (on_new_activate), cur->first);
+    }
+    else if(!p && m)
+    {
+      // Remove menu item, then remove this element from the map
+      printf("Removing a menu item...\n");
+      cur->second = NULL;
+      gtk_widget_destroy(m);
+      presentations.erase(cur);
+    }
+    else if(!p && !m)
+    {
+      // Remove this element from the map (menu already gone)
+      printf("Weird... Removing a map item...\n");
+      presentations.erase(cur);
+    }
+    else
+    {
+      // This cannot happen
+      printf("PANIC! Logic error in view.cc\n");
+    }
+    //// Done updating menu
+    
+    cur=next;
+  }
+
+  if(presentations.empty())
+  {
+    gtk_widget_set_sensitive(newWindow_menu_item, false);
+    gtk_menu_item_set_submenu(GTK_MENU_ITEM(newWindow_menu_item), NULL);
+  }
+  else
+  {
+    gtk_widget_set_sensitive(newWindow_menu_item, true);
+    gtk_menu_item_set_submenu(GTK_MENU_ITEM(newWindow_menu_item), newWindow_menu);
+  }
+
+  g_object_unref(G_OBJECT(newWindow_menu));
 }
