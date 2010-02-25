@@ -16,4 +16,4 @@ scroom_SOURCES = \
 
 scroom_CXXFLAGS = -I ../../../inc
 
-scroom_LDADD = @PACKAGE_LIBS@ $(INTLLIBS) -L ../../../_lib -lsthreadpool
+scroom_LDADD = @PACKAGE_LIBS@ $(INTLLIBS)
