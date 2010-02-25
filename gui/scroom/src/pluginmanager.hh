@@ -71,7 +71,8 @@ public:
 
   const std::map<NewInterface*, std::string>& getNewInterfaces();
   const std::map<OpenInterface*, std::string>& getOpenInterfaces();
-
+  const std::map<ViewObserver*, std::string>& getViewObservers();
+  const std::map<PresentationObserver*, std::string>& getPresentationObservers();
 
 public:
   static PluginManager& getInstance();

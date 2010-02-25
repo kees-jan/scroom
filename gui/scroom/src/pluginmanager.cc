@@ -234,6 +234,16 @@ const std::map<OpenInterface*, std::string>& PluginManager::getOpenInterfaces()
   return openInterfaces;
 }
 
+const std::map<ViewObserver*, std::string>& PluginManager::getViewObservers()
+{
+  return viewObservers;
+}
+
+const std::map<PresentationObserver*, std::string>& PluginManager::getPresentationObservers()
+{
+  return presentationObservers;
+}
+
 PluginManager& PluginManager::getInstance()
 {
   return pluginManager;

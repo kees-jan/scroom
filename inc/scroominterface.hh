@@ -7,6 +7,7 @@
 #include <gtk/gtk.h>
 
 #include <presentationinterface.hh>
+#include <viewinterface.hh>
 
 class FileOperationObserver
 {
@@ -39,8 +40,8 @@ class PresentationObserver
 public:
   virtual ~PresentationObserver() {}
 
-  virtual void presentationAdded()=0;
-  virtual void persentationDeleted()=0;
+  virtual void presentationAdded(PresentationInterface::Ptr p)=0;
+  virtual void presentationDeleted()=0;
 };
 
 class ViewObserver
@@ -48,8 +49,8 @@ class ViewObserver
 public:
   virtual ~ViewObserver() {}
 
-  virtual void viewAdded()=0;
-  virtual void viewDeleted()=0;
+  virtual void viewAdded(ViewInterface* v)=0;
+  virtual void viewDeleted(ViewInterface* v)=0;
 };
 
 class ScroomInterface

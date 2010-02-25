@@ -56,3 +56,7 @@ void on_presentation_created(PresentationInterface::Ptr p);
 void on_view_created(View* v);
 
 void on_view_destroyed(View* v);
+
+void on_new_presentationobserver(PresentationObserver* po);
+
+void on_new_viewobserver(ViewObserver* v);

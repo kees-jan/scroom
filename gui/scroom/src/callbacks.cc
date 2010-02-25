@@ -329,6 +329,14 @@ void on_presentation_created(PresentationInterface::Ptr p)
   {
     (*cur)->on_presentation_created(p);
   }
+
+  const std::map<PresentationObserver*, std::string>& presentationObservers =
+    PluginManager::getInstance().getPresentationObservers();
+
+  std::map<PresentationObserver*, std::string>::const_iterator cur = presentationObservers.begin();
+  std::map<PresentationObserver*, std::string>::const_iterator end = presentationObservers.end();
+  for(;cur!=end; cur++)
+    cur->first->presentationAdded(p);
 }
 
 void on_view_created(View* v)
@@ -344,10 +352,28 @@ void on_view_created(View* v)
       v->on_presentation_created(p);
     }
   }
+
+  const std::map<ViewObserver*, std::string>& viewObservers =
+    PluginManager::getInstance().getViewObservers();
+
+  std::map<ViewObserver*, std::string>::const_iterator cur = viewObservers.begin();
+  std::map<ViewObserver*, std::string>::const_iterator end = viewObservers.end();
+  for(;cur!=end; cur++)
+    cur->first->viewAdded(v);
 }
 
 void on_view_destroyed(View* v)
 {
+  {
+    const std::map<ViewObserver*, std::string>& viewObservers =
+      PluginManager::getInstance().getViewObservers();
+
+    std::map<ViewObserver*, std::string>::const_iterator cur = viewObservers.begin();
+    std::map<ViewObserver*, std::string>::const_iterator end = viewObservers.end();
+    for(;cur!=end; cur++)
+      cur->first->viewDeleted(v);
+  }
+  
   views.remove(v);
   delete v;
 
@@ -371,5 +397,35 @@ void on_view_destroyed(View* v)
     {
       (*cur)->on_presentation_destroyed();
     }
+
+    const std::map<PresentationObserver*, std::string>& presentationObservers =
+      PluginManager::getInstance().getPresentationObservers();
+
+    std::map<PresentationObserver*, std::string>::const_iterator cur = presentationObservers.begin();
+    std::map<PresentationObserver*, std::string>::const_iterator end = presentationObservers.end();
+    for(;cur!=end; cur++)
+      cur->first->presentationDeleted();
   }
 }
+
+void on_new_presentationobserver(PresentationObserver* po)
+{
+  for(std::list<PresentationInterface::WeakPtr>::iterator cur = presentations.begin();
+      cur != presentations.end(); cur++)
+  {
+    PresentationInterface::Ptr p = cur->lock();
+    if(p)
+    {
+      po->presentationAdded(p);
+    }
+  }
+}
+
+void on_new_viewobserver(ViewObserver* v)
+{
+  for(std::list<View*>::iterator cur = views.begin(); cur != views.end(); cur++)
+  {
+    v->viewAdded(*cur);
+  }
+}
+  
