@@ -2,14 +2,17 @@
 #define _TIFFPRESENTATION_HH
 
 #include <string>
+#include <map>
+#include <list>
 
 #include <scroominterface.hh>
 #include <tiledbitmapinterface.hh>
 #include <presentationinterface.hh>
+#include <colormappable.hh>
 
 typedef struct tiff TIFF;
 
-class TiffPresentation : public PresentationInterface, public SourcePresentation
+class TiffPresentation : public PresentationInterface, public SourcePresentation, public Colormappable
 {
 private:
   std::string fileName;
@@ -20,6 +23,8 @@ private:
   TiledBitmapInterface* tbi;
   LayerSpec ls;
   int bpp;
+  std::map<std::string, std::string> properties;
+  std::list<ViewInterface*> views;
   
 public:
 
@@ -45,7 +50,13 @@ public:
   ////////////////////////////////////////////////////////////////////////
 private:
   virtual void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles);
+ 
+  ////////////////////////////////////////////////////////////////////////
+  // Colormappable
+  ////////////////////////////////////////////////////////////////////////
 
+  void registerObserver(Viewable* observer);
+  void setColormap(Colormap::Ptr colormap);
 };
 
 #endif

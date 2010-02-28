@@ -37,7 +37,7 @@ bool TiffPresentation::load(std::string fileName, FileOperationObserver* observe
 {
   this->fileName = fileName;
   tif = TIFFOpen(fileName.c_str(), "r");
-    if (!tif)
+  if (!tif)
   {
     // Todo: report error
     return false;
@@ -83,6 +83,7 @@ bool TiffPresentation::load(std::string fileName, FileOperationObserver* observe
   else if(bpp==2 || bpp==4)
   {
     ls.push_back(new Operations(bpp));
+    properties[COLORMAPPABLE_PROPERTY_NAME]="";
   }
   else
   {
@@ -111,6 +112,14 @@ GdkRectangle TiffPresentation::getRect()
 
 void TiffPresentation::open(ViewInterface* viewInterface)
 {
+  views.push_back(viewInterface);
+  std::list<Viewable*> observers = getObservers();
+  for(std::list<Viewable*>::iterator cur=observers.begin();
+      cur!=observers.end(); ++cur)
+  {
+    (*cur)->open(viewInterface);
+  }
+  
   if(tbi)
     tbi->open(viewInterface);
   else
@@ -121,6 +130,14 @@ void TiffPresentation::open(ViewInterface* viewInterface)
 
 void TiffPresentation::close(ViewInterface* vi)
 {
+  views.remove(vi);
+  std::list<Viewable*> observers = getObservers();
+  for(std::list<Viewable*>::iterator cur=observers.begin();
+      cur!=observers.end(); ++cur)
+  {
+    (*cur)->close(vi);
+  }
+  
   if(tbi)
     tbi->close(vi);
   else
@@ -137,16 +154,25 @@ void TiffPresentation::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle prese
 
 bool TiffPresentation::getProperty(const std::string& name, std::string& value)
 {
-  UNUSED(name);
-  UNUSED(value);
+  std::map<std::string, std::string>::iterator p = properties.find(name);
+  bool found = false;
+  if(p == properties.end())
+  {
+    found = false;
+    value = "";
+  }
+  else
+  {
+    found = true;
+    value = p->second;
+  }
   
-  return false;
+  return found;
 }
 
 bool TiffPresentation::isPropertyDefined(const std::string& name)
 {
-  std::string value;
-  return getProperty(name, value);
+  return properties.end() != properties.find(name);
 }
 
 std::string TiffPresentation::getTitle()
@@ -198,4 +224,21 @@ void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth, in
   }
 }
 
+////////////////////////////////////////////////////////////////////////
+// Colormappable
+////////////////////////////////////////////////////////////////////////
 
+void TiffPresentation::registerObserver(Viewable* observer)
+{
+  Colormappable::registerObserver(observer);
+
+  for(std::list<ViewInterface*>::iterator cur=views.begin();
+      cur!=views.end(); ++cur)
+  {
+    observer->open(*cur);
+  }
+}
+
+void TiffPresentation::setColormap(Colormap::Ptr colormap)
+{
+}

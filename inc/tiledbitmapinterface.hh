@@ -45,7 +45,7 @@ public:
   virtual void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles)=0;
 };
 
-class TiledBitmapInterface
+class TiledBitmapInterface: public Viewable
 {
 public:
   virtual ~TiledBitmapInterface()

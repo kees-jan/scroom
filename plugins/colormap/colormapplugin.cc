@@ -1,5 +1,9 @@
 #include "colormapplugin.hh"
 
+#include <colormappable.hh>
+
+#include "colormapprovider.hh"
+
 // #include <gdk/gdk.h>
 
 // #include "examplepresentation.hh"
@@ -38,6 +42,11 @@ void ColormapPlugin::unregisterCapabilities(ScroomInterface* host)
 void ColormapPlugin::presentationAdded(PresentationInterface::Ptr p)
 {
   printf("ColormapPlugin: A presentation was created\n");
+  if(p->isPropertyDefined(COLORMAPPABLE_PROPERTY_NAME))
+  {
+    printf("ColormapPlugin: It is colormappable!\n");
+    new ColormapProvider(p);
+  }
 }
 
 void ColormapPlugin::presentationDeleted()

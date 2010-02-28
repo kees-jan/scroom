@@ -9,9 +9,7 @@ class ViewInterface
 {
 public:
   
-  virtual ~ViewInterface()
-  {
-  }
+  virtual ~ViewInterface() {}
 
   virtual void invalidate()=0;
 
