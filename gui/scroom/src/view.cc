@@ -73,7 +73,8 @@ static void on_newWindow_activate(GtkMenuItem* menuitem, gpointer user_data)
 ////////////////////////////////////////////////////////////////////////
   
 View::View(GladeXML* scroomXml, PresentationInterface::Ptr presentation)
-  : scroomXml(scroomXml), presentation(), drawingAreaWidth(0), drawingAreaHeight(0),
+  : scroomXml(scroomXml), presentation(), sidebarManager(),
+    drawingAreaWidth(0), drawingAreaHeight(0),
     zoom(0), x(0), y(0), measurement(NULL), modifiermove(0)
 {
   PluginManager& pluginManager = PluginManager::getInstance();
@@ -101,6 +102,10 @@ View::View(GladeXML* scroomXml, PresentationInterface::Ptr presentation)
   progressBar = GTK_PROGRESS_BAR(glade_xml_get_widget(scroomXml, "progressbar"));
   statusBar = GTK_STATUSBAR(glade_xml_get_widget(scroomXml, "statusbar"));
   statusBarContextId = gtk_statusbar_get_context_id(statusBar, "View");
+
+  GtkWidget* panelWindow = glade_xml_get_widget(scroomXml, "panelWindow");
+  GtkBox* panel = GTK_BOX(glade_xml_get_widget(scroomXml, "panel"));
+  sidebarManager.setWidgets(panelWindow, panel);
 
   cachedPoint.x=0;
   cachedPoint.y=0;
@@ -602,6 +607,17 @@ GtkProgressBar* View::getProgressBar()
 {
   return progressBar;
 }
+
+void View::addSideWidget(std::string title, GtkWidget* w)
+{
+  sidebarManager.addSideWidget(title, w);
+}
+
+void View::removeSideWidget(GtkWidget* w)
+{
+  sidebarManager.removeSideWidget(w);
+}
+
 
 ////////////////////////////////////////////////////////////////////////
 // Helpers

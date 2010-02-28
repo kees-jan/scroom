@@ -12,7 +12,8 @@ scroom_SOURCES = \
 	callbacks.cc callbacks.hh \
 	view.cc view.hh \
 	pluginmanager.hh pluginmanager.cc \
-	loader.cc loader.hh
+	loader.cc loader.hh \
+	sidebarmanager.cc sidebarmanager.hh
 
 scroom_CXXFLAGS = -I ../../../inc
 

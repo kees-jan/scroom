@@ -15,6 +15,8 @@
 #include <viewinterface.hh>
 #include <presentationinterface.hh>
 
+#include "sidebarmanager.hh"
+
 struct Measurement
 {
 public:
@@ -37,6 +39,7 @@ class View : public ViewInterface
 private:
   GladeXML* scroomXml;
   PresentationInterface::Ptr presentation;
+  SidebarManager sidebarManager;
   GtkWindow* window;
   GtkWidget* drawingArea;
   int drawingAreaWidth;
@@ -99,6 +102,8 @@ public:
 
   virtual void invalidate();
   virtual GtkProgressBar* getProgressBar();
+  virtual void addSideWidget(std::string title, GtkWidget* w);
+  virtual void removeSideWidget(GtkWidget* w);
 
   ////////////////////////////////////////////////////////////////////////
   // Helpers
