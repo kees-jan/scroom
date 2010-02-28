@@ -78,7 +78,7 @@ $(LIBDIR)/$(SONAME): CPPFLAGS += $(CPPFLAGS_$(SONAME))
 
 # Tell the linker we're about to build a DSO by extending LDFLAGS, also take the library
 # specific LDFLAGS into account
-$(LIBDIR)/$(SONAME): LDFLAGS += -shared -Wl,-soname,$(SONAME) $(LDFLAGS_$(SONAME))
+$(LIBDIR)/$(SONAME): LDFLAGS += -shared -Wl,-soname,$(SONAME) -Wl,-E $(LDFLAGS_$(SONAME))
 
 # Build the library out of the objects coming from $(SOURCES) and put the resulting so
 # in the right directory.

@@ -93,7 +93,7 @@ bool PluginManager::doWork()
     if(currentFile!=files.end())
     {
       printf("Reading file: %s\n", currentFile->c_str());
-      plugin = g_module_open(currentFile->c_str(), G_MODULE_BIND_LOCAL);
+      plugin = g_module_open(currentFile->c_str(), (GModuleFlags)0);
       if(plugin)
       {
         PluginFunc gpi;
