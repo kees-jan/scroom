@@ -34,7 +34,7 @@ public:
 };
 
 
-class TiledBitmapViewData : public ViewIdentifier
+class TiledBitmapViewData
 {
 public:
   ViewInterface* viewInterface;
@@ -58,7 +58,7 @@ private:
   std::list<LayerCoordinator*> coordinators;
   GtkProgressBar* progressBar;
   boost::mutex viewDataMutex;
-  std::map<TiledBitmapViewData*, ViewInterface*> viewData;
+  std::map<ViewInterface*, TiledBitmapViewData*> viewData;
   int tileCount;
   boost::mutex tileFinishedMutex;
   int tileFinishedCount;
@@ -82,9 +82,9 @@ public:
 
 public:
   virtual void setSource(SourcePresentation* sp);
-  virtual ViewIdentifier* open(ViewInterface* viewInterface);
-  virtual void close(ViewIdentifier* vid);
-  virtual void redraw(ViewIdentifier* vid, cairo_t* cr, GdkRectangle presentationArea, int zoom);
+  virtual void open(ViewInterface* viewInterface);
+  virtual void close(ViewInterface* vi);
+  virtual void redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);
 
   ////////////////////////////////////////////////////////////////////////
   // TileInternalObserver

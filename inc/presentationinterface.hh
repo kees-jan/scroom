@@ -9,28 +9,25 @@
 
 #include <viewinterface.hh>
 
-class ViewIdentifier
+class Viewable
 {
 public:
-  virtual ~ViewIdentifier()
-  {}
+  virtual ~Viewable() {}
+    
+  virtual void open(ViewInterface* vi)=0;
+  virtual void close(ViewInterface* vi)=0;
 };
 
-class PresentationInterface
+class PresentationInterface : public Viewable
 {
 public:
   typedef boost::shared_ptr<PresentationInterface> Ptr;
   typedef boost::weak_ptr<PresentationInterface> WeakPtr;
  
-  virtual ~PresentationInterface()
-  {
-  }
+  virtual ~PresentationInterface() {}
 
   virtual GdkRectangle getRect()=0;
-
-  virtual ViewIdentifier* open(ViewInterface* viewInterface)=0;
-  virtual void redraw(ViewIdentifier* vid, cairo_t* cr, GdkRectangle presentationArea, int zoom)=0;
-  virtual void close(ViewIdentifier* vid)=0;
+  virtual void redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)=0;
   virtual bool getProperty(const std::string& name, std::string& value)=0;
   virtual bool isPropertyDefined(const std::string& name)=0;
   virtual std::string getTitle()=0;

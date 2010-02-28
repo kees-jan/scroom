@@ -74,7 +74,7 @@ static void on_newWindow_activate(GtkMenuItem* menuitem, gpointer user_data)
   
 View::View(GladeXML* scroomXml, PresentationInterface::Ptr presentation)
   : scroomXml(scroomXml), presentation(), drawingAreaWidth(0), drawingAreaHeight(0),
-    zoom(0), x(0), y(0), vid(NULL), measurement(NULL), modifiermove(0)
+    zoom(0), x(0), y(0), measurement(NULL), modifiermove(0)
 {
   PluginManager& pluginManager = PluginManager::getInstance();
   window = GTK_WINDOW(glade_xml_get_widget(scroomXml, "scroom"));
@@ -142,7 +142,7 @@ void View::redraw(cairo_t* cr)
       rect.height = drawingAreaHeight*pixelSize;
     }
     
-    presentation->redraw(vid, cr, rect, zoom);
+    presentation->redraw(this, cr, rect, zoom);
 
     if(measurement)
     {
@@ -177,7 +177,7 @@ void View::setPresentation(PresentationInterface::Ptr presentation)
 {
   if(this->presentation)
   {
-    this->presentation->close(vid);
+    this->presentation->close(this);
     this->presentation.reset();
   }
 
@@ -185,7 +185,7 @@ void View::setPresentation(PresentationInterface::Ptr presentation)
 
   if(this->presentation)
   {
-    vid = presentation->open(this);
+    presentation->open(this);
     presentationRect = presentation->getRect();
     std::string s = presentation->getTitle();
     if(s.length())

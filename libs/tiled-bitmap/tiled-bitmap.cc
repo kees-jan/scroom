@@ -202,13 +202,13 @@ void TiledBitmap::gtk_progress_bar_set_fraction(double fraction)
 {
   gdk_threads_enter();
   boost::mutex::scoped_lock lock(viewDataMutex);
-  std::map<TiledBitmapViewData*, ViewInterface*>::iterator cur = viewData.begin();
-  std::map<TiledBitmapViewData*, ViewInterface*>::iterator end = viewData.end();
+  std::map<ViewInterface*, TiledBitmapViewData*>::iterator cur = viewData.begin();
+  std::map<ViewInterface*, TiledBitmapViewData*>::iterator end = viewData.end();
 
   for(; cur!=end; ++cur)
   {
     // EEK! This is not thread safe!
-    cur->first->gtk_progress_bar_set_fraction(fraction);
+    cur->second->gtk_progress_bar_set_fraction(fraction);
   }
   gdk_threads_leave();
 }
@@ -217,13 +217,13 @@ void TiledBitmap::gtk_progress_bar_pulse()
 {
   gdk_threads_enter();
   boost::mutex::scoped_lock lock(viewDataMutex);
-  std::map<TiledBitmapViewData*, ViewInterface*>::iterator cur = viewData.begin();
-  std::map<TiledBitmapViewData*, ViewInterface*>::iterator end = viewData.end();
+  std::map<ViewInterface*, TiledBitmapViewData*>::iterator cur = viewData.begin();
+  std::map<ViewInterface*, TiledBitmapViewData*>::iterator end = viewData.end();
 
   for(; cur!=end; ++cur)
   {
     // EEK! This is not thread safe!
-    cur->first->gtk_progress_bar_pulse();
+    cur->second->gtk_progress_bar_pulse();
   }
   gdk_threads_leave();
 }
@@ -328,7 +328,7 @@ void TiledBitmap::drawTile(cairo_t* cr, const TileInternal* tile, const GdkRecta
 
 }
 
-void TiledBitmap::redraw(ViewIdentifier* vid, cairo_t* cr, GdkRectangle presentationArea, int zoom)
+void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
 {
   // presentationArea.width-=200;
   // presentationArea.height-=200;
@@ -540,19 +540,18 @@ void TiledBitmap::redraw(ViewIdentifier* vid, cairo_t* cr, GdkRectangle presenta
   }
 }
 
-ViewIdentifier* TiledBitmap::open(ViewInterface* viewInterface)
+void TiledBitmap::open(ViewInterface* viewInterface)
 {
   boost::mutex::scoped_lock lock(viewDataMutex);
   TiledBitmapViewData* vd = new TiledBitmapViewData(viewInterface);
-  viewData[vd] = viewInterface;
-  return vd;
+  viewData[viewInterface] = vd;
 }
 
-void TiledBitmap::close(ViewIdentifier* vid)
+void TiledBitmap::close(ViewInterface* vi)
 {
   boost::mutex::scoped_lock lock(viewDataMutex);
-  TiledBitmapViewData* vd = dynamic_cast<TiledBitmapViewData*>(vid);
-  viewData.erase(vd);
+  TiledBitmapViewData* vd = viewData[vi];
+  viewData.erase(vi);
   delete vd;
 }
 

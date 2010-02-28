@@ -109,31 +109,30 @@ GdkRectangle TiffPresentation::getRect()
   return rect;
 }
 
-ViewIdentifier* TiffPresentation::open(ViewInterface* viewInterface)
+void TiffPresentation::open(ViewInterface* viewInterface)
 {
   if(tbi)
-    return tbi->open(viewInterface);
+    tbi->open(viewInterface);
   else
   {
     printf("ERROR: TiffPresentation::open(): No TiledBitmapInterface available!\n");
-    return NULL;
   }
 }
 
-void TiffPresentation::close(ViewIdentifier* vid)
+void TiffPresentation::close(ViewInterface* vi)
 {
   if(tbi)
-    tbi->close(vid);
+    tbi->close(vi);
   else
   {
     printf("ERROR: TiffPresentation::close(): No TiledBitmapInterface available!\n");
   }
 }
 
-void TiffPresentation::redraw(ViewIdentifier* vid, cairo_t* cr, GdkRectangle presentationArea, int zoom)
+void TiffPresentation::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
 {
   if(tbi)
-    tbi->redraw(vid, cr, presentationArea, zoom);
+    tbi->redraw(vi, cr, presentationArea, zoom);
 }
 
 bool TiffPresentation::getProperty(const std::string& name, std::string& value)

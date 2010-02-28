@@ -17,20 +17,19 @@ GdkRectangle ExamplePresentation::getRect()
   return rect;
 }
 
-ViewIdentifier* ExamplePresentation::open(ViewInterface* viewInterface)
+void ExamplePresentation::open(ViewInterface* viewInterface)
 {
   UNUSED(viewInterface);
-  return NULL;
 }
 
-void ExamplePresentation::close(ViewIdentifier* vid)
+void ExamplePresentation::close(ViewInterface* vi)
 {
-  UNUSED(vid);
+  UNUSED(vi);
 }
 
-void ExamplePresentation::redraw(ViewIdentifier* vid, cairo_t* cr, GdkRectangle presentationArea, int zoom)
+void ExamplePresentation::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
 {
-  UNUSED(vid);
+  UNUSED(vi);
   // char buffer[] = "Hello world!";
   // 
   // cairo_move_to(cr, 30, 30);

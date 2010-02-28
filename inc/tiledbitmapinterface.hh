@@ -52,9 +52,9 @@ public:
   {}
 
   virtual void setSource(SourcePresentation* sp)=0;
-  virtual ViewIdentifier* open(ViewInterface* viewInterface)=0;
-  virtual void close(ViewIdentifier* vid)=0;
-  virtual void redraw(ViewIdentifier* vid, cairo_t* cr, GdkRectangle presentationArea, int zoom)=0;
+  virtual void open(ViewInterface* vi)=0;
+  virtual void close(ViewInterface* vi)=0;
+  virtual void redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)=0;
 };
 
 TiledBitmapInterface* createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver* observer);

@@ -56,7 +56,6 @@ private:
   int zoom;
   int x;
   int y;
-  ViewIdentifier* vid;
   Measurement* measurement;
 
   gint modifiermove;
