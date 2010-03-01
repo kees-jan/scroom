@@ -9,19 +9,34 @@ void SidebarManager::setWidgets(GtkWidget* panelWindow, GtkBox* panel)
 {
   this->panelWindow = panelWindow;
   this->panel = panel;
-  gtk_widget_show(panelWindow);
-
-  GtkWidget* button = gtk_button_new_with_label("Some obscure default");
-  addSideWidget("Default", button);
-
 }
 
 void SidebarManager::addSideWidget(std::string title, GtkWidget* w)
 {
-  gtk_box_pack_start_defaults(panel, w);
+  GtkWidget* e = gtk_expander_new(title.c_str());
+  gtk_expander_set_expanded(GTK_EXPANDER(e), true);
+  gtk_widget_show(e);
+  gtk_box_pack_start_defaults(panel, e);
+  gtk_container_add(GTK_CONTAINER(e), w);
   gtk_widget_show(w);
+
+  widgets[w]=e;
+
+  gtk_widget_show(panelWindow);
 }
 
 void SidebarManager::removeSideWidget(GtkWidget* w)
 {
+  std::map<GtkWidget*, GtkWidget*>::iterator cur = widgets.find(w);
+  if(cur==widgets.end())
+  {
+    printf("PANIC: Can't find the widget I'm supposed to remove\n");
+    gtk_widget_destroy(w);
+  }
+  else
+  {
+    gtk_widget_destroy(cur->second);
+    widgets.erase(cur);
+  }
+  gtk_widget_set_visible(panelWindow, !widgets.empty());
 }

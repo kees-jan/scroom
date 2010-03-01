@@ -263,6 +263,8 @@
                 </child>
                 <child>
                   <widget class="GtkDrawingArea" id="drawingarea">
+                    <property name="width_request">500</property>
+                    <property name="height_request">500</property>
                     <property name="visible">True</property>
                     <property name="events">GDK_EXPOSURE_MASK | GDK_POINTER_MOTION_MASK | GDK_BUTTON_MOTION_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_SCROLL_MASK</property>
                     <signal name="expose_event" handler="on_drawingarea_expose_event"/>
