@@ -4,10 +4,6 @@
 
 #include "colormapprovider.hh"
 
-// #include <gdk/gdk.h>
-
-// #include "examplepresentation.hh"
-
 ////////////////////////////////////////////////////////////////////////
 
 ColormapPlugin::ColormapPlugin()
