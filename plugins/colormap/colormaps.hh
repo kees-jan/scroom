@@ -18,6 +18,8 @@ public:
   static Colormaps& getInstance();
   
   GtkListStore* getFileNames();
+
+  void select(GtkTreeIter iter, PresentationInterface::Ptr p);
 };
 
 enum

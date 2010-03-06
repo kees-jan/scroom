@@ -97,3 +97,8 @@ GtkListStore* Colormaps::getFileNames()
 {
   return filenames;
 }
+
+void Colormaps::select(GtkTreeIter iter, PresentationInterface::Ptr p)
+{
+  printf("-->Attempting to change the selection!\n");
+}
