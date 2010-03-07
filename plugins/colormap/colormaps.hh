@@ -19,13 +19,15 @@ public:
   
   GtkListStore* getFileNames();
 
-  void select(GtkTreeIter iter, PresentationInterface::Ptr p);
+  void select(GtkTreeIter iter, Colormappable* colormappable);
+  Colormap::Ptr load(const char* name);
 };
 
 enum
   {
     COLUMN_NAME,
     COLUMN_POINTER,
+    COLUMN_ENABLED,
     N_COLUMNS
   };
 

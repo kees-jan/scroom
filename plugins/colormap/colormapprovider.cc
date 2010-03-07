@@ -50,7 +50,7 @@ void ColormapProvider::open(ViewInterface* vi)
   GtkListStore* filenames = Colormaps::getInstance().getFileNames();
   GtkTreeView* tv = GTK_TREE_VIEW(gtk_tree_view_new_with_model(GTK_TREE_MODEL(filenames)));
   GtkCellRenderer* txt = GTK_CELL_RENDERER(gtk_cell_renderer_text_new());
-  gtk_tree_view_insert_column_with_attributes(tv, -1, "Name", txt, "text", COLUMN_NAME, NULL);
+  gtk_tree_view_insert_column_with_attributes(tv, -1, "Name", txt, "text", COLUMN_NAME, "sensitive", COLUMN_ENABLED, NULL);
   g_signal_connect ((gpointer)tv, "cursor_changed", G_CALLBACK (::on_colormap_selected), this);
   views[vi]=tv;
 
@@ -81,7 +81,11 @@ void ColormapProvider::on_colormap_selected(GtkTreeView* tv)
     bool selected = gtk_tree_selection_get_selected(ts, &model, &iter);
     if(selected)
     {
-      Colormaps::getInstance().select(iter, p);
+      Colormappable* c = dynamic_cast<Colormappable*>(p.get());
+      if(c)
+        Colormaps::getInstance().select(iter, c);
+      else
+        printf("PANIC: Presentation doesn't implement Colormappable\n");
     }
   }
   else

@@ -4,12 +4,44 @@
 #include <dirent.h>
 #include <errno.h>
 #include <string.h>
+#include <stdio.h>
 
 #include <gio/gio.h>
+
+#include <colormappable.hh>
 
 #define SCROOMDIR   ".scroom"
 #define COLORMAPDIR "colormaps"
 #define COLORMAPEXT ".pal"
+
+#define PAL_HEADER  "JASC-PAL"
+#define PAL_VERSION "0100"
+#define BUFFERSIZE  256
+
+////////////////////////////////////////////////////////////////////////
+// Color
+
+Color::Color()
+  : red(0.0), green(0.0), blue(0.0)
+{
+}
+
+Color::Color(double red, double green, double blue)
+  : red(red), green(green), blue(blue)
+{
+}
+
+////////////////////////////////////////////////////////////////////////
+// Colormap
+
+Colormap::Ptr Colormap::create()
+{
+  return Colormap::Ptr(new Colormap());
+}
+
+////////////////////////////////////////////////////////////////////////
+// Colormaps
+
 
 // void on_dir_changed (GFileMonitor *monitor, GFile *file, GFile *other_file, GFileMonitorEvent event_type, gpointer user_data)
 // {
@@ -29,9 +61,9 @@ Colormaps::Colormaps()
   if (!homedir)
      homedir = g_get_home_dir ();
 
-  const char* colormapDirPath = g_build_filename(homedir, SCROOMDIR, COLORMAPDIR, NULL);
+  char* colormapDirPath = g_build_filename(homedir, SCROOMDIR, COLORMAPDIR, NULL);
 
-  filenames = gtk_list_store_new(N_COLUMNS, G_TYPE_STRING, G_TYPE_POINTER);
+  filenames = gtk_list_store_new(N_COLUMNS, G_TYPE_STRING, G_TYPE_POINTER, G_TYPE_BOOLEAN);
 
   DIR* colormapDir = opendir(colormapDirPath);
   if(colormapDir)
@@ -51,6 +83,7 @@ Colormaps::Colormaps()
           gtk_list_store_set(filenames, &iter,
                              COLUMN_NAME, name,
                              COLUMN_POINTER, c,
+                             COLUMN_ENABLED, true,
                              -1);
         }
       }
@@ -61,6 +94,7 @@ Colormaps::Colormaps()
   {
     printf("Failed to open dir %s: (%d, %s)\n", colormapDirPath, errno, strerror(errno));
   }
+  g_free(colormapDirPath);
 
   // For now, read the directory once. Later, we can use gio and watch
   // for updates and stuff.
@@ -98,7 +132,95 @@ GtkListStore* Colormaps::getFileNames()
   return filenames;
 }
 
-void Colormaps::select(GtkTreeIter iter, PresentationInterface::Ptr p)
+void Colormaps::select(GtkTreeIter iter, Colormappable* colormappable)
 {
   printf("-->Attempting to change the selection!\n");
+  if(gtk_list_store_iter_is_valid(filenames, &iter))
+  {
+    gchar* name = NULL;
+    gpointer* pointer = NULL;
+    gtk_tree_model_get(GTK_TREE_MODEL(filenames), &iter, COLUMN_NAME, &name, COLUMN_POINTER, &pointer, -1);
+    Colormap::WeakPtr* w = (Colormap::WeakPtr*)pointer;
+    Colormap::Ptr c = w->lock();
+    if(!c)
+    {
+      printf("-->Attempting to load file %s\n", name);
+      c = load(name);
+      if(c)
+      {
+        *w = c;
+        colormappable->setColormap(c);
+      }
+      else
+      {
+        gtk_list_store_set(filenames, &iter, COLUMN_ENABLED, false, -1);
+      }
+    }
+
+    g_free(name);
+  }
+}
+
+Colormap::Ptr Colormaps::load(const char* name)
+{
+  Colormap::Ptr colormap;
+
+  const char *homedir = g_getenv ("HOME");
+  if (!homedir)
+     homedir = g_get_home_dir ();
+
+  char* fullName = g_build_filename(homedir, SCROOMDIR, COLORMAPDIR, name, NULL); 
+  FILE* f = fopen(fullName, "r");
+  if(f)
+  {
+    try
+    {
+      char buffer[BUFFERSIZE];
+
+      // Read header
+      char* result = fgets(buffer, BUFFERSIZE, f);
+      if(!result)
+        throw std::exception();
+      if(strncmp(buffer, PAL_HEADER, strlen(PAL_HEADER)))
+        throw std::exception();
+        
+      // Read version
+      result = fgets(buffer, BUFFERSIZE, f);
+      if(!result)
+        throw std::exception();
+      if(strncmp(buffer, PAL_VERSION, strlen(PAL_VERSION)))
+        throw std::exception();
+
+      // Read ColorCount
+      result = fgets(buffer, BUFFERSIZE, f);
+      if(!result)
+        throw std::exception();
+      unsigned int count = atoi(result);
+      if(count==0)
+        throw std::exception();
+
+      printf("-->Reading %d colors\n", count);
+      colormap = Colormap::create();
+      std::vector<Color>& colors = colormap->colors;
+      int red=0;
+      int green=0;
+      int blue=0;
+      while(colors.size()<count &&
+            fgets(buffer, BUFFERSIZE, f) &&
+            3 == sscanf(buffer, "%d %d %d", &red, &green, &blue))
+      {
+        colors.push_back(Color(red/255.0, green/255.0, blue/255.0));
+      }
+      if(colors.size()!=count)
+        throw std::exception();
+    }
+    catch(std::exception& e)
+    {
+      printf("ERROR: Couldn't parse file\n");
+      colormap.reset();
+    }
+    fclose(f);
+  }
+  g_free(fullName);
+  return colormap;
 }
