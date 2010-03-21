@@ -19,27 +19,6 @@
 #define BUFFERSIZE  256
 
 ////////////////////////////////////////////////////////////////////////
-// Color
-
-Color::Color()
-  : red(0.0), green(0.0), blue(0.0)
-{
-}
-
-Color::Color(double red, double green, double blue)
-  : red(red), green(green), blue(blue)
-{
-}
-
-////////////////////////////////////////////////////////////////////////
-// Colormap
-
-Colormap::Ptr Colormap::create()
-{
-  return Colormap::Ptr(new Colormap());
-}
-
-////////////////////////////////////////////////////////////////////////
 // Colormaps
 
 
@@ -134,7 +113,6 @@ GtkListStore* Colormaps::getFileNames()
 
 void Colormaps::select(GtkTreeIter iter, Colormappable* colormappable)
 {
-  printf("-->Attempting to change the selection!\n");
   if(gtk_list_store_iter_is_valid(filenames, &iter))
   {
     gchar* name = NULL;
@@ -144,18 +122,18 @@ void Colormaps::select(GtkTreeIter iter, Colormappable* colormappable)
     Colormap::Ptr c = w->lock();
     if(!c)
     {
-      printf("-->Attempting to load file %s\n", name);
       c = load(name);
       if(c)
       {
         *w = c;
-        colormappable->setColormap(c);
       }
       else
       {
         gtk_list_store_set(filenames, &iter, COLUMN_ENABLED, false, -1);
       }
     }
+    if(c)
+      colormappable->setColormap(c);
 
     g_free(name);
   }
@@ -199,7 +177,6 @@ Colormap::Ptr Colormaps::load(const char* name)
       if(count==0)
         throw std::exception();
 
-      printf("-->Reading %d colors\n", count);
       colormap = Colormap::create();
       std::vector<Color>& colors = colormap->colors;
       int red=0;

@@ -10,6 +10,7 @@
 TiffPresentation::TiffPresentation()
   : fileName(), tif(NULL), height(0), width(0), negative(false), tbi(NULL), bpp(0)
 {
+  colormap = Colormap::createDefault(256);
 }
 
 TiffPresentation::~TiffPresentation()
@@ -57,6 +58,7 @@ bool TiffPresentation::load(std::string fileName, FileOperationObserver* observe
   uint16 bpp;
   TIFFGetField(tif, TIFFTAG_BITSPERSAMPLE, &bpp);
   this->bpp = bpp;
+  colormap = Colormap::createDefault(1<<bpp);
 
   uint16 photometric;
   TIFFGetField(tif, TIFFTAG_PHOTOMETRIC, &photometric);
@@ -82,7 +84,7 @@ bool TiffPresentation::load(std::string fileName, FileOperationObserver* observe
   }
   else if(bpp==2 || bpp==4)
   {
-    ls.push_back(new Operations(bpp));
+    ls.push_back(new Operations(this, bpp));
     properties[COLORMAPPABLE_PROPERTY_NAME]="";
   }
   else
@@ -241,4 +243,19 @@ void TiffPresentation::registerObserver(Viewable* observer)
 
 void TiffPresentation::setColormap(Colormap::Ptr colormap)
 {
+  for(std::list<ViewInterface*>::iterator cur=views.begin();
+      cur!=views.end(); ++cur)
+  {
+    (*cur)->invalidate();
+  }
+  this->colormap = colormap;
+}
+
+////////////////////////////////////////////////////////////////////////
+// Helpers
+////////////////////////////////////////////////////////////////////////
+
+Colormap::Ptr TiffPresentation::getColormap()
+{
+  return colormap;
 }

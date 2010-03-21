@@ -25,6 +25,7 @@ private:
   int bpp;
   std::map<std::string, std::string> properties;
   std::list<ViewInterface*> views;
+  Colormap::Ptr colormap;
   
 public:
 
@@ -57,6 +58,12 @@ private:
 
   void registerObserver(Viewable* observer);
   void setColormap(Colormap::Ptr colormap);
+
+  ////////////////////////////////////////////////////////////////////////
+  // Helpers
+  ////////////////////////////////////////////////////////////////////////
+public:
+  Colormap::Ptr getColormap();
 };
 
 #endif

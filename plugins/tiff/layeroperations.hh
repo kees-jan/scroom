@@ -2,6 +2,10 @@
 #define _TIFF_LAYEROPERATIONS_HH
 
 #include <tiledbitmapinterface.hh>
+#include <colormappable.hh>
+
+// Avoid a circular reference...
+class TiffPresentation;
 
 class CommonOperations : public LayerOperations
 {
@@ -11,6 +15,7 @@ public:
 
   void drawPixel(cairo_t* cr, int x, int y, int size, byte greyShade=255);
   void drawPixel(cairo_t* cr, int x, int y, int size, double greyShade);
+  void drawPixel(cairo_t* cr, int x, int y, int size, const Color& color);
   void fillRect(cairo_t* cr, int x, int y, int width, int height);
   void fillRect(cairo_t* cr, const GdkRectangle& area);
   
@@ -56,9 +61,11 @@ private:
   const int pixelsPerByte;
   const int pixelOffset;
   const int pixelMask;
+
+  TiffPresentation* presentation;
   
 public:
-  Operations(int bpp);
+  Operations(TiffPresentation* presentation, int bpp);
   
   virtual ~Operations()
   {}

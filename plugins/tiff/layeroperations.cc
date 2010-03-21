@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "tiffpresentation.hh"
+
 ////////////////////////////////////////////////////////////////////////
 // PixelIterator
 
@@ -172,6 +174,17 @@ inline void CommonOperations::drawPixel(cairo_t* cr, int x, int y, int size, byt
   drawPixel(cr, x, y, size, (double)(255-greyShade)/255.0);
 }
   
+inline void CommonOperations::drawPixel(cairo_t* cr, int x, int y, int size, const Color& color)
+{
+  cairo_set_source_rgb(cr, color.red, color.green, color.blue);
+  cairo_move_to(cr, x, y);
+  cairo_line_to(cr, x+size, y);
+  cairo_line_to(cr, x+size, y+size);
+  cairo_line_to(cr, x, y+size);
+  cairo_line_to(cr, x, y);
+  cairo_fill(cr);
+}
+
 inline void CommonOperations::fillRect(cairo_t* cr, int x, int y,
                                         int width, int height)
 {
@@ -376,8 +389,8 @@ void Operations8bpp::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int
 ////////////////////////////////////////////////////////////////////////
 // Operations
 
-Operations::Operations(int bpp)
-  :bpp(bpp), pixelsPerByte(8/bpp), pixelOffset(bpp), pixelMask((1<<bpp)-1)
+Operations::Operations(TiffPresentation* presentation, int bpp)
+  :bpp(bpp), pixelsPerByte(8/bpp), pixelOffset(bpp), pixelMask((1<<bpp)-1), presentation(presentation)
 {
 }
 
@@ -390,6 +403,7 @@ void Operations::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRec
 {
   cairo_set_source_rgb(cr, 1, 1, 1); // White
   fillRect(cr, viewArea);
+  Colormap::Ptr colormap = presentation->getColormap();
   
   if(zoom>=0)
   {
@@ -402,7 +416,7 @@ void Operations::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRec
       for(int i=0; i<tileArea.width; i++)
       {
         if(*pixel)
-          drawPixel(cr, viewArea.x+i*pixelSize, viewArea.y+j*pixelSize, pixelSize, (double)(pixelMask-*pixel)/pixelMask);
+          drawPixel(cr, viewArea.x+i*pixelSize, viewArea.y+j*pixelSize, pixelSize, colormap->colors[*pixel]);
         ++pixel;
       }
     }
@@ -423,7 +437,7 @@ void Operations::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRec
       {
         if(*pixel)
         {
-          drawPixel(cr, viewArea.x+i, viewArea.y+j, 1, (double)(pixelMask-*pixel)/pixelMask);
+          drawPixel(cr, viewArea.x+i, viewArea.y+j, 1, colormap->colors[*pixel]);
         }
         pixel+=pixelCount;
       }
