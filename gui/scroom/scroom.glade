@@ -67,6 +67,7 @@
                       <widget class="GtkImageMenuItem" id="open-with">
                         <property name="label" translatable="yes">Open with</property>
                         <property name="visible">True</property>
+                        <property name="sensitive">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
                         <child internal-child="image">
@@ -82,6 +83,7 @@
                       <widget class="GtkImageMenuItem" id="save">
                         <property name="label">gtk-save</property>
                         <property name="visible">True</property>
+                        <property name="sensitive">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="on_save_activate"/>
@@ -91,6 +93,7 @@
                       <widget class="GtkImageMenuItem" id="save_as">
                         <property name="label">gtk-save-as</property>
                         <property name="visible">True</property>
+                        <property name="sensitive">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="on_save_as_activate"/>
@@ -117,6 +120,7 @@
             <child>
               <widget class="GtkMenuItem" id="edit_menu_item">
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="label" translatable="yes">_Edit</property>
                 <property name="use_underline">True</property>
                 <child>
@@ -164,6 +168,7 @@
             <child>
               <widget class="GtkMenuItem" id="view_menu_item">
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="label" translatable="yes">_View</property>
                 <property name="use_underline">True</property>
                 <child>
