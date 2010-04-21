@@ -1,5 +1,5 @@
 SUBDIRS=plugins libs
-GUI=gui/scroom
+GUI=gui
 
 include master-dir.mk
 
