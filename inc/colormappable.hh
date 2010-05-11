@@ -1,6 +1,8 @@
 #ifndef COLORMAPPABLE_HH
 #define COLORMAPPABLE_HH
 
+#include <vector>
+
 #include <boost/shared_ptr.hpp>
 
 #include <presentationinterface.hh>
