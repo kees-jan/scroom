@@ -1,6 +1,10 @@
 AC_PREREQ([2.64])
 AC_INIT([Scroom], [0.1], [http://fuzzy.homedns.org/trac/scroom/newticket], [scroom], [http://fuzzy.homedns.org/trac/scroom])
 AM_INIT_AUTOMAKE
+LT_PREREQ([2.2])
+LT_INIT([dlopen])
+
+AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([inc/presentationinterface.hh])
 AC_CONFIG_HEADERS([config.h])
 
@@ -11,7 +15,7 @@ AC_PROG_LN_S
 dnl AC_PROG_INSTALL
 
 # Checks for packages.
-pkg_modules="gtk+-2.0 >= 2.0.0, gthread-2.0, libglade-2.0"
+pkg_modules="gtk+-2.0 >= 2.0.0, gthread-2.0, libglade-2.0 glib-2.0"
 PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
 AC_SUBST(PACKAGE_CFLAGS)
 AC_SUBST(PACKAGE_LIBS)
@@ -41,12 +45,12 @@ dnl AM_GLIB_GNU_GETTEXT
 
 AC_CONFIG_FILES([Makefile
                  libs/Makefile
+                 libs/threadpool/Makefile
                  gui/Makefile
                  gui/src/Makefile
 ])
 dnl                  libs/Makefile
 dnl                  libs/memory-manager/Makefile
-dnl                  libs/threadpool/Makefile
 dnl                  libs/tiled-bitmap/Makefile
 dnl                  plugins/Makefile
 dnl                  plugins/colormap/Makefile

@@ -1,2 +1,3 @@
+ACLOCAL_AMFLAGS = -I m4
 # SUBDIRS=libs # plugins gui
-SUBDIRS=gui
+SUBDIRS=libs gui
