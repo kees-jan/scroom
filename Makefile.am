@@ -1,1 +1,2 @@
-SUBDIRS=libs # plugins gui
+# SUBDIRS=libs # plugins gui
+SUBDIRS=gui

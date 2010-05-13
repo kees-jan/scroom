@@ -15,6 +15,6 @@ scroom_SOURCES = \
 	loader.cc loader.hh \
 	sidebarmanager.cc sidebarmanager.hh
 
-scroom_CXXFLAGS = -I ../../../inc
+scroom_CXXFLAGS = -I ../../inc
 
 scroom_LDADD = @PACKAGE_LIBS@ $(INTLLIBS)

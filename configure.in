@@ -41,10 +41,9 @@ dnl AM_GLIB_GNU_GETTEXT
 
 AC_CONFIG_FILES([Makefile
                  libs/Makefile
+                 gui/Makefile
+                 gui/src/Makefile
 ])
-dnl                  gui/Makefile
-dnl                  gui/src/Makefile
-dnl                  gui/po/Makefile.in
 dnl                  libs/Makefile
 dnl                  libs/memory-manager/Makefile
 dnl                  libs/threadpool/Makefile
