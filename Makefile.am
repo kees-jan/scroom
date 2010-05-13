@@ -1,0 +1,1 @@
+SUBDIRS=libs # plugins gui

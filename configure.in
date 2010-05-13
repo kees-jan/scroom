@@ -1,6 +1,6 @@
 AC_PREREQ([2.64])
 AC_INIT([Scroom], [0.1], [http://fuzzy.homedns.org/trac/scroom/newticket], [scroom], [http://fuzzy.homedns.org/trac/scroom])
-dnl AM_INIT_AUTOMAKE
+AM_INIT_AUTOMAKE
 AC_CONFIG_SRCDIR([inc/presentationinterface.hh])
 AC_CONFIG_HEADERS([config.h])
 
@@ -39,7 +39,8 @@ dnl dnl Add the languages which your application supports here.
 dnl ALL_LINGUAS=""
 dnl AM_GLIB_GNU_GETTEXT
 
-dnl AC_CONFIG_FILES([Makefile
+AC_CONFIG_FILES([Makefile
+])
 dnl                  gui/Makefile
 dnl                  gui/src/Makefile
 dnl                  gui/po/Makefile.in
@@ -50,7 +51,8 @@ dnl                  libs/tiled-bitmap/Makefile
 dnl                  plugins/Makefile
 dnl                  plugins/colormap/Makefile
 dnl                  plugins/example/Makefile
-dnl                  plugins/tiff/Makefile])
+dnl                  plugins/tiff/Makefile
+
 AC_OUTPUT
 
 echo \
@@ -60,6 +62,7 @@ echo \
 
  Prefix: '${prefix}'.
  Compiler: '${CC} ${CFLAGS} ${CPPFLAGS}'
+           '${CXX} ${CXXFLAGS} ${CPPFLAGS}'
 
  Now type 'make @<:@<target>@:>@'
    where the optional <target> is:
