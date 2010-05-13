@@ -1,0 +1,73 @@
+AC_PREREQ([2.64])
+AC_INIT([Scroom], [0.1], [http://fuzzy.homedns.org/trac/scroom/newticket], [scroom], [http://fuzzy.homedns.org/trac/scroom])
+dnl AM_INIT_AUTOMAKE
+AC_CONFIG_SRCDIR([inc/presentationinterface.hh])
+AC_CONFIG_HEADERS([config.h])
+
+# Checks for programs.
+AC_PROG_CXX
+AC_PROG_CC
+AC_PROG_LN_S
+dnl AC_PROG_INSTALL
+
+# Checks for packages.
+pkg_modules="gtk+-2.0 >= 2.0.0, gthread-2.0, libglade-2.0"
+PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
+AC_SUBST(PACKAGE_CFLAGS)
+AC_SUBST(PACKAGE_LIBS)
+
+# Checks for libraries.
+
+# Checks for header files.
+AC_CHECK_HEADERS([stdlib.h string.h])
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_HEADER_STDBOOL
+AC_C_INLINE
+AC_TYPE_SIZE_T
+
+# Checks for library functions.
+AC_FUNC_MALLOC
+AC_CHECK_FUNCS([memset pow select sqrt strerror])
+
+# GetText
+dnl GETTEXT_PACKAGE=scroom
+dnl AC_SUBST(GETTEXT_PACKAGE)
+dnl AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [Gettext package.])
+dnl 
+dnl dnl Add the languages which your application supports here.
+dnl ALL_LINGUAS=""
+dnl AM_GLIB_GNU_GETTEXT
+
+dnl AC_CONFIG_FILES([Makefile
+dnl                  gui/Makefile
+dnl                  gui/src/Makefile
+dnl                  gui/po/Makefile.in
+dnl                  libs/Makefile
+dnl                  libs/memory-manager/Makefile
+dnl                  libs/threadpool/Makefile
+dnl                  libs/tiled-bitmap/Makefile
+dnl                  plugins/Makefile
+dnl                  plugins/colormap/Makefile
+dnl                  plugins/example/Makefile
+dnl                  plugins/tiff/Makefile])
+AC_OUTPUT
+
+echo \
+"-------------------------------------------------
+
+ ${PACKAGE_NAME} Version ${PACKAGE_VERSION}
+
+ Prefix: '${prefix}'.
+ Compiler: '${CC} ${CFLAGS} ${CPPFLAGS}'
+
+ Now type 'make @<:@<target>@:>@'
+   where the optional <target> is:
+     all                - build all binaries
+     install            - install everything
+
+--------------------------------------------------"
+
+#  Package features:
+#    Async Execution: ${async_exec}
+
