@@ -20,6 +20,8 @@
 #include "pluginmanager.hh"
 #include "loader.hh"
 
+static const std::string SCROOM_DEV_MODE="SCROOM_DEV_MODE";
+
 static std::string xmlFileName;
 static GladeXML* aboutDialogXml=NULL;
 static GtkWidget* aboutDialog=NULL;
@@ -218,12 +220,33 @@ void on_scroom_bootstrap (const std::list<std::string>& newFilenames)
 {
   printf("Bootstrapping Scroom...\n");
   filenames = newFilenames;
-  startPluginManager();
 
-  aboutDialogXml = glade_xml_new("scroom.glade", "aboutDialog", NULL);
+  bool devMode = NULL!=getenv(SCROOM_DEV_MODE.c_str());
+  if(devMode)
+  {
+    printf("+----------------------------------------------------------------------+\n"
+           "| ENTERING DEVELOPMENT MODE                                            |\n"
+           "| All the default directories are not searched                         |\n"
+           "| Instead, only environment variables and the local source tree        |\n"
+           "| are consulted.                                                       |\n"
+           "+----------------------------------------------------------------------+\n"
+           );
+  }
+  
+  startPluginManager(devMode);
+
+  if(devMode)
+  { 
+    xmlFileName = TOP_SRCDIR "/gui/scroom.glade";
+  }
+  else
+  {
+    xmlFileName = PACKAGE_DATA_DIR "/scroom.glade";
+  }
+  
+  aboutDialogXml = glade_xml_new(xmlFileName.c_str(), "aboutDialog", NULL);
   if(aboutDialogXml!=NULL)
   {
-    xmlFileName = "scroom.glade";
     aboutDialog = glade_xml_get_widget(aboutDialogXml, "aboutDialog");
   }
   else

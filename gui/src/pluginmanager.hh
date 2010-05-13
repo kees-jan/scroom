@@ -35,6 +35,7 @@ private:
     } PluginManagerState;
   
 private:
+  bool devMode;
   PluginManagerState state;
   std::list<std::string> dirs;
   std::list<std::string>::iterator currentDir;
@@ -55,7 +56,7 @@ public:
   
   virtual bool doWork();
 
-  void addHook();
+  void addHook(bool devMode);
 
   virtual void registerNewInterface(const std::string& identifier, NewInterface* newInterface);
   virtual void unregisterNewInterface(NewInterface* newInterface);
@@ -78,6 +79,6 @@ public:
   static PluginManager& getInstance();
 };
 
-void startPluginManager();
+void startPluginManager(bool devMode);
 
 #endif

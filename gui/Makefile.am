@@ -3,8 +3,9 @@
 SUBDIRS = src # po
 
 EXTRA_DIST = \
-	scroom.glade \
 	scroom.gladep
+
+pkgdata_DATA = scroom.glade
 
 install-data-local:
 	@$(NORMAL_INSTALL)

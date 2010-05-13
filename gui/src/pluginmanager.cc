@@ -19,9 +19,9 @@ PluginManager::PluginManager()
 {
 }
 
-void startPluginManager()
+void startPluginManager(bool devMode)
 {
-  pluginManager.addHook();
+  pluginManager.addHook(devMode);
 }
 
 bool PluginManager::doWork()
@@ -40,6 +40,8 @@ bool PluginManager::doWork()
     setStatusBarMessage("Locating plugin directories");
     path = getenv(SCROOM_PLUGIN_DIRS.c_str());
     dirs.clear();
+    if(!devMode)
+      dirs.push_back(PLUGIN_DIR);
     if(path!=NULL)
     {
       printf("%s=%s\n", SCROOM_PLUGIN_DIRS.c_str(), path);
@@ -69,7 +71,9 @@ bool PluginManager::doWork()
       {
         while( (content=readdir(dir)))
         {
-          if(content->d_type==DT_REG || content->d_type==DT_UNKNOWN)
+          if(content->d_type==DT_REG ||
+             content->d_type==DT_LNK ||
+             content->d_type==DT_UNKNOWN)
           {
             files.push_back(g_module_build_path(currentDir->c_str(), content->d_name));
           }
@@ -92,48 +96,55 @@ bool PluginManager::doWork()
     setStatusBarMessage("Loading Plugins");
     if(currentFile!=files.end())
     {
-      printf("Reading file: %s\n", currentFile->c_str());
-      plugin = g_module_open(currentFile->c_str(), (GModuleFlags)0);
-      if(plugin)
+      if(!currentFile->compare(currentFile->size()-3, 3, ".so"))
       {
-        PluginFunc gpi;
-        if(g_module_symbol(plugin, "getPluginInformation", (gpointer*)&gpi))
+        printf("Reading file: %s\n", currentFile->c_str());
+        plugin = g_module_open(currentFile->c_str(), (GModuleFlags)0);
+        if(plugin)
         {
-          if(gpi)
+          PluginFunc gpi;
+          if(g_module_symbol(plugin, "getPluginInformation", (gpointer*)&gpi))
           {
-            PluginInformationInterface* pi = (*gpi)();
-            if(pi)
+            if(gpi)
             {
-              printf("Got the PluginInterface!\n");
-              if(pi->pluginApiVersion == PLUGIN_API_VERSION)
+              PluginInformationInterface* pi = (*gpi)();
+              if(pi)
               {
-                printf("Requesting registration\n");
-                pluginInformationList.push_back(PluginInformation(plugin, pi));
-                pi->registerCapabilities(this);
-                plugin = NULL;
-                gpi = NULL;
-                pi=NULL;
+                printf("Got the PluginInterface!\n");
+                if(pi->pluginApiVersion == PLUGIN_API_VERSION)
+                {
+                  printf("Requesting registration\n");
+                  pluginInformationList.push_back(PluginInformation(plugin, pi));
+                  pi->registerCapabilities(this);
+                  plugin = NULL;
+                  gpi = NULL;
+                  pi=NULL;
+                }
               }
+            }
+            else
+            {
+              printf("Can't find the getPluginInterface function: %s\n", g_module_error());
             }
           }
           else
           {
-            printf("Can't find the getPluginInterface function: %s\n", g_module_error());
+            printf("Can't lookup symbols: %s\n", g_module_error());
+          }
+
+          if(plugin)
+          {
+            g_module_close(plugin);
           }
         }
         else
         {
-          printf("Can't lookup symbols: %s\n", g_module_error());
-        }
-
-        if(plugin)
-        {
-          g_module_close(plugin);
+          printf("Something went wrong: %s\n", g_module_error());
         }
       }
       else
       {
-        printf("Something went wrong: %s\n", g_module_error());
+        // printf("Skipping file: %s (doesn't end with \".so\")\n", currentFile->c_str());
       }
       currentFile++;
     }
@@ -159,8 +170,9 @@ void PluginManager::setStatusBarMessage(const char* message)
   printf("Statusbar update: %s\n", message);
 }
 
-void PluginManager::addHook()
+void PluginManager::addHook(bool devMode)
 {
+  this->devMode = devMode;
   gtk_idle_add(on_idle, static_cast<WorkInterface*>(this));
   // progressbar = GTK_PROGRESS_BAR(lookup_widget(scroom, "progressbar"));
   // statusbar = GTK_STATUSBAR(lookup_widget(scroom, "statusbar"));

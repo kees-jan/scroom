@@ -43,6 +43,7 @@ dnl dnl Add the languages which your application supports here.
 dnl ALL_LINGUAS=""
 dnl AM_GLIB_GNU_GETTEXT
 
+
 AC_CONFIG_FILES([Makefile
                  inc/Makefile
                  libs/Makefile
@@ -57,6 +58,9 @@ AC_CONFIG_FILES([Makefile
 ])
 
 dnl                  libs/memory-manager/Makefile
+
+# Misc defines
+AC_SUBST([plugindir], [$libdir/$PACKAGE])
 
 AC_OUTPUT
 
