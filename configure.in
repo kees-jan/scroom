@@ -47,15 +47,15 @@ AC_CONFIG_FILES([Makefile
                  libs/Makefile
                  libs/threadpool/Makefile
                  libs/tiled-bitmap/Makefile
+                 plugins/Makefile
+                 plugins/colormap/Makefile
+                 plugins/example/Makefile
+                 plugins/tiff/Makefile
                  gui/Makefile
                  gui/src/Makefile
 ])
-dnl                  libs/Makefile
+
 dnl                  libs/memory-manager/Makefile
-dnl                  plugins/Makefile
-dnl                  plugins/colormap/Makefile
-dnl                  plugins/example/Makefile
-dnl                  plugins/tiff/Makefile
 
 AC_OUTPUT
 
