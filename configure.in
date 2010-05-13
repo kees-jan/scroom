@@ -54,6 +54,7 @@ AC_CONFIG_FILES([Makefile
                  plugins/example/Makefile
                  plugins/tiff/Makefile
                  gui/Makefile
+                 gui/ENVIRONMENT
                  gui/src/Makefile
 ])
 

@@ -3,7 +3,7 @@
 AM_CPPFLAGS = \
 	-DPACKAGE_DATA_DIR=\""$(pkgdatadir)"\" \
 	-DPLUGIN_DIR=\""$(plugindir)"\" \
-	-DTOP_SRCDIR=\""$(top_srcdir)"\" \
+	-DTOP_SRCDIR=\""$(abs_top_srcdir)"\" \
 	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
 	@PACKAGE_CFLAGS@
 
