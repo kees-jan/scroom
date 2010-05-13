@@ -44,6 +44,7 @@ dnl ALL_LINGUAS=""
 dnl AM_GLIB_GNU_GETTEXT
 
 AC_CONFIG_FILES([Makefile
+                 inc/Makefile
                  libs/Makefile
                  libs/threadpool/Makefile
                  libs/tiled-bitmap/Makefile
