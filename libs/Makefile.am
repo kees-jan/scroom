@@ -1,1 +1,1 @@
-SUBDIRS=threadpool # memory-manager tiled-bitmap
+SUBDIRS=threadpool tiled-bitmap

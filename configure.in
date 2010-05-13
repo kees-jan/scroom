@@ -15,7 +15,7 @@ AC_PROG_LN_S
 dnl AC_PROG_INSTALL
 
 # Checks for packages.
-pkg_modules="gtk+-2.0 >= 2.0.0, gthread-2.0, libglade-2.0 glib-2.0"
+pkg_modules="gtk+-2.0 >= 2.0.0, gthread-2.0, libglade-2.0 glib-2.0 cairo"
 PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
 AC_SUBST(PACKAGE_CFLAGS)
 AC_SUBST(PACKAGE_LIBS)
@@ -46,12 +46,12 @@ dnl AM_GLIB_GNU_GETTEXT
 AC_CONFIG_FILES([Makefile
                  libs/Makefile
                  libs/threadpool/Makefile
+                 libs/tiled-bitmap/Makefile
                  gui/Makefile
                  gui/src/Makefile
 ])
 dnl                  libs/Makefile
 dnl                  libs/memory-manager/Makefile
-dnl                  libs/tiled-bitmap/Makefile
 dnl                  plugins/Makefile
 dnl                  plugins/colormap/Makefile
 dnl                  plugins/example/Makefile
