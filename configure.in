@@ -40,6 +40,7 @@ dnl ALL_LINGUAS=""
 dnl AM_GLIB_GNU_GETTEXT
 
 AC_CONFIG_FILES([Makefile
+                 libs/Makefile
 ])
 dnl                  gui/Makefile
 dnl                  gui/src/Makefile
