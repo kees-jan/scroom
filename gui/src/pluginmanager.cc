@@ -75,7 +75,7 @@ bool PluginManager::doWork()
              content->d_type==DT_LNK ||
              content->d_type==DT_UNKNOWN)
           {
-            files.push_back(g_module_build_path(currentDir->c_str(), content->d_name));
+            files.push_back(g_build_path(G_DIR_SEPARATOR_S, currentDir->c_str(), content->d_name, NULL));
           }
         }
         closedir(dir);
