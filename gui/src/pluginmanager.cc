@@ -167,7 +167,7 @@ void PluginManager::setStatusBarMessage(const char* message)
 {
   // gtk_statusbar_pop(statusbar, status_context_id);
   // gtk_statusbar_push(statusbar, status_context_id, message);
-  printf("Statusbar update: %s\n", message);
+  // printf("Statusbar update: %s\n", message);
 }
 
 void PluginManager::addHook(bool devMode)

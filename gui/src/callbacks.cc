@@ -174,8 +174,6 @@ void on_done_loading_plugins()
   }
 }
 
-
-
 void on_zoombox_changed(GtkComboBox* widget, gpointer user_data)
 {
   View* view = static_cast<View*>(user_data);

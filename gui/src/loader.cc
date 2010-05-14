@@ -14,7 +14,6 @@ void create(NewInterface* interface)
   PresentationInterface::Ptr presentation = interface->createNew(NULL);
   on_presentation_created(presentation);
   find_or_create_scroom(presentation);
-  //  sequentially(new CreateOperation(interface));
 }
 
 void load(const GtkFileFilterInfo& info)
@@ -38,16 +37,14 @@ void load(const GtkFileFilterInfo& info)
       }
     }
   }
-  //  sequentially(new LoadOperation(info));
 }
-
 
 void load(const std::string& filename)
 {
   GFile* file = g_file_new_for_path(filename.c_str());
   GFileInfo* fileInfo = g_file_query_info(file, "standard::*", G_FILE_QUERY_INFO_NONE, NULL, NULL);
   GtkFileFilterInfo filterInfo;
-  filterInfo.filename = g_file_info_get_name(fileInfo);
+  filterInfo.filename = filename.c_str(); // g_file_info_get_name(fileInfo) doesn't provide path info.
   filterInfo.mime_type = g_content_type_get_mime_type(g_file_info_get_content_type (fileInfo));
   filterInfo.display_name = g_file_info_get_display_name(fileInfo);
   filterInfo.contains =
