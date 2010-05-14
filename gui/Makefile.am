@@ -6,6 +6,7 @@ EXTRA_DIST = \
 	scroom.gladep
 
 pkgdata_DATA = scroom.glade
+noinst_DATA = ENVIRONMENT
 
 install-data-local:
 	@$(NORMAL_INSTALL)
