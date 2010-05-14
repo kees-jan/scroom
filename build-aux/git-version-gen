@@ -1,0 +1,4 @@
+#!/bin/sh
+
+VER=$(git describe || echo "unknown")
+echo "[$VER]"

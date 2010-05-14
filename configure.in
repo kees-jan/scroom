@@ -1,5 +1,9 @@
 AC_PREREQ([2.64])
-AC_INIT([Scroom], [0.1], [http://fuzzy.homedns.org/trac/scroom/newticket], [scroom], [http://fuzzy.homedns.org/trac/scroom])
+AC_INIT([Scroom],
+        m4_esyscmd([build-aux/git-version-gen | tr -d '\n']),
+        [http://fuzzy.homedns.org/trac/scroom/newticket],
+        [scroom],
+        [http://fuzzy.homedns.org/trac/scroom])
 AM_INIT_AUTOMAKE
 LT_PREREQ([2.2])
 LT_INIT([dlopen])
