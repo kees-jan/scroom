@@ -13,7 +13,6 @@
     <child>
       <widget class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <child>
           <widget class="GtkMenuBar" id="menubar1">
             <property name="visible">True</property>
@@ -254,7 +253,6 @@
                 <child>
                   <widget class="GtkVScrollbar" id="vscrollbar">
                     <property name="visible">True</property>
-                    <property name="orientation">vertical</property>
                     <property name="adjustment">0 0 0 0 0 0</property>
                   </widget>
                   <packing>
@@ -298,7 +296,6 @@
                 <child>
                   <widget class="GtkVRuler" id="vruler">
                     <property name="visible">True</property>
-                    <property name="orientation">vertical</property>
                     <property name="upper">10</property>
                     <property name="position">5</property>
                   </widget>
@@ -340,7 +337,6 @@
                     <child>
                       <widget class="GtkVBox" id="panel">
                         <property name="visible">True</property>
-                        <property name="orientation">vertical</property>
                         <child>
                           <placeholder/>
                         </child>
@@ -395,10 +391,13 @@
     <property name="border_width">5</property>
     <property name="destroy_with_parent">True</property>
     <property name="type_hint">normal</property>
-    <property name="copyright" translatable="yes">(C)2009 Kees-Jan Dijkzeul</property>
+    <property name="copyright" translatable="yes">(C)2009-2010 Kees-Jan Dijkzeul</property>
+    <property name="comments" translatable="yes">Utility to scroll &amp; zoom (large) data sets</property>
+    <property name="website">http://fuzzy.homedns.org/trac/scroom</property>
+    <property name="website_label" translatable="yes">Visit the Scroom website</property>
+    <property name="license" translatable="yes">Do not copy this program for any reason</property>
     <property name="authors">Kees-Jan Dijkzeul</property>
     <property name="translator_credits" translatable="yes" comments="TRANSLATORS: Replace this string with your names, one name per line.">translator-credits</property>
-    <property name="wrap_license">True</property>
     <child internal-child="vbox">
       <widget class="GtkVBox" id="dialog-vbox1">
         <child internal-child="action_area">

@@ -246,6 +246,8 @@ void on_scroom_bootstrap (const std::list<std::string>& newFilenames)
   if(aboutDialogXml!=NULL)
   {
     aboutDialog = glade_xml_get_widget(aboutDialogXml, "aboutDialog");
+    gtk_about_dialog_set_program_name(GTK_ABOUT_DIALOG(aboutDialog), PACKAGE_NAME);
+    gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(aboutDialog), PACKAGE_VERSION);
   }
   else
   {
