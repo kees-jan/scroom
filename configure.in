@@ -1,12 +1,12 @@
-AC_PREREQ([2.64])
+AC_PREREQ([2.61])
 AC_INIT([Scroom],
         m4_esyscmd([build-aux/git-version-gen | tr -d '\n']),
         [http://fuzzy.homedns.org/trac/scroom/newticket],
         [scroom],
         [http://fuzzy.homedns.org/trac/scroom])
 AM_INIT_AUTOMAKE
-LT_PREREQ([2.2])
-LT_INIT([dlopen])
+# LT_PREREQ([2.2])
+# LT_INIT([dlopen])
 
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([inc/presentationinterface.hh])
@@ -14,9 +14,12 @@ AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
 AC_PROG_CXX
-AC_PROG_CC
+dnl AC_PROG_CC
 AC_PROG_LN_S
+AC_PROG_LIBTOOL
 dnl AC_PROG_INSTALL
+
+AC_LANG([C++])
 
 # Checks for packages.
 pkg_modules="gtk+-2.0 >= 2.0.0, gthread-2.0, libglade-2.0 glib-2.0 cairo"
@@ -37,6 +40,32 @@ AC_TYPE_SIZE_T
 # Checks for library functions.
 AC_FUNC_MALLOC
 AC_CHECK_FUNCS([memset pow select sqrt strerror])
+
+
+# Checking for boost
+have_boost_thread_headers=no
+AC_CHECK_HEADERS([boost/thread.hpp boost/thread/mutex.hpp], [have_boost_thread_headers=yes])
+have_boost_thread_lib=no
+# boost_thread-gcc42-mt is the name used at Mutracx...
+AC_SEARCH_LIBS([_ZN5boost6thread6detachEv], [boost_thread-mt boost_thread-gcc42-mt], [have_boost_thread_lib=yes])
+
+have_all_dependencies=yes
+if test "x${have_boost_thread_headers}" = xno
+then
+  echo "ERROR: Boost thread header files not found. Cannot continue"
+  have_all_dependencies=no
+fi
+if test "x${have_boost_thread_lib}" = xno
+then
+  echo "ERROR: Boost thread library not found. Cannot continue"
+  have_all_dependencies=no
+fi
+if test "x${have_all_dependencies}" = xno
+then
+  exit 1
+fi
+
+
 
 # GetText
 dnl GETTEXT_PACKAGE=scroom
