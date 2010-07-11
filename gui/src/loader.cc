@@ -1,5 +1,9 @@
 #include "loader.hh"
 
+#ifdef HAVE_CONFIG_H
+# include <config.h>
+#endif
+
 #include <stdio.h>
 
 #include <threadpool.hh>
@@ -39,8 +43,26 @@ void load(const GtkFileFilterInfo& info)
   }
 }
 
+#if MUTRACX_HACKS
+
 void load(const std::string& filename)
 {
+  // Gtk 2.12
+  GtkFileFilterInfo filterInfo;
+  filterInfo.filename = filename.c_str();
+  filterInfo.display_name = filename.c_str();
+  filterInfo.contains =
+    (GtkFileFilterFlags)(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME);
+  
+  printf("Opening file %s\n", filterInfo.filename);
+  load(filterInfo);
+}
+
+#else
+
+void load(const std::string& filename)
+{
+  // Gtk 2.16
   GFile* file = g_file_new_for_path(filename.c_str());
   GFileInfo* fileInfo = g_file_query_info(file, "standard::*", G_FILE_QUERY_INFO_NONE, NULL, NULL);
   GtkFileFilterInfo filterInfo;
@@ -52,3 +74,5 @@ void load(const std::string& filename)
   printf("Opening file %s (%s)\n", filterInfo.filename, filterInfo.mime_type);
   load(filterInfo);
 }
+
+#endif

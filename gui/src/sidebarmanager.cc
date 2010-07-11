@@ -38,5 +38,8 @@ void SidebarManager::removeSideWidget(GtkWidget* w)
     gtk_widget_destroy(cur->second);
     widgets.erase(cur);
   }
-  gtk_widget_set_visible(panelWindow, !widgets.empty());
+  if(widgets.empty())
+    gtk_widget_hide(panelWindow);
+  else
+    gtk_widget_show(panelWindow);
 }

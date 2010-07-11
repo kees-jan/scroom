@@ -1,5 +1,9 @@
 #include "view.hh"
 
+#ifdef HAVE_CONFIG_H
+# include <config.h>
+#endif
+
 #include <cmath>
 
 #include <sstream>
@@ -69,6 +73,31 @@ static void on_newWindow_activate(GtkMenuItem* menuitem, gpointer user_data)
     find_or_create_scroom(p);
   }
 }
+
+#if MUTRACX_HACKS
+
+void gtk_adjustment_configure(GtkAdjustment* adj,
+                              gdouble value, gdouble lower, gdouble upper,
+                              gdouble step_increment,
+                              gdouble page_increment, gdouble page_size)
+{
+    g_object_set(G_OBJECT(adj),
+                 "value",          value,
+                 "lower",          lower,
+                 "upper",          upper,
+                 "step-increment", step_increment,
+                 "page-increment", page_increment,
+                 "page-size",      page_size,
+                 NULL);
+    gtk_adjustment_changed(adj);
+}
+
+GdkWindow* gtk_widget_get_window(GtkWidget *widget)
+{
+  return widget->window;
+}
+
+#endif
 
 ////////////////////////////////////////////////////////////////////////
   
