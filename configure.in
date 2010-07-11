@@ -48,12 +48,15 @@ AC_FUNC_MALLOC
 AC_CHECK_FUNCS([memset pow select sqrt strerror])
 
 # Mutracx specifics:
+$as_echo_n "Checking for Mutracx development environment..."
 need_mutracx_hacks=no
 if pkg-config "gtk+-2.0 >= 2.16.0"
 then
   need_mutracx_hacks=no
+  $as_echo " no"
 else
   need_mutracx_hacks=yes
+  $as_echo " yes"
 fi
 
 # Checking for boost
