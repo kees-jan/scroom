@@ -49,7 +49,12 @@ AC_CHECK_FUNCS([memset pow select sqrt strerror])
 
 # Mutracx specifics:
 need_mutracx_hacks=no
-AC_SEARCH_LIBS([g_file_info_get_display_name], [gio-2.0], [], [need_mutracx_hacks=yes])
+if pkg-config "gtk+-2.0 >= 2.16.0"
+then
+  need_mutracx_hacks=no
+else
+  need_mutracx_hacks=yes
+fi
 
 # Checking for boost
 have_boost_thread_headers=no
