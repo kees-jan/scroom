@@ -37,13 +37,6 @@ ColormapProvider::~ColormapProvider()
   }
 }
 
-void callback(GtkButton *button, gpointer user_data)
-{
-  ViewInterface* vi = (ViewInterface*)user_data;
-  vi->removeSideWidget(GTK_WIDGET(button));
-}
-
-
 void ColormapProvider::open(ViewInterface* vi)
 {
   printf("ColormapProvider: Adding a view.\n");
