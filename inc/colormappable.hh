@@ -49,7 +49,7 @@ public:
   typedef boost::weak_ptr<Colormap> WeakPtr;
 
 public:
-  std::string name              /**< Name of this colormap */
+  std::string name;             /**< Name of this colormap */
   std::vector<Color> colors;    /**< Colors in this colormap */
 
 private:
