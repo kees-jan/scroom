@@ -138,7 +138,7 @@ doxygen-doc: doxygen-run $(DX_PS_GOAL) $(DX_PDF_GOAL)
 
 $(builddir)/@DX_DOCDIR@/@PACKAGE@.tag: $(builddir)/$(DX_CONFIG) $(pkginclude_HEADERS)
 	rm -rf $(builddir)/@DX_DOCDIR@
-	$(DX_ENV) $(DX_DOXYGEN) $(builddir)/$(DX_CONFIG)
+	$(DX_ENV) top_srcdir=@top_srcdir@ $(DX_DOXYGEN) $(builddir)/$(DX_CONFIG)
 
 DX_CLEANFILES = \
 	$(builddir)/@DX_DOCDIR@/@PACKAGE@.tag \
