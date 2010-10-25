@@ -3,6 +3,9 @@
 
 #include <plugininformationinterface.hh>
 
+/**
+ * Register the ColormapPlugin, keep track of PresentationInterface instances
+ */
 class ColormapPlugin : public PluginInformationInterface, public PresentationObserver
 {
 private:

@@ -46,6 +46,7 @@ class Colormap
 {
 public:
   typedef boost::shared_ptr<Colormap> Ptr;
+  typedef boost::shared_ptr<const Colormap> ConstPtr;
   typedef boost::weak_ptr<Colormap> WeakPtr;
 
 public:
