@@ -26,7 +26,7 @@ AC_ARG_ENABLE([mutracx-hacks],
   [AS_HELP_STRING([--enable-mutracx-hacks], 
     [Build for a Mutracx environment @<:@default=no@:>@])],
   [want_mutracx_hacks=${enableval}],
-  [want_mutracx_hacks=no])
+  [want_mutracx_hacks=unknown])
 AC_ARG_ENABLE([doxygen-all-code],
   [  --enable-doxygen-all-code  Generate doxygen documentation for all code,
                              instead of just the api],
@@ -61,15 +61,15 @@ AC_FUNC_MALLOC
 AC_CHECK_FUNCS([memset pow select sqrt strerror])
 
 # Mutracx specifics:
-$as_echo_n "Checking for Mutracx development environment..."
+AC_MSG_CHECKING([for Mutracx development environment])
 need_mutracx_hacks=no
 if pkg-config "gtk+-2.0 >= 2.16.0"
 then
   need_mutracx_hacks=no
-  $as_echo " no"
+  AC_MSG_RESULT([no])
 else
   need_mutracx_hacks=yes
-  $as_echo " yes"
+  AC_MSG_RESULT([yes])
 fi
 
 # Checking for boost
@@ -80,31 +80,30 @@ have_boost_thread_lib=no
 AC_SEARCH_LIBS([_ZN5boost6thread6detachEv], [boost_thread-mt boost_thread-gcc42-mt], [have_boost_thread_lib=yes])
 
 # Some sanity checks
-have_all_dependencies=yes
 if test "x${have_boost_thread_headers}" = xno
 then
-  echo "ERROR: Boost thread header files not found. Cannot continue"
-  have_all_dependencies=no
+  AC_MSG_ERROR([Boost thread header files not found.])
 fi
 if test "x${have_boost_thread_lib}" = xno
 then
-  echo "ERROR: Boost thread library not found. Cannot continue"
-  have_all_dependencies=no
+  AC_MSG_ERROR([Boost thread library not found.])
 fi
 if test "x${need_mutracx_hacks}" = xyes
 then
+  # Print a warning if the user said "no" to mutracx hacks. If he said
+  # "yes", or nothing at all, be quiet and enable anyway.
   if test "x${want_mutracx_hacks}" = xno
   then
-    echo "WARNING: Mutracx environment detected. Enabling mutracx-hacks"
-    want_mutracx_hacks=yes
+    AC_MSG_WARN([Mutracx environment detected. Enabling mutracx-hacks])
   fi
+  want_mutracx_hacks=yes
 fi
 
 # If no doxygen, then we can't process all code
 DX_IF_FEATURE([doc], [], [want_doxygen_all_code=no])
 
-
-# Some defines
+# want_mutracx_hacks is now set to "yes" if they are either needed or
+# requested.
 if test "x${want_mutracx_hacks}" = xyes
 then
   AC_DEFINE([MUTRACX_HACKS], 1, [Hacks for Mutracx environment enabled])
@@ -116,15 +115,6 @@ else
   DX_EXTRA_SRC=
 fi
 AC_SUBST(DX_EXTRA_SRC)
-
-
-# Bail out if necessary
-if test "x${have_all_dependencies}" = xno
-then
-  exit 1
-fi
-
-
 
 # GetText
 dnl GETTEXT_PACKAGE=scroom
