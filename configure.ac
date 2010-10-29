@@ -23,7 +23,8 @@ AC_LANG([C++])
 
 # Configurable features
 AC_ARG_ENABLE([mutracx-hacks],
-  [  --enable-mutracx-hacks  Build for a Mutracx environment],
+  [AS_HELP_STRING([--enable-mutracx-hacks], 
+    [Build for a Mutracx environment @<:@default=no@:>@])],
   [want_mutracx_hacks=${enableval}],
   [want_mutracx_hacks=no])
 AC_ARG_ENABLE([doxygen-all-code],
