@@ -22,13 +22,11 @@ std::string Tiff::getPluginVersion()
 
 void Tiff::registerCapabilities(ScroomInterface* host)
 {
-  host->registerNewInterface("Tiff", this);
   host->registerOpenInterface("Tiff viewer", this);
 }
 
 void Tiff::unregisterCapabilities(ScroomInterface* host)
 {
-  host->unregisterNewInterface(this);
   host->unregisterOpenInterface(this);
 }
 
@@ -58,19 +56,3 @@ PresentationInterface::Ptr Tiff::open(const std::string& fileName, FileOperation
   }
   return PresentationInterface::Ptr(p);
 }
-
-////////////////////////////////////////////////////////////////////////
-// NewInterface
-////////////////////////////////////////////////////////////////////////
-
-PresentationInterface::Ptr Tiff::createNew(FileOperationObserver* observer)
-{
-  TiffPresentation* p = new TiffPresentation();
-  if(!p->load("tissuebox.tif", observer))
-  {
-    delete p;
-    p=NULL;
-  }
-  return PresentationInterface::Ptr(p);
-}
-  

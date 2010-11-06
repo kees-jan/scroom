@@ -4,7 +4,7 @@
 #include <plugininformationinterface.hh>
 #include <presentationinterface.hh>
 
-class Tiff : public PluginInformationInterface, public OpenInterface, public NewInterface
+class Tiff : public PluginInformationInterface, public OpenInterface
 {
 public:
 
@@ -21,11 +21,6 @@ public:
   
   virtual std::list<GtkFileFilter*> getFilters();
   virtual PresentationInterface::Ptr open(const std::string& fileName, FileOperationObserver* observer);
-
-  ////////////////////////////////////////////////////////////////////////
-  // NewInterface (for development only)
-  
-  virtual PresentationInterface::Ptr createNew(FileOperationObserver* observer);
 
   ////////////////////////////////////////////////////////////////////////
   
