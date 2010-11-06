@@ -20,7 +20,8 @@ AC_INIT([Scroom],
         [http://fuzzy.homedns.org/trac/scroom/newticket],
         [scroom],
         [http://fuzzy.homedns.org/trac/scroom])
-AM_INIT_AUTOMAKE
+AM_INIT_AUTOMAKE([-Wall -Werror foreign silent-rules])
+AM_SILENT_RULES([yes])
 LT_PREREQ([2.2])
 LT_INIT([dlopen])
 
