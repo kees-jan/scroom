@@ -1,12 +1,29 @@
-AC_PREREQ([2.61])
+# Scroom - Generic viewer for 2D data
+# Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+# 
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License, version 2, as published by the Free Software Foundation.
+# 
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Lesser General Public License for more details.
+# 
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+
+AC_PREREQ([2.64])
 AC_INIT([Scroom],
         m4_esyscmd([build-aux/git-version-gen | tr -d '\n']),
         [http://fuzzy.homedns.org/trac/scroom/newticket],
         [scroom],
         [http://fuzzy.homedns.org/trac/scroom])
-AM_INIT_AUTOMAKE
-# LT_PREREQ([2.2])
-# LT_INIT([dlopen])
+AM_INIT_AUTOMAKE([-Wall -Werror foreign silent-rules])
+AM_SILENT_RULES([yes])
+LT_PREREQ([2.2])
+LT_INIT([dlopen])
 
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([inc/presentationinterface.hh])
@@ -16,7 +33,6 @@ AC_CONFIG_HEADERS([config.h])
 AC_PROG_CXX
 dnl AC_PROG_CC
 AC_PROG_LN_S
-AC_PROG_LIBTOOL
 dnl AC_PROG_INSTALL
 
 AC_LANG([C++])

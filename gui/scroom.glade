@@ -395,8 +395,8 @@
     <property name="comments" translatable="yes">Utility to scroll &amp; zoom (large) data sets</property>
     <property name="website">http://fuzzy.homedns.org/trac/scroom</property>
     <property name="website_label" translatable="yes">Visit the Scroom website</property>
-    <property name="license" translatable="yes">Do not copy this program for any reason</property>
-    <property name="authors">Kees-Jan Dijkzeul</property>
+    <property name="license" translatable="yes">LGPL, v2</property>
+    <property name="authors">Kees-Jan Dijkzeul &lt;kees-jan.dijkzeul@iae.nl&gt;</property>
     <property name="translator_credits" translatable="yes" comments="TRANSLATORS: Replace this string with your names, one name per line.">translator-credits</property>
     <child internal-child="vbox">
       <widget class="GtkVBox" id="dialog-vbox1">
