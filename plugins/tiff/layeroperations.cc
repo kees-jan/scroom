@@ -482,7 +482,7 @@ void Operations::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y)
     PixelIterator targetPtr(targetBase, 0, bpp);
 
     for(int i=0; i<source->width/8;
-        i++, sourcePtr+=8, ++targetPtr)
+        i++, sourcePtr+=8/pixelsPerByte, ++targetPtr)
     {
       // Iterate horizontally over target
 
@@ -492,7 +492,7 @@ void Operations::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y)
       byte lookup[pixelMask+1];
       memset(lookup, 0, sizeof(lookup));
       byte maxValue=0;
-      byte maxCount;
+      byte maxCount=0;
 
       for(int k=0; k<8; k++, base+=sourceStride)
       {
