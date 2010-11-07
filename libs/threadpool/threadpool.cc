@@ -2,7 +2,7 @@
 
 #include <threadpoolimpl.hh>
 
-ThreadPool& instance()
+static ThreadPool& instance()
 {
   static ThreadPool threadpool;
 

@@ -4,6 +4,7 @@
 #include <queue>
 
 #include <boost/thread.hpp>
+#include <boost/function.hpp>
 
 #include <scroom-semaphore.hh>
 
@@ -42,9 +43,11 @@ private:
   
 public:
   ThreadPool();
+  ThreadPool(int count);
   ~ThreadPool();
   void schedule(Job j);
   void schedule(int priority, WorkInterface* wi);
+  void schedule(int priority, boost::function<void ()> const& fn);
 };
 
 #endif

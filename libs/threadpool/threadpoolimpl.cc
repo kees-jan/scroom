@@ -21,11 +21,50 @@
 
 #include <threadpool.hh>
 
+////////////////////////////////////////////////////////////////////////
+/// NoWork
+////////////////////////////////////////////////////////////////////////
+
 class NoWork : public WorkInterface
 {
 public:
   virtual bool doWork();
 };
+
+bool NoWork::doWork()
+{
+  return false;
+}
+
+////////////////////////////////////////////////////////////////////////
+/// BoostFunctionWork
+////////////////////////////////////////////////////////////////////////
+
+class BoostFunctionWork : public WorkInterface
+{
+private:
+  boost::function<void ()> const fn;
+  
+public:
+  BoostFunctionWork(boost::function<void ()> const& fn);
+  virtual ~BoostFunctionWork();
+  virtual bool doWork();
+};
+
+BoostFunctionWork::BoostFunctionWork(boost::function<void ()> const& fn)
+  : fn(fn)
+{
+}
+
+BoostFunctionWork::~BoostFunctionWork()
+{
+}
+
+bool BoostFunctionWork::doWork()
+{
+  fn();
+  return false;
+}
 
 ////////////////////////////////////////////////////////////////////////
 /// ThreadPool
@@ -34,6 +73,16 @@ public:
 ThreadPool::ThreadPool()
 {
   int count = std::max(boost::thread::hardware_concurrency(),(unsigned int)2);
+  alive=true;
+  printf("Starting ThreadPool with %d threads\n", count);
+  for(int i=0; i<count; i++)
+  {
+    threads.push_back(new boost::thread(boost::bind(&ThreadPool::work, this)));
+  }
+}
+
+ThreadPool::ThreadPool(int count)
+{
   alive=true;
   printf("Starting ThreadPool with %d threads\n", count);
   for(int i=0; i<count; i++)
@@ -81,6 +130,11 @@ void ThreadPool::schedule(int priority, WorkInterface* wi)
   schedule(Job(priority, wi));
 }
 
+void ThreadPool::schedule(int priority, boost::function<void ()> const& fn)
+{
+  schedule(Job(priority, new BoostFunctionWork(fn)));
+}
+
 bool ThreadPool::perform_one()
 {
   jobcount.P();
@@ -107,14 +161,5 @@ bool ThreadPool::perform_one()
   }
   
   return alive;
-}
-
-////////////////////////////////////////////////////////////////////////
-/// NoWork
-////////////////////////////////////////////////////////////////////////
-
-bool NoWork::doWork()
-{
-  return false;
 }
 

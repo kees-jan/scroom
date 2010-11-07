@@ -24,6 +24,7 @@
 #include <boost/thread/mutex.hpp>
 
 #include <threadpool.hh>
+#include "threadpoolimpl.hh"
 
 class Sequentially
 {
@@ -31,11 +32,9 @@ private:
   boost::mutex remainingJobsMutex;
   std::list<SeqJob*> remainingJobs;
   bool currentlyWorking;
+  ThreadPool asynchronous;
 
   friend class SeqJob;
-  
-public:
-  static Sequentially& getInstance();
   
 public:
   Sequentially();
@@ -48,7 +47,7 @@ private:
   void done();
 
 public:
-  void do_next();
+  void next();
 };
 
 #endif

@@ -24,38 +24,30 @@
 
 ////////////////////////////////////////////////////////////////////////
 
-gboolean next(gpointer data)
+static Sequentially& instance()
 {
-  UNUSED(data);
-  Sequentially::getInstance().do_next();
-
-  return FALSE;
+  static Sequentially instance;
+  return instance;
 }
 
 ////////////////////////////////////////////////////////////////////////
 
 void SeqJob::done()
 {
-  Sequentially::getInstance().done();
+  instance().done();
 }
 
 ////////////////////////////////////////////////////////////////////////
 
 void sequentially(SeqJob* job)
 {
-  Sequentially::getInstance().execute(job);
+  instance().execute(job);
 }
 
 ////////////////////////////////////////////////////////////////////////
 
-Sequentially& Sequentially::getInstance()
-{
-  static Sequentially instance;
-  return instance;
-}
-
 Sequentially::Sequentially()
-  : currentlyWorking(false)
+  : currentlyWorking(false), asynchronous(1)
 {
 }
 
@@ -72,7 +64,7 @@ void Sequentially::execute(SeqJob* job)
   if(!currentlyWorking)
   {
     currentlyWorking = true;
-    gdk_threads_add_idle(next, this);
+    asynchronous.schedule(PRIO_NORMAL, boost::bind(&Sequentially::next, this));
   }
 }
 
@@ -84,10 +76,10 @@ void Sequentially::done()
   SeqJob* job = remainingJobs.front();
   delete job;
   remainingJobs.pop_front();
-  gdk_threads_add_idle(next, this);
+  asynchronous.schedule(PRIO_NORMAL, boost::bind(&Sequentially::next, this));
 }
 
-void Sequentially::do_next()
+void Sequentially::next()
 {
   SeqJob* job = NULL;
 
