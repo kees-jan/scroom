@@ -25,7 +25,6 @@
 class Tiff : public PluginInformationInterface, public OpenInterface
 {
 public:
-
   ////////////////////////////////////////////////////////////////////////
   // PluginInformationInterface
   

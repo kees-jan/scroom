@@ -32,6 +32,9 @@ typedef struct tiff TIFF;
 
 class TiffPresentation : public PresentationInterface, public SourcePresentation, public Colormappable
 {
+public:
+  typedef boost::shared_ptr<TiffPresentation> Ptr;
+
 private:
   std::string fileName;
   TIFF* tif;

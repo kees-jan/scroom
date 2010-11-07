@@ -208,10 +208,19 @@ gboolean on_idle (gpointer user_data)
 
 void on_done_loading_plugins()
 {
-  while(!filenames.empty())
+  if(!filenames.empty())
   {
-    load(filenames.front());
-    filenames.pop_front();
+    while(!filenames.empty())
+    {
+      load(filenames.front());
+      filenames.pop_front();
+    }
+
+    if(presentations.empty())
+    {
+      // Aparently, we couldn't load any of our presentations. Terminate...
+      gtk_main_quit();
+    }
   }
 }
 

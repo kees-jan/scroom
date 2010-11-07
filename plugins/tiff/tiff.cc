@@ -77,11 +77,11 @@ std::list<GtkFileFilter*> Tiff::getFilters()
   
 PresentationInterface::Ptr Tiff::open(const std::string& fileName, FileOperationObserver* observer)
 {
-  TiffPresentation* p = new TiffPresentation();
+  
+  TiffPresentation::Ptr p = TiffPresentation::Ptr(new TiffPresentation());
   if(!p->load(fileName, observer))
   {
-    delete p;
-    p=NULL;
+    p.reset();
   }
-  return PresentationInterface::Ptr(p);
+  return p;
 }
