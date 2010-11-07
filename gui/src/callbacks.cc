@@ -47,6 +47,7 @@ static GtkWidget* aboutDialog=NULL;
 static std::list<View*> views;
 static std::list<PresentationInterface::WeakPtr> presentations;
 static std::list<std::string> filenames;
+static std::string currentFolder;
 
 void on_scroom_hide (GtkWidget* widget, gpointer user_data)
 {
@@ -76,6 +77,8 @@ void on_open_activate (GtkMenuItem* menuitem, gpointer user_data)
                                         GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
                                         GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
                                         NULL);
+  gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER (dialog), currentFolder.c_str());
+    
   const std::map<OpenInterface*, std::string>& openInterfaces = PluginManager::getInstance().getOpenInterfaces();
 
   for(std::map<OpenInterface*, std::string>::const_iterator cur=openInterfaces.begin();
@@ -126,6 +129,12 @@ void on_open_activate (GtkMenuItem* menuitem, gpointer user_data)
 #endif
     
     load(filterInfo);
+  }
+  gchar* cf =  gtk_file_chooser_get_current_folder(GTK_FILE_CHOOSER(dialog));
+  if(cf)
+  {
+    currentFolder = cf;
+    g_free(cf);
   }
   gtk_widget_destroy (dialog);
 }
@@ -212,7 +221,11 @@ void on_done_loading_plugins()
   {
     while(!filenames.empty())
     {
-      load(filenames.front());
+      std::string& file = filenames.front();
+      load(file);
+      gchar* dir = g_path_get_dirname(file.c_str());
+      currentFolder = dir;
+      g_free(dir);
       filenames.pop_front();
     }
 
@@ -268,6 +281,7 @@ void on_scroom_bootstrap (const std::list<std::string>& newFilenames)
 {
   printf("Bootstrapping Scroom...\n");
   filenames = newFilenames;
+  currentFolder = ".";
 
   bool devMode = NULL!=getenv(SCROOM_DEV_MODE.c_str());
   if(devMode)
