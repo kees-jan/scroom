@@ -52,18 +52,19 @@ Colormaps::Colormaps()
   {
     for(struct dirent* d=readdir(colormapDir); d; d=readdir(colormapDir))
     {
-      if(d->d_type==DT_REG)
+      // At this point, we're not sure if d is a regular file or a
+      // directory or whatever. However, we can safely assume that in
+      // all bad cases, the load() will fail :-)
+      
+      char* name = d->d_name;
+      int len = strlen(name);
+      if(!strcmp(name+len-strlen(COLORMAPEXT), COLORMAPEXT))
       {
-        char* name = d->d_name;
-        int len = strlen(name);
-        if(!strcmp(name+len-strlen(COLORMAPEXT), COLORMAPEXT))
+        Colormap::Ptr c = load(name);
+        if(c)
         {
-          Colormap::Ptr c = load(name);
-          if(c)
-          {
-            colormaps.push_back(c);
-          }          
-        }
+          colormaps.push_back(c);
+        }          
       }
     }
     closedir(colormapDir);
