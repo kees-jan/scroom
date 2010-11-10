@@ -1,0 +1,15 @@
+Source: scroom
+Section: universe/graphics
+Priority: extra
+Maintainer: Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>
+Build-Depends: debhelper (>= 7), autotools-dev, pkg-config, libboost-dev, libtiff4-dev, libgtk2.0-dev, libglib2.0-dev, libglade2-dev, libcairo2-dev
+Standards-Version: 3.8.3
+Homepage: http://fuzzy.homedns.org/trac/scroom
+
+Package: scroom
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Generic image viewing utility
+ Generic image viewing utility, currently specializes in very large
+ tiff-bitmaps. Scroom has a plugin-interface that should allow you to
+ extend it quite easily to suit your needs
