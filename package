@@ -8,10 +8,15 @@ remove_if_exists()
     fi
 }
 
+echo_me()
+{
+    echo "$ME: $*"
+}
+
 cleanup()
 {
-    echo "Performing cleanup"
-    [ -d "$TMPDIR" ] && rm -rf "$TMPDIR"
+    echo_me "Performing cleanup"
+    remove_if_exists "$TMPDIR"
 }
 
 prepare()
@@ -21,29 +26,30 @@ prepare()
     remove_if_exists package-helper
 }
 
+ME="$0"
 trap cleanup 0
 prepare
 
-echo "Build: ${BUILD:=${HOME}/build}"
-echo "Tmp:   ${TMP:=/tmp}"
-echo
+echo_me "Build: ${BUILD:=${HOME}/build}"
+echo_me "Tmp:   ${TMP:=/tmp}"
+echo ""
 
 
 if [ ! -d "$BUILD" -o ! -w "$BUILD" ]
 then
-    echo "ERROR: Build directory ($BUILD) not writable or no directory"
+    echo_me "ERROR: Build directory ($BUILD) not writable or no directory"
     exit 1
 fi
 
 if [ ! -d "$TMP" -o ! -w "$TMP" ]
 then
-    echo "ERROR: Temporary directory ($TMP) not writable or no directory"
+    echo_me "ERROR: Temporary directory ($TMP) not writable or no directory"
     exit 1
 fi
 
 if [ -z "$1" ]
 then
-    echo "ERROR: Nothing to package"
+    echo_me "ERROR: Nothing to package"
     exit 1
 fi
 
@@ -52,11 +58,11 @@ TMPDIR=$(mktemp -d -p $TMP) || exit 1
 
 case "$SOURCE" in
     *.tar.gz|*.tgz)
-        echo "Untarring $SOURCE"
+        echo_me "Untarring $SOURCE"
         tar xzfC "$SOURCE" "$TMPDIR" || exit 1
         ;;
     *)
-        echo "ERROR: Input tarball in unrecognized format"
+        echo_me "ERROR: Input tarball in unrecognized format"
         exit 1
         ;;
 esac
@@ -65,14 +71,18 @@ ROOTDIR="$(ls $TMPDIR)" # yuk
 TMPSRCDIR="$TMPDIR/$ROOTDIR" 
 if [ ! -x "$TMPSRCDIR/configure"  ]
 then
-    echo "ERROR: Configure ($TMPSRCDIR/configure) not executable"
+    echo_me "ERROR: Configure ($TMPSRCDIR/configure) not executable"
     exit 1;
 fi
 
-echo "Executing configure (first time)"
+echo_me "Executing configure (first time)"
 
-(cd "$TMPSRCDIR" && ./configure -C ) > configure.log 2>&1 || \
-    ( echo "ERROR: Configure failed. See configure.log" ; mv "$TMPSRCDIR/config.log" . ; exit 1 )
+if ! (cd "$TMPSRCDIR" && ./configure -C ) > configure.log 2>&1
+then
+    echo_me "ERROR: Configure failed. See configure.log"
+    mv "$TMPSRCDIR/config.log" .
+    exit 1
+fi
 
 export TMPSRCDIR SOURCE BUILD
 

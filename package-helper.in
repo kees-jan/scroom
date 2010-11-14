@@ -8,6 +8,11 @@ remove_if_exists()
     fi
 }
 
+echo_me()
+{
+    echo "$ME: $*"
+}
+
 prepare()
 {
     remove_if_exists "$BUILD/scroom-$VERSION"
@@ -24,10 +29,10 @@ PACKAGE_URL="@PACKAGE_URL@"
 PACKAGE="@PACKAGE@"
 VERSION="@VERSION@"
 
-echo "$ME: Hello world"
-echo "$ME: TMPSRCDIR: $TMPSRCDIR"
-echo "$ME: SOURCE:    $SOURCE"
-echo "$ME: BUILD:     $BUILD"
+echo_me "Hello world"
+echo_me "TMPSRCDIR: $TMPSRCDIR"
+echo_me "SOURCE:    $SOURCE"
+echo_me "BUILD:     $BUILD"
 
 # Asserts...
 [ -d "$TMPSRCDIR" ] || exit 1
@@ -38,12 +43,12 @@ echo "$ME: BUILD:     $BUILD"
 
 if [ "$PACKAGE" != "scroom" ]
 then
-    echo "ERROR: $SOURCE doesn't contain scroom!"
+    echo_me "ERROR: $SOURCE doesn't contain scroom!"
     exit 1
 fi
 if [ -e "$TMPSRCDIR/debian" ]
 then
-    echo "ERROR: $TMPSRCDIR/debian exists"
+    echo_me "ERROR: $TMPSRCDIR/debian exists"
     exit 1
 fi
 
@@ -58,7 +63,7 @@ case "$VERSION" in
         ;;
 esac
 
-echo "Preparing build environment"
+echo_me "Preparing build environment"
 prepare
 cp -pr "$TMPSRCDIR" "$BUILD/scroom-$VERSION" || exit 1
 cp "$SOURCE" "$BUILD/scroom_$VERSION.orig.tar.gz" || exit 1
@@ -73,4 +78,4 @@ cd  "$BUILD/scroom-$VERSION" || exit 1
 cd "$CURDIR" || exit 1
 cp "$BUILD/scroom-$VERSION/debian/changelog" ./debian/changelog || exit 1
 
-echo "$ME: Bye world"
+echo_me "Bye world"
