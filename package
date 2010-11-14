@@ -30,8 +30,10 @@ ME="$0"
 trap cleanup 0
 prepare
 
-echo_me "Build: ${BUILD:=${HOME}/build}"
-echo_me "Tmp:   ${TMP:=/tmp}"
+echo_me "Build:  ${BUILD:=${HOME}/build}"
+echo_me "Tmp:    ${TMP:=/tmp}"
+echo_me "Name:   ${NAME:=Kees-Jan Dijkzeul}"
+echo_me "E-mail: ${EMAIL:=kees-jan.dijkzeul@iae.nl}"
 echo ""
 
 
@@ -75,15 +77,15 @@ then
     exit 1;
 fi
 
-echo_me "Executing configure (first time)"
+echo_me "Executing configure"
 
-if ! (cd "$TMPSRCDIR" && ./configure -C ) > configure.log 2>&1
+if ! (cd "$TMPSRCDIR" && ./configure ) > configure.log 2>&1
 then
     echo_me "ERROR: Configure failed. See configure.log"
     mv "$TMPSRCDIR/config.log" .
     exit 1
 fi
 
-export TMPSRCDIR SOURCE BUILD
+export TMPSRCDIR SOURCE BUILD NAME EMAIL
 
 "$TMPSRCDIR/config.status" --file package-helper && chmod +x ./package-helper && ./package-helper

@@ -40,7 +40,7 @@ build-stamp:  config.status
 	dh_testdir
 
 	# Add here commands to compile the package.
-	$(MAKE)
+	$(MAKE) -j
 	#docbook-to-man debian/scroom.sgml > scroom.1
 
 	touch $@
@@ -74,7 +74,7 @@ binary-indep: install
 binary-arch: install
 	dh_testdir
 	dh_testroot
-	dh_installchangelogs ChangeLog
+#	dh_installchangelogs ChangeLog
 	dh_installdocs
 	dh_installexamples
 #	dh_install
