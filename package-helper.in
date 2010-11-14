@@ -1,0 +1,76 @@
+#!/bin/sh
+
+remove_if_exists()
+{
+    if [ -e "$1" ] && ! rm -rf "$1"
+    then
+        exit 1
+    fi
+}
+
+prepare()
+{
+    remove_if_exists "$BUILD/scroom-$VERSION"
+    remove_if_exists "$BUILD/scroom_$VERSION.orig.tar.gz"
+}
+
+ME="$0"
+PACKAGE_NAME="@PACKAGE_NAME@"
+PACKAGE_TARNAME="@PACKAGE_TARNAME@"
+PACKAGE_VERSION="@PACKAGE_VERSION@"
+PACKAGE_STRING="@PACKAGE_STRING@"
+PACKAGE_BUGREPORT="@PACKAGE_BUGREPORT@"
+PACKAGE_URL="@PACKAGE_URL@"
+PACKAGE="@PACKAGE@"
+VERSION="@VERSION@"
+
+echo "$ME: Hello world"
+echo "$ME: TMPSRCDIR: $TMPSRCDIR"
+echo "$ME: SOURCE:    $SOURCE"
+echo "$ME: BUILD:     $BUILD"
+
+# Asserts...
+[ -d "$TMPSRCDIR" ] || exit 1
+[ -f "$SOURCE" -a -r "$SOURCE" ] || exit 1
+[ -d "$BUILD" -a -w "$BUILD" ] || exit 1
+
+
+
+if [ "$PACKAGE" != "scroom" ]
+then
+    echo "ERROR: $SOURCE doesn't contain scroom!"
+    exit 1
+fi
+if [ -e "$TMPSRCDIR/debian" ]
+then
+    echo "ERROR: $TMPSRCDIR/debian exists"
+    exit 1
+fi
+
+SNAPSHOT=0
+RELEASECANDIDATE=0
+case "$VERSION" in
+    *-*)
+        SNAPSHOT=1;
+        ;;
+    *~*)
+        RELEASECANDIDATE=1;
+        ;;
+esac
+
+echo "Preparing build environment"
+prepare
+cp -pr "$TMPSRCDIR" "$BUILD/scroom-$VERSION" || exit 1
+cp "$SOURCE" "$BUILD/scroom_$VERSION.orig.tar.gz" || exit 1
+cp -r ./debian "$BUILD/scroom-$VERSION/debian" || exit 1
+
+CURDIR="$(pwd)"
+cd  "$BUILD/scroom-$VERSION" || exit 1
+
+# Todo: build package ;-)
+
+
+cd "$CURDIR" || exit 1
+cp "$BUILD/scroom-$VERSION/debian/changelog" ./debian/changelog || exit 1
+
+echo "$ME: Bye world"

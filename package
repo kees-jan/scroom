@@ -1,0 +1,79 @@
+#!/bin/sh
+
+remove_if_exists()
+{
+    if [ -e "$1" ] && ! rm -rf "$1"
+    then
+        exit 1
+    fi
+}
+
+cleanup()
+{
+    echo "Performing cleanup"
+    [ -d "$TMPDIR" ] && rm -rf "$TMPDIR"
+}
+
+prepare()
+{
+    remove_if_exists config.log
+    remove_if_exists configure.log
+    remove_if_exists package-helper
+}
+
+trap cleanup 0
+prepare
+
+echo "Build: ${BUILD:=${HOME}/build}"
+echo "Tmp:   ${TMP:=/tmp}"
+echo
+
+
+if [ ! -d "$BUILD" -o ! -w "$BUILD" ]
+then
+    echo "ERROR: Build directory ($BUILD) not writable or no directory"
+    exit 1
+fi
+
+if [ ! -d "$TMP" -o ! -w "$TMP" ]
+then
+    echo "ERROR: Temporary directory ($TMP) not writable or no directory"
+    exit 1
+fi
+
+if [ -z "$1" ]
+then
+    echo "ERROR: Nothing to package"
+    exit 1
+fi
+
+SOURCE="$1"
+TMPDIR=$(mktemp -d -p $TMP) || exit 1
+
+case "$SOURCE" in
+    *.tar.gz|*.tgz)
+        echo "Untarring $SOURCE"
+        tar xzfC "$SOURCE" "$TMPDIR" || exit 1
+        ;;
+    *)
+        echo "ERROR: Input tarball in unrecognized format"
+        exit 1
+        ;;
+esac
+
+ROOTDIR="$(ls $TMPDIR)" # yuk
+TMPSRCDIR="$TMPDIR/$ROOTDIR" 
+if [ ! -x "$TMPSRCDIR/configure"  ]
+then
+    echo "ERROR: Configure ($TMPSRCDIR/configure) not executable"
+    exit 1;
+fi
+
+echo "Executing configure (first time)"
+
+(cd "$TMPSRCDIR" && ./configure -C ) > configure.log 2>&1 || \
+    ( echo "ERROR: Configure failed. See configure.log" ; mv "$TMPSRCDIR/config.log" . ; exit 1 )
+
+export TMPSRCDIR SOURCE BUILD
+
+"$TMPSRCDIR/config.status" --file package-helper && chmod +x ./package-helper && ./package-helper

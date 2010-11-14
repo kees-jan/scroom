@@ -1,10 +1,10 @@
 This package was debianized by:
 
-    Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl> on Mon, 24 May 2010 19:00:59 +0200
+    Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl> on Wed 10 nov 2010 19:00:59 +0100
 
 It was downloaded from:
 
-    http://fuzzy.homedns.org/trac/scroom
+    https://github.com/kees-jan/scroom/downloads
 
 Upstream Author:
 
@@ -16,4 +16,4 @@ Copyright:
 
 License:
 
-    This program currently may not be distributed for any reason.
+    LGPL V2

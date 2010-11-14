@@ -9,7 +9,9 @@ Homepage: http://fuzzy.homedns.org/trac/scroom
 Package: scroom
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: Generic image viewing utility
- Generic image viewing utility, currently specializes in very large
- tiff-bitmaps. Scroom has a plugin-interface that should allow you to
- extend it quite easily to suit your needs
+Description: Generic viewer for 2D data
+ Scroom is a generic viewer for viewing 2D data. Plugins can be added
+ easily to support new file formats. Currently, there only is a plugin
+ available for viewing large TIFF files (tested up to 60 gigapixel,
+ 1bpp), so it is also fair to say that Scroom is a viewer for large
+ TIFF files.
