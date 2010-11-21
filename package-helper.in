@@ -85,11 +85,13 @@ else
     dch -d "For more info see http://fuzzy.homedns.org/trac/scroom/milestone/$VERSION"
 fi || exit 1
 
+echo_me "Building"
 if ! ( make distclean && debuild -us -uc ) > "$CURDIR/debuild.log" 2>&1
 then
     echo_me "ERROR: debuild failed. See debuild.log"
     exit 1
 fi
+echo_me "Done"
 
 cd "$CURDIR" || exit 1
 cp "$BUILD/scroom-$VERSION/debian/changelog" ./debian/changelog || exit 1
