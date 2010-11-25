@@ -31,6 +31,7 @@ PACKAGE="@PACKAGE@"
 VERSION="@VERSION@"
 
 # echo_me "Hello world"
+# echo_me "TMPDIR:    $TMPDIR"
 # echo_me "TMPSRCDIR: $TMPSRCDIR"
 # echo_me "SOURCE:    $SOURCE"
 # echo_me "BUILD:     $BUILD"
@@ -85,15 +86,62 @@ else
     dch -d "For more info see http://fuzzy.homedns.org/trac/scroom/milestone/$VERSION"
 fi || exit 1
 
+echo_me "Creating a tar file for package flavors"
+tar czfC "$TMPDIR/scroom-$VERSION-base.tgz" "$BUILD" "scroom-$VERSION"
+
 echo_me "Building"
 if ! ( make distclean && debuild -us -uc ) > "$CURDIR/debuild.log" 2>&1
 then
     echo_me "ERROR: debuild failed. See debuild.log"
     exit 1
 fi
-echo_me "Done"
+echo_me "Base version done. Trying pdebuild"
+if ! ( sudo pdebuild ) > $CURDIR/pdebuild.log 2>&1
+then
+    echo_me "ERROR: pdebuild failed. See pdebuild.log"
+fi
 
 cd "$CURDIR" || exit 1
 cp "$BUILD/scroom-$VERSION/debian/changelog" ./debian/changelog || exit 1
 
+# Ubuntu source packages
+for source_package in lucid maverick
+do
+    echo_me $source_package
+    ( rm -rf "$BUILD/$source_package" > /dev/null 2>&1 ;
+        mkdir -p "$BUILD/$source_package" && 
+        ln "$BUILD/scroom_$VERSION.orig.tar.gz" "$BUILD/$source_package/scroom_$VERSION.orig.tar.gz" && 
+        tar xfC "$TMPDIR/scroom-$VERSION-base.tgz" "$BUILD/$source_package" && 
+        cd "$BUILD/$source_package/scroom-$VERSION" &&
+        if [ -d "$CURDIR/${source_package}-patches" ]
+        then
+            QUILT_PATCHES="$CURDIR/${source_package}-patches" quilt push -a
+        else
+            true
+        fi &&
+        dch -D "$source_package" -v "$(dpkg-parsechangelog | awk '/^Version: / { print $2 }')${source_package}1" \
+            "$source_package edition" && 
+        debuild -S -sa -us -uc
+        ) > ${source_package}.log 2>&1
+done
+
+# Mutracx
+echo_me "Mutracx"
+source_package=mutracx
+(
+    rm -rf "$BUILD/$source_package" > /dev/null 2>&1 ;    
+    mkdir -p "$BUILD/$source_package" && 
+    ln "$BUILD/scroom_$VERSION.orig.tar.gz" "$BUILD/$source_package/scroom_$VERSION.orig.tar.gz" && 
+    tar xfC "$TMPDIR/scroom-$VERSION-base.tgz" "$BUILD/$source_package" && 
+    cd "$BUILD/$source_package/scroom-$VERSION" && 
+    QUILT_PATCHES="$CURDIR/${source_package}-patches" quilt push -a &&
+    VER="$(dpkg-parsechangelog | awk '/^Version: / { print $2 }')${source_package}1" &&
+    dch -D "hardy" -v "$VER" "Mutracx edition" && 
+    sudo DIST=mutracx ARCH=amd64 pdebuild --debbuildopts -sa && 
+    sudo DIST=mutracx ARCH=i386  pdebuild
+    ) > ${source_package}.log 2>&1
+
+#     debuild -S -sa -us -uc &&
+#     sudo DIST=mutracx ARCH=amd64 pbuilder build "$BUILD/$source_package/scroom_${VER}.dsc" && 
+#     sudo DIST=mutracx ARCH=i386  pbuilder build "$BUILD/$source_package/scroom_${VER}.dsc"
 # echo_me "Bye world"

@@ -36,7 +36,6 @@ echo_me "Name:   ${NAME:=Kees-Jan Dijkzeul}"
 echo_me "E-mail: ${EMAIL:=kees-jan.dijkzeul@iae.nl}"
 echo ""
 
-
 if [ ! -d "$BUILD" -o ! -w "$BUILD" ]
 then
     echo_me "ERROR: Build directory ($BUILD) not writable or no directory"
@@ -86,6 +85,6 @@ then
     exit 1
 fi
 
-export TMPSRCDIR SOURCE BUILD NAME EMAIL
+export TMPDIR TMPSRCDIR SOURCE BUILD NAME EMAIL
 
 "$TMPSRCDIR/config.status" --file package-helper && chmod +x ./package-helper && ./package-helper
