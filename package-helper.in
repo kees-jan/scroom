@@ -121,7 +121,7 @@ do
         fi &&
         dch -D "$source_package" -v "$(dpkg-parsechangelog | awk '/^Version: / { print $2 }')${source_package}1" \
             "$source_package edition" && 
-        debuild -S -sa -us -uc
+        debuild -S -sa -us -uc -j12
         ) > ${source_package}.log 2>&1
 done
 
@@ -137,8 +137,8 @@ source_package=mutracx
     QUILT_PATCHES="$CURDIR/${source_package}-patches" quilt push -a &&
     VER="$(dpkg-parsechangelog | awk '/^Version: / { print $2 }')${source_package}1" &&
     dch -D "hardy" -v "$VER" "Mutracx edition" && 
-    sudo DIST=mutracx ARCH=amd64 pdebuild --debbuildopts -sa && 
-    sudo DIST=mutracx ARCH=i386  pdebuild
+    sudo DIST=mutracx ARCH=amd64 pdebuild --debbuildopts "-sa" && 
+    sudo DIST=mutracx ARCH=i386  pdebuild --debbuildopts "-B"
     ) > ${source_package}.log 2>&1
 
 #     debuild -S -sa -us -uc &&
