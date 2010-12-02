@@ -117,10 +117,20 @@ then
     AC_MSG_WARN([Mutracx environment detected. Enabling mutracx-hacks])
   fi
   want_mutracx_hacks=yes
+elif test "x${want_mutracx_hacks}" = xunknown
+then
+  want_mutracx_hacks=$need_mutracx_hacks
 fi
 
 # If no doxygen, then we can't process all code
-DX_IF_FEATURE([doc], [], [want_doxygen_all_code=no])
+if DX_TEST_FEATURE([doc])
+then
+    want_doxygen=yes
+else
+    want_doxygen=no
+    want_doxygen_all_code=no
+fi
+
 
 # want_mutracx_hacks is now set to "yes" if they are either needed or
 # requested.
@@ -128,6 +138,7 @@ if test "x${want_mutracx_hacks}" = xyes
 then
   AC_DEFINE([MUTRACX_HACKS], 1, [Hacks for Mutracx environment enabled])
 fi
+
 if test "x${want_doxygen_all_code}" = xyes
 then
   DX_EXTRA_SRC="\$(top_srcdir)/gui \$(top_srcdir)/libs \$(top_srcdir)/plugins"
@@ -168,9 +179,6 @@ AC_SUBST([plugindir], [$libdir/$PACKAGE])
 
 AC_OUTPUT
 
-# Check if doxygen is requested/enabled (for producing the diagnostic
-# output below only)
-DX_IF_FEATURE([doc], [want_doxygen=yes], [want_doxygen=no])
 
 echo \
 "-------------------------------------------------
@@ -180,8 +188,6 @@ echo \
  Prefix:   '${prefix}'.
  Compiler: '${CC} ${CFLAGS} ${CPPFLAGS}'
            '${CXX} ${CXXFLAGS} ${CPPFLAGS}'
- Linker:   '${CC} ${LDFLAGS}'
-           '${CXX} ${LDFLAGS}'
            
  Package features:
    Mutracx hacks: ${want_mutracx_hacks}
