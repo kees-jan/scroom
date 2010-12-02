@@ -57,10 +57,13 @@ DX_PS_FEATURE(OFF)
 DX_INIT_DOXYGEN([$PACKAGE_NAME], [doxyfile], [doc])
   
 # Checks for packages.
-pkg_modules="gtk+-2.0 >= 2.0.0, gthread-2.0, libglade-2.0 glib-2.0 cairo"
-PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
-AC_SUBST(PACKAGE_CFLAGS)
-AC_SUBST(PACKAGE_LIBS)
+
+#PKG_CHECK_MODULES([HEADER, [gtk+-2.0 >= 2.0.0, libglade-2.0 glib-2.0 cairo])
+PKG_CHECK_MODULES([TILEDBITMAP], [gtk+-2.0 >= 2.0.0, cairo])
+PKG_CHECK_MODULES([EXAMPLEPLUGIN], [gtk+-2.0 >= 2.0.0])
+PKG_CHECK_MODULES([COLORMAPPLUGIN], [gtk+-2.0 >= 2.0.0, cairo])
+PKG_CHECK_MODULES([TIFFPLUGIN], [gtk+-2.0 >= 2.0.0, cairo])
+PKG_CHECK_MODULES([GUI],        [gtk+-2.0 >= 2.0.0, libglade-2.0, cairo])
 
 # Checks for libraries.
 
@@ -177,7 +180,9 @@ echo \
  Prefix:   '${prefix}'.
  Compiler: '${CC} ${CFLAGS} ${CPPFLAGS}'
            '${CXX} ${CXXFLAGS} ${CPPFLAGS}'
-
+ Linker:   '${CC} ${LDFLAGS}'
+           '${CXX} ${LDFLAGS}'
+           
  Package features:
    Mutracx hacks: ${want_mutracx_hacks}
    Doxygen:       ${want_doxygen}

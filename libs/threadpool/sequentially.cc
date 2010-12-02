@@ -18,8 +18,7 @@
 
 #include "sequentially.hh"
 
-#include <gtk/gtk.h>
-
+#include <stdio.h>
 #include <unused.h>
 
 ////////////////////////////////////////////////////////////////////////

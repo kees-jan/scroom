@@ -5,7 +5,7 @@ AM_CPPFLAGS = \
 	-DPLUGIN_DIR=\""$(plugindir)"\" \
 	-DTOP_SRCDIR=\""$(abs_top_srcdir)"\" \
 	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
-	@PACKAGE_CFLAGS@
+	@GUI_CFLAGS@
 
 bin_PROGRAMS = scroom
 
@@ -19,4 +19,4 @@ scroom_SOURCES = \
 
 scroom_CPPFLAGS = -I $(top_srcdir)/inc $(AM_CPPFLAGS)
 
-scroom_LDADD = @PACKAGE_LIBS@ $(INTLLIBS)
+scroom_LDADD = @GUI_LIBS@ $(INTLLIBS)
