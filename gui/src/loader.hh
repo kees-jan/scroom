@@ -21,7 +21,7 @@
 
 #include <gtk/gtk.h>
 
-#include <scroominterface.hh>
+#include <scroom/scroominterface.hh>
 
 void create(NewInterface* interface);
 void load(const GtkFileFilterInfo& info);

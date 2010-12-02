@@ -25,10 +25,10 @@
 
 #include <vector>
 
-#include <scroominterface.hh>
-#include <viewinterface.hh>
-#include <presentationinterface.hh>
-#include <tile.hh>
+#include <scroom/scroominterface.hh>
+#include <scroom/viewinterface.hh>
+#include <scroom/presentationinterface.hh>
+#include <scroom/tile.hh>
 
 typedef enum
   {

@@ -19,15 +19,15 @@
 #ifndef _TILED_BITMAP_HH
 #define _TILED_BITMAP_HH
 
-#include <scroominterface.hh>
-#include <tiledbitmapinterface.hh>
+#include <scroom/scroominterface.hh>
+#include <scroom/tiledbitmapinterface.hh>
 
 #include <list>
 #include <map>
 
 #include <boost/thread/mutex.hpp>
 
-#include <threadpool.hh>
+#include <scroom/threadpool.hh>
 
 #include "layer.hh"
 #include "layercoordinator.hh"

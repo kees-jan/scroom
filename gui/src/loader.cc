@@ -24,7 +24,7 @@
 
 #include <stdio.h>
 
-#include <threadpool.hh>
+#include <scroom/threadpool.hh>
 
 #include "callbacks.hh"
 #include "pluginmanager.hh"

@@ -25,9 +25,9 @@
 
 #include <string>
 
-#include <plugininformationinterface.hh>
+#include <scroom/plugininformationinterface.hh>
 
-#include <callbacks.hh>
+#include "callbacks.hh"
 
 const std::string SCROOM_PLUGIN_DIRS = "SCROOM_PLUGIN_DIRS";
 

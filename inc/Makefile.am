@@ -1,3 +1,16 @@
-# AM_CPPFLAGS = @PACKAGE_CFLAGS@ -I $(top_srcdir)/inc
-
-include_HEADERS = colormappable.hh memorymanagedinterface.hh memorymanagerinterface.hh observable.hh plugininformationinterface.hh presentationinterface.hh scroominterface.hh scroomplugin.hh scroom-semaphore.hh threadpool.hh tiledbitmapinterface.hh tile.hh unused.h viewinterface.hh workinterface.hh
+nobase_include_HEADERS = \
+	scroom/colormappable.hh \
+	scroom/memorymanagedinterface.hh \
+	scroom/memorymanagerinterface.hh \
+	scroom/observable.hh \
+	scroom/plugininformationinterface.hh \
+	scroom/presentationinterface.hh \
+	scroom/scroominterface.hh \
+	scroom/scroomplugin.hh \
+	scroom/semaphore.hh \
+	scroom/threadpool.hh \
+	scroom/tiledbitmapinterface.hh \
+	scroom/tile.hh \
+	scroom/unused.h \
+	scroom/viewinterface.hh \
+	scroom/workinterface.hh

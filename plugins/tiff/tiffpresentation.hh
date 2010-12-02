@@ -23,10 +23,10 @@
 #include <map>
 #include <list>
 
-#include <scroominterface.hh>
-#include <tiledbitmapinterface.hh>
-#include <presentationinterface.hh>
-#include <colormappable.hh>
+#include <scroom/scroominterface.hh>
+#include <scroom/tiledbitmapinterface.hh>
+#include <scroom/presentationinterface.hh>
+#include <scroom/colormappable.hh>
 
 typedef struct tiff TIFF;
 

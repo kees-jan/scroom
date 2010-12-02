@@ -22,7 +22,7 @@
 
 #include <boost/thread/mutex.hpp>
 
-#include <unused.h>
+#include <scroom/unused.h>
 
 TiledBitmapInterface* createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver* observer)
 {

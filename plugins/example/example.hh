@@ -19,9 +19,9 @@
 #ifndef _EXAMPLE_HH
 #define _EXAMPLE_HH
 
-#include <plugininformationinterface.hh>
-#include <presentationinterface.hh>
-#include <workinterface.hh>
+#include <scroom/plugininformationinterface.hh>
+#include <scroom/presentationinterface.hh>
+#include <scroom/workinterface.hh>
 
 class Example : public PluginInformationInterface, public NewInterface
 {

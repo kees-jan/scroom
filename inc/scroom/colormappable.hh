@@ -24,8 +24,8 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include <presentationinterface.hh>
-#include <observable.hh>
+#include <scroom/presentationinterface.hh>
+#include <scroom/observable.hh>
 
 #define COLORMAPPABLE_PROPERTY_NAME "Colormappable"
 

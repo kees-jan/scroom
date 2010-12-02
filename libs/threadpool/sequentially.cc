@@ -19,7 +19,7 @@
 #include "sequentially.hh"
 
 #include <stdio.h>
-#include <unused.h>
+#include <scroom/unused.h>
 
 ////////////////////////////////////////////////////////////////////////
 

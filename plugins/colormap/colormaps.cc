@@ -26,7 +26,7 @@
 
 #include <gio/gio.h>
 
-#include <colormappable.hh>
+#include <scroom/colormappable.hh>
 
 #define SCROOMDIR   ".scroom"
 #define COLORMAPDIR "colormaps"

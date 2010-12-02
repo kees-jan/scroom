@@ -19,8 +19,8 @@
 
 #include <stdio.h>
 
-#include <scroomplugin.hh>
-#include <unused.h>
+#include <scroom/scroomplugin.hh>
+#include <scroom/unused.h>
 
 #include "colormapplugin.hh"
 

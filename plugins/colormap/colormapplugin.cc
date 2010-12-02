@@ -18,7 +18,7 @@
 
 #include "colormapplugin.hh"
 
-#include <colormappable.hh>
+#include <scroom/colormappable.hh>
 
 #include "colormapprovider.hh"
 

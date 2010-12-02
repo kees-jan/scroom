@@ -19,7 +19,7 @@
 #ifndef _COLORMAPPLUGIN_HH
 #define _COLORMAPPLUGIN_HH
 
-#include <plugininformationinterface.hh>
+#include <scroom/plugininformationinterface.hh>
 
 /**
  * Register the ColormapPlugin, keep track of PresentationInterface instances

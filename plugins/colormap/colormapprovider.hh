@@ -23,7 +23,7 @@
 
 #include <gtk/gtk.h>
 
-#include <presentationinterface.hh>
+#include <scroom/presentationinterface.hh>
 
 /**
  * Provide the colormap widget to the Viewable.

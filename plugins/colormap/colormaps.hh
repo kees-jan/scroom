@@ -23,7 +23,7 @@
 
 #include <gtk/gtk.h>
 
-#include<colormappable.hh>
+#include<scroom/colormappable.hh>
 
 
 /**

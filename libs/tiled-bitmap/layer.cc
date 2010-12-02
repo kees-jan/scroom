@@ -20,7 +20,7 @@
 
 #include <stdio.h>
 
-#include <threadpool.hh>
+#include <scroom/threadpool.hh>
 
 class DataFetcher : public WorkInterface
 {

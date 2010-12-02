@@ -23,10 +23,10 @@
 
 #include <boost/thread.hpp>
 
-#include <tiledbitmapinterface.hh>
-#include <tile.hh>
+#include <scroom/tiledbitmapinterface.hh>
+#include <scroom/tile.hh>
 
-#include <observable.hh>
+#include <scroom/observable.hh>
 
 
 #define TILESIZE 1024

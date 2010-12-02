@@ -16,30 +16,15 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef _PLUGININFORMATIONINTERFACE_H
-#define _PLUGININFORMATIONINTERFACE_H
+#ifndef _MEMORYMANAGERINTERFACE.HH
+#define _MEMORYMANAGERINTERFACE.HH
 
-#include <scroominterface.hh>
+#include <scroom/workinterface.hh>
 
-#define PLUGIN_API_VERSION 0
-
-class PluginInformationInterface
+class MemoryManagerInterface
 {
-public:
-  const int pluginApiVersion;
-
-public:
-  PluginInformationInterface()
-    : pluginApiVersion(PLUGIN_API_VERSION)
-  {}
-
-  virtual std::string getPluginName()=0;
-  virtual std::string getPluginVersion()=0;
-  virtual void registerCapabilities(ScroomInterface* host)=0;
-  virtual void unregisterCapabilities(ScroomInterface* host)=0;
-  
+  void requestMemoryAvailabilityNotification(size_t amount, WorkInterface* callback);
 };
-
 
 
 #endif

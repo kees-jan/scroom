@@ -23,7 +23,7 @@
 
 #include <boost/thread/mutex.hpp>
 
-#include <threadpool.hh>
+#include <scroom/threadpool.hh>
 #include "threadpoolimpl.hh"
 
 class Sequentially

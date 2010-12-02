@@ -25,9 +25,9 @@
 #include <string>
 #include <map>
 
-#include <scroomplugin.hh>
-#include <scroominterface.hh>
-#include <workinterface.hh>
+#include <scroom/scroomplugin.hh>
+#include <scroom/scroominterface.hh>
+#include <scroom/workinterface.hh>
 #include <view.hh>
 
 struct PluginInformation

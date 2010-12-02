@@ -18,8 +18,8 @@
 
 #include "layercoordinator.hh"
 
-#include <workinterface.hh>
-#include <threadpool.hh>
+#include <scroom/workinterface.hh>
+#include <scroom/threadpool.hh>
 
 class TileReducer : public WorkInterface
 {

@@ -25,7 +25,7 @@
 #include <gdk/gdk.h>
 #include <cairo.h>
 
-#include <viewinterface.hh>
+#include <scroom/viewinterface.hh>
 
 class Viewable
 {

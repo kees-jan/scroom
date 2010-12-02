@@ -19,7 +19,7 @@
 #ifndef _THREADPOOL_HH
 #define _THREADPOOL_HH
 
-#include <workinterface.hh>
+#include <scroom/workinterface.hh>
 
 enum
   {

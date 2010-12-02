@@ -29,9 +29,9 @@
 #include <gdk/gdk.h>
 #include <cairo.h>
 
-#include <scroominterface.hh>
-#include <viewinterface.hh>
-#include <presentationinterface.hh>
+#include <scroom/scroominterface.hh>
+#include <scroom/viewinterface.hh>
+#include <scroom/presentationinterface.hh>
 
 #include "sidebarmanager.hh"
 

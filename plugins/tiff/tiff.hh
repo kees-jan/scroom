@@ -19,8 +19,8 @@
 #ifndef _TIFF_HH
 #define _TIFF_HH
 
-#include <plugininformationinterface.hh>
-#include <presentationinterface.hh>
+#include <scroom/plugininformationinterface.hh>
+#include <scroom/presentationinterface.hh>
 
 class Tiff : public PluginInformationInterface, public OpenInterface
 {

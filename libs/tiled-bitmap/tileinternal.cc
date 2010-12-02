@@ -20,7 +20,7 @@
 
 #include <string.h>
 
-#include <unused.h>
+#include <scroom/unused.h>
 
 ////////////////////////////////////////////////////////////////////////
 /// TileInternalObserver

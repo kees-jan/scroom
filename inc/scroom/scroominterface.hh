@@ -24,8 +24,8 @@
 
 #include <gtk/gtk.h>
 
-#include <presentationinterface.hh>
-#include <viewinterface.hh>
+#include <scroom/presentationinterface.hh>
+#include <scroom/viewinterface.hh>
 
 class FileOperationObserver
 {

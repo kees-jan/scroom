@@ -19,7 +19,7 @@
 #ifndef _EXAMPLEPRESENTATION_HH
 #define _EXAMPLEPRESENTATION_HH
 
-#include <presentationinterface.hh>
+#include <scroom/presentationinterface.hh>
 
 class ExamplePresentation : public PresentationInterface
 {

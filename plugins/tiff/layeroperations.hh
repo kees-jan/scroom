@@ -19,8 +19,8 @@
 #ifndef _TIFF_LAYEROPERATIONS_HH
 #define _TIFF_LAYEROPERATIONS_HH
 
-#include <tiledbitmapinterface.hh>
-#include <colormappable.hh>
+#include <scroom/tiledbitmapinterface.hh>
+#include <scroom/colormappable.hh>
 
 // Avoid a circular reference...
 class TiffPresentation;

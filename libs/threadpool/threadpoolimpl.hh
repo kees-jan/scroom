@@ -6,9 +6,9 @@
 #include <boost/thread.hpp>
 #include <boost/function.hpp>
 
-#include <scroom-semaphore.hh>
+#include <scroom/semaphore.hh>
 
-#include <workinterface.hh>
+#include <scroom/workinterface.hh>
 
 struct Job
 {

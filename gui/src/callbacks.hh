@@ -22,9 +22,9 @@
 #include <list>
 #include <string>
 
-#include <scroominterface.hh>
+#include <scroom/scroominterface.hh>
 
-#include <presentationinterface.hh>
+#include <scroom/presentationinterface.hh>
 #include "view.hh"
 
 void on_scroom_hide(GtkWidget* widget, gpointer user_data);

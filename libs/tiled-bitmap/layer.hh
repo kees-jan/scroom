@@ -21,7 +21,7 @@
 
 #include <vector>
 
-#include <tiledbitmapinterface.hh>
+#include <scroom/tiledbitmapinterface.hh>
 
 #include "tileinternal.hh"
 

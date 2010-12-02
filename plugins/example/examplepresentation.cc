@@ -18,7 +18,7 @@
 
 #include "examplepresentation.hh"
 
-#include <unused.h>
+#include <scroom/unused.h>
 
 ExamplePresentation::~ExamplePresentation()
 {
