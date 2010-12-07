@@ -68,17 +68,6 @@ ColormapProvider::ColormapProvider(PresentationInterface::Ptr p)
       }
     }
     
-    {
-      // Add a default map containing the grey values.
-      Colormap::ConstPtr* cc = new Colormap::ConstPtr(Colormap::createDefault(numColors));
-      GtkTreeIter iter;
-      gtk_list_store_append(colormaps, &iter);
-      gtk_list_store_set(colormaps, &iter,
-                         COLUMN_NAME, (*cc)->name.c_str(),
-                         COLUMN_POINTER, cc,
-                         -1);
-    }
-    
     while(!maps.empty())
     {
       if(maps.front()->colors.size()>=numColors)

@@ -40,7 +40,6 @@ private:
   TIFF* tif;
   int height;
   int width;
-  bool negative;
   TiledBitmapInterface* tbi;
   LayerSpec ls;
   int bpp;

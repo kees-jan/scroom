@@ -93,6 +93,20 @@ public:
     result->colors.clear();
     double max = n-1;
     for(int i=0; i<n; i++)
+      result->colors.push_back(Color(i/max));  // Min is black
+
+    return result;
+  }
+
+  /** Constructor. Create a smart pointer to a colormap of @c n grays. */
+  static Colormap::Ptr createDefaultInverted(int n)
+  {
+    Colormap::Ptr result=create();
+    result->name="0 is white";
+    result->colors.reserve(n);
+    result->colors.clear();
+    double max = n-1;
+    for(int i=0; i<n; i++)
       result->colors.push_back(Color((max-i)/max));  // Min is white
 
     return result;

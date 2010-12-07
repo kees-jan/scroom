@@ -26,7 +26,7 @@
 #include "layeroperations.hh"
 
 TiffPresentation::TiffPresentation()
-  : fileName(), tif(NULL), height(0), width(0), negative(false), tbi(NULL), bpp(0)
+  : fileName(), tif(NULL), height(0), width(0), tbi(NULL), bpp(0)
 {
   colormap = Colormap::createDefault(256);
 }
@@ -90,23 +90,45 @@ bool TiffPresentation::load(std::string fileName, FileOperationObserver* observe
     {
       originalColormap->colors[i] = Color(1.0*r[i]/0xFFFF, 1.0*g[i]/0xFFFF, 1.0*b[i]/0xFFFF);
     }
-
-    colormap = originalColormap;
   }
   else
   {
     colormap = Colormap::createDefault(1<<bpp);
   }
+  
   uint16 photometric;
   TIFFGetField(tif, TIFFTAG_PHOTOMETRIC, &photometric);
-  // In the TIFF file: black = 1, white = 0. If the values are the other way around in the TIFF file,
-  // we have to swap them
-  negative = false;
-  if (photometric == PHOTOMETRIC_MINISBLACK || photometric == PHOTOMETRIC_PALETTE)
+  switch(photometric)
   {
-    negative = true;
+  case PHOTOMETRIC_MINISBLACK:
+    if(!originalColormap)
+      originalColormap = Colormap::createDefault(1<<bpp);
+    else
+      printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
+    break;
+      
+  case PHOTOMETRIC_MINISWHITE:
+    if(!originalColormap)
+      originalColormap = Colormap::createDefaultInverted(1<<bpp);
+    else
+      printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
+    break;
+      
+  case PHOTOMETRIC_PALETTE:
+    if(!originalColormap)
+    {
+      printf("WEIRD: Photometric is palette, but tiff doesn't contain a colormap\n");
+      originalColormap = Colormap::createDefault(1<<bpp);
+    }
+    break;
+      
+  default:
+    printf("PANIC: Unrecognized value for photometric\n");
+    break;
   }
 
+  colormap = originalColormap;
+    
   printf("This bitmap has size %d*%d\n", width, height);
   ls.clear();
 
@@ -115,11 +137,11 @@ bool TiffPresentation::load(std::string fileName, FileOperationObserver* observe
     ls.push_back(new Operations1bpp());
     ls.push_back(new Operations8bpp());
   }
-  else if(bpp==8)
+  else if(bpp==8 && photometric != PHOTOMETRIC_PALETTE)
   {
     ls.push_back(new Operations8bpp());
   }
-  else if(bpp==2 || bpp==4)
+  else if(bpp==2 || bpp==4 || (bpp==8 && photometric == PHOTOMETRIC_PALETTE))
   {
     ls.push_back(new Operations(this, bpp));
     properties[COLORMAPPABLE_PROPERTY_NAME]="";
@@ -245,11 +267,6 @@ void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth, in
   for(int i=0; i<lineCount; i++)
   {
     TIFFReadScanline(tif, (tdata_t)row, startLine+i);
-    if(negative)
-    {
-      for(int j=0; j<dataLength; j++)
-        row[j] = ~row[j];
-    }
 
     for(int tile=0; tile<tileCount-1; tile++)
     {
