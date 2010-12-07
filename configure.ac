@@ -26,7 +26,7 @@ LT_PREREQ([2.2])
 LT_INIT([dlopen])
 
 AC_CONFIG_MACRO_DIR([m4])
-AC_CONFIG_SRCDIR([inc/presentationinterface.hh])
+AC_CONFIG_SRCDIR([inc/scroom/presentationinterface.hh])
 AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
