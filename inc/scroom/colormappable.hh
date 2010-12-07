@@ -116,8 +116,8 @@ public:
   /** Request that the presentation use the given colormap */
   virtual void setColormap(Colormap::Ptr colormap)=0;
 
-  /** Retrieve the currently used colormap */
-  virtual Colormap::Ptr getColormap()=0;
+  /** Retrieve the images colormap (if any) */
+  virtual Colormap::Ptr getOriginalColormap()=0;
 
   /** Retrieve the number of colors in use by the presentation */
   virtual int getNumberOfColors()=0;

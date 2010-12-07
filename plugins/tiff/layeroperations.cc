@@ -433,8 +433,7 @@ void Operations::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRec
       PixelIterator pixel(tile->data+(tileArea.y+j)*tile->width/pixelsPerByte, tileArea.x, bpp);
       for(int i=0; i<tileArea.width; i++)
       {
-        if(*pixel)
-          drawPixel(cr, viewArea.x+i*pixelSize, viewArea.y+j*pixelSize, pixelSize, colormap->colors[*pixel]);
+        drawPixel(cr, viewArea.x+i*pixelSize, viewArea.y+j*pixelSize, pixelSize, colormap->colors[*pixel]);
         ++pixel;
       }
     }
@@ -453,10 +452,7 @@ void Operations::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRec
       
       for(int i=0; i<viewArea.width; i++)
       {
-        if(*pixel)
-        {
-          drawPixel(cr, viewArea.x+i, viewArea.y+j, 1, colormap->colors[*pixel]);
-        }
+        drawPixel(cr, viewArea.x+i, viewArea.y+j, 1, colormap->colors[*pixel]);
         pixel+=pixelCount;
       }
     }

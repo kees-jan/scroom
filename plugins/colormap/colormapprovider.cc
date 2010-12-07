@@ -54,6 +54,21 @@ ColormapProvider::ColormapProvider(PresentationInterface::Ptr p)
     colormaps = gtk_list_store_new(N_COLUMNS, G_TYPE_STRING, G_TYPE_POINTER);
 
     {
+      // Add the original colormap, if any
+      Colormap::Ptr orig = c->getOriginalColormap();
+      if(orig)
+      {
+        Colormap::ConstPtr* cc = new Colormap::ConstPtr(orig);
+        GtkTreeIter iter;
+        gtk_list_store_append(colormaps, &iter);
+        gtk_list_store_set(colormaps, &iter,
+                           COLUMN_NAME, (*cc)->name.c_str(),
+                           COLUMN_POINTER, cc,
+                           -1);
+      }
+    }
+    
+    {
       // Add a default map containing the grey values.
       Colormap::ConstPtr* cc = new Colormap::ConstPtr(Colormap::createDefault(numColors));
       GtkTreeIter iter;

@@ -76,8 +76,27 @@ bool TiffPresentation::load(std::string fileName, FileOperationObserver* observe
   uint16 bpp;
   TIFFGetField(tif, TIFFTAG_BITSPERSAMPLE, &bpp);
   this->bpp = bpp;
-  colormap = Colormap::createDefault(1<<bpp);
 
+  uint16 *r, *g, *b;
+  int result = TIFFGetField(tif, TIFFTAG_COLORMAP, &r, &g, &b);
+  if(result==1)
+  {
+    originalColormap = Colormap::create();
+    originalColormap->name = "Original";
+    int count = 1<<bpp;
+    originalColormap->colors.resize(count);
+    
+    for(int i=0; i<count; i++)
+    {
+      originalColormap->colors[i] = Color(1.0*r[i]/0xFFFF, 1.0*g[i]/0xFFFF, 1.0*b[i]/0xFFFF);
+    }
+
+    colormap = originalColormap;
+  }
+  else
+  {
+    colormap = Colormap::createDefault(1<<bpp);
+  }
   uint16 photometric;
   TIFFGetField(tif, TIFFTAG_PHOTOMETRIC, &photometric);
   // In the TIFF file: black = 1, white = 0. If the values are the other way around in the TIFF file,
@@ -272,6 +291,11 @@ void TiffPresentation::setColormap(Colormap::Ptr colormap)
 Colormap::Ptr TiffPresentation::getColormap()
 {
   return colormap;
+}
+
+Colormap::Ptr TiffPresentation::getOriginalColormap()
+{
+  return originalColormap;
 }
 
 int TiffPresentation::getNumberOfColors()
