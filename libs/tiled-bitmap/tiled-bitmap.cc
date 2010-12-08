@@ -18,6 +18,10 @@
 
 #include "tiled-bitmap.hh"
 
+#ifdef HAVE_CONFIG_H
+#  include <config.h>
+#endif
+
 #include <stdio.h>
 
 #include <boost/thread/mutex.hpp>
@@ -442,7 +446,9 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
         {
           layerOperations->drawState(cr, tile->state, viewArea);
         }
-        // drawTile(cr, tile, viewArea);
+#ifdef DEBUG_TILES
+        drawTile(cr, tile, viewArea);
+#endif
       }
     }
   }
@@ -552,7 +558,9 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
         {
           layerOperations->drawState(cr, tile->state, viewArea);
         }
-        // drawTile(cr, tile, viewArea);
+#ifdef DEBUG_TILES
+        drawTile(cr, tile, viewArea);
+#endif
       }
     }
   }

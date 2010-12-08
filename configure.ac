@@ -48,6 +48,11 @@ AC_ARG_ENABLE([doxygen-all-code],
     [Generate doxygen documentation for all code, instead of just the api @<:@default=no@:>@])],
   [want_doxygen_all_code=${enableval}],
   [want_doxygen_all_code=no])
+AC_ARG_ENABLE([debug-tiles],
+  [AS_HELP_STRING([--enable-debug-tiles], 
+    [Display the (internally used) tiles (Debugging) @<:@default=no@:>@])],
+  [want_debug_tiles=${enableval}],
+  [want_debug_tiles=no])
   
 
 # Doxygen
@@ -147,6 +152,11 @@ else
   DX_EXTRA_SRC=
 fi
 AC_SUBST(DX_EXTRA_SRC)
+
+if test "x${want_debug_tiles}" = xyes
+then
+  AC_DEFINE([DEBUG_TILES], 1, [Visualize internally used tiles])
+fi
 
 # GetText
 dnl GETTEXT_PACKAGE=scroom
