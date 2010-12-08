@@ -44,10 +44,11 @@ AC_ARG_ENABLE([mutracx-hacks],
   [want_mutracx_hacks=${enableval}],
   [want_mutracx_hacks=unknown])
 AC_ARG_ENABLE([doxygen-all-code],
-  [  --enable-doxygen-all-code  Generate doxygen documentation for all code,
-                             instead of just the api],
+  [AS_HELP_STRING([--enable-doxygen-all-code], 
+    [Generate doxygen documentation for all code, instead of just the api @<:@default=no@:>@])],
   [want_doxygen_all_code=${enableval}],
   [want_doxygen_all_code=no])
+  
 
 # Doxygen
 DX_DOXYGEN_FEATURE(ON)
