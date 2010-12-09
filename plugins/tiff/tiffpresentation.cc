@@ -101,17 +101,25 @@ bool TiffPresentation::load(std::string fileName, FileOperationObserver* observe
   switch(photometric)
   {
   case PHOTOMETRIC_MINISBLACK:
-    if(!originalColormap)
-      originalColormap = Colormap::createDefault(1<<bpp);
-    else
+    if(originalColormap)
       printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
+
+    if(bpp==1 || bpp==8)
+      originalColormap = Colormap::createDefault(2);
+    else
+      originalColormap = Colormap::createDefault(1<<bpp);
+    
     break;
       
   case PHOTOMETRIC_MINISWHITE:
-    if(!originalColormap)
-      originalColormap = Colormap::createDefaultInverted(1<<bpp);
-    else
+    if(originalColormap)
       printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
+    
+    if(bpp==1 || bpp==8)
+      originalColormap = Colormap::createDefaultInverted(2);
+    else
+      originalColormap = Colormap::createDefaultInverted(1<<bpp);
+    
     break;
       
   case PHOTOMETRIC_PALETTE:
@@ -132,19 +140,19 @@ bool TiffPresentation::load(std::string fileName, FileOperationObserver* observe
   printf("This bitmap has size %d*%d\n", width, height);
   ls.clear();
 
-  if(bpp==1)
-  {
-    ls.push_back(new Operations1bpp());
-    ls.push_back(new Operations8bpp());
-  }
-  else if(bpp==8 && photometric != PHOTOMETRIC_PALETTE)
-  {
-    ls.push_back(new Operations8bpp());
-  }
-  else if(bpp==2 || bpp==4 || (bpp==8 && photometric == PHOTOMETRIC_PALETTE))
+  if(bpp==2 || bpp==4 || photometric == PHOTOMETRIC_PALETTE)
   {
     ls.push_back(new Operations(this, bpp));
     properties[COLORMAPPABLE_PROPERTY_NAME]="";
+  }
+  else if(bpp==1)
+  {
+    ls.push_back(new Operations1bpp(this));
+    ls.push_back(new Operations8bpp(this));
+  }
+  else if(bpp==8)
+  {
+    ls.push_back(new Operations8bpp(this));
   }
   else
   {
@@ -317,7 +325,7 @@ Colormap::Ptr TiffPresentation::getOriginalColormap()
 
 int TiffPresentation::getNumberOfColors()
 {
-  return 1<<bpp;
+  return originalColormap->colors.size();
 }
 
 ////////////////////////////////////////////////////////////////////////

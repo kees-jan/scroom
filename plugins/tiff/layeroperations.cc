@@ -149,6 +149,11 @@ inline byte BitCountLut::lookup(byte index)
 ////////////////////////////////////////////////////////////////////////
 // CommonOperations
 
+CommonOperations::CommonOperations(TiffPresentation* presentation)
+  : presentation(presentation)
+{
+}
+
 void CommonOperations::initializeCairo(cairo_t* cr)
 {
   cairo_set_antialias(cr, CAIRO_ANTIALIAS_NONE);
@@ -176,22 +181,6 @@ void CommonOperations::drawState(cairo_t* cr, TileState s, GdkRectangle viewArea
   fillRect(cr, viewArea);
 }
 
-inline void CommonOperations::drawPixel(cairo_t* cr, int x, int y, int size, double greyShade)
-{
-  cairo_set_source_rgb(cr, greyShade, greyShade, greyShade);
-  cairo_move_to(cr, x, y);
-  cairo_line_to(cr, x+size, y);
-  cairo_line_to(cr, x+size, y+size);
-  cairo_line_to(cr, x, y+size);
-  cairo_line_to(cr, x, y);
-  cairo_fill(cr);
-}
-
-inline void CommonOperations::drawPixel(cairo_t* cr, int x, int y, int size, byte greyShade)
-{
-  drawPixel(cr, x, y, size, (double)(255-greyShade)/255.0);
-}
-  
 inline void CommonOperations::drawPixel(cairo_t* cr, int x, int y, int size, const Color& color)
 {
   cairo_set_source_rgb(cr, color.red, color.green, color.blue);
@@ -202,6 +191,26 @@ inline void CommonOperations::drawPixel(cairo_t* cr, int x, int y, int size, con
   cairo_line_to(cr, x, y);
   cairo_fill(cr);
 }
+
+inline double CommonOperations::mix(double d1, double d2, byte greyscale)
+{
+  return (greyscale*d2 + (255-greyscale)*d1)/255;
+}
+
+void CommonOperations::drawPixel(cairo_t* cr, int x, int y, int size, const Color& c1, const Color& c2, byte greyscale)
+{
+  cairo_set_source_rgb(cr,
+                       mix(c1.red, c2.red, greyscale),
+                       mix(c1.green, c2.green, greyscale),
+                       mix(c1.blue, c2.blue, greyscale));
+  cairo_move_to(cr, x, y);
+  cairo_line_to(cr, x+size, y);
+  cairo_line_to(cr, x+size, y+size);
+  cairo_line_to(cr, x, y+size);
+  cairo_line_to(cr, x, y);
+  cairo_fill(cr);
+}
+
 
 inline void CommonOperations::fillRect(cairo_t* cr, int x, int y,
                                         int width, int height)
@@ -223,6 +232,11 @@ inline void CommonOperations::fillRect(cairo_t* cr, const GdkRectangle& area)
 ////////////////////////////////////////////////////////////////////////
 // Operations1bpp
 
+Operations1bpp::Operations1bpp(TiffPresentation* presentation)
+  : CommonOperations(presentation)
+{
+}
+
 int Operations1bpp::getBpp()
 {
   return 1;
@@ -232,6 +246,7 @@ void Operations1bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, Gd
 {
   cairo_set_source_rgb(cr, 1, 1, 1); // White
   fillRect(cr, viewArea);
+  Colormap::Ptr colormap = presentation->getColormap();
   
   if(zoom>=0)
   {
@@ -243,8 +258,7 @@ void Operations1bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, Gd
       PixelIterator bit(tile->data+(tileArea.y+j)*tile->width/8, tileArea.x);
       for(int i=0; i<tileArea.width; i++)
       {
-        if(*bit)
-          drawPixel(cr, viewArea.x+i*pixelSize, viewArea.y+j*pixelSize, pixelSize);
+        drawPixel(cr, viewArea.x+i*pixelSize, viewArea.y+j*pixelSize, pixelSize, colormap->colors[*bit]);
         ++bit;
       }
     }
@@ -263,10 +277,7 @@ void Operations1bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, Gd
       
       for(int i=0; i<viewArea.width; i++)
       {
-        if(*b)
-        {
-          drawPixel(cr, viewArea.x+i, viewArea.y+j, 1);
-        }
+        drawPixel(cr, viewArea.x+i, viewArea.y+j, 1, colormap->colors[*b]);
         b+=pixelCount;
       }
     }
@@ -314,6 +325,11 @@ void Operations1bpp::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int
 ////////////////////////////////////////////////////////////////////////
 // Operations8bpp
 
+Operations8bpp::Operations8bpp(TiffPresentation* presentation)
+  : CommonOperations(presentation)
+{
+}
+
 int Operations8bpp::getBpp()
 {
   return 8;
@@ -323,6 +339,9 @@ void Operations8bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, Gd
 {
   cairo_set_source_rgb(cr, 1, 1, 1); // White
   fillRect(cr, viewArea);
+  Colormap::Ptr colormap = presentation->getColormap();
+  const Color& c1 = colormap->colors[0];
+  const Color& c2 = colormap->colors[1];
   
   if(zoom>=0)
   {
@@ -335,9 +354,7 @@ void Operations8bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, Gd
     
       for(int i=0; i<tileArea.width; i++, cur++)
       {
-        if(*cur)
-          drawPixel(cr, viewArea.x+i*pixelSize, viewArea.y+j*pixelSize,
-                    pixelSize, *cur);
+        drawPixel(cr, viewArea.x+i*pixelSize, viewArea.y+j*pixelSize, pixelSize, c1, c2, *cur);
       }
     }
   }
@@ -356,10 +373,7 @@ void Operations8bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, Gd
     
       for(int i=0; i<viewArea.width; i++)
       {
-        if(*cur)
-        {
-          drawPixel(cr, viewArea.x+i, viewArea.y+j, 1, *cur);
-        }
+        drawPixel(cr, viewArea.x+i, viewArea.y+j, 1, c1, c2, *cur);
         cur+=pixelCount;
       }
     }
@@ -408,7 +422,8 @@ void Operations8bpp::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int
 // Operations
 
 Operations::Operations(TiffPresentation* presentation, int bpp)
-  :bpp(bpp), pixelsPerByte(8/bpp), pixelOffset(bpp), pixelMask((1<<bpp)-1), presentation(presentation)
+  : CommonOperations(presentation), 
+    bpp(bpp), pixelsPerByte(8/bpp), pixelOffset(bpp), pixelMask((1<<bpp)-1)
 {
 }
 

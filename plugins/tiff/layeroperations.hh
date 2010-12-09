@@ -27,13 +27,18 @@ class TiffPresentation;
 
 class CommonOperations : public LayerOperations
 {
+protected:
+  TiffPresentation* presentation;
+
 public:
+  CommonOperations(TiffPresentation* presentation);
+  
   virtual ~CommonOperations()
   {}
 
-  void drawPixel(cairo_t* cr, int x, int y, int size, byte greyShade=255);
-  void drawPixel(cairo_t* cr, int x, int y, int size, double greyShade);
+  double mix(double d1, double d2, byte greyscale);
   void drawPixel(cairo_t* cr, int x, int y, int size, const Color& color);
+  void drawPixel(cairo_t* cr, int x, int y, int size, const Color& c1, const Color& c2, byte greyscale);
   void fillRect(cairo_t* cr, int x, int y, int width, int height);
   void fillRect(cairo_t* cr, const GdkRectangle& area);
   
@@ -47,6 +52,7 @@ public:
 class Operations1bpp : public CommonOperations
 {
 public:
+  Operations1bpp(TiffPresentation* presentation);
   virtual ~Operations1bpp()
   {}
   
@@ -61,6 +67,7 @@ public:
 class Operations8bpp : public CommonOperations
 {
 public:
+  Operations8bpp(TiffPresentation* presentation);
   virtual ~Operations8bpp()
   {}
   
@@ -80,8 +87,6 @@ private:
   const int pixelOffset;
   const int pixelMask;
 
-  TiffPresentation* presentation;
-  
 public:
   Operations(TiffPresentation* presentation, int bpp);
   
