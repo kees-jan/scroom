@@ -21,6 +21,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include <glib.h>
+
 #include "tiffpresentation.hh"
 
 ////////////////////////////////////////////////////////////////////////
@@ -269,6 +271,8 @@ void Operations1bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, Gd
     // Iterate over pixels in the viewArea, determining which color
     // each should get
     int pixelCount = 1<<-zoom;
+    const Color& c1 = colormap->colors[0];
+    const Color& c2 = colormap->colors[1];
 
     for(int j=0; j<viewArea.height; j++)
     {
@@ -277,7 +281,21 @@ void Operations1bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, Gd
       
       for(int i=0; i<viewArea.width; i++)
       {
-        drawPixel(cr, viewArea.x+i, viewArea.y+j, 1, colormap->colors[*b]);
+        int count = 0;
+        PixelIterator bl(b);
+        for(int l=0; l<pixelCount; l++)
+        {
+          PixelIterator bk(bl);
+          for(int k=0; k<pixelCount; k++)
+          {
+            count += *bk;
+            ++bk;
+          }
+
+          bl+= tile->width;
+        }
+
+        drawPixel(cr, viewArea.x+i, viewArea.y+j, 1, c1, c2, 255*count/pixelCount/pixelCount);
         b+=pixelCount;
       }
     }
@@ -373,7 +391,21 @@ void Operations8bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, Gd
     
       for(int i=0; i<viewArea.width; i++)
       {
-        drawPixel(cr, viewArea.x+i, viewArea.y+j, 1, c1, c2, *cur);
+        int count=0;
+        byte* bl = cur;
+        for(int l=0; l<pixelCount; l++)
+        {
+          byte* bk = bl;
+          for(int k=0; k<pixelCount; k++)
+          {
+            count += *bk;
+            ++bk;
+          }
+
+          bl+= tile->width;
+        }
+        
+        drawPixel(cr, viewArea.x+i, viewArea.y+j, 1, c1, c2, count/pixelCount/pixelCount);
         cur+=pixelCount;
       }
     }
@@ -467,7 +499,24 @@ void Operations::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRec
       
       for(int i=0; i<viewArea.width; i++)
       {
-        drawPixel(cr, viewArea.x+i, viewArea.y+j, 1, colormap->colors[*pixel]);
+        // Compute the average of all colors in a
+        // pixelCount*pixelCount area
+        Color c;
+        PixelIterator bl(pixel);
+        for(int l=0; l<pixelCount; l++)
+        {
+          PixelIterator bk(bl);
+          for(int k=0; k<pixelCount; k++)
+          {
+            c += colormap->colors[*bk];
+            ++bk;
+          }
+          bl+= tile->width;
+        }
+
+        c /= pixelCount*pixelCount;
+        
+        drawPixel(cr, viewArea.x+i, viewArea.y+j, 1, c);
         pixel+=pixelCount;
       }
     }
@@ -476,24 +525,147 @@ void Operations::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRec
 
 void Operations::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y)
 {
-  // Reducing by a factor 8. Source and target have same bpp
+  // Reducing by a factor 8. Target is 2*bpp and expects two indices into the colormap
   int sourceStride = source->width/pixelsPerByte;
   byte* sourceBase = source->data;
 
-  int targetStride = target->width/pixelsPerByte;
+  const int targetMultiplier = 2; // target is 2*bpp
+  int targetStride = targetMultiplier * target->width / pixelsPerByte;
   byte* targetBase = target->data +
-    target->height*y*targetStride/8 +
-    target->width*x/8/pixelsPerByte;
+    target->height*targetStride*y/8 +
+    targetMultiplier*target->width*x/8/pixelsPerByte;
 
   for(int j=0; j<source->height/8;
       j++, targetBase+=targetStride, sourceBase+=sourceStride*8)
   {
     // Iterate vertically over target
     byte* sourcePtr = sourceBase;
-    PixelIterator targetPtr(targetBase, 0, bpp);
+    PixelIterator targetPtr(targetBase, 0, targetMultiplier * bpp);
 
     for(int i=0; i<source->width/8;
         i++, sourcePtr+=8/pixelsPerByte, ++targetPtr)
+    {
+      // Iterate horizontally over target
+
+      // Goal is to determine which values occurs most often in a 8*8
+      // rectangle, and pick the top two.
+      byte* base = sourcePtr;
+      byte lookup[pixelMask+1];
+      memset(lookup, 0, sizeof(lookup));
+
+      for(int k=0; k<8; k++, base+=sourceStride)
+      {
+        PixelIterator current(base, 0, bpp);
+        for(int l=0; l<8; l++, ++current)
+          ++(lookup[*current]);
+      }
+      byte first=0;
+      byte second=1;
+      if(lookup[1]>lookup[0])
+      {
+        first=1;
+        second=0;
+      }
+      for(byte c=2; c<pixelMask+1; c++)
+      {
+        if(lookup[c]>lookup[first])
+        {
+          second=first;
+          first=c;
+        }
+        else if(lookup[c]>lookup[second])
+          second=c;
+      }
+      if(lookup[second]==0)
+        second = first;
+
+      targetPtr.set(first<<pixelOffset | second);
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+// OperationsColormapped
+
+OperationsColormapped::OperationsColormapped(TiffPresentation* presentation, int bpp)
+  : Operations(presentation, bpp)
+{
+}
+
+int OperationsColormapped::getBpp()
+{
+  return 2*bpp;
+}
+
+void OperationsColormapped::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom)
+{
+  cairo_set_source_rgb(cr, 1, 1, 1); // White
+  fillRect(cr, viewArea);
+  Colormap::Ptr colormap = presentation->getColormap();
+  const int multiplier = 2; // data is 2*bpp, containing 2 colors
+
+  g_assert_cmpint(zoom, <=, 0);
+  
+  if(zoom<=0)
+  {
+    // zoom <= 0
+    // Iterate over pixels in the viewArea, determining which color
+    // each should get
+    int pixelCount = 1<<-zoom;
+
+    for(int j=0; j<viewArea.height; j++)
+    {
+      PixelIterator pixel(tile->data+(tileArea.y+j*pixelCount)*multiplier*tile->width/pixelsPerByte,
+                          tileArea.x, multiplier*bpp);
+      
+      for(int i=0; i<viewArea.width; i++)
+      {
+        // Compute the average of all colors in a
+        // pixelCount*pixelCount area
+        Color c;
+        PixelIterator bl(pixel);
+        for(int l=0; l<pixelCount; l++)
+        {
+          PixelIterator bk(bl);
+          for(int k=0; k<pixelCount; k++)
+          {
+            c += colormap->colors[*bk & pixelMask];
+            c += colormap->colors[*bk >> pixelOffset];
+            ++bk;
+          }
+          bl+= tile->width;
+        }
+
+        c /= 2*pixelCount*pixelCount;
+        
+        drawPixel(cr, viewArea.x+i, viewArea.y+j, 1, c);
+        pixel+=pixelCount;
+      }
+    }
+  }
+}
+
+void OperationsColormapped::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y)
+{
+  // Reducing by a factor 8. Source and target both 2*bpp, containing 2 colors
+  const int multiplier = 2; // data is 2*bpp, containing 2 colors
+  int sourceStride = multiplier*source->width/pixelsPerByte;
+  byte* sourceBase = source->data;
+
+  int targetStride = multiplier*target->width/pixelsPerByte;
+  byte* targetBase = target->data +
+    target->height*y*targetStride/8 +
+    multiplier*target->width*x/8/pixelsPerByte;
+
+  for(int j=0; j<source->height/8;
+      j++, targetBase+=targetStride, sourceBase+=sourceStride*8)
+  {
+    // Iterate vertically over target
+    byte* sourcePtr = sourceBase;
+    PixelIterator targetPtr(targetBase, 0, multiplier*bpp);
+
+    for(int i=0; i<source->width/8;
+        i++, sourcePtr+=8*multiplier/pixelsPerByte, ++targetPtr)
     {
       // Iterate horizontally over target
 
@@ -502,23 +674,37 @@ void Operations::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y)
       byte* base = sourcePtr;
       byte lookup[pixelMask+1];
       memset(lookup, 0, sizeof(lookup));
-      byte maxValue=0;
-      byte maxCount=0;
 
       for(int k=0; k<8; k++, base+=sourceStride)
       {
-        PixelIterator current(base, 0, bpp);
+        PixelIterator current(base, 0, multiplier*bpp);
         for(int l=0; l<8; l++, ++current)
         {
-          if(++(lookup[*current])>maxCount)
-          {
-            maxCount=lookup[*current];
-            maxValue=*current;
-          }
+          ++lookup[*current & pixelMask];
+          ++lookup[*current >> pixelOffset];
         }
       }
+      byte first=0;
+      byte second=1;
+      if(lookup[1]>lookup[0])
+      {
+        first=1;
+        second=0;
+      }
+      for(byte c=2; c<pixelMask+1; c++)
+      {
+        if(lookup[c]>lookup[first])
+        {
+          second=first;
+          first=c;
+        }
+        else if(lookup[c]>lookup[second])
+          second=c;
+      }
+      if(lookup[second]==0)
+        second = first;
 
-      targetPtr.set(maxValue);
+      targetPtr.set(first<<pixelOffset | second);
     }
   }
 }

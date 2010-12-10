@@ -143,6 +143,7 @@ bool TiffPresentation::load(std::string fileName, FileOperationObserver* observe
   if(bpp==2 || bpp==4 || photometric == PHOTOMETRIC_PALETTE)
   {
     ls.push_back(new Operations(this, bpp));
+    ls.push_back(new OperationsColormapped(this, bpp));
     properties[COLORMAPPABLE_PROPERTY_NAME]="";
   }
   else if(bpp==1)

@@ -55,6 +55,12 @@ public:
   Color(double gray)
     : red(gray), green(gray), blue(gray)
   {}
+
+  Color& operator+=(const Color& rhs)
+  { red += rhs.red; green += rhs.green; blue+= rhs.blue; return *this; }
+
+  Color& operator/=(double d)
+  { red /= d; green /= d; blue /= d; return *this; }
 };
 
 /**
