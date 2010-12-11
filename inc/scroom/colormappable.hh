@@ -119,9 +119,14 @@ public:
  * In order to use the colormap plugin, presentations should implement
  * this interface, and define the @c COLORMAPPABLE_PROPERTY_NAME
  * property.
+ *
+ * Presentations should forward view creation and destruction events
+ * (i.e. Viewable::open() and Viewable::close() events) to their
+ * observers. As a result, new views will get a sidebar containing the
+ * available colormaps, and when one is selected, setColormap() will
+ * be called.
  */
- 
-class Colormappable: public Observable<Viewable>
+class Colormappable: public virtual Observable<Viewable>
 {
 public:
   /** Virtual destructor */

@@ -48,21 +48,21 @@ Observable<T>::Observable()
 template<typename T>
 std::list<T*> Observable<T>::getObservers()
 {
-  boost::unique_lock<boost::mutex> lock(mut);
+  boost::mutex::scoped_lock lock(mut);
   return observers;
 }
 
 template<typename T>
 void Observable<T>::registerObserver(T* observer)
 {
-  boost::unique_lock<boost::mutex> lock(mut);
+  boost::mutex::scoped_lock lock(mut);
   observers.push_back(observer);
 }
 
 template<typename T>
 void Observable<T>::unregisterObserver(T* observer)
 {
-  boost::unique_lock<boost::mutex> lock(mut);
+  boost::mutex::scoped_lock lock(mut);
   observers.remove(observer);
 }
 

@@ -23,17 +23,56 @@
 
 #include <gtk/gtk.h>
 
+/**
+ * Interface provided to something Viewable
+ *
+ * Internally, scroom uses a View to represent the fact that something
+ * (typically a presentation) is visible on the screen. Being a
+ * presentation, you typically want to influence whatever is being
+ * shown. This interface allows you to do so.
+ *
+ * @see PresentationInterface, Viewable
+ */
 class ViewInterface
 {
 public:
   
   virtual ~ViewInterface() {}
 
+  /**
+   * Request that the window content is redrawn.
+   *
+   * @pre Should be called from within a Gdk critical section
+   *    (i.e. between gdk_threads_enter() and gdk_threads_leave()
+   *    calls)
+   */
   virtual void invalidate()=0;
 
+  /**
+   * Return a pointer to the progess bar associated with the View
+   *
+   * @note The progress bar should only be manipulated from within a
+   *    Gdk critical section (i.e. between gdk_threads_enter() and
+   *    gdk_threads_leave() calls)
+   */
   virtual GtkProgressBar* getProgressBar()=0;
 
+  /**
+   * Request that the given widget be added to the sidebar.
+   *
+   * @pre Should be called from within a Gdk critical section
+   *    (i.e. between gdk_threads_enter() and gdk_threads_leave()
+   *    calls)
+   */
   virtual void addSideWidget(std::string title, GtkWidget* w)=0;
+
+  /**
+   * Request that the given widget be removed from the sidebar.
+   *
+   * @pre Should be called from within a Gdk critical section
+   *    (i.e. between gdk_threads_enter() and gdk_threads_leave()
+   *    calls)
+   */
   virtual void removeSideWidget(GtkWidget* w)=0;
 };
 

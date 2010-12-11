@@ -27,15 +27,47 @@
 
 #include <scroom/viewinterface.hh>
 
+/**
+ * Implement Viewable if you want to be able to receive events when a
+ * View is created and/or deleted.
+ *
+ * You'll want to receive these events if you either want to influence
+ * something on-screen (PresentationInterface, ColormapProvider), or
+ * want to store data related to a View (TiledBitmapInterface).
+ */
 class Viewable
 {
 public:
   virtual ~Viewable() {}
-    
+
+  /**
+   * Gets called just after the View is created
+   *
+   * @pre Should be called from within a Gdk critical section
+   *    (i.e. between gdk_threads_enter() and gdk_threads_leave()
+   *    calls)
+   */
   virtual void open(ViewInterface* vi)=0;
+
+  /**
+   * Gets called just before the View is destroyed
+   *
+   * @pre Should be called from within a Gdk critical section
+   *    (i.e. between gdk_threads_enter() and gdk_threads_leave()
+   *    calls)
+   */
   virtual void close(ViewInterface* vi)=0;
 };
 
+/**
+ * Represent some 2D content
+ *
+ * Anything that should be shown by Scroom in a window should
+ * implement this interface.
+ *
+ * Objects implementing this interface are typically returned by
+ * NewInterface::createNew() and OpenInterface::open().
+ */
 class PresentationInterface : public Viewable
 {
 public:
@@ -44,12 +76,38 @@ public:
  
   virtual ~PresentationInterface() {}
 
+  /** Return the dimensions of your presentation */
   virtual GdkRectangle getRect()=0;
+
+  /**
+   * Draw the requested ara at the requested zoom level
+   *
+   * @param vi The ViewInterface on whose behalf the request is made
+   * @param cr The context to draw the area on
+   * @param presentationArea the area that is to be drawn. The given
+   *    @c x and @c y coordinates should map on 0,0 of the given
+   *    context @c cr.
+   * @param zoom The requested zoom level. One pixel of your
+   *    presentation should have size 2**@c zoom when drawn. @c zoom
+   *    may be negative.
+   */
   virtual void redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)=0;
+
+  /**
+   * Return the value of the requested property
+   *
+   * @param[in] name The name of the requested property
+   * @param[out] value The value of the requested property
+   * @retval true if the property existed
+   * @retval false if the property didn't exist
+   */
   virtual bool getProperty(const std::string& name, std::string& value)=0;
+
+  /** Return true if the named property exists */
   virtual bool isPropertyDefined(const std::string& name)=0;
+
+  /** Return the title of the presentation */
   virtual std::string getTitle()=0;
-  
 };
 
 #endif

@@ -43,7 +43,7 @@ namespace Scroom
 
   inline void Semaphore::P()
   {
-    boost::unique_lock<boost::mutex> lock(mut);
+    boost::mutex::scoped_lock lock(mut);
     while(count==0)
     {
       cond.wait(lock);
@@ -53,7 +53,7 @@ namespace Scroom
 
   inline void Semaphore::V()
   {
-    boost::unique_lock<boost::mutex> lock(mut);
+    boost::mutex::scoped_lock lock(mut);
     count++;
     cond.notify_one();
   }
