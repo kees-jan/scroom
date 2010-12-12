@@ -53,6 +53,11 @@ AC_ARG_ENABLE([debug-tiles],
     [Display the (internally used) tiles (Debugging) @<:@default=no@:>@])],
   [want_debug_tiles=${enableval}],
   [want_debug_tiles=no])
+AC_ARG_ENABLE([multithreading],
+  [AS_HELP_STRING([--disable-multithreading], 
+    [Use as few threads as possible (Debugging) @<:@default=no@:>@])],
+  [want_multithreading=${enableval}],
+  [want_multithreading=yes])
   
 
 # Doxygen
@@ -157,6 +162,11 @@ if test "x${want_debug_tiles}" = xyes
 then
   AC_DEFINE([DEBUG_TILES], 1, [Visualize internally used tiles])
 fi
+if test "x${want_multithreading}" = xyes
+then
+  AC_DEFINE([MULTITHREADING], 1, [Use as many threads as needed])
+fi
+
 
 # GetText
 dnl GETTEXT_PACKAGE=scroom

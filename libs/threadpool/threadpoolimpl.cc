@@ -17,6 +17,10 @@
  */
 #include "threadpoolimpl.hh"
 
+#ifdef HAVE_CONFIG_H
+#  include <config.h>
+#endif
+
 #include <stdio.h>
 
 #include <scroom/threadpool.hh>
@@ -72,7 +76,10 @@ bool BoostFunctionWork::doWork()
 
 ThreadPool::ThreadPool()
 {
-  int count = std::max(boost::thread::hardware_concurrency(),(unsigned int)2);
+  int count = boost::thread::hardware_concurrency();
+#ifndef MULTITHREADING
+  count=1;
+#endif
   alive=true;
   printf("Starting ThreadPool with %d threads\n", count);
   for(int i=0; i<count; i++)
@@ -83,6 +90,9 @@ ThreadPool::ThreadPool()
 
 ThreadPool::ThreadPool(int count)
 {
+#ifndef MULTITHREADING
+  count=1;
+#endif
   alive=true;
   printf("Starting ThreadPool with %d threads\n", count);
   for(int i=0; i<count; i++)
