@@ -1,0 +1,5 @@
+If you have checked out the git archive, please do
+ autoreconf -i
+
+If you have unzipped a tarball, please do the usual
+ ./configure && make && make install

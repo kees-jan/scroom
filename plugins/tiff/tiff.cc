@@ -1,4 +1,26 @@
+/*
+ * Scroom - Generic viewer for 2D data
+ * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License, version 2, as published by the Free Software Foundation.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+
 #include "tiff.hh"
+
+#ifdef HAVE_CONFIG_H
+# include <config.h>
+#endif
 
 #include "tiffpresentation.hh"
 
@@ -22,13 +44,11 @@ std::string Tiff::getPluginVersion()
 
 void Tiff::registerCapabilities(ScroomInterface* host)
 {
-  host->registerNewInterface("Tiff", this);
   host->registerOpenInterface("Tiff viewer", this);
 }
 
 void Tiff::unregisterCapabilities(ScroomInterface* host)
 {
-  host->unregisterNewInterface(this);
   host->unregisterOpenInterface(this);
 }
 
@@ -42,35 +62,26 @@ std::list<GtkFileFilter*> Tiff::getFilters()
 
   GtkFileFilter* filter = gtk_file_filter_new();
   gtk_file_filter_set_name(filter, "Tiff files");
+#if MUTRACX_HACKS
+  gtk_file_filter_add_pattern(filter, "*.tif");
+  gtk_file_filter_add_pattern(filter, "*.tiff");
+  gtk_file_filter_add_pattern(filter, "*.TIF");
+  gtk_file_filter_add_pattern(filter, "*.TIFF");
+#else
   gtk_file_filter_add_mime_type(filter, "image/tiff");
+#endif
   result.push_back(filter);
   
   return result;
 }
   
-PresentationInterface* Tiff::open(const std::string& fileName)
+PresentationInterface::Ptr Tiff::open(const std::string& fileName, FileOperationObserver* observer)
 {
-  TiffPresentation* p = new TiffPresentation();
-  if(!p->load(fileName))
-  {
-    delete p;
-    p=NULL;
-  }
-  return p;
-}
-
-////////////////////////////////////////////////////////////////////////
-// NewInterface
-////////////////////////////////////////////////////////////////////////
-
-PresentationInterface* Tiff::createNew()
-{
-  TiffPresentation* p = new TiffPresentation();
-  if(!p->load("tissuebox.tif"))
-  {
-    delete p;
-    p=NULL;
-  }
-  return p;
-}
   
+  TiffPresentation::Ptr p = TiffPresentation::Ptr(new TiffPresentation());
+  if(!p->load(fileName, observer))
+  {
+    p.reset();
+  }
+  return p;
+}

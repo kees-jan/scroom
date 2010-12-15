@@ -1,0 +1,16 @@
+ATB=@abs_top_builddir@
+export SCROOM_DEV_MODE="yes"
+export SCROOM_PLUGIN_DIRS="/some/bogus/value:${ATB}/plugins/colormap/.libs:${ATB}/plugins/tiff/.libs:${ATB}/plugins/example/.libs"
+
+export SCROOM_MEMORY_LIMIT=
+export SCROOM_MEMORY_HWM=$((7*1024))
+export SCROOM_MEMORY_LWM=$((6*1024))
+export SCROOM_FILES_HWM=800
+export SCROOM_FILES_LWM=500
+
+if [ -z "$SCROOM_PATHS_SAVED" ]
+then
+  export SCROOM_PATHS_SAVED="yes"
+  export SCROOM_SAVED_LIBRARY_PATH="$LD_LIBRARY_PATH"
+fi
+export LD_LIBRARY_PATH="${ATB}/libs/threadpool/.libs:${ATB}/libs/tiled-bitmap/.libs:$SCROOM_SAVED_LIBRARY_PATH"

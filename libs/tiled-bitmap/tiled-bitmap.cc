@@ -1,12 +1,109 @@
+/*
+ * Scroom - Generic viewer for 2D data
+ * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License, version 2, as published by the Free Software Foundation.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+
 #include "tiled-bitmap.hh"
+
+#ifdef HAVE_CONFIG_H
+#  include <config.h>
+#endif
 
 #include <stdio.h>
 
-#include <unused.h>
+#include <boost/thread/mutex.hpp>
 
-TiledBitmapInterface* createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
+#include <scroom/unused.h>
+
+TiledBitmapInterface* createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver* observer)
 {
-  return new TiledBitmap(bitmapWidth, bitmapHeight, ls);
+  return new TiledBitmap(bitmapWidth, bitmapHeight, ls, observer);
+}
+
+////////////////////////////////////////////////////////////////////////
+
+gboolean timerExpired(gpointer data)
+{
+  return ((FileOperation*)data)->timerExpired();
+}
+
+FileOperation::FileOperation(TiledBitmap* parent)
+  : parent(parent), waitingMutex(), waiting(true)
+{
+  timer = gtk_timeout_add(100, ::timerExpired, this);
+}
+
+void FileOperation::doneWaiting()
+{
+  boost::mutex::scoped_lock lock(waitingMutex);
+  if(waiting)
+  {
+    gtk_timeout_remove(timer);
+    waiting = false;
+  }
+}
+
+bool FileOperation::timerExpired()
+{
+  boost::mutex::scoped_lock lock(waitingMutex);
+  if(waiting)
+    parent->gtk_progress_bar_pulse();
+
+  return waiting;
+}
+
+////////////////////////////////////////////////////////////////////////
+
+class LoadOperation : public FileOperation
+{
+private:
+  Layer* target;
+  SourcePresentation* thePresentation;
+  
+public:
+  LoadOperation(Layer* l, SourcePresentation* sp, TiledBitmap* parent);
+  virtual ~LoadOperation() {}
+
+  virtual bool doWork();
+};
+
+LoadOperation::LoadOperation(Layer* l, SourcePresentation* sp, TiledBitmap* parent)
+  : FileOperation(parent), target(l), thePresentation(sp)
+{
+}
+
+bool LoadOperation::doWork()
+{
+  doneWaiting();
+
+  target->fetchData(thePresentation);
+  
+  return FALSE;
+}
+
+////////////////////////////////////////////////////////////////////////
+
+gboolean reportComplete(gpointer data)
+{
+  if(data)
+  {
+    ((FileOperationObserver*)data)->fileOperationComplete();
+  }
+
+  return FALSE;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -15,13 +112,30 @@ TiledBitmapInterface* createTiledBitmap(int bitmapWidth, int bitmapHeight, Layer
 TiledBitmapViewData::TiledBitmapViewData(ViewInterface* viewInterface)
   : viewInterface(viewInterface)
 {
+  progressBar = viewInterface->getProgressBar();
+}
+
+TiledBitmapViewData::~TiledBitmapViewData()
+{
+  ::gtk_progress_bar_set_fraction(progressBar, 0.0);
+}
+
+void TiledBitmapViewData::gtk_progress_bar_set_fraction(double fraction)
+{
+  ::gtk_progress_bar_set_fraction(progressBar, fraction);
+}
+
+void TiledBitmapViewData::gtk_progress_bar_pulse()
+{
+  ::gtk_progress_bar_pulse(progressBar);
 }
 
 ////////////////////////////////////////////////////////////////////////
 // TiledBitmap
 
-TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
-  :bitmapWidth(bitmapWidth), bitmapHeight(bitmapHeight), ls(ls)
+TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver* observer)
+  :bitmapWidth(bitmapWidth), bitmapHeight(bitmapHeight), ls(ls), progressBar(NULL), tileCount(0), tileFinishedCount(0),
+   observer(observer), fileOperation(NULL)
 {
   int width = bitmapWidth;
   int height = bitmapHeight;
@@ -37,7 +151,7 @@ TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
     
     bpp = lo->getBpp();
 
-    Layer* layer = new Layer(i, width, height, bpp);
+    Layer* layer = new Layer(this, i, width, height, bpp);
     layers.push_back(layer);
     if(prevLayer)
     {
@@ -106,13 +220,51 @@ void TiledBitmap::connect(Layer* layer, Layer* prevLayer,
   }
 }
 
+void TiledBitmap::gtk_progress_bar_set_fraction(double fraction)
+{
+  gdk_threads_enter();
+  boost::mutex::scoped_lock lock(viewDataMutex);
+  std::map<ViewInterface*, TiledBitmapViewData*>::iterator cur = viewData.begin();
+  std::map<ViewInterface*, TiledBitmapViewData*>::iterator end = viewData.end();
+
+  for(; cur!=end; ++cur)
+  {
+    // EEK! This is not thread safe!
+    cur->second->gtk_progress_bar_set_fraction(fraction);
+  }
+  gdk_threads_leave();
+}
+
+void TiledBitmap::gtk_progress_bar_pulse()
+{
+  gdk_threads_enter();
+  boost::mutex::scoped_lock lock(viewDataMutex);
+  std::map<ViewInterface*, TiledBitmapViewData*>::iterator cur = viewData.begin();
+  std::map<ViewInterface*, TiledBitmapViewData*>::iterator end = viewData.end();
+
+  for(; cur!=end; ++cur)
+  {
+    // EEK! This is not thread safe!
+    cur->second->gtk_progress_bar_pulse();
+  }
+  gdk_threads_leave();
+}
+
 
 ////////////////////////////////////////////////////////////////////////
 // TiledBitmapInterface
 
 void TiledBitmap::setSource(SourcePresentation* sp)
 {
-  layers[0]->fetchData(sp);
+  if(fileOperation==NULL)
+  {
+    fileOperation = new LoadOperation(layers[0], sp, this);
+    sequentially(fileOperation);
+  }
+  else
+  {
+    printf("PANIC: Another operation is already in process\n");
+  }
 }
 
 inline void computeAreasBeginningZoomingIn(int presentationBegin, int tileOffset, int pixelSize,
@@ -143,7 +295,7 @@ inline void computeAreasEndZoomingIn(int presentationBegin, int presentationSize
   }
   else
   {
-    tileSize = presentationBegin + presentationSize - tileOffset;
+    tileSize = presentationBegin + presentationSize - tileOffset - tileBegin;
   }
   viewSize = tileSize*pixelSize;
 }
@@ -198,7 +350,7 @@ void TiledBitmap::drawTile(cairo_t* cr, const TileInternal* tile, const GdkRecta
 
 }
 
-void TiledBitmap::redraw(cairo_t* cr, GdkRectangle presentationArea, int zoom)
+void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
 {
   // presentationArea.width-=200;
   // presentationArea.height-=200;
@@ -207,27 +359,73 @@ void TiledBitmap::redraw(cairo_t* cr, GdkRectangle presentationArea, int zoom)
   if(zoom>0)
   {
     // Zooming in. This is always done using layer 0
-    int left = presentationArea.x;
-    int top = presentationArea.y;
-    int right = presentationArea.x+presentationArea.width;
-    int bottom = presentationArea.y+presentationArea.height;
-
-    int imin = left/TILESIZE;
-    int imax = (right+TILESIZE-1)/TILESIZE;
-    int jmin = top/TILESIZE;
-    int jmax = (bottom+TILESIZE-1)/TILESIZE;
-
     Layer* layer = layers[0];
     LayerOperations* layerOperations = ls[0];
 
+    const int origWidth = presentationArea.width;
+    const int origHeight = presentationArea.height;
+    presentationArea.width = std::min(presentationArea.width, layer->getWidth()-presentationArea.x);
+    presentationArea.height = std::min(presentationArea.height, layer->getHeight()-presentationArea.y);
+    
+    const int left = presentationArea.x;
+    const int top = presentationArea.y;
+    const int right = presentationArea.x+presentationArea.width;
+    const int bottom = presentationArea.y+presentationArea.height;
+
+    const int imin = std::min(0, left/TILESIZE);
+    const int imax = (right+TILESIZE-1)/TILESIZE;
+    const int jmin = std::min(0, top/TILESIZE);
+    const int jmax = (bottom+TILESIZE-1)/TILESIZE;
+
+    const int pixelSize = 1<<zoom;
+    
     layerOperations->initializeCairo(cr);
+
+    if(presentationArea.width < origWidth)
+    {
+      GdkRectangle viewArea;
+      viewArea.x = presentationArea.width*pixelSize;
+      viewArea.width = (origWidth - presentationArea.width)*pixelSize;
+      viewArea.y = 0;
+      viewArea.height = origHeight*pixelSize;
+      
+      layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
+    }
+    if(presentationArea.height < origHeight)
+    {
+      GdkRectangle viewArea;
+      viewArea.y = presentationArea.height*pixelSize;
+      viewArea.height = (origHeight - presentationArea.height)*pixelSize;
+      viewArea.x = 0;
+      viewArea.width = presentationArea.width*pixelSize;
+      
+      layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
+    }
+    if(presentationArea.x<0)
+    {
+      GdkRectangle viewArea;
+      viewArea.x=0;
+      viewArea.width = -presentationArea.x*pixelSize;
+      viewArea.y=0;
+      viewArea.height = presentationArea.height*pixelSize;
+
+      layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
+    }
+    if(presentationArea.y<0)
+    {
+      GdkRectangle viewArea;
+      viewArea.y=0;
+      viewArea.height = -presentationArea.y*pixelSize;
+      viewArea.x = std::max(0, -presentationArea.x*pixelSize);
+      viewArea.width = presentationArea.width*pixelSize;
+                            
+      layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
+    }
     
     for(int i=imin; i<imax; i++)
     {
       for(int j=jmin; j<jmax; j++)
       {
-        int pixelSize = 1<<zoom;
-        
         GdkRectangle tileArea;
         GdkRectangle viewArea;
 
@@ -244,11 +442,13 @@ void TiledBitmap::redraw(cairo_t* cr, GdkRectangle presentationArea, int zoom)
         {
           layerOperations->draw(cr, tile->getTile(), tileArea, viewArea, zoom);
         }
-        else if (tile->state != TILE_OUT_OF_BOUNDS)
+        else
         {
           layerOperations->drawState(cr, tile->state, viewArea);
         }
+#ifdef DEBUG_TILES
         drawTile(cr, tile, viewArea);
+#endif
       }
     }
   }
@@ -270,23 +470,71 @@ void TiledBitmap::redraw(cairo_t* cr, GdkRectangle presentationArea, int zoom)
     Layer* layer = layers[layerNr];
     LayerOperations* layerOperations = ls[std::min(ls.size()-1, (size_t)layerNr)];
 
-    int left = presentationArea.x;
-    int top = presentationArea.y;
-    int right = presentationArea.x+presentationArea.width;
-    int bottom = presentationArea.y+presentationArea.height;
+    const int origWidth = presentationArea.width;
+    const int origHeight = presentationArea.height;
+    presentationArea.width = std::min(presentationArea.width, layer->getWidth()-presentationArea.x);
+    presentationArea.height = std::min(presentationArea.height, layer->getHeight()-presentationArea.y);
+    
+    const int left = presentationArea.x;
+    const int top = presentationArea.y;
+    const int right = presentationArea.x+presentationArea.width;
+    const int bottom = presentationArea.y+presentationArea.height;
 
-    int imin = left/TILESIZE;
-    int imax = (right+TILESIZE-1)/TILESIZE;
-    int jmin = top/TILESIZE;
-    int jmax = (bottom+TILESIZE-1)/TILESIZE;
+    const int imin = std::max(0, left/TILESIZE);
+    const int imax = (right+TILESIZE-1)/TILESIZE;
+    const int jmin = std::max(0, top/TILESIZE);
+    const int jmax = (bottom+TILESIZE-1)/TILESIZE;
 
+    const int pixelSize = 1<<-zoom;
+    
     layerOperations->initializeCairo(cr);
+    
+    if(presentationArea.width < origWidth)
+    {
+      GdkRectangle viewArea;
+      viewArea.x = presentationArea.width/pixelSize;
+      viewArea.width = (origWidth - presentationArea.width)/pixelSize;
+      viewArea.y = 0;
+      viewArea.height = origHeight/pixelSize;
+      
+      layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
+    }
+    if(presentationArea.height < origHeight)
+    {
+      GdkRectangle viewArea;
+      viewArea.y = presentationArea.height/pixelSize;
+      viewArea.height = (origHeight - presentationArea.height)/pixelSize;
+      viewArea.x = 0;
+      viewArea.width = presentationArea.width/pixelSize;
+      
+      layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
+    }
+    if(presentationArea.x<0)
+    {
+      GdkRectangle viewArea;
+      viewArea.x=0;
+      viewArea.width = -presentationArea.x/pixelSize;
+      viewArea.y=0;
+      viewArea.height = presentationArea.height/pixelSize;
+
+      layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
+    }
+    if(presentationArea.y<0)
+    {
+      GdkRectangle viewArea;
+      viewArea.y=0;
+      viewArea.height = -presentationArea.y/pixelSize;
+      viewArea.x = std::max(0, -presentationArea.x/pixelSize);
+      viewArea.width = presentationArea.width/pixelSize;
+                            
+      layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
+    }
+    
     
     for(int i=imin; i<imax; i++)
     {
       for(int j=jmin; j<jmax; j++)
       {
-        int pixelSize = 1<<-zoom;
         
         GdkRectangle tileArea;
         GdkRectangle viewArea;
@@ -310,8 +558,63 @@ void TiledBitmap::redraw(cairo_t* cr, GdkRectangle presentationArea, int zoom)
         {
           layerOperations->drawState(cr, tile->state, viewArea);
         }
+#ifdef DEBUG_TILES
         drawTile(cr, tile, viewArea);
+#endif
       }
     }
   }
+}
+
+void TiledBitmap::open(ViewInterface* viewInterface)
+{
+  boost::mutex::scoped_lock lock(viewDataMutex);
+  TiledBitmapViewData* vd = new TiledBitmapViewData(viewInterface);
+  viewData[viewInterface] = vd;
+}
+
+void TiledBitmap::close(ViewInterface* vi)
+{
+  boost::mutex::scoped_lock lock(viewDataMutex);
+  TiledBitmapViewData* vd = viewData[vi];
+  viewData.erase(vi);
+  delete vd;
+}
+
+////////////////////////////////////////////////////////////////////////
+// TileInternalObserver
+
+void TiledBitmap::tileCreated(TileInternal* tile)
+{
+  UNUSED(tile);
+  tileCount++;
+}
+
+void TiledBitmap::tileFinished(TileInternal* tile)
+{
+  UNUSED(tile);
+  boost::mutex::scoped_lock lock(tileFinishedMutex);
+  tileFinishedCount++;
+  if(tileFinishedCount>tileCount)
+  {
+    printf("ERROR: Too many tiles are finished!\n");
+  }
+  else
+  {
+    gtk_progress_bar_set_fraction(((double)tileFinishedCount)/tileCount);
+    if(tileFinishedCount==tileCount)
+    {
+      gtk_progress_bar_set_fraction(0.0);
+      if(observer)
+      {
+        gdk_threads_add_idle(reportComplete, observer);
+      }
+      if(fileOperation)
+      {
+        fileOperation->finishedLoading();
+        fileOperation = NULL;
+      }
+      printf("INFO: Finished loading file\n");
+    }
+  }  
 }

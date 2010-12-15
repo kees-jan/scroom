@@ -1,4 +1,4 @@
-#include <memorymanagerinterface.hh>
+#include <scroom/memorymanagerinterface.hh>
 
 #include <unistd.h>
 #include <assert.h>

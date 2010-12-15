@@ -1,9 +1,11 @@
+#include <stdio.h>
+
 #include <map>
 
 #include <boost/thread.hpp>
 
-#include <memorymanagerinterface.hh>
-#include <threadpool.hh>
+#include <scroom/memorymanagerinterface.hh>
+#include <scroom/threadpool.hh>
 
 const std::string SCROOM_MEMORY_HWM = "SCROOM_MEMORY_HWM";
 const std::string SCROOM_MEMORY_LWM = "SCROOM_MEMORY_LWM";
@@ -30,24 +32,24 @@ public:
   typedef std::map<MemoryManagedInterface*,ManagedInfo> ManagedInfoMap;
   
 private:
-  uint64_t memHwm;
-  uint64_t memLwm;
-  uint64_t filesHwm;
-  uint64_t filesLwm;
+  unsigned long long memHwm;
+  unsigned long long memLwm;
+  unsigned long long filesHwm;
+  unsigned long long filesLwm;
 
-  uint64_t memCurrent;
-  uint64_t memTotal;
-  uint64_t filesCurrent;
-  uint64_t filesTotal;
+  unsigned long long memCurrent;
+  unsigned long long memTotal;
+  unsigned long long filesCurrent;
+  unsigned long long filesTotal;
   boost::mutex currentMut;
 
-  uint64_t timestamp;
+  unsigned long long timestamp;
 
   boost::mutex mut;
   ManagedInfoMap managedInfo;
   bool isGarbageCollecting;
 
-  uint64_t unloaders;
+  unsigned long long unloaders;
   boost::condition_variable unloadersCond;
   boost::mutex unloadersMut;
 
@@ -111,15 +113,15 @@ MemoryManager::MemoryManager()
 {
   printf("Creating memory manager\n");
 
-  memHwm = 1024*1024*(uint64_t)fetchFromEnvironment(SCROOM_MEMORY_HWM);
-  memLwm = 1024*1024*(uint64_t)fetchFromEnvironment(SCROOM_MEMORY_LWM);
+  memHwm = 1024*1024*(unsigned long long)fetchFromEnvironment(SCROOM_MEMORY_HWM);
+  memLwm = 1024*1024*(unsigned long long)fetchFromEnvironment(SCROOM_MEMORY_LWM);
   filesHwm = fetchFromEnvironment(SCROOM_FILES_HWM);
   filesLwm = fetchFromEnvironment(SCROOM_FILES_LWM);
 
   if(!memHwm)
   {
-    memHwm = (uint64_t)2048*1024*1024;
-    memLwm = (uint64_t)1920*1024*1024;
+    memHwm = (unsigned long long)2048*1024*1024;
+    memLwm = (unsigned long long)1920*1024*1024;
   }
   if(!memLwm)
   {
@@ -232,7 +234,7 @@ void MemoryManager::garbageCollect()
 
   {
     boost::unique_lock<boost::mutex> lock(mut);
-    std::map<uint64_t, std::list<MemoryManagedInterface*> > sortedInterfaces;
+    std::map<unsigned long long, std::list<MemoryManagedInterface*> > sortedInterfaces;
 
     for(ManagedInfoMap::iterator cur = managedInfo.begin();
         cur != managedInfo.end();
@@ -240,11 +242,11 @@ void MemoryManager::garbageCollect()
     {
       sortedInterfaces[cur->second.timestamp].push_back(cur->first);
     }
-    std::map<uint64_t, std::list<MemoryManagedInterface*> >::iterator cur = sortedInterfaces.begin();
-    std::map<uint64_t, std::list<MemoryManagedInterface*> >::iterator end = sortedInterfaces.end();
+    std::map<unsigned long long, std::list<MemoryManagedInterface*> >::iterator cur = sortedInterfaces.begin();
+    std::map<unsigned long long, std::list<MemoryManagedInterface*> >::iterator end = sortedInterfaces.end();
     unloaders = 0;
-    uint64_t filesExpected = filesCurrent;
-    uint64_t memExpected = memCurrent;
+    unsigned long long filesExpected = filesCurrent;
+    unsigned long long memExpected = memCurrent;
 
     for(;cur!=end && (filesExpected > filesLwm || memExpected > memHwm); ++cur)
     {
