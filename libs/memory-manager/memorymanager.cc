@@ -244,7 +244,7 @@ void MemoryManager::checkForOutOfResources()
   if(!isGarbageCollecting && (memCurrent>memHwm || filesCurrent>filesHwm))
   {
     isGarbageCollecting=true;
-    thread.schedule(PRIO_NORMAL, new GarbageCollector());
+    thread.schedule(new GarbageCollector());
   }
 }
 

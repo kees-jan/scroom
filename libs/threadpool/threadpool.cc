@@ -29,10 +29,10 @@ static ThreadPool& instance()
 
 void schedule(WorkInterface* wi, int priority)
 {
-  instance().schedule(priority, wi);
+  instance().schedule(wi, priority);
 }
 
 void schedule(boost::function<void ()> const& fn, int priority)
 {
-  instance().schedule(priority, fn);
+  instance().schedule(fn, priority);
 }

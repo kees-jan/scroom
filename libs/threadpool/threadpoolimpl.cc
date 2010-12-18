@@ -104,7 +104,7 @@ ThreadPool::~ThreadPool()
   printf("Attempting to destroy the threadpool...\n");
   alive = false;
   for(unsigned int i=0; i<threads.size(); i++)
-    schedule(PRIO_NORMAL, new NoWork());
+    schedule(new NoWork(), PRIO_NORMAL);
 
   while(!threads.empty())
   {
@@ -125,7 +125,7 @@ void ThreadPool::work()
   printf("ThreadPool: Thread terminating...\n");
 }
 
-void ThreadPool::schedule(int priority, WorkInterface* wi)
+void ThreadPool::schedule(WorkInterface* wi, int priority)
 {
   boost::unique_lock<boost::mutex> lock(mut);
   jobs[priority].push(wi);
@@ -133,9 +133,9 @@ void ThreadPool::schedule(int priority, WorkInterface* wi)
   jobcount.V();
 }
 
-void ThreadPool::schedule(int priority, boost::function<void ()> const& fn)
+void ThreadPool::schedule(boost::function<void ()> const& fn, int priority)
 {
-  schedule(priority, new BoostFunctionWork(fn));
+  schedule(new BoostFunctionWork(fn), priority);
 }
 
 void ThreadPool::cleanUp()
@@ -185,7 +185,7 @@ bool ThreadPool::perform_one()
     bool result = wi->doWork();
     if(result)
     {
-      schedule(priority, wi);
+      schedule(wi, priority);
     }
     else
     {

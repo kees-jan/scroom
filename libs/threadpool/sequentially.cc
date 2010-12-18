@@ -63,7 +63,7 @@ void Sequentially::execute(SeqJob* job)
   if(!currentlyWorking)
   {
     currentlyWorking = true;
-    asynchronous.schedule(PRIO_NORMAL, boost::bind(&Sequentially::next, this));
+    asynchronous.schedule(boost::bind(&Sequentially::next, this), PRIO_NORMAL);
   }
 }
 
@@ -75,7 +75,7 @@ void Sequentially::done()
   SeqJob* job = remainingJobs.front();
   delete job;
   remainingJobs.pop_front();
-  asynchronous.schedule(PRIO_NORMAL, boost::bind(&Sequentially::next, this));
+  asynchronous.schedule(boost::bind(&Sequentially::next, this), PRIO_NORMAL);
 }
 
 void Sequentially::next()

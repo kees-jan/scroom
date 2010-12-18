@@ -57,11 +57,11 @@ public:
   ThreadPool();
   ThreadPool(int count);
   ~ThreadPool();
-  void schedule(int priority, WorkInterface* wi);
-  void schedule(int priority, boost::function<void ()> const& fn);
+  void schedule(WorkInterface* wi, int priority=PRIO_NORMAL);
+  void schedule(boost::function<void ()> const& fn, int priority=PRIO_NORMAL);
 
   template<typename T>
-  void schedule(int priority, boost::shared_ptr<T> fn);
+  void schedule(boost::shared_ptr<T> fn, int priority=PRIO_NORMAL);
   
   void cleanUp();
 };
@@ -178,7 +178,7 @@ namespace
 }
 
 template<typename T>
-void ThreadPool::schedule(int priority, boost::shared_ptr<T> fn)
+void ThreadPool::schedule(boost::shared_ptr<T> fn, int priority)
 {
   schedule(priority, boost::bind(threadPoolExecute, fn));
 }
