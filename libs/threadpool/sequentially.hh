@@ -24,7 +24,6 @@
 #include <boost/thread/mutex.hpp>
 
 #include <scroom/threadpool.hh>
-#include "threadpoolimpl.hh"
 
 class Sequentially
 {

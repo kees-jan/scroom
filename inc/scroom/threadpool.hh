@@ -19,10 +19,12 @@
 #ifndef _THREADPOOL_HH
 #define _THREADPOOL_HH
 
+#include <queue>
+
 #include <boost/thread.hpp>
+#include <boost/function.hpp>
 
 #include <scroom/semaphore.hh>
-#include <scroom/workinterface.hh>
 #include <scroom/workinterface.hh>
 
 enum
@@ -35,6 +37,29 @@ enum
     PRIO_LOWER,
     PRIO_LOWEST,
   };
+
+class ThreadPool
+{
+private:
+  std::list<boost::thread*> threads;
+  Scroom::Semaphore jobcount;
+  std::map<int, std::queue<WorkInterface*> > jobs;
+  boost::mutex mut;
+  boost::mutex threadsMut;
+  bool alive;
+
+private:
+  void work();
+  bool perform_one();
+  
+public:
+  ThreadPool();
+  ThreadPool(int count);
+  ~ThreadPool();
+  void schedule(int priority, WorkInterface* wi);
+  void schedule(int priority, boost::function<void ()> const& fn);
+  void cleanUp();
+};
 
 class Wrapper : public WorkInterface
 {
@@ -67,7 +92,6 @@ public:
   bool setWork(WorkInterface* wi);
   bool isDone();
   void waitForDone();
-  void asynchronousCleanup();
 
   void schedule(int priority=PRIO_NORMAL);
   
@@ -128,7 +152,5 @@ void schedule(WorkInterface* wi, int priority=PRIO_NORMAL);
  * @todo I should one day refactor this :-)
  */
 void sequentially(SeqJob* job);
-
-void schedule_on_new_thread(WorkInterface* wi);
 
 #endif

@@ -50,6 +50,8 @@ public:
   typedef std::map<MemoryManagedInterface*,ManagedInfo> ManagedInfoMap;
   
 private:
+  ThreadPool thread;
+
   unsigned long long memHwm;
   unsigned long long memLwm;
   unsigned long long filesHwm;
@@ -128,6 +130,7 @@ MemoryManager* MemoryManager::instance()
 }
 
 MemoryManager::MemoryManager()
+  : thread(1)
 {
   printf("Creating memory manager\n");
 
@@ -241,7 +244,7 @@ void MemoryManager::checkForOutOfResources()
   if(!isGarbageCollecting && (memCurrent>memHwm || filesCurrent>filesHwm))
   {
     isGarbageCollecting=true;
-    schedule_on_new_thread(new GarbageCollector());
+    thread.schedule(PRIO_NORMAL, new GarbageCollector());
   }
 }
 

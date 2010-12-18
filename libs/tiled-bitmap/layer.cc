@@ -161,7 +161,8 @@ bool DataFetcher::doWork()
     if(!qj->setWork(successor))
       schedule(successor, DATAFETCH_PRIO);
 
-    qj->asynchronousCleanup();
+    printf("PANIC: Leaking a QueueJumper\n");
+    //qj->asynchronousCleanup();
   }
   
   return false;

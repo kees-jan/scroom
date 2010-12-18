@@ -15,8 +15,6 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
-#include "threadpoolimpl.hh"
-
 #ifdef HAVE_CONFIG_H
 #  include <config.h>
 #endif
@@ -39,82 +37,6 @@ bool NoWork::doWork()
 {
   return false;
 }
-
-////////////////////////////////////////////////////////////////////////
-/// GcCleanUp
-////////////////////////////////////////////////////////////////////////
-
-class GcCleanUp : public WorkInterface
-{
-public:
-  virtual bool doWork();
-};
-
-bool GcCleanUp::doWork()
-{
-  printf("PANIC! Not cleaning up as I should!\n");
-
-  // instance().cleanUp();
-  return false;
-}
-
-////////////////////////////////////////////////////////////////////////
-/// QjCleanUp
-////////////////////////////////////////////////////////////////////////
-
-class QjCleanUp : public WorkInterface
-{
-private:
-  QueueJumper* qj;
-
-public:
-  QjCleanUp(QueueJumper* qj);
-  virtual bool doWork();
-};
-
-QjCleanUp::QjCleanUp(QueueJumper* qj)
-  :qj(qj)
-{
-}
-
-bool QjCleanUp::doWork()
-{
-  qj->waitForDone();
-  delete qj;
-  qj=NULL;
-  return false;
-}
-
-////////////////////////////////////////////////////////////////////////
-/// BoostWrapper
-////////////////////////////////////////////////////////////////////////
-
-class BoostWrapper
-{
-private:
-  WorkInterface* wi;
-public:
-  BoostWrapper(WorkInterface* wi);
-  void operator()();
-};
-
-BoostWrapper::BoostWrapper(WorkInterface* wi)
-  : wi(wi)
-{
-}
-
-void BoostWrapper::operator()()
-{
-  while(wi->doWork())
-  {
-    // repeat
-  }
-  delete wi;
-  schedule(new GcCleanUp(), PRIO_HIGHEST);
-  printf("Thread terminating. Cleanup scheduled...\n");
-}
-
-
 
 ////////////////////////////////////////////////////////////////////////
 /// BoostFunctionWork
@@ -216,12 +138,6 @@ void ThreadPool::schedule(int priority, boost::function<void ()> const& fn)
   schedule(priority, new BoostFunctionWork(fn));
 }
 
-void ThreadPool::schedule_on_new_thread(WorkInterface* wi)
-{
-  boost::unique_lock<boost::mutex> lock(threadsMut);
-  threads.push_back(new boost::thread(BoostWrapper(wi)));
-}
-
 void ThreadPool::cleanUp()
 {
   boost::unique_lock<boost::mutex> lock(threadsMut);
@@ -316,11 +232,6 @@ bool QueueJumper::isDone()
 void QueueJumper::waitForDone()
 {
   done.P();
-}
-
-void QueueJumper::asynchronousCleanup()
-{
-  schedule_on_new_thread(new QjCleanUp(this));
 }
 
 void QueueJumper::schedule(int priority)
