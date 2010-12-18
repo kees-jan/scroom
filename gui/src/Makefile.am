@@ -15,7 +15,8 @@ scroom_SOURCES = \
 	view.cc view.hh \
 	pluginmanager.hh pluginmanager.cc \
 	loader.cc loader.hh \
-	sidebarmanager.cc sidebarmanager.hh
+	sidebarmanager.cc sidebarmanager.hh \
+	workinterface.hh
 
 scroom_CPPFLAGS = -I $(top_srcdir)/inc $(AM_CPPFLAGS)
 

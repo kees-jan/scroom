@@ -116,7 +116,7 @@ void Layer::fetchData(SourcePresentation* sp)
                  width, height,
                  horTileCount, verTileCount,
                  sp);
-  schedule(df, DATAFETCH_PRIO);
+  CpuBound::schedule(df, DATAFETCH_PRIO);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -136,7 +136,7 @@ void DataFetcher::operator()()
 {
   // printf("Attempting to fetch bitmap data for tileRow %d...\n", currentRow);
   QueueJumper::Ptr qj = QueueJumper::create();
-  schedule(qj, REDUCE_PRIO);
+  CpuBound::schedule(qj, REDUCE_PRIO);
  
   TileInternalLine& tileLine = layer->getTileLine(currentRow);
   std::vector<Tile::Ptr> tiles;
@@ -160,6 +160,6 @@ void DataFetcher::operator()()
   {
     DataFetcher successor(*this);
     if(!qj->setWork(successor))
-      schedule(successor, DATAFETCH_PRIO);
+      CpuBound::schedule(successor, DATAFETCH_PRIO);
   }
 }

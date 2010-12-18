@@ -94,32 +94,6 @@ private:
   void checkForOutOfResources();
 };
 
-class GarbageCollector : public WorkInterface
-{
-public:
-  virtual bool doWork()
-  {
-    MemoryManager::instance()->garbageCollect();
-    return false;
-  }
-};
-
-class Unloader : public WorkInterface
-{
-private:
-  MemoryManagedInterface* i;
-public:
-  Unloader(MemoryManagedInterface* i)
-    : i(i)
-  {}
-
-  virtual bool doWork()
-  {
-    MemoryManager::instance()->unload(i);
-    return false;
-  }
-};
-
 ////////////////////////////////////////////////////////////////////////
 /// MemoryManager
 
@@ -244,7 +218,7 @@ void MemoryManager::checkForOutOfResources()
   if(!isGarbageCollecting && (memCurrent>memHwm || filesCurrent>filesHwm))
   {
     isGarbageCollecting=true;
-    thread.schedule(new GarbageCollector());
+    thread.schedule(boost::bind(&MemoryManager::garbageCollect, this));
   }
 }
 
@@ -282,7 +256,7 @@ void MemoryManager::garbageCollect()
         {
           boost::unique_lock<boost::mutex> lock(unloadersMut);
           unloaders++;
-          schedule(new Unloader(*c), PRIO_HIGHEST);
+          CpuBound::schedule(boost::bind(&MemoryManager::unload, this, *c), PRIO_HIGHEST);
           filesExpected -= mi.fdcount;
           memExpected -= mi.size;
         }

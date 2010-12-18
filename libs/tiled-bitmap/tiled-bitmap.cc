@@ -26,6 +26,7 @@
 
 #include <boost/thread/mutex.hpp>
 
+#include <scroom/semaphore.hh>
 #include <scroom/unused.h>
 
 TiledBitmapInterface* createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver* observer)
@@ -72,26 +73,40 @@ class LoadOperation : public FileOperation
 private:
   Layer* target;
   SourcePresentation* thePresentation;
-  
-public:
+  Scroom::Semaphore done;
+
+private:
   LoadOperation(Layer* l, SourcePresentation* sp, TiledBitmap* parent);
+public:
+  static Ptr create(Layer* l, SourcePresentation* sp, TiledBitmap* parent);
+  
   virtual ~LoadOperation() {}
 
-  virtual bool doWork();
+  virtual void operator()();
+  virtual void finished();
 };
 
+FileOperation::Ptr LoadOperation::create(Layer* l, SourcePresentation* sp, TiledBitmap* parent)
+{
+  return FileOperation::Ptr(new LoadOperation(l, sp, parent));
+}
+                                         
 LoadOperation::LoadOperation(Layer* l, SourcePresentation* sp, TiledBitmap* parent)
   : FileOperation(parent), target(l), thePresentation(sp)
 {
 }
 
-bool LoadOperation::doWork()
+void LoadOperation::operator()()
 {
   doneWaiting();
 
   target->fetchData(thePresentation);
-  
-  return FALSE;
+  done.P();
+}
+
+void LoadOperation::finished()
+{
+  done.V();
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -135,7 +150,7 @@ void TiledBitmapViewData::gtk_progress_bar_pulse()
 
 TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver* observer)
   :bitmapWidth(bitmapWidth), bitmapHeight(bitmapHeight), ls(ls), progressBar(NULL), tileCount(0), tileFinishedCount(0),
-   observer(observer), fileOperation(NULL)
+   observer(observer), fileOperation()
 {
   int width = bitmapWidth;
   int height = bitmapHeight;
@@ -258,8 +273,8 @@ void TiledBitmap::setSource(SourcePresentation* sp)
 {
   if(fileOperation==NULL)
   {
-    fileOperation = new LoadOperation(layers[0], sp, this);
-    sequentially(fileOperation);
+    fileOperation = LoadOperation::create(layers[0], sp, this);
+    Sequentially::schedule(fileOperation);
   }
   else
   {
@@ -611,8 +626,8 @@ void TiledBitmap::tileFinished(TileInternal* tile)
       }
       if(fileOperation)
       {
-        fileOperation->finishedLoading();
-        fileOperation = NULL;
+        fileOperation->finished();
+        fileOperation.reset();
       }
       printf("INFO: Finished loading file\n");
     }

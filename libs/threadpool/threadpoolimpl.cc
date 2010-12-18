@@ -24,51 +24,6 @@
 #include <scroom/threadpool.hh>
 
 ////////////////////////////////////////////////////////////////////////
-/// NoWork
-////////////////////////////////////////////////////////////////////////
-
-class NoWork : public WorkInterface
-{
-public:
-  virtual bool doWork();
-};
-
-bool NoWork::doWork()
-{
-  return false;
-}
-
-////////////////////////////////////////////////////////////////////////
-/// BoostFunctionWork
-////////////////////////////////////////////////////////////////////////
-
-class BoostFunctionWork : public WorkInterface
-{
-private:
-  boost::function<void ()> const fn;
-  
-public:
-  BoostFunctionWork(boost::function<void ()> const& fn);
-  virtual ~BoostFunctionWork();
-  virtual bool doWork();
-};
-
-BoostFunctionWork::BoostFunctionWork(boost::function<void ()> const& fn)
-  : fn(fn)
-{
-}
-
-BoostFunctionWork::~BoostFunctionWork()
-{
-}
-
-bool BoostFunctionWork::doWork()
-{
-  fn();
-  return false;
-}
-
-////////////////////////////////////////////////////////////////////////
 /// ThreadPool
 ////////////////////////////////////////////////////////////////////////
 
@@ -78,7 +33,6 @@ ThreadPool::ThreadPool()
 #ifndef MULTITHREADING
   count=1;
 #endif
-  alive=true;
   printf("Starting ThreadPool with %d threads\n", count);
   for(int i=0; i<count; i++)
   {
@@ -91,7 +45,6 @@ ThreadPool::ThreadPool(int count)
 #ifndef MULTITHREADING
   count=1;
 #endif
-  alive=true;
   printf("Starting ThreadPool with %d threads\n", count);
   for(int i=0; i<count; i++)
   {
@@ -102,14 +55,13 @@ ThreadPool::ThreadPool(int count)
 ThreadPool::~ThreadPool()
 {
   printf("Attempting to destroy the threadpool...\n");
-  alive = false;
-  for(unsigned int i=0; i<threads.size(); i++)
-    schedule(new NoWork(), PRIO_NORMAL);
 
   while(!threads.empty())
   {
     boost::thread* t = threads.front();
     threads.pop_front();
+    
+    t->interrupt();
     t->join();
     delete t;
   }
@@ -118,86 +70,40 @@ ThreadPool::~ThreadPool()
 
 void ThreadPool::work()
 {
-  while(perform_one())
+  while(true)
   {
+    jobcount.P();
+    boost::unique_lock<boost::mutex> lock(mut);
+
+    while(!jobs.empty() && jobs.begin()->second.empty())
+      jobs.erase(jobs.begin());
+
+    // At this point, either the jobs map is empty, or jobs.begin()->second contains tasks.
+  
+    if(!jobs.empty() && !jobs.begin()->second.empty())
+    {
+      int priority = jobs.begin()->first;
+      boost::function<void ()> fn = jobs.begin()->second.front();
+      jobs.begin()->second.pop();
+      lock.unlock();
+
+      boost::this_thread::disable_interruption while_executing_jobs;
+      fn();
+    }
+    else
+    {
+      printf("PANIC: JobQueue empty while it shouldn't be\n");
+    }
   }
 
   printf("ThreadPool: Thread terminating...\n");
 }
 
-void ThreadPool::schedule(WorkInterface* wi, int priority)
-{
-  boost::unique_lock<boost::mutex> lock(mut);
-  jobs[priority].push(wi);
-  lock.unlock();
-  jobcount.V();
-}
-
 void ThreadPool::schedule(boost::function<void ()> const& fn, int priority)
 {
-  schedule(new BoostFunctionWork(fn), priority);
-}
-
-void ThreadPool::cleanUp()
-{
-  boost::unique_lock<boost::mutex> lock(threadsMut);
-  std::list<boost::thread*>::iterator cur = threads.begin();
-  std::list<boost::thread*>::iterator end = threads.end();
-
-  boost::thread::id nat; // represents not-a-thread
-  printf("Cleanup started\n");
-  
-  while(cur!=end)
-  {
-    if((*cur)->get_id()==nat)
-    {
-      printf("Cleaning up finished thread\n");
-      std::list<boost::thread*>::iterator tmp = cur;
-      ++cur;
-      delete *tmp;
-      threads.erase(tmp);
-    }
-    else
-    {
-      ++cur;
-    }
-  }
-  printf("Cleanup done\n");
-}
-
-bool ThreadPool::perform_one()
-{
-  jobcount.P();
   boost::unique_lock<boost::mutex> lock(mut);
-
-  while(!jobs.empty() && jobs.begin()->second.empty())
-    jobs.erase(jobs.begin());
-
-  // At this point, either the jobs map is empty, or jobs.begin()->second contains tasks.
-  
-  if(!jobs.empty() && !jobs.begin()->second.empty())
-  {
-    int priority = jobs.begin()->first;
-    WorkInterface* wi = jobs.begin()->second.front();
-    jobs.begin()->second.pop();
-    lock.unlock();
-
-    bool result = wi->doWork();
-    if(result)
-    {
-      schedule(wi, priority);
-    }
-    else
-    {
-      delete wi;
-    }
-  }
-  else
-  {
-    printf("PANIC: JobQueue empty while it shouldn't be\n");
-  }
-  
-  return alive;
+  jobs[priority].push(fn);
+  jobcount.V();
 }
 
 ////////////////////////////////////////////////////////////////////////

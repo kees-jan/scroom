@@ -18,12 +18,11 @@
 
 #include "layercoordinator.hh"
 
-#include <scroom/workinterface.hh>
 #include <scroom/threadpool.hh>
 
 #include "local.hh"
 
-class TileReducer : public WorkInterface
+class TileReducer
 {
 private:
   LayerOperations* lo;
@@ -40,8 +39,7 @@ public:
               int x, int y,
               boost::mutex& mut, int& unfinishedSourceTiles);
 
-  // WorkInterface ///////////////////////////////////////////////////////
-  virtual bool doWork();
+  void operator()();
 };
 
 ////////////////////////////////////////////////////////////////////////
@@ -83,11 +81,9 @@ void LayerCoordinator::tileFinished(TileInternal* tile)
   targetTile->initialize();
   std::pair<int,int> location = sourceTiles[tile];
 
-  TileReducer* tr = new TileReducer(lo, targetTile, tile,
-                                    location.first, location.second,
-                                    mut, unfinishedSourceTiles);
+  TileReducer tr(lo, targetTile, tile, location.first, location.second, mut, unfinishedSourceTiles);
 
-  schedule(tr, REDUCE_PRIO);
+  CpuBound::schedule(tr, REDUCE_PRIO);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -102,7 +98,7 @@ TileReducer::TileReducer(LayerOperations* lo,
 {
 }
 
-bool TileReducer::doWork()
+void TileReducer::operator()()
 {
   Tile::Ptr target = targetTile->getTile();
   Tile::Ptr source = sourceTile->getTile();
@@ -115,5 +111,4 @@ bool TileReducer::doWork()
   {
     targetTile->reportFinished();
   }
-  return false;
 }

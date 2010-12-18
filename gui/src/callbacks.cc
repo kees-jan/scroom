@@ -32,7 +32,7 @@
 #include <string>
 #include <list>
 
-#include <scroom/workinterface.hh>
+#include "workinterface.hh"
 
 #include "view.hh"
 #include "pluginmanager.hh"

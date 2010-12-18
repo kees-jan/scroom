@@ -13,5 +13,5 @@ nobase_include_HEADERS = \
 	scroom/tile.hh \
 	scroom/tiledbitmapinterface.hh \
 	scroom/unused.h \
-	scroom/viewinterface.hh \
-	scroom/workinterface.hh
+	scroom/viewinterface.hh
+

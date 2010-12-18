@@ -20,19 +20,37 @@
 
 #include <stdio.h>
 
-static ThreadPool& instance()
+namespace CpuBound
 {
-  static ThreadPool threadpool;
+  
+  ThreadPool::Ptr instance()
+  {
+    static ThreadPool::Ptr cpuBound = ThreadPool::Ptr(new ThreadPool());
 
-  return threadpool;
+    return cpuBound;
+  }
+
+  void schedule(boost::function<void ()> const& fn, int priority)
+  {
+    instance()->schedule(fn, priority);
+  }
+
 }
 
-void schedule(WorkInterface* wi, int priority)
+namespace Sequentially
 {
-  instance().schedule(wi, priority);
+  
+  ThreadPool::Ptr instance()
+  {
+    static ThreadPool::Ptr sequentially = ThreadPool::Ptr(new ThreadPool(1));
+
+    return sequentially;
+  }
+
+  void schedule(boost::function<void ()> const& fn, int priority)
+  {
+    instance()->schedule(fn, priority);
+  }
+
 }
 
-void schedule(boost::function<void ()> const& fn, int priority)
-{
-  instance().schedule(fn, priority);
-}

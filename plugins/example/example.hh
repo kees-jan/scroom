@@ -21,7 +21,6 @@
 
 #include <scroom/plugininformationinterface.hh>
 #include <scroom/presentationinterface.hh>
-#include <scroom/workinterface.hh>
 
 class Example : public PluginInformationInterface, public NewInterface
 {

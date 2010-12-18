@@ -26,6 +26,7 @@
 #include <map>
 
 #include <boost/thread/mutex.hpp>
+#include <boost/shared_ptr.hpp>
 
 #include <scroom/threadpool.hh>
 
@@ -34,21 +35,26 @@
 
 class TiledBitmap;
 
-class FileOperation : public SeqJob
+class FileOperation
 {
+public:
+  typedef boost::shared_ptr<FileOperation> Ptr;
 private:
   TiledBitmap* parent;
   boost::mutex waitingMutex;
   bool waiting;
   int timer;
-  
-public:
+
+protected:
   FileOperation(TiledBitmap* parent);
+
+public:
   virtual ~FileOperation() {}
 
   virtual void doneWaiting();
   virtual bool timerExpired();
-  virtual void finishedLoading() { done(); }
+  virtual void finished()=0;
+  virtual void operator()()=0;
 };
 
 
@@ -81,7 +87,7 @@ private:
   boost::mutex tileFinishedMutex;
   int tileFinishedCount;
   FileOperationObserver* observer;
-  FileOperation* fileOperation;
+  FileOperation::Ptr fileOperation;
   
 public:
   TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver* observer);
