@@ -24,7 +24,7 @@
 
 #include "local.hh"
 
-class DataFetcher : public WorkInterface
+class DataFetcher
 {
 private:
   Layer* layer;
@@ -41,7 +41,8 @@ public:
               int horTileCount, int verTileCount,
               SourcePresentation* sp,
               int currentRow = 0);
-  virtual bool doWork();
+
+  void operator()();
 };
 
 ////////////////////////////////////////////////////////////////////////
@@ -111,10 +112,10 @@ TileInternalLine& Layer::getTileLine(int j)
 
 void Layer::fetchData(SourcePresentation* sp)
 {
-  DataFetcher* df = new DataFetcher(this,
-                                    width, height,
-                                    horTileCount, verTileCount,
-                                    sp);
+  DataFetcher df(this,
+                 width, height,
+                 horTileCount, verTileCount,
+                 sp);
   schedule(df, DATAFETCH_PRIO);
 }
 
@@ -131,11 +132,11 @@ DataFetcher::DataFetcher(Layer* layer,
 {
 }
 
-bool DataFetcher::doWork()
+void DataFetcher::operator()()
 {
   // printf("Attempting to fetch bitmap data for tileRow %d...\n", currentRow);
-  QueueJumper* qj = new QueueJumper();
-  qj->schedule(REDUCE_PRIO);
+  QueueJumper::Ptr qj = QueueJumper::create();
+  schedule(qj, REDUCE_PRIO);
  
   TileInternalLine& tileLine = layer->getTileLine(currentRow);
   std::vector<Tile::Ptr> tiles;
@@ -157,13 +158,8 @@ bool DataFetcher::doWork()
   currentRow++;
   if(currentRow<verTileCount)
   {
-    DataFetcher* successor = new DataFetcher(*this);
+    DataFetcher successor(*this);
     if(!qj->setWork(successor))
       schedule(successor, DATAFETCH_PRIO);
-
-    printf("PANIC: Leaking a QueueJumper\n");
-    //qj->asynchronousCleanup();
   }
-  
-  return false;
 }

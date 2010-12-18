@@ -31,3 +31,8 @@ void schedule(WorkInterface* wi, int priority)
 {
   instance().schedule(priority, wi);
 }
+
+void schedule(boost::function<void ()> const& fn, int priority)
+{
+  instance().schedule(priority, fn);
+}

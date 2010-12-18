@@ -205,16 +205,22 @@ bool ThreadPool::perform_one()
 ////////////////////////////////////////////////////////////////////////
 
 QueueJumper::QueueJumper()
-  : wi(NULL), mut(), inQueue(true), priority(PRIO_NORMAL)
+  : mut(), inQueue(true), isSet(false)
 {}
 
-bool QueueJumper::setWork(WorkInterface* wi)
+QueueJumper::Ptr QueueJumper::create()
+{
+  return QueueJumper::Ptr(new QueueJumper());
+}
+
+bool QueueJumper::setWork(boost::function<void ()> const& fn)
 {
   boost::unique_lock<boost::mutex> lock(mut);
   if(inQueue)
   {
     // Our turn hasn't passed yet. Accept work.
-    this->wi = wi;
+    this->fn = fn;
+    isSet = true;
   }
   else
   {
@@ -229,30 +235,13 @@ bool QueueJumper::isDone()
   return !inQueue;
 }
 
-void QueueJumper::waitForDone()
-{
-  done.P();
-}
-
-void QueueJumper::schedule(int priority)
-{
-  this->priority = priority;
-  ::schedule(new Wrapper(this), priority);
-}
-
-bool QueueJumper::doWork()
+void QueueJumper::operator()()
 {
   boost::unique_lock<boost::mutex> lock(mut);
-  if(wi)
+  if(isSet)
   {
-    if(wi->doWork())
-      ::schedule(wi, priority);
-    else
-      delete wi;
+    fn();
   }
   inQueue=false;
-  lock.unlock();
-  done.V();
-  return false;
 }
 

@@ -23,6 +23,7 @@
 
 #include <boost/thread.hpp>
 #include <boost/function.hpp>
+#include <boost/shared_ptr.hpp>
 
 #include <scroom/semaphore.hh>
 #include <scroom/workinterface.hh>
@@ -58,6 +59,10 @@ public:
   ~ThreadPool();
   void schedule(int priority, WorkInterface* wi);
   void schedule(int priority, boost::function<void ()> const& fn);
+
+  template<typename T>
+  void schedule(int priority, boost::shared_ptr<T> fn);
+  
   void cleanUp();
 };
 
@@ -77,26 +82,28 @@ public:
   }
 };
 
-class QueueJumper : private WorkInterface
+class QueueJumper
 {
-private:
-  WorkInterface* wi;
-  boost::mutex mut;
-  bool inQueue;
-  int priority;
-  Scroom::Semaphore done;
-
 public:
-  QueueJumper();
-
-  bool setWork(WorkInterface* wi);
-  bool isDone();
-  void waitForDone();
-
-  void schedule(int priority=PRIO_NORMAL);
+  typedef boost::shared_ptr<QueueJumper> Ptr;
   
 private:
-  virtual bool doWork();
+  boost::mutex mut;
+  bool inQueue;
+  bool isSet;
+
+  boost::function<void ()> fn;
+
+protected:
+  QueueJumper();
+  
+public:
+  static Ptr create();
+
+  bool setWork(boost::function<void ()> const& fn);
+  bool isDone();
+
+  void operator()();
 };
 
 
@@ -129,6 +136,10 @@ protected:
  * @bug Jobs of the same priority are not executed in order.
  */
 void schedule(WorkInterface* wi, int priority=PRIO_NORMAL);
+void schedule(boost::function<void ()> const& fn, int priority=PRIO_NORMAL);
+
+template<typename T>
+void schedule(boost::shared_ptr<T> fn, int priority=PRIO_NORMAL);
 
 /**
  * Schedule jobs to be executed sequentially.
@@ -152,5 +163,30 @@ void schedule(WorkInterface* wi, int priority=PRIO_NORMAL);
  * @todo I should one day refactor this :-)
  */
 void sequentially(SeqJob* job);
+
+
+////////////////////////////////////////////////////////////////////////
+// Code...
+
+namespace
+{
+  template<typename T>
+  void threadPoolExecute(boost::shared_ptr<T> fn)
+  {
+    (*fn)();
+  }
+}
+
+template<typename T>
+void ThreadPool::schedule(int priority, boost::shared_ptr<T> fn)
+{
+  schedule(priority, boost::bind(threadPoolExecute, fn));
+}
+
+template<typename T>
+void schedule(boost::shared_ptr<T> fn, int priority=PRIO_NORMAL)
+{
+  schedule(boost::bind(threadPoolExecute<T>, fn), priority);
+}
 
 #endif
