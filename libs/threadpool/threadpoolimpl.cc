@@ -136,11 +136,6 @@ bool QueueJumper::setWork(boost::function<void ()> const& fn)
   return inQueue;
 }
 
-bool QueueJumper::isDone()
-{
-  return !inQueue;
-}
-
 void QueueJumper::operator()()
 {
   boost::unique_lock<boost::mutex> lock(mut);
