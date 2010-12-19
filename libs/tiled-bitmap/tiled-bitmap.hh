@@ -94,7 +94,7 @@ public:
   virtual ~TiledBitmap();
 
 private:
-  void drawTile(cairo_t* cr, const TileInternal* tile, const GdkRectangle viewArea);
+  void drawTile(cairo_t* cr, const TileInternal::Ptr tile, const GdkRectangle viewArea);
   void connect(Layer* layer, Layer* prevLayer, LayerOperations* prevLo);
   void gtk_progress_bar_set_fraction(double fraction);
 
@@ -113,8 +113,8 @@ public:
   ////////////////////////////////////////////////////////////////////////
   // TileInternalObserver
 
-  virtual void tileCreated(TileInternal* tile);
-  virtual void tileFinished(TileInternal* tile);
+  virtual void tileCreated(TileInternal::Ptr tile);
+  virtual void tileFinished(TileInternal::Ptr tile);
 };
 
 #endif

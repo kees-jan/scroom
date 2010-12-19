@@ -26,8 +26,8 @@ class TileReducer
 {
 private:
   LayerOperations* lo;
-  TileInternal* targetTile;
-  TileInternal* sourceTile;
+  TileInternal::Ptr targetTile;
+  TileInternal::Ptr sourceTile;
   int x;
   int y;
   boost::mutex& mut;
@@ -35,7 +35,7 @@ private:
   
 public:
   TileReducer(LayerOperations* lo,
-              TileInternal* targetTile, TileInternal* sourceTile,
+              TileInternal::Ptr targetTile, TileInternal::Ptr sourceTile,
               int x, int y,
               boost::mutex& mut, int& unfinishedSourceTiles);
 
@@ -44,7 +44,7 @@ public:
 
 ////////////////////////////////////////////////////////////////////////
 
-LayerCoordinator::LayerCoordinator(TileInternal* targetTile,
+LayerCoordinator::LayerCoordinator(TileInternal::Ptr targetTile,
                                    LayerOperations* lo)
   : targetTile(targetTile), lo(lo), unfinishedSourceTiles(0)
 {
@@ -52,9 +52,9 @@ LayerCoordinator::LayerCoordinator(TileInternal* targetTile,
 
 LayerCoordinator::~LayerCoordinator()
 {
-  std::map<TileInternal*,std::pair<int,int> >::iterator cur =
+  std::map<TileInternal::Ptr,std::pair<int,int> >::iterator cur =
     sourceTiles.begin();
-  std::map<TileInternal*,std::pair<int,int> >::iterator end =
+  std::map<TileInternal::Ptr,std::pair<int,int> >::iterator end =
     sourceTiles.end();
 
   for(;cur!=end;cur++)
@@ -64,7 +64,7 @@ LayerCoordinator::~LayerCoordinator()
   sourceTiles.clear();
 }
 
-void LayerCoordinator::addSourceTile(int x, int y, TileInternal* tile)
+void LayerCoordinator::addSourceTile(int x, int y, TileInternal::Ptr tile)
 {
   boost::unique_lock<boost::mutex> lock(mut);
 
@@ -76,7 +76,7 @@ void LayerCoordinator::addSourceTile(int x, int y, TileInternal* tile)
 ////////////////////////////////////////////////////////////////////////
 /// TileInternalObserver
 
-void LayerCoordinator::tileFinished(TileInternal* tile)
+void LayerCoordinator::tileFinished(TileInternal::Ptr tile)
 {
   targetTile->initialize();
   std::pair<int,int> location = sourceTiles[tile];
@@ -90,7 +90,7 @@ void LayerCoordinator::tileFinished(TileInternal* tile)
 /// TileReducer
 
 TileReducer::TileReducer(LayerOperations* lo,
-                         TileInternal* targetTile, TileInternal* sourceTile,
+                         TileInternal::Ptr targetTile, TileInternal::Ptr sourceTile,
                          int x, int y,
                          boost::mutex& mut, int& unfinishedSourceTiles)
   : lo(lo), targetTile(targetTile), sourceTile(sourceTile),

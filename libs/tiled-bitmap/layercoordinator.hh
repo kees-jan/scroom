@@ -29,22 +29,22 @@
 class LayerCoordinator: private TileInternalObserver
 {
 private:
-  TileInternal* targetTile;
-  std::map<TileInternal*,std::pair<int,int> > sourceTiles;
+  TileInternal::Ptr targetTile;
+  std::map<TileInternal::Ptr,std::pair<int,int> > sourceTiles;
   LayerOperations* lo;
   boost::mutex mut;
   int unfinishedSourceTiles;
 
 public:
-  LayerCoordinator(TileInternal* targetTile, LayerOperations* lo);
+  LayerCoordinator(TileInternal::Ptr targetTile, LayerOperations* lo);
   virtual ~LayerCoordinator();
   
-  void addSourceTile(int x, int y, TileInternal* tile);
+  void addSourceTile(int x, int y, TileInternal::Ptr tile);
 
 private:
   ////////////////////////////////////////////////////////////////////////
   /// TileInternalObserver
-  virtual void tileFinished(TileInternal* tile);
+  virtual void tileFinished(TileInternal::Ptr tile);
 };
 
 #endif

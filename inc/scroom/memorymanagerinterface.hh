@@ -23,11 +23,19 @@
 
 #include <string>
 
+#include <boost/shared_ptr.hpp>
+#include <boost/weak_ptr.hpp>
+
 #include <scroom/global.hh>
 
+/**
+ * Block of memory that is backed-up in a file
+ */
 class FileBackedMemory
 {
 private:
+
+  /** State of the memory */
   enum State
     {
       UNINITIALIZED,
@@ -44,27 +52,73 @@ private:
   int fd;
   
 public:
+  /**
+   * Create a FileBackedMemory of the given size
+   *
+   * If you also pass some @c data, then the data will be deleted at
+   * some later point (during unload)
+   */
   FileBackedMemory(size_t size, byte* data=NULL);
+
+  /** Destructor */
   ~FileBackedMemory();
 
+  /** Initialize the memory with the given value */
   void initialize(byte value);
+
+  /** Get a pointer to the data, loading it if necessary */
   byte* load();
+
+  /** Unload the data */
   void unload();
 };
 
+/**
+ * Interface for something that can be managed by a MemoryManager
+ */
 class MemoryManagedInterface
 {
 public:
+  typedef boost::shared_ptr<MemoryManagedInterface> Ptr;
+  typedef boost::weak_ptr<MemoryManagedInterface> WeakPtr;
+  
+public:
   virtual ~MemoryManagedInterface()
   {}
-  
+
+  /**
+   * Request that the object unload itself
+   *
+   * @retval true if the object unloaded
+   * @retval false if the object refused
+   */
   virtual bool do_unload()=0;
 };
 
-void registerMMI(MemoryManagedInterface* object, size_t size, int fdcount);
-void unregisterMMI(MemoryManagedInterface* object);
-void loadNotification(MemoryManagedInterface* object);
-void unloadNotification(MemoryManagedInterface* object);
-  
+namespace MemoryManager
+{
+  class MemoryManagerInterface
+  {
+  public:
+    typedef boost::shared_ptr<MemoryManagerInterface> Ptr;
+    
+    virtual ~MemoryManagerInterface()
+    {}
+    
+    virtual void registerMMI(MemoryManagedInterface::Ptr object, size_t size, int fdcount)=0;
+    virtual void unregisterMMI(MemoryManagedInterface::Ptr object)=0;
+    virtual void loadNotification(MemoryManagedInterface::Ptr object)=0;
+    virtual void unloadNotification(MemoryManagedInterface::Ptr object)=0;
+  };
+
+  MemoryManagerInterface::Ptr instance();
+
+  void registerMMI(MemoryManagedInterface::Ptr object, size_t size, int fdcount);
+  void unregisterMMI(MemoryManagedInterface::Ptr object);
+  void loadNotification(MemoryManagedInterface::Ptr object);
+  void unloadNotification(MemoryManagedInterface::Ptr object);
+}
+
+
 
 #endif

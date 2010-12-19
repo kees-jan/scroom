@@ -22,6 +22,8 @@
 #include <vector>
 
 #include <boost/thread.hpp>
+#include <boost/shared_ptr.hpp>
+#include <boost/enable_shared_from_this.hpp>
 
 #include <scroom/tiledbitmapinterface.hh>
 #include <scroom/tile.hh>
@@ -41,12 +43,16 @@ class TileInternalObserver
 public:
   virtual ~TileInternalObserver() {}
 
-  virtual void tileCreated(TileInternal* tile);
-  virtual void tileFinished(TileInternal* tile);
+  virtual void tileCreated(boost::shared_ptr<TileInternal> tile);
+  virtual void tileFinished(boost::shared_ptr<TileInternal> tile);
 };
 
-class TileInternal : public Observable<TileInternalObserver>, public MemoryManagedInterface
+class TileInternal : public Observable<TileInternalObserver>, public MemoryManagedInterface,
+                     public boost::enable_shared_from_this<TileInternal>
 {
+public:
+  typedef boost::shared_ptr<TileInternal> Ptr;
+  
 public:
   int depth;
   int x;
@@ -56,9 +62,12 @@ public:
   Tile::WeakPtr tile;
   FileBackedMemory data;
   boost::mutex mut;
-  
+
+private:
+  TileInternal(int depth, int x, int y, int bpp, TileState state);
+
 public:
-  TileInternal(int depth, int x, int y, int bpp, TileState state=TILE_UNINITIALIZED);
+  static Ptr create(int depth, int x, int y, int bpp, TileState state=TILE_UNINITIALIZED);
 
   void initialize();
   
@@ -72,7 +81,7 @@ public:
   virtual bool do_unload();
 };
 
-typedef std::vector<TileInternal*> TileInternalLine;
+typedef std::vector<TileInternal::Ptr> TileInternalLine;
 typedef std::vector<TileInternalLine> TileInternalGrid;
 
 #endif

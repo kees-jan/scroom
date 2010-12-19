@@ -25,12 +25,12 @@
 ////////////////////////////////////////////////////////////////////////
 /// TileInternalObserver
 
-void TileInternalObserver::tileFinished(TileInternal* tile)
+void TileInternalObserver::tileFinished(TileInternal::Ptr tile)
 {
   UNUSED(tile);
 }
 
-void TileInternalObserver::tileCreated(TileInternal* tile)
+void TileInternalObserver::tileCreated(TileInternal::Ptr tile)
 {
   UNUSED(tile);
 }
@@ -40,7 +40,14 @@ void TileInternalObserver::tileCreated(TileInternal* tile)
 TileInternal::TileInternal(int depth, int x, int y, int bpp, TileState state)
   : depth(depth), x(x), y(y), bpp(bpp), state(state), tile(), data(TILESIZE*TILESIZE * bpp / 8)
 {
-  registerMMI(this, TILESIZE*TILESIZE * bpp / 8, 1);
+}
+
+TileInternal::Ptr TileInternal::create(int depth, int x, int y, int bpp, TileState state)
+{
+  TileInternal::Ptr tile = TileInternal::Ptr(new TileInternal(depth, x, y, bpp, state));
+  MemoryManager::registerMMI(tile, TILESIZE*TILESIZE * tile->bpp / 8, 1);
+  
+  return tile;
 }
 
 Tile::Ptr TileInternal::getTile()
@@ -56,7 +63,7 @@ Tile::Ptr TileInternal::getTile()
       result = Tile::Ptr(new Tile(TILESIZE, TILESIZE, bpp, data.load()));
       tile = result;
       state = TILE_LOADED;
-      loadNotification(this);
+      MemoryManager::loadNotification(shared_from_this());
     }
   }
   
@@ -71,7 +78,7 @@ void TileInternal::initialize()
   {
     data.initialize(0);
     state = TILE_LOADED;
-    loadNotification(this);
+    MemoryManager::loadNotification(shared_from_this());
   }
 }
   
@@ -80,7 +87,7 @@ void TileInternal::reportFinished()
   std::list<TileInternalObserver*> observers = getObservers();
   while(!observers.empty())
   {
-    observers.front()->tileFinished(this);
+    observers.front()->tileFinished(shared_from_this());
     observers.pop_front();
   }
 }
@@ -99,7 +106,7 @@ bool TileInternal::do_unload()
       // Tile not in use. We can unload now...
       data.unload();
       state = TILE_UNLOADED;
-      unloadNotification(this);
+      MemoryManager::unloadNotification(shared_from_this());
       isUnloaded=true;
     }
   }
@@ -110,5 +117,5 @@ bool TileInternal::do_unload()
 void TileInternal::registerObserver(TileInternalObserver* observer)
 {
   Observable<TileInternalObserver>::registerObserver(observer);
-  observer->tileCreated(this);
+  observer->tileCreated(shared_from_this());
 }

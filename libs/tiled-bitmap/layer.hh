@@ -35,7 +35,7 @@ private:
   int horTileCount;
   int verTileCount;
   TileInternalGrid tiles;
-  TileInternal* outOfBounds;
+  TileInternal::Ptr outOfBounds;
   TileInternalLine lineOutOfBounds;
   
 public:
@@ -43,7 +43,7 @@ public:
   int getHorTileCount();
   int getVerTileCount();
 
-  TileInternal* getTile(int i, int j);
+  TileInternal::Ptr getTile(int i, int j);
   TileInternalLine& getTileLine(int j);
   void fetchData(SourcePresentation* sp);
 

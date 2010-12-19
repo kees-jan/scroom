@@ -348,7 +348,7 @@ inline void computeAreasEndZoomingOut(int presentationBegin, int presentationSiz
   viewSize = tileSize/pixelSize;
 }
 
-void TiledBitmap::drawTile(cairo_t* cr, const TileInternal* tile, const GdkRectangle viewArea)
+void TiledBitmap::drawTile(cairo_t* cr, const TileInternal::Ptr tile, const GdkRectangle viewArea)
 {
   cairo_set_source_rgb(cr, 0, 0, 0); // Black
   cairo_move_to(cr, viewArea.x, viewArea.y);
@@ -451,7 +451,7 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
         computeAreasEndZoomingIn(presentationArea.y, presentationArea.height, j*TILESIZE, pixelSize,
                                  tileArea.y, tileArea.height, viewArea.y, viewArea.height);
         
-        TileInternal* tile = layer->getTile(i,j);
+        TileInternal::Ptr tile = layer->getTile(i,j);
 
         if(tile->state == TILE_LOADED)
         {
@@ -562,7 +562,7 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
         computeAreasEndZoomingOut(presentationArea.y, presentationArea.height, j*TILESIZE, pixelSize,
                                   tileArea.y, tileArea.height, viewArea.y, viewArea.height);
         
-        TileInternal* tile = layer->getTile(i,j);
+        TileInternal::Ptr tile = layer->getTile(i,j);
 
         // 3. Draw the area
         if(tile->state == TILE_LOADED)
@@ -599,13 +599,13 @@ void TiledBitmap::close(ViewInterface* vi)
 ////////////////////////////////////////////////////////////////////////
 // TileInternalObserver
 
-void TiledBitmap::tileCreated(TileInternal* tile)
+void TiledBitmap::tileCreated(TileInternal::Ptr tile)
 {
   UNUSED(tile);
   tileCount++;
 }
 
-void TiledBitmap::tileFinished(TileInternal* tile)
+void TiledBitmap::tileFinished(TileInternal::Ptr tile)
 {
   UNUSED(tile);
   boost::mutex::scoped_lock lock(tileFinishedMutex);

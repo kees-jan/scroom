@@ -1,7 +1,6 @@
 nobase_include_HEADERS = \
 	scroom/colormappable.hh \
 	scroom/global.hh \
-	scroom/memorymanagedinterface.hh \
 	scroom/memorymanagerinterface.hh \
 	scroom/observable.hh \
 	scroom/plugininformationinterface.hh \

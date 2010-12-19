@@ -59,13 +59,13 @@ Layer::Layer(TileInternalObserver* observer, int depth, int layerWidth, int laye
     TileInternalLine& tl = tiles[j];
     for(int i=0; i<horTileCount; i++)
     {
-      TileInternal* tile = new TileInternal(depth, i, j, bpp);
+      TileInternal::Ptr tile = TileInternal::create(depth, i, j, bpp);
       tile->registerObserver(observer);
       tl.push_back(tile);
     }
   }
 
-  outOfBounds = new TileInternal(depth, -1, -1, bpp, TILE_OUT_OF_BOUNDS);
+  outOfBounds = TileInternal::create(depth, -1, -1, bpp, TILE_OUT_OF_BOUNDS);
   for(int i=0; i<horTileCount; i++)
   {
     lineOutOfBounds.push_back(outOfBounds);
@@ -85,7 +85,7 @@ int Layer::getVerTileCount()
   return verTileCount;
 }
 
-TileInternal* Layer::getTile(int i, int j)
+TileInternal::Ptr Layer::getTile(int i, int j)
 {
   if(0<=i && i<horTileCount &&
      0<=j && j<verTileCount)
@@ -142,7 +142,7 @@ void DataFetcher::operator()()
   std::vector<Tile::Ptr> tiles;
   for(int x = 0; x < horTileCount; x++)
   {
-    TileInternal* ti = tileLine[x];
+    TileInternal::Ptr ti = tileLine[x];
     ti->initialize();
     tiles.push_back(ti->getTile());
   }
