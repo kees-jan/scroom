@@ -40,6 +40,5 @@ G_MODULE_EXPORT void g_module_unload(GModule *module)
 
 G_MODULE_EXPORT PluginInformationInterface* getPluginInformation()
 {
-  printf("Tiff plugin says \"Hi\"\n");
   return new Tiff();
 }

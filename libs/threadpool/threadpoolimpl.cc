@@ -33,7 +33,7 @@ ThreadPool::ThreadPool()
 #ifndef MULTITHREADING
   count=1;
 #endif
-  printf("Starting ThreadPool with %d threads\n", count);
+  // printf("Starting ThreadPool with %d threads\n", count);
   for(int i=0; i<count; i++)
   {
     threads.push_back(new boost::thread(boost::bind(&ThreadPool::work, this)));
@@ -45,7 +45,7 @@ ThreadPool::ThreadPool(int count)
 #ifndef MULTITHREADING
   count=1;
 #endif
-  printf("Starting ThreadPool with %d threads\n", count);
+  // printf("Starting ThreadPool with %d threads\n", count);
   for(int i=0; i<count; i++)
   {
     threads.push_back(new boost::thread(boost::bind(&ThreadPool::work, this)));
@@ -54,7 +54,7 @@ ThreadPool::ThreadPool(int count)
 
 ThreadPool::~ThreadPool()
 {
-  printf("Attempting to destroy the threadpool...\n");
+  // printf("Attempting to destroy the threadpool...\n");
 
   while(!threads.empty())
   {
@@ -65,7 +65,7 @@ ThreadPool::~ThreadPool()
     t->join();
     delete t;
   }
-  printf("Done destroying threadpool\n");
+  // printf("Done destroying threadpool\n");
 }
 
 void ThreadPool::work()
@@ -95,8 +95,6 @@ void ThreadPool::work()
       printf("PANIC: JobQueue empty while it shouldn't be\n");
     }
   }
-
-  printf("ThreadPool: Thread terminating...\n");
 }
 
 void ThreadPool::schedule(boost::function<void ()> const& fn, int priority)

@@ -128,16 +128,23 @@ bool PluginManager::doWork()
               PluginInformationInterface* pi = (*gpi)();
               if(pi)
               {
-                printf("Got the PluginInterface!\n");
                 if(pi->pluginApiVersion == PLUGIN_API_VERSION)
                 {
-                  printf("Requesting registration\n");
                   pluginInformationList.push_back(PluginInformation(plugin, pi));
                   pi->registerCapabilities(this);
                   plugin = NULL;
                   gpi = NULL;
                   pi=NULL;
                 }
+                else
+                {
+                  printf("Plugin has incorrect API version %d, instead of %d\n",
+                         pi->pluginApiVersion, PLUGIN_API_VERSION);
+                }
+              }
+              else
+              {
+                printf("GetPluginInformation returned NULL\n");
               }
             }
             else
