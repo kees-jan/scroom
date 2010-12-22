@@ -20,6 +20,7 @@ depcomp
 doxyfile
 gui/ENVIRONMENT
 gui/src/scroom
+compat/boost-futures/test/futures-test
 install-sh
 libtool
 ltmain.sh

@@ -179,6 +179,9 @@ dnl AM_GLIB_GNU_GETTEXT
 
 
 AC_CONFIG_FILES([Makefile
+                 compat/Makefile
+                 compat/boost-futures/Makefile
+                 compat/boost-futures/test/Makefile
                  inc/Makefile
                  libs/Makefile
                  libs/threadpool/Makefile
