@@ -53,6 +53,7 @@ namespace
   
   private:
     ThreadPool thread;
+    bool isGarbageCollecting;
 
     unsigned long long memHwm;
     unsigned long long memLwm;
@@ -69,7 +70,6 @@ namespace
 
     boost::mutex mut;
     ManagedInfoMap managedInfo;
-    bool isGarbageCollecting;
 
     unsigned long long unloaders;
     boost::condition_variable unloadersCond;
@@ -96,7 +96,7 @@ namespace
   /// MemoryManagerImpl
 
   MemoryManagerImpl::MemoryManagerImpl()
-    : thread(1)
+    : thread(1), isGarbageCollecting(false)
   {
     printf("Creating memory manager\n");
 
