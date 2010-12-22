@@ -20,19 +20,15 @@
 
 #include <string.h>
 
-#include <scroom/unused.h>
-
 ////////////////////////////////////////////////////////////////////////
 /// TileInternalObserver
 
-void TileInternalObserver::tileFinished(TileInternal::Ptr tile)
+void TileInternalObserver::tileFinished(TileInternal::Ptr)
 {
-  UNUSED(tile);
 }
 
-void TileInternalObserver::tileCreated(TileInternal::Ptr tile)
+void TileInternalObserver::tileCreated(TileInternal::Ptr)
 {
-  UNUSED(tile);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -52,19 +48,14 @@ TileInternal::Ptr TileInternal::create(int depth, int x, int y, int bpp, TileSta
 
 Tile::Ptr TileInternal::getTile()
 {
+  boost::unique_lock<boost::mutex> lock(mut);
   Tile::Ptr result = tile.lock();
-  if(!result)
+  if(!result && (state == TILE_UNLOADED || state == TILE_LOADED))
   {
-    // Apparently, tile isn't in use
-    boost::unique_lock<boost::mutex> lock(mut);
-    result = tile.lock();
-    if(!result && (state == TILE_UNLOADED || state == TILE_LOADED)) // Double checked locking
-    {
-      result = Tile::Ptr(new Tile(TILESIZE, TILESIZE, bpp, data.load()));
-      tile = result;
-      state = TILE_LOADED;
-      MemoryManager::loadNotification(shared_from_this());
-    }
+    result = Tile::Ptr(new Tile(TILESIZE, TILESIZE, bpp, data.load()));
+    tile = result;
+    state = TILE_LOADED;
+    MemoryManager::loadNotification(shared_from_this());
   }
   
   return result;
@@ -94,21 +85,16 @@ void TileInternal::reportFinished()
 
 bool TileInternal::do_unload()
 {
+  boost::unique_lock<boost::mutex> lock(mut);
   bool isUnloaded = false;
   Tile::Ptr result = tile.lock();
   if(!result && state == TILE_LOADED)
   {
-    // Apparently, tile isn't in use
-    boost::unique_lock<boost::mutex> lock(mut);
-    result = tile.lock();
-    if(!result && state == TILE_LOADED) // Double checked locking
-    {
-      // Tile not in use. We can unload now...
-      data.unload();
-      state = TILE_UNLOADED;
-      MemoryManager::unloadNotification(shared_from_this());
-      isUnloaded=true;
-    }
+    // Tile not in use. We can unload now...
+    data.unload();
+    state = TILE_UNLOADED;
+    MemoryManager::unloadNotification(shared_from_this());
+    isUnloaded=true;
   }
 
   return isUnloaded;
