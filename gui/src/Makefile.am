@@ -5,7 +5,8 @@ AM_CPPFLAGS = \
 	-DPLUGIN_DIR=\""$(plugindir)"\" \
 	-DTOP_SRCDIR=\""$(abs_top_srcdir)"\" \
 	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
-	@GUI_CFLAGS@
+	@GUI_CFLAGS@ \
+	@BOOST_FUTURES_CPPFLAGS@
 
 bin_PROGRAMS = scroom
 

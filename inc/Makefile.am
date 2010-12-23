@@ -9,7 +9,7 @@ nobase_include_HEADERS = \
 	scroom/scroomplugin.hh \
 	scroom/semaphore.hh \
 	scroom/threadpool.hh \
-	scroom/impl/threadpool.hh \
+	scroom/impl/threadpoolimpl.hh \
 	scroom/tile.hh \
 	scroom/tiledbitmapinterface.hh \
 	scroom/unused.h \

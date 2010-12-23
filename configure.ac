@@ -117,6 +117,24 @@ have_boost_test_lib=no
 # SCROOM_SEARCH_LIBS([],
 #                    [boost_unit_test_framework-mt libboost_unit_test_framework-gcc42-mt], [have_boost_test_lib=yes])
 
+# Checking for boost futures
+have_new_boost_futures=no
+AC_CHECK_HEADERS([boost/thread/future.hpp], [have_new_boost_futures=yes])
+have_old_boost_futures=no
+AC_CHECK_HEADERS([boost/future.hpp], [have_old_boost_futures=yes])
+
+boost_futures_include_flags=""
+if test "x${have_new_boost_futures}" = xyes
+then
+  AC_DEFINE([NEW_BOOST_FUTURES], 1, [Use futures from the Boost library release])
+else
+  if test "x${have_old_boost_futures}" = xno
+  then
+    boost_futures_include_flags="-I \$(top_srcdir)/compat/boost-futures/inc"
+  fi
+fi
+AC_SUBST([BOOST_FUTURES_CPPFLAGS], [$boost_futures_include_flags])
+
 # Some sanity checks
 if test "x${have_boost_thread_headers}" = xno
 then

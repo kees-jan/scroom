@@ -1,4 +1,4 @@
-AM_CPPFLAGS = -I $(top_srcdir)/inc -I $(top_srcdir)/compat/boost-futures/inc
+AM_CPPFLAGS = -I $(top_srcdir)/inc @BOOST_FUTURES_CPPFLAGS@
 
 lib_LTLIBRARIES = libsthreadpool.la
 libsthreadpool_la_SOURCES = threadpoolimpl.cc threadpool.cc
