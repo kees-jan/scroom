@@ -102,13 +102,20 @@ else
   AC_MSG_RESULT([yes])
 fi
 
-# Checking for boost
+# Checking for boost thread
 have_boost_thread_headers=no
 AC_CHECK_HEADERS([boost/thread.hpp boost/thread/mutex.hpp], [have_boost_thread_headers=yes])
 have_boost_thread_lib=no
 # boost_thread-gcc42-mt is the name used at Mutracx...
-AC_SEARCH_LIBS([_ZN5boost6thread6detachEv], [boost_thread-mt boost_thread-gcc42-mt], [have_boost_thread_lib=yes])
+SCROOM_SEARCH_LIBS([_ZN5boost6thread6detachEv], [boost_thread-mt boost_thread-gcc42-mt], [have_boost_thread_lib=yes])
 AC_SUBST([BOOSTTHREADLIB], [$ac_cv_search__ZN5boost6thread6detachEv])
+
+#checking for boost unittests
+have_boost_test_headers=no
+AC_CHECK_HEADERS([boost/test/included/unit_test.hpp boost/test/unit_test.hpp], [have_boost_test_headers=yes])
+have_boost_test_lib=no
+# SCROOM_SEARCH_LIBS([],
+#                    [boost_unit_test_framework-mt libboost_unit_test_framework-gcc42-mt], [have_boost_test_lib=yes])
 
 # Some sanity checks
 if test "x${have_boost_thread_headers}" = xno
@@ -119,6 +126,8 @@ if test "x${have_boost_thread_lib}" = xno
 then
   AC_MSG_ERROR([Boost thread library not found.])
 fi
+want_boost_tests=$have_boost_test_headers
+AM_CONDITIONAL([BOOST_UNITTESTS], [test x$want_boost_tests = xyes])
 if test "x${need_mutracx_hacks}" = xyes
 then
   # Print a warning if the user said "no" to mutracx hacks. If he said
@@ -181,6 +190,7 @@ dnl AM_GLIB_GNU_GETTEXT
 AC_CONFIG_FILES([Makefile
                  compat/Makefile
                  compat/boost-futures/Makefile
+                 compat/boost-futures/inc/Makefile
                  compat/boost-futures/test/Makefile
                  inc/Makefile
                  libs/Makefile
@@ -206,7 +216,7 @@ AC_OUTPUT
 echo \
 "-------------------------------------------------
 
- ${PACKAGE_NAME} Version ${PACKAGE_VERSION}
+ ${PACKAGE_NAME} version ${PACKAGE_VERSION}
 
  Prefix:   '${prefix}'.
  Compiler: '${CC} ${CFLAGS} ${CPPFLAGS}'
@@ -216,6 +226,7 @@ echo \
    Mutracx hacks: ${want_mutracx_hacks}
    Doxygen:       ${want_doxygen}
      all code:    ${want_doxygen_all_code}
+   Unittests:     ${want_boost_tests}
 
  Now type 'make @<:@<target>@:>@'
    where the optional <target> is:
@@ -223,6 +234,7 @@ echo \
      install            - install everything
      doxygen-doc        - generate documentation
                           (if enabled)
+     check              - perform tests
 
 --------------------------------------------------"
 
