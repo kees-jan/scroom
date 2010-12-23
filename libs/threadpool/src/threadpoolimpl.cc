@@ -33,11 +33,7 @@ ThreadPool::ThreadPool()
 #ifndef MULTITHREADING
   count=1;
 #endif
-  // printf("Starting ThreadPool with %d threads\n", count);
-  for(int i=0; i<count; i++)
-  {
-    threads.push_back(new boost::thread(boost::bind(&ThreadPool::work, this)));
-  }
+  add(count);
 }
 
 ThreadPool::ThreadPool(int count)
@@ -45,11 +41,23 @@ ThreadPool::ThreadPool(int count)
 #ifndef MULTITHREADING
   count=1;
 #endif
-  // printf("Starting ThreadPool with %d threads\n", count);
+  add(count);
+}
+
+ThreadPool::ThreadPtr ThreadPool::add()
+{
+  ThreadPool::ThreadPtr t = ThreadPool::ThreadPtr(new boost::thread(boost::bind(&ThreadPool::work, this)));
+  threads.push_back(t);
+  return t;
+}
+
+std::vector<ThreadPool::ThreadPtr> ThreadPool::add(int count)
+{
+  std::vector<ThreadPool::ThreadPtr> result(count);
   for(int i=0; i<count; i++)
-  {
-    threads.push_back(new boost::thread(boost::bind(&ThreadPool::work, this)));
-  }
+    result[i] = add();
+
+  return result;
 }
 
 ThreadPool::~ThreadPool()
@@ -58,12 +66,11 @@ ThreadPool::~ThreadPool()
 
   while(!threads.empty())
   {
-    boost::thread* t = threads.front();
+    ThreadPool::ThreadPtr t = threads.front();
     threads.pop_front();
     
     t->interrupt();
     t->join();
-    delete t;
   }
   // printf("Done destroying threadpool\n");
 }

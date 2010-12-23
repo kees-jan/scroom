@@ -15,4 +15,4 @@ then
 fi
 
 # Seems to be not needed...
-# export LD_LIBRARY_PATH="${ATB}/libs/threadpool/.libs:${ATB}/libs/memory-manager/.libs:${ATB}/libs/tiled-bitmap/.libs:$SCROOM_SAVED_LIBRARY_PATH"
+export LD_LIBRARY_PATH="${ATB}/libs/threadpool/src/.libs:${ATB}/libs/memory-manager/.libs:${ATB}/libs/tiled-bitmap/.libs:$SCROOM_SAVED_LIBRARY_PATH"

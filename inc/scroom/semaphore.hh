@@ -20,6 +20,7 @@
 #define _SCROOM_SEMAPHORE_HH
 
 #include <boost/thread.hpp>
+#include <boost/date_time/posix_time/posix_time.hpp>
 
 namespace Scroom
 {
@@ -34,6 +35,9 @@ namespace Scroom
     Semaphore(unsigned int count=0);
     void P();
     void V();
+
+    template<typename duration_type>
+    bool P(duration_type const& rel_time);
   };
 
   inline Semaphore::Semaphore(unsigned int count)
@@ -49,6 +53,21 @@ namespace Scroom
       cond.wait(lock);
     }
     count--;
+  }
+
+  template<typename duration_type>
+  inline bool Semaphore::P(duration_type const& rel_time)
+  {
+    boost::posix_time::ptime timeout = boost::posix_time::second_clock::universal_time() + rel_time;
+    
+    boost::mutex::scoped_lock lock(mut);
+    while(count==0)
+    {
+      if(!cond.timed_wait(lock, timeout))
+        return false;
+    }
+    count--;
+    return true;
   }
 
   inline void Semaphore::V()

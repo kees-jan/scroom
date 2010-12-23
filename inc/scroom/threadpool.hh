@@ -20,6 +20,7 @@
 #define _THREADPOOL_HH
 
 #include <queue>
+#include <vector>
 
 #include <boost/thread.hpp>
 #include <boost/function.hpp>
@@ -49,9 +50,10 @@ class ThreadPool
 {
 public:
   typedef boost::shared_ptr<ThreadPool> Ptr;
+  typedef boost::shared_ptr<boost::thread> ThreadPtr;
   
 private:
-  std::list<boost::thread*> threads;   /**< Threads in this ThreadPool */
+  std::list<ThreadPtr> threads;        /**< Threads in this ThreadPool */
   Scroom::Semaphore jobcount;          /**< current number of tasks in ThreadPool::jobs */
   boost::mutex mut;                    /**< For protecting ThreadPool::jobs */
 
@@ -100,6 +102,24 @@ public:
    */
   template<typename T>
   void schedule(boost::shared_ptr<T> fn, int priority=PRIO_NORMAL);
+
+  /**
+   * Add an additional thread to the pool.
+   *
+   * This is mostly used for testing
+   *
+   * @return a reference to the newly added thread.
+   */
+  ThreadPtr add();
+
+  /**
+   * Add the given number of threads to the pool.
+   *
+   * This is mostly used for testing
+   *
+   * @return references to the newly added threads.
+   */
+  std::vector<ThreadPtr> add(int count);
 };
 
 /**
