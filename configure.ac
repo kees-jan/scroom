@@ -195,6 +195,7 @@ AC_CONFIG_FILES([Makefile
                  inc/Makefile
                  libs/Makefile
                  libs/threadpool/Makefile
+                 libs/threadpool/src/Makefile
                  libs/memory-manager/Makefile
                  libs/tiled-bitmap/Makefile
                  plugins/Makefile
