@@ -17,7 +17,7 @@ using namespace boost::posix_time;
 using namespace Scroom;
 
 const millisec short_timeout(250);
-const millisec long_timeout(1000);
+const millisec long_timeout(2000);
 
 //////////////////////////////////////////////////////////////
 
