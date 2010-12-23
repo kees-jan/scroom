@@ -119,7 +119,12 @@ have_boost_test_lib=no
 
 # Checking for boost futures
 have_new_boost_futures=no
-AC_CHECK_HEADERS([boost/thread/future.hpp], [have_new_boost_futures=yes])
+
+AC_CHECK_HEADERS([boost/thread/future.hpp], [have_new_boost_futures=yes], [],
+[[#ifdef HAVE_BOOST_THREAD_HPP
+# include <boost/thread.hpp>
+#endif
+]])
 have_old_boost_futures=no
 AC_CHECK_HEADERS([boost/future.hpp], [have_old_boost_futures=yes])
 
