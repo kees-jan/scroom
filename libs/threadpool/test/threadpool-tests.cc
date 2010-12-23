@@ -9,6 +9,7 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/thread.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
+#include <boost/shared_ptr.hpp>
 
 #include <scroom/semaphore.hh>
 
@@ -34,6 +35,62 @@ void pass_and_clear(Semaphore* toPass, Semaphore* toClear)
 void destroy(ThreadPool* threadpool)
 {
   delete threadpool;
+}
+
+class A
+{
+private:
+  Semaphore* s;
+
+public:
+  typedef boost::shared_ptr<A> Ptr;
+  
+  A(Semaphore* s)
+    :s(s)
+  {}
+  
+  void operator()()
+  {
+    s->V();
+  }
+
+  static Ptr create(Semaphore* s)
+  {
+    return Ptr(new A(s));
+  }
+};
+
+template<typename R>
+class B
+{
+private:
+  Semaphore* s;
+  R result;
+
+public:
+  typedef boost::shared_ptr<B> Ptr;
+  
+  B(Semaphore* s, R result)
+    :s(s), result(result)
+  {}
+  
+  R operator()()
+  {
+    s->V();
+    return result;
+  }
+
+  static Ptr create(Semaphore* s, R result)
+  {
+    return Ptr(new B(s, result));
+  }
+};
+
+template<typename R>
+R no_op(Semaphore* s, R result)
+{
+  s->V();
+  return result;
 }
 
 //////////////////////////////////////////////////////////////
@@ -209,6 +266,46 @@ BOOST_AUTO_TEST_CASE(cant_destroy_threadpool_with_running_job)
   BOOST_REQUIRE(boost::thread::id() == t.get_id());
   BOOST_CHECK(b.P(short_timeout));
 }
+
+BOOST_AUTO_TEST_CASE(schedule_shared_pointer)
+{
+  ThreadPool pool(1);
+  Semaphore a(0);
+
+  pool.schedule(A::create(&a));
+  BOOST_CHECK(a.P(long_timeout));
+}
+
+BOOST_AUTO_TEST_CASE(schedule_future)
+{
+  ThreadPool pool(0);
+  Semaphore a(0);
+
+  boost::future<int> result = pool.schedule<int>(boost::bind(no_op<int>, &a, 42));
+
+  BOOST_CHECK(!a.P(short_timeout));
+  BOOST_CHECK(!result.ready());
+  pool.add();
+  
+  BOOST_CHECK(a.P(long_timeout));
+  BOOST_CHECK_EQUAL(42, result.get());
+}
+
+BOOST_AUTO_TEST_CASE(schedule_shared_pointer_with_future)
+{
+  ThreadPool pool(0);
+  Semaphore a(0);
+
+  boost::future<bool> result = pool.schedule<bool,B<bool> >(B<bool>::create(&a, false));
+
+  BOOST_CHECK(!a.P(short_timeout));
+  BOOST_CHECK(!result.ready());
+  pool.add();
+  
+  BOOST_CHECK(a.P(long_timeout));
+  BOOST_CHECK_EQUAL(false, result.get());
+}
+
 
 BOOST_AUTO_TEST_SUITE_END()
 

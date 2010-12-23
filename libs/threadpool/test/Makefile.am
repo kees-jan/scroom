@@ -1,4 +1,4 @@
-AM_CPPFLAGS = -I $(top_srcdir)/inc
+AM_CPPFLAGS = -I $(top_srcdir)/inc -I $(top_srcdir)/compat/boost-futures/inc
 
 if BOOST_UNITTESTS
 

@@ -26,6 +26,7 @@
 #include <boost/function.hpp>
 #include <boost/shared_ptr.hpp>
 
+#include <boost/future.hpp>
 #include <scroom/semaphore.hh>
 
 /** Priorities for scheduling on the ThreadPool */
@@ -103,6 +104,12 @@ public:
   template<typename T>
   void schedule(boost::shared_ptr<T> fn, int priority=PRIO_NORMAL);
 
+  template<typename R>
+  boost::future<R> schedule(boost::function<R ()> const& fn, int priority=PRIO_NORMAL);
+
+  template<typename R, typename T>
+  boost::future<R> schedule(boost::shared_ptr<T> fn, int priority=PRIO_NORMAL);
+
   /**
    * Add an additional thread to the pool.
    *
@@ -120,6 +127,7 @@ public:
    * @return references to the newly added threads.
    */
   std::vector<ThreadPtr> add(int count);
+
 };
 
 /**
@@ -396,40 +404,6 @@ namespace Sequentially
   void schedule(boost::shared_ptr<T> fn, int priority=PRIO_NORMAL);
 }
 
-////////////////////////////////////////////////////////////////////////
-// Code...
-
-namespace
-{
-  template<typename T>
-  void threadPoolExecute(boost::shared_ptr<T> fn)
-  {
-    (*fn)();
-  }
-}
-
-template<typename T>
-void ThreadPool::schedule(boost::shared_ptr<T> fn, int priority)
-{
-  schedule(priority, boost::bind(threadPoolExecute, fn));
-}
-
-namespace CpuBound
-{
-  template<typename T>
-  void schedule(boost::shared_ptr<T> fn, int priority=PRIO_NORMAL)
-  {
-    schedule(boost::bind(threadPoolExecute<T>, fn), priority);
-  }
-}
-
-namespace Sequentially
-{
-  template<typename T>
-  void schedule(boost::shared_ptr<T> fn, int priority=PRIO_NORMAL)
-  {
-    schedule(boost::bind(threadPoolExecute<T>, fn), priority);
-  }
-}
+#include <scroom/impl/threadpoolimpl.hh>
 
 #endif

@@ -21,6 +21,7 @@ doxyfile
 gui/ENVIRONMENT
 gui/src/scroom
 compat/boost-futures/test/futures-test
+libs/threadpool/test/threadpool-tests
 install-sh
 libtool
 ltmain.sh
