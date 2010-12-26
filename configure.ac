@@ -31,11 +31,14 @@ AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
 AC_PROG_CXX
+AC_PROG_CXXCPP
 dnl AC_PROG_CC
 AC_PROG_LN_S
 dnl AC_PROG_INSTALL
 
 AC_LANG([C++])
+SCROOM_COMPILE_STDCXX_0X
+SCROOM_ENABLE_STDCXX_0X
 
 # Configurable features
 AC_ARG_ENABLE([mutracx-hacks],
@@ -244,8 +247,7 @@ echo \
  ${PACKAGE_NAME} version ${PACKAGE_VERSION}
 
  Prefix:   '${prefix}'.
- Compiler: '${CC} ${CFLAGS} ${CPPFLAGS}'
-           '${CXX} ${CXXFLAGS} ${CPPFLAGS}'
+ Compiler: '${CXX} ${CXXFLAGS} ${CPPFLAGS}'
            
  Package features:
    Mutracx hacks: ${want_mutracx_hacks}
