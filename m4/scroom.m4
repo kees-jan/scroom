@@ -1,6 +1,6 @@
-# SCOOM_SEARCH_LIBS(FUNCTION, SEARCH-LIBS,
-#                   [ACTION-IF-FOUND], [ACTION-IF-NOT-FOUND],
-#                   [OTHER-LIBRARIES])
+# SCROOM_SEARCH_LIBS(FUNCTION, SEARCH-LIBS,
+#                    [ACTION-IF-FOUND], [ACTION-IF-NOT-FOUND],
+#                    [OTHER-LIBRARIES])
 # --------------------------------------------------------
 # Search for a library defining FUNC, if it's not already available.
 # Do not update the LIBS variable.
@@ -111,4 +111,17 @@ AC_DEFUN([SCROOM_ENABLE_STDCXX_0X], [
     CXXFLAGS="-std=gnu++0x $CXXFLAGS"
     CXXCPP="$CXXCPP -std=gnu++0x"
   fi
+])
+
+# SCOOM_ADD_CXXFLAGS_IF_SUPPORTED(flags)
+# --------------------------------------------------------
+# Try if the C++ compiler supports the given flags. Add them to
+# CXXFLAGS if so.
+AC_DEFUN([SCROOM_ADD_CXXFLAGS_IF_SUPPORTED], [
+  AC_LANG_PUSH([C++])
+  CXXFLAGS_KEEP="$CXXFLAGS"
+  CXXFLAGS="$1 $CXXFLAGS_KEEP"
+  AC_COMPILE_IFELSE([AC_LANG_SOURCE([[]])], [CXXFLAGS_KEEP="$CXXFLAGS"])
+  CXXFLAGS="$CXXFLAGS_KEEP"
+  AC_LANG_POP([C++])
 ])
