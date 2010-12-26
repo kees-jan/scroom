@@ -27,7 +27,7 @@ namespace
   template<typename R, typename T>
   R threadPoolExecute(boost::shared_ptr<T> fn)
   {
-    (*fn)();
+    return (*fn)();
   }
 }
 

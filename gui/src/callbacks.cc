@@ -352,7 +352,7 @@ void create_scroom(PresentationInterface::Ptr presentation)
   on_view_created(view);
 
   GtkWidget* scroom = glade_xml_get_widget(xml, "scroom");
-  GtkWidget* newMenuItem = glade_xml_get_widget(xml, "new");
+  // GtkWidget* newMenuItem = glade_xml_get_widget(xml, "new");
   GtkWidget* openMenuItem = glade_xml_get_widget(xml, "open");
   GtkWidget* quitMenuItem = glade_xml_get_widget(xml, "quit");
   GtkWidget* aboutMenuItem = glade_xml_get_widget(xml, "about");

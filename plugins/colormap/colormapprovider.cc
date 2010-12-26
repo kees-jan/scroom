@@ -48,7 +48,7 @@ ColormapProvider::ColormapProvider(PresentationInterface::Ptr p)
   Colormappable* c = dynamic_cast<Colormappable*>(p.get());
   if(c)
   {
-    int numColors = c->getNumberOfColors();
+    unsigned int numColors = c->getNumberOfColors();
     std::list<Colormap::ConstPtr> maps = Colormaps::getInstance().getColormaps();
 
     colormaps = gtk_list_store_new(N_COLUMNS, G_TYPE_STRING, G_TYPE_POINTER);

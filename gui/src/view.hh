@@ -60,8 +60,8 @@ private:
   SidebarManager sidebarManager;
   GtkWindow* window;
   GtkWidget* drawingArea;
-  int drawingAreaWidth;
-  int drawingAreaHeight;
+  long drawingAreaWidth;
+  long drawingAreaHeight;
   GdkRectangle presentationRect;
   GtkVScrollbar* vscrollbar;
   GtkHScrollbar* hscrollbar;

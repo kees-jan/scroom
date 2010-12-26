@@ -455,7 +455,6 @@ void View::on_scrollwheel(GdkEventScroll* event)
     newZoom = std::min(MaxZoom, newZoom);
 
     GtkTreeIter iter;
-    bool found = false;
     for(bool valid = gtk_tree_model_get_iter_first(GTK_TREE_MODEL(zoomItems), &iter);
         valid;
         valid = gtk_tree_model_iter_next(GTK_TREE_MODEL(zoomItems), &iter))
@@ -709,13 +708,13 @@ GdkPoint View::presentationPointToWindowPoint(GdkPoint pp)
   
 GdkPoint View::eventToPoint(GdkEventButton* event)
 {
-  GdkPoint result = {event->x, event->y};
+  GdkPoint result = {(gint)event->x, (gint)event->y};
   return result;
 }
 
 GdkPoint View::eventToPoint(GdkEventMotion* event)
 {
-  GdkPoint result = {event->x, event->y};
+  GdkPoint result = {(gint)event->x, (gint)event->y};
   return result;
 }
 

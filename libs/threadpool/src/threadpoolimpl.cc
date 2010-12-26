@@ -89,7 +89,6 @@ void ThreadPool::work()
   
     if(!jobs.empty() && !jobs.begin()->second.empty())
     {
-      int priority = jobs.begin()->first;
       boost::function<void ()> fn = jobs.begin()->second.front();
       jobs.begin()->second.pop();
       lock.unlock();

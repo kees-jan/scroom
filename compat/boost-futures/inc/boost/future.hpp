@@ -36,7 +36,7 @@ namespace boost {
       untyped_promise& operator=(const untyped_promise& t) {f_ = t.f_; return *this;}
       template<typename E> void set_exception( E const & e ) { // stores the exception e and transitions to ready()
         // f_->set_exception(detail::copy_exception(e));
-        f_->set_exception(copy_exception<E>(e));
+        f_->set_exception(boost::copy_exception<E>(e));
       }
 
       // Attempt's a 'throw', assuming there is an exception set
