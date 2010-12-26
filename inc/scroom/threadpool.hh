@@ -19,6 +19,10 @@
 #ifndef _THREADPOOL_HH
 #define _THREADPOOL_HH
 
+#ifdef HAVE_CONFIG_H
+#  include <config.h>
+#endif
+
 #include <queue>
 #include <vector>
 
@@ -26,7 +30,10 @@
 #include <boost/function.hpp>
 #include <boost/shared_ptr.hpp>
 
-#include <boost/future.hpp>
+#ifndef NEW_BOOST_FUTURES
+#  include <boost/future.hpp>
+#endif
+
 #include <scroom/semaphore.hh>
 
 /** Priorities for scheduling on the ThreadPool */
@@ -94,7 +101,7 @@ public:
   ~ThreadPool();
 
   /** Schedule the given job at the given priority */
-  void schedule(boost::function<void ()> const& fn, int priority=PRIO_NORMAL);
+  void schedule(boost::function<void ()> const&& fn, int priority=PRIO_NORMAL);
 
   /**
    * Schedule the given job at the given priority
@@ -104,11 +111,21 @@ public:
   template<typename T>
   void schedule(boost::shared_ptr<T> fn, int priority=PRIO_NORMAL);
 
+#ifdef NEW_BOOST_FUTURES
+#ifdef HAVE_STDCXX_0X
+  template<typename R>
+  boost::unique_future<R> schedule(boost::function<R ()> const& fn, int priority=PRIO_NORMAL);
+
+  template<typename R, typename T>
+  boost::unique_future<R> schedule(boost::shared_ptr<T> fn, int priority=PRIO_NORMAL);
+#endif /* HAVE_STDCXX_0X */
+#else /* NEW_BOOST_FUTURES */
   template<typename R>
   boost::future<R> schedule(boost::function<R ()> const& fn, int priority=PRIO_NORMAL);
 
   template<typename R, typename T>
   boost::future<R> schedule(boost::shared_ptr<T> fn, int priority=PRIO_NORMAL);
+#endif /* NEW_BOOST_FUTURES */
 
   /**
    * Add an additional thread to the pool.

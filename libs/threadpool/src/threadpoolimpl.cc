@@ -103,7 +103,7 @@ void ThreadPool::work()
   }
 }
 
-void ThreadPool::schedule(boost::function<void ()> const& fn, int priority)
+void ThreadPool::schedule(boost::function<void ()> const&& fn, int priority)
 {
   boost::unique_lock<boost::mutex> lock(mut);
   jobs[priority].push(fn);

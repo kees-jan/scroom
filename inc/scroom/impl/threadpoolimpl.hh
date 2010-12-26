@@ -37,6 +37,32 @@ void ThreadPool::schedule(boost::shared_ptr<T> fn, int priority)
   schedule(boost::bind(threadPoolExecute<void, T>, fn), priority);
 }
 
+#ifdef NEW_BOOST_FUTURES
+#ifdef HAVE_STDCXX_0X
+template<typename R>
+boost::unique_future<R>  ThreadPool::schedule(boost::function<R ()> const& fn, int priority)
+{
+  // Todo: If boost::function supported move semantics, we could do without
+  // the shared pointer.
+  boost::shared_ptr<boost::packaged_task<R>> t(new boost::packaged_task<R>(fn));
+  boost::unique_future<R> f = t->get_future();
+  schedule(boost::bind(threadPoolExecute<void, boost::packaged_task<R>>, t), priority);
+  return f;
+}
+
+template<typename R, typename T>
+boost::unique_future<R> ThreadPool::schedule(boost::shared_ptr<T> fn, int priority)
+{
+  // Todo: If boost::function supported move semantics, we could do without
+  // the shared pointer.
+  boost::shared_ptr<boost::packaged_task<R>> t(new boost::packaged_task<R>(boost::bind(threadPoolExecute<R,T>, fn)));
+  boost::unique_future<R> f = t->get_future();
+  schedule(boost::bind(threadPoolExecute<void, boost::packaged_task<R>>, t), priority);
+  return f;
+}
+#endif /* HAVE_STDCXX_0X */
+#else /* NEW_BOOST_FUTURES */
+
 template<typename R>
 boost::future<R> ThreadPool::schedule(boost::function<R ()> const& fn, int priority)
 {
@@ -52,7 +78,7 @@ boost::future<R> ThreadPool::schedule(boost::shared_ptr<T> fn, int priority)
   schedule(boost::future_wrapper<R>(boost::bind(threadPoolExecute<R,T>, fn), prom), priority); //queue the job
   return boost::future<R>(prom); // return a future created from the promise
 }
-
+#endif /* NEW_BOOST_FUTURES */
 
 namespace CpuBound
 {

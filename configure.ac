@@ -132,7 +132,6 @@ have_boost_test_lib=no
 
 # Checking for boost futures
 have_new_boost_futures=no
-
 AC_CHECK_HEADERS([boost/thread/future.hpp], [have_new_boost_futures=yes], [],
 [[#ifdef HAVE_BOOST_THREAD_HPP
 # include <boost/thread.hpp>
@@ -152,6 +151,7 @@ else
   fi
 fi
 AC_SUBST([BOOST_FUTURES_CPPFLAGS], [$boost_futures_include_flags])
+AM_CONDITIONAL([NEW_BOOST_FUTURES], [test x$have_new_boost_futures = xyes])
 
 # Some sanity checks
 if test "x${have_boost_thread_headers}" = xno
