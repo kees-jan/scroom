@@ -1,1 +1,2 @@
-SUBDIRS=inc test
+SUBDIRS=inc test doc
+

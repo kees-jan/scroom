@@ -228,8 +228,11 @@ AC_CONFIG_FILES([Makefile
                  compat/boost-futures/Makefile
                  compat/boost-futures/inc/Makefile
                  compat/boost-futures/test/Makefile
+                 compat/boost-futures/doc/Makefile
                  inc/Makefile
                  libs/Makefile
+                 libs/util/Makefile
+                 libs/util/test/Makefile
                  libs/threadpool/Makefile
                  libs/threadpool/src/Makefile
                  libs/threadpool/test/Makefile

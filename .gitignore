@@ -22,6 +22,7 @@ Makefile.in
 /gui/src/scroom
 /compat/boost-futures/test/futures-test
 /libs/threadpool/test/threadpool-tests
+/libs/util/test/utils-tests
 /install-sh
 /libtool
 /ltmain.sh
