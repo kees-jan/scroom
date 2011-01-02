@@ -55,7 +55,7 @@ BOOST_AUTO_TEST_CASE(register_observer)
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
-  Registration registration = observable->registerObserver(observer);
+  Registration registration = observable->registerStrongObserver(observer);
   BOOST_CHECK(registration);
   observers = observable->getObservers();
   BOOST_REQUIRE(1 == observers.size());
@@ -106,7 +106,7 @@ BOOST_AUTO_TEST_CASE(registered_weak_observer_goes_away)
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
-  Registration registration = observable->registerObserver(weakObserver);
+  Registration registration = observable->registerObserver(observer);
   BOOST_CHECK(registration);
   observers = observable->getObservers();
   BOOST_REQUIRE(1 == observers.size());
@@ -138,8 +138,8 @@ BOOST_AUTO_TEST_CASE(register_multiple_observers)
 
   // Registration succeeds
   Registration r1 = observable->registerObserver(weakObserver);
-  Registration r2 = observable->registerWeakObserver(o2);
-  Registration r3 = observable->registerObserver(o3);
+  Registration r2 = observable->registerObserver(o2);
+  Registration r3 = observable->registerStrongObserver(o3);
   BOOST_CHECK(r1);
   BOOST_CHECK(r2);
   BOOST_CHECK(r3);
@@ -185,8 +185,8 @@ BOOST_AUTO_TEST_CASE(register_observer_multiple_times)
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
-  Registration r1 = observable->registerObserver(observer);
-  Registration r2 = observable->registerObserver(observer);
+  Registration r1 = observable->registerStrongObserver(observer);
+  Registration r2 = observable->registerStrongObserver(observer);
   BOOST_CHECK(r1);
   BOOST_CHECK(r2);
   BOOST_CHECK_EQUAL(r1, r2);
@@ -211,8 +211,8 @@ BOOST_AUTO_TEST_CASE(register_weak_observer_multiple_times)
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
-  Registration r1 = observable->registerWeakObserver(observer);
-  Registration r2 = observable->registerWeakObserver(observer);
+  Registration r1 = observable->registerObserver(observer);
+  Registration r2 = observable->registerObserver(observer);
   BOOST_CHECK(r1);
   BOOST_CHECK(r2);
   BOOST_CHECK_EQUAL(r1, r2);

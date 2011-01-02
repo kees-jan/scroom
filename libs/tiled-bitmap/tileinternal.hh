@@ -23,6 +23,7 @@
 
 #include <boost/thread.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/weak_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
 
 #include <scroom/tiledbitmapinterface.hh>
@@ -43,6 +44,7 @@ class TileInternalObserver
 {
 public:
   typedef boost::shared_ptr<TileInternalObserver> Ptr;
+  typedef boost::weak_ptr<TileInternalObserver> WeakPtr;
   
   virtual ~TileInternalObserver() {}
 
@@ -114,7 +116,16 @@ public:
    * TileInternalObserver::tileCreated() event immediately, on your
    * thread. Be careful with your mutexes :-)
    */
-  Scroom::Utils::Registration registerObserver(TileInternalObserver::Ptr observer);
+  Scroom::Utils::Registration registerObserver(TileInternalObserver::WeakPtr observer);
+
+  /**
+   * Register an observer.
+   *
+   * Upon registering an observer, you'll receive the
+   * TileInternalObserver::tileCreated() event immediately, on your
+   * thread. Be careful with your mutexes :-)
+   */
+  Scroom::Utils::Registration registerStrongObserver(TileInternalObserver::Ptr observer);
 
   /**
    * Get a reference to the Tile.

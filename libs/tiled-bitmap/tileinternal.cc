@@ -100,9 +100,19 @@ bool TileInternal::do_unload()
   return isUnloaded;
 }
 
-Scroom::Utils::Registration TileInternal::registerObserver(TileInternalObserver::Ptr observer)
+Scroom::Utils::Registration TileInternal::registerObserver(TileInternalObserver::WeakPtr observer)
 {
   Scroom::Utils::Registration result = Scroom::Utils::Observable<TileInternalObserver>::registerObserver(observer);
+  TileInternalObserver::Ptr o = observer.lock();
+  if(o)
+    o->tileCreated(boost::enable_shared_from_this<TileInternal>::shared_from_this());
+  return result;
+}
+
+Scroom::Utils::Registration TileInternal::registerStrongObserver(TileInternalObserver::Ptr observer)
+{
+  Scroom::Utils::Registration result = Scroom::Utils::Observable<TileInternalObserver>::registerStrongObserver(observer);
   observer->tileCreated(boost::enable_shared_from_this<TileInternal>::shared_from_this());
   return result;
 }
+

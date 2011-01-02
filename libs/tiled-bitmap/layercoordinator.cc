@@ -61,7 +61,7 @@ void LayerCoordinator::addSourceTile(int x, int y, TileInternal::Ptr tile)
   boost::unique_lock<boost::mutex> lock(mut);
 
   sourceTiles[tile] = std::make_pair(x,y);
-  registrations.push_back(tile->registerWeakObserver(shared_from_this()));
+  registrations.push_back(tile->registerObserver(shared_from_this()));
   unfinishedSourceTiles++;
 }
 

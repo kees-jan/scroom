@@ -118,12 +118,11 @@ namespace Scroom
       Observable();
 
     public:
-      Registration registerObserver(Observer observer);
-      Registration registerWeakObserver(Observer observer);
+      Registration registerStrongObserver(Observer observer);
       Registration registerObserver(ObserverWeak observer);
 
     private:
-      void unregisterObserver(Observer observer);
+      void unregisterStrongObserver(Observer observer);
       void unregisterObserver(ObserverWeak observer);
 
       friend class Detail::Registration<T>;
@@ -173,7 +172,7 @@ namespace Scroom
       {
         if(o)
         {
-          observable->unregisterObserver(o);
+          observable->unregisterStrongObserver(o);
         }
         else
         {
@@ -226,7 +225,7 @@ namespace Scroom
     }
 
     template<typename T>
-    Registration Observable<T>::registerObserver(Observable<T>::Observer observer)
+    Registration Observable<T>::registerStrongObserver(Observable<T>::Observer observer)
     {
       boost::mutex::scoped_lock lock(mut);
       typename Detail::Registration<T>::Ptr r = registrationMap[observer].lock();
@@ -236,14 +235,6 @@ namespace Scroom
         registrationMap[observer] = r;
       }
       return r;
-    }
-
-    template<typename T>
-    Registration Observable<T>::registerWeakObserver(Observable<T>::Observer observer)
-    {
-      Observable<T>::ObserverWeak observerWeak = observer;
-      
-      return registerObserver(observerWeak);
     }
 
     template<typename T>
@@ -261,7 +252,7 @@ namespace Scroom
     }
 
     template<typename T>
-    void Observable<T>::unregisterObserver(Observable<T>::Observer observer)
+    void Observable<T>::unregisterStrongObserver(Observable<T>::Observer observer)
     {
       boost::mutex::scoped_lock lock(mut);
       // observers.remove(observer);
