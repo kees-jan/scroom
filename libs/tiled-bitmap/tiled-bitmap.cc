@@ -29,9 +29,9 @@
 #include <scroom/semaphore.hh>
 #include <scroom/unused.h>
 
-TiledBitmapInterface* createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver* observer)
+TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver::Ptr observer)
 {
-  return new TiledBitmap(bitmapWidth, bitmapHeight, ls, observer);
+  return TiledBitmap::create(bitmapWidth, bitmapHeight, ls, observer);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -41,7 +41,7 @@ gboolean timerExpired(gpointer data)
   return ((FileOperation*)data)->timerExpired();
 }
 
-FileOperation::FileOperation(TiledBitmap* parent)
+FileOperation::FileOperation(TiledBitmap::Ptr parent)
   : parent(parent), waitingMutex(), waiting(true)
 {
   timer = gtk_timeout_add(100, ::timerExpired, this);
@@ -76,9 +76,9 @@ private:
   Scroom::Semaphore done;
 
 private:
-  LoadOperation(Layer* l, SourcePresentation* sp, TiledBitmap* parent);
+  LoadOperation(Layer* l, SourcePresentation* sp, TiledBitmap::Ptr parent);
 public:
-  static Ptr create(Layer* l, SourcePresentation* sp, TiledBitmap* parent);
+  static Ptr create(Layer* l, SourcePresentation* sp, TiledBitmap::Ptr parent);
   
   virtual ~LoadOperation() {}
 
@@ -86,12 +86,12 @@ public:
   virtual void finished();
 };
 
-FileOperation::Ptr LoadOperation::create(Layer* l, SourcePresentation* sp, TiledBitmap* parent)
+FileOperation::Ptr LoadOperation::create(Layer* l, SourcePresentation* sp, TiledBitmap::Ptr parent)
 {
   return FileOperation::Ptr(new LoadOperation(l, sp, parent));
 }
                                          
-LoadOperation::LoadOperation(Layer* l, SourcePresentation* sp, TiledBitmap* parent)
+LoadOperation::LoadOperation(Layer* l, SourcePresentation* sp, TiledBitmap::Ptr parent)
   : FileOperation(parent), target(l), thePresentation(sp)
 {
 }
@@ -166,7 +166,7 @@ TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileO
     
     bpp = lo->getBpp();
 
-    Layer* layer = new Layer(this, i, width, height, bpp);
+    Layer* layer = new Layer(shared_from_this(), i, width, height, bpp);
     layers.push_back(layer);
     if(prevLayer)
     {
@@ -183,11 +183,7 @@ TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileO
 
 TiledBitmap::~TiledBitmap()
 {
-  while(!coordinators.empty())
-  {
-    delete coordinators.back();
-    coordinators.pop_back();
-  }
+  coordinators.clear();
   while(!layers.empty())
   {
     delete layers.back();
@@ -201,7 +197,7 @@ void TiledBitmap::connect(Layer* layer, Layer* prevLayer,
   int horTileCount = prevLayer->getHorTileCount();
   int verTileCount = prevLayer->getVerTileCount();
 
-  std::vector<LayerCoordinator*> coordinators;
+  std::vector<LayerCoordinator::Ptr> coordinators;
   
   for(int j=0; j<verTileCount; j++)
   {
@@ -213,13 +209,13 @@ void TiledBitmap::connect(Layer* layer, Layer* prevLayer,
       TileInternalLine& til = layer->getTileLine(j/8);
       for(unsigned int z=0; z<til.size(); z++)
       {
-        LayerCoordinator* lc = new LayerCoordinator(til[z], prevLo);
+        LayerCoordinator::Ptr lc = LayerCoordinator::create(til[z], prevLo);
         coordinators.push_back(lc);
         this->coordinators.push_back(lc);
       }
     }
 
-    LayerCoordinator* lc=NULL;
+    LayerCoordinator::Ptr lc;
     
     for(int i=0; i<horTileCount; i++)
     {
@@ -273,7 +269,7 @@ void TiledBitmap::setSource(SourcePresentation* sp)
 {
   if(fileOperation==NULL)
   {
-    fileOperation = LoadOperation::create(layers[0], sp, this);
+    fileOperation = LoadOperation::create(layers[0], sp, TiledBitmap::shared_from_this());
     Sequentially::schedule(fileOperation);
   }
   else

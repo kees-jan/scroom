@@ -27,6 +27,7 @@
 
 #include <boost/thread/mutex.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/enable_shared_from_this.hpp>
 
 #include <scroom/threadpool.hh>
 
@@ -40,13 +41,13 @@ class FileOperation
 public:
   typedef boost::shared_ptr<FileOperation> Ptr;
 private:
-  TiledBitmap* parent;
+  boost::shared_ptr<TiledBitmap> parent;
   boost::mutex waitingMutex;
   bool waiting;
   int timer;
 
 protected:
-  FileOperation(TiledBitmap* parent);
+  FileOperation(boost::shared_ptr<TiledBitmap> parent);
 
 public:
   virtual ~FileOperation() {}
@@ -72,14 +73,19 @@ public:
   void gtk_progress_bar_pulse();
 };
 
-class TiledBitmap : public TiledBitmapInterface, private TileInternalObserver
+class TiledBitmap : public TiledBitmapInterface, public TileInternalObserver,
+                    public boost::enable_shared_from_this<TiledBitmap>
 {
+public:
+  typedef boost::shared_ptr<TiledBitmap> Ptr;
+  typedef boost::weak_ptr<TiledBitmap> WeakPtr;
+  
 private:
   int bitmapWidth;
   int bitmapHeight;
   LayerSpec ls;
   std::vector<Layer*> layers;
-  std::list<LayerCoordinator*> coordinators;
+  std::list<LayerCoordinator::Ptr> coordinators;
   GtkProgressBar* progressBar;
   boost::mutex viewDataMutex;
   std::map<ViewInterface*, TiledBitmapViewData*> viewData;
@@ -90,9 +96,12 @@ private:
   FileOperation::Ptr fileOperation;
   
 public:
-  TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver* observer);
+  static Ptr create(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver::Ptr observer);
   virtual ~TiledBitmap();
 
+private:
+  TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver* observer);
+  
 private:
   void drawTile(cairo_t* cr, const TileInternal::Ptr tile, const GdkRectangle viewArea);
   void connect(Layer* layer, Layer* prevLayer, LayerOperations* prevLo);

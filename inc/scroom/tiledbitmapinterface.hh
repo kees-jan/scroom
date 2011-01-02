@@ -25,6 +25,8 @@
 
 #include <vector>
 
+#include <boost/shared_ptr.hpp>
+
 #include <scroom/scroominterface.hh>
 #include <scroom/viewinterface.hh>
 #include <scroom/presentationinterface.hh>
@@ -176,6 +178,8 @@ public:
 class TiledBitmapInterface: public Viewable
 {
 public:
+  typedef boost::shared_ptr<TiledBitmapInterface> Ptr;
+  
   virtual ~TiledBitmapInterface()
   {}
 
@@ -241,7 +245,7 @@ public:
  *    use this pointer to manipulate your bitmap.
  * 
  */
-TiledBitmapInterface* createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver* observer);
+TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver::Ptr observer);
 
 
 #endif

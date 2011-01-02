@@ -42,6 +42,8 @@ class TileInternal;
 class TileInternalObserver
 {
 public:
+  typedef boost::shared_ptr<TileInternalObserver> Ptr;
+  
   virtual ~TileInternalObserver() {}
 
   /**
@@ -76,7 +78,7 @@ public:
  *
  * Observers can receive events related to this tile.
  */
-class TileInternal : public Observable<TileInternalObserver>, public MemoryManagedInterface,
+class TileInternal : public Scroom::Utils::Observable<TileInternalObserver>, public MemoryManagedInterface,
                      public boost::enable_shared_from_this<TileInternal>
 {
 public:
@@ -112,7 +114,7 @@ public:
    * TileInternalObserver::tileCreated() event immediately, on your
    * thread. Be careful with your mutexes :-)
    */
-  void registerObserver(TileInternalObserver* observer);
+  Scroom::Utils::Registration registerObserver(TileInternalObserver::Ptr observer);
 
   /**
    * Get a reference to the Tile.

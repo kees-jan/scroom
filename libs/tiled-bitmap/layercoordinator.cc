@@ -52,15 +52,7 @@ LayerCoordinator::LayerCoordinator(TileInternal::Ptr targetTile,
 
 LayerCoordinator::~LayerCoordinator()
 {
-  std::map<TileInternal::Ptr,std::pair<int,int> >::iterator cur =
-    sourceTiles.begin();
-  std::map<TileInternal::Ptr,std::pair<int,int> >::iterator end =
-    sourceTiles.end();
-
-  for(;cur!=end;cur++)
-  {
-    cur->first->unregisterObserver(this);
-  }
+  registrations.clear();
   sourceTiles.clear();
 }
 
@@ -69,7 +61,7 @@ void LayerCoordinator::addSourceTile(int x, int y, TileInternal::Ptr tile)
   boost::unique_lock<boost::mutex> lock(mut);
 
   sourceTiles[tile] = std::make_pair(x,y);
-  tile->registerObserver(this);
+  registrations.push_back(tile->registerWeakObserver(shared_from_this()));
   unfinishedSourceTiles++;
 }
 

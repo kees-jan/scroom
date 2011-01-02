@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -23,6 +23,9 @@
 
 #include <gtk/gtk.h>
 
+#include <boost/shared_ptr.hpp>
+#include <boost/enable_shared_from_this.hpp>
+
 #include <scroom/presentationinterface.hh>
 
 /**
@@ -30,8 +33,11 @@
  *
  * When the user selects one of the colormaps, they will be set.
  */
-class ColormapProvider: public Viewable
+class ColormapProvider: public Viewable, public boost::enable_shared_from_this<ColormapProvider>
 {
+public:
+  typedef boost::shared_ptr<ColormapProvider> Ptr;
+  
 private:
   /** The presentation to which we're associated */
   PresentationInterface::WeakPtr presentation;
@@ -41,10 +47,13 @@ private:
 
   /** The colormaps we're offering to our views */
   GtkListStore* colormaps;
+
+  /** Constructor */
+  ColormapProvider(PresentationInterface::Ptr p);
   
 public:
   /** Constructor */
-  ColormapProvider(PresentationInterface::Ptr p);
+  static ColormapProvider::Ptr create(PresentationInterface::Ptr p);
 
   /** Destructor */
   ~ColormapProvider();

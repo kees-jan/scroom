@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -42,10 +42,15 @@ enum
 
 ////////////////////////////////////////////////////////////////////////
 
+ColormapProvider::Ptr ColormapProvider::create(PresentationInterface::Ptr p)
+{
+  return ColormapProvider::Ptr(new ColormapProvider(p));
+}
+
 ColormapProvider::ColormapProvider(PresentationInterface::Ptr p)
   : presentation(p), colormaps(NULL)
 {
-  Colormappable* c = dynamic_cast<Colormappable*>(p.get());
+  Colormappable::Ptr c = boost::dynamic_pointer_cast<Colormappable, PresentationInterface>(p);
   if(c)
   {
     unsigned int numColors = c->getNumberOfColors();

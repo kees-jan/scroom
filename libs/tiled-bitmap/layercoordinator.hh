@@ -23,25 +23,35 @@
 #include <utility>
 
 #include <boost/thread.hpp>
+#include <boost/shared_ptr.hpp>
+#include <boost/enable_shared_from_this.hpp>
 
 #include "tileinternal.hh"
 
-class LayerCoordinator: private TileInternalObserver
+class LayerCoordinator: public TileInternalObserver,
+                        public boost::enable_shared_from_this<LayerCoordinator>
 {
 private:
   TileInternal::Ptr targetTile;
   std::map<TileInternal::Ptr,std::pair<int,int> > sourceTiles;
+  Scroom::Utils::Registrations registrations;
   LayerOperations* lo;
   boost::mutex mut;
   int unfinishedSourceTiles;
 
 public:
-  LayerCoordinator(TileInternal::Ptr targetTile, LayerOperations* lo);
+  typedef boost::shared_ptr<LayerCoordinator> Ptr;
+  
+  static Ptr create(TileInternal::Ptr targetTile, LayerOperations* lo);
+  
   virtual ~LayerCoordinator();
   
   void addSourceTile(int x, int y, TileInternal::Ptr tile);
 
 private:
+  LayerCoordinator(TileInternal::Ptr targetTile, LayerOperations* lo);
+
+public:
   ////////////////////////////////////////////////////////////////////////
   /// TileInternalObserver
   virtual void tileFinished(TileInternal::Ptr tile);

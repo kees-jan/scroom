@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -55,7 +55,7 @@ Tile::Ptr TileInternal::getTile()
     result = Tile::Ptr(new Tile(TILESIZE, TILESIZE, bpp, data.load()));
     tile = result;
     state = TILE_LOADED;
-    MemoryManager::loadNotification(shared_from_this());
+    MemoryManager::loadNotification(boost::enable_shared_from_this<TileInternal>::shared_from_this());
   }
   
   return result;
@@ -69,16 +69,16 @@ void TileInternal::initialize()
   {
     data.initialize(0);
     state = TILE_LOADED;
-    MemoryManager::loadNotification(shared_from_this());
+    MemoryManager::loadNotification(boost::enable_shared_from_this<TileInternal>::shared_from_this());
   }
 }
   
 void TileInternal::reportFinished()
 {
-  std::list<TileInternalObserver*> observers = getObservers();
+  std::list<TileInternalObserver::Ptr> observers = getObservers();
   while(!observers.empty())
   {
-    observers.front()->tileFinished(shared_from_this());
+    observers.front()->tileFinished(boost::enable_shared_from_this<TileInternal>::shared_from_this());
     observers.pop_front();
   }
 }
@@ -93,15 +93,16 @@ bool TileInternal::do_unload()
     // Tile not in use. We can unload now...
     data.unload();
     state = TILE_UNLOADED;
-    MemoryManager::unloadNotification(shared_from_this());
+    MemoryManager::unloadNotification(boost::enable_shared_from_this<TileInternal>::shared_from_this());
     isUnloaded=true;
   }
 
   return isUnloaded;
 }
 
-void TileInternal::registerObserver(TileInternalObserver* observer)
+Scroom::Utils::Registration TileInternal::registerObserver(TileInternalObserver::Ptr observer)
 {
-  Observable<TileInternalObserver>::registerObserver(observer);
-  observer->tileCreated(shared_from_this());
+  Scroom::Utils::Registration result = Scroom::Utils::Observable<TileInternalObserver>::registerObserver(observer);
+  observer->tileCreated(boost::enable_shared_from_this<TileInternal>::shared_from_this());
+  return result;
 }

@@ -64,6 +64,7 @@ namespace Scroom
 
     /** A Registration is a pointer to some private data. */
     typedef boost::shared_ptr<void> Registration;
+    typedef std::list<Registration> Registrations;
 
     /**
      * Base class for something that accepts observers.

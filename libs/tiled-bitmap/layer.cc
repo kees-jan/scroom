@@ -47,7 +47,7 @@ public:
 
 ////////////////////////////////////////////////////////////////////////
 /// Layer 
-Layer::Layer(TileInternalObserver* observer, int depth, int layerWidth, int layerHeight, int bpp)
+Layer::Layer(TileInternalObserver::Ptr observer, int depth, int layerWidth, int layerHeight, int bpp)
   : depth(depth), width(layerWidth), height(layerHeight), bpp(bpp)
 {
   horTileCount = (width+TILESIZE-1)/TILESIZE;
@@ -60,7 +60,7 @@ Layer::Layer(TileInternalObserver* observer, int depth, int layerWidth, int laye
     for(int i=0; i<horTileCount; i++)
     {
       TileInternal::Ptr tile = TileInternal::create(depth, i, j, bpp);
-      tile->registerObserver(observer);
+      registrations.push_back(tile->registerObserver(observer));
       tl.push_back(tile);
     }
   }

@@ -30,6 +30,8 @@
 class FileOperationObserver
 {
 public:
+  typedef boost::shared_ptr<FileOperationObserver> Ptr;
+  
   virtual ~FileOperationObserver() {}
 
   virtual void fileOperationComplete()=0;

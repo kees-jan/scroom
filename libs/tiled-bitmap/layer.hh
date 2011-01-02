@@ -32,6 +32,7 @@ private:
   int width;
   int height;
   int bpp;
+  Scroom::Utils::Registrations registrations;
   int horTileCount;
   int verTileCount;
   TileInternalGrid tiles;
@@ -39,7 +40,7 @@ private:
   TileInternalLine lineOutOfBounds;
   
 public:
-  Layer(TileInternalObserver* observer, int depth, int layerWidth, int layerHeight, int bpp);
+  Layer(TileInternalObserver::Ptr observer, int depth, int layerWidth, int layerHeight, int bpp);
   int getHorTileCount();
   int getVerTileCount();
 

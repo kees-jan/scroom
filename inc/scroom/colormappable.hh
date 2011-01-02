@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -132,9 +132,11 @@ public:
  * available colormaps, and when one is selected, setColormap() will
  * be called.
  */
-class Colormappable: public virtual Observable<Viewable>
+class Colormappable: public virtual Scroom::Utils::Observable<Viewable>
 {
 public:
+  typedef boost::shared_ptr<Colormappable> Ptr;
+  
   /** Virtual destructor */
   virtual ~Colormappable() {}
 
