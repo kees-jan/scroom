@@ -6,7 +6,8 @@ check_PROGRAMS = utils-tests
 
 utils_tests_SOURCES = \
 	main.cc \
-	observable-tests.cc
+	observable-tests.cc \
+	basic-assumptions.cc
 
 # threadpool_tests_CPPFLAGS = -I $(top_srcdir)/compat/boost-futures/inc
 

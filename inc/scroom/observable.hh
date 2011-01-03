@@ -31,6 +31,10 @@ namespace Scroom
 {
   namespace Utils
   {
+    /** A Registration is a pointer to some private data. */
+    typedef boost::shared_ptr<void> Registration;
+    typedef std::list<Registration> Registrations;
+
     template<typename T>
     class Observable;
     
@@ -48,6 +52,7 @@ namespace Scroom
         boost::weak_ptr<Observable<T> > observable;
         boost::shared_ptr<T> o;      /**< Reference to the observer (for non-weak registrations) */
         boost::weak_ptr<T> observer; /**< Reference to the observer */
+        Registrations registrations; /**< Recursive registrations */
 
         typedef boost::shared_ptr<Registration> Ptr;
         
@@ -61,10 +66,6 @@ namespace Scroom
         static Ptr create(boost::weak_ptr<Observable<T> > observable, boost::weak_ptr<T> observer);
       };
     }
-
-    /** A Registration is a pointer to some private data. */
-    typedef boost::shared_ptr<void> Registration;
-    typedef std::list<Registration> Registrations;
 
     /**
      * Base class for something that accepts observers.
@@ -91,15 +92,11 @@ namespace Scroom
     private:
       typedef boost::weak_ptr<Detail::Registration<T> > RegistrationWeak;
       typedef boost::weak_ptr<T> ObserverWeak;
-      typedef std::map<Observer, RegistrationWeak> RegistrationMap;
-      typedef std::map<ObserverWeak, RegistrationWeak> RegistrationMapWeak;
+      typedef std::map<ObserverWeak, RegistrationWeak> RegistrationMap;
       
     private:
-      /** Map all @c shared_ptr registrations to their registration data */
+      /** Map all registrations to their registration data */
       RegistrationMap registrationMap;
-
-      /** Map all @c weak_ptr registrations to their registration data */
-      RegistrationMapWeak registrationMapWeak;
 
       /** Mutex protecting the two maps */
       boost::mutex mut;
@@ -116,6 +113,32 @@ namespace Scroom
   
     public:
       Observable();
+
+      /**
+       * Override this function if you want to be notified of new
+       * observers registering.
+       *
+       * This function will be called while Observable<T>::mut is
+       * locked, so you cannot call any methods on @c this object,
+       * except for addRecursiveRegistration(), which doesn't lock
+       * Observable<T>::mut itself.
+       */
+      virtual void observerAdded(Observer observer);
+
+      /**
+       * Add the given @c registration to the Detail::Registration of
+       * the given @c observer, such that they have the same lifetime.
+       *
+       * You'll typically use this if you want to register an Observer
+       * with a bunch of child observables. Registering with child
+       * observables will result in you being given a bunch of
+       * Registration objects. This is where you store them :-)
+       *
+       * @note When calling this function, make sure
+       *    Observable<T>::mut is already locked, for example by
+       *    calling this function from observerAdded().
+       */
+      void addRecursiveRegistration(Observer observer, Registration registration);
 
     public:
       Registration registerStrongObserver(Observer observer);
@@ -194,30 +217,17 @@ namespace Scroom
       boost::mutex::scoped_lock lock(mut);
       std::list<Observable<T>::Observer> result;
 
-      {
-        typename RegistrationMap::iterator cur = registrationMap.begin();
-        typename RegistrationMap::iterator end = registrationMap.end();
+      typename RegistrationMap::iterator cur = registrationMap.begin();
+      typename RegistrationMap::iterator end = registrationMap.end();
 
-        for(;cur!=end; ++cur)
-        {
-          typename Detail::Registration<T>::Ptr registration = cur->second.lock();
-          if(registration)
-            result.push_back(registration->o);
-        }
-      }
+      for(;cur!=end; ++cur)
       {
-        typename RegistrationMapWeak::iterator cur = registrationMapWeak.begin();
-        typename RegistrationMapWeak::iterator end = registrationMapWeak.end();
-
-        for(;cur!=end; ++cur)
+        typename Detail::Registration<T>::Ptr registration = cur->second.lock();
+        if(registration)
         {
-          typename Detail::Registration<T>::Ptr registration = cur->second.lock();
-          if(registration)
-          {
-            Observer o = registration->observer.lock();
-            if(o)
-              result.push_back(o);
-          }
+          Observer o = registration->observer.lock();
+          if(o)
+            result.push_back(o);
         }
       }
 
@@ -233,7 +243,9 @@ namespace Scroom
       {
         r = Detail::Registration<T>::create(this->shared_from_this(), observer);
         registrationMap[observer] = r;
+        observerAdded(observer);
       }
+      
       return r;
     }
 
@@ -241,11 +253,12 @@ namespace Scroom
     Registration Observable<T>::registerObserver(Observable<T>::ObserverWeak observer)
     {
       boost::mutex::scoped_lock lock(mut);
-      typename Detail::Registration<T>::Ptr r = registrationMapWeak[observer].lock();
+      typename Detail::Registration<T>::Ptr r = registrationMap[observer].lock();
       if(!r)
       {
         r = Detail::Registration<T>::create(this->shared_from_this(), observer);
-        registrationMapWeak[observer] = r;
+        registrationMap[observer] = r;
+        observerAdded(typename Observable<T>::Observer(observer));
       }
         
       return r;
@@ -255,15 +268,28 @@ namespace Scroom
     void Observable<T>::unregisterStrongObserver(Observable<T>::Observer observer)
     {
       boost::mutex::scoped_lock lock(mut);
-      // observers.remove(observer);
+      registrationMap.erase(observer);
     }
 
     template<typename T>
     void Observable<T>::unregisterObserver(Observable<T>::ObserverWeak observer)
     {
       boost::mutex::scoped_lock lock(mut);
-      // observers.remove(observer);
+      registrationMap.erase(observer);
     }
+
+    template<typename T>
+    void Observable<T>::observerAdded(Observable<T>::Observer observer)
+    {
+      // Do nothing
+    }
+
+    template<typename T>
+    void Observable<T>::addRecursiveRegistration(Observable<T>::Observer observer, Registration registration)
+    {
+      typename Detail::Registration<T>::Ptr(registrationMap[observer])->registrations.push_back(registration);
+    }
+
   }
 }
 

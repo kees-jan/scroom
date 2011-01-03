@@ -45,6 +45,45 @@ TestObservable::Ptr TestObservable::create()
 
 //////////////////////////////////////////////////////////////
 
+class TestRecursiveObservable: public Observable<TestObserver>
+{
+private:
+  TestObservable::Ptr child;
+
+  TestRecursiveObservable(TestObservable::Ptr child);
+  
+public:
+  typedef boost::shared_ptr<TestRecursiveObservable> Ptr;
+
+  std::list<Observer> getObservers();
+
+  static Ptr create(TestObservable::Ptr child);
+
+  virtual void observerAdded(Observer observer);
+};
+
+TestRecursiveObservable::TestRecursiveObservable(TestObservable::Ptr child)
+  :child(child)
+{
+}
+
+std::list<TestRecursiveObservable::Observer> TestRecursiveObservable::getObservers()
+{
+  return Observable<TestObserver>::getObservers();
+}
+
+TestRecursiveObservable::Ptr TestRecursiveObservable::create(TestObservable::Ptr child)
+{
+  return TestRecursiveObservable::Ptr(new TestRecursiveObservable(child));
+}
+
+void TestRecursiveObservable::observerAdded(Observer observer)
+{
+  addRecursiveRegistration(observer, child->registerObserver(observer));
+}
+
+//////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_SUITE(Observable_Tests)
 
 BOOST_AUTO_TEST_CASE(register_observer)
@@ -229,6 +268,32 @@ BOOST_AUTO_TEST_CASE(register_weak_observer_multiple_times)
   observers = observable->getObservers();
   BOOST_REQUIRE(0 == observers.size());
 }
+
+BOOST_AUTO_TEST_CASE(register_observer_recursively)
+{
+  TestObservable::Ptr observable = TestObservable::create();
+  TestRecursiveObservable::Ptr recursiveObservable = TestRecursiveObservable::create(observable);
+  TestObserver::Ptr observer = TestObserver::create();
+  std::list<TestObservable::Observer> observers;
+
+  // Registration succeeds
+  Registration registration = recursiveObservable->registerObserver(observer);
+  BOOST_CHECK(registration);
+  observers = observable->getObservers();
+  BOOST_REQUIRE(1 == observers.size());
+  BOOST_CHECK_EQUAL(observer, observers.front());
+  observers = recursiveObservable->getObservers();
+  BOOST_REQUIRE(1 == observers.size());
+  BOOST_CHECK_EQUAL(observer, observers.front());
+
+  // Unregistering succeeds
+  registration.reset();
+  observers = observable->getObservers();
+  BOOST_REQUIRE(0 == observers.size());
+  observers = recursiveObservable->getObservers();
+  BOOST_REQUIRE(0 == observers.size());
+}
+
 
 
 
