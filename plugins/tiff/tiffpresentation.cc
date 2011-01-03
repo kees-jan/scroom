@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -52,7 +52,7 @@ TiffPresentation::~TiffPresentation()
   }
 }
 
-bool TiffPresentation::load(std::string fileName, FileOperationObserver* observer)
+bool TiffPresentation::load(std::string fileName, FileOperationObserver::Ptr observer)
 {
   this->fileName = fileName;
   tif = TIFFOpen(fileName.c_str(), "r");
@@ -183,8 +183,8 @@ GdkRectangle TiffPresentation::getRect()
 void TiffPresentation::open(ViewInterface* viewInterface)
 {
   views.push_back(viewInterface);
-  std::list<Viewable*> observers = getObservers();
-  for(std::list<Viewable*>::iterator cur=observers.begin();
+  std::list<Viewable::Ptr> observers = getObservers();
+  for(std::list<Viewable::Ptr>::iterator cur=observers.begin();
       cur!=observers.end(); ++cur)
   {
     (*cur)->open(viewInterface);
@@ -201,8 +201,8 @@ void TiffPresentation::open(ViewInterface* viewInterface)
 void TiffPresentation::close(ViewInterface* vi)
 {
   views.remove(vi);
-  std::list<Viewable*> observers = getObservers();
-  for(std::list<Viewable*>::iterator cur=observers.begin();
+  std::list<Viewable::Ptr> observers = getObservers();
+  for(std::list<Viewable::Ptr>::iterator cur=observers.begin();
       cur!=observers.end(); ++cur)
   {
     (*cur)->close(vi);
@@ -293,15 +293,34 @@ void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth, in
 // Colormappable
 ////////////////////////////////////////////////////////////////////////
 
-void TiffPresentation::registerObserver(Viewable* observer)
+Scroom::Utils::Registration TiffPresentation::registerStrongObserver(Viewable::Ptr observer)
 {
-  Colormappable::registerObserver(observer);
+  Scroom::Utils::Registration r = Colormappable::registerStrongObserver(observer);
 
   for(std::list<ViewInterface*>::iterator cur=views.begin();
       cur!=views.end(); ++cur)
   {
     observer->open(*cur);
   }
+
+  return r;
+}
+
+Scroom::Utils::Registration TiffPresentation::registerObserver(Viewable::WeakPtr observer)
+{
+  Scroom::Utils::Registration r = Colormappable::registerStrongObserver(observer);
+  Viewable::Ptr o = observer.lock();
+
+  if(o)
+  {
+    for(std::list<ViewInterface*>::iterator cur=views.begin();
+        cur!=views.end(); ++cur)
+    {
+      o->open(*cur);
+    }
+  }
+  
+  return r;
 }
 
 void TiffPresentation::setColormap(Colormap::Ptr colormap)

@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -27,6 +27,7 @@
 #include <scroom/tiledbitmapinterface.hh>
 #include <scroom/presentationinterface.hh>
 #include <scroom/colormappable.hh>
+#include <scroom/observable.hh>
 
 typedef struct tiff TIFF;
 
@@ -53,7 +54,7 @@ public:
   TiffPresentation();
   virtual ~TiffPresentation();
 
-  bool load(std::string fileName, FileOperationObserver* observer);
+  bool load(std::string fileName, FileOperationObserver::Ptr observer);
   
   ////////////////////////////////////////////////////////////////////////
   // PresentationInterface
@@ -78,7 +79,8 @@ private:
   ////////////////////////////////////////////////////////////////////////
 
 public:
-  void registerObserver(Viewable* observer);
+  Scroom::Utils::Registration registerObserver(Viewable::WeakPtr observer);
+  Scroom::Utils::Registration registerStrongObserver(Viewable::Ptr observer);
   void setColormap(Colormap::Ptr colormap);
   Colormap::Ptr getOriginalColormap();
   int getNumberOfColors();

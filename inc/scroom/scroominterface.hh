@@ -42,7 +42,7 @@ class NewInterface
 public:
   virtual ~NewInterface() {}
   
-  virtual PresentationInterface::Ptr createNew(FileOperationObserver* observer)=0;
+  virtual PresentationInterface::Ptr createNew(FileOperationObserver::Ptr observer)=0;
 };
 
 class OpenInterface
@@ -52,7 +52,7 @@ public:
 
   virtual std::list<GtkFileFilter*> getFilters()=0;
   
-  virtual PresentationInterface::Ptr open(const std::string& fileName, FileOperationObserver* observer)=0;
+  virtual PresentationInterface::Ptr open(const std::string& fileName, FileOperationObserver::Ptr observer)=0;
 };
 
 class PresentationObserver
