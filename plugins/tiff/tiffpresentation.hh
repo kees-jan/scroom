@@ -41,7 +41,7 @@ private:
   TIFF* tif;
   int height;
   int width;
-  TiledBitmapInterface* tbi;
+  TiledBitmapInterface::Ptr tbi;
   LayerSpec ls;
   int bpp;
   std::map<std::string, std::string> properties;
@@ -79,8 +79,7 @@ private:
   ////////////////////////////////////////////////////////////////////////
 
 public:
-  Scroom::Utils::Registration registerObserver(Viewable::WeakPtr observer);
-  Scroom::Utils::Registration registerStrongObserver(Viewable::Ptr observer);
+  virtual void observerAdded(Viewable::Ptr observer);
   void setColormap(Colormap::Ptr colormap);
   Colormap::Ptr getOriginalColormap();
   int getNumberOfColors();

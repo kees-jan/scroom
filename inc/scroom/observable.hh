@@ -117,11 +117,6 @@ namespace Scroom
       /**
        * Override this function if you want to be notified of new
        * observers registering.
-       *
-       * This function will be called while Observable<T>::mut is
-       * locked, so you cannot call any methods on @c this object,
-       * except for addRecursiveRegistration(), which doesn't lock
-       * Observable<T>::mut itself.
        */
       virtual void observerAdded(Observer observer);
 
@@ -134,9 +129,7 @@ namespace Scroom
        * observables will result in you being given a bunch of
        * Registration objects. This is where you store them :-)
        *
-       * @note When calling this function, make sure
-       *    Observable<T>::mut is already locked, for example by
-       *    calling this function from observerAdded().
+       * @pre @c observer's Registration must exist.
        */
       void addRecursiveRegistration(Observer observer, Registration registration);
 
@@ -243,6 +236,7 @@ namespace Scroom
       {
         r = Detail::Registration<T>::create(this->shared_from_this(), observer);
         registrationMap[observer] = r;
+        lock.unlock();
         observerAdded(observer);
       }
       
@@ -258,6 +252,7 @@ namespace Scroom
       {
         r = Detail::Registration<T>::create(this->shared_from_this(), observer);
         registrationMap[observer] = r;
+        lock.unlock();
         observerAdded(typename Observable<T>::Observer(observer));
       }
         
@@ -287,6 +282,8 @@ namespace Scroom
     template<typename T>
     void Observable<T>::addRecursiveRegistration(Observable<T>::Observer observer, Registration registration)
     {
+      boost::mutex::scoped_lock lock(mut);
+      
       typename Detail::Registration<T>::Ptr(registrationMap[observer])->registrations.push_back(registration);
     }
 

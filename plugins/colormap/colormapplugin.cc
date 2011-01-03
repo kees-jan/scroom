@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -59,7 +59,7 @@ void ColormapPlugin::presentationAdded(PresentationInterface::Ptr p)
   if(p->isPropertyDefined(COLORMAPPABLE_PROPERTY_NAME))
   {
     printf("ColormapPlugin: It is colormappable!\n");
-    new ColormapProvider(p);
+    ColormapProvider::Ptr cmp = ColormapProvider::create(p);
   }
 }
 

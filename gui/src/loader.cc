@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -33,7 +33,7 @@
 
 void create(NewInterface* interface)
 {
-  PresentationInterface::Ptr presentation = interface->createNew(NULL);
+  PresentationInterface::Ptr presentation = interface->createNew();
   on_presentation_created(presentation);
   find_or_create_scroom(presentation);
 }
@@ -53,7 +53,7 @@ void load(const GtkFileFilterInfo& info)
     {
       if(gtk_file_filter_filter(*f, &info))
       {
-        presentation = cur->first->open(info.filename, NULL);
+        presentation = cur->first->open(info.filename);
         if(presentation)
         {
           on_presentation_created(presentation);

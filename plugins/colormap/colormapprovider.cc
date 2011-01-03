@@ -18,8 +18,6 @@
 
 #include "colormapprovider.hh"
 
-#include <scroom/colormappable.hh>
-
 #include "colormaps.hh"
 
 ////////////////////////////////////////////////////////////////////////
@@ -44,70 +42,64 @@ enum
 
 ColormapProvider::Ptr ColormapProvider::create(PresentationInterface::Ptr p)
 {
-  return ColormapProvider::Ptr(new ColormapProvider(p));
-}
-
-ColormapProvider::ColormapProvider(PresentationInterface::Ptr p)
-  : presentation(p), colormaps(NULL)
-{
   Colormappable::Ptr c = boost::dynamic_pointer_cast<Colormappable, PresentationInterface>(p);
+  ColormapProvider::Ptr result;
   if(c)
   {
-    unsigned int numColors = c->getNumberOfColors();
-    std::list<Colormap::ConstPtr> maps = Colormaps::getInstance().getColormaps();
+    result = ColormapProvider::Ptr(new ColormapProvider(c));
 
-    colormaps = gtk_list_store_new(N_COLUMNS, G_TYPE_STRING, G_TYPE_POINTER);
-
-    {
-      // Add the original colormap, if any
-      Colormap::Ptr orig = c->getOriginalColormap();
-      if(orig)
-      {
-        Colormap::ConstPtr* cc = new Colormap::ConstPtr(orig);
-        GtkTreeIter iter;
-        gtk_list_store_append(colormaps, &iter);
-        gtk_list_store_set(colormaps, &iter,
-                           COLUMN_NAME, (*cc)->name.c_str(),
-                           COLUMN_POINTER, cc,
-                           -1);
-      }
-    }
-    
-    while(!maps.empty())
-    {
-      if(maps.front()->colors.size()>=numColors)
-      {
-        Colormap::ConstPtr* cc = new Colormap::ConstPtr(maps.front());
-
-        GtkTreeIter iter;
-        gtk_list_store_append(colormaps, &iter);
-        gtk_list_store_set(colormaps, &iter,
-                           COLUMN_NAME, (*cc)->name.c_str(),
-                           COLUMN_POINTER, cc,
-                           -1);
-      }
-
-      maps.pop_front();
-    }
-    
-    c->registerObserver(this);
+    Scroom::Utils::Registration r = c->registerStrongObserver(result);
+    result->registration = r;
   }
   else
     printf("PANIC: Presentation doesn't implement Colormappable\n");
+
+  return result;
+}
+
+ColormapProvider::ColormapProvider(Colormappable::Ptr c)
+  : colormappable(c), colormaps(NULL)
+{
+  unsigned int numColors = c->getNumberOfColors();
+  std::list<Colormap::ConstPtr> maps = Colormaps::getInstance().getColormaps();
+
+  colormaps = gtk_list_store_new(N_COLUMNS, G_TYPE_STRING, G_TYPE_POINTER);
+
+  {
+    // Add the original colormap, if any
+    Colormap::Ptr orig = c->getOriginalColormap();
+    if(orig)
+    {
+      Colormap::ConstPtr* cc = new Colormap::ConstPtr(orig);
+      GtkTreeIter iter;
+      gtk_list_store_append(colormaps, &iter);
+      gtk_list_store_set(colormaps, &iter,
+                         COLUMN_NAME, (*cc)->name.c_str(),
+                         COLUMN_POINTER, cc,
+                         -1);
+    }
+  }
+    
+  while(!maps.empty())
+  {
+    if(maps.front()->colors.size()>=numColors)
+    {
+      Colormap::ConstPtr* cc = new Colormap::ConstPtr(maps.front());
+
+      GtkTreeIter iter;
+      gtk_list_store_append(colormaps, &iter);
+      gtk_list_store_set(colormaps, &iter,
+                         COLUMN_NAME, (*cc)->name.c_str(),
+                         COLUMN_POINTER, cc,
+                         -1);
+    }
+
+    maps.pop_front();
+  }
 }
 
 ColormapProvider::~ColormapProvider()
 {
-  PresentationInterface::Ptr p = presentation.lock();
-  if(p)
-  {
-    Colormappable* c = dynamic_cast<Colormappable*>(p.get());
-    if(c)
-      c->unregisterObserver(this);
-    else
-      printf("PANIC: Presentation doesn't implement Colormappable\n");
-  }
-
   // Clear out all the smart pointers
   if(colormaps)
   {
@@ -152,8 +144,8 @@ void ColormapProvider::close(ViewInterface* vi)
 
 void ColormapProvider::on_colormap_selected(GtkTreeView* tv)
 {
-  PresentationInterface::Ptr p = presentation.lock();
-  if(p)
+  Colormappable::Ptr c = colormappable.lock();
+  if(c)
   {
     GtkTreeSelection* ts = gtk_tree_view_get_selection(tv);
     GtkTreeIter iter;
@@ -161,21 +153,15 @@ void ColormapProvider::on_colormap_selected(GtkTreeView* tv)
     bool selected = gtk_tree_selection_get_selected(ts, &model, &iter);
     if(selected)
     {
-      Colormappable* colormappable = dynamic_cast<Colormappable*>(p.get());
-      if(colormappable)
+      if(gtk_list_store_iter_is_valid(colormaps, &iter))
       {
-        if(gtk_list_store_iter_is_valid(colormaps, &iter))
-        {
-          gpointer* pointer = NULL;
-          gtk_tree_model_get(GTK_TREE_MODEL(colormaps), &iter, COLUMN_POINTER, &pointer, -1);
-          Colormap::Ptr& colormap = *(Colormap::Ptr*)pointer;
-          colormappable->setColormap(colormap);
-        }
+        gpointer* pointer = NULL;
+        gtk_tree_model_get(GTK_TREE_MODEL(colormaps), &iter, COLUMN_POINTER, &pointer, -1);
+        Colormap::Ptr& colormap = *(Colormap::Ptr*)pointer;
+        c->setColormap(colormap);
       }
-      else
-        printf("PANIC: Presentation doesn't implement Colormappable\n");
     }
   }
   else
-    printf("PANIC: Presentation is gone??");
+    printf("PANIC: Colormappable Presentation is gone??\n");
 }

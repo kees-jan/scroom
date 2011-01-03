@@ -26,7 +26,7 @@
 #include "layeroperations.hh"
 
 TiffPresentation::TiffPresentation()
-  : fileName(), tif(NULL), height(0), width(0), tbi(NULL), bpp(0)
+  : fileName(), tif(NULL), height(0), width(0), tbi(), bpp(0)
 {
   colormap = Colormap::createDefault(256);
 }
@@ -39,11 +39,7 @@ TiffPresentation::~TiffPresentation()
     tif=NULL;
   }
 
-  if(tbi != NULL)
-  {
-    delete tbi;
-    tbi=NULL;
-  }
+  tbi.reset();
 
   while(!ls.empty())
   {
@@ -293,35 +289,14 @@ void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth, in
 // Colormappable
 ////////////////////////////////////////////////////////////////////////
 
-Scroom::Utils::Registration TiffPresentation::registerStrongObserver(Viewable::Ptr observer)
+void TiffPresentation::observerAdded(Viewable::Ptr observer)
 {
-  Scroom::Utils::Registration r = Colormappable::registerStrongObserver(observer);
-
   for(std::list<ViewInterface*>::iterator cur=views.begin();
       cur!=views.end(); ++cur)
   {
     observer->open(*cur);
   }
-
-  return r;
-}
-
-Scroom::Utils::Registration TiffPresentation::registerObserver(Viewable::WeakPtr observer)
-{
-  Scroom::Utils::Registration r = Colormappable::registerStrongObserver(observer);
-  Viewable::Ptr o = observer.lock();
-
-  if(o)
-  {
-    for(std::list<ViewInterface*>::iterator cur=views.begin();
-        cur!=views.end(); ++cur)
-    {
-      o->open(*cur);
-    }
-  }
-  
-  return r;
-}
+}  
 
 void TiffPresentation::setColormap(Colormap::Ptr colormap)
 {

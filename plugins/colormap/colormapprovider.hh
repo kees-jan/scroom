@@ -27,6 +27,8 @@
 #include <boost/enable_shared_from_this.hpp>
 
 #include <scroom/presentationinterface.hh>
+#include <scroom/colormappable.hh>
+#include <scroom/observable.hh>
 
 /**
  * Provide the colormap widget to the Viewable.
@@ -39,8 +41,8 @@ public:
   typedef boost::shared_ptr<ColormapProvider> Ptr;
   
 private:
-  /** The presentation to which we're associated */
-  PresentationInterface::WeakPtr presentation;
+  /** The Colormappable interface of the presentation to which we're associated */
+  Colormappable::WeakPtr colormappable;
 
   /** The views to which we're associated */
   std::map<ViewInterface*, GtkTreeView*> views;
@@ -48,8 +50,11 @@ private:
   /** The colormaps we're offering to our views */
   GtkListStore* colormaps;
 
+  /** Our registration with the Colormappable */
+  Scroom::Utils::Registration registration;
+
   /** Constructor */
-  ColormapProvider(PresentationInterface::Ptr p);
+  ColormapProvider(Colormappable::Ptr c);
   
 public:
   /** Constructor */

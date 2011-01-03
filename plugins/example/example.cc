@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -28,7 +28,8 @@ gboolean reportComplete(gpointer data)
 {
   if(data)
   {
-    ((FileOperationObserver*)data)->fileOperationComplete();
+    FileOperationObserver::Ptr *p = (FileOperationObserver::Ptr*)data;
+    (*p)->fileOperationComplete();
   }
 
   return FALSE;
@@ -60,11 +61,11 @@ void Example::unregisterCapabilities(ScroomInterface* host)
   host->unregisterNewInterface(this);
 }
 
-PresentationInterface::Ptr Example::createNew(FileOperationObserver* observer)
+PresentationInterface::Ptr Example::createNew(FileOperationObserver::Ptr observer)
 {
   if(observer)
   {
-    gdk_threads_add_idle(reportComplete, observer);
+    gdk_threads_add_idle(reportComplete, new FileOperationObserver::Ptr(observer));
   }
   return PresentationInterface::Ptr(new ExamplePresentation());
 }

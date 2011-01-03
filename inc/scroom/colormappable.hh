@@ -23,6 +23,7 @@
 #include <string>
 
 #include <boost/shared_ptr.hpp>
+#include <boost/weak_ptr.hpp>
 
 #include <scroom/presentationinterface.hh>
 #include <scroom/observable.hh>
@@ -136,6 +137,7 @@ class Colormappable: public virtual Scroom::Utils::Observable<Viewable>
 {
 public:
   typedef boost::shared_ptr<Colormappable> Ptr;
+  typedef boost::weak_ptr<Colormappable> WeakPtr;
   
   /** Virtual destructor */
   virtual ~Colormappable() {}
