@@ -101,6 +101,7 @@ ColormapProvider::ColormapProvider(Colormappable::Ptr c)
 ColormapProvider::~ColormapProvider()
 {
   // Clear out all the smart pointers
+  printf("ColormapProvider: Destructing...\n");
   if(colormaps)
   {
     GtkTreeIter iter;
@@ -137,8 +138,7 @@ void ColormapProvider::close(ViewInterface* vi)
     views.erase(cur);
   if(views.empty())
   {
-    printf("ColormapProvider: Last view has gone. Self-destructing\n");
-    delete this;
+    printf("ColormapProvider: Last view has gone.\n");
   }
 }
 

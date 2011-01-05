@@ -197,6 +197,7 @@ void TiledBitmap::initialize()
 
 TiledBitmap::~TiledBitmap()
 {
+  printf("TiledBitmap: Destructing...\n");
   coordinators.clear();
   while(!layers.empty())
   {

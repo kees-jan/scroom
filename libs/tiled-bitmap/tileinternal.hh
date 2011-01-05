@@ -109,22 +109,13 @@ public:
   void initialize();
 
   /**
-   * Register an observer.
+   * Keep track of new observers.
    *
    * Upon registering an observer, you'll receive the
    * TileInternalObserver::tileCreated() event immediately, on your
    * thread. Be careful with your mutexes :-)
    */
-  Scroom::Utils::Registration registerObserver(TileInternalObserver::WeakPtr observer);
-
-  /**
-   * Register an observer.
-   *
-   * Upon registering an observer, you'll receive the
-   * TileInternalObserver::tileCreated() event immediately, on your
-   * thread. Be careful with your mutexes :-)
-   */
-  Scroom::Utils::Registration registerStrongObserver(TileInternalObserver::Ptr observer);
+  virtual void observerAdded(TileInternalObserver::Ptr observer);
 
   /**
    * Get a reference to the Tile.
