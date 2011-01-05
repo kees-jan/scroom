@@ -30,6 +30,7 @@ gboolean reportComplete(gpointer data)
   {
     FileOperationObserver::Ptr *p = (FileOperationObserver::Ptr*)data;
     (*p)->fileOperationComplete();
+    delete p;
   }
 
   return FALSE;

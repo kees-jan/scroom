@@ -294,7 +294,17 @@ BOOST_AUTO_TEST_CASE(register_observer_recursively)
   BOOST_REQUIRE(0 == observers.size());
 }
 
+BOOST_AUTO_TEST_CASE(shared_from_this)
+{
+  TestObservable::Ptr original = TestObservable::create();
+  TestObservable::Ptr copy1 = original->shared_from_this<TestObservable>();
+  boost::shared_ptr<TestObservable const> copy2 = original;
+  boost::shared_ptr<TestObservable const> copy3 = copy2->shared_from_this<TestObservable>();
 
+  BOOST_CHECK_EQUAL(original, copy1);
+  BOOST_CHECK_EQUAL(copy2, copy3);
+  BOOST_CHECK_EQUAL(original, copy2);
+}
 
 
 BOOST_AUTO_TEST_SUITE_END()

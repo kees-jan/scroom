@@ -80,8 +80,7 @@ public:
  *
  * Observers can receive events related to this tile.
  */
-class TileInternal : public Scroom::Utils::Observable<TileInternalObserver>, public MemoryManagedInterface,
-                     public boost::enable_shared_from_this<TileInternal>
+class TileInternal : public Scroom::Utils::Observable<TileInternalObserver>, public MemoryManagedInterface
 {
 public:
   typedef boost::shared_ptr<TileInternal> Ptr;

@@ -44,6 +44,11 @@ public:
 
 ////////////////////////////////////////////////////////////////////////
 
+LayerCoordinator::Ptr LayerCoordinator::create(TileInternal::Ptr targetTile, LayerOperations* lo)
+{
+  return LayerCoordinator::Ptr(new LayerCoordinator(targetTile, lo));
+}
+
 LayerCoordinator::LayerCoordinator(TileInternal::Ptr targetTile,
                                    LayerOperations* lo)
   : targetTile(targetTile), lo(lo), unfinishedSourceTiles(0)

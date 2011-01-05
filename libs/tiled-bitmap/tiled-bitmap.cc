@@ -115,7 +115,9 @@ gboolean reportComplete(gpointer data)
 {
   if(data)
   {
-    ((FileOperationObserver*)data)->fileOperationComplete();
+    FileOperationObserver::Ptr *p = (FileOperationObserver::Ptr*)data;
+    (*p)->fileOperationComplete();
+    delete p;
   }
 
   return FALSE;
@@ -148,9 +150,21 @@ void TiledBitmapViewData::gtk_progress_bar_pulse()
 ////////////////////////////////////////////////////////////////////////
 // TiledBitmap
 
-TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver* observer)
+TiledBitmap::Ptr TiledBitmap::create(int bitmapWidth, int bitmapHeight, LayerSpec& ls,
+                                            FileOperationObserver::Ptr observer)
+{
+  TiledBitmap::Ptr result(new TiledBitmap(bitmapWidth, bitmapHeight, ls, observer));
+  result->initialize();
+  return result;
+}
+
+TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver::Ptr observer)
   :bitmapWidth(bitmapWidth), bitmapHeight(bitmapHeight), ls(ls), progressBar(NULL), tileCount(0), tileFinishedCount(0),
    observer(observer), fileOperation()
+{
+}
+
+void TiledBitmap::initialize()
 {
   int width = bitmapWidth;
   int height = bitmapHeight;
@@ -618,7 +632,7 @@ void TiledBitmap::tileFinished(TileInternal::Ptr tile)
       gtk_progress_bar_set_fraction(0.0);
       if(observer)
       {
-        gdk_threads_add_idle(reportComplete, observer);
+        gdk_threads_add_idle(reportComplete, new FileOperationObserver::Ptr(observer));
       }
       if(fileOperation)
       {

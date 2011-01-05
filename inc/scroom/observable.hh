@@ -130,12 +130,31 @@ namespace Scroom
        * Registration objects. This is where you store them :-)
        *
        * @pre @c observer's Registration must exist.
+       *
+       * @throw boost::bad_weak_ptr if the registration doesn't exist
        */
       void addRecursiveRegistration(Observer observer, Registration registration);
 
     public:
       Registration registerStrongObserver(Observer observer);
       Registration registerObserver(ObserverWeak observer);
+
+    public:
+      /**
+       * Calls shared_from_this() with a built-in dynamic cast, to
+       * make it usable in subclasses.
+       */
+      template<typename R>
+      boost::shared_ptr<R> shared_from_this();
+
+      /**
+       * Calls shared_from_this() with a built-in dynamic cast, to
+       * make it usable in subclasses.
+       */
+      template<typename R>
+      boost::shared_ptr<R const> shared_from_this() const;
+      
+      
 
     private:
       void unregisterStrongObserver(Observer observer);
@@ -234,7 +253,7 @@ namespace Scroom
       typename Detail::Registration<T>::Ptr r = registrationMap[observer].lock();
       if(!r)
       {
-        r = Detail::Registration<T>::create(this->shared_from_this(), observer);
+        r = Detail::Registration<T>::create(shared_from_this<Observable<T> >(), observer);
         registrationMap[observer] = r;
         lock.unlock();
         observerAdded(observer);
@@ -250,7 +269,7 @@ namespace Scroom
       typename Detail::Registration<T>::Ptr r = registrationMap[observer].lock();
       if(!r)
       {
-        r = Detail::Registration<T>::create(this->shared_from_this(), observer);
+        r = Detail::Registration<T>::create(shared_from_this<Observable<T> >(), observer);
         registrationMap[observer] = r;
         lock.unlock();
         observerAdded(typename Observable<T>::Observer(observer));
@@ -287,6 +306,18 @@ namespace Scroom
       typename Detail::Registration<T>::Ptr(registrationMap[observer])->registrations.push_back(registration);
     }
 
+    template<typename T> template <typename R>
+    boost::shared_ptr<R> Observable<T>::shared_from_this()
+    {
+      return boost::dynamic_pointer_cast<R, Observable<T> >(boost::enable_shared_from_this<Observable<T> >::shared_from_this());
+    }
+
+    template<typename T> template <typename R>
+    boost::shared_ptr<R const> Observable<T>::shared_from_this() const
+    {
+      return boost::dynamic_pointer_cast<R const, Observable<T> const>(boost::enable_shared_from_this<Observable<T> >::shared_from_this());
+    }
+    
   }
 }
 

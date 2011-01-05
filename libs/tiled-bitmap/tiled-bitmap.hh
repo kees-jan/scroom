@@ -92,15 +92,17 @@ private:
   int tileCount;
   boost::mutex tileFinishedMutex;
   int tileFinishedCount;
-  FileOperationObserver* observer;
+  FileOperationObserver::Ptr observer;
   FileOperation::Ptr fileOperation;
   
 public:
-  static Ptr create(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver::Ptr observer);
+  static Ptr create(int bitmapWidth, int bitmapHeight, LayerSpec& ls,
+                    FileOperationObserver::Ptr observer=FileOperationObserver::Ptr());
   virtual ~TiledBitmap();
 
 private:
-  TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver* observer);
+  TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver::Ptr observer);
+  void initialize();
   
 private:
   void drawTile(cairo_t* cr, const TileInternal::Ptr tile, const GdkRectangle viewArea);
