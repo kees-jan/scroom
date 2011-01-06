@@ -189,14 +189,14 @@ namespace Scroom
     typename Detail::Registration<T>::Ptr Detail::Registration<T>::create(boost::weak_ptr<Observable<T> > observable,
                                                            boost::shared_ptr<T> observer)
     {
-      return Detail::Registration<T>::Ptr(new Detail::Registration<T>(observable, observer));
+      return typename Detail::Registration<T>::Ptr(new Detail::Registration<T>(observable, observer));
     }
         
     template<typename T>
     typename Detail::Registration<T>::Ptr Detail::Registration<T>::create(boost::weak_ptr<Observable<T> > observable,
                                                            boost::weak_ptr<T> observer)
     {
-      return Detail::Registration<T>::Ptr(new Detail::Registration<T>(observable, observer));
+      return typename Detail::Registration<T>::Ptr(new Detail::Registration<T>(observable, observer));
     }
     
     template<typename T>
@@ -244,7 +244,7 @@ namespace Scroom
     std::list<typename Observable<T>::Observer> Observable<T>::getObservers()
     {
       boost::mutex::scoped_lock lock(mut);
-      std::list<Observable<T>::Observer> result;
+      std::list<typename Observable<T>::Observer> result;
 
       typename RegistrationMap::iterator cur = registrationMap.begin();
       typename RegistrationMap::iterator end = registrationMap.end();

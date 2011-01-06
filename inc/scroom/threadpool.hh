@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -101,7 +101,7 @@ public:
   ~ThreadPool();
 
   /** Schedule the given job at the given priority */
-  void schedule(boost::function<void ()> const&& fn, int priority=PRIO_NORMAL);
+  void schedule(boost::function<void ()> const& fn, int priority=PRIO_NORMAL);
 
   /**
    * Schedule the given job at the given priority

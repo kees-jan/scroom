@@ -120,9 +120,13 @@ bool PluginManager::doWork()
         plugin = g_module_open(currentFile->c_str(), (GModuleFlags)0);
         if(plugin)
         {
-          PluginFunc gpi;
-          if(g_module_symbol(plugin, "getPluginInformation", (gpointer*)&gpi))
+          // Need to pass a gpointer to g_module_symbol. If I pass a
+          // PluginFunc, glib 2.16.6/gcc 4.2.4 will complain about
+          // type-punned pointers.
+          gpointer pgpi;
+          if(g_module_symbol(plugin, "getPluginInformation", &pgpi))
           {
+            PluginFunc gpi = (PluginFunc)pgpi;
             if(gpi)
             {
               PluginInformationInterface* pi = (*gpi)();
