@@ -158,7 +158,6 @@ namespace Scroom
       
 
     private:
-      void unregisterStrongObserver(Observer observer);
       void unregisterObserver(ObserverWeak observer);
 
       friend class Detail::Registration<T>;
@@ -206,14 +205,7 @@ namespace Scroom
       boost::shared_ptr<Observable<T> > observable = this->observable.lock();
       if(observable)
       {
-        if(o)
-        {
-          observable->unregisterStrongObserver(o);
-        }
-        else
-        {
-          observable->unregisterObserver(observer);
-        }
+        observable->unregisterObserver(observer);
       }
     }
     
@@ -228,27 +220,23 @@ namespace Scroom
     Observable<T>::~Observable()
     {
       // Destroy strong references to any observers
-      std::list<typename Detail::Registration<T>::Ptr> registrations;
-      {
-        boost::mutex::scoped_lock lock(mut);
-        typename RegistrationMap::iterator cur = registrationMap.begin();
-        typename RegistrationMap::iterator end = registrationMap.end();
+      //
+      // Normally, I'd be concerned that destroying references to
+      // observers would cause them to try to unregister themselves,
+      // resulting in deadlock. But because we are in our destructor,
+      // noone has a reference to us any more, so no unregistration
+      // attempts will be made.
+      boost::mutex::scoped_lock lock(mut);
+      typename RegistrationMap::iterator cur = registrationMap.begin();
+      typename RegistrationMap::iterator end = registrationMap.end();
 
-        for(;cur!=end; ++cur)
+      for(;cur!=end; ++cur)
+      {
+        typename Detail::Registration<T>::Ptr registration = cur->second.lock();
+        if(registration)
         {
-          typename Detail::Registration<T>::Ptr registration = cur->second.lock();
-          if(registration)
-          {
-            registrations.push_back(registration);
-          }
+          registration->o.reset();
         }
-      }
-
-      while(!registrations.empty())
-      {
-        typename Detail::Registration<T>::Ptr registration = registrations.front();
-        registration->o.reset();
-        registrations.pop_front();
       }
     }
 
@@ -305,13 +293,6 @@ namespace Scroom
       }
         
       return r;
-    }
-
-    template<typename T>
-    void Observable<T>::unregisterStrongObserver(Observable<T>::Observer observer)
-    {
-      boost::mutex::scoped_lock lock(mut);
-      registrationMap.erase(observer);
     }
 
     template<typename T>
