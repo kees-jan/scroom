@@ -23,6 +23,7 @@ Makefile.in
 /compat/boost-futures/test/futures-test
 /libs/threadpool/test/threadpool-tests
 /libs/util/test/utils-tests
+/libs/tiled-bitmap/test/tiled-bitmap-tests
 /install-sh
 /libtool
 /ltmain.sh

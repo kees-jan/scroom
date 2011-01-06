@@ -240,6 +240,8 @@ AC_CONFIG_FILES([Makefile
                  libs/threadpool/test/Makefile
                  libs/memory-manager/Makefile
                  libs/tiled-bitmap/Makefile
+                 libs/tiled-bitmap/src/Makefile
+                 libs/tiled-bitmap/test/Makefile
                  plugins/Makefile
                  plugins/colormap/Makefile
                  plugins/example/Makefile
