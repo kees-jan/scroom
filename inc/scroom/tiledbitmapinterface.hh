@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -237,15 +237,12 @@ public:
  * @param bitmapHeight the height of the bitmap
  * @param ls LayerOperations objects, specifying how to draw (portions
  *    of) your bitmap at given zoom levels
- * @param observer When loading your bitmap is complete,
- *    FileOperationObserver::fileOperationComplete() gets called. May
- *    be NULL.
  *
  * @return A pointer to a newly created TiledBitmapInterface. You can
  *    use this pointer to manipulate your bitmap.
  * 
  */
-TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver::Ptr observer);
+TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls);
 
 
 #endif

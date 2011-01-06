@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -29,9 +29,9 @@
 #include <scroom/semaphore.hh>
 #include <scroom/unused.h>
 
-TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver::Ptr observer)
+TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
 {
-  return TiledBitmap::create(bitmapWidth, bitmapHeight, ls, observer);
+  return TiledBitmap::create(bitmapWidth, bitmapHeight, ls);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -111,18 +111,6 @@ void LoadOperation::finished()
 
 ////////////////////////////////////////////////////////////////////////
 
-gboolean reportComplete(gpointer data)
-{
-  if(data)
-  {
-    FileOperationObserver::Ptr *p = (FileOperationObserver::Ptr*)data;
-    (*p)->fileOperationComplete();
-    delete p;
-  }
-
-  return FALSE;
-}
-
 ////////////////////////////////////////////////////////////////////////
 // TiledBitmapViewData
 
@@ -150,17 +138,16 @@ void TiledBitmapViewData::gtk_progress_bar_pulse()
 ////////////////////////////////////////////////////////////////////////
 // TiledBitmap
 
-TiledBitmap::Ptr TiledBitmap::create(int bitmapWidth, int bitmapHeight, LayerSpec& ls,
-                                            FileOperationObserver::Ptr observer)
+TiledBitmap::Ptr TiledBitmap::create(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
 {
-  TiledBitmap::Ptr result(new TiledBitmap(bitmapWidth, bitmapHeight, ls, observer));
+  TiledBitmap::Ptr result(new TiledBitmap(bitmapWidth, bitmapHeight, ls));
   result->initialize();
   return result;
 }
 
-TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver::Ptr observer)
+TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
   :bitmapWidth(bitmapWidth), bitmapHeight(bitmapHeight), ls(ls), progressBar(NULL), tileCount(0), tileFinishedCount(0),
-   observer(observer), fileOperation()
+   fileOperation()
 {
 }
 
@@ -631,10 +618,6 @@ void TiledBitmap::tileFinished(TileInternal::Ptr tile)
     if(tileFinishedCount==tileCount)
     {
       gtk_progress_bar_set_fraction(0.0);
-      if(observer)
-      {
-        gdk_threads_add_idle(reportComplete, new FileOperationObserver::Ptr(observer));
-      }
       if(fileOperation)
       {
         fileOperation->finished();

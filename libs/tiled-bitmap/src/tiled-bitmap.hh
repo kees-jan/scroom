@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -92,16 +92,14 @@ private:
   int tileCount;
   boost::mutex tileFinishedMutex;
   int tileFinishedCount;
-  FileOperationObserver::Ptr observer;
   FileOperation::Ptr fileOperation;
   
 public:
-  static Ptr create(int bitmapWidth, int bitmapHeight, LayerSpec& ls,
-                    FileOperationObserver::Ptr observer=FileOperationObserver::Ptr());
+  static Ptr create(int bitmapWidth, int bitmapHeight, LayerSpec& ls);
   virtual ~TiledBitmap();
 
 private:
-  TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls, FileOperationObserver::Ptr observer);
+  TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls);
   void initialize();
   
 private:

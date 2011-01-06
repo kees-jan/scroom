@@ -24,18 +24,6 @@
 
 ////////////////////////////////////////////////////////////////////////
 
-gboolean reportComplete(gpointer data)
-{
-  if(data)
-  {
-    FileOperationObserver::Ptr *p = (FileOperationObserver::Ptr*)data;
-    (*p)->fileOperationComplete();
-    delete p;
-  }
-
-  return FALSE;
-}
-
 ////////////////////////////////////////////////////////////////////////
 
 Example::~Example()
@@ -62,12 +50,8 @@ void Example::unregisterCapabilities(ScroomInterface* host)
   host->unregisterNewInterface(this);
 }
 
-PresentationInterface::Ptr Example::createNew(FileOperationObserver::Ptr observer)
+PresentationInterface::Ptr Example::createNew()
 {
-  if(observer)
-  {
-    gdk_threads_add_idle(reportComplete, new FileOperationObserver::Ptr(observer));
-  }
   return PresentationInterface::Ptr(new ExamplePresentation());
 }
   

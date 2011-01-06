@@ -54,7 +54,7 @@ public:
   TiffPresentation();
   virtual ~TiffPresentation();
 
-  bool load(std::string fileName, FileOperationObserver::Ptr observer);
+  bool load(std::string fileName);
   
   ////////////////////////////////////////////////////////////////////////
   // PresentationInterface

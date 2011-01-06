@@ -37,7 +37,7 @@ public:
   // OpenInterface
   
   virtual std::list<GtkFileFilter*> getFilters();
-  virtual PresentationInterface::Ptr open(const std::string& fileName, FileOperationObserver::Ptr observer);
+  virtual PresentationInterface::Ptr open(const std::string& fileName);
 
   ////////////////////////////////////////////////////////////////////////
   

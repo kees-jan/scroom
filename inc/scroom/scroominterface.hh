@@ -27,22 +27,12 @@
 #include <scroom/presentationinterface.hh>
 #include <scroom/viewinterface.hh>
 
-class FileOperationObserver
-{
-public:
-  typedef boost::shared_ptr<FileOperationObserver> Ptr;
-  
-  virtual ~FileOperationObserver() {}
-
-  virtual void fileOperationComplete()=0;
-};
-
 class NewInterface
 {
 public:
   virtual ~NewInterface() {}
   
-  virtual PresentationInterface::Ptr createNew(FileOperationObserver::Ptr observer=FileOperationObserver::Ptr())=0;
+  virtual PresentationInterface::Ptr createNew()=0;
 };
 
 class OpenInterface
@@ -52,8 +42,7 @@ public:
 
   virtual std::list<GtkFileFilter*> getFilters()=0;
   
-  virtual PresentationInterface::Ptr open(const std::string& fileName,
-                                          FileOperationObserver::Ptr observer=FileOperationObserver::Ptr())=0;
+  virtual PresentationInterface::Ptr open(const std::string& fileName)=0;
 };
 
 class PresentationObserver

@@ -25,7 +25,7 @@ BOOST_AUTO_TEST_CASE(tiledbitmap_can_be_deleted)
 {
   LayerSpec ls;
   ls.push_back(new DummyLayerOperations());
-  TiledBitmapInterface::Ptr bitmap = createTiledBitmap(300000, 300000, ls, FileOperationObserver::Ptr());
+  TiledBitmapInterface::Ptr bitmap = createTiledBitmap(300000, 300000, ls);
   BOOST_CHECK(bitmap);
   boost::weak_ptr<TiledBitmapInterface> weak = bitmap;
   BOOST_CHECK(weak.lock());
