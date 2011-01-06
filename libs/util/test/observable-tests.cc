@@ -306,5 +306,34 @@ BOOST_AUTO_TEST_CASE(shared_from_this)
   BOOST_CHECK_EQUAL(original, copy2);
 }
 
+BOOST_AUTO_TEST_CASE(deleting_observable_deletes_observer)
+{
+  TestObservable::Ptr observable = TestObservable::create();
+  TestObserver::Ptr observer = TestObserver::create();
+  TestObserver::WeakPtr weakObserver = observer;
+  std::list<TestObservable::Observer> observers;
+
+  // Registration succeeds
+  Registration registration = observable->registerStrongObserver(observer);
+  BOOST_CHECK(registration);
+
+  // Observable has a reference to observer, so it doesn't go away
+  observer.reset();
+  BOOST_CHECK(!observer);
+  observers = observable->getObservers();
+  BOOST_REQUIRE(1 == observers.size());
+  observers.clear();
+  observer = weakObserver.lock();
+  BOOST_CHECK_EQUAL(observer, observers.front());
+
+  // Destroying observable destroys observer
+  observer.reset();
+  BOOST_CHECK(!observer);
+  observable.reset();
+  BOOST_CHECK(!observable);
+  BOOST_CHECK(!weakObserver.lock());
+}
+
+
 
 BOOST_AUTO_TEST_SUITE_END()

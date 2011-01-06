@@ -113,7 +113,7 @@ namespace Scroom
   
     public:
       Observable();
-      virtual ~Observable() {}
+      virtual ~Observable();
 
       /**
        * Override this function if you want to be notified of new
@@ -222,6 +222,34 @@ namespace Scroom
     template<typename T>
     Observable<T>::Observable()
     {
+    }
+
+    template<typename T>
+    Observable<T>::~Observable()
+    {
+      // Destroy strong references to any observers
+      std::list<typename Detail::Registration<T>::Ptr> registrations;
+      {
+        boost::mutex::scoped_lock lock(mut);
+        typename RegistrationMap::iterator cur = registrationMap.begin();
+        typename RegistrationMap::iterator end = registrationMap.end();
+
+        for(;cur!=end; ++cur)
+        {
+          typename Detail::Registration<T>::Ptr registration = cur->second.lock();
+          if(registration)
+          {
+            registrations.push_back(registration);
+          }
+        }
+      }
+
+      while(!registrations.empty())
+      {
+        typename Detail::Registration<T>::Ptr registration = registrations.front();
+        registration->o.reset();
+        registrations.pop_front();
+      }
     }
 
     template<typename T>
