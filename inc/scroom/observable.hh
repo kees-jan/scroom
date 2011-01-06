@@ -113,6 +113,7 @@ namespace Scroom
   
     public:
       Observable();
+      virtual ~Observable() {}
 
       /**
        * Override this function if you want to be notified of new

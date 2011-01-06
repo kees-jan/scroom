@@ -33,6 +33,8 @@ TiffPresentation::TiffPresentation()
 
 TiffPresentation::~TiffPresentation()
 {
+  printf("TiffPresentation: Destructing...\n");
+  
   if(tif != NULL)
   {
     TIFFClose(tif);

@@ -49,6 +49,8 @@ dnl SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wunused])
 dnl SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wno-multichar])
 dnl SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wredundant-decls])
 dnl -Wuninitialized -Winit-self -Wcast-qual -Wswitch-enum -Weffc++ -Wold-style-cast -Wfloat-equal -Wnon-virtual-dtor
+SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wnon-virtual-dtor])
+SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Woverloaded-virtual])
 dnl ??? -Woverloaded-virtual -Wsign-promo
 
 

@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -32,6 +32,8 @@ public:
   PluginInformationInterface()
     : pluginApiVersion(PLUGIN_API_VERSION)
   {}
+
+  virtual ~PluginInformationInterface() {}
 
   virtual std::string getPluginName()=0;
   virtual std::string getPluginVersion()=0;
