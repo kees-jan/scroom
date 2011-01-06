@@ -125,3 +125,27 @@ AC_DEFUN([SCROOM_ADD_CXXFLAGS_IF_SUPPORTED], [
   CXXFLAGS="$CXXFLAGS_KEEP"
   AC_LANG_POP([C++])
 ])
+
+# SCOOM_TEST_ISYSTEM
+# --------------------------------------------------------
+# Try if the C++ compiler supports -isystem. Set ISYSTEM_FLAG to
+# either -I or -isystem, depending on the outcome of the test
+AC_DEFUN([SCROOM_TEST_ISYSTEM], [
+  AC_CACHE_CHECK(if g++ supports -isystem,
+  scroom_cv_cxx_compile_isystem,
+  [AC_LANG_SAVE
+  AC_LANG_CPLUSPLUS
+  CXXFLAGS_KEEP="$CXXFLAGS"
+  CXXFLAGS="-isystem . $CXXFLAGS_KEEP"
+  AC_COMPILE_IFELSE([AC_LANG_SOURCE([[]])],scroom_cv_cxx_compile_isystem=yes, scroom_cv_cxx_compile_isystem=no)
+  CXXFLAGS="$CXXFLAGS_KEEP"
+  AC_LANG_RESTORE
+  ])
+
+  if test "$scroom_cv_cxx_compile_isystem" = yes
+  then
+    ISYSTEM_FLAG="-isystem"
+  else
+    ISYSTEM_FLAG="-I"
+  fi
+])

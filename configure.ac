@@ -57,7 +57,7 @@ SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wfloat-equal])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wnon-virtual-dtor])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Woverloaded-virtual])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wsign-promo])
-
+SCROOM_TEST_ISYSTEM
 
 # Configurable features
 AC_ARG_ENABLE([mutracx-hacks],
@@ -156,7 +156,7 @@ then
 else
   if test "x${have_old_boost_futures}" = xno
   then
-    boost_futures_include_flags="-I \$(top_srcdir)/compat/boost-futures/inc"
+    boost_futures_include_flags="$ISYSTEM_FLAG \$(top_srcdir)/compat/boost-futures/inc"
   fi
 fi
 AC_SUBST([BOOST_FUTURES_CPPFLAGS], [$boost_futures_include_flags])
