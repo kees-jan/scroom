@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -32,7 +32,7 @@
 FileBackedMemory::FileBackedMemory(size_t size, byte* data)
   :state(data?LOADED:UNINITIALIZED), data(data), size(size), filename(), fileCreated(false), fd(-1)
 {
-  int pageSize = sysconf(_SC_PAGE_SIZE);
+  long pageSize = sysconf(_SC_PAGE_SIZE);
   size = ((size + pageSize - 1) / pageSize) * pageSize; // round up
 }
 

@@ -303,7 +303,7 @@ namespace Scroom
     }
 
     template<typename T>
-    void Observable<T>::observerAdded(Observable<T>::Observer observer)
+    void Observable<T>::observerAdded(Observable<T>::Observer)
     {
       // Do nothing
     }

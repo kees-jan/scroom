@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -188,7 +188,7 @@ bool PluginManager::doWork()
   return retval;
 }
 
-void PluginManager::setStatusBarMessage(const char* message)
+void PluginManager::setStatusBarMessage(const char*)
 {
   // gtk_statusbar_pop(statusbar, status_context_id);
   // gtk_statusbar_push(statusbar, status_context_id, message);

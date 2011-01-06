@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -30,6 +30,8 @@
 
 #include "pluginmanager.hh"
 #include "callbacks.hh"
+
+#define G_VALUE_INIT {0,{{0}}}
 
 static const char *zoomfactor[] =
   {
@@ -82,7 +84,7 @@ enum
 /// Helpers
 
 // This one has too much View-internal knowledge to hide in callbacks.cc
-static void on_newWindow_activate(GtkMenuItem* menuitem, gpointer user_data)
+static void on_newWindow_activate(GtkMenuItem*, gpointer user_data)
 {
   PresentationInterface::WeakPtr& wp = *static_cast<PresentationInterface::WeakPtr*>(user_data); // Yuk!
   PresentationInterface::Ptr p = wp.lock();
@@ -459,7 +461,7 @@ void View::on_scrollwheel(GdkEventScroll* event)
         valid;
         valid = gtk_tree_model_iter_next(GTK_TREE_MODEL(zoomItems), &iter))
     {
-      GValue value={0};
+      GValue value= G_VALUE_INIT;
       gtk_tree_model_get_value(GTK_TREE_MODEL(zoomItems), &iter, COLUMN_ZOOM, &value);
       int foundZoom = g_value_get_int(&value);
 
@@ -477,7 +479,7 @@ void View::on_scrollwheel(GdkEventScroll* event)
 void View::on_zoombox_changed()
 {
   GtkTreeIter iter;
-  GValue value={0};
+  GValue value= G_VALUE_INIT;
   gtk_combo_box_get_active_iter(zoomBox, &iter);
   
   if(gtk_list_store_iter_is_valid(zoomItems, &iter))

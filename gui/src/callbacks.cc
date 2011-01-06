@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -49,7 +49,7 @@ static std::list<PresentationInterface::WeakPtr> presentations;
 static std::list<std::string> filenames;
 static std::string currentFolder;
 
-void on_scroom_hide (GtkWidget* widget, gpointer user_data)
+void on_scroom_hide (GtkWidget*, gpointer user_data)
 {
   // printf("hide\n");
   View* view = static_cast<View*>(user_data);
@@ -59,13 +59,13 @@ void on_scroom_hide (GtkWidget* widget, gpointer user_data)
     gtk_main_quit();
 }
 
-void on_new_activate (GtkMenuItem* menuitem, gpointer user_data)
+void on_new_activate (GtkMenuItem*, gpointer user_data)
 {
   NewInterface* newInterface = static_cast<NewInterface*>(user_data);
   create(newInterface);
 }
 
-void on_open_activate (GtkMenuItem* menuitem, gpointer user_data)
+void on_open_activate (GtkMenuItem*, gpointer user_data)
 {
   GtkWidget* dialog;
   GtkWidget* scroom = static_cast<GtkWidget*>(user_data);
@@ -139,42 +139,42 @@ void on_open_activate (GtkMenuItem* menuitem, gpointer user_data)
   gtk_widget_destroy (dialog);
 }
 
-void on_save_activate (GtkMenuItem* menuitem, gpointer user_data)
+void on_save_activate (GtkMenuItem*, gpointer)
 {
 
 }
 
-void on_save_as_activate (GtkMenuItem* menuitem, gpointer user_data)
+void on_save_as_activate (GtkMenuItem*, gpointer)
 {
 
 }
 
-void on_quit_activate (GtkMenuItem* menuitem, gpointer user_data)
+void on_quit_activate (GtkMenuItem*, gpointer)
 {
   gtk_main_quit();
 }
 
-void on_cut_activate (GtkMenuItem* menuitem, gpointer user_data)
+void on_cut_activate (GtkMenuItem*, gpointer)
 {
 
 }
 
-void on_copy_activate (GtkMenuItem* menuitem, gpointer user_data)
+void on_copy_activate (GtkMenuItem*, gpointer)
 {
 
 }
 
-void on_paste_activate (GtkMenuItem* menuitem, gpointer user_data)
+void on_paste_activate (GtkMenuItem*, gpointer)
 {
 
 }
 
-void on_delete_activate (GtkMenuItem* menuitem, gpointer user_data)
+void on_delete_activate (GtkMenuItem*, gpointer)
 {
 
 }
 
-void on_about_activate (GtkMenuItem* menuitem, gpointer user_data)
+void on_about_activate (GtkMenuItem*, gpointer)
 {
   // GtkWidget* aboutdialog;
   // aboutdialog = create_aboutdialog ();
@@ -183,7 +183,7 @@ void on_about_activate (GtkMenuItem* menuitem, gpointer user_data)
   // gtk_widget_destroy (aboutdialog);
 }
 
-gboolean on_drawingarea_expose_event (GtkWidget* widget, GdkEventExpose* event, gpointer user_data)
+gboolean on_drawingarea_expose_event (GtkWidget* widget, GdkEventExpose*, gpointer user_data)
 {
   // printf("expose\n");
 
@@ -195,7 +195,7 @@ gboolean on_drawingarea_expose_event (GtkWidget* widget, GdkEventExpose* event, 
   return FALSE;
 }
 
-gboolean on_drawingarea_configure_event (GtkWidget* widget, GdkEventConfigure* event, gpointer user_data)
+gboolean on_drawingarea_configure_event (GtkWidget*, GdkEventConfigure*, gpointer user_data)
 {
   // printf("configure\n");
   View* view = static_cast<View*>(user_data);
@@ -237,7 +237,7 @@ void on_done_loading_plugins()
   }
 }
 
-void on_zoombox_changed(GtkComboBox* widget, gpointer user_data)
+void on_zoombox_changed(GtkComboBox*, gpointer user_data)
 {
   View* view = static_cast<View*>(user_data);
   view->on_zoombox_changed();
@@ -249,28 +249,28 @@ void on_scrollbar_value_changed(GtkAdjustment* adjustment, gpointer user_data)
   view->on_scrollbar_value_changed(adjustment);
 }
 
-gboolean on_button_press_event(GtkWidget* widget, GdkEventButton* event, gpointer user_data)
+gboolean on_button_press_event(GtkWidget*, GdkEventButton* event, gpointer user_data)
 {
   View* view = static_cast<View*>(user_data);
   view->on_buttonPress(event);
   return true;
 }
 
-gboolean on_button_release_event(GtkWidget* widget, GdkEventButton* event, gpointer user_data)
+gboolean on_button_release_event(GtkWidget*, GdkEventButton* event, gpointer user_data)
 {
   View* view = static_cast<View*>(user_data);
   view->on_buttonRelease(event);
   return true;
 }
 
-gboolean on_motion_notify_event(GtkWidget* widget, GdkEventMotion* event, gpointer user_data)
+gboolean on_motion_notify_event(GtkWidget*, GdkEventMotion* event, gpointer user_data)
 {
   View* view = static_cast<View*>(user_data);
   view->on_motion_notify(event);
   return true;
 }
 
-gboolean on_scroll_event(GtkWidget* widget, GdkEventScroll* event, gpointer user_data)
+gboolean on_scroll_event(GtkWidget*, GdkEventScroll* event, gpointer user_data)
 {
   View* view = static_cast<View*>(user_data);
   view->on_scrollwheel(event);
