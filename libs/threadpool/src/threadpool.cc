@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -20,37 +20,16 @@
 
 #include <stdio.h>
 
-namespace CpuBound
+ThreadPool::Ptr CpuBound()
 {
+  static ThreadPool::Ptr cpuBound = ThreadPool::Ptr(new ThreadPool());
   
-  ThreadPool::Ptr instance()
-  {
-    static ThreadPool::Ptr cpuBound = ThreadPool::Ptr(new ThreadPool());
-
-    return cpuBound;
-  }
-
-  void schedule(boost::function<void ()> const& fn, int priority)
-  {
-    instance()->schedule(fn, priority);
-  }
-
+  return cpuBound;
 }
 
-namespace Sequentially
+ThreadPool::Ptr Sequentially()
 {
-  
-  ThreadPool::Ptr instance()
-  {
-    static ThreadPool::Ptr sequentially = ThreadPool::Ptr(new ThreadPool(1));
+  static ThreadPool::Ptr sequentially = ThreadPool::Ptr(new ThreadPool(1));
 
-    return sequentially;
-  }
-
-  void schedule(boost::function<void ()> const& fn, int priority)
-  {
-    instance()->schedule(fn, priority);
-  }
-
+  return sequentially;
 }
-

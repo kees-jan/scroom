@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -116,7 +116,7 @@ void Layer::fetchData(SourcePresentation* sp)
                  width, height,
                  horTileCount, verTileCount,
                  sp);
-  CpuBound::schedule(df, DATAFETCH_PRIO);
+  CpuBound()->schedule(df, DATAFETCH_PRIO);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -136,7 +136,7 @@ void DataFetcher::operator()()
 {
   // printf("Attempting to fetch bitmap data for tileRow %d...\n", currentRow);
   QueueJumper::Ptr qj = QueueJumper::create();
-  CpuBound::schedule(qj, REDUCE_PRIO);
+  CpuBound()->schedule(qj, REDUCE_PRIO);
  
   TileInternalLine& tileLine = layer->getTileLine(currentRow);
   std::vector<Tile::Ptr> tiles;
@@ -160,6 +160,6 @@ void DataFetcher::operator()()
   {
     DataFetcher successor(*this);
     if(!qj->setWork(successor))
-      CpuBound::schedule(successor, DATAFETCH_PRIO);
+      CpuBound()->schedule(successor, DATAFETCH_PRIO);
   }
 }

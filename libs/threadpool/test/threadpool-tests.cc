@@ -352,7 +352,7 @@ BOOST_AUTO_TEST_SUITE(CpuBound_Tests)
 
 BOOST_AUTO_TEST_CASE(verify_threadcount)
 {
-  ThreadPool::Ptr t = CpuBound::instance();
+  ThreadPool::Ptr t = CpuBound();
   int expected = boost::thread::hardware_concurrency();
 #ifndef MULTITHREADING
   expected=1;
@@ -368,7 +368,7 @@ BOOST_AUTO_TEST_SUITE(Sequentially_Tests)
 
 BOOST_AUTO_TEST_CASE(verify_threadcount)
 {
-  ThreadPool::Ptr t = Sequentially::instance();
+  ThreadPool::Ptr t = Sequentially();
   BOOST_CHECK(has_exactly_n_threads(t.get(), 1));
 }
 

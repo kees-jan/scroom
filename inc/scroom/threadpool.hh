@@ -342,39 +342,12 @@ public:
  * This ThreadPool has one thread per core in your system. For
  * CpuBound tasks, this is the optimum. Make sure your tasks do not
  * block or wait for anything.
+ *
+ * @return a shared pointer to this ThreadPool instance
+ *
+ * @see http://fuzzy.homedns.org/trac/scroom/wiki/StaticInitializationOrderFiasco
  */
-namespace CpuBound
-{
-  /**
-   * Retrieve a shared pointer to this threadpool instance
-   *
-   * @see http://fuzzy.homedns.org/trac/scroom/wiki/StaticInitializationOrderFiasco
-   */
-  ThreadPool::Ptr instance();
-  
-  /**
-   * Schedule jobs to be executed in parallel.
-   *
-   * Jobs with the highest priority will be scheduled first. However,
-   * since there are multiple threads executing jobs, there is no
-   * guarantee that no lower priority jobs will be started before the
-   * last high-priority job is finished. You should do your own
-   * synchronisation :-)
-   */
-  void schedule(boost::function<void ()> const& fn, int priority=PRIO_NORMAL);
-
-  /**
-   * Schedule jobs to be executed in parallel.
-   *
-   * Jobs with the highest priority will be scheduled first. However,
-   * since there are multiple threads executing jobs, there is no
-   * guarantee that no lower priority jobs will be started before the
-   * last high-priority job is finished. You should do your own
-   * synchronisation :-)
-   */
-  template<typename T>
-  void schedule(boost::shared_ptr<T> fn, int priority=PRIO_NORMAL);
-}
+ThreadPool::Ptr CpuBound();
 
 /**
  * ThreadPool for executing tasks sequentially
@@ -385,41 +358,14 @@ namespace CpuBound
  *
  * Note that it is rare to do any actual work on this
  * thread. Especially the cpu-intensive tasks are best delegated to
- * CpuBound::schedule(). On this thread, you just wait for the work to
+ * CpuBound(). On this thread, you just wait for the work to
  * complete.
+ *
+ * @return a shared pointer to this ThreadPool instance
+ *
+ * @see http://fuzzy.homedns.org/trac/scroom/wiki/StaticInitializationOrderFiasco
  */
-namespace Sequentially
-{
-  /**
-   * Retrieve a shared pointer to this threadpool instance
-   *
-   * @see http://fuzzy.homedns.org/trac/scroom/wiki/StaticInitializationOrderFiasco
-   */
-  ThreadPool::Ptr instance();
-  
-  /**
-   * Schedule jobs to be executed in parallel.
-   *
-   * Jobs with the highest priority will be scheduled first. However,
-   * since there are multiple threads executing jobs, there is no
-   * guarantee that no lower priority jobs will be started before the
-   * last high-priority job is finished. You should do your own
-   * synchronisation :-)
-   */
-  void schedule(boost::function<void ()> const& fn, int priority=PRIO_NORMAL);
-
-  /**
-   * Schedule jobs to be executed in parallel.
-   *
-   * Jobs with the highest priority will be scheduled first. However,
-   * since there are multiple threads executing jobs, there is no
-   * guarantee that no lower priority jobs will be started before the
-   * last high-priority job is finished. You should do your own
-   * synchronisation :-)
-   */
-  template<typename T>
-  void schedule(boost::shared_ptr<T> fn, int priority=PRIO_NORMAL);
-}
+ThreadPool::Ptr Sequentially();
 
 #include <scroom/impl/threadpoolimpl.hh>
 

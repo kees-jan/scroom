@@ -272,7 +272,7 @@ void TiledBitmap::setSource(SourcePresentation* sp)
   if(fileOperation==NULL)
   {
     fileOperation = LoadOperation::create(layers[0], sp, TiledBitmap::shared_from_this());
-    Sequentially::schedule(fileOperation);
+    Sequentially()->schedule(fileOperation);
   }
   else
   {

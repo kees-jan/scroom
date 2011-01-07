@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -79,23 +79,5 @@ boost::future<R> ThreadPool::schedule(boost::shared_ptr<T> fn, int priority)
   return boost::future<R>(prom); // return a future created from the promise
 }
 #endif /* NEW_BOOST_FUTURES */
-
-namespace CpuBound
-{
-  template<typename T>
-  void schedule(boost::shared_ptr<T> fn, int priority=PRIO_NORMAL)
-  {
-    schedule(boost::bind(threadPoolExecute<void, T>, fn), priority);
-  }
-}
-
-namespace Sequentially
-{
-  template<typename T>
-  void schedule(boost::shared_ptr<T> fn, int priority=PRIO_NORMAL)
-  {
-    schedule(boost::bind(threadPoolExecute<void, T>, fn), priority);
-  }
-}
 
 #endif
