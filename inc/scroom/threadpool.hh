@@ -127,6 +127,9 @@ private:
    */
   void work();
   
+  static Queue::Ptr defaultQueue();
+  static const int defaultPriority;
+
 public:
   /** Create a ThreadPool with one thread for each core in the system */
   ThreadPool();
@@ -143,7 +146,12 @@ public:
   ~ThreadPool();
 
   /** Schedule the given job at the given priority */
-  void schedule(boost::function<void ()> const& fn, int priority=PRIO_NORMAL);
+  void schedule(boost::function<void ()> const& fn,
+                int priority=defaultPriority,
+                Queue::Ptr queue=defaultQueue());
+
+  /** Schedule the given job at the given queue */
+  void schedule(boost::function<void ()> const& fn, Queue::Ptr queue);
 
   /**
    * Schedule the given job at the given priority
@@ -151,22 +159,54 @@ public:
    * @pre T::operator()() must be defined
    */
   template<typename T>
-  void schedule(boost::shared_ptr<T> fn, int priority=PRIO_NORMAL);
+  void schedule(boost::shared_ptr<T> fn,
+                int priority=defaultPriority,
+                Queue::Ptr queue=defaultQueue());
+
+  /**
+   * Schedule the given job at the given priority
+   *
+   * @pre T::operator()() must be defined
+   */
+  template<typename T>
+  void schedule(boost::shared_ptr<T> fn, Queue::Ptr queue);
 
 #ifdef NEW_BOOST_FUTURES
 #ifdef HAVE_STDCXX_0X
   template<typename R>
-  boost::unique_future<R> schedule(boost::function<R ()> const& fn, int priority=PRIO_NORMAL);
+  boost::unique_future<R> schedule(boost::function<R ()> const& fn,
+                                   int priority=defaultPriority,
+                                   Queue::Ptr queue=defaultQueue());
+
+  template<typename R>
+  boost::unique_future<R> schedule(boost::function<R ()> const& fn, Queue::Ptr queue);
 
   template<typename R, typename T>
-  boost::unique_future<R> schedule(boost::shared_ptr<T> fn, int priority=PRIO_NORMAL);
+  boost::unique_future<R> schedule(boost::shared_ptr<T> fn,
+                                   int priority=defaultPriority,
+                                   Queue::Ptr queue=defaultQueue());
+
+  template<typename R, typename T>
+  boost::unique_future<R> schedule(boost::shared_ptr<T> fn, Queue::Ptr queue);
+
 #endif /* HAVE_STDCXX_0X */
 #else /* NEW_BOOST_FUTURES */
   template<typename R>
-  boost::future<R> schedule(boost::function<R ()> const& fn, int priority=PRIO_NORMAL);
+  boost::future<R> schedule(boost::function<R ()> const& fn,
+                            int priority=defaultPriority,
+                            Queue::Ptr queue=defaultQueue());
+
+  template<typename R>
+  boost::future<R> schedule(boost::function<R ()> const& fn, Queue::Ptr queue);
 
   template<typename R, typename T>
-  boost::future<R> schedule(boost::shared_ptr<T> fn, int priority=PRIO_NORMAL);
+  boost::future<R> schedule(boost::shared_ptr<T> fn,
+                            int priority=defaultPriority,
+                            Queue::Ptr queue=defaultQueue());
+
+  template<typename R, typename T>
+  boost::future<R> schedule(boost::shared_ptr<T> fn, Queue::Ptr queue);
+
 #endif /* NEW_BOOST_FUTURES */
 
   /**

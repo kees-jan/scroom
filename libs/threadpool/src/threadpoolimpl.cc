@@ -103,11 +103,16 @@ void ThreadPool::work()
   }
 }
 
-void ThreadPool::schedule(boost::function<void ()> const& fn, int priority)
+void ThreadPool::schedule(boost::function<void ()> const& fn, int priority, ThreadPool::Queue::Ptr queue)
 {
   boost::unique_lock<boost::mutex> lock(mut);
   jobs[priority].push(fn);
   jobcount.V();
+}
+
+void ThreadPool::schedule(boost::function<void ()> const& fn, ThreadPool::Queue::Ptr queue)
+{
+  schedule(fn, defaultPriority, queue);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -185,4 +190,12 @@ void QueueJumper::operator()()
   }
   inQueue=false;
 }
+
+ThreadPool::Queue::Ptr ThreadPool::defaultQueue()
+{
+  static ThreadPool::Queue::Ptr queue = ThreadPool::Queue::create();
+  return queue;
+}
+
+const int ThreadPool::defaultPriority = PRIO_NORMAL;
 

@@ -21,18 +21,18 @@ const millisec long_timeout(2000);
 
 //////////////////////////////////////////////////////////////
 
-void clear_sem(Semaphore* s)
+static void clear_sem(Semaphore* s)
 {
   s->V();
 }
 
-void pass_and_clear(Semaphore* toPass, Semaphore* toClear)
+static void pass_and_clear(Semaphore* toPass, Semaphore* toClear)
 {
   toPass->P();
   toClear->V();
 }
 
-void destroy(ThreadPool* threadpool)
+static void destroy(ThreadPool* threadpool)
 {
   delete threadpool;
 }

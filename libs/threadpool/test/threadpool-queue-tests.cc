@@ -37,12 +37,17 @@ public:
 
 //////////////////////////////////////////////////////////////
 
-void pass_destroy_and_clear(Semaphore* s1, TestQueue::WeakPtr q, Semaphore* s2)
+static void pass_destroy_and_clear(Semaphore* s1, TestQueue::WeakPtr q, Semaphore* s2)
 {
   TestQueue::Ptr queue(q);
   s1->P();
   queue.reset();
   s2->V();
+}
+
+static void clear_sem(Semaphore* s)
+{
+  s->V();
 }
 
 //////////////////////////////////////////////////////////////
@@ -77,8 +82,8 @@ BOOST_AUTO_TEST_CASE(destroy_waits_for_jobs_to_finish)
   queue->jobStarted();
   BOOST_CHECK_EQUAL(2, queue->getCount());
 
-  Semaphore s1;
-  Semaphore s2;
+  Semaphore s1(0);
+  Semaphore s2(0);
   boost::thread t(boost::bind(pass_destroy_and_clear, &s1, weakQueue, &s2));
   BOOST_REQUIRE(!s2.P(short_timeout));
   TestQueue* pq = queue.get();
@@ -97,6 +102,33 @@ BOOST_AUTO_TEST_CASE(destroy_waits_for_jobs_to_finish)
   BOOST_CHECK_EQUAL(1, pq->getCount());
   pq->jobFinished();
   BOOST_REQUIRE(s2.P(long_timeout));
+}
+
+BOOST_AUTO_TEST_SUITE_END()
+
+BOOST_AUTO_TEST_SUITE(Queue_Tests)
+
+BOOST_AUTO_TEST_CASE(jobs_on_custom_queue_get_executed)
+{
+  ThreadPool::Queue::Ptr queue = ThreadPool::Queue::create();
+  Semaphore s(0);
+  ThreadPool t(0);
+  t.schedule(boost::bind(clear_sem, &s), queue);
+  BOOST_CHECK(!s.P(short_timeout));
+  t.add();
+  BOOST_CHECK(s.P(long_timeout));
+}
+
+BOOST_AUTO_TEST_CASE(jobs_on_deleted_queue_dont_get_executed)
+{
+  ThreadPool::Queue::Ptr queue = ThreadPool::Queue::create();
+  Semaphore s(0);
+  ThreadPool t(0);
+  t.schedule(boost::bind(clear_sem, &s), queue);
+  BOOST_CHECK(!s.P(short_timeout));
+  queue.reset();
+  t.add();
+  BOOST_CHECK(!s.P(long_timeout));
 }
 
 BOOST_AUTO_TEST_SUITE_END()
