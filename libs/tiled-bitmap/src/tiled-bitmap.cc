@@ -112,30 +112,6 @@ void LoadOperation::finished()
 ////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////
-// TiledBitmapViewData
-
-TiledBitmapViewData::TiledBitmapViewData(ViewInterface* viewInterface)
-  : viewInterface(viewInterface)
-{
-  progressBar = viewInterface->getProgressBar();
-}
-
-TiledBitmapViewData::~TiledBitmapViewData()
-{
-  ::gtk_progress_bar_set_fraction(progressBar, 0.0);
-}
-
-void TiledBitmapViewData::gtk_progress_bar_set_fraction(double fraction)
-{
-  ::gtk_progress_bar_set_fraction(progressBar, fraction);
-}
-
-void TiledBitmapViewData::gtk_progress_bar_pulse()
-{
-  ::gtk_progress_bar_pulse(progressBar);
-}
-
-////////////////////////////////////////////////////////////////////////
 // TiledBitmap
 
 TiledBitmap::Ptr TiledBitmap::create(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
@@ -237,8 +213,8 @@ void TiledBitmap::gtk_progress_bar_set_fraction(double fraction)
 {
   gdk_threads_enter();
   boost::mutex::scoped_lock lock(viewDataMutex);
-  std::map<ViewInterface*, TiledBitmapViewData*>::iterator cur = viewData.begin();
-  std::map<ViewInterface*, TiledBitmapViewData*>::iterator end = viewData.end();
+  std::map<ViewInterface*, TiledBitmapViewData::Ptr>::iterator cur = viewData.begin();
+  std::map<ViewInterface*, TiledBitmapViewData::Ptr>::iterator end = viewData.end();
 
   for(; cur!=end; ++cur)
   {
@@ -252,8 +228,8 @@ void TiledBitmap::gtk_progress_bar_pulse()
 {
   gdk_threads_enter();
   boost::mutex::scoped_lock lock(viewDataMutex);
-  std::map<ViewInterface*, TiledBitmapViewData*>::iterator cur = viewData.begin();
-  std::map<ViewInterface*, TiledBitmapViewData*>::iterator end = viewData.end();
+  std::map<ViewInterface*, TiledBitmapViewData::Ptr>::iterator cur = viewData.begin();
+  std::map<ViewInterface*, TiledBitmapViewData::Ptr>::iterator end = viewData.end();
 
   for(; cur!=end; ++cur)
   {
@@ -363,10 +339,11 @@ void TiledBitmap::drawTile(cairo_t* cr, const TileInternal::Ptr tile, const GdkR
 
 }
 
-void TiledBitmap::redraw(ViewInterface*, cairo_t* cr, GdkRectangle presentationArea, int zoom)
+void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
 {
   // presentationArea.width-=200;
   // presentationArea.height-=200;
+  TiledBitmapViewData::Ptr viewData = this->viewData[vi];
   
   // There's two cases: zooming in and zooming out
   if(zoom>0)
@@ -389,6 +366,8 @@ void TiledBitmap::redraw(ViewInterface*, cairo_t* cr, GdkRectangle presentationA
     const int imax = (right+TILESIZE-1)/TILESIZE;
     const int jmin = std::min(0, top/TILESIZE);
     const int jmax = (bottom+TILESIZE-1)/TILESIZE;
+
+    viewData->setNeededTiles(layer, imin, imax, jmin, jmax);
 
     const int pixelSize = 1<<zoom;
     
@@ -498,6 +477,8 @@ void TiledBitmap::redraw(ViewInterface*, cairo_t* cr, GdkRectangle presentationA
     const int jmin = std::max(0, top/TILESIZE);
     const int jmax = (bottom+TILESIZE-1)/TILESIZE;
 
+    viewData->setNeededTiles(layer, imin, imax, jmin, jmax);
+
     const int pixelSize = 1<<-zoom;
     
     layerOperations->initializeCairo(cr);
@@ -582,16 +563,14 @@ void TiledBitmap::redraw(ViewInterface*, cairo_t* cr, GdkRectangle presentationA
 void TiledBitmap::open(ViewInterface* viewInterface)
 {
   boost::mutex::scoped_lock lock(viewDataMutex);
-  TiledBitmapViewData* vd = new TiledBitmapViewData(viewInterface);
+  TiledBitmapViewData::Ptr vd = TiledBitmapViewData::create(viewInterface);
   viewData[viewInterface] = vd;
 }
 
 void TiledBitmap::close(ViewInterface* vi)
 {
   boost::mutex::scoped_lock lock(viewDataMutex);
-  TiledBitmapViewData* vd = viewData[vi];
   viewData.erase(vi);
-  delete vd;
 }
 
 ////////////////////////////////////////////////////////////////////////

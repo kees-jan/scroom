@@ -33,6 +33,7 @@
 
 #include "layer.hh"
 #include "layercoordinator.hh"
+#include "tiledbitmapviewdata.hh"
 
 class TiledBitmap;
 
@@ -59,20 +60,6 @@ public:
 };
 
 
-class TiledBitmapViewData
-{
-public:
-  ViewInterface* viewInterface;
-  GtkProgressBar* progressBar;
-
-public:
-  TiledBitmapViewData(ViewInterface* viewInterface);
-  virtual ~TiledBitmapViewData();
-
-  void gtk_progress_bar_set_fraction(double fraction);
-  void gtk_progress_bar_pulse();
-};
-
 class TiledBitmap : public TiledBitmapInterface, public TileInternalObserver,
                     public boost::enable_shared_from_this<TiledBitmap>
 {
@@ -88,7 +75,7 @@ private:
   std::list<LayerCoordinator::Ptr> coordinators;
   GtkProgressBar* progressBar;
   boost::mutex viewDataMutex;
-  std::map<ViewInterface*, TiledBitmapViewData*> viewData;
+  std::map<ViewInterface*, TiledBitmapViewData::Ptr> viewData;
   int tileCount;
   boost::mutex tileFinishedMutex;
   int tileFinishedCount;
