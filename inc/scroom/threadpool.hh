@@ -57,6 +57,8 @@ enum
 class ThreadPool
 {
 public:
+  class QueueLock;
+
   /**
    * Represent a Queue in the ThreadPool.
    *
@@ -96,6 +98,35 @@ public:
     Queue();
     void jobStarted();
     void jobFinished();
+
+    friend class QueueLock;
+  };
+
+  /**
+   * Call Queue::jobStarted() and Queue::jobFinished().
+   */
+  class QueueLock
+  {
+    /**
+     * Hold a raw pointer. This will allow the reference count on the Queue
+     * object to reach zero. The object itself won't go away anyway, because
+     * the destructor waits for everyone to call Queue::jobFinished().
+     */
+    Queue* q;
+
+  public:
+    QueueLock(Queue::Ptr queue);
+    ~QueueLock();
+  };
+
+private:
+  struct Job
+  {
+    Queue::WeakPtr queue;
+    boost::function<void ()> fn;
+
+    Job();
+    Job(boost::function<void ()> fn, Queue::WeakPtr queue);
   };
 
 public:
@@ -115,7 +146,7 @@ private:
    * the map. If a new job for that priority is scheduled, it is added
    * again.
    */
-  std::map<int, std::queue<boost::function<void ()> > > jobs;
+  std::map<int, std::queue<Job> > jobs;
 
 private:
   /**

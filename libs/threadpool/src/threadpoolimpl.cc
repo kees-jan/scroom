@@ -89,12 +89,23 @@ void ThreadPool::work()
   
     if(!jobs.empty() && !jobs.begin()->second.empty())
     {
-      boost::function<void ()> fn = jobs.begin()->second.front();
+      ThreadPool::Job job = jobs.begin()->second.front();
       jobs.begin()->second.pop();
-      lock.unlock();
 
-      boost::this_thread::disable_interruption while_executing_jobs;
-      fn();
+      ThreadPool::Queue::Ptr queue = job.queue.lock();
+      if(queue)
+      {
+        ThreadPool::QueueLock l(queue);
+
+        // Release our reference to the queue, before one of our other
+        // threads incorrectly assumes the queue still exists
+        queue.reset();
+        lock.unlock();
+
+
+        boost::this_thread::disable_interruption while_executing_jobs;
+        job.fn();
+      }
     }
     else
     {
@@ -106,7 +117,7 @@ void ThreadPool::work()
 void ThreadPool::schedule(boost::function<void ()> const& fn, int priority, ThreadPool::Queue::Ptr queue)
 {
   boost::unique_lock<boost::mutex> lock(mut);
-  jobs[priority].push(fn);
+  jobs[priority].push(Job(fn, queue));
   jobcount.V();
 }
 
@@ -114,6 +125,14 @@ void ThreadPool::schedule(boost::function<void ()> const& fn, ThreadPool::Queue:
 {
   schedule(fn, defaultPriority, queue);
 }
+
+ThreadPool::Queue::Ptr ThreadPool::defaultQueue()
+{
+  static ThreadPool::Queue::Ptr queue = ThreadPool::Queue::create();
+  return queue;
+}
+
+const int ThreadPool::defaultPriority = PRIO_NORMAL;
 
 ////////////////////////////////////////////////////////////////////////
 /// ThreadPool::Queue
@@ -149,6 +168,35 @@ void ThreadPool::Queue::jobFinished()
   boost::mutex::scoped_lock lock(mut);
   count--;
   cond.notify_all();
+}
+
+////////////////////////////////////////////////////////////////////////
+/// ThreadPool::QueueLock
+////////////////////////////////////////////////////////////////////////
+
+ThreadPool::QueueLock::QueueLock(Queue::Ptr queue)
+:q(queue.get())
+{
+  q->jobStarted();
+}
+
+ThreadPool::QueueLock::~QueueLock()
+{
+  q->jobFinished();
+}
+
+////////////////////////////////////////////////////////////////////////
+/// ThreadPool::Job
+////////////////////////////////////////////////////////////////////////
+
+ThreadPool::Job::Job()
+: queue(), fn()
+{
+}
+
+ThreadPool::Job::Job(boost::function<void ()> fn, Queue::WeakPtr queue)
+:queue(queue), fn(fn)
+{
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -190,12 +238,3 @@ void QueueJumper::operator()()
   }
   inQueue=false;
 }
-
-ThreadPool::Queue::Ptr ThreadPool::defaultQueue()
-{
-  static ThreadPool::Queue::Ptr queue = ThreadPool::Queue::create();
-  return queue;
-}
-
-const int ThreadPool::defaultPriority = PRIO_NORMAL;
-
