@@ -57,6 +57,48 @@ enum
 class ThreadPool
 {
 public:
+  /**
+   * Represent a Queue in the ThreadPool.
+   *
+   * If pass in a Queue object when you schedule() your job, then your
+   * job will be scheduled on that particular queue. This does not in
+   * any way affect the order in which jobs are executed. Use priority
+   * for that. Instead, if you later delete your Queue, any jobs
+   * scheduled on that Queue will not be executed any more.
+   *
+   * @note If you delete the Queue, the associated jobs will not
+   *    actually be deleted. Instead, when the time comes to execute
+   *    the job, a check is done whether the Queue still exists. If it
+   *    doesn't, the job is silently discarded.
+   *
+   * @note The implementation of this class deals with jobs on the
+   *    Queue currently being executed. As long as jobs are being
+   *    executed, the Queue should not be deleted.
+   */
+  class Queue
+  {
+  public:
+    typedef boost::shared_ptr<Queue> Ptr;
+    typedef boost::weak_ptr<Queue> WeakPtr;
+
+  public:
+    static Ptr create();
+    
+  protected:
+    boost::mutex mut;                 /**< Guard internal data */
+    boost::condition_variable cond;   /**< Gets signaled when a job completes */
+    unsigned int count;               /**< Number of jobs currently running */
+    
+  public:
+    ~Queue();
+
+  protected:
+    Queue();
+    void jobStarted();
+    void jobFinished();
+  };
+
+public:
   typedef boost::shared_ptr<ThreadPool> Ptr;
   typedef boost::shared_ptr<boost::thread> ThreadPtr;
   

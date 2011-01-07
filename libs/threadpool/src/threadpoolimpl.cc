@@ -111,6 +111,42 @@ void ThreadPool::schedule(boost::function<void ()> const& fn, int priority)
 }
 
 ////////////////////////////////////////////////////////////////////////
+/// ThreadPool::Queue
+////////////////////////////////////////////////////////////////////////
+
+ThreadPool::Queue::Ptr ThreadPool::Queue::create()
+{
+  return ThreadPool::Queue::Ptr(new ThreadPool::Queue());
+}
+
+ThreadPool::Queue::Queue()
+: mut(), cond(), count(0)
+{
+}
+
+ThreadPool::Queue::~Queue()
+{
+  boost::mutex::scoped_lock lock(mut);
+  while(count!=0)
+  {
+    cond.wait(lock);
+  }
+}
+
+void ThreadPool::Queue::jobStarted()
+{
+  boost::mutex::scoped_lock lock(mut);
+  count++;
+}
+
+void ThreadPool::Queue::jobFinished()
+{
+  boost::mutex::scoped_lock lock(mut);
+  count--;
+  cond.notify_all();
+}
+
+////////////////////////////////////////////////////////////////////////
 /// QueueJumper
 ////////////////////////////////////////////////////////////////////////
 

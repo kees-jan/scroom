@@ -7,7 +7,8 @@ check_PROGRAMS = threadpool-tests
 threadpool_tests_SOURCES = \
 	main.cc \
 	semaphore-tests.cc \
-	threadpool-tests.cc
+	threadpool-tests.cc \
+	threadpool-queue-tests.cc
 
 # threadpool_tests_CPPFLAGS = -I $(top_srcdir)/compat/boost-futures/inc
 
