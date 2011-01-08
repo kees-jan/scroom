@@ -25,7 +25,8 @@
 #include <boost/thread.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
-#include <boost/enable_shared_from_this.hpp>
+
+#include <scroom/utilities.hh>
 
 namespace Scroom
 {
@@ -84,7 +85,7 @@ namespace Scroom
      */
     template<typename T>
     class Observable : public boost::noncopyable,
-                       public boost::enable_shared_from_this<Observable<T> >
+                       public virtual Base
     {
     public:
       typedef boost::shared_ptr<T> Observer;
@@ -139,23 +140,6 @@ namespace Scroom
     public:
       Registration registerStrongObserver(Observer observer);
       Registration registerObserver(ObserverWeak observer);
-
-    public:
-      /**
-       * Calls shared_from_this() with a built-in dynamic cast, to
-       * make it usable in subclasses.
-       */
-      template<typename R>
-      boost::shared_ptr<R> shared_from_this();
-
-      /**
-       * Calls shared_from_this() with a built-in dynamic cast, to
-       * make it usable in subclasses.
-       */
-      template<typename R>
-      boost::shared_ptr<R const> shared_from_this() const;
-      
-      
 
     private:
       void unregisterObserver(ObserverWeak observer);
@@ -315,19 +299,6 @@ namespace Scroom
       
       typename Detail::Registration<T>::Ptr(registrationMap[observer])->registrations.push_back(registration);
     }
-
-    template<typename T> template <typename R>
-    boost::shared_ptr<R> Observable<T>::shared_from_this()
-    {
-      return boost::dynamic_pointer_cast<R, Observable<T> >(boost::enable_shared_from_this<Observable<T> >::shared_from_this());
-    }
-
-    template<typename T> template <typename R>
-    boost::shared_ptr<R const> Observable<T>::shared_from_this() const
-    {
-      return boost::dynamic_pointer_cast<R const, Observable<T> const>(boost::enable_shared_from_this<Observable<T> >::shared_from_this());
-    }
-    
   }
 }
 
