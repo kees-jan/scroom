@@ -23,6 +23,10 @@
 
 #include <scroom/threadpool.hh>
 
+#include "queue.hh"
+
+using namespace Scroom::Detail::ThreadPool;
+
 ////////////////////////////////////////////////////////////////////////
 /// ThreadPool
 ////////////////////////////////////////////////////////////////////////
@@ -92,16 +96,10 @@ void ThreadPool::work()
       ThreadPool::Job job = jobs.begin()->second.front();
       jobs.begin()->second.pop();
 
-      ThreadPool::Queue::Ptr queue = job.queue.lock();
-      if(queue)
+      QueueLock l(job.queue);
+      if(l.queueExists())
       {
-        ThreadPool::QueueLock l(queue);
-
-        // Release our reference to the queue, before one of our other
-        // threads incorrectly assumes the queue still exists
-        queue.reset();
         lock.unlock();
-
 
         boost::this_thread::disable_interruption while_executing_jobs;
         job.fn();
@@ -144,45 +142,18 @@ ThreadPool::Queue::Ptr ThreadPool::Queue::create()
 }
 
 ThreadPool::Queue::Queue()
-: mut(), cond(), count(0)
+: qi(QueueImpl::create())
 {
 }
 
 ThreadPool::Queue::~Queue()
 {
-  boost::mutex::scoped_lock lock(mut);
-  while(count!=0)
-  {
-    cond.wait(lock);
-  }
+  qi->deletingQueue();
 }
 
-void ThreadPool::Queue::jobStarted()
+QueueImpl::Ptr ThreadPool::Queue::get()
 {
-  boost::mutex::scoped_lock lock(mut);
-  count++;
-}
-
-void ThreadPool::Queue::jobFinished()
-{
-  boost::mutex::scoped_lock lock(mut);
-  count--;
-  cond.notify_all();
-}
-
-////////////////////////////////////////////////////////////////////////
-/// ThreadPool::QueueLock
-////////////////////////////////////////////////////////////////////////
-
-ThreadPool::QueueLock::QueueLock(Queue::Ptr queue)
-:q(queue.get())
-{
-  q->jobStarted();
-}
-
-ThreadPool::QueueLock::~QueueLock()
-{
-  q->jobFinished();
+  return qi;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -194,8 +165,8 @@ ThreadPool::Job::Job()
 {
 }
 
-ThreadPool::Job::Job(boost::function<void ()> fn, Queue::WeakPtr queue)
-:queue(queue), fn(fn)
+ThreadPool::Job::Job(boost::function<void ()> fn, Queue::Ptr queue)
+:queue(queue->get()), fn(fn)
 {
 }
 

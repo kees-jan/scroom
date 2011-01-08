@@ -48,6 +48,17 @@ enum
     PRIO_LOWEST,
   };
 
+namespace Scroom
+{
+  namespace Detail
+  {
+    namespace ThreadPool
+    {
+      class QueueImpl;
+    }
+  }
+}
+
 /**
  * Generic threadpool
  *
@@ -57,8 +68,6 @@ enum
 class ThreadPool
 {
 public:
-  class QueueLock;
-
   /**
    * Represent a Queue in the ThreadPool.
    *
@@ -85,48 +94,24 @@ public:
 
   public:
     static Ptr create();
-    
-  protected:
-    boost::mutex mut;                 /**< Guard internal data */
-    boost::condition_variable cond;   /**< Gets signaled when a job completes */
-    unsigned int count;               /**< Number of jobs currently running */
-    
-  public:
     ~Queue();
+    boost::shared_ptr<Scroom::Detail::ThreadPool::QueueImpl> get();
 
-  protected:
+  private:
     Queue();
-    void jobStarted();
-    void jobFinished();
 
-    friend class QueueLock;
-  };
-
-  /**
-   * Call Queue::jobStarted() and Queue::jobFinished().
-   */
-  class QueueLock
-  {
-    /**
-     * Hold a raw pointer. This will allow the reference count on the Queue
-     * object to reach zero. The object itself won't go away anyway, because
-     * the destructor waits for everyone to call Queue::jobFinished().
-     */
-    Queue* q;
-
-  public:
-    QueueLock(Queue::Ptr queue);
-    ~QueueLock();
+  private:
+    boost::shared_ptr<Scroom::Detail::ThreadPool::QueueImpl> qi;
   };
 
 private:
   struct Job
   {
-    Queue::WeakPtr queue;
+    boost::shared_ptr<Scroom::Detail::ThreadPool::QueueImpl> queue;
     boost::function<void ()> fn;
 
     Job();
-    Job(boost::function<void ()> fn, Queue::WeakPtr queue);
+    Job(boost::function<void ()> fn, Queue::Ptr queue);
   };
 
 public:
