@@ -40,7 +40,7 @@ private:
   TileInternalLine lineOutOfBounds;
   
 public:
-  Layer(TileInternalObserver::Ptr observer, int depth, int layerWidth, int layerHeight, int bpp);
+  Layer(TileInitialisationObserver::Ptr observer, int depth, int layerWidth, int layerHeight, int bpp);
   int getHorTileCount();
   int getVerTileCount();
 

@@ -60,7 +60,7 @@ public:
 };
 
 
-class TiledBitmap : public TiledBitmapInterface, public TileInternalObserver,
+class TiledBitmap : public TiledBitmapInterface, public TileInitialisationObserver,
                     public boost::enable_shared_from_this<TiledBitmap>
 {
 public:
@@ -107,7 +107,7 @@ public:
   virtual void redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);
 
   ////////////////////////////////////////////////////////////////////////
-  // TileInternalObserver
+  // TileInitialisationObserver
 
   virtual void tileCreated(TileInternal::Ptr tile);
   virtual void tileFinished(TileInternal::Ptr tile);

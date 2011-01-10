@@ -429,14 +429,15 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
                                  tileArea.y, tileArea.height, viewArea.y, viewArea.height);
         
         TileInternal::Ptr tile = layer->getTile(i,j);
+        Tile::Ptr t = tile->getTileAsync();
 
-        if(tile->state == TILE_LOADED)
+        if(t)
         {
-          layerOperations->draw(cr, tile->getTile(), tileArea, viewArea, zoom);
+          layerOperations->draw(cr, tile->getTileAsync(), tileArea, viewArea, zoom);
         }
         else
         {
-          layerOperations->drawState(cr, tile->state, viewArea);
+          layerOperations->drawState(cr, tile->getState(), viewArea);
         }
 #ifdef DEBUG_TILES
         drawTile(cr, tile, viewArea);
@@ -542,15 +543,16 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
                                   tileArea.y, tileArea.height, viewArea.y, viewArea.height);
         
         TileInternal::Ptr tile = layer->getTile(i,j);
+        Tile::Ptr t = tile->getTileAsync();
 
         // 3. Draw the area
-        if(tile->state == TILE_LOADED)
+        if(t)
         {
-          layerOperations->draw(cr, tile->getTile(), tileArea, viewArea, zoom);
+          layerOperations->draw(cr, t, tileArea, viewArea, zoom);
         }
         else
         {
-          layerOperations->drawState(cr, tile->state, viewArea);
+          layerOperations->drawState(cr, tile->getState(), viewArea);
         }
 #ifdef DEBUG_TILES
         drawTile(cr, tile, viewArea);
@@ -574,7 +576,7 @@ void TiledBitmap::close(ViewInterface* vi)
 }
 
 ////////////////////////////////////////////////////////////////////////
-// TileInternalObserver
+// TileInitialisationObserver
 
 void TiledBitmap::tileCreated(TileInternal::Ptr tile)
 {

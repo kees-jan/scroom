@@ -71,7 +71,7 @@ void LayerCoordinator::addSourceTile(int x, int y, TileInternal::Ptr tile)
 }
 
 ////////////////////////////////////////////////////////////////////////
-/// TileInternalObserver
+/// TileInitialisationObserver
 
 void LayerCoordinator::tileFinished(TileInternal::Ptr tile)
 {
@@ -97,8 +97,8 @@ TileReducer::TileReducer(LayerOperations* lo,
 
 void TileReducer::operator()()
 {
-  Tile::Ptr target = targetTile->getTile();
-  Tile::Ptr source = sourceTile->getTile();
+  Tile::Ptr target = targetTile->getTileSync();
+  Tile::Ptr source = sourceTile->getTileSync();
 
   lo->reduce(target, source, x, y);
 

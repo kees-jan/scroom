@@ -28,7 +28,7 @@
 
 #include "tileinternal.hh"
 
-class LayerCoordinator: public TileInternalObserver,
+class LayerCoordinator: public TileInitialisationObserver,
                         public boost::enable_shared_from_this<LayerCoordinator>
 {
 private:
@@ -53,7 +53,7 @@ private:
 
 public:
   ////////////////////////////////////////////////////////////////////////
-  /// TileInternalObserver
+  /// TileInitialisationObserver
   virtual void tileFinished(TileInternal::Ptr tile);
 };
 

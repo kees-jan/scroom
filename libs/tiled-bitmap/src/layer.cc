@@ -47,7 +47,7 @@ public:
 
 ////////////////////////////////////////////////////////////////////////
 /// Layer 
-Layer::Layer(TileInternalObserver::Ptr observer, int depth, int layerWidth, int layerHeight, int bpp)
+Layer::Layer(TileInitialisationObserver::Ptr observer, int depth, int layerWidth, int layerHeight, int bpp)
   : depth(depth), width(layerWidth), height(layerHeight), bpp(bpp)
 {
   horTileCount = (width+TILESIZE-1)/TILESIZE;
@@ -65,7 +65,7 @@ Layer::Layer(TileInternalObserver::Ptr observer, int depth, int layerWidth, int 
     }
   }
 
-  outOfBounds = TileInternal::create(depth, -1, -1, bpp, TILE_OUT_OF_BOUNDS);
+  outOfBounds = TileInternal::create(depth, -1, -1, bpp, TSI_OUT_OF_BOUNDS);
   for(int i=0; i<horTileCount; i++)
   {
     lineOutOfBounds.push_back(outOfBounds);
@@ -144,7 +144,7 @@ void DataFetcher::operator()()
   {
     TileInternal::Ptr ti = tileLine[x];
     ti->initialize();
-    tiles.push_back(ti->getTile());
+    tiles.push_back(ti->getTileSync());
   }
   int lineCount = std::min(TILESIZE, height-currentRow*TILESIZE);
 

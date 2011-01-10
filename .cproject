@@ -450,7 +450,7 @@
 <folderInfo id="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.698951876." name="/" resourcePath="">
 <toolChain id="org.eclipse.linuxtools.cdt.autotools.core.toolChain.1838679611" name="GNU Autotools Toolchain" superClass="org.eclipse.linuxtools.cdt.autotools.core.toolChain">
 <targetPlatform id="org.eclipse.linuxtools.cdt.autotools.core.toolchain.targetPlatform.2110487207" isAbstract="false" name="GNU Autotools Target Platform" superClass="org.eclipse.linuxtools.cdt.autotools.core.toolchain.targetPlatform"/>
-<builder cleanBuildTarget="clean" id="org.eclipse.linuxtools.cdt.autotools.core.toolchain.builder.2059075779" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" superClass="org.eclipse.linuxtools.cdt.autotools.core.toolchain.builder"/>
+<builder arguments="-k -j12" cleanBuildTarget="clean" command="make" id="org.eclipse.linuxtools.cdt.autotools.core.toolchain.builder.2059075779" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" superClass="org.eclipse.linuxtools.cdt.autotools.core.toolchain.builder"/>
 <tool id="org.eclipse.linuxtools.cdt.autotools.core.gnu.toolchain.tool.configure.829586565" name="configure" superClass="org.eclipse.linuxtools.cdt.autotools.core.gnu.toolchain.tool.configure">
 <option id="org.eclipse.linuxtools.cdt.autotools.core.option.configure.name.1053882664" name="Name" superClass="org.eclipse.linuxtools.cdt.autotools.core.option.configure.name" value="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.698951876" valueType="string"/>
 </tool>

@@ -48,6 +48,8 @@ void TiledBitmapViewData::gtk_progress_bar_pulse()
 
 void TiledBitmapViewData::setNeededTiles(Layer* l, int imin, int imax, int jmin, int jmax)
 {
+  boost::unique_lock<boost::mutex> lock(mut);
+
   if(this->layer == l && this->imin <= imin && this->imax >= imax &&
       this->jmin <= jmin && this->jmax >= jmax)
   {
@@ -61,6 +63,52 @@ void TiledBitmapViewData::setNeededTiles(Layer* l, int imin, int imax, int jmin,
     this->jmin = jmin;
     this->jmax = jmax;
 
-    // TODO: Get data for new tiles
+    // Get data for new tiles
+    redrawPending = true; // if it isn't already
+
+    // If we just cleared out oldstuff, old tiles would be unloaded, and
+    // we might still need them. So create a backup to throw away later
+    std::list<boost::shared_ptr<void> > oldStuff;
+    oldStuff.swap(stuff);
+
+    lock.unlock();
+    // Temporarily release the lock, such that tiles that have already been
+    // loaded can be added to stuff
+
+    // Without having the lock we can't add to stuff, so cache stuff here.
+    std::list<boost::shared_ptr<void> > newStuff;
+
+    for(int i=imin; i<imax; i++)
+      for(int j=jmin; j<jmax; j++)
+      {
+        TileInternal::Ptr tile = layer->getTile(i,j);
+
+        /* This is a bit scary. When registering an obsrever, tileLoaded()
+         * might be called, which is going to do a gdk_threads_enter(), if
+         * redrawPending is false. We can't really have that, since
+         * gdk_threads_enter is already called (since we're in the redraw())
+         * call, currently. Hence, it is important that redrawPending is true
+         * here.
+         */
+        newStuff.push_back(tile->registerObserver(shared_from_this<TiledBitmapViewData>()));
+      }
+    // Re-acquire the lock
+    lock.lock();
+    stuff.splice(stuff.end(), newStuff, newStuff.begin(), newStuff.end());
+  }
+  redrawPending = false;
+}
+
+void TiledBitmapViewData::tileLoaded(Tile::Ptr tile)
+{
+  boost::unique_lock<boost::mutex> lock(mut);
+  stuff.push_back(tile);
+
+  if(!redrawPending)
+  {
+    gdk_threads_enter();
+    viewInterface->invalidate();
+    gdk_threads_leave();
+    redrawPending = true;
   }
 }

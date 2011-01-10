@@ -19,6 +19,7 @@
 #ifndef _LOCAL_HH
 #define _LOCAL_HH
 
+#define LOAD_PRIO PRIO_HIGHER
 #define DATAFETCH_PRIO PRIO_HIGH
 #define REDUCE_PRIO PRIO_NORMAL
 

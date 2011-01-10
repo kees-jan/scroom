@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -30,23 +30,38 @@
 #include <scroom/tile.hh>
 
 #include <scroom/observable.hh>
-
+#include <scroom/threadpool.hh>
 #include <scroom/memorymanagerinterface.hh>
 
 
 #define TILESIZE 4096
 // #define TILESIZE 1024
 
+/**
+ * Represent the state of one of the tiles that make up a layer in the
+ * bitmap.
+ */
+typedef enum
+  {
+    TSI_UNINITIALIZED = TILE_UNINITIALIZED, /**< Tile does not yet contain any data */
+    TSI_UNLOADED = TILE_UNLOADED,           /**< Tile does contain data, but has been swapped out */
+    TSI_LOADED = TILE_LOADED,               /**< Tile does contain data, and data is in memory */
+    TSI_OUT_OF_BOUNDS = TILE_OUT_OF_BOUNDS, /**< Tile is located outside the bitmap area */
+    TSI_LOADING_SYNCHRONOUSLY,
+    TSI_LOADING_ASYNCHRONOUSLY
+  } TileStateInternal;
+
+
 class TileInternal;
 
-/** Observe a TileInternal object */
-class TileInternalObserver
+/** Events related to filling a tile with data. */
+class TileInitialisationObserver
 {
 public:
-  typedef boost::shared_ptr<TileInternalObserver> Ptr;
-  typedef boost::weak_ptr<TileInternalObserver> WeakPtr;
+  typedef boost::shared_ptr<TileInitialisationObserver> Ptr;
+  typedef boost::weak_ptr<TileInitialisationObserver> WeakPtr;
   
-  virtual ~TileInternalObserver() {}
+  virtual ~TileInitialisationObserver() {}
 
   /**
    * The tile has been created.
@@ -70,6 +85,19 @@ public:
   virtual void tileFinished(boost::shared_ptr<TileInternal> tile);
 };
 
+/** Events related to swapping tiles in/out */
+class TileLoadingObserver
+{
+public:
+  typedef boost::shared_ptr<TileLoadingObserver> Ptr;
+  typedef boost::weak_ptr<TileLoadingObserver> WeakPtr;
+
+  virtual ~TileLoadingObserver() {};
+
+  /** The Tile has been loaded. */
+  virtual void tileLoaded(Tile::Ptr tile)=0;
+};
+
 /**
  * Internal data structure representing a Tile.
  *
@@ -80,7 +108,9 @@ public:
  *
  * Observers can receive events related to this tile.
  */
-class TileInternal : public Scroom::Utils::Observable<TileInternalObserver>, public MemoryManagedInterface
+class TileInternal : public Scroom::Utils::Observable<TileInitialisationObserver>,
+                     public Scroom::Utils::Observable<TileLoadingObserver>,
+                     public MemoryManagedInterface
 {
 public:
   typedef boost::shared_ptr<TileInternal> Ptr;
@@ -90,40 +120,62 @@ public:
   int x;                  /**< x-coordinate of this tile (i.e. number of tiles to the left of this tile) */
   int y;                  /**< y-coordinate of this tile (i.e. number of tiles above this tile) */
   int bpp;                /**< Bits per pixel of this tile. Must be a divisor of 8. */
-  TileState state;        /**< State of this tile */
+  TileStateInternal state;/**< State of this tile */
   Tile::WeakPtr tile;     /**< Reference to the actual Tile */
   FileBackedMemory data;  /**< Data associated with the Tile */
-  boost::mutex mut;       /**< Mutex protecting internal data structures */
+  boost::mutex stateData; /**< Mutex protecting the state field */
+  boost::mutex tileData;  /**< Mutex protecting the data-related fields */
+
+  ThreadPool::Queue::WeakPtr queue; /**< Queue on which the load operation is executed */
 
 private:
-  TileInternal(int depth, int x, int y, int bpp, TileState state);
+  TileInternal(int depth, int x, int y, int bpp, TileStateInternal state);
 
 public:
-  static Ptr create(int depth, int x, int y, int bpp, TileState state=TILE_UNINITIALIZED);
+  static Ptr create(int depth, int x, int y, int bpp, TileStateInternal state=TSI_UNINITIALIZED);
 
   /**
    * Initializes the tile data
    *
-   * Allocates memory, initializes it to 0, and changes state to TILE_LOADED
+   * Allocates memory, initializes it to 0, and changes state to TSI_LOADED
    */
   void initialize();
 
   /**
-   * Keep track of new observers.
+   * Keep track of new TileInitialisationObserver registrations.
    *
    * Upon registering an observer, you'll receive the
-   * TileInternalObserver::tileCreated() event immediately, on your
+   * TileInitialisationObserver::tileCreated() event immediately, on your
    * thread. Be careful with your mutexes :-)
    */
-  virtual void observerAdded(TileInternalObserver::Ptr observer);
+  virtual void observerAdded(TileInitialisationObserver::Ptr observer);
+
+  /**
+   * Keep track of new TileLoadingObserver registrations.
+   */
+  virtual void observerAdded(TileLoadingObserver::Ptr observer);
+
+  // To choose between overloaded functions, the compiler needs some extra convincing
+  virtual Scroom::Utils::Registration registerStrongObserver(TileInitialisationObserver::Ptr observer) { return Scroom::Utils::Observable<TileInitialisationObserver>::registerStrongObserver(observer); }
+  virtual Scroom::Utils::Registration registerObserver(TileInitialisationObserver::WeakPtr observer) { return Scroom::Utils::Observable<TileInitialisationObserver>::registerObserver(observer); }
+  virtual Scroom::Utils::Registration registerStrongObserver(TileLoadingObserver::Ptr observer) { return Scroom::Utils::Observable<TileLoadingObserver>::registerStrongObserver(observer); }
+  virtual Scroom::Utils::Registration registerObserver(TileLoadingObserver::WeakPtr observer) { return Scroom::Utils::Observable<TileLoadingObserver>::registerObserver(observer); }
 
   /**
    * Get a reference to the Tile.
    *
-   * If the tile is currently TILE_UNLOADED, it will be loaded. If the
-   * tile is TILE_UNINITIALIZED, you'll receive an empty reference.
+   * If the tile is currently TSI_UNLOADED, it will be loaded. If the
+   * tile is TSI_UNINITIALIZED, you'll receive an empty reference.
    */
-  Tile::Ptr getTile();
+  Tile::Ptr getTileSync();
+
+  /**
+   * Get a reference to the Tile.
+   *
+   * If the tile is currently TSI_LOADED, you'll get a reference, otherwise,
+   * you'll receive an empty reference.
+   */
+  Tile::Ptr getTileAsync();
 
   /**
    * Report that the tile is completely filled with data
@@ -132,7 +184,20 @@ public:
    */
   void reportFinished();
 
+  TileState getState();
+
+private:
+  /**
+   * Does some internal state maintenance.
+   *
+   * Call only while stateData is locked.
+   */
+  void cleanupState();
+  Tile::Ptr do_load();
+  void notifyObservers(Tile::Ptr tile);
+
   // MemoryManagedInterface //////////////////////////////////////////////
+public:
   virtual bool do_unload();
 };
 

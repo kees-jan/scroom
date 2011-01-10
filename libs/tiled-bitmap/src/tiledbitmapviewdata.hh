@@ -24,10 +24,11 @@
 #include <boost/shared_ptr.hpp>
 
 #include <scroom/viewinterface.hh>
+#include <scroom/observable.hh>
 
 #include "layer.hh"
 
-class TiledBitmapViewData
+class TiledBitmapViewData : public Scroom::Utils::Base, public TileLoadingObserver
 {
 public:
   typedef boost::shared_ptr<TiledBitmapViewData> Ptr;
@@ -43,6 +44,20 @@ private:
   int jmin;
   int jmax;
 
+  /**
+   * References to things we want to keep around.
+   *
+   * This includes
+   * @li observer registrations
+   * @li tiles that have been loaded
+   */
+  std::list<boost::shared_ptr<void> > stuff;
+
+  bool redrawPending;
+
+  /** Protect @c stuff and @c redrawPending */
+  boost::mutex mut;
+
 private:
   TiledBitmapViewData(ViewInterface* viewInterface);
 
@@ -54,6 +69,9 @@ public:
   void gtk_progress_bar_pulse();
 
   void setNeededTiles(Layer* l, int imin, int imax, int jmin, int jmax);
+
+  // TileLoadingObserver ////////////////////////////////////////////////
+  virtual void tileLoaded(Tile::Ptr tile);
 };
 
 #endif

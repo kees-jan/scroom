@@ -20,25 +20,31 @@
 
 #include <string.h>
 
-////////////////////////////////////////////////////////////////////////
-/// TileInternalObserver
+#include <boost/foreach.hpp>
 
-void TileInternalObserver::tileFinished(TileInternal::Ptr)
+#include "local.hh"
+
+using namespace Scroom::Utils;
+
+////////////////////////////////////////////////////////////////////////
+/// TileInitialisationObserver
+
+void TileInitialisationObserver::tileFinished(TileInternal::Ptr)
 {
 }
 
-void TileInternalObserver::tileCreated(TileInternal::Ptr)
+void TileInitialisationObserver::tileCreated(TileInternal::Ptr)
 {
 }
 
 ////////////////////////////////////////////////////////////////////////
 /// TileInternal
-TileInternal::TileInternal(int depth, int x, int y, int bpp, TileState state)
+TileInternal::TileInternal(int depth, int x, int y, int bpp, TileStateInternal state)
   : depth(depth), x(x), y(y), bpp(bpp), state(state), tile(), data(TILESIZE*TILESIZE * bpp / 8)
 {
 }
 
-TileInternal::Ptr TileInternal::create(int depth, int x, int y, int bpp, TileState state)
+TileInternal::Ptr TileInternal::create(int depth, int x, int y, int bpp, TileStateInternal state)
 {
   TileInternal::Ptr tile = TileInternal::Ptr(new TileInternal(depth, x, y, bpp, state));
   MemoryManager::registerMMI(tile, TILESIZE*TILESIZE * tile->bpp / 8, 1);
@@ -46,36 +52,36 @@ TileInternal::Ptr TileInternal::create(int depth, int x, int y, int bpp, TileSta
   return tile;
 }
 
-Tile::Ptr TileInternal::getTile()
+Tile::Ptr TileInternal::getTileSync()
 {
-  boost::unique_lock<boost::mutex> lock(mut);
   Tile::Ptr result = tile.lock();
-  if(!result && (state == TILE_UNLOADED || state == TILE_LOADED))
-  {
-    result = Tile::Ptr(new Tile(TILESIZE, TILESIZE, bpp, data.load()));
-    tile = result;
-    state = TILE_LOADED;
-    MemoryManager::loadNotification(shared_from_this<TileInternal>());
-  }
+  if(!result)
+    result = do_load();
   
   return result;
 }
 
+Tile::Ptr TileInternal::getTileAsync()
+{
+  return tile.lock();
+}
+
 void TileInternal::initialize()
 {
-  boost::unique_lock<boost::mutex> lock(mut);
+  boost::unique_lock<boost::mutex> stateLock(stateData);
+  boost::unique_lock<boost::mutex> dataLock(tileData);
 
-  if(state == TILE_UNINITIALIZED)
+  if(state == TSI_UNINITIALIZED)
   {
     data.initialize(0);
-    state = TILE_LOADED;
+    state = TSI_LOADED;
     MemoryManager::loadNotification(shared_from_this<TileInternal>());
   }
 }
   
 void TileInternal::reportFinished()
 {
-  std::list<TileInternalObserver::Ptr> observers = getObservers();
+  std::list<TileInitialisationObserver::Ptr> observers = Observable<TileInitialisationObserver>::getObservers();
   while(!observers.empty())
   {
     observers.front()->tileFinished(shared_from_this<TileInternal>());
@@ -85,22 +91,141 @@ void TileInternal::reportFinished()
 
 bool TileInternal::do_unload()
 {
-  boost::unique_lock<boost::mutex> lock(mut);
-  bool isUnloaded = false;
+  boost::unique_lock<boost::mutex> stateLock(stateData);
+  boost::unique_lock<boost::mutex> dataLock(tileData);
+  cleanupState();
+
   Tile::Ptr result = tile.lock();
-  if(!result && state == TILE_LOADED)
+  if(!result && state == TSI_LOADED)
   {
     // Tile not in use. We can unload now...
     data.unload();
-    state = TILE_UNLOADED;
+    state = TSI_UNLOADED;
     MemoryManager::unloadNotification(shared_from_this<TileInternal>());
-    isUnloaded=true;
   }
 
-  return isUnloaded;
+  return state == TSI_UNLOADED;
 }
 
-void TileInternal::observerAdded(TileInternalObserver::Ptr observer)
+Tile::Ptr TileInternal::do_load()
+{
+  bool didLoad = state != TSI_LOADED;
+
+  Tile::Ptr result;
+  {
+    boost::unique_lock<boost::mutex> lock(stateData);
+    cleanupState();
+    state = TSI_LOADING_SYNCHRONOUSLY;
+  }
+  {
+    boost::unique_lock<boost::mutex> lock(tileData);
+    result = tile.lock(); // This ought to fail
+    if(!result)
+    {
+      result = Tile::Ptr(new Tile(TILESIZE, TILESIZE, bpp, data.load()));
+      tile = result;
+      MemoryManager::loadNotification(shared_from_this<TileInternal>());
+    }
+  }
+  {
+    boost::unique_lock<boost::mutex> lock(stateData);
+    cleanupState();
+    state = TSI_LOADED;
+    if(didLoad)
+      notifyObservers(result);
+  }
+
+  return result;
+}
+
+TileState TileInternal::getState()
+{
+  TileState result = TILE_UNINITIALIZED;
+  switch(state)
+  {
+  case TSI_LOADED:
+    result = TILE_LOADED;
+    break;
+  case TSI_OUT_OF_BOUNDS:
+    result = TILE_OUT_OF_BOUNDS;
+    break;
+  case TSI_UNLOADED:
+  case TSI_LOADING_SYNCHRONOUSLY:
+  case TSI_LOADING_ASYNCHRONOUSLY:
+    result = TILE_UNLOADED;
+    break;
+  case TSI_UNINITIALIZED:
+  default:
+    result = TILE_UNINITIALIZED;
+    break;
+  }
+  return result;
+}
+
+void TileInternal::observerAdded(TileInitialisationObserver::Ptr observer)
 {
   observer->tileCreated(shared_from_this<TileInternal>());
+}
+
+void TileInternal::observerAdded(TileLoadingObserver::Ptr observer)
+{
+  Tile::Ptr result = tile.lock();
+  ThreadPool::Queue::Ptr queue = this->queue.lock();
+
+  if(!result)
+  {
+    boost::unique_lock<boost::mutex> lock(stateData);
+    cleanupState();
+    switch(state)
+    {
+    case TSI_LOADED:
+    case TSI_LOADING_SYNCHRONOUSLY:
+    case TSI_LOADING_ASYNCHRONOUSLY:
+    case TSI_UNINITIALIZED:
+      // Need to do nothing. All will be well.
+      break;
+
+    default:
+    case TSI_OUT_OF_BOUNDS:
+      // Shouldn't happen
+      break;
+
+    case TSI_UNLOADED:
+      // Start an asynchronous load
+      if(!queue)
+      {
+        queue = ThreadPool::Queue::create();
+        this->queue = queue;
+      }
+      CpuBound()->schedule(boost::bind(&TileInternal::do_load, this), LOAD_PRIO, queue);
+      state = TSI_LOADING_ASYNCHRONOUSLY;
+
+      break;
+    }
+  }
+
+  // When the last observer goes away, cancel the load
+  if(queue)
+    Observable<TileLoadingObserver>::addRecursiveRegistration(observer, queue);
+
+  if(result)
+    observer->tileLoaded(result);
+}
+
+void TileInternal::cleanupState()
+{
+  if(state == TSI_LOADING_ASYNCHRONOUSLY && !queue.lock())
+  {
+    // Someone, after triggering an asynchronous load, decided not to need
+    // the tile. Changing back to unloaded.
+    state = TSI_UNLOADED;
+  }
+}
+
+void TileInternal::notifyObservers(Tile::Ptr tile)
+{
+  BOOST_FOREACH(TileLoadingObserver::Ptr observer, Observable<TileLoadingObserver>::getObservers())
+    {
+      observer->tileLoaded(tile);
+    }
 }
