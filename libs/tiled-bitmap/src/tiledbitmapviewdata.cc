@@ -66,7 +66,7 @@ void TiledBitmapViewData::setNeededTiles(Layer* l, int imin, int imax, int jmin,
     // Get data for new tiles
     redrawPending = true; // if it isn't already
 
-    // If we just cleared out oldstuff, old tiles would be unloaded, and
+    // If we just cleared out oldStuff, old tiles would be unloaded, and
     // we might still need them. So create a backup to throw away later
     std::list<boost::shared_ptr<void> > oldStuff;
     oldStuff.swap(stuff);
@@ -83,13 +83,6 @@ void TiledBitmapViewData::setNeededTiles(Layer* l, int imin, int imax, int jmin,
       {
         TileInternal::Ptr tile = layer->getTile(i,j);
 
-        /* This is a bit scary. When registering an obsrever, tileLoaded()
-         * might be called, which is going to do a gdk_threads_enter(), if
-         * redrawPending is false. We can't really have that, since
-         * gdk_threads_enter is already called (since we're in the redraw())
-         * call, currently. Hence, it is important that redrawPending is true
-         * here.
-         */
         newStuff.push_back(tile->registerObserver(shared_from_this<TiledBitmapViewData>()));
       }
     // Re-acquire the lock
@@ -99,6 +92,15 @@ void TiledBitmapViewData::setNeededTiles(Layer* l, int imin, int imax, int jmin,
   redrawPending = false;
 }
 
+gboolean invalidate_view(gpointer user_data)
+{
+  ViewInterface* vi = static_cast<ViewInterface*>(user_data);
+  gdk_threads_enter();
+  vi->invalidate();
+  gdk_threads_leave();
+  return false;
+}
+
 void TiledBitmapViewData::tileLoaded(Tile::Ptr tile)
 {
   boost::unique_lock<boost::mutex> lock(mut);
@@ -106,9 +108,10 @@ void TiledBitmapViewData::tileLoaded(Tile::Ptr tile)
 
   if(!redrawPending)
   {
-    gdk_threads_enter();
-    viewInterface->invalidate();
-    gdk_threads_leave();
+    // We're not sure about whether gdk_threads_enter() has been
+    // called or not, so we have no choice but to invalidate on
+    // another thread.
+    gtk_idle_add(invalidate_view, viewInterface);
     redrawPending = true;
   }
 }

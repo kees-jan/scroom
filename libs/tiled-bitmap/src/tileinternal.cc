@@ -63,29 +63,42 @@ Tile::Ptr TileInternal::getTileSync()
 
 Tile::Ptr TileInternal::getTileAsync()
 {
-  return tile.lock();
+  Tile::Ptr result = tile.lock();
+  if(!result && state == TSI_LOADED)
+    result = do_load();
+
+  return result;
 }
 
 void TileInternal::initialize()
 {
-  boost::unique_lock<boost::mutex> stateLock(stateData);
-  boost::unique_lock<boost::mutex> dataLock(tileData);
-
-  if(state == TSI_UNINITIALIZED)
+  bool didInitialize = false;
   {
-    data.initialize(0);
-    state = TSI_LOADED;
-    MemoryManager::loadNotification(shared_from_this<TileInternal>());
+    boost::unique_lock<boost::mutex> stateLock(stateData);
+    boost::unique_lock<boost::mutex> dataLock(tileData);
+
+    if(state == TSI_UNINITIALIZED)
+    {
+      data.initialize(0);
+      state = TSI_LOADED;
+      didInitialize = true;
+      MemoryManager::loadNotification(shared_from_this<TileInternal>());
+    }
   }
+
+  if(didInitialize)
+    do_load(); // Trigger notifyObservers()
 }
   
 void TileInternal::reportFinished()
 {
-  std::list<TileInitialisationObserver::Ptr> observers = Observable<TileInitialisationObserver>::getObservers();
-  while(!observers.empty())
+  BOOST_FOREACH(TileInitialisationObserver::Ptr observer, Observable<TileInitialisationObserver>::getObservers())
   {
-    observers.front()->tileFinished(shared_from_this<TileInternal>());
-    observers.pop_front();
+    observer->tileFinished(shared_from_this<TileInternal>());
+  }
+  BOOST_FOREACH(TileLoadingObserver::Ptr observer, Observable<TileLoadingObserver>::getObservers())
+  {
+    observer->tileLoaded(do_load());
   }
 }
 
@@ -109,7 +122,7 @@ bool TileInternal::do_unload()
 
 Tile::Ptr TileInternal::do_load()
 {
-  bool didLoad = state != TSI_LOADED;
+  bool didLoad = false;
 
   Tile::Ptr result;
   {
@@ -125,6 +138,7 @@ Tile::Ptr TileInternal::do_load()
       result = Tile::Ptr(new Tile(TILESIZE, TILESIZE, bpp, data.load()));
       tile = result;
       MemoryManager::loadNotification(shared_from_this<TileInternal>());
+      didLoad = true;
     }
   }
   {
