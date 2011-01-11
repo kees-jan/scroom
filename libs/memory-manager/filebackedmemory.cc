@@ -80,10 +80,41 @@ void FileBackedMemory::unload()
       fileCreated = true;
 
       gzFile f = gzdopen(fd, "w");
-      int r = gzwrite(f, data, size);
-      assert(r == (int)size);
-      gzclose(f);
-      close(fd);
+      if(f)
+      {
+        int remaining = size;
+        int offset = 0;
+        while(remaining != 0)
+        {
+          int r = gzwrite(f, data+offset, remaining);
+          assert(r<=remaining);
+          if(r <= 0)
+          {
+            // error
+            int errorCode = 0;
+            const char* errorString = gzerror(f, &errorCode);
+            printf("PANIC: An error occurred: (%d, %d, %d) %d, %s\n",
+                   offset, remaining, r, 
+                   errorCode, errorString);
+            abort();
+          }
+          else
+          {
+            remaining -= r;
+            offset += r;
+          }
+        }
+        gzclose(f);
+      }
+      else
+      {
+        int errorCode = 0;
+        const char* errorString = gzerror(f, &errorCode);
+        printf("PANIC: Open failed: %d, %s\n",
+               errorCode, errorString);
+        close(fd);
+        abort();
+      }
     }
     delete[] data;
     data = NULL;
