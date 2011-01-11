@@ -124,6 +124,13 @@ else
   AC_MSG_RESULT([yes])
 fi
 
+# Checking for zlib
+have_zlib_headers=no
+have_zlib=no
+AC_CHECK_HEADERS([zlib.h], [have_zlib_headers=yes])
+SCROOM_SEARCH_LIBS([zlibVersion], [z], [have_zlib=yes])
+AC_SUBST([ZLIB], [$ac_cv_search_zlibVersion])
+
 # Checking for boost thread
 have_boost_thread_headers=no
 AC_CHECK_HEADERS([boost/thread.hpp boost/thread/mutex.hpp], [have_boost_thread_headers=yes])
@@ -163,6 +170,14 @@ AC_SUBST([BOOST_FUTURES_CPPFLAGS], [$boost_futures_include_flags])
 AM_CONDITIONAL([NEW_BOOST_FUTURES], [test x$have_new_boost_futures = xyes])
 
 # Some sanity checks
+if test "x${have_zlib_headers}" = xno
+then
+  AC_MSG_ERROR([zLib headers not found])
+fi
+if test "x${have_zlib}" = xno
+then
+  AC_MSG_ERROR([zLib library not found])
+fi
 if test "x${have_boost_thread_headers}" = xno
 then
   AC_MSG_ERROR([Boost thread header files not found.])
@@ -195,7 +210,6 @@ else
     want_doxygen=no
     want_doxygen_all_code=no
 fi
-
 
 # want_mutracx_hacks is now set to "yes" if they are either needed or
 # requested.
