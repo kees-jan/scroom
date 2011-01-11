@@ -26,6 +26,8 @@
 #include <sys/mman.h>
 #include <string.h>
 
+#include <zlib.h>
+
 #define TEMPLATE "/tmp/scroom-XXXXXX"
 #define BUFSIZE  (strlen(TEMPLATE)+1)
 
@@ -47,12 +49,11 @@ byte* FileBackedMemory::load()
   case UNLOADED:
     {
       assert(fileCreated);
-      fd = open(filename.c_str(), O_RDWR);
-      assert(fd>=0);
-
-      data = (byte*)mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
-
-      assert(data != (byte*)-1); // == MAP_FAILED
+      data = new byte[size];
+      gzFile f = gzopen(filename.c_str(), "r");
+      int r = gzread(f, data, size);
+      assert(r == (int)size);
+      gzclose(f);
       state = LOADED;
     }
     break;
@@ -67,18 +68,7 @@ void FileBackedMemory::unload()
 {
   if(state == LOADED)
   {
-    if(fileCreated)
-    {
-      // Execute unmap
-      int result = munmap(data, size);
-      data = NULL;
-      assert(result>=0);
-
-      result = close(fd);
-      fd=-1;
-      assert(result>=0);
-    }
-    else
+    if(!fileCreated)
     {
       // Write data to a temporary file
       char buffer[BUFSIZE];
@@ -89,20 +79,14 @@ void FileBackedMemory::unload()
       filename = buffer;
       fileCreated = true;
 
-      size_t remaining = size;
-      byte* current = data;
-      ssize_t result=0;
-      while(remaining>0)
-      {
-        result = write(fd, current, remaining);
-        assert(result>0);
-        remaining -= result;
-        current += result;
-      }
+      gzFile f = gzdopen(fd, "w");
+      int r = gzwrite(f, data, size);
+      assert(r == (int)size);
+      gzclose(f);
       close(fd);
-      delete[] data;
-      data=NULL;
     }
+    delete[] data;
+    data = NULL;
     state = UNLOADED;
   }
 }
