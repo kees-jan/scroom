@@ -19,8 +19,10 @@
 #include <stdio.h>
 
 #include <map>
+#include <limits>
 
 #include <boost/thread.hpp>
+#include <boost/lexical_cast.hpp>
 
 #include <scroom/memorymanagerinterface.hh>
 #include <scroom/threadpool.hh>
@@ -107,16 +109,19 @@ namespace
 
     if(!memHwm)
     {
-      memHwm = (unsigned long long)2048*1024*1024;
-      memLwm = (unsigned long long)1920*1024*1024;
+      // On 32-bit machines, this is 2Gb, which is a nice enough value
+      // On 64-bit machines, this is very large. I hope you have enough swap.
+      memHwm = std::numeric_limits<unsigned long>::max()/2;
     }
     if(!memLwm)
     {
-      memLwm = memHwm*7/8;
+      // Order is important. When using the memHwm as computed above, you
+      // might be in for an integer overflow
+      memLwm = memHwm/8*7;
     }
     if(!filesHwm)
     {
-      filesHwm = 768;
+      filesHwm = 800;
       filesLwm = 700;
     }
     if(!filesLwm)
@@ -201,8 +206,20 @@ namespace
 
   int MemoryManagerImpl::fetchFromEnvironment(std::string v)
   {
-    std::string value = getenv(v.c_str());
-    return atoi(value.c_str());
+    char* val = getenv(v.c_str());
+    if(val)
+    {
+      try
+      {
+        return boost::lexical_cast<int>(val);
+      }
+      catch(boost::bad_lexical_cast&)
+      {
+        return 0;
+      }
+    }
+    else
+      return 0;
   }
 
   void MemoryManagerImpl::checkForOutOfResources()
