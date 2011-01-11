@@ -235,7 +235,7 @@ namespace
       unsigned long long filesExpected = filesCurrent;
       unsigned long long memExpected = memCurrent;
 
-      for(;cur!=end && (filesExpected > filesLwm || memExpected > memHwm); ++cur)
+      for(;cur!=end && (filesExpected > filesLwm || memExpected > memLwm); ++cur)
       {
         std::list<MemoryManagedInterface::Ptr>& list = cur->second;
         for(std::list<MemoryManagedInterface::Ptr>::iterator c = list.begin();

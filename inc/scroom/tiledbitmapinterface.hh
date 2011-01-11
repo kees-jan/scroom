@@ -170,6 +170,13 @@ public:
    * @param tiles The tiles that are to be filled.
    */
   virtual void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles)=0;
+
+  /**
+   * Done reading bitmap data
+   *
+   * Any open files can be closed now
+   */
+  virtual void done()=0;
 };
 
 /**

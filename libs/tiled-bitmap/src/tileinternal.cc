@@ -47,7 +47,7 @@ TileInternal::TileInternal(int depth, int x, int y, int bpp, TileStateInternal s
 TileInternal::Ptr TileInternal::create(int depth, int x, int y, int bpp, TileStateInternal state)
 {
   TileInternal::Ptr tile = TileInternal::Ptr(new TileInternal(depth, x, y, bpp, state));
-  MemoryManager::registerMMI(tile, TILESIZE*TILESIZE * tile->bpp / 8, 1);
+  MemoryManager::registerMMI(tile, TILESIZE*TILESIZE * tile->bpp / 8, 0);
   
   return tile;
 }

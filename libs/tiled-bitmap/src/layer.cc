@@ -162,4 +162,6 @@ void DataFetcher::operator()()
     if(!qj->setWork(successor))
       CpuBound()->schedule(successor, DATAFETCH_PRIO);
   }
+  else
+    sp->done();
 }
