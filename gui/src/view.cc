@@ -302,8 +302,8 @@ void View::updateZoom()
 {
   if(presentation)
   {
-    unsigned int presentationHeight = presentationRect.height;
-    unsigned int presentationWidth = presentationRect.width;
+    int presentationHeight = presentationRect.height;
+    int presentationWidth = presentationRect.width;
     int minZoom = 0;
 
     while(presentationHeight > drawingAreaHeight/2 || presentationWidth > drawingAreaWidth/2)

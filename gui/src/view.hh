@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -60,8 +60,8 @@ private:
   SidebarManager sidebarManager;
   GtkWindow* window;
   GtkWidget* drawingArea;
-  long drawingAreaWidth;
-  long drawingAreaHeight;
+  int drawingAreaWidth;
+  int drawingAreaHeight;
   GdkRectangle presentationRect;
   GtkVScrollbar* vscrollbar;
   GtkHScrollbar* hscrollbar;

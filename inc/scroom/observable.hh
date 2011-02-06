@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -47,7 +47,7 @@ namespace Scroom
        * Performs de-registration on destruction
        */
       template<typename T>
-      struct Registration
+      class Registration
       {
       public:
         boost::weak_ptr<Observable<T> > observable;
