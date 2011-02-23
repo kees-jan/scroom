@@ -17,6 +17,8 @@
  */
 #include <scroom/utilities.hh>
 
+#include <glib.h>
+
 using namespace Scroom::Utils;
 
 ///////////////////////////////////////////////////////////////////////
@@ -32,6 +34,13 @@ void dumpCounts()
   getCounter()->dump();
 }
 
+gboolean timedDumpCounts(gpointer data)
+{
+  Counter* c = (Counter*) data;
+  c->dump();
+  return true;
+}
+
 ///////////////////////////////////////////////////////////////////////
 
 Counter::Ptr Counter::create()
@@ -40,7 +49,9 @@ Counter::Ptr Counter::create()
 }
 
 Counter::Counter()
-{}
+{
+  g_timeout_add_seconds(10, timedDumpCounts, this);
+}
 
 void Counter::registerClass(std::string name, unsigned long int& count)
 {

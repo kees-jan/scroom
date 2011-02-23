@@ -44,7 +44,7 @@ gboolean timerExpired(gpointer data)
 FileOperation::FileOperation(TiledBitmap::Ptr parent)
   : parent(parent), waitingMutex(), waiting(true)
 {
-  timer = gtk_timeout_add(100, ::timerExpired, this);
+  timer = g_timeout_add(100, ::timerExpired, this);
 }
 
 void FileOperation::doneWaiting()

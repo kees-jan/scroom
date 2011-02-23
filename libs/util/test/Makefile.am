@@ -1,4 +1,4 @@
-AM_CPPFLAGS = -I $(top_srcdir)/inc # @BOOST_FUTURES_CPPFLAGS@
+AM_CPPFLAGS = @UTILS_CFLAGS@ -I $(top_srcdir)/inc # @BOOST_FUTURES_CPPFLAGS@
 
 if BOOST_UNITTESTS
 
@@ -11,7 +11,7 @@ utils_tests_SOURCES = \
 
 # threadpool_tests_CPPFLAGS = -I $(top_srcdir)/compat/boost-futures/inc
 
-utils_tests_LDADD = @BOOSTTHREADLIB@
+utils_tests_LDADD = @BOOSTTHREADLIB@ @UTILS_LIBS@ ../src/libsutil.la
 
 TESTS = utils-tests
 
