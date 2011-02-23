@@ -17,6 +17,7 @@
  */
 
 #include <boost/enable_shared_from_this.hpp>
+#include <boost/thread.hpp>
 
 namespace Scroom
 {
@@ -68,5 +69,66 @@ namespace Scroom
     {
       return boost::dynamic_pointer_cast<R const, Base const>(boost::enable_shared_from_this<Base>::shared_from_this());
     }
+
+    class Counter
+    {
+    public:
+      typedef boost::shared_ptr<Counter> Ptr;
+
+      class Registrar
+      {
+      private:
+        std::string name;
+        Ptr counter;
+
+      public:
+        Registrar(std::string name, unsigned long& count);
+        ~Registrar();
+      };
+
+    private:
+      std::map<std::string, unsigned long*> counts;
+      boost::mutex mut;
+
+    private:
+      Counter();
+
+    public:
+      static Ptr create();
+      void registerClass(std::string name, unsigned long& count);
+      void unregisterClass(std::string name);
+      void dump();
+    };
+
+    Counter::Ptr getCounter();
+    void dumpCounts();
+
+    template <class C>
+    class Counted
+    {
+    private:
+      static boost::mutex mut;
+      static unsigned long count;
+      static Counter::Registrar r;
+
+    public:
+      Counted()
+      {
+        boost::unique_lock<boost::mutex> lock(mut);
+        count++;
+      }
+
+      ~Counted()
+      {
+        boost::unique_lock<boost::mutex> lock(mut);
+        count--;
+      }
+    };
+
+    template <class C>
+    unsigned long Counted<C>::count = 0;
+
+    template <class C>
+    Counter::Registrar Counted<C>::r(typeid(C).name(), Counted<C>::count);
   }
 }
