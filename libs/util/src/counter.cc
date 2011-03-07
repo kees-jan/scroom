@@ -73,8 +73,15 @@ void Counter::dump()
       cur!=counts.end();
       ++cur)
     {
-    printf(", %s, %lu", cur->first.c_str(), *(cur->second));
+      printf(", %s, %lu", cur->first.c_str(), *(cur->second));
     }
+  printf("\n");
+}
+
+std::map<std::string, unsigned long*> Counter::getCounts()
+{
+  boost::unique_lock<boost::mutex> lock(mut);
+  return counts;
 }
 
 ///////////////////////////////////////////////////////////////////////
@@ -83,6 +90,10 @@ Counter::Registrar::Registrar(std::string name, unsigned long& count)
 : name(name), counter(getCounter())
 {
   counter->registerClass(name, count);
+}
+
+void Counter::Registrar::ping()
+{
 }
 
 Counter::Registrar::~Registrar()

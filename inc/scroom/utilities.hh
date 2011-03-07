@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -83,6 +83,7 @@ namespace Scroom
 
       public:
         Registrar(std::string name, unsigned long& count);
+        void ping();
         ~Registrar();
       };
 
@@ -98,6 +99,7 @@ namespace Scroom
       void registerClass(std::string name, unsigned long& count);
       void unregisterClass(std::string name);
       void dump();
+      std::map<std::string, unsigned long*> getCounts();
     };
 
     Counter::Ptr getCounter();
@@ -116,6 +118,7 @@ namespace Scroom
       {
         boost::unique_lock<boost::mutex> lock(mut);
         count++;
+        r.ping();
       }
 
       ~Counted()
@@ -126,9 +129,13 @@ namespace Scroom
     };
 
     template <class C>
+    boost::mutex Counted<C>::mut;
+    
+    template <class C>
     unsigned long Counted<C>::count = 0;
 
     template <class C>
     Counter::Registrar Counted<C>::r(typeid(C).name(), Counted<C>::count);
-  }
+
+    }
 }
