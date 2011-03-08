@@ -83,7 +83,7 @@ namespace Scroom
 
       public:
         Registrar(std::string name, unsigned long& count);
-        void ping();
+        void ping() {}
         ~Registrar();
       };
 

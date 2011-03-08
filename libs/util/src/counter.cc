@@ -92,10 +92,6 @@ Counter::Registrar::Registrar(std::string name, unsigned long& count)
   counter->registerClass(name, count);
 }
 
-void Counter::Registrar::ping()
-{
-}
-
 Counter::Registrar::~Registrar()
 {
   counter->unregisterClass(name);
