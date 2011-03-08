@@ -8,9 +8,10 @@ tiled_bitmap_tests_SOURCES = \
 	main.cc \
 	tiledbitmap-tests.cc
 
-# threadpool_tests_CPPFLAGS = -I $(top_srcdir)/compat/boost-futures/inc
-
-tiled_bitmap_tests_LDADD = @BOOSTTHREADLIB@ ../src/libstiledbitmap.la
+tiled_bitmap_tests_LDADD = \
+	@BOOSTTHREADLIB@ \
+	../src/libstiledbitmap.la \
+	../../util/src/libsutil.la
 
 TESTS = tiled-bitmap-tests
 

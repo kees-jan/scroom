@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -23,8 +23,9 @@
 #include <boost/weak_ptr.hpp>
 
 #include <scroom/global.hh>
+#include <scroom/utilities.hh>
 
-class Tile
+class Tile : public Scroom::Utils::Counted<Tile>
 {
 public:
   typedef boost::shared_ptr<Tile> Ptr;

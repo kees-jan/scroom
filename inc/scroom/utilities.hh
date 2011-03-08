@@ -16,6 +16,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+#ifndef _UTILITIES_HH
+#define _UTILITIES_HH
+
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/thread.hpp>
 
@@ -139,3 +142,5 @@ namespace Scroom
 
     }
 }
+
+#endif

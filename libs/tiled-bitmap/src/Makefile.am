@@ -9,4 +9,12 @@ libstiledbitmap_la_SOURCES = \
 	tileinternal.cc tileinternal.hh \
 	local.hh
 
-libstiledbitmap_la_LIBADD = @TILEDBITMAP_LIBS@ ../../threadpool/src/libsthreadpool.la ../../memory-manager/libsmemman.la @BOOSTTHREADLIB@
+libstiledbitmap_la_LIBADD = \
+	@TILEDBITMAP_LIBS@ \
+	../../threadpool/src/libsthreadpool.la \
+	../../memory-manager/libsmemman.la \
+	../../util/src/libsutil.la \
+	@BOOSTTHREADLIB@
+
+# 	../../util/src/libsutil.la \
+#
