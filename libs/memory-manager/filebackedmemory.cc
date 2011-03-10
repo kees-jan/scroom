@@ -126,7 +126,10 @@ void FileBackedMemory::unload()
 FileBackedMemory::~FileBackedMemory()
 {
   if(data)
-    unload();
+  {
+    delete[] data;
+    data=NULL;
+  }
 
   if(fileCreated)
   {
