@@ -184,6 +184,9 @@ namespace
       boost::unique_lock<boost::mutex> lock(currentMut);
       memCurrent += m.size;
       filesCurrent += m.fdcount;
+
+      // printf("LoadNotification:\t+ %d\t= %llu\n",
+      //        m.size/1024/1024, (unsigned long long)memCurrent/1024/1024);
     }
     m.timestamp = ++timestamp;
 
@@ -201,6 +204,9 @@ namespace
       boost::unique_lock<boost::mutex> lock(currentMut);
       memCurrent -= m.size;
       filesCurrent -= m.fdcount;
+
+      // printf("UnloadNotification:\t- %d\t= %llu\n",
+      //        m.size/1024/1024, (unsigned long long)memCurrent/1024/1024);
     }
   }
 

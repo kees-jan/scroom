@@ -23,9 +23,8 @@
 #include <boost/weak_ptr.hpp>
 
 #include <scroom/global.hh>
-#include <scroom/utilities.hh>
 
-class Tile : public Scroom::Utils::Counted<Tile>
+class Tile
 {
 public:
   typedef boost::shared_ptr<Tile> Ptr;

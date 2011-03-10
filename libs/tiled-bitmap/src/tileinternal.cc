@@ -87,7 +87,7 @@ void TileInternal::initialize()
   }
 
   if(didInitialize)
-    do_load(); // Trigger notifyObservers()
+    do_load(); // Trigger notifyObservers(), without holding the lock
 }
   
 void TileInternal::reportFinished()
@@ -115,6 +115,11 @@ bool TileInternal::do_unload()
     data.unload();
     state = TSI_UNLOADED;
     MemoryManager::unloadNotification(shared_from_this<TileInternal>());
+  }
+  else if (result)
+  {
+    printf("Tile in use. Refusing to unload %d Mb\n", TILESIZE*TILESIZE*bpp/8/1024/1024);
+    MemoryManager::loadNotification(shared_from_this<TileInternal>());
   }
 
   return state == TSI_UNLOADED;
