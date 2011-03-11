@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -74,6 +74,24 @@ public:
    *    calls)
    */
   virtual void removeSideWidget(GtkWidget* w)=0;
+
+  /**
+   * Request that the given tool item be added to the toolbar.
+   *
+   * @pre Should be called from within a Gdk critical section
+   *    (i.e. between gdk_threads_enter() and gdk_threads_leave()
+   *    calls)
+   */
+  virtual void addToToolbar(GtkToolItem* ti)=0;
+
+  /**
+   * Request that the given tool item be removed from the toolbar.
+   *
+   * @pre Should be called from within a Gdk critical section
+   *    (i.e. between gdk_threads_enter() and gdk_threads_leave()
+   *    calls)
+   */
+  virtual void removeFromToolbar(GtkToolItem* ti)=0;
 };
 
 

@@ -27,6 +27,7 @@
 
 #include <glade/glade.h>
 #include <gdk/gdk.h>
+#include <gtk/gtk.h>
 #include <cairo.h>
 
 #include <scroom/scroominterface.hh>
@@ -73,6 +74,9 @@ private:
   GtkListStore* zoomItems;
   GtkProgressBar* progressBar;
   GtkStatusbar* statusBar;
+  GtkToolbar* toolBar;
+  GtkToolItem* toolBarSeparator;
+  unsigned toolBarCount;
   int statusBarContextId;
   int zoom;
   int x;
@@ -122,6 +126,8 @@ public:
   virtual GtkProgressBar* getProgressBar();
   virtual void addSideWidget(std::string title, GtkWidget* w);
   virtual void removeSideWidget(GtkWidget* w);
+  virtual void addToToolbar(GtkToolItem* ti);
+  virtual void removeFromToolbar(GtkToolItem* ti);
 
   ////////////////////////////////////////////////////////////////////////
   // Helpers

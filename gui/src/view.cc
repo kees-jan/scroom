@@ -155,6 +155,9 @@ View::View(GladeXML* scroomXml, PresentationInterface::Ptr presentation)
   GtkWidget* panelWindow = glade_xml_get_widget(scroomXml, "panelWindow");
   GtkBox* panel = GTK_BOX(glade_xml_get_widget(scroomXml, "panel"));
   sidebarManager.setWidgets(panelWindow, panel);
+  toolBar = GTK_TOOLBAR(glade_xml_get_widget(scroomXml, "toolbar"));
+  toolBarSeparator = NULL;
+  toolBarCount = 0;
 
   cachedPoint.x=0;
   cachedPoint.y=0;
@@ -666,6 +669,29 @@ void View::removeSideWidget(GtkWidget* w)
   sidebarManager.removeSideWidget(w);
 }
 
+void View::addToToolbar(GtkToolItem* ti)
+{
+  if(toolBarCount==0)
+  {
+    toolBarSeparator = gtk_separator_tool_item_new();
+    gtk_toolbar_insert(toolBar, toolBarSeparator, -1);
+  }
+
+  gtk_toolbar_insert(toolBar, ti, -1);
+  toolBarCount++;
+}
+
+void View::removeFromToolbar(GtkToolItem* ti)
+{
+  gtk_container_remove(GTK_CONTAINER(toolBar), GTK_WIDGET(ti));
+  toolBarCount--;
+
+  if(toolBarCount==0)
+  {
+    gtk_container_remove(GTK_CONTAINER(toolBar), GTK_WIDGET(toolBarSeparator));
+    toolBarSeparator=NULL;
+  }
+}
 
 ////////////////////////////////////////////////////////////////////////
 // Helpers
