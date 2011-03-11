@@ -127,6 +127,7 @@ public:
   boost::mutex tileData;  /**< Mutex protecting the data-related fields */
 
   ThreadPool::Queue::WeakPtr queue; /**< Queue on which the load operation is executed */
+  Scroom::Utils::Registration memoryManagerRegistration; /**< Our registration with the MemoryManager */
 
 private:
   TileInternal(int depth, int x, int y, int bpp, TileStateInternal state);
@@ -185,6 +186,8 @@ public:
   void reportFinished();
 
   TileState getState();
+
+  void performMemoryManagerRegistration();
 
 private:
   /**

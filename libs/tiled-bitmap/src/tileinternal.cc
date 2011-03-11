@@ -47,9 +47,15 @@ TileInternal::TileInternal(int depth, int x, int y, int bpp, TileStateInternal s
 TileInternal::Ptr TileInternal::create(int depth, int x, int y, int bpp, TileStateInternal state)
 {
   TileInternal::Ptr tile = TileInternal::Ptr(new TileInternal(depth, x, y, bpp, state));
-  MemoryManager::registerMMI(tile, TILESIZE*TILESIZE * tile->bpp / 8, 0);
+  tile->performMemoryManagerRegistration();
   
   return tile;
+}
+
+void TileInternal::performMemoryManagerRegistration()
+{
+  memoryManagerRegistration = MemoryManager::registerMMI(shared_from_this<MemoryManagedInterface>(),
+                                                         TILESIZE*TILESIZE * bpp / 8, 0);
 }
 
 Tile::Ptr TileInternal::getTileSync()
@@ -82,7 +88,7 @@ void TileInternal::initialize()
       data.initialize(0);
       state = TSI_LOADED;
       didInitialize = true;
-      MemoryManager::loadNotification(shared_from_this<TileInternal>());
+      MemoryManager::loadNotification(memoryManagerRegistration);
     }
   }
 
@@ -114,12 +120,12 @@ bool TileInternal::do_unload()
     // Tile not in use. We can unload now...
     data.unload();
     state = TSI_UNLOADED;
-    MemoryManager::unloadNotification(shared_from_this<TileInternal>());
+    MemoryManager::unloadNotification(memoryManagerRegistration);
   }
   else if (result)
   {
     printf("Tile in use. Refusing to unload %d Mb\n", TILESIZE*TILESIZE*bpp/8/1024/1024);
-    MemoryManager::loadNotification(shared_from_this<TileInternal>());
+    MemoryManager::loadNotification(memoryManagerRegistration);
   }
 
   return state == TSI_UNLOADED;
@@ -142,7 +148,7 @@ Tile::Ptr TileInternal::do_load()
     {
       result = Tile::Ptr(new Tile(TILESIZE, TILESIZE, bpp, data.load()));
       tile = result;
-      MemoryManager::loadNotification(shared_from_this<TileInternal>());
+      MemoryManager::loadNotification(memoryManagerRegistration);
       didLoad = true;
     }
   }
