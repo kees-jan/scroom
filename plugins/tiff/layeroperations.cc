@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -502,19 +502,65 @@ void Operations::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRec
         // Compute the average of all colors in a
         // pixelCount*pixelCount area
         Color c;
-        PixelIterator bl(pixel);
-        for(int l=0; l<pixelCount; l++)
+        if(false)
         {
-          PixelIterator bk(bl);
-          for(int k=0; k<pixelCount; k++)
+          PixelIterator bl(pixel);
+          for(int l=0; l<pixelCount; l++)
           {
-            c += colormap->colors[*bk];
-            ++bk;
+            PixelIterator bk(bl);
+            for(int k=0; k<pixelCount; k++)
+            {
+              c += colormap->colors[*bk];
+              ++bk;
+            }
+            bl+= tile->width;
           }
-          bl+= tile->width;
-        }
 
-        c /= pixelCount*pixelCount;
+          c /= pixelCount*pixelCount;
+        }
+        else
+        {
+          // Goal is to determine which values occurs most often in a 8*8
+          // rectangle, and pick the top two.
+          unsigned lookup[pixelMask+1];
+          memset(lookup, 0, sizeof(lookup));
+
+          PixelIterator bl(pixel);
+          for(int l=0; l<pixelCount; l++)
+          {
+            PixelIterator bk(bl);
+            for(int k=0; k<pixelCount; k++)
+            {
+              ++(lookup[*bk]);
+              ++bk;
+            }
+            bl+= tile->width;
+          }
+
+          byte first=0;
+          byte second=1;
+          if(lookup[1]>lookup[0])
+          {
+            first=1;
+            second=0;
+          }
+          for(byte i=2; i<pixelMask+1; i++)
+          {
+            if(lookup[i]>lookup[first])
+            {
+              second=first;
+              first=i;
+            }
+            else if(lookup[i]>lookup[second])
+              second=i;
+          }
+          if(lookup[second]==0)
+            second = first;
+
+          c += colormap->colors[first];
+          c += colormap->colors[second];
+          c /= 2;
+        }
         
         drawPixel(cr, viewArea.x+i, viewArea.y+j, 1, c);
         pixel+=pixelCount;
