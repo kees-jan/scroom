@@ -199,8 +199,8 @@ namespace
     memTotal+=size;
     filesTotal+=fdcount;
 
-    printf("RegisterMMI:\t+ %llu\t= %llu\n",
-           (unsigned long long)size/1024/1024, (unsigned long long)memTotal/1024/1024);
+    // printf("RegisterMMI:\t+ %llu\t= %llu\n",
+    //        (unsigned long long)size/1024/1024, (unsigned long long)memTotal/1024/1024);
 
     return r;
   }
@@ -224,8 +224,8 @@ namespace
       filesTotal-=m.fdcount;
       managedInfo.erase(info);
 
-      printf("UnregisterMMI:\t- %llu\t= %llu\n",
-             (unsigned long long)m.size/1024/1024, (unsigned long long)memTotal/1024/1024);
+      // printf("UnregisterMMI:\t- %llu\t= %llu\n",
+      //        (unsigned long long)m.size/1024/1024, (unsigned long long)memTotal/1024/1024);
     }
   }
 
