@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2010 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -27,6 +27,7 @@
 #include <boost/weak_ptr.hpp>
 
 #include <scroom/global.hh>
+#include <scroom/registration.hh>
 
 /**
  * Block of memory that is backed-up in a file
@@ -97,26 +98,9 @@ public:
 
 namespace MemoryManager
 {
-  class MemoryManagerInterface
-  {
-  public:
-    typedef boost::shared_ptr<MemoryManagerInterface> Ptr;
-    
-    virtual ~MemoryManagerInterface()
-    {}
-    
-    virtual void registerMMI(MemoryManagedInterface::Ptr object, size_t size, int fdcount)=0;
-    virtual void unregisterMMI(MemoryManagedInterface::Ptr object)=0;
-    virtual void loadNotification(MemoryManagedInterface::Ptr object)=0;
-    virtual void unloadNotification(MemoryManagedInterface::Ptr object)=0;
-  };
-
-  MemoryManagerInterface::Ptr instance();
-
-  void registerMMI(MemoryManagedInterface::Ptr object, size_t size, int fdcount);
-  void unregisterMMI(MemoryManagedInterface::Ptr object);
-  void loadNotification(MemoryManagedInterface::Ptr object);
-  void unloadNotification(MemoryManagedInterface::Ptr object);
+  Scroom::Utils::Registration registerMMI(MemoryManagedInterface::Ptr object, size_t size, int fdcount);
+  void loadNotification(Scroom::Utils::Registration r);
+  void unloadNotification(Scroom::Utils::Registration r);
 }
 
 

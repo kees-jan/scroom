@@ -35,25 +35,45 @@ namespace
   const std::string SCROOM_FILES_HWM = "SCROOM_FILES_HWM";
   const std::string SCROOM_FILES_LWM = "SCROOM_FILES_LWM";
 
+  ////////////////////////////////////////////////////////////////////////
+  
   struct ManagedInfo
   {
+    MemoryManagedInterface::WeakPtr object;
     size_t size;
     int fdcount;
     bool isLoaded;
     unsigned long timestamp;
 
   public:
-    ManagedInfo(size_t size=0, int fdcount=0)
-      : size(size), fdcount(fdcount), isLoaded(false), timestamp(0)
+    ManagedInfo(MemoryManagedInterface::Ptr object=MemoryManagedInterface::Ptr(),
+                size_t size=0, int fdcount=0)
+      : object(object), size(size), fdcount(fdcount), isLoaded(false), timestamp(0)
     {
     }
   };
 
-  class MemoryManagerImpl : public MemoryManager::MemoryManagerInterface
+  ////////////////////////////////////////////////////////////////////////
+
+  struct Registration
+  {
+    typedef boost::shared_ptr<Registration> Ptr;
+    typedef boost::weak_ptr<Registration> WeakPtr;
+    
+    Scroom::Utils::RegistrationWeak r;
+
+    ~Registration();
+    static Scroom::Utils::Registration create();
+  };
+
+  ////////////////////////////////////////////////////////////////////////
+
+  class MemoryManagerImpl
   {
   public:
-    typedef std::map<MemoryManagedInterface::WeakPtr,ManagedInfo> ManagedInfoMap;
-    typedef std::pair<MemoryManagedInterface::WeakPtr,ManagedInfo> ManagedInfoItem;
+    typedef std::map<Scroom::Utils::RegistrationWeak,ManagedInfo> ManagedInfoMap;
+    typedef std::pair<Scroom::Utils::RegistrationWeak,ManagedInfo> ManagedInfoItem;
+    typedef boost::shared_ptr<MemoryManagerImpl> Ptr;
   
   private:
     ThreadPool thread;
@@ -83,10 +103,10 @@ namespace
     MemoryManagerImpl();
     ~MemoryManagerImpl();
 
-    void registerMMI(MemoryManagedInterface::Ptr object, size_t size, int fdcount);
-    void unregisterMMI(MemoryManagedInterface::Ptr object);
-    void loadNotification(MemoryManagedInterface::Ptr object);
-    void unloadNotification(MemoryManagedInterface::Ptr object);
+    Scroom::Utils::Registration registerMMI(MemoryManagedInterface::Ptr object, size_t size, int fdcount);
+    void unregisterMMI(Scroom::Utils::RegistrationWeak r);
+    void loadNotification(Scroom::Utils::Registration r);
+    void unloadNotification(Scroom::Utils::Registration r);
 
     void garbageCollect();
     void unload(MemoryManagedInterface::Ptr i);
@@ -95,6 +115,31 @@ namespace
     int fetchFromEnvironment(std::string v);
     void checkForOutOfResources();
   };
+
+  ////////////////////////////////////////////////////////////////////////
+  /// Regular functions
+
+  MemoryManagerImpl::Ptr instance()
+  {
+    static MemoryManagerImpl::Ptr memoryManager = MemoryManagerImpl::Ptr(new MemoryManagerImpl());
+    return memoryManager;
+  }
+
+  ////////////////////////////////////////////////////////////////////////
+  /// Registration
+
+  Scroom::Utils::Registration Registration::create()
+  {
+    Registration::Ptr r = Registration::Ptr(new Registration());
+    r->r = r;
+
+    return r;
+  }
+
+  Registration::~Registration()
+  {
+    instance()->unregisterMMI(r);
+  }
 
   ////////////////////////////////////////////////////////////////////////
   /// MemoryManagerImpl
@@ -146,21 +191,24 @@ namespace
   {
   }
 
-  void MemoryManagerImpl::registerMMI(MemoryManagedInterface::Ptr object, size_t size, int fdcount)
+  Scroom::Utils::Registration MemoryManagerImpl::registerMMI(MemoryManagedInterface::Ptr object, size_t size, int fdcount)
   {
     boost::unique_lock<boost::mutex> lock(mut);
-    managedInfo[object] = ManagedInfo(size, fdcount);
+    Scroom::Utils::Registration r = Registration::create();
+    managedInfo[r] = ManagedInfo(object, size, fdcount);
     memTotal+=size;
     filesTotal+=fdcount;
 
     printf("RegisterMMI:\t+ %llu\t= %llu\n",
            (unsigned long long)size/1024/1024, (unsigned long long)memTotal/1024/1024);
+
+    return r;
   }
 
-  void MemoryManagerImpl::unregisterMMI(MemoryManagedInterface::Ptr object)
+  void MemoryManagerImpl::unregisterMMI(Scroom::Utils::RegistrationWeak r)
   {
     boost::unique_lock<boost::mutex> lock(mut);
-    ManagedInfoMap::iterator info = managedInfo.find(object);
+    ManagedInfoMap::iterator info = managedInfo.find(r);
     if(info != managedInfo.end())
     {
       ManagedInfo& m = info->second;
@@ -181,9 +229,9 @@ namespace
     }
   }
 
-  void MemoryManagerImpl::loadNotification(MemoryManagedInterface::Ptr object)
+  void MemoryManagerImpl::loadNotification(Scroom::Utils::Registration r)
   {
-    ManagedInfo& m = managedInfo[object];
+    ManagedInfo& m = managedInfo[r];
     assert(m.size!=0 || m.fdcount!=0);
 
     if(!m.isLoaded)
@@ -201,9 +249,9 @@ namespace
     checkForOutOfResources();
   }
 
-  void MemoryManagerImpl::unloadNotification(MemoryManagedInterface::Ptr object)
+  void MemoryManagerImpl::unloadNotification(Scroom::Utils::Registration r)
   {
-    ManagedInfo& m = managedInfo[object];
+    ManagedInfo& m = managedInfo[r];
     assert(m.size!=0 || m.fdcount!=0);
 
     if(m.isLoaded)
@@ -250,43 +298,38 @@ namespace
     printf("+Garbage collector activating. (%llu/%llu files, %llu/%llu MB)\n",
            filesCurrent, filesTotal, memCurrent/1024/1024, memTotal/1024/1024);
 
-    std::list<MemoryManagedInterface::Ptr> deleted;
-    
     {
       boost::unique_lock<boost::mutex> lock(mut);
-      std::map<unsigned long long, std::list<MemoryManagedInterface::Ptr> > sortedInterfaces;
+      std::map<unsigned long long, std::list<Scroom::Utils::RegistrationWeak> > sortedInterfaces;
 
       BOOST_FOREACH(ManagedInfoItem cur, managedInfo)
       {
-        MemoryManagedInterface::Ptr p = cur.first.lock();
-        if(p)
-          sortedInterfaces[cur.second.timestamp].push_back(p);
-        else
-        {
-          unloadNotification(p);
-          deleted.push_back(p);
-        }
+        sortedInterfaces[cur.second.timestamp].push_back(cur.first);
       }
-      std::map<unsigned long long, std::list<MemoryManagedInterface::Ptr> >::iterator cur = sortedInterfaces.begin();
-      std::map<unsigned long long, std::list<MemoryManagedInterface::Ptr> >::iterator end = sortedInterfaces.end();
+      std::map<unsigned long long, std::list<Scroom::Utils::RegistrationWeak> >::iterator cur = sortedInterfaces.begin();
+      std::map<unsigned long long, std::list<Scroom::Utils::RegistrationWeak> >::iterator end = sortedInterfaces.end();
       unloaders = 0;
       unsigned long long filesExpected = filesCurrent;
       unsigned long long memExpected = memCurrent;
 
       for(;cur!=end && (filesExpected > filesLwm || memExpected > memLwm); ++cur)
       {
-        std::list<MemoryManagedInterface::Ptr>& list = cur->second;
-        BOOST_FOREACH(MemoryManagedInterface::Ptr c, list)
+        std::list<Scroom::Utils::RegistrationWeak>& list = cur->second;
+        BOOST_FOREACH(Scroom::Utils::RegistrationWeak r, list)
         {
-          ManagedInfo& mi = managedInfo[c];
+          ManagedInfo& mi = managedInfo[r];
         
           if(mi.isLoaded)
           {
-            boost::unique_lock<boost::mutex> lock(unloadersMut);
-            unloaders++;
-            CpuBound()->schedule(boost::bind(&MemoryManagerImpl::unload, this, c), PRIO_HIGHEST);
-            filesExpected -= mi.fdcount;
-            memExpected -= mi.size;
+            MemoryManagedInterface::Ptr o = mi.object.lock();
+            if(o)
+            {
+              boost::unique_lock<boost::mutex> lock(unloadersMut);
+              unloaders++;
+              CpuBound()->schedule(boost::bind(&MemoryManagerImpl::unload, this, o), PRIO_HIGHEST);
+              filesExpected -= mi.fdcount;
+              memExpected -= mi.size;
+            }
           }
         }
       }
@@ -305,11 +348,6 @@ namespace
 
     }
 
-    BOOST_FOREACH(MemoryManagedInterface::Ptr d, deleted)
-    {
-      unregisterMMI(d);
-    }
-
     isGarbageCollecting = false;
     
     printf("-Garbage collector terminating. (%llu/%llu files, %llu/%llu MB)\n",
@@ -324,35 +362,23 @@ namespace
     unloadersCond.notify_all();
   }
 }
-
 ////////////////////////////////////////////////////////////////////////
 /// Regular functions
 
 namespace MemoryManager
 {
-  MemoryManagerInterface::Ptr instance()
+  Scroom::Utils::Registration registerMMI(MemoryManagedInterface::Ptr object, size_t size, int fdcount)
   {
-    static MemoryManagerInterface::Ptr memoryManager = MemoryManagerInterface::Ptr(new MemoryManagerImpl());
-    return memoryManager;
+    return instance()->registerMMI(object, size, fdcount);
   }
 
-  void registerMMI(MemoryManagedInterface::Ptr object, size_t size, int fdcount)
+  void loadNotification(Scroom::Utils::Registration r)
   {
-    instance()->registerMMI(object, size, fdcount);
+    instance()->loadNotification(r);
   }
 
-  void unregisterMMI(MemoryManagedInterface::Ptr object)
+  void unloadNotification(Scroom::Utils::Registration r)
   {
-    instance()->unregisterMMI(object);
-  }
-
-  void loadNotification(MemoryManagedInterface::Ptr object)
-  {
-    instance()->loadNotification(object);
-  }
-
-  void unloadNotification(MemoryManagedInterface::Ptr object)
-  {
-    instance()->unloadNotification(object);
+    instance()->unloadNotification(r);
   }
 }

@@ -27,15 +27,12 @@
 #include <boost/weak_ptr.hpp>
 
 #include <scroom/utilities.hh>
+#include <scroom/registration.hh>
 
 namespace Scroom
 {
   namespace Utils
   {
-    /** A Registration is a pointer to some private data. */
-    typedef boost::shared_ptr<void> Registration;
-    typedef std::list<Registration> Registrations;
-
     template<typename T>
     class Observable;
     
