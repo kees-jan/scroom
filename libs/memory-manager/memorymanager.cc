@@ -23,6 +23,7 @@
 
 #include <boost/thread.hpp>
 #include <boost/lexical_cast.hpp>
+#include <boost/foreach.hpp>
 
 #include <scroom/memorymanagerinterface.hh>
 #include <scroom/threadpool.hh>
@@ -51,7 +52,8 @@ namespace
   class MemoryManagerImpl : public MemoryManager::MemoryManagerInterface
   {
   public:
-    typedef std::map<MemoryManagedInterface::Ptr,ManagedInfo> ManagedInfoMap;
+    typedef std::map<MemoryManagedInterface::WeakPtr,ManagedInfo> ManagedInfoMap;
+    typedef std::pair<MemoryManagedInterface::WeakPtr,ManagedInfo> ManagedInfoItem;
   
   private:
     ThreadPool thread;
@@ -248,15 +250,22 @@ namespace
     printf("+Garbage collector activating. (%llu/%llu files, %llu/%llu MB)\n",
            filesCurrent, filesTotal, memCurrent/1024/1024, memTotal/1024/1024);
 
+    std::list<MemoryManagedInterface::Ptr> deleted;
+    
     {
       boost::unique_lock<boost::mutex> lock(mut);
       std::map<unsigned long long, std::list<MemoryManagedInterface::Ptr> > sortedInterfaces;
 
-      for(ManagedInfoMap::iterator cur = managedInfo.begin();
-          cur != managedInfo.end();
-          ++cur)
+      BOOST_FOREACH(ManagedInfoItem cur, managedInfo)
       {
-        sortedInterfaces[cur->second.timestamp].push_back(cur->first);
+        MemoryManagedInterface::Ptr p = cur.first.lock();
+        if(p)
+          sortedInterfaces[cur.second.timestamp].push_back(p);
+        else
+        {
+          unloadNotification(p);
+          deleted.push_back(p);
+        }
       }
       std::map<unsigned long long, std::list<MemoryManagedInterface::Ptr> >::iterator cur = sortedInterfaces.begin();
       std::map<unsigned long long, std::list<MemoryManagedInterface::Ptr> >::iterator end = sortedInterfaces.end();
@@ -267,17 +276,15 @@ namespace
       for(;cur!=end && (filesExpected > filesLwm || memExpected > memLwm); ++cur)
       {
         std::list<MemoryManagedInterface::Ptr>& list = cur->second;
-        for(std::list<MemoryManagedInterface::Ptr>::iterator c = list.begin();
-            c!=list.end();
-            ++c)
+        BOOST_FOREACH(MemoryManagedInterface::Ptr c, list)
         {
-          ManagedInfo& mi = managedInfo[*c];
+          ManagedInfo& mi = managedInfo[c];
         
           if(mi.isLoaded)
           {
             boost::unique_lock<boost::mutex> lock(unloadersMut);
             unloaders++;
-            CpuBound()->schedule(boost::bind(&MemoryManagerImpl::unload, this, *c), PRIO_HIGHEST);
+            CpuBound()->schedule(boost::bind(&MemoryManagerImpl::unload, this, c), PRIO_HIGHEST);
             filesExpected -= mi.fdcount;
             memExpected -= mi.size;
           }
@@ -296,9 +303,15 @@ namespace
         }
       }
 
-      isGarbageCollecting = false;
     }
 
+    BOOST_FOREACH(MemoryManagedInterface::Ptr d, deleted)
+    {
+      unregisterMMI(d);
+    }
+
+    isGarbageCollecting = false;
+    
     printf("-Garbage collector terminating. (%llu/%llu files, %llu/%llu MB)\n",
            filesCurrent, filesTotal, memCurrent/1024/1024, memTotal/1024/1024);
   }
