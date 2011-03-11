@@ -502,65 +502,60 @@ void Operations::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRec
         // Compute the average of all colors in a
         // pixelCount*pixelCount area
         Color c;
-        if(false)
+        //   PixelIterator bl(pixel);
+        //   for(int l=0; l<pixelCount; l++)
+        //   {
+        //     PixelIterator bk(bl);
+        //     for(int k=0; k<pixelCount; k++)
+        //     {
+        //       c += colormap->colors[*bk];
+        //       ++bk;
+        //     }
+        //     bl+= tile->width;
+        //   }
+        // 
+        //   c /= pixelCount*pixelCount;
+
+        // Goal is to determine which values occurs most often in a
+        // pixelCount*pixelCount rectangle, and pick the top two.
+        unsigned lookup[pixelMask+1];
+        memset(lookup, 0, sizeof(lookup));
+
+        PixelIterator bl(pixel);
+        for(int l=0; l<pixelCount; l++)
         {
-          PixelIterator bl(pixel);
-          for(int l=0; l<pixelCount; l++)
+          PixelIterator bk(bl);
+          for(int k=0; k<pixelCount; k++)
           {
-            PixelIterator bk(bl);
-            for(int k=0; k<pixelCount; k++)
-            {
-              c += colormap->colors[*bk];
-              ++bk;
-            }
-            bl+= tile->width;
+            ++(lookup[*bk]);
+            ++bk;
           }
-
-          c /= pixelCount*pixelCount;
+          bl+= tile->width;
         }
-        else
+
+        byte first=0;
+        byte second=1;
+        if(lookup[1]>lookup[0])
         {
-          // Goal is to determine which values occurs most often in a 8*8
-          // rectangle, and pick the top two.
-          unsigned lookup[pixelMask+1];
-          memset(lookup, 0, sizeof(lookup));
-
-          PixelIterator bl(pixel);
-          for(int l=0; l<pixelCount; l++)
-          {
-            PixelIterator bk(bl);
-            for(int k=0; k<pixelCount; k++)
-            {
-              ++(lookup[*bk]);
-              ++bk;
-            }
-            bl+= tile->width;
-          }
-
-          byte first=0;
-          byte second=1;
-          if(lookup[1]>lookup[0])
-          {
-            first=1;
-            second=0;
-          }
-          for(byte i=2; i<pixelMask+1; i++)
-          {
-            if(lookup[i]>lookup[first])
-            {
-              second=first;
-              first=i;
-            }
-            else if(lookup[i]>lookup[second])
-              second=i;
-          }
-          if(lookup[second]==0)
-            second = first;
-
-          c += colormap->colors[first];
-          c += colormap->colors[second];
-          c /= 2;
+          first=1;
+          second=0;
         }
+        for(byte b=2; b<pixelMask+1; b++)
+        {
+          if(lookup[b]>lookup[first])
+          {
+            second=first;
+            first=b;
+          }
+          else if(lookup[b]>lookup[second])
+            second=b;
+        }
+        if(lookup[second]==0)
+          second = first;
+
+        c += colormap->colors[first];
+        c += colormap->colors[second];
+        c /= 2;
         
         drawPixel(cr, viewArea.x+i, viewArea.y+j, 1, c);
         pixel+=pixelCount;

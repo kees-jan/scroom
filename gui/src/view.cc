@@ -674,9 +674,15 @@ void View::addToToolbar(GtkToolItem* ti)
   if(toolBarCount==0)
   {
     toolBarSeparator = gtk_separator_tool_item_new();
+    g_object_set(G_OBJECT(toolBarSeparator),
+                 "visible", true,
+                 "draw", true,
+                 NULL);
     gtk_toolbar_insert(toolBar, toolBarSeparator, -1);
   }
 
+  g_object_set(G_OBJECT(ti), "visible", true, NULL);
+  
   gtk_toolbar_insert(toolBar, ti, -1);
   toolBarCount++;
 }
