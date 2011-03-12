@@ -24,6 +24,25 @@
 #include <gtk/gtk.h>
 
 /**
+ * Interface used for reporting progress information
+ */
+class ProgressInterface
+{
+public:
+  typedef enum
+    {
+      IDLE,
+      WAITING,
+      WORKING,
+      FINISHED
+    } State;
+
+  void setState(State s);
+  void setProgress(double d);
+  void setProgress(int done, int total);
+};
+
+/**
  * Interface provided to something Viewable
  *
  * Internally, scroom uses a View to represent the fact that something

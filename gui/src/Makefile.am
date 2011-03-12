@@ -17,8 +17,9 @@ scroom_SOURCES = \
 	pluginmanager.hh pluginmanager.cc \
 	loader.cc loader.hh \
 	sidebarmanager.cc sidebarmanager.hh \
+	progressbarmanager.cc progressbarmanager.hh \
 	workinterface.hh
 
 scroom_CPPFLAGS = -I $(top_srcdir)/inc $(AM_CPPFLAGS)
 
-scroom_LDADD = @GUI_LIBS@ $(INTLLIBS)
+scroom_LDADD = @GUI_LIBS@ @BOOSTTHREADLIB@ $(INTLLIBS)
