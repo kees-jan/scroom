@@ -54,18 +54,19 @@ public:
   virtual ~FileOperation() {}
 
   virtual void doneWaiting();
-  virtual bool timerExpired();
   virtual void finished()=0;
   virtual void operator()()=0;
 };
 
 
 class TiledBitmap : public TiledBitmapInterface, public TileInitialisationObserver,
-                    public boost::enable_shared_from_this<TiledBitmap>
+                    public boost::enable_shared_from_this<TiledBitmap>,
+                    public ProgressInterface
 {
 public:
   typedef boost::shared_ptr<TiledBitmap> Ptr;
   typedef boost::weak_ptr<TiledBitmap> WeakPtr;
+  typedef std::map<ViewInterface*, TiledBitmapViewData::Ptr> ViewDataMap;
   
 private:
   int bitmapWidth;
@@ -73,9 +74,8 @@ private:
   LayerSpec ls;
   std::vector<Layer*> layers;
   std::list<LayerCoordinator::Ptr> coordinators;
-  GtkProgressBar* progressBar;
   boost::mutex viewDataMutex;
-  std::map<ViewInterface*, TiledBitmapViewData::Ptr> viewData;
+  ViewDataMap viewData;
   int tileCount;
   boost::mutex tileFinishedMutex;
   int tileFinishedCount;
@@ -92,10 +92,15 @@ private:
 private:
   void drawTile(cairo_t* cr, const TileInternal::Ptr tile, const GdkRectangle viewArea);
   void connect(Layer* layer, Layer* prevLayer, LayerOperations* prevLo);
-  void gtk_progress_bar_set_fraction(double fraction);
+
+  // ProgressInterface ///////////////////////////////////////////////////
+public:
+  virtual void setState(State s);
+  virtual void setProgress(double d);
+  virtual void setProgress(int done, int total);
+  
 
 public:
-  void gtk_progress_bar_pulse();
 
   ////////////////////////////////////////////////////////////////////////
   // TiledBitmapInterface

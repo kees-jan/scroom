@@ -37,9 +37,11 @@ public:
       FINISHED
     } State;
 
-  void setState(State s);
-  void setProgress(double d);
-  void setProgress(int done, int total);
+  virtual ~ProgressInterface() {}
+  
+  virtual void setState(State s)=0;
+  virtual void setProgress(double d)=0;
+  virtual void setProgress(int done, int total)=0;
 };
 
 /**
@@ -68,13 +70,13 @@ public:
   virtual void invalidate()=0;
 
   /**
-   * Return a pointer to the progess bar associated with the View
+   * Return a pointer to the progess interface associated with the View
    *
    * @note The progress bar should only be manipulated from within a
    *    Gdk critical section (i.e. between gdk_threads_enter() and
    *    gdk_threads_leave() calls)
    */
-  virtual GtkProgressBar* getProgressBar()=0;
+  virtual ProgressInterface* getProgressInterface()=0;
 
   /**
    * Request that the given widget be added to the sidebar.

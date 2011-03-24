@@ -35,6 +35,7 @@
 #include <scroom/presentationinterface.hh>
 
 #include "sidebarmanager.hh"
+#include "progressbarmanager.hh"
 
 struct Measurement
 {
@@ -86,6 +87,8 @@ private:
   gint modifiermove;
   GdkPoint cachedPoint;
 
+  ProgressBarManager progressBarManager;
+  
   std::map<PresentationInterface::WeakPtr,GtkWidget*> presentations;
   
 public:
@@ -123,7 +126,7 @@ public:
   // ViewInterface
 
   virtual void invalidate();
-  virtual GtkProgressBar* getProgressBar();
+  virtual ProgressInterface* getProgressInterface();
   virtual void addSideWidget(std::string title, GtkWidget* w);
   virtual void removeSideWidget(GtkWidget* w);
   virtual void addToToolbar(GtkToolItem* ti);

@@ -53,8 +53,8 @@ namespace
 
     if(progressbars.size()==1)
     {
-      g_timeout_add(100, on_idle, static_cast<WorkInterface*>(this));
       current = progressbars.begin();
+      g_timeout_add(100, on_idle, static_cast<WorkInterface*>(this));
     }
   }
   
@@ -87,8 +87,10 @@ namespace
         abort();
       }
     }
-    
+
+    gdk_threads_enter();
     gtk_progress_bar_pulse(*current);
+    gdk_threads_leave();
     ++current;
     
     return true;
@@ -105,13 +107,70 @@ namespace
 //   ::gtk_progress_bar_pulse(progressBar);
 // }
 
-void startPulsing(GtkProgressBar* progressBar)
+ProgressBarManager::ProgressBarManager(GtkProgressBar* progressBar)
+  :progressBar(progressBar), state(IDLE)
+{}
+
+ProgressBarManager::~ProgressBarManager()
 {
-  instance()->start(progressBar);
+  if(state == WAITING)
+  {
+    // Stop pulsing
+    instance()->stop(progressBar);
+    state = IDLE;
+  }
 }
 
-void stopPulsing(GtkProgressBar* progressBar)
+void ProgressBarManager::setProgressBar(GtkProgressBar* progressBar)
 {
-  instance()->stop(progressBar);
+  this->progressBar = progressBar;
+}
+  
+// ProgressInterface ///////////////////////////////////////////////////
+  
+void ProgressBarManager::setState(State s)
+{
+  if(state != s)
+  {
+    if(state == WAITING)
+    {
+      // s != WAITING, stop pulsing
+      instance()->stop(progressBar);
+    }
+    if(s == WAITING)
+    {
+      // state != WAITING, start pulsing
+      instance()->start(progressBar);
+    }
+    switch(state)
+    {
+    case IDLE:
+      gtk_progress_bar_set_fraction(progressBar, 0);
+      break;
+    case WAITING:
+      // already handled
+      break;
+    case WORKING:
+      // will be handled by calls to setProgress()
+      break;
+    case FINISHED:
+      gtk_progress_bar_set_fraction(progressBar, 1);
+      break;
+    default:
+      // Panic, shouldn't happen
+      break;
+    }
+    state = s;
+  }
 }
 
+void ProgressBarManager::setProgress(double d)
+{
+  setState(ProgressInterface::WORKING);
+  gtk_progress_bar_set_fraction(progressBar, d);  
+}
+
+void ProgressBarManager::setProgress(int done, int total)
+{
+  setProgress(1.0*done/total);
+}

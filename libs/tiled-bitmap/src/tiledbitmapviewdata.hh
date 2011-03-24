@@ -28,14 +28,14 @@
 
 #include "layer.hh"
 
-class TiledBitmapViewData : public Scroom::Utils::Base, public TileLoadingObserver
+class TiledBitmapViewData : public Scroom::Utils::Base, public TileLoadingObserver, public ProgressInterface
 {
 public:
   typedef boost::shared_ptr<TiledBitmapViewData> Ptr;
 
 public:
   ViewInterface* viewInterface;
-  GtkProgressBar* progressBar;
+  ProgressInterface* progressInterface;
 
 private:
   Layer* layer;
@@ -65,13 +65,16 @@ public:
   static Ptr create(ViewInterface* viewInterface);
   virtual ~TiledBitmapViewData();
 
-  void gtk_progress_bar_set_fraction(double fraction);
-  void gtk_progress_bar_pulse();
-
   void setNeededTiles(Layer* l, int imin, int imax, int jmin, int jmax);
 
   // TileLoadingObserver ////////////////////////////////////////////////
   virtual void tileLoaded(Tile::Ptr tile);
+
+  // ProgressInterface ///////////////////////////////////////////////////
+  virtual void setState(State s);
+  virtual void setProgress(double d);
+  virtual void setProgress(int done, int total);
+  
 };
 
 #endif

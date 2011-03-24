@@ -26,24 +26,14 @@ TiledBitmapViewData::Ptr TiledBitmapViewData::create(ViewInterface* viewInterfac
 }
 
 TiledBitmapViewData::TiledBitmapViewData(ViewInterface* viewInterface)
-  : viewInterface(viewInterface), progressBar(viewInterface->getProgressBar()),
+  : viewInterface(viewInterface), progressInterface(viewInterface->getProgressInterface()),
     layer(NULL), imin(0), imax(0), jmin(0), jmax(0)
 {
 }
 
 TiledBitmapViewData::~TiledBitmapViewData()
 {
-  ::gtk_progress_bar_set_fraction(progressBar, 0.0);
-}
-
-void TiledBitmapViewData::gtk_progress_bar_set_fraction(double fraction)
-{
-  ::gtk_progress_bar_set_fraction(progressBar, fraction);
-}
-
-void TiledBitmapViewData::gtk_progress_bar_pulse()
-{
-  ::gtk_progress_bar_pulse(progressBar);
+  progressInterface->setState(ProgressInterface::IDLE);
 }
 
 void TiledBitmapViewData::setNeededTiles(Layer* l, int imin, int imax, int jmin, int jmax)
@@ -114,4 +104,19 @@ void TiledBitmapViewData::tileLoaded(Tile::Ptr tile)
     gtk_idle_add(invalidate_view, viewInterface);
     redrawPending = true;
   }
+}
+
+void TiledBitmapViewData::setState(State s)
+{
+  progressInterface->setState(s);
+}
+
+void TiledBitmapViewData::setProgress(double d)
+{
+  progressInterface->setProgress(d);
+}
+
+void TiledBitmapViewData::setProgress(int done, int total)
+{
+  progressInterface->setProgress(done, total);
 }

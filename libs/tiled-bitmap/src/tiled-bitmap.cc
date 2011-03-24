@@ -25,6 +25,7 @@
 #include <stdio.h>
 
 #include <boost/thread/mutex.hpp>
+#include <boost/foreach.hpp>
 
 #include <scroom/semaphore.hh>
 #include <scroom/unused.h>
@@ -36,15 +37,10 @@ TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight, L
 
 ////////////////////////////////////////////////////////////////////////
 
-gboolean timerExpired(gpointer data)
-{
-  return ((FileOperation*)data)->timerExpired();
-}
-
 FileOperation::FileOperation(TiledBitmap::Ptr parent)
   : parent(parent), waitingMutex(), waiting(true)
 {
-  timer = g_timeout_add(100, ::timerExpired, this);
+  parent->setState(ProgressInterface::WAITING);
 }
 
 void FileOperation::doneWaiting()
@@ -52,18 +48,9 @@ void FileOperation::doneWaiting()
   boost::mutex::scoped_lock lock(waitingMutex);
   if(waiting)
   {
-    gtk_timeout_remove(timer);
+    parent->setProgress(0);
     waiting = false;
   }
-}
-
-bool FileOperation::timerExpired()
-{
-  boost::mutex::scoped_lock lock(waitingMutex);
-  if(waiting)
-    parent->gtk_progress_bar_pulse();
-
-  return waiting;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -122,7 +109,7 @@ TiledBitmap::Ptr TiledBitmap::create(int bitmapWidth, int bitmapHeight, LayerSpe
 }
 
 TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
-  :bitmapWidth(bitmapWidth), bitmapHeight(bitmapHeight), ls(ls), progressBar(NULL), tileCount(0), tileFinishedCount(0),
+  :bitmapWidth(bitmapWidth), bitmapHeight(bitmapHeight), ls(ls), tileCount(0), tileFinishedCount(0),
    fileOperation()
 {
 }
@@ -209,36 +196,46 @@ void TiledBitmap::connect(Layer* layer, Layer* prevLayer,
   }
 }
 
-void TiledBitmap::gtk_progress_bar_set_fraction(double fraction)
+////////////////////////////////////////////////////////////////////////
+// TiledBitmapInterface
+
+void TiledBitmap::setState(State s)
 {
   gdk_threads_enter();
   boost::mutex::scoped_lock lock(viewDataMutex);
-  std::map<ViewInterface*, TiledBitmapViewData::Ptr>::iterator cur = viewData.begin();
-  std::map<ViewInterface*, TiledBitmapViewData::Ptr>::iterator end = viewData.end();
 
-  for(; cur!=end; ++cur)
+  BOOST_FOREACH(ViewDataMap::value_type& cur, viewData)
   {
     // EEK! This is not thread safe!
-    cur->second->gtk_progress_bar_set_fraction(fraction);
+    cur.second->setState(s);
+  }
+  gdk_threads_leave();
+}
+void TiledBitmap::setProgress(double d)
+{
+  gdk_threads_enter();
+  boost::mutex::scoped_lock lock(viewDataMutex);
+
+  BOOST_FOREACH(ViewDataMap::value_type& cur, viewData)
+  {
+    // EEK! This is not thread safe!
+    cur.second->setProgress(d);
   }
   gdk_threads_leave();
 }
 
-void TiledBitmap::gtk_progress_bar_pulse()
+void TiledBitmap::setProgress(int done, int total)
 {
   gdk_threads_enter();
   boost::mutex::scoped_lock lock(viewDataMutex);
-  std::map<ViewInterface*, TiledBitmapViewData::Ptr>::iterator cur = viewData.begin();
-  std::map<ViewInterface*, TiledBitmapViewData::Ptr>::iterator end = viewData.end();
 
-  for(; cur!=end; ++cur)
+  BOOST_FOREACH(ViewDataMap::value_type& cur, viewData)
   {
     // EEK! This is not thread safe!
-    cur->second->gtk_progress_bar_pulse();
+    cur.second->setProgress(done, total);
   }
   gdk_threads_leave();
 }
-
 
 ////////////////////////////////////////////////////////////////////////
 // TiledBitmapInterface
@@ -595,10 +592,10 @@ void TiledBitmap::tileFinished(TileInternal::Ptr tile)
   }
   else
   {
-    gtk_progress_bar_set_fraction(((double)tileFinishedCount)/tileCount);
+    setProgress(tileFinishedCount, tileCount);
     if(tileFinishedCount==tileCount)
     {
-      gtk_progress_bar_set_fraction(0.0);
+      setState(ProgressInterface::FINISHED);
       if(fileOperation)
       {
         fileOperation->finished();
