@@ -80,6 +80,7 @@ private:
   boost::mutex tileFinishedMutex;
   int tileFinishedCount;
   FileOperation::Ptr fileOperation;
+  ProgressInterface::State progressState;
   
 public:
   static Ptr create(int bitmapWidth, int bitmapHeight, LayerSpec& ls);
@@ -94,6 +95,7 @@ private:
   void connect(Layer* layer, Layer* prevLayer, LayerOperations* prevLo);
 
   // ProgressInterface ///////////////////////////////////////////////////
+  
 public:
   virtual void setState(State s);
   virtual void setProgress(double d);

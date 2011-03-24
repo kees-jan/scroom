@@ -48,7 +48,9 @@ void FileOperation::doneWaiting()
   boost::mutex::scoped_lock lock(waitingMutex);
   if(waiting)
   {
-    parent->setProgress(0);
+    gdk_threads_enter();
+    parent->setState(ProgressInterface::WORKING);
+    gdk_threads_leave();
     waiting = false;
   }
 }
@@ -110,7 +112,7 @@ TiledBitmap::Ptr TiledBitmap::create(int bitmapWidth, int bitmapHeight, LayerSpe
 
 TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
   :bitmapWidth(bitmapWidth), bitmapHeight(bitmapHeight), ls(ls), tileCount(0), tileFinishedCount(0),
-   fileOperation()
+   fileOperation(), progressState(IDLE)
 {
 }
 
@@ -201,19 +203,17 @@ void TiledBitmap::connect(Layer* layer, Layer* prevLayer,
 
 void TiledBitmap::setState(State s)
 {
-  gdk_threads_enter();
   boost::mutex::scoped_lock lock(viewDataMutex);
+  progressState = s;
 
   BOOST_FOREACH(ViewDataMap::value_type& cur, viewData)
   {
     // EEK! This is not thread safe!
     cur.second->setState(s);
   }
-  gdk_threads_leave();
 }
 void TiledBitmap::setProgress(double d)
 {
-  gdk_threads_enter();
   boost::mutex::scoped_lock lock(viewDataMutex);
 
   BOOST_FOREACH(ViewDataMap::value_type& cur, viewData)
@@ -221,12 +221,10 @@ void TiledBitmap::setProgress(double d)
     // EEK! This is not thread safe!
     cur.second->setProgress(d);
   }
-  gdk_threads_leave();
 }
 
 void TiledBitmap::setProgress(int done, int total)
 {
-  gdk_threads_enter();
   boost::mutex::scoped_lock lock(viewDataMutex);
 
   BOOST_FOREACH(ViewDataMap::value_type& cur, viewData)
@@ -234,7 +232,6 @@ void TiledBitmap::setProgress(int done, int total)
     // EEK! This is not thread safe!
     cur.second->setProgress(done, total);
   }
-  gdk_threads_leave();
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -564,6 +561,7 @@ void TiledBitmap::open(ViewInterface* viewInterface)
   boost::mutex::scoped_lock lock(viewDataMutex);
   TiledBitmapViewData::Ptr vd = TiledBitmapViewData::create(viewInterface);
   viewData[viewInterface] = vd;
+  vd->setState(progressState);
 }
 
 void TiledBitmap::close(ViewInterface* vi)
@@ -592,6 +590,7 @@ void TiledBitmap::tileFinished(TileInternal::Ptr tile)
   }
   else
   {
+    gdk_threads_enter();
     setProgress(tileFinishedCount, tileCount);
     if(tileFinishedCount==tileCount)
     {
@@ -603,5 +602,6 @@ void TiledBitmap::tileFinished(TileInternal::Ptr tile)
       }
       printf("INFO: Finished loading file\n");
     }
+    gdk_threads_leave();
   }  
 }

@@ -62,7 +62,7 @@ namespace
   {
     boost::unique_lock<boost::mutex> lock(mut);
 
-    BOOST_FOREACH(GtkProgressBar* p, progressbars)
+    BOOST_FOREACH(GtkProgressBar* &p, progressbars)
     {
       if(p==progressBar)
         p=NULL;
@@ -142,19 +142,17 @@ void ProgressBarManager::setState(State s)
       // state != WAITING, start pulsing
       instance()->start(progressBar);
     }
-    switch(state)
+    switch(s)
     {
     case IDLE:
-      gtk_progress_bar_set_fraction(progressBar, 0);
+    case FINISHED:
+      gtk_progress_bar_set_fraction(progressBar, 0.0);
       break;
     case WAITING:
       // already handled
       break;
     case WORKING:
       // will be handled by calls to setProgress()
-      break;
-    case FINISHED:
-      gtk_progress_bar_set_fraction(progressBar, 1);
       break;
     default:
       // Panic, shouldn't happen
