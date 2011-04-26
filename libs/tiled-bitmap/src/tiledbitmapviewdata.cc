@@ -62,11 +62,15 @@ void TiledBitmapViewData::setNeededTiles(Layer* l, int imin, int imax, int jmin,
     oldStuff.swap(stuff);
 
     lock.unlock();
-    // Temporarily release the lock, such that tiles that have already been
-    // loaded can be added to stuff
+    // The stuff list contains both registrations and references to needed tiles.
+    // Registering an observer can result in tileLoaded() being called immediately
+    // if the tile was already loaded. Hence, we cannot hold the lock while registering
+    // observers.
 
-    // Without having the lock we can't add to stuff, so cache stuff here.
     std::list<boost::shared_ptr<void> > newStuff;
+    // If we don't hold the lock, we cannot add to the stuff list directly. Hence,
+    // temporarily add registrations to the newStuff list, and add the newStuff to
+    // stuff later.
 
     for(int i=imin; i<imax; i++)
       for(int j=jmin; j<jmax; j++)
@@ -75,6 +79,13 @@ void TiledBitmapViewData::setNeededTiles(Layer* l, int imin, int imax, int jmin,
 
         newStuff.push_back(tile->registerObserver(shared_from_this<TiledBitmapViewData>()));
       }
+
+    // At this point, everything we need is either in the stuff list, or the newStuff list.
+    // Hence, this is an excellent time to clear the oldStuff list. We cannot clear the
+    // oldStuff list while holding the lock, because that would result in deadlock (see
+    // ticket #35)
+    oldStuff.clear();
+
     // Re-acquire the lock
     lock.lock();
     stuff.splice(stuff.end(), newStuff, newStuff.begin(), newStuff.end());
