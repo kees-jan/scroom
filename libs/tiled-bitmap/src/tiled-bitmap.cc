@@ -63,6 +63,7 @@ private:
   Layer* target;
   SourcePresentation* thePresentation;
   Scroom::Semaphore done;
+  ThreadPool::Queue::Ptr queue;
 
 private:
   LoadOperation(Layer* l, SourcePresentation* sp, TiledBitmap::Ptr parent);
@@ -73,6 +74,7 @@ public:
 
   virtual void operator()();
   virtual void finished();
+  virtual void abort();
 };
 
 FileOperation::Ptr LoadOperation::create(Layer* l, SourcePresentation* sp, TiledBitmap::Ptr parent)
@@ -81,7 +83,7 @@ FileOperation::Ptr LoadOperation::create(Layer* l, SourcePresentation* sp, Tiled
 }
                                          
 LoadOperation::LoadOperation(Layer* l, SourcePresentation* sp, TiledBitmap::Ptr parent)
-  : FileOperation(parent), target(l), thePresentation(sp)
+  : FileOperation(parent), target(l), thePresentation(sp), queue(ThreadPool::Queue::create())
 {
 }
 
@@ -89,8 +91,14 @@ void LoadOperation::operator()()
 {
   doneWaiting();
 
-  target->fetchData(thePresentation);
+  target->fetchData(thePresentation, queue);
   done.P();
+}
+
+void LoadOperation::abort()
+{
+  queue.reset();
+  done.V();
 }
 
 void LoadOperation::finished()
@@ -150,6 +158,11 @@ void TiledBitmap::initialize()
 TiledBitmap::~TiledBitmap()
 {
   printf("TiledBitmap: Destructing...\n");
+  if(fileOperation)
+  {
+    fileOperation->abort();
+    fileOperation.reset();
+  }
   coordinators.clear();
   while(!layers.empty())
   {
@@ -239,7 +252,7 @@ void TiledBitmap::setProgress(int done, int total)
 
 void TiledBitmap::setSource(SourcePresentation* sp)
 {
-  if(fileOperation==NULL)
+  if(!fileOperation)
   {
     fileOperation = LoadOperation::create(layers[0], sp, TiledBitmap::shared_from_this());
     Sequentially()->schedule(fileOperation);

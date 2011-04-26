@@ -56,6 +56,7 @@ public:
   virtual void doneWaiting();
   virtual void finished()=0;
   virtual void operator()()=0;
+  virtual void abort()=0;
 };
 
 

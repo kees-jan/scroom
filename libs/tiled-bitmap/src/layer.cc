@@ -34,13 +34,15 @@ private:
   int verTileCount;
   int currentRow;
   SourcePresentation* sp;
+  ThreadPool::Ptr threadPool;
+  ThreadPool::Queue::WeakPtr queue;
   
 public:
   DataFetcher(Layer* layer,
               int width, int height,
               int horTileCount, int verTileCount,
               SourcePresentation* sp,
-              int currentRow = 0);
+              ThreadPool::Queue::Ptr queue);
 
   void operator()();
 };
@@ -110,13 +112,13 @@ TileInternalLine& Layer::getTileLine(int j)
   }
 }
 
-void Layer::fetchData(SourcePresentation* sp)
+void Layer::fetchData(SourcePresentation* sp, ThreadPool::Queue::Ptr queue)
 {
   DataFetcher df(this,
                  width, height,
                  horTileCount, verTileCount,
-                 sp);
-  CpuBound()->schedule(df, DATAFETCH_PRIO);
+                 sp, queue);
+  CpuBound()->schedule(df, DATAFETCH_PRIO, queue);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -125,18 +127,22 @@ void Layer::fetchData(SourcePresentation* sp)
 DataFetcher::DataFetcher(Layer* layer,
                          int width, int height,
                          int horTileCount, int verTileCount,
-                         SourcePresentation* sp, int currentRow)
+                         SourcePresentation* sp,
+                         ThreadPool::Queue::Ptr queue)
   : layer(layer), width(width), height(height),
     horTileCount(horTileCount), verTileCount(verTileCount),
-    currentRow(currentRow), sp(sp)
+    currentRow(0), sp(sp), threadPool(CpuBound()), queue(queue)
 {
 }
 
 void DataFetcher::operator()()
 {
+  ThreadPool::Queue::Ptr q(queue);
+
   // printf("Attempting to fetch bitmap data for tileRow %d...\n", currentRow);
   QueueJumper::Ptr qj = QueueJumper::create();
-  CpuBound()->schedule(qj, REDUCE_PRIO);
+
+  threadPool->schedule(qj, REDUCE_PRIO, q);
  
   TileInternalLine& tileLine = layer->getTileLine(currentRow);
   std::vector<Tile::Ptr> tiles;
@@ -160,7 +166,7 @@ void DataFetcher::operator()()
   {
     DataFetcher successor(*this);
     if(!qj->setWork(successor))
-      CpuBound()->schedule(successor, DATAFETCH_PRIO);
+      threadPool->schedule(successor, DATAFETCH_PRIO, q);
   }
   else
     sp->done();
