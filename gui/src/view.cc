@@ -176,6 +176,7 @@ View::View(GladeXML* scroomXml, PresentationInterface::Ptr presentation)
 View::~View()
 {
   setPresentation(PresentationInterface::Ptr());
+  gtk_widget_destroy(GTK_WIDGET(window));
 }
 
 void View::redraw(cairo_t* cr)
@@ -224,6 +225,11 @@ void View::redraw(cairo_t* cr)
     cairo_move_to(cr, 50, 50);
     cairo_show_text(cr, buffer);
   }
+}
+
+void View::hide()
+{
+  gtk_widget_hide(GTK_WIDGET(window));
 }
 
 bool View::hasPresentation()

@@ -32,6 +32,8 @@
 #include <string>
 #include <list>
 
+#include <boost/foreach.hpp>
+
 #include "workinterface.hh"
 
 #include "view.hh"
@@ -51,7 +53,7 @@ static std::string currentFolder;
 
 void on_scroom_hide (GtkWidget*, gpointer user_data)
 {
-  // printf("hide\n");
+  printf("hide\n");
   View* view = static_cast<View*>(user_data);
   on_view_destroyed(view);
 
@@ -151,6 +153,11 @@ void on_save_as_activate (GtkMenuItem*, gpointer)
 
 void on_quit_activate (GtkMenuItem*, gpointer)
 {
+  static std::list<View*> v(views);
+  BOOST_FOREACH(View* view, v)
+  {
+    view->hide();
+  }
   gtk_main_quit();
 }
 

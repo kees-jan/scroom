@@ -97,6 +97,7 @@ public:
   virtual ~View();
 
   void redraw(cairo_t* cr);
+  void hide();
   bool hasPresentation();
   void setPresentation(PresentationInterface::Ptr presentation);
 
