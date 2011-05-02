@@ -13,35 +13,15 @@
 
 #include <scroom/semaphore.hh>
 
+#include "helpers.hh"
+
 #include "queue.hh"
 
 using namespace boost::posix_time;
-using namespace Scroom;
 using namespace Scroom::Detail::ThreadPool;
 
 const millisec short_timeout(250);
 const millisec long_timeout(2000);
-
-//////////////////////////////////////////////////////////////
-
-static void pass_destroy_and_clear(Semaphore* s1, ThreadPool::Queue::WeakPtr q, Semaphore* s2)
-{
-  ThreadPool::Queue::Ptr queue(q);
-  s1->P();
-  queue.reset();
-  s2->V();
-}
-
-static void clear_sem(Semaphore* s)
-{
-  s->V();
-}
-
-static void clear_and_pass(Semaphore* toClear, Semaphore* toPass)
-{
-  toClear->V();
-  toPass->P();
-}
 
 //////////////////////////////////////////////////////////////
 
