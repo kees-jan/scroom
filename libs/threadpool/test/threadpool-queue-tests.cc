@@ -114,7 +114,6 @@ BOOST_AUTO_TEST_CASE(jobs_on_custom_queue_get_executed)
   Semaphore s(0);
   ThreadPool t(0);
   t.schedule(boost::bind(clear_sem, &s), queue);
-  BOOST_CHECK(!s.P(short_timeout));
   t.add();
   BOOST_CHECK(s.P(long_timeout));
 }
@@ -125,7 +124,6 @@ BOOST_AUTO_TEST_CASE(jobs_on_deleted_queue_dont_get_executed)
   Semaphore s(0);
   ThreadPool t(0);
   t.schedule(boost::bind(clear_sem, &s), queue);
-  BOOST_CHECK(!s.P(short_timeout));
   queue.reset();
   t.add();
   BOOST_CHECK(!s.P(long_timeout));

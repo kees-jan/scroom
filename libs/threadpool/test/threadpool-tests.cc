@@ -190,8 +190,12 @@ BOOST_AUTO_TEST_CASE(work_gets_done)
   Semaphore s(0);
   ThreadPool pool(0);
   pool.schedule(boost::bind(clear_sem, &s));
-  BOOST_CHECK(!s.P(short_timeout));
+
+  // Work doesn't get done with no threads
+  BOOST_CHECK(!s.P(long_timeout));
   pool.add();
+
+  // With a thread, work gets done
   BOOST_CHECK(s.P(long_timeout));
 }
 
