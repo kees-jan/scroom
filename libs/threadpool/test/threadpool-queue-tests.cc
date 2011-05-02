@@ -57,9 +57,11 @@ BOOST_AUTO_TEST_CASE(destroy_waits_for_jobs_to_finish)
   qi->jobStarted();
   BOOST_CHECK_EQUAL(2, qi->getCount());
 
+  Semaphore s0(0);
   Semaphore s1(0);
   Semaphore s2(0);
-  boost::thread t(boost::bind(pass_destroy_and_clear, &s1, weakQueue, &s2));
+  boost::thread t(boost::bind(pass_destroy_and_clear, &s0, &s1, &s2, weakQueue));
+  s0.P();
   BOOST_REQUIRE(!s2.P(short_timeout));
   queue.reset();
   BOOST_CHECK(weakQueue.lock());
@@ -85,9 +87,11 @@ BOOST_AUTO_TEST_CASE(destroy_using_QueueLock)
   BOOST_CHECK(queue);
   QueueLock* l = new QueueLock(queue->get());
 
+  Semaphore s0(0);
   Semaphore s1(0);
   Semaphore s2(0);
-  boost::thread t(boost::bind(pass_destroy_and_clear, &s1, weakQueue, &s2));
+  boost::thread t(boost::bind(pass_destroy_and_clear, &s0, &s1, &s2, weakQueue));
+  s0.P();
   BOOST_REQUIRE(!s2.P(short_timeout));
   queue.reset();
   BOOST_CHECK(weakQueue.lock());
@@ -133,6 +137,7 @@ BOOST_AUTO_TEST_CASE(queue_deletion_waits_for_jobs_to_finish)
 {
   ThreadPool::Queue::Ptr queue = ThreadPool::Queue::create();
   ThreadPool::Queue::WeakPtr weakQueue = queue;
+  Semaphore s0(0);
   Semaphore s1(0);
   Semaphore s2(0);
   Semaphore s3(0);
@@ -147,7 +152,8 @@ BOOST_AUTO_TEST_CASE(queue_deletion_waits_for_jobs_to_finish)
   // Setup: Create a thread that will delete the queue. Then delete our
   // reference, because if our reference is the last, our thread will block,
   // resulting in deadlock
-  boost::thread t(boost::bind(pass_destroy_and_clear, &s3, weakQueue, &s4));
+  boost::thread t(boost::bind(pass_destroy_and_clear, &s0, &s3, &s4, weakQueue));
+  s0.P();
   BOOST_CHECK(!s4.P(short_timeout));
   queue.reset();
 

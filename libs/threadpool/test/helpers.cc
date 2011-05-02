@@ -2,9 +2,10 @@
 
 //////////////////////////////////////////////////////////////
 
-void pass_destroy_and_clear(Semaphore* s1, ThreadPool::Queue::WeakPtr q, Semaphore* s2)
+void pass_destroy_and_clear(Semaphore* s0, Semaphore* s1, Semaphore* s2, ThreadPool::Queue::WeakPtr q)
 {
   ThreadPool::Queue::Ptr queue(q);
+  s0->V();
   s1->P();
   queue.reset();
   s2->V();
