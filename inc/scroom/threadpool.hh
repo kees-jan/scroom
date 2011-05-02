@@ -68,6 +68,8 @@ namespace Scroom
 class ThreadPool
 {
 public:
+  class WeakQueue;
+  
   /**
    * Represent a Queue in the ThreadPool.
    *
@@ -96,9 +98,52 @@ public:
     static Ptr create();
     ~Queue();
     boost::shared_ptr<Scroom::Detail::ThreadPool::QueueImpl> get();
+    boost::shared_ptr<WeakQueue> getWeak();
 
   private:
     Queue();
+
+  private:
+    boost::shared_ptr<WeakQueue> weak;
+  };
+
+  /**
+   * Represent a weak Queue reference ThreadPool.
+   *
+   * On occasion, you want tasks that are running on the ThreadPool to
+   * reschedule themselves. However, if tasks have a reference to
+   * their queue, you might risk a deadlock. If a tasks holds the last
+   * reference to the queue, then on task destruction, the queue will
+   * be destroyed. However, destroying the queue blocks for the task
+   * to finish.
+   *
+   * As a way out of this, we introduce the WeakQueue, which can be
+   * used to schedule tasks, but does not contribute towards keeping
+   * the queue alive. I.e. If you destroy the last reference to a
+   * Queue, you can still use the associated WeakQueue to schedule
+   * tasks, but they will no longer be executed, because the Queue no
+   * longer exists.
+   *
+   * If pass in a Queue object when you schedule() your job, then your
+   * job will be scheduled on that particular queue. This does not in
+   * any way affect the order in which jobs are executed. Use priority
+   * for that. Instead, if you later delete your Queue, any jobs
+   * scheduled on that Queue will not be executed any more.
+   *
+   * @see Queue
+   */
+  class WeakQueue
+  {
+  public:
+    typedef boost::shared_ptr<WeakQueue> Ptr;
+
+  public:
+    static Ptr create();
+    ~WeakQueue();
+    boost::shared_ptr<Scroom::Detail::ThreadPool::QueueImpl> get();
+
+  private:
+    WeakQueue();
 
   private:
     boost::shared_ptr<Scroom::Detail::ThreadPool::QueueImpl> qi;
@@ -111,7 +156,7 @@ private:
     boost::function<void ()> fn;
 
     Job();
-    Job(boost::function<void ()> fn, Queue::Ptr queue);
+    Job(boost::function<void ()> fn, WeakQueue::Ptr queue);
   };
 
 public:
@@ -187,6 +232,30 @@ public:
   template<typename T>
   void schedule(boost::shared_ptr<T> fn, Queue::Ptr queue);
 
+  /** Schedule the given job at the given priority */
+  void schedule(boost::function<void ()> const& fn,
+                int priority, WeakQueue::Ptr queue);
+
+  /** Schedule the given job at the given queue */
+  void schedule(boost::function<void ()> const& fn, WeakQueue::Ptr queue);
+
+  /**
+   * Schedule the given job at the given priority
+   *
+   * @pre T::operator()() must be defined
+   */
+  template<typename T>
+  void schedule(boost::shared_ptr<T> fn,
+                int priority, WeakQueue::Ptr queue);
+
+  /**
+   * Schedule the given job at the given priority
+   *
+   * @pre T::operator()() must be defined
+   */
+  template<typename T>
+  void schedule(boost::shared_ptr<T> fn, WeakQueue::Ptr queue);
+
 #ifdef NEW_BOOST_FUTURES
 #ifdef HAVE_STDCXX_0X
   template<typename R>
@@ -205,6 +274,20 @@ public:
   template<typename R, typename T>
   boost::unique_future<R> schedule(boost::shared_ptr<T> fn, Queue::Ptr queue);
 
+  template<typename R>
+  boost::unique_future<R> schedule(boost::function<R ()> const& fn,
+                                   int priority, WeakQueue::Ptr queue);
+
+  template<typename R>
+  boost::unique_future<R> schedule(boost::function<R ()> const& fn, WeakQueue::Ptr queue);
+
+  template<typename R, typename T>
+  boost::unique_future<R> schedule(boost::shared_ptr<T> fn,
+                                   int priority, WeakQueue::Ptr queue);
+
+  template<typename R, typename T>
+  boost::unique_future<R> schedule(boost::shared_ptr<T> fn, WeakQueue::Ptr queue);
+
 #endif /* HAVE_STDCXX_0X */
 #else /* NEW_BOOST_FUTURES */
   template<typename R>
@@ -222,6 +305,20 @@ public:
 
   template<typename R, typename T>
   boost::future<R> schedule(boost::shared_ptr<T> fn, Queue::Ptr queue);
+
+  template<typename R>
+  boost::future<R> schedule(boost::function<R ()> const& fn,
+                            int priority, WeakQueue::Ptr queue);
+
+  template<typename R>
+  boost::future<R> schedule(boost::function<R ()> const& fn, WeakQueue::Ptr queue);
+
+  template<typename R, typename T>
+  boost::future<R> schedule(boost::shared_ptr<T> fn,
+                            int priority, WeakQueue::Ptr queue);
+
+  template<typename R, typename T>
+  boost::future<R> schedule(boost::shared_ptr<T> fn, WeakQueue::Ptr queue);
 
 #endif /* NEW_BOOST_FUTURES */
 

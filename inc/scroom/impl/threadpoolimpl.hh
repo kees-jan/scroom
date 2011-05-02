@@ -34,7 +34,7 @@ namespace
 template<typename T>
 void ThreadPool::schedule(boost::shared_ptr<T> fn, int priority, ThreadPool::Queue::Ptr queue)
 {
-  schedule(boost::bind(threadPoolExecute<void, T>, fn), priority, queue);
+  schedule(fn, priority, queue->getWeak());
 }
 
 template<typename T>
@@ -43,17 +43,25 @@ void ThreadPool::schedule(boost::shared_ptr<T> fn, ThreadPool::Queue::Ptr queue)
   schedule(fn, defaultPriority, queue);
 }
 
+template<typename T>
+void ThreadPool::schedule(boost::shared_ptr<T> fn, int priority, ThreadPool::WeakQueue::Ptr queue)
+{
+  schedule(boost::bind(threadPoolExecute<void, T>, fn), priority, queue);
+}
+
+template<typename T>
+void ThreadPool::schedule(boost::shared_ptr<T> fn, ThreadPool::WeakQueue::Ptr queue)
+{
+  schedule(fn, defaultPriority, queue);
+}
+
 #ifdef NEW_BOOST_FUTURES
 #ifdef HAVE_STDCXX_0X
+
 template<typename R>
 boost::unique_future<R>  ThreadPool::schedule(boost::function<R ()> const& fn, int priority, ThreadPool::Queue::Ptr queue)
 {
-  // Todo: If boost::function supported move semantics, we could do without
-  // the shared pointer.
-  boost::shared_ptr<boost::packaged_task<R>> t(new boost::packaged_task<R>(fn));
-  boost::unique_future<R> f = t->get_future();
-  schedule(boost::bind(threadPoolExecute<void, boost::packaged_task<R>>, t), priority, queue);
-  return f;
+  return schedule(fn, priority, queue->getWeak());
 }
 
 template<typename R>
@@ -65,6 +73,35 @@ boost::unique_future<R>  ThreadPool::schedule(boost::function<R ()> const& fn, T
 template<typename R, typename T>
 boost::unique_future<R> ThreadPool::schedule(boost::shared_ptr<T> fn, int priority, ThreadPool::Queue::Ptr queue)
 {
+  return schedule<R,T>(fn, priority, queue->getWeak());
+}
+
+template<typename R, typename T>
+boost::unique_future<R> ThreadPool::schedule(boost::shared_ptr<T> fn, ThreadPool::Queue::Ptr queue)
+{
+  return schedule<R,T>(fn, defaultPriority, queue);
+}
+
+template<typename R>
+boost::unique_future<R>  ThreadPool::schedule(boost::function<R ()> const& fn, int priority, ThreadPool::WeakQueue::Ptr queue)
+{
+  // Todo: If boost::function supported move semantics, we could do without
+  // the shared pointer.
+  boost::shared_ptr<boost::packaged_task<R>> t(new boost::packaged_task<R>(fn));
+  boost::unique_future<R> f = t->get_future();
+  schedule(boost::bind(threadPoolExecute<void, boost::packaged_task<R>>, t), priority, queue);
+  return f;
+}
+
+template<typename R>
+boost::unique_future<R>  ThreadPool::schedule(boost::function<R ()> const& fn, ThreadPool::WeakQueue::Ptr queue)
+{
+  return schedule(fn, defaultPriority, queue);
+}
+
+template<typename R, typename T>
+boost::unique_future<R> ThreadPool::schedule(boost::shared_ptr<T> fn, int priority, ThreadPool::WeakQueue::Ptr queue)
+{
   // Todo: If boost::function supported move semantics, we could do without
   // the shared pointer.
   boost::shared_ptr<boost::packaged_task<R>> t(new boost::packaged_task<R>(boost::bind(threadPoolExecute<R,T>, fn)));
@@ -74,7 +111,7 @@ boost::unique_future<R> ThreadPool::schedule(boost::shared_ptr<T> fn, int priori
 }
 
 template<typename R, typename T>
-boost::unique_future<R> ThreadPool::schedule(boost::shared_ptr<T> fn, ThreadPool::Queue::Ptr queue)
+boost::unique_future<R> ThreadPool::schedule(boost::shared_ptr<T> fn, ThreadPool::WeakQueue::Ptr queue)
 {
   return schedule(fn, defaultPriority, queue);
 }
@@ -85,9 +122,7 @@ boost::unique_future<R> ThreadPool::schedule(boost::shared_ptr<T> fn, ThreadPool
 template<typename R>
 boost::future<R> ThreadPool::schedule(boost::function<R ()> const& fn, int priority, ThreadPool::Queue::Ptr queue)
 {
-  boost::promise<R> prom; // create promise
-  schedule(boost::future_wrapper<R>(fn, prom), priority, queue); //queue the job
-  return boost::future<R>(prom); // return a future created from the promise
+  return schedule(fn, priority, queue->getWeak());
 }
 
 template<typename R>
@@ -99,13 +134,39 @@ boost::future<R> ThreadPool::schedule(boost::function<R ()> const& fn, ThreadPoo
 template<typename R, typename T>
 boost::future<R> ThreadPool::schedule(boost::shared_ptr<T> fn, int priority, ThreadPool::Queue::Ptr queue)
 {
+  return schedule<R,T>(fn, priority, queue->getWeak());
+}
+
+template<typename R, typename T>
+boost::future<R> ThreadPool::schedule(boost::shared_ptr<T> fn, ThreadPool::Queue::Ptr queue)
+{
+  return schedule<R,T>(fn, defaultPriority, queue);
+}
+
+template<typename R>
+boost::future<R> ThreadPool::schedule(boost::function<R ()> const& fn, int priority, ThreadPool::WeakQueue::Ptr queue)
+{
+  boost::promise<R> prom; // create promise
+  schedule(boost::future_wrapper<R>(fn, prom), priority, queue); //queue the job
+  return boost::future<R>(prom); // return a future created from the promise
+}
+
+template<typename R>
+boost::future<R> ThreadPool::schedule(boost::function<R ()> const& fn, ThreadPool::WeakQueue::Ptr queue)
+{
+  return schedule(fn, defaultPriority, queue);
+}
+
+template<typename R, typename T>
+boost::future<R> ThreadPool::schedule(boost::shared_ptr<T> fn, int priority, ThreadPool::WeakQueue::Ptr queue)
+{
   boost::promise<R> prom; // create promise
   schedule(boost::future_wrapper<R>(boost::bind(threadPoolExecute<R,T>, fn), prom), priority, queue); //queue the job
   return boost::future<R>(prom); // return a future created from the promise
 }
 
 template<typename R, typename T>
-boost::future<R> ThreadPool::schedule(boost::shared_ptr<T> fn, ThreadPool::Queue::Ptr queue)
+boost::future<R> ThreadPool::schedule(boost::shared_ptr<T> fn, ThreadPool::WeakQueue::Ptr queue)
 {
   return schedule(fn, defaultPriority, queue);
 }

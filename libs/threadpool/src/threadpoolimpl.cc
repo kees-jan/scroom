@@ -114,12 +114,22 @@ void ThreadPool::work()
 
 void ThreadPool::schedule(boost::function<void ()> const& fn, int priority, ThreadPool::Queue::Ptr queue)
 {
+  schedule(fn, priority, queue->getWeak());
+}
+
+void ThreadPool::schedule(boost::function<void ()> const& fn, ThreadPool::Queue::Ptr queue)
+{
+  schedule(fn, defaultPriority, queue);
+}
+
+void ThreadPool::schedule(boost::function<void ()> const& fn, int priority, ThreadPool::WeakQueue::Ptr queue)
+{
   boost::unique_lock<boost::mutex> lock(mut);
   jobs[priority].push(Job(fn, queue));
   jobcount.V();
 }
 
-void ThreadPool::schedule(boost::function<void ()> const& fn, ThreadPool::Queue::Ptr queue)
+void ThreadPool::schedule(boost::function<void ()> const& fn, ThreadPool::WeakQueue::Ptr queue)
 {
   schedule(fn, defaultPriority, queue);
 }
@@ -142,16 +152,44 @@ ThreadPool::Queue::Ptr ThreadPool::Queue::create()
 }
 
 ThreadPool::Queue::Queue()
-: qi(QueueImpl::create())
+: weak(WeakQueue::create())
 {
 }
 
 ThreadPool::Queue::~Queue()
 {
-  qi->deletingQueue();
+  weak->get()->deletingQueue();
 }
 
 QueueImpl::Ptr ThreadPool::Queue::get()
+{
+  return weak->get();
+}
+
+ThreadPool::WeakQueue::Ptr ThreadPool::Queue::getWeak()
+{
+  return weak;
+}
+
+////////////////////////////////////////////////////////////////////////
+/// ThreadPool::WeakQueue
+////////////////////////////////////////////////////////////////////////
+
+ThreadPool::WeakQueue::Ptr ThreadPool::WeakQueue::create()
+{
+  return ThreadPool::WeakQueue::Ptr(new ThreadPool::WeakQueue());
+}
+
+ThreadPool::WeakQueue::WeakQueue()
+: qi(QueueImpl::create())
+{
+}
+
+ThreadPool::WeakQueue::~WeakQueue()
+{
+}
+
+QueueImpl::Ptr ThreadPool::WeakQueue::get()
 {
   return qi;
 }
@@ -165,7 +203,7 @@ ThreadPool::Job::Job()
 {
 }
 
-ThreadPool::Job::Job(boost::function<void ()> fn, Queue::Ptr queue)
+ThreadPool::Job::Job(boost::function<void ()> fn, WeakQueue::Ptr queue)
 :queue(queue->get()), fn(fn)
 {
 }
