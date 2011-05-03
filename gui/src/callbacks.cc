@@ -53,7 +53,6 @@ static std::string currentFolder;
 
 void on_scroom_hide (GtkWidget*, gpointer user_data)
 {
-  printf("hide\n");
   View* view = static_cast<View*>(user_data);
   on_view_destroyed(view);
 

@@ -35,7 +35,7 @@ private:
   int currentRow;
   SourcePresentation* sp;
   ThreadPool::Ptr threadPool;
-  ThreadPool::Queue::WeakPtr queue;
+  ThreadPool::WeakQueue::Ptr queue;
   
 public:
   DataFetcher(Layer* layer,
@@ -131,18 +131,16 @@ DataFetcher::DataFetcher(Layer* layer,
                          ThreadPool::Queue::Ptr queue)
   : layer(layer), width(width), height(height),
     horTileCount(horTileCount), verTileCount(verTileCount),
-    currentRow(0), sp(sp), threadPool(CpuBound()), queue(queue)
+    currentRow(0), sp(sp), threadPool(CpuBound()), queue(queue->getWeak())
 {
 }
 
 void DataFetcher::operator()()
 {
-  ThreadPool::Queue::Ptr q(queue);
-
   // printf("Attempting to fetch bitmap data for tileRow %d...\n", currentRow);
   QueueJumper::Ptr qj = QueueJumper::create();
 
-  threadPool->schedule(qj, REDUCE_PRIO, q);
+  threadPool->schedule(qj, REDUCE_PRIO, queue);
  
   TileInternalLine& tileLine = layer->getTileLine(currentRow);
   std::vector<Tile::Ptr> tiles;
@@ -166,7 +164,7 @@ void DataFetcher::operator()()
   {
     DataFetcher successor(*this);
     if(!qj->setWork(successor))
-      threadPool->schedule(successor, DATAFETCH_PRIO, q);
+      threadPool->schedule(successor, DATAFETCH_PRIO, queue);
   }
   else
     sp->done();
