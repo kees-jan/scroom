@@ -35,6 +35,7 @@ echo_me "Tmp:    ${TMP:=/tmp}"
 echo_me "Name:   ${NAME:=Kees-Jan Dijkzeul}"
 echo_me "E-mail: ${EMAIL:=kees-jan.dijkzeul@iae.nl}"
 echo ""
+sudo true
 
 if [ ! -d "$BUILD" -o ! -w "$BUILD" ]
 then
