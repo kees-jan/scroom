@@ -1,3 +1,10 @@
+scroom (0.2~rc1-1) lucid; urgency=low
+
+  * Release candidate for version 0.2
+  * For more info see http://fuzzy.homedns.org/trac/scroom/milestone/0.2
+
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Tue, 03 May 2011 20:42:55 +0200
+
 scroom (0.1.2-1) lucid; urgency=low
 
   * For more info see
