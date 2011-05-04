@@ -220,10 +220,12 @@ void View::redraw(cairo_t* cr)
   }
   else
   {
-    char buffer[] = "View says \"Hi\"";
-
-    cairo_move_to(cr, 50, 50);
-    cairo_show_text(cr, buffer);
+    // A logo here would be nice...
+    
+    // char buffer[] = "View says \"Hi\"";
+    // 
+    // cairo_move_to(cr, 50, 50);
+    // cairo_show_text(cr, buffer);
   }
 }
 
