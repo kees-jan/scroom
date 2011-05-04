@@ -22,6 +22,7 @@ prepare()
     remove_if_exists "configure.log"
     remove_if_exists "lucid.log"
     remove_if_exists "maverick.log"
+    remove_if_exists "natty.log"
     remove_if_exists "mutracx.log"
     remove_if_exists "pdebuild.log"
 }
@@ -111,7 +112,7 @@ cd "$CURDIR" || exit 1
 cp "$BUILD/scroom-$VERSION/debian/changelog" ./debian/changelog || exit 1
 
 # Ubuntu source packages
-for source_package in lucid maverick
+for source_package in lucid maverick natty
 do
     echo_me $source_package
     ( rm -rf "$BUILD/$source_package" > /dev/null 2>&1 ;
@@ -125,7 +126,7 @@ do
         else
             true
         fi &&
-        dch -D "$source_package" -v "$(dpkg-parsechangelog | awk '/^Version: / { print $2 }')${source_package}1" \
+        dch -D "$source_package" --force-distribution -v "$(dpkg-parsechangelog | awk '/^Version: / { print $2 }')${source_package}1" \
             "$source_package edition" && 
         debuild -S -sa -us -uc -j12
         ) > ${source_package}.log 2>&1
