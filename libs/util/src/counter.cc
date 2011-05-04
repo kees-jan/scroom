@@ -17,6 +17,8 @@
  */
 #include <scroom/utilities.hh>
 
+#include <stdio.h>
+
 #include <glib.h>
 
 using namespace Scroom::Utils;
