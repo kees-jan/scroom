@@ -78,7 +78,7 @@ public:
    * each of them, as appropriate. However, before doing so, it will
    * first call initializeCairo(). You can take this opportunity to
    * set various properties that are needed in all subsequent calls to
-   * draw() and drawStat(), such as antialiasing and line caps.
+   * draw() and drawState(), such as anti-aliasing and line caps.
    */
   virtual void initializeCairo(cairo_t* cr)=0;
 
@@ -98,7 +98,7 @@ public:
   /**
    * Draw the given state into the given viewArea
    *
-   * The associated tile is likely not loaded or not initialised or in
+   * The associated tile is likely not loaded or not initialized or in
    * whatever other TileState that doesn't allow its contents to be
    * drawn.
    *
