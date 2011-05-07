@@ -63,12 +63,14 @@ private:
   Layer* target;
   SourcePresentation* thePresentation;
   Scroom::Semaphore done;
-  ThreadPool::Queue::Ptr queue;
+  ThreadPool::WeakQueue::Ptr queue;
 
 private:
-  LoadOperation(Layer* l, SourcePresentation* sp, TiledBitmap::Ptr parent);
+  LoadOperation(ThreadPool::WeakQueue::Ptr queue, Layer* l, SourcePresentation* sp,
+                TiledBitmap::Ptr parent);
 public:
-  static Ptr create(Layer* l, SourcePresentation* sp, TiledBitmap::Ptr parent);
+  static Ptr create(ThreadPool::WeakQueue::Ptr queue, Layer* l, SourcePresentation* sp,
+                    TiledBitmap::Ptr parent);
   
   virtual ~LoadOperation() {}
 
@@ -77,13 +79,17 @@ public:
   virtual void abort();
 };
 
-FileOperation::Ptr LoadOperation::create(Layer* l, SourcePresentation* sp, TiledBitmap::Ptr parent)
+FileOperation::Ptr LoadOperation::create(ThreadPool::WeakQueue::Ptr queue,
+                                         Layer* l, SourcePresentation* sp,
+                                         TiledBitmap::Ptr parent)
 {
-  return FileOperation::Ptr(new LoadOperation(l, sp, parent));
+  return FileOperation::Ptr(new LoadOperation(queue, l, sp, parent));
 }
                                          
-LoadOperation::LoadOperation(Layer* l, SourcePresentation* sp, TiledBitmap::Ptr parent)
-  : FileOperation(parent), target(l), thePresentation(sp), queue(ThreadPool::Queue::create())
+LoadOperation::LoadOperation(ThreadPool::WeakQueue::Ptr queue,
+                             Layer* l, SourcePresentation* sp,
+                             TiledBitmap::Ptr parent)
+  : FileOperation(parent), target(l), thePresentation(sp), queue(queue)
 {
 }
 
@@ -97,7 +103,6 @@ void LoadOperation::operator()()
 
 void LoadOperation::abort()
 {
-  queue.reset();
   done.V();
 }
 
@@ -120,7 +125,7 @@ TiledBitmap::Ptr TiledBitmap::create(int bitmapWidth, int bitmapHeight, LayerSpe
 
 TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
   :bitmapWidth(bitmapWidth), bitmapHeight(bitmapHeight), ls(ls), tileCount(0), tileFinishedCount(0),
-   fileOperation(), progressState(IDLE)
+   fileOperation(), progressState(IDLE), queue(ThreadPool::Queue::create())
 {
 }
 
@@ -158,10 +163,11 @@ void TiledBitmap::initialize()
 TiledBitmap::~TiledBitmap()
 {
   printf("TiledBitmap: Destructing...\n");
+  queue.reset();
+
   if(fileOperation)
   {
     fileOperation->abort();
-    fileOperation.reset();
   }
   coordinators.clear();
   while(!layers.empty())
@@ -254,7 +260,7 @@ void TiledBitmap::setSource(SourcePresentation* sp)
 {
   if(!fileOperation)
   {
-    fileOperation = LoadOperation::create(layers[0], sp, TiledBitmap::shared_from_this());
+    fileOperation = LoadOperation::create(queue->getWeak(), layers[0], sp, TiledBitmap::shared_from_this());
     Sequentially()->schedule(fileOperation);
   }
   else

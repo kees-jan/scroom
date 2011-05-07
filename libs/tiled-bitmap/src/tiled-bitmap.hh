@@ -82,6 +82,7 @@ private:
   int tileFinishedCount;
   FileOperation::Ptr fileOperation;
   ProgressInterface::State progressState;
+  ThreadPool::Queue::Ptr queue;
   
 public:
   static Ptr create(int bitmapWidth, int bitmapHeight, LayerSpec& ls);

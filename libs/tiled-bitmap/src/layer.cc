@@ -42,7 +42,7 @@ public:
               int width, int height,
               int horTileCount, int verTileCount,
               SourcePresentation* sp,
-              ThreadPool::Queue::Ptr queue);
+              ThreadPool::WeakQueue::Ptr queue);
 
   void operator()();
 };
@@ -112,7 +112,7 @@ TileInternalLine& Layer::getTileLine(int j)
   }
 }
 
-void Layer::fetchData(SourcePresentation* sp, ThreadPool::Queue::Ptr queue)
+void Layer::fetchData(SourcePresentation* sp, ThreadPool::WeakQueue::Ptr queue)
 {
   DataFetcher df(this,
                  width, height,
@@ -128,10 +128,10 @@ DataFetcher::DataFetcher(Layer* layer,
                          int width, int height,
                          int horTileCount, int verTileCount,
                          SourcePresentation* sp,
-                         ThreadPool::Queue::Ptr queue)
+                         ThreadPool::WeakQueue::Ptr queue)
   : layer(layer), width(width), height(height),
     horTileCount(horTileCount), verTileCount(verTileCount),
-    currentRow(0), sp(sp), threadPool(CpuBound()), queue(queue->getWeak())
+    currentRow(0), sp(sp), threadPool(CpuBound()), queue(queue)
 {
 }
 
