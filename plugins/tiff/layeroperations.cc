@@ -540,7 +540,7 @@ void Operations::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRec
           first=1;
           second=0;
         }
-        for(byte b=2; b<pixelMask+1; b++)
+        for(int b=2; b<pixelMask+1; b++)
         {
           if(lookup[b]>lookup[first])
           {
