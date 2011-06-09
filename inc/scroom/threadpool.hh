@@ -178,6 +178,14 @@ private:
    */
   std::map<int, std::queue<Job> > jobs;
 
+  /**
+   * If @c true, this ThreadPool completes all jobs before being destroyed.
+   *
+   * If it is false, the ThreadPool will remove unfinished jobs from
+   * the queue without executing them, and then self-destruct.
+   */
+  bool completeAllJobsBeforeDestruction;
+
 private:
   /**
    * This is executed by each of the threads in the ThreadPool
@@ -193,10 +201,10 @@ private:
 
 public:
   /** Create a ThreadPool with one thread for each core in the system */
-  ThreadPool();
+  ThreadPool(bool completeAllJobsBeforeDestruction=false);
 
   /** Create a ThreadPool with the given number of threads */
-  ThreadPool(int count);
+  ThreadPool(int count, bool completeAllJobsBeforeDestruction=false);
 
   /**
    * Destructor

@@ -176,33 +176,6 @@ BOOST_AUTO_TEST_SUITE(ThreadPool_Tests)
 
 BOOST_AUTO_TEST_SUITE(ThreadPool_class_Tests)
 
-BOOST_AUTO_TEST_CASE(threads_terminate_on_destruction)
-{
-  ThreadPool* pool = new ThreadPool(0);
-  ThreadPool::ThreadPtr t = pool->add();
-  BOOST_CHECK(!t->timed_join(short_timeout));
-  delete pool;
-
-  bool success = boost::thread::id() == t->get_id();
-  BOOST_CHECK(success);
-  if(!success)
-  {
-    t->interrupt();
-    t->timed_join(long_timeout);
-    BOOST_REQUIRE(boost::thread::id() == t->get_id());
-  }
-}
-
-BOOST_AUTO_TEST_CASE(threads_can_be_interrupted)
-{
-  ThreadPool pool(0);
-  ThreadPool::ThreadPtr t = pool.add();
-  boost::this_thread::sleep(millisec(50));
-  t->interrupt();
-  t->timed_join(short_timeout);
-  BOOST_CHECK_EQUAL(boost::thread::id(), t->get_id());
-}
-
 BOOST_AUTO_TEST_CASE(work_gets_done)
 {
   Semaphore s(0);
@@ -256,37 +229,6 @@ BOOST_AUTO_TEST_CASE(construct_2_threads)
   expected=1;
 #endif
   BOOST_CHECK(has_exactly_n_threads(&pool, expected));
-}
-
-BOOST_AUTO_TEST_CASE(destroy_threadpool_with_nonempty_queue)
-{
-  ThreadPool* pool = new ThreadPool(0);
-  Semaphore dummy(0);
-
-  pool->schedule(boost::bind(clear_sem, &dummy));
-
-  boost::thread t(boost::bind(destroy, pool));
-  t.timed_join(long_timeout);
-  BOOST_REQUIRE(boost::thread::id() == t.get_id());
-}
-
-BOOST_AUTO_TEST_CASE(cant_destroy_threadpool_with_running_job)
-{
-  ThreadPool* pool = new ThreadPool(1);
-  Semaphore a(0);
-  Semaphore b(0);
-
-  pool->schedule(boost::bind(pass_and_clear, &a, &b));
-
-  // Give the thread some time to start the job
-  boost::this_thread::sleep(millisec(50));
-  
-  boost::thread t(boost::bind(destroy, pool));
-  BOOST_CHECK(!t.timed_join(short_timeout));
-  a.V();
-  t.timed_join(long_timeout);
-  BOOST_REQUIRE(boost::thread::id() == t.get_id());
-  BOOST_CHECK(b.P(short_timeout));
 }
 
 BOOST_AUTO_TEST_CASE(schedule_shared_pointer)

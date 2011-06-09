@@ -38,6 +38,8 @@ namespace Scroom
 
     template<typename duration_type>
     bool P(duration_type const& rel_time);
+
+    bool try_P();
   };
 
   inline Semaphore::Semaphore(unsigned int count)
@@ -53,6 +55,18 @@ namespace Scroom
       cond.wait(lock);
     }
     count--;
+  }
+
+  inline bool Semaphore::try_P()
+  {
+    boost::mutex::scoped_lock lock(mut);
+    if(count>0)
+    {
+      count--;
+      return true;
+    }
+
+    return false;
   }
 
   template<typename duration_type>

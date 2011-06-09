@@ -31,7 +31,8 @@ using namespace Scroom::Detail::ThreadPool;
 /// ThreadPool
 ////////////////////////////////////////////////////////////////////////
 
-ThreadPool::ThreadPool()
+ThreadPool::ThreadPool(bool completeAllJobsBeforeDestruction)
+ : completeAllJobsBeforeDestruction(completeAllJobsBeforeDestruction)
 {
   int count = boost::thread::hardware_concurrency();
 #ifndef MULTITHREADING
@@ -40,7 +41,8 @@ ThreadPool::ThreadPool()
   add(count);
 }
 
-ThreadPool::ThreadPool(int count)
+ThreadPool::ThreadPool(int count, bool completeAllJobsBeforeDestruction)
+  : completeAllJobsBeforeDestruction(completeAllJobsBeforeDestruction)
 {
 #ifndef MULTITHREADING
   count=1;
@@ -81,33 +83,51 @@ ThreadPool::~ThreadPool()
 
 void ThreadPool::work()
 {
+  boost::this_thread::disable_interruption outside_while_loop;
+  
+  bool interrupted = false;
+
   while(true)
   {
-    jobcount.P();
-    boost::unique_lock<boost::mutex> lock(mut);
-
-    while(!jobs.empty() && jobs.begin()->second.empty())
-      jobs.erase(jobs.begin());
-
-    // At this point, either the jobs map is empty, or jobs.begin()->second contains tasks.
-  
-    if(!jobs.empty() && !jobs.begin()->second.empty())
+    try
     {
-      ThreadPool::Job job = jobs.begin()->second.front();
-      jobs.begin()->second.pop();
+      boost::this_thread::restore_interruption inside_while_loop(outside_while_loop);
 
-      QueueLock l(job.queue);
-      if(l.queueExists())
+      if(interrupted && ! jobcount.try_P())
+        break;
+      else
+        jobcount.P();
+      
+      boost::unique_lock<boost::mutex> lock(mut);
+
+      while(!jobs.empty() && jobs.begin()->second.empty())
+        jobs.erase(jobs.begin());
+
+      // At this point, either the jobs map is empty, or jobs.begin()->second contains tasks.
+      if(!jobs.empty() && !jobs.begin()->second.empty())
       {
-        lock.unlock();
+        ThreadPool::Job job = jobs.begin()->second.front();
+        jobs.begin()->second.pop();
 
-        boost::this_thread::disable_interruption while_executing_jobs;
-        job.fn();
+        QueueLock l(job.queue);
+        if(l.queueExists())
+        {
+          lock.unlock();
+
+          boost::this_thread::disable_interruption while_executing_jobs;
+          job.fn();
+        }
+      }
+      else
+      {
+        printf("PANIC: JobQueue empty while it shouldn't be\n");
       }
     }
-    else
+    catch(boost::thread_interrupted& ex)
     {
-      printf("PANIC: JobQueue empty while it shouldn't be\n");
+      interrupted = true;
+      if(!completeAllJobsBeforeDestruction)
+        break;
     }
   }
 }
