@@ -10,7 +10,8 @@ threadpool_tests_SOURCES = \
 	semaphore-tests.cc \
 	threadpool-tests.cc \
 	threadpool-queue-tests.cc \
-	threadpool-queueimpl-tests.cc
+	threadpool-queueimpl-tests.cc \
+	async-deleter-tests.cc
 
 # threadpool_tests_CPPFLAGS = -I $(top_srcdir)/compat/boost-futures/inc
 
