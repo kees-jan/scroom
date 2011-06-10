@@ -24,16 +24,13 @@
 #include <boost/thread.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
 
+#include "helpers.hh"
+#include "function-additor.hh"
+
 using namespace Scroom;
 using namespace boost::posix_time;
 
 //////////////////////////////////////////////////////////////
-
-void passAndExit(Semaphore* s, int count=1)
-{
-  for(int i=0; i<count; i++)
-    s->P();
-}
 
 void test_count_equals(Semaphore* s, int i)
 {
@@ -102,7 +99,7 @@ BOOST_AUTO_TEST_CASE(inc_count_3)
 BOOST_AUTO_TEST_CASE(pass_many)
 {
   Semaphore s(0);
-  boost::thread t(boost::bind(passAndExit, &s, 5));
+  boost::thread t(5*pass(&s));
   boost::this_thread::sleep(millisec(50));
   s.V();
   boost::this_thread::sleep(millisec(100));

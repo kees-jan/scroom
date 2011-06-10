@@ -36,7 +36,25 @@ public:
   void operator()();
 };
 
+class FunctionMultiplier
+{
+private:
+  boost::function<void ()> f;
+  unsigned int i;
+
+public:
+  FunctionMultiplier(boost::function<void ()> const& f, unsigned int i);
+  ~FunctionMultiplier();
+
+  FunctionMultiplier& operator*(unsigned int i);
+  void operator()();
+  
+};
+
 FunctionAdditor operator+(boost::function<void ()> const& f1, boost::function<void ()> const& f2);
+FunctionMultiplier& operator*(unsigned int i, FunctionMultiplier m);
+FunctionMultiplier operator*(unsigned int i, boost::function<void ()> const& f);
+FunctionMultiplier operator*(boost::function<void ()> const& f, unsigned int i);
 
 
 

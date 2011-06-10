@@ -57,12 +57,15 @@ BOOST_AUTO_TEST_CASE(queueimpl_jobs_with_deleted_queue_can_be_scheduled_and_dont
 {
   ThreadPool::Queue::Ptr queue = ThreadPool::Queue::create();
   ThreadPool::WeakQueue::Ptr weak = queue->getWeak();
-  Semaphore s(0);
+  Semaphore s1(0);
+  Semaphore s2(0);
   ThreadPool t(0);
   queue.reset();
-  t.schedule(clear(&s), weak);
+  t.schedule(clear(&s1), weak);
+  t.schedule(clear(&s2));
   t.add();
-  BOOST_CHECK(!s.P(long_timeout));
+  BOOST_CHECK(s2.P(long_timeout));
+  BOOST_CHECK(!s1.try_P());
 }
 
 BOOST_AUTO_TEST_SUITE_END()

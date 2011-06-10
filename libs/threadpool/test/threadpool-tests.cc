@@ -31,6 +31,9 @@
 
 #include <scroom/semaphore.hh>
 
+#include "helpers.hh"
+#include "function-additor.hh"
+
 using namespace boost::posix_time;
 using namespace Scroom;
 
@@ -38,22 +41,6 @@ const millisec short_timeout(250);
 const millisec long_timeout(2000);
 
 //////////////////////////////////////////////////////////////
-
-static void clear_sem(Semaphore* s)
-{
-  s->V();
-}
-
-static void pass_and_clear(Semaphore* toPass, Semaphore* toClear)
-{
-  toPass->P();
-  toClear->V();
-}
-
-static void destroy(ThreadPool* threadpool)
-{
-  delete threadpool;
-}
 
 class A
 {
@@ -124,12 +111,12 @@ bool has_at_least_n_threads(ThreadPool* pool, int count)
       semaphores[i] = new Semaphore(0);
 
     for(int i=0; i<count-1; i++)
-      pool->schedule(boost::bind(pass_and_clear, semaphores[i+1], semaphores[i]));
+      pool->schedule(pass(semaphores[i+1])+clear(semaphores[i]));
 
     // All tasks are blocked on semaphores[count-1]
     BOOST_REQUIRE(!semaphores[0]->P(short_timeout));
 
-    pool->schedule(boost::bind(clear_sem, semaphores[count-1]));
+    pool->schedule(clear(semaphores[count-1]));
     // If jobs of the same priority are scheduled in order, and if
     // there are at least count threads, then this final job will get
     // scheduled on the last available thread, thus freeing all
@@ -180,7 +167,7 @@ BOOST_AUTO_TEST_CASE(work_gets_done)
 {
   Semaphore s(0);
   ThreadPool pool(0);
-  pool.schedule(boost::bind(clear_sem, &s));
+  pool.schedule(clear(&s));
 
   // Work doesn't get done with no threads
   BOOST_CHECK(!s.P(long_timeout));
@@ -195,8 +182,8 @@ BOOST_AUTO_TEST_CASE(work_gets_done_by_prio)
   Semaphore high(0);
   Semaphore low(0);
   ThreadPool pool(0);
-  pool.schedule(boost::bind(clear_sem, &low), PRIO_NORMAL);
-  pool.schedule(boost::bind(pass_and_clear, &low, &high), PRIO_HIGH);
+  pool.schedule(clear(&low), PRIO_NORMAL);
+  pool.schedule(pass(&low)+clear(&high), PRIO_HIGH);
   
   pool.add();
   // Thread is doing the high-prio tasks first, which is blocked on

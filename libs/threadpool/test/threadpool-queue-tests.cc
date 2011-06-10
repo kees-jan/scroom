@@ -79,9 +79,7 @@ BOOST_AUTO_TEST_CASE(destroy_waits_for_jobs_to_finish)
   Semaphore s0(0);
   Semaphore s1(0);
   Semaphore s2(0);
-  boost::thread t(clear(&s0)+pass(&s1)+destroy(queue)+clear(&s2));
-  s0.P();
-  BOOST_REQUIRE(!s2.P(short_timeout));
+  boost::thread t(pass(&s1)+destroy(queue)+clear(&s2));
   queue.reset();
   BOOST_CHECK(weakQueue.lock());
   s1.V();
@@ -144,12 +142,15 @@ BOOST_AUTO_TEST_CASE(jobs_on_custom_queue_get_executed)
 BOOST_AUTO_TEST_CASE(jobs_on_deleted_queue_dont_get_executed)
 {
   ThreadPool::Queue::Ptr queue = ThreadPool::Queue::create();
-  Semaphore s(0);
+  Semaphore s1(0);
+  Semaphore s2(0);
   ThreadPool t(0);
-  t.schedule(clear(&s), queue);
+  t.schedule(clear(&s1), queue);
+  t.schedule(clear(&s2));
   queue.reset();
   t.add();
-  BOOST_CHECK(!s.P(long_timeout));
+  BOOST_CHECK(s2.P(long_timeout));
+  BOOST_CHECK(!s1.try_P());
 }
 
 BOOST_AUTO_TEST_CASE(queue_deletion_waits_for_jobs_to_finish)
@@ -171,9 +172,7 @@ BOOST_AUTO_TEST_CASE(queue_deletion_waits_for_jobs_to_finish)
   // Setup: Create a thread that will delete the queue. Then delete our
   // reference, because if our reference is the last, our thread will block,
   // resulting in deadlock
-  boost::thread t(clear(&s0)+pass(&s3)+destroy(queue)+clear(&s4));
-  s0.P();
-  BOOST_CHECK(!s4.P(short_timeout));
+  boost::thread t(pass(&s3)+destroy(queue)+clear(&s4));
   queue.reset();
 
   // Tell the thread to start deleting the Queue

@@ -41,7 +41,45 @@ void FunctionAdditor::operator()()
   }
 }
 
+////////////////////////////////////////////////////////////////////////
+
+FunctionMultiplier::FunctionMultiplier(boost::function<void ()> const& f, unsigned int i)
+  : f(f), i(i)
+{}
+
+FunctionMultiplier::~FunctionMultiplier()
+{}
+
+FunctionMultiplier& FunctionMultiplier::operator*(unsigned int i)
+{
+  this->i *= i;
+  return *this;
+}
+
+void FunctionMultiplier::operator()()
+{
+  for(unsigned int c=0; c<i; c++)
+    f();
+}
+
+////////////////////////////////////////////////////////////////////////
+
 FunctionAdditor operator+(boost::function<void ()> const& f1, boost::function<void ()> const& f2)
 {
   return FunctionAdditor() + f1 + f2;
+}
+
+FunctionMultiplier& operator*(unsigned int i, FunctionMultiplier m)
+{
+  return m*i;
+}
+
+FunctionMultiplier operator*(unsigned int i, boost::function<void ()> const& f)
+{
+  return FunctionMultiplier(f, i);
+}
+
+FunctionMultiplier operator*(boost::function<void ()> const& f, unsigned int i)
+{
+  return FunctionMultiplier(f, i);
 }

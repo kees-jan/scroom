@@ -80,4 +80,34 @@ BOOST_AUTO_TEST_CASE(additor_adds)
 
 BOOST_AUTO_TEST_SUITE_END()
 
+BOOST_AUTO_TEST_SUITE(Multiplier_Tests)
+
+BOOST_AUTO_TEST_CASE(Multiplier_multiplies)
+{
+  Semaphore s(5);
+
+  (5*pass(&s))();
+  BOOST_REQUIRE(!s.try_P());
+
+  Semaphore s2(25);
+  ((5*pass(&s2))*5)();
+  BOOST_REQUIRE(!s2.try_P());
+}
+
+BOOST_AUTO_TEST_SUITE_END()
+
+BOOST_AUTO_TEST_SUITE(Combined_Tests)
+
+BOOST_AUTO_TEST_CASE(Test_If_Expressions_Compile)
+{
+  (void)(clear(NULL)+5*clear(NULL));
+  (void)(clear(NULL)+(5*clear(NULL))*5);
+  (void)(clear(NULL)+5*(5*clear(NULL)));
+  (void)(4*(clear(NULL)+clear(NULL)));
+  (void)((clear(NULL)+clear(NULL))*4);
+}
+
+
+BOOST_AUTO_TEST_SUITE_END()
+
 BOOST_AUTO_TEST_SUITE_END()
