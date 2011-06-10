@@ -6,8 +6,10 @@ check_PROGRAMS = threadpool-tests
 
 threadpool_tests_SOURCES = \
 	main.cc \
+	function-additor.cc function-additor.hh \
 	helpers.cc helpers.hh \
 	semaphore-tests.cc \
+	function-additor-tests.cc \
 	threadpool-tests.cc \
 	threadpool-queue-tests.cc \
 	threadpool-queueimpl-tests.cc \

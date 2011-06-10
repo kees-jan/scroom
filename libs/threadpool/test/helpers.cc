@@ -20,6 +20,26 @@
 
 //////////////////////////////////////////////////////////////
 
+namespace
+{
+  void passImpl(Semaphore* s)
+  {
+    s->P();
+  }
+
+  void clearImpl(Semaphore* s)
+  {
+    s->V();
+  }
+
+  void destroyImpl(boost::shared_ptr<void>& p)
+  {
+    p.reset();
+  }
+}
+
+//////////////////////////////////////////////////////////////
+
 void pass_destroy_and_clear(Semaphore* s0, Semaphore* s1, Semaphore* s2, ThreadPool::Queue::WeakPtr q)
 {
   ThreadPool::Queue::Ptr queue(q);
@@ -38,5 +58,22 @@ void clear_and_pass(Semaphore* toClear, Semaphore* toPass)
 {
   toClear->V();
   toPass->P();
+}
+
+//////////////////////////////////////////////////////////////
+
+boost::function<void ()> pass(Semaphore* s)
+{
+  return boost::bind(passImpl, s);
+}
+
+boost::function<void ()> clear(Semaphore* s)
+{
+  return boost::bind(clearImpl, s);
+}
+
+boost::function<void ()> destroy(boost::shared_ptr<void> p)
+{
+  return boost::bind(destroyImpl, p);
 }
 

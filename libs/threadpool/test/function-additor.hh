@@ -16,24 +16,27 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef HELPERS_HH
-#define HELPERS_HH
+#ifndef FUNCTION_ADDITOR_HH
+#define FUNCTION_ADDITOR_HH
+
+#include <list>
 
 #include <boost/function.hpp>
-#include <boost/shared_ptr.hpp>
 
-#include <scroom/semaphore.hh>
-#include <scroom/threadpool.hh>
+class FunctionAdditor
+{
+private:
+  std::list<boost::function<void ()> > functions;
 
-using namespace Scroom;
+public:
+  FunctionAdditor();
+  ~FunctionAdditor();
 
-void pass_destroy_and_clear(Semaphore* s0, Semaphore* s1, Semaphore* s2, ThreadPool::Queue::WeakPtr q);
-void clear_sem(Semaphore* s);
-void clear_and_pass(Semaphore* toClear, Semaphore* toPass);
+  FunctionAdditor& operator+(boost::function<void ()> const& fn);
+  void operator()();
+};
 
-boost::function<void ()> pass(Semaphore* s);
-boost::function<void ()> clear(Semaphore* s);
-boost::function<void ()> destroy(boost::shared_ptr<void> p);
+FunctionAdditor operator+(boost::function<void ()> const& f1, boost::function<void ()> const& f2);
 
 
 

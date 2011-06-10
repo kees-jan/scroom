@@ -39,9 +39,9 @@ void test_count_equals(Semaphore* s, int i)
 {
   for(int actual=0; actual<i; actual++)
   {
-    BOOST_CHECK_MESSAGE(s->try_P(), "Could only decrement " << actual << " times, instead of " << i);
+    BOOST_REQUIRE_MESSAGE(s->try_P(), "Could only decrement " << actual << " times, instead of " << i);
   }
-  BOOST_CHECK_MESSAGE(!s->try_P(), "Can decrement " << (i+1) << " times, instead of " << i);
+  BOOST_REQUIRE_MESSAGE(!s->try_P(), "Can decrement " << (i+1) << " times, instead of " << i);
 }
 
 //////////////////////////////////////////////////////////////
@@ -115,7 +115,7 @@ BOOST_AUTO_TEST_CASE(pass_many)
   s.V();
   t.timed_join(millisec(250));
   bool success = boost::thread::id() == t.get_id();
-  BOOST_CHECK(success);
+  BOOST_REQUIRE(success);
   if(!success)
   {
     t.interrupt();
@@ -127,15 +127,15 @@ BOOST_AUTO_TEST_CASE(pass_many)
 BOOST_AUTO_TEST_CASE(p_with_timeout)
 {
   Semaphore s(0);
-  BOOST_CHECK(!s.P(millisec(250)));
+  BOOST_REQUIRE(!s.P(millisec(250)));
   test_count_equals(&s, 0);
 }
 
 BOOST_AUTO_TEST_CASE(p_without_timeout)
 {
   Semaphore s(1);
-  BOOST_CHECK(s.P(millisec(250)));
-  BOOST_CHECK(!s.P(millisec(250)));
+  BOOST_REQUIRE(s.P(millisec(250)));
+  BOOST_REQUIRE(!s.P(millisec(250)));
   test_count_equals(&s, 0);
 }
 
