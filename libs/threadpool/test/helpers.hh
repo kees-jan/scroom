@@ -27,10 +27,6 @@
 
 using namespace Scroom;
 
-void pass_destroy_and_clear(Semaphore* s0, Semaphore* s1, Semaphore* s2, ThreadPool::Queue::WeakPtr q);
-void clear_sem(Semaphore* s);
-void clear_and_pass(Semaphore* toClear, Semaphore* toPass);
-
 boost::function<void ()> pass(Semaphore* s);
 boost::function<void ()> clear(Semaphore* s);
 boost::function<void ()> destroy(boost::shared_ptr<void> p);

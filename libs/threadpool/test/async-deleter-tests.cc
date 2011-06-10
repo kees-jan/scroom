@@ -31,6 +31,9 @@
 
 #include <scroom/semaphore.hh>
 
+#include "helpers.hh"
+#include "function-additor.hh"
+
 using namespace boost::posix_time;
 using namespace Scroom;
 
@@ -49,12 +52,6 @@ public:
   ~A() { s->V(); }
 };
 
-static void pass_and_destroy(Semaphore* toPass, boost::shared_ptr<A> toDestroy)
-{
-  toPass->P();
-  toDestroy.reset();
-}
-
 //////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE(Async_Deleter_Tests)
@@ -66,7 +63,7 @@ BOOST_AUTO_TEST_CASE(deleter_deletes_asynchronously)
   BOOST_CHECK(!destroyed.P(short_timeout));
 
   Semaphore barrier;
-  CpuBound()->schedule(boost::bind(pass_and_destroy, &barrier, a));
+  CpuBound()->schedule(pass(&barrier)+destroy(a));
   BOOST_CHECK(!destroyed.P(short_timeout));
   a.reset();  
   BOOST_CHECK(!destroyed.P(short_timeout));

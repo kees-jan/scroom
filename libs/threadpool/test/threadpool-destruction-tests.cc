@@ -39,24 +39,6 @@ const millisec long_timeout(2000);
 
 //////////////////////////////////////////////////////////////
 
-static void clear_sem(Semaphore* s)
-{
-  s->V();
-}
-
-static void pass_and_clear(Semaphore* toPass, Semaphore* toClear)
-{
-  toPass->P();
-  toClear->V();
-}
-
-static void destroy(ThreadPool* threadpool)
-{
-  delete threadpool;
-}
-
-//////////////////////////////////////////////////////////////
-
 BOOST_AUTO_TEST_SUITE(ThreadPool_destruction_Tests)
 
 BOOST_AUTO_TEST_CASE(threads_terminate_on_destruction)

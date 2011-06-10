@@ -31,6 +31,7 @@
 
 #include <scroom/semaphore.hh>
 
+#include "function-additor.hh"
 #include "helpers.hh"
 
 #include "queue.hh"
@@ -78,7 +79,7 @@ BOOST_AUTO_TEST_CASE(destroy_waits_for_jobs_to_finish)
   Semaphore s0(0);
   Semaphore s1(0);
   Semaphore s2(0);
-  boost::thread t(boost::bind(pass_destroy_and_clear, &s0, &s1, &s2, weakQueue));
+  boost::thread t(clear(&s0)+pass(&s1)+destroy(queue)+clear(&s2));
   s0.P();
   BOOST_REQUIRE(!s2.P(short_timeout));
   queue.reset();
@@ -108,7 +109,7 @@ BOOST_AUTO_TEST_CASE(destroy_using_QueueLock)
   Semaphore s0(0);
   Semaphore s1(0);
   Semaphore s2(0);
-  boost::thread t(boost::bind(pass_destroy_and_clear, &s0, &s1, &s2, weakQueue));
+  boost::thread t(clear(&s0)+pass(&s1)+destroy(queue)+clear(&s2));
   s0.P();
   BOOST_REQUIRE(!s2.P(short_timeout));
   queue.reset();
@@ -135,7 +136,7 @@ BOOST_AUTO_TEST_CASE(jobs_on_custom_queue_get_executed)
   ThreadPool::Queue::Ptr queue = ThreadPool::Queue::create();
   Semaphore s(0);
   ThreadPool t(0);
-  t.schedule(boost::bind(clear_sem, &s), queue);
+  t.schedule(clear(&s), queue);
   t.add();
   BOOST_CHECK(s.P(long_timeout));
 }
@@ -145,7 +146,7 @@ BOOST_AUTO_TEST_CASE(jobs_on_deleted_queue_dont_get_executed)
   ThreadPool::Queue::Ptr queue = ThreadPool::Queue::create();
   Semaphore s(0);
   ThreadPool t(0);
-  t.schedule(boost::bind(clear_sem, &s), queue);
+  t.schedule(clear(&s), queue);
   queue.reset();
   t.add();
   BOOST_CHECK(!s.P(long_timeout));
@@ -162,7 +163,7 @@ BOOST_AUTO_TEST_CASE(queue_deletion_waits_for_jobs_to_finish)
   Semaphore s4(0);
 
   ThreadPool pool(0);
-  pool.schedule(boost::bind(clear_and_pass, &s1, &s2), queue);
+  pool.schedule(clear(&s1)+pass(&s2), queue);
   pool.add();
   BOOST_REQUIRE(s1.P(long_timeout));
   // Job is now being executed, hence it should not be possible to delete the queue
@@ -170,7 +171,7 @@ BOOST_AUTO_TEST_CASE(queue_deletion_waits_for_jobs_to_finish)
   // Setup: Create a thread that will delete the queue. Then delete our
   // reference, because if our reference is the last, our thread will block,
   // resulting in deadlock
-  boost::thread t(boost::bind(pass_destroy_and_clear, &s0, &s3, &s4, weakQueue));
+  boost::thread t(clear(&s0)+pass(&s3)+destroy(queue)+clear(&s4));
   s0.P();
   BOOST_CHECK(!s4.P(short_timeout));
   queue.reset();
