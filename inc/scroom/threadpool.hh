@@ -193,8 +193,18 @@ private:
    * @li Wait for a job to be scheduled
    * @li Fetch the highest-prio job from ThreadPool::jobs
    * @li Execute
+   *
+   * Those last two tasks will be performed by do_one()
    */
   void work();
+
+  /**
+   * Execute one job.
+   *
+   * This gets called from work(). It fetches and executes the
+   * highest-prio job from ThreadPool::jobs
+   */
+  void do_one();
   
   static Queue::Ptr defaultQueue();
   static const int defaultPriority;
