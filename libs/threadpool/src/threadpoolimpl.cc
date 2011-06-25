@@ -50,6 +50,16 @@ ThreadPool::ThreadPool(int count, bool completeAllJobsBeforeDestruction)
   add(count);
 }
 
+ThreadPool::Ptr ThreadPool::create(bool completeAllJobsBeforeDestruction)
+{
+  return ThreadPool::Ptr(new ThreadPool(completeAllJobsBeforeDestruction));
+}
+
+ThreadPool::Ptr ThreadPool::create(int count, bool completeAllJobsBeforeDestruction)
+{
+  return ThreadPool::Ptr(new ThreadPool(count, completeAllJobsBeforeDestruction));
+}
+
 ThreadPool::ThreadPtr ThreadPool::add()
 {
   ThreadPool::ThreadPtr t = ThreadPool::ThreadPtr(new boost::thread(boost::bind(&ThreadPool::work, this)));
@@ -74,15 +84,18 @@ ThreadPool::~ThreadPool()
   {
     ThreadPool::ThreadPtr t = threads.front();
     threads.pop_front();
-    
+
+    // printf("Threadpool: Interrupting one thread...\n");
     t->interrupt();
     t->join();
+    // printf("Threadpool: Done interrupting thread.\n");
   }
   // printf("Done destroying threadpool\n");
 }
 
 void ThreadPool::work()
 {
+  // printf("Threadpool thread starting...\n");
   try
   {
     while(true)
@@ -97,6 +110,7 @@ void ThreadPool::work()
       while(jobcount.try_P())
         do_one();
   }
+  // printf("Threadpool thread finished.\n");
 }
 
 void ThreadPool::do_one()
@@ -120,6 +134,7 @@ void ThreadPool::do_one()
       boost::this_thread::disable_interruption while_executing_jobs;
       job.fn();
     }
+    boost::this_thread::interruption_point();
   }
   else
   {

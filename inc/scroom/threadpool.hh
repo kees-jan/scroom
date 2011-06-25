@@ -216,6 +216,12 @@ public:
   /** Create a ThreadPool with the given number of threads */
   ThreadPool(int count, bool completeAllJobsBeforeDestruction=false);
 
+  /** Create a ThreadPool with one thread for each core in the system */
+  static ThreadPool::Ptr create(bool completeAllJobsBeforeDestruction=false);
+
+  /** Create a ThreadPool with the given number of threads */
+  static ThreadPool::Ptr create(int count, bool completeAllJobsBeforeDestruction=false);
+
   /**
    * Destructor
    *

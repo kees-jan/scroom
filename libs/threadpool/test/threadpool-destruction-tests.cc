@@ -31,6 +31,10 @@
 
 #include <scroom/semaphore.hh>
 
+#include "helpers.hh"
+#include "function-additor.hh"
+
+
 using namespace boost::posix_time;
 using namespace Scroom;
 
@@ -43,10 +47,10 @@ BOOST_AUTO_TEST_SUITE(ThreadPool_destruction_Tests)
 
 BOOST_AUTO_TEST_CASE(threads_terminate_on_destruction)
 {
-  ThreadPool* pool = new ThreadPool(0);
+  ThreadPool::Ptr pool = ThreadPool::create(0);
   ThreadPool::ThreadPtr t = pool->add();
   BOOST_CHECK(!t->timed_join(short_timeout));
-  delete pool;
+  pool.reset();
 
   bool success = boost::thread::id() == t->get_id();
   BOOST_CHECK(success);
@@ -70,35 +74,58 @@ BOOST_AUTO_TEST_CASE(threads_can_be_interrupted)
 
 BOOST_AUTO_TEST_CASE(destroy_threadpool_with_nonempty_queue)
 {
-  ThreadPool* pool = new ThreadPool(0);
-  Semaphore dummy(0);
-
-  pool->schedule(boost::bind(clear_sem, &dummy));
-
-  boost::thread t(boost::bind(destroy, pool));
-  t.timed_join(long_timeout);
-  BOOST_REQUIRE(boost::thread::id() == t.get_id());
-}
-
-BOOST_AUTO_TEST_CASE(cant_destroy_threadpool_with_running_job)
-{
-  ThreadPool* pool = new ThreadPool(1);
+  ThreadPool::Ptr pool = ThreadPool::create(1);
+  Semaphore guard(0);
   Semaphore a(0);
   Semaphore b(0);
+  Semaphore c(0);
+  Semaphore d(0);
 
-  pool->schedule(boost::bind(pass_and_clear, &a, &b));
+  pool->schedule(clear(&a)+pass(&b));
+  pool->schedule(pass(&d)+clear(&c));
 
   // Give the thread some time to start the job
-  boost::this_thread::sleep(millisec(50));
+  a.P();
   
-  boost::thread t(boost::bind(destroy, pool));
+  boost::thread t(pass(&guard)+destroy(pool));
+  pool.reset();
+  guard.V();
+
+  // Thread t blocks until the ThreadPool is destroyed, which is after
+  // the pass(&b) completes
   BOOST_CHECK(!t.timed_join(short_timeout));
-  a.V();
-  t.timed_join(long_timeout);
+  b.V();
+  BOOST_CHECK(t.timed_join(long_timeout));
   BOOST_REQUIRE(boost::thread::id() == t.get_id());
-  BOOST_CHECK(b.P(short_timeout));
+  BOOST_CHECK(!c.try_P());
 }
 
+BOOST_AUTO_TEST_CASE(destroy_threadpool_with_nonempty_queue_with_completeAllJobsBeforeDestruction_true)
+{
+  ThreadPool::Ptr pool = ThreadPool::create(1, true);
+  Semaphore guard(0);
+  Semaphore a(0);
+  Semaphore b(0);
+  Semaphore c(0);
+
+  pool->schedule(clear(&a)+pass(&b));
+  pool->schedule(clear(&c));
+
+  // Give the thread some time to start the job
+  a.P();
+  
+  boost::thread t(pass(&guard)+destroy(pool));
+  pool.reset();
+  guard.V();
+
+  // Thread t blocks until the ThreadPool is destroyed, which is after
+  // the pass(&b) completes
+  BOOST_CHECK(!t.timed_join(short_timeout));
+  b.V();
+  BOOST_CHECK(t.timed_join(long_timeout));
+  BOOST_REQUIRE(boost::thread::id() == t.get_id());
+  BOOST_CHECK(c.try_P());
+}
 
 
 BOOST_AUTO_TEST_SUITE_END()
