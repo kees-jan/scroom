@@ -45,11 +45,12 @@ const millisec long_timeout(2000);
 class A
 {
 private:
-  Semaphore* s;
+  Semaphore* s1;
+  Semaphore* s2;
 
 public:
-  A(Semaphore* s) : s(s) {}
-  ~A() { s->V(); }
+  A(Semaphore* s1, Semaphore* s2) : s1(s1), s2(s2) {}
+  ~A() { s1->P(); s2->V(); }
 };
 
 //////////////////////////////////////////////////////////////
@@ -58,16 +59,19 @@ BOOST_AUTO_TEST_SUITE(Async_Deleter_Tests)
 
 BOOST_AUTO_TEST_CASE(deleter_deletes_asynchronously)
 {
+  Semaphore barrier1;
   Semaphore destroyed;
-  boost::shared_ptr<A> a = boost::shared_ptr<A>(new A(&destroyed), AsyncDeleter<A>());
+  boost::shared_ptr<A> a = boost::shared_ptr<A>(new A(&barrier1, &destroyed), AsyncDeleter<A>());
   BOOST_CHECK(!destroyed.P(short_timeout));
 
-  Semaphore barrier;
-  CpuBound()->schedule(pass(&barrier)+destroy(a));
-  BOOST_CHECK(!destroyed.P(short_timeout));
+  Semaphore barrier2;
+  Semaphore signal;
+  CpuBound()->schedule(pass(&barrier)+destroy(a)+clear(&signal));
   a.reset();  
+  barrier2.V();
+  BOOST_CHECK(signal.P(long_timeout));
   BOOST_CHECK(!destroyed.P(short_timeout));
-  barrier.V();
+  barrier1.V();
   BOOST_CHECK(destroyed.P(long_timeout));
 }
 
