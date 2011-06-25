@@ -8,7 +8,6 @@ preconditions_SOURCES = \
 	main.cc \
 	function-additor.cc function-additor.hh \
 	helpers.cc helpers.hh \
-	boost-tests.cc \
 	semaphore-tests.cc \
 	function-additor-tests.cc
 
