@@ -32,7 +32,7 @@ using namespace Scroom::Detail::ThreadPool;
 ////////////////////////////////////////////////////////////////////////
 
 ThreadPool::ThreadPool(bool completeAllJobsBeforeDestruction)
- : completeAllJobsBeforeDestruction(completeAllJobsBeforeDestruction)
+  : jobcount(0), alive(true), completeAllJobsBeforeDestruction(completeAllJobsBeforeDestruction)
 {
   int count = boost::thread::hardware_concurrency();
 #ifndef MULTITHREADING
@@ -42,7 +42,7 @@ ThreadPool::ThreadPool(bool completeAllJobsBeforeDestruction)
 }
 
 ThreadPool::ThreadPool(int count, bool completeAllJobsBeforeDestruction)
-  : completeAllJobsBeforeDestruction(completeAllJobsBeforeDestruction)
+  : jobcount(0), alive(true), completeAllJobsBeforeDestruction(completeAllJobsBeforeDestruction)
 {
 #ifndef MULTITHREADING
   count=1;
@@ -78,45 +78,61 @@ std::vector<ThreadPool::ThreadPtr> ThreadPool::add(int count)
 
 ThreadPool::~ThreadPool()
 {
-  // printf("Attempting to destroy the threadpool...\n");
+  // Destroying the threadpool used to be done by interrupting all
+  // threads, but this doesn't work reliably, at least until boost
+  // 1.45. Hence, we're back to using an "alive" boolean and a regular
+  // condition variable.
+  //
+  // See also https://svn.boost.org/trac/boost/ticket/2330
+
+  {
+    boost::mutex::scoped_lock lock(mut);
+    alive = false;
+    cond.notify_all();
+  }
 
   while(!threads.empty())
   {
     ThreadPool::ThreadPtr t = threads.front();
     threads.pop_front();
 
-    // printf("Threadpool: Interrupting one thread...\n");
-    t->interrupt();
     t->join();
-    // printf("Threadpool: Done interrupting thread.\n");
   }
-  // printf("Done destroying threadpool\n");
 }
 
 void ThreadPool::work()
 {
-  // printf("Threadpool thread starting...\n");
-  try
+  boost::mutex::scoped_lock lock(mut);
+  while(alive)
   {
-    while(true)
+    if(jobcount>0)
     {
-      jobcount.P();
-      do_one();
+      jobcount--;
+      do_one(lock);
+    }
+    else
+    {
+      cond.wait(lock);
     }
   }
-  catch(boost::thread_interrupted& ex)
+
+  bool busy = completeAllJobsBeforeDestruction;
+  while(busy)
   {
-    if(completeAllJobsBeforeDestruction)
-      while(jobcount.try_P())
-        do_one();
-  }
-  // printf("Threadpool thread finished.\n");
+    if(jobcount>0)
+    {
+      jobcount--;
+      do_one(lock);
+    }
+    else
+    {
+      busy = false;
+    }
+  }    
 }
 
-void ThreadPool::do_one()
+void ThreadPool::do_one(boost::mutex::scoped_lock& lock)
 {
-  boost::unique_lock<boost::mutex> lock(mut);
-
   while(!jobs.empty() && jobs.begin()->second.empty())
     jobs.erase(jobs.begin());
 
@@ -131,10 +147,18 @@ void ThreadPool::do_one()
     {
       lock.unlock();
 
-      boost::this_thread::disable_interruption while_executing_jobs;
-      job.fn();
+      try
+      {
+        boost::this_thread::disable_interruption while_executing_jobs;
+        job.fn();
+      }
+      catch(...)
+      {
+        lock.lock();
+        throw;
+      }
+      lock.lock();
     }
-    boost::this_thread::interruption_point();
   }
   else
   {
@@ -154,9 +178,10 @@ void ThreadPool::schedule(boost::function<void ()> const& fn, ThreadPool::Queue:
 
 void ThreadPool::schedule(boost::function<void ()> const& fn, int priority, ThreadPool::WeakQueue::Ptr queue)
 {
-  boost::unique_lock<boost::mutex> lock(mut);
+  boost::mutex::scoped_lock lock(mut);
   jobs[priority].push(Job(fn, queue));
-  jobcount.V();
+  jobcount++;
+  cond.notify_one();
 }
 
 void ThreadPool::schedule(boost::function<void ()> const& fn, ThreadPool::WeakQueue::Ptr queue)
@@ -253,7 +278,7 @@ QueueJumper::Ptr QueueJumper::create()
 
 bool QueueJumper::setWork(boost::function<void ()> const& fn)
 {
-  boost::unique_lock<boost::mutex> lock(mut);
+  boost::mutex::scoped_lock lock(mut);
   if(inQueue)
   {
     // Our turn hasn't passed yet. Accept work.
@@ -270,7 +295,7 @@ bool QueueJumper::setWork(boost::function<void ()> const& fn)
 
 void QueueJumper::operator()()
 {
-  boost::unique_lock<boost::mutex> lock(mut);
+  boost::mutex::scoped_lock lock(mut);
   if(isSet)
   {
     fn();

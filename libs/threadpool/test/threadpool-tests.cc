@@ -114,7 +114,6 @@ bool has_at_least_n_threads(ThreadPool* pool, int count)
       pool->schedule(pass(semaphores[i+1])+clear(semaphores[i]));
 
     // All tasks are blocked on semaphores[count-1]
-    BOOST_REQUIRE(!semaphores[0]->P(short_timeout));
 
     pool->schedule(clear(semaphores[count-1]));
     // If jobs of the same priority are scheduled in order, and if
@@ -125,28 +124,11 @@ bool has_at_least_n_threads(ThreadPool* pool, int count)
 
     if(!result)
     {
-      // If there are too few threads, then all jobs are still
+      // If there are too few threads, then all threads are still
       // blocked. This will ultimately block the ThreadPool destructor,
       // so we have to unblock them manually here.
       for(int i=1; i<count; i++)
         semaphores[i]->V();
-
-      // As a result, all semaphores should now be 1
-      // Add an extra thread to cover the corner case that we had 0
-      // threads to begin with
-      ThreadPool::ThreadPtr t = pool->add();
-
-      for(int i=0; i<count; i++)
-      {
-        BOOST_CHECK_MESSAGE(semaphores[i]->P(long_timeout), "Unblock " << i);
-        delete semaphores[i];
-        semaphores[i]=NULL;
-      }
-
-      // Terminate the thread we just added
-      t->interrupt();
-      t->timed_join(long_timeout);
-      BOOST_REQUIRE(boost::thread::id() == t->get_id());
     }
     return result;
   }

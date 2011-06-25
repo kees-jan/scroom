@@ -165,8 +165,10 @@ public:
   
 private:
   std::list<ThreadPtr> threads;        /**< Threads in this ThreadPool */
-  Scroom::Semaphore jobcount;          /**< current number of tasks in ThreadPool::jobs */
+  unsigned int jobcount;               /**< current number of tasks in ThreadPool::jobs */
   boost::mutex mut;                    /**< For protecting ThreadPool::jobs */
+  bool alive;                          /**< @c true if this ThreadPool is not in the process of being destroyed */
+  boost::condition_variable cond;      /**< For signalling newly queued jobs */
 
   /**
    * Jobs that remain to be executed
@@ -204,7 +206,7 @@ private:
    * This gets called from work(). It fetches and executes the
    * highest-prio job from ThreadPool::jobs
    */
-  void do_one();
+  void do_one(boost::mutex::scoped_lock& lock);
   
   static Queue::Ptr defaultQueue();
   static const int defaultPriority;

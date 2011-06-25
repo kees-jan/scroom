@@ -62,16 +62,6 @@ BOOST_AUTO_TEST_CASE(threads_terminate_on_destruction)
   }
 }
 
-BOOST_AUTO_TEST_CASE(threads_can_be_interrupted)
-{
-  ThreadPool pool(0);
-  ThreadPool::ThreadPtr t = pool.add();
-  boost::this_thread::sleep(millisec(50));
-  t->interrupt();
-  t->timed_join(short_timeout);
-  BOOST_CHECK_EQUAL(boost::thread::id(), t->get_id());
-}
-
 BOOST_AUTO_TEST_CASE(destroy_threadpool_with_nonempty_queue)
 {
   ThreadPool::Ptr pool = ThreadPool::create(1);
