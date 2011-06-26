@@ -21,6 +21,7 @@ Makefile.in
 /gui/ENVIRONMENT
 /gui/src/scroom
 /compat/boost-futures/test/futures-test
+/libs/threadpool/test/preconditions
 /libs/threadpool/test/threadpool-tests
 /libs/util/test/utils-tests
 /libs/tiled-bitmap/test/tiled-bitmap-tests
