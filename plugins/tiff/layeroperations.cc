@@ -23,7 +23,11 @@
 
 #include <glib.h>
 
+#include "scroom/unused.h"
+
 #include "tiffpresentation.hh"
+
+using Scroom::Utils::Registration;
 
 ////////////////////////////////////////////////////////////////////////
 // PixelIterator
@@ -244,8 +248,11 @@ int Operations1bpp::getBpp()
   return 1;
 }
 
-void Operations1bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom)
+void Operations1bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
+                          Registration cache)
 {
+  UNUSED(cache);
+  
   cairo_set_source_rgb(cr, 1, 1, 1); // White
   fillRect(cr, viewArea);
   Colormap::Ptr colormap = presentation->getColormap();
@@ -353,8 +360,10 @@ int Operations8bpp::getBpp()
   return 8;
 }
 
-void Operations8bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom)
+void Operations8bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom, Registration cache)
 {
+  UNUSED(cache);
+  
   cairo_set_source_rgb(cr, 1, 1, 1); // White
   fillRect(cr, viewArea);
   Colormap::Ptr colormap = presentation->getColormap();
@@ -464,8 +473,9 @@ int Operations::getBpp()
   return bpp;
 }
 
-void Operations::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom)
+void Operations::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom, Registration cache)
 {
+  UNUSED(cache);
   cairo_set_source_rgb(cr, 1, 1, 1); // White
   fillRect(cr, viewArea);
   Colormap::Ptr colormap = presentation->getColormap();
@@ -638,8 +648,10 @@ int OperationsColormapped::getBpp()
   return 2*bpp;
 }
 
-void OperationsColormapped::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom)
+void OperationsColormapped::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom, Registration cache)
 {
+  UNUSED(cache);
+  
   cairo_set_source_rgb(cr, 1, 1, 1); // White
   fillRect(cr, viewArea);
   Colormap::Ptr colormap = presentation->getColormap();

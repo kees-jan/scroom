@@ -446,7 +446,7 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
 
         if(t)
         {
-          layerOperations->draw(cr, tile->getTileAsync(), tileArea, viewArea, zoom);
+          layerOperations->draw(cr, tile->getTileAsync(), tileArea, viewArea, zoom, Scroom::Utils::Registration());
         }
         else
         {
@@ -561,7 +561,7 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
         // 3. Draw the area
         if(t)
         {
-          layerOperations->draw(cr, t, tileArea, viewArea, zoom);
+          layerOperations->draw(cr, t, tileArea, viewArea, zoom, Scroom::Utils::Registration());
         }
         else
         {

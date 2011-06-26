@@ -31,6 +31,7 @@
 #include <scroom/viewinterface.hh>
 #include <scroom/presentationinterface.hh>
 #include <scroom/tile.hh>
+#include <scroom/registration.hh>
 
 /**
  * Represent the state of one of the tiles that make up a layer in the
@@ -92,8 +93,13 @@ public:
    * @param zoom The requested zoom level. One pixel of your
    *    presentation should have size 2**@c zoom when drawn. @c zoom
    *    will be negative for all but the first layer.
+   * @param cache Depending on whether the cache() function finished
+   *    already, this may either be an empty reference, or a reference
+   *    to the value returned by cache()
    */
-  virtual void draw(cairo_t* cr, const Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom)=0;
+  virtual void draw(cairo_t* cr, const Tile::Ptr tile,
+                    GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
+                    Scroom::Utils::Registration cache)=0;
 
   /**
    * Draw the given state into the given viewArea
@@ -108,6 +114,44 @@ public:
    */
   virtual void drawState(cairo_t* cr, TileState s, GdkRectangle viewArea)=0;
 
+  /**
+   * Cache data for use during later draw() or cache() calls.
+   *
+   * This function is called for a given tile, and then the results
+   * are passed to the draw() and cache() functions. Because draw() is
+   * called relatively frequently (i.e. when scrolling), it is
+   * recommended to do cpu-intensive work in the cache() function, and
+   * then re-use the data to make the draw() faster.
+   *
+   * The default implementation returns an empty reference, meaning
+   * nothing is cached. As a result, the draw() function will receive
+   * an empty reference.
+   *
+   * @param tile the Tile for which caching is requested
+   */
+  Scroom::Utils::Registration cache(const Tile::Ptr tile)
+  { (void)tile; return Scroom::Utils::Registration(); }
+
+  /**
+   * Cache data for use during later draw() calls.
+   *
+   * This function is called for a given tile and zoom level, and then
+   * the results are passed to the draw() function. Because draw() is
+   * called relatively frequently (i.e. when scrolling), it is
+   * recommended to do cpu-intensive work in the cache() function, and
+   * then re-use the data to make the draw() faster.
+   *
+   * The default implementation returns an empty reference, meaning
+   * nothing is cached. As a result, the draw() function will receive
+   * an empty reference.
+   *
+   * @param tile the Tile for which caching is requested
+   * @param zoom the requested zoom level
+   * @param cache the output of cache(const Tile::Ptr)
+   */
+  Scroom::Utils::Registration cache(const Tile::Ptr tile, int zoom, Scroom::Utils::Registration cache)
+  { (void)tile; (void)zoom; (void)cache; return Scroom::Utils::Registration(); }
+  
   /**
    * Reduce the source tile by a factor of 8
    *
