@@ -23,7 +23,13 @@
 
 class ExamplePresentation : public PresentationInterface
 {
+private:
+  cairo_pattern_t* pattern;
+
+  void fillPattern();
+  
 public:
+  ExamplePresentation();
   virtual ~ExamplePresentation();
 
   virtual GdkRectangle getRect();

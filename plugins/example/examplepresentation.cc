@@ -18,10 +18,47 @@
 
 #include "examplepresentation.hh"
 
+#include <math.h>
+
 #include <scroom/unused.h>
+
+ExamplePresentation::ExamplePresentation()
+  : pattern(NULL)
+{
+  fillPattern();
+}
 
 ExamplePresentation::~ExamplePresentation()
 {
+  cairo_pattern_destroy(pattern);
+}
+
+void ExamplePresentation::fillPattern()
+{
+  cairo_surface_t*  surface = cairo_image_surface_create(CAIRO_FORMAT_A1, 1010, 1010);
+  cairo_t* cr = cairo_create(surface);
+
+  int xorig = 505;
+  int yorig = 505;
+
+  for(int i=-500; i<500; i+=50)
+  {
+    cairo_move_to(cr, xorig-500, yorig+i);
+    cairo_line_to(cr, xorig+500, yorig+i);
+    cairo_move_to(cr, xorig+i, yorig-500);
+    cairo_line_to(cr, xorig+i, yorig+500);
+  }
+  cairo_move_to(cr, xorig-500, yorig-500);
+  cairo_line_to(cr, xorig+500, yorig+500);
+  cairo_move_to(cr, xorig-500, yorig+500);
+  cairo_line_to(cr, xorig+500, yorig-500);
+
+  cairo_stroke(cr);
+
+  pattern = cairo_pattern_create_for_surface(cairo_get_target(cr));
+  
+  cairo_destroy(cr);
+  cairo_surface_destroy(surface);
 }
 
 GdkRectangle ExamplePresentation::getRect()
@@ -59,24 +96,20 @@ void ExamplePresentation::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle pr
   else
     pp /= 1<<(-zoom);
 
-  // printf("One presentation pixel amounts to %f screen pixels\n", pp);
+  double scale = pow(2, -zoom);
 
   int xorig = (int)(-presentationArea.x*pp);
   int yorig = (int)(-presentationArea.y*pp);
 
-  for(int i=-500; i<500; i+=50)
-  {
-    cairo_move_to(cr, xorig-500*pp, yorig+i*pp);
-    cairo_line_to(cr, xorig+500*pp, yorig+i*pp);
-    cairo_move_to(cr, xorig+i*pp, yorig-500*pp);
-    cairo_line_to(cr, xorig+i*pp, yorig+500*pp);
-  }
-  cairo_move_to(cr, xorig-500*pp, yorig-500*pp);
-  cairo_line_to(cr, xorig+500*pp, yorig+500*pp);
-  cairo_move_to(cr, xorig-500*pp, yorig+500*pp);
-  cairo_line_to(cr, xorig+500*pp, yorig-500*pp);
+  cairo_matrix_t m;
+  cairo_matrix_init_translate(&m, 505, 505);
+  cairo_matrix_scale(&m, scale, scale);
+  cairo_matrix_translate(&m, -xorig, -yorig);
+  cairo_pattern_set_matrix(pattern, &m);
+  cairo_mask(cr, pattern);
 
-  cairo_stroke(cr);
+  // cairo_set_source_surface(cr, surface, xorig-505, yorig-505);
+  // cairo_paint(cr);
 }
 
 bool ExamplePresentation::getProperty(const std::string& name, std::string& value)
