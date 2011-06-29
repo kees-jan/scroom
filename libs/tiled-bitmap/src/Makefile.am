@@ -7,6 +7,7 @@ libstiledbitmap_la_SOURCES = \
 	tiled-bitmap.cc tiled-bitmap.hh \
 	tiledbitmapviewdata.cc tiledbitmapviewdata.hh \
 	tileinternal.cc tileinternal.hh \
+	tileviewstate.cc tileviewstate.hh \
 	local.hh
 
 libstiledbitmap_la_LIBADD = \

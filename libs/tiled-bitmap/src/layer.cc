@@ -20,6 +20,8 @@
 
 #include <stdio.h>
 
+#include <boost/foreach.hpp>
+
 #include <scroom/threadpool.hh>
 
 #include "local.hh"
@@ -120,6 +122,41 @@ void Layer::fetchData(SourcePresentation* sp, ThreadPool::WeakQueue::Ptr queue)
                  sp, queue);
   CpuBound()->schedule(df, DATAFETCH_PRIO, queue);
 }
+
+// Layer::Viewable /////////////////////////////////////////////////////
+
+void Layer::open(ViewInterface* vi)
+{
+  BOOST_FOREACH(TileInternalLine& line, tiles)
+  {
+    BOOST_FOREACH(TileInternal::Ptr tile, line)
+    {
+      tile->open(vi);
+    }
+  }
+  BOOST_FOREACH(TileInternal::Ptr tile, lineOutOfBounds)
+  {
+    tile->open(vi);
+  }
+  outOfBounds->open(vi);
+}
+
+void Layer::close(ViewInterface* vi)
+{
+  BOOST_FOREACH(TileInternalLine& line, tiles)
+  {
+    BOOST_FOREACH(TileInternal::Ptr tile, line)
+    {
+      tile->close(vi);
+    }
+  }
+  BOOST_FOREACH(TileInternal::Ptr tile, lineOutOfBounds)
+  {
+    tile->close(vi);
+  }
+  outOfBounds->close(vi);
+}
+
 
 ////////////////////////////////////////////////////////////////////////
 /// DataFetcher

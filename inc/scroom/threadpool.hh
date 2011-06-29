@@ -96,6 +96,7 @@ public:
 
   public:
     static Ptr create();
+    static Ptr createAsync();
     ~Queue();
     boost::shared_ptr<Scroom::Detail::ThreadPool::QueueImpl> get();
     boost::shared_ptr<WeakQueue> getWeak();
@@ -123,12 +124,6 @@ public:
    * Queue, you can still use the associated WeakQueue to schedule
    * tasks, but they will no longer be executed, because the Queue no
    * longer exists.
-   *
-   * If pass in a Queue object when you schedule() your job, then your
-   * job will be scheduled on that particular queue. This does not in
-   * any way affect the order in which jobs are executed. Use priority
-   * for that. Instead, if you later delete your Queue, any jobs
-   * scheduled on that Queue will not be executed any more.
    *
    * @see Queue
    */

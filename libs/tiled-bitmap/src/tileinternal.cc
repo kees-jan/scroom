@@ -254,3 +254,13 @@ void TileInternal::notifyObservers(Tile::Ptr tile)
       observer->tileLoaded(tile);
     }
 }
+
+void TileInternal::open(ViewInterface*)
+{
+  // On open, we do nothing. On close, we destroy any resources related to the view.
+}
+
+void TileInternal::close(ViewInterface* vi)
+{
+  viewStates.erase(vi);
+}

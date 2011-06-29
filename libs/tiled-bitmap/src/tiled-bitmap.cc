@@ -581,10 +581,21 @@ void TiledBitmap::open(ViewInterface* viewInterface)
   TiledBitmapViewData::Ptr vd = TiledBitmapViewData::create(viewInterface);
   viewData[viewInterface] = vd;
   vd->setState(progressState);
+  lock.unlock();
+  
+  BOOST_FOREACH(Layer* l, layers)
+  {
+    l->open(viewInterface);
+  }
 }
 
 void TiledBitmap::close(ViewInterface* vi)
 {
+  BOOST_FOREACH(Layer* l, layers)
+  {
+    l->open(vi);
+  }
+  
   boost::mutex::scoped_lock lock(viewDataMutex);
   viewData.erase(vi);
 }

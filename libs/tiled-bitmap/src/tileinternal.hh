@@ -20,12 +20,14 @@
 #define _TILEINTERNAL_HH
 
 #include <vector>
+#include <map>
 
 #include <boost/thread.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
 
+#include <scroom/presentationinterface.hh>
 #include <scroom/tiledbitmapinterface.hh>
 #include <scroom/tile.hh>
 
@@ -33,9 +35,13 @@
 #include <scroom/threadpool.hh>
 #include <scroom/memorymanagerinterface.hh>
 
+#include "tileviewstate.hh"
+
 
 #define TILESIZE 4096
 // #define TILESIZE 1024
+
+class TiledBitmapViewData;
 
 /**
  * Represent the state of one of the tiles that make up a layer in the
@@ -110,7 +116,8 @@ public:
  */
 class TileInternal : public Scroom::Utils::Observable<TileInitialisationObserver>,
                      public Scroom::Utils::Observable<TileLoadingObserver>,
-                     public MemoryManagedInterface
+                     public MemoryManagedInterface,
+                     public Viewable
 {
 public:
   typedef boost::shared_ptr<TileInternal> Ptr;
@@ -128,6 +135,8 @@ public:
 
   ThreadPool::Queue::WeakPtr queue; /**< Queue on which the load operation is executed */
   Scroom::Utils::Registration memoryManagerRegistration; /**< Our registration with the MemoryManager */
+
+  std::map<ViewInterface*, TileViewState::WeakPtr> viewStates;
 
 private:
   TileInternal(int depth, int x, int y, int bpp, TileStateInternal state);
@@ -187,6 +196,8 @@ public:
 
   TileState getState();
 
+  TileViewState::Ptr getViewState(boost::shared_ptr<TiledBitmapViewData> viewData);
+
   void performMemoryManagerRegistration();
 
 private:
@@ -199,6 +210,12 @@ private:
   Tile::Ptr do_load();
   void notifyObservers(Tile::Ptr tile);
 
+  // Viewable ////////////////////////////////////////////////////////////
+public:
+  
+  virtual void open(ViewInterface* vi);
+  virtual void close(ViewInterface* vi);
+  
   // MemoryManagedInterface //////////////////////////////////////////////
 public:
   virtual bool do_unload();

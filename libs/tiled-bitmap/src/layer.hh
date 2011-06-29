@@ -22,10 +22,11 @@
 #include <vector>
 
 #include <scroom/tiledbitmapinterface.hh>
+#include <scroom/presentationinterface.hh>
 
 #include "tileinternal.hh"
 
-class Layer
+class Layer : public Viewable
 {
 private:
   int depth;
@@ -54,7 +55,11 @@ public:
 
   int getHeight()
   { return height; }
-    
+
+public:
+  // Viewable ////////////////////////////////////////////////////////////
+  void open(ViewInterface* vi);
+  void close(ViewInterface* vi);
 };
 
 

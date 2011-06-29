@@ -53,6 +53,14 @@ private:
    */
   std::list<boost::shared_ptr<void> > stuff;
 
+  /**
+   * References to things the user should be able to throw away on request
+   *
+   * This includes
+   * @li pre-drawn bitmaps to make redraws go faster
+   */
+  std::list<boost::shared_ptr<void> > volatileStuff;
+
   bool redrawPending;
 
   /** Protect @c stuff and @c redrawPending */
