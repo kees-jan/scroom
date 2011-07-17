@@ -22,8 +22,10 @@ Makefile.in
 /gui/src/scroom
 /compat/boost-futures/test/futures-test
 /libs/threadpool/test/threadpool-tests
+/libs/threadpool/test/preconditions
 /libs/util/test/utils-tests
 /libs/tiled-bitmap/test/tiled-bitmap-tests
+/plugins/tiff/test/measure-framerate
 /install-sh
 /libtool
 /ltmain.sh
