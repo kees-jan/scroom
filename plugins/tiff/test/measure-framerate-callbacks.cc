@@ -27,9 +27,26 @@
 std::vector<boost::function<bool ()> > functions;
 static unsigned int current=0;
 static GtkWidget* drawingArea=NULL;
+int drawingAreaWidth=0;
+int drawingAreaHeight=0;
 
 ////////////////////////////////////////////////////////////////////////
 // Internals
+
+gboolean on_configure(GtkWidget*, GdkEventConfigure*, gpointer)
+{
+  // There should be a simpler way to do this...
+  GdkRegion* r = gdk_drawable_get_visible_region(GDK_DRAWABLE(gtk_widget_get_window(drawingArea)));
+  GdkRectangle rect;
+  gdk_region_get_clipbox(r, &rect);
+
+  drawingAreaWidth = rect.width;
+  drawingAreaHeight = rect.height;
+
+  gdk_region_destroy(r);
+
+  return FALSE;
+}
 
 static void on_hide(GtkWidget*, gpointer)
 {
@@ -38,14 +55,10 @@ static void on_hide(GtkWidget*, gpointer)
 
 gboolean on_expose(GtkWidget* widget, GdkEventExpose*, gpointer)
 {
-  // printf("expose\n");
-
   cairo_t* cr = gdk_cairo_create(widget->window);
 
-  redraw(cr);
-  
-  // View* view = static_cast<View*>(user_data);
-  // view->redraw(cr);
+  if(testData)
+    testData->redraw(cr);
 
   cairo_destroy(cr);
   return FALSE;
@@ -76,9 +89,10 @@ GtkWidget* create_window()
   drawingArea = gtk_drawing_area_new();
   gtk_container_add(GTK_CONTAINER(window), drawingArea);
   g_signal_connect ((gpointer) drawingArea, "expose_event", G_CALLBACK (on_expose), NULL);
+  g_signal_connect ((gpointer) drawingArea, "configure_event", G_CALLBACK (on_configure), NULL);
 
   gtk_widget_show(drawingArea);
-  gtk_widget_show (window);
+  gtk_widget_show(window);
 
   return window;
 }
@@ -86,12 +100,6 @@ GtkWidget* create_window()
 void init()
 {
   gtk_idle_add(on_idle, NULL);
-}
-
-void redraw(cairo_t* cr)
-{
-  // printf("expose\n");
-  UNUSED(cr);
 }
 
 void invalidate()

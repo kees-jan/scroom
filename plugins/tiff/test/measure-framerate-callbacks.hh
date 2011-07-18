@@ -26,12 +26,11 @@
 #include <gtk/gtk.h>
 
 extern std::vector<boost::function<bool ()> > functions;
+extern int drawingAreaWidth;
+extern int drawingAreaHeight;
 
 GtkWidget* create_window();
 void init();
-void redraw(cairo_t* cr);
 void invalidate();
-
-
 
 #endif

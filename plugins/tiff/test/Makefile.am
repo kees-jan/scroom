@@ -1,4 +1,4 @@
-AM_CPPFLAGS = @TIFFPLUGIN_CFLAGS@ -I $(top_srcdir)/inc
+AM_CPPFLAGS = @TIFFPLUGIN_CFLAGS@ -I $(top_srcdir)/inc -I ../src
 
 # if BOOST_UNITTESTS
 # 
@@ -24,7 +24,8 @@ check_PROGRAMS = $(TBT) measure-framerate
 measure_framerate_SOURCES = \
 	measure-framerate.cc \
 	measure-framerate-callbacks.hh measure-framerate-callbacks.cc \
-	measure-framerate-tests.hh measure-framerate-tests.cc
+	measure-framerate-tests.hh measure-framerate-tests.cc \
+	measure-framerate-stubs.hh measure-framerate-stubs.cc
 
 measure_framerate_LDADD = \
 	@TIFFPLUGIN_LIBS@ -L$(top_builddir)/libs/tiled-bitmap/src -lstiledbitmap @BOOSTTHREADLIB@ \
