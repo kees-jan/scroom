@@ -25,12 +25,12 @@
 
 #include <gtk/gtk.h>
 
-GtkWidget* create_window();
-
 extern std::vector<boost::function<bool ()> > functions;
 
+GtkWidget* create_window();
 void init();
 void redraw(cairo_t* cr);
+void invalidate();
 
 
 

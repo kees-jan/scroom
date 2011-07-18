@@ -26,6 +26,7 @@
 
 std::vector<boost::function<bool ()> > functions;
 static unsigned int current=0;
+static GtkWidget* drawingArea=NULL;
 
 ////////////////////////////////////////////////////////////////////////
 // Internals
@@ -72,7 +73,7 @@ GtkWidget* create_window()
 
   g_signal_connect ((gpointer) window, "hide", G_CALLBACK (on_hide), NULL);
 
-  GtkWidget* drawingArea = gtk_drawing_area_new();
+  drawingArea = gtk_drawing_area_new();
   gtk_container_add(GTK_CONTAINER(window), drawingArea);
   g_signal_connect ((gpointer) drawingArea, "expose_event", G_CALLBACK (on_expose), NULL);
 
@@ -89,5 +90,16 @@ void init()
 
 void redraw(cairo_t* cr)
 {
+  // printf("expose\n");
   UNUSED(cr);
+}
+
+void invalidate()
+{
+  GdkWindow* window = gtk_widget_get_window(drawingArea);
+  gdk_window_invalidate_rect(window, NULL, false);
+
+  gdk_threads_enter();
+  gdk_window_process_all_updates();
+  gdk_threads_leave();
 }

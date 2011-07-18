@@ -20,6 +20,10 @@
 
 #include <time.h>
 
+#include <string>
+
+#include <boost/shared_ptr.hpp>
+
 #include "measure-framerate-callbacks.hh"
 
 
@@ -34,6 +38,43 @@ private:
 public:
   Sleep(unsigned int secs);
 
+  bool operator()();
+};
+
+class Invalidator
+{
+private:
+  unsigned int secs;
+  bool started;
+  struct timespec t;
+
+public:
+  Invalidator(unsigned int secs);
+
+  bool operator()();
+};
+
+class BaseCounter
+{
+private:
+  std::string name;
+  unsigned int secs;
+  bool started;
+  unsigned int count;
+  struct timespec t;
+
+  static unsigned int columnWidth;
+  
+public:
+  BaseCounter(const std::string& name, unsigned int secs);
+
+  bool operator()();
+};
+
+class InvalidatingCounter : public BaseCounter
+{
+public:
+  InvalidatingCounter(const std::string& name, unsigned int secs);
   bool operator()();
 };
 
@@ -69,10 +110,86 @@ bool Sleep::operator()()
   return true;
 }
 
+Invalidator::Invalidator(unsigned int secs)
+  : secs(secs)
+{
+}
+
+bool Invalidator::operator()()
+{
+  invalidate();
+  
+  if(!started && 0==clock_gettime(CLOCK_REALTIME, &t))
+  {
+    started = true;
+    return true;
+  }
+
+  struct timespec now;
+  if(0==clock_gettime(CLOCK_REALTIME, &now))
+  {
+    if(now.tv_sec > t.tv_sec + secs)
+      return false;
+  }
+
+  return true;
+}
+
+unsigned int BaseCounter::columnWidth=0;
+
+BaseCounter::BaseCounter(const std::string& name, unsigned int secs)
+  : name(name), secs(secs), started(false), count(0)
+{
+  columnWidth = std::max(columnWidth, (unsigned int)name.length());
+}
+
+bool BaseCounter::operator()()
+{
+  if(!started && 0==clock_gettime(CLOCK_REALTIME, &t))
+  {
+    started = true;
+    return true;
+  }
+
+  count++;
+  
+  struct timespec now;
+  if(0==clock_gettime(CLOCK_REALTIME, &now))
+  {
+    if(now.tv_sec > t.tv_sec + secs)
+    {
+      // We're done. Compute frequency.
+      double elapsed = (now.tv_nsec - t.tv_nsec)*1e-9;
+      elapsed += now.tv_sec - t.tv_sec;
+      printf("%-*s: %f Hz\n", columnWidth, name.c_str(), count/elapsed);
+      
+      return false;
+    }
+  }
+
+  return true;
+}
+
+InvalidatingCounter::InvalidatingCounter(const std::string& name, unsigned int secs)
+  : BaseCounter(name, secs)
+{
+}
+
+bool InvalidatingCounter::operator()()
+{
+  invalidate();
+  return BaseCounter::operator()();
+}
+
+
 ////////////////////////////////////////////////////////////////////////
 
 void init_tests()
 {
-  functions.push_back(Sleep(60));
+  const unsigned int duration = 1;
+  // functions.push_back(Sleep(duration));
+  functions.push_back(BaseCounter("Baseline (no invalidate)", duration));
+  functions.push_back(Invalidator(1));
+  functions.push_back(InvalidatingCounter("Baseline (no redraw)", duration));
   functions.push_back(quit);
 }
