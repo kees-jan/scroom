@@ -24,19 +24,23 @@
 
 class ProgressInterfaceStub : public ProgressInterface
 {
+private:
+  bool finished;
 public:
-  virtual void setState(State)       {}
+  ProgressInterfaceStub();
+  virtual void setState(State state);      
   virtual void setProgress(double)   {}
   virtual void setProgress(int, int) {}
+
+  bool isFinished();
 };
 
 class ViewInterfaceStub : public ViewInterface
 {
 private:
-  ProgressInterfaceStub* pi;
+  ProgressInterface* pi;
 public:
-  ViewInterfaceStub();
-  virtual ~ViewInterfaceStub();
+  ViewInterfaceStub(ProgressInterface* pi);
   virtual void invalidate()                           {}
   virtual ProgressInterface* getProgressInterface();
   virtual void addSideWidget(std::string, GtkWidget*) {}

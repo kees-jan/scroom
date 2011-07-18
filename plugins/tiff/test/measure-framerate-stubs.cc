@@ -20,14 +20,24 @@
 
 #include <boost/foreach.hpp>
 
-ViewInterfaceStub::ViewInterfaceStub()
-  :pi(new ProgressInterfaceStub())
-{}
-
-ViewInterfaceStub::~ViewInterfaceStub()
+ProgressInterfaceStub::ProgressInterfaceStub()
+  :finished(false)
 {
-  delete pi;
 }
+
+void ProgressInterfaceStub::setState(State state)
+{
+  finished = state == FINISHED;
+}
+
+bool ProgressInterfaceStub::isFinished()
+{
+  return finished;
+}
+
+ViewInterfaceStub::ViewInterfaceStub(ProgressInterface* pi)
+  :pi(pi)
+{}
 
 ProgressInterface* ViewInterfaceStub::getProgressInterface()
 {

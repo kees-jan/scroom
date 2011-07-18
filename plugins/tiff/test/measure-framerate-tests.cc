@@ -101,6 +101,14 @@ static bool reset()
   return false;
 }
 
+static bool wait()
+{
+  if(testData)
+    return testData->wait();
+  else
+    return false;
+}
+
 Sleep::Sleep(unsigned int secs)
   : secs(secs), started(false)
 {
@@ -200,7 +208,7 @@ bool InvalidatingCounter::operator()()
 
 TestData::TestData(TiffPresentation::Ptr tp, const LayerSpec& ls,
                    TiledBitmapInterface::Ptr tbi, SourcePresentation* sp, int zoom)
-  : vi(new ViewInterfaceStub()), tp(tp), ls(ls), tbi(tbi), sp(sp), zoom(zoom)
+  : pi(new ProgressInterfaceStub()), vi(new ViewInterfaceStub(pi)), tp(tp), ls(ls), tbi(tbi), sp(sp), zoom(zoom)
 {
   tbi->open(vi);
 }
@@ -209,6 +217,11 @@ TestData::Ptr TestData::create(TiffPresentation::Ptr tp, const LayerSpec& ls,
                                TiledBitmapInterface::Ptr tbi, SourcePresentation* sp, int zoom)
 {
   return TestData::Ptr(new TestData(tp, ls, tbi, sp, zoom));
+}
+
+bool TestData::wait()
+{
+  return !pi->isFinished();
 }
 
 TestData::~TestData()
@@ -223,6 +236,7 @@ TestData::~TestData()
   }
   tp.reset();
   delete vi;
+  delete pi;
 }
 
 void TestData::redraw(cairo_t* cr)
@@ -298,7 +312,7 @@ static bool setupTest4bpp()
 static bool setupTest8bpp()
 {
   TiffPresentation::Ptr tp(new TiffPresentation());
-  Colormap::Ptr colormap = Colormap::createDefault(256);
+  Colormap::Ptr colormap = Colormap::createDefault(2);
   tp->setColormap(colormap);
   
   LayerSpec ls;
@@ -336,23 +350,34 @@ static bool setupTest8bppColormapped()
 
 void init_tests()
 {
-  const unsigned int duration = 1;
-  functions.push_back(Sleep(1));
-  functions.push_back(BaseCounter("Baseline (no invalidate)", duration));
-  functions.push_back(Invalidator(1));
-  functions.push_back(InvalidatingCounter("Baseline (no redraw)", duration));
+  const unsigned int testDuration = 15;
+  const unsigned int sleepDuration = 2;
+  functions.push_back(Sleep(sleepDuration));
+  functions.push_back(BaseCounter("Baseline (no invalidate)", testDuration));
+
+  functions.push_back(Invalidator(sleepDuration));
+  functions.push_back(InvalidatingCounter("Baseline (no redraw)", testDuration));
+
   functions.push_back(setupTest1bpp);
-  functions.push_back(Invalidator(1));
-  functions.push_back(InvalidatingCounter("1bpp, 1:4 zoom", duration));
+  functions.push_back(wait);
+  functions.push_back(Invalidator(sleepDuration));
+  functions.push_back(InvalidatingCounter("1bpp, 1:4 zoom", testDuration));
+
   functions.push_back(setupTest4bpp);
-  functions.push_back(Invalidator(1));
-  functions.push_back(InvalidatingCounter("4bpp, 1:4 zoom, colormapped", duration));
+  functions.push_back(wait);
+  functions.push_back(Invalidator(sleepDuration));
+  functions.push_back(InvalidatingCounter("4bpp, 1:4 zoom, colormapped", testDuration));
+
   functions.push_back(setupTest8bpp);
-  functions.push_back(Invalidator(1));
-  functions.push_back(InvalidatingCounter("8bpp, 1:4 zoom", duration));
+  functions.push_back(wait);
+  functions.push_back(Invalidator(sleepDuration));
+  functions.push_back(InvalidatingCounter("8bpp, 1:4 zoom", testDuration));
+
   functions.push_back(setupTest8bppColormapped);
-  functions.push_back(Invalidator(1));
-  functions.push_back(InvalidatingCounter("8bpp, 1:4 zoom, colormapped", duration));
+  functions.push_back(wait);
+  functions.push_back(Invalidator(sleepDuration));
+  functions.push_back(InvalidatingCounter("8bpp, 1:4 zoom, colormapped", testDuration));
+
   functions.push_back(reset);
   functions.push_back(quit);
 }

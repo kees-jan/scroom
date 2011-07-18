@@ -25,12 +25,15 @@
 #include <tiffpresentation.hh>
 #include <layeroperations.hh>
 
+#include "measure-framerate-stubs.hh"
+
 class TestData
 {
 public:
   typedef boost::shared_ptr<TestData> Ptr;
 
 private:
+  ProgressInterfaceStub* pi;
   ViewInterface* vi;
   TiffPresentation::Ptr tp;
   LayerSpec ls;
@@ -49,6 +52,7 @@ public:
   ~TestData();
 
   void redraw(cairo_t* cr);
+  bool wait();
 };
 
 extern TestData::Ptr testData;
