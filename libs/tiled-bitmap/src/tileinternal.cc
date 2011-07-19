@@ -27,17 +27,6 @@
 using namespace Scroom::Utils;
 
 ////////////////////////////////////////////////////////////////////////
-/// TileInitialisationObserver
-
-void TileInitialisationObserver::tileFinished(TileInternal::Ptr)
-{
-}
-
-void TileInitialisationObserver::tileCreated(TileInternal::Ptr)
-{
-}
-
-////////////////////////////////////////////////////////////////////////
 /// TileInternal
 TileInternal::TileInternal(int depth, int x, int y, int bpp, TileStateInternal state)
   : depth(depth), x(x), y(y), bpp(bpp), state(state), tile(), data(TILESIZE*TILESIZE * bpp / 8)
@@ -162,6 +151,20 @@ Tile::Ptr TileInternal::do_load()
 
   return result;
 }
+
+TileViewState::Ptr TileInternal::getViewState(ViewInterface* vi)
+{
+  TileViewState::Ptr result = viewStates[vi].lock();
+
+  if(!result)
+  {
+    result = TileViewState::create(shared_from_this<TileInternal>());
+    viewStates[vi] = result;
+  }
+
+  return result;
+}
+
 
 TileState TileInternal::getState()
 {

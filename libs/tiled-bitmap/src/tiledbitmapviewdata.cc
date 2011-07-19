@@ -77,7 +77,9 @@ void TiledBitmapViewData::setNeededTiles(Layer* l, int imin, int imax, int jmin,
       {
         TileInternal::Ptr tile = layer->getTile(i,j);
 
-        newStuff.push_back(tile->registerObserver(shared_from_this<TiledBitmapViewData>()));
+        TileViewState::Ptr tileViewState = tile->getViewState(viewInterface);
+        newStuff.push_back(tileViewState);
+        newStuff.push_back(tileViewState->registerObserver(shared_from_this<TiledBitmapViewData>()));
       }
 
     // At this point, everything we need is either in the stuff list, or the newStuff list.

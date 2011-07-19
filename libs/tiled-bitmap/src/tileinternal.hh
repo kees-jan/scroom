@@ -35,13 +35,12 @@
 #include <scroom/threadpool.hh>
 #include <scroom/memorymanagerinterface.hh>
 
+#include "tileinternalobserverinterfaces.hh"
 #include "tileviewstate.hh"
 
 
 #define TILESIZE 4096
 // #define TILESIZE 1024
-
-class TiledBitmapViewData;
 
 /**
  * Represent the state of one of the tiles that make up a layer in the
@@ -57,52 +56,6 @@ typedef enum
     TSI_LOADING_ASYNCHRONOUSLY
   } TileStateInternal;
 
-
-class TileInternal;
-
-/** Events related to filling a tile with data. */
-class TileInitialisationObserver
-{
-public:
-  typedef boost::shared_ptr<TileInitialisationObserver> Ptr;
-  typedef boost::weak_ptr<TileInitialisationObserver> WeakPtr;
-  
-  virtual ~TileInitialisationObserver() {}
-
-  /**
-   * The tile has been created.
-   *
-   * This event will be sent as soon as the observer is registered
-   * (because obvously the tile has already been created beforehand.
-   *
-   * @note This event will be sent using the thread that is
-   *    registering the observer. Be careful with your mutexes :-)
-   */
-  virtual void tileCreated(boost::shared_ptr<TileInternal> tile);
-
-  /**
-   * This event will be sent when the tile is completely filled with
-   * data. This would be a good time to update progress bars and start
-   * prescaling.
-   *
-   * @note This event will be sent on the thread that is filling the
-   *    tile with data.
-   */ 
-  virtual void tileFinished(boost::shared_ptr<TileInternal> tile);
-};
-
-/** Events related to swapping tiles in/out */
-class TileLoadingObserver
-{
-public:
-  typedef boost::shared_ptr<TileLoadingObserver> Ptr;
-  typedef boost::weak_ptr<TileLoadingObserver> WeakPtr;
-
-  virtual ~TileLoadingObserver() {};
-
-  /** The Tile has been loaded. */
-  virtual void tileLoaded(Tile::Ptr tile)=0;
-};
 
 /**
  * Internal data structure representing a Tile.
@@ -196,7 +149,7 @@ public:
 
   TileState getState();
 
-  TileViewState::Ptr getViewState(boost::shared_ptr<TiledBitmapViewData> viewData);
+  TileViewState::Ptr getViewState(ViewInterface* vi);
 
   void performMemoryManagerRegistration();
 

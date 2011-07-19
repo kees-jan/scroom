@@ -23,9 +23,16 @@
 #include <boost/weak_ptr.hpp>
 #include <boost/thread.hpp>
 
+#include <scroom/observable.hh>
 #include <scroom/threadpool.hh>
+#include <scroom/registration.hh>
 
-class TileViewState
+#include "tileinternalobserverinterfaces.hh"
+
+class TileInternal;
+
+class TileViewState : public Scroom::Utils::Observable<TileLoadingObserver>,
+                      public TileLoadingObserver
 {
 public:
   typedef boost::shared_ptr<TileViewState> Ptr;
@@ -34,6 +41,7 @@ public:
   enum State
     {
       INIT,
+      LOADED,
       COMPUTING_BASE,
       BASE_COMPUTED,
       COMPUTING_ZOOM,
@@ -42,15 +50,24 @@ public:
     };
   
 private:
+  boost::shared_ptr<TileInternal> parent;  
   boost::mutex mut;
   State state;
+  State desiredState;
   ThreadPool::Queue::Ptr queue;
+  Scroom::Utils::Registration r;
+  Tile::Ptr tile;
   
 public:
-  Ptr create();
+  ~TileViewState();
+  
+  static Ptr create(boost::shared_ptr<TileInternal> parent);
+
+  // TileLoadingObserver /////////////////////////////////////////////////
+  virtual void tileLoaded(Tile::Ptr tile);
 
 private:
-  TileViewState();
+  TileViewState(boost::shared_ptr<TileInternal> parent);
   
   
 };

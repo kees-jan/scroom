@@ -6,6 +6,7 @@ libstiledbitmap_la_SOURCES = \
 	layercoordinator.cc layercoordinator.hh \
 	tiled-bitmap.cc tiled-bitmap.hh \
 	tiledbitmapviewdata.cc tiledbitmapviewdata.hh \
+	tileinternalobserverinterfaces.cc tileinternalobserverinterfaces.hh \
 	tileinternal.cc tileinternal.hh \
 	tileviewstate.cc tileviewstate.hh \
 	local.hh
@@ -15,6 +16,3 @@ libstiledbitmap_la_LIBADD = \
 	../../threadpool/src/libsthreadpool.la \
 	../../memory-manager/libsmemman.la \
 	@BOOSTTHREADLIB@
-
-# 	../../util/src/libsutil.la \
-#
