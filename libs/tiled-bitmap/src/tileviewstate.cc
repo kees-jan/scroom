@@ -43,6 +43,10 @@ TileViewState::TileViewState(boost::shared_ptr<TileInternal> parent)
 void TileViewState::tileLoaded(Tile::Ptr tile)
 {
   boost::mutex::scoped_lock l(mut);
-
   this->tile = tile;
+}
+
+Scroom::Utils::Registration TileViewState::getCacheResult()
+{
+  return Scroom::Utils::Registration();
 }

@@ -63,6 +63,8 @@ public:
   
   static Ptr create(boost::shared_ptr<TileInternal> parent);
 
+  Scroom::Utils::Registration getCacheResult();
+
   // TileLoadingObserver /////////////////////////////////////////////////
   virtual void tileLoaded(Tile::Ptr tile);
 
