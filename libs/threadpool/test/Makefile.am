@@ -9,7 +9,8 @@ preconditions_SOURCES = \
 	function-additor.cc function-additor.hh \
 	helpers.cc helpers.hh \
 	semaphore-tests.cc \
-	function-additor-tests.cc
+	function-additor-tests.cc \
+	boost-smart-pointers.cc
 
 threadpool_tests_SOURCES = \
 	main.cc \
