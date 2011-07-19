@@ -43,6 +43,7 @@ private:
   int imax;
   int jmin;
   int jmax;
+  int zoom;
 
   /**
    * References to things we want to keep around.
@@ -73,7 +74,8 @@ public:
   static Ptr create(ViewInterface* viewInterface);
   virtual ~TiledBitmapViewData();
 
-  void setNeededTiles(Layer* l, int imin, int imax, int jmin, int jmax);
+  void setNeededTiles(Layer* l, int imin, int imax, int jmin, int jmax, int zoom, LayerOperations* layerOperations);
+  void storeVolatileStuff(Scroom::Utils::Registration stuff);
 
   // TileLoadingObserver ////////////////////////////////////////////////
   virtual void tileLoaded(Tile::Ptr tile);

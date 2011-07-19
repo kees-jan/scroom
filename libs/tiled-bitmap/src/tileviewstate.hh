@@ -26,10 +26,12 @@
 #include <scroom/observable.hh>
 #include <scroom/threadpool.hh>
 #include <scroom/registration.hh>
+#include <scroom/tiledbitmapinterface.hh>
 
 #include "tileinternalobserverinterfaces.hh"
 
 class TileInternal;
+class TiledBitmapViewData;
 
 class TileViewState : public Scroom::Utils::Observable<TileLoadingObserver>,
                       public TileLoadingObserver
@@ -54,9 +56,16 @@ private:
   boost::mutex mut;
   State state;
   State desiredState;
-  ThreadPool::Queue::Ptr queue;
+  ThreadPool::Queue::WeakPtr queue;
+  ThreadPool::WeakQueue::WeakPtr weakQueue;
   Scroom::Utils::Registration r;
   Tile::Ptr tile;
+  boost::weak_ptr<TiledBitmapViewData> tbvd;
+  LayerOperations* lo;
+  int zoom;
+  Scroom::Utils::RegistrationWeak baseCache;
+  Scroom::Utils::RegistrationWeak zoomCache;
+  ThreadPool::Ptr cpuBound;
   
 public:
   ~TileViewState();
@@ -64,14 +73,29 @@ public:
   static Ptr create(boost::shared_ptr<TileInternal> parent);
 
   Scroom::Utils::Registration getCacheResult();
+  void setViewData(boost::shared_ptr<TiledBitmapViewData> tbvd);
+  void setZoom(LayerOperations* lo, int zoom);
 
   // TileLoadingObserver /////////////////////////////////////////////////
   virtual void tileLoaded(Tile::Ptr tile);
 
 private:
   TileViewState(boost::shared_ptr<TileInternal> parent);
-  
-  
+
+  /**
+   * Kick the internal state machine into making some progress
+   */
+  void kick();
+
+  /**
+   * Asynchronously do work to make the state machine progress
+   */
+  void process(ThreadPool::WeakQueue::Ptr wq);
+
+  void computeBase(ThreadPool::WeakQueue::Ptr wq, Tile::Ptr tile, LayerOperations* lo);
+  void computeZoom(ThreadPool::WeakQueue::Ptr wq, Tile::Ptr tile, LayerOperations* lo,
+                   Scroom::Utils::Registration baseCache, int zoom);
+  void reportDone(ThreadPool::WeakQueue::Ptr wq, Tile::Ptr tile);
 };
 
 

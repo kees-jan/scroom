@@ -27,7 +27,7 @@ TiledBitmapViewData::Ptr TiledBitmapViewData::create(ViewInterface* viewInterfac
 
 TiledBitmapViewData::TiledBitmapViewData(ViewInterface* viewInterface)
   : viewInterface(viewInterface), progressInterface(viewInterface->getProgressInterface()),
-    layer(NULL), imin(0), imax(0), jmin(0), jmax(0)
+    layer(NULL), imin(0), imax(0), jmin(0), jmax(0), zoom(0)
 {
 }
 
@@ -36,12 +36,13 @@ TiledBitmapViewData::~TiledBitmapViewData()
   progressInterface->setState(ProgressInterface::IDLE);
 }
 
-void TiledBitmapViewData::setNeededTiles(Layer* l, int imin, int imax, int jmin, int jmax)
+void TiledBitmapViewData::setNeededTiles(Layer* l, int imin, int imax, int jmin, int jmax,
+                                         int zoom, LayerOperations* layerOperations)
 {
   boost::unique_lock<boost::mutex> lock(mut);
 
   if(this->layer == l && this->imin <= imin && this->imax >= imax &&
-      this->jmin <= jmin && this->jmax >= jmax)
+      this->jmin <= jmin && this->jmax >= jmax && this->zoom == zoom)
   {
     // Nothing to do...
   }
@@ -78,6 +79,8 @@ void TiledBitmapViewData::setNeededTiles(Layer* l, int imin, int imax, int jmin,
         TileInternal::Ptr tile = layer->getTile(i,j);
 
         TileViewState::Ptr tileViewState = tile->getViewState(viewInterface);
+        tileViewState->setViewData(shared_from_this<TiledBitmapViewData>());
+        tileViewState->setZoom(layerOperations, zoom);
         newStuff.push_back(tileViewState);
         newStuff.push_back(tileViewState->registerObserver(shared_from_this<TiledBitmapViewData>()));
       }
@@ -102,6 +105,12 @@ gboolean invalidate_view(gpointer user_data)
   vi->invalidate();
   gdk_threads_leave();
   return false;
+}
+
+void TiledBitmapViewData::storeVolatileStuff(Scroom::Utils::Registration stuff)
+{
+  boost::unique_lock<boost::mutex> lock(mut);
+  volatileStuff.push_back(stuff);
 }
 
 void TiledBitmapViewData::tileLoaded(Tile::Ptr tile)

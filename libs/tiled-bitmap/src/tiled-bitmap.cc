@@ -380,7 +380,7 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
     const int jmin = std::min(0, top/TILESIZE);
     const int jmax = (bottom+TILESIZE-1)/TILESIZE;
 
-    viewData->setNeededTiles(layer, imin, imax, jmin, jmax);
+    viewData->setNeededTiles(layer, imin, imax, jmin, jmax, zoom, layerOperations);
 
     const int pixelSize = 1<<zoom;
     
@@ -493,7 +493,7 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
     const int jmin = std::max(0, top/TILESIZE);
     const int jmax = (bottom+TILESIZE-1)/TILESIZE;
 
-    viewData->setNeededTiles(layer, imin, imax, jmin, jmax);
+    viewData->setNeededTiles(layer, imin, imax, jmin, jmax, zoom, layerOperations);
 
     const int pixelSize = 1<<-zoom;
     

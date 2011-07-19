@@ -131,6 +131,7 @@ public:
   {
   public:
     typedef boost::shared_ptr<WeakQueue> Ptr;
+    typedef boost::weak_ptr<WeakQueue> WeakPtr;
 
   public:
     static Ptr create();
