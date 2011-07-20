@@ -19,6 +19,8 @@
 #ifndef COLORMAPPABLE_HH
 #define COLORMAPPABLE_HH
 
+#include <stdint.h>
+
 #include <vector>
 #include <string>
 
@@ -29,6 +31,11 @@
 #include <scroom/observable.hh>
 
 #define COLORMAPPABLE_PROPERTY_NAME "Colormappable"
+
+namespace
+{
+  uint8_t byteFromDouble(double d) { return uint8_t(255*d); }
+}
 
 /**
  * Represent a (RGB) color
@@ -62,6 +69,10 @@ public:
 
   Color& operator/=(double d)
   { red /= d; green /= d; blue /= d; return *this; }
+
+  uint32_t getRGB24()
+  { return 0xFF000000 | byteFromDouble(red)<<16 | byteFromDouble(green)<<8 | byteFromDouble(blue) <<0; }
+    
 };
 
 /**

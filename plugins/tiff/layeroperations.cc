@@ -23,7 +23,10 @@
 
 #include <glib.h>
 
-#include "scroom/unused.h"
+#include <boost/shared_ptr.hpp>
+#include <boost/utility.hpp>
+
+#include <scroom/unused.h>
 
 #include "tiffpresentation.hh"
 
@@ -153,6 +156,65 @@ inline byte BitCountLut::lookup(byte index)
 }
 
 ////////////////////////////////////////////////////////////////////////
+// BitmapSurface
+
+class BitmapSurface : public boost::noncopyable
+{
+public:
+  typedef boost::shared_ptr<BitmapSurface> Ptr;
+
+private:
+  cairo_surface_t* surface;
+  unsigned char* data;
+  
+public:
+  static Ptr create(int width, int height);
+  static Ptr create(int width, int height, int stride, unsigned char* data);
+
+  ~BitmapSurface();
+
+  cairo_surface_t* get();
+private:
+  BitmapSurface(int width, int heght);
+  BitmapSurface(int width, int height, int stride, unsigned char* data);
+};
+
+BitmapSurface::Ptr BitmapSurface::create(int width, int height)
+{
+  return BitmapSurface::Ptr(new BitmapSurface(width, height));
+}
+
+BitmapSurface::Ptr BitmapSurface::create(int width, int height, int stride, unsigned char* data)
+{
+  return BitmapSurface::Ptr(new BitmapSurface(width, height, stride, data));
+}
+
+
+BitmapSurface::~BitmapSurface()
+{
+  cairo_surface_destroy(surface);
+  if(data) free(data);
+}
+
+
+cairo_surface_t* BitmapSurface::get()
+{
+  return surface;
+}
+
+BitmapSurface::BitmapSurface(int width, int height)
+{
+  this->surface = cairo_image_surface_create(CAIRO_FORMAT_RGB24, width, height);
+  this->data = NULL;
+}
+
+BitmapSurface::BitmapSurface(int width, int height, int stride, unsigned char* data)
+{
+  this->surface = cairo_image_surface_create_for_data(data, CAIRO_FORMAT_RGB24, width, height, stride);
+  this->data = data;
+}
+  
+////////////////////////////////////////////////////////////////////////
 // CommonOperations
 
 CommonOperations::CommonOperations(TiffPresentation* presentation)
@@ -233,6 +295,82 @@ inline void CommonOperations::fillRect(cairo_t* cr, const GdkRectangle& area)
 {
   fillRect(cr, area.x, area.y, area.width, area.height);
 }
+
+Scroom::Utils::Registration CommonOperations::cacheZoom(const Tile::Ptr tile, int zoom,
+                                                        Scroom::Utils::Registration cache)
+{
+  // In: Cairo surface at zoom level 0
+  // Out: Cairo surface at requested zoom level
+  Scroom::Utils::Registration result;
+  if(zoom>=0)
+  {
+    // Don't zoom in. It is a waste of space
+    result = cache;
+  }
+  else if (!cache)
+  {
+    printf("PANIC: Base caching failed to return anything\n");
+  }
+  else
+  {
+    int divider = 1<<-zoom;
+    BitmapSurface::Ptr source = boost::static_pointer_cast<BitmapSurface>(cache);
+    BitmapSurface::Ptr target = BitmapSurface::create(tile->width/divider, tile->height/divider);
+    result = target;
+    
+    cairo_surface_t* surface = target->get();
+    cairo_t* cr = cairo_create(surface);
+    initializeCairo(cr);
+    cairo_scale(cr, 1.0/divider, 1.0/divider);
+    cairo_set_source_surface(cr, source->get(), 0, 0);
+    cairo_paint(cr);
+
+    cairo_destroy(cr);
+  }
+    
+  return result;
+}
+
+void CommonOperations::draw(cairo_t* cr, const Tile::Ptr tile,
+                    GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
+                    Scroom::Utils::Registration cache)
+{
+  // In: Cairo surface at requested zoom level
+  // Out: given surface rendered to the canvas
+  UNUSED(tile);
+
+  if(!cache)
+  {
+    drawState(cr, TILE_UNLOADED, viewArea);
+  }
+  else
+  {
+    BitmapSurface::Ptr source = boost::static_pointer_cast<BitmapSurface>(cache);
+
+    if(zoom>0)
+    {
+      // Ask Cairo to zoom in for us
+      int multiplier = 1<<zoom;
+      int x = viewArea.x - multiplier * tileArea.x;
+      int y = viewArea.y - multiplier * tileArea.y;
+
+      cairo_save(cr);
+      cairo_scale(cr, multiplier, multiplier);
+      cairo_set_source_surface(cr, source->get(), x*multiplier, y*multiplier);
+      cairo_paint(cr);
+      cairo_restore(cr);
+    }
+    else
+    {
+      // Cached bitmap is to scale
+      int divider = 1<<-zoom;
+      int x = viewArea.x - tileArea.x / divider;
+      int y = viewArea.y - tileArea.y / divider;
+      cairo_set_source_surface(cr, source->get(), x, y);
+      cairo_paint(cr);
+    }      
+  } 
+}
   
 
 ////////////////////////////////////////////////////////////////////////
@@ -248,65 +386,26 @@ int Operations1bpp::getBpp()
   return 1;
 }
 
-void Operations1bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
-                          Registration cache)
+Scroom::Utils::Registration Operations1bpp::cache(const Tile::Ptr tile)
 {
-  UNUSED(cache);
-  
-  cairo_set_source_rgb(cr, 1, 1, 1); // White
-  fillRect(cr, viewArea);
+  const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_RGB24, tile->width);
+  unsigned char* data = (unsigned char*)malloc(stride * tile->height);
   Colormap::Ptr colormap = presentation->getColormap();
-  
-  if(zoom>=0)
-  {
-    // Iterate over pixels in the tileArea, drawing each as we go ahead
-    int pixelSize = 1<<zoom;
 
-    for(int j=0; j<tileArea.height; j++)
+  unsigned char* row = data;
+  for(int j=0; j<tile->height; j++, row+=stride)
+  {
+    PixelIterator bit(tile->data+j*tile->width/8, 0);
+    uint32_t* pixel = (uint32_t*)row;
+    for(int i=0; i<tile->width; i++)
     {
-      PixelIterator bit(tile->data+(tileArea.y+j)*tile->width/8, tileArea.x);
-      for(int i=0; i<tileArea.width; i++)
-      {
-        drawPixel(cr, viewArea.x+i*pixelSize, viewArea.y+j*pixelSize, pixelSize, colormap->colors[*bit]);
-        ++bit;
-      }
+      *pixel = colormap->colors[*bit].getRGB24();
+      pixel++;
+      ++bit;
     }
   }
-  else
-  {
-    // zoom < 0
-    // Iterate over pixels in the viewArea, determining which color
-    // each should get
-    int pixelCount = 1<<-zoom;
-    const Color& c1 = colormap->colors[0];
-    const Color& c2 = colormap->colors[1];
 
-    for(int j=0; j<viewArea.height; j++)
-    {
-      PixelIterator b(tile->data+(tileArea.y+j*pixelCount)*tile->width/8,
-                    tileArea.x);
-      
-      for(int i=0; i<viewArea.width; i++)
-      {
-        int count = 0;
-        PixelIterator bl(b);
-        for(int l=0; l<pixelCount; l++)
-        {
-          PixelIterator bk(bl);
-          for(int k=0; k<pixelCount; k++)
-          {
-            count += *bk;
-            ++bk;
-          }
-
-          bl+= tile->width;
-        }
-
-        drawPixel(cr, viewArea.x+i, viewArea.y+j, 1, c1, c2, 255*count/pixelCount/pixelCount);
-        b+=pixelCount;
-      }
-    }
-  }
+  return BitmapSurface::create(tile->width, tile->height, stride, data);
 }
 
 void Operations1bpp::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y)

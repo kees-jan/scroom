@@ -32,6 +32,7 @@
 #include <scroom/presentationinterface.hh>
 #include <scroom/tile.hh>
 #include <scroom/registration.hh>
+#include <scroom/unused.h>
 
 /**
  * Represent the state of one of the tiles that make up a layer in the
@@ -115,13 +116,13 @@ public:
   virtual void drawState(cairo_t* cr, TileState s, GdkRectangle viewArea)=0;
 
   /**
-   * Cache data for use during later draw() or cache() calls.
+   * Cache data for use during later cacheZoom() calls.
    *
    * This function is called for a given tile, and then the results
-   * are passed to the draw() and cache() functions. Because draw() is
-   * called relatively frequently (i.e. when scrolling), it is
-   * recommended to do cpu-intensive work in the cache() function, and
-   * then re-use the data to make the draw() faster.
+   * are passed to the cacheZoom() function. Because draw() is called
+   * relatively frequently (i.e. when scrolling), it is recommended to
+   * do cpu-intensive work in the cache() and cacheZoom() functions,
+   * and then re-use the data to make the draw() faster.
    *
    * The default implementation returns an empty reference, meaning
    * nothing is cached. As a result, the draw() function will receive
@@ -129,8 +130,8 @@ public:
    *
    * @param tile the Tile for which caching is requested
    */
-  Scroom::Utils::Registration cache(const Tile::Ptr tile)
-  { (void)tile; return Scroom::Utils::Registration(); }
+  virtual Scroom::Utils::Registration cache(const Tile::Ptr tile)
+  { UNUSED(tile); return Scroom::Utils::Registration(); }
 
   /**
    * Cache data for use during later draw() calls.
@@ -138,8 +139,9 @@ public:
    * This function is called for a given tile and zoom level, and then
    * the results are passed to the draw() function. Because draw() is
    * called relatively frequently (i.e. when scrolling), it is
-   * recommended to do cpu-intensive work in the cache() function, and
-   * then re-use the data to make the draw() faster.
+   * recommended to do cpu-intensive work in the cache() and
+   * cacheZoom() functions, and then re-use the data to make the
+   * draw() faster.
    *
    * The default implementation returns an empty reference, meaning
    * nothing is cached. As a result, the draw() function will receive
@@ -149,8 +151,9 @@ public:
    * @param zoom the requested zoom level
    * @param cache the output of cache(const Tile::Ptr)
    */
-  Scroom::Utils::Registration cache(const Tile::Ptr tile, int zoom, Scroom::Utils::Registration cache)
-  { (void)tile; (void)zoom; (void)cache; return Scroom::Utils::Registration(); }
+  virtual Scroom::Utils::Registration cacheZoom(const Tile::Ptr tile, int zoom,
+                                                Scroom::Utils::Registration cache)
+  { UNUSED(tile); UNUSED(zoom); UNUSED(cache); return Scroom::Utils::Registration(); }
   
   /**
    * Reduce the source tile by a factor of 8
