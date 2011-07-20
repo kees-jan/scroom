@@ -63,6 +63,7 @@ private:
   boost::weak_ptr<TiledBitmapViewData> tbvd;
   LayerOperations* lo;
   int zoom;
+  Scroom::Utils::RegistrationWeak lifeTimeManager;
   Scroom::Utils::RegistrationWeak baseCache;
   Scroom::Utils::RegistrationWeak zoomCache;
   ThreadPool::Ptr cpuBound;
@@ -96,6 +97,7 @@ private:
   void computeZoom(ThreadPool::WeakQueue::Ptr wq, Tile::Ptr tile, LayerOperations* lo,
                    Scroom::Utils::Registration baseCache, int zoom);
   void reportDone(ThreadPool::WeakQueue::Ptr wq, Tile::Ptr tile);
+  void clear();
 };
 
 

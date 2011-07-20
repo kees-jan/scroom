@@ -61,6 +61,8 @@ void TiledBitmapViewData::setNeededTiles(Layer* l, int imin, int imax, int jmin,
     // we might still need them. So create a backup to throw away later
     std::list<boost::shared_ptr<void> > oldStuff;
     oldStuff.swap(stuff);
+    std::list<boost::shared_ptr<void> > oldVolatileStuff;
+    oldVolatileStuff.swap(volatileStuff);
 
     lock.unlock();
     // The stuff list contains both registrations and references to needed tiles.
@@ -90,6 +92,7 @@ void TiledBitmapViewData::setNeededTiles(Layer* l, int imin, int imax, int jmin,
     // oldStuff list while holding the lock, because that would result in deadlock (see
     // ticket #35)
     oldStuff.clear();
+    oldVolatileStuff.clear();
 
     // Re-acquire the lock
     lock.lock();
