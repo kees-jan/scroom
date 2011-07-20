@@ -57,7 +57,7 @@ void TileViewState::tileLoaded(Tile::Ptr tile)
 Scroom::Utils::Registration TileViewState::getCacheResult()
 {
   boost::mutex::scoped_lock l(mut);
-  return zoomCache.lock();
+  return zoomCache;
 }
 
 void TileViewState::setViewData(TiledBitmapViewData::Ptr tbvd)
@@ -75,14 +75,6 @@ void TileViewState::setViewData(TiledBitmapViewData::Ptr tbvd)
   }
   tbvd->storeVolatileStuff(lifeTimeManager);
 
-  Scroom::Utils::Registration result = baseCache.lock();
-  if(result)
-    tbvd->storeVolatileStuff(result);
-
-  result = zoomCache.lock();
-  if(result)
-    tbvd->storeVolatileStuff(result);
-  
   kick();
 }
 
@@ -119,19 +111,17 @@ void TileViewState::kick()
   {
     printf("PANIC: State LOADED and no tile shouldn't happen.\n");
     queue.reset();
+    weakQueue.reset();
     state = INIT;
   }
 
-  ThreadPool::Queue::Ptr queue = this->queue.lock();
   TiledBitmapViewData::Ptr tbvd = this->tbvd.lock();
   if(state >= LOADED && desiredState >= state && !queue && tbvd)
   {
     queue = ThreadPool::Queue::createAsync();
-    this->queue = queue;
-    this->weakQueue = queue->getWeak();
-    tbvd->storeVolatileStuff(queue);
+    weakQueue = queue->getWeak();
 
-    cpuBound->schedule(boost::bind(&TileViewState::process, shared_from_this<TileViewState>(), this->weakQueue.lock()),
+    cpuBound->schedule(boost::bind(&TileViewState::process, shared_from_this<TileViewState>(), weakQueue),
                        LOAD_PRIO, queue);
   }
 }
@@ -140,78 +130,83 @@ void TileViewState::process(ThreadPool::WeakQueue::Ptr wq)
 {
   for(;;)
   {
-    boost::function<void ()> fn;
-
-    {
-      boost::mutex::scoped_lock l(mut);
+    boost::mutex::scoped_lock l(mut);
       
-      if(wq == weakQueue.lock() && state < desiredState)
-      {
-        switch(state)
-        {
-        case LOADED:
-          fn = boost::bind(&TileViewState::computeBase, shared_from_this<TileViewState>(), wq, tile, lo);
-          state = COMPUTING_BASE;
-          break;
+    if(wq == weakQueue && state < desiredState)
+    {
+      boost::function<void ()> fn;
         
-        case BASE_COMPUTED:
-          fn = boost::bind(&TileViewState::computeZoom, shared_from_this<TileViewState>(),
-                           wq, tile, lo, baseCache.lock(), zoom);
-          state = COMPUTING_ZOOM;
-          break;
-
-        case ZOOM_COMPUTED:
-          state = DONE;
-          fn = boost::bind(&TileViewState::reportDone, shared_from_this<TileViewState>(), wq, tile);
-          break;
-
-        case INIT:
-        case COMPUTING_BASE:
-        case COMPUTING_ZOOM:
-        case DONE:
-        default:
-          printf("PANIC: Don't know what to do in state %d\n", state);
-          return;
-        }
-
-        l.unlock();
-        fn();
-      }
-      else
+      switch(state)
       {
+      case LOADED:
+        fn = boost::bind(&TileViewState::computeBase, shared_from_this<TileViewState>(), wq, tile, lo);
+        state = COMPUTING_BASE;
         break;
+        
+      case BASE_COMPUTED:
+        fn = boost::bind(&TileViewState::computeZoom, shared_from_this<TileViewState>(),
+                         wq, tile, lo, baseCache, zoom);
+        state = COMPUTING_ZOOM;
+        break;
+
+      case ZOOM_COMPUTED:
+        state = DONE;
+        fn = boost::bind(&TileViewState::reportDone, shared_from_this<TileViewState>(), wq, tile);
+        break;
+
+      case INIT:
+      case COMPUTING_BASE:
+      case COMPUTING_ZOOM:
+      case DONE:
+      default:
+        printf("PANIC: Don't know what to do in state %d\n", state);
+        return;
       }
 
+      l.unlock();
+      fn();
+    }
+    else
+    {
+      break;
+    }
+
+  }
+
+
+  {
+    boost::mutex::scoped_lock l(mut);
+      
+    if(wq == weakQueue)
+    {
+      queue.reset();
+      weakQueue.reset();
     }
   }
-  queue.reset();
-  weakQueue.reset();
 }
 
 void TileViewState::computeBase(ThreadPool::WeakQueue::Ptr wq, Tile::Ptr tile, LayerOperations* lo)
 {
-  Scroom::Utils::Registration baseCache = lo->cache(tile);
+  Scroom::Utils::Registration baseCache = lo->cache(tile, TILESIZE, TILESIZE);
 
   boost::mutex::scoped_lock l(mut);
   TiledBitmapViewData::Ptr tbvd = this->tbvd.lock();
-  if(tbvd && desiredState>=BASE_COMPUTED && this->weakQueue.lock() == wq)
+  if(tbvd && desiredState>=BASE_COMPUTED && this->weakQueue == wq)
   {
     this->baseCache = baseCache;
-    tbvd->storeVolatileStuff(baseCache);
     state=BASE_COMPUTED;
   }
 }
 
 void TileViewState::computeZoom(ThreadPool::WeakQueue::Ptr wq, Tile::Ptr tile, LayerOperations* lo, Scroom::Utils::Registration baseCache, int zoom)
 {
-  Scroom::Utils::Registration zoomCache = lo->cache(tile, zoom, baseCache);
+  Scroom::Utils::Registration zoomCache = lo->cacheZoom(tile, TILESIZE, TILESIZE, zoom, baseCache);
 
   boost::mutex::scoped_lock l(mut);
   TiledBitmapViewData::Ptr tbvd = this->tbvd.lock();
-  if(tbvd && desiredState>=ZOOM_COMPUTED && this->zoom == zoom && this->weakQueue.lock() == wq)
+  if(tbvd && desiredState>=ZOOM_COMPUTED && this->zoom == zoom && this->weakQueue == wq)
   {
     this->zoomCache = zoomCache;
-    tbvd->storeVolatileStuff(zoomCache);
     state=ZOOM_COMPUTED;
   }
 }

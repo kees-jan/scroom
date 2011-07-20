@@ -56,16 +56,16 @@ private:
   boost::mutex mut;
   State state;
   State desiredState;
-  ThreadPool::Queue::WeakPtr queue;
-  ThreadPool::WeakQueue::WeakPtr weakQueue;
+  ThreadPool::Queue::Ptr queue;
+  ThreadPool::WeakQueue::Ptr weakQueue;
   Scroom::Utils::Registration r;
   Tile::Ptr tile;
   boost::weak_ptr<TiledBitmapViewData> tbvd;
   LayerOperations* lo;
   int zoom;
   Scroom::Utils::RegistrationWeak lifeTimeManager;
-  Scroom::Utils::RegistrationWeak baseCache;
-  Scroom::Utils::RegistrationWeak zoomCache;
+  Scroom::Utils::Registration baseCache;
+  Scroom::Utils::Registration zoomCache;
   ThreadPool::Ptr cpuBound;
   
 public:
