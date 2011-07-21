@@ -53,6 +53,7 @@ void TiledBitmapViewData::setNeededTiles(Layer* l, int imin, int imax, int jmin,
     this->imax = imax;
     this->jmin = jmin;
     this->jmax = jmax;
+    this->zoom = zoom;
 
     // Get data for new tiles
     redrawPending = true; // if it isn't already

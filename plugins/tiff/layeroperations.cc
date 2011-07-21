@@ -351,12 +351,13 @@ void CommonOperations::draw(cairo_t* cr, const Tile::Ptr tile,
     {
       // Ask Cairo to zoom in for us
       int multiplier = 1<<zoom;
-      int x = viewArea.x - multiplier * tileArea.x;
-      int y = viewArea.y - multiplier * tileArea.y;
+      int x = viewArea.x / multiplier - tileArea.x;
+      int y = viewArea.y / multiplier - tileArea.y;
 
       cairo_save(cr);
       cairo_scale(cr, multiplier, multiplier);
-      cairo_set_source_surface(cr, source->get(), x*multiplier, y*multiplier);
+      cairo_set_source_surface(cr, source->get(), x, y);
+      cairo_pattern_set_filter (cairo_get_source (cr), CAIRO_FILTER_NEAREST);
       cairo_paint(cr);
       cairo_restore(cr);
     }
