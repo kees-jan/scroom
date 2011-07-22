@@ -559,105 +559,27 @@ int Operations::getBpp()
   return bpp;
 }
 
-void Operations::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom, Registration cache)
+Scroom::Utils::Registration Operations::cache(const Tile::Ptr tile)
 {
-  UNUSED(cache);
-  cairo_set_source_rgb(cr, 1, 1, 1); // White
-  fillRect(cr, viewArea);
+  const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_RGB24, tile->width);
+  unsigned char* data = (unsigned char*)malloc(stride * tile->height);
   Colormap::Ptr colormap = presentation->getColormap();
-  
-  if(zoom>=0)
-  {
-    // Iterate over pixels in the tileArea, drawing each as we go ahead
-    int pixelSize = 1<<zoom;
 
-    for(int j=0; j<tileArea.height; j++)
+  unsigned char* row = data;
+  for(int j=0; j<tile->height; j++, row+=stride)
+  {
+    PixelIterator pixelIn(tile->data+j*tile->width/pixelsPerByte, 0, bpp);
+
+    uint32_t* pixelOut = (uint32_t*)row;
+    for(int i=0; i<tile->width; i++)
     {
-      PixelIterator pixel(tile->data+(tileArea.y+j)*tile->width/pixelsPerByte, tileArea.x, bpp);
-      for(int i=0; i<tileArea.width; i++)
-      {
-        drawPixel(cr, viewArea.x+i*pixelSize, viewArea.y+j*pixelSize, pixelSize, colormap->colors[*pixel]);
-        ++pixel;
-      }
+      *pixelOut = colormap->colors[*pixelIn].getRGB24();
+      pixelOut++;
+      ++pixelIn;
     }
   }
-  else
-  {
-    // zoom < 0
-    // Iterate over pixels in the viewArea, determining which color
-    // each should get
-    int pixelCount = 1<<-zoom;
 
-    for(int j=0; j<viewArea.height; j++)
-    {
-      PixelIterator pixel(tile->data+(tileArea.y+j*pixelCount)*tile->width/pixelsPerByte,
-                          tileArea.x, bpp);
-      
-      for(int i=0; i<viewArea.width; i++)
-      {
-        // Compute the average of all colors in a
-        // pixelCount*pixelCount area
-        Color c;
-        //   PixelIterator bl(pixel);
-        //   for(int l=0; l<pixelCount; l++)
-        //   {
-        //     PixelIterator bk(bl);
-        //     for(int k=0; k<pixelCount; k++)
-        //     {
-        //       c += colormap->colors[*bk];
-        //       ++bk;
-        //     }
-        //     bl+= tile->width;
-        //   }
-        // 
-        //   c /= pixelCount*pixelCount;
-
-        // Goal is to determine which values occurs most often in a
-        // pixelCount*pixelCount rectangle, and pick the top two.
-        unsigned lookup[pixelMask+1];
-        memset(lookup, 0, sizeof(lookup));
-
-        PixelIterator bl(pixel);
-        for(int l=0; l<pixelCount; l++)
-        {
-          PixelIterator bk(bl);
-          for(int k=0; k<pixelCount; k++)
-          {
-            ++(lookup[*bk]);
-            ++bk;
-          }
-          bl+= tile->width;
-        }
-
-        byte first=0;
-        byte second=1;
-        if(lookup[1]>lookup[0])
-        {
-          first=1;
-          second=0;
-        }
-        for(int b=2; b<pixelMask+1; b++)
-        {
-          if(lookup[b]>lookup[first])
-          {
-            second=first;
-            first=b;
-          }
-          else if(lookup[b]>lookup[second])
-            second=b;
-        }
-        if(lookup[second]==0)
-          second = first;
-
-        c += colormap->colors[first];
-        c += colormap->colors[second];
-        c /= 2;
-        
-        drawPixel(cr, viewArea.x+i, viewArea.y+j, 1, c);
-        pixel+=pixelCount;
-      }
-    }
-  }
+  return BitmapSurface::create(tile->width, tile->height, stride, data);
 }
 
 void Operations::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y)
@@ -734,54 +656,28 @@ int OperationsColormapped::getBpp()
   return 2*bpp;
 }
 
-void OperationsColormapped::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom, Registration cache)
+Scroom::Utils::Registration OperationsColormapped::cache(const Tile::Ptr tile)
 {
-  UNUSED(cache);
-  
-  cairo_set_source_rgb(cr, 1, 1, 1); // White
-  fillRect(cr, viewArea);
+  const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_RGB24, tile->width);
+  unsigned char* data = (unsigned char*)malloc(stride * tile->height);
   Colormap::Ptr colormap = presentation->getColormap();
   const int multiplier = 2; // data is 2*bpp, containing 2 colors
 
-  g_assert_cmpint(zoom, <=, 0);
-  
-  if(zoom<=0)
+  unsigned char* row = data;
+  for(int j=0; j<tile->height; j++, row+=stride)
   {
-    // zoom <= 0
-    // Iterate over pixels in the viewArea, determining which color
-    // each should get
-    int pixelCount = 1<<-zoom;
-
-    for(int j=0; j<viewArea.height; j++)
+    PixelIterator pixelIn(tile->data+j*multiplier*tile->width/pixelsPerByte, 0, multiplier*bpp);
+    uint32_t* pixelOut = (uint32_t*)row;
+    for(int i=0; i<tile->width; i++)
     {
-      PixelIterator pixel(tile->data+(tileArea.y+j*pixelCount)*multiplier*tile->width/pixelsPerByte,
-                          tileArea.x, multiplier*bpp);
+      *pixelOut = ::mix(colormap->colors[*pixelIn & pixelMask], colormap->colors[*pixelIn >> pixelOffset], 0.5).getRGB24();
       
-      for(int i=0; i<viewArea.width; i++)
-      {
-        // Compute the average of all colors in a
-        // pixelCount*pixelCount area
-        Color c;
-        PixelIterator bl(pixel);
-        for(int l=0; l<pixelCount; l++)
-        {
-          PixelIterator bk(bl);
-          for(int k=0; k<pixelCount; k++)
-          {
-            c += colormap->colors[*bk & pixelMask];
-            c += colormap->colors[*bk >> pixelOffset];
-            ++bk;
-          }
-          bl+= tile->width;
-        }
-
-        c /= 2*pixelCount*pixelCount;
-        
-        drawPixel(cr, viewArea.x+i, viewArea.y+j, 1, c);
-        pixel+=pixelCount;
-      }
+      pixelOut++;
+      ++pixelIn;
     }
   }
+
+  return BitmapSurface::create(tile->width, tile->height, stride, data);
 }
 
 void OperationsColormapped::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y)

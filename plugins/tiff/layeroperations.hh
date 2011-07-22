@@ -106,9 +106,7 @@ public:
   // LayerOperations
 
   virtual int getBpp();
-  virtual void draw(cairo_t* cr, Tile::Ptr tile,
-                    GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
-                    Scroom::Utils::Registration cache);
+  virtual Scroom::Utils::Registration cache(const Tile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y);
 };
 
@@ -124,9 +122,7 @@ public:
   // LayerOperations
 
   virtual int getBpp();
-  virtual void draw(cairo_t* cr, Tile::Ptr tile,
-                    GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
-                    Scroom::Utils::Registration cache);
+  virtual Scroom::Utils::Registration cache(const Tile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y);
 };
 
