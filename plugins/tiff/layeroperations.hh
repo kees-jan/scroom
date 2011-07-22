@@ -41,6 +41,8 @@ public:
   void drawPixel(cairo_t* cr, int x, int y, int size, const Color& c1, const Color& c2, byte greyscale);
   void fillRect(cairo_t* cr, int x, int y, int width, int height);
   void fillRect(cairo_t* cr, const GdkRectangle& area);
+  void setClip(cairo_t* cr, int x, int y, int width, int height);
+  void setClip(cairo_t* cr, const GdkRectangle& area);
   
   ////////////////////////////////////////////////////////////////////////
   // LayerOperations
@@ -82,9 +84,7 @@ public:
   // LayerOperations
 
   virtual int getBpp();
-  virtual void draw(cairo_t* cr, Tile::Ptr tile,
-                    GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
-                    Scroom::Utils::Registration cache);
+  virtual Scroom::Utils::Registration cache(const Tile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y);
 };
 

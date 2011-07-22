@@ -70,10 +70,24 @@ public:
   Color& operator/=(double d)
   { red /= d; green /= d; blue /= d; return *this; }
 
+  Color operator+(const Color& rhs) const
+  { return Color(red+rhs.red, green+rhs.green, blue+rhs.blue); }
+
+  Color operator*(double d) const
+  { return Color(red*d, green*d, blue*d); }
+
+  Color operator/(double d) const
+  { return *this*(1/d); }
+
   uint32_t getRGB24()
   { return 0xFF000000 | byteFromDouble(red)<<16 | byteFromDouble(green)<<8 | byteFromDouble(blue) <<0; }
     
 };
+
+inline Color mix(const Color& a, const Color& b, double greyscale)
+{
+  return a*greyscale + b*(1.0-greyscale);
+}
 
 /**
  * Represent a colormap

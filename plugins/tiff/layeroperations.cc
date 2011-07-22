@@ -296,6 +296,22 @@ inline void CommonOperations::fillRect(cairo_t* cr, const GdkRectangle& area)
   fillRect(cr, area.x, area.y, area.width, area.height);
 }
 
+inline void CommonOperations::setClip(cairo_t* cr, int x, int y,
+                                      int width, int height)
+{
+  cairo_move_to(cr, x, y);
+  cairo_line_to(cr, x+width, y);
+  cairo_line_to(cr, x+width, y+height);
+  cairo_line_to(cr, x, y+height);
+  cairo_line_to(cr, x, y);
+  cairo_clip(cr);
+}
+  
+inline void CommonOperations::setClip(cairo_t* cr, const GdkRectangle& area)
+{
+  setClip(cr, area.x, area.y, area.width, area.height);
+}
+
 Scroom::Utils::Registration CommonOperations::cacheZoom(const Tile::Ptr tile, int zoom,
                                                         Scroom::Utils::Registration cache)
 {
@@ -339,6 +355,9 @@ void CommonOperations::draw(cairo_t* cr, const Tile::Ptr tile,
   // Out: given surface rendered to the canvas
   UNUSED(tile);
 
+  cairo_save(cr);
+  setClip(cr, viewArea);
+  
   if(!cache)
   {
     drawState(cr, TILE_UNLOADED, viewArea);
@@ -370,7 +389,9 @@ void CommonOperations::draw(cairo_t* cr, const Tile::Ptr tile,
       cairo_set_source_surface(cr, source->get(), x, y);
       cairo_paint(cr);
     }      
-  } 
+  }
+
+  cairo_restore(cr);
 }
   
 
@@ -460,65 +481,30 @@ int Operations8bpp::getBpp()
   return 8;
 }
 
-void Operations8bpp::draw(cairo_t* cr, Tile::Ptr tile, GdkRectangle tileArea, GdkRectangle viewArea, int zoom, Registration cache)
+Scroom::Utils::Registration Operations8bpp::cache(const Tile::Ptr tile)
 {
-  UNUSED(cache);
-  
-  cairo_set_source_rgb(cr, 1, 1, 1); // White
-  fillRect(cr, viewArea);
+  const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_RGB24, tile->width);
+  unsigned char* data = (unsigned char*)malloc(stride * tile->height);
   Colormap::Ptr colormap = presentation->getColormap();
   const Color& c1 = colormap->colors[0];
   const Color& c2 = colormap->colors[1];
-  
-  if(zoom>=0)
-  {
-    // Iterate over pixels in the tileArea, drawing each as we go ahead
-    int pixelSize = 1<<zoom;
 
-    for(int j=0; j<tileArea.height; j++)
-    {
-      byte* cur = tile->data+(tileArea.y+j)*tile->width + tileArea.x;
+  unsigned char* row = data;
+  for(int j=0; j<tile->height; j++, row+=stride)
+  {
+    byte* cur = tile->data+j*tile->width;
     
-      for(int i=0; i<tileArea.width; i++, cur++)
-      {
-        drawPixel(cr, viewArea.x+i*pixelSize, viewArea.y+j*pixelSize, pixelSize, c1, c2, *cur);
-      }
+    uint32_t* pixel = (uint32_t*)row;
+    for(int i=0; i<tile->width; i++)
+    {
+      *pixel = ::mix(c2, c1, 1.0**cur/255).getRGB24();
+      
+      pixel++;
+      ++cur;
     }
   }
-  else
-  {
-    // zoom < 0
-    // Iterate over pixels in the viewArea, determining which color
-    // each should get
-    int pixelCount = 1<<-zoom;
 
-    for(int j=0; j<viewArea.height; j++)
-    {
-      byte* cur = tile->data +
-        (tileArea.y+j*pixelCount)*tile->width +
-        tileArea.x;
-    
-      for(int i=0; i<viewArea.width; i++)
-      {
-        int count=0;
-        byte* bl = cur;
-        for(int l=0; l<pixelCount; l++)
-        {
-          byte* bk = bl;
-          for(int k=0; k<pixelCount; k++)
-          {
-            count += *bk;
-            ++bk;
-          }
-
-          bl+= tile->width;
-        }
-        
-        drawPixel(cr, viewArea.x+i, viewArea.y+j, 1, c1, c2, count/pixelCount/pixelCount);
-        cur+=pixelCount;
-      }
-    }
-  }
+  return BitmapSurface::create(tile->width, tile->height, stride, data);
 }
 
 void Operations8bpp::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y)
