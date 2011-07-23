@@ -36,11 +36,6 @@ public:
   virtual ~CommonOperations()
   {}
 
-  double mix(double d1, double d2, byte greyscale);
-  void drawPixel(cairo_t* cr, int x, int y, int size, const Color& color);
-  void drawPixel(cairo_t* cr, int x, int y, int size, const Color& c1, const Color& c2, byte greyscale);
-  void fillRect(cairo_t* cr, int x, int y, int width, int height);
-  void fillRect(cairo_t* cr, const GdkRectangle& area);
   void setClip(cairo_t* cr, int x, int y, int width, int height);
   void setClip(cairo_t* cr, const GdkRectangle& area);
   

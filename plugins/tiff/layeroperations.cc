@@ -246,54 +246,8 @@ void CommonOperations::drawState(cairo_t* cr, TileState s, GdkRectangle viewArea
     cairo_set_source_rgb(cr, 0.75, 0.75, 1); // Blue
     break;
   }
-  fillRect(cr, viewArea);
-}
-
-inline void CommonOperations::drawPixel(cairo_t* cr, int x, int y, int size, const Color& color)
-{
-  cairo_set_source_rgb(cr, color.red, color.green, color.blue);
-  cairo_move_to(cr, x, y);
-  cairo_line_to(cr, x+size, y);
-  cairo_line_to(cr, x+size, y+size);
-  cairo_line_to(cr, x, y+size);
-  cairo_line_to(cr, x, y);
-  cairo_fill(cr);
-}
-
-inline double CommonOperations::mix(double d1, double d2, byte greyscale)
-{
-  return (greyscale*d2 + (255-greyscale)*d1)/255;
-}
-
-void CommonOperations::drawPixel(cairo_t* cr, int x, int y, int size, const Color& c1, const Color& c2, byte greyscale)
-{
-  cairo_set_source_rgb(cr,
-                       mix(c1.red, c2.red, greyscale),
-                       mix(c1.green, c2.green, greyscale),
-                       mix(c1.blue, c2.blue, greyscale));
-  cairo_move_to(cr, x, y);
-  cairo_line_to(cr, x+size, y);
-  cairo_line_to(cr, x+size, y+size);
-  cairo_line_to(cr, x, y+size);
-  cairo_line_to(cr, x, y);
-  cairo_fill(cr);
-}
-
-
-inline void CommonOperations::fillRect(cairo_t* cr, int x, int y,
-                                        int width, int height)
-{
-  cairo_move_to(cr, x, y);
-  cairo_line_to(cr, x+width, y);
-  cairo_line_to(cr, x+width, y+height);
-  cairo_line_to(cr, x, y+height);
-  cairo_line_to(cr, x, y);
-  cairo_fill(cr);
-}
-  
-inline void CommonOperations::fillRect(cairo_t* cr, const GdkRectangle& area)
-{
-  fillRect(cr, area.x, area.y, area.width, area.height);
+  setClip(cr, viewArea);
+  cairo_paint(cr);
 }
 
 inline void CommonOperations::setClip(cairo_t* cr, int x, int y,
@@ -355,7 +309,6 @@ void CommonOperations::draw(cairo_t* cr, const Tile::Ptr tile,
   // Out: given surface rendered to the canvas
   UNUSED(tile);
 
-  cairo_save(cr);
   setClip(cr, viewArea);
   
   if(!cache)
@@ -373,12 +326,10 @@ void CommonOperations::draw(cairo_t* cr, const Tile::Ptr tile,
       int x = viewArea.x / multiplier - tileArea.x;
       int y = viewArea.y / multiplier - tileArea.y;
 
-      cairo_save(cr);
       cairo_scale(cr, multiplier, multiplier);
       cairo_set_source_surface(cr, source->get(), x, y);
       cairo_pattern_set_filter (cairo_get_source (cr), CAIRO_FILTER_NEAREST);
       cairo_paint(cr);
-      cairo_restore(cr);
     }
     else
     {
@@ -390,8 +341,6 @@ void CommonOperations::draw(cairo_t* cr, const Tile::Ptr tile,
       cairo_paint(cr);
     }      
   }
-
-  cairo_restore(cr);
 }
   
 
@@ -497,7 +446,7 @@ Scroom::Utils::Registration Operations8bpp::cache(const Tile::Ptr tile)
     uint32_t* pixel = (uint32_t*)row;
     for(int i=0; i<tile->width; i++)
     {
-      *pixel = ::mix(c2, c1, 1.0**cur/255).getRGB24();
+      *pixel = mix(c2, c1, 1.0**cur/255).getRGB24();
       
       pixel++;
       ++cur;
@@ -670,7 +619,7 @@ Scroom::Utils::Registration OperationsColormapped::cache(const Tile::Ptr tile)
     uint32_t* pixelOut = (uint32_t*)row;
     for(int i=0; i<tile->width; i++)
     {
-      *pixelOut = ::mix(colormap->colors[*pixelIn & pixelMask], colormap->colors[*pixelIn >> pixelOffset], 0.5).getRGB24();
+      *pixelOut = mix(colormap->colors[*pixelIn & pixelMask], colormap->colors[*pixelIn >> pixelOffset], 0.5).getRGB24();
       
       pixelOut++;
       ++pixelIn;

@@ -157,7 +157,7 @@ void TiledBitmap::initialize()
     width = (width+7)/8; // Round up
     height = (height+7)/8;
     i++;
-  } while (std::max(width, height) > TILESIZE);
+  } while (std::max(width, height) > TILESIZE/4);
 }
 
 TiledBitmap::~TiledBitmap()
@@ -385,7 +385,7 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
     const int pixelSize = 1<<zoom;
     
     layerOperations->initializeCairo(cr);
-
+    
     if(presentationArea.width < origWidth)
     {
       GdkRectangle viewArea;
@@ -393,8 +393,10 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
       viewArea.width = (origWidth - presentationArea.width)*pixelSize;
       viewArea.y = 0;
       viewArea.height = origHeight*pixelSize;
-      
+
+      cairo_save(cr);
       layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
+      cairo_restore(cr);
     }
     if(presentationArea.height < origHeight)
     {
@@ -404,7 +406,9 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
       viewArea.x = 0;
       viewArea.width = presentationArea.width*pixelSize;
       
+      cairo_save(cr);
       layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
+      cairo_restore(cr);
     }
     if(presentationArea.x<0)
     {
@@ -414,7 +418,9 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
       viewArea.y=0;
       viewArea.height = presentationArea.height*pixelSize;
 
+      cairo_save(cr);
       layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
+      cairo_restore(cr);
     }
     if(presentationArea.y<0)
     {
@@ -424,7 +430,9 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
       viewArea.x = std::max(0, -presentationArea.x*pixelSize);
       viewArea.width = presentationArea.width*pixelSize;
                             
+      cairo_save(cr);
       layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
+      cairo_restore(cr);
     }
     
     for(int i=imin; i<imax; i++)
@@ -448,11 +456,15 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
 
         if(t)
         {
+          cairo_save(cr);
           layerOperations->draw(cr, tile->getTileAsync(), tileArea, viewArea, zoom, cacheResult);
+          cairo_restore(cr);
         }
         else
         {
+          cairo_save(cr);
           layerOperations->drawState(cr, tile->getState(), viewArea);
+          cairo_restore(cr);
         }
 #ifdef DEBUG_TILES
         drawTile(cr, tile, viewArea);
@@ -507,7 +519,9 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
       viewArea.y = 0;
       viewArea.height = origHeight/pixelSize;
       
+      cairo_save(cr);
       layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
+      cairo_restore(cr);
     }
     if(presentationArea.height < origHeight)
     {
@@ -517,7 +531,9 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
       viewArea.x = 0;
       viewArea.width = presentationArea.width/pixelSize;
       
+      cairo_save(cr);
       layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
+      cairo_restore(cr);
     }
     if(presentationArea.x<0)
     {
@@ -527,7 +543,9 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
       viewArea.y=0;
       viewArea.height = presentationArea.height/pixelSize;
 
+      cairo_save(cr);
       layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
+      cairo_restore(cr);
     }
     if(presentationArea.y<0)
     {
@@ -537,7 +555,9 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
       viewArea.x = std::max(0, -presentationArea.x/pixelSize);
       viewArea.width = presentationArea.width/pixelSize;
                             
+      cairo_save(cr);
       layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
+      cairo_restore(cr);
     }
     
     
@@ -565,11 +585,15 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
         // 3. Draw the area
         if(t)
         {
+          cairo_save(cr);
           layerOperations->draw(cr, t, tileArea, viewArea, zoom, cacheResult);
+          cairo_restore(cr);
         }
         else
         {
+          cairo_save(cr);
           layerOperations->drawState(cr, tile->getState(), viewArea);
+          cairo_restore(cr);
         }
 #ifdef DEBUG_TILES
         drawTile(cr, tile, viewArea);
