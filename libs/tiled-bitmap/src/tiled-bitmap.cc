@@ -579,6 +579,16 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
   }
 }
 
+void TiledBitmap::clearCaches(ViewInterface* viewInterface)
+{
+  boost::mutex::scoped_lock lock(viewDataMutex);
+  TiledBitmapViewData::Ptr tbvd = viewData[viewInterface];
+  if(tbvd)
+  {
+    tbvd->clearVolatileStuff();
+  }
+}
+
 void TiledBitmap::open(ViewInterface* viewInterface)
 {
   boost::mutex::scoped_lock lock(viewDataMutex);

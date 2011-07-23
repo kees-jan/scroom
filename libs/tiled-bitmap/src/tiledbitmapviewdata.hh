@@ -44,6 +44,7 @@ private:
   int jmin;
   int jmax;
   int zoom;
+  LayerOperations* layerOperations;
 
   /**
    * References to things we want to keep around.
@@ -75,7 +76,9 @@ public:
   virtual ~TiledBitmapViewData();
 
   void setNeededTiles(Layer* l, int imin, int imax, int jmin, int jmax, int zoom, LayerOperations* layerOperations);
+  void resetNeededTiles();
   void storeVolatileStuff(Scroom::Utils::Registration stuff);
+  void clearVolatileStuff();
 
   // TileLoadingObserver ////////////////////////////////////////////////
   virtual void tileLoaded(Tile::Ptr tile);

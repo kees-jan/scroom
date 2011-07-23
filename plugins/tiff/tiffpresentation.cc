@@ -308,12 +308,17 @@ void TiffPresentation::observerAdded(Viewable::Ptr observer)
 
 void TiffPresentation::setColormap(Colormap::Ptr colormap)
 {
+  this->colormap = colormap;
   for(std::list<ViewInterface*>::iterator cur=views.begin();
       cur!=views.end(); ++cur)
   {
+    if(tbi)
+    {
+      printf("Clearing caches for %p\n", *cur);
+      tbi->clearCaches(*cur);
+    }
     (*cur)->invalidate();
   }
-  this->colormap = colormap;
 }
 
 Colormap::Ptr TiffPresentation::getColormap()

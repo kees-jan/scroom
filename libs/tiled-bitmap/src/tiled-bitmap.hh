@@ -114,6 +114,7 @@ public:
   virtual void open(ViewInterface* viewInterface);
   virtual void close(ViewInterface* vi);
   virtual void redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);
+  virtual void clearCaches(ViewInterface* vi);
 
   ////////////////////////////////////////////////////////////////////////
   // TileInitialisationObserver

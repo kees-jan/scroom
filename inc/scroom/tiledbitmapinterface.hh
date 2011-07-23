@@ -255,6 +255,16 @@ public:
    * @see PresentationInterface::redraw()
    */
   virtual void redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)=0;
+
+  /**
+   * Clear all bitmap caches related to the view.
+   *
+   * You'd typically do this if the bitmap has somehow changed
+   * appearance, for example when switching to a new Colormap.
+   *
+   * @param vi The ViewInterface for which to clear the caches
+   */
+  virtual void clearCaches(ViewInterface* vi)=0;
 };
 
 /**
