@@ -56,6 +56,9 @@ void TiledBitmapViewData::setNeededTiles(Layer* l, int imin, int imax, int jmin,
     this->zoom = zoom;
     this->layerOperations = layerOperations;
 
+    // printf("SetNeededTiles: layer=%d, %d<=i<=%d, %d<=j<=%d, zoom=%d\n",
+    //        l->getDepth(), imin, imax, jmin, jmax, zoom);
+
     // Get data for new tiles
     redrawPending = true; // if it isn't already
     // printf("setNeededTiles: redrawPending\n");

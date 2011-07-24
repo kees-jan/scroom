@@ -56,6 +56,9 @@ public:
   int getHeight()
   { return height; }
 
+  int getDepth()
+  { return depth; }
+
 public:
   // Viewable ////////////////////////////////////////////////////////////
   void open(ViewInterface* vi);
