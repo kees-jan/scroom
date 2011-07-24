@@ -89,12 +89,17 @@ namespace
   
   bool ProgressBarPulser::doWork()
   {
+    // Locking these the other way around results in a deadlock. See ticket #40
+    gdk_threads_enter();
     boost::unique_lock<boost::mutex> lock(mut);
 
     while(current == progressbars.end() || *current==NULL)
     {
       if(progressbars.empty())
+      {
+        gdk_threads_leave();
         return false;
+      }
       else if(current == progressbars.end())
         current = progressbars.begin();
       else if (*current == NULL)
@@ -106,7 +111,6 @@ namespace
       }
     }
 
-    gdk_threads_enter();
     gtk_progress_bar_pulse(*current);
     gdk_threads_leave();
     ++current;
