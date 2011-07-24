@@ -1,4 +1,4 @@
-AM_CPPFLAGS = @TIFFPLUGIN_CFLAGS@ -I $(top_srcdir)/inc -I ../src
+AM_CPPFLAGS = @TIFFPLUGIN_CFLAGS@ -I $(top_srcdir)/inc -I $(top_srcdir)/plugins/tiff/src
 
 # if BOOST_UNITTESTS
 # 
