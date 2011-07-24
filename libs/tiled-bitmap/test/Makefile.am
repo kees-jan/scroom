@@ -2,7 +2,9 @@ AM_CPPFLAGS = @TILEDBITMAP_CFLAGS@ -I $(top_srcdir)/inc @BOOST_FUTURES_CPPFLAGS@
 
 if BOOST_UNITTESTS
 
-check_PROGRAMS = tiled-bitmap-tests
+EXTRA_PROGRAMS = tiled-bitmap-tests
+
+TBT = tiled-bitmap-tests
 
 tiled_bitmap_tests_SOURCES = \
 	main.cc \
@@ -16,3 +18,5 @@ tiled_bitmap_tests_LDADD = \
 TESTS = tiled-bitmap-tests
 
 endif BOOST_UNITTESTS
+
+check_PROGRAMS = $(TBT)
