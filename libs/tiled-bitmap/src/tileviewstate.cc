@@ -40,7 +40,7 @@ TileViewState::Ptr TileViewState::create(boost::shared_ptr<TileInternal> parent)
 }
 
 TileViewState::TileViewState(boost::shared_ptr<TileInternal> parent)
-  : parent(parent), state(INIT), desiredState(BASE_COMPUTED), lo(NULL), zoom(0), cpuBound(CpuBound())
+  : parent(parent), state(INIT), desiredState(LOADED), lo(NULL), zoom(0), cpuBound(CpuBound())
 {
 }
 
