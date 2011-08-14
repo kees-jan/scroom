@@ -49,7 +49,15 @@ void TileViewState::tileLoaded(Tile::Ptr tile)
   boost::mutex::scoped_lock l(mut);
 
   this->tile = tile;
-  state=LOADED;
+
+  // Abort any zoom currently in progress
+  if(state>LOADED)
+  {
+    queue.reset();
+    weakQueue.reset();
+    zoomCache.reset();
+  }
+  state = LOADED;
 
   kick();
 }
