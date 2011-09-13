@@ -86,10 +86,10 @@ public:
 class Operations : public CommonOperations
 {
 protected:
-  const int bpp;
-  const int pixelsPerByte;
-  const int pixelOffset;
-  const int pixelMask;
+  const unsigned bpp;
+  const unsigned pixelsPerByte;
+  const unsigned pixelOffset;
+  const unsigned pixelMask;
 
 public:
   Operations(TiffPresentation* presentation, int bpp);
@@ -99,7 +99,7 @@ public:
   
   ////////////////////////////////////////////////////////////////////////
   // LayerOperations
-
+  
   virtual int getBpp();
   virtual Scroom::Utils::Registration cache(const Tile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y);

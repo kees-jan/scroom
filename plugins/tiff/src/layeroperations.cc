@@ -19,6 +19,7 @@
 #include "layeroperations.hh"
 
 #include <stdio.h>
+#include <stdint.h>
 #include <string.h>
 
 #include <glib.h>
@@ -35,89 +36,111 @@ using Scroom::Utils::Registration;
 ////////////////////////////////////////////////////////////////////////
 // PixelIterator
 
+template <typename Base>
 class PixelIterator
 {
 private:
-  byte* currentByte;
-  byte currentOffset;
+  Base* currentBase;
+  Base currentOffset;
   const int bpp;
-  const int pixelsPerByte;
+  const int pixelsPerBase;
+  static const int bitsPerBase;
   const int pixelOffset;
-  const int pixelMask;
+  const Base pixelMask;
 
+private:
+  static Base mask(int bpp);
+  
 public:
   PixelIterator();
-  PixelIterator(byte* base, int offset=0, int bpp=1);
-  byte get();
-  void set(byte value);
+  PixelIterator(Base* base, int offset=0, int bpp=1);
+  Base get();
+  void set(Base value);
   PixelIterator& operator++();
   PixelIterator operator++(int);
   PixelIterator& operator+=(int x);
-  byte operator*();
+  Base operator*();
 };
 
-PixelIterator::PixelIterator()
-  : currentByte(NULL), currentOffset(0), bpp(0), pixelsPerByte(0), pixelOffset(0), pixelMask(0)
+template <typename Base>
+const int PixelIterator<Base>::bitsPerBase = 8*sizeof(Base)/sizeof(byte);
+
+template <typename Base>
+Base PixelIterator<Base>::mask(int bpp)
+{
+  return (((Base(1) << (bpp - 1)) - 1) << 1) | 1;
+}
+
+template <typename Base>
+PixelIterator<Base>::PixelIterator()
+  : currentBase(NULL), currentOffset(0), bpp(0), pixelsPerBase(0), pixelOffset(0), pixelMask(0)
 {
 }
 
-PixelIterator::PixelIterator(byte* base, int offset, int bpp)
-  : currentByte(NULL), currentOffset(0), bpp(bpp), pixelsPerByte(8/bpp), pixelOffset(bpp), pixelMask((1<<bpp)-1)
+template <typename Base>
+PixelIterator<Base>::PixelIterator(Base* base, int offset, int bpp)
+  : currentBase(NULL), currentOffset(0), bpp(bpp), pixelsPerBase(bitsPerBase/bpp), pixelOffset(bpp), pixelMask(mask(bpp))
 {
-  div_t d = div(offset, pixelsPerByte);
-  currentByte = base+d.quot;
-  currentOffset = pixelsPerByte-1-d.rem;
+  div_t d = div(offset, pixelsPerBase);
+  currentBase = base+d.quot;
+  currentOffset = pixelsPerBase-1-d.rem;
 }
 
-inline byte PixelIterator::get()
+template <typename Base>
+inline Base PixelIterator<Base>::get()
 {
-  return (*currentByte>>(currentOffset*pixelOffset)) & pixelMask;
+  return (*currentBase>>(currentOffset*pixelOffset)) & pixelMask;
 }
 
-inline void PixelIterator::set(byte value)
+template <typename Base>
+inline void PixelIterator<Base>::set(Base value)
 {
-  *currentByte =
-    (*currentByte & ~(pixelMask << (currentOffset*pixelOffset))) |
+  *currentBase =
+    (*currentBase & ~(pixelMask << (currentOffset*pixelOffset))) |
     (value  << (currentOffset*pixelOffset));
 }
 
-inline byte PixelIterator::operator*()
+template <typename Base>
+inline Base PixelIterator<Base>::operator*()
 {
-  return (*currentByte>>(currentOffset*pixelOffset)) & pixelMask;
+  return (*currentBase>>(currentOffset*pixelOffset)) & pixelMask;
 }
 
-inline PixelIterator& PixelIterator::operator++()
+template <typename Base>
+inline PixelIterator<Base>& PixelIterator<Base>::operator++()
 {
   // Prefix operator
   if(!(currentOffset--))
   {
-    currentOffset=pixelsPerByte-1;
-    ++currentByte;
+    currentOffset=pixelsPerBase-1;
+    ++currentBase;
   }
   
   return *this;
 }
 
-inline PixelIterator PixelIterator::operator++(int)
+template <typename Base>
+inline PixelIterator<Base> PixelIterator<Base>::operator++(int)
 {
   // Postfix operator
-  PixelIterator result = *this;
+  PixelIterator<Base> result = *this;
   
   if(!(currentOffset--))
   {
-    currentOffset=pixelsPerByte-1;
-    ++currentByte;
+    currentOffset=pixelsPerBase-1;
+    ++currentBase;
   }
   
   return result;
 }
 
-PixelIterator& PixelIterator::operator+=(int x)
+template <typename Base>
+PixelIterator<Base>& PixelIterator<Base>::operator+=(int x)
 {
-  int offset = pixelsPerByte-1-currentOffset+x;
-  div_t d = div(offset, pixelsPerByte);
-  currentByte += d.quot;
-  currentOffset = pixelsPerByte-1-d.rem;
+  int offset = pixelsPerBase-1-currentOffset+x;
+  div_t d = div(offset, pixelsPerBase);
+  currentBase += d.quot;
+  currentOffset = pixelsPerBase-1-d.rem;
 
   return *this;
 }
@@ -366,7 +389,7 @@ Scroom::Utils::Registration Operations1bpp::cache(const Tile::Ptr tile)
   unsigned char* row = data;
   for(int j=0; j<tile->height; j++, row+=stride)
   {
-    PixelIterator bit(tile->data+j*tile->width/8, 0);
+    PixelIterator<byte> bit(tile->data+j*tile->width/8, 0);
     uint32_t* pixel = (uint32_t*)row;
     for(int i=0; i<tile->width; i++)
     {
@@ -517,7 +540,7 @@ Scroom::Utils::Registration Operations::cache(const Tile::Ptr tile)
   unsigned char* row = data;
   for(int j=0; j<tile->height; j++, row+=stride)
   {
-    PixelIterator pixelIn(tile->data+j*tile->width/pixelsPerByte, 0, bpp);
+    PixelIterator<byte> pixelIn(tile->data+j*tile->width/pixelsPerByte, 0, bpp);
 
     uint32_t* pixelOut = (uint32_t*)row;
     for(int i=0; i<tile->width; i++)
@@ -548,7 +571,7 @@ void Operations::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y)
   {
     // Iterate vertically over target
     byte* sourcePtr = sourceBase;
-    PixelIterator targetPtr(targetBase, 0, targetMultiplier * bpp);
+    PixelIterator<uint16_t> targetPtr((uint16_t*)targetBase, 0, targetMultiplier * bpp);
 
     for(int i=0; i<source->width/8;
         i++, sourcePtr+=8/pixelsPerByte, ++targetPtr)
@@ -563,18 +586,18 @@ void Operations::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y)
 
       for(int k=0; k<8; k++, base+=sourceStride)
       {
-        PixelIterator current(base, 0, bpp);
+        PixelIterator<byte> current(base, 0, bpp);
         for(int l=0; l<8; l++, ++current)
           ++(lookup[*current]);
       }
-      byte first=0;
-      byte second=1;
+      unsigned first=0;
+      unsigned second=1;
       if(lookup[1]>lookup[0])
       {
         first=1;
         second=0;
       }
-      for(byte c=2; c<pixelMask+1; c++)
+      for(unsigned c=2; c<pixelMask+1; c++)
       {
         if(lookup[c]>lookup[first])
         {
@@ -615,7 +638,7 @@ Scroom::Utils::Registration OperationsColormapped::cache(const Tile::Ptr tile)
   unsigned char* row = data;
   for(int j=0; j<tile->height; j++, row+=stride)
   {
-    PixelIterator pixelIn(tile->data+j*multiplier*tile->width/pixelsPerByte, 0, multiplier*bpp);
+    PixelIterator<uint16_t> pixelIn((uint16_t*)(tile->data+j*multiplier*tile->width/pixelsPerByte), 0, multiplier*bpp);
     uint32_t* pixelOut = (uint32_t*)row;
     for(int i=0; i<tile->width; i++)
     {
@@ -646,7 +669,7 @@ void OperationsColormapped::reduce(Tile::Ptr target, const Tile::Ptr source, int
   {
     // Iterate vertically over target
     byte* sourcePtr = sourceBase;
-    PixelIterator targetPtr(targetBase, 0, multiplier*bpp);
+    PixelIterator<uint16_t> targetPtr((uint16_t*)targetBase, 0, multiplier*bpp);
 
     for(int i=0; i<source->width/8;
         i++, sourcePtr+=8*multiplier/pixelsPerByte, ++targetPtr)
@@ -661,21 +684,21 @@ void OperationsColormapped::reduce(Tile::Ptr target, const Tile::Ptr source, int
 
       for(int k=0; k<8; k++, base+=sourceStride)
       {
-        PixelIterator current(base, 0, multiplier*bpp);
+        PixelIterator<uint16_t> current((uint16_t*)base, 0, multiplier*bpp);
         for(int l=0; l<8; l++, ++current)
         {
           ++lookup[*current & pixelMask];
           ++lookup[*current >> pixelOffset];
         }
       }
-      byte first=0;
-      byte second=1;
+      unsigned first=0;
+      unsigned second=1;
       if(lookup[1]>lookup[0])
       {
         first=1;
         second=0;
       }
-      for(byte c=2; c<pixelMask+1; c++)
+      for(unsigned c=2; c<pixelMask+1; c++)
       {
         if(lookup[c]>lookup[first])
         {
