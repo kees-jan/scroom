@@ -1,3 +1,16 @@
+scroom (0.3.1-1) lucid; urgency=low
+
+  * For more info see
+    http://fuzzy.homedns.org/trac/scroom/milestone/0.3.1
+
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Tue, 26 Jul 2011 20:26:11 +0200
+
+scroom (0.3-1) lucid; urgency=low
+
+  * For more info see http://fuzzy.homedns.org/trac/scroom/milestone/0.3
+
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Sun, 24 Jul 2011 17:57:02 +0200
+
 scroom (0.2-1) lucid; urgency=low
 
   * For more info see http://fuzzy.homedns.org/trac/scroom/milestone/0.2
