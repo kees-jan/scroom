@@ -23,6 +23,7 @@ prepare()
     remove_if_exists "lucid.log"
     remove_if_exists "maverick.log"
     remove_if_exists "natty.log"
+    remove_if_exists "oneiric.log"
     remove_if_exists "mutracx.log"
     remove_if_exists "pdebuild.log"
 }
@@ -150,7 +151,7 @@ cd "$CURDIR" || exit 1
 cp "$BUILD/scroom-$VERSION/debian/*changelog" ./debian || exit 1
 
 # Ubuntu source packages
-for source_package in lucid maverick natty
+for source_package in lucid maverick natty oneiric
 do
     echo_me $source_package
     ( rm -rf "$BUILD/$source_package" > /dev/null 2>&1 ;
