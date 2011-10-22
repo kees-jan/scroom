@@ -1,0 +1,43 @@
+Source: scroom
+Section: universe/graphics
+Priority: extra
+Maintainer: Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>
+Build-Depends: debhelper (>= 7), autotools-dev, pkg-config, libboost-dev, libboost-thread-dev, libtiff4-dev, libgtk2.0-dev, libglib2.0-dev, libglade2-dev, libcairo2-dev
+Standards-Version: 3.8.3
+Homepage: http://fuzzy.homedns.org/trac/scroom
+
+Package: scroom-0.3
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Conflicts: scroom (<< 0.3.2)
+Description: Generic viewer for 2D data
+ Scroom is a generic viewer for viewing 2D data. Plugins can be added
+ easily to support new file formats. Currently, there only is a plugin
+ available for viewing large TIFF files (tested up to 60 gigapixel,
+ 1bpp), so it is also fair to say that Scroom is a viewer for large
+ TIFF files.
+
+Package: scroom
+Architecture: all
+Depends: scroom-0.3, ${misc:Depends}
+Description: Generic viewer for 2D data (meta)
+ Scroom is a generic viewer for viewing 2D data. Plugins can be added
+ easily to support new file formats. Currently, there only is a plugin
+ available for viewing large TIFF files (tested up to 60 gigapixel,
+ 1bpp), so it is also fair to say that Scroom is a viewer for large
+ TIFF files.
+ .
+ This is a meta-package, always pointing to the latest release
+
+Package: scroom-snapshot
+Architecture: all
+Depends: scroom-0.3, ${misc:Depends}
+Description: Generic viewer for 2D data (meta)
+ Scroom is a generic viewer for viewing 2D data. Plugins can be added
+ easily to support new file formats. Currently, there only is a plugin
+ available for viewing large TIFF files (tested up to 60 gigapixel,
+ 1bpp), so it is also fair to say that Scroom is a viewer for large
+ TIFF files.
+ .
+ This is a meta-package, always pointing to the latest snapshot
+

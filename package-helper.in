@@ -27,6 +27,25 @@ prepare()
     remove_if_exists "pdebuild.log"
 }
 
+SUB_PACKAGES="scroom scroom-0.3 scroom-snapshot"
+SNAPSHOT_PACKAGE="scroom-snapshot"
+
+update_changelog()
+{
+    for p in $SUB_PACKAGES
+    do
+        dch -c "debian/${p}.changelog" -p "$@" || return 1
+    done
+}
+
+update_snapshot_changelog()
+{
+    for p in $SNAPSHOT_PACKAGE
+    do
+        dch -c "debian/${p}.changelog" -p "$@" || return 1
+    done
+}
+
 ME="$0"
 PACKAGE_NAME="@PACKAGE_NAME@"
 PACKAGE_TARNAME="@PACKAGE_TARNAME@"
@@ -36,6 +55,7 @@ PACKAGE_BUGREPORT="@PACKAGE_BUGREPORT@"
 PACKAGE_URL="@PACKAGE_URL@"
 PACKAGE="@PACKAGE@"
 VERSION=$(echo "@VERSION@" | sed -e 's/_/~/g')
+DEBVERSION="$VERSION-1"
 
 # echo_me "Hello world"
 # echo_me "TMPDIR:    $TMPDIR"
@@ -62,12 +82,16 @@ fi
 
 SNAPSHOT=0
 RELEASECANDIDATE=0
+RELEASE=0;
 case "$VERSION" in
     *-*)
         SNAPSHOT=1;
         ;;
     *~*)
         RELEASECANDIDATE=1;
+        ;;
+    *)
+        RELEASE=1;
         ;;
 esac
 
@@ -83,15 +107,29 @@ cd  "$BUILD/scroom-$VERSION" || exit 1
 # Todo: build package ;-)
 if [ "$SNAPSHOT" -eq "1" ]
 then
-    dch -d "Snapshot release"
+    update_snapshot_changelog -v "$DEBVERSION" "Snapshot release"
 elif [ "$RELEASECANDIDATE" -eq "1" ]
 then
     VER=$(echo "$VERSION" | cut -d'~' -f1) && \
-        dch -d "Release candidate for version $VER" && \
-        dch -a "For more info see http://fuzzy.homedns.org/trac/scroom/milestone/$VER"
+        update_changelog -v "$DEBVERSION" "Release candidate for version $VER" && \
+        update_changelog -a "For more info see http://fuzzy.homedns.org/trac/scroom/milestone/$VER"
 else
-    dch -d "For more info see http://fuzzy.homedns.org/trac/scroom/milestone/$VERSION"
+    update_changelog -v "$DEBVERSION" "For more info see http://fuzzy.homedns.org/trac/scroom/milestone/$VERSION"
 fi || exit 1
+
+if [ "$SNAPSHOT" -eq "1" ]
+then
+    TARGET_PACKAGE=scroom-snapshot
+    CONTROL=control.snapshot
+    UPDATE_CHANGELOG=update_snapshot_changelog
+else
+    TARGET_PACKAGE=scroom-0.3
+    CONTROL=control.release
+    UPDATE_CHANGELOG=update_changelog
+fi || exit 1
+
+sed 's/@TARGET_PACKAGE@/'"$TARGET_PACKAGE"'/' < debian/rules.in > debian/rules || exit 1
+cp "$CONTROL" debian/control
 
 echo_me "Creating a tar file for package flavors"
 tar czfC "$TMPDIR/scroom-$VERSION-base.tgz" "$BUILD" "scroom-$VERSION"
@@ -103,13 +141,13 @@ then
     exit 1
 fi
 echo_me "Base version done. Trying pdebuild"
-if ! ( sudo pdebuild -- --debbuildopts -j12 ) > $CURDIR/pdebuild.log 2>&1
+if ! ( sudo pdebuild -- --debbuildopts -j12 ) > "$CURDIR/pdebuild.log" 2>&1
 then
     echo_me "ERROR: pdebuild failed. See pdebuild.log"
 fi
 
 cd "$CURDIR" || exit 1
-cp "$BUILD/scroom-$VERSION/debian/changelog" ./debian/changelog || exit 1
+cp "$BUILD/scroom-$VERSION/debian/*changelog" ./debian || exit 1
 
 # Ubuntu source packages
 for source_package in lucid maverick natty
@@ -120,13 +158,13 @@ do
         ln "$BUILD/scroom_$VERSION.orig.tar.gz" "$BUILD/$source_package/scroom_$VERSION.orig.tar.gz" && 
         tar xfC "$TMPDIR/scroom-$VERSION-base.tgz" "$BUILD/$source_package" && 
         cd "$BUILD/$source_package/scroom-$VERSION" &&
-        if [ -d "$CURDIR/${source_package}-patches" ]
+        if [ -v "$DEBVERSION" "$CURDIR/${source_package}-patches" ]
         then
             QUILT_PATCHES="$CURDIR/${source_package}-patches" quilt push -a
         else
             true
         fi &&
-        dch -D "$source_package" --force-distribution -v "$(dpkg-parsechangelog | awk '/^Version: / { print $2 }')${source_package}1" \
+        $UPDATE_CHANGELOG -D "$source_package" --force-distribution -v "$(dpkg-parsechangelog -ldebian/scroom-snapshot.changelog | awk '/^Version: / { print $2 }')${source_package}1" \
             "$source_package edition" && 
         debuild -S -sa -us -uc -j12
         ) > ${source_package}.log 2>&1
@@ -142,13 +180,8 @@ source_package=mutracx
     tar xfC "$TMPDIR/scroom-$VERSION-base.tgz" "$BUILD/$source_package" && 
     cd "$BUILD/$source_package/scroom-$VERSION" && 
     QUILT_PATCHES="$CURDIR/${source_package}-patches" quilt push -a &&
-    VER="$(dpkg-parsechangelog | awk '/^Version: / { print $2 }')${source_package}1" &&
-    dch -D "hardy" -v "$VER" "Mutracx edition" && 
+    $UPDATE_CHANGELOG -D "hardy" --force-distribution -v "$(dpkg-parsechangelog -ldebian/scroom-snapshot.changelog | awk '/^Version: / { print $2 }')${source_package}1" "Mutracx edition" && 
     sudo DIST=mutracx ARCH=amd64 pdebuild --debbuildopts "-j12 -sa" && 
     sudo DIST=mutracx ARCH=i386  pdebuild --debbuildopts "-j12 -B"
     ) > ${source_package}.log 2>&1
 
-#     debuild -S -sa -us -uc &&
-#     sudo DIST=mutracx ARCH=amd64 pbuilder build "$BUILD/$source_package/scroom_${VER}.dsc" && 
-#     sudo DIST=mutracx ARCH=i386  pbuilder build "$BUILD/$source_package/scroom_${VER}.dsc"
-# echo_me "Bye world"
