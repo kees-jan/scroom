@@ -37,7 +37,6 @@ PACKAGE_BUGREPORT="@PACKAGE_BUGREPORT@"
 PACKAGE_URL="@PACKAGE_URL@"
 PACKAGE="@PACKAGE@"
 VERSION=$(echo "@VERSION@" | sed -e 's/_/~/g')
-DEBVERSION="$VERSION-1"
 
 # echo_me "Hello world"
 # echo_me "TMPDIR:    $TMPDIR"
@@ -146,7 +145,7 @@ do
         ln "$BUILD/scroom_$VERSION.orig.tar.gz" "$BUILD/$source_package/scroom_$VERSION.orig.tar.gz" && 
         tar xfC "$TMPDIR/scroom-$VERSION-base.tgz" "$BUILD/$source_package" && 
         cd "$BUILD/$source_package/scroom-$VERSION" &&
-        if [ -v "$DEBVERSION" "$CURDIR/${source_package}-patches" ]
+        if [ -d "$CURDIR/${source_package}-patches" ]
         then
             QUILT_PATCHES="$CURDIR/${source_package}-patches" quilt push -a
         else
