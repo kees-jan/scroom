@@ -9,7 +9,7 @@ Homepage: http://fuzzy.homedns.org/trac/scroom
 Package: scroom-snapshot
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Conflicts: scroom (<< 0.3.1-2), scroom-0.3
+Conflicts: scroom (<= 0.3.1-1), scroom-0.3
 Description: Generic viewer for 2D data
  Scroom is a generic viewer for viewing 2D data. Plugins can be added
  easily to support new file formats. Currently, there only is a plugin
