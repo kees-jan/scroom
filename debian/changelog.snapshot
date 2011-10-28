@@ -1,3 +1,9 @@
+scroom (0.3.1-1-gee69047-2) lucid; urgency=low
+
+  * Snapshot release
+
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Fri, 28 Oct 2011 11:05:01 +0200
+
 scroom (0.3.1-1-gee69047-1) lucid; urgency=low
 
   * Snapshot release
