@@ -1,14 +1,9 @@
-scroom (0.3.1-1-gee69047-2) lucid; urgency=low
+scroom (0.3.2-1) lucid; urgency=low
 
-  * Snapshot release
+  * For more info see
+    http://fuzzy.homedns.org/trac/scroom/milestone/0.3.2
 
- -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Fri, 28 Oct 2011 11:05:01 +0200
-
-scroom (0.3.1-1-gee69047-1) lucid; urgency=low
-
-  * Snapshot release
-
- -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Thu, 27 Oct 2011 20:39:21 +0200
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Fri, 28 Oct 2011 13:06:36 +0200
 
 scroom (0.3.1-1) lucid; urgency=low
 
