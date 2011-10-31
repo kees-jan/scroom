@@ -340,9 +340,9 @@ BOOST_AUTO_TEST_CASE(deleting_observable_deletes_observer)
   BOOST_CHECK(!observer);
   observers = observable->getObservers();
   BOOST_REQUIRE(1 == observers.size());
-  observers.clear();
   observer = weakObserver.lock();
   BOOST_CHECK_EQUAL(observer, observers.front());
+  observers.clear();
 
   // Destroying observable destroys observer
   observer.reset();
