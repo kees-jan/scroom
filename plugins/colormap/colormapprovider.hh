@@ -51,7 +51,7 @@ private:
   GtkListStore* colormaps;
 
   /** Our registration with the Colormappable */
-  Scroom::Utils::Registration registration;
+  Scroom::Utils::Stuff registration;
 
   /** Constructor */
   ColormapProvider(Colormappable::Ptr c);

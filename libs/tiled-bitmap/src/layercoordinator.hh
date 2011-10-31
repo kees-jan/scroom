@@ -34,7 +34,7 @@ class LayerCoordinator: public TileInitialisationObserver,
 private:
   TileInternal::Ptr targetTile;
   std::map<TileInternal::Ptr,std::pair<int,int> > sourceTiles;
-  Scroom::Utils::Registrations registrations;
+  Scroom::Utils::StuffList registrations;
   LayerOperations* lo;
   boost::mutex mut;
   int unfinishedSourceTiles;

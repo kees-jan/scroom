@@ -16,25 +16,26 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef REGISTRATION_HH
-#define REGISTRATION_HH
+#ifndef STUFF_HH
+#define STUFF_HH
 
 #include <list>
 
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
 
-#include <scroom/stuff.hh>
-
 namespace Scroom
 {
   namespace Utils
   {
-    // /** A Registration is a pointer to some private data. */
-    // typedef boost::shared_ptr<void> Registration;
-    // typedef boost::weak_ptr<void> RegistrationWeak;
-    // typedef std::list<Registration> Registrations;
+    /** Stuff is a pointer to some private data. */
+    typedef boost::shared_ptr<void> Stuff;
+    typedef boost::weak_ptr<void> StuffWeak;
+    typedef std::list<Stuff> StuffList;
   }
 }
+
+
+
 
 #endif

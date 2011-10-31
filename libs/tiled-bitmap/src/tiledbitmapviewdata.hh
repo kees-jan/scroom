@@ -77,7 +77,7 @@ public:
 
   void setNeededTiles(Layer* l, int imin, int imax, int jmin, int jmax, int zoom, LayerOperations* layerOperations);
   void resetNeededTiles();
-  void storeVolatileStuff(Scroom::Utils::Registration stuff);
+  void storeVolatileStuff(Scroom::Utils::Stuff stuff);
   void clearVolatileStuff();
 
   // TileLoadingObserver ////////////////////////////////////////////////

@@ -98,9 +98,9 @@ public:
 
 namespace MemoryManager
 {
-  Scroom::Utils::Registration registerMMI(MemoryManagedInterface::Ptr object, size_t size, int fdcount);
-  void loadNotification(Scroom::Utils::Registration r);
-  void unloadNotification(Scroom::Utils::Registration r);
+  Scroom::Utils::Stuff registerMMI(MemoryManagedInterface::Ptr object, size_t size, int fdcount);
+  void loadNotification(Scroom::Utils::Stuff r);
+  void unloadNotification(Scroom::Utils::Stuff r);
 }
 
 

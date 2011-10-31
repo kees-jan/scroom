@@ -112,7 +112,7 @@ BOOST_AUTO_TEST_CASE(register_observer)
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
-  Registration registration = observable->registerStrongObserver(observer);
+  Stuff registration = observable->registerStrongObserver(observer);
   BOOST_CHECK(registration);
   observers = observable->getObservers();
   BOOST_REQUIRE(1 == observers.size());
@@ -140,7 +140,7 @@ BOOST_AUTO_TEST_CASE(register_weak_observer)
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
-  Registration registration = observable->registerObserver(weakObserver);
+  Stuff registration = observable->registerObserver(weakObserver);
   BOOST_CHECK(registration);
   observers = observable->getObservers();
   BOOST_REQUIRE(1 == observers.size());
@@ -163,7 +163,7 @@ BOOST_AUTO_TEST_CASE(registered_weak_observer_goes_away)
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
-  Registration registration = observable->registerObserver(observer);
+  Stuff registration = observable->registerObserver(observer);
   BOOST_CHECK(registration);
   observers = observable->getObservers();
   BOOST_REQUIRE(1 == observers.size());
@@ -194,9 +194,9 @@ BOOST_AUTO_TEST_CASE(register_multiple_observers)
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
-  Registration r1 = observable->registerObserver(weakObserver);
-  Registration r2 = observable->registerObserver(o2);
-  Registration r3 = observable->registerStrongObserver(o3);
+  Stuff r1 = observable->registerObserver(weakObserver);
+  Stuff r2 = observable->registerObserver(o2);
+  Stuff r3 = observable->registerStrongObserver(o3);
   BOOST_CHECK(r1);
   BOOST_CHECK(r2);
   BOOST_CHECK(r3);
@@ -242,8 +242,8 @@ BOOST_AUTO_TEST_CASE(register_observer_multiple_times)
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
-  Registration r1 = observable->registerStrongObserver(observer);
-  Registration r2 = observable->registerStrongObserver(observer);
+  Stuff r1 = observable->registerStrongObserver(observer);
+  Stuff r2 = observable->registerStrongObserver(observer);
   BOOST_CHECK(r1);
   BOOST_CHECK(r2);
   BOOST_CHECK_EQUAL(r1, r2);
@@ -268,8 +268,8 @@ BOOST_AUTO_TEST_CASE(register_weak_observer_multiple_times)
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
-  Registration r1 = observable->registerObserver(observer);
-  Registration r2 = observable->registerObserver(observer);
+  Stuff r1 = observable->registerObserver(observer);
+  Stuff r2 = observable->registerObserver(observer);
   BOOST_CHECK(r1);
   BOOST_CHECK(r2);
   BOOST_CHECK_EQUAL(r1, r2);
@@ -295,7 +295,7 @@ BOOST_AUTO_TEST_CASE(register_observer_recursively)
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
-  Registration registration = recursiveObservable->registerObserver(observer);
+  Stuff registration = recursiveObservable->registerObserver(observer);
   BOOST_CHECK(registration);
   observers = observable->getObservers();
   BOOST_REQUIRE(1 == observers.size());
@@ -332,7 +332,7 @@ BOOST_AUTO_TEST_CASE(deleting_observable_deletes_observer)
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
-  Registration registration = observable->registerStrongObserver(observer);
+  Stuff registration = observable->registerStrongObserver(observer);
   BOOST_CHECK(registration);
 
   // Observable has a reference to observer, so it doesn't go away

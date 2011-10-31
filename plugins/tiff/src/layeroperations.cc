@@ -31,7 +31,7 @@
 
 #include "tiffpresentation.hh"
 
-using Scroom::Utils::Registration;
+using Scroom::Utils::Stuff;
 
 ////////////////////////////////////////////////////////////////////////
 // PixelIterator
@@ -289,12 +289,12 @@ inline void CommonOperations::setClip(cairo_t* cr, const GdkRectangle& area)
   setClip(cr, area.x, area.y, area.width, area.height);
 }
 
-Scroom::Utils::Registration CommonOperations::cacheZoom(const Tile::Ptr tile, int zoom,
-                                                        Scroom::Utils::Registration cache)
+Scroom::Utils::Stuff CommonOperations::cacheZoom(const Tile::Ptr tile, int zoom,
+                                                        Scroom::Utils::Stuff cache)
 {
   // In: Cairo surface at zoom level 0
   // Out: Cairo surface at requested zoom level
-  Scroom::Utils::Registration result;
+  Scroom::Utils::Stuff result;
   if(zoom>=0)
   {
     // Don't zoom in. It is a waste of space
@@ -326,7 +326,7 @@ Scroom::Utils::Registration CommonOperations::cacheZoom(const Tile::Ptr tile, in
 
 void CommonOperations::draw(cairo_t* cr, const Tile::Ptr tile,
                     GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
-                    Scroom::Utils::Registration cache)
+                    Scroom::Utils::Stuff cache)
 {
   // In: Cairo surface at requested zoom level
   // Out: given surface rendered to the canvas
@@ -380,7 +380,7 @@ int Operations1bpp::getBpp()
   return 1;
 }
 
-Scroom::Utils::Registration Operations1bpp::cache(const Tile::Ptr tile)
+Scroom::Utils::Stuff Operations1bpp::cache(const Tile::Ptr tile)
 {
   const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_RGB24, tile->width);
   unsigned char* data = (unsigned char*)malloc(stride * tile->height);
@@ -453,7 +453,7 @@ int Operations8bpp::getBpp()
   return 8;
 }
 
-Scroom::Utils::Registration Operations8bpp::cache(const Tile::Ptr tile)
+Scroom::Utils::Stuff Operations8bpp::cache(const Tile::Ptr tile)
 {
   const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_RGB24, tile->width);
   unsigned char* data = (unsigned char*)malloc(stride * tile->height);
@@ -531,7 +531,7 @@ int Operations::getBpp()
   return bpp;
 }
 
-Scroom::Utils::Registration Operations::cache(const Tile::Ptr tile)
+Scroom::Utils::Stuff Operations::cache(const Tile::Ptr tile)
 {
   const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_RGB24, tile->width);
   unsigned char* data = (unsigned char*)malloc(stride * tile->height);
@@ -628,7 +628,7 @@ int OperationsColormapped::getBpp()
   return 2*bpp;
 }
 
-Scroom::Utils::Registration OperationsColormapped::cache(const Tile::Ptr tile)
+Scroom::Utils::Stuff OperationsColormapped::cache(const Tile::Ptr tile)
 {
   const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_RGB24, tile->width);
   unsigned char* data = (unsigned char*)malloc(stride * tile->height);

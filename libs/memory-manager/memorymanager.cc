@@ -60,10 +60,10 @@ namespace
     typedef boost::shared_ptr<Registration> Ptr;
     typedef boost::weak_ptr<Registration> WeakPtr;
     
-    Scroom::Utils::RegistrationWeak r;
+    Scroom::Utils::StuffWeak r;
 
     ~Registration();
-    static Scroom::Utils::Registration create();
+    static Scroom::Utils::Stuff create();
   };
 
   ////////////////////////////////////////////////////////////////////////
@@ -71,8 +71,8 @@ namespace
   class MemoryManagerImpl
   {
   public:
-    typedef std::map<Scroom::Utils::RegistrationWeak,ManagedInfo> ManagedInfoMap;
-    typedef std::pair<Scroom::Utils::RegistrationWeak,ManagedInfo> ManagedInfoItem;
+    typedef std::map<Scroom::Utils::StuffWeak,ManagedInfo> ManagedInfoMap;
+    typedef std::pair<Scroom::Utils::StuffWeak,ManagedInfo> ManagedInfoItem;
     typedef boost::shared_ptr<MemoryManagerImpl> Ptr;
   
   private:
@@ -103,10 +103,10 @@ namespace
     MemoryManagerImpl();
     ~MemoryManagerImpl();
 
-    Scroom::Utils::Registration registerMMI(MemoryManagedInterface::Ptr object, size_t size, int fdcount);
-    void unregisterMMI(Scroom::Utils::RegistrationWeak r);
-    void loadNotification(Scroom::Utils::Registration r);
-    void unloadNotification(Scroom::Utils::Registration r);
+    Scroom::Utils::Stuff registerMMI(MemoryManagedInterface::Ptr object, size_t size, int fdcount);
+    void unregisterMMI(Scroom::Utils::StuffWeak r);
+    void loadNotification(Scroom::Utils::Stuff r);
+    void unloadNotification(Scroom::Utils::Stuff r);
 
     void garbageCollect();
     void unload(MemoryManagedInterface::Ptr i);
@@ -128,7 +128,7 @@ namespace
   ////////////////////////////////////////////////////////////////////////
   /// Registration
 
-  Scroom::Utils::Registration Registration::create()
+  Scroom::Utils::Stuff Registration::create()
   {
     Registration::Ptr r = Registration::Ptr(new Registration());
     r->r = r;
@@ -191,10 +191,10 @@ namespace
   {
   }
 
-  Scroom::Utils::Registration MemoryManagerImpl::registerMMI(MemoryManagedInterface::Ptr object, size_t size, int fdcount)
+  Scroom::Utils::Stuff MemoryManagerImpl::registerMMI(MemoryManagedInterface::Ptr object, size_t size, int fdcount)
   {
     boost::unique_lock<boost::mutex> lock(mut);
-    Scroom::Utils::Registration r = Registration::create();
+    Scroom::Utils::Stuff r = Registration::create();
     managedInfo[r] = ManagedInfo(object, size, fdcount);
     memTotal+=size;
     filesTotal+=fdcount;
@@ -205,7 +205,7 @@ namespace
     return r;
   }
 
-  void MemoryManagerImpl::unregisterMMI(Scroom::Utils::RegistrationWeak r)
+  void MemoryManagerImpl::unregisterMMI(Scroom::Utils::StuffWeak r)
   {
     boost::unique_lock<boost::mutex> lock(mut);
     ManagedInfoMap::iterator info = managedInfo.find(r);
@@ -229,7 +229,7 @@ namespace
     }
   }
 
-  void MemoryManagerImpl::loadNotification(Scroom::Utils::Registration r)
+  void MemoryManagerImpl::loadNotification(Scroom::Utils::Stuff r)
   {
     ManagedInfo& m = managedInfo[r];
     assert(m.size!=0 || m.fdcount!=0);
@@ -249,7 +249,7 @@ namespace
     checkForOutOfResources();
   }
 
-  void MemoryManagerImpl::unloadNotification(Scroom::Utils::Registration r)
+  void MemoryManagerImpl::unloadNotification(Scroom::Utils::Stuff r)
   {
     ManagedInfo& m = managedInfo[r];
     assert(m.size!=0 || m.fdcount!=0);
@@ -300,22 +300,22 @@ namespace
 
     {
       boost::unique_lock<boost::mutex> lock(mut);
-      std::map<unsigned long long, std::list<Scroom::Utils::RegistrationWeak> > sortedInterfaces;
+      std::map<unsigned long long, std::list<Scroom::Utils::StuffWeak> > sortedInterfaces;
 
       BOOST_FOREACH(ManagedInfoItem cur, managedInfo)
       {
         sortedInterfaces[cur.second.timestamp].push_back(cur.first);
       }
-      std::map<unsigned long long, std::list<Scroom::Utils::RegistrationWeak> >::iterator cur = sortedInterfaces.begin();
-      std::map<unsigned long long, std::list<Scroom::Utils::RegistrationWeak> >::iterator end = sortedInterfaces.end();
+      std::map<unsigned long long, std::list<Scroom::Utils::StuffWeak> >::iterator cur = sortedInterfaces.begin();
+      std::map<unsigned long long, std::list<Scroom::Utils::StuffWeak> >::iterator end = sortedInterfaces.end();
       unloaders = 0;
       unsigned long long filesExpected = filesCurrent;
       unsigned long long memExpected = memCurrent;
 
       for(;cur!=end && (filesExpected > filesLwm || memExpected > memLwm); ++cur)
       {
-        std::list<Scroom::Utils::RegistrationWeak>& list = cur->second;
-        BOOST_FOREACH(Scroom::Utils::RegistrationWeak r, list)
+        std::list<Scroom::Utils::StuffWeak>& list = cur->second;
+        BOOST_FOREACH(Scroom::Utils::StuffWeak r, list)
         {
           ManagedInfo& mi = managedInfo[r];
         
@@ -367,17 +367,17 @@ namespace
 
 namespace MemoryManager
 {
-  Scroom::Utils::Registration registerMMI(MemoryManagedInterface::Ptr object, size_t size, int fdcount)
+  Scroom::Utils::Stuff registerMMI(MemoryManagedInterface::Ptr object, size_t size, int fdcount)
   {
     return instance()->registerMMI(object, size, fdcount);
   }
 
-  void loadNotification(Scroom::Utils::Registration r)
+  void loadNotification(Scroom::Utils::Stuff r)
   {
     instance()->loadNotification(r);
   }
 
-  void unloadNotification(Scroom::Utils::Registration r)
+  void unloadNotification(Scroom::Utils::Stuff r)
   {
     instance()->unloadNotification(r);
   }

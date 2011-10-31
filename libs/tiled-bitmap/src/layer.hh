@@ -33,7 +33,7 @@ private:
   int width;
   int height;
   int bpp;
-  Scroom::Utils::Registrations registrations;
+  Scroom::Utils::StuffList registrations;
   int horTileCount;
   int verTileCount;
   TileInternalGrid tiles;

@@ -100,7 +100,7 @@ public:
    */
   virtual void draw(cairo_t* cr, const Tile::Ptr tile,
                     GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
-                    Scroom::Utils::Registration cache)=0;
+                    Scroom::Utils::Stuff cache)=0;
 
   /**
    * Draw the given state into the given viewArea
@@ -130,8 +130,8 @@ public:
    *
    * @param tile the Tile for which caching is requested
    */
-  virtual Scroom::Utils::Registration cache(const Tile::Ptr tile)
-  { UNUSED(tile); return Scroom::Utils::Registration(); }
+  virtual Scroom::Utils::Stuff cache(const Tile::Ptr tile)
+  { UNUSED(tile); return Scroom::Utils::Stuff(); }
 
   /**
    * Cache data for use during later draw() calls.
@@ -151,9 +151,9 @@ public:
    * @param zoom the requested zoom level
    * @param cache the output of cache(const Tile::Ptr)
    */
-  virtual Scroom::Utils::Registration cacheZoom(const Tile::Ptr tile, int zoom,
-                                                Scroom::Utils::Registration cache)
-  { UNUSED(tile); UNUSED(zoom); UNUSED(cache); return Scroom::Utils::Registration(); }
+  virtual Scroom::Utils::Stuff cacheZoom(const Tile::Ptr tile, int zoom,
+                                                Scroom::Utils::Stuff cache)
+  { UNUSED(tile); UNUSED(zoom); UNUSED(cache); return Scroom::Utils::Stuff(); }
   
   /**
    * Reduce the source tile by a factor of 8

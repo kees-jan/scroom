@@ -45,11 +45,11 @@ public:
   virtual void initializeCairo(cairo_t* cr);
   virtual void drawState(cairo_t* cr, TileState s, GdkRectangle viewArea);
 
-  virtual Scroom::Utils::Registration cacheZoom(const Tile::Ptr tile, int zoom,
-                                                Scroom::Utils::Registration cache);
+  virtual Scroom::Utils::Stuff cacheZoom(const Tile::Ptr tile, int zoom,
+                                                Scroom::Utils::Stuff cache);
   virtual void draw(cairo_t* cr, const Tile::Ptr tile,
                     GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
-                    Scroom::Utils::Registration cache);
+                    Scroom::Utils::Stuff cache);
 
 };
 
@@ -64,7 +64,7 @@ public:
   // LayerOperations
 
   virtual int getBpp();
-  virtual Scroom::Utils::Registration cache(const Tile::Ptr tile);
+  virtual Scroom::Utils::Stuff cache(const Tile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y);
 };
 
@@ -79,7 +79,7 @@ public:
   // LayerOperations
 
   virtual int getBpp();
-  virtual Scroom::Utils::Registration cache(const Tile::Ptr tile);
+  virtual Scroom::Utils::Stuff cache(const Tile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y);
 };
 
@@ -101,7 +101,7 @@ public:
   // LayerOperations
   
   virtual int getBpp();
-  virtual Scroom::Utils::Registration cache(const Tile::Ptr tile);
+  virtual Scroom::Utils::Stuff cache(const Tile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y);
 };
 
@@ -117,7 +117,7 @@ public:
   // LayerOperations
 
   virtual int getBpp();
-  virtual Scroom::Utils::Registration cache(const Tile::Ptr tile);
+  virtual Scroom::Utils::Stuff cache(const Tile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y);
 };
 

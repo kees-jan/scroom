@@ -125,7 +125,7 @@ gboolean invalidate_view(gpointer user_data)
   return false;
 }
 
-void TiledBitmapViewData::storeVolatileStuff(Scroom::Utils::Registration stuff)
+void TiledBitmapViewData::storeVolatileStuff(Scroom::Utils::Stuff stuff)
 {
   boost::unique_lock<boost::mutex> lock(mut);
   volatileStuff.push_back(stuff);

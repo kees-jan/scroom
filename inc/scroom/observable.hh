@@ -50,7 +50,7 @@ namespace Scroom
         boost::weak_ptr<Observable<T> > observable;
         boost::shared_ptr<T> o;      /**< Reference to the observer (for non-weak registrations) */
         boost::weak_ptr<T> observer; /**< Reference to the observer */
-        Registrations registrations; /**< Recursive registrations */
+        StuffList registrations; /**< Recursive registrations */
 
         typedef boost::shared_ptr<Registration> Ptr;
         
@@ -132,11 +132,11 @@ namespace Scroom
        *
        * @throw boost::bad_weak_ptr if the registration doesn't exist
        */
-      void addRecursiveRegistration(Observer observer, Registration registration);
+      void addRecursiveRegistration(Observer observer, Stuff registration);
 
     public:
-      Registration registerStrongObserver(Observer observer);
-      Registration registerObserver(ObserverWeak observer);
+      Stuff registerStrongObserver(Observer observer);
+      Stuff registerObserver(ObserverWeak observer);
 
     private:
       void unregisterObserver(ObserverWeak observer);
@@ -245,7 +245,7 @@ namespace Scroom
     }
 
     template<typename T>
-    Registration Observable<T>::registerStrongObserver(Observable<T>::Observer observer)
+    Stuff Observable<T>::registerStrongObserver(Observable<T>::Observer observer)
     {
       boost::mutex::scoped_lock lock(mut);
       typename Detail::Registration<T>::Ptr r = registrationMap[observer].lock();
@@ -261,7 +261,7 @@ namespace Scroom
     }
 
     template<typename T>
-    Registration Observable<T>::registerObserver(Observable<T>::ObserverWeak observer)
+    Stuff Observable<T>::registerObserver(Observable<T>::ObserverWeak observer)
     {
       boost::mutex::scoped_lock lock(mut);
       typename Detail::Registration<T>::Ptr r = registrationMap[observer].lock();
@@ -290,7 +290,7 @@ namespace Scroom
     }
 
     template<typename T>
-    void Observable<T>::addRecursiveRegistration(Observable<T>::Observer observer, Registration registration)
+    void Observable<T>::addRecursiveRegistration(Observable<T>::Observer observer, Stuff registration)
     {
       boost::mutex::scoped_lock lock(mut);
       
