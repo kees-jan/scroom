@@ -32,6 +32,7 @@ Description: Generic viewer for 2D data (meta)
 Package: scroom-snapshot
 Architecture: all
 Depends: scroom-0.3, ${misc:Depends}
+Conflicts: scroom
 Description: Generic viewer for 2D data (meta)
  Scroom is a generic viewer for viewing 2D data. Plugins can be added
  easily to support new file formats. Currently, there only is a plugin
