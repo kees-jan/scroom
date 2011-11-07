@@ -8,7 +8,8 @@ utils_tests_SOURCES = \
 	main.cc \
 	observable-tests.cc \
 	basic-assumptions.cc \
-	counter-tests.cc
+	counter-tests.cc \
+	bookkeeping-tests.cc
 
 # threadpool_tests_CPPFLAGS = -I $(top_srcdir)/compat/boost-futures/inc
 

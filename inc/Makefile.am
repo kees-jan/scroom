@@ -16,5 +16,9 @@ nobase_include_HEADERS = \
 	scroom/tiledbitmapinterface.hh \
 	scroom/unused.h \
 	scroom/viewinterface.hh \
-	scroom/async-deleter.hh
+	scroom/async-deleter.hh \
+	scroom/stuff.hh \
+	scroom/bookkeeping.hh \
+	scroom/impl/bookkeepingimpl.hh
+
 
