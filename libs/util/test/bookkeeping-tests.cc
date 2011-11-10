@@ -20,41 +20,89 @@
 
 #include <scroom/bookkeeping.hh>
 
+using namespace Scroom::Bookkeeping;
+
 //////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE(Bookkeeping_Tests)
 
-BOOST_AUTO_TEST_CASE(weak_pointer_equality)
+BOOST_AUTO_TEST_CASE(basic_usage)
 {
-//   {
-//     boost::weak_ptr<int> a;
-//     boost::weak_ptr<int> b;
-//     // Uninitialised weak pointers are equal
-//     BOOST_CHECK(!(a<b) && !(b<a));
-// 
-//     // Pointers to something that has been deleted are different from
-//     // uninitialized ones
-//     boost::shared_ptr<int> c = boost::shared_ptr<int>(new int());
-//     a=c;
-//     BOOST_CHECK((a<b) || (b<a));
-//     c.reset();
-//     BOOST_CHECK((a<b) || (b<a));
-// 
-//     // Pointers to something that has been deleted are still equal
-//     c = boost::shared_ptr<int>(new int());
-//     a=c;
-//     b=c;
-//     BOOST_CHECK(!(a<b) && !(b<a));
-//     c.reset();
-//     BOOST_CHECK(!(a<b) && !(b<a));
-//     BOOST_CHECK(!a.lock());  
-//     BOOST_CHECK(!b.lock());
-//     BOOST_CHECK_EQUAL(a.lock(), b.lock());
-// 
-//     // Locking something that has been deleted equals an uninitialized pointer (?)
-//     boost::shared_ptr<int> d;
-//     BOOST_CHECK_EQUAL(a.lock(), d);
-//   }
+  Map<int, int>::Ptr map = Map<int, int>::create();
+  BOOST_REQUIRE(map);
+
+  Token a = map->add(1,1);
+  Token b = map->add(2,2);
+
+  BOOST_CHECK(a);
+  BOOST_CHECK(b);
+  BOOST_CHECK_EQUAL(1, map->get(1));
+  BOOST_CHECK_EQUAL(2, map->get(2));
+  BOOST_CHECK_EQUAL(2, map->keys().size());
+  BOOST_CHECK_EQUAL(2, map->values().size());
+  BOOST_CHECK_THROW(map->get(3), std::invalid_argument);
+  BOOST_CHECK_THROW(map->set(3,3), std::invalid_argument);
+  BOOST_CHECK_THROW(map->add(2,4), std::invalid_argument);
+  BOOST_CHECK_EQUAL(2, map->get(2));
+  BOOST_FOREACH(int k, map->keys())
+  {
+    map->get(k); // should not throw an exception
+  }
+  map->set(2,5);
+  BOOST_CHECK_EQUAL(5, map->get(2));
+  BOOST_CHECK_EQUAL(2, map->keys().size());
+  BOOST_CHECK_EQUAL(2, map->values().size());
+  b.reset();
+  BOOST_CHECK_THROW(map->get(2), std::invalid_argument);
+  BOOST_CHECK_EQUAL(1, map->get(1));
+  BOOST_CHECK_EQUAL(1, map->keys().size());
+  BOOST_CHECK_EQUAL(1, map->values().size());
+  map.reset();
+  BOOST_CHECK(a);
+}
+
+BOOST_AUTO_TEST_CASE(weak_ptr)
+{
+  Map<WeakToken, int>::Ptr map = Map<WeakToken, int>::create();
+  BOOST_REQUIRE(map);
+
+  Token a = map->add(1);
+  BOOST_CHECK(a);
+  BOOST_CHECK_THROW(map->add(a,3), std::invalid_argument);
+  BOOST_CHECK_THROW(map->addMe(a,3), std::invalid_argument);
+  BOOST_CHECK_EQUAL(1, map->get(a));
+
+  Token b = Detail::Token::create();
+  BOOST_CHECK(b);
+  BOOST_CHECK_THROW(map->get(b), std::invalid_argument);
+  Token c = map->add(b, 3);
+  BOOST_CHECK_EQUAL(3, map->get(b));
+  BOOST_CHECK_THROW(map->get(c), std::invalid_argument);
+  c.reset();
+  BOOST_CHECK_THROW(map->get(b), std::invalid_argument);
+
+  map->addMe(b, 5);
+  BOOST_CHECK_EQUAL(5, map->get(b));
+  BOOST_CHECK_EQUAL(2, map->keys().size());
+  b.reset();
+  BOOST_CHECK_EQUAL(1, map->keys().size());
+}
+
+BOOST_AUTO_TEST_CASE(shared_ptr)
+{
+  Map<Token, int>::Ptr map = Map<Token, int>::create();
+  BOOST_REQUIRE(map);
+
+  Token a = map->add(1);
+  BOOST_CHECK(a);
+  BOOST_CHECK_THROW(map->add(a,3), std::invalid_argument);
+  BOOST_CHECK_THROW(map->addMe(a,3), std::invalid_argument);
+  BOOST_CHECK_EQUAL(1, map->get(a));
+  BOOST_CHECK_EQUAL(1, map->keys().size());
+  WeakToken aa = a;
+  a.reset();
+  BOOST_CHECK_EQUAL(1, map->keys().size());
+  BOOST_CHECK_EQUAL(aa.lock(), map->keys().front());
 }
 
 BOOST_AUTO_TEST_SUITE_END()

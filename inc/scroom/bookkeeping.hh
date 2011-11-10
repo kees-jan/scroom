@@ -20,9 +20,11 @@
 #define BOOKKEEPING_HH
 
 #include <map>
+#include <list>
 
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
+#include <boost/noncopyable.hpp>
 
 #include <scroom/utilities.hh>
 
@@ -36,9 +38,10 @@ namespace Scroom
     }
     
     typedef boost::shared_ptr<Detail::Token> Token;
+    typedef boost::weak_ptr<Detail::Token> WeakToken;
 
     template<typename K, typename V>
-    class MapBase : public virtual Scroom::Utils::Base
+    class MapBase : public virtual Scroom::Utils::Base, public boost::noncopyable
     {
     private:
       std::map<K,V> map;
@@ -49,28 +52,48 @@ namespace Scroom
       void set(const K& k, const V& v);
       const V& get(const K& k) const;
       V& get(const K& k);
-
-      // void addMe(const K& k, const V& v);
-      // Token add(const V& v);
+      std::list<K> keys() const;
+      std::list<V> values() const;
     };
 
     template<typename K, typename V>
-    class Map : public MapBase<K,V> {};
+    class Map : public MapBase<K,V>
+    {
+    public:
+      typedef boost::shared_ptr<Map<K, V> > Ptr;
+
+    public:
+      static Ptr create();
+    };
 
     template<typename V>
     class Map<Token, V> : public MapBase<Token,V>
     {
     public:
+      typedef boost::shared_ptr<Map<Token, V> > Ptr;
+
+    public:
+      static Ptr create();
+      
+    public:
       void addMe(const Token& k, const V& v);
       Token add(const V& v);
+      Token add(const Token& k, const V& v);
     };
     
     template<typename V>
-    class Map<boost::weak_ptr<Detail::Token>, V> : public MapBase<boost::weak_ptr<Detail::Token>,V>
+    class Map<WeakToken, V> : public MapBase<WeakToken,V>
     {
     public:
-      void addMe(const boost::weak_ptr<Detail::Token>& k, const V& v);
+      typedef boost::shared_ptr<Map<WeakToken, V> > Ptr;
+
+    public:
+      static Ptr create();
+
+    public:
+      void addMe(const WeakToken& k, const V& v);
       Token add(const V& v);
+      Token add(const WeakToken& k, const V& v);
     };
     
   }
