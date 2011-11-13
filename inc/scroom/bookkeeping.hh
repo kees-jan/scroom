@@ -38,16 +38,15 @@ namespace Scroom
 
     namespace Detail
     {
-      class Token;
+      class TokenImpl;
       class TokenAddition;
     }
 
-    class Token : public boost::shared_ptr<Detail::Token>
+    class Token : public boost::shared_ptr<Detail::TokenImpl>
     {
     public:
-      Token(boost::shared_ptr<Detail::Token> t);
-      Token(Detail::Token* t);
-      Token(boost::weak_ptr<Detail::Token> t);
+      Token(boost::shared_ptr<Detail::TokenImpl> t);
+      Token(boost::weak_ptr<Detail::TokenImpl> t);
       Token();
       Token(Stuff s);
       Token(const StuffList& l);
@@ -62,7 +61,7 @@ namespace Scroom
       Token& operator+=(const Stuff& rhs);
     };
     
-    typedef boost::weak_ptr<Detail::Token> WeakToken;
+    typedef boost::weak_ptr<Detail::TokenImpl> WeakToken;
 
     template<typename K, typename V>
     class MapBase : public virtual Scroom::Utils::Base, public boost::noncopyable

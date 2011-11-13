@@ -49,10 +49,10 @@ namespace Scroom
         { merge(rhs); return *this; }
       };
       
-      class Token
+      class TokenImpl
       {
       public:
-        typedef boost::shared_ptr<Token> Ptr;
+        typedef boost::shared_ptr<TokenImpl> Ptr;
 
       public:
         void add(Stuff s)
@@ -69,32 +69,32 @@ namespace Scroom
 
       public:
         static Scroom::Bookkeeping::Token create()
-        { return Scroom::Bookkeeping::Token(Ptr(new Token)); }
+        { return Scroom::Bookkeeping::Token(Ptr(new TokenImpl)); }
 
       protected:
-        Token() {}
+        TokenImpl() {}
 
       private:
         StuffList l;
       };
 
       template<typename K, typename V>
-      class MapToken : public Token
+      class MapTokenImpl : public TokenImpl
       {
       public:
-        typedef boost::shared_ptr<MapToken<K,V> > Ptr;
+        typedef boost::shared_ptr<MapTokenImpl<K,V> > Ptr;
         
       private:
         boost::weak_ptr<Scroom::Bookkeeping::MapBase<K,V> > map;
         K k;
 
       protected:
-        MapToken(boost::shared_ptr<Scroom::Bookkeeping::MapBase<K,V> > map, const K& k)
+        MapTokenImpl(boost::shared_ptr<Scroom::Bookkeeping::MapBase<K,V> > map, const K& k)
           : map(map), k(k)
         {}
         
       public:
-        ~MapToken()
+        ~MapTokenImpl()
         {
           boost::shared_ptr<Scroom::Bookkeeping::MapBase<K,V> > m = map.lock();
           if(m)
@@ -103,26 +103,22 @@ namespace Scroom
 
       public:
         static Scroom::Bookkeeping::Token create(boost::shared_ptr<Scroom::Bookkeeping::MapBase<K,V> > map, const K& k)
-        { return Scroom::Bookkeeping::Token(Token::Ptr(Ptr(new MapToken<K,V>(map, k)))); }
+        { return Scroom::Bookkeeping::Token(TokenImpl::Ptr(Ptr(new MapTokenImpl<K,V>(map, k)))); }
       };
     }
 
     ////////////////////////////////////////////////////////////////////////
 
-    inline Token::Token(boost::shared_ptr<Detail::Token> t)
-      : boost::shared_ptr<Detail::Token>(t)
+    inline Token::Token(boost::shared_ptr<Detail::TokenImpl> t)
+      : boost::shared_ptr<Detail::TokenImpl>(t)
     {}
 
-    inline Token::Token(Detail::Token* t)
-      : boost::shared_ptr<Detail::Token>(t)
-    {}
-
-    inline Token::Token(boost::weak_ptr<Detail::Token> t)
-      : boost::shared_ptr<Detail::Token>(t)
+    inline Token::Token(boost::weak_ptr<Detail::TokenImpl> t)
+      : boost::shared_ptr<Detail::TokenImpl>(t)
     {}
 
     inline Token::Token()
-      : boost::shared_ptr<Detail::Token>(Detail::Token::create())
+      : boost::shared_ptr<Detail::TokenImpl>(Detail::TokenImpl::create())
     {}
 
     inline Token::Token(Stuff s)
@@ -182,7 +178,7 @@ namespace Scroom
 
       map[k]=v;
 
-      return Detail::MapToken<K,V>::create(shared_from_this<MapBase<K,V> >(),k);
+      return Detail::MapTokenImpl<K,V>::create(shared_from_this<MapBase<K,V> >(),k);
     }
     
     template<typename K, typename V>
