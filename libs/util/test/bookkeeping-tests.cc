@@ -26,6 +26,22 @@ using namespace Scroom::Bookkeeping;
 
 BOOST_AUTO_TEST_SUITE(Bookkeeping_Tests)
 
+BOOST_AUTO_TEST_CASE(token_arithmatic)
+{
+  Token a;
+  Token b;
+  Token c = a+b;
+  WeakToken wa(a);
+  a.reset();
+  BOOST_CHECK(wa.lock());
+  WeakToken wb(b);
+  b.reset();
+  BOOST_CHECK(wb.lock());
+  c.reset();
+  BOOST_CHECK(!wa.lock());
+  BOOST_CHECK(!wb.lock());
+}
+
 BOOST_AUTO_TEST_CASE(basic_usage)
 {
   Map<int, int>::Ptr map = Map<int, int>::create();
@@ -44,10 +60,7 @@ BOOST_AUTO_TEST_CASE(basic_usage)
   BOOST_CHECK_THROW(map->set(3,3), std::invalid_argument);
   BOOST_CHECK_THROW(map->add(2,4), std::invalid_argument);
   BOOST_CHECK_EQUAL(2, map->get(2));
-  BOOST_FOREACH(int k, map->keys())
-  {
-    map->get(k); // should not throw an exception
-  }
+  BOOST_CHECK_EQUAL(1, map->get(1));
   map->set(2,5);
   BOOST_CHECK_EQUAL(5, map->get(2));
   BOOST_CHECK_EQUAL(2, map->keys().size());
@@ -72,7 +85,7 @@ BOOST_AUTO_TEST_CASE(weak_ptr)
   BOOST_CHECK_THROW(map->addMe(a,3), std::invalid_argument);
   BOOST_CHECK_EQUAL(1, map->get(a));
 
-  Token b = Detail::Token::create();
+  Token b;
   BOOST_CHECK(b);
   BOOST_CHECK_THROW(map->get(b), std::invalid_argument);
   Token c = map->add(b, 3);

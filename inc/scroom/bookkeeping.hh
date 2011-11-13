@@ -27,17 +27,41 @@
 #include <boost/noncopyable.hpp>
 
 #include <scroom/utilities.hh>
+#include <scroom/stuff.hh>
 
 namespace Scroom
 {
   namespace Bookkeeping
   {
+    using Scroom::Utils::Stuff;
+    using Scroom::Utils::StuffList;
+
     namespace Detail
     {
       class Token;
+      class TokenAddition;
     }
+
+    class Token : public boost::shared_ptr<Detail::Token>
+    {
+    public:
+      Token(boost::shared_ptr<Detail::Token> t);
+      Token(Detail::Token* t);
+      Token(boost::weak_ptr<Detail::Token> t);
+      Token();
+      Token(Stuff s);
+      Token(const StuffList& l);
+
+      void add(Stuff s);
+      void add(const StuffList& l);
+      void merge(Token& rhs);
+      void merge(StuffList& l);
+
+    public:
+      Detail::TokenAddition& operator+(const Stuff& rhs);
+      Token& operator+=(const Stuff& rhs);
+    };
     
-    typedef boost::shared_ptr<Detail::Token> Token;
     typedef boost::weak_ptr<Detail::Token> WeakToken;
 
     template<typename K, typename V>
