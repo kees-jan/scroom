@@ -105,6 +105,26 @@ namespace Scroom
         static Scroom::Bookkeeping::Token create(boost::shared_ptr<Scroom::Bookkeeping::MapBase<K,V> > map, const K& k)
         { return Scroom::Bookkeeping::Token(TokenImpl::Ptr(Ptr(new MapTokenImpl<K,V>(map, k)))); }
       };
+
+      template<typename V>
+      class ValueType
+      {
+      public:
+        typedef boost::shared_ptr<ValueType<V> > Ptr;
+        typedef boost::weak_ptr<ValueType<V> > WeakPtr;
+
+      public:
+        V value;
+
+      protected:
+        ValueType(V value)
+          : value(value)
+        {}
+        
+      public:
+        static Ptr create(V value)
+        { return Ptr(new ValueType<V>(value)); }
+      };
     }
 
     ////////////////////////////////////////////////////////////////////////
@@ -149,42 +169,41 @@ namespace Scroom
     ////////////////////////////////////////////////////////////////////////
 
     template<typename K, typename V>
-    inline const V& MapBase<K,V>::get(const K& k) const
+    inline V MapBase<K,V>::get(const K& k)
     {
-      typename std::map<K,V>::iterator i = map.find(k);
+      boost::mutex::scoped_lock lock(mut);
+      I i = map.find(k);
 
       if(map.end()!=i)
-        return i->second;
-      else
-        throw std::invalid_argument("Invalid key");
-    }
+      {
+        typename Detail::ValueType<V>::Ptr vptr = i->second.lock();
+        if(vptr)
+          return vptr->value;
+      }
 
-    template<typename K, typename V>
-    inline V& MapBase<K,V>::get(const K& k)
-    {
-      typename std::map<K,V>::iterator i = map.find(k);
-
-      if(map.end()!=i)
-        return i->second;
-      else
-        throw std::invalid_argument("Invalid key");
+      throw std::invalid_argument("Invalid key");
     }
 
     template<typename K, typename V>
     inline Token MapBase<K,V>::add(const K& k, const V& v)
     {
+      boost::mutex::scoped_lock lock(mut);
       if(map.end()!=map.find(k))
         throw std::invalid_argument("Key already exists");
 
-      map[k]=v;
+      typename Detail::ValueType<V>::Ptr vptr = Detail::ValueType<V>::create(v);
+      map[k]=vptr;
 
-      return Detail::MapTokenImpl<K,V>::create(shared_from_this<MapBase<K,V> >(),k);
+      Token t = Detail::MapTokenImpl<K,V>::create(shared_from_this<MapBase<K,V> >(),k);
+      t.add(vptr);
+      return t;
     }
     
     template<typename K, typename V>
     inline void MapBase<K,V>::remove(const K& k)
     {
-      typename std::map<K,V>::iterator i = map.find(k);
+      boost::mutex::scoped_lock lock(mut);
+      I i = map.find(k);
 
       if(map.end()!=i)
         map.erase(i);
@@ -193,14 +212,26 @@ namespace Scroom
     template<typename K, typename V>
     inline void MapBase<K,V>::set(const K& k, const V& v)
     {
-      get(k)=v;
+      boost::mutex::scoped_lock lock(mut);
+      I i = map.find(k);
+
+      if(map.end()!=i)
+      {
+        typename Detail::ValueType<V>::Ptr vptr = i->second.lock();
+        if(vptr)
+        {
+          vptr->value = v;
+          return;
+        }
+      }
+
+      throw std::invalid_argument("Invalid key");
     }
 
     template<typename K, typename V>
     inline std::list<K> MapBase<K,V>::keys() const
     {
-      typedef typename std::map<K,V>::value_type value_type;
-      
+      boost::mutex::scoped_lock lock(mut);
       std::list<K> result;
       BOOST_FOREACH(value_type el, map)
       {
@@ -212,12 +243,13 @@ namespace Scroom
     template<typename K, typename V>
     inline std::list<V> MapBase<K,V>::values() const
     {
-      typedef typename std::map<K,V>::value_type value_type;
-      
+      boost::mutex::scoped_lock lock(mut);
       std::list<V> result;
       BOOST_FOREACH(value_type el, map)
       {
-        result.push_back(el.second);
+        typename Detail::ValueType<V>::Ptr vptr = el.second.lock();
+        if(vptr)
+          result.push_back(vptr->value);
       }
       return result;
     }

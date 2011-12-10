@@ -40,6 +40,9 @@ namespace Scroom
     {
       class TokenImpl;
       class TokenAddition;
+
+      template<typename V>
+      class ValueType;
     }
 
     class Token : public boost::shared_ptr<Detail::TokenImpl>
@@ -67,14 +70,17 @@ namespace Scroom
     class MapBase : public virtual Scroom::Utils::Base, public boost::noncopyable
     {
     private:
-      std::map<K,V> map;
+      typedef typename std::map<K,boost::weak_ptr<Detail::ValueType<V> > >::iterator I;
+      typedef typename std::map<K,boost::weak_ptr<Detail::ValueType<V> > >::value_type value_type;
+      
+      typename std::map<K,boost::weak_ptr<Detail::ValueType<V> > > map;
+      mutable boost::mutex mut;
 
     public:
       Token add(const K& k, const V& v);
       void remove(const K& k);
       void set(const K& k, const V& v);
-      const V& get(const K& k) const;
-      V& get(const K& k);
+      V get(const K& k);
       std::list<K> keys() const;
       std::list<V> values() const;
     };
