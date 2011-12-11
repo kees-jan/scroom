@@ -43,6 +43,9 @@ namespace Scroom
 
       template<typename V>
       class ValueType;
+
+      template<typename V>
+      class LValue;
     }
 
     class Token : public boost::shared_ptr<Detail::TokenImpl>
@@ -78,7 +81,9 @@ namespace Scroom
 
     public:
       Token add(const K& k, const V& v);
+      Token reAdd(const K& k, const V& v);
       void remove(const K& k);
+      void remove(const K& k, WeakToken t);
       void set(const K& k, const V& v);
       V get(const K& k);
       std::list<K> keys() const;

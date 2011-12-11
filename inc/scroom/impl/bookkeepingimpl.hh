@@ -86,6 +86,7 @@ namespace Scroom
         
       private:
         boost::weak_ptr<Scroom::Bookkeeping::MapBase<K,V> > map;
+        WeakToken t;
         K k;
 
       protected:
@@ -98,12 +99,16 @@ namespace Scroom
         {
           boost::shared_ptr<Scroom::Bookkeeping::MapBase<K,V> > m = map.lock();
           if(m)
-            m->remove(k);
+            m->remove(k, t);
         }
 
       public:
         static Scroom::Bookkeeping::Token create(boost::shared_ptr<Scroom::Bookkeeping::MapBase<K,V> > map, const K& k)
-        { return Scroom::Bookkeeping::Token(TokenImpl::Ptr(Ptr(new MapTokenImpl<K,V>(map, k)))); }
+        {
+          Ptr t = Ptr(new MapTokenImpl<K,V>(map, k));
+          t->t = t;
+          return Scroom::Bookkeeping::Token(TokenImpl::Ptr(t));
+        }
       };
 
       template<typename V>
@@ -115,6 +120,7 @@ namespace Scroom
 
       public:
         V value;
+        WeakToken token;
 
       protected:
         ValueType(V value)
@@ -196,9 +202,63 @@ namespace Scroom
 
       Token t = Detail::MapTokenImpl<K,V>::create(shared_from_this<MapBase<K,V> >(),k);
       t.add(vptr);
+      vptr->token = t;
       return t;
     }
     
+    template<typename K, typename V>
+    inline Token MapBase<K,V>::reAdd(const K& k, const V& v)
+    {
+      boost::mutex::scoped_lock lock(mut);
+      I i = map.find(k);
+      if(map.end()!=i)
+      {
+        typename Detail::ValueType<V>::Ptr vptr = i->second.lock();
+        if(vptr)
+        {
+          Token t = vptr->token.lock();
+          if(t)
+          {
+            vptr->value = v;
+            return t;
+          }
+        }
+      }
+
+      typename Detail::ValueType<V>::Ptr vptr = Detail::ValueType<V>::create(v);
+      map[k]=vptr;
+
+      Token t = Detail::MapTokenImpl<K,V>::create(shared_from_this<MapBase<K,V> >(),k);
+      t.add(vptr);
+      vptr->token = t;
+      return t;
+    }
+    
+    template<typename K, typename V>
+    inline void MapBase<K,V>::remove(const K& k, WeakToken wt)
+    {
+      boost::mutex::scoped_lock lock(mut);
+      I i = map.find(k);
+
+      if(map.end()!=i)
+      {
+        typename Detail::ValueType<V>::Ptr vptr = i->second.lock();
+        if(vptr)
+        {
+          Token t = wt.lock();
+          Token t_orig = vptr->token.lock();
+          if(t == t_orig)
+          {
+            map.erase(i);
+          }
+        }
+        else
+        {
+          map.erase(i);
+        }
+      }
+    }
+
     template<typename K, typename V>
     inline void MapBase<K,V>::remove(const K& k)
     {

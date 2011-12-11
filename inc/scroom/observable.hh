@@ -27,7 +27,7 @@
 #include <boost/weak_ptr.hpp>
 
 #include <scroom/utilities.hh>
-#include <scroom/registration.hh>
+#include <scroom/bookkeeping.hh>
 
 namespace Scroom
 {
@@ -88,17 +88,13 @@ namespace Scroom
       typedef boost::shared_ptr<T> Observer;
 
     private:
-      typedef boost::weak_ptr<Detail::Registration<T> > RegistrationWeak;
       typedef boost::weak_ptr<T> ObserverWeak;
-      typedef std::map<ObserverWeak, RegistrationWeak> RegistrationMap;
+      typedef Detail::Registration<T> Registration;
       
     private:
       /** Map all registrations to their registration data */
-      RegistrationMap registrationMap;
+      typename Scroom::Bookkeeping::Map<ObserverWeak, typename Registration::Ptr >::Ptr registrationMap;
 
-      /** Mutex protecting the two maps */
-      boost::mutex mut;
-  
     protected:
       /**
        * Retrieve a list of current observers.
@@ -183,11 +179,6 @@ namespace Scroom
     template<typename T>
     Detail::Registration<T>::~Registration()
     {
-      boost::shared_ptr<Observable<T> > observable = this->observable.lock();
-      if(observable)
-      {
-        observable->unregisterObserver(observer);
-      }
     }
     
     ////////////////////////////////////////////////////////////////////////
@@ -195,50 +186,23 @@ namespace Scroom
     template<typename T>
     Observable<T>::Observable()
     {
+      registrationMap = Scroom::Bookkeeping::Map<ObserverWeak, typename Registration::Ptr >::create();
     }
 
     template<typename T>
     Observable<T>::~Observable()
     {
-      // Destroy strong references to any observers
-      //
-      // Normally, I'd be concerned that destroying references to
-      // observers would cause them to try to unregister themselves,
-      // resulting in deadlock. But because we are in our destructor,
-      // noone has a reference to us any more, so no unregistration
-      // attempts will be made.
-      boost::mutex::scoped_lock lock(mut);
-      typename RegistrationMap::iterator cur = registrationMap.begin();
-      typename RegistrationMap::iterator end = registrationMap.end();
-
-      for(;cur!=end; ++cur)
-      {
-        typename Detail::Registration<T>::Ptr registration = cur->second.lock();
-        if(registration)
-        {
-          registration->o.reset();
-        }
-      }
     }
 
     template<typename T>
     std::list<typename Observable<T>::Observer> Observable<T>::getObservers()
     {
-      boost::mutex::scoped_lock lock(mut);
       std::list<typename Observable<T>::Observer> result;
-
-      typename RegistrationMap::iterator cur = registrationMap.begin();
-      typename RegistrationMap::iterator end = registrationMap.end();
-
-      for(;cur!=end; ++cur)
+      BOOST_FOREACH(typename Registration::Ptr registration, registrationMap->values())
       {
-        typename Detail::Registration<T>::Ptr registration = cur->second.lock();
-        if(registration)
-        {
-          Observer o = registration->observer.lock();
-          if(o)
-            result.push_back(o);
-        }
+        Observer o = registration->observer.lock();
+        if(o)
+          result.push_back(o);
       }
 
       return result;
@@ -247,40 +211,27 @@ namespace Scroom
     template<typename T>
     Stuff Observable<T>::registerStrongObserver(Observable<T>::Observer observer)
     {
-      boost::mutex::scoped_lock lock(mut);
-      typename Detail::Registration<T>::Ptr r = registrationMap[observer].lock();
-      if(!r)
-      {
-        r = Detail::Registration<T>::create(shared_from_this<Observable<T> >(), observer);
-        registrationMap[observer] = r;
-        lock.unlock();
-        observerAdded(observer);
-      }
-      
-      return r;
+      typename Detail::Registration<T>::Ptr r = Detail::Registration<T>::create(shared_from_this<Observable<T> >(), observer);
+      Scroom::Bookkeeping::Token t = registrationMap->reAdd(observer, r);
+      observerAdded(observer);
+
+      return t;
     }
 
     template<typename T>
     Stuff Observable<T>::registerObserver(Observable<T>::ObserverWeak observer)
     {
-      boost::mutex::scoped_lock lock(mut);
-      typename Detail::Registration<T>::Ptr r = registrationMap[observer].lock();
-      if(!r)
-      {
-        r = Detail::Registration<T>::create(shared_from_this<Observable<T> >(), observer);
-        registrationMap[observer] = r;
-        lock.unlock();
-        observerAdded(typename Observable<T>::Observer(observer));
-      }
+      typename Detail::Registration<T>::Ptr r = Detail::Registration<T>::create(shared_from_this<Observable<T> >(), observer);
+      Scroom::Bookkeeping::Token t = registrationMap->reAdd(observer, r);
+      observerAdded(typename Observable<T>::Observer(observer));
         
-      return r;
+      return t;
     }
 
     template<typename T>
     void Observable<T>::unregisterObserver(Observable<T>::ObserverWeak observer)
     {
-      boost::mutex::scoped_lock lock(mut);
-      registrationMap.erase(observer);
+      registrationMap->remove(observer);
     }
 
     template<typename T>
@@ -292,9 +243,7 @@ namespace Scroom
     template<typename T>
     void Observable<T>::addRecursiveRegistration(Observable<T>::Observer observer, Stuff registration)
     {
-      boost::mutex::scoped_lock lock(mut);
-      
-      typename Detail::Registration<T>::Ptr(registrationMap[observer])->registrations.push_back(registration);
+      registrationMap->get(observer)->registrations.push_back(registration);
     }
   }
 }
