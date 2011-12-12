@@ -25,7 +25,7 @@
 
 #include <scroom/observable.hh>
 #include <scroom/threadpool.hh>
-#include <scroom/registration.hh>
+#include <scroom/stuff.hh>
 #include <scroom/tiledbitmapinterface.hh>
 
 #include "tileinternalobserverinterfaces.hh"

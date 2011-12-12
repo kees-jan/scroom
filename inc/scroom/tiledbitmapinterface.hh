@@ -31,7 +31,7 @@
 #include <scroom/viewinterface.hh>
 #include <scroom/presentationinterface.hh>
 #include <scroom/tile.hh>
-#include <scroom/registration.hh>
+#include <scroom/stuff.hh>
 #include <scroom/unused.h>
 
 /**

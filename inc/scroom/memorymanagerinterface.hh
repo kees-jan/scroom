@@ -27,7 +27,7 @@
 #include <boost/weak_ptr.hpp>
 
 #include <scroom/global.hh>
-#include <scroom/registration.hh>
+#include <scroom/stuff.hh>
 
 /**
  * Block of memory that is backed-up in a file
