@@ -297,7 +297,7 @@ void TiffPresentation::done()
 // Colormappable
 ////////////////////////////////////////////////////////////////////////
 
-void TiffPresentation::observerAdded(Viewable::Ptr observer)
+void TiffPresentation::observerAdded(Viewable::Ptr observer, Scroom::Bookkeeping::Token)
 {
   for(std::list<ViewInterface*>::iterator cur=views.begin();
       cur!=views.end(); ++cur)

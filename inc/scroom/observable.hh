@@ -50,7 +50,6 @@ namespace Scroom
         boost::weak_ptr<Observable<T> > observable;
         boost::shared_ptr<T> o;      /**< Reference to the observer (for non-weak registrations) */
         boost::weak_ptr<T> observer; /**< Reference to the observer */
-        StuffList registrations; /**< Recursive registrations */
 
         typedef boost::shared_ptr<Registration> Ptr;
         
@@ -116,26 +115,11 @@ namespace Scroom
        * Override this function if you want to be notified of new
        * observers registering.
        */
-      virtual void observerAdded(Observer observer);
-
-      /**
-       * Add the given @c registration to the Detail::Registration of
-       * the given @c observer, such that they have the same lifetime.
-       *
-       * You'll typically use this if you want to register an Observer
-       * with a bunch of child observables. Registering with child
-       * observables will result in you being given a bunch of
-       * Registration objects. This is where you store them :-)
-       *
-       * @pre @c observer's Registration must exist.
-       *
-       * @throw boost::bad_weak_ptr if the registration doesn't exist
-       */
-      void addRecursiveRegistration(Observer observer, Stuff registration);
+      virtual void observerAdded(Observer observer, Scroom::Bookkeeping::Token token);
 
     public:
-      Stuff registerStrongObserver(Observer observer);
-      Stuff registerObserver(ObserverWeak observer);
+      Scroom::Bookkeeping::Token registerStrongObserver(Observer observer);
+      Scroom::Bookkeeping::Token registerObserver(ObserverWeak observer);
 
     private:
       void unregisterObserver(ObserverWeak observer);
@@ -241,7 +225,7 @@ namespace Scroom
     }
 
     template<typename T>
-    Stuff Observable<T>::registerStrongObserver(Observable<T>::Observer observer)
+    Scroom::Bookkeeping::Token Observable<T>::registerStrongObserver(Observable<T>::Observer observer)
     {
       Scroom::Bookkeeping::Token t = registrationMap->reReserve(observer);
       typename Detail::Registration<T>::Ptr r = registrationMap->get(observer);
@@ -255,13 +239,13 @@ namespace Scroom
         registrationMap->set(observer, r);
       }
 
-      observerAdded(observer);
+      observerAdded(observer, t);
 
       return t;
     }
 
     template<typename T>
-    Stuff Observable<T>::registerObserver(Observable<T>::ObserverWeak observer)
+    Scroom::Bookkeeping::Token Observable<T>::registerObserver(Observable<T>::ObserverWeak observer)
     {
       Scroom::Bookkeeping::Token t = registrationMap->reReserve(observer);
       typename Detail::Registration<T>::Ptr r = registrationMap->get(observer);
@@ -275,7 +259,7 @@ namespace Scroom
         registrationMap->set(observer,r);
       }
 
-      observerAdded(typename Observable<T>::Observer(observer));
+      observerAdded(typename Observable<T>::Observer(observer), t);
         
       return t;
     }
@@ -287,15 +271,9 @@ namespace Scroom
     }
 
     template<typename T>
-    void Observable<T>::observerAdded(Observable<T>::Observer)
+    void Observable<T>::observerAdded(Observable<T>::Observer, Scroom::Bookkeeping::Token)
     {
       // Do nothing
-    }
-
-    template<typename T>
-    void Observable<T>::addRecursiveRegistration(Observable<T>::Observer observer, Stuff registration)
-    {
-      registrationMap->get(observer)->registrations.push_back(registration);
     }
   }
 }

@@ -111,12 +111,12 @@ public:
    * TileInitialisationObserver::tileCreated() event immediately, on your
    * thread. Be careful with your mutexes :-)
    */
-  virtual void observerAdded(TileInitialisationObserver::Ptr observer);
+  virtual void observerAdded(TileInitialisationObserver::Ptr observer, Scroom::Bookkeeping::Token token);
 
   /**
    * Keep track of new TileLoadingObserver registrations.
    */
-  virtual void observerAdded(TileLoadingObserver::Ptr observer);
+  virtual void observerAdded(TileLoadingObserver::Ptr observer, Scroom::Bookkeeping::Token token);
 
   // To choose between overloaded functions, the compiler needs some extra convincing
   virtual Scroom::Utils::Stuff registerStrongObserver(TileInitialisationObserver::Ptr observer) { return Scroom::Utils::Observable<TileInitialisationObserver>::registerStrongObserver(observer); }

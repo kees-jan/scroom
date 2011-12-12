@@ -80,7 +80,7 @@ public:
   ////////////////////////////////////////////////////////////////////////
 
 public:
-  virtual void observerAdded(Viewable::Ptr observer);
+  virtual void observerAdded(Viewable::Ptr observer, Scroom::Bookkeeping::Token token);
   void setColormap(Colormap::Ptr colormap);
   Colormap::Ptr getOriginalColormap();
   int getNumberOfColors();
