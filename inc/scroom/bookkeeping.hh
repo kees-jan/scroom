@@ -80,10 +80,11 @@ namespace Scroom
       mutable boost::mutex mut;
 
     public:
-      Token add(const K& k, const V& v);
-      Token reAdd(const K& k, const V& v);
+      Token reserve(const K& k);
+      Token reReserve(const K& k);
       void remove(const K& k);
       void remove(const K& k, WeakToken t);
+      Detail::LValue<V> at(const K& k);
       void set(const K& k, const V& v);
       V get(const K& k);
       std::list<K> keys() const;
@@ -100,35 +101,35 @@ namespace Scroom
       static Ptr create();
     };
 
-    template<typename V>
-    class Map<Token, V> : public MapBase<Token,V>
-    {
-    public:
-      typedef boost::shared_ptr<Map<Token, V> > Ptr;
-
-    public:
-      static Ptr create();
-      
-    public:
-      void addMe(const Token& k, const V& v);
-      Token add(const V& v);
-      Token add(const Token& k, const V& v);
-    };
-    
-    template<typename V>
-    class Map<WeakToken, V> : public MapBase<WeakToken,V>
-    {
-    public:
-      typedef boost::shared_ptr<Map<WeakToken, V> > Ptr;
-
-    public:
-      static Ptr create();
-
-    public:
-      void addMe(const WeakToken& k, const V& v);
-      Token add(const V& v);
-      Token add(const WeakToken& k, const V& v);
-    };
+//    template<typename V>
+//    class Map<Token, V> : public MapBase<Token,V>
+//    {
+//    public:
+//      typedef boost::shared_ptr<Map<Token, V> > Ptr;
+//
+//    public:
+//      static Ptr create();
+//      
+//    public:
+//      void addMe(const Token& k, const V& v);
+//      Token add(const V& v);
+//      Token add(const Token& k, const V& v);
+//    };
+//    
+//    template<typename V>
+//    class Map<WeakToken, V> : public MapBase<WeakToken,V>
+//    {
+//    public:
+//      typedef boost::shared_ptr<Map<WeakToken, V> > Ptr;
+//
+//    public:
+//      static Ptr create();
+//
+//    public:
+//      void addMe(const WeakToken& k, const V& v);
+//      Token add(const V& v);
+//      Token add(const WeakToken& k, const V& v);
+//    };
     
   }
 }

@@ -131,6 +131,27 @@ namespace Scroom
         static Ptr create(V value)
         { return Ptr(new ValueType<V>(value)); }
       };
+
+      template<typename V>
+      class LValue
+      {
+      public:
+        typedef typename ValueType<V>::Ptr VTPtr;
+        
+      private:
+        VTPtr pv;
+
+      public:
+        LValue(VTPtr pv)
+          :pv(pv)
+        {}
+
+        LValue& operator=(const V& v)
+        { pv->value = v; return *this; }
+
+        operator V()
+        { return pv->value; }
+      };
     }
 
     ////////////////////////////////////////////////////////////////////////
@@ -175,65 +196,51 @@ namespace Scroom
     ////////////////////////////////////////////////////////////////////////
 
     template<typename K, typename V>
-    inline V MapBase<K,V>::get(const K& k)
-    {
-      boost::mutex::scoped_lock lock(mut);
-      I i = map.find(k);
-
-      if(map.end()!=i)
-      {
-        typename Detail::ValueType<V>::Ptr vptr = i->second.lock();
-        if(vptr)
-          return vptr->value;
-      }
-
-      throw std::invalid_argument("Invalid key");
-    }
-
-    template<typename K, typename V>
-    inline Token MapBase<K,V>::add(const K& k, const V& v)
+    inline Token MapBase<K,V>::reserve(const K& k)
     {
       boost::mutex::scoped_lock lock(mut);
       if(map.end()!=map.find(k))
         throw std::invalid_argument("Key already exists");
 
-      typename Detail::ValueType<V>::Ptr vptr = Detail::ValueType<V>::create(v);
-      map[k]=vptr;
+      typename Detail::ValueType<V>::Ptr pv = Detail::ValueType<V>::create(V());
+      map[k]=pv;
 
       Token t = Detail::MapTokenImpl<K,V>::create(shared_from_this<MapBase<K,V> >(),k);
-      t.add(vptr);
-      vptr->token = t;
+      t.add(pv);
+      pv->token = t;
       return t;
     }
     
     template<typename K, typename V>
-    inline Token MapBase<K,V>::reAdd(const K& k, const V& v)
+    inline Token MapBase<K,V>::reReserve(const K& k)
     {
       boost::mutex::scoped_lock lock(mut);
       I i = map.find(k);
-      if(map.end()!=i)
+
+      if(map.end()==i)
       {
-        typename Detail::ValueType<V>::Ptr vptr = i->second.lock();
-        if(vptr)
-        {
-          Token t = vptr->token.lock();
-          if(t)
-          {
-            vptr->value = v;
-            return t;
-          }
-        }
+        map[k]=typename Detail::ValueType<V>::WeakPtr();
+        i = map.find(k);
+      }
+      
+      typename Detail::ValueType<V>::Ptr pv = i->second.lock();
+      if(!pv)
+      {
+        pv = Detail::ValueType<V>::create(V());
+        i->second = pv;
       }
 
-      typename Detail::ValueType<V>::Ptr vptr = Detail::ValueType<V>::create(v);
-      map[k]=vptr;
+      Token t = pv->token.lock();
+      if(!t)
+      {
+        t = Detail::MapTokenImpl<K,V>::create(shared_from_this<MapBase<K,V> >(),k);
+        t.add(pv);
+        pv->token = t;
+      }
 
-      Token t = Detail::MapTokenImpl<K,V>::create(shared_from_this<MapBase<K,V> >(),k);
-      t.add(vptr);
-      vptr->token = t;
       return t;
     }
-    
+
     template<typename K, typename V>
     inline void MapBase<K,V>::remove(const K& k, WeakToken wt)
     {
@@ -242,11 +249,11 @@ namespace Scroom
 
       if(map.end()!=i)
       {
-        typename Detail::ValueType<V>::Ptr vptr = i->second.lock();
-        if(vptr)
+        typename Detail::ValueType<V>::Ptr pv = i->second.lock();
+        if(pv)
         {
           Token t = wt.lock();
-          Token t_orig = vptr->token.lock();
+          Token t_orig = pv->token.lock();
           if(t == t_orig)
           {
             map.erase(i);
@@ -270,6 +277,22 @@ namespace Scroom
     }
 
     template<typename K, typename V>
+    inline Detail::LValue<V> MapBase<K,V>::at(const K& k)
+    {
+      boost::mutex::scoped_lock lock(mut);
+      I i = map.find(k);
+
+      if(map.end()!=i)
+      {
+        typename Detail::ValueType<V>::Ptr pv = i->second.lock();
+        if(pv)
+          return Detail::LValue<V>(pv);
+      }
+
+      throw std::invalid_argument("Invalid key");
+    }
+
+    template<typename K, typename V>
     inline void MapBase<K,V>::set(const K& k, const V& v)
     {
       boost::mutex::scoped_lock lock(mut);
@@ -277,17 +300,35 @@ namespace Scroom
 
       if(map.end()!=i)
       {
-        typename Detail::ValueType<V>::Ptr vptr = i->second.lock();
-        if(vptr)
+        typename Detail::ValueType<V>::Ptr pv = i->second.lock();
+        if(pv)
         {
-          vptr->value = v;
+          pv->value=v;
           return;
         }
       }
 
       throw std::invalid_argument("Invalid key");
     }
+    
+    template<typename K, typename V>
+    inline V MapBase<K,V>::get(const K& k)
+    {
+      boost::mutex::scoped_lock lock(mut);
+      I i = map.find(k);
 
+      if(map.end()!=i)
+      {
+        typename Detail::ValueType<V>::Ptr pv = i->second.lock();
+        if(pv)
+        {
+          return pv->value;
+        }
+      }
+
+      throw std::invalid_argument("Invalid key");
+    }
+    
     template<typename K, typename V>
     inline std::list<K> MapBase<K,V>::keys() const
     {
@@ -307,58 +348,58 @@ namespace Scroom
       std::list<V> result;
       BOOST_FOREACH(value_type el, map)
       {
-        typename Detail::ValueType<V>::Ptr vptr = el.second.lock();
-        if(vptr)
-          result.push_back(vptr->value);
+        typename Detail::ValueType<V>::Ptr pv = el.second.lock();
+        if(pv)
+          result.push_back(pv->value);
       }
       return result;
     }
     
     ////////////////////////////////////////////////////////////////////////
 
-    template<typename V>
-    inline void Map<Token, V>::addMe(const Token& k, const V& v)
-    {
-      k->add(add(k,v));
-    }
-    
-    template<typename V>
-    inline void Map<WeakToken, V>::addMe(const WeakToken& k, const V& v)
-    {
-      Token K = k.lock();
-      if(K)
-        K->add(add(k,v));
-      else
-        throw std::invalid_argument("boost::weak_ptr can't be locked");
-    }
-    
-    template<typename V>
-    inline Token Map<Token, V>::add(const V& v)
-    {
-      Token k;
-      k->add(add(k,v));
-      return k;
-    }
-    
-    template<typename V>
-    inline Token Map<WeakToken, V>::add(const V& v)
-    {
-      Token k;
-      k->add(add(k,v));
-      return k;
-    }
-
-    template<typename V>
-    inline Token Map<WeakToken, V>::add(const WeakToken& k, const V& v)
-    {
-      return MapBase<WeakToken, V>::add(k,v);
-    }
-
-    template<typename V>
-    inline Token Map<Token, V>::add(const Token& k, const V& v)
-    {
-      return MapBase<Token, V>::add(k,v);
-    }
+//    template<typename V>
+//    inline void Map<Token, V>::addMe(const Token& k, const V& v)
+//    {
+//      k->add(add(k,v));
+//    }
+//    
+//    template<typename V>
+//    inline void Map<WeakToken, V>::addMe(const WeakToken& k, const V& v)
+//    {
+//      Token K = k.lock();
+//      if(K)
+//        K->add(add(k,v));
+//      else
+//        throw std::invalid_argument("boost::weak_ptr can't be locked");
+//    }
+//    
+//    template<typename V>
+//    inline Token Map<Token, V>::add(const V& v)
+//    {
+//      Token k;
+//      k->add(add(k,v));
+//      return k;
+//    }
+//    
+//    template<typename V>
+//    inline Token Map<WeakToken, V>::add(const V& v)
+//    {
+//      Token k;
+//      k->add(add(k,v));
+//      return k;
+//    }
+//
+//    template<typename V>
+//    inline Token Map<WeakToken, V>::add(const WeakToken& k, const V& v)
+//    {
+//      return MapBase<WeakToken, V>::add(k,v);
+//    }
+//
+//    template<typename V>
+//    inline Token Map<Token, V>::add(const Token& k, const V& v)
+//    {
+//      return MapBase<Token, V>::add(k,v);
+//    }
 
     template<typename K, typename V>
     inline typename Map<K, V>::Ptr Map<K, V>::create()
@@ -366,18 +407,18 @@ namespace Scroom
       return Ptr(new Map<K, V>());
     }
 
-    template<typename V>
-    inline typename Map<Token, V>::Ptr Map<Token, V>::create()
-    {
-      return Ptr(new Map<Token, V>());
-    }
-
-    template<typename V>
-    inline typename Map<WeakToken, V>::Ptr Map<WeakToken, V>::create()
-    {
-      return Ptr(new Map<WeakToken, V>());
-    }
-    
+//     template<typename V>
+//     inline typename Map<Token, V>::Ptr Map<Token, V>::create()
+//     {
+//       return Ptr(new Map<Token, V>());
+//     }
+// 
+//     template<typename V>
+//     inline typename Map<WeakToken, V>::Ptr Map<WeakToken, V>::create()
+//     {
+//       return Ptr(new Map<WeakToken, V>());
+//     }
+   
   }
 }
 
