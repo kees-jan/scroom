@@ -20,32 +20,37 @@
 #endif
 
 #include <iostream>
-#include <fstream>
-#include <cassert>
 
 #define BOOST_TEST_ALTERNATIVE_INIT_API
 #include <boost/test/unit_test.hpp>
 #include <boost/test/results_reporter.hpp>
 
-#ifdef XML_TEST_OUTPUT
-std::ofstream out;
-#endif
-
+#include <scroom/unused.h>
 
 bool init_unit_test()
 {
-#ifdef XML_TEST_OUTPUT
-  out.open("test_results.xml");
-  assert(out.is_open());
-  boost::unit_test::results_reporter::set_format(boost::unit_test::XML);
-  boost::unit_test::results_reporter::set_level(boost::unit_test::DETAILED_REPORT);
-  boost::unit_test::results_reporter::set_stream(out);
-#endif
-
   return true;
 }
 
 int main( int argc, char* argv[] )
 {
+#ifdef XML_TEST_OUTPUT
+  std::cerr << "You have requested XML output. Your command-line arguments will be ignored" << std::endl;
+  UNUSED(argc);
+  UNUSED(argv);
+
+  // Apparently, order is important here. Weird but true...
+  const char * alternative[] = {
+    "--log_format=XML",
+    "--log_level=all",
+    "--log_sink=test_results.xml",
+    "--output_format=XML",
+    "--report_level=no",
+  };
+  int count = sizeof(alternative)/sizeof(alternative[0]);
+  
+  return ::boost::unit_test::unit_test_main( &init_unit_test, count, const_cast<char**>(alternative) );
+#else
   return ::boost::unit_test::unit_test_main( &init_unit_test, argc, argv );
+#endif
 }
