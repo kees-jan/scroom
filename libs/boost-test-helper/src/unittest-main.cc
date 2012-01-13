@@ -35,8 +35,9 @@ bool init_unit_test()
 int main( int argc, char* argv[] )
 {
 #ifdef XML_TEST_OUTPUT
-  std::cerr << "You have requested XML output. Your command-line arguments will be ignored" << std::endl;
-  UNUSED(argc);
+  if(argc>1)
+    std::cerr << "You have requested XML output. Your command-line arguments will be ignored" << std::endl;
+  
   UNUSED(argv);
 
   // Apparently, order is important here. Weird but true...
