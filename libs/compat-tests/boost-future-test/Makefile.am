@@ -17,3 +17,7 @@ TESTS = futures-test
 
 endif !NEW_BOOST_FUTURES
 endif BOOST_UNITTESTS
+
+EXTRA_DIST = \
+	README.txt
+

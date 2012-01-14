@@ -273,6 +273,7 @@ AC_CONFIG_FILES([Makefile
                  libs/boost-test-helper/test/Makefile
                  libs/compat-tests/Makefile
                  libs/compat-tests/boost-future-test/Makefile
+                 libs/sanity-tests/Makefile
                  libs/util/Makefile
                  libs/util/src/Makefile
                  libs/util/test/Makefile

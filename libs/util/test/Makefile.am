@@ -7,7 +7,6 @@ check_PROGRAMS = utils-tests
 utils_tests_SOURCES = \
 	main.cc \
 	observable-tests.cc \
-	basic-assumptions.cc \
 	counter-tests.cc \
 	bookkeeping-tests.cc
 
