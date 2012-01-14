@@ -20,13 +20,19 @@
 #endif
 
 #include <boost/test/unit_test.hpp>
+#include <boost/date_time/posix_time/posix_time.hpp>
+#include <boost/thread.hpp>
 
 #include <scroom/semaphore.hh>
 
-#include "function-additor.hh"
+#include "scroom/function-additor.hh"
 #include "helpers.hh"
 
+using namespace boost::posix_time;
 using namespace Scroom;
+
+static const millisec short_timeout(250);
+static const millisec long_timeout(2000);
 
 //////////////////////////////////////////////////////////////
 
@@ -76,6 +82,49 @@ BOOST_AUTO_TEST_CASE(additor_adds)
   (clear(&s1) + clear(&s2))();
   BOOST_REQUIRE(s1.try_P());
   BOOST_REQUIRE(s2.try_P());
+}
+
+BOOST_AUTO_TEST_CASE(order_is_preserved)
+{
+  Semaphore s1(0);
+  Semaphore s2(0);
+  BOOST_CHECK(!s1.try_P());
+  BOOST_CHECK(!s2.try_P());
+  boost::thread t(pass(&s1) + clear(&s2));
+  BOOST_CHECK(!s2.P(short_timeout));
+  s1.V();
+  BOOST_CHECK(s2.P(long_timeout));
+  BOOST_CHECK(t.timed_join(long_timeout));
+}
+
+BOOST_AUTO_TEST_CASE(left_association)
+{
+  Scroom::Detail::ThreadPool::FunctionAdditor a;
+  Semaphore s1(0);
+  Semaphore s2(0);
+  a += pass(&s1);
+  BOOST_CHECK_EQUAL(&a, &(a+clear(&s2)));
+  
+  boost::thread t(a);
+  BOOST_CHECK(!s2.P(short_timeout));
+  s1.V();
+  BOOST_CHECK(s2.P(long_timeout));
+  BOOST_CHECK(t.timed_join(long_timeout));
+}
+
+BOOST_AUTO_TEST_CASE(right_association)
+{
+  Scroom::Detail::ThreadPool::FunctionAdditor a;
+  Semaphore s1(0);
+  Semaphore s2(0);
+  a += clear(&s2);
+
+  BOOST_CHECK_EQUAL(&a, &(pass(&s1)+a));
+  boost::thread t(a);
+  BOOST_CHECK(!s2.P(short_timeout));
+  s1.V();
+  BOOST_CHECK(s2.P(long_timeout));
+  BOOST_CHECK(t.timed_join(long_timeout));
 }
 
 BOOST_AUTO_TEST_SUITE_END()

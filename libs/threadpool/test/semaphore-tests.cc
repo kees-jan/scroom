@@ -25,7 +25,7 @@
 #include <boost/date_time/posix_time/posix_time.hpp>
 
 #include "helpers.hh"
-#include "function-additor.hh"
+#include "scroom/function-additor.hh"
 
 using namespace Scroom;
 using namespace boost::posix_time;

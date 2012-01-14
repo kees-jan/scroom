@@ -6,16 +6,14 @@ check_PROGRAMS = preconditions threadpool-tests
 
 preconditions_SOURCES = \
 	main.cc \
-	function-additor.cc function-additor.hh \
 	helpers.cc helpers.hh \
 	semaphore-tests.cc \
-	function-additor-tests.cc \
 	boost-smart-pointers.cc
 
 threadpool_tests_SOURCES = \
 	main.cc \
-	function-additor.cc function-additor.hh \
 	helpers.cc helpers.hh \
+	function-additor-tests.cc \
 	threadpool-tests.cc \
 	threadpool-destruction-tests.cc \
 	threadpool-queue-tests.cc \

@@ -31,7 +31,7 @@
 
 #include <scroom/semaphore.hh>
 
-#include "function-additor.hh"
+#include "scroom/function-additor.hh"
 #include "helpers.hh"
 
 #include "queue.hh"

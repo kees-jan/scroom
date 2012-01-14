@@ -2,6 +2,7 @@ AM_CPPFLAGS = -I $(top_srcdir)/inc @BOOST_FUTURES_CPPFLAGS@
 
 lib_LTLIBRARIES = libsthreadpool.la
 libsthreadpool_la_SOURCES = \
+	function-additor.cc \
 	threadpoolimpl.cc \
 	threadpool.cc \
 	queue.cc queue.hh \

@@ -32,7 +32,7 @@
 #include <scroom/semaphore.hh>
 
 #include "helpers.hh"
-#include "function-additor.hh"
+#include "scroom/function-additor.hh"
 
 using namespace boost::posix_time;
 using namespace Scroom;

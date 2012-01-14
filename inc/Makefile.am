@@ -11,6 +11,7 @@ nobase_include_HEADERS = \
 	scroom/semaphore.hh \
 	scroom/threadpool.hh \
 	scroom/impl/threadpoolimpl.hh \
+	scroom/function-additor.hh \
 	scroom/tile.hh \
 	scroom/tiledbitmapinterface.hh \
 	scroom/unused.h \
