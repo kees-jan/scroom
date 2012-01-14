@@ -17,4 +17,4 @@
  */
 
 #define BOOST_TEST_MODULE Scroom utilities tests
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>

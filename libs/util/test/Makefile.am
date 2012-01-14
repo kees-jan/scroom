@@ -13,7 +13,9 @@ utils_tests_SOURCES = \
 
 # threadpool_tests_CPPFLAGS = -I $(top_srcdir)/compat/boost-futures/inc
 
-utils_tests_LDADD = @BOOSTTHREADLIB@ @UTILS_LIBS@ ../src/libsutil.la
+utils_tests_LDADD = @BOOSTTHREADLIB@ @UTILS_LIBS@  \
+	../src/libsutil.la \
+	../../boost-test-helper/src/libsboosttesthelper.la
 
 TESTS = utils-tests
 

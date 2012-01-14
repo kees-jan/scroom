@@ -21,12 +21,13 @@ threadpool_tests_SOURCES = \
 	threadpool-queue-tests.cc \
 	threadpool-queueimpl-tests.cc
 
-# async-deleter-tests.cc
+preconditions_LDADD = @BOOSTTHREADLIB@ \
+	../src/libsthreadpool.la \
+	../../boost-test-helper/src/libsboosttesthelper.la
 
-# threadpool_tests_CPPFLAGS = -I $(top_srcdir)/compat/boost-futures/inc
-
-preconditions_LDADD = @BOOSTTHREADLIB@ ../src/libsthreadpool.la
-threadpool_tests_LDADD = @BOOSTTHREADLIB@ ../src/libsthreadpool.la
+threadpool_tests_LDADD = @BOOSTTHREADLIB@ \
+	../src/libsthreadpool.la \
+	../../boost-test-helper/src/libsboosttesthelper.la
 
 TESTS = preconditions threadpool-tests
 
