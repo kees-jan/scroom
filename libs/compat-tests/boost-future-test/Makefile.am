@@ -10,7 +10,8 @@ futures_test_SOURCES = \
 
 futures_test_CPPFLAGS = @BOOST_FUTURES_CPPFLAGS@
 
-futures_test_LDADD = @BOOSTTHREADLIB@ 
+futures_test_LDADD = @BOOSTTHREADLIB@ \
+	../../boost-test-helper/src/libsboosttesthelper.la
 
 TESTS = futures-test
 

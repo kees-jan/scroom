@@ -1,1 +1,1 @@
-SUBDIRS=boost-test-helper util threadpool memory-manager tiled-bitmap
+SUBDIRS=boost-test-helper compat-tests util threadpool memory-manager tiled-bitmap
