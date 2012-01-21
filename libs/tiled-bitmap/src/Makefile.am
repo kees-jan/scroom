@@ -14,5 +14,5 @@ libstiledbitmap_la_SOURCES = \
 libstiledbitmap_la_LIBADD = \
 	@TILEDBITMAP_LIBS@ \
 	../../threadpool/src/libsthreadpool.la \
-	../../memory-manager/libsmemman.la \
+	../../memory-manager/src/libsmemman.la \
 	@BOOSTTHREADLIB@
