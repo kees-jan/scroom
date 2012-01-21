@@ -282,6 +282,7 @@ AC_CONFIG_FILES([Makefile
                  libs/threadpool/test/Makefile
                  libs/memory-manager/Makefile
                  libs/memory-manager/src/Makefile
+                 libs/memory-manager/test/Makefile
                  libs/tiled-bitmap/Makefile
                  libs/tiled-bitmap/src/Makefile
                  libs/tiled-bitmap/test/Makefile
