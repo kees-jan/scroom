@@ -29,11 +29,25 @@
 using namespace Scroom::Detail::ThreadPool;
 
 ////////////////////////////////////////////////////////////////////////
+/// ThreadPool::PrivateData
+////////////////////////////////////////////////////////////////////////
+
+ThreadPool::PrivateData::PrivateData(bool completeAllJobsBeforeDestruction)
+  : jobcount(0), alive(true), completeAllJobsBeforeDestruction(completeAllJobsBeforeDestruction)
+{
+}
+
+ThreadPool::PrivateData::Ptr ThreadPool::PrivateData::create(bool completeAllJobsBeforeDestruction)
+{
+  return Ptr(new PrivateData(completeAllJobsBeforeDestruction));
+}
+
+////////////////////////////////////////////////////////////////////////
 /// ThreadPool
 ////////////////////////////////////////////////////////////////////////
 
 ThreadPool::ThreadPool(bool completeAllJobsBeforeDestruction)
-  : jobcount(0), alive(true), completeAllJobsBeforeDestruction(completeAllJobsBeforeDestruction)
+  : priv(PrivateData::create(completeAllJobsBeforeDestruction))
 {
   int count = boost::thread::hardware_concurrency();
 #ifndef MULTITHREADING
@@ -43,7 +57,7 @@ ThreadPool::ThreadPool(bool completeAllJobsBeforeDestruction)
 }
 
 ThreadPool::ThreadPool(int count, bool completeAllJobsBeforeDestruction)
-  : jobcount(0), alive(true), completeAllJobsBeforeDestruction(completeAllJobsBeforeDestruction)
+  : priv(PrivateData::create(completeAllJobsBeforeDestruction))
 {
 #ifndef MULTITHREADING
   count=1;
@@ -87,9 +101,9 @@ ThreadPool::~ThreadPool()
   // See also https://svn.boost.org/trac/boost/ticket/2330
 
   {
-    boost::mutex::scoped_lock lock(mut);
-    alive = false;
-    cond.notify_all();
+    boost::mutex::scoped_lock lock(priv->mut);
+    priv->alive = false;
+    priv->cond.notify_all();
   }
 
   while(!threads.empty())
@@ -103,26 +117,26 @@ ThreadPool::~ThreadPool()
 
 void ThreadPool::work()
 {
-  boost::mutex::scoped_lock lock(mut);
-  while(alive)
+  boost::mutex::scoped_lock lock(priv->mut);
+  while(priv->alive)
   {
-    if(jobcount>0)
+    if(priv->jobcount>0)
     {
-      jobcount--;
+      priv->jobcount--;
       do_one(lock);
     }
     else
     {
-      cond.wait(lock);
+      priv->cond.wait(lock);
     }
   }
 
-  bool busy = completeAllJobsBeforeDestruction;
+  bool busy = priv->completeAllJobsBeforeDestruction;
   while(busy)
   {
-    if(jobcount>0)
+    if(priv->jobcount>0)
     {
-      jobcount--;
+      priv->jobcount--;
       do_one(lock);
     }
     else
@@ -134,14 +148,14 @@ void ThreadPool::work()
 
 void ThreadPool::do_one(boost::mutex::scoped_lock& lock)
 {
-  while(!jobs.empty() && jobs.begin()->second.empty())
-    jobs.erase(jobs.begin());
+  while(!priv->jobs.empty() && priv->jobs.begin()->second.empty())
+    priv->jobs.erase(priv->jobs.begin());
 
   // At this point, either the jobs map is empty, or jobs.begin()->second contains tasks.
-  if(!jobs.empty() && !jobs.begin()->second.empty())
+  if(!priv->jobs.empty() && !priv->jobs.begin()->second.empty())
   {
-    ThreadPool::Job job = jobs.begin()->second.front();
-    jobs.begin()->second.pop();
+    ThreadPool::Job job = priv->jobs.begin()->second.front();
+    priv->jobs.begin()->second.pop();
 
     QueueLock l(job.queue);
     if(l.queueExists())
@@ -179,10 +193,10 @@ void ThreadPool::schedule(boost::function<void ()> const& fn, ThreadPool::Queue:
 
 void ThreadPool::schedule(boost::function<void ()> const& fn, int priority, ThreadPool::WeakQueue::Ptr queue)
 {
-  boost::mutex::scoped_lock lock(mut);
-  jobs[priority].push(Job(fn, queue));
-  jobcount++;
-  cond.notify_one();
+  boost::mutex::scoped_lock lock(priv->mut);
+  priv->jobs[priority].push(Job(fn, queue));
+  priv->jobcount++;
+  priv->cond.notify_one();
 }
 
 void ThreadPool::schedule(boost::function<void ()> const& fn, ThreadPool::WeakQueue::Ptr queue)
