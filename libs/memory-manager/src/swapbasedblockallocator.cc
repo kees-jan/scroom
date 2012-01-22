@@ -18,14 +18,31 @@
 
 #include <scroom/blockallocator.hh>
 
+#include <scroom/utilities.hh>
+
 namespace Scroom
 {
   namespace MemoryBlocks
   {
     namespace Detail
     {
-      class SwapBasedBlockAllocator : public BlockInterface
+      namespace
       {
+        template<typename T>
+        class DontDelete
+        {
+        public:
+          void operator()(T*) {}
+        };
+      }
+      
+      class SwapBasedBlockAllocator : public BlockInterface, public virtual Scroom::Utils::Base
+      {
+      private:
+        size_t count;
+        size_t size;
+        uint8_t* data;
+        
       private:
         SwapBasedBlockAllocator(size_t count, size_t size);
         
@@ -33,16 +50,29 @@ namespace Scroom
         virtual RawPageData::Ptr get(size_t id);
       
       public:
+        ~SwapBasedBlockAllocator();
         static BlockInterface::Ptr create(size_t count, size_t size);
         virtual PageList getPages();
       };
 
       SwapBasedBlockAllocator::SwapBasedBlockAllocator(size_t count, size_t size)
-      {}
+        : count(count), size(size), data((uint8_t*)malloc(count*size*sizeof(uint8_t)))
+      {
+        if(data==NULL)
+          throw std::bad_alloc();
+      }
+
+      SwapBasedBlockAllocator::~SwapBasedBlockAllocator()
+      {
+        free(data);
+      }
 
       RawPageData::Ptr SwapBasedBlockAllocator::get(size_t id)
       {
-        return RawPageData::Ptr();
+        if(id>=count)
+          throw std::out_of_range("");
+
+        return RawPageData::Ptr(data+id*size, DontDelete<uint8_t>());
       }
 
       BlockInterface::Ptr SwapBasedBlockAllocator::create(size_t count, size_t size)
@@ -52,7 +82,13 @@ namespace Scroom
 
       PageList SwapBasedBlockAllocator::getPages()
       {
-        return PageList();
+        BlockInterface::Ptr me = shared_from_this<BlockInterface>();
+        
+        PageList result;
+        for(size_t i=0; i<count; i++)
+          result.push_back(Page(me, i));
+              
+        return result;
       }
       
       ////////////////////////////////////////////////////////////////////////

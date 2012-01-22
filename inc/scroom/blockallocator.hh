@@ -45,6 +45,8 @@ namespace Scroom
       size_t id;
 
     public:
+      Page(boost::shared_ptr<BlockInterface> bi, size_t id);
+      
       RawPageData::Ptr get();
     };
 
@@ -81,6 +83,10 @@ namespace Scroom
     ////////////////////////////////////////////////////////////////////////
     // implementation
 
+    inline Page::Page(BlockInterface::Ptr bi, size_t id)
+      : bi(bi), id(id)
+    {}
+    
     inline RawPageData::Ptr Page::get()
     { return bi->get(id); }
   }
