@@ -19,6 +19,8 @@
 #  include <config.h>
 #endif
 
+// #include <boost/date_time/posix_time/posix_time.hpp>
+
 #include <stdio.h>
 
 #include <scroom/threadpool.hh>
@@ -27,6 +29,104 @@
 #include "queue.hh"
 
 using namespace Scroom::Detail::ThreadPool;
+
+////////////////////////////////////////////////////////////////////////
+/// ThreadList / ThreadWaiter
+////////////////////////////////////////////////////////////////////////
+
+namespace
+{
+  class ThreadList
+  {
+  public:
+    typedef boost::shared_ptr<ThreadList> Ptr;
+
+  private:
+    boost::mutex mut;
+    std::list<ThreadPool::ThreadPtr> threads;
+
+  public:
+    static Ptr instance();
+    void wait();
+    void add(ThreadPool::ThreadPtr t);
+  };
+
+  class ThreadWaiter
+  {
+  private:
+    ThreadList::Ptr threadList;
+  public:
+    ThreadWaiter();
+    ~ThreadWaiter();
+  };
+
+  ThreadWaiter waiter;
+
+  ////////////////////////////////////////////////////////////////////////
+
+  ThreadList::Ptr ThreadList::instance()
+  {
+    static Ptr threadList = Ptr(new ThreadList());
+    return threadList;
+  }
+
+  void ThreadList::wait()
+  {
+    const boost::posix_time::millisec short_timeout(1);
+    const boost::posix_time::millisec timeout(250);
+    int count=0;
+
+    {
+      boost::mutex::scoped_lock lock(mut);
+
+      std::list<ThreadPool::ThreadPtr>::iterator cur = threads.begin();
+      while(cur != threads.end())
+      {
+        if((*cur)->timed_join(short_timeout))
+          cur=threads.erase(cur);
+        else
+          cur++;
+      }
+
+      count=threads.size();
+    }
+
+    while(count>0)
+    {
+      boost::mutex::scoped_lock lock(mut);
+      printf("\nWaiting for %d threads to terminate", count);
+
+      std::list<ThreadPool::ThreadPtr>::iterator cur = threads.begin();
+      while(cur != threads.end())
+      {
+        if((*cur)->timed_join(timeout))
+          cur=threads.erase(cur);
+        else
+          cur++;
+
+        printf(".");
+      }
+
+      count=threads.size();
+    }
+  }
+
+  void ThreadList::add(ThreadPool::ThreadPtr t)
+  {
+    boost::mutex::scoped_lock lock(mut);
+    threads.push_back(t);
+  }
+
+  ThreadWaiter::ThreadWaiter()
+    : threadList(ThreadList::instance())
+  {}
+
+  ThreadWaiter::~ThreadWaiter()
+  {
+    threadList->wait();
+  }
+}
+
 
 ////////////////////////////////////////////////////////////////////////
 /// ThreadPool::PrivateData
@@ -79,6 +179,7 @@ ThreadPool::ThreadPtr ThreadPool::add()
 {
   ThreadPool::ThreadPtr t = ThreadPool::ThreadPtr(new boost::thread(boost::bind(&ThreadPool::work, priv)));
   threads.push_back(t);
+  ThreadList::instance()->add(t);
   return t;
 }
 
