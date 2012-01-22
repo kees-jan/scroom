@@ -210,7 +210,7 @@ private:
    *
    * Those last two tasks will be performed by do_one()
    */
-  void work();
+  static void work(PrivateData::Ptr priv);
 
   /**
    * Execute one job.
@@ -218,7 +218,7 @@ private:
    * This gets called from work(). It fetches and executes the
    * highest-prio job from ThreadPool::jobs
    */
-  void do_one(boost::mutex::scoped_lock& lock);
+  static void do_one(boost::mutex::scoped_lock& lock, PrivateData::Ptr priv);
   
   static Queue::Ptr defaultQueue();
   static const int defaultPriority;

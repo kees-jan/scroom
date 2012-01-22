@@ -77,7 +77,7 @@ ThreadPool::Ptr ThreadPool::create(int count, bool completeAllJobsBeforeDestruct
 
 ThreadPool::ThreadPtr ThreadPool::add()
 {
-  ThreadPool::ThreadPtr t = ThreadPool::ThreadPtr(new boost::thread(boost::bind(&ThreadPool::work, this)));
+  ThreadPool::ThreadPtr t = ThreadPool::ThreadPtr(new boost::thread(boost::bind(&ThreadPool::work, priv)));
   threads.push_back(t);
   return t;
 }
@@ -115,7 +115,7 @@ ThreadPool::~ThreadPool()
   }
 }
 
-void ThreadPool::work()
+void ThreadPool::work(ThreadPool::PrivateData::Ptr priv)
 {
   boost::mutex::scoped_lock lock(priv->mut);
   while(priv->alive)
@@ -123,7 +123,7 @@ void ThreadPool::work()
     if(priv->jobcount>0)
     {
       priv->jobcount--;
-      do_one(lock);
+      do_one(lock, priv);
     }
     else
     {
@@ -137,7 +137,7 @@ void ThreadPool::work()
     if(priv->jobcount>0)
     {
       priv->jobcount--;
-      do_one(lock);
+      do_one(lock, priv);
     }
     else
     {
@@ -146,7 +146,7 @@ void ThreadPool::work()
   }    
 }
 
-void ThreadPool::do_one(boost::mutex::scoped_lock& lock)
+void ThreadPool::do_one(boost::mutex::scoped_lock& lock, ThreadPool::PrivateData::Ptr priv)
 {
   while(!priv->jobs.empty() && priv->jobs.begin()->second.empty())
     priv->jobs.erase(priv->jobs.begin());
