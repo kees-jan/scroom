@@ -18,6 +18,10 @@
 
 #include <scroom/memoryblobs.hh>
 
+#include <boost/foreach.hpp>
+
+using namespace Scroom::MemoryBlocks;
+
 namespace Scroom
 {
   namespace MemoryBlobs
@@ -34,16 +38,39 @@ namespace Scroom
 
     ////////////////////////////////////////////////////////////////////////
 
+    PageProvider::PageProvider(size_t blockCount, size_t blockSize)
+      : blockCount(blockCount), blockSize(blockSize), blockFactoryInterface(getBlockFactoryInterface())
+    {}
+    
     PageProvider::Ptr PageProvider::create(size_t blockCount, size_t blockSize)
     {
-      return Ptr();
+      return Ptr(new PageProvider(blockCount, blockSize));
     }
 
     Page::Ptr PageProvider::getFreePage()
     {
-      return Page::Ptr();
+      boost::mutex::scoped_lock lock(mut);
+      if(freePages.empty())
+      {
+        Scroom::MemoryBlocks::PageList pages = blockFactoryInterface->create(blockCount, blockSize)->getPages();
+        BOOST_FOREACH(Scroom::MemoryBlocks::Page& p, pages)
+        {
+          freePages.push_back(&p);
+        }
+        allPages.splice(allPages.end(), pages);
+      }
+
+      Page::Ptr result(freePages.front(), MarkPageFree(shared_from_this<PageProvider>()));
+      freePages.pop_front();
+      
+      return result;
     }
 
+    void PageProvider::markPageFree(Scroom::MemoryBlocks::Page* p)
+    {
+      boost::mutex::scoped_lock lock(mut);
+      freePages.push_front(p);
+    }
     
     ////////////////////////////////////////////////////////////////////////
 

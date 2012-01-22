@@ -23,10 +23,12 @@
 
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
+#include <boost/thread.hpp>
 
 #include <stdint.h>
 
 #include <scroom/blockallocator.hh>
+#include <scroom/utilities.hh>
 
 namespace Scroom
 {
@@ -45,13 +47,39 @@ namespace Scroom
     }
     typedef std::list<Page::Ptr> PageList;
 
-    class PageProvider
+    class PageProvider : virtual public Scroom::Utils::Base
     {
     public:
       typedef boost::shared_ptr<PageProvider> Ptr;
 
+    private:
+      size_t blockCount;
+      size_t blockSize;
+      Scroom::MemoryBlocks::BlockFactoryInterface::Ptr blockFactoryInterface;
+      Scroom::MemoryBlocks::PageList allPages;
+      std::list<Scroom::MemoryBlocks::Page*> freePages;
+      boost::mutex mut;
+
+    private:
+      class MarkPageFree
+      {
+      private:
+        PageProvider::Ptr provider;
+
+      public:
+        MarkPageFree(PageProvider::Ptr provider);
+        void operator()(Scroom::MemoryBlocks::Page* page);
+      };
+
+      friend class MarkPageFree;
+
+    private:
+      PageProvider(size_t blockCount, size_t blockSize);
+
+      void markPageFree(Scroom::MemoryBlocks::Page* page);
+      
     public:
-      static Ptr create(size_t count, size_t blockSize);
+      static Ptr create(size_t blockCount, size_t blockSize);
       Page::Ptr getFreePage();
     };
 
@@ -75,6 +103,16 @@ namespace Scroom
       RawPageData::Ptr get();
       RawPageData::ConstPtr getConst() const;
     };
+
+    ////////////////////////////////////////////////////////////////////////
+    // Implementation
+
+    inline PageProvider::MarkPageFree::MarkPageFree(PageProvider::Ptr provider)
+      : provider(provider)
+    {}
+
+    inline void PageProvider::MarkPageFree::operator()(Scroom::MemoryBlocks::Page* p)
+    { provider->markPageFree(p); }
   }
 }
 
