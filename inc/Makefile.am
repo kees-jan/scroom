@@ -3,6 +3,7 @@ nobase_include_HEADERS = \
 	scroom/global.hh \
 	scroom/memorymanagerinterface.hh \
 	scroom/blockallocator.hh \
+	scroom/memoryblobs.hh \
 	scroom/utilities.hh \
 	scroom/observable.hh \
 	scroom/plugininformationinterface.hh \

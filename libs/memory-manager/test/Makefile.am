@@ -6,7 +6,8 @@ check_PROGRAMS = memory-manager-tests
 
 memory_manager_tests_SOURCES = \
 	main.cc \
-	swap-block-allocator-tests.cc
+	swap-block-allocator-tests.cc \
+	blob-tests.cc
 
 memory_manager_tests_LDADD = \
 	../src/libsmemman.la \

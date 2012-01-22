@@ -38,13 +38,11 @@ BOOST_AUTO_TEST_CASE(allocator_provides_a_number_of_independent_blocks_of_a_give
   
   BlockFactoryInterface::Ptr bfi = getBlockFactoryInterface();
   BlockInterface::Ptr bi = bfi->create(count, size);
-  BlockInterface::WeakPtr weakBi = bi;
 
   PageList pages = bi->getPages();
   BOOST_CHECK_EQUAL(count, pages.size());
 
   bi.reset();
-  BOOST_CHECK(weakBi.lock());
 
   uint8_t data = 0;
   BOOST_FOREACH(Page& p, pages)
@@ -61,6 +59,7 @@ BOOST_AUTO_TEST_CASE(allocator_provides_a_number_of_independent_blocks_of_a_give
   BOOST_FOREACH(Page& p, pages)
   {
     RawPageData::Ptr raw = p.get();
+    BOOST_REQUIRE(raw.get());
 
     memset(expected, data, size);
     BOOST_CHECK(!memcmp(expected, raw.get(), size));
