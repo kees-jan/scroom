@@ -45,23 +45,6 @@ const millisec long_timeout(2000);
 
 BOOST_AUTO_TEST_SUITE(ThreadPool_destruction_Tests)
 
-BOOST_AUTO_TEST_CASE(threads_terminate_on_destruction)
-{
-  ThreadPool::Ptr pool = ThreadPool::create(0);
-  ThreadPool::ThreadPtr t = pool->add();
-  BOOST_CHECK(!t->timed_join(short_timeout));
-  pool.reset();
-
-  bool success = boost::thread::id() == t->get_id();
-  BOOST_CHECK(success);
-  if(!success)
-  {
-    t->interrupt();
-    t->timed_join(long_timeout);
-    BOOST_REQUIRE(boost::thread::id() == t->get_id());
-  }
-}
-
 BOOST_AUTO_TEST_CASE(destroy_threadpool_with_nonempty_queue)
 {
   ThreadPool::Ptr pool = ThreadPool::create(1);
@@ -69,10 +52,9 @@ BOOST_AUTO_TEST_CASE(destroy_threadpool_with_nonempty_queue)
   Semaphore a(0);
   Semaphore b(0);
   Semaphore c(0);
-  Semaphore d(0);
 
   pool->schedule(clear(&a)+pass(&b));
-  pool->schedule(pass(&d)+clear(&c));
+  pool->schedule(clear(&c));
 
   // Give the thread some time to start the job
   a.P();
@@ -81,13 +63,13 @@ BOOST_AUTO_TEST_CASE(destroy_threadpool_with_nonempty_queue)
   pool.reset();
   guard.V();
 
-  // Thread t blocks until the ThreadPool is destroyed, which is after
-  // the pass(&b) completes
-  BOOST_CHECK(!t.timed_join(short_timeout));
-  b.V();
+  // Thread t destroys the threadpool without waiting for ThreadPool
+  // jobs to finish. Hence, it should terminate immediately, even
+  // though the threadpool is blocked on pass(&b)
   BOOST_CHECK(t.timed_join(long_timeout));
   BOOST_REQUIRE(boost::thread::id() == t.get_id());
-  BOOST_CHECK(!c.try_P());
+  b.V();
+  BOOST_CHECK(!c.P(long_timeout));
 }
 
 BOOST_AUTO_TEST_CASE(destroy_threadpool_with_nonempty_queue_with_completeAllJobsBeforeDestruction_true)
@@ -108,13 +90,13 @@ BOOST_AUTO_TEST_CASE(destroy_threadpool_with_nonempty_queue_with_completeAllJobs
   pool.reset();
   guard.V();
 
-  // Thread t blocks until the ThreadPool is destroyed, which is after
-  // the pass(&b) completes
-  BOOST_CHECK(!t.timed_join(short_timeout));
-  b.V();
+  // Thread t destroys the threadpool without waiting for ThreadPool
+  // jobs to finish. Hence, it should terminate immediately, even
+  // though the threadpool is blocked on pass(&b)
   BOOST_CHECK(t.timed_join(long_timeout));
   BOOST_REQUIRE(boost::thread::id() == t.get_id());
-  BOOST_CHECK(c.try_P());
+  b.V();
+  BOOST_CHECK(c.P(long_timeout));
 }
 
 

@@ -105,14 +105,6 @@ ThreadPool::~ThreadPool()
     priv->alive = false;
     priv->cond.notify_all();
   }
-
-  while(!threads.empty())
-  {
-    ThreadPool::ThreadPtr t = threads.front();
-    threads.pop_front();
-
-    t->join();
-  }
 }
 
 void ThreadPool::work(ThreadPool::PrivateData::Ptr priv)
