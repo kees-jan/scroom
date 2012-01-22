@@ -28,7 +28,7 @@
 
 #include "layer.hh"
 
-class TiledBitmapViewData : public Scroom::Utils::Base, public TileLoadingObserver, public ProgressInterface
+class TiledBitmapViewData : virtual public Scroom::Utils::Base, public TileLoadingObserver, public ProgressInterface
 {
 public:
   typedef boost::shared_ptr<TiledBitmapViewData> Ptr;
