@@ -5,6 +5,7 @@ libsmemman_la_SOURCES = \
 	filebackedmemory.cc \
 	memorymanager.cc \
 	swapbasedblockallocator.cc \
+	blob-compression.hh blob-compression.cc \
 	memoryblobs.cc
 
 libsmemman_la_LIBADD = ../../threadpool/src/libsthreadpool.la @BOOSTTHREADLIB@ @ZLIB@

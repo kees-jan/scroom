@@ -19,10 +19,14 @@
 #ifndef MEMORYBLOBS_HH
 #define MEMORYBLOBS_HH
 
+#include <list>
+
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
 
 #include <stdint.h>
+
+#include <scroom/blockallocator.hh>
 
 namespace Scroom
 {
@@ -34,6 +38,12 @@ namespace Scroom
       typedef boost::shared_ptr<const uint8_t> ConstPtr;
       typedef boost::weak_ptr<uint8_t> WeakPtr;
     }
+
+    namespace Page
+    {
+      typedef boost::shared_ptr<Scroom::MemoryBlocks::Page> Ptr;
+    }
+    typedef std::list<Page::Ptr> PageList;
 
     class PageProvider
     {
