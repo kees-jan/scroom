@@ -49,7 +49,17 @@ namespace Scroom
     public:
       typedef boost::shared_ptr<Blob> Ptr;
 
+    private:
+      PageProvider::Ptr provider;
+      size_t size;
+      uint8_t* data;
+
+    private:
+      Blob(PageProvider::Ptr provider, size_t size);
+
     public:
+      ~Blob();
+      
       static Ptr create(PageProvider::Ptr provider, size_t size);
       RawPageData::Ptr get();
       RawPageData::ConstPtr getConst() const;

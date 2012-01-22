@@ -4,6 +4,7 @@ lib_LTLIBRARIES = libsmemman.la
 libsmemman_la_SOURCES = \
 	filebackedmemory.cc \
 	memorymanager.cc \
-	swapbasedblockallocator.cc
+	swapbasedblockallocator.cc \
+	memoryblobs.cc
 
 libsmemman_la_LIBADD = ../../threadpool/src/libsthreadpool.la @BOOSTTHREADLIB@ @ZLIB@
