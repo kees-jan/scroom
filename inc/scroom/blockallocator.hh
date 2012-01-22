@@ -56,8 +56,8 @@ namespace Scroom
       typedef boost::shared_ptr<BlockInterface> Ptr;
       typedef boost::weak_ptr<BlockInterface> WeakPtr;
 
-    private:
-      RawPageData::Ptr get(size_t id);
+    protected:
+      virtual RawPageData::Ptr get(size_t id)=0;
       
     public:
       virtual ~BlockInterface() {}

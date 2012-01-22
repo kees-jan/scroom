@@ -41,7 +41,7 @@ BOOST_AUTO_TEST_CASE(allocator_provides_a_number_of_independent_blocks_of_a_give
   BlockInterface::WeakPtr weakBi = bi;
 
   PageList pages = bi->getPages();
-  BOOST_CHECK_EQUAL(size, pages.size());
+  BOOST_CHECK_EQUAL(count, pages.size());
 
   bi.reset();
   BOOST_CHECK(weakBi.lock());
@@ -50,6 +50,7 @@ BOOST_AUTO_TEST_CASE(allocator_provides_a_number_of_independent_blocks_of_a_give
   BOOST_FOREACH(Page& p, pages)
   {
     RawPageData::Ptr raw = p.get();
+    BOOST_REQUIRE(raw.get());
 
     memset(raw.get(), data, size);
     data++;
@@ -62,7 +63,7 @@ BOOST_AUTO_TEST_CASE(allocator_provides_a_number_of_independent_blocks_of_a_give
     RawPageData::Ptr raw = p.get();
 
     memset(expected, data, size);
-    BOOST_CHECK(memcmp(expected, raw.get(), size));
+    BOOST_CHECK(!memcmp(expected, raw.get(), size));
     data++;
   }
 }

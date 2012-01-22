@@ -26,6 +26,7 @@ Makefile.in
 /libs/threadpool/test/preconditions
 /libs/threadpool/test/threadpool-tests
 /libs/threadpool/test/preconditions
+/libs/memory-manager/test/memory-manager-tests
 /libs/util/test/utils-tests
 /libs/tiled-bitmap/test/tiled-bitmap-tests
 /plugins/tiff/test/measure-framerate
