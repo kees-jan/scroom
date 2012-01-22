@@ -43,7 +43,27 @@ BOOST_AUTO_TEST_CASE(compression_decompression_retains_data)
   PageList l = compressBlob(in, blobSize, provider);
 
   uint8_t out[blobSize];
-  decompressBlob(out, blobSize, l);
+  decompressBlob(out, blobSize, l, provider);
+
+  BOOST_CHECK(!memcmp(in, out, blobSize));
+}
+
+BOOST_AUTO_TEST_CASE(compression_decompression_retains_data_with_large_blocks)
+{
+  const size_t blobSize = 16;
+  const size_t blockCount = 16;
+  const size_t blockSize = 256;
+
+  uint8_t in[blobSize];
+  for(size_t i=0; i<blobSize; i++)
+    in[i] = i/256 + i%256;
+  
+  PageProvider::Ptr provider = PageProvider::create(blockCount, blockSize);
+
+  PageList l = compressBlob(in, blobSize, provider);
+
+  uint8_t out[blobSize];
+  decompressBlob(out, blobSize, l, provider);
 
   BOOST_CHECK(!memcmp(in, out, blobSize));
 }
