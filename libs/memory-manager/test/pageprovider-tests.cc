@@ -15,37 +15,57 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
-#include <blob-compression.hh>
+#include <scroom/memoryblobs.hh>
 
 #include <boost/test/unit_test.hpp>
 
+#include <boost/foreach.hpp>
+
 #include <string.h>
+
+
 
 //////////////////////////////////////////////////////////////
 
 using namespace Scroom::MemoryBlobs;
-using namespace Scroom::MemoryBlobs::Detail;
 
-BOOST_AUTO_TEST_SUITE(Blob_Compression_Tests)
+BOOST_AUTO_TEST_SUITE(PageProvider_Tests)
 
-BOOST_AUTO_TEST_CASE(compression_decompression_retains_data)
+BOOST_AUTO_TEST_CASE(Provider_provides_any_number_of_independent_blocks_of_a_given_size)
 {
-  const size_t blobSize = 16*1024;
-  const size_t blockCount = 16;
-  const size_t blockSize = 64;
+  const size_t size = 256;
+  const size_t count = 16;
+  const size_t testCount = 48;
 
-  uint8_t in[blobSize];
-  for(size_t i=0; i<blobSize; i++)
-    in[i] = i/256 + i%256;
+  PageProvider::Ptr provider = PageProvider::create(count, size);
+  PageList pages;
+
+  uint8_t data = 0;
+  for(size_t i=0; i<testCount; i++)
+  {
+    Page::Ptr p = provider->getFreePage();
+    pages.push_back(p);
+    
+    RawPageData::Ptr raw = p->get();
+    BOOST_REQUIRE(raw.get());
+
+    memset(raw.get(), data, size);
+    data++;
+  }
+
+  provider.reset();
   
-  PageProvider::Ptr provider = PageProvider::create(blockCount, blockSize);
+  data=0;
+  uint8_t expected[size];
+  BOOST_FOREACH(Page::Ptr p, pages)
+  {
+    RawPageData::Ptr raw = p->get();
+    BOOST_REQUIRE(raw.get());
 
-  PageList l = compressBlob(in, blobSize, provider);
-
-  uint8_t out[blobSize];
-  decompressBlob(out, blobSize, l);
-
-  BOOST_CHECK(!memcmp(in, out, blobSize));
+    memset(expected, data, size);
+    BOOST_CHECK(!memcmp(expected, raw.get(), size));
+    data++;
+  }
 }
 
 BOOST_AUTO_TEST_SUITE_END()

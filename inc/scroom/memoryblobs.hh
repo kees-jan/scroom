@@ -51,7 +51,8 @@ namespace Scroom
       typedef boost::shared_ptr<PageProvider> Ptr;
 
     public:
-      static Ptr create(size_t blockSize);
+      static Ptr create(size_t count, size_t blockSize);
+      Page::Ptr getFreePage();
     };
 
     class Blob

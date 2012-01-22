@@ -34,10 +34,16 @@ namespace Scroom
 
     ////////////////////////////////////////////////////////////////////////
 
-    PageProvider::Ptr PageProvider::create(size_t blockSize)
+    PageProvider::Ptr PageProvider::create(size_t blockCount, size_t blockSize)
     {
       return Ptr();
     }
+
+    Page::Ptr PageProvider::getFreePage()
+    {
+      return Page::Ptr();
+    }
+
     
     ////////////////////////////////////////////////////////////////////////
 

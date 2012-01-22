@@ -35,9 +35,10 @@ BOOST_AUTO_TEST_CASE(blobs_retain_their_data)
 {
   const size_t blobSize = 16*1024;
   const size_t blobCount = 16;
+  const size_t blockCount = 16;
   const size_t blockSize = 64;
 
-  PageProvider::Ptr provider = PageProvider::create(blockSize);
+  PageProvider::Ptr provider = PageProvider::create(blockCount, blockSize);
   
   std::list<Blob::Ptr> blobList;
 
@@ -74,9 +75,10 @@ BOOST_AUTO_TEST_CASE(blobs_can_be_updated)
 {
   const size_t blobSize = 16*1024;
   const size_t blobCount = 16;
+  const size_t blockCount = 16;
   const size_t blockSize = 64;
 
-  PageProvider::Ptr provider = PageProvider::create(blockSize);
+  PageProvider::Ptr provider = PageProvider::create(blockCount, blockSize);
   
   std::list<Blob::Ptr> blobList;
 

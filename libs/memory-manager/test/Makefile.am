@@ -7,6 +7,7 @@ check_PROGRAMS = memory-manager-tests
 memory_manager_tests_SOURCES = \
 	main.cc \
 	swap-block-allocator-tests.cc \
+	pageprovider-tests.cc \
 	compression-tests.cc \
 	blob-tests.cc
 
