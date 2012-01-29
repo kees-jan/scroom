@@ -121,4 +121,24 @@ BOOST_AUTO_TEST_CASE(blobs_can_be_updated)
   }
 }
 
+BOOST_AUTO_TEST_CASE(blobs_can_be_initialized)
+{
+  const size_t blobSize = 4096;
+  const size_t blockCount = 16;
+  const size_t blockSize = 64;
+  const uint8_t value = 25;
+
+  PageProvider::Ptr provider = PageProvider::create(blockCount, blockSize);
+
+  Blob::Ptr b = Blob::create(provider, blobSize);
+  provider.reset();
+
+  RawPageData::Ptr raw = b->initialize(value);
+
+  uint8_t expected[blobSize];
+  memset(expected, value, blobSize);
+
+  BOOST_CHECK(!memcmp(expected, raw.get(), blobSize));
+}
+
 BOOST_AUTO_TEST_SUITE_END()

@@ -29,6 +29,7 @@
 
 #include <scroom/blockallocator.hh>
 #include <scroom/utilities.hh>
+#include <scroom/threadpool.hh>
 
 namespace Scroom
 {
@@ -84,25 +85,55 @@ namespace Scroom
       size_t getPageSize();
     };
 
-    class Blob
+    class Blob : virtual public Scroom::Utils::Base, public Scroom::Utils::Counted<Blob>
     {
     public:
       typedef boost::shared_ptr<Blob> Ptr;
 
     private:
+      enum State
+        {
+          UNINITIALIZED,
+          CLEAN,
+          DIRTY,
+          COMPRESSING
+        };
+
+      class UnloadData :  public Scroom::Utils::Counted<UnloadData>
+      {
+      private:
+        Blob::Ptr blob;
+
+      public:
+        UnloadData(Blob::Ptr blob);
+        void operator()(uint8_t* data);
+      };
+
+      friend class UnloadData;
+      
+    private:
       PageProvider::Ptr provider;
       size_t size;
       uint8_t* data;
+      State state;
+      boost::mutex mut;
+      RawPageData::WeakPtr weakData;
+      PageList pages;
+      ThreadPool::Ptr cpuBound;
 
     private:
       Blob(PageProvider::Ptr provider, size_t size);
+      void unload();
+      RawPageData::Ptr load();
+      void compress();
 
     public:
       ~Blob();
       
       static Ptr create(PageProvider::Ptr provider, size_t size);
       RawPageData::Ptr get();
-      RawPageData::ConstPtr getConst() const;
+      RawPageData::ConstPtr getConst();
+      RawPageData::Ptr initialize(uint8_t value);
     };
 
     ////////////////////////////////////////////////////////////////////////
@@ -114,6 +145,18 @@ namespace Scroom
 
     inline void PageProvider::MarkPageFree::operator()(Scroom::MemoryBlocks::Page* p)
     { provider->markPageFree(p); }
+
+    ////////////////////////////////////////////////////////////////////////
+
+    inline Blob::UnloadData::UnloadData(Blob::Ptr blob)
+      : blob(blob)
+    {}
+
+    inline void Blob::UnloadData::operator()(uint8_t*)
+    {
+      blob->unload();
+      blob.reset();
+    }
   }
 }
 

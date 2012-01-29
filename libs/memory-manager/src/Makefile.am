@@ -8,4 +8,4 @@ libsmemman_la_SOURCES = \
 	blob-compression.hh blob-compression.cc \
 	memoryblobs.cc
 
-libsmemman_la_LIBADD = ../../threadpool/src/libsthreadpool.la @BOOSTTHREADLIB@ @ZLIB@
+libsmemman_la_LIBADD = ../../util/src/libsutil.la ../../threadpool/src/libsthreadpool.la @BOOSTTHREADLIB@ @ZLIB@

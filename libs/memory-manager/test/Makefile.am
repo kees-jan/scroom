@@ -11,7 +11,7 @@ memory_manager_tests_SOURCES = \
 	compression-tests.cc \
 	blob-tests.cc
 
-memory_manager_tests_LDADD = \
+memory_manager_tests_LDADD = ../../util/src/libsutil.la \
 	../src/libsmemman.la \
 	../../boost-test-helper/src/libsboosttesthelper.la
 
