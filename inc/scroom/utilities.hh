@@ -85,13 +85,13 @@ namespace Scroom
         Ptr counter;
 
       public:
-        Registrar(std::string name, unsigned long& count);
-        void ping() {}
+        Registrar(std::string name, long& count);
+        void ping() { /* counter->dump(); */ }
         ~Registrar();
       };
 
     private:
-      std::map<std::string, unsigned long*> counts;
+      std::map<std::string, long*> counts;
       boost::mutex mut;
 
     private:
@@ -99,10 +99,10 @@ namespace Scroom
 
     public:
       static Ptr create();
-      void registerClass(std::string name, unsigned long& count);
+      void registerClass(std::string name, long& count);
       void unregisterClass(std::string name);
       void dump();
-      std::map<std::string, unsigned long*> getCounts();
+      std::map<std::string, long*> getCounts();
     };
 
     Counter::Ptr getCounter();
@@ -113,7 +113,7 @@ namespace Scroom
     {
     private:
       static boost::mutex mut;
-      static unsigned long count;
+      static long count;
       static Counter::Registrar r;
 
     public:
@@ -124,10 +124,18 @@ namespace Scroom
         r.ping();
       }
 
-      ~Counted()
+      Counted(const Counted&)
+      {
+        boost::unique_lock<boost::mutex> lock(mut);
+        count++;
+        r.ping();
+      }
+
+      virtual ~Counted()
       {
         boost::unique_lock<boost::mutex> lock(mut);
         count--;
+        r.ping();
       }
     };
 
@@ -135,7 +143,7 @@ namespace Scroom
     boost::mutex Counted<C>::mut;
     
     template <class C>
-    unsigned long Counted<C>::count = 0;
+    long Counted<C>::count = 0;
 
     template <class C>
     Counter::Registrar Counted<C>::r(typeid(C).name(), Counted<C>::count);

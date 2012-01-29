@@ -55,7 +55,7 @@ Counter::Counter()
   g_timeout_add_seconds(10, timedDumpCounts, this);
 }
 
-void Counter::registerClass(std::string name, unsigned long int& count)
+void Counter::registerClass(std::string name, long int& count)
 {
   boost::unique_lock<boost::mutex> lock(mut);
   counts[name] = &count;
@@ -70,17 +70,17 @@ void Counter::unregisterClass(std::string name)
 void Counter::dump()
 {
   boost::unique_lock<boost::mutex> lock(mut);
-  printf("%lu", (unsigned long)counts.size());
-  for(std::map<std::string,unsigned long*>::iterator cur=counts.begin();
+  printf("%ld", (long)counts.size());
+  for(std::map<std::string,long*>::iterator cur=counts.begin();
       cur!=counts.end();
       ++cur)
     {
-      printf(", %s, %lu", cur->first.c_str(), *(cur->second));
+      printf(", %s, %ld", cur->first.c_str(), *(cur->second));
     }
   printf("\n");
 }
 
-std::map<std::string, unsigned long*> Counter::getCounts()
+std::map<std::string, long*> Counter::getCounts()
 {
   boost::unique_lock<boost::mutex> lock(mut);
   return counts;
@@ -88,7 +88,7 @@ std::map<std::string, unsigned long*> Counter::getCounts()
 
 ///////////////////////////////////////////////////////////////////////
 
-Counter::Registrar::Registrar(std::string name, unsigned long& count)
+Counter::Registrar::Registrar(std::string name, long& count)
 : name(name), counter(getCounter())
 {
   counter->registerClass(name, count);

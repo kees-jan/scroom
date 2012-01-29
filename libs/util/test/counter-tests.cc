@@ -37,7 +37,7 @@ BOOST_AUTO_TEST_CASE(count)
 {
   Counter::Ptr counter = getCounter();
   std::string testCountedName = typeid(TestCounted).name();
-  std::map<std::string, unsigned long*> counts = counter->getCounts();
+  std::map<std::string, long*> counts = counter->getCounts();
   BOOST_CHECK(!counts.empty());
   BOOST_CHECK(counts.end() != counts.find(testCountedName));
   BOOST_CHECK_EQUAL(0, *counts[testCountedName]);
