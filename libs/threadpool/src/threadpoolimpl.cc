@@ -151,7 +151,8 @@ ThreadPool::ThreadPool(bool completeAllJobsBeforeDestruction)
 {
   int count = boost::thread::hardware_concurrency();
 #ifndef MULTITHREADING
-  count=1;
+  if(count>1)
+    count=1;
 #endif
   add(count);
 }
@@ -160,7 +161,8 @@ ThreadPool::ThreadPool(int count, bool completeAllJobsBeforeDestruction)
   : priv(PrivateData::create(completeAllJobsBeforeDestruction))
 {
 #ifndef MULTITHREADING
-  count=1;
+  if(count>1)
+    count=1;
 #endif
   add(count);
 }
