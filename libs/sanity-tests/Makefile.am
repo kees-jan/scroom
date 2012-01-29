@@ -7,7 +7,8 @@ check_PROGRAMS = sanity-test
 sanity_test_SOURCES = \
 	main.cc \
 	basic-assumptions.cc \
-	boost-smart-pointers.cc
+	boost-smart-pointers.cc \
+	boost-bind.cc
 
 sanity_test_LDADD = @BOOSTTHREADLIB@ \
 	../boost-test-helper/src/libsboosttesthelper.la
