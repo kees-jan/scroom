@@ -298,11 +298,6 @@ void CommonOperations::drawPixelValue(cairo_t* cr, int x, int y, int size, int v
   std::string v = s.str();
   const char* cstr = v.c_str();
 
-  if(value <= 128)
-    cairo_set_source_rgb(cr, 1, 1, 1); // White
-  else
-    cairo_set_source_rgb(cr, 0, 0, 0); // Black
-  
   cairo_move_to(cr, x, y);
   cairo_line_to(cr, x+size, y);
   cairo_line_to(cr, x+size, y+size);
@@ -574,6 +569,11 @@ void Operations8bpp::draw(cairo_t* cr, const Tile::Ptr tile,
         int value = tile->data[(tileArea.y+y)*stride + tileArea.x + x];
         
         cairo_save(cr);
+        if(value <= 128)
+          cairo_set_source_rgb(cr, 1, 1, 1); // White
+        else
+          cairo_set_source_rgb(cr, 0, 0, 0); // Black
+  
         drawPixelValue(cr, viewArea.x+multiplier*x, viewArea.y+multiplier*y, multiplier, value); 
         cairo_restore(cr);
       }
@@ -675,6 +675,45 @@ void Operations::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y)
         second = first;
 
       targetPtr.set(first<<pixelOffset | second);
+    }
+  }
+}
+
+void Operations::draw(cairo_t* cr, const Tile::Ptr tile,
+                      GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
+                      Scroom::Utils::Stuff cache)
+{
+  cairo_save(cr);
+  CommonOperations::draw(cr, tile, tileArea, viewArea, zoom, cache);
+  cairo_restore(cr);
+
+  // Draw pixelvalues at 32:1 zoom
+  if(zoom==5)
+  {
+    int multiplier = 1<<zoom;
+    int stride = tile->width / pixelsPerByte;
+    cairo_select_font_face (cr, "Sans",
+                            CAIRO_FONT_SLANT_NORMAL,
+                            CAIRO_FONT_WEIGHT_NORMAL);
+    cairo_set_font_size (cr, 12.0);
+    
+    for(int y=0; y<tileArea.height; y++)
+    {
+      PixelIterator<byte> current(tile->data+(tileArea.y+y)*stride, tileArea.x, bpp);
+      
+      for(int x=0; x<tileArea.width; x++, ++current)
+      {
+        int value = *current;
+        
+        cairo_save(cr);
+        if(value <= 8)
+          cairo_set_source_rgb(cr, 1, 1, 1); // White
+        else
+          cairo_set_source_rgb(cr, 0, 0, 0); // Black
+  
+        drawPixelValue(cr, viewArea.x+multiplier*x, viewArea.y+multiplier*y, multiplier, value); 
+        cairo_restore(cr);
+      }
     }
   }
 }
