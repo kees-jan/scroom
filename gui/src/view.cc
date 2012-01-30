@@ -37,6 +37,7 @@
 
 static const char *zoomfactor[] =
   {
+    "32:1",
     "16:1",
     "8:1",
     "4:1",
@@ -73,7 +74,7 @@ static const char *zoomfactor[] =
     "1:500 million",
     "1:1 billion",
   };
-static const int MaxZoom=4;
+static const int MaxZoom=5;
 
 enum
   {
