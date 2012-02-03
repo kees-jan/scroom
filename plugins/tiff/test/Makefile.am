@@ -30,5 +30,6 @@ measure_framerate_SOURCES = \
 measure_framerate_LDADD = \
 	@TIFFPLUGIN_LIBS@ -L$(top_builddir)/libs/tiled-bitmap/src -lstiledbitmap @BOOSTTHREADLIB@ \
 	../src/libsptiff.la \
-	$(top_builddir)/libs/tiled-bitmap/src/libstiledbitmap.la
+	$(top_builddir)/libs/tiled-bitmap/src/libstiledbitmap.la \
+	$(top_builddir)/libs/util/src/libsutil.la
 

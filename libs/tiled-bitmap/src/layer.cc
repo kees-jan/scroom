@@ -51,7 +51,7 @@ public:
 
 ////////////////////////////////////////////////////////////////////////
 /// Layer 
-Layer::Layer(TileInitialisationObserver::Ptr observer, int depth, int layerWidth, int layerHeight, int bpp)
+Layer::Layer(TileInitialisationObserver::Ptr observer, int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider)
   : depth(depth), width(layerWidth), height(layerHeight), bpp(bpp)
 {
   horTileCount = (width+TILESIZE-1)/TILESIZE;
@@ -63,13 +63,13 @@ Layer::Layer(TileInitialisationObserver::Ptr observer, int depth, int layerWidth
     TileInternalLine& tl = tiles[j];
     for(int i=0; i<horTileCount; i++)
     {
-      TileInternal::Ptr tile = TileInternal::create(depth, i, j, bpp);
+      TileInternal::Ptr tile = TileInternal::create(depth, i, j, bpp, provider);
       registrations.push_back(tile->registerObserver(observer));
       tl.push_back(tile);
     }
   }
 
-  outOfBounds = TileInternal::create(depth, -1, -1, bpp, TSI_OUT_OF_BOUNDS);
+  outOfBounds = TileInternal::create(depth, -1, -1, bpp, provider, TSI_OUT_OF_BOUNDS);
   for(int i=0; i<horTileCount; i++)
   {
     lineOutOfBounds.push_back(outOfBounds);

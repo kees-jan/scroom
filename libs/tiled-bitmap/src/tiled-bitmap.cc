@@ -36,6 +36,23 @@ TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight, L
 }
 
 ////////////////////////////////////////////////////////////////////////
+static Scroom::MemoryBlobs::PageProvider::Ptr createProvider(double width, double height, int bpp)
+{
+  double tileCount = (width*height) / (TILESIZE * TILESIZE);
+  double tileSize = (bpp / 8.0) * TILESIZE * TILESIZE;
+
+  double guessedTileSizeAfterCompression = tileSize / 100;
+  const int pagesize = 4096;
+  int pagesPerBlock = std::max(int(ceil(guessedTileSizeAfterCompression / 10 / pagesize)),1);
+  
+  int blockSize = pagesPerBlock*pagesize;
+  int blockCount = std::max(int(ceil(tileCount / 10)), 64);
+
+  printf("Creating a PageProvider providing %d blocks of %d bytes\n", blockCount, blockSize);
+  return Scroom::MemoryBlobs::PageProvider::create(blockCount, blockSize);
+}
+
+////////////////////////////////////////////////////////////////////////
 
 FileOperation::FileOperation(TiledBitmap::Ptr parent)
   : parent(parent), waitingMutex(), waiting(true)
@@ -135,9 +152,10 @@ void TiledBitmap::initialize()
   int height = bitmapHeight;
   unsigned int i = 0;
   int bpp = 0;
-  LayerOperations* lo = NULL;
+  LayerOperations* lo = ls[i];
   Layer* prevLayer = NULL;
   LayerOperations* prevLo = NULL;
+  Scroom::MemoryBlobs::PageProvider::Ptr provider = createProvider(width, height, lo->getBpp());
   do
   {
     if(i<ls.size())
@@ -145,7 +163,7 @@ void TiledBitmap::initialize()
     
     bpp = lo->getBpp();
 
-    Layer* layer = new Layer(shared_from_this(), i, width, height, bpp);
+    Layer* layer = new Layer(shared_from_this(), i, width, height, bpp, provider);
     layers.push_back(layer);
     if(prevLayer)
     {

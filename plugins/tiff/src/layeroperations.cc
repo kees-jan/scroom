@@ -389,7 +389,7 @@ Scroom::Utils::Stuff Operations1bpp::cache(const Tile::Ptr tile)
   unsigned char* row = data;
   for(int j=0; j<tile->height; j++, row+=stride)
   {
-    PixelIterator<byte> bit(tile->data+j*tile->width/8, 0);
+    PixelIterator<byte> bit(tile->data.get()+j*tile->width/8, 0);
     uint32_t* pixel = (uint32_t*)row;
     for(int i=0; i<tile->width; i++)
     {
@@ -406,10 +406,10 @@ void Operations1bpp::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int
 {
   // Reducing by a factor 8. Source tile is 1bpp. Target tile is 8bpp
   int sourceStride = source->width/8;
-  byte* sourceBase = source->data;
+  byte* sourceBase = source->data.get();
 
   int targetStride = target->width;
-  byte* targetBase = target->data +
+  byte* targetBase = target->data.get() +
     target->height*y*targetStride/8 +
     target->width*x/8;
 
@@ -464,7 +464,7 @@ Scroom::Utils::Stuff Operations8bpp::cache(const Tile::Ptr tile)
   unsigned char* row = data;
   for(int j=0; j<tile->height; j++, row+=stride)
   {
-    byte* cur = tile->data+j*tile->width;
+    byte* cur = tile->data.get()+j*tile->width;
     
     uint32_t* pixel = (uint32_t*)row;
     for(int i=0; i<tile->width; i++)
@@ -483,10 +483,10 @@ void Operations8bpp::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int
 {
   // Reducing by a factor 8. Source tile is 8bpp. Target tile is 8bpp
   int sourceStride = source->width;
-  byte* sourceBase = source->data;
+  byte* sourceBase = source->data.get();
 
   int targetStride = target->width;
-  byte* targetBase = target->data +
+  byte* targetBase = target->data.get() +
     target->height*y*targetStride/8 +
     target->width*x/8;
 
@@ -540,7 +540,7 @@ Scroom::Utils::Stuff Operations::cache(const Tile::Ptr tile)
   unsigned char* row = data;
   for(int j=0; j<tile->height; j++, row+=stride)
   {
-    PixelIterator<byte> pixelIn(tile->data+j*tile->width/pixelsPerByte, 0, bpp);
+    PixelIterator<byte> pixelIn(tile->data.get()+j*tile->width/pixelsPerByte, 0, bpp);
 
     uint32_t* pixelOut = (uint32_t*)row;
     for(int i=0; i<tile->width; i++)
@@ -558,11 +558,11 @@ void Operations::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y)
 {
   // Reducing by a factor 8. Target is 2*bpp and expects two indices into the colormap
   int sourceStride = source->width/pixelsPerByte;
-  byte* sourceBase = source->data;
+  byte* sourceBase = source->data.get();
 
   const int targetMultiplier = 2; // target is 2*bpp
   int targetStride = targetMultiplier * target->width / pixelsPerByte;
-  byte* targetBase = target->data +
+  byte* targetBase = target->data.get() +
     target->height*targetStride*y/8 +
     targetMultiplier*target->width*x/8/pixelsPerByte;
 
@@ -638,7 +638,7 @@ Scroom::Utils::Stuff OperationsColormapped::cache(const Tile::Ptr tile)
   unsigned char* row = data;
   for(int j=0; j<tile->height; j++, row+=stride)
   {
-    PixelIterator<uint16_t> pixelIn((uint16_t*)(tile->data+j*multiplier*tile->width/pixelsPerByte), 0, multiplier*bpp);
+    PixelIterator<uint16_t> pixelIn((uint16_t*)(tile->data.get()+j*multiplier*tile->width/pixelsPerByte), 0, multiplier*bpp);
     uint32_t* pixelOut = (uint32_t*)row;
     for(int i=0; i<tile->width; i++)
     {
@@ -657,10 +657,10 @@ void OperationsColormapped::reduce(Tile::Ptr target, const Tile::Ptr source, int
   // Reducing by a factor 8. Source and target both 2*bpp, containing 2 colors
   const int multiplier = 2; // data is 2*bpp, containing 2 colors
   int sourceStride = multiplier*source->width/pixelsPerByte;
-  byte* sourceBase = source->data;
+  byte* sourceBase = source->data.get();
 
   int targetStride = multiplier*target->width/pixelsPerByte;
-  byte* targetBase = target->data +
+  byte* targetBase = target->data.get() +
     target->height*y*targetStride/8 +
     multiplier*target->width*x/8/pixelsPerByte;
 
