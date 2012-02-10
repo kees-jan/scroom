@@ -7,6 +7,11 @@
 //  exception_ptr.hpp/cpp copyright Peter Dimov
 
 // Adapted for usage in Scroom by Kees-Jan Dijkzeul
+#ifdef HAVE_CONFIG_H
+# include <config.h>
+#endif
+
+#ifndef NEW_BOOST_FUTURES
 
 #include <boost/shared_ptr.hpp>
 #include <boost/thread/condition.hpp>
@@ -17,6 +22,8 @@
 #include <boost/exception_ptr.hpp>
 #include <boost/future_exceptions.hpp>
 #include <boost/future_detail.hpp>
+
+#include <boost/function.hpp>
 
 #ifdef __GNUC__
 #define DEPRECATED __attribute__ ((deprecated))
@@ -86,7 +93,7 @@ namespace boost {
       }
 
       bool is_needed() {return impl_->f_->is_needed();}
-      void wait_until_needed() {return impl_->f_->wait_until_needed();}
+      void wait_until_needed() {impl_->f_->wait_until_needed();}
       shared_ptr<detail::future_impl> get_needed_future() {return impl_->f_->get_needed_future();}
 
       void reset() {
@@ -368,6 +375,8 @@ namespace boost {
       boost::function<void (void)> fn_;
   };
 } // end of namespace boost
+
+#endif // ! NEW_BOOST_FUTURES
 
 #endif // BOOST_FUTURE_HPP 
 

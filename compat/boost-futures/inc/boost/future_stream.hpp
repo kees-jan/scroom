@@ -1,6 +1,12 @@
 #ifndef FUTURE_STREAM_HPP_
 #define FUTURE_STREAM_HPP_ 1
 
+#ifdef HAVE_CONFIG_H
+# include <config.h>
+#endif
+
+#ifndef NEW_BOOST_FUTURES
+
 #include "future.hpp"
 #include <boost/iterator/iterator_facade.hpp>
 #include <boost/optional.hpp>
@@ -179,6 +185,7 @@ namespace boost {
 	promise_stream &operator=(const promise_stream& t) { 
 	  base_type::operator=((base_type&)t);
 	  prom_ = t.prom_;
+	  return *this;
 	}
 
 	void send(const T &value) {
@@ -221,4 +228,5 @@ namespace boost {
 
 } //namespace boost
 
+#endif // ! NEW_BOOST_FUTURES
 #endif //FUTURE_STREAM_HPP_
