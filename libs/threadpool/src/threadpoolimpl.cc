@@ -91,7 +91,8 @@ namespace
       count=threads.size();
     }
 
-    while(count>0)
+    int triesRemaining = 256;
+    while(triesRemaining>0 && count>0)
     {
       boost::mutex::scoped_lock lock(mut);
       printf("\nWaiting for %d threads to terminate", count);
@@ -108,7 +109,11 @@ namespace
       }
 
       count=threads.size();
+      triesRemaining--;
     }
+
+    if(0<threads.size())
+      abort();
   }
 
   void ThreadList::add(ThreadPool::ThreadPtr t)
@@ -261,9 +266,14 @@ void ThreadPool::do_one(boost::mutex::scoped_lock& lock, ThreadPool::PrivateData
       {
         boost::this_thread::disable_interruption while_executing_jobs;
         job.fn();
+
+         // Destruct Job before re-taking the lock, such that the threadpool may be destroyed in the mean time (sic)
+        job = Job();
       }
       catch(...)
       {
+        // Destruct Job before re-taking the lock, such that the threadpool may be destroyed in the mean time (sic)
+        job = Job();
         lock.lock();
         throw;
       }
