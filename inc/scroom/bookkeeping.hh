@@ -51,19 +51,19 @@ namespace Scroom
     class Token : public boost::shared_ptr<Detail::TokenImpl>
     {
     public:
-      Token(boost::shared_ptr<Detail::TokenImpl> t);
-      Token(boost::weak_ptr<Detail::TokenImpl> t);
+      Token(const boost::shared_ptr<Detail::TokenImpl>& t);
+      Token(const boost::weak_ptr<Detail::TokenImpl>& t);
       Token();
-      Token(Stuff s);
+      Token(const Stuff& s);
       Token(const StuffList& l);
 
-      void add(Stuff s);
+      void add(const Stuff& s);
       void add(const StuffList& l);
       void merge(Token& rhs);
       void merge(StuffList& l);
 
     public:
-      Detail::TokenAddition& operator+(const Stuff& rhs);
+      Detail::TokenAddition operator+(const Stuff& rhs);
       Token& operator+=(const Stuff& rhs);
     };
     

@@ -32,7 +32,7 @@ namespace Scroom
       class TokenAddition : public Scroom::Bookkeeping::Token
       {
       public:
-        TokenAddition(Scroom::Bookkeeping::Token t)
+        TokenAddition(const Scroom::Bookkeeping::Token& t)
           : Scroom::Bookkeeping::Token(t)
         {}
 
@@ -55,7 +55,7 @@ namespace Scroom
         typedef boost::shared_ptr<TokenImpl> Ptr;
 
       public:
-        void add(Stuff s)
+        void add(const Stuff& s)
         { l.push_back(s); }
         
         void add(const StuffList l)
@@ -156,11 +156,11 @@ namespace Scroom
 
     ////////////////////////////////////////////////////////////////////////
 
-    inline Token::Token(boost::shared_ptr<Detail::TokenImpl> t)
+    inline Token::Token(const boost::shared_ptr<Detail::TokenImpl>& t)
       : boost::shared_ptr<Detail::TokenImpl>(t)
     {}
 
-    inline Token::Token(boost::weak_ptr<Detail::TokenImpl> t)
+    inline Token::Token(const boost::weak_ptr<Detail::TokenImpl>& t)
       : boost::shared_ptr<Detail::TokenImpl>(t)
     {}
 
@@ -168,13 +168,15 @@ namespace Scroom
       : boost::shared_ptr<Detail::TokenImpl>(Detail::TokenImpl::create())
     {}
 
-    inline Token::Token(Stuff s)
+    inline Token::Token(const Stuff& s)
+      : boost::shared_ptr<Detail::TokenImpl>(Detail::TokenImpl::create())
     { get()->add(s); }
     
     inline Token::Token(const StuffList& l)
+      : boost::shared_ptr<Detail::TokenImpl>(Detail::TokenImpl::create())
     { get()->add(l); }
     
-    inline void Token::add(Stuff s)
+    inline void Token::add(const Stuff& s)
     { get()->add(s); }
     
     inline void Token::add(const StuffList& l)
@@ -187,7 +189,7 @@ namespace Scroom
     { get()->merge(l); }
       
 
-    inline Detail::TokenAddition& Token::operator+(const Stuff& rhs)
+    inline Detail::TokenAddition Token::operator+(const Stuff& rhs)
     { return Detail::TokenAddition(*this) + rhs; }
 
     inline Token& Token::operator+=(const Stuff& rhs)
