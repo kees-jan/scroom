@@ -35,36 +35,40 @@ BOOST_AUTO_TEST_SUITE(Counter_Tests)
 
 BOOST_AUTO_TEST_CASE(count)
 {
-  Counter::Ptr counter = getCounter();
+  Counter* counter = Counter::instance();
   std::string testCountedName = typeid(TestCounted).name();
-  std::map<std::string, long*> counts = counter->getCounts();
-  BOOST_CHECK(!counts.empty());
-  BOOST_CHECK(counts.end() != counts.find(testCountedName));
-  BOOST_CHECK_EQUAL(0, *counts[testCountedName]);
-
+  std::list<Count::Ptr> counts = counter->getCounts();
+  BOOST_CHECK_EQUAL(0, counts.size());
+  Count::Ptr c;
+  
   {
     TestCounted t;
     counts = counter->getCounts();
-    BOOST_CHECK(!counts.empty());
-    BOOST_CHECK(counts.end() != counts.find(testCountedName));
-    BOOST_CHECK_EQUAL(1, *counts[testCountedName]);
+    BOOST_REQUIRE_EQUAL(1, counts.size());
+    c = counts.front();
+    BOOST_CHECK_EQUAL(testCountedName, c->name);
+    BOOST_CHECK_EQUAL(1, c->count);
+
     {
       TestCounted t2;
       counts = counter->getCounts();
-      BOOST_CHECK(!counts.empty());
-      BOOST_CHECK(counts.end() != counts.find(testCountedName));
-      BOOST_CHECK_EQUAL(2, *counts[testCountedName]);
+      BOOST_REQUIRE_EQUAL(1, counts.size());
+      c = counts.front();
+      BOOST_CHECK_EQUAL(testCountedName, c->name);
+      BOOST_CHECK_EQUAL(2, c->count);
     }
     counts = counter->getCounts();
-    BOOST_CHECK(!counts.empty());
-    BOOST_CHECK(counts.end() != counts.find(testCountedName));
-    BOOST_CHECK_EQUAL(1, *counts[testCountedName]);
+    BOOST_REQUIRE_EQUAL(1, counts.size());
+    c = counts.front();
+    BOOST_CHECK_EQUAL(testCountedName, c->name);
+    BOOST_CHECK_EQUAL(1, c->count);
   }
   
   counts = counter->getCounts();
-  BOOST_CHECK(!counts.empty());
-  BOOST_CHECK(counts.end() != counts.find(testCountedName));
-  BOOST_CHECK_EQUAL(0, *counts[testCountedName]);
+  BOOST_REQUIRE_EQUAL(1, counts.size());
+  c = counts.front();
+  BOOST_CHECK_EQUAL(testCountedName, c->name);
+  BOOST_CHECK_EQUAL(0, c->count);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
