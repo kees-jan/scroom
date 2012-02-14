@@ -223,7 +223,9 @@ void ThreadPool::work(ThreadPool::PrivateData::Ptr priv)
     if(priv->jobcount>0)
     {
       priv->jobcount--;
-      do_one(lock, priv);
+      lock.unlock();
+      do_one(priv);
+      lock.lock();
     }
     else
     {
@@ -237,7 +239,9 @@ void ThreadPool::work(ThreadPool::PrivateData::Ptr priv)
     if(priv->jobcount>0)
     {
       priv->jobcount--;
-      do_one(lock, priv);
+      lock.unlock();
+      do_one(priv);
+      lock.lock();
     }
     else
     {
@@ -246,43 +250,35 @@ void ThreadPool::work(ThreadPool::PrivateData::Ptr priv)
   }    
 }
 
-void ThreadPool::do_one(boost::mutex::scoped_lock& lock, ThreadPool::PrivateData::Ptr priv)
+void ThreadPool::do_one(ThreadPool::PrivateData::Ptr priv)
 {
-  while(!priv->jobs.empty() && priv->jobs.begin()->second.empty())
-    priv->jobs.erase(priv->jobs.begin());
+  ThreadPool::Job job;
 
-  // At this point, either the jobs map is empty, or jobs.begin()->second contains tasks.
-  if(!priv->jobs.empty() && !priv->jobs.begin()->second.empty())
   {
-    ThreadPool::Job job = priv->jobs.begin()->second.front();
-    priv->jobs.begin()->second.pop();
+    boost::mutex::scoped_lock lock(priv->mut);
+    
+    while(!priv->jobs.empty() && priv->jobs.begin()->second.empty())
+      priv->jobs.erase(priv->jobs.begin());
 
+    if(!priv->jobs.empty() && !priv->jobs.begin()->second.empty())
+    {
+      job = priv->jobs.begin()->second.front();
+      priv->jobs.begin()->second.pop();
+    }
+    else
+    {
+      printf("PANIC: JobQueue empty while it shouldn't be\n");
+    }
+  }
+
+  if(job.queue)
+  {
     QueueLock l(job.queue);
     if(l.queueExists())
     {
-      lock.unlock();
-
-      try
-      {
-        boost::this_thread::disable_interruption while_executing_jobs;
-        job.fn();
-
-         // Destruct Job before re-taking the lock, such that the threadpool may be destroyed in the mean time (sic)
-        job = Job();
-      }
-      catch(...)
-      {
-        // Destruct Job before re-taking the lock, such that the threadpool may be destroyed in the mean time (sic)
-        job = Job();
-        lock.lock();
-        throw;
-      }
-      lock.lock();
+      boost::this_thread::disable_interruption while_executing_jobs;
+      job.fn();
     }
-  }
-  else
-  {
-    printf("PANIC: JobQueue empty while it shouldn't be\n");
   }
 }
 

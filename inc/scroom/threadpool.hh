@@ -218,7 +218,7 @@ private:
    * This gets called from work(). It fetches and executes the
    * highest-prio job from ThreadPool::jobs
    */
-  static void do_one(boost::mutex::scoped_lock& lock, PrivateData::Ptr priv);
+  static void do_one(PrivateData::Ptr priv);
   
   static Queue::Ptr defaultQueue();
   static const int defaultPriority;
