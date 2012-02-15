@@ -38,6 +38,7 @@ public:
 
   void setClip(cairo_t* cr, int x, int y, int width, int height);
   void setClip(cairo_t* cr, const GdkRectangle& area);
+  void drawPixelValue(cairo_t* cr, int x, int y, int size, int value);
   
   ////////////////////////////////////////////////////////////////////////
   // LayerOperations
@@ -50,7 +51,6 @@ public:
   virtual void draw(cairo_t* cr, const ConstTile::Ptr tile,
                     GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
                     Scroom::Utils::Stuff cache);
-
 };
 
 class Operations1bpp : public CommonOperations
@@ -81,6 +81,10 @@ public:
   virtual int getBpp();
   virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+
+  virtual void draw(cairo_t* cr, const ConstTile::Ptr tile,
+                    GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
+                    Scroom::Utils::Stuff cache);
 };
 
 class Operations : public CommonOperations
@@ -103,6 +107,10 @@ public:
   virtual int getBpp();
   virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+
+  virtual void draw(cairo_t* cr, const ConstTile::Ptr tile,
+                    GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
+                    Scroom::Utils::Stuff cache);
 };
 
 class OperationsColormapped : public Operations

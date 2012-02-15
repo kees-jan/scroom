@@ -24,6 +24,8 @@
 
 #include <glib.h>
 
+#include <sstream>
+
 #include <boost/shared_ptr.hpp>
 #include <boost/utility.hpp>
 
@@ -289,6 +291,31 @@ inline void CommonOperations::setClip(cairo_t* cr, const GdkRectangle& area)
   setClip(cr, area.x, area.y, area.width, area.height);
 }
 
+void CommonOperations::drawPixelValue(cairo_t* cr, int x, int y, int size, int value)
+{
+  std::ostringstream s;
+  s << value;
+  std::string v = s.str();
+  const char* cstr = v.c_str();
+
+  cairo_move_to(cr, x, y);
+  cairo_line_to(cr, x+size, y);
+  cairo_line_to(cr, x+size, y+size);
+  cairo_line_to(cr, x, y+size);
+  cairo_line_to(cr, x, y);
+  cairo_clip(cr);
+  // cairo_stroke(cr);
+
+  cairo_text_extents_t extents;
+  cairo_text_extents(cr, cstr, &extents);
+
+  double xx = x+size/2-(extents.width/2 + extents.x_bearing);
+  double yy = y+size/2-(extents.height/2 + extents.y_bearing);
+
+  cairo_move_to(cr, xx, yy);
+  cairo_show_text(cr, cstr);
+}
+
 Scroom::Utils::Stuff CommonOperations::cacheZoom(const ConstTile::Ptr tile, int zoom,
                                                         Scroom::Utils::Stuff cache)
 {
@@ -517,6 +544,45 @@ void Operations8bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x
   }
 }
 
+void Operations8bpp::draw(cairo_t* cr, const ConstTile::Ptr tile,
+                      GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
+                      Scroom::Utils::Stuff cache)
+{
+  cairo_save(cr);
+  CommonOperations::draw(cr, tile, tileArea, viewArea, zoom, cache);
+  cairo_restore(cr);
+
+  // Draw pixelvalues at 32:1 zoom
+  if(zoom==5)
+  {
+    int multiplier = 1<<zoom;
+    int stride = tile->width;
+    cairo_select_font_face (cr, "Sans",
+                            CAIRO_FONT_SLANT_NORMAL,
+                            CAIRO_FONT_WEIGHT_NORMAL);
+    cairo_set_font_size (cr, 12.0);
+    
+    for(int x=0; x<tileArea.width; x++)
+    {
+      for(int y=0; y<tileArea.height; y++)
+      {
+        const byte* const data = tile->data.get();
+        
+        int value = data[(tileArea.y+y)*stride + tileArea.x + x];
+        
+        cairo_save(cr);
+        if(value <= 128)
+          cairo_set_source_rgb(cr, 1, 1, 1); // White
+        else
+          cairo_set_source_rgb(cr, 0, 0, 0); // Black
+  
+        drawPixelValue(cr, viewArea.x+multiplier*x, viewArea.y+multiplier*y, multiplier, value); 
+        cairo_restore(cr);
+      }
+    }
+  }
+}
+
 ////////////////////////////////////////////////////////////////////////
 // Operations
 
@@ -611,6 +677,46 @@ void Operations::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, in
         second = first;
 
       targetPtr.set(first<<pixelOffset | second);
+    }
+  }
+}
+
+void Operations::draw(cairo_t* cr, const ConstTile::Ptr tile,
+                      GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
+                      Scroom::Utils::Stuff cache)
+{
+  cairo_save(cr);
+  CommonOperations::draw(cr, tile, tileArea, viewArea, zoom, cache);
+  cairo_restore(cr);
+
+  // Draw pixelvalues at 32:1 zoom
+  if(zoom==5)
+  {
+    int multiplier = 1<<zoom;
+    int stride = tile->width / pixelsPerByte;
+    cairo_select_font_face (cr, "Sans",
+                            CAIRO_FONT_SLANT_NORMAL,
+                            CAIRO_FONT_WEIGHT_NORMAL);
+    cairo_set_font_size (cr, 12.0);
+    
+    for(int y=0; y<tileArea.height; y++)
+    {
+      const byte* const data = tile->data.get();
+      PixelIterator<const byte> current(data+(tileArea.y+y)*stride, tileArea.x, bpp);
+      
+      for(int x=0; x<tileArea.width; x++, ++current)
+      {
+        int value = *current;
+        
+        cairo_save(cr);
+        if(value <= 8)
+          cairo_set_source_rgb(cr, 1, 1, 1); // White
+        else
+          cairo_set_source_rgb(cr, 0, 0, 0); // Black
+  
+        drawPixelValue(cr, viewArea.x+multiplier*x, viewArea.y+multiplier*y, multiplier, value); 
+        cairo_restore(cr);
+      }
     }
   }
 }
