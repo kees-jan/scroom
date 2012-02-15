@@ -29,7 +29,8 @@
 
 #include <scroom/blockallocator.hh>
 #include <scroom/utilities.hh>
-#include <scroom/threadpool.hh>
+
+class ThreadPool;
 
 namespace Scroom
 {
@@ -119,7 +120,7 @@ namespace Scroom
       boost::mutex mut;
       RawPageData::WeakPtr weakData;
       PageList pages;
-      ThreadPool::Ptr cpuBound;
+      boost::shared_ptr<ThreadPool> cpuBound;
 
     private:
       Blob(PageProvider::Ptr provider, size_t size);

@@ -22,6 +22,8 @@
 
 #include <boost/foreach.hpp>
 
+#include <scroom/threadpool.hh>
+
 #include "blob-compression.hh"
 
 using namespace Scroom::MemoryBlocks;
