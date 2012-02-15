@@ -41,18 +41,38 @@ TileInternal::Ptr TileInternal::create(int depth, int x, int y, int bpp, Scroom:
   return tile;
 }
 
-Tile::Ptr TileInternal::getTileSync()
+ConstTile::Ptr TileInternal::getConstTileSync()
 {
-  Tile::Ptr result = tile.lock();
+  ConstTile::Ptr result = constTile.lock();
   if(!result)
     result = do_load();
   
   return result;
 }
 
-Tile::Ptr TileInternal::getTileAsync()
+Tile::Ptr TileInternal::getTileSync()
 {
   Tile::Ptr result = tile.lock();
+  if(!result)
+  {
+    // Retrieve the const tile, such that all observers are properly
+    // notified of the loading
+    ConstTile::Ptr temp = getConstTileSync();
+    // Check again. Maybe someone else has beaten us to it...
+    result = tile.lock();
+    if(!result)
+    {
+      result = Tile::Ptr(new Tile(TILESIZE, TILESIZE, bpp, data->get()));
+      tile = result;
+    }
+  }
+  
+  return result;
+}
+
+ConstTile::Ptr TileInternal::getConstTileAsync()
+{
+  ConstTile::Ptr result = constTile.lock();
   return result;
 }
 
@@ -82,7 +102,7 @@ Scroom::Utils::Stuff TileInternal::initialize()
 void TileInternal::reportFinished()
 {
   TileInternal::Ptr me = shared_from_this<TileInternal>();
-  Tile::Ptr t = do_load();
+  ConstTile::Ptr t = do_load();
   BOOST_FOREACH(TileInitialisationObserver::Ptr observer, Observable<TileInitialisationObserver>::getObservers())
   {
     observer->tileFinished(me);
@@ -93,11 +113,11 @@ void TileInternal::reportFinished()
   }
 }
 
-Tile::Ptr TileInternal::do_load()
+ConstTile::Ptr TileInternal::do_load()
 {
   bool didLoad = false;
 
-  Tile::Ptr result;
+  ConstTile::Ptr result;
   {
     boost::unique_lock<boost::mutex> lock(stateData);
     cleanupState();
@@ -105,11 +125,11 @@ Tile::Ptr TileInternal::do_load()
   }
   {
     boost::unique_lock<boost::mutex> lock(tileData);
-    result = tile.lock(); // This ought to fail
+    result = constTile.lock(); // This ought to fail
     if(!result)
     {
-      result = Tile::Ptr(new Tile(TILESIZE, TILESIZE, bpp, data->get()));
-      tile = result;
+      result = ConstTile::Ptr(new ConstTile(TILESIZE, TILESIZE, bpp, data->getConst()));
+      constTile = result;
       didLoad = true;
     }
   }
@@ -173,7 +193,7 @@ void TileInternal::observerAdded(TileInitialisationObserver::Ptr observer, Scroo
 
 void TileInternal::observerAdded(TileLoadingObserver::Ptr observer, Scroom::Bookkeeping::Token token)
 {
-  Tile::Ptr result = tile.lock();
+  ConstTile::Ptr result = constTile.lock();
   ThreadPool::Queue::Ptr queue = this->queue.lock();
 
   if(!result)
@@ -225,7 +245,7 @@ void TileInternal::cleanupState()
   }
 }
 
-void TileInternal::notifyObservers(Tile::Ptr tile)
+void TileInternal::notifyObservers(ConstTile::Ptr tile)
 {
   BOOST_FOREACH(TileLoadingObserver::Ptr observer, Observable<TileLoadingObserver>::getObservers())
   {

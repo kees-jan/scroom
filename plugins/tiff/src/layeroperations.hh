@@ -45,9 +45,9 @@ public:
   virtual void initializeCairo(cairo_t* cr);
   virtual void drawState(cairo_t* cr, TileState s, GdkRectangle viewArea);
 
-  virtual Scroom::Utils::Stuff cacheZoom(const Tile::Ptr tile, int zoom,
+  virtual Scroom::Utils::Stuff cacheZoom(const ConstTile::Ptr tile, int zoom,
                                                 Scroom::Utils::Stuff cache);
-  virtual void draw(cairo_t* cr, const Tile::Ptr tile,
+  virtual void draw(cairo_t* cr, const ConstTile::Ptr tile,
                     GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
                     Scroom::Utils::Stuff cache);
 
@@ -64,8 +64,8 @@ public:
   // LayerOperations
 
   virtual int getBpp();
-  virtual Scroom::Utils::Stuff cache(const Tile::Ptr tile);
-  virtual void reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y);
+  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
+  virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
 };
 
 class Operations8bpp : public CommonOperations
@@ -79,8 +79,8 @@ public:
   // LayerOperations
 
   virtual int getBpp();
-  virtual Scroom::Utils::Stuff cache(const Tile::Ptr tile);
-  virtual void reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y);
+  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
+  virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
 };
 
 class Operations : public CommonOperations
@@ -101,8 +101,8 @@ public:
   // LayerOperations
   
   virtual int getBpp();
-  virtual Scroom::Utils::Stuff cache(const Tile::Ptr tile);
-  virtual void reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y);
+  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
+  virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
 };
 
 class OperationsColormapped : public Operations
@@ -117,8 +117,8 @@ public:
   // LayerOperations
 
   virtual int getBpp();
-  virtual Scroom::Utils::Stuff cache(const Tile::Ptr tile);
-  virtual void reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y);
+  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
+  virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
 };
 
 

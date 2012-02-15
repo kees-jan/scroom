@@ -470,12 +470,12 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
         TileInternal::Ptr tile = layer->getTile(i,j);
         TileViewState::Ptr tileViewState = tile->getViewState(vi);
         Scroom::Utils::Stuff cacheResult = tileViewState->getCacheResult();
-        Tile::Ptr t = tile->getTileAsync();
+        ConstTile::Ptr t = tile->getConstTileAsync();
 
         if(t)
         {
           cairo_save(cr);
-          layerOperations->draw(cr, tile->getTileAsync(), tileArea, viewArea, zoom, cacheResult);
+          layerOperations->draw(cr, t, tileArea, viewArea, zoom, cacheResult);
           cairo_restore(cr);
         }
         else
@@ -598,7 +598,7 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
         TileInternal::Ptr tile = layer->getTile(i,j);
         TileViewState::Ptr tileViewState = tile->getViewState(vi);
         Scroom::Utils::Stuff cacheResult = tileViewState->getCacheResult();
-        Tile::Ptr t = tile->getTileAsync();
+        ConstTile::Ptr t = tile->getConstTileAsync();
 
         // 3. Draw the area
         if(t)

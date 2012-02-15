@@ -81,7 +81,7 @@ public:
   void clearVolatileStuff();
 
   // TileLoadingObserver ////////////////////////////////////////////////
-  virtual void tileLoaded(Tile::Ptr tile);
+  virtual void tileLoaded(ConstTile::Ptr tile);
 
   // ProgressInterface ///////////////////////////////////////////////////
   virtual void setState(State s);

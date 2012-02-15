@@ -81,6 +81,7 @@ public:
   int bpp;                /**< Bits per pixel of this tile. Must be a divisor of 8. */
   TileStateInternal state;/**< State of this tile */
   Tile::WeakPtr tile;     /**< Reference to the actual Tile */
+  ConstTile::WeakPtr constTile;     /**< Reference to the actual Tile */
   Scroom::MemoryBlobs::PageProvider::Ptr provider;  /**< Provider of blocks of memory */
   Scroom::MemoryBlobs::Blob::Ptr data;              /**< Data associated with the Tile */
   boost::mutex stateData; /**< Mutex protecting the state field */
@@ -132,12 +133,20 @@ public:
   Tile::Ptr getTileSync();
 
   /**
-   * Get a reference to the Tile.
+   * Get a reference to the Const Tile.
+   *
+   * If the tile is currently TSI_NORMAL, it will be loaded, if necessary. If the
+   * tile is TSI_UNINITIALIZED, you'll receive an empty reference.
+   */
+  ConstTile::Ptr getConstTileSync();
+
+  /**
+   * Get a reference to the ConstTile.
    *
    * If the tile is currently TSI_LOADED, you'll get a reference, otherwise,
    * you'll receive an empty reference.
    */
-  Tile::Ptr getTileAsync();
+  ConstTile::Ptr getConstTileAsync();
 
   /**
    * Report that the tile is completely filled with data
@@ -157,8 +166,8 @@ private:
    * Call only while stateData is locked.
    */
   void cleanupState();
-  Tile::Ptr do_load();
-  void notifyObservers(Tile::Ptr tile);
+  ConstTile::Ptr do_load();
+  void notifyObservers(ConstTile::Ptr tile);
 
   // Viewable ////////////////////////////////////////////////////////////
 public:

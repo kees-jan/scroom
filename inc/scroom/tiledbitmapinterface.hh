@@ -98,7 +98,7 @@ public:
    *    already, this may either be an empty reference, or a reference
    *    to the value returned by cache()
    */
-  virtual void draw(cairo_t* cr, const Tile::Ptr tile,
+  virtual void draw(cairo_t* cr, const ConstTile::Ptr tile,
                     GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
                     Scroom::Utils::Stuff cache)=0;
 
@@ -130,7 +130,7 @@ public:
    *
    * @param tile the Tile for which caching is requested
    */
-  virtual Scroom::Utils::Stuff cache(const Tile::Ptr tile)
+  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile)
   { UNUSED(tile); return Scroom::Utils::Stuff(); }
 
   /**
@@ -149,9 +149,9 @@ public:
    *
    * @param tile the Tile for which caching is requested
    * @param zoom the requested zoom level
-   * @param cache the output of cache(const Tile::Ptr)
+   * @param cache the output of cache(const ConstTile::Ptr)
    */
-  virtual Scroom::Utils::Stuff cacheZoom(const Tile::Ptr tile, int zoom,
+  virtual Scroom::Utils::Stuff cacheZoom(const ConstTile::Ptr tile, int zoom,
                                                 Scroom::Utils::Stuff cache)
   { UNUSED(tile); UNUSED(zoom); UNUSED(cache); return Scroom::Utils::Stuff(); }
   
@@ -172,7 +172,7 @@ public:
    *    on the ::LayerSpec given to ::createTiledBitmap()
    *
    */
-  virtual void reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y)=0;
+  virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y)=0;
 };
 
 /**
