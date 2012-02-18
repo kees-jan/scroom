@@ -52,16 +52,28 @@ ConstTile::Ptr TileInternal::getConstTileSync()
 
 Tile::Ptr TileInternal::getTileSync()
 {
-  Tile::Ptr result = tile.lock();
+  Tile::Ptr result;
+  {
+	  boost::unique_lock<boost::mutex> lock(tileData);
+	  result = tile.lock();
+  }
   if(!result)
   {
     // Retrieve the const tile, such that all observers are properly
     // notified of the loading
     ConstTile::Ptr temp = getConstTileSync();
-    // Check again. Maybe someone else has beaten us to it...
-    result = tile.lock();
+    if(!temp)
+    {
+    	printf("PANIC: getConstTileSync() didn't return a tile!");
+    }
+    {
+      // Check again. Maybe someone else has beaten us to it...
+  	  boost::unique_lock<boost::mutex> lock(tileData);
+  	  result = tile.lock();
+    }
     if(!result)
     {
+      boost::unique_lock<boost::mutex> lock(tileData);
       result = Tile::Ptr(new Tile(TILESIZE, TILESIZE, bpp, data->get()));
       tile = result;
     }
