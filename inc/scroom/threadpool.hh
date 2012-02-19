@@ -160,29 +160,45 @@ public:
   typedef boost::shared_ptr<boost::thread> ThreadPtr;
   
 private:
+
+  class PrivateData
+  {
+  public:
+    typedef boost::shared_ptr<PrivateData> Ptr;
+
+  public:
+    unsigned int jobcount;               /**< current number of tasks in ThreadPool::jobs */
+    boost::mutex mut;                    /**< For protecting ThreadPool::jobs */
+    bool alive;                          /**< @c true if this ThreadPool is not in the process of being destroyed */
+    boost::condition_variable cond;      /**< For signalling newly queued jobs */
+
+    /**
+     * Jobs that remain to be executed
+     *
+     * The map contains for each priority that has jobs, a queue
+     * containing those jobs. Once a queue is empty, it is removed from
+     * the map. If a new job for that priority is scheduled, it is added
+     * again.
+     */
+    std::map<int, std::queue<Job> > jobs;
+
+    /**
+     * If @c true, this ThreadPool completes all jobs before being destroyed.
+     *
+     * If it is false, the ThreadPool will remove unfinished jobs from
+     * the queue without executing them, and then self-destruct.
+     */
+    bool completeAllJobsBeforeDestruction;
+
+  private:
+    PrivateData(bool completeAllJobsBeforeDestruction);
+
+  public:
+    static Ptr create(bool completeAllJobsBeforeDestruction);
+  };
+
   std::list<ThreadPtr> threads;        /**< Threads in this ThreadPool */
-  unsigned int jobcount;               /**< current number of tasks in ThreadPool::jobs */
-  boost::mutex mut;                    /**< For protecting ThreadPool::jobs */
-  bool alive;                          /**< @c true if this ThreadPool is not in the process of being destroyed */
-  boost::condition_variable cond;      /**< For signalling newly queued jobs */
-
-  /**
-   * Jobs that remain to be executed
-   *
-   * The map contains for each priority that has jobs, a queue
-   * containing those jobs. Once a queue is empty, it is removed from
-   * the map. If a new job for that priority is scheduled, it is added
-   * again.
-   */
-  std::map<int, std::queue<Job> > jobs;
-
-  /**
-   * If @c true, this ThreadPool completes all jobs before being destroyed.
-   *
-   * If it is false, the ThreadPool will remove unfinished jobs from
-   * the queue without executing them, and then self-destruct.
-   */
-  bool completeAllJobsBeforeDestruction;
+  PrivateData::Ptr priv;
 
 private:
   /**
@@ -194,7 +210,7 @@ private:
    *
    * Those last two tasks will be performed by do_one()
    */
-  void work();
+  static void work(PrivateData::Ptr priv);
 
   /**
    * Execute one job.
@@ -202,7 +218,7 @@ private:
    * This gets called from work(). It fetches and executes the
    * highest-prio job from ThreadPool::jobs
    */
-  void do_one(boost::mutex::scoped_lock& lock);
+  static void do_one(PrivateData::Ptr priv);
   
   static Queue::Ptr defaultQueue();
   static const int defaultPriority;

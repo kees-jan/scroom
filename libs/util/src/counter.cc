@@ -21,19 +21,15 @@
 
 #include <glib.h>
 
+#include <boost/foreach.hpp>
+
 using namespace Scroom::Utils;
 
 ///////////////////////////////////////////////////////////////////////
 
-Counter::Ptr Scroom::Utils::getCounter()
+void Scroom::Utils::dumpCounts()
 {
-  static Counter::Ptr instance = Counter::create();
-  return instance;
-}
-
-void dumpCounts()
-{
-  getCounter()->dump();
+  Counter::instance()->dump();
 }
 
 gboolean timedDumpCounts(gpointer data)
@@ -45,9 +41,24 @@ gboolean timedDumpCounts(gpointer data)
 
 ///////////////////////////////////////////////////////////////////////
 
-Counter::Ptr Counter::create()
+Count::Count(const std::string& name)
+  : name(name), mut(), count(0)
 {
-  return Counter::Ptr(new Counter());
+}
+
+Count::Ptr Count::create(const std::string& name)
+{
+  Ptr result = Ptr(new Count(name));
+  Counter::instance()->registerCount(result);
+  return result;
+}
+
+///////////////////////////////////////////////////////////////////////
+
+Counter* Counter::instance()
+{
+  static Counter* me = new Counter();
+  return me;
 }
 
 Counter::Counter()
@@ -55,46 +66,31 @@ Counter::Counter()
   g_timeout_add_seconds(10, timedDumpCounts, this);
 }
 
-void Counter::registerClass(std::string name, unsigned long int& count)
+void Counter::registerCount(Count::Ptr count)
 {
   boost::unique_lock<boost::mutex> lock(mut);
-  counts[name] = &count;
+  counts.push_back(count);
 }
 
-void Counter::unregisterClass(std::string name)
+void Counter::unregisterCount(Count::Ptr count)
 {
   boost::unique_lock<boost::mutex> lock(mut);
-  counts.erase(name);
+  counts.remove(count);
 }
 
 void Counter::dump()
 {
   boost::unique_lock<boost::mutex> lock(mut);
-  printf("%lu", (unsigned long)counts.size());
-  for(std::map<std::string,unsigned long*>::iterator cur=counts.begin();
-      cur!=counts.end();
-      ++cur)
-    {
-      printf(", %s, %lu", cur->first.c_str(), *(cur->second));
-    }
+  printf("%ld", (long)counts.size());
+  BOOST_FOREACH(Count::Ptr& c, counts)
+  {
+    printf(", %s, %ld", c->name.c_str(), c->count);
+  }
   printf("\n");
 }
 
-std::map<std::string, unsigned long*> Counter::getCounts()
+std::list<Count::Ptr> Counter::getCounts()
 {
   boost::unique_lock<boost::mutex> lock(mut);
   return counts;
-}
-
-///////////////////////////////////////////////////////////////////////
-
-Counter::Registrar::Registrar(std::string name, unsigned long& count)
-: name(name), counter(getCounter())
-{
-  counter->registerClass(name, count);
-}
-
-Counter::Registrar::~Registrar()
-{
-  counter->unregisterClass(name);
 }

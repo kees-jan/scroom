@@ -19,6 +19,8 @@
 #  include <config.h>
 #endif
 
+// #include <boost/date_time/posix_time/posix_time.hpp>
+
 #include <stdio.h>
 
 #include <scroom/threadpool.hh>
@@ -29,24 +31,143 @@
 using namespace Scroom::Detail::ThreadPool;
 
 ////////////////////////////////////////////////////////////////////////
+/// ThreadList / ThreadWaiter
+////////////////////////////////////////////////////////////////////////
+
+namespace
+{
+  class ThreadList
+  {
+  public:
+    typedef boost::shared_ptr<ThreadList> Ptr;
+
+  private:
+    boost::mutex mut;
+    std::list<ThreadPool::ThreadPtr> threads;
+
+  public:
+    static Ptr instance();
+    void wait();
+    void add(ThreadPool::ThreadPtr t);
+  };
+
+  class ThreadWaiter
+  {
+  private:
+    ThreadList::Ptr threadList;
+  public:
+    ThreadWaiter();
+    ~ThreadWaiter();
+  };
+
+  ThreadWaiter waiter;
+
+  ////////////////////////////////////////////////////////////////////////
+
+  ThreadList::Ptr ThreadList::instance()
+  {
+    static Ptr threadList = Ptr(new ThreadList());
+    return threadList;
+  }
+
+  void ThreadList::wait()
+  {
+    const boost::posix_time::millisec short_timeout(1);
+    const boost::posix_time::millisec timeout(250);
+    int count=0;
+
+    {
+      boost::mutex::scoped_lock lock(mut);
+
+      std::list<ThreadPool::ThreadPtr>::iterator cur = threads.begin();
+      while(cur != threads.end())
+      {
+        if((*cur)->timed_join(short_timeout))
+          cur=threads.erase(cur);
+        else
+          cur++;
+      }
+
+      count=threads.size();
+    }
+
+    int triesRemaining = 256;
+    while(triesRemaining>0 && count>0)
+    {
+      boost::mutex::scoped_lock lock(mut);
+      printf("\nWaiting for %d threads to terminate", count);
+
+      std::list<ThreadPool::ThreadPtr>::iterator cur = threads.begin();
+      while(cur != threads.end())
+      {
+        if((*cur)->timed_join(timeout))
+          cur=threads.erase(cur);
+        else
+          cur++;
+
+        printf(".");
+      }
+
+      count=threads.size();
+      triesRemaining--;
+    }
+
+    if(0<threads.size())
+      abort();
+  }
+
+  void ThreadList::add(ThreadPool::ThreadPtr t)
+  {
+    boost::mutex::scoped_lock lock(mut);
+    threads.push_back(t);
+  }
+
+  ThreadWaiter::ThreadWaiter()
+    : threadList(ThreadList::instance())
+  {}
+
+  ThreadWaiter::~ThreadWaiter()
+  {
+    threadList->wait();
+  }
+}
+
+
+////////////////////////////////////////////////////////////////////////
+/// ThreadPool::PrivateData
+////////////////////////////////////////////////////////////////////////
+
+ThreadPool::PrivateData::PrivateData(bool completeAllJobsBeforeDestruction)
+  : jobcount(0), alive(true), completeAllJobsBeforeDestruction(completeAllJobsBeforeDestruction)
+{
+}
+
+ThreadPool::PrivateData::Ptr ThreadPool::PrivateData::create(bool completeAllJobsBeforeDestruction)
+{
+  return Ptr(new PrivateData(completeAllJobsBeforeDestruction));
+}
+
+////////////////////////////////////////////////////////////////////////
 /// ThreadPool
 ////////////////////////////////////////////////////////////////////////
 
 ThreadPool::ThreadPool(bool completeAllJobsBeforeDestruction)
-  : jobcount(0), alive(true), completeAllJobsBeforeDestruction(completeAllJobsBeforeDestruction)
+  : priv(PrivateData::create(completeAllJobsBeforeDestruction))
 {
   int count = boost::thread::hardware_concurrency();
 #ifndef MULTITHREADING
-  count=1;
+  if(count>1)
+    count=1;
 #endif
   add(count);
 }
 
 ThreadPool::ThreadPool(int count, bool completeAllJobsBeforeDestruction)
-  : jobcount(0), alive(true), completeAllJobsBeforeDestruction(completeAllJobsBeforeDestruction)
+  : priv(PrivateData::create(completeAllJobsBeforeDestruction))
 {
 #ifndef MULTITHREADING
-  count=1;
+  if(count>1)
+    count=1;
 #endif
   add(count);
 }
@@ -63,8 +184,9 @@ ThreadPool::Ptr ThreadPool::create(int count, bool completeAllJobsBeforeDestruct
 
 ThreadPool::ThreadPtr ThreadPool::add()
 {
-  ThreadPool::ThreadPtr t = ThreadPool::ThreadPtr(new boost::thread(boost::bind(&ThreadPool::work, this)));
+  ThreadPool::ThreadPtr t = ThreadPool::ThreadPtr(new boost::thread(boost::bind(&ThreadPool::work, priv)));
   threads.push_back(t);
+  ThreadList::instance()->add(t);
   return t;
 }
 
@@ -87,43 +209,39 @@ ThreadPool::~ThreadPool()
   // See also https://svn.boost.org/trac/boost/ticket/2330
 
   {
-    boost::mutex::scoped_lock lock(mut);
-    alive = false;
-    cond.notify_all();
-  }
-
-  while(!threads.empty())
-  {
-    ThreadPool::ThreadPtr t = threads.front();
-    threads.pop_front();
-
-    t->join();
+    boost::mutex::scoped_lock lock(priv->mut);
+    priv->alive = false;
+    priv->cond.notify_all();
   }
 }
 
-void ThreadPool::work()
+void ThreadPool::work(ThreadPool::PrivateData::Ptr priv)
 {
-  boost::mutex::scoped_lock lock(mut);
-  while(alive)
+  boost::mutex::scoped_lock lock(priv->mut);
+  while(priv->alive)
   {
-    if(jobcount>0)
+    if(priv->jobcount>0)
     {
-      jobcount--;
-      do_one(lock);
+      priv->jobcount--;
+      lock.unlock();
+      do_one(priv);
+      lock.lock();
     }
     else
     {
-      cond.wait(lock);
+      priv->cond.wait(lock);
     }
   }
 
-  bool busy = completeAllJobsBeforeDestruction;
+  bool busy = priv->completeAllJobsBeforeDestruction;
   while(busy)
   {
-    if(jobcount>0)
+    if(priv->jobcount>0)
     {
-      jobcount--;
-      do_one(lock);
+      priv->jobcount--;
+      lock.unlock();
+      do_one(priv);
+      lock.lock();
     }
     else
     {
@@ -132,38 +250,35 @@ void ThreadPool::work()
   }    
 }
 
-void ThreadPool::do_one(boost::mutex::scoped_lock& lock)
+void ThreadPool::do_one(ThreadPool::PrivateData::Ptr priv)
 {
-  while(!jobs.empty() && jobs.begin()->second.empty())
-    jobs.erase(jobs.begin());
+  ThreadPool::Job job;
 
-  // At this point, either the jobs map is empty, or jobs.begin()->second contains tasks.
-  if(!jobs.empty() && !jobs.begin()->second.empty())
   {
-    ThreadPool::Job job = jobs.begin()->second.front();
-    jobs.begin()->second.pop();
+    boost::mutex::scoped_lock lock(priv->mut);
+    
+    while(!priv->jobs.empty() && priv->jobs.begin()->second.empty())
+      priv->jobs.erase(priv->jobs.begin());
 
+    if(!priv->jobs.empty() && !priv->jobs.begin()->second.empty())
+    {
+      job = priv->jobs.begin()->second.front();
+      priv->jobs.begin()->second.pop();
+    }
+    else
+    {
+      printf("PANIC: JobQueue empty while it shouldn't be\n");
+    }
+  }
+
+  if(job.queue)
+  {
     QueueLock l(job.queue);
     if(l.queueExists())
     {
-      lock.unlock();
-
-      try
-      {
-        boost::this_thread::disable_interruption while_executing_jobs;
-        job.fn();
-      }
-      catch(...)
-      {
-        lock.lock();
-        throw;
-      }
-      lock.lock();
+      boost::this_thread::disable_interruption while_executing_jobs;
+      job.fn();
     }
-  }
-  else
-  {
-    printf("PANIC: JobQueue empty while it shouldn't be\n");
   }
 }
 
@@ -179,10 +294,10 @@ void ThreadPool::schedule(boost::function<void ()> const& fn, ThreadPool::Queue:
 
 void ThreadPool::schedule(boost::function<void ()> const& fn, int priority, ThreadPool::WeakQueue::Ptr queue)
 {
-  boost::mutex::scoped_lock lock(mut);
-  jobs[priority].push(Job(fn, queue));
-  jobcount++;
-  cond.notify_one();
+  boost::mutex::scoped_lock lock(priv->mut);
+  priv->jobs[priority].push(Job(fn, queue));
+  priv->jobcount++;
+  priv->cond.notify_one();
 }
 
 void ThreadPool::schedule(boost::function<void ()> const& fn, ThreadPool::WeakQueue::Ptr queue)

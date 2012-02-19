@@ -67,7 +67,7 @@ public:
   virtual ~TileLoadingObserver() {};
 
   /** The Tile has been loaded. */
-  virtual void tileLoaded(Tile::Ptr tile)=0;
+  virtual void tileLoaded(ConstTile::Ptr tile)=0;
 };
 
 #endif

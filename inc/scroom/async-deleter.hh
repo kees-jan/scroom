@@ -61,7 +61,7 @@ namespace Scroom
  * deleting. As a result, the current thread may block until the
  * deleter thread finishes deleting the object. So you could say that
  * the last object is deleted synchronously. Hence it is not a good
- * idea to us AsyncDeleter to avoid deadlocks, unless you cn be sure
+ * idea to us AsyncDeleter to avoid deadlocks, unless you can be sure
  * that all objects will be deleted before the program terminates.
  */
 template<typename T>

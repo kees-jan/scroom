@@ -48,7 +48,7 @@ void Source1Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<T
 {
   BOOST_FOREACH(Tile::Ptr tile, tiles)
   {
-    byte* data = tile->data;
+    byte* data = tile->data.get();
     for(int y=0; y<lineCount; y+=2)
     {
       for(int x=0; x<tileWidth/8; x++)
@@ -69,7 +69,7 @@ void Source2Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<T
 {
   BOOST_FOREACH(Tile::Ptr tile, tiles)
   {
-    byte* data = tile->data;
+    byte* data = tile->data.get();
     for(int y=0; y<lineCount; y++)
     {
       for(int x=0; x<tileWidth/4; x++)
@@ -87,7 +87,7 @@ void Source4Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<T
 {
   BOOST_FOREACH(Tile::Ptr tile, tiles)
   {
-    byte* data = tile->data;
+    byte* data = tile->data.get();
     for(int y=0; y<lineCount; y++)
     {
       for(int x=0; x<tileWidth/2; x++)
@@ -105,7 +105,7 @@ void Source8Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<T
 {
   BOOST_FOREACH(Tile::Ptr tile, tiles)
   {
-    byte* data = tile->data;
+    byte* data = tile->data.get();
     for(int y=0; y<lineCount; y++)
     {
       for(int x=0; x<tileWidth; x++)

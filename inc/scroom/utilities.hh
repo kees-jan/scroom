@@ -73,74 +73,88 @@ namespace Scroom
       return boost::dynamic_pointer_cast<R const, Base const>(boost::enable_shared_from_this<Base>::shared_from_this());
     }
 
+    ////////////////////////////////////////////////////////////////////////
+
+    void dumpCounts();
+
+    ////////////////////////////////////////////////////////////////////////
+
+    class Count
+    {
+    public:
+      typedef boost::shared_ptr<Count> Ptr;
+      
+    public:
+      const std::string name;
+      boost::mutex mut;
+      long count;
+
+    public:
+      static Ptr create(const std::string& name);
+      void ping() { /* dumpCounts(); */ }
+      void inc()
+      { boost::unique_lock<boost::mutex> lock(mut); ++count; ping(); }
+      void dec()
+      { boost::unique_lock<boost::mutex> lock(mut); --count; ping(); }
+
+    private:
+      Count(const std::string& name);
+    };
+
+    ////////////////////////////////////////////////////////////////////////
+    
     class Counter
     {
     public:
-      typedef boost::shared_ptr<Counter> Ptr;
-
-      class Registrar
-      {
-      private:
-        std::string name;
-        Ptr counter;
-
-      public:
-        Registrar(std::string name, unsigned long& count);
-        void ping() {}
-        ~Registrar();
-      };
 
     private:
-      std::map<std::string, unsigned long*> counts;
+      std::list<Count::Ptr> counts;
       boost::mutex mut;
 
     private:
       Counter();
 
     public:
-      static Ptr create();
-      void registerClass(std::string name, unsigned long& count);
-      void unregisterClass(std::string name);
+      static Counter* instance();
+      void registerCount(Count::Ptr count);
+      void unregisterCount(Count::Ptr count);
       void dump();
-      std::map<std::string, unsigned long*> getCounts();
+      std::list<Count::Ptr> getCounts();
     };
 
-    Counter::Ptr getCounter();
-    void dumpCounts();
+    ////////////////////////////////////////////////////////////////////////
 
     template <class C>
     class Counted
     {
     private:
-      static boost::mutex mut;
-      static unsigned long count;
-      static Counter::Registrar r;
+      Count::Ptr data;
 
     public:
-      Counted()
+      static Count::Ptr count_instance()
       {
-        boost::unique_lock<boost::mutex> lock(mut);
-        count++;
-        r.ping();
+        static Count::Ptr instance = Count::create(typeid(C).name());
+        return instance;
+      }
+    
+      Counted()
+        : data(count_instance())
+      {
+        data->inc();
       }
 
-      ~Counted()
+      Counted(const Counted&)
+        : data(count_instance())
       {
-        boost::unique_lock<boost::mutex> lock(mut);
-        count--;
+        data->inc();
+      }
+
+      virtual ~Counted()
+      {
+        data->dec();
       }
     };
-
-    template <class C>
-    boost::mutex Counted<C>::mut;
-    
-    template <class C>
-    unsigned long Counted<C>::count = 0;
-
-    template <class C>
-    Counter::Registrar Counted<C>::r(typeid(C).name(), Counted<C>::count);
-
-    }
+  }
 }
 
 #endif

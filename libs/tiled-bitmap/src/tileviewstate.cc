@@ -44,7 +44,7 @@ TileViewState::TileViewState(boost::shared_ptr<TileInternal> parent)
 {
 }
 
-void TileViewState::tileLoaded(Tile::Ptr tile)
+void TileViewState::tileLoaded(ConstTile::Ptr tile)
 {
   boost::mutex::scoped_lock l(mut);
 
@@ -199,7 +199,7 @@ void TileViewState::process(ThreadPool::WeakQueue::Ptr wq)
   }
 }
 
-void TileViewState::computeBase(ThreadPool::WeakQueue::Ptr wq, Tile::Ptr tile, LayerOperations* lo)
+void TileViewState::computeBase(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr tile, LayerOperations* lo)
 {
   Scroom::Utils::Stuff baseCache = lo->cache(tile);
 
@@ -215,7 +215,7 @@ void TileViewState::computeBase(ThreadPool::WeakQueue::Ptr wq, Tile::Ptr tile, L
   }
 }
 
-void TileViewState::computeZoom(ThreadPool::WeakQueue::Ptr wq, Tile::Ptr tile, LayerOperations* lo, Scroom::Utils::Stuff baseCache, int zoom)
+void TileViewState::computeZoom(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr tile, LayerOperations* lo, Scroom::Utils::Stuff baseCache, int zoom)
 {
   Scroom::Utils::Stuff zoomCache = lo->cacheZoom(tile, zoom, baseCache);
 
@@ -230,7 +230,7 @@ void TileViewState::computeZoom(ThreadPool::WeakQueue::Ptr wq, Tile::Ptr tile, L
   }
 }
 
-void TileViewState::reportDone(ThreadPool::WeakQueue::Ptr wq, Tile::Ptr tile)
+void TileViewState::reportDone(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr tile)
 {
   UNUSED(wq);
     

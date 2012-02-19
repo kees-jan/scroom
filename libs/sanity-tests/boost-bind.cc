@@ -16,40 +16,75 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include <scroom/tiledbitmapinterface.hh>
+#ifdef HAVE_CONFIG_H
+#  include <config.h>
+#endif
+
+#include <iostream>
 
 #include <boost/test/unit_test.hpp>
-#include <boost/weak_ptr.hpp>
+#include <boost/shared_ptr.hpp>
+#include <boost/bind.hpp>
+#include <boost/function.hpp>
 
 
 //////////////////////////////////////////////////////////////
 
-class DummyLayerOperations: public LayerOperations
+class A
 {
-  virtual ~DummyLayerOperations() {}
+private:
+  int& i;
 
-  virtual int getBpp() { return 8; }
-  virtual void initializeCairo(cairo_t*) {}
-  virtual void draw(cairo_t*, const ConstTile::Ptr, GdkRectangle, GdkRectangle, int, Scroom::Utils::Stuff) {}
-  virtual void drawState(cairo_t*, TileState, GdkRectangle) {}
-  virtual void reduce(Tile::Ptr, const ConstTile::Ptr, int, int) {}
+public:
+  typedef boost::shared_ptr<A> Ptr;
+  
+  A(int& i)
+    :i(i)
+  {}
+  
+  void set(int v)
+  {
+    i=v;
+  }
+
+  int get()
+  {
+    return i;
+  }
+  
+  static Ptr create(int& i)
+  {
+    return Ptr(new A(i));
+  }
 };
 
+
 //////////////////////////////////////////////////////////////
 
-BOOST_AUTO_TEST_SUITE(TiledBitmap_Tests)
+BOOST_AUTO_TEST_SUITE(boost_bind_Tests)
 
-BOOST_AUTO_TEST_CASE(tiledbitmap_can_be_deleted)
+BOOST_AUTO_TEST_CASE(keeps_object_alive_while_setting)
 {
-  LayerSpec ls;
-  ls.push_back(new DummyLayerOperations());
-  TiledBitmapInterface::Ptr bitmap = createTiledBitmap(300000, 300000, ls);
-  BOOST_CHECK(bitmap);
-  boost::weak_ptr<TiledBitmapInterface> weak = bitmap;
-  BOOST_CHECK(weak.lock());
-  bitmap.reset();
-  BOOST_CHECK(!bitmap);
-  BOOST_CHECK(!weak.lock());
+  int value=25;
+  const int expected = 1;
+  A::Ptr a = A::create(value);
+  boost::function<void ()> f = boost::bind(&A::set, a, expected);
+
+  a.reset();
+  f();
+  BOOST_CHECK_EQUAL(expected, value);
 }
+
+BOOST_AUTO_TEST_CASE(keeps_object_alive_while_getting)
+{
+  int value=25;
+  const int expected = value;
+  A::Ptr a = A::create(value);
+  boost::function<int ()> f = boost::bind(&A::get, a);
+
+  a.reset();
+  BOOST_CHECK_EQUAL(expected, f());
+}
+
 
 BOOST_AUTO_TEST_SUITE_END()

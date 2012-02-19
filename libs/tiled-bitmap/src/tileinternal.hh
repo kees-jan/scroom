@@ -33,7 +33,8 @@
 
 #include <scroom/observable.hh>
 #include <scroom/threadpool.hh>
-#include <scroom/memorymanagerinterface.hh>
+#include <scroom/memoryblobs.hh>
+#include <scroom/stuff.hh>
 
 #include "tileinternalobserverinterfaces.hh"
 #include "tileviewstate.hh"
@@ -48,10 +49,9 @@
  */
 typedef enum
   {
-    TSI_UNINITIALIZED = TILE_UNINITIALIZED, /**< Tile does not yet contain any data */
-    TSI_UNLOADED = TILE_UNLOADED,           /**< Tile does contain data, but has been swapped out */
-    TSI_LOADED = TILE_LOADED,               /**< Tile does contain data, and data is in memory */
-    TSI_OUT_OF_BOUNDS = TILE_OUT_OF_BOUNDS, /**< Tile is located outside the bitmap area */
+    TSI_UNINITIALIZED,
+    TSI_NORMAL,
+    TSI_OUT_OF_BOUNDS,
     TSI_LOADING_SYNCHRONOUSLY,
     TSI_LOADING_ASYNCHRONOUSLY
   } TileStateInternal;
@@ -69,7 +69,6 @@ typedef enum
  */
 class TileInternal : public Scroom::Utils::Observable<TileInitialisationObserver>,
                      public Scroom::Utils::Observable<TileLoadingObserver>,
-                     public MemoryManagedInterface,
                      public Viewable
 {
 public:
@@ -82,27 +81,28 @@ public:
   int bpp;                /**< Bits per pixel of this tile. Must be a divisor of 8. */
   TileStateInternal state;/**< State of this tile */
   Tile::WeakPtr tile;     /**< Reference to the actual Tile */
-  FileBackedMemory data;  /**< Data associated with the Tile */
+  ConstTile::WeakPtr constTile;     /**< Reference to the actual Tile */
+  Scroom::MemoryBlobs::PageProvider::Ptr provider;  /**< Provider of blocks of memory */
+  Scroom::MemoryBlobs::Blob::Ptr data;              /**< Data associated with the Tile */
   boost::mutex stateData; /**< Mutex protecting the state field */
   boost::mutex tileData;  /**< Mutex protecting the data-related fields */
 
   ThreadPool::Queue::WeakPtr queue; /**< Queue on which the load operation is executed */
-  Scroom::Utils::Stuff memoryManagerRegistration; /**< Our registration with the MemoryManager */
 
   std::map<ViewInterface*, TileViewState::WeakPtr> viewStates;
 
 private:
-  TileInternal(int depth, int x, int y, int bpp, TileStateInternal state);
+  TileInternal(int depth, int x, int y, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider, TileStateInternal state);
 
 public:
-  static Ptr create(int depth, int x, int y, int bpp, TileStateInternal state=TSI_UNINITIALIZED);
+  static Ptr create(int depth, int x, int y, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider, TileStateInternal state=TSI_UNINITIALIZED);
 
   /**
    * Initializes the tile data
    *
    * Allocates memory, initializes it to 0, and changes state to TSI_LOADED
    */
-  void initialize();
+  Scroom::Utils::Stuff initialize();
 
   /**
    * Keep track of new TileInitialisationObserver registrations.
@@ -127,18 +127,26 @@ public:
   /**
    * Get a reference to the Tile.
    *
-   * If the tile is currently TSI_UNLOADED, it will be loaded. If the
+   * If the tile is currently TSI_NORMAL, it will be loaded, if necessary. If the
    * tile is TSI_UNINITIALIZED, you'll receive an empty reference.
    */
   Tile::Ptr getTileSync();
 
   /**
-   * Get a reference to the Tile.
+   * Get a reference to the Const Tile.
+   *
+   * If the tile is currently TSI_NORMAL, it will be loaded, if necessary. If the
+   * tile is TSI_UNINITIALIZED, you'll receive an empty reference.
+   */
+  ConstTile::Ptr getConstTileSync();
+
+  /**
+   * Get a reference to the ConstTile.
    *
    * If the tile is currently TSI_LOADED, you'll get a reference, otherwise,
    * you'll receive an empty reference.
    */
-  Tile::Ptr getTileAsync();
+  ConstTile::Ptr getConstTileAsync();
 
   /**
    * Report that the tile is completely filled with data
@@ -151,8 +159,6 @@ public:
 
   TileViewState::Ptr getViewState(ViewInterface* vi);
 
-  void performMemoryManagerRegistration();
-
 private:
   /**
    * Does some internal state maintenance.
@@ -160,18 +166,14 @@ private:
    * Call only while stateData is locked.
    */
   void cleanupState();
-  Tile::Ptr do_load();
-  void notifyObservers(Tile::Ptr tile);
+  ConstTile::Ptr do_load();
+  void notifyObservers(ConstTile::Ptr tile);
 
   // Viewable ////////////////////////////////////////////////////////////
 public:
   
   virtual void open(ViewInterface* vi);
   virtual void close(ViewInterface* vi);
-  
-  // MemoryManagedInterface //////////////////////////////////////////////
-public:
-  virtual bool do_unload();
 };
 
 typedef std::vector<TileInternal::Ptr> TileInternalLine;

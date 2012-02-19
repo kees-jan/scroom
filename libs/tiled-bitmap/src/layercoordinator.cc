@@ -98,7 +98,7 @@ TileReducer::TileReducer(LayerOperations* lo,
 void TileReducer::operator()()
 {
   Tile::Ptr target = targetTile->getTileSync();
-  Tile::Ptr source = sourceTile->getTileSync();
+  ConstTile::Ptr source = sourceTile->getConstTileSync();
 
   lo->reduce(target, source, x, y);
 

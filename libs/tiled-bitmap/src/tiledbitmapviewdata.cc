@@ -146,7 +146,7 @@ void TiledBitmapViewData::clearVolatileStuff()
   resetNeededTiles();
 }
 
-void TiledBitmapViewData::tileLoaded(Tile::Ptr tile)
+void TiledBitmapViewData::tileLoaded(ConstTile::Ptr tile)
 {
   boost::unique_lock<boost::mutex> lock(mut);
   stuff.push_back(tile);

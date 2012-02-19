@@ -23,6 +23,7 @@
 #include <boost/weak_ptr.hpp>
 
 #include <scroom/global.hh>
+#include <scroom/memoryblobs.hh>
 
 class Tile
 {
@@ -33,12 +34,35 @@ public:
   int width;
   int height;
   int bpp;
-  byte* data;
+  Scroom::MemoryBlobs::RawPageData::Ptr data;
 
 public:
-  Tile(int width, int height, int bpp, byte* data)
+  Tile(int width, int height, int bpp, Scroom::MemoryBlobs::RawPageData::Ptr data)
     : width(width), height(height), bpp(bpp), data(data)
   {}
+
+  static Tile::Ptr create(int width, int height, int bpp, Scroom::MemoryBlobs::RawPageData::Ptr data)
+  { return Ptr(new Tile(width, height, bpp, data)); }
+};
+
+class ConstTile
+{
+public:
+  typedef boost::shared_ptr<ConstTile> Ptr;
+  typedef boost::weak_ptr<ConstTile> WeakPtr;
+  
+  int width;
+  int height;
+  int bpp;
+  Scroom::MemoryBlobs::RawPageData::ConstPtr data;
+
+public:
+  ConstTile(int width, int height, int bpp, Scroom::MemoryBlobs::RawPageData::ConstPtr data)
+    : width(width), height(height), bpp(bpp), data(data)
+  {}
+
+  static ConstTile::Ptr create(int width, int height, int bpp, Scroom::MemoryBlobs::RawPageData::ConstPtr data)
+  { return Ptr(new ConstTile(width, height, bpp, data)); }
 };
 
 #endif

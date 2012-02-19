@@ -268,7 +268,7 @@ void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth, in
   byte* dataPtr[tileCount];
   for(int tile=0; tile<tileCount; tile++)
   {
-    dataPtr[tile] = tiles[tile]->data;
+    dataPtr[tile] = tiles[tile]->data.get();
   }
 
   for(int i=0; i<lineCount; i++)
