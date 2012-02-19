@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2012 Kees-Jan Dijkzeul
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -37,8 +37,8 @@
 using namespace boost::posix_time;
 using namespace Scroom;
 
-const millisec short_timeout(250);
-const millisec long_timeout(2000);
+static const millisec short_timeout(250);
+static const millisec long_timeout(2000);
 
 //////////////////////////////////////////////////////////////
 

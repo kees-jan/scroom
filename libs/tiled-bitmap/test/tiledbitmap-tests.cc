@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2012 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -30,7 +30,7 @@ class DummyLayerOperations: public LayerOperations
 
   virtual int getBpp() { return 8; }
   virtual void initializeCairo(cairo_t*) {}
-  virtual void draw(cairo_t*, const Tile::Ptr, GdkRectangle, GdkRectangle, int, Scroom::Utils::Registration) {}
+  virtual void draw(cairo_t*, const Tile::Ptr, GdkRectangle, GdkRectangle, int, Scroom::Utils::Stuff) {}
   virtual void drawState(cairo_t*, TileState, GdkRectangle) {}
   virtual void reduce(Tile::Ptr, const Tile::Ptr, int, int) {}
 };

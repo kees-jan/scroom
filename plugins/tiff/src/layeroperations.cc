@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2012 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -24,6 +24,8 @@
 
 #include <glib.h>
 
+#include <sstream>
+
 #include <boost/shared_ptr.hpp>
 #include <boost/utility.hpp>
 
@@ -31,7 +33,7 @@
 
 #include "tiffpresentation.hh"
 
-using Scroom::Utils::Registration;
+using Scroom::Utils::Stuff;
 
 ////////////////////////////////////////////////////////////////////////
 // PixelIterator
@@ -289,12 +291,37 @@ inline void CommonOperations::setClip(cairo_t* cr, const GdkRectangle& area)
   setClip(cr, area.x, area.y, area.width, area.height);
 }
 
-Scroom::Utils::Registration CommonOperations::cacheZoom(const Tile::Ptr tile, int zoom,
-                                                        Scroom::Utils::Registration cache)
+void CommonOperations::drawPixelValue(cairo_t* cr, int x, int y, int size, int value)
+{
+  std::ostringstream s;
+  s << value;
+  std::string v = s.str();
+  const char* cstr = v.c_str();
+
+  cairo_move_to(cr, x, y);
+  cairo_line_to(cr, x+size, y);
+  cairo_line_to(cr, x+size, y+size);
+  cairo_line_to(cr, x, y+size);
+  cairo_line_to(cr, x, y);
+  cairo_clip(cr);
+  // cairo_stroke(cr);
+
+  cairo_text_extents_t extents;
+  cairo_text_extents(cr, cstr, &extents);
+
+  double xx = x+size/2-(extents.width/2 + extents.x_bearing);
+  double yy = y+size/2-(extents.height/2 + extents.y_bearing);
+
+  cairo_move_to(cr, xx, yy);
+  cairo_show_text(cr, cstr);
+}
+
+Scroom::Utils::Stuff CommonOperations::cacheZoom(const Tile::Ptr tile, int zoom,
+                                                        Scroom::Utils::Stuff cache)
 {
   // In: Cairo surface at zoom level 0
   // Out: Cairo surface at requested zoom level
-  Scroom::Utils::Registration result;
+  Scroom::Utils::Stuff result;
   if(zoom>=0)
   {
     // Don't zoom in. It is a waste of space
@@ -326,7 +353,7 @@ Scroom::Utils::Registration CommonOperations::cacheZoom(const Tile::Ptr tile, in
 
 void CommonOperations::draw(cairo_t* cr, const Tile::Ptr tile,
                     GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
-                    Scroom::Utils::Registration cache)
+                    Scroom::Utils::Stuff cache)
 {
   // In: Cairo surface at requested zoom level
   // Out: given surface rendered to the canvas
@@ -380,7 +407,7 @@ int Operations1bpp::getBpp()
   return 1;
 }
 
-Scroom::Utils::Registration Operations1bpp::cache(const Tile::Ptr tile)
+Scroom::Utils::Stuff Operations1bpp::cache(const Tile::Ptr tile)
 {
   const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_RGB24, tile->width);
   unsigned char* data = (unsigned char*)malloc(stride * tile->height);
@@ -453,7 +480,7 @@ int Operations8bpp::getBpp()
   return 8;
 }
 
-Scroom::Utils::Registration Operations8bpp::cache(const Tile::Ptr tile)
+Scroom::Utils::Stuff Operations8bpp::cache(const Tile::Ptr tile)
 {
   const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_RGB24, tile->width);
   unsigned char* data = (unsigned char*)malloc(stride * tile->height);
@@ -517,6 +544,43 @@ void Operations8bpp::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int
   }
 }
 
+void Operations8bpp::draw(cairo_t* cr, const Tile::Ptr tile,
+                      GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
+                      Scroom::Utils::Stuff cache)
+{
+  cairo_save(cr);
+  CommonOperations::draw(cr, tile, tileArea, viewArea, zoom, cache);
+  cairo_restore(cr);
+
+  // Draw pixelvalues at 32:1 zoom
+  if(zoom==5)
+  {
+    int multiplier = 1<<zoom;
+    int stride = tile->width;
+    cairo_select_font_face (cr, "Sans",
+                            CAIRO_FONT_SLANT_NORMAL,
+                            CAIRO_FONT_WEIGHT_NORMAL);
+    cairo_set_font_size (cr, 12.0);
+    
+    for(int x=0; x<tileArea.width; x++)
+    {
+      for(int y=0; y<tileArea.height; y++)
+      {
+        int value = tile->data[(tileArea.y+y)*stride + tileArea.x + x];
+        
+        cairo_save(cr);
+        if(value <= 128)
+          cairo_set_source_rgb(cr, 1, 1, 1); // White
+        else
+          cairo_set_source_rgb(cr, 0, 0, 0); // Black
+  
+        drawPixelValue(cr, viewArea.x+multiplier*x, viewArea.y+multiplier*y, multiplier, value); 
+        cairo_restore(cr);
+      }
+    }
+  }
+}
+
 ////////////////////////////////////////////////////////////////////////
 // Operations
 
@@ -531,7 +595,7 @@ int Operations::getBpp()
   return bpp;
 }
 
-Scroom::Utils::Registration Operations::cache(const Tile::Ptr tile)
+Scroom::Utils::Stuff Operations::cache(const Tile::Ptr tile)
 {
   const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_RGB24, tile->width);
   unsigned char* data = (unsigned char*)malloc(stride * tile->height);
@@ -615,6 +679,45 @@ void Operations::reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y)
   }
 }
 
+void Operations::draw(cairo_t* cr, const Tile::Ptr tile,
+                      GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
+                      Scroom::Utils::Stuff cache)
+{
+  cairo_save(cr);
+  CommonOperations::draw(cr, tile, tileArea, viewArea, zoom, cache);
+  cairo_restore(cr);
+
+  // Draw pixelvalues at 32:1 zoom
+  if(zoom==5)
+  {
+    int multiplier = 1<<zoom;
+    int stride = tile->width / pixelsPerByte;
+    cairo_select_font_face (cr, "Sans",
+                            CAIRO_FONT_SLANT_NORMAL,
+                            CAIRO_FONT_WEIGHT_NORMAL);
+    cairo_set_font_size (cr, 12.0);
+    
+    for(int y=0; y<tileArea.height; y++)
+    {
+      PixelIterator<byte> current(tile->data+(tileArea.y+y)*stride, tileArea.x, bpp);
+      
+      for(int x=0; x<tileArea.width; x++, ++current)
+      {
+        int value = *current;
+        
+        cairo_save(cr);
+        if(value <= 8)
+          cairo_set_source_rgb(cr, 1, 1, 1); // White
+        else
+          cairo_set_source_rgb(cr, 0, 0, 0); // Black
+  
+        drawPixelValue(cr, viewArea.x+multiplier*x, viewArea.y+multiplier*y, multiplier, value); 
+        cairo_restore(cr);
+      }
+    }
+  }
+}
+
 ////////////////////////////////////////////////////////////////////////
 // OperationsColormapped
 
@@ -628,7 +731,7 @@ int OperationsColormapped::getBpp()
   return 2*bpp;
 }
 
-Scroom::Utils::Registration OperationsColormapped::cache(const Tile::Ptr tile)
+Scroom::Utils::Stuff OperationsColormapped::cache(const Tile::Ptr tile)
 {
   const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_RGB24, tile->width);
   unsigned char* data = (unsigned char*)malloc(stride * tile->height);

@@ -7,12 +7,14 @@ check_PROGRAMS = utils-tests
 utils_tests_SOURCES = \
 	main.cc \
 	observable-tests.cc \
-	basic-assumptions.cc \
-	counter-tests.cc
+	counter-tests.cc \
+	bookkeeping-tests.cc
 
 # threadpool_tests_CPPFLAGS = -I $(top_srcdir)/compat/boost-futures/inc
 
-utils_tests_LDADD = @BOOSTTHREADLIB@ @UTILS_LIBS@ ../src/libsutil.la
+utils_tests_LDADD = @BOOSTTHREADLIB@ @UTILS_LIBS@  \
+	../src/libsutil.la \
+	../../boost-test-helper/src/libsboosttesthelper.la
 
 TESTS = utils-tests
 

@@ -13,7 +13,8 @@ tiled_bitmap_tests_SOURCES = \
 tiled_bitmap_tests_LDADD = \
 	@BOOSTTHREADLIB@ \
 	../src/libstiledbitmap.la \
-	../../util/src/libsutil.la
+	../../util/src/libsutil.la \
+	../../boost-test-helper/src/libsboosttesthelper.la
 
 TESTS = tiled-bitmap-tests
 

@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2012 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -34,7 +34,7 @@ class LayerCoordinator: public TileInitialisationObserver,
 private:
   TileInternal::Ptr targetTile;
   std::map<TileInternal::Ptr,std::pair<int,int> > sourceTiles;
-  Scroom::Utils::Registrations registrations;
+  Scroom::Utils::StuffList registrations;
   LayerOperations* lo;
   boost::mutex mut;
   int unfinishedSourceTiles;

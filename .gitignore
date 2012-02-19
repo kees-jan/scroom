@@ -20,7 +20,9 @@ Makefile.in
 /doxyfile
 /gui/ENVIRONMENT
 /gui/src/scroom
-/compat/boost-futures/test/futures-test
+/libs/boost-test-helper/test/tests
+/libs/compat-tests/boost-future-test/futures-test
+/libs/sanity-tests/sanity-test
 /libs/threadpool/test/preconditions
 /libs/threadpool/test/threadpool-tests
 /libs/threadpool/test/preconditions
@@ -39,3 +41,4 @@ Makefile.in
 /missing
 /stamp-h1
 /doc/
+test_results.xml

@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2012 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -16,23 +16,5 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef REGISTRATION_HH
-#define REGISTRATION_HH
-
-#include <list>
-
-#include <boost/shared_ptr.hpp>
-#include <boost/weak_ptr.hpp>
-
-namespace Scroom
-{
-  namespace Utils
-  {
-    /** A Registration is a pointer to some private data. */
-    typedef boost::shared_ptr<void> Registration;
-    typedef boost::weak_ptr<void> RegistrationWeak;
-    typedef std::list<Registration> Registrations;
-  }
-}
-
-#endif
+#define BOOST_TEST_MODULE Sanity tests
+#include <boost/test/unit_test.hpp>

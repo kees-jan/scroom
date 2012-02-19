@@ -1,5 +1,5 @@
 # Scroom - Generic viewer for 2D data
-# Copyright (C) 2009-2011 Kees-Jan Dijkzeul
+# Copyright (C) 2009-2012 Kees-Jan Dijkzeul
 # 
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -80,6 +80,11 @@ AC_ARG_ENABLE([multithreading],
     [Use as few threads as possible (Debugging) @<:@default=no@:>@])],
   [want_multithreading=${enableval}],
   [want_multithreading=yes])
+AC_ARG_ENABLE([xml-test-output],
+  [AS_HELP_STRING([--enable-xml-test-output], 
+    [Generate test results in XML format @<:@default=no@:>@])],
+  [want_xml_test_output=${enableval}],
+  [want_xml_test_output=no])
   
 
 # Doxygen
@@ -142,10 +147,11 @@ AC_SUBST([BOOSTTHREADLIB], [$ac_cv_search__ZN5boost6thread6detachEv])
 
 #checking for boost unittests
 have_boost_test_headers=no
-AC_CHECK_HEADERS([boost/test/included/unit_test.hpp boost/test/unit_test.hpp], [have_boost_test_headers=yes])
+AC_CHECK_HEADERS([boost/test/unit_test.hpp], [have_boost_test_headers=yes])
 have_boost_test_lib=no
-# SCROOM_SEARCH_LIBS([],
-#                    [boost_unit_test_framework-mt libboost_unit_test_framework-gcc42-mt], [have_boost_test_lib=yes])
+SCROOM_SEARCH_LIBS([_ZN5boost9unit_test16results_reporter10set_streamERSo],
+                   [boost_unit_test_framework-mt libboost_unit_test_framework-gcc42-mt], [have_boost_test_lib=yes])
+AC_SUBST([BOOSTTESTLIB], [$ac_cv_search__ZN5boost9unit_test16results_reporter10set_streamERSo])
 
 # Checking for boost futures
 have_new_boost_futures=no
@@ -187,7 +193,12 @@ if test "x${have_boost_thread_lib}" = xno
 then
   AC_MSG_ERROR([Boost thread library not found.])
 fi
-want_boost_tests=$have_boost_test_headers
+
+want_boost_tests=no
+if test x$have_boost_test_headers = xyes -a x$have_boost_test_lib=xyes
+then
+  want_boost_tests=yes
+fi
 AM_CONDITIONAL([BOOST_UNITTESTS], [test x$want_boost_tests = xyes])
 if test "x${need_mutracx_hacks}" = xyes
 then
@@ -235,7 +246,10 @@ if test "x${want_multithreading}" = xyes
 then
   AC_DEFINE([MULTITHREADING], 1, [Use as many threads as needed])
 fi
-
+if test "x${want_xml_test_output}" = xyes
+then
+  AC_DEFINE([XML_TEST_OUTPUT], 1, [Have all Boost unittests report in xml format])
+fi
 
 # GetText
 dnl GETTEXT_PACKAGE=scroom
@@ -251,10 +265,15 @@ AC_CONFIG_FILES([Makefile
                  compat/Makefile
                  compat/boost-futures/Makefile
                  compat/boost-futures/inc/Makefile
-                 compat/boost-futures/test/Makefile
                  compat/boost-futures/doc/Makefile
                  inc/Makefile
                  libs/Makefile
+                 libs/boost-test-helper/Makefile
+                 libs/boost-test-helper/src/Makefile
+                 libs/boost-test-helper/test/Makefile
+                 libs/compat-tests/Makefile
+                 libs/compat-tests/boost-future-test/Makefile
+                 libs/sanity-tests/Makefile
                  libs/util/Makefile
                  libs/util/src/Makefile
                  libs/util/test/Makefile

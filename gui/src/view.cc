@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2012 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -37,6 +37,7 @@
 
 static const char *zoomfactor[] =
   {
+    "32:1",
     "16:1",
     "8:1",
     "4:1",
@@ -73,7 +74,7 @@ static const char *zoomfactor[] =
     "1:500 million",
     "1:1 billion",
   };
-static const int MaxZoom=4;
+static const int MaxZoom=5;
 
 enum
   {

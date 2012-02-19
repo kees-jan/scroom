@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2012 Kees-Jan Dijkzeul
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -62,7 +62,7 @@ void TileViewState::tileLoaded(Tile::Ptr tile)
   kick();
 }
 
-Scroom::Utils::Registration TileViewState::getCacheResult()
+Scroom::Utils::Stuff TileViewState::getCacheResult()
 {
   boost::mutex::scoped_lock l(mut);
   return zoomCache;
@@ -73,7 +73,7 @@ void TileViewState::setViewData(TiledBitmapViewData::Ptr tbvd)
   boost::mutex::scoped_lock l(mut);
   this->tbvd = tbvd;
 
-  Scroom::Utils::Registration lifeTimeManager = this->lifeTimeManager.lock();
+  Scroom::Utils::Stuff lifeTimeManager = this->lifeTimeManager.lock();
   if(!lifeTimeManager)
   {
     lifeTimeManager = boost::shared_ptr<void>((void*)0xDEAD,
@@ -201,7 +201,7 @@ void TileViewState::process(ThreadPool::WeakQueue::Ptr wq)
 
 void TileViewState::computeBase(ThreadPool::WeakQueue::Ptr wq, Tile::Ptr tile, LayerOperations* lo)
 {
-  Scroom::Utils::Registration baseCache = lo->cache(tile);
+  Scroom::Utils::Stuff baseCache = lo->cache(tile);
 
   boost::mutex::scoped_lock l(mut);
   TiledBitmapViewData::Ptr tbvd = this->tbvd.lock();
@@ -215,9 +215,9 @@ void TileViewState::computeBase(ThreadPool::WeakQueue::Ptr wq, Tile::Ptr tile, L
   }
 }
 
-void TileViewState::computeZoom(ThreadPool::WeakQueue::Ptr wq, Tile::Ptr tile, LayerOperations* lo, Scroom::Utils::Registration baseCache, int zoom)
+void TileViewState::computeZoom(ThreadPool::WeakQueue::Ptr wq, Tile::Ptr tile, LayerOperations* lo, Scroom::Utils::Stuff baseCache, int zoom)
 {
-  Scroom::Utils::Registration zoomCache = lo->cacheZoom(tile, zoom, baseCache);
+  Scroom::Utils::Stuff zoomCache = lo->cacheZoom(tile, zoom, baseCache);
 
   boost::mutex::scoped_lock l(mut);
   TiledBitmapViewData::Ptr tbvd = this->tbvd.lock();

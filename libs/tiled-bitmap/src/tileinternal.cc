@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2012 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -190,12 +190,12 @@ TileState TileInternal::getState()
   return result;
 }
 
-void TileInternal::observerAdded(TileInitialisationObserver::Ptr observer)
+void TileInternal::observerAdded(TileInitialisationObserver::Ptr observer, Scroom::Bookkeeping::Token)
 {
   observer->tileCreated(shared_from_this<TileInternal>());
 }
 
-void TileInternal::observerAdded(TileLoadingObserver::Ptr observer)
+void TileInternal::observerAdded(TileLoadingObserver::Ptr observer, Scroom::Bookkeeping::Token token)
 {
   Tile::Ptr result = tile.lock();
   ThreadPool::Queue::Ptr queue = this->queue.lock();
@@ -234,7 +234,7 @@ void TileInternal::observerAdded(TileLoadingObserver::Ptr observer)
 
   // When the last observer goes away, cancel the load
   if(queue)
-    Observable<TileLoadingObserver>::addRecursiveRegistration(observer, queue);
+    token.add(queue);
 
   if(result)
     observer->tileLoaded(result);

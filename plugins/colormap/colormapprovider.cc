@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2012 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -48,7 +48,7 @@ ColormapProvider::Ptr ColormapProvider::create(PresentationInterface::Ptr p)
   {
     result = ColormapProvider::Ptr(new ColormapProvider(c));
 
-    Scroom::Utils::Registration r = c->registerStrongObserver(result);
+    Scroom::Utils::Stuff r = c->registerStrongObserver(result);
     result->registration = r;
   }
   else

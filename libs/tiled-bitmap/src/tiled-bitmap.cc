@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2012 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -451,7 +451,7 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
         
         TileInternal::Ptr tile = layer->getTile(i,j);
         TileViewState::Ptr tileViewState = tile->getViewState(vi);
-        Scroom::Utils::Registration cacheResult = tileViewState->getCacheResult();
+        Scroom::Utils::Stuff cacheResult = tileViewState->getCacheResult();
         Tile::Ptr t = tile->getTileAsync();
 
         if(t)
@@ -579,7 +579,7 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
         
         TileInternal::Ptr tile = layer->getTile(i,j);
         TileViewState::Ptr tileViewState = tile->getViewState(vi);
-        Scroom::Utils::Registration cacheResult = tileViewState->getCacheResult();
+        Scroom::Utils::Stuff cacheResult = tileViewState->getCacheResult();
         Tile::Ptr t = tile->getTileAsync();
 
         // 3. Draw the area

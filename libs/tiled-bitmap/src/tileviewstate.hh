@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2012 Kees-Jan Dijkzeul
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -25,7 +25,7 @@
 
 #include <scroom/observable.hh>
 #include <scroom/threadpool.hh>
-#include <scroom/registration.hh>
+#include <scroom/stuff.hh>
 #include <scroom/tiledbitmapinterface.hh>
 
 #include "tileinternalobserverinterfaces.hh"
@@ -58,14 +58,14 @@ private:
   State desiredState;
   ThreadPool::Queue::Ptr queue;
   ThreadPool::WeakQueue::Ptr weakQueue;
-  Scroom::Utils::Registration r;
+  Scroom::Utils::Stuff r;
   Tile::Ptr tile;
   boost::weak_ptr<TiledBitmapViewData> tbvd;
   LayerOperations* lo;
   int zoom;
-  Scroom::Utils::RegistrationWeak lifeTimeManager;
-  Scroom::Utils::Registration baseCache;
-  Scroom::Utils::Registration zoomCache;
+  Scroom::Utils::StuffWeak lifeTimeManager;
+  Scroom::Utils::Stuff baseCache;
+  Scroom::Utils::Stuff zoomCache;
   ThreadPool::Ptr cpuBound;
   
 public:
@@ -73,7 +73,7 @@ public:
   
   static Ptr create(boost::shared_ptr<TileInternal> parent);
 
-  Scroom::Utils::Registration getCacheResult();
+  Scroom::Utils::Stuff getCacheResult();
   void setViewData(boost::shared_ptr<TiledBitmapViewData> tbvd);
   void setZoom(LayerOperations* lo, int zoom);
 
@@ -95,7 +95,7 @@ private:
 
   void computeBase(ThreadPool::WeakQueue::Ptr wq, Tile::Ptr tile, LayerOperations* lo);
   void computeZoom(ThreadPool::WeakQueue::Ptr wq, Tile::Ptr tile, LayerOperations* lo,
-                   Scroom::Utils::Registration baseCache, int zoom);
+                   Scroom::Utils::Stuff baseCache, int zoom);
   void reportDone(ThreadPool::WeakQueue::Ptr wq, Tile::Ptr tile);
   void clear();
 };

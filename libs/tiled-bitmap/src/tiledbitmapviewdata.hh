@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2012 Kees-Jan Dijkzeul
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -77,7 +77,7 @@ public:
 
   void setNeededTiles(Layer* l, int imin, int imax, int jmin, int jmax, int zoom, LayerOperations* layerOperations);
   void resetNeededTiles();
-  void storeVolatileStuff(Scroom::Utils::Registration stuff);
+  void storeVolatileStuff(Scroom::Utils::Stuff stuff);
   void clearVolatileStuff();
 
   // TileLoadingObserver ////////////////////////////////////////////////

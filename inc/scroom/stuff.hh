@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2012 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -16,4 +16,26 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include <boost/test/included/unit_test.hpp>
+#ifndef STUFF_HH
+#define STUFF_HH
+
+#include <list>
+
+#include <boost/shared_ptr.hpp>
+#include <boost/weak_ptr.hpp>
+
+namespace Scroom
+{
+  namespace Utils
+  {
+    /** Stuff is a pointer to some private data. */
+    typedef boost::shared_ptr<void> Stuff;
+    typedef boost::weak_ptr<void> StuffWeak;
+    typedef std::list<Stuff> StuffList;
+  }
+}
+
+
+
+
+#endif

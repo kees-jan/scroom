@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2012 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -80,7 +80,7 @@ public:
   ////////////////////////////////////////////////////////////////////////
 
 public:
-  virtual void observerAdded(Viewable::Ptr observer);
+  virtual void observerAdded(Viewable::Ptr observer, Scroom::Bookkeeping::Token token);
   void setColormap(Colormap::Ptr colormap);
   Colormap::Ptr getOriginalColormap();
   int getNumberOfColors();

@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2012 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -38,6 +38,7 @@ public:
 
   void setClip(cairo_t* cr, int x, int y, int width, int height);
   void setClip(cairo_t* cr, const GdkRectangle& area);
+  void drawPixelValue(cairo_t* cr, int x, int y, int size, int value);
   
   ////////////////////////////////////////////////////////////////////////
   // LayerOperations
@@ -45,12 +46,11 @@ public:
   virtual void initializeCairo(cairo_t* cr);
   virtual void drawState(cairo_t* cr, TileState s, GdkRectangle viewArea);
 
-  virtual Scroom::Utils::Registration cacheZoom(const Tile::Ptr tile, int zoom,
-                                                Scroom::Utils::Registration cache);
+  virtual Scroom::Utils::Stuff cacheZoom(const Tile::Ptr tile, int zoom,
+                                                Scroom::Utils::Stuff cache);
   virtual void draw(cairo_t* cr, const Tile::Ptr tile,
                     GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
-                    Scroom::Utils::Registration cache);
-
+                    Scroom::Utils::Stuff cache);
 };
 
 class Operations1bpp : public CommonOperations
@@ -64,7 +64,7 @@ public:
   // LayerOperations
 
   virtual int getBpp();
-  virtual Scroom::Utils::Registration cache(const Tile::Ptr tile);
+  virtual Scroom::Utils::Stuff cache(const Tile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y);
 };
 
@@ -79,8 +79,13 @@ public:
   // LayerOperations
 
   virtual int getBpp();
-  virtual Scroom::Utils::Registration cache(const Tile::Ptr tile);
+  virtual Scroom::Utils::Stuff cache(const Tile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y);
+
+  virtual void draw(cairo_t* cr, const Tile::Ptr tile,
+                    GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
+                    Scroom::Utils::Stuff cache);
+
 };
 
 class Operations : public CommonOperations
@@ -101,8 +106,12 @@ public:
   // LayerOperations
   
   virtual int getBpp();
-  virtual Scroom::Utils::Registration cache(const Tile::Ptr tile);
+  virtual Scroom::Utils::Stuff cache(const Tile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y);
+
+  virtual void draw(cairo_t* cr, const Tile::Ptr tile,
+                    GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
+                    Scroom::Utils::Stuff cache);
 };
 
 class OperationsColormapped : public Operations
@@ -117,7 +126,7 @@ public:
   // LayerOperations
 
   virtual int getBpp();
-  virtual Scroom::Utils::Registration cache(const Tile::Ptr tile);
+  virtual Scroom::Utils::Stuff cache(const Tile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const Tile::Ptr source, int x, int y);
 };
 
