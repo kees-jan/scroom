@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2011 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2012 Kees-Jan Dijkzeul
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -18,7 +18,7 @@
 
 #include "measure-framerate-callbacks.hh"
 
-#include "measure-framerate-tests.hh"
+#include "test-helpers.hh"
 
 #include <scroom/unused.h>
 
@@ -27,13 +27,11 @@
 std::vector<boost::function<bool ()> > functions;
 static unsigned int current=0;
 static GtkWidget* drawingArea=NULL;
-int drawingAreaWidth=0;
-int drawingAreaHeight=0;
 
 ////////////////////////////////////////////////////////////////////////
 // Internals
 
-gboolean on_configure(GtkWidget*, GdkEventConfigure*, gpointer)
+static gboolean on_configure(GtkWidget*, GdkEventConfigure*, gpointer)
 {
   // There should be a simpler way to do this...
   GdkRegion* r = gdk_drawable_get_visible_region(GDK_DRAWABLE(gtk_widget_get_window(drawingArea)));
@@ -53,7 +51,7 @@ static void on_hide(GtkWidget*, gpointer)
   gtk_main_quit();
 }
 
-gboolean on_expose(GtkWidget* widget, GdkEventExpose*, gpointer)
+static gboolean on_expose(GtkWidget* widget, GdkEventExpose*, gpointer)
 {
   cairo_t* cr = gdk_cairo_create(widget->window);
 

@@ -59,6 +59,16 @@ public:
   virtual void done() {};
 };
 
+class Source2Bpp : public SourcePresentation
+{
+public:
+  virtual ~Source2Bpp()
+  {}
+
+  virtual void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles);
+  virtual void done() {};
+};
+
 class Source4Bpp : public SourcePresentation
 {
 public:

@@ -19,10 +19,11 @@ AM_CPPFLAGS = @TIFFPLUGIN_CFLAGS@ -I $(top_srcdir)/inc -I $(top_srcdir)/plugins/
 # 
 # endif BOOST_UNITTESTS
 
-check_PROGRAMS = $(TBT) measure-framerate
+check_PROGRAMS = $(TBT) measure-framerate measure-load-performance
 
 measure_framerate_SOURCES = \
 	measure-framerate.cc \
+	test-helpers.cc test-helpers.hh \
 	measure-framerate-callbacks.hh measure-framerate-callbacks.cc \
 	measure-framerate-tests.hh measure-framerate-tests.cc \
 	measure-framerate-stubs.hh measure-framerate-stubs.cc
@@ -32,3 +33,15 @@ measure_framerate_LDADD = \
 	../src/libsptiff.la \
 	$(top_builddir)/libs/tiled-bitmap/src/libstiledbitmap.la
 
+measure_load_performance_SOURCES = \
+	measure-load-performance.cc \
+	test-helpers.cc test-helpers.hh \
+	measure-load-performance-tests.cc measure-load-performance-tests.hh \
+	measure-framerate-callbacks.hh measure-framerate-callbacks.cc \
+	measure-framerate-stubs.hh measure-framerate-stubs.cc
+
+measure_load_performance_LDADD = \
+	@TIFFPLUGIN_LIBS@ -L$(top_builddir)/libs/tiled-bitmap/src -lstiledbitmap @BOOSTTHREADLIB@ \
+	../src/libsptiff.la \
+	../../../libs/threadpool/src/libsthreadpool.la \
+	$(top_builddir)/libs/tiled-bitmap/src/libstiledbitmap.la

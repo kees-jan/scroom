@@ -18,46 +18,6 @@
 #ifndef MEASURE_FRAMERATE_TESTS_HH
 #define MEASURE_FRAMERATE_TESTS_HH
 
-#include <boost/shared_ptr.hpp>
-
-#include <gtk/gtk.h>
-
-#include <tiffpresentation.hh>
-#include <layeroperations.hh>
-
-#include "measure-framerate-stubs.hh"
-
-class TestData
-{
-public:
-  typedef boost::shared_ptr<TestData> Ptr;
-
-private:
-  ProgressInterfaceStub* pi;
-  ViewInterface* vi;
-  TiffPresentation::Ptr tp;
-  LayerSpec ls;
-  TiledBitmapInterface::Ptr tbi;
-  SourcePresentation* sp;
-  int zoom;
-
-private:
-  TestData(TiffPresentation::Ptr tp, const LayerSpec& ls,
-           TiledBitmapInterface::Ptr tbi, SourcePresentation* sp, int zoom);
-  
-public:
-  static Ptr create(TiffPresentation::Ptr tp, const LayerSpec& ls,
-                    TiledBitmapInterface::Ptr tbi, SourcePresentation* sp, int zoom);
-
-  ~TestData();
-
-  void redraw(cairo_t* cr);
-  bool wait();
-};
-
-extern TestData::Ptr testData;
-
 void init_tests();
-
 
 #endif
