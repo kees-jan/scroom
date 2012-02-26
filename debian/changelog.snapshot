@@ -1,3 +1,33 @@
+scroom (0.3.2-59-g37bae3f-1) oneiric; urgency=low
+
+  * Snapshot release
+
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Sun, 19 Feb 2012 16:00:17 +0100
+
+scroom (0.3.2-53-g2251116-1) oneiric; urgency=low
+
+  * Snapshot release
+
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Wed, 15 Feb 2012 23:28:47 +0100
+
+scroom (0.3.2-52-g35a7fc1-1) oneiric; urgency=low
+
+  * Snapshot release
+
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Wed, 15 Feb 2012 21:25:03 +0100
+
+scroom (0.3.2-25-g1dbb7c6-1) oneiric; urgency=low
+
+  * Snapshot release
+
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Mon, 30 Jan 2012 20:22:13 +0100
+
+scroom (0.3.2-22-gf1e419e-1) oneiric; urgency=low
+
+  * Snapshot release
+
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Sat, 21 Jan 2012 10:47:16 +0100
+
 scroom (0.3.2-1) lucid; urgency=low
 
   * For more info see
