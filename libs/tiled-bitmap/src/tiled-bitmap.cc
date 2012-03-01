@@ -152,9 +152,9 @@ void TiledBitmap::initialize()
   int height = bitmapHeight;
   unsigned int i = 0;
   int bpp = 0;
-  LayerOperations* lo = ls[i];
+  LayerOperations::Ptr lo = ls[i];
   Layer* prevLayer = NULL;
-  LayerOperations* prevLo = NULL;
+  LayerOperations::Ptr prevLo;
   Scroom::MemoryBlobs::PageProvider::Ptr provider = createProvider(width, height, lo->getBpp());
   do
   {
@@ -196,7 +196,7 @@ TiledBitmap::~TiledBitmap()
 }
 
 void TiledBitmap::connect(Layer* layer, Layer* prevLayer,
-                          LayerOperations* prevLo)
+                          LayerOperations::Ptr prevLo)
 {
   int horTileCount = prevLayer->getHorTileCount();
   int verTileCount = prevLayer->getVerTileCount();
@@ -381,7 +381,7 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
   {
     // Zooming in. This is always done using layer 0
     Layer* layer = layers[0];
-    LayerOperations* layerOperations = ls[0];
+    LayerOperations::Ptr layerOperations = ls[0];
 
     const int origWidth = presentationArea.width;
     const int origHeight = presentationArea.height;
@@ -506,7 +506,7 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
       presentationArea.height>>=3;
     }
     Layer* layer = layers[layerNr];
-    LayerOperations* layerOperations = ls[std::min(ls.size()-1, (size_t)layerNr)];
+    LayerOperations::Ptr layerOperations = ls[std::min(ls.size()-1, (size_t)layerNr)];
 
     const int origWidth = presentationArea.width;
     const int origHeight = presentationArea.height;

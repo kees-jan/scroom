@@ -25,7 +25,7 @@
 class TileReducer
 {
 private:
-  LayerOperations* lo;
+  LayerOperations::Ptr lo;
   TileInternal::Ptr targetTile;
   TileInternal::Ptr sourceTile;
   int x;
@@ -34,7 +34,7 @@ private:
   int& unfinishedSourceTiles;
   
 public:
-  TileReducer(LayerOperations* lo,
+  TileReducer(LayerOperations::Ptr lo,
               TileInternal::Ptr targetTile, TileInternal::Ptr sourceTile,
               int x, int y,
               boost::mutex& mut, int& unfinishedSourceTiles);
@@ -44,13 +44,13 @@ public:
 
 ////////////////////////////////////////////////////////////////////////
 
-LayerCoordinator::Ptr LayerCoordinator::create(TileInternal::Ptr targetTile, LayerOperations* lo)
+LayerCoordinator::Ptr LayerCoordinator::create(TileInternal::Ptr targetTile, LayerOperations::Ptr lo)
 {
   return LayerCoordinator::Ptr(new LayerCoordinator(targetTile, lo));
 }
 
 LayerCoordinator::LayerCoordinator(TileInternal::Ptr targetTile,
-                                   LayerOperations* lo)
+                                   LayerOperations::Ptr lo)
   : targetTile(targetTile), lo(lo), unfinishedSourceTiles(0)
 {
 }
@@ -86,7 +86,7 @@ void LayerCoordinator::tileFinished(TileInternal::Ptr tile)
 ////////////////////////////////////////////////////////////////////////
 /// TileReducer
 
-TileReducer::TileReducer(LayerOperations* lo,
+TileReducer::TileReducer(LayerOperations::Ptr lo,
                          TileInternal::Ptr targetTile, TileInternal::Ptr sourceTile,
                          int x, int y,
                          boost::mutex& mut, int& unfinishedSourceTiles)

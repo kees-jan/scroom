@@ -32,11 +32,7 @@ TestData::~TestData()
   tbi->close(vi);
   tbi.reset();
   delete sp;
-  while(!ls.empty())
-  {
-    delete ls.back();
-    ls.pop_back();
-  }
+  ls.clear();
   tp.reset();
   delete vi;
   delete pi;
@@ -126,8 +122,8 @@ bool setupTest1bpp(int zoom, int width, int height)
   tp->setColormap(colormap);
 
   LayerSpec ls;
-  ls.push_back(new Operations1bpp(tp.get()));
-  ls.push_back(new Operations8bpp(tp.get()));
+  ls.push_back(Operations1bpp::create(tp.get()));
+  ls.push_back(Operations8bpp::create(tp.get()));
 
   TiledBitmapInterface::Ptr tbi = createTiledBitmap(width, height, ls);
   SourcePresentation* sp = new Source1Bpp();
@@ -145,8 +141,8 @@ bool setupTest2bpp(int zoom, int width, int height)
   tp->setColormap(colormap);
 
   LayerSpec ls;
-  ls.push_back(new Operations(tp.get(), 2));
-  ls.push_back(new OperationsColormapped(tp.get(), 2));
+  ls.push_back(Operations::create(tp.get(), 2));
+  ls.push_back(OperationsColormapped::create(tp.get(), 2));
 
   TiledBitmapInterface::Ptr tbi = createTiledBitmap(width, height, ls);
   SourcePresentation* sp = new Source2Bpp();
@@ -164,8 +160,8 @@ bool setupTest4bpp(int zoom, int width, int height)
   tp->setColormap(colormap);
 
   LayerSpec ls;
-  ls.push_back(new Operations(tp.get(), 4));
-  ls.push_back(new OperationsColormapped(tp.get(), 4));
+  ls.push_back(Operations::create(tp.get(), 4));
+  ls.push_back(OperationsColormapped::create(tp.get(), 4));
 
   TiledBitmapInterface::Ptr tbi = createTiledBitmap(width, height, ls);
   SourcePresentation* sp = new Source4Bpp();
@@ -183,7 +179,7 @@ bool setupTest8bpp(int zoom, int width, int height)
   tp->setColormap(colormap);
 
   LayerSpec ls;
-  ls.push_back(new Operations8bpp(tp.get()));
+  ls.push_back(Operations8bpp::create(tp.get()));
 
   TiledBitmapInterface::Ptr tbi = createTiledBitmap(width, height, ls);
   SourcePresentation* sp = new Source8Bpp();
@@ -201,8 +197,8 @@ bool setupTest8bppColormapped(int zoom, int width, int height)
   tp->setColormap(colormap);
 
   LayerSpec ls;
-  ls.push_back(new Operations(tp.get(), 8));
-  ls.push_back(new OperationsColormapped(tp.get(), 8));
+  ls.push_back(Operations::create(tp.get(), 8));
+  ls.push_back(OperationsColormapped::create(tp.get(), 8));
 
   TiledBitmapInterface::Ptr tbi = createTiledBitmap(width, height, ls);
   SourcePresentation* sp = new Source8Bpp();

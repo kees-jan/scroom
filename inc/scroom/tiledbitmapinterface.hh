@@ -39,12 +39,13 @@
  * bitmap.
  */
 typedef enum
-  {
-    TILE_UNINITIALIZED, /**< Tile does not yet contain any data */
-    TILE_UNLOADED,      /**< Tile does contain data, but has been swapped out */
-    TILE_LOADED,        /**< Tile does contain data, and data is in memory */
-    TILE_OUT_OF_BOUNDS  /**< Tile is located outside the bitmap area */
-  } TileState;
+{
+  TILE_UNINITIALIZED, /**< Tile does not yet contain any data */
+  TILE_UNLOADED, /**< Tile does contain data, but has been swapped out */
+  TILE_LOADED, /**< Tile does contain data, and data is in memory */
+  TILE_OUT_OF_BOUNDS
+/**< Tile is located outside the bitmap area */
+} TileState;
 
 /**
  * Operations on a layer in the TiledBitmap
@@ -58,6 +59,9 @@ typedef enum
  */
 class LayerOperations
 {
+public:
+  typedef boost::shared_ptr<LayerOperations> Ptr;
+
 public:
   virtual ~LayerOperations()
   {
@@ -99,8 +103,8 @@ public:
    *    to the value returned by cache()
    */
   virtual void draw(cairo_t* cr, const ConstTile::Ptr tile,
-                    GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
-                    Scroom::Utils::Stuff cache)=0;
+      GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
+      Scroom::Utils::Stuff cache)=0;
 
   /**
    * Draw the given state into the given viewArea
@@ -131,7 +135,10 @@ public:
    * @param tile the Tile for which caching is requested
    */
   virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile)
-  { UNUSED(tile); return Scroom::Utils::Stuff(); }
+  {
+    UNUSED(tile);
+    return Scroom::Utils::Stuff();
+  }
 
   /**
    * Cache data for use during later draw() calls.
@@ -152,9 +159,14 @@ public:
    * @param cache the output of cache(const ConstTile::Ptr)
    */
   virtual Scroom::Utils::Stuff cacheZoom(const ConstTile::Ptr tile, int zoom,
-                                                Scroom::Utils::Stuff cache)
-  { UNUSED(tile); UNUSED(zoom); UNUSED(cache); return Scroom::Utils::Stuff(); }
-  
+      Scroom::Utils::Stuff cache)
+  {
+    UNUSED(tile);
+    UNUSED(zoom);
+    UNUSED(cache);
+    return Scroom::Utils::Stuff();
+  }
+
   /**
    * Reduce the source tile by a factor of 8
    *
@@ -172,7 +184,8 @@ public:
    *    on the ::LayerSpec given to ::createTiledBitmap()
    *
    */
-  virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y)=0;
+  virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x,
+      int y)=0;
 };
 
 /**
@@ -187,7 +200,7 @@ public:
  * LayerOperations objects in the ::LayerSpec, then the last
  * LayerOperations object will be used for all remaining layers.
  */
-typedef std::vector<LayerOperations*> LayerSpec;
+typedef std::vector<LayerOperations::Ptr> LayerSpec;
 
 /**
  * Provide bitmap data
@@ -196,7 +209,8 @@ class SourcePresentation
 {
 public:
   virtual ~SourcePresentation()
-  {}
+  {
+  }
 
   /**
    * Provide bitmap data
@@ -216,7 +230,8 @@ public:
    *    the first @c x coordinate is @c firsttile * @c tileWidth
    * @param tiles The tiles that are to be filled.
    */
-  virtual void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles)=0;
+  virtual void fillTiles(int startLine, int lineCount, int tileWidth,
+      int firstTile, std::vector<Tile::Ptr>& tiles)=0;
 
   /**
    * Done reading bitmap data
@@ -233,9 +248,10 @@ class TiledBitmapInterface: public Viewable
 {
 public:
   typedef boost::shared_ptr<TiledBitmapInterface> Ptr;
-  
+
   virtual ~TiledBitmapInterface()
-  {}
+  {
+  }
 
   /**
    * Provide bitmap data to the TiledBitmap
@@ -254,7 +270,8 @@ public:
    *
    * @see PresentationInterface::redraw()
    */
-  virtual void redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)=0;
+  virtual void redraw(ViewInterface* vi, cairo_t* cr,
+      GdkRectangle presentationArea, int zoom)=0;
 
   /**
    * Clear all bitmap caches related to the view.
@@ -306,7 +323,7 @@ public:
  *    use this pointer to manipulate your bitmap.
  * 
  */
-TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls);
-
+TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight,
+    LayerSpec& ls);
 
 #endif

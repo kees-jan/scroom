@@ -27,7 +27,7 @@ TiledBitmapViewData::Ptr TiledBitmapViewData::create(ViewInterface* viewInterfac
 
 TiledBitmapViewData::TiledBitmapViewData(ViewInterface* viewInterface)
   : viewInterface(viewInterface), progressInterface(viewInterface->getProgressInterface()),
-    layer(NULL), imin(0), imax(0), jmin(0), jmax(0), zoom(0), layerOperations(NULL)
+    layer(NULL), imin(0), imax(0), jmin(0), jmax(0), zoom(0), layerOperations()
 {
 }
 
@@ -37,7 +37,7 @@ TiledBitmapViewData::~TiledBitmapViewData()
 }
 
 void TiledBitmapViewData::setNeededTiles(Layer* l, int imin, int imax, int jmin, int jmax,
-                                         int zoom, LayerOperations* layerOperations)
+                                         int zoom, LayerOperations::Ptr layerOperations)
 {
   boost::unique_lock<boost::mutex> lock(mut);
 

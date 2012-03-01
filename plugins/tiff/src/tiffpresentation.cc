@@ -26,7 +26,7 @@
 #include "layeroperations.hh"
 
 TiffPresentation::TiffPresentation()
-  : fileName(), tif(NULL), height(0), width(0), tbi(), bpp(0)
+    : fileName(), tif(NULL), height(0), width(0), tbi(), bpp(0)
 {
   colormap = Colormap::createDefault(256);
 }
@@ -34,20 +34,15 @@ TiffPresentation::TiffPresentation()
 TiffPresentation::~TiffPresentation()
 {
   printf("TiffPresentation: Destructing...\n");
-  
-  if(tif != NULL)
+
+  if (tif != NULL)
   {
     TIFFClose(tif);
-    tif=NULL;
+    tif = NULL;
   }
 
   tbi.reset();
-
-  while(!ls.empty())
-  {
-    delete ls.back();
-    ls.pop_back();
-  }
+  ls.clear();
 }
 
 bool TiffPresentation::load(std::string fileName)
@@ -77,81 +72,85 @@ bool TiffPresentation::load(std::string fileName)
 
   uint16 *r, *g, *b;
   int result = TIFFGetField(tif, TIFFTAG_COLORMAP, &r, &g, &b);
-  if(result==1)
+  if (result == 1)
   {
     originalColormap = Colormap::create();
     originalColormap->name = "Original";
-    int count = 1<<bpp;
+    int count = 1 << bpp;
     originalColormap->colors.resize(count);
-    
-    for(int i=0; i<count; i++)
+
+    for (int i = 0; i < count; i++)
     {
-      originalColormap->colors[i] = Color(1.0*r[i]/0xFFFF, 1.0*g[i]/0xFFFF, 1.0*b[i]/0xFFFF);
+      originalColormap->colors[i] = Color(1.0 * r[i] / 0xFFFF,
+          1.0 * g[i] / 0xFFFF, 1.0 * b[i] / 0xFFFF);
     }
   }
   else
   {
-    colormap = Colormap::createDefault(1<<bpp);
+    colormap = Colormap::createDefault(1 << bpp);
   }
-  
+
   uint16 photometric;
   TIFFGetField(tif, TIFFTAG_PHOTOMETRIC, &photometric);
-  switch(photometric)
+  switch (photometric)
   {
   case PHOTOMETRIC_MINISBLACK:
-    if(originalColormap)
-      printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
+    if (originalColormap)
+      printf(
+          "WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
 
-    if(bpp==1 || bpp==8)
+    if (bpp == 1 || bpp == 8)
       originalColormap = Colormap::createDefault(2);
     else
-      originalColormap = Colormap::createDefault(1<<bpp);
-    
+      originalColormap = Colormap::createDefault(1 << bpp);
+
     break;
-      
+
   case PHOTOMETRIC_MINISWHITE:
-    if(originalColormap)
-      printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
-    
-    if(bpp==1 || bpp==8)
+    if (originalColormap)
+      printf(
+          "WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
+
+    if (bpp == 1 || bpp == 8)
       originalColormap = Colormap::createDefaultInverted(2);
     else
-      originalColormap = Colormap::createDefaultInverted(1<<bpp);
-    
+      originalColormap = Colormap::createDefaultInverted(1 << bpp);
+
     break;
-      
+
   case PHOTOMETRIC_PALETTE:
-    if(!originalColormap)
+    if (!originalColormap)
     {
-      printf("WEIRD: Photometric is palette, but tiff doesn't contain a colormap\n");
-      originalColormap = Colormap::createDefault(1<<bpp);
+      printf(
+          "WEIRD: Photometric is palette, but tiff doesn't contain a colormap\n");
+      originalColormap = Colormap::createDefault(1 << bpp);
     }
     break;
-      
+
   default:
     printf("PANIC: Unrecognized value for photometric\n");
     break;
   }
 
   colormap = originalColormap;
-    
+
   printf("This bitmap has size %d*%d\n", width, height);
   ls.clear();
 
-  if(bpp==2 || bpp==4 || photometric == PHOTOMETRIC_PALETTE)
+  if (bpp == 2 || bpp == 4 || photometric == PHOTOMETRIC_PALETTE)
   {
-    ls.push_back(new Operations(this, bpp));
-    ls.push_back(new OperationsColormapped(this, bpp));
-    properties[COLORMAPPABLE_PROPERTY_NAME]="";
+    ls.push_back(Operations::create(this, bpp));
+    ls.push_back(OperationsColormapped::create(this, bpp));
+    properties[COLORMAPPABLE_PROPERTY_NAME] = "";
   }
-  else if(bpp==1)
+  else if (bpp == 1)
   {
-    ls.push_back(new Operations1bpp(this));
-    ls.push_back(new Operations8bpp(this));
+    ls.push_back(Operations1bpp::create(this));
+    ls.push_back(Operations8bpp::create(this));
   }
-  else if(bpp==8)
+  else if (bpp == 8)
   {
-    ls.push_back(new Operations8bpp(this));
+    ls.push_back(Operations8bpp::create(this));
   }
   else
   {
@@ -162,7 +161,7 @@ bool TiffPresentation::load(std::string fileName)
   tbi->setSource(this);
   return true;
 }
-  
+
 ////////////////////////////////////////////////////////////////////////
 // PresentationInterface
 ////////////////////////////////////////////////////////////////////////
@@ -170,10 +169,10 @@ bool TiffPresentation::load(std::string fileName)
 GdkRectangle TiffPresentation::getRect()
 {
   GdkRectangle rect;
-  rect.x=0;
-  rect.y=0;
-  rect.width=width;
-  rect.height=height;
+  rect.x = 0;
+  rect.y = 0;
+  rect.width = width;
+  rect.height = height;
 
   return rect;
 }
@@ -182,17 +181,18 @@ void TiffPresentation::open(ViewInterface* viewInterface)
 {
   views.push_back(viewInterface);
   std::list<Viewable::Ptr> observers = getObservers();
-  for(std::list<Viewable::Ptr>::iterator cur=observers.begin();
-      cur!=observers.end(); ++cur)
+  for (std::list<Viewable::Ptr>::iterator cur = observers.begin();
+      cur != observers.end(); ++cur)
   {
     (*cur)->open(viewInterface);
   }
-  
-  if(tbi)
+
+  if (tbi)
     tbi->open(viewInterface);
   else
   {
-    printf("ERROR: TiffPresentation::open(): No TiledBitmapInterface available!\n");
+    printf(
+        "ERROR: TiffPresentation::open(): No TiledBitmapInterface available!\n");
   }
 }
 
@@ -200,23 +200,25 @@ void TiffPresentation::close(ViewInterface* vi)
 {
   views.remove(vi);
   std::list<Viewable::Ptr> observers = getObservers();
-  for(std::list<Viewable::Ptr>::iterator cur=observers.begin();
-      cur!=observers.end(); ++cur)
+  for (std::list<Viewable::Ptr>::iterator cur = observers.begin();
+      cur != observers.end(); ++cur)
   {
     (*cur)->close(vi);
   }
-  
-  if(tbi)
+
+  if (tbi)
     tbi->close(vi);
   else
   {
-    printf("ERROR: TiffPresentation::close(): No TiledBitmapInterface available!\n");
+    printf(
+        "ERROR: TiffPresentation::close(): No TiledBitmapInterface available!\n");
   }
 }
 
-void TiffPresentation::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
+void TiffPresentation::redraw(ViewInterface* vi, cairo_t* cr,
+    GdkRectangle presentationArea, int zoom)
 {
-  if(tbi)
+  if (tbi)
     tbi->redraw(vi, cr, presentationArea, zoom);
 }
 
@@ -224,7 +226,7 @@ bool TiffPresentation::getProperty(const std::string& name, std::string& value)
 {
   std::map<std::string, std::string>::iterator p = properties.find(name);
   bool found = false;
-  if(p == properties.end())
+  if (p == properties.end())
   {
     found = false;
     value = "";
@@ -234,7 +236,7 @@ bool TiffPresentation::getProperty(const std::string& name, std::string& value)
     found = true;
     value = p->second;
   }
-  
+
   return found;
 }
 
@@ -248,42 +250,44 @@ std::string TiffPresentation::getTitle()
   return fileName;
 }
 
-
 ////////////////////////////////////////////////////////////////////////
 // SourcePresentation
 ////////////////////////////////////////////////////////////////////////
 
-void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles)
+void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth,
+    int firstTile, std::vector<Tile::Ptr>& tiles)
 {
   // printf("Filling lines %d to %d, tile %d to %d (tileWidth = %d)\n",
   //        startLine, startLine+lineCount,
   //        firstTile, (int)(firstTile+tiles.size()),
   //        tileWidth);
 
-  int pixelsPerByte = 8/bpp;
-  int dataLength = (width+pixelsPerByte-1)/pixelsPerByte;
+  int pixelsPerByte = 8 / bpp;
+  int dataLength = (width + pixelsPerByte - 1) / pixelsPerByte;
   byte row[dataLength];
 
   int tileCount = tiles.size();
   byte* dataPtr[tileCount];
-  for(int tile=0; tile<tileCount; tile++)
+  for (int tile = 0; tile < tileCount; tile++)
   {
     dataPtr[tile] = tiles[tile]->data.get();
   }
 
-  for(int i=0; i<lineCount; i++)
+  for (int i = 0; i < lineCount; i++)
   {
-    TIFFReadScanline(tif, (tdata_t)row, startLine+i);
+    TIFFReadScanline(tif, (tdata_t) row, startLine + i);
 
-    for(int tile=0; tile<tileCount-1; tile++)
+    for (int tile = 0; tile < tileCount - 1; tile++)
     {
-      memcpy(dataPtr[tile], row+(firstTile+tile)*tileWidth/pixelsPerByte, tileWidth/pixelsPerByte);
-      dataPtr[tile]+=tileWidth/pixelsPerByte;
+      memcpy(dataPtr[tile],
+          row + (firstTile + tile) * tileWidth / pixelsPerByte,
+          tileWidth / pixelsPerByte);
+      dataPtr[tile] += tileWidth / pixelsPerByte;
     }
-    memcpy(dataPtr[tileCount-1],
-           row+(firstTile+tileCount-1)*tileWidth/pixelsPerByte,
-           dataLength - (firstTile+tileCount-1)*tileWidth/pixelsPerByte);
-    dataPtr[tileCount-1]+=tileWidth/pixelsPerByte;
+    memcpy(dataPtr[tileCount - 1],
+        row + (firstTile + tileCount - 1) * tileWidth / pixelsPerByte,
+        dataLength - (firstTile + tileCount - 1) * tileWidth / pixelsPerByte);
+    dataPtr[tileCount - 1] += tileWidth / pixelsPerByte;
   }
 }
 
@@ -297,22 +301,23 @@ void TiffPresentation::done()
 // Colormappable
 ////////////////////////////////////////////////////////////////////////
 
-void TiffPresentation::observerAdded(Viewable::Ptr observer, Scroom::Bookkeeping::Token)
+void TiffPresentation::observerAdded(Viewable::Ptr observer,
+    Scroom::Bookkeeping::Token)
 {
-  for(std::list<ViewInterface*>::iterator cur=views.begin();
-      cur!=views.end(); ++cur)
+  for (std::list<ViewInterface*>::iterator cur = views.begin();
+      cur != views.end(); ++cur)
   {
     observer->open(*cur);
   }
-}  
+}
 
 void TiffPresentation::setColormap(Colormap::Ptr colormap)
 {
   this->colormap = colormap;
-  for(std::list<ViewInterface*>::iterator cur=views.begin();
-      cur!=views.end(); ++cur)
+  for (std::list<ViewInterface*>::iterator cur = views.begin();
+      cur != views.end(); ++cur)
   {
-    if(tbi)
+    if (tbi)
     {
       printf("Clearing caches for %p\n", *cur);
       tbi->clearCaches(*cur);

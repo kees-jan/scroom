@@ -61,7 +61,7 @@ private:
   Scroom::Utils::Stuff r;
   ConstTile::Ptr tile;
   boost::weak_ptr<TiledBitmapViewData> tbvd;
-  LayerOperations* lo;
+  LayerOperations::Ptr lo;
   int zoom;
   Scroom::Utils::StuffWeak lifeTimeManager;
   Scroom::Utils::Stuff baseCache;
@@ -75,7 +75,7 @@ public:
 
   Scroom::Utils::Stuff getCacheResult();
   void setViewData(boost::shared_ptr<TiledBitmapViewData> tbvd);
-  void setZoom(LayerOperations* lo, int zoom);
+  void setZoom(LayerOperations::Ptr lo, int zoom);
 
   // TileLoadingObserver /////////////////////////////////////////////////
   virtual void tileLoaded(ConstTile::Ptr tile);
@@ -93,8 +93,8 @@ private:
    */
   void process(ThreadPool::WeakQueue::Ptr wq);
 
-  void computeBase(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr tile, LayerOperations* lo);
-  void computeZoom(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr tile, LayerOperations* lo,
+  void computeBase(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr tile, LayerOperations::Ptr lo);
+  void computeZoom(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr tile, LayerOperations::Ptr lo,
                    Scroom::Utils::Stuff baseCache, int zoom);
   void reportDone(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr tile);
   void clear();

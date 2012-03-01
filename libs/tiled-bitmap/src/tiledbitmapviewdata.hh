@@ -44,7 +44,7 @@ private:
   int jmin;
   int jmax;
   int zoom;
-  LayerOperations* layerOperations;
+  LayerOperations::Ptr layerOperations;
 
   /**
    * References to things we want to keep around.
@@ -75,7 +75,7 @@ public:
   static Ptr create(ViewInterface* viewInterface);
   virtual ~TiledBitmapViewData();
 
-  void setNeededTiles(Layer* l, int imin, int imax, int jmin, int jmax, int zoom, LayerOperations* layerOperations);
+  void setNeededTiles(Layer* l, int imin, int imax, int jmin, int jmax, int zoom, LayerOperations::Ptr layerOperations);
   void resetNeededTiles();
   void storeVolatileStuff(Scroom::Utils::Stuff stuff);
   void clearVolatileStuff();

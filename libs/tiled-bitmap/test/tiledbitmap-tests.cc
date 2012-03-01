@@ -26,6 +26,8 @@
 
 class DummyLayerOperations: public LayerOperations
 {
+public:
+  static Ptr create() { return Ptr(new DummyLayerOperations()); }
   virtual ~DummyLayerOperations() {}
 
   virtual int getBpp() { return 8; }
@@ -42,7 +44,7 @@ BOOST_AUTO_TEST_SUITE(TiledBitmap_Tests)
 BOOST_AUTO_TEST_CASE(tiledbitmap_can_be_deleted)
 {
   LayerSpec ls;
-  ls.push_back(new DummyLayerOperations());
+  ls.push_back(DummyLayerOperations::create());
   TiledBitmapInterface::Ptr bitmap = createTiledBitmap(300000, 300000, ls);
   BOOST_CHECK(bitmap);
   boost::weak_ptr<TiledBitmapInterface> weak = bitmap;

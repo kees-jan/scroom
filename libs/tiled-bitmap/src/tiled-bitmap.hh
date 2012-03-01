@@ -94,7 +94,7 @@ private:
   
 private:
   void drawTile(cairo_t* cr, const TileInternal::Ptr tile, const GdkRectangle viewArea);
-  void connect(Layer* layer, Layer* prevLayer, LayerOperations* prevLo);
+  void connect(Layer* layer, Layer* prevLayer, LayerOperations::Ptr prevLo);
 
   // ProgressInterface ///////////////////////////////////////////////////
   

@@ -35,21 +35,21 @@ private:
   TileInternal::Ptr targetTile;
   std::map<TileInternal::Ptr,std::pair<int,int> > sourceTiles;
   Scroom::Utils::StuffList registrations;
-  LayerOperations* lo;
+  LayerOperations::Ptr lo;
   boost::mutex mut;
   int unfinishedSourceTiles;
 
 public:
   typedef boost::shared_ptr<LayerCoordinator> Ptr;
   
-  static Ptr create(TileInternal::Ptr targetTile, LayerOperations* lo);
+  static Ptr create(TileInternal::Ptr targetTile, LayerOperations::Ptr lo);
   
   virtual ~LayerCoordinator();
   
   void addSourceTile(int x, int y, TileInternal::Ptr tile);
 
 private:
-  LayerCoordinator(TileInternal::Ptr targetTile, LayerOperations* lo);
+  LayerCoordinator(TileInternal::Ptr targetTile, LayerOperations::Ptr lo);
 
 public:
   ////////////////////////////////////////////////////////////////////////

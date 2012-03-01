@@ -40,7 +40,7 @@ TileViewState::Ptr TileViewState::create(boost::shared_ptr<TileInternal> parent)
 }
 
 TileViewState::TileViewState(boost::shared_ptr<TileInternal> parent)
-  : parent(parent), state(INIT), desiredState(LOADED), lo(NULL), zoom(0), cpuBound(CpuBound())
+  : parent(parent), state(INIT), desiredState(LOADED), lo(), zoom(0), cpuBound(CpuBound())
 {
 }
 
@@ -86,7 +86,7 @@ void TileViewState::setViewData(TiledBitmapViewData::Ptr tbvd)
   kick();
 }
 
-void TileViewState::setZoom(LayerOperations* lo, int zoom)
+void TileViewState::setZoom(LayerOperations::Ptr lo, int zoom)
 {
   bool mustKick = false;
   
@@ -199,7 +199,7 @@ void TileViewState::process(ThreadPool::WeakQueue::Ptr wq)
   }
 }
 
-void TileViewState::computeBase(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr tile, LayerOperations* lo)
+void TileViewState::computeBase(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr tile, LayerOperations::Ptr lo)
 {
   Scroom::Utils::Stuff baseCache = lo->cache(tile);
 
@@ -215,7 +215,7 @@ void TileViewState::computeBase(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr ti
   }
 }
 
-void TileViewState::computeZoom(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr tile, LayerOperations* lo, Scroom::Utils::Stuff baseCache, int zoom)
+void TileViewState::computeZoom(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr tile, LayerOperations::Ptr lo, Scroom::Utils::Stuff baseCache, int zoom)
 {
   Scroom::Utils::Stuff zoomCache = lo->cacheZoom(tile, zoom, baseCache);
 

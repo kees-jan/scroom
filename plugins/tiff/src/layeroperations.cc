@@ -397,6 +397,11 @@ void CommonOperations::draw(cairo_t* cr, const ConstTile::Ptr tile,
 ////////////////////////////////////////////////////////////////////////
 // Operations1bpp
 
+LayerOperations::Ptr Operations1bpp::create(TiffPresentation* presentation)
+{
+  return Ptr(new Operations1bpp(presentation));
+}
+
 Operations1bpp::Operations1bpp(TiffPresentation* presentation)
   : CommonOperations(presentation)
 {
@@ -469,6 +474,11 @@ void Operations1bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x
 
 ////////////////////////////////////////////////////////////////////////
 // Operations8bpp
+
+LayerOperations::Ptr Operations8bpp::create(TiffPresentation* presentation)
+{
+  return Ptr(new Operations8bpp(presentation));
+}
 
 Operations8bpp::Operations8bpp(TiffPresentation* presentation)
   : CommonOperations(presentation)
@@ -585,6 +595,11 @@ void Operations8bpp::draw(cairo_t* cr, const ConstTile::Ptr tile,
 
 ////////////////////////////////////////////////////////////////////////
 // Operations
+
+LayerOperations::Ptr Operations::create(TiffPresentation* presentation, int bpp)
+{
+  return Ptr(new Operations(presentation, bpp));
+}
 
 Operations::Operations(TiffPresentation* presentation, int bpp)
   : CommonOperations(presentation), 
@@ -723,6 +738,11 @@ void Operations::draw(cairo_t* cr, const ConstTile::Ptr tile,
 
 ////////////////////////////////////////////////////////////////////////
 // OperationsColormapped
+
+LayerOperations::Ptr OperationsColormapped::create(TiffPresentation* presentation, int bpp)
+{
+  return Ptr(new OperationsColormapped(presentation, bpp));
+}
 
 OperationsColormapped::OperationsColormapped(TiffPresentation* presentation, int bpp)
   : Operations(presentation, bpp)

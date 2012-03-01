@@ -56,6 +56,7 @@ public:
 class Operations1bpp : public CommonOperations
 {
 public:
+  static Ptr create(TiffPresentation* presentation);
   Operations1bpp(TiffPresentation* presentation);
   virtual ~Operations1bpp()
   {}
@@ -71,6 +72,7 @@ public:
 class Operations8bpp : public CommonOperations
 {
 public:
+  static Ptr create(TiffPresentation* presentation);
   Operations8bpp(TiffPresentation* presentation);
   virtual ~Operations8bpp()
   {}
@@ -96,6 +98,7 @@ protected:
   const unsigned pixelMask;
 
 public:
+  static Ptr create(TiffPresentation* presentation, int bpp);
   Operations(TiffPresentation* presentation, int bpp);
   
   virtual ~Operations()
@@ -116,6 +119,7 @@ public:
 class OperationsColormapped : public Operations
 {
 public:
+  static Ptr create(TiffPresentation* presentation, int bpp);
   OperationsColormapped(TiffPresentation* presentation, int bpp);
 
   virtual ~OperationsColormapped()
