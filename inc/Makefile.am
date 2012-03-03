@@ -21,6 +21,7 @@ nobase_include_HEADERS = \
 	scroom/async-deleter.hh \
 	scroom/stuff.hh \
 	scroom/bookkeeping.hh \
-	scroom/impl/bookkeepingimpl.hh
+	scroom/impl/bookkeepingimpl.hh \
+	scroom/gtk-helpers.hh
 
 
