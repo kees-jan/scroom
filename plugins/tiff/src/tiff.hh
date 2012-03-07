@@ -21,17 +21,26 @@
 
 #include <scroom/plugininformationinterface.hh>
 #include <scroom/presentationinterface.hh>
+#include <scroom/utilities.hh>
 
-class Tiff : public PluginInformationInterface, public OpenInterface
+class Tiff : public PluginInformationInterface, public OpenInterface, public Scroom::Utils::Base
 {
+public:
+  typedef boost::shared_ptr<Tiff> Ptr;
+
+private:
+  Tiff();
+
+public:
+  static Ptr create();
+
 public:
   ////////////////////////////////////////////////////////////////////////
   // PluginInformationInterface
   
   virtual std::string getPluginName();
   virtual std::string getPluginVersion();
-  virtual void registerCapabilities(ScroomInterface* host);
-  virtual void unregisterCapabilities(ScroomInterface* host);
+  virtual void registerCapabilities(ScroomInterface::Ptr host);
 
   ////////////////////////////////////////////////////////////////////////
   // OpenInterface

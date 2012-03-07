@@ -24,8 +24,16 @@
 
 #include "tiffpresentation.hh"
 
+Tiff::Tiff()
+{
+}
 Tiff::~Tiff()
 {
+}
+
+Tiff::Ptr Tiff::create()
+{
+  return Ptr(new Tiff());
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -42,14 +50,9 @@ std::string Tiff::getPluginVersion()
   return "0.0";
 }
 
-void Tiff::registerCapabilities(ScroomInterface* host)
+void Tiff::registerCapabilities(ScroomInterface::Ptr host)
 {
-  host->registerOpenInterface("Tiff viewer", this);
-}
-
-void Tiff::unregisterCapabilities(ScroomInterface* host)
-{
-  host->unregisterOpenInterface(this);
+  host->registerOpenInterface("Tiff viewer", shared_from_this<Tiff>());
 }
 
 ////////////////////////////////////////////////////////////////////////

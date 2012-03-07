@@ -61,8 +61,8 @@ public:
 
 public:
   // Viewable ////////////////////////////////////////////////////////////
-  void open(ViewInterface* vi);
-  void close(ViewInterface* vi);
+  void open(ViewInterface::Ptr vi);
+  void close(ViewInterface::Ptr vi);
 };
 
 

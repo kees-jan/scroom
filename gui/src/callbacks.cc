@@ -46,7 +46,7 @@ static std::string xmlFileName;
 static GladeXML* aboutDialogXml=NULL;
 static GtkWidget* aboutDialog=NULL;
 
-static std::list<View*> views;
+static std::list<View::Ptr> views;
 static std::list<PresentationInterface::WeakPtr> presentations;
 static std::list<std::string> filenames;
 static std::string currentFolder;
@@ -80,9 +80,9 @@ void on_open_activate (GtkMenuItem*, gpointer user_data)
                                         NULL);
   gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER (dialog), currentFolder.c_str());
     
-  const std::map<OpenInterface*, std::string>& openInterfaces = PluginManager::getInstance().getOpenInterfaces();
+  const std::map<OpenInterface::Ptr, std::string>& openInterfaces = PluginManager::getInstance()->getOpenInterfaces();
 
-  for(std::map<OpenInterface*, std::string>::const_iterator cur=openInterfaces.begin();
+  for(std::map<OpenInterface::Ptr, std::string>::const_iterator cur=openInterfaces.begin();
       cur != openInterfaces.end();
       cur++)
   {
@@ -152,8 +152,8 @@ void on_save_as_activate (GtkMenuItem*, gpointer)
 
 void on_quit_activate (GtkMenuItem*, gpointer)
 {
-  static std::list<View*> v(views);
-  BOOST_FOREACH(View* view, v)
+  static std::list<View::Ptr> v(views);
+  BOOST_FOREACH(View::Ptr view, v)
   {
     view->hide();
   }
@@ -333,7 +333,7 @@ void on_scroom_bootstrap (const std::list<std::string>& newFilenames)
 
 void find_or_create_scroom(PresentationInterface::Ptr presentation)
 {
-  for(std::list<View*>::iterator cur = views.begin(); cur != views.end(); cur++)
+  for(std::list<View::Ptr>::iterator cur = views.begin(); cur != views.end(); cur++)
   {
     if(!(*cur)->hasPresentation())
     {
@@ -354,7 +354,7 @@ void create_scroom(PresentationInterface::Ptr presentation)
     exit(-1);
   }
 
-  View* view = new View(xml, presentation);
+  View::Ptr view = View::create(xml, presentation);
   on_view_created(view);
 
   GtkWidget* scroom = glade_xml_get_widget(xml, "scroom");
@@ -369,46 +369,46 @@ void create_scroom(PresentationInterface::Ptr presentation)
   GtkAdjustment* vscrollbaradjustment = gtk_range_get_adjustment(GTK_RANGE(vscrollbar));
   GtkAdjustment* hscrollbaradjustment = gtk_range_get_adjustment(GTK_RANGE(hscrollbar));
 
-  g_signal_connect ((gpointer) scroom, "hide", G_CALLBACK (on_scroom_hide), view);
+  g_signal_connect ((gpointer) scroom, "hide", G_CALLBACK (on_scroom_hide), view.get());
   // g_signal_connect ((gpointer) open, "activate",
   //                   G_CALLBACK (on_open_activate),
-  //                   view);
+  //                   view.get());
   // g_signal_connect ((gpointer) save, "activate",
   //                   G_CALLBACK (on_save_activate),
-  //                   view);
+  //                   view.get());
   // g_signal_connect ((gpointer) save_as, "activate",
   //                   G_CALLBACK (on_save_as_activate),
-  //                   view);
-  // g_signal_connect ((gpointer) newMenuItem, "activate", G_CALLBACK (on_new_activate), view);
-  g_signal_connect ((gpointer) quitMenuItem, "activate", G_CALLBACK (on_quit_activate), view);
+  //                   view.get());
+  // g_signal_connect ((gpointer) newMenuItem, "activate", G_CALLBACK (on_new_activate), view.get());
+  g_signal_connect ((gpointer) quitMenuItem, "activate", G_CALLBACK (on_quit_activate), view.get());
   g_signal_connect ((gpointer) openMenuItem, "activate", G_CALLBACK (on_open_activate), scroom);
-  g_signal_connect ((gpointer) zoomBox, "changed", G_CALLBACK (on_zoombox_changed), view);
-  g_signal_connect ((gpointer) vscrollbaradjustment, "value-changed", G_CALLBACK(on_scrollbar_value_changed), view);
-  g_signal_connect ((gpointer) hscrollbaradjustment, "value-changed", G_CALLBACK(on_scrollbar_value_changed), view);
+  g_signal_connect ((gpointer) zoomBox, "changed", G_CALLBACK (on_zoombox_changed), view.get());
+  g_signal_connect ((gpointer) vscrollbaradjustment, "value-changed", G_CALLBACK(on_scrollbar_value_changed), view.get());
+  g_signal_connect ((gpointer) hscrollbaradjustment, "value-changed", G_CALLBACK(on_scrollbar_value_changed), view.get());
   // g_signal_connect ((gpointer) cut, "activate",
   //                   G_CALLBACK (on_cut_activate),
-  //                   view);
+  //                   view.get());
   // g_signal_connect ((gpointer) copy, "activate",
   //                   G_CALLBACK (on_copy_activate),
-  //                   view);
+  //                   view.get());
   // g_signal_connect ((gpointer) paste, "activate",
   //                   G_CALLBACK (on_paste_activate),
-  //                   view);
+  //                   view.get());
   // g_signal_connect ((gpointer) delete, "activate",
   //                   G_CALLBACK (on_delete_activate),
-  //                   view);
-  g_signal_connect ((gpointer) aboutMenuItem, "activate", G_CALLBACK (on_about_activate), view);
-  g_signal_connect ((gpointer) drawingArea, "expose_event", G_CALLBACK (on_drawingarea_expose_event), view);
-  g_signal_connect ((gpointer) drawingArea, "configure_event", G_CALLBACK (on_drawingarea_configure_event), view);
-  g_signal_connect ((gpointer) drawingArea, "button-press-event", G_CALLBACK (on_button_press_event), view);
-  g_signal_connect ((gpointer) drawingArea, "button-release-event", G_CALLBACK (on_button_release_event), view);
-  g_signal_connect ((gpointer) drawingArea, "scroll-event", G_CALLBACK (on_scroll_event), view);
-  g_signal_connect ((gpointer) drawingArea, "motion-notify-event", G_CALLBACK (on_motion_notify_event), view);
+  //                   view.get());
+  g_signal_connect ((gpointer) aboutMenuItem, "activate", G_CALLBACK (on_about_activate), view.get());
+  g_signal_connect ((gpointer) drawingArea, "expose_event", G_CALLBACK (on_drawingarea_expose_event), view.get());
+  g_signal_connect ((gpointer) drawingArea, "configure_event", G_CALLBACK (on_drawingarea_configure_event), view.get());
+  g_signal_connect ((gpointer) drawingArea, "button-press-event", G_CALLBACK (on_button_press_event), view.get());
+  g_signal_connect ((gpointer) drawingArea, "button-release-event", G_CALLBACK (on_button_release_event), view.get());
+  g_signal_connect ((gpointer) drawingArea, "scroll-event", G_CALLBACK (on_scroll_event), view.get());
+  g_signal_connect ((gpointer) drawingArea, "motion-notify-event", G_CALLBACK (on_motion_notify_event), view.get());
 }
 
-void on_newInterfaces_update(const std::map<NewInterface*, std::string>& newInterfaces)
+void on_newInterfaces_update(const std::map<NewInterface::Ptr, std::string>& newInterfaces)
 {
-  for(std::list<View*>::iterator cur = views.begin(); cur != views.end(); cur++)
+  for(std::list<View::Ptr>::iterator cur = views.begin(); cur != views.end(); cur++)
   {
     (*cur)->on_newInterfaces_update(newInterfaces);
   }
@@ -418,21 +418,21 @@ void on_presentation_created(PresentationInterface::Ptr p)
 {
   presentations.push_back(p);
 
-  for(std::list<View*>::iterator cur = views.begin(); cur != views.end(); cur++)
+  for(std::list<View::Ptr>::iterator cur = views.begin(); cur != views.end(); cur++)
   {
     (*cur)->on_presentation_created(p);
   }
 
-  const std::map<PresentationObserver*, std::string>& presentationObservers =
-    PluginManager::getInstance().getPresentationObservers();
+  const std::map<PresentationObserver::Ptr, std::string>& presentationObservers =
+    PluginManager::getInstance()->getPresentationObservers();
 
-  std::map<PresentationObserver*, std::string>::const_iterator cur = presentationObservers.begin();
-  std::map<PresentationObserver*, std::string>::const_iterator end = presentationObservers.end();
+  std::map<PresentationObserver::Ptr, std::string>::const_iterator cur = presentationObservers.begin();
+  std::map<PresentationObserver::Ptr, std::string>::const_iterator end = presentationObservers.end();
   for(;cur!=end; cur++)
     cur->first->presentationAdded(p);
 }
 
-void on_view_created(View* v)
+void on_view_created(View::Ptr v)
 {
   views.push_back(v);
 
@@ -446,29 +446,30 @@ void on_view_created(View* v)
     }
   }
 
-  const std::map<ViewObserver*, std::string>& viewObservers =
-    PluginManager::getInstance().getViewObservers();
+  const std::map<ViewObserver::Ptr, std::string>& viewObservers =
+    PluginManager::getInstance()->getViewObservers();
 
-  std::map<ViewObserver*, std::string>::const_iterator cur = viewObservers.begin();
-  std::map<ViewObserver*, std::string>::const_iterator end = viewObservers.end();
+  std::map<ViewObserver::Ptr, std::string>::const_iterator cur = viewObservers.begin();
+  std::map<ViewObserver::Ptr, std::string>::const_iterator end = viewObservers.end();
   for(;cur!=end; cur++)
     cur->first->viewAdded(v);
 }
 
 void on_view_destroyed(View* v)
 {
+  View::Ptr view = v->shared_from_this<View>();
   {
-    const std::map<ViewObserver*, std::string>& viewObservers =
-      PluginManager::getInstance().getViewObservers();
+    const std::map<ViewObserver::Ptr, std::string>& viewObservers =
+      PluginManager::getInstance()->getViewObservers();
 
-    std::map<ViewObserver*, std::string>::const_iterator cur = viewObservers.begin();
-    std::map<ViewObserver*, std::string>::const_iterator end = viewObservers.end();
+    std::map<ViewObserver::Ptr, std::string>::const_iterator cur = viewObservers.begin();
+    std::map<ViewObserver::Ptr, std::string>::const_iterator end = viewObservers.end();
     for(;cur!=end; cur++)
-      cur->first->viewDeleted(v);
+      cur->first->viewDeleted(view);
   }
   
-  views.remove(v);
-  delete v;
+  views.remove(view);
+  view.reset();
 
   bool presentationDestroyed = false;
   for(std::list<PresentationInterface::WeakPtr>::iterator cur = presentations.begin();
@@ -486,22 +487,22 @@ void on_view_destroyed(View* v)
   }
   if(presentationDestroyed)
   {
-    for(std::list<View*>::iterator cur = views.begin(); cur != views.end(); cur++)
+    for(std::list<View::Ptr>::iterator cur = views.begin(); cur != views.end(); cur++)
     {
       (*cur)->on_presentation_destroyed();
     }
 
-    const std::map<PresentationObserver*, std::string>& presentationObservers =
-      PluginManager::getInstance().getPresentationObservers();
+    const std::map<PresentationObserver::Ptr, std::string>& presentationObservers =
+      PluginManager::getInstance()->getPresentationObservers();
 
-    std::map<PresentationObserver*, std::string>::const_iterator cur = presentationObservers.begin();
-    std::map<PresentationObserver*, std::string>::const_iterator end = presentationObservers.end();
+    std::map<PresentationObserver::Ptr, std::string>::const_iterator cur = presentationObservers.begin();
+    std::map<PresentationObserver::Ptr, std::string>::const_iterator end = presentationObservers.end();
     for(;cur!=end; cur++)
       cur->first->presentationDeleted();
   }
 }
 
-void on_new_presentationobserver(PresentationObserver* po)
+void on_new_presentationobserver(PresentationObserver::Ptr po)
 {
   for(std::list<PresentationInterface::WeakPtr>::iterator cur = presentations.begin();
       cur != presentations.end(); cur++)
@@ -514,9 +515,9 @@ void on_new_presentationobserver(PresentationObserver* po)
   }
 }
 
-void on_new_viewobserver(ViewObserver* v)
+void on_new_viewobserver(ViewObserver::Ptr v)
 {
-  for(std::list<View*>::iterator cur = views.begin(); cur != views.end(); cur++)
+  for(std::list<View::Ptr>::iterator cur = views.begin(); cur != views.end(); cur++)
   {
     v->viewAdded(*cur);
   }

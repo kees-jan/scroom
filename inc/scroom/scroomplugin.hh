@@ -21,13 +21,15 @@
 
 #include <gmodule.h>
 
+#include <boost/shared_ptr.hpp>
+
 class PluginInformationInterface;
 
 extern "C"
 {
-  typedef PluginInformationInterface* (*PluginFunc)();
+  typedef boost::shared_ptr<PluginInformationInterface> (*PluginFunc)();
 
-  G_MODULE_IMPORT PluginInformationInterface* getPluginInformation();
+  G_MODULE_IMPORT boost::shared_ptr<PluginInformationInterface> getPluginInformation();
 }
 
 #endif

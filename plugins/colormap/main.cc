@@ -38,7 +38,7 @@ G_MODULE_EXPORT void g_module_unload(GModule *module)
 }
 
 
-G_MODULE_EXPORT PluginInformationInterface* getPluginInformation()
+G_MODULE_EXPORT PluginInformationInterface::Ptr getPluginInformation()
 {
-  return new ColormapPlugin();
+  return ColormapPlugin::create();
 }

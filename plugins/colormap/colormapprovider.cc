@@ -118,7 +118,7 @@ ColormapProvider::~ColormapProvider()
   colormaps = NULL;
 }
 
-void ColormapProvider::open(ViewInterface* vi)
+void ColormapProvider::open(ViewInterface::Ptr vi)
 {
   printf("ColormapProvider: Adding a view.\n");
   GtkTreeView* tv = GTK_TREE_VIEW(gtk_tree_view_new_with_model(GTK_TREE_MODEL(colormaps)));
@@ -130,10 +130,10 @@ void ColormapProvider::open(ViewInterface* vi)
   vi->addSideWidget("Colormap", GTK_WIDGET(tv));
 }
 
-void ColormapProvider::close(ViewInterface* vi)
+void ColormapProvider::close(ViewInterface::Ptr vi)
 {
   printf("ColormapProvider: Removing a view.\n");
-  std::map<ViewInterface*, GtkTreeView*>::iterator cur = views.find(vi);
+  std::map<ViewInterface::Ptr, GtkTreeView*>::iterator cur = views.find(vi);
   if(cur != views.end())
     views.erase(cur);
   if(views.empty())

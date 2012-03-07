@@ -23,6 +23,8 @@
 
 #include <gtk/gtk.h>
 
+#include <boost/shared_ptr.hpp>
+
 /**
  * Interface used for reporting progress information
  */
@@ -57,7 +59,9 @@ public:
 class ViewInterface
 {
 public:
-  
+  typedef boost::shared_ptr<ViewInterface> Ptr;
+
+public:
   virtual ~ViewInterface() {}
 
   /**

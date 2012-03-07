@@ -67,7 +67,7 @@ class TiledBitmap : public TiledBitmapInterface, public TileInitialisationObserv
 public:
   typedef boost::shared_ptr<TiledBitmap> Ptr;
   typedef boost::weak_ptr<TiledBitmap> WeakPtr;
-  typedef std::map<ViewInterface*, TiledBitmapViewData::Ptr> ViewDataMap;
+  typedef std::map<ViewInterface::Ptr, TiledBitmapViewData::Ptr> ViewDataMap;
   
 private:
   int bitmapWidth;
@@ -111,10 +111,10 @@ public:
 
 public:
   virtual void setSource(SourcePresentation* sp);
-  virtual void open(ViewInterface* viewInterface);
-  virtual void close(ViewInterface* vi);
-  virtual void redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);
-  virtual void clearCaches(ViewInterface* vi);
+  virtual void open(ViewInterface::Ptr viewInterface);
+  virtual void close(ViewInterface::Ptr vi);
+  virtual void redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);
+  virtual void clearCaches(ViewInterface::Ptr vi);
 
   ////////////////////////////////////////////////////////////////////////
   // TileInitialisationObserver

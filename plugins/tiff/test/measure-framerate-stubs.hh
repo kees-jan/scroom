@@ -37,10 +37,14 @@ public:
 
 class ViewInterfaceStub : public ViewInterface
 {
+public:
+  typedef boost::shared_ptr<ViewInterfaceStub> Ptr;
 private:
   ProgressInterface* pi;
-public:
+private:
   ViewInterfaceStub(ProgressInterface* pi);
+public:
+  static Ptr create(ProgressInterface* pi);
   virtual void invalidate()                           {}
   virtual ProgressInterface* getProgressInterface();
   virtual void addSideWidget(std::string, GtkWidget*) {}

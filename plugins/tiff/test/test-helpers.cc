@@ -11,7 +11,7 @@ TestData::Ptr testData;
 
 TestData::TestData(TiffPresentation::Ptr tp, const LayerSpec& ls,
                    TiledBitmapInterface::Ptr tbi, SourcePresentation* sp, int zoom)
-  : pi(new ProgressInterfaceStub()), vi(new ViewInterfaceStub(pi)), tp(tp), ls(ls), tbi(tbi), sp(sp), zoom(zoom)
+  : pi(new ProgressInterfaceStub()), vi(ViewInterfaceStub::create(pi)), tp(tp), ls(ls), tbi(tbi), sp(sp), zoom(zoom)
 {
   tbi->open(vi);
 }
@@ -34,7 +34,7 @@ TestData::~TestData()
   delete sp;
   ls.clear();
   tp.reset();
-  delete vi;
+  vi.reset();
   delete pi;
 }
 

@@ -33,6 +33,7 @@
 #include <scroom/scroominterface.hh>
 #include <scroom/viewinterface.hh>
 #include <scroom/presentationinterface.hh>
+#include <scroom/utilities.hh>
 
 #include "sidebarmanager.hh"
 #include "progressbarmanager.hh"
@@ -54,8 +55,11 @@ public:
   double length() { return std::sqrt(std::pow(double(width()),2) + std::pow(double(height()),2)); }
 };
 
-class View : public ViewInterface
+class View : public ViewInterface, public Scroom::Utils::Base
 {
+public:
+  typedef boost::shared_ptr<View> Ptr;
+
 private:
   GladeXML* scroomXml;
   PresentationInterface::Ptr presentation;
@@ -91,9 +95,12 @@ private:
   
   std::map<PresentationInterface::WeakPtr,GtkWidget*> presentations;
   
-public:
-
+private:
   View(GladeXML* scroomXml, PresentationInterface::Ptr presentation);
+
+public:
+  static Ptr create(GladeXML* scroomXml, PresentationInterface::Ptr presentation);
+
   virtual ~View();
 
   void redraw(cairo_t* cr);
@@ -110,7 +117,7 @@ public:
   ////////////////////////////////////////////////////////////////////////
   // Scroom events
   
-  void on_newInterfaces_update(const std::map<NewInterface*, std::string>& newInterfaces);
+  void on_newInterfaces_update(const std::map<NewInterface::Ptr, std::string>& newInterfaces);
   void on_presentation_created(PresentationInterface::Ptr p);
   void on_presentation_destroyed();
   void on_configure();

@@ -33,9 +33,9 @@ public:
   virtual ~ExamplePresentation();
 
   virtual GdkRectangle getRect();
-  virtual void open(ViewInterface* viewInterface);
-  virtual void redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);
-  virtual void close(ViewInterface* vi);
+  virtual void open(ViewInterface::Ptr viewInterface);
+  virtual void redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);
+  virtual void close(ViewInterface::Ptr vi);
   virtual bool getProperty(const std::string& name, std::string& value);
   virtual bool isPropertyDefined(const std::string& name);
   virtual std::string getTitle();

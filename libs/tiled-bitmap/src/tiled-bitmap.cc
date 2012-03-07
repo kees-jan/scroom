@@ -370,7 +370,7 @@ void TiledBitmap::drawTile(cairo_t* cr, const TileInternal::Ptr tile, const GdkR
 
 }
 
-void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
+void TiledBitmap::redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
 {
   // presentationArea.width-=200;
   // presentationArea.height-=200;
@@ -621,7 +621,7 @@ void TiledBitmap::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentati
   }
 }
 
-void TiledBitmap::clearCaches(ViewInterface* viewInterface)
+void TiledBitmap::clearCaches(ViewInterface::Ptr viewInterface)
 {
   boost::mutex::scoped_lock lock(viewDataMutex);
   TiledBitmapViewData::Ptr tbvd = viewData[viewInterface];
@@ -631,7 +631,7 @@ void TiledBitmap::clearCaches(ViewInterface* viewInterface)
   }
 }
 
-void TiledBitmap::open(ViewInterface* viewInterface)
+void TiledBitmap::open(ViewInterface::Ptr viewInterface)
 {
   boost::mutex::scoped_lock lock(viewDataMutex);
   TiledBitmapViewData::Ptr vd = TiledBitmapViewData::create(viewInterface);
@@ -645,7 +645,7 @@ void TiledBitmap::open(ViewInterface* viewInterface)
   }
 }
 
-void TiledBitmap::close(ViewInterface* vi)
+void TiledBitmap::close(ViewInterface::Ptr vi)
 {
   BOOST_FOREACH(Layer* l, layers)
   {

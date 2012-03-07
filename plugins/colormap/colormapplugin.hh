@@ -20,24 +20,31 @@
 #define _COLORMAPPLUGIN_HH
 
 #include <scroom/plugininformationinterface.hh>
+#include <scroom/utilities.hh>
 
 /**
  * Register the ColormapPlugin, keep track of PresentationInterface instances
  */
-class ColormapPlugin : public PluginInformationInterface, public PresentationObserver
+class ColormapPlugin : public PluginInformationInterface, public PresentationObserver, public Scroom::Utils::Base
 {
+public:
+  typedef boost::shared_ptr<ColormapPlugin> Ptr;
+
 private:
   std::list<PresentationInterface::WeakPtr> presentations;
   
-public:
+private:
   ColormapPlugin();
+
+public:
+  static Ptr create();
   virtual ~ColormapPlugin();
 
 public:
   virtual std::string getPluginName();
   virtual std::string getPluginVersion();
-  virtual void registerCapabilities(ScroomInterface* host);
-  virtual void unregisterCapabilities(ScroomInterface* host);
+  virtual void registerCapabilities(ScroomInterface::Ptr host);
+  virtual void unregisterCapabilities(ScroomInterface::Ptr host);
 
   virtual void presentationAdded(PresentationInterface::Ptr p);
   virtual void presentationDeleted();

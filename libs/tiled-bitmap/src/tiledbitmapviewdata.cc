@@ -17,15 +17,17 @@
  */
 #include "tiledbitmapviewdata.hh"
 
+#include <scroom/gtk-helpers.hh>
+
 ////////////////////////////////////////////////////////////////////////
 // TiledBitmapViewData
 
-TiledBitmapViewData::Ptr TiledBitmapViewData::create(ViewInterface* viewInterface)
+TiledBitmapViewData::Ptr TiledBitmapViewData::create(ViewInterface::Ptr viewInterface)
 {
   return TiledBitmapViewData::Ptr(new TiledBitmapViewData(viewInterface));
 }
 
-TiledBitmapViewData::TiledBitmapViewData(ViewInterface* viewInterface)
+TiledBitmapViewData::TiledBitmapViewData(ViewInterface::Ptr viewInterface)
   : viewInterface(viewInterface), progressInterface(viewInterface->getProgressInterface()),
     layer(NULL), imin(0), imax(0), jmin(0), jmax(0), zoom(0), layerOperations()
 {
@@ -116,9 +118,8 @@ void TiledBitmapViewData::resetNeededTiles()
   stuff.splice(stuff.end(), newStuff, newStuff.begin(), newStuff.end());
 }
 
-gboolean invalidate_view(gpointer user_data)
+static gboolean invalidate_view(ViewInterface::Ptr vi)
 {
-  ViewInterface* vi = static_cast<ViewInterface*>(user_data);
   gdk_threads_enter();
   vi->invalidate();
   gdk_threads_leave();
@@ -158,7 +159,9 @@ void TiledBitmapViewData::tileLoaded(ConstTile::Ptr tile)
     // We're not sure about whether gdk_threads_enter() has been
     // called or not, so we have no choice but to invalidate on
     // another thread.
-    gtk_idle_add(invalidate_view, viewInterface);
+    Scroom::GtkHelpers::Wrapper w =
+        Scroom::GtkHelpers::wrap(boost::bind(invalidate_view, viewInterface));
+    gtk_idle_add(w.f, w.data);
     redrawPending = true;
   }
 }

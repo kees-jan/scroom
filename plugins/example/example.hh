@@ -19,16 +19,27 @@
 #ifndef _EXAMPLE_HH
 #define _EXAMPLE_HH
 
+#include <boost/shared_ptr.hpp>
+
 #include <scroom/plugininformationinterface.hh>
 #include <scroom/presentationinterface.hh>
+#include <scroom/utilities.hh>
 
-class Example : public PluginInformationInterface, public NewInterface
+class Example : public PluginInformationInterface, public NewInterface, public  Scroom::Utils::Base
 {
+public:
+  typedef boost::shared_ptr<Example> Ptr;
+
+private:
+  Example();
+
+public:
+  static Ptr create();
+
 public:
   virtual std::string getPluginName();
   virtual std::string getPluginVersion();
-  virtual void registerCapabilities(ScroomInterface* host);
-  virtual void unregisterCapabilities(ScroomInterface* host);
+  virtual void registerCapabilities(ScroomInterface::Ptr host);
 
   virtual PresentationInterface::Ptr createNew();
 

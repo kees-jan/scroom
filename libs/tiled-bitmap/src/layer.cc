@@ -125,7 +125,7 @@ void Layer::fetchData(SourcePresentation* sp, ThreadPool::WeakQueue::Ptr queue)
 
 // Layer::Viewable /////////////////////////////////////////////////////
 
-void Layer::open(ViewInterface* vi)
+void Layer::open(ViewInterface::Ptr vi)
 {
   BOOST_FOREACH(TileInternalLine& line, tiles)
   {
@@ -141,7 +141,7 @@ void Layer::open(ViewInterface* vi)
   outOfBounds->open(vi);
 }
 
-void Layer::close(ViewInterface* vi)
+void Layer::close(ViewInterface::Ptr vi)
 {
   BOOST_FOREACH(TileInternalLine& line, tiles)
   {

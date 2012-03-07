@@ -129,7 +129,7 @@ View::View(GladeXML* scroomXml, PresentationInterface::Ptr presentation)
     drawingAreaWidth(0), drawingAreaHeight(0),
     zoom(0), x(0), y(0), measurement(NULL), modifiermove(0)
 {
-  PluginManager& pluginManager = PluginManager::getInstance();
+  PluginManager::Ptr pluginManager = PluginManager::getInstance();
   window = GTK_WINDOW(glade_xml_get_widget(scroomXml, "scroom"));
   drawingArea = glade_xml_get_widget(scroomXml, "drawingarea");
   vscrollbar = GTK_VSCROLLBAR(glade_xml_get_widget(scroomXml, "vscrollbar"));
@@ -166,7 +166,7 @@ View::View(GladeXML* scroomXml, PresentationInterface::Ptr presentation)
   cachedPoint.x=0;
   cachedPoint.y=0;
   
-  on_newInterfaces_update(pluginManager.getNewInterfaces());
+  on_newInterfaces_update(pluginManager->getNewInterfaces());
   updateNewWindowMenu();  
   on_configure();
 
@@ -175,6 +175,12 @@ View::View(GladeXML* scroomXml, PresentationInterface::Ptr presentation)
     setPresentation(presentation);
   }
 }
+
+View::Ptr View::create(GladeXML* scroomXml, PresentationInterface::Ptr presentation)
+{
+  return Ptr(new View(scroomXml, presentation));
+}
+
 
 View::~View()
 {
@@ -204,7 +210,7 @@ void View::redraw(cairo_t* cr)
       rect.height = drawingAreaHeight*pixelSize;
     }
     
-    presentation->redraw(this, cr, rect, zoom);
+    presentation->redraw(shared_from_this<View>(), cr, rect, zoom);
 
     if(measurement)
     {
@@ -244,9 +250,11 @@ bool View::hasPresentation()
 
 void View::setPresentation(PresentationInterface::Ptr presentation)
 {
+  View::Ptr me = shared_from_this<View>();
+
   if(this->presentation)
   {
-    this->presentation->close(this);
+    this->presentation->close(me);
     this->presentation.reset();
   }
 
@@ -254,7 +262,7 @@ void View::setPresentation(PresentationInterface::Ptr presentation)
 
   if(this->presentation)
   {
-    presentation->open(this);
+    presentation->open(me);
     presentationRect = presentation->getRect();
     std::string s = presentation->getTitle();
     if(s.length())
@@ -383,7 +391,7 @@ void View::updateRulers()
 ////////////////////////////////////////////////////////////////////////
 // Scroom events
   
-void View::on_newInterfaces_update(const std::map<NewInterface*, std::string>& newInterfaces)
+void View::on_newInterfaces_update(const std::map<NewInterface::Ptr, std::string>& newInterfaces)
 {
   GtkWidget* new_menu_item = glade_xml_get_widget(scroomXml, "new");
 
@@ -399,7 +407,7 @@ void View::on_newInterfaces_update(const std::map<NewInterface*, std::string>& n
     GtkWidget* new_menu = gtk_menu_new ();
     gtk_menu_item_set_submenu (GTK_MENU_ITEM (new_menu_item), new_menu);
 
-    for(std::map<NewInterface*, std::string>::const_iterator cur=newInterfaces.begin();
+    for(std::map<NewInterface::Ptr, std::string>::const_iterator cur=newInterfaces.begin();
         cur != newInterfaces.end();
         cur++)
     {
@@ -407,7 +415,7 @@ void View::on_newInterfaces_update(const std::map<NewInterface*, std::string>& n
       gtk_widget_show (menu_item);
       gtk_container_add (GTK_CONTAINER (new_menu), menu_item);
 
-      g_signal_connect ((gpointer) menu_item, "activate", G_CALLBACK (on_new_activate), cur->first);
+      g_signal_connect ((gpointer) menu_item, "activate", G_CALLBACK (on_new_activate), cur->first.get());
     }
   }
 }

@@ -67,14 +67,14 @@ void find_or_create_scroom(PresentationInterface::Ptr presentation);
 
 void create_scroom(PresentationInterface::Ptr presentation);
 
-void on_newInterfaces_update(const std::map<NewInterface*, std::string>& newInterfaces);
+void on_newInterfaces_update(const std::map<NewInterface::Ptr, std::string>& newInterfaces);
 
 void on_presentation_created(PresentationInterface::Ptr p);
 
-void on_view_created(View* v);
+void on_view_created(View::Ptr v);
 
 void on_view_destroyed(View* v);
 
-void on_new_presentationobserver(PresentationObserver* po);
+void on_new_presentationobserver(PresentationObserver::Ptr po);
 
-void on_new_viewobserver(ViewObserver* v);
+void on_new_viewobserver(ViewObserver::Ptr v);

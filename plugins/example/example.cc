@@ -30,6 +30,11 @@ Example::~Example()
 {
 }
 
+Example::Ptr Example::create()
+{
+  return Ptr(new Example());
+}
+
 std::string Example::getPluginName()
 {
   return "Example";
@@ -40,14 +45,9 @@ std::string Example::getPluginVersion()
   return "0.0";
 }
 
-void Example::registerCapabilities(ScroomInterface* host)
+void Example::registerCapabilities(ScroomInterface::Ptr host)
 {
-  host->registerNewInterface("Example", this);
-}
-
-void Example::unregisterCapabilities(ScroomInterface* host)
-{
-  host->unregisterNewInterface(this);
+  host->registerNewInterface("Example", shared_from_this<Example>());
 }
 
 PresentationInterface::Ptr Example::createNew()

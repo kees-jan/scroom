@@ -29,6 +29,11 @@ ColormapPlugin::ColormapPlugin()
 {
 }
 
+ColormapPlugin::Ptr ColormapPlugin::create()
+{
+  return Ptr(new ColormapPlugin());
+}
+
 ColormapPlugin::~ColormapPlugin()
 {
 }
@@ -43,14 +48,14 @@ std::string ColormapPlugin::getPluginVersion()
   return "0.0";
 }
 
-void ColormapPlugin::registerCapabilities(ScroomInterface* host)
+void ColormapPlugin::registerCapabilities(ScroomInterface::Ptr host)
 {
-  host->registerPresentationObserver("Colormap", this);
+  host->registerPresentationObserver("Colormap", shared_from_this<ColormapPlugin>());
 }
 
-void ColormapPlugin::unregisterCapabilities(ScroomInterface* host)
+void ColormapPlugin::unregisterCapabilities(ScroomInterface::Ptr host)
 {
-  host->unregisterPresentationObserver(this);
+  host->unregisterPresentationObserver(shared_from_this<ColormapPlugin>());
 }
 
 void ColormapPlugin::presentationAdded(PresentationInterface::Ptr p)

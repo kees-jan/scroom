@@ -21,7 +21,7 @@ public:
 
 private:
   ProgressInterfaceStub* pi;
-  ViewInterface* vi;
+  ViewInterface::Ptr vi;
   TiffPresentation::Ptr tp;
   LayerSpec ls;
   TiledBitmapInterface::Ptr tbi;

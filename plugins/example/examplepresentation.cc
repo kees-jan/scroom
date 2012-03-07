@@ -72,17 +72,17 @@ GdkRectangle ExamplePresentation::getRect()
   return rect;
 }
 
-void ExamplePresentation::open(ViewInterface* viewInterface)
+void ExamplePresentation::open(ViewInterface::Ptr viewInterface)
 {
   UNUSED(viewInterface);
 }
 
-void ExamplePresentation::close(ViewInterface* vi)
+void ExamplePresentation::close(ViewInterface::Ptr vi)
 {
   UNUSED(vi);
 }
 
-void ExamplePresentation::redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
+void ExamplePresentation::redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
 {
   UNUSED(vi);
   // char buffer[] = "Hello world!";

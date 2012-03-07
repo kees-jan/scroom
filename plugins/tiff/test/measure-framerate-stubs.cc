@@ -39,6 +39,11 @@ ViewInterfaceStub::ViewInterfaceStub(ProgressInterface* pi)
   :pi(pi)
 {}
 
+ViewInterfaceStub::Ptr ViewInterfaceStub::create(ProgressInterface* pi)
+{
+  return Ptr(new ViewInterfaceStub(pi));
+}
+
 ProgressInterface* ViewInterfaceStub::getProgressInterface()
 {
   return pi;

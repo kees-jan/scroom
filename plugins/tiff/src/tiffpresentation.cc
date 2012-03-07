@@ -177,7 +177,7 @@ GdkRectangle TiffPresentation::getRect()
   return rect;
 }
 
-void TiffPresentation::open(ViewInterface* viewInterface)
+void TiffPresentation::open(ViewInterface::Ptr viewInterface)
 {
   views.push_back(viewInterface);
   std::list<Viewable::Ptr> observers = getObservers();
@@ -196,7 +196,7 @@ void TiffPresentation::open(ViewInterface* viewInterface)
   }
 }
 
-void TiffPresentation::close(ViewInterface* vi)
+void TiffPresentation::close(ViewInterface::Ptr vi)
 {
   views.remove(vi);
   std::list<Viewable::Ptr> observers = getObservers();
@@ -215,7 +215,7 @@ void TiffPresentation::close(ViewInterface* vi)
   }
 }
 
-void TiffPresentation::redraw(ViewInterface* vi, cairo_t* cr,
+void TiffPresentation::redraw(ViewInterface::Ptr vi, cairo_t* cr,
     GdkRectangle presentationArea, int zoom)
 {
   if (tbi)
@@ -304,7 +304,7 @@ void TiffPresentation::done()
 void TiffPresentation::observerAdded(Viewable::Ptr observer,
     Scroom::Bookkeeping::Token)
 {
-  for (std::list<ViewInterface*>::iterator cur = views.begin();
+  for (std::list<ViewInterface::Ptr>::iterator cur = views.begin();
       cur != views.end(); ++cur)
   {
     observer->open(*cur);
@@ -314,12 +314,11 @@ void TiffPresentation::observerAdded(Viewable::Ptr observer,
 void TiffPresentation::setColormap(Colormap::Ptr colormap)
 {
   this->colormap = colormap;
-  for (std::list<ViewInterface*>::iterator cur = views.begin();
+  for (std::list<ViewInterface::Ptr>::iterator cur = views.begin();
       cur != views.end(); ++cur)
   {
     if (tbi)
     {
-      printf("Clearing caches for %p\n", *cur);
       tbi->clearCaches(*cur);
     }
     (*cur)->invalidate();

@@ -19,16 +19,21 @@
 #ifndef _SCROOMINTERFACE_HH
 #define _SCROOMINTERFACE_HH
 
+#include <gtk/gtk.h>
+
 #include <string>
 #include <list>
 
-#include <gtk/gtk.h>
+#include <boost/shared_ptr.hpp>
 
 #include <scroom/presentationinterface.hh>
 #include <scroom/viewinterface.hh>
 
 class NewInterface
 {
+public:
+  typedef boost::shared_ptr<NewInterface> Ptr;
+
 public:
   virtual ~NewInterface() {}
   
@@ -37,6 +42,9 @@ public:
 
 class OpenInterface
 {
+public:
+  typedef boost::shared_ptr<OpenInterface> Ptr;
+
 public:
   virtual ~OpenInterface() {}
 
@@ -48,6 +56,9 @@ public:
 class PresentationObserver
 {
 public:
+  typedef boost::shared_ptr<PresentationObserver> Ptr;
+
+public:
   virtual ~PresentationObserver() {}
 
   virtual void presentationAdded(PresentationInterface::Ptr p)=0;
@@ -57,28 +68,32 @@ public:
 class ViewObserver
 {
 public:
+  typedef boost::shared_ptr<ViewObserver> Ptr;
+
+public:
   virtual ~ViewObserver() {}
 
-  virtual void viewAdded(ViewInterface* v)=0;
-  virtual void viewDeleted(ViewInterface* v)=0;
+  virtual void viewAdded(ViewInterface::Ptr v)=0;
+  virtual void viewDeleted(ViewInterface::Ptr v)=0;
 };
 
 class ScroomInterface
 {
 public:
+  typedef boost::shared_ptr<ScroomInterface> Ptr;
+
+public:
   virtual ~ScroomInterface() {}
 
-  virtual void registerNewInterface(const std::string& identifier, NewInterface* newInterface)=0;
-  virtual void unregisterNewInterface(NewInterface* newInterface)=0;
+  virtual void registerNewInterface(const std::string& identifier, NewInterface::Ptr newInterface)=0;
 
-  virtual void registerOpenInterface(const std::string& identifier, OpenInterface* openInterface)=0;
-  virtual void unregisterOpenInterface(OpenInterface* openInterface)=0;
+  virtual void registerOpenInterface(const std::string& identifier, OpenInterface::Ptr openInterface)=0;
 
-  virtual void registerViewObserver(const std::string& identifier, ViewObserver* observer)=0;
-  virtual void unregisterViewObserver(ViewObserver* observer)=0;
+  virtual void registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer)=0;
+  virtual void unregisterViewObserver(ViewObserver::Ptr observer)=0;
 
-  virtual void registerPresentationObserver(const std::string& identifier, PresentationObserver* observer)=0;
-  virtual void unregisterPresentationObserver(PresentationObserver* observer)=0;
+  virtual void registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer)=0;
+  virtual void unregisterPresentationObserver(PresentationObserver::Ptr observer)=0;
 };
 
 

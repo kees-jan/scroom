@@ -51,7 +51,7 @@ public:
    *    (i.e. between gdk_threads_enter() and gdk_threads_leave()
    *    calls)
    */
-  virtual void open(ViewInterface* vi)=0;
+  virtual void open(ViewInterface::Ptr vi)=0;
 
   /**
    * Gets called just before the View is destroyed
@@ -60,7 +60,7 @@ public:
    *    (i.e. between gdk_threads_enter() and gdk_threads_leave()
    *    calls)
    */
-  virtual void close(ViewInterface* vi)=0;
+  virtual void close(ViewInterface::Ptr vi)=0;
 };
 
 /**
@@ -95,7 +95,7 @@ public:
    *    presentation should have size 2**@c zoom when drawn. @c zoom
    *    may be negative.
    */
-  virtual void redraw(ViewInterface* vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)=0;
+  virtual void redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)=0;
 
   /**
    * Return the value of the requested property

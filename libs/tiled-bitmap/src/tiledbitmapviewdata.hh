@@ -34,7 +34,7 @@ public:
   typedef boost::shared_ptr<TiledBitmapViewData> Ptr;
 
 public:
-  ViewInterface* viewInterface;
+  ViewInterface::Ptr viewInterface;
   ProgressInterface* progressInterface;
 
 private:
@@ -69,10 +69,10 @@ private:
   boost::mutex mut;
 
 private:
-  TiledBitmapViewData(ViewInterface* viewInterface);
+  TiledBitmapViewData(ViewInterface::Ptr viewInterface);
 
 public:
-  static Ptr create(ViewInterface* viewInterface);
+  static Ptr create(ViewInterface::Ptr viewInterface);
   virtual ~TiledBitmapViewData();
 
   void setNeededTiles(Layer* l, int imin, int imax, int jmin, int jmax, int zoom, LayerOperations::Ptr layerOperations);

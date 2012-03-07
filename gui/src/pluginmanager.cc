@@ -31,15 +31,20 @@
 
 const std::string SCROOM_PLUGIN_DIRS = "SCROOM_PLUGIN_DIRS";
 
-static PluginManager pluginManager;
+static PluginManager::Ptr pluginManager = PluginManager::create();
 
 PluginManager::PluginManager()
 {
 }
 
+PluginManager::Ptr PluginManager::create()
+{
+  return Ptr(new PluginManager());
+}
+
 void startPluginManager(bool devMode)
 {
-  pluginManager.addHook(devMode);
+  pluginManager->addHook(devMode);
 }
 
 bool PluginManager::doWork()
@@ -129,16 +134,16 @@ bool PluginManager::doWork()
             PluginFunc gpi = (PluginFunc)pgpi;
             if(gpi)
             {
-              PluginInformationInterface* pi = (*gpi)();
+              PluginInformationInterface::Ptr pi = (*gpi)();
               if(pi)
               {
                 if(pi->pluginApiVersion == PLUGIN_API_VERSION)
                 {
                   pluginInformationList.push_back(PluginInformation(plugin, pi));
-                  pi->registerCapabilities(this);
+                  pi->registerCapabilities(shared_from_this<PluginManager>());
                   plugin = NULL;
                   gpi = NULL;
-                  pi=NULL;
+                  pi.reset();
                 }
                 else
                 {
@@ -210,7 +215,7 @@ void PluginManager::addHook(bool devMode)
   state = FINDING_DIRECTORIES;
 }
 
-void PluginManager::registerNewInterface(const std::string& identifier, NewInterface* newInterface)
+void PluginManager::registerNewInterface(const std::string& identifier, NewInterface::Ptr newInterface)
 {
   printf("I learned how to create a new %s!\n", identifier.c_str());
   newInterfaces[newInterface] = identifier;
@@ -218,7 +223,7 @@ void PluginManager::registerNewInterface(const std::string& identifier, NewInter
   on_newInterfaces_update(newInterfaces);
 }
 
-void PluginManager::unregisterNewInterface(NewInterface* newInterface)
+void PluginManager::unregisterNewInterface(NewInterface::Ptr newInterface)
 {
   printf("I just forgot how to create a new %s!\n", newInterfaces[newInterface].c_str());
 
@@ -227,65 +232,65 @@ void PluginManager::unregisterNewInterface(NewInterface* newInterface)
   on_newInterfaces_update(newInterfaces);
 }
 
-void PluginManager::registerOpenInterface(const std::string& extension, OpenInterface* openInterface)
+void PluginManager::registerOpenInterface(const std::string& extension, OpenInterface::Ptr openInterface)
 {
   printf("I learned how to open a %s file!\n", extension.c_str());
 
   openInterfaces[openInterface] = extension;
 }
 
-void PluginManager::unregisterOpenInterface(OpenInterface* openInterface)
+void PluginManager::unregisterOpenInterface(OpenInterface::Ptr openInterface)
 {
   printf("I just forgot how to open a %s file!\n", openInterfaces[openInterface].c_str());
 
   openInterfaces.erase(openInterface);
 }
 
-void PluginManager::registerViewObserver(const std::string& identifier, ViewObserver* observer)
+void PluginManager::registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer)
 {
   printf("Observing Views for %s!\n", identifier.c_str());
   viewObservers[observer] = identifier;
 }
 
-void PluginManager::unregisterViewObserver(ViewObserver* observer)
+void PluginManager::unregisterViewObserver(ViewObserver::Ptr observer)
 {
   printf("I stopped observing views for %s!\n", viewObservers[observer].c_str());
   viewObservers.erase(observer);
 }
 
-void PluginManager::registerPresentationObserver(const std::string& identifier, PresentationObserver* observer)
+void PluginManager::registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer)
 {
   printf("Observing Presentations for %s!\n", identifier.c_str());
   presentationObservers[observer] = identifier;
 }
 
-void PluginManager::unregisterPresentationObserver(PresentationObserver* observer)
+void PluginManager::unregisterPresentationObserver(PresentationObserver::Ptr observer)
 {
   printf("I stopped observing presentations for %s!\n", presentationObservers[observer].c_str());
   presentationObservers.erase(observer);
 }
 
-const std::map<NewInterface*, std::string>& PluginManager::getNewInterfaces()
+const std::map<NewInterface::Ptr, std::string>& PluginManager::getNewInterfaces()
 {
   return newInterfaces;
 }
 
-const std::map<OpenInterface*, std::string>& PluginManager::getOpenInterfaces()
+const std::map<OpenInterface::Ptr, std::string>& PluginManager::getOpenInterfaces()
 {
   return openInterfaces;
 }
 
-const std::map<ViewObserver*, std::string>& PluginManager::getViewObservers()
+const std::map<ViewObserver::Ptr, std::string>& PluginManager::getViewObservers()
 {
   return viewObservers;
 }
 
-const std::map<PresentationObserver*, std::string>& PluginManager::getPresentationObservers()
+const std::map<PresentationObserver::Ptr, std::string>& PluginManager::getPresentationObservers()
 {
   return presentationObservers;
 }
 
-PluginManager& PluginManager::getInstance()
+PluginManager::Ptr PluginManager::getInstance()
 {
   return pluginManager;
 }

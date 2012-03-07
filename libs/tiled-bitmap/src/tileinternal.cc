@@ -156,7 +156,7 @@ ConstTile::Ptr TileInternal::do_load()
   return result;
 }
 
-TileViewState::Ptr TileInternal::getViewState(ViewInterface* vi)
+TileViewState::Ptr TileInternal::getViewState(ViewInterface::Ptr vi)
 {
   TileViewState::Ptr result = viewStates[vi].lock();
 
@@ -265,12 +265,12 @@ void TileInternal::notifyObservers(ConstTile::Ptr tile)
   }
 }
 
-void TileInternal::open(ViewInterface*)
+void TileInternal::open(ViewInterface::Ptr)
 {
   // On open, we do nothing. On close, we destroy any resources related to the view.
 }
 
-void TileInternal::close(ViewInterface* vi)
+void TileInternal::close(ViewInterface::Ptr vi)
 {
   viewStates.erase(vi);
 }

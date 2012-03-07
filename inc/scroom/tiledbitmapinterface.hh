@@ -270,7 +270,7 @@ public:
    *
    * @see PresentationInterface::redraw()
    */
-  virtual void redraw(ViewInterface* vi, cairo_t* cr,
+  virtual void redraw(ViewInterface::Ptr vi, cairo_t* cr,
       GdkRectangle presentationArea, int zoom)=0;
 
   /**
@@ -281,7 +281,7 @@ public:
    *
    * @param vi The ViewInterface for which to clear the caches
    */
-  virtual void clearCaches(ViewInterface* vi)=0;
+  virtual void clearCaches(ViewInterface::Ptr vi)=0;
 };
 
 /**

@@ -45,7 +45,7 @@ private:
   Colormappable::WeakPtr colormappable;
 
   /** The views to which we're associated */
-  std::map<ViewInterface*, GtkTreeView*> views;
+  std::map<ViewInterface::Ptr, GtkTreeView*> views;
 
   /** The colormaps we're offering to our views */
   GtkListStore* colormaps;
@@ -66,10 +66,10 @@ public:
   // Viewable ////////////////////////////////////////////////////////////
 
   /** A new view was opened */
-  virtual void open(ViewInterface* vi);
+  virtual void open(ViewInterface::Ptr vi);
 
   /** An existing view was closed */
-  virtual void close(ViewInterface* vi);
+  virtual void close(ViewInterface::Ptr vi);
 
   // Helpers /////////////////////////////////////////////////////////////
 
