@@ -22,4 +22,4 @@ scroom_SOURCES = \
 
 scroom_CPPFLAGS = -I $(top_srcdir)/inc $(AM_CPPFLAGS)
 
-scroom_LDADD = @GUI_LIBS@ @BOOSTTHREADLIB@ $(INTLLIBS)
+scroom_LDADD = @GUI_LIBS@ @BOOSTTHREADLIB@ $(INTLLIBS) ../../libs/util/src/libsutil.la

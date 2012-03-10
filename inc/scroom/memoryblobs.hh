@@ -86,7 +86,7 @@ namespace Scroom
       size_t getPageSize();
     };
 
-    class Blob : virtual public Scroom::Utils::Base, public Scroom::Utils::Counted<Blob>
+    class Blob : virtual public Scroom::Utils::Base
     {
     public:
       typedef boost::shared_ptr<Blob> Ptr;
@@ -100,7 +100,7 @@ namespace Scroom
           COMPRESSING
         };
 
-      class UnloadData :  public Scroom::Utils::Counted<UnloadData>
+      class UnloadData
       {
       private:
         Blob::Ptr blob;

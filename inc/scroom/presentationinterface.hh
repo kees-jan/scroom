@@ -51,7 +51,7 @@ public:
    *    (i.e. between gdk_threads_enter() and gdk_threads_leave()
    *    calls)
    */
-  virtual void open(ViewInterface::Ptr vi)=0;
+  virtual void open(ViewInterface::WeakPtr vi)=0;
 
   /**
    * Gets called just before the View is destroyed
@@ -60,7 +60,7 @@ public:
    *    (i.e. between gdk_threads_enter() and gdk_threads_leave()
    *    calls)
    */
-  virtual void close(ViewInterface::Ptr vi)=0;
+  virtual void close(ViewInterface::WeakPtr vi)=0;
 };
 
 /**

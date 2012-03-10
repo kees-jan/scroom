@@ -22,20 +22,20 @@
 ////////////////////////////////////////////////////////////////////////
 // TiledBitmapViewData
 
-TiledBitmapViewData::Ptr TiledBitmapViewData::create(ViewInterface::Ptr viewInterface)
+TiledBitmapViewData::Ptr TiledBitmapViewData::create(ViewInterface::WeakPtr viewInterface)
 {
   return TiledBitmapViewData::Ptr(new TiledBitmapViewData(viewInterface));
 }
 
-TiledBitmapViewData::TiledBitmapViewData(ViewInterface::Ptr viewInterface)
-  : viewInterface(viewInterface), progressInterface(viewInterface->getProgressInterface()),
+TiledBitmapViewData::TiledBitmapViewData(ViewInterface::WeakPtr viewInterface)
+  : viewInterface(viewInterface), progressInterface(viewInterface.lock()->getProgressInterface()),
     layer(NULL), imin(0), imax(0), jmin(0), jmax(0), zoom(0), layerOperations()
 {
 }
 
 TiledBitmapViewData::~TiledBitmapViewData()
 {
-  progressInterface->setState(ProgressInterface::IDLE);
+  // progressInterface->setState(ProgressInterface::IDLE);
 }
 
 void TiledBitmapViewData::setNeededTiles(Layer* l, int imin, int imax, int jmin, int jmax,
@@ -118,11 +118,15 @@ void TiledBitmapViewData::resetNeededTiles()
   stuff.splice(stuff.end(), newStuff, newStuff.begin(), newStuff.end());
 }
 
-static gboolean invalidate_view(ViewInterface::Ptr vi)
+static gboolean invalidate_view(ViewInterface::WeakPtr vi)
 {
-  gdk_threads_enter();
-  vi->invalidate();
-  gdk_threads_leave();
+  ViewInterface::Ptr v = vi.lock();
+  if(v)
+  {
+    gdk_threads_enter();
+    v->invalidate();
+    gdk_threads_leave();
+  }
   return false;
 }
 

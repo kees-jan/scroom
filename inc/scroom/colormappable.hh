@@ -113,7 +113,7 @@ public:
   /** Constructor. Create a smart pointer to an empty colormap */
   static Colormap::Ptr create()
   {
-    return Colormap::Ptr(new Colormap());
+    return Ptr(new Colormap());
   }
 
   /** Constructor. Create a smart pointer to a colormap of @c n grays. */

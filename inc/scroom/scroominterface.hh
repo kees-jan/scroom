@@ -28,6 +28,8 @@
 
 #include <scroom/presentationinterface.hh>
 #include <scroom/viewinterface.hh>
+#include <scroom/bookkeeping.hh>
+
 
 class NewInterface
 {
@@ -73,8 +75,7 @@ public:
 public:
   virtual ~ViewObserver() {}
 
-  virtual void viewAdded(ViewInterface::Ptr v)=0;
-  virtual void viewDeleted(ViewInterface::Ptr v)=0;
+  virtual Scroom::Bookkeeping::Token viewAdded(ViewInterface::Ptr v)=0;
 };
 
 class ScroomInterface

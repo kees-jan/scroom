@@ -13,6 +13,7 @@ libstiledbitmap_la_SOURCES = \
 
 libstiledbitmap_la_LIBADD = \
 	@TILEDBITMAP_LIBS@ \
+	../../util/src/libsutil.la \
 	../../threadpool/src/libsthreadpool.la \
 	../../memory-manager/src/libsmemman.la \
 	@BOOSTTHREADLIB@

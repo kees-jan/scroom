@@ -31,8 +31,11 @@
 
 #include <string>
 #include <list>
+#include <map>
 
 #include <boost/foreach.hpp>
+
+#include <scroom/bookkeeping.hh>
 
 #include "workinterface.hh"
 
@@ -46,7 +49,8 @@ static std::string xmlFileName;
 static GladeXML* aboutDialogXml=NULL;
 static GtkWidget* aboutDialog=NULL;
 
-static std::list<View::Ptr> views;
+typedef std::map<View::Ptr, Scroom::Bookkeeping::Token> Views;
+static Views views;
 static std::list<PresentationInterface::WeakPtr> presentations;
 static std::list<std::string> filenames;
 static std::string currentFolder;
@@ -152,10 +156,10 @@ void on_save_as_activate (GtkMenuItem*, gpointer)
 
 void on_quit_activate (GtkMenuItem*, gpointer)
 {
-  static std::list<View::Ptr> v(views);
-  BOOST_FOREACH(View::Ptr view, v)
+  Views v(views);
+  BOOST_FOREACH(const Views::value_type& p, v)
   {
-    view->hide();
+    p.first->hide();
   }
   gtk_main_quit();
 }
@@ -333,11 +337,12 @@ void on_scroom_bootstrap (const std::list<std::string>& newFilenames)
 
 void find_or_create_scroom(PresentationInterface::Ptr presentation)
 {
-  for(std::list<View::Ptr>::iterator cur = views.begin(); cur != views.end(); cur++)
+  BOOST_FOREACH(const Views::value_type& p, views)
   {
-    if(!(*cur)->hasPresentation())
+    View::Ptr view = p.first;
+    if(!view->hasPresentation())
     {
-      (*cur)->setPresentation(presentation);
+      view->setPresentation(presentation);
       return;
     }
   }
@@ -408,19 +413,19 @@ void create_scroom(PresentationInterface::Ptr presentation)
 
 void on_newInterfaces_update(const std::map<NewInterface::Ptr, std::string>& newInterfaces)
 {
-  for(std::list<View::Ptr>::iterator cur = views.begin(); cur != views.end(); cur++)
+  BOOST_FOREACH(const Views::value_type& p, views)
   {
-    (*cur)->on_newInterfaces_update(newInterfaces);
+    p.first->on_newInterfaces_update(newInterfaces);
   }
 }
 
-void on_presentation_created(PresentationInterface::Ptr p)
+void on_presentation_created(PresentationInterface::Ptr presentation)
 {
-  presentations.push_back(p);
+  presentations.push_back(presentation);
 
-  for(std::list<View::Ptr>::iterator cur = views.begin(); cur != views.end(); cur++)
+  BOOST_FOREACH(const Views::value_type& p, views)
   {
-    (*cur)->on_presentation_created(p);
+    p.first->on_presentation_created(presentation);
   }
 
   const std::map<PresentationObserver::Ptr, std::string>& presentationObservers =
@@ -429,12 +434,13 @@ void on_presentation_created(PresentationInterface::Ptr p)
   std::map<PresentationObserver::Ptr, std::string>::const_iterator cur = presentationObservers.begin();
   std::map<PresentationObserver::Ptr, std::string>::const_iterator end = presentationObservers.end();
   for(;cur!=end; cur++)
-    cur->first->presentationAdded(p);
+    cur->first->presentationAdded(presentation);
 }
 
 void on_view_created(View::Ptr v)
 {
-  views.push_back(v);
+  Scroom::Bookkeeping::Token t;
+  views[v] = t;
 
   for(std::list<PresentationInterface::WeakPtr>::iterator cur = presentations.begin();
       cur != presentations.end(); cur++)
@@ -452,23 +458,14 @@ void on_view_created(View::Ptr v)
   std::map<ViewObserver::Ptr, std::string>::const_iterator cur = viewObservers.begin();
   std::map<ViewObserver::Ptr, std::string>::const_iterator end = viewObservers.end();
   for(;cur!=end; cur++)
-    cur->first->viewAdded(v);
+    t.add(cur->first->viewAdded(v));
 }
 
 void on_view_destroyed(View* v)
 {
   View::Ptr view = v->shared_from_this<View>();
-  {
-    const std::map<ViewObserver::Ptr, std::string>& viewObservers =
-      PluginManager::getInstance()->getViewObservers();
-
-    std::map<ViewObserver::Ptr, std::string>::const_iterator cur = viewObservers.begin();
-    std::map<ViewObserver::Ptr, std::string>::const_iterator end = viewObservers.end();
-    for(;cur!=end; cur++)
-      cur->first->viewDeleted(view);
-  }
   
-  views.remove(view);
+  views.erase(view);
   view.reset();
 
   bool presentationDestroyed = false;
@@ -487,9 +484,9 @@ void on_view_destroyed(View* v)
   }
   if(presentationDestroyed)
   {
-    for(std::list<View::Ptr>::iterator cur = views.begin(); cur != views.end(); cur++)
+    BOOST_FOREACH(const Views::value_type& p, views)
     {
-      (*cur)->on_presentation_destroyed();
+      p.first->on_presentation_destroyed();
     }
 
     const std::map<PresentationObserver::Ptr, std::string>& presentationObservers =
@@ -517,9 +514,9 @@ void on_new_presentationobserver(PresentationObserver::Ptr po)
 
 void on_new_viewobserver(ViewObserver::Ptr v)
 {
-  for(std::list<View::Ptr>::iterator cur = views.begin(); cur != views.end(); cur++)
+  BOOST_FOREACH(const Views::value_type& p, views)
   {
-    v->viewAdded(*cur);
+    v->viewAdded(p.first);
   }
 }
   

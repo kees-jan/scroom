@@ -89,7 +89,7 @@ public:
 
   ThreadPool::Queue::WeakPtr queue; /**< Queue on which the load operation is executed */
 
-  std::map<ViewInterface::Ptr, TileViewState::WeakPtr> viewStates;
+  std::map<ViewInterface::WeakPtr, TileViewState::WeakPtr> viewStates;
 
 private:
   TileInternal(int depth, int x, int y, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider, TileStateInternal state);
@@ -157,7 +157,7 @@ public:
 
   TileState getState();
 
-  TileViewState::Ptr getViewState(ViewInterface::Ptr vi);
+  TileViewState::Ptr getViewState(ViewInterface::WeakPtr vi);
 
 private:
   /**
@@ -172,8 +172,8 @@ private:
   // Viewable ////////////////////////////////////////////////////////////
 public:
   
-  virtual void open(ViewInterface::Ptr vi);
-  virtual void close(ViewInterface::Ptr vi);
+  virtual void open(ViewInterface::WeakPtr vi);
+  virtual void close(ViewInterface::WeakPtr vi);
 };
 
 typedef std::vector<TileInternal::Ptr> TileInternalLine;

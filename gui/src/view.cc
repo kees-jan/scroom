@@ -124,7 +124,7 @@ GdkWindow* gtk_widget_get_window(GtkWidget *widget)
 
 ////////////////////////////////////////////////////////////////////////
   
-View::View(GladeXML* scroomXml, PresentationInterface::Ptr presentation)
+View::View(GladeXML* scroomXml)
   : scroomXml(scroomXml), presentation(), sidebarManager(),
     drawingAreaWidth(0), drawingAreaHeight(0),
     zoom(0), x(0), y(0), measurement(NULL), modifiermove(0)
@@ -169,22 +169,25 @@ View::View(GladeXML* scroomXml, PresentationInterface::Ptr presentation)
   on_newInterfaces_update(pluginManager->getNewInterfaces());
   updateNewWindowMenu();  
   on_configure();
-
-  if(presentation)
-  {
-    setPresentation(presentation);
-  }
 }
 
 View::Ptr View::create(GladeXML* scroomXml, PresentationInterface::Ptr presentation)
 {
-  return Ptr(new View(scroomXml, presentation));
+  Ptr view(new View(scroomXml));
+  printf("Creating a new view\n");
+
+  if(presentation)
+  {
+    view->setPresentation(presentation);
+  }
+
+  return view;
 }
 
 
 View::~View()
 {
-  setPresentation(PresentationInterface::Ptr());
+  printf("Destroying view...\n");
   gtk_widget_destroy(GTK_WIDGET(window));
 }
 

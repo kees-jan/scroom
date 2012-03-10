@@ -25,6 +25,8 @@
 
 #include "layeroperations.hh"
 
+const TiffPresentation::Dummy TiffPresentation::dummy(0);
+
 TiffPresentation::TiffPresentation()
     : fileName(), tif(NULL), height(0), width(0), tbi(), bpp(0)
 {
@@ -177,9 +179,9 @@ GdkRectangle TiffPresentation::getRect()
   return rect;
 }
 
-void TiffPresentation::open(ViewInterface::Ptr viewInterface)
+void TiffPresentation::open(ViewInterface::WeakPtr viewInterface)
 {
-  views.push_back(viewInterface);
+  views[viewInterface] = dummy;
   std::list<Viewable::Ptr> observers = getObservers();
   for (std::list<Viewable::Ptr>::iterator cur = observers.begin();
       cur != observers.end(); ++cur)
@@ -196,9 +198,9 @@ void TiffPresentation::open(ViewInterface::Ptr viewInterface)
   }
 }
 
-void TiffPresentation::close(ViewInterface::Ptr vi)
+void TiffPresentation::close(ViewInterface::WeakPtr vi)
 {
-  views.remove(vi);
+  views.erase(vi);
   std::list<Viewable::Ptr> observers = getObservers();
   for (std::list<Viewable::Ptr>::iterator cur = observers.begin();
       cur != observers.end(); ++cur)
@@ -304,24 +306,26 @@ void TiffPresentation::done()
 void TiffPresentation::observerAdded(Viewable::Ptr observer,
     Scroom::Bookkeeping::Token)
 {
-  for (std::list<ViewInterface::Ptr>::iterator cur = views.begin();
-      cur != views.end(); ++cur)
+  BOOST_FOREACH(const Views::value_type& p, views)
   {
-    observer->open(*cur);
+    observer->open(p.first);
   }
 }
 
 void TiffPresentation::setColormap(Colormap::Ptr colormap)
 {
   this->colormap = colormap;
-  for (std::list<ViewInterface::Ptr>::iterator cur = views.begin();
-      cur != views.end(); ++cur)
+  BOOST_FOREACH(const Views::value_type& p, views)
   {
-    if (tbi)
+    ViewInterface::Ptr v = p.first.lock();
+    if(v)
     {
-      tbi->clearCaches(*cur);
+      if (tbi)
+      {
+        tbi->clearCaches(v);
+      }
+      v->invalidate();
     }
-    (*cur)->invalidate();
   }
 }
 

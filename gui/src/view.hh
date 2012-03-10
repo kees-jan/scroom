@@ -96,7 +96,7 @@ private:
   std::map<PresentationInterface::WeakPtr,GtkWidget*> presentations;
   
 private:
-  View(GladeXML* scroomXml, PresentationInterface::Ptr presentation);
+  View(GladeXML* scroomXml);
 
 public:
   static Ptr create(GladeXML* scroomXml, PresentationInterface::Ptr presentation);

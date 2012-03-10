@@ -37,6 +37,10 @@ public:
   typedef boost::shared_ptr<TiffPresentation> Ptr;
 
 private:
+  typedef bool Dummy;
+  typedef std::map<ViewInterface::WeakPtr, Dummy> Views;
+  static const Dummy dummy;
+  
   std::string fileName;
   TIFF* tif;
   int height;
@@ -45,7 +49,7 @@ private:
   LayerSpec ls;
   int bpp;
   std::map<std::string, std::string> properties;
-  std::list<ViewInterface::Ptr> views;
+  Views views;
   Colormap::Ptr originalColormap;
   Colormap::Ptr colormap;
   
@@ -61,9 +65,9 @@ public:
   ////////////////////////////////////////////////////////////////////////
 
   virtual GdkRectangle getRect();
-  virtual void open(ViewInterface::Ptr viewInterface);
+  virtual void open(ViewInterface::WeakPtr viewInterface);
   virtual void redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);
-  virtual void close(ViewInterface::Ptr vi);
+  virtual void close(ViewInterface::WeakPtr vi);
   virtual bool getProperty(const std::string& name, std::string& value);
   virtual bool isPropertyDefined(const std::string& name);
   virtual std::string getTitle();

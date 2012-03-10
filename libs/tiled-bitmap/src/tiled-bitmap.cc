@@ -631,7 +631,7 @@ void TiledBitmap::clearCaches(ViewInterface::Ptr viewInterface)
   }
 }
 
-void TiledBitmap::open(ViewInterface::Ptr viewInterface)
+void TiledBitmap::open(ViewInterface::WeakPtr viewInterface)
 {
   boost::mutex::scoped_lock lock(viewDataMutex);
   TiledBitmapViewData::Ptr vd = TiledBitmapViewData::create(viewInterface);
@@ -645,7 +645,7 @@ void TiledBitmap::open(ViewInterface::Ptr viewInterface)
   }
 }
 
-void TiledBitmap::close(ViewInterface::Ptr vi)
+void TiledBitmap::close(ViewInterface::WeakPtr vi)
 {
   BOOST_FOREACH(Layer* l, layers)
   {

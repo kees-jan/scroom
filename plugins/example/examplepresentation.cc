@@ -72,12 +72,12 @@ GdkRectangle ExamplePresentation::getRect()
   return rect;
 }
 
-void ExamplePresentation::open(ViewInterface::Ptr viewInterface)
+void ExamplePresentation::open(ViewInterface::WeakPtr viewInterface)
 {
   UNUSED(viewInterface);
 }
 
-void ExamplePresentation::close(ViewInterface::Ptr vi)
+void ExamplePresentation::close(ViewInterface::WeakPtr vi)
 {
   UNUSED(vi);
 }

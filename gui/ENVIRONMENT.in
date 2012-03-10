@@ -16,4 +16,4 @@ then
 fi
 
 # Seems to be not needed...
-export LD_LIBRARY_PATH="${ATB}/libs/threadpool/src/.libs:${ATB}/libs/memory-manager/src/.libs:${ATB}/libs/tiled-bitmap/src/.libs:$SCROOM_SAVED_LIBRARY_PATH"
+export LD_LIBRARY_PATH="${ATB}/libs/util/src/.libs:${ATB}/libs/threadpool/src/.libs:${ATB}/libs/memory-manager/src/.libs:${ATB}/libs/tiled-bitmap/src/.libs:$SCROOM_SAVED_LIBRARY_PATH"
