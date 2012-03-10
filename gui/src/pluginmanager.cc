@@ -34,6 +34,7 @@ const std::string SCROOM_PLUGIN_DIRS = "SCROOM_PLUGIN_DIRS";
 static PluginManager::Ptr pluginManager = PluginManager::create();
 
 PluginManager::PluginManager()
+: devMode(false), state(FINDING_DIRECTORIES)
 {
 }
 
