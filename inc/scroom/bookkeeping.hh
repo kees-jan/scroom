@@ -73,10 +73,9 @@ namespace Scroom
     class MapBase : public virtual Scroom::Utils::Base, public boost::noncopyable
     {
     private:
-      typedef typename std::map<K,boost::weak_ptr<Detail::ValueType<V> > >::iterator I;
-      typedef typename std::map<K,boost::weak_ptr<Detail::ValueType<V> > >::value_type value_type;
+      typedef typename std::map<K,boost::weak_ptr<Detail::ValueType<V> > > MapType;
       
-      typename std::map<K,boost::weak_ptr<Detail::ValueType<V> > > map;
+      MapType map;
       mutable boost::mutex mut;
 
     public:

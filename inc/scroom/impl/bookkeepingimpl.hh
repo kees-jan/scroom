@@ -217,7 +217,7 @@ namespace Scroom
     inline Token MapBase<K,V>::reReserve(const K& k)
     {
       boost::mutex::scoped_lock lock(mut);
-      I i = map.find(k);
+      typename MapType::iterator i = map.find(k);
 
       if(map.end()==i)
       {
@@ -247,7 +247,7 @@ namespace Scroom
     inline void MapBase<K,V>::remove(const K& k, WeakToken wt)
     {
       boost::mutex::scoped_lock lock(mut);
-      I i = map.find(k);
+      typename MapType::iterator i = map.find(k);
 
       if(map.end()!=i)
       {
@@ -272,7 +272,7 @@ namespace Scroom
     inline void MapBase<K,V>::remove(const K& k)
     {
       boost::mutex::scoped_lock lock(mut);
-      I i = map.find(k);
+      typename MapType::iterator i = map.find(k);
 
       if(map.end()!=i)
         map.erase(i);
@@ -282,7 +282,7 @@ namespace Scroom
     inline Detail::LValue<V> MapBase<K,V>::at(const K& k)
     {
       boost::mutex::scoped_lock lock(mut);
-      I i = map.find(k);
+      typename MapType::iterator i = map.find(k);
 
       if(map.end()!=i)
       {
@@ -298,7 +298,7 @@ namespace Scroom
     inline void MapBase<K,V>::set(const K& k, const V& v)
     {
       boost::mutex::scoped_lock lock(mut);
-      I i = map.find(k);
+      typename MapType::iterator i = map.find(k);
 
       if(map.end()!=i)
       {
@@ -317,7 +317,7 @@ namespace Scroom
     inline V MapBase<K,V>::get(const K& k)
     {
       boost::mutex::scoped_lock lock(mut);
-      I i = map.find(k);
+      typename MapType::iterator i = map.find(k);
 
       if(map.end()!=i)
       {
@@ -336,7 +336,7 @@ namespace Scroom
     {
       boost::mutex::scoped_lock lock(mut);
       std::list<K> result;
-      BOOST_FOREACH(value_type el, map)
+      BOOST_FOREACH(typename MapType::value_type el, map)
       {
         result.push_back(el.first);
       }
@@ -348,7 +348,7 @@ namespace Scroom
     {
       boost::mutex::scoped_lock lock(mut);
       std::list<V> result;
-      BOOST_FOREACH(value_type el, map)
+      BOOST_FOREACH(typename MapType::value_type el, map)
       {
         typename Detail::ValueType<V>::Ptr pv = el.second.lock();
         if(pv)
