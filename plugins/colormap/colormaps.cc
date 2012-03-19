@@ -36,121 +36,130 @@
 #define PAL_VERSION "0100"
 #define BUFFERSIZE  256
 
-////////////////////////////////////////////////////////////////////////
-// Colormaps
-
-Colormaps::Colormaps()
+namespace Scroom
 {
-  const char *homedir = g_getenv ("HOME");
-  if (!homedir)
-     homedir = g_get_home_dir ();
-
-  char* colormapDirPath = g_build_filename(homedir, SCROOMDIR, COLORMAPDIR, NULL);
-
-  DIR* colormapDir = opendir(colormapDirPath);
-  if(colormapDir)
+  namespace ColormapImpl
   {
-    for(struct dirent* d=readdir(colormapDir); d; d=readdir(colormapDir))
+    ////////////////////////////////////////////////////////////////////////
+    // Colormaps
+
+    Colormaps::Colormaps()
     {
-      // At this point, we're not sure if d is a regular file or a
-      // directory or whatever. However, we can safely assume that in
-      // all bad cases, the load() will fail :-)
-      
-      char* name = d->d_name;
-      int len = strlen(name);
-      if(!strcmp(name+len-strlen(COLORMAPEXT), COLORMAPEXT))
+      const char *homedir = g_getenv("HOME");
+      if (!homedir)
+        homedir = g_get_home_dir();
+
+      char* colormapDirPath = g_build_filename(homedir, SCROOMDIR, COLORMAPDIR,
+          NULL);
+
+      DIR* colormapDir = opendir(colormapDirPath);
+      if (colormapDir)
       {
-        Colormap::Ptr c = load(name);
-        if(c)
+        for (struct dirent* d = readdir(colormapDir); d;
+            d = readdir(colormapDir))
         {
-          colormaps.push_back(c);
-        }          
+          // At this point, we're not sure if d is a regular file or a
+          // directory or whatever. However, we can safely assume that in
+          // all bad cases, the load() will fail :-)
+
+          char* name = d->d_name;
+          int len = strlen(name);
+          if (!strcmp(name + len - strlen(COLORMAPEXT), COLORMAPEXT))
+          {
+            Colormap::Ptr c = load(name);
+            if (c)
+            {
+              colormaps.push_back(c);
+            }
+          }
+        }
+        closedir(colormapDir);
       }
-    }
-    closedir(colormapDir);
-  }
-  else
-  {
-    printf("Failed to open dir %s: (%d, %s)\n", colormapDirPath, errno, strerror(errno));
-  }
-  g_free(colormapDirPath);
-}
-
-Colormaps::~Colormaps()
-{
-}
-
-Colormaps& Colormaps::getInstance()
-{
-  static Colormaps instance;
-  return instance;
-}
-
-std::list<Colormap::ConstPtr> Colormaps::getColormaps()
-{
-  return colormaps;
-}
-
-Colormap::Ptr Colormaps::load(const char* name)
-{
-  Colormap::Ptr colormap;
-
-  const char *homedir = g_getenv ("HOME");
-  if (!homedir)
-     homedir = g_get_home_dir ();
-
-  char* fullName = g_build_filename(homedir, SCROOMDIR, COLORMAPDIR, name, NULL); 
-  FILE* f = fopen(fullName, "r");
-  if(f)
-  {
-    try
-    {
-      char buffer[BUFFERSIZE];
-
-      // Read header
-      char* result = fgets(buffer, BUFFERSIZE, f);
-      if(!result)
-        throw std::exception();
-      if(strncmp(buffer, PAL_HEADER, strlen(PAL_HEADER)))
-        throw std::exception();
-        
-      // Read version
-      result = fgets(buffer, BUFFERSIZE, f);
-      if(!result)
-        throw std::exception();
-      if(strncmp(buffer, PAL_VERSION, strlen(PAL_VERSION)))
-        throw std::exception();
-
-      // Read ColorCount
-      result = fgets(buffer, BUFFERSIZE, f);
-      if(!result)
-        throw std::exception();
-      unsigned int count = atoi(result);
-      if(count==0)
-        throw std::exception();
-
-      colormap = Colormap::create();
-      colormap->name = name;
-      std::vector<Color>& colors = colormap->colors;
-      int red=0;
-      int green=0;
-      int blue=0;
-      while(colors.size()<count &&
-            fgets(buffer, BUFFERSIZE, f) &&
-            3 == sscanf(buffer, "%d %d %d", &red, &green, &blue))
+      else
       {
-        colors.push_back(Color(red/255.0, green/255.0, blue/255.0));
+        printf("Failed to open dir %s: (%d, %s)\n", colormapDirPath, errno,
+            strerror(errno));
       }
-      if(colors.size()!=count)
-        throw std::exception();
+      g_free(colormapDirPath);
     }
-    catch(std::exception& e)
+
+    Colormaps::~Colormaps()
     {
-      printf("ERROR: Couldn't parse file\n");
-      colormap.reset();
     }
-    fclose(f);
+
+    Colormaps& Colormaps::getInstance()
+    {
+      static Colormaps instance;
+      return instance;
+    }
+
+    std::list<Colormap::ConstPtr> Colormaps::getColormaps()
+    {
+      return colormaps;
+    }
+
+    Colormap::Ptr Colormaps::load(const char* name)
+    {
+      Colormap::Ptr colormap;
+
+      const char *homedir = g_getenv("HOME");
+      if (!homedir)
+        homedir = g_get_home_dir();
+
+      char* fullName = g_build_filename(homedir, SCROOMDIR, COLORMAPDIR, name,
+          NULL);
+      FILE* f = fopen(fullName, "r");
+      if (f)
+      {
+        try
+        {
+          char buffer[BUFFERSIZE];
+
+          // Read header
+          char* result = fgets(buffer, BUFFERSIZE, f);
+          if (!result)
+            throw std::exception();
+          if (strncmp(buffer, PAL_HEADER, strlen(PAL_HEADER)))
+            throw std::exception();
+
+          // Read version
+          result = fgets(buffer, BUFFERSIZE, f);
+          if (!result)
+            throw std::exception();
+          if (strncmp(buffer, PAL_VERSION, strlen(PAL_VERSION)))
+            throw std::exception();
+
+          // Read ColorCount
+          result = fgets(buffer, BUFFERSIZE, f);
+          if (!result)
+            throw std::exception();
+          unsigned int count = atoi(result);
+          if (count == 0)
+            throw std::exception();
+
+          colormap = Colormap::create();
+          colormap->name = name;
+          std::vector<Color>& colors = colormap->colors;
+          int red = 0;
+          int green = 0;
+          int blue = 0;
+          while (colors.size() < count && fgets(buffer, BUFFERSIZE, f)
+              && 3 == sscanf(buffer, "%d %d %d", &red, &green, &blue))
+          {
+            colors.push_back(Color(red / 255.0, green / 255.0, blue / 255.0));
+          }
+          if (colors.size() != count)
+            throw std::exception();
+        }
+        catch (std::exception& e)
+        {
+          printf("ERROR: Couldn't parse file\n");
+          colormap.reset();
+        }
+        fclose(f);
+      }
+      g_free(fullName);
+      return colormap;
+    }
   }
-  g_free(fullName);
-  return colormap;
 }

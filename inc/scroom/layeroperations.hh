@@ -16,22 +16,19 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef _TIFF_LAYEROPERATIONS_HH
-#define _TIFF_LAYEROPERATIONS_HH
+#ifndef _LAYEROPERATIONS_HH
+#define _LAYEROPERATIONS_HH
 
 #include <scroom/tiledbitmapinterface.hh>
 #include <scroom/colormappable.hh>
 
-// Avoid a circular reference...
-class TiffPresentation;
-
 class CommonOperations : public LayerOperations
 {
 protected:
-  TiffPresentation* presentation;
+  ColormapProvider* colormapProvider;
 
 public:
-  CommonOperations(TiffPresentation* presentation);
+  CommonOperations(ColormapProvider* colormapProvider);
   
   virtual ~CommonOperations()
   {}
@@ -56,8 +53,8 @@ public:
 class Operations1bpp : public CommonOperations
 {
 public:
-  static Ptr create(TiffPresentation* presentation);
-  Operations1bpp(TiffPresentation* presentation);
+  static Ptr create(ColormapProvider* colormapProvider);
+  Operations1bpp(ColormapProvider* colormapProvider);
   virtual ~Operations1bpp()
   {}
   
@@ -72,8 +69,8 @@ public:
 class Operations8bpp : public CommonOperations
 {
 public:
-  static Ptr create(TiffPresentation* presentation);
-  Operations8bpp(TiffPresentation* presentation);
+  static Ptr create(ColormapProvider* colormapProvider);
+  Operations8bpp(ColormapProvider* colormapProvider);
   virtual ~Operations8bpp()
   {}
   
@@ -98,8 +95,8 @@ protected:
   const unsigned pixelMask;
 
 public:
-  static Ptr create(TiffPresentation* presentation, int bpp);
-  Operations(TiffPresentation* presentation, int bpp);
+  static Ptr create(ColormapProvider* colormapProvider, int bpp);
+  Operations(ColormapProvider* colormapProvider, int bpp);
   
   virtual ~Operations()
   {}
@@ -119,8 +116,8 @@ public:
 class OperationsColormapped : public Operations
 {
 public:
-  static Ptr create(TiffPresentation* presentation, int bpp);
-  OperationsColormapped(TiffPresentation* presentation, int bpp);
+  static Ptr create(ColormapProvider* colormapProvider, int bpp);
+  OperationsColormapped(ColormapProvider* colormapProvider, int bpp);
 
   virtual ~OperationsColormapped()
   {}

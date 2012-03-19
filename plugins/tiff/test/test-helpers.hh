@@ -6,7 +6,7 @@
 #include <gtk/gtk.h>
 
 #include <tiffpresentation.hh>
-#include <layeroperations.hh>
+#include <scroom/layeroperations.hh>
 
 #include "measure-framerate-stubs.hh"
 

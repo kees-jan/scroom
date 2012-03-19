@@ -23,7 +23,7 @@
 
 #include <scroom/unused.h>
 
-#include "layeroperations.hh"
+#include <scroom/layeroperations.hh>
 
 const TiffPresentation::Dummy TiffPresentation::dummy(0);
 

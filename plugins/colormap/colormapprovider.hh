@@ -30,52 +30,60 @@
 #include <scroom/colormappable.hh>
 #include <scroom/observable.hh>
 
-/**
- * Provide the colormap widget to the Viewable.
- *
- * When the user selects one of the colormaps, they will be set.
- */
-class ColormapProvider: public Viewable, public boost::enable_shared_from_this<ColormapProvider>
+namespace Scroom
 {
-public:
-  typedef boost::shared_ptr<ColormapProvider> Ptr;
-  
-private:
-  /** The Colormappable interface of the presentation to which we're associated */
-  Colormappable::WeakPtr colormappable;
+  namespace ColormapImpl
+  {
+    /**
+     * Provide the colormap widget to the Viewable.
+     *
+     * When the user selects one of the colormaps, they will be set.
+     */
+    class ColormapProvider: public Viewable,
+        public boost::enable_shared_from_this<ColormapProvider>
+    {
+    public:
+      typedef boost::shared_ptr<ColormapProvider> Ptr;
 
-  /** The views to which we're associated */
-  std::map<ViewInterface::WeakPtr, GtkTreeView*> views;
+    private:
+      /** The Colormappable interface of the presentation to which we're associated */
+      Colormappable::WeakPtr colormappable;
 
-  /** The colormaps we're offering to our views */
-  GtkListStore* colormaps;
+      /** The views to which we're associated */
+      std::map<ViewInterface::WeakPtr, GtkTreeView*> views;
 
-  /** Our registration with the Colormappable */
-  Scroom::Utils::Stuff registration;
+      /** The colormaps we're offering to our views */
+      GtkListStore* colormaps;
 
-  /** Constructor */
-  ColormapProvider(Colormappable::Ptr c);
-  
-public:
-  /** Constructor */
-  static ColormapProvider::Ptr create(PresentationInterface::Ptr p);
+      /** Our registration with the Colormappable */
+      Scroom::Utils::Stuff registration;
 
-  /** Destructor */
-  ~ColormapProvider();
-  
-  // Viewable ////////////////////////////////////////////////////////////
+      /** Constructor */
+      ColormapProvider(Colormappable::Ptr c);
 
-  /** A new view was opened */
-  virtual void open(ViewInterface::WeakPtr vi);
+    public:
+      /** Constructor */
+      static ColormapProvider::Ptr create(PresentationInterface::Ptr p);
 
-  /** An existing view was closed */
-  virtual void close(ViewInterface::WeakPtr vi);
+      /** Destructor */
+      ~ColormapProvider();
 
-  // Helpers /////////////////////////////////////////////////////////////
+      // Viewable ////////////////////////////////////////////////////////////
 
-  /** The user selected a colormap */
-  void on_colormap_selected(GtkTreeView* tv);
-  
-};
+      /** A new view was opened */
+      virtual void open(ViewInterface::WeakPtr vi);
+
+      /** An existing view was closed */
+      virtual void close(ViewInterface::WeakPtr vi);
+
+      // Helpers /////////////////////////////////////////////////////////////
+
+      /** The user selected a colormap */
+      void on_colormap_selected(GtkTreeView* tv);
+
+    };
+
+  }
+}
 
 #endif

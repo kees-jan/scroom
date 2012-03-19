@@ -24,52 +24,60 @@
 
 ////////////////////////////////////////////////////////////////////////
 
-ColormapPlugin::ColormapPlugin()
-  : presentations()
+namespace Scroom
 {
-}
-
-ColormapPlugin::Ptr ColormapPlugin::create()
-{
-  return Ptr(new ColormapPlugin());
-}
-
-ColormapPlugin::~ColormapPlugin()
-{
-}
-
-std::string ColormapPlugin::getPluginName()
-{
-  return "Colormap";
-}
-
-std::string ColormapPlugin::getPluginVersion()
-{
-  return "0.0";
-}
-
-void ColormapPlugin::registerCapabilities(ScroomInterface::Ptr host)
-{
-  host->registerPresentationObserver("Colormap", shared_from_this<ColormapPlugin>());
-}
-
-void ColormapPlugin::unregisterCapabilities(ScroomInterface::Ptr host)
-{
-  host->unregisterPresentationObserver(shared_from_this<ColormapPlugin>());
-}
-
-void ColormapPlugin::presentationAdded(PresentationInterface::Ptr p)
-{
-  printf("ColormapPlugin: A presentation was created\n");
-  if(p->isPropertyDefined(COLORMAPPABLE_PROPERTY_NAME))
+  namespace ColormapImpl
   {
-    printf("ColormapPlugin: It is colormappable!\n");
-    ColormapProvider::Ptr cmp = ColormapProvider::create(p);
+
+    ColormapPlugin::ColormapPlugin()
+        : presentations()
+    {
+    }
+
+    ColormapPlugin::Ptr ColormapPlugin::create()
+    {
+      return Ptr(new ColormapPlugin());
+    }
+
+    ColormapPlugin::~ColormapPlugin()
+    {
+    }
+
+    std::string ColormapPlugin::getPluginName()
+    {
+      return "Colormap";
+    }
+
+    std::string ColormapPlugin::getPluginVersion()
+    {
+      return "0.0";
+    }
+
+    void ColormapPlugin::registerCapabilities(ScroomInterface::Ptr host)
+    {
+      host->registerPresentationObserver("Colormap",
+          shared_from_this<ColormapPlugin>());
+    }
+
+    void ColormapPlugin::unregisterCapabilities(ScroomInterface::Ptr host)
+    {
+      host->unregisterPresentationObserver(shared_from_this<ColormapPlugin>());
+    }
+
+    void ColormapPlugin::presentationAdded(PresentationInterface::Ptr p)
+    {
+      printf("ColormapPlugin: A presentation was created\n");
+      if (p->isPropertyDefined(COLORMAPPABLE_PROPERTY_NAME))
+      {
+        printf("ColormapPlugin: It is colormappable!\n");
+        ColormapProvider::Ptr cmp = ColormapProvider::create(p);
+      }
+    }
+
+    void ColormapPlugin::presentationDeleted()
+    {
+      printf("ColormapPlugin: A presentation may have been deleted\n");
+    }
+
   }
 }
-
-void ColormapPlugin::presentationDeleted()
-{
-  printf("ColormapPlugin: A presentation may have been deleted\n");
-}
-  

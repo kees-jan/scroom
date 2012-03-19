@@ -31,7 +31,7 @@
 
 typedef struct tiff TIFF;
 
-class TiffPresentation : public PresentationInterface, public SourcePresentation, public Colormappable
+class TiffPresentation : public PresentationInterface, public SourcePresentation, public Colormappable, public ColormapProvider
 {
 public:
   typedef boost::shared_ptr<TiffPresentation> Ptr;

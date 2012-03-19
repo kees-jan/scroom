@@ -16,7 +16,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include "layeroperations.hh"
+#include <scroom/layeroperations.hh>
 
 #include <stdio.h>
 #include <stdint.h>
@@ -30,8 +30,6 @@
 #include <boost/utility.hpp>
 
 #include <scroom/unused.h>
-
-#include "tiffpresentation.hh"
 
 using Scroom::Utils::Stuff;
 
@@ -242,8 +240,8 @@ BitmapSurface::BitmapSurface(int width, int height, int stride, unsigned char* d
 ////////////////////////////////////////////////////////////////////////
 // CommonOperations
 
-CommonOperations::CommonOperations(TiffPresentation* presentation)
-  : presentation(presentation)
+CommonOperations::CommonOperations(ColormapProvider* colormapProvider)
+  : colormapProvider(colormapProvider)
 {
 }
 
@@ -397,13 +395,13 @@ void CommonOperations::draw(cairo_t* cr, const ConstTile::Ptr tile,
 ////////////////////////////////////////////////////////////////////////
 // Operations1bpp
 
-LayerOperations::Ptr Operations1bpp::create(TiffPresentation* presentation)
+LayerOperations::Ptr Operations1bpp::create(ColormapProvider* colormapProvider)
 {
-  return Ptr(new Operations1bpp(presentation));
+  return Ptr(new Operations1bpp(colormapProvider));
 }
 
-Operations1bpp::Operations1bpp(TiffPresentation* presentation)
-  : CommonOperations(presentation)
+Operations1bpp::Operations1bpp(ColormapProvider* colormapProvider)
+  : CommonOperations(colormapProvider)
 {
 }
 
@@ -416,7 +414,7 @@ Scroom::Utils::Stuff Operations1bpp::cache(const ConstTile::Ptr tile)
 {
   const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_RGB24, tile->width);
   unsigned char* data = (unsigned char*)malloc(stride * tile->height);
-  Colormap::Ptr colormap = presentation->getColormap();
+  Colormap::Ptr colormap = colormapProvider->getColormap();
 
   unsigned char* row = data;
   for(int j=0; j<tile->height; j++, row+=stride)
@@ -475,13 +473,13 @@ void Operations1bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x
 ////////////////////////////////////////////////////////////////////////
 // Operations8bpp
 
-LayerOperations::Ptr Operations8bpp::create(TiffPresentation* presentation)
+LayerOperations::Ptr Operations8bpp::create(ColormapProvider* colormapProvider)
 {
-  return Ptr(new Operations8bpp(presentation));
+  return Ptr(new Operations8bpp(colormapProvider));
 }
 
-Operations8bpp::Operations8bpp(TiffPresentation* presentation)
-  : CommonOperations(presentation)
+Operations8bpp::Operations8bpp(ColormapProvider* colormapProvider)
+  : CommonOperations(colormapProvider)
 {
 }
 
@@ -494,7 +492,7 @@ Scroom::Utils::Stuff Operations8bpp::cache(const ConstTile::Ptr tile)
 {
   const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_RGB24, tile->width);
   unsigned char* data = (unsigned char*)malloc(stride * tile->height);
-  Colormap::Ptr colormap = presentation->getColormap();
+  Colormap::Ptr colormap = colormapProvider->getColormap();
   const Color& c1 = colormap->colors[0];
   const Color& c2 = colormap->colors[1];
 
@@ -596,13 +594,13 @@ void Operations8bpp::draw(cairo_t* cr, const ConstTile::Ptr tile,
 ////////////////////////////////////////////////////////////////////////
 // Operations
 
-LayerOperations::Ptr Operations::create(TiffPresentation* presentation, int bpp)
+LayerOperations::Ptr Operations::create(ColormapProvider* colormapProvider, int bpp)
 {
-  return Ptr(new Operations(presentation, bpp));
+  return Ptr(new Operations(colormapProvider, bpp));
 }
 
-Operations::Operations(TiffPresentation* presentation, int bpp)
-  : CommonOperations(presentation), 
+Operations::Operations(ColormapProvider* colormapProvider, int bpp)
+  : CommonOperations(colormapProvider), 
     bpp(bpp), pixelsPerByte(8/bpp), pixelOffset(bpp), pixelMask((1<<bpp)-1)
 {
 }
@@ -616,7 +614,7 @@ Scroom::Utils::Stuff Operations::cache(const ConstTile::Ptr tile)
 {
   const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_RGB24, tile->width);
   unsigned char* data = (unsigned char*)malloc(stride * tile->height);
-  Colormap::Ptr colormap = presentation->getColormap();
+  Colormap::Ptr colormap = colormapProvider->getColormap();
 
   unsigned char* row = data;
   for(int j=0; j<tile->height; j++, row+=stride)
@@ -739,13 +737,13 @@ void Operations::draw(cairo_t* cr, const ConstTile::Ptr tile,
 ////////////////////////////////////////////////////////////////////////
 // OperationsColormapped
 
-LayerOperations::Ptr OperationsColormapped::create(TiffPresentation* presentation, int bpp)
+LayerOperations::Ptr OperationsColormapped::create(ColormapProvider* colormapProvider, int bpp)
 {
-  return Ptr(new OperationsColormapped(presentation, bpp));
+  return Ptr(new OperationsColormapped(colormapProvider, bpp));
 }
 
-OperationsColormapped::OperationsColormapped(TiffPresentation* presentation, int bpp)
-  : Operations(presentation, bpp)
+OperationsColormapped::OperationsColormapped(ColormapProvider* colormapProvider, int bpp)
+  : Operations(colormapProvider, bpp)
 {
 }
 
@@ -758,7 +756,7 @@ Scroom::Utils::Stuff OperationsColormapped::cache(const ConstTile::Ptr tile)
 {
   const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_RGB24, tile->width);
   unsigned char* data = (unsigned char*)malloc(stride * tile->height);
-  Colormap::Ptr colormap = presentation->getColormap();
+  Colormap::Ptr colormap = colormapProvider->getColormap();
   const int multiplier = 2; // data is 2*bpp, containing 2 colors
 
   unsigned char* row = data;

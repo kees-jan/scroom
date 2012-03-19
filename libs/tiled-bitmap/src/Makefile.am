@@ -4,6 +4,7 @@ lib_LTLIBRARIES = libstiledbitmap.la
 libstiledbitmap_la_SOURCES = \
 	layer.cc layer.hh \
 	layercoordinator.cc layercoordinator.hh \
+	layeroperations.cc \
 	tiled-bitmap.cc tiled-bitmap.hh \
 	tiledbitmapviewdata.cc tiledbitmapviewdata.hh \
 	tileinternalobserverinterfaces.cc tileinternalobserverinterfaces.hh \

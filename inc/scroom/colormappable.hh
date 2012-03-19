@@ -176,4 +176,13 @@ public:
   /** Retrieve the number of colors in use by the presentation */
   virtual int getNumberOfColors()=0;
 };
+
+class ColormapProvider
+{
+public:
+  virtual Colormap::Ptr getColormap()=0;
+
+  virtual ~ColormapProvider() {}
+};
+
 #endif

@@ -16,6 +16,7 @@ nobase_include_HEADERS = \
 	scroom/function-additor.hh \
 	scroom/tile.hh \
 	scroom/tiledbitmapinterface.hh \
+	scroom/layeroperations.hh \
 	scroom/unused.h \
 	scroom/viewinterface.hh \
 	scroom/async-deleter.hh \
