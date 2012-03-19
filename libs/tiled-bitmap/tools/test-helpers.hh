@@ -5,8 +5,8 @@
 
 #include <gtk/gtk.h>
 
-#include <tiffpresentation.hh>
 #include <scroom/layeroperations.hh>
+#include <scroom/colormappable.hh>
 
 #include "measure-framerate-stubs.hh"
 
@@ -14,6 +14,25 @@ extern int drawingAreaWidth;
 extern int drawingAreaHeight;
 
 ////////////////////////////////////////////////////////////////////////
+
+class DummyColormapProvider: public ColormapProvider
+{
+public:
+  typedef boost::shared_ptr<DummyColormapProvider> Ptr;
+  
+private:
+  Colormap::Ptr colormap;
+
+private:
+  DummyColormapProvider(Colormap::Ptr colormap);
+
+public:
+  static Ptr create(Colormap::Ptr colormap);
+
+public:
+  virtual Colormap::Ptr getColormap();
+};
+
 class TestData
 {
 public:
@@ -22,18 +41,18 @@ public:
 private:
   ProgressInterfaceStub* pi;
   ViewInterface::Ptr vi;
-  TiffPresentation::Ptr tp;
+  DummyColormapProvider::Ptr colormapProvider;
   LayerSpec ls;
   TiledBitmapInterface::Ptr tbi;
   SourcePresentation* sp;
   int zoom;
 
 private:
-  TestData(TiffPresentation::Ptr tp, const LayerSpec& ls,
+  TestData(DummyColormapProvider::Ptr colormapProvider, const LayerSpec& ls,
            TiledBitmapInterface::Ptr tbi, SourcePresentation* sp, int zoom);
   
 public:
-  static Ptr create(TiffPresentation::Ptr tp, const LayerSpec& ls,
+  static Ptr create(DummyColormapProvider::Ptr colormapProvider, const LayerSpec& ls,
                     TiledBitmapInterface::Ptr tbi, SourcePresentation* sp, int zoom);
 
   ~TestData();

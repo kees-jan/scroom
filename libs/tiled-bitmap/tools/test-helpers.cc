@@ -9,17 +9,33 @@ TestData::Ptr testData;
 
 ////////////////////////////////////////////////////////////////////////
 
-TestData::TestData(TiffPresentation::Ptr tp, const LayerSpec& ls,
+DummyColormapProvider::DummyColormapProvider(Colormap::Ptr colormap)
+  : colormap(colormap)
+{}
+
+DummyColormapProvider::Ptr DummyColormapProvider::create(Colormap::Ptr colormap)
+{
+  return Ptr(new DummyColormapProvider(colormap));
+}
+
+Colormap::Ptr DummyColormapProvider::getColormap()
+{
+  return colormap;
+}
+
+////////////////////////////////////////////////////////////////////////
+
+TestData::TestData(DummyColormapProvider::Ptr colormapProvider, const LayerSpec& ls,
                    TiledBitmapInterface::Ptr tbi, SourcePresentation* sp, int zoom)
-  : pi(new ProgressInterfaceStub()), vi(ViewInterfaceStub::create(pi)), tp(tp), ls(ls), tbi(tbi), sp(sp), zoom(zoom)
+  : pi(new ProgressInterfaceStub()), vi(ViewInterfaceStub::create(pi)), colormapProvider(colormapProvider), ls(ls), tbi(tbi), sp(sp), zoom(zoom)
 {
   tbi->open(vi);
 }
 
-TestData::Ptr TestData::create(TiffPresentation::Ptr tp, const LayerSpec& ls,
+TestData::Ptr TestData::create(DummyColormapProvider::Ptr colormapProvider, const LayerSpec& ls,
                                TiledBitmapInterface::Ptr tbi, SourcePresentation* sp, int zoom)
 {
-  return TestData::Ptr(new TestData(tp, ls, tbi, sp, zoom));
+  return TestData::Ptr(new TestData(colormapProvider, ls, tbi, sp, zoom));
 }
 
 bool TestData::wait()
@@ -33,7 +49,7 @@ TestData::~TestData()
   tbi.reset();
   delete sp;
   ls.clear();
-  tp.reset();
+  colormapProvider.reset();
   vi.reset();
   delete pi;
 }
@@ -117,94 +133,89 @@ bool wait()
 
 bool setupTest1bpp(int zoom, int width, int height)
 {
-  TiffPresentation::Ptr tp(new TiffPresentation());
   Colormap::Ptr colormap = Colormap::createDefault(2);
-  tp->setColormap(colormap);
+  DummyColormapProvider::Ptr colormapProvider = DummyColormapProvider::create(colormap);
 
   LayerSpec ls;
-  ls.push_back(Operations1bpp::create(tp.get()));
-  ls.push_back(Operations8bpp::create(tp.get()));
+  ls.push_back(Operations1bpp::create(colormapProvider.get()));
+  ls.push_back(Operations8bpp::create(colormapProvider.get()));
 
   TiledBitmapInterface::Ptr tbi = createTiledBitmap(width, height, ls);
   SourcePresentation* sp = new Source1Bpp();
   tbi->setSource(sp);
 
-  testData = TestData::create(tp, ls, tbi, sp, zoom);
+  testData = TestData::create(colormapProvider, ls, tbi, sp, zoom);
 
   return false;
 }
 
 bool setupTest2bpp(int zoom, int width, int height)
 {
-  TiffPresentation::Ptr tp(new TiffPresentation());
   Colormap::Ptr colormap = Colormap::createDefault(16);
-  tp->setColormap(colormap);
+  DummyColormapProvider::Ptr colormapProvider = DummyColormapProvider::create(colormap);
 
   LayerSpec ls;
-  ls.push_back(Operations::create(tp.get(), 2));
-  ls.push_back(OperationsColormapped::create(tp.get(), 2));
+  ls.push_back(Operations::create(colormapProvider.get(), 2));
+  ls.push_back(OperationsColormapped::create(colormapProvider.get(), 2));
 
   TiledBitmapInterface::Ptr tbi = createTiledBitmap(width, height, ls);
   SourcePresentation* sp = new Source2Bpp();
   tbi->setSource(sp);
 
-  testData = TestData::create(tp, ls, tbi, sp, zoom);
+  testData = TestData::create(colormapProvider, ls, tbi, sp, zoom);
 
   return false;
 }
 
 bool setupTest4bpp(int zoom, int width, int height)
 {
-  TiffPresentation::Ptr tp(new TiffPresentation());
   Colormap::Ptr colormap = Colormap::createDefault(16);
-  tp->setColormap(colormap);
+  DummyColormapProvider::Ptr colormapProvider = DummyColormapProvider::create(colormap);
 
   LayerSpec ls;
-  ls.push_back(Operations::create(tp.get(), 4));
-  ls.push_back(OperationsColormapped::create(tp.get(), 4));
+  ls.push_back(Operations::create(colormapProvider.get(), 4));
+  ls.push_back(OperationsColormapped::create(colormapProvider.get(), 4));
 
   TiledBitmapInterface::Ptr tbi = createTiledBitmap(width, height, ls);
   SourcePresentation* sp = new Source4Bpp();
   tbi->setSource(sp);
 
-  testData = TestData::create(tp, ls, tbi, sp, zoom);
+  testData = TestData::create(colormapProvider, ls, tbi, sp, zoom);
 
   return false;
 }
 
 bool setupTest8bpp(int zoom, int width, int height)
 {
-  TiffPresentation::Ptr tp(new TiffPresentation());
   Colormap::Ptr colormap = Colormap::createDefault(2);
-  tp->setColormap(colormap);
+  DummyColormapProvider::Ptr colormapProvider = DummyColormapProvider::create(colormap);
 
   LayerSpec ls;
-  ls.push_back(Operations8bpp::create(tp.get()));
+  ls.push_back(Operations8bpp::create(colormapProvider.get()));
 
   TiledBitmapInterface::Ptr tbi = createTiledBitmap(width, height, ls);
   SourcePresentation* sp = new Source8Bpp();
   tbi->setSource(sp);
 
-  testData = TestData::create(tp, ls, tbi, sp, zoom);
+  testData = TestData::create(colormapProvider, ls, tbi, sp, zoom);
 
   return false;
 }
 
 bool setupTest8bppColormapped(int zoom, int width, int height)
 {
-  TiffPresentation::Ptr tp(new TiffPresentation());
   Colormap::Ptr colormap = Colormap::createDefault(256);
-  tp->setColormap(colormap);
+  DummyColormapProvider::Ptr colormapProvider = DummyColormapProvider::create(colormap);
 
   LayerSpec ls;
-  ls.push_back(Operations::create(tp.get(), 8));
-  ls.push_back(OperationsColormapped::create(tp.get(), 8));
+  ls.push_back(Operations::create(colormapProvider.get(), 8));
+  ls.push_back(OperationsColormapped::create(colormapProvider.get(), 8));
 
   TiledBitmapInterface::Ptr tbi = createTiledBitmap(width, height, ls);
   SourcePresentation* sp = new Source8Bpp();
   tbi->setSource(sp);
 
-  testData = TestData::create(tp, ls, tbi, sp, zoom);
+  testData = TestData::create(colormapProvider, ls, tbi, sp, zoom);
 
   return false;
 }

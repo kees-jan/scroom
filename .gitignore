@@ -29,8 +29,8 @@ Makefile.in
 /libs/memory-manager/test/memory-manager-tests
 /libs/util/test/utils-tests
 /libs/tiled-bitmap/test/tiled-bitmap-tests
-/plugins/tiff/test/measure-framerate
-/plugins/tiff/test/measure-load-performance
+/libs/tiled-bitmap/tools/measure-framerate
+/libs/tiled-bitmap/tools/measure-load-performance
 /install-sh
 /libtool
 /ltmain.sh

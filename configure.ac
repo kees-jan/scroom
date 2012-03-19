@@ -286,12 +286,12 @@ AC_CONFIG_FILES([Makefile
                  libs/tiled-bitmap/Makefile
                  libs/tiled-bitmap/src/Makefile
                  libs/tiled-bitmap/test/Makefile
+                 libs/tiled-bitmap/tools/Makefile
                  plugins/Makefile
                  plugins/colormap/Makefile
                  plugins/example/Makefile
                  plugins/tiff/Makefile
                  plugins/tiff/src/Makefile
-                 plugins/tiff/test/Makefile
                  gui/Makefile
                  gui/ENVIRONMENT
                  gui/src/Makefile
