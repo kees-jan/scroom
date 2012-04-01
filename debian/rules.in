@@ -62,7 +62,7 @@ install: build
 	dh_prep  
 	dh_installdirs
 
-	# Add here commands to install the package into debian/scroom-0.4.
+	# Add here commands to install the package into debian/scroom-0.5.
 	$(MAKE) DESTDIR=$(CURDIR)/debian/@TARGET_PACKAGE@ install
 
 
