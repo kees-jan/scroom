@@ -20,6 +20,7 @@ nobase_include_HEADERS = \
 	scroom/layeroperations.hh \
 	scroom/unused.h \
 	scroom/viewinterface.hh \
+	scroom/progressinterfacemultiplexer.hh \
 	scroom/async-deleter.hh \
 	scroom/stuff.hh \
 	scroom/bookkeeping.hh \

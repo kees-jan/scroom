@@ -55,7 +55,7 @@ static Scroom::MemoryBlobs::PageProvider::Ptr createProvider(double width, doubl
 ////////////////////////////////////////////////////////////////////////
 
 FileOperation::FileOperation(TiledBitmap::Ptr parent)
-  : parent(parent), waitingMutex(), waiting(true)
+  : parent(parent), waitingMutex(), waiting(true), timer(0)
 {
   parent->setState(ProgressInterface::WAITING);
 }
@@ -219,17 +219,10 @@ void TiledBitmap::connect(Layer* layer, Layer* prevLayer,
       }
     }
 
-    LayerCoordinator::Ptr lc;
-    
     for(int i=0; i<horTileCount; i++)
     {
       int hoffset = i%8;
-      if(!hoffset)
-      {
-        // New target tile
-        lc = coordinators[i/8];
-      }
-
+      LayerCoordinator::Ptr lc = coordinators[i/8];
       lc->addSourceTile(hoffset, voffset, prevLayer->getTile(i,j));
     }
   }

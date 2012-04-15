@@ -32,6 +32,9 @@
 class ProgressInterface
 {
 public:
+  typedef boost::shared_ptr<ProgressInterface> Ptr;
+  typedef boost::weak_ptr<ProgressInterface> WeakPtr;
+
   typedef enum
     {
       IDLE,
