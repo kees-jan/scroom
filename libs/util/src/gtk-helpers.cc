@@ -17,6 +17,10 @@
  */
 #include <scroom/gtk-helpers.hh>
 
+#include <boost/thread.hpp>
+
+#include <scroom/assertions.hh>
+
 typedef boost::shared_ptr<boost::function<bool()> > GtkFuncPtr;
 
 namespace Scroom
@@ -62,6 +66,41 @@ namespace Scroom
     Wrapper wrap(boost::function<bool()> f)
     {
       return Wrapper(f);
+    }
+
+    namespace Detail
+    {
+      boost::recursive_mutex& GdkMutex()
+      {
+        static boost::recursive_mutex me;
+        return me;
+      }
+
+      void lockGdkMutex()
+      {
+        GdkMutex().lock();
+      }
+
+      void unlockGdkMutex()
+      {
+        GdkMutex().unlock();
+      }
+    }
+
+    void useRecursiveGdkLock()
+    {
+      gdk_threads_set_lock_functions(&Detail::lockGdkMutex, &Detail::unlockGdkMutex);
+    }
+
+
+    TakeGdkLock::TakeGdkLock()
+    {
+      gdk_threads_enter();
+    }
+
+    TakeGdkLock::~TakeGdkLock()
+    {
+      gdk_threads_leave();
     }
   }
 }

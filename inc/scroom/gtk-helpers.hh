@@ -37,6 +37,16 @@ namespace Scroom
     };
 
     Wrapper wrap(boost::function<bool ()> f);
+
+    class TakeGdkLock
+    {
+    public:
+      TakeGdkLock();
+      ~TakeGdkLock();
+    };
+
+    void useRecursiveGdkLock();
+
   }
 }
 

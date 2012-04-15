@@ -27,6 +27,8 @@
 #include <list>
 #include <string>
 
+#include <scroom/gtk-helpers.hh>
+
 #include "callbacks.hh"
 #include "loader.hh"
 
@@ -55,11 +57,9 @@ int main (int argc, char *argv[])
       usage(me);
       break;
     case '?':
-      // show usage -- unknown option
       usage(me, "Unknown option");
       break;
     case ':':
-      // show usage -- missing argument
       usage(me, "Option requires an argument");
       break;
     default:
@@ -74,15 +74,13 @@ int main (int argc, char *argv[])
     optind++;
   }
 
+  Scroom::GtkHelpers::useRecursiveGdkLock();
   g_thread_init(NULL);
   gdk_threads_init();
   
   gdk_threads_enter();
   gtk_set_locale ();
   gtk_init (&argc, &argv);
-
-  // scroom = create_scroom ();
-  // gtk_widget_show (scroom);
 
   on_scroom_bootstrap(filenames);
   

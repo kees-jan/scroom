@@ -1,4 +1,5 @@
 nobase_include_HEADERS = \
+	scroom/assertions.hh \
 	scroom/colormappable.hh \
 	scroom/global.hh \
 	scroom/memorymanagerinterface.hh \
