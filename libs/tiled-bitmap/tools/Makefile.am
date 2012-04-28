@@ -29,7 +29,7 @@ measure_framerate_SOURCES = \
 	measure-framerate-stubs.hh measure-framerate-stubs.cc
 
 measure_framerate_LDADD = \
-	-L$(top_builddir)/libs/tiled-bitmap/src -lstiledbitmap @BOOSTTHREADLIB@ \
+	@GUI_LIBS@ -L$(top_builddir)/libs/tiled-bitmap/src -lstiledbitmap @BOOSTTHREADLIB@ \
 	$(top_builddir)/libs/tiled-bitmap/src/libstiledbitmap.la \
 	$(top_builddir)/libs/util/src/libsutil.la
 
@@ -41,6 +41,6 @@ measure_load_performance_SOURCES = \
 	measure-framerate-stubs.hh measure-framerate-stubs.cc
 
 measure_load_performance_LDADD = \
-	@TIFFPLUGIN_LIBS@ -L$(top_builddir)/libs/tiled-bitmap/src -lstiledbitmap @BOOSTTHREADLIB@ \
+	@GUI_LIBS@ -L$(top_builddir)/libs/tiled-bitmap/src -lstiledbitmap @BOOSTTHREADLIB@ \
 	../../../libs/threadpool/src/libsthreadpool.la \
 	$(top_builddir)/libs/tiled-bitmap/src/libstiledbitmap.la
