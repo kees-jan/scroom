@@ -32,8 +32,7 @@ AC_DEFUN([SCROOM_COMPILE_STDCXX_0X], [
     decltype(a) b;
 
     typedef check<int> check_type;
-    check_type c;
-    check_type&& cr = c;],,
+    check_type&& cr = check_type();],,
   scroom_cv_cxx_compile_cxx0x_native=yes, scroom_cv_cxx_compile_cxx0x_native=no)
   AC_LANG_RESTORE
   ])
@@ -57,8 +56,7 @@ AC_DEFUN([SCROOM_COMPILE_STDCXX_0X], [
     decltype(a) b;
 
     typedef check<int> check_type;
-    check_type c;
-    check_type&& cr = c;],,
+    check_type&& cr = check_type();],,
   scroom_cv_cxx_compile_cxx0x_cxx=yes, scroom_cv_cxx_compile_cxx0x_cxx=no)
   CXXFLAGS="$ac_save_CXXFLAGS"
   AC_LANG_RESTORE
@@ -83,8 +81,7 @@ AC_DEFUN([SCROOM_COMPILE_STDCXX_0X], [
     decltype(a) b;
 
     typedef check<int> check_type;
-    check_type c;
-    check_type&& cr = c;],,
+    check_type&& cr = check_type();],,
   scroom_cv_cxx_compile_cxx0x_gxx=yes, scroom_cv_cxx_compile_cxx0x_gxx=no)
   CXXFLAGS="$ac_save_CXXFLAGS"
   AC_LANG_RESTORE
