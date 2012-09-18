@@ -470,6 +470,44 @@ void Operations1bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x
   }
 }
 
+void Operations1bpp::draw(cairo_t* cr, const ConstTile::Ptr tile,
+                          GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
+                          Scroom::Utils::Stuff cache)
+{
+  cairo_save(cr);
+  CommonOperations::draw(cr, tile, tileArea, viewArea, zoom, cache);
+  cairo_restore(cr);
+
+  // Draw pixelvalues at 32:1 zoom
+  if(zoom==5)
+  {
+    int multiplier = 1<<zoom;
+    int stride = tile->width / 8;
+    cairo_select_font_face (cr, "Sans",
+                            CAIRO_FONT_SLANT_NORMAL,
+                            CAIRO_FONT_WEIGHT_NORMAL);
+    cairo_set_font_size (cr, 12.0);
+    
+    for(int y=0; y<tileArea.height; y++)
+    {
+      const byte* const data = tile->data.get();
+      PixelIterator<const byte> current(data+(tileArea.y+y)*stride, tileArea.x, 1);
+      
+      for(int x=0; x<tileArea.width; x++, ++current)
+      {
+        int value = *current;
+        
+        cairo_save(cr);
+        cairo_set_source_rgb(cr, 0.5, 0.5, 0.5); // Grey
+  
+        drawPixelValue(cr, viewArea.x+multiplier*x, viewArea.y+multiplier*y, multiplier, value); 
+        cairo_restore(cr);
+      }
+    }
+  }
+}
+
+
 ////////////////////////////////////////////////////////////////////////
 // Operations8bpp
 

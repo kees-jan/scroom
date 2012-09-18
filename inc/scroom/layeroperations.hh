@@ -64,6 +64,10 @@ public:
   virtual int getBpp();
   virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+
+  virtual void draw(cairo_t* cr, const ConstTile::Ptr tile,
+                    GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
+                    Scroom::Utils::Stuff cache);
 };
 
 class Operations8bpp : public CommonOperations
