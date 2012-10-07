@@ -135,6 +135,7 @@ public:
   void on_window_size_changed(int newWidth, int newHeight);
   void on_zoombox_changed();
   void on_zoombox_changed(int newZoom, int mousex, int mousey);
+  void on_textbox_value_changed(GtkEditable* editable);
   void on_scrollbar_value_changed(GtkAdjustment* adjustment);
   void on_scrollwheel(GdkEventScroll* event);
   void on_buttonPress(GdkEventButton* event);

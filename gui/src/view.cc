@@ -591,6 +591,47 @@ void View::on_zoombox_changed(int newzoom, int mousex, int mousey)
   }
 }
 
+void View::on_textbox_value_changed(GtkEditable* editable)
+{
+  try
+  {
+    int newx = x;
+    int newy = y;
+
+    int daw = drawingAreaWidth;
+    int dah = drawingAreaHeight;
+    if(zoom>=0)
+    {
+      // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
+      int pixelSize = 1<<zoom;
+      daw /= pixelSize;
+      dah /= pixelSize;
+    }
+    else
+    {
+      // Zooming out. Smallest step is 1 window-pixel, which is more than one presentation-pixel
+      int pixelSize = 1<<(-zoom);
+      daw *= pixelSize;
+      dah *= pixelSize;
+    }
+
+    if(editable == GTK_EDITABLE(yTextBox))
+    {
+      newy = boost::lexical_cast<int>(gtk_entry_get_text(yTextBox)) - dah/2;
+    }
+    else
+    {
+      newx = boost::lexical_cast<int>(gtk_entry_get_text(xTextBox)) - daw/2;
+    }
+
+    updateXY(newx, newy, TEXTBOX);
+  }
+  catch (boost::bad_lexical_cast& ex)
+  {
+    // User typed something invalid, probably a letter. Ignore...
+  }
+}
+
 void View::on_scrollbar_value_changed(GtkAdjustment* adjustment)
 {
   int newx = x;

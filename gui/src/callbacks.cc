@@ -253,6 +253,12 @@ void on_zoombox_changed(GtkComboBox*, gpointer user_data)
   view->on_zoombox_changed();
 }
 
+void on_textbox_value_changed(GtkEditable* editable, gpointer user_data)
+{
+  View* view = static_cast<View*>(user_data);
+  view->on_textbox_value_changed(editable);
+}
+
 void on_scrollbar_value_changed(GtkAdjustment* adjustment, gpointer user_data)
 {
   View* view = static_cast<View*>(user_data);
@@ -373,6 +379,8 @@ void create_scroom(PresentationInterface::Ptr presentation)
   GtkWidget* hscrollbar = glade_xml_get_widget(xml, "hscrollbar");
   GtkAdjustment* vscrollbaradjustment = gtk_range_get_adjustment(GTK_RANGE(vscrollbar));
   GtkAdjustment* hscrollbaradjustment = gtk_range_get_adjustment(GTK_RANGE(hscrollbar));
+  GtkEditable* xTextBox = GTK_EDITABLE(glade_xml_get_widget(xml, "x_textbox"));
+  GtkEditable* yTextBox = GTK_EDITABLE(glade_xml_get_widget(xml, "y_textbox"));
 
   g_signal_connect ((gpointer) scroom, "hide", G_CALLBACK (on_scroom_hide), view.get());
   // g_signal_connect ((gpointer) open, "activate",
@@ -390,6 +398,8 @@ void create_scroom(PresentationInterface::Ptr presentation)
   g_signal_connect ((gpointer) zoomBox, "changed", G_CALLBACK (on_zoombox_changed), view.get());
   g_signal_connect ((gpointer) vscrollbaradjustment, "value-changed", G_CALLBACK(on_scrollbar_value_changed), view.get());
   g_signal_connect ((gpointer) hscrollbaradjustment, "value-changed", G_CALLBACK(on_scrollbar_value_changed), view.get());
+  g_signal_connect ((gpointer) xTextBox, "changed", G_CALLBACK(on_textbox_value_changed), view.get());
+  g_signal_connect ((gpointer) yTextBox, "changed", G_CALLBACK(on_textbox_value_changed), view.get());
   // g_signal_connect ((gpointer) cut, "activate",
   //                   G_CALLBACK (on_cut_activate),
   //                   view.get());
