@@ -280,6 +280,7 @@ void View::setPresentation(PresentationInterface::Ptr presentation)
   }
   updateZoom();
   updateScrollbars();
+  updateTextbox();
   invalidate();
 }
 
@@ -352,7 +353,7 @@ void View::updateTextbox()
     }
 
     std::string xs = boost::lexical_cast<std::string>(x+daw/2);
-    std::string ys = boost::lexical_cast<std::string>(y+daw/2);
+    std::string ys = boost::lexical_cast<std::string>(y+dah/2);
     gtk_entry_set_text(xTextBox, xs.c_str());
     gtk_entry_set_text(yTextBox, ys.c_str());
   }
@@ -553,54 +554,58 @@ void View::on_zoombox_changed()
   }
 }
 
-void View::on_zoombox_changed(int newZoom, int mousex, int mousey)
+void View::on_zoombox_changed(int newzoom, int mousex, int mousey)
 {
-  if(newZoom!=zoom)
+  if(newzoom!=zoom)
   {
     if(zoom>=0)
     {
-      const int pixelSize = 1<<zoom;
-      x+=mousex/pixelSize;
-      y+=mousey/pixelSize;
+      const int pixelsize = 1<<zoom;
+      x+=mousex/pixelsize;
+      y+=mousey/pixelsize;
     }
     else
     {
-      const int pixelSize = 1<<-zoom;
-      x+=mousex*pixelSize;
-      y+=mousey*pixelSize;
+      const int pixelsize = 1<<-zoom;
+      x+=mousex*pixelsize;
+      y+=mousey*pixelsize;
     }
 
-    if(newZoom>=0)
+    if(newzoom>=0)
     {
-      const int pixelSize = 1<<newZoom;
-      x-=mousex/pixelSize;
-      y-=mousey/pixelSize;
+      const int pixelsize = 1<<newzoom;
+      x-=mousex/pixelsize;
+      y-=mousey/pixelsize;
     }
     else
     {
-      const int pixelSize = 1<<-newZoom;
-      x-=mousex*pixelSize;
-      y-=mousey*pixelSize;
+      const int pixelsize = 1<<-newzoom;
+      x-=mousex*pixelsize;
+      y-=mousey*pixelsize;
     }
     
-    zoom = newZoom;
+    zoom = newzoom;
     updateScrollbars();
+    updateTextbox();
     invalidate();
   }
 }
 
 void View::on_scrollbar_value_changed(GtkAdjustment* adjustment)
 {
+  int newx = x;
+  int newy = y;
+  
   if(adjustment == vscrollbaradjustment)
   {
-    y = (int)gtk_adjustment_get_value(adjustment);
+    newy = (int)gtk_adjustment_get_value(adjustment);
   }
   else
   {
-    x = (int)gtk_adjustment_get_value(adjustment);
+    newx = (int)gtk_adjustment_get_value(adjustment);
   }
-  updateRulers();
-  invalidate();
+
+  updateXY(newx, newy, SCROLLBAR);
 }
 
 void View::on_buttonPress(GdkEventButton* event)
@@ -650,7 +655,8 @@ void View::on_motion_notify(GdkEventMotion* event)
 {
   if((event->state & GDK_BUTTON1_MASK) && modifiermove == GDK_BUTTON1_MASK)
   {
-    bool moved=false;
+    int newx = x;
+    int newy = y;
     
     if(zoom>=0)
     {
@@ -659,32 +665,24 @@ void View::on_motion_notify(GdkEventMotion* event)
       {
         int delta = (int(event->x)-cachedPoint.x)/pixelSize;
         cachedPoint.x += delta*pixelSize;
-        x-=delta;
-        moved=true;
+        newx-=delta;
       }
       if(std::abs(event->y-cachedPoint.y)>=pixelSize)
       {
         int delta = (int(event->y)-cachedPoint.y)/pixelSize;
         cachedPoint.y += delta*pixelSize;
-        y-=delta;
-        moved=true;
+        newy-=delta;
       }
     }
     else
     {
       const int pixelSize=1<<-zoom;
-      x-=(event->x-cachedPoint.x)*pixelSize;
-      y-=(event->y-cachedPoint.y)*pixelSize;
+      newx-=(event->x-cachedPoint.x)*pixelSize;
+      newy-=(event->y-cachedPoint.y)*pixelSize;
       cachedPoint = eventToPoint(event);
-      moved=true;
     }
 
-    if(moved)
-    {
-      updateScrollbars();
-      updateRulers();
-      invalidate();
-    }
+    updateXY(newx, newy, OTHER);
   }
   else if((event->state & GDK_BUTTON3_MASK) && modifiermove == GDK_BUTTON3_MASK)
   {
@@ -938,6 +936,9 @@ void View::updateXY(int x, int y, LocationChangeCause source)
   {
     if(source != SCROLLBAR)
       updateScrollbars();
+    else
+      updateRulers();
+    
     if(source != TEXTBOX)
       updateTextbox();
 
