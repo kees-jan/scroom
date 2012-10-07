@@ -80,10 +80,10 @@ namespace Scroom
           exit(-1);
         }
 
-        printf("Compression finished: Before: %ld, After: %ld (%lu*%lu=%lu) (%.2f%%, %.2f%%)\n",
-               stream.total_in, stream.total_out, result.size(), pageSize, result.size()*pageSize,
-               100.0*stream.total_out/stream.total_in,
-               100.0*result.size()*pageSize/stream.total_in);
+        // printf("Compression finished: Before: %ld, After: %ld (%lu*%lu=%lu) (%.2f%%, %.2f%%)\n",
+        //        stream.total_in, stream.total_out, result.size(), pageSize, result.size()*pageSize,
+        //        100.0*stream.total_out/stream.total_in,
+        //        100.0*result.size()*pageSize/stream.total_in);
         
         return result;
       }
