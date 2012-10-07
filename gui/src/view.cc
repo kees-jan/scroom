@@ -26,6 +26,8 @@
 
 #include <sstream>
 
+#include <boost/lexical_cast.hpp>
+
 #include <glib-object.h>
 
 #include "pluginmanager.hh"
@@ -138,6 +140,8 @@ View::View(GladeXML* scroomXml)
   hscrollbaradjustment = gtk_range_get_adjustment(GTK_RANGE(hscrollbar));
   vruler = GTK_RULER(glade_xml_get_widget(scroomXml, "vruler"));
   hruler = GTK_RULER(glade_xml_get_widget(scroomXml, "hruler"));
+  xTextBox = GTK_ENTRY(glade_xml_get_widget(scroomXml, "x_textbox"));
+  yTextBox = GTK_ENTRY(glade_xml_get_widget(scroomXml, "y_textbox"));
 
   zoomBox = GTK_COMBO_BOX(glade_xml_get_widget(scroomXml, "zoomboxcombo"));
   zoomItems = gtk_list_store_new(N_COLUMNS, G_TYPE_STRING, G_TYPE_INT);
@@ -321,7 +325,42 @@ void View::updateScrollbars()
     gtk_widget_set_sensitive(GTK_WIDGET(vscrollbar), false);
     gtk_widget_set_sensitive(GTK_WIDGET(hscrollbar), false);
   }
+}
 
+void View::updateTextbox()
+{
+  if(presentation)
+  {
+    gtk_widget_set_sensitive(GTK_WIDGET(xTextBox), true);
+    gtk_widget_set_sensitive(GTK_WIDGET(yTextBox), true);
+
+    int daw = drawingAreaWidth;
+    int dah = drawingAreaHeight;
+    if(zoom>=0)
+    {
+      // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
+      int pixelSize = 1<<zoom;
+      daw /= pixelSize;
+      dah /= pixelSize;
+    }
+    else
+    {
+      // Zooming out. Smallest step is 1 window-pixel, which is more than one presentation-pixel
+      int pixelSize = 1<<(-zoom);
+      daw *= pixelSize;
+      dah *= pixelSize;
+    }
+
+    std::string xs = boost::lexical_cast<std::string>(x+daw/2);
+    std::string ys = boost::lexical_cast<std::string>(y+daw/2);
+    gtk_entry_set_text(xTextBox, xs.c_str());
+    gtk_entry_set_text(yTextBox, ys.c_str());
+  }
+  else
+  {
+    gtk_widget_set_sensitive(GTK_WIDGET(xTextBox), false);
+    gtk_widget_set_sensitive(GTK_WIDGET(yTextBox), false);
+  }
 }
 
 void View::updateZoom()
@@ -879,4 +918,29 @@ void View::updateNewWindowMenu()
   }
 
   g_object_unref(G_OBJECT(newWindow_menu));
+}
+
+void View::updateXY(int x, int y, LocationChangeCause source)
+{
+  bool changed = false;
+  if(this->x != x)
+  {
+    this->x = x;
+    changed = true;
+  }
+  if(this->y != y)
+  {
+    this->y = y;
+    changed = true;
+  }
+
+  if(changed)
+  {
+    if(source != SCROLLBAR)
+      updateScrollbars();
+    if(source != TEXTBOX)
+      updateTextbox();
+
+    invalidate();
+  }
 }

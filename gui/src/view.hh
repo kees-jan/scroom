@@ -81,6 +81,8 @@ private:
   GtkStatusbar* statusBar;
   GtkToolbar* toolBar;
   GtkToolItem* toolBarSeparator;
+  GtkEntry* xTextBox;
+  GtkEntry* yTextBox;
   unsigned toolBarCount;
   int statusBarContextId;
   int zoom;
@@ -94,6 +96,14 @@ private:
   ProgressBarManager progressBarManager;
   
   std::map<PresentationInterface::WeakPtr,GtkWidget*> presentations;
+
+private:
+  enum LocationChangeCause
+    {
+      SCROLLBAR,
+      TEXTBOX,
+      OTHER
+    };
   
 private:
   View(GladeXML* scroomXml);
@@ -113,6 +123,7 @@ public:
   void updateScrollbars();
   void updateZoom();
   void updateRulers();
+  void updateTextbox();
 
   ////////////////////////////////////////////////////////////////////////
   // Scroom events
@@ -152,6 +163,7 @@ private:
   void setStatusMessage(const std::string& message);
   void displayMeasurement();
   void updateNewWindowMenu();
+  void updateXY(int x, int y, LocationChangeCause source);
 };
 
 #endif
