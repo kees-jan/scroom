@@ -195,7 +195,7 @@ then
 fi
 
 want_boost_tests=no
-if test x$have_boost_test_headers = xyes -a x$have_boost_test_lib=xyes
+if test x$have_boost_test_headers = xyes -a x$have_boost_test_lib = xyes
 then
   want_boost_tests=yes
 fi
