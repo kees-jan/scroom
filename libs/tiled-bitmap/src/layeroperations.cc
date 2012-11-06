@@ -256,13 +256,13 @@ void CommonOperations::drawState(cairo_t* cr, TileState s, GdkRectangle viewArea
   switch(s)
   {
   case TILE_UNINITIALIZED:
-    cairo_set_source_rgb(cr, 1, 1, 0); // Yellow
+    cairo_set_source_rgb(cr, 1, 1, 0.5); // Yellow
     break;
   case TILE_UNLOADED:
-    cairo_set_source_rgb(cr, 0, 1, 0); // Green
+    cairo_set_source_rgb(cr, 0.5, 1, 0.5); // Green
     break;
   case TILE_LOADED:
-    cairo_set_source_rgb(cr, 1, 0, 0); // Red
+    cairo_set_source_rgb(cr, 1, 0.5, 0.5); // Red
     break;
   case TILE_OUT_OF_BOUNDS:
   default:
