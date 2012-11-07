@@ -14,7 +14,7 @@
       <widget class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
         <child>
-          <widget class="GtkMenuBar" id="menubar1">
+          <widget class="GtkMenuBar" id="menubar">
             <property name="visible">True</property>
             <child>
               <widget class="GtkMenuItem" id="file_menu_item">
@@ -213,7 +213,7 @@
           </packing>
         </child>
         <child>
-          <widget class="GtkHBox" id="hbox3">
+          <widget class="GtkHBox" id="toolbar_area">
             <property name="visible">True</property>
             <property name="homogeneous">False</property>
             <property name="spacing">0</property>
@@ -472,7 +472,7 @@
           </packing>
         </child>
         <child>
-          <widget class="GtkHBox" id="hbox2">
+          <widget class="GtkHBox" id="status_area">
             <property name="visible">True</property>
             <child>
               <widget class="GtkProgressBar" id="progressbar">

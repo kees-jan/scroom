@@ -65,6 +65,7 @@ private:
   PresentationInterface::Ptr presentation;
   SidebarManager sidebarManager;
   GtkWindow* window;
+  GtkWidget* menubar;
   GtkWidget* drawingArea;
   int drawingAreaWidth;
   int drawingAreaHeight;
@@ -83,6 +84,8 @@ private:
   GtkToolItem* toolBarSeparator;
   GtkEntry* xTextBox;
   GtkEntry* yTextBox;
+  GtkWidget* statusArea;
+  GtkWidget* toolbarArea;
   unsigned toolBarCount;
   int statusBarContextId;
   int zoom;

@@ -143,6 +143,10 @@ View::View(GladeXML* scroomXml)
   xTextBox = GTK_ENTRY(glade_xml_get_widget(scroomXml, "x_textbox"));
   yTextBox = GTK_ENTRY(glade_xml_get_widget(scroomXml, "y_textbox"));
 
+  menubar = GTK_WIDGET(glade_xml_get_widget(scroomXml, "menubar"));
+  statusArea = GTK_WIDGET(glade_xml_get_widget(scroomXml, "status_area"));
+  toolbarArea = GTK_WIDGET(glade_xml_get_widget(scroomXml, "toolbar_area"));
+  
   zoomBox = GTK_COMBO_BOX(glade_xml_get_widget(scroomXml, "zoomboxcombo"));
   zoomItems = gtk_list_store_new(N_COLUMNS, G_TYPE_STRING, G_TYPE_INT);
 
@@ -747,11 +751,15 @@ void View::on_motion_notify(GdkEventMotion* event)
 void View::setFullScreen()
 {
   gtk_window_fullscreen(window);
+  gtk_widget_set_visible(toolbarArea, false);
+  gtk_widget_set_visible(statusArea, false);
 }
 
 void View::unsetFullScreen()
 {
   gtk_window_unfullscreen(window);
+  gtk_widget_set_visible(toolbarArea, true);
+  gtk_widget_set_visible(statusArea, true);
 }
 
 ////////////////////////////////////////////////////////////////////////
