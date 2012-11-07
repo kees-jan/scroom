@@ -49,6 +49,8 @@ void on_delete_activate(GtkMenuItem* menuitem, gpointer user_data);
 
 void on_fullscreen_activate(GtkMenuItem* menuitem, gpointer user_data);
 
+void on_close_activate(GtkMenuItem* menuitem, gpointer user_data);
+
 void on_about_activate(GtkMenuItem* menuitem, gpointer user_data);
 
 gboolean on_drawingarea_expose_event(GtkWidget* widget, GdkEventExpose* event, gpointer user_data);
