@@ -744,6 +744,15 @@ void View::on_motion_notify(GdkEventMotion* event)
   }
 }
 
+void View::setFullScreen()
+{
+  gtk_window_fullscreen(window);
+}
+
+void View::unsetFullScreen()
+{
+  gtk_window_unfullscreen(window);
+}
 
 ////////////////////////////////////////////////////////////////////////
 // ViewInterface

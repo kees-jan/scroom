@@ -141,6 +141,8 @@ public:
   void on_buttonPress(GdkEventButton* event);
   void on_buttonRelease(GdkEventButton* event);
   void on_motion_notify(GdkEventMotion* event);
+  void setFullScreen();
+  void unsetFullScreen();
 
   ////////////////////////////////////////////////////////////////////////
   // ViewInterface

@@ -184,6 +184,18 @@ void on_delete_activate (GtkMenuItem*, gpointer)
 
 }
 
+void on_fullscreen_activate (GtkMenuItem* item, gpointer user_data)
+{
+  View* view = static_cast<View*>(user_data);
+  GtkCheckMenuItem* cmi = GTK_CHECK_MENU_ITEM(item);
+  gboolean active = gtk_check_menu_item_get_active(cmi);
+
+  if(active)
+    view->setFullScreen();
+  else
+    view->unsetFullScreen();
+}
+
 void on_about_activate (GtkMenuItem*, gpointer)
 {
   // GtkWidget* aboutdialog;
@@ -372,6 +384,7 @@ void create_scroom(PresentationInterface::Ptr presentation)
   // GtkWidget* newMenuItem = glade_xml_get_widget(xml, "new");
   GtkWidget* openMenuItem = glade_xml_get_widget(xml, "open");
   GtkWidget* quitMenuItem = glade_xml_get_widget(xml, "quit");
+  GtkWidget* fullScreenMenuItem = glade_xml_get_widget(xml, "fullscreen_menu_item");
   GtkWidget* aboutMenuItem = glade_xml_get_widget(xml, "about");
   GtkWidget* drawingArea = glade_xml_get_widget(xml, "drawingarea");
   GtkWidget* zoomBox = glade_xml_get_widget(xml, "zoomboxcombo");
@@ -383,18 +396,9 @@ void create_scroom(PresentationInterface::Ptr presentation)
   GtkEditable* yTextBox = GTK_EDITABLE(glade_xml_get_widget(xml, "y_textbox"));
 
   g_signal_connect ((gpointer) scroom, "hide", G_CALLBACK (on_scroom_hide), view.get());
-  // g_signal_connect ((gpointer) open, "activate",
-  //                   G_CALLBACK (on_open_activate),
-  //                   view.get());
-  // g_signal_connect ((gpointer) save, "activate",
-  //                   G_CALLBACK (on_save_activate),
-  //                   view.get());
-  // g_signal_connect ((gpointer) save_as, "activate",
-  //                   G_CALLBACK (on_save_as_activate),
-  //                   view.get());
-  // g_signal_connect ((gpointer) newMenuItem, "activate", G_CALLBACK (on_new_activate), view.get());
   g_signal_connect ((gpointer) quitMenuItem, "activate", G_CALLBACK (on_quit_activate), view.get());
   g_signal_connect ((gpointer) openMenuItem, "activate", G_CALLBACK (on_open_activate), scroom);
+  g_signal_connect ((gpointer) fullScreenMenuItem, "activate", G_CALLBACK (on_fullscreen_activate), view.get());
   g_signal_connect ((gpointer) zoomBox, "changed", G_CALLBACK (on_zoombox_changed), view.get());
   g_signal_connect ((gpointer) vscrollbaradjustment, "value-changed", G_CALLBACK(on_scrollbar_value_changed), view.get());
   g_signal_connect ((gpointer) hscrollbaradjustment, "value-changed", G_CALLBACK(on_scrollbar_value_changed), view.get());
