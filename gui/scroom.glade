@@ -167,11 +167,22 @@
             <child>
               <widget class="GtkMenuItem" id="view_menu_item">
                 <property name="visible">True</property>
-                <property name="sensitive">False</property>
+                <property name="sensitive">True</property>
                 <property name="label" translatable="yes">_View</property>
                 <property name="use_underline">True</property>
                 <child>
-                  <widget class="GtkMenu" id="view_menu"/>
+                  <widget class="GtkMenu" id="view_menu">
+                    <child>
+                      <widget class="GtkCheckMenuItem" id="fullscreen_menu_item">
+                        <property name="visible">True</property>
+                        <property name="sensitive">True</property>
+                        <property name="label" translatable="yes">_Full Screen</property>
+                        <property name="use_underline">True</property>
+                        <property name="active">False</property>
+                        <accelerator key="F11" modifiers="" signal="activate"/>
+                      </widget>
+                    </child>
+                  </widget>
                 </child>
               </widget>
             </child>
