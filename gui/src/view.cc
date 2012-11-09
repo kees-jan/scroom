@@ -122,6 +122,13 @@ GdkWindow* gtk_widget_get_window(GtkWidget *widget)
   return widget->window;
 }
 
+void gtk_widget_set_visible(GtkWidget *widget, gboolean visible)
+{
+    g_object_set(G_OBJECT(widget),
+                 "visible", visible,
+                 NULL);
+}
+
 #endif
 
 ////////////////////////////////////////////////////////////////////////
