@@ -22,7 +22,6 @@ prepare()
     remove_if_exists "configure.log"
     remove_if_exists "lucid.log"
     remove_if_exists "maverick.log"
-    remove_if_exists "natty.log"
     remove_if_exists "oneiric.log"
     remove_if_exists "precise.log"
     remove_if_exists "quantal.log"
@@ -139,7 +138,7 @@ then
 fi
 
 # Ubuntu source packages
-for source_package in lucid maverick natty oneiric precise quantal
+for source_package in lucid maverick oneiric precise quantal
 do
     echo_me $source_package
     ( rm -rf "$BUILD/$source_package" > /dev/null 2>&1 ;
