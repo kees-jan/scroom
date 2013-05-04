@@ -38,7 +38,6 @@ dnl AC_PROG_INSTALL
 
 AC_LANG([C++])
 SCROOM_COMPILE_STDCXX_0X
-SCROOM_ENABLE_STDCXX_0X
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wall])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-W])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wextra])
@@ -228,6 +227,11 @@ fi
 if test "x${want_mutracx_hacks}" = xyes
 then
   AC_DEFINE([MUTRACX_HACKS], 1, [Hacks for Mutracx environment enabled])
+else
+  # Mutracx has gcc 4.6, which supports c++0x, but its boost version
+  # does not. Hence, only enable c++0x if it is detected, and we're
+  # not compiling for Mutracx.
+  SCROOM_ENABLE_STDCXX_0X
 fi
 
 if test "x${want_doxygen_all_code}" = xyes
