@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2012 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2013 Kees-Jan Dijkzeul
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
