@@ -578,7 +578,7 @@ public:
  *
  * @return a shared pointer to this ThreadPool instance
  *
- * @see http://fuzzy.homedns.org/trac/scroom/wiki/StaticInitializationOrderFiasco
+ * @see https://github.com/kees-jan/scroom/wiki/StaticInitializationOrderFiasco
  */
 ThreadPool::Ptr CpuBound();
 
@@ -596,7 +596,7 @@ ThreadPool::Ptr CpuBound();
  *
  * @return a shared pointer to this ThreadPool instance
  *
- * @see http://fuzzy.homedns.org/trac/scroom/wiki/StaticInitializationOrderFiasco
+ * @see https://github.com/kees-jan/scroom/wiki/StaticInitializationOrderFiasco
  */
 ThreadPool::Ptr Sequentially();
 

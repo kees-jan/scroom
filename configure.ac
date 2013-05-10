@@ -17,9 +17,9 @@
 AC_PREREQ([2.64])
 AC_INIT([Scroom],
         m4_esyscmd([build-aux/git-version-gen | tr -d '\n']),
-        [http://fuzzy.homedns.org/trac/scroom/newticket],
+        [https://github.com/kees-jan/scroom/issues/new],
         [scroom],
-        [http://fuzzy.homedns.org/trac/scroom])
+        [https://github.com/kees-jan/scroom/wiki])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign silent-rules])
 AM_SILENT_RULES([yes])
 LT_PREREQ([2.2])
