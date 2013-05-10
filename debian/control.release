@@ -4,7 +4,7 @@ Priority: extra
 Maintainer: Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>
 Build-Depends: debhelper (>= 7), autotools-dev, pkg-config, libboost-dev, libboost-thread-dev, libtiff4-dev, libgtk2.0-dev, libglib2.0-dev, libglade2-dev, libcairo2-dev
 Standards-Version: 3.8.3
-Homepage: http://fuzzy.homedns.org/trac/scroom
+Homepage: https://github.com/kees-jan/scroom/wiki
 
 Package: scroom-0.5
 Architecture: any

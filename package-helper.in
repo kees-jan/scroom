@@ -98,10 +98,10 @@ then
     cp debian/changelog.release debian/changelog
     VER=$(echo "$VERSION" | cut -d'~' -f1) && \
         dch -d "Release candidate for version $VER" && \
-        dch -a "For more info see http://fuzzy.homedns.org/trac/scroom/milestone/$VER"
+        dch -a "For more info see https://github.com/kees-jan/scroom/wiki"
 else
     cp debian/changelog.release debian/changelog
-    dch -d "For more info see http://fuzzy.homedns.org/trac/scroom/milestone/$VERSION"
+    dch -d "For more info see https://github.com/kees-jan/scroom/wiki"
 fi || exit 1
 
 if [ "$SNAPSHOT" -eq "1" ]
