@@ -79,14 +79,24 @@ public:
    * for that. Instead, if you later delete your Queue, any jobs
    * scheduled on that Queue will not be executed any more.
    *
+   * When you delete the Queue, your thread will block until any jobs
+   * currently being executed have finished. I.e. after the Queue is
+   * destroyed, no jobs will be running any more, nor will any be run
+   * in the future. This can cause deadlocks if a job running on a
+   * ThreadPool tries to destroy its own queue.
+   *
+   * To avoid deadlock, you should make sure that jobs running on the
+   * ThreadPool only have references to WeakQueue objects, or you
+   * should create your Queue using createAsync(). This will do the
+   * actual Queue destruction on a separate thread. As a result, after
+   * the last reference to the Queue object goes out of scope, jobs on
+   * the Queue may continue running for some time.
+   *
    * @note If you delete the Queue, the associated jobs will not
    *    actually be deleted. Instead, when the time comes to execute
    *    the job, a check is done whether the Queue still exists. If it
    *    doesn't, the job is silently discarded.
    *
-   * @note The implementation of this class deals with jobs on the
-   *    Queue currently being executed. As long as jobs are being
-   *    executed, the Queue should not be deleted.
    */
   class Queue
   {
@@ -95,7 +105,18 @@ public:
     typedef boost::weak_ptr<Queue> WeakPtr;
 
   public:
+    /**
+     * When the last reference goes out of scope, synchronously
+     * destroy the Queue, blocking until any currently running jobs
+     * are finished.
+     */
     static Ptr create();
+
+    /**
+     * When the last reference goes out of scope, asynchronously
+     * destroy the Queue. Jobs scheduled on the Queue may continue
+     * running for some time.
+     */
     static Ptr createAsync();
     ~Queue();
     boost::shared_ptr<Scroom::Detail::ThreadPool::QueueImpl> get();
@@ -161,6 +182,26 @@ public:
   
 private:
 
+  /**
+   * Data needed by the threads to do their work.
+   *
+   * It used to be that ThreadPool destruction blocked until the last
+   * thread finished, which was a major cause of deadlock when a
+   * ThreadPool thread held the last reference to its ThreadPool.
+   *
+   * To fix this, it becomes necessary to destroy ThreadPool objects,
+   * even though there still are running threads. These threads need
+   * access to some data, in order to complete any currently running
+   * jobs, and in order to determine that they, themselves should
+   * finish. Objects of this class contain that data. Both ThreadPool
+   * objects, as well as threads running in a ThreadPool, will have a
+   * reference to objects of this class.
+   *
+   * Waiting for all threads to finish is now done by the ThreadWaiter
+   * class, which has only one instance, declared static. Hence, it is
+   * always destroyed on the main thread, which never is part of any
+   * threadpool. Hence, the deadlock is avoided.
+   */
   class PrivateData
   {
   public:
@@ -189,6 +230,23 @@ private:
      * the queue without executing them, and then self-destruct.
      */
     bool completeAllJobsBeforeDestruction;
+
+    /**
+     * Reference to the default Queue.
+     *
+     * If we don't store a reference to the default Queue here, then
+     * objects calling schedule() without a Queue argument (hence
+     * using the default Queue), may find that they are themselves
+     * holding the last reference to the ThreadPool::defaultQueue()
+     * object. That could result in deadlock, if the thread doing the
+     * scheduling is itself a ThreadPool thread. Recall that
+     * destroying a Queue blocks until any currently running tasks are
+     * finished, and hence a task would be infinitely waiting for
+     * itself to finish.
+     *
+     * @see https://github.com/kees-jan/scroom/issues/2
+     */
+    Queue::Ptr defaultQueue;
 
   private:
     PrivateData(bool completeAllJobsBeforeDestruction);

@@ -36,6 +36,9 @@ using namespace Scroom::Detail::ThreadPool;
 
 namespace
 {
+  /**
+   * List of threads to wait for (when terminating)
+   */
   class ThreadList
   {
   public:
@@ -51,6 +54,11 @@ namespace
     void add(ThreadPool::ThreadPtr t);
   };
 
+  /**
+   * Actually wait for all threads registered to the ThreadList
+   *
+   * Waiting is done on the main thread.
+   */
   class ThreadWaiter
   {
   private:
@@ -138,7 +146,7 @@ namespace
 ////////////////////////////////////////////////////////////////////////
 
 ThreadPool::PrivateData::PrivateData(bool completeAllJobsBeforeDestruction)
-  : jobcount(0), alive(true), completeAllJobsBeforeDestruction(completeAllJobsBeforeDestruction)
+  : jobcount(0), alive(true), completeAllJobsBeforeDestruction(completeAllJobsBeforeDestruction), defaultQueue(ThreadPool::defaultQueue())
 {
 }
 
