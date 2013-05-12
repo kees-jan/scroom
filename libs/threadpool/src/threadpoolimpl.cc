@@ -100,10 +100,11 @@ namespace
     }
 
     int triesRemaining = 256;
+    printf("\n");
     while(triesRemaining>0 && count>0)
     {
       boost::mutex::scoped_lock lock(mut);
-      printf("\nWaiting for %d threads to terminate\n", count);
+      printf("Waiting for %d threads to terminate", count);
 
       std::list<ThreadPool::ThreadPtr>::iterator cur = threads.begin();
       while(cur != threads.end())
@@ -116,6 +117,7 @@ namespace
         printf(".");
       }
 
+      printf("\n");
       count=threads.size();
       triesRemaining--;
     }
