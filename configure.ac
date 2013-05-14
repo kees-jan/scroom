@@ -141,7 +141,7 @@ have_boost_thread_headers=no
 AC_CHECK_HEADERS([boost/thread.hpp boost/thread/mutex.hpp], [have_boost_thread_headers=yes])
 have_boost_thread_lib=no
 # boost_thread-gcc42-mt is the name used at Mutracx...
-SCROOM_SEARCH_LIBS([_ZN5boost6thread6detachEv], [boost_thread-mt boost_thread-gcc42-mt], [have_boost_thread_lib=yes])
+SCROOM_SEARCH_LIBS([_ZN5boost6thread6detachEv], [boost_thread-mt boost_thread boost_thread-gcc42-mt], [have_boost_thread_lib=yes])
 AC_SUBST([BOOSTTHREADLIB], [$ac_cv_search__ZN5boost6thread6detachEv])
 
 #checking for boost unittests
