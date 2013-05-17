@@ -136,13 +136,21 @@ AC_CHECK_HEADERS([zlib.h], [have_zlib_headers=yes])
 SCROOM_SEARCH_LIBS([zlibVersion], [z], [have_zlib=yes])
 AC_SUBST([ZLIB], [$ac_cv_search_zlibVersion])
 
+# Checking for boost system
+have_boost_system_lib=no
+SCROOM_SEARCH_LIBS([_ZN5boost6system16generic_categoryEv], [boost_system-mt boost_system boost_system-gcc42-mt], [have_boost_system_lib=yes])
+if test "x${have_boost_system_lib}" = xno
+then
+  ac_cv_search__ZN5boost6system16generic_categoryEv=""
+fi
+
 # Checking for boost thread
 have_boost_thread_headers=no
 AC_CHECK_HEADERS([boost/thread.hpp boost/thread/mutex.hpp], [have_boost_thread_headers=yes])
 have_boost_thread_lib=no
 # boost_thread-gcc42-mt is the name used at Mutracx...
 SCROOM_SEARCH_LIBS([_ZN5boost6thread6detachEv], [boost_thread-mt boost_thread boost_thread-gcc42-mt], [have_boost_thread_lib=yes])
-AC_SUBST([BOOSTTHREADLIB], [$ac_cv_search__ZN5boost6thread6detachEv])
+AC_SUBST([BOOSTTHREADLIB], ["$ac_cv_search__ZN5boost6thread6detachEv $ac_cv_search__ZN5boost6system16generic_categoryEv"])
 
 #checking for boost unittests
 have_boost_test_headers=no
