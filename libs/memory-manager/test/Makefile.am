@@ -13,7 +13,8 @@ memory_manager_tests_SOURCES = \
 
 memory_manager_tests_LDADD = ../../util/src/libsutil.la \
 	../src/libsmemman.la \
-	../../boost-test-helper/src/libsboosttesthelper.la
+	../../boost-test-helper/src/libsboosttesthelper.la \
+	@BOOSTTHREADLIB@
 
 TESTS = memory-manager-tests
 

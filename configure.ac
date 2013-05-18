@@ -157,7 +157,7 @@ have_boost_test_headers=no
 AC_CHECK_HEADERS([boost/test/unit_test.hpp], [have_boost_test_headers=yes])
 have_boost_test_lib=no
 SCROOM_SEARCH_LIBS([_ZN5boost9unit_test16results_reporter10set_streamERSo],
-                   [boost_unit_test_framework-mt libboost_unit_test_framework-gcc42-mt], [have_boost_test_lib=yes])
+                   [boost_unit_test_framework-mt boost_unit_test_framework libboost_unit_test_framework-gcc42-mt], [have_boost_test_lib=yes])
 AC_SUBST([BOOSTTESTLIB], [$ac_cv_search__ZN5boost9unit_test16results_reporter10set_streamERSo])
 
 # Checking for boost futures
