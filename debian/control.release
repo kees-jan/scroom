@@ -2,7 +2,7 @@ Source: scroom
 Section: universe/graphics
 Priority: extra
 Maintainer: Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>
-Build-Depends: debhelper (>= 7), autotools-dev, pkg-config, libboost-dev, libboost-thread-dev, libtiff4-dev, libgtk2.0-dev, libglib2.0-dev, libglade2-dev, libcairo2-dev
+Build-Depends: debhelper (>= 7), autotools-dev, pkg-config, libboost-dev, libboost-thread-dev, libboost-system-dev, libtiff4-dev, libgtk2.0-dev, libglib2.0-dev, libglade2-dev, libcairo2-dev
 Standards-Version: 3.8.3
 Homepage: https://github.com/kees-jan/scroom/wiki
 
