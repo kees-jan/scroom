@@ -87,7 +87,13 @@ boost::unique_future<R>  ThreadPool::schedule(boost::function<R ()> const& fn, i
 {
   // Todo: If boost::function supported move semantics, we could do without
   // the shared pointer.
-  boost::shared_ptr<boost::packaged_task<R>> t(new boost::packaged_task<R>(fn));
+
+  // Todo: Without the static cast, Boost 1.53 packaged_task stores a
+  // reference to fn, which is a temporary, and hence results in
+  // undefined behaviour. Move semantics seem to work OK there...
+  //
+  // See https://svn.boost.org/trac/boost/ticket/8596
+  boost::shared_ptr<boost::packaged_task<R>> t(new boost::packaged_task<R>(static_cast<boost::function<R ()> >(fn)));
   boost::unique_future<R> f = t->get_future();
   schedule(boost::bind(threadPoolExecute<void, boost::packaged_task<R>>, t), priority, queue);
   return f;
