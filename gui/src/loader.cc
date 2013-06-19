@@ -99,6 +99,10 @@ void load(const std::string& filename)
     load(filterInfo);
     g_object_unref(fileInfo);
   }
+  else
+  {
+    printf("PANIC: No fileinfo for file %s\n", filename.c_str());
+  }
 }
 
 #endif

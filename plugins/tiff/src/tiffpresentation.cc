@@ -54,6 +54,7 @@ bool TiffPresentation::load(std::string fileName)
   if (!tif)
   {
     // Todo: report error
+    printf("PANIC: Failed to open file %s\n", fileName.c_str());
     return false;
   }
 
@@ -62,6 +63,7 @@ bool TiffPresentation::load(std::string fileName)
   if (spp != 1)
   {
     // Todo: Colour not yet supported
+    printf("PANIC: Samples per pixel is not 1, but %d. Giving up\n", spp);
     return false;
   }
 
@@ -156,6 +158,7 @@ bool TiffPresentation::load(std::string fileName)
   }
   else
   {
+    printf("PANIC: %d bits per pixel not supported\n", bpp);
     return false;
   }
 
