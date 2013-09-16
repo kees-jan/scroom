@@ -800,7 +800,7 @@ Scroom::Utils::Stuff OperationsColormapped::cache(const ConstTile::Ptr tile)
   unsigned char* row = data;
   for(int j=0; j<tile->height; j++, row+=stride)
   {
-    PixelIterator<uint16_t> pixelIn((uint16_t*)(tile->data.get()+j*multiplier*tile->width/pixelsPerByte), 0, multiplier*bpp);
+    PixelIterator<const uint16_t> pixelIn(reinterpret_cast<uint16_t const *>(tile->data.get()+j*multiplier*tile->width/pixelsPerByte), 0, multiplier*bpp);
     uint32_t* pixelOut = (uint32_t*)row;
     for(int i=0; i<tile->width; i++)
     {
@@ -846,7 +846,7 @@ void OperationsColormapped::reduce(Tile::Ptr target, const ConstTile::Ptr source
 
       for(int k=0; k<8; k++, base+=sourceStride)
       {
-        PixelIterator<uint16_t> current((uint16_t*)base, 0, multiplier*bpp);
+        PixelIterator<const uint16_t> current(reinterpret_cast<uint16_t const*>(base), 0, multiplier*bpp);
         for(int l=0; l<8; l++, ++current)
         {
           ++lookup[*current & pixelMask];
