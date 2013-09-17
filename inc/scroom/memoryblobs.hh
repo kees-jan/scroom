@@ -121,6 +121,7 @@ namespace Scroom
       RawPageData::WeakPtr weakData;
       PageList pages;
       boost::shared_ptr<ThreadPool> cpuBound;
+      int refcount; // Yuk
 
     private:
       Blob(PageProvider::Ptr provider, size_t size);

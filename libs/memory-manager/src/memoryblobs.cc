@@ -81,7 +81,7 @@ namespace Scroom
     }
 
     Blob::Blob(PageProvider::Ptr provider, size_t size)
-      : provider(provider), size(size), data(NULL), state(UNINITIALIZED), cpuBound(CpuBound())
+      : provider(provider), size(size), data(NULL), state(UNINITIALIZED), cpuBound(CpuBound()), refcount(0)
     {
     }
 
@@ -106,7 +106,6 @@ namespace Scroom
           Detail::decompressBlob(data, size, pages, provider);
           break;
         case DIRTY:
-          printf("PANIC: load() unexpected in state %d\n", state);
           break;
         case COMPRESSING:
           // Data is currently being compressed. Abort...
@@ -120,6 +119,7 @@ namespace Scroom
         // data should point to something valid here...
         result = RawPageData::Ptr(data, UnloadData(shared_from_this<Blob>()));
         weakData = result;
+        refcount++;
       }
       
       return result;
@@ -128,15 +128,19 @@ namespace Scroom
     void Blob::unload()
     {
       boost::mutex::scoped_lock lock(mut);
-      if(state==DIRTY)
+      refcount--;
+      if(refcount==0)
       {
-        state = COMPRESSING;
-        cpuBound->schedule(boost::bind(&Blob::compress, shared_from_this<Blob>()), COMPRESS_PRIO);
-      }
-      else
-      {
-        free(data);
-        data = NULL;
+        if(state==DIRTY)
+        {
+          state = COMPRESSING;
+          cpuBound->schedule(boost::bind(&Blob::compress, shared_from_this<Blob>()), COMPRESS_PRIO);
+        }
+        else
+        {
+          free(data);
+          data = NULL;
+        }
       }
     }
 
@@ -145,7 +149,9 @@ namespace Scroom
       boost::mutex::scoped_lock lock(mut);
       if(state==COMPRESSING)
       {
-        pages.clear();
+        if(refcount!=0)
+          printf("PANIC: Compressing with pending references\n");
+        
         pages = Detail::compressBlob(data, size, provider);
         free(data);
         data = NULL;
