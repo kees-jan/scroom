@@ -2,11 +2,15 @@
 *.lo
 *.o
 *~
+*.log
+*.trs
 .deps
 .libs
 /.scroom-version
 Makefile
 Makefile.in
+/ar-lib
+/test-driver
 /aclocal.m4
 /autom4te.cache
 /config.guess

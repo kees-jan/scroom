@@ -22,6 +22,7 @@ AC_INIT([Scroom],
         [https://github.com/kees-jan/scroom/wiki])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign silent-rules])
 AM_SILENT_RULES([yes])
+AM_PROG_AR
 LT_PREREQ([2.2])
 LT_INIT([dlopen])
 
