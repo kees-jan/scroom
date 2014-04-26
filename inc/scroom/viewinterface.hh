@@ -26,29 +26,7 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
 
-/**
- * Interface used for reporting progress information
- */
-class ProgressInterface
-{
-public:
-  typedef boost::shared_ptr<ProgressInterface> Ptr;
-  typedef boost::weak_ptr<ProgressInterface> WeakPtr;
-
-  typedef enum
-    {
-      IDLE,
-      WAITING,
-      WORKING,
-      FINISHED
-    } State;
-
-  virtual ~ProgressInterface() {}
-  
-  virtual void setState(State s)=0;
-  virtual void setProgress(double d)=0;
-  virtual void setProgress(int done, int total)=0;
-};
+#include <scroom/progressinterface.hh>
 
 /**
  * Interface provided to something Viewable
