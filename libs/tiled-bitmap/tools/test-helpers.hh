@@ -39,7 +39,7 @@ public:
   typedef boost::shared_ptr<TestData> Ptr;
 
 private:
-  ProgressInterfaceStub* pi;
+  ProgressInterfaceStub::Ptr pi;
   ViewInterface::Ptr vi;
   DummyColormapProvider::Ptr colormapProvider;
   LayerSpec ls;

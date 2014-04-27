@@ -19,6 +19,8 @@
 #ifndef PROGRESSINTERFACE_HH
 #define PROGRESSINTERFACE_HH
 
+#include <boost/shared_ptr.hpp>
+
 /**
  * Interface used for reporting progress information
  */

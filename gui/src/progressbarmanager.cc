@@ -133,6 +133,11 @@ ProgressBarManager::ProgressBarManager(GtkProgressBar* progressBar)
   :progressBar(progressBar), state(IDLE)
 {}
 
+ProgressBarManager::Ptr ProgressBarManager::create(GtkProgressBar* progressBar)
+{
+  return Ptr(new ProgressBarManager(progressBar));
+}
+
 ProgressBarManager::~ProgressBarManager()
 {
   if(state == WAITING)

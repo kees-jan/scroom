@@ -24,15 +24,24 @@
 
 class ProgressInterfaceStub : public ProgressInterface
 {
+public:
+  typedef boost::shared_ptr<ProgressInterfaceStub> Ptr;
+  
 private:
   bool finished;
-public:
+
+private:
   ProgressInterfaceStub();
+  
+public:
+  static Ptr create();
+
+  bool isFinished();
+
+  // ProgressInterface ///////////////////////////////////////////////////
   virtual void setState(State state);      
   virtual void setProgress(double)   {}
   virtual void setProgress(int, int) {}
-
-  bool isFinished();
 };
 
 class ViewInterfaceStub : public ViewInterface
@@ -40,13 +49,13 @@ class ViewInterfaceStub : public ViewInterface
 public:
   typedef boost::shared_ptr<ViewInterfaceStub> Ptr;
 private:
-  ProgressInterface* pi;
+  ProgressInterface::Ptr pi;
 private:
-  ViewInterfaceStub(ProgressInterface* pi);
+  ViewInterfaceStub(ProgressInterface::Ptr pi);
 public:
-  static Ptr create(ProgressInterface* pi);
+  static Ptr create(ProgressInterface::Ptr pi);
   virtual void invalidate()                           {}
-  virtual ProgressInterface* getProgressInterface();
+  virtual ProgressInterface::Ptr getProgressInterface();
   virtual void addSideWidget(std::string, GtkWidget*) {}
   virtual void removeSideWidget(GtkWidget*)           {}
   virtual void addToToolbar(GtkToolItem*)             {}

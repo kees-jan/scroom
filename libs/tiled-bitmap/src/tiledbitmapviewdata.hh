@@ -35,7 +35,7 @@ public:
 
 public:
   ViewInterface::WeakPtr viewInterface;
-  ProgressInterface* progressInterface;
+  ProgressInterface::Ptr progressInterface;
 
 private:
   Layer* layer;

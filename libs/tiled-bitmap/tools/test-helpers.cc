@@ -27,7 +27,7 @@ Colormap::Ptr DummyColormapProvider::getColormap()
 
 TestData::TestData(DummyColormapProvider::Ptr colormapProvider, const LayerSpec& ls,
                    TiledBitmapInterface::Ptr tbi, SourcePresentation* sp, int zoom)
-  : pi(new ProgressInterfaceStub()), vi(ViewInterfaceStub::create(pi)), colormapProvider(colormapProvider), ls(ls), tbi(tbi), sp(sp), zoom(zoom)
+  : pi(ProgressInterfaceStub::create()), vi(ViewInterfaceStub::create(pi)), colormapProvider(colormapProvider), ls(ls), tbi(tbi), sp(sp), zoom(zoom)
 {
   tbi->open(vi);
 }
@@ -51,7 +51,6 @@ TestData::~TestData()
   ls.clear();
   colormapProvider.reset();
   vi.reset();
-  delete pi;
 }
 
 void TestData::redraw(cairo_t* cr)

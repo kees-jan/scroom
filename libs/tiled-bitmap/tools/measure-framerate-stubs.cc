@@ -25,6 +25,11 @@ ProgressInterfaceStub::ProgressInterfaceStub()
 {
 }
 
+ProgressInterfaceStub::Ptr ProgressInterfaceStub::create()
+{
+  return Ptr(new ProgressInterfaceStub());
+}
+
 void ProgressInterfaceStub::setState(State state)
 {
   finished = state == FINISHED;
@@ -35,16 +40,16 @@ bool ProgressInterfaceStub::isFinished()
   return finished;
 }
 
-ViewInterfaceStub::ViewInterfaceStub(ProgressInterface* pi)
+ViewInterfaceStub::ViewInterfaceStub(ProgressInterface::Ptr pi)
   :pi(pi)
 {}
 
-ViewInterfaceStub::Ptr ViewInterfaceStub::create(ProgressInterface* pi)
+ViewInterfaceStub::Ptr ViewInterfaceStub::create(ProgressInterface::Ptr pi)
 {
   return Ptr(new ViewInterfaceStub(pi));
 }
 
-ProgressInterface* ViewInterfaceStub::getProgressInterface()
+ProgressInterface::Ptr ViewInterfaceStub::getProgressInterface()
 {
   return pi;
 }

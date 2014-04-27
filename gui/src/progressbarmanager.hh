@@ -25,12 +25,19 @@
 
 class ProgressBarManager : public ProgressInterface
 {
+public:
+  typedef boost::shared_ptr<ProgressBarManager> Ptr;
+  
 private:
   GtkProgressBar* progressBar;
   State state;
+
+private:
+  ProgressBarManager(GtkProgressBar* progressBar);
   
 public:
-  ProgressBarManager(GtkProgressBar* progressBar=NULL);
+  static Ptr create(GtkProgressBar* progressBar=NULL);
+
   ~ProgressBarManager();
 
   void setProgressBar(GtkProgressBar* progressBar);

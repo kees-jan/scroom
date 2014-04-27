@@ -96,7 +96,7 @@ private:
   gint modifiermove;
   GdkPoint cachedPoint;
 
-  ProgressBarManager progressBarManager;
+  ProgressBarManager::Ptr progressBarManager;
   
   std::map<PresentationInterface::WeakPtr,GtkWidget*> presentations;
 
@@ -151,7 +151,7 @@ public:
   // ViewInterface
 
   virtual void invalidate();
-  virtual ProgressInterface* getProgressInterface();
+  virtual ProgressInterface::Ptr getProgressInterface();
   virtual void addSideWidget(std::string title, GtkWidget* w);
   virtual void removeSideWidget(GtkWidget* w);
   virtual void addToToolbar(GtkToolItem* ti);

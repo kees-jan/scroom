@@ -167,7 +167,7 @@ View::View(GladeXML* scroomXml)
                                  NULL);
 
   progressBar = GTK_PROGRESS_BAR(glade_xml_get_widget(scroomXml, "progressbar"));
-  progressBarManager.setProgressBar(progressBar);
+  progressBarManager = ProgressBarManager::create(progressBar);
   statusBar = GTK_STATUSBAR(glade_xml_get_widget(scroomXml, "statusbar"));
   statusBarContextId = gtk_statusbar_get_context_id(statusBar, "View");
 
@@ -777,9 +777,9 @@ void View::invalidate()
   gdk_window_invalidate_rect(gtk_widget_get_window(drawingArea), NULL, false);
 }
 
-ProgressInterface* View::getProgressInterface()
+ProgressInterface::Ptr View::getProgressInterface()
 {
-  return &progressBarManager;
+  return progressBarManager;
 }
 
 void View::addSideWidget(std::string title, GtkWidget* w)
