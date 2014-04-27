@@ -57,7 +57,7 @@ static Scroom::MemoryBlobs::PageProvider::Ptr createProvider(double width, doubl
 FileOperation::FileOperation(TiledBitmap::Ptr parent)
   : parent(parent), waitingMutex(), waiting(true), timer(0)
 {
-  parent->setState(ProgressInterface::WAITING);
+  parent->setState(ProgressStateInterface::WAITING);
 }
 
 void FileOperation::doneWaiting()
@@ -66,7 +66,7 @@ void FileOperation::doneWaiting()
   if(waiting)
   {
     gdk_threads_enter();
-    parent->setState(ProgressInterface::WORKING);
+    parent->setState(ProgressStateInterface::WORKING);
     gdk_threads_leave();
     waiting = false;
   }
@@ -673,7 +673,7 @@ void TiledBitmap::tileFinished(TileInternal::Ptr tile)
     setProgress(tileFinishedCount, tileCount);
     if(tileFinishedCount==tileCount)
     {
-      setState(ProgressInterface::FINISHED);
+      setState(ProgressStateInterface::FINISHED);
       if(fileOperation)
       {
         fileOperation->finished();

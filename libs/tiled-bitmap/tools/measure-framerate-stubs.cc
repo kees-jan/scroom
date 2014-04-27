@@ -40,16 +40,16 @@ bool ProgressInterfaceStub::isFinished()
   return finished;
 }
 
-ViewInterfaceStub::ViewInterfaceStub(ProgressInterface::Ptr pi)
+ViewInterfaceStub::ViewInterfaceStub(ProgressStateInterface::Ptr pi)
   :pi(pi)
 {}
 
-ViewInterfaceStub::Ptr ViewInterfaceStub::create(ProgressInterface::Ptr pi)
+ViewInterfaceStub::Ptr ViewInterfaceStub::create(ProgressStateInterface::Ptr pi)
 {
   return Ptr(new ViewInterfaceStub(pi));
 }
 
-ProgressInterface::Ptr ViewInterfaceStub::getProgressInterface()
+ProgressStateInterface::Ptr ViewInterfaceStub::getProgressInterface()
 {
   return pi;
 }

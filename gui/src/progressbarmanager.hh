@@ -23,7 +23,7 @@
 
 #include <scroom/viewinterface.hh>
 
-class ProgressBarManager : public ProgressInterface
+class ProgressBarManager : public ProgressStateInterface
 {
 public:
   typedef boost::shared_ptr<ProgressBarManager> Ptr;
@@ -42,7 +42,7 @@ public:
 
   void setProgressBar(GtkProgressBar* progressBar);
   
-  // ProgressInterface ///////////////////////////////////////////////////
+  // ProgressStateInterface ///////////////////////////////////////////////////
   
   virtual void setState(State s);
   virtual void setProgress(double d);

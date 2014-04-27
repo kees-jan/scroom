@@ -25,7 +25,7 @@ using namespace Scroom::Utils;
 
 //////////////////////////////////////////////////////////////
 
-class ProgressInterfaceStub : public ProgressInterface
+class ProgressInterfaceStub : public ProgressStateInterface
 {
 public:
   typedef boost::shared_ptr<ProgressInterfaceStub> Ptr;
@@ -42,7 +42,7 @@ private:
   ProgressInterfaceStub();
 
 public:
-  // ProgressInterface
+  // ProgressStateInterface
   virtual void setState(State s);
   virtual void setProgress(double d);
   virtual void setProgress(int done, int total);
@@ -80,26 +80,26 @@ BOOST_AUTO_TEST_CASE(each_subinterface_contributes_proportionally)
 {
   ProgressInterfaceStub::Ptr stub = ProgressInterfaceStub::create();
   BOOST_CHECK(stub);
-  BOOST_CHECK_EQUAL(ProgressInterface::IDLE, stub->state);
+  BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
 
   ProgressInterfaceMultiplexer::Ptr multiplexer = ProgressInterfaceMultiplexer::create(stub);
   BOOST_CHECK(multiplexer);
-  BOOST_CHECK_EQUAL(ProgressInterface::IDLE, stub->state);
+  BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
 
-  ProgressInterface::Ptr p1 = multiplexer->createProgressInterface();
-  ProgressInterface::Ptr p2 = multiplexer->createProgressInterface();
+  ProgressStateInterface::Ptr p1 = multiplexer->createProgressInterface();
+  ProgressStateInterface::Ptr p2 = multiplexer->createProgressInterface();
 
-  p1->setState(ProgressInterface::WORKING);
-  BOOST_CHECK_EQUAL(ProgressInterface::WORKING, stub->state);
+  p1->setState(ProgressStateInterface::WORKING);
+  BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub->state);
   BOOST_CHECK_EQUAL(0.0, stub->progress);
-  p2->setState(ProgressInterface::WORKING);
-  BOOST_CHECK_EQUAL(ProgressInterface::WORKING, stub->state);
+  p2->setState(ProgressStateInterface::WORKING);
+  BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub->state);
   BOOST_CHECK_EQUAL(0.0, stub->progress);
-  p1->setState(ProgressInterface::FINISHED);
-  BOOST_CHECK_EQUAL(ProgressInterface::WORKING, stub->state);
+  p1->setState(ProgressStateInterface::FINISHED);
+  BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub->state);
   BOOST_CHECK_EQUAL(0.5, stub->progress);
-  p2->setState(ProgressInterface::FINISHED);
-  BOOST_CHECK_EQUAL(ProgressInterface::FINISHED, stub->state);
+  p2->setState(ProgressStateInterface::FINISHED);
+  BOOST_CHECK_EQUAL(ProgressStateInterface::FINISHED, stub->state);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

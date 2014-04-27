@@ -21,6 +21,7 @@
 
 #include <boost/shared_ptr.hpp>
 
+
 /**
  * Interface used for reporting progress information
  */
@@ -30,6 +31,24 @@ public:
   typedef boost::shared_ptr<ProgressInterface> Ptr;
   typedef boost::weak_ptr<ProgressInterface> WeakPtr;
 
+  virtual ~ProgressInterface() {}
+  
+  virtual void setIdle()=0;
+  virtual void setWaiting(double progress=0.0)=0;
+  virtual void setWorking(double progress)=0;
+  virtual void setWorking(int done, int total)=0;
+  virtual void setFinished()=0;
+};
+
+/**
+ * Alternative interface used for reporting progress information
+ */
+class ProgressStateInterface
+{
+public:
+  typedef boost::shared_ptr<ProgressStateInterface> Ptr;
+  typedef boost::weak_ptr<ProgressStateInterface> WeakPtr;
+
   typedef enum
     {
       IDLE,
@@ -38,33 +57,12 @@ public:
       FINISHED
     } State;
 
-  virtual ~ProgressInterface() {}
+  virtual ~ProgressStateInterface() {}
   
   virtual void setState(State s)=0;
   virtual void setProgress(double d)=0;
   virtual void setProgress(int done, int total)=0;
 };
-
-
-// /**
-//  * Interface used for reporting progress information
-//  */
-// class ProgressInterface
-// {
-// public:
-//   typedef boost::shared_ptr<ProgressInterface> Ptr;
-//   typedef boost::weak_ptr<ProgressInterface> WeakPtr;
-// 
-//   virtual ~ProgressInterface() {}
-//   
-//   virtual void setIdle()=0;
-//   virtual void setWaiting(double progress=0.0)=0;
-//   virtual void setWorking(double progress)=0;
-//   virtual void setWorking(int done, int total)=0;
-//   virtual void setFinished()=0;
-// };
-
-
 
 
 #endif

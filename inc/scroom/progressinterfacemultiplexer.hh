@@ -40,7 +40,7 @@ namespace Scroom
         typedef boost::shared_ptr<ChildData> Ptr;
 
       public:
-        ProgressInterface::State state;
+        ProgressStateInterface::State state;
         double progress;
         
       private:
@@ -50,7 +50,7 @@ namespace Scroom
         static Ptr create();
       };
       
-      class Child : public ProgressInterface
+      class Child : public ProgressStateInterface
       {
       public:
         typedef boost::shared_ptr<Child> Ptr;
@@ -65,7 +65,7 @@ namespace Scroom
       public:
         static Ptr create(ProgressInterfaceMultiplexer::Ptr parent, ChildData::Ptr data);
         
-        // ProgressInterface ///////////////////////////////////////////////////
+        // ProgressStateInterface ///////////////////////////////////////////////////
         virtual void setState(State s);
         virtual void setProgress(double d);
         virtual void setProgress(int done, int total);
@@ -74,16 +74,16 @@ namespace Scroom
       friend class Child;
       
     private:
-      ProgressInterface::Ptr parent;
+      ProgressStateInterface::Ptr parent;
       std::list<ChildData::Ptr> children;
       
     private:
-      ProgressInterfaceMultiplexer(ProgressInterface::Ptr parent);
+      ProgressInterfaceMultiplexer(ProgressStateInterface::Ptr parent);
       
     public:
-      static Ptr create(ProgressInterface::Ptr parent);
+      static Ptr create(ProgressStateInterface::Ptr parent);
 
-      ProgressInterface::Ptr createProgressInterface();
+      ProgressStateInterface::Ptr createProgressInterface();
 
     private:
       void updateProgressState();

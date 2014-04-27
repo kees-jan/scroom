@@ -153,7 +153,7 @@ void ProgressBarManager::setProgressBar(GtkProgressBar* progressBar)
   this->progressBar = progressBar;
 }
   
-// ProgressInterface ///////////////////////////////////////////////////
+// ProgressStateInterface ///////////////////////////////////////////////////
   
 void ProgressBarManager::setState(State s)
 {
@@ -191,7 +191,7 @@ void ProgressBarManager::setState(State s)
 
 void ProgressBarManager::setProgress(double d)
 {
-  setState(ProgressInterface::WORKING);
+  setState(ProgressStateInterface::WORKING);
   gtk_progress_bar_set_fraction(progressBar, d);  
 }
 

@@ -151,7 +151,7 @@ public:
   // ViewInterface
 
   virtual void invalidate();
-  virtual ProgressInterface::Ptr getProgressInterface();
+  virtual ProgressStateInterface::Ptr getProgressInterface();
   virtual void addSideWidget(std::string title, GtkWidget* w);
   virtual void removeSideWidget(GtkWidget* w);
   virtual void addToToolbar(GtkToolItem* ti);

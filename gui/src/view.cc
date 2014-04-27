@@ -777,7 +777,7 @@ void View::invalidate()
   gdk_window_invalidate_rect(gtk_widget_get_window(drawingArea), NULL, false);
 }
 
-ProgressInterface::Ptr View::getProgressInterface()
+ProgressStateInterface::Ptr View::getProgressInterface()
 {
   return progressBarManager;
 }

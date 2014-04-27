@@ -62,7 +62,7 @@ public:
 
 class TiledBitmap : public TiledBitmapInterface, public TileInitialisationObserver,
                     public boost::enable_shared_from_this<TiledBitmap>,
-                    public ProgressInterface
+                    public ProgressStateInterface
 {
 public:
   typedef boost::shared_ptr<TiledBitmap> Ptr;
@@ -81,7 +81,7 @@ private:
   boost::mutex tileFinishedMutex;
   int tileFinishedCount;
   FileOperation::Ptr fileOperation;
-  ProgressInterface::State progressState;
+  ProgressStateInterface::State progressState;
   ThreadPool::Queue::Ptr queue;
   
 public:
@@ -96,7 +96,7 @@ private:
   void drawTile(cairo_t* cr, const TileInternal::Ptr tile, const GdkRectangle viewArea);
   void connect(Layer* layer, Layer* prevLayer, LayerOperations::Ptr prevLo);
 
-  // ProgressInterface ///////////////////////////////////////////////////
+  // ProgressStateInterface ///////////////////////////////////////////////////
   
 public:
   virtual void setState(State s);

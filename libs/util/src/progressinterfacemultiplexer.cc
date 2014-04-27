@@ -24,7 +24,7 @@ using namespace Scroom::Utils;
 ////////////////////////////////////////////////////////////////////////
 
 ProgressInterfaceMultiplexer::ChildData::ChildData()
-  : state(ProgressInterface::IDLE), progress(0.0)
+  : state(ProgressStateInterface::IDLE), progress(0.0)
 {}
 
 ProgressInterfaceMultiplexer::ChildData::Ptr ProgressInterfaceMultiplexer::ChildData::create()
@@ -62,16 +62,16 @@ void ProgressInterfaceMultiplexer::Child::setProgress(int done, int total)
 
 ////////////////////////////////////////////////////////////////////////
 
-ProgressInterfaceMultiplexer::ProgressInterfaceMultiplexer(ProgressInterface::Ptr parent)
+ProgressInterfaceMultiplexer::ProgressInterfaceMultiplexer(ProgressStateInterface::Ptr parent)
   : parent(parent)
 {}
 
-ProgressInterfaceMultiplexer::Ptr ProgressInterfaceMultiplexer::create(ProgressInterface::Ptr parent)
+ProgressInterfaceMultiplexer::Ptr ProgressInterfaceMultiplexer::create(ProgressStateInterface::Ptr parent)
 {
   return Ptr(new ProgressInterfaceMultiplexer(parent));
 }
 
-ProgressInterface::Ptr ProgressInterfaceMultiplexer::createProgressInterface()
+ProgressStateInterface::Ptr ProgressInterfaceMultiplexer::createProgressInterface()
 {
   ChildData::Ptr data = ChildData::create();
   Child::Ptr child = Child::create(shared_from_this<ProgressInterfaceMultiplexer>(), data);
@@ -83,7 +83,7 @@ ProgressInterface::Ptr ProgressInterfaceMultiplexer::createProgressInterface()
 
 void ProgressInterfaceMultiplexer::updateProgressState()
 {
-  ProgressInterface::State state = ProgressInterface::IDLE;
+  ProgressStateInterface::State state = ProgressStateInterface::IDLE;
   double progress = 0.0;
   int workers = 0;
   
@@ -91,23 +91,23 @@ void ProgressInterfaceMultiplexer::updateProgressState()
   {
     switch(child->state)
     {
-    case ProgressInterface::IDLE:
+    case ProgressStateInterface::IDLE:
       break;
-    case ProgressInterface::WAITING:
-      if(state==ProgressInterface::IDLE)
-        state = ProgressInterface::WAITING;
+    case ProgressStateInterface::WAITING:
+      if(state==ProgressStateInterface::IDLE)
+        state = ProgressStateInterface::WAITING;
       progress+=child->progress;
       workers++;
       break;
-    case ProgressInterface::WORKING:
-      if(state!=ProgressInterface::WORKING)
-        state = ProgressInterface::WORKING;
+    case ProgressStateInterface::WORKING:
+      if(state!=ProgressStateInterface::WORKING)
+        state = ProgressStateInterface::WORKING;
       progress+=child->progress;
       workers++;
       break;
-    case ProgressInterface::FINISHED:
-      if(state==ProgressInterface::IDLE)
-        state=ProgressInterface::FINISHED;
+    case ProgressStateInterface::FINISHED:
+      if(state==ProgressStateInterface::IDLE)
+        state=ProgressStateInterface::FINISHED;
       progress+=1.0;
       workers++;
       break;

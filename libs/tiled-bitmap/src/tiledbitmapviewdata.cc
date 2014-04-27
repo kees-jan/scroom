@@ -36,7 +36,7 @@ TiledBitmapViewData::TiledBitmapViewData(ViewInterface::WeakPtr viewInterface)
 
 TiledBitmapViewData::~TiledBitmapViewData()
 {
-  // progressInterface->setState(ProgressInterface::IDLE);
+  // progressInterface->setState(ProgressStateInterface::IDLE);
 }
 
 void TiledBitmapViewData::setNeededTiles(Layer* l, int imin, int imax, int jmin, int jmax,
