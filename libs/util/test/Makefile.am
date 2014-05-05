@@ -10,7 +10,9 @@ utils_tests_SOURCES = \
 	counter-tests.cc \
 	bookkeeping-tests.cc \
 	gtkhelper-tests.cc \
-	progressinterfacemultiplexer-tests.cc
+	progressinterfacemultiplexer-tests.cc \
+	progressstateinterfacestub.hh progressstateinterfacestub.cc \
+	progressinterfaceconversion-tests.cc
 
 # threadpool_tests_CPPFLAGS = -I $(top_srcdir)/compat/boost-futures/inc
 

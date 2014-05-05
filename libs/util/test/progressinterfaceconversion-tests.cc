@@ -18,41 +18,47 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include <scroom/progressinterfacemultiplexer.hh>
+#include <scroom/progressinterfacehelpers.hh>
 #include <scroom/assertions.hh>
 
 #include "progressstateinterfacestub.hh"
 
 using namespace Scroom::Utils;
 
-//////////////////////////////////////////////////////////////
+BOOST_AUTO_TEST_SUITE(ProgressInterfaceFromProgressStateInterface_Tests)
 
-BOOST_AUTO_TEST_SUITE(ProgressInterfaceMultiplexer_Tests)
-
-BOOST_AUTO_TEST_CASE(each_subinterface_contributes_proportionally)
+BOOST_AUTO_TEST_CASE(TestStates)
 {
   ProgressStateInterfaceStub::Ptr stub = ProgressStateInterfaceStub::create();
-  BOOST_CHECK(stub);
+  BOOST_REQUIRE(stub);
   BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
 
-  ProgressInterfaceMultiplexer::Ptr multiplexer = ProgressInterfaceMultiplexer::create(stub);
-  BOOST_CHECK(multiplexer);
+  ProgressInterface::Ptr pi = ProgressInterfaceFromProgressStateInterfaceForwarder::create(stub);
+  BOOST_REQUIRE(pi);
   BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
 
-  ProgressStateInterface::Ptr p1 = multiplexer->createProgressInterface();
-  ProgressStateInterface::Ptr p2 = multiplexer->createProgressInterface();
+  pi->setWaiting();
+  BOOST_CHECK_EQUAL(ProgressStateInterface::WAITING, stub->state);
+  BOOST_CHECK_EQUAL(0.0, stub->progress);
+  
+  pi->setWorking(0.33);
+  BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub->state);
+  BOOST_CHECK_EQUAL(0.33, stub->progress);
 
-  p1->setState(ProgressStateInterface::WORKING);
-  BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub->state);
-  BOOST_CHECK_EQUAL(0.0, stub->progress);
-  p2->setState(ProgressStateInterface::WORKING);
-  BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub->state);
-  BOOST_CHECK_EQUAL(0.0, stub->progress);
-  p1->setState(ProgressStateInterface::FINISHED);
-  BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub->state);
-  BOOST_CHECK_EQUAL(0.5, stub->progress);
-  p2->setState(ProgressStateInterface::FINISHED);
+  pi->setWaiting(0.25);
+  BOOST_CHECK_EQUAL(ProgressStateInterface::WAITING, stub->state);
+  BOOST_CHECK_EQUAL(0.25, stub->progress);
+  
+  pi->setFinished();
   BOOST_CHECK_EQUAL(ProgressStateInterface::FINISHED, stub->state);
+  BOOST_CHECK_EQUAL(1.0, stub->progress);
+  
+  pi->setWorking(3,4);
+  BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub->state);
+  BOOST_CHECK_EQUAL(0.75, stub->progress);
+  
+  pi->setIdle();
+  BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

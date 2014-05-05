@@ -21,7 +21,6 @@
 
 #include <boost/shared_ptr.hpp>
 
-
 /**
  * Interface used for reporting progress information
  */
@@ -60,7 +59,7 @@ public:
   virtual ~ProgressStateInterface() {}
   
   virtual void setState(State s)=0;
-  virtual void setProgress(double d)=0;
+  virtual void setProgress(double progress)=0;
   virtual void setProgress(int done, int total)=0;
 };
 
