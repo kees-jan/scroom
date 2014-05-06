@@ -76,3 +76,77 @@ void ProgressInterfaceFromProgressStateInterfaceForwarder::setProgress(int done,
 {
   child->setProgress(done, total);
 }
+
+////////////////////////////////////////////////////////////////////////
+
+ProgressStateInterfaceFromProgressInterface::ProgressStateInterfaceFromProgressInterface()
+  : progress(0.0)
+{}
+      
+void ProgressStateInterfaceFromProgressInterface::setState(State s)
+{
+  switch(s)
+  {
+  case IDLE:
+    setIdle();
+    break;
+  case WAITING:
+    setWaiting(progress);
+    break;
+  case WORKING:
+    setWorking(progress);
+    break;
+  case FINISHED:
+    setFinished();
+    break;
+  }
+}
+
+void ProgressStateInterfaceFromProgressInterface::setProgress(double progress_)
+{
+  progress = progress_;
+  setWorking(progress);
+}
+    
+void ProgressStateInterfaceFromProgressInterface::setProgress(int done, int total)
+{
+  progress = 1.0 * done / total;
+  setWorking(done, total);
+}
+
+////////////////////////////////////////////////////////////////////////
+
+ProgressStateInterfaceFromProgressInterfaceForwarder::ProgressStateInterfaceFromProgressInterfaceForwarder(ProgressInterface::Ptr child)
+  : child(child)
+{
+}
+
+ProgressStateInterfaceFromProgressInterfaceForwarder::Ptr ProgressStateInterfaceFromProgressInterfaceForwarder::create(ProgressInterface::Ptr child)
+{
+  return Ptr(new ProgressStateInterfaceFromProgressInterfaceForwarder(child));
+}
+
+void ProgressStateInterfaceFromProgressInterfaceForwarder::setIdle()
+{
+  child->setIdle();
+}
+
+void ProgressStateInterfaceFromProgressInterfaceForwarder::setWaiting(double progress)
+{
+  child->setWaiting(progress);
+}
+
+void ProgressStateInterfaceFromProgressInterfaceForwarder::setWorking(double progress)
+{
+  child->setWorking(progress);
+}
+
+void ProgressStateInterfaceFromProgressInterfaceForwarder::setWorking(int done, int total)
+{
+  child->setWorking(done, total);
+}
+
+void ProgressStateInterfaceFromProgressInterfaceForwarder::setFinished()
+{
+  child->setFinished();
+}

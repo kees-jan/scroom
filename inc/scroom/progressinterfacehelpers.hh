@@ -52,11 +52,47 @@ namespace Scroom
     public:
       static Ptr create(ProgressStateInterface::Ptr child);
 
+    protected:
       // ProgressStateInterface //////////////////////////////////////////////
       virtual void setState(State s);
       virtual void setProgress(double progress);
       virtual void setProgress(int done, int total);
 
+    };
+
+    class ProgressStateInterfaceFromProgressInterface : public ProgressStateInterface, protected ProgressInterface
+    {
+    private:
+      double progress;
+      
+    public:
+      ProgressStateInterfaceFromProgressInterface();
+      
+      virtual void setState(State s);
+      virtual void setProgress(double progress);
+      virtual void setProgress(int done, int total);
+    };
+    
+    class ProgressStateInterfaceFromProgressInterfaceForwarder : public ProgressStateInterfaceFromProgressInterface
+    {
+    public:
+      typedef boost::shared_ptr<ProgressStateInterfaceFromProgressInterfaceForwarder> Ptr;
+
+    private:
+      ProgressInterface::Ptr child;
+      
+    private:
+      ProgressStateInterfaceFromProgressInterfaceForwarder(ProgressInterface::Ptr child);
+      
+    public:
+      static Ptr create(ProgressInterface::Ptr child);
+
+    protected:
+      virtual void setIdle();
+      virtual void setWaiting(double progress=0.0);
+      virtual void setWorking(double progress);
+      virtual void setWorking(int done, int total);
+      virtual void setFinished();
     };
   }
 }

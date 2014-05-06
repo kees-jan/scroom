@@ -28,7 +28,7 @@ namespace Scroom
 {
   namespace Utils
   {
-    class ProgressInterfaceMultiplexer : public Base
+    class ProgressInterfaceMultiplexer : public virtual Base
     {
     public:
       typedef boost::shared_ptr<ProgressInterfaceMultiplexer> Ptr;

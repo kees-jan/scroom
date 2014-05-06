@@ -25,9 +25,9 @@
 
 using namespace Scroom::Utils;
 
-BOOST_AUTO_TEST_SUITE(ProgressInterfaceFromProgressStateInterface_Tests)
+BOOST_AUTO_TEST_SUITE(test_converters)
 
-BOOST_AUTO_TEST_CASE(TestStates)
+BOOST_AUTO_TEST_CASE(test_ProgressInterfaceFromProgressStateInterface)
 {
   ProgressStateInterfaceStub::Ptr stub = ProgressStateInterfaceStub::create();
   BOOST_REQUIRE(stub);
@@ -58,6 +58,46 @@ BOOST_AUTO_TEST_CASE(TestStates)
   BOOST_CHECK_EQUAL(0.75, stub->progress);
   
   pi->setIdle();
+  BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
+}
+
+BOOST_AUTO_TEST_CASE(test_ProgressStateInterfaceFromProgressInterface)
+{
+  ProgressStateInterfaceStub::Ptr stub = ProgressStateInterfaceStub::create();
+  BOOST_REQUIRE(stub);
+  BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
+
+  ProgressInterface::Ptr pi = ProgressInterfaceFromProgressStateInterfaceForwarder::create(stub);
+  BOOST_REQUIRE(pi);
+  BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
+
+  ProgressStateInterface::Ptr ps = ProgressStateInterfaceFromProgressInterfaceForwarder::create(pi);
+  BOOST_REQUIRE(ps);
+  BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
+
+  stub->progress = 0.33;
+
+  ps->setState(ProgressStateInterface::WAITING);
+  BOOST_CHECK_EQUAL(ProgressStateInterface::WAITING, stub->state);
+  BOOST_CHECK_EQUAL(0.0, stub->progress);
+  
+  ps->setProgress(0.27);
+  BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub->state);
+  BOOST_CHECK_EQUAL(0.27, stub->progress);
+
+  ps->setState(ProgressStateInterface::WAITING);
+  BOOST_CHECK_EQUAL(ProgressStateInterface::WAITING, stub->state);
+  BOOST_CHECK_EQUAL(0.27, stub->progress);
+  
+  ps->setState(ProgressStateInterface::FINISHED);
+  BOOST_CHECK_EQUAL(ProgressStateInterface::FINISHED, stub->state);
+  BOOST_CHECK_EQUAL(1.0, stub->progress);
+  
+  ps->setProgress(3,4);
+  BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub->state);
+  BOOST_CHECK_EQUAL(0.75, stub->progress);
+  
+  ps->setState(ProgressStateInterface::IDLE);
   BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
 }
 
