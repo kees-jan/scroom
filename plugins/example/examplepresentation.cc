@@ -20,7 +20,7 @@
 
 #include <math.h>
 
-#include <scroom/unused.h>
+#include <scroom/unused.hh>
 
 ExamplePresentation::ExamplePresentation()
   : pattern(NULL)

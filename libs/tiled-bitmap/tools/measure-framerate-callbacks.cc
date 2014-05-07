@@ -20,7 +20,7 @@
 
 #include "test-helpers.hh"
 
-#include <scroom/unused.h>
+#include <scroom/unused.hh>
 
 ////////////////////////////////////////////////////////////////////////
 

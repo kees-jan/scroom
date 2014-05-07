@@ -29,7 +29,7 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/utility.hpp>
 
-#include <scroom/unused.h>
+#include <scroom/unused.hh>
 
 using Scroom::Utils::Stuff;
 

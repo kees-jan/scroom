@@ -32,7 +32,7 @@
 #include <scroom/presentationinterface.hh>
 #include <scroom/tile.hh>
 #include <scroom/stuff.hh>
-#include <scroom/unused.h>
+#include <scroom/unused.hh>
 
 /**
  * Represent the state of one of the tiles that make up a layer in the

@@ -21,7 +21,7 @@
 #include <tiffio.h>
 #include <string.h>
 
-#include <scroom/unused.h>
+#include <scroom/unused.hh>
 
 #include <scroom/layeroperations.hh>
 

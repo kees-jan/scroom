@@ -25,7 +25,7 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/results_reporter.hpp>
 
-#include <scroom/unused.h>
+#include <scroom/unused.hh>
 
 bool init_unit_test()
 {

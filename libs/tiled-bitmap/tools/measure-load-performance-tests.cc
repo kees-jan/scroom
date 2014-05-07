@@ -24,7 +24,7 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include <scroom/unused.h>
+#include <scroom/unused.hh>
 #include <scroom/semaphore.hh>
 #include <scroom/threadpool.hh>
 

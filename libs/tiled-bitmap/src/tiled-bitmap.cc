@@ -28,7 +28,7 @@
 #include <boost/foreach.hpp>
 
 #include <scroom/semaphore.hh>
-#include <scroom/unused.h>
+#include <scroom/unused.hh>
 
 TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
 {

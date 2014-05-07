@@ -19,7 +19,7 @@
 
 #include <boost/foreach.hpp>
 
-#include <scroom/unused.h>
+#include <scroom/unused.hh>
 
 #include "local.hh"
 #include "tileinternal.hh"

@@ -26,7 +26,7 @@
 
 #include <string>
 
-#include <scroom/unused.h>
+#include <scroom/unused.hh>
 
 #include "measure-framerate-callbacks.hh"
 #include "measure-framerate-tests.hh"

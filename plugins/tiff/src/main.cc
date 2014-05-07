@@ -20,7 +20,7 @@
 #include <stdio.h>
 
 #include <scroom/scroomplugin.hh>
-#include <scroom/unused.h>
+#include <scroom/unused.hh>
 
 #include "tiff.hh"
 
