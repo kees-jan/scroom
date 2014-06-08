@@ -11,6 +11,7 @@ utils_tests_SOURCES = \
 	bookkeeping-tests.cc \
 	gtkhelper-tests.cc \
 	progressinterfacemultiplexer-tests.cc \
+	progressinterfacedemultiplexer-tests.cc \
 	progressstateinterfacestub.hh progressstateinterfacestub.cc \
 	progressinterfaceconversion-tests.cc
 

@@ -19,7 +19,13 @@
 #ifndef PROGRESSINTERFACEHELPERS_HH
 #define PROGRESSINTERFACEHELPERS_HH
 
+#include <set>
+
+#include <boost/thread.hpp>
+
+#include <scroom/stuff.hh>
 #include <scroom/progressinterface.hh>
+#include <scroom/utilities.hh>
 
 namespace Scroom
 {
@@ -93,6 +99,84 @@ namespace Scroom
       virtual void setWorking(double progress);
       virtual void setWorking(int done, int total);
       virtual void setFinished();
+    };
+
+    namespace Detail
+    {
+      class ProgressStore : public ProgressInterfaceFromProgressStateInterface
+      {
+      public:
+        typedef boost::shared_ptr<ProgressStore> Ptr;
+
+      private:
+        State state;
+        double progress;
+
+      private:
+        ProgressStore();
+        
+      public:
+        static Ptr create();
+
+        void init(ProgressInterface::Ptr const & i);
+        
+      protected:
+        // ProgressStateInterface //////////////////////////////////////////////
+        virtual void setState(State s);
+        virtual void setProgress(double progress);
+        virtual void setProgress(int done, int total);
+      };
+    }
+
+    class ProgressInterfaceDemultiplexer : virtual public Base, public ProgressInterface
+    {
+    public:
+      typedef boost::shared_ptr<ProgressInterfaceDemultiplexer> Ptr;
+
+    private:
+      class Unsubscriber
+      {
+      public:
+        typedef boost::shared_ptr<Unsubscriber> Ptr;
+
+      private:
+        ProgressInterfaceDemultiplexer::Ptr parent;
+        ProgressInterface::Ptr child;
+        
+      private:
+        Unsubscriber(ProgressInterfaceDemultiplexer::Ptr const& parent, ProgressInterface::Ptr const& child);
+        
+      public:
+        static Ptr create(ProgressInterfaceDemultiplexer::Ptr const& parent, ProgressInterface::Ptr const& child);
+        ~Unsubscriber();
+      };
+
+      friend class Unsubscriber;
+      
+    private:
+      boost::mutex mut;
+      std::set<ProgressInterface::Ptr> children;
+      Detail::ProgressStore::Ptr store;
+
+    public:
+      static Ptr create();
+
+    private:
+      ProgressInterfaceDemultiplexer();
+
+      void unsubscribe(ProgressInterface::Ptr const& child);
+
+    public:
+      Stuff subscribe(ProgressInterface::Ptr const& child);
+
+      // ProgressInterface ///////////////////////////////////////////////////
+      
+      virtual void setIdle();
+      virtual void setWaiting(double progress=0.0);
+      virtual void setWorking(double progress);
+      virtual void setWorking(int done, int total);
+      virtual void setFinished();
+
     };
   }
 }
