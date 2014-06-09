@@ -22,6 +22,9 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/foreach.hpp>
 
+#include <scroom/assertions.hh>
+#include <scroom/gtk-helpers.hh>
+
 #include "workinterface.hh"
 #include "callbacks.hh"
 
@@ -38,8 +41,6 @@ namespace
     std::list<GtkProgressBar*>::iterator current;
 
   public:
-    ProgressBarPulser();
-    
     void start(GtkProgressBar* progressBar);
     void stop(GtkProgressBar* progressBar);
 
@@ -60,12 +61,9 @@ namespace
   ////////////////////////////////////////////////////////////////////////
   // ProgressBarPulser
 
-  ProgressBarPulser::ProgressBarPulser()
-  {}
-
   void ProgressBarPulser::start(GtkProgressBar* progressBar)
   {
-    boost::unique_lock<boost::mutex> lock(mut);
+    boost::mutex::scoped_lock lock(mut);
       
     progressbars.push_back(progressBar);
 
@@ -78,7 +76,7 @@ namespace
   
   void ProgressBarPulser::stop(GtkProgressBar* progressBar)
   {
-    boost::unique_lock<boost::mutex> lock(mut);
+    boost::mutex::scoped_lock lock(mut);
 
     BOOST_FOREACH(GtkProgressBar* &p, progressbars)
     {
@@ -90,14 +88,13 @@ namespace
   bool ProgressBarPulser::doWork()
   {
     // Locking these the other way around results in a deadlock. See ticket #40
-    gdk_threads_enter();
-    boost::unique_lock<boost::mutex> lock(mut);
+    Scroom::GtkHelpers::TakeGdkLock gdkLock;
+    boost::mutex::scoped_lock lock(mut);
 
     while(current == progressbars.end() || *current==NULL)
     {
       if(progressbars.empty())
       {
-        gdk_threads_leave();
         return false;
       }
       else if(current == progressbars.end())
@@ -106,31 +103,19 @@ namespace
         current = progressbars.erase(current);
       else
       {
-        printf("PANIC: Shoudn't happen\n");
-        abort();
+        defect();
       }
     }
 
     gtk_progress_bar_pulse(*current);
-    gdk_threads_leave();
     ++current;
     
     return true;
   }
 }
 
-// void TiledBitmapViewData::gtk_progress_bar_set_fraction(double fraction)
-// {
-//   ::gtk_progress_bar_set_fraction(progressBar, fraction);
-// }
-// 
-// void TiledBitmapViewData::gtk_progress_bar_pulse()
-// {
-//   ::gtk_progress_bar_pulse(progressBar);
-// }
-
 ProgressBarManager::ProgressBarManager(GtkProgressBar* progressBar)
-  :progressBar(progressBar), state(IDLE)
+  :progressBar(progressBar), isWaiting(false)
 {}
 
 ProgressBarManager::Ptr ProgressBarManager::create(GtkProgressBar* progressBar)
@@ -140,62 +125,60 @@ ProgressBarManager::Ptr ProgressBarManager::create(GtkProgressBar* progressBar)
 
 ProgressBarManager::~ProgressBarManager()
 {
-  if(state == WAITING)
-  {
-    // Stop pulsing
-    instance()->stop(progressBar);
-    state = IDLE;
-  }
+  stopWaiting();
 }
 
 void ProgressBarManager::setProgressBar(GtkProgressBar* progressBar)
 {
+  stopWaiting();
   this->progressBar = progressBar;
 }
-  
-// ProgressStateInterface ///////////////////////////////////////////////////
-  
-void ProgressBarManager::setState(State s)
+
+void ProgressBarManager::startWaiting()
 {
-  if(state != s)
+  if(!isWaiting)
   {
-    if(state == WAITING)
-    {
-      // s != WAITING, stop pulsing
-      instance()->stop(progressBar);
-    }
-    if(s == WAITING)
-    {
-      // state != WAITING, start pulsing
-      instance()->start(progressBar);
-    }
-    switch(s)
-    {
-    case IDLE:
-    case FINISHED:
-      gtk_progress_bar_set_fraction(progressBar, 0.0);
-      break;
-    case WAITING:
-      // already handled
-      break;
-    case WORKING:
-      // will be handled by calls to setProgress()
-      break;
-    default:
-      // Panic, shouldn't happen
-      break;
-    }
-    state = s;
+    // Start pulsing
+    instance()->start(progressBar);
+    isWaiting = true;
   }
+}  
+
+void ProgressBarManager::stopWaiting()
+{
+  if(isWaiting)
+  {
+    // Stop pulsing
+    instance()->stop(progressBar);
+    isWaiting = false;
+  }
+}  
+
+
+// ProgressInterface ///////////////////////////////////////////////////
+
+void ProgressBarManager::setIdle()
+{
+  setWorking(0.0);
 }
 
-void ProgressBarManager::setProgress(double d)
+void ProgressBarManager::setWaiting(double)
 {
-  setState(ProgressStateInterface::WORKING);
-  gtk_progress_bar_set_fraction(progressBar, d);  
+  startWaiting();
 }
 
-void ProgressBarManager::setProgress(int done, int total)
+void ProgressBarManager::setWorking(double progress)
 {
-  setProgress(1.0*done/total);
+  stopWaiting();
+  gtk_progress_bar_set_fraction(progressBar, progress);
+}
+
+void ProgressBarManager::setWorking(int done, int total)
+{
+  setWorking(double(done)/total);
+}
+
+void ProgressBarManager::setFinished()
+{
+  setIdle();
 }
