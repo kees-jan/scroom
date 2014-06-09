@@ -20,6 +20,8 @@
 
 #include <boost/foreach.hpp>
 
+#include <scroom/progressinterfacehelpers.hh>
+
 ProgressInterfaceStub::ProgressInterfaceStub()
   :finished(false)
 {
@@ -49,9 +51,9 @@ ViewInterfaceStub::Ptr ViewInterfaceStub::create(ProgressStateInterface::Ptr pi)
   return Ptr(new ViewInterfaceStub(pi));
 }
 
-ProgressStateInterface::Ptr ViewInterfaceStub::getProgressInterface()
+ProgressInterface::Ptr ViewInterfaceStub::getProgressInterface()
 {
-  return pi;
+  return Scroom::Utils::ProgressInterfaceFromProgressStateInterfaceForwarder::create(pi);
 }
 
 void Source1Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<Tile::Ptr>& tiles)

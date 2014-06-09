@@ -63,7 +63,7 @@ public:
    *    Gdk critical section (i.e. between gdk_threads_enter() and
    *    gdk_threads_leave() calls)
    */
-  virtual ProgressStateInterface::Ptr getProgressInterface()=0;
+  virtual ProgressInterface::Ptr getProgressInterface()=0;
 
   /**
    * Request that the given widget be added to the sidebar.

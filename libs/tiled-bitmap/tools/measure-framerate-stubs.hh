@@ -55,7 +55,7 @@ private:
 public:
   static Ptr create(ProgressStateInterface::Ptr pi);
   virtual void invalidate()                           {}
-  virtual ProgressStateInterface::Ptr getProgressInterface();
+  virtual ProgressInterface::Ptr getProgressInterface();
   virtual void addSideWidget(std::string, GtkWidget*) {}
   virtual void removeSideWidget(GtkWidget*)           {}
   virtual void addToToolbar(GtkToolItem*)             {}

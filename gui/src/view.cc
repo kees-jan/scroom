@@ -30,6 +30,8 @@
 
 #include <glib-object.h>
 
+#include <scroom/progressinterfacehelpers.hh>
+
 #include "pluginmanager.hh"
 #include "callbacks.hh"
 
@@ -782,9 +784,9 @@ void View::invalidate()
   gdk_window_invalidate_rect(gtk_widget_get_window(drawingArea), NULL, false);
 }
 
-ProgressStateInterface::Ptr View::getProgressInterface()
+ProgressInterface::Ptr View::getProgressInterface()
 {
-  return progressBarManager;
+  return Scroom::Utils::ProgressInterfaceFromProgressStateInterfaceForwarder::create(progressBarManager);
 }
 
 void View::addSideWidget(std::string title, GtkWidget* w)

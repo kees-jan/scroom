@@ -43,4 +43,5 @@ measure_load_performance_SOURCES = \
 measure_load_performance_LDADD = \
 	@GUI_LIBS@ -L$(top_builddir)/libs/tiled-bitmap/src -lstiledbitmap @BOOSTTHREADLIB@ \
 	../../../libs/threadpool/src/libsthreadpool.la \
-	$(top_builddir)/libs/tiled-bitmap/src/libstiledbitmap.la
+	$(top_builddir)/libs/tiled-bitmap/src/libstiledbitmap.la \
+	$(top_builddir)/libs/util/src/libsutil.la
