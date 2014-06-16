@@ -30,6 +30,7 @@
 #include <boost/enable_shared_from_this.hpp>
 
 #include <scroom/threadpool.hh>
+#include <scroom/progressinterfacehelpers.hh>
 
 #include "layer.hh"
 #include "layercoordinator.hh"
@@ -62,7 +63,7 @@ public:
 
 class TiledBitmap : public TiledBitmapInterface, public TileInitialisationObserver,
                     public boost::enable_shared_from_this<TiledBitmap>,
-                    public ProgressStateInterface
+                    public ProgressInterface
 {
 public:
   typedef boost::shared_ptr<TiledBitmap> Ptr;
@@ -81,7 +82,7 @@ private:
   boost::mutex tileFinishedMutex;
   int tileFinishedCount;
   FileOperation::Ptr fileOperation;
-  ProgressStateInterface::State progressState;
+  Scroom::Utils::ProgressInterfaceDemultiplexer::Ptr demultiplexer;
   ThreadPool::Queue::Ptr queue;
   
 public:
@@ -96,13 +97,14 @@ private:
   void drawTile(cairo_t* cr, const TileInternal::Ptr tile, const GdkRectangle viewArea);
   void connect(Layer* layer, Layer* prevLayer, LayerOperations::Ptr prevLo);
 
-  // ProgressStateInterface ///////////////////////////////////////////////////
+  // ProgressInterface ///////////////////////////////////////////////////
   
 public:
-  virtual void setState(State s);
-  virtual void setProgress(double d);
-  virtual void setProgress(int done, int total);
-  
+  virtual void setIdle();
+  virtual void setWaiting(double progress=0.0);
+  virtual void setWorking(double progress);
+  virtual void setWorking(int done, int total);
+  virtual void setFinished();
 
 public:
 

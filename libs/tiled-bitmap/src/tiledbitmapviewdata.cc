@@ -30,15 +30,10 @@ TiledBitmapViewData::Ptr TiledBitmapViewData::create(ViewInterface::WeakPtr view
 
 TiledBitmapViewData::TiledBitmapViewData(ViewInterface::WeakPtr viewInterface)
   : viewInterface(viewInterface),
-    progressInterface(Scroom::Utils::ProgressStateInterfaceFromProgressInterfaceForwarder::create(viewInterface.lock()->getProgressInterface())),
+    progressInterface(viewInterface.lock()->getProgressInterface()),
     layer(NULL), imin(0), imax(0), jmin(0), jmax(0), zoom(0), layerOperations(),
     redrawPending(false)
 {
-}
-
-TiledBitmapViewData::~TiledBitmapViewData()
-{
-  // progressInterface->setState(ProgressStateInterface::IDLE);
 }
 
 void TiledBitmapViewData::setNeededTiles(Layer* l, int imin, int imax, int jmin, int jmax,
@@ -173,17 +168,27 @@ void TiledBitmapViewData::tileLoaded(ConstTile::Ptr tile)
   }
 }
 
-void TiledBitmapViewData::setState(State s)
+void TiledBitmapViewData::setIdle()
 {
-  progressInterface->setState(s);
+  progressInterface->setIdle();
 }
 
-void TiledBitmapViewData::setProgress(double d)
+void TiledBitmapViewData::setWaiting(double progress)
 {
-  progressInterface->setProgress(d);
+  progressInterface->setWaiting(progress);
 }
 
-void TiledBitmapViewData::setProgress(int done, int total)
+void TiledBitmapViewData::setWorking(double progress)
 {
-  progressInterface->setProgress(done, total);
+  progressInterface->setWorking(progress);
+}
+
+void TiledBitmapViewData::setWorking(int done, int total)
+{
+  progressInterface->setWorking(done, total);
+}
+
+void TiledBitmapViewData::setFinished()
+{
+  progressInterface->setFinished();
 }

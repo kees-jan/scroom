@@ -25,18 +25,20 @@
 
 #include <scroom/viewinterface.hh>
 #include <scroom/observable.hh>
+#include <scroom/bookkeeping.hh>
 
 #include "layer.hh"
 
-class TiledBitmapViewData : virtual public Scroom::Utils::Base, public TileLoadingObserver, public ProgressStateInterface
+class TiledBitmapViewData : virtual public Scroom::Utils::Base, public TileLoadingObserver, public ProgressInterface
 {
 public:
   typedef boost::shared_ptr<TiledBitmapViewData> Ptr;
 
 public:
   ViewInterface::WeakPtr viewInterface;
-  ProgressStateInterface::Ptr progressInterface;
-
+  ProgressInterface::Ptr progressInterface;
+  Scroom::Bookkeeping::Token token;
+  
 private:
   Layer* layer;
   int imin;
@@ -53,7 +55,7 @@ private:
    * @li observer registrations
    * @li tiles that have been loaded
    */
-  std::list<boost::shared_ptr<void> > stuff;
+  Scroom::Utils::StuffList stuff;
 
   /**
    * References to things the user should be able to throw away on request
@@ -61,7 +63,7 @@ private:
    * This includes
    * @li pre-drawn bitmaps to make redraws go faster
    */
-  std::list<boost::shared_ptr<void> > volatileStuff;
+  Scroom::Utils::StuffList volatileStuff;
 
   bool redrawPending;
 
@@ -73,7 +75,6 @@ private:
 
 public:
   static Ptr create(ViewInterface::WeakPtr viewInterface);
-  virtual ~TiledBitmapViewData();
 
   void setNeededTiles(Layer* l, int imin, int imax, int jmin, int jmax, int zoom, LayerOperations::Ptr layerOperations);
   void resetNeededTiles();
@@ -83,11 +84,12 @@ public:
   // TileLoadingObserver ////////////////////////////////////////////////
   virtual void tileLoaded(ConstTile::Ptr tile);
 
-  // ProgressStateInterface ///////////////////////////////////////////////////
-  virtual void setState(State s);
-  virtual void setProgress(double d);
-  virtual void setProgress(int done, int total);
-  
+  // ProgressInterface ///////////////////////////////////////////////////
+  virtual void setIdle();
+  virtual void setWaiting(double progress=0.0);
+  virtual void setWorking(double progress);
+  virtual void setWorking(int done, int total);
+  virtual void setFinished();
 };
 
 #endif

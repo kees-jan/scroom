@@ -57,7 +57,7 @@ static Scroom::MemoryBlobs::PageProvider::Ptr createProvider(double width, doubl
 FileOperation::FileOperation(TiledBitmap::Ptr parent)
   : parent(parent), waitingMutex(), waiting(true), timer(0)
 {
-  parent->setState(ProgressStateInterface::WAITING);
+  parent->setWaiting();
 }
 
 void FileOperation::doneWaiting()
@@ -66,7 +66,7 @@ void FileOperation::doneWaiting()
   if(waiting)
   {
     gdk_threads_enter();
-    parent->setState(ProgressStateInterface::WORKING);
+    parent->setWorking(0);
     gdk_threads_leave();
     waiting = false;
   }
@@ -142,7 +142,7 @@ TiledBitmap::Ptr TiledBitmap::create(int bitmapWidth, int bitmapHeight, LayerSpe
 
 TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
   :bitmapWidth(bitmapWidth), bitmapHeight(bitmapHeight), ls(ls), tileCount(0), tileFinishedCount(0),
-   fileOperation(), progressState(IDLE), queue(ThreadPool::Queue::create())
+   fileOperation(), demultiplexer(Scroom::Utils::ProgressInterfaceDemultiplexer::create()), queue(ThreadPool::Queue::create())
 {
 }
 
@@ -229,39 +229,31 @@ void TiledBitmap::connect(Layer* layer, Layer* prevLayer,
 }
 
 ////////////////////////////////////////////////////////////////////////
-// TiledBitmapInterface
+// ProgressInterface
 
-void TiledBitmap::setState(State s)
+void TiledBitmap::setIdle()
 {
-  boost::mutex::scoped_lock lock(viewDataMutex);
-  progressState = s;
-
-  BOOST_FOREACH(ViewDataMap::value_type& cur, viewData)
-  {
-    // EEK! This is not thread safe!
-    cur.second->setState(s);
-  }
-}
-void TiledBitmap::setProgress(double d)
-{
-  boost::mutex::scoped_lock lock(viewDataMutex);
-
-  BOOST_FOREACH(ViewDataMap::value_type& cur, viewData)
-  {
-    // EEK! This is not thread safe!
-    cur.second->setProgress(d);
-  }
+  demultiplexer->setIdle();
 }
 
-void TiledBitmap::setProgress(int done, int total)
+void TiledBitmap::setWaiting(double progress)
 {
-  boost::mutex::scoped_lock lock(viewDataMutex);
+  demultiplexer->setWaiting(progress);
+}
 
-  BOOST_FOREACH(ViewDataMap::value_type& cur, viewData)
-  {
-    // EEK! This is not thread safe!
-    cur.second->setProgress(done, total);
-  }
+void TiledBitmap::setWorking(double progress)
+{
+  demultiplexer->setWorking(progress);
+}
+
+void TiledBitmap::setWorking(int done, int total)
+{
+  demultiplexer->setWorking(done, total);
+}
+
+void TiledBitmap::setFinished()
+{
+  demultiplexer->setFinished();
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -629,7 +621,7 @@ void TiledBitmap::open(ViewInterface::WeakPtr viewInterface)
   boost::mutex::scoped_lock lock(viewDataMutex);
   TiledBitmapViewData::Ptr vd = TiledBitmapViewData::create(viewInterface);
   viewData[viewInterface] = vd;
-  vd->setState(progressState);
+  vd->token.add(demultiplexer->subscribe(vd));
   lock.unlock();
   
   BOOST_FOREACH(Layer* l, layers)
@@ -642,10 +634,14 @@ void TiledBitmap::close(ViewInterface::WeakPtr vi)
 {
   BOOST_FOREACH(Layer* l, layers)
   {
-    l->open(vi);
+    l->close(vi);
   }
   
   boost::mutex::scoped_lock lock(viewDataMutex);
+  TiledBitmapViewData::Ptr vd = viewData[vi];
+  // Yuk. Demultiplexer has a reference to viewData, so erasing it
+  // from the map isn't enough.
+  vd->token.reset();
   viewData.erase(vi);
 }
 
@@ -670,10 +666,10 @@ void TiledBitmap::tileFinished(TileInternal::Ptr tile)
   else
   {
     gdk_threads_enter();
-    setProgress(tileFinishedCount, tileCount);
+    setWorking(tileFinishedCount, tileCount);
     if(tileFinishedCount==tileCount)
     {
-      setState(ProgressStateInterface::FINISHED);
+      setFinished();
       if(fileOperation)
       {
         fileOperation->finished();
