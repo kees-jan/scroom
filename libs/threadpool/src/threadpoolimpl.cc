@@ -19,9 +19,9 @@
 #  include <config.h>
 #endif
 
-// #include <boost/date_time/posix_time/posix_time.hpp>
-
 #include <stdio.h>
+
+#include <utility>
 
 #include <scroom/threadpool.hh>
 #include <scroom/async-deleter.hh>
@@ -47,11 +47,16 @@ namespace
   private:
     boost::mutex mut;
     std::list<ThreadPool::ThreadPtr> threads;
+    std::list<std::pair<boost::weak_ptr<void>, std::string> > pointers;
 
+  private:
+    void dumpPointers();
+    
   public:
     static Ptr instance();
     void wait();
     void add(ThreadPool::ThreadPtr t);
+    void add(boost::shared_ptr<void> t, const std::string& s);
   };
 
   /**
@@ -70,12 +75,41 @@ namespace
 
   ThreadWaiter waiter;
 
+  template<typename T>
+  class NotifyThreadList
+  {
+  private:
+    boost::shared_ptr<T> t;
+
+  public:
+    NotifyThreadList(boost::shared_ptr<T> t, const std::string& s) : t(t) { ThreadList::instance()->add(t, s); }
+
+    operator boost::shared_ptr<T> () { return t; }
+  };
+
   ////////////////////////////////////////////////////////////////////////
 
   ThreadList::Ptr ThreadList::instance()
   {
     static Ptr threadList = Ptr(new ThreadList());
     return threadList;
+  }
+
+  void ThreadList::dumpPointers()
+  {
+    std::list<std::pair<boost::weak_ptr<void>, std::string> >::iterator cur = pointers.begin();
+    while(cur != pointers.end())
+    {
+      const int count = cur->first.use_count();
+        
+      if(count)
+      {
+        printf("%d references to %s remaining\n", count, cur->second.c_str());
+        cur++;
+      }
+      else
+        cur=pointers.erase(cur);
+    }
   }
 
   void ThreadList::wait()
@@ -104,6 +138,7 @@ namespace
     while(triesRemaining>0 && count>0)
     {
       boost::mutex::scoped_lock lock(mut);
+      dumpPointers();
       printf("Waiting for %d threads to terminate", count);
 
       std::list<ThreadPool::ThreadPtr>::iterator cur = threads.begin();
@@ -130,6 +165,12 @@ namespace
   {
     boost::mutex::scoped_lock lock(mut);
     threads.push_back(t);
+  }
+
+  void ThreadList::add(boost::shared_ptr<void> t, const std::string& s)
+  {
+    boost::mutex::scoped_lock lock(mut);
+    pointers.push_back(std::make_pair<boost::weak_ptr<void>,std::string>(t, std::string(s)));
   }
 
   ThreadWaiter::ThreadWaiter()
@@ -433,3 +474,23 @@ void QueueJumper::operator()()
   }
   inQueue=false;
 }
+
+////////////////////////////////////////////////////////////////////////
+// Default threadpools
+////////////////////////////////////////////////////////////////////////
+
+ThreadPool::Ptr CpuBound()
+{
+  static ThreadPool::Ptr cpuBound = NotifyThreadList<ThreadPool>(ThreadPool::Ptr(new ThreadPool()), "CpuBound threadpool");
+  
+  return cpuBound;
+}
+
+ThreadPool::Ptr Sequentially()
+{
+  static ThreadPool::Ptr sequentially = NotifyThreadList<ThreadPool>(ThreadPool::Ptr(new ThreadPool(1)), "Sequential threadpool");
+
+  return sequentially;
+}
+
+
