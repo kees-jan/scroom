@@ -120,6 +120,7 @@ public:
   void hide();
   bool hasPresentation();
   void setPresentation(PresentationInterface::Ptr presentation);
+  void clearPresentation();
 
   void updateScrollbar(GtkAdjustment* adj, int zoom, int value,
                        int presentationStart, int presentationSize, int windowSize);

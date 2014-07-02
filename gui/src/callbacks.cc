@@ -487,6 +487,7 @@ void on_view_created(View::Ptr v)
 void on_view_destroyed(View* v)
 {
   View::Ptr view = v->shared_from_this<View>();
+  view->clearPresentation();
   
   views.erase(view);
   view.reset();

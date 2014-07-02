@@ -266,6 +266,11 @@ bool View::hasPresentation()
   return presentation!=NULL;
 }
 
+void View::clearPresentation()
+{
+  setPresentation(PresentationInterface::Ptr()); // null
+}
+
 void View::setPresentation(PresentationInterface::Ptr presentation)
 {
   View::Ptr me = shared_from_this<View>();
