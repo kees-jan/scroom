@@ -23,7 +23,7 @@
 #include <scroom/presentationinterface.hh>
 #include <scroom/utilities.hh>
 
-class Tiff : public PluginInformationInterface, public OpenInterface, public Scroom::Utils::Base
+class Tiff : public PluginInformationInterface, public OpenInterface, virtual public Scroom::Utils::Base
 {
 public:
   typedef boost::shared_ptr<Tiff> Ptr;

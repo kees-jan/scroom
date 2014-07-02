@@ -55,7 +55,7 @@ public:
   double length() { return std::sqrt(std::pow(double(width()),2) + std::pow(double(height()),2)); }
 };
 
-class View : public ViewInterface, public Scroom::Utils::Base
+class View : public ViewInterface, virtual public Scroom::Utils::Base
 {
 public:
   typedef boost::shared_ptr<View> Ptr;

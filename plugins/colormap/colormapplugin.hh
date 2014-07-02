@@ -30,7 +30,7 @@ namespace Scroom
    */
     class ColormapPlugin: public PluginInformationInterface,
         public PresentationObserver,
-        public Scroom::Utils::Base
+        virtual public Scroom::Utils::Base
     {
     public:
       typedef boost::shared_ptr<ColormapPlugin> Ptr;

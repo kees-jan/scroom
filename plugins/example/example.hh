@@ -25,7 +25,7 @@
 #include <scroom/presentationinterface.hh>
 #include <scroom/utilities.hh>
 
-class Example : public PluginInformationInterface, public NewInterface, public  Scroom::Utils::Base
+class Example : public PluginInformationInterface, public NewInterface, virtual public  Scroom::Utils::Base
 {
 public:
   typedef boost::shared_ptr<Example> Ptr;

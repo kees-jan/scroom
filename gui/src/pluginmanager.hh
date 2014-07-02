@@ -43,7 +43,7 @@ struct PluginInformation
   }
 };
 
-class PluginManager : public WorkInterface, public ScroomInterface, public Scroom::Utils::Base
+class PluginManager : public WorkInterface, public ScroomInterface, virtual public Scroom::Utils::Base
 {
 public:
   typedef boost::shared_ptr<PluginManager> Ptr;
