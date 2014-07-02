@@ -201,58 +201,58 @@ namespace Scroom
     }
     ////////////////////////////////////////////////////////////////////////
 
-    ProgressInterfaceDemultiplexer::Ptr ProgressInterfaceDemultiplexer::create()
+    ProgressInterfaceBroadcaster::Ptr ProgressInterfaceBroadcaster::create()
     {
-      return Ptr(new ProgressInterfaceDemultiplexer());
+      return Ptr(new ProgressInterfaceBroadcaster());
     }
 
-    ProgressInterfaceDemultiplexer::ProgressInterfaceDemultiplexer()
+    ProgressInterfaceBroadcaster::ProgressInterfaceBroadcaster()
     {
       store = Detail::ProgressStore::create();
       children.insert(store);
     }
 
-    Stuff ProgressInterfaceDemultiplexer::subscribe(ProgressInterface::Ptr const& child)
+    Stuff ProgressInterfaceBroadcaster::subscribe(ProgressInterface::Ptr const& child)
     {
       boost::mutex::scoped_lock lock(mut);
       store->init(child);
       children.insert(child);
-      return Unsubscriber::create(shared_from_this<ProgressInterfaceDemultiplexer>(), child);
+      return Unsubscriber::create(shared_from_this<ProgressInterfaceBroadcaster>(), child);
     }
 
-    void ProgressInterfaceDemultiplexer::unsubscribe(ProgressInterface::Ptr const& child)
+    void ProgressInterfaceBroadcaster::unsubscribe(ProgressInterface::Ptr const& child)
     {
       boost::mutex::scoped_lock lock(mut);
       children.erase(child);
     }
 
-    void ProgressInterfaceDemultiplexer::setIdle()
+    void ProgressInterfaceBroadcaster::setIdle()
     {
       boost::mutex::scoped_lock lock(mut);
       BOOST_FOREACH(ProgressInterface::Ptr const& child, children)
         child->setIdle();
     }
 
-    void ProgressInterfaceDemultiplexer::setWaiting(double progress)
+    void ProgressInterfaceBroadcaster::setWaiting(double progress)
     {
       boost::mutex::scoped_lock lock(mut);
       BOOST_FOREACH(ProgressInterface::Ptr const& child, children)
         child->setWaiting(progress);
     }
 
-    void ProgressInterfaceDemultiplexer::setWorking(double progress)
+    void ProgressInterfaceBroadcaster::setWorking(double progress)
     {
       boost::mutex::scoped_lock lock(mut);
       BOOST_FOREACH(ProgressInterface::Ptr const& child, children)
         child->setWorking(progress);
     }
 
-    void ProgressInterfaceDemultiplexer::setWorking(int done, int total)
+    void ProgressInterfaceBroadcaster::setWorking(int done, int total)
     {
       setWorking(double(done)/total);
     }
 
-    void ProgressInterfaceDemultiplexer::setFinished()
+    void ProgressInterfaceBroadcaster::setFinished()
     {
       boost::mutex::scoped_lock lock(mut);
       BOOST_FOREACH(ProgressInterface::Ptr const& child, children)
@@ -261,20 +261,20 @@ namespace Scroom
 
     ////////////////////////////////////////////////////////////////////////
 
-    ProgressInterfaceDemultiplexer::Unsubscriber::Ptr
-    ProgressInterfaceDemultiplexer::Unsubscriber::create(ProgressInterfaceDemultiplexer::Ptr const& parent,
+    ProgressInterfaceBroadcaster::Unsubscriber::Ptr
+    ProgressInterfaceBroadcaster::Unsubscriber::create(ProgressInterfaceBroadcaster::Ptr const& parent,
                                                          ProgressInterface::Ptr const& child)
     {
-      return Ptr(new ProgressInterfaceDemultiplexer::Unsubscriber(parent, child));
+      return Ptr(new ProgressInterfaceBroadcaster::Unsubscriber(parent, child));
     }
 
-    ProgressInterfaceDemultiplexer::Unsubscriber::Unsubscriber(ProgressInterfaceDemultiplexer::Ptr const& parent,
+    ProgressInterfaceBroadcaster::Unsubscriber::Unsubscriber(ProgressInterfaceBroadcaster::Ptr const& parent,
                                                                ProgressInterface::Ptr const& child)
       : parent(parent), child(child)
     {
     }
     
-    ProgressInterfaceDemultiplexer::Unsubscriber::~Unsubscriber()
+    ProgressInterfaceBroadcaster::Unsubscriber::~Unsubscriber()
     {
       parent->unsubscribe(child);
     }

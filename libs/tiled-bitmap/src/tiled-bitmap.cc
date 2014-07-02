@@ -142,7 +142,7 @@ TiledBitmap::Ptr TiledBitmap::create(int bitmapWidth, int bitmapHeight, LayerSpe
 
 TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
   :bitmapWidth(bitmapWidth), bitmapHeight(bitmapHeight), ls(ls), tileCount(0), tileFinishedCount(0),
-   fileOperation(), demultiplexer(Scroom::Utils::ProgressInterfaceDemultiplexer::create()), queue(ThreadPool::Queue::create())
+   fileOperation(), progressBroadcaster(Scroom::Utils::ProgressInterfaceBroadcaster::create()), queue(ThreadPool::Queue::create())
 {
 }
 
@@ -233,27 +233,27 @@ void TiledBitmap::connect(Layer* layer, Layer* prevLayer,
 
 void TiledBitmap::setIdle()
 {
-  demultiplexer->setIdle();
+  progressBroadcaster->setIdle();
 }
 
 void TiledBitmap::setWaiting(double progress)
 {
-  demultiplexer->setWaiting(progress);
+  progressBroadcaster->setWaiting(progress);
 }
 
 void TiledBitmap::setWorking(double progress)
 {
-  demultiplexer->setWorking(progress);
+  progressBroadcaster->setWorking(progress);
 }
 
 void TiledBitmap::setWorking(int done, int total)
 {
-  demultiplexer->setWorking(done, total);
+  progressBroadcaster->setWorking(done, total);
 }
 
 void TiledBitmap::setFinished()
 {
-  demultiplexer->setFinished();
+  progressBroadcaster->setFinished();
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -621,7 +621,7 @@ void TiledBitmap::open(ViewInterface::WeakPtr viewInterface)
   boost::mutex::scoped_lock lock(viewDataMutex);
   TiledBitmapViewData::Ptr vd = TiledBitmapViewData::create(viewInterface);
   viewData[viewInterface] = vd;
-  vd->token.add(demultiplexer->subscribe(vd));
+  vd->token.add(progressBroadcaster->subscribe(vd));
   lock.unlock();
   
   BOOST_FOREACH(Layer* l, layers)
@@ -639,7 +639,7 @@ void TiledBitmap::close(ViewInterface::WeakPtr vi)
   
   boost::mutex::scoped_lock lock(viewDataMutex);
   TiledBitmapViewData::Ptr vd = viewData[vi];
-  // Yuk. Demultiplexer has a reference to viewData, so erasing it
+  // Yuk. ProgressBroadcaster has a reference to viewData, so erasing it
   // from the map isn't enough.
   vd->token.reset();
   viewData.erase(vi);

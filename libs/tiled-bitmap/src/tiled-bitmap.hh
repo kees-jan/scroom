@@ -82,7 +82,7 @@ private:
   boost::mutex tileFinishedMutex;
   int tileFinishedCount;
   FileOperation::Ptr fileOperation;
-  Scroom::Utils::ProgressInterfaceDemultiplexer::Ptr demultiplexer;
+  Scroom::Utils::ProgressInterfaceBroadcaster::Ptr progressBroadcaster;
   ThreadPool::Queue::Ptr queue;
   
 public:

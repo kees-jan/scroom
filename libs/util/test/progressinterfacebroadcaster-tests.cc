@@ -27,70 +27,70 @@ using namespace Scroom::Utils;
 
 //////////////////////////////////////////////////////////////
 
-BOOST_AUTO_TEST_SUITE(ProgressInterfaceDemultiplexer_Tests)
+BOOST_AUTO_TEST_SUITE(ProgressInterfaceBroadcaster_Tests)
 
 BOOST_AUTO_TEST_CASE(each_child_is_notified)
 {
-  ProgressInterfaceDemultiplexer::Ptr demultiplexer = ProgressInterfaceDemultiplexer::create();
-  BOOST_CHECK(demultiplexer);
+  ProgressInterfaceBroadcaster::Ptr progressBroadcaster = ProgressInterfaceBroadcaster::create();
+  BOOST_CHECK(progressBroadcaster);
 
   ProgressStateInterfaceStub::Ptr stub1 = ProgressStateInterfaceStub::create();
   BOOST_CHECK(stub1);
-  Stuff r1 = demultiplexer->subscribe(ProgressInterfaceFromProgressStateInterfaceForwarder::create(stub1));
+  Stuff r1 = progressBroadcaster->subscribe(ProgressInterfaceFromProgressStateInterfaceForwarder::create(stub1));
   BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub1->state);
 
   ProgressStateInterfaceStub::Ptr stub2 = ProgressStateInterfaceStub::create();
   BOOST_CHECK(stub2);
-  Stuff r2 = demultiplexer->subscribe(ProgressInterfaceFromProgressStateInterfaceForwarder::create(stub2));
+  Stuff r2 = progressBroadcaster->subscribe(ProgressInterfaceFromProgressStateInterfaceForwarder::create(stub2));
   BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub2->state);
 
-  demultiplexer->setWorking(0.0);
+  progressBroadcaster->setWorking(0.0);
   BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub1->state);
   BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub2->state);
   BOOST_CHECK_EQUAL(0.0, stub1->progress);
   BOOST_CHECK_EQUAL(0.0, stub2->progress);
 
-  demultiplexer->setWaiting(0.25);
+  progressBroadcaster->setWaiting(0.25);
   BOOST_CHECK_EQUAL(ProgressStateInterface::WAITING, stub1->state);
   BOOST_CHECK_EQUAL(ProgressStateInterface::WAITING, stub2->state);
   BOOST_CHECK_EQUAL(0.25, stub1->progress);
   BOOST_CHECK_EQUAL(0.25, stub2->progress);
   
-  demultiplexer->setWorking(0.5);
+  progressBroadcaster->setWorking(0.5);
   BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub1->state);
   BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub2->state);
   BOOST_CHECK_EQUAL(0.5, stub1->progress);
   BOOST_CHECK_EQUAL(0.5, stub2->progress);
   
-  demultiplexer->setFinished();
+  progressBroadcaster->setFinished();
   BOOST_CHECK_EQUAL(ProgressStateInterface::FINISHED, stub1->state);
   BOOST_CHECK_EQUAL(ProgressStateInterface::FINISHED, stub2->state);
 
-  demultiplexer->setIdle();
+  progressBroadcaster->setIdle();
   BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub1->state);
   BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub2->state);
 }
 
 BOOST_AUTO_TEST_CASE(late_children_receive_current_state)
 {
-  ProgressInterfaceDemultiplexer::Ptr demultiplexer = ProgressInterfaceDemultiplexer::create();
-  BOOST_CHECK(demultiplexer);
+  ProgressInterfaceBroadcaster::Ptr progressBroadcaster = ProgressInterfaceBroadcaster::create();
+  BOOST_CHECK(progressBroadcaster);
 
-  demultiplexer->setWorking(0.0);
+  progressBroadcaster->setWorking(0.0);
 
   ProgressStateInterfaceStub::Ptr stub1 = ProgressStateInterfaceStub::create();
   BOOST_CHECK(stub1);
-  Stuff r1 = demultiplexer->subscribe(ProgressInterfaceFromProgressStateInterfaceForwarder::create(stub1));
+  Stuff r1 = progressBroadcaster->subscribe(ProgressInterfaceFromProgressStateInterfaceForwarder::create(stub1));
   BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub1->state);
   BOOST_CHECK_EQUAL(0.0, stub1->progress);
 
-  demultiplexer->setWaiting(0.5);
+  progressBroadcaster->setWaiting(0.5);
   BOOST_CHECK_EQUAL(ProgressStateInterface::WAITING, stub1->state);
   BOOST_CHECK_EQUAL(0.5, stub1->progress);
 
   ProgressStateInterfaceStub::Ptr stub2 = ProgressStateInterfaceStub::create();
   BOOST_CHECK(stub2);
-  Stuff r2 = demultiplexer->subscribe(ProgressInterfaceFromProgressStateInterfaceForwarder::create(stub2));
+  Stuff r2 = progressBroadcaster->subscribe(ProgressInterfaceFromProgressStateInterfaceForwarder::create(stub2));
 
   BOOST_CHECK_EQUAL(ProgressStateInterface::WAITING, stub2->state);
   BOOST_CHECK_EQUAL(0.5, stub2->progress);
@@ -98,20 +98,20 @@ BOOST_AUTO_TEST_CASE(late_children_receive_current_state)
 
 BOOST_AUTO_TEST_CASE(unsubscribed_children_stop_receiving_events)
 {
-  ProgressInterfaceDemultiplexer::Ptr demultiplexer = ProgressInterfaceDemultiplexer::create();
-  BOOST_CHECK(demultiplexer);
+  ProgressInterfaceBroadcaster::Ptr progressBroadcaster = ProgressInterfaceBroadcaster::create();
+  BOOST_CHECK(progressBroadcaster);
 
   ProgressStateInterfaceStub::Ptr stub1 = ProgressStateInterfaceStub::create();
   BOOST_CHECK(stub1);
-  Stuff r1 = demultiplexer->subscribe(ProgressInterfaceFromProgressStateInterfaceForwarder::create(stub1));
+  Stuff r1 = progressBroadcaster->subscribe(ProgressInterfaceFromProgressStateInterfaceForwarder::create(stub1));
   BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub1->state);
 
   ProgressStateInterfaceStub::Ptr stub2 = ProgressStateInterfaceStub::create();
   BOOST_CHECK(stub2);
-  Stuff r2 = demultiplexer->subscribe(ProgressInterfaceFromProgressStateInterfaceForwarder::create(stub2));
+  Stuff r2 = progressBroadcaster->subscribe(ProgressInterfaceFromProgressStateInterfaceForwarder::create(stub2));
   BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub2->state);
 
-  demultiplexer->setWorking(0.0);
+  progressBroadcaster->setWorking(0.0);
   BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub1->state);
   BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub2->state);
   BOOST_CHECK_EQUAL(0.0, stub1->progress);
@@ -119,7 +119,7 @@ BOOST_AUTO_TEST_CASE(unsubscribed_children_stop_receiving_events)
 
   r1.reset();
 
-  demultiplexer->setWaiting(0.25);
+  progressBroadcaster->setWaiting(0.25);
   BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub1->state);
   BOOST_CHECK_EQUAL(0.0, stub1->progress);
   BOOST_CHECK_EQUAL(ProgressStateInterface::WAITING, stub2->state);
@@ -127,7 +127,7 @@ BOOST_AUTO_TEST_CASE(unsubscribed_children_stop_receiving_events)
 
   r2.reset();
   
-  demultiplexer->setWorking(0.5);
+  progressBroadcaster->setWorking(0.5);
   BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub1->state);
   BOOST_CHECK_EQUAL(0.0, stub1->progress);
   BOOST_CHECK_EQUAL(ProgressStateInterface::WAITING, stub2->state);

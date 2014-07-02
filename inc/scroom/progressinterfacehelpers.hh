@@ -128,10 +128,10 @@ namespace Scroom
       };
     }
 
-    class ProgressInterfaceDemultiplexer : virtual public Base, public ProgressInterface
+    class ProgressInterfaceBroadcaster : virtual public Base, public ProgressInterface
     {
     public:
-      typedef boost::shared_ptr<ProgressInterfaceDemultiplexer> Ptr;
+      typedef boost::shared_ptr<ProgressInterfaceBroadcaster> Ptr;
 
     private:
       class Unsubscriber
@@ -140,14 +140,14 @@ namespace Scroom
         typedef boost::shared_ptr<Unsubscriber> Ptr;
 
       private:
-        ProgressInterfaceDemultiplexer::Ptr parent;
+        ProgressInterfaceBroadcaster::Ptr parent;
         ProgressInterface::Ptr child;
         
       private:
-        Unsubscriber(ProgressInterfaceDemultiplexer::Ptr const& parent, ProgressInterface::Ptr const& child);
+        Unsubscriber(ProgressInterfaceBroadcaster::Ptr const& parent, ProgressInterface::Ptr const& child);
         
       public:
-        static Ptr create(ProgressInterfaceDemultiplexer::Ptr const& parent, ProgressInterface::Ptr const& child);
+        static Ptr create(ProgressInterfaceBroadcaster::Ptr const& parent, ProgressInterface::Ptr const& child);
         ~Unsubscriber();
       };
 
@@ -162,7 +162,7 @@ namespace Scroom
       static Ptr create();
 
     private:
-      ProgressInterfaceDemultiplexer();
+      ProgressInterfaceBroadcaster();
 
       void unsubscribe(ProgressInterface::Ptr const& child);
 
