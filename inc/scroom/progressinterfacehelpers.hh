@@ -50,9 +50,7 @@ namespace Scroom
 
       virtual ~ProgressStateInterface() {}
   
-      virtual void setState(State s)=0;
-      virtual void setProgress(double progress)=0;
-      virtual void setProgress(int done, int total)=0;
+      virtual void setProgress(State s, double progress=0.0)=0;
     };
 
     class ProgressInterfaceFromProgressStateInterface : public ProgressInterface, protected ProgressStateInterface
@@ -64,7 +62,6 @@ namespace Scroom
       virtual void setIdle();
       virtual void setWaiting(double progress=0.0);
       virtual void setWorking(double progress);
-      virtual void setWorking(int done, int total);
       virtual void setFinished();
     };
     
@@ -84,23 +81,13 @@ namespace Scroom
 
     protected:
       // ProgressStateInterface //////////////////////////////////////////////
-      virtual void setState(State s);
-      virtual void setProgress(double progress);
-      virtual void setProgress(int done, int total);
-
+      virtual void setProgress(State s, double progress=0.0);
     };
 
     class ProgressStateInterfaceFromProgressInterface : public ProgressStateInterface, protected ProgressInterface
     {
-    private:
-      double progress;
-      
     public:
-      ProgressStateInterfaceFromProgressInterface();
-      
-      virtual void setState(State s);
-      virtual void setProgress(double progress);
-      virtual void setProgress(int done, int total);
+      virtual void setProgress(State s, double progress=0.0);
     };
     
     class ProgressStateInterfaceFromProgressInterfaceForwarder : public ProgressStateInterfaceFromProgressInterface
@@ -121,7 +108,6 @@ namespace Scroom
       virtual void setIdle();
       virtual void setWaiting(double progress=0.0);
       virtual void setWorking(double progress);
-      virtual void setWorking(int done, int total);
       virtual void setFinished();
     };
 
@@ -146,9 +132,7 @@ namespace Scroom
         
       protected:
         // ProgressStateInterface //////////////////////////////////////////////
-        virtual void setState(State s);
-        virtual void setProgress(double progress);
-        virtual void setProgress(int done, int total);
+        virtual void setProgress(State s, double progress=0.0);
       };
     }
 
@@ -198,7 +182,6 @@ namespace Scroom
       virtual void setIdle();
       virtual void setWaiting(double progress=0.0);
       virtual void setWorking(double progress);
-      virtual void setWorking(int done, int total);
       virtual void setFinished();
 
     };

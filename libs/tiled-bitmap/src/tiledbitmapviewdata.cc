@@ -183,11 +183,6 @@ void TiledBitmapViewData::setWorking(double progress)
   progressInterface->setWorking(progress);
 }
 
-void TiledBitmapViewData::setWorking(int done, int total)
-{
-  progressInterface->setWorking(done, total);
-}
-
 void TiledBitmapViewData::setFinished()
 {
   progressInterface->setFinished();

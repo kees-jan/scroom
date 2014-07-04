@@ -42,7 +42,6 @@ public:
   virtual void setIdle() {}
   virtual void setWaiting(double) {}
   virtual void setWorking(double) {}
-  virtual void setWorking(int,int) {}
   virtual void setFinished();
 };
 

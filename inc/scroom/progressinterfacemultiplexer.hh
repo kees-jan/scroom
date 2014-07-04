@@ -67,9 +67,7 @@ namespace Scroom
         static Ptr create(ProgressInterfaceMultiplexer::Ptr parent, ChildData::Ptr data);
         
         // ProgressStateInterface ///////////////////////////////////////////////////
-        virtual void setState(State s);
-        virtual void setProgress(double d);
-        virtual void setProgress(int done, int total);
+        virtual void setProgress(State s, double progress=0.0);
       };
 
       friend class Child;

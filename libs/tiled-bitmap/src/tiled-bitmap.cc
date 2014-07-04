@@ -246,11 +246,6 @@ void TiledBitmap::setWorking(double progress)
   progressBroadcaster->setWorking(progress);
 }
 
-void TiledBitmap::setWorking(int done, int total)
-{
-  progressBroadcaster->setWorking(done, total);
-}
-
 void TiledBitmap::setFinished()
 {
   progressBroadcaster->setFinished();
@@ -666,7 +661,7 @@ void TiledBitmap::tileFinished(TileInternal::Ptr tile)
   else
   {
     gdk_threads_enter();
-    setWorking(tileFinishedCount, tileCount);
+    setWorking(1.0*tileFinishedCount/tileCount);
     if(tileFinishedCount==tileCount)
     {
       setFinished();

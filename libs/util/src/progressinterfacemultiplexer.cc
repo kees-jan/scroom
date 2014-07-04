@@ -43,21 +43,11 @@ ProgressInterfaceMultiplexer::Child::Ptr ProgressInterfaceMultiplexer::Child::cr
   return Ptr(new Child(parent, data));
 }
 
-void ProgressInterfaceMultiplexer::Child::setState(State state)
+void ProgressInterfaceMultiplexer::Child::setProgress(State state, double progress)
 {
   data->state = state;
-  parent->updateProgressState();
-}
-
-void ProgressInterfaceMultiplexer::Child::setProgress(double progress)
-{
   data->progress = progress;
   parent->updateProgressState();
-}
-
-void ProgressInterfaceMultiplexer::Child::setProgress(int done, int total)
-{
-  setProgress(1.0*done/total);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -113,7 +103,6 @@ void ProgressInterfaceMultiplexer::updateProgressState()
       break;
     }
 
-    parent->setProgress(progress/workers);
-    parent->setState(state);
+    parent->setProgress(state, progress/workers);
   }
 }

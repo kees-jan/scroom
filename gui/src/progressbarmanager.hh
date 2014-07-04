@@ -50,7 +50,6 @@ public:
   virtual void setIdle();
   virtual void setWaiting(double progress=0.0);
   virtual void setWorking(double progress);
-  virtual void setWorking(int done, int total);
   virtual void setFinished();
 };
 

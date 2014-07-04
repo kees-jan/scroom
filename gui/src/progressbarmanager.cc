@@ -170,12 +170,9 @@ void ProgressBarManager::setWaiting(double)
 void ProgressBarManager::setWorking(double progress)
 {
   stopWaiting();
-  gtk_progress_bar_set_fraction(progressBar, progress);
-}
 
-void ProgressBarManager::setWorking(int done, int total)
-{
-  setWorking(double(done)/total);
+  Scroom::GtkHelpers::TakeGdkLock gdkLock;
+  gtk_progress_bar_set_fraction(progressBar, progress);
 }
 
 void ProgressBarManager::setFinished()

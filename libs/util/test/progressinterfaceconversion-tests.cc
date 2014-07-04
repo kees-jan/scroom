@@ -53,7 +53,7 @@ BOOST_AUTO_TEST_CASE(test_ProgressInterfaceFromProgressStateInterface)
   BOOST_CHECK_EQUAL(ProgressStateInterface::FINISHED, stub->state);
   BOOST_CHECK_EQUAL(1.0, stub->progress);
   
-  pi->setWorking(3,4);
+  pi->setWorking(0.75);
   BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub->state);
   BOOST_CHECK_EQUAL(0.75, stub->progress);
   
@@ -77,27 +77,27 @@ BOOST_AUTO_TEST_CASE(test_ProgressStateInterfaceFromProgressInterface)
 
   stub->progress = 0.33;
 
-  ps->setState(ProgressStateInterface::WAITING);
+  ps->setProgress(ProgressStateInterface::WAITING);
   BOOST_CHECK_EQUAL(ProgressStateInterface::WAITING, stub->state);
   BOOST_CHECK_EQUAL(0.0, stub->progress);
   
-  ps->setProgress(0.27);
+  ps->setProgress(ProgressStateInterface::WORKING, 0.27);
   BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub->state);
   BOOST_CHECK_EQUAL(0.27, stub->progress);
 
-  ps->setState(ProgressStateInterface::WAITING);
+  ps->setProgress(ProgressStateInterface::WAITING, 0.27);
   BOOST_CHECK_EQUAL(ProgressStateInterface::WAITING, stub->state);
   BOOST_CHECK_EQUAL(0.27, stub->progress);
   
-  ps->setState(ProgressStateInterface::FINISHED);
+  ps->setProgress(ProgressStateInterface::FINISHED);
   BOOST_CHECK_EQUAL(ProgressStateInterface::FINISHED, stub->state);
   BOOST_CHECK_EQUAL(1.0, stub->progress);
   
-  ps->setProgress(3,4);
+  ps->setProgress(ProgressStateInterface::WORKING, 0.75);
   BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub->state);
   BOOST_CHECK_EQUAL(0.75, stub->progress);
   
-  ps->setState(ProgressStateInterface::IDLE);
+  ps->setProgress(ProgressStateInterface::IDLE);
   BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
 }
 

@@ -42,16 +42,16 @@ BOOST_AUTO_TEST_CASE(each_subinterface_contributes_proportionally)
   ProgressStateInterface::Ptr p1 = multiplexer->createProgressInterface();
   ProgressStateInterface::Ptr p2 = multiplexer->createProgressInterface();
 
-  p1->setState(ProgressStateInterface::WORKING);
+  p1->setProgress(ProgressStateInterface::WORKING);
   BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub->state);
   BOOST_CHECK_EQUAL(0.0, stub->progress);
-  p2->setState(ProgressStateInterface::WORKING);
+  p2->setProgress(ProgressStateInterface::WORKING);
   BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub->state);
   BOOST_CHECK_EQUAL(0.0, stub->progress);
-  p1->setState(ProgressStateInterface::FINISHED);
+  p1->setProgress(ProgressStateInterface::FINISHED);
   BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub->state);
   BOOST_CHECK_EQUAL(0.5, stub->progress);
-  p2->setState(ProgressStateInterface::FINISHED);
+  p2->setProgress(ProgressStateInterface::FINISHED);
   BOOST_CHECK_EQUAL(ProgressStateInterface::FINISHED, stub->state);
 }
 

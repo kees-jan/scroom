@@ -39,9 +39,7 @@ private:
 
 public:
   // ProgressStateInterface
-  virtual void setState(State s);
-  virtual void setProgress(double d);
-  virtual void setProgress(int done, int total);
+  virtual void setProgress(State s, double d);
 };
 
 

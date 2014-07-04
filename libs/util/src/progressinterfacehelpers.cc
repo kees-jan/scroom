@@ -31,31 +31,22 @@ namespace Scroom
 
     void ProgressInterfaceFromProgressStateInterface::setIdle()
     {
-      setState(IDLE);
+      setProgress(IDLE);
     }
 
     void ProgressInterfaceFromProgressStateInterface::setWaiting(double progress)
     {
-      setState(WAITING);
-      setProgress(progress);
+      setProgress(WAITING, progress);
     }
 
     void ProgressInterfaceFromProgressStateInterface::setWorking(double progress)
     {
-      setState(WORKING);
-      setProgress(progress);
-    }
-
-    void ProgressInterfaceFromProgressStateInterface::setWorking(int done, int total)
-    {
-      setState(WORKING);
-      setProgress(done, total);
+      setProgress(WORKING, progress);
     }
 
     void ProgressInterfaceFromProgressStateInterface::setFinished()
     {
-      setState(FINISHED);
-      setProgress(1.0);
+      setProgress(FINISHED, 1.0);
     }
 
     ////////////////////////////////////////////////////////////////////////
@@ -70,28 +61,14 @@ namespace Scroom
       return Ptr(new ProgressInterfaceFromProgressStateInterfaceForwarder(child));
     }
 
-    void ProgressInterfaceFromProgressStateInterfaceForwarder::setState(State s)
+    void ProgressInterfaceFromProgressStateInterfaceForwarder::setProgress(State s, double progress)
     {
-      child->setState(s);
-    }
-
-    void ProgressInterfaceFromProgressStateInterfaceForwarder::setProgress(double progress)
-    {
-      child->setProgress(progress);
-    }
-
-    void ProgressInterfaceFromProgressStateInterfaceForwarder::setProgress(int done, int total)
-    {
-      child->setProgress(done, total);
+      child->setProgress(s, progress);
     }
 
     ////////////////////////////////////////////////////////////////////////
 
-    ProgressStateInterfaceFromProgressInterface::ProgressStateInterfaceFromProgressInterface()
-      : progress(0.0)
-    {}
-      
-    void ProgressStateInterfaceFromProgressInterface::setState(State s)
+    void ProgressStateInterfaceFromProgressInterface::setProgress(State s, double progress)
     {
       switch(s)
       {
@@ -108,18 +85,6 @@ namespace Scroom
         setFinished();
         break;
       }
-    }
-
-    void ProgressStateInterfaceFromProgressInterface::setProgress(double progress_)
-    {
-      progress = progress_;
-      setWorking(progress);
-    }
-    
-    void ProgressStateInterfaceFromProgressInterface::setProgress(int done, int total)
-    {
-      progress = 1.0 * done / total;
-      setWorking(done, total);
     }
 
     ////////////////////////////////////////////////////////////////////////
@@ -147,11 +112,6 @@ namespace Scroom
     void ProgressStateInterfaceFromProgressInterfaceForwarder::setWorking(double progress)
     {
       child->setWorking(progress);
-    }
-
-    void ProgressStateInterfaceFromProgressInterfaceForwarder::setWorking(int done, int total)
-    {
-      child->setWorking(done, total);
     }
 
     void ProgressStateInterfaceFromProgressInterfaceForwarder::setFinished()
@@ -183,21 +143,11 @@ namespace Scroom
         }
       }
 
-      void ProgressStore::setState(State s)
+      void ProgressStore::setProgress(State s, double p)
       {
         state=s;
-      }
-      
-      void ProgressStore::setProgress(double p)
-      {
         progress = p;
       }
-        
-      void ProgressStore::setProgress(int done, int total)
-      {
-        setProgress(double(done)/total);
-      }
-      
     }
     ////////////////////////////////////////////////////////////////////////
 
@@ -245,11 +195,6 @@ namespace Scroom
       boost::mutex::scoped_lock lock(mut);
       BOOST_FOREACH(ProgressInterface::Ptr const& child, children)
         child->setWorking(progress);
-    }
-
-    void ProgressInterfaceBroadcaster::setWorking(int done, int total)
-    {
-      setWorking(double(done)/total);
     }
 
     void ProgressInterfaceBroadcaster::setFinished()
