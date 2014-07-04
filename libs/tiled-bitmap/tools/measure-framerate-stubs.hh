@@ -22,7 +22,7 @@
 #include <scroom/viewinterface.hh>
 #include <scroom/tiledbitmapinterface.hh>
 
-class ProgressInterfaceStub : public ProgressStateInterface
+class ProgressInterfaceStub : public ProgressInterface
 {
 public:
   typedef boost::shared_ptr<ProgressInterfaceStub> Ptr;
@@ -38,10 +38,12 @@ public:
 
   bool isFinished();
 
-  // ProgressStateInterface ///////////////////////////////////////////////////
-  virtual void setState(State state);      
-  virtual void setProgress(double)   {}
-  virtual void setProgress(int, int) {}
+  // ProgressInterface ///////////////////////////////////////////////////
+  virtual void setIdle() {}
+  virtual void setWaiting(double) {}
+  virtual void setWorking(double) {}
+  virtual void setWorking(int,int) {}
+  virtual void setFinished();
 };
 
 class ViewInterfaceStub : public ViewInterface
@@ -49,11 +51,11 @@ class ViewInterfaceStub : public ViewInterface
 public:
   typedef boost::shared_ptr<ViewInterfaceStub> Ptr;
 private:
-  ProgressStateInterface::Ptr pi;
+  ProgressInterface::Ptr pi;
 private:
-  ViewInterfaceStub(ProgressStateInterface::Ptr pi);
+  ViewInterfaceStub(ProgressInterface::Ptr pi);
 public:
-  static Ptr create(ProgressStateInterface::Ptr pi);
+  static Ptr create(ProgressInterface::Ptr pi);
   virtual void invalidate()                           {}
   virtual ProgressInterface::Ptr getProgressInterface();
   virtual void addSideWidget(std::string, GtkWidget*) {}

@@ -32,9 +32,9 @@ ProgressInterfaceStub::Ptr ProgressInterfaceStub::create()
   return Ptr(new ProgressInterfaceStub());
 }
 
-void ProgressInterfaceStub::setState(State state)
+void ProgressInterfaceStub::setFinished()
 {
-  finished = state == FINISHED;
+  finished = true;
 }
 
 bool ProgressInterfaceStub::isFinished()
@@ -42,18 +42,18 @@ bool ProgressInterfaceStub::isFinished()
   return finished;
 }
 
-ViewInterfaceStub::ViewInterfaceStub(ProgressStateInterface::Ptr pi)
+ViewInterfaceStub::ViewInterfaceStub(ProgressInterface::Ptr pi)
   :pi(pi)
 {}
 
-ViewInterfaceStub::Ptr ViewInterfaceStub::create(ProgressStateInterface::Ptr pi)
+ViewInterfaceStub::Ptr ViewInterfaceStub::create(ProgressInterface::Ptr pi)
 {
   return Ptr(new ViewInterfaceStub(pi));
 }
 
 ProgressInterface::Ptr ViewInterfaceStub::getProgressInterface()
 {
-  return Scroom::Utils::ProgressInterfaceFromProgressStateInterfaceForwarder::create(pi);
+  return pi;
 }
 
 void Source1Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<Tile::Ptr>& tiles)
