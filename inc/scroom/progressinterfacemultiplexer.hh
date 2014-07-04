@@ -22,6 +22,7 @@
 #include <boost/shared_ptr.hpp>
 
 #include <scroom/progressinterface.hh>
+#include <scroom/progressinterfacehelpers.hh>
 #include <scroom/utilities.hh>
 
 namespace Scroom

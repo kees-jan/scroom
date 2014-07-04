@@ -19,9 +19,9 @@
 #ifndef PROGRESSSTATEINTERFACESTUB_HH
 #define PROGRESSSTATEINTERFACESTUB_HH
 
-#include <scroom/progressinterface.hh>
+#include <scroom/progressinterfacehelpers.hh>
 
-class ProgressStateInterfaceStub : public ProgressStateInterface
+class ProgressStateInterfaceStub : public Scroom::Utils::ProgressStateInterface
 {
 public:
   typedef boost::shared_ptr<ProgressStateInterfaceStub> Ptr;

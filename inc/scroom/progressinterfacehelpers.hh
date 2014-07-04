@@ -31,6 +31,30 @@ namespace Scroom
 {
   namespace Utils
   {
+    /**
+     * Alternative interface used for reporting progress information
+     */
+    class ProgressStateInterface
+    {
+    public:
+      typedef boost::shared_ptr<ProgressStateInterface> Ptr;
+      typedef boost::weak_ptr<ProgressStateInterface> WeakPtr;
+
+      typedef enum
+        {
+          IDLE,
+          WAITING,
+          WORKING,
+          FINISHED
+        } State;
+
+      virtual ~ProgressStateInterface() {}
+  
+      virtual void setState(State s)=0;
+      virtual void setProgress(double progress)=0;
+      virtual void setProgress(int done, int total)=0;
+    };
+
     class ProgressInterfaceFromProgressStateInterface : public ProgressInterface, protected ProgressStateInterface
     {
     public:
