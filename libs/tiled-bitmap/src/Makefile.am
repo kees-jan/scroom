@@ -2,6 +2,7 @@ AM_CPPFLAGS = @TILEDBITMAP_CFLAGS@ -I $(top_srcdir)/inc @BOOST_FUTURES_CPPFLAGS@
 
 lib_LTLIBRARIES = libstiledbitmap.la
 libstiledbitmap_la_SOURCES = \
+	bitmap-helpers.cc \
 	layer.cc layer.hh \
 	layercoordinator.cc layercoordinator.hh \
 	layeroperations.cc \

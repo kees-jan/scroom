@@ -1,6 +1,7 @@
 nobase_include_HEADERS = \
 	scroom/assertions.hh \
 	scroom/async-deleter.hh \
+	scroom/bitmap-helpers.hh \
 	scroom/blockallocator.hh \
 	scroom/bookkeeping.hh \
 	scroom/colormappable.hh \
