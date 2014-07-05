@@ -80,7 +80,7 @@ std::list<GtkFileFilter*> Tiff::getFilters()
   
 PresentationInterface::Ptr Tiff::open(const std::string& fileName)
 {
-  TiffPresentation::Ptr p = TiffPresentation::Ptr(new TiffPresentation());
+  TiffPresentationWrapper::Ptr p = TiffPresentationWrapper::create();
   if(!p->load(fileName))
   {
     p.reset();

@@ -78,15 +78,15 @@ class LoadOperation : public FileOperation
 {
 private:
   Layer* target;
-  SourcePresentation* thePresentation;
+  SourcePresentation::Ptr thePresentation;
   Scroom::Semaphore done;
   ThreadPool::WeakQueue::Ptr queue;
 
 private:
-  LoadOperation(ThreadPool::WeakQueue::Ptr queue, Layer* l, SourcePresentation* sp,
+  LoadOperation(ThreadPool::WeakQueue::Ptr queue, Layer* l, SourcePresentation::Ptr sp,
                 TiledBitmap::Ptr parent);
 public:
-  static Ptr create(ThreadPool::WeakQueue::Ptr queue, Layer* l, SourcePresentation* sp,
+  static Ptr create(ThreadPool::WeakQueue::Ptr queue, Layer* l, SourcePresentation::Ptr sp,
                     TiledBitmap::Ptr parent);
   
   virtual ~LoadOperation() {}
@@ -97,14 +97,14 @@ public:
 };
 
 FileOperation::Ptr LoadOperation::create(ThreadPool::WeakQueue::Ptr queue,
-                                         Layer* l, SourcePresentation* sp,
+                                         Layer* l, SourcePresentation::Ptr sp,
                                          TiledBitmap::Ptr parent)
 {
   return FileOperation::Ptr(new LoadOperation(queue, l, sp, parent));
 }
                                          
 LoadOperation::LoadOperation(ThreadPool::WeakQueue::Ptr queue,
-                             Layer* l, SourcePresentation* sp,
+                             Layer* l, SourcePresentation::Ptr sp,
                              TiledBitmap::Ptr parent)
   : FileOperation(parent), target(l), thePresentation(sp), queue(queue)
 {
@@ -254,7 +254,7 @@ void TiledBitmap::setFinished()
 ////////////////////////////////////////////////////////////////////////
 // TiledBitmapInterface
 
-void TiledBitmap::setSource(SourcePresentation* sp)
+void TiledBitmap::setSource(SourcePresentation::Ptr sp)
 {
   if(!fileOperation)
   {

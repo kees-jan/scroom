@@ -111,7 +111,7 @@ public:
   // TiledBitmapInterface
 
 public:
-  virtual void setSource(SourcePresentation* sp);
+  virtual void setSource(SourcePresentation::Ptr sp);
   virtual void open(ViewInterface::WeakPtr viewInterface);
   virtual void close(ViewInterface::WeakPtr vi);
   virtual void redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);

@@ -44,16 +44,16 @@ private:
   DummyColormapProvider::Ptr colormapProvider;
   LayerSpec ls;
   TiledBitmapInterface::Ptr tbi;
-  SourcePresentation* sp;
+  SourcePresentation::Ptr sp;
   int zoom;
 
 private:
   TestData(DummyColormapProvider::Ptr colormapProvider, const LayerSpec& ls,
-           TiledBitmapInterface::Ptr tbi, SourcePresentation* sp, int zoom);
+           TiledBitmapInterface::Ptr tbi, SourcePresentation::Ptr sp, int zoom);
   
 public:
   static Ptr create(DummyColormapProvider::Ptr colormapProvider, const LayerSpec& ls,
-                    TiledBitmapInterface::Ptr tbi, SourcePresentation* sp, int zoom);
+                    TiledBitmapInterface::Ptr tbi, SourcePresentation::Ptr sp, int zoom);
 
   ~TestData();
 

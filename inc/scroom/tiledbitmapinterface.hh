@@ -208,9 +208,10 @@ typedef std::vector<LayerOperations::Ptr> LayerSpec;
 class SourcePresentation
 {
 public:
-  virtual ~SourcePresentation()
-  {
-  }
+  typedef boost::shared_ptr<SourcePresentation> Ptr;
+
+public:
+  virtual ~SourcePresentation() {}
 
   /**
    * Provide bitmap data
@@ -261,7 +262,7 @@ public:
    *
    * @param sp source of the bitmap data
    */
-  virtual void setSource(SourcePresentation* sp)=0;
+  virtual void setSource(SourcePresentation::Ptr sp)=0;
 
   /**
    * Redraw a portion of the bitmap.

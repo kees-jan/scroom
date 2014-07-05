@@ -66,9 +66,6 @@ public:
 class Source1Bpp : public SourcePresentation
 {
 public:
-  virtual ~Source1Bpp()
-  {}
-
   virtual void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles);
   virtual void done() {};
 };
@@ -76,9 +73,6 @@ public:
 class Source2Bpp : public SourcePresentation
 {
 public:
-  virtual ~Source2Bpp()
-  {}
-
   virtual void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles);
   virtual void done() {};
 };
@@ -86,9 +80,6 @@ public:
 class Source4Bpp : public SourcePresentation
 {
 public:
-  virtual ~Source4Bpp()
-  {}
-
   virtual void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles);
   virtual void done() {};
 };
@@ -96,9 +87,6 @@ public:
 class Source8Bpp : public SourcePresentation
 {
 public:
-  virtual ~Source8Bpp()
-  {}
-
   virtual void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles);
   virtual void done() {};
 };

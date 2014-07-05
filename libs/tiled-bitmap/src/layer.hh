@@ -47,7 +47,7 @@ public:
 
   TileInternal::Ptr getTile(int i, int j);
   TileInternalLine& getTileLine(int j);
-  void fetchData(SourcePresentation* sp, ThreadPool::WeakQueue::Ptr queue);
+  void fetchData(SourcePresentation::Ptr sp, ThreadPool::WeakQueue::Ptr queue);
 
 public:
   int getWidth()

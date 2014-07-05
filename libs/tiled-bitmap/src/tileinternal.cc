@@ -54,8 +54,8 @@ Tile::Ptr TileInternal::getTileSync()
 {
   Tile::Ptr result;
   {
-	  boost::unique_lock<boost::mutex> lock(tileData);
-	  result = tile.lock();
+    boost::mutex::scoped_lock lock(tileData);
+    result = tile.lock();
   }
   if(!result)
   {
@@ -64,16 +64,16 @@ Tile::Ptr TileInternal::getTileSync()
     ConstTile::Ptr temp = getConstTileSync();
     if(!temp)
     {
-    	printf("PANIC: getConstTileSync() didn't return a tile!");
+      printf("PANIC: getConstTileSync() didn't return a tile!");
     }
     {
       // Check again. Maybe someone else has beaten us to it...
-  	  boost::unique_lock<boost::mutex> lock(tileData);
-  	  result = tile.lock();
+      boost::mutex::scoped_lock lock(tileData);
+      result = tile.lock();
     }
     if(!result)
     {
-      boost::unique_lock<boost::mutex> lock(tileData);
+      boost::mutex::scoped_lock lock(tileData);
       result = Tile::Ptr(new Tile(TILESIZE, TILESIZE, bpp, data->get()));
       tile = result;
     }
@@ -94,8 +94,8 @@ Scroom::Utils::Stuff TileInternal::initialize()
   
   bool didInitialize = false;
   {
-    boost::unique_lock<boost::mutex> stateLock(stateData);
-    boost::unique_lock<boost::mutex> dataLock(tileData);
+    boost::mutex::scoped_lock stateLock(stateData);
+    boost::mutex::scoped_lock dataLock(tileData);
 
     if(state == TSI_UNINITIALIZED)
     {
@@ -131,12 +131,12 @@ ConstTile::Ptr TileInternal::do_load()
 
   ConstTile::Ptr result;
   {
-    boost::unique_lock<boost::mutex> lock(stateData);
+    boost::mutex::scoped_lock lock(stateData);
     cleanupState();
     state = TSI_LOADING_SYNCHRONOUSLY;
   }
   {
-    boost::unique_lock<boost::mutex> lock(tileData);
+    boost::mutex::scoped_lock lock(tileData);
     result = constTile.lock(); // This ought to fail
     if(!result)
     {
@@ -146,7 +146,7 @@ ConstTile::Ptr TileInternal::do_load()
     }
   }
   {
-    boost::unique_lock<boost::mutex> lock(stateData);
+    boost::mutex::scoped_lock lock(stateData);
     cleanupState();
     state = TSI_NORMAL;
     if(didLoad)
@@ -210,7 +210,7 @@ void TileInternal::observerAdded(TileLoadingObserver::Ptr observer, Scroom::Book
 
   if(!result)
   {
-    boost::unique_lock<boost::mutex> lock(stateData);
+    boost::mutex::scoped_lock lock(stateData);
     cleanupState();
     switch(state)
     {

@@ -31,7 +31,8 @@
 
 typedef struct tiff TIFF;
 
-class TiffPresentation : public PresentationInterface, public SourcePresentation, public Colormappable, public ColormapProvider
+class TiffPresentation : public PresentationInterface, public SourcePresentation, public Colormappable, public ColormapProvider,
+                         public virtual Scroom::Utils::Base, public Scroom::Utils::Counted<TiffPresentation>
 {
 public:
   typedef boost::shared_ptr<TiffPresentation> Ptr;
@@ -46,19 +47,30 @@ private:
   int height;
   int width;
   TiledBitmapInterface::Ptr tbi;
-  LayerSpec ls;
   int bpp;
   std::map<std::string, std::string> properties;
   Views views;
   Colormap::Ptr originalColormap;
   Colormap::Ptr colormap;
   
-public:
-
+private:
   TiffPresentation();
+  
+public:
   virtual ~TiffPresentation();
 
-  bool load(std::string fileName);
+  static Ptr create();
+
+  /**
+   * Called when this presentation should go away.
+   *
+   * Note that this doesn't happen automatically, since the
+   * TiledBitmapInterface has a reference to this presentation, via
+   * the LayerSpec, and possibly the SourcePresentation.
+   */
+  void destroy();
+
+  bool load(const std::string& fileName);
   
   ////////////////////////////////////////////////////////////////////////
   // PresentationInterface
@@ -94,6 +106,39 @@ public:
   ////////////////////////////////////////////////////////////////////////
 public:
   Colormap::Ptr getColormap();
+  
+};
+
+class TiffPresentationWrapper : public PresentationInterface, public Scroom::Utils::Counted<TiffPresentationWrapper>
+{
+public:
+  typedef boost::shared_ptr<TiffPresentationWrapper> Ptr;
+  
+private:
+  TiffPresentation::Ptr presentation;
+
+private: 
+  TiffPresentationWrapper();
+
+public:
+  static Ptr create();
+  
+  virtual ~TiffPresentationWrapper();
+
+  bool load(const std::string& fileName);
+  
+  ////////////////////////////////////////////////////////////////////////
+  // PresentationInterface
+  ////////////////////////////////////////////////////////////////////////
+
+  virtual GdkRectangle getRect();
+  virtual void open(ViewInterface::WeakPtr viewInterface);
+  virtual void redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);
+  virtual void close(ViewInterface::WeakPtr vi);
+  virtual bool getProperty(const std::string& name, std::string& value);
+  virtual bool isPropertyDefined(const std::string& name);
+  virtual std::string getTitle();
+
   
 };
 

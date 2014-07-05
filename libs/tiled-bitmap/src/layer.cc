@@ -35,7 +35,7 @@ private:
   int horTileCount;
   int verTileCount;
   int currentRow;
-  SourcePresentation* sp;
+  SourcePresentation::Ptr sp;
   ThreadPool::Ptr threadPool;
   ThreadPool::WeakQueue::Ptr queue;
   
@@ -43,7 +43,7 @@ public:
   DataFetcher(Layer* layer,
               int width, int height,
               int horTileCount, int verTileCount,
-              SourcePresentation* sp,
+              SourcePresentation::Ptr sp,
               ThreadPool::WeakQueue::Ptr queue);
 
   void operator()();
@@ -114,7 +114,7 @@ TileInternalLine& Layer::getTileLine(int j)
   }
 }
 
-void Layer::fetchData(SourcePresentation* sp, ThreadPool::WeakQueue::Ptr queue)
+void Layer::fetchData(SourcePresentation::Ptr sp, ThreadPool::WeakQueue::Ptr queue)
 {
   DataFetcher df(this,
                  width, height,
@@ -164,7 +164,7 @@ void Layer::close(ViewInterface::WeakPtr vi)
 DataFetcher::DataFetcher(Layer* layer,
                          int width, int height,
                          int horTileCount, int verTileCount,
-                         SourcePresentation* sp,
+                         SourcePresentation::Ptr sp,
                          ThreadPool::WeakQueue::Ptr queue)
   : layer(layer), width(width), height(height),
     horTileCount(horTileCount), verTileCount(verTileCount),

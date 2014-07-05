@@ -33,6 +33,11 @@ TiffPresentation::TiffPresentation()
   colormap = Colormap::createDefault(256);
 }
 
+TiffPresentation::Ptr TiffPresentation::create()
+{
+  return Ptr(new TiffPresentation());
+}
+
 TiffPresentation::~TiffPresentation()
 {
   printf("TiffPresentation: Destructing...\n");
@@ -44,10 +49,14 @@ TiffPresentation::~TiffPresentation()
   }
 
   tbi.reset();
-  ls.clear();
 }
 
-bool TiffPresentation::load(std::string fileName)
+void TiffPresentation::destroy()
+{
+  tbi.reset();
+}
+
+bool TiffPresentation::load(const std::string& fileName)
 {
   this->fileName = fileName;
   tif = TIFFOpen(fileName.c_str(), "r");
@@ -139,22 +148,22 @@ bool TiffPresentation::load(std::string fileName)
   colormap = originalColormap;
 
   printf("This bitmap has size %d*%d\n", width, height);
-  ls.clear();
+  LayerSpec ls;
 
   if (bpp == 2 || bpp == 4 || photometric == PHOTOMETRIC_PALETTE)
   {
-    ls.push_back(Operations::create(this, bpp));
-    ls.push_back(OperationsColormapped::create(this, bpp));
+    ls.push_back(Operations::create(shared_from_this<ColormapProvider>(), bpp));
+    ls.push_back(OperationsColormapped::create(shared_from_this<ColormapProvider>(), bpp));
     properties[COLORMAPPABLE_PROPERTY_NAME] = "";
   }
   else if (bpp == 1)
   {
-    ls.push_back(Operations1bpp::create(this));
-    ls.push_back(Operations8bpp::create(this));
+    ls.push_back(Operations1bpp::create(shared_from_this<ColormapProvider>()));
+    ls.push_back(Operations8bpp::create(shared_from_this<ColormapProvider>()));
   }
   else if (bpp == 8)
   {
-    ls.push_back(Operations8bpp::create(this));
+    ls.push_back(Operations8bpp::create(shared_from_this<ColormapProvider>()));
   }
   else
   {
@@ -163,7 +172,7 @@ bool TiffPresentation::load(std::string fileName)
   }
 
   tbi = createTiledBitmap(width, height, ls);
-  tbi->setSource(this);
+  tbi->setSource(shared_from_this<SourcePresentation>());
   return true;
 }
 
@@ -348,6 +357,60 @@ int TiffPresentation::getNumberOfColors()
 }
 
 ////////////////////////////////////////////////////////////////////////
-// Helpers
+// TiffPresentationWrapper
 ////////////////////////////////////////////////////////////////////////
+
+TiffPresentationWrapper::TiffPresentationWrapper()
+  : presentation(TiffPresentation::create())
+{}
+
+TiffPresentationWrapper::Ptr TiffPresentationWrapper::create()
+{
+  return Ptr(new TiffPresentationWrapper());
+}
+  
+TiffPresentationWrapper::~TiffPresentationWrapper()
+{
+  presentation->destroy();
+}
+
+bool TiffPresentationWrapper::load(const std::string& fileName)
+{
+  return presentation->load(fileName);
+}
+  
+GdkRectangle TiffPresentationWrapper::getRect()
+{
+  return presentation->getRect();
+}
+
+void TiffPresentationWrapper::open(ViewInterface::WeakPtr viewInterface)
+{
+  presentation->open(viewInterface);
+}
+
+void TiffPresentationWrapper::redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
+{
+  presentation->redraw(vi, cr, presentationArea, zoom);
+}
+
+void TiffPresentationWrapper::close(ViewInterface::WeakPtr vi)
+{
+  presentation->close(vi);
+}
+
+bool TiffPresentationWrapper::getProperty(const std::string& name, std::string& value)
+{
+  return presentation->getProperty(name, value);
+}
+
+bool TiffPresentationWrapper::isPropertyDefined(const std::string& name)
+{
+  return presentation->isPropertyDefined(name);
+}
+
+std::string TiffPresentationWrapper::getTitle()
+{
+  return presentation->getTitle();
+}
 

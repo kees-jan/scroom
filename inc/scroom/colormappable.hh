@@ -208,6 +208,9 @@ public:
 class ColormapProvider
 {
 public:
+  typedef boost::shared_ptr<ColormapProvider> Ptr;
+  
+public:
   virtual Colormap::Ptr getColormap()=0;
 
   virtual ~ColormapProvider() {}

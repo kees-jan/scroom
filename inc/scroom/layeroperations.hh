@@ -25,10 +25,10 @@
 class CommonOperations : public LayerOperations
 {
 protected:
-  ColormapProvider* colormapProvider;
+  ColormapProvider::Ptr colormapProvider;
 
 public:
-  CommonOperations(ColormapProvider* colormapProvider);
+  CommonOperations(ColormapProvider::Ptr colormapProvider);
   
   virtual ~CommonOperations()
   {}
@@ -53,8 +53,8 @@ public:
 class Operations1bpp : public CommonOperations
 {
 public:
-  static Ptr create(ColormapProvider* colormapProvider);
-  Operations1bpp(ColormapProvider* colormapProvider);
+  static Ptr create(ColormapProvider::Ptr colormapProvider);
+  Operations1bpp(ColormapProvider::Ptr colormapProvider);
   virtual ~Operations1bpp()
   {}
   
@@ -73,8 +73,8 @@ public:
 class Operations8bpp : public CommonOperations
 {
 public:
-  static Ptr create(ColormapProvider* colormapProvider);
-  Operations8bpp(ColormapProvider* colormapProvider);
+  static Ptr create(ColormapProvider::Ptr colormapProvider);
+  Operations8bpp(ColormapProvider::Ptr colormapProvider);
   virtual ~Operations8bpp()
   {}
   
@@ -99,8 +99,8 @@ protected:
   const unsigned pixelMask;
 
 public:
-  static Ptr create(ColormapProvider* colormapProvider, int bpp);
-  Operations(ColormapProvider* colormapProvider, int bpp);
+  static Ptr create(ColormapProvider::Ptr colormapProvider, int bpp);
+  Operations(ColormapProvider::Ptr colormapProvider, int bpp);
   
   virtual ~Operations()
   {}
@@ -120,8 +120,8 @@ public:
 class OperationsColormapped : public Operations
 {
 public:
-  static Ptr create(ColormapProvider* colormapProvider, int bpp);
-  OperationsColormapped(ColormapProvider* colormapProvider, int bpp);
+  static Ptr create(ColormapProvider::Ptr colormapProvider, int bpp);
+  OperationsColormapped(ColormapProvider::Ptr colormapProvider, int bpp);
 
   virtual ~OperationsColormapped()
   {}

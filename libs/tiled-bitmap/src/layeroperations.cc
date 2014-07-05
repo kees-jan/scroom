@@ -71,7 +71,7 @@ inline byte BitCountLut::lookup(byte index)
 ////////////////////////////////////////////////////////////////////////
 // CommonOperations
 
-CommonOperations::CommonOperations(ColormapProvider* colormapProvider)
+CommonOperations::CommonOperations(ColormapProvider::Ptr colormapProvider)
   : colormapProvider(colormapProvider)
 {
 }
@@ -226,12 +226,12 @@ void CommonOperations::draw(cairo_t* cr, const ConstTile::Ptr tile,
 ////////////////////////////////////////////////////////////////////////
 // Operations1bpp
 
-LayerOperations::Ptr Operations1bpp::create(ColormapProvider* colormapProvider)
+LayerOperations::Ptr Operations1bpp::create(ColormapProvider::Ptr colormapProvider)
 {
   return Ptr(new Operations1bpp(colormapProvider));
 }
 
-Operations1bpp::Operations1bpp(ColormapProvider* colormapProvider)
+Operations1bpp::Operations1bpp(ColormapProvider::Ptr colormapProvider)
   : CommonOperations(colormapProvider)
 {
 }
@@ -342,12 +342,12 @@ void Operations1bpp::draw(cairo_t* cr, const ConstTile::Ptr tile,
 ////////////////////////////////////////////////////////////////////////
 // Operations8bpp
 
-LayerOperations::Ptr Operations8bpp::create(ColormapProvider* colormapProvider)
+LayerOperations::Ptr Operations8bpp::create(ColormapProvider::Ptr colormapProvider)
 {
   return Ptr(new Operations8bpp(colormapProvider));
 }
 
-Operations8bpp::Operations8bpp(ColormapProvider* colormapProvider)
+Operations8bpp::Operations8bpp(ColormapProvider::Ptr colormapProvider)
   : CommonOperations(colormapProvider)
 {
 }
@@ -463,12 +463,12 @@ void Operations8bpp::draw(cairo_t* cr, const ConstTile::Ptr tile,
 ////////////////////////////////////////////////////////////////////////
 // Operations
 
-LayerOperations::Ptr Operations::create(ColormapProvider* colormapProvider, int bpp)
+LayerOperations::Ptr Operations::create(ColormapProvider::Ptr colormapProvider, int bpp)
 {
   return Ptr(new Operations(colormapProvider, bpp));
 }
 
-Operations::Operations(ColormapProvider* colormapProvider, int bpp)
+Operations::Operations(ColormapProvider::Ptr colormapProvider, int bpp)
   : CommonOperations(colormapProvider), 
     bpp(bpp), pixelsPerByte(8/bpp), pixelOffset(bpp), pixelMask((1<<bpp)-1)
 {
@@ -606,12 +606,12 @@ void Operations::draw(cairo_t* cr, const ConstTile::Ptr tile,
 ////////////////////////////////////////////////////////////////////////
 // OperationsColormapped
 
-LayerOperations::Ptr OperationsColormapped::create(ColormapProvider* colormapProvider, int bpp)
+LayerOperations::Ptr OperationsColormapped::create(ColormapProvider::Ptr colormapProvider, int bpp)
 {
   return Ptr(new OperationsColormapped(colormapProvider, bpp));
 }
 
-OperationsColormapped::OperationsColormapped(ColormapProvider* colormapProvider, int bpp)
+OperationsColormapped::OperationsColormapped(ColormapProvider::Ptr colormapProvider, int bpp)
   : Operations(colormapProvider, bpp)
 {
 }
