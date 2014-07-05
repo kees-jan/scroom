@@ -18,7 +18,7 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include <scroom/progressinterfacemultiplexer.hh>
+#include <scroom/progressinterfacehelpers.hh>
 #include <scroom/assertions.hh>
 
 #include "progressstateinterfacestub.hh"

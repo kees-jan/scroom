@@ -183,7 +183,74 @@ namespace Scroom
       virtual void setWaiting(double progress=0.0);
       virtual void setWorking(double progress);
       virtual void setFinished();
+    };
 
+    class ProgressInterfaceMultiplexer : public virtual Base
+    {
+    public:
+      typedef boost::shared_ptr<ProgressInterfaceMultiplexer> Ptr;
+
+    private:
+      class ChildData : public ProgressStateInterface
+      {
+      public:
+        typedef boost::shared_ptr<ChildData> Ptr;
+
+      public:
+        boost::mutex mut;
+        ProgressStateInterface::State state;
+        double progress;
+        
+      private:
+        ChildData();
+        
+      public:
+        static Ptr create();
+
+        void clearFinished();
+        
+        // ProgressStateInterface ///////////////////////////////////////////////////
+        virtual void setProgress(State s, double progress=0.0);
+      };
+      
+      class Child : public ProgressInterfaceFromProgressStateInterface
+      {
+      public:
+        typedef boost::shared_ptr<Child> Ptr;
+
+      private:
+        ProgressInterfaceMultiplexer::Ptr parent;
+        ChildData::Ptr data;
+        
+      private:
+        Child(ProgressInterfaceMultiplexer::Ptr parent, ChildData::Ptr data);
+        
+      public:
+        static Ptr create(ProgressInterfaceMultiplexer::Ptr parent, ChildData::Ptr data);
+        ~Child();
+        
+        // ProgressStateInterface ///////////////////////////////////////////////////
+        virtual void setProgress(State s, double progress=0.0);
+      };
+
+      friend class Child;
+      
+    private:
+      boost::mutex mut;
+      ProgressStateInterface::Ptr parent;
+      std::set<ChildData::Ptr> children;
+      
+    private:
+      ProgressInterfaceMultiplexer(ProgressInterface::Ptr parent);
+      
+    public:
+      static Ptr create(ProgressInterface::Ptr parent);
+
+      ProgressInterface::Ptr createProgressInterface();
+
+    private:
+      void updateProgressState();
+      void unsubscribe(ChildData::Ptr data);
     };
   }
 }

@@ -17,7 +17,6 @@ nobase_include_HEADERS = \
 	scroom/presentationinterface.hh \
 	scroom/progressinterface.hh \
 	scroom/progressinterfacehelpers.hh \
-	scroom/progressinterfacemultiplexer.hh \
 	scroom/scroominterface.hh \
 	scroom/scroomplugin.hh \
 	scroom/semaphore.hh \

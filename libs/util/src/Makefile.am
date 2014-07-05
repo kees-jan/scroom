@@ -5,7 +5,6 @@ libsutil_la_SOURCES = \
 	counter.cc \
 	gtk-helpers.cc \
 	assertions.cc \
-	progressinterfacemultiplexer.cc \
 	progressinterfacehelpers.cc
 
 
