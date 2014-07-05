@@ -19,6 +19,8 @@
 #ifndef PROGRESSINTERFACEMULTIPLEXER_HH
 #define PROGRESSINTERFACEMULTIPLEXER_HH
 
+#include <set>
+
 #include <boost/shared_ptr.hpp>
 
 #include <scroom/progressinterface.hh>
@@ -35,12 +37,13 @@ namespace Scroom
       typedef boost::shared_ptr<ProgressInterfaceMultiplexer> Ptr;
 
     private:
-      class ChildData
+      class ChildData : public ProgressStateInterface
       {
       public:
         typedef boost::shared_ptr<ChildData> Ptr;
 
       public:
+        boost::mutex mut;
         ProgressStateInterface::State state;
         double progress;
         
@@ -49,9 +52,14 @@ namespace Scroom
         
       public:
         static Ptr create();
+
+        void clearFinished();
+        
+        // ProgressStateInterface ///////////////////////////////////////////////////
+        virtual void setProgress(State s, double progress=0.0);
       };
       
-      class Child : public ProgressStateInterface
+      class Child : public ProgressInterfaceFromProgressStateInterface
       {
       public:
         typedef boost::shared_ptr<Child> Ptr;
@@ -65,6 +73,7 @@ namespace Scroom
         
       public:
         static Ptr create(ProgressInterfaceMultiplexer::Ptr parent, ChildData::Ptr data);
+        ~Child();
         
         // ProgressStateInterface ///////////////////////////////////////////////////
         virtual void setProgress(State s, double progress=0.0);
@@ -73,19 +82,21 @@ namespace Scroom
       friend class Child;
       
     private:
+      boost::mutex mut;
       ProgressStateInterface::Ptr parent;
-      std::list<ChildData::Ptr> children;
+      std::set<ChildData::Ptr> children;
       
     private:
-      ProgressInterfaceMultiplexer(ProgressStateInterface::Ptr parent);
+      ProgressInterfaceMultiplexer(ProgressInterface::Ptr parent);
       
     public:
-      static Ptr create(ProgressStateInterface::Ptr parent);
+      static Ptr create(ProgressInterface::Ptr parent);
 
-      ProgressStateInterface::Ptr createProgressInterface();
+      ProgressInterface::Ptr createProgressInterface();
 
     private:
       void updateProgressState();
+      void unsubscribe(ChildData::Ptr data);
     };
 
   }

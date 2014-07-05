@@ -32,11 +32,34 @@ ProgressInterfaceMultiplexer::ChildData::Ptr ProgressInterfaceMultiplexer::Child
   return Ptr(new ChildData());
 }
 
+void ProgressInterfaceMultiplexer::ChildData::setProgress(State state, double progress)
+{
+  boost::mutex::scoped_lock l(mut);
+  this->state = state;
+  this->progress = progress;
+}  
+
+void ProgressInterfaceMultiplexer::ChildData::clearFinished()
+{
+  boost::mutex::scoped_lock l(mut);
+  if(state == FINISHED)
+  {
+    state = IDLE;
+    progress = 0.0;
+  }
+}  
+
 ////////////////////////////////////////////////////////////////////////
 
 ProgressInterfaceMultiplexer::Child::Child(ProgressInterfaceMultiplexer::Ptr parent, ChildData::Ptr data)
   : parent(parent), data(data)
 {}
+
+ProgressInterfaceMultiplexer::Child::~Child()
+{
+  parent->unsubscribe(data);
+  parent->updateProgressState();
+}
 
 ProgressInterfaceMultiplexer::Child::Ptr ProgressInterfaceMultiplexer::Child::create(ProgressInterfaceMultiplexer::Ptr parent, ChildData::Ptr data)
 {
@@ -45,30 +68,36 @@ ProgressInterfaceMultiplexer::Child::Ptr ProgressInterfaceMultiplexer::Child::cr
 
 void ProgressInterfaceMultiplexer::Child::setProgress(State state, double progress)
 {
-  data->state = state;
-  data->progress = progress;
+  data->setProgress(state, progress);
   parent->updateProgressState();
 }
 
 ////////////////////////////////////////////////////////////////////////
 
-ProgressInterfaceMultiplexer::ProgressInterfaceMultiplexer(ProgressStateInterface::Ptr parent)
-  : parent(parent)
+ProgressInterfaceMultiplexer::ProgressInterfaceMultiplexer(ProgressInterface::Ptr parent)
+  : parent(ProgressStateInterfaceFromProgressInterfaceForwarder::create(parent))
 {}
 
-ProgressInterfaceMultiplexer::Ptr ProgressInterfaceMultiplexer::create(ProgressStateInterface::Ptr parent)
+ProgressInterfaceMultiplexer::Ptr ProgressInterfaceMultiplexer::create(ProgressInterface::Ptr parent)
 {
   return Ptr(new ProgressInterfaceMultiplexer(parent));
 }
 
-ProgressStateInterface::Ptr ProgressInterfaceMultiplexer::createProgressInterface()
+ProgressInterface::Ptr ProgressInterfaceMultiplexer::createProgressInterface()
 {
   ChildData::Ptr data = ChildData::create();
   Child::Ptr child = Child::create(shared_from_this<ProgressInterfaceMultiplexer>(), data);
 
-  children.push_back(data);
+  boost::mutex::scoped_lock l(mut);
+  children.insert(data);
 
   return child;
+}
+
+void ProgressInterfaceMultiplexer::unsubscribe(ChildData::Ptr data)
+{
+  boost::mutex::scoped_lock l(mut);
+  children.erase(data);
 }
 
 void ProgressInterfaceMultiplexer::updateProgressState()
@@ -76,15 +105,17 @@ void ProgressInterfaceMultiplexer::updateProgressState()
   ProgressStateInterface::State state = ProgressStateInterface::IDLE;
   double progress = 0.0;
   int workers = 0;
-  
+
+  boost::mutex::scoped_lock l(mut);
   BOOST_FOREACH(const ChildData::Ptr& child, children)
   {
+    boost::mutex::scoped_lock child_lock(child->mut);
     switch(child->state)
     {
     case ProgressStateInterface::IDLE:
       break;
     case ProgressStateInterface::WAITING:
-      if(state==ProgressStateInterface::IDLE)
+      if(state==ProgressStateInterface::IDLE || state==ProgressStateInterface::FINISHED)
         state = ProgressStateInterface::WAITING;
       progress+=child->progress;
       workers++;
@@ -102,7 +133,15 @@ void ProgressInterfaceMultiplexer::updateProgressState()
       workers++;
       break;
     }
+  }
 
-    parent->setProgress(state, progress/workers);
+  parent->setProgress(state, progress/workers);
+
+  if(state==ProgressStateInterface::FINISHED)
+  {
+    BOOST_FOREACH(const ChildData::Ptr& child, children)
+    {
+      child->clearFinished();
+    }
   }
 }
