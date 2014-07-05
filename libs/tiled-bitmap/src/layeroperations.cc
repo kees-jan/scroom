@@ -273,7 +273,7 @@ void CommonOperations::drawState(cairo_t* cr, TileState s, GdkRectangle viewArea
   cairo_paint(cr);
 }
 
-inline void CommonOperations::setClip(cairo_t* cr, int x, int y,
+void CommonOperations::setClip(cairo_t* cr, int x, int y,
                                       int width, int height)
 {
   cairo_move_to(cr, x, y);
@@ -284,7 +284,7 @@ inline void CommonOperations::setClip(cairo_t* cr, int x, int y,
   cairo_clip(cr);
 }
   
-inline void CommonOperations::setClip(cairo_t* cr, const GdkRectangle& area)
+void CommonOperations::setClip(cairo_t* cr, const GdkRectangle& area)
 {
   setClip(cr, area.x, area.y, area.width, area.height);
 }
