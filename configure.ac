@@ -145,13 +145,18 @@ then
   ac_cv_search__ZN5boost6system16generic_categoryEv=""
 fi
 
+# Checking for pthreads
+have_pthreads_lib=no
+SCROOM_SEARCH_LIBS([pthread_mutexattr_init], [pthread], [have_pthreads_lib=yes])
+AC_SUBST([PTHREADLIB], ["$ac_cv_search_pthread_mutexattr_init"])
+
 # Checking for boost thread
 have_boost_thread_headers=no
 AC_CHECK_HEADERS([boost/thread.hpp boost/thread/mutex.hpp], [have_boost_thread_headers=yes])
 have_boost_thread_lib=no
 # boost_thread-gcc42-mt is the name used at Mutracx...
 SCROOM_SEARCH_LIBS([_ZN5boost6thread6detachEv], [boost_thread-mt boost_thread boost_thread-gcc42-mt], [have_boost_thread_lib=yes])
-AC_SUBST([BOOSTTHREADLIB], ["$ac_cv_search__ZN5boost6thread6detachEv $ac_cv_search__ZN5boost6system16generic_categoryEv"])
+AC_SUBST([BOOSTTHREADLIB], ["$ac_cv_search__ZN5boost6thread6detachEv $ac_cv_search__ZN5boost6system16generic_categoryEv $ac_cv_search_pthread_mutexattr_init"])
 
 #checking for boost unittests
 have_boost_test_headers=no
@@ -200,6 +205,10 @@ fi
 if test "x${have_boost_thread_lib}" = xno
 then
   AC_MSG_ERROR([Boost thread library not found.])
+fi
+if test "x${have_pthreads_lib}" = xno
+then
+  AC_MSG_ERROR([Pthreads library not found.])
 fi
 
 want_boost_tests=no
