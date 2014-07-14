@@ -93,16 +93,17 @@ cd  "$BUILD/scroom-$VERSION" || exit 1
 if [ "$SNAPSHOT" -eq "1" ]
 then
     cp debian/changelog.snapshot debian/changelog
-    dch -d "Snapshot release"
+    dch -d "Snapshot release" && dch -r ""
 elif [ "$RELEASECANDIDATE" -eq "1" ]
 then
     cp debian/changelog.release debian/changelog
     VER=$(echo "$VERSION" | cut -d'~' -f1) && \
         dch -d "Release candidate for version $VER" && \
-        dch -a "For more info see https://github.com/kees-jan/scroom/wiki"
+        dch -a "For more info see https://github.com/kees-jan/scroom/wiki" && \
+        dch -r ""
 else
     cp debian/changelog.release debian/changelog
-    dch -d "For more info see https://github.com/kees-jan/scroom/wiki"
+    dch -d "For more info see https://github.com/kees-jan/scroom/wiki" && dch -r ""
 fi || exit 1
 
 if [ "$SNAPSHOT" -eq "1" ]
