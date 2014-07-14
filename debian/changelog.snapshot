@@ -1,10 +1,7 @@
-scroom (0.5.5-1) UNRELEASED; urgency=low
+scroom (0.5.5-1) saucy; urgency=low
 
   * For more info see
-    http://fuzzy.homedns.org/trac/scroom/milestone/0.5.3
-  * For more info see https://github.com/kees-jan/scroom/wiki
-  * For more info see https://github.com/kees-jan/scroom/wiki
-  * For more info see https://github.com/kees-jan/scroom/wiki
+    http://fuzzy.homedns.org/trac/scroom/milestone/0.5.5
 
  -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Fri, 04 Apr 2014 12:11:10 +0200
 
