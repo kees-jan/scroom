@@ -1,3 +1,9 @@
+scroom (0.5.5-27-g27d1cd3-1) saucy; urgency=low
+
+  * Snapshot release
+
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Mon, 14 Jul 2014 13:42:16 +0200
+
 scroom (0.5.5-1) saucy; urgency=low
 
   * For more info see
