@@ -16,7 +16,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include <measure-load-performance-tests.hh>
+#include "measure-load-performance-tests.hh"
 
 #include <time.h>
 

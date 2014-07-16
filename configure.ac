@@ -292,21 +292,11 @@ AC_CONFIG_FILES([Makefile
                  libs/Makefile
                  libs/boost-test-helper/Makefile
                  libs/compat-tests/Makefile
-                 libs/compat-tests/boost-future-test/Makefile
                  libs/sanity-tests/Makefile
                  libs/util/Makefile
-                 libs/util/src/Makefile
-                 libs/util/test/Makefile
                  libs/threadpool/Makefile
-                 libs/threadpool/src/Makefile
-                 libs/threadpool/test/Makefile
                  libs/memory-manager/Makefile
-                 libs/memory-manager/src/Makefile
-                 libs/memory-manager/test/Makefile
                  libs/tiled-bitmap/Makefile
-                 libs/tiled-bitmap/src/Makefile
-                 libs/tiled-bitmap/test/Makefile
-                 libs/tiled-bitmap/tools/Makefile
                  plugins/Makefile
                  plugins/colormap/Makefile
                  plugins/example/Makefile
