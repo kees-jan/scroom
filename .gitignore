@@ -6,6 +6,7 @@
 *.trs
 .deps
 .libs
+.dirstamp
 /.scroom-version
 Makefile
 Makefile.in

@@ -20,7 +20,7 @@ AC_INIT([Scroom],
         [https://github.com/kees-jan/scroom/issues/new],
         [scroom],
         [https://github.com/kees-jan/scroom/wiki])
-AM_INIT_AUTOMAKE([-Wall -Werror foreign silent-rules serial-tests])
+AM_INIT_AUTOMAKE([-Wall -Werror foreign silent-rules subdir-objects serial-tests])
 AM_SILENT_RULES([yes])
 AM_PROG_AR
 LT_PREREQ([2.2])
@@ -291,8 +291,6 @@ AC_CONFIG_FILES([Makefile
                  inc/Makefile
                  libs/Makefile
                  libs/boost-test-helper/Makefile
-                 libs/boost-test-helper/src/Makefile
-                 libs/boost-test-helper/test/Makefile
                  libs/compat-tests/Makefile
                  libs/compat-tests/boost-future-test/Makefile
                  libs/sanity-tests/Makefile
