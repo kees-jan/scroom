@@ -49,7 +49,6 @@ namespace Scroom
       virtual std::string getPluginName();
       virtual std::string getPluginVersion();
       virtual void registerCapabilities(ScroomInterface::Ptr host);
-      virtual void unregisterCapabilities(ScroomInterface::Ptr host);
 
       virtual void presentationAdded(PresentationInterface::Ptr p);
       virtual void presentationDeleted();

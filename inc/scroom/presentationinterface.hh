@@ -114,4 +114,18 @@ public:
   virtual std::string getTitle()=0;
 };
 
+/**
+ * Base class for something that composes several presentations.
+ */
+class Aggregate
+{
+public:
+  typedef boost::shared_ptr<Aggregate> Ptr;
+  
+public:
+  virtual ~Aggregate() {}
+  
+  virtual void addPresentation(PresentationInterface::Ptr presentation)=0;
+};
+
 #endif

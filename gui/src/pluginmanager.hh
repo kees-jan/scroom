@@ -65,6 +65,7 @@ private:
   std::list<std::string>::iterator currentFile;
   std::list<PluginInformation> pluginInformationList;
   std::map<NewInterface::Ptr, std::string> newInterfaces;
+  std::map<std::string, NewAggreagateInterface::Ptr> newAggregateInterfaces;
   std::map<OpenInterface::Ptr, std::string> openInterfaces;
   std::map<ViewObserver::Ptr, std::string> viewObservers;
   std::map<PresentationObserver::Ptr, std::string> presentationObservers;
@@ -83,18 +84,13 @@ public:
   void addHook(bool devMode);
 
   virtual void registerNewInterface(const std::string& identifier, NewInterface::Ptr newInterface);
-  virtual void unregisterNewInterface(NewInterface::Ptr newInterface);
-
+  virtual void registerNewAggregateInterface(const std::string& identifier, NewAggreagateInterface::Ptr newAggregateInterface);
   virtual void registerOpenInterface(const std::string& extension, OpenInterface::Ptr openInterface);
-  virtual void unregisterOpenInterface(OpenInterface::Ptr openInterface);
-
   virtual void registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer);
-  virtual void unregisterViewObserver(ViewObserver::Ptr observer);
-
   virtual void registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer);
-  virtual void unregisterPresentationObserver(PresentationObserver::Ptr observer);
 
   const std::map<NewInterface::Ptr, std::string>& getNewInterfaces();
+  const std::map<std::string, NewAggreagateInterface::Ptr>& getNewAggregateInterfaces();
   const std::map<OpenInterface::Ptr, std::string>& getOpenInterfaces();
   const std::map<ViewObserver::Ptr, std::string>& getViewObservers();
   const std::map<PresentationObserver::Ptr, std::string>& getPresentationObservers();

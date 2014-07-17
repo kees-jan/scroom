@@ -224,14 +224,12 @@ void PluginManager::registerNewInterface(const std::string& identifier, NewInter
   on_newInterfaces_update(newInterfaces);
 }
 
-void PluginManager::unregisterNewInterface(NewInterface::Ptr newInterface)
+void PluginManager::registerNewAggregateInterface(const std::string& identifier, NewAggreagateInterface::Ptr newAggregateInterface)
 {
-  printf("I just forgot how to create a new %s!\n", newInterfaces[newInterface].c_str());
-
-  newInterfaces.erase(newInterface);
-
-  on_newInterfaces_update(newInterfaces);
+  printf("I learned how to create a new %s aggregate!\n", identifier.c_str());
+  newAggregateInterfaces[identifier] = newAggregateInterface;
 }
+
 
 void PluginManager::registerOpenInterface(const std::string& extension, OpenInterface::Ptr openInterface)
 {
@@ -240,23 +238,10 @@ void PluginManager::registerOpenInterface(const std::string& extension, OpenInte
   openInterfaces[openInterface] = extension;
 }
 
-void PluginManager::unregisterOpenInterface(OpenInterface::Ptr openInterface)
-{
-  printf("I just forgot how to open a %s file!\n", openInterfaces[openInterface].c_str());
-
-  openInterfaces.erase(openInterface);
-}
-
 void PluginManager::registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer)
 {
   printf("Observing Views for %s!\n", identifier.c_str());
   viewObservers[observer] = identifier;
-}
-
-void PluginManager::unregisterViewObserver(ViewObserver::Ptr observer)
-{
-  printf("I stopped observing views for %s!\n", viewObservers[observer].c_str());
-  viewObservers.erase(observer);
 }
 
 void PluginManager::registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer)
@@ -265,15 +250,14 @@ void PluginManager::registerPresentationObserver(const std::string& identifier, 
   presentationObservers[observer] = identifier;
 }
 
-void PluginManager::unregisterPresentationObserver(PresentationObserver::Ptr observer)
-{
-  printf("I stopped observing presentations for %s!\n", presentationObservers[observer].c_str());
-  presentationObservers.erase(observer);
-}
-
 const std::map<NewInterface::Ptr, std::string>& PluginManager::getNewInterfaces()
 {
   return newInterfaces;
+}
+
+const std::map<std::string, NewAggreagateInterface::Ptr>& PluginManager::getNewAggregateInterfaces()
+{
+  return newAggregateInterfaces;
 }
 
 const std::map<OpenInterface::Ptr, std::string>& PluginManager::getOpenInterfaces()

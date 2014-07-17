@@ -59,11 +59,6 @@ namespace Scroom
           shared_from_this<ColormapPlugin>());
     }
 
-    void ColormapPlugin::unregisterCapabilities(ScroomInterface::Ptr host)
-    {
-      host->unregisterPresentationObserver(shared_from_this<ColormapPlugin>());
-    }
-
     void ColormapPlugin::presentationAdded(PresentationInterface::Ptr p)
     {
       printf("ColormapPlugin: A presentation was created\n");
