@@ -20,6 +20,8 @@
 #endif
 
 #include <iostream>
+#include <string>
+#include <sstream>
 
 #define BOOST_TEST_ALTERNATIVE_INIT_API
 #include <boost/test/unit_test.hpp>
@@ -32,19 +34,37 @@ bool init_unit_test()
   return true;
 }
 
+std::string extract_path(const std::string& cmd)
+{
+  size_t n = cmd.find_last_of('/');
+  if(n == std::string::npos)
+    return "";
+  else
+  {
+    return cmd.substr(0,n);
+  }
+}
+
 int main( int argc, char* argv[] )
 {
 #ifdef XML_TEST_OUTPUT
   if(argc>1)
     std::cerr << "You have requested XML output. Your command-line arguments will be ignored" << std::endl;
   
-  UNUSED(argv);
+  std::string path = extract_path(argv[0]);
+  std::stringstream outputArgument;
+  outputArgument << "--log_sink=";
+  if(!path.empty())
+    outputArgument << path << '/';
+  outputArgument << "test_results.xml";
 
+  std::string outputArgumentString = outputArgument.str();
+  
   // Apparently, order is important here. Weird but true...
   const char * alternative[] = {
     "--log_format=XML",
     "--log_level=all",
-    "--log_sink=test_results.xml",
+    outputArgumentString.c_str(),
     "--output_format=XML",
     "--report_level=no",
   };
