@@ -291,10 +291,6 @@ AC_CONFIG_FILES([Makefile
                  inc/Makefile
                  libs/Makefile
                  plugins/Makefile
-                 plugins/colormap/Makefile
-                 plugins/example/Makefile
-                 plugins/tiff/Makefile
-                 plugins/tiff/src/Makefile
                  gui/Makefile
                  gui/ENVIRONMENT
                  gui/src/Makefile
