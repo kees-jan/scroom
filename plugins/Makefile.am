@@ -19,6 +19,24 @@ example_libspexample_la_SOURCES = \
 example_libspexample_la_LIBADD = -lm @EXAMPLEPLUGIN_LIBS@ @BOOSTTHREADLIB@
 
 ########################################################################
+### plugins/transparentoverlay
+########################################################################
+
+transparent_overlay_plugin_libs = \
+	transparent-overlay/libsptransparentoverlay.la
+
+transparent_overlay_libsptransparentoverlay_la_CPPFLAGS = @TRANSPARENTOVERLAYPLUGIN_CFLAGS@ -I $(top_srcdir)/inc
+
+transparent_overlay_libsptransparentoverlay_la_SOURCES = \
+	transparent-overlay/transparentoverlay.cc \
+	transparent-overlay/transparentoverlay.hh \
+	transparent-overlay/transparentoverlaypresentation.cc \
+	transparent-overlay/transparentoverlaypresentation.hh \
+	transparent-overlay/main.cc
+
+transparent_overlay_libsptransparentoverlay_la_LIBADD = -lm @TRANSPARENTOVERLAYPLUGIN_LIBS@ @BOOSTTHREADLIB@
+
+########################################################################
 ### plugins/tiff
 ########################################################################
 
@@ -62,4 +80,4 @@ colormap_libspcolormap_la_LIBADD = @COLORMAPPLUGIN_LIBS@ @BOOSTTHREADLIB@
 ### Wrapping up
 ########################################################################
 
-plugin_LTLIBRARIES = $(example_plugin_libs) $(tiff_plugin_libs) $(colormap_plugin_libs)
+plugin_LTLIBRARIES = $(example_plugin_libs) $(transparent_overlay_plugin_libs) $(tiff_plugin_libs) $(colormap_plugin_libs) 

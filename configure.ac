@@ -95,11 +95,10 @@ DX_PS_FEATURE(OFF)
 DX_INIT_DOXYGEN([$PACKAGE_NAME], [doxyfile], [doc])
   
 # Checks for packages.
-
-#PKG_CHECK_MODULES([HEADER, [gtk+-2.0 >= 2.0.0, libglade-2.0 glib-2.0 cairo])
 PKG_CHECK_MODULES([UTILS], [gtk+-2.0 >= 2.0.0])
 PKG_CHECK_MODULES([TILEDBITMAP], [gtk+-2.0 >= 2.0.0, cairo])
 PKG_CHECK_MODULES([EXAMPLEPLUGIN], [gtk+-2.0 >= 2.0.0])
+PKG_CHECK_MODULES([TRANSPARENTOVERLAYPLUGIN], [gtk+-2.0 >= 2.0.0])
 PKG_CHECK_MODULES([COLORMAPPLUGIN], [gtk+-2.0 >= 2.0.0, cairo])
 PKG_CHECK_MODULES([TIFFPLUGIN], [gtk+-2.0 >= 2.0.0, cairo])
 PKG_CHECK_MODULES([GUI],        [gtk+-2.0 >= 2.0.0, libglade-2.0, gthread-2.0, gmodule-2.0, cairo])
