@@ -49,7 +49,7 @@ int main (int argc, char *argv[])
   std::list<std::string> filenames;
   char result;
 
-  while ((result = getopt(argc, argv, ":d:f:t:o:c:w:h")) != -1)
+  while ((result = getopt(argc, argv, ":h")) != -1)
   {
     switch (result)
     {

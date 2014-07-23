@@ -188,6 +188,19 @@ fi
 AC_SUBST([BOOST_FUTURES_CPPFLAGS], [$boost_futures_include_flags])
 AM_CONDITIONAL([NEW_BOOST_FUTURES], [test x$have_new_boost_futures = xyes])
 
+#Checking for boost program-options
+have_boost_program_options_lib=no
+have_boost_program_options_headers=no
+SCROOM_SEARCH_LIBS([_ZN5boost15program_options19options_descriptionC2Ejj],
+                   [boost_program_options-mt boost_program_options libboost_program_options-gcc42-mt], [have_boost_program_options_lib=yes])
+if test "x${ac_cv_search__ZN5boost15program_options19options_descriptionC2Ejj}" = xno
+then
+  ac_cv_search__ZN5boost15program_options19options_descriptionC2Ejj=""
+else
+  AC_CHECK_HEADERS([boost/program_options.hpp], [have_boost_program_options=yes])
+fi
+AC_SUBST([BOOSTPROGRAMOPTIONSLIB], [$ac_cv_search__ZN5boost15program_options19options_descriptionC2Ejj])
+
 # Some sanity checks
 if test "x${have_zlib_headers}" = xno
 then
