@@ -28,6 +28,16 @@ TransparentOverlayPresentation::TransparentOverlayPresentation()
   fillPattern();
 }
 
+TransparentOverlayPresentation::Ptr TransparentOverlayPresentation::create()
+{
+  return Ptr(new TransparentOverlayPresentation());
+}
+
+void TransparentOverlayPresentation::addPresentation(PresentationInterface::Ptr p)
+{
+  UNUSED(p);
+}
+
 TransparentOverlayPresentation::~TransparentOverlayPresentation()
 {
   cairo_pattern_destroy(pattern);

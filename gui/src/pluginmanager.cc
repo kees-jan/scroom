@@ -224,7 +224,7 @@ void PluginManager::registerNewInterface(const std::string& identifier, NewInter
   on_newInterfaces_update(newInterfaces);
 }
 
-void PluginManager::registerNewAggregateInterface(const std::string& identifier, NewAggreagateInterface::Ptr newAggregateInterface)
+void PluginManager::registerNewAggregateInterface(const std::string& identifier, NewAggregateInterface::Ptr newAggregateInterface)
 {
   printf("I learned how to create a new %s aggregate!\n", identifier.c_str());
   newAggregateInterfaces[identifier] = newAggregateInterface;
@@ -255,7 +255,7 @@ const std::map<NewInterface::Ptr, std::string>& PluginManager::getNewInterfaces(
   return newInterfaces;
 }
 
-const std::map<std::string, NewAggreagateInterface::Ptr>& PluginManager::getNewAggregateInterfaces()
+const std::map<std::string, NewAggregateInterface::Ptr>& PluginManager::getNewAggregateInterfaces()
 {
   return newAggregateInterfaces;
 }

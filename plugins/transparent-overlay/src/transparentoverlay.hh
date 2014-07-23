@@ -16,29 +16,32 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef _TRANSPARENTOVERLAYPRESENTATION_HH
-#define _TRANSPARENTOVERLAYPRESENTATION_HH
+#ifndef _TRANSPARENTOVERLAY_HH
+#define _TRANSPARENTOVERLAY_HH
 
+#include <boost/shared_ptr.hpp>
+
+#include <scroom/plugininformationinterface.hh>
 #include <scroom/presentationinterface.hh>
+#include <scroom/utilities.hh>
 
-class TransparentOverlayPresentation : public PresentationInterface
+class TransparentOverlay : public PluginInformationInterface, public NewAggregateInterface, virtual public  Scroom::Utils::Base
 {
-private:
-  cairo_pattern_t* pattern;
-
-  void fillPattern();
-  
 public:
-  TransparentOverlayPresentation();
-  virtual ~TransparentOverlayPresentation();
+  typedef boost::shared_ptr<TransparentOverlay> Ptr;
 
-  virtual GdkRectangle getRect();
-  virtual void open(ViewInterface::WeakPtr viewInterface);
-  virtual void redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);
-  virtual void close(ViewInterface::WeakPtr vi);
-  virtual bool getProperty(const std::string& name, std::string& value);
-  virtual bool isPropertyDefined(const std::string& name);
-  virtual std::string getTitle();
+private:
+  TransparentOverlay() {};
+
+public:
+  static Ptr create();
+
+public:
+  virtual std::string getPluginName();
+  virtual std::string getPluginVersion();
+  virtual void registerCapabilities(ScroomInterface::Ptr host);
+
+  virtual Aggregate::Ptr createNew();
 };
 
 #endif

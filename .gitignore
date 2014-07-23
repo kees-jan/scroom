@@ -36,6 +36,7 @@ Makefile.in
 /libs/tiled-bitmap/test/tiled-bitmap-tests
 /libs/tiled-bitmap/tools/measure-framerate
 /libs/tiled-bitmap/tools/measure-load-performance
+/plugins/transparent-overlay/test/overlay-tests
 /install-sh
 /libtool
 /ltmain.sh

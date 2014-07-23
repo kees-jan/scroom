@@ -24,15 +24,6 @@
 
 ////////////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////////////
-
-TransparentOverlay::TransparentOverlay()
-{
-}
-TransparentOverlay::~TransparentOverlay()
-{
-}
-
 TransparentOverlay::Ptr TransparentOverlay::create()
 {
   return Ptr(new TransparentOverlay());
@@ -50,11 +41,11 @@ std::string TransparentOverlay::getPluginVersion()
 
 void TransparentOverlay::registerCapabilities(ScroomInterface::Ptr host)
 {
-  host->registerNewInterface("TransparentOverlay", shared_from_this<TransparentOverlay>());
+  host->registerNewAggregateInterface("Transparent Overlay", shared_from_this<TransparentOverlay>());
 }
 
-PresentationInterface::Ptr TransparentOverlay::createNew()
+Aggregate::Ptr TransparentOverlay::createNew()
 {
-  return PresentationInterface::Ptr(new TransparentOverlayPresentation());
+  return TransparentOverlayPresentation::create();
 }
   

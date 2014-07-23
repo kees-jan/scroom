@@ -42,13 +42,13 @@ public:
   virtual PresentationInterface::Ptr createNew()=0;
 };
 
-class NewAggreagateInterface
+class NewAggregateInterface
 {
 public:
-  typedef boost::shared_ptr<NewAggreagateInterface> Ptr;
+  typedef boost::shared_ptr<NewAggregateInterface> Ptr;
 
 public:
-  virtual ~NewAggreagateInterface() {}
+  virtual ~NewAggregateInterface() {}
 
   virtual Aggregate::Ptr createNew()=0;
 };
@@ -98,7 +98,7 @@ public:
   virtual ~ScroomInterface() {}
 
   virtual void registerNewInterface(const std::string& identifier, NewInterface::Ptr newInterface)=0;
-  virtual void registerNewAggregateInterface(const std::string& identifier, NewAggreagateInterface::Ptr newAggregateInterface)=0;
+  virtual void registerNewAggregateInterface(const std::string& identifier, NewAggregateInterface::Ptr newAggregateInterface)=0;
   virtual void registerOpenInterface(const std::string& identifier, OpenInterface::Ptr openInterface)=0;
   virtual void registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer)=0;
   virtual void registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer)=0;
