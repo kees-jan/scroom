@@ -44,6 +44,7 @@
 #include "loader.hh"
 
 static const std::string SCROOM_DEV_MODE="SCROOM_DEV_MODE";
+const std::string REGULAR_FILES="Regular files";
 
 static std::string xmlFileName;
 static GladeXML* aboutDialogXml=NULL;
@@ -52,7 +53,7 @@ static GtkWidget* aboutDialog=NULL;
 typedef std::map<View::Ptr, Scroom::Bookkeeping::Token> Views;
 static Views views;
 static std::list<PresentationInterface::WeakPtr> presentations;
-static std::list<std::string> filenames;
+static FileNameMap filenames;
 static std::string currentFolder;
 
 void on_scroom_hide (GtkWidget*, gpointer user_data)
@@ -246,16 +247,18 @@ gboolean on_idle (gpointer user_data)
 
 void on_done_loading_plugins()
 {
-  if(!filenames.empty())
+  std::list<std::string>& fn = filenames[REGULAR_FILES];
+
+  if(!fn.empty())
   {
-    while(!filenames.empty())
+    while(!fn.empty())
     {
-      std::string& file = filenames.front();
+      std::string& file = fn.front();
       load(file);
       gchar* dir = g_path_get_dirname(file.c_str());
       currentFolder = dir;
       g_free(dir);
-      filenames.pop_front();
+      fn.pop_front();
     }
 
     if(presentations.empty())
@@ -312,7 +315,7 @@ gboolean on_scroll_event(GtkWidget*, GdkEventScroll* event, gpointer user_data)
   return true;
 }
 
-void on_scroom_bootstrap (const std::list<std::string>& newFilenames)
+void on_scroom_bootstrap (const FileNameMap& newFilenames)
 {
   printf("Bootstrapping Scroom...\n");
   filenames = newFilenames;
@@ -354,7 +357,7 @@ void on_scroom_bootstrap (const std::list<std::string>& newFilenames)
     exit(-1);
   }
 
-  if(filenames.empty())
+  if(filenames[REGULAR_FILES].empty())
   {
     create_scroom(PresentationInterface::Ptr());
   }

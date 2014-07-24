@@ -27,6 +27,9 @@
 #include <scroom/presentationinterface.hh>
 #include "view.hh"
 
+typedef std::map<std::string, std::list<std::string> > FileNameMap;
+extern const std::string REGULAR_FILES;
+
 void on_scroom_hide(GtkWidget* widget, gpointer user_data);
 
 void on_new_activate(GtkMenuItem* menuitem, gpointer user_data);
@@ -67,7 +70,7 @@ void on_scrollbar_value_changed(GtkAdjustment* adjustment, gpointer user_data);
 
 void on_textbox_value_changed(GtkEditable* editable, gpointer user_data);
 
-void on_scroom_bootstrap (const std::list<std::string>& newFilenames);
+void on_scroom_bootstrap (const FileNameMap& newFilenames);
  
 void find_or_create_scroom(PresentationInterface::Ptr presentation);
 
