@@ -40,6 +40,13 @@ void create(NewInterface* interface)
 
 void load(const GtkFileFilterInfo& info)
 {
+  PresentationInterface::Ptr presentation = loadPresentation(info);
+  if(presentation)
+    find_or_create_scroom(presentation);
+}
+
+PresentationInterface::Ptr loadPresentation(const GtkFileFilterInfo& info)
+{
   const std::map<OpenInterface::Ptr, std::string>& openInterfaces = PluginManager::getInstance()->getOpenInterfaces();
   PresentationInterface::Ptr presentation;
   for(std::map<OpenInterface::Ptr, std::string>::const_iterator cur=openInterfaces.begin();
@@ -57,17 +64,23 @@ void load(const GtkFileFilterInfo& info)
         if(presentation)
         {
           on_presentation_created(presentation);
-          find_or_create_scroom(presentation);
-          return;
         }
       }
     }
   }
+  return presentation;
+}
+
+void load(const std::string& filename)
+{
+  PresentationInterface::Ptr presentation = loadPresentation(filename);
+  if(presentation)
+    find_or_create_scroom(presentation);
 }
 
 #if MUTRACX_HACKS
 
-void load(const std::string& filename)
+PresentationInterface::Ptr loadPresentation(const std::string& filename)
 {
   // Gtk 2.12
   GtkFileFilterInfo filterInfo;
@@ -77,13 +90,16 @@ void load(const std::string& filename)
     (GtkFileFilterFlags)(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME);
   
   printf("Opening file %s\n", filterInfo.filename);
-  load(filterInfo);
+
+  return loadPresentation(filterInfo);
 }
 
 #else
 
-void load(const std::string& filename)
+PresentationInterface::Ptr loadPresentation(const std::string& filename)
 {
+  PresentationInterface::Ptr result;
+  
   // Gtk 2.16
   GFile* file = g_file_new_for_path(filename.c_str());
   GFileInfo* fileInfo = g_file_query_info(file, "standard::*", G_FILE_QUERY_INFO_NONE, NULL, NULL);
@@ -96,13 +112,15 @@ void load(const std::string& filename)
     filterInfo.contains =
       (GtkFileFilterFlags)(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_MIME_TYPE);
     printf("Opening file %s (%s)\n", filterInfo.filename, filterInfo.mime_type);
-    load(filterInfo);
+    result = loadPresentation(filterInfo);
     g_object_unref(fileInfo);
   }
   else
   {
     printf("PANIC: No fileinfo for file %s\n", filename.c_str());
   }
+
+  return result;
 }
 
 #endif

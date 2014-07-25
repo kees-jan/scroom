@@ -35,7 +35,7 @@ TransparentOverlayPresentation::Ptr TransparentOverlayPresentation::create()
 
 void TransparentOverlayPresentation::addPresentation(PresentationInterface::Ptr p)
 {
-  UNUSED(p);
+  children.push_back(p);
 }
 
 TransparentOverlayPresentation::~TransparentOverlayPresentation()

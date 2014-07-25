@@ -247,20 +247,58 @@ gboolean on_idle (gpointer user_data)
 
 void on_done_loading_plugins()
 {
-  std::list<std::string>& fn = filenames[REGULAR_FILES];
-
-  if(!fn.empty())
+  if(!filenames.empty())
   {
-    while(!fn.empty())
     {
-      std::string& file = fn.front();
-      load(file);
-      gchar* dir = g_path_get_dirname(file.c_str());
-      currentFolder = dir;
-      g_free(dir);
-      fn.pop_front();
-    }
+      std::list<std::string>& fn = filenames[REGULAR_FILES];
 
+      while(!fn.empty())
+      {
+        std::string& file = fn.front();
+        load(file);
+        gchar* dir = g_path_get_dirname(file.c_str());
+        currentFolder = dir;
+        g_free(dir);
+        fn.pop_front();
+      }
+    }
+    filenames.erase(REGULAR_FILES);
+
+    PluginManager::Ptr instance = PluginManager::getInstance();
+    std::map<std::string, NewAggregateInterface::Ptr> const& newAggregateInterfaces = instance->getNewAggregateInterfaces();
+
+    BOOST_FOREACH(FileNameMap::value_type const& v, filenames)
+    {
+      std::string const& aggregateName = v.first;
+      std::list<std::string> const& files = v.second;
+
+      std::map<std::string, NewAggregateInterface::Ptr>::const_iterator i = newAggregateInterfaces.find(aggregateName);
+      if(i != newAggregateInterfaces.end())
+      {
+        Aggregate::Ptr aggregate = i->second->createNew();
+        PresentationInterface::Ptr aggregatePresentation =
+          boost::dynamic_pointer_cast<PresentationInterface>(aggregate);
+
+        if(aggregatePresentation)
+        {        
+          BOOST_FOREACH(std::string const& file, files)
+          {
+            PresentationInterface::Ptr p = loadPresentation(file);
+            aggregate->addPresentation(p);
+          }
+
+          on_presentation_created(aggregatePresentation);
+          find_or_create_scroom(aggregatePresentation);
+        }
+        else
+          printf("ERROR: Don't know how to display a %s\n", aggregateName.c_str());
+      }
+      else
+      {
+        printf("ERROR: Don't know how to create %s\n", aggregateName.c_str());
+      }
+    }
+    
     if(presentations.empty())
     {
       // Aparently, we couldn't load any of our presentations. Terminate...

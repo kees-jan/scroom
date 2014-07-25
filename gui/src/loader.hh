@@ -26,5 +26,7 @@
 void create(NewInterface* interface);
 void load(const GtkFileFilterInfo& info);
 void load(const std::string& filename);
+PresentationInterface::Ptr loadPresentation(const GtkFileFilterInfo& info);
+PresentationInterface::Ptr loadPresentation(const std::string& filename);
 
 #endif

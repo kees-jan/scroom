@@ -19,6 +19,8 @@
 #ifndef _TRANSPARENTOVERLAYPRESENTATION_HH
 #define _TRANSPARENTOVERLAYPRESENTATION_HH
 
+#include <list>
+
 #include <scroom/presentationinterface.hh>
 
 class TransparentOverlayPresentation : public PresentationInterface, public Aggregate
@@ -27,6 +29,8 @@ public:
   typedef boost::shared_ptr<TransparentOverlayPresentation> Ptr;
   
 private:
+  std::list<PresentationInterface::Ptr> children;
+  
   cairo_pattern_t* pattern;
 
   void fillPattern();
