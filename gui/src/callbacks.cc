@@ -395,7 +395,7 @@ void on_scroom_bootstrap (const FileNameMap& newFilenames)
     exit(-1);
   }
 
-  if(filenames[REGULAR_FILES].empty())
+  if(filenames.empty())
   {
     create_scroom(PresentationInterface::Ptr());
   }
@@ -579,9 +579,9 @@ void on_new_presentationobserver(PresentationObserver::Ptr po)
 
 void on_new_viewobserver(ViewObserver::Ptr v)
 {
-  BOOST_FOREACH(const Views::value_type& p, views)
+  BOOST_FOREACH(Views::value_type& p, views)
   {
-    v->viewAdded(p.first);
+    p.second.add(v->viewAdded(p.first));
   }
 }
   

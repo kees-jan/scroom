@@ -20,27 +20,29 @@
 #define _TRANSPARENTOVERLAYPRESENTATION_HH
 
 #include <list>
+#include <map>
 
 #include <scroom/presentationinterface.hh>
+
+#include "transparentoverlayviewinfo.hh"
 
 class TransparentOverlayPresentation : public PresentationInterface, public Aggregate
 {
 public:
   typedef boost::shared_ptr<TransparentOverlayPresentation> Ptr;
-  
+
+private:
+  typedef std::map<ViewInterface::WeakPtr, TransparentOverlayViewInfo::Ptr> ViewDataMap;
 private:
   std::list<PresentationInterface::Ptr> children;
+  PresentationInterface::Ptr favorite;
+
+  ViewDataMap viewData;
   
-  cairo_pattern_t* pattern;
-
-  void fillPattern();
-
   TransparentOverlayPresentation();
 public:
   static Ptr create();
   
-  virtual ~TransparentOverlayPresentation();
-
   // PresentationInterface ///////////////////////////////////////////////
   virtual GdkRectangle getRect();
   virtual void open(ViewInterface::WeakPtr viewInterface);
@@ -52,7 +54,7 @@ public:
 
   // Aggregate ///////////////////////////////////////////////////////////
 
-  virtual void addPresentation(PresentationInterface::Ptr p);
+  virtual void addPresentation(PresentationInterface::Ptr const& p);
 };
 
 #endif

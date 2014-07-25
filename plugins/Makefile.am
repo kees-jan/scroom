@@ -33,9 +33,12 @@ transparent_overlay_src_libsptransparentoverlay_la_SOURCES = \
 	transparent-overlay/src/transparentoverlay.hh \
 	transparent-overlay/src/transparentoverlaypresentation.cc \
 	transparent-overlay/src/transparentoverlaypresentation.hh \
+	transparent-overlay/src/transparentoverlayviewinfo.cc \
+	transparent-overlay/src/transparentoverlayviewinfo.hh \
 	transparent-overlay/src/main.cc
 
-transparent_overlay_src_libsptransparentoverlay_la_LIBADD = -lm @TRANSPARENTOVERLAYPLUGIN_LIBS@ @BOOSTTHREADLIB@
+transparent_overlay_src_libsptransparentoverlay_la_LIBADD = -lm @TRANSPARENTOVERLAYPLUGIN_LIBS@ @BOOSTTHREADLIB@ \
+	../libs/util/src/libsutil.la
 
 if BOOST_UNITTESTS
 

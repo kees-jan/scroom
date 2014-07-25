@@ -20,106 +20,70 @@
 
 #include <math.h>
 
-#include <scroom/unused.hh>
+#include <sstream>
 
-TransparentOverlayPresentation::TransparentOverlayPresentation()
-  : pattern(NULL)
-{
-  fillPattern();
-}
+#include <boost/foreach.hpp>
+
+#include <scroom/unused.hh>
 
 TransparentOverlayPresentation::Ptr TransparentOverlayPresentation::create()
 {
   return Ptr(new TransparentOverlayPresentation());
 }
 
-void TransparentOverlayPresentation::addPresentation(PresentationInterface::Ptr p)
+TransparentOverlayPresentation::TransparentOverlayPresentation()
+{
+}
+
+void TransparentOverlayPresentation::addPresentation(PresentationInterface::Ptr const& p)
 {
   children.push_back(p);
-}
+  if(!favorite)
+    favorite=p;
 
-TransparentOverlayPresentation::~TransparentOverlayPresentation()
-{
-  cairo_pattern_destroy(pattern);
-}
-
-void TransparentOverlayPresentation::fillPattern()
-{
-  cairo_surface_t*  surface = cairo_image_surface_create(CAIRO_FORMAT_A1, 1010, 1010);
-  cairo_t* cr = cairo_create(surface);
-
-  int xorig = 505;
-  int yorig = 505;
-
-  for(int i=-500; i<500; i+=50)
-  {
-    cairo_move_to(cr, xorig-500, yorig+i);
-    cairo_line_to(cr, xorig+500, yorig+i);
-    cairo_move_to(cr, xorig+i, yorig-500);
-    cairo_line_to(cr, xorig+i, yorig+500);
-  }
-  cairo_move_to(cr, xorig-500, yorig-500);
-  cairo_line_to(cr, xorig+500, yorig+500);
-  cairo_move_to(cr, xorig-500, yorig+500);
-  cairo_line_to(cr, xorig+500, yorig-500);
-
-  cairo_stroke(cr);
-
-  pattern = cairo_pattern_create_for_surface(cairo_get_target(cr));
-  
-  cairo_destroy(cr);
-  cairo_surface_destroy(surface);
+  BOOST_FOREACH(ViewDataMap::value_type const& v, viewData)
+    v.second->addChild(p);
 }
 
 GdkRectangle TransparentOverlayPresentation::getRect()
 {
   GdkRectangle rect;
-  rect.x=-500;
-  rect.y=-500;
-  rect.width=1000;
-  rect.height=1000;
 
+  if(favorite)
+    rect = favorite->getRect();
+  else
+  {
+    rect.x=-500;
+    rect.y=-500;
+    rect.width=1000;
+    rect.height=1000;
+  }
+  
   return rect;
 }
 
-void TransparentOverlayPresentation::open(ViewInterface::WeakPtr viewInterface)
+void TransparentOverlayPresentation::open(ViewInterface::WeakPtr vi)
 {
-  UNUSED(viewInterface);
+  TransparentOverlayViewInfo::Ptr tovi = TransparentOverlayViewInfo::create(vi);
+  tovi->addChildren(children);
+  viewData[vi] = tovi;
 }
 
 void TransparentOverlayPresentation::close(ViewInterface::WeakPtr vi)
 {
-  UNUSED(vi);
+  ViewDataMap::const_iterator e = viewData.find(vi);
+  if(e != viewData.end())
+  {
+    e->second->close();
+    viewData.erase(e);
+  }
 }
 
 void TransparentOverlayPresentation::redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
 {
-  UNUSED(vi);
-  // char buffer[] = "Hello world!";
-  // 
-  // cairo_move_to(cr, 30, 30);
-  // cairo_show_text(cr, buffer);
-
-  double pp=1.0;
-  if(zoom >=0)
-    pp *= 1<<zoom;
-  else
-    pp /= 1<<(-zoom);
-
-  double scale = pow(2, -zoom);
-
-  int xorig = (int)(-presentationArea.x*pp);
-  int yorig = (int)(-presentationArea.y*pp);
-
-  cairo_matrix_t m;
-  cairo_matrix_init_translate(&m, 505, 505);
-  cairo_matrix_scale(&m, scale, scale);
-  cairo_matrix_translate(&m, -xorig, -yorig);
-  cairo_pattern_set_matrix(pattern, &m);
-  cairo_mask(cr, pattern);
-
-  // cairo_set_source_surface(cr, surface, xorig-505, yorig-505);
-  // cairo_paint(cr);
+  ViewDataMap::const_iterator e = viewData.find(vi);
+  if(e != viewData.end())
+    e->second->redraw(cr, presentationArea, zoom);
 }
 
 bool TransparentOverlayPresentation::getProperty(const std::string& name, std::string& value)
@@ -138,6 +102,18 @@ bool TransparentOverlayPresentation::isPropertyDefined(const std::string& name)
 
 std::string TransparentOverlayPresentation::getTitle()
 {
-  return "";
+  std::stringstream s;
+  s << "Overlay(";
+  bool hasPrevious=false;
+  BOOST_FOREACH(PresentationInterface::Ptr const& child, children)
+  {
+    if(hasPrevious)
+      s << ", ";
+    s << child->getTitle();
+    hasPrevious = true;
+  }
+  s << ")";
+
+  return s.str();
 }
 

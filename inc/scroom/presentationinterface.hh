@@ -125,7 +125,7 @@ public:
 public:
   virtual ~Aggregate() {}
   
-  virtual void addPresentation(PresentationInterface::Ptr presentation)=0;
+  virtual void addPresentation(PresentationInterface::Ptr const& presentation)=0;
 };
 
 #endif
