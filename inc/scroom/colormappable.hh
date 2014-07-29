@@ -26,6 +26,7 @@
 
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
+#include <boost/operators.hpp>
 
 #include <scroom/presentationinterface.hh>
 #include <scroom/observable.hh>
@@ -38,11 +39,12 @@ namespace
 }
 
 /**
- * Represent a (RGB) color
+ * Represent a (ARGB) color
  */
-class Color
+class Color : public boost::addable<Color>, public boost::multiplicative<Color,double>
 {
 public:
+  double alpha;  /**< Alpha value */
   double red;    /**< R value */
   double green;  /**< G value */
   double blue;   /**< B value */
@@ -51,42 +53,44 @@ public:
 
   /** Default constructor. Create black */
   Color()
-    : red(0.0), green(0.0), blue(0.0)
+    : alpha(1.0), red(0.0), green(0.0), blue(0.0)
   {}
 
   /** Constructor. Use the given RGB values */
-  Color(double red, double green, double blue)
-    : red(red), green(green), blue(blue)
+  Color(double red, double green, double blue, double alpha=1.0)
+    : alpha(alpha), red(red), green(green), blue(blue)
   {}
 
   /** Constructor. Create the given gray value */
-  Color(double gray)
-    : red(gray), green(gray), blue(gray)
+  Color(double gray, double alpha=1.0)
+    : alpha(alpha), red(gray), green(gray), blue(gray)
   {}
 
   Color& operator+=(const Color& rhs)
-  { red += rhs.red; green += rhs.green; blue+= rhs.blue; return *this; }
+  { alpha += rhs.alpha; red += rhs.red; green += rhs.green; blue+= rhs.blue; return *this; }
 
   Color& operator/=(double d)
-  { red /= d; green /= d; blue /= d; return *this; }
+  { alpha /= d; red /= d; green /= d; blue /= d; return *this; }
 
-  Color operator+(const Color& rhs) const
-  { return Color(red+rhs.red, green+rhs.green, blue+rhs.blue); }
-
-  Color operator*(double d) const
-  { return Color(red*d, green*d, blue*d); }
-
-  Color operator/(double d) const
-  { return *this*(1/d); }
+  Color& operator*=(double d)
+  { alpha *= d; red *= d; green *= d; blue *= d; return *this; }
 
   uint32_t getRGB24()
   { return 0xFF000000 | byteFromDouble(red)<<16 | byteFromDouble(green)<<8 | byteFromDouble(blue) <<0; }
-    
+
+  uint32_t getARGB24()
+  { return byteFromDouble(alpha)<<24 | byteFromDouble(red)<<16 | byteFromDouble(green)<<8 | byteFromDouble(blue) <<0; }
+
+  Color& setAlpha(double alpha)
+  { return *this *= alpha; }
+
+  Color setAlpha(double alpha) const
+  { return Color(*this).setAlpha(alpha); }
 };
 
-inline Color mix(const Color& a, const Color& b, double greyscale)
+inline Color mix(const Color& a, const Color& b, double alpha)
 {
-  return a*greyscale + b*(1.0-greyscale);
+  return a*alpha + b*(1.0-alpha);
 }
 
 /**
@@ -169,6 +173,12 @@ public:
 
   /** Request that the presentation use the given colormap */
   virtual void setColormap(Colormap::Ptr colormap)=0;
+
+  // /**
+  //  * Request that the presentation uses the given alpha value, in
+  //  * addition to any alpha that may be present in the Colormap, for the given view only.
+  //  */
+  // virtual void setAlpha(ViewInterface::WeakPtr const& vi, double alpha)=0;
 
   /** Retrieve the images colormap (if any) */
   virtual Colormap::Ptr getOriginalColormap()=0;

@@ -201,6 +201,10 @@ else
 fi
 AC_SUBST([BOOSTPROGRAMOPTIONSLIB], [$ac_cv_search__ZN5boost15program_options19options_descriptionC2Ejj])
 
+#Checking for boost operators
+have_boost_operators=no
+AC_CHECK_HEADERS([boost/operators.hpp], [have_boost_operators=yes])
+
 # Some sanity checks
 if test "x${have_zlib_headers}" = xno
 then
@@ -217,6 +221,10 @@ fi
 if test "x${have_boost_thread_lib}" = xno
 then
   AC_MSG_ERROR([Boost thread library not found.])
+fi
+if test "x${have_boost_operators}" = xno
+then
+  AC_MSG_ERROR([Boost operators header file not found.])
 fi
 if test "x${have_pthreads_lib}" = xno
 then
