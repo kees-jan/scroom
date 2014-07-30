@@ -97,6 +97,7 @@ DX_INIT_DOXYGEN([$PACKAGE_NAME], [doxyfile], [doc])
 # Checks for packages.
 PKG_CHECK_MODULES([UTILS], [gtk+-2.0 >= 2.0.0])
 PKG_CHECK_MODULES([TILEDBITMAP], [gtk+-2.0 >= 2.0.0, cairo])
+PKG_CHECK_MODULES([SCROOMLIB], [gtk+-2.0 >= 2.0.0, cairo])
 PKG_CHECK_MODULES([EXAMPLEPLUGIN], [gtk+-2.0 >= 2.0.0])
 PKG_CHECK_MODULES([TRANSPARENTOVERLAYPLUGIN], [gtk+-2.0 >= 2.0.0])
 PKG_CHECK_MODULES([COLORMAPPLUGIN], [gtk+-2.0 >= 2.0.0, cairo])

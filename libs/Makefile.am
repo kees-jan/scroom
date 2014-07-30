@@ -214,6 +214,25 @@ memory_manager_tests = \
 endif BOOST_UNITTESTS
 
 ########################################################################
+### libs/scroom
+########################################################################
+
+scroom_src_libsscroom_la_CPPFLAGS = @SCROOMLIB_CFLAGS@ -I $(top_srcdir)/inc @BOOST_FUTURES_CPPFLAGS@
+
+scroomlib_libs = \
+	scroom/src/libsscroom.la
+
+scroom_src_libsscroom_la_SOURCES = \
+	scroom/src/bitmap-helpers.cc
+
+scroom_src_libsscroom_la_LIBADD = \
+	@SCROOMLIB_LIBS@ \
+	@BOOSTTHREADLIB@
+
+scroomlib_check_programs =
+scroomlib_tests = 
+
+########################################################################
 ### libs/tiled-bitmap
 ########################################################################
 
@@ -223,7 +242,6 @@ tiled_bitmap_libs = \
 	tiled-bitmap/src/libstiledbitmap.la
 
 tiled_bitmap_src_libstiledbitmap_la_SOURCES = \
-	tiled-bitmap/src/bitmap-helpers.cc \
 	tiled-bitmap/src/layer.cc \
 	tiled-bitmap/src/layer.hh \
 	tiled-bitmap/src/layercoordinator.cc \
@@ -246,6 +264,7 @@ tiled_bitmap_src_libstiledbitmap_la_LIBADD = \
 	util/src/libsutil.la \
 	threadpool/src/libsthreadpool.la \
 	memory-manager/src/libsmemman.la \
+	scroom/src/libsscroom.la \
 	@BOOSTTHREADLIB@
 
 if BOOST_UNITTESTS
@@ -313,8 +332,8 @@ tiled_bitmap_tools_measure_load_performance_LDADD = \
 ### Wrapping up
 ########################################################################
 
-lib_LTLIBRARIES = $(boost_test_helper_libs) $(compat_tests_libs) $(sanity_tests_libs) $(util_libs) $(threadpool_libs) $(memory_manager_libs) $(tiled_bitmap_libs)
-check_PROGRAMS = $(boost_test_helper_check_programs) $(compat_tests_check_programs) $(sanity_tests_check_programs) $(util_check_programs) $(threadpool_check_programs) $(memory_manager_check_programs) $(tiled_bitmap_check_programs)
-TESTS = $(boost_test_helper_tests) $(compat_tests_tests) $(sanity_tests_tests) $(util_tests) $(threadpool_tests) $(memory_manager_tests) $(tiled_bitmap_tests)
+lib_LTLIBRARIES = $(boost_test_helper_libs) $(compat_tests_libs) $(sanity_tests_libs) $(util_libs) $(threadpool_libs) $(memory_manager_libs) $(scroomlib_libs) $(tiled_bitmap_libs)
+check_PROGRAMS = $(boost_test_helper_check_programs) $(compat_tests_check_programs) $(sanity_tests_check_programs) $(util_check_programs) $(threadpool_check_programs) $(memory_manager_check_programs) $(scroomlib_check_programs) $(tiled_bitmap_check_programs)
+TESTS = $(boost_test_helper_tests) $(compat_tests_tests) $(sanity_tests_tests) $(util_tests) $(threadpool_tests) $(memory_manager_tests) $(scroomlib_tests) $(tiled_bitmap_tests)
 EXTRA_DIST = $(compat_tests_extra_dist) $(sanity_tests_extra_dist)
 noinst_LTLIBRARIES = $(boost_test_helper_noinst_libs)

@@ -147,6 +147,24 @@ public:
 
     return result;
   }
+
+  Ptr clone() const
+  {
+    return Ptr(new Colormap(*this));
+  }
+
+  void setAlpha(double alpha)
+  {
+    BOOST_FOREACH(Color& c, colors)
+      c.setAlpha(alpha);
+  }
+
+  Ptr setAlpha(double alpha) const
+  {
+    Ptr result=clone();
+    result->setAlpha(alpha);
+    return result;
+  }
 };
 
 /**

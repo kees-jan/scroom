@@ -38,7 +38,8 @@ transparent_overlay_src_libsptransparentoverlay_la_SOURCES = \
 	transparent-overlay/src/main.cc
 
 transparent_overlay_src_libsptransparentoverlay_la_LIBADD = -lm @TRANSPARENTOVERLAYPLUGIN_LIBS@ @BOOSTTHREADLIB@ \
-	../libs/util/src/libsutil.la
+	../libs/util/src/libsutil.la \
+	../libs/scroom/src/libsscroom.la
 
 if BOOST_UNITTESTS
 

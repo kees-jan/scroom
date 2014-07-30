@@ -21,6 +21,7 @@
 #include <boost/foreach.hpp>
 
 #include <scroom/unused.hh>
+#include <scroom/bitmap-helpers.hh>
 
 ////////////////////////////////////////////////////////////////////////
 // ChildView
@@ -94,6 +95,37 @@ void TransparentOverlayViewInfo::close()
 
 void TransparentOverlayViewInfo::redraw(cairo_t* cr, GdkRectangle presentationArea, int zoom)
 {
+  using Scroom::Bitmap::BitmapSurface;
+  
+  GdkRectangle viewArea;
+  viewArea.x=0;
+  viewArea.y=0;
+  
+  if(zoom > 0)
+  {
+    const int pixelSize = 1<<zoom;
+    viewArea.width = presentationArea.width*pixelSize;
+    viewArea.height = presentationArea.height*pixelSize;
+  }
+  else
+  {
+    const int pixelSize = 1<<-zoom;
+    viewArea.width = presentationArea.width/pixelSize;
+    viewArea.height = presentationArea.height/pixelSize;
+  }
+
+  BitmapSurface::Ptr s = BitmapSurface::create(viewArea.width, viewArea.height);
+  cairo_surface_t* surface = s->get();
+  cairo_t* cr_sub = cairo_create(surface);
+
+  int count=0;
   BOOST_FOREACH(ChildMap::value_type const& v, children)
-    v.first->redraw(v.second, cr, presentationArea, zoom);
+  {
+    cairo_save(cr_sub);
+    v.first->redraw(v.second, cr_sub, presentationArea, zoom);
+    cairo_restore(cr_sub);
+
+    cairo_set_source_surface(cr, surface, 0, 0);
+    cairo_paint_with_alpha(cr, 1.0/++count);
+  }
 }

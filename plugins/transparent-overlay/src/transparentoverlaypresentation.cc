@@ -37,12 +37,17 @@ TransparentOverlayPresentation::TransparentOverlayPresentation()
 
 void TransparentOverlayPresentation::addPresentation(PresentationInterface::Ptr const& p)
 {
-  children.push_back(p);
-  if(!favorite)
-    favorite=p;
+  if(p)
+  {
+    children.push_back(p);
+    if(!favorite)
+      favorite=p;
 
-  BOOST_FOREACH(ViewDataMap::value_type const& v, viewData)
-    v.second->addChild(p);
+    BOOST_FOREACH(ViewDataMap::value_type const& v, viewData)
+      v.second->addChild(p);
+  }
+  else
+    printf("PANIC: Can't add a nonexistent presentation\n");
 }
 
 GdkRectangle TransparentOverlayPresentation::getRect()
