@@ -29,8 +29,8 @@
 #include <scroom/scroominterface.hh>
 #include <scroom/plugininformationinterface.hh>
 #include <scroom/utilities.hh>
-#include <workinterface.hh>
-#include <view.hh>
+#include "workinterface.hh"
+#include "view.hh"
 
 struct PluginInformation
 {

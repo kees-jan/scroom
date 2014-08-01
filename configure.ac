@@ -188,6 +188,7 @@ else
 fi
 AC_SUBST([BOOST_FUTURES_CPPFLAGS], [$boost_futures_include_flags])
 AM_CONDITIONAL([NEW_BOOST_FUTURES], [test x$have_new_boost_futures = xyes])
+AM_CONDITIONAL([LOCAL_BOOST_FUTURES], [test x$have_new_boost_futures = xno -a x$have_old_boost_futures = xno])
 
 #Checking for boost program-options
 have_boost_program_options_lib=no
@@ -305,21 +306,15 @@ dnl AM_GLIB_GNU_GETTEXT
 
 
 AC_CONFIG_FILES([Makefile
-                 compat/Makefile
-                 compat/boost-futures/Makefile
-                 compat/boost-futures/inc/Makefile
-                 compat/boost-futures/doc/Makefile
-                 inc/Makefile
-                 libs/Makefile
-                 plugins/Makefile
-                 gui/Makefile
                  gui/ENVIRONMENT
-                 gui/src/Makefile
                  doxyfile
 ])
 
 # Misc defines
 AC_SUBST([plugindir], [$libdir/$PACKAGE])
+AC_SUBST([incscroomdir], [$includedir/scroom])
+AC_SUBST([incscroomimpldir], [$incscroomdir/impl])
+AC_SUBST([incboostdir], [$includedir/boost])
 
 AC_OUTPUT
 
