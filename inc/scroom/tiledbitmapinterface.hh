@@ -250,9 +250,7 @@ class TiledBitmapInterface: public Viewable
 public:
   typedef boost::shared_ptr<TiledBitmapInterface> Ptr;
 
-  virtual ~TiledBitmapInterface()
-  {
-  }
+  virtual ~TiledBitmapInterface()  {}
 
   /**
    * Provide bitmap data to the TiledBitmap
@@ -283,6 +281,8 @@ public:
    * @param vi The ViewInterface for which to clear the caches
    */
   virtual void clearCaches(ViewInterface::Ptr vi)=0;
+
+  virtual void abortLoadingPresentation()=0;
 };
 
 /**

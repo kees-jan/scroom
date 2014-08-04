@@ -29,7 +29,7 @@
 #include "tileinternal.hh"
 
 class LayerCoordinator: public TileInitialisationObserver,
-                        public boost::enable_shared_from_this<LayerCoordinator>
+                        public virtual Scroom::Utils::Base
 {
 private:
   TileInternal::Ptr targetTile;
@@ -51,6 +51,8 @@ public:
 private:
   LayerCoordinator(TileInternal::Ptr targetTile, LayerOperations::Ptr lo);
 
+  void reduceSourceTile(TileInternal::Ptr tile);
+  
 public:
   ////////////////////////////////////////////////////////////////////////
   /// TileInitialisationObserver

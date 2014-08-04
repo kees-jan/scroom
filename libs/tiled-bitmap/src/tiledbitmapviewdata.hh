@@ -40,7 +40,7 @@ public:
   Scroom::Bookkeeping::Token token;
   
 private:
-  Layer* layer;
+  Layer::Ptr layer;
   int imin;
   int imax;
   int jmin;
@@ -76,7 +76,7 @@ private:
 public:
   static Ptr create(ViewInterface::WeakPtr viewInterface);
 
-  void setNeededTiles(Layer* l, int imin, int imax, int jmin, int jmax, int zoom, LayerOperations::Ptr layerOperations);
+  void setNeededTiles(Layer::Ptr const& l, int imin, int imax, int jmin, int jmax, int zoom, LayerOperations::Ptr layerOperations);
   void resetNeededTiles();
   void storeVolatileStuff(Scroom::Utils::Stuff stuff);
   void clearVolatileStuff();

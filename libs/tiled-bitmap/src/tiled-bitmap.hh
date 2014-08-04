@@ -46,7 +46,6 @@ private:
   boost::shared_ptr<TiledBitmap> parent;
   boost::mutex waitingMutex;
   bool waiting;
-  int timer;
 
 protected:
   FileOperation(boost::shared_ptr<TiledBitmap> parent);
@@ -62,7 +61,7 @@ public:
 
 
 class TiledBitmap : public TiledBitmapInterface, public TileInitialisationObserver,
-                    public boost::enable_shared_from_this<TiledBitmap>,
+                    public virtual Scroom::Utils::Base,
                     public ProgressInterface
 {
 public:
@@ -74,7 +73,7 @@ private:
   int bitmapWidth;
   int bitmapHeight;
   LayerSpec ls;
-  std::vector<Layer*> layers;
+  std::vector<Layer::Ptr> layers;
   std::list<LayerCoordinator::Ptr> coordinators;
   boost::mutex viewDataMutex;
   ViewDataMap viewData;
@@ -95,7 +94,7 @@ private:
   
 private:
   void drawTile(cairo_t* cr, const TileInternal::Ptr tile, const GdkRectangle viewArea);
-  void connect(Layer* layer, Layer* prevLayer, LayerOperations::Ptr prevLo);
+  void connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, LayerOperations::Ptr prevLo);
 
   // ProgressInterface ///////////////////////////////////////////////////
   
@@ -116,6 +115,7 @@ public:
   virtual void close(ViewInterface::WeakPtr vi);
   virtual void redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);
   virtual void clearCaches(ViewInterface::Ptr vi);
+  virtual void abortLoadingPresentation();
 
   ////////////////////////////////////////////////////////////////////////
   // TileInitialisationObserver

@@ -21,13 +21,18 @@
 
 #include <vector>
 
+#include <boost/shared_ptr.hpp>
+
 #include <scroom/tiledbitmapinterface.hh>
 #include <scroom/presentationinterface.hh>
 
 #include "tileinternal.hh"
 
-class Layer : public Viewable
+class Layer : public Viewable, public virtual Scroom::Utils::Base
 {
+public:
+  typedef boost::shared_ptr<Layer> Ptr;
+  
 private:
   int depth;
   int width;
@@ -39,9 +44,12 @@ private:
   TileInternalGrid tiles;
   TileInternal::Ptr outOfBounds;
   TileInternalLine lineOutOfBounds;
+
+private:
+  Layer(TileInitialisationObserver::Ptr observer, int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider);
   
 public:
-  Layer(TileInitialisationObserver::Ptr observer, int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider);
+  static Ptr create(TileInitialisationObserver::Ptr observer, int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider);
   int getHorTileCount();
   int getVerTileCount();
 

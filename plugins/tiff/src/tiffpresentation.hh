@@ -32,7 +32,7 @@
 typedef struct tiff TIFF;
 
 class TiffPresentation : public PresentationInterface, public SourcePresentation, public Colormappable, public ColormapProvider,
-                         public virtual Scroom::Utils::Base, public Scroom::Utils::Counted<TiffPresentation>
+                         public virtual Scroom::Utils::Base
 {
 public:
   typedef boost::shared_ptr<TiffPresentation> Ptr;
@@ -109,7 +109,7 @@ public:
   
 };
 
-class TiffPresentationWrapper : public PresentationInterface, public Scroom::Utils::Counted<TiffPresentationWrapper>
+class TiffPresentationWrapper : public PresentationInterface
 {
 public:
   typedef boost::shared_ptr<TiffPresentationWrapper> Ptr;

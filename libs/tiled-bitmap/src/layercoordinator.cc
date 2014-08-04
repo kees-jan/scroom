@@ -22,28 +22,6 @@
 
 #include "local.hh"
 
-class TileReducer
-{
-private:
-  LayerOperations::Ptr lo;
-  TileInternal::Ptr targetTile;
-  TileInternal::Ptr sourceTile;
-  int x;
-  int y;
-  boost::mutex& mut;
-  int& unfinishedSourceTiles;
-  
-public:
-  TileReducer(LayerOperations::Ptr lo,
-              TileInternal::Ptr targetTile, TileInternal::Ptr sourceTile,
-              int x, int y,
-              boost::mutex& mut, int& unfinishedSourceTiles);
-
-  void operator()();
-};
-
-////////////////////////////////////////////////////////////////////////
-
 LayerCoordinator::Ptr LayerCoordinator::create(TileInternal::Ptr targetTile, LayerOperations::Ptr lo)
 {
   return LayerCoordinator::Ptr(new LayerCoordinator(targetTile, lo));
@@ -66,7 +44,7 @@ void LayerCoordinator::addSourceTile(int x, int y, TileInternal::Ptr tile)
   boost::unique_lock<boost::mutex> lock(mut);
 
   sourceTiles[tile] = std::make_pair(x,y);
-  registrations.push_back(tile->registerObserver(shared_from_this()));
+  registrations.push_back(tile->registerObserver(shared_from_this<LayerCoordinator>()));
   unfinishedSourceTiles++;
 }
 
@@ -75,30 +53,21 @@ void LayerCoordinator::addSourceTile(int x, int y, TileInternal::Ptr tile)
 
 void LayerCoordinator::tileFinished(TileInternal::Ptr tile)
 {
-  targetTile->initialize();
-  std::pair<int,int> location = sourceTiles[tile];
-
-  TileReducer tr(lo, targetTile, tile, location.first, location.second, mut, unfinishedSourceTiles);
-
-  CpuBound()->schedule(tr, REDUCE_PRIO);
+  CpuBound()->schedule(boost::bind(&LayerCoordinator::reduceSourceTile, shared_from_this<LayerCoordinator>(), tile), REDUCE_PRIO);
 }
 
 ////////////////////////////////////////////////////////////////////////
-/// TileReducer
+/// Helpers
 
-TileReducer::TileReducer(LayerOperations::Ptr lo,
-                         TileInternal::Ptr targetTile, TileInternal::Ptr sourceTile,
-                         int x, int y,
-                         boost::mutex& mut, int& unfinishedSourceTiles)
-  : lo(lo), targetTile(targetTile), sourceTile(sourceTile),
-    x(x), y(y), mut(mut), unfinishedSourceTiles(unfinishedSourceTiles)
+void LayerCoordinator::reduceSourceTile(TileInternal::Ptr tile)
 {
-}
+  targetTile->initialize();
+  const std::pair<int,int> location = sourceTiles[tile];
+  const int x = location.first;
+  const int y = location.second;
 
-void TileReducer::operator()()
-{
   Tile::Ptr target = targetTile->getTileSync();
-  ConstTile::Ptr source = sourceTile->getConstTileSync();
+  ConstTile::Ptr source = tile->getConstTileSync();
 
   lo->reduce(target, source, x, y);
 

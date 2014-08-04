@@ -29,7 +29,7 @@
 class DataFetcher
 {
 private:
-  Layer* layer;
+  Layer::Ptr layer;
   int width;
   int height;
   int horTileCount;
@@ -40,7 +40,7 @@ private:
   ThreadPool::WeakQueue::Ptr queue;
   
 public:
-  DataFetcher(Layer* layer,
+  DataFetcher(Layer::Ptr const& layer,
               int width, int height,
               int horTileCount, int verTileCount,
               SourcePresentation::Ptr sp,
@@ -51,6 +51,7 @@ public:
 
 ////////////////////////////////////////////////////////////////////////
 /// Layer 
+
 Layer::Layer(TileInitialisationObserver::Ptr observer, int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider)
   : depth(depth), width(layerWidth), height(layerHeight), bpp(bpp)
 {
@@ -77,6 +78,11 @@ Layer::Layer(TileInitialisationObserver::Ptr observer, int depth, int layerWidth
   
   printf("Layer %d (%d bpp), %d*%d, TileCount %d*%d\n",
          depth, bpp, width, height, horTileCount, verTileCount);
+}
+
+Layer::Ptr Layer::create(TileInitialisationObserver::Ptr observer, int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider)
+{
+  return Ptr(new Layer(observer, depth, layerWidth, layerHeight, bpp, provider));
 }
 
 int Layer::getHorTileCount()
@@ -116,7 +122,7 @@ TileInternalLine& Layer::getTileLine(int j)
 
 void Layer::fetchData(SourcePresentation::Ptr sp, ThreadPool::WeakQueue::Ptr queue)
 {
-  DataFetcher df(this,
+  DataFetcher df(shared_from_this<Layer>(),
                  width, height,
                  horTileCount, verTileCount,
                  sp, queue);
@@ -161,7 +167,7 @@ void Layer::close(ViewInterface::WeakPtr vi)
 ////////////////////////////////////////////////////////////////////////
 /// DataFetcher
 
-DataFetcher::DataFetcher(Layer* layer,
+DataFetcher::DataFetcher(Layer::Ptr const& layer,
                          int width, int height,
                          int horTileCount, int verTileCount,
                          SourcePresentation::Ptr sp,

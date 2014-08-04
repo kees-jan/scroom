@@ -53,6 +53,7 @@ TiffPresentation::~TiffPresentation()
 
 void TiffPresentation::destroy()
 {
+  tbi->abortLoadingPresentation();
   tbi.reset();
 }
 

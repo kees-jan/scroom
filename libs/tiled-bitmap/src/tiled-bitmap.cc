@@ -55,7 +55,7 @@ static Scroom::MemoryBlobs::PageProvider::Ptr createProvider(double width, doubl
 ////////////////////////////////////////////////////////////////////////
 
 FileOperation::FileOperation(TiledBitmap::Ptr parent)
-  : parent(parent), waitingMutex(), waiting(true), timer(0)
+  : parent(parent), waitingMutex(), waiting(true)
 {
   parent->setWaiting();
 }
@@ -77,16 +77,16 @@ void FileOperation::doneWaiting()
 class LoadOperation : public FileOperation
 {
 private:
-  Layer* target;
+  Layer::Ptr target;
   SourcePresentation::Ptr thePresentation;
   Scroom::Semaphore done;
   ThreadPool::WeakQueue::Ptr queue;
 
 private:
-  LoadOperation(ThreadPool::WeakQueue::Ptr queue, Layer* l, SourcePresentation::Ptr sp,
+  LoadOperation(ThreadPool::WeakQueue::Ptr queue, Layer::Ptr const& l, SourcePresentation::Ptr sp,
                 TiledBitmap::Ptr parent);
 public:
-  static Ptr create(ThreadPool::WeakQueue::Ptr queue, Layer* l, SourcePresentation::Ptr sp,
+  static Ptr create(ThreadPool::WeakQueue::Ptr queue, Layer::Ptr const& l, SourcePresentation::Ptr sp,
                     TiledBitmap::Ptr parent);
   
   virtual ~LoadOperation() {}
@@ -97,14 +97,14 @@ public:
 };
 
 FileOperation::Ptr LoadOperation::create(ThreadPool::WeakQueue::Ptr queue,
-                                         Layer* l, SourcePresentation::Ptr sp,
+                                         Layer::Ptr const& l, SourcePresentation::Ptr sp,
                                          TiledBitmap::Ptr parent)
 {
   return FileOperation::Ptr(new LoadOperation(queue, l, sp, parent));
 }
                                          
 LoadOperation::LoadOperation(ThreadPool::WeakQueue::Ptr queue,
-                             Layer* l, SourcePresentation::Ptr sp,
+                             Layer::Ptr const& l, SourcePresentation::Ptr sp,
                              TiledBitmap::Ptr parent)
   : FileOperation(parent), target(l), thePresentation(sp), queue(queue)
 {
@@ -129,8 +129,6 @@ void LoadOperation::finished()
 }
 
 ////////////////////////////////////////////////////////////////////////
-
-////////////////////////////////////////////////////////////////////////
 // TiledBitmap
 
 TiledBitmap::Ptr TiledBitmap::create(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
@@ -142,7 +140,7 @@ TiledBitmap::Ptr TiledBitmap::create(int bitmapWidth, int bitmapHeight, LayerSpe
 
 TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
   :bitmapWidth(bitmapWidth), bitmapHeight(bitmapHeight), ls(ls), tileCount(0), tileFinishedCount(0),
-   fileOperation(), progressBroadcaster(Scroom::Utils::ProgressInterfaceBroadcaster::create()), queue(ThreadPool::Queue::create())
+   fileOperation(), progressBroadcaster(Scroom::Utils::ProgressInterfaceBroadcaster::create()), queue(ThreadPool::Queue::createAsync())
 {
 }
 
@@ -153,7 +151,7 @@ void TiledBitmap::initialize()
   unsigned int i = 0;
   int bpp = 0;
   LayerOperations::Ptr lo = ls[i];
-  Layer* prevLayer = NULL;
+  Layer::Ptr prevLayer;
   LayerOperations::Ptr prevLo;
   Scroom::MemoryBlobs::PageProvider::Ptr provider = createProvider(width, height, lo->getBpp());
   do
@@ -163,7 +161,7 @@ void TiledBitmap::initialize()
     
     bpp = lo->getBpp();
 
-    Layer* layer = new Layer(shared_from_this(), i, width, height, bpp, provider);
+    Layer::Ptr layer = Layer::create(shared_from_this<TiledBitmap>(), i, width, height, bpp, provider);
     layers.push_back(layer);
     if(prevLayer)
     {
@@ -186,16 +184,13 @@ TiledBitmap::~TiledBitmap()
   if(fileOperation)
   {
     fileOperation->abort();
+    fileOperation.reset();
   }
   coordinators.clear();
-  while(!layers.empty())
-  {
-    delete layers.back();
-    layers.pop_back();
-  }
+  layers.clear();
 }
 
-void TiledBitmap::connect(Layer* layer, Layer* prevLayer,
+void TiledBitmap::connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer,
                           LayerOperations::Ptr prevLo)
 {
   int horTileCount = prevLayer->getHorTileCount();
@@ -258,7 +253,7 @@ void TiledBitmap::setSource(SourcePresentation::Ptr sp)
 {
   if(!fileOperation)
   {
-    fileOperation = LoadOperation::create(queue->getWeak(), layers[0], sp, TiledBitmap::shared_from_this());
+    fileOperation = LoadOperation::create(queue->getWeak(), layers[0], sp, shared_from_this<TiledBitmap>());
     Sequentially()->schedule(fileOperation);
   }
   else
@@ -360,7 +355,7 @@ void TiledBitmap::redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRectangle presen
   if(zoom>0)
   {
     // Zooming in. This is always done using layer 0
-    Layer* layer = layers[0];
+    Layer::Ptr layer = layers[0];
     LayerOperations::Ptr layerOperations = ls[0];
 
     const int origWidth = presentationArea.width;
@@ -485,7 +480,7 @@ void TiledBitmap::redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRectangle presen
       presentationArea.width>>=3;
       presentationArea.height>>=3;
     }
-    Layer* layer = layers[layerNr];
+    Layer::Ptr layer = layers[layerNr];
     LayerOperations::Ptr layerOperations = ls[std::min(ls.size()-1, (size_t)layerNr)];
 
     const int origWidth = presentationArea.width;
@@ -611,6 +606,16 @@ void TiledBitmap::clearCaches(ViewInterface::Ptr viewInterface)
   }
 }
 
+void TiledBitmap::abortLoadingPresentation()
+{
+  queue.reset();
+  if(fileOperation)
+  {
+    fileOperation->abort();
+    fileOperation.reset();
+  }
+}
+
 void TiledBitmap::open(ViewInterface::WeakPtr viewInterface)
 {
   boost::mutex::scoped_lock lock(viewDataMutex);
@@ -619,7 +624,7 @@ void TiledBitmap::open(ViewInterface::WeakPtr viewInterface)
   vd->token.add(progressBroadcaster->subscribe(vd));
   lock.unlock();
   
-  BOOST_FOREACH(Layer* l, layers)
+  BOOST_FOREACH(Layer::Ptr const& l, layers)
   {
     l->open(viewInterface);
   }
@@ -627,7 +632,7 @@ void TiledBitmap::open(ViewInterface::WeakPtr viewInterface)
 
 void TiledBitmap::close(ViewInterface::WeakPtr vi)
 {
-  BOOST_FOREACH(Layer* l, layers)
+  BOOST_FOREACH(Layer::Ptr const& l, layers)
   {
     l->close(vi);
   }
