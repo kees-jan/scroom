@@ -71,7 +71,7 @@ bool WaitForAsyncOp::operator()()
 
     Sequentially()->schedule(boost::bind(clear, boost::ref(s)));
 
-    std::cout << "Waiting for " << name;
+    std::cout << "Waiting for " << name << std::endl;
     return true;
   }
 
@@ -98,15 +98,11 @@ void init_tests()
   const unsigned int sleepDuration = 2;
 
   functions.push_back(Sleep(sleepDuration));
-  // functions.push_back(logSizes);
-  // functions.push_back(BaseCounter("Baseline (no invalidate)", testDuration));
-  // 
-  // functions.push_back(Invalidator(sleepDuration));
-  // functions.push_back(InvalidatingCounter("Baseline (no redraw)", testDuration));
-  // 
+
   functions.push_back(boost::bind(setupTest1bpp, -2, width, height));
   functions.push_back(WaitForAsyncOp("File load 1bpp"));
 
+  // First run may fill the cache
   functions.push_back(boost::bind(setupTest1bpp, -2, width, height));
   functions.push_back(WaitForAsyncOp("File load 1bpp"));
 
