@@ -143,7 +143,7 @@ then
 fi
 
 # Ubuntu source packages
-for source_package in precise saucy trusty utopic
+for source_package in precise trusty utopic
 do
     echo_me $source_package
     ( rm -rf "$BUILD/$source_package" > /dev/null 2>&1 ;
