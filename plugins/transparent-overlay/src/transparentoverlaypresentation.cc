@@ -80,7 +80,7 @@ void TransparentOverlayPresentation::close(ViewInterface::WeakPtr vi)
   if(e != viewData.end())
   {
     e->second->close();
-    viewData.erase(e);
+    viewData.erase(e->first);
   }
 }
 
