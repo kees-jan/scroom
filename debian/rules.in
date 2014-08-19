@@ -123,7 +123,7 @@ binary-arch: install
 	dh_compress -a
 	dh_fixperms -a
 #	dh_perl
-#	dh_makeshlibs
+	dh_makeshlibs -a -V
 	dh_installdeb -a
 	dh_shlibdeps -a
 	dh_gencontrol -a
