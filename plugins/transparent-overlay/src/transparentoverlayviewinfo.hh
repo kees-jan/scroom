@@ -21,7 +21,9 @@
 
 #include <list>
 #include <map>
+#include <vector>
 
+#include <gtk/gtk.h>
 #include <cairo.h>
 
 #include <boost/shared_ptr.hpp>
@@ -67,11 +69,14 @@ private:
   
 private:
   ViewInterface::Ptr parentView;
-  ChildMap children;
+  ChildMap childViews;
   Scroom::Utils::ProgressInterfaceMultiplexer::Ptr progressInterfaceMultiplexer;
+  std::vector<GtkWidget*> buttons;
+  std::vector<PresentationInterface::Ptr> children;
 
 private:
   TransparentOverlayViewInfo(const ViewInterface::WeakPtr& vi);
+  void createToggleToolButton();
 
 public:
   static Ptr create(const ViewInterface::WeakPtr& vi);
@@ -85,6 +90,9 @@ public:
   void invalidate() { parentView->invalidate(); }
   ProgressInterface::Ptr getProgressInterface()
   { return progressInterfaceMultiplexer->createProgressInterface(); }
+
+  // Helpers
+  void toggled(GtkToggleButton* button);
 };
 
 #endif
