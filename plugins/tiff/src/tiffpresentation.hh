@@ -22,6 +22,7 @@
 #include <string>
 #include <map>
 #include <list>
+#include <set>
 
 #include <scroom/scroominterface.hh>
 #include <scroom/tiledbitmapinterface.hh>
@@ -31,16 +32,14 @@
 
 typedef struct tiff TIFF;
 
-class TiffPresentation : public PresentationInterface, public SourcePresentation, public Colormappable, public ColormapProvider,
+class TiffPresentation : public SourcePresentation, public ColormapProvider,
                          public virtual Scroom::Utils::Base
 {
 public:
   typedef boost::shared_ptr<TiffPresentation> Ptr;
 
 private:
-  typedef bool Dummy;
-  typedef std::map<ViewInterface::WeakPtr, Dummy> Views;
-  static const Dummy dummy;
+  typedef std::set<ViewInterface::WeakPtr> Views;
   
   std::string fileName;
   TIFF* tif;
@@ -97,9 +96,9 @@ public:
 
 public:
   virtual void observerAdded(Viewable::Ptr observer, Scroom::Bookkeeping::Token token);
-  void setColormap(Colormap::Ptr colormap);
-  Colormap::Ptr getOriginalColormap();
-  int getNumberOfColors();
+  virtual void setColormap(Colormap::Ptr colormap);
+  virtual Colormap::Ptr getOriginalColormap();
+  virtual int getNumberOfColors();
 
   ////////////////////////////////////////////////////////////////////////
   // Helpers
@@ -109,7 +108,7 @@ public:
   
 };
 
-class TiffPresentationWrapper : public PresentationInterface
+class TiffPresentationWrapper : public PresentationInterface, public Colormappable
 {
 public:
   typedef boost::shared_ptr<TiffPresentationWrapper> Ptr;
@@ -139,7 +138,14 @@ public:
   virtual bool isPropertyDefined(const std::string& name);
   virtual std::string getTitle();
 
-  
+  ////////////////////////////////////////////////////////////////////////
+  // Colormappable
+  ////////////////////////////////////////////////////////////////////////
+
+  virtual void observerAdded(Viewable::Ptr observer, Scroom::Bookkeeping::Token token);
+  virtual void setColormap(Colormap::Ptr colormap);
+  virtual Colormap::Ptr getOriginalColormap();
+  virtual int getNumberOfColors();
 };
 
 #endif

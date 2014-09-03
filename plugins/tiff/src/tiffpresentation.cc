@@ -25,8 +25,6 @@
 
 #include <scroom/layeroperations.hh>
 
-const TiffPresentation::Dummy TiffPresentation::dummy(0);
-
 TiffPresentation::TiffPresentation()
     : fileName(), tif(NULL), height(0), width(0), tbi(), bpp(0)
 {
@@ -197,13 +195,7 @@ GdkRectangle TiffPresentation::getRect()
 
 void TiffPresentation::open(ViewInterface::WeakPtr viewInterface)
 {
-  views[viewInterface] = dummy;
-  std::list<Viewable::Ptr> observers = getObservers();
-  for (std::list<Viewable::Ptr>::iterator cur = observers.begin();
-      cur != observers.end(); ++cur)
-  {
-    (*cur)->open(viewInterface);
-  }
+  views.insert(viewInterface);
 
   if (tbi)
     tbi->open(viewInterface);
@@ -217,12 +209,6 @@ void TiffPresentation::open(ViewInterface::WeakPtr viewInterface)
 void TiffPresentation::close(ViewInterface::WeakPtr vi)
 {
   views.erase(vi);
-  std::list<Viewable::Ptr> observers = getObservers();
-  for (std::list<Viewable::Ptr>::iterator cur = observers.begin();
-      cur != observers.end(); ++cur)
-  {
-    (*cur)->close(vi);
-  }
 
   if (tbi)
     tbi->close(vi);
@@ -324,7 +310,7 @@ void TiffPresentation::observerAdded(Viewable::Ptr observer,
 {
   BOOST_FOREACH(const Views::value_type& p, views)
   {
-    observer->open(p.first);
+    observer->open(p);
   }
 }
 
@@ -333,7 +319,7 @@ void TiffPresentation::setColormap(Colormap::Ptr colormap)
   this->colormap = colormap;
   BOOST_FOREACH(const Views::value_type& p, views)
   {
-    ViewInterface::Ptr v = p.first.lock();
+    ViewInterface::Ptr v = p.lock();
     if(v)
     {
       if (tbi)
@@ -391,6 +377,13 @@ GdkRectangle TiffPresentationWrapper::getRect()
 void TiffPresentationWrapper::open(ViewInterface::WeakPtr viewInterface)
 {
   presentation->open(viewInterface);
+
+  std::list<Viewable::Ptr> observers = getObservers();
+  for (std::list<Viewable::Ptr>::iterator cur = observers.begin();
+      cur != observers.end(); ++cur)
+  {
+    (*cur)->open(viewInterface);
+  }
 }
 
 void TiffPresentationWrapper::redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
@@ -401,6 +394,14 @@ void TiffPresentationWrapper::redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRect
 void TiffPresentationWrapper::close(ViewInterface::WeakPtr vi)
 {
   presentation->close(vi);
+
+  std::list<Viewable::Ptr> observers = getObservers();
+  for (std::list<Viewable::Ptr>::iterator cur = observers.begin();
+       cur != observers.end(); ++cur)
+  {
+    (*cur)->close(vi);
+  }
+
 }
 
 bool TiffPresentationWrapper::getProperty(const std::string& name, std::string& value)
@@ -418,3 +419,22 @@ std::string TiffPresentationWrapper::getTitle()
   return presentation->getTitle();
 }
 
+void TiffPresentationWrapper::observerAdded(Viewable::Ptr observer, Scroom::Bookkeeping::Token token)
+{
+  presentation->observerAdded(observer, token);
+}
+
+void TiffPresentationWrapper::setColormap(Colormap::Ptr colormap)
+{
+  presentation->setColormap(colormap);
+}
+
+Colormap::Ptr TiffPresentationWrapper::getOriginalColormap()
+{
+  return presentation->getOriginalColormap();
+}
+
+int TiffPresentationWrapper::getNumberOfColors()
+{
+  return presentation->getNumberOfColors();
+}
