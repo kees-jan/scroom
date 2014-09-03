@@ -53,8 +53,11 @@ TiffPresentation::~TiffPresentation()
 
 void TiffPresentation::destroy()
 {
-  tbi->abortLoadingPresentation();
-  tbi.reset();
+  if(tbi)
+  {
+    tbi->abortLoadingPresentation();
+    tbi.reset();
+  }
 }
 
 bool TiffPresentation::load(const std::string& fileName)
