@@ -25,7 +25,10 @@
 #include <gdk/gdk.h>
 #include <cairo.h>
 
+#include <set>
+
 #include <scroom/viewinterface.hh>
+#include <scroom/observable.hh>
 
 /**
  * Implement Viewable if you want to be able to receive events when a
@@ -63,6 +66,8 @@ public:
   virtual void close(ViewInterface::WeakPtr vi)=0;
 };
 
+typedef Scroom::Utils::Observable<Viewable> ViewObservable;
+
 /**
  * Represent some 2D content
  *
@@ -72,7 +77,7 @@ public:
  * Objects implementing this interface are typically returned by
  * NewInterface::createNew() and OpenInterface::open().
  */
-class PresentationInterface : public Viewable
+class PresentationInterface : public Viewable, public ViewObservable
 {
 public:
   typedef boost::shared_ptr<PresentationInterface> Ptr;
@@ -112,6 +117,22 @@ public:
 
   /** Return the title of the presentation */
   virtual std::string getTitle()=0;
+};
+
+class PresentationBase : public PresentationInterface
+{
+public:
+  // Viewable
+  virtual void open(ViewInterface::WeakPtr vi);
+  virtual void close(ViewInterface::WeakPtr vi);
+
+  // ViewObservable
+  virtual void observerAdded(Viewable::Ptr viewable, Scroom::Bookkeeping::Token t);
+
+protected:
+  virtual void viewAdded(ViewInterface::WeakPtr vi)=0;
+  virtual void viewRemoved(ViewInterface::WeakPtr vi)=0;
+  virtual std::set<ViewInterface::WeakPtr> getViews()=0;
 };
 
 /**

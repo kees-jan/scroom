@@ -47,6 +47,7 @@ incscroom_HEADERS = \
 	inc/scroom/presentationinterface.hh \
 	inc/scroom/progressinterface.hh \
 	inc/scroom/progressinterfacehelpers.hh \
+	inc/scroom/roi.hh \
 	inc/scroom/scroominterface.hh \
 	inc/scroom/scroomplugin.hh \
 	inc/scroom/semaphore.hh \
@@ -287,14 +288,36 @@ scroomlib_libs = \
 	libs/scroom/src/libsscroom.la
 
 libs_scroom_src_libsscroom_la_SOURCES = \
-	libs/scroom/src/bitmap-helpers.cc
+	libs/scroom/src/bitmap-helpers.cc \
+	libs/scroom/src/roi-parser.hh \
+	libs/scroom/src/presentationinterface.cc
 
 libs_scroom_src_libsscroom_la_LIBADD = \
 	@SCROOMLIB_LIBS@ \
 	@BOOSTTHREADLIB@
 
-scroomlib_check_programs =
-scroomlib_tests = 
+if BOOST_UNITTESTS
+
+scroomlib_check_programs = \
+	libs/scroom/test/libscroom-tests
+
+libs_scroom_test_libscroom_tests_CPPFLAGS = @SCROOMLIB_CFLAGS@ -I $(top_srcdir)/inc -I $(top_srcdir)/libs/scroom/src @BOOST_FUTURES_CPPFLAGS@
+
+# 	-I $(srcdir)/libs/memory-manager/src
+
+libs_scroom_test_libscroom_tests_SOURCES = \
+	libs/scroom/test/main.cc \
+	libs/scroom/test/parse_locations_test.cc
+
+libs_scroom_test_libscroom_tests_LDADD = \
+	libs/scroom/src/libsscroom.la \
+	libs/boost-test-helper/src/libsboosttesthelper.la
+
+scroomlib_tests = \
+	libs/scroom/test/libscroom-tests
+
+endif BOOST_UNITTESTS
+
 
 ########################################################################
 ### libs/tiled-bitmap
@@ -599,3 +622,6 @@ dist-hook:
 # avoid an automake error about custom rules overriding built-in ones.
 plugin_lib_install_target = install-pluginLTLIBRARIES
 $(plugin_lib_install_target): install-libLTLIBRARIES
+
+# Target for building, but not executing, the tests
+checkPROGRAMS: all-am $(check_PROGRAMS)

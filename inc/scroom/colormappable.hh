@@ -180,7 +180,7 @@ public:
  * available colormaps, and when one is selected, setColormap() will
  * be called.
  */
-class Colormappable: public virtual Scroom::Utils::Observable<Viewable>
+class Colormappable
 {
 public:
   typedef boost::shared_ptr<Colormappable> Ptr;
@@ -191,12 +191,6 @@ public:
 
   /** Request that the presentation use the given colormap */
   virtual void setColormap(Colormap::Ptr colormap)=0;
-
-  // /**
-  //  * Request that the presentation uses the given alpha value, in
-  //  * addition to any alpha that may be present in the Colormap, for the given view only.
-  //  */
-  // virtual void setAlpha(ViewInterface::WeakPtr const& vi, double alpha)=0;
 
   /** Retrieve the images colormap (if any) */
   virtual Colormap::Ptr getOriginalColormap()=0;

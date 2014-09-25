@@ -18,7 +18,7 @@
 					<folderInfo id="org.eclipse.linuxtools.cdt.autotools.core.toolChain.1972735043.166492715" name="/" resourcePath="">
 						<toolChain id="org.eclipse.linuxtools.cdt.autotools.core.toolChain.16734134" name="GNU Autotools Toolchain" superClass="org.eclipse.linuxtools.cdt.autotools.core.toolChain">
 							<targetPlatform id="org.eclipse.linuxtools.cdt.autotools.core.toolchain.targetPlatform.551205601" isAbstract="false" name="GNU Autotools Target Platform" superClass="org.eclipse.linuxtools.cdt.autotools.core.toolchain.targetPlatform"/>
-							<builder arguments="-k -j6" autoBuildTarget="" command="make" enableAutoBuild="true" id="org.eclipse.linuxtools.cdt.autotools.core.toolchain.builder.123506073" incrementalBuildTarget="check" keepEnvironmentInBuildfile="false" managedBuildOn="false" superClass="org.eclipse.linuxtools.cdt.autotools.core.toolchain.builder"/>
+							<builder arguments="-k -j6" autoBuildTarget="" command="make" enableAutoBuild="true" id="org.eclipse.linuxtools.cdt.autotools.core.toolchain.builder.123506073" incrementalBuildTarget="checkPROGRAMS" keepEnvironmentInBuildfile="false" managedBuildOn="false" superClass="org.eclipse.linuxtools.cdt.autotools.core.toolchain.builder"/>
 							<tool id="org.eclipse.linuxtools.cdt.autotools.core.gnu.toolchain.tool.configure.965519173" name="configure" superClass="org.eclipse.linuxtools.cdt.autotools.core.gnu.toolchain.tool.configure">
 								<option id="org.eclipse.linuxtools.cdt.autotools.core.option.configure.name.1324822395" name="Name" superClass="org.eclipse.linuxtools.cdt.autotools.core.option.configure.name" value="org.eclipse.linuxtools.cdt.autotools.core.toolChain.1972735043" valueType="string"/>
 							</tool>
@@ -875,38 +875,6 @@
 				<buildCommand>make</buildCommand>
 				<buildArguments>-k -j6</buildArguments>
 				<buildTarget>libs/scroom/src/libsscroom.la</buildTarget>
-				<stopOnError>true</stopOnError>
-				<useDefaultCommand>true</useDefaultCommand>
-				<runAllBuilders>false</runAllBuilders>
-			</target>
-			<target name="libs/scroom/test/libs_scroom_test_libscroom_tests-main.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
-				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
-				<buildTarget>libs/scroom/test/libs_scroom_test_libscroom_tests-main.o</buildTarget>
-				<stopOnError>true</stopOnError>
-				<useDefaultCommand>true</useDefaultCommand>
-				<runAllBuilders>false</runAllBuilders>
-			</target>
-			<target name="libs/scroom/test/libs_scroom_test_libscroom_tests-main.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
-				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
-				<buildTarget>libs/scroom/test/libs_scroom_test_libscroom_tests-main.obj</buildTarget>
-				<stopOnError>true</stopOnError>
-				<useDefaultCommand>true</useDefaultCommand>
-				<runAllBuilders>false</runAllBuilders>
-			</target>
-			<target name="libs/scroom/test/libs_scroom_test_libscroom_tests-parse_locations_test.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
-				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
-				<buildTarget>libs/scroom/test/libs_scroom_test_libscroom_tests-parse_locations_test.o</buildTarget>
-				<stopOnError>true</stopOnError>
-				<useDefaultCommand>true</useDefaultCommand>
-				<runAllBuilders>false</runAllBuilders>
-			</target>
-			<target name="libs/scroom/test/libs_scroom_test_libscroom_tests-parse_locations_test.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
-				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
-				<buildTarget>libs/scroom/test/libs_scroom_test_libscroom_tests-parse_locations_test.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
 				<runAllBuilders>false</runAllBuilders>

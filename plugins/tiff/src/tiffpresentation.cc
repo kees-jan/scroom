@@ -212,7 +212,7 @@ GdkRectangle TiffPresentation::getRect()
   return rect;
 }
 
-void TiffPresentation::open(ViewInterface::WeakPtr viewInterface)
+void TiffPresentation::viewAdded(ViewInterface::WeakPtr viewInterface)
 {
   views.insert(viewInterface);
 
@@ -225,7 +225,7 @@ void TiffPresentation::open(ViewInterface::WeakPtr viewInterface)
   }
 }
 
-void TiffPresentation::close(ViewInterface::WeakPtr vi)
+void TiffPresentation::viewRemoved(ViewInterface::WeakPtr vi)
 {
   views.erase(vi);
 
@@ -236,6 +236,11 @@ void TiffPresentation::close(ViewInterface::WeakPtr vi)
     printf(
         "ERROR: TiffPresentation::close(): No TiledBitmapInterface available!\n");
   }
+}
+
+std::set<ViewInterface::WeakPtr> TiffPresentation::getViews()
+{
+  return views;
 }
 
 void TiffPresentation::redraw(ViewInterface::Ptr vi, cairo_t* cr,
@@ -324,15 +329,6 @@ void TiffPresentation::done()
 // Colormappable
 ////////////////////////////////////////////////////////////////////////
 
-void TiffPresentation::observerAdded(Viewable::Ptr observer,
-    Scroom::Bookkeeping::Token)
-{
-  BOOST_FOREACH(const Views::value_type& p, views)
-  {
-    observer->open(p);
-  }
-}
-
 void TiffPresentation::setColormap(Colormap::Ptr colormap)
 {
   this->colormap = colormap;
@@ -393,16 +389,9 @@ GdkRectangle TiffPresentationWrapper::getRect()
   return presentation->getRect();
 }
 
-void TiffPresentationWrapper::open(ViewInterface::WeakPtr viewInterface)
+void TiffPresentationWrapper::viewAdded(ViewInterface::WeakPtr viewInterface)
 {
-  presentation->open(viewInterface);
-
-  std::list<Viewable::Ptr> observers = getObservers();
-  for (std::list<Viewable::Ptr>::iterator cur = observers.begin();
-      cur != observers.end(); ++cur)
-  {
-    (*cur)->open(viewInterface);
-  }
+  presentation->viewAdded(viewInterface);
 }
 
 void TiffPresentationWrapper::redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
@@ -410,17 +399,14 @@ void TiffPresentationWrapper::redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRect
   presentation->redraw(vi, cr, presentationArea, zoom);
 }
 
-void TiffPresentationWrapper::close(ViewInterface::WeakPtr vi)
+void TiffPresentationWrapper::viewRemoved(ViewInterface::WeakPtr vi)
 {
-  presentation->close(vi);
+  presentation->viewRemoved(vi);
+}
 
-  std::list<Viewable::Ptr> observers = getObservers();
-  for (std::list<Viewable::Ptr>::iterator cur = observers.begin();
-       cur != observers.end(); ++cur)
-  {
-    (*cur)->close(vi);
-  }
-
+std::set<ViewInterface::WeakPtr> TiffPresentationWrapper::getViews()
+{
+  return presentation->getViews();
 }
 
 bool TiffPresentationWrapper::getProperty(const std::string& name, std::string& value)
@@ -436,11 +422,6 @@ bool TiffPresentationWrapper::isPropertyDefined(const std::string& name)
 std::string TiffPresentationWrapper::getTitle()
 {
   return presentation->getTitle();
-}
-
-void TiffPresentationWrapper::observerAdded(Viewable::Ptr observer, Scroom::Bookkeeping::Token token)
-{
-  presentation->observerAdded(observer, token);
 }
 
 void TiffPresentationWrapper::setColormap(Colormap::Ptr colormap)

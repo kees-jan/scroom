@@ -76,12 +76,18 @@ public:
   ////////////////////////////////////////////////////////////////////////
 
   virtual GdkRectangle getRect();
-  virtual void open(ViewInterface::WeakPtr viewInterface);
   virtual void redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);
-  virtual void close(ViewInterface::WeakPtr vi);
   virtual bool getProperty(const std::string& name, std::string& value);
   virtual bool isPropertyDefined(const std::string& name);
   virtual std::string getTitle();
+
+  ////////////////////////////////////////////////////////////////////////
+  // PresentationBase
+  ////////////////////////////////////////////////////////////////////////
+
+  virtual void viewAdded(ViewInterface::WeakPtr viewInterface);
+  virtual void viewRemoved(ViewInterface::WeakPtr vi);
+  virtual std::set<ViewInterface::WeakPtr> getViews();
 
   ////////////////////////////////////////////////////////////////////////
   // SourcePresentation
@@ -95,7 +101,6 @@ public:
   ////////////////////////////////////////////////////////////////////////
 
 public:
-  virtual void observerAdded(Viewable::Ptr observer, Scroom::Bookkeeping::Token token);
   virtual void setColormap(Colormap::Ptr colormap);
   virtual Colormap::Ptr getOriginalColormap();
   virtual int getNumberOfColors();
@@ -108,7 +113,7 @@ public:
   
 };
 
-class TiffPresentationWrapper : public PresentationInterface, public Colormappable
+class TiffPresentationWrapper : public PresentationBase, public Colormappable
 {
 public:
   typedef boost::shared_ptr<TiffPresentationWrapper> Ptr;
@@ -131,18 +136,23 @@ public:
   ////////////////////////////////////////////////////////////////////////
 
   virtual GdkRectangle getRect();
-  virtual void open(ViewInterface::WeakPtr viewInterface);
   virtual void redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);
-  virtual void close(ViewInterface::WeakPtr vi);
   virtual bool getProperty(const std::string& name, std::string& value);
   virtual bool isPropertyDefined(const std::string& name);
   virtual std::string getTitle();
 
   ////////////////////////////////////////////////////////////////////////
+  // PresentationBase
+  ////////////////////////////////////////////////////////////////////////
+
+  virtual void viewAdded(ViewInterface::WeakPtr viewInterface);
+  virtual void viewRemoved(ViewInterface::WeakPtr vi);
+  virtual std::set<ViewInterface::WeakPtr> getViews();
+
+  ////////////////////////////////////////////////////////////////////////
   // Colormappable
   ////////////////////////////////////////////////////////////////////////
 
-  virtual void observerAdded(Viewable::Ptr observer, Scroom::Bookkeeping::Token token);
   virtual void setColormap(Colormap::Ptr colormap);
   virtual Colormap::Ptr getOriginalColormap();
   virtual int getNumberOfColors();

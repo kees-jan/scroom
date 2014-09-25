@@ -53,7 +53,7 @@ namespace Scroom
       {
         result = ColormapProvider::Ptr(new ColormapProvider(c));
 
-        Scroom::Utils::Stuff r = c->registerStrongObserver(result);
+        Scroom::Utils::Stuff r = p->registerStrongObserver(result);
         result->registration = r;
       }
       else
