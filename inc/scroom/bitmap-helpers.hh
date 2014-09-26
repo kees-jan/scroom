@@ -36,8 +36,8 @@ namespace Scroom
       typedef boost::shared_ptr<BitmapSurface> Ptr;
 
     private:
-      cairo_surface_t* surface;
-      unsigned char* data;
+      cairo_surface_t* const surface;
+      unsigned char* const data;
   
     public:
       static Ptr create(int width, int height);

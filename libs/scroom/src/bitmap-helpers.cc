@@ -45,17 +45,13 @@ namespace Scroom
       return surface;
     }
 
-    BitmapSurface::BitmapSurface(int width, int height)
-    {
-      this->surface = cairo_image_surface_create(CAIRO_FORMAT_RGB24, width, height);
-      this->data = NULL;
-    }
+    BitmapSurface::BitmapSurface(int width, int height) :
+        surface(cairo_image_surface_create(CAIRO_FORMAT_RGB24, width, height)), data(NULL)
+    {}
 
-    BitmapSurface::BitmapSurface(int width, int height, int stride, unsigned char* data)
-    {
-      this->surface = cairo_image_surface_create_for_data(data, CAIRO_FORMAT_RGB24, width, height, stride);
-      this->data = data;
-    }
+    BitmapSurface::BitmapSurface(int width, int height, int stride, unsigned char* data) :
+        surface(cairo_image_surface_create_for_data(data, CAIRO_FORMAT_RGB24, width, height, stride)), data(data)
+    {}
 
     
   } // namespace Bitmap

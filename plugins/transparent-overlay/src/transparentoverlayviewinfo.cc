@@ -213,6 +213,8 @@ void TransparentOverlayViewInfo::redraw(cairo_t* cr, GdkRectangle presentationAr
       cairo_paint_with_alpha(cr, 1.0/++count);
     }
   }
+
+  cairo_destroy(cr_sub);
 }
 
 void TransparentOverlayViewInfo::toggled(GtkToggleButton*)
