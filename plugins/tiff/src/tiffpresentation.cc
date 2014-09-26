@@ -58,124 +58,143 @@ void TiffPresentation::destroy()
   }
 }
 
+#define TIFFGetFieldChecked(file, field, ...) \
+	if(1!=TIFFGetField(file, field, ##__VA_ARGS__)) \
+	  throw std::invalid_argument("Field not present in tiff file: " #field);
+
 bool TiffPresentation::load(const std::string& fileName)
 {
-  this->fileName = fileName;
-  tif = TIFFOpen(fileName.c_str(), "r");
-  if (!tif)
+  try
   {
-    // Todo: report error
-    printf("PANIC: Failed to open file %s\n", fileName.c_str());
-    return false;
-  }
-
-  uint16 spp;
-  TIFFGetField(tif, TIFFTAG_SAMPLESPERPIXEL, &spp);
-  if (spp != 1)
-  {
-    // Todo: Colour not yet supported
-    printf("PANIC: Samples per pixel is not 1, but %d. Giving up\n", spp);
-    return false;
-  }
-
-  TIFFGetField(tif, TIFFTAG_IMAGEWIDTH, &width);
-  TIFFGetField(tif, TIFFTAG_IMAGELENGTH, &height);
-
-  uint16 bpp;
-  TIFFGetField(tif, TIFFTAG_BITSPERSAMPLE, &bpp);
-  this->bpp = bpp;
-
-  uint16 *r, *g, *b;
-  int result = TIFFGetField(tif, TIFFTAG_COLORMAP, &r, &g, &b);
-  if (result == 1)
-  {
-    originalColormap = Colormap::create();
-    originalColormap->name = "Original";
-    int count = 1 << bpp;
-    originalColormap->colors.resize(count);
-
-    for (int i = 0; i < count; i++)
+    this->fileName = fileName;
+    tif = TIFFOpen(fileName.c_str(), "r");
+    if (!tif)
     {
-      originalColormap->colors[i] = Color(1.0 * r[i] / 0xFFFF,
-          1.0 * g[i] / 0xFFFF, 1.0 * b[i] / 0xFFFF);
+      // Todo: report error
+      printf("PANIC: Failed to open file %s\n", fileName.c_str());
+      return false;
     }
-  }
-  else
-  {
-    colormap = Colormap::createDefault(1 << bpp);
-  }
 
-  uint16 photometric;
-  TIFFGetField(tif, TIFFTAG_PHOTOMETRIC, &photometric);
-  switch (photometric)
-  {
-  case PHOTOMETRIC_MINISBLACK:
-    if (originalColormap)
-      printf(
-          "WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
-
-    if (bpp == 1 || bpp == 8)
-      originalColormap = Colormap::createDefault(2);
-    else
-      originalColormap = Colormap::createDefault(1 << bpp);
-
-    break;
-
-  case PHOTOMETRIC_MINISWHITE:
-    if (originalColormap)
-      printf(
-          "WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
-
-    if (bpp == 1 || bpp == 8)
-      originalColormap = Colormap::createDefaultInverted(2);
-    else
-      originalColormap = Colormap::createDefaultInverted(1 << bpp);
-
-    break;
-
-  case PHOTOMETRIC_PALETTE:
-    if (!originalColormap)
+    uint16 spp;
+    if (1 != TIFFGetField(tif, TIFFTAG_SAMPLESPERPIXEL, &spp))
+      spp = 1; // Default value, according to tiff spec
+    if (spp != 1)
     {
-      printf(
-          "WEIRD: Photometric is palette, but tiff doesn't contain a colormap\n");
-      originalColormap = Colormap::createDefault(1 << bpp);
+      // Todo: Colour not yet supported
+      printf("PANIC: Samples per pixel is not 1, but %d. Giving up\n", spp);
+      return false;
     }
-    break;
 
-  default:
-    printf("PANIC: Unrecognized value for photometric\n");
-    break;
-  }
+    TIFFGetFieldChecked(tif, TIFFTAG_IMAGEWIDTH, &width);
+    TIFFGetFieldChecked(tif, TIFFTAG_IMAGELENGTH, &height);
 
-  colormap = originalColormap;
+    uint16 bpp;
+    if( 1 != TIFFGetField(tif, TIFFTAG_BITSPERSAMPLE, &bpp))
+      bpp = 1;
+    this->bpp = bpp;
 
-  printf("This bitmap has size %d*%d\n", width, height);
-  LayerSpec ls;
+    uint16 *r, *g, *b;
+    int result = TIFFGetField(tif, TIFFTAG_COLORMAP, &r, &g, &b);
+    if (result == 1)
+    {
+      originalColormap = Colormap::create();
+      originalColormap->name = "Original";
+      int count = 1 << bpp;
+      originalColormap->colors.resize(count);
 
-  if (bpp == 2 || bpp == 4 || photometric == PHOTOMETRIC_PALETTE)
+      for (int i = 0; i < count; i++)
+      {
+        originalColormap->colors[i] = Color(1.0 * r[i] / 0xFFFF,
+            1.0 * g[i] / 0xFFFF, 1.0 * b[i] / 0xFFFF);
+      }
+    }
+    else
+    {
+      colormap = Colormap::createDefault(1 << bpp);
+    }
+
+    uint16 photometric;
+    TIFFGetFieldChecked(tif, TIFFTAG_PHOTOMETRIC, &photometric);
+    switch (photometric)
+    {
+    case PHOTOMETRIC_MINISBLACK:
+      if (originalColormap)
+        printf(
+            "WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
+
+      if (bpp == 1 || bpp == 8)
+        originalColormap = Colormap::createDefault(2);
+      else
+        originalColormap = Colormap::createDefault(1 << bpp);
+
+      break;
+
+    case PHOTOMETRIC_MINISWHITE:
+      if (originalColormap)
+        printf(
+            "WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
+
+      if (bpp == 1 || bpp == 8)
+        originalColormap = Colormap::createDefaultInverted(2);
+      else
+        originalColormap = Colormap::createDefaultInverted(1 << bpp);
+
+      break;
+
+    case PHOTOMETRIC_PALETTE:
+      if (!originalColormap)
+      {
+        printf(
+            "WEIRD: Photometric is palette, but tiff doesn't contain a colormap\n");
+        originalColormap = Colormap::createDefault(1 << bpp);
+      }
+      break;
+
+    default:
+      printf("PANIC: Unrecognized value for photometric\n");
+      break;
+    }
+
+    colormap = originalColormap;
+
+    printf("This bitmap has size %d*%d\n", width, height);
+    LayerSpec ls;
+
+    if (bpp == 2 || bpp == 4 || photometric == PHOTOMETRIC_PALETTE)
+    {
+      ls.push_back(
+          Operations::create(shared_from_this<ColormapProvider>(), bpp));
+      ls.push_back(
+          OperationsColormapped::create(shared_from_this<ColormapProvider>(),
+              bpp));
+      properties[COLORMAPPABLE_PROPERTY_NAME] = "";
+    }
+    else if (bpp == 1)
+    {
+      ls.push_back(
+          Operations1bpp::create(shared_from_this<ColormapProvider>()));
+      ls.push_back(
+          Operations8bpp::create(shared_from_this<ColormapProvider>()));
+    }
+    else if (bpp == 8)
+    {
+      ls.push_back(
+          Operations8bpp::create(shared_from_this<ColormapProvider>()));
+    }
+    else
+    {
+      printf("PANIC: %d bits per pixel not supported\n", bpp);
+      return false;
+    }
+
+    tbi = createTiledBitmap(width, height, ls);
+    tbi->setSource(shared_from_this<SourcePresentation>());
+    return true;
+  } catch (const std::exception& ex)
   {
-    ls.push_back(Operations::create(shared_from_this<ColormapProvider>(), bpp));
-    ls.push_back(OperationsColormapped::create(shared_from_this<ColormapProvider>(), bpp));
-    properties[COLORMAPPABLE_PROPERTY_NAME] = "";
-  }
-  else if (bpp == 1)
-  {
-    ls.push_back(Operations1bpp::create(shared_from_this<ColormapProvider>()));
-    ls.push_back(Operations8bpp::create(shared_from_this<ColormapProvider>()));
-  }
-  else if (bpp == 8)
-  {
-    ls.push_back(Operations8bpp::create(shared_from_this<ColormapProvider>()));
-  }
-  else
-  {
-    printf("PANIC: %d bits per pixel not supported\n", bpp);
+    printf("PANIC: %s\n", ex.what());
     return false;
   }
-
-  tbi = createTiledBitmap(width, height, ls);
-  tbi->setSource(shared_from_this<SourcePresentation>());
-  return true;
 }
 
 ////////////////////////////////////////////////////////////////////////
