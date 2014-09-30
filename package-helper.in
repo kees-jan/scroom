@@ -112,7 +112,7 @@ then
     TARGET_PACKAGE=scroom-snapshot
     CONTROL=control.snapshot
 else
-    TARGET_PACKAGE=scroom-0.5
+    TARGET_PACKAGE=scroom-0.6
     CONTROL=control.release
 fi || exit 1
 
