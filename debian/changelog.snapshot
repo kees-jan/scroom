@@ -1,3 +1,9 @@
+scroom (0.5.5-48-g475f05d-1) precise; urgency=low
+
+  * Snapshot release
+
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Thu, 04 Sep 2014 11:26:18 +0200
+
 scroom (0.5.5-45-g0c4247e-3) precise; urgency=low
 
   * Snapshot release
