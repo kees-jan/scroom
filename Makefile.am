@@ -107,7 +107,7 @@ libs_compat_tests_boost_future_test_futures_test_SOURCES = \
 
 libs_compat_tests_boost_future_test_futures_test_CPPFLAGS = @BOOST_FUTURES_CPPFLAGS@
 
-libs_compat_tests_boost_future_test_futures_test_LDADD = @BOOSTTHREADLIB@ \
+libs_compat_tests_boost_future_test_futures_test_LDADD = @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
 	libs/boost-test-helper/src/libsboosttesthelper.la
 
 compat_tests_tests = \
@@ -135,7 +135,7 @@ libs_sanity_tests_sanity_test_SOURCES = \
 	libs/sanity-tests/boost-smart-pointers.cc \
 	libs/sanity-tests/boost-bind.cc
 
-libs_sanity_tests_sanity_test_LDADD = @BOOSTTHREADLIB@ \
+libs_sanity_tests_sanity_test_LDADD = @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
 	libs/boost-test-helper/src/libsboosttesthelper.la
 
 sanity_tests_tests = \
@@ -160,7 +160,7 @@ libs_util_src_libsutil_la_SOURCES = \
 	libs/util/src/assertions.cc \
 	libs/util/src/progressinterfacehelpers.cc
 
-libs_util_src_libsutil_la_LIBADD = @UTILS_LIBS@ @BOOSTTHREADLIB@
+libs_util_src_libsutil_la_LIBADD = @UTILS_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
 
 if BOOST_UNITTESTS
 
@@ -180,7 +180,7 @@ libs_util_test_utils_tests_SOURCES = \
 	libs/util/test/progressstateinterfacestub.cc \
 	libs/util/test/progressinterfaceconversion-tests.cc
 
-libs_util_test_utils_tests_LDADD = @BOOSTTHREADLIB@ @UTILS_LIBS@  \
+libs_util_test_utils_tests_LDADD = @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @UTILS_LIBS@  \
 	libs/util/src/libsutil.la \
 	libs/boost-test-helper/src/libsboosttesthelper.la
 
@@ -202,7 +202,7 @@ libs_threadpool_src_libsthreadpool_la_SOURCES = \
 	libs/threadpool/src/queue.cc \
 	libs/threadpool/src/queue.hh \
 	libs/threadpool/src/async-deleter.cc
-libs_threadpool_src_libsthreadpool_la_LIBADD = @BOOSTTHREADLIB@
+libs_threadpool_src_libsthreadpool_la_LIBADD = @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
 
 if BOOST_UNITTESTS
 
@@ -223,7 +223,7 @@ libs_threadpool_test_threadpool_tests_SOURCES = \
 	libs/threadpool/test/threadpool-queue-tests.cc \
 	libs/threadpool/test/threadpool-queueimpl-tests.cc
 
-libs_threadpool_test_threadpool_tests_LDADD = @BOOSTTHREADLIB@ \
+libs_threadpool_test_threadpool_tests_LDADD = @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
 	libs/threadpool/src/libsthreadpool.la \
 	libs/boost-test-helper/src/libsboosttesthelper.la
 
@@ -249,7 +249,7 @@ libs_memory_manager_src_libsmemman_la_SOURCES = \
 libs_memory_manager_src_libsmemman_la_LIBADD = \
 	libs/util/src/libsutil.la \
 	libs/threadpool/src/libsthreadpool.la \
-	@BOOSTTHREADLIB@ \
+	@BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
 	@ZLIB@
 
 if BOOST_UNITTESTS
@@ -271,7 +271,7 @@ libs_memory_manager_test_memory_manager_tests_LDADD = \
 	libs/util/src/libsutil.la \
 	libs/memory-manager/src/libsmemman.la \
 	libs/boost-test-helper/src/libsboosttesthelper.la \
-	@BOOSTTHREADLIB@
+	@BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
 
 memory_manager_tests = \
 	libs/memory-manager/test/memory-manager-tests
@@ -294,7 +294,7 @@ libs_scroom_src_libsscroom_la_SOURCES = \
 
 libs_scroom_src_libsscroom_la_LIBADD = \
 	@SCROOMLIB_LIBS@ \
-	@BOOSTTHREADLIB@
+	@BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
 
 if BOOST_UNITTESTS
 
@@ -309,7 +309,7 @@ libs_scroom_test_libscroom_tests_SOURCES = \
 	libs/scroom/test/main.cc \
 	libs/scroom/test/parse_locations_test.cc
 
-libs_scroom_test_libscroom_tests_LDADD = \
+libs_scroom_test_libscroom_tests_LDADD = @BOOSTSYSTEMLIB@ \
 	libs/scroom/src/libsscroom.la \
 	libs/boost-test-helper/src/libsboosttesthelper.la
 
@@ -352,7 +352,7 @@ libs_tiled_bitmap_src_libstiledbitmap_la_LIBADD = \
 	libs/threadpool/src/libsthreadpool.la \
 	libs/memory-manager/src/libsmemman.la \
 	libs/scroom/src/libsscroom.la \
-	@BOOSTTHREADLIB@
+	@BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
 
 if BOOST_UNITTESTS
 
@@ -366,7 +366,7 @@ libs_tiled_bitmap_test_tiled_bitmap_tests_SOURCES = \
 	libs/tiled-bitmap/test/tiledbitmap-tests.cc
 
 libs_tiled_bitmap_test_tiled_bitmap_tests_LDADD = \
-	@BOOSTTHREADLIB@ \
+	@BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
 	libs/tiled-bitmap/src/libstiledbitmap.la \
 	libs/util/src/libsutil.la \
 	libs/boost-test-helper/src/libsboosttesthelper.la
@@ -392,7 +392,7 @@ libs_tiled_bitmap_tools_measure_framerate_SOURCES = \
 	libs/tiled-bitmap/tools/measure-framerate-stubs.cc
 
 libs_tiled_bitmap_tools_measure_framerate_LDADD = \
-	@GUI_LIBS@ @BOOSTTHREADLIB@ \
+	@GUI_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
 	libs/tiled-bitmap/src/libstiledbitmap.la \
 	libs/util/src/libsutil.la
 
@@ -410,7 +410,7 @@ libs_tiled_bitmap_tools_measure_load_performance_SOURCES = \
 	libs/tiled-bitmap/tools/measure-framerate-stubs.cc
 
 libs_tiled_bitmap_tools_measure_load_performance_LDADD = \
-	@GUI_LIBS@ @BOOSTTHREADLIB@ \
+	@GUI_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
 	libs/threadpool/src/libsthreadpool.la \
 	libs/tiled-bitmap/src/libstiledbitmap.la \
 	libs/util/src/libsutil.la
@@ -431,7 +431,7 @@ plugins_example_libspexample_la_SOURCES = \
 	plugins/example/examplepresentation.hh \
 	plugins/example/main.cc
 
-plugins_example_libspexample_la_LIBADD = -lm @EXAMPLEPLUGIN_LIBS@ @BOOSTTHREADLIB@
+plugins_example_libspexample_la_LIBADD = -lm @EXAMPLEPLUGIN_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
 
 ########################################################################
 ### plugins/transparentoverlay
@@ -452,7 +452,7 @@ plugins_transparent_overlay_src_libsptransparentoverlay_la_SOURCES = \
 	plugins/transparent-overlay/src/transparentoverlayviewinfo.hh \
 	plugins/transparent-overlay/src/main.cc
 
-plugins_transparent_overlay_src_libsptransparentoverlay_la_LIBADD = -lm @TRANSPARENTOVERLAYPLUGIN_LIBS@ @BOOSTTHREADLIB@ \
+plugins_transparent_overlay_src_libsptransparentoverlay_la_LIBADD = -lm @TRANSPARENTOVERLAYPLUGIN_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
 	libs/util/src/libsutil.la \
 	libs/scroom/src/libsscroom.la
 
@@ -467,7 +467,7 @@ plugins_transparent_overlay_test_overlay_tests_SOURCES = \
 	plugins/transparent-overlay/test/main.cc \
 	plugins/transparent-overlay/test/plugin-test.cc
 
-plugins_transparent_overlay_test_overlay_tests_LDADD = @BOOSTTHREADLIB@ @UTILS_LIBS@  \
+plugins_transparent_overlay_test_overlay_tests_LDADD = @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @UTILS_LIBS@  \
 	plugins/transparent-overlay/src/libsptransparentoverlay.la \
 	libs/boost-test-helper/src/libsboosttesthelper.la
 
@@ -492,7 +492,7 @@ plugins_tiff_src_libsptiff_la_SOURCES = \
 	plugins/tiff/src/tiffpresentation.cc \
 	plugins/tiff/src/tiffpresentation.hh
 
-plugins_tiff_src_libsptiff_la_LIBADD = @TIFFPLUGIN_LIBS@ -ltiff @BOOSTTHREADLIB@\
+plugins_tiff_src_libsptiff_la_LIBADD = @TIFFPLUGIN_LIBS@ -ltiff @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@\
 	libs/tiled-bitmap/src/libstiledbitmap.la
 
 ########################################################################
@@ -513,7 +513,7 @@ plugins_colormap_libspcolormap_la_SOURCES = \
 	plugins/colormap/colormaps.hh \
 	plugins/colormap/main.cc
 
-plugins_colormap_libspcolormap_la_LIBADD = @COLORMAPPLUGIN_LIBS@ @BOOSTTHREADLIB@
+plugins_colormap_libspcolormap_la_LIBADD = @COLORMAPPLUGIN_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
 
 ########################################################################
 ### gui
@@ -545,7 +545,7 @@ gui_src_scroom_CPPFLAGS = -I $(top_srcdir)/inc \
 	@GUI_CFLAGS@ \
 	@BOOST_FUTURES_CPPFLAGS@
 
-gui_src_scroom_LDADD = @GUI_LIBS@ @BOOSTTHREADLIB@ @BOOSTPROGRAMOPTIONSLIB@ $(INTLLIBS) \
+gui_src_scroom_LDADD = @GUI_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @BOOSTPROGRAMOPTIONSLIB@ $(INTLLIBS) \
 	libs/util/src/libsutil.la
 
 gui_extra_dist = \

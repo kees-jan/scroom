@@ -121,7 +121,7 @@
 		<buildTargets>
 			<target name="all" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>all</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -129,7 +129,7 @@
 			</target>
 			<target name="am--refresh" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>am--refresh</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -137,7 +137,7 @@
 			</target>
 			<target name="check" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>check</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -145,7 +145,7 @@
 			</target>
 			<target name="check-TESTS" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>check-TESTS</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -153,7 +153,7 @@
 			</target>
 			<target name="clean" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>clean</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -161,7 +161,7 @@
 			</target>
 			<target name="clean-libLTLIBRARIES" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>clean-libLTLIBRARIES</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -169,7 +169,7 @@
 			</target>
 			<target name="clean-libtool" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>clean-libtool</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -177,7 +177,7 @@
 			</target>
 			<target name="clean-noinstLTLIBRARIES" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>clean-noinstLTLIBRARIES</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -185,7 +185,7 @@
 			</target>
 			<target name="clean-pluginLTLIBRARIES" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>clean-pluginLTLIBRARIES</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -193,7 +193,7 @@
 			</target>
 			<target name="config.h" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>config.h</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -201,7 +201,7 @@
 			</target>
 			<target name="ctags" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>ctags</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -209,7 +209,7 @@
 			</target>
 			<target name="dist" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>dist</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -217,7 +217,7 @@
 			</target>
 			<target name="dist-all" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>dist-all</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -225,7 +225,7 @@
 			</target>
 			<target name="dist-bzip2" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>dist-bzip2</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -233,7 +233,7 @@
 			</target>
 			<target name="dist-gzip" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>dist-gzip</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -241,7 +241,7 @@
 			</target>
 			<target name="dist-hook" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>dist-hook</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -249,7 +249,7 @@
 			</target>
 			<target name="dist-lzip" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>dist-lzip</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -257,7 +257,7 @@
 			</target>
 			<target name="dist-lzma" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>dist-lzma</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -265,7 +265,7 @@
 			</target>
 			<target name="dist-shar" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>dist-shar</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -273,7 +273,7 @@
 			</target>
 			<target name="dist-tarZ" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>dist-tarZ</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -281,7 +281,7 @@
 			</target>
 			<target name="dist-xz" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>dist-xz</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -289,7 +289,7 @@
 			</target>
 			<target name="dist-zip" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>dist-zip</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -297,7 +297,7 @@
 			</target>
 			<target name="distcheck" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>distcheck</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -305,7 +305,7 @@
 			</target>
 			<target name="distclean" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>distclean</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -313,7 +313,7 @@
 			</target>
 			<target name="distclean-compile" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>distclean-compile</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -321,7 +321,7 @@
 			</target>
 			<target name="distclean-hdr" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>distclean-hdr</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -329,7 +329,7 @@
 			</target>
 			<target name="distclean-libtool" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>distclean-libtool</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -337,7 +337,7 @@
 			</target>
 			<target name="distclean-tags" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>distclean-tags</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -345,7 +345,7 @@
 			</target>
 			<target name="distcleancheck" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>distcleancheck</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -353,7 +353,7 @@
 			</target>
 			<target name="distdir" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>distdir</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -361,7 +361,7 @@
 			</target>
 			<target name="distuninstallcheck" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>distuninstallcheck</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -369,7 +369,7 @@
 			</target>
 			<target name="doxyfile" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>doxyfile</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -377,7 +377,7 @@
 			</target>
 			<target name="doxygen-doc" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>doxygen-doc</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -385,7 +385,7 @@
 			</target>
 			<target name="doxygen-run" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>doxygen-run</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -393,7 +393,7 @@
 			</target>
 			<target name="dvi" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>dvi</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -401,7 +401,7 @@
 			</target>
 			<target name="gui/ENVIRONMENT" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>gui/ENVIRONMENT</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -409,7 +409,7 @@
 			</target>
 			<target name="gui/src/gui_src_scroom-callbacks.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>gui/src/gui_src_scroom-callbacks.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -417,7 +417,7 @@
 			</target>
 			<target name="gui/src/gui_src_scroom-callbacks.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>gui/src/gui_src_scroom-callbacks.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -425,7 +425,7 @@
 			</target>
 			<target name="gui/src/gui_src_scroom-loader.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>gui/src/gui_src_scroom-loader.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -433,7 +433,7 @@
 			</target>
 			<target name="gui/src/gui_src_scroom-loader.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>gui/src/gui_src_scroom-loader.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -441,7 +441,7 @@
 			</target>
 			<target name="gui/src/gui_src_scroom-main.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>gui/src/gui_src_scroom-main.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -449,7 +449,7 @@
 			</target>
 			<target name="gui/src/gui_src_scroom-main.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>gui/src/gui_src_scroom-main.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -457,7 +457,7 @@
 			</target>
 			<target name="gui/src/gui_src_scroom-pluginmanager.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>gui/src/gui_src_scroom-pluginmanager.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -465,7 +465,7 @@
 			</target>
 			<target name="gui/src/gui_src_scroom-pluginmanager.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>gui/src/gui_src_scroom-pluginmanager.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -473,7 +473,7 @@
 			</target>
 			<target name="gui/src/gui_src_scroom-progressbarmanager.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>gui/src/gui_src_scroom-progressbarmanager.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -481,7 +481,7 @@
 			</target>
 			<target name="gui/src/gui_src_scroom-progressbarmanager.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>gui/src/gui_src_scroom-progressbarmanager.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -489,7 +489,7 @@
 			</target>
 			<target name="gui/src/gui_src_scroom-sidebarmanager.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>gui/src/gui_src_scroom-sidebarmanager.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -497,7 +497,7 @@
 			</target>
 			<target name="gui/src/gui_src_scroom-sidebarmanager.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>gui/src/gui_src_scroom-sidebarmanager.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -505,7 +505,7 @@
 			</target>
 			<target name="gui/src/gui_src_scroom-view.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>gui/src/gui_src_scroom-view.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -513,7 +513,7 @@
 			</target>
 			<target name="gui/src/gui_src_scroom-view.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>gui/src/gui_src_scroom-view.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -521,7 +521,7 @@
 			</target>
 			<target name="html" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>html</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -529,7 +529,7 @@
 			</target>
 			<target name="info" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>info</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -537,7 +537,7 @@
 			</target>
 			<target name="install" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>install</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -545,7 +545,7 @@
 			</target>
 			<target name="install-data" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>install-data</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -553,7 +553,7 @@
 			</target>
 			<target name="install-data-local" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>install-data-local</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -561,7 +561,7 @@
 			</target>
 			<target name="install-dvi" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>install-dvi</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -569,7 +569,7 @@
 			</target>
 			<target name="install-exec" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>install-exec</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -577,7 +577,7 @@
 			</target>
 			<target name="install-html" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>install-html</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -585,7 +585,7 @@
 			</target>
 			<target name="install-incboostHEADERS" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>install-incboostHEADERS</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -593,7 +593,7 @@
 			</target>
 			<target name="install-incscroomHEADERS" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>install-incscroomHEADERS</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -601,7 +601,7 @@
 			</target>
 			<target name="install-incscroomimplHEADERS" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>install-incscroomimplHEADERS</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -609,7 +609,7 @@
 			</target>
 			<target name="install-info" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>install-info</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -617,7 +617,7 @@
 			</target>
 			<target name="install-libLTLIBRARIES" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>install-libLTLIBRARIES</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -625,7 +625,7 @@
 			</target>
 			<target name="install-man" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>install-man</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -633,7 +633,7 @@
 			</target>
 			<target name="install-pdf" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>install-pdf</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -641,7 +641,7 @@
 			</target>
 			<target name="install-pkgdataDATA" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>install-pkgdataDATA</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -649,7 +649,7 @@
 			</target>
 			<target name="install-pluginLTLIBRARIES" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>install-pluginLTLIBRARIES</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -657,7 +657,7 @@
 			</target>
 			<target name="install-ps" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>install-ps</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -665,7 +665,7 @@
 			</target>
 			<target name="install-strip" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>install-strip</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -673,7 +673,7 @@
 			</target>
 			<target name="installcheck" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>installcheck</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -681,7 +681,7 @@
 			</target>
 			<target name="installdirs" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>installdirs</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -689,7 +689,7 @@
 			</target>
 			<target name="libs/boost-test-helper/src/libsboosttesthelper.la" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/boost-test-helper/src/libsboosttesthelper.la</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -697,7 +697,7 @@
 			</target>
 			<target name="libs/boost-test-helper/src/unittest-main.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/boost-test-helper/src/unittest-main.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -705,7 +705,7 @@
 			</target>
 			<target name="libs/compat-tests/boost-future-test/libs_compat_tests_boost_future_test_futures_test-boost-futures-test.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/compat-tests/boost-future-test/libs_compat_tests_boost_future_test_futures_test-boost-futures-test.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -713,7 +713,7 @@
 			</target>
 			<target name="libs/compat-tests/boost-future-test/libs_compat_tests_boost_future_test_futures_test-boost-futures-test.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/compat-tests/boost-future-test/libs_compat_tests_boost_future_test_futures_test-boost-futures-test.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -721,7 +721,7 @@
 			</target>
 			<target name="libs/compat-tests/boost-future-test/libs_compat_tests_boost_future_test_futures_test-main.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/compat-tests/boost-future-test/libs_compat_tests_boost_future_test_futures_test-main.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -729,7 +729,7 @@
 			</target>
 			<target name="libs/compat-tests/boost-future-test/libs_compat_tests_boost_future_test_futures_test-main.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/compat-tests/boost-future-test/libs_compat_tests_boost_future_test_futures_test-main.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -737,7 +737,7 @@
 			</target>
 			<target name="libs/memory-manager/src/blob-compression.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/memory-manager/src/blob-compression.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -745,7 +745,7 @@
 			</target>
 			<target name="libs/memory-manager/src/filebackedmemory.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/memory-manager/src/filebackedmemory.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -753,7 +753,7 @@
 			</target>
 			<target name="libs/memory-manager/src/libsmemman.la" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/memory-manager/src/libsmemman.la</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -761,7 +761,7 @@
 			</target>
 			<target name="libs/memory-manager/src/memoryblobs.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/memory-manager/src/memoryblobs.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -769,7 +769,7 @@
 			</target>
 			<target name="libs/memory-manager/src/memorymanager.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/memory-manager/src/memorymanager.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -777,7 +777,7 @@
 			</target>
 			<target name="libs/memory-manager/src/swapbasedblockallocator.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/memory-manager/src/swapbasedblockallocator.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -785,7 +785,7 @@
 			</target>
 			<target name="libs/memory-manager/test/libs_memory_manager_test_memory_manager_tests-blob-tests.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/memory-manager/test/libs_memory_manager_test_memory_manager_tests-blob-tests.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -793,7 +793,7 @@
 			</target>
 			<target name="libs/memory-manager/test/libs_memory_manager_test_memory_manager_tests-blob-tests.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/memory-manager/test/libs_memory_manager_test_memory_manager_tests-blob-tests.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -801,7 +801,7 @@
 			</target>
 			<target name="libs/memory-manager/test/libs_memory_manager_test_memory_manager_tests-compression-tests.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/memory-manager/test/libs_memory_manager_test_memory_manager_tests-compression-tests.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -809,7 +809,7 @@
 			</target>
 			<target name="libs/memory-manager/test/libs_memory_manager_test_memory_manager_tests-compression-tests.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/memory-manager/test/libs_memory_manager_test_memory_manager_tests-compression-tests.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -817,7 +817,7 @@
 			</target>
 			<target name="libs/memory-manager/test/libs_memory_manager_test_memory_manager_tests-main.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/memory-manager/test/libs_memory_manager_test_memory_manager_tests-main.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -825,7 +825,7 @@
 			</target>
 			<target name="libs/memory-manager/test/libs_memory_manager_test_memory_manager_tests-main.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/memory-manager/test/libs_memory_manager_test_memory_manager_tests-main.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -833,7 +833,7 @@
 			</target>
 			<target name="libs/memory-manager/test/libs_memory_manager_test_memory_manager_tests-pageprovider-tests.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/memory-manager/test/libs_memory_manager_test_memory_manager_tests-pageprovider-tests.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -841,7 +841,7 @@
 			</target>
 			<target name="libs/memory-manager/test/libs_memory_manager_test_memory_manager_tests-pageprovider-tests.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/memory-manager/test/libs_memory_manager_test_memory_manager_tests-pageprovider-tests.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -849,7 +849,7 @@
 			</target>
 			<target name="libs/memory-manager/test/libs_memory_manager_test_memory_manager_tests-swap-block-allocator-tests.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/memory-manager/test/libs_memory_manager_test_memory_manager_tests-swap-block-allocator-tests.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -857,7 +857,7 @@
 			</target>
 			<target name="libs/memory-manager/test/libs_memory_manager_test_memory_manager_tests-swap-block-allocator-tests.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/memory-manager/test/libs_memory_manager_test_memory_manager_tests-swap-block-allocator-tests.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -865,23 +865,63 @@
 			</target>
 			<target name="libs/scroom/src/libs_scroom_src_libsscroom_la-bitmap-helpers.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/scroom/src/libs_scroom_src_libsscroom_la-bitmap-helpers.lo</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>true</useDefaultCommand>
+				<runAllBuilders>false</runAllBuilders>
+			</target>
+			<target name="libs/scroom/src/libs_scroom_src_libsscroom_la-presentationinterface.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+				<buildCommand>make</buildCommand>
+				<buildArguments>-j6</buildArguments>
+				<buildTarget>libs/scroom/src/libs_scroom_src_libsscroom_la-presentationinterface.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
 				<runAllBuilders>false</runAllBuilders>
 			</target>
 			<target name="libs/scroom/src/libsscroom.la" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/scroom/src/libsscroom.la</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>true</useDefaultCommand>
+				<runAllBuilders>false</runAllBuilders>
+			</target>
+			<target name="libs/scroom/test/libs_scroom_test_libscroom_tests-main.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+				<buildCommand>make</buildCommand>
+				<buildArguments>-j6</buildArguments>
+				<buildTarget>libs/scroom/test/libs_scroom_test_libscroom_tests-main.o</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>true</useDefaultCommand>
+				<runAllBuilders>false</runAllBuilders>
+			</target>
+			<target name="libs/scroom/test/libs_scroom_test_libscroom_tests-main.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+				<buildCommand>make</buildCommand>
+				<buildArguments>-j6</buildArguments>
+				<buildTarget>libs/scroom/test/libs_scroom_test_libscroom_tests-main.obj</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>true</useDefaultCommand>
+				<runAllBuilders>false</runAllBuilders>
+			</target>
+			<target name="libs/scroom/test/libs_scroom_test_libscroom_tests-parse_locations_test.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+				<buildCommand>make</buildCommand>
+				<buildArguments>-j6</buildArguments>
+				<buildTarget>libs/scroom/test/libs_scroom_test_libscroom_tests-parse_locations_test.o</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>true</useDefaultCommand>
+				<runAllBuilders>false</runAllBuilders>
+			</target>
+			<target name="libs/scroom/test/libs_scroom_test_libscroom_tests-parse_locations_test.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+				<buildCommand>make</buildCommand>
+				<buildArguments>-j6</buildArguments>
+				<buildTarget>libs/scroom/test/libs_scroom_test_libscroom_tests-parse_locations_test.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
 				<runAllBuilders>false</runAllBuilders>
 			</target>
 			<target name="libs/threadpool/src/async-deleter.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/threadpool/src/async-deleter.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -889,7 +929,7 @@
 			</target>
 			<target name="libs/threadpool/src/function-additor.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/threadpool/src/function-additor.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -897,7 +937,7 @@
 			</target>
 			<target name="libs/threadpool/src/libsthreadpool.la" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/threadpool/src/libsthreadpool.la</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -905,7 +945,7 @@
 			</target>
 			<target name="libs/threadpool/src/queue.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/threadpool/src/queue.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -913,7 +953,7 @@
 			</target>
 			<target name="libs/threadpool/src/threadpoolimpl.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/threadpool/src/threadpoolimpl.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -921,7 +961,7 @@
 			</target>
 			<target name="libs/threadpool/test/libs_threadpool_test_threadpool_tests-function-additor-tests.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/threadpool/test/libs_threadpool_test_threadpool_tests-function-additor-tests.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -929,7 +969,7 @@
 			</target>
 			<target name="libs/threadpool/test/libs_threadpool_test_threadpool_tests-function-additor-tests.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/threadpool/test/libs_threadpool_test_threadpool_tests-function-additor-tests.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -937,7 +977,7 @@
 			</target>
 			<target name="libs/threadpool/test/libs_threadpool_test_threadpool_tests-helpers.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/threadpool/test/libs_threadpool_test_threadpool_tests-helpers.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -945,7 +985,7 @@
 			</target>
 			<target name="libs/threadpool/test/libs_threadpool_test_threadpool_tests-helpers.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/threadpool/test/libs_threadpool_test_threadpool_tests-helpers.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -953,7 +993,7 @@
 			</target>
 			<target name="libs/threadpool/test/libs_threadpool_test_threadpool_tests-main.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/threadpool/test/libs_threadpool_test_threadpool_tests-main.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -961,7 +1001,7 @@
 			</target>
 			<target name="libs/threadpool/test/libs_threadpool_test_threadpool_tests-main.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/threadpool/test/libs_threadpool_test_threadpool_tests-main.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -969,7 +1009,7 @@
 			</target>
 			<target name="libs/threadpool/test/libs_threadpool_test_threadpool_tests-semaphore-tests.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/threadpool/test/libs_threadpool_test_threadpool_tests-semaphore-tests.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -977,7 +1017,7 @@
 			</target>
 			<target name="libs/threadpool/test/libs_threadpool_test_threadpool_tests-semaphore-tests.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/threadpool/test/libs_threadpool_test_threadpool_tests-semaphore-tests.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -985,7 +1025,7 @@
 			</target>
 			<target name="libs/threadpool/test/libs_threadpool_test_threadpool_tests-threadpool-destruction-tests.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/threadpool/test/libs_threadpool_test_threadpool_tests-threadpool-destruction-tests.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -993,7 +1033,7 @@
 			</target>
 			<target name="libs/threadpool/test/libs_threadpool_test_threadpool_tests-threadpool-destruction-tests.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/threadpool/test/libs_threadpool_test_threadpool_tests-threadpool-destruction-tests.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1001,7 +1041,7 @@
 			</target>
 			<target name="libs/threadpool/test/libs_threadpool_test_threadpool_tests-threadpool-queue-tests.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/threadpool/test/libs_threadpool_test_threadpool_tests-threadpool-queue-tests.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1009,7 +1049,7 @@
 			</target>
 			<target name="libs/threadpool/test/libs_threadpool_test_threadpool_tests-threadpool-queue-tests.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/threadpool/test/libs_threadpool_test_threadpool_tests-threadpool-queue-tests.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1017,7 +1057,7 @@
 			</target>
 			<target name="libs/threadpool/test/libs_threadpool_test_threadpool_tests-threadpool-queueimpl-tests.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/threadpool/test/libs_threadpool_test_threadpool_tests-threadpool-queueimpl-tests.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1025,7 +1065,7 @@
 			</target>
 			<target name="libs/threadpool/test/libs_threadpool_test_threadpool_tests-threadpool-queueimpl-tests.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/threadpool/test/libs_threadpool_test_threadpool_tests-threadpool-queueimpl-tests.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1033,7 +1073,7 @@
 			</target>
 			<target name="libs/threadpool/test/libs_threadpool_test_threadpool_tests-threadpool-tests.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/threadpool/test/libs_threadpool_test_threadpool_tests-threadpool-tests.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1041,7 +1081,7 @@
 			</target>
 			<target name="libs/threadpool/test/libs_threadpool_test_threadpool_tests-threadpool-tests.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/threadpool/test/libs_threadpool_test_threadpool_tests-threadpool-tests.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1049,7 +1089,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/src/libs_tiled_bitmap_src_libstiledbitmap_la-layer.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/src/libs_tiled_bitmap_src_libstiledbitmap_la-layer.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1057,7 +1097,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/src/libs_tiled_bitmap_src_libstiledbitmap_la-layercoordinator.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/src/libs_tiled_bitmap_src_libstiledbitmap_la-layercoordinator.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1065,7 +1105,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/src/libs_tiled_bitmap_src_libstiledbitmap_la-layeroperations.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/src/libs_tiled_bitmap_src_libstiledbitmap_la-layeroperations.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1073,7 +1113,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/src/libs_tiled_bitmap_src_libstiledbitmap_la-tiled-bitmap.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/src/libs_tiled_bitmap_src_libstiledbitmap_la-tiled-bitmap.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1081,7 +1121,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/src/libs_tiled_bitmap_src_libstiledbitmap_la-tiledbitmapviewdata.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/src/libs_tiled_bitmap_src_libstiledbitmap_la-tiledbitmapviewdata.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1089,7 +1129,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/src/libs_tiled_bitmap_src_libstiledbitmap_la-tileinternal.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/src/libs_tiled_bitmap_src_libstiledbitmap_la-tileinternal.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1097,7 +1137,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/src/libs_tiled_bitmap_src_libstiledbitmap_la-tileinternalobserverinterfaces.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/src/libs_tiled_bitmap_src_libstiledbitmap_la-tileinternalobserverinterfaces.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1105,7 +1145,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/src/libs_tiled_bitmap_src_libstiledbitmap_la-tileviewstate.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/src/libs_tiled_bitmap_src_libstiledbitmap_la-tileviewstate.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1113,7 +1153,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/src/libstiledbitmap.la" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/src/libstiledbitmap.la</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1121,7 +1161,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/test/libs_tiled_bitmap_test_tiled_bitmap_tests-main.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/test/libs_tiled_bitmap_test_tiled_bitmap_tests-main.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1129,7 +1169,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/test/libs_tiled_bitmap_test_tiled_bitmap_tests-main.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/test/libs_tiled_bitmap_test_tiled_bitmap_tests-main.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1137,7 +1177,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/test/libs_tiled_bitmap_test_tiled_bitmap_tests-tiledbitmap-tests.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/test/libs_tiled_bitmap_test_tiled_bitmap_tests-tiledbitmap-tests.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1145,7 +1185,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/test/libs_tiled_bitmap_test_tiled_bitmap_tests-tiledbitmap-tests.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/test/libs_tiled_bitmap_test_tiled_bitmap_tests-tiledbitmap-tests.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1153,7 +1193,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_framerate-measure-framerate-callbacks.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_framerate-measure-framerate-callbacks.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1161,7 +1201,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_framerate-measure-framerate-callbacks.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_framerate-measure-framerate-callbacks.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1169,7 +1209,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_framerate-measure-framerate-stubs.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_framerate-measure-framerate-stubs.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1177,7 +1217,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_framerate-measure-framerate-stubs.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_framerate-measure-framerate-stubs.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1185,7 +1225,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_framerate-measure-framerate-tests.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_framerate-measure-framerate-tests.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1193,7 +1233,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_framerate-measure-framerate-tests.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_framerate-measure-framerate-tests.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1201,7 +1241,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_framerate-measure-framerate.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_framerate-measure-framerate.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1209,7 +1249,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_framerate-measure-framerate.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_framerate-measure-framerate.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1217,7 +1257,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_framerate-test-helpers.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_framerate-test-helpers.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1225,7 +1265,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_framerate-test-helpers.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_framerate-test-helpers.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1233,7 +1273,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_load_performance-measure-framerate-callbacks.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_load_performance-measure-framerate-callbacks.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1241,7 +1281,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_load_performance-measure-framerate-callbacks.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_load_performance-measure-framerate-callbacks.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1249,7 +1289,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_load_performance-measure-framerate-stubs.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_load_performance-measure-framerate-stubs.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1257,7 +1297,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_load_performance-measure-framerate-stubs.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_load_performance-measure-framerate-stubs.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1265,7 +1305,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_load_performance-measure-load-performance-tests.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_load_performance-measure-load-performance-tests.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1273,7 +1313,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_load_performance-measure-load-performance-tests.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_load_performance-measure-load-performance-tests.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1281,7 +1321,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_load_performance-measure-load-performance.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_load_performance-measure-load-performance.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1289,7 +1329,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_load_performance-measure-load-performance.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_load_performance-measure-load-performance.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1297,7 +1337,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_load_performance-test-helpers.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_load_performance-test-helpers.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1305,7 +1345,7 @@
 			</target>
 			<target name="libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_load_performance-test-helpers.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/tiled-bitmap/tools/libs_tiled_bitmap_tools_measure_load_performance-test-helpers.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1313,7 +1353,7 @@
 			</target>
 			<target name="libs/util/src/libs_util_src_libsutil_la-assertions.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/util/src/libs_util_src_libsutil_la-assertions.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1321,7 +1361,7 @@
 			</target>
 			<target name="libs/util/src/libs_util_src_libsutil_la-counter.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/util/src/libs_util_src_libsutil_la-counter.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1329,7 +1369,7 @@
 			</target>
 			<target name="libs/util/src/libs_util_src_libsutil_la-gtk-helpers.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/util/src/libs_util_src_libsutil_la-gtk-helpers.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1337,7 +1377,7 @@
 			</target>
 			<target name="libs/util/src/libs_util_src_libsutil_la-progressinterfacehelpers.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/util/src/libs_util_src_libsutil_la-progressinterfacehelpers.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1345,7 +1385,7 @@
 			</target>
 			<target name="libs/util/src/libsutil.la" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/util/src/libsutil.la</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1353,7 +1393,7 @@
 			</target>
 			<target name="libs/util/test/libs_util_test_utils_tests-bookkeeping-tests.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/util/test/libs_util_test_utils_tests-bookkeeping-tests.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1361,7 +1401,7 @@
 			</target>
 			<target name="libs/util/test/libs_util_test_utils_tests-bookkeeping-tests.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/util/test/libs_util_test_utils_tests-bookkeeping-tests.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1369,7 +1409,7 @@
 			</target>
 			<target name="libs/util/test/libs_util_test_utils_tests-counter-tests.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/util/test/libs_util_test_utils_tests-counter-tests.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1377,7 +1417,7 @@
 			</target>
 			<target name="libs/util/test/libs_util_test_utils_tests-counter-tests.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/util/test/libs_util_test_utils_tests-counter-tests.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1385,7 +1425,7 @@
 			</target>
 			<target name="libs/util/test/libs_util_test_utils_tests-gtkhelper-tests.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/util/test/libs_util_test_utils_tests-gtkhelper-tests.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1393,7 +1433,7 @@
 			</target>
 			<target name="libs/util/test/libs_util_test_utils_tests-gtkhelper-tests.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/util/test/libs_util_test_utils_tests-gtkhelper-tests.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1401,7 +1441,7 @@
 			</target>
 			<target name="libs/util/test/libs_util_test_utils_tests-main.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/util/test/libs_util_test_utils_tests-main.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1409,7 +1449,7 @@
 			</target>
 			<target name="libs/util/test/libs_util_test_utils_tests-main.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/util/test/libs_util_test_utils_tests-main.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1417,7 +1457,7 @@
 			</target>
 			<target name="libs/util/test/libs_util_test_utils_tests-observable-tests.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/util/test/libs_util_test_utils_tests-observable-tests.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1425,7 +1465,7 @@
 			</target>
 			<target name="libs/util/test/libs_util_test_utils_tests-observable-tests.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/util/test/libs_util_test_utils_tests-observable-tests.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1433,7 +1473,7 @@
 			</target>
 			<target name="libs/util/test/libs_util_test_utils_tests-progressinterfacebroadcaster-tests.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/util/test/libs_util_test_utils_tests-progressinterfacebroadcaster-tests.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1441,7 +1481,7 @@
 			</target>
 			<target name="libs/util/test/libs_util_test_utils_tests-progressinterfacebroadcaster-tests.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/util/test/libs_util_test_utils_tests-progressinterfacebroadcaster-tests.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1449,7 +1489,7 @@
 			</target>
 			<target name="libs/util/test/libs_util_test_utils_tests-progressinterfaceconversion-tests.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/util/test/libs_util_test_utils_tests-progressinterfaceconversion-tests.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1457,7 +1497,7 @@
 			</target>
 			<target name="libs/util/test/libs_util_test_utils_tests-progressinterfaceconversion-tests.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/util/test/libs_util_test_utils_tests-progressinterfaceconversion-tests.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1465,7 +1505,7 @@
 			</target>
 			<target name="libs/util/test/libs_util_test_utils_tests-progressinterfacemultiplexer-tests.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/util/test/libs_util_test_utils_tests-progressinterfacemultiplexer-tests.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1473,7 +1513,7 @@
 			</target>
 			<target name="libs/util/test/libs_util_test_utils_tests-progressinterfacemultiplexer-tests.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/util/test/libs_util_test_utils_tests-progressinterfacemultiplexer-tests.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1481,7 +1521,7 @@
 			</target>
 			<target name="libs/util/test/libs_util_test_utils_tests-progressstateinterfacestub.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/util/test/libs_util_test_utils_tests-progressstateinterfacestub.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1489,7 +1529,7 @@
 			</target>
 			<target name="libs/util/test/libs_util_test_utils_tests-progressstateinterfacestub.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/util/test/libs_util_test_utils_tests-progressstateinterfacestub.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1497,7 +1537,7 @@
 			</target>
 			<target name="maintainer-clean" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>maintainer-clean</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1505,7 +1545,7 @@
 			</target>
 			<target name="Makefile" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>Makefile</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1513,7 +1553,7 @@
 			</target>
 			<target name="mostlyclean" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>mostlyclean</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1521,7 +1561,7 @@
 			</target>
 			<target name="mostlyclean-compile" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>mostlyclean-compile</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1529,7 +1569,7 @@
 			</target>
 			<target name="mostlyclean-libtool" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>mostlyclean-libtool</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1537,7 +1577,7 @@
 			</target>
 			<target name="pdf" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>pdf</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1545,7 +1585,7 @@
 			</target>
 			<target name="plugins/colormap/libspcolormap.la" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>plugins/colormap/libspcolormap.la</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1553,7 +1593,7 @@
 			</target>
 			<target name="plugins/colormap/plugins_colormap_libspcolormap_la-colormapplugin.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>plugins/colormap/plugins_colormap_libspcolormap_la-colormapplugin.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1561,7 +1601,7 @@
 			</target>
 			<target name="plugins/colormap/plugins_colormap_libspcolormap_la-colormapprovider.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>plugins/colormap/plugins_colormap_libspcolormap_la-colormapprovider.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1569,7 +1609,7 @@
 			</target>
 			<target name="plugins/colormap/plugins_colormap_libspcolormap_la-colormaps.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>plugins/colormap/plugins_colormap_libspcolormap_la-colormaps.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1577,7 +1617,7 @@
 			</target>
 			<target name="plugins/colormap/plugins_colormap_libspcolormap_la-main.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>plugins/colormap/plugins_colormap_libspcolormap_la-main.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1585,7 +1625,7 @@
 			</target>
 			<target name="plugins/example/libspexample.la" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>plugins/example/libspexample.la</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1593,7 +1633,7 @@
 			</target>
 			<target name="plugins/example/plugins_example_libspexample_la-example.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>plugins/example/plugins_example_libspexample_la-example.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1601,7 +1641,7 @@
 			</target>
 			<target name="plugins/example/plugins_example_libspexample_la-examplepresentation.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>plugins/example/plugins_example_libspexample_la-examplepresentation.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1609,7 +1649,7 @@
 			</target>
 			<target name="plugins/example/plugins_example_libspexample_la-main.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>plugins/example/plugins_example_libspexample_la-main.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1617,7 +1657,7 @@
 			</target>
 			<target name="plugins/tiff/src/libsptiff.la" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>plugins/tiff/src/libsptiff.la</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1625,7 +1665,7 @@
 			</target>
 			<target name="plugins/tiff/src/plugins_tiff_src_libsptiff_la-main.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>plugins/tiff/src/plugins_tiff_src_libsptiff_la-main.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1633,7 +1673,7 @@
 			</target>
 			<target name="plugins/tiff/src/plugins_tiff_src_libsptiff_la-tiff.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>plugins/tiff/src/plugins_tiff_src_libsptiff_la-tiff.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1641,7 +1681,7 @@
 			</target>
 			<target name="plugins/tiff/src/plugins_tiff_src_libsptiff_la-tiffpresentation.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>plugins/tiff/src/plugins_tiff_src_libsptiff_la-tiffpresentation.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1649,7 +1689,7 @@
 			</target>
 			<target name="plugins/transparent-overlay/src/libsptransparentoverlay.la" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>plugins/transparent-overlay/src/libsptransparentoverlay.la</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1657,7 +1697,7 @@
 			</target>
 			<target name="plugins/transparent-overlay/src/plugins_transparent_overlay_src_libsptransparentoverlay_la-main.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>plugins/transparent-overlay/src/plugins_transparent_overlay_src_libsptransparentoverlay_la-main.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1665,7 +1705,7 @@
 			</target>
 			<target name="plugins/transparent-overlay/src/plugins_transparent_overlay_src_libsptransparentoverlay_la-transparentoverlay.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>plugins/transparent-overlay/src/plugins_transparent_overlay_src_libsptransparentoverlay_la-transparentoverlay.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1673,7 +1713,7 @@
 			</target>
 			<target name="plugins/transparent-overlay/src/plugins_transparent_overlay_src_libsptransparentoverlay_la-transparentoverlaypresentation.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>plugins/transparent-overlay/src/plugins_transparent_overlay_src_libsptransparentoverlay_la-transparentoverlaypresentation.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1681,7 +1721,7 @@
 			</target>
 			<target name="plugins/transparent-overlay/src/plugins_transparent_overlay_src_libsptransparentoverlay_la-transparentoverlayviewinfo.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>plugins/transparent-overlay/src/plugins_transparent_overlay_src_libsptransparentoverlay_la-transparentoverlayviewinfo.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1689,7 +1729,7 @@
 			</target>
 			<target name="plugins/transparent-overlay/test/plugins_transparent_overlay_test_overlay_tests-main.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>plugins/transparent-overlay/test/plugins_transparent_overlay_test_overlay_tests-main.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1697,7 +1737,7 @@
 			</target>
 			<target name="plugins/transparent-overlay/test/plugins_transparent_overlay_test_overlay_tests-main.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>plugins/transparent-overlay/test/plugins_transparent_overlay_test_overlay_tests-main.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1705,7 +1745,7 @@
 			</target>
 			<target name="plugins/transparent-overlay/test/plugins_transparent_overlay_test_overlay_tests-plugin-test.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>plugins/transparent-overlay/test/plugins_transparent_overlay_test_overlay_tests-plugin-test.o</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1713,7 +1753,7 @@
 			</target>
 			<target name="plugins/transparent-overlay/test/plugins_transparent_overlay_test_overlay_tests-plugin-test.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>plugins/transparent-overlay/test/plugins_transparent_overlay_test_overlay_tests-plugin-test.obj</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1721,7 +1761,7 @@
 			</target>
 			<target name="ps" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>ps</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1729,7 +1769,7 @@
 			</target>
 			<target name="stamp-h1" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>stamp-h1</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1737,7 +1777,7 @@
 			</target>
 			<target name="tags" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>tags</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1745,7 +1785,7 @@
 			</target>
 			<target name="uninstall" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>uninstall</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1753,7 +1793,7 @@
 			</target>
 			<target name="uninstall-incboostHEADERS" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>uninstall-incboostHEADERS</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1761,7 +1801,7 @@
 			</target>
 			<target name="uninstall-incscroomHEADERS" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>uninstall-incscroomHEADERS</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1769,7 +1809,7 @@
 			</target>
 			<target name="uninstall-incscroomimplHEADERS" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>uninstall-incscroomimplHEADERS</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1777,7 +1817,7 @@
 			</target>
 			<target name="uninstall-libLTLIBRARIES" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>uninstall-libLTLIBRARIES</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1785,7 +1825,7 @@
 			</target>
 			<target name="uninstall-pkgdataDATA" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>uninstall-pkgdataDATA</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
@@ -1793,7 +1833,7 @@
 			</target>
 			<target name="uninstall-pluginLTLIBRARIES" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
-				<buildArguments>-k -j6</buildArguments>
+				<buildArguments>-j6</buildArguments>
 				<buildTarget>uninstall-pluginLTLIBRARIES</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
