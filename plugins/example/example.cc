@@ -50,7 +50,7 @@ std::string Example::getPluginVersion()
 
 void Example::registerCapabilities(ScroomPluginInterface::Ptr host)
 {
-  host->registerNewInterface("Example", shared_from_this<Example>());
+  host->registerNewPresentationInterface("Example", shared_from_this<Example>());
 }
 
 PresentationInterface::Ptr Example::createNew()

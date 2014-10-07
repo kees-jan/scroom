@@ -23,7 +23,7 @@
 
 #include <scroom/scroominterface.hh>
 
-void create(NewInterface* interface);
+void create(NewPresentationInterface* interface);
 void load(const GtkFileFilterInfo& info);
 void load(const std::string& filename);
 PresentationInterface::Ptr loadPresentation(const GtkFileFilterInfo& info);

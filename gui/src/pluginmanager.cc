@@ -216,12 +216,12 @@ void PluginManager::addHook(bool devMode)
   state = FINDING_DIRECTORIES;
 }
 
-void PluginManager::registerNewInterface(const std::string& identifier, NewInterface::Ptr newInterface)
+void PluginManager::registerNewPresentationInterface(const std::string& identifier, NewPresentationInterface::Ptr newPresentationInterface)
 {
   printf("I learned how to create a new %s!\n", identifier.c_str());
-  newInterfaces[newInterface] = identifier;
+  newPresentationInterfaces[newPresentationInterface] = identifier;
 
-  on_newInterfaces_update(newInterfaces);
+  on_newPresentationInterfaces_update(newPresentationInterfaces);
 }
 
 void PluginManager::registerNewAggregateInterface(const std::string& identifier, NewAggregateInterface::Ptr newAggregateInterface)
@@ -231,11 +231,11 @@ void PluginManager::registerNewAggregateInterface(const std::string& identifier,
 }
 
 
-void PluginManager::registerOpenInterface(const std::string& extension, OpenInterface::Ptr openInterface)
+void PluginManager::registerOpenPresentationInterface(const std::string& extension, OpenPresentationInterface::Ptr openPresentationInterface)
 {
   printf("I learned how to open a %s file!\n", extension.c_str());
 
-  openInterfaces[openInterface] = extension;
+  openPresentationInterfaces[openPresentationInterface] = extension;
 }
 
 void PluginManager::registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer)
@@ -250,9 +250,9 @@ void PluginManager::registerPresentationObserver(const std::string& identifier, 
   presentationObservers[observer] = identifier;
 }
 
-const std::map<NewInterface::Ptr, std::string>& PluginManager::getNewInterfaces()
+const std::map<NewPresentationInterface::Ptr, std::string>& PluginManager::getNewPresentationInterfaces()
 {
-  return newInterfaces;
+  return newPresentationInterfaces;
 }
 
 const std::map<std::string, NewAggregateInterface::Ptr>& PluginManager::getNewAggregateInterfaces()
@@ -260,9 +260,9 @@ const std::map<std::string, NewAggregateInterface::Ptr>& PluginManager::getNewAg
   return newAggregateInterfaces;
 }
 
-const std::map<OpenInterface::Ptr, std::string>& PluginManager::getOpenInterfaces()
+const std::map<OpenPresentationInterface::Ptr, std::string>& PluginManager::getOpenPresentationInterfaces()
 {
-  return openInterfaces;
+  return openPresentationInterfaces;
 }
 
 const std::map<ViewObserver::Ptr, std::string>& PluginManager::getViewObservers()

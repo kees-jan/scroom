@@ -52,11 +52,11 @@ std::string Tiff::getPluginVersion()
 
 void Tiff::registerCapabilities(ScroomPluginInterface::Ptr host)
 {
-  host->registerOpenInterface("Tiff viewer", shared_from_this<Tiff>());
+  host->registerOpenPresentationInterface("Tiff viewer", shared_from_this<Tiff>());
 }
 
 ////////////////////////////////////////////////////////////////////////
-// OpenInterface
+// OpenPresentationInterface
 ////////////////////////////////////////////////////////////////////////
 
 std::list<GtkFileFilter*> Tiff::getFilters()

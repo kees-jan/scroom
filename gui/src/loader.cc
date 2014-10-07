@@ -31,7 +31,7 @@
 
 ////////////////////////////////////////////////////////////////////////
 
-void create(NewInterface* interface)
+void create(NewPresentationInterface* interface)
 {
   PresentationInterface::Ptr presentation = interface->createNew();
   on_presentation_created(presentation);
@@ -47,10 +47,10 @@ void load(const GtkFileFilterInfo& info)
 
 PresentationInterface::Ptr loadPresentation(const GtkFileFilterInfo& info)
 {
-  const std::map<OpenInterface::Ptr, std::string>& openInterfaces = PluginManager::getInstance()->getOpenInterfaces();
+  const std::map<OpenPresentationInterface::Ptr, std::string>& openPresentationInterfaces = PluginManager::getInstance()->getOpenPresentationInterfaces();
   PresentationInterface::Ptr presentation;
-  for(std::map<OpenInterface::Ptr, std::string>::const_iterator cur=openInterfaces.begin();
-      cur != openInterfaces.end() && presentation==NULL;
+  for(std::map<OpenPresentationInterface::Ptr, std::string>::const_iterator cur=openPresentationInterfaces.begin();
+      cur != openPresentationInterfaces.end() && presentation==NULL;
       cur++)
   {
     std::list<GtkFileFilter*> filters = cur->first->getFilters();

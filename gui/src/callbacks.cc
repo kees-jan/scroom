@@ -67,8 +67,8 @@ void on_scroom_hide (GtkWidget*, gpointer user_data)
 
 void on_new_activate (GtkMenuItem*, gpointer user_data)
 {
-  NewInterface* newInterface = static_cast<NewInterface*>(user_data);
-  create(newInterface);
+  NewPresentationInterface* newPresentationInterface = static_cast<NewPresentationInterface*>(user_data);
+  create(newPresentationInterface);
 }
 
 void on_open_activate (GtkMenuItem*, gpointer user_data)
@@ -85,10 +85,10 @@ void on_open_activate (GtkMenuItem*, gpointer user_data)
                                         NULL);
   gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER (dialog), currentFolder.c_str());
     
-  const std::map<OpenInterface::Ptr, std::string>& openInterfaces = PluginManager::getInstance()->getOpenInterfaces();
+  const std::map<OpenPresentationInterface::Ptr, std::string>& openPresentationInterfaces = PluginManager::getInstance()->getOpenPresentationInterfaces();
 
-  for(std::map<OpenInterface::Ptr, std::string>::const_iterator cur=openInterfaces.begin();
-      cur != openInterfaces.end();
+  for(std::map<OpenPresentationInterface::Ptr, std::string>::const_iterator cur=openPresentationInterfaces.begin();
+      cur != openPresentationInterfaces.end();
       cur++)
   {
     std::list<GtkFileFilter*> filters = cur->first->getFilters();
@@ -475,11 +475,11 @@ void create_scroom(PresentationInterface::Ptr presentation)
   g_signal_connect ((gpointer) drawingArea, "motion-notify-event", G_CALLBACK (on_motion_notify_event), view.get());
 }
 
-void on_newInterfaces_update(const std::map<NewInterface::Ptr, std::string>& newInterfaces)
+void on_newPresentationInterfaces_update(const std::map<NewPresentationInterface::Ptr, std::string>& newPresentationInterfaces)
 {
   BOOST_FOREACH(const Views::value_type& p, views)
   {
-    p.first->on_newInterfaces_update(newInterfaces);
+    p.first->on_newPresentationInterfaces_update(newPresentationInterfaces);
   }
 }
 

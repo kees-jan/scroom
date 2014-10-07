@@ -75,7 +75,7 @@ typedef Scroom::Utils::Observable<Viewable> ViewObservable;
  * implement this interface.
  *
  * Objects implementing this interface are typically returned by
- * NewInterface::createNew() and OpenInterface::open().
+ * NewPresentationInterface::createNew() and OpenPresentationInterface::open().
  */
 class PresentationInterface : public Viewable, public ViewObservable
 {

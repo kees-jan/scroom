@@ -181,7 +181,7 @@ View::View(GladeXML* scroomXml)
   cachedPoint.x=0;
   cachedPoint.y=0;
   
-  on_newInterfaces_update(pluginManager->getNewInterfaces());
+  on_newPresentationInterfaces_update(pluginManager->getNewPresentationInterfaces());
   updateNewWindowMenu();  
   on_configure();
 }
@@ -450,11 +450,11 @@ void View::updateRulers()
 ////////////////////////////////////////////////////////////////////////
 // Scroom events
   
-void View::on_newInterfaces_update(const std::map<NewInterface::Ptr, std::string>& newInterfaces)
+void View::on_newPresentationInterfaces_update(const std::map<NewPresentationInterface::Ptr, std::string>& newPresentationInterfaces)
 {
   GtkWidget* new_menu_item = glade_xml_get_widget(scroomXml, "new");
 
-  if(newInterfaces.empty())
+  if(newPresentationInterfaces.empty())
   {
     gtk_widget_set_sensitive(new_menu_item, false);
     gtk_menu_item_set_submenu (GTK_MENU_ITEM (new_menu_item), NULL);
@@ -466,8 +466,8 @@ void View::on_newInterfaces_update(const std::map<NewInterface::Ptr, std::string
     GtkWidget* new_menu = gtk_menu_new ();
     gtk_menu_item_set_submenu (GTK_MENU_ITEM (new_menu_item), new_menu);
 
-    for(std::map<NewInterface::Ptr, std::string>::const_iterator cur=newInterfaces.begin();
-        cur != newInterfaces.end();
+    for(std::map<NewPresentationInterface::Ptr, std::string>::const_iterator cur=newPresentationInterfaces.begin();
+        cur != newPresentationInterfaces.end();
         cur++)
     {
       GtkWidget* menu_item = gtk_menu_item_new_with_label(cur->second.c_str());

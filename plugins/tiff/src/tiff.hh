@@ -23,7 +23,7 @@
 #include <scroom/presentationinterface.hh>
 #include <scroom/utilities.hh>
 
-class Tiff : public PluginInformationInterface, public OpenInterface, virtual public Scroom::Utils::Base
+class Tiff : public PluginInformationInterface, public OpenPresentationInterface, virtual public Scroom::Utils::Base
 {
 public:
   typedef boost::shared_ptr<Tiff> Ptr;
@@ -43,7 +43,7 @@ public:
   virtual void registerCapabilities(ScroomPluginInterface::Ptr host);
 
   ////////////////////////////////////////////////////////////////////////
-  // OpenInterface
+  // OpenPresentationInterface
   
   virtual std::list<GtkFileFilter*> getFilters();
   virtual PresentationInterface::Ptr open(const std::string& fileName);

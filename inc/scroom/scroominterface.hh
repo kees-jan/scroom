@@ -31,13 +31,13 @@
 #include <scroom/bookkeeping.hh>
 
 
-class NewInterface
+class NewPresentationInterface
 {
 public:
-  typedef boost::shared_ptr<NewInterface> Ptr;
+  typedef boost::shared_ptr<NewPresentationInterface> Ptr;
 
 public:
-  virtual ~NewInterface() {}
+  virtual ~NewPresentationInterface() {}
   
   virtual PresentationInterface::Ptr createNew()=0;
 };
@@ -53,13 +53,13 @@ public:
   virtual Aggregate::Ptr createNew()=0;
 };
 
-class OpenInterface
+class OpenPresentationInterface
 {
 public:
-  typedef boost::shared_ptr<OpenInterface> Ptr;
+  typedef boost::shared_ptr<OpenPresentationInterface> Ptr;
 
 public:
-  virtual ~OpenInterface() {}
+  virtual ~OpenPresentationInterface() {}
 
   virtual std::list<GtkFileFilter*> getFilters()=0;
   
@@ -97,9 +97,9 @@ public:
 public:
   virtual ~ScroomPluginInterface() {}
 
-  virtual void registerNewInterface(const std::string& identifier, NewInterface::Ptr newInterface)=0;
+  virtual void registerNewPresentationInterface(const std::string& identifier, NewPresentationInterface::Ptr newPresentationInterface)=0;
   virtual void registerNewAggregateInterface(const std::string& identifier, NewAggregateInterface::Ptr newAggregateInterface)=0;
-  virtual void registerOpenInterface(const std::string& identifier, OpenInterface::Ptr openInterface)=0;
+  virtual void registerOpenPresentationInterface(const std::string& identifier, OpenPresentationInterface::Ptr openPresentationInterface)=0;
   virtual void registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer)=0;
   virtual void registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer)=0;
 };

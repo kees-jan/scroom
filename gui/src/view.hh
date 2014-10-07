@@ -132,7 +132,7 @@ public:
   ////////////////////////////////////////////////////////////////////////
   // Scroom events
   
-  void on_newInterfaces_update(const std::map<NewInterface::Ptr, std::string>& newInterfaces);
+  void on_newPresentationInterfaces_update(const std::map<NewPresentationInterface::Ptr, std::string>& newPresentationInterfaces);
   void on_presentation_created(PresentationInterface::Ptr p);
   void on_presentation_destroyed();
   void on_configure();
