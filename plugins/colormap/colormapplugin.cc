@@ -53,7 +53,7 @@ namespace Scroom
       return "0.0";
     }
 
-    void ColormapPlugin::registerCapabilities(ScroomInterface::Ptr host)
+    void ColormapPlugin::registerCapabilities(ScroomPluginInterface::Ptr host)
     {
       host->registerPresentationObserver("Colormap",
           shared_from_this<ColormapPlugin>());

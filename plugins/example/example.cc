@@ -48,7 +48,7 @@ std::string Example::getPluginVersion()
   return "0.0";
 }
 
-void Example::registerCapabilities(ScroomInterface::Ptr host)
+void Example::registerCapabilities(ScroomPluginInterface::Ptr host)
 {
   host->registerNewInterface("Example", shared_from_this<Example>());
 }

@@ -40,7 +40,7 @@ public:
   
   virtual std::string getPluginName();
   virtual std::string getPluginVersion();
-  virtual void registerCapabilities(ScroomInterface::Ptr host);
+  virtual void registerCapabilities(ScroomPluginInterface::Ptr host);
 
   ////////////////////////////////////////////////////////////////////////
   // OpenInterface

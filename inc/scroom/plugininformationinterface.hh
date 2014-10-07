@@ -42,7 +42,7 @@ public:
 
   virtual std::string getPluginName()=0;
   virtual std::string getPluginVersion()=0;
-  virtual void registerCapabilities(ScroomInterface::Ptr host)=0;
+  virtual void registerCapabilities(ScroomPluginInterface::Ptr host)=0;
 };
 
 

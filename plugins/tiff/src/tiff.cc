@@ -50,7 +50,7 @@ std::string Tiff::getPluginVersion()
   return "0.0";
 }
 
-void Tiff::registerCapabilities(ScroomInterface::Ptr host)
+void Tiff::registerCapabilities(ScroomPluginInterface::Ptr host)
 {
   host->registerOpenInterface("Tiff viewer", shared_from_this<Tiff>());
 }

@@ -29,10 +29,10 @@
 
 namespace Roi = Scroom::Roi;
 
-class ScroomInterfaceStub : public ScroomInterface
+class ScroomPluginInterfaceStub : public ScroomPluginInterface
 {
 public:
-  typedef boost::shared_ptr<ScroomInterfaceStub> Ptr;
+  typedef boost::shared_ptr<ScroomPluginInterfaceStub> Ptr;
 
 public:
   static Ptr create();
@@ -50,7 +50,7 @@ BOOST_AUTO_TEST_CASE(Parse_files)
   ss << "   * File: d.tif" << std::endl;
 
   Roi::List l = Roi::parse(ss);
-  // ScroomInterfaceStub::Ptr stub = ScroomInterfaceStub::create();
+  // ScroomPluginInterfaceStub::Ptr stub = ScroomPluginInterfaceStub::create();
 
   // l.instantiate();
 

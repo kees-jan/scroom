@@ -89,13 +89,13 @@ public:
   virtual Scroom::Bookkeeping::Token viewAdded(ViewInterface::Ptr v)=0;
 };
 
-class ScroomInterface
+class ScroomPluginInterface
 {
 public:
-  typedef boost::shared_ptr<ScroomInterface> Ptr;
+  typedef boost::shared_ptr<ScroomPluginInterface> Ptr;
 
 public:
-  virtual ~ScroomInterface() {}
+  virtual ~ScroomPluginInterface() {}
 
   virtual void registerNewInterface(const std::string& identifier, NewInterface::Ptr newInterface)=0;
   virtual void registerNewAggregateInterface(const std::string& identifier, NewAggregateInterface::Ptr newAggregateInterface)=0;

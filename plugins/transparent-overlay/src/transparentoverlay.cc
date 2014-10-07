@@ -39,7 +39,7 @@ std::string TransparentOverlay::getPluginVersion()
   return "0.0";
 }
 
-void TransparentOverlay::registerCapabilities(ScroomInterface::Ptr host)
+void TransparentOverlay::registerCapabilities(ScroomPluginInterface::Ptr host)
 {
   host->registerNewAggregateInterface("Transparent Overlay", shared_from_this<TransparentOverlay>());
 }
