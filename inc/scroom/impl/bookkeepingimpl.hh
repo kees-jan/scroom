@@ -176,23 +176,23 @@ namespace Scroom
       : boost::shared_ptr<Detail::TokenImpl>(Detail::TokenImpl::create())
     { get()->add(l); }
     
-    inline void Token::add(const Stuff& s)
+    inline void Token::add(const Stuff& s) const
     { get()->add(s); }
     
-    inline void Token::add(const StuffList& l)
+    inline void Token::add(const StuffList& l) const
     { get()->add(l); }
 
-    inline void Token::merge(Token& rhs)
+    inline void Token::merge(Token& rhs) const
     { get()->merge(rhs); }
 
-    inline void Token::merge(StuffList& l)
+    inline void Token::merge(StuffList& l) const
     { get()->merge(l); }
       
 
-    inline Detail::TokenAddition Token::operator+(const Stuff& rhs)
+    inline Detail::TokenAddition Token::operator+(const Stuff& rhs) const
     { return Detail::TokenAddition(*this) + rhs; }
 
-    inline Token& Token::operator+=(const Stuff& rhs)
+    inline Token const& Token::operator+=(const Stuff& rhs) const
     { add(rhs); return *this; }
     
     ////////////////////////////////////////////////////////////////////////

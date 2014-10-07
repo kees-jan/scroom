@@ -104,6 +104,7 @@ public:
    */
   Scroom::Utils::Stuff initialize();
 
+protected:
   /**
    * Keep track of new TileInitialisationObserver registrations.
    *
@@ -111,18 +112,19 @@ public:
    * TileInitialisationObserver::tileCreated() event immediately, on your
    * thread. Be careful with your mutexes :-)
    */
-  virtual void observerAdded(TileInitialisationObserver::Ptr observer, Scroom::Bookkeeping::Token token);
+  virtual void observerAdded(TileInitialisationObserver::Ptr const& observer, Scroom::Bookkeeping::Token const& token);
 
   /**
    * Keep track of new TileLoadingObserver registrations.
    */
-  virtual void observerAdded(TileLoadingObserver::Ptr observer, Scroom::Bookkeeping::Token token);
+  virtual void observerAdded(TileLoadingObserver::Ptr const& observer, Scroom::Bookkeeping::Token const& token);
 
+public:
   // To choose between overloaded functions, the compiler needs some extra convincing
-  virtual Scroom::Utils::Stuff registerStrongObserver(TileInitialisationObserver::Ptr observer) { return Scroom::Utils::Observable<TileInitialisationObserver>::registerStrongObserver(observer); }
-  virtual Scroom::Utils::Stuff registerObserver(TileInitialisationObserver::WeakPtr observer) { return Scroom::Utils::Observable<TileInitialisationObserver>::registerObserver(observer); }
-  virtual Scroom::Utils::Stuff registerStrongObserver(TileLoadingObserver::Ptr observer) { return Scroom::Utils::Observable<TileLoadingObserver>::registerStrongObserver(observer); }
-  virtual Scroom::Utils::Stuff registerObserver(TileLoadingObserver::WeakPtr observer) { return Scroom::Utils::Observable<TileLoadingObserver>::registerObserver(observer); }
+  virtual Scroom::Utils::Stuff registerStrongObserver(TileInitialisationObserver::Ptr const& observer) { return Scroom::Utils::Observable<TileInitialisationObserver>::registerStrongObserver(observer); }
+  virtual Scroom::Utils::Stuff registerObserver(TileInitialisationObserver::WeakPtr const& observer) { return Scroom::Utils::Observable<TileInitialisationObserver>::registerObserver(observer); }
+  virtual Scroom::Utils::Stuff registerStrongObserver(TileLoadingObserver::Ptr const& observer) { return Scroom::Utils::Observable<TileLoadingObserver>::registerStrongObserver(observer); }
+  virtual Scroom::Utils::Stuff registerObserver(TileLoadingObserver::WeakPtr const& observer) { return Scroom::Utils::Observable<TileLoadingObserver>::registerObserver(observer); }
 
   /**
    * Get a reference to the Tile.

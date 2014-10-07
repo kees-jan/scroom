@@ -77,7 +77,8 @@ public:
 
   static Ptr create(TestObservable::Ptr child);
 
-  virtual void observerAdded(Observer observer, Scroom::Bookkeeping::Token token);
+protected:
+  virtual void observerAdded(Observer const& observer, Scroom::Bookkeeping::Token const& token);
 };
 
 TestRecursiveObservable::TestRecursiveObservable(TestObservable::Ptr child)
@@ -95,7 +96,7 @@ TestRecursiveObservable::Ptr TestRecursiveObservable::create(TestObservable::Ptr
   return TestRecursiveObservable::Ptr(new TestRecursiveObservable(child));
 }
 
-void TestRecursiveObservable::observerAdded(Observer observer, Scroom::Bookkeeping::Token token)
+void TestRecursiveObservable::observerAdded(Observer const& observer, Scroom::Bookkeeping::Token const& token)
 {
   token.add(child->registerObserver(observer));
 }

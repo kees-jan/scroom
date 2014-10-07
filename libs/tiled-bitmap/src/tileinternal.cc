@@ -198,12 +198,12 @@ TileState TileInternal::getState()
   return result;
 }
 
-void TileInternal::observerAdded(TileInitialisationObserver::Ptr observer, Scroom::Bookkeeping::Token)
+void TileInternal::observerAdded(TileInitialisationObserver::Ptr const& observer, Scroom::Bookkeeping::Token const&)
 {
   observer->tileCreated(shared_from_this<TileInternal>());
 }
 
-void TileInternal::observerAdded(TileLoadingObserver::Ptr observer, Scroom::Bookkeeping::Token token)
+void TileInternal::observerAdded(TileLoadingObserver::Ptr const& observer, Scroom::Bookkeeping::Token const& token)
 {
   ConstTile::Ptr result = constTile.lock();
   ThreadPool::Queue::Ptr queue = this->queue.lock();

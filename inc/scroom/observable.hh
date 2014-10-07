@@ -111,18 +111,19 @@ namespace Scroom
       Observable();
       virtual ~Observable();
 
+    protected:
       /**
        * Override this function if you want to be notified of new
        * observers registering.
        */
-      virtual void observerAdded(Observer observer, Scroom::Bookkeeping::Token token);
+      virtual void observerAdded(Observer const& observer, Scroom::Bookkeeping::Token const& token);
 
     public:
-      Scroom::Bookkeeping::Token registerStrongObserver(Observer observer);
-      Scroom::Bookkeeping::Token registerObserver(ObserverWeak observer);
+      Scroom::Bookkeeping::Token registerStrongObserver(Observer const& observer);
+      Scroom::Bookkeeping::Token registerObserver(ObserverWeak const& observer);
 
     private:
-      void unregisterObserver(ObserverWeak observer);
+      void unregisterObserver(ObserverWeak const& observer);
 
       friend class Detail::Registration<T>;
     };
@@ -225,7 +226,7 @@ namespace Scroom
     }
 
     template<typename T>
-    Scroom::Bookkeeping::Token Observable<T>::registerStrongObserver(Observable<T>::Observer observer)
+    Scroom::Bookkeeping::Token Observable<T>::registerStrongObserver(Observable<T>::Observer const& observer)
     {
       Scroom::Bookkeeping::Token t = registrationMap->reReserve(observer);
       typename Detail::Registration<T>::Ptr r = registrationMap->get(observer);
@@ -245,7 +246,7 @@ namespace Scroom
     }
 
     template<typename T>
-    Scroom::Bookkeeping::Token Observable<T>::registerObserver(Observable<T>::ObserverWeak observer)
+    Scroom::Bookkeeping::Token Observable<T>::registerObserver(Observable<T>::ObserverWeak const& observer)
     {
       Scroom::Bookkeeping::Token t = registrationMap->reReserve(observer);
       typename Detail::Registration<T>::Ptr r = registrationMap->get(observer);
@@ -265,13 +266,13 @@ namespace Scroom
     }
 
     template<typename T>
-    void Observable<T>::unregisterObserver(Observable<T>::ObserverWeak observer)
+    void Observable<T>::unregisterObserver(Observable<T>::ObserverWeak const& observer)
     {
       registrationMap->remove(observer);
     }
 
     template<typename T>
-    void Observable<T>::observerAdded(Observable<T>::Observer, Scroom::Bookkeeping::Token)
+    void Observable<T>::observerAdded(Observable<T>::Observer const&, Scroom::Bookkeeping::Token const&)
     {
       // Do nothing
     }

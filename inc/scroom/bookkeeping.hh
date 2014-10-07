@@ -57,14 +57,14 @@ namespace Scroom
       Token(const Stuff& s);
       Token(const StuffList& l);
 
-      void add(const Stuff& s);
-      void add(const StuffList& l);
-      void merge(Token& rhs);
-      void merge(StuffList& l);
+      void add(const Stuff& s) const;
+      void add(const StuffList& l) const;
+      void merge(Token& rhs) const;
+      void merge(StuffList& l) const;
 
     public:
-      Detail::TokenAddition operator+(const Stuff& rhs);
-      Token& operator+=(const Stuff& rhs);
+      Detail::TokenAddition operator+(const Stuff& rhs) const;
+      Token const& operator+=(const Stuff& rhs) const;
     };
     
     typedef boost::weak_ptr<Detail::TokenImpl> WeakToken;

@@ -126,8 +126,9 @@ public:
   virtual void open(ViewInterface::WeakPtr vi);
   virtual void close(ViewInterface::WeakPtr vi);
 
+protected:
   // ViewObservable
-  virtual void observerAdded(Viewable::Ptr viewable, Scroom::Bookkeeping::Token t);
+  virtual void observerAdded(Viewable::Ptr const& viewable, Scroom::Bookkeeping::Token const& t);
 
 protected:
   virtual void viewAdded(ViewInterface::WeakPtr vi)=0;
