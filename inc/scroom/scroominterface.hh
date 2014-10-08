@@ -30,6 +30,14 @@
 #include <scroom/viewinterface.hh>
 #include <scroom/bookkeeping.hh>
 
+class ScroomInterface
+{
+public:
+  typedef boost::shared_ptr<ScroomInterface> Ptr;
+
+public:
+  virtual ~ScroomInterface() {}
+};
 
 class NewPresentationInterface
 {
@@ -66,6 +74,19 @@ public:
   virtual PresentationInterface::Ptr open(const std::string& fileName)=0;
 };
 
+class OpenInterface
+{
+public:
+  typedef boost::shared_ptr<OpenInterface> Ptr;
+
+public:
+  virtual ~OpenInterface() {}
+
+  virtual std::list<GtkFileFilter*> getFilters()=0;
+
+  virtual void open(const std::string& fileName, ScroomInterface::Ptr const& scroomInterface)=0;
+};
+
 class PresentationObserver
 {
 public:
@@ -100,6 +121,7 @@ public:
   virtual void registerNewPresentationInterface(const std::string& identifier, NewPresentationInterface::Ptr newPresentationInterface)=0;
   virtual void registerNewAggregateInterface(const std::string& identifier, NewAggregateInterface::Ptr newAggregateInterface)=0;
   virtual void registerOpenPresentationInterface(const std::string& identifier, OpenPresentationInterface::Ptr openPresentationInterface)=0;
+  virtual void registerOpenInterface(const std::string& identifier, OpenInterface::Ptr openInterface)=0;
   virtual void registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer)=0;
   virtual void registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer)=0;
 };

@@ -238,6 +238,13 @@ void PluginManager::registerOpenPresentationInterface(const std::string& extensi
   openPresentationInterfaces[openPresentationInterface] = extension;
 }
 
+void PluginManager::registerOpenInterface(const std::string& extension, OpenInterface::Ptr openInterface)
+{
+  printf("I learned how to open a %s file!\n", extension.c_str());
+
+  openInterfaces[openInterface] = extension;
+}
+
 void PluginManager::registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer)
 {
   printf("Observing Views for %s!\n", identifier.c_str());
@@ -263,6 +270,11 @@ const std::map<std::string, NewAggregateInterface::Ptr>& PluginManager::getNewAg
 const std::map<OpenPresentationInterface::Ptr, std::string>& PluginManager::getOpenPresentationInterfaces()
 {
   return openPresentationInterfaces;
+}
+
+const std::map<OpenInterface::Ptr, std::string>& PluginManager::getOpenInterfaces()
+{
+  return openInterfaces;
 }
 
 const std::map<ViewObserver::Ptr, std::string>& PluginManager::getViewObservers()
