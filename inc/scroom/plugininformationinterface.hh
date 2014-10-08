@@ -23,7 +23,7 @@
 
 #include <scroom/scroominterface.hh>
 
-#define PLUGIN_API_VERSION 1
+#define PLUGIN_API_VERSION 2
 
 class PluginInformationInterface
 {
