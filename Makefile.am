@@ -290,6 +290,7 @@ scroomlib_libs = \
 libs_scroom_src_libsscroom_la_SOURCES = \
 	libs/scroom/src/bitmap-helpers.cc \
 	libs/scroom/src/roi-parser.hh \
+	libs/scroom/src/roi.cc \
 	libs/scroom/src/presentationinterface.cc
 
 libs_scroom_src_libsscroom_la_LIBADD = \
