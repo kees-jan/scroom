@@ -243,7 +243,7 @@ std::set<ViewInterface::WeakPtr> TiffPresentation::getViews()
   return views;
 }
 
-void TiffPresentation::redraw(ViewInterface::Ptr vi, cairo_t* cr,
+void TiffPresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr,
     GdkRectangle presentationArea, int zoom)
 {
   if (tbi)
@@ -394,7 +394,7 @@ void TiffPresentationWrapper::viewAdded(ViewInterface::WeakPtr viewInterface)
   presentation->viewAdded(viewInterface);
 }
 
-void TiffPresentationWrapper::redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
+void TiffPresentationWrapper::redraw(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
 {
   presentation->redraw(vi, cr, presentationArea, zoom);
 }

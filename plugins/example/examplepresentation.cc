@@ -82,7 +82,7 @@ void ExamplePresentation::close(ViewInterface::WeakPtr vi)
   UNUSED(vi);
 }
 
-void ExamplePresentation::redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
+void ExamplePresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
 {
   UNUSED(vi);
   // char buffer[] = "Hello world!";

@@ -84,7 +84,7 @@ void TransparentOverlayPresentation::close(ViewInterface::WeakPtr vi)
   }
 }
 
-void TransparentOverlayPresentation::redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
+void TransparentOverlayPresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
 {
   ViewDataMap::const_iterator e = viewData.find(vi);
   if(e != viewData.end())

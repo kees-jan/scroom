@@ -100,7 +100,7 @@ public:
    *    presentation should have size 2**@c zoom when drawn. @c zoom
    *    may be negative.
    */
-  virtual void redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)=0;
+  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)=0;
 
   /**
    * Return the value of the requested property

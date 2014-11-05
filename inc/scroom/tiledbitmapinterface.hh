@@ -269,7 +269,7 @@ public:
    *
    * @see PresentationInterface::redraw()
    */
-  virtual void redraw(ViewInterface::Ptr vi, cairo_t* cr,
+  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr,
       GdkRectangle presentationArea, int zoom)=0;
 
   /**

@@ -113,7 +113,7 @@ public:
   virtual void setSource(SourcePresentation::Ptr sp);
   virtual void open(ViewInterface::WeakPtr viewInterface);
   virtual void close(ViewInterface::WeakPtr vi);
-  virtual void redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);
+  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);
   virtual void clearCaches(ViewInterface::Ptr vi);
   virtual void abortLoadingPresentation();
 

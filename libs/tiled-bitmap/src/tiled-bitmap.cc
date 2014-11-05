@@ -345,7 +345,7 @@ void TiledBitmap::drawTile(cairo_t* cr, const TileInternal::Ptr tile, const GdkR
 
 }
 
-void TiledBitmap::redraw(ViewInterface::Ptr vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
+void TiledBitmap::redraw(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
 {
   // presentationArea.width-=200;
   // presentationArea.height-=200;
