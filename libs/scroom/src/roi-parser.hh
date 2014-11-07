@@ -21,12 +21,15 @@
 
 #include <sstream>
 
+#define BOOST_SPIRIT_USE_PHOENIX_V3
 
 #include <boost/config/warning_disable.hpp>
 #include <boost/foreach.hpp>
 #include <boost/fusion/adapted.hpp>
 #include <boost/fusion/include/io.hpp>
 #include <boost/spirit/include/phoenix.hpp>
+#include <boost/spirit/include/phoenix_stl.hpp>
+#include <boost/spirit/include/phoenix_fusion.hpp>
 #include <boost/spirit/include/qi.hpp>
 #include <boost/variant.hpp>
 
