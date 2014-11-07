@@ -88,6 +88,7 @@ namespace Scroom
     {
     public:
       typedef boost::shared_ptr<T> Observer;
+      typedef boost::shared_ptr<Observable<T> > Ptr;
 
     private:
       typedef boost::weak_ptr<T> ObserverWeak;

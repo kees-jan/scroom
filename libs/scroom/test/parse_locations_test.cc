@@ -30,22 +30,144 @@
 
 namespace Roi = Scroom::Roi;
 
+class PresentationStub : public PresentationBase
+{
+public:
+  typedef boost::shared_ptr<PresentationStub> Ptr;
+
+private:
+  std::string name;
+
+protected:
+  PresentationStub(std::string const& name) :
+      name(name)
+  {
+  }
+
+public:
+  static Ptr create(std::string const& name)
+  {
+    return Ptr(new PresentationStub(name));
+  }
+
+  // PresentationInterface
+  virtual GdkRectangle getRect()
+  {
+    throw std::runtime_error("Operation not supported");
+  }
+
+  virtual void redraw(ViewInterface::Ptr const&, cairo_t*, GdkRectangle, int)
+  {
+    throw std::runtime_error("Operation not supported");
+  }
+
+  virtual bool getProperty(const std::string&, std::string&)
+  {
+    throw std::runtime_error("Operation not supported");
+  }
+
+  virtual bool isPropertyDefined(const std::string&)
+  {
+    throw std::runtime_error("Operation not supported");
+  }
+
+  virtual std::string getTitle()
+  {
+    return name;
+  }
+
+protected:
+  // PresentationBase
+  virtual void viewAdded(ViewInterface::WeakPtr)
+  {
+    throw std::runtime_error("Operation not supported");
+  }
+
+  virtual void viewRemoved(ViewInterface::WeakPtr)
+  {
+    throw std::runtime_error("Operation not supported");
+  }
+
+  virtual std::set<ViewInterface::WeakPtr> getViews()
+  {
+    throw std::runtime_error("Operation not supported");
+  }
+};
+
+class AggregateStub : public PresentationStub, public Aggregate
+{
+public:
+  typedef boost::shared_ptr<AggregateStub> Ptr;
+
+private:
+  std::vector<PresentationInterface::Ptr> children;
+
+protected:
+  AggregateStub(std::string const& name) :
+    PresentationStub(name)
+  {
+  }
+
+public:
+  static Ptr create(std::string const& name)
+  { return Ptr(new AggregateStub(name)); }
+
+  // Aggregate
+  virtual void addPresentation(PresentationInterface::Ptr const& presentation)
+  { children.push_back(presentation); }
+
+};
+
 class ScroomInterfaceStub : public ScroomInterface
 {
 public:
   typedef boost::shared_ptr<ScroomInterfaceStub> Ptr;
 
 public:
+  std::list<std::string> newPresentations;
   std::set<std::string> openedFiles;
+  std::list<std::string> newAggregates;
+  std::list<PresentationInterface::Ptr> shownPresentations;
 
 public:
   static Ptr create();
+
+  // ScroomInterface
+  virtual PresentationInterface::Ptr newPresentation(std::string const& name);
+  virtual Aggregate::Ptr newAggregate(std::string const& name);
+  virtual PresentationInterface::Ptr loadPresentation(std::string const& name, std::string const& relativeTo=std::string());
+
+  virtual void showPresentation(PresentationInterface::Ptr const& presentation);
 };
 
 ScroomInterfaceStub::Ptr ScroomInterfaceStub::create()
 {
   return Ptr(new ScroomInterfaceStub());
 }
+
+PresentationInterface::Ptr ScroomInterfaceStub::newPresentation(std::string const& name)
+{
+  newPresentations.push_back(name);
+  return PresentationStub::create(name);
+}
+
+Aggregate::Ptr ScroomInterfaceStub::newAggregate(std::string const& name)
+{
+  newAggregates.push_back(name);
+  return AggregateStub::create(name);
+}
+
+PresentationInterface::Ptr ScroomInterfaceStub::loadPresentation(std::string const& name, std::string const& /* relativeTo */ )
+{
+  openedFiles.insert(name);
+  return PresentationStub::create(name);
+}
+
+void ScroomInterfaceStub::showPresentation(PresentationInterface::Ptr const& presentation)
+{
+  shownPresentations.push_back(presentation);
+}
+
 
 BOOST_AUTO_TEST_SUITE(Roi_Tests)
 
@@ -72,24 +194,25 @@ BOOST_AUTO_TEST_CASE(Parse_files)
   BOOST_CHECK_EQUAL(4, presentations.size());
 }
 
-// BOOST_AUTO_TEST_CASE(Parse_files2)
-// {
-//   std::stringstream ss;
-//   ss << " * File: a.tif" << std::endl;
-//   ss << " * File: b.tif" << std::endl;
-//   ss << " * Aggregate: q" << std::endl;
-//   ss << "   * File: c.tif" << std::endl;
-//   ss << "   * File: d.tif" << std::endl;
-// 
-//   std::ofstream f("/tmp/testdata.txt");
-//   f << ss.str();
-//   
-//   Roi::List l = Roi::parse(ss);
-//   ScroomInterfaceStub::Ptr stub = ScroomInterfaceStub::create();
-// 
-//   std::set<ViewObserver::Ptr> presentations = l.instantiate(stub);
-// 
-//   BOOST_CHECK_EQUAL(4, stub->openedFiles.size());
-// }
+BOOST_AUTO_TEST_CASE(Parse_files2)
+{
+  std::stringstream ss;
+  ss << " * File: a.tif" << std::endl;
+  ss << " * File: b.tif" << std::endl;
+  ss << " * Aggregate: q" << std::endl;
+  ss << "   * File: c.tif" << std::endl;
+  ss << "   * File: d.tif" << std::endl;
+
+  std::ofstream f("/tmp/testdata.txt");
+  f << ss.str();
+  
+  Roi::List l = Roi::parse(ss);
+  ScroomInterfaceStub::Ptr stub = ScroomInterfaceStub::create();
+
+  std::set<ViewObservable::Ptr> presentations = l.instantiate(stub);
+
+  BOOST_CHECK_EQUAL(3, presentations.size());
+  BOOST_CHECK_EQUAL(4, stub->openedFiles.size());
+}
 
 BOOST_AUTO_TEST_SUITE_END()

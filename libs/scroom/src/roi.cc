@@ -16,6 +16,10 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+#include <boost/variant/apply_visitor.hpp>
+#include <boost/variant/static_visitor.hpp>
+#include <boost/foreach.hpp>
+
 #include <scroom/roi.hh>
 #include <scroom/unused.hh>
 
@@ -23,10 +27,67 @@ namespace Scroom
 {
   namespace Roi
   {
-    std::set<ViewObserver::Ptr> List::instantiate(ScroomInterface::Ptr const& scroomInterface)
+    namespace Detail
     {
-      UNUSED(scroomInterface);
-      return std::set<ViewObserver::Ptr>();
+      class Instantiate : public boost::static_visitor<PresentationInterface::Ptr>
+      {
+      private:
+        ScroomInterface::Ptr scroomInterface;
+
+      public:
+        Instantiate(ScroomInterface::Ptr const& scroomInterface);
+
+        PresentationInterface::Ptr operator()(File const& file);
+        PresentationInterface::Ptr operator()(Aggregate const& aggregate);
+      };
+
+      Instantiate::Instantiate(ScroomInterface::Ptr const& scroomInterface) :
+          scroomInterface(scroomInterface)
+      {
+      }
+
+      PresentationInterface::Ptr Instantiate::operator()(File const& file)
+      {
+        return scroomInterface->loadPresentation(file.name);
+      }
+
+      PresentationInterface::Ptr Instantiate::operator()(Aggregate const& aggregate)
+      {
+        ::Aggregate::Ptr a = scroomInterface->newAggregate(aggregate.name);
+        PresentationInterface::Ptr aggregatePresentation =
+            boost::dynamic_pointer_cast<PresentationInterface>(a);
+
+        if(!aggregatePresentation)
+        {
+          std::stringstream message;
+          message << "Aggregate " << aggregate.name << " is not a Presentation";
+          throw std::invalid_argument(message.str());
+        }
+
+        BOOST_FOREACH(Detail::Presentation const& p, aggregate.children)
+        {
+          a->addPresentation(boost::apply_visitor(*this, p));
+        }
+
+        return aggregatePresentation;
+      }
+    }
+
+    List::List(std::vector<Detail::Presentation> const& presentations)
+      : presentations(presentations)
+    {}
+     
+    std::set<ViewObservable::Ptr> List::instantiate(ScroomInterface::Ptr const& scroomInterface)
+    {
+      std::set<ViewObservable::Ptr> result;
+      Detail::Instantiate instantiate(scroomInterface);
+
+      BOOST_FOREACH(Detail::Presentation const& p, presentations)
+      {
+        result.insert(boost::apply_visitor(instantiate, p));
+      }
+
+      return result;
     }
 
   }

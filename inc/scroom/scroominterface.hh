@@ -37,6 +37,12 @@ public:
 
 public:
   virtual ~ScroomInterface() {}
+
+  virtual PresentationInterface::Ptr newPresentation(std::string const& name)=0;
+  virtual Aggregate::Ptr newAggregate(std::string const& name)=0;
+  virtual PresentationInterface::Ptr loadPresentation(std::string const& name, std::string const& relativeTo=std::string())=0;
+
+  virtual void showPresentation(PresentationInterface::Ptr const& presentation)=0;
 };
 
 class NewPresentationInterface

@@ -219,10 +219,8 @@ namespace Scroom
     List parse(std::stringstream const& s)
     {
       std::string input = s.str();
-      Detail::parse(input.begin(), input.end());
-      return List();
+      return List(Detail::parse(input.begin(), input.end()));
     }
-
   }
 }
 

@@ -50,8 +50,12 @@ namespace Scroom
     
     class List
     {
+      std::vector<Detail::Presentation> presentations;
+      
     public:
-      std::set<ViewObserver::Ptr> instantiate(ScroomInterface::Ptr const& scroomInterface);
+      List(std::vector<Detail::Presentation> const& presentations);
+      
+      std::set<ViewObservable::Ptr> instantiate(ScroomInterface::Ptr const& scroomInterface);
 
 
     };
