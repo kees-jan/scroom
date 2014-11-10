@@ -55,10 +55,13 @@ namespace Scroom
     public:
       List(std::vector<Detail::Presentation> const& presentations);
       
-      std::set<ViewObservable::Ptr> instantiate(ScroomInterface::Ptr const& scroomInterface);
+      std::set<ViewObservable::Ptr> instantiate(ScroomInterface::Ptr const& scroomInterface, std::string const& relativeTo=std::string());
 
 
     };
+
+    List parse(std::stringstream const& s);
+    List parse(std::string const& filename);
   }
 }
 

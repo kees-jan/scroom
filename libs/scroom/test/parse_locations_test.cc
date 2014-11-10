@@ -26,9 +26,23 @@
 #include <scroom/unused.hh>
 #include <scroom/scroominterface.hh>
 
-#include <roi-parser.hh>
+#include <scroom/roi.hh>
 
 namespace Roi = Scroom::Roi;
+
+namespace Scroom
+{
+  namespace Roi
+  {
+    namespace Detail
+    {
+      // Forward declaration from roi-parser.hh
+      // roi-parser.hh takes forever to compile, hence we don't include it here.
+      template<typename Iterator>
+      std::vector<Presentation> parse(Iterator first, Iterator last);
+    }
+  }
+}
 
 class PresentationStub : public PresentationBase
 {
@@ -128,6 +142,7 @@ public:
   std::set<std::string> openedFiles;
   std::list<std::string> newAggregates;
   std::list<PresentationInterface::Ptr> shownPresentations;
+  std::string relativeTo;
 
 public:
   static Ptr create();
@@ -157,8 +172,10 @@ Aggregate::Ptr ScroomInterfaceStub::newAggregate(std::string const& name)
   return AggregateStub::create(name);
 }
 
-PresentationInterface::Ptr ScroomInterfaceStub::loadPresentation(std::string const& name, std::string const& /* relativeTo */ )
+PresentationInterface::Ptr ScroomInterfaceStub::loadPresentation(std::string const& name, std::string const& relativeTo )
 {
+  BOOST_CHECK_EQUAL(this->relativeTo, relativeTo);
+
   openedFiles.insert(name);
   return PresentationStub::create(name);
 }
@@ -208,11 +225,13 @@ BOOST_AUTO_TEST_CASE(Parse_files2)
   
   Roi::List l = Roi::parse(ss);
   ScroomInterfaceStub::Ptr stub = ScroomInterfaceStub::create();
+  stub->relativeTo = "me";
 
-  std::set<ViewObservable::Ptr> presentations = l.instantiate(stub);
+  std::set<ViewObservable::Ptr> presentations = l.instantiate(stub, "me");
 
   BOOST_CHECK_EQUAL(3, presentations.size());
   BOOST_CHECK_EQUAL(4, stub->openedFiles.size());
+  BOOST_CHECK_EQUAL(3, stub->shownPresentations.size());
 }
 
 BOOST_AUTO_TEST_SUITE_END()

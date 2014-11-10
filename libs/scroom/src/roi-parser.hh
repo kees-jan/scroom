@@ -193,11 +193,7 @@ namespace Scroom
         My_parser<Iterator> my_parser;
         std::vector<Presentation> result;
 
-        // bool r = phrase_parse(first, last,
-        //                       (*char_(' ') >> '*' >> my_parser >> *(char_ - eol) >> eol)
-        //                       , blank);
-        bool r = parse(first, last,
-                       my_parser, result);
+        bool r = parse(first, last, my_parser, result);
 
         if (first != last)
         {
@@ -214,12 +210,6 @@ namespace Scroom
 
         return result;
       }
-    }
-    
-    List parse(std::stringstream const& s)
-    {
-      std::string input = s.str();
-      return List(Detail::parse(input.begin(), input.end()));
     }
   }
 }

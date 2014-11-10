@@ -23,6 +23,8 @@
 #include <scroom/roi.hh>
 #include <scroom/unused.hh>
 
+#include "roi-parser.hh"
+
 namespace Scroom
 {
   namespace Roi
@@ -33,22 +35,23 @@ namespace Scroom
       {
       private:
         ScroomInterface::Ptr scroomInterface;
+        std::string const relativeTo;
 
       public:
-        Instantiate(ScroomInterface::Ptr const& scroomInterface);
+        Instantiate(ScroomInterface::Ptr const& scroomInterface, std::string const& relativeTo);
 
         PresentationInterface::Ptr operator()(File const& file);
         PresentationInterface::Ptr operator()(Aggregate const& aggregate);
       };
 
-      Instantiate::Instantiate(ScroomInterface::Ptr const& scroomInterface) :
-          scroomInterface(scroomInterface)
+      Instantiate::Instantiate(ScroomInterface::Ptr const& scroomInterface, std::string const& relativeTo) :
+          scroomInterface(scroomInterface), relativeTo(relativeTo)
       {
       }
 
       PresentationInterface::Ptr Instantiate::operator()(File const& file)
       {
-        return scroomInterface->loadPresentation(file.name);
+        return scroomInterface->loadPresentation(file.name, relativeTo);
       }
 
       PresentationInterface::Ptr Instantiate::operator()(Aggregate const& aggregate)
@@ -77,17 +80,25 @@ namespace Scroom
       : presentations(presentations)
     {}
      
-    std::set<ViewObservable::Ptr> List::instantiate(ScroomInterface::Ptr const& scroomInterface)
+    std::set<ViewObservable::Ptr> List::instantiate(ScroomInterface::Ptr const& scroomInterface, std::string const& relativeTo)
     {
       std::set<ViewObservable::Ptr> result;
-      Detail::Instantiate instantiate(scroomInterface);
+      Detail::Instantiate instantiate(scroomInterface, relativeTo);
 
       BOOST_FOREACH(Detail::Presentation const& p, presentations)
       {
-        result.insert(boost::apply_visitor(instantiate, p));
+        PresentationInterface::Ptr presentation = boost::apply_visitor(instantiate, p);
+        scroomInterface->showPresentation(presentation);
+        result.insert(presentation);
       }
 
       return result;
+    }
+
+    List parse(std::stringstream const& s)
+    {
+      std::string input = s.str();
+      return List(Detail::parse(input.begin(), input.end()));
     }
 
   }
