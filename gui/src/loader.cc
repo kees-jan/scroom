@@ -24,6 +24,8 @@
 
 #include <stdio.h>
 
+#include <boost/filesystem.hpp>
+
 #include <scroom/threadpool.hh>
 
 #include "callbacks.hh"
@@ -31,76 +33,276 @@
 
 ////////////////////////////////////////////////////////////////////////
 
+template<typename T>
+class GObjectUnref
+{
+public:
+  void operator()(T* p) { g_object_unref(p); }
+};
+
+class GtkFileFilterInfoDeleter
+{
+public:
+  void operator()(GtkFileFilterInfo* f)
+  {
+    delete[] f->filename;
+    delete[] f->mime_type;
+    delete[] f->display_name;
+    delete f;
+  }
+};
+
+typedef std::unique_ptr<GtkFileFilterInfo,GtkFileFilterInfoDeleter> GtkFileFilterInfoPtr;
+
+////////////////////////////////////////////////////////////////////////
+
+char* charpFromString(std::string const& s)
+{
+  size_t n = s.size();
+  std::unique_ptr<char[]> result(new char[n+1]);
+  if(!result)
+    throw std::bad_alloc();
+
+  strncpy(result.get(), s.c_str(), n+1);
+  if(result[n]!=0)
+    throw std::length_error("String size changed during copying");
+
+  return result.release();
+}
+
+GtkFileFilterInfoPtr filterInfoFromPath(const std::string& filename)
+{
+  GtkFileFilterInfoPtr filterInfo;
+
+  std::unique_ptr<GFile,GObjectUnref<GFile> > file(g_file_new_for_path(filename.c_str()));
+  std::unique_ptr<GFileInfo,GObjectUnref<GFileInfo> > fileInfo(g_file_query_info(file.get(), "standard::*", G_FILE_QUERY_INFO_NONE, NULL, NULL));
+  if(fileInfo)
+  {
+    // g_file_info_get_name(fileInfo) doesn't provide path info.
+    // charpFromString might throw.
+    std::unique_ptr<gchar> filenameCopy(charpFromString(filename));
+    std::unique_ptr<gchar> mime_type(charpFromString(g_content_type_get_mime_type(g_file_info_get_content_type (fileInfo.get()))));
+    std::unique_ptr<gchar> display_name(charpFromString(g_file_info_get_display_name(fileInfo.get())));
+
+    filterInfo.reset(new GtkFileFilterInfo()); // filterInfo->filename uninitialized, so a delete is dangerous
+
+    filterInfo->filename = filenameCopy.release();
+    filterInfo->mime_type = mime_type.release();
+    filterInfo->display_name = display_name.release();
+    filterInfo->contains =
+      (GtkFileFilterFlags)(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_MIME_TYPE);
+  }
+  else
+  {
+    throw std::invalid_argument("No fileinfo for file "+filename);
+  }
+
+  return filterInfo;
+}
+
+bool filterMatchesInfo(GtkFileFilterInfo const& info, std::list<GtkFileFilter*> const& filters)
+{
+  for(auto const& f: filters)
+    if(gtk_file_filter_filter(f, &info))
+      return true;
+
+  return false;
+}
+
+////////////////////////////////////////////////////////////////////////
+
+class ScroomInterfaceImpl : public ScroomInterface
+{
+public:
+  typedef boost::shared_ptr<ScroomInterfaceImpl> Ptr;
+
+private:
+  ScroomInterfaceImpl();
+
+public:
+  static Ptr instance();
+
+  // ScroomInterface //////////////////////////////////////////////////////
+
+  virtual PresentationInterface::Ptr newPresentation(std::string const& name);
+  virtual Aggregate::Ptr newAggregate(std::string const& name);
+  virtual PresentationInterface::Ptr loadPresentation(std::string const& name, std::string const& relativeTo=std::string());
+
+  virtual void showPresentation(PresentationInterface::Ptr const& presentation);
+
+};
+
+////////////////////////////////////////////////////////////////////////
+
+
 void create(NewPresentationInterface* interface)
 {
   PresentationInterface::Ptr presentation = interface->createNew();
-  on_presentation_created(presentation);
-  find_or_create_scroom(presentation);
-}
-
-void load(const GtkFileFilterInfo& info)
-{
-  PresentationInterface::Ptr presentation = loadPresentation(info);
   if(presentation)
-    find_or_create_scroom(presentation);
-}
-
-PresentationInterface::Ptr loadPresentation(const GtkFileFilterInfo& info)
-{
-  const std::map<OpenPresentationInterface::Ptr, std::string>& openPresentationInterfaces = PluginManager::getInstance()->getOpenPresentationInterfaces();
-  PresentationInterface::Ptr presentation;
-  for(std::map<OpenPresentationInterface::Ptr, std::string>::const_iterator cur=openPresentationInterfaces.begin();
-      cur != openPresentationInterfaces.end() && presentation==NULL;
-      cur++)
   {
-    std::list<GtkFileFilter*> filters = cur->first->getFilters();
-    for(std::list<GtkFileFilter*>::iterator f = filters.begin();
-        f != filters.end() && presentation==NULL;
-        f++)
-    {
-      if(gtk_file_filter_filter(*f, &info))
-      {
-        presentation = cur->first->open(info.filename);
-        if(presentation)
-        {
-          on_presentation_created(presentation);
-        }
-      }
-    }
-  }
-  return presentation;
-}
-
-void load(const std::string& filename)
-{
-  PresentationInterface::Ptr presentation = loadPresentation(filename);
-  if(presentation)
+    on_presentation_created(presentation);
     find_or_create_scroom(presentation);
+  }
+  else
+    throw std::invalid_argument("Unable to create requested presentation");
 }
 
 PresentationInterface::Ptr loadPresentation(const std::string& filename)
 {
-  PresentationInterface::Ptr result;
-  
-  // Gtk 2.16
-  GFile* file = g_file_new_for_path(filename.c_str());
-  GFileInfo* fileInfo = g_file_query_info(file, "standard::*", G_FILE_QUERY_INFO_NONE, NULL, NULL);
-  if(fileInfo)
+  return loadPresentation(*filterInfoFromPath(filename));
+}
+
+PresentationInterface::Ptr loadPresentation(GtkFileFilterInfo const& info)
+{
+  static std::map<boost::filesystem::path,PresentationInterface::WeakPtr> loadedPresentations;
+  // Create canonical path from filename
+  const std::map<OpenPresentationInterface::Ptr, std::string>& openPresentationInterfaces = PluginManager::getInstance()->getOpenPresentationInterfaces();
+
+#ifdef HAVE_BOOST_FILESYSTEM_CANONICAL
+  boost::filesystem::path key(canonical(boost::filesystem::path(info.filename)));
+#else
+  boost::filesystem::path key(absolute(boost::filesystem::path(info.filename)));
+#endif
+
+  PresentationInterface::Ptr presentation = loadedPresentations[key].lock();
+
+  if(!presentation)
   {
-    GtkFileFilterInfo filterInfo;
-    filterInfo.filename = filename.c_str(); // g_file_info_get_name(fileInfo) doesn't provide path info.
-    filterInfo.mime_type = g_content_type_get_mime_type(g_file_info_get_content_type (fileInfo));
-    filterInfo.display_name = g_file_info_get_display_name(fileInfo);
-    filterInfo.contains =
-      (GtkFileFilterFlags)(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_MIME_TYPE);
-    printf("Opening file %s (%s)\n", filterInfo.filename, filterInfo.mime_type);
-    result = loadPresentation(filterInfo);
-    g_object_unref(fileInfo);
-  }
-  else
-  {
-    printf("PANIC: No fileinfo for file %s\n", filename.c_str());
+    for (auto const& cur : openPresentationInterfaces)
+    {
+      if (filterMatchesInfo(info, cur.first->getFilters()))
+      {
+        presentation = cur.first->open(info.filename);
+
+        if (presentation)
+        {
+          loadedPresentations[key] = presentation;
+          on_presentation_created(presentation);
+          break;
+        }
+      }
+    }
   }
 
-  return result;
+  if(presentation)
+  {
+    return presentation;
+  }
+  else
+    throw std::invalid_argument("Don't know how to load presentation "+std::string(info.filename));
 }
+
+PresentationInterface::Ptr loadPresentation(GtkFileFilterInfoPtr const& info)
+{
+  return loadPresentation(*info);
+}
+
+void load(GtkFileFilterInfo const& info)
+{
+  const std::map<OpenPresentationInterface::Ptr, std::string>& openPresentationInterfaces = PluginManager::getInstance()->getOpenPresentationInterfaces();
+  const std::map<OpenInterface::Ptr, std::string>& openInterfaces = PluginManager::getInstance()->getOpenInterfaces();
+
+  for (auto const& cur : openInterfaces)
+  {
+    if (filterMatchesInfo(info, cur.first->getFilters()))
+    {
+      cur.first->open(info.filename, ScroomInterfaceImpl::instance());
+      return;
+    }
+  }
+  for (auto const& cur : openPresentationInterfaces)
+  {
+    if (filterMatchesInfo(info, cur.first->getFilters()))
+    {
+      PresentationInterface::Ptr presentation = cur.first->open(info.filename);
+      if (presentation)
+      {
+        on_presentation_created(presentation);
+        find_or_create_scroom(presentation);
+        return;
+      }
+    }
+  }
+
+  throw std::invalid_argument("Don't know how to open file " + std::string(info.filename));
+}
+
+void load(GtkFileFilterInfoPtr const& info)
+{
+  load(*info);
+}
+
+void load(const std::string& filename)
+{
+  load(filterInfoFromPath(filename));
+}
+
+////////////////////////////////////////////////////////////////////////
+
+ScroomInterfaceImpl::Ptr ScroomInterfaceImpl::instance()
+{
+  static ScroomInterfaceImpl::Ptr i(new ScroomInterfaceImpl());
+  return i;
+}
+
+ScroomInterfaceImpl::ScroomInterfaceImpl()
+{}
+
+PresentationInterface::Ptr ScroomInterfaceImpl::newPresentation(std::string const& name)
+{
+  const std::map<NewPresentationInterface::Ptr, std::string>& newPresentationInterfaces = PluginManager::getInstance()->getNewPresentationInterfaces();
+
+  for(auto const& p: newPresentationInterfaces)
+  {
+    if(p.second == name)
+    {
+      PresentationInterface::Ptr presentation = p.first->createNew();
+      if(presentation)
+      {
+        on_presentation_created(presentation);
+        return presentation;
+      }
+      else
+      {
+        throw std::invalid_argument("Failed to create a new "+name);
+      }
+    }
+  }
+
+  throw std::invalid_argument("Don't know how to create a new "+name);
+}
+
+Aggregate::Ptr ScroomInterfaceImpl::newAggregate(std::string const& name)
+{
+  std::map<std::string, NewAggregateInterface::Ptr> const& newAggregateInterfaces = PluginManager::getInstance()->getNewAggregateInterfaces();
+  std::map<std::string, NewAggregateInterface::Ptr>::const_iterator i = newAggregateInterfaces.find(name);
+  if(i != newAggregateInterfaces.end())
+  {
+    Aggregate::Ptr aggregate = i->second->createNew();
+    if(aggregate)
+      return aggregate;
+    else
+      throw std::invalid_argument("Failed to create a new"+name);
+  }
+  throw std::invalid_argument("Don't know how to create a new "+name);
+}
+
+PresentationInterface::Ptr ScroomInterfaceImpl::loadPresentation(std::string const& n, std::string const& rt)
+{
+  boost::filesystem::path name(n);
+  boost::filesystem::path relativeTo(rt);
+
+  if(!name.is_absolute() && relativeTo.has_parent_path())
+  {
+    name = relativeTo.parent_path() / name;
+  }
+
+  return ::loadPresentation(name.string());
+}
+
+void ScroomInterfaceImpl::showPresentation(PresentationInterface::Ptr const& presentation)
+{
+  find_or_create_scroom(presentation);
+}
+
+

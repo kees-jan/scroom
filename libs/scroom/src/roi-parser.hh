@@ -118,8 +118,8 @@ namespace Scroom
           using qi::eps;
 
           quoted_string %= lexeme['"' > +(char_ - '"' - eol) > '"'];
-          // name %= quoted_string | lexeme[+(char_ - ascii::space)];
-          name %= lexeme[+(char_ - ascii::space)];
+          name %= quoted_string | lexeme[+(char_ - ascii::space)];
+          // name %= lexeme[+(char_ - ascii::space)];
 
           start_sublist = no_skip[lit(qi::_r1) [ qi::_val = qi::_r1 ]
                                   >> +char_(' ') [ qi::_val += qi::_1 ]

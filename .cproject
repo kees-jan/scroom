@@ -879,6 +879,14 @@
 				<useDefaultCommand>true</useDefaultCommand>
 				<runAllBuilders>false</runAllBuilders>
 			</target>
+			<target name="libs/scroom/src/libs_scroom_src_libsscroom_la-roi.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+				<buildCommand>make</buildCommand>
+				<buildArguments>-j6</buildArguments>
+				<buildTarget>libs/scroom/src/libs_scroom_src_libsscroom_la-roi.lo</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>true</useDefaultCommand>
+				<runAllBuilders>false</runAllBuilders>
+			</target>
 			<target name="libs/scroom/src/libsscroom.la" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
 				<buildArguments>-j6</buildArguments>
@@ -1651,6 +1659,30 @@
 				<buildCommand>make</buildCommand>
 				<buildArguments>-j6</buildArguments>
 				<buildTarget>plugins/example/plugins_example_libspexample_la-main.lo</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>true</useDefaultCommand>
+				<runAllBuilders>false</runAllBuilders>
+			</target>
+			<target name="plugins/roi/src/libsproi.la" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+				<buildCommand>make</buildCommand>
+				<buildArguments>-j6</buildArguments>
+				<buildTarget>plugins/roi/src/libsproi.la</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>true</useDefaultCommand>
+				<runAllBuilders>false</runAllBuilders>
+			</target>
+			<target name="plugins/roi/src/plugins_roi_src_libsproi_la-main.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+				<buildCommand>make</buildCommand>
+				<buildArguments>-j6</buildArguments>
+				<buildTarget>plugins/roi/src/plugins_roi_src_libsproi_la-main.lo</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>true</useDefaultCommand>
+				<runAllBuilders>false</runAllBuilders>
+			</target>
+			<target name="plugins/roi/src/plugins_roi_src_libsproi_la-roiplugin.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+				<buildCommand>make</buildCommand>
+				<buildArguments>-j6</buildArguments>
+				<buildTarget>plugins/roi/src/plugins_roi_src_libsproi_la-roiplugin.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
 				<runAllBuilders>false</runAllBuilders>

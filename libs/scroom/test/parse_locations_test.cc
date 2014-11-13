@@ -196,7 +196,7 @@ BOOST_AUTO_TEST_CASE(Parse_files)
   ss << " * Aggregate: q" << std::endl;
   ss << "   * File: c.tif" << std::endl;
   ss << "   * File: d.tif" << std::endl;
-  ss << "   * Aggregate: r" << std::endl;
+  ss << "   * Aggregate: \"r q\"" << std::endl;
   ss << "     * File: e.tif" << std::endl;
   ss << "   * File: f.tif" << std::endl;
   ss << " * File: g.tif" << std::endl;
@@ -204,9 +204,6 @@ BOOST_AUTO_TEST_CASE(Parse_files)
   std::string input = ss.str();
   
   std::vector<Roi::Detail::Presentation> presentations = Roi::Detail::parse(input.begin(), input.end());
-
-  // BOOST_FOREACH(Roi::Detail::Presentation const & p, presentations)
-  //   std::cout << "Found presentation: " << p << std::endl;
 
   BOOST_CHECK_EQUAL(4, presentations.size());
 }

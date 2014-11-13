@@ -497,6 +497,22 @@ plugins_tiff_src_libsptiff_la_LIBADD = @TIFFPLUGIN_LIBS@ -ltiff @BOOSTTHREADLIB@
 	libs/tiled-bitmap/src/libstiledbitmap.la
 
 ########################################################################
+### plugins/roi
+########################################################################
+
+roi_plugin_libs = \
+	plugins/roi/src/libsproi.la
+
+plugins_roi_src_libsproi_la_CPPFLAGS = @ROIPLUGIN_CFLAGS@ -I $(top_srcdir)/inc
+
+plugins_roi_src_libsproi_la_SOURCES = \
+	plugins/roi/src/main.cc \
+	plugins/roi/src/roiplugin.cc \
+	plugins/roi/src/roiplugin.hh
+
+plugins_roi_src_libsproi_la_LIBADD = @ROIPLUGIN_LIBS@ libs/scroom/src/libsscroom.la 
+
+########################################################################
 ### plugins/colormap
 ########################################################################
 
@@ -546,7 +562,7 @@ gui_src_scroom_CPPFLAGS = -I $(top_srcdir)/inc \
 	@GUI_CFLAGS@ \
 	@BOOST_FUTURES_CPPFLAGS@
 
-gui_src_scroom_LDADD = @GUI_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @BOOSTPROGRAMOPTIONSLIB@ $(INTLLIBS) \
+gui_src_scroom_LDADD = @GUI_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @BOOSTPROGRAMOPTIONSLIB@ @BOOSTFILESYSTEMLIB@ $(INTLLIBS) \
 	libs/util/src/libsutil.la
 
 gui_extra_dist = \
@@ -572,7 +588,7 @@ root_extra_dist = \
 ########################################################################
 
 ### Plugins
-plugin_LTLIBRARIES = $(example_plugin_libs) $(transparent_overlay_plugin_libs) $(tiff_plugin_libs) $(colormap_plugin_libs)
+plugin_LTLIBRARIES = $(example_plugin_libs) $(transparent_overlay_plugin_libs) $(tiff_plugin_libs) $(colormap_plugin_libs) $(roi_plugin_libs) 
 plugins_check_programs = $(transparent_overlay_plugin_check_programs)
 plugins_tests = $(transparent_overlay_plugin_tests)
 

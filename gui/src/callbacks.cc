@@ -112,7 +112,15 @@ void on_open_activate (GtkMenuItem*, gpointer user_data)
       (GtkFileFilterFlags)(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_MIME_TYPE);
     printf("Opening file %s\n", filterInfo.filename);
     
-    load(filterInfo);
+    try
+    {
+      load(filterInfo);
+    }
+    catch(std::exception& ex)
+    {
+      printf("ERROR: %s\n", ex.what());
+      on_presentation_possibly_destroyed();
+    }
   }
   gchar* cf =  gtk_file_chooser_get_current_folder(GTK_FILE_CHOOSER(dialog));
   if(cf)
@@ -233,7 +241,15 @@ void on_done_loading_plugins()
       while(!fn.empty())
       {
         std::string& file = fn.front();
-        load(file);
+        try
+        {
+          load(file);
+        }
+        catch(std::exception& ex)
+        {
+          printf("ERROR: %s\n", ex.what());
+          on_presentation_possibly_destroyed();
+        }
         gchar* dir = g_path_get_dirname(file.c_str());
         currentFolder = dir;
         g_free(dir);
@@ -259,14 +275,22 @@ void on_done_loading_plugins()
 
         if(aggregatePresentation)
         {        
-          BOOST_FOREACH(std::string const& file, files)
+          try
           {
-            PresentationInterface::Ptr p = loadPresentation(file);
-            aggregate->addPresentation(p);
-          }
+            BOOST_FOREACH(std::string const& file, files)
+            {
+              PresentationInterface::Ptr p = loadPresentation(file);
+              aggregate->addPresentation(p);
+            }
 
-          on_presentation_created(aggregatePresentation);
-          find_or_create_scroom(aggregatePresentation);
+            on_presentation_created(aggregatePresentation);
+            find_or_create_scroom(aggregatePresentation);
+          }
+          catch(std::exception& ex)
+          {
+            printf("ERROR: While creating %s: %s\n", aggregateName.c_str(), ex.what());
+            on_presentation_possibly_destroyed();
+          }
         }
         else
           printf("ERROR: Don't know how to display a %s\n", aggregateName.c_str());
@@ -503,20 +527,15 @@ void on_view_created(View::Ptr v)
     t.add(cur->first->viewAdded(v));
 }
 
-void on_view_destroyed(View* v)
+void on_presentation_possibly_destroyed()
 {
-  View::Ptr view = v->shared_from_this<View>();
-  view->clearPresentation();
-  
-  views.erase(view);
-  view.reset();
-
   bool presentationDestroyed = false;
-  for(std::list<PresentationInterface::WeakPtr>::iterator cur = presentations.begin();
-      cur != presentations.end(); cur++)
+
+  for (std::list<PresentationInterface::WeakPtr>::iterator cur =
+      presentations.begin(); cur != presentations.end(); cur++)
   {
     PresentationInterface::Ptr p = cur->lock();
-    if(!p)
+    if (!p)
     {
       presentationDestroyed = true;
       std::list<PresentationInterface::WeakPtr>::iterator temp = cur;
@@ -525,21 +544,28 @@ void on_view_destroyed(View* v)
       cur = temp;
     }
   }
-  if(presentationDestroyed)
+  if (presentationDestroyed)
   {
-    BOOST_FOREACH(const Views::value_type& p, views)
-    {
+    for (auto const& p : views)
       p.first->on_presentation_destroyed();
-    }
 
     const std::map<PresentationObserver::Ptr, std::string>& presentationObservers =
-      PluginManager::getInstance()->getPresentationObservers();
+        PluginManager::getInstance()->getPresentationObservers();
 
-    std::map<PresentationObserver::Ptr, std::string>::const_iterator cur = presentationObservers.begin();
-    std::map<PresentationObserver::Ptr, std::string>::const_iterator end = presentationObservers.end();
-    for(;cur!=end; cur++)
-      cur->first->presentationDeleted();
+    for(auto const& p: presentationObservers)
+      p.first->presentationDeleted();
   }
+}
+
+void on_view_destroyed(View* v)
+{
+  View::Ptr view = v->shared_from_this<View>();
+  view->clearPresentation();
+  
+  views.erase(view);
+  view.reset();
+
+  on_presentation_possibly_destroyed();
 }
 
 void on_new_presentationobserver(PresentationObserver::Ptr po)

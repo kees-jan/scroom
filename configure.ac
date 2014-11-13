@@ -97,6 +97,7 @@ PKG_CHECK_MODULES([EXAMPLEPLUGIN], [gtk+-2.0 >= 2.0.0])
 PKG_CHECK_MODULES([TRANSPARENTOVERLAYPLUGIN], [gtk+-2.0 >= 2.0.0])
 PKG_CHECK_MODULES([COLORMAPPLUGIN], [gtk+-2.0 >= 2.0.0, cairo])
 PKG_CHECK_MODULES([TIFFPLUGIN], [gtk+-2.0 >= 2.0.0, cairo])
+PKG_CHECK_MODULES([ROIPLUGIN], [gtk+-2.0 >= 2.0.0, cairo])
 PKG_CHECK_MODULES([GUI],        [gtk+-2.0 >= 2.0.0, libglade-2.0, gthread-2.0, gmodule-2.0, cairo])
 
 # Checks for libraries.
@@ -182,13 +183,56 @@ if test "x${ac_cv_search__ZN5boost15program_options19options_descriptionC2Ejj}" 
 then
   ac_cv_search__ZN5boost15program_options19options_descriptionC2Ejj=""
 else
-  AC_CHECK_HEADERS([boost/program_options.hpp], [have_boost_program_options=yes])
+  AC_CHECK_HEADERS([boost/program_options.hpp], [have_boost_program_options_headers=yes])
 fi
 AC_SUBST([BOOSTPROGRAMOPTIONSLIB], [$ac_cv_search__ZN5boost15program_options19options_descriptionC2Ejj])
 
 #Checking for boost operators
 have_boost_operators=no
 AC_CHECK_HEADERS([boost/operators.hpp], [have_boost_operators=yes])
+
+#Checking for boost filesystem
+have_boost_filesystem_lib=no
+have_boost_filesystem_headers=no
+boost_filesystem_ldflags=""
+# Mangled symbol for ubuntu 12.04
+SCROOM_SEARCH_LIBS([_ZNK5boost11filesystem34path11parent_pathEv],
+                   [boost_filesystem-mt boost_filesystem], [have_boost_filesystem_lib=yes])
+if test "x${have_boost_filesystem_lib}" = xyes
+then
+  boost_filesystem_ldflags=${ac_cv_search__ZNK5boost11filesystem34path11parent_pathEv}
+else
+  # Mangled symbol for ubuntu 14.04 onwards
+  SCROOM_SEARCH_LIBS([_ZNK5boost10filesystem4path11parent_pathEv],
+                     [boost_filesystem-mt boost_filesystem], [have_boost_filesystem_lib=yes])
+  if test "x${have_boost_filesystem_lib}" = xyes
+  then
+    boost_filesystem_ldflags=${ac_cv_search__ZNK5boost10filesystem4path11parent_pathEv}
+  fi
+fi
+AC_CHECK_HEADERS([boost/filesystem.hpp], [have_boost_filesystem_headers=yes])
+AC_SUBST([BOOSTFILESYSTEMLIB], [${boost_filesystem_ldflags}])
+
+# Check if boost filesystem has canonical()
+# Ubuntu 14.04 onwards should have it :-)
+AC_CACHE_CHECK(if boost::filesystem exports the canonical() function,
+  scroom_cv_boost_filesystem_canonical,
+  [AC_LANG_SAVE
+  AC_LANG_CPLUSPLUS
+  AC_TRY_COMPILE([
+  #ifdef HAVE_BOOST_FILESYSTEM_HPP
+  #include <boost/filesystem.hpp>
+  #endif
+  
+  void f()
+  {
+  	boost::filesystem::path p;
+  	(void)canonical(p);
+  }],,
+  scroom_cv_boost_filesystem_canonical=yes, scroom_cv_boost_filesystem_canonical=no)
+  AC_LANG_RESTORE
+  ])
+have_boost_filesystem_canonical=${scroom_cv_boost_filesystem_canonical}
 
 # Some sanity checks
 if test "x${have_zlib_headers}" = xno
@@ -214,6 +258,14 @@ fi
 if test "x${have_pthreads_lib}" = xno
 then
   AC_MSG_ERROR([Pthreads library not found.])
+fi
+if test "x${have_boost_filesystem_headers}" = xno
+then
+  AC_MSG_ERROR([Boost filesystem header files not found.])
+fi
+if test "x${have_boost_filesystem_lib}" = xno
+then
+  AC_MSG_ERROR([Boost filesystem library not found.])
 fi
 
 want_boost_tests=no
@@ -253,6 +305,10 @@ fi
 if test "x${want_xml_test_output}" = xyes
 then
   AC_DEFINE([XML_TEST_OUTPUT], 1, [Have all Boost unittests report in xml format])
+fi
+if test "x${have_boost_filesystem_canonical}" = xyes
+then
+  AC_DEFINE([HAVE_BOOST_FILESYSTEM_CANONICAL], 1, [Boost filesystem exports a canonical() function])
 fi
 
 # GetText

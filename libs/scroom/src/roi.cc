@@ -16,6 +16,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+#include <fstream>
+
 #include <boost/variant/apply_visitor.hpp>
 #include <boost/variant/static_visitor.hpp>
 #include <boost/foreach.hpp>
@@ -83,11 +85,17 @@ namespace Scroom
     std::set<ViewObservable::Ptr> List::instantiate(ScroomInterface::Ptr const& scroomInterface, std::string const& relativeTo)
     {
       std::set<ViewObservable::Ptr> result;
+      std::list<PresentationInterface::Ptr> presentationInterfaces;
       Detail::Instantiate instantiate(scroomInterface, relativeTo);
 
-      BOOST_FOREACH(Detail::Presentation const& p, presentations)
+      for(auto const& p: presentations)
       {
         PresentationInterface::Ptr presentation = boost::apply_visitor(instantiate, p);
+        presentationInterfaces.push_back(presentation);
+      }
+
+      for(auto const& presentation: presentationInterfaces)
+      {
         scroomInterface->showPresentation(presentation);
         result.insert(presentation);
       }
@@ -99,6 +107,26 @@ namespace Scroom
     {
       std::string input = s.str();
       return List(Detail::parse(input.begin(), input.end()));
+    }
+
+    List parse(std::string const& filename)
+    {
+      std::ifstream in(filename, std::ios::in | std::ios::binary);
+      if (in)
+      {
+        std::string input;
+        in.seekg(0, std::ios::end);
+        input.resize(in.tellg());
+        in.seekg(0, std::ios::beg);
+        in.read(&input[0], input.size());
+        in.close();
+
+        if(!in)
+          throw std::invalid_argument("Error reading file "+filename);
+
+        return List(Detail::parse(input.begin(), input.end()));
+      }
+      throw std::invalid_argument("Failed to open file "+filename);
     }
 
   }
