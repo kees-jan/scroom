@@ -60,11 +60,6 @@ SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wsign-promo])
 SCROOM_TEST_ISYSTEM
 
 # Configurable features
-AC_ARG_ENABLE([mutracx-hacks],
-  [AS_HELP_STRING([--enable-mutracx-hacks], 
-    [Build for a Mutracx environment @<:@default=no@:>@])],
-  [want_mutracx_hacks=${enableval}],
-  [want_mutracx_hacks=unknown])
 AC_ARG_ENABLE([doxygen-all-code],
   [AS_HELP_STRING([--enable-doxygen-all-code], 
     [Generate doxygen documentation for all code, instead of just the api @<:@default=no@:>@])],
@@ -118,18 +113,6 @@ AC_TYPE_SIZE_T
 AC_FUNC_MALLOC
 AC_CHECK_FUNCS([memset pow select sqrt strerror])
 
-# Mutracx specifics:
-AC_MSG_CHECKING([for Mutracx development environment])
-need_mutracx_hacks=no
-if pkg-config "gtk+-2.0 >= 2.16.0"
-then
-  need_mutracx_hacks=no
-  AC_MSG_RESULT([no])
-else
-  need_mutracx_hacks=yes
-  AC_MSG_RESULT([yes])
-fi
-
 # Checking for zlib
 have_zlib_headers=no
 have_zlib=no
@@ -139,7 +122,7 @@ AC_SUBST([ZLIB], [$ac_cv_search_zlibVersion])
 
 # Checking for boost system
 have_boost_system_lib=no
-SCROOM_SEARCH_LIBS([_ZN5boost6system16generic_categoryEv], [boost_system-mt boost_system boost_system-gcc42-mt], [have_boost_system_lib=yes])
+SCROOM_SEARCH_LIBS([_ZN5boost6system16generic_categoryEv], [boost_system-mt boost_system], [have_boost_system_lib=yes])
 if test "x${have_boost_system_lib}" = xno
 then
   ac_cv_search__ZN5boost6system16generic_categoryEv=""
@@ -155,8 +138,7 @@ AC_SUBST([PTHREADLIB], ["$ac_cv_search_pthread_mutexattr_init"])
 have_boost_thread_headers=no
 AC_CHECK_HEADERS([boost/thread.hpp boost/thread/mutex.hpp], [have_boost_thread_headers=yes])
 have_boost_thread_lib=no
-# boost_thread-gcc42-mt is the name used at Mutracx...
-SCROOM_SEARCH_LIBS([_ZN5boost6thread6detachEv], [boost_thread-mt boost_thread boost_thread-gcc42-mt], [have_boost_thread_lib=yes])
+SCROOM_SEARCH_LIBS([_ZN5boost6thread6detachEv], [boost_thread-mt boost_thread], [have_boost_thread_lib=yes])
 AC_SUBST([BOOSTTHREADLIB], ["$ac_cv_search__ZN5boost6thread6detachEv $ac_cv_search_pthread_mutexattr_init"])
 
 #checking for boost unittests
@@ -164,7 +146,7 @@ have_boost_test_headers=no
 AC_CHECK_HEADERS([boost/test/unit_test.hpp], [have_boost_test_headers=yes])
 have_boost_test_lib=no
 SCROOM_SEARCH_LIBS([_ZN5boost9unit_test16results_reporter10set_streamERSo],
-                   [boost_unit_test_framework-mt boost_unit_test_framework libboost_unit_test_framework-gcc42-mt], [have_boost_test_lib=yes])
+                   [boost_unit_test_framework-mt boost_unit_test_framework], [have_boost_test_lib=yes])
 AC_SUBST([BOOSTTESTLIB], [$ac_cv_search__ZN5boost9unit_test16results_reporter10set_streamERSo])
 
 # Checking for boost futures
@@ -195,7 +177,7 @@ AM_CONDITIONAL([LOCAL_BOOST_FUTURES], [test x$have_new_boost_futures = xno -a x$
 have_boost_program_options_lib=no
 have_boost_program_options_headers=no
 SCROOM_SEARCH_LIBS([_ZN5boost15program_options19options_descriptionC2Ejj],
-                   [boost_program_options-mt boost_program_options libboost_program_options-gcc42-mt], [have_boost_program_options_lib=yes])
+                   [boost_program_options-mt boost_program_options], [have_boost_program_options_lib=yes])
 if test "x${ac_cv_search__ZN5boost15program_options19options_descriptionC2Ejj}" = xno
 then
   ac_cv_search__ZN5boost15program_options19options_descriptionC2Ejj=""
@@ -240,19 +222,6 @@ then
   want_boost_tests=yes
 fi
 AM_CONDITIONAL([BOOST_UNITTESTS], [test x$want_boost_tests = xyes])
-if test "x${need_mutracx_hacks}" = xyes
-then
-  # Print a warning if the user said "no" to mutracx hacks. If he said
-  # "yes", or nothing at all, be quiet and enable anyway.
-  if test "x${want_mutracx_hacks}" = xno
-  then
-    AC_MSG_WARN([Mutracx environment detected. Enabling mutracx-hacks])
-  fi
-  want_mutracx_hacks=yes
-elif test "x${want_mutracx_hacks}" = xunknown
-then
-  want_mutracx_hacks=$need_mutracx_hacks
-fi
 
 # If no doxygen, then we can't process all code
 if DX_TEST_FEATURE([doc])
@@ -263,17 +232,7 @@ else
     want_doxygen_all_code=no
 fi
 
-# want_mutracx_hacks is now set to "yes" if they are either needed or
-# requested.
-if test "x${want_mutracx_hacks}" = xyes
-then
-  AC_DEFINE([MUTRACX_HACKS], 1, [Hacks for Mutracx environment enabled])
-else
-  # Mutracx has gcc 4.6, which supports c++0x, but its boost version
-  # does not. Hence, only enable c++0x if it is detected, and we're
-  # not compiling for Mutracx.
-  SCROOM_ENABLE_STDCXX_0X
-fi
+SCROOM_ENABLE_STDCXX_0X
 
 if test "x${want_doxygen_all_code}" = xyes
 then
@@ -329,7 +288,6 @@ echo \
  Compiler: '${CXX} ${CXXFLAGS} ${CPPFLAGS}'
            
  Package features:
-   Mutracx hacks: ${want_mutracx_hacks}
    Doxygen:       ${want_doxygen}
      all code:    ${want_doxygen_all_code}
    Unittests:     ${want_boost_tests}
