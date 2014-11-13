@@ -99,38 +99,6 @@ static void on_newWindow_activate(GtkMenuItem*, gpointer user_data)
   }
 }
 
-#if MUTRACX_HACKS
-
-void gtk_adjustment_configure(GtkAdjustment* adj,
-                              gdouble value, gdouble lower, gdouble upper,
-                              gdouble step_increment,
-                              gdouble page_increment, gdouble page_size)
-{
-    g_object_set(G_OBJECT(adj),
-                 "value",          value,
-                 "lower",          lower,
-                 "upper",          upper,
-                 "step-increment", step_increment,
-                 "page-increment", page_increment,
-                 "page-size",      page_size,
-                 NULL);
-    gtk_adjustment_changed(adj);
-}
-
-GdkWindow* gtk_widget_get_window(GtkWidget *widget)
-{
-  return widget->window;
-}
-
-void gtk_widget_set_visible(GtkWidget *widget, gboolean visible)
-{
-    g_object_set(G_OBJECT(widget),
-                 "visible", visible,
-                 NULL);
-}
-
-#endif
-
 ////////////////////////////////////////////////////////////////////////
   
 View::View(GladeXML* scroomXml)

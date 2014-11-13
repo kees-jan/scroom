@@ -65,14 +65,7 @@ std::list<GtkFileFilter*> Tiff::getFilters()
 
   GtkFileFilter* filter = gtk_file_filter_new();
   gtk_file_filter_set_name(filter, "Tiff files");
-#if MUTRACX_HACKS
-  gtk_file_filter_add_pattern(filter, "*.tif");
-  gtk_file_filter_add_pattern(filter, "*.tiff");
-  gtk_file_filter_add_pattern(filter, "*.TIF");
-  gtk_file_filter_add_pattern(filter, "*.TIFF");
-#else
   gtk_file_filter_add_mime_type(filter, "image/tiff");
-#endif
   result.push_back(filter);
   
   return result;

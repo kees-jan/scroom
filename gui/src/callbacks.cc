@@ -96,33 +96,12 @@ void on_open_activate (GtkMenuItem*, gpointer user_data)
         f != filters.end();
         f++)
     {
-#if MUTRACX_HACKS
-      GtkFileFilterFlags flags = gtk_file_filter_get_needed(*f);
-      if(flags & ~(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME))
-      {
-        printf("ERROR: Only pattern matching is supported (%d, %s)\n", flags, cur->second.c_str());
-      }
-      else
-      {
-        gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dialog), *f);
-      }
-#else
       gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dialog), *f);
-#endif
-      
     }
   }
 
   if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT)
   {
-#if MUTRACX_HACKS
-    GtkFileFilterInfo filterInfo;
-    filterInfo.filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER (dialog));
-    filterInfo.display_name = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER (dialog));
-    filterInfo.contains =
-      (GtkFileFilterFlags)(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME);
-    printf("Opening file %s (%s)\n", filterInfo.filename, filterInfo.mime_type);
-#else
     GFile* file = g_file_new_for_path(gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog)));
     GFileInfo* fileInfo = g_file_query_info(file, "standard::*", G_FILE_QUERY_INFO_NONE, NULL, NULL);
     GtkFileFilterInfo filterInfo;
@@ -132,7 +111,6 @@ void on_open_activate (GtkMenuItem*, gpointer user_data)
     filterInfo.contains =
       (GtkFileFilterFlags)(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_MIME_TYPE);
     printf("Opening file %s\n", filterInfo.filename);
-#endif
     
     load(filterInfo);
   }

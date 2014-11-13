@@ -78,24 +78,6 @@ void load(const std::string& filename)
     find_or_create_scroom(presentation);
 }
 
-#if MUTRACX_HACKS
-
-PresentationInterface::Ptr loadPresentation(const std::string& filename)
-{
-  // Gtk 2.12
-  GtkFileFilterInfo filterInfo;
-  filterInfo.filename = filename.c_str();
-  filterInfo.display_name = filename.c_str();
-  filterInfo.contains =
-    (GtkFileFilterFlags)(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME);
-  
-  printf("Opening file %s\n", filterInfo.filename);
-
-  return loadPresentation(filterInfo);
-}
-
-#else
-
 PresentationInterface::Ptr loadPresentation(const std::string& filename)
 {
   PresentationInterface::Ptr result;
@@ -122,5 +104,3 @@ PresentationInterface::Ptr loadPresentation(const std::string& filename)
 
   return result;
 }
-
-#endif
