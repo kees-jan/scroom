@@ -54,6 +54,43 @@ public:
 
 typedef std::unique_ptr<GtkFileFilterInfo,GtkFileFilterInfoDeleter> GtkFileFilterInfoPtr;
 
+void destroyGtkFileFilterList(std::list<GtkFileFilter*>& l)
+{
+  while(!l.empty())
+  {
+    GtkFileFilter* f = l.front();
+    g_object_ref_sink(f);
+    g_object_unref(f);
+    l.pop_front();
+  }
+}
+
+class GtkFileFilterListDestroyer
+{
+private:
+  std::list<GtkFileFilter*>& filters;
+
+public:
+  GtkFileFilterListDestroyer(std::list<GtkFileFilter*>& f) :
+      filters(f)
+  {
+    for(auto const filter: filters)
+      g_object_ref_sink(filter);
+  }
+
+  ~GtkFileFilterListDestroyer()
+  {
+    while(!filters.empty())
+    {
+      GtkFileFilter* f = filters.front();
+      g_object_ref_sink(f);
+      g_object_unref(f);
+      filters.pop_front();
+    }
+
+  }
+};
+
 ////////////////////////////////////////////////////////////////////////
 
 char* charpFromString(std::string const& s)
@@ -170,7 +207,8 @@ PresentationInterface::Ptr loadPresentation(GtkFileFilterInfo const& info)
   {
     for (auto const& cur : openPresentationInterfaces)
     {
-      if (filterMatchesInfo(info, cur.first->getFilters()))
+      std::list<GtkFileFilter*> filters = cur.first->getFilters();
+      if (filterMatchesInfo(info, filters))
       {
         presentation = cur.first->open(info.filename);
 
@@ -204,7 +242,9 @@ void load(GtkFileFilterInfo const& info)
 
   for (auto const& cur : openInterfaces)
   {
-    if (filterMatchesInfo(info, cur.first->getFilters()))
+    std::list<GtkFileFilter*> filters = cur.first->getFilters();
+    GtkFileFilterListDestroyer destroyer(filters);
+    if (filterMatchesInfo(info, filters))
     {
       cur.first->open(info.filename, ScroomInterfaceImpl::instance());
       return;
@@ -212,7 +252,9 @@ void load(GtkFileFilterInfo const& info)
   }
   for (auto const& cur : openPresentationInterfaces)
   {
-    if (filterMatchesInfo(info, cur.first->getFilters()))
+    std::list<GtkFileFilter*> filters = cur.first->getFilters();
+    GtkFileFilterListDestroyer destroyer(filters);
+    if (filterMatchesInfo(info, filters))
     {
       PresentationInterface::Ptr presentation = cur.first->open(info.filename);
       if (presentation)
