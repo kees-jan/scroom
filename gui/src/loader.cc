@@ -322,7 +322,15 @@ Aggregate::Ptr ScroomInterfaceImpl::newAggregate(std::string const& name)
   {
     Aggregate::Ptr aggregate = i->second->createNew();
     if(aggregate)
+    {
+      PresentationInterface::Ptr aggregatePresentation =
+          boost::dynamic_pointer_cast<PresentationInterface>(aggregate);
+
+      if (aggregatePresentation)
+        on_presentation_created(aggregatePresentation);
+
       return aggregate;
+    }
     else
       throw std::invalid_argument("Failed to create a new"+name);
   }
