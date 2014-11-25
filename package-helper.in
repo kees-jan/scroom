@@ -29,6 +29,7 @@ prepare()
     remove_if_exists "saucy.log"
     remove_if_exists "trusty.log"
     remove_if_exists "utopic.log"
+    remove_if_exists "vivid.log"
     remove_if_exists "mutracx.log"
     remove_if_exists "pdebuild.log"
 }
@@ -143,7 +144,7 @@ then
 fi
 
 # Ubuntu source packages
-for source_package in precise trusty utopic
+for source_package in precise trusty utopic vivid
 do
     echo_me $source_package
     ( rm -rf "$BUILD/$source_package" > /dev/null 2>&1 ;
