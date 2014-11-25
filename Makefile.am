@@ -494,7 +494,7 @@ plugins_tiff_src_libsptiff_la_SOURCES = \
 	plugins/tiff/src/tiffpresentation.hh
 
 plugins_tiff_src_libsptiff_la_LIBADD = @TIFFPLUGIN_LIBS@ -ltiff @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@\
-	libs/tiled-bitmap/src/libstiledbitmap.la
+	libs/tiled-bitmap/src/libstiledbitmap.la libs/scroom/src/libsscroom.la
 
 ########################################################################
 ### plugins/roi
