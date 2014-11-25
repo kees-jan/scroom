@@ -264,23 +264,24 @@ void on_done_loading_plugins()
     PluginManager::Ptr instance = PluginManager::getInstance();
     std::map<std::string, NewAggregateInterface::Ptr> const& newAggregateInterfaces = instance->getNewAggregateInterfaces();
 
-    BOOST_FOREACH(FileNameMap::value_type const& v, filenames)
+    for (FileNameMap::value_type const& v : filenames)
     {
       std::string const& aggregateName = v.first;
       std::list<std::string> const& files = v.second;
 
-      std::map<std::string, NewAggregateInterface::Ptr>::const_iterator i = newAggregateInterfaces.find(aggregateName);
-      if(i != newAggregateInterfaces.end())
+      std::map<std::string, NewAggregateInterface::Ptr>::const_iterator i =
+        newAggregateInterfaces.find(aggregateName);
+      if (i != newAggregateInterfaces.end())
       {
-        Aggregate::Ptr aggregate = i->second->createNew();
-        PresentationInterface::Ptr aggregatePresentation =
-          boost::dynamic_pointer_cast<PresentationInterface>(aggregate);
+        try
+        {
+          Aggregate::Ptr aggregate = i->second->createNew();
+          PresentationInterface::Ptr aggregatePresentation =
+            boost::dynamic_pointer_cast<PresentationInterface>(aggregate);
 
-        if(aggregatePresentation)
-        {        
-          try
+          if (aggregatePresentation)
           {
-            BOOST_FOREACH(std::string const& file, files)
+            for(std::string const& file: files)
             {
               PresentationInterface::Ptr p = loadPresentation(file);
               aggregate->addPresentation(p);
@@ -289,14 +290,14 @@ void on_done_loading_plugins()
             on_presentation_created(aggregatePresentation);
             find_or_create_scroom(aggregatePresentation);
           }
-          catch(std::exception& ex)
-          {
-            printf("ERROR: While creating %s: %s\n", aggregateName.c_str(), ex.what());
-            on_presentation_possibly_destroyed();
-          }
+          else
+            printf("ERROR: Don't know how to display a %s\n", aggregateName.c_str());
         }
-        else
-          printf("ERROR: Don't know how to display a %s\n", aggregateName.c_str());
+        catch(std::exception& ex)
+        {
+          printf("ERROR: While creating %s: %s\n", aggregateName.c_str(), ex.what());
+          on_presentation_possibly_destroyed();
+        }
       }
       else
       {
