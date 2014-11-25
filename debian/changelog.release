@@ -1,3 +1,9 @@
+scroom (0.6-2) precise; urgency=low
+
+  * For more info see https://github.com/kees-jan/scroom/wiki
+
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Thu, 30 Oct 2014 12:20:49 +0100
+
 scroom (0.6-1) precise; urgency=low
 
   * For more info see https://github.com/kees-jan/scroom/wiki
