@@ -1,3 +1,0 @@
-make-dependency-on-libtiff4-explicit.patch
-mutracx_remove-boost-from-builddeps.patch
-mutracx_use-preinstalled-boost-libs.patch

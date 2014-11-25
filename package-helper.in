@@ -164,18 +164,18 @@ do
         ) > ${source_package}.log 2>&1
 done
 
-# Mutracx
-echo_me "Mutracx"
-source_package=mutracx
-(
-    rm -rf "$BUILD/$source_package" > /dev/null 2>&1 ;    
-    mkdir -p "$BUILD/$source_package" && 
-    ln "$BUILD/scroom_$VERSION.orig.tar.gz" "$BUILD/$source_package/scroom_$VERSION.orig.tar.gz" && 
-    tar xfC "$TMPDIR/scroom-$VERSION-base.tgz" "$BUILD/$source_package" && 
-    cd "$BUILD/$source_package/scroom-$VERSION" && 
-    QUILT_PATCHES="$CURDIR/${source_package}-patches" quilt push -a &&
-    dch -D "hardy" --force-distribution -v "$(dpkg-parsechangelog | awk '/^Version: / { print $2 }')${source_package}1" "Mutracx edition" && 
-    sudo DIST=mutracx ARCH=amd64 pdebuild --debbuildopts "-j12 -sa" && 
-    sudo DIST=mutracx ARCH=i386  pdebuild --debbuildopts "-j12 -B"
-    ) > ${source_package}.log 2>&1
+# # Mutracx
+# echo_me "Mutracx"
+# source_package=mutracx
+# (
+#     rm -rf "$BUILD/$source_package" > /dev/null 2>&1 ;    
+#     mkdir -p "$BUILD/$source_package" && 
+#     ln "$BUILD/scroom_$VERSION.orig.tar.gz" "$BUILD/$source_package/scroom_$VERSION.orig.tar.gz" && 
+#     tar xfC "$TMPDIR/scroom-$VERSION-base.tgz" "$BUILD/$source_package" && 
+#     cd "$BUILD/$source_package/scroom-$VERSION" && 
+#     QUILT_PATCHES="$CURDIR/${source_package}-patches" quilt push -a &&
+#     dch -D "hardy" --force-distribution -v "$(dpkg-parsechangelog | awk '/^Version: / { print $2 }')${source_package}1" "Mutracx edition" && 
+#     sudo DIST=mutracx ARCH=amd64 pdebuild --debbuildopts "-j12 -sa" && 
+#     sudo DIST=mutracx ARCH=i386  pdebuild --debbuildopts "-j12 -B"
+#     ) > ${source_package}.log 2>&1
 
