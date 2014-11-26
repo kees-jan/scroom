@@ -493,7 +493,7 @@ plugins_tiff_src_libsptiff_la_SOURCES = \
 	plugins/tiff/src/tiffpresentation.cc \
 	plugins/tiff/src/tiffpresentation.hh
 
-plugins_tiff_src_libsptiff_la_LIBADD = @TIFFPLUGIN_LIBS@ -ltiff @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@\
+plugins_tiff_src_libsptiff_la_LIBADD = @TIFFPLUGIN_LIBS@ -ltiff @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
 	libs/tiled-bitmap/src/libstiledbitmap.la libs/scroom/src/libsscroom.la
 
 ########################################################################
@@ -510,7 +510,7 @@ plugins_roi_src_libsproi_la_SOURCES = \
 	plugins/roi/src/roiplugin.cc \
 	plugins/roi/src/roiplugin.hh
 
-plugins_roi_src_libsproi_la_LIBADD = @ROIPLUGIN_LIBS@ libs/scroom/src/libsscroom.la 
+plugins_roi_src_libsproi_la_LIBADD = @ROIPLUGIN_LIBS@ @BOOSTSYSTEMLIB@ libs/scroom/src/libsscroom.la 
 
 ########################################################################
 ### plugins/colormap
