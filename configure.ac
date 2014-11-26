@@ -59,6 +59,8 @@ SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Woverloaded-virtual])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wsign-promo])
 SCROOM_TEST_ISYSTEM
 
+LDFLAGS="$LDFLAGS -Wl,-z,defs"
+
 # Configurable features
 AC_ARG_ENABLE([doxygen-all-code],
   [AS_HELP_STRING([--enable-doxygen-all-code], 
