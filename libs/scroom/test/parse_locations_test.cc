@@ -208,12 +208,55 @@ BOOST_AUTO_TEST_CASE(Parse_files)
   BOOST_CHECK_EQUAL(4, presentations.size());
 }
 
-BOOST_AUTO_TEST_CASE(Parse_file_without_final_endl)
+BOOST_AUTO_TEST_CASE(Parse_files_without_final_endl)
 {
   std::stringstream ss;
   ss << " * File: a.tif" << std::endl;
   ss << " * File: b.tif";
 
+  std::string input = ss.str();
+
+  std::vector<Roi::Detail::Presentation> presentations = Roi::Detail::parse(input.begin(), input.end());
+
+  BOOST_CHECK_EQUAL(2, presentations.size());
+}
+
+BOOST_AUTO_TEST_CASE(Parse_files_with_leading_whitespace)
+{
+  std::stringstream ss;
+  ss << std::endl;
+  ss << " * File: a.tif" << std::endl;
+  ss << " * File: b.tif" << std::endl;
+
+  std::string input = ss.str();
+
+  std::vector<Roi::Detail::Presentation> presentations = Roi::Detail::parse(input.begin(), input.end());
+
+  BOOST_CHECK_EQUAL(2, presentations.size());
+}
+
+BOOST_AUTO_TEST_CASE(Parse_files_with_trailing_whitespace)
+{
+  std::stringstream ss;
+  ss << " * File: a.tif" << std::endl;
+  ss << " * File: b.tif" << std::endl;
+  ss << " \t  \t";
+  std::string input = ss.str();
+
+  std::vector<Roi::Detail::Presentation> presentations = Roi::Detail::parse(input.begin(), input.end());
+
+  BOOST_CHECK_EQUAL(2, presentations.size());
+}
+
+BOOST_AUTO_TEST_CASE(Parse_files_with_leading_comments)
+{
+  std::stringstream ss;
+  ss << std::endl;
+  ss << "   # Some random comment" << std::endl;
+  ss << std::endl;
+  ss << " * File: a.tif" << std::endl;
+  ss << " * File: b.tif" << std::endl;
+  ss << "# Some random comment without endline";
   std::string input = ss.str();
 
   std::vector<Roi::Detail::Presentation> presentations = Roi::Detail::parse(input.begin(), input.end());
@@ -230,9 +273,6 @@ BOOST_AUTO_TEST_CASE(Instantiate_files)
   ss << "   * File: c.tif" << std::endl;
   ss << "   * File: d.tif" << std::endl;
 
-  std::ofstream f("/tmp/testdata.txt");
-  f << ss.str();
-  
   Roi::List l = Roi::parse(ss);
   ScroomInterfaceStub::Ptr stub = ScroomInterfaceStub::create();
   stub->relativeTo = "me";

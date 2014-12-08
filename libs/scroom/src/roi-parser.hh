@@ -95,7 +95,45 @@ namespace Scroom
       } escaped_char;
 
       template <typename Iterator>
-      struct My_parser : qi::grammar<Iterator, std::vector<Presentation>()>
+      struct My_skipper : qi::grammar<Iterator, std::string() >
+      {
+        My_skipper()
+          : My_skipper::base_type(start, "My_skipper")
+        {
+          using ascii::char_;
+          using ascii::string;
+          using phoenix::construct;
+          using phoenix::val;
+          using phoenix::ref;
+          using phoenix::at_c;
+          using phoenix::push_back;
+          using qi::double_;
+          using qi::fail;
+          using qi::int_;
+          using qi::lexeme;
+          using qi::no_skip;
+          using qi::lit;
+          using qi::on_error;
+          using qi::eol;
+          using qi::eoi;
+          using qi::eps;
+          
+          endli %= eol | eoi;
+
+          empty_line %= *ascii::blank >> endli;
+          comment %= *ascii::blank >> '#' >> *(char_-eol) >> endli;
+          
+          start %= empty_line | comment;
+        }
+
+        qi::rule<Iterator, std::string()> start;
+        qi::rule<Iterator, std::string()> empty_line;
+        qi::rule<Iterator, std::string()> comment;
+        qi::rule<Iterator, qi::unused_type> endli;
+      };
+      
+      template <typename Iterator>
+      struct My_parser : qi::grammar<Iterator, std::vector<Presentation>(), My_skipper<Iterator> >
       {
         My_parser()
           : My_parser::base_type(start, "My_parser")
@@ -146,7 +184,7 @@ namespace Scroom
             presentation_start(qi::_r1) [ qi::_a=at_c<0>(qi::_1), push_back(qi::_val, at_c<1>(qi::_1))]
             >> *presentation_continued(qi::_a)[ push_back(qi::_val, qi::_1)];
 
-          start %= presentations(std::string(""));
+          start %= lexeme[presentations(std::string(""))];
 
           start.name("start");
           presentations.name("presentations");
@@ -158,6 +196,7 @@ namespace Scroom
           continue_sublist.name("continue_sublist");
           file.name("file");
           aggregate.name("aggregate");
+          endli.name("end-of-line-or-input");
 
           on_error<fail>
             (
@@ -174,7 +213,7 @@ namespace Scroom
 
         qi::rule<Iterator, std::string()> quoted_string;
         qi::rule<Iterator, std::string(), ascii::blank_type> name;
-        qi::rule<Iterator, std::vector<Presentation>()> start;
+        qi::rule<Iterator, std::vector<Presentation>(), My_skipper<Iterator> > start;
         qi::rule<Iterator, std::vector<Presentation>(std::string), qi::locals<std::string> > presentations;
         qi::rule<Iterator, fusion::vector<std::string,Presentation>(std::string)> presentation_start;
         qi::rule<Iterator, Presentation(std::string)> presentation_continued;
@@ -195,9 +234,13 @@ namespace Scroom
         using qi::no_skip;
 
         My_parser<Iterator> my_parser;
+        My_skipper<Iterator> my_skipper;
+        My_skipper<Iterator> test;
+        
         std::vector<Presentation> result;
 
-        bool r = parse(first, last, my_parser, result);
+        // bool r = parse(first, last, my_parser, result);
+        bool r = phrase_parse(first, last, my_parser, my_skipper, result);
 
         if (first != last)
         {
