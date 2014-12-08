@@ -208,7 +208,20 @@ BOOST_AUTO_TEST_CASE(Parse_files)
   BOOST_CHECK_EQUAL(4, presentations.size());
 }
 
-BOOST_AUTO_TEST_CASE(Parse_files2)
+BOOST_AUTO_TEST_CASE(Parse_file_without_final_endl)
+{
+  std::stringstream ss;
+  ss << " * File: a.tif" << std::endl;
+  ss << " * File: b.tif";
+
+  std::string input = ss.str();
+
+  std::vector<Roi::Detail::Presentation> presentations = Roi::Detail::parse(input.begin(), input.end());
+
+  BOOST_CHECK_EQUAL(2, presentations.size());
+}
+
+BOOST_AUTO_TEST_CASE(Instantiate_files)
 {
   std::stringstream ss;
   ss << " * File: a.tif" << std::endl;

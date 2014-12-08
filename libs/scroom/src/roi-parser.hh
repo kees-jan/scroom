@@ -115,8 +115,11 @@ namespace Scroom
           using qi::lit;
           using qi::on_error;
           using qi::eol;
+          using qi::eoi;
           using qi::eps;
-
+          
+          endli %= eol | eoi;
+          
           quoted_string %= lexeme['"' > +(char_ - '"' - eol) > '"'];
           name %= quoted_string | lexeme[+(char_ - ascii::space)];
           // name %= lexeme[+(char_ - ascii::space)];
@@ -126,11 +129,11 @@ namespace Scroom
                                   >> '*'];
           continue_sublist = no_skip[lit(qi::_r1) >> '*'];
 
-          file %= qi::skip(ascii::blank)["File:" > name] > eol;
+          file %= qi::skip(ascii::blank)["File:" > name] > endli;
 
           aggregate = qi::skip(ascii::blank)["Aggregate:"
                                              > name [at_c<0>(qi::_val) = qi::_1]
-                                             ] > eol
+                                             ] > endli
             >> presentations(qi::_r1) [at_c<1>(qi::_val) = qi::_1];
 
           presentation_start %= start_sublist(qi::_r1)
@@ -179,6 +182,7 @@ namespace Scroom
         qi::rule<Iterator, Aggregate(std::string)> aggregate;
         qi::rule<Iterator, std::string(std::string)> start_sublist;
         qi::rule<Iterator, void(std::string)> continue_sublist;
+        qi::rule<Iterator, qi::unused_type> endli;
       };
       
       template<typename Iterator>
