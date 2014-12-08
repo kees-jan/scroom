@@ -33,6 +33,22 @@ namespace Scroom
   {
     namespace Detail
     {
+      std::ostream& operator<<(std::ostream& os, File const& f)
+      {
+        return os << "[" << f.name << "]";
+      }
+
+      std::ostream& operator<<(std::ostream& os, Aggregate const& a)
+      {
+        os << "[" << a.name << "(";
+        BOOST_FOREACH(Presentation const& p, a.children)
+          os << p;
+        os << ")]";
+
+        return os;
+      }
+
+      
       class Instantiate : public boost::static_visitor<PresentationInterface::Ptr>
       {
       private:
@@ -78,10 +94,6 @@ namespace Scroom
       }
     }
 
-    List::List(std::vector<Detail::Presentation> const& presentations)
-      : presentations(presentations)
-    {}
-     
     std::set<ViewObservable::Ptr> List::instantiate(ScroomInterface::Ptr const& scroomInterface, std::string const& relativeTo)
     {
       std::set<ViewObservable::Ptr> result;
@@ -127,6 +139,34 @@ namespace Scroom
         return List(Detail::parse(input.begin(), input.end()));
       }
       throw std::invalid_argument("Failed to open file "+filename);
+    }
+
+    std::ostream& operator<<(std::ostream& os, RoiBase const& b)
+    {
+      os << "[ \"" << b.description << "\" (";
+      for(auto const& rr: b.children)
+        os << rr;
+      os << ")]";
+      
+      return os;
+    }
+
+    std::ostream& operator<<(std::ostream& os, Rect const& r)
+    {
+      os << "[ {"
+         << r.left << ", "
+         << r.top << ", "
+         << r.width << ", "
+         << r.height
+         << "} ";
+      if(!r.description.empty())
+        os << "\"" << r.description << "\" ";
+      os << "(";
+      for(auto const& rr: r.children)
+        os << rr;
+      os << ")]";
+      
+      return os;
     }
 
   }

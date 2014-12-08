@@ -46,15 +46,39 @@ namespace Scroom
         std::string name;
         std::vector<Presentation> children;
       };
+
+      std::ostream& operator<<(std::ostream& os, File const& f);
+      std::ostream& operator<<(std::ostream& os, Aggregate const& a);
     }
     
+    struct RoiBase;
+    struct Rect;
+
+    typedef boost::variant<RoiBase, Rect> RoiItem;
+
+    struct RoiBase
+    {
+      std::string description;
+      std::vector<RoiItem> children;
+    };
+
+    struct Rect : public RoiBase
+    {
+      double left;
+      double top;
+      double width;
+      double height;
+    };
+
+    std::ostream& operator<<(std::ostream& os, RoiBase const& b);
+    std::ostream& operator<<(std::ostream& os, Rect const& r);
+
     class List
     {
-      std::vector<Detail::Presentation> presentations;
-      
     public:
-      List(std::vector<Detail::Presentation> const& presentations);
-      
+      std::vector<Detail::Presentation> presentations;
+      std::vector<RoiItem> regions;
+
       std::set<ViewObservable::Ptr> instantiate(ScroomInterface::Ptr const& scroomInterface, std::string const& relativeTo=std::string());
 
 

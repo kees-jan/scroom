@@ -35,30 +35,6 @@
 
 #include <scroom/roi.hh>
 
-namespace Scroom
-{
-  namespace Roi
-  {
-    namespace Detail
-    {
-      inline std::ostream& operator<<(std::ostream& os, File const& f)
-      {
-        return os << "[" << f.name << "]";
-      }
-
-      inline std::ostream& operator<<(std::ostream& os, Aggregate const& a)
-      {
-        os << "[" << a.name << "(";
-        BOOST_FOREACH(Presentation const& p, a.children)
-          os << p;
-        os << ")]";
-
-        return os;
-      }
-    }
-  }
-}
-
 BOOST_FUSION_ADAPT_STRUCT(
                           Scroom::Roi::Detail::File,
                           (std::string, name)
@@ -68,6 +44,28 @@ BOOST_FUSION_ADAPT_STRUCT(
                           Scroom::Roi::Detail::Aggregate,
                           (std::string, name)
                           (std::vector<Scroom::Roi::Detail::Presentation>, children)
+                          )
+
+BOOST_FUSION_ADAPT_STRUCT(
+                          Scroom::Roi::RoiBase,
+                          (std::string, description)
+                          (std::vector<Scroom::Roi::RoiItem>, children)
+                          )
+
+BOOST_FUSION_ADAPT_STRUCT(
+                          Scroom::Roi::Rect,
+                          (double, left)
+                          (double, top)
+                          (double, width)
+                          (double, height)
+                          (std::string, description)
+                          (std::vector<Scroom::Roi::RoiItem>, children)
+                          )
+
+BOOST_FUSION_ADAPT_STRUCT(
+                          Scroom::Roi::List,
+                          (std::vector<Scroom::Roi::Detail::Presentation>, presentations)
+                          (std::vector<Scroom::Roi::RoiItem>, regions)
                           )
 
 namespace Scroom
@@ -100,28 +98,10 @@ namespace Scroom
         My_skipper()
           : My_skipper::base_type(start, "My_skipper")
         {
-          using ascii::char_;
-          using ascii::string;
-          using phoenix::construct;
-          using phoenix::val;
-          using phoenix::ref;
-          using phoenix::at_c;
-          using phoenix::push_back;
-          using qi::double_;
-          using qi::fail;
-          using qi::int_;
-          using qi::lexeme;
-          using qi::no_skip;
-          using qi::lit;
-          using qi::on_error;
-          using qi::eol;
-          using qi::eoi;
-          using qi::eps;
-          
-          endli %= eol | eoi;
+          endli %= qi::eol | qi::eoi;
 
           empty_line %= *ascii::blank >> endli;
-          comment %= *ascii::blank >> '#' >> *(char_-eol) >> endli;
+          comment %= *ascii::blank >> '#' >> *(ascii::char_-qi::eol) >> endli;
           
           start %= empty_line | comment;
         }
@@ -133,7 +113,7 @@ namespace Scroom
       };
       
       template <typename Iterator>
-      struct My_parser : qi::grammar<Iterator, std::vector<Presentation>(), My_skipper<Iterator> >
+      struct My_parser : qi::grammar<Iterator, List(), My_skipper<Iterator> >
       {
         My_parser()
           : My_parser::base_type(start, "My_parser")
@@ -155,18 +135,18 @@ namespace Scroom
           using qi::eol;
           using qi::eoi;
           using qi::eps;
-          
+
+          // Preliminaries
           endli %= eol | eoi;
-          
           quoted_string %= lexeme['"' > +(char_ - '"' - eol) > '"'];
           name %= quoted_string | lexeme[+(char_ - ascii::space)];
-          // name %= lexeme[+(char_ - ascii::space)];
 
           start_sublist = no_skip[lit(qi::_r1) [ qi::_val = qi::_r1 ]
                                   >> +char_(' ') [ qi::_val += qi::_1 ]
                                   >> '*'];
           continue_sublist = no_skip[lit(qi::_r1) >> '*'];
 
+          // List of presentations
           file %= qi::skip(ascii::blank)["File:" > name] > endli;
 
           aggregate = qi::skip(ascii::blank)["Aggregate:"
@@ -184,7 +164,31 @@ namespace Scroom
             presentation_start(qi::_r1) [ qi::_a=at_c<0>(qi::_1), push_back(qi::_val, at_c<1>(qi::_1))]
             >> *presentation_continued(qi::_a)[ push_back(qi::_val, qi::_1)];
 
-          start %= lexeme[presentations(std::string(""))];
+          // List of roi's
+          description %= lit("Desc:") > name;
+          rect = qi::skip(ascii::blank) ["Rect:" > double_ [at_c<0>(qi::_val) = qi::_1]
+                                        > ',' > double_ [at_c<1>(qi::_val) = qi::_1]
+                                        > ',' > double_ [at_c<2>(qi::_val) = qi::_1]
+                                        > ',' > double_ [at_c<3>(qi::_val) = qi::_1]
+                                         >> -(lit(',') >> description[at_c<4>(qi::_val) = qi::_1])
+              ] > endli >> *rois(qi::_r1) [at_c<5>(qi::_val) = qi::_1];
+          named_roi = qi::skip(ascii::blank) [ description[at_c<0>(qi::_val) = qi::_1]
+              ] > endli >> rois(qi::_r1) [at_c<1>(qi::_val) = qi::_1];
+
+          roi_start %= start_sublist(qi::_r1) >>
+              ( rect(at_c<0>(qi::_val)) | named_roi(at_c<0>(qi::_val)));
+          roi_continued %= continue_sublist(qi::_r1) >>
+              ( rect(qi::_r1) | named_roi(qi::_r1));
+
+          rois =
+              roi_start(qi::_r1) [ qi::_a=at_c<0>(qi::_1), push_back(qi::_val, at_c<1>(qi::_1))]
+              >> *roi_continued(qi::_a)[ push_back(qi::_val, qi::_1)];
+
+        
+          // Finally, the start token
+          start %=
+              lexeme[presentations(std::string(""))] ^
+              lexeme[rois(std::string(""))];
 
           start.name("start");
           presentations.name("presentations");
@@ -196,6 +200,14 @@ namespace Scroom
           continue_sublist.name("continue_sublist");
           file.name("file");
           aggregate.name("aggregate");
+
+          rois.name("rois");
+          roi_start.name("roi_start");
+          roi_continued.name("roi_continued");
+          named_roi.name("named_roi");
+          description.name("description");
+          rect.name("rect");
+          
           endli.name("end-of-line-or-input");
 
           on_error<fail>
@@ -213,19 +225,29 @@ namespace Scroom
 
         qi::rule<Iterator, std::string()> quoted_string;
         qi::rule<Iterator, std::string(), ascii::blank_type> name;
-        qi::rule<Iterator, std::vector<Presentation>(), My_skipper<Iterator> > start;
+
+        qi::rule<Iterator, List(), My_skipper<Iterator> > start;
+
         qi::rule<Iterator, std::vector<Presentation>(std::string), qi::locals<std::string> > presentations;
         qi::rule<Iterator, fusion::vector<std::string,Presentation>(std::string)> presentation_start;
         qi::rule<Iterator, Presentation(std::string)> presentation_continued;
         qi::rule<Iterator, File()> file;
         qi::rule<Iterator, Aggregate(std::string)> aggregate;
+
+        qi::rule<Iterator, std::vector<RoiItem>(std::string), qi::locals<std::string> > rois;
+        qi::rule<Iterator, fusion::vector<std::string,RoiItem>(std::string)> roi_start;
+        qi::rule<Iterator, RoiItem(std::string)> roi_continued;
+        qi::rule<Iterator, RoiBase(std::string)> named_roi;
+        qi::rule<Iterator, Rect(std::string)> rect;
+        qi::rule<Iterator, std::string(), ascii::blank_type> description;
+
         qi::rule<Iterator, std::string(std::string)> start_sublist;
         qi::rule<Iterator, void(std::string)> continue_sublist;
         qi::rule<Iterator, qi::unused_type> endli;
       };
       
       template<typename Iterator>
-      std::vector<Presentation> parse(Iterator first, Iterator last)
+      List parse(Iterator first, Iterator last)
       {
         using ascii::char_;
         using qi::phrase_parse;
@@ -237,7 +259,7 @@ namespace Scroom
         My_skipper<Iterator> my_skipper;
         My_skipper<Iterator> test;
         
-        std::vector<Presentation> result;
+        List result;
 
         // bool r = parse(first, last, my_parser, result);
         bool r = phrase_parse(first, last, my_parser, my_skipper, result);
