@@ -28,20 +28,6 @@
 
 namespace Roi = Scroom::Roi;
 
-namespace Scroom
-{
-  namespace Roi
-  {
-    namespace Detail
-    {
-      // Forward declaration from roi-parser.hh
-      // roi-parser.hh takes forever to compile, hence we don't include it here.
-      template<typename Iterator>
-      List parse(Iterator first, Iterator last);
-    }
-  }
-}
-
 class PresentationStub : public PresentationBase
 {
 public:
@@ -201,7 +187,7 @@ BOOST_AUTO_TEST_CASE(Parse_files)
 
   std::string input = ss.str();
   
-  Roi::List list = Roi::Detail::parse(input.begin(), input.end());
+  Roi::List list = Roi::parse(input.begin(), input.end());
 
   // for(auto const & r: list.presentations)
   //   std::cout << "Found presentation: " << r << std::endl;
@@ -217,9 +203,10 @@ BOOST_AUTO_TEST_CASE(Parse_files_without_final_endl)
 
   std::string input = ss.str();
 
-  Roi::List list = Roi::Detail::parse(input.begin(), input.end());
+  Roi::List list = Roi::parse(input.begin(), input.end());
 
   BOOST_CHECK_EQUAL(2, list.presentations.size());
+  BOOST_CHECK_EQUAL(0, list.regions.size());
 }
 
 BOOST_AUTO_TEST_CASE(Parse_files_with_leading_whitespace)
@@ -231,9 +218,10 @@ BOOST_AUTO_TEST_CASE(Parse_files_with_leading_whitespace)
 
   std::string input = ss.str();
 
-  Roi::List list = Roi::Detail::parse(input.begin(), input.end());
+  Roi::List list = Roi::parse(input.begin(), input.end());
 
   BOOST_CHECK_EQUAL(2, list.presentations.size());
+  BOOST_CHECK_EQUAL(0, list.regions.size());
 }
 
 BOOST_AUTO_TEST_CASE(Parse_files_with_trailing_whitespace)
@@ -244,9 +232,10 @@ BOOST_AUTO_TEST_CASE(Parse_files_with_trailing_whitespace)
   ss << " \t  \t";
   std::string input = ss.str();
 
-  Roi::List list = Roi::Detail::parse(input.begin(), input.end());
+  Roi::List list = Roi::parse(input.begin(), input.end());
 
   BOOST_CHECK_EQUAL(2, list.presentations.size());
+  BOOST_CHECK_EQUAL(0, list.regions.size());
 }
 
 BOOST_AUTO_TEST_CASE(Parse_files_with_leading_comments)
@@ -260,9 +249,10 @@ BOOST_AUTO_TEST_CASE(Parse_files_with_leading_comments)
   ss << "# Some random comment without endline";
   std::string input = ss.str();
 
-  Roi::List list = Roi::Detail::parse(input.begin(), input.end());
+  Roi::List list = Roi::parse(input.begin(), input.end());
 
   BOOST_CHECK_EQUAL(2, list.presentations.size());
+  BOOST_CHECK_EQUAL(0, list.regions.size());
 }
 
 BOOST_AUTO_TEST_CASE(Instantiate_files)
@@ -280,6 +270,7 @@ BOOST_AUTO_TEST_CASE(Instantiate_files)
 
   std::set<ViewObservable::Ptr> presentations = l.instantiate(stub, "me");
 
+  BOOST_CHECK_EQUAL(0, l.regions.size());
   BOOST_CHECK_EQUAL(3, presentations.size());
   BOOST_CHECK_EQUAL(4, stub->openedFiles.size());
   BOOST_CHECK_EQUAL(3, stub->shownPresentations.size());
@@ -302,11 +293,12 @@ BOOST_AUTO_TEST_CASE(Parse_rect)
 
   std::string input = ss.str();
 
-  Roi::List list = Roi::Detail::parse(input.begin(), input.end());
+  Roi::List list = Roi::parse(input.begin(), input.end());
 
   // for(auto const & r: list.regions)
   //   std::cout << "Found region: " << r << std::endl;
   
+  BOOST_CHECK_EQUAL(1, list.presentations.size());
   BOOST_CHECK_EQUAL(3, list.regions.size());
 }
 

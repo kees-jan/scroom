@@ -86,6 +86,7 @@ namespace Scroom
 
     List parse(std::stringstream const& s);
     List parse(std::string const& filename);
+    List parse(std::string::const_iterator first, std::string::const_iterator last);
   }
 }
 

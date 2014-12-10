@@ -16,10 +16,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef ROI_PARSER_HH_
-#define ROI_PARSER_HH_
-
 #include <sstream>
+#include <fstream>
 
 #define BOOST_SPIRIT_USE_PHOENIX_V3
 
@@ -72,14 +70,14 @@ namespace Scroom
 {
   namespace Roi
   {
+    namespace ascii = boost::spirit::ascii;
+    namespace fusion = boost::fusion;
+    namespace phoenix = boost::phoenix;
+    namespace qi = boost::spirit::qi;
+    namespace spirit = boost::spirit;
+
     namespace Detail
     {
-      namespace ascii = boost::spirit::ascii;
-      namespace fusion = boost::fusion;
-      namespace phoenix = boost::phoenix;
-      namespace qi = boost::spirit::qi;
-      namespace spirit = boost::spirit;
-      
       namespace Roi = Scroom::Roi;
 
       struct escaped_char_ : qi::symbols<char, char>
@@ -93,7 +91,7 @@ namespace Scroom
       } escaped_char;
 
       template <typename Iterator>
-      struct My_skipper : qi::grammar<Iterator, std::string() >
+      struct My_skipper : qi::grammar<Iterator>
       {
         My_skipper()
           : My_skipper::base_type(start, "My_skipper")
@@ -106,10 +104,10 @@ namespace Scroom
           start %= empty_line | comment;
         }
 
-        qi::rule<Iterator, std::string()> start;
-        qi::rule<Iterator, std::string()> empty_line;
-        qi::rule<Iterator, std::string()> comment;
-        qi::rule<Iterator, qi::unused_type> endli;
+        qi::rule<Iterator> start;
+        qi::rule<Iterator> empty_line;
+        qi::rule<Iterator> comment;
+        qi::rule<Iterator> endli;
       };
       
       template <typename Iterator>
@@ -245,42 +243,65 @@ namespace Scroom
         qi::rule<Iterator, void(std::string)> continue_sublist;
         qi::rule<Iterator, qi::unused_type> endli;
       };
-      
-      template<typename Iterator>
-      List parse(Iterator first, Iterator last)
-      {
-        using ascii::char_;
-        using qi::phrase_parse;
-        using ascii::blank;
-        using qi::eol;
-        using qi::no_skip;
 
-        My_parser<Iterator> my_parser;
-        My_skipper<Iterator> my_skipper;
-        My_skipper<Iterator> test;
+    }
+    
+    List parse(std::string::const_iterator first, std::string::const_iterator last)
+    {
+      using ascii::char_;
+      using qi::phrase_parse;
+      using ascii::blank;
+      using qi::eol;
+      using qi::no_skip;
+
+      Detail::My_parser<std::string::const_iterator> my_parser;
+      Detail::My_skipper<std::string::const_iterator> my_skipper;
         
-        List result;
+      List result;
 
-        // bool r = parse(first, last, my_parser, result);
-        bool r = phrase_parse(first, last, my_parser, my_skipper, result);
+      // bool r = parse(first, last, my_parser, result);
+      bool r = phrase_parse(first, last, my_parser, my_skipper, result);
 
-        if (first != last)
-        {
-          std::string remaining(first, last);
-          std::string message = "Input could not be parsed entirely.\n";
-          message += "Phrase_parse said: ";
-          message += (r ? "true\n" : "false\n");
-          message += "Remaining content:\n" + remaining;
-          throw std::invalid_argument(message);
-        }
-
-        if (!r)
-          throw std::invalid_argument("parse returned false");
-
-        return result;
+      if (first != last)
+      {
+        std::string remaining(first, last);
+        std::string message = "Input could not be parsed entirely.\n";
+        message += "Phrase_parse said: ";
+        message += (r ? "true\n" : "false\n");
+        message += "Remaining content:\n" + remaining;
+        throw std::invalid_argument(message);
       }
+
+      if (!r)
+        throw std::invalid_argument("parse returned false");
+
+      return result;
+    }
+
+    List parse(std::stringstream const& s)
+    {
+      std::string input = s.str();
+      return parse(input.begin(), input.end());
+    }
+
+    List parse(std::string const& filename)
+    {
+      std::ifstream in(filename, std::ios::in | std::ios::binary);
+      if (in)
+      {
+        std::string input;
+        in.seekg(0, std::ios::end);
+        input.resize(in.tellg());
+        in.seekg(0, std::ios::beg);
+        in.read(&input[0], input.size());
+        in.close();
+
+        if(!in)
+          throw std::invalid_argument("Error reading file "+filename);
+
+        return parse(input.begin(), input.end());
+      }
+      throw std::invalid_argument("Failed to open file "+filename);
     }
   }
 }
-
-#endif /* ROI_PARSER_HH_ */

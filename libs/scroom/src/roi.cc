@@ -16,16 +16,12 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include <fstream>
-
 #include <boost/variant/apply_visitor.hpp>
 #include <boost/variant/static_visitor.hpp>
 #include <boost/foreach.hpp>
 
 #include <scroom/roi.hh>
 #include <scroom/unused.hh>
-
-#include "roi-parser.hh"
 
 namespace Scroom
 {
@@ -113,32 +109,6 @@ namespace Scroom
       }
 
       return result;
-    }
-
-    List parse(std::stringstream const& s)
-    {
-      std::string input = s.str();
-      return List(Detail::parse(input.begin(), input.end()));
-    }
-
-    List parse(std::string const& filename)
-    {
-      std::ifstream in(filename, std::ios::in | std::ios::binary);
-      if (in)
-      {
-        std::string input;
-        in.seekg(0, std::ios::end);
-        input.resize(in.tellg());
-        in.seekg(0, std::ios::beg);
-        in.read(&input[0], input.size());
-        in.close();
-
-        if(!in)
-          throw std::invalid_argument("Error reading file "+filename);
-
-        return List(Detail::parse(input.begin(), input.end()));
-      }
-      throw std::invalid_argument("Failed to open file "+filename);
     }
 
     std::ostream& operator<<(std::ostream& os, RoiBase const& b)
