@@ -41,7 +41,6 @@ incscroom_HEADERS = \
 	inc/scroom/gtk-helpers.hh \
 	inc/scroom/layeroperations.hh \
 	inc/scroom/memoryblobs.hh \
-	inc/scroom/memorymanagerinterface.hh \
 	inc/scroom/observable.hh \
 	inc/scroom/plugininformationinterface.hh \
 	inc/scroom/presentationinterface.hh \
@@ -239,8 +238,6 @@ endif BOOST_UNITTESTS
 memory_manager_libs = \
 	libs/memory-manager/src/libsmemman.la
 libs_memory_manager_src_libsmemman_la_SOURCES = \
-	libs/memory-manager/src/filebackedmemory.cc \
-	libs/memory-manager/src/memorymanager.cc \
 	libs/memory-manager/src/swapbasedblockallocator.cc \
 	libs/memory-manager/src/blob-compression.hh \
 	libs/memory-manager/src/blob-compression.cc \
