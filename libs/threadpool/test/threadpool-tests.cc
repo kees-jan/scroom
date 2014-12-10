@@ -209,9 +209,6 @@ BOOST_AUTO_TEST_CASE(schedule_shared_pointer)
   BOOST_CHECK(a.P(long_timeout));
 }
 
-#ifdef NEW_BOOST_FUTURES
-#ifdef HAVE_STDCXX_0X
-
 BOOST_AUTO_TEST_CASE(schedule_future)
 {
   ThreadPool pool(0);
@@ -241,41 +238,6 @@ BOOST_AUTO_TEST_CASE(schedule_shared_pointer_with_future)
   BOOST_CHECK(a.P(long_timeout));
   BOOST_CHECK_EQUAL(false, result.get());
 }
-
-#endif /* HAVE_STDCXX_0X */
-#else
-
-BOOST_AUTO_TEST_CASE(schedule_future)
-{
-  ThreadPool pool(0);
-  Semaphore a(0);
-
-  boost::future<int> result = pool.schedule<int>(boost::bind(no_op<int>, &a, 42));
-
-  BOOST_CHECK(!a.P(short_timeout));
-  BOOST_CHECK(!result.ready());
-  pool.add();
-  
-  BOOST_CHECK(a.P(long_timeout));
-  BOOST_CHECK_EQUAL(42, result.get());
-}
-
-BOOST_AUTO_TEST_CASE(schedule_shared_pointer_with_future)
-{
-  ThreadPool pool(0);
-  Semaphore a(0);
-
-  boost::future<bool> result = pool.schedule<bool,B<bool> >(B<bool>::create(&a, false));
-
-  BOOST_CHECK(!a.P(short_timeout));
-  BOOST_CHECK(!result.ready());
-  pool.add();
-  
-  BOOST_CHECK(a.P(long_timeout));
-  BOOST_CHECK_EQUAL(false, result.get());
-}
-
-#endif
 
 BOOST_AUTO_TEST_SUITE_END()
 

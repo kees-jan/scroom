@@ -159,22 +159,6 @@ AC_CHECK_HEADERS([boost/thread/future.hpp], [have_new_boost_futures=yes], [],
 # include <boost/thread.hpp>
 #endif
 ]])
-have_old_boost_futures=no
-AC_CHECK_HEADERS([boost/future.hpp], [have_old_boost_futures=yes])
-
-boost_futures_include_flags=""
-if test "x${have_new_boost_futures}" = xyes
-then
-  AC_DEFINE([NEW_BOOST_FUTURES], 1, [Use futures from the Boost library release])
-else
-  if test "x${have_old_boost_futures}" = xno
-  then
-    boost_futures_include_flags="$ISYSTEM_FLAG \$(top_srcdir)/compat/boost-futures/inc"
-  fi
-fi
-AC_SUBST([BOOST_FUTURES_CPPFLAGS], [$boost_futures_include_flags])
-AM_CONDITIONAL([NEW_BOOST_FUTURES], [test x$have_new_boost_futures = xyes])
-AM_CONDITIONAL([LOCAL_BOOST_FUTURES], [test x$have_new_boost_futures = xno -a x$have_old_boost_futures = xno])
 
 #Checking for boost program-options
 have_boost_program_options_lib=no
@@ -237,6 +221,10 @@ AC_CACHE_CHECK(if boost::filesystem exports the canonical() function,
 have_boost_filesystem_canonical=${scroom_cv_boost_filesystem_canonical}
 
 # Some sanity checks
+if test "x${have_new_boost_futures}" = xno
+then
+  AC_MSG_ERROR([boost/thread/future.hpp not found])
+fi
 if test "x${have_zlib_headers}" = xno
 then
   AC_MSG_ERROR([zLib headers not found])

@@ -55,9 +55,6 @@ void ThreadPool::schedule(boost::shared_ptr<T> fn, ThreadPool::WeakQueue::Ptr qu
   schedule(fn, defaultPriority, queue);
 }
 
-#ifdef NEW_BOOST_FUTURES
-#ifdef HAVE_STDCXX_0X
-
 template<typename R>
 boost::unique_future<R>  ThreadPool::schedule(boost::function<R ()> const& fn, int priority, ThreadPool::Queue::Ptr queue)
 {
@@ -121,62 +118,5 @@ boost::unique_future<R> ThreadPool::schedule(boost::shared_ptr<T> fn, ThreadPool
 {
   return schedule(fn, defaultPriority, queue);
 }
-
-#endif /* HAVE_STDCXX_0X */
-#else /* NEW_BOOST_FUTURES */
-
-template<typename R>
-boost::future<R> ThreadPool::schedule(boost::function<R ()> const& fn, int priority, ThreadPool::Queue::Ptr queue)
-{
-  return schedule(fn, priority, queue->getWeak());
-}
-
-template<typename R>
-boost::future<R> ThreadPool::schedule(boost::function<R ()> const& fn, ThreadPool::Queue::Ptr queue)
-{
-  return schedule(fn, defaultPriority, queue);
-}
-
-template<typename R, typename T>
-boost::future<R> ThreadPool::schedule(boost::shared_ptr<T> fn, int priority, ThreadPool::Queue::Ptr queue)
-{
-  return schedule<R,T>(fn, priority, queue->getWeak());
-}
-
-template<typename R, typename T>
-boost::future<R> ThreadPool::schedule(boost::shared_ptr<T> fn, ThreadPool::Queue::Ptr queue)
-{
-  return schedule<R,T>(fn, defaultPriority, queue);
-}
-
-template<typename R>
-boost::future<R> ThreadPool::schedule(boost::function<R ()> const& fn, int priority, ThreadPool::WeakQueue::Ptr queue)
-{
-  boost::promise<R> prom; // create promise
-  schedule(boost::future_wrapper<R>(fn, prom), priority, queue); //queue the job
-  return boost::future<R>(prom); // return a future created from the promise
-}
-
-template<typename R>
-boost::future<R> ThreadPool::schedule(boost::function<R ()> const& fn, ThreadPool::WeakQueue::Ptr queue)
-{
-  return schedule(fn, defaultPriority, queue);
-}
-
-template<typename R, typename T>
-boost::future<R> ThreadPool::schedule(boost::shared_ptr<T> fn, int priority, ThreadPool::WeakQueue::Ptr queue)
-{
-  boost::promise<R> prom; // create promise
-  schedule(boost::future_wrapper<R>(boost::bind(threadPoolExecute<R,T>, fn), prom), priority, queue); //queue the job
-  return boost::future<R>(prom); // return a future created from the promise
-}
-
-template<typename R, typename T>
-boost::future<R> ThreadPool::schedule(boost::shared_ptr<T> fn, ThreadPool::WeakQueue::Ptr queue)
-{
-  return schedule(fn, defaultPriority, queue);
-}
-
-#endif /* NEW_BOOST_FUTURES */
 
 #endif

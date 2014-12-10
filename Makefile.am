@@ -1,29 +1,7 @@
 include $(top_srcdir)/aminclude/doxygen.am
 
-AM_CPPFLAGS = -I $(top_srcdir)/inc @BOOST_FUTURES_CPPFLAGS@
+AM_CPPFLAGS = -I $(top_srcdir)/inc
 ACLOCAL_AMFLAGS = -I m4
-
-########################################################################
-### compat/boost-futures
-########################################################################
-
-if LOCAL_BOOST_FUTURES
-
-incboost_HEADERS = \
-	compat/boost-futures/inc/boost/future_detail.hpp \
-	compat/boost-futures/inc/boost/future_exceptions.hpp \
-	compat/boost-futures/inc/boost/future_group.hpp \
-	compat/boost-futures/inc/boost/future.hpp \
-	compat/boost-futures/inc/boost/future_stream.hpp
-
-dist_noinst_DATA = \
-	compat/boost-futures/doc/ChangeLog.txt \
-	compat/boost-futures/doc/deprecated_cancel.html \
-	compat/boost-futures/doc/future-doc.html \
-	compat/boost-futures/doc/LICENSE_1_0.txt \
-	compat/boost-futures/doc/README.txt
-
-endif LOCAL_BOOST_FUTURES
 
 ########################################################################
 ### inc
@@ -90,34 +68,6 @@ boost_test_helper_tests = \
 	libs/boost-test-helper/test/tests
 
 endif BOOST_UNITTESTS
-
-########################################################################
-### libs/compat-tests
-########################################################################
-
-if BOOST_UNITTESTS
-if !NEW_BOOST_FUTURES
-compat_tests_check_programs = \
-	libs/compat-tests/boost-future-test/futures-test
-
-libs_compat_tests_boost_future_test_futures_test_SOURCES = \
-	libs/compat-tests/boost-future-test/boost-futures-test.cpp \
-	libs/compat-tests/boost-future-test/main.cc
-
-libs_compat_tests_boost_future_test_futures_test_CPPFLAGS = @BOOST_FUTURES_CPPFLAGS@
-
-libs_compat_tests_boost_future_test_futures_test_LDADD = @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
-	libs/boost-test-helper/src/libsboosttesthelper.la
-
-compat_tests_tests = \
-	libs/compat-tests/boost-future-test/futures-test
-
-endif !NEW_BOOST_FUTURES
-endif BOOST_UNITTESTS
-
-compat_tests_extra_dist = \
-	libs/compat-tests/boost-future-test/README.txt \
-	libs/compat-tests/README.txt
 
 ########################################################################
 ### libs/sanity-tests
@@ -208,7 +158,7 @@ if BOOST_UNITTESTS
 threadpool_check_programs = \
 	libs/threadpool/test/threadpool-tests
 
-libs_threadpool_test_threadpool_tests_CPPFLAGS = -I $(top_srcdir)/inc @BOOST_FUTURES_CPPFLAGS@ \
+libs_threadpool_test_threadpool_tests_CPPFLAGS = -I $(top_srcdir)/inc \
 	-I $(top_srcdir)/libs/threadpool/src
 
 libs_threadpool_test_threadpool_tests_SOURCES = \
@@ -254,7 +204,7 @@ if BOOST_UNITTESTS
 memory_manager_check_programs = \
 	libs/memory-manager/test/memory-manager-tests
 
-libs_memory_manager_test_memory_manager_tests_CPPFLAGS = -I $(top_srcdir)/inc @BOOST_FUTURES_CPPFLAGS@ \
+libs_memory_manager_test_memory_manager_tests_CPPFLAGS = -I $(top_srcdir)/inc \
 	-I $(srcdir)/libs/memory-manager/src
 
 libs_memory_manager_test_memory_manager_tests_SOURCES = \
@@ -279,7 +229,7 @@ endif BOOST_UNITTESTS
 ### libs/scroom
 ########################################################################
 
-libs_scroom_src_libsscroom_la_CPPFLAGS = @SCROOMLIB_CFLAGS@ -I $(top_srcdir)/inc @BOOST_FUTURES_CPPFLAGS@
+libs_scroom_src_libsscroom_la_CPPFLAGS = @SCROOMLIB_CFLAGS@ -I $(top_srcdir)/inc
 
 scroomlib_libs = \
 	libs/scroom/src/libsscroom.la
@@ -299,7 +249,7 @@ if BOOST_UNITTESTS
 scroomlib_check_programs = \
 	libs/scroom/test/libscroom-tests
 
-libs_scroom_test_libscroom_tests_CPPFLAGS = @SCROOMLIB_CFLAGS@ -I $(top_srcdir)/inc -I $(top_srcdir)/libs/scroom/src @BOOST_FUTURES_CPPFLAGS@
+libs_scroom_test_libscroom_tests_CPPFLAGS = @SCROOMLIB_CFLAGS@ -I $(top_srcdir)/inc -I $(top_srcdir)/libs/scroom/src
 
 # 	-I $(srcdir)/libs/memory-manager/src
 
@@ -321,7 +271,7 @@ endif BOOST_UNITTESTS
 ### libs/tiled-bitmap
 ########################################################################
 
-libs_tiled_bitmap_src_libstiledbitmap_la_CPPFLAGS = @TILEDBITMAP_CFLAGS@ -I $(top_srcdir)/inc @BOOST_FUTURES_CPPFLAGS@
+libs_tiled_bitmap_src_libstiledbitmap_la_CPPFLAGS = @TILEDBITMAP_CFLAGS@ -I $(top_srcdir)/inc
 
 tiled_bitmap_libs = \
 	libs/tiled-bitmap/src/libstiledbitmap.la
@@ -357,7 +307,7 @@ if BOOST_UNITTESTS
 tiled_bitmap_tests = \
 	libs/tiled-bitmap/test/tiled-bitmap-tests
 
-libs_tiled_bitmap_test_tiled_bitmap_tests_CPPFLAGS = @TILEDBITMAP_CFLAGS@ -I $(top_srcdir)/inc @BOOST_FUTURES_CPPFLAGS@
+libs_tiled_bitmap_test_tiled_bitmap_tests_CPPFLAGS = @TILEDBITMAP_CFLAGS@ -I $(top_srcdir)/inc
 
 libs_tiled_bitmap_test_tiled_bitmap_tests_SOURCES = \
 	libs/tiled-bitmap/test/main.cc \
@@ -371,7 +321,7 @@ libs_tiled_bitmap_test_tiled_bitmap_tests_LDADD = \
 
 endif BOOST_UNITTESTS
 
-libs_tiled_bitmap_tools_measure_framerate_CPPFLAGS = @TILEDBITMAP_CFLAGS@ -I $(top_srcdir)/inc @BOOST_FUTURES_CPPFLAGS@
+libs_tiled_bitmap_tools_measure_framerate_CPPFLAGS = @TILEDBITMAP_CFLAGS@ -I $(top_srcdir)/inc
 
 tiled_bitmap_check_programs = \
 	$(tiled_bitmap_tests) \
@@ -394,7 +344,7 @@ libs_tiled_bitmap_tools_measure_framerate_LDADD = \
 	libs/tiled-bitmap/src/libstiledbitmap.la \
 	libs/util/src/libsutil.la
 
-libs_tiled_bitmap_tools_measure_load_performance_CPPFLAGS = @TILEDBITMAP_CFLAGS@ -I $(top_srcdir)/inc @BOOST_FUTURES_CPPFLAGS@
+libs_tiled_bitmap_tools_measure_load_performance_CPPFLAGS = @TILEDBITMAP_CFLAGS@ -I $(top_srcdir)/inc
 
 libs_tiled_bitmap_tools_measure_load_performance_SOURCES = \
 	libs/tiled-bitmap/tools/measure-load-performance.cc \
@@ -556,8 +506,7 @@ gui_src_scroom_CPPFLAGS = -I $(top_srcdir)/inc \
 	-DPLUGIN_DIR=\""$(plugindir)"\" \
 	-DTOP_SRCDIR=\""$(abs_top_srcdir)"\" \
 	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
-	@GUI_CFLAGS@ \
-	@BOOST_FUTURES_CPPFLAGS@
+	@GUI_CFLAGS@
 
 gui_src_scroom_LDADD = @GUI_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @BOOSTPROGRAMOPTIONSLIB@ @BOOSTFILESYSTEMLIB@ $(INTLLIBS) \
 	libs/util/src/libsutil.la
@@ -590,10 +539,10 @@ plugins_check_programs = $(transparent_overlay_plugin_check_programs)
 plugins_tests = $(transparent_overlay_plugin_tests)
 
 ### Libs
-libs_libs = $(boost_test_helper_libs) $(compat_tests_libs) $(sanity_tests_libs) $(util_libs) $(threadpool_libs) $(memory_manager_libs) $(scroomlib_libs) $(tiled_bitmap_libs)
-libs_check_programs = $(boost_test_helper_check_programs) $(compat_tests_check_programs) $(sanity_tests_check_programs) $(util_check_programs) $(threadpool_check_programs) $(memory_manager_check_programs) $(scroomlib_check_programs) $(tiled_bitmap_check_programs)
-libs_tests = $(boost_test_helper_tests) $(compat_tests_tests) $(sanity_tests_tests) $(util_tests) $(threadpool_tests) $(memory_manager_tests) $(scroomlib_tests) $(tiled_bitmap_tests)
-libs_extra_dist = $(compat_tests_extra_dist) $(sanity_tests_extra_dist)
+libs_libs = $(boost_test_helper_libs) $(sanity_tests_libs) $(util_libs) $(threadpool_libs) $(memory_manager_libs) $(scroomlib_libs) $(tiled_bitmap_libs)
+libs_check_programs = $(boost_test_helper_check_programs) $(sanity_tests_check_programs) $(util_check_programs) $(threadpool_check_programs) $(memory_manager_check_programs) $(scroomlib_check_programs) $(tiled_bitmap_check_programs)
+libs_tests = $(boost_test_helper_tests) $(sanity_tests_tests) $(util_tests) $(threadpool_tests) $(memory_manager_tests) $(scroomlib_tests) $(tiled_bitmap_tests)
+libs_extra_dist = $(sanity_tests_extra_dist)
 libs_noinst_libs = $(boost_test_helper_noinst_libs)
 
 ### Root ###############################################################

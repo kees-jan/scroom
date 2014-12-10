@@ -30,10 +30,6 @@
 #include <boost/function.hpp>
 #include <boost/shared_ptr.hpp>
 
-#ifndef NEW_BOOST_FUTURES
-#  include <boost/future.hpp>
-#endif
-
 #include <scroom/semaphore.hh>
 
 /** Priorities for scheduling on the ThreadPool */
@@ -352,8 +348,6 @@ public:
   template<typename T>
   void schedule(boost::shared_ptr<T> fn, WeakQueue::Ptr queue);
 
-#ifdef NEW_BOOST_FUTURES
-#ifdef HAVE_STDCXX_0X
   template<typename R>
   boost::unique_future<R> schedule(boost::function<R ()> const& fn,
                                    int priority=defaultPriority,
@@ -383,40 +377,6 @@ public:
 
   template<typename R, typename T>
   boost::unique_future<R> schedule(boost::shared_ptr<T> fn, WeakQueue::Ptr queue);
-
-#endif /* HAVE_STDCXX_0X */
-#else /* NEW_BOOST_FUTURES */
-  template<typename R>
-  boost::future<R> schedule(boost::function<R ()> const& fn,
-                            int priority=defaultPriority,
-                            Queue::Ptr queue=defaultQueue());
-
-  template<typename R>
-  boost::future<R> schedule(boost::function<R ()> const& fn, Queue::Ptr queue);
-
-  template<typename R, typename T>
-  boost::future<R> schedule(boost::shared_ptr<T> fn,
-                            int priority=defaultPriority,
-                            Queue::Ptr queue=defaultQueue());
-
-  template<typename R, typename T>
-  boost::future<R> schedule(boost::shared_ptr<T> fn, Queue::Ptr queue);
-
-  template<typename R>
-  boost::future<R> schedule(boost::function<R ()> const& fn,
-                            int priority, WeakQueue::Ptr queue);
-
-  template<typename R>
-  boost::future<R> schedule(boost::function<R ()> const& fn, WeakQueue::Ptr queue);
-
-  template<typename R, typename T>
-  boost::future<R> schedule(boost::shared_ptr<T> fn,
-                            int priority, WeakQueue::Ptr queue);
-
-  template<typename R, typename T>
-  boost::future<R> schedule(boost::shared_ptr<T> fn, WeakQueue::Ptr queue);
-
-#endif /* NEW_BOOST_FUTURES */
 
   /**
    * Add an additional thread to the pool.

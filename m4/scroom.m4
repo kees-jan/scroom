@@ -98,6 +98,8 @@ AC_DEFUN([SCROOM_ENABLE_STDCXX_0X], [
      test "$scroom_cv_cxx_compile_cxx0x_gxx" = yes
   then
     AC_DEFINE(HAVE_STDCXX_0X,,[Define if g++ supports C++0x features. ])
+  else
+    AC_MSG_ERROR([Compiler not C++0x compatible])
   fi
   if test "$scroom_cv_cxx_compile_cxx0x_cxx" = yes
   then
