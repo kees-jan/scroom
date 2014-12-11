@@ -249,7 +249,7 @@ if BOOST_UNITTESTS
 scroomlib_check_programs = \
 	libs/scroom/test/libscroom-tests
 
-libs_scroom_test_libscroom_tests_CPPFLAGS = @SCROOMLIB_CFLAGS@ -I $(top_srcdir)/inc -I $(top_srcdir)/libs/scroom/src
+libs_scroom_test_libscroom_tests_CPPFLAGS = @SCROOMLIB_CFLAGS@ -I $(top_srcdir)/inc
 
 # 	-I $(srcdir)/libs/memory-manager/src
 

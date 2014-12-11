@@ -72,6 +72,6 @@ std::list<GtkFileFilter*> RoiPlugin::getFilters()
   
 void RoiPlugin::open(const std::string& fileName, ScroomInterface::Ptr const& scroomInterface)
 {
-  Scroom::Roi::List list = Scroom::Roi::parse(fileName);
-  std::set<ViewObservable::Ptr> views = list.instantiate(scroomInterface, fileName);
+  Scroom::Roi::List::Ptr list = Scroom::Roi::parse(fileName);
+  std::set<ViewObservable::Ptr> views = list->instantiate(scroomInterface, fileName);
 }

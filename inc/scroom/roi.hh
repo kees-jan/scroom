@@ -76,17 +76,26 @@ namespace Scroom
     class List
     {
     public:
+      typedef boost::shared_ptr<List> Ptr;
+      typedef boost::shared_ptr<List const> ConstPtr;
+
+    private:
+      List();
+      
+    public:
       std::vector<Detail::Presentation> presentations;
       std::vector<RoiItem> regions;
 
+    public:
+      static Ptr create();
       std::set<ViewObservable::Ptr> instantiate(ScroomInterface::Ptr const& scroomInterface, std::string const& relativeTo=std::string());
 
 
     };
 
-    List parse(std::stringstream const& s);
-    List parse(std::string const& filename);
-    List parse(std::string::const_iterator first, std::string::const_iterator last);
+    List::Ptr parse(std::stringstream const& s);
+    List::Ptr parse(std::string const& filename);
+    List::Ptr parse(std::string::const_iterator first, std::string::const_iterator last);
   }
 }
 

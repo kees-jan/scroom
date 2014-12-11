@@ -90,6 +90,14 @@ namespace Scroom
       }
     }
 
+    List::List()
+    {}
+
+    List::Ptr List::create()
+    {
+      return Ptr(new List());
+    }
+    
     std::set<ViewObservable::Ptr> List::instantiate(ScroomInterface::Ptr const& scroomInterface, std::string const& relativeTo)
     {
       std::set<ViewObservable::Ptr> result;

@@ -169,7 +169,7 @@ namespace Scroom
                                         > ',' > double_ [at_c<2>(qi::_val) = qi::_1]
                                         > ',' > double_ [at_c<3>(qi::_val) = qi::_1]
                                          >> -(lit(',') >> description[at_c<4>(qi::_val) = qi::_1])
-              ] > endli >> *rois(qi::_r1) [at_c<5>(qi::_val) = qi::_1];
+              ] > endli >> -rois(qi::_r1) [at_c<5>(qi::_val) = qi::_1];
           named_roi = qi::skip(ascii::blank) [ description[at_c<0>(qi::_val) = qi::_1]
               ] > endli >> rois(qi::_r1) [at_c<1>(qi::_val) = qi::_1];
 
@@ -246,7 +246,7 @@ namespace Scroom
 
     }
     
-    List parse(std::string::const_iterator first, std::string::const_iterator last)
+    List::Ptr parse(std::string::const_iterator first, std::string::const_iterator last)
     {
       using ascii::char_;
       using qi::phrase_parse;
@@ -257,10 +257,10 @@ namespace Scroom
       Detail::My_parser<std::string::const_iterator> my_parser;
       Detail::My_skipper<std::string::const_iterator> my_skipper;
         
-      List result;
+      List::Ptr result = List::create();
 
       // bool r = parse(first, last, my_parser, result);
-      bool r = phrase_parse(first, last, my_parser, my_skipper, result);
+      bool r = phrase_parse(first, last, my_parser, my_skipper, *result);
 
       if (first != last)
       {
@@ -278,13 +278,13 @@ namespace Scroom
       return result;
     }
 
-    List parse(std::stringstream const& s)
+    List::Ptr parse(std::stringstream const& s)
     {
       std::string input = s.str();
       return parse(input.begin(), input.end());
     }
 
-    List parse(std::string const& filename)
+    List::Ptr parse(std::string const& filename)
     {
       std::ifstream in(filename, std::ios::in | std::ios::binary);
       if (in)
