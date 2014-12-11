@@ -583,14 +583,6 @@
 				<useDefaultCommand>true</useDefaultCommand>
 				<runAllBuilders>false</runAllBuilders>
 			</target>
-			<target name="install-incboostHEADERS" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
-				<buildCommand>make</buildCommand>
-				<buildArguments>-j6</buildArguments>
-				<buildTarget>install-incboostHEADERS</buildTarget>
-				<stopOnError>true</stopOnError>
-				<useDefaultCommand>true</useDefaultCommand>
-				<runAllBuilders>false</runAllBuilders>
-			</target>
 			<target name="install-incscroomHEADERS" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
 				<buildArguments>-j6</buildArguments>
@@ -703,50 +695,10 @@
 				<useDefaultCommand>true</useDefaultCommand>
 				<runAllBuilders>false</runAllBuilders>
 			</target>
-			<target name="libs/compat-tests/boost-future-test/libs_compat_tests_boost_future_test_futures_test-boost-futures-test.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
-				<buildCommand>make</buildCommand>
-				<buildArguments>-j6</buildArguments>
-				<buildTarget>libs/compat-tests/boost-future-test/libs_compat_tests_boost_future_test_futures_test-boost-futures-test.o</buildTarget>
-				<stopOnError>true</stopOnError>
-				<useDefaultCommand>true</useDefaultCommand>
-				<runAllBuilders>false</runAllBuilders>
-			</target>
-			<target name="libs/compat-tests/boost-future-test/libs_compat_tests_boost_future_test_futures_test-boost-futures-test.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
-				<buildCommand>make</buildCommand>
-				<buildArguments>-j6</buildArguments>
-				<buildTarget>libs/compat-tests/boost-future-test/libs_compat_tests_boost_future_test_futures_test-boost-futures-test.obj</buildTarget>
-				<stopOnError>true</stopOnError>
-				<useDefaultCommand>true</useDefaultCommand>
-				<runAllBuilders>false</runAllBuilders>
-			</target>
-			<target name="libs/compat-tests/boost-future-test/libs_compat_tests_boost_future_test_futures_test-main.o" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
-				<buildCommand>make</buildCommand>
-				<buildArguments>-j6</buildArguments>
-				<buildTarget>libs/compat-tests/boost-future-test/libs_compat_tests_boost_future_test_futures_test-main.o</buildTarget>
-				<stopOnError>true</stopOnError>
-				<useDefaultCommand>true</useDefaultCommand>
-				<runAllBuilders>false</runAllBuilders>
-			</target>
-			<target name="libs/compat-tests/boost-future-test/libs_compat_tests_boost_future_test_futures_test-main.obj" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
-				<buildCommand>make</buildCommand>
-				<buildArguments>-j6</buildArguments>
-				<buildTarget>libs/compat-tests/boost-future-test/libs_compat_tests_boost_future_test_futures_test-main.obj</buildTarget>
-				<stopOnError>true</stopOnError>
-				<useDefaultCommand>true</useDefaultCommand>
-				<runAllBuilders>false</runAllBuilders>
-			</target>
 			<target name="libs/memory-manager/src/blob-compression.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>make</buildCommand>
 				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/memory-manager/src/blob-compression.lo</buildTarget>
-				<stopOnError>true</stopOnError>
-				<useDefaultCommand>true</useDefaultCommand>
-				<runAllBuilders>false</runAllBuilders>
-			</target>
-			<target name="libs/memory-manager/src/filebackedmemory.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
-				<buildCommand>make</buildCommand>
-				<buildArguments>-j6</buildArguments>
-				<buildTarget>libs/memory-manager/src/filebackedmemory.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
 				<runAllBuilders>false</runAllBuilders>
@@ -763,14 +715,6 @@
 				<buildCommand>make</buildCommand>
 				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/memory-manager/src/memoryblobs.lo</buildTarget>
-				<stopOnError>true</stopOnError>
-				<useDefaultCommand>true</useDefaultCommand>
-				<runAllBuilders>false</runAllBuilders>
-			</target>
-			<target name="libs/memory-manager/src/memorymanager.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
-				<buildCommand>make</buildCommand>
-				<buildArguments>-j6</buildArguments>
-				<buildTarget>libs/memory-manager/src/memorymanager.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
 				<runAllBuilders>false</runAllBuilders>
@@ -875,6 +819,14 @@
 				<buildCommand>make</buildCommand>
 				<buildArguments>-j6</buildArguments>
 				<buildTarget>libs/scroom/src/libs_scroom_src_libsscroom_la-presentationinterface.lo</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>true</useDefaultCommand>
+				<runAllBuilders>false</runAllBuilders>
+			</target>
+			<target name="libs/scroom/src/libs_scroom_src_libsscroom_la-roi-parser.lo" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+				<buildCommand>make</buildCommand>
+				<buildArguments>-j6</buildArguments>
+				<buildTarget>libs/scroom/src/libs_scroom_src_libsscroom_la-roi-parser.lo</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
 				<runAllBuilders>false</runAllBuilders>
@@ -1819,14 +1771,6 @@
 				<buildCommand>make</buildCommand>
 				<buildArguments>-j6</buildArguments>
 				<buildTarget>uninstall</buildTarget>
-				<stopOnError>true</stopOnError>
-				<useDefaultCommand>true</useDefaultCommand>
-				<runAllBuilders>false</runAllBuilders>
-			</target>
-			<target name="uninstall-incboostHEADERS" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
-				<buildCommand>make</buildCommand>
-				<buildArguments>-j6</buildArguments>
-				<buildTarget>uninstall-incboostHEADERS</buildTarget>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>true</useDefaultCommand>
 				<runAllBuilders>false</runAllBuilders>

@@ -455,9 +455,11 @@ plugins_roi_src_libsproi_la_CPPFLAGS = @ROIPLUGIN_CFLAGS@ -I $(top_srcdir)/inc
 plugins_roi_src_libsproi_la_SOURCES = \
 	plugins/roi/src/main.cc \
 	plugins/roi/src/roiplugin.cc \
-	plugins/roi/src/roiplugin.hh
+	plugins/roi/src/roiplugin.hh \
+	plugins/roi/src/roiui.cc \
+	plugins/roi/src/roiui.hh 
 
-plugins_roi_src_libsproi_la_LIBADD = @ROIPLUGIN_LIBS@ @BOOSTSYSTEMLIB@ libs/scroom/src/libsscroom.la 
+plugins_roi_src_libsproi_la_LIBADD = @ROIPLUGIN_LIBS@ @BOOSTSYSTEMLIB@ libs/scroom/src/libsscroom.la libs/util/src/libsutil.la 
 
 ########################################################################
 ### plugins/colormap

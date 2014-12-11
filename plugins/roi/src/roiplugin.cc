@@ -24,6 +24,8 @@
 
 #include <scroom/roi.hh>
 
+#include "roiui.hh"
+
 RoiPlugin::RoiPlugin()
 {
 }
@@ -72,6 +74,5 @@ std::list<GtkFileFilter*> RoiPlugin::getFilters()
   
 void RoiPlugin::open(const std::string& fileName, ScroomInterface::Ptr const& scroomInterface)
 {
-  Scroom::Roi::List::Ptr list = Scroom::Roi::parse(fileName);
-  std::set<ViewObservable::Ptr> views = list->instantiate(scroomInterface, fileName);
+  RoiUi::create(fileName, scroomInterface);
 }
