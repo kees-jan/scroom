@@ -26,7 +26,7 @@
 
 #include "transparentoverlayviewinfo.hh"
 
-class TransparentOverlayPresentation : public PresentationInterface, public Aggregate
+class TransparentOverlayPresentation : public PresentationBase, public Aggregate
 {
 public:
   typedef boost::shared_ptr<TransparentOverlayPresentation> Ptr;
@@ -45,12 +45,14 @@ public:
   
   // PresentationInterface ///////////////////////////////////////////////
   virtual GdkRectangle getRect();
-  virtual void open(ViewInterface::WeakPtr viewInterface);
   virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);
-  virtual void close(ViewInterface::WeakPtr vi);
   virtual bool getProperty(const std::string& name, std::string& value);
   virtual bool isPropertyDefined(const std::string& name);
   virtual std::string getTitle();
+  virtual void viewAdded(ViewInterface::WeakPtr vi);
+  virtual void viewRemoved(ViewInterface::WeakPtr vi);
+  virtual std::set<ViewInterface::WeakPtr> getViews();
+
 
   // Aggregate ///////////////////////////////////////////////////////////
 

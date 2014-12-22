@@ -67,14 +67,14 @@ GdkRectangle TransparentOverlayPresentation::getRect()
   return rect;
 }
 
-void TransparentOverlayPresentation::open(ViewInterface::WeakPtr vi)
+void TransparentOverlayPresentation::viewAdded(ViewInterface::WeakPtr vi)
 {
   TransparentOverlayViewInfo::Ptr tovi = TransparentOverlayViewInfo::create(vi);
   tovi->addChildren(children);
   viewData[vi] = tovi;
 }
 
-void TransparentOverlayPresentation::close(ViewInterface::WeakPtr vi)
+void TransparentOverlayPresentation::viewRemoved(ViewInterface::WeakPtr vi)
 {
   ViewDataMap::const_iterator e = viewData.find(vi);
   if(e != viewData.end())
@@ -82,6 +82,15 @@ void TransparentOverlayPresentation::close(ViewInterface::WeakPtr vi)
     e->second->close();
     viewData.erase(e->first);
   }
+}
+
+std::set<ViewInterface::WeakPtr> TransparentOverlayPresentation::getViews()
+{
+  std::set<ViewInterface::WeakPtr> result;
+  for(auto const& p: viewData)
+    result.insert(p.first);
+
+  return result;
 }
 
 void TransparentOverlayPresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
