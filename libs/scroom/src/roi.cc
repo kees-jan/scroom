@@ -90,6 +90,16 @@ namespace Scroom
       }
     }
 
+    std::string RoiBase::str() const
+    {
+      return "Hello, world";
+    }
+
+    std::string Rect::str() const
+    {
+      return "Hello, world";
+    }
+
     List::List()
     {}
 

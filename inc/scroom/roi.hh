@@ -60,6 +60,10 @@ namespace Scroom
     {
       std::string description;
       std::vector<RoiItem> children;
+
+    public:
+      virtual ~RoiBase() {};
+      virtual std::string str() const;
     };
 
     struct Rect : public RoiBase
@@ -68,6 +72,9 @@ namespace Scroom
       double top;
       double width;
       double height;
+
+    public:
+      virtual std::string str() const;
     };
 
     std::ostream& operator<<(std::ostream& os, RoiBase const& b);

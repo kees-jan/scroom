@@ -31,14 +31,23 @@ public:
 
 private:
   Scroom::Roi::List::Ptr list;
+  GtkTreeModel* model;
+
+
   Scroom::Utils::StuffList stuff;
 
 private:
   RoiUi();
   void init(std::string const& fileName, ScroomInterface::Ptr const& scroomInterface);
 
+  static void addRoiItemsToModel(GtkTreeStore* store, GtkTreeIter* base, std::vector<Scroom::Roi::RoiItem> const& regions);
+  void create_and_fill_model();
+  GtkWidget *create_view_and_model();
+
 public:
   static Ptr create(const std::string& fileName, ScroomInterface::Ptr const& scroomInterface);
+
+  ~RoiUi();
 
   virtual void open(ViewInterface::WeakPtr vi);
   virtual void close(ViewInterface::WeakPtr vi);

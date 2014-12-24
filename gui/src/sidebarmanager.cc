@@ -34,7 +34,7 @@ void SidebarManager::addSideWidget(std::string title, GtkWidget* w)
   GtkWidget* e = gtk_expander_new(title.c_str());
   gtk_expander_set_expanded(GTK_EXPANDER(e), true);
   gtk_widget_show(e);
-  gtk_box_pack_start_defaults(panel, e);
+  gtk_box_pack_start(panel, e, false, false, 0);
   gtk_container_add(GTK_CONTAINER(e), w);
   gtk_widget_show(w);
 
