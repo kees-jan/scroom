@@ -1,14 +1,14 @@
-scroom (0.6-22-g4951f6a-1) precise; urgency=low
+scroom (0.6-4) trusty; urgency=medium
 
-  * Snapshot release
+  * For more info see https://github.com/kees-jan/scroom/wiki
 
- -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Wed, 26 Nov 2014 14:53:51 +0100
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Sun, 18 Oct 2015 12:38:04 +0200
 
-scroom (0.6-18-g6e5e0fb-1) precise; urgency=low
+scroom (0.6-3) trusty; urgency=medium
 
-  * Snapshot release
+  * For more info see https://github.com/kees-jan/scroom/wiki
 
- -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Tue, 25 Nov 2014 12:52:40 +0100
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Sun, 18 Oct 2015 12:21:06 +0200
 
 scroom (0.6-2) precise; urgency=low
 

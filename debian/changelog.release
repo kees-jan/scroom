@@ -1,3 +1,15 @@
+scroom (0.6-4) trusty; urgency=medium
+
+  * For more info see https://github.com/kees-jan/scroom/wiki
+
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Sun, 18 Oct 2015 12:38:04 +0200
+
+scroom (0.6-3) trusty; urgency=medium
+
+  * For more info see https://github.com/kees-jan/scroom/wiki
+
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Sun, 18 Oct 2015 12:21:06 +0200
+
 scroom (0.6-2) precise; urgency=low
 
   * For more info see https://github.com/kees-jan/scroom/wiki
