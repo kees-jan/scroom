@@ -1,3 +1,9 @@
+scroom (0.6-34-g2ad96cb-1) trusty; urgency=medium
+
+  * Snapshot release
+
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Sun, 18 Oct 2015 13:31:13 +0200
+
 scroom (0.6-4) trusty; urgency=medium
 
   * For more info see https://github.com/kees-jan/scroom/wiki
