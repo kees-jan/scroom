@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# set -x
+set -e
+set -u
+
+if [ "${TRAVIS_PULL_REQUEST}" = "false" -a "${TRAVIS_JOB_NUMBER}" = "${TRAVIS_BUILD_NUMBER}.1" ]
+then
+    echo "silent-doxygen"
+fi

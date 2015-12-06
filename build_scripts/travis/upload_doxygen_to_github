@@ -1,0 +1,77 @@
+#!/bin/bash
+
+# set -x
+set -e
+set -u
+
+if ! [ "${TRAVIS_PULL_REQUEST}" = "false" -a "${TRAVIS_JOB_NUMBER}" = "${TRAVIS_BUILD_NUMBER}.1" ]
+then
+    # Doxygen not generated
+    exit 0
+fi
+
+# Log
+cat doxygen.log
+
+# Settings
+REPO_PATH=git@github.com:kees-jan/scroom.git
+HTML_PATH=$(pwd)/doc/html
+COMMIT_USER="Documentation Builder"
+COMMIT_EMAIL="project@mandryn.org"
+CHANGESET=$(git rev-parse --verify HEAD)
+
+GH_DIR=$(mktemp -d)
+
+# Get a clean version of the HTML documentation repo.
+git clone -b gh-pages "${REPO_PATH}" --single-branch ${GH_DIR}
+
+# rm all the files through git to prevent stale files.
+pushd ${GH_DIR}
+if [ -e ${TRAVIS_BRANCH} ]
+then
+  git rm -rf ${TRAVIS_BRANCH}
+fi
+mkdir -p ${TRAVIS_BRANCH}
+pushd ${TRAVIS_BRANCH}
+cp -r ${HTML_PATH}/* .
+git add .
+
+# Regenerate master index
+popd
+cat > index.html <<EOF
+<html>
+<head>
+<title>Scroom doxygen documentation</title>
+<link href="master/doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+<tbody>
+<tr style="height: 56px;">
+<td style="padding-left: 0.5em;">
+<div id="projectname">Scroom doxygen documentation</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1>
+<ul>
+$(for f in $(find * -mindepth 1 -name index.html) ; do echo "<li><a href=\"$f\">$(dirname $f)</a><br/>&nbsp;</li>" ; done)
+</ul>
+</h1>
+</body>
+</html>
+EOF
+git add index.html
+
+# Commit and push
+git config user.name "${COMMIT_USER}"
+git config user.email "${COMMIT_EMAIL}"
+git commit -m "Automated documentation build for branch ${TRAVIS_BRANCH}, changeset ${CHANGESET}."
+git push origin gh-pages
+
+# Cleanup
+popd
+rm -rf ${GH_DIR}

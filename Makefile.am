@@ -599,3 +599,7 @@ dist-hook:
 # avoid an automake error about custom rules overriding built-in ones.
 plugin_lib_install_target = install-pluginLTLIBRARIES
 $(plugin_lib_install_target): install-libLTLIBRARIES
+
+
+silent-doxygen:
+	@$(MAKE) doxygen-doc > doxygen.log 2>&1

@@ -1,5 +1,5 @@
 # Scroom - Generic viewer for 2D data
-# Copyright (C) 2009-2014 Kees-Jan Dijkzeul
+# Copyright (C) 2009-2015 Kees-Jan Dijkzeul
 # 
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -276,7 +276,7 @@ fi
 
 if test "x${want_doxygen_all_code}" = xyes
 then
-  DX_EXTRA_SRC="\$(top_srcdir)/gui \$(top_srcdir)/libs \$(top_srcdir)/plugins"
+  DX_EXTRA_SRC=`find $srcdir -name src -type d | tr '\n' ' '`
 else
   DX_EXTRA_SRC=
 fi
@@ -329,9 +329,11 @@ echo \
            
  Package features:
    Mutracx hacks: ${want_mutracx_hacks}
-   Doxygen:       ${want_doxygen}
-     all code:    ${want_doxygen_all_code}
-   Unittests:     ${want_boost_tests}
+   Doxygen:         ${want_doxygen}
+     all code:      ${want_doxygen_all_code}
+   Unittests:       ${want_boost_tests}
+   Debug-tiles:     ${want_debug_tiles}
+   MultiThreading:  ${want_multithreading}
 
  Now type 'make @<:@<target>@:>@'
    where the optional <target> is:
