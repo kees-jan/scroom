@@ -1,0 +1,6 @@
+<map id="Tiff" name="Tiff">
+<area shape="rect" id="node2" href="$classPluginInformationInterface.html" title="{PluginInformationInterface\n|+ pluginApiVersion\l|+ PluginInformationInterface()\l+ getPluginName()\l+ getPluginVersion()\l+ registerCapabilities()\l}" alt="" coords="5,233,227,355"/>
+<area shape="rect" id="node3" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="177,5,293,156"/>
+<area shape="rect" id="node4" href="$classScroom_1_1TiledBitmap_1_1OpenTiledBitmapInterface.html" title="{Scroom::TiledBitmap\l::OpenTiledBitmapInterface\n||+ getFilters()\l+ open()\l}" alt="" coords="251,241,453,347"/>
+<area shape="rect" id="node5" href="$classScroom_1_1Utils_1_1Base.html" title="Base class that inherits from boost::enable_shared_from_this. " alt="" coords="477,204,637,384"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="ViewObserver" name="ViewObserver">
+<area shape="rect" id="node3" href="$classMeasure.html" title="{Measure\n||+ getPluginName()\l+ getPluginVersion()\l+ registerCapabilities()\l+ viewAdded()\l+ create()\l&#45; Measure()\l}" alt="" coords="5,329,180,480"/>
+<area shape="rect" id="node4" href="$classPipette.html" title="{Pipette\n||+ getPluginName()\l+ getPluginVersion()\l+ registerCapabilities()\l+ viewAdded()\l+ create()\l&#45; Pipette()\l}" alt="" coords="204,329,379,480"/>
+<area shape="rect" id="node2" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="133,5,249,156"/>
+</map>

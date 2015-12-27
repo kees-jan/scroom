@@ -1,0 +1,5 @@
+<map id="ToolStateListener" name="ToolStateListener">
+<area shape="rect" id="node3" href="$classMeasureHandler.html" title="{MeasureHandler\n|&#45; selection\l&#45; enabled\l|+ MeasureHandler()\l+ render()\l+ onSelectionStart()\l+ onSelectionUpdate()\l+ onSelectionEnd()\l+ onEnable()\l+ onDisable()\l+ create()\l&#45; displayMeasurement()\l&#45; drawCross()\l}" alt="" coords="5,373,183,597"/>
+<area shape="rect" id="node4" href="$classPipetteHandler.html" title="{PipetteHandler\n|&#45; selection\l&#45; enabled\l&#45; wasDisabled\l&#45; jobMutex\l&#45; currentJob\l|+ render()\l+ onSelectionStart()\l+ onSelectionUpdate()\l+ onSelectionEnd()\l+ onEnable()\l+ onDisable()\l+ computeValues()\l+ displayValues()\l+ getSelection()\l+ isEnabled()\l+ create()\l}" alt="" coords="207,344,378,627"/>
+<area shape="rect" id="node2" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="135,5,251,156"/>
+</map>

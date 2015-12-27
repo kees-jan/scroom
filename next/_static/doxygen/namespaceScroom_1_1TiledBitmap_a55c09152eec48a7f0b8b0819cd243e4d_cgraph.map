@@ -1,0 +1,14 @@
+<map id="Scroom::TiledBitmap::scheduleLoadingBitmap" name="Scroom::TiledBitmap::scheduleLoadingBitmap">
+<area shape="rect" id="node1" title=" " alt="" coords="5,137,192,178"/>
+<area shape="rect" id="node2" href="$namespaceScroom_1_1Utils_1_1Detail.html#af6ca1b376461c7e9fa52954959a24652" title=" " alt="" coords="269,13,425,54"/>
+<area shape="rect" id="node5" href="$classThreadPool_1_1Queue.html#a60a5cfe128cc80c5d5fbbd6494fb62e2" title=" " alt="" coords="270,78,423,119"/>
+<area shape="rect" id="node6" href="$namespaceScroom_1_1Utils.html#ace9b5ab9d76c3c1aff125ea97d2c72e5" title=" " alt="" coords="240,144,453,171"/>
+<area shape="rect" id="node7" href="$threadpool_8hh.html#af979353165a7a214dda8f7f289de81ea" title=" " alt="" coords="295,195,398,221"/>
+<area shape="rect" id="node8" href="$namespaceScroom_1_1GtkHelpers.html#a41d93c131774cfff3137ec807ead3e94" title=" " alt="" coords="271,246,423,287"/>
+<area shape="rect" id="node3" href="$classScroom_1_1Utils_1_1Detail_1_1ErrorSignalHandler.html#ae869ccdbf76fd4fcc1439cc4e288630e" title=" " alt="" coords="503,5,659,61"/>
+<area shape="rect" id="node4" href="$namespaceScroom_1_1Utils_1_1Detail.html#a368d40c614868bb7e2a6299ec7431d35" title=" " alt="" coords="709,13,865,54"/>
+<area shape="rect" id="node9" href="$namespaceScroom_1_1GtkHelpers.html#a37a36328ffc6b0e7468a02d64724c21d" title=" " alt="" coords="501,205,660,261"/>
+<area shape="rect" id="node12" href="$namespaceScroom_1_1GtkHelpers.html#a2ade52a9fdfe46700036def64d00f9da" title=" " alt="" coords="711,278,863,319"/>
+<area shape="rect" id="node10" href="$namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1" title=" " alt="" coords="708,213,867,254"/>
+<area shape="rect" id="node11" href="$namespaceScroom_1_1GtkHelpers.html#ac6ea38c746831ab3ff96ce29ffe5bf7a" title=" " alt="" coords="915,213,1067,254"/>
+</map>

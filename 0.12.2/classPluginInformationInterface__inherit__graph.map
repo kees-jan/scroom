@@ -1,0 +1,7 @@
+<map id="PluginInformationInterface" name="PluginInformationInterface">
+<area shape="rect" id="node3" href="$classMeasure.html" title="{Measure\n||+ getPluginName()\l+ getPluginVersion()\l+ registerCapabilities()\l+ viewAdded()\l+ create()\l&#45; Measure()\l}" alt="" coords="5,381,180,531"/>
+<area shape="rect" id="node4" href="$classPipette.html" title="{Pipette\n||+ getPluginName()\l+ getPluginVersion()\l+ registerCapabilities()\l+ viewAdded()\l+ create()\l&#45; Pipette()\l}" alt="" coords="204,381,379,531"/>
+<area shape="rect" id="node5" href="$classTiff.html" title="{Tiff\n||+ getPluginName()\l+ getPluginVersion()\l+ registerCapabilities()\l+ getFilters()\l+ open()\l+ create()\l&#45; Tiff()\l}" alt="" coords="403,373,577,539"/>
+<area shape="rect" id="node6" href="$classTransparentOverlay.html" title="{TransparentOverlay\n||+ getPluginName()\l+ getPluginVersion()\l+ registerCapabilities()\l+ createNew()\l+ create()\l&#45; TransparentOverlay()\l}" alt="" coords="601,381,776,531"/>
+<area shape="rect" id="node2" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="332,5,448,156"/>
+</map>

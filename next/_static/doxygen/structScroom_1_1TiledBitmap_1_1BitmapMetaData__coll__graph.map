@@ -1,0 +1,29 @@
+<map id="Scroom::TiledBitmap::BitmapMetaData" name="Scroom::TiledBitmap::BitmapMetaData">
+<area shape="rect" id="node1" title=" " alt="" coords="183,1603,342,1724"/>
+<area shape="rect" id="node2" title=" " alt="" coords="164,1411,361,1503"/>
+<area shape="rect" id="node3" href="$classColormapHelperBase.html" title=" " alt="" coords="165,1117,360,1283"/>
+<area shape="rect" id="node4" href="$classColormapProvider.html" title=" " alt="" coords="43,860,181,937"/>
+<area shape="rect" id="node5" href="$classInterface.html" title=" " alt="" coords="138,551,254,702"/>
+<area shape="rect" id="node6" href="$classColormappable.html" title=" " alt="" coords="206,772,453,1025"/>
+<area shape="rect" id="node7" title=" " alt="" coords="477,860,689,937"/>
+<area shape="rect" id="node8" href="$classColormap.html" title=" " alt="" coords="319,544,510,709"/>
+<area shape="rect" id="node9" title="STL class." alt="" coords="151,404,238,481"/>
+<area shape="rect" id="node10" title="STL class." alt="" coords="125,198,264,290"/>
+<area shape="rect" id="node11" title=" " alt="" coords="337,404,492,481"/>
+<area shape="rect" id="node12" href="$classColor.html" title=" " alt="" coords="353,147,477,341"/>
+<area shape="rect" id="node13" title=" " alt="" coords="226,13,409,90"/>
+<area shape="rect" id="node14" title=" " alt="" coords="433,5,589,97"/>
+<area shape="rect" id="node15" href="$classScroom_1_1Utils_1_1Rectangle.html" title=" " alt="" coords="913,1375,1095,1540"/>
+<area shape="rect" id="node16" title=" " alt="" coords="1418,1154,1625,1246"/>
+<area shape="rect" id="node17" title=" " alt="" coords="1649,1147,1839,1253"/>
+<area shape="rect" id="node18" title=" " alt="" coords="384,1154,573,1246"/>
+<area shape="rect" id="node19" title=" " alt="" coords="598,1147,789,1253"/>
+<area shape="rect" id="node20" title=" " alt="" coords="813,1154,992,1246"/>
+<area shape="rect" id="node21" title=" " alt="" coords="1016,1147,1195,1253"/>
+<area shape="rect" id="node22" href="$classScroom_1_1Utils_1_1Segment.html" title=" " alt="" coords="1219,1103,1394,1297"/>
+<area shape="rect" id="node23" title=" " alt="" coords="993,845,1191,952"/>
+<area shape="rect" id="node24" title=" " alt="" coords="1215,845,1398,952"/>
+<area shape="rect" id="node25" title=" " alt="" coords="1422,845,1605,952"/>
+<area shape="rect" id="node26" title=" " alt="" coords="1629,845,1800,952"/>
+<area shape="rect" id="node27" title=" " alt="" coords="778,853,969,945"/>
+</map>

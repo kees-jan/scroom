@@ -1,0 +1,30 @@
+<map id="inc/scroom/color.hh" name="inc/scroom/color.hh">
+<area shape="rect" id="node2" href="$cairo-helpers_8hh.html" title="inc/scroom/cairo&#45;helpers.hh" alt="" coords="149,162,351,189"/>
+<area shape="rect" id="node7" href="$colormappable_8hh.html" title="inc/scroom/colormappable.hh" alt="" coords="1940,80,2155,107"/>
+<area shape="rect" id="node26" href="$transformpresentation_8cc.html" title="libs/scroom/src/transformpresentation.cc" alt="" coords="2187,251,2475,278"/>
+<area shape="rect" id="node27" href="$colormap-helpers_8cc.html" title="libs/scroom/src/colormap\l&#45;helpers.cc" alt="" coords="2848,155,3033,196"/>
+<area shape="rect" id="node3" href="$cairo-helpers_8cc.html" title="libs/scroom/src/cairo\l&#45;helpers.cc" alt="" coords="5,244,161,285"/>
+<area shape="rect" id="node4" href="$layeroperations_8cc.html" title="libs/tiled&#45;bitmap/src\l/layeroperations.cc" alt="" coords="287,244,439,285"/>
+<area shape="rect" id="node5" href="$tiled-bitmap_8cc.html" title="libs/tiled&#45;bitmap/src\l/tiled&#45;bitmap.cc" alt="" coords="410,333,562,375"/>
+<area shape="rect" id="node6" href="$tiledbitmappresentation_8cc.html" title="libs/tiled&#45;bitmap/src\l/tiledbitmappresentation.cc" alt="" coords="833,333,1035,375"/>
+<area shape="rect" id="node8" href="$gmock_2colormappable_8hh.html" title="inc/scroom/gmock/colormappable.hh" alt="" coords="536,162,799,189"/>
+<area shape="rect" id="node10" href="$layeroperations_8hh.html" title="inc/scroom/layeroperations.hh" alt="" coords="875,162,1094,189"/>
+<area shape="rect" id="node13" href="$opentiledbitmapinterface_8hh.html" title="inc/scroom/opentiledbitmapinterface.hh" alt="" coords="1423,162,1706,189"/>
+<area shape="rect" id="node23" href="$tiffsource_8hh.html" title="plugins/tiff/src/tiffsource.hh" alt="" coords="1864,251,2063,278"/>
+<area shape="rect" id="node25" href="$transformpresentation_8hh.html" title="inc/scroom/transformpresentation.hh" alt="" coords="1832,162,2095,189"/>
+<area shape="rect" id="node28" href="$transparentoverlaypresentation_8cc.html" title="plugins/transparent\l&#45;overlay/src/transparentoverlaypresentation.cc" alt="" coords="2171,155,2497,196"/>
+<area shape="rect" id="node29" href="$transparentoverlayviewinfo_8cc.html" title="plugins/transparent\l&#45;overlay/src/transparentoverlayviewinfo.cc" alt="" coords="2522,155,2823,196"/>
+<area shape="rect" id="node9" href="$gmock_2presentationinterface_8hh.html" title="inc/scroom/gmock/presentationinterface.hh" alt="" coords="464,251,769,278"/>
+<area shape="rect" id="node11" href="$cmyklayeroperations_8cc.html" title="libs/tiled&#45;bitmap/src\l/cmyklayeroperations.cc" alt="" coords="793,244,976,285"/>
+<area shape="rect" id="node12" href="$layerspecforbitmap_8cc.html" title="libs/tiled&#45;bitmap/src\l/layerspecforbitmap.cc" alt="" coords="1001,244,1171,285"/>
+<area shape="rect" id="node14" href="$pluginmanager_8hh.html" title="gui/src/pluginmanager.hh" alt="" coords="1422,251,1609,278"/>
+<area shape="rect" id="node19" href="$tiled-bitmap_8hh.html" title="libs/tiled&#45;bitmap/src\l/tiled&#45;bitmap.hh" alt="" coords="1195,244,1347,285"/>
+<area shape="rect" id="node20" href="$tiff_8hh.html" title="plugins/tiff/src/tiff.hh" alt="" coords="1633,251,1789,278"/>
+<area shape="rect" id="node22" href="$tiff_8cc.html" title="plugins/tiff/src/tiff.cc" alt="" coords="1926,341,2081,367"/>
+<area shape="rect" id="node15" href="$callbacks_8cc.html" title="gui/src/callbacks.cc" alt="" coords="1059,341,1207,367"/>
+<area shape="rect" id="node16" href="$loader_8cc.html" title="gui/src/loader.cc" alt="" coords="1231,341,1357,367"/>
+<area shape="rect" id="node17" href="$pluginmanager_8cc.html" title="gui/src/pluginmanager.cc" alt="" coords="1382,341,1566,367"/>
+<area shape="rect" id="node18" href="$view_8cc.html" title="gui/src/view.cc" alt="" coords="1590,341,1707,367"/>
+<area shape="rect" id="node21" href="$plugins_2tiff_2src_2main_8cc.html" title="plugins/tiff/src/main.cc" alt="" coords="1732,341,1901,367"/>
+<area shape="rect" id="node24" href="$tiffsource_8cc.html" title="plugins/tiff/src/tiffsource.cc" alt="" coords="2105,341,2302,367"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="Scroom::Utils::ProgressInterfaceFromProgressStateInterface" name="Scroom::Utils::ProgressInterfaceFromProgressStateInterface">
+<area shape="rect" id="node5" href="$classScroom_1_1Utils_1_1Detail_1_1ProgressStore.html" title="{Scroom::Utils::Detail\l::ProgressStore\n|&#45; state\l&#45; progress\l|+ init()\l+ create()\l# setProgress()\l&#45; ProgressStore()\l}" alt="" coords="5,587,161,737"/>
+<area shape="rect" id="node6" href="$classScroom_1_1Utils_1_1ProgressInterfaceFromProgressStateInterfaceForwarder.html" title="{Scroom::Utils::ProgressInterface\lFromProgressStateInterfaceForwarder\n|&#45; child\l|+ create()\l# setProgress()\l&#45; ProgressInterfaceFromProgress\lStateInterfaceForwarder()\l}" alt="" coords="186,594,453,730"/>
+<area shape="rect" id="node7" href="$classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer_1_1Child.html" title="{Scroom::Utils::ProgressInterface\lMultiplexer::Child\n|&#45; parent\l&#45; data\l|+ Child()\l+ Child()\l+ operator=()\l+ operator=()\l+ ~Child()\l+ setProgress()\l+ create()\l&#45; Child()\l}" alt="" coords="477,557,708,767"/>
+<area shape="rect" id="node2" href="$classProgressInterface.html" title="Interface used for reporting progress information. " alt="" coords="154,204,290,325"/>
+<area shape="rect" id="node3" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="261,5,377,156"/>
+<area shape="rect" id="node4" href="$classScroom_1_1Utils_1_1ProgressStateInterface.html" title="Alternative interface used for reporting progress information. " alt="" coords="315,219,521,311"/>
+</map>

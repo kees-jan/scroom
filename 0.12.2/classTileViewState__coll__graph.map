@@ -1,0 +1,11 @@
+<map id="TileViewState" name="TileViewState">
+<area shape="rect" id="node2" href="$classScroom_1_1Utils_1_1Observable.html" title="{Scroom::Utils::Observable\l\&lt; TileLoadingObserver \&gt;\n||+ Observable()\l+ Observable()\l+ Observable()\l+ ~Observable()\l+ operator=()\l+ operator=()\l+ registerStrongObserver()\l+ registerObserver()\l# getObservers()\l# observerAdded()\l&#45; unregisterObserver()\l}" alt="" coords="325,1464,524,1703"/>
+<area shape="rect" id="node3" href="$classScroom_1_1Utils_1_1Base.html" title="Base class that inherits from boost::enable_shared_from_this. " alt="" coords="366,147,526,327"/>
+<area shape="rect" id="node6" href="$classScroom_1_1Bookkeeping_1_1MapBase.html" title="{Scroom::Bookkeeping\l::MapBase\&lt; ObserverWeak,\l typename Registration::Ptr \&gt;\n|&#45; map\l&#45; mut\l|+ reserve()\l+ reReserve()\l+ remove()\l+ remove()\l+ at()\l+ set()\l+ get()\l+ keys()\l+ values()\l}" alt="" coords="211,677,425,916"/>
+<area shape="rect" id="node8" href="$classScroom_1_1Bookkeeping_1_1MapBase.html" title="{Scroom::Bookkeeping\l::MapBase\&lt; K, V \&gt;\n|&#45; map\l&#45; mut\l|+ reserve()\l+ reReserve()\l+ remove()\l+ remove()\l+ at()\l+ set()\l+ get()\l+ keys()\l+ values()\l}" alt="" coords="40,376,204,600"/>
+<area shape="rect" id="node11" href="$classScroom_1_1Utils_1_1Observable.html" title="Base class for something that accepts observers. " alt="" coords="306,1177,535,1401"/>
+<area shape="rect" id="node5" href="$classScroom_1_1Bookkeeping_1_1Map.html" title="{Scroom::Bookkeeping\l::Map\&lt; ObserverWeak,\l typename Registration\l::Ptr \&gt;\n||+ create()\l}" alt="" coords="185,993,360,1115"/>
+<area shape="rect" id="node10" href="$classScroom_1_1Bookkeeping_1_1Map.html" title="{Scroom::Bookkeeping\l::Map\&lt; K, V \&gt;\n||+ create()\l}" alt="" coords="5,751,169,843"/>
+<area shape="rect" id="node12" href="$classTileLoadingObserver.html" title="Events related to swapping tiles in/out. " alt="" coords="569,1545,725,1622"/>
+<area shape="rect" id="node13" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="611,1214,727,1365"/>
+</map>

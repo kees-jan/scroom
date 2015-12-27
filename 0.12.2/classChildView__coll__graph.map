@@ -1,0 +1,5 @@
+<map id="ChildView" name="ChildView">
+<area shape="rect" id="node2" href="$classViewInterface.html" title="Interface provided to something Viewable. " alt="" coords="5,204,215,428"/>
+<area shape="rect" id="node3" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="52,5,168,156"/>
+<area shape="rect" id="node4" href="$classScroom_1_1Utils_1_1Base.html" title="Base class that inherits from boost::enable_shared_from_this. " alt="" coords="239,226,399,406"/>
+</map>

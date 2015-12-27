@@ -1,0 +1,13 @@
+<map id="libs/tiled&#45;bitmap/inc/scroom/tile.hh" name="libs/tiled&#45;bitmap/inc/scroom/tile.hh">
+<area shape="rect" id="node1" title=" " alt="" coords="80,5,232,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,244,83,271"/>
+<area shape="rect" id="node3" title=" " alt="" coords="107,244,167,271"/>
+<area shape="rect" id="node4" href="$global_8hh.html" title=" " alt="" coords="389,95,523,121"/>
+<area shape="rect" id="node5" href="$memoryblobs_8hh.html" title=" " alt="" coords="180,95,364,121"/>
+<area shape="rect" id="node6" title=" " alt="" coords="368,244,435,271"/>
+<area shape="rect" id="node7" title=" " alt="" coords="459,244,501,271"/>
+<area shape="rect" id="node8" title=" " alt="" coords="565,244,697,271"/>
+<area shape="rect" id="node9" href="$blockallocator_8hh.html" title=" " alt="" coords="180,169,364,196"/>
+<area shape="rect" id="node11" href="$utilities_8hh.html" title=" " alt="" coords="490,169,633,196"/>
+<area shape="rect" id="node10" href="$interface_8hh.html" title=" " alt="" coords="192,244,344,271"/>
+</map>

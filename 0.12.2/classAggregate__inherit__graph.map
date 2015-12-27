@@ -1,0 +1,4 @@
+<map id="Aggregate" name="Aggregate">
+<area shape="rect" id="node3" href="$classTransparentOverlayPresentation.html" title="{TransparentOverlayPresentation\n|&#45; children\l&#45; sizeDeterminer\l&#45; viewData\l|+ getRect()\l+ redraw()\l+ getProperty()\l+ isPropertyDefined()\l+ getTitle()\l+ viewAdded()\l+ viewRemoved()\l+ getViews()\l+ addPresentation()\l+ create()\l&#45; TransparentOverlayPresentation()\l&#45; setOptimalColor()\l}" alt="" coords="5,329,256,597"/>
+<area shape="rect" id="node2" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="73,5,189,156"/>
+</map>

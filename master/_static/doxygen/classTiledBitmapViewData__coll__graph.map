@@ -1,0 +1,12 @@
+<map id="TiledBitmapViewData" name="TiledBitmapViewData">
+<area shape="rect" id="node1" title=" " alt="" coords="343,461,525,744"/>
+<area shape="rect" id="node2" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="11,226,161,377"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,35,167,127"/>
+<area shape="rect" id="node4" href="$classTileLoadingObserver.html" title=" " alt="" coords="185,263,341,340"/>
+<area shape="rect" id="node5" href="$classInterface.html" title=" " alt="" coords="273,5,389,156"/>
+<area shape="rect" id="node6" href="$classProgressInterface.html" title=" " alt="" coords="366,241,502,362"/>
+<area shape="rect" id="node7" title=" " alt="" coords="526,263,657,340"/>
+<area shape="rect" id="node8" title=" " alt="" coords="565,42,617,119"/>
+<area shape="rect" id="node9" href="$classScroom_1_1Bookkeeping_1_1Token.html" title=" " alt="" coords="681,219,843,384"/>
+<area shape="rect" id="node10" title=" " alt="" coords="685,35,839,127"/>
+</map>

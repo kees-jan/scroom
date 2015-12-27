@@ -1,0 +1,4 @@
+<map id="OpenPresentationInterface" name="OpenPresentationInterface">
+<area shape="rect" id="node3" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html" title="{anonymous_namespace\l\{tiledbitmappresentation.cc\}\l::OpenTiledBitmapAsPresentation\n|&#45; openTiledBitmapInterface\l|+ getFilters()\l+ open()\l+ create()\l&#45; OpenTiledBitmapAsPresentation()\l}" alt="" coords="5,344,257,495"/>
+<area shape="rect" id="node2" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="73,5,189,156"/>
+</map>

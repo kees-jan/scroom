@@ -1,0 +1,4 @@
+<map id="SourcePresentation" name="SourcePresentation">
+<area shape="rect" id="node3" href="$classScroom_1_1Tiff_1_1Source.html" title="{Scroom::Tiff::Source\n|&#45; fileName\l&#45; preOpenedTif\l&#45; tif\l&#45; bmd\l|+ reset()\l+ fillTiles()\l+ done()\l+ getName()\l+ create()\l&#45; Source()\l}" alt="" coords="5,359,157,553"/>
+<area shape="rect" id="node2" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="23,5,139,156"/>
+</map>

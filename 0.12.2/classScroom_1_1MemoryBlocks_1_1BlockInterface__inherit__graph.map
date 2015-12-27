@@ -1,0 +1,4 @@
+<map id="Scroom::MemoryBlocks::BlockInterface" name="Scroom::MemoryBlocks::BlockInterface">
+<area shape="rect" id="node3" href="$classScroom_1_1MemoryBlocks_1_1Detail_1_1SwapBasedBlockAllocator.html" title="{Scroom::MemoryBlocks\l::Detail::SwapBasedBlockAllocator\n|&#45; count\l&#45; size\l&#45; data\l|+ getPages()\l+ create()\l# get()\l&#45; SwapBasedBlockAllocator()\l}" alt="" coords="5,359,252,524"/>
+<area shape="rect" id="node2" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="71,5,187,156"/>
+</map>

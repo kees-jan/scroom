@@ -1,0 +1,14 @@
+<map id="ColormappablePresentationMock" name="ColormappablePresentationMock">
+<area shape="rect" id="node2" href="$classPresentationMock.html" title="{PresentationMock\n||+ MOCK_METHOD1()\l+ MOCK_METHOD1()\l+ MOCK_METHOD0()\l+ MOCK_METHOD4()\l+ MOCK_METHOD2()\l+ MOCK_METHOD1()\l+ MOCK_METHOD0()\l+ create()\l}" alt="" coords="219,1888,377,2068"/>
+<area shape="rect" id="node3" href="$classPresentationInterface.html" title="Represent some 2D content. " alt="" coords="235,1509,398,1660"/>
+<area shape="rect" id="node4" href="$classViewable.html" title="Implement Viewable if you want to be able to receive events when a View is created and/or deleted..." alt="" coords="275,1287,358,1379"/>
+<area shape="rect" id="node5" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="117,993,233,1144"/>
+<area shape="rect" id="node16" href="$classColormappable.html" title="Interface for Colormappable presentations. " alt="" coords="5,1207,252,1460"/>
+<area shape="rect" id="node6" href="$classScroom_1_1Utils_1_1Observable.html" title="Base class for something that accepts observers. " alt="" coords="381,1221,580,1445"/>
+<area shape="rect" id="node7" href="$classScroom_1_1Utils_1_1Base.html" title="Base class that inherits from boost::enable_shared_from_this. " alt="" coords="271,147,431,327"/>
+<area shape="rect" id="node10" href="$classScroom_1_1Bookkeeping_1_1MapBase.html" title="{Scroom::Bookkeeping\l::MapBase\&lt; ObserverWeak,\l typename Registration::Ptr \&gt;\n|&#45; map\l&#45; mut\l|+ reserve()\l+ reReserve()\l+ remove()\l+ remove()\l+ at()\l+ set()\l+ get()\l+ keys()\l+ values()\l}" alt="" coords="121,677,336,916"/>
+<area shape="rect" id="node12" href="$classScroom_1_1Bookkeeping_1_1MapBase.html" title="{Scroom::Bookkeeping\l::MapBase\&lt; K, V \&gt;\n|&#45; map\l&#45; mut\l|+ reserve()\l+ reReserve()\l+ remove()\l+ remove()\l+ at()\l+ set()\l+ get()\l+ keys()\l+ values()\l}" alt="" coords="268,376,432,600"/>
+<area shape="rect" id="node9" href="$classScroom_1_1Bookkeeping_1_1Map.html" title="{Scroom::Bookkeeping\l::Map\&lt; ObserverWeak,\l typename Registration\l::Ptr \&gt;\n||+ create()\l}" alt="" coords="265,1008,440,1129"/>
+<area shape="rect" id="node14" href="$classScroom_1_1Bookkeeping_1_1Map.html" title="{Scroom::Bookkeeping\l::Map\&lt; K, V \&gt;\n||+ create()\l}" alt="" coords="360,751,524,843"/>
+<area shape="rect" id="node15" href="$classColormappableMock.html" title="{ColormappableMock\n||&#45; MOCK_METHOD1()\l&#45; MOCK_METHOD0()\l&#45; MOCK_METHOD0()\l&#45; MOCK_METHOD0()\l&#45; MOCK_METHOD1()\l&#45; MOCK_METHOD0()\l&#45; MOCK_METHOD0()\l&#45; MOCK_METHOD0()\l}" alt="" coords="86,1684,241,1864"/>
+</map>

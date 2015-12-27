@@ -1,0 +1,5 @@
+<map id="Scroom::MemoryBlocks::Detail::SwapBasedBlockAllocator" name="Scroom::MemoryBlocks::Detail::SwapBasedBlockAllocator">
+<area shape="rect" id="node2" href="$classScroom_1_1MemoryBlocks_1_1BlockInterface.html" title="{Scroom::MemoryBlocks\l::BlockInterface\n||+ getPages()\l# get()\l}" alt="" coords="5,241,180,347"/>
+<area shape="rect" id="node3" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="35,5,151,156"/>
+<area shape="rect" id="node4" href="$classScroom_1_1Utils_1_1Base.html" title="Base class that inherits from boost::enable_shared_from_this. " alt="" coords="205,204,365,384"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="gui/ruler/inc/ruler.hh" name="gui/ruler/inc/ruler.hh">
+<area shape="rect" id="node1" title=" " alt="" coords="76,5,228,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,61,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="28,155,105,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="305,155,385,181"/>
+<area shape="rect" id="node5" href="$rulerstrategies_8hh.html" title=" " alt="" coords="137,80,274,107"/>
+<area shape="rect" id="node6" href="$interface_8hh.html" title=" " alt="" coords="129,155,281,181"/>
+</map>

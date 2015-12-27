@@ -1,0 +1,4 @@
+<map id="Scroom::Bookkeeping::Map&lt; K, V &gt;" name="Scroom::Bookkeeping::Map&lt; K, V &gt;">
+<area shape="rect" id="node2" href="$classScroom_1_1Bookkeeping_1_1MapBase.html" title="{Scroom::Bookkeeping\l::MapBase\&lt; K, V \&gt;\n|&#45; map\l&#45; mut\l|+ reserve()\l+ reReserve()\l+ remove()\l+ remove()\l+ at()\l+ set()\l+ get()\l+ keys()\l+ values()\l}" alt="" coords="83,373,247,597"/>
+<area shape="rect" id="node3" href="$classScroom_1_1Utils_1_1Base.html" title="Base class that inherits from boost::enable_shared_from_this. " alt="" coords="6,145,166,325"/>
+</map>

@@ -1,0 +1,12 @@
+<map id="inc/scroom/pipettelayeroperations.hh" name="inc/scroom/pipettelayeroperations.hh">
+<area shape="rect" id="node3" href="$interface_8hh.html" title="scroom/interface.hh" alt="" coords="5,311,157,338"/>
+<area shape="rect" id="node4" href="$rectangle_8hh.html" title="scroom/rectangle.hh" alt="" coords="1181,80,1336,107"/>
+<area shape="rect" id="node15" href="$tile_8hh.html" title="scroom/tile.hh" alt="" coords="264,80,379,107"/>
+<area shape="rect" id="node7" href="$gtk-helpers_8hh.html" title="scroom/gtk&#45;helpers.hh" alt="" coords="996,155,1164,181"/>
+<area shape="rect" id="node10" href="$linearsegment_8hh.html" title="scroom/linearsegment.hh" alt="" coords="1449,155,1637,181"/>
+<area shape="rect" id="node13" href="$point_8hh.html" title="scroom/point.hh" alt="" coords="1246,155,1373,181"/>
+<area shape="rect" id="node18" href="$global_8hh.html" title="scroom/global.hh" alt="" coords="254,155,389,181"/>
+<area shape="rect" id="node19" href="$memoryblobs_8hh.html" title="scroom/memoryblobs.hh" alt="" coords="424,155,608,181"/>
+<area shape="rect" id="node23" href="$blockallocator_8hh.html" title="scroom/blockallocator.hh" alt="" coords="267,229,453,256"/>
+<area shape="rect" id="node24" href="$utilities_8hh.html" title="scroom/utilities.hh" alt="" coords="731,229,874,256"/>
+</map>

@@ -1,0 +1,4 @@
+var namespaceScroom_1_1Metadata_1_1anonymous__namespace_02showmetadata_8cc_03 =
+[
+    [ "MetaDataWindowData", "structScroom_1_1Metadata_1_1anonymous__namespace_02showmetadata_8cc_03_1_1MetaDataWindowData.html", "structScroom_1_1Metadata_1_1anonymous__namespace_02showmetadata_8cc_03_1_1MetaDataWindowData" ]
+];

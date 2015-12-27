@@ -1,0 +1,9 @@
+<map id="libs/tiled&#45;bitmap/tools/measure&#45;framerate&#45;stubs.hh" name="libs/tiled&#45;bitmap/tools/measure&#45;framerate&#45;stubs.hh">
+<area shape="rect" id="node1" title=" " alt="" coords="421,5,635,47"/>
+<area shape="rect" id="node2" href="$test-helpers_8hh.html" title=" " alt="" coords="385,95,551,136"/>
+<area shape="rect" id="node4" href="$measure-framerate-tests_8cc.html" title=" " alt="" coords="5,191,213,233"/>
+<area shape="rect" id="node5" href="$measure-load-performance-tests_8cc.html" title=" " alt="" coords="689,184,893,240"/>
+<area shape="rect" id="node7" href="$measure-framerate-stubs_8cc.html" title=" " alt="" coords="625,95,836,136"/>
+<area shape="rect" id="node3" href="$measure-framerate-callbacks_8cc.html" title=" " alt="" coords="237,191,475,233"/>
+<area shape="rect" id="node6" href="$test-helpers_8cc.html" title=" " alt="" coords="499,191,664,233"/>
+</map>

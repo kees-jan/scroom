@@ -1,0 +1,10 @@
+<map id="ColormappablePresentationMock" name="ColormappablePresentationMock">
+<area shape="rect" id="node2" href="$classPresentationMock.html" title="{PresentationMock\n||+ MOCK_METHOD1()\l+ MOCK_METHOD1()\l+ MOCK_METHOD0()\l+ MOCK_METHOD4()\l+ MOCK_METHOD2()\l+ MOCK_METHOD1()\l+ MOCK_METHOD0()\l+ create()\l}" alt="" coords="236,873,395,1053"/>
+<area shape="rect" id="node3" href="$classPresentationInterface.html" title="Represent some 2D content. " alt="" coords="235,675,398,825"/>
+<area shape="rect" id="node4" href="$classViewable.html" title="Implement Viewable if you want to be able to receive events when a View is created and/or deleted..." alt="" coords="275,454,358,546"/>
+<area shape="rect" id="node5" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="165,160,281,311"/>
+<area shape="rect" id="node10" href="$classColormappable.html" title="Interface for Colormappable presentations. " alt="" coords="5,373,252,627"/>
+<area shape="rect" id="node6" href="$classScroom_1_1Utils_1_1Observable.html" title="Base class for something that accepts observers. " alt="" coords="381,388,580,612"/>
+<area shape="rect" id="node7" href="$classScroom_1_1Utils_1_1Base.html" title="Base class that inherits from boost::enable_shared_from_this. " alt="" coords="401,145,561,325"/>
+<area shape="rect" id="node9" href="$classColormappableMock.html" title="{ColormappableMock\n||&#45; MOCK_METHOD1()\l&#45; MOCK_METHOD0()\l&#45; MOCK_METHOD0()\l&#45; MOCK_METHOD0()\l&#45; MOCK_METHOD1()\l&#45; MOCK_METHOD0()\l&#45; MOCK_METHOD0()\l&#45; MOCK_METHOD0()\l}" alt="" coords="55,873,210,1053"/>
+</map>
