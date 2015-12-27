@@ -1,0 +1,33 @@
+<map id="TweakSelection::tweakSelection" name="TweakSelection::tweakSelection">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,229,236,254"/>
+<area shape="rect" id="Node000002" href="$view_8cc.html#aa8cab6bcc78f2ade190564c5b9c36c00" title=" " alt="" coords="345,130,454,155"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,226,206,195,283,164,330,152,332,157,285,169,208,200,147,231"/>
+<area shape="rect" id="Node000009" href="$view_8cc.html#a0a0c0368f16f55cccde4028cdacd8e81" title=" " alt="" coords="326,179,473,205"/>
+<area shape="poly" id="edge12_Node000001_Node000009" title=" " alt="" coords="193,226,313,205,314,210,194,231"/>
+<area shape="rect" id="Node000010" href="$view_8cc.html#ad4e132ee6695c5790e6ecf9607cf18d1" title=" " alt="" coords="321,229,477,254"/>
+<area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="236,239,307,239,307,244,236,244"/>
+<area shape="rect" id="Node000011" href="$view_8cc.html#aa4c0e07b612d51cad5beab8f04bec275" title=" " alt="" coords="349,278,449,303"/>
+<area shape="poly" id="edge14_Node000001_Node000011" title=" " alt="" coords="194,251,336,277,335,282,193,257"/>
+<area shape="rect" id="Node000014" href="$classTweakSelection.html#a12e9c0186b039a10ac416c1b7a595049" title=" " alt="" coords="284,327,515,353"/>
+<area shape="poly" id="edge17_Node000001_Node000014" title=" " alt="" coords="147,252,208,282,285,313,313,322,312,327,283,319,206,287,144,257"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Rectangle.html#a6a2d89e24dea1c52daa0a8e6b5521cb7" title=" " alt="" coords="563,133,745,173"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="454,142,549,146,549,152,454,148"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Rectangle.html#a010a83b3edfaf453fefc1dcf36704e40" title=" " alt="" coords="563,197,745,237"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="455,150,515,164,564,183,583,190,582,195,562,188,514,169,454,155"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Rectangle.html#aa0205a1477a20bd1888f9dd480069bf2" title=" " alt="" coords="563,5,745,45"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="421,127,484,93,562,55,579,48,581,53,564,60,486,98,424,132"/>
+<area shape="rect" id="Node000008" href="$classScroom_1_1Utils_1_1Rectangle.html#a43b9e2c50da501d42ee265b76d061c1c" title=" " alt="" coords="563,69,745,109"/>
+<area shape="poly" id="edge9_Node000002_Node000008" title=" " alt="" coords="454,129,549,109,550,114,455,134"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Segment.html#a671e0c8614114bf5eb99afd36a2dddc4" title=" " alt="" coords="802,133,977,173"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="746,151,788,151,788,156,746,156"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Segment.html#a934a0a56d270e8d4fc4ceddb4dc7fb82" title=" " alt="" coords="802,69,977,109"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="728,131,802,110,803,115,729,136"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="728,195,802,174,803,179,729,200"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="729,43,803,63,802,68,728,48"/>
+<area shape="poly" id="edge10_Node000008_Node000004" title=" " alt="" coords="729,107,803,127,802,132,728,112"/>
+<area shape="poly" id="edge11_Node000008_Node000005" title=" " alt="" coords="746,87,788,87,788,92,746,92"/>
+<area shape="rect" id="Node000012" href="$namespaceScroom_1_1Utils.html#a945b370ac1041bc053565f150668e803" title=" " alt="" coords="574,271,734,311"/>
+<area shape="poly" id="edge15_Node000011_Node000012" title=" " alt="" coords="450,288,560,288,560,293,450,293"/>
+<area shape="rect" id="Node000013" href="$namespaceScroom_1_1Utils.html#ae81b515fbc80d3efdded8c600b5956e6" title=" " alt="" coords="793,271,985,311"/>
+<area shape="poly" id="edge16_Node000012_Node000013" title=" " alt="" coords="734,288,780,288,780,293,734,293"/>
+</map>

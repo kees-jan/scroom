@@ -1,0 +1,11 @@
+<map id="ViewObserver" name="ViewObserver">
+<area shape="rect" id="Node000001" title=" " alt="" coords="222,219,333,284"/>
+<area shape="rect" id="Node000003" href="$classMeasure.html" title=" " alt="" coords="5,332,171,497"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="231,295,184,334,173,344,169,340,181,330,227,291"/>
+<area shape="rect" id="Node000004" href="$classMetadata.html" title=" " alt="" coords="195,332,360,497"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="280,297,280,332,275,332,275,297"/>
+<area shape="rect" id="Node000005" href="$classPipette.html" title=" " alt="" coords="384,332,549,497"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="327,291,374,330,385,340,382,344,370,334,324,295"/>
+<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="223,5,331,171"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="280,184,280,219,275,219,275,184"/>
+</map>

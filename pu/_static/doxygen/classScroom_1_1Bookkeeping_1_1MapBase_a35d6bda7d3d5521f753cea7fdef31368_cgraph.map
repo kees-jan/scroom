@@ -1,0 +1,18 @@
+<map id="Scroom::Bookkeeping::MapBase::reReserve" name="Scroom::Bookkeeping::MapBase::reReserve">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,149,169,189"/>
+<area shape="rect" id="Node000002" href="$classThreadPool.html#a72b7ee59b6fd4d2266233334f9e0011b" title=" " alt="" coords="235,52,362,77"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,146,161,116,216,86,234,79,236,84,218,91,164,121,118,151"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Bookkeeping_1_1Detail_1_1TokenImpl.html#ab58c018ca2f8b72212a1bff956bd5aab" title=" " alt="" coords="217,101,380,156"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="169,151,203,144,204,149,170,156"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Bookkeeping_1_1Detail_1_1ValueType.html#ac0e5be329f8bf1090463b891ea2e7f30" title=" " alt="" coords="217,180,380,235"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="170,181,204,187,203,193,169,186"/>
+<area shape="rect" id="Node000008" href="$async-deleter-tests_8cc.html#a7cc3b949fa6d0ae6fe68d6b431bf8795" title=" " alt="" coords="279,259,318,284"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="118,186,164,216,218,245,267,261,265,266,216,250,161,221,115,191"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="264,54,257,44,261,34,275,28,299,25,328,29,340,38,336,42,326,34,299,31,276,33,264,37,262,43,268,50"/>
+<area shape="rect" id="Node000003" href="$classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html#a3b3efa8982899d0fa6641a868e8cf230" title=" " alt="" coords="428,5,608,60"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="362,53,414,45,415,50,362,58"/>
+<area shape="rect" id="Node000004" href="$classThreadPool.html#a9d3f75e5674e5b4b3a1afdc8a50982e4" title=" " alt="" coords="451,84,585,109"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="362,71,437,82,437,88,362,76"/>
+<area shape="rect" id="Node000005" href="$classThreadPool.html#a8f42dc3ccb85aab2590d246490df0d9a" title=" " alt="" coords="656,84,807,109"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="585,94,642,94,642,99,585,99"/>
+</map>

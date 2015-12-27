@@ -1,0 +1,7 @@
+<map id="test_count_equals" name="test_count_equals">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,145,56"/>
+<area shape="rect" id="Node000002" href="$semaphore-tests_8cc.html#a5e086325d431986e5a53541c126dd6ba" title=" " alt="" coords="193,5,309,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,31,179,26,180,31,146,36"/>
+<area shape="rect" id="Node000003" href="$semaphore-tests_8cc.html#a283e6ef15b31575674f88c81ba40fcda" title=" " alt="" coords="195,55,308,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="146,50,181,55,181,60,145,56"/>
+</map>

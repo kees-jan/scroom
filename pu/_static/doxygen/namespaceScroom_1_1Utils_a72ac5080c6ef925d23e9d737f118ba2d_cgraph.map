@@ -1,0 +1,19 @@
+<map id="Scroom::Utils::roundOutward" name="Scroom::Utils::roundOutward">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,77,215,102"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html#a8653f4482fe6412882b3b9e52ee54b0c" title=" " alt="" coords="276,5,459,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,74,272,46,274,51,163,79"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Rectangle.html#a1ce2513a6ba0084ea4432edd3a9431f2" title=" " alt="" coords="276,69,459,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="215,87,262,87,262,92,215,92"/>
+<area shape="rect" id="Node000004" href="$namespaceScroom_1_1Utils.html#aafbf8baa587d11858954f89021f9037b" title=" " alt="" coords="263,134,472,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="168,99,297,128,296,134,167,105"/>
+<area shape="rect" id="Node000005" href="$namespaceScroom_1_1Utils.html#ae81b515fbc80d3efdded8c600b5956e6" title=" " alt="" coords="525,69,717,109"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="424,131,519,110,520,115,425,137"/>
+<area shape="rect" id="Node000006" href="$rounding_8hh.html#aa1169552e0a4044595bc67a5b9361694" title=" " alt="" coords="520,134,723,159"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="472,144,506,144,506,149,472,149"/>
+<area shape="rect" id="Node000008" href="$rounding_8hh.html#a1b27314f9dc323dff1e495e265c88eca" title=" " alt="" coords="530,183,713,209"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="434,157,542,178,541,183,433,162"/>
+<area shape="rect" id="Node000007" href="$rounding_8hh.html#a08d4c4fef3e0764e999f269b7773286c" title=" " alt="" coords="771,134,908,159"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="723,144,756,144,756,149,723,149"/>
+<area shape="rect" id="Node000009" href="$rounding_8hh.html#a3705c07b90d6f60753b35c4aea0082b5" title=" " alt="" coords="774,183,905,209"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="713,193,760,193,760,199,713,199"/>
+</map>

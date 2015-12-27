@@ -1,0 +1,19 @@
+<map id="setupTest8bpp" name="setupTest8bpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,119,121,145"/>
+<area shape="rect" id="Node000002" href="$classDummyColormapProvider.html#adf88a93181d29006d5772cb1c442dce0" title=" " alt="" coords="169,5,360,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="78,117,117,87,168,55,183,48,185,53,171,60,120,91,81,121"/>
+<area shape="rect" id="Node000003" href="$classOperations8bpp.html#af89b28e8f1a6fbe0cf8d0835d4db795a" title=" " alt="" coords="177,70,352,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="115,117,198,96,199,101,116,122"/>
+<area shape="rect" id="Node000004" href="$classTestData.html#ab3a8459e33d0c556814707bbef0ce675" title=" " alt="" coords="201,119,329,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="122,129,187,129,187,135,122,135"/>
+<area shape="rect" id="Node000005" href="$classColormap.html#afe589913d62741a00d269c5e72c3641b" title=" " alt="" coords="173,169,356,194"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="116,142,199,163,198,168,115,147"/>
+<area shape="rect" id="Node000008" href="$tiled-bitmap_8cc.html#afb81a705ea3c38444cb0f4fb12410f43" title=" " alt="" coords="193,218,336,243"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="80,143,120,174,171,204,188,211,186,216,168,209,116,178,77,147"/>
+<area shape="rect" id="Node000006" href="$classColormap.html#a9966b8a719d851b5e28b6b99ec6d2245" title=" " alt="" coords="416,169,551,194"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="356,179,402,179,402,184,356,184"/>
+<area shape="rect" id="Node000007" href="$classColormap.html#afbda2916eb43f89f99512e951ca2c7de" title=" " alt="" coords="607,169,763,194"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="551,179,593,179,593,184,551,184"/>
+<area shape="rect" id="Node000009" href="$classTiledBitmap.html#aac0fd55f26ab59b362f0c64d27a9e139" title=" " alt="" coords="408,218,559,243"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="336,228,394,228,394,233,336,233"/>
+</map>

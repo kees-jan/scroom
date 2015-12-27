@@ -1,0 +1,36 @@
+<map id="libs/scroom/inc/scroom/bitmap&#45;helpers.hh" name="libs/scroom/inc/scroom/bitmap&#45;helpers.hh">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1109,5,1281,45"/>
+<area shape="rect" id="Node000002" href="$transformpresentation_8hh.html" title=" " alt="" coords="693,93,885,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1096,50,878,96,877,91,1095,45"/>
+<area shape="rect" id="Node000004" href="$transformpresentation__test_8cc.html" title=" " alt="" coords="5,181,281,221"/>
+<area shape="poly" id="edge14_Node000001_Node000004" title=" " alt="" coords="1096,40,903,64,681,96,434,141,229,184,228,179,433,136,680,91,903,58,1095,35"/>
+<area shape="rect" id="Node000012" href="$bitmap-helpers_8cc.html" title=" " alt="" coords="909,93,1079,133"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="1139,53,1039,96,1037,91,1137,48"/>
+<area shape="rect" id="Node000013" href="$cmyklayeroperations_8cc.html" title=" " alt="" coords="1104,93,1287,133"/>
+<area shape="poly" id="edge15_Node000001_Node000013" title=" " alt="" coords="1198,59,1198,93,1193,93,1193,59"/>
+<area shape="rect" id="Node000014" href="$layeroperations_8cc.html" title=" " alt="" coords="1311,93,1463,133"/>
+<area shape="poly" id="edge16_Node000001_Node000014" title=" " alt="" coords="1251,49,1346,91,1344,96,1249,53"/>
+<area shape="rect" id="Node000015" href="$sampleiterator-tests_8cc.html" title=" " alt="" coords="1488,93,1665,133"/>
+<area shape="poly" id="edge17_Node000001_Node000015" title=" " alt="" coords="1293,46,1494,91,1493,96,1292,51"/>
+<area shape="rect" id="Node000016" href="$transparentoverlayviewinfo_8cc.html" title=" " alt="" coords="1690,93,1991,133"/>
+<area shape="poly" id="edge18_Node000001_Node000016" title=" " alt="" coords="1295,37,1699,91,1699,96,1295,42"/>
+<area shape="rect" id="Node000003" href="$transformpresentation_8cc.html" title=" " alt="" coords="306,189,594,214"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="702,139,496,191,494,186,700,134"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="679,132,282,184,281,179,679,127"/>
+<area shape="rect" id="Node000005" href="$tiledbitmappresentation_8cc.html" title=" " alt="" coords="619,181,820,221"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="767,146,737,183,733,179,763,143"/>
+<area shape="rect" id="Node000006" href="$pnm_8cc.html" title=" " alt="" coords="733,269,909,295"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="815,143,834,181,838,205,836,230,827,269,822,268,831,229,832,205,829,182,811,146"/>
+<area shape="rect" id="Node000007" href="$pnmsource_8hh.html" title=" " alt="" coords="895,189,1117,214"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="850,136,978,186,976,191,848,141"/>
+<area shape="rect" id="Node000009" href="$tiff_8cc.html" title=" " alt="" coords="1175,269,1330,295"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="899,132,1046,160,1130,179,1240,267,1237,271,1128,184,1045,166,898,137"/>
+<area shape="rect" id="Node000010" href="$tiffsource_8hh.html" title=" " alt="" coords="1191,189,1389,214"/>
+<area shape="poly" id="edge10_Node000002_Node000010" title=" " alt="" coords="899,131,1223,186,1222,191,898,136"/>
+<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="968,222,849,272,847,267,966,217"/>
+<area shape="rect" id="Node000008" href="$pnmsource_8cc.html" title=" " alt="" coords="933,269,1151,295"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="1019,225,1039,268,1034,270,1015,228"/>
+<area shape="poly" id="edge11_Node000010_Node000009" title=" " alt="" coords="1281,228,1261,270,1256,268,1276,225"/>
+<area shape="rect" id="Node000011" href="$tiffsource_8cc.html" title=" " alt="" coords="1354,269,1551,295"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="1327,217,1430,267,1428,272,1325,222"/>
+</map>

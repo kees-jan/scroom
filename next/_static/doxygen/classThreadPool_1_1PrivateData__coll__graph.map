@@ -1,0 +1,15 @@
+<map id="ThreadPool::PrivateData" name="ThreadPool::PrivateData">
+<area shape="rect" id="Node000001" title=" " alt="" coords="117,913,369,1079"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="25,756,176,851"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,850,174,899,170,902,133,853"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="15,613,186,693"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="103,693,103,739,98,739,98,693"/>
+<area shape="rect" id="Node000004" href="$structThreadPool_1_1Job.html" title=" " alt="" coords="43,465,158,551"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="103,551,103,597,98,597,98,551"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="13,308,188,403"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="103,403,103,449,98,449,98,403"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html" title=" " alt="" coords="5,5,196,245"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="103,246,103,292,98,292,98,246"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="200,771,383,836"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="286,837,271,898,265,896,281,835"/>
+</map>

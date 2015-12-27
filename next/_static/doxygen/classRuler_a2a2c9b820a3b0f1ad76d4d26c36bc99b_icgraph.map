@@ -1,0 +1,15 @@
+<map id="Ruler::drawSingleTick" name="Ruler::drawSingleTick">
+<area shape="rect" id="Node000001" title=" " alt="" coords="877,55,1040,80"/>
+<area shape="rect" id="Node000002" href="$classRuler.html#a53568383844d4251c0d2a2092932c6f4" title=" " alt="" coords="675,29,829,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="864,58,829,54,830,49,864,53"/>
+<area shape="rect" id="Node000003" href="$classRuler.html#a627f4b9a16378af7bdd87f00d8da84d0" title=" " alt="" coords="496,55,627,80"/>
+<area shape="poly" id="edge7_Node000001_Node000003" title=" " alt="" coords="863,70,627,70,627,65,863,65"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="786,19,776,11,752,8,732,10,721,15,719,20,725,28,721,31,714,21,718,11,731,5,752,3,778,6,789,15"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="661,57,627,61,627,56,661,51"/>
+<area shape="rect" id="Node000004" href="$classRuler.html#a4b206cbfe60e820ec599aabe8bd1eff8" title=" " alt="" coords="352,55,448,80"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="482,70,448,70,448,65,482,65"/>
+<area shape="rect" id="Node000005" href="$classRuler.html#a24acbbd99042d3584816d95066006405" title=" " alt="" coords="152,55,304,80"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="338,70,305,70,305,65,338,65"/>
+<area shape="rect" id="Node000006" href="$classRuler.html#a3edb9e827855ce558712d1c594c6cd12" title=" " alt="" coords="5,55,104,80"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="138,70,104,70,104,65,138,65"/>
+</map>

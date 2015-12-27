@@ -1,0 +1,7 @@
+<map id="View::windowPointToPresentationPoint" name="View::windowPointToPresentationPoint">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,23,245,63"/>
+<area shape="rect" id="Node000002" href="$cairo-helpers_8cc.html#ac7a152a4cc864e9c67acbc6686a9d3a4" title=" " alt="" coords="302,5,453,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="245,29,288,24,288,30,246,34"/>
+<area shape="rect" id="Node000003" href="$classView.html#a7c6bc955a9ea12b76b49c2c47d508329" title=" " alt="" coords="293,55,461,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="246,52,280,55,280,61,245,57"/>
+</map>

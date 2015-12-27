@@ -1,0 +1,9 @@
+<map id="Scroom::MemoryBlobs::Blob::initialize" name="Scroom::MemoryBlobs::Blob::initialize">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,35,175,75"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1MemoryBlobs_1_1Blob.html#a775037c70c28e8e06cd2731a6968a410" title=" " alt="" coords="223,5,392,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="175,41,209,36,210,41,175,46"/>
+<area shape="rect" id="Node000004" href="$blob-tests_8cc.html#a437575caa19eb3da5759ce54a05bfe32" title=" " alt="" coords="269,70,345,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="175,63,256,73,255,79,175,68"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1MemoryBlobs_1_1Detail.html#ad9ecb35eccaa1e782bf2a383f66d5998" title=" " alt="" coords="440,5,625,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="392,23,426,23,426,28,392,28"/>
+</map>

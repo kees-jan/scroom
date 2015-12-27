@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['r_0',['r',['../classTileViewState.html#a700d539b07d4f86abb5bb49138d609c3',1,'TileViewState::r'],['../transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099',1,'r:&#160;transformpresentation_test.cc']]],
+  ['r1_1',['r1',['../determine-size-test_8cc.html#a31e6a7299bb7f1c973e766e0bf53d2d1',1,'r1:&#160;determine-size-test.cc'],['../progressinterfacebroadcaster-tests_8cc.html#a556247c611717c40b557ad47dd9b1a4b',1,'r1:&#160;progressinterfacebroadcaster-tests.cc'],['../observable-tests_8cc.html#ab58c21c9f4112a159a8fc5aa70ccf4a8',1,'r1:&#160;observable-tests.cc']]],
+  ['r2_2',['r2',['../determine-size-test_8cc.html#a8dd77339bc05457b3a3457d910f6bbb6',1,'r2:&#160;determine-size-test.cc'],['../progressinterfacebroadcaster-tests_8cc.html#ab35bfd09c5cf669419b2dfd406fe4d15',1,'r2:&#160;progressinterfacebroadcaster-tests.cc'],['../observable-tests_8cc.html#aa5e038250293bf7d265e67cd5d53264d',1,'r2:&#160;observable-tests.cc']]],
+  ['r3_3',['r3',['../observable-tests_8cc.html#a7ff070e22b0a93be7b1c1f6890f84629',1,'observable-tests.cc']]],
+  ['raw_4',['raw',['../blob-tests_8cc.html#ae009adec719f1d23425671ff1986e525',1,'blob-tests.cc']]],
+  ['receivedrect_5',['receivedRect',['../classanonymous__namespace_02determine-size-test_8cc_03_1_1ResizablePresentationInterfaceStub.html#a71c003c66848b17c4e6ade5753b5c908',1,'anonymous_namespace{determine-size-test.cc}::ResizablePresentationInterfaceStub']]],
+  ['receivedvi_6',['receivedVi',['../classanonymous__namespace_02determine-size-test_8cc_03_1_1ResizablePresentationInterfaceStub.html#a465d66b1557f3004e5f89f28f84aec6e',1,'anonymous_namespace{determine-size-test.cc}::ResizablePresentationInterfaceStub']]],
+  ['rect_7',['rect',['../rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b',1,'rect:&#160;rectangletests.cc'],['../classanonymous__namespace_02determine-size-test_8cc_03_1_1PresentationInterfaceStub.html#a07d0e676dbf84be7a9385d8014ece4b3',1,'anonymous_namespace{determine-size-test.cc}::PresentationInterfaceStub::rect'],['../structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#ad3eaee769ffd723ea5a4d6eda73963b3',1,'Scroom::TiledBitmap::BitmapMetaData::rect']]],
+  ['recursiveobservable_8',['recursiveObservable',['../observable-tests_8cc.html#a369edb6fb28d4a360e67824445419e8c',1,'observable-tests.cc']]],
+  ['red_9',['red',['../classColor.html#a2337ea72bc849039f73077d00ab42bbb',1,'Color']]],
+  ['redrawpending_10',['redrawPending',['../classTiledBitmapViewData.html#a3304b2a780bd0a23d4cdd974e842f5d5',1,'TiledBitmapViewData']]],
+  ['refcount_11',['refcount',['../classScroom_1_1MemoryBlobs_1_1Blob.html#ab924d3a347477150af5227609c84e7fe',1,'Scroom::MemoryBlobs::Blob']]],
+  ['reg_5fpost_12',['reg_post',['../classDummyView.html#abcbf193ea059d46ff4639574a9c6662c',1,'DummyView']]],
+  ['reg_5fsel_13',['reg_sel',['../classDummyView.html#acdf969d9cd4c89f8b1a6556464c3561d',1,'DummyView']]],
+  ['registration_14',['registration',['../observable-tests_8cc.html#a6be90ef385d7acbcbba0523b2d6bbc94',1,'registration:&#160;observable-tests.cc'],['../classScroom_1_1ColormapImpl_1_1ColormapProvider.html#af3f55cb668c41ea73c080e85b6d851f4',1,'Scroom::ColormapImpl::ColormapProvider::registration']]],
+  ['registrationmap_15',['registrationMap',['../classScroom_1_1Utils_1_1Observable.html#a5ced727e0fa44744732383e11e4caf73',1,'Scroom::Utils::Observable']]],
+  ['registrations_16',['registrations',['../classLayerCoordinator.html#a7d1b586609c84e7de24885ffb9219399',1,'LayerCoordinator::registrations'],['../classTiledBitmap.html#a1c983590d74d88002c6f216d646d19c4',1,'TiledBitmap::registrations']]],
+  ['regular_5ffiles_17',['regular_files',['../callbacks_8cc.html#a88a43ec881bd1f752d469b9747767544',1,'REGULAR_FILES:&#160;callbacks.cc'],['../callbacks_8hh.html#a88a43ec881bd1f752d469b9747767544',1,'REGULAR_FILES:&#160;callbacks.cc']]],
+  ['requested_5fto_5fbe_5fdrawn_18',['requested_to_be_drawn',['../transformpresentation__test_8cc.html#a5f8ac48e481a27e270c6632c3881a15a',1,'transformpresentation_test.cc']]],
+  ['resizablepresentationdata_19',['resizablePresentationData',['../classSizeDeterminer.html#a4c2fe9912d7195cb42b139942d8eccf6',1,'SizeDeterminer']]],
+  ['resizablepresentationinterface_20',['resizablePresentationInterface',['../classSizeDeterminer_1_1PresentationData.html#a05d12baf7a49b822d09352b35b0e6390',1,'SizeDeterminer::PresentationData']]],
+  ['result_21',['result',['../classB.html#a51926ecf60905720aa1b6067497625cd',1,'B::result'],['../sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065',1,'result:&#160;sampleiterator-tests.cc'],['../gtkhelper-tests_8cc.html#af0936f55376b1257ca7b16ca0f4a76ee',1,'result:&#160;gtkhelper-tests.cc'],['../rectangletests_8cc.html#a1d2c64cb7d675c2907d6637afffe5300',1,'result:&#160;rectangletests.cc']]],
+  ['rgb_22',['RGB',['../namespaceScroom_1_1TiledBitmap.html#a68ed4ea621e837ae62809626d1f7bba4',1,'Scroom::TiledBitmap']]],
+  ['right_23',['right',['../rectangletests_8cc.html#a458c55c43ab7599992ae776b6c8f7b58',1,'rectangletests.cc']]],
+  ['ruler_24',['ruler',['../ruler-tests_8cc.html#a7263a3d2025da3416831d700504b77ce',1,'ruler-tests.cc']]]
+];

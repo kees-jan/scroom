@@ -1,0 +1,9 @@
+<map id="OperationsCMYK16::OperationsCMYK16" name="OperationsCMYK16::OperationsCMYK16">
+<area shape="rect" id="Node000001" title=" " alt="" coords="689,13,916,53"/>
+<area shape="rect" id="Node000002" href="$classOperationsCMYK16.html#ae8ef4df2467f4d476e274069a7f3124a" title=" " alt="" coords="445,20,641,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="676,35,641,35,641,30,676,30"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1TiledBitmap.html#aa10fdd400c02f8ec3d8723f56fbc8b58" title=" " alt="" coords="239,13,397,53"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="432,35,398,35,398,30,432,30"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1TiledBitmap_1_1LayerSpecForBitmapper.html#a57fe04d709876ca9546f0ab8daafad13" title=" " alt="" coords="5,5,191,60"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="225,35,191,35,191,30,225,30"/>
+</map>

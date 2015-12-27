@@ -1,0 +1,29 @@
+<map id="ColormappablePresentationMock" name="ColormappablePresentationMock">
+<area shape="rect" id="Node000001" title=" " alt="" coords="83,1815,313,1880"/>
+<area shape="rect" id="Node000002" href="$classPresentationMock.html" title=" " alt="" coords="213,1560,365,1765"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="234,1779,216,1816,211,1813,230,1776"/>
+<area shape="rect" id="Node000003" href="$classPresentationInterface.html" title=" " alt="" coords="229,1181,383,1347"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="305,1360,296,1560,290,1560,299,1360"/>
+<area shape="rect" id="Node000004" href="$classViewable.html" title=" " alt="" coords="269,937,343,1022"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="309,1036,309,1181,303,1181,303,1036"/>
+<area shape="rect" id="Node000005" href="$classInterface.html" title=" " alt="" coords="137,599,245,764"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="237,776,258,826,296,936,291,937,253,828,232,778"/>
+<area shape="rect" id="Node000013" href="$classColormappable.html" title=" " alt="" coords="5,827,244,1132"/>
+<area shape="poly" id="edge14_Node000013_Node000005" title=" " alt="" coords="173,778,161,827,156,826,167,777"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Observable.html" title=" " alt="" coords="368,867,532,1092"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="389,1105,350,1182,345,1180,385,1103"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="422,135,563,300"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="495,314,491,537,477,803,470,867,464,866,471,802,486,537,490,314"/>
+<area shape="rect" id="Node000010" href="$classScroom_1_1Bookkeeping_1_1MapBase.html" title=" " alt="" coords="282,349,437,549"/>
+<area shape="poly" id="edge10_Node000010_Node000007" title=" " alt="" coords="441,313,419,350,415,348,436,310"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="420,5,565,85"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="495,99,495,135,490,135,490,99"/>
+<area shape="rect" id="Node000009" href="$classScroom_1_1Bookkeeping_1_1Map.html" title=" " alt="" coords="277,627,441,736"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="357,736,358,769,363,802,380,850,374,852,358,803,353,770,352,737"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="362,563,362,627,357,627,357,563"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="257,185,398,250"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="336,263,348,349,343,349,331,264"/>
+<area shape="rect" id="Node000012" href="$classColormappableMock.html" title=" " alt="" coords="84,1371,232,1536"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="170,1549,197,1814,192,1815,165,1550"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="139,1146,155,1370,150,1371,134,1146"/>
+</map>

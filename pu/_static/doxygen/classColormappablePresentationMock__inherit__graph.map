@@ -1,0 +1,22 @@
+<map id="ColormappablePresentationMock" name="ColormappablePresentationMock">
+<area shape="rect" id="Node000001" title=" " alt="" coords="101,1167,332,1232"/>
+<area shape="rect" id="Node000002" href="$classPresentationMock.html" title=" " alt="" coords="229,933,381,1119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="254,1132,235,1168,231,1165,249,1130"/>
+<area shape="rect" id="Node000003" href="$classPresentationInterface.html" title=" " alt="" coords="229,700,383,885"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="308,899,308,933,303,933,303,899"/>
+<area shape="rect" id="Node000004" href="$classViewable.html" title=" " alt="" coords="269,457,343,542"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="309,556,309,699,303,699,303,556"/>
+<area shape="rect" id="Node000005" href="$classInterface.html" title=" " alt="" coords="159,133,267,299"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="247,311,295,456,290,457,242,313"/>
+<area shape="rect" id="Node000010" href="$classColormappable.html" title=" " alt="" coords="5,347,244,652"/>
+<area shape="poly" id="edge10_Node000010_Node000005" title=" " alt="" coords="186,313,175,347,170,346,180,311"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Observable.html" title=" " alt="" coords="368,387,532,612"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="391,625,354,701,349,699,386,623"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="379,133,521,299"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="453,313,453,386,447,386,447,313"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="377,5,523,85"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="453,99,453,133,447,133,447,99"/>
+<area shape="rect" id="Node000009" href="$classColormappableMock.html" title=" " alt="" coords="55,943,203,1109"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="179,1120,203,1165,198,1168,174,1122"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="129,666,131,943,125,943,123,666"/>
+</map>

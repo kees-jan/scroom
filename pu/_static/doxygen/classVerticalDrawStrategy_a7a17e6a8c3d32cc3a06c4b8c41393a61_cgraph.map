@@ -1,0 +1,7 @@
+<map id="VerticalDrawStrategy::drawOutline" name="VerticalDrawStrategy::drawOutline">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,37,165,77"/>
+<area shape="rect" id="Node000002" href="$classRulerDrawStrategy.html#ada0eabd47392a75006eb4a003805f2d1" title=" " alt="" coords="213,5,365,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,42,200,37,200,42,166,47"/>
+<area shape="rect" id="Node000003" href="$classRulerDrawStrategy.html#aa8a29fa3c28ddddd2e4b479bdeb981d1" title=" " alt="" coords="213,69,365,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="166,67,200,73,200,78,165,73"/>
+</map>

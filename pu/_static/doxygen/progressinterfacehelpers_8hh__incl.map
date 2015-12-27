@@ -1,0 +1,27 @@
+<map id="libs/util/inc/scroom/progressinterfacehelpers.hh" name="libs/util/inc/scroom/progressinterfacehelpers.hh">
+<area shape="rect" id="Node000001" title=" " alt="" coords="193,5,401,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,167,48,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="199,48,144,67,92,95,63,124,41,156,37,153,59,121,89,91,142,62,198,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="231,167,363,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="300,46,300,153,295,153,295,46"/>
+<area shape="rect" id="Node000004" href="$progressinterface_8hh.html" title=" " alt="" coords="484,93,692,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="368,43,533,87,532,92,366,48"/>
+<area shape="rect" id="Node000007" href="$stuff_8hh.html" title=" " alt="" coords="337,93,460,119"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="323,43,374,82,371,87,320,48"/>
+<area shape="rect" id="Node000009" href="$utilities_8hh.html" title=" " alt="" coords="103,93,246,119"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="269,48,206,88,203,84,266,43"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="363,240,440,265"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="615,116,640,131,664,149,677,170,677,182,671,194,657,206,635,216,579,232,514,243,454,250,454,245,513,238,577,227,633,211,654,201,667,190,672,181,672,172,660,153,637,135,612,121"/>
+<area shape="rect" id="Node000006" href="$interface_8hh.html" title=" " alt="" coords="505,167,657,192"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="590,119,586,153,581,153,584,119"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="402,119,404,226,398,226,396,119"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="439,167,481,192"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="411,117,443,154,439,158,407,121"/>
+<area shape="poly" id="edge10_Node000009_Node000002" title=" " alt="" coords="152,121,62,164,60,159,150,116"/>
+<area shape="poly" id="edge11_Node000009_Node000003" title=" " alt="" coords="196,116,267,157,264,162,193,121"/>
+<area shape="rect" id="Node000010" href="$logger_8hh.html" title=" " alt="" coords="73,167,207,192"/>
+<area shape="poly" id="edge12_Node000009_Node000010" title=" " alt="" coords="171,120,154,155,149,153,167,118"/>
+<area shape="poly" id="edge13_Node000010_Node000005" title=" " alt="" coords="183,189,350,235,349,240,181,195"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="78,240,202,265"/>
+<area shape="poly" id="edge14_Node000010_Node000011" title=" " alt="" coords="143,192,143,226,137,226,137,192"/>
+</map>

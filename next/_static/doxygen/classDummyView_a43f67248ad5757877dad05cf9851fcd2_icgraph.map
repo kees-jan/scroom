@@ -1,0 +1,7 @@
+<map id="DummyView::create" name="DummyView::create">
+<area shape="rect" id="Node000001" title=" " alt="" coords="320,42,475,67"/>
+<area shape="rect" id="Node000002" href="$classDummyView.html#af2e44d4049a9c0b8598e4360e0370005" title=" " alt="" coords="36,5,241,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="306,47,241,40,242,34,307,42"/>
+<area shape="rect" id="Node000003" href="$classDummyView.html#a6ee533e18b061fa8de157931b74a5313" title=" " alt="" coords="5,70,272,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="307,67,256,73,256,67,306,62"/>
+</map>

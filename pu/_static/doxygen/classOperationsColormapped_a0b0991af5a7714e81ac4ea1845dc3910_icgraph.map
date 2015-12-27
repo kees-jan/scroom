@@ -1,0 +1,23 @@
+<map id="OperationsColormapped::create" name="OperationsColormapped::create">
+<area shape="rect" id="Node000001" title=" " alt="" coords="592,127,772,167"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1TiledBitmap.html#a05ababa66d7e8f138de17620da755ae3" title=" " alt="" coords="361,5,525,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="642,121,596,89,543,60,514,48,516,43,545,55,599,85,645,116"/>
+<area shape="rect" id="Node000004" href="$namespaceScroom_1_1TiledBitmap.html#a35eb5d0dba0fa7d585cf7d77b10947b3" title=" " alt="" coords="363,69,522,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="584,126,522,111,523,106,585,121"/>
+<area shape="rect" id="Node000005" href="$test-helpers_8cc.html#a335d41148bd6cbbc8d10a896689608a2" title=" " alt="" coords="385,134,501,159"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="579,149,501,149,501,144,579,144"/>
+<area shape="rect" id="Node000007" href="$test-helpers_8cc.html#a882cf8e832bb4cd71ae3e259d172c37e" title=" " alt="" coords="385,183,501,209"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="579,171,502,187,500,182,578,165"/>
+<area shape="rect" id="Node000010" href="$test-helpers_8cc.html#a49f7223b9ce970949245d09bbe15d32a" title=" " alt="" coords="341,233,544,258"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="639,176,595,201,545,224,509,235,507,230,543,219,592,196,637,172"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1TiledBitmap_1_1LayerSpecForBitmapper.html#a57fe04d709876ca9546f0ab8daafad13" title=" " alt="" coords="108,27,293,82"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="347,40,294,46,293,41,347,34"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="349,79,293,71,294,65,350,73"/>
+<area shape="rect" id="Node000006" href="$measure-load-performance-tests_8cc.html#a0c38ed457f90e06f41a3238692c70397" title=" " alt="" coords="159,134,242,159"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="371,149,242,149,242,144,371,144"/>
+<area shape="rect" id="Node000008" href="$measure-framerate-tests_8cc.html#a0c38ed457f90e06f41a3238692c70397" title=" " alt="" coords="159,207,242,233"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="371,206,242,219,242,213,371,200"/>
+<area shape="rect" id="Node000009" href="$measure-framerate_8cc.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,207,60,233"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="146,223,60,223,60,217,146,217"/>
+<area shape="poly" id="edge11_Node000010_Node000008" title=" " alt="" coords="327,236,242,227,242,222,328,231"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="Operations8bpp" name="Operations8bpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,665,149,831"/>
+<area shape="rect" id="Node000002" href="$classCommonOperations.html" title=" " alt="" coords="5,452,149,617"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,631,80,665,75,665,75,631"/>
+<area shape="rect" id="Node000003" href="$classLayerOperations.html" title=" " alt="" coords="13,219,142,404"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="80,418,80,452,75,452,75,418"/>
+<area shape="rect" id="Node000004" href="$classInterface.html" title=" " alt="" coords="23,5,131,171"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="80,184,80,218,75,218,75,184"/>
+</map>

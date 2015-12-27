@@ -1,0 +1,30 @@
+<map id="PipetteHandler" name="PipetteHandler">
+<area shape="rect" id="Node000001" title=" " alt="" coords="459,792,620,1017"/>
+<area shape="rect" id="Node000002" href="$classToolStateListener.html" title=" " alt="" coords="5,604,132,689"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,697,146,727,225,776,308,817,389,851,459,876,458,881,387,856,306,822,222,781,143,731,109,701"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="153,336,261,501"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="152,514,96,605,92,603,148,512"/>
+<area shape="rect" id="Node000004" href="$classPostRenderer.html" title=" " alt="" coords="157,614,258,679"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="210,515,210,613,205,613,205,515"/>
+<area shape="rect" id="Node000005" href="$classSelectionListener.html" title=" " alt="" coords="283,584,444,709"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="271,508,323,582,319,586,267,511"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="238,689,272,727,317,765,366,801,460,858,457,863,363,805,314,770,268,731,234,692"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="416,720,465,790,460,793,412,723"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="469,564,610,729"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="542,743,542,792,537,792,537,743"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="453,379,599,459"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="532,472,537,564,532,564,526,472"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="639,13,723,78"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="673,79,658,139,650,209,650,648,648,681,641,715,618,778,613,776,636,713,642,681,645,648,645,209,653,138,668,77"/>
+<area shape="rect" id="Node000012" href="$classScroom_1_1LoggerContainer.html" title=" " alt="" coords="759,148,938,273"/>
+<area shape="poly" id="edge14_Node000012_Node000008" title=" " alt="" coords="715,76,775,135,772,138,711,80"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="824,614,1007,679"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="879,682,813,732,636,848,633,843,810,727,875,677"/>
+<area shape="rect" id="Node000010" href="$classScroom_1_1Logger.html" title=" " alt="" coords="685,594,799,699"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="714,701,668,770,633,812,629,808,664,766,710,698"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="742,386,990,451"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="851,453,781,581,776,578,846,451"/>
+<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="857,273,865,369,859,370,851,274"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="764,5,933,85"/>
+<area shape="poly" id="edge15_Node000012_Node000013" title=" " alt="" coords="851,86,851,131,846,131,846,86"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="traceRectangleContour" name="traceRectangleContour">
+<area shape="rect" id="Node000001" title=" " alt="" coords="645,31,816,56"/>
+<area shape="rect" id="Node000002" href="$cairo-helpers_8cc.html#ae67b43754cf7440b0f064cdd859cf27c" title=" " alt="" coords="427,31,597,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="632,46,598,46,598,41,632,41"/>
+<area shape="rect" id="Node000003" href="$cairo-helpers_8cc.html#a794c46ae3cb708877296feb35cd43dcb" title=" " alt="" coords="208,5,379,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="413,35,379,31,379,25,414,29"/>
+<area shape="rect" id="Node000004" href="$classTiledBitmap.html#a6254a409a4f8869cb3429c55a342cdbe" title=" " alt="" coords="211,55,376,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="413,57,376,61,376,56,413,52"/>
+<area shape="rect" id="Node000005" href="$classTiledBitmap.html#a98c2d60fc0736a77ab18aeeb461a1da8" title=" " alt="" coords="5,55,160,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="197,70,160,70,160,65,197,65"/>
+</map>

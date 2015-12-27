@@ -1,0 +1,11 @@
+<map id="Scroom::TiledBitmap::CMYKBitmap" name="Scroom::TiledBitmap::CMYKBitmap">
+<area shape="rect" id="node1" title=" " alt="" coords="5,104,164,145"/>
+<area shape="rect" id="node2" href="$classOperationsCMYK32.html#af8f9ac296dabdbb18392d623e2be35d5" title=" " alt="" coords="212,22,408,49"/>
+<area shape="rect" id="node4" href="$classOperationsCMYK16.html#ae8ef4df2467f4d476e274069a7f3124a" title=" " alt="" coords="212,82,408,109"/>
+<area shape="rect" id="node6" href="$classOperationsCMYK8.html#afddb0d2799e315acde82b39e8077dc4f" title=" " alt="" coords="216,137,404,163"/>
+<area shape="rect" id="node8" href="$classOperationsCMYK4.html#a5c42cfba9bd5a0b9211c903a606c1c3d" title=" " alt="" coords="216,194,404,221"/>
+<area shape="rect" id="node3" href="$classOperationsCMYK32.html#afdc3539bd4460a60ca9d2aaa3647b266" title=" " alt="" coords="456,5,683,47"/>
+<area shape="rect" id="node5" href="$classOperationsCMYK16.html#ab0facecd39b0ed9dfcebbca8a6da7811" title=" " alt="" coords="456,71,683,112"/>
+<area shape="rect" id="node7" href="$classOperationsCMYK8.html#af4820d4f04719b4a69345fcdd20c3ccd" title=" " alt="" coords="460,136,679,177"/>
+<area shape="rect" id="node9" href="$classOperationsCMYK4.html#ade8c4ed1a9a6fc48f8d148fea174a626" title=" " alt="" coords="460,201,679,243"/>
+</map>

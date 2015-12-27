@@ -1,0 +1,20 @@
+<map id="TransparentOverlayPresentation" name="TransparentOverlayPresentation">
+<area shape="rect" id="Node000001" title=" " alt="" coords="49,1067,297,1352"/>
+<area shape="rect" id="Node000002" href="$classPresentationBase.html" title=" " alt="" coords="167,853,304,1019"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="216,1033,208,1067,203,1066,211,1032"/>
+<area shape="rect" id="Node000003" href="$classPresentationInterface.html" title=" " alt="" coords="175,620,330,805"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="247,819,244,853,239,853,242,819"/>
+<area shape="rect" id="Node000004" href="$classViewable.html" title=" " alt="" coords="115,417,190,502"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="177,514,219,619,214,621,172,516"/>
+<area shape="rect" id="Node000005" href="$classInterface.html" title=" " alt="" coords="59,133,167,299"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="131,312,148,416,143,417,126,312"/>
+<area shape="rect" id="Node000009" href="$classAggregate.html" title=" " alt="" coords="5,680,151,745"/>
+<area shape="poly" id="edge9_Node000009_Node000005" title=" " alt="" coords="108,312,106,347,83,680,78,679,101,346,103,312"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Observable.html" title=" " alt="" coords="215,347,379,572"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="277,586,271,620,266,619,272,585"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="226,133,367,299"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="299,312,299,346,294,346,294,312"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="224,5,369,85"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="299,99,299,133,294,133,294,99"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="89,758,148,1066,143,1067,84,759"/>
+</map>

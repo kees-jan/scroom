@@ -1,0 +1,9 @@
+<map id="Scroom::Utils::TweakPositionTextBox::display" name="Scroom::Utils::TweakPositionTextBox::display">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,47,216,87"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a6af7d77e767482d135292f17d5dcce30" title=" " alt="" coords="270,5,429,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="207,45,273,31,274,36,209,50"/>
+<area shape="rect" id="Node000003" href="$cairo-helpers_8cc.html#ac7a152a4cc864e9c67acbc6686a9d3a4" title=" " alt="" coords="274,55,425,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="216,65,260,65,260,70,216,70"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Point.html#a45972be2646a1f80a0cdca8cbe68e3a6" title=" " alt="" coords="264,104,435,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="209,85,274,99,273,104,207,90"/>
+</map>

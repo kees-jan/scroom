@@ -1,0 +1,13 @@
+<map id="MeasureHandler::onSelectionEnd" name="MeasureHandler::onSelectionEnd">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,243,55"/>
+<area shape="rect" id="Node000002" href="$classMeasureHandler.html#aa30dd1737fe173472b6aca30692eab84" title=" " alt="" coords="291,29,565,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="243,39,277,39,277,45,243,45"/>
+<area shape="rect" id="Node000003" href="$structSelection.html#a7d704930f3054ec384530cfbcb54c31d" title=" " alt="" coords="792,5,923,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="504,27,613,14,679,12,744,14,778,14,778,20,744,19,679,18,614,19,505,32"/>
+<area shape="rect" id="Node000004" href="$structSelection.html#a400e9fb58887a04db35e354741aa96ec" title=" " alt="" coords="613,29,744,55"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="566,39,599,39,599,45,566,45"/>
+<area shape="rect" id="Node000005" href="$structSelection.html#a9c9dec2ae8c7eb3bedd9b6379ada05d1" title=" " alt="" coords="794,55,921,80"/>
+<area shape="poly" id="edge6_Node000002_Node000005" title=" " alt="" coords="505,52,614,65,700,68,780,67,780,73,699,73,613,70,504,57"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="744,31,778,26,779,31,744,36"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="744,49,780,54,780,59,744,54"/>
+</map>

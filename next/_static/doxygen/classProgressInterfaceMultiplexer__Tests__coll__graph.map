@@ -1,0 +1,18 @@
+<map id="ProgressInterfaceMultiplexer_Tests" name="ProgressInterfaceMultiplexer_Tests">
+<area shape="rect" id="Node000001" title=" " alt="" coords="107,804,323,899"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,669,99,734"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,742,166,802,162,806,96,746"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="123,661,306,741"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="217,741,217,787,212,787,212,741"/>
+<area shape="rect" id="Node000004" href="$classProgressStateInterfaceStub.html" title=" " alt="" coords="104,408,320,533"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="215,534,217,645,211,645,210,534"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1ProgressStateInterface.html" title=" " alt="" coords="81,243,279,323"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="192,336,204,407,199,408,186,337"/>
+<area shape="rect" id="Node000006" href="$classInterface.html" title=" " alt="" coords="219,5,327,171"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="230,184,201,244,196,241,225,182"/>
+<area shape="rect" id="Node000008" href="$classProgressInterface.html" title=" " alt="" coords="304,220,432,345"/>
+<area shape="poly" id="edge8_Node000008_Node000006" title=" " alt="" coords="322,182,340,218,335,221,317,184"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="269,557,451,637"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="356,638,343,689,320,743,281,793,277,790,315,740,338,688,351,637"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="369,346,364,541,359,541,364,346"/>
+</map>

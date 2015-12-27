@@ -1,0 +1,9 @@
+<map id="TransformPresentation::close" name="TransformPresentation::close">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,35,175,75"/>
+<area shape="rect" id="Node000002" href="$classPresentationBase.html#a81cfe78e3adf5a1fecc307e2284578fc" title=" " alt="" coords="223,42,401,67"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="175,52,209,52,209,57,175,57"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Observable.html#ae215a3f722f5894dd8fdc1cb9b190c0e" title=" " alt="" coords="473,5,663,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="401,42,458,35,459,41,402,47"/>
+<area shape="rect" id="Node000004" href="$classPresentationBase.html#a5d262f7a57550c1fc87b53fede0783c2" title=" " alt="" coords="449,70,687,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="402,62,439,66,438,71,401,67"/>
+</map>

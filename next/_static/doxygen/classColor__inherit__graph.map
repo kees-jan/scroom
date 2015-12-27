@@ -1,0 +1,7 @@
+<map id="Color" name="Color">
+<area shape="rect" id="Node000001" title=" " alt="" coords="127,133,243,359"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,13,180,78"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,89,135,132,130,134,111,91"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="204,5,352,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="256,99,240,134,235,132,251,97"/>
+</map>

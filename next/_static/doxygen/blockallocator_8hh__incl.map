@@ -1,0 +1,13 @@
+<map id="libs/memory&#45;manager/inc/scroom/blockallocator.hh" name="libs/memory&#45;manager/inc/scroom/blockallocator.hh">
+<area shape="rect" id="Node000001" title=" " alt="" coords="96,5,307,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,72,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,48,76,90,74,85,161,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="96,93,139,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="183,48,142,86,138,82,179,44"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="163,93,240,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="204,46,204,79,199,79,199,46"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="265,93,325,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="226,44,272,82,268,86,222,48"/>
+<area shape="rect" id="Node000006" href="$interface_8hh.html" title=" " alt="" coords="349,93,501,119"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="256,43,381,86,379,91,254,48"/>
+</map>

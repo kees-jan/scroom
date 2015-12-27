@@ -1,0 +1,29 @@
+<map id="gui/src/sidebarmanager.hh" name="gui/src/sidebarmanager.hh">
+<area shape="rect" id="Node000001" title=" " alt="" coords="161,5,355,31"/>
+<area shape="rect" id="Node000002" href="$sidebarmanager_8cc.html" title=" " alt="" coords="73,79,265,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="235,41,185,81,182,76,231,37"/>
+<area shape="rect" id="Node000003" href="$view_8hh.html" title=" " alt="" coords="289,79,408,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="285,37,335,76,332,81,282,41"/>
+<area shape="rect" id="Node000004" href="$callbacks_8cc.html" title=" " alt="" coords="5,225,153,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="285,110,206,131,172,143,149,154,129,171,112,190,88,226,83,223,107,187,125,167,146,150,170,138,205,126,284,105"/>
+<area shape="rect" id="Node000005" href="$callbacks_8hh.html" title=" " alt="" coords="371,152,521,177"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="377,110,432,150,429,154,374,114"/>
+<area shape="rect" id="Node000010" href="$view_8cc.html" title=" " alt="" coords="537,225,654,251"/>
+<area shape="poly" id="edge16_Node000003_Node000010" title=" " alt="" coords="422,102,480,120,509,133,536,150,555,167,571,187,592,224,588,226,567,191,551,171,532,154,506,138,478,125,420,107"/>
+<area shape="rect" id="Node000011" href="$pluginmanager_8hh.html" title=" " alt="" coords="159,152,346,177"/>
+<area shape="poly" id="edge11_Node000003_Node000011" title=" " alt="" coords="324,114,270,154,267,150,321,110"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="374,183,139,228,138,223,373,177"/>
+<area shape="rect" id="Node000006" href="$loader_8cc.html" title=" " alt="" coords="177,225,304,251"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="401,184,275,228,273,223,399,179"/>
+<area shape="rect" id="Node000007" href="$gui_2src_2main_8cc.html" title=" " alt="" coords="678,225,798,251"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="507,178,691,223,690,228,505,183"/>
+<area shape="rect" id="Node000008" href="$pluginmanager_8cc.html" title=" " alt="" coords="329,225,513,251"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="440,191,427,226,422,224,435,189"/>
+<area shape="rect" id="Node000009" href="$progressbarmanager_8cc.html" title=" " alt="" coords="822,225,1043,251"/>
+<area shape="poly" id="edge9_Node000005_Node000009" title=" " alt="" coords="536,176,855,223,854,228,535,182"/>
+<area shape="poly" id="edge10_Node000005_Node000010" title=" " alt="" coords="483,181,572,223,570,228,481,186"/>
+<area shape="poly" id="edge12_Node000011_Node000004" title=" " alt="" coords="213,185,109,228,107,223,211,180"/>
+<area shape="poly" id="edge13_Node000011_Node000006" title=" " alt="" coords="251,192,245,226,240,225,246,191"/>
+<area shape="poly" id="edge14_Node000011_Node000008" title=" " alt="" coords="293,180,394,223,392,228,291,185"/>
+<area shape="poly" id="edge15_Node000011_Node000010" title=" " alt="" coords="321,177,540,223,539,228,320,183"/>
+</map>

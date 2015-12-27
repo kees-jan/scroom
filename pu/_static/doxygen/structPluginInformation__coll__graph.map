@@ -1,0 +1,9 @@
+<map id="PluginInformation" name="PluginInformation">
+<area shape="rect" id="Node000001" title=" " alt="" coords="49,551,204,616"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,408,248,488"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,488,129,534,124,534,124,488"/>
+<area shape="rect" id="Node000003" href="$classPluginInformationInterface.html" title=" " alt="" coords="20,220,233,345"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="129,345,129,392,124,392,124,345"/>
+<area shape="rect" id="Node000004" href="$classInterface.html" title=" " alt="" coords="73,5,181,171"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="129,184,129,220,124,220,124,184"/>
+</map>

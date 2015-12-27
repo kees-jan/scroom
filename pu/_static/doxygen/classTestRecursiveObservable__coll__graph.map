@@ -1,0 +1,21 @@
+<map id="TestRecursiveObservable" name="TestRecursiveObservable">
+<area shape="rect" id="Node000001" title=" " alt="" coords="79,1336,281,1461"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Observable.html" title=" " alt="" coords="83,771,266,1011"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="179,1024,182,1336,177,1336,173,1024"/>
+<area shape="rect" id="Node000009" href="$classTestObservable.html" title=" " alt="" coords="225,1060,351,1145"/>
+<area shape="poly" id="edge10_Node000009_Node000002" title=" " alt="" coords="248,1021,268,1058,263,1061,243,1024"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="171,135,312,300"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="249,314,250,406,249,515,241,631,225,747,220,771,215,770,220,746,236,631,243,514,245,406,244,314"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Bookkeeping_1_1MapBase.html" title=" " alt="" coords="31,349,185,549"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="189,313,168,350,163,348,185,310"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="169,5,314,85"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="244,99,244,135,239,135,239,99"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Bookkeeping_1_1Map.html" title=" " alt="" coords="26,599,190,708"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="108,708,112,746,114,754,109,755,107,747,102,708"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="111,563,111,599,105,599,105,563"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="5,185,147,250"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="85,263,97,349,92,349,80,264"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="197,1208,438,1273"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="292,1275,247,1325,243,1322,288,1272"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="300,1145,310,1191,304,1193,294,1146"/>
+</map>

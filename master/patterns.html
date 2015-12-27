@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Patterns &#8212; Scroom  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Problems and solutions" href="problems-and-solutions.html" />
+    <link rel="prev" title="Architecture" href="architecture.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="patterns">
+<h1>Patterns<a class="headerlink" href="#patterns" title="Permalink to this heading">¶</a></h1>
+<section id="formatting">
+<h2>Formatting<a class="headerlink" href="#formatting" title="Permalink to this heading">¶</a></h2>
+<p>C++ Formatting is done by <code class="docutils literal notranslate"><span class="pre">clang-format-10</span></code>.
+Formatting for <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> is done using <code class="docutils literal notranslate"><span class="pre">cmake-format</span></code> (<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">cmake-format</span></code>).
+Formatting is checked during the CI build.</p>
+<p>Be sure to format your code before committing.
+Commits that only change formatting are not likely to be accepted.
+Most IDEs show the commit message next to the code, and a message that reads “Updated formatting” does not really help the develpers after you.</p>
+<p>Hence, I recommend you configure your IDE to format on every save.
+Or maybe use a <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> hook.
+Scroom doesn’t currently have one,though, so patches are very welcome 😉</p>
+</section>
+<section id="clang-tidy">
+<h2>Clang-tidy<a class="headerlink" href="#clang-tidy" title="Permalink to this heading">¶</a></h2>
+<p>We use <code class="docutils literal notranslate"><span class="pre">clang-tidy-10</span></code> to enforce a consistent style and find common bugs.
+This, too, is checked during the CI build.</p>
+<p><code class="docutils literal notranslate"><span class="pre">clang-tidy</span></code> currently reports a fair amount of warnings.
+The idea is to reduce this number over time.</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">clang-tidy</span></code> is a relative new development within Scroom.
+If a warning turns out to not make sense, turning it off project-wide is certainly an option.</p>
+</section>
+<section id="raii">
+<h2>RAII<a class="headerlink" href="#raii" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference external" href="https://en.cppreference.com/w/cpp/language/raii">RAII (Resource Acquisition Is Initialization)</a> is a pattern in C++ where a “resource” is acquired in the constructor of a class, and released in its destructor.
+According to the “Single responsibility principle”, that class should do nothing else, except manage that resource.
+The goal is to ensure that the resource is always freed.
+Freeing a resource is easy to forget, for example in case of exceptions, or when there are many paths through your code (though that’s a bad thing in itself 😉)</p>
+<p>The RAII pattern is commonly used for managing memory (i.e. shared or unique pointers), files (<code class="docutils literal notranslate"><span class="pre">std::ostream</span></code>), or for acquiring mutexes (<code class="docutils literal notranslate"><span class="pre">std::lock_guard</span></code>).
+Scroom takes the approach of using RAII wherever possible.
+For example <a class="reference external" href="./_static/doxygen/classScroom_1_1Utils_1_1Observable.html#ac8eb66519da1d1f30aaaa8a46b82def4">when registering an observer</a>, or when <em>(example needed)</em>.</p>
+<p>We’re not entirely consistent, though. <a class="reference external" href="./_static/doxygen/classViewable.html">Viewable</a>, for example, currently isn’t RAII-style, but it should be. There are probably more examples of this.</p>
+</section>
+<section id="the-threadpool">
+<h2>The Threadpool<a class="headerlink" href="#the-threadpool" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="create-methods">
+<h2>create() methods<a class="headerlink" href="#create-methods" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/logo.png" alt="Logo"/>
+    
+    <h1 class="logo logo-name">Scroom</h1>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">Extensible large image viewer</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=kees-jan&repo=scroom&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="core-requirements.html">Core requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core-requirements.html#derived-requirements">Derived requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Patterns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#formatting">Formatting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clang-tidy">Clang-tidy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#raii">RAII</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-threadpool">The Threadpool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-methods">create() methods</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="problems-and-solutions.html">Problems and solutions</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="architecture.html" title="previous chapter">Architecture</a></li>
+      <li>Next: <a href="problems-and-solutions.html" title="next chapter">Problems and solutions</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Kees-Jan Dijkzeul.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.1.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/patterns.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<map id="MonochromeColormapHelper::create" name="MonochromeColormapHelper::create">
+<area shape="rect" id="Node000001" title=" " alt="" coords="445,118,659,158"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1TiledBitmap.html#a35eb5d0dba0fa7d585cf7d77b10947b3" title=" " alt="" coords="239,29,397,69"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="485,115,371,71,372,66,487,110"/>
+<area shape="rect" id="Node000004" href="$namespaceScroom_1_1Pnm.html#afb404d82507eabea3723d854f97b1ae4" title=" " alt="" coords="244,125,392,151"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="432,141,392,141,392,135,432,135"/>
+<area shape="rect" id="Node000007" href="$namespaceScroom_1_1Tiff.html#a2a58e48c5df174a7fc330e5f888b17b4" title=" " alt="" coords="248,199,388,224"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="476,165,360,201,359,196,474,160"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1TiledBitmap_1_1LayerSpecForBitmapper.html#a57fe04d709876ca9546f0ab8daafad13" title=" " alt="" coords="5,5,191,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="225,45,191,42,191,37,225,39"/>
+<area shape="rect" id="Node000005" href="$classPnm.html#a512fa4ba81d11455c33b34b28588e629" title=" " alt="" coords="53,84,143,109"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="236,125,143,108,144,102,237,120"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Pnm_1_1Source.html#a09326329b765bb43be4bfa264a8468ed" title=" " alt="" coords="18,134,178,174"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="230,147,178,151,178,146,230,142"/>
+<area shape="rect" id="Node000008" href="$classTiff.html#a858a1b813e95709369796e88876049dc" title=" " alt="" coords="57,199,139,224"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="234,214,140,214,140,209,234,209"/>
+<area shape="rect" id="Node000009" href="$classScroom_1_1Tiff_1_1Source.html#a84c9977f6b72b09e3432f7e41638b968" title=" " alt="" coords="22,249,174,289"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="256,230,175,251,174,246,255,225"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="TestCounted" name="TestCounted">
+<area shape="rect" id="Node000001" title=" " alt="" coords="47,868,142,933"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Counted.html" title=" " alt="" coords="13,619,176,819"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,833,97,868,92,868,92,833"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,491,184,556"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="97,556,97,602,92,602,92,556"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Count.html" title=" " alt="" coords="21,263,168,428"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="97,428,97,474,92,474,92,428"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="55,135,134,200"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="97,200,97,246,92,246,92,200"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="29,5,160,85"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="97,99,97,134,92,134,92,99"/>
+</map>

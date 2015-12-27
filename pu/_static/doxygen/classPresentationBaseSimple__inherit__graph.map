@@ -1,0 +1,19 @@
+<map id="PresentationBaseSimple" name="PresentationBaseSimple">
+<area shape="rect" id="Node000001" title=" " alt="" coords="47,1067,221,1172"/>
+<area shape="rect" id="Node000009" href="$classTransformPresentation.html" title=" " alt="" coords="41,1220,227,1505"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="137,1186,137,1220,131,1220,131,1186"/>
+<area shape="rect" id="Node000002" href="$classPresentationBase.html" title=" " alt="" coords="65,853,203,1019"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,1032,137,1067,131,1067,131,1032"/>
+<area shape="rect" id="Node000003" href="$classPresentationInterface.html" title=" " alt="" coords="57,620,211,805"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="137,819,137,853,131,853,131,819"/>
+<area shape="rect" id="Node000004" href="$classViewable.html" title=" " alt="" coords="25,417,99,502"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="80,514,110,619,105,621,75,516"/>
+<area shape="rect" id="Node000005" href="$classInterface.html" title=" " alt="" coords="5,133,113,299"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="63,312,64,416,59,417,58,312"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Observable.html" title=" " alt="" coords="125,347,289,572"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="173,586,163,621,158,619,168,584"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="138,133,279,299"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="211,312,211,346,205,346,205,312"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="136,5,281,85"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="211,99,211,133,206,133,206,99"/>
+</map>

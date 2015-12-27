@@ -1,0 +1,16 @@
+<map id="invalidate_view" name="invalidate_view">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,101,131,126"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1GtkHelpers.html#a41d93c131774cfff3137ec807ead3e94" title=" " alt="" coords="179,93,331,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,111,165,111,165,116,131,116"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1GtkHelpers.html#a37a36328ffc6b0e7468a02d64724c21d" title=" " alt="" coords="379,53,537,107"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="330,98,365,93,366,98,331,104"/>
+<area shape="rect" id="Node000006" href="$namespaceScroom_1_1GtkHelpers.html#a2ade52a9fdfe46700036def64d00f9da" title=" " alt="" coords="589,121,741,161"/>
+<area shape="poly" id="edge7_Node000002_Node000006" title=" " alt="" coords="331,116,575,133,575,138,331,121"/>
+<area shape="rect" id="Node000004" href="$namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1" title=" " alt="" coords="585,5,744,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="537,56,575,46,576,51,538,62"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="538,101,584,115,582,120,537,106"/>
+<area shape="rect" id="Node000007" href="$function-additor-tests_8cc.html#a171d6ee6f5e4a249111a7ca7c7108209" title=" " alt="" coords="639,70,690,95"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="538,78,626,80,626,85,538,84"/>
+<area shape="rect" id="Node000005" href="$namespaceScroom_1_1GtkHelpers.html#ad5dcc56a509902bf106dbd6eb6a28964" title=" " alt="" coords="792,5,944,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="744,23,778,23,778,28,744,28"/>
+</map>

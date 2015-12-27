@@ -1,0 +1,9 @@
+<map id="plugins/pipette/src/pipette.hh" name="plugins/pipette/src/pipette.hh">
+<area shape="rect" id="Node000001" title=" " alt="" coords="172,5,315,45"/>
+<area shape="rect" id="Node000002" href="$plugins_2pipette_2src_2main_8cc.html" title=" " alt="" coords="5,93,148,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="196,54,114,96,112,91,194,49"/>
+<area shape="rect" id="Node000003" href="$pipette_8cc.html" title=" " alt="" coords="172,93,315,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="246,59,246,93,241,93,241,59"/>
+<area shape="rect" id="Node000004" href="$pipette-tests_8cc.html" title=" " alt="" coords="339,93,487,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="294,49,377,91,374,96,291,54"/>
+</map>

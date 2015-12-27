@@ -1,0 +1,5 @@
+<map id="TileAreaForIndex" name="TileAreaForIndex">
+<area shape="rect" id="Node000001" title=" " alt="" coords="208,5,340,31"/>
+<area shape="rect" id="Node000002" href="$classTiledBitmap.html#a98c2d60fc0736a77ab18aeeb461a1da8" title=" " alt="" coords="5,5,160,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,21,160,21,160,15,194,15"/>
+</map>

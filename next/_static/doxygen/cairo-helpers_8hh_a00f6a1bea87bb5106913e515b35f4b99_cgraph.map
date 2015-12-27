@@ -1,0 +1,19 @@
+<map id="setClip" name="setClip">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,141,72,166"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html#ac3ffb0067f3c0d0686ea2319cd5d5618" title=" " alt="" coords="120,5,303,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="45,139,74,98,95,75,118,55,128,49,130,54,122,59,99,79,78,101,50,142"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Rectangle.html#ad623b0b902d4e2cd1d858300728c78d1" title=" " alt="" coords="120,133,303,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="72,151,106,151,106,156,72,156"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Rectangle.html#a23ed938b3f63186f48c5828024a9d6ab" title=" " alt="" coords="120,197,303,237"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="72,164,121,183,140,190,139,195,119,188,70,169"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Rectangle.html#a3b8d627a36eb56f6f36eea5004591154" title=" " alt="" coords="120,69,303,109"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="70,138,119,119,139,112,140,117,121,124,72,143"/>
+<area shape="rect" id="Node000008" href="$cairo-helpers_8cc.html#a7eaa96a970e5ff603afbea0a3a0bf761" title=" " alt="" coords="178,262,245,287"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="49,165,77,206,98,228,121,247,143,258,165,265,164,270,141,263,119,252,94,232,73,209,45,168"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Segment.html#abd475ea75311ffaed7e8175125d2d3b5" title=" " alt="" coords="351,53,525,93"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="304,42,338,49,337,55,303,47"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Segment.html#a934a0a56d270e8d4fc4ceddb4dc7fb82" title=" " alt="" coords="351,149,525,189"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="303,157,337,160,337,165,303,162"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="303,195,337,188,338,193,304,201"/>
+<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="303,80,337,78,337,83,303,86"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="Scroom::TiledBitmap::RGBBitmap" name="Scroom::TiledBitmap::RGBBitmap">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,164,45"/>
+<area shape="rect" id="Node000002" href="$classOperations24bpp.html#a040d7cb9f01db55dd7ba668ff6fdf215" title=" " alt="" coords="212,13,395,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,23,198,23,198,28,165,28"/>
+<area shape="rect" id="Node000003" href="$classOperations24bpp.html#a3a16af1f5fc66b2f35f8e7667ccb3a8d" title=" " alt="" coords="443,13,695,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="395,23,429,23,429,28,395,28"/>
+</map>

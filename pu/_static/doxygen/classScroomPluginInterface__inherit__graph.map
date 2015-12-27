@@ -1,0 +1,9 @@
+<map id="ScroomPluginInterface" name="ScroomPluginInterface">
+<area shape="rect" id="Node000001" title=" " alt="" coords="147,219,407,419"/>
+<area shape="rect" id="Node000003" href="$classDummyPluginInterface.html" title=" " alt="" coords="5,537,265,757"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="231,432,185,538,180,536,226,430"/>
+<area shape="rect" id="Node000004" href="$classPluginManager.html" title=" " alt="" coords="289,467,547,827"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="327,430,343,465,338,467,323,432"/>
+<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="223,5,331,171"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="279,184,279,218,274,218,274,184"/>
+</map>

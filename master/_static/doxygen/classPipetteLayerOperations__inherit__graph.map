@@ -1,0 +1,13 @@
+<map id="PipetteLayerOperations" name="PipetteLayerOperations">
+<area shape="rect" id="node1" title=" " alt="" coords="532,344,707,421"/>
+<area shape="rect" id="node5" href="$classPipetteCommonOperationsCMYK.html" title=" " alt="" coords="349,469,610,561"/>
+<area shape="rect" id="node10" href="$classPipetteCommonOperationsRGB.html" title=" " alt="" coords="681,469,931,561"/>
+<area shape="rect" id="node2" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="466,145,615,296"/>
+<area shape="rect" id="node3" title=" " alt="" coords="460,5,621,97"/>
+<area shape="rect" id="node4" href="$classInterface.html" title=" " alt="" coords="640,145,756,296"/>
+<area shape="rect" id="node6" href="$classOperationsCMYK16.html" title=" " alt="" coords="5,609,177,745"/>
+<area shape="rect" id="node7" href="$classOperationsCMYK32.html" title=" " alt="" coords="201,609,373,745"/>
+<area shape="rect" id="node8" href="$classOperationsCMYK4.html" title=" " alt="" coords="397,609,561,745"/>
+<area shape="rect" id="node9" href="$classOperationsCMYK8.html" title=" " alt="" coords="585,609,749,745"/>
+<area shape="rect" id="node11" href="$classOperations24bpp.html" title=" " alt="" coords="773,609,932,745"/>
+</map>

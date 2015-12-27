@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Coding guidelines &#8212; Scroom  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Problems and solutions" href="problems-and-solutions.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="coding-guidelines">
+<h1>Coding guidelines<a class="headerlink" href="#coding-guidelines" title="Link to this heading">¶</a></h1>
+<section id="naming-conventions">
+<h2>Naming conventions<a class="headerlink" href="#naming-conventions" title="Link to this heading">¶</a></h2>
+<dl>
+<dt><em>Types</em></dt><dd><p>Use <code class="docutils literal notranslate"><span class="pre">PascalCase</span></code> for all type definitions: classes, structs,
+namespaces, enums, and type aliases.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ThreadPool</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">};</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">BitmapMetaData</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">};</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">Scroom</span><span class="o">::</span><span class="nn">Utils</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">State</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Idle</span><span class="p">,</span><span class="w"> </span><span class="n">Waiting</span><span class="p">,</span><span class="w"> </span><span class="n">Working</span><span class="p">,</span><span class="w"> </span><span class="n">Finished</span><span class="w"> </span><span class="p">};</span>
+<span class="k">using</span><span class="w"> </span><span class="n">Ptr</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ThreadPool</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="n">WeakPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">weak_ptr</span><span class="o">&lt;</span><span class="n">ThreadPool</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The conventional aliases <code class="docutils literal notranslate"><span class="pre">Ptr</span></code> and <code class="docutils literal notranslate"><span class="pre">WeakPtr</span></code> are defined in
+nearly every class.</p>
+<p>The exception is type aliases that follow the STL naming convention,
+such as <code class="docutils literal notranslate"><span class="pre">value_type</span></code>.</p>
+</dd>
+<dt><em>Functions and methods</em></dt><dd><p>Use <code class="docutils literal notranslate"><span class="pre">camelCase</span></code>.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">setProgress</span><span class="p">(</span><span class="n">State</span><span class="w"> </span><span class="n">s</span><span class="p">);</span>
+<span class="k">static</span><span class="w"> </span><span class="n">Ptr</span><span class="w"> </span><span class="nf">instance</span><span class="p">();</span>
+</pre></div>
+</div>
+</dd>
+<dt><em>Variables</em></dt><dd><p>Use <code class="docutils literal notranslate"><span class="pre">camelCase</span></code> for both member variables and local variables.</p>
+<p>New code uses an <code class="docutils literal notranslate"><span class="pre">m_</span></code> prefix for member variables in classes (but
+not structs), and an <code class="docutils literal notranslate"><span class="pre">s_</span></code> prefix for static member variables. Old code
+uses no prefix.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// New convention (class member variables)</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">m_blockCount</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">spdlog</span><span class="o">::</span><span class="n">logger</span><span class="o">&gt;</span><span class="w"> </span><span class="n">m_logger</span><span class="p">;</span>
+
+<span class="c1">// New convention (static variables)</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">s_instanceCount</span><span class="p">;</span>
+
+<span class="c1">// Old convention (still found throughout the codebase)</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">blockCount</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">spdlog</span><span class="o">::</span><span class="n">logger</span><span class="o">&gt;</span><span class="w"> </span><span class="n">logger</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+<dt><em>Function arguments</em></dt><dd><p>Use <code class="docutils literal notranslate"><span class="pre">camelCase</span></code>. When an argument would alias a member variable
+of the same name, add a trailing underscore to the argument name
+to avoid the clash.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Segment</span><span class="p">(</span><span class="n">value_type</span><span class="w"> </span><span class="n">start_</span><span class="p">,</span><span class="w"> </span><span class="n">value_type</span><span class="w"> </span><span class="n">size_</span><span class="p">)</span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">start</span><span class="p">(</span><span class="n">start_</span><span class="p">)</span>
+<span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">size_</span><span class="p">)</span>
+<span class="p">{}</span>
+</pre></div>
+</div>
+</dd>
+<dt><em>Enum values and global constants</em></dt><dd><p>Use <code class="docutils literal notranslate"><span class="pre">UPPER_CASE_WITH_UNDERSCORES</span></code>.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">PRIO_HIGHEST</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="n">PRIO_HIGH</span><span class="p">,</span><span class="w"> </span><span class="n">PRIO_NORMAL</span><span class="p">,</span><span class="w"> </span><span class="n">PRIO_LOW</span><span class="w"> </span><span class="p">};</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</section>
+<section id="class-layout">
+<h2>Class layout<a class="headerlink" href="#class-layout" title="Link to this heading">¶</a></h2>
+<p>Members are ordered as follows within a class:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">public:</span></code> or <code class="docutils literal notranslate"><span class="pre">private:</span></code> — type definitions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">private:</span></code> — member variables</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public:</span></code> or <code class="docutils literal notranslate"><span class="pre">private:</span></code> — member functions</p></li>
+</ol>
+<p>Each section starts with an access specifier, even if it is redundant.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">LoggerContainer</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">Ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">LoggerContainer</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">  </span><span class="k">mutable</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="w">              </span><span class="n">mut</span><span class="p">;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">spdlog</span><span class="o">::</span><span class="n">logger</span><span class="o">&gt;</span><span class="w"> </span><span class="n">logger</span><span class="p">;</span>
+
+<span class="k">public</span><span class="o">:</span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="n">Ptr</span><span class="w"> </span><span class="n">instance</span><span class="p">();</span>
+<span class="w">  </span><span class="n">LoggerContainer</span><span class="p">();</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">spdlog</span><span class="o">::</span><span class="n">logger</span><span class="o">&gt;</span><span class="w"> </span><span class="n">get</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">void</span><span class="w">                            </span><span class="nf">set</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">spdlog</span><span class="o">::</span><span class="n">logger</span><span class="o">&gt;</span><span class="w"> </span><span class="n">logger_</span><span class="p">);</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="file-names">
+<h2>File names<a class="headerlink" href="#file-names" title="Link to this heading">¶</a></h2>
+<p>File names use <code class="docutils literal notranslate"><span class="pre">kebab-case</span></code> for names composed of multiple distinct
+words (e.g., <code class="docutils literal notranslate"><span class="pre">gtk-helpers.cc</span></code>, <code class="docutils literal notranslate"><span class="pre">tiled-bitmap.hh</span></code>).
+Compound words that are conventionally written as one word are not
+split (e.g., <code class="docutils literal notranslate"><span class="pre">threadpool.hh</span></code>, <code class="docutils literal notranslate"><span class="pre">progressinterfacehelpers.hh</span></code>).</p>
+</section>
+<section id="formatting">
+<h2>Formatting<a class="headerlink" href="#formatting" title="Link to this heading">¶</a></h2>
+<p>C++ formatting is done by <code class="docutils literal notranslate"><span class="pre">clang-format-22</span></code>.
+Formatting for <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> is done using <code class="docutils literal notranslate"><span class="pre">cmake-format</span></code>
+(<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">cmake-format</span></code>).
+Formatting is checked during the CI build.</p>
+<p>Be sure to format your code before committing.
+Commits that only change formatting are not likely to be accepted.
+Most IDEs show the commit message next to the code, and a message
+that reads “Updated formatting” does not really help the developers
+after you.</p>
+<p>Hence, I recommend you configure your IDE to format on every save.
+Or maybe use a <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> hook.
+Scroom doesn’t currently have one, though, so patches are very
+welcome 😉</p>
+</section>
+<section id="clang-tidy">
+<h2>Clang-tidy<a class="headerlink" href="#clang-tidy" title="Link to this heading">¶</a></h2>
+<p>We use <code class="docutils literal notranslate"><span class="pre">clang-tidy-22</span></code> to enforce a consistent style and find
+common bugs.
+This, too, is checked during the CI build.</p>
+<p><code class="docutils literal notranslate"><span class="pre">clang-tidy</span></code> currently reports a fair amount of warnings.
+The idea is to reduce this number over time.</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">clang-tidy</span></code> is a relatively new development within
+Scroom.
+If a warning turns out to not make sense, turning it off
+project-wide is certainly an option.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/logo.png" alt="Logo" />
+    
+    <h1 class="logo logo-name">Scroom</h1>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">Extensible large image viewer</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=kees-jan&repo=scroom&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="core-requirements.html">Core requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core-requirements.html#derived-requirements">Derived requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui-tour/index.html">A tour of the Scroom UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="principles.html">Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="patterns.html">Patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problems-and-solutions.html">Problems and solutions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Coding guidelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#naming-conventions">Naming conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#class-layout">Class layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#file-names">File names</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#formatting">Formatting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clang-tidy">Clang-tidy</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="problems-and-solutions.html" title="previous chapter">Problems and solutions</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Kees-Jan Dijkzeul.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/coding-guidelines.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,14 @@
+<map id="libs/util/inc/scroom/point.hh" name="libs/util/inc/scroom/point.hh">
+<area shape="rect" id="Node000001" title=" " alt="" coords="131,5,276,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="208,167,271,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,39,80,50,35,66,19,77,10,89,9,102,17,117,28,127,45,135,91,151,195,170,194,175,90,156,42,140,25,131,12,120,4,103,5,87,16,73,33,62,78,45,130,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="27,93,103,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="172,48,99,89,96,84,169,43"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="128,93,280,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="206,46,206,79,201,79,201,46"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="304,93,391,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="240,43,316,84,313,89,237,48"/>
+<area shape="rect" id="Node000006" href="$rounding_8hh.html" title=" " alt="" coords="415,93,566,119"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="273,43,436,87,435,92,272,48"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="451,121,285,168,284,163,449,116"/>
+</map>

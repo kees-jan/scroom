@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['child_0',['Child',['../classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer_1_1Child.html',1,'Scroom::Utils::ProgressInterfaceMultiplexer']]],
+  ['childdata_1',['ChildData',['../classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer_1_1ChildData.html',1,'Scroom::Utils::ProgressInterfaceMultiplexer']]],
+  ['childview_2',['ChildView',['../classChildView.html',1,'']]],
+  ['cleardefaultlogger_3',['ClearDefaultLogger',['../structScroom_1_1Detail_1_1ClearDefaultLogger.html',1,'Scroom::Detail']]],
+  ['color_4',['Color',['../classColor.html',1,'']]],
+  ['colorcomparer_5',['ColorComparer',['../structanonymous__namespace_02transparentoverlaypresentation_8cc_03_1_1ColorComparer.html',1,'anonymous_namespace{transparentoverlaypresentation.cc}']]],
+  ['colormap_6',['Colormap',['../classColormap.html',1,'']]],
+  ['colormaphelper_7',['ColormapHelper',['../classColormapHelper.html',1,'']]],
+  ['colormaphelper_5fdata_5ftests_8',['ColormapHelper_Data_Tests',['../classanonymous__namespace_02colormaphelpers__test_8cc_03_1_1ColormapHelper__Data__Tests.html',1,'anonymous_namespace{colormaphelpers_test.cc}']]],
+  ['colormaphelperbase_9',['ColormapHelperBase',['../classColormapHelperBase.html',1,'']]],
+  ['colormappable_10',['Colormappable',['../classColormappable.html',1,'']]],
+  ['colormappablemock_11',['ColormappableMock',['../classColormappableMock.html',1,'']]],
+  ['colormappablepresentationmock_12',['ColormappablePresentationMock',['../classColormappablePresentationMock.html',1,'']]],
+  ['colormapplugin_13',['ColormapPlugin',['../classScroom_1_1ColormapImpl_1_1ColormapPlugin.html',1,'Scroom::ColormapImpl']]],
+  ['colormapprovider_14',['colormapprovider',['../classColormapProvider.html',1,'ColormapProvider'],['../classScroom_1_1ColormapImpl_1_1ColormapProvider.html',1,'Scroom::ColormapImpl::ColormapProvider']]],
+  ['colormaps_15',['Colormaps',['../classScroom_1_1ColormapImpl_1_1Colormaps.html',1,'Scroom::ColormapImpl']]],
+  ['commonoperations_16',['CommonOperations',['../classCommonOperations.html',1,'']]],
+  ['compressedtile_17',['CompressedTile',['../classCompressedTile.html',1,'']]],
+  ['consttile_18',['ConstTile',['../classConstTile.html',1,'']]],
+  ['count_19',['Count',['../classScroom_1_1Utils_1_1Count.html',1,'Scroom::Utils']]],
+  ['counted_20',['Counted',['../classScroom_1_1Utils_1_1Counted.html',1,'Scroom::Utils']]],
+  ['counted_3c_20testcounted_20_3e_21',['Counted&lt; TestCounted &gt;',['../classScroom_1_1Utils_1_1Counted.html',1,'Scroom::Utils']]],
+  ['counter_22',['Counter',['../classScroom_1_1Utils_1_1Counter.html',1,'Scroom::Utils']]]
+];

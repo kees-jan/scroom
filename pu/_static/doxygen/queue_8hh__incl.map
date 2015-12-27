@@ -1,0 +1,25 @@
+<map id="libs/threadpool/src/queue.hh" name="libs/threadpool/src/queue.hh">
+<area shape="rect" id="Node000001" title=" " alt="" coords="335,5,478,45"/>
+<area shape="rect" id="Node000002" href="$threadpool_8hh.html" title=" " alt="" coords="325,93,489,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="409,46,409,79,404,79,404,46"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,167,83,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="344,121,96,169,95,164,343,116"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="107,167,170,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="364,121,184,169,183,164,363,116"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="194,167,257,192"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="379,121,269,164,267,159,377,116"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="281,167,423,192"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="400,121,371,157,367,154,396,117"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="395,247,527,273"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="415,118,437,166,458,233,453,235,432,168,410,120"/>
+<area shape="rect" id="Node000008" href="$semaphore_8hh.html" title=" " alt="" coords="499,167,666,192"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="436,116,542,159,540,164,434,121"/>
+<area shape="rect" id="Node000010" href="$threadpoolimpl_8hh.html" title=" " alt="" coords="691,167,917,192"/>
+<area shape="poly" id="edge10_Node000002_Node000010" title=" " alt="" coords="464,116,720,162,719,167,463,121"/>
+<area shape="poly" id="edge9_Node000008_Node000007" title=" " alt="" coords="566,194,492,242,489,238,563,190"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="551,240,718,280"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="593,191,617,227,612,230,588,194"/>
+<area shape="poly" id="edge12_Node000010_Node000002" title=" " alt="" coords="746,169,490,124,491,118,747,164"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="774,247,834,273"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="807,192,807,233,801,233,801,192"/>
+</map>

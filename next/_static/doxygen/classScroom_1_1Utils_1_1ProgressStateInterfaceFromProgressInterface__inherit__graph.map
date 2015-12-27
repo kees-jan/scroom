@@ -1,0 +1,12 @@
+<map id="Scroom::Utils::ProgressStateInterfaceFromProgressInterface" name="Scroom::Utils::ProgressStateInterfaceFromProgressInterface">
+<area shape="rect" id="Node000001" title=" " alt="" coords="89,392,307,472"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterfaceForwarder.html" title=" " alt="" coords="56,520,340,715"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="201,486,201,520,195,520,195,486"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1ProgressStateInterface.html" title=" " alt="" coords="5,241,204,321"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,332,176,390,171,393,134,335"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="144,5,252,171"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="155,184,126,243,121,240,150,182"/>
+<area shape="rect" id="Node000004" href="$classProgressInterface.html" title=" " alt="" coords="229,219,357,344"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="247,182,265,217,260,220,242,184"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="248,357,225,393,220,391,244,354"/>
+</map>

@@ -1,0 +1,31 @@
+<map id="libs/plugin&#45;interfaces/inc/scroom/scroomplugin.hh" name="libs/plugin&#45;interfaces/inc/scroom/scroomplugin.hh">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1133,5,1343,45"/>
+<area shape="rect" id="Node000002" href="$pluginmanager_8hh.html" title=" " alt="" coords="237,108,423,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1120,33,809,52,622,70,436,96,370,111,369,105,435,91,621,65,809,47,1119,28"/>
+<area shape="rect" id="Node000007" href="$plugins_2colormap_2main_8cc.html" title=" " alt="" coords="447,108,637,133"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1120,38,901,60,775,76,650,96,584,111,583,105,650,91,774,71,900,55,1119,33"/>
+<area shape="rect" id="Node000008" href="$plugins_2example_2main_8cc.html" title=" " alt="" coords="661,108,847,133"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1120,48,860,96,798,111,797,105,859,91,1119,43"/>
+<area shape="rect" id="Node000009" href="$plugins_2measure_2src_2main_8cc.html" title=" " alt="" coords="871,101,1024,141"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="1167,52,1007,103,1005,98,1166,47"/>
+<area shape="rect" id="Node000010" href="$plugins_2metadata_2main_8cc.html" title=" " alt="" coords="1048,108,1239,133"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="1211,57,1157,110,1153,106,1207,53"/>
+<area shape="rect" id="Node000011" href="$plugins_2pipette_2src_2main_8cc.html" title=" " alt="" coords="1263,101,1405,141"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="1269,53,1316,99,1313,103,1265,57"/>
+<area shape="rect" id="Node000012" href="$plugins_2pnm_2src_2main_8cc.html" title=" " alt="" coords="1429,108,1609,133"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="1309,47,1485,105,1484,110,1307,52"/>
+<area shape="rect" id="Node000013" href="$plugins_2tiff_2src_2main_8cc.html" title=" " alt="" coords="1633,108,1803,133"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="1357,42,1485,63,1623,91,1680,105,1678,110,1621,96,1484,69,1356,47"/>
+<area shape="rect" id="Node000014" href="$plugins_2transparent-overlay_2src_2main_8cc.html" title=" " alt="" coords="1827,101,1982,141"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="1357,32,1571,53,1694,69,1816,91,1846,98,1845,103,1815,96,1694,75,1571,58,1356,37"/>
+<area shape="rect" id="Node000015" href="$plugin-test_8cc.html" title=" " alt="" coords="2006,93,2155,148"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="1357,27,1488,33,1648,45,1822,63,1994,91,2006,93,2005,98,1994,96,1821,69,1648,50,1488,39,1356,32"/>
+<area shape="rect" id="Node000003" href="$callbacks_8cc.html" title=" " alt="" coords="5,196,153,221"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="284,141,114,198,112,193,282,135"/>
+<area shape="rect" id="Node000004" href="$loader_8cc.html" title=" " alt="" coords="177,196,304,221"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="310,145,255,197,251,194,306,141"/>
+<area shape="rect" id="Node000005" href="$pluginmanager_8cc.html" title=" " alt="" coords="329,196,513,221"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="354,141,410,194,406,197,350,145"/>
+<area shape="rect" id="Node000006" href="$view_8cc.html" title=" " alt="" coords="537,196,654,221"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="380,135,561,193,559,198,378,140"/>
+</map>

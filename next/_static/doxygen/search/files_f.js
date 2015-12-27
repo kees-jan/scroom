@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['sampleiterator_2dtests_2ecc_0',['sampleiterator-tests.cc',['../sampleiterator-tests_8cc.html',1,'']]],
+  ['scope_2dexit_2dtests_2ecpp_1',['scope-exit-tests.cpp',['../scope-exit-tests_8cpp.html',1,'']]],
+  ['scroominterface_2ehh_2',['scroominterface.hh',['../scroominterface_8hh.html',1,'']]],
+  ['scroomplugin_2ehh_3',['scroomplugin.hh',['../scroomplugin_8hh.html',1,'']]],
+  ['semaphore_2dtests_2ecc_4',['semaphore-tests.cc',['../semaphore-tests_8cc.html',1,'']]],
+  ['semaphore_2ehh_5',['semaphore.hh',['../semaphore_8hh.html',1,'']]],
+  ['set_2eh_6',['set.h',['../set_8h.html',1,'']]],
+  ['showmetadata_2ecc_7',['showmetadata.cc',['../showmetadata_8cc.html',1,'']]],
+  ['showmetadata_2ehh_8',['showmetadata.hh',['../showmetadata_8hh.html',1,'']]],
+  ['showmetadatainterface_2ehh_9',['showmetadatainterface.hh',['../showmetadatainterface_8hh.html',1,'']]],
+  ['sidebarmanager_2ecc_10',['sidebarmanager.cc',['../sidebarmanager_8cc.html',1,'']]],
+  ['sidebarmanager_2ehh_11',['sidebarmanager.hh',['../sidebarmanager_8hh.html',1,'']]],
+  ['sizedeterminer_2ecc_12',['sizedeterminer.cc',['../sizedeterminer_8cc.html',1,'']]],
+  ['sizedeterminer_2ehh_13',['sizedeterminer.hh',['../sizedeterminer_8hh.html',1,'']]],
+  ['stuff_2ehh_14',['stuff.hh',['../stuff_8hh.html',1,'']]],
+  ['swap_2dblock_2dallocator_2dtests_2ecc_15',['swap-block-allocator-tests.cc',['../swap-block-allocator-tests_8cc.html',1,'']]],
+  ['swapbasedblockallocator_2ecc_16',['swapbasedblockallocator.cc',['../swapbasedblockallocator_8cc.html',1,'']]]
+];

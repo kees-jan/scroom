@@ -1,0 +1,6 @@
+<map id="Ruler::drawSubTicks" name="Ruler::drawSubTicks">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,160,55"/>
+<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="49,31,42,21,45,11,59,5,83,3,111,6,123,15,119,20,109,11,83,8,61,10,49,15,47,20,53,28"/>
+<area shape="rect" id="Node000002" href="$classRuler.html#a2a2c9b820a3b0f1ad76d4d26c36bc99b" title=" " alt="" coords="208,29,371,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="161,39,194,39,194,45,161,45"/>
+</map>

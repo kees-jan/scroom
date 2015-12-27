@@ -1,0 +1,15 @@
+<map id="View::on_buttonRelease" name="View::on_buttonRelease">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,184,105"/>
+<area shape="rect" id="Node000002" href="$namespaceSelectionType.html#aebc501deb9a30b47b6b63f09abcb98bc" title=" " alt="" coords="263,5,441,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,77,231,39,265,31,266,36,233,45,127,82"/>
+<area shape="rect" id="Node000003" href="$view_8cc.html#abf903e66ce22a82c32363b9a833fb4b4" title="Helpers." alt="" coords="299,55,405,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="184,81,285,71,285,77,185,87"/>
+<area shape="rect" id="Node000004" href="$classView.html#a95faa753386b674958c19010de91adac" title=" " alt="" coords="289,104,415,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="185,98,275,107,275,112,184,104"/>
+<area shape="rect" id="Node000005" href="$classView.html#ab01e5d6f612fdebbcc349ab3733233d8" title=" " alt="" coords="232,154,472,194"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="131,103,233,138,264,148,263,153,231,143,130,108"/>
+<area shape="rect" id="Node000006" href="$cairo-helpers_8cc.html#ac7a152a4cc864e9c67acbc6686a9d3a4" title=" " alt="" coords="529,136,679,161"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="472,159,515,155,515,160,472,165"/>
+<area shape="rect" id="Node000007" href="$classView.html#a7c6bc955a9ea12b76b49c2c47d508329" title=" " alt="" coords="520,185,688,211"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="472,183,507,186,506,191,472,188"/>
+</map>

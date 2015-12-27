@@ -1,0 +1,21 @@
+<map id="PluginInformationInterface" name="PluginInformationInterface">
+<area shape="rect" id="Node000001" title=" " alt="" coords="644,219,857,344"/>
+<area shape="rect" id="Node000003" href="$classExample.html" title=" " alt="" coords="5,419,171,585"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="630,286,529,294,414,312,354,327,295,345,238,367,184,394,149,421,146,417,181,390,236,362,293,340,353,321,413,307,528,289,630,281"/>
+<area shape="rect" id="Node000004" href="$classMeasure.html" title=" " alt="" coords="195,419,360,585"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="631,302,569,316,502,335,436,361,373,394,340,421,337,417,371,390,433,356,500,330,568,310,630,297"/>
+<area shape="rect" id="Node000005" href="$classMetadata.html" title=" " alt="" coords="384,419,549,585"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="634,345,563,394,534,421,531,417,560,390,630,341"/>
+<area shape="rect" id="Node000006" href="$classPipette.html" title=" " alt="" coords="573,419,739,585"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="721,358,694,420,689,418,716,356"/>
+<area shape="rect" id="Node000007" href="$classPnm.html" title=" " alt="" coords="763,409,928,595"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="785,356,808,408,803,410,781,358"/>
+<area shape="rect" id="Node000008" href="$classScroom_1_1ColormapImpl_1_1ColormapPlugin.html" title=" " alt="" coords="953,392,1125,612"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="871,342,942,390,954,401,951,405,938,394,868,346"/>
+<area shape="rect" id="Node000009" href="$classTiff.html" title=" " alt="" coords="1149,409,1315,595"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="871,296,935,309,1005,329,1074,355,1139,390,1161,407,1158,411,1136,394,1072,360,1003,334,934,315,870,301"/>
+<area shape="rect" id="Node000010" href="$classTransparentOverlay.html" title=" " alt="" coords="1339,419,1504,585"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="871,280,974,288,1092,306,1153,320,1214,339,1272,362,1328,390,1363,417,1360,421,1325,394,1270,367,1212,344,1152,326,1091,312,974,293,871,286"/>
+<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="697,5,805,171"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="753,184,753,218,748,218,748,184"/>
+</map>

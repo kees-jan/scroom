@@ -1,0 +1,14 @@
+<map id="Metadata" name="Metadata">
+<area shape="rect" id="Node000001" title=" " alt="" coords="216,432,381,597"/>
+<area shape="rect" id="Node000002" href="$classPluginInformationInterface.html" title=" " alt="" coords="5,239,219,364"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="177,372,228,430,224,434,173,376"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="151,5,259,171"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="166,184,142,239,137,237,161,182"/>
+<area shape="rect" id="Node000004" href="$classViewObserver.html" title=" " alt="" coords="243,269,354,334"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="249,182,287,267,282,269,245,184"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="301,348,301,432,296,432,296,348"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="379,219,520,384"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="385,397,359,433,355,430,381,394"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="377,48,522,128"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="452,142,452,218,447,218,447,142"/>
+</map>

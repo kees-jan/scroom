@@ -1,0 +1,11 @@
+<map id="Scroom::Utils::Rectangle::intersection" name="Scroom::Utils::Rectangle::intersection">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,69,188,109"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Segment.html#ac38f7461d5b5fe7fecbb051957259b5e" title=" " alt="" coords="240,37,415,77"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,74,226,69,227,74,188,79"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Rectangle.html#a8bafbe715dcf9dc732ea2f197b9ecba1" title=" " alt="" coords="236,101,419,141"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="188,99,223,104,222,109,188,105"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Segment.html#a671e0c8614114bf5eb99afd36a2dddc4" title=" " alt="" coords="467,5,641,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="415,42,453,37,453,42,416,48"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Segment.html#a934a0a56d270e8d4fc4ceddb4dc7fb82" title=" " alt="" coords="467,69,641,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="416,67,453,72,453,78,415,72"/>
+</map>

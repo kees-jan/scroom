@@ -1,0 +1,17 @@
+<map id="PipetteHandler" name="PipetteHandler">
+<area shape="rect" id="Node000001" title=" " alt="" coords="204,432,365,717"/>
+<area shape="rect" id="Node000002" href="$classToolStateListener.html" title=" " alt="" coords="5,259,132,344"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,354,206,470,202,474,108,357"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="153,5,261,171"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="149,184,98,260,94,257,144,181"/>
+<area shape="rect" id="Node000004" href="$classPostRenderer.html" title=" " alt="" coords="157,269,258,334"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="210,184,210,268,205,268,205,184"/>
+<area shape="rect" id="Node000005" href="$classSelectionListener.html" title=" " alt="" coords="283,239,444,364"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="272,172,320,237,316,240,268,175"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="223,347,247,431,242,433,218,348"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="344,378,328,432,323,431,339,377"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="469,219,610,384"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="461,390,367,489,364,486,457,386"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="467,48,612,128"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="542,142,542,218,537,218,537,142"/>
+</map>

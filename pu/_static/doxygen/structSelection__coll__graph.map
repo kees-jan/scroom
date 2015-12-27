@@ -1,0 +1,13 @@
+<map id="Selection" name="Selection">
+<area shape="rect" id="Node000001" title=" " alt="" coords="316,412,421,597"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Point.html" title=" " alt="" coords="297,135,440,335"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="371,335,371,395,366,395,366,335"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,164,85"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="156,91,299,184,296,189,153,95"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="189,5,343,85"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="296,96,317,133,312,136,291,98"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="367,5,578,85"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="447,98,426,136,421,133,442,96"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="602,5,802,85"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="622,94,442,195,439,191,620,90"/>
+</map>

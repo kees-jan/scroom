@@ -1,0 +1,7 @@
+<map id="HorizontalDrawStrategy" name="HorizontalDrawStrategy">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,492,176,657"/>
+<area shape="rect" id="Node000002" href="$classRulerDrawStrategy.html" title=" " alt="" coords="6,219,175,444"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,458,93,492,88,492,88,458"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="37,5,145,171"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="93,184,93,218,88,218,88,184"/>
+</map>

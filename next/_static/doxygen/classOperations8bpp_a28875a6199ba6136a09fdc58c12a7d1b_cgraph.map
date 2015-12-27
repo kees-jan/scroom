@@ -1,0 +1,42 @@
+<map id="Operations8bpp::draw" name="Operations8bpp::draw">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,275,171,301"/>
+<area shape="rect" id="Node000002" href="$classOperations8bpp.html#a93fc14c28a67cc03900d517f5f510d19" title=" " alt="" coords="245,95,415,121"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,274,141,210,176,172,217,139,251,123,253,128,220,144,180,176,145,213,99,277"/>
+<area shape="rect" id="Node000006" href="$color_8hh.html#af151609bdfe02bb2507314a1b59c000d" title=" " alt="" coords="581,119,628,145"/>
+<area shape="poly" id="edge16_Node000001_Node000006" title=" " alt="" coords="105,273,154,241,218,210,315,179,413,156,567,133,568,138,414,161,316,184,220,214,157,246,108,277"/>
+<area shape="rect" id="Node000007" href="$classCommonOperations.html#af173ef0acae113c9b1ae8fa658e8f4be" title=" " alt="" coords="234,225,426,250"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="149,273,255,250,256,255,150,278"/>
+<area shape="rect" id="Node000012" href="$classScroom_1_1Utils_1_1Rectangle.html#aa0205a1477a20bd1888f9dd480069bf2" title=" " alt="" coords="513,319,696,359"/>
+<area shape="poly" id="edge15_Node000001_Node000012" title=" " alt="" coords="171,289,299,297,442,311,500,319,499,324,441,316,298,303,171,295"/>
+<area shape="rect" id="Node000014" href="$classCommonOperations.html#a2cc20679d9f562a298746ad0715ac494" title=" " alt="" coords="219,325,441,365"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="143,298,233,320,232,325,142,303"/>
+<area shape="rect" id="Node000015" href="$classScroom_1_1Utils_1_1Rectangle.html#a72976ed3a84a5c482d396038aa67f077" title=" " alt="" coords="231,390,429,415"/>
+<area shape="poly" id="edge17_Node000001_Node000015" title=" " alt="" coords="105,299,154,337,186,357,220,375,244,384,242,389,218,380,183,362,151,341,102,303"/>
+<area shape="rect" id="Node000017" href="$classScroom_1_1Utils_1_1Rectangle.html#a405cfffb11cdb9f2fa5600e2bf15231c" title=" " alt="" coords="231,446,429,471"/>
+<area shape="poly" id="edge20_Node000001_Node000017" title=" " alt="" coords="100,299,146,359,181,394,220,424,252,439,249,444,217,429,177,398,142,363,96,302"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Bitmap_1_1BitmapSurface.html#a697961480f8888e1a149d4be54adb9e7" title=" " alt="" coords="489,5,720,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="369,93,489,55,517,47,518,52,490,60,370,98"/>
+<area shape="rect" id="Node000004" href="$classColor.html#a52fc7f748b78eac3e266df3e58cb4ac5" title=" " alt="" coords="535,70,674,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="415,98,521,88,522,93,416,103"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="416,113,568,126,568,132,415,118"/>
+<area shape="rect" id="Node000005" href="$color_8hh.html#a5f58fb375bbeafcd94a58efff767de34" title=" " alt="" coords="790,70,921,95"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="674,80,776,80,776,85,674,85"/>
+<area shape="rect" id="Node000008" href="$classLayerOperations.html#aa1f918f99b5e282a6614f252c18696e5" title=" " alt="" coords="517,169,692,194"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="393,222,527,194,529,199,394,227"/>
+<area shape="rect" id="Node000009" href="$classCommonOperations.html#acdd24da111ccd9c24e45bedea6035385" title=" " alt="" coords="491,218,718,243"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="426,232,477,231,477,236,426,238"/>
+<area shape="rect" id="Node000011" href="$cairo-helpers_8cc.html#a7eaa96a970e5ff603afbea0a3a0bf761" title=" " alt="" coords="991,243,1057,269"/>
+<area shape="poly" id="edge13_Node000007_Node000011" title=" " alt="" coords="426,247,489,252,628,257,766,258,976,255,976,260,766,264,628,262,489,257,426,252"/>
+<area shape="poly" id="edge11_Node000007_Node000012" title=" " alt="" coords="388,248,442,267,467,282,491,298,524,312,522,316,488,302,464,287,440,272,386,253"/>
+<area shape="rect" id="Node000010" href="$cairo-helpers_8cc.html#a4f46197f43bbf408ce995b3b0a428c68" title=" " alt="" coords="796,218,915,243"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="718,228,782,228,782,233,718,233"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="915,237,978,246,977,252,914,242"/>
+<area shape="rect" id="Node000013" href="$classScroom_1_1Utils_1_1Segment.html#a934a0a56d270e8d4fc4ceddb4dc7fb82" title=" " alt="" coords="768,383,943,423"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="684,356,764,377,763,382,683,361"/>
+<area shape="rect" id="Node000016" href="$classScroom_1_1Utils_1_1Rectangle.html#ad623b0b902d4e2cd1d858300728c78d1" title=" " alt="" coords="513,383,696,423"/>
+<area shape="poly" id="edge18_Node000015_Node000016" title=" " alt="" coords="430,400,500,400,500,405,430,405"/>
+<area shape="poly" id="edge19_Node000016_Node000013" title=" " alt="" coords="696,400,754,400,754,405,696,405"/>
+<area shape="rect" id="Node000018" href="$classScroom_1_1Utils_1_1Rectangle.html#a23ed938b3f63186f48c5828024a9d6ab" title=" " alt="" coords="513,447,696,487"/>
+<area shape="poly" id="edge21_Node000017_Node000018" title=" " alt="" coords="430,459,500,461,500,466,429,464"/>
+<area shape="poly" id="edge22_Node000018_Node000013" title=" " alt="" coords="683,444,763,423,764,429,684,449"/>
+</map>

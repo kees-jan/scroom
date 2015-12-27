@@ -1,0 +1,21 @@
+<map id="libs/plugin&#45;interfaces/inc/scroom/resizablepresentationinterface.hh" name="libs/plugin&#45;interfaces/inc/scroom/resizablepresentationinterface.hh">
+<area shape="rect" id="Node000001" title=" " alt="" coords="384,5,704,45"/>
+<area shape="rect" id="Node000002" href="$sizedeterminer_8hh.html" title=" " alt="" coords="361,93,581,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="521,58,489,95,485,91,517,54"/>
+<area shape="rect" id="Node000009" href="$determine-size-test_8cc.html" title=" " alt="" coords="647,181,823,236"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="576,53,709,179,705,183,572,57"/>
+<area shape="rect" id="Node000003" href="$sizedeterminer_8cc.html" title=" " alt="" coords="25,189,244,229"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="390,140,203,191,202,186,389,134"/>
+<area shape="rect" id="Node000004" href="$transparentoverlaypresentation_8hh.html" title=" " alt="" coords="117,284,446,324"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="370,141,336,159,309,183,295,207,287,234,283,284,277,284,281,233,290,205,305,180,333,154,367,136"/>
+<area shape="rect" id="Node000007" href="$transparentoverlayviewinfo_8hh.html" title=" " alt="" coords="319,189,622,229"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="473,147,473,189,468,189,468,147"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="538,135,661,179,659,184,536,140"/>
+<area shape="rect" id="Node000005" href="$transparentoverlay_8cc.html" title=" " alt="" coords="5,372,248,412"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="237,333,162,374,159,370,234,328"/>
+<area shape="rect" id="Node000006" href="$transparentoverlaypresentation_8cc.html" title=" " alt="" coords="273,372,599,412"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="329,328,403,370,401,374,326,333"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="421,237,321,286,318,282,419,232"/>
+<area shape="rect" id="Node000008" href="$transparentoverlayviewinfo_8cc.html" title=" " alt="" coords="471,284,772,324"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="514,234,592,282,589,286,511,238"/>
+</map>

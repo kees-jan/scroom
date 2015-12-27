@@ -1,0 +1,11 @@
+<map id="Scroom::Bookkeeping::Map&lt; K, V &gt;" name="Scroom::Bookkeeping::Map&lt; K, V &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="83,595,238,675"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Bookkeeping_1_1MapBase.html" title=" " alt="" coords="83,347,238,547"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,561,163,595,158,595,158,561"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="7,133,149,299"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="115,311,127,345,122,347,110,313"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,5,151,85"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="81,99,81,133,75,133,75,99"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="173,183,314,249"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="230,263,199,347,194,345,225,261"/>
+</map>

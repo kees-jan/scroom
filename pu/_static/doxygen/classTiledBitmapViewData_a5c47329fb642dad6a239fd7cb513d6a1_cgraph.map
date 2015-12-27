@@ -1,0 +1,19 @@
+<map id="TiledBitmapViewData::tileLoaded" name="TiledBitmapViewData::tileLoaded">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,33,169,73"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1" title=" " alt="" coords="797,5,956,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="169,48,783,26,783,31,170,53"/>
+<area shape="rect" id="Node000004" href="$tiledbitmapviewdata_8cc.html#a428ca3cfbaecfbe7aed16ea3ad4a61e5" title=" " alt="" coords="217,66,343,91"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="170,62,204,66,203,71,169,67"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1GtkHelpers.html#ad5dcc56a509902bf106dbd6eb6a28964" title=" " alt="" coords="1004,5,1156,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="956,23,990,23,990,28,956,28"/>
+<area shape="rect" id="Node000005" href="$namespaceScroom_1_1GtkHelpers.html#a41d93c131774cfff3137ec807ead3e94" title=" " alt="" coords="391,67,543,107"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="343,79,377,80,377,85,343,84"/>
+<area shape="rect" id="Node000006" href="$namespaceScroom_1_1GtkHelpers.html#a37a36328ffc6b0e7468a02d64724c21d" title=" " alt="" coords="591,59,749,114"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="543,84,577,84,577,89,543,89"/>
+<area shape="rect" id="Node000007" href="$namespaceScroom_1_1GtkHelpers.html#a2ade52a9fdfe46700036def64d00f9da" title=" " alt="" coords="801,128,953,168"/>
+<area shape="poly" id="edge9_Node000005_Node000007" title=" " alt="" coords="521,104,591,124,692,138,787,144,787,149,692,143,590,129,520,109"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="749,61,794,47,796,52,750,66"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="750,108,796,121,794,126,749,113"/>
+<area shape="rect" id="Node000008" href="$function-additor-tests_8cc.html#a171d6ee6f5e4a249111a7ca7c7108209" title=" " alt="" coords="851,74,902,99"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="750,84,838,84,838,89,750,89"/>
+</map>

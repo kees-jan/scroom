@@ -1,0 +1,11 @@
+<map id="libs/tiled&#45;bitmap/src/layercoordinator.hh" name="libs/tiled&#45;bitmap/src/layercoordinator.hh">
+<area shape="rect" id="Node000001" title=" " alt="" coords="93,5,245,45"/>
+<area shape="rect" id="Node000002" href="$layercoordinator_8cc.html" title=" " alt="" coords="5,93,157,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="142,57,103,95,99,91,138,53"/>
+<area shape="rect" id="Node000003" href="$tiled-bitmap_8hh.html" title=" " alt="" coords="181,93,333,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="201,53,240,91,236,95,197,57"/>
+<area shape="rect" id="Node000004" href="$tiled-bitmap_8cc.html" title=" " alt="" coords="80,181,232,221"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="226,144,180,183,177,179,223,140"/>
+<area shape="rect" id="Node000005" href="$tiledbitmappresentation_8cc.html" title=" " alt="" coords="257,181,458,221"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="292,140,337,179,333,183,288,144"/>
+</map>

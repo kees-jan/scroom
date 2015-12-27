@@ -1,0 +1,9 @@
+<map id="add" name="add">
+<area shape="rect" id="Node000001" title=" " alt="" coords="221,99,268,124"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Bookkeeping_1_1Detail_1_1TokenAddition.html#a768d5104b9ee603fd6727f360265714c" title=" " alt="" coords="5,5,173,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="209,94,172,74,150,63,152,58,175,69,212,89"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Bookkeeping_1_1Detail_1_1TokenAddition.html#a1b5b0605d0baa2e318837d7d3cf716a6" title=" " alt="" coords="5,84,173,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="207,114,173,114,173,109,207,109"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Bookkeeping_1_1Token.html#a7b71440e7f51ff59f90d034a7170dac6" title=" " alt="" coords="8,163,171,203"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="211,133,174,152,144,166,142,161,172,148,209,129"/>
+</map>

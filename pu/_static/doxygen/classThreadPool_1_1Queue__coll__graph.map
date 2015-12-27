@@ -1,0 +1,11 @@
+<map id="ThreadPool::Queue" name="ThreadPool::Queue">
+<area shape="rect" id="Node000001" title=" " alt="" coords="36,876,173,1121"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,733,204,813"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,813,107,859,102,859,102,813"/>
+<area shape="rect" id="Node000003" href="$classThreadPool_1_1WeakQueue.html" title=" " alt="" coords="18,465,191,671"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="107,671,107,717,102,717,102,671"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="17,308,192,403"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="107,403,107,449,102,449,102,403"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html" title=" " alt="" coords="9,5,200,245"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="107,246,107,292,102,292,102,246"/>
+</map>

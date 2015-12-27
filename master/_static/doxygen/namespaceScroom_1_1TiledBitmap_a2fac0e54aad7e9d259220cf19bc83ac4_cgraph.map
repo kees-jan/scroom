@@ -1,0 +1,12 @@
+<map id="Scroom::TiledBitmap::GreyscaleBitmap" name="Scroom::TiledBitmap::GreyscaleBitmap">
+<area shape="rect" id="node1" title=" " alt="" coords="5,99,164,141"/>
+<area shape="rect" id="node2" href="$classOperations1bpp.html#afaa1689d2298ae130a8584077380ef77" title=" " alt="" coords="231,5,406,32"/>
+<area shape="rect" id="node3" href="$classOperations8bpp.html#af89b28e8f1a6fbe0cf8d0835d4db795a" title=" " alt="" coords="231,56,406,83"/>
+<area shape="rect" id="node5" href="$classOperations.html#a59ca763acb5f4fc36330ad8add4f55ff" title=" " alt="" coords="247,107,390,133"/>
+<area shape="rect" id="node7" href="$classOperationsColormapped.html#a0b0991af5a7714e81ac4ea1845dc3910" title=" " alt="" coords="229,158,409,199"/>
+<area shape="rect" id="node9" href="$classMonochromeColormapHelper.html#a3d60bf2ef52a480ef936f98ad5f84a3b" title=" " alt="" coords="212,223,425,265"/>
+<area shape="rect" id="node4" href="$classOperations8bpp.html#a4c350b5ba00b6cd050974fc94573cf08" title=" " alt="" coords="473,56,709,83"/>
+<area shape="rect" id="node6" href="$classOperations.html#a00588e0f6844ee39e3123548103cc70f" title=" " alt="" coords="505,107,677,133"/>
+<area shape="rect" id="node8" href="$classOperationsColormapped.html#ad28f529ff07160827c9f9b40d6a6a272" title=" " alt="" coords="497,158,685,199"/>
+<area shape="rect" id="node10" href="$classMonochromeColormapHelper.html#a02c5a240a533b6db0f061129d33c3667" title=" " alt="" coords="481,223,702,265"/>
+</map>

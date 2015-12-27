@@ -1,0 +1,12 @@
+<map id="Scroom::ColormapImpl::Colormaps::Colormaps" name="Scroom::ColormapImpl::Colormaps::Colormaps">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,35,184,75"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1ColormapImpl_1_1Colormaps.html#aa5ceb74db33fc9bc3572d846055acc4d" title=" " alt="" coords="451,5,689,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="184,47,436,31,437,36,185,52"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1ColormapImpl_1_1Colormaps.html#ae21b1c4368128e09ed4f4dd0c17e0dcc" title=" " alt="" coords="232,63,403,103"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="185,63,219,68,218,73,184,69"/>
+<area shape="poly" id="edge5_Node000003_Node000002" title=" " alt="" coords="402,61,467,46,469,51,404,66"/>
+<area shape="rect" id="Node000004" href="$classColormap.html#a9966b8a719d851b5e28b6b99ec6d2245" title=" " alt="" coords="503,70,637,95"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="403,80,489,80,489,85,403,85"/>
+<area shape="rect" id="Node000005" href="$classColormap.html#afbda2916eb43f89f99512e951ca2c7de" title=" " alt="" coords="737,70,893,95"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="638,80,724,80,724,85,638,85"/>
+</map>

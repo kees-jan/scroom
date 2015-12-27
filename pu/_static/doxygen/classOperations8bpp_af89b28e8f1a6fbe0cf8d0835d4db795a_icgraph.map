@@ -1,0 +1,16 @@
+<map id="Operations8bpp::create" name="Operations8bpp::create">
+<area shape="rect" id="Node000001" title=" " alt="" coords="548,77,723,103"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1TiledBitmap.html#a35eb5d0dba0fa7d585cf7d77b10947b3" title=" " alt="" coords="341,13,500,53"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="573,76,495,55,497,50,575,71"/>
+<area shape="rect" id="Node000004" href="$test-helpers_8cc.html#a510b01f28a69aa5aef9be5c774994d46" title=" " alt="" coords="363,77,479,103"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="534,93,479,93,479,87,534,87"/>
+<area shape="rect" id="Node000007" href="$test-helpers_8cc.html#a9c754881425f808e78c88bc70892083f" title=" " alt="" coords="363,127,479,152"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="567,108,477,129,476,124,565,103"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1TiledBitmap_1_1LayerSpecForBitmapper.html#a57fe04d709876ca9546f0ab8daafad13" title=" " alt="" coords="108,5,293,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="327,35,294,35,294,30,327,30"/>
+<area shape="rect" id="Node000005" href="$measure-framerate-tests_8cc.html#a0c38ed457f90e06f41a3238692c70397" title=" " alt="" coords="159,105,242,131"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="349,102,243,115,242,110,348,96"/>
+<area shape="rect" id="Node000006" href="$measure-framerate_8cc.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,105,60,131"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="146,121,60,121,60,115,146,115"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="348,135,242,125,243,119,349,130"/>
+</map>

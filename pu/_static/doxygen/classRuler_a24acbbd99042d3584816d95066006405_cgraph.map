@@ -1,0 +1,17 @@
+<map id="Ruler::drawCallback" name="Ruler::drawCallback">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,157,105"/>
+<area shape="rect" id="Node000002" href="$classRuler.html#a4b206cbfe60e820ec599aabe8bd1eff8" title=" " alt="" coords="205,80,301,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,90,191,90,191,95,157,95"/>
+<area shape="rect" id="Node000003" href="$classRuler.html#a627f4b9a16378af7bdd87f00d8da84d0" title=" " alt="" coords="356,51,487,76"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="301,82,342,74,343,80,302,87"/>
+<area shape="rect" id="Node000007" href="$classRulerCalculations.html#a608b90cb4acea413e55d72db4e7d6119" title=" " alt="" coords="349,101,493,141"/>
+<area shape="poly" id="edge8_Node000002_Node000007" title=" " alt="" coords="302,98,336,104,335,109,301,103"/>
+<area shape="rect" id="Node000004" href="$classRuler.html#a2a2c9b820a3b0f1ad76d4d26c36bc99b" title=" " alt="" coords="744,13,907,39"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="445,48,488,28,541,11,591,5,642,3,737,9,736,14,642,8,591,10,542,17,490,33,447,53"/>
+<area shape="rect" id="Node000005" href="$classRuler.html#a53568383844d4251c0d2a2092932c6f4" title=" " alt="" coords="541,51,696,76"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="487,61,528,61,528,66,487,66"/>
+<area shape="rect" id="Node000006" href="$classRulerCalculations.html#a31dce62e8d507c4e378dfc3eb984547e" title=" " alt="" coords="547,101,691,141"/>
+<area shape="poly" id="edge7_Node000003_Node000006" title=" " alt="" coords="467,73,537,94,536,99,465,79"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="689,48,741,38,742,44,690,53"/>
+<area shape="poly" id="edge6_Node000005_Node000005" title=" " alt="" coords="586,52,579,42,583,32,596,26,619,24,646,28,657,36,654,40,644,32,619,29,598,31,587,36,584,42,590,49"/>
+</map>

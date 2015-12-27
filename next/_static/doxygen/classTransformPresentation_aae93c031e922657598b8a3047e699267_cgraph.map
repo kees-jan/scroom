@@ -1,0 +1,9 @@
+<map id="TransformPresentation::redraw" name="TransformPresentation::redraw">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,175,95"/>
+<area shape="rect" id="Node000002" href="$transformpresentation__test_8cc.html#a608745f30637ee1f30157b0294297580" title=" " alt="" coords="283,5,393,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,53,222,41,268,30,270,35,223,46,173,58"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Bitmap_1_1BitmapSurface.html#a697961480f8888e1a149d4be54adb9e7" title=" " alt="" coords="223,55,453,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="175,73,209,73,209,78,175,78"/>
+<area shape="rect" id="Node000004" href="$cairo-helpers_8cc.html#ac7a152a4cc864e9c67acbc6686a9d3a4" title=" " alt="" coords="263,120,413,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="173,93,223,105,265,114,264,120,222,110,172,98"/>
+</map>

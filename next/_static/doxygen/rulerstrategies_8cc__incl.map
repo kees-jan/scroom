@@ -1,0 +1,15 @@
+<map id="gui/ruler/src/rulerstrategies.cc" name="gui/ruler/src/rulerstrategies.cc">
+<area shape="rect" id="Node000001" title=" " alt="" coords="163,5,379,31"/>
+<area shape="rect" id="Node000002" href="$rulerstrategies_8hh.html" title=" " alt="" coords="78,79,215,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="252,33,180,74,177,69,249,28"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="239,79,302,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="273,31,273,65,268,65,268,31"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="327,79,385,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="286,29,333,68,330,72,283,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,152,83,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="132,106,74,146,71,142,129,102"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="107,152,187,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="149,104,149,138,144,138,144,104"/>
+<area shape="rect" id="Node000005" href="$interface_8hh.html" title=" " alt="" coords="211,152,363,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="170,102,253,143,251,148,168,106"/>
+</map>

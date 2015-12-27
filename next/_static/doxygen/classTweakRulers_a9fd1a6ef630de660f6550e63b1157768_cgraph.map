@@ -1,0 +1,10 @@
+<map id="TweakRulers::tweakRulers" name="TweakRulers::tweakRulers">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,79,199,104"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a8a866a6439fc60dfe259e168059aa65e" title=" " alt="" coords="247,29,432,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,76,264,55,265,60,164,81"/>
+<area shape="rect" id="Node000003" href="$cairo-helpers_8cc.html#ac7a152a4cc864e9c67acbc6686a9d3a4" title=" " alt="" coords="264,79,415,104"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="199,89,250,89,250,94,199,94"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Point.html#a45972be2646a1f80a0cdca8cbe68e3a6" title=" " alt="" coords="254,128,425,153"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="164,101,265,123,264,128,163,107"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="301,31,292,21,297,11,313,5,339,3,373,7,385,16,382,20,371,11,339,8,314,10,300,15,298,20,305,27"/>
+</map>

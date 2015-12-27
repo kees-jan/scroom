@@ -1,0 +1,14 @@
+<map id="Pnm" name="Pnm">
+<area shape="rect" id="Node000001" title=" " alt="" coords="257,432,423,617"/>
+<area shape="rect" id="Node000002" href="$classPluginInformationInterface.html" title=" " alt="" coords="5,239,219,364"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="187,372,259,441,255,445,183,375"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="173,5,281,171"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="178,184,148,240,143,237,173,182"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1TiledBitmap_1_1OpenTiledBitmapInterface.html" title=" " alt="" coords="243,251,437,351"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="279,182,316,250,311,252,275,184"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="343,365,343,432,337,432,337,365"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="461,219,603,384"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="454,396,422,433,418,430,450,393"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="459,48,605,128"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="535,142,535,218,529,218,529,142"/>
+</map>

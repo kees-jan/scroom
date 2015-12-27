@@ -1,0 +1,9 @@
+<map id="CommonOperations::draw" name="CommonOperations::draw">
+<area shape="rect" id="Node000001" title=" " alt="" coords="219,55,411,80"/>
+<area shape="rect" id="Node000002" href="$classOperations1bpp.html#a5eb9524566683ba1c7c4465270f79de5" title=" " alt="" coords="5,5,171,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="242,54,147,33,148,28,243,49"/>
+<area shape="rect" id="Node000003" href="$classOperations8bpp.html#a28875a6199ba6136a09fdc58c12a7d1b" title=" " alt="" coords="5,55,171,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="205,70,171,70,171,65,205,65"/>
+<area shape="rect" id="Node000004" href="$classOperations.html#ac19af1189a115005d637b95aea38267b" title=" " alt="" coords="21,104,155,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="243,86,148,107,147,101,242,80"/>
+</map>

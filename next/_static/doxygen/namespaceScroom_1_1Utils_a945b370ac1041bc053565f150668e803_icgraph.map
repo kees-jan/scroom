@@ -1,0 +1,11 @@
+<map id="Scroom::Utils::make_rect_from_start_end" name="Scroom::Utils::make_rect_from_start_end">
+<area shape="rect" id="Node000001" title=" " alt="" coords="559,47,719,87"/>
+<area shape="rect" id="Node000002" href="$classPipetteHandler.html#acd17e052163c801ed556c06d8bb29f59" title=" " alt="" coords="284,5,511,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="545,51,459,33,461,28,546,46"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1Utils.html#a336b08377145525ad7740b47d618b161" title=" " alt="" coords="295,55,499,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="545,70,500,70,500,65,545,65"/>
+<area shape="rect" id="Node000004" href="$view_8cc.html#aa4c0e07b612d51cad5beab8f04bec275" title=" " alt="" coords="347,104,447,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="546,89,448,109,447,104,545,84"/>
+<area shape="rect" id="Node000005" href="$classTweakSelection.html#a8b280667496e3bd9fe0fa8a87a85a1b4" title=" " alt="" coords="5,104,236,129"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="333,119,237,119,237,114,333,114"/>
+</map>

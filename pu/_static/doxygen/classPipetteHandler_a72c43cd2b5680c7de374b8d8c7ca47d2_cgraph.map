@@ -1,0 +1,9 @@
+<map id="PipetteHandler::render" name="PipetteHandler::render">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,42,175,67"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html#aa0205a1477a20bd1888f9dd480069bf2" title=" " alt="" coords="223,5,405,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="175,41,209,36,210,42,175,46"/>
+<area shape="rect" id="Node000004" href="$cairo-helpers_8cc.html#ac7a152a4cc864e9c67acbc6686a9d3a4" title=" " alt="" coords="239,70,389,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="175,63,225,69,224,74,175,68"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Segment.html#a934a0a56d270e8d4fc4ceddb4dc7fb82" title=" " alt="" coords="453,5,628,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="406,23,440,23,440,28,406,28"/>
+</map>

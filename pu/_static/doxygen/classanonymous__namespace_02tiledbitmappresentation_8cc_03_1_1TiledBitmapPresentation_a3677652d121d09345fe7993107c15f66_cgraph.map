@@ -1,0 +1,16 @@
+<map id="anonymous_namespace{tiledbitmappresentation::cc}::TiledBitmapPresentation::showMetadata" name="anonymous_namespace{tiledbitmappresentation::cc}::TiledBitmapPresentation::showMetadata">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,77,227,147"/>
+<area shape="rect" id="Node000002" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a71907f1d9e95bf600061a20392da56f1" title=" " alt="" coords="287,5,509,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="226,81,273,69,275,74,228,86"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1Metadata.html#a0e30bfa9bfb8d9471c0b6b7a9445b81a" title=" " alt="" coords="275,99,521,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="227,109,261,109,261,115,227,115"/>
+<area shape="rect" id="Node000004" href="$namespaceScroom_1_1TiledBitmap.html#a57ca2a55cf5fd640d3e3e3e2d59c4a62" title=" " alt="" coords="319,149,477,189"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="227,132,306,148,305,153,226,137"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Rectangle.html#ac3ffb0067f3c0d0686ea2319cd5d5618" title=" " alt="" coords="569,117,752,157"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="477,157,555,147,556,153,478,162"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Rectangle.html#a3b8d627a36eb56f6f36eea5004591154" title=" " alt="" coords="569,181,752,221"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="478,176,556,186,555,191,477,182"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Segment.html#abd475ea75311ffaed7e8175125d2d3b5" title=" " alt="" coords="800,149,975,189"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="753,148,787,153,786,158,752,153"/>
+<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="752,186,786,181,787,186,753,191"/>
+</map>

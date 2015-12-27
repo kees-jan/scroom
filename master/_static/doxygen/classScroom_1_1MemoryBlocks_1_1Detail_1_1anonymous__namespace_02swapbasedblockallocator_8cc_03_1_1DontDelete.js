@@ -1,0 +1,4 @@
+var classScroom_1_1MemoryBlocks_1_1Detail_1_1anonymous__namespace_02swapbasedblockallocator_8cc_03_1_1DontDelete =
+[
+    [ "operator()", "classScroom_1_1MemoryBlocks_1_1Detail_1_1anonymous__namespace_02swapbasedblockallocator_8cc_03_1_1DontDelete.html#a9c80210aaa07ef6bf5246efca5502bb2", null ]
+];

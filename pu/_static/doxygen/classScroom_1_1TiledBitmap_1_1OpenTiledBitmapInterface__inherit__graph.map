@@ -1,0 +1,9 @@
+<map id="Scroom::TiledBitmap::OpenTiledBitmapInterface" name="Scroom::TiledBitmap::OpenTiledBitmapInterface">
+<area shape="rect" id="Node000001" title=" " alt="" coords="86,219,279,319"/>
+<area shape="rect" id="Node000003" href="$classPnm.html" title=" " alt="" coords="5,367,171,552"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="154,332,137,368,132,365,150,330"/>
+<area shape="rect" id="Node000004" href="$classTiff.html" title=" " alt="" coords="195,367,360,552"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="216,330,234,365,229,368,211,332"/>
+<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="129,5,237,171"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="185,184,185,219,180,219,180,184"/>
+</map>

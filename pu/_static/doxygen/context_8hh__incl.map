@@ -1,0 +1,17 @@
+<map id="libs/util/inc/scroom/context.hh" name="libs/util/inc/scroom/context.hh">
+<area shape="rect" id="Node000001" title=" " alt="" coords="264,5,409,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,52,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="264,45,66,96,64,90,263,40"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="76,93,163,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="286,48,165,91,163,86,284,43"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="187,93,273,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="312,48,259,87,256,83,309,43"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="298,93,375,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="339,46,339,79,334,79,334,46"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="399,93,458,119"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="361,44,406,82,403,86,357,48"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="483,93,543,119"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="380,43,475,85,473,90,378,48"/>
+<area shape="rect" id="Node000008" href="$interface_8hh.html" title=" " alt="" coords="567,93,719,119"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="410,43,586,87,585,92,409,48"/>
+</map>

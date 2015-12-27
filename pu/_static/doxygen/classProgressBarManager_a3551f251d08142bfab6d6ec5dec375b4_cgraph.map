@@ -1,0 +1,18 @@
+<map id="ProgressBarManager::setWorking" name="ProgressBarManager::setWorking">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,61,163,101"/>
+<area shape="rect" id="Node000002" href="$classProgressBarManager.html#a6ea99e5fd8b5d5a277cea203795a76b1" title=" " alt="" coords="211,29,368,69"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,66,197,61,198,66,164,72"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1GtkHelpers.html#a41d93c131774cfff3137ec807ead3e94" title=" " alt="" coords="213,93,365,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="164,91,200,97,199,102,163,96"/>
+<area shape="rect" id="Node000004" href="$namespaceScroom_1_1GtkHelpers.html#a37a36328ffc6b0e7468a02d64724c21d" title=" " alt="" coords="416,53,575,107"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="365,98,402,92,403,98,366,104"/>
+<area shape="rect" id="Node000007" href="$namespaceScroom_1_1GtkHelpers.html#a2ade52a9fdfe46700036def64d00f9da" title=" " alt="" coords="626,121,778,161"/>
+<area shape="poly" id="edge8_Node000003_Node000007" title=" " alt="" coords="366,116,613,133,612,138,365,121"/>
+<area shape="rect" id="Node000005" href="$namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1" title=" " alt="" coords="623,5,781,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="574,56,612,46,614,51,576,62"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="576,101,621,115,620,120,574,106"/>
+<area shape="rect" id="Node000008" href="$function-additor-tests_8cc.html#a171d6ee6f5e4a249111a7ca7c7108209" title=" " alt="" coords="677,70,727,95"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="575,78,663,80,663,85,575,84"/>
+<area shape="rect" id="Node000006" href="$namespaceScroom_1_1GtkHelpers.html#ad5dcc56a509902bf106dbd6eb6a28964" title=" " alt="" coords="829,5,981,45"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="781,23,815,23,815,28,781,28"/>
+</map>

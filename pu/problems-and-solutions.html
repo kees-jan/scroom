@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Problems and solutions &#8212; Scroom  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Coding guidelines" href="coding-guidelines.html" />
+    <link rel="prev" title="Patterns" href="patterns.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="problems-and-solutions">
+<h1>Problems and solutions<a class="headerlink" href="#problems-and-solutions" title="Link to this heading">¶</a></h1>
+<section id="static-initialization-order">
+<h2>Static initialization order<a class="headerlink" href="#static-initialization-order" title="Link to this heading">¶</a></h2>
+<p>A <cite>static</cite> the word we use in C++ to indicate global variables. It derives
+from “statically allocated” memory, which means that it is allocated at
+compile time, and not on the stack or the heap. A <cite>static</cite> variable is
+initialized before <cite>main()</cite> gets called, and destroyed after it finishes.</p>
+<p>The static initialization order fiasco is a common problem in C++ where
+the order of initialization of static variables across different translation
+units is undefined. This means that if you use one global to initialize another,
+the first global might not be initialized yet, leading to undefined behavior.</p>
+<p>The solution to this is to first of all not use global variables. But if you must,
+wrap them in a function. This is called the “construct on first use” idiom.
+The language guarantees that the static variable will be initialized thread safely
+the first time the function is called, and that it will be destroyed when the program
+exits. This way, you can ensure that the variable is initialized before it is used.</p>
+<p>Take this example from the <a class="reference external" href="./_static/doxygen/classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html#a3b3efa8982899d0fa6641a868e8cf230">ThreadList::instance()</a> method:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ThreadList</span><span class="o">::</span><span class="n">Ptr</span><span class="w"> </span><span class="nf">ThreadList::instance</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="n">Ptr</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">threadList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">ThreadList</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">threadList</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="static-destruction">
+<h2>Static destruction<a class="headerlink" href="#static-destruction" title="Link to this heading">¶</a></h2>
+<p>The other side of the coin is that static variables will eventually be destroyed
+when the program exits. Since scroom is multithreaded and asynchronous, any code
+runs the risk of executing after <code class="docutils literal notranslate"><span class="pre">main()</span></code> has finished. Therefore, no code
+should rely on global variables still being set, except during initialization/construction.</p>
+</section>
+<section id="all-classes-should-be-self-sufficient">
+<h2>All classes should be self-sufficient<a class="headerlink" href="#all-classes-should-be-self-sufficient" title="Link to this heading">¶</a></h2>
+<p>Because scroom is <a class="reference internal" href="architecture.html#asynchronous"><span class="std std-ref">asynchronous</span></a>, your parent class might already be destroyed
+when your asynchronous code runs. Either because scroom has been shut down and the global variables
+have been destroyed, or because the current document has been closed, or both.</p>
+<p>Therefore, any scheduled tasks should contain everything they need to do their work, without
+relying on other objects or globals to still exist.</p>
+<p>This is why memory is often managed using shared pointers. This way, many other objects can
+keep a thing alive if they depend on it. It is a common pattern that an object in its constructor
+initializes shared pointers to its dependencies, and then uses those exclusively, instead of
+assuming a global variable still exists.</p>
+<p>So there’s two reasons for writing self-sufficient classes:</p>
+<ol class="arabic simple">
+<li><p>To handle <a class="reference internal" href="#static-destruction">Static destruction</a></p></li>
+<li><p>To handle <a class="reference internal" href="architecture.html#asynchronous"><span class="std std-ref">asynchronous execution</span></a></p></li>
+</ol>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/logo.png" alt="Logo" />
+    
+    <h1 class="logo logo-name">Scroom</h1>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">Extensible large image viewer</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=kees-jan&repo=scroom&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="core-requirements.html">Core requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core-requirements.html#derived-requirements">Derived requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui-tour/index.html">A tour of the Scroom UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="principles.html">Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="patterns.html">Patterns</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Problems and solutions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#static-initialization-order">Static initialization order</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#static-destruction">Static destruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#all-classes-should-be-self-sufficient">All classes should be self-sufficient</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="coding-guidelines.html">Coding guidelines</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="patterns.html" title="previous chapter">Patterns</a></li>
+      <li>Next: <a href="coding-guidelines.html" title="next chapter">Coding guidelines</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Kees-Jan Dijkzeul.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/problems-and-solutions.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

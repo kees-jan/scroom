@@ -1,0 +1,14 @@
+<map id="ColormapHelperBase" name="ColormapHelperBase">
+<area shape="rect" id="Node000001" title=" " alt="" coords="90,572,282,777"/>
+<area shape="rect" id="Node000005" href="$classColormapHelper.html" title=" " alt="" coords="5,925,151,1071"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="150,791,105,926,100,924,145,790"/>
+<area shape="rect" id="Node000006" href="$classMonochromeColormapHelper.html" title=" " alt="" coords="175,825,413,1171"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="227,789,239,824,234,826,222,791"/>
+<area shape="rect" id="Node000002" href="$classColormapProvider.html" title=" " alt="" coords="17,339,147,404"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,416,153,571,148,573,95,418"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="132,5,240,171"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="154,185,96,339,91,338,149,183"/>
+<area shape="rect" id="Node000004" href="$classColormappable.html" title=" " alt="" coords="172,219,411,524"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="224,183,237,218,232,219,219,184"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="236,538,224,573,219,571,231,536"/>
+</map>
