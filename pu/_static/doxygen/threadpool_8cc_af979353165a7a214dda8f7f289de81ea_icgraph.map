@@ -1,0 +1,13 @@
+<map id="Sequentially" name="Sequentially">
+<area shape="rect" id="Node000001" title=" " alt="" coords="418,57,520,85"/>
+<area shape="rect" id="Node000002" href="$classPipetteHandler.html#acd17e052163c801ed556c06d8bb29f59" title=" " alt="" coords="144,5,370,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="400,54,369,48,320,36,320,31,371,43,406,54"/>
+<area shape="rect" id="Node000003" href="$classWaitForAsyncOp.html#a01dcf09800aaba90cc168f4beac3e8c7" title=" " alt="" coords="157,57,357,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="400,72,358,74,357,69,405,71"/>
+<area shape="rect" id="Node000004" href="$namespaceScroom_1_1TiledBitmap.html#ac13fd191f548c9c8d794f6cc704b6e39" title=" " alt="" coords="164,109,350,154"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="406,89,339,111,338,106,401,90"/>
+<area shape="rect" id="Node000005" href="$classPnm.html#a512fa4ba81d11455c33b34b28588e629" title=" " alt="" coords="5,91,96,118"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="146,118,96,113,96,108,151,116"/>
+<area shape="rect" id="Node000006" href="$classTiff.html#a858a1b813e95709369796e88876049dc" title=" " alt="" coords="9,143,92,170"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="146,145,92,154,92,149,152,144"/>
+</map>

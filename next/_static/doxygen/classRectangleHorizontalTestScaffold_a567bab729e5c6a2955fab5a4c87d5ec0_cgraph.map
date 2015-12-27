@@ -1,0 +1,10 @@
+<map id="RectangleHorizontalTestScaffold::intersection" name="RectangleHorizontalTestScaffold::intersection">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,40,237,85"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html#aa93bcd537f48183edeb70a668f7352cf" title=" " alt="" coords="314,5,495,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,46,301,40,296,41,238,51"/>
+<area shape="rect" id="Node000004" href="$classRectangleHorizontalTestScaffold.html#a8f3c558bb46817407f5e73c30f0beca8" title=" " alt="" coords="285,75,524,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="237,74,272,80,266,81,237,79"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Rectangle.html#a8bafbe715dcf9dc732ea2f197b9ecba1" title=" " alt="" coords="572,40,753,85"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="495,37,559,48,554,48,495,43"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="524,78,554,77,559,76,525,84"/>
+</map>

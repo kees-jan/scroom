@@ -1,0 +1,11 @@
+<map id="Scroom::TiledBitmap::PixelAlignPresentationPositions::tweakPosition" name="Scroom::TiledBitmap::PixelAlignPresentationPositions::tweakPosition">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,57,240,118"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#af6796373cc462aef8e6979a40acef5d3" title=" " alt="" coords="291,5,444,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="240,56,279,49,274,51,241,61"/>
+<area shape="rect" id="Node000003" href="$cairo-helpers_8cc.html#ac7a152a4cc864e9c67acbc6686a9d3a4" title=" " alt="" coords="292,74,442,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="240,85,279,87,274,88,241,90"/>
+<area shape="rect" id="Node000004" href="$rounding_8hh.html#a8ef4d93107153397a73e4a13f5f86a3d" title=" " alt="" coords="288,126,447,154"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="240,110,287,122,281,122,240,115"/>
+<area shape="rect" id="Node000005" href="$rounding_8hh.html#aedaf778f8b35fe2d25e2e06832bee1ca" title=" " alt="" coords="495,126,639,154"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="447,137,482,140,477,140,447,142"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="TiledBitmap::drawTile" name="TiledBitmap::drawTile">
+<area shape="rect" id="node1" title=" " alt="" coords="5,111,171,138"/>
+<area shape="rect" id="node2" href="$cairo-helpers_8hh.html#a249906dbe982d14efe1755b4efa57c4c" title=" " alt="" coords="219,111,389,138"/>
+<area shape="rect" id="node4" href="$classScroom_1_1Utils_1_1Rectangle.html#a1262f445c07c33e16069e2497aed581f" title=" " alt="" coords="664,5,847,47"/>
+<area shape="rect" id="node5" href="$classScroom_1_1Utils_1_1Rectangle.html#aac53b13b110251e6666a6e8499c19f27" title=" " alt="" coords="664,72,847,113"/>
+<area shape="rect" id="node6" href="$classScroom_1_1Utils_1_1Rectangle.html#a72976ed3a84a5c482d396038aa67f077" title=" " alt="" coords="656,142,855,169"/>
+<area shape="rect" id="node7" href="$classScroom_1_1Utils_1_1Rectangle.html#a405cfffb11cdb9f2fa5600e2bf15231c" title=" " alt="" coords="656,199,855,226"/>
+<area shape="rect" id="node3" href="$cairo-helpers_8cc.html#a3c761221238966e436006bd09ab04a91" title=" " alt="" coords="437,111,608,138"/>
+</map>

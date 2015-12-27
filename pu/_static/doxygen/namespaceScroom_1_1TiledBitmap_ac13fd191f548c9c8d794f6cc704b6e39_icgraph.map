@@ -1,0 +1,7 @@
+<map id="Scroom::TiledBitmap::scheduleLoadingBitmap" name="Scroom::TiledBitmap::scheduleLoadingBitmap">
+<area shape="rect" id="Node000001" title=" " alt="" coords="144,24,329,68"/>
+<area shape="rect" id="Node000002" href="$classPnm.html#a512fa4ba81d11455c33b34b28588e629" title=" " alt="" coords="5,5,96,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,31,96,28,96,23,131,29"/>
+<area shape="rect" id="Node000003" href="$classTiff.html#a858a1b813e95709369796e88876049dc" title=" " alt="" coords="9,57,92,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="126,61,92,68,92,63,131,60"/>
+</map>

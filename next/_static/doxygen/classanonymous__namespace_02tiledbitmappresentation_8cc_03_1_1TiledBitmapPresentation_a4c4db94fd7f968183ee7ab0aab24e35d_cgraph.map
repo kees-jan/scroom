@@ -1,0 +1,29 @@
+<map id="anonymous_namespace{tiledbitmappresentation::cc}::TiledBitmapPresentation::redraw" name="anonymous_namespace{tiledbitmappresentation::cc}::TiledBitmapPresentation::redraw">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,274,226,352"/>
+<area shape="rect" id="Node000002" href="$cairo-helpers_8cc.html#a72b76dcfe2a11213e72c72dee13488d6" title=" " alt="" coords="274,222,541,250"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="225,272,273,258,309,252,304,254,274,264,227,277"/>
+<area shape="rect" id="Node000012" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a692a34885b8fbb9a6360468bd503fd1f" title=" " alt="" coords="297,274,518,352"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="226,310,284,312,279,314,227,316"/>
+<area shape="rect" id="Node000013" href="$cairo-helpers_8cc.html#ac7a152a4cc864e9c67acbc6686a9d3a4" title=" " alt="" coords="332,376,482,404"/>
+<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="226,347,274,361,320,374,314,374,273,366,226,353"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Rectangle.html#a85f5cbf9f6e41f147f9ac2da355eeb22" title=" " alt="" coords="589,75,770,119"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="430,219,499,177,588,129,604,125,599,127,590,134,502,181,432,224"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Rectangle.html#a404f0a593691285d4597c354575468f2" title=" " alt="" coords="589,144,770,189"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="464,219,577,192,572,194,465,224"/>
+<area shape="rect" id="Node000006" href="$cairo-helpers_8cc.html#a4f46197f43bbf408ce995b3b0a428c68" title=" " alt="" coords="620,420,739,448"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="525,247,543,259,558,277,566,296,568,334,570,372,577,389,591,407,609,422,603,420,587,411,572,392,565,373,563,334,561,297,554,280,539,263,525,252"/>
+<area shape="rect" id="Node000008" href="$classScroom_1_1Utils_1_1Rectangle.html#af497bd1988b10b5e521a82bc05285eed" title=" " alt="" coords="589,213,770,258"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="541,233,576,235,571,236,542,238"/>
+<area shape="rect" id="Node000009" href="$classScroom_1_1Utils_1_1Rectangle.html#ad623b0b902d4e2cd1d858300728c78d1" title=" " alt="" coords="589,283,770,327"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="493,247,542,258,601,277,595,278,540,264,493,253"/>
+<area shape="rect" id="Node000010" href="$classScroom_1_1Utils_1_1Rectangle.html#aa0205a1477a20bd1888f9dd480069bf2" title=" " alt="" coords="589,352,770,397"/>
+<area shape="poly" id="edge10_Node000002_Node000010" title=" " alt="" coords="521,247,543,259,561,278,568,298,575,318,591,338,597,344,592,343,587,342,571,321,563,300,556,281,539,263,521,253"/>
+<area shape="rect" id="Node000011" href="$classScroom_1_1Utils_1_1Rectangle.html#ad390ca831049272af226cd28b57375c4" title=" " alt="" coords="589,5,770,50"/>
+<area shape="poly" id="edge11_Node000002_Node000011" title=" " alt="" coords="418,220,485,146,534,100,588,60,599,56,595,59,590,65,537,105,489,149,422,224"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Rectangle.html#a8bafbe715dcf9dc732ea2f197b9ecba1" title=" " alt="" coords="818,75,1000,119"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="770,94,805,96,800,98,771,100"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="755,141,821,123,816,125,757,146"/>
+<area shape="rect" id="Node000007" href="$cairo-helpers_8cc.html#a7eaa96a970e5ff603afbea0a3a0bf761" title=" " alt="" coords="876,420,942,448"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="739,432,863,434,858,434,739,437"/>
+<area shape="poly" id="edge12_Node000011_Node000004" title=" " alt="" coords="756,48,821,69,816,70,756,53"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="Scroom::Utils::Rectangle::above" name="Scroom::Utils::Rectangle::above">
+<area shape="rect" id="Node000001" title=" " alt="" coords="615,36,796,81"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a8548b898854f64c1b8967031eebe7fba" title=" " alt="" coords="344,5,522,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="597,47,523,40,523,35,602,46"/>
+<area shape="rect" id="Node000004" href="$cairo-helpers_8cc.html#a72b76dcfe2a11213e72c72dee13488d6" title=" " alt="" coords="300,74,567,102"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="597,70,568,76,567,71,602,69"/>
+<area shape="rect" id="Node000003" href="$classTiledBitmap.html#a98c2d60fc0736a77ab18aeeb461a1da8" title=" " alt="" coords="52,14,205,42"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="326,29,206,30,205,25,331,26"/>
+<area shape="rect" id="Node000005" href="$cairo-helpers_8cc.html#a27002d3ab3abd3af027354f53c85bec7" title=" " alt="" coords="5,65,252,110"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="281,88,252,90,251,85,286,87"/>
+<area shape="rect" id="Node000006" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a4c4db94fd7f968183ee7ab0aab24e35d" title=" " alt="" coords="18,134,239,212"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="363,107,240,145,238,140,369,106"/>
+</map>

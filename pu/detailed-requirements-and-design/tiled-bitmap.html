@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tiled bitmap &#8212; Scroom  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Memory manager" href="memory-manager.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="tiled-bitmap">
+<h1>Tiled bitmap<a class="headerlink" href="#tiled-bitmap" title="Link to this heading">¶</a></h1>
+<p>Scroom visualizes bitmaps that are so large they do not (or at least they used to) fit comfortably
+in memory. And even if it did fit, scaling down a multi-gigabyte bitmap to a size that fits on your
+screen would take significant amounts of cpu time. To work around this, Scroom stores your image in pre-
+scaled <a class="reference external" href="../_static/doxygen/classLayer.html">layers</a>, each layer a factor 8 smaller than the one below it. Layers are then
+further subdivided into <a class="reference external" href="../_static/doxygen/classTile.html">tiles</a>, such that only the area of the image you are currently
+looking at needs to be in memory.</p>
+<p>When you first open a bitmap, there’s a preprocessing phase, in which all tiles in all layers are
+initialized, scaling down the original bitmap as needed.</p>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">¶</a></h2>
+<p>There’s really only one: Render large bitmaps as faithfully as possible, as fast as possible.
+See <a class="reference internal" href="../core-requirements.html#be-fast"><span class="std std-ref">be fast</span></a>. The pre-scaling we do into different layers gives rise to a ridiculous
+amount of coordinate systems. To make things somewhat manageable, all coordinate systems share the same origin
+(with a few exceptions, unfortunately). Let’s go over all coordinate systems:</p>
+<dl class="simple">
+<dt>Presentation coordinates</dt><dd><p>These are inherited from Scroom. They are the true-size coordinates, without any scaling. The bitmap
+might be located at an offset, though. Presentation coordinates are identical to the coordinates of the
+bottom most layer.</p>
+</dd>
+<dt>Source image coordinates</dt><dd><p>These are coordinates within the bitmap being loaded, at true-size. They are Presentation coordinates,
+minus the offset (if any).</p>
+</dd>
+<dt>View coordinates</dt><dd><p>These are coordinates of the destination window. It has, by necessity, a different origin, and it is scaled.
+When scroom calls our <a class="reference external" href="../_static/doxygen/classPresentationInterface.html#a60bc0b48811cb281c9e8da99805b6b66">redraw</a> method, it wants us to draw the
+given <code class="docutils literal notranslate"><span class="pre">presentationArea</span></code> at the requested zoomfactor, such that the top left of the <code class="docutils literal notranslate"><span class="pre">presentationArea</span></code>
+lands at <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code>. The size of the <code class="docutils literal notranslate"><span class="pre">viewArea</span></code> follows from scaling <code class="docutils literal notranslate"><span class="pre">presentationArea.size()</span></code> up or down
+as requested.</p>
+</dd>
+<dt>Layer coordinates</dt><dd><p>These are coordinates inside one of the pre-scaled layers. They are Presentation coordinates, but with
+x and y scaled with the zoomfactor belonging to the layer</p>
+</dd>
+<dt>Grid coordinates or tile indices</dt><dd><p>These coordinates are are for indexing tiles within a layer. For positive x and y, they’d be Layer coordinates
+<code class="docutils literal notranslate"><span class="pre">div</span></code> the tile size. Because <code class="docutils literal notranslate"><span class="pre">div</span></code> rounds towards zero, this breaks for negative coordinates, but you get
+the picture</p>
+</dd>
+<dt>Tile coordinates</dt><dd><p>These are coordinates within a given tile. The origin is the top left corner of the tile. So for positive
+x and y, they’d be Layer coordinates <code class="docutils literal notranslate"><span class="pre">mod</span></code> the tile size. Again, this unfortunately breaks down for
+negative coordinates</p>
+</dd>
+</dl>
+</section>
+<section id="naming-conventions">
+<h2>Naming conventions<a class="headerlink" href="#naming-conventions" title="Link to this heading">¶</a></h2>
+<p>In many cases, the coordinate system will be obvious. <code class="docutils literal notranslate"><span class="pre">presentationArea</span></code> is an area in presentation coordinates.
+<code class="docutils literal notranslate"><span class="pre">viewArea</span></code> is in view coordinates. In case of ambiguity, for example after coordinate conversions, we suffix
+variable names with an <code class="docutils literal notranslate"><span class="pre">InXXXCoordinates</span></code>. For example, <code class="docutils literal notranslate"><span class="pre">presentationAreaInLayerCoordinates</span></code> might be
+a useful thing to have. Though here too, there might be sane defaults. Like a layer might take layer coordinates
+by default, and a tile might use tile coordinates. No need for suffixes there.</p>
+<p>Conversion functions are typically called <code class="docutils literal notranslate"><span class="pre">xxxCoordinatesFromYyyCoordinates()</span></code>. This matches well with the
+naming conventions for variables. A line might read:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">tileIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tileIndexFromLayerCoordinates</span><span class="p">(</span><span class="n">areaInLayerCoordinates</span><span class="p">);</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">areaInTileCoordinates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tileCoordinatesFromLayerCoordinates</span><span class="p">(</span><span class="n">tileIndex</span><span class="p">,</span><span class="w"> </span><span class="n">areaInLayerCoordinates</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Note how, lexically, the two <code class="docutils literal notranslate"><span class="pre">tileCoordinates</span></code> are close together, just as the two <code class="docutils literal notranslate"><span class="pre">layerCoordinates</span></code>. That
+makes for easy reviewing</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/logo.png" alt="Logo" />
+    
+    <h1 class="logo logo-name">Scroom</h1>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">Extensible large image viewer</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=kees-jan&repo=scroom&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../core-requirements.html">Core requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core-requirements.html#derived-requirements">Derived requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui-tour/index.html">A tour of the Scroom UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../principles.html">Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../patterns.html">Patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../problems-and-solutions.html">Problems and solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Detailed requirements and design</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="threadpool.html">Threadpool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memory-manager.html">Memory manager</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tiled bitmap</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Detailed requirements and design</a><ul>
+      <li>Previous: <a href="memory-manager.html" title="previous chapter">Memory manager</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Kees-Jan Dijkzeul.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.2.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/detailed-requirements-and-design/tiled-bitmap.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

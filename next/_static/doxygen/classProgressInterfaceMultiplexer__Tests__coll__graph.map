@@ -1,0 +1,9 @@
+<map id="ProgressInterfaceMultiplexer_Tests" name="ProgressInterfaceMultiplexer_Tests">
+<area shape="rect" id="Node000001" title=" " alt="" coords="102,190,316,296"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,14,95,86"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="90,95,168,189,163,191,87,100"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="120,5,298,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="211,92,211,174,206,172,207,97"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="322,5,501,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="368,93,278,181,274,177,363,96"/>
+</map>

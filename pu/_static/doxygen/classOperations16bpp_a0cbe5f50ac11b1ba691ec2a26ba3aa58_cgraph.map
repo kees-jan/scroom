@@ -1,0 +1,16 @@
+<map id="Operations16bpp::cache" name="Operations16bpp::cache">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,124,184,152"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Bitmap_1_1BitmapSurface.html#a697961480f8888e1a149d4be54adb9e7" title=" " alt="" coords="232,29,461,74"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,122,231,84,256,78,251,80,233,89,132,126"/>
+<area shape="rect" id="Node000004" href="$classColor.html#a52fc7f748b78eac3e266df3e58cb4ac5" title=" " alt="" coords="278,98,415,126"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="183,126,264,119,260,122,185,131"/>
+<area shape="rect" id="Node000006" href="$color_8hh.html#af151609bdfe02bb2507314a1b59c000d" title=" " alt="" coords="323,150,370,178"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="184,145,310,159,305,161,184,150"/>
+<area shape="rect" id="Node000007" href="$namespaceScroom_1_1Utils.html#ae993dff329fe71d3a12da2981b172fbf" title=" " alt="" coords="266,201,426,246"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="133,150,233,186,256,196,251,196,231,192,132,155"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Bitmap_1_1BitmapSurface.html#a01b392735034681d7dfabc4fc2f71cfa" title=" " alt="" coords="509,29,738,74"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="461,49,496,51,491,52,462,54"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="571,28,570,19,579,10,597,5,624,3,653,5,673,14,667,14,652,10,624,8,598,10,581,15,575,21,576,30"/>
+<area shape="rect" id="Node000005" href="$color_8hh.html#a5f58fb375bbeafcd94a58efff767de34" title=" " alt="" coords="559,98,688,126"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="415,109,546,111,541,112,416,114"/>
+</map>

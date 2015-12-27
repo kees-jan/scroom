@@ -1,0 +1,26 @@
+<map id="Scroom::Detail::ThreadPool::Builder::addMany" name="Scroom::Detail::ThreadPool::Builder::addMany">
+<area shape="rect" id="Node000001" title=" " alt="" coords="929,192,1127,236"/>
+<area shape="rect" id="Node000002" href="$classThreadPool.html#a3b6be78dc258ee937775128c101aa5fc" title=" " alt="" coords="742,173,872,201"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="910,200,872,198,872,192,916,200"/>
+<area shape="rect" id="Node000012" href="$classThreadPool.html#a6179ee6b010f0462037be5378afc2339" title=" " alt="" coords="733,225,881,253"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="911,227,882,233,881,228,916,227"/>
+<area shape="rect" id="Node000003" href="$classLayer.html#a3d2253a27e5b42cde01f15c85959580c" title=" " alt="" coords="508,32,637,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="781,161,739,120,713,99,684,80,637,61,637,56,687,75,716,94,743,117,786,162"/>
+<area shape="rect" id="Node000004" href="$namespaceScroom_1_1TiledBitmap.html#a55c09152eec48a7f0b8b0819cd243e4d" title=" " alt="" coords="226,49,411,94"/>
+<area shape="poly" id="edge10_Node000002_Node000004" title=" " alt="" coords="770,165,731,144,684,124,614,105,542,92,412,77,411,72,543,86,616,100,686,119,733,139,775,165"/>
+<area shape="rect" id="Node000008" href="$classCompressedTile.html#a097a41844c75d21396fb64db3c039c8a" title=" " alt="" coords="476,134,668,179"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="724,177,668,172,668,166,730,177"/>
+<area shape="rect" id="Node000009" href="$classPipetteHandler.html#acd17e052163c801ed556c06d8bb29f59" title=" " alt="" coords="459,203,685,230"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="724,198,686,205,685,200,729,197"/>
+<area shape="rect" id="Node000010" href="$classWaitForAsyncOp.html#a01dcf09800aaba90cc168f4beac3e8c7" title=" " alt="" coords="472,255,672,282"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="751,206,735,216,711,231,686,244,648,257,647,251,684,239,708,226,732,211,746,208"/>
+<area shape="rect" id="Node000011" href="$classLayerCoordinator.html#aaed9f19d2d0be309e22c373551c27f9b" title="TileInitialisationObserver." alt="" coords="464,307,680,334"/>
+<area shape="poly" id="edge11_Node000002_Node000011" title=" " alt="" coords="743,208,735,216,719,235,712,255,705,276,687,296,664,309,662,304,684,292,700,273,707,254,715,233,731,212,738,210"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="490,55,412,64,411,59,495,53"/>
+<area shape="rect" id="Node000005" href="$classPnm.html#a512fa4ba81d11455c33b34b28588e629" title=" " alt="" coords="46,5,137,33"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="208,48,138,32,136,27,213,45"/>
+<area shape="rect" id="Node000006" href="$classTiff.html#a858a1b813e95709369796e88876049dc" title=" " alt="" coords="50,57,133,85"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="208,73,134,74,132,69,212,69"/>
+<area shape="rect" id="Node000007" href="$classTiledBitmap.html#a207620c6b7460ae0e9c7425f3c4c592c" title=" " alt="" coords="5,109,178,137"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="209,98,156,111,154,106,213,94"/>
+</map>

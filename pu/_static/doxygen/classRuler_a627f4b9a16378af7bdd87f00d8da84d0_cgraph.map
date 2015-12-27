@@ -1,0 +1,11 @@
+<map id="Ruler::drawTicks" name="Ruler::drawTicks">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,50,135,78"/>
+<area shape="rect" id="Node000002" href="$classRuler.html#a2a2c9b820a3b0f1ad76d4d26c36bc99b" title=" " alt="" coords="384,13,546,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,47,134,28,182,12,229,5,278,3,371,10,366,12,278,8,230,10,183,17,136,32,97,52"/>
+<area shape="rect" id="Node000003" href="$classRuler.html#a53568383844d4251c0d2a2092932c6f4" title=" " alt="" coords="183,50,336,78"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="135,61,170,63,165,65,136,66"/>
+<area shape="rect" id="Node000004" href="$classRulerCalculations.html#a31dce62e8d507c4e378dfc3eb984547e" title=" " alt="" coords="188,101,331,146"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="116,76,175,96,170,97,116,81"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="336,47,373,43,368,44,337,53"/>
+<area shape="poly" id="edge4_Node000003_Node000003" title=" " alt="" coords="226,49,221,41,225,32,238,25,259,23,282,26,295,35,290,35,280,31,259,29,240,31,229,35,227,41,231,50"/>
+</map>

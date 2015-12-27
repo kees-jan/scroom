@@ -1,0 +1,15 @@
+<map id="ChildView" name="ChildView">
+<area shape="rect" id="Node000001" title=" " alt="" coords="328,496,500,724"/>
+<area shape="rect" id="Node000002" href="$classViewInterface.html" title=" " alt="" coords="5,239,177,423"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,420,190,421,331,539,326,541,187,425,189,425"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="38,5,144,189"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="92,202,94,239,89,239,91,207"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="201,239,339,423"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="325,433,358,496,353,496,323,439"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="199,53,341,142"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="271,154,273,239,267,238,269,159"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="363,286,561,375"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="456,373,439,480,434,478,453,377"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="586,286,765,375"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="637,374,513,507,510,503,632,377"/>
+</map>

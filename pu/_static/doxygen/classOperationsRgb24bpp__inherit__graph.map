@@ -1,0 +1,20 @@
+<map id="OperationsRgb24bpp" name="OperationsRgb24bpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="139,1076,312,1238"/>
+<area shape="rect" id="Node000002" href="$classPipetteCommonOperationsRGB.html" title=" " alt="" coords="105,933,346,1028"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="227,1040,228,1077,223,1075,224,1045"/>
+<area shape="rect" id="Node000003" href="$classPipetteLayerOperations.html" title=" " alt="" coords="56,746,219,818"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="160,829,207,933,202,934,159,835"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="9,447,146,631"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="104,643,132,746,126,746,104,648"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,274,147,363"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="77,375,80,447,74,447,76,380"/>
+<area shape="rect" id="Node000006" href="$classInterface.html" title=" " alt="" coords="195,5,301,189"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="217,207,212,238,193,348,183,434,161,631,145,747,140,746,156,631,177,433,187,347,207,237,218,201"/>
+<area shape="rect" id="Node000009" href="$classLayerRenderingOperations.html" title=" " alt="" coords="222,237,405,399"/>
+<area shape="poly" id="edge9_Node000009_Node000006" title=" " alt="" coords="280,201,292,238,287,238,280,206"/>
+<area shape="rect" id="Node000007" href="$classCommonOperations.html" title=" " alt="" coords="243,679,384,885"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="263,896,248,935,244,932,260,901"/>
+<area shape="rect" id="Node000008" href="$classLayerOperations.html" title=" " alt="" coords="242,492,385,586"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="314,599,316,680,311,679,313,604"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="314,412,316,493,311,492,313,417"/>
+</map>

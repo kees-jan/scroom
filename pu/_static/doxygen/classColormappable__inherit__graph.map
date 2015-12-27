@@ -1,0 +1,19 @@
+<map id="Colormappable" name="Colormappable">
+<area shape="rect" id="Node000001" title=" " alt="" coords="490,237,727,578"/>
+<area shape="rect" id="Node000003" href="$classColormapHelperBase.html" title=" " alt="" coords="196,743,386,972"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="480,562,434,627,358,745,353,742,429,624,482,557"/>
+<area shape="rect" id="Node000006" href="$classColormappableMock.html" title=" " alt="" coords="443,766,588,950"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="572,590,537,766,532,765,569,594"/>
+<area shape="rect" id="Node000008" href="$classTransformPresentation.html" title=" " alt="" coords="612,687,796,1028"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="648,590,670,688,665,687,647,595"/>
+<area shape="rect" id="Node000009" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html" title=" " alt="" coords="820,626,1022,1089"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="738,535,810,624,823,645,817,645,805,627,737,540"/>
+<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="556,5,662,189"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="609,202,611,238,606,237,608,207"/>
+<area shape="rect" id="Node000004" href="$classColormapHelper.html" title=" " alt="" coords="5,1249,148,1411"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="230,988,163,1138,114,1250,109,1248,158,1136,232,983"/>
+<area shape="rect" id="Node000005" href="$classMonochromeColormapHelper.html" title=" " alt="" coords="173,1137,410,1522"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="293,984,294,1138,289,1137,290,989"/>
+<area shape="rect" id="Node000007" href="$classColormappablePresentationMock.html" title=" " alt="" coords="434,1294,661,1366"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="525,963,548,1295,543,1294,521,966"/>
+</map>

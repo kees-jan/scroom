@@ -1,0 +1,7 @@
+<map id="Scroom::TiledBitmap::LayerSpecForBitmapper::get" name="Scroom::TiledBitmap::LayerSpecForBitmapper::get">
+<area shape="rect" id="Node000001" title=" " alt="" coords="575,14,788,58"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1TiledBitmap.html#a22a1bb4f862ef52ed08042515ffca9da" title=" " alt="" coords="364,14,527,58"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="557,36,527,39,527,34,562,36"/>
+<area shape="rect" id="Node000003" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html#a9330592b5fabc337ad248f8c73914a6b" title=" " alt="" coords="5,5,316,67"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="345,36,316,39,316,34,351,36"/>
+</map>

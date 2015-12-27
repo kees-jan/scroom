@@ -1,0 +1,20 @@
+<map id="MonochromeColormapHelper" name="MonochromeColormapHelper">
+<area shape="rect" id="Node000001" title=" " alt="" coords="436,1021,673,1361"/>
+<area shape="rect" id="Node000002" href="$classColormapHelperBase.html" title=" " alt="" coords="356,697,546,903"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="483,915,512,1022,507,1020,480,920"/>
+<area shape="rect" id="Node000003" href="$classColormapProvider.html" title=" " alt="" coords="5,373,133,445"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="83,457,111,518,127,549,147,577,195,628,249,673,304,713,358,747,353,749,302,717,246,678,191,632,143,581,123,552,106,520,84,462"/>
+<area shape="rect" id="Node000004" href="$classInterface.html" title=" " alt="" coords="119,5,225,189"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="137,206,83,374,78,372,137,201"/>
+<area shape="rect" id="Node000005" href="$classColormappable.html" title=" " alt="" coords="157,239,394,579"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="207,201,222,239,216,239,207,206"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="358,590,408,697,402,697,358,595"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="418,373,619,445"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="514,443,474,681,469,679,511,447"/>
+<area shape="rect" id="Node000007" href="$classColor.html" title=" " alt="" coords="671,674,785,925"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="674,923,639,1007,635,1003,671,927"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="642,373,813,445"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="729,458,730,675,725,674,727,463"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="837,364,982,454"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="884,465,787,678,783,675,881,469"/>
+</map>

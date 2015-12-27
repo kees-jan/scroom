@@ -1,0 +1,32 @@
+<map id="Scroom::Detail::ThreadPool::Queue::getWeak" name="Scroom::Detail::ThreadPool::Queue::getWeak">
+<area shape="rect" id="Node000001" title=" " alt="" coords="980,245,1178,290"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Detail_1_1ThreadPool.html#a43cf587770443118a3c6e147a7f43bed" title=" " alt="" coords="733,75,932,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1030,236,866,122,867,117,1036,237"/>
+<area shape="rect" id="Node000005" href="$classThreadPool.html#a3b6be78dc258ee937775128c101aa5fc" title=" " alt="" coords="767,254,898,282"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="962,268,899,270,898,265,967,267"/>
+<area shape="rect" id="Node000015" href="$classThreadPool.html#a6179ee6b010f0462037be5378afc2339" title=" " alt="" coords="759,306,906,334"/>
+<area shape="poly" id="edge15_Node000001_Node000015" title=" " alt="" coords="967,291,902,308,901,303,962,292"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#affd9ff3c1ea9504cef63eed600fe6bda" title=" " alt="" coords="473,5,671,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="728,71,659,53,659,48,734,70"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a1c0de7a61d7b96779d031d3cef0ec99c" title=" " alt="" coords="473,75,671,119"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="715,98,672,100,671,94,720,96"/>
+<area shape="rect" id="Node000006" href="$classLayer.html#a3d2253a27e5b42cde01f15c85959580c" title=" " alt="" coords="508,143,637,171"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="792,245,743,219,684,191,633,174,633,169,686,187,745,214,798,246"/>
+<area shape="rect" id="Node000007" href="$namespaceScroom_1_1TiledBitmap.html#a55c09152eec48a7f0b8b0819cd243e4d" title=" " alt="" coords="226,160,411,205"/>
+<area shape="poly" id="edge13_Node000005_Node000007" title=" " alt="" coords="759,250,685,236,541,212,412,195,411,190,542,207,686,230,764,249"/>
+<area shape="rect" id="Node000011" href="$classCompressedTile.html#a097a41844c75d21396fb64db3c039c8a" title=" " alt="" coords="476,245,668,290"/>
+<area shape="poly" id="edge10_Node000005_Node000011" title=" " alt="" coords="749,268,668,270,668,265,754,267"/>
+<area shape="rect" id="Node000012" href="$classPipetteHandler.html#acd17e052163c801ed556c06d8bb29f59" title=" " alt="" coords="459,314,685,342"/>
+<area shape="poly" id="edge11_Node000005_Node000012" title=" " alt="" coords="759,285,686,305,639,316,637,311,685,300,754,286"/>
+<area shape="rect" id="Node000013" href="$classWaitForAsyncOp.html#a01dcf09800aaba90cc168f4beac3e8c7" title=" " alt="" coords="472,366,672,394"/>
+<area shape="poly" id="edge12_Node000005_Node000013" title=" " alt="" coords="755,283,735,297,720,310,712,325,703,341,687,355,660,368,659,363,684,351,699,337,707,323,716,307,732,292,750,285"/>
+<area shape="rect" id="Node000014" href="$classLayerCoordinator.html#aaed9f19d2d0be309e22c373551c27f9b" title="TileInitialisationObserver." alt="" coords="464,418,680,446"/>
+<area shape="poly" id="edge14_Node000005_Node000014" title=" " alt="" coords="755,281,735,296,724,309,717,322,712,350,707,379,700,393,687,407,667,420,665,415,684,403,695,390,702,377,707,349,712,321,719,306,732,292,751,283"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="490,166,412,176,411,171,495,164"/>
+<area shape="rect" id="Node000008" href="$classPnm.html#a512fa4ba81d11455c33b34b28588e629" title=" " alt="" coords="46,116,137,144"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="208,159,138,143,136,138,213,156"/>
+<area shape="rect" id="Node000009" href="$classTiff.html#a858a1b813e95709369796e88876049dc" title=" " alt="" coords="50,168,133,196"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="208,184,134,185,132,180,212,181"/>
+<area shape="rect" id="Node000010" href="$classTiledBitmap.html#a207620c6b7460ae0e9c7425f3c4c592c" title=" " alt="" coords="5,220,178,248"/>
+<area shape="poly" id="edge9_Node000007_Node000010" title=" " alt="" coords="209,209,156,222,154,218,213,205"/>
+</map>

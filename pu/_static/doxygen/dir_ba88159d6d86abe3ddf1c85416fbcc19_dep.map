@@ -1,0 +1,13 @@
+<map id="plugins/pipette" name="plugins/pipette">
+<area shape="rect" id="node2" href="dir_d8744b74259f7076003e26daf9e6a3f7.html" title="src" alt="" coords="102,141,143,168"/>
+<area shape="rect" id="node4" href="dir_6719ab1f1f7655efc2fa43f7eb574fd1.html" title="libs" alt="" coords="128,216,173,244"/>
+<area shape="poly" id="edge1" href="dir_000041_000014.html" alt="" coords="129,167,143,202,138,201,126,171"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000041_000014.html" title="10" alt="" coords="139,187,155,204"/>
+<area shape="rect" id="node3" href="dir_95c42426c1c5462eace02f34978c69b5.html" title="test" alt="" coords="129,65,175,93"/>
+<area shape="poly" id="edge3" href="dir_000052_000041.html" alt="" coords="148,91,136,128,131,125,145,95"/>
+<area shape="rect" id="edge3-headlabel" href="dir_000052_000041.html" title="1" alt="" coords="138,118,146,135"/>
+<area shape="poly" id="edge2" href="dir_000052_000014.html" alt="" coords="155,92,157,190,156,202,152,199,152,190,151,95"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000052_000014.html" title="1" alt="" coords="159,190,167,207"/>
+<area shape="rect" id="clust2" href="dir_ba88159d6d86abe3ddf1c85416fbcc19.html" alt="" coords="27,54,185,179"/>
+<area shape="rect" id="clust1" href="dir_38c8d24aef3972a7f87b834274e76e31.html" title="plugins" alt="" coords="16,16,196,190"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="Ruler::updateAllocatedSize" name="Ruler::updateAllocatedSize">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,44,202,72"/>
+<area shape="rect" id="Node000002" href="$classRuler.html#ae35d5489f8ddd9cfb2faf73926d7dd2f" title=" " alt="" coords="250,44,472,72"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="202,56,237,58,231,59,202,61"/>
+<area shape="rect" id="Node000003" href="$classRulerCalculations.html#a4157b201d3bd2dafa693a3065b66e8ec" title=" " alt="" coords="520,5,663,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="470,41,502,39,507,39,470,47"/>
+<area shape="rect" id="Node000004" href="$classRulerCalculations.html#a85716bd2a71013c497de7491a386ffb8" title=" " alt="" coords="711,36,865,81"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="473,59,520,60,663,60,698,62,693,62,663,65,520,65,473,64"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="664,36,698,44,693,44,663,41"/>
+</map>

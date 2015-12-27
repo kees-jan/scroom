@@ -1,0 +1,18 @@
+<map id="libs/util/test/counter&#45;tests.cc" name="libs/util/test/counter&#45;tests.cc">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,157,50"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="71,249,147,277"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="52,53,35,73,19,99,17,112,20,125,32,164,54,200,86,238,81,239,50,203,27,167,14,126,12,112,15,97,31,70,54,48"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="29,98,133,126"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="82,48,84,83,78,82,80,53"/>
+<area shape="rect" id="Node000004" href="$utilities_8hh.html" title=" " alt="" coords="156,98,299,126"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="120,48,193,89,188,91,120,53"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="63,174,104,201"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="200,128,120,171,117,166,204,124"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="129,174,260,201"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="224,124,209,161,204,158,220,128"/>
+<area shape="rect" id="Node000007" href="$logger_8hh.html" title=" " alt="" coords="284,174,417,201"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="250,124,318,165,313,166,249,129"/>
+<area shape="poly" id="edge7_Node000007_Node000002" title=" " alt="" coords="310,203,163,248,162,243,305,201"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="289,249,412,277"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="352,200,352,235,348,232,348,204"/>
+</map>

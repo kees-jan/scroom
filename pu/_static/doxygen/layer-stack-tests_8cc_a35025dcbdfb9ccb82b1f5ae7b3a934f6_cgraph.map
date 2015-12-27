@@ -1,0 +1,19 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,107,59,135"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1TiledBitmap_1_1LayerStack.html#aae33189b8149d938c36081ec7a65c843" title=" " alt="" coords="124,29,282,74"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="58,106,106,84,124,78,120,82,108,89,61,110"/>
+<area shape="rect" id="Node000007" href="$namespaceScroom_1_1TiledBitmap.html#aaaaab02fd8679d1106011b54d8b3bd1e" title=" " alt="" coords="107,99,299,143"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="59,118,93,119,89,123,60,124"/>
+<area shape="rect" id="Node000008" href="$ringbuffer-sink-tests_8cc.html#a7b934ee9250ba6a9298d13e8a7487169" title=" " alt="" coords="155,167,251,195"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="60,132,108,153,142,166,137,167,106,158,59,137"/>
+<area shape="poly" id="edge7_Node000002_Node000002" title=" " alt="" coords="170,28,169,19,174,10,186,5,203,3,221,5,234,13,228,14,220,10,203,8,187,10,178,14,174,21,175,30"/>
+<area shape="rect" id="Node000003" href="$classLayer.html#a8f3623d32725dbc8537779fb7f682e46" title=" " alt="" coords="347,38,453,66"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="281,49,334,51,329,52,282,54"/>
+<area shape="rect" id="Node000004" href="$classLayer.html#a461f24acc6b9fac1f007516bcd380c25" title="Layer." alt="" coords="501,38,603,66"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="453,49,488,51,483,52,454,54"/>
+<area shape="rect" id="Node000005" href="$classCompressedTile.html#a6ebd69edede63de69c82229f16475ce6" title=" " alt="" coords="651,38,826,66"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="603,49,638,51,632,52,603,54"/>
+<area shape="rect" id="Node000006" href="$classCompressedTile.html#a709f5e689dd41c5fee81f6da28ebea2e" title="CompressedTile." alt="" coords="874,38,1113,66"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="826,58,861,60,856,61,827,63"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="871,43,842,45,842,40,876,42"/>
+</map>

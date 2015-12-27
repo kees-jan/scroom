@@ -1,0 +1,18 @@
+<map id="PipetteCommonOperations16bpp" name="PipetteCommonOperations16bpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="112,933,339,1006"/>
+<area shape="rect" id="Node000002" href="$classPipetteLayerOperations.html" title=" " alt="" coords="56,746,219,818"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,830,212,933,206,934,159,834"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="9,447,146,631"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="104,643,132,746,126,746,103,648"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,274,147,363"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="77,375,80,447,74,447,76,380"/>
+<area shape="rect" id="Node000005" href="$classInterface.html" title=" " alt="" coords="195,5,301,189"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="218,201,212,238,193,348,183,434,161,631,145,747,140,746,156,631,177,433,187,347,207,237,216,206"/>
+<area shape="rect" id="Node000008" href="$classLayerRenderingOperations.html" title=" " alt="" coords="222,237,405,399"/>
+<area shape="poly" id="edge8_Node000008_Node000005" title=" " alt="" coords="280,201,292,238,287,238,279,206"/>
+<area shape="rect" id="Node000006" href="$classCommonOperations.html" title=" " alt="" coords="243,679,384,885"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="261,897,244,935,240,932,256,900"/>
+<area shape="rect" id="Node000007" href="$classLayerOperations.html" title=" " alt="" coords="242,492,385,586"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="315,599,316,680,311,679,312,604"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="314,412,316,493,311,492,313,417"/>
+</map>

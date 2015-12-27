@@ -1,0 +1,14 @@
+<map id="TransparentOverlay" name="TransparentOverlay">
+<area shape="rect" id="Node000001" title=" " alt="" coords="241,469,405,653"/>
+<area shape="rect" id="Node000002" href="$classPluginInformationInterface.html" title=" " alt="" coords="5,260,216,399"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="185,407,244,471,239,472,183,412"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="164,5,270,189"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="168,205,145,261,140,259,170,200"/>
+<area shape="rect" id="Node000004" href="$classNewAggregateInterface.html" title=" " alt="" coords="240,293,405,366"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="266,201,310,293,304,293,265,206"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="324,379,325,471,320,469,321,383"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="429,237,566,421"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="422,431,394,472,390,468,418,434"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="427,53,568,142"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="499,155,500,238,495,237,496,159"/>
+</map>

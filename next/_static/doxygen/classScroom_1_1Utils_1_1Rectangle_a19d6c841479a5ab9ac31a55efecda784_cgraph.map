@@ -1,0 +1,19 @@
+<map id="Scroom::Utils::Rectangle::Rectangle" name="Scroom::Utils::Rectangle::Rectangle">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,113,187,158"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html#a1262f445c07c33e16069e2497aed581f" title=" " alt="" coords="243,7,424,51"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,110,234,64,257,56,253,59,236,69,141,115"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Rectangle.html#aac53b13b110251e6666a6e8499c19f27" title=" " alt="" coords="243,79,424,123"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="186,120,230,115,225,118,188,125"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Rectangle.html#a72976ed3a84a5c482d396038aa67f077" title=" " alt="" coords="235,151,432,179"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="187,144,222,150,216,152,187,150"/>
+<area shape="rect" id="Node000008" href="$classScroom_1_1Utils_1_1Rectangle.html#a405cfffb11cdb9f2fa5600e2bf15231c" title=" " alt="" coords="235,211,432,239"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="154,156,236,188,279,205,274,206,234,193,153,161"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Rectangle.html#ac3ffb0067f3c0d0686ea2319cd5d5618" title=" " alt="" coords="480,5,661,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="424,26,467,28,462,29,425,31"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Rectangle.html#a3b8d627a36eb56f6f36eea5004591154" title=" " alt="" coords="480,75,661,119"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="424,97,467,98,462,99,425,102"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Rectangle.html#ad623b0b902d4e2cd1d858300728c78d1" title=" " alt="" coords="480,144,661,189"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="432,163,467,165,462,166,433,168"/>
+<area shape="rect" id="Node000009" href="$classScroom_1_1Utils_1_1Rectangle.html#a23ed938b3f63186f48c5828024a9d6ab" title=" " alt="" coords="480,213,661,258"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="432,227,467,231,462,231,432,232"/>
+</map>

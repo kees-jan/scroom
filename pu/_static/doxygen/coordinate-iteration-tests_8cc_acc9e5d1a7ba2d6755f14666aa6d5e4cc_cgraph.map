@@ -1,0 +1,15 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,135,59,163"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Segment.html#ab731b0dfd7e9283c571408d780944131" title=" " alt="" coords="123,40,297,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="49,133,75,113,105,95,121,89,117,93,108,99,78,118,52,136"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Segment.html#a1e90e62a6e59a95390c8db56afeae1a5" title=" " alt="" coords="107,108,313,136"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="58,143,100,137,97,141,60,147"/>
+<area shape="rect" id="Node000006" href="$ringbuffer-sink-tests_8cc.html#a7b934ee9250ba6a9298d13e8a7487169" title=" " alt="" coords="162,160,258,188"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="59,150,148,163,144,167,59,155"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Segment.html#abd475ea75311ffaed7e8175125d2d3b5" title=" " alt="" coords="123,212,297,257"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="52,161,108,197,122,205,117,206,105,202,51,166"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Segment.html#a671e0c8614114bf5eb99afd36a2dddc4" title=" " alt="" coords="361,5,535,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="297,47,348,42,343,44,298,52"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Segment.html#a934a0a56d270e8d4fc4ceddb4dc7fb82" title=" " alt="" coords="361,75,535,119"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="297,72,348,81,343,83,298,78"/>
+</map>

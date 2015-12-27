@@ -1,0 +1,17 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,178,59,206"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html#aefc32d2cc75cbee6a1084021d1a0a674" title=" " alt="" coords="123,109,304,154"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="58,180,106,164,130,158,125,161,108,169,60,185"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Rectangle.html#ac755bb93963b72b2e25878b64e167cdc" title=" " alt="" coords="107,178,320,206"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="59,189,93,190,89,193,60,194"/>
+<area shape="rect" id="Node000008" href="$ringbuffer-sink-tests_8cc.html#a7b934ee9250ba6a9298d13e8a7487169" title=" " alt="" coords="165,230,262,258"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="59,199,107,214,153,228,147,230,106,220,59,204"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Rectangle.html#af497bd1988b10b5e521a82bc05285eed" title=" " alt="" coords="368,5,549,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="262,106,367,60,385,55,380,57,369,65,265,111"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Rectangle.html#ad623b0b902d4e2cd1d858300728c78d1" title=" " alt="" coords="368,75,549,119"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="304,116,355,111,350,113,305,121"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Rectangle.html#ac0a99c1ecbac98201ef36d88bf56eb40" title=" " alt="" coords="368,144,549,189"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="304,142,356,151,350,152,304,147"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Rectangle.html#a23ed938b3f63186f48c5828024a9d6ab" title=" " alt="" coords="368,213,549,258"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="294,152,321,164,346,181,369,199,381,207,376,206,367,203,343,186,319,169,293,157"/>
+</map>

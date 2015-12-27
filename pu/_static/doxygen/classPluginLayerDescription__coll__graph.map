@@ -1,0 +1,9 @@
+<map id="PluginLayerDescription" name="PluginLayerDescription">
+<area shape="rect" id="Node000001" title=" " alt="" coords="151,168,312,285"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,14,95,86"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,94,175,167,170,169,96,99"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="119,5,344,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="233,92,234,152,229,150,230,96"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="368,14,588,86"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="431,85,327,161,324,156,426,87"/>
+</map>

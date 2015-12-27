@@ -1,0 +1,8 @@
+<map id="Scroom::TiledBitmap::anonymous_namespace{layer&#45;reduction::cc}::reduceColormapPairs" name="Scroom::TiledBitmap::anonymous_namespace{layer&#45;reduction::cc}::reduceColormapPairs">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,193,108"/>
+<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="46,28,49,18,60,10,76,5,99,3,126,6,145,15,140,16,125,11,99,8,77,10,62,15,54,21,51,30"/>
+<area shape="rect" id="Node000002" href="$blob-tests_8cc.html#a437575caa19eb3da5759ce54a05bfe32" title=" " alt="" coords="332,28,408,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="193,57,319,46,314,48,193,62"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Bitmap_1_1SampleIterator.html#a6dddb604ef3669fd04851f91645b8840" title=" " alt="" coords="241,80,499,108"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="193,75,228,80,223,81,193,80"/>
+</map>

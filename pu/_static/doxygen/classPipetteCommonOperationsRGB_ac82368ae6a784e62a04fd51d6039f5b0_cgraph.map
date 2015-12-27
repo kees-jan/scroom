@@ -1,0 +1,13 @@
+<map id="PipetteCommonOperationsRGB::sumPixelValues" name="PipetteCommonOperationsRGB::sumPixelValues">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,144,231,189"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html#af497bd1988b10b5e521a82bc05285eed" title=" " alt="" coords="279,5,460,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,142,207,101,277,60,293,55,288,58,280,65,210,106,152,146"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Rectangle.html#ad623b0b902d4e2cd1d858300728c78d1" title=" " alt="" coords="279,75,460,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="201,141,274,122,269,125,203,146"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Rectangle.html#ac0a99c1ecbac98201ef36d88bf56eb40" title=" " alt="" coords="279,144,460,189"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="231,164,266,165,261,167,232,169"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Rectangle.html#a23ed938b3f63186f48c5828024a9d6ab" title=" " alt="" coords="279,213,460,258"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="202,187,274,208,269,210,202,192"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Rectangle.html#a3b8d627a36eb56f6f36eea5004591154" title=" " alt="" coords="279,283,460,327"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="150,186,210,227,280,268,293,276,288,276,277,273,207,231,149,192"/>
+</map>

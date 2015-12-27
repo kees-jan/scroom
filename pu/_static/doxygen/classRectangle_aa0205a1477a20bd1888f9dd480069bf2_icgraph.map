@@ -1,0 +1,16 @@
+<map id="Rectangle::getTopLeft" name="Rectangle::getTopLeft">
+<area shape="rect" id="Node000001" title=" " alt="" coords="465,84,626,112"/>
+<area shape="rect" id="Node000002" href="$classCommonOperations.html#af173ef0acae113c9b1ae8fa658e8f4be" title=" " alt="" coords="226,59,417,86"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="447,87,418,86,417,81,453,87"/>
+<area shape="rect" id="Node000004" href="$classOperations1bpp.html#a5eb9524566683ba1c7c4465270f79de5" title=" " alt="" coords="9,5,174,33"/>
+<area shape="poly" id="edge6_Node000001_Node000004" title=" " alt="" coords="499,77,460,63,416,50,354,38,290,30,175,22,174,17,290,24,355,32,418,45,462,58,504,77"/>
+<area shape="rect" id="Node000005" href="$classOperations8bpp.html#a28875a6199ba6136a09fdc58c12a7d1b" title=" " alt="" coords="9,109,174,137"/>
+<area shape="poly" id="edge7_Node000001_Node000005" title=" " alt="" coords="449,106,174,121,174,116,450,101"/>
+<area shape="rect" id="Node000006" href="$classOperations.html#ac19af1189a115005d637b95aea38267b" title=" " alt="" coords="25,161,158,189"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="452,114,417,123,159,167,158,162,417,118,447,115"/>
+<area shape="rect" id="Node000003" href="$classOperations16bpp.html#ab65f3d021518d65040d464c758f57926" title=" " alt="" coords="5,57,178,85"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="208,73,179,74,178,69,213,71"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="241,56,154,36,154,31,246,53"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="238,91,158,111,157,106,243,89"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="286,94,235,124,179,151,145,163,143,158,177,146,233,119,281,95"/>
+</map>

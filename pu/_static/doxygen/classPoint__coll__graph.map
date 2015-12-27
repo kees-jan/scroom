@@ -1,0 +1,13 @@
+<map id="Point&lt; T &gt;" name="Point&lt; T &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="354,190,475,374"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,160,95"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,100,356,238,352,240,157,106"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="184,5,320,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="292,104,357,195,352,196,290,109"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="344,5,485,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="416,108,417,191,412,189,413,112"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="509,5,643,95"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="539,105,477,197,473,193,535,108"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="667,14,685,86"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="669,73,657,96,618,138,575,176,490,238,487,234,572,172,614,134,653,93,665,77"/>
+</map>

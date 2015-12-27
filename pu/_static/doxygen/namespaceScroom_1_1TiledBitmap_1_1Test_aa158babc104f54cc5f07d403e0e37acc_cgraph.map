@@ -1,0 +1,5 @@
+<map id="Scroom::TiledBitmap::Test::sample" name="Scroom::TiledBitmap::Test::sample">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,163,50"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1TiledBitmap_1_1Test.html#a3730de8e6dbdef7aa8c2d6b2addee26f" title=" " alt="" coords="211,5,368,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,25,198,27,192,28,163,30"/>
+</map>

@@ -1,0 +1,17 @@
+<map id="Scroom::Utils::Counted::Counted" name="Scroom::Utils::Counted::Counted">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,75,176,119"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Counted.html#a3fea7d8dd19fa44b2b142361c9b1ba86" title=" " alt="" coords="224,75,394,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="175,94,211,96,205,98,176,100"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Count.html#a71903b265cc75a8fcd749c637c3ae060" title=" " alt="" coords="442,75,596,119"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="394,94,429,97,424,97,395,100"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Count.html#a403581e21714915897aadf020ba83a71" title=" " alt="" coords="651,5,805,50"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="588,72,641,56,646,55,589,77"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Counter.html#a03663eda498c916f4e9011b88c400b9e" title=" " alt="" coords="644,75,812,119"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="596,94,631,97,626,97,597,100"/>
+<area shape="rect" id="Node000008" href="$classScroom_1_1Utils_1_1Counter.html#aff741dd8d34219c5c946587f1828a25d" title=" " alt="" coords="644,144,812,189"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="589,117,646,139,641,138,588,123"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Counter.html#a1e05f69b5240fbab3e7ab351672167f0" title=" " alt="" coords="860,75,1027,119"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="812,94,846,97,841,97,812,100"/>
+<area shape="rect" id="Node000007" href="$counter_8cc.html#a14e997dd0204437df28124758bdf1b96" title=" " alt="" coords="1075,83,1218,111"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1027,94,1063,97,1057,97,1028,100"/>
+</map>

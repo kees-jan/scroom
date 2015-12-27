@@ -1,0 +1,11 @@
+<map id="View::redraw" name="View::redraw">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,88,111,116"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a8a866a6439fc60dfe259e168059aa65e" title=" " alt="" coords="159,5,343,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,85,116,64,158,43,181,37,177,40,160,48,118,69,83,89"/>
+<area shape="rect" id="Node000003" href="$cairo-helpers_8cc.html#ac7a152a4cc864e9c67acbc6686a9d3a4" title=" " alt="" coords="176,57,326,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="110,91,163,84,158,87,112,96"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Base.html#aae9a071db1ff973ca6e844a69d3e10ea" title=" " alt="" coords="177,109,325,154"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="111,107,164,116,159,119,112,112"/>
+<area shape="rect" id="Node000005" href="$classView.html#a7c6bc955a9ea12b76b49c2c47d508329" title=" " alt="" coords="167,177,334,205"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="78,114,116,139,160,163,176,172,171,172,158,168,113,144,77,119"/>
+</map>

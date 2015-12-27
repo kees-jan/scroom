@@ -1,0 +1,9 @@
+<map id="Scroom::Utils::get_or" name="Scroom::Utils::get_or">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,163,33"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a958e9a62ee2b943aa9cb5b23f2aa8f02" title=" " alt="" coords="211,5,368,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,17,198,19,192,19,163,22"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1Utils.html#a1df110b1fef13cbeaf6122b1ca752a97" title=" " alt="" coords="416,5,553,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="368,17,403,19,398,19,369,22"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Context.html#aa411d28e6b2dd90b062039070a381907" title=" " alt="" coords="601,5,798,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="554,17,589,19,583,19,554,22"/>
+</map>

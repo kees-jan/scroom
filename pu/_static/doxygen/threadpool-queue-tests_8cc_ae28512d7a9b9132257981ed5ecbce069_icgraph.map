@@ -1,0 +1,32 @@
+<map id="add" name="add">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1093,293,1138,321"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a0709550b4e3927212a6c89cf719e5a29" title=" " alt="" coords="847,165,1045,210"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1096,280,1073,252,1043,224,1024,213,1025,207,1047,220,1077,248,1101,282"/>
+<area shape="rect" id="Node000013" href="$classScroom_1_1Bookkeeping_1_1Detail_1_1TokenAddition.html#a768d5104b9ee603fd6727f360265714c" title=" " alt="" coords="862,234,1030,295"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="1075,298,1030,288,1030,283,1080,298"/>
+<area shape="rect" id="Node000014" href="$classScroom_1_1Bookkeeping_1_1Detail_1_1TokenAddition.html#a1b5b0605d0baa2e318837d7d3cf716a6" title=" " alt="" coords="862,319,1030,381"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="1080,316,1030,331,1029,326,1075,317"/>
+<area shape="rect" id="Node000015" href="$classScroom_1_1Bookkeeping_1_1Token.html#a7b71440e7f51ff59f90d034a7170dac6" title=" " alt="" coords="865,405,1027,450"/>
+<area shape="poly" id="edge15_Node000001_Node000015" title=" " alt="" coords="1101,332,1077,366,1047,395,1025,407,1024,402,1043,390,1073,363,1096,335"/>
+<area shape="rect" id="Node000003" href="$classThreadPool.html#a3b6be78dc258ee937775128c101aa5fc" title=" " alt="" coords="660,148,790,176"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="828,174,791,172,790,167,834,174"/>
+<area shape="rect" id="Node000012" href="$classThreadPool.html#a6179ee6b010f0462037be5378afc2339" title=" " alt="" coords="651,200,799,228"/>
+<area shape="poly" id="edge12_Node000002_Node000012" title=" " alt="" coords="829,202,800,208,799,202,834,200"/>
+<area shape="rect" id="Node000004" href="$classLayer.html#a3d2253a27e5b42cde01f15c85959580c" title=" " alt="" coords="426,7,555,34"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="699,136,657,95,631,73,602,55,555,36,555,31,605,50,634,69,661,91,705,136"/>
+<area shape="rect" id="Node000005" href="$namespaceScroom_1_1TiledBitmap.html#ac13fd191f548c9c8d794f6cc704b6e39" title=" " alt="" coords="144,24,329,68"/>
+<area shape="poly" id="edge10_Node000003_Node000005" title=" " alt="" coords="688,140,649,119,602,99,532,80,460,66,330,52,329,47,461,61,534,75,604,94,651,114,693,139"/>
+<area shape="rect" id="Node000008" href="$classCompressedTile.html#a097a41844c75d21396fb64db3c039c8a" title=" " alt="" coords="394,109,586,154"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="642,152,587,146,586,141,647,151"/>
+<area shape="rect" id="Node000009" href="$classPipetteHandler.html#acd17e052163c801ed556c06d8bb29f59" title=" " alt="" coords="377,177,603,205"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="642,173,605,180,603,174,647,171"/>
+<area shape="rect" id="Node000010" href="$classWaitForAsyncOp.html#a01dcf09800aaba90cc168f4beac3e8c7" title=" " alt="" coords="390,229,590,257"/>
+<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="669,181,653,191,629,205,604,219,567,231,565,226,602,214,626,201,650,186,664,183"/>
+<area shape="rect" id="Node000011" href="$classLayerCoordinator.html#aaed9f19d2d0be309e22c373551c27f9b" title="TileInitialisationObserver." alt="" coords="382,281,598,309"/>
+<area shape="poly" id="edge11_Node000003_Node000011" title=" " alt="" coords="661,182,653,190,637,210,630,230,623,251,605,271,582,283,580,278,602,266,618,248,625,228,633,207,649,187,656,185"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="408,30,331,39,328,34,413,27"/>
+<area shape="rect" id="Node000006" href="$classPnm.html#a512fa4ba81d11455c33b34b28588e629" title=" " alt="" coords="5,5,96,33"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="126,32,98,28,95,23,131,29"/>
+<area shape="rect" id="Node000007" href="$classTiff.html#a858a1b813e95709369796e88876049dc" title=" " alt="" coords="9,57,92,85"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="126,62,94,68,90,64,130,59"/>
+</map>

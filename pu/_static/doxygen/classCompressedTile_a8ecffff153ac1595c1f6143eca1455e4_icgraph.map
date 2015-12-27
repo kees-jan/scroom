@@ -1,0 +1,7 @@
+<map id="CompressedTile::getConstTileAsync" name="CompressedTile::getConstTileAsync">
+<area shape="rect" id="Node000001" title=" " alt="" coords="270,24,462,68"/>
+<area shape="rect" id="Node000002" href="$classTiledBitmap.html#a98c2d60fc0736a77ab18aeeb461a1da8" title=" " alt="" coords="37,5,190,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="252,35,190,30,190,25,257,34"/>
+<area shape="rect" id="Node000003" href="$classLayerCoordinator.html#aaed9f19d2d0be309e22c373551c27f9b" title="TileInitialisationObserver." alt="" coords="5,57,222,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="251,57,223,63,222,58,256,57"/>
+</map>

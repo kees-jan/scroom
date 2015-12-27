@@ -1,0 +1,12 @@
+<map id="ColormapHelperBase" name="ColormapHelperBase">
+<area shape="rect" id="Node000001" title=" " alt="" coords="181,674,371,881"/>
+<area shape="rect" id="Node000002" href="$classColormapProvider.html" title=" " alt="" coords="5,373,133,445"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,456,116,516,147,578,207,674,201,675,143,580,112,518,88,461"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="119,5,225,189"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="136,206,83,374,78,372,137,201"/>
+<area shape="rect" id="Node000004" href="$classColormappable.html" title=" " alt="" coords="157,239,394,579"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="207,201,222,239,216,239,207,206"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="277,591,278,676,273,674,274,596"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="418,373,619,445"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="498,443,355,662,350,659,493,446"/>
+</map>

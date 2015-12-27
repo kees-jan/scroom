@@ -1,0 +1,9 @@
+<map id="RectangleHorizontalTestScaffold::contains" name="RectangleHorizontalTestScaffold::contains">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,40,237,85"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html#a214abe27a155259161e7bb317f5d32e2" title=" " alt="" coords="314,5,495,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,46,301,40,296,41,238,51"/>
+<area shape="rect" id="Node000003" href="$classRectangleHorizontalTestScaffold.html#a8f3c558bb46817407f5e73c30f0beca8" title=" " alt="" coords="285,75,524,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="237,74,272,80,266,81,237,79"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Rectangle.html#a8bafbe715dcf9dc732ea2f197b9ecba1" title=" " alt="" coords="572,75,753,119"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="524,94,559,97,554,97,525,100"/>
+</map>

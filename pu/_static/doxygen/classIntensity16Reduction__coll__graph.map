@@ -1,0 +1,9 @@
+<map id="Intensity16Reduction" name="Intensity16Reduction">
+<area shape="rect" id="Node000001" title=" " alt="" coords="118,212,267,285"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,25,95,97"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,107,169,212,164,213,85,111"/>
+<area shape="rect" id="Node000003" href="$structScroom_1_1TiledBitmap_1_1Test_1_1SampleLayout.html" title=" " alt="" coords="120,5,266,117"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,115,195,196,190,194,191,119"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="291,25,452,97"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="346,96,263,190,249,203,246,199,259,186,341,98"/>
+</map>

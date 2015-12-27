@@ -1,0 +1,12 @@
+<map id="Scroom::Bitmap::SampleIterator::set" name="Scroom::Bitmap::SampleIterator::set">
+<area shape="rect" id="Node000001" title=" " alt="" coords="241,182,499,209"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1TiledBitmap_1_1anonymous__namespace_02layer-reduction_8cc_03.html#af1b201b4db4a38182fe7486d5a4a973c" title=" " alt="" coords="5,29,193,108"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="322,176,185,111,185,106,327,173"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1TiledBitmap_1_1anonymous__namespace_02layer-reduction_8cc_03.html#a968e8f76fdd8874267c18413a0d54d03" title=" " alt="" coords="5,156,193,235"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="223,196,194,198,192,193,227,194"/>
+<area shape="rect" id="Node000004" href="$namespaceScroom_1_1TiledBitmap_1_1anonymous__namespace_02layer-reduction_8cc_03.html#ab783190ca78d782ed4345c439d925d3a" title=" " alt="" coords="5,283,193,361"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="327,215,186,285,184,280,322,217"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="140,17,125,11,99,8,77,10,62,15,54,21,51,30,46,28,49,18,60,10,76,5,99,3,126,6,145,15"/>
+<area shape="poly" id="edge4_Node000003_Node000003" title=" " alt="" coords="140,143,125,137,99,135,77,136,62,141,54,148,51,156,46,155,49,145,60,137,76,131,99,129,126,132,145,141"/>
+<area shape="poly" id="edge6_Node000004_Node000004" title=" " alt="" coords="140,270,125,264,99,261,77,263,62,268,54,275,51,283,46,281,49,272,60,263,76,258,99,256,126,259,145,269"/>
+</map>

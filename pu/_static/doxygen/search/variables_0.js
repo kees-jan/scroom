@@ -1,0 +1,18 @@
+var searchData=
+[
+  ['a_0',['a',['../async-deleter-tests_8cc.html#ac28d3ff5e6d33d77411a4ed0a975c6c7',1,'a:&#160;async-deleter-tests.cc'],['../function-additor-tests_8cc.html#a4124bc0a9335c27f086f24ba207a4912',1,'a:&#160;function-additor-tests.cc'],['../threadpool-destruction-tests_8cc.html#aa8553f20c674d31c7176b7bd17dae2c3',1,'a:&#160;threadpool-destruction-tests.cc'],['../threadpool-tests_8cc.html#aa8553f20c674d31c7176b7bd17dae2c3',1,'a:&#160;threadpool-tests.cc'],['../bookkeeping-tests_8cc.html#a15474d4b5cac1b864961464173cba912',1,'a:&#160;bookkeeping-tests.cc']]],
+  ['about_1',['ABOUT',['../namespaceMenuIds.html#a8aa63e2f964b202c950cc6ec06821918',1,'MenuIds']]],
+  ['aboutdialog_2',['aboutDialog',['../callbacks_8cc.html#a9180546c6d9070b28e52a0b62b6f15cf',1,'callbacks.cc']]],
+  ['aboutdialogxml_3',['aboutDialogXml',['../callbacks_8cc.html#af1ea25f0666c6494af4b0411dec29ca2',1,'callbacks.cc']]],
+  ['accuracy_4',['accuracy',['../namespaceanonymous__namespace_02colormaphelpers__test_8cc_03.html#aa83cf2d27bfc2e17313700fba52bb700',1,'anonymous_namespace{colormaphelpers_test.cc}']]],
+  ['advanced_5',['advanced',['../sampleiterator-tests_8cc.html#a05eb3419f8a775bf375cb468cb52c121',1,'sampleiterator-tests.cc']]],
+  ['after_6',['after',['../sampleiterator-tests_8cc.html#a0cce09796606e707508e48cac736b4a2',1,'sampleiterator-tests.cc']]],
+  ['alive_7',['alive',['../classThreadPool_1_1PrivateData.html#a9710d6d924eb7597b8e18dcd3edb0d88',1,'ThreadPool::PrivateData']]],
+  ['allpages_8',['allPages',['../classScroom_1_1MemoryBlobs_1_1PageProvider.html#aa289e790e99b7129d997d9e88e865149',1,'Scroom::MemoryBlobs::PageProvider']]],
+  ['alpha_9',['alpha',['../classColor.html#aa14c59ce06c2a70f4683df266e26a261',1,'Color']]],
+  ['an_5fint_10',['an_int',['../context-tests_8cc.html#a2cacb0f308d7bc96b8a069796fb55be3',1,'context-tests.cc']]],
+  ['another_5fint_11',['another_int',['../context-tests_8cc.html#af123ab5b81dcca4967ac82f625b72230',1,'context-tests.cc']]],
+  ['anotherbuffer_12',['anotherBuffer',['../sampleiterator-tests_8cc.html#a792f2abe25d3fbcb1197f96fd6ff12f2',1,'sampleiterator-tests.cc']]],
+  ['aspectratio_13',['aspectRatio',['../structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#acf26ff10a150a0f048bc38621a150a92',1,'Scroom::TiledBitmap::BitmapMetaData::aspectRatio'],['../classTransformationData.html#a47936612795b9ae6f7a8d1da08de6c54',1,'TransformationData::aspectRatio'],['../structanonymous__namespace_02pnmsource_8cc_03_1_1BitmapMetaData.html#acf26ff10a150a0f048bc38621a150a92',1,'anonymous_namespace{pnmsource.cc}::BitmapMetaData::aspectRatio']]],
+  ['auto_14',['auto',['../layerspecforbitmap-tests_8cc.html#a7b24b7e1f1867daf9a28dd9db0a671c7',1,'layerspecforbitmap-tests.cc']]]
+];

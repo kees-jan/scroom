@@ -1,0 +1,7 @@
+<map id="EXPECT_NE" name="EXPECT_NE">
+<area shape="rect" id="Node000001" title=" " alt="" coords="107,32,203,60"/>
+<area shape="rect" id="Node000002" href="$coordinate-iteration-tests_8cc.html#a1ca060ba4f670c8df91ac05602afccbb" title=" " alt="" coords="5,5,59,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,33,59,28,59,22,93,31"/>
+<area shape="rect" id="Node000003" href="$coordinate-iteration-tests_8cc.html#afff1c60ac9aa2c5f72ad5ddb9c876e4b" title=" " alt="" coords="5,57,59,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="89,60,60,68,58,63,94,58"/>
+</map>

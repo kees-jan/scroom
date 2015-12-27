@@ -1,0 +1,11 @@
+<map id="Scroom::TiledBitmap::Geometry::Point&lt; T &gt;" name="Scroom::TiledBitmap::Geometry::Point&lt; T &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="252,143,414,366"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,160,95"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="149,102,255,187,251,189,148,107"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="184,5,320,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="276,106,291,143,286,142,274,111"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="344,5,485,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="393,107,380,144,376,141,390,111"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="509,5,643,95"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="515,103,415,188,412,184,510,106"/>
+</map>

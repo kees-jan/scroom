@@ -1,0 +1,21 @@
+<map id="gui/ruler/test/ruler&#45;tests.cc" name="gui/ruler/test/ruler&#45;tests.cc">
+<area shape="rect" id="Node000001" title=" " alt="" coords="74,5,212,50"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,98,68,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,53,68,90,64,86,116,48"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="92,98,195,126"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="144,48,146,83,141,82,142,53"/>
+<area shape="rect" id="Node000004" href="$ruler_8hh.html" title=" " alt="" coords="219,98,289,126"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="172,48,227,88,221,89,172,53"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="108,174,163,201"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="230,128,170,168,167,163,235,125"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="130,249,207,277"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="249,125,186,237,181,234,244,127"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="406,249,486,277"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="289,121,339,141,388,172,415,202,435,237,431,235,411,205,384,176,336,146,289,126"/>
+<area shape="rect" id="Node000008" href="$rulerstrategies_8hh.html" title=" " alt="" coords="238,174,374,201"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="264,124,291,161,285,161,262,129"/>
+<area shape="poly" id="edge8_Node000008_Node000006" title=" " alt="" coords="284,201,207,244,205,239,279,202"/>
+<area shape="poly" id="edge9_Node000008_Node000007" title=" " alt="" coords="332,199,410,242,405,242,330,204"/>
+<area shape="rect" id="Node000009" href="$interface_8hh.html" title=" " alt="" coords="230,249,382,277"/>
+<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="308,200,308,235,304,232,304,204"/>
+</map>

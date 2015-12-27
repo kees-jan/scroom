@@ -1,0 +1,19 @@
+<map id="Scroom::Utils::TweakPresentationPositionsWithAspectRatio" name="Scroom::Utils::TweakPresentationPositionsWithAspectRatio">
+<area shape="rect" id="Node000001" title=" " alt="" coords="273,580,501,731"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1ITweakPresentationPosition.html" title=" " alt="" coords="5,328,238,417"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="174,425,320,579,315,581,172,430"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="69,5,175,189"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="122,202,124,328,119,328,121,207"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="262,328,512,417"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="389,415,390,564,384,562,385,419"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Point.html" title=" " alt="" coords="536,239,675,507"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="539,488,526,508,475,570,471,565,522,505,534,492"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="276,53,431,142"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="403,150,445,187,467,202,486,210,505,220,526,237,539,252,534,252,523,241,502,224,484,215,464,206,441,191,403,156"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="454,53,602,142"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="546,154,571,239,565,238,544,159"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="626,53,826,142"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="702,154,666,240,662,237,699,158"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="850,53,1039,142"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="885,150,839,191,676,320,673,316,836,187,881,153"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="EXPECT_EQ" name="EXPECT_EQ">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,102,33"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a958e9a62ee2b943aa9cb5b23f2aa8f02" title=" " alt="" coords="150,5,307,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,17,137,19,132,19,102,22"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1Utils.html#a1df110b1fef13cbeaf6122b1ca752a97" title=" " alt="" coords="355,5,492,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="307,17,342,19,337,19,308,22"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Context.html#aa411d28e6b2dd90b062039070a381907" title=" " alt="" coords="540,5,737,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="493,17,528,19,522,19,493,22"/>
+</map>

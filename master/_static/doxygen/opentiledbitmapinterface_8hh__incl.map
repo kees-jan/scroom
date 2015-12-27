@@ -1,0 +1,52 @@
+<map id="inc/scroom/opentiledbitmapinterface.hh" name="inc/scroom/opentiledbitmapinterface.hh">
+<area shape="rect" id="node1" title=" " alt="" coords="865,5,1148,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="2186,535,2345,562"/>
+<area shape="rect" id="node3" title=" " alt="" coords="1449,535,1529,562"/>
+<area shape="rect" id="node4" href="$colormappable_8hh.html" title=" " alt="" coords="1061,155,1251,181"/>
+<area shape="rect" id="node30" href="$interface_8hh.html" title=" " alt="" coords="3608,535,3760,562"/>
+<area shape="rect" id="node31" href="$rectangle_8hh.html" title=" " alt="" coords="913,379,1068,405"/>
+<area shape="rect" id="node39" href="$point_8hh.html" title=" " alt="" coords="607,453,734,480"/>
+<area shape="rect" id="node41" href="$showmetadata_8hh.html" title=" " alt="" coords="629,155,819,181"/>
+<area shape="rect" id="node42" href="$tiledbitmaplayer_8hh.html" title=" " alt="" coords="2375,80,2577,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="628,379,687,405"/>
+<area shape="rect" id="node6" title=" " alt="" coords="1005,229,1067,256"/>
+<area shape="rect" id="node7" title=" " alt="" coords="1963,535,2112,562"/>
+<area shape="rect" id="node8" href="$assertions_8hh.html" title=" " alt="" coords="1178,535,1339,562"/>
+<area shape="rect" id="node11" href="$color_8hh.html" title=" " alt="" coords="239,453,364,480"/>
+<area shape="rect" id="node19" href="$observable_8hh.html" title=" " alt="" coords="2234,304,2401,331"/>
+<area shape="rect" id="node28" href="$presentationinterface_8hh.html" title=" " alt="" coords="1463,229,1697,256"/>
+<area shape="rect" id="node9" title=" " alt="" coords="1150,617,1247,644"/>
+<area shape="rect" id="node10" title=" " alt="" coords="1271,617,1366,644"/>
+<area shape="rect" id="node12" title=" " alt="" coords="727,617,790,644"/>
+<area shape="rect" id="node13" title=" " alt="" coords="2889,535,2956,562"/>
+<area shape="rect" id="node14" title=" " alt="" coords="104,535,179,562"/>
+<area shape="rect" id="node15" title=" " alt="" coords="5,535,80,562"/>
+<area shape="rect" id="node16" title=" " alt="" coords="507,535,659,562"/>
+<area shape="rect" id="node17" title=" " alt="" coords="345,535,431,562"/>
+<area shape="rect" id="node18" title=" " alt="" coords="253,535,320,562"/>
+<area shape="rect" id="node20" title=" " alt="" coords="2593,535,2636,562"/>
+<area shape="rect" id="node21" title=" " alt="" coords="2025,453,2076,480"/>
+<area shape="rect" id="node22" title=" " alt="" coords="3147,535,3207,562"/>
+<area shape="rect" id="node23" title=" " alt="" coords="3802,535,3934,562"/>
+<area shape="rect" id="node24" href="$bookkeeping_8hh.html" title=" " alt="" coords="2229,379,2406,405"/>
+<area shape="rect" id="node26" href="$utilities_8hh.html" title=" " alt="" coords="3215,453,3358,480"/>
+<area shape="rect" id="node25" href="$stuff_8hh.html" title=" " alt="" coords="2303,453,2425,480"/>
+<area shape="rect" id="node27" title=" " alt="" coords="3329,528,3487,569"/>
+<area shape="rect" id="node29" title=" " alt="" coords="1553,304,1596,331"/>
+<area shape="rect" id="node40" href="$viewinterface_8hh.html" title=" " alt="" coords="1295,304,1478,331"/>
+<area shape="rect" id="node32" title=" " alt="" coords="1026,535,1102,562"/>
+<area shape="rect" id="node33" href="$gtk-helpers_8hh.html" title=" " alt="" coords="1175,453,1343,480"/>
+<area shape="rect" id="node36" href="$linearsegment_8hh.html" title=" " alt="" coords="810,453,998,480"/>
+<area shape="rect" id="node34" title=" " alt="" coords="1364,535,1425,562"/>
+<area shape="rect" id="node35" title=" " alt="" coords="2981,535,3123,562"/>
+<area shape="rect" id="node37" title=" " alt="" coords="858,535,950,562"/>
+<area shape="rect" id="node38" href="$rounding_8hh.html" title=" " alt="" coords="683,535,834,562"/>
+<area shape="rect" id="node43" href="$memoryblobs_8hh.html" title=" " alt="" coords="2880,379,3064,405"/>
+<area shape="rect" id="node45" href="$threadpool_8hh.html" title=" " alt="" coords="3617,155,3781,181"/>
+<area shape="rect" id="node49" href="$tile_8hh.html" title=" " alt="" coords="2539,304,2653,331"/>
+<area shape="rect" id="node50" href="$tiledbitmapinterface_8hh.html" title=" " alt="" coords="1340,155,1567,181"/>
+<area shape="rect" id="node44" href="$blockallocator_8hh.html" title=" " alt="" coords="2855,453,3039,480"/>
+<area shape="rect" id="node46" title=" " alt="" coords="3837,229,3899,256"/>
+<area shape="rect" id="node47" href="$semaphore_8hh.html" title=" " alt="" coords="3991,304,4158,331"/>
+<area shape="rect" id="node48" href="$threadpoolimpl_8hh.html" title=" " alt="" coords="3585,229,3812,256"/>
+</map>

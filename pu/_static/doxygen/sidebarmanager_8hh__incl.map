@@ -1,0 +1,9 @@
+<map id="gui/src/sidebarmanager.hh" name="gui/src/sidebarmanager.hh">
+<area shape="rect" id="Node000001" title=" " alt="" coords="12,5,206,33"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,81,56,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,32,57,72,54,68,93,35"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="80,81,138,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="111,32,112,66,107,64,107,36"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="163,81,242,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="127,31,177,71,172,72,125,36"/>
+</map>

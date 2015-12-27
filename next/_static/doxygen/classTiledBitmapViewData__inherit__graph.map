@@ -1,0 +1,14 @@
+<map id="TiledBitmapViewData" name="TiledBitmapViewData">
+<area shape="rect" id="Node000001" title=" " alt="" coords="152,469,331,877"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="7,237,145,421"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,432,155,487,150,488,126,437"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,53,147,142"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="76,154,79,238,74,237,76,160"/>
+<area shape="rect" id="Node000004" href="$classTileLoadingObserver.html" title=" " alt="" coords="169,293,314,366"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="242,378,244,470,239,469,241,383"/>
+<area shape="rect" id="Node000005" href="$classInterface.html" title=" " alt="" coords="267,5,373,189"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="285,201,256,294,251,292,283,206"/>
+<area shape="rect" id="Node000006" href="$classProgressInterface.html" title=" " alt="" coords="338,260,462,399"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="357,201,379,260,374,260,356,206"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="363,410,333,481,329,478,361,415"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="MeasureHandler::render" name="MeasureHandler::render">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,96,184,124"/>
+<area shape="rect" id="Node000002" href="$classMeasureHandler.html#aa15c75da849a11f21e03d8af8a608e2f" title=" " alt="" coords="232,5,436,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,93,171,68,231,42,255,36,250,39,233,47,173,72,123,98"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Rectangle.html#aa0205a1477a20bd1888f9dd480069bf2" title=" " alt="" coords="243,57,424,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="184,96,230,92,225,94,185,101"/>
+<area shape="rect" id="Node000004" href="$cairo-helpers_8cc.html#ac7a152a4cc864e9c67acbc6686a9d3a4" title=" " alt="" coords="259,125,409,153"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="184,118,246,127,240,129,184,123"/>
+<area shape="rect" id="Node000005" href="$sampleiterator-tests_8cc.html#aa2b1a5d4069a412fe370585d2c198a7a" title=" " alt="" coords="308,177,360,205"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="129,122,233,162,296,182,290,182,231,167,128,127"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="Scroom::Utils::Segment::normalize" name="Scroom::Utils::Segment::normalize">
+<area shape="rect" id="Node000001" title=" " alt="" coords="450,40,624,85"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Segment.html#a9c50a43e72c7ecd4ea28afd45db639d4" title=" " alt="" coords="228,5,402,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="432,46,402,44,402,39,437,46"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Segment.html#a98fd542639fe9411293029487bbc2ab0" title=" " alt="" coords="228,75,402,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="437,78,403,86,402,81,432,79"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Segment.html#a6192ab81f7c31fa85fe3f87074d6e7a2" title=" " alt="" coords="5,75,180,119"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="210,97,180,100,180,94,215,97"/>
+</map>

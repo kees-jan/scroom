@@ -1,0 +1,16 @@
+<map id="CommonOperations::draw" name="CommonOperations::draw">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,108,197,136"/>
+<area shape="rect" id="Node000002" href="$classLayerOperations.html#aa1f918f99b5e282a6614f252c18696e5" title=" " alt="" coords="287,5,461,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,105,177,74,244,43,274,36,269,39,246,48,179,79,126,110"/>
+<area shape="rect" id="Node000003" href="$classCommonOperations.html#acdd24da111ccd9c24e45bedea6035385" title=" " alt="" coords="261,57,486,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="179,105,283,87,278,90,180,110"/>
+<area shape="rect" id="Node000005" href="$cairo-helpers_8cc.html#a7eaa96a970e5ff603afbea0a3a0bf761" title=" " alt="" coords="717,83,784,110"/>
+<area shape="poly" id="edge7_Node000001_Node000005" title=" " alt="" coords="197,115,702,96,701,101,197,121"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Bitmap_1_1BitmapSurface.html#a4e20b367582344b95c31226ba88ae3a1" title=" " alt="" coords="245,159,503,186"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="179,134,283,154,278,156,179,139"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Rectangle.html#aa0205a1477a20bd1888f9dd480069bf2" title=" " alt="" coords="283,210,464,255"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="126,134,180,164,246,195,271,206,265,206,244,200,178,169,125,139"/>
+<area shape="rect" id="Node000004" href="$cairo-helpers_8cc.html#a4f46197f43bbf408ce995b3b0a428c68" title=" " alt="" coords="551,57,669,85"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="486,69,538,71,533,72,487,74"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="670,79,705,88,699,88,670,85"/>
+</map>

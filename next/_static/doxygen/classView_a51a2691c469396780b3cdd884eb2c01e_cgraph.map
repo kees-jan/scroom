@@ -1,0 +1,18 @@
+<map id="View::on_zoombox_changed" name="View::on_zoombox_changed">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,81,211,109"/>
+<area shape="rect" id="Node000002" href="$classView.html#a95faa753386b674958c19010de91adac" title=" " alt="" coords="281,5,406,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="153,78,285,36,282,40,155,83"/>
+<area shape="rect" id="Node000003" href="$cairo-helpers_8cc.html#ac7a152a4cc864e9c67acbc6686a9d3a4" title=" " alt="" coords="695,81,845,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="211,93,680,93,679,98,211,98"/>
+<area shape="rect" id="Node000004" href="$classView.html#a1c6bafe5c25990c0733f6d2b28df717f" title=" " alt="" coords="259,107,428,134"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="211,104,246,109,241,110,211,109"/>
+<area shape="rect" id="Node000008" href="$classView.html#a53280aa4b3288d4f81d4a840f98e5eb9" title=" " alt="" coords="265,159,422,186"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="152,107,260,143,285,154,280,153,258,148,151,112"/>
+<area shape="rect" id="Node000005" href="$classView.html#ad01af006c74438002516f9697fffc7e3" title=" " alt="" coords="484,159,630,186"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="404,132,485,154,480,154,403,138"/>
+<area shape="rect" id="Node000007" href="$classView.html#a95a1bbd56174466f67f67c6d4c39551b" title=" " alt="" coords="476,107,638,134"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="428,118,463,120,458,121,428,123"/>
+<area shape="rect" id="Node000006" href="$classView.html#a7c6bc955a9ea12b76b49c2c47d508329" title=" " alt="" coords="686,159,854,186"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="631,170,673,172,668,173,631,175"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="638,108,677,106,682,106,639,113"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="CmykReduction" name="CmykReduction">
+<area shape="rect" id="Node000001" title=" " alt="" coords="198,212,328,285"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,16,166,106"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,114,233,212,227,214,136,119"/>
+<area shape="rect" id="Node000003" href="$structScroom_1_1TiledBitmap_1_1Test_1_1SampleLayout.html" title=" " alt="" coords="190,5,336,117"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="265,115,265,196,261,194,261,119"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="361,25,522,97"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="432,95,411,145,396,169,378,190,343,217,341,212,374,186,392,165,407,142,428,99"/>
+</map>

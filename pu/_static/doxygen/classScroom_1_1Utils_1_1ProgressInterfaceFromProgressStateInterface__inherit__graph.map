@@ -1,0 +1,18 @@
+<map id="Scroom::Utils::ProgressInterfaceFromProgressStateInterface" name="Scroom::Utils::ProgressInterfaceFromProgressStateInterface">
+<area shape="rect" id="Node000001" title=" " alt="" coords="324,425,544,581"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Detail_1_1ProgressStore.html" title=" " alt="" coords="5,674,150,852"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="308,546,235,582,198,605,165,631,144,652,126,675,122,672,140,648,161,627,195,601,233,578,312,542"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1ProgressInterfaceFromProgressStateInterfaceForwarder.html" title=" " alt="" coords="175,688,431,838"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="390,592,343,689,338,686,386,596"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer_1_1Child.html" title=" " alt="" coords="456,629,676,897"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="481,592,500,630,495,629,479,597"/>
+<area shape="rect" id="Node000008" href="$classanonymous__namespace_02tiled-bitmap_8cc_03_1_1ForwardProgressToUiThread.html" title=" " alt="" coords="699,699,917,827"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="557,551,625,585,689,627,727,661,762,699,757,698,724,664,685,631,622,590,557,556"/>
+<area shape="rect" id="Node000002" href="$classProgressInterface.html" title=" " alt="" coords="279,237,404,377"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="381,388,400,425,394,425,380,393"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="381,5,487,189"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="389,200,374,239,370,236,386,205"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1ProgressStateInterface.html" title=" " alt="" coords="428,262,624,352"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="480,200,509,263,504,263,480,205"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="500,363,472,426,468,423,497,367"/>
+</map>

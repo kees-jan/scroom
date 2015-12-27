@@ -1,0 +1,7 @@
+<map id="NewPresentationInterface" name="NewPresentationInterface">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,237,185,310"/>
+<area shape="rect" id="Node000003" href="$classExample.html" title=" " alt="" coords="13,358,177,542"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="96,322,98,358,93,358,94,327"/>
+<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="42,5,148,189"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,202,98,238,93,237,95,207"/>
+</map>

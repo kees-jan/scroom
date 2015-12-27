@@ -1,0 +1,13 @@
+<map id="TileViewState::setZoom" name="TileViewState::setZoom">
+<area shape="rect" id="Node000001" title=" " alt="" coords="663,48,841,76"/>
+<area shape="rect" id="Node000002" href="$classTiledBitmapViewData.html#ac2a59a87aaf27ba0e2e0e13b45289f11" title=" " alt="" coords="452,40,615,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="645,62,616,65,616,60,650,62"/>
+<area shape="rect" id="Node000003" href="$classTiledBitmapViewData.html#a8b46ee3f4f6d65987d3301a2e9d45b47" title=" " alt="" coords="241,5,404,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="434,47,404,44,404,38,439,46"/>
+<area shape="rect" id="Node000005" href="$classTiledBitmapViewData.html#af648a83e6be4140595929fac4a70d849" title=" " alt="" coords="241,75,404,119"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="439,78,405,86,404,81,434,79"/>
+<area shape="rect" id="Node000004" href="$classTiledBitmap.html#a687cbfcf28714d7e58b80dec9cb73c23" title=" " alt="" coords="5,14,193,42"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="222,28,194,30,193,25,227,27"/>
+<area shape="rect" id="Node000006" href="$classTiledBitmap.html#a98c2d60fc0736a77ab18aeeb461a1da8" title=" " alt="" coords="22,83,176,111"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="223,97,176,100,176,94,228,97"/>
+</map>

@@ -1,0 +1,27 @@
+<map id="Scroom::TiledBitmap::Test::sample" name="Scroom::TiledBitmap::Test::sample">
+<area shape="rect" id="Node000001" title=" " alt="" coords="278,333,435,378"/>
+<area shape="rect" id="Node000002" href="$layerspecforbitmap-tests_8cc.html#aa78c714a8ed9efab4b737359d6e38d37" title=" " alt="" coords="69,5,166,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="348,317,337,258,315,185,300,147,280,111,256,77,228,48,198,31,167,23,165,19,200,26,231,44,260,74,285,108,304,145,320,183,342,257,353,318"/>
+<area shape="rect" id="Node000003" href="$layerspecforbitmap-tests_8cc.html#aef5685ea67444f1040377cf8bf05d9e6" title=" " alt="" coords="69,57,166,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="345,317,331,268,308,208,274,148,253,122,228,99,198,83,167,75,165,70,200,78,231,94,257,118,278,145,313,206,336,266,350,318"/>
+<area shape="rect" id="Node000004" href="$classColormapReductions.html#afd60296102b2a3fc2c28514bebc9c718" title=" " alt="" coords="39,109,196,154"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="337,318,320,283,295,243,265,202,228,168,197,150,195,145,231,164,269,199,300,240,324,281,343,319"/>
+<area shape="rect" id="Node000005" href="$namespaceScroom_1_1TiledBitmap_1_1Test.html#a5d237c375f7973ce23191d78c24d3efc" title=" " alt="" coords="39,178,196,223"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="324,321,282,278,228,237,197,222,196,217,231,233,286,274,330,320"/>
+<area shape="rect" id="Node000006" href="$layerspecforbitmap-tests_8cc.html#a5fefc9e5d98152ec36714aa38fd3987c" title=" " alt="" coords="67,247,168,274"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="305,325,269,306,229,288,170,271,168,266,231,283,271,302,310,324"/>
+<area shape="rect" id="Node000007" href="$namespaceScroom_1_1TiledBitmap_1_1Test.html#aa158babc104f54cc5f07d403e0e37acc" title=" " alt="" coords="39,298,196,343"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="260,343,198,334,196,329,265,340"/>
+<area shape="rect" id="Node000008" href="$namespaceScroom_1_1TiledBitmap_1_1Test.html#aa8438c921f4b9e38dda8b9fcbe998ac7" title=" " alt="" coords="39,368,196,412"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="260,370,198,381,195,376,264,367"/>
+<area shape="rect" id="Node000009" href="$classColormapReductions.html#a6e3e8b9906ed52e18680e69020ff93de" title=" " alt="" coords="34,437,201,482"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="304,387,231,427,200,438,197,434,229,422,307,384"/>
+<area shape="rect" id="Node000010" href="$classCmykReduction.html#aef6d2bce863900e7c2bc0df325d0d236" title=" " alt="" coords="5,505,230,533"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="335,388,291,446,263,473,231,496,207,507,204,503,228,492,259,469,287,443,331,392"/>
+<area shape="rect" id="Node000011" href="$classRgbReduction.html#a7674206d6449540bd94838e60e427378" title=" " alt="" coords="12,557,223,585"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="342,390,325,430,301,472,269,512,231,547,208,559,205,555,228,542,266,509,296,469,321,427,339,394"/>
+<area shape="rect" id="Node000012" href="$classIntensity8Reduction.html#a40f58413557e4cdcba8e11af89676cca" title=" " alt="" coords="42,609,193,654"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="347,390,332,440,308,495,275,551,255,576,231,599,195,619,192,614,228,594,251,572,271,548,304,493,328,438,344,395"/>
+<area shape="rect" id="Node000013" href="$layer-stack-tests_8cc.html#a02a50b43dc6fd6a9f097a86964aa8945" title=" " alt="" coords="91,677,144,705"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="352,391,342,454,321,528,305,567,285,604,261,638,231,668,211,681,188,689,145,694,144,689,187,683,209,676,228,664,256,635,280,601,300,564,316,527,337,453,349,395"/>
+</map>

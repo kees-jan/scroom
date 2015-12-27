@@ -1,0 +1,9 @@
+<map id="Scroom::Utils::try_get" name="Scroom::Utils::try_get">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,168,33"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a069a23ac9bf5bb1ac6a546c1b7cbaf8e" title=" " alt="" coords="216,5,378,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,17,203,19,197,19,168,22"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1Utils.html#a1df110b1fef13cbeaf6122b1ca752a97" title=" " alt="" coords="426,5,563,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="378,17,413,19,408,19,378,22"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Context.html#aa411d28e6b2dd90b062039070a381907" title=" " alt="" coords="611,5,808,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="564,17,599,19,593,19,564,22"/>
+</map>

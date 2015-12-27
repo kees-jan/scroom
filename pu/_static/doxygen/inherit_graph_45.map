@@ -1,0 +1,43 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classScroom_1_1GtkTestHelpers_1_1GtkMainLoop.html" title=" " alt="" coords="5,5,183,50"/>
+<area shape="rect" id="Node000001" href="$classPipette__Tests.html" title=" " alt="" coords="300,14,407,42"/>
+<area shape="poly" id="edge50_Node000000_Node000001" title=" " alt="" coords="197,26,301,26,297,29,200,30"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="44,506,144,534"/>
+<area shape="poly" id="edge61_Node000002_Node000001" title=" " alt="" coords="92,490,95,404,101,347,111,286,128,222,153,160,186,103,229,52,244,41,262,33,301,26,297,29,264,38,247,46,232,56,190,106,158,163,133,224,117,287,106,348,100,404,97,490"/>
+<area shape="rect" id="Node000003" href="$classBinaryIntensityReduction.html" title=" " alt="" coords="261,66,446,94"/>
+<area shape="poly" id="edge51_Node000002_Node000003" title=" " alt="" coords="93,490,99,413,118,308,135,253,159,198,190,148,229,104,262,87,259,91,232,108,194,151,164,201,140,255,123,310,104,413,98,491"/>
+<area shape="rect" id="Node000004" href="$classBinaryOrLayerReduction.html" title=" " alt="" coords="264,118,443,146"/>
+<area shape="poly" id="edge52_Node000002_Node000004" title=" " alt="" coords="95,490,104,421,125,331,143,283,165,236,194,194,229,156,265,138,262,142,232,160,198,197,170,239,148,285,130,332,109,422,100,490"/>
+<area shape="rect" id="Node000005" href="$classBitmapLayerDescriptions.html" title=" " alt="" coords="261,170,446,198"/>
+<area shape="poly" id="edge53_Node000002_Node000005" title=" " alt="" coords="97,490,109,430,133,354,150,314,171,275,198,239,229,208,262,192,259,196,232,212,202,243,176,278,155,316,138,356,114,432,102,491"/>
+<area shape="rect" id="Node000006" href="$classContextTests.html" title=" " alt="" coords="301,222,406,250"/>
+<area shape="poly" id="edge54_Node000002_Node000006" title=" " alt="" coords="99,491,114,440,140,377,177,313,201,284,229,259,263,242,302,235,298,239,265,247,232,263,205,287,182,316,144,379,119,442,104,492"/>
+<area shape="rect" id="Node000007" href="$classFullWidthSampleIterator.html" title=" " alt="" coords="264,273,443,318"/>
+<area shape="poly" id="edge55_Node000002_Node000007" title=" " alt="" coords="105,491,125,454,152,410,187,366,229,328,265,311,262,315,232,333,191,369,156,413,129,456,110,493"/>
+<area shape="rect" id="Node000008" href="$classIntensity16Reduction.html" title=" " alt="" coords="274,342,433,370"/>
+<area shape="poly" id="edge56_Node000002_Node000008" title=" " alt="" coords="111,492,160,434,193,405,229,380,275,364,271,368,232,385,196,409,164,438,116,494"/>
+<area shape="rect" id="Node000009" href="$classIntensity8Reduction.html" title=" " alt="" coords="278,394,429,422"/>
+<area shape="poly" id="edge57_Node000002_Node000009" title=" " alt="" coords="123,495,172,462,230,432,279,418,276,422,232,437,175,466,128,498"/>
+<area shape="rect" id="Node000010" href="$classLoggerTests.html" title=" " alt="" coords="304,446,402,474"/>
+<area shape="poly" id="edge58_Node000002_Node000010" title=" " alt="" coords="157,501,230,482,306,467,302,471,231,488,161,505"/>
+<area shape="rect" id="Node000011" href="$classPackedSampleIterator.html" title=" " alt="" coords="272,497,435,542"/>
+<area shape="poly" id="edge59_Node000002_Node000011" title=" " alt="" coords="158,517,273,518,269,521,161,522"/>
+<area shape="rect" id="Node000012" href="$classParentContextTests.html" title=" " alt="" coords="280,566,426,594"/>
+<area shape="poly" id="edge60_Node000002_Node000012" title=" " alt="" coords="158,534,231,552,282,564,278,567,230,557,160,539"/>
+<area shape="rect" id="Node000013" href="$classPluginLayerDescription.html" title=" " alt="" coords="268,618,439,646"/>
+<area shape="poly" id="edge62_Node000002_Node000013" title=" " alt="" coords="125,541,175,573,232,603,270,616,266,618,230,607,172,578,126,546"/>
+<area shape="rect" id="Node000014" href="$classProgressInterfaceMultiplexer__Tests.html" title=" " alt="" coords="249,669,458,714"/>
+<area shape="poly" id="edge63_Node000002_Node000014" title=" " alt="" coords="114,543,165,600,197,630,232,655,257,668,252,670,229,659,194,634,161,604,115,549"/>
+<area shape="rect" id="Node000015" href="$classRectangle__and__Segment__TypedTests.html" title=" " alt="" coords="259,739,448,783"/>
+<area shape="poly" id="edge64_Node000002_Node000015" title=" " alt="" coords="106,545,127,586,154,635,189,683,232,724,261,741,256,743,229,728,185,687,149,637,122,589,106,550"/>
+<area shape="rect" id="Node000016" href="$classSingleContextTests.html" title=" " alt="" coords="281,807,426,835"/>
+<area shape="poly" id="edge65_Node000002_Node000016" title=" " alt="" coords="101,546,117,601,142,668,159,703,180,737,204,767,232,794,255,807,283,816,278,818,253,812,229,798,200,771,175,740,154,706,137,671,112,603,101,551"/>
+<area shape="rect" id="Node000017" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1ParseAndFormatViewCentreWithAspectRatioTest.html" title=" " alt="" coords="233,859,474,938"/>
+<area shape="poly" id="edge66_Node000002_Node000017" title=" " alt="" coords="100,546,115,609,140,688,157,729,178,771,203,810,233,844,247,858,242,859,229,848,199,813,173,773,152,732,135,689,110,610,100,551"/>
+<area shape="rect" id="Node000018" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakPresentationPositionsWithAspectRatioTest.html" title=" " alt="" coords="248,962,459,1040"/>
+<area shape="poly" id="edge67_Node000002_Node000018" title=" " alt="" coords="97,546,107,626,127,732,144,789,167,846,196,899,233,947,250,963,245,964,229,951,192,902,162,848,139,791,122,733,101,627,96,551"/>
+<area shape="rect" id="Node000019" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakRulersWithAspectRatioTest.html" title=" " alt="" coords="231,1065,476,1126"/>
+<area shape="poly" id="edge68_Node000002_Node000019" title=" " alt="" coords="99,546,118,659,147,809,165,885,185,954,208,1011,233,1050,247,1064,242,1064,229,1053,203,1013,180,956,160,886,141,810,113,659,99,552"/>
+<area shape="rect" id="Node000020" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsWithAspectRatioTest.html" title=" " alt="" coords="248,1151,459,1230"/>
+<area shape="poly" id="edge69_Node000002_Node000020" title=" " alt="" coords="98,547,116,674,143,850,161,940,182,1022,206,1090,233,1137,250,1154,245,1154,229,1140,201,1092,177,1023,155,941,137,851,110,675,98,552"/>
+</map>

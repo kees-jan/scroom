@@ -1,0 +1,20 @@
+<map id="LoggerTests" name="LoggerTests">
+<area shape="rect" id="Node000001" title=" " alt="" coords="208,740,322,812"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,572,95,644"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,652,108,665,159,704,211,739,206,740,156,708,104,669,93,657"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="119,572,248,644"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="202,642,243,725,238,724,199,646"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="98,387,269,477"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="185,489,186,573,181,571,182,494"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="117,249,250,338"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="184,350,186,388,181,387,183,355"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="104,127,263,199"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="184,211,186,249,181,248,183,217"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="136,5,231,78"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="184,90,186,127,181,127,183,95"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="334,396,579,468"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="392,470,349,506,328,527,311,551,292,593,287,629,286,668,281,716,279,724,275,721,276,715,281,668,282,629,287,592,306,548,324,524,346,502,396,466"/>
+<area shape="rect" id="Node000009" href="$classScroom_1_1Logger.html" title=" " alt="" coords="444,550,555,667"/>
+<area shape="poly" id="edge9_Node000009_Node000008" title=" " alt="" coords="467,466,484,535,479,533,464,470"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="446,651,426,669,333,733,331,728,423,664,442,654"/>
+</map>

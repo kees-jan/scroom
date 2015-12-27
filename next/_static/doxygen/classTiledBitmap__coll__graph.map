@@ -1,0 +1,36 @@
+<map id="TiledBitmap" name="TiledBitmap">
+<area shape="rect" id="Node000001" title=" " alt="" coords="700,733,843,1207"/>
+<area shape="rect" id="Node000002" href="$classTiledBitmapInterface.html" title=" " alt="" coords="5,487,153,649"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,659,150,685,173,707,237,755,307,798,379,836,452,868,590,918,702,952,697,953,589,923,450,873,377,840,304,803,234,760,169,711,146,688,129,664"/>
+<area shape="rect" id="Node000003" href="$classViewable.html" title=" " alt="" coords="54,239,125,333"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="88,345,85,487,80,487,87,350"/>
+<area shape="rect" id="Node000004" href="$classInterface.html" title=" " alt="" coords="81,5,187,189"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="109,206,103,240,98,239,109,201"/>
+<area shape="rect" id="Node000005" href="$classTileInitialisationObserver.html" title=" " alt="" coords="101,357,276,452"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="153,201,183,358,178,358,153,207"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="180,464,181,512,184,562,196,613,217,659,266,719,324,772,388,818,456,857,524,889,590,915,703,952,697,952,588,920,522,894,454,861,385,822,321,776,262,723,213,661,191,614,179,563,176,512,180,470"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="228,476,365,660"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="375,657,378,658,462,732,549,803,703,919,697,920,546,807,459,736,375,662,376,662"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="226,241,367,331"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="297,343,299,477,294,476,296,348"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="389,512,591,624"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="529,621,693,853,687,854,527,626"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="615,523,746,613"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="691,610,716,717,711,716,689,615"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="567,250,741,322"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="658,320,677,507,672,506,656,325"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="770,523,956,613"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="855,610,832,718,827,715,852,615"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="765,250,1015,322"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="888,320,871,507,866,505,885,324"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="980,523,1159,613"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="1040,611,855,861,851,858,1035,614"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="1184,521,1302,615"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="1215,613,1179,664,1136,711,1067,772,993,828,858,920,856,915,990,824,1063,768,1132,707,1175,660,1211,616"/>
+<area shape="rect" id="Node000015" href="$classScroom_1_1Logger.html" title=" " alt="" coords="1326,510,1438,626"/>
+<area shape="poly" id="edge15_Node000001_Node000015" title=" " alt="" coords="1345,624,1317,662,1290,689,1259,711,1155,777,1047,838,859,932,857,927,1044,833,1152,773,1256,707,1287,685,1313,658,1341,628"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="1260,250,1504,322"/>
+<area shape="poly" id="edge16_Node000015_Node000016" title=" " alt="" coords="1383,320,1384,494,1379,491,1380,324"/>
+<area shape="rect" id="Node000017" title=" " alt="" coords="1462,532,1651,604"/>
+<area shape="poly" id="edge17_Node000001_Node000017" title=" " alt="" coords="1523,603,1451,662,1375,710,1294,754,1131,833,980,896,859,942,857,937,978,891,1129,828,1292,749,1372,705,1448,658,1518,605"/>
+</map>

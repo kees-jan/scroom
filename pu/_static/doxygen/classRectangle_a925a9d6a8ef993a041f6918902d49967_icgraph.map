@@ -1,0 +1,9 @@
+<map id="Rectangle::to" name="Rectangle::to">
+<area shape="rect" id="Node000001" title=" " alt="" coords="705,14,813,42"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a1dce69533be291ce521eaa7703bddd3f" title=" " alt="" coords="456,5,657,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="687,28,658,30,658,25,692,28"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#af271f41aee4bf0ed58f3d9dd974f137a" title=" " alt="" coords="219,5,408,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="438,28,409,30,408,25,443,28"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1TiledBitmap_1_1LayerStack.html#ad527e9747f143348ab9f56879250a2f2" title=" " alt="" coords="5,5,171,50"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="200,28,171,30,171,25,206,27"/>
+</map>

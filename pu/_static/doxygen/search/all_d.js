@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['n_5fcolumns_0',['N_COLUMNS',['../view_8cc.html#a6c4d7d2005749685c9a72955f3dcad45ac70d28409ca79aa291cc0e58244f1fe4',1,'N_COLUMNS:&#160;view.cc'],['../namespaceScroom_1_1ColormapImpl.html#a14eaea2830b525ba8b88b8f3fdd8a12fab6276a6e8897bd5f844a2f9f0970a5bc',1,'Scroom::ColormapImpl::N_COLUMNS']]],
+  ['name_1',['name',['../classColormap.html#a77fb198e57c46af95e84f548e5853155',1,'Colormap::name'],['../classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a690d27bc6f9fc1fec4400f0944917771',1,'anonymous_namespace{tiledbitmappresentation.cc}::TiledBitmapPresentation::name'],['../classBaseCounter.html#a9db314a45e31789c4b503b64f9716536',1,'BaseCounter::name'],['../classWaitForAsyncOp.html#ac603ab85a8db323a7c22740e4505a9f0',1,'WaitForAsyncOp::name'],['../classScroom_1_1Utils_1_1Count.html#a8d3de95d8b8afd68680b51470bf196f5',1,'Scroom::Utils::Count::name']]],
+  ['name_5fexists_2',['name_exists',['../classScroom_1_1Utils_1_1Context_1_1name__exists.html',1,'Scroom::Utils::Context']]],
+  ['name_5fnot_5ffound_3',['name_not_found',['../classScroom_1_1Utils_1_1Context_1_1name__not__found.html',1,'Scroom::Utils::Context']]],
+  ['narrowersample_4',['narrowerSample',['../sampleiterator-tests_8cc.html#a8fdb6c77d93a13da402bd90bc66560b7',1,'sampleiterator-tests.cc']]],
+  ['new_5',['NEW',['../namespaceMenuIds.html#a01120702498897e819f1a1148d22d938',1,'MenuIds']]],
+  ['new_5fwindow_6',['NEW_WINDOW',['../namespaceMenuIds.html#abdf38c44f69dfcd6be5013dff543c9ed',1,'MenuIds']]],
+  ['newaggregate_7',['newAggregate',['../classScroomInterfaceImpl.html#a03e8960134ad1751d8cdea1887a73568',1,'ScroomInterfaceImpl::newAggregate()'],['../classScroomInterface.html#a3bbde7b2d7044b4214a8bdd4ee3611da',1,'ScroomInterface::newAggregate()']]],
+  ['newaggregateinterface_8',['NewAggregateInterface',['../classNewAggregateInterface.html',1,'']]],
+  ['newaggregateinterfaces_9',['newAggregateInterfaces',['../classPluginManager.html#a8d8901a66366343aaebf664cbacc0082',1,'PluginManager']]],
+  ['newcolormap_10',['newColorMap',['../colormaphelpers__test_8cc.html#a6ed13517d4275644149c51418bf65722',1,'colormaphelpers_test.cc']]],
+  ['newpresentation_11',['newPresentation',['../classScroomInterfaceImpl.html#a47ad218fdfeccd1cc02d5a367002eb66',1,'ScroomInterfaceImpl::newPresentation()'],['../classScroomInterface.html#aed7caaa94ec238cf7d352cb718235a39',1,'ScroomInterface::newPresentation()']]],
+  ['newpresentationinterface_12',['NewPresentationInterface',['../classNewPresentationInterface.html',1,'']]],
+  ['newpresentationinterfaces_13',['newPresentationInterfaces',['../classPluginManager.html#a224c510adcb84b33159057136434bb01',1,'PluginManager']]],
+  ['nextposition_14',['nextPosition',['../sampleiterator-tests_8cc.html#a7830f9d88af432fa05a267d1dfc9a07b',1,'sampleiterator-tests.cc']]],
+  ['nextseq_15',['nextSeq',['../structScroom_1_1RingBufferSink_1_1ConsumeResult.html#a797e8567413054e00191f7fc6c427515',1,'Scroom::RingBufferSink::ConsumeResult']]],
+  ['nextstatusmessage_16',['nextStatusMessage',['../classDummyView.html#a355e6404319e9e280d42bc22f3a56b68',1,'DummyView']]],
+  ['nextvalue_17',['nextValue',['../sampleiterator-tests_8cc.html#ad0d426f31420d60d447a8ce334e07d88',1,'sampleiterator-tests.cc']]],
+  ['no_5fop_18',['no_op',['../threadpool-tests_8cc.html#abc8d36c4d1d17b772ee624f93cb52ce7',1,'threadpool-tests.cc']]],
+  ['normalize_19',['normalize',['../classScroom_1_1Utils_1_1Segment.html#aa3415b3b3cc8f607a25b3aad79221441',1,'Scroom::Utils::Segment::normalize()'],['../classSegment.html#aa3415b3b3cc8f607a25b3aad79221441',1,'Segment::normalize()']]],
+  ['notifyobservers_20',['notifyObservers',['../classCompressedTile.html#a56111eeb0baeaf0b8f2d93e4a81ea99d',1,'CompressedTile']]],
+  ['notifythreadlist_21',['NotifyThreadList',['../namespaceanonymous__namespace_02threadpool_8cc_03.html#ab3b5c2a45b9d57ca5f1d8c6c553f85f8',1,'anonymous_namespace{threadpool.cc}']]],
+  ['numberofcolors_22',['numberOfColors',['../classMonochromeColormapHelper.html#a22800a9f435551e61e8fc20cf889997a',1,'MonochromeColormapHelper']]]
+];

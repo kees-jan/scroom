@@ -1,0 +1,31 @@
+<map id="libs/tiled&#45;bitmap/test/sampleiterator&#45;tests.cc" name="libs/tiled&#45;bitmap/test/sampleiterator&#45;tests.cc">
+<area shape="rect" id="Node000001" title=" " alt="" coords="117,5,293,50"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,98,61,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,53,76,93,73,89,161,48"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="85,98,144,126"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="179,52,142,89,138,85,183,48"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="167,98,243,126"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="206,48,208,83,202,82,204,53"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="266,98,392,126"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="238,48,299,89,294,90,237,53"/>
+<area shape="rect" id="Node000006" href="$bitmap-helpers_8hh.html" title=" " alt="" coords="416,98,608,126"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="286,48,450,92,446,95,286,53"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="58,174,134,201"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="418,127,296,149,150,176,148,171,295,144,423,125"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="158,174,249,201"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="454,128,265,174,264,169,459,125"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="273,174,425,201"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="485,125,393,170,391,165,480,127"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="449,174,574,201"/>
+<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="513,124,514,160,509,156,510,128"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="599,174,664,201"/>
+<area shape="poly" id="edge10_Node000006_Node000011" title=" " alt="" coords="534,124,600,166,595,165,533,129"/>
+<area shape="rect" id="Node000012" href="$assertions_8hh.html" title=" " alt="" coords="689,174,849,201"/>
+<area shape="poly" id="edge11_Node000006_Node000012" title=" " alt="" coords="558,124,711,169,706,169,557,129"/>
+<area shape="rect" id="Node000015" href="$global_8hh.html" title=" " alt="" coords="873,174,1006,201"/>
+<area shape="poly" id="edge14_Node000006_Node000015" title=" " alt="" coords="589,124,860,172,855,173,589,129"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="661,249,757,277"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="761,201,731,239,728,235,756,203"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="782,249,876,277"/>
+<area shape="poly" id="edge13_Node000012_Node000014" title=" " alt="" coords="781,199,811,238,806,236,779,204"/>
+</map>

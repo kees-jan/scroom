@@ -1,0 +1,13 @@
+<map id="Operations" name="Operations">
+<area shape="rect" id="Node000001" title=" " alt="" coords="31,844,174,1117"/>
+<area shape="rect" id="Node000006" href="$classOperationsColormapped.html" title=" " alt="" coords="5,1165,200,1327"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="104,1130,105,1166,100,1165,102,1135"/>
+<area shape="rect" id="Node000002" href="$classCommonOperations.html" title=" " alt="" coords="32,590,173,796"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,809,105,844,100,844,103,814"/>
+<area shape="rect" id="Node000003" href="$classLayerOperations.html" title=" " alt="" coords="31,447,174,542"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="103,554,105,590,100,590,103,559"/>
+<area shape="rect" id="Node000004" href="$classLayerRenderingOperations.html" title=" " alt="" coords="11,237,195,399"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="103,411,105,447,100,447,103,417"/>
+<area shape="rect" id="Node000005" href="$classInterface.html" title=" " alt="" coords="50,5,156,189"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="103,202,105,238,100,238,103,207"/>
+</map>

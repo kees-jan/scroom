@@ -1,0 +1,14 @@
+<map id="Tiff" name="Tiff">
+<area shape="rect" id="Node000001" title=" " alt="" coords="253,469,417,676"/>
+<area shape="rect" id="Node000002" href="$classPluginInformationInterface.html" title=" " alt="" coords="5,260,216,399"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="185,407,256,483,250,484,184,412"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="170,5,276,189"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="171,205,147,261,142,259,173,200"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1TiledBitmap_1_1OpenTiledBitmapInterface.html" title=" " alt="" coords="240,274,430,385"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="274,200,311,274,306,274,273,205"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="336,398,337,471,332,469,333,402"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="454,237,592,421"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="447,429,416,472,412,468,443,432"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="452,53,594,142"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="524,155,525,238,520,237,522,159"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="BinaryIntensityReduction" name="BinaryIntensityReduction">
+<area shape="rect" id="Node000001" title=" " alt="" coords="106,212,280,285"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,25,95,97"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,107,169,212,164,213,85,111"/>
+<area shape="rect" id="Node000003" href="$structScroom_1_1TiledBitmap_1_1Test_1_1SampleLayout.html" title=" " alt="" coords="120,5,266,117"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,115,195,196,190,194,191,119"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="291,25,452,97"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="362,95,341,145,326,169,308,190,291,205,288,200,304,186,322,165,337,142,358,99"/>
+</map>

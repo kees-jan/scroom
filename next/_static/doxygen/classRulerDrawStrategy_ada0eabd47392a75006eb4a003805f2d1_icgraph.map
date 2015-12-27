@@ -1,0 +1,15 @@
+<map id="RulerDrawStrategy::getHeight" name="RulerDrawStrategy::getHeight">
+<area shape="rect" id="Node000001" title=" " alt="" coords="231,179,382,223"/>
+<area shape="rect" id="Node000002" href="$classHorizontalDrawStrategy.html#a8b7409e7a2c96de1a5fe6fdb2d62435d" title=" " alt="" coords="5,5,183,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="279,166,237,115,210,88,181,65,163,53,162,48,184,60,214,84,241,111,284,166"/>
+<area shape="rect" id="Node000003" href="$classVerticalDrawStrategy.html#a7a17e6a8c3d32cc3a06c4b8c41393a61" title=" " alt="" coords="14,75,174,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="252,171,181,134,157,123,156,117,184,129,257,169"/>
+<area shape="rect" id="Node000004" href="$classHorizontalDrawStrategy.html#acc63ffbfa6d4dbcfcc11b1e1ecac7318" title=" " alt="" coords="5,144,183,189"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="213,187,184,183,183,178,218,185"/>
+<area shape="rect" id="Node000005" href="$classHorizontalDrawStrategy.html#a9e9201354fc44a0b6f296e7f74138cea" title=" " alt="" coords="5,213,183,258"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="213,217,184,224,182,219,218,214"/>
+<area shape="rect" id="Node000006" href="$classVerticalDrawStrategy.html#ad3184cd2ce611ac18347dcc75fb06324" title=" " alt="" coords="14,283,174,327"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="253,233,184,273,158,284,155,280,181,268,257,230"/>
+<area shape="rect" id="Node000007" href="$classHorizontalDrawStrategy.html#a83df0b6bd51072291adbf30a5aec5694" title=" " alt="" coords="5,352,183,397"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="284,234,241,291,214,318,184,342,164,354,162,349,181,337,210,314,237,287,279,237"/>
+</map>

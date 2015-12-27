@@ -1,0 +1,9 @@
+<map id="CommonOperations" name="CommonOperations">
+<area shape="rect" id="Node000001" title=" " alt="" coords="27,590,168,796"/>
+<area shape="rect" id="Node000002" href="$classLayerOperations.html" title=" " alt="" coords="26,447,169,542"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,554,100,590,95,589,97,559"/>
+<area shape="rect" id="Node000003" href="$classLayerRenderingOperations.html" title=" " alt="" coords="5,237,189,399"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="98,411,100,447,95,447,97,417"/>
+<area shape="rect" id="Node000004" href="$classInterface.html" title=" " alt="" coords="44,5,150,189"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="97,202,100,238,95,237,97,207"/>
+</map>

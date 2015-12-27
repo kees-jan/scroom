@@ -1,0 +1,16 @@
+<map id="LayerCoordinator::LayerCoordinator" name="LayerCoordinator::LayerCoordinator">
+<area shape="rect" id="Node000001" title=" " alt="" coords="726,84,980,112"/>
+<area shape="poly" id="edge4_Node000001_Node000001" title=" " alt="" coords="904,69,888,65,853,63,821,65,804,70,799,75,807,84,802,83,794,75,800,65,820,59,853,57,889,60,909,69"/>
+<area shape="rect" id="Node000002" href="$classLayerCoordinator.html#a2ced2ea05b51b8480e4a359156eff623" title=" " alt="" coords="460,5,643,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="790,79,678,48,625,36,626,31,679,43,795,79"/>
+<area shape="rect" id="Node000005" href="$classLayerCoordinator.html#a9e3bb81ad4b4ef95cbb27dc6b3f6e109" title=" " alt="" coords="425,57,678,85"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="708,85,679,85,679,80,713,85"/>
+<area shape="rect" id="Node000006" href="$classLayerCoordinator.html#a218c9484e747b15ad2e9893bf9eba2dd" title=" " alt="" coords="448,109,655,137"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="708,110,656,117,655,112,714,110"/>
+<area shape="rect" id="Node000007" href="$classLayerCoordinator.html#a69900a72e012376f8f1de903f285ef30" title=" " alt="" coords="448,161,655,189"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="794,116,679,151,626,163,625,158,678,146,788,117"/>
+<area shape="rect" id="Node000003" href="$classTiledBitmap.html#a7d2051718f5b6f50e2804177d553bce8" title=" " alt="" coords="218,5,377,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="443,20,378,22,377,17,448,18"/>
+<area shape="rect" id="Node000004" href="$classTiledBitmap.html#a6b40bb63aa12b68f9678bb45b765b8e1" title=" " alt="" coords="5,5,170,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="199,20,171,22,169,17,204,18"/>
+</map>

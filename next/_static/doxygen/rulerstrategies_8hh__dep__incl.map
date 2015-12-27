@@ -1,0 +1,37 @@
+<map id="gui/ruler/inc/rulerstrategies.hh" name="gui/ruler/inc/rulerstrategies.hh">
+<area shape="rect" id="Node000001" title=" " alt="" coords="243,5,461,33"/>
+<area shape="rect" id="Node000002" href="$ruler_8hh.html" title=" " alt="" coords="172,81,324,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="319,44,268,83,265,78,323,40"/>
+<area shape="rect" id="Node000015" href="$rulerstrategies_8cc.html" title=" " alt="" coords="348,81,564,109"/>
+<area shape="poly" id="edge20_Node000001_Node000015" title=" " alt="" coords="383,39,440,80,435,81,382,45"/>
+<area shape="rect" id="Node000003" href="$ruler_8cc.html" title=" " alt="" coords="5,165,155,193"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="206,118,108,167,105,162,209,114"/>
+<area shape="rect" id="Node000004" href="$ruler-tests_8cc.html" title=" " alt="" coords="179,157,317,201"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="249,122,250,157,246,155,247,127"/>
+<area shape="rect" id="Node000005" href="$view_8hh.html" title=" " alt="" coords="341,165,459,193"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="286,114,378,164,373,165,285,119"/>
+<area shape="rect" id="Node000006" href="$callbacks_8cc.html" title=" " alt="" coords="105,325,252,353"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="372,203,198,327,196,322,367,201"/>
+<area shape="rect" id="Node000007" href="$callbacks_8hh.html" title=" " alt="" coords="583,249,732,277"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="456,195,619,248,613,249,455,201"/>
+<area shape="rect" id="Node000013" href="$view_8cc.html" title=" " alt="" coords="276,325,393,353"/>
+<area shape="poly" id="edge19_Node000005_Node000013" title=" " alt="" coords="386,204,364,250,349,291,340,327,336,323,344,289,359,248,382,208"/>
+<area shape="rect" id="Node000014" href="$pluginmanager_8hh.html" title=" " alt="" coords="373,249,558,277"/>
+<area shape="poly" id="edge14_Node000005_Node000014" title=" " alt="" coords="421,203,458,250,452,248,419,208"/>
+<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="568,281,253,329,252,324,567,276"/>
+<area shape="rect" id="Node000008" href="$loader_8cc.html" title=" " alt="" coords="417,325,543,353"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="614,283,512,327,511,322,609,284"/>
+<area shape="rect" id="Node000009" href="$logging-window_8cc.html" title=" " alt="" coords="1018,325,1206,353"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="748,276,1033,324,1028,325,747,282"/>
+<area shape="rect" id="Node000010" href="$gui_2src_2main_8cc.html" title=" " alt="" coords="1230,325,1349,353"/>
+<area shape="poly" id="edge10_Node000007_Node000010" title=" " alt="" coords="748,270,963,291,1219,322,1232,327,1227,326,1218,328,962,296,747,275"/>
+<area shape="rect" id="Node000011" href="$pluginmanager_8cc.html" title=" " alt="" coords="567,325,750,353"/>
+<area shape="poly" id="edge11_Node000007_Node000011" title=" " alt="" coords="660,291,660,326,656,323,656,295"/>
+<area shape="rect" id="Node000012" href="$progressbarmanager_8cc.html" title=" " alt="" coords="774,325,994,353"/>
+<area shape="poly" id="edge12_Node000007_Node000012" title=" " alt="" coords="713,280,846,325,841,324,712,285"/>
+<area shape="poly" id="edge13_Node000007_Node000013" title=" " alt="" coords="587,281,393,327,392,322,582,281"/>
+<area shape="poly" id="edge15_Node000014_Node000006" title=" " alt="" coords="402,281,231,327,229,322,397,281"/>
+<area shape="poly" id="edge16_Node000014_Node000008" title=" " alt="" coords="473,290,480,326,475,323,469,294"/>
+<area shape="poly" id="edge17_Node000014_Node000011" title=" " alt="" coords="514,280,627,325,622,324,513,285"/>
+<area shape="poly" id="edge18_Node000014_Node000013" title=" " alt="" coords="431,284,359,327,357,322,426,286"/>
+</map>

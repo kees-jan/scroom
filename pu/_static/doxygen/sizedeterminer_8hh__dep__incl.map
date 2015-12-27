@@ -1,0 +1,18 @@
+<map id="plugins/transparent&#45;overlay/src/sizedeterminer.hh" name="plugins/transparent&#45;overlay/src/sizedeterminer.hh">
+<area shape="rect" id="Node000001" title=" " alt="" coords="264,5,483,50"/>
+<area shape="rect" id="Node000002" href="$sizedeterminer_8cc.html" title=" " alt="" coords="24,106,242,151"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="305,58,187,108,184,104,308,54"/>
+<area shape="rect" id="Node000003" href="$transparentoverlaypresentation_8hh.html" title=" " alt="" coords="116,208,444,252"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="336,59,320,80,308,99,296,127,289,156,283,208,278,206,284,155,291,125,303,97,316,77,332,63"/>
+<area shape="rect" id="Node000006" href="$transparentoverlayviewinfo_8hh.html" title=" " alt="" coords="317,106,619,151"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="405,59,450,106,445,106,403,64"/>
+<area shape="rect" id="Node000008" href="$determine-size-test_8cc.html" title=" " alt="" coords="643,98,818,160"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="470,52,631,95,645,101,640,101,630,101,470,57"/>
+<area shape="rect" id="Node000004" href="$transparentoverlay_8cc.html" title=" " alt="" coords="5,300,248,345"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="233,260,164,302,162,298,227,261"/>
+<area shape="rect" id="Node000005" href="$transparentoverlaypresentation_8cc.html" title=" " alt="" coords="271,300,598,345"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="331,258,400,300,395,300,329,263"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="416,158,322,209,320,205,411,160"/>
+<area shape="rect" id="Node000007" href="$transparentoverlayviewinfo_8cc.html" title=" " alt="" coords="468,208,769,252"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="514,157,588,207,583,207,513,162"/>
+</map>

@@ -1,0 +1,17 @@
+<map id="SingleContextTests" name="SingleContextTests">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,803,140,876"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="6,636,96,708"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,721,71,804,66,804,56,725"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1SingleContext.html" title=" " alt="" coords="120,613,316,730"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="170,728,116,793,112,789,166,732"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Context.html" title=" " alt="" coords="34,401,191,540"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="156,551,191,614,185,614,155,556"/>
+<area shape="rect" id="Node000005" href="$classInterface.html" title=" " alt="" coords="60,144,166,328"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="113,340,115,401,110,401,112,345"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="216,426,367,515"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="277,513,247,598,243,596,274,517"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="254,200,329,272"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="292,270,294,409,289,408,290,275"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="228,5,355,95"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="292,107,294,200,289,199,291,112"/>
+</map>

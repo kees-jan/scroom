@@ -1,0 +1,14 @@
+<map id="Scroom::Detail::ThreadPool::WeakQueue::create" name="Scroom::Detail::ThreadPool::WeakQueue::create">
+<area shape="rect" id="Node000001" title="WeakQueue." alt="" coords="498,109,696,154"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#aeb7201763d182b9dd1d8ff5938f1f486" title=" " alt="" coords="252,109,450,154"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="479,141,451,143,450,138,485,140"/>
+<area shape="poly" id="edge2_Node000002_Node000001" title=" " alt="" coords="466,120,500,122,495,123,466,125"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#a0f710afb89229b24f633028c8ed6581d" title=" " alt="" coords="5,5,204,50"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="289,103,203,65,174,53,173,48,205,60,294,101"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#ae3521fe929ecd2be73c7a10d5f6b9170" title=" " alt="" coords="5,75,204,119"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="234,116,205,114,204,108,239,115"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#a4db047a9d1c259137a52961074325f71" title=" " alt="" coords="5,144,204,189"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="234,149,205,155,203,150,239,147"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#a7e28f87d329bb886faf5b955c7f3dc5b" title=" " alt="" coords="5,213,204,258"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="294,160,205,203,174,215,173,210,203,199,288,162"/>
+</map>

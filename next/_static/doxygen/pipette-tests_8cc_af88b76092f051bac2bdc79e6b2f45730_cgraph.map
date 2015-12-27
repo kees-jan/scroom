@@ -1,0 +1,12 @@
+<map id="onSelectionEnd" name="onSelectionEnd">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,44,127,72"/>
+<area shape="rect" id="Node000002" href="$classDummyView.html#a6ee533e18b061fa8de157931b74a5313" title=" " alt="" coords="175,44,440,72"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,56,162,58,157,59,127,61"/>
+<area shape="rect" id="Node000003" href="$classDummyPresentation.html#ab367b2e1bf10f4711da69c013b04330c" title=" " alt="" coords="488,5,651,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="431,41,475,39,470,39,432,46"/>
+<area shape="rect" id="Node000005" href="$classDummyView.html#a43f67248ad5757877dad05cf9851fcd2" title=" " alt="" coords="493,74,646,102"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="437,70,480,77,475,77,437,75"/>
+<area shape="rect" id="Node000004" href="$classDummyPresentation.html#ad309c379cbf46c4a3d8ea77f4d17eff8" title=" " alt="" coords="699,5,863,50"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="652,34,686,37,681,37,652,39"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="696,19,667,21,667,16,702,19"/>
+</map>

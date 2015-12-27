@@ -1,0 +1,9 @@
+<map id="Scroom::Bookkeeping::Detail::TokenAddition" name="Scroom::Bookkeeping::Detail::TokenAddition">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,523,162,701"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Bookkeeping_1_1Token.html" title=" " alt="" coords="8,272,160,473"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="84,486,86,523,81,522,83,491"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="11,151,156,223"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="84,235,86,273,81,272,83,240"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="74,5,93,78"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="84,75,86,134,81,133,83,80"/>
+</map>

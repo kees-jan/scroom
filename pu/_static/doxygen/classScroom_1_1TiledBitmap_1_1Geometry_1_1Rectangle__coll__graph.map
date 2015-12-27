@@ -1,0 +1,27 @@
+<map id="Scroom::TiledBitmap::Geometry::Rectangle&lt; T &gt;" name="Scroom::TiledBitmap::Geometry::Rectangle&lt; T &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="591,502,785,703"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,239,200,328"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,338,177,373,214,405,308,462,409,509,507,546,594,576,589,576,505,551,407,514,306,466,210,409,173,377,143,343"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="224,231,394,337"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="355,346,409,405,501,480,594,544,589,544,497,484,405,409,354,351"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="419,239,578,328"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="533,339,632,503,626,502,531,343"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="603,231,773,337"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="690,350,690,503,686,501,686,354"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="796,239,945,328"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="840,340,747,504,743,501,836,343"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="969,231,1127,337"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1009,347,959,409,873,482,786,544,783,540,870,478,955,405,1004,350"/>
+<area shape="rect" id="Node000008" href="$classScroom_1_1Utils_1_1Segment.html" title=" " alt="" coords="1152,161,1315,407"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1154,396,1142,409,1059,464,970,509,881,546,802,573,800,568,880,541,967,504,1056,459,1138,405,1149,398"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="722,14,929,103"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="932,106,942,109,998,122,1045,126,1090,134,1114,143,1141,159,1154,170,1149,169,1139,163,1112,148,1088,139,1044,131,998,128,941,114,933,111"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="953,5,1124,112"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="1104,120,1142,159,1154,175,1149,174,1138,163,1103,125"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="1148,5,1319,112"/>
+<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="1235,124,1236,162,1231,160,1232,129"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="1343,5,1502,112"/>
+<area shape="poly" id="edge11_Node000008_Node000012" title=" " alt="" coords="1371,121,1317,189,1313,184,1367,124"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="1526,14,1706,103"/>
+<area shape="poly" id="edge12_Node000008_Node000013" title=" " alt="" coords="1531,109,1316,237,1314,233,1526,112"/>
+</map>

@@ -1,0 +1,25 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,189,59,217"/>
+<area shape="rect" id="Node000002" href="$ringbuffer-sink-tests_8cc.html#aac7a6a67ddb1fadb8c58adffcb3536f3" title=" " alt="" coords="171,5,266,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="33,188,40,158,53,118,74,77,105,42,129,29,158,21,154,25,131,33,108,47,79,80,58,120,45,159,38,189"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1TiledBitmap_1_1LayerStack.html#aae33189b8149d938c36081ec7a65c843" title=" " alt="" coords="140,81,298,126"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="44,187,71,161,105,136,128,126,124,130,108,140,74,165,48,190"/>
+<area shape="rect" id="Node000008" href="$namespaceScroom_1_1TiledBitmap.html#aaaaab02fd8679d1106011b54d8b3bd1e" title=" " alt="" coords="123,150,315,195"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="58,197,109,189,105,193,61,201"/>
+<area shape="rect" id="Node000009" href="$ringbuffer-sink-tests_8cc.html#a7b934ee9250ba6a9298d13e8a7487169" title=" " alt="" coords="171,219,267,246"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="59,205,157,221,153,224,60,210"/>
+<area shape="rect" id="Node000010" href="$classanonymous__namespace_02layer-stack-tests_8cc_03_1_1SourceWithContrastingLeftStrip.html#a5296b1021def745c37016dac1d286d4a" title=" " alt="" coords="107,270,331,349"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="50,215,108,256,118,262,112,263,105,260,50,220"/>
+<area shape="rect" id="Node000011" href="$namespaceScroom_1_1TiledBitmap_1_1Test.html#a3730de8e6dbdef7aa8c2d6b2addee26f" title=" " alt="" coords="140,373,298,418"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="36,215,46,246,59,284,80,324,108,359,129,374,123,374,105,362,75,327,54,287,41,248,36,220"/>
+<area shape="poly" id="edge8_Node000003_Node000003" title=" " alt="" coords="183,80,182,71,188,62,200,56,219,54,239,57,252,64,247,66,237,62,219,59,202,61,191,66,187,72,188,81"/>
+<area shape="rect" id="Node000004" href="$classLayer.html#a8f3623d32725dbc8537779fb7f682e46" title=" " alt="" coords="379,89,485,117"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="297,101,366,102,362,104,299,106"/>
+<area shape="rect" id="Node000005" href="$classLayer.html#a461f24acc6b9fac1f007516bcd380c25" title="Layer." alt="" coords="533,89,635,117"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="485,101,520,102,515,104,486,106"/>
+<area shape="rect" id="Node000006" href="$classCompressedTile.html#a6ebd69edede63de69c82229f16475ce6" title=" " alt="" coords="683,89,858,117"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="634,101,670,103,664,104,636,106"/>
+<area shape="rect" id="Node000007" href="$classCompressedTile.html#a709f5e689dd41c5fee81f6da28ebea2e" title="CompressedTile." alt="" coords="906,89,1145,117"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="858,109,893,112,888,113,859,114"/>
+<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="903,95,874,97,873,92,908,94"/>
+</map>

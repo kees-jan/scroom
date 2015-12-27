@@ -1,0 +1,9 @@
+<map id="Scroom::TiledBitmap::Test::fillChannel" name="Scroom::TiledBitmap::Test::fillChannel">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,36,163,81"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1TiledBitmap_1_1Test.html#ada1bac964c98da285a164618642f889c" title=" " alt="" coords="219,5,376,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,44,206,40,201,42,164,50"/>
+<area shape="rect" id="Node000004" href="$layer-reduction-tests_8cc.html#abd60d9a3ba9fb174f157f376ff2ab843" title=" " alt="" coords="211,74,384,102"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="163,67,198,73,193,74,163,72"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1TiledBitmap_1_1Test.html#a7fb3434b4f93e346e87cea0403e03320" title=" " alt="" coords="432,5,589,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="376,25,419,27,414,28,377,30"/>
+</map>

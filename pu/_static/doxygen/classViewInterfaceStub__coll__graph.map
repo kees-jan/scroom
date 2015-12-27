@@ -1,0 +1,9 @@
+<map id="ViewInterfaceStub" name="ViewInterfaceStub">
+<area shape="rect" id="Node000001" title=" " alt="" coords="105,496,277,724"/>
+<area shape="rect" id="Node000002" href="$classViewInterface.html" title=" " alt="" coords="5,239,177,423"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,434,153,496,148,496,129,439"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="38,5,144,189"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="92,202,94,239,89,239,91,207"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="202,286,381,375"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="277,373,240,481,236,479,274,377"/>
+</map>

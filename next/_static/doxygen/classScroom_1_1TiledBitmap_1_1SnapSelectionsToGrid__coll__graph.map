@@ -1,0 +1,9 @@
+<map id="Scroom::TiledBitmap::SnapSelectionsToGrid" name="Scroom::TiledBitmap::SnapSelectionsToGrid">
+<area shape="rect" id="Node000001" title=" " alt="" coords="33,517,192,651"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1TweakSelectionsAsRectangles.html" title=" " alt="" coords="5,358,219,469"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,482,115,518,110,517,111,487"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1ITweakSelection.html" title=" " alt="" coords="7,237,218,310"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="113,322,115,358,110,357,112,327"/>
+<area shape="rect" id="Node000004" href="$classInterface.html" title=" " alt="" coords="59,5,165,189"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="113,202,115,238,110,237,112,207"/>
+</map>

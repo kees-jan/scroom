@@ -1,0 +1,13 @@
+<map id="Scroom::TiledBitmap::createCmykReduction" name="Scroom::TiledBitmap::createCmykReduction">
+<area shape="rect" id="Node000001" title=" " alt="" coords="306,135,479,179"/>
+<area shape="rect" id="Node000002" href="$classOperationsCMYK16.html#a44ffffcb4f16c5123f8d41d272167d29" title=" " alt="" coords="34,5,229,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="350,125,307,94,256,65,229,53,228,48,259,60,310,90,356,124"/>
+<area shape="rect" id="Node000003" href="$classOperationsCMYK32.html#a07a271ba42836a9715cb63aa9b1c0c88" title=" " alt="" coords="34,75,229,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="288,134,230,122,229,117,293,133"/>
+<area shape="rect" id="Node000004" href="$classOperationsCMYK4.html#a318114f98cc456ee7954a5e187c93a30" title=" " alt="" coords="5,143,258,171"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="287,158,259,160,257,154,292,156"/>
+<area shape="rect" id="Node000005" href="$classOperationsCMYK64.html#a0ae4a4af019448d5b53d7c2ed86c1ffd" title=" " alt="" coords="34,195,229,239"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="288,181,230,197,229,192,293,179"/>
+<area shape="rect" id="Node000006" href="$classOperationsCMYK8.html#a0a3ad912b0d1819905b2cc4838e97ef9" title=" " alt="" coords="5,263,258,291"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="357,188,311,225,259,254,227,265,226,260,257,249,308,220,352,190"/>
+</map>

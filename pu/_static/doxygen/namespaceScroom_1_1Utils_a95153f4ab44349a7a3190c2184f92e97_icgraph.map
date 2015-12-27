@@ -1,0 +1,16 @@
+<map id="Scroom::Utils::floored_divide_by" name="Scroom::Utils::floored_divide_by">
+<area shape="rect" id="Node000001" title=" " alt="" coords="707,75,869,119"/>
+<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="826,59,813,56,788,53,765,55,751,60,745,66,746,76,742,73,740,65,748,56,764,50,788,48,814,51,832,60"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a61c6c4659d89099fb82db9e5b90f0462" title=" " alt="" coords="462,5,624,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="690,70,624,53,625,48,695,70"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#adaed67d1986fc9ddb285ba60f3d493af" title=" " alt="" coords="434,75,652,119"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="689,97,653,100,653,94,694,97"/>
+<area shape="rect" id="Node000006" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#aff9537068f1f2f16f90ce20e15ba497d" title=" " alt="" coords="427,144,659,189"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="695,124,625,146,624,141,690,124"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1TiledBitmap_1_1LayerStack.html#a7cd9c9945e9f212e2f71484485288164" title=" " alt="" coords="219,75,379,119"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="416,97,380,100,379,94,421,97"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1TiledBitmap_1_1LayerStack.html#ad527e9747f143348ab9f56879250a2f2" title=" " alt="" coords="5,75,171,119"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="201,98,172,100,171,94,206,96"/>
+<area shape="rect" id="Node000007" href="$classTiledBitmap.html#a98c2d60fc0736a77ab18aeeb461a1da8" title=" " alt="" coords="222,152,376,180"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="409,166,376,169,376,164,414,166"/>
+</map>

@@ -1,0 +1,17 @@
+<map id="Scroom::MemoryBlocks::Page::get" name="Scroom::MemoryBlocks::Page::get">
+<area shape="rect" id="Node000001" title=" " alt="" coords="670,40,846,85"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1MemoryBlobs_1_1Detail.html#a9eecc99bc3c2f979da79519265dce5d3" title=" " alt="" coords="446,5,614,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="652,47,615,43,615,38,658,47"/>
+<area shape="rect" id="Node000004" href="$namespaceScroom_1_1MemoryBlobs_1_1Detail.html#ad9ecb35eccaa1e782bf2a383f66d5998" title=" " alt="" coords="438,75,622,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="653,78,623,86,622,80,658,78"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1MemoryBlobs_1_1Blob.html#a2f3d263c27f8084dbd467aab9f175b35" title=" " alt="" coords="222,5,390,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="428,28,391,30,390,25,433,27"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1MemoryBlobs_1_1Blob.html#a775037c70c28e8e06cd2731a6968a410" title=" " alt="" coords="222,75,390,119"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="420,97,391,100,390,94,425,97"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1MemoryBlobs_1_1Blob.html#a5f92c1a53bb27aafc2c872b3bd9c55a0" title=" " alt="" coords="5,5,174,50"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="217,70,162,53,162,48,222,69"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1MemoryBlobs_1_1Blob.html#aea1474e9fb8b35484a056d57244b0c68" title=" " alt="" coords="5,75,174,119"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="204,98,175,100,174,94,209,96"/>
+<area shape="rect" id="Node000008" href="$classScroom_1_1MemoryBlobs_1_1Blob.html#a943e5547833945716afd1a0c884206ea" title=" " alt="" coords="5,144,174,189"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="222,124,162,146,161,141,217,125"/>
+</map>

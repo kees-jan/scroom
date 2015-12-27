@@ -1,0 +1,13 @@
+<map id="Operations1bpp" name="Operations1bpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="166,873,309,1057"/>
+<area shape="rect" id="Node000002" href="$classCommonOperations.html" title=" " alt="" coords="27,594,168,800"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,810,192,873,187,873,157,815"/>
+<area shape="rect" id="Node000003" href="$classLayerOperations.html" title=" " alt="" coords="26,450,169,544"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="97,556,100,594,95,594,97,562"/>
+<area shape="rect" id="Node000004" href="$classLayerRenderingOperations.html" title=" " alt="" coords="5,239,189,400"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="97,413,100,450,95,449,97,418"/>
+<area shape="rect" id="Node000005" href="$classInterface.html" title=" " alt="" coords="44,5,150,189"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="97,202,100,239,95,239,97,207"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="191,652,377,742"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="278,739,259,857,254,855,275,743"/>
+</map>

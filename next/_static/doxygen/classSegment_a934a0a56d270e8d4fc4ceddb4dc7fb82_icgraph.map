@@ -1,0 +1,7 @@
+<map id="Segment::getStart" name="Segment::getStart">
+<area shape="rect" id="Node000001" title=" " alt="" coords="235,48,374,76"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html#a2cdd80f81dcf15c6d223b7b16f8b3401" title=" " alt="" coords="5,5,187,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="217,49,187,45,187,40,222,48"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Rectangle.html#a3bfd9e7186a657fa13e9a034606e4214" title=" " alt="" coords="5,75,187,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="217,77,188,84,187,79,222,76"/>
+</map>

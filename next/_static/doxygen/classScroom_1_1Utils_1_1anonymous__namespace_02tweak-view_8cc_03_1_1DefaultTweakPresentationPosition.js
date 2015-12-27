@@ -1,0 +1,4 @@
+var classScroom_1_1Utils_1_1anonymous__namespace_02tweak_view_8cc_03_1_1DefaultTweakPresentationPosition =
+[
+    [ "tweakPosition", "classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakPresentationPosition.html#a1e47d2afc1b36e907b29105c9d4fc254", null ]
+];

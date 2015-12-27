@@ -1,0 +1,22 @@
+<map id="Scroom::ColormapImpl::ColormapPlugin" name="Scroom::ColormapImpl::ColormapPlugin">
+<area shape="rect" id="Node000001" title=" " alt="" coords="418,519,588,743"/>
+<area shape="rect" id="Node000002" href="$classPluginInformationInterface.html" title=" " alt="" coords="5,285,216,424"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="209,430,230,444,421,574,416,577,227,449,210,435"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="166,5,272,189"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="174,205,142,286,137,284,175,200"/>
+<area shape="rect" id="Node000004" href="$classPresentationObserver.html" title=" " alt="" coords="240,307,410,402"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="263,200,309,307,304,307,262,205"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="364,412,434,520,429,520,362,417"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="434,262,572,446"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="504,459,505,521,500,518,501,463"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="432,53,574,142"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="504,155,505,263,500,262,502,159"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="596,310,810,399"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="674,397,595,508,591,504,669,400"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="601,53,797,142"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="701,140,704,294,699,292,698,144"/>
+<area shape="rect" id="Node000009" href="$classScroom_1_1Logger.html" title=" " alt="" coords="860,296,972,413"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="863,411,823,448,712,522,604,583,602,578,709,518,820,444,859,414"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="820,61,1065,134"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="941,131,926,280,922,278,938,136"/>
+</map>

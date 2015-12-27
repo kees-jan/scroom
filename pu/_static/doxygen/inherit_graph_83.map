@@ -1,0 +1,13 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,109,177,137"/>
+<area shape="rect" id="Node000001" href="$classCmykReduction.html" title=" " alt="" coords="269,5,394,33"/>
+<area shape="poly" id="edge306_Node000000_Node000001" title=" " alt="" coords="123,99,170,70,224,43,271,30,267,33,226,48,172,75,127,103"/>
+<area shape="rect" id="Node000002" href="$classColormapReductions.html" title=" " alt="" coords="253,57,410,85"/>
+<area shape="poly" id="edge307_Node000000_Node000002" title=" " alt="" coords="172,103,266,84,262,87,174,108"/>
+<area shape="rect" id="Node000003" href="$classRgbReduction.html" title=" " alt="" coords="276,109,387,137"/>
+<area shape="poly" id="edge308_Node000000_Node000003" title=" " alt="" coords="192,121,278,122,273,124,193,126"/>
+<area shape="rect" id="Node000004" href="$classTileGeometry.html" title=" " alt="" coords="276,161,386,189"/>
+<area shape="poly" id="edge309_Node000000_Node000004" title=" " alt="" coords="173,138,278,162,273,165,173,144"/>
+<area shape="rect" id="Node000005" href="$classanonymous__namespace_02colormaphelpers__test_8cc_03_1_1ColormapHelper__Data__Tests.html" title=" " alt="" coords="225,214,438,275"/>
+<area shape="poly" id="edge310_Node000000_Node000005" title=" " alt="" coords="128,143,226,198,254,213,249,213,223,203,127,148"/>
+</map>

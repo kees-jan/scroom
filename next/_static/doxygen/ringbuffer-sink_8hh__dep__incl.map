@@ -1,0 +1,29 @@
+<map id="gui/loggingbuffer/inc/scroom/ringbuffer&#45;sink.hh" name="gui/loggingbuffer/inc/scroom/ringbuffer&#45;sink.hh">
+<area shape="rect" id="Node000001" title=" " alt="" coords="366,5,559,50"/>
+<area shape="rect" id="Node000002" href="$ringbuffer-sink_8cc.html" title=" " alt="" coords="5,98,160,143"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="356,56,161,103,159,98,358,52"/>
+<area shape="rect" id="Node000003" href="$ringbuffer-sink-tests_8cc.html" title=" " alt="" coords="184,98,360,143"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="406,56,318,100,316,95,401,58"/>
+<area shape="rect" id="Node000004" href="$callbacks_8cc.html" title=" " alt="" coords="264,191,411,218"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="441,62,348,192,345,188,436,63"/>
+<area shape="rect" id="Node000005" href="$callbacks_8hh.html" title=" " alt="" coords="777,106,926,134"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="571,51,798,105,792,106,570,57"/>
+<area shape="rect" id="Node000008" href="$gui_2src_2main_8cc.html" title=" " alt="" coords="1388,191,1508,218"/>
+<area shape="poly" id="edge15_Node000001_Node000008" title=" " alt="" coords="574,41,746,65,939,95,1191,144,1393,190,1387,190,1190,150,938,101,746,70,574,46"/>
+<area shape="rect" id="Node000012" href="$logging-window_8hh.html" title=" " alt="" coords="434,106,624,134"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="488,60,522,107,517,105,486,65"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="765,136,412,194,411,189,760,135"/>
+<area shape="rect" id="Node000006" href="$loader_8cc.html" title=" " alt="" coords="1238,191,1364,218"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="939,135,1240,192,1235,192,938,140"/>
+<area shape="rect" id="Node000007" href="$logging-window_8cc.html" title=" " alt="" coords="435,191,623,218"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="788,138,581,193,580,187,783,139"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="942,130,1141,155,1376,188,1390,193,1385,192,1375,193,1141,160,942,135"/>
+<area shape="rect" id="Node000009" href="$pluginmanager_8cc.html" title=" " alt="" coords="647,191,830,218"/>
+<area shape="poly" id="edge9_Node000005_Node000009" title=" " alt="" coords="824,143,758,193,756,188,819,144"/>
+<area shape="rect" id="Node000010" href="$progressbarmanager_8cc.html" title=" " alt="" coords="854,191,1074,218"/>
+<area shape="poly" id="edge10_Node000005_Node000010" title=" " alt="" coords="883,141,948,191,943,189,881,146"/>
+<area shape="rect" id="Node000011" href="$view_8cc.html" title=" " alt="" coords="1098,191,1214,218"/>
+<area shape="poly" id="edge11_Node000005_Node000011" title=" " alt="" coords="916,136,1110,190,1104,190,915,141"/>
+<area shape="poly" id="edge13_Node000012_Node000004" title=" " alt="" coords="487,140,369,193,367,188,482,141"/>
+<area shape="poly" id="edge14_Node000012_Node000007" title=" " alt="" coords="531,148,531,192,527,189,527,152"/>
+</map>

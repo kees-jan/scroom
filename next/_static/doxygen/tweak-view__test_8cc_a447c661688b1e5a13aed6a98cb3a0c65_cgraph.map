@@ -1,0 +1,7 @@
+<map id="TEST_F" name="TEST_F">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,32,74,60"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a84096957416b21e1cf4ac3fc4484a330" title=" " alt="" coords="122,5,314,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,38,109,35,104,37,75,43"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Point.html#a45972be2646a1f80a0cdca8cbe68e3a6" title=" " alt="" coords="133,57,303,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="74,48,120,56,115,58,74,53"/>
+</map>

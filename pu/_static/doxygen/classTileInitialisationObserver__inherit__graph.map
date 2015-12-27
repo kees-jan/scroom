@@ -1,0 +1,9 @@
+<map id="TileInitialisationObserver" name="TileInitialisationObserver">
+<area shape="rect" id="Node000001" title=" " alt="" coords="96,237,270,332"/>
+<area shape="rect" id="Node000003" href="$classLayerCoordinator.html" title=" " alt="" coords="5,400,174,807"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="166,344,152,401,147,399,164,349"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1TiledBitmap_1_1LayerStack.html" title=" " alt="" coords="199,380,354,827"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="201,344,214,380,208,380,201,349"/>
+<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="130,5,236,189"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="184,201,186,238,181,237,183,206"/>
+</map>

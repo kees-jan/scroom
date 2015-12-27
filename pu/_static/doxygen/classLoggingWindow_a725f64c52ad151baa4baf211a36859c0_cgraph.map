@@ -1,0 +1,16 @@
+<map id="LoggingWindow::consume" name="LoggingWindow::consume">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,135,196,162"/>
+<area shape="rect" id="Node000002" href="$classLoggingWindow.html#a74f28762a1b0de7b510a8e1ce0388c99" title=" " alt="" coords="257,5,470,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,132,168,87,204,63,243,42,262,37,257,40,245,47,207,67,172,92,118,136"/>
+<area shape="rect" id="Node000003" href="$classLoggingWindow.html#af86d59c04fac1ded9d4e606fd87f5779" title=" " alt="" coords="267,57,461,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="155,132,264,104,260,108,157,137"/>
+<area shape="rect" id="Node000004" href="$classLoggingWindow.html#aa5f23e4cc87eee36b0b106e073fec9d9" title=" " alt="" coords="244,126,484,171"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="196,146,231,148,226,149,197,151"/>
+<area shape="rect" id="Node000006" href="$classLoggingWindow.html#a80c0ef89bb4023813bcf00a2fc5ebf66" title=" " alt="" coords="745,169,974,197"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="148,160,195,172,244,181,373,191,503,195,732,192,727,193,503,200,372,197,243,186,194,177,149,166"/>
+<area shape="rect" id="Node000007" href="$classLoggingWindow.html#a7cc2f57d209b7c6f31da7586f221ce8d" title=" " alt="" coords="264,246,464,291"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="125,160,180,192,245,225,278,240,273,240,243,230,177,196,124,165"/>
+<area shape="rect" id="Node000005" href="$classLoggingWindow.html#ad4d8733a2ce6b152122dfa6b908c8708" title=" " alt="" coords="532,140,697,168"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="484,148,519,151,514,152,485,154"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="698,161,732,168,727,168,698,166"/>
+</map>

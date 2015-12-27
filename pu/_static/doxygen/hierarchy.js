@@ -1,0 +1,507 @@
+var hierarchy =
+[
+    [ "A", "classA.html", null ],
+    [ "boost::addable", null, [
+      [ "Scroom::Utils::Point< double >", "classScroom_1_1Utils_1_1Point.html", null ],
+      [ "Scroom::Utils::Point< int >", "classScroom_1_1Utils_1_1Point.html", null ],
+      [ "Color", "classColor.html", null ],
+      [ "Scroom::Utils::Point< T >", "classScroom_1_1Utils_1_1Point.html", null ]
+    ] ],
+    [ "boost::addable2", null, [
+      [ "Scroom::Bitmap::SampleIterator< const Base >", "classScroom_1_1Bitmap_1_1SampleIterator.html", null ],
+      [ "Scroom::Bitmap::SampleIterator< const Base_ >", "classScroom_1_1Bitmap_1_1SampleIterator.html", null ],
+      [ "Scroom::Utils::Rectangle< int >", "classScroom_1_1Utils_1_1Rectangle.html", null ],
+      [ "Scroom::Utils::Rectangle< double >", "classScroom_1_1Utils_1_1Rectangle.html", null ],
+      [ "Scroom::Utils::Segment< value_type >", "classScroom_1_1Utils_1_1Segment.html", null ],
+      [ "Scroom::Bitmap::SampleIterator< ConstBase >", "classScroom_1_1Bitmap_1_1SampleIterator.html", null ],
+      [ "Scroom::Utils::Rectangle< T >", "classScroom_1_1Utils_1_1Rectangle.html", [
+        [ "RectangleHorizontalTestScaffold", "classRectangleHorizontalTestScaffold.html", null ],
+        [ "RectangleVerticalTestScaffold", "classRectangleVerticalTestScaffold.html", null ]
+      ] ],
+      [ "Scroom::Utils::RectangleIterator< T >", "classScroom_1_1Utils_1_1RectangleIterator.html", null ],
+      [ "Scroom::Utils::Segment< T >", "classScroom_1_1Utils_1_1Segment.html", null ],
+      [ "Scroom::Utils::SegmentIterator< T >", "classScroom_1_1Utils_1_1SegmentIterator.html", null ]
+    ] ],
+    [ "boost::andable", null, [
+      [ "Scroom::Utils::Segment< value_type >", "classScroom_1_1Utils_1_1Segment.html", null ],
+      [ "Scroom::Utils::Segment< T >", "classScroom_1_1Utils_1_1Segment.html", null ]
+    ] ],
+    [ "AsyncDeleter&lt; T &gt;", "classAsyncDeleter.html", null ],
+    [ "anonymous_namespace{gtkhelper-tests.cc}::B", "classanonymous__namespace_02gtkhelper-tests_8cc_03_1_1B.html", null ],
+    [ "spdlog::sinks::base_sink", null, [
+      [ "Scroom::RingBufferSink", "classScroom_1_1RingBufferSink.html", null ]
+    ] ],
+    [ "BaseCounter", "classBaseCounter.html", [
+      [ "InvalidatingCounter", "classInvalidatingCounter.html", null ]
+    ] ],
+    [ "anonymous_namespace{pnmsource.cc}::BitmapMetaData", "structanonymous__namespace_02pnmsource_8cc_03_1_1BitmapMetaData.html", null ],
+    [ "Scroom::TiledBitmap::BitmapMetaData", "structScroom_1_1TiledBitmap_1_1BitmapMetaData.html", null ],
+    [ "Scroom::Bitmap::BitmapSurface", "classScroom_1_1Bitmap_1_1BitmapSurface.html", null ],
+    [ "Scroom::Detail::ThreadPool::Builder&lt; hasCallable_, hasPriority_, hasQueue_, R &gt;", "classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html", null ],
+    [ "Scroom::Detail::ClearDefaultLogger", "structScroom_1_1Detail_1_1ClearDefaultLogger.html", null ],
+    [ "anonymous_namespace{transparentoverlaypresentation.cc}::ColorComparer", "structanonymous__namespace_02transparentoverlaypresentation_8cc_03_1_1ColorComparer.html", null ],
+    [ "Colormap", "classColormap.html", null ],
+    [ "Scroom::ColormapImpl::Colormaps", "classScroom_1_1ColormapImpl_1_1Colormaps.html", null ],
+    [ "ConstTile", "classConstTile.html", null ],
+    [ "Scroom::RingBufferSink::ConsumeResult", "structScroom_1_1RingBufferSink_1_1ConsumeResult.html", null ],
+    [ "Scroom::Utils::Count", "classScroom_1_1Utils_1_1Count.html", null ],
+    [ "Scroom::Utils::Counted&lt; C &gt;", "classScroom_1_1Utils_1_1Counted.html", null ],
+    [ "Scroom::Utils::Counted&lt; TestCounted &gt;", "classScroom_1_1Utils_1_1Counted.html", [
+      [ "TestCounted", "classTestCounted.html", null ]
+    ] ],
+    [ "Scroom::Utils::Counter", "classScroom_1_1Utils_1_1Counter.html", null ],
+    [ "anonymous_namespace{colormaphelpers_test.cc}::Data", "structanonymous__namespace_02colormaphelpers__test_8cc_03_1_1Data.html", null ],
+    [ "DataFetcher", "classDataFetcher.html", null ],
+    [ "boost::dividable2", null, [
+      [ "Scroom::Utils::Point< double >", "classScroom_1_1Utils_1_1Point.html", null ],
+      [ "Scroom::Utils::Point< int >", "classScroom_1_1Utils_1_1Point.html", null ],
+      [ "Scroom::Utils::Rectangle< int >", "classScroom_1_1Utils_1_1Rectangle.html", null ],
+      [ "Scroom::Utils::Rectangle< int >", "classScroom_1_1Utils_1_1Rectangle.html", null ],
+      [ "Scroom::Utils::Rectangle< double >", "classScroom_1_1Utils_1_1Rectangle.html", null ],
+      [ "Scroom::Utils::Rectangle< double >", "classScroom_1_1Utils_1_1Rectangle.html", null ],
+      [ "Scroom::Utils::Segment< value_type >", "classScroom_1_1Utils_1_1Segment.html", null ],
+      [ "Scroom::Utils::Point< T >", "classScroom_1_1Utils_1_1Point.html", null ],
+      [ "Scroom::Utils::Rectangle< T >", "classScroom_1_1Utils_1_1Rectangle.html", null ],
+      [ "Scroom::Utils::Rectangle< T >", "classScroom_1_1Utils_1_1Rectangle.html", null ],
+      [ "Scroom::Utils::Segment< T >", "classScroom_1_1Utils_1_1Segment.html", null ]
+    ] ],
+    [ "DontDelete&lt; T &gt;", "classDontDelete.html", null ],
+    [ "Scroom::MemoryBlocks::Detail::anonymous_namespace{swapbasedblockallocator.cc}::DontDelete&lt; T &gt;", "classScroom_1_1MemoryBlocks_1_1Detail_1_1anonymous__namespace_02swapbasedblockallocator_8cc_03_1_1DontDelete.html", null ],
+    [ "Dummy", "structDummy.html", null ],
+    [ "std::enable_shared_from_this", null, [
+      [ "LoggingWindow", "classLoggingWindow.html", null ],
+      [ "Scroom::ColormapImpl::ColormapProvider", "classScroom_1_1ColormapImpl_1_1ColormapProvider.html", null ],
+      [ "Scroom::Utils::Base", "classScroom_1_1Utils_1_1Base.html", [
+        [ "Scroom::Bookkeeping::MapBase< ObserverWeak, typenameRegistration::Ptr >", "classScroom_1_1Bookkeeping_1_1MapBase.html", [
+          [ "Scroom::Bookkeeping::Map< ObserverWeak, typenameRegistration::Ptr >", "classScroom_1_1Bookkeeping_1_1Map.html", null ]
+        ] ],
+        [ "Scroom::Utils::Observable< Viewable >", "classScroom_1_1Utils_1_1Observable.html", [
+          [ "PresentationInterface", "classPresentationInterface.html", [
+            [ "DummyPresentation", "classDummyPresentation.html", null ],
+            [ "ExamplePresentation", "classExamplePresentation.html", null ],
+            [ "PresentationBase", "classPresentationBase.html", [
+              [ "PresentationBaseSimple", "classPresentationBaseSimple.html", [
+                [ "TransformPresentation", "classTransformPresentation.html", null ]
+              ] ],
+              [ "TransparentOverlayPresentation", "classTransparentOverlayPresentation.html", null ],
+              [ "anonymous_namespace{tiledbitmappresentation.cc}::TiledBitmapPresentation", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html", null ]
+            ] ],
+            [ "PresentationMock", "classPresentationMock.html", [
+              [ "ColormappablePresentationMock", "classColormappablePresentationMock.html", null ]
+            ] ],
+            [ "anonymous_namespace{determine-size-test.cc}::PresentationInterfaceStub", "classanonymous__namespace_02determine-size-test_8cc_03_1_1PresentationInterfaceStub.html", [
+              [ "anonymous_namespace{determine-size-test.cc}::ResizablePresentationInterfaceStub", "classanonymous__namespace_02determine-size-test_8cc_03_1_1ResizablePresentationInterfaceStub.html", null ]
+            ] ]
+          ] ]
+        ] ],
+        [ "Scroom::Utils::Observable< TileInitialisationObserver >", "classScroom_1_1Utils_1_1Observable.html", [
+          [ "CompressedTile", "classCompressedTile.html", null ]
+        ] ],
+        [ "Scroom::Utils::Observable< TileLoadingObserver >", "classScroom_1_1Utils_1_1Observable.html", [
+          [ "CompressedTile", "classCompressedTile.html", null ],
+          [ "TileViewState", "classTileViewState.html", null ]
+        ] ],
+        [ "Scroom::Utils::Observable< TestObserver >", "classScroom_1_1Utils_1_1Observable.html", [
+          [ "TestObservable", "classTestObservable.html", null ],
+          [ "TestRecursiveObservable", "classTestRecursiveObservable.html", null ]
+        ] ],
+        [ "ChildView", "classChildView.html", null ],
+        [ "Example", "classExample.html", null ],
+        [ "Layer", "classLayer.html", null ],
+        [ "LayerCoordinator", "classLayerCoordinator.html", null ],
+        [ "Measure", "classMeasure.html", null ],
+        [ "MeasureHandler", "classMeasureHandler.html", null ],
+        [ "Metadata", "classMetadata.html", null ],
+        [ "Pipette", "classPipette.html", null ],
+        [ "PipetteHandler", "classPipetteHandler.html", null ],
+        [ "PipetteLayerOperations", "classPipetteLayerOperations.html", [
+          [ "PipetteCommonOperations16bpp", "classPipetteCommonOperations16bpp.html", [
+            [ "Operations16bpp", "classOperations16bpp.html", null ]
+          ] ],
+          [ "PipetteCommonOperationsCMYK", "classPipetteCommonOperationsCMYK.html", [
+            [ "OperationsCMYK16", "classOperationsCMYK16.html", null ],
+            [ "OperationsCMYK32", "classOperationsCMYK32.html", null ],
+            [ "OperationsCMYK4", "classOperationsCMYK4.html", null ],
+            [ "OperationsCMYK8", "classOperationsCMYK8.html", null ]
+          ] ],
+          [ "PipetteCommonOperationsCMYK64bpp", "classPipetteCommonOperationsCMYK64bpp.html", [
+            [ "OperationsCMYK64", "classOperationsCMYK64.html", null ]
+          ] ],
+          [ "PipetteCommonOperationsRGB", "classPipetteCommonOperationsRGB.html", [
+            [ "OperationsRgb24bpp", "classOperationsRgb24bpp.html", null ]
+          ] ],
+          [ "PipetteCommonOperationsRGB48bpp", "classPipetteCommonOperationsRGB48bpp.html", [
+            [ "OperationsRgb48bpp", "classOperationsRgb48bpp.html", null ]
+          ] ]
+        ] ],
+        [ "PipetteViewInterface", "classPipetteViewInterface.html", [
+          [ "DummyPresentation", "classDummyPresentation.html", null ],
+          [ "TransformPresentation", "classTransformPresentation.html", null ],
+          [ "anonymous_namespace{tiledbitmappresentation.cc}::TiledBitmapPresentation", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html", null ]
+        ] ],
+        [ "PluginManager", "classPluginManager.html", null ],
+        [ "Pnm", "classPnm.html", null ],
+        [ "Scroom::Bookkeeping::MapBase< K, V >", "classScroom_1_1Bookkeeping_1_1MapBase.html", [
+          [ "Scroom::Bookkeeping::Map< K, V >", "classScroom_1_1Bookkeeping_1_1Map.html", null ]
+        ] ],
+        [ "Scroom::ColormapImpl::ColormapPlugin", "classScroom_1_1ColormapImpl_1_1ColormapPlugin.html", null ],
+        [ "Scroom::MemoryBlobs::Blob", "classScroom_1_1MemoryBlobs_1_1Blob.html", null ],
+        [ "Scroom::MemoryBlobs::PageProvider", "classScroom_1_1MemoryBlobs_1_1PageProvider.html", null ],
+        [ "Scroom::MemoryBlocks::Detail::SwapBasedBlockAllocator", "classScroom_1_1MemoryBlocks_1_1Detail_1_1SwapBasedBlockAllocator.html", null ],
+        [ "Scroom::TiledBitmap::LayerStack", "classScroom_1_1TiledBitmap_1_1LayerStack.html", null ],
+        [ "Scroom::Utils::Observable< T >", "classScroom_1_1Utils_1_1Observable.html", null ],
+        [ "Scroom::Utils::ProgressInterfaceBroadcaster", "classScroom_1_1Utils_1_1ProgressInterfaceBroadcaster.html", null ],
+        [ "Scroom::Utils::ProgressInterfaceMultiplexer", "classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer.html", null ],
+        [ "Tiff", "classTiff.html", null ],
+        [ "TiledBitmap", "classTiledBitmap.html", null ],
+        [ "TiledBitmapViewData", "classTiledBitmapViewData.html", null ],
+        [ "TransparentOverlay", "classTransparentOverlay.html", null ],
+        [ "TransparentOverlayViewInfo", "classTransparentOverlayViewInfo.html", null ],
+        [ "View", "classView.html", null ]
+      ] ]
+    ] ],
+    [ "Scroom::RingBufferSink::Entry", "structScroom_1_1RingBufferSink_1_1Entry.html", null ],
+    [ "Scroom::Utils::Detail::ErrorSignalHandler", "classScroom_1_1Utils_1_1Detail_1_1ErrorSignalHandler.html", null ],
+    [ "std::exception", null, [
+      [ "Scroom::Utils::Context::name_exists", "classScroom_1_1Utils_1_1Context_1_1name__exists.html", null ],
+      [ "Scroom::Utils::Context::name_not_found", "classScroom_1_1Utils_1_1Context_1_1name__not__found.html", null ]
+    ] ],
+    [ "formatter", null, [
+      [ "fmt::formatter< Scroom::Utils::Point< T > >", "structfmt_1_1formatter_3_01Scroom_1_1Utils_1_1Point_3_01T_01_4_01_4.html", null ],
+      [ "fmt::formatter< Scroom::Utils::Rectangle< T > >", "structfmt_1_1formatter_3_01Scroom_1_1Utils_1_1Rectangle_3_01T_01_4_01_4.html", null ],
+      [ "fmt::formatter< std::shared_ptr< T > >", "structfmt_1_1formatter_3_01std_1_1shared__ptr_3_01T_01_4_01_4.html", null ],
+      [ "fmt::formatter< std::weak_ptr< T > >", "structfmt_1_1formatter_3_01std_1_1weak__ptr_3_01T_01_4_01_4.html", null ]
+    ] ],
+    [ "fmt::formatter&lt; TileViewState::State &gt;", "structfmt_1_1formatter_3_01TileViewState_1_1State_01_4.html", null ],
+    [ "Freezable&lt; T &gt;", "classFreezable.html", null ],
+    [ "Scroom::Detail::ThreadPool::FunctionAdditor", "classScroom_1_1Detail_1_1ThreadPool_1_1FunctionAdditor.html", null ],
+    [ "Scroom::Detail::ThreadPool::FunctionMultiplier", "classScroom_1_1Detail_1_1ThreadPool_1_1FunctionMultiplier.html", null ],
+    [ "GObjectUnref&lt; T &gt;", "classGObjectUnref.html", null ],
+    [ "GtkFileFilterInfoDeleter", "classGtkFileFilterInfoDeleter.html", null ],
+    [ "GtkFileFilterListDestroyer", "classGtkFileFilterListDestroyer.html", null ],
+    [ "Scroom::GtkTestHelpers::GtkMainLoop", "classScroom_1_1GtkTestHelpers_1_1GtkMainLoop.html", [
+      [ "Pipette_Tests", "classPipette__Tests.html", null ]
+    ] ],
+    [ "Interface", "classInterface.html", [
+      [ "Aggregate", "classAggregate.html", [
+        [ "TransparentOverlayPresentation", "classTransparentOverlayPresentation.html", null ]
+      ] ],
+      [ "ColormapProvider", "classColormapProvider.html", [
+        [ "ColormapHelperBase", "classColormapHelperBase.html", [
+          [ "ColormapHelper", "classColormapHelper.html", null ],
+          [ "MonochromeColormapHelper", "classMonochromeColormapHelper.html", null ]
+        ] ],
+        [ "DummyColormapProvider", "classDummyColormapProvider.html", null ]
+      ] ],
+      [ "Colormappable", "classColormappable.html", [
+        [ "ColormapHelperBase", "classColormapHelperBase.html", null ],
+        [ "ColormappableMock", "classColormappableMock.html", [
+          [ "ColormappablePresentationMock", "classColormappablePresentationMock.html", null ]
+        ] ],
+        [ "TransformPresentation", "classTransformPresentation.html", null ],
+        [ "anonymous_namespace{tiledbitmappresentation.cc}::TiledBitmapPresentation", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html", null ]
+      ] ],
+      [ "LayerRenderingOperations", "classLayerRenderingOperations.html", [
+        [ "LayerOperations", "classLayerOperations.html", [
+          [ "CommonOperations", "classCommonOperations.html", [
+            [ "Operations", "classOperations.html", [
+              [ "OperationsColormapped", "classOperationsColormapped.html", null ]
+            ] ],
+            [ "Operations1bpp", "classOperations1bpp.html", null ],
+            [ "Operations1bppClipped", "classOperations1bppClipped.html", null ],
+            [ "Operations8bpp", "classOperations8bpp.html", null ],
+            [ "PipetteCommonOperations16bpp", "classPipetteCommonOperations16bpp.html", null ],
+            [ "PipetteCommonOperationsCMYK", "classPipetteCommonOperationsCMYK.html", null ],
+            [ "PipetteCommonOperationsCMYK64bpp", "classPipetteCommonOperationsCMYK64bpp.html", null ],
+            [ "PipetteCommonOperationsRGB", "classPipetteCommonOperationsRGB.html", null ],
+            [ "PipetteCommonOperationsRGB48bpp", "classPipetteCommonOperationsRGB48bpp.html", null ]
+          ] ],
+          [ "DummyLayerOperations", "classDummyLayerOperations.html", null ]
+        ] ]
+      ] ],
+      [ "NewAggregateInterface", "classNewAggregateInterface.html", [
+        [ "TransparentOverlay", "classTransparentOverlay.html", null ]
+      ] ],
+      [ "NewPresentationInterface", "classNewPresentationInterface.html", [
+        [ "Example", "classExample.html", null ]
+      ] ],
+      [ "OpenInterface", "classOpenInterface.html", null ],
+      [ "OpenPresentationInterface", "classOpenPresentationInterface.html", [
+        [ "anonymous_namespace{tiledbitmappresentation.cc}::OpenTiledBitmapAsPresentation", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html", null ]
+      ] ],
+      [ "PipetteLayerOperations", "classPipetteLayerOperations.html", null ],
+      [ "PipetteViewInterface", "classPipetteViewInterface.html", null ],
+      [ "PluginInformationInterface", "classPluginInformationInterface.html", [
+        [ "Example", "classExample.html", null ],
+        [ "Measure", "classMeasure.html", null ],
+        [ "Metadata", "classMetadata.html", null ],
+        [ "Pipette", "classPipette.html", null ],
+        [ "Pnm", "classPnm.html", null ],
+        [ "Scroom::ColormapImpl::ColormapPlugin", "classScroom_1_1ColormapImpl_1_1ColormapPlugin.html", null ],
+        [ "Tiff", "classTiff.html", null ],
+        [ "TransparentOverlay", "classTransparentOverlay.html", null ]
+      ] ],
+      [ "PostRenderer", "classPostRenderer.html", [
+        [ "MeasureHandler", "classMeasureHandler.html", null ],
+        [ "PipetteHandler", "classPipetteHandler.html", null ]
+      ] ],
+      [ "PresentationObserver", "classPresentationObserver.html", [
+        [ "Scroom::ColormapImpl::ColormapPlugin", "classScroom_1_1ColormapImpl_1_1ColormapPlugin.html", null ]
+      ] ],
+      [ "ProgressInterface", "classProgressInterface.html", [
+        [ "ProgressBarManager", "classProgressBarManager.html", null ],
+        [ "ProgressInterfaceStub", "classProgressInterfaceStub.html", null ],
+        [ "Scroom::Utils::ProgressInterfaceBroadcaster", "classScroom_1_1Utils_1_1ProgressInterfaceBroadcaster.html", null ],
+        [ "Scroom::Utils::ProgressInterfaceFromProgressStateInterface", "classScroom_1_1Utils_1_1ProgressInterfaceFromProgressStateInterface.html", [
+          [ "Scroom::Utils::Detail::ProgressStore", "classScroom_1_1Utils_1_1Detail_1_1ProgressStore.html", null ],
+          [ "Scroom::Utils::ProgressInterfaceFromProgressStateInterfaceForwarder", "classScroom_1_1Utils_1_1ProgressInterfaceFromProgressStateInterfaceForwarder.html", null ],
+          [ "Scroom::Utils::ProgressInterfaceMultiplexer::Child", "classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer_1_1Child.html", null ],
+          [ "anonymous_namespace{tiled-bitmap.cc}::ForwardProgressToUiThread", "classanonymous__namespace_02tiled-bitmap_8cc_03_1_1ForwardProgressToUiThread.html", null ]
+        ] ],
+        [ "Scroom::Utils::ProgressStateInterfaceFromProgressInterface", "classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterface.html", [
+          [ "Scroom::Utils::ProgressStateInterfaceFromProgressInterfaceForwarder", "classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterfaceForwarder.html", null ]
+        ] ],
+        [ "TiledBitmapViewData", "classTiledBitmapViewData.html", null ],
+        [ "anonymous_namespace{layer-stack-tests.cc}::PopulationProgress", "classanonymous__namespace_02layer-stack-tests_8cc_03_1_1PopulationProgress.html", null ]
+      ] ],
+      [ "ResizablePresentationInterface", "classResizablePresentationInterface.html", [
+        [ "anonymous_namespace{determine-size-test.cc}::ResizablePresentationInterfaceStub", "classanonymous__namespace_02determine-size-test_8cc_03_1_1ResizablePresentationInterfaceStub.html", null ]
+      ] ],
+      [ "RulerDrawStrategy", "classRulerDrawStrategy.html", [
+        [ "HorizontalDrawStrategy", "classHorizontalDrawStrategy.html", null ],
+        [ "VerticalDrawStrategy", "classVerticalDrawStrategy.html", null ]
+      ] ],
+      [ "Scroom::MemoryBlocks::BlockFactoryInterface", "classScroom_1_1MemoryBlocks_1_1BlockFactoryInterface.html", [
+        [ "Scroom::MemoryBlocks::Detail::SwapBasedBlockAllocatorFactory", "classScroom_1_1MemoryBlocks_1_1Detail_1_1SwapBasedBlockAllocatorFactory.html", null ]
+      ] ],
+      [ "Scroom::MemoryBlocks::BlockInterface", "classScroom_1_1MemoryBlocks_1_1BlockInterface.html", [
+        [ "Scroom::MemoryBlocks::Detail::SwapBasedBlockAllocator", "classScroom_1_1MemoryBlocks_1_1Detail_1_1SwapBasedBlockAllocator.html", null ]
+      ] ],
+      [ "Scroom::TiledBitmap::OpenTiledBitmapInterface", "classScroom_1_1TiledBitmap_1_1OpenTiledBitmapInterface.html", [
+        [ "Pnm", "classPnm.html", null ],
+        [ "Tiff", "classTiff.html", null ]
+      ] ],
+      [ "Scroom::Utils::Context", "classScroom_1_1Utils_1_1Context.html", [
+        [ "Scroom::Utils::RecursiveContext", "classScroom_1_1Utils_1_1RecursiveContext.html", [
+          [ "Scroom::Utils::ParentContext", "classScroom_1_1Utils_1_1ParentContext.html", null ]
+        ] ],
+        [ "Scroom::Utils::SingleContext", "classScroom_1_1Utils_1_1SingleContext.html", null ]
+      ] ],
+      [ "Scroom::Utils::ITweakPositionTextBox", "classScroom_1_1Utils_1_1ITweakPositionTextBox.html", [
+        [ "Scroom::Utils::ParseAndFormatViewCentre", "classScroom_1_1Utils_1_1ParseAndFormatViewCentre.html", null ],
+        [ "Scroom::Utils::ParseAndFormatViewCentreWithAspectRatio", "classScroom_1_1Utils_1_1ParseAndFormatViewCentreWithAspectRatio.html", null ],
+        [ "Scroom::Utils::ViewCentreTextConversionMock", "classScroom_1_1Utils_1_1ViewCentreTextConversionMock.html", null ]
+      ] ],
+      [ "Scroom::Utils::ITweakPresentationPosition", "classScroom_1_1Utils_1_1ITweakPresentationPosition.html", [
+        [ "Scroom::TiledBitmap::PixelAlignPresentationPositions", "classScroom_1_1TiledBitmap_1_1PixelAlignPresentationPositions.html", null ],
+        [ "Scroom::Utils::PresentationPositionTweakMock", "classScroom_1_1Utils_1_1PresentationPositionTweakMock.html", null ],
+        [ "Scroom::Utils::TweakPresentationPositionsWithAspectRatio", "classScroom_1_1Utils_1_1TweakPresentationPositionsWithAspectRatio.html", null ],
+        [ "Scroom::Utils::anonymous_namespace{tweak-view.cc}::DefaultTweakPresentationPosition", "classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakPresentationPosition.html", null ]
+      ] ],
+      [ "Scroom::Utils::ITweakRulers", "classScroom_1_1Utils_1_1ITweakRulers.html", [
+        [ "Scroom::Utils::CalculateViewAreaForRulers", "classScroom_1_1Utils_1_1CalculateViewAreaForRulers.html", null ],
+        [ "Scroom::Utils::RulerAreaTweakMock", "classScroom_1_1Utils_1_1RulerAreaTweakMock.html", null ],
+        [ "Scroom::Utils::TweakRulersWithAspectRatio", "classScroom_1_1Utils_1_1TweakRulersWithAspectRatio.html", null ]
+      ] ],
+      [ "Scroom::Utils::ITweakSelection", "classScroom_1_1Utils_1_1ITweakSelection.html", [
+        [ "Scroom::Utils::SelectionTweakMock", "classScroom_1_1Utils_1_1SelectionTweakMock.html", null ],
+        [ "Scroom::Utils::TweakSelectionsAsRectangles", "classScroom_1_1Utils_1_1TweakSelectionsAsRectangles.html", [
+          [ "Scroom::TiledBitmap::ExpandSelectionsToPixelBoundaries", "classScroom_1_1TiledBitmap_1_1ExpandSelectionsToPixelBoundaries.html", null ],
+          [ "Scroom::TiledBitmap::SnapSelectionsToGrid", "classScroom_1_1TiledBitmap_1_1SnapSelectionsToGrid.html", null ],
+          [ "Scroom::Utils::TweakSelectionsAsRectanglesMock", "classScroom_1_1Utils_1_1TweakSelectionsAsRectanglesMock.html", null ]
+        ] ],
+        [ "Scroom::Utils::TweakSelectionsWithAspectRatio", "classScroom_1_1Utils_1_1TweakSelectionsWithAspectRatio.html", null ],
+        [ "Scroom::Utils::anonymous_namespace{tweak-view.cc}::DefaultTweakSelection", "classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakSelection.html", null ]
+      ] ],
+      [ "Scroom::Utils::ProgressStateInterface", "classScroom_1_1Utils_1_1ProgressStateInterface.html", [
+        [ "ProgressStateInterfaceStub", "classProgressStateInterfaceStub.html", null ],
+        [ "Scroom::Utils::ProgressInterfaceFromProgressStateInterface", "classScroom_1_1Utils_1_1ProgressInterfaceFromProgressStateInterface.html", null ],
+        [ "Scroom::Utils::ProgressInterfaceMultiplexer::ChildData", "classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer_1_1ChildData.html", null ],
+        [ "Scroom::Utils::ProgressStateInterfaceFromProgressInterface", "classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterface.html", null ]
+      ] ],
+      [ "ScroomInterface", "classScroomInterface.html", [
+        [ "ScroomInterfaceImpl", "classScroomInterfaceImpl.html", null ]
+      ] ],
+      [ "ScroomPluginInterface", "classScroomPluginInterface.html", [
+        [ "DummyPluginInterface", "classDummyPluginInterface.html", null ],
+        [ "PluginManager", "classPluginManager.html", null ]
+      ] ],
+      [ "SelectionListener", "classSelectionListener.html", [
+        [ "MeasureHandler", "classMeasureHandler.html", null ],
+        [ "PipetteHandler", "classPipetteHandler.html", null ]
+      ] ],
+      [ "ShowMetadataInterface", "classShowMetadataInterface.html", [
+        [ "TransformPresentation", "classTransformPresentation.html", null ],
+        [ "anonymous_namespace{tiledbitmappresentation.cc}::TiledBitmapPresentation", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html", null ]
+      ] ],
+      [ "SourcePresentation", "classSourcePresentation.html", [
+        [ "Scroom::Pnm::Source", "classScroom_1_1Pnm_1_1Source.html", [
+          [ "Scroom::Pnm::AsciiSource", "classScroom_1_1Pnm_1_1AsciiSource.html", null ],
+          [ "Scroom::Pnm::AsciiSource1bpp", "classScroom_1_1Pnm_1_1AsciiSource1bpp.html", null ],
+          [ "Scroom::Pnm::BinarySource", "classScroom_1_1Pnm_1_1BinarySource.html", null ]
+        ] ],
+        [ "Scroom::Tiff::Source", "classScroom_1_1Tiff_1_1Source.html", null ],
+        [ "Source1Bpp", "classSource1Bpp.html", null ],
+        [ "Source2Bpp", "classSource2Bpp.html", null ],
+        [ "Source4Bpp", "classSource4Bpp.html", null ],
+        [ "Source8Bpp", "classSource8Bpp.html", null ],
+        [ "anonymous_namespace{layer-stack-tests.cc}::SourceWithContrastingLeftStrip", "classanonymous__namespace_02layer-stack-tests_8cc_03_1_1SourceWithContrastingLeftStrip.html", null ]
+      ] ],
+      [ "TileInitialisationObserver", "classTileInitialisationObserver.html", [
+        [ "LayerCoordinator", "classLayerCoordinator.html", null ],
+        [ "Scroom::TiledBitmap::LayerStack", "classScroom_1_1TiledBitmap_1_1LayerStack.html", null ]
+      ] ],
+      [ "TileLoadingObserver", "classTileLoadingObserver.html", [
+        [ "TileViewState", "classTileViewState.html", null ],
+        [ "TiledBitmapViewData", "classTiledBitmapViewData.html", null ]
+      ] ],
+      [ "ToolStateListener", "classToolStateListener.html", [
+        [ "MeasureHandler", "classMeasureHandler.html", null ],
+        [ "PipetteHandler", "classPipetteHandler.html", null ]
+      ] ],
+      [ "ViewInterface", "classViewInterface.html", [
+        [ "ChildView", "classChildView.html", null ],
+        [ "Detail::ViewData", "classDetail_1_1ViewData.html", null ],
+        [ "DummyView", "classDummyView.html", null ],
+        [ "View", "classView.html", null ],
+        [ "ViewInterfaceStub", "classViewInterfaceStub.html", null ],
+        [ "anonymous_namespace{determine-size-test.cc}::ViewInterfaceDummy", "classanonymous__namespace_02determine-size-test_8cc_03_1_1ViewInterfaceDummy.html", null ]
+      ] ],
+      [ "ViewObserver", "classViewObserver.html", [
+        [ "Measure", "classMeasure.html", null ],
+        [ "Metadata", "classMetadata.html", null ],
+        [ "Pipette", "classPipette.html", null ]
+      ] ],
+      [ "Viewable", "classViewable.html", [
+        [ "CompressedTile", "classCompressedTile.html", null ],
+        [ "Layer", "classLayer.html", null ],
+        [ "PresentationInterface", "classPresentationInterface.html", null ],
+        [ "Scroom::ColormapImpl::ColormapProvider", "classScroom_1_1ColormapImpl_1_1ColormapProvider.html", null ],
+        [ "TiledBitmapInterface", "classTiledBitmapInterface.html", [
+          [ "TiledBitmap", "classTiledBitmap.html", null ]
+        ] ]
+      ] ],
+      [ "WorkInterface", "classWorkInterface.html", [
+        [ "PluginManager", "classPluginManager.html", null ],
+        [ "anonymous_namespace{progressbarmanager.cc}::ProgressBarPulser", "classanonymous__namespace_02progressbarmanager_8cc_03_1_1ProgressBarPulser.html", null ]
+      ] ]
+    ] ],
+    [ "Invalidator", "classInvalidator.html", null ],
+    [ "ThreadPool::Job", "structThreadPool_1_1Job.html", null ],
+    [ "LayerDescription", "structLayerDescription.html", null ],
+    [ "Scroom::TiledBitmap::Geometry::LayerSelection", "structScroom_1_1TiledBitmap_1_1Geometry_1_1LayerSelection.html", null ],
+    [ "Scroom::TiledBitmap::LayerSpecForBitmapper", "classScroom_1_1TiledBitmap_1_1LayerSpecForBitmapper.html", null ],
+    [ "Scroom::TiledBitmap::LayerStack::Level", "structScroom_1_1TiledBitmap_1_1LayerStack_1_1Level.html", null ],
+    [ "Logger", "classLogger.html", null ],
+    [ "Scroom::Logger", "classScroom_1_1Logger.html", null ],
+    [ "LoggerContainer", "classLoggerContainer.html", null ],
+    [ "Scroom::LoggerContainer", "classScroom_1_1LoggerContainer.html", null ],
+    [ "Scroom::Bookkeeping::Detail::LValue&lt; V &gt;", "classScroom_1_1Bookkeeping_1_1Detail_1_1LValue.html", null ],
+    [ "Scroom::Bookkeeping::Detail::MapType&lt; K, V &gt;", "structScroom_1_1Bookkeeping_1_1Detail_1_1MapType.html", null ],
+    [ "Scroom::Bookkeeping::Detail::MapType&lt; std::weak_ptr&lt; K &gt;, V &gt;", "structScroom_1_1Bookkeeping_1_1Detail_1_1MapType_3_01std_1_1weak__ptr_3_01K_01_4_00_01V_01_4.html", null ],
+    [ "Scroom::MemoryBlobs::PageProvider::MarkPageFree", "classScroom_1_1MemoryBlobs_1_1PageProvider_1_1MarkPageFree.html", null ],
+    [ "Scroom::Metadata::anonymous_namespace{showmetadata.cc}::MetaDataWindowData", "structScroom_1_1Metadata_1_1anonymous__namespace_02showmetadata_8cc_03_1_1MetaDataWindowData.html", null ],
+    [ "boost::multipliable2", null, [
+      [ "Scroom::Utils::Point< double >", "classScroom_1_1Utils_1_1Point.html", null ],
+      [ "Scroom::Utils::Point< int >", "classScroom_1_1Utils_1_1Point.html", null ],
+      [ "Scroom::Utils::Rectangle< int >", "classScroom_1_1Utils_1_1Rectangle.html", null ],
+      [ "Scroom::Utils::Rectangle< int >", "classScroom_1_1Utils_1_1Rectangle.html", null ],
+      [ "Scroom::Utils::Rectangle< double >", "classScroom_1_1Utils_1_1Rectangle.html", null ],
+      [ "Scroom::Utils::Rectangle< double >", "classScroom_1_1Utils_1_1Rectangle.html", null ],
+      [ "Scroom::Utils::Segment< value_type >", "classScroom_1_1Utils_1_1Segment.html", null ],
+      [ "Scroom::Utils::Point< T >", "classScroom_1_1Utils_1_1Point.html", null ],
+      [ "Scroom::Utils::Rectangle< T >", "classScroom_1_1Utils_1_1Rectangle.html", null ],
+      [ "Scroom::Utils::Rectangle< T >", "classScroom_1_1Utils_1_1Rectangle.html", null ],
+      [ "Scroom::Utils::Segment< T >", "classScroom_1_1Utils_1_1Segment.html", null ]
+    ] ],
+    [ "boost::multiplicative", null, [
+      [ "Color", "classColor.html", null ]
+    ] ],
+    [ "boost::noncopyable", null, [
+      [ "Scroom::Bookkeeping::MapBase< ObserverWeak, typenameRegistration::Ptr >", "classScroom_1_1Bookkeeping_1_1MapBase.html", null ],
+      [ "Scroom::Bookkeeping::MapBase< K, V >", "classScroom_1_1Bookkeeping_1_1MapBase.html", null ]
+    ] ],
+    [ "Scroom::Utils::on_scope_exit&lt; F &gt;", "classScroom_1_1Utils_1_1on__scope__exit.html", null ],
+    [ "Scroom::Utils::optional_cleanup&lt; F &gt;", "classScroom_1_1Utils_1_1optional__cleanup.html", null ],
+    [ "anonymous_namespace{sampleiterator-tests.cc}::Packing&lt; Storage, SAMPLE_BITS &gt;", "structanonymous__namespace_02sampleiterator-tests_8cc_03_1_1Packing.html", null ],
+    [ "Scroom::MemoryBlocks::Page", "classScroom_1_1MemoryBlocks_1_1Page.html", null ],
+    [ "PluginInformation", "structPluginInformation.html", null ],
+    [ "SizeDeterminer::PresentationData", "classSizeDeterminer_1_1PresentationData.html", null ],
+    [ "ThreadPool::PrivateData", "classThreadPool_1_1PrivateData.html", null ],
+    [ "Scroom::Detail::ThreadPool::Queue", "classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html", null ],
+    [ "Scroom::Detail::ThreadPool::QueueImpl", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html", null ],
+    [ "QueueJumper", "classQueueJumper.html", null ],
+    [ "Scroom::Detail::ThreadPool::QueueLock", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueLock.html", null ],
+    [ "Scroom::TiledBitmap::Geometry::ReductionMapping", "structScroom_1_1TiledBitmap_1_1Geometry_1_1ReductionMapping.html", null ],
+    [ "Scroom::Utils::Detail::Registration&lt; T &gt;", "classScroom_1_1Utils_1_1Detail_1_1Registration.html", null ],
+    [ "Scroom::TiledBitmap::Geometry::RowLayout", "structScroom_1_1TiledBitmap_1_1Geometry_1_1RowLayout.html", null ],
+    [ "Ruler", "classRuler.html", null ],
+    [ "RulerCalculations", "classRulerCalculations.html", null ],
+    [ "Scroom::TiledBitmap::Test::SampleLayout", "structScroom_1_1TiledBitmap_1_1Test_1_1SampleLayout.html", null ],
+    [ "Selection", "structSelection.html", null ],
+    [ "Scroom::Semaphore", "classScroom_1_1Semaphore.html", null ],
+    [ "std::shared_ptr&lt; T &gt;", null, [
+      [ "Scroom::Bookkeeping::Token", "classScroom_1_1Bookkeeping_1_1Token.html", [
+        [ "Scroom::Bookkeeping::Detail::TokenAddition", "classScroom_1_1Bookkeeping_1_1Detail_1_1TokenAddition.html", null ]
+      ] ]
+    ] ],
+    [ "SidebarManager", "classSidebarManager.html", null ],
+    [ "SizeDeterminer", "classSizeDeterminer.html", null ],
+    [ "Sleeper", "classSleeper.html", null ],
+    [ "boost::subtractable", null, [
+      [ "Scroom::Utils::Point< double >", "classScroom_1_1Utils_1_1Point.html", null ],
+      [ "Scroom::Utils::Point< int >", "classScroom_1_1Utils_1_1Point.html", null ],
+      [ "Scroom::Utils::Point< T >", "classScroom_1_1Utils_1_1Point.html", null ]
+    ] ],
+    [ "boost::subtractable2", null, [
+      [ "Scroom::Utils::Rectangle< int >", "classScroom_1_1Utils_1_1Rectangle.html", null ],
+      [ "Scroom::Utils::Rectangle< double >", "classScroom_1_1Utils_1_1Rectangle.html", null ],
+      [ "Scroom::Utils::Segment< value_type >", "classScroom_1_1Utils_1_1Segment.html", null ],
+      [ "Scroom::Utils::Rectangle< T >", "classScroom_1_1Utils_1_1Rectangle.html", null ],
+      [ "Scroom::Utils::Segment< T >", "classScroom_1_1Utils_1_1Segment.html", null ]
+    ] ],
+    [ "testing::Test", null, [
+      [ "BinaryIntensityReduction", "classBinaryIntensityReduction.html", null ],
+      [ "BinaryOrLayerReduction", "classBinaryOrLayerReduction.html", null ],
+      [ "BitmapLayerDescriptions", "classBitmapLayerDescriptions.html", null ],
+      [ "ContextTests", "classContextTests.html", null ],
+      [ "FullWidthSampleIterator< Base >", "classFullWidthSampleIterator.html", null ],
+      [ "Intensity16Reduction", "classIntensity16Reduction.html", null ],
+      [ "Intensity8Reduction", "classIntensity8Reduction.html", null ],
+      [ "LoggerTests", "classLoggerTests.html", null ],
+      [ "PackedSampleIterator< Format >", "classPackedSampleIterator.html", null ],
+      [ "ParentContextTests", "classParentContextTests.html", null ],
+      [ "Pipette_Tests", "classPipette__Tests.html", null ],
+      [ "PluginLayerDescription", "classPluginLayerDescription.html", null ],
+      [ "ProgressInterfaceMultiplexer_Tests", "classProgressInterfaceMultiplexer__Tests.html", null ],
+      [ "Rectangle_and_Segment_TypedTests< ScaffoldT >", "classRectangle__and__Segment__TypedTests.html", null ],
+      [ "SingleContextTests", "classSingleContextTests.html", null ],
+      [ "anonymous_namespace{tweak-view_test.cc}::ParseAndFormatViewCentreWithAspectRatioTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1ParseAndFormatViewCentreWithAspectRatioTest.html", null ],
+      [ "anonymous_namespace{tweak-view_test.cc}::TweakPresentationPositionsWithAspectRatioTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakPresentationPositionsWithAspectRatioTest.html", null ],
+      [ "anonymous_namespace{tweak-view_test.cc}::TweakRulersWithAspectRatioTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakRulersWithAspectRatioTest.html", null ],
+      [ "anonymous_namespace{tweak-view_test.cc}::TweakSelectionsWithAspectRatioTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsWithAspectRatioTest.html", null ]
+    ] ],
+    [ "TestData", "classTestData.html", null ],
+    [ "TestObserver", "classTestObserver.html", null ],
+    [ "testing::TestWithParam", null, [
+      [ "CmykReduction", "classCmykReduction.html", null ],
+      [ "ColormapReductions", "classColormapReductions.html", null ],
+      [ "RgbReduction", "classRgbReduction.html", null ],
+      [ "TileGeometry", "classTileGeometry.html", null ],
+      [ "anonymous_namespace{colormaphelpers_test.cc}::ColormapHelper_Data_Tests", "classanonymous__namespace_02colormaphelpers__test_8cc_03_1_1ColormapHelper__Data__Tests.html", null ]
+    ] ],
+    [ "anonymous_namespace{threadpool.cc}::ThreadList", "classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html", null ],
+    [ "ThreadPool", "classThreadPool.html", null ],
+    [ "anonymous_namespace{threadpool.cc}::ThreadWaiter", "classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter.html", null ],
+    [ "Tile", "classTile.html", null ],
+    [ "Scroom::TiledBitmap::Geometry::TileDrawAreas", "structScroom_1_1TiledBitmap_1_1Geometry_1_1TileDrawAreas.html", null ],
+    [ "Scroom::Bookkeeping::Detail::TokenImpl", "classScroom_1_1Bookkeeping_1_1Detail_1_1TokenImpl.html", [
+      [ "Scroom::Bookkeeping::Detail::MapTokenImpl< K, V >", "classScroom_1_1Bookkeeping_1_1Detail_1_1MapTokenImpl.html", null ]
+    ] ],
+    [ "TransformationData", "classTransformationData.html", null ],
+    [ "Scroom::MemoryBlobs::Blob::UnloadData", "classScroom_1_1MemoryBlobs_1_1Blob_1_1UnloadData.html", null ],
+    [ "Scroom::Utils::ProgressInterfaceBroadcaster::Unsubscriber", "classScroom_1_1Utils_1_1ProgressInterfaceBroadcaster_1_1Unsubscriber.html", null ],
+    [ "Scroom::Bookkeeping::Detail::ValueType&lt; V &gt;", "classScroom_1_1Bookkeeping_1_1Detail_1_1ValueType.html", null ],
+    [ "WaitForAsyncOp", "classWaitForAsyncOp.html", null ],
+    [ "Scroom::Detail::ThreadPool::WeakQueue", "classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html", null ]
+];

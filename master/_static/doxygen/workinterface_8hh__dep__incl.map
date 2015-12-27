@@ -1,0 +1,9 @@
+<map id="gui/src/workinterface.hh" name="gui/src/workinterface.hh">
+<area shape="rect" id="node1" title=" " alt="" coords="151,5,330,32"/>
+<area shape="rect" id="node2" href="$pluginmanager_8hh.html" title=" " alt="" coords="147,80,334,107"/>
+<area shape="rect" id="node3" href="$callbacks_8cc.html" title=" " alt="" coords="5,155,153,181"/>
+<area shape="rect" id="node7" href="$progressbarmanager_8cc.html" title=" " alt="" coords="358,80,579,107"/>
+<area shape="rect" id="node4" href="$loader_8cc.html" title=" " alt="" coords="177,155,304,181"/>
+<area shape="rect" id="node5" href="$pluginmanager_8cc.html" title=" " alt="" coords="329,155,513,181"/>
+<area shape="rect" id="node6" href="$view_8cc.html" title=" " alt="" coords="537,155,654,181"/>
+</map>

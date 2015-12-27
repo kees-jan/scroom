@@ -1,0 +1,16 @@
+<map id="MonochromeColormapHelper::MonochromeColormapHelper" name="MonochromeColormapHelper::MonochromeColormapHelper">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,40,226,85"/>
+<area shape="rect" id="Node000002" href="$classColormapHelperBase.html#a63ec49692e50c732fcc4e024b1102fd1" title=" " alt="" coords="296,5,464,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="226,45,284,40,278,41,227,50"/>
+<area shape="rect" id="Node000003" href="$classMonochromeColormapHelper.html#aa877583213c557c5c0c54a8da6700ec6" title=" " alt="" coords="274,75,486,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="226,74,261,81,256,81,226,80"/>
+<area shape="rect" id="Node000004" href="$classColormap.html#afe589913d62741a00d269c5e72c3641b" title=" " alt="" coords="561,56,742,84"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="486,84,548,80,543,81,487,89"/>
+<area shape="rect" id="Node000007" href="$classColormap.html#a88c8e6094d5e4f4251ac694c13e51874" title=" " alt="" coords="534,108,769,136"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="486,104,521,110,516,110,486,110"/>
+<area shape="rect" id="Node000005" href="$classColormap.html#a9966b8a719d851b5e28b6b99ec6d2245" title=" " alt="" coords="817,83,951,111"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="743,78,805,88,799,88,742,83"/>
+<area shape="rect" id="Node000006" href="$classColormap.html#afbda2916eb43f89f99512e951ca2c7de" title=" " alt="" coords="999,83,1154,111"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="951,94,986,97,980,97,951,100"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="770,107,799,106,805,106,770,112"/>
+</map>

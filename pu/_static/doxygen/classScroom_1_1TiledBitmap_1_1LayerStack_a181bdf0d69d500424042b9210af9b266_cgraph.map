@@ -1,0 +1,15 @@
+<map id="Scroom::TiledBitmap::LayerStack::create" name="Scroom::TiledBitmap::LayerStack::create">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,163,74"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1TiledBitmap_1_1LayerStack.html#aae33189b8149d938c36081ec7a65c843" title=" " alt="" coords="211,29,368,74"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,49,198,51,192,52,163,54"/>
+<area shape="poly" id="edge7_Node000002_Node000002" title=" " alt="" coords="255,27,253,19,259,10,271,5,289,3,309,5,322,14,316,13,307,10,289,8,273,10,263,14,259,21,259,30"/>
+<area shape="rect" id="Node000003" href="$classLayer.html#a8f3623d32725dbc8537779fb7f682e46" title=" " alt="" coords="416,38,522,66"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="368,49,403,52,398,52,368,54"/>
+<area shape="rect" id="Node000004" href="$classLayer.html#a461f24acc6b9fac1f007516bcd380c25" title="Layer." alt="" coords="570,38,672,66"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="523,49,557,52,552,52,523,54"/>
+<area shape="rect" id="Node000005" href="$classCompressedTile.html#a6ebd69edede63de69c82229f16475ce6" title=" " alt="" coords="720,38,895,66"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="672,49,707,52,701,52,672,54"/>
+<area shape="rect" id="Node000006" href="$classCompressedTile.html#a709f5e689dd41c5fee81f6da28ebea2e" title="CompressedTile." alt="" coords="943,38,1182,66"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="896,58,930,61,925,61,896,63"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="940,43,911,45,911,40,945,43"/>
+</map>

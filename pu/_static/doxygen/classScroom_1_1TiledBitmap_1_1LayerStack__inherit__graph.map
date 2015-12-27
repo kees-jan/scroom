@@ -1,0 +1,11 @@
+<map id="Scroom::TiledBitmap::LayerStack" name="Scroom::TiledBitmap::LayerStack">
+<area shape="rect" id="Node000001" title=" " alt="" coords="104,469,260,916"/>
+<area shape="rect" id="Node000002" href="$classTileInitialisationObserver.html" title=" " alt="" coords="5,282,180,377"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,389,130,470,124,470,108,394"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="40,5,146,189"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="93,202,95,282,90,282,92,207"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="204,237,342,421"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="247,434,240,470,235,468,245,439"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="202,53,344,142"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="273,155,275,238,270,237,272,160"/>
+</map>

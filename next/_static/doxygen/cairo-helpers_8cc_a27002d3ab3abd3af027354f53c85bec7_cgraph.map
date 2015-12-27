@@ -1,0 +1,27 @@
+<map id="drawOutOfBoundsWithBackgroundColor" name="drawOutOfBoundsWithBackgroundColor">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,196,252,240"/>
+<area shape="rect" id="Node000002" href="$cairo-helpers_8cc.html#a72b76dcfe2a11213e72c72dee13488d6" title=" " alt="" coords="300,204,567,232"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="251,215,287,217,282,219,253,220"/>
+<area shape="rect" id="Node000006" href="$cairo-helpers_8cc.html#a4f46197f43bbf408ce995b3b0a428c68" title=" " alt="" coords="646,5,765,33"/>
+<area shape="poly" id="edge13_Node000001_Node000006" title=" " alt="" coords="189,193,378,123,614,42,639,37,635,39,616,47,380,128,191,197"/>
+<area shape="rect" id="Node000010" href="$classScroom_1_1Utils_1_1Rectangle.html#aa0205a1477a20bd1888f9dd480069bf2" title=" " alt="" coords="615,404,796,448"/>
+<area shape="poly" id="edge14_Node000001_Node000010" title=" " alt="" coords="194,238,629,396,625,400,192,243"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Rectangle.html#a85f5cbf9f6e41f147f9ac2da355eeb22" title=" " alt="" coords="615,126,796,171"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="490,201,603,174,598,176,491,206"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Rectangle.html#a404f0a593691285d4597c354575468f2" title=" " alt="" coords="615,196,796,240"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="567,215,602,217,597,218,568,220"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="455,201,507,163,565,111,579,92,587,75,596,59,613,42,634,34,630,36,617,47,600,62,592,78,583,95,569,114,511,167,458,206"/>
+<area shape="rect" id="Node000008" href="$classScroom_1_1Utils_1_1Rectangle.html#af497bd1988b10b5e521a82bc05285eed" title=" " alt="" coords="615,334,796,379"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="457,229,528,272,616,319,630,328,625,327,614,324,525,277,456,235"/>
+<area shape="rect" id="Node000009" href="$classScroom_1_1Utils_1_1Rectangle.html#ad623b0b902d4e2cd1d858300728c78d1" title=" " alt="" coords="615,57,796,102"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="455,201,525,159,614,111,630,107,625,109,616,116,528,164,458,206"/>
+<area shape="poly" id="edge10_Node000002_Node000010" title=" " alt="" coords="455,229,509,271,569,327,583,345,592,360,601,374,617,389,624,396,619,395,613,393,597,378,587,363,579,348,565,330,505,275,454,235"/>
+<area shape="rect" id="Node000011" href="$classScroom_1_1Utils_1_1Rectangle.html#ad390ca831049272af226cd28b57375c4" title=" " alt="" coords="615,265,796,310"/>
+<area shape="poly" id="edge11_Node000002_Node000011" title=" " alt="" coords="491,230,603,260,598,261,491,235"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Rectangle.html#a8bafbe715dcf9dc732ea2f197b9ecba1" title=" " alt="" coords="844,196,1026,240"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="782,169,847,190,842,191,782,174"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="796,215,831,217,826,218,797,220"/>
+<area shape="rect" id="Node000007" href="$cairo-helpers_8cc.html#a7eaa96a970e5ff603afbea0a3a0bf761" title=" " alt="" coords="902,5,968,33"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="765,17,889,18,884,20,766,22"/>
+<area shape="poly" id="edge12_Node000011_Node000004" title=" " alt="" coords="781,262,842,246,847,244,783,267"/>
+</map>

@@ -1,0 +1,15 @@
+<map id="DataFetcher::operator()" name="DataFetcher::operator()">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,88,179,116"/>
+<area shape="rect" id="Node000002" href="$classQueueJumper.html#a5b17c2980aa09df97b92423481e24dc1" title="QueueJumper." alt="" coords="241,5,400,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,85,226,43,253,37,248,39,228,48,126,90"/>
+<area shape="rect" id="Node000004" href="$classDataFetcher.html#a3a24a2e8d28e8550f0631b2af0faa924" title="DataFetcher." alt="" coords="227,57,414,85"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="178,88,214,85,209,87,180,93"/>
+<area shape="rect" id="Node000006" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#ae34684bd4359be276b592938954fa700" title=" " alt="" coords="236,109,405,154"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="179,110,223,118,217,119,180,116"/>
+<area shape="rect" id="Node000007" href="$classQueueJumper.html#a5dbf1296ec716e239f34b7eed4343ca2" title=" " alt="" coords="235,177,406,205"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="120,114,170,139,228,163,249,173,243,172,226,168,168,143,119,119"/>
+<area shape="rect" id="Node000003" href="$classQueueJumper.html#a81c278d92787fd90e1690a6f0dea7ef9" title=" " alt="" coords="462,5,667,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="400,17,449,19,444,20,401,22"/>
+<area shape="rect" id="Node000005" href="$threadpool_8cc.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b" title=" " alt="" coords="521,57,608,85"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="414,69,508,71,502,72,415,74"/>
+</map>

@@ -1,0 +1,17 @@
+<map id="Scroom::Bitmap::BitmapSurface::get" name="Scroom::Bitmap::BitmapSurface::get">
+<area shape="rect" id="Node000001" title=" " alt="" coords="509,74,767,102"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Bitmap_1_1BitmapSurface.html#a9e2d358a55132f7cfb16c7eed3e2ed06" title=" " alt="" coords="229,5,458,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="549,71,457,53,457,48,554,70"/>
+<area shape="rect" id="Node000003" href="$classCommonOperations.html#aa09eae217c1870d175a491010ce3b9f4" title=" " alt="" coords="226,74,461,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="491,88,462,90,461,85,496,87"/>
+<area shape="rect" id="Node000004" href="$classCommonOperations.html#af173ef0acae113c9b1ae8fa658e8f4be" title=" " alt="" coords="248,126,439,154"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="538,105,427,128,426,123,543,104"/>
+<area shape="rect" id="Node000005" href="$classOperations16bpp.html#ab65f3d021518d65040d464c758f57926" title=" " alt="" coords="5,47,178,75"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="249,122,225,115,200,103,177,90,144,78,144,73,179,85,203,98,227,111,254,121"/>
+<area shape="rect" id="Node000006" href="$classOperations1bpp.html#a5eb9524566683ba1c7c4465270f79de5" title=" " alt="" coords="9,99,174,127"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="230,129,174,124,174,119,235,127"/>
+<area shape="rect" id="Node000007" href="$classOperations8bpp.html#a28875a6199ba6136a09fdc58c12a7d1b" title=" " alt="" coords="9,151,174,179"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="230,152,175,159,174,154,235,150"/>
+<area shape="rect" id="Node000008" href="$classOperations.html#ac19af1189a115005d637b95aea38267b" title=" " alt="" coords="25,203,158,231"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="283,160,140,205,139,200,280,156"/>
+</map>
