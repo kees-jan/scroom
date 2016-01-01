@@ -1,3 +1,9 @@
+scroom (0.6-34-g2ad96cb-2) trusty; urgency=medium
+
+  * Snapshot release
+
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Fri, 01 Jan 2016 11:53:05 +0100
+
 scroom (0.6-34-g2ad96cb-1) trusty; urgency=medium
 
   * Snapshot release
