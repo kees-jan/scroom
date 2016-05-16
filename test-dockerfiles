@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -u -e
+
+for d in $(cat supported-ubuntu-releases)
+do
+    docker build -t test-scroom-dockerfiles:$d $d
+done    

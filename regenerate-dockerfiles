@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -u -e
+
+for d in $(cat supported-ubuntu-releases)
+do
+    mkdir -p $d
+    sed -e 's/@DISTRIB_CODENAME@/'$d'/g' < Dockerfile.in > $d/Dockerfile
+    git add $d/Dockerfile
+done    
