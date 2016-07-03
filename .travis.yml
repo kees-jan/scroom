@@ -6,10 +6,7 @@ script:
   echo TRAVIS_BRANCH=${TRAVIS_BRANCH} &&
   echo TRAVIS_PULL_REQUEST=${TRAVIS_PULL_REQUEST} &&
   echo SHELL=$SHELL
-- autoreconf -i &&
-  ./configure --enable-doxygen-all-code &&
-  make -k -j4 $(build_scripts/travis/extra-targets) distcheck &&
-  ./build_scripts/travis/upload_doxygen_to_github
+- ./build_scripts/travis/build-scroom
 sudo: required
 dist: trusty
 compiler:
@@ -18,6 +15,7 @@ compiler:
 env:
 - NONE=""
 - DISTCHECK_CONFIGURE_FLAGS='--enable-debug-tiles --disable-multithreading CFLAGS="-g -O0" CXXFLAGS="-g -O0"' LDFLAGS="-Wl,-z,defs"
+- SOME_DISTS="trusty xenial precise" OTHER_DISTS="yakkety vivid wily"
 addons:
   apt:
     packages:
