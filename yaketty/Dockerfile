@@ -1,4 +1,4 @@
-FROM ubuntu:yakkety
+FROM ubuntu:yaketty
 
 MAINTAINER kees-jan.dijkzeul@iae.nl
 
@@ -6,7 +6,6 @@ RUN \
   export DEBIAN_FRONTEND=noninteractive && \
   apt-get update -y && \
   apt-get install -y \
-    autoconf automake libtool \
     libboost-dev \
     libboost-filesystem-dev \
     libboost-program-options-dev \
@@ -17,7 +16,6 @@ RUN \
     libglade2-dev \
     libglib2.0-dev \
     libgtk2.0-dev \
-    libtiff-dev \
-    time
+    libtiff-dev
 
 CMD ["/bin/bash"]

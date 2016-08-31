@@ -6,7 +6,10 @@ RUN \
   export DEBIAN_FRONTEND=noninteractive && \
   apt-get update -y && \
   apt-get install -y \
+<<<<<<< HEAD
     autoconf automake libtool \
+=======
+>>>>>>> Fix yakkety properly
     libboost-dev \
     libboost-filesystem-dev \
     libboost-program-options-dev \
