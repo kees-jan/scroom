@@ -590,3 +590,6 @@ $(plugin_lib_install_target): install-libLTLIBRARIES
 
 # Target for building, but not executing, the tests
 checkPROGRAMS: all-am $(check_PROGRAMS)
+
+silent-doxygen:
+	@$(MAKE) doxygen-doc > doxygen.log 2>&1

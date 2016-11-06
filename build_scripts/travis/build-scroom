@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -x
+set -e
+set -u
+
+autoreconf -i
+
+if [ ! -z "${SOME_DISTS+x}" -a "${CC}" = "gcc" ]
+then
+    make -j2 -f build_scripts/docker/docker.mk TARGETS="${SOME_DISTS}"
+elif [ ! -z "${OTHER_DISTS+x}" -a "${CC}" != "gcc" ]
+then
+    make -j2 -f build_scripts/docker/docker.mk TARGETS="${OTHER_DISTS}"
+else
+
+    ./configure --enable-doxygen-all-code
+
+    make -k -j4 $(build_scripts/travis/extra-targets) distcheck
+
+    ./build_scripts/travis/upload_doxygen_to_github
+fi
