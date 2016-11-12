@@ -24,6 +24,7 @@ incscroom_HEADERS = \
 	inc/scroom/presentationinterface.hh \
 	inc/scroom/progressinterface.hh \
 	inc/scroom/progressinterfacehelpers.hh \
+	inc/scroom/resizablepresentationinterface.hh \
 	inc/scroom/roi.hh \
 	inc/scroom/scroominterface.hh \
 	inc/scroom/scroomplugin.hh \
@@ -413,7 +414,8 @@ transparent_overlay_plugin_check_programs = \
 	plugins/transparent-overlay/test/overlay-tests
 plugins_transparent_overlay_test_overlay_tests_SOURCES = \
 	plugins/transparent-overlay/test/main.cc \
-	plugins/transparent-overlay/test/plugin-test.cc
+	plugins/transparent-overlay/test/plugin-test.cc \
+	plugins/transparent-overlay/test/determine-size-test.cc
 
 plugins_transparent_overlay_test_overlay_tests_LDADD = @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @UTILS_LIBS@  \
 	plugins/transparent-overlay/src/libsptransparentoverlay.la \
