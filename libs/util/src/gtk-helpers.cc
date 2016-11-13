@@ -105,3 +105,11 @@ namespace Scroom
   }
 }
 
+std::ostream& operator<<(std::ostream& os, GdkRectangle const& r)
+{
+  return os << "GdkRectangle("
+            << r.x << ", "
+            << r.y << ", "
+            << r.width << ", "
+            << r.height << ")";
+}

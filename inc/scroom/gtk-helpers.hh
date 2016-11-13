@@ -18,6 +18,8 @@
 #ifndef _GTK_HELPERS_H_
 #define _GTK_HELPERS_H_
 
+#include <ostream>
+
 #include <gtk/gtk.h>
 
 #include <boost/function.hpp>
@@ -47,8 +49,29 @@ namespace Scroom
 
     void useRecursiveGdkLock();
 
+    inline GdkRectangle createGdkRectangle(int x, int y, int width, int height)
+    {
+      GdkRectangle rect;
+      rect.x = x;
+      rect.y = y;
+      rect.width = width;
+      rect.height = height;
+      return rect;
+    }
+
   }
 }
+
+inline bool operator==(GdkRectangle const& left, GdkRectangle const& right)
+{
+  return
+    left.x == right.x &&
+    left.y == right.y &&
+    left.width == right.width &&
+    left.height == right.height;
+}
+
+std::ostream& operator<<(std::ostream& os, GdkRectangle const& r);
 
 #endif
 

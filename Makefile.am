@@ -399,6 +399,8 @@ plugins_transparent_overlay_src_libsptransparentoverlay_la_SOURCES = \
 	plugins/transparent-overlay/src/transparentoverlaypresentation.hh \
 	plugins/transparent-overlay/src/transparentoverlayviewinfo.cc \
 	plugins/transparent-overlay/src/transparentoverlayviewinfo.hh \
+	plugins/transparent-overlay/src/sizedeterminer.hh \
+	plugins/transparent-overlay/src/sizedeterminer.cc \
 	plugins/transparent-overlay/src/main.cc
 
 plugins_transparent_overlay_src_libsptransparentoverlay_la_LIBADD = -lm @TRANSPARENTOVERLAYPLUGIN_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
@@ -408,7 +410,7 @@ plugins_transparent_overlay_src_libsptransparentoverlay_la_LIBADD = -lm @TRANSPA
 if BOOST_UNITTESTS
 
 plugins_transparent_overlay_test_overlay_tests_CPPFLAGS = @TRANSPARENTOVERLAYPLUGIN_CFLAGS@ \
-	-I $(top_srcdir)/inc
+	-I $(top_srcdir)/inc -I $(top_srcdir)/plugins/transparent-overlay/src
 
 transparent_overlay_plugin_check_programs = \
 	plugins/transparent-overlay/test/overlay-tests
@@ -419,6 +421,7 @@ plugins_transparent_overlay_test_overlay_tests_SOURCES = \
 
 plugins_transparent_overlay_test_overlay_tests_LDADD = @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @UTILS_LIBS@  \
 	plugins/transparent-overlay/src/libsptransparentoverlay.la \
+	libs/util/src/libsutil.la \
 	libs/boost-test-helper/src/libsboosttesthelper.la
 
 transparent_overlay_plugin_tests = \

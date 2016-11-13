@@ -41,7 +41,7 @@ public:
  
   virtual ~ResizablePresentationInterface() {}
 
-  virtual void setRect(ViewInterface::Ptr const& vi, GdkRectangle const& rect)=0;
+  virtual void setRect(ViewInterface::WeakPtr const& vi, GdkRectangle const& rect)=0;
 };
 
 #endif
