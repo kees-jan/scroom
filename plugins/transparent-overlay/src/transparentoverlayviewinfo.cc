@@ -154,18 +154,6 @@ void TransparentOverlayViewInfo::redraw(cairo_t* cr, GdkRectangle presentationAr
 
   int count=0;
 
-  // for(size_t i=0; i<children.size(); i++)
-  // {
-  //   if(!gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(buttons[i])))
-  //     count++;
-  // }
-  // 
-  // if(count)
-  // {
-  //   cairo_set_source_rgb(cr, 1, 1, 1);
-  //   cairo_paint(cr);
-  // }
-  
   for(size_t i=0; i<children.size(); i++)
   {
     if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(buttons[i])))

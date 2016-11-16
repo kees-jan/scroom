@@ -59,7 +59,7 @@ public:
   virtual void removeFromToolbar(GtkToolItem* ti);
 };
 
-class TransparentOverlayViewInfo : public Scroom::Utils::Base
+class TransparentOverlayViewInfo : virtual public Scroom::Utils::Base
 {
 public:
   typedef boost::shared_ptr<TransparentOverlayViewInfo> Ptr;
