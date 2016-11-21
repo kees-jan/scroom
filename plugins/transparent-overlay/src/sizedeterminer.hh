@@ -28,7 +28,7 @@
 #include <scroom/presentationinterface.hh>
 #include <scroom/resizablepresentationinterface.hh>
 
-class SizeDeterminer : public Viewable
+class SizeDeterminer
 {
 public:
   typedef boost::shared_ptr<SizeDeterminer> Ptr;
@@ -38,18 +38,19 @@ private:
   {
   public:
     ResizablePresentationInterface::Ptr const resizablePresentationInterface;
+    std::set<ViewInterface::WeakPtr> views;
+    
   public:
+    PresentationData(); // Don't use
     explicit PresentationData(ResizablePresentationInterface::Ptr const& resizablePresentationInterface);
   };
 
 private:
   std::list<PresentationInterface::Ptr> presentations;
-  std::set<ViewInterface::WeakPtr> views;
   std::map<PresentationInterface::Ptr,PresentationData> resizablePresentationData;
   
 private:
   SizeDeterminer();
-  void sendUpdates(ViewInterface::WeakPtr const& vi, GdkRectangle const& rect);
   void sendUpdates();
   
 public:
@@ -57,8 +58,8 @@ public:
   void add(PresentationInterface::Ptr const& p);
   GdkRectangle getRect() const;
 
-  virtual void open(ViewInterface::WeakPtr vi);
-  virtual void close(ViewInterface::WeakPtr vi);
+  void open(PresentationInterface::Ptr const& p, ViewInterface::WeakPtr const& vi);
+  void close(PresentationInterface::Ptr const& p, ViewInterface::WeakPtr const& vi);
 };
 
 

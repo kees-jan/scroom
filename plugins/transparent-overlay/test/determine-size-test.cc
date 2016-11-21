@@ -185,10 +185,15 @@ BOOST_AUTO_TEST_CASE(determine_size_of_one_regular_one_resizable)
   BOOST_CHECK_EQUAL(expected, sd->getRect());
   BOOST_CHECK(p1->receivedVi.empty());
   BOOST_CHECK(p1->receivedRect.empty());
-  ViewInterface::Ptr vi = ViewInterfaceDummy::create();
-  sd->open(vi);
+  ViewInterface::Ptr v1 = ViewInterfaceDummy::create();
+  sd->open(p1, v1);
   p1->CheckAllEqual(expected);
-  BOOST_CHECK(p1->Contains(vi));
+  BOOST_CHECK(p1->Contains(v1));
+
+  p1->Clear();
+  ViewInterface::Ptr v2 = ViewInterfaceDummy::create();
+  sd->open(p2, v2);
+  p1->CheckEmpty();
 }
 
 BOOST_AUTO_TEST_CASE(determine_size_of_two_resizable)
@@ -203,24 +208,32 @@ BOOST_AUTO_TEST_CASE(determine_size_of_two_resizable)
   BOOST_CHECK_EQUAL(expected, sd->getRect());
 
   p1->CheckEmpty();
-  ViewInterface::Ptr vi = ViewInterfaceDummy::create();
-  sd->open(vi);
+  ViewInterface::Ptr v1 = ViewInterfaceDummy::create();
+  sd->open(p1, v1);
   p1->CheckAllEqual(expected);
-  BOOST_CHECK(p1->Contains(vi));
+  BOOST_CHECK(p1->Contains(v1));
+  p2->CheckEmpty();
+
+  p1->Clear();
+  ViewInterface::Ptr v2 = ViewInterfaceDummy::create();
+  sd->open(p2, v2);
+  p2->CheckAllEqual(expected);
+  BOOST_CHECK(p2->Contains(v2));
+  p1->CheckEmpty();
 }
 
 BOOST_AUTO_TEST_CASE(open_a_view_then_add_presentations_one_regular_one_resizable)
 {
   SizeDeterminer::Ptr sd = SizeDeterminer::create();
-  ViewInterface::Ptr vi = ViewInterfaceDummy::create();
-  sd->open(vi);
 
   GdkRectangle r1 = createGdkRectangle(1,2,3,4);
   ResizablePresentationInterfaceStub::Ptr p1 = ResizablePresentationInterfaceStub::create(r1);
   sd->add(p1);
+  ViewInterface::Ptr v1 = ViewInterfaceDummy::create();
+  sd->open(p1, v1);
   BOOST_CHECK_EQUAL(r1, sd->getRect());
   p1->CheckAllEqual(r1);
-  BOOST_CHECK(p1->Contains(vi));
+  BOOST_CHECK(p1->Contains(v1));
   p1->Clear();
 
   GdkRectangle const r2 = createGdkRectangle(2,1,4,3);
@@ -228,35 +241,43 @@ BOOST_AUTO_TEST_CASE(open_a_view_then_add_presentations_one_regular_one_resizabl
   sd->add(p2);
   BOOST_CHECK_EQUAL(r2, sd->getRect());
   p1->CheckAllEqual(r2);
-  BOOST_CHECK(p1->Contains(vi));
+  BOOST_CHECK(p1->Contains(v1));
   p1->Clear();
+  ViewInterface::Ptr v2 = ViewInterfaceDummy::create();
+  sd->open(p2, v2);
+  p1->CheckEmpty();
 }
 
 BOOST_AUTO_TEST_CASE(updates_are_sent_to_multiple_views)
 {
   SizeDeterminer::Ptr sd = SizeDeterminer::create();
-  ViewInterface::Ptr vi1 = ViewInterfaceDummy::create();
-  sd->open(vi1);
-  ViewInterface::Ptr vi2 = ViewInterfaceDummy::create();
-  sd->open(vi2);
 
   GdkRectangle r1 = createGdkRectangle(1,2,3,4);
   ResizablePresentationInterfaceStub::Ptr p1 = ResizablePresentationInterfaceStub::create(r1);
   sd->add(p1);
+  ViewInterface::Ptr vi1 = ViewInterfaceDummy::create();
+  sd->open(p1, vi1);
+  ViewInterface::Ptr vi2 = ViewInterfaceDummy::create();
+  sd->open(p1, vi2);
+  ViewInterface::Ptr vi3 = ViewInterfaceDummy::create();
+  sd->open(p1, vi3);
+
   BOOST_CHECK_EQUAL(r1, sd->getRect());
   p1->CheckAllEqual(r1);
   BOOST_CHECK(p1->Contains(vi1));
   BOOST_CHECK(p1->Contains(vi2));
+  BOOST_CHECK(p1->Contains(vi3));
   p1->Clear();
 
-  sd->close(vi2);
+  sd->close(p1, vi3);
   GdkRectangle const r2 = createGdkRectangle(2,1,4,3);
   PresentationInterfaceStub::Ptr p2 = PresentationInterfaceStub::create(r2);
   sd->add(p2);
   BOOST_CHECK_EQUAL(r2, sd->getRect());
   p1->CheckAllEqual(r2);
   BOOST_CHECK(p1->Contains(vi1));
-  BOOST_CHECK(!p1->Contains(vi2));
+  BOOST_CHECK(p1->Contains(vi2));
+  BOOST_CHECK(!p1->Contains(vi3));
 }
 
 

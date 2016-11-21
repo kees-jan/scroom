@@ -58,6 +58,14 @@ namespace
 
 ////////////////////////////////////////////////////////////////////////
 
+SizeDeterminer::PresentationData::PresentationData()
+{
+  // Can't conjure a ResizablePresentationInterface::Ptr out of thin
+  // air. Hence calling this constructor is not valid. However,
+  // std::map requires that it is present.
+  defect();
+}
+
 SizeDeterminer::PresentationData::PresentationData(ResizablePresentationInterface::Ptr const& resizablePresentationInterface)
   : resizablePresentationInterface(resizablePresentationInterface)
 {}
@@ -99,25 +107,33 @@ GdkRectangle SizeDeterminer::getRect() const
   return Scroom::GtkHelpers::createGdkRectangle(0,0,0,0);
 }
 
-void SizeDeterminer::open(ViewInterface::WeakPtr vi)
+void SizeDeterminer::open(PresentationInterface::Ptr const& p, ViewInterface::WeakPtr const& vi)
 {
-  require(!views.count(vi));
-  views.insert(vi);
-
-  sendUpdates(vi, getRect());
-}
-
-void SizeDeterminer::close(ViewInterface::WeakPtr vi)
-{
-  require(views.count(vi));
-  views.erase(vi);
-}
-
-void SizeDeterminer::sendUpdates(ViewInterface::WeakPtr const& vi, GdkRectangle const& rect)
-{
-  for(auto const& data: resizablePresentationData)
+  if(resizablePresentationData.count(p))
   {
-    data.second.resizablePresentationInterface->setRect(vi, rect);
+    PresentationData& d = resizablePresentationData[p];
+    require(!d.views.count(vi));
+    d.views.insert(vi);
+
+    d.resizablePresentationInterface->setRect(vi, getRect());
+  }
+  else
+  {
+    require(!boost::dynamic_pointer_cast<ResizablePresentationInterface>(p));
+  }
+}
+
+void SizeDeterminer::close(PresentationInterface::Ptr const& p, ViewInterface::WeakPtr const& vi)
+{
+  if(resizablePresentationData.count(p))
+  {
+    PresentationData& d = resizablePresentationData[p];
+    require(d.views.count(vi));
+    d.views.erase(vi);
+  }
+  else
+  {
+    require(!boost::dynamic_pointer_cast<ResizablePresentationInterface>(p));
   }
 }
 
@@ -125,8 +141,7 @@ void SizeDeterminer::sendUpdates()
 {
   GdkRectangle rect = getRect();
 
-  BOOST_FOREACH(ViewInterface::WeakPtr const& vi, views)
-  {
-    sendUpdates(vi, rect);
-  }
+  for(auto const& data: resizablePresentationData)
+    for(auto const& view: data.second.views)
+      data.second.resizablePresentationInterface->setRect(view, rect);
 }
