@@ -21,6 +21,7 @@
 
 #include <list>
 #include <set>
+#include <map>
 
 #include <boost/shared_ptr.hpp>
 
@@ -33,10 +34,18 @@ public:
   typedef boost::shared_ptr<SizeDeterminer> Ptr;
 
 private:
+  class PresentationData
+  {
+  public:
+    ResizablePresentationInterface::Ptr const resizablePresentationInterface;
+  public:
+    explicit PresentationData(ResizablePresentationInterface::Ptr const& resizablePresentationInterface);
+  };
+
+private:
   std::list<PresentationInterface::Ptr> presentations;
-  std::list<PresentationInterface::Ptr> resizablePresentations;
-  std::list<ResizablePresentationInterface::Ptr> resizablePresentationInterfaces;
   std::set<ViewInterface::WeakPtr> views;
+  std::map<PresentationInterface::Ptr,PresentationData> resizablePresentationData;
   
 private:
   SizeDeterminer();

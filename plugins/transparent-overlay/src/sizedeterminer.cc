@@ -44,7 +44,25 @@ namespace
     }
     return Scroom::GtkHelpers::createGdkRectangle(left, top, right-left, bottom-top);
   }
+
+  template<typename K, typename V>
+  std::list<K> keys(std::map<K,V> const& m)
+  {
+    std::list<K> k;
+    for(auto const& p: m)
+      k.push_back(p.first);
+
+    return k;
+  }
 }
+
+////////////////////////////////////////////////////////////////////////
+
+SizeDeterminer::PresentationData::PresentationData(ResizablePresentationInterface::Ptr const& resizablePresentationInterface)
+  : resizablePresentationInterface(resizablePresentationInterface)
+{}
+
+////////////////////////////////////////////////////////////////////////
 
 SizeDeterminer::Ptr SizeDeterminer::create()
 {
@@ -60,8 +78,7 @@ void SizeDeterminer::add(PresentationInterface::Ptr const& p)
   ResizablePresentationInterface::Ptr r = boost::dynamic_pointer_cast<ResizablePresentationInterface>(p);
   if(r)
   {
-    resizablePresentations.push_back(p);
-    resizablePresentationInterfaces.push_back(r);
+    resizablePresentationData.insert(std::make_pair(p,PresentationData(r)));
   }
   else
     presentations.push_back(p);
@@ -75,9 +92,9 @@ GdkRectangle SizeDeterminer::getRect() const
   {
     return DetermineSize(presentations);
   }
-  if(!resizablePresentations.empty())
+  if(!resizablePresentationData.empty())
   {
-    return DetermineSize(resizablePresentations);
+    return DetermineSize(keys(resizablePresentationData));
   }
   return Scroom::GtkHelpers::createGdkRectangle(0,0,0,0);
 }
@@ -98,9 +115,9 @@ void SizeDeterminer::close(ViewInterface::WeakPtr vi)
 
 void SizeDeterminer::sendUpdates(ViewInterface::WeakPtr const& vi, GdkRectangle const& rect)
 {
-  BOOST_FOREACH(ResizablePresentationInterface::Ptr const& r, resizablePresentationInterfaces)
+  for(auto const& data: resizablePresentationData)
   {
-    r->setRect(vi, rect);
+    data.second.resizablePresentationInterface->setRect(vi, rect);
   }
 }
 
