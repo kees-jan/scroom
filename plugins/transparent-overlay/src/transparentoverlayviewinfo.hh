@@ -33,6 +33,8 @@
 #include <scroom/utilities.hh>
 #include <scroom/progressinterfacehelpers.hh>
 
+#include "sizedeterminer.hh"
+
 class TransparentOverlayViewInfo;
 
 class ChildView : public ViewInterface, virtual public Scroom::Utils::Base
@@ -73,13 +75,14 @@ private:
   Scroom::Utils::ProgressInterfaceMultiplexer::Ptr progressInterfaceMultiplexer;
   std::vector<GtkWidget*> buttons;
   std::vector<PresentationInterface::Ptr> children;
+  SizeDeterminer::Ptr sizeDeterminer;
 
 private:
-  TransparentOverlayViewInfo(const ViewInterface::WeakPtr& vi);
+  TransparentOverlayViewInfo(const ViewInterface::WeakPtr& vi, SizeDeterminer::Ptr const& sizeDeterminer);
   void createToggleToolButton();
 
 public:
-  static Ptr create(const ViewInterface::WeakPtr& vi);
+  static Ptr create(const ViewInterface::WeakPtr& vi, SizeDeterminer::Ptr const& sizeDeterminer);
   void addChildren(const std::list<PresentationInterface::Ptr>& children);
   void addChild(const PresentationInterface::Ptr& child);
 

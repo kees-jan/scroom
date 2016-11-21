@@ -25,6 +25,7 @@
 #include <scroom/presentationinterface.hh>
 
 #include "transparentoverlayviewinfo.hh"
+#include "sizedeterminer.hh"
 
 class TransparentOverlayPresentation : public PresentationBase, public Aggregate
 {
@@ -35,7 +36,7 @@ private:
   typedef std::map<ViewInterface::WeakPtr, TransparentOverlayViewInfo::Ptr> ViewDataMap;
 private:
   std::list<PresentationInterface::Ptr> children;
-  PresentationInterface::Ptr favorite;
+  SizeDeterminer::Ptr sizeDeterminer;
 
   ViewDataMap viewData;
   

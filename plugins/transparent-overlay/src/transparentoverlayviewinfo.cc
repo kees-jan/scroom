@@ -68,9 +68,10 @@ void ChildView::removeFromToolbar(GtkToolItem*)
 // TransparentOverlayViewInfo
 ////////////////////////////////////////////////////////////////////////
 
-TransparentOverlayViewInfo::TransparentOverlayViewInfo(const ViewInterface::WeakPtr& vi)
+TransparentOverlayViewInfo::TransparentOverlayViewInfo(const ViewInterface::WeakPtr& vi, SizeDeterminer::Ptr const& sizeDeterminer)
   : parentView(vi),
-    progressInterfaceMultiplexer(Scroom::Utils::ProgressInterfaceMultiplexer::create(parentView->getProgressInterface()))
+    progressInterfaceMultiplexer(Scroom::Utils::ProgressInterfaceMultiplexer::create(parentView->getProgressInterface())),
+    sizeDeterminer(sizeDeterminer)
 {}
 
 static void on_toggled(GtkToggleButton* button, gpointer data)
@@ -97,9 +98,9 @@ void TransparentOverlayViewInfo::createToggleToolButton()
   parentView->addToToolbar(button);
 }
 
-TransparentOverlayViewInfo::Ptr TransparentOverlayViewInfo::create(const ViewInterface::WeakPtr& vi)
+TransparentOverlayViewInfo::Ptr TransparentOverlayViewInfo::create(const ViewInterface::WeakPtr& vi, SizeDeterminer::Ptr const& sizeDeterminer)
 {
-  return Ptr(new TransparentOverlayViewInfo(vi));
+  return Ptr(new TransparentOverlayViewInfo(vi, sizeDeterminer));
 }
 
 void TransparentOverlayViewInfo::addChildren(const std::list<PresentationInterface::Ptr>& children)
@@ -113,6 +114,7 @@ void TransparentOverlayViewInfo::addChild(const PresentationInterface::Ptr& chil
   ChildView::Ptr view = ChildView::create(shared_from_this<TransparentOverlayViewInfo>());
   childViews[child] = view;
   child->open(view);
+  sizeDeterminer->open(child, view);
   children.push_back(child);
   createToggleToolButton();
 }
@@ -120,8 +122,11 @@ void TransparentOverlayViewInfo::addChild(const PresentationInterface::Ptr& chil
 void TransparentOverlayViewInfo::close()
 {
   BOOST_FOREACH(ChildMap::value_type const& v, childViews)
+  {
+    sizeDeterminer->close(v.first, v.second);
     v.first->close(v.second);
-
+  }
+  
   childViews.clear();
   children.clear();
   buttons.clear();

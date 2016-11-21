@@ -32,6 +32,7 @@ TransparentOverlayPresentation::Ptr TransparentOverlayPresentation::create()
 }
 
 TransparentOverlayPresentation::TransparentOverlayPresentation()
+  : sizeDeterminer(SizeDeterminer::create())
 {
 }
 
@@ -40,8 +41,7 @@ void TransparentOverlayPresentation::addPresentation(PresentationInterface::Ptr 
   if(p)
   {
     children.push_back(p);
-    if(!favorite)
-      favorite=p;
+    sizeDeterminer->add(p);
 
     BOOST_FOREACH(ViewDataMap::value_type const& v, viewData)
       v.second->addChild(p);
@@ -52,24 +52,12 @@ void TransparentOverlayPresentation::addPresentation(PresentationInterface::Ptr 
 
 GdkRectangle TransparentOverlayPresentation::getRect()
 {
-  GdkRectangle rect;
-
-  if(favorite)
-    rect = favorite->getRect();
-  else
-  {
-    rect.x=-500;
-    rect.y=-500;
-    rect.width=1000;
-    rect.height=1000;
-  }
-  
-  return rect;
+  return sizeDeterminer->getRect();
 }
 
 void TransparentOverlayPresentation::viewAdded(ViewInterface::WeakPtr vi)
 {
-  TransparentOverlayViewInfo::Ptr tovi = TransparentOverlayViewInfo::create(vi);
+  TransparentOverlayViewInfo::Ptr tovi = TransparentOverlayViewInfo::create(vi, sizeDeterminer);
   tovi->addChildren(children);
   viewData[vi] = tovi;
 }
