@@ -6,3 +6,26 @@ for d in $(cat supported-ubuntu-releases)
 do
     docker build -t test-scroom-dockerfiles:$d $d
 done    
+
+if [ -n "$1" -a -d "$1" ]
+then
+    SCROOM="$1"
+
+    if [ -f "$SCROOM/Makefile" ]
+    then
+        echo "$SCROOM is configured - run make distclean there"
+        exit 1
+    fi
+
+    if [ ! -f "$SCROOM/configure" ]
+    then
+        echo "$SCROOM/configure does not exist - run autogen -i there"
+        exit 1
+    fi
+
+    SCROOM_ABSOLUTE="$(cd $SCROOM && pwd)"
+    for d in $(cat supported-ubuntu-releases)
+    do
+        docker run -v "$SCROOM_ABSOLUTE":/home/build/scroom --rm test-scroom-dockerfiles:$d sh -c "cd \$(mktemp -d) && /home/build/scroom/configure && make -j12 check"
+    done    
+fi

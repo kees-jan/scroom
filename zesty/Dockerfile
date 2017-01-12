@@ -1,4 +1,4 @@
-FROM ubuntu:wily
+FROM ubuntu:zesty
 
 MAINTAINER kees-jan.dijkzeul@iae.nl
 
