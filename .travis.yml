@@ -15,7 +15,7 @@ compiler:
 env:
 - NONE=""
 - DISTCHECK_CONFIGURE_FLAGS='--enable-debug-tiles --disable-multithreading CFLAGS="-g -O0" CXXFLAGS="-g -O0"' LDFLAGS="-Wl,-z,defs"
-- SOME_DISTS="trusty xenial precise" OTHER_DISTS="yakkety vivid wily"
+- SOME_DISTS="trusty xenial precise" OTHER_DISTS="yakkety zesty"
 addons:
   apt:
     packages:
