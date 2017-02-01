@@ -104,7 +104,11 @@ public:
   virtual void setColormap(Colormap::Ptr colormap);
   virtual Colormap::Ptr getOriginalColormap();
   virtual int getNumberOfColors();
-
+  virtual Color getMonochromeColor();
+  virtual void setMonochromeColor(const Color& c);
+  virtual void setTransparentBackground();
+  virtual void disableTransparentBackground();
+  virtual bool getTransparentBackground();
   ////////////////////////////////////////////////////////////////////////
   // Helpers
   ////////////////////////////////////////////////////////////////////////
@@ -156,6 +160,11 @@ public:
   virtual void setColormap(Colormap::Ptr colormap);
   virtual Colormap::Ptr getOriginalColormap();
   virtual int getNumberOfColors();
+  virtual Color getMonochromeColor();
+  virtual void setMonochromeColor(const Color& c);
+  virtual void setTransparentBackground();
+  virtual void disableTransparentBackground();
+  virtual bool getTransparentBackground();
 };
 
 #endif

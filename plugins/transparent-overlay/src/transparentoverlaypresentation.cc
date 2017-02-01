@@ -23,8 +23,34 @@
 #include <sstream>
 
 #include <boost/foreach.hpp>
+#include <boost/assign.hpp>
+#include <boost/tuple/tuple_comparison.hpp>
 
 #include <scroom/unused.hh>
+#include <scroom/colormappable.hh>
+
+namespace
+{
+  const std::list<Color> colors = boost::assign::list_of<Color>
+    (Color(doubleFromByte(2), doubleFromByte(63), doubleFromByte(165)))
+    (Color(doubleFromByte(142), doubleFromByte(6), doubleFromByte(59)))
+    (Color(doubleFromByte(74), doubleFromByte(111), doubleFromByte(227)))
+    (Color(doubleFromByte(211), doubleFromByte(63), doubleFromByte(106)))
+    (Color(doubleFromByte(17), doubleFromByte(198), doubleFromByte(56)))
+    (Color(doubleFromByte(239), doubleFromByte(151), doubleFromByte(8)))
+    (Color(doubleFromByte(15), doubleFromByte(207), doubleFromByte(192)))
+    (Color(doubleFromByte(247), doubleFromByte(156), doubleFromByte(212)));
+
+  struct ColorComparer
+  {
+    bool operator()(Color const& left, Color const& right)
+    {
+      return
+        boost::make_tuple(left.alpha, left.red, left.green, left.blue) <
+        boost::make_tuple(right.alpha, right.red, right.green, right.blue);
+    }
+  };
+}
 
 TransparentOverlayPresentation::Ptr TransparentOverlayPresentation::create()
 {
@@ -40,14 +66,51 @@ void TransparentOverlayPresentation::addPresentation(PresentationInterface::Ptr 
 {
   if(p)
   {
+    if(p->isPropertyDefined(MONOCHROME_COLORMAPPABLE_PROPERTY_NAME))
+    {
+      setOptimalColor(p);
+    }
+    
     children.push_back(p);
     sizeDeterminer->add(p);
 
     BOOST_FOREACH(ViewDataMap::value_type const& v, viewData)
       v.second->addChild(p);
+
   }
   else
     printf("PANIC: Can't add a nonexistent presentation\n");
+}
+
+void TransparentOverlayPresentation::setOptimalColor(PresentationInterface::Ptr const& p)
+{
+  Colormappable::Ptr c = boost::dynamic_pointer_cast<Colormappable>(p);
+  if(c)
+  {
+    std::map<Color, int, ColorComparer> currentColors;
+    BOOST_FOREACH(PresentationInterface::Ptr const& child, children)
+    {
+      Colormappable::Ptr cChild = boost::dynamic_pointer_cast<Colormappable>(child);
+      if(cChild && child->isPropertyDefined(MONOCHROME_COLORMAPPABLE_PROPERTY_NAME))
+      {
+        currentColors[cChild->getMonochromeColor()]++;
+      }
+    }
+
+    Color minimumColor=c->getMonochromeColor();
+    int minimumColorValue = currentColors[minimumColor];
+
+    BOOST_FOREACH(Color const& color, colors)
+    {
+      if(currentColors[color] < minimumColorValue)
+      {
+        minimumColor = color;
+        minimumColorValue = currentColors[color];
+      }
+    }
+
+    c->setMonochromeColor(minimumColor);
+  }
 }
 
 GdkRectangle TransparentOverlayPresentation::getRect()

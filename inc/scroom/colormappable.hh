@@ -31,12 +31,12 @@
 #include <scroom/presentationinterface.hh>
 #include <scroom/observable.hh>
 
-#define COLORMAPPABLE_PROPERTY_NAME "Colormappable"
+const std::string COLORMAPPABLE_PROPERTY_NAME="Colormappable";
+const std::string MONOCHROME_COLORMAPPABLE_PROPERTY_NAME="Monochrome Colormappable";
+const std::string TRANSPARENT_BACKGROUND_PROPERTY_NAME="Transparent Background";
 
-namespace
-{
-  uint8_t byteFromDouble(double d) { return uint8_t(255*d); }
-}
+inline uint8_t byteFromDouble(double d) { return uint8_t(255*d); }
+inline double doubleFromByte(uint8_t b) { return b/255.0; }
 
 /**
  * Represent a (ARGB) color
@@ -197,6 +197,23 @@ public:
 
   /** Retrieve the number of colors in use by the presentation */
   virtual int getNumberOfColors()=0;
+
+  /**
+   * @name For monochrome presentations: Set/Get the current color
+   * @{
+   */
+  virtual Color getMonochromeColor()=0;
+  virtual void setMonochromeColor(const Color& c)=0;
+  /** @} */
+
+  /**
+   * @name Manipulate the "Transparent Background" setting of the presentation
+   * @{
+   */
+  virtual void setTransparentBackground()=0;
+  virtual void disableTransparentBackground()=0;
+  virtual bool getTransparentBackground()=0;
+  /** @} */
 };
 
 class ColormapProvider

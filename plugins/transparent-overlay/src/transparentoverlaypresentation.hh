@@ -58,6 +58,9 @@ public:
   // Aggregate ///////////////////////////////////////////////////////////
 
   virtual void addPresentation(PresentationInterface::Ptr const& p);
+
+private:
+  void setOptimalColor(PresentationInterface::Ptr const& p);
 };
 
 #endif

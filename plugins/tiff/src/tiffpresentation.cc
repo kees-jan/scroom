@@ -361,6 +361,32 @@ int TiffPresentation::getNumberOfColors()
   return originalColormap->colors.size();
 }
 
+Color TiffPresentation::getMonochromeColor()
+{
+  throw std::runtime_error("Operation not supported");
+}
+
+void TiffPresentation::setMonochromeColor(const Color&)
+{
+  throw std::runtime_error("Operation not supported");
+}
+
+void TiffPresentation::setTransparentBackground()
+{
+  throw std::runtime_error("Operation not supported");
+}
+
+void TiffPresentation::disableTransparentBackground()
+{
+  throw std::runtime_error("Operation not supported");
+}
+  
+bool TiffPresentation::getTransparentBackground()
+{
+  throw std::runtime_error("Operation not supported");
+}
+
+
 ////////////////////////////////////////////////////////////////////////
 // TiffPresentationWrapper
 ////////////////////////////////////////////////////////////////////////
@@ -437,4 +463,29 @@ Colormap::Ptr TiffPresentationWrapper::getOriginalColormap()
 int TiffPresentationWrapper::getNumberOfColors()
 {
   return presentation->getNumberOfColors();
+}
+
+Color TiffPresentationWrapper::getMonochromeColor()
+{
+  return presentation->getMonochromeColor();
+}
+
+void TiffPresentationWrapper::setMonochromeColor(const Color& c)
+{
+  presentation->setMonochromeColor(c);
+}
+
+void TiffPresentationWrapper::setTransparentBackground()
+{
+  presentation->setTransparentBackground();
+}
+
+void TiffPresentationWrapper::disableTransparentBackground()
+{
+  presentation->disableTransparentBackground();
+}
+  
+bool TiffPresentationWrapper::getTransparentBackground()
+{
+  return presentation->getTransparentBackground();
 }
