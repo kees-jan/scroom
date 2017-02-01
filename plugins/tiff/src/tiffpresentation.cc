@@ -17,7 +17,7 @@
 TiffPresentation::TiffPresentation()
     : fileName(), tif(NULL), height(0), width(0), tbi(), bpp(0)
 {
-  colormap = Colormap::createDefault(256);
+  colormapHelper = ColormapHelper::create(256);
 }
 
 TiffPresentation::Ptr TiffPresentation::create()
@@ -82,6 +82,8 @@ bool TiffPresentation::load(const std::string& fileName)
       bpp = 1;
     this->bpp = bpp;
 
+    Colormap::Ptr originalColormap;
+
     uint16 *r, *g, *b;
     int result = TIFFGetField(tif, TIFFTAG_COLORMAP, &r, &g, &b);
     if (result == 1)
@@ -96,10 +98,8 @@ bool TiffPresentation::load(const std::string& fileName)
         originalColormap->colors[i] = Color(1.0 * r[i] / 0xFFFF,
             1.0 * g[i] / 0xFFFF, 1.0 * b[i] / 0xFFFF);
       }
-    }
-    else
-    {
-      colormap = Colormap::createDefault(1 << bpp);
+
+      colormapHelper = ColormapHelper::create(originalColormap);
     }
 
     uint16 photometric;
@@ -112,9 +112,9 @@ bool TiffPresentation::load(const std::string& fileName)
             "WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
 
       if (bpp == 1 || bpp == 8)
-        originalColormap = Colormap::createDefault(2);
+        colormapHelper = MonochromeColormapHelper::create(2); // originalColormap = Colormap::createDefault(2);
       else
-        originalColormap = Colormap::createDefault(1 << bpp);
+        colormapHelper = MonochromeColormapHelper::create(1 << bpp); // originalColormap = Colormap::createDefault(1 << bpp);
 
       break;
 
@@ -124,9 +124,9 @@ bool TiffPresentation::load(const std::string& fileName)
             "WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
 
       if (bpp == 1 || bpp == 8)
-        originalColormap = Colormap::createDefaultInverted(2);
+        colormapHelper = MonochromeColormapHelper::createInverted(2); // originalColormap = Colormap::createDefaultInverted(2);
       else
-        originalColormap = Colormap::createDefaultInverted(1 << bpp);
+        colormapHelper = MonochromeColormapHelper::createInverted(1 << bpp); // originalColormap = Colormap::createDefaultInverted(1 << bpp);
 
       break;
 
@@ -135,7 +135,7 @@ bool TiffPresentation::load(const std::string& fileName)
       {
         printf(
             "WEIRD: Photometric is palette, but tiff doesn't contain a colormap\n");
-        originalColormap = Colormap::createDefault(1 << bpp);
+        colormapHelper = ColormapHelper::create(1 << bpp); // originalColormap = Colormap::createDefault(1 << bpp);
       }
       break;
 
@@ -143,8 +143,6 @@ bool TiffPresentation::load(const std::string& fileName)
       printf("PANIC: Unrecognized value for photometric\n");
       break;
     }
-
-    colormap = originalColormap;
 
     printf("This bitmap has size %d*%d\n", width, height);
     LayerSpec ls;
@@ -320,7 +318,8 @@ void TiffPresentation::done()
 
 void TiffPresentation::setColormap(Colormap::Ptr colormap)
 {
-  this->colormap = colormap;
+  colormapHelper->setColormap(colormap);
+
   BOOST_FOREACH(const Views::value_type& p, views)
   {
     ViewInterface::Ptr v = p.lock();
@@ -337,42 +336,42 @@ void TiffPresentation::setColormap(Colormap::Ptr colormap)
 
 Colormap::Ptr TiffPresentation::getColormap()
 {
-  return colormap;
+  return colormapHelper->getColormap();
 }
 
 Colormap::Ptr TiffPresentation::getOriginalColormap()
 {
-  return originalColormap;
+  return colormapHelper->getOriginalColormap();
 }
 
 int TiffPresentation::getNumberOfColors()
 {
-  return originalColormap->colors.size();
+  return colormapHelper->getNumberOfColors();
 }
 
 Color TiffPresentation::getMonochromeColor()
 {
-  throw std::runtime_error("Operation not supported");
+  return colormapHelper->getMonochromeColor();
 }
 
-void TiffPresentation::setMonochromeColor(const Color&)
+void TiffPresentation::setMonochromeColor(const Color& c)
 {
-  throw std::runtime_error("Operation not supported");
+  colormapHelper->setMonochromeColor(c);
 }
 
 void TiffPresentation::setTransparentBackground()
 {
-  throw std::runtime_error("Operation not supported");
+  colormapHelper->setTransparentBackground();
 }
 
 void TiffPresentation::disableTransparentBackground()
 {
-  throw std::runtime_error("Operation not supported");
+  colormapHelper->disableTransparentBackground();
 }
   
 bool TiffPresentation::getTransparentBackground()
 {
-  throw std::runtime_error("Operation not supported");
+  return colormapHelper->getTransparentBackground();
 }
 
 

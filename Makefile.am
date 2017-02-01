@@ -237,6 +237,7 @@ scroomlib_libs = \
 
 libs_scroom_src_libsscroom_la_SOURCES = \
 	libs/scroom/src/bitmap-helpers.cc \
+	libs/scroom/src/colormap-helpers.cc \
 	libs/scroom/src/roi-parser.cc \
 	libs/scroom/src/roi.cc \
 	libs/scroom/src/presentationinterface.cc
@@ -256,6 +257,7 @@ libs_scroom_test_libscroom_tests_CPPFLAGS = @SCROOMLIB_CFLAGS@ -I $(top_srcdir)/
 
 libs_scroom_test_libscroom_tests_SOURCES = \
 	libs/scroom/test/main.cc \
+	libs/scroom/test/colormaphelpers_test.cc \
 	libs/scroom/test/parse_locations_test.cc
 
 libs_scroom_test_libscroom_tests_LDADD = @BOOSTSYSTEMLIB@ \

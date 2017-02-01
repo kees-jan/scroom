@@ -27,6 +27,16 @@ const std::string TRANSPARENT_BACKGROUND_PROPERTY_NAME="Transparent Background";
 inline uint8_t byteFromDouble(double d) { return uint8_t(255*d); }
 inline double doubleFromByte(uint8_t b) { return b/255.0; }
 
+#define GCC_VERSION (__GNUC__ * 10000           \
+                     + __GNUC_MINOR__ * 100     \
+                     + __GNUC_PATCHLEVEL__)
+
+#if GCC_VERSION < 40800  // 4.8.0
+#define NORETURN __attribute__((noreturn))  // precise, gcc 4.6.3
+#else
+#define NORETURN [[noreturn]] // others // gcc 4.8.4
+#endif
+
 /**
  * Represent a (ARGB) color
  */
@@ -99,7 +109,7 @@ public:
 private:
   /** Constructor. Create an empty colormap */
   Colormap()
-    : name("Empty"), colors()
+    : name("Empty")
   {}
 
 public:
@@ -214,6 +224,58 @@ public:
   virtual Colormap::Ptr getColormap()=0;
 
   virtual ~ColormapProvider() {}
+};
+
+class ColormapHelperBase : public ColormapProvider, public Colormappable
+{
+public:
+  Colormap::Ptr colormap;
+  Colormap::Ptr originalColormap;
+  
+public:
+  ColormapHelperBase(Colormap::Ptr const& colormap);
+  
+  ////////////////////////////////////////////////////////////////////////
+  // Colormappable
+  ////////////////////////////////////////////////////////////////////////
+  virtual void setColormap(Colormap::Ptr colormap);
+  virtual Colormap::Ptr getOriginalColormap();
+  virtual int getNumberOfColors();
+  virtual Color getMonochromeColor();
+  virtual void setMonochromeColor(const Color& c);
+  virtual void setTransparentBackground();
+  virtual void disableTransparentBackground();
+  virtual bool getTransparentBackground();
+
+  ////////////////////////////////////////////////////////////////////////
+  // ColormapProvider
+  ////////////////////////////////////////////////////////////////////////
+  virtual Colormap::Ptr getColormap();
+
+  ////////////////////////////////////////////////////////////////////////
+  // Helpers
+  ////////////////////////////////////////////////////////////////////////
+  virtual void setOriginalColormap(Colormap::Ptr colormap);
+
+private:
+  NORETURN void OperationNotSupported();
+};
+
+class ColormapHelper : public ColormapHelperBase
+{
+public:
+  typedef boost::shared_ptr<ColormapHelper> Ptr;
+
+  static Ptr create(int numberOfColors);
+  static Ptr createInverted(int numberOfColors);
+  static Ptr create(Colormap::Ptr const& colormap);
+
+private:
+  ColormapHelper(Colormap::Ptr const& colormap);
+};
+
+class MonochromeColormapHelper : public ColormapHelper
+{
 };
 
 #endif

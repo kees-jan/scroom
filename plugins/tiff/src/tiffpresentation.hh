@@ -38,8 +38,7 @@ private:
   int bpp;
   std::map<std::string, std::string> properties;
   Views views;
-  Colormap::Ptr originalColormap;
-  Colormap::Ptr colormap;
+  ColormapHelper::Ptr colormapHelper;
   
 private:
   TiffPresentation();
