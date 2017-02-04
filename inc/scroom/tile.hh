@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _TILE_HH
-#define _TILE_HH
+#pragma once
 
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
@@ -54,4 +53,4 @@ public:
   { return Ptr(new ConstTile(width, height, bpp, data)); }
 };
 
-#endif
+

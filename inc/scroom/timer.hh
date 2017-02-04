@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef TIMER_HH
-#define TIMER_HH
+#pragma once
 
 #include <time.h>
 
@@ -50,4 +49,4 @@ namespace Scroom
 }
 
 
-#endif
+

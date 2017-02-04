@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef STUFF_HH
-#define STUFF_HH
+#pragma once
 
 #include <list>
 
@@ -27,4 +26,4 @@ namespace Scroom
 
 
 
-#endif
+

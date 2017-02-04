@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _EXAMPLE_HH
-#define _EXAMPLE_HH
+#pragma once
 
 #include <boost/shared_ptr.hpp>
 
@@ -35,4 +34,4 @@ public:
   virtual ~Example();
 };
 
-#endif
+

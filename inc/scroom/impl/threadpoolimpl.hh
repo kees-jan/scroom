@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _IMPL_THREADPOOL_HH
-#define _IMPL_THREADPOOL_HH
+#pragma once
 
 ////////////////////////////////////////////////////////////////////////
 // Code...
@@ -108,4 +107,4 @@ boost::unique_future<R> ThreadPool::schedule(boost::shared_ptr<T> fn, ThreadPool
   return schedule(fn, defaultPriority, queue);
 }
 
-#endif
+

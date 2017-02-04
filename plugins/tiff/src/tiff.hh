@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _TIFF_HH
-#define _TIFF_HH
+#pragma once
 
 #include <scroom/plugininformationinterface.hh>
 #include <scroom/presentationinterface.hh>
@@ -42,4 +41,4 @@ public:
   virtual ~Tiff();
 };
 
-#endif
+

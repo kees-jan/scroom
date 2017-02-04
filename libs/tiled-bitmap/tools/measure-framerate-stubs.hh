@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef MEASURE_FRAMERATE_STUBS_HH
-#define MEASURE_FRAMERATE_STUBS_HH
+#pragma once
 
 #include <scroom/viewinterface.hh>
 #include <scroom/tiledbitmapinterface.hh>
@@ -80,4 +79,4 @@ public:
   virtual void done() {};
 };
 
-#endif
+

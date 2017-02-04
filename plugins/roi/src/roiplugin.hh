@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _ROIPLUGIN_HH
-#define _ROIPLUGIN_HH
+#pragma once
 
 #include <scroom/plugininformationinterface.hh>
 #include <scroom/presentationinterface.hh>
@@ -38,4 +37,4 @@ public:
   virtual void open(const std::string& fileName, ScroomInterface::Ptr const& scroomInterface);
 };
 
-#endif
+

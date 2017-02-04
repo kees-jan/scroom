@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _SIZEDETERMINER_HH
-#define _SIZEDETERMINER_HH
+#pragma once
 
 #include <list>
 #include <set>
@@ -52,4 +51,4 @@ public:
 };
 
 
-#endif
+

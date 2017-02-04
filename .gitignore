@@ -24,6 +24,7 @@ Makefile.in
 /depcomp
 /doxyfile
 /build-Build_(GNU)_check
+/compile
 /gui/ENVIRONMENT
 /gui/src/scroom
 /libs/boost-test-helper/test/tests

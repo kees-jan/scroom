@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef LOADER_HH
-#define LOADER_HH
+#pragma once
 
 #include <gtk/gtk.h>
 
@@ -19,4 +18,4 @@ PresentationInterface::Ptr loadPresentation(const GtkFileFilterInfo& info);
 PresentationInterface::Ptr loadPresentation(const std::string& filename);
 void destroyGtkFileFilterList(std::list<GtkFileFilter*>& l);
 
-#endif
+

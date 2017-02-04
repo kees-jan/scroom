@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef OBSERVABLE_HH
-#define OBSERVABLE_HH
+#pragma once
 
 #include <list>
 #include <map>
@@ -269,4 +268,4 @@ namespace Scroom
   }
 }
 
-#endif
+

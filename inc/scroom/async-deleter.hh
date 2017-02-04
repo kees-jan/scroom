@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef ASYNCDELETER_HH_
-#define ASYNCDELETER_HH_
+#pragma once
 
 #include <scroom/threadpool.hh>
 
@@ -64,4 +63,4 @@ public:
   }
 };
 
-#endif /* ASYNCDELETER_HH_ */
+

@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef HELPERS_HH
-#define HELPERS_HH
+#pragma once
 
 #include <boost/function.hpp>
 #include <boost/shared_ptr.hpp>
@@ -22,4 +21,4 @@ boost::function<void ()> destroy(boost::shared_ptr<void> p);
 
 
 
-#endif
+

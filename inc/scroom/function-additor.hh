@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef FUNCTION_ADDITOR_HH
-#define FUNCTION_ADDITOR_HH
+#pragma once
 
 #include <list>
 
@@ -59,4 +58,4 @@ Scroom::Detail::ThreadPool::FunctionMultiplier& operator*(unsigned int i, Scroom
 Scroom::Detail::ThreadPool::FunctionMultiplier operator*(unsigned int i, boost::function<void ()> const& f);
 Scroom::Detail::ThreadPool::FunctionMultiplier operator*(boost::function<void ()> const& f, unsigned int i);
 
-#endif
+

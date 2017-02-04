@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _SCROOM_SEMAPHORE_HH
-#define _SCROOM_SEMAPHORE_HH
+#pragma once
 
 #include <boost/thread.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
@@ -82,4 +81,4 @@ namespace Scroom
 }
 
 
-#endif
+

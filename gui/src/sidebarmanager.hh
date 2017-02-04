@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef SIDEBARMANAGER_HH
-#define SIDEBARMANAGER_HH
+#pragma once
 
 #include <map>
 #include <string>
@@ -29,4 +28,4 @@ public:
   void removeSideWidget(GtkWidget* w);
 };
 
-#endif
+

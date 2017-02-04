@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _TILEMANAGERINTERFACE_HH
-#define _TILEMANAGERINTERFACE_HH
+#pragma once
 
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
@@ -316,4 +315,4 @@ public:
 TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight,
     LayerSpec& ls);
 
-#endif
+

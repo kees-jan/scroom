@@ -5,11 +5,10 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef MEASURE_LOAD_PERFORMANCE_TESTS_HH_
-#define MEASURE_LOAD_PERFORMANCE_TESTS_HH_
+#pragma once
 
 #include <scroom/semaphore.hh>
 
 void init_tests();
 
-#endif /* MEASURE_LOAD_PERFORMANCE_TESTS_HH_ */
+

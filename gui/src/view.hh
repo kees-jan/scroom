@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _VIEW_HH
-#define _VIEW_HH
+#pragma once
 
 #include <stdlib.h>
 
@@ -162,4 +161,4 @@ private:
   void updateXY(int x, int y, LocationChangeCause source);
 };
 
-#endif
+

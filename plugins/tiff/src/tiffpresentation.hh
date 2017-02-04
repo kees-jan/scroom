@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _TIFFPRESENTATION_HH
-#define _TIFFPRESENTATION_HH
+#pragma once
 
 #include <string>
 #include <map>
@@ -155,4 +154,4 @@ public:
   virtual bool getTransparentBackground();
 };
 
-#endif
+

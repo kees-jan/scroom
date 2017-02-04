@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _THREADPOOL_HH
-#define _THREADPOOL_HH
+#pragma once
 
 #ifdef HAVE_CONFIG_H
 #  include <config.h>
@@ -609,4 +608,4 @@ ThreadPool::Ptr Sequentially();
 
 #include <scroom/impl/threadpoolimpl.hh>
 
-#endif
+

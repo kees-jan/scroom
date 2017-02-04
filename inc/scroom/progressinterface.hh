@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef PROGRESSINTERFACE_HH
-#define PROGRESSINTERFACE_HH
+#pragma once
 
 #include <boost/shared_ptr.hpp>
 
@@ -27,4 +26,4 @@ public:
   virtual void setFinished()=0;
 };
 
-#endif
+

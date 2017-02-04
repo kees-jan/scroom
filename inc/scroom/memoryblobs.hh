@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef MEMORYBLOBS_HH
-#define MEMORYBLOBS_HH
+#pragma once
 
 #include <list>
 
@@ -152,4 +151,4 @@ namespace Scroom
 }
 
 
-#endif
+

@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _TILEINTERNAL_HH
-#define _TILEINTERNAL_HH
+#pragma once
 
 #include <vector>
 #include <map>
@@ -170,4 +169,4 @@ public:
 typedef std::vector<TileInternal::Ptr> TileInternalLine;
 typedef std::vector<TileInternalLine> TileInternalGrid;
 
-#endif
+

@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef COLORMAPPROVIDER_HH
-#define COLORMAPPROVIDER_HH
+#pragma once
 
 #include <map>
 
@@ -75,4 +74,4 @@ namespace Scroom
   }
 }
 
-#endif
+

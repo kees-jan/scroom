@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef ROI_HH_
-#define ROI_HH_
+#pragma once
 
 #include <set>
 
@@ -97,4 +96,4 @@ namespace Scroom
 
 
 
-#endif /* ROI_HH_ */
+

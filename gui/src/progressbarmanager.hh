@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef PROGRESSBARMANAGER_HH
-#define PROGRESSBARMANAGER_HH
+#pragma once
 
 #include <gtk/gtk.h>
 
@@ -42,4 +41,4 @@ public:
   virtual void setFinished();
 };
 
-#endif
+

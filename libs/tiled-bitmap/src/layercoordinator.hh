@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef LAYERCOORDINATOR_HH
-#define LAYERCOORDINATOR_HH
+#pragma once
 
 #include <map>
 #include <utility>
@@ -48,4 +47,4 @@ public:
   virtual void tileFinished(TileInternal::Ptr tile);
 };
 
-#endif
+

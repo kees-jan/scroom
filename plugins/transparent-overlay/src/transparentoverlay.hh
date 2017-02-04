@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _TRANSPARENTOVERLAY_HH
-#define _TRANSPARENTOVERLAY_HH
+#pragma once
 
 #include <boost/shared_ptr.hpp>
 
@@ -33,4 +32,4 @@ public:
   virtual Aggregate::Ptr createNew();
 };
 
-#endif
+

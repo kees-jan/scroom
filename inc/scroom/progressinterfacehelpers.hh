@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef PROGRESSINTERFACEHELPERS_HH
-#define PROGRESSINTERFACEHELPERS_HH
+#pragma once
 
 #include <set>
 
@@ -244,4 +243,4 @@ namespace Scroom
   }
 }
 
-#endif
+

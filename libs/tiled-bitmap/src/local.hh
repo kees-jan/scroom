@@ -5,12 +5,11 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _LOCAL_HH
-#define _LOCAL_HH
+#pragma once
 
 #define LOAD_PRIO PRIO_HIGHER
 #define DATAFETCH_PRIO PRIO_HIGH
 #define REDUCE_PRIO PRIO_NORMAL
 
 
-#endif
+

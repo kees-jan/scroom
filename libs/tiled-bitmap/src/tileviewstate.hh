@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef TILEVIEWSTATE_HH
-#define TILEVIEWSTATE_HH
+#pragma once
 
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
@@ -90,4 +89,4 @@ private:
 };
 
 
-#endif
+

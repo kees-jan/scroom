@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef TRANSPARENTOVERLAYVIEWINFO_HH
-#define TRANSPARENTOVERLAYVIEWINFO_HH
+#pragma once
 
 #include <list>
 #include <map>
@@ -87,4 +86,4 @@ public:
   void toggled(GtkToggleButton* button);
 };
 
-#endif
+

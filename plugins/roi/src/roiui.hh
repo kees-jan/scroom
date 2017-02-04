@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef ROIUI_HH
-#define ROIUI_HH
+#pragma once
 
 #include <boost/shared_ptr.hpp>
 
@@ -43,4 +42,4 @@ public:
 
 };
 
-#endif
+

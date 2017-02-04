@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef MEASURE_FRAMERATE_CALLBACKS_HH
-#define MEASURE_FRAMERATE_CALLBACKS_HH
+#pragma once
 
 #include <vector>
 
@@ -20,4 +19,4 @@ GtkWidget* create_window();
 void init();
 void invalidate();
 
-#endif
+

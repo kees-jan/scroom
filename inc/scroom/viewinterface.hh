@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _VIEWINTERFACE_HH
-#define _VIEWINTERFACE_HH
+#pragma once
 
 #include <string>
 
@@ -92,4 +91,4 @@ public:
 };
 
 
-#endif
+

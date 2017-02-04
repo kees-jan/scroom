@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef BOOKKEEPINGIMPL_HH
-#define BOOKKEEPINGIMPL_HH
+#pragma once
 
 #include <stdexcept>
 
@@ -414,4 +413,4 @@ namespace Scroom
 }
 
 
-#endif
+

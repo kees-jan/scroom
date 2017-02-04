@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _BITMAP_HELPERS_HH
-#define _BITMAP_HELPERS_HH
+#pragma once
 
 #include <boost/shared_ptr.hpp>
 #include <boost/utility.hpp>
@@ -153,4 +152,4 @@ namespace Scroom
     }
   }
 }
-#endif
+

@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _TRANSPARENTOVERLAYPRESENTATION_HH
-#define _TRANSPARENTOVERLAYPRESENTATION_HH
+#pragma once
 
 #include <list>
 #include <map>
@@ -52,4 +51,4 @@ private:
   void setOptimalColor(PresentationInterface::Ptr const& p);
 };
 
-#endif
+

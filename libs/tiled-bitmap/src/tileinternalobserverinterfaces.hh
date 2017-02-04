@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef TILEINTERNALOBSERVERINTERFACES_HH
-#define TILEINTERNALOBSERVERINTERFACES_HH
+#pragma once
 
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
@@ -59,4 +58,4 @@ public:
   virtual void tileLoaded(ConstTile::Ptr tile)=0;
 };
 
-#endif
+

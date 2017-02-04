@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _EXAMPLEPRESENTATION_HH
-#define _EXAMPLEPRESENTATION_HH
+#pragma once
 
 #include <scroom/presentationinterface.hh>
 
@@ -30,4 +29,4 @@ public:
   virtual std::string getTitle();
 };
 
-#endif
+

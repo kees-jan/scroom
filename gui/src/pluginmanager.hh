@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _PLUGINMANAGER_HH
-#define _PLUGINMANAGER_HH
+#pragma once
 
 #include <gtk/gtk.h>
 
@@ -93,4 +92,4 @@ public:
 
 void startPluginManager(bool devMode);
 
-#endif
+

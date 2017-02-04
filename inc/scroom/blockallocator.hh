@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef BLOCKALLOCATOR_HH
-#define BLOCKALLOCATOR_HH
+#pragma once
 
 #include <list>
 
@@ -82,4 +81,4 @@ namespace Scroom
 }
 
 
-#endif
+

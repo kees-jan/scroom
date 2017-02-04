@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef THREADPOOL_QUEUE_HH
-#define THREADPOOL_QUEUE_HH
+#pragma once
 
 #include <scroom/threadpool.hh>
 
@@ -85,4 +84,4 @@ namespace Scroom
 
 
 
-#endif
+

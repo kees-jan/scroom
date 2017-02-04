@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _TILED_BITMAP_HH
-#define _TILED_BITMAP_HH
+#pragma once
 
 #include <scroom/scroominterface.hh>
 #include <scroom/tiledbitmapinterface.hh>
@@ -113,4 +112,4 @@ public:
   virtual void tileFinished(TileInternal::Ptr tile);
 };
 
-#endif
+

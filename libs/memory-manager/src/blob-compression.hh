@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef BLOB_COMPRESSION_HH
-#define BLOB_COMPRESSION_HH
+#pragma once
 
 #include <scroom/memoryblobs.hh>
 
@@ -23,4 +22,4 @@ namespace Scroom
 }
 
 
-#endif
+

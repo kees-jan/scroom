@@ -5,9 +5,8 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef MEASURE_FRAMERATE_TESTS_HH
-#define MEASURE_FRAMERATE_TESTS_HH
+#pragma once
 
 void init_tests();
 
-#endif
+

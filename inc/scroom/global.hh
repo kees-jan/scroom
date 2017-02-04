@@ -5,9 +5,8 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _GLOBAL_HH
-#define _GLOBAL_HH
+#pragma once
 
 typedef unsigned char byte;
 
-#endif
+

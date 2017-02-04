@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _LAYER_HH
-#define _LAYER_HH
+#pragma once
 
 #include <vector>
 
@@ -62,4 +61,4 @@ public:
 };
 
 
-#endif
+

@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _COLORMAPPLUGIN_HH
-#define _COLORMAPPLUGIN_HH
+#pragma once
 
 #include <scroom/plugininformationinterface.hh>
 #include <scroom/utilities.hh>
@@ -46,4 +45,4 @@ namespace Scroom
 
   }
 }
-#endif
+

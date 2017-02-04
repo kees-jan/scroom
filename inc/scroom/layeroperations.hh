@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _LAYEROPERATIONS_HH
-#define _LAYEROPERATIONS_HH
+#pragma once
 
 #include <scroom/tiledbitmapinterface.hh>
 #include <scroom/colormappable.hh>
@@ -124,4 +123,4 @@ public:
 };
 
 
-#endif
+

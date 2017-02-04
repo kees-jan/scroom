@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _SCROOMINTERFACE_HH
-#define _SCROOMINTERFACE_HH
+#pragma once
 
 #include <gtk/gtk.h>
 
@@ -122,4 +121,4 @@ public:
 };
 
 
-#endif
+

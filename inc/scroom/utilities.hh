@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _UTILITIES_HH
-#define _UTILITIES_HH
+#pragma once
 
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/thread.hpp>
@@ -146,4 +145,4 @@ namespace Scroom
   }
 }
 
-#endif
+

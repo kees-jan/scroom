@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef PROGRESSSTATEINTERFACESTUB_HH
-#define PROGRESSSTATEINTERFACESTUB_HH
+#pragma once
 
 #include <scroom/progressinterfacehelpers.hh>
 
@@ -34,4 +33,4 @@ public:
 
 
 
-#endif
+
