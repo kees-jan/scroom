@@ -37,7 +37,6 @@ private:
   int depth;
   int width;
   int height;
-  int bpp;
   Scroom::Utils::StuffList registrations;
   int horTileCount;
   int verTileCount;

@@ -53,7 +53,7 @@ public:
 /// Layer 
 
 Layer::Layer(TileInitialisationObserver::Ptr observer, int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider)
-  : depth(depth), width(layerWidth), height(layerHeight), bpp(bpp)
+  : depth(depth), width(layerWidth), height(layerHeight)
 {
   horTileCount = (width+TILESIZE-1)/TILESIZE;
   verTileCount = (height+TILESIZE-1)/TILESIZE;
