@@ -21,6 +21,7 @@ class LayerCoordinator: public TileInitialisationObserver,
 {
 private:
   TileInternal::Ptr targetTile;
+  Tile::Ptr targetTileData;
   std::map<TileInternal::Ptr,std::pair<int,int> > sourceTiles;
   Scroom::Utils::StuffList registrations;
   LayerOperations::Ptr lo;
@@ -39,7 +40,7 @@ public:
 private:
   LayerCoordinator(TileInternal::Ptr targetTile, LayerOperations::Ptr lo);
 
-  void reduceSourceTile(TileInternal::Ptr tile);
+  void reduceSourceTile(TileInternal::Ptr tile, ConstTile::Ptr const& tileData);
   
 public:
   ////////////////////////////////////////////////////////////////////////

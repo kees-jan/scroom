@@ -42,28 +42,43 @@ void LayerCoordinator::addSourceTile(int x, int y, TileInternal::Ptr tile)
 
 void LayerCoordinator::tileFinished(TileInternal::Ptr tile)
 {
-  CpuBound()->schedule(boost::bind(&LayerCoordinator::reduceSourceTile, shared_from_this<LayerCoordinator>(), tile), REDUCE_PRIO);
+  ConstTile::Ptr tileData = tile->getConstTileAsync();
+  if(!tileData)
+  {
+    printf("WEIRD: Tile finished but not loaded?\n");
+  }
+
+  CpuBound()->schedule(boost::bind(&LayerCoordinator::reduceSourceTile, shared_from_this<LayerCoordinator>(), tile, tileData), REDUCE_PRIO);
 }
 
 ////////////////////////////////////////////////////////////////////////
 /// Helpers
 
-void LayerCoordinator::reduceSourceTile(TileInternal::Ptr tile)
+void LayerCoordinator::reduceSourceTile(TileInternal::Ptr tile, ConstTile::Ptr const& tileData)
 {
+  // If tileData contains a valid pointer, then fetching
+  // sourcetiledata, below, will be instananeous. Otherwise, it will
+  // need to unzip the compressed tile.
+  //
+  // Other than that side-effect, we have no use for tileData
+  UNUSED(tileData);
+  
   targetTile->initialize();
   const std::pair<int,int> location = sourceTiles[tile];
   const int x = location.first;
   const int y = location.second;
 
-  Tile::Ptr target = targetTile->getTileSync();
+  if(!targetTileData)
+    targetTileData = targetTile->getTileSync();
   ConstTile::Ptr source = tile->getConstTileSync();
 
-  lo->reduce(target, source, x, y);
+  lo->reduce(targetTileData, source, x, y);
 
   boost::unique_lock<boost::mutex> lock(mut);
   unfinishedSourceTiles--;
   if(!unfinishedSourceTiles)
   {
     targetTile->reportFinished();
+    targetTileData.reset();
   }
 }
