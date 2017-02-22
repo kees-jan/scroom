@@ -95,3 +95,46 @@ ColormapHelper::ColormapHelper(Colormap::Ptr const& colormap)
 {
 }
 
+////////////////////////////////////////////////////////////////////////
+// MonochromeColormapHelper
+
+MonochromeColormapHelper::Ptr MonochromeColormapHelper::create(int numberOfColors)
+{
+  return Ptr(new MonochromeColormapHelper(numberOfColors, false));
+}
+
+MonochromeColormapHelper::Ptr MonochromeColormapHelper::createInverted(int numberOfColors)
+{
+  return Ptr(new MonochromeColormapHelper(numberOfColors, true));
+}
+
+MonochromeColormapHelper::MonochromeColormapHelper(int numberOfColors, bool inverted)
+  : ColormapHelperBase(generateInitialColormap(numberOfColors, inverted)),
+    numberOfColors(numberOfColors), inverted(inverted), blackish(Color(inverted?1:0)), whitish(Color(inverted?0:1))
+{
+}
+
+void MonochromeColormapHelper::setMonochromeColor(const Color& c)
+{
+  whitish = c;
+
+  regenerateColormap();
+}
+
+Color MonochromeColormapHelper::getMonochromeColor()
+{
+  return whitish;
+}
+
+void MonochromeColormapHelper::regenerateColormap()
+{
+  for(int i=0; i<numberOfColors; i++)
+  {
+    colormap->colors[i] = mix(blackish, whitish, 1.0*i/(numberOfColors-1));
+  }
+}
+
+Colormap::Ptr MonochromeColormapHelper::generateInitialColormap(int numberOfColors, bool inverted)
+{
+  return inverted?Colormap::createDefaultInverted(numberOfColors):Colormap::createDefault(numberOfColors);
+}

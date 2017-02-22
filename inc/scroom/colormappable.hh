@@ -61,7 +61,7 @@ public:
   {}
 
   /** Constructor. Create the given gray value */
-  Color(double gray, double alpha=1.0)
+  explicit Color(double gray, double alpha=1.0)
     : alpha(alpha), red(gray), green(gray), blue(gray)
   {}
 
@@ -229,6 +229,9 @@ public:
 class ColormapHelperBase : public ColormapProvider, public Colormappable
 {
 public:
+  typedef boost::shared_ptr<ColormapHelperBase> Ptr;
+  
+public:
   Colormap::Ptr colormap;
   Colormap::Ptr originalColormap;
   
@@ -264,8 +267,6 @@ private:
 class ColormapHelper : public ColormapHelperBase
 {
 public:
-  typedef boost::shared_ptr<ColormapHelper> Ptr;
-
   static Ptr create(int numberOfColors);
   static Ptr createInverted(int numberOfColors);
   static Ptr create(Colormap::Ptr const& colormap);
@@ -274,8 +275,32 @@ private:
   ColormapHelper(Colormap::Ptr const& colormap);
 };
 
-class MonochromeColormapHelper : public ColormapHelper
+class MonochromeColormapHelper : public ColormapHelperBase
 {
+public:
+  static Ptr create(int numberOfColors);
+  static Ptr createInverted(int numberOfColors);
+
+  ////////////////////////////////////////////////////////////////////////
+  // Colormappable
+  ////////////////////////////////////////////////////////////////////////
+
+  virtual Color getMonochromeColor();
+  virtual void setMonochromeColor(const Color& c);
+  // virtual void setTransparentBackground();
+  // virtual void disableTransparentBackground();
+  // virtual bool getTransparentBackground();
+
+private:
+  MonochromeColormapHelper(int numberOfColors, bool inverted);
+  void regenerateColormap();
+  static Colormap::Ptr generateInitialColormap(int numberOfColors, bool inverted);
+
+private:
+  int numberOfColors;
+  bool inverted;
+  Color blackish;
+  Color whitish;
 };
 
 #endif

@@ -57,25 +57,13 @@ void test_name::test_method(const param_t &param)                       \
 // End Yuk
 ////////////////////////////////////////////////////////////////////////
 
+namespace
+{
+  const Color Blue(0,0,1);
+  const double accuracy = 1e-4;
+}
+  
 BOOST_AUTO_TEST_SUITE(ColormapHelper_Tests)
-
-// After creation, originalColormap and colormap are both set and equal
-
-BOOST_AUTO_TEST_CASE(create_helper)
-{
-  ColormapHelper::Ptr helper = ColormapHelper::create(4);
-  Colormap::Ptr defaultColormap = helper->getColormap();
-  BOOST_CHECK_EQUAL(4, defaultColormap->colors.size());
-  BOOST_CHECK_EQUAL(4, helper->getNumberOfColors());
-}
-
-BOOST_AUTO_TEST_CASE(create_monochrome_helper)
-{
-  MonochromeColormapHelper::Ptr helper = MonochromeColormapHelper::create(256);
-  Colormap::Ptr defaultColormap = helper->getColormap();
-  BOOST_CHECK_EQUAL(256, defaultColormap->colors.size());
-  BOOST_CHECK_EQUAL(256, helper->getNumberOfColors());
-}
 
 struct Data
 {
@@ -91,6 +79,7 @@ static std::list<Data> helpers = boost::assign::list_of
   (Data(4, ColormapHelper::create(4)))
   (Data(2, ColormapHelper::create(Colormap::createDefault(2))))
   (Data(4, ColormapHelper::createInverted(4)))
+  (Data(256, MonochromeColormapHelper::create(256)))
   ;
 
 BOOST_AUTO_PARAM_TEST_CASE(colormaps_equal_and_correct_count, helpers.begin(), helpers.end())
@@ -103,6 +92,59 @@ BOOST_AUTO_PARAM_TEST_CASE(colormaps_equal_and_correct_count, helpers.begin(), h
   BOOST_REQUIRE(colormap);
   BOOST_CHECK_EQUAL(param.expectedColors, colormap->colors.size());
   BOOST_CHECK_EQUAL(originalColormap, colormap);
+}
+
+BOOST_AUTO_TEST_CASE(regular_colormaps_cant_have_their_colors_set)
+{
+  ColormapHelper::Ptr helper = ColormapHelper::create(256);
+  BOOST_CHECK_THROW(helper->setMonochromeColor(Color(0,0,1)), std::runtime_error);
+}
+
+BOOST_AUTO_TEST_CASE(monochrome_colormap_can_have_its_color_set)
+{
+  ColormapHelper::Ptr helper = MonochromeColormapHelper::create(256);
+  Colormap::Ptr originalOriginalColormap = helper->getOriginalColormap();
+
+  // At least one color in the current colormap doesn't have a blue component
+  BOOST_CHECK_NE(1, helper->getColormap()->colors[0].blue);
+  
+  helper->setMonochromeColor(Blue);
+  BOOST_CHECK_EQUAL(originalOriginalColormap, helper->getOriginalColormap());
+
+  Colormap::Ptr newColorMap = helper->getColormap();
+  BOOST_FOREACH(Color& c, newColorMap->colors)
+  {
+    BOOST_CHECK_CLOSE(0, c.red, accuracy);
+    BOOST_CHECK_CLOSE(0, c.green, accuracy);
+  }
+
+  Color currentColor = helper->getMonochromeColor();
+  BOOST_CHECK_CLOSE(Blue.red, currentColor.red, accuracy);
+  BOOST_CHECK_CLOSE(Blue.green, currentColor.green, accuracy);
+  BOOST_CHECK_CLOSE(Blue.blue, currentColor.blue, accuracy);
+}
+
+BOOST_AUTO_TEST_CASE(inverted_monochrome_colormap_can_have_its_color_set)
+{
+  ColormapHelper::Ptr helper = MonochromeColormapHelper::createInverted(256);
+  Colormap::Ptr originalOriginalColormap = helper->getOriginalColormap();
+
+  // At least one color in the current colormap doesn't have a blue component
+  BOOST_CHECK_NE(1, helper->getColormap()->colors.back().blue);
+  
+  helper->setMonochromeColor(Blue);
+  BOOST_CHECK_EQUAL(originalOriginalColormap, helper->getOriginalColormap());
+
+  Colormap::Ptr newColorMap = helper->getColormap();
+  BOOST_FOREACH(Color& c, newColorMap->colors)
+  {
+    BOOST_CHECK_CLOSE(1, c.blue, accuracy);
+  }
+
+  Color currentColor = helper->getMonochromeColor();
+  BOOST_CHECK_CLOSE(Blue.red, currentColor.red, accuracy);
+  BOOST_CHECK_CLOSE(Blue.green, currentColor.green, accuracy);
+  BOOST_CHECK_CLOSE(Blue.blue, currentColor.blue, accuracy);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
