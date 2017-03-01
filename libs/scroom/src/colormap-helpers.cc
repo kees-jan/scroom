@@ -116,21 +116,24 @@ MonochromeColormapHelper::MonochromeColormapHelper(int numberOfColors, bool inve
 
 void MonochromeColormapHelper::setMonochromeColor(const Color& c)
 {
-  whitish = c;
+  if(inverted)
+    whitish = c;
+  else
+    blackish = c;
 
   regenerateColormap();
 }
 
 Color MonochromeColormapHelper::getMonochromeColor()
 {
-  return whitish;
+  return inverted?whitish:blackish;
 }
 
 void MonochromeColormapHelper::regenerateColormap()
 {
   for(int i=0; i<numberOfColors; i++)
   {
-    colormap->colors[i] = mix(blackish, whitish, 1.0*i/(numberOfColors-1));
+    colormap->colors[i] = mix(whitish, blackish, 1.0*i/(numberOfColors-1));
   }
 }
 

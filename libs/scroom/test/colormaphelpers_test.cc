@@ -114,8 +114,7 @@ BOOST_AUTO_TEST_CASE(monochrome_colormap_can_have_its_color_set)
   Colormap::Ptr newColorMap = helper->getColormap();
   BOOST_FOREACH(Color& c, newColorMap->colors)
   {
-    BOOST_CHECK_CLOSE(0, c.red, accuracy);
-    BOOST_CHECK_CLOSE(0, c.green, accuracy);
+    BOOST_CHECK_CLOSE(1, c.blue, accuracy);
   }
 
   Color currentColor = helper->getMonochromeColor();

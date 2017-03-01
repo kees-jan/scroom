@@ -108,34 +108,33 @@ bool TiffPresentation::load(const std::string& fileName)
     {
     case PHOTOMETRIC_MINISBLACK:
       if (originalColormap)
-        printf(
-            "WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
+        printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
 
       if (bpp == 1 || bpp == 8)
-        colormapHelper = MonochromeColormapHelper::create(2); // originalColormap = Colormap::createDefault(2);
+        colormapHelper = MonochromeColormapHelper::create(2);
       else
-        colormapHelper = MonochromeColormapHelper::create(1 << bpp); // originalColormap = Colormap::createDefault(1 << bpp);
+        colormapHelper = MonochromeColormapHelper::create(1 << bpp);
 
+      properties[MONOCHROME_COLORMAPPABLE_PROPERTY_NAME] = "";
       break;
 
     case PHOTOMETRIC_MINISWHITE:
       if (originalColormap)
-        printf(
-            "WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
+        printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
 
       if (bpp == 1 || bpp == 8)
-        colormapHelper = MonochromeColormapHelper::createInverted(2); // originalColormap = Colormap::createDefaultInverted(2);
+        colormapHelper = MonochromeColormapHelper::createInverted(2);
       else
-        colormapHelper = MonochromeColormapHelper::createInverted(1 << bpp); // originalColormap = Colormap::createDefaultInverted(1 << bpp);
+        colormapHelper = MonochromeColormapHelper::createInverted(1 << bpp);
 
+      properties[MONOCHROME_COLORMAPPABLE_PROPERTY_NAME] = "";
       break;
 
     case PHOTOMETRIC_PALETTE:
       if (!originalColormap)
       {
-        printf(
-            "WEIRD: Photometric is palette, but tiff doesn't contain a colormap\n");
-        colormapHelper = ColormapHelper::create(1 << bpp); // originalColormap = Colormap::createDefault(1 << bpp);
+        printf("WEIRD: Photometric is palette, but tiff doesn't contain a colormap\n");
+        colormapHelper = ColormapHelper::create(1 << bpp);
       }
       break;
 
@@ -150,23 +149,23 @@ bool TiffPresentation::load(const std::string& fileName)
     if (bpp == 2 || bpp == 4 || photometric == PHOTOMETRIC_PALETTE)
     {
       ls.push_back(
-          Operations::create(shared_from_this<ColormapProvider>(), bpp));
+          Operations::create(colormapHelper, bpp));
       ls.push_back(
-          OperationsColormapped::create(shared_from_this<ColormapProvider>(),
+          OperationsColormapped::create(colormapHelper,
               bpp));
       properties[COLORMAPPABLE_PROPERTY_NAME] = "";
     }
     else if (bpp == 1)
     {
       ls.push_back(
-          Operations1bpp::create(shared_from_this<ColormapProvider>()));
+          Operations1bpp::create(colormapHelper));
       ls.push_back(
-          Operations8bpp::create(shared_from_this<ColormapProvider>()));
+          Operations8bpp::create(colormapHelper));
     }
     else if (bpp == 8)
     {
       ls.push_back(
-          Operations8bpp::create(shared_from_this<ColormapProvider>()));
+          Operations8bpp::create(colormapHelper));
     }
     else
     {
@@ -207,8 +206,7 @@ void TiffPresentation::viewAdded(ViewInterface::WeakPtr viewInterface)
     tbi->open(viewInterface);
   else
   {
-    printf(
-        "ERROR: TiffPresentation::open(): No TiledBitmapInterface available!\n");
+    printf("ERROR: TiffPresentation::open(): No TiledBitmapInterface available!\n");
   }
 }
 
@@ -220,8 +218,7 @@ void TiffPresentation::viewRemoved(ViewInterface::WeakPtr vi)
     tbi->close(vi);
   else
   {
-    printf(
-        "ERROR: TiffPresentation::close(): No TiledBitmapInterface available!\n");
+    printf("ERROR: TiffPresentation::close(): No TiledBitmapInterface available!\n");
   }
 }
 
