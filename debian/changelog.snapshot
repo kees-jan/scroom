@@ -1,3 +1,9 @@
+scroom (0.6-52-ga86cd28-1) xenial; urgency=medium
+
+  * Snapshot release
+
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Sat, 08 Apr 2017 14:56:38 +0200
+
 scroom (0.6-42-g725d2fc-1) xenial; urgency=medium
 
   * Snapshot release
