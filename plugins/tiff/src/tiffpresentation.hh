@@ -20,7 +20,7 @@
 
 typedef struct tiff TIFF;
 
-class TiffPresentation : public SourcePresentation, public ColormapProvider,
+class TiffPresentation : public SourcePresentation, 
                          public virtual Scroom::Utils::Base
 {
 public:
@@ -96,12 +96,9 @@ public:
   virtual void setTransparentBackground();
   virtual void disableTransparentBackground();
   virtual bool getTransparentBackground();
-  ////////////////////////////////////////////////////////////////////////
-  // Helpers
-  ////////////////////////////////////////////////////////////////////////
-public:
-  Colormap::Ptr getColormap();
-  
+
+private:
+  void clearCaches();
 };
 
 class TiffPresentationWrapper : public PresentationBase, public Colormappable

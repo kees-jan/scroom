@@ -28,15 +28,15 @@ namespace Scroom
       unsigned char* const data;
   
     public:
-      static Ptr create(int width, int height);
-      static Ptr create(int width, int height, int stride, unsigned char* data);
+      static Ptr create(int width, int height, cairo_format_t format);
+      static Ptr create(int width, int height, cairo_format_t format, int stride, unsigned char* data);
 
       ~BitmapSurface();
 
       cairo_surface_t* get();
     private:
-      BitmapSurface(int width, int heght);
-      BitmapSurface(int width, int height, int stride, unsigned char* data);
+      BitmapSurface(int width, int height, cairo_format_t format);
+      BitmapSurface(int width, int height, cairo_format_t format, int stride, unsigned char* data);
     };
 
     ////////////////////////////////////////////////////////////////////////

@@ -243,7 +243,7 @@ libs_scroom_src_libsscroom_la_SOURCES = \
 	libs/scroom/src/presentationinterface.cc
 
 libs_scroom_src_libsscroom_la_LIBADD = \
-	@SCROOMLIB_LIBS@ \
+	@SCROOMLIB_LIBS@ $(util_libs) \
 	@BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
 
 if BOOST_UNITTESTS

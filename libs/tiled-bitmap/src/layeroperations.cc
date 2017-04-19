@@ -153,7 +153,8 @@ Scroom::Utils::Stuff CommonOperations::cacheZoom(const ConstTile::Ptr tile, int 
   {
     int divider = 1<<-zoom;
     BitmapSurface::Ptr source = boost::static_pointer_cast<BitmapSurface>(cache);
-    BitmapSurface::Ptr target = BitmapSurface::create(tile->width/divider, tile->height/divider);
+    BitmapSurface::Ptr target = BitmapSurface::create(tile->width/divider, tile->height/divider,
+                                                      CAIRO_FORMAT_ARGB32);
     result = target;
     
     cairo_surface_t* surface = target->get();
@@ -232,7 +233,7 @@ int Operations1bpp::getBpp()
 
 Scroom::Utils::Stuff Operations1bpp::cache(const ConstTile::Ptr tile)
 {
-  const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_RGB24, tile->width);
+  const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
   unsigned char* data = (unsigned char*)malloc(stride * tile->height);
   Colormap::Ptr colormap = colormapProvider->getColormap();
 
@@ -243,13 +244,13 @@ Scroom::Utils::Stuff Operations1bpp::cache(const ConstTile::Ptr tile)
     uint32_t* pixel = (uint32_t*)row;
     for(int i=0; i<tile->width; i++)
     {
-      *pixel = colormap->colors[*bit].getRGB24();
+      *pixel = colormap->colors[*bit].getARGB32();
       pixel++;
       ++bit;
     }
   }
 
-  return BitmapSurface::create(tile->width, tile->height, stride, data);
+  return BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
 }
 
 void Operations1bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y)
@@ -348,7 +349,7 @@ int Operations8bpp::getBpp()
 
 Scroom::Utils::Stuff Operations8bpp::cache(const ConstTile::Ptr tile)
 {
-  const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_RGB24, tile->width);
+  const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
   unsigned char* data = (unsigned char*)malloc(stride * tile->height);
   Colormap::Ptr colormap = colormapProvider->getColormap();
   const Color& c1 = colormap->colors[0];
@@ -362,14 +363,14 @@ Scroom::Utils::Stuff Operations8bpp::cache(const ConstTile::Ptr tile)
     uint32_t* pixel = (uint32_t*)row;
     for(int i=0; i<tile->width; i++)
     {
-      *pixel = mix(c2, c1, 1.0**cur/255).getRGB24();
+      *pixel = mix(c2, c1, 1.0**cur/255).getARGB32();
       
       pixel++;
       ++cur;
     }
   }
 
-  return BitmapSurface::create(tile->width, tile->height, stride, data);
+  return BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
 }
 
 void Operations8bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y)
@@ -470,7 +471,7 @@ int Operations::getBpp()
 
 Scroom::Utils::Stuff Operations::cache(const ConstTile::Ptr tile)
 {
-  const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_RGB24, tile->width);
+  const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
   unsigned char* data = (unsigned char*)malloc(stride * tile->height);
   Colormap::Ptr colormap = colormapProvider->getColormap();
 
@@ -482,13 +483,13 @@ Scroom::Utils::Stuff Operations::cache(const ConstTile::Ptr tile)
     uint32_t* pixelOut = (uint32_t*)row;
     for(int i=0; i<tile->width; i++)
     {
-      *pixelOut = colormap->colors[*pixelIn].getRGB24();
+      *pixelOut = colormap->colors[*pixelIn].getARGB32();
       pixelOut++;
       ++pixelIn;
     }
   }
 
-  return BitmapSurface::create(tile->width, tile->height, stride, data);
+  return BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
 }
 
 void Operations::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y)
@@ -612,7 +613,7 @@ int OperationsColormapped::getBpp()
 
 Scroom::Utils::Stuff OperationsColormapped::cache(const ConstTile::Ptr tile)
 {
-  const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_RGB24, tile->width);
+  const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
   unsigned char* data = (unsigned char*)malloc(stride * tile->height);
   Colormap::Ptr colormap = colormapProvider->getColormap();
   const int multiplier = 2; // data is 2*bpp, containing 2 colors
@@ -624,14 +625,14 @@ Scroom::Utils::Stuff OperationsColormapped::cache(const ConstTile::Ptr tile)
     uint32_t* pixelOut = (uint32_t*)row;
     for(int i=0; i<tile->width; i++)
     {
-      *pixelOut = mix(colormap->colors[*pixelIn & pixelMask], colormap->colors[*pixelIn >> pixelOffset], 0.5).getRGB24();
+      *pixelOut = mix(colormap->colors[*pixelIn & pixelMask], colormap->colors[*pixelIn >> pixelOffset], 0.5).getARGB32();
       
       pixelOut++;
       ++pixelIn;
     }
   }
 
-  return BitmapSurface::create(tile->width, tile->height, stride, data);
+  return BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
 }
 
 void OperationsColormapped::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y)

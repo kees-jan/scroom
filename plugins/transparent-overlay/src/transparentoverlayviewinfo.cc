@@ -13,6 +13,7 @@
 
 #include <scroom/unused.hh>
 #include <scroom/bitmap-helpers.hh>
+#include <scroom/colormappable.hh>
 
 #ifdef HAVE_CONFIG_H
 # include <config.h>
@@ -142,7 +143,7 @@ void TransparentOverlayViewInfo::redraw(cairo_t* cr, GdkRectangle presentationAr
     viewArea.height = presentationArea.height/pixelSize;
   }
 
-  BitmapSurface::Ptr s = BitmapSurface::create(viewArea.width, viewArea.height);
+  BitmapSurface::Ptr s = BitmapSurface::create(viewArea.width, viewArea.height, CAIRO_FORMAT_ARGB32);
   cairo_surface_t* surface = s->get();
   cairo_t* cr_sub = cairo_create(surface);
 
@@ -153,12 +154,34 @@ void TransparentOverlayViewInfo::redraw(cairo_t* cr, GdkRectangle presentationAr
     if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(buttons[i])))
     {
       PresentationInterface::Ptr& p = children[i];
+
+      Colormappable::Ptr c = boost::dynamic_pointer_cast<Colormappable>(p);
+      bool hasTransparentBackground = false;
+      if(c && p->isPropertyDefined(TRANSPARENT_BACKGROUND_PROPERTY_NAME))
+      {
+        if(count==0)
+          c->disableTransparentBackground();
+        else
+        {
+          c->setTransparentBackground();
+          hasTransparentBackground = true;
+        }
+      }
+      
+      cairo_save(cr_sub);
+      cairo_set_operator(cr_sub, CAIRO_OPERATOR_CLEAR);
+      cairo_paint(cr_sub);
+      cairo_restore(cr_sub);
+ 
       cairo_save(cr_sub);
       p->redraw(childViews[p], cr_sub, presentationArea, zoom);
       cairo_restore(cr_sub);
 
       cairo_set_source_surface(cr, surface, 0, 0);
-      cairo_paint_with_alpha(cr, 1.0/++count);
+      cairo_paint_with_alpha(cr, 1.0/(count+1));
+
+      if(!hasTransparentBackground)
+        count++;
     }
   }
 

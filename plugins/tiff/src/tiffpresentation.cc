@@ -316,24 +316,7 @@ void TiffPresentation::done()
 void TiffPresentation::setColormap(Colormap::Ptr colormap)
 {
   colormapHelper->setColormap(colormap);
-
-  BOOST_FOREACH(const Views::value_type& p, views)
-  {
-    ViewInterface::Ptr v = p.lock();
-    if(v)
-    {
-      if (tbi)
-      {
-        tbi->clearCaches(v);
-      }
-      v->invalidate();
-    }
-  }
-}
-
-Colormap::Ptr TiffPresentation::getColormap()
-{
-  return colormapHelper->getColormap();
+  clearCaches();
 }
 
 Colormap::Ptr TiffPresentation::getOriginalColormap()
@@ -354,16 +337,19 @@ Color TiffPresentation::getMonochromeColor()
 void TiffPresentation::setMonochromeColor(const Color& c)
 {
   colormapHelper->setMonochromeColor(c);
+  clearCaches();
 }
 
 void TiffPresentation::setTransparentBackground()
 {
   colormapHelper->setTransparentBackground();
+  clearCaches();
 }
 
 void TiffPresentation::disableTransparentBackground()
 {
   colormapHelper->disableTransparentBackground();
+  clearCaches();
 }
   
 bool TiffPresentation::getTransparentBackground()
@@ -371,6 +357,21 @@ bool TiffPresentation::getTransparentBackground()
   return colormapHelper->getTransparentBackground();
 }
 
+void TiffPresentation::clearCaches()
+{
+  BOOST_FOREACH(const Views::value_type& p, views)
+  {
+    ViewInterface::Ptr v = p.lock();
+    if(v)
+    {
+      if (tbi)
+      {
+        tbi->clearCaches(v);
+      }
+      v->invalidate();
+    }
+  }
+}
 
 ////////////////////////////////////////////////////////////////////////
 // TiffPresentationWrapper

@@ -110,7 +110,8 @@ MonochromeColormapHelper::Ptr MonochromeColormapHelper::createInverted(int numbe
 
 MonochromeColormapHelper::MonochromeColormapHelper(int numberOfColors, bool inverted)
   : ColormapHelperBase(generateInitialColormap(numberOfColors, inverted)),
-    numberOfColors(numberOfColors), inverted(inverted), blackish(Color(inverted?1:0)), whitish(Color(inverted?0:1))
+    numberOfColors(numberOfColors), inverted(inverted), blackish(Color(inverted?1:0)), whitish(Color(inverted?0:1)),
+    transparentBackground(false)
 {
 }
 
@@ -131,13 +132,41 @@ Color MonochromeColormapHelper::getMonochromeColor()
 
 void MonochromeColormapHelper::regenerateColormap()
 {
+  Color w = whitish;
+  Color b = blackish;
+  if(transparentBackground)
+  {
+    if(inverted)
+      b.setAlpha(0);
+    else
+      w.setAlpha(0);
+
+  }
+  
   for(int i=0; i<numberOfColors; i++)
   {
-    colormap->colors[i] = mix(whitish, blackish, 1.0*i/(numberOfColors-1));
+    colormap->colors[i] = mix(w, b, 1.0*i/(numberOfColors-1));
   }
 }
 
 Colormap::Ptr MonochromeColormapHelper::generateInitialColormap(int numberOfColors, bool inverted)
 {
   return inverted?Colormap::createDefaultInverted(numberOfColors):Colormap::createDefault(numberOfColors);
+}
+
+void MonochromeColormapHelper::setTransparentBackground()
+{
+  transparentBackground = true;
+  regenerateColormap();
+}
+
+void MonochromeColormapHelper::disableTransparentBackground()
+{
+  transparentBackground = false;
+  regenerateColormap();
+}
+
+bool MonochromeColormapHelper::getTransparentBackground()
+{
+  return transparentBackground;
 }

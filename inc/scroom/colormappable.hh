@@ -77,7 +77,7 @@ public:
   uint32_t getRGB24() const
   { return 0xFF000000 | byteFromDouble(red)<<16 | byteFromDouble(green)<<8 | byteFromDouble(blue) <<0; }
 
-  uint32_t getARGB24() const
+  uint32_t getARGB32() const
   { return byteFromDouble(alpha)<<24 | byteFromDouble(red)<<16 | byteFromDouble(green)<<8 | byteFromDouble(blue) <<0; }
 
   void setColor(cairo_t* cr) const
@@ -290,9 +290,9 @@ public:
 
   virtual Color getMonochromeColor();
   virtual void setMonochromeColor(const Color& c);
-  // virtual void setTransparentBackground();
-  // virtual void disableTransparentBackground();
-  // virtual bool getTransparentBackground();
+  virtual void setTransparentBackground();
+  virtual void disableTransparentBackground();
+  virtual bool getTransparentBackground();
 
 private:
   MonochromeColormapHelper(int numberOfColors, bool inverted);
@@ -304,6 +304,7 @@ private:
   bool inverted;
   Color blackish;
   Color whitish;
+  bool transparentBackground;
 };
 
 #endif

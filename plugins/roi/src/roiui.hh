@@ -12,7 +12,7 @@
 #include <scroom/roi.hh>
 #include <scroom/utilities.hh>
 
-class RoiUi : public Scroom::Utils::Base, public Scroom::Utils::Counted<RoiUi>, public Viewable
+class RoiUi : public Scroom::Utils::Base, public Viewable
 {
 public:
   typedef boost::shared_ptr<RoiUi> Ptr;
