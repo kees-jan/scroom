@@ -24,6 +24,7 @@ public:
   void setClip(cairo_t* cr, int x, int y, int width, int height);
   void setClip(cairo_t* cr, const GdkRectangle& area);
   void drawPixelValue(cairo_t* cr, int x, int y, int size, int value);
+  void drawPixelValue(cairo_t* cr, int x, int y, int size, int value, Color const& bgColor);
   
   ////////////////////////////////////////////////////////////////////////
   // LayerOperations

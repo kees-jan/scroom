@@ -12,6 +12,7 @@
 
 #include <vector>
 #include <string>
+#include <cmath>
 
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
@@ -26,6 +27,16 @@ const std::string TRANSPARENT_BACKGROUND_PROPERTY_NAME="Transparent Background";
 
 inline uint8_t byteFromDouble(double d) { return uint8_t(255*d); }
 inline double doubleFromByte(uint8_t b) { return b/255.0; }
+inline uint16_t shortFromDouble(double d) { return uint16_t(0xFFFF*d); }
+
+namespace
+{
+  // see http://stackoverflow.com/a/3943023
+  double computeC(double c)
+  {
+    return c<=0.03928?c/12.92:pow((c+0.055)/1.055, 2.4);
+  }
+}
 
 #define GCC_VERSION (__GNUC__ * 10000           \
                      + __GNUC_MINOR__ * 100     \
@@ -82,6 +93,18 @@ public:
 
   void setColor(cairo_t* cr) const
   { cairo_set_source_rgba(cr, red, green, blue, alpha); }
+
+  GdkColor getGdkColor() const
+  {
+    return { 0, shortFromDouble(red), shortFromDouble(green), shortFromDouble(blue) };
+  }
+
+  Color getContrastingBlackOrWhite() const
+  {
+    // see http://stackoverflow.com/a/3943023
+    double L = 0.2126 * computeC(red) + 0.7152 * computeC(green) + 0.0722 * computeC(blue);
+    return Color(L>0.179?0:1);
+  }
   
   Color& setAlpha(double alpha)
   { return *this *= alpha; }

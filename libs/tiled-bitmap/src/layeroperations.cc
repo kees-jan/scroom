@@ -103,7 +103,7 @@ void CommonOperations::setClip(cairo_t* cr, int x, int y,
   cairo_line_to(cr, x, y);
   cairo_clip(cr);
 }
-  
+
 void CommonOperations::setClip(cairo_t* cr, const GdkRectangle& area)
 {
   setClip(cr, area.x, area.y, area.width, area.height);
@@ -134,6 +134,12 @@ void CommonOperations::drawPixelValue(cairo_t* cr, int x, int y, int size, int v
   cairo_show_text(cr, cstr);
 }
 
+void CommonOperations::drawPixelValue(cairo_t* cr, int x, int y, int size, int value, Color const& bgColor)
+{
+  bgColor.getContrastingBlackOrWhite().setColor(cr);
+  drawPixelValue(cr, x, y, size, value);
+}
+
 Scroom::Utils::Stuff CommonOperations::cacheZoom(const ConstTile::Ptr tile, int zoom,
                                                         Scroom::Utils::Stuff cache)
 {
@@ -156,7 +162,7 @@ Scroom::Utils::Stuff CommonOperations::cacheZoom(const ConstTile::Ptr tile, int 
     BitmapSurface::Ptr target = BitmapSurface::create(tile->width/divider, tile->height/divider,
                                                       CAIRO_FORMAT_ARGB32);
     result = target;
-    
+
     cairo_surface_t* surface = target->get();
     cairo_t* cr = cairo_create(surface);
     initializeCairo(cr);
@@ -166,7 +172,7 @@ Scroom::Utils::Stuff CommonOperations::cacheZoom(const ConstTile::Ptr tile, int 
 
     cairo_destroy(cr);
   }
-    
+
   return result;
 }
 
@@ -179,7 +185,7 @@ void CommonOperations::draw(cairo_t* cr, const ConstTile::Ptr tile,
   UNUSED(tile);
 
   setClip(cr, viewArea);
-  
+
   if(!cache)
   {
     drawState(cr, TILE_UNLOADED, viewArea);
@@ -208,10 +214,10 @@ void CommonOperations::draw(cairo_t* cr, const ConstTile::Ptr tile,
       int y = viewArea.y - tileArea.y / divider;
       cairo_set_source_surface(cr, source->get(), x, y);
       cairo_paint(cr);
-    }      
+    }
   }
 }
-  
+
 
 ////////////////////////////////////////////////////////////////////////
 // Operations1bpp
@@ -308,20 +314,21 @@ void Operations1bpp::draw(cairo_t* cr, const ConstTile::Ptr tile,
                             CAIRO_FONT_SLANT_NORMAL,
                             CAIRO_FONT_WEIGHT_NORMAL);
     cairo_set_font_size (cr, 12.0);
-    
+
+    Colormap::Ptr colormap = colormapProvider->getColormap();
+
     for(int y=0; y<tileArea.height; y++)
     {
       const byte* const data = tile->data.get();
       PixelIterator<const byte> current(data+(tileArea.y+y)*stride, tileArea.x, 1);
-      
+
       for(int x=0; x<tileArea.width; x++, ++current)
       {
-        int value = *current;
-        
+        const int value = *current;
+
         cairo_save(cr);
-        cairo_set_source_rgb(cr, 0.5, 0.5, 0.5); // Grey
-  
-        drawPixelValue(cr, viewArea.x+multiplier*x, viewArea.y+multiplier*y, multiplier, value); 
+        drawPixelValue(cr, viewArea.x+multiplier*x, viewArea.y+multiplier*y, multiplier, value,
+                       colormap->colors[value]);
         cairo_restore(cr);
       }
     }
@@ -359,12 +366,12 @@ Scroom::Utils::Stuff Operations8bpp::cache(const ConstTile::Ptr tile)
   for(int j=0; j<tile->height; j++, row+=stride)
   {
     const byte* cur = tile->data.get()+j*tile->width;
-    
+
     uint32_t* pixel = (uint32_t*)row;
     for(int i=0; i<tile->width; i++)
     {
       *pixel = mix(c2, c1, 1.0**cur/255).getARGB32();
-      
+
       pixel++;
       ++cur;
     }
@@ -428,22 +435,21 @@ void Operations8bpp::draw(cairo_t* cr, const ConstTile::Ptr tile,
                             CAIRO_FONT_SLANT_NORMAL,
                             CAIRO_FONT_WEIGHT_NORMAL);
     cairo_set_font_size (cr, 12.0);
-    
+
+    Colormap::Ptr colormap = colormapProvider->getColormap();
+    const Color& c1 = colormap->colors[0];
+    const Color& c2 = colormap->colors[1];
+    const byte* const data = tile->data.get();
+
     for(int x=0; x<tileArea.width; x++)
     {
       for(int y=0; y<tileArea.height; y++)
       {
-        const byte* const data = tile->data.get();
-        
-        int value = data[(tileArea.y+y)*stride + tileArea.x + x];
-        
+        const int value = data[(tileArea.y+y)*stride + tileArea.x + x];
+        Color c = mix(c2, c1, 1.0*value/255);
+
         cairo_save(cr);
-        if(value <= 128)
-          cairo_set_source_rgb(cr, 1, 1, 1); // White
-        else
-          cairo_set_source_rgb(cr, 0, 0, 0); // Black
-  
-        drawPixelValue(cr, viewArea.x+multiplier*x, viewArea.y+multiplier*y, multiplier, value); 
+        drawPixelValue(cr, viewArea.x+multiplier*x, viewArea.y+multiplier*y, multiplier, value, c);
         cairo_restore(cr);
       }
     }
@@ -459,7 +465,7 @@ LayerOperations::Ptr Operations::create(ColormapProvider::Ptr colormapProvider, 
 }
 
 Operations::Operations(ColormapProvider::Ptr colormapProvider, int bpp)
-  : CommonOperations(colormapProvider), 
+  : CommonOperations(colormapProvider),
     bpp(bpp), pixelsPerByte(8/bpp), pixelOffset(bpp), pixelMask((1<<bpp)-1)
 {
 }
@@ -570,23 +576,21 @@ void Operations::draw(cairo_t* cr, const ConstTile::Ptr tile,
                             CAIRO_FONT_SLANT_NORMAL,
                             CAIRO_FONT_WEIGHT_NORMAL);
     cairo_set_font_size (cr, 12.0);
-    
+
+    Colormap::Ptr colormap = colormapProvider->getColormap();
+
     for(int y=0; y<tileArea.height; y++)
     {
       const byte* const data = tile->data.get();
       PixelIterator<const byte> current(data+(tileArea.y+y)*stride, tileArea.x, bpp);
-      
+
       for(int x=0; x<tileArea.width; x++, ++current)
       {
-        int value = *current;
-        
+        const int value = *current;
+
         cairo_save(cr);
-        if(value <= 8)
-          cairo_set_source_rgb(cr, 1, 1, 1); // White
-        else
-          cairo_set_source_rgb(cr, 0, 0, 0); // Black
-  
-        drawPixelValue(cr, viewArea.x+multiplier*x, viewArea.y+multiplier*y, multiplier, value); 
+        drawPixelValue(cr, viewArea.x+multiplier*x, viewArea.y+multiplier*y, multiplier, value,
+                       colormap->colors[value]);
         cairo_restore(cr);
       }
     }
@@ -626,7 +630,7 @@ Scroom::Utils::Stuff OperationsColormapped::cache(const ConstTile::Ptr tile)
     for(int i=0; i<tile->width; i++)
     {
       *pixelOut = mix(colormap->colors[*pixelIn & pixelMask], colormap->colors[*pixelIn >> pixelOffset], 0.5).getARGB32();
-      
+
       pixelOut++;
       ++pixelIn;
     }

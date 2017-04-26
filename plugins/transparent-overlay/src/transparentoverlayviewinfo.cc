@@ -20,6 +20,27 @@
 #endif
 
 ////////////////////////////////////////////////////////////////////////
+
+namespace
+{
+  void setToggleButtonColor(GtkWidget* w, PresentationInterface::Ptr const& p)
+  {
+    Colormappable::Ptr c = boost::dynamic_pointer_cast<Colormappable>(p);
+    if(c && p->isPropertyDefined(MONOCHROME_COLORMAPPABLE_PROPERTY_NAME))
+    {
+      Color col = c->getMonochromeColor();
+      GdkColor bgCol = col.getGdkColor();
+      gtk_widget_modify_bg(w, GTK_STATE_ACTIVE, &bgCol);
+
+      GdkColor fgCol = col.getContrastingBlackOrWhite().getGdkColor();
+      GtkWidget* label = gtk_bin_get_child(GTK_BIN(w));
+
+      gtk_widget_modify_fg(label, GTK_STATE_ACTIVE, &fgCol);
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
 // ChildView
 ////////////////////////////////////////////////////////////////////////
 
@@ -69,22 +90,23 @@ static void on_toggled(GtkToggleButton* button, gpointer data)
   ((TransparentOverlayViewInfo*)data)->toggled(button);
 }
 
-void TransparentOverlayViewInfo::createToggleToolButton()
+void TransparentOverlayViewInfo::createToggleToolButton(PresentationInterface::Ptr const& p)
 {
   int n = buttons.size()+1;
   std::stringstream s;
   s << "_" << n;
-  
+
   GtkToolItem* button = gtk_tool_item_new();
   GtkWidget* toggleButton = gtk_toggle_button_new_with_mnemonic(s.str().c_str());
+  setToggleButtonColor(toggleButton, p);
   gtk_widget_set_visible(toggleButton, true);
   gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(toggleButton), true);
-  
+
   gtk_container_add(GTK_CONTAINER(button), toggleButton);
   g_signal_connect((gpointer)toggleButton, "toggled", G_CALLBACK(on_toggled), this);
 
   buttons.push_back(toggleButton);
-  
+
   parentView->addToToolbar(button);
 }
 
@@ -106,7 +128,7 @@ void TransparentOverlayViewInfo::addChild(const PresentationInterface::Ptr& chil
   child->open(view);
   sizeDeterminer->open(child, view);
   children.push_back(child);
-  createToggleToolButton();
+  createToggleToolButton(child);
 }
 
 void TransparentOverlayViewInfo::close()
@@ -116,7 +138,7 @@ void TransparentOverlayViewInfo::close()
     sizeDeterminer->close(v.first, v.second);
     v.first->close(v.second);
   }
-  
+
   childViews.clear();
   children.clear();
   buttons.clear();
@@ -125,11 +147,11 @@ void TransparentOverlayViewInfo::close()
 void TransparentOverlayViewInfo::redraw(cairo_t* cr, GdkRectangle presentationArea, int zoom)
 {
   using Scroom::Bitmap::BitmapSurface;
-  
+
   GdkRectangle viewArea;
   viewArea.x=0;
   viewArea.y=0;
-  
+
   if(zoom > 0)
   {
     const int pixelSize = 1<<zoom;
@@ -167,12 +189,12 @@ void TransparentOverlayViewInfo::redraw(cairo_t* cr, GdkRectangle presentationAr
           hasTransparentBackground = true;
         }
       }
-      
+
       cairo_save(cr_sub);
       cairo_set_operator(cr_sub, CAIRO_OPERATOR_CLEAR);
       cairo_paint(cr_sub);
       cairo_restore(cr_sub);
- 
+
       cairo_save(cr_sub);
       p->redraw(childViews[p], cr_sub, presentationArea, zoom);
       cairo_restore(cr_sub);

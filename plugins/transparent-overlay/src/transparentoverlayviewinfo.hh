@@ -67,7 +67,7 @@ private:
 
 private:
   TransparentOverlayViewInfo(const ViewInterface::WeakPtr& vi, SizeDeterminer::Ptr const& sizeDeterminer);
-  void createToggleToolButton();
+  void createToggleToolButton(PresentationInterface::Ptr const& p);
 
 public:
   static Ptr create(const ViewInterface::WeakPtr& vi, SizeDeterminer::Ptr const& sizeDeterminer);
