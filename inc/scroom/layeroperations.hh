@@ -12,12 +12,7 @@
 
 class CommonOperations : public LayerOperations
 {
-protected:
-  ColormapProvider::Ptr colormapProvider;
-
 public:
-  CommonOperations(ColormapProvider::Ptr colormapProvider);
-  
   virtual ~CommonOperations()
   {}
 
@@ -41,6 +36,9 @@ public:
 
 class Operations1bpp : public CommonOperations
 {
+private:
+  ColormapProvider::Ptr colormapProvider;
+
 public:
   static Ptr create(ColormapProvider::Ptr colormapProvider);
   Operations1bpp(ColormapProvider::Ptr colormapProvider);
@@ -61,6 +59,9 @@ public:
 
 class Operations8bpp : public CommonOperations
 {
+private:
+  ColormapProvider::Ptr colormapProvider;
+
 public:
   static Ptr create(ColormapProvider::Ptr colormapProvider);
   Operations8bpp(ColormapProvider::Ptr colormapProvider);
@@ -79,9 +80,26 @@ public:
                     Scroom::Utils::Stuff cache);
 };
 
+class Operations24bpp : public CommonOperations
+{
+public:
+  static Ptr create();
+  Operations24bpp();
+  virtual ~Operations24bpp()
+  {}
+  
+  ////////////////////////////////////////////////////////////////////////
+  // LayerOperations
+
+  virtual int getBpp();
+  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
+  virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+};
+
 class Operations : public CommonOperations
 {
 protected:
+  ColormapProvider::Ptr colormapProvider;
   const unsigned bpp;
   const unsigned pixelsPerByte;
   const unsigned pixelOffset;

@@ -60,11 +60,6 @@ inline byte BitCountLut::lookup(byte index)
 ////////////////////////////////////////////////////////////////////////
 // CommonOperations
 
-CommonOperations::CommonOperations(ColormapProvider::Ptr colormapProvider)
-  : colormapProvider(colormapProvider)
-{
-}
-
 void CommonOperations::initializeCairo(cairo_t* cr)
 {
   cairo_set_antialias(cr, CAIRO_ANTIALIAS_NONE);
@@ -228,7 +223,7 @@ LayerOperations::Ptr Operations1bpp::create(ColormapProvider::Ptr colormapProvid
 }
 
 Operations1bpp::Operations1bpp(ColormapProvider::Ptr colormapProvider)
-  : CommonOperations(colormapProvider)
+  : colormapProvider(colormapProvider)
 {
 }
 
@@ -345,7 +340,7 @@ LayerOperations::Ptr Operations8bpp::create(ColormapProvider::Ptr colormapProvid
 }
 
 Operations8bpp::Operations8bpp(ColormapProvider::Ptr colormapProvider)
-  : CommonOperations(colormapProvider)
+  : colormapProvider(colormapProvider)
 {
 }
 
@@ -457,6 +452,91 @@ void Operations8bpp::draw(cairo_t* cr, const ConstTile::Ptr tile,
 }
 
 ////////////////////////////////////////////////////////////////////////
+// Operations24bpp
+
+LayerOperations::Ptr Operations24bpp::create()
+{
+  return Ptr(new Operations24bpp());
+}
+
+Operations24bpp::Operations24bpp()
+{
+}
+
+int Operations24bpp::getBpp()
+{
+  return 24;
+}
+
+Scroom::Utils::Stuff Operations24bpp::cache(const ConstTile::Ptr tile)
+{
+  const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
+  unsigned char* data = (unsigned char*)malloc(stride * tile->height);
+  unsigned char* row = data;
+  for(int j=0; j<tile->height; j++, row+=stride)
+  {
+    const byte* cur = tile->data.get()+3*j*tile->width;
+
+    uint32_t* pixel = (uint32_t*)row;
+    for(int i=0; i<tile->width; i++)
+    {
+      //         A          R              G             B
+      *pixel = 0xFF000000 | cur[0] << 16 | cur[1] << 8 | cur[2];
+      
+      pixel++;
+      cur+=3;
+    }
+  }
+
+  return BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
+}
+
+void Operations24bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y)
+{
+  // Reducing by a factor 8. Source tile is 24bpp. Target tile is 24bpp
+  int sourceStride = 3*source->width; // stride in bytes
+  const byte* sourceBase = source->data.get();
+
+  int targetStride = 3*target->width; // stride in bytes
+  byte* targetBase = target->data.get() +
+    target->height*y*targetStride/8 +
+    targetStride*x/8;
+
+  for(int j=0; j<source->height/8;
+      j++, targetBase+=targetStride, sourceBase+=sourceStride*8)
+  {
+    // Iterate vertically over target
+    const byte* sourcePtr = sourceBase;
+    byte* targetPtr = targetBase;
+
+    for(int i=0; i<source->width/8;
+        i++, sourcePtr+=8*3, targetPtr+=3)
+    {
+      // Iterate horizontally over target
+
+      // Goal is to compute a average RGB value from a 8*8 RGB image.
+      const byte* base = sourcePtr;
+      int sum_r = 0;
+      int sum_g = 0;
+      int sum_b = 0;
+      for(int k=0; k<8; k++, base+=sourceStride)
+      {
+        const byte* current=base;
+        for(int l=0; l<8; l++, current+=3)
+        {
+          sum_r += current[0];
+          sum_g += current[1];
+          sum_b += current[2];
+        }
+      }
+      targetPtr[0] = sum_r/64;
+      targetPtr[1] = sum_g/64;
+      targetPtr[2] = sum_b/64;
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
 // Operations
 
 LayerOperations::Ptr Operations::create(ColormapProvider::Ptr colormapProvider, int bpp)
@@ -465,7 +545,7 @@ LayerOperations::Ptr Operations::create(ColormapProvider::Ptr colormapProvider, 
 }
 
 Operations::Operations(ColormapProvider::Ptr colormapProvider, int bpp)
-  : CommonOperations(colormapProvider),
+  : colormapProvider(colormapProvider),
     bpp(bpp), pixelsPerByte(8/bpp), pixelOffset(bpp), pixelMask((1<<bpp)-1)
 {
 }
