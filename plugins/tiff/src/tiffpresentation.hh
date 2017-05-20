@@ -34,7 +34,8 @@ private:
   int height;
   int width;
   TiledBitmapInterface::Ptr tbi;
-  int bpp;
+  int bps;
+  int spp;
   std::map<std::string, std::string> properties;
   Views views;
   ColormapHelper::Ptr colormapHelper;

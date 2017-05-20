@@ -15,7 +15,7 @@
 #include <scroom/layeroperations.hh>
 
 TiffPresentation::TiffPresentation()
-    : fileName(), tif(NULL), height(0), width(0), tbi(), bpp(0)
+  : fileName(), tif(NULL), height(0), width(0), tbi(), bps(0), spp(0)
 {
   colormapHelper = ColormapHelper::create(256);
 }
@@ -67,21 +67,37 @@ bool TiffPresentation::load(const std::string& fileName)
     uint16 spp;
     if (1 != TIFFGetField(tif, TIFFTAG_SAMPLESPERPIXEL, &spp))
       spp = 1; // Default value, according to tiff spec
-    if (spp != 1)
+    if (spp != 1 && spp != 3)
     {
-      // Todo: Colour not yet supported
-      printf("PANIC: Samples per pixel is not 1, but %d. Giving up\n", spp);
+      printf("PANIC: Samples per pixel is not 1 or 3, but %d. Giving up\n", spp);
       return false;
     }
+    this->spp = spp;
 
     TIFFGetFieldChecked(tif, TIFFTAG_IMAGEWIDTH, &width);
     TIFFGetFieldChecked(tif, TIFFTAG_IMAGELENGTH, &height);
 
-    uint16 bpp;
-    if( 1 != TIFFGetField(tif, TIFFTAG_BITSPERSAMPLE, &bpp))
-      bpp = 1;
-    this->bpp = bpp;
-
+    uint16 bps;
+    if( 1 != TIFFGetField(tif, TIFFTAG_BITSPERSAMPLE, &bps))
+    {
+      if(spp==1)
+        bps = 1;
+      else
+        bps = 8;
+    }
+    else
+    {
+      if(spp==3)
+      {
+        if(bps!=8)
+        {
+          printf("PANIC: Bits per sample is not 8, but %d. Giving up\n", bps);
+          return false;
+        }
+      }
+    }
+    this->bps = bps;
+    
     Colormap::Ptr originalColormap;
 
     uint16 *r, *g, *b;
@@ -90,7 +106,7 @@ bool TiffPresentation::load(const std::string& fileName)
     {
       originalColormap = Colormap::create();
       originalColormap->name = "Original";
-      int count = 1 << bpp;
+      int count = 1 << bps;
       originalColormap->colors.resize(count);
 
       for (int i = 0; i < count; i++)
@@ -110,10 +126,10 @@ bool TiffPresentation::load(const std::string& fileName)
       if (originalColormap)
         printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
 
-      if (bpp == 1 || bpp == 8)
+      if (bps == 1 || bps == 8)
         colormapHelper = MonochromeColormapHelper::create(2);
       else
-        colormapHelper = MonochromeColormapHelper::create(1 << bpp);
+        colormapHelper = MonochromeColormapHelper::create(1 << bps);
 
       properties[MONOCHROME_COLORMAPPABLE_PROPERTY_NAME] = "";
       break;
@@ -122,10 +138,10 @@ bool TiffPresentation::load(const std::string& fileName)
       if (originalColormap)
         printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
 
-      if (bpp == 1 || bpp == 8)
+      if (bps == 1 || bps == 8)
         colormapHelper = MonochromeColormapHelper::createInverted(2);
       else
-        colormapHelper = MonochromeColormapHelper::createInverted(1 << bpp);
+        colormapHelper = MonochromeColormapHelper::createInverted(1 << bps);
 
       properties[MONOCHROME_COLORMAPPABLE_PROPERTY_NAME] = "";
       break;
@@ -134,42 +150,51 @@ bool TiffPresentation::load(const std::string& fileName)
       if (!originalColormap)
       {
         printf("WEIRD: Photometric is palette, but tiff doesn't contain a colormap\n");
-        colormapHelper = ColormapHelper::create(1 << bpp);
+        colormapHelper = ColormapHelper::create(1 << bps);
       }
       break;
 
+    case PHOTOMETRIC_RGB:
+      if (originalColormap)
+        printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
+      break;
+      
     default:
       printf("PANIC: Unrecognized value for photometric\n");
-      break;
+      return false;
     }
 
     printf("This bitmap has size %d*%d\n", width, height);
     LayerSpec ls;
 
-    if (bpp == 2 || bpp == 4 || photometric == PHOTOMETRIC_PALETTE)
+    if (spp == 3)
+    {
+      ls.push_back(Operations24bpp::create());
+    }
+    else if (bps == 2 || bps == 4 || photometric == PHOTOMETRIC_PALETTE)
     {
       ls.push_back(
-          Operations::create(colormapHelper, bpp));
+          Operations::create(colormapHelper, bps));
       ls.push_back(
           OperationsColormapped::create(colormapHelper,
-              bpp));
+              bps));
       properties[COLORMAPPABLE_PROPERTY_NAME] = "";
     }
-    else if (bpp == 1)
+    else if (bps == 1)
     {
       ls.push_back(
           Operations1bpp::create(colormapHelper));
       ls.push_back(
           Operations8bpp::create(colormapHelper));
     }
-    else if (bpp == 8)
+    else if (bps == 8)
     {
       ls.push_back(
           Operations8bpp::create(colormapHelper));
     }
     else
     {
-      printf("PANIC: %d bits per pixel not supported\n", bpp);
+      printf("PANIC: %d bits per pixel not supported\n", bps);
       return false;
     }
 
@@ -274,11 +299,11 @@ void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth,
   //        firstTile, (int)(firstTile+tiles.size()),
   //        tileWidth);
 
-  int pixelsPerByte = 8 / bpp;
-  int dataLength = (width + pixelsPerByte - 1) / pixelsPerByte;
-  byte row[dataLength];
+  const tsize_t scanLineSize = TIFFScanlineSize(tif);
+  const int tileStride = tileWidth*spp*bps/8;
+  byte row[scanLineSize];
 
-  int tileCount = tiles.size();
+  const int tileCount = tiles.size();
   byte* dataPtr[tileCount];
   for (int tile = 0; tile < tileCount; tile++)
   {
@@ -292,14 +317,14 @@ void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth,
     for (int tile = 0; tile < tileCount - 1; tile++)
     {
       memcpy(dataPtr[tile],
-          row + (firstTile + tile) * tileWidth / pixelsPerByte,
-          tileWidth / pixelsPerByte);
-      dataPtr[tile] += tileWidth / pixelsPerByte;
+             row + (firstTile + tile) * tileStride,
+             tileStride);
+      dataPtr[tile] += tileStride;
     }
     memcpy(dataPtr[tileCount - 1],
-        row + (firstTile + tileCount - 1) * tileWidth / pixelsPerByte,
-        dataLength - (firstTile + tileCount - 1) * tileWidth / pixelsPerByte);
-    dataPtr[tileCount - 1] += tileWidth / pixelsPerByte;
+        row + (firstTile + tileCount - 1) * tileStride,
+        scanLineSize - (firstTile + tileCount - 1) * tileStride);
+    dataPtr[tileCount - 1] += tileStride;
   }
 }
 
