@@ -34,7 +34,12 @@ endif
 	./configure $(CROSS) --prefix=/usr --mandir=\$${prefix}/share/man --infodir=\$${prefix}/share/info CFLAGS="$(CFLAGS)" LDFLAGS="-Wl,-z,defs"
 
 
-build: build-stamp
+build: build-arch build-indep
+
+build-arch: build-stamp
+
+build-indep:
+	@true # No work to be done (yet)
 
 build-stamp:  config.status 
 	dh_testdir
@@ -56,18 +61,19 @@ clean:
 
 	dh_clean 
 
-install: build
-	dh_testdir
-	dh_testroot
-	dh_prep  
-	dh_installdirs
+install-arch: build-arch
+	dh_testdir -a
+	dh_testroot -a
+	dh_prep -a
+	dh_installdirs -a
 
 	# Add here commands to install the package into debian/@TARGET_PACKAGE@. This must match the control file!
 	$(MAKE) DESTDIR=$(CURDIR)/debian/@TARGET_PACKAGE@ install
 
+install-indep: build-indep
 
 # Build architecture-independent files here.
-binary-indep: # install
+binary-indep: install-indep
 	dh_testdir -i
 	dh_testroot -i
 	dh_prep -i
@@ -100,7 +106,7 @@ binary-indep: # install
 	dh_builddeb -i
 
 # Build architecture-dependent files here.
-binary-arch: install
+binary-arch: install-arch
 	dh_testdir -a
 	dh_testroot -a
 	dh_installchangelogs -a
@@ -131,4 +137,4 @@ binary-arch: install
 	dh_builddeb -a
 
 binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install 
+.PHONY: build build-arch build-indep clean binary-indep binary-arch binary install install-arch install-indep

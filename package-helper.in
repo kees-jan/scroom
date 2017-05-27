@@ -130,13 +130,13 @@ echo_me "Creating a tar file for package flavors"
 tar czfC "$TMPDIR/scroom-$VERSION-base.tgz" "$BUILD" "scroom-$VERSION"
 
 echo_me "Building"
-if ! ( make distclean && debuild -us -uc -j12 ) > "$CURDIR/debuild.log" 2>&1
+if ! ( make distclean && debuild -us -uc -j8 ) > "$CURDIR/debuild.log" 2>&1
 then
     echo_me "ERROR: debuild failed. See debuild.log"
     exit 1
 fi
 echo_me "Base version done. Trying pdebuild"
-if ! ( sudo pdebuild --debbuildopts "-j12" ) > "$CURDIR/pdebuild.log" 2>&1
+if ! ( sudo pdebuild --debbuildopts "-j8" ) > "$CURDIR/pdebuild.log" 2>&1
 then
     echo_me "ERROR: pdebuild failed. See pdebuild.log"
 fi
@@ -165,7 +165,7 @@ do
         fi &&
         dch -D "$source_package" --force-distribution -v "$(dpkg-parsechangelog | awk '/^Version: / { print $2 }')${source_package}1" \
             "$source_package edition" && 
-        debuild -S -sa -us -uc -j12
+        debuild -S -sa -us -uc -j8
         ) > ${source_package}.log 2>&1
 done
 
@@ -180,7 +180,7 @@ done
 #     cd "$BUILD/$source_package/scroom-$VERSION" && 
 #     QUILT_PATCHES="$CURDIR/${source_package}-patches" quilt push -a &&
 #     dch -D "hardy" --force-distribution -v "$(dpkg-parsechangelog | awk '/^Version: / { print $2 }')${source_package}1" "Mutracx edition" && 
-#     sudo DIST=mutracx ARCH=amd64 pdebuild --debbuildopts "-j12 -sa" && 
-#     sudo DIST=mutracx ARCH=i386  pdebuild --debbuildopts "-j12 -B"
+#     sudo DIST=mutracx ARCH=amd64 pdebuild --debbuildopts "-j8 -sa" && 
+#     sudo DIST=mutracx ARCH=i386  pdebuild --debbuildopts "-j8 -B"
 #     ) > ${source_package}.log 2>&1
 
