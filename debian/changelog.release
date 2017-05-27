@@ -1,3 +1,27 @@
+scroom (0.7-4) xenial; urgency=medium
+
+  * For more info see https://github.com/kees-jan/scroom/wiki
+
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Sat, 27 May 2017 18:50:15 +0200
+
+scroom (0.7-3) xenial; urgency=medium
+
+  * For more info see https://github.com/kees-jan/scroom/wiki
+
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Sat, 27 May 2017 18:11:42 +0200
+
+scroom (0.7-2) xenial; urgency=medium
+
+  * For more info see https://github.com/kees-jan/scroom/wiki
+
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Wed, 24 May 2017 15:22:58 +0200
+
+scroom (0.7-1) xenial; urgency=medium
+
+  * For more info see https://github.com/kees-jan/scroom/wiki
+
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Wed, 24 May 2017 13:32:27 +0200
+
 scroom (0.6-5) trusty; urgency=medium
 
   * For more info see https://github.com/kees-jan/scroom/wiki

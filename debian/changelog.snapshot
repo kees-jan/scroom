@@ -1,32 +1,26 @@
-scroom (0.6-54-g3bb7320-1) xenial; urgency=medium
+scroom (0.7-4) xenial; urgency=medium
 
-  * Snapshot release
+  * For more info see https://github.com/kees-jan/scroom/wiki
 
- -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Thu, 27 Apr 2017 16:16:51 +0200
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Sat, 27 May 2017 18:50:15 +0200
 
-scroom (0.6-52-ga86cd28-1) xenial; urgency=medium
+scroom (0.7-3) xenial; urgency=medium
 
-  * Snapshot release
+  * For more info see https://github.com/kees-jan/scroom/wiki
 
- -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Sat, 08 Apr 2017 14:56:38 +0200
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Sat, 27 May 2017 18:11:42 +0200
 
-scroom (0.6-42-g725d2fc-1) xenial; urgency=medium
+scroom (0.7-2) xenial; urgency=medium
 
-  * Snapshot release
+  * For more info see https://github.com/kees-jan/scroom/wiki
 
- -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Thu, 12 Jan 2017 19:59:19 +0100
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Wed, 24 May 2017 15:22:58 +0200
 
-scroom (0.6-34-g2ad96cb-3) trusty; urgency=medium
+scroom (0.7-1) xenial; urgency=medium
 
-  * Snapshot release
+  * For more info see https://github.com/kees-jan/scroom/wiki
 
- -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Fri, 02 Sep 2016 07:03:10 +0200
-
-scroom (0.6-34-g2ad96cb-2) trusty; urgency=medium
-
-  * Snapshot release
-
- -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Thu, 01 Sep 2016 17:58:59 +0200
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Wed, 24 May 2017 13:32:27 +0200
 
 scroom (0.6-5) trusty; urgency=medium
 
