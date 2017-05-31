@@ -320,6 +320,7 @@ libs_tiled_bitmap_test_tiled_bitmap_tests_LDADD = \
 	@BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
 	libs/tiled-bitmap/src/libstiledbitmap.la \
 	libs/util/src/libsutil.la \
+	libs/scroom/src/libsscroom.la \
 	libs/boost-test-helper/src/libsboosttesthelper.la
 
 endif BOOST_UNITTESTS
@@ -345,7 +346,8 @@ libs_tiled_bitmap_tools_measure_framerate_SOURCES = \
 libs_tiled_bitmap_tools_measure_framerate_LDADD = \
 	@GUI_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
 	libs/tiled-bitmap/src/libstiledbitmap.la \
-	libs/util/src/libsutil.la
+	libs/util/src/libsutil.la \
+	libs/scroom/src/libsscroom.la
 
 libs_tiled_bitmap_tools_measure_load_performance_CPPFLAGS = @TILEDBITMAP_CFLAGS@ -I $(top_srcdir)/inc
 
@@ -364,7 +366,8 @@ libs_tiled_bitmap_tools_measure_load_performance_LDADD = \
 	@GUI_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
 	libs/threadpool/src/libsthreadpool.la \
 	libs/tiled-bitmap/src/libstiledbitmap.la \
-	libs/util/src/libsutil.la
+	libs/util/src/libsutil.la \
+	libs/scroom/src/libsscroom.la
 
 ########################################################################
 ### plugins/example
@@ -424,6 +427,7 @@ plugins_transparent_overlay_test_overlay_tests_SOURCES = \
 plugins_transparent_overlay_test_overlay_tests_LDADD = @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @UTILS_LIBS@  \
 	plugins/transparent-overlay/src/libsptransparentoverlay.la \
 	libs/util/src/libsutil.la \
+	libs/scroom/src/libsscroom.la \
 	libs/boost-test-helper/src/libsboosttesthelper.la
 
 transparent_overlay_plugin_tests = \
