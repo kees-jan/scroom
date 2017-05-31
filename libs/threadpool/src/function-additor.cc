@@ -9,13 +9,7 @@
 
 #include <boost/foreach.hpp>
 
-Scroom::Detail::ThreadPool::FunctionAdditor::FunctionAdditor()
-{}
-
-Scroom::Detail::ThreadPool::FunctionAdditor::~FunctionAdditor()
-{}
-
-inline void Scroom::Detail::ThreadPool::FunctionAdditor::addBefore(boost::function<void ()> const& fn)
+void Scroom::Detail::ThreadPool::FunctionAdditor::addBefore(boost::function<void ()> const& fn)
 {
   functions.push_front(fn);
 }
@@ -51,9 +45,6 @@ void Scroom::Detail::ThreadPool::FunctionAdditor::operator()()
 
 Scroom::Detail::ThreadPool::FunctionMultiplier::FunctionMultiplier(boost::function<void ()> const& f, unsigned int i)
   : f(f), i(i)
-{}
-
-Scroom::Detail::ThreadPool::FunctionMultiplier::~FunctionMultiplier()
 {}
 
 Scroom::Detail::ThreadPool::FunctionMultiplier& Scroom::Detail::ThreadPool::FunctionMultiplier::operator*(unsigned int i)

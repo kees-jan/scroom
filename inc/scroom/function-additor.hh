@@ -23,9 +23,6 @@ namespace Scroom
         std::list<boost::function<void ()> > functions;
  
       public:
-        FunctionAdditor();
-        ~FunctionAdditor();
-
         void addBefore(boost::function<void ()> const& fn);
         void addAfter(boost::function<void ()> const& fn);
 
@@ -42,7 +39,6 @@ namespace Scroom
 
       public:
         FunctionMultiplier(boost::function<void ()> const& f, unsigned int i);
-        ~FunctionMultiplier();
 
         FunctionMultiplier& operator*(unsigned int i);
         void operator()();
