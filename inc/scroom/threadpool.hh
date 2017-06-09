@@ -17,6 +17,7 @@
 #include <boost/thread.hpp>
 #include <boost/function.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/operators.hpp>
 
 #include <scroom/semaphore.hh>
 
@@ -31,6 +32,36 @@ enum
     PRIO_LOWER,
     PRIO_LOWEST,
   };
+
+class PriorityRange : public boost::partially_ordered<PriorityRange>, boost::partially_ordered<PriorityRange, int>
+{
+public:
+  const int highest;
+  const int lowest;
+
+public:
+  PriorityRange(int highest, int lowest);
+  bool operator<(PriorityRange const& other) const;
+  bool operator<(int other) const;
+  bool operator>(int other) const;
+  bool operator==(PriorityRange const& other) const;
+};
+
+class PriorityRangeDispenser
+{
+public:
+  typedef boost::shared_ptr<PriorityRangeDispenser> Ptr;
+private:
+  const int start;
+  int current;
+  
+public:
+  static Ptr create(int start=PRIO_NORMAL);
+  PriorityRange get(int numberOfPriorities);
+
+private:
+  PriorityRangeDispenser(int start);
+};
 
 namespace Scroom
 {
@@ -239,7 +270,6 @@ private:
     static Ptr create(bool completeAllJobsBeforeDestruction);
   };
 
-  std::list<ThreadPtr> threads;        /**< Threads in this ThreadPool */
   PrivateData::Ptr priv;
 
 private:
@@ -281,8 +311,10 @@ public:
   /**
    * Destructor
    *
-   * @li stop all threads
-   * @li throw away all jobs that haven't been executed
+   * Triggers (asynchronous) stop of all threads. All jobs that
+   * haven't been executed (if any) will be thrown away.
+   *
+   * @see PrivateData::completeAllJobsBeforeDestruction
    */
   ~ThreadPool();
 
@@ -605,6 +637,19 @@ ThreadPool::Ptr CpuBound();
  * @see https://github.com/kees-jan/scroom/wiki/StaticInitializationOrderFiasco
  */
 ThreadPool::Ptr Sequentially();
+
+/**
+ * Obtain a (unique) range of priorities here
+ *
+ * By using a different set of priorities for every task, tasks run
+ * near sequentially: There is only parallelism if the higher prio
+ * task doesn't use the entire CPU.
+ *
+ * @return a shared pointer to this PriorityRangeDispenser instance
+ *
+ * @see https://github.com/kees-jan/scroom/wiki/StaticInitializationOrderFiasco
+ */
+PriorityRangeDispenser::Ptr PriorityDispenser();
 
 #include <scroom/impl/threadpoolimpl.hh>
 

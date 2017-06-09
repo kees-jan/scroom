@@ -152,7 +152,7 @@ libs_threadpool_src_libsthreadpool_la_SOURCES = \
 	libs/threadpool/src/queue.cc \
 	libs/threadpool/src/queue.hh \
 	libs/threadpool/src/async-deleter.cc
-libs_threadpool_src_libsthreadpool_la_LIBADD = @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
+libs_threadpool_src_libsthreadpool_la_LIBADD = @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ libs/util/src/libsutil.la
 
 if BOOST_UNITTESTS
 
@@ -171,7 +171,8 @@ libs_threadpool_test_threadpool_tests_SOURCES = \
 	libs/threadpool/test/threadpool-tests.cc \
 	libs/threadpool/test/threadpool-destruction-tests.cc \
 	libs/threadpool/test/threadpool-queue-tests.cc \
-	libs/threadpool/test/threadpool-queueimpl-tests.cc
+	libs/threadpool/test/threadpool-queueimpl-tests.cc \
+	libs/threadpool/test/threadpool-priorityrange-tests.cc
 
 libs_threadpool_test_threadpool_tests_LDADD = @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
 	libs/threadpool/src/libsthreadpool.la \

@@ -12,7 +12,9 @@
 #include <stdio.h>
 
 #include <utility>
+#include <limits>
 
+#include <scroom/assertions.hh>
 #include <scroom/threadpool.hh>
 #include <scroom/async-deleter.hh>
 
@@ -226,7 +228,6 @@ ThreadPool::Ptr ThreadPool::create(int count, bool completeAllJobsBeforeDestruct
 ThreadPool::ThreadPtr ThreadPool::add()
 {
   ThreadPool::ThreadPtr t = ThreadPool::ThreadPtr(new boost::thread(boost::bind(&ThreadPool::work, priv)));
-  threads.push_back(t);
   ThreadList::instance()->add(t);
   return t;
 }
@@ -466,21 +467,81 @@ void QueueJumper::operator()()
 }
 
 ////////////////////////////////////////////////////////////////////////
+// Priority ranges
+////////////////////////////////////////////////////////////////////////
+
+PriorityRange::PriorityRange(int highest, int lowest)
+  : highest(highest), lowest(lowest)
+{}
+
+bool PriorityRange::operator<(PriorityRange const& other) const
+{
+  return lowest < other;
+}
+
+bool PriorityRange::operator<(int other) const
+{
+  return lowest < other;
+}
+
+bool PriorityRange::operator>(int other) const
+{
+  return highest > other;
+}
+
+bool PriorityRange::operator==(PriorityRange const& other) const
+{
+  return lowest==other.lowest && highest==other.highest;
+}
+
+PriorityRangeDispenser::PriorityRangeDispenser(int start)
+  : start(start), current(start)
+{}
+
+PriorityRangeDispenser::Ptr PriorityRangeDispenser::create(int start)
+{
+  return Ptr(new PriorityRangeDispenser(start));
+}
+
+PriorityRange PriorityRangeDispenser::get(int numberOfPriorities)
+{
+  require(numberOfPriorities > 0);
+  require(std::numeric_limits<int>::max() - numberOfPriorities >= start); // no integer overflow
+
+  if(std::numeric_limits<int>::max() - numberOfPriorities < current)
+  {
+    // Integer overflow
+    current = start;
+    return get(numberOfPriorities);
+  }
+
+  PriorityRange result(current, current+numberOfPriorities-1);
+  current += numberOfPriorities;
+  return result;
+}
+
+////////////////////////////////////////////////////////////////////////
 // Default threadpools
 ////////////////////////////////////////////////////////////////////////
 
 ThreadPool::Ptr CpuBound()
 {
-  static ThreadPool::Ptr cpuBound = NotifyThreadList<ThreadPool>(ThreadPool::Ptr(new ThreadPool()), "CpuBound threadpool");
+  static ThreadPool::Ptr cpuBound = NotifyThreadList<ThreadPool>(ThreadPool::create(), "CpuBound threadpool");
   
   return cpuBound;
 }
 
 ThreadPool::Ptr Sequentially()
 {
-  static ThreadPool::Ptr sequentially = NotifyThreadList<ThreadPool>(ThreadPool::Ptr(new ThreadPool(1)), "Sequential threadpool");
+  static ThreadPool::Ptr sequentially = NotifyThreadList<ThreadPool>(ThreadPool::create(1), "Sequential threadpool");
 
   return sequentially;
 }
 
+PriorityRangeDispenser::Ptr PriorityDispenser()
+{
+  static PriorityRangeDispenser::Ptr dispenser = PriorityRangeDispenser::create();
+
+  return dispenser;
+}
 
