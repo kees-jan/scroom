@@ -15,6 +15,7 @@
 #include <boost/enable_shared_from_this.hpp>
 
 #include "tileinternal.hh"
+#include "local.hh"
 
 class LayerCoordinator: public TileInitialisationObserver,
                         public virtual Scroom::Utils::Base
@@ -27,18 +28,21 @@ private:
   LayerOperations::Ptr lo;
   boost::mutex mut;
   int unfinishedSourceTiles;
+  MultithreadingData::ConstPtr multithreadingData;
 
 public:
   typedef boost::shared_ptr<LayerCoordinator> Ptr;
   
-  static Ptr create(TileInternal::Ptr targetTile, LayerOperations::Ptr lo);
+  static Ptr create(TileInternal::Ptr targetTile, LayerOperations::Ptr lo,
+                    MultithreadingData::ConstPtr const& multithreadingData);
   
   virtual ~LayerCoordinator();
   
   void addSourceTile(int x, int y, TileInternal::Ptr tile);
 
 private:
-  LayerCoordinator(TileInternal::Ptr targetTile, LayerOperations::Ptr lo);
+  LayerCoordinator(TileInternal::Ptr targetTile, LayerOperations::Ptr lo,
+                   MultithreadingData::ConstPtr const& multithreadingData);
 
   void reduceSourceTile(TileInternal::Ptr tile, ConstTile::Ptr const& tileData);
   

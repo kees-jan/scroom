@@ -215,7 +215,7 @@ void TiledBitmap::connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer,
       TileInternalLine& til = layer->getTileLine(j/8);
       for(unsigned int z=0; z<til.size(); z++)
       {
-        LayerCoordinator::Ptr lc = LayerCoordinator::create(til[z], prevLo);
+        LayerCoordinator::Ptr lc = LayerCoordinator::create(til[z], prevLo, multithreadingData);
         coordinators.push_back(lc);
         this->coordinators.push_back(lc);
       }

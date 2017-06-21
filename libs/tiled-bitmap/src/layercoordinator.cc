@@ -9,14 +9,15 @@
 
 #include "local.hh"
 
-LayerCoordinator::Ptr LayerCoordinator::create(TileInternal::Ptr targetTile, LayerOperations::Ptr lo)
+LayerCoordinator::Ptr LayerCoordinator::create(TileInternal::Ptr targetTile, LayerOperations::Ptr lo,
+                                               MultithreadingData::ConstPtr const& multithreadingData)
 {
-  return LayerCoordinator::Ptr(new LayerCoordinator(targetTile, lo));
+  return LayerCoordinator::Ptr(new LayerCoordinator(targetTile, lo, multithreadingData));
 }
 
-LayerCoordinator::LayerCoordinator(TileInternal::Ptr targetTile,
-                                   LayerOperations::Ptr lo)
-  : targetTile(targetTile), lo(lo), unfinishedSourceTiles(0)
+LayerCoordinator::LayerCoordinator(TileInternal::Ptr targetTile, LayerOperations::Ptr lo,
+                                   MultithreadingData::ConstPtr const& multithreadingData)
+  : targetTile(targetTile), lo(lo), unfinishedSourceTiles(0), multithreadingData(multithreadingData)
 {
 }
 
@@ -46,7 +47,8 @@ void LayerCoordinator::tileFinished(TileInternal::Ptr tile)
     printf("WEIRD: Tile finished but not loaded?\n");
   }
 
-  CpuBound()->schedule(boost::bind(&LayerCoordinator::reduceSourceTile, shared_from_this<LayerCoordinator>(), tile, tileData), REDUCE_PRIO);
+  multithreadingData->scheduleLowPrio(boost::bind(&LayerCoordinator::reduceSourceTile,
+                                                  shared_from_this<LayerCoordinator>(), tile, tileData));
 }
 
 ////////////////////////////////////////////////////////////////////////
