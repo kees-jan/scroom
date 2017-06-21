@@ -32,6 +32,14 @@ public:
   static ConstPtr create(ThreadPool::Queue::Ptr queue);
   static ConstPtr create(ThreadPool::WeakQueue::Ptr queue);
 
+  template<typename T>
+  void scheduleHighPrio(T const& fn) const
+  { cpuBound->schedule(fn, priorityRange.highest, queue); }
+
+  template<typename T>
+  void scheduleLowPrio(T const& fn) const
+  { cpuBound->schedule(fn, priorityRange.lowest, queue); }
+
 private:
   MultithreadingData(ThreadPool::WeakQueue::Ptr queue);
 };

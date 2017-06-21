@@ -15,6 +15,7 @@
 #include <scroom/presentationinterface.hh>
 
 #include "tileinternal.hh"
+#include "local.hh"
 
 class Layer : public Viewable, public virtual Scroom::Utils::Base
 {
@@ -42,7 +43,7 @@ public:
 
   TileInternal::Ptr getTile(int i, int j);
   TileInternalLine& getTileLine(int j);
-  void fetchData(SourcePresentation::Ptr sp, ThreadPool::WeakQueue::Ptr queue);
+  void fetchData(SourcePresentation::Ptr sp, MultithreadingData::ConstPtr const& multithreadingData);
 
 public:
   int getWidth()

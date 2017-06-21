@@ -23,15 +23,14 @@ private:
   int verTileCount;
   int currentRow;
   SourcePresentation::Ptr sp;
-  ThreadPool::Ptr threadPool;
-  ThreadPool::WeakQueue::Ptr queue;
+  MultithreadingData::ConstPtr multithreadingData;
   
 public:
   DataFetcher(Layer::Ptr const& layer,
               int width, int height,
               int horTileCount, int verTileCount,
               SourcePresentation::Ptr sp,
-              ThreadPool::WeakQueue::Ptr queue);
+              MultithreadingData::ConstPtr const& multithreadingData);
 
   void operator()();
 };
@@ -107,13 +106,14 @@ TileInternalLine& Layer::getTileLine(int j)
   }
 }
 
-void Layer::fetchData(SourcePresentation::Ptr sp, ThreadPool::WeakQueue::Ptr queue)
+void Layer::fetchData(SourcePresentation::Ptr sp, MultithreadingData::ConstPtr const& multithreadingData)
 {
   DataFetcher df(shared_from_this<Layer>(),
                  width, height,
                  horTileCount, verTileCount,
-                 sp, queue);
-  CpuBound()->schedule(df, DATAFETCH_PRIO, queue);
+                 sp, multithreadingData);
+
+  multithreadingData->scheduleHighPrio(df);
 }
 
 // Layer::Viewable /////////////////////////////////////////////////////
@@ -158,10 +158,10 @@ DataFetcher::DataFetcher(Layer::Ptr const& layer,
                          int width, int height,
                          int horTileCount, int verTileCount,
                          SourcePresentation::Ptr sp,
-                         ThreadPool::WeakQueue::Ptr queue)
+                         MultithreadingData::ConstPtr const& multithreadingData)
   : layer(layer), width(width), height(height),
     horTileCount(horTileCount), verTileCount(verTileCount),
-    currentRow(0), sp(sp), threadPool(CpuBound()), queue(queue)
+    currentRow(0), sp(sp), multithreadingData(multithreadingData)
 {
 }
 
@@ -170,7 +170,7 @@ void DataFetcher::operator()()
   // printf("Attempting to fetch bitmap data for tileRow %d...\n", currentRow);
   QueueJumper::Ptr qj = QueueJumper::create();
 
-  threadPool->schedule(qj, REDUCE_PRIO, queue);
+  multithreadingData->scheduleLowPrio(qj);
  
   TileInternalLine& tileLine = layer->getTileLine(currentRow);
   std::vector<Tile::Ptr> tiles;
@@ -194,7 +194,7 @@ void DataFetcher::operator()()
   {
     DataFetcher successor(*this);
     if(!qj->setWork(successor))
-      threadPool->schedule(successor, DATAFETCH_PRIO, queue);
+      multithreadingData->scheduleHighPrio(successor);
   }
   else
     sp->done();
