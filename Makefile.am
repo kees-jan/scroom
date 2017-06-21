@@ -83,7 +83,8 @@ libs_sanity_tests_sanity_test_SOURCES = \
 	libs/sanity-tests/main.cc \
 	libs/sanity-tests/basic-assumptions.cc \
 	libs/sanity-tests/boost-smart-pointers.cc \
-	libs/sanity-tests/boost-bind.cc
+	libs/sanity-tests/boost-bind.cc \
+	libs/sanity-tests/boost-packaged-tasks.cc
 
 libs_sanity_tests_sanity_test_LDADD = @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
 	libs/boost-test-helper/src/libsboosttesthelper.la

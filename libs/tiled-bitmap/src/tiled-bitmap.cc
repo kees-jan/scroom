@@ -85,7 +85,6 @@ class LoadOperation : public FileOperation
 private:
   Layer::Ptr target;
   SourcePresentation::Ptr thePresentation;
-  Scroom::Semaphore done;
   MultithreadingData::ConstPtr multithreadingData;
 
 private:
@@ -98,8 +97,6 @@ public:
   virtual ~LoadOperation() {}
 
   virtual void operator()();
-  virtual void finished();
-  virtual void abort();
 };
 
 FileOperation::Ptr LoadOperation::create(MultithreadingData::ConstPtr const& multithreadingData,
@@ -121,16 +118,6 @@ void LoadOperation::operator()()
   doneWaiting();
 
   target->fetchData(thePresentation, multithreadingData).wait();
-}
-
-void LoadOperation::abort()
-{
-  done.V();
-}
-
-void LoadOperation::finished()
-{
-  done.V();
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -187,11 +174,6 @@ TiledBitmap::~TiledBitmap()
   printf("TiledBitmap: Destructing...\n");
   queue.reset();
 
-  if(fileOperation)
-  {
-    fileOperation->abort();
-    fileOperation.reset();
-  }
   coordinators.clear();
   layers.clear();
 }
@@ -257,15 +239,7 @@ void TiledBitmap::setFinished()
 
 void TiledBitmap::setSource(SourcePresentation::Ptr sp)
 {
-  if(!fileOperation)
-  {
-    fileOperation = LoadOperation::create(multithreadingData, layers[0], sp, shared_from_this<TiledBitmap>());
-    Sequentially()->schedule(fileOperation);
-  }
-  else
-  {
-    printf("PANIC: Another operation is already in process\n");
-  }
+  Sequentially()->schedule(LoadOperation::create(multithreadingData, layers[0], sp, shared_from_this<TiledBitmap>()));
 }
 
 inline void computeAreasBeginningZoomingIn(int presentationBegin, int tileOffset, int pixelSize,
@@ -615,11 +589,6 @@ void TiledBitmap::clearCaches(ViewInterface::Ptr viewInterface)
 void TiledBitmap::abortLoadingPresentation()
 {
   queue.reset();
-  if(fileOperation)
-  {
-    fileOperation->abort();
-    fileOperation.reset();
-  }
 }
 
 void TiledBitmap::open(ViewInterface::WeakPtr viewInterface)
@@ -676,11 +645,6 @@ void TiledBitmap::tileFinished(TileInternal::Ptr tile)
     if(tileFinishedCount==tileCount)
     {
       setFinished();
-      if(fileOperation)
-      {
-        fileOperation->finished();
-        fileOperation.reset();
-      }
       printf("INFO: Finished loading file\n");
     }
     gdk_threads_leave();

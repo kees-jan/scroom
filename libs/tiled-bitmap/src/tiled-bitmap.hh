@@ -44,9 +44,7 @@ public:
   virtual ~FileOperation() {}
 
   virtual void doneWaiting();
-  virtual void finished()=0;
   virtual void operator()()=0;
-  virtual void abort()=0;
 };
 
 
@@ -70,7 +68,6 @@ private:
   int tileCount;
   boost::mutex tileFinishedMutex;
   int tileFinishedCount;
-  FileOperation::Ptr fileOperation;
   Scroom::Utils::ProgressInterfaceBroadcaster::Ptr progressBroadcaster;
   ThreadPool::Queue::Ptr queue;
   MultithreadingData::ConstPtr multithreadingData;
