@@ -11,8 +11,6 @@
 
 #include <boost/foreach.hpp>
 
-#include <scroom/threadpool.hh>
-
 #include "local.hh"
 
 class DataFetcher

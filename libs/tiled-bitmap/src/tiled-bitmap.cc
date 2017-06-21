@@ -42,6 +42,23 @@ static Scroom::MemoryBlobs::PageProvider::Ptr createProvider(double width, doubl
 }
 
 ////////////////////////////////////////////////////////////////////////
+/// MultithreadingData
+
+MultithreadingData::MultithreadingData(ThreadPool::WeakQueue::Ptr queue)
+  : cpuBound(CpuBound()), priorityRange(Priorities(2)), queue(queue)
+{}
+
+MultithreadingData::ConstPtr MultithreadingData::create(ThreadPool::WeakQueue::Ptr queue)
+{
+  return ConstPtr(new MultithreadingData(queue));
+}
+
+MultithreadingData::ConstPtr MultithreadingData::create(ThreadPool::Queue::Ptr queue)
+{
+  return create(queue->getWeak());
+}
+
+////////////////////////////////////////////////////////////////////////
 
 FileOperation::FileOperation(TiledBitmap::Ptr parent)
   : parent(parent), waitingMutex(), waiting(true)
@@ -69,13 +86,13 @@ private:
   Layer::Ptr target;
   SourcePresentation::Ptr thePresentation;
   Scroom::Semaphore done;
-  ThreadPool::WeakQueue::Ptr queue;
+  MultithreadingData::ConstPtr multithreadingData;
 
 private:
-  LoadOperation(ThreadPool::WeakQueue::Ptr queue, Layer::Ptr const& l, SourcePresentation::Ptr sp,
+  LoadOperation(MultithreadingData::ConstPtr const& multithreadingData, Layer::Ptr const& l, SourcePresentation::Ptr sp,
                 TiledBitmap::Ptr parent);
 public:
-  static Ptr create(ThreadPool::WeakQueue::Ptr queue, Layer::Ptr const& l, SourcePresentation::Ptr sp,
+  static Ptr create(MultithreadingData::ConstPtr const& multithreadingData, Layer::Ptr const& l, SourcePresentation::Ptr sp,
                     TiledBitmap::Ptr parent);
   
   virtual ~LoadOperation() {}
@@ -85,17 +102,17 @@ public:
   virtual void abort();
 };
 
-FileOperation::Ptr LoadOperation::create(ThreadPool::WeakQueue::Ptr queue,
+FileOperation::Ptr LoadOperation::create(MultithreadingData::ConstPtr const& multithreadingData,
                                          Layer::Ptr const& l, SourcePresentation::Ptr sp,
                                          TiledBitmap::Ptr parent)
 {
-  return FileOperation::Ptr(new LoadOperation(queue, l, sp, parent));
+  return FileOperation::Ptr(new LoadOperation(multithreadingData, l, sp, parent));
 }
                                          
-LoadOperation::LoadOperation(ThreadPool::WeakQueue::Ptr queue,
+LoadOperation::LoadOperation(MultithreadingData::ConstPtr const& multithreadingData,
                              Layer::Ptr const& l, SourcePresentation::Ptr sp,
                              TiledBitmap::Ptr parent)
-  : FileOperation(parent), target(l), thePresentation(sp), queue(queue)
+  : FileOperation(parent), target(l), thePresentation(sp), multithreadingData(multithreadingData)
 {
 }
 
@@ -103,7 +120,7 @@ void LoadOperation::operator()()
 {
   doneWaiting();
 
-  target->fetchData(thePresentation, queue);
+  target->fetchData(thePresentation, multithreadingData->queue);
   done.P();
 }
 
@@ -129,7 +146,8 @@ TiledBitmap::Ptr TiledBitmap::create(int bitmapWidth, int bitmapHeight, LayerSpe
 
 TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
   :bitmapWidth(bitmapWidth), bitmapHeight(bitmapHeight), ls(ls), tileCount(0), tileFinishedCount(0),
-   fileOperation(), progressBroadcaster(Scroom::Utils::ProgressInterfaceBroadcaster::create()), queue(ThreadPool::Queue::createAsync())
+   progressBroadcaster(Scroom::Utils::ProgressInterfaceBroadcaster::create()), queue(ThreadPool::Queue::createAsync()),
+   multithreadingData(MultithreadingData::create(queue))
 {
 }
 
@@ -242,7 +260,7 @@ void TiledBitmap::setSource(SourcePresentation::Ptr sp)
 {
   if(!fileOperation)
   {
-    fileOperation = LoadOperation::create(queue->getWeak(), layers[0], sp, shared_from_this<TiledBitmap>());
+    fileOperation = LoadOperation::create(multithreadingData, layers[0], sp, shared_from_this<TiledBitmap>());
     Sequentially()->schedule(fileOperation);
   }
   else

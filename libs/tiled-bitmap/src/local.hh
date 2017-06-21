@@ -7,9 +7,31 @@
 
 #pragma once
 
+#include <scroom/threadpool.hh>
+#include <boost/shared_ptr.hpp>
+
+/** Prio for decompressing tiles */
 #define LOAD_PRIO PRIO_HIGHER
+
+/** Prio for fetching data from source medium */
 #define DATAFETCH_PRIO PRIO_HIGH
+
+/** Prio for reducing tiles that contain data */
 #define REDUCE_PRIO PRIO_NORMAL
 
+class MultithreadingData
+{
+public:
+  typedef boost::shared_ptr<MultithreadingData const> ConstPtr;
+  
+  ThreadPool::Ptr cpuBound;
+  PriorityRange priorityRange;
+  ThreadPool::WeakQueue::Ptr queue;
 
+public:
+  static ConstPtr create(ThreadPool::Queue::Ptr queue);
+  static ConstPtr create(ThreadPool::WeakQueue::Ptr queue);
 
+private:
+  MultithreadingData(ThreadPool::WeakQueue::Ptr queue);
+};

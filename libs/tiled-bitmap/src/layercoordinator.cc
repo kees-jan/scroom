@@ -7,8 +7,6 @@
 
 #include "layercoordinator.hh"
 
-#include <scroom/threadpool.hh>
-
 #include "local.hh"
 
 LayerCoordinator::Ptr LayerCoordinator::create(TileInternal::Ptr targetTile, LayerOperations::Ptr lo)

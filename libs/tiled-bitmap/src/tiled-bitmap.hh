@@ -24,6 +24,8 @@
 #include "layercoordinator.hh"
 #include "tiledbitmapviewdata.hh"
 
+#include "local.hh"
+
 class TiledBitmap;
 
 class FileOperation
@@ -71,6 +73,7 @@ private:
   FileOperation::Ptr fileOperation;
   Scroom::Utils::ProgressInterfaceBroadcaster::Ptr progressBroadcaster;
   ThreadPool::Queue::Ptr queue;
+  MultithreadingData::ConstPtr multithreadingData;
   
 public:
   static Ptr create(int bitmapWidth, int bitmapHeight, LayerSpec& ls);

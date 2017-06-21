@@ -545,3 +545,7 @@ PriorityRangeDispenser::Ptr PriorityDispenser()
   return dispenser;
 }
 
+PriorityRange Priorities(int numberOfPriorities)
+{
+  return PriorityDispenser()->get(numberOfPriorities);
+}

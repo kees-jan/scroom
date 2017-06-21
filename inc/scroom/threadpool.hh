@@ -651,6 +651,20 @@ ThreadPool::Ptr Sequentially();
  */
 PriorityRangeDispenser::Ptr PriorityDispenser();
 
+/**
+ * Obtain a (unique) range of priorities here
+ *
+ * By using a different set of priorities for every task, tasks run
+ * near sequentially: There is only parallelism if the higher prio
+ * task doesn't use the entire CPU.
+ *
+ * @param numberOfPriorities The number of priorities requested
+ * @return a PriorityRange with the requested number of priorities
+ *
+ * @see https://github.com/kees-jan/scroom/wiki/StaticInitializationOrderFiasco
+ */
+PriorityRange Priorities(int numberOfPriorities);
+
 #include <scroom/impl/threadpoolimpl.hh>
 
 
