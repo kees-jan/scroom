@@ -13,12 +13,6 @@
 /** Prio for decompressing tiles */
 #define LOAD_PRIO PRIO_HIGHER
 
-/** Prio for fetching data from source medium */
-#define DATAFETCH_PRIO PRIO_HIGH
-
-/** Prio for reducing tiles that contain data */
-#define REDUCE_PRIO PRIO_NORMAL
-
 class MultithreadingData
 {
 public:
@@ -39,6 +33,14 @@ public:
   template<typename T>
   void scheduleLowPrio(T const& fn) const
   { cpuBound->schedule(fn, priorityRange.lowest, queue); }
+
+  template<typename T>
+  boost::shared_future<T> scheduleHighPrio(boost::function<T()> const& fn) const
+  { return cpuBound->schedule<T>(fn, priorityRange.highest, queue); }
+
+  template<typename T>
+  boost::shared_future<T> scheduleLowPrio(boost::function<T()> const& fn) const
+  { return cpuBound->schedule<T>(fn, priorityRange.lowest, queue); }
 
 private:
   MultithreadingData(ThreadPool::WeakQueue::Ptr queue);

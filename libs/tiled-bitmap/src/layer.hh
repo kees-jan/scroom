@@ -10,6 +10,7 @@
 #include <vector>
 
 #include <boost/shared_ptr.hpp>
+#include <boost/thread/future.hpp>
 
 #include <scroom/tiledbitmapinterface.hh>
 #include <scroom/presentationinterface.hh>
@@ -43,7 +44,7 @@ public:
 
   TileInternal::Ptr getTile(int i, int j);
   TileInternalLine& getTileLine(int j);
-  void fetchData(SourcePresentation::Ptr sp, MultithreadingData::ConstPtr const& multithreadingData);
+  boost::shared_future<void> fetchData(SourcePresentation::Ptr sp, MultithreadingData::ConstPtr const& multithreadingData);
 
 public:
   int getWidth()

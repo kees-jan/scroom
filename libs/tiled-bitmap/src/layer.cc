@@ -106,14 +106,14 @@ TileInternalLine& Layer::getTileLine(int j)
   }
 }
 
-void Layer::fetchData(SourcePresentation::Ptr sp, MultithreadingData::ConstPtr const& multithreadingData)
+boost::shared_future<void> Layer::fetchData(SourcePresentation::Ptr sp, MultithreadingData::ConstPtr const& multithreadingData)
 {
   DataFetcher df(shared_from_this<Layer>(),
                  width, height,
                  horTileCount, verTileCount,
                  sp, multithreadingData);
 
-  multithreadingData->scheduleHighPrio(df);
+  return multithreadingData->scheduleHighPrio<void>(df);
 }
 
 // Layer::Viewable /////////////////////////////////////////////////////

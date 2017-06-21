@@ -120,8 +120,7 @@ void LoadOperation::operator()()
 {
   doneWaiting();
 
-  target->fetchData(thePresentation, multithreadingData);
-  done.P();
+  target->fetchData(thePresentation, multithreadingData).wait();
 }
 
 void LoadOperation::abort()
