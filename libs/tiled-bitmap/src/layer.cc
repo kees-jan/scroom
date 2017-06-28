@@ -179,7 +179,7 @@ void DataFetcher::operator()()
   for(int x = 0; x < horTileCount; x++)
   {
     TileInternal::Ptr ti = tileLine[x];
-    ti->initialize();
+    Scroom::Utils::Stuff s = ti->initialize();
     tiles.push_back(ti->getTileSync());
   }
   int lineCount = std::min(TILESIZE, height-currentRow*TILESIZE);
