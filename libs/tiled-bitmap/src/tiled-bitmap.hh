@@ -81,7 +81,7 @@ private:
   void initialize();
   
 private:
-  void drawTile(cairo_t* cr, const TileInternal::Ptr tile, const GdkRectangle viewArea);
+  void drawTile(cairo_t* cr, const CompressedTile::Ptr tile, const GdkRectangle viewArea);
   void connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, LayerOperations::Ptr prevLo);
 
   // ProgressInterface ///////////////////////////////////////////////////
@@ -108,8 +108,8 @@ public:
   ////////////////////////////////////////////////////////////////////////
   // TileInitialisationObserver
 
-  virtual void tileCreated(TileInternal::Ptr tile);
-  virtual void tileFinished(TileInternal::Ptr tile);
+  virtual void tileCreated(CompressedTile::Ptr tile);
+  virtual void tileFinished(CompressedTile::Ptr tile);
 };
 
 

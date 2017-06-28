@@ -11,12 +11,12 @@
 
 #include "local.hh"
 
-LayerCoordinator::Ptr LayerCoordinator::create(TileInternal::Ptr targetTile, LayerOperations::Ptr lo)
+LayerCoordinator::Ptr LayerCoordinator::create(CompressedTile::Ptr targetTile, LayerOperations::Ptr lo)
 {
   return LayerCoordinator::Ptr(new LayerCoordinator(targetTile, lo));
 }
 
-LayerCoordinator::LayerCoordinator(TileInternal::Ptr targetTile,
+LayerCoordinator::LayerCoordinator(CompressedTile::Ptr targetTile,
                                    LayerOperations::Ptr lo)
   : targetTile(targetTile), lo(lo), unfinishedSourceTiles(0)
 {
@@ -28,7 +28,7 @@ LayerCoordinator::~LayerCoordinator()
   sourceTiles.clear();
 }
 
-void LayerCoordinator::addSourceTile(int x, int y, TileInternal::Ptr tile)
+void LayerCoordinator::addSourceTile(int x, int y, CompressedTile::Ptr tile)
 {
   boost::unique_lock<boost::mutex> lock(mut);
 
@@ -40,7 +40,7 @@ void LayerCoordinator::addSourceTile(int x, int y, TileInternal::Ptr tile)
 ////////////////////////////////////////////////////////////////////////
 /// TileInitialisationObserver
 
-void LayerCoordinator::tileFinished(TileInternal::Ptr tile)
+void LayerCoordinator::tileFinished(CompressedTile::Ptr tile)
 {
   ConstTile::Ptr tileData = tile->getConstTileAsync();
   if(!tileData)
@@ -54,7 +54,7 @@ void LayerCoordinator::tileFinished(TileInternal::Ptr tile)
 ////////////////////////////////////////////////////////////////////////
 /// Helpers
 
-void LayerCoordinator::reduceSourceTile(TileInternal::Ptr tile, ConstTile::Ptr const& tileData)
+void LayerCoordinator::reduceSourceTile(CompressedTile::Ptr tile, ConstTile::Ptr const& tileData)
 {
   // If tileData contains a valid pointer, then fetching
   // sourcetiledata, below, will be instananeous. Otherwise, it will

@@ -18,7 +18,7 @@
 
 #include "tileinternalobserverinterfaces.hh"
 
-class TileInternal;
+class CompressedTile;
 class TiledBitmapViewData;
 
 class TileViewState : public Scroom::Utils::Observable<TileLoadingObserver>,
@@ -40,7 +40,7 @@ public:
     };
   
 private:
-  boost::shared_ptr<TileInternal> parent;  
+  boost::shared_ptr<CompressedTile> parent;  
   boost::mutex mut;
   State state;
   State desiredState;
@@ -59,7 +59,7 @@ private:
 public:
   ~TileViewState();
   
-  static Ptr create(boost::shared_ptr<TileInternal> parent);
+  static Ptr create(boost::shared_ptr<CompressedTile> parent);
 
   Scroom::Utils::Stuff getCacheResult();
   void setViewData(boost::shared_ptr<TiledBitmapViewData> tbvd);
@@ -69,7 +69,7 @@ public:
   virtual void tileLoaded(ConstTile::Ptr tile);
 
 private:
-  TileViewState(boost::shared_ptr<TileInternal> parent);
+  TileViewState(boost::shared_ptr<CompressedTile> parent);
 
   /**
    * Kick the internal state machine into making some progress

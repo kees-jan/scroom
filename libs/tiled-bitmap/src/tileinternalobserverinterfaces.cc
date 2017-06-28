@@ -7,16 +7,16 @@
 
 #include "tileinternalobserverinterfaces.hh"
 
-#include "tileinternal.hh"
+#include "compressedtile.hh"
 
 ////////////////////////////////////////////////////////////////////////
 /// TileInitialisationObserver
 
-void TileInitialisationObserver::tileFinished(TileInternal::Ptr)
+void TileInitialisationObserver::tileFinished(CompressedTile::Ptr)
 {
 }
 
-void TileInitialisationObserver::tileCreated(TileInternal::Ptr)
+void TileInitialisationObserver::tileCreated(CompressedTile::Ptr)
 {
 }
 

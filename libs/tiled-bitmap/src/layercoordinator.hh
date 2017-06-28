@@ -14,15 +14,15 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
 
-#include "tileinternal.hh"
+#include "compressedtile.hh"
 
 class LayerCoordinator: public TileInitialisationObserver,
                         public virtual Scroom::Utils::Base
 {
 private:
-  TileInternal::Ptr targetTile;
+  CompressedTile::Ptr targetTile;
   Tile::Ptr targetTileData;
-  std::map<TileInternal::Ptr,std::pair<int,int> > sourceTiles;
+  std::map<CompressedTile::Ptr,std::pair<int,int> > sourceTiles;
   Scroom::Utils::StuffList registrations;
   LayerOperations::Ptr lo;
   boost::mutex mut;
@@ -31,21 +31,21 @@ private:
 public:
   typedef boost::shared_ptr<LayerCoordinator> Ptr;
   
-  static Ptr create(TileInternal::Ptr targetTile, LayerOperations::Ptr lo);
+  static Ptr create(CompressedTile::Ptr targetTile, LayerOperations::Ptr lo);
   
   virtual ~LayerCoordinator();
   
-  void addSourceTile(int x, int y, TileInternal::Ptr tile);
+  void addSourceTile(int x, int y, CompressedTile::Ptr tile);
 
 private:
-  LayerCoordinator(TileInternal::Ptr targetTile, LayerOperations::Ptr lo);
+  LayerCoordinator(CompressedTile::Ptr targetTile, LayerOperations::Ptr lo);
 
-  void reduceSourceTile(TileInternal::Ptr tile, ConstTile::Ptr const& tileData);
+  void reduceSourceTile(CompressedTile::Ptr tile, ConstTile::Ptr const& tileData);
   
 public:
   ////////////////////////////////////////////////////////////////////////
   /// TileInitialisationObserver
-  virtual void tileFinished(TileInternal::Ptr tile);
+  virtual void tileFinished(CompressedTile::Ptr tile);
 };
 
 

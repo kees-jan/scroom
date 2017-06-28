@@ -194,10 +194,10 @@ void TiledBitmap::connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer,
     {
       // New line of target tiles
       coordinators.clear();
-      TileInternalLine& til = layer->getTileLine(j/8);
-      for(unsigned int z=0; z<til.size(); z++)
+      CompressedTileLine& tileLine = layer->getTileLine(j/8);
+      for(unsigned int z=0; z<tileLine.size(); z++)
       {
-        LayerCoordinator::Ptr lc = LayerCoordinator::create(til[z], prevLo);
+        LayerCoordinator::Ptr lc = LayerCoordinator::create(tileLine[z], prevLo);
         coordinators.push_back(lc);
         this->coordinators.push_back(lc);
       }
@@ -317,7 +317,7 @@ inline void computeAreasEndZoomingOut(int presentationBegin, int presentationSiz
   viewSize = tileSize/pixelSize;
 }
 
-void TiledBitmap::drawTile(cairo_t* cr, const TileInternal::Ptr tile, const GdkRectangle viewArea)
+void TiledBitmap::drawTile(cairo_t* cr, const CompressedTile::Ptr tile, const GdkRectangle viewArea)
 {
   cairo_set_source_rgb(cr, 0, 0, 0); // Black
   cairo_move_to(cr, viewArea.x, viewArea.y);
@@ -431,7 +431,7 @@ void TiledBitmap::redraw(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle
         computeAreasEndZoomingIn(presentationArea.y, presentationArea.height, j*TILESIZE, pixelSize,
                                  tileArea.y, tileArea.height, viewArea.y, viewArea.height);
         
-        TileInternal::Ptr tile = layer->getTile(i,j);
+        CompressedTile::Ptr tile = layer->getTile(i,j);
         TileViewState::Ptr tileViewState = tile->getViewState(vi);
         Scroom::Utils::Stuff cacheResult = tileViewState->getCacheResult();
         ConstTile::Ptr t = tile->getConstTileAsync();
@@ -559,7 +559,7 @@ void TiledBitmap::redraw(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle
         computeAreasEndZoomingOut(presentationArea.y, presentationArea.height, j*TILESIZE, pixelSize,
                                   tileArea.y, tileArea.height, viewArea.y, viewArea.height);
         
-        TileInternal::Ptr tile = layer->getTile(i,j);
+        CompressedTile::Ptr tile = layer->getTile(i,j);
         TileViewState::Ptr tileViewState = tile->getViewState(vi);
         Scroom::Utils::Stuff cacheResult = tileViewState->getCacheResult();
         ConstTile::Ptr t = tile->getConstTileAsync();
@@ -637,13 +637,13 @@ void TiledBitmap::close(ViewInterface::WeakPtr vi)
 ////////////////////////////////////////////////////////////////////////
 // TileInitialisationObserver
 
-void TiledBitmap::tileCreated(TileInternal::Ptr tile)
+void TiledBitmap::tileCreated(CompressedTile::Ptr tile)
 {
   UNUSED(tile);
   tileCount++;
 }
 
-void TiledBitmap::tileFinished(TileInternal::Ptr tile)
+void TiledBitmap::tileFinished(CompressedTile::Ptr tile)
 {
   UNUSED(tile);
   boost::mutex::scoped_lock lock(tileFinishedMutex);

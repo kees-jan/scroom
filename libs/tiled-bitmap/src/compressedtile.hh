@@ -48,19 +48,19 @@ typedef enum
 /**
  * Internal data structure representing a Tile.
  *
- * The TileInternal class contains administrative information about
+ * The CompressedTile class contains administrative information about
  * the Tile. The Tile itself (and associated bitmap data) will be
  * loaded and unloaded as needed. This class will stay in memory
  * always.
  *
  * Observers can receive events related to this tile.
  */
-class TileInternal : public Scroom::Utils::Observable<TileInitialisationObserver>,
+class CompressedTile : public Scroom::Utils::Observable<TileInitialisationObserver>,
                      public Scroom::Utils::Observable<TileLoadingObserver>,
                      public Viewable
 {
 public:
-  typedef boost::shared_ptr<TileInternal> Ptr;
+  typedef boost::shared_ptr<CompressedTile> Ptr;
   
 public:
   int depth;              /**< Layer number of this tile */
@@ -80,7 +80,7 @@ public:
   std::map<ViewInterface::WeakPtr, TileViewState::WeakPtr> viewStates;
 
 private:
-  TileInternal(int depth, int x, int y, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider, TileStateInternal state);
+  CompressedTile(int depth, int x, int y, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider, TileStateInternal state);
 
 public:
   static Ptr create(int depth, int x, int y, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider, TileStateInternal state=TSI_UNINITIALIZED);
@@ -166,7 +166,7 @@ public:
   virtual void close(ViewInterface::WeakPtr vi);
 };
 
-typedef std::vector<TileInternal::Ptr> TileInternalLine;
-typedef std::vector<TileInternalLine> TileInternalGrid;
+typedef std::vector<CompressedTile::Ptr> CompressedTileLine;
+typedef std::vector<CompressedTileLine> CompressedTileGrid;
 
 

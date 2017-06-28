@@ -14,7 +14,7 @@
 #include <scroom/tiledbitmapinterface.hh>
 #include <scroom/presentationinterface.hh>
 
-#include "tileinternal.hh"
+#include "compressedtile.hh"
 
 class Layer : public Viewable, public virtual Scroom::Utils::Base
 {
@@ -28,9 +28,9 @@ private:
   Scroom::Utils::StuffList registrations;
   int horTileCount;
   int verTileCount;
-  TileInternalGrid tiles;
-  TileInternal::Ptr outOfBounds;
-  TileInternalLine lineOutOfBounds;
+  CompressedTileGrid tiles;
+  CompressedTile::Ptr outOfBounds;
+  CompressedTileLine lineOutOfBounds;
 
 private:
   Layer(TileInitialisationObserver::Ptr observer, int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider);
@@ -40,8 +40,8 @@ public:
   int getHorTileCount();
   int getVerTileCount();
 
-  TileInternal::Ptr getTile(int i, int j);
-  TileInternalLine& getTileLine(int j);
+  CompressedTile::Ptr getTile(int i, int j);
+  CompressedTileLine& getTileLine(int j);
   void fetchData(SourcePresentation::Ptr sp, ThreadPool::WeakQueue::Ptr queue);
 
 public:

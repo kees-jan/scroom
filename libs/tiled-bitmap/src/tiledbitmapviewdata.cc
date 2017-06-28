@@ -85,7 +85,7 @@ void TiledBitmapViewData::resetNeededTiles()
   for(int i=imin; i<imax; i++)
     for(int j=jmin; j<jmax; j++)
     {
-      TileInternal::Ptr tile = layer->getTile(i,j);
+      CompressedTile::Ptr tile = layer->getTile(i,j);
 
       TileViewState::Ptr tileViewState = tile->getViewState(viewInterface);
       tileViewState->setViewData(shared_from_this<TiledBitmapViewData>());

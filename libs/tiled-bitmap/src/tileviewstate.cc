@@ -12,7 +12,7 @@
 #include <scroom/unused.hh>
 
 #include "local.hh"
-#include "tileinternal.hh"
+#include "compressedtile.hh"
 #include "tiledbitmapviewdata.hh"
 
 TileViewState::~TileViewState()
@@ -20,7 +20,7 @@ TileViewState::~TileViewState()
   r.reset();
 }
 
-TileViewState::Ptr TileViewState::create(boost::shared_ptr<TileInternal> parent)
+TileViewState::Ptr TileViewState::create(boost::shared_ptr<CompressedTile> parent)
 {
   TileViewState::Ptr result(new TileViewState(parent));
 
@@ -29,7 +29,7 @@ TileViewState::Ptr TileViewState::create(boost::shared_ptr<TileInternal> parent)
   return result;
 }
 
-TileViewState::TileViewState(boost::shared_ptr<TileInternal> parent)
+TileViewState::TileViewState(boost::shared_ptr<CompressedTile> parent)
   : parent(parent), state(INIT), desiredState(LOADED), lo(), zoom(0), cpuBound(CpuBound())
 {
 }

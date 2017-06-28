@@ -12,7 +12,7 @@
 
 #include <scroom/tile.hh>
 
-class TileInternal;
+class CompressedTile;
 
 /** Events related to filling a tile with data. */
 class TileInitialisationObserver
@@ -32,7 +32,7 @@ public:
    * @note This event will be sent using the thread that is
    *    registering the observer. Be careful with your mutexes :-)
    */
-  virtual void tileCreated(boost::shared_ptr<TileInternal> tile);
+  virtual void tileCreated(boost::shared_ptr<CompressedTile> tile);
 
   /**
    * This event will be sent when the tile is completely filled with
@@ -42,7 +42,7 @@ public:
    * @note This event will be sent on the thread that is filling the
    *    tile with data.
    */ 
-  virtual void tileFinished(boost::shared_ptr<TileInternal> tile);
+  virtual void tileFinished(boost::shared_ptr<CompressedTile> tile);
 };
 
 /** Events related to swapping tiles in/out */

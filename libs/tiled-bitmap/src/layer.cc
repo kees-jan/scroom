@@ -49,17 +49,17 @@ Layer::Layer(TileInitialisationObserver::Ptr observer, int depth, int layerWidth
 
   for(int j=0; j<verTileCount; j++)
   {
-    tiles.push_back(TileInternalLine());
-    TileInternalLine& tl = tiles[j];
+    tiles.push_back(CompressedTileLine());
+    CompressedTileLine& tl = tiles[j];
     for(int i=0; i<horTileCount; i++)
     {
-      TileInternal::Ptr tile = TileInternal::create(depth, i, j, bpp, provider);
+      CompressedTile::Ptr tile = CompressedTile::create(depth, i, j, bpp, provider);
       registrations.push_back(tile->registerObserver(observer));
       tl.push_back(tile);
     }
   }
 
-  outOfBounds = TileInternal::create(depth, -1, -1, bpp, provider, TSI_OUT_OF_BOUNDS);
+  outOfBounds = CompressedTile::create(depth, -1, -1, bpp, provider, TSI_OUT_OF_BOUNDS);
   for(int i=0; i<horTileCount; i++)
   {
     lineOutOfBounds.push_back(outOfBounds);
@@ -84,7 +84,7 @@ int Layer::getVerTileCount()
   return verTileCount;
 }
 
-TileInternal::Ptr Layer::getTile(int i, int j)
+CompressedTile::Ptr Layer::getTile(int i, int j)
 {
   if(0<=i && i<horTileCount &&
      0<=j && j<verTileCount)
@@ -97,7 +97,7 @@ TileInternal::Ptr Layer::getTile(int i, int j)
   }
 }
 
-TileInternalLine& Layer::getTileLine(int j)
+CompressedTileLine& Layer::getTileLine(int j)
 {
   if(0<=j && j<verTileCount)
   {
@@ -122,14 +122,14 @@ void Layer::fetchData(SourcePresentation::Ptr sp, ThreadPool::WeakQueue::Ptr que
 
 void Layer::open(ViewInterface::WeakPtr vi)
 {
-  BOOST_FOREACH(TileInternalLine& line, tiles)
+  BOOST_FOREACH(CompressedTileLine& line, tiles)
   {
-    BOOST_FOREACH(TileInternal::Ptr tile, line)
+    BOOST_FOREACH(CompressedTile::Ptr tile, line)
     {
       tile->open(vi);
     }
   }
-  BOOST_FOREACH(TileInternal::Ptr tile, lineOutOfBounds)
+  BOOST_FOREACH(CompressedTile::Ptr tile, lineOutOfBounds)
   {
     tile->open(vi);
   }
@@ -138,14 +138,14 @@ void Layer::open(ViewInterface::WeakPtr vi)
 
 void Layer::close(ViewInterface::WeakPtr vi)
 {
-  BOOST_FOREACH(TileInternalLine& line, tiles)
+  BOOST_FOREACH(CompressedTileLine& line, tiles)
   {
-    BOOST_FOREACH(TileInternal::Ptr tile, line)
+    BOOST_FOREACH(CompressedTile::Ptr tile, line)
     {
       tile->close(vi);
     }
   }
-  BOOST_FOREACH(TileInternal::Ptr tile, lineOutOfBounds)
+  BOOST_FOREACH(CompressedTile::Ptr tile, lineOutOfBounds)
   {
     tile->close(vi);
   }
@@ -174,11 +174,11 @@ void DataFetcher::operator()()
 
   threadPool->schedule(qj, REDUCE_PRIO, queue);
  
-  TileInternalLine& tileLine = layer->getTileLine(currentRow);
+  CompressedTileLine& tileLine = layer->getTileLine(currentRow);
   std::vector<Tile::Ptr> tiles;
   for(int x = 0; x < horTileCount; x++)
   {
-    TileInternal::Ptr ti = tileLine[x];
+    CompressedTile::Ptr ti = tileLine[x];
     Scroom::Utils::Stuff s = ti->initialize();
     tiles.push_back(ti->getTileSync());
   }
