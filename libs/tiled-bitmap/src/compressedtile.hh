@@ -24,10 +24,6 @@
 #include <scroom/memoryblobs.hh>
 #include <scroom/stuff.hh>
 
-#include "tileinternalobserverinterfaces.hh"
-#include "tileviewstate.hh"
-
-
 #define TILESIZE 4096
 // #define TILESIZE 1024
 
@@ -44,6 +40,58 @@ typedef enum
     TSI_LOADING_ASYNCHRONOUSLY
   } TileStateInternal;
 
+class TileViewState;
+class CompressedTile;
+
+////////////////////////////////////////////////////////////////////////
+
+/** Events related to filling a tile with data. */
+class TileInitialisationObserver
+{
+public:
+  typedef boost::shared_ptr<TileInitialisationObserver> Ptr;
+  typedef boost::weak_ptr<TileInitialisationObserver> WeakPtr;
+  
+  virtual ~TileInitialisationObserver() {}
+
+  /**
+   * The tile has been created.
+   *
+   * This event will be sent as soon as the observer is registered
+   * (because obvously the tile has already been created beforehand.
+   *
+   * @note This event will be sent using the thread that is
+   *    registering the observer. Be careful with your mutexes :-)
+   */
+  virtual void tileCreated(boost::shared_ptr<CompressedTile> tile);
+
+  /**
+   * This event will be sent when the tile is completely filled with
+   * data. This would be a good time to update progress bars and start
+   * prescaling.
+   *
+   * @note This event will be sent on the thread that is filling the
+   *    tile with data.
+   */ 
+  virtual void tileFinished(boost::shared_ptr<CompressedTile> tile);
+};
+
+////////////////////////////////////////////////////////////////////////
+
+/** Events related to swapping tiles in/out */
+class TileLoadingObserver
+{
+public:
+  typedef boost::shared_ptr<TileLoadingObserver> Ptr;
+  typedef boost::weak_ptr<TileLoadingObserver> WeakPtr;
+
+  virtual ~TileLoadingObserver() {};
+
+  /** The Tile has been loaded. */
+  virtual void tileLoaded(ConstTile::Ptr tile)=0;
+};
+
+////////////////////////////////////////////////////////////////////////
 
 /**
  * Internal data structure representing a Tile.
@@ -56,28 +104,30 @@ typedef enum
  * Observers can receive events related to this tile.
  */
 class CompressedTile : public Scroom::Utils::Observable<TileInitialisationObserver>,
-                     public Scroom::Utils::Observable<TileLoadingObserver>,
-                     public Viewable
+                       public Scroom::Utils::Observable<TileLoadingObserver>,
+                       public Viewable
 {
 public:
   typedef boost::shared_ptr<CompressedTile> Ptr;
   
 public:
-  int depth;              /**< Layer number of this tile */
-  int x;                  /**< x-coordinate of this tile (i.e. number of tiles to the left of this tile) */
-  int y;                  /**< y-coordinate of this tile (i.e. number of tiles above this tile) */
-  int bpp;                /**< Bits per pixel of this tile. Must be a divisor of 8. */
-  TileStateInternal state;/**< State of this tile */
-  Tile::WeakPtr tile;     /**< Reference to the actual Tile */
-  ConstTile::WeakPtr constTile;     /**< Reference to the actual Tile */
+  const int depth;                                  /**< Layer number of this tile */
+  const int x;                                      /**< x-coordinate of this tile (i.e. number of tiles to the left of this tile) */
+  const int y;                                      /**< y-coordinate of this tile (i.e. number of tiles above this tile) */
+  const int bpp;                                    /**< Bits per pixel of this tile. Must be a divisor of 8. */
+
+private:
+  TileStateInternal state;                          /**< State of this tile */
+  Tile::WeakPtr tile;                               /**< Reference to the actual Tile */
+  ConstTile::WeakPtr constTile;                     /**< Reference to the actual Tile */
   Scroom::MemoryBlobs::PageProvider::Ptr provider;  /**< Provider of blocks of memory */
   Scroom::MemoryBlobs::Blob::Ptr data;              /**< Data associated with the Tile */
-  boost::mutex stateData; /**< Mutex protecting the state field */
-  boost::mutex tileData;  /**< Mutex protecting the data-related fields */
+  boost::mutex stateData;                           /**< Mutex protecting the state field */
+  boost::mutex tileData;                            /**< Mutex protecting the data-related fields */
 
   ThreadPool::Queue::WeakPtr queue; /**< Queue on which the load operation is executed */
 
-  std::map<ViewInterface::WeakPtr, TileViewState::WeakPtr> viewStates;
+  std::map<ViewInterface::WeakPtr, boost::weak_ptr<TileViewState> > viewStates;
 
 private:
   CompressedTile(int depth, int x, int y, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider, TileStateInternal state);
@@ -109,10 +159,14 @@ protected:
 
 public:
   // To choose between overloaded functions, the compiler needs some extra convincing
-  virtual Scroom::Utils::Stuff registerStrongObserver(TileInitialisationObserver::Ptr const& observer) { return Scroom::Utils::Observable<TileInitialisationObserver>::registerStrongObserver(observer); }
-  virtual Scroom::Utils::Stuff registerObserver(TileInitialisationObserver::WeakPtr const& observer) { return Scroom::Utils::Observable<TileInitialisationObserver>::registerObserver(observer); }
-  virtual Scroom::Utils::Stuff registerStrongObserver(TileLoadingObserver::Ptr const& observer) { return Scroom::Utils::Observable<TileLoadingObserver>::registerStrongObserver(observer); }
-  virtual Scroom::Utils::Stuff registerObserver(TileLoadingObserver::WeakPtr const& observer) { return Scroom::Utils::Observable<TileLoadingObserver>::registerObserver(observer); }
+  virtual Scroom::Utils::Stuff registerStrongObserver(TileInitialisationObserver::Ptr const& observer)
+  { return Scroom::Utils::Observable<TileInitialisationObserver>::registerStrongObserver(observer); }
+  virtual Scroom::Utils::Stuff registerObserver(TileInitialisationObserver::WeakPtr const& observer)
+  { return Scroom::Utils::Observable<TileInitialisationObserver>::registerObserver(observer); }
+  virtual Scroom::Utils::Stuff registerStrongObserver(TileLoadingObserver::Ptr const& observer)
+  { return Scroom::Utils::Observable<TileLoadingObserver>::registerStrongObserver(observer); }
+  virtual Scroom::Utils::Stuff registerObserver(TileLoadingObserver::WeakPtr const& observer)
+  { return Scroom::Utils::Observable<TileLoadingObserver>::registerObserver(observer); }
 
   /**
    * Get a reference to the Tile.
@@ -141,13 +195,13 @@ public:
   /**
    * Report that the tile is completely filled with data
    *
-   * This'll be used to notify our observers.
+   * This will be used to notify our observers.
    */
   void reportFinished();
 
   TileState getState();
 
-  TileViewState::Ptr getViewState(ViewInterface::WeakPtr vi);
+  boost::shared_ptr<TileViewState> getViewState(ViewInterface::WeakPtr vi);
 
 private:
   /**
@@ -168,5 +222,3 @@ public:
 
 typedef std::vector<CompressedTile::Ptr> CompressedTileLine;
 typedef std::vector<CompressedTileLine> CompressedTileGrid;
-
-

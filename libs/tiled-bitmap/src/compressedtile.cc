@@ -12,6 +12,7 @@
 #include <boost/foreach.hpp>
 
 #include "local.hh"
+#include "tileviewstate.hh"
 
 using namespace Scroom::Utils;
 using namespace Scroom::MemoryBlobs;
@@ -263,3 +264,15 @@ void CompressedTile::close(ViewInterface::WeakPtr vi)
 {
   viewStates.erase(vi);
 }
+
+////////////////////////////////////////////////////////////////////////
+/// TileInitialisationObserver
+
+void TileInitialisationObserver::tileFinished(CompressedTile::Ptr)
+{
+}
+
+void TileInitialisationObserver::tileCreated(CompressedTile::Ptr)
+{
+}
+

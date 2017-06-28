@@ -289,8 +289,6 @@ libs_tiled_bitmap_src_libstiledbitmap_la_SOURCES = \
 	libs/tiled-bitmap/src/tiled-bitmap.hh \
 	libs/tiled-bitmap/src/tiledbitmapviewdata.cc \
 	libs/tiled-bitmap/src/tiledbitmapviewdata.hh \
-	libs/tiled-bitmap/src/tileinternalobserverinterfaces.cc \
-	libs/tiled-bitmap/src/tileinternalobserverinterfaces.hh \
 	libs/tiled-bitmap/src/compressedtile.cc \
 	libs/tiled-bitmap/src/compressedtile.hh \
 	libs/tiled-bitmap/src/tileviewstate.cc \

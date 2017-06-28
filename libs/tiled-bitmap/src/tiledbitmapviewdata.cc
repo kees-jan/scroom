@@ -10,6 +10,8 @@
 #include <scroom/gtk-helpers.hh>
 #include <scroom/progressinterfacehelpers.hh>
 
+#include "tileviewstate.hh"
+
 ////////////////////////////////////////////////////////////////////////
 // TiledBitmapViewData
 

@@ -19,6 +19,8 @@
 #include <scroom/semaphore.hh>
 #include <scroom/unused.hh>
 
+#include "tileviewstate.hh"
+
 TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
 {
   return TiledBitmap::create(bitmapWidth, bitmapHeight, ls);

@@ -16,9 +16,8 @@
 #include <scroom/stuff.hh>
 #include <scroom/tiledbitmapinterface.hh>
 
-#include "tileinternalobserverinterfaces.hh"
+#include "compressedtile.hh"
 
-class CompressedTile;
 class TiledBitmapViewData;
 
 class TileViewState : public Scroom::Utils::Observable<TileLoadingObserver>,
