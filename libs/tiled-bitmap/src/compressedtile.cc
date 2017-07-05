@@ -5,7 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include "compressedtile.hh"
+#include "scroom/tiledbitmaplayer.hh"
 
 #include <string.h>
 

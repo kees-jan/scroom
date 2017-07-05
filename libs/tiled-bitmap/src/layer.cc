@@ -5,7 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include "layer.hh"
+#include "scroom/tiledbitmaplayer.hh"
 
 #include <stdio.h>
 

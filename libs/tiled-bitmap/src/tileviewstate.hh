@@ -15,8 +15,7 @@
 #include <scroom/threadpool.hh>
 #include <scroom/stuff.hh>
 #include <scroom/tiledbitmapinterface.hh>
-
-#include "compressedtile.hh"
+#include "scroom/tiledbitmaplayer.hh"
 
 class TiledBitmapViewData;
 

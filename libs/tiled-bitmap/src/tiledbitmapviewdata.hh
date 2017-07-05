@@ -14,8 +14,7 @@
 #include <scroom/viewinterface.hh>
 #include <scroom/observable.hh>
 #include <scroom/bookkeeping.hh>
-
-#include "layer.hh"
+#include "scroom/tiledbitmaplayer.hh"
 
 class TiledBitmapViewData : virtual public Scroom::Utils::Base, public TileLoadingObserver, public ProgressInterface
 {

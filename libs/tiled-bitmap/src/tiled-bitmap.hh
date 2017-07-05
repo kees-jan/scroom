@@ -7,9 +7,6 @@
 
 #pragma once
 
-#include <scroom/scroominterface.hh>
-#include <scroom/tiledbitmapinterface.hh>
-
 #include <list>
 #include <map>
 
@@ -17,10 +14,13 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
 
+#include <scroom/scroominterface.hh>
+#include <scroom/tiledbitmapinterface.hh>
+#include "scroom/tiledbitmaplayer.hh"
+
 #include <scroom/threadpool.hh>
 #include <scroom/progressinterfacehelpers.hh>
 
-#include "layer.hh"
 #include "layercoordinator.hh"
 #include "tiledbitmapviewdata.hh"
 

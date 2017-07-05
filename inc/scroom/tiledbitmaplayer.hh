@@ -222,3 +222,52 @@ public:
 
 typedef std::vector<CompressedTile::Ptr> CompressedTileLine;
 typedef std::vector<CompressedTileLine> CompressedTileGrid;
+
+////////////////////////////////////////////////////////////////////////
+
+class Layer : public Viewable, public virtual Scroom::Utils::Base
+{
+public:
+  typedef boost::shared_ptr<Layer> Ptr;
+  
+private:
+  int depth;
+  int width;
+  int height;
+  Scroom::Utils::StuffList registrations;
+  int horTileCount;
+  int verTileCount;
+  CompressedTileGrid tiles;
+  CompressedTile::Ptr outOfBounds;
+  CompressedTileLine lineOutOfBounds;
+
+private:
+  Layer(TileInitialisationObserver::Ptr observer, int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider);
+  
+public:
+  static Ptr create(TileInitialisationObserver::Ptr observer, int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider);
+  int getHorTileCount();
+  int getVerTileCount();
+
+  CompressedTile::Ptr getTile(int i, int j);
+  CompressedTileLine& getTileLine(int j);
+  void fetchData(SourcePresentation::Ptr sp, ThreadPool::WeakQueue::Ptr queue);
+
+public:
+  int getWidth()
+  { return width; }
+
+  int getHeight()
+  { return height; }
+
+  int getDepth()
+  { return depth; }
+
+public:
+  // Viewable ////////////////////////////////////////////////////////////
+  void open(ViewInterface::WeakPtr vi);
+  void close(ViewInterface::WeakPtr vi);
+};
+
+
+

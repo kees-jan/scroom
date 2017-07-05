@@ -33,6 +33,7 @@ incscroom_HEADERS = \
 	inc/scroom/threadpool.hh \
 	inc/scroom/tile.hh \
 	inc/scroom/tiledbitmapinterface.hh \
+	inc/scroom/tiledbitmaplayer.hh \
 	inc/scroom/timer.hh \
 	inc/scroom/unused.hh \
 	inc/scroom/utilities.hh \
@@ -281,7 +282,6 @@ tiled_bitmap_libs = \
 
 libs_tiled_bitmap_src_libstiledbitmap_la_SOURCES = \
 	libs/tiled-bitmap/src/layer.cc \
-	libs/tiled-bitmap/src/layer.hh \
 	libs/tiled-bitmap/src/layercoordinator.cc \
 	libs/tiled-bitmap/src/layercoordinator.hh \
 	libs/tiled-bitmap/src/layeroperations.cc \
@@ -290,7 +290,6 @@ libs_tiled_bitmap_src_libstiledbitmap_la_SOURCES = \
 	libs/tiled-bitmap/src/tiledbitmapviewdata.cc \
 	libs/tiled-bitmap/src/tiledbitmapviewdata.hh \
 	libs/tiled-bitmap/src/compressedtile.cc \
-	libs/tiled-bitmap/src/compressedtile.hh \
 	libs/tiled-bitmap/src/tileviewstate.cc \
 	libs/tiled-bitmap/src/tileviewstate.hh \
 	libs/tiled-bitmap/src/local.hh

@@ -12,7 +12,6 @@
 #include <scroom/unused.hh>
 
 #include "local.hh"
-#include "compressedtile.hh"
 #include "tiledbitmapviewdata.hh"
 
 TileViewState::~TileViewState()
