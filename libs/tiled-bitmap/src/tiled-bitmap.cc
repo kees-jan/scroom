@@ -45,10 +45,10 @@ static Scroom::MemoryBlobs::PageProvider::Ptr createProvider(double width, doubl
 
 ////////////////////////////////////////////////////////////////////////
 
-FileOperation::FileOperation(TiledBitmap::Ptr parent)
-  : parent(parent), waitingMutex(), waiting(true)
+FileOperation::FileOperation(ProgressInterface::Ptr progress)
+  : progress(progress), waitingMutex(), waiting(true)
 {
-  parent->setWaiting();
+  progress->setWaiting();
 }
 
 void FileOperation::doneWaiting()
@@ -57,7 +57,7 @@ void FileOperation::doneWaiting()
   if(waiting)
   {
     gdk_threads_enter();
-    parent->setWorking(0);
+    progress->setWorking(0);
     gdk_threads_leave();
     waiting = false;
   }
@@ -75,10 +75,10 @@ private:
 
 private:
   LoadOperation(ThreadPool::WeakQueue::Ptr queue, Layer::Ptr const& l, SourcePresentation::Ptr sp,
-                TiledBitmap::Ptr parent);
+                ProgressInterface::Ptr progress);
 public:
   static Ptr create(ThreadPool::WeakQueue::Ptr queue, Layer::Ptr const& l, SourcePresentation::Ptr sp,
-                    TiledBitmap::Ptr parent);
+                    ProgressInterface::Ptr progress);
   
   virtual ~LoadOperation() {}
 
@@ -89,15 +89,15 @@ public:
 
 FileOperation::Ptr LoadOperation::create(ThreadPool::WeakQueue::Ptr queue,
                                          Layer::Ptr const& l, SourcePresentation::Ptr sp,
-                                         TiledBitmap::Ptr parent)
+                                         ProgressInterface::Ptr progress)
 {
-  return FileOperation::Ptr(new LoadOperation(queue, l, sp, parent));
+  return FileOperation::Ptr(new LoadOperation(queue, l, sp, progress));
 }
                                          
 LoadOperation::LoadOperation(ThreadPool::WeakQueue::Ptr queue,
                              Layer::Ptr const& l, SourcePresentation::Ptr sp,
-                             TiledBitmap::Ptr parent)
-  : FileOperation(parent), target(l), thePresentation(sp), queue(queue)
+                             ProgressInterface::Ptr progress)
+  : FileOperation(progress), target(l), thePresentation(sp), queue(queue)
 {
 }
 
@@ -215,36 +215,13 @@ void TiledBitmap::connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer,
 }
 
 ////////////////////////////////////////////////////////////////////////
-// ProgressInterface
-
-void TiledBitmap::setIdle()
-{
-  progressBroadcaster->setIdle();
-}
-
-void TiledBitmap::setWaiting(double progress)
-{
-  progressBroadcaster->setWaiting(progress);
-}
-
-void TiledBitmap::setWorking(double progress)
-{
-  progressBroadcaster->setWorking(progress);
-}
-
-void TiledBitmap::setFinished()
-{
-  progressBroadcaster->setFinished();
-}
-
-////////////////////////////////////////////////////////////////////////
 // TiledBitmapInterface
 
 void TiledBitmap::setSource(SourcePresentation::Ptr sp)
 {
   if(!fileOperation)
   {
-    fileOperation = LoadOperation::create(queue->getWeak(), layers[0], sp, shared_from_this<TiledBitmap>());
+    fileOperation = LoadOperation::create(queue->getWeak(), layers[0], sp, progressBroadcaster);
     Sequentially()->schedule(fileOperation);
   }
   else
@@ -597,16 +574,6 @@ void TiledBitmap::clearCaches(ViewInterface::Ptr viewInterface)
   }
 }
 
-void TiledBitmap::abortLoadingPresentation()
-{
-  queue.reset();
-  if(fileOperation)
-  {
-    fileOperation->abort();
-    fileOperation.reset();
-  }
-}
-
 void TiledBitmap::open(ViewInterface::WeakPtr viewInterface)
 {
   boost::mutex::scoped_lock lock(viewDataMutex);
@@ -657,10 +624,10 @@ void TiledBitmap::tileFinished(CompressedTile::Ptr tile)
   else
   {
     gdk_threads_enter();
-    setWorking(1.0*tileFinishedCount/tileCount);
+    progressBroadcaster->setWorking(1.0*tileFinishedCount/tileCount);
     if(tileFinishedCount==tileCount)
     {
-      setFinished();
+      progressBroadcaster->setFinished();
       if(fileOperation)
       {
         fileOperation->finished();

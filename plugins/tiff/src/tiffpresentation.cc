@@ -40,11 +40,7 @@ TiffPresentation::~TiffPresentation()
 
 void TiffPresentation::destroy()
 {
-  if(tbi)
-  {
-    tbi->abortLoadingPresentation();
-    tbi.reset();
-  }
+  tbi.reset();
 }
 
 #define TIFFGetFieldChecked(file, field, ...) \

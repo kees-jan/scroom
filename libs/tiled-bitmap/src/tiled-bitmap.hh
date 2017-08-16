@@ -31,12 +31,12 @@ class FileOperation
 public:
   typedef boost::shared_ptr<FileOperation> Ptr;
 private:
-  boost::shared_ptr<TiledBitmap> parent;
+  ProgressInterface::Ptr progress;
   boost::mutex waitingMutex;
   bool waiting;
 
 protected:
-  FileOperation(boost::shared_ptr<TiledBitmap> parent);
+  FileOperation(ProgressInterface::Ptr progress);
 
 public:
   virtual ~FileOperation() {}
@@ -49,8 +49,7 @@ public:
 
 
 class TiledBitmap : public TiledBitmapInterface, public TileInitialisationObserver,
-                    public virtual Scroom::Utils::Base,
-                    public ProgressInterface
+                    public virtual Scroom::Utils::Base
 {
 public:
   typedef boost::shared_ptr<TiledBitmap> Ptr;
@@ -84,14 +83,6 @@ private:
   void drawTile(cairo_t* cr, const CompressedTile::Ptr tile, const GdkRectangle viewArea);
   void connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, LayerOperations::Ptr prevLo);
 
-  // ProgressInterface ///////////////////////////////////////////////////
-  
-public:
-  virtual void setIdle();
-  virtual void setWaiting(double progress=0.0);
-  virtual void setWorking(double progress);
-  virtual void setFinished();
-
 public:
 
   ////////////////////////////////////////////////////////////////////////
@@ -103,7 +94,6 @@ public:
   virtual void close(ViewInterface::WeakPtr vi);
   virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);
   virtual void clearCaches(ViewInterface::Ptr vi);
-  virtual void abortLoadingPresentation();
 
   ////////////////////////////////////////////////////////////////////////
   // TileInitialisationObserver

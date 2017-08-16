@@ -269,8 +269,6 @@ public:
    * @param vi The ViewInterface for which to clear the caches
    */
   virtual void clearCaches(ViewInterface::Ptr vi)=0;
-
-  virtual void abortLoadingPresentation()=0;
 };
 
 /**

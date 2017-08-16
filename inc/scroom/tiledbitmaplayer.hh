@@ -58,7 +58,7 @@ public:
    * The tile has been created.
    *
    * This event will be sent as soon as the observer is registered
-   * (because obvously the tile has already been created beforehand.
+   * (because obvously the tile has already been created beforehand).
    *
    * @note This event will be sent using the thread that is
    *    registering the observer. Be careful with your mutexes :-)
