@@ -72,11 +72,11 @@ private:
   ThreadPool::Queue::Ptr queue;
   
 public:
-  static Ptr create(int bitmapWidth, int bitmapHeight, LayerSpec& ls);
+  static Ptr create(int bitmapWidth, int bitmapHeight, LayerSpec const& ls);
   virtual ~TiledBitmap();
 
 private:
-  TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls);
+  TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec const& ls);
   void initialize();
   
 private:

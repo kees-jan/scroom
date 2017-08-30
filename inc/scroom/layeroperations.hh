@@ -21,9 +21,6 @@ public:
   void drawPixelValue(cairo_t* cr, int x, int y, int size, int value);
   void drawPixelValue(cairo_t* cr, int x, int y, int size, int value, Color const& bgColor);
   
-  ////////////////////////////////////////////////////////////////////////
-  // LayerOperations
-
   virtual void initializeCairo(cairo_t* cr);
   virtual void drawState(cairo_t* cr, TileState s, GdkRectangle viewArea);
 
@@ -45,9 +42,6 @@ public:
   virtual ~Operations1bpp()
   {}
   
-  ////////////////////////////////////////////////////////////////////////
-  // LayerOperations
-
   virtual int getBpp();
   virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
@@ -68,9 +62,6 @@ public:
   virtual ~Operations8bpp()
   {}
   
-  ////////////////////////////////////////////////////////////////////////
-  // LayerOperations
-
   virtual int getBpp();
   virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
@@ -88,9 +79,6 @@ public:
   virtual ~Operations24bpp()
   {}
   
-  ////////////////////////////////////////////////////////////////////////
-  // LayerOperations
-
   virtual int getBpp();
   virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
@@ -133,13 +121,27 @@ public:
   virtual ~OperationsColormapped()
   {}
 
-  ////////////////////////////////////////////////////////////////////////
-  // LayerOperations
-
   virtual int getBpp();
   virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
 };
 
+class Operations1bppClipped : public CommonOperations
+{
+private:
+  ColormapProvider::Ptr colormapProvider;
+  
+public:
+  static Ptr create(ColormapProvider::Ptr colormapProvider);
+  Operations1bppClipped(ColormapProvider::Ptr colormapProvider);
+  virtual ~Operations1bppClipped()
+  {}
+  
+  virtual int getBpp();
+  virtual Scroom::Utils::Stuff cacheZoom(const ConstTile::Ptr tile, int zoom,
+                                         Scroom::Utils::Stuff cache);
+  
+  virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+};
 
 

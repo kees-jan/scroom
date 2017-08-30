@@ -322,6 +322,6 @@ public:
  * 
  */
 TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight,
-    LayerSpec& ls);
+    LayerSpec const& ls);
 
 

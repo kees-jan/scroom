@@ -783,3 +783,106 @@ void OperationsColormapped::reduce(Tile::Ptr target, const ConstTile::Ptr source
   }
 }
 
+////////////////////////////////////////////////////////////////////////
+// Operations1bppClipped
+
+LayerOperations::Ptr Operations1bppClipped::create(ColormapProvider::Ptr colormapProvider)
+{
+  return Ptr(new Operations1bppClipped(colormapProvider));
+}
+
+Operations1bppClipped::Operations1bppClipped(ColormapProvider::Ptr colormapProvider)
+  : colormapProvider(colormapProvider)
+{
+}
+
+int Operations1bppClipped::getBpp()
+{
+  return 1;
+}
+
+Scroom::Utils::Stuff Operations1bppClipped::cacheZoom(const ConstTile::Ptr tile, int zoom,
+                                                      Scroom::Utils::Stuff cache)
+{
+  UNUSED(cache);
+  
+  if(zoom>=0)
+    zoom=0;
+
+  const int pixelSize = 1<<(-zoom);
+  const int outputWidth = tile->width/pixelSize;
+  const int outputHeight = tile->height/pixelSize;
+  
+  const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, outputWidth);
+  unsigned char* data = (unsigned char*)malloc(stride * outputHeight);
+  Colormap::Ptr colormap = colormapProvider->getColormap();
+
+  unsigned char* row = data;
+  for(int j=0; j<outputHeight; j++, row+=stride)
+  {
+    uint32_t* pixel = (uint32_t*)row;
+    for(int i=0; i<outputWidth; i++)
+    {
+      int sum=0;
+      
+      for(int y=0; y<pixelSize; y++)
+      {
+        const byte* inputByte = tile->data.get() + (j*pixelSize+y)*tile->width/8 + pixelSize*i/8;
+        byte inputBit = pixelSize*i%8;
+        
+        PixelIterator<const byte> bit(inputByte, inputBit);
+        
+        for(int x=0; x<pixelSize; x++, ++bit)
+        {
+          if(*bit)
+            sum++;
+        }
+      }
+
+      if(sum>0)
+        sum=1;
+      *pixel = colormap->colors[sum].getARGB32();
+      pixel++;
+    }
+  }
+
+  return BitmapSurface::create(outputWidth, outputHeight, CAIRO_FORMAT_ARGB32, stride, data);
+}
+
+void Operations1bppClipped::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y)
+{
+  // Reducing by a factor 8. Source tile is 1bpp. Target tile is 1bpp
+  int sourceStride = source->width/8;
+  const byte* sourceBase = source->data.get();
+
+  int targetStride = target->width/8;
+  byte* targetBase = target->data.get() +
+    target->height*y*targetStride/8 +
+    target->width*x/8/8;
+
+  for(int j=0; j<source->height/8;
+      j++, targetBase+=targetStride, sourceBase+=sourceStride*8)
+  {
+    // Iterate vertically over target
+    const byte* sourcePtr = sourceBase;
+    PixelIterator<byte> targetPtr(targetBase,0);
+
+    for(int i=0; i<source->width/8;
+        i++, sourcePtr++, targetPtr++)
+    {
+      // Iterate horizontally over target
+
+      // Goal is to compute a 8-bit grey value from a 8*8 black/white
+      // image. To do so, we take each of the 8 bytes, count the
+      // number of 1's in each, and add them. Finally, we divide that
+      // by 64 (the maximum number of ones in that area
+
+      const byte* current = sourcePtr;
+      int sum = 0;
+      for(int k=0; k<8; k++, current+=sourceStride)
+        sum += bcl.lookup(*current);
+
+      targetPtr.set((sum>0)?1:0);
+    }
+  }
+}

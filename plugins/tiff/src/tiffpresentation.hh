@@ -53,7 +53,7 @@ public:
    *
    * Note that this doesn't happen automatically, since the
    * TiledBitmapInterface has a reference to this presentation, via
-   * the LayerSpec, and possibly the SourcePresentation.
+   * the SourcePresentation.
    */
   void destroy();
 

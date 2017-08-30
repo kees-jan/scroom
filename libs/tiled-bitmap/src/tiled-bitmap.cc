@@ -21,7 +21,7 @@
 
 #include "tileviewstate.hh"
 
-TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
+TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec const& ls)
 {
   return TiledBitmap::create(bitmapWidth, bitmapHeight, ls);
 }
@@ -122,14 +122,14 @@ void LoadOperation::finished()
 ////////////////////////////////////////////////////////////////////////
 // TiledBitmap
 
-TiledBitmap::Ptr TiledBitmap::create(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
+TiledBitmap::Ptr TiledBitmap::create(int bitmapWidth, int bitmapHeight, LayerSpec const& ls)
 {
   TiledBitmap::Ptr result(new TiledBitmap(bitmapWidth, bitmapHeight, ls));
   result->initialize();
   return result;
 }
 
-TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec& ls)
+TiledBitmap::TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec const& ls)
   :bitmapWidth(bitmapWidth), bitmapHeight(bitmapHeight), ls(ls), tileCount(0), tileFinishedCount(0),
    fileOperation(), progressBroadcaster(Scroom::Utils::ProgressInterfaceBroadcaster::create()), queue(ThreadPool::Queue::createAsync())
 {
