@@ -90,6 +90,8 @@ public:
 
 public:
   virtual void setSource(SourcePresentation::Ptr sp);
+  virtual Layer::Ptr getBottomLayer();  
+
   virtual void open(ViewInterface::WeakPtr viewInterface);
   virtual void close(ViewInterface::WeakPtr vi);
   virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);

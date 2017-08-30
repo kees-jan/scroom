@@ -230,6 +230,8 @@ public:
   virtual void done()=0;
 };
 
+class Layer;
+
 /**
  * Interact with your TiledBitmap
  */
@@ -249,6 +251,15 @@ public:
    * @param sp source of the bitmap data
    */
   virtual void setSource(SourcePresentation::Ptr sp)=0;
+
+  /**
+   * Retrieve the bottom layer of the TiledBitmap.
+   *
+   * This allows you to fill the layer with data yourself, instead of relying on setSource()
+   *
+   * @see setSource()
+   */
+  virtual boost::shared_ptr<Layer> getBottomLayer()=0;  
 
   /**
    * Redraw a portion of the bitmap.

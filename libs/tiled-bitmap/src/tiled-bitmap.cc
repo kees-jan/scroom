@@ -230,6 +230,11 @@ void TiledBitmap::setSource(SourcePresentation::Ptr sp)
   }
 }
 
+Layer::Ptr TiledBitmap::getBottomLayer()
+{
+  return layers[0];
+}
+
 inline void computeAreasBeginningZoomingIn(int presentationBegin, int tileOffset, int pixelSize,
                                            int& tileBegin, int& viewBegin)
 {
