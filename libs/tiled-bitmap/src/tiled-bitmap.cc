@@ -226,7 +226,7 @@ void TiledBitmap::setSource(SourcePresentation::Ptr sp)
   }
   else
   {
-    printf("PANIC: Another operation is already in process\n");
+    printf("PANIC: Another operation is already in progress\n");
   }
 }
 
