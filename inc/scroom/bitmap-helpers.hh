@@ -25,18 +25,20 @@ namespace Scroom
 
     private:
       cairo_surface_t* const surface;
-      unsigned char* const data;
+      boost::shared_ptr<unsigned char> const data;
   
     public:
       static Ptr create(int width, int height, cairo_format_t format);
-      static Ptr create(int width, int height, cairo_format_t format, int stride, unsigned char* data);
+      static Ptr create(int width, int height, cairo_format_t format,
+                        int stride, boost::shared_ptr<unsigned char> const& data);
 
       ~BitmapSurface();
 
       cairo_surface_t* get();
     private:
       BitmapSurface(int width, int height, cairo_format_t format);
-      BitmapSurface(int width, int height, cairo_format_t format, int stride, unsigned char* data);
+      BitmapSurface(int width, int height, cairo_format_t format,
+                    int stride, boost::shared_ptr<unsigned char> const& data);
     };
 
     ////////////////////////////////////////////////////////////////////////

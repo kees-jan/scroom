@@ -17,8 +17,8 @@ namespace Scroom
       return BitmapSurface::Ptr(new BitmapSurface(width, height, format));
     }
 
-    BitmapSurface::Ptr BitmapSurface::create(int width, int height,
-                                             cairo_format_t format, int stride, unsigned char* data)
+    BitmapSurface::Ptr BitmapSurface::create(int width, int height, cairo_format_t format,
+                                             int stride, boost::shared_ptr<unsigned char> const& data)
     {
       return BitmapSurface::Ptr(new BitmapSurface(width, height, format, stride, data));
     }
@@ -26,7 +26,6 @@ namespace Scroom
     BitmapSurface::~BitmapSurface()
     {
       cairo_surface_destroy(surface);
-      if(data) free(data);
     }
 
     cairo_surface_t* BitmapSurface::get()
@@ -34,12 +33,13 @@ namespace Scroom
       return surface;
     }
 
-    BitmapSurface::BitmapSurface(int width, int height, cairo_format_t format) :
-        surface(cairo_image_surface_create(format, width, height)), data(NULL)
+    BitmapSurface::BitmapSurface(int width, int height, cairo_format_t format)
+      : surface(cairo_image_surface_create(format, width, height))
     {}
 
-    BitmapSurface::BitmapSurface(int width, int height, cairo_format_t format, int stride, unsigned char* data) :
-        surface(cairo_image_surface_create_for_data(data, format, width, height, stride)), data(data)
+    BitmapSurface::BitmapSurface(int width, int height, cairo_format_t format,
+                                 int stride, boost::shared_ptr<unsigned char> const& data)
+      : surface(cairo_image_surface_create_for_data(data.get(), format, width, height, stride)), data(data)
     {}
 
   } // namespace Bitmap

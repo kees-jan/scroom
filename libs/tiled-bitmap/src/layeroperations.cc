@@ -25,6 +25,16 @@ using Scroom::Utils::Stuff;
 using namespace Scroom::Bitmap;
 
 ////////////////////////////////////////////////////////////////////////
+
+namespace
+{
+  boost::shared_ptr<unsigned char> shared_malloc(size_t size)
+  {
+    return boost::shared_ptr<unsigned char>(static_cast<unsigned char*>(malloc(size)), free);
+  }
+
+}
+////////////////////////////////////////////////////////////////////////
 // BitCountLut
 
 class BitCountLut
@@ -235,10 +245,10 @@ int Operations1bpp::getBpp()
 Scroom::Utils::Stuff Operations1bpp::cache(const ConstTile::Ptr tile)
 {
   const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
-  unsigned char* data = (unsigned char*)malloc(stride * tile->height);
+  boost::shared_ptr<unsigned char> data = shared_malloc(stride * tile->height);
   Colormap::Ptr colormap = colormapProvider->getColormap();
 
-  unsigned char* row = data;
+  unsigned char* row = data.get();
   for(int j=0; j<tile->height; j++, row+=stride)
   {
     PixelIterator<const byte> bit(tile->data.get()+j*tile->width/8, 0);
@@ -352,12 +362,12 @@ int Operations8bpp::getBpp()
 Scroom::Utils::Stuff Operations8bpp::cache(const ConstTile::Ptr tile)
 {
   const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
-  unsigned char* data = (unsigned char*)malloc(stride * tile->height);
+  boost::shared_ptr<unsigned char> data = shared_malloc(stride * tile->height);
   Colormap::Ptr colormap = colormapProvider->getColormap();
   const Color& c1 = colormap->colors[0];
   const Color& c2 = colormap->colors[1];
 
-  unsigned char* row = data;
+  unsigned char* row = data.get();
   for(int j=0; j<tile->height; j++, row+=stride)
   {
     const byte* cur = tile->data.get()+j*tile->width;
@@ -471,8 +481,8 @@ int Operations24bpp::getBpp()
 Scroom::Utils::Stuff Operations24bpp::cache(const ConstTile::Ptr tile)
 {
   const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
-  unsigned char* data = (unsigned char*)malloc(stride * tile->height);
-  unsigned char* row = data;
+  boost::shared_ptr<unsigned char> data = shared_malloc(stride * tile->height);
+  unsigned char* row = data.get();
   for(int j=0; j<tile->height; j++, row+=stride)
   {
     const byte* cur = tile->data.get()+3*j*tile->width;
@@ -558,10 +568,10 @@ int Operations::getBpp()
 Scroom::Utils::Stuff Operations::cache(const ConstTile::Ptr tile)
 {
   const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
-  unsigned char* data = (unsigned char*)malloc(stride * tile->height);
+  boost::shared_ptr<unsigned char> data = shared_malloc(stride * tile->height);
   Colormap::Ptr colormap = colormapProvider->getColormap();
 
-  unsigned char* row = data;
+  unsigned char* row = data.get();
   for(int j=0; j<tile->height; j++, row+=stride)
   {
     PixelIterator<const byte> pixelIn(tile->data.get()+j*tile->width/pixelsPerByte, 0, bpp);
@@ -698,11 +708,11 @@ int OperationsColormapped::getBpp()
 Scroom::Utils::Stuff OperationsColormapped::cache(const ConstTile::Ptr tile)
 {
   const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
-  unsigned char* data = (unsigned char*)malloc(stride * tile->height);
+  boost::shared_ptr<unsigned char> data = shared_malloc(stride * tile->height);
   Colormap::Ptr colormap = colormapProvider->getColormap();
   const int multiplier = 2; // data is 2*bpp, containing 2 colors
 
-  unsigned char* row = data;
+  unsigned char* row = data.get();
   for(int j=0; j<tile->height; j++, row+=stride)
   {
     PixelIterator<const uint16_t> pixelIn(reinterpret_cast<uint16_t const *>(tile->data.get()+j*multiplier*tile->width/pixelsPerByte), 0, multiplier*bpp);
@@ -814,10 +824,10 @@ Scroom::Utils::Stuff Operations1bppClipped::cacheZoom(const ConstTile::Ptr tile,
   const int outputHeight = tile->height/pixelSize;
   
   const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, outputWidth);
-  unsigned char* data = (unsigned char*)malloc(stride * outputHeight);
+  boost::shared_ptr<unsigned char> data = shared_malloc(stride * outputHeight);
   Colormap::Ptr colormap = colormapProvider->getColormap();
 
-  unsigned char* row = data;
+  unsigned char* row = data.get();
   for(int j=0; j<outputHeight; j++, row+=stride)
   {
     uint32_t* pixel = (uint32_t*)row;
