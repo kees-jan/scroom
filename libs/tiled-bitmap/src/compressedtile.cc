@@ -78,9 +78,10 @@ ConstTile::Ptr CompressedTile::getConstTileAsync()
   return result;
 }
 
-Scroom::Utils::Stuff CompressedTile::initialize()
+Tile::Ptr CompressedTile::initialize()
 {
   Scroom::Utils::Stuff s;
+  Tile::Ptr tile;
   
   bool didInitialize = false;
   {
@@ -96,9 +97,9 @@ Scroom::Utils::Stuff CompressedTile::initialize()
   }
 
   if(didInitialize)
-    s = do_load(); // Trigger notifyObservers(), without holding the lock
+    tile = getTileSync(); // Trigger notifyObservers(), without holding the lock
 
-  return s;
+  return tile;
 }
   
 void CompressedTile::reportFinished()

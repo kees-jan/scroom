@@ -140,7 +140,7 @@ public:
    *
    * Allocates memory, initializes it to 0, and changes state to TSI_LOADED
    */
-  Scroom::Utils::Stuff initialize();
+  Tile::Ptr initialize();
 
 protected:
   /**
