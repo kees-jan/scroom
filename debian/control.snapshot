@@ -9,7 +9,7 @@ Homepage: https://github.com/kees-jan/scroom/wiki
 Package: scroom-snapshot
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Conflicts: scroom, scroom-0.3, scroom-0.4, scroom-0.5, scroom-0.6, scroom-0.7
+Conflicts: scroom, scroom-0.3, scroom-0.4, scroom-0.5, scroom-0.6, scroom-0.7, scroom-0.8
 Provides: scroom
 Description: Generic viewer for 2D data
  Scroom is a generic viewer for viewing 2D data. Plugins can be added

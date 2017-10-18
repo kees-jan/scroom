@@ -6,10 +6,10 @@ Build-Depends: debhelper (>= 7), autotools-dev, pkg-config, libboost-dev, libboo
 Standards-Version: 3.8.3
 Homepage: https://github.com/kees-jan/scroom/wiki
 
-Package: scroom-0.7
+Package: scroom-0.8
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Conflicts: scroom (<= 0.3.1-1), scroom-0.3, scroom-0.4, scroom-0.5, scroom-0.6, scroom-snapshot (<= 0.7~)
+Conflicts: scroom (<= 0.3.1-1), scroom-0.3, scroom-0.4, scroom-0.5, scroom-0.6, scroom-0.7, scroom-snapshot (<= 0.8~)
 Provides: scroom
 Description: Generic viewer for 2D data
  Scroom is a generic viewer for viewing 2D data. Plugins can be added
@@ -20,7 +20,7 @@ Description: Generic viewer for 2D data
 
 Package: scroom
 Architecture: all
-Depends: scroom-0.7, ${misc:Depends}
+Depends: scroom-0.8, ${misc:Depends}
 Description: Generic viewer for 2D data (meta)
  Scroom is a generic viewer for viewing 2D data. Plugins can be added
  easily to support new file formats. Currently, there only is a plugin
@@ -32,7 +32,7 @@ Description: Generic viewer for 2D data (meta)
 
 Package: scroom-snapshot
 Architecture: all
-Depends: scroom-0.7, ${misc:Depends}
+Depends: scroom-0.8, ${misc:Depends}
 Conflicts: scroom
 Provides: scroom
 Description: Generic viewer for 2D data (meta)
