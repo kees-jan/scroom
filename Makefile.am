@@ -18,12 +18,14 @@ incscroom_HEADERS = \
 	inc/scroom/global.hh \
 	inc/scroom/gtk-helpers.hh \
 	inc/scroom/layeroperations.hh \
+	inc/scroom/linearsegment.hh \
 	inc/scroom/memoryblobs.hh \
 	inc/scroom/observable.hh \
 	inc/scroom/plugininformationinterface.hh \
 	inc/scroom/presentationinterface.hh \
 	inc/scroom/progressinterface.hh \
 	inc/scroom/progressinterfacehelpers.hh \
+	inc/scroom/rectangle.hh \
 	inc/scroom/resizablepresentationinterface.hh \
 	inc/scroom/roi.hh \
 	inc/scroom/scroominterface.hh \
@@ -106,10 +108,12 @@ libs_util_src_libsutil_la_CPPFLAGS = @UTILS_CFLAGS@ -I $(top_srcdir)/inc
 util_libs = \
 	libs/util/src/libsutil.la
 libs_util_src_libsutil_la_SOURCES = \
+	libs/util/src/assertions.cc \
 	libs/util/src/counter.cc \
 	libs/util/src/gtk-helpers.cc \
-	libs/util/src/assertions.cc \
-	libs/util/src/progressinterfacehelpers.cc
+	libs/util/src/linearsegment.cc \
+	libs/util/src/progressinterfacehelpers.cc \
+	libs/util/src/rectangle.cc
 
 libs_util_src_libsutil_la_LIBADD = @UTILS_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
 
@@ -120,16 +124,17 @@ libs_util_test_utils_tests_CPPFLAGS = @UTILS_CFLAGS@ -I $(top_srcdir)/inc
 util_check_programs = \
 	libs/util/test/utils-tests
 libs_util_test_utils_tests_SOURCES = \
+	libs/util/test/bookkeeping-tests.cc \
+	libs/util/test/counter-tests.cc \
+	libs/util/test/gtkhelper-tests.cc \
 	libs/util/test/main.cc \
 	libs/util/test/observable-tests.cc \
-	libs/util/test/counter-tests.cc \
-	libs/util/test/bookkeeping-tests.cc \
-	libs/util/test/gtkhelper-tests.cc \
-	libs/util/test/progressinterfacemultiplexer-tests.cc \
 	libs/util/test/progressinterfacebroadcaster-tests.cc \
-	libs/util/test/progressstateinterfacestub.hh \
+	libs/util/test/progressinterfaceconversion-tests.cc \
+	libs/util/test/progressinterfacemultiplexer-tests.cc \
 	libs/util/test/progressstateinterfacestub.cc \
-	libs/util/test/progressinterfaceconversion-tests.cc
+	libs/util/test/progressstateinterfacestub.hh \
+	libs/util/test/rectangletests.cc
 
 libs_util_test_utils_tests_LDADD = @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @UTILS_LIBS@  \
 	libs/util/src/libsutil.la \
