@@ -10,7 +10,10 @@
 #include <ostream>
 #include <stdexcept>
 
+#include <gdk/gdktypes.h>
+
 #include <scroom/linearsegment.hh>
+#include <scroom/gtk-helpers.hh>
 
 class Rectangle
 {
@@ -25,6 +28,15 @@ public:
   Rectangle(const Segment& horizontally_, const Segment& vertically_)
     : horizontally(horizontally_), vertically(vertically_)
   {}
+
+  Rectangle(const GdkRectangle& rect)
+  : horizontally(rect.x, rect.width), vertically(rect.y, rect.height)
+  {}
+
+  operator GdkRectangle() const
+  {
+    return Scroom::GtkHelpers::createGdkRectangle(getLeftPos(), getTopPos(), getWidth(), getHeight());
+  }
 
   void moveTo(long x, long y)
   {

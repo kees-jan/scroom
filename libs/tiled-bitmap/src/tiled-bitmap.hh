@@ -82,6 +82,8 @@ private:
 private:
   void drawTile(cairo_t* cr, const CompressedTile::Ptr tile, const GdkRectangle viewArea);
   void connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, LayerOperations::Ptr prevLo);
+  void redrawZoomingIn(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);
+  void redrawZoomingOut(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);
 
 public:
 
@@ -94,7 +96,7 @@ public:
 
   virtual void open(ViewInterface::WeakPtr viewInterface);
   virtual void close(ViewInterface::WeakPtr vi);
-  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);
+  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle const& presentationArea, int zoom);
   virtual void clearCaches(ViewInterface::Ptr vi);
 
   ////////////////////////////////////////////////////////////////////////

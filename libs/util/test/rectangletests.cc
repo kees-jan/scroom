@@ -11,6 +11,8 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/mpl/list.hpp>
 
+#include <scroom/gtk-helpers.hh>
+
 std::ostream& operator<<(std::ostream& os, Segment const segment)
 {
   return os << '(' << segment.getStart() << ", " << segment.getSize() << ')';
@@ -313,6 +315,16 @@ BOOST_AUTO_TEST_CASE(testRetrievingHorizontallyAndVertically)
 
   BOOST_CHECK_EQUAL(Segment(1,3), r.getHorizontally());
   BOOST_CHECK_EQUAL(Segment(2,4), r.getVertically());
+}
+
+BOOST_AUTO_TEST_CASE(testConversionToAndFromGdkRectangle)
+{
+  const GdkRectangle original = Scroom::GtkHelpers::createGdkRectangle(1,2,3,4);
+  const Rectangle rect = original;
+  BOOST_CHECK_EQUAL(Rectangle(1,2,3,4), rect);
+
+  const GdkRectangle grect = rect;
+  BOOST_CHECK_EQUAL(original, grect);
 }
 
 ////////////////////////////////////////////////////////////////////////
