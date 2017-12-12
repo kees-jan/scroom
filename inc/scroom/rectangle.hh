@@ -87,6 +87,16 @@ public:
     return horizontally.getStart();
   }
 
+  long getBottomPos() const
+  {
+    return vertically.getEnd();
+  }
+
+  long getRightPos() const
+  {
+    return horizontally.getEnd();
+  }
+
   long getWidth() const
   {
     return horizontally.getSize();

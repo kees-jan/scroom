@@ -15,14 +15,14 @@
 #include <boost/weak_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
 
-#include <scroom/presentationinterface.hh>
-#include <scroom/tiledbitmapinterface.hh>
-#include <scroom/tile.hh>
-
-#include <scroom/observable.hh>
-#include <scroom/threadpool.hh>
 #include <scroom/memoryblobs.hh>
+#include <scroom/observable.hh>
+#include <scroom/presentationinterface.hh>
+#include <scroom/rectangle.hh>
 #include <scroom/stuff.hh>
+#include <scroom/threadpool.hh>
+#include <scroom/tile.hh>
+#include <scroom/tiledbitmapinterface.hh>
 
 #define TILESIZE 4096
 // #define TILESIZE 1024
@@ -262,6 +262,11 @@ public:
 
   int getDepth()
   { return depth; }
+
+  Rectangle getRect()
+  {
+    return Rectangle(0,0,width,height);
+  }
 
 public:
   // Viewable ////////////////////////////////////////////////////////////

@@ -10,6 +10,7 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/weak_ptr.hpp>
 
+#include <scroom/rectangle.hh>
 
 //////////////////////////////////////////////////////////////
 

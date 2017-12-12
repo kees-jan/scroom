@@ -15,12 +15,12 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include <scroom/scroominterface.hh>
-#include <scroom/viewinterface.hh>
 #include <scroom/presentationinterface.hh>
-#include <scroom/tile.hh>
+#include <scroom/scroominterface.hh>
 #include <scroom/stuff.hh>
+#include <scroom/tile.hh>
 #include <scroom/unused.hh>
+#include <scroom/viewinterface.hh>
 
 /**
  * Represent the state of one of the tiles that make up a layer in the

@@ -132,3 +132,5 @@ private:
   long start;
   long size;
 };
+
+std::ostream& operator<<(std::ostream& os, const Segment& s);

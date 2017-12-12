@@ -7,5 +7,10 @@
 
 #include <scroom/linearsegment.hh>
 
-#include <sstream>
+std::ostream& operator<<(std::ostream& os, const Segment& s)
+{
+  return os << '(' << s.getStart()
+            << ',' << s.getSize()
+            << ')';
+}
 

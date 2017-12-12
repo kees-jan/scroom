@@ -13,11 +13,6 @@
 
 #include <scroom/gtk-helpers.hh>
 
-std::ostream& operator<<(std::ostream& os, Segment const segment)
-{
-  return os << '(' << segment.getStart() << ", " << segment.getSize() << ')';
-}
-
 ////////////////////////////////////////////////////////////////////////
 // For testing Rectangles horizontally
 
