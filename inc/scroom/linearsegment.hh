@@ -14,9 +14,9 @@
 #include <boost/operators.hpp>
 
 template<typename T>
-class Segment: public boost::addable2<Segment<T>, int>,
-    public boost::subtractable2<Segment<T>, int>,
-    public boost::multipliable2<Segment<T>, int>,
+class Segment: public boost::addable2<Segment<T>, T>,
+    public boost::subtractable2<Segment<T>, T>,
+    public boost::multipliable2<Segment<T>, T>,
     public boost::andable<Segment<T>>
 {
 public:
@@ -109,17 +109,17 @@ public:
     return !(*this == other);
   }
 
-  Segment<value_type>& operator+=(int n)
+  Segment<value_type>& operator+=(value_type n)
   {
     start += n;
     return *this;
   }
-  Segment<value_type>& operator-=(int n)
+  Segment<value_type>& operator-=(value_type n)
   {
     start -= n;
     return *this;
   }
-  Segment<value_type>& operator*=(int n)
+  Segment<value_type>& operator*=(value_type n)
   {
     start *= n;
     size *= n;

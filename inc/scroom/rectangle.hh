@@ -16,7 +16,62 @@
 #include <scroom/gtk-helpers.hh>
 
 template<typename T>
-class Rectangle
+class Point : public boost::addable<Point<T>>,
+              public boost::subtractable<Point<T>>,
+              public boost::multipliable2<Point<T>,T>
+{
+public:
+  typedef T value_type;
+
+  Point(value_type x, value_type y)
+    : x(x), y(y)
+  {}
+
+  bool operator==(const Point<value_type>& other) const
+  {
+    return x == other.x && y == other.y;
+  }
+
+  Point<value_type>& operator+=(const Point<value_type>& other)
+  {
+    x += other.x;
+    y += other.y;
+    return *this;
+  }
+
+  Point<value_type>& operator-=(const Point<value_type>& other)
+  {
+    return *this += -other;
+  }
+
+  Point<value_type>& operator*=(value_type other)
+  {
+    x *= other;
+    y *= other;
+    return *this;
+  }
+
+  Point<value_type> operator-() const
+  {
+    return Point<value_type>(-x, -y);
+  }
+
+public:
+  value_type x;
+  value_type y;
+};
+
+template<typename T>
+std::ostream& operator<<(std::ostream& os, const Point<T>& p)
+{
+  return os << '(' << p.x
+            << ',' << p.y
+            << ')';
+}
+
+template<typename T>
+class Rectangle : public boost::addable2<Rectangle<T>,Point<T>>,
+                  public boost::subtractable2<Rectangle<T>,Point<T>>
 {
 public:
   typedef T value_type;
@@ -41,17 +96,17 @@ public:
     return Scroom::GtkHelpers::createGdkRectangle(getLeftPos(), getTopPos(), getWidth(), getHeight());
   }
 
-  void moveTo(value_type x, value_type y)
+  void moveTo(Point<value_type> const& other)
   {
-    horizontally.moveTo(x);
-    vertically.moveTo(y);
+    horizontally.moveTo(other.x);
+    vertically.moveTo(other.y);
   }
 
-  bool containsPos(value_type xVal, value_type yVal) const
+  bool contains(Point<value_type> const& other) const
   {
     return
-      horizontally.contains(xVal) &&
-      vertically.contains(yVal);
+      horizontally.contains(other.x) &&
+      vertically.contains(other.y);
   }
 
   bool contains(const Rectangle& other) const
@@ -110,6 +165,26 @@ public:
     return vertically.getSize();
   }
 
+  Point<value_type> getTopLeft() const
+  {
+    return Point<value_type>(horizontally.getStart(), vertically.getStart());
+  }
+
+  Point<value_type> getTopRight() const
+  {
+    return Point<value_type>(horizontally.getEnd(), vertically.getStart());
+  }
+
+  Point<value_type> getBottomLeft() const
+  {
+    return Point<value_type>(horizontally.getStart(), vertically.getEnd());
+  }
+
+  Point<value_type> getBottomRight() const
+  {
+    return Point<value_type>(horizontally.getEnd(), vertically.getEnd());
+  }
+
   bool isEmpty() const
   {
     return horizontally.isEmpty() || vertically.isEmpty();
@@ -125,6 +200,18 @@ public:
   bool operator!=(const Rectangle& other) const
   {
     return !(*this==other);
+  }
+
+  Rectangle<value_type>& operator+=(Point<value_type> const& other)
+  {
+    horizontally += other.x;
+    vertically += other.y;
+    return *this;
+  }
+
+  Rectangle<value_type>& operator-=(Point<value_type> const& other)
+  {
+    return *this += -other;
   }
 
   const Segment<value_type>& getHorizontally() const

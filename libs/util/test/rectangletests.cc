@@ -41,7 +41,7 @@ public:
 
   long getStart() const { return getLeftPos(); }
   long getEnd() const { return getLeftPos()+getWidth(); }
-  bool contains(int x) const { return containsPos(x, verticalContainedStart); }
+  bool contains(int x) const { return Rectangle::contains(Point<int>(x, verticalContainedStart)); }
   
   bool contains(const RectangleHorizontalTestScaffold& other) const
   { return Rectangle<int>::contains(other); }
@@ -49,7 +49,7 @@ public:
   RectangleHorizontalTestScaffold intersection(const RectangleHorizontalTestScaffold& other) const
   { return Rectangle<int>::intersection(other); }
   
-  void moveTo(long x) { return Rectangle<int>::moveTo(x, verticalContainedStart); }
+  void moveTo(long x) { return Rectangle<int>::moveTo(Point<int>(x, verticalContainedStart)); }
 };
 
 
@@ -80,7 +80,7 @@ public:
   long getSize() const { return getHeight(); }
   long getStart() const { return getTopPos(); }
   long getEnd() const { return getTopPos()+getHeight(); }
-  bool contains(int y) const { return containsPos(horizontalContainedStart, y); }
+  bool contains(int y) const { return Rectangle::contains(Point<int>(horizontalContainedStart, y)); }
   
   bool contains(const RectangleVerticalTestScaffold& other) const
   { return Rectangle<int>::contains(other); }
@@ -88,7 +88,7 @@ public:
   RectangleVerticalTestScaffold intersection(const RectangleVerticalTestScaffold& other) const
   { return Rectangle<int>::intersection(other); }
   
-  void moveTo(long y) { return Rectangle::moveTo(horizontalContainedStart, y); }
+  void moveTo(long y) { return Rectangle::moveTo(Point<int>(horizontalContainedStart, y)); }
 };
 
 typedef boost::mpl::list<Segment<int>, RectangleHorizontalTestScaffold, RectangleVerticalTestScaffold> test_types;
@@ -320,6 +320,25 @@ BOOST_AUTO_TEST_CASE(testConversionToAndFromGdkRectangle)
 
   const GdkRectangle grect = rect;
   BOOST_CHECK_EQUAL(original, grect);
+}
+
+BOOST_AUTO_TEST_CASE(testCorners)
+{
+  const Rectangle<int> rect(1,2,3,4);
+  BOOST_CHECK_EQUAL(Point<int>(1,2), rect.getTopLeft());
+  BOOST_CHECK_EQUAL(Point<int>(4,2), rect.getTopRight());
+  BOOST_CHECK_EQUAL(Point<int>(1,6), rect.getBottomLeft());
+  BOOST_CHECK_EQUAL(Point<int>(4,6), rect.getBottomRight());
+}
+
+BOOST_AUTO_TEST_CASE(testMath)
+{
+  BOOST_CHECK_EQUAL(Point<int>(4,6), Point<int>(1,2) + Point<int>(3,4));
+  BOOST_CHECK_EQUAL(Point<int>(4,6) - Point<int>(1,2), Point<int>(3,4));
+  BOOST_CHECK_EQUAL(Point<int>(2,4), Point<int>(1,2) * 2);
+
+  BOOST_CHECK_EQUAL(Rectangle<int>(6,8,3,4), Point<int>(5,6) + Rectangle<int>(1,2,3,4));
+  BOOST_CHECK_EQUAL(Rectangle<int>(6,8,3,4) - Point<int>(5,6), Rectangle<int>(1,2,3,4));
 }
 
 ////////////////////////////////////////////////////////////////////////
