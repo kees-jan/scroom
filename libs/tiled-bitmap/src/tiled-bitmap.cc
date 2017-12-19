@@ -325,7 +325,7 @@ void TiledBitmap::drawOutOfBoundsZoomingIn(cairo_t* cr, LayerOperations::Ptr lay
   int pixelSize = pixelSize_;
 
   const Rectangle<int> validPresentationArea = requestedPresentationArea.intersection(actualPresentationArea);
-
+  
   long rightOfPresentationInViewCoordinates = validPresentationArea.getRightPos() - requestedPresentationArea.getLeftPos();
   long bottomOfPresentationInViewCoordinates = validPresentationArea.getBottomPos() - requestedPresentationArea.getTopPos();
   

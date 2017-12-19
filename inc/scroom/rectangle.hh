@@ -62,6 +62,12 @@ public:
 };
 
 template<typename T>
+Point<T> make_point(T x, T y)
+{
+  return Point<T>(x,y);
+}
+
+template<typename T>
 std::ostream& operator<<(std::ostream& os, const Point<T>& p)
 {
   return os << '(' << p.x
@@ -228,6 +234,12 @@ private:
   Segment<value_type> horizontally;
   Segment<value_type> vertically;
 };
+
+template<typename T>
+Rectangle<T> make_rect(T x, T y, T width, T height)
+{
+  return Rectangle<T>(x, y, width, height);
+}
 
 template<typename T>
 std::ostream& operator<<(std::ostream& os, const Rectangle<T>& r)
