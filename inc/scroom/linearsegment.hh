@@ -137,6 +137,12 @@ private:
 };
 
 template<typename T>
+Segment<T> make_segment(T start, T size)
+{
+  return Segment<T>(start, size);
+}
+
+template<typename T>
 std::ostream& operator<<(std::ostream& os, const Segment<T>& s)
 {
   return os << '(' << s.getStart()

@@ -77,7 +77,8 @@ std::ostream& operator<<(std::ostream& os, const Point<T>& p)
 
 template<typename T>
 class Rectangle : public boost::addable2<Rectangle<T>,Point<T>>,
-                  public boost::subtractable2<Rectangle<T>,Point<T>>
+                  public boost::subtractable2<Rectangle<T>,Point<T>>,
+                  public boost::multipliable2<Rectangle<T>,T>
 {
 public:
   typedef T value_type;
@@ -220,6 +221,13 @@ public:
     return *this += -other;
   }
 
+  Rectangle<value_type>& operator*=(value_type other)
+  {
+    horizontally *= other;
+    vertically *= other;
+    return *this;
+  }
+
   const Segment<value_type>& getHorizontally() const
   {
     return horizontally;
@@ -251,4 +259,18 @@ std::ostream& operator<<(std::ostream& os, const Rectangle<T>& r)
      << '>';
 
   return os;
+}
+
+template<typename T, typename U>
+Rectangle<typename std::common_type<T,U>::type> operator*(Rectangle<T> left, U right)
+{
+  Rectangle<typename std::common_type<T,U>::type> result(left);
+  result *= static_cast<typename std::common_type<T,U>::type>(right);
+  return result;
+}
+
+template<typename T, typename U>
+Rectangle<typename std::common_type<T,U>::type> operator*(T left, Rectangle<U> right)
+{
+  return right*left;
 }

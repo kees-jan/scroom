@@ -308,15 +308,15 @@ BOOST_AUTO_TEST_CASE(testRetrievingHorizontallyAndVertically)
 {
   const Rectangle<int> r(1,2,3,4);
 
-  BOOST_CHECK_EQUAL(Segment<int>(1,3), r.getHorizontally());
-  BOOST_CHECK_EQUAL(Segment<int>(2,4), r.getVertically());
+  BOOST_CHECK_EQUAL(make_segment(1,3), r.getHorizontally());
+  BOOST_CHECK_EQUAL(make_segment(2,4), r.getVertically());
 }
 
 BOOST_AUTO_TEST_CASE(testConversionToAndFromGdkRectangle)
 {
   const GdkRectangle original = Scroom::GtkHelpers::createGdkRectangle(1,2,3,4);
   const Rectangle<int> rect = original;
-  BOOST_CHECK_EQUAL(Rectangle<int>(1,2,3,4), rect);
+  BOOST_CHECK_EQUAL(make_rect(1,2,3,4), rect);
 
   const GdkRectangle grect = rect;
   BOOST_CHECK_EQUAL(original, grect);
@@ -337,8 +337,14 @@ BOOST_AUTO_TEST_CASE(testMath)
   BOOST_CHECK_EQUAL(make_point(4,6) - make_point(1,2), make_point(3,4));
   BOOST_CHECK_EQUAL(make_point(2,4), make_point(1,2) * 2);
 
-  BOOST_CHECK_EQUAL(Rectangle<int>(6,8,3,4), make_point(5,6) + Rectangle<int>(1,2,3,4));
-  BOOST_CHECK_EQUAL(Rectangle<int>(6,8,3,4) - make_point(5,6), Rectangle<int>(1,2,3,4));
+  BOOST_CHECK_EQUAL(make_rect(6,8,3,4), make_point(5,6) + make_rect(1,2,3,4));
+  BOOST_CHECK_EQUAL(make_rect(6,8,3,4) - make_point(5,6), make_rect(1,2,3,4));
+
+  auto result = 0.5*make_rect(1,3,5,7);
+  BOOST_CHECK_CLOSE(0.5, result.getLeftPos(), 1e-6);
+  BOOST_CHECK_CLOSE(2.5, result.getWidth(), 1e-6);
+  BOOST_CHECK_CLOSE(1.5, result.getTopPos(), 1e-6);
+  BOOST_CHECK_CLOSE(3.5, result.getHeight(), 1e-6);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -346,21 +352,21 @@ BOOST_AUTO_TEST_CASE(testMath)
 
 BOOST_AUTO_TEST_CASE(testPlus)
 {
-  Segment<int> result = 5 + Segment<int>(7,3);
+  Segment<int> result = 5 + make_segment(7,3);
   Segment<int> expected(12,3);
   BOOST_CHECK_EQUAL(expected, result);
 }
 
 BOOST_AUTO_TEST_CASE(testMinus)
 {
-  Segment<int> result =  Segment<int>(7,3)-10;
+  Segment<int> result =  make_segment(7,3)-10;
   Segment<int> expected(-3,3);
   BOOST_CHECK_EQUAL(expected, result);
 }
 
 BOOST_AUTO_TEST_CASE(testMultiply)
 {
-  Segment<int> result = Segment<int>(7,3)*5;
+  Segment<int> result = make_segment(7,3)*5;
   Segment<int> expected(35,15);
   BOOST_CHECK_EQUAL(expected, result);
 }
