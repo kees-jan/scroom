@@ -13,17 +13,20 @@
 
 #include <boost/operators.hpp>
 
-class Segment: public boost::addable2<Segment, int>,
-    public boost::subtractable2<Segment, int>,
-    public boost::multipliable2<Segment, int>,
-    public boost::andable<Segment>
+template<typename T>
+class Segment: public boost::addable2<Segment<T>, int>,
+    public boost::subtractable2<Segment<T>, int>,
+    public boost::multipliable2<Segment<T>, int>,
+    public boost::andable<Segment<T>>
 {
 public:
+  typedef T value_type;
+  
   Segment()
       : start (0), size (0)
   {}
 
-  Segment(long start_, long size_)
+  Segment(value_type start_, value_type size_)
       : start (start_), size (size_)
   {
     if (size < 0)
@@ -33,60 +36,60 @@ public:
     }
   }
 
-  Segment& moveTo(long p)
+  Segment& moveTo(value_type p)
   {
     start = p;
     return *this;
   }
 
-  bool contains(long p) const
+  bool contains(value_type p) const
   {
     return start <= p && p < (start + size);
   }
 
-  bool contains(const Segment& other) const
+  bool contains(const Segment<value_type>& other) const
   {
     return getStart () <= other.getStart () && other.getEnd () <= getEnd ();
   }
 
-  bool intersects(const Segment& other) const
+  bool intersects(const Segment<value_type>& other) const
   {
     return getStart () < other.getEnd () && other.getStart () < getEnd () && !isEmpty () && !other.isEmpty ();
   }
 
-  void reduceSizeToMultipleOf(long m)
+  void reduceSizeToMultipleOf(value_type m)
   {
     size -= size % m;
   }
 
-  Segment intersection(const Segment& other) const
+  Segment<value_type> intersection(const Segment<value_type>& other) const
   {
-    const long newStart = std::max (getStart (), other.getStart ());
-    const long newEnd = std::min (getEnd (), other.getEnd ());
-    const long newSize = newEnd - newStart;
+    const value_type newStart = std::max (getStart (), other.getStart ());
+    const value_type newEnd = std::min (getEnd (), other.getEnd ());
+    const value_type newSize = newEnd - newStart;
 
     if (newSize >= 0)
-      return Segment (newStart, newSize);
+      return Segment<value_type> (newStart, newSize);
     else
-      return Segment (); // empty segment
+      return Segment<value_type> (); // empty segment
   }
 
-  void intersect(const Segment& other)
+  void intersect(const Segment<value_type>& other)
   {
     *this = intersection (other);
   }
 
-  long getStart() const
+  value_type getStart() const
   {
     return start;
   }
 
-  long getEnd() const
+  value_type getEnd() const
   {
     return start + size;
   }
 
-  long getSize() const
+  value_type getSize() const
   {
     return size;
   }
@@ -96,41 +99,48 @@ public:
     return getSize () == 0;
   }
 
-  bool operator==(const Segment& other) const
+  bool operator==(const Segment<value_type>& other) const
   {
     return (start == other.start) && (size == other.size);
   }
 
-  bool operator!=(const Segment& other) const
+  bool operator!=(const Segment<value_type>& other) const
   {
     return !(*this == other);
   }
 
-  Segment& operator+=(int n)
+  Segment<value_type>& operator+=(int n)
   {
     start += n;
     return *this;
   }
-  Segment& operator-=(int n)
+  Segment<value_type>& operator-=(int n)
   {
     start -= n;
     return *this;
   }
-  Segment& operator*=(int n)
+  Segment<value_type>& operator*=(int n)
   {
     start *= n;
     size *= n;
     return *this;
   }
-  Segment& operator&=(const Segment& other)
+  Segment<value_type>& operator&=(const Segment<value_type>& other)
   {
     intersect (other);
     return *this;
   }
 
 private:
-  long start;
-  long size;
+  value_type start;
+  value_type size;
 };
 
-std::ostream& operator<<(std::ostream& os, const Segment& s);
+template<typename T>
+std::ostream& operator<<(std::ostream& os, const Segment<T>& s)
+{
+  return os << '(' << s.getStart()
+            << ',' << s.getSize()
+            << ')';
+}
+

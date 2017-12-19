@@ -319,12 +319,12 @@ void TiledBitmap::drawTile(cairo_t* cr, const CompressedTile::Ptr tile, const Gd
 }
 
 void TiledBitmap::drawOutOfBoundsZoomingIn(cairo_t* cr, LayerOperations::Ptr layerOperations,
-                                           Rectangle const& requestedPresentationArea,
-                                           Rectangle const& actualPresentationArea, double pixelSize_)
+                                           Rectangle<int> const& requestedPresentationArea,
+                                           Rectangle<int> const& actualPresentationArea, double pixelSize_)
 {
   int pixelSize = pixelSize_;
 
-  const Rectangle validPresentationArea = requestedPresentationArea.intersection(actualPresentationArea);
+  const Rectangle<int> validPresentationArea = requestedPresentationArea.intersection(actualPresentationArea);
 
   long rightOfPresentationInViewCoordinates = validPresentationArea.getRightPos() - requestedPresentationArea.getLeftPos();
   long bottomOfPresentationInViewCoordinates = validPresentationArea.getBottomPos() - requestedPresentationArea.getTopPos();
@@ -370,7 +370,7 @@ void TiledBitmap::drawOutOfBoundsZoomingIn(cairo_t* cr, LayerOperations::Ptr lay
     GdkRectangle viewArea;
     viewArea.y=0;
     viewArea.height = -requestedPresentationArea.getTopPos()*pixelSize;
-    viewArea.x = std::max(0l, -requestedPresentationArea.getLeftPos()*pixelSize);
+    viewArea.x = std::max(0, -requestedPresentationArea.getLeftPos()*pixelSize);
     viewArea.width = rightOfPresentationInViewCoordinates*pixelSize;
                             
     cairo_save(cr);
@@ -379,7 +379,7 @@ void TiledBitmap::drawOutOfBoundsZoomingIn(cairo_t* cr, LayerOperations::Ptr lay
   }
 }
 
-void TiledBitmap::redrawZoomingIn(ViewInterface::Ptr const& vi, cairo_t* cr, Rectangle const& requestedPresentationArea, int zoom)
+void TiledBitmap::redrawZoomingIn(ViewInterface::Ptr const& vi, cairo_t* cr, Rectangle<int> const& requestedPresentationArea, int zoom)
 {
   TiledBitmapViewData::Ptr viewData = this->viewData[vi];
   GdkRectangle presentationArea = requestedPresentationArea;
@@ -387,8 +387,8 @@ void TiledBitmap::redrawZoomingIn(ViewInterface::Ptr const& vi, cairo_t* cr, Rec
   Layer::Ptr layer = layers[0];
   LayerOperations::Ptr layerOperations = ls[0];
 
-  const Rectangle actualPresentationArea = layer->getRect();
-  const Rectangle validPresentationArea = requestedPresentationArea.intersection(actualPresentationArea);
+  const Rectangle<int> actualPresentationArea = layer->getRect();
+  const Rectangle<int> validPresentationArea = requestedPresentationArea.intersection(actualPresentationArea);
 
   presentationArea.width = validPresentationArea.getRightPos() - requestedPresentationArea.getLeftPos();
   presentationArea.height = validPresentationArea.getBottomPos() - requestedPresentationArea.getTopPos();

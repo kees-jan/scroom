@@ -16,7 +16,7 @@
 ////////////////////////////////////////////////////////////////////////
 // For testing Rectangles horizontally
 
-class RectangleHorizontalTestScaffold : public Rectangle
+class RectangleHorizontalTestScaffold : public Rectangle<int>
 {
 private:
   static const long verticalStart = -1;
@@ -33,7 +33,7 @@ public:
     : Rectangle()
   {}
 
-  RectangleHorizontalTestScaffold(const Rectangle& r)
+  RectangleHorizontalTestScaffold(const Rectangle<int>& r)
     : Rectangle(r)
   {}
 
@@ -44,19 +44,19 @@ public:
   bool contains(int x) const { return containsPos(x, verticalContainedStart); }
   
   bool contains(const RectangleHorizontalTestScaffold& other) const
-  { return Rectangle::contains(other); }
+  { return Rectangle<int>::contains(other); }
   
   RectangleHorizontalTestScaffold intersection(const RectangleHorizontalTestScaffold& other) const
-  { return Rectangle::intersection(other); }
+  { return Rectangle<int>::intersection(other); }
   
-  void moveTo(long x) { return Rectangle::moveTo(x, verticalContainedStart); }
+  void moveTo(long x) { return Rectangle<int>::moveTo(x, verticalContainedStart); }
 };
 
 
 ////////////////////////////////////////////////////////////////////////
 // For testing Rectangles vertically
 
-class RectangleVerticalTestScaffold : public Rectangle
+class RectangleVerticalTestScaffold : public Rectangle<int>
 {
 private:
   static const long horizontalStart = -1;
@@ -73,7 +73,7 @@ public:
     : Rectangle()
   {}
 
-  RectangleVerticalTestScaffold(const Rectangle& r)
+  RectangleVerticalTestScaffold(const Rectangle<int>& r)
     : Rectangle(r)
   {}
 
@@ -83,15 +83,15 @@ public:
   bool contains(int y) const { return containsPos(horizontalContainedStart, y); }
   
   bool contains(const RectangleVerticalTestScaffold& other) const
-  { return Rectangle::contains(other); }
+  { return Rectangle<int>::contains(other); }
   
   RectangleVerticalTestScaffold intersection(const RectangleVerticalTestScaffold& other) const
-  { return Rectangle::intersection(other); }
+  { return Rectangle<int>::intersection(other); }
   
   void moveTo(long y) { return Rectangle::moveTo(horizontalContainedStart, y); }
 };
 
-typedef boost::mpl::list<Segment, RectangleHorizontalTestScaffold, RectangleVerticalTestScaffold> test_types;
+typedef boost::mpl::list<Segment<int>, RectangleHorizontalTestScaffold, RectangleVerticalTestScaffold> test_types;
 
 ////////////////////////////////////////////////////////////////////////
 // Tests
@@ -306,17 +306,17 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(testIntersection, Scaffold, test_types)
 
 BOOST_AUTO_TEST_CASE(testRetrievingHorizontallyAndVertically)
 {
-  const Rectangle r(1,2,3,4);
+  const Rectangle<int> r(1,2,3,4);
 
-  BOOST_CHECK_EQUAL(Segment(1,3), r.getHorizontally());
-  BOOST_CHECK_EQUAL(Segment(2,4), r.getVertically());
+  BOOST_CHECK_EQUAL(Segment<int>(1,3), r.getHorizontally());
+  BOOST_CHECK_EQUAL(Segment<int>(2,4), r.getVertically());
 }
 
 BOOST_AUTO_TEST_CASE(testConversionToAndFromGdkRectangle)
 {
   const GdkRectangle original = Scroom::GtkHelpers::createGdkRectangle(1,2,3,4);
-  const Rectangle rect = original;
-  BOOST_CHECK_EQUAL(Rectangle(1,2,3,4), rect);
+  const Rectangle<int> rect = original;
+  BOOST_CHECK_EQUAL(Rectangle<int>(1,2,3,4), rect);
 
   const GdkRectangle grect = rect;
   BOOST_CHECK_EQUAL(original, grect);
@@ -327,31 +327,31 @@ BOOST_AUTO_TEST_CASE(testConversionToAndFromGdkRectangle)
 
 BOOST_AUTO_TEST_CASE(testPlus)
 {
-  Segment result = 5 + Segment(7,3);
-  Segment expected(12,3);
+  Segment<int> result = 5 + Segment<int>(7,3);
+  Segment<int> expected(12,3);
   BOOST_CHECK_EQUAL(expected, result);
 }
 
 BOOST_AUTO_TEST_CASE(testMinus)
 {
-  Segment result =  Segment(7,3)-10;
-  Segment expected(-3,3);
+  Segment<int> result =  Segment<int>(7,3)-10;
+  Segment<int> expected(-3,3);
   BOOST_CHECK_EQUAL(expected, result);
 }
 
 BOOST_AUTO_TEST_CASE(testMultiply)
 {
-  Segment result = Segment(7,3)*5;
-  Segment expected(35,15);
+  Segment<int> result = Segment<int>(7,3)*5;
+  Segment<int> expected(35,15);
   BOOST_CHECK_EQUAL(expected, result);
 }
 
 BOOST_AUTO_TEST_CASE(testAnd)
 {
-  Segment left(1,4);
-  Segment right(3,7);
-  Segment result = left & right;
-  Segment expected(3,2);
+  Segment<int> left(1,4);
+  Segment<int> right(3,7);
+  Segment<int> result = left & right;
+  Segment<int> expected(3,2);
   BOOST_CHECK_EQUAL(expected, result);
 }
 

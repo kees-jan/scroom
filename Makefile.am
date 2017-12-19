@@ -111,9 +111,7 @@ libs_util_src_libsutil_la_SOURCES = \
 	libs/util/src/assertions.cc \
 	libs/util/src/counter.cc \
 	libs/util/src/gtk-helpers.cc \
-	libs/util/src/linearsegment.cc \
-	libs/util/src/progressinterfacehelpers.cc \
-	libs/util/src/rectangle.cc
+	libs/util/src/progressinterfacehelpers.cc
 
 libs_util_src_libsutil_la_LIBADD = @UTILS_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
 

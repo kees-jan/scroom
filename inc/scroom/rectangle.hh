@@ -15,17 +15,20 @@
 #include <scroom/linearsegment.hh>
 #include <scroom/gtk-helpers.hh>
 
+template<typename T>
 class Rectangle
 {
 public:
+  typedef T value_type;
+  
   Rectangle()
   {}
 
-  Rectangle(long x_, long y_, long width_, long height_)
+  Rectangle(value_type x_, value_type y_, value_type width_, value_type height_)
     : horizontally(x_, width_), vertically(y_, height_)
   {}
 
-  Rectangle(const Segment& horizontally_, const Segment& vertically_)
+  Rectangle(const Segment<value_type>& horizontally_, const Segment<value_type>& vertically_)
     : horizontally(horizontally_), vertically(vertically_)
   {}
 
@@ -38,13 +41,13 @@ public:
     return Scroom::GtkHelpers::createGdkRectangle(getLeftPos(), getTopPos(), getWidth(), getHeight());
   }
 
-  void moveTo(long x, long y)
+  void moveTo(value_type x, value_type y)
   {
     horizontally.moveTo(x);
     vertically.moveTo(y);
   }
 
-  bool containsPos(long xVal, long yVal) const
+  bool containsPos(value_type xVal, value_type yVal) const
   {
     return
       horizontally.contains(xVal) &&
@@ -65,7 +68,7 @@ public:
       vertically.intersects(other.vertically);
   }
 
-  void reduceSizeToMultipleOf(long size)
+  void reduceSizeToMultipleOf(value_type size)
   {
     horizontally.reduceSizeToMultipleOf(size);
     vertically.reduceSizeToMultipleOf(size);
@@ -77,32 +80,32 @@ public:
                      vertically.intersection(other.vertically));
   }
 
-  long getTopPos() const
+  value_type getTopPos() const
   {
     return vertically.getStart();
   }
 
-  long getLeftPos() const
+  value_type getLeftPos() const
   {
     return horizontally.getStart();
   }
 
-  long getBottomPos() const
+  value_type getBottomPos() const
   {
     return vertically.getEnd();
   }
 
-  long getRightPos() const
+  value_type getRightPos() const
   {
     return horizontally.getEnd();
   }
 
-  long getWidth() const
+  value_type getWidth() const
   {
     return horizontally.getSize();
   }
 
-  long getHeight() const
+  value_type getHeight() const
   {
     return vertically.getSize();
   }
@@ -124,19 +127,29 @@ public:
     return !(*this==other);
   }
 
-  const Segment& getHorizontally() const
+  const Segment<value_type>& getHorizontally() const
   {
     return horizontally;
   }
 
-  const Segment& getVertically() const
+  const Segment<value_type>& getVertically() const
   {
     return vertically;
   }
 
 private:
-  Segment horizontally;
-  Segment vertically;
+  Segment<value_type> horizontally;
+  Segment<value_type> vertically;
 };
 
-std::ostream& operator<<(std::ostream& os, const Rectangle& r);
+template<typename T>
+std::ostream& operator<<(std::ostream& os, const Rectangle<T>& r)
+{
+  os << '<' << r.getLeftPos()
+     << ',' << r.getTopPos()
+     << ',' << r.getWidth()
+     << ',' << r.getHeight()
+     << '>';
+
+  return os;
+}

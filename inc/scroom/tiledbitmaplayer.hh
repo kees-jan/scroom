@@ -263,9 +263,9 @@ public:
   int getDepth()
   { return depth; }
 
-  Rectangle getRect()
+  Rectangle<int> getRect()
   {
-    return Rectangle(0,0,width,height);
+    return Rectangle<int>(0,0,width,height);
   }
 
 public:
