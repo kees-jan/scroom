@@ -43,11 +43,11 @@ configure: | $(AUTOCONF_HOST)-docker
 	$(call echo-build-step,AUTOCONF,"on $(AUTOCONF_HOST)")
 	$(docker-autoconf)
 
-ifeq ($(filter $(AUTOCONF_HOST),$(TARGETS)),) # if AUTOCONF_HOST is in the TARGETS
+ifeq ($(filter $(AUTOCONF_HOST),$(TARGETS)),) # if AUTOCONF_HOST is not in the TARGETS
 $(eval $(call pull-one,$(AUTOCONF_HOST)))
 BUILD_TARGETS=$(TARGETS)
 PULL_TARGETS=$(TARGETS) $(AUTOCONF_HOST)
-else # if AUTOCONF_HOST is in the TARGETS (else branch, AUTOCONF_HOST not in TARGETS)
+else # if AUTOCONF_HOST is in the TARGETS (else branch, AUTOCONF_HOST in TARGETS)
 BUILD_TARGETS=$(filter-out $(AUTOCONF_HOST),$(TARGETS)) $(AUTOCONF_HOST)
 PULL_TARGETS=$(BUILD_TARGETS)
 endif # if AUTOCONF_HOST is in the TARGETS (endif)
