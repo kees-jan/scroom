@@ -19,7 +19,7 @@ then
 
     if [ ! -f "$SCROOM/configure" ]
     then
-        echo "$SCROOM/configure does not exist - run autogen -i there"
+        echo "$SCROOM/configure does not exist - run autoreconf -i there"
         exit 1
     fi
 
