@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -u -e
+set -u -e -x
 
 for d in $(cat supported-ubuntu-releases)
 do
@@ -26,6 +26,6 @@ then
     SCROOM_ABSOLUTE="$(cd $SCROOM && pwd)"
     for d in $(cat supported-ubuntu-releases)
     do
-        docker run -v "$SCROOM_ABSOLUTE":/home/build/scroom --rm test-scroom-dockerfiles:$d sh -c "cd \$(mktemp -d) && /home/build/scroom/configure && make -j12 check"
+        docker run -v "$SCROOM_ABSOLUTE":/home/build/scroom --rm test-scroom-dockerfiles:$d sh -x -c "cd \$(mktemp -d) && /home/build/scroom/configure && make -j6 check"
     done    
 fi
