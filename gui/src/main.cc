@@ -15,6 +15,7 @@
 
 #include <list>
 #include <string>
+#include <iostream>
 
 #ifdef HAVE_BOOST_PROGRAM_OPTIONS_HPP
 #include <boost/program_options.hpp>
