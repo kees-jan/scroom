@@ -49,7 +49,7 @@ public:
   RectangleHorizontalTestScaffold intersection(const RectangleHorizontalTestScaffold& other) const
   { return Rectangle<int>::intersection(other); }
   
-  void moveTo(int x) { return Rectangle<int>::moveTo(make_point(x, verticalContainedStart)); }
+  Rectangle moveTo(int x) { return Rectangle<int>::moveTo(make_point(x, verticalContainedStart)); }
 };
 
 
@@ -88,7 +88,7 @@ public:
   RectangleVerticalTestScaffold intersection(const RectangleVerticalTestScaffold& other) const
   { return Rectangle<int>::intersection(other); }
   
-  void moveTo(int y) { return Rectangle::moveTo(make_point(horizontalContainedStart, y)); }
+  Rectangle moveTo(int y) { return Rectangle::moveTo(make_point(horizontalContainedStart, y)); }
 };
 
 typedef boost::mpl::list<Segment<int>, RectangleHorizontalTestScaffold, RectangleVerticalTestScaffold> test_types;
@@ -153,9 +153,8 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(testCreateSegment, Scaffold, test_types)
 
 BOOST_AUTO_TEST_CASE_TEMPLATE(testMoveTo, Scaffold, test_types)
 {
-  Scaffold s(2,5);
-
-  s.moveTo(5);
+  Scaffold orig(2,5);
+  Scaffold s = orig.moveTo(5);
 
   BOOST_CHECK(!s.isEmpty());
   

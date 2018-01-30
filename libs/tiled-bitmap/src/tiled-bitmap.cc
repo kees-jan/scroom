@@ -15,7 +15,9 @@
 
 #include <boost/thread/mutex.hpp>
 #include <boost/foreach.hpp>
+#include <boost/assign/list_of.hpp>
 
+#include <scroom/assertions.hh>
 #include <scroom/semaphore.hh>
 #include <scroom/unused.hh>
 
@@ -320,62 +322,20 @@ void TiledBitmap::drawTile(cairo_t* cr, const CompressedTile::Ptr tile, const Gd
 
 void TiledBitmap::drawOutOfBoundsZoomingIn(cairo_t* cr, LayerOperations::Ptr layerOperations,
                                            Rectangle<int> const& requestedPresentationArea,
-                                           Rectangle<int> const& actualPresentationArea, double pixelSize_)
+                                           Rectangle<int> const& actualPresentationArea, double pixelSize)
 {
-  int pixelSize = pixelSize_;
+  std::list<Rectangle<int> > border = boost::assign::list_of
+    (requestedPresentationArea.rightOf(actualPresentationArea.getRightPos()))
+    (requestedPresentationArea.below(actualPresentationArea))
+    (requestedPresentationArea.leftOf(actualPresentationArea.getLeftPos()))
+    (requestedPresentationArea.above(actualPresentationArea));
 
-  const Rectangle<int> validPresentationArea = requestedPresentationArea.intersection(actualPresentationArea);
-  
-  long rightOfPresentationInViewCoordinates = validPresentationArea.getRightPos() - requestedPresentationArea.getLeftPos();
-  long bottomOfPresentationInViewCoordinates = validPresentationArea.getBottomPos() - requestedPresentationArea.getTopPos();
-  
-  if(rightOfPresentationInViewCoordinates < requestedPresentationArea.getWidth())
+  BOOST_FOREACH(const Rectangle<int>& r, border)
   {
-    GdkRectangle viewArea;
-    viewArea.x = rightOfPresentationInViewCoordinates*pixelSize;
-    viewArea.width = (requestedPresentationArea.getWidth() - rightOfPresentationInViewCoordinates)*pixelSize;
-    viewArea.y = 0;
-    viewArea.height = requestedPresentationArea.getHeight()*pixelSize;
-
-    cairo_save(cr);
-    layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
-    cairo_restore(cr);
-  }
-  if(bottomOfPresentationInViewCoordinates < requestedPresentationArea.getHeight())
-  {
-    GdkRectangle viewArea;
-    viewArea.y = bottomOfPresentationInViewCoordinates*pixelSize;
-    viewArea.height = (requestedPresentationArea.getHeight() - bottomOfPresentationInViewCoordinates)*pixelSize;
-    viewArea.x = 0;
-    viewArea.width = rightOfPresentationInViewCoordinates*pixelSize;
-      
-    cairo_save(cr);
-    layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
-    cairo_restore(cr);
-  }
-  if(requestedPresentationArea.getLeftPos()<0)
-  {
-    GdkRectangle viewArea;
-    viewArea.x=0;
-    viewArea.width = -requestedPresentationArea.getLeftPos()*pixelSize;
-    viewArea.y=0;
-    viewArea.height = bottomOfPresentationInViewCoordinates*pixelSize;
-
-    cairo_save(cr);
-    layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
-    cairo_restore(cr);
-  }
-  if(requestedPresentationArea.getTopPos()<0)
-  {
-    GdkRectangle viewArea;
-    viewArea.y=0;
-    viewArea.height = -requestedPresentationArea.getTopPos()*pixelSize;
-    viewArea.x = std::max(0, -requestedPresentationArea.getLeftPos()*pixelSize);
-    viewArea.width = rightOfPresentationInViewCoordinates*pixelSize;
-                            
-    cairo_save(cr);
-    layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
-    cairo_restore(cr);
+    if(!r.isEmpty())
+    {
+      layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, pixelSize*(r - requestedPresentationArea.getTopLeft()));
+    }
   }
 }
 
@@ -438,9 +398,7 @@ void TiledBitmap::redrawZoomingIn(ViewInterface::Ptr const& vi, cairo_t* cr, Rec
       }
       else
       {
-        cairo_save(cr);
         layerOperations->drawState(cr, tile->getState(), viewArea);
-        cairo_restore(cr);
       }
 #ifdef DEBUG_TILES
       drawTile(cr, tile, viewArea);
@@ -496,9 +454,7 @@ void TiledBitmap::redrawZoomingOut(ViewInterface::Ptr const& vi, cairo_t* cr, Gd
     viewArea.y = 0;
     viewArea.height = origHeight/pixelSize;
       
-    cairo_save(cr);
     layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
-    cairo_restore(cr);
   }
   if(presentationArea.height < origHeight)
   {
@@ -508,9 +464,7 @@ void TiledBitmap::redrawZoomingOut(ViewInterface::Ptr const& vi, cairo_t* cr, Gd
     viewArea.x = 0;
     viewArea.width = presentationArea.width/pixelSize;
       
-    cairo_save(cr);
     layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
-    cairo_restore(cr);
   }
   if(presentationArea.x<0)
   {
@@ -520,9 +474,7 @@ void TiledBitmap::redrawZoomingOut(ViewInterface::Ptr const& vi, cairo_t* cr, Gd
     viewArea.y=0;
     viewArea.height = presentationArea.height/pixelSize;
 
-    cairo_save(cr);
     layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
-    cairo_restore(cr);
   }
   if(presentationArea.y<0)
   {
@@ -532,9 +484,7 @@ void TiledBitmap::redrawZoomingOut(ViewInterface::Ptr const& vi, cairo_t* cr, Gd
     viewArea.x = std::max(0, -presentationArea.x/pixelSize);
     viewArea.width = presentationArea.width/pixelSize;
                             
-    cairo_save(cr);
     layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
-    cairo_restore(cr);
   }
     
     
@@ -568,9 +518,7 @@ void TiledBitmap::redrawZoomingOut(ViewInterface::Ptr const& vi, cairo_t* cr, Gd
       }
       else
       {
-        cairo_save(cr);
         layerOperations->drawState(cr, tile->getState(), viewArea);
-        cairo_restore(cr);
       }
 #ifdef DEBUG_TILES
       drawTile(cr, tile, viewArea);

@@ -78,6 +78,8 @@ void CommonOperations::initializeCairo(cairo_t* cr)
 
 void CommonOperations::drawState(cairo_t* cr, TileState s, GdkRectangle viewArea)
 {
+  cairo_save(cr);
+
   switch(s)
   {
   case TILE_UNINITIALIZED:
@@ -96,6 +98,8 @@ void CommonOperations::drawState(cairo_t* cr, TileState s, GdkRectangle viewArea
   }
   setClip(cr, viewArea);
   cairo_paint(cr);
+
+  cairo_restore(cr);
 }
 
 void CommonOperations::setClip(cairo_t* cr, int x, int y,

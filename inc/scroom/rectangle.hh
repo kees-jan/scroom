@@ -103,10 +103,10 @@ public:
     return Scroom::GtkHelpers::createGdkRectangle(getLeftPos(), getTopPos(), getWidth(), getHeight());
   }
 
-  void moveTo(Point<value_type> const& other)
+  Rectangle moveTo(Point<value_type> const& other) const
   {
-    horizontally.moveTo(other.x);
-    vertically.moveTo(other.y);
+    return Rectangle(horizontally.moveTo(other.x),
+                     vertically.moveTo(other.y));
   }
 
   bool contains(Point<value_type> const& other) const

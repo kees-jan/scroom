@@ -36,10 +36,9 @@ public:
     }
   }
 
-  Segment& moveTo(value_type p)
+  Segment moveTo(value_type p) const
   {
-    start = p;
-    return *this;
+    return Segment(p, size);
   }
 
   bool contains(value_type p) const
