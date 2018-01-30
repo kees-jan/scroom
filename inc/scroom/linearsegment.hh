@@ -79,6 +79,24 @@ public:
     *this = intersection (other);
   }
 
+  Segment<value_type> before(value_type v) const
+  {
+    if(v < start)
+      return Segment<value_type>();
+    if(v < start+size)
+      return Segment<value_type>(start, v-start);
+    return *this;
+  }
+
+  Segment<value_type> after(value_type v) const
+  {
+    if(v > start+size)
+      return Segment<value_type>();
+    if(v > start)
+      return Segment<value_type>(v, start+size-v);
+    return *this;
+  }
+
   value_type getStart() const
   {
     return start;
@@ -101,7 +119,12 @@ public:
 
   bool operator==(const Segment<value_type>& other) const
   {
-    return (start == other.start) && (size == other.size);
+    if(isEmpty() != other.isEmpty())
+      return false;
+    else if(isEmpty())
+      return true;
+    else
+      return (start == other.start) && (size == other.size);
   }
 
   bool operator!=(const Segment<value_type>& other) const

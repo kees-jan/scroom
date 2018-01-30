@@ -347,8 +347,29 @@ BOOST_AUTO_TEST_CASE(testMath)
   BOOST_CHECK_CLOSE(3.5, result.getHeight(), 1e-6);
 }
 
-////////////////////////////////////////////////////////////////////////
-// Tests
+BOOST_AUTO_TEST_CASE(testCuts)
+{
+  const Rectangle<int> original(10,20,30,40);
+
+  BOOST_CHECK(original.leftOf(5).isEmpty());
+  BOOST_CHECK_EQUAL(original, original.leftOf(40));
+  BOOST_CHECK_EQUAL(Rectangle<int>(10,20,10,40), original.leftOf(20));
+
+  BOOST_CHECK(original.rightOf(40).isEmpty());
+  BOOST_CHECK_EQUAL(original, original.rightOf(5));
+  BOOST_CHECK_EQUAL(Rectangle<int>(20,20,20,40), original.rightOf(20));
+  
+  BOOST_CHECK(original.above(5).isEmpty());
+  BOOST_CHECK_EQUAL(original, original.above(60));
+  BOOST_CHECK_EQUAL(Rectangle<int>(10,20,30,20), original.above(40));
+
+  BOOST_CHECK(original.below(60).isEmpty());
+  BOOST_CHECK_EQUAL(original, original.below(20));
+  BOOST_CHECK_EQUAL(Rectangle<int>(10,40,30,20), original.below(40));
+
+  BOOST_CHECK_EQUAL(Rectangle<int>(10,30,5,5), original.leftOf(Rectangle<int>(15,30,10,5)));
+  BOOST_CHECK_EQUAL(Rectangle<int>(10,20,10,40), original.above(Rectangle<int>(0,100,20,10)));
+}
 
 BOOST_AUTO_TEST_CASE(testPlus)
 {

@@ -197,11 +197,70 @@ public:
     return horizontally.isEmpty() || vertically.isEmpty();
   }
 
+  Rectangle<value_type> leftOf(value_type v) const
+  {
+    return Rectangle<value_type>(horizontally.before(v), vertically);
+  }
+
+  Rectangle<value_type> rightOf(value_type v) const
+  {
+    return Rectangle<value_type>(horizontally.after(v), vertically);
+  }
+
+  Rectangle<value_type> above(value_type v) const
+  {
+    return Rectangle<value_type>(horizontally, vertically.before(v));
+  }
+
+  Rectangle<value_type> below(value_type v) const
+  {
+    return Rectangle<value_type>(horizontally, vertically.after(v));
+  }
+
+  Rectangle<value_type> leftOf(Rectangle<value_type> const& r) const
+  {
+    if(r.isEmpty())
+      return r;
+    
+    return Rectangle<value_type>(horizontally.before(r.horizontally.getStart()),
+                                 vertically.intersection(r.vertically));
+  }
+
+  Rectangle<value_type> rightOf(Rectangle<value_type> const& r) const
+  {
+    if(r.isEmpty())
+      return r;
+    
+    return Rectangle<value_type>(horizontally.after(r.horizontally.getEnd()),
+                                 vertically.intersection(r.vertically));
+  }
+
+  Rectangle<value_type> above(Rectangle<value_type> const& r) const
+  {
+    if(r.isEmpty())
+      return r;
+    
+    return Rectangle<value_type>(horizontally.intersection(r.horizontally),
+                                 vertically.before(r.vertically.getStart()));
+  }
+
+  Rectangle<value_type> below(Rectangle<value_type> const& r) const
+  {
+    if(r.isEmpty())
+      return r;
+    
+    return Rectangle<value_type>(horizontally.intersection(r.horizontally),
+                                 vertically.after(r.vertically.getEnd()));
+  }
+
   bool operator==(const Rectangle& other) const
   {
-    return
-      horizontally == other.horizontally &&
-      vertically == other.vertically;
+    if(isEmpty() != other.isEmpty())
+      return false;
+    else if(isEmpty())
+      return true;
+    else
+      return horizontally == other.horizontally && vertically == other.vertically;
   }
 
   bool operator!=(const Rectangle& other) const
