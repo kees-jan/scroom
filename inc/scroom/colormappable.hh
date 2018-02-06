@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef COLORMAPPABLE_HH
-#define COLORMAPPABLE_HH
+#pragma once
 
 #include <stdint.h>
 
@@ -330,4 +329,3 @@ private:
   bool transparentBackground;
 };
 
-#endif

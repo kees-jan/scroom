@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _PLUGININFORMATIONINTERFACE_H
-#define _PLUGININFORMATIONINTERFACE_H
+#pragma once
 
 #include <boost/shared_ptr.hpp>
 
@@ -33,7 +32,3 @@ public:
   virtual std::string getPluginVersion()=0;
   virtual void registerCapabilities(ScroomPluginInterface::Ptr host)=0;
 };
-
-
-
-#endif

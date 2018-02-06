@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _WORKINTERFACE_H
-#define _WORKINTERFACE_H
+#pragma once
 
 class WorkInterface
 {
@@ -18,6 +17,3 @@ public:
 
   virtual bool doWork()=0;
 };
-
-
-#endif

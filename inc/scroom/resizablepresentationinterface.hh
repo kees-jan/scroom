@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _RESIZABLEPRESENTATIONINTERFACE_H
-#define _RESIZABLEPRESENTATIONINTERFACE_H
+#pragma once
 
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
@@ -32,5 +31,3 @@ public:
 
   virtual void setRect(ViewInterface::WeakPtr const& vi, GdkRectangle const& rect)=0;
 };
-
-#endif

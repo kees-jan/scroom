@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef TEST_HELPERS_HH
-#define TEST_HELPERS_HH
+#pragma once
 
 #include <boost/shared_ptr.hpp>
 
@@ -95,6 +94,3 @@ bool setupTest2bpp(int zoom, int width, int height);
 bool setupTest4bpp(int zoom, int width, int height);
 bool setupTest8bpp(int zoom, int width, int height);
 bool setupTest8bppColormapped(int zoom, int width, int height);
-
-
-#endif

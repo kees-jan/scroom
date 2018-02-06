@@ -1,5 +1,11 @@
-#ifndef ASSERTIONS_H
-#define ASSERTIONS_H
+/*
+ * Scroom - Generic viewer for 2D data
+ * Copyright (C) 2009-2018 Kees-Jan Dijkzeul
+ *
+ * SPDX-License-Identifier: LGPL-2.1
+ */
+
+#pragma once
 
 #include <sys/cdefs.h>
 
@@ -36,7 +42,3 @@ namespace Scroom
 #define defect()                                                            \
   Scroom::Utils::Detail::assertionFailed("control flow assertion",          \
                                      "", __PRETTY_FUNCTION__,__FILE__, __LINE__)
-
-
-
-#endif

@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _SCROOMPLUGIN_H
-#define _SCROOMPLUGIN_H
+#pragma once
 
 #include <gmodule.h>
 
@@ -20,5 +19,3 @@ extern "C"
 
   G_MODULE_IMPORT boost::shared_ptr<PluginInformationInterface> getPluginInformation();
 }
-
-#endif

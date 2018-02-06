@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _PRESENTATIONINTERFACE_H
-#define _PRESENTATIONINTERFACE_H
+#pragma once
 
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
@@ -138,5 +137,3 @@ public:
   
   virtual void addPresentation(PresentationInterface::Ptr const& presentation)=0;
 };
-
-#endif

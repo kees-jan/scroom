@@ -5,8 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifndef _GTK_HELPERS_H_
-#define _GTK_HELPERS_H_
+#pragma once
 
 #include <ostream>
 
@@ -62,7 +61,3 @@ inline bool operator==(GdkRectangle const& left, GdkRectangle const& right)
 }
 
 std::ostream& operator<<(std::ostream& os, GdkRectangle const& r);
-
-#endif
-
-
