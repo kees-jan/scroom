@@ -320,9 +320,9 @@ void TiledBitmap::drawTile(cairo_t* cr, const CompressedTile::Ptr tile, const Gd
 
 }
 
-void TiledBitmap::drawOutOfBoundsZoomingIn(cairo_t* cr, LayerOperations::Ptr layerOperations,
-                                           Rectangle<int> const& requestedPresentationArea,
-                                           Rectangle<int> const& actualPresentationArea, double pixelSize)
+void TiledBitmap::drawOutOfBounds(cairo_t* cr, LayerOperations::Ptr layerOperations,
+                                  Rectangle<int> const& requestedPresentationArea,
+                                  Rectangle<int> const& actualPresentationArea, double pixelSize)
 {
   std::list<Rectangle<int> > border = boost::assign::list_of
     (requestedPresentationArea.rightOf(actualPresentationArea.getRightPos()))
@@ -369,7 +369,7 @@ void TiledBitmap::redrawZoomingIn(ViewInterface::Ptr const& vi, cairo_t* cr, Rec
     
   layerOperations->initializeCairo(cr);
 
-  drawOutOfBoundsZoomingIn(cr, layerOperations, requestedPresentationArea, actualPresentationArea, pixelSize);
+  drawOutOfBounds(cr, layerOperations, requestedPresentationArea, actualPresentationArea, pixelSize);
     
   for(int i=imin; i<imax; i++)
   {
@@ -407,9 +407,10 @@ void TiledBitmap::redrawZoomingIn(ViewInterface::Ptr const& vi, cairo_t* cr, Rec
   }
 }
 
-void TiledBitmap::redrawZoomingOut(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
+void TiledBitmap::redrawZoomingOut(ViewInterface::Ptr const& vi, cairo_t* cr, Rectangle<int> const& requestedPresentationArea, int zoom)
 {
   TiledBitmapViewData::Ptr viewData = this->viewData[vi];
+  GdkRectangle presentationArea = requestedPresentationArea;
 
   // 1. Pick the correct layer
   unsigned int layerNr=0;
@@ -425,10 +426,11 @@ void TiledBitmap::redrawZoomingOut(ViewInterface::Ptr const& vi, cairo_t* cr, Gd
   Layer::Ptr layer = layers[layerNr];
   LayerOperations::Ptr layerOperations = ls[std::min(ls.size()-1, (size_t)layerNr)];
 
-  const int origWidth = presentationArea.width;
-  const int origHeight = presentationArea.height;
-  presentationArea.width = std::min(presentationArea.width, layer->getWidth()-presentationArea.x);
-  presentationArea.height = std::min(presentationArea.height, layer->getHeight()-presentationArea.y);
+  const Rectangle<int> actualPresentationArea = layer->getRect();
+  const Rectangle<int> validPresentationArea = requestedPresentationArea.intersection(actualPresentationArea);
+
+  presentationArea.width = validPresentationArea.getRightPos() - requestedPresentationArea.getLeftPos();
+  presentationArea.height = validPresentationArea.getBottomPos() - requestedPresentationArea.getTopPos();
     
   const int left = presentationArea.x;
   const int top = presentationArea.y;
@@ -445,49 +447,9 @@ void TiledBitmap::redrawZoomingOut(ViewInterface::Ptr const& vi, cairo_t* cr, Gd
   const int pixelSize = 1<<-zoom;
     
   layerOperations->initializeCairo(cr);
-    
-  if(presentationArea.width < origWidth)
-  {
-    GdkRectangle viewArea;
-    viewArea.x = presentationArea.width/pixelSize;
-    viewArea.width = (origWidth - presentationArea.width)/pixelSize;
-    viewArea.y = 0;
-    viewArea.height = origHeight/pixelSize;
-      
-    layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
-  }
-  if(presentationArea.height < origHeight)
-  {
-    GdkRectangle viewArea;
-    viewArea.y = presentationArea.height/pixelSize;
-    viewArea.height = (origHeight - presentationArea.height)/pixelSize;
-    viewArea.x = 0;
-    viewArea.width = presentationArea.width/pixelSize;
-      
-    layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
-  }
-  if(presentationArea.x<0)
-  {
-    GdkRectangle viewArea;
-    viewArea.x=0;
-    viewArea.width = -presentationArea.x/pixelSize;
-    viewArea.y=0;
-    viewArea.height = presentationArea.height/pixelSize;
 
-    layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
-  }
-  if(presentationArea.y<0)
-  {
-    GdkRectangle viewArea;
-    viewArea.y=0;
-    viewArea.height = -presentationArea.y/pixelSize;
-    viewArea.x = std::max(0, -presentationArea.x/pixelSize);
-    viewArea.width = presentationArea.width/pixelSize;
-                            
-    layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, viewArea);
-  }
-    
-    
+  drawOutOfBounds(cr, layerOperations, requestedPresentationArea, actualPresentationArea, 1.0/pixelSize);
+
   for(int i=imin; i<imax; i++)
   {
     for(int j=jmin; j<jmax; j++)
