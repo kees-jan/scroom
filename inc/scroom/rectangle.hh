@@ -105,8 +105,12 @@ public:
 
   Rectangle moveTo(Point<value_type> const& other) const
   {
-    return Rectangle(horizontally.moveTo(other.x),
-                     vertically.moveTo(other.y));
+    return moveTo(other.x, other.y);
+  }
+
+  Rectangle moveTo(value_type const& x, value_type const& y) const
+  {
+    return Rectangle(horizontally.moveTo(x), vertically.moveTo(y));
   }
 
   bool contains(Point<value_type> const& other) const

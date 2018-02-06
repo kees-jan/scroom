@@ -13,6 +13,8 @@ incscroom_HEADERS = \
 	inc/scroom/bitmap-helpers.hh \
 	inc/scroom/blockallocator.hh \
 	inc/scroom/bookkeeping.hh \
+	inc/scroom/cairo-helpers.hh \
+	inc/scroom/color.hh \
 	inc/scroom/colormappable.hh \
 	inc/scroom/function-additor.hh \
 	inc/scroom/global.hh \
@@ -241,6 +243,7 @@ scroomlib_libs = \
 
 libs_scroom_src_libsscroom_la_SOURCES = \
 	libs/scroom/src/bitmap-helpers.cc \
+	libs/scroom/src/cairo-helpers.cc \
 	libs/scroom/src/colormap-helpers.cc \
 	libs/scroom/src/roi-parser.cc \
 	libs/scroom/src/roi.cc \

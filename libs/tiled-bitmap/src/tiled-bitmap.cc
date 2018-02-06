@@ -15,9 +15,9 @@
 
 #include <boost/thread/mutex.hpp>
 #include <boost/foreach.hpp>
-#include <boost/assign/list_of.hpp>
 
 #include <scroom/assertions.hh>
+#include <scroom/cairo-helpers.hh>
 #include <scroom/semaphore.hh>
 #include <scroom/unused.hh>
 
@@ -320,25 +320,6 @@ void TiledBitmap::drawTile(cairo_t* cr, const CompressedTile::Ptr tile, const Gd
 
 }
 
-void TiledBitmap::drawOutOfBounds(cairo_t* cr, LayerOperations::Ptr layerOperations,
-                                  Rectangle<int> const& requestedPresentationArea,
-                                  Rectangle<int> const& actualPresentationArea, double pixelSize)
-{
-  std::list<Rectangle<int> > border = boost::assign::list_of
-    (requestedPresentationArea.rightOf(actualPresentationArea.getRightPos()))
-    (requestedPresentationArea.below(actualPresentationArea))
-    (requestedPresentationArea.leftOf(actualPresentationArea.getLeftPos()))
-    (requestedPresentationArea.above(actualPresentationArea));
-
-  BOOST_FOREACH(const Rectangle<int>& r, border)
-  {
-    if(!r.isEmpty())
-    {
-      layerOperations->drawState(cr, TILE_OUT_OF_BOUNDS, pixelSize*(r - requestedPresentationArea.getTopLeft()));
-    }
-  }
-}
-
 void TiledBitmap::redrawZoomingIn(ViewInterface::Ptr const& vi, cairo_t* cr, Rectangle<int> const& requestedPresentationArea, int zoom)
 {
   TiledBitmapViewData::Ptr viewData = this->viewData[vi];
@@ -369,7 +350,7 @@ void TiledBitmap::redrawZoomingIn(ViewInterface::Ptr const& vi, cairo_t* cr, Rec
     
   layerOperations->initializeCairo(cr);
 
-  drawOutOfBounds(cr, layerOperations, requestedPresentationArea, actualPresentationArea, pixelSize);
+  drawOutOfBounds(cr, requestedPresentationArea, actualPresentationArea, pixelSize);
     
   for(int i=imin; i<imax; i++)
   {
@@ -448,7 +429,7 @@ void TiledBitmap::redrawZoomingOut(ViewInterface::Ptr const& vi, cairo_t* cr, Re
     
   layerOperations->initializeCairo(cr);
 
-  drawOutOfBounds(cr, layerOperations, requestedPresentationArea, actualPresentationArea, 1.0/pixelSize);
+  drawOutOfBounds(cr, requestedPresentationArea, actualPresentationArea, 1.0/pixelSize);
 
   for(int i=imin; i<imax; i++)
   {

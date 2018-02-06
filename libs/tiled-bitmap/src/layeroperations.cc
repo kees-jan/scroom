@@ -18,8 +18,9 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/utility.hpp>
 
-#include <scroom/unused.hh>
 #include <scroom/bitmap-helpers.hh>
+#include <scroom/cairo-helpers.hh>
+#include <scroom/unused.hh>
 
 using Scroom::Utils::Stuff;
 using namespace Scroom::Bitmap;
@@ -78,44 +79,26 @@ void CommonOperations::initializeCairo(cairo_t* cr)
 
 void CommonOperations::drawState(cairo_t* cr, TileState s, GdkRectangle viewArea)
 {
-  cairo_save(cr);
+  Color c;
 
   switch(s)
   {
   case TILE_UNINITIALIZED:
-    cairo_set_source_rgb(cr, 1, 1, 0.5); // Yellow
+    c = Color(1, 1, 0.5); // Yellow
     break;
   case TILE_UNLOADED:
-    cairo_set_source_rgb(cr, 0.5, 1, 0.5); // Green
+    c = Color(0.5, 1, 0.5); // Green
     break;
   case TILE_LOADED:
-    cairo_set_source_rgb(cr, 1, 0.5, 0.5); // Red
+    c = Color(1, 0.5, 0.5); // Red
     break;
   case TILE_OUT_OF_BOUNDS:
   default:
-    cairo_set_source_rgb(cr, 0.75, 0.75, 1); // Blue
+    c = Colors::OUT_OF_BOUNDS;
     break;
   }
-  setClip(cr, viewArea);
-  cairo_paint(cr);
 
-  cairo_restore(cr);
-}
-
-void CommonOperations::setClip(cairo_t* cr, int x, int y,
-                                      int width, int height)
-{
-  cairo_move_to(cr, x, y);
-  cairo_line_to(cr, x+width, y);
-  cairo_line_to(cr, x+width, y+height);
-  cairo_line_to(cr, x, y+height);
-  cairo_line_to(cr, x, y);
-  cairo_clip(cr);
-}
-
-void CommonOperations::setClip(cairo_t* cr, const GdkRectangle& area)
-{
-  setClip(cr, area.x, area.y, area.width, area.height);
+  drawRectangle(cr, c, viewArea);
 }
 
 void CommonOperations::drawPixelValue(cairo_t* cr, int x, int y, int size, int value)
