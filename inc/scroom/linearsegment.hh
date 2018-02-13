@@ -15,9 +15,10 @@
 
 template<typename T>
 class Segment: public boost::addable2<Segment<T>, T>,
-    public boost::subtractable2<Segment<T>, T>,
-    public boost::multipliable2<Segment<T>, T>,
-    public boost::andable<Segment<T>>
+               public boost::subtractable2<Segment<T>, T>,
+               public boost::multipliable2<Segment<T>, T>,
+               public boost::dividable2<Segment<T>, T>,
+               public boost::andable<Segment<T>>
 {
 public:
   typedef T value_type;
@@ -147,10 +148,20 @@ public:
     size *= n;
     return *this;
   }
+  Segment<value_type>& operator/=(value_type n)
+  {
+    start /= n;
+    size /= n;
+    return *this;
+  }
   Segment<value_type>& operator&=(const Segment<value_type>& other)
   {
     intersect (other);
     return *this;
+  }
+  void setSize(value_type n)
+  {
+    size = n;
   }
 
 private:

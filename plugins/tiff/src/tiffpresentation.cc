@@ -10,9 +10,9 @@
 #include <tiffio.h>
 #include <string.h>
 
-#include <scroom/unused.hh>
-
+#include <scroom/cairo-helpers.hh>
 #include <scroom/layeroperations.hh>
+#include <scroom/unused.hh>
 
 TiffPresentation::TiffPresentation()
   : fileName(), tif(NULL), height(0), width(0), tbi(), bps(0), spp(0)
@@ -251,6 +251,8 @@ std::set<ViewInterface::WeakPtr> TiffPresentation::getViews()
 void TiffPresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr,
     GdkRectangle presentationArea, int zoom)
 {
+  drawOutOfBoundsWithoutBackground(cr, presentationArea, getRect(), pixelSizeFromZoom(zoom));
+  
   if (tbi)
     tbi->redraw(vi, cr, presentationArea, zoom);
 }

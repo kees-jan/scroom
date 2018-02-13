@@ -9,6 +9,7 @@
 
 #include <math.h>
 
+#include <scroom/cairo-helpers.hh>
 #include <scroom/unused.hh>
 
 ExamplePresentation::ExamplePresentation()
@@ -30,7 +31,7 @@ void ExamplePresentation::fillPattern()
   int xorig = 505;
   int yorig = 505;
 
-  for(int i=-500; i<500; i+=50)
+  for(int i=-500; i<=500; i+=50)
   {
     cairo_move_to(cr, xorig-500, yorig+i);
     cairo_line_to(cr, xorig+500, yorig+i);
@@ -74,18 +75,11 @@ void ExamplePresentation::close(ViewInterface::WeakPtr vi)
 void ExamplePresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
 {
   UNUSED(vi);
-  // char buffer[] = "Hello world!";
-  // 
-  // cairo_move_to(cr, 30, 30);
-  // cairo_show_text(cr, buffer);
-
-  double pp=1.0;
-  if(zoom >=0)
-    pp *= 1<<zoom;
-  else
-    pp /= 1<<(-zoom);
-
+  double pp=pixelSizeFromZoom(zoom);
   double scale = pow(2, -zoom);
+
+  GdkRectangle actualPresentationArea = getRect();
+  drawOutOfBoundsWithBackground(cr, presentationArea, actualPresentationArea, pp);
 
   int xorig = (int)(-presentationArea.x*pp);
   int yorig = (int)(-presentationArea.y*pp);

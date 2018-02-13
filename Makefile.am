@@ -388,7 +388,8 @@ plugins_example_libspexample_la_SOURCES = \
 	plugins/example/examplepresentation.hh \
 	plugins/example/main.cc
 
-plugins_example_libspexample_la_LIBADD = -lm @EXAMPLEPLUGIN_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
+plugins_example_libspexample_la_LIBADD = -lm @EXAMPLEPLUGIN_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
+	libs/scroom/src/libsscroom.la
 
 ########################################################################
 ### plugins/transparentoverlay

@@ -7,6 +7,8 @@
 
 #include <scroom/cairo-helpers.hh>
 
+#include <iostream>
+
 #include <boost/assign/list_of.hpp>
 
 namespace Colors
@@ -43,12 +45,41 @@ void drawRectangle(cairo_t* cr, Color const& c, Rectangle<double> const& viewAre
   cairo_restore(cr);
 }
 
-void drawOutOfBounds(cairo_t* cr, 
-                     Rectangle<int> const& requestedPresentationArea,
-                     Rectangle<int> const& actualPresentationArea, double pixelSize)
+void drawOutOfBoundsWithBackground(cairo_t* cr, 
+                                   Rectangle<int> const& requestedPresentationArea,
+                                   Rectangle<int> const& actualPresentationArea, double pixelSize)
 {
   drawRectangle(cr, Colors::OUT_OF_BOUNDS, pixelSize*(requestedPresentationArea.moveTo(0,0)));
   drawRectangle(cr, Colors::IN_BOUNDS,
                 pixelSize*(actualPresentationArea - requestedPresentationArea.getTopLeft()));
 }
 
+void drawOutOfBoundsWithoutBackground(cairo_t* cr,
+                                      Rectangle<int> const& requestedPresentationArea,
+                                      Rectangle<int> const& actualPresentationArea, double pixelSize)
+{
+  std::list<Rectangle<int> > border = boost::assign::list_of
+    (requestedPresentationArea.leftOf(actualPresentationArea.getLeftPos()))
+    (requestedPresentationArea.rightOf(actualPresentationArea.getRightPos()))
+    (requestedPresentationArea.above(actualPresentationArea.getTopPos()))
+    (requestedPresentationArea.below(actualPresentationArea.getBottomPos()));
+
+  for(const Rectangle<int>& r: border)
+  {
+    if(!r.isEmpty())
+    {
+      drawRectangle(cr, Colors::OUT_OF_BOUNDS, pixelSize*(r - requestedPresentationArea.getTopLeft()));
+    }
+  }
+}
+
+double pixelSizeFromZoom(int zoom)
+{
+  double pixelSize=1.0;
+  if(zoom >=0)
+    pixelSize *= 1<<zoom;
+  else
+    pixelSize /= 1<<(-zoom);
+
+  return pixelSize;
+}

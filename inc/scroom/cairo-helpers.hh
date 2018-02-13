@@ -24,6 +24,10 @@ namespace Colors
 void setClip(cairo_t* cr, int x, int y, int width, int height);
 void setClip(cairo_t* cr, const GdkRectangle& area);
 void drawRectangle(cairo_t* cr, Color const& c, Rectangle<double> const& viewArea);
-void drawOutOfBounds(cairo_t* cr, 
-                     Rectangle<int> const& requestedPresentationArea,
-                     Rectangle<int> const& actualPresentationArea, double pixelSize);
+void drawOutOfBoundsWithBackground(cairo_t* cr, 
+                                   Rectangle<int> const& requestedPresentationArea,
+                                   Rectangle<int> const& actualPresentationArea, double pixelSize);
+void drawOutOfBoundsWithoutBackground(cairo_t* cr,
+                                      Rectangle<int> const& requestedPresentationArea,
+                                      Rectangle<int> const& actualPresentationArea, double pixelSize);
+double pixelSizeFromZoom(int zoom);

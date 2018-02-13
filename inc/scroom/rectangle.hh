@@ -18,7 +18,8 @@
 template<typename T>
 class Point : public boost::addable<Point<T>>,
               public boost::subtractable<Point<T>>,
-              public boost::multipliable2<Point<T>,T>
+              public boost::multipliable2<Point<T>,T>,
+              public boost::dividable2<Point<T>,T>
 {
 public:
   typedef T value_type;
@@ -51,6 +52,13 @@ public:
     return *this;
   }
 
+  Point<value_type>& operator/=(value_type other)
+  {
+    x /= other;
+    y /= other;
+    return *this;
+  }
+
   Point<value_type> operator-() const
   {
     return Point<value_type>(-x, -y);
@@ -78,7 +86,8 @@ std::ostream& operator<<(std::ostream& os, const Point<T>& p)
 template<typename T>
 class Rectangle : public boost::addable2<Rectangle<T>,Point<T>>,
                   public boost::subtractable2<Rectangle<T>,Point<T>>,
-                  public boost::multipliable2<Rectangle<T>,T>
+                  public boost::multipliable2<Rectangle<T>,T>,
+                  public boost::dividable2<Rectangle<T>,T>
 {
 public:
   typedef T value_type;
@@ -291,6 +300,13 @@ public:
     return *this;
   }
 
+  Rectangle<value_type>& operator/=(value_type other)
+  {
+    horizontally /= other;
+    vertically /= other;
+    return *this;
+  }
+
   const Segment<value_type>& getHorizontally() const
   {
     return horizontally;
@@ -299,6 +315,12 @@ public:
   const Segment<value_type>& getVertically() const
   {
     return vertically;
+  }
+
+  void setSize(Point<value_type> const& s)
+  {
+    horizontally.setSize(s.x);
+    vertically.setSize(s.y);
   }
 
 private:
