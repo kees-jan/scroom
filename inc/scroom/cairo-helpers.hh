@@ -27,6 +27,9 @@ void drawRectangle(cairo_t* cr, Color const& c, Rectangle<double> const& viewAre
 void drawOutOfBoundsWithBackground(cairo_t* cr, 
                                    Rectangle<int> const& requestedPresentationArea,
                                    Rectangle<int> const& actualPresentationArea, double pixelSize);
+void drawOutOfBoundsWithBackgroundColor(cairo_t* cr, const Color& background,
+                                   Rectangle<int> const& requestedPresentationArea,
+                                   Rectangle<int> const& actualPresentationArea, double pixelSize);
 void drawOutOfBoundsWithoutBackground(cairo_t* cr,
                                       Rectangle<int> const& requestedPresentationArea,
                                       Rectangle<int> const& actualPresentationArea, double pixelSize);

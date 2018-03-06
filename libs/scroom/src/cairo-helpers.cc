@@ -54,6 +54,15 @@ void drawOutOfBoundsWithBackground(cairo_t* cr,
                 pixelSize*(actualPresentationArea - requestedPresentationArea.getTopLeft()));
 }
 
+void drawOutOfBoundsWithBackgroundColor(cairo_t* cr, const Color& background,
+                                   Rectangle<int> const& requestedPresentationArea,
+                                   Rectangle<int> const& actualPresentationArea, double pixelSize)
+{
+  drawOutOfBoundsWithoutBackground(cr, requestedPresentationArea, actualPresentationArea, pixelSize);
+  drawRectangle(cr, background,
+                pixelSize*(actualPresentationArea - requestedPresentationArea.getTopLeft()));
+}
+
 void drawOutOfBoundsWithoutBackground(cairo_t* cr,
                                       Rectangle<int> const& requestedPresentationArea,
                                       Rectangle<int> const& actualPresentationArea, double pixelSize)
