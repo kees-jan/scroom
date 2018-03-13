@@ -200,7 +200,11 @@ void TransparentOverlayViewInfo::redraw(cairo_t* cr, GdkRectangle presentationAr
       cairo_restore(cr_sub);
 
       cairo_set_source_surface(cr, surface, 0, 0);
-      cairo_paint_with_alpha(cr, 1.0/(count+1));
+
+      if(hasTransparentBackground)
+        cairo_paint(cr);
+      else
+        cairo_paint_with_alpha(cr, 1.0/(count+1));
 
       if(!hasTransparentBackground)
         count++;
