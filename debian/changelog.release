@@ -1,3 +1,9 @@
+scroom (0.9-1) xenial; urgency=medium
+
+  * For more info see https://github.com/kees-jan/scroom/wiki
+
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Sun, 25 Mar 2018 12:40:03 +0200
+
 scroom (0.8-1) xenial; urgency=medium
 
   * For more info see https://github.com/kees-jan/scroom/wiki

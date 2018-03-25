@@ -119,7 +119,7 @@ then
     TARGET_PACKAGE=scroom-snapshot
     CONTROL=control.snapshot
 else
-    TARGET_PACKAGE=scroom-0.8
+    TARGET_PACKAGE=scroom-0.9
     CONTROL=control.release
 fi || exit 1
 
@@ -150,7 +150,7 @@ then
 fi
 
 # Ubuntu source packages
-for source_package in trusty xenial zesty artful bionic
+for source_package in trusty xenial artful bionic
 do
     echo_me $source_package
     ( rm -rf "$BUILD/$source_package" > /dev/null 2>&1 ;

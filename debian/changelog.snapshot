@@ -1,8 +1,8 @@
-scroom (0.8-14-g9113506-1) xenial; urgency=medium
+scroom (0.9-1) xenial; urgency=medium
 
-  * Snapshot release
+  * For more info see https://github.com/kees-jan/scroom/wiki
 
- -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Wed, 03 Jan 2018 13:49:14 +0100
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Sun, 25 Mar 2018 12:40:03 +0200
 
 scroom (0.8-1) xenial; urgency=medium
 
