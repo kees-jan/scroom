@@ -14,6 +14,7 @@
 #include <stdio.h>
 
 #include <boost/filesystem.hpp>
+#include <boost/range/adaptor/reversed.hpp>
 
 #include <scroom/threadpool.hh>
 
@@ -182,7 +183,8 @@ PresentationInterface::Ptr loadPresentation(GtkFileFilterInfo const& info)
 {
   static std::map<boost::filesystem::path,PresentationInterface::WeakPtr> loadedPresentations;
   // Create canonical path from filename
-  const std::map<OpenPresentationInterface::Ptr, std::string>& openPresentationInterfaces = PluginManager::getInstance()->getOpenPresentationInterfaces();
+  const PluginManager::OpenPresentationInterfaceCollection& openPresentationInterfaces =
+    PluginManager::getInstance()->getOpenPresentationInterfaces();
 
 #ifdef HAVE_BOOST_FILESYSTEM_CANONICAL
   boost::filesystem::path key(canonical(boost::filesystem::path(info.filename)));
@@ -194,29 +196,31 @@ PresentationInterface::Ptr loadPresentation(GtkFileFilterInfo const& info)
 
   if(!presentation)
   {
-    for (auto const& cur : openPresentationInterfaces)
+    for (auto const& priority : boost::adaptors::reverse(openPresentationInterfaces))
     {
-      std::list<GtkFileFilter*> filters = cur.first->getFilters();
-      if (filterMatchesInfo(info, filters))
+      for (auto const& cur : priority.second)
       {
-        presentation = cur.first->open(info.filename);
-
-        if (presentation)
+        std::list<GtkFileFilter*> filters = cur.first->getFilters();
+        if (filterMatchesInfo(info, filters))
         {
-          loadedPresentations[key] = presentation;
-          on_presentation_created(presentation);
-          break;
+          presentation = cur.first->open(info.filename);
+
+          if (presentation)
+          {
+            loadedPresentations[key] = presentation;
+            on_presentation_created(presentation);
+            return presentation;
+          }
         }
       }
     }
   }
-
-  if(presentation)
+  else
   {
     return presentation;
   }
-  else
-    throw std::invalid_argument("Don't know how to load presentation "+std::string(info.filename));
+  
+  throw std::invalid_argument("Don't know how to load presentation "+std::string(info.filename));
 }
 
 PresentationInterface::Ptr loadPresentation(GtkFileFilterInfoPtr const& info)
@@ -226,7 +230,8 @@ PresentationInterface::Ptr loadPresentation(GtkFileFilterInfoPtr const& info)
 
 void load(GtkFileFilterInfo const& info)
 {
-  const std::map<OpenPresentationInterface::Ptr, std::string>& openPresentationInterfaces = PluginManager::getInstance()->getOpenPresentationInterfaces();
+  const PluginManager::OpenPresentationInterfaceCollection& openPresentationInterfaces =
+    PluginManager::getInstance()->getOpenPresentationInterfaces();
   const std::map<OpenInterface::Ptr, std::string>& openInterfaces = PluginManager::getInstance()->getOpenInterfaces();
 
   for (auto const& cur : openInterfaces)
@@ -239,18 +244,21 @@ void load(GtkFileFilterInfo const& info)
       return;
     }
   }
-  for (auto const& cur : openPresentationInterfaces)
+  for (auto const& priority : boost::adaptors::reverse(openPresentationInterfaces))
   {
-    std::list<GtkFileFilter*> filters = cur.first->getFilters();
-    GtkFileFilterListDestroyer destroyer(filters);
-    if (filterMatchesInfo(info, filters))
+    for (auto const& cur : priority.second)
     {
-      PresentationInterface::Ptr presentation = cur.first->open(info.filename);
-      if (presentation)
+      std::list<GtkFileFilter*> filters = cur.first->getFilters();
+      GtkFileFilterListDestroyer destroyer(filters);
+      if (filterMatchesInfo(info, filters))
       {
-        on_presentation_created(presentation);
-        find_or_create_scroom(presentation);
-        return;
+        PresentationInterface::Ptr presentation = cur.first->open(info.filename);
+        if (presentation)
+        {
+          on_presentation_created(presentation);
+          find_or_create_scroom(presentation);
+          return;
+        }
       }
     }
   }

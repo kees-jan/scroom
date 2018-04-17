@@ -114,7 +114,7 @@ public:
 
   virtual void registerNewPresentationInterface(const std::string& identifier, NewPresentationInterface::Ptr newPresentationInterface)=0;
   virtual void registerNewAggregateInterface(const std::string& identifier, NewAggregateInterface::Ptr newAggregateInterface)=0;
-  virtual void registerOpenPresentationInterface(const std::string& identifier, OpenPresentationInterface::Ptr openPresentationInterface)=0;
+  virtual void registerOpenPresentationInterface(const std::string& identifier, OpenPresentationInterface::Ptr openPresentationInterface, int priority=0)=0;
   virtual void registerOpenInterface(const std::string& identifier, OpenInterface::Ptr openInterface)=0;
   virtual void registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer)=0;
   virtual void registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer)=0;

@@ -74,16 +74,15 @@ void on_open_activate (GtkMenuItem*, gpointer user_data)
                                         NULL);
   gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER (dialog), currentFolder.c_str());
     
-  const std::map<OpenPresentationInterface::Ptr, std::string>& openPresentationInterfaces = PluginManager::getInstance()->getOpenPresentationInterfaces();
+  const PluginManager::OpenPresentationInterfaceCollection& openPresentationInterfaces =
+    PluginManager::getInstance()->getOpenPresentationInterfaces();
   const std::map<OpenInterface::Ptr, std::string>& openInterfaces = PluginManager::getInstance()->getOpenInterfaces();
 
-  for(auto const& cur: openPresentationInterfaces)
-  {
-    for(auto const& f: cur.first->getFilters())
-    {
-      gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dialog), f);
-    }
-  }
+  for(auto const& priority : openPresentationInterfaces)
+    for(auto const& cur: priority.second)
+      for(auto const& f: cur.first->getFilters())
+        gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dialog), f);
+
   for(auto const& cur: openInterfaces)
   {
     for(auto const& f: cur.first->getFilters())

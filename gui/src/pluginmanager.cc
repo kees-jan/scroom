@@ -220,11 +220,11 @@ void PluginManager::registerNewAggregateInterface(const std::string& identifier,
 }
 
 
-void PluginManager::registerOpenPresentationInterface(const std::string& extension, OpenPresentationInterface::Ptr openPresentationInterface)
+void PluginManager::registerOpenPresentationInterface(const std::string& extension, OpenPresentationInterface::Ptr openPresentationInterface, int priority)
 {
-  printf("I learned how to open a %s file!\n", extension.c_str());
+  printf("I learned how to open a %s file (priority %d)!\n", extension.c_str(), priority);
 
-  openPresentationInterfaces[openPresentationInterface] = extension;
+  openPresentationInterfaces[priority].push_back(std::make_pair(openPresentationInterface, extension));
 }
 
 void PluginManager::registerOpenInterface(const std::string& extension, OpenInterface::Ptr openInterface)
@@ -256,7 +256,7 @@ const std::map<std::string, NewAggregateInterface::Ptr>& PluginManager::getNewAg
   return newAggregateInterfaces;
 }
 
-const std::map<OpenPresentationInterface::Ptr, std::string>& PluginManager::getOpenPresentationInterfaces()
+const PluginManager::OpenPresentationInterfaceCollection& PluginManager::getOpenPresentationInterfaces()
 {
   return openPresentationInterfaces;
 }

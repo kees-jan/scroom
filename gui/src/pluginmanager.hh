@@ -35,6 +35,9 @@ class PluginManager : public WorkInterface, public ScroomPluginInterface, virtua
 {
 public:
   typedef boost::shared_ptr<PluginManager> Ptr;
+  typedef std::map<int, std::list<std::pair<OpenPresentationInterface::Ptr, std::string> > >
+    OpenPresentationInterfaceCollection;
+  
 private:
   typedef enum
     {
@@ -54,7 +57,7 @@ private:
   std::list<PluginInformation> pluginInformationList;
   std::map<NewPresentationInterface::Ptr, std::string> newPresentationInterfaces;
   std::map<std::string, NewAggregateInterface::Ptr> newAggregateInterfaces;
-  std::map<OpenPresentationInterface::Ptr, std::string> openPresentationInterfaces;
+  OpenPresentationInterfaceCollection openPresentationInterfaces;
   std::map<OpenInterface::Ptr, std::string> openInterfaces;
   std::map<ViewObserver::Ptr, std::string> viewObservers;
   std::map<PresentationObserver::Ptr, std::string> presentationObservers;
@@ -74,14 +77,14 @@ public:
 
   virtual void registerNewPresentationInterface(const std::string& identifier, NewPresentationInterface::Ptr newPresentationInterface);
   virtual void registerNewAggregateInterface(const std::string& identifier, NewAggregateInterface::Ptr newAggregateInterface);
-  virtual void registerOpenPresentationInterface(const std::string& extension, OpenPresentationInterface::Ptr openPresentationInterface);
+  virtual void registerOpenPresentationInterface(const std::string& extension, OpenPresentationInterface::Ptr openPresentationInterface, int priority=0);
   virtual void registerOpenInterface(const std::string& extension, OpenInterface::Ptr openInterface);
   virtual void registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer);
   virtual void registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer);
 
   const std::map<NewPresentationInterface::Ptr, std::string>& getNewPresentationInterfaces();
   const std::map<std::string, NewAggregateInterface::Ptr>& getNewAggregateInterfaces();
-  const std::map<OpenPresentationInterface::Ptr, std::string>& getOpenPresentationInterfaces();
+  const OpenPresentationInterfaceCollection& getOpenPresentationInterfaces();
   const std::map<OpenInterface::Ptr, std::string>& getOpenInterfaces();
   const std::map<ViewObserver::Ptr, std::string>& getViewObservers();
   const std::map<PresentationObserver::Ptr, std::string>& getPresentationObservers();
