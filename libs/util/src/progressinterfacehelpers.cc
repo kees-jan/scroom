@@ -7,8 +7,6 @@
 
 #include <scroom/progressinterfacehelpers.hh>
 
-#include <boost/foreach.hpp>
-
 #include <scroom/unused.hh>
 #include <scroom/assertions.hh>
 
@@ -169,28 +167,28 @@ namespace Scroom
     void ProgressInterfaceBroadcaster::setIdle()
     {
       boost::mutex::scoped_lock lock(mut);
-      BOOST_FOREACH(ProgressInterface::Ptr const& child, children)
+      for(ProgressInterface::Ptr const& child: children)
         child->setIdle();
     }
 
     void ProgressInterfaceBroadcaster::setWaiting(double progress)
     {
       boost::mutex::scoped_lock lock(mut);
-      BOOST_FOREACH(ProgressInterface::Ptr const& child, children)
+      for(ProgressInterface::Ptr const& child: children)
         child->setWaiting(progress);
     }
 
     void ProgressInterfaceBroadcaster::setWorking(double progress)
     {
       boost::mutex::scoped_lock lock(mut);
-      BOOST_FOREACH(ProgressInterface::Ptr const& child, children)
+      for(ProgressInterface::Ptr const& child: children)
         child->setWorking(progress);
     }
 
     void ProgressInterfaceBroadcaster::setFinished()
     {
       boost::mutex::scoped_lock lock(mut);
-      BOOST_FOREACH(ProgressInterface::Ptr const& child, children)
+      for(ProgressInterface::Ptr const& child: children)
         child->setFinished();
     }
 
@@ -208,7 +206,7 @@ namespace Scroom
       : parent(parent), child(child)
     {
     }
-    
+
     ProgressInterfaceBroadcaster::Unsubscriber::~Unsubscriber()
     {
       parent->unsubscribe(child);
@@ -230,7 +228,7 @@ namespace Scroom
       boost::mutex::scoped_lock l(mut);
       this->state = state;
       this->progress = progress;
-    }  
+    }
 
     void ProgressInterfaceMultiplexer::ChildData::clearFinished()
     {
@@ -240,7 +238,7 @@ namespace Scroom
         state = IDLE;
         progress = 0.0;
       }
-    }  
+    }
 
     ////////////////////////////////////////////////////////////////////////
 
@@ -300,7 +298,7 @@ namespace Scroom
       int workers = 0;
 
       boost::mutex::scoped_lock l(mut);
-      BOOST_FOREACH(const ChildData::Ptr& child, children)
+      for(const ChildData::Ptr& child: children)
       {
         boost::mutex::scoped_lock child_lock(child->mut);
         switch(child->state)
@@ -332,12 +330,12 @@ namespace Scroom
 
       if(state==ProgressStateInterface::FINISHED)
       {
-        BOOST_FOREACH(const ChildData::Ptr& child, children)
+        for(const ChildData::Ptr& child: children)
         {
           child->clearFinished();
         }
       }
     }
-    
+
   } // namespace Scroom::Utils
 } // namespace Scroom

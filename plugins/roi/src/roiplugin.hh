@@ -25,16 +25,15 @@ public:
 public:
   ////////////////////////////////////////////////////////////////////////
   // PluginInformationInterface
-  
+
   virtual std::string getPluginName();
   virtual std::string getPluginVersion();
   virtual void registerCapabilities(ScroomPluginInterface::Ptr host);
 
   ////////////////////////////////////////////////////////////////////////
   // OpenInterface
-  
+
   virtual std::list<GtkFileFilter*> getFilters();
   virtual void open(const std::string& fileName, ScroomInterface::Ptr const& scroomInterface);
 };
-
 

@@ -9,8 +9,6 @@
 
 #include <stdio.h>
 
-#include <boost/foreach.hpp>
-
 #include <scroom/threadpool.hh>
 
 #include "local.hh"
@@ -27,7 +25,7 @@ private:
   SourcePresentation::Ptr sp;
   ThreadPool::Ptr threadPool;
   ThreadPool::WeakQueue::Ptr queue;
-  
+
 public:
   DataFetcher(Layer::Ptr const& layer,
               int width, int height,
@@ -39,7 +37,7 @@ public:
 };
 
 ////////////////////////////////////////////////////////////////////////
-/// Layer 
+/// Layer
 
 Layer::Layer(TileInitialisationObserver::Ptr observer, int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider)
   : depth(depth), width(layerWidth), height(layerHeight)
@@ -64,7 +62,7 @@ Layer::Layer(TileInitialisationObserver::Ptr observer, int depth, int layerWidth
   {
     lineOutOfBounds.push_back(outOfBounds);
   }
-  
+
   printf("Layer %d (%d bpp), %d*%d, TileCount %d*%d\n",
          depth, bpp, width, height, horTileCount, verTileCount);
 }
@@ -122,14 +120,14 @@ void Layer::fetchData(SourcePresentation::Ptr sp, ThreadPool::WeakQueue::Ptr que
 
 void Layer::open(ViewInterface::WeakPtr vi)
 {
-  BOOST_FOREACH(CompressedTileLine& line, tiles)
+  for(CompressedTileLine& line: tiles)
   {
-    BOOST_FOREACH(CompressedTile::Ptr tile, line)
+    for(CompressedTile::Ptr tile: line)
     {
       tile->open(vi);
     }
   }
-  BOOST_FOREACH(CompressedTile::Ptr tile, lineOutOfBounds)
+  for(CompressedTile::Ptr tile: lineOutOfBounds)
   {
     tile->open(vi);
   }
@@ -138,20 +136,19 @@ void Layer::open(ViewInterface::WeakPtr vi)
 
 void Layer::close(ViewInterface::WeakPtr vi)
 {
-  BOOST_FOREACH(CompressedTileLine& line, tiles)
+  for(CompressedTileLine& line: tiles)
   {
-    BOOST_FOREACH(CompressedTile::Ptr tile, line)
+    for(CompressedTile::Ptr tile: line)
     {
       tile->close(vi);
     }
   }
-  BOOST_FOREACH(CompressedTile::Ptr tile, lineOutOfBounds)
+  for(CompressedTile::Ptr tile: lineOutOfBounds)
   {
     tile->close(vi);
   }
   outOfBounds->close(vi);
 }
-
 
 ////////////////////////////////////////////////////////////////////////
 /// DataFetcher
@@ -173,7 +170,7 @@ void DataFetcher::operator()()
   QueueJumper::Ptr qj = QueueJumper::create();
 
   threadPool->schedule(qj, REDUCE_PRIO, queue);
- 
+
   CompressedTileLine& tileLine = layer->getTileLine(currentRow);
   std::vector<Tile::Ptr> tiles;
   for(int x = 0; x < horTileCount; x++)
@@ -190,7 +187,7 @@ void DataFetcher::operator()()
   {
     tileLine[x]->reportFinished();
   }
-  
+
   currentRow++;
   if(currentRow<verTileCount)
   {

@@ -160,7 +160,6 @@ public:
 
 ////////////////////////////////////////////////////////////////////////
 
-
 void create(NewPresentationInterface* interface)
 {
   PresentationInterface::Ptr presentation = interface->createNew();
@@ -343,5 +342,4 @@ void ScroomInterfaceImpl::showPresentation(PresentationInterface::Ptr const& pre
 {
   find_or_create_scroom(presentation);
 }
-
 

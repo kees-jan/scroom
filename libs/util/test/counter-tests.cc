@@ -29,7 +29,7 @@ BOOST_AUTO_TEST_CASE(count)
   std::list<Count::Ptr> counts = counter->getCounts();
   BOOST_CHECK_EQUAL(0, counts.size());
   Count::Ptr c;
-  
+
   {
     TestCounted t;
     counts = counter->getCounts();
@@ -52,7 +52,7 @@ BOOST_AUTO_TEST_CASE(count)
     BOOST_CHECK_EQUAL(testCountedName, c->name);
     BOOST_CHECK_EQUAL(1, c->count);
   }
-  
+
   counts = counter->getCounts();
   BOOST_REQUIRE_EQUAL(1, counts.size());
   c = counts.front();

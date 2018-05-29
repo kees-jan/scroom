@@ -38,11 +38,11 @@ private:
 
 public:
   typedef boost::shared_ptr<A> Ptr;
-  
+
   A(Semaphore* s)
     :s(s)
   {}
-  
+
   void operator()()
   {
     s->V();
@@ -63,11 +63,11 @@ private:
 
 public:
   typedef boost::shared_ptr<B> Ptr;
-  
+
   B(Semaphore* s, R result)
     :s(s), result(result)
   {}
-  
+
   R operator()()
   {
     s->V();
@@ -155,7 +155,7 @@ BOOST_AUTO_TEST_CASE(work_gets_done_by_prio)
   ThreadPool pool(0);
   pool.schedule(clear(&low), PRIO_NORMAL);
   pool.schedule(pass(&low)+clear(&high), PRIO_HIGH);
-  
+
   pool.add();
   // Thread is doing the high-prio tasks first, which is blocked on
   // the low semaphore, hence, no work gets done.
@@ -208,7 +208,7 @@ BOOST_AUTO_TEST_CASE(schedule_future)
   BOOST_CHECK(!a.P(short_timeout));
   BOOST_CHECK(!result.is_ready());
   pool.add();
-  
+
   BOOST_CHECK(a.P(long_timeout));
   BOOST_CHECK_EQUAL(42, result.get());
 }
@@ -223,7 +223,7 @@ BOOST_AUTO_TEST_CASE(schedule_shared_pointer_with_future)
   BOOST_CHECK(!a.P(short_timeout));
   BOOST_CHECK(!result.is_ready());
   pool.add();
-  
+
   BOOST_CHECK(a.P(long_timeout));
   BOOST_CHECK_EQUAL(false, result.get());
 }

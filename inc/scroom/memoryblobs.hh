@@ -67,7 +67,7 @@ namespace Scroom
       PageProvider(size_t blockCount, size_t blockSize);
 
       void markPageFree(Scroom::MemoryBlocks::Page* page);
-      
+
     public:
       static Ptr create(size_t blockCount, size_t blockSize);
       Page::Ptr getFreePage();
@@ -99,7 +99,7 @@ namespace Scroom
       };
 
       friend class UnloadData;
-      
+
     private:
       PageProvider::Ptr provider;
       size_t size;
@@ -119,7 +119,7 @@ namespace Scroom
 
     public:
       ~Blob();
-      
+
       static Ptr create(PageProvider::Ptr provider, size_t size);
       RawPageData::Ptr get();
       RawPageData::ConstPtr getConst();
@@ -149,6 +149,4 @@ namespace Scroom
     }
   }
 }
-
-
 

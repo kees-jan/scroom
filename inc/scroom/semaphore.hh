@@ -61,7 +61,7 @@ namespace Scroom
   inline bool Semaphore::P(duration_type const& rel_time)
   {
     boost::posix_time::ptime timeout = boost::posix_time::second_clock::universal_time() + rel_time;
-    
+
     boost::mutex::scoped_lock lock(mut);
     while(count==0)
     {
@@ -79,6 +79,4 @@ namespace Scroom
     cond.notify_one();
   }
 }
-
-
 

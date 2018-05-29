@@ -17,7 +17,6 @@ namespace Colors
   const Color IN_BOUNDS(1,1,1); // White
 }
 
-
 void setClip(cairo_t* cr, int x, int y, int width, int height)
 {
   cairo_move_to(cr, x, y);
@@ -45,7 +44,7 @@ void drawRectangle(cairo_t* cr, Color const& c, Rectangle<double> const& viewAre
   cairo_restore(cr);
 }
 
-void drawOutOfBoundsWithBackground(cairo_t* cr, 
+void drawOutOfBoundsWithBackground(cairo_t* cr,
                                    Rectangle<int> const& requestedPresentationArea,
                                    Rectangle<int> const& actualPresentationArea, double pixelSize)
 {

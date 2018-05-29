@@ -11,8 +11,6 @@
 
 #include <glib.h>
 
-#include <boost/foreach.hpp>
-
 using namespace Scroom::Utils;
 
 ///////////////////////////////////////////////////////////////////////
@@ -72,7 +70,7 @@ void Counter::dump()
 {
   boost::unique_lock<boost::mutex> lock(mut);
   printf("%ld", (long)counts.size());
-  BOOST_FOREACH(Count::Ptr& c, counts)
+  for(Count::Ptr& c: counts)
   {
     printf(", %s, %ld", c->name.c_str(), c->count);
   }

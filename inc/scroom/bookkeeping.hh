@@ -54,7 +54,7 @@ namespace Scroom
       Detail::TokenAddition operator+(const Stuff& rhs) const;
       Token const& operator+=(const Stuff& rhs) const;
     };
-    
+
     typedef boost::weak_ptr<Detail::TokenImpl> WeakToken;
 
     template<typename K, typename V>
@@ -62,7 +62,7 @@ namespace Scroom
     {
     private:
       typedef typename std::map<K,boost::weak_ptr<Detail::ValueType<V> > > MapType;
-      
+
       MapType map;
       mutable boost::mutex mut;
 
@@ -96,13 +96,13 @@ namespace Scroom
 //
 //    public:
 //      static Ptr create();
-//      
+//
 //    public:
 //      void addMe(const Token& k, const V& v);
 //      Token add(const V& v);
 //      Token add(const Token& k, const V& v);
 //    };
-//    
+//
 //    template<typename V>
 //    class Map<WeakToken, V> : public MapBase<WeakToken,V>
 //    {
@@ -117,12 +117,9 @@ namespace Scroom
 //      Token add(const V& v);
 //      Token add(const WeakToken& k, const V& v);
 //    };
-    
+
   }
 }
 
-
 #include <scroom/impl/bookkeepingimpl.hh>
-
-
 

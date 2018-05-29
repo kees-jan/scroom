@@ -69,7 +69,7 @@ int main (int argc, char *argv[])
 
   po::positional_options_description p;
   p.add("load", -1);
-  
+
   po::variables_map vm;
 
   try
@@ -85,7 +85,7 @@ int main (int argc, char *argv[])
       const std::vector<std::string>& names = vm["load"].as<std::vector<std::string> >();
       filenames[REGULAR_FILES].assign(names.begin(), names.end());
     }
-    
+
     if(vm.count("transparent-overlay"))
     {
       const std::vector<std::string>& names = vm["transparent-overlay"].as<std::vector<std::string> >();
@@ -129,13 +129,13 @@ int main (int argc, char *argv[])
   Scroom::GtkHelpers::useRecursiveGdkLock();
   g_thread_init(NULL);
   gdk_threads_init();
-  
+
   gdk_threads_enter();
   gtk_set_locale ();
   gtk_init (&argc, &argv);
 
   on_scroom_bootstrap(filenames);
-  
+
   gtk_main ();
   gdk_threads_leave();
 

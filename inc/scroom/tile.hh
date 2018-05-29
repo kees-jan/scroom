@@ -18,7 +18,7 @@ class Tile
 public:
   typedef boost::shared_ptr<Tile> Ptr;
   typedef boost::weak_ptr<Tile> WeakPtr;
-  
+
   int width;
   int height;
   int bpp;
@@ -38,7 +38,7 @@ class ConstTile
 public:
   typedef boost::shared_ptr<ConstTile> Ptr;
   typedef boost::weak_ptr<ConstTile> WeakPtr;
-  
+
   int width;
   int height;
   int bpp;
@@ -52,5 +52,4 @@ public:
   static ConstTile::Ptr create(int width, int height, int bpp, Scroom::MemoryBlobs::RawPageData::ConstPtr data)
   { return Ptr(new ConstTile(width, height, bpp, data)); }
 };
-
 

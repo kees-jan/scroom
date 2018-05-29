@@ -107,4 +107,3 @@ boost::unique_future<R> ThreadPool::schedule(boost::shared_ptr<T> fn, ThreadPool
   return schedule(fn, defaultPriority, queue);
 }
 
-

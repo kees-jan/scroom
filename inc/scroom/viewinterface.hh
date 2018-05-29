@@ -90,5 +90,3 @@ public:
   virtual void removeFromToolbar(GtkToolItem* ti)=0;
 };
 
-
-

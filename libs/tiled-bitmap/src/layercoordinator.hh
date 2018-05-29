@@ -30,22 +30,21 @@ private:
 
 public:
   typedef boost::shared_ptr<LayerCoordinator> Ptr;
-  
+
   static Ptr create(CompressedTile::Ptr targetTile, LayerOperations::Ptr lo);
-  
+
   virtual ~LayerCoordinator();
-  
+
   void addSourceTile(int x, int y, CompressedTile::Ptr tile);
 
 private:
   LayerCoordinator(CompressedTile::Ptr targetTile, LayerOperations::Ptr lo);
 
   void reduceSourceTile(CompressedTile::Ptr tile, ConstTile::Ptr const& tileData);
-  
+
 public:
   ////////////////////////////////////////////////////////////////////////
   /// TileInitialisationObserver
   virtual void tileFinished(CompressedTile::Ptr tile);
 };
-
 

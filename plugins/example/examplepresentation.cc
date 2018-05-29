@@ -46,7 +46,7 @@ void ExamplePresentation::fillPattern()
   cairo_stroke(cr);
 
   pattern = cairo_pattern_create_for_surface(cairo_get_target(cr));
-  
+
   cairo_destroy(cr);
   cairo_surface_destroy(surface);
 }
@@ -99,13 +99,13 @@ bool ExamplePresentation::getProperty(const std::string& name, std::string& valu
 {
   UNUSED(name);
   UNUSED(value);
-  
+
   return false;
 }
 bool ExamplePresentation::isPropertyDefined(const std::string& name)
 {
   UNUSED(name);
-    
+
   return false;
 }
 

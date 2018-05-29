@@ -36,7 +36,7 @@ BOOST_AUTO_TEST_CASE(weak_pointer_equality)
     BOOST_CHECK(!(a<b) && !(b<a));
     c.reset();
     BOOST_CHECK(!(a<b) && !(b<a));
-    BOOST_CHECK(!a.lock());  
+    BOOST_CHECK(!a.lock());
     BOOST_CHECK(!b.lock());
     BOOST_CHECK_EQUAL(a.lock(), b.lock());
 

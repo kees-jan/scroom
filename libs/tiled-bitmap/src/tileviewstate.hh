@@ -36,9 +36,9 @@ public:
       ZOOM_COMPUTED,
       DONE
     };
-  
+
 private:
-  boost::shared_ptr<CompressedTile> parent;  
+  boost::shared_ptr<CompressedTile> parent;
   boost::mutex mut;
   State state;
   State desiredState;
@@ -53,10 +53,10 @@ private:
   Scroom::Utils::Stuff baseCache;
   Scroom::Utils::Stuff zoomCache;
   ThreadPool::Ptr cpuBound;
-  
+
 public:
   ~TileViewState();
-  
+
   static Ptr create(boost::shared_ptr<CompressedTile> parent);
 
   Scroom::Utils::Stuff getCacheResult();
@@ -85,6 +85,4 @@ private:
   void reportDone(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr tile);
   void clear();
 };
-
-
 

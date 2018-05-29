@@ -82,7 +82,6 @@ namespace Scroom
       gdk_threads_set_lock_functions(&Detail::lockGdkMutex, &Detail::unlockGdkMutex);
     }
 
-
     TakeGdkLock::TakeGdkLock()
     {
       gdk_threads_enter();

@@ -158,7 +158,6 @@ void ScroomInterfaceStub::showPresentation(PresentationInterface::Ptr const& pre
   shownPresentations.push_back(presentation);
 }
 
-
 BOOST_AUTO_TEST_SUITE(Roi_Tests)
 
 BOOST_AUTO_TEST_CASE(Parse_files)
@@ -175,7 +174,7 @@ BOOST_AUTO_TEST_CASE(Parse_files)
   ss << " * File: g.tif" << std::endl;
 
   std::string input = ss.str();
-  
+
   Roi::List::Ptr list = Roi::parse(input.begin(), input.end());
 
   // for(auto const & r: list->presentations)
@@ -286,7 +285,7 @@ BOOST_AUTO_TEST_CASE(Parse_rect)
 
   // for(auto const & r: list->regions)
   //   std::cout << "Found region: " << r << std::endl;
-  
+
   BOOST_CHECK_EQUAL(1, list->presentations.size());
   BOOST_CHECK_EQUAL(3, list->regions.size());
 }

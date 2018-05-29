@@ -31,7 +31,7 @@ class Viewable
 public:
   typedef boost::shared_ptr<Viewable> Ptr;
   typedef boost::weak_ptr<Viewable> WeakPtr;
-  
+
 public:
   virtual ~Viewable() {}
 
@@ -70,7 +70,7 @@ class PresentationInterface : public Viewable, public ViewObservable
 public:
   typedef boost::shared_ptr<PresentationInterface> Ptr;
   typedef boost::weak_ptr<PresentationInterface> WeakPtr;
- 
+
   virtual ~PresentationInterface() {}
 
   /** Return the dimensions of your presentation */
@@ -131,9 +131,9 @@ class Aggregate
 {
 public:
   typedef boost::shared_ptr<Aggregate> Ptr;
-  
+
 public:
   virtual ~Aggregate() {}
-  
+
   virtual void addPresentation(PresentationInterface::Ptr const& presentation)=0;
 };

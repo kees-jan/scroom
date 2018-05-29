@@ -21,7 +21,7 @@ namespace Scroom
       struct timespec t;
       std::string label;
       bool valid;
-      
+
     public:
       Timer(std::string label)
         : label(label)
@@ -47,6 +47,4 @@ namespace Scroom
     };
   }
 }
-
-
 

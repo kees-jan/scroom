@@ -26,7 +26,7 @@ class ResizablePresentationInterface
 public:
   typedef boost::shared_ptr<ResizablePresentationInterface> Ptr;
   typedef boost::weak_ptr<ResizablePresentationInterface> WeakPtr;
- 
+
   virtual ~ResizablePresentationInterface() {}
 
   virtual void setRect(ViewInterface::WeakPtr const& vi, GdkRectangle const& rect)=0;

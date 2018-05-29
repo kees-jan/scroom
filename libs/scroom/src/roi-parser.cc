@@ -11,7 +11,6 @@
 #define BOOST_SPIRIT_USE_PHOENIX_V3
 
 #include <boost/config/warning_disable.hpp>
-#include <boost/foreach.hpp>
 #include <boost/fusion/adapted.hpp>
 #include <boost/fusion/include/io.hpp>
 #include <boost/spirit/include/phoenix.hpp>
@@ -26,7 +25,7 @@ BOOST_FUSION_ADAPT_STRUCT(
                           Scroom::Roi::Detail::File,
                           (std::string, name)
                           )
-     
+
 BOOST_FUSION_ADAPT_STRUCT(
                           Scroom::Roi::Detail::Aggregate,
                           (std::string, name)
@@ -89,7 +88,7 @@ namespace Scroom
 
           empty_line %= *ascii::blank >> endli;
           comment %= *ascii::blank >> '#' >> *(ascii::char_-qi::eol) >> endli;
-          
+
           start %= empty_line | comment;
         }
 
@@ -98,7 +97,7 @@ namespace Scroom
         qi::rule<Iterator> comment;
         qi::rule<Iterator> endli;
       };
-      
+
       template <typename Iterator>
       struct My_parser : qi::grammar<Iterator, List(), My_skipper<Iterator> >
       {
@@ -171,7 +170,6 @@ namespace Scroom
               roi_start(qi::_r1) [ qi::_a=at_c<0>(qi::_1), push_back(qi::_val, at_c<1>(qi::_1))]
               >> *roi_continued(qi::_a)[ push_back(qi::_val, qi::_1)];
 
-        
           // Finally, the start token
           start %=
               lexeme[presentations(std::string(""))] ^
@@ -194,7 +192,7 @@ namespace Scroom
           named_roi.name("named_roi");
           description.name("description");
           rect.name("rect");
-          
+
           endli.name("end-of-line-or-input");
 
           on_error<fail>
@@ -234,7 +232,7 @@ namespace Scroom
       };
 
     }
-    
+
     List::Ptr parse(std::string::const_iterator first, std::string::const_iterator last)
     {
       using ascii::char_;
@@ -245,7 +243,7 @@ namespace Scroom
 
       Detail::My_parser<std::string::const_iterator> my_parser;
       Detail::My_skipper<std::string::const_iterator> my_skipper;
-        
+
       List::Ptr result = List::create();
 
       // bool r = parse(first, last, my_parser, result);

@@ -10,7 +10,7 @@
 class WorkInterface
 {
 public:
-  
+
   virtual ~WorkInterface()
   {
   }

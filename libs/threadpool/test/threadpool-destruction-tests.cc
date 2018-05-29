@@ -23,7 +23,6 @@
 #include "helpers.hh"
 #include "scroom/function-additor.hh"
 
-
 using namespace boost::posix_time;
 using namespace Scroom;
 
@@ -47,7 +46,7 @@ BOOST_AUTO_TEST_CASE(destroy_threadpool_with_nonempty_queue)
 
   // Give the thread some time to start the job
   a.P();
-  
+
   boost::thread t(pass(&guard)+destroy(pool));
   pool.reset();
   guard.V();
@@ -74,7 +73,7 @@ BOOST_AUTO_TEST_CASE(destroy_threadpool_with_nonempty_queue_with_completeAllJobs
 
   // Give the thread some time to start the job
   a.P();
-  
+
   boost::thread t(pass(&guard)+destroy(pool));
   pool.reset();
   guard.V();
@@ -87,6 +86,5 @@ BOOST_AUTO_TEST_CASE(destroy_threadpool_with_nonempty_queue_with_completeAllJobs
   b.V();
   BOOST_CHECK(c.P(long_timeout));
 }
-
 
 BOOST_AUTO_TEST_SUITE_END()

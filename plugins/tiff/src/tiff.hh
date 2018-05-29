@@ -25,20 +25,19 @@ public:
 public:
   ////////////////////////////////////////////////////////////////////////
   // PluginInformationInterface
-  
+
   virtual std::string getPluginName();
   virtual std::string getPluginVersion();
   virtual void registerCapabilities(ScroomPluginInterface::Ptr host);
 
   ////////////////////////////////////////////////////////////////////////
   // OpenPresentationInterface
-  
+
   virtual std::list<GtkFileFilter*> getFilters();
   virtual PresentationInterface::Ptr open(const std::string& fileName);
 
   ////////////////////////////////////////////////////////////////////////
-  
+
   virtual ~Tiff();
 };
-
 

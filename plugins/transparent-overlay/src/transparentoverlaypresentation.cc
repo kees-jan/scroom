@@ -11,7 +11,6 @@
 
 #include <sstream>
 
-#include <boost/foreach.hpp>
 #include <boost/assign.hpp>
 #include <boost/tuple/tuple_comparison.hpp>
 
@@ -59,11 +58,11 @@ void TransparentOverlayPresentation::addPresentation(PresentationInterface::Ptr 
     {
       setOptimalColor(p);
     }
-    
+
     children.push_back(p);
     sizeDeterminer->add(p);
 
-    BOOST_FOREACH(ViewDataMap::value_type const& v, viewData)
+    for(ViewDataMap::value_type const& v: viewData)
       v.second->addChild(p);
 
   }
@@ -77,7 +76,7 @@ void TransparentOverlayPresentation::setOptimalColor(PresentationInterface::Ptr 
   if(c)
   {
     std::map<Color, int, ColorComparer> currentColors;
-    BOOST_FOREACH(PresentationInterface::Ptr const& child, children)
+    for(PresentationInterface::Ptr const& child: children)
     {
       Colormappable::Ptr cChild = boost::dynamic_pointer_cast<Colormappable>(child);
       if(cChild && child->isPropertyDefined(MONOCHROME_COLORMAPPABLE_PROPERTY_NAME))
@@ -89,7 +88,7 @@ void TransparentOverlayPresentation::setOptimalColor(PresentationInterface::Ptr 
     Color minimumColor=c->getMonochromeColor();
     int minimumColorValue = currentColors[minimumColor];
 
-    BOOST_FOREACH(Color const& color, colors)
+    for(Color const& color: colors)
     {
       if(currentColors[color] < minimumColorValue)
       {
@@ -144,13 +143,13 @@ bool TransparentOverlayPresentation::getProperty(const std::string& name, std::s
 {
   UNUSED(name);
   UNUSED(value);
-  
+
   return false;
 }
 bool TransparentOverlayPresentation::isPropertyDefined(const std::string& name)
 {
   UNUSED(name);
-    
+
   return false;
 }
 
@@ -159,7 +158,7 @@ std::string TransparentOverlayPresentation::getTitle()
   std::stringstream s;
   s << "Overlay(";
   bool hasPrevious=false;
-  BOOST_FOREACH(PresentationInterface::Ptr const& child, children)
+  for(PresentationInterface::Ptr const& child: children)
   {
     if(hasPrevious)
       s << ", ";

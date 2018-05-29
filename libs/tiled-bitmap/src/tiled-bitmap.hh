@@ -47,7 +47,6 @@ public:
   virtual void abort()=0;
 };
 
-
 class TiledBitmap : public TiledBitmapInterface, public TileInitialisationObserver,
                     public virtual Scroom::Utils::Base
 {
@@ -55,7 +54,7 @@ public:
   typedef boost::shared_ptr<TiledBitmap> Ptr;
   typedef boost::weak_ptr<TiledBitmap> WeakPtr;
   typedef std::map<ViewInterface::WeakPtr, TiledBitmapViewData::Ptr> ViewDataMap;
-  
+
 private:
   int bitmapWidth;
   int bitmapHeight;
@@ -70,7 +69,7 @@ private:
   FileOperation::Ptr fileOperation;
   Scroom::Utils::ProgressInterfaceBroadcaster::Ptr progressBroadcaster;
   ThreadPool::Queue::Ptr queue;
-  
+
 public:
   static Ptr create(int bitmapWidth, int bitmapHeight, LayerSpec const& ls);
   virtual ~TiledBitmap();
@@ -78,7 +77,7 @@ public:
 private:
   TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec const& ls);
   void initialize();
-  
+
 private:
   void drawTile(cairo_t* cr, const CompressedTile::Ptr tile, const GdkRectangle viewArea);
   void connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, LayerOperations::Ptr prevLo);
@@ -92,7 +91,7 @@ public:
 
 public:
   virtual void setSource(SourcePresentation::Ptr sp);
-  virtual Layer::Ptr getBottomLayer();  
+  virtual Layer::Ptr getBottomLayer();
 
   virtual void open(ViewInterface::WeakPtr viewInterface);
   virtual void close(ViewInterface::WeakPtr vi);
@@ -105,5 +104,4 @@ public:
   virtual void tileCreated(CompressedTile::Ptr tile);
   virtual void tileFinished(CompressedTile::Ptr tile);
 };
-
 

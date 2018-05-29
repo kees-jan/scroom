@@ -25,7 +25,7 @@ namespace Scroom
     }
 
     class BlockInterface;
-    
+
     class Page
     {
     private:
@@ -34,12 +34,12 @@ namespace Scroom
 
     public:
       Page(boost::shared_ptr<BlockInterface> bi, size_t id);
-      
+
       RawPageData::Ptr get();
     };
 
     typedef std::list<Page> PageList;
-    
+
     class BlockInterface
     {
     public:
@@ -48,15 +48,15 @@ namespace Scroom
 
     protected:
       virtual RawPageData::Ptr get(size_t id)=0;
-      
+
     public:
       virtual ~BlockInterface() {}
-      
+
       virtual PageList getPages()=0;
 
       friend class Page;
     };
-    
+
     class BlockFactoryInterface
     {
     public:
@@ -74,11 +74,9 @@ namespace Scroom
     inline Page::Page(BlockInterface::Ptr bi, size_t id)
       : bi(bi), id(id)
     {}
-    
+
     inline RawPageData::Ptr Page::get()
     { return bi->get(id); }
   }
 }
-
-
 

@@ -51,7 +51,7 @@ class TileInitialisationObserver
 public:
   typedef boost::shared_ptr<TileInitialisationObserver> Ptr;
   typedef boost::weak_ptr<TileInitialisationObserver> WeakPtr;
-  
+
   virtual ~TileInitialisationObserver() {}
 
   /**
@@ -72,7 +72,7 @@ public:
    *
    * @note This event will be sent on the thread that is filling the
    *    tile with data.
-   */ 
+   */
   virtual void tileFinished(boost::shared_ptr<CompressedTile> tile);
 };
 
@@ -109,7 +109,7 @@ class CompressedTile : public Scroom::Utils::Observable<TileInitialisationObserv
 {
 public:
   typedef boost::shared_ptr<CompressedTile> Ptr;
-  
+
 public:
   const int depth;                                  /**< Layer number of this tile */
   const int x;                                      /**< x-coordinate of this tile (i.e. number of tiles to the left of this tile) */
@@ -215,7 +215,7 @@ private:
 
   // Viewable ////////////////////////////////////////////////////////////
 public:
-  
+
   virtual void open(ViewInterface::WeakPtr vi);
   virtual void close(ViewInterface::WeakPtr vi);
 };
@@ -229,7 +229,7 @@ class Layer : public Viewable, public virtual Scroom::Utils::Base
 {
 public:
   typedef boost::shared_ptr<Layer> Ptr;
-  
+
 private:
   int depth;
   int width;
@@ -243,7 +243,7 @@ private:
 
 private:
   Layer(TileInitialisationObserver::Ptr observer, int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider);
-  
+
 public:
   static Ptr create(TileInitialisationObserver::Ptr observer, int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider);
   int getHorTileCount();
@@ -273,6 +273,4 @@ public:
   void open(ViewInterface::WeakPtr vi);
   void close(ViewInterface::WeakPtr vi);
 };
-
-
 

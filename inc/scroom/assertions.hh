@@ -19,7 +19,6 @@
 #define NORETURN [[noreturn]] // others // gcc 4.8.4
 #endif
 
-
 namespace Scroom
 {
   namespace Utils

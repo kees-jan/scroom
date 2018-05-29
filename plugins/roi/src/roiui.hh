@@ -21,7 +21,6 @@ private:
   Scroom::Roi::List::Ptr list;
   GtkTreeModel* model;
 
-
   Scroom::Utils::StuffList stuff;
 
 private:
@@ -41,5 +40,4 @@ public:
   virtual void close(ViewInterface::WeakPtr vi);
 
 };
-
 

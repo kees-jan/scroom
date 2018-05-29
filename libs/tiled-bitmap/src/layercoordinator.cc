@@ -62,7 +62,7 @@ void LayerCoordinator::reduceSourceTile(CompressedTile::Ptr tile, ConstTile::Ptr
   //
   // Other than that side-effect, we have no use for tileData
   UNUSED(tileData);
-  
+
   Scroom::Utils::Stuff s = targetTile->initialize();
   const std::pair<int,int> location = sourceTiles[tile];
   const int x = location.first;

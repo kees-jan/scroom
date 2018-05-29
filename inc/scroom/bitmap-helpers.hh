@@ -26,7 +26,7 @@ namespace Scroom
     private:
       cairo_surface_t* const surface;
       boost::shared_ptr<unsigned char> const data;
-  
+
     public:
       static Ptr create(int width, int height, cairo_format_t format);
       static Ptr create(int width, int height, cairo_format_t format,
@@ -58,7 +58,7 @@ namespace Scroom
 
     private:
       static Base mask(int bpp);
-  
+
     public:
       PixelIterator();
       PixelIterator(Base* base, int offset=0, int bpp=1);
@@ -123,7 +123,7 @@ namespace Scroom
         currentOffset=pixelsPerBase-1;
         ++currentBase;
       }
-  
+
       return *this;
     }
 
@@ -132,13 +132,13 @@ namespace Scroom
     {
       // Postfix operator
       PixelIterator<Base> result = *this;
-  
+
       if(!(currentOffset--))
       {
         currentOffset=pixelsPerBase-1;
         ++currentBase;
       }
-  
+
       return result;
     }
 

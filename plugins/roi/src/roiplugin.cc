@@ -57,10 +57,10 @@ std::list<GtkFileFilter*> RoiPlugin::getFilters()
   gtk_file_filter_add_pattern(filter, "*.SROI");
   gtk_file_filter_add_mime_type(filter, "ascii/sroi");
   result.push_back(filter);
-  
+
   return result;
 }
-  
+
 void RoiPlugin::open(const std::string& fileName, ScroomInterface::Ptr const& scroomInterface)
 {
   RoiUi::create(fileName, scroomInterface);

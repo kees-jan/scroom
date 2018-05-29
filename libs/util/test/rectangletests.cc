@@ -23,7 +23,7 @@ private:
   static const int verticalContainedStart = 0;
   static const int verticalContainedWidth = 1;
   static const int verticalSize = 5;
-  
+
 public:
   RectangleHorizontalTestScaffold(int horizontalStart, int horizontalSize)
     : Rectangle(horizontalStart, verticalStart, horizontalSize, verticalSize)
@@ -42,16 +42,15 @@ public:
   int getStart() const { return getLeftPos(); }
   int getEnd() const { return getLeftPos()+getWidth(); }
   bool contains(int x) const { return Rectangle::contains(make_point(x, verticalContainedStart)); }
-  
+
   bool contains(const RectangleHorizontalTestScaffold& other) const
   { return Rectangle<int>::contains(other); }
-  
+
   RectangleHorizontalTestScaffold intersection(const RectangleHorizontalTestScaffold& other) const
   { return Rectangle<int>::intersection(other); }
-  
+
   Rectangle moveTo(int x) { return Rectangle<int>::moveTo(make_point(x, verticalContainedStart)); }
 };
-
 
 ////////////////////////////////////////////////////////////////////////
 // For testing Rectangles vertically
@@ -63,7 +62,7 @@ private:
   static const int horizontalContainedStart = 0;
   static const int horizontalContainedWidth = 1;
   static const int horizontalSize = 5;
-  
+
 public:
   RectangleVerticalTestScaffold(int verticalStart, int verticalSize)
     : Rectangle(horizontalStart, verticalStart, horizontalSize, verticalSize)
@@ -81,13 +80,13 @@ public:
   int getStart() const { return getTopPos(); }
   int getEnd() const { return getTopPos()+getHeight(); }
   bool contains(int y) const { return Rectangle::contains(make_point(horizontalContainedStart, y)); }
-  
+
   bool contains(const RectangleVerticalTestScaffold& other) const
   { return Rectangle<int>::contains(other); }
-  
+
   RectangleVerticalTestScaffold intersection(const RectangleVerticalTestScaffold& other) const
   { return Rectangle<int>::intersection(other); }
-  
+
   Rectangle moveTo(int y) { return Rectangle::moveTo(make_point(horizontalContainedStart, y)); }
 };
 
@@ -129,13 +128,13 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(testCreateSegment, Scaffold, test_types)
 
   BOOST_CHECK(s1.isEmpty());
   BOOST_CHECK_EQUAL(0, s1.getSize());
-  
+
   BOOST_CHECK(!s2.isEmpty());
   BOOST_CHECK(s3.isEmpty());
   BOOST_CHECK(!s4.isEmpty());
   BOOST_CHECK(!s5.isEmpty());
   BOOST_CHECK(!s6.isEmpty());
-  
+
   BOOST_CHECK_EQUAL(2, s2.getStart());
   BOOST_CHECK_EQUAL(5, s2.getSize());
   BOOST_CHECK_EQUAL(7, s2.getEnd());
@@ -157,7 +156,7 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(testMoveTo, Scaffold, test_types)
   Scaffold s = orig.moveTo(5);
 
   BOOST_CHECK(!s.isEmpty());
-  
+
   BOOST_CHECK_EQUAL(5, s.getStart());
   BOOST_CHECK_EQUAL(5, s.getSize());
   BOOST_CHECK_EQUAL(10, s.getEnd());
@@ -357,7 +356,7 @@ BOOST_AUTO_TEST_CASE(testCuts)
   BOOST_CHECK(original.rightOf(40).isEmpty());
   BOOST_CHECK_EQUAL(original, original.rightOf(5));
   BOOST_CHECK_EQUAL(Rectangle<int>(20,20,20,40), original.rightOf(20));
-  
+
   BOOST_CHECK(original.above(5).isEmpty());
   BOOST_CHECK_EQUAL(original, original.above(60));
   BOOST_CHECK_EQUAL(Rectangle<int>(10,20,30,20), original.above(40));
@@ -402,4 +401,3 @@ BOOST_AUTO_TEST_CASE(testAnd)
 
 BOOST_AUTO_TEST_SUITE_END()
 
-  

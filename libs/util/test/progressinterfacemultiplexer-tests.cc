@@ -25,7 +25,7 @@ public:
 
 public:
   ProgressInterfaceMultiplexer_Fixture();
-  
+
 };
 
 ProgressInterfaceMultiplexer_Fixture::ProgressInterfaceMultiplexer_Fixture()

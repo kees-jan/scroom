@@ -20,7 +20,7 @@
 
 typedef struct tiff TIFF;
 
-class TiffPresentation : public SourcePresentation, 
+class TiffPresentation : public SourcePresentation,
                          public virtual Scroom::Utils::Base
 {
 public:
@@ -28,7 +28,7 @@ public:
 
 private:
   typedef std::set<ViewInterface::WeakPtr> Views;
-  
+
   std::string fileName;
   TIFF* tif;
   int height;
@@ -39,10 +39,10 @@ private:
   std::map<std::string, std::string> properties;
   Views views;
   ColormapHelper::Ptr colormapHelper;
-  
+
 private:
   TiffPresentation();
-  
+
 public:
   virtual ~TiffPresentation();
 
@@ -58,7 +58,7 @@ public:
   void destroy();
 
   bool load(const std::string& fileName);
-  
+
   ////////////////////////////////////////////////////////////////////////
   // PresentationInterface
   ////////////////////////////////////////////////////////////////////////
@@ -83,7 +83,7 @@ public:
 public:
   virtual void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles);
   virtual void done();
- 
+
   ////////////////////////////////////////////////////////////////////////
   // Colormappable
   ////////////////////////////////////////////////////////////////////////
@@ -106,20 +106,20 @@ class TiffPresentationWrapper : public PresentationBase, public Colormappable
 {
 public:
   typedef boost::shared_ptr<TiffPresentationWrapper> Ptr;
-  
+
 private:
   TiffPresentation::Ptr presentation;
 
-private: 
+private:
   TiffPresentationWrapper();
 
 public:
   static Ptr create();
-  
+
   virtual ~TiffPresentationWrapper();
 
   bool load(const std::string& fileName);
-  
+
   ////////////////////////////////////////////////////////////////////////
   // PresentationInterface
   ////////////////////////////////////////////////////////////////////////
@@ -151,5 +151,4 @@ public:
   virtual void disableTransparentBackground();
   virtual bool getTransparentBackground();
 };
-
 

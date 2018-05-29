@@ -18,4 +18,3 @@ PresentationInterface::Ptr loadPresentation(const GtkFileFilterInfo& info);
 PresentationInterface::Ptr loadPresentation(const std::string& filename);
 void destroyGtkFileFilterList(std::list<GtkFileFilter*>& l);
 
-

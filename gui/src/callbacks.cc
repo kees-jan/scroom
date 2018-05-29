@@ -22,8 +22,6 @@
 #include <list>
 #include <map>
 
-#include <boost/foreach.hpp>
-
 #include <scroom/bookkeeping.hh>
 
 #include "workinterface.hh"
@@ -73,7 +71,7 @@ void on_open_activate (GtkMenuItem*, gpointer user_data)
                                         GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
                                         NULL);
   gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER (dialog), currentFolder.c_str());
-    
+
   const std::map<OpenPresentationInterface::Ptr, std::string>& openPresentationInterfaces = PluginManager::getInstance()->getOpenPresentationInterfaces();
   const std::map<OpenInterface::Ptr, std::string>& openInterfaces = PluginManager::getInstance()->getOpenInterfaces();
 
@@ -103,7 +101,7 @@ void on_open_activate (GtkMenuItem*, gpointer user_data)
     filterInfo.contains =
       (GtkFileFilterFlags)(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_MIME_TYPE);
     printf("Opening file %s\n", filterInfo.filename);
-    
+
     try
     {
       load(filterInfo);
@@ -136,7 +134,7 @@ void on_save_as_activate (GtkMenuItem*, gpointer)
 void on_quit_activate (GtkMenuItem*, gpointer)
 {
   Views v(views);
-  BOOST_FOREACH(const Views::value_type& p, v)
+  for(const Views::value_type& p: v)
   {
     p.first->hide();
   }
@@ -293,7 +291,7 @@ void on_done_loading_plugins()
         printf("ERROR: Don't know how to create %s\n", aggregateName.c_str());
       }
     }
-    
+
     if(presentations.empty())
     {
       // Aparently, we couldn't load any of our presentations. Terminate...
@@ -365,18 +363,18 @@ void on_scroom_bootstrap (const FileNameMap& newFilenames)
            "+----------------------------------------------------------------------+\n"
            );
   }
-  
+
   startPluginManager(devMode);
 
   if(devMode)
-  { 
+  {
     xmlFileName = TOP_SRCDIR "/gui/scroom.glade";
   }
   else
   {
     xmlFileName = PACKAGE_DATA_DIR "/scroom.glade";
   }
-  
+
   aboutDialogXml = glade_xml_new(xmlFileName.c_str(), "aboutDialog", NULL);
   if(aboutDialogXml!=NULL)
   {
@@ -398,7 +396,7 @@ void on_scroom_bootstrap (const FileNameMap& newFilenames)
 
 void find_or_create_scroom(PresentationInterface::Ptr presentation)
 {
-  BOOST_FOREACH(const Views::value_type& p, views)
+  for(const Views::value_type& p: views)
   {
     View::Ptr view = p.first;
     if(!view->hasPresentation())
@@ -472,7 +470,7 @@ void create_scroom(PresentationInterface::Ptr presentation)
 
 void on_newPresentationInterfaces_update(const std::map<NewPresentationInterface::Ptr, std::string>& newPresentationInterfaces)
 {
-  BOOST_FOREACH(const Views::value_type& p, views)
+  for(const Views::value_type& p: views)
   {
     p.first->on_newPresentationInterfaces_update(newPresentationInterfaces);
   }
@@ -482,7 +480,7 @@ void on_presentation_created(PresentationInterface::Ptr presentation)
 {
   presentations.push_back(presentation);
 
-  BOOST_FOREACH(const Views::value_type& p, views)
+  for(const Views::value_type& p: views)
   {
     p.first->on_presentation_created(presentation);
   }
@@ -554,7 +552,7 @@ void on_view_destroyed(View* v)
 {
   View::Ptr view = v->shared_from_this<View>();
   view->clearPresentation();
-  
+
   views.erase(view);
   view.reset();
 
@@ -576,9 +574,9 @@ void on_new_presentationobserver(PresentationObserver::Ptr po)
 
 void on_new_viewobserver(ViewObserver::Ptr v)
 {
-  BOOST_FOREACH(Views::value_type& p, views)
+  for(Views::value_type& p: views)
   {
     p.second.add(v->viewAdded(p.first));
   }
 }
-  
+

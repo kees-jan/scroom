@@ -9,8 +9,6 @@
 
 #include <algorithm>
 
-#include <boost/foreach.hpp>
-
 #include <scroom/gtk-helpers.hh>
 #include <scroom/assertions.hh>
 
@@ -23,7 +21,7 @@ namespace
     int right = std::numeric_limits<int>::min();
     int bottom = std::numeric_limits<int>::min();
 
-    BOOST_FOREACH(PresentationInterface::Ptr const& p, presentations)
+    for(PresentationInterface::Ptr const& p: presentations)
     {
       GdkRectangle rect = p->getRect();
       left = std::min(left, rect.x);

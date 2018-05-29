@@ -12,7 +12,6 @@
 #include <boost/test/unit_test_suite.hpp>
 #include <boost/test/parameterized_test.hpp>
 
-
 #include <scroom/colormappable.hh>
 #include <scroom/unused.hh>
 
@@ -62,7 +61,7 @@ namespace
   const Color Blue(0,0,1);
   const double accuracy = 1e-4;
 }
-  
+
 BOOST_AUTO_TEST_SUITE(ColormapHelper_Tests)
 
 struct Data
@@ -87,7 +86,7 @@ BOOST_AUTO_PARAM_TEST_CASE(colormaps_equal_and_correct_count, helpers.begin(), h
   Colormap::Ptr originalColormap = param.helper->getOriginalColormap();
   BOOST_REQUIRE(originalColormap);
   BOOST_CHECK_EQUAL(param.expectedColors, originalColormap->colors.size());
-  
+
   Colormap::Ptr colormap = param.helper->getColormap();
   BOOST_REQUIRE(colormap);
   BOOST_CHECK_EQUAL(param.expectedColors, colormap->colors.size());
@@ -107,12 +106,12 @@ BOOST_AUTO_TEST_CASE(monochrome_colormap_can_have_its_color_set)
 
   // At least one color in the current colormap doesn't have a blue component
   BOOST_CHECK_NE(1, helper->getColormap()->colors[0].blue);
-  
+
   helper->setMonochromeColor(Blue);
   BOOST_CHECK_EQUAL(originalOriginalColormap, helper->getOriginalColormap());
 
   Colormap::Ptr newColorMap = helper->getColormap();
-  BOOST_FOREACH(Color& c, newColorMap->colors)
+  for(Color& c: newColorMap->colors)
   {
     BOOST_CHECK_CLOSE(1, c.blue, accuracy);
   }
@@ -130,12 +129,12 @@ BOOST_AUTO_TEST_CASE(inverted_monochrome_colormap_can_have_its_color_set)
 
   // At least one color in the current colormap doesn't have a blue component
   BOOST_CHECK_NE(1, helper->getColormap()->colors.back().blue);
-  
+
   helper->setMonochromeColor(Blue);
   BOOST_CHECK_EQUAL(originalOriginalColormap, helper->getOriginalColormap());
 
   Colormap::Ptr newColorMap = helper->getColormap();
-  BOOST_FOREACH(Color& c, newColorMap->colors)
+  for(Color& c: newColorMap->colors)
   {
     BOOST_CHECK_CLOSE(1, c.blue, accuracy);
   }

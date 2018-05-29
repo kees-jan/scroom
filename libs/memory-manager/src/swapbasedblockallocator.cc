@@ -24,20 +24,20 @@ namespace Scroom
           void operator()(T*) {}
         };
       }
-      
+
       class SwapBasedBlockAllocator : public BlockInterface, public virtual Scroom::Utils::Base
       {
       private:
         size_t count;
         size_t size;
         uint8_t* data;
-        
+
       private:
         SwapBasedBlockAllocator(size_t count, size_t size);
-        
+
       protected:
         virtual RawPageData::Ptr get(size_t id);
-      
+
       public:
         ~SwapBasedBlockAllocator();
         static BlockInterface::Ptr create(size_t count, size_t size);
@@ -72,29 +72,29 @@ namespace Scroom
       PageList SwapBasedBlockAllocator::getPages()
       {
         BlockInterface::Ptr me = shared_from_this<BlockInterface>();
-        
+
         PageList result;
         for(size_t i=0; i<count; i++)
           result.push_back(Page(me, i));
-              
+
         return result;
       }
-      
+
       ////////////////////////////////////////////////////////////////////////
 
       class SwapBasedBlockAllocatorFactory : public BlockFactoryInterface
       {
       private:
         SwapBasedBlockAllocatorFactory();
-        
+
       public:
         static Ptr create();
         virtual BlockInterface::Ptr create(size_t count, size_t size);
       };
-      
+
       SwapBasedBlockAllocatorFactory::SwapBasedBlockAllocatorFactory()
       {}
-      
+
       BlockFactoryInterface::Ptr SwapBasedBlockAllocatorFactory::create()
       {
         return BlockFactoryInterface::Ptr(new SwapBasedBlockAllocatorFactory());
@@ -107,7 +107,7 @@ namespace Scroom
     }
 
     ////////////////////////////////////////////////////////////////////////
-    
+
     BlockFactoryInterface::Ptr getBlockFactoryInterface()
     {
       static BlockFactoryInterface::Ptr instance = Detail::SwapBasedBlockAllocatorFactory::create();

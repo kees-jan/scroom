@@ -17,7 +17,7 @@ public:
 public:
   State state;
   double progress;
-  
+
 public:
   static Ptr create();
   virtual ~ProgressStateInterfaceStub() {}
@@ -29,8 +29,4 @@ public:
   // ProgressStateInterface
   virtual void setProgress(State s, double d);
 };
-
-
-
-
 

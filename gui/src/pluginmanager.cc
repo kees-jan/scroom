@@ -45,7 +45,7 @@ bool PluginManager::doWork()
   DIR* dir;
   struct dirent* content;
   GModule* plugin;
-  
+
   gdk_threads_enter();
   switch(state)
   {
@@ -73,7 +73,7 @@ bool PluginManager::doWork()
     files.clear();
     state = SCANNING_DIRECTORIES;
     break;
-    
+
   case SCANNING_DIRECTORIES:
     setStatusBarMessage("Scanning plugin directories");
     if(currentDir!=dirs.end())
@@ -200,7 +200,7 @@ void PluginManager::addHook(bool devMode)
   gtk_idle_add(on_idle, static_cast<WorkInterface*>(this));
   // progressbar = GTK_PROGRESS_BAR(lookup_widget(scroom, "progressbar"));
   // statusbar = GTK_STATUSBAR(lookup_widget(scroom, "statusbar"));
-  // 
+  //
   // status_context_id = gtk_statusbar_get_context_id(statusbar, "Plugin Manager");
   state = FINDING_DIRECTORIES;
 }
@@ -218,7 +218,6 @@ void PluginManager::registerNewAggregateInterface(const std::string& identifier,
   printf("I learned how to create a new %s aggregate!\n", identifier.c_str());
   newAggregateInterfaces[identifier] = newAggregateInterface;
 }
-
 
 void PluginManager::registerOpenPresentationInterface(const std::string& extension, OpenPresentationInterface::Ptr openPresentationInterface)
 {

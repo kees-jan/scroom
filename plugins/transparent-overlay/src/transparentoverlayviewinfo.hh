@@ -33,7 +33,7 @@ public:
 private:
   boost::shared_ptr<TransparentOverlayViewInfo> parent;
   ProgressInterface::Ptr progressInterface;
-  
+
 private:
   ChildView(boost::shared_ptr<TransparentOverlayViewInfo> const& parent);
 
@@ -56,7 +56,7 @@ public:
 
 private:
   typedef std::map<PresentationInterface::Ptr, ChildView::Ptr> ChildMap;
-  
+
 private:
   ViewInterface::Ptr parentView;
   ChildMap childViews;
@@ -85,5 +85,4 @@ public:
   // Helpers
   void toggled(GtkToggleButton* button);
 };
-
 

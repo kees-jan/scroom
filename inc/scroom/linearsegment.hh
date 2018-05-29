@@ -22,7 +22,7 @@ class Segment: public boost::addable2<Segment<T>, T>,
 {
 public:
   typedef T value_type;
-  
+
   Segment()
       : start (0), size (0)
   {}

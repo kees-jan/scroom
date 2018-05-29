@@ -89,7 +89,7 @@ static void on_newWindow_activate(GtkMenuItem*, gpointer user_data)
 }
 
 ////////////////////////////////////////////////////////////////////////
-  
+
 View::View(GladeXML* scroomXml)
   : scroomXml(scroomXml), presentation(), sidebarManager(),
     drawingAreaWidth(0), drawingAreaHeight(0),
@@ -110,7 +110,7 @@ View::View(GladeXML* scroomXml)
   menubar = GTK_WIDGET(glade_xml_get_widget(scroomXml, "menubar"));
   statusArea = GTK_WIDGET(glade_xml_get_widget(scroomXml, "status_area"));
   toolbarArea = GTK_WIDGET(glade_xml_get_widget(scroomXml, "toolbar_area"));
-  
+
   zoomBox = GTK_COMBO_BOX(glade_xml_get_widget(scroomXml, "zoomboxcombo"));
   zoomItems = gtk_list_store_new(N_COLUMNS, G_TYPE_STRING, G_TYPE_INT);
 
@@ -137,9 +137,9 @@ View::View(GladeXML* scroomXml)
 
   cachedPoint.x=0;
   cachedPoint.y=0;
-  
+
   on_newPresentationInterfaces_update(pluginManager->getNewPresentationInterfaces());
-  updateNewWindowMenu();  
+  updateNewWindowMenu();
   on_configure();
 }
 
@@ -155,7 +155,6 @@ View::Ptr View::create(GladeXML* scroomXml, PresentationInterface::Ptr presentat
 
   return view;
 }
-
 
 View::~View()
 {
@@ -184,7 +183,7 @@ void View::redraw(cairo_t* cr)
       rect.width = drawingAreaWidth*pixelSize;
       rect.height = drawingAreaHeight*pixelSize;
     }
-    
+
     presentation->redraw(shared_from_this<View>(), cr, rect, zoom);
 
     if(measurement)
@@ -205,9 +204,9 @@ void View::redraw(cairo_t* cr)
   else
   {
     // A logo here would be nice...
-    
+
     // char buffer[] = "View says \"Hi\"";
-    // 
+    //
     // cairo_move_to(cr, 50, 50);
     // cairo_show_text(cr, buffer);
   }
@@ -265,7 +264,7 @@ void View::updateScrollbar(GtkAdjustment* adj, int zoom, int value, int presenta
     int pixelSize = 1<<zoom;
     presentationStart -= windowSize/pixelSize/2;
     presentationSize += windowSize/pixelSize;
-    
+
     gtk_adjustment_configure(adj, value, presentationStart, presentationStart+presentationSize,
                              1, 3*windowSize/pixelSize/4, windowSize/pixelSize);
   }
@@ -351,13 +350,13 @@ void View::updateZoom()
       presentationWidth >>= 1;
       minZoom--;
     }
-    
+
     gtk_widget_set_sensitive(GTK_WIDGET(zoomBox), true);
-    
+
     int zMax = MaxZoom - minZoom;
     zMax = std::max(zMax, 1+MaxZoom-zoom);
     zMax = std::min((size_t)zMax, sizeof(zoomfactor)/sizeof(zoomfactor[0]));
-  
+
     gtk_list_store_clear(zoomItems);
     for(int z=0; z<zMax; z++)
     {
@@ -406,7 +405,7 @@ void View::updateRulers()
 
 ////////////////////////////////////////////////////////////////////////
 // Scroom events
-  
+
 void View::on_newPresentationInterfaces_update(const std::map<NewPresentationInterface::Ptr, std::string>& newPresentationInterfaces)
 {
   GtkWidget* new_menu_item = glade_xml_get_widget(scroomXml, "new");
@@ -459,7 +458,7 @@ void View::on_configure()
 
   if(drawingAreaHeight != newHeight || drawingAreaWidth != newWidth)
     on_window_size_changed(newWidth, newHeight);
-  
+
   gdk_region_destroy(r);
 }
 
@@ -477,7 +476,7 @@ void View::on_window_size_changed(int newWidth, int newHeight)
     x+=(drawingAreaWidth-newWidth)*pixelSize/2;
     y+=(drawingAreaHeight-newHeight)*pixelSize/2;
   }
-  
+
   drawingAreaHeight = newHeight;
   drawingAreaWidth = newWidth;
   updateZoom();
@@ -512,13 +511,12 @@ void View::on_scrollwheel(GdkEventScroll* event)
   }
 }
 
-
 void View::on_zoombox_changed()
 {
   GtkTreeIter iter;
   GValue value= G_VALUE_INIT;
   gtk_combo_box_get_active_iter(zoomBox, &iter);
-  
+
   if(gtk_list_store_iter_is_valid(zoomItems, &iter))
   {
     gtk_tree_model_get_value(GTK_TREE_MODEL(zoomItems), &iter, COLUMN_ZOOM, &value);
@@ -556,7 +554,7 @@ void View::on_zoombox_changed(int newzoom, int mousex, int mousey)
       x-=mousex*pixelsize;
       y-=mousey*pixelsize;
     }
-    
+
     zoom = newzoom;
     updateScrollbars();
     updateTextbox();
@@ -609,7 +607,7 @@ void View::on_scrollbar_value_changed(GtkAdjustment* adjustment)
 {
   int newx = x;
   int newy = y;
-  
+
   if(adjustment == vscrollbaradjustment)
   {
     newy = (int)gtk_adjustment_get_value(adjustment);
@@ -671,7 +669,7 @@ void View::on_motion_notify(GdkEventMotion* event)
   {
     int newx = x;
     int newy = y;
-    
+
     if(zoom>=0)
     {
       const int pixelSize=1<<zoom;
@@ -708,7 +706,7 @@ void View::on_motion_notify(GdkEventMotion* event)
       measurement->end = cachedPoint;
       moved = true;
     }
-    
+
     if(moved)
     {
       invalidate();
@@ -767,7 +765,7 @@ void View::addToToolbar(GtkToolItem* ti)
   }
 
   g_object_set(G_OBJECT(ti), "visible", true, NULL);
-  
+
   gtk_toolbar_insert(toolBar, ti, -1);
   toolBarCount++;
 }
@@ -824,7 +822,7 @@ GdkPoint View::presentationPointToWindowPoint(GdkPoint pp)
   }
   return result;
 }
-  
+
 GdkPoint View::eventToPoint(GdkEventButton* event)
 {
   GdkPoint result = {(gint)event->x, (gint)event->y};
@@ -927,7 +925,7 @@ void View::updateNewWindowMenu()
       printf("PANIC! Logic error in view.cc\n");
     }
     //// Done updating menu
-    
+
     cur=next;
   }
 
@@ -965,7 +963,7 @@ void View::updateXY(int x, int y, LocationChangeCause source)
       updateScrollbars();
     else
       updateRulers();
-    
+
     if(source != TEXTBOX)
       updateTextbox();
 

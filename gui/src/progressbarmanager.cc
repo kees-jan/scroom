@@ -9,7 +9,6 @@
 
 #include <boost/thread.hpp>
 #include <boost/shared_ptr.hpp>
-#include <boost/foreach.hpp>
 
 #include <scroom/assertions.hh>
 #include <scroom/gtk-helpers.hh>
@@ -40,7 +39,7 @@ namespace
 
   ////////////////////////////////////////////////////////////////////////
   // Regular functions
-  
+
   ProgressBarPulser::Ptr instance()
   {
     static ProgressBarPulser::Ptr pulser = ProgressBarPulser::Ptr(new ProgressBarPulser());
@@ -53,7 +52,7 @@ namespace
   void ProgressBarPulser::start(GtkProgressBar* progressBar)
   {
     boost::mutex::scoped_lock lock(mut);
-      
+
     progressbars.push_back(progressBar);
 
     if(progressbars.size()==1)
@@ -62,18 +61,18 @@ namespace
       g_timeout_add(100, on_idle, static_cast<WorkInterface*>(this));
     }
   }
-  
+
   void ProgressBarPulser::stop(GtkProgressBar* progressBar)
   {
     boost::mutex::scoped_lock lock(mut);
 
-    BOOST_FOREACH(GtkProgressBar* &p, progressbars)
+    for(GtkProgressBar* &p: progressbars)
     {
       if(p==progressBar)
         p=NULL;
     }
   }
-  
+
   bool ProgressBarPulser::doWork()
   {
     // Locking these the other way around results in a deadlock. See ticket #40
@@ -98,7 +97,7 @@ namespace
 
     gtk_progress_bar_pulse(*current);
     ++current;
-    
+
     return true;
   }
 }
@@ -131,7 +130,7 @@ void ProgressBarManager::startWaiting()
     instance()->start(progressBar);
     isWaiting = true;
   }
-}  
+}
 
 void ProgressBarManager::stopWaiting()
 {
@@ -141,8 +140,7 @@ void ProgressBarManager::stopWaiting()
     instance()->stop(progressBar);
     isWaiting = false;
   }
-}  
-
+}
 
 // ProgressInterface ///////////////////////////////////////////////////
 

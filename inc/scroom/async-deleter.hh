@@ -29,7 +29,6 @@ namespace Scroom
   }
 }
 
-
 /**
  * Allow boost shared pointers to asynchronously delete their targets.
  *
@@ -62,5 +61,4 @@ public:
     deleter->schedule(boost::bind(&call_delete<T>, p));
   }
 };
-
 

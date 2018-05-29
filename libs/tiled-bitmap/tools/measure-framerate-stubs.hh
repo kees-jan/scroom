@@ -14,13 +14,13 @@ class ProgressInterfaceStub : public ProgressInterface
 {
 public:
   typedef boost::shared_ptr<ProgressInterfaceStub> Ptr;
-  
+
 private:
   bool finished;
 
 private:
   ProgressInterfaceStub();
-  
+
 public:
   static Ptr create();
 
@@ -78,5 +78,4 @@ public:
   virtual void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles);
   virtual void done() {};
 };
-
 

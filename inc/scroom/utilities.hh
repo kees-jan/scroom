@@ -71,7 +71,7 @@ namespace Scroom
     {
     public:
       typedef boost::shared_ptr<Count> Ptr;
-      
+
     public:
       const std::string name;
       boost::mutex mut;
@@ -90,7 +90,7 @@ namespace Scroom
     };
 
     ////////////////////////////////////////////////////////////////////////
-    
+
     class Counter
     {
     public:
@@ -124,7 +124,7 @@ namespace Scroom
         static Count::Ptr instance = Count::create(typeid(C).name());
         return instance;
       }
-    
+
       Counted()
         : data(count_instance())
       {
@@ -144,5 +144,4 @@ namespace Scroom
     };
   }
 }
-
 

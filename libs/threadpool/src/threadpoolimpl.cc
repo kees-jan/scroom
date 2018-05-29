@@ -41,7 +41,7 @@ namespace
 
   private:
     void dumpPointers();
-    
+
   public:
     static Ptr instance();
     void wait();
@@ -91,7 +91,7 @@ namespace
     while(cur != pointers.end())
     {
       const int count = cur->first.use_count();
-        
+
       if(count)
       {
         printf("%d references to %s remaining\n", count, cur->second.c_str());
@@ -172,7 +172,6 @@ namespace
     threadList->wait();
   }
 }
-
 
 ////////////////////////////////////////////////////////////////////////
 /// ThreadPool::PrivateData
@@ -288,7 +287,7 @@ void ThreadPool::work(ThreadPool::PrivateData::Ptr priv)
     {
       busy = false;
     }
-  }    
+  }
 }
 
 void ThreadPool::do_one(ThreadPool::PrivateData::Ptr priv)
@@ -297,7 +296,7 @@ void ThreadPool::do_one(ThreadPool::PrivateData::Ptr priv)
 
   {
     boost::mutex::scoped_lock lock(priv->mut);
-    
+
     while(!priv->jobs.empty() && priv->jobs.begin()->second.empty())
       priv->jobs.erase(priv->jobs.begin());
 
@@ -472,7 +471,7 @@ void QueueJumper::operator()()
 ThreadPool::Ptr CpuBound()
 {
   static ThreadPool::Ptr cpuBound = NotifyThreadList<ThreadPool>(ThreadPool::Ptr(new ThreadPool()), "CpuBound threadpool");
-  
+
   return cpuBound;
 }
 
@@ -482,5 +481,4 @@ ThreadPool::Ptr Sequentially()
 
   return sequentially;
 }
-
 

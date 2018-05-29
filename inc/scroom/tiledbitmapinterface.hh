@@ -259,7 +259,7 @@ public:
    *
    * @see setSource()
    */
-  virtual boost::shared_ptr<Layer> getBottomLayer()=0;  
+  virtual boost::shared_ptr<Layer> getBottomLayer()=0;
 
   /**
    * Redraw a portion of the bitmap.
@@ -319,9 +319,8 @@ public:
  *
  * @return A pointer to a newly created TiledBitmapInterface. You can
  *    use this pointer to manipulate your bitmap.
- * 
+ *
  */
 TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight,
     LayerSpec const& ls);
-
 

@@ -135,8 +135,6 @@ GtkWidget* RoiUi::create_view_and_model ()
   return view;
 }
 
-
-
 void RoiUi::open(ViewInterface::WeakPtr viWeak)
 {
   ViewInterface::Ptr vi = viWeak.lock();

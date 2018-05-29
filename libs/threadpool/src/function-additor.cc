@@ -7,8 +7,6 @@
 
 #include "scroom/function-additor.hh"
 
-#include <boost/foreach.hpp>
-
 void Scroom::Detail::ThreadPool::FunctionAdditor::addBefore(boost::function<void ()> const& fn)
 {
   functions.push_front(fn);
@@ -35,7 +33,7 @@ Scroom::Detail::ThreadPool::FunctionAdditor& Scroom::Detail::ThreadPool::Functio
 
 void Scroom::Detail::ThreadPool::FunctionAdditor::operator()()
 {
-  BOOST_FOREACH(boost::function<void ()>& f, functions)
+  for(boost::function<void ()>& f: functions)
   {
     f();
   }

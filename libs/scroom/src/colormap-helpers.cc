@@ -142,7 +142,7 @@ void MonochromeColormapHelper::regenerateColormap()
       w.setAlpha(0);
 
   }
-  
+
   for(int i=0; i<numberOfColors; i++)
   {
     colormap->colors[i] = mix(w, b, 1.0*i/(numberOfColors-1));

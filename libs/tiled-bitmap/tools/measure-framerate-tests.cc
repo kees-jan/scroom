@@ -44,7 +44,7 @@ private:
   struct timespec t;
 
   static unsigned int columnWidth;
-  
+
 public:
   BaseCounter(const std::string& name, unsigned int secs);
 
@@ -59,7 +59,6 @@ public:
 };
 
 ////////////////////////////////////////////////////////////////////////
-
 
 static bool logSizes()
 {
@@ -77,7 +76,7 @@ Invalidator::Invalidator(unsigned int secs)
 bool Invalidator::operator()()
 {
   invalidate();
-  
+
   if(!started && 0==clock_gettime(CLOCK_REALTIME, &t))
   {
     started = true;
@@ -113,7 +112,7 @@ bool BaseCounter::operator()()
   }
 
   count++;
-  
+
   struct timespec now;
   if(0==clock_gettime(CLOCK_REALTIME, &now))
   {
@@ -123,7 +122,7 @@ bool BaseCounter::operator()()
       double elapsed = (now.tv_nsec - t.tv_nsec)*1e-9;
       elapsed += now.tv_sec - t.tv_sec;
       printf("%-*s: %10.2f Hz\n", columnWidth, name.c_str(), count/elapsed);
-      
+
       return false;
     }
   }

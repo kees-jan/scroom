@@ -9,8 +9,6 @@
 
 #include <sstream>
 
-#include <boost/foreach.hpp>
-
 #include <scroom/unused.hh>
 #include <scroom/bitmap-helpers.hh>
 #include <scroom/colormappable.hh>
@@ -117,7 +115,7 @@ TransparentOverlayViewInfo::Ptr TransparentOverlayViewInfo::create(const ViewInt
 
 void TransparentOverlayViewInfo::addChildren(const std::list<PresentationInterface::Ptr>& children)
 {
-  BOOST_FOREACH(PresentationInterface::Ptr const& child, children)
+  for(PresentationInterface::Ptr const& child: children)
     addChild(child);
 }
 
@@ -133,7 +131,7 @@ void TransparentOverlayViewInfo::addChild(const PresentationInterface::Ptr& chil
 
 void TransparentOverlayViewInfo::close()
 {
-  BOOST_FOREACH(ChildMap::value_type const& v, childViews)
+  for(ChildMap::value_type const& v: childViews)
   {
     sizeDeterminer->close(v.first, v.second);
     v.first->close(v.second);

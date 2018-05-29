@@ -7,8 +7,6 @@
 
 #include "measure-framerate-stubs.hh"
 
-#include <boost/foreach.hpp>
-
 #include <scroom/progressinterfacehelpers.hh>
 
 ProgressInterfaceStub::ProgressInterfaceStub()
@@ -47,7 +45,7 @@ ProgressInterface::Ptr ViewInterfaceStub::getProgressInterface()
 
 void Source1Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<Tile::Ptr>& tiles)
 {
-  BOOST_FOREACH(Tile::Ptr tile, tiles)
+  for(Tile::Ptr tile: tiles)
   {
     byte* data = tile->data.get();
     for(int y=0; y<lineCount; y+=2)
@@ -68,7 +66,7 @@ void Source1Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<T
 
 void Source2Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<Tile::Ptr>& tiles)
 {
-  BOOST_FOREACH(Tile::Ptr tile, tiles)
+  for(Tile::Ptr tile: tiles)
   {
     byte* data = tile->data.get();
     for(int y=0; y<lineCount; y++)
@@ -86,7 +84,7 @@ void Source2Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<T
 
 void Source4Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<Tile::Ptr>& tiles)
 {
-  BOOST_FOREACH(Tile::Ptr tile, tiles)
+  for(Tile::Ptr tile: tiles)
   {
     byte* data = tile->data.get();
     for(int y=0; y<lineCount; y++)
@@ -94,7 +92,7 @@ void Source4Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<T
       for(int x=0; x<tileWidth/2; x++)
       {
         byte v = 2*x+y;
-        
+
         *data = ((v&0xF) << 4) | ((v+1) & 0xF);
         data++;
       }
@@ -104,7 +102,7 @@ void Source4Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<T
 
 void Source8Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<Tile::Ptr>& tiles)
 {
-  BOOST_FOREACH(Tile::Ptr tile, tiles)
+  for(Tile::Ptr tile: tiles)
   {
     byte* data = tile->data.get();
     for(int y=0; y<lineCount; y++)

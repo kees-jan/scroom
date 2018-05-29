@@ -85,7 +85,7 @@ private:
   GdkPoint cachedPoint;
 
   ProgressBarManager::Ptr progressBarManager;
-  
+
   std::map<PresentationInterface::WeakPtr,GtkWidget*> presentations;
 
 private:
@@ -95,7 +95,7 @@ private:
       TEXTBOX,
       OTHER
     };
-  
+
 private:
   View(GladeXML* scroomXml);
 
@@ -119,7 +119,7 @@ public:
 
   ////////////////////////////////////////////////////////////////////////
   // Scroom events
-  
+
   void on_newPresentationInterfaces_update(const std::map<NewPresentationInterface::Ptr, std::string>& newPresentationInterfaces);
   void on_presentation_created(PresentationInterface::Ptr p);
   void on_presentation_destroyed();
@@ -160,5 +160,4 @@ private:
   void updateNewWindowMenu();
   void updateXY(int x, int y, LocationChangeCause source);
 };
-
 

@@ -93,7 +93,7 @@ bool TiffPresentation::load(const std::string& fileName)
       }
     }
     this->bps = bps;
-    
+
     Colormap::Ptr originalColormap;
 
     uint16 *r, *g, *b;
@@ -154,7 +154,7 @@ bool TiffPresentation::load(const std::string& fileName)
       if (originalColormap)
         printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
       break;
-      
+
     default:
       printf("PANIC: Unrecognized value for photometric\n");
       return false;
@@ -252,7 +252,7 @@ void TiffPresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr,
     GdkRectangle presentationArea, int zoom)
 {
   drawOutOfBoundsWithoutBackground(cr, presentationArea, getRect(), pixelSizeFromZoom(zoom));
-  
+
   if (tbi)
     tbi->redraw(vi, cr, presentationArea, zoom);
 }
@@ -374,7 +374,7 @@ void TiffPresentation::disableTransparentBackground()
   colormapHelper->disableTransparentBackground();
   clearCaches();
 }
-  
+
 bool TiffPresentation::getTransparentBackground()
 {
   return colormapHelper->getTransparentBackground();
@@ -382,7 +382,7 @@ bool TiffPresentation::getTransparentBackground()
 
 void TiffPresentation::clearCaches()
 {
-  BOOST_FOREACH(const Views::value_type& p, views)
+  for(const Views::value_type& p: views)
   {
     ViewInterface::Ptr v = p.lock();
     if(v)
@@ -408,7 +408,7 @@ TiffPresentationWrapper::Ptr TiffPresentationWrapper::create()
 {
   return Ptr(new TiffPresentationWrapper());
 }
-  
+
 TiffPresentationWrapper::~TiffPresentationWrapper()
 {
   presentation->destroy();
@@ -418,7 +418,7 @@ bool TiffPresentationWrapper::load(const std::string& fileName)
 {
   return presentation->load(fileName);
 }
-  
+
 GdkRectangle TiffPresentationWrapper::getRect()
 {
   return presentation->getRect();
@@ -493,7 +493,7 @@ void TiffPresentationWrapper::disableTransparentBackground()
 {
   presentation->disableTransparentBackground();
 }
-  
+
 bool TiffPresentationWrapper::getTransparentBackground()
 {
   return presentation->getTransparentBackground();

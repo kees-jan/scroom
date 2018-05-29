@@ -37,4 +37,4 @@ Aggregate::Ptr TransparentOverlay::createNew()
 {
   return TransparentOverlayPresentation::create();
 }
-  
+

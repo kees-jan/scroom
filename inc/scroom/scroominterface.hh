@@ -40,7 +40,7 @@ public:
 
 public:
   virtual ~NewPresentationInterface() {}
-  
+
   virtual PresentationInterface::Ptr createNew()=0;
 };
 
@@ -64,7 +64,7 @@ public:
   virtual ~OpenPresentationInterface() {}
 
   virtual std::list<GtkFileFilter*> getFilters()=0;
-  
+
   virtual PresentationInterface::Ptr open(const std::string& fileName)=0;
 };
 
@@ -119,6 +119,4 @@ public:
   virtual void registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer)=0;
   virtual void registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer)=0;
 };
-
-
 

@@ -15,7 +15,7 @@ private:
   cairo_pattern_t* pattern;
 
   void fillPattern();
-  
+
 public:
   ExamplePresentation();
   virtual ~ExamplePresentation();
@@ -28,5 +28,4 @@ public:
   virtual bool isPropertyDefined(const std::string& name);
   virtual std::string getTitle();
 };
-
 

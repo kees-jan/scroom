@@ -9,8 +9,6 @@
 
 #include <string.h>
 
-#include <boost/foreach.hpp>
-
 #include "local.hh"
 #include "tileviewstate.hh"
 
@@ -27,7 +25,7 @@ CompressedTile::CompressedTile(int depth, int x, int y, int bpp, PageProvider::P
 CompressedTile::Ptr CompressedTile::create(int depth, int x, int y, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider, TileStateInternal state)
 {
   CompressedTile::Ptr tile = CompressedTile::Ptr(new CompressedTile(depth, x, y, bpp, provider, state));
-  
+
   return tile;
 }
 
@@ -36,7 +34,7 @@ ConstTile::Ptr CompressedTile::getConstTileSync()
   ConstTile::Ptr result = constTile.lock();
   if(!result)
     result = do_load();
-  
+
   return result;
 }
 
@@ -68,7 +66,7 @@ Tile::Ptr CompressedTile::getTileSync()
       tile = result;
     }
   }
-  
+
   return result;
 }
 
@@ -82,7 +80,7 @@ Tile::Ptr CompressedTile::initialize()
 {
   Scroom::Utils::Stuff s;
   Tile::Ptr tile;
-  
+
   bool didInitialize = false;
   {
     boost::mutex::scoped_lock stateLock(stateData);
@@ -101,16 +99,16 @@ Tile::Ptr CompressedTile::initialize()
 
   return tile;
 }
-  
+
 void CompressedTile::reportFinished()
 {
   CompressedTile::Ptr me = shared_from_this<CompressedTile>();
   ConstTile::Ptr t = do_load();
-  BOOST_FOREACH(TileInitialisationObserver::Ptr observer, Observable<TileInitialisationObserver>::getObservers())
+  for(TileInitialisationObserver::Ptr observer: Observable<TileInitialisationObserver>::getObservers())
   {
     observer->tileFinished(me);
   }
-  BOOST_FOREACH(TileLoadingObserver::Ptr observer, Observable<TileLoadingObserver>::getObservers())
+  for(TileLoadingObserver::Ptr observer: Observable<TileLoadingObserver>::getObservers())
   {
     observer->tileLoaded(t);
   }
@@ -159,7 +157,6 @@ TileViewState::Ptr CompressedTile::getViewState(ViewInterface::WeakPtr vi)
 
   return result;
 }
-
 
 TileState CompressedTile::getState()
 {
@@ -250,7 +247,7 @@ void CompressedTile::cleanupState()
 
 void CompressedTile::notifyObservers(ConstTile::Ptr tile)
 {
-  BOOST_FOREACH(TileLoadingObserver::Ptr observer, Observable<TileLoadingObserver>::getObservers())
+  for(TileLoadingObserver::Ptr observer: Observable<TileLoadingObserver>::getObservers())
   {
     observer->tileLoaded(tile);
   }

@@ -43,7 +43,7 @@ private:
       LOADING_FILES,
       DONE
     } PluginManagerState;
-  
+
 private:
   bool devMode;
   PluginManagerState state;
@@ -61,13 +61,13 @@ private:
 
 private:
   void setStatusBarMessage(const char* message);
-  
+
   PluginManager();
 
 public:
 
   static Ptr create();
-  
+
   virtual bool doWork();
 
   void addHook(bool devMode);
@@ -91,5 +91,4 @@ public:
 };
 
 void startPluginManager(bool devMode);
-
 

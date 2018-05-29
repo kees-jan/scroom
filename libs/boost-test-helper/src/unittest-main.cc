@@ -40,7 +40,7 @@ int main( int argc, char* argv[] )
 #ifdef XML_TEST_OUTPUT
   if(argc>1)
     std::cerr << "You have requested XML output. Your command-line arguments will be ignored" << std::endl;
-  
+
   std::string path = extract_path(argv[0]);
   std::stringstream outputArgument;
   outputArgument << "--log_sink=";
@@ -49,7 +49,7 @@ int main( int argc, char* argv[] )
   outputArgument << "test_results.xml";
 
   std::string outputArgumentString = outputArgument.str();
-  
+
   // Apparently, order is important here. Weird but true...
   const char * alternative[] = {
     "--log_format=XML",
@@ -59,7 +59,7 @@ int main( int argc, char* argv[] )
     "--report_level=no",
   };
   int count = sizeof(alternative)/sizeof(alternative[0]);
-  
+
   return ::boost::unit_test::unit_test_main( &init_unit_test, count, const_cast<char**>(alternative) );
 #else
   return ::boost::unit_test::unit_test_main( &init_unit_test, argc, argv );

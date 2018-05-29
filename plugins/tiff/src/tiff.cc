@@ -56,10 +56,10 @@ std::list<GtkFileFilter*> Tiff::getFilters()
   gtk_file_filter_set_name(filter, "Tiff files");
   gtk_file_filter_add_mime_type(filter, "image/tiff");
   result.push_back(filter);
-  
+
   return result;
 }
-  
+
 PresentationInterface::Ptr Tiff::open(const std::string& fileName)
 {
   TiffPresentationWrapper::Ptr p = TiffPresentationWrapper::create();

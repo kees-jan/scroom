@@ -32,4 +32,3 @@ public:
   virtual Aggregate::Ptr createNew();
 };
 
-

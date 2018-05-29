@@ -50,7 +50,7 @@ namespace
   {
   public:
     typedef boost::shared_ptr<PresentationInterfaceStub> Ptr;
-    
+
   private:
     GdkRectangle rect;
 
@@ -61,7 +61,7 @@ namespace
 
   public:
     static Ptr create(GdkRectangle const& rect) { return Ptr(new PresentationInterfaceStub(rect)); }
-    
+
     virtual GdkRectangle getRect() { return rect; }
 
     virtual void redraw(ViewInterface::Ptr const&, cairo_t*, GdkRectangle, int) {}
@@ -81,7 +81,7 @@ namespace
   public:
     std::list<ViewInterface::WeakPtr> receivedVi;
     std::list<GdkRectangle> receivedRect;
-    
+
   private:
     ResizablePresentationInterfaceStub(GdkRectangle const& rect)
       : PresentationInterfaceStub(rect)
@@ -89,7 +89,7 @@ namespace
 
   public:
     static Ptr create(GdkRectangle const& rect) { return Ptr(new ResizablePresentationInterfaceStub(rect)); }
-      
+
     virtual void setRect(ViewInterface::WeakPtr const& vi, GdkRectangle const& rect)
     {
       receivedVi.push_back(vi);
@@ -126,7 +126,7 @@ namespace
 
   public:
     static Ptr create() { return Ptr(new ViewInterfaceDummy()); }
-    
+
     virtual void invalidate() {}
     virtual ProgressInterface::Ptr getProgressInterface() { return ProgressInterface::Ptr(); }
     virtual void addSideWidget(std::string, GtkWidget*) {}
@@ -136,7 +136,6 @@ namespace
   };
 
 }
-
 
 BOOST_AUTO_TEST_SUITE(Determine_size_tests)
 
@@ -268,6 +267,5 @@ BOOST_AUTO_TEST_CASE(updates_are_sent_to_multiple_views)
   BOOST_CHECK(p1->Contains(vi2));
   BOOST_CHECK(!p1->Contains(vi3));
 }
-
 
 BOOST_AUTO_TEST_SUITE_END()

@@ -9,7 +9,6 @@
 
 #include <scroom/threadpool.hh>
 
-
 namespace Scroom
 {
   namespace Detail
@@ -81,7 +80,4 @@ namespace Scroom
     }
   }
 }
-
-
-
 

@@ -34,7 +34,7 @@ class TestObservable: public Observable<TestObserver>
 {
 public:
   typedef boost::shared_ptr<TestObservable> Ptr;
-  
+
   std::list<Observer> getObservers();
 
   static Ptr create();
@@ -58,7 +58,7 @@ private:
   TestObservable::Ptr child;
 
   TestRecursiveObservable(TestObservable::Ptr child);
-  
+
 public:
   typedef boost::shared_ptr<TestRecursiveObservable> Ptr;
 
@@ -341,7 +341,5 @@ BOOST_AUTO_TEST_CASE(deleting_observable_deletes_observer)
   BOOST_CHECK(!observable);
   BOOST_CHECK(!weakObserver.lock());
 }
-
-
 
 BOOST_AUTO_TEST_SUITE_END()

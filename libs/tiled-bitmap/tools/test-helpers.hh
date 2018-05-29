@@ -25,7 +25,7 @@ class DummyColormapProvider: public ColormapProvider
 {
 public:
   typedef boost::shared_ptr<DummyColormapProvider> Ptr;
-  
+
 private:
   Colormap::Ptr colormap;
 
@@ -56,7 +56,7 @@ private:
 private:
   TestData(DummyColormapProvider::Ptr colormapProvider, const LayerSpec& ls,
            TiledBitmapInterface::Ptr tbi, SourcePresentation::Ptr sp, int zoom);
-  
+
 public:
   static Ptr create(DummyColormapProvider::Ptr colormapProvider, const LayerSpec& ls,
                     TiledBitmapInterface::Ptr tbi, SourcePresentation::Ptr sp, int zoom);

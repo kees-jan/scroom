@@ -7,8 +7,6 @@
 
 #include "tileviewstate.hh"
 
-#include <boost/foreach.hpp>
-
 #include <scroom/unused.hh>
 
 #include "local.hh"
@@ -78,7 +76,7 @@ void TileViewState::setViewData(TiledBitmapViewData::Ptr tbvd)
 void TileViewState::setZoom(LayerOperations::Ptr lo, int zoom)
 {
   bool mustKick = false;
-  
+
   boost::mutex::scoped_lock l(mut);
   if(desiredState != DONE || zoom != this->zoom)
   {
@@ -134,18 +132,18 @@ void TileViewState::process(ThreadPool::WeakQueue::Ptr wq)
     boost::mutex::scoped_lock l(mut);
     // printf("process: Tile %d, %d, %d: state=%d, desired=%d, queue? %d\n",
     //        parent->depth, parent->x, parent->y, state, desiredState, (bool)(wq==weakQueue));
-      
+
     if(wq == weakQueue && state < desiredState)
     {
       boost::function<void ()> fn;
-        
+
       switch(state)
       {
       case LOADED:
         fn = boost::bind(&TileViewState::computeBase, shared_from_this<TileViewState>(), wq, tile, lo);
         state = COMPUTING_BASE;
         break;
-        
+
       case BASE_COMPUTED:
         fn = boost::bind(&TileViewState::computeZoom, shared_from_this<TileViewState>(),
                          wq, tile, lo, baseCache, zoom);
@@ -176,10 +174,9 @@ void TileViewState::process(ThreadPool::WeakQueue::Ptr wq)
 
   }
 
-
   {
     boost::mutex::scoped_lock l(mut);
-      
+
     if(wq == weakQueue)
     {
       queue.reset();
@@ -196,7 +193,7 @@ void TileViewState::computeBase(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr ti
   TiledBitmapViewData::Ptr tbvd = this->tbvd.lock();
   // printf("computeBase: Tile %d, %d, %d: state=%d, desired=%d, tbvd=%d, queue? %d\n",
   //        parent->depth, parent->x, parent->y, state, desiredState, (bool)tbvd, (bool)(wq==weakQueue));
-  
+
   if(tbvd && desiredState>=BASE_COMPUTED && this->weakQueue == wq)
   {
     this->baseCache = baseCache;
@@ -222,16 +219,15 @@ void TileViewState::computeZoom(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr ti
 void TileViewState::reportDone(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr tile)
 {
   UNUSED(wq);
-    
+
   // printf("reportDone: Tile %d, %d, %d: state=%d, desired=%d\n",
   //        parent->depth, parent->x, parent->y, state, desiredState);
 
-  BOOST_FOREACH(TileLoadingObserver::Ptr observer, Scroom::Utils::Observable<TileLoadingObserver>::getObservers())
+  for(TileLoadingObserver::Ptr observer: Scroom::Utils::Observable<TileLoadingObserver>::getObservers())
   {
     observer->tileLoaded(tile);
   }
 }
-
 
 void TileViewState::clear()
 {

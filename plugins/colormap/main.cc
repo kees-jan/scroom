@@ -25,7 +25,6 @@ G_MODULE_EXPORT void g_module_unload(GModule *module)
   printf("Colormap plugin unload function\n");
 }
 
-
 G_MODULE_EXPORT PluginInformationInterface::Ptr getPluginInformation()
 {
   return Scroom::ColormapImpl::ColormapPlugin::create();

@@ -14,7 +14,6 @@
 #include <stdio.h>
 
 #include <boost/thread/mutex.hpp>
-#include <boost/foreach.hpp>
 
 #include <scroom/assertions.hh>
 #include <scroom/cairo-helpers.hh>
@@ -37,7 +36,7 @@ static Scroom::MemoryBlobs::PageProvider::Ptr createProvider(double width, doubl
   double guessedTileSizeAfterCompression = tileSize / 100;
   const int pagesize = 4096;
   int pagesPerBlock = std::max(int(ceil(guessedTileSizeAfterCompression / 10 / pagesize)),1);
-  
+
   int blockSize = pagesPerBlock*pagesize;
   int blockCount = std::max(int(ceil(tileCount / 10)), 64);
 
@@ -81,7 +80,7 @@ private:
 public:
   static Ptr create(ThreadPool::WeakQueue::Ptr queue, Layer::Ptr const& l, SourcePresentation::Ptr sp,
                     ProgressInterface::Ptr progress);
-  
+
   virtual ~LoadOperation() {}
 
   virtual void operator()();
@@ -95,7 +94,7 @@ FileOperation::Ptr LoadOperation::create(ThreadPool::WeakQueue::Ptr queue,
 {
   return FileOperation::Ptr(new LoadOperation(queue, l, sp, progress));
 }
-                                         
+
 LoadOperation::LoadOperation(ThreadPool::WeakQueue::Ptr queue,
                              Layer::Ptr const& l, SourcePresentation::Ptr sp,
                              ProgressInterface::Ptr progress)
@@ -151,7 +150,7 @@ void TiledBitmap::initialize()
   {
     if(i<ls.size())
       lo = ls[i];
-    
+
     bpp = lo->getBpp();
 
     Layer::Ptr layer = Layer::create(shared_from_this<TiledBitmap>(), i, width, height, bpp, provider);
@@ -160,7 +159,7 @@ void TiledBitmap::initialize()
     {
       connect(layer, prevLayer, prevLo);
     }
-    
+
     prevLayer = layer;
     prevLo = lo;
     width = (width+7)/8; // Round up
@@ -190,7 +189,7 @@ void TiledBitmap::connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer,
   int verTileCount = prevLayer->getVerTileCount();
 
   std::vector<LayerCoordinator::Ptr> coordinators;
-  
+
   for(int j=0; j<verTileCount; j++)
   {
     int voffset = j%8;
@@ -258,7 +257,7 @@ inline void computeAreasEndZoomingIn(int presentationBegin, int presentationSize
                             int viewBegin, int& viewSize)
 {
   UNUSED(viewBegin);
-  
+
   if(tileOffset + TILESIZE <= presentationBegin + presentationSize)
   {
     tileSize = TILESIZE - tileBegin;
@@ -291,7 +290,7 @@ inline void computeAreasEndZoomingOut(int presentationBegin, int presentationSiz
                             int viewBegin, int& viewSize)
 {
   UNUSED(viewBegin);
-  
+
   if(tileOffset + TILESIZE <= presentationBegin + presentationSize)
   {
     tileSize = TILESIZE - tileBegin;
@@ -324,7 +323,7 @@ void TiledBitmap::redrawZoomingIn(ViewInterface::Ptr const& vi, cairo_t* cr, Rec
 {
   TiledBitmapViewData::Ptr viewData = this->viewData[vi];
   GdkRectangle presentationArea = requestedPresentationArea;
-  
+
   Layer::Ptr layer = layers[0];
   LayerOperations::Ptr layerOperations = ls[0];
 
@@ -333,7 +332,7 @@ void TiledBitmap::redrawZoomingIn(ViewInterface::Ptr const& vi, cairo_t* cr, Rec
 
   presentationArea.width = validPresentationArea.getRightPos() - requestedPresentationArea.getLeftPos();
   presentationArea.height = validPresentationArea.getBottomPos() - requestedPresentationArea.getTopPos();
-    
+
   const int left = presentationArea.x;
   const int top = presentationArea.y;
   const int right = presentationArea.x+presentationArea.width;
@@ -347,7 +346,7 @@ void TiledBitmap::redrawZoomingIn(ViewInterface::Ptr const& vi, cairo_t* cr, Rec
   viewData->setNeededTiles(layer, imin, imax, jmin, jmax, zoom, layerOperations);
 
   const int pixelSize = 1<<zoom;
-    
+
   layerOperations->initializeCairo(cr);
 
   for(int i=imin; i<imax; i++)
@@ -363,7 +362,7 @@ void TiledBitmap::redrawZoomingIn(ViewInterface::Ptr const& vi, cairo_t* cr, Rec
                                tileArea.x, tileArea.width, viewArea.x, viewArea.width);
       computeAreasEndZoomingIn(presentationArea.y, presentationArea.height, j*TILESIZE, pixelSize,
                                tileArea.y, tileArea.height, viewArea.y, viewArea.height);
-        
+
       CompressedTile::Ptr tile = layer->getTile(i,j);
       TileViewState::Ptr tileViewState = tile->getViewState(vi);
       Scroom::Utils::Stuff cacheResult = tileViewState->getCacheResult();
@@ -421,7 +420,7 @@ void TiledBitmap::redrawZoomingOut(ViewInterface::Ptr const& vi, cairo_t* cr, Re
   viewData->setNeededTiles(layer, imin, imax, jmin, jmax, zoom, layerOperations);
 
   const int pixelSize = 1<<-zoom;
-    
+
   layerOperations->initializeCairo(cr);
 
   GdkRectangle presentationArea = scaledRequestedPresentationArea;
@@ -429,7 +428,7 @@ void TiledBitmap::redrawZoomingOut(ViewInterface::Ptr const& vi, cairo_t* cr, Re
   {
     for(int j=jmin; j<jmax; j++)
     {
-        
+
       GdkRectangle tileArea;
       GdkRectangle viewArea;
 
@@ -440,7 +439,7 @@ void TiledBitmap::redrawZoomingOut(ViewInterface::Ptr const& vi, cairo_t* cr, Re
                                 tileArea.x, tileArea.width, viewArea.x, viewArea.width);
       computeAreasEndZoomingOut(presentationArea.y, presentationArea.height, j*TILESIZE, pixelSize,
                                 tileArea.y, tileArea.height, viewArea.y, viewArea.height);
-        
+
       CompressedTile::Ptr tile = layer->getTile(i,j);
       TileViewState::Ptr tileViewState = tile->getViewState(vi);
       Scroom::Utils::Stuff cacheResult = tileViewState->getCacheResult();
@@ -489,8 +488,8 @@ void TiledBitmap::open(ViewInterface::WeakPtr viewInterface)
   viewData[viewInterface] = vd;
   vd->token.add(progressBroadcaster->subscribe(vd));
   lock.unlock();
-  
-  BOOST_FOREACH(Layer::Ptr const& l, layers)
+
+  for(Layer::Ptr const& l: layers)
   {
     l->open(viewInterface);
   }
@@ -498,11 +497,11 @@ void TiledBitmap::open(ViewInterface::WeakPtr viewInterface)
 
 void TiledBitmap::close(ViewInterface::WeakPtr vi)
 {
-  BOOST_FOREACH(Layer::Ptr const& l, layers)
+  for(Layer::Ptr const& l: layers)
   {
     l->close(vi);
   }
-  
+
   boost::mutex::scoped_lock lock(viewDataMutex);
   TiledBitmapViewData::Ptr vd = viewData[vi];
   // Yuk. ProgressBroadcaster has a reference to viewData, so erasing it
@@ -544,5 +543,5 @@ void TiledBitmap::tileFinished(CompressedTile::Ptr tile)
       printf("INFO: Finished loading file\n");
     }
     gdk_threads_leave();
-  }  
+  }
 }

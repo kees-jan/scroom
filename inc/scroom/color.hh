@@ -85,7 +85,7 @@ public:
     double L = 0.2126 * computeC(red) + 0.7152 * computeC(green) + 0.0722 * computeC(blue);
     return Color(L>0.179?0:1);
   }
-  
+
   Color& setAlpha(double alpha)
   { return *this *= alpha; }
 
@@ -97,5 +97,4 @@ inline Color mix(const Color& a, const Color& b, double alpha)
 {
   return a*alpha + b*(1.0-alpha);
 }
-
 

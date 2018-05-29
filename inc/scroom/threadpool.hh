@@ -53,7 +53,7 @@ class ThreadPool
 {
 public:
   class WeakQueue;
-  
+
   /**
    * Represent a Queue in the ThreadPool.
    *
@@ -163,7 +163,7 @@ private:
 public:
   typedef boost::shared_ptr<ThreadPool> Ptr;
   typedef boost::shared_ptr<boost::thread> ThreadPtr;
-  
+
 private:
 
   /**
@@ -261,7 +261,7 @@ private:
    * highest-prio job from ThreadPool::jobs
    */
   static void do_one(PrivateData::Ptr priv);
-  
+
   static Queue::Ptr defaultQueue();
   static const int defaultPriority;
 
@@ -423,7 +423,7 @@ public:
  * because it is a Reading job. After the reading job has completed,
  * the queue will look as follows:
 @verbatim
-| Queue | S S S S S S S S S S 
+| Queue | S S S S S S S S S S
 @endverbatim
  * The queue now has some (say 10) scaling jobs in it, which can be
  * executed in parallel. Let's also reschedule our reading task:
@@ -474,13 +474,13 @@ public:
  * When the Reading job starts, the first thing it does is schedule a
  * QueueJumper:
 @verbatim
-| Higher prio | 
+| Higher prio |
 | Normal prio | S S S S S S S S S S Q
 @endverbatim
  * Next, it will proceed to read bitmap data, which will result in
  * additional scaling jobs:
 @verbatim
-| Higher prio | 
+| Higher prio |
 | Normal prio | S S S S S S S S S S Q S S S S S S S S S S
 @endverbatim
  * In the mean time, the other cores (if any) are busy with the
@@ -492,7 +492,7 @@ public:
  * completes, all earlier scaling jobs will have finished. Also, the
  * QueueJumper will have been processed (doing no work)
 @verbatim
-| Higher prio | 
+| Higher prio |
 | Normal prio | S S S S S S S S S S
 @endverbatim
  * In this case, QueueJumper::setWork() will fail, because the
@@ -510,7 +510,7 @@ public:
  * completes, there will still be scaling jobs left in the queue. Also
  * the QueueJumper will still be there:
 @verbatim
-| Higher prio | 
+| Higher prio |
 | Normal prio | S S S S Q S S S S S S S S S S
 @endverbatim
  * If we now schedule a Reading task at a higher priority, like before,
@@ -518,7 +518,7 @@ public:
  * QueueJumper::setWork(), then we can effectively substitute the
  * QueueJumper with our reading task:
 @verbatim
-| Higher prio | 
+| Higher prio |
 | Normal prio | S S S S R S S S S S S S S S S
 @endverbatim
  * This way, the reading task will not be started immediately, but
@@ -537,7 +537,7 @@ class QueueJumper
 {
 public:
   typedef boost::shared_ptr<QueueJumper> Ptr;
-  
+
 private:
   boost::mutex mut;
   bool inQueue;
@@ -547,7 +547,7 @@ private:
 
 protected:
   QueueJumper();
-  
+
 public:
   /**
    * Create a QueueJumper
@@ -607,5 +607,4 @@ ThreadPool::Ptr CpuBound();
 ThreadPool::Ptr Sequentially();
 
 #include <scroom/impl/threadpoolimpl.hh>
-
 

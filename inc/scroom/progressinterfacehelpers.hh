@@ -37,7 +37,7 @@ namespace Scroom
         } State;
 
       virtual ~ProgressStateInterface() {}
-  
+
       virtual void setProgress(State s, double progress=0.0)=0;
     };
 
@@ -52,7 +52,7 @@ namespace Scroom
       virtual void setWorking(double progress);
       virtual void setFinished();
     };
-    
+
     class ProgressInterfaceFromProgressStateInterfaceForwarder : public ProgressInterfaceFromProgressStateInterface
     {
     public:
@@ -60,7 +60,7 @@ namespace Scroom
 
     private:
       ProgressStateInterface::Ptr child;
-      
+
     private:
       ProgressInterfaceFromProgressStateInterfaceForwarder(ProgressStateInterface::Ptr child);
 
@@ -77,7 +77,7 @@ namespace Scroom
     public:
       virtual void setProgress(State s, double progress=0.0);
     };
-    
+
     class ProgressStateInterfaceFromProgressInterfaceForwarder : public ProgressStateInterfaceFromProgressInterface
     {
     public:
@@ -85,10 +85,10 @@ namespace Scroom
 
     private:
       ProgressInterface::Ptr child;
-      
+
     private:
       ProgressStateInterfaceFromProgressInterfaceForwarder(ProgressInterface::Ptr child);
-      
+
     public:
       static Ptr create(ProgressInterface::Ptr child);
 
@@ -112,12 +112,12 @@ namespace Scroom
 
       private:
         ProgressStore();
-        
+
       public:
         static Ptr create();
 
         void init(ProgressInterface::Ptr const & i);
-        
+
       protected:
         // ProgressStateInterface //////////////////////////////////////////////
         virtual void setProgress(State s, double progress=0.0);
@@ -138,17 +138,17 @@ namespace Scroom
       private:
         ProgressInterfaceBroadcaster::Ptr parent;
         ProgressInterface::Ptr child;
-        
+
       private:
         Unsubscriber(ProgressInterfaceBroadcaster::Ptr const& parent, ProgressInterface::Ptr const& child);
-        
+
       public:
         static Ptr create(ProgressInterfaceBroadcaster::Ptr const& parent, ProgressInterface::Ptr const& child);
         ~Unsubscriber();
       };
 
       friend class Unsubscriber;
-      
+
     private:
       boost::mutex mut;
       std::set<ProgressInterface::Ptr> children;
@@ -166,7 +166,7 @@ namespace Scroom
       Stuff subscribe(ProgressInterface::Ptr const& child);
 
       // ProgressInterface ///////////////////////////////////////////////////
-      
+
       virtual void setIdle();
       virtual void setWaiting(double progress=0.0);
       virtual void setWorking(double progress);
@@ -188,19 +188,19 @@ namespace Scroom
         boost::mutex mut;
         ProgressStateInterface::State state;
         double progress;
-        
+
       private:
         ChildData();
-        
+
       public:
         static Ptr create();
 
         void clearFinished();
-        
+
         // ProgressStateInterface ///////////////////////////////////////////////////
         virtual void setProgress(State s, double progress=0.0);
       };
-      
+
       class Child : public ProgressInterfaceFromProgressStateInterface
       {
       public:
@@ -209,28 +209,28 @@ namespace Scroom
       private:
         ProgressInterfaceMultiplexer::Ptr parent;
         ChildData::Ptr data;
-        
+
       private:
         Child(ProgressInterfaceMultiplexer::Ptr parent, ChildData::Ptr data);
-        
+
       public:
         static Ptr create(ProgressInterfaceMultiplexer::Ptr parent, ChildData::Ptr data);
         ~Child();
-        
+
         // ProgressStateInterface ///////////////////////////////////////////////////
         virtual void setProgress(State s, double progress=0.0);
       };
 
       friend class Child;
-      
+
     private:
       boost::mutex mut;
       ProgressStateInterface::Ptr parent;
       std::set<ChildData::Ptr> children;
-      
+
     private:
       ProgressInterfaceMultiplexer(ProgressInterface::Ptr parent);
-      
+
     public:
       static Ptr create(ProgressInterface::Ptr parent);
 
@@ -242,5 +242,4 @@ namespace Scroom
     };
   }
 }
-
 

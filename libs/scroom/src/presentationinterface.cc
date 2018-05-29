@@ -7,15 +7,13 @@
 
 #include <scroom/presentationinterface.hh>
 
-#include <boost/foreach.hpp>
-
 void PresentationBase::open(ViewInterface::WeakPtr vi)
 {
   viewAdded(vi);
 
   std::list<Viewable::Ptr> const observers = getObservers();
 
-  BOOST_FOREACH(Viewable::Ptr const& observer, observers)
+  for(Viewable::Ptr const& observer: observers)
   {
     observer->open(vi);
   }
@@ -25,7 +23,7 @@ void PresentationBase::close(ViewInterface::WeakPtr vi)
 {
   std::list<Viewable::Ptr> const observers = getObservers();
 
-  BOOST_FOREACH(Viewable::Ptr const& observer, observers)
+  for(Viewable::Ptr const& observer: observers)
   {
     observer->close(vi);
   }
@@ -37,7 +35,7 @@ void PresentationBase::observerAdded(Viewable::Ptr const& viewable, Scroom::Book
 {
   std::set<ViewInterface::WeakPtr> views = getViews();
 
-  BOOST_FOREACH(ViewInterface::WeakPtr const& view, views)
+  for(ViewInterface::WeakPtr const& view: views)
   {
     viewable->open(view);
   }

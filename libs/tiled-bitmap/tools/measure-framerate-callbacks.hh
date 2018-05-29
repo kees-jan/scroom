@@ -19,4 +19,3 @@ GtkWidget* create_window();
 void init();
 void invalidate();
 
-

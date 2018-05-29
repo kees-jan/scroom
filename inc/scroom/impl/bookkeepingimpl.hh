@@ -9,8 +9,6 @@
 
 #include <stdexcept>
 
-#include <boost/foreach.hpp>
-
 namespace Scroom
 {
   namespace Bookkeeping
@@ -36,7 +34,7 @@ namespace Scroom
         TokenAddition& operator+=(TokenAddition& rhs)
         { merge(rhs); return *this; }
       };
-      
+
       class TokenImpl
       {
       public:
@@ -45,7 +43,7 @@ namespace Scroom
       public:
         void add(const Stuff& s)
         { l.push_back(s); }
-        
+
         void add(const StuffList l)
         { this->l.insert(this->l.end(), l.begin(), l.end()); }
 
@@ -71,7 +69,7 @@ namespace Scroom
       {
       public:
         typedef boost::shared_ptr<MapTokenImpl<K,V> > Ptr;
-        
+
       private:
         boost::weak_ptr<Scroom::Bookkeeping::MapBase<K,V> > map;
         WeakToken t;
@@ -81,7 +79,7 @@ namespace Scroom
         MapTokenImpl(boost::shared_ptr<Scroom::Bookkeeping::MapBase<K,V> > map, const K& k)
           : map(map), k(k)
         {}
-        
+
       public:
         ~MapTokenImpl()
         {
@@ -114,7 +112,7 @@ namespace Scroom
         ValueType(V value)
           : value(value)
         {}
-        
+
       public:
         static Ptr create(V value)
         { return Ptr(new ValueType<V>(value)); }
@@ -125,7 +123,7 @@ namespace Scroom
       {
       public:
         typedef typename ValueType<V>::Ptr VTPtr;
-        
+
       private:
         VTPtr pv;
 
@@ -159,14 +157,14 @@ namespace Scroom
     inline Token::Token(const Stuff& s)
       : boost::shared_ptr<Detail::TokenImpl>(Detail::TokenImpl::create())
     { get()->add(s); }
-    
+
     inline Token::Token(const StuffList& l)
       : boost::shared_ptr<Detail::TokenImpl>(Detail::TokenImpl::create())
     { get()->add(l); }
-    
+
     inline void Token::add(const Stuff& s) const
     { get()->add(s); }
-    
+
     inline void Token::add(const StuffList& l) const
     { get()->add(l); }
 
@@ -175,14 +173,13 @@ namespace Scroom
 
     inline void Token::merge(StuffList& l) const
     { get()->merge(l); }
-      
 
     inline Detail::TokenAddition Token::operator+(const Stuff& rhs) const
     { return Detail::TokenAddition(*this) + rhs; }
 
     inline Token const& Token::operator+=(const Stuff& rhs) const
     { add(rhs); return *this; }
-    
+
     ////////////////////////////////////////////////////////////////////////
 
     template<typename K, typename V>
@@ -200,7 +197,7 @@ namespace Scroom
       pv->token = t;
       return t;
     }
-    
+
     template<typename K, typename V>
     inline Token MapBase<K,V>::reReserve(const K& k)
     {
@@ -212,7 +209,7 @@ namespace Scroom
         map[k]=typename Detail::ValueType<V>::WeakPtr();
         i = map.find(k);
       }
-      
+
       typename Detail::ValueType<V>::Ptr pv = i->second.lock();
       if(!pv)
       {
@@ -300,7 +297,7 @@ namespace Scroom
 
       throw std::invalid_argument("Invalid key");
     }
-    
+
     template<typename K, typename V>
     inline V MapBase<K,V>::get(const K& k)
     {
@@ -318,25 +315,25 @@ namespace Scroom
 
       throw std::invalid_argument("Invalid key");
     }
-    
+
     template<typename K, typename V>
     inline std::list<K> MapBase<K,V>::keys() const
     {
       boost::mutex::scoped_lock lock(mut);
       std::list<K> result;
-      BOOST_FOREACH(typename MapType::value_type el, map)
+      for(typename MapType::value_type el: map)
       {
         result.push_back(el.first);
       }
       return result;
     }
-    
+
     template<typename K, typename V>
     inline std::list<V> MapBase<K,V>::values() const
     {
       boost::mutex::scoped_lock lock(mut);
       std::list<V> result;
-      BOOST_FOREACH(typename MapType::value_type el, map)
+      for(typename MapType::value_type el: map)
       {
         typename Detail::ValueType<V>::Ptr pv = el.second.lock();
         if(pv)
@@ -344,7 +341,7 @@ namespace Scroom
       }
       return result;
     }
-    
+
     ////////////////////////////////////////////////////////////////////////
 
 //    template<typename V>
@@ -352,7 +349,7 @@ namespace Scroom
 //    {
 //      k->add(add(k,v));
 //    }
-//    
+//
 //    template<typename V>
 //    inline void Map<WeakToken, V>::addMe(const WeakToken& k, const V& v)
 //    {
@@ -362,7 +359,7 @@ namespace Scroom
 //      else
 //        throw std::invalid_argument("boost::weak_ptr can't be locked");
 //    }
-//    
+//
 //    template<typename V>
 //    inline Token Map<Token, V>::add(const V& v)
 //    {
@@ -370,7 +367,7 @@ namespace Scroom
 //      k->add(add(k,v));
 //      return k;
 //    }
-//    
+//
 //    template<typename V>
 //    inline Token Map<WeakToken, V>::add(const V& v)
 //    {
@@ -402,15 +399,13 @@ namespace Scroom
 //     {
 //       return Ptr(new Map<Token, V>());
 //     }
-// 
+//
 //     template<typename V>
 //     inline typename Map<WeakToken, V>::Ptr Map<WeakToken, V>::create()
 //     {
 //       return Ptr(new Map<WeakToken, V>());
 //     }
-   
+
   }
 }
-
-
 

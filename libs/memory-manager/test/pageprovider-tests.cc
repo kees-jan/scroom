@@ -9,11 +9,7 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include <boost/foreach.hpp>
-
 #include <string.h>
-
-
 
 //////////////////////////////////////////////////////////////
 
@@ -35,7 +31,7 @@ BOOST_AUTO_TEST_CASE(Provider_provides_any_number_of_independent_blocks_of_a_giv
   {
     Page::Ptr p = provider->getFreePage();
     pages.push_back(p);
-    
+
     RawPageData::Ptr raw = p->get();
     BOOST_REQUIRE(raw.get());
 
@@ -44,10 +40,10 @@ BOOST_AUTO_TEST_CASE(Provider_provides_any_number_of_independent_blocks_of_a_giv
   }
 
   provider.reset();
-  
+
   data=0;
   uint8_t expected[size];
-  BOOST_FOREACH(Page::Ptr p, pages)
+  for(Page::Ptr p: pages)
   {
     RawPageData::Ptr raw = p->get();
     BOOST_REQUIRE(raw.get());

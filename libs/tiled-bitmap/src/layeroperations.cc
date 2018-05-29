@@ -210,7 +210,6 @@ void CommonOperations::draw(cairo_t* cr, const ConstTile::Ptr tile,
   }
 }
 
-
 ////////////////////////////////////////////////////////////////////////
 // Operations1bpp
 
@@ -326,7 +325,6 @@ void Operations1bpp::draw(cairo_t* cr, const ConstTile::Ptr tile,
     }
   }
 }
-
 
 ////////////////////////////////////////////////////////////////////////
 // Operations8bpp
@@ -479,7 +477,7 @@ Scroom::Utils::Stuff Operations24bpp::cache(const ConstTile::Ptr tile)
     {
       //         A          R              G             B
       *pixel = 0xFF000000 | cur[0] << 16 | cur[1] << 8 | cur[2];
-      
+
       pixel++;
       cur+=3;
     }
@@ -802,14 +800,14 @@ Scroom::Utils::Stuff Operations1bppClipped::cacheZoom(const ConstTile::Ptr tile,
                                                       Scroom::Utils::Stuff cache)
 {
   UNUSED(cache);
-  
+
   if(zoom>=0)
     zoom=0;
 
   const int pixelSize = 1<<(-zoom);
   const int outputWidth = tile->width/pixelSize;
   const int outputHeight = tile->height/pixelSize;
-  
+
   const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, outputWidth);
   boost::shared_ptr<unsigned char> data = shared_malloc(stride * outputHeight);
   Colormap::Ptr colormap = colormapProvider->getColormap();
@@ -821,14 +819,14 @@ Scroom::Utils::Stuff Operations1bppClipped::cacheZoom(const ConstTile::Ptr tile,
     for(int i=0; i<outputWidth; i++)
     {
       int sum=0;
-      
+
       for(int y=0; y<pixelSize; y++)
       {
         const byte* inputByte = tile->data.get() + (j*pixelSize+y)*tile->width/8 + pixelSize*i/8;
         byte inputBit = pixelSize*i%8;
-        
+
         PixelIterator<const byte> bit(inputByte, inputBit);
-        
+
         for(int x=0; x<pixelSize; x++, ++bit)
         {
           if(*bit)

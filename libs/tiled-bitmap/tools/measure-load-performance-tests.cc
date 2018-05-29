@@ -78,7 +78,6 @@ bool WaitForAsyncOp::operator()()
 
 ////////////////////////////////////////////////////////////////////////
 
-
 void init_tests()
 {
   const int width = 240000;

@@ -46,4 +46,4 @@ PresentationInterface::Ptr Example::createNew()
 {
   return PresentationInterface::Ptr(new ExamplePresentation());
 }
-  
+

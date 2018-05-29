@@ -81,7 +81,7 @@ void TestData::redraw(cairo_t* cr)
       rect.width = drawingAreaWidth*pixelSize;
       rect.height = drawingAreaHeight*pixelSize;
     }
-    
+
     tbi->redraw(vi, cr, rect, zoom);
   }
 }

@@ -9,11 +9,7 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include <boost/foreach.hpp>
-
 #include <string.h>
-
-
 
 //////////////////////////////////////////////////////////////
 
@@ -25,7 +21,7 @@ BOOST_AUTO_TEST_CASE(allocator_provides_a_number_of_independent_blocks_of_a_give
 {
   const size_t size = 16*1024;
   const size_t count = 16;
-  
+
   BlockFactoryInterface::Ptr bfi = getBlockFactoryInterface();
   BlockInterface::Ptr bi = bfi->create(count, size);
 
@@ -35,7 +31,7 @@ BOOST_AUTO_TEST_CASE(allocator_provides_a_number_of_independent_blocks_of_a_give
   bi.reset();
 
   uint8_t data = 0;
-  BOOST_FOREACH(Page& p, pages)
+  for(Page& p: pages)
   {
     RawPageData::Ptr raw = p.get();
     BOOST_REQUIRE(raw.get());
@@ -46,7 +42,7 @@ BOOST_AUTO_TEST_CASE(allocator_provides_a_number_of_independent_blocks_of_a_give
 
   data=0;
   uint8_t expected[size];
-  BOOST_FOREACH(Page& p, pages)
+  for(Page& p: pages)
   {
     RawPageData::Ptr raw = p.get();
     BOOST_REQUIRE(raw.get());

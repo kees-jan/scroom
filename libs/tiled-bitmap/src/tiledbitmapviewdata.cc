@@ -147,7 +147,7 @@ void TiledBitmapViewData::tileLoaded(ConstTile::Ptr tile)
   stuff.push_back(tile);
 
   // printf("TiledBitmapViewData::tileLoaded: redrawPending=%d\n", redrawPending);
-  
+
   if(!redrawPending)
   {
     // We're not sure about whether gdk_threads_enter() has been

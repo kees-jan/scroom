@@ -84,7 +84,7 @@ public:
 
   void setAlpha(double alpha)
   {
-    BOOST_FOREACH(Color& c, colors)
+    for(Color& c: colors)
       c.setAlpha(alpha);
   }
 
@@ -114,7 +114,7 @@ class Colormappable
 public:
   typedef boost::shared_ptr<Colormappable> Ptr;
   typedef boost::weak_ptr<Colormappable> WeakPtr;
-  
+
   /** Virtual destructor */
   virtual ~Colormappable() {}
 
@@ -149,7 +149,7 @@ class ColormapProvider
 {
 public:
   typedef boost::shared_ptr<ColormapProvider> Ptr;
-  
+
 public:
   virtual Colormap::Ptr getColormap()=0;
 
@@ -160,14 +160,14 @@ class ColormapHelperBase : public ColormapProvider, public Colormappable
 {
 public:
   typedef boost::shared_ptr<ColormapHelperBase> Ptr;
-  
+
 public:
   Colormap::Ptr colormap;
   Colormap::Ptr originalColormap;
-  
+
 public:
   ColormapHelperBase(Colormap::Ptr const& colormap);
-  
+
   ////////////////////////////////////////////////////////////////////////
   // Colormappable
   ////////////////////////////////////////////////////////////////////////

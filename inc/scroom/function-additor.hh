@@ -21,7 +21,7 @@ namespace Scroom
       {
       private:
         std::list<boost::function<void ()> > functions;
- 
+
       public:
         void addBefore(boost::function<void ()> const& fn);
         void addAfter(boost::function<void ()> const& fn);
@@ -42,16 +42,15 @@ namespace Scroom
 
         FunctionMultiplier& operator*(unsigned int i);
         void operator()();
-  
+
       };
     }
   }
 }
-      
+
 Scroom::Detail::ThreadPool::FunctionAdditor operator+(boost::function<void ()> const& f1, boost::function<void ()> const& f2);
 Scroom::Detail::ThreadPool::FunctionAdditor& operator+(boost::function<void ()> const& f1, Scroom::Detail::ThreadPool::FunctionAdditor& f2);
 Scroom::Detail::ThreadPool::FunctionMultiplier& operator*(unsigned int i, Scroom::Detail::ThreadPool::FunctionMultiplier m);
 Scroom::Detail::ThreadPool::FunctionMultiplier operator*(unsigned int i, boost::function<void ()> const& f);
 Scroom::Detail::ThreadPool::FunctionMultiplier operator*(boost::function<void ()> const& f, unsigned int i);
-
 

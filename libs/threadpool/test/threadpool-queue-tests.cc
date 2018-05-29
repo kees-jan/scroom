@@ -113,7 +113,6 @@ BOOST_AUTO_TEST_CASE(destroy_using_QueueLock)
   BOOST_REQUIRE(s2.P(long_timeout));
 }
 
-
 BOOST_AUTO_TEST_SUITE_END()
 
 BOOST_AUTO_TEST_SUITE(Queue_Tests)

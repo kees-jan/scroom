@@ -25,7 +25,6 @@ G_MODULE_EXPORT void g_module_unload(GModule *module)
   printf("Roi plugin unload function\n");
 }
 
-
 G_MODULE_EXPORT PluginInformationInterface::Ptr getPluginInformation()
 {
   return RoiPlugin::create();

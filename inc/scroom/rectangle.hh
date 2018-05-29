@@ -91,7 +91,7 @@ class Rectangle : public boost::addable2<Rectangle<T>,Point<T>>,
 {
 public:
   typedef T value_type;
-  
+
   Rectangle()
   {}
 
@@ -234,7 +234,7 @@ public:
   {
     if(r.isEmpty())
       return r;
-    
+
     return Rectangle<value_type>(horizontally.before(r.horizontally.getStart()),
                                  vertically.intersection(r.vertically));
   }
@@ -243,7 +243,7 @@ public:
   {
     if(r.isEmpty())
       return r;
-    
+
     return Rectangle<value_type>(horizontally.after(r.horizontally.getEnd()),
                                  vertically.intersection(r.vertically));
   }
@@ -252,7 +252,7 @@ public:
   {
     if(r.isEmpty())
       return r;
-    
+
     return Rectangle<value_type>(horizontally.intersection(r.horizontally),
                                  vertically.before(r.vertically.getStart()));
   }
@@ -261,7 +261,7 @@ public:
   {
     if(r.isEmpty())
       return r;
-    
+
     return Rectangle<value_type>(horizontally.intersection(r.horizontally),
                                  vertically.after(r.vertically.getEnd()));
   }

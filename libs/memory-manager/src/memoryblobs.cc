@@ -9,8 +9,6 @@
 
 #include <stdio.h>
 
-#include <boost/foreach.hpp>
-
 #include <scroom/threadpool.hh>
 
 #include "blob-compression.hh"
@@ -26,7 +24,7 @@ namespace Scroom
     PageProvider::PageProvider(size_t blockCount, size_t blockSize)
       : blockCount(blockCount), blockSize(blockSize), blockFactoryInterface(getBlockFactoryInterface())
     {}
-    
+
     PageProvider::Ptr PageProvider::create(size_t blockCount, size_t blockSize)
     {
       return Ptr(new PageProvider(blockCount, blockSize));
@@ -38,7 +36,7 @@ namespace Scroom
       if(freePages.empty())
       {
         Scroom::MemoryBlocks::PageList pages = blockFactoryInterface->create(blockCount, blockSize)->getPages();
-        BOOST_FOREACH(Scroom::MemoryBlocks::Page& p, pages)
+        for(Scroom::MemoryBlocks::Page& p: pages)
         {
           freePages.push_back(&p);
         }
@@ -47,7 +45,7 @@ namespace Scroom
 
       Page::Ptr result(freePages.front(), MarkPageFree(shared_from_this<PageProvider>()));
       freePages.pop_front();
-      
+
       return result;
     }
 
@@ -55,13 +53,13 @@ namespace Scroom
     {
       return blockSize;
     }
-    
+
     void PageProvider::markPageFree(Scroom::MemoryBlocks::Page* p)
     {
       boost::mutex::scoped_lock lock(mut);
       freePages.push_front(p);
     }
-    
+
     ////////////////////////////////////////////////////////////////////////
 
     Blob::Ptr Blob::create(PageProvider::Ptr provider, size_t size)
@@ -110,10 +108,10 @@ namespace Scroom
         weakData = result;
         refcount++;
       }
-      
+
       return result;
     }
-    
+
     void Blob::unload()
     {
       boost::mutex::scoped_lock lock(mut);
@@ -140,11 +138,11 @@ namespace Scroom
       {
         if(refcount!=0)
           printf("PANIC: Compressing with pending references\n");
-        
+
         pages = Detail::compressBlob(data, size, provider);
         free(data);
         data = NULL;
-        
+
         state=CLEAN;
       }
     }

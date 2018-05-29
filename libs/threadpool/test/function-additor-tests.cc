@@ -94,7 +94,7 @@ BOOST_AUTO_TEST_CASE(left_association)
   Semaphore s2(0);
   a += pass(&s1);
   BOOST_CHECK_EQUAL(&a, &(a+clear(&s2)));
-  
+
   boost::thread t(a);
   BOOST_CHECK(!s2.P(short_timeout));
   s1.V();
@@ -145,7 +145,6 @@ BOOST_AUTO_TEST_CASE(Test_If_Expressions_Compile)
   (void)(4*(clear(NULL)+clear(NULL)));
   (void)((clear(NULL)+clear(NULL))*4);
 }
-
 
 BOOST_AUTO_TEST_SUITE_END()
 

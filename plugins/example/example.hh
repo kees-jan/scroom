@@ -34,4 +34,3 @@ public:
   virtual ~Example();
 };
 
-

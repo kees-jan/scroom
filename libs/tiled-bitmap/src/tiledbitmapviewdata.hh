@@ -25,7 +25,7 @@ public:
   ViewInterface::WeakPtr viewInterface;
   ProgressInterface::Ptr progressInterface;
   Scroom::Bookkeeping::Token token;
-  
+
 private:
   Layer::Ptr layer;
   int imin;
@@ -77,5 +77,4 @@ public:
   virtual void setWorking(double progress);
   virtual void setFinished();
 };
-
 

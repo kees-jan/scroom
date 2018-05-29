@@ -27,7 +27,7 @@ private:
   public:
     ResizablePresentationInterface::Ptr const resizablePresentationInterface;
     std::set<ViewInterface::WeakPtr> views;
-    
+
   public:
     PresentationData(); // Don't use
     explicit PresentationData(ResizablePresentationInterface::Ptr const& resizablePresentationInterface);
@@ -36,11 +36,11 @@ private:
 private:
   std::list<PresentationInterface::Ptr> presentations;
   std::map<PresentationInterface::Ptr,PresentationData> resizablePresentationData;
-  
+
 private:
   SizeDeterminer();
   void sendUpdates();
-  
+
 public:
   static Ptr create();
   void add(PresentationInterface::Ptr const& p);
@@ -49,6 +49,4 @@ public:
   void open(PresentationInterface::Ptr const& p, ViewInterface::WeakPtr const& vi);
   void close(PresentationInterface::Ptr const& p, ViewInterface::WeakPtr const& vi);
 };
-
-
 

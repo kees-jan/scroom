@@ -16,7 +16,6 @@
 #include <boost/bind.hpp>
 #include <boost/function.hpp>
 
-
 //////////////////////////////////////////////////////////////
 
 class A
@@ -26,11 +25,11 @@ private:
 
 public:
   typedef boost::shared_ptr<A> Ptr;
-  
+
   A(int& i)
     :i(i)
   {}
-  
+
   void set(int v)
   {
     i=v;
@@ -40,13 +39,12 @@ public:
   {
     return i;
   }
-  
+
   static Ptr create(int& i)
   {
     return Ptr(new A(i));
   }
 };
-
 
 //////////////////////////////////////////////////////////////
 
@@ -74,6 +72,5 @@ BOOST_AUTO_TEST_CASE(keeps_object_alive_while_getting)
   a.reset();
   BOOST_CHECK_EQUAL(expected, f());
 }
-
 
 BOOST_AUTO_TEST_SUITE_END()

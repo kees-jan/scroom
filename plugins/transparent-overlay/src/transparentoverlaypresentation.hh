@@ -27,11 +27,11 @@ private:
   SizeDeterminer::Ptr sizeDeterminer;
 
   ViewDataMap viewData;
-  
+
   TransparentOverlayPresentation();
 public:
   static Ptr create();
-  
+
   // PresentationInterface ///////////////////////////////////////////////
   virtual GdkRectangle getRect();
   virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);
@@ -42,7 +42,6 @@ public:
   virtual void viewRemoved(ViewInterface::WeakPtr vi);
   virtual std::set<ViewInterface::WeakPtr> getViews();
 
-
   // Aggregate ///////////////////////////////////////////////////////////
 
   virtual void addPresentation(PresentationInterface::Ptr const& p);
@@ -50,5 +49,4 @@ public:
 private:
   void setOptimalColor(PresentationInterface::Ptr const& p);
 };
-
 

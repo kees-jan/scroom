@@ -7,7 +7,6 @@
 
 #include <boost/variant/apply_visitor.hpp>
 #include <boost/variant/static_visitor.hpp>
-#include <boost/foreach.hpp>
 
 #include <scroom/roi.hh>
 #include <scroom/unused.hh>
@@ -26,14 +25,13 @@ namespace Scroom
       std::ostream& operator<<(std::ostream& os, Aggregate const& a)
       {
         os << "[" << a.name << "(";
-        BOOST_FOREACH(Presentation const& p, a.children)
+        for(Presentation const& p: a.children)
           os << p;
         os << ")]";
 
         return os;
       }
 
-      
       class Instantiate : public boost::static_visitor<PresentationInterface::Ptr>
       {
       private:
@@ -70,7 +68,7 @@ namespace Scroom
           throw std::invalid_argument(message.str());
         }
 
-        BOOST_FOREACH(Detail::Presentation const& p, aggregate.children)
+        for(Detail::Presentation const& p: aggregate.children)
         {
           a->addPresentation(boost::apply_visitor(*this, p));
         }
@@ -96,7 +94,7 @@ namespace Scroom
     {
       return Ptr(new List());
     }
-    
+
     std::set<ViewObservable::Ptr> List::instantiate(ScroomInterface::Ptr const& scroomInterface, std::string const& relativeTo)
     {
       std::set<ViewObservable::Ptr> result;
@@ -124,7 +122,7 @@ namespace Scroom
       for(auto const& rr: b.children)
         os << rr;
       os << ")]";
-      
+
       return os;
     }
 
@@ -142,12 +140,10 @@ namespace Scroom
       for(auto const& rr: r.children)
         os << rr;
       os << ")]";
-      
+
       return os;
     }
 
   }
 }
-
-
 

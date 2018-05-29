@@ -36,22 +36,22 @@ namespace Scroom
                  r, (stream.msg?stream.msg:""));
           exit(-1);
         }
-        
+
         do
         {
           if(stream.avail_out != 0)
             printf("PANIC! Some space available after compression finishes\n");
-          
+
           Page::Ptr currentPage = provider->getFreePage();
           result.push_back(currentPage);
-          
+
           RawPageData::Ptr currentPageRaw = currentPage->get();
-          
+
           stream.next_out = currentPageRaw.get();
           stream.avail_out = pageSize;
 
           r = deflate(&stream, Z_FINISH);
-          
+
         } while(r==Z_OK);
 
         if(r!=Z_STREAM_END)
@@ -73,10 +73,10 @@ namespace Scroom
         //        stream.total_in, stream.total_out, result.size(), pageSize, result.size()*pageSize,
         //        100.0*stream.total_out/stream.total_in,
         //        100.0*result.size()*pageSize/stream.total_in);
-        
+
         return result;
       }
-      
+
       void decompressBlob(uint8_t* out, size_t size, PageList list, PageProvider::Ptr provider)
       {
         z_stream stream;
@@ -101,12 +101,12 @@ namespace Scroom
         {
           if(stream.avail_in != 0)
             printf("PANIC! Some data available after inflation finishes\n");
-          
+
           Page::Ptr currentPage = list.front();
           list.pop_front();
-          
+
           RawPageData::Ptr currentPageRaw = currentPage->get();
-          
+
           stream.next_in = currentPageRaw.get();
           stream.avail_in = pageSize;
 

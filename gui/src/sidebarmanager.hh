@@ -28,4 +28,3 @@ public:
   void removeSideWidget(GtkWidget* w);
 };
 
-

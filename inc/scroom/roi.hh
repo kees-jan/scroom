@@ -23,7 +23,7 @@ namespace Scroom
       struct Aggregate;
 
       typedef boost::variant<File, Aggregate> Presentation;
-      
+
       struct File
       {
         std::string name;
@@ -38,7 +38,7 @@ namespace Scroom
       std::ostream& operator<<(std::ostream& os, File const& f);
       std::ostream& operator<<(std::ostream& os, Aggregate const& a);
     }
-    
+
     struct RoiBase;
     struct Rect;
 
@@ -76,7 +76,7 @@ namespace Scroom
 
     private:
       List();
-      
+
     public:
       std::vector<Detail::Presentation> presentations;
       std::vector<RoiItem> regions;
@@ -85,7 +85,6 @@ namespace Scroom
       static Ptr create();
       std::set<ViewObservable::Ptr> instantiate(ScroomInterface::Ptr const& scroomInterface, std::string const& relativeTo=std::string());
 
-
     };
 
     List::Ptr parse(std::stringstream const& s);
@@ -93,7 +92,4 @@ namespace Scroom
     List::Ptr parse(std::string::const_iterator first, std::string::const_iterator last);
   }
 }
-
-
-
 

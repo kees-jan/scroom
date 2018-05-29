@@ -44,13 +44,13 @@ BOOST_AUTO_TEST_CASE(each_child_is_notified)
   BOOST_CHECK_EQUAL(ProgressStateInterface::WAITING, stub2->state);
   BOOST_CHECK_EQUAL(0.25, stub1->progress);
   BOOST_CHECK_EQUAL(0.25, stub2->progress);
-  
+
   progressBroadcaster->setWorking(0.5);
   BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub1->state);
   BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub2->state);
   BOOST_CHECK_EQUAL(0.5, stub1->progress);
   BOOST_CHECK_EQUAL(0.5, stub2->progress);
-  
+
   progressBroadcaster->setFinished();
   BOOST_CHECK_EQUAL(ProgressStateInterface::FINISHED, stub1->state);
   BOOST_CHECK_EQUAL(ProgressStateInterface::FINISHED, stub2->state);
@@ -115,7 +115,7 @@ BOOST_AUTO_TEST_CASE(unsubscribed_children_stop_receiving_events)
   BOOST_CHECK_EQUAL(0.25, stub2->progress);
 
   r2.reset();
-  
+
   progressBroadcaster->setWorking(0.5);
   BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub1->state);
   BOOST_CHECK_EQUAL(0.0, stub1->progress);
