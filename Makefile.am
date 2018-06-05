@@ -24,6 +24,7 @@ incscroom_HEADERS = \
 	inc/scroom/memoryblobs.hh \
 	inc/scroom/observable.hh \
 	inc/scroom/plugininformationinterface.hh \
+	inc/scroom/point.hh \
 	inc/scroom/presentationinterface.hh \
 	inc/scroom/progressinterface.hh \
 	inc/scroom/progressinterfacehelpers.hh \

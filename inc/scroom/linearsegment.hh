@@ -8,8 +8,6 @@
 #pragma once
 
 #include <ostream>
-#include <algorithm>
-#include <stdexcept>
 
 #include <boost/operators.hpp>
 
