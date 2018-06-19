@@ -25,6 +25,7 @@ AC_PROG_CXXCPP
 dnl AC_PROG_CC
 AC_PROG_LN_S
 dnl AC_PROG_INSTALL
+AC_CHECK_PROG([CMAKE], [cmake], [yes], [no])
 
 AC_LANG([C++])
 SCROOM_COMPILE_STDCXX_0X
@@ -209,6 +210,20 @@ AC_CACHE_CHECK(if boost::filesystem exports the canonical() function,
   ])
 have_boost_filesystem_canonical=${scroom_cv_boost_filesystem_canonical}
 
+# Testing for google test
+have_gtest_headers=no
+AC_CHECK_HEADERS([gtest/gtest.h], [have_gtest_headers=yes])
+gtest_location=/usr/src/gtest
+have_gtest_sources=no
+AC_CHECK_FILE([${gtest_location}/CMakeLists.txt], [have_gtest_sources=yes])
+
+# Testing for google mock
+have_gmock_headers=no
+AC_CHECK_HEADERS([gmock/gmock.h], [have_gmock_headers=yes])
+gmock_location=/usr/src/gmock
+have_gmock_sources=no
+AC_CHECK_FILE([${gmock_location}/CMakeLists.txt], [have_gmock_sources=yes])
+
 # Some sanity checks
 if test "x${have_new_boost_futures}" = xno
 then
@@ -253,6 +268,17 @@ then
   want_boost_tests=yes
 fi
 AM_CONDITIONAL([BOOST_UNITTESTS], [test x$want_boost_tests = xyes])
+
+want_gtest=no
+if test "x${CMAKE}" = xyes -a \
+   "x${have_gtest_headers}" = xyes -a "x${have_gtest_sources}" = xyes -a \
+   "x${have_gmock_headers}" = xyes -a "x${have_gmock_sources}" = xyes
+then
+  want_gtest=yes
+fi
+AM_CONDITIONAL([GOOGLE_UNITTESTS], [test x$want_gtest = xyes])
+AC_SUBST([GTEST_LOCATION], [$gtest_location])
+AC_SUBST([GMOCK_LOCATION], [$gmock_location])
 
 # If no doxygen, then we can't process all code
 if DX_TEST_FEATURE([doc])
@@ -325,18 +351,18 @@ echo \
  Package features:
    Doxygen:         ${want_doxygen}
      all code:      ${want_doxygen_all_code}
-   Unittests:       ${want_boost_tests}
+   Unittests:
+     boost:         ${want_boost_tests}
+     google:        ${want_gtest}
    Debug-tiles:     ${want_debug_tiles}
    MultiThreading:  ${want_multithreading}
 
  Now type 'make @<:@<target>@:>@'
    where the optional <target> is:
-     all                - build all binaries
-     install            - install everything
-     doxygen-doc        - generate documentation
-                          (if enabled)
-     check              - perform tests
+     all            - build all binaries
+     install        - install everything
+     doxygen-doc    - generate documentation
+                      (if enabled)
+     check          - perform tests
 
 --------------------------------------------------"
-
-

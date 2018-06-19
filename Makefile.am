@@ -76,6 +76,34 @@ boost_test_helper_tests = \
 
 endif BOOST_UNITTESTS
 
+if GOOGLE_UNITTESTS
+
+google_dir = .google
+gtest_dir = $(google_dir)/gtest
+gtest_lib = $(gtest_dir)/libgtest.a
+gtest_main_lib = $(gtest_dir)/libgtest_main.a
+
+gmock_dir = $(google_dir)/gmock
+gmock_lib = $(gmock_dir)/libgmock.a
+gmock_main_lib = $(gmock_dir)/libgmock_main.a
+
+$(gtest_lib) $(gtest_main_lib) :
+	$(AM_V_GEN) mkdir -p $(gtest_dir) && \
+	cd $(gtest_dir) && \
+	CC="$(CC)" CXX="$(CXX)" CPPFLAGS="$(CPPFLAGS)" CFLAGS="$(CFLAGS)" CXXFLAGS="$(CXXFLAGS)" cmake $(GTEST_LOCATION) && \
+	$(MAKE)
+
+$(gmock_lib) $(gmock_main_lib) :
+	$(AM_V_GEN) mkdir -p $(gmock_dir) && \
+	cd $(gmock_dir) && \
+	CC="$(CC)" CXX="$(CXX)" CPPFLAGS="$(CPPFLAGS)" CFLAGS="$(CFLAGS)" CXXFLAGS="$(CXXFLAGS)" cmake $(GMOCK_LOCATION) && \
+	$(MAKE)
+
+clean-local:
+	-rm -rf $(google_dir)
+
+endif GOOGLE_UNITTESTS
+
 ########################################################################
 ### libs/sanity-tests
 ########################################################################

@@ -51,4 +51,5 @@ Makefile.in
 /missing
 /stamp-h1
 /doc/
+/.google
 test_results.xml
