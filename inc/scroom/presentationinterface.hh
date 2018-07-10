@@ -72,8 +72,6 @@ public:
   typedef boost::shared_ptr<PresentationInterface> Ptr;
   typedef boost::weak_ptr<PresentationInterface> WeakPtr;
 
-  virtual ~PresentationInterface() {}
-
   /** Return the dimensions of your presentation */
   virtual Rectangle<double> getRect()=0;
 

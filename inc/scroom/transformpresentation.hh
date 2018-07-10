@@ -1,0 +1,70 @@
+/*
+ * Scroom - Generic viewer for 2D data
+ * Copyright (C) 2009-2018 Kees-Jan Dijkzeul
+ *
+ * SPDX-License-Identifier: LGPL-2.1
+ */
+
+#pragma once
+
+#include <boost/shared_ptr.hpp>
+
+#include <scroom/colormappable.hh>
+#include <scroom/point.hh>
+#include <scroom/presentationinterface.hh>
+
+class TransformationData
+{
+private:
+  Point<double> aspectRatio;
+  
+public:
+  typedef boost::shared_ptr<TransformationData> Ptr;
+
+  static Ptr create();
+
+  void setAspectRatio(double x, double y);
+  Point<double> getAspectRatio() const;
+
+private:
+  TransformationData();
+};
+
+class TransformPresentation : public PresentationInterface, public Colormappable
+{
+public:
+  typedef boost::shared_ptr<TransformPresentation> Ptr;
+
+private:
+  TransformationData::Ptr transformationData;
+  PresentationInterface::Ptr presentation;
+  Colormappable::Ptr colormappable;
+
+private:
+  TransformPresentation(PresentationInterface::Ptr const& presentation, TransformationData::Ptr const& transformationData);
+
+public:
+  static Ptr create(PresentationInterface::Ptr const& presentation, TransformationData::Ptr const& transformationData);
+
+  // Viewable
+  virtual void open(ViewInterface::WeakPtr vi);
+  virtual void close(ViewInterface::WeakPtr vi);
+
+  // PresentationInterface
+  virtual Rectangle<double> getRect();
+  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Rectangle<double> presentationArea, int zoom);
+  virtual bool getProperty(const std::string& name, std::string& value);
+  virtual bool isPropertyDefined(const std::string& name);
+  virtual std::string getTitle();
+
+  // Colormappable
+  virtual void setColormap(Colormap::Ptr colormap);
+  virtual Colormap::Ptr getOriginalColormap();
+  virtual int getNumberOfColors();
+  virtual Color getMonochromeColor();
+  virtual void setMonochromeColor(const Color& c);
+  virtual void setTransparentBackground();
+  virtual void disableTransparentBackground();
+  virtual bool getTransparentBackground();
+  
+};

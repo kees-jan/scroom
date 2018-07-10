@@ -16,6 +16,7 @@ incscroom_HEADERS = \
 	inc/scroom/cairo-helpers.hh \
 	inc/scroom/color.hh \
 	inc/scroom/colormappable.hh \
+	inc/scroom/dont-delete.hh \
 	inc/scroom/function-additor.hh \
 	inc/scroom/global.hh \
 	inc/scroom/gtk-helpers.hh \
@@ -40,6 +41,7 @@ incscroom_HEADERS = \
 	inc/scroom/tiledbitmapinterface.hh \
 	inc/scroom/tiledbitmaplayer.hh \
 	inc/scroom/timer.hh \
+	inc/scroom/transformpresentation.hh \
 	inc/scroom/unused.hh \
 	inc/scroom/utilities.hh \
 	inc/scroom/viewinterface.hh
@@ -48,6 +50,9 @@ incscroomimpl_HEADERS = \
 	inc/scroom/impl/bookkeepingimpl.hh \
 	inc/scroom/impl/threadpoolimpl.hh
 
+incscroomgmock_HEADERS = \
+	inc/scroom/gmock/colormappable.hh \
+	inc/scroom/gmock/presentationinterface.hh
 
 ########################################################################
 ### libs/boost-test-helper
@@ -276,7 +281,8 @@ libs_scroom_src_libsscroom_la_SOURCES = \
 	libs/scroom/src/colormap-helpers.cc \
 	libs/scroom/src/roi-parser.cc \
 	libs/scroom/src/roi.cc \
-	libs/scroom/src/presentationinterface.cc
+	libs/scroom/src/presentationinterface.cc \
+	libs/scroom/src/transformpresentation.cc
 
 libs_scroom_src_libsscroom_la_LIBADD = \
 	@SCROOMLIB_LIBS@ $(util_libs) \
@@ -288,8 +294,6 @@ scroomlib_check_programs = \
 	libs/scroom/test/libscroom-tests
 
 libs_scroom_test_libscroom_tests_CPPFLAGS = @SCROOMLIB_CFLAGS@ -I $(top_srcdir)/inc
-
-# 	-I $(srcdir)/libs/memory-manager/src
 
 libs_scroom_test_libscroom_tests_SOURCES = \
 	libs/scroom/test/main.cc \
@@ -305,6 +309,25 @@ scroomlib_tests = \
 
 endif BOOST_UNITTESTS
 
+if GOOGLE_UNITTESTS
+
+scroomlib_gcheck_programs = \
+	libs/scroom/test/libscroom-gtests
+
+libs_scroom_test_libscroom_gtests_CPPFLAGS = @SCROOMLIB_CFLAGS@ -I $(top_srcdir)/inc
+
+libs_scroom_test_libscroom_gtests_SOURCES = \
+	libs/scroom/test/transformpresentation_test.cc
+
+libs_scroom_test_libscroom_gtests_LDADD = @BOOSTSYSTEMLIB@ \
+	libs/scroom/src/libsscroom.la \
+	$(gmock_main_lib) $(gtest_lib) \
+	@PTHREADLIB@ 
+
+scroomlib_gtests = \
+	libs/scroom/test/libscroom-gtests
+
+endif GOOGLE_UNITTESTS
 
 ########################################################################
 ### libs/tiled-bitmap
@@ -586,8 +609,8 @@ plugins_tests = $(transparent_overlay_plugin_tests)
 
 ### Libs
 libs_libs = $(boost_test_helper_libs) $(sanity_tests_libs) $(util_libs) $(threadpool_libs) $(memory_manager_libs) $(scroomlib_libs) $(tiled_bitmap_libs)
-libs_check_programs = $(boost_test_helper_check_programs) $(sanity_tests_check_programs) $(util_check_programs) $(threadpool_check_programs) $(memory_manager_check_programs) $(scroomlib_check_programs) $(tiled_bitmap_check_programs)
-libs_tests = $(boost_test_helper_tests) $(sanity_tests_tests) $(util_tests) $(threadpool_tests) $(memory_manager_tests) $(scroomlib_tests) $(tiled_bitmap_tests)
+libs_check_programs = $(boost_test_helper_check_programs) $(sanity_tests_check_programs) $(util_check_programs) $(threadpool_check_programs) $(memory_manager_check_programs) $(scroomlib_check_programs) $(scroomlib_gcheck_programs) $(tiled_bitmap_check_programs)
+libs_tests = $(boost_test_helper_tests) $(sanity_tests_tests) $(util_tests) $(threadpool_tests) $(memory_manager_tests) $(scroomlib_tests) $(scroomlib_gtests) $(tiled_bitmap_tests)
 libs_extra_dist = $(sanity_tests_extra_dist)
 libs_noinst_libs = $(boost_test_helper_noinst_libs)
 

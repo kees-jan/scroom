@@ -19,7 +19,9 @@ template<typename T>
 class Rectangle : public boost::addable2<Rectangle<T>,Point<T>>,
                   public boost::subtractable2<Rectangle<T>,Point<T>>,
                   public boost::multipliable2<Rectangle<T>,T>,
-                  public boost::dividable2<Rectangle<T>,T>
+                  public boost::multipliable2<Rectangle<T>,Point<T>>,
+                  public boost::dividable2<Rectangle<T>,T>,
+                  public boost::dividable2<Rectangle<T>,Point<T>>
 {
 public:
   typedef T value_type;
@@ -232,10 +234,24 @@ public:
     return *this;
   }
 
+  Rectangle<value_type>& operator*=(Point<value_type> const& other)
+  {
+    horizontally *= other.x;
+    vertically *= other.y;
+    return *this;
+  }
+
   Rectangle<value_type>& operator/=(value_type other)
   {
     horizontally /= other;
     vertically /= other;
+    return *this;
+  }
+
+  Rectangle<value_type>& operator/=(Point<value_type> const& other)
+  {
+    horizontally /= other.x;
+    vertically /= other.y;
     return *this;
   }
 
@@ -278,6 +294,11 @@ std::ostream& operator<<(std::ostream& os, const Rectangle<T>& r)
   return os;
 }
 
+inline std::ostream& operator<<(std::ostream& os, const GdkRectangle& r)
+{
+  return os << Rectangle<double>(r);
+}
+
 template<typename T, typename U>
 Rectangle<typename std::common_type<T,U>::type> operator*(Rectangle<T> left, U right)
 {
@@ -290,4 +311,14 @@ template<typename T, typename U>
 Rectangle<typename std::common_type<T,U>::type> operator*(T left, Rectangle<U> right)
 {
   return right*left;
+}
+
+inline Rectangle<double> operator*(GdkRectangle const& r, Point<double> const& p)
+{
+  return Rectangle<double>(r) * p;
+}
+
+inline Rectangle<double> operator*(Point<double> const& p, GdkRectangle const& r)
+{
+  return Rectangle<double>(r) * p;
 }

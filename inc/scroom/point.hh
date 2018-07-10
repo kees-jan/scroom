@@ -60,6 +60,11 @@ public:
     return Point<value_type>(-x, -y);
   }
 
+  double magnitude() const
+  {
+    return sqrt(x*x+y*y);
+  }
+
 public:
   value_type x;
   value_type y;

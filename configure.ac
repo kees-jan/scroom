@@ -335,7 +335,7 @@ AC_CONFIG_FILES([Makefile
 AC_SUBST([plugindir], [$libdir/$PACKAGE])
 AC_SUBST([incscroomdir], [$includedir/scroom])
 AC_SUBST([incscroomimpldir], [$incscroomdir/impl])
-AC_SUBST([incboostdir], [$includedir/boost])
+AC_SUBST([incscroomgmockdir], [$incscroomdir/gmock])
 
 AC_OUTPUT
 
