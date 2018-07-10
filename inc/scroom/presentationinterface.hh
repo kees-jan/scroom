@@ -17,6 +17,7 @@
 
 #include <scroom/viewinterface.hh>
 #include <scroom/observable.hh>
+#include <scroom/rectangle.hh>
 
 /**
  * Implement Viewable if you want to be able to receive events when a
@@ -74,7 +75,7 @@ public:
   virtual ~PresentationInterface() {}
 
   /** Return the dimensions of your presentation */
-  virtual GdkRectangle getRect()=0;
+  virtual Rectangle<double> getRect()=0;
 
   /**
    * Draw the requested ara at the requested zoom level
@@ -88,7 +89,7 @@ public:
    *    presentation should have size 2**@c zoom when drawn. @c zoom
    *    may be negative.
    */
-  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)=0;
+  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Rectangle<double> presentationArea, int zoom)=0;
 
   /**
    * Return the value of the requested property

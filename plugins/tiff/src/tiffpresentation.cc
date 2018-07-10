@@ -208,7 +208,7 @@ bool TiffPresentation::load(const std::string& fileName)
 // PresentationInterface
 ////////////////////////////////////////////////////////////////////////
 
-GdkRectangle TiffPresentation::getRect()
+Rectangle<double> TiffPresentation::getRect()
 {
   GdkRectangle rect;
   rect.x = 0;
@@ -249,7 +249,7 @@ std::set<ViewInterface::WeakPtr> TiffPresentation::getViews()
 }
 
 void TiffPresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr,
-    GdkRectangle presentationArea, int zoom)
+    Rectangle<double> presentationArea, int zoom)
 {
   drawOutOfBoundsWithoutBackground(cr, presentationArea, getRect(), pixelSizeFromZoom(zoom));
 
@@ -419,7 +419,7 @@ bool TiffPresentationWrapper::load(const std::string& fileName)
   return presentation->load(fileName);
 }
 
-GdkRectangle TiffPresentationWrapper::getRect()
+Rectangle<double> TiffPresentationWrapper::getRect()
 {
   return presentation->getRect();
 }
@@ -429,7 +429,8 @@ void TiffPresentationWrapper::viewAdded(ViewInterface::WeakPtr viewInterface)
   presentation->viewAdded(viewInterface);
 }
 
-void TiffPresentationWrapper::redraw(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
+void TiffPresentationWrapper::redraw(ViewInterface::Ptr const& vi, cairo_t* cr,
+                                     Rectangle<double> presentationArea, int zoom)
 {
   presentation->redraw(vi, cr, presentationArea, zoom);
 }

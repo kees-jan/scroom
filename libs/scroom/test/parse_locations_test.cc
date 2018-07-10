@@ -38,12 +38,12 @@ public:
   }
 
   // PresentationInterface
-  virtual GdkRectangle getRect()
+  virtual Rectangle<double> getRect()
   {
     throw std::runtime_error("Operation not supported");
   }
 
-  virtual void redraw(ViewInterface::Ptr const&, cairo_t*, GdkRectangle, int)
+  virtual void redraw(ViewInterface::Ptr const&, cairo_t*, Rectangle<double>, int)
   {
     throw std::runtime_error("Operation not supported");
   }

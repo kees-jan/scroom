@@ -62,9 +62,9 @@ namespace
   public:
     static Ptr create(GdkRectangle const& rect) { return Ptr(new PresentationInterfaceStub(rect)); }
 
-    virtual GdkRectangle getRect() { return rect; }
+    virtual Rectangle<double> getRect() { return rect; }
 
-    virtual void redraw(ViewInterface::Ptr const&, cairo_t*, GdkRectangle, int) {}
+    virtual void redraw(ViewInterface::Ptr const&, cairo_t*, Rectangle<double>, int) {}
     virtual bool getProperty(const std::string&, std::string&) { return false; }
     virtual bool isPropertyDefined(const std::string&) { return false; }
     virtual std::string getTitle() { return ""; }

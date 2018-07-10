@@ -51,7 +51,7 @@ void ExamplePresentation::fillPattern()
   cairo_surface_destroy(surface);
 }
 
-GdkRectangle ExamplePresentation::getRect()
+Rectangle<double> ExamplePresentation::getRect()
 {
   GdkRectangle rect;
   rect.x=-500;
@@ -72,13 +72,14 @@ void ExamplePresentation::close(ViewInterface::WeakPtr vi)
   UNUSED(vi);
 }
 
-void ExamplePresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
+void ExamplePresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Rectangle<double> pa, int zoom)
 {
+  GdkRectangle presentationArea = pa;
   UNUSED(vi);
   double pp=pixelSizeFromZoom(zoom);
   double scale = pow(2, -zoom);
 
-  GdkRectangle actualPresentationArea = getRect();
+  Rectangle<double> actualPresentationArea = getRect();
   drawOutOfBoundsWithBackground(cr, presentationArea, actualPresentationArea, pp);
 
   int xorig = (int)(-presentationArea.x*pp);

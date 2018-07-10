@@ -45,8 +45,8 @@ void drawRectangle(cairo_t* cr, Color const& c, Rectangle<double> const& viewAre
 }
 
 void drawOutOfBoundsWithBackground(cairo_t* cr,
-                                   Rectangle<int> const& requestedPresentationArea,
-                                   Rectangle<int> const& actualPresentationArea, double pixelSize)
+                                   Rectangle<double> const& requestedPresentationArea,
+                                   Rectangle<double> const& actualPresentationArea, double pixelSize)
 {
   drawRectangle(cr, Colors::OUT_OF_BOUNDS, pixelSize*(requestedPresentationArea.moveTo(0,0)));
   drawRectangle(cr, Colors::IN_BOUNDS,
@@ -54,8 +54,8 @@ void drawOutOfBoundsWithBackground(cairo_t* cr,
 }
 
 void drawOutOfBoundsWithBackgroundColor(cairo_t* cr, const Color& background,
-                                   Rectangle<int> const& requestedPresentationArea,
-                                   Rectangle<int> const& actualPresentationArea, double pixelSize)
+                                   Rectangle<double> const& requestedPresentationArea,
+                                   Rectangle<double> const& actualPresentationArea, double pixelSize)
 {
   drawOutOfBoundsWithoutBackground(cr, requestedPresentationArea, actualPresentationArea, pixelSize);
   drawRectangle(cr, background,
@@ -63,16 +63,16 @@ void drawOutOfBoundsWithBackgroundColor(cairo_t* cr, const Color& background,
 }
 
 void drawOutOfBoundsWithoutBackground(cairo_t* cr,
-                                      Rectangle<int> const& requestedPresentationArea,
-                                      Rectangle<int> const& actualPresentationArea, double pixelSize)
+                                      Rectangle<double> const& requestedPresentationArea,
+                                      Rectangle<double> const& actualPresentationArea, double pixelSize)
 {
-  std::list<Rectangle<int> > border = boost::assign::list_of
+  std::list<Rectangle<double> > border = boost::assign::list_of
     (requestedPresentationArea.leftOf(actualPresentationArea.getLeftPos()))
     (requestedPresentationArea.rightOf(actualPresentationArea.getRightPos()))
     (requestedPresentationArea.above(actualPresentationArea.getTopPos()))
     (requestedPresentationArea.below(actualPresentationArea.getBottomPos()));
 
-  for(const Rectangle<int>& r: border)
+  for(const Rectangle<double>& r: border)
   {
     if(!r.isEmpty())
     {

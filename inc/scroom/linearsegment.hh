@@ -11,6 +11,30 @@
 
 #include <boost/operators.hpp>
 
+namespace
+{
+  template<typename T>
+  bool isZero(T v);
+
+  template<>
+  bool isZero<int>(int v)
+  {
+    return v==0;
+  }
+
+  template<>
+  bool isZero<double>(double v)
+  {
+    return abs(v) < 1e-6;
+  }
+
+  template<typename T>
+  bool areEqual(T a, T b)
+  {
+    return isZero(a-b);
+  }
+}
+
 template<typename T>
 class Segment: public boost::addable2<Segment<T>, T>,
                public boost::subtractable2<Segment<T>, T>,
@@ -112,7 +136,7 @@ public:
 
   bool isEmpty() const
   {
-    return getSize () == 0;
+    return isZero(getSize());
   }
 
   bool operator==(const Segment<value_type>& other) const
@@ -122,7 +146,7 @@ public:
     else if(isEmpty())
       return true;
     else
-      return (start == other.start) && (size == other.size);
+      return areEqual(start, other.start) && areEqual(size, other.size);
   }
 
   bool operator!=(const Segment<value_type>& other) const

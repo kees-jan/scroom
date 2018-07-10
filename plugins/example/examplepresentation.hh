@@ -20,9 +20,9 @@ public:
   ExamplePresentation();
   virtual ~ExamplePresentation();
 
-  virtual GdkRectangle getRect();
+  virtual Rectangle<double> getRect();
   virtual void open(ViewInterface::WeakPtr viewInterface);
-  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);
+  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Rectangle<double> presentationArea, int zoom);
   virtual void close(ViewInterface::WeakPtr vi);
   virtual bool getProperty(const std::string& name, std::string& value);
   virtual bool isPropertyDefined(const std::string& name);

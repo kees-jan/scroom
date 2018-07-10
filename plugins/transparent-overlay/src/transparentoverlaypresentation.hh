@@ -33,8 +33,8 @@ public:
   static Ptr create();
 
   // PresentationInterface ///////////////////////////////////////////////
-  virtual GdkRectangle getRect();
-  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle presentationArea, int zoom);
+  virtual Rectangle<double> getRect();
+  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Rectangle<double> presentationArea, int zoom);
   virtual bool getProperty(const std::string& name, std::string& value);
   virtual bool isPropertyDefined(const std::string& name);
   virtual std::string getTitle();

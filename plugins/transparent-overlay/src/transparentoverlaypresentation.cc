@@ -101,7 +101,7 @@ void TransparentOverlayPresentation::setOptimalColor(PresentationInterface::Ptr 
   }
 }
 
-GdkRectangle TransparentOverlayPresentation::getRect()
+Rectangle<double> TransparentOverlayPresentation::getRect()
 {
   return sizeDeterminer->getRect();
 }
@@ -132,7 +132,8 @@ std::set<ViewInterface::WeakPtr> TransparentOverlayPresentation::getViews()
   return result;
 }
 
-void TransparentOverlayPresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle presentationArea, int zoom)
+void TransparentOverlayPresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr,
+                                            Rectangle<double> presentationArea, int zoom)
 {
   ViewDataMap::const_iterator e = viewData.find(vi);
   if(e != viewData.end())
