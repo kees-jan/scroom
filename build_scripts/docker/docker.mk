@@ -12,7 +12,7 @@ echo-build-step = +@printf "[%-5s] %s\n" $1 $2
 
 ifeq ($(TEST),)
 docker-pull = $(Q)docker pull kjdijkzeul/scroom:$(1)-build-env > /dev/null
-docker-build = $(Q)docker run -v $$$$(pwd):/home/build/scroom --rm kjdijkzeul/scroom:$(1)-build-env sh -c "cd \$$$$(mktemp -d) && /home/build/scroom/configure && make -j4 check"
+docker-build = $(Q)docker run -v $$$$(pwd):/home/build/scroom --rm kjdijkzeul/scroom:$(1)-build-env sh -c "cd \$$$$(mktemp -d) && /home/build/scroom/configure && make -k -j4 check"
 docker-autoconf = $(Q)docker run -v $$(pwd):/home/build/scroom --rm kjdijkzeul/scroom:$(AUTOCONF_HOST)-build-env sh -c "cd /home/build/scroom && autogen -i"
 else
 docker-pull = $(Q)sleep 2
