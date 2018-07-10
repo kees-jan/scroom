@@ -16,10 +16,10 @@ autoreconf -i
 
 if [ ! -z "${SOME_DISTS+x}" -a "${CC}" = "gcc" ]
 then
-    make -j2 -f build_scripts/docker/docker.mk TARGETS="${SOME_DISTS}"
+    make -k -j2 -f build_scripts/docker/docker.mk TARGETS="${SOME_DISTS}"
 elif [ ! -z "${OTHER_DISTS+x}" -a "${CC}" != "gcc" ]
 then
-    make -j2 -f build_scripts/docker/docker.mk TARGETS="${OTHER_DISTS}"
+    make -k -j2 -f build_scripts/docker/docker.mk TARGETS="${OTHER_DISTS}"
 else
 
     ./configure --enable-doxygen-all-code
