@@ -59,6 +59,10 @@ public:
     }
   }
 
+  Segment(Segment<int> const& other)
+    : start(other.getStart()), size(other.getSize())
+  {}
+
   Segment moveTo(value_type p) const
   {
     return Segment(p, size);

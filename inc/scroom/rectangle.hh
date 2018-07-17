@@ -39,12 +39,21 @@ public:
   {}
 
   Rectangle(const GdkRectangle& rect)
-  : horizontally(rect.x, rect.width), vertically(rect.y, rect.height)
+    : horizontally(rect.x, rect.width), vertically(rect.y, rect.height)
   {}
 
-  operator GdkRectangle() const
+  Rectangle(const Rectangle<int>& rect)
+    : horizontally(rect.getHorizontally()), vertically(rect.getVertically())
+  {}
+
+  GdkRectangle toGdkRectangle() const
   {
     return Scroom::GtkHelpers::createGdkRectangle(getLeftPos(), getTopPos(), getWidth(), getHeight());
+  }
+
+  Rectangle<int> toIntRectangle() const
+  {
+    return Rectangle<int>(getLeftPos(), getTopPos(), getWidth(), getHeight());
   }
 
   Rectangle moveTo(Point<value_type> const& other) const

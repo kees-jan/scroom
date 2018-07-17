@@ -7,13 +7,12 @@
 
 #pragma once
 
-#include <scroom/color.hh>
-
 #include <list>
 
 #include <gdk/gdk.h>
 #include <cairo.h>
 
+#include <scroom/color.hh>
 #include <scroom/rectangle.hh>
 
 namespace Colors
@@ -21,8 +20,8 @@ namespace Colors
   extern const Color OUT_OF_BOUNDS;
 }
 
-void setClip(cairo_t* cr, int x, int y, int width, int height);
-void setClip(cairo_t* cr, const GdkRectangle& area);
+void setClip(cairo_t* cr, double x, double y, double width, double height);
+void setClip(cairo_t* cr, const Rectangle<double>& area);
 void drawRectangle(cairo_t* cr, Color const& c, Rectangle<double> const& viewArea);
 void drawOutOfBoundsWithBackground(cairo_t* cr,
                                    Rectangle<double> const& requestedPresentationArea,

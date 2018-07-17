@@ -95,7 +95,7 @@ public:
 
   virtual void open(ViewInterface::WeakPtr viewInterface);
   virtual void close(ViewInterface::WeakPtr vi);
-  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle const& presentationArea, int zoom);
+  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Rectangle<double> const& presentationArea, int zoom);
   virtual void clearCaches(ViewInterface::Ptr vi);
 
   ////////////////////////////////////////////////////////////////////////

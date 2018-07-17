@@ -142,9 +142,11 @@ void TransparentOverlayViewInfo::close()
   buttons.clear();
 }
 
-void TransparentOverlayViewInfo::redraw(cairo_t* cr, GdkRectangle presentationArea, int zoom)
+void TransparentOverlayViewInfo::redraw(cairo_t* cr, Rectangle<double> const& pa, int zoom)
 {
   using Scroom::Bitmap::BitmapSurface;
+
+  GdkRectangle presentationArea = pa.toGdkRectangle();
 
   GdkRectangle viewArea;
   viewArea.x=0;

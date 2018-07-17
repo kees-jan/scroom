@@ -242,7 +242,7 @@ void View::setPresentation(PresentationInterface::Ptr presentation)
   if(this->presentation)
   {
     presentation->open(me);
-    presentationRect = presentation->getRect();
+    presentationRect = presentation->getRect().toGdkRectangle();
     std::string s = presentation->getTitle();
     if(s.length())
       s = "Scroom - " + s;

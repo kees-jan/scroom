@@ -316,7 +316,7 @@ BOOST_AUTO_TEST_CASE(testConversionToAndFromGdkRectangle)
   const Rectangle<int> rect = original;
   BOOST_CHECK_EQUAL(make_rect(1,2,3,4), rect);
 
-  const GdkRectangle grect = rect;
+  const GdkRectangle grect = rect.toGdkRectangle();
   BOOST_CHECK_EQUAL(original, grect);
 }
 

@@ -17,7 +17,7 @@ namespace Colors
   const Color IN_BOUNDS(1,1,1); // White
 }
 
-void setClip(cairo_t* cr, int x, int y, int width, int height)
+void setClip(cairo_t* cr, double x, double y, double width, double height)
 {
   cairo_move_to(cr, x, y);
   cairo_line_to(cr, x+width, y);
@@ -27,9 +27,9 @@ void setClip(cairo_t* cr, int x, int y, int width, int height)
   cairo_clip(cr);
 }
 
-void setClip(cairo_t* cr, const GdkRectangle& area)
+void setClip(cairo_t* cr, const Rectangle<double>& area)
 {
-  setClip(cr, area.x, area.y, area.width, area.height);
+  setClip(cr, area.getLeftPos(), area.getTopPos(), area.getWidth(), area.getHeight());
 }
 
 void drawRectangle(cairo_t* cr, Color const& c, Rectangle<double> const& viewArea)

@@ -16,6 +16,7 @@
 #include <boost/shared_ptr.hpp>
 
 #include <scroom/presentationinterface.hh>
+#include <scroom/rectangle.hh>
 #include <scroom/scroominterface.hh>
 #include <scroom/stuff.hh>
 #include <scroom/tile.hh>
@@ -269,7 +270,7 @@ public:
    * @see PresentationInterface::redraw()
    */
   virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr,
-      const GdkRectangle& presentationArea, int zoom)=0;
+                      const Rectangle<double>& presentationArea, int zoom)=0;
 
   /**
    * Clear all bitmap caches related to the view.

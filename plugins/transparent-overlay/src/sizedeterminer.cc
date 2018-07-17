@@ -23,7 +23,7 @@ namespace
 
     for(PresentationInterface::Ptr const& p: presentations)
     {
-      GdkRectangle rect = p->getRect();
+      GdkRectangle rect = p->getRect().toGdkRectangle();
       left = std::min(left, rect.x);
       top = std::min(top, rect.y);
       right = std::max(right, rect.x + rect.width);

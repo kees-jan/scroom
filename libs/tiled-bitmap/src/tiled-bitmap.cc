@@ -322,7 +322,7 @@ void TiledBitmap::drawTile(cairo_t* cr, const CompressedTile::Ptr tile, const Gd
 void TiledBitmap::redrawZoomingIn(ViewInterface::Ptr const& vi, cairo_t* cr, Rectangle<int> const& requestedPresentationArea, int zoom)
 {
   TiledBitmapViewData::Ptr viewData = this->viewData[vi];
-  GdkRectangle presentationArea = requestedPresentationArea;
+  GdkRectangle presentationArea = requestedPresentationArea.toGdkRectangle();
 
   Layer::Ptr layer = layers[0];
   LayerOperations::Ptr layerOperations = ls[0];
@@ -423,7 +423,7 @@ void TiledBitmap::redrawZoomingOut(ViewInterface::Ptr const& vi, cairo_t* cr, Re
 
   layerOperations->initializeCairo(cr);
 
-  GdkRectangle presentationArea = scaledRequestedPresentationArea;
+  GdkRectangle presentationArea = scaledRequestedPresentationArea.toGdkRectangle();
   for(int i=imin; i<imax; i++)
   {
     for(int j=jmin; j<jmax; j++)
@@ -463,12 +463,12 @@ void TiledBitmap::redrawZoomingOut(ViewInterface::Ptr const& vi, cairo_t* cr, Re
   }
 }
 
-void TiledBitmap::redraw(ViewInterface::Ptr const& vi, cairo_t* cr, GdkRectangle const& presentationArea, int zoom)
+void TiledBitmap::redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Rectangle<double> const& presentationArea, int zoom)
 {
   if(zoom>0)
-    redrawZoomingIn(vi, cr, presentationArea, zoom);
+    redrawZoomingIn(vi, cr, presentationArea.toIntRectangle(), zoom);
   else
-    redrawZoomingOut(vi, cr, presentationArea, zoom);
+    redrawZoomingOut(vi, cr, presentationArea.toIntRectangle(), zoom);
 }
 
 void TiledBitmap::clearCaches(ViewInterface::Ptr viewInterface)

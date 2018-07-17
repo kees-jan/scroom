@@ -74,7 +74,7 @@ void ExamplePresentation::close(ViewInterface::WeakPtr vi)
 
 void ExamplePresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Rectangle<double> pa, int zoom)
 {
-  GdkRectangle presentationArea = pa;
+  GdkRectangle presentationArea = pa.toGdkRectangle();
   UNUSED(vi);
   double pp=pixelSizeFromZoom(zoom);
   double scale = pow(2, -zoom);
