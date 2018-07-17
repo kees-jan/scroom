@@ -11,6 +11,7 @@
 
 #include <boost/operators.hpp>
 
+#include <scroom/assertions.hh> // Only because it defines GCC_VERSION
 #include <scroom/gtk-helpers.hh>
 #include <scroom/linearsegment.hh>
 #include <scroom/point.hh>
@@ -298,6 +299,16 @@ inline std::ostream& operator<<(std::ostream& os, const GdkRectangle& r)
 {
   return os << Rectangle<double>(r);
 }
+
+#if GCC_VERSION < 40800 // 4.8.0
+namespace std
+{
+  // In gcc 4.6 and 4.7, common_type does not SFINAE, but triggers
+  // a compile error instead
+  template<typename T>
+  class common_type<T,Point<T>> {};
+}
+#endif
 
 template<typename T, typename U>
 Rectangle<typename std::common_type<T,U>::type> operator*(Rectangle<T> left, U right)
