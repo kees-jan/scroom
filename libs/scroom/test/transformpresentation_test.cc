@@ -9,6 +9,7 @@
 
 #include <gmock/gmock-more-actions.h>
 
+#include <scroom/bitmap-helpers.hh>
 #include <scroom/dont-delete.hh>
 #include <scroom/gmock/presentationinterface.hh>
 #include <scroom/transformpresentation.hh>
@@ -19,6 +20,8 @@ using ::testing::Return;
 using ::testing::_;
 using ::testing::SaveArg;
 using ::testing::DoAll;
+
+using Scroom::Bitmap::BitmapSurface;
 
 bool points_are_close(Point<double> const& a, Point<double> const& b)
 {
@@ -53,11 +56,11 @@ TEST(TransformPresentation_Tests, TransformationData_supports_aspect_ratio)
   EXPECT_CALL(*cpm, getRect()).WillRepeatedly(Return(make_rect(1.0, 2.0, 3.0, 4.0)));
   EXPECT_CALL(*cpm, open(viw));
   EXPECT_CALL(*cpm, close(viw));
-  const Rectangle<double> to_be_drawn = make_rect(0.5, 1.5, 2.0, 3.0);
+  const Rectangle<double> to_be_drawn = make_rect(1.0, 4.5, 4.0, 9.0);
   const int zoom_to_use = 3;
   Rectangle<double> requested_to_be_drawn;
   int used_zoom;
-  EXPECT_CALL(*cpm, redraw(vi, NULL, to_be_drawn, zoom_to_use))
+  EXPECT_CALL(*cpm, redraw(vi, _, _, _))
     .WillOnce(DoAll(SaveArg<2>(&requested_to_be_drawn),
                     SaveArg<3>(&used_zoom)));
 
@@ -66,9 +69,14 @@ TEST(TransformPresentation_Tests, TransformationData_supports_aspect_ratio)
 
   tp->open(vi);
 
-  tp->redraw(vi, NULL, to_be_drawn, zoom_to_use);
-  // EXPECT_PRED2(rects_are_close, make_rect(1.0, 4.5, 4.0, 9.0), requested_to_be_drawn);
+  BitmapSurface::Ptr s = BitmapSurface::create(10, 10, CAIRO_FORMAT_ARGB32);
+  cairo_surface_t* surface = s->get();
+  cairo_t* cr = cairo_create(surface);
+
+  tp->redraw(vi, cr, to_be_drawn, zoom_to_use);
+  EXPECT_PRED2(rects_are_close, make_rect(0.5, 1.5, 2.0, 3.0), requested_to_be_drawn);
   EXPECT_EQ(zoom_to_use, used_zoom);
+  cairo_destroy(cr);
   
   tp->close(vi);
 }

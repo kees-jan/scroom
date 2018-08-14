@@ -322,7 +322,7 @@ libs_scroom_test_libscroom_gtests_SOURCES = \
 libs_scroom_test_libscroom_gtests_LDADD = @BOOSTSYSTEMLIB@ \
 	libs/scroom/src/libsscroom.la \
 	$(gmock_main_lib) $(gtest_lib) \
-	@PTHREADLIB@ 
+	@PTHREADLIB@ @SCROOMLIB_LIBS@
 
 scroomlib_gtests = \
 	libs/scroom/test/libscroom-gtests

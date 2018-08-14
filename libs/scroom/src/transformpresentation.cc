@@ -51,7 +51,12 @@ void TransformPresentation::close(ViewInterface::WeakPtr viewInterface)
 void TransformPresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr,
                                    Rectangle<double> presentationArea, int zoom)
 {
-  presentation->redraw(vi, cr, presentationArea, zoom);
+  Point<double> aspectRatio = transformationData->getAspectRatio();
+
+  cairo_save(cr);
+  cairo_scale(cr, aspectRatio.x, aspectRatio.y);
+  presentation->redraw(vi, cr, presentationArea / aspectRatio, zoom);
+  cairo_restore(cr);
 }
 
 bool TransformPresentation::getProperty(const std::string& name, std::string& value)
