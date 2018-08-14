@@ -15,7 +15,7 @@
 #include <scroom/unused.hh>
 
 TiffPresentation::TiffPresentation()
-  : fileName(), tif(NULL), height(0), width(0), tbi(), bps(0), spp(0)
+  : tif(NULL), height(0), width(0), bps(0), spp(0)
 {
   colormapHelper = ColormapHelper::create(256);
 }
@@ -160,7 +160,27 @@ bool TiffPresentation::load(const std::string& fileName)
       return false;
     }
 
-    printf("This bitmap has size %d*%d\n", width, height);
+    float resolutionX;
+    float resolutionY;
+    uint16 resolutionUnit;
+
+    if(TIFFGetField(tif, TIFFTAG_XRESOLUTION, &resolutionX) &&
+       TIFFGetField(tif, TIFFTAG_YRESOLUTION, &resolutionY) &&
+       TIFFGetField(tif, TIFFTAG_RESOLUTIONUNIT, &resolutionUnit) &&
+       resolutionUnit == RESUNIT_NONE)
+    {
+      transformationData = TransformationData::create();
+      transformationData->setAspectRatio(1/resolutionX, 1/resolutionY);
+    }
+    else
+    {
+      resolutionX = 1;
+      resolutionY = 1;
+    }
+    
+    printf("This bitmap has size %d*%d, aspect ratio %.1f*%.1f\n",
+           width, height, 1/resolutionX, 1/resolutionY);
+    
     LayerSpec ls;
 
     if (spp == 3)
@@ -202,6 +222,11 @@ bool TiffPresentation::load(const std::string& fileName)
     printf("PANIC: %s\n", ex.what());
     return false;
   }
+}
+
+TransformationData::Ptr TiffPresentation::getTransformationData() const
+{
+  return transformationData;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -417,6 +442,11 @@ TiffPresentationWrapper::~TiffPresentationWrapper()
 bool TiffPresentationWrapper::load(const std::string& fileName)
 {
   return presentation->load(fileName);
+}
+
+TransformationData::Ptr TiffPresentationWrapper::getTransformationData() const
+{
+  return presentation->getTransformationData();
 }
 
 Rectangle<double> TiffPresentationWrapper::getRect()

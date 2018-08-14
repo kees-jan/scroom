@@ -52,15 +52,15 @@ namespace
     typedef boost::shared_ptr<PresentationInterfaceStub> Ptr;
 
   private:
-    GdkRectangle rect;
+    Rectangle<double> rect;
 
   protected:
-    PresentationInterfaceStub(GdkRectangle const& rect)
+    PresentationInterfaceStub(Rectangle<double> const& rect)
       : rect(rect)
     {}
 
   public:
-    static Ptr create(GdkRectangle const& rect) { return Ptr(new PresentationInterfaceStub(rect)); }
+    static Ptr create(Rectangle<double> const& rect) { return Ptr(new PresentationInterfaceStub(rect)); }
 
     virtual Rectangle<double> getRect() { return rect; }
 
@@ -80,25 +80,25 @@ namespace
 
   public:
     std::list<ViewInterface::WeakPtr> receivedVi;
-    std::list<GdkRectangle> receivedRect;
+    std::list<Rectangle<double>> receivedRect;
 
   private:
-    ResizablePresentationInterfaceStub(GdkRectangle const& rect)
+    ResizablePresentationInterfaceStub(Rectangle<double> const& rect)
       : PresentationInterfaceStub(rect)
     {}
 
   public:
-    static Ptr create(GdkRectangle const& rect) { return Ptr(new ResizablePresentationInterfaceStub(rect)); }
+    static Ptr create(Rectangle<double> const& rect) { return Ptr(new ResizablePresentationInterfaceStub(rect)); }
 
-    virtual void setRect(ViewInterface::WeakPtr const& vi, GdkRectangle const& rect)
+    virtual void setRect(ViewInterface::WeakPtr const& vi, Rectangle<double> const& rect)
     {
       receivedVi.push_back(vi);
       receivedRect.push_back(rect);
     }
 
-    void CheckAllEqual(GdkRectangle const& rect)
+    void CheckAllEqual(Rectangle<double> const& rect)
     {
-      BOOST_CHECK_EQUAL(std::list<GdkRectangle>(receivedRect.size(), rect), receivedRect);
+      BOOST_CHECK_EQUAL(std::list<Rectangle<double>>(receivedRect.size(), rect), receivedRect);
     }
 
     bool Contains(ViewInterface::WeakPtr const& vi)
@@ -141,7 +141,7 @@ BOOST_AUTO_TEST_SUITE(Determine_size_tests)
 
 BOOST_AUTO_TEST_CASE(determine_size_of_one_regular)
 {
-  GdkRectangle const expected = createGdkRectangle(1,2,3,4);
+  Rectangle<double> const expected = createGdkRectangle(1,2,3,4);
   PresentationInterfaceStub::Ptr p = PresentationInterfaceStub::create(expected);
   SizeDeterminer::Ptr sd = SizeDeterminer::create();
   sd->add(p);
@@ -151,7 +151,7 @@ BOOST_AUTO_TEST_CASE(determine_size_of_one_regular)
 
 BOOST_AUTO_TEST_CASE(determine_size_of_two_regular)
 {
-  GdkRectangle const expected = createGdkRectangle(1,1,5,5);
+  Rectangle<double> const expected = createGdkRectangle(1,1,5,5);
   PresentationInterfaceStub::Ptr p1 = PresentationInterfaceStub::create(createGdkRectangle(1,2,3,4));
   PresentationInterfaceStub::Ptr p2 = PresentationInterfaceStub::create(createGdkRectangle(2,1,4,3));
   SizeDeterminer::Ptr sd = SizeDeterminer::create();
@@ -163,7 +163,7 @@ BOOST_AUTO_TEST_CASE(determine_size_of_two_regular)
 
 BOOST_AUTO_TEST_CASE(determine_size_of_one_regular_one_resizable)
 {
-  GdkRectangle const expected = createGdkRectangle(2,1,4,3);
+  Rectangle<double> const expected = createGdkRectangle(2,1,4,3);
   ResizablePresentationInterfaceStub::Ptr p1 = ResizablePresentationInterfaceStub::create(createGdkRectangle(1,2,3,4));
   PresentationInterfaceStub::Ptr p2 = PresentationInterfaceStub::create(createGdkRectangle(2,1,4,3));
   SizeDeterminer::Ptr sd = SizeDeterminer::create();
@@ -186,7 +186,7 @@ BOOST_AUTO_TEST_CASE(determine_size_of_one_regular_one_resizable)
 
 BOOST_AUTO_TEST_CASE(determine_size_of_two_resizable)
 {
-  GdkRectangle const expected = createGdkRectangle(1,1,5,5);
+  Rectangle<double> const expected = createGdkRectangle(1,1,5,5);
   ResizablePresentationInterfaceStub::Ptr p1 = ResizablePresentationInterfaceStub::create(createGdkRectangle(1,2,3,4));
   ResizablePresentationInterfaceStub::Ptr p2 = ResizablePresentationInterfaceStub::create(createGdkRectangle(2,1,4,3));
   SizeDeterminer::Ptr sd = SizeDeterminer::create();
@@ -214,7 +214,7 @@ BOOST_AUTO_TEST_CASE(open_a_view_then_add_presentations_one_regular_one_resizabl
 {
   SizeDeterminer::Ptr sd = SizeDeterminer::create();
 
-  GdkRectangle r1 = createGdkRectangle(1,2,3,4);
+  Rectangle<double> r1 = createGdkRectangle(1,2,3,4);
   ResizablePresentationInterfaceStub::Ptr p1 = ResizablePresentationInterfaceStub::create(r1);
   sd->add(p1);
   ViewInterface::Ptr v1 = ViewInterfaceDummy::create();
@@ -224,7 +224,7 @@ BOOST_AUTO_TEST_CASE(open_a_view_then_add_presentations_one_regular_one_resizabl
   BOOST_CHECK(p1->Contains(v1));
   p1->Clear();
 
-  GdkRectangle const r2 = createGdkRectangle(2,1,4,3);
+  Rectangle<double> const r2 = createGdkRectangle(2,1,4,3);
   PresentationInterfaceStub::Ptr p2 = PresentationInterfaceStub::create(r2);
   sd->add(p2);
   BOOST_CHECK_EQUAL(r2, sd->getRect());
@@ -240,7 +240,7 @@ BOOST_AUTO_TEST_CASE(updates_are_sent_to_multiple_views)
 {
   SizeDeterminer::Ptr sd = SizeDeterminer::create();
 
-  GdkRectangle r1 = createGdkRectangle(1,2,3,4);
+  Rectangle<double> r1 = createGdkRectangle(1,2,3,4);
   ResizablePresentationInterfaceStub::Ptr p1 = ResizablePresentationInterfaceStub::create(r1);
   sd->add(p1);
   ViewInterface::Ptr vi1 = ViewInterfaceDummy::create();
@@ -258,7 +258,7 @@ BOOST_AUTO_TEST_CASE(updates_are_sent_to_multiple_views)
   p1->Clear();
 
   sd->close(p1, vi3);
-  GdkRectangle const r2 = createGdkRectangle(2,1,4,3);
+  Rectangle<double> const r2 = createGdkRectangle(2,1,4,3);
   PresentationInterfaceStub::Ptr p2 = PresentationInterfaceStub::create(r2);
   sd->add(p2);
   BOOST_CHECK_EQUAL(r2, sd->getRect());

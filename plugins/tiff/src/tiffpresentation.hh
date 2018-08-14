@@ -12,11 +12,12 @@
 #include <list>
 #include <set>
 
-#include <scroom/scroominterface.hh>
-#include <scroom/tiledbitmapinterface.hh>
-#include <scroom/presentationinterface.hh>
 #include <scroom/colormappable.hh>
 #include <scroom/observable.hh>
+#include <scroom/presentationinterface.hh>
+#include <scroom/scroominterface.hh>
+#include <scroom/tiledbitmapinterface.hh>
+#include <scroom/transformpresentation.hh>
 
 typedef struct tiff TIFF;
 
@@ -39,6 +40,7 @@ private:
   std::map<std::string, std::string> properties;
   Views views;
   ColormapHelper::Ptr colormapHelper;
+  TransformationData::Ptr transformationData;
 
 private:
   TiffPresentation();
@@ -58,6 +60,7 @@ public:
   void destroy();
 
   bool load(const std::string& fileName);
+  TransformationData::Ptr getTransformationData() const;
 
   ////////////////////////////////////////////////////////////////////////
   // PresentationInterface
@@ -119,6 +122,7 @@ public:
   virtual ~TiffPresentationWrapper();
 
   bool load(const std::string& fileName);
+  TransformationData::Ptr getTransformationData() const;
 
   ////////////////////////////////////////////////////////////////////////
   // PresentationInterface
