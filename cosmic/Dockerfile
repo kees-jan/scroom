@@ -1,4 +1,4 @@
-FROM ubuntu:artful
+FROM ubuntu:cosmic
 
 MAINTAINER kees-jan.dijkzeul@iae.nl
 
