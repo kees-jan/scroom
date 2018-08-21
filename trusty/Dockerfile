@@ -13,6 +13,8 @@ RUN \
     libboost-system-dev \
     libboost-test-dev \
     libboost-thread-dev \
+    libgtest-dev \
+    google-mock \
     libcairo2-dev \
     libglade2-dev \
     libglib2.0-dev \
