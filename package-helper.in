@@ -150,7 +150,7 @@ then
 fi
 
 # Ubuntu source packages
-for source_package in trusty xenial artful bionic
+for source_package in trusty xenial bionic
 do
     echo_me $source_package
     ( rm -rf "$BUILD/$source_package" > /dev/null 2>&1 ;
