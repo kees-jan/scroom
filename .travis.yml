@@ -14,7 +14,7 @@ compiler:
 - gcc
 env:
 - NONE=""
-- SOME_DISTS="trusty xenial" OTHER_DISTS="bionic precise"
+- SOME_DISTS="trusty xenial" OTHER_DISTS="bionic precise cosmic"
 - DISTCHECK_CONFIGURE_FLAGS='--enable-debug-tiles --disable-multithreading CFLAGS="-g -O0" CXXFLAGS="-g -O0"' LDFLAGS="-Wl,-z,defs"
 addons:
   apt:
@@ -25,6 +25,8 @@ addons:
     - libboost-program-options-dev
     - libboost-system-dev
     - libboost-thread-dev
+    - libgtest-dev
+    - google-mock
     - libcairo2-dev
     - libglade2-dev
     - libglib2.0-dev
