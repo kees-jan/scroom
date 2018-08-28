@@ -215,14 +215,16 @@ have_gtest_headers=no
 AC_CHECK_HEADERS([gtest/gtest.h], [have_gtest_headers=yes])
 gtest_location=/usr/src/gtest
 have_gtest_sources=no
-AC_CHECK_FILE([${gtest_location}/CMakeLists.txt], [have_gtest_sources=yes])
+AC_CHECK_FILE([/usr/src/gtest/CMakeLists.txt], [have_gtest_sources=yes;gtest_location=/usr/src/gtest])
+AC_CHECK_FILE([/usr/src/googletest/googletest/CMakeLists.txt], [have_gtest_sources=yes;gtest_location=/usr/src/googletest/googletest])
 
 # Testing for google mock
 have_gmock_headers=no
 AC_CHECK_HEADERS([gmock/gmock.h], [have_gmock_headers=yes])
 gmock_location=/usr/src/gmock
 have_gmock_sources=no
-AC_CHECK_FILE([${gmock_location}/CMakeLists.txt], [have_gmock_sources=yes])
+AC_CHECK_FILE([/usr/src/gmock/CMakeLists.txt], [have_gmock_sources=yes;gmock_location=/usr/src/gmock])
+AC_CHECK_FILE([/usr/src/googletest/googlemock/CMakeLists.txt], [have_gmock_sources=yes;gmock_location=/usr/src/googletest/googlemock])
 
 # Some sanity checks
 if test "x${have_new_boost_futures}" = xno
