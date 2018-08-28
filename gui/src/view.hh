@@ -57,7 +57,7 @@ private:
   GtkWidget* drawingArea;
   int drawingAreaWidth;
   int drawingAreaHeight;
-  GdkRectangle presentationRect;
+  Rectangle<double> presentationRect;
   GtkVScrollbar* vscrollbar;
   GtkHScrollbar* hscrollbar;
   GtkAdjustment* vscrollbaradjustment;
@@ -110,8 +110,8 @@ public:
   void setPresentation(PresentationInterface::Ptr presentation);
   void clearPresentation();
 
-  void updateScrollbar(GtkAdjustment* adj, int zoom, int value,
-                       int presentationStart, int presentationSize, int windowSize);
+  void updateScrollbar(GtkAdjustment* adj, int zoom, double value,
+                       double presentationStart, double presentationSize, double windowSize);
   void updateScrollbars();
   void updateZoom();
   void updateRulers();

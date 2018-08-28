@@ -242,7 +242,7 @@ void View::setPresentation(PresentationInterface::Ptr presentation)
   if(this->presentation)
   {
     presentation->open(me);
-    presentationRect = presentation->getRect().toGdkRectangle();
+    presentationRect = presentation->getRect();
     std::string s = presentation->getTitle();
     if(s.length())
       s = "Scroom - " + s;
@@ -256,7 +256,7 @@ void View::setPresentation(PresentationInterface::Ptr presentation)
   invalidate();
 }
 
-void View::updateScrollbar(GtkAdjustment* adj, int zoom, int value, int presentationStart, int presentationSize, int windowSize)
+void View::updateScrollbar(GtkAdjustment* adj, int zoom, double value, double presentationStart, double presentationSize, double windowSize)
 {
   if(zoom>=0)
   {
@@ -288,9 +288,9 @@ void View::updateScrollbars()
     gtk_widget_set_sensitive(GTK_WIDGET(hscrollbar), true);
 
     updateScrollbar(hscrollbaradjustment, zoom, x,
-                    presentationRect.x, presentationRect.width, drawingAreaWidth);
+                    presentationRect.x(), presentationRect.width(), drawingAreaWidth);
     updateScrollbar(vscrollbaradjustment, zoom, y,
-                    presentationRect.y, presentationRect.height, drawingAreaHeight);
+                    presentationRect.y(), presentationRect.height(), drawingAreaHeight);
     updateRulers();
   }
   else
@@ -340,8 +340,8 @@ void View::updateZoom()
 {
   if(presentation)
   {
-    int presentationHeight = presentationRect.height;
-    int presentationWidth = presentationRect.width;
+    int presentationHeight = presentationRect.height();
+    int presentationWidth = presentationRect.width();
     int minZoom = 0;
 
     while(presentationHeight > drawingAreaHeight/2 || presentationWidth > drawingAreaWidth/2)
@@ -391,15 +391,15 @@ void View::updateRulers()
   {
     // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
     int pixelSize = 1<<zoom;
-    gtk_ruler_set_range(hruler, x, x + 1.0*drawingAreaWidth/pixelSize, 0, presentationRect.x + presentationRect.width);
-    gtk_ruler_set_range(vruler, y, y + 1.0*drawingAreaHeight/pixelSize, 0, presentationRect.y + presentationRect.height);
+    gtk_ruler_set_range(hruler, x, x + 1.0*drawingAreaWidth/pixelSize, 0, presentationRect.x() + presentationRect.width());
+    gtk_ruler_set_range(vruler, y, y + 1.0*drawingAreaHeight/pixelSize, 0, presentationRect.y() + presentationRect.height());
   }
   else
   {
     // Zooming out. Smallest step is 1 window-pixel, which is more than one presentation-pixel
     int pixelSize = 1<<(-zoom);
-    gtk_ruler_set_range(hruler, x, x + drawingAreaWidth*pixelSize, 0, presentationRect.x + presentationRect.width);
-    gtk_ruler_set_range(vruler, y, y + drawingAreaHeight*pixelSize, 0, presentationRect.y + presentationRect.height);
+    gtk_ruler_set_range(hruler, x, x + drawingAreaWidth*pixelSize, 0, presentationRect.x() + presentationRect.width());
+    gtk_ruler_set_range(vruler, y, y + drawingAreaHeight*pixelSize, 0, presentationRect.y() + presentationRect.height());
   }
 }
 

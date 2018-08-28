@@ -14,22 +14,22 @@
 
 namespace
 {
-  GdkRectangle DetermineSize(std::list<PresentationInterface::Ptr> presentations)
+  Rectangle<double> DetermineSize(std::list<PresentationInterface::Ptr> presentations)
   {
-    int left = std::numeric_limits<int>::max();
-    int top = std::numeric_limits<int>::max();
-    int right = std::numeric_limits<int>::min();
-    int bottom = std::numeric_limits<int>::min();
+    double left = std::numeric_limits<double>::max();
+    double top = std::numeric_limits<double>::max();
+    double right = std::numeric_limits<double>::min();
+    double bottom = std::numeric_limits<double>::min();
 
     for(PresentationInterface::Ptr const& p: presentations)
     {
-      GdkRectangle rect = p->getRect().toGdkRectangle();
-      left = std::min(left, rect.x);
-      top = std::min(top, rect.y);
-      right = std::max(right, rect.x + rect.width);
-      bottom = std::max(bottom, rect.y + rect.height);
+      Rectangle<double> rect = p->getRect();
+      left = std::min(left, rect.getLeft());
+      top = std::min(top, rect.getTop());
+      right = std::max(right, rect.getRight());
+      bottom = std::max(bottom, rect.getBottom());
     }
-    return Scroom::GtkHelpers::createGdkRectangle(left, top, right-left, bottom-top);
+    return Rectangle<double>(left, top, right-left, bottom-top);
   }
 
   template<typename K, typename V>
@@ -81,7 +81,7 @@ void SizeDeterminer::add(PresentationInterface::Ptr const& p)
   sendUpdates();
 }
 
-GdkRectangle SizeDeterminer::getRect() const
+Rectangle<double> SizeDeterminer::getRect() const
 {
   if(!presentations.empty())
   {
@@ -91,7 +91,7 @@ GdkRectangle SizeDeterminer::getRect() const
   {
     return DetermineSize(keys(resizablePresentationData));
   }
-  return Scroom::GtkHelpers::createGdkRectangle(0,0,0,0);
+  return Rectangle<double>();
 }
 
 void SizeDeterminer::open(PresentationInterface::Ptr const& p, ViewInterface::WeakPtr const& vi)
@@ -126,7 +126,7 @@ void SizeDeterminer::close(PresentationInterface::Ptr const& p, ViewInterface::W
 
 void SizeDeterminer::sendUpdates()
 {
-  GdkRectangle rect = getRect();
+  Rectangle<double> rect = getRect();
 
   for(auto const& data: resizablePresentationData)
     for(auto const& view: data.second.views)
