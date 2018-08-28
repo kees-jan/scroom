@@ -20,6 +20,9 @@ namespace Colors
   extern const Color OUT_OF_BOUNDS;
 }
 
+void traceRectangleContour(cairo_t* cr, Rectangle<double> const& viewArea);
+void drawRectangleContour(cairo_t* cr, Rectangle<double> const& viewArea);
+void drawRectangleContour(cairo_t* cr, Color const& c, Rectangle<double> const& viewArea);
 void setClip(cairo_t* cr, double x, double y, double width, double height);
 void setClip(cairo_t* cr, const Rectangle<double>& area);
 void drawRectangle(cairo_t* cr, Color const& c, Rectangle<double> const& viewArea);

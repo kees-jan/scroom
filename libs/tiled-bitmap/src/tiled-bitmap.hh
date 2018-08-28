@@ -79,7 +79,7 @@ private:
   void initialize();
 
 private:
-  void drawTile(cairo_t* cr, const CompressedTile::Ptr tile, const GdkRectangle viewArea);
+  void drawTile(cairo_t* cr, const CompressedTile::Ptr tile, const Rectangle<double> viewArea);
   void connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, LayerOperations::Ptr prevLo);
   void redrawZoomingIn(ViewInterface::Ptr const& vi, cairo_t* cr, Rectangle<int> const& requestedPresentationArea, int zoom);
   void redrawZoomingOut(ViewInterface::Ptr const& vi, cairo_t* cr, Rectangle<int> const& requestedPresentationArea, int zoom);

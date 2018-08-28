@@ -17,6 +17,31 @@ namespace Colors
   const Color IN_BOUNDS(1,1,1); // White
 }
 
+void traceRectangleContour(cairo_t* cr, Rectangle<double> const& viewArea)
+{
+  cairo_move_to(cr, viewArea.x(), viewArea.y());
+  cairo_line_to(cr, viewArea.x()+viewArea.width(), viewArea.y());
+  cairo_line_to(cr, viewArea.x()+viewArea.width(), viewArea.y()+viewArea.height());
+  cairo_line_to(cr, viewArea.x(), viewArea.y()+viewArea.height());
+  cairo_line_to(cr, viewArea.x(), viewArea.y());
+}
+  
+void drawRectangleContour(cairo_t* cr, Rectangle<double> const& viewArea)
+{
+  traceRectangleContour(cr, viewArea);
+  cairo_stroke(cr);
+}
+
+void drawRectangleContour(cairo_t* cr, Color const& c, Rectangle<double> const& viewArea)
+{
+  cairo_save(cr);
+
+  c.setColor(cr);
+  drawRectangleContour(cr, viewArea);
+
+  cairo_restore(cr);
+}
+
 void setClip(cairo_t* cr, double x, double y, double width, double height)
 {
   cairo_move_to(cr, x, y);

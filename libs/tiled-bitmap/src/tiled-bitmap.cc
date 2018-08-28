@@ -302,21 +302,22 @@ inline void computeAreasEndZoomingOut(int presentationBegin, int presentationSiz
   viewSize = tileSize/pixelSize;
 }
 
-void TiledBitmap::drawTile(cairo_t* cr, const CompressedTile::Ptr tile, const GdkRectangle viewArea)
+void TiledBitmap::drawTile(cairo_t* cr, const CompressedTile::Ptr tile, const Rectangle<double> viewArea)
 {
-  cairo_set_source_rgb(cr, 0, 0, 0); // Black
-  cairo_move_to(cr, viewArea.x, viewArea.y);
-  cairo_line_to(cr, viewArea.x+viewArea.width, viewArea.y);
-  cairo_line_to(cr, viewArea.x+viewArea.width, viewArea.y+viewArea.height);
-  cairo_line_to(cr, viewArea.x, viewArea.y+viewArea.height);
-  cairo_line_to(cr, viewArea.x, viewArea.y);
-  cairo_stroke(cr);
-  char buffer[256];
-  snprintf(buffer, 256, "Layer %d, Tile (%d, %d), %d bpp",
-           tile->depth, tile->x, tile->y, tile->bpp);
-  cairo_move_to(cr, viewArea.x+20, viewArea.y+20);
-  cairo_show_text(cr, buffer);
+  const int margin=5;
 
+  if(viewArea.width()>2*margin && viewArea.height()>2*margin)
+  {
+    Rectangle<double> rect(viewArea.x()+margin, viewArea.y()+margin, viewArea.width()-2*margin, viewArea.height()-2*margin);
+  
+    cairo_set_source_rgb(cr, 0, 0, 0); // Black
+    drawRectangleContour(cr, rect);
+    char buffer[256];
+    snprintf(buffer, 256, "Layer %d, Tile (%d, %d), %d bpp",
+             tile->depth, tile->x, tile->y, tile->bpp);
+    cairo_move_to(cr, rect.x()+20, rect.y()+20);
+    cairo_show_text(cr, buffer);
+  }
 }
 
 void TiledBitmap::redrawZoomingIn(ViewInterface::Ptr const& vi, cairo_t* cr, Rectangle<int> const& requestedPresentationArea, int zoom)
