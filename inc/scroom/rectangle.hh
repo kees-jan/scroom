@@ -48,12 +48,12 @@ public:
 
   GdkRectangle toGdkRectangle() const
   {
-    return Scroom::GtkHelpers::createGdkRectangle(getLeftPos(), getTopPos(), getWidth(), getHeight());
+    return Scroom::GtkHelpers::createGdkRectangle(getLeft(), getTop(), getWidth(), getHeight());
   }
 
   Rectangle<int> toIntRectangle() const
   {
-    return Rectangle<int>(getLeftPos(), getTopPos(), getWidth(), getHeight());
+    return Rectangle<int>(getLeft(), getTop(), getWidth(), getHeight());
   }
 
   Rectangle moveTo(Point<value_type> const& other) const
@@ -99,22 +99,22 @@ public:
                      vertically.intersection(other.vertically));
   }
 
-  value_type getTopPos() const
+  value_type getTop() const
   {
     return vertically.getStart();
   }
 
-  value_type getLeftPos() const
+  value_type getLeft() const
   {
     return horizontally.getStart();
   }
 
-  value_type getBottomPos() const
+  value_type getBottom() const
   {
     return vertically.getEnd();
   }
 
-  value_type getRightPos() const
+  value_type getRight() const
   {
     return horizontally.getEnd();
   }
@@ -127,6 +127,26 @@ public:
   value_type getHeight() const
   {
     return vertically.getSize();
+  }
+
+  value_type x() const
+  {
+    return getLeft();
+  }
+
+  value_type y() const
+  {
+    return getTop();
+  }
+
+  value_type width() const
+  {
+    return getWidth();
+  }
+
+  value_type height() const
+  {
+    return getHeight();
   }
 
   Point<value_type> getTopLeft() const
@@ -295,8 +315,8 @@ Rectangle<T> make_rect(T x, T y, T width, T height)
 template<typename T>
 std::ostream& operator<<(std::ostream& os, const Rectangle<T>& r)
 {
-  os << '<' << r.getLeftPos()
-     << ',' << r.getTopPos()
+  os << '<' << r.getLeft()
+     << ',' << r.getTop()
      << ',' << r.getWidth()
      << ',' << r.getHeight()
      << '>';

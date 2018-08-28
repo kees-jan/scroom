@@ -330,8 +330,8 @@ void TiledBitmap::redrawZoomingIn(ViewInterface::Ptr const& vi, cairo_t* cr, Rec
   const Rectangle<int> actualPresentationArea = layer->getRect();
   const Rectangle<int> validPresentationArea = requestedPresentationArea.intersection(actualPresentationArea);
 
-  presentationArea.width = validPresentationArea.getRightPos() - requestedPresentationArea.getLeftPos();
-  presentationArea.height = validPresentationArea.getBottomPos() - requestedPresentationArea.getTopPos();
+  presentationArea.width = validPresentationArea.getRight() - requestedPresentationArea.getLeft();
+  presentationArea.height = validPresentationArea.getBottom() - requestedPresentationArea.getTop();
 
   const int left = presentationArea.x;
   const int top = presentationArea.y;
@@ -407,10 +407,10 @@ void TiledBitmap::redrawZoomingOut(ViewInterface::Ptr const& vi, cairo_t* cr, Re
   scaledRequestedPresentationArea.setSize
     (validPresentationArea.getBottomRight() - scaledRequestedPresentationArea.getTopLeft());
 
-  const int left = scaledRequestedPresentationArea.getLeftPos();
-  const int top = scaledRequestedPresentationArea.getTopPos();
-  const int right = scaledRequestedPresentationArea.getRightPos();
-  const int bottom = scaledRequestedPresentationArea.getBottomPos();
+  const int left = scaledRequestedPresentationArea.getLeft();
+  const int top = scaledRequestedPresentationArea.getTop();
+  const int right = scaledRequestedPresentationArea.getRight();
+  const int bottom = scaledRequestedPresentationArea.getBottom();
 
   const int imin = std::max(0, left/TILESIZE);
   const int imax = (right+TILESIZE-1)/TILESIZE;

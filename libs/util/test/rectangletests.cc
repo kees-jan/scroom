@@ -39,8 +39,8 @@ public:
 
   int getSize() const { return getWidth(); }
 
-  int getStart() const { return getLeftPos(); }
-  int getEnd() const { return getLeftPos()+getWidth(); }
+  int getStart() const { return getLeft(); }
+  int getEnd() const { return getLeft()+getWidth(); }
   bool contains(int x) const { return Rectangle::contains(make_point(x, verticalContainedStart)); }
 
   bool contains(const RectangleHorizontalTestScaffold& other) const
@@ -77,8 +77,8 @@ public:
   {}
 
   int getSize() const { return getHeight(); }
-  int getStart() const { return getTopPos(); }
-  int getEnd() const { return getTopPos()+getHeight(); }
+  int getStart() const { return getTop(); }
+  int getEnd() const { return getTop()+getHeight(); }
   bool contains(int y) const { return Rectangle::contains(make_point(horizontalContainedStart, y)); }
 
   bool contains(const RectangleVerticalTestScaffold& other) const
@@ -339,9 +339,9 @@ BOOST_AUTO_TEST_CASE(testMath)
   BOOST_CHECK_EQUAL(make_rect(6,8,3,4) - make_point(5,6), make_rect(1,2,3,4));
 
   auto result = 0.5*make_rect(1,3,5,7);
-  BOOST_CHECK_CLOSE(0.5, result.getLeftPos(), 1e-6);
+  BOOST_CHECK_CLOSE(0.5, result.getLeft(), 1e-6);
   BOOST_CHECK_CLOSE(2.5, result.getWidth(), 1e-6);
-  BOOST_CHECK_CLOSE(1.5, result.getTopPos(), 1e-6);
+  BOOST_CHECK_CLOSE(1.5, result.getTop(), 1e-6);
   BOOST_CHECK_CLOSE(3.5, result.getHeight(), 1e-6);
 }
 

@@ -29,7 +29,7 @@ void setClip(cairo_t* cr, double x, double y, double width, double height)
 
 void setClip(cairo_t* cr, const Rectangle<double>& area)
 {
-  setClip(cr, area.getLeftPos(), area.getTopPos(), area.getWidth(), area.getHeight());
+  setClip(cr, area.getLeft(), area.getTop(), area.getWidth(), area.getHeight());
 }
 
 void drawRectangle(cairo_t* cr, Color const& c, Rectangle<double> const& viewArea)
@@ -67,10 +67,10 @@ void drawOutOfBoundsWithoutBackground(cairo_t* cr,
                                       Rectangle<double> const& actualPresentationArea, double pixelSize)
 {
   std::list<Rectangle<double> > border = boost::assign::list_of
-    (requestedPresentationArea.leftOf(actualPresentationArea.getLeftPos()))
-    (requestedPresentationArea.rightOf(actualPresentationArea.getRightPos()))
-    (requestedPresentationArea.above(actualPresentationArea.getTopPos()))
-    (requestedPresentationArea.below(actualPresentationArea.getBottomPos()));
+    (requestedPresentationArea.leftOf(actualPresentationArea.getLeft()))
+    (requestedPresentationArea.rightOf(actualPresentationArea.getRight()))
+    (requestedPresentationArea.above(actualPresentationArea.getTop()))
+    (requestedPresentationArea.below(actualPresentationArea.getBottom()));
 
   for(const Rectangle<double>& r: border)
   {
