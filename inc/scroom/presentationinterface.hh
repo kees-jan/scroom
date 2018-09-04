@@ -73,7 +73,7 @@ public:
   typedef boost::weak_ptr<PresentationInterface> WeakPtr;
 
   /** Return the dimensions of your presentation */
-  virtual Rectangle<double> getRect()=0;
+  virtual Scroom::Utils::Rectangle<double> getRect()=0;
 
   /**
    * Draw the requested ara at the requested zoom level
@@ -87,7 +87,7 @@ public:
    *    presentation should have size 2**@c zoom when drawn. @c zoom
    *    may be negative.
    */
-  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Rectangle<double> presentationArea, int zoom)=0;
+  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom)=0;
 
   /**
    * Return the value of the requested property

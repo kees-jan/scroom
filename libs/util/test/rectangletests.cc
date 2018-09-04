@@ -13,6 +13,13 @@
 
 #include <scroom/gtk-helpers.hh>
 
+using Scroom::Utils::Rectangle;
+using Scroom::Utils::Point;
+using Scroom::Utils::Segment;
+using Scroom::Utils::make_point;
+using Scroom::Utils::make_segment;
+using Scroom::Utils::make_rect;
+
 ////////////////////////////////////////////////////////////////////////
 // For testing Rectangles horizontally
 

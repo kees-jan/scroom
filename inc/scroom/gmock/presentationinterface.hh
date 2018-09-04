@@ -23,8 +23,8 @@ public:
   MOCK_METHOD1(open, void (ViewInterface::WeakPtr));
   MOCK_METHOD1(close, void (ViewInterface::WeakPtr));
 
-  MOCK_METHOD0(getRect, Rectangle<double>());
-  MOCK_METHOD4(redraw, void(ViewInterface::Ptr const&, cairo_t*, Rectangle<double>, int));
+  MOCK_METHOD0(getRect, Scroom::Utils::Rectangle<double>());
+  MOCK_METHOD4(redraw, void(ViewInterface::Ptr const&, cairo_t*, Scroom::Utils::Rectangle<double>, int));
   MOCK_METHOD2(getProperty, bool(const std::string&, std::string&));
   MOCK_METHOD1(isPropertyDefined, bool(const std::string&));
   MOCK_METHOD0(getTitle, std::string());

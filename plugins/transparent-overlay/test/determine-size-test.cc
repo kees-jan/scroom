@@ -32,12 +32,14 @@ std::ostream& dumpContainer(std::ostream& os, std::string const& name, Iter cons
   return os;
 }
 
-template<typename T>
-std::ostream& operator<<(std::ostream& os, std::list<T> const& l)
+namespace std
 {
-  return dumpContainer(os, "std::list", l.begin(), l.end());
+  template<typename T>
+  std::ostream& operator<<(std::ostream& os, std::list<T> const& l)
+  {
+    return dumpContainer(os, "std::list", l.begin(), l.end());
+  }
 }
-
 template<typename T>
 bool operator==(boost::weak_ptr<T> const& left, boost::weak_ptr<T> const& right)
 {
@@ -52,19 +54,19 @@ namespace
     typedef boost::shared_ptr<PresentationInterfaceStub> Ptr;
 
   private:
-    Rectangle<double> rect;
+    Scroom::Utils::Rectangle<double> rect;
 
   protected:
-    PresentationInterfaceStub(Rectangle<double> const& rect)
+    PresentationInterfaceStub(Scroom::Utils::Rectangle<double> const& rect)
       : rect(rect)
     {}
 
   public:
-    static Ptr create(Rectangle<double> const& rect) { return Ptr(new PresentationInterfaceStub(rect)); }
+    static Ptr create(Scroom::Utils::Rectangle<double> const& rect) { return Ptr(new PresentationInterfaceStub(rect)); }
 
-    virtual Rectangle<double> getRect() { return rect; }
+    virtual Scroom::Utils::Rectangle<double> getRect() { return rect; }
 
-    virtual void redraw(ViewInterface::Ptr const&, cairo_t*, Rectangle<double>, int) {}
+    virtual void redraw(ViewInterface::Ptr const&, cairo_t*, Scroom::Utils::Rectangle<double>, int) {}
     virtual bool getProperty(const std::string&, std::string&) { return false; }
     virtual bool isPropertyDefined(const std::string&) { return false; }
     virtual std::string getTitle() { return ""; }
@@ -80,25 +82,25 @@ namespace
 
   public:
     std::list<ViewInterface::WeakPtr> receivedVi;
-    std::list<Rectangle<double>> receivedRect;
+    std::list<Scroom::Utils::Rectangle<double>> receivedRect;
 
   private:
-    ResizablePresentationInterfaceStub(Rectangle<double> const& rect)
+    ResizablePresentationInterfaceStub(Scroom::Utils::Rectangle<double> const& rect)
       : PresentationInterfaceStub(rect)
     {}
 
   public:
-    static Ptr create(Rectangle<double> const& rect) { return Ptr(new ResizablePresentationInterfaceStub(rect)); }
+    static Ptr create(Scroom::Utils::Rectangle<double> const& rect) { return Ptr(new ResizablePresentationInterfaceStub(rect)); }
 
-    virtual void setRect(ViewInterface::WeakPtr const& vi, Rectangle<double> const& rect)
+    virtual void setRect(ViewInterface::WeakPtr const& vi, Scroom::Utils::Rectangle<double> const& rect)
     {
       receivedVi.push_back(vi);
       receivedRect.push_back(rect);
     }
 
-    void CheckAllEqual(Rectangle<double> const& rect)
+    void CheckAllEqual(Scroom::Utils::Rectangle<double> const& rect)
     {
-      BOOST_CHECK_EQUAL(std::list<Rectangle<double>>(receivedRect.size(), rect), receivedRect);
+      BOOST_CHECK_EQUAL(std::list<Scroom::Utils::Rectangle<double>>(receivedRect.size(), rect), receivedRect);
     }
 
     bool Contains(ViewInterface::WeakPtr const& vi)
@@ -141,7 +143,7 @@ BOOST_AUTO_TEST_SUITE(Determine_size_tests)
 
 BOOST_AUTO_TEST_CASE(determine_size_of_one_regular)
 {
-  Rectangle<double> const expected = createGdkRectangle(1,2,3,4);
+  Scroom::Utils::Rectangle<double> const expected = createGdkRectangle(1,2,3,4);
   PresentationInterfaceStub::Ptr p = PresentationInterfaceStub::create(expected);
   SizeDeterminer::Ptr sd = SizeDeterminer::create();
   sd->add(p);
@@ -151,7 +153,7 @@ BOOST_AUTO_TEST_CASE(determine_size_of_one_regular)
 
 BOOST_AUTO_TEST_CASE(determine_size_of_two_regular)
 {
-  Rectangle<double> const expected = createGdkRectangle(1,1,5,5);
+  Scroom::Utils::Rectangle<double> const expected = createGdkRectangle(1,1,5,5);
   PresentationInterfaceStub::Ptr p1 = PresentationInterfaceStub::create(createGdkRectangle(1,2,3,4));
   PresentationInterfaceStub::Ptr p2 = PresentationInterfaceStub::create(createGdkRectangle(2,1,4,3));
   SizeDeterminer::Ptr sd = SizeDeterminer::create();
@@ -163,7 +165,7 @@ BOOST_AUTO_TEST_CASE(determine_size_of_two_regular)
 
 BOOST_AUTO_TEST_CASE(determine_size_of_one_regular_one_resizable)
 {
-  Rectangle<double> const expected = createGdkRectangle(2,1,4,3);
+  Scroom::Utils::Rectangle<double> const expected = createGdkRectangle(2,1,4,3);
   ResizablePresentationInterfaceStub::Ptr p1 = ResizablePresentationInterfaceStub::create(createGdkRectangle(1,2,3,4));
   PresentationInterfaceStub::Ptr p2 = PresentationInterfaceStub::create(createGdkRectangle(2,1,4,3));
   SizeDeterminer::Ptr sd = SizeDeterminer::create();
@@ -186,7 +188,7 @@ BOOST_AUTO_TEST_CASE(determine_size_of_one_regular_one_resizable)
 
 BOOST_AUTO_TEST_CASE(determine_size_of_two_resizable)
 {
-  Rectangle<double> const expected = createGdkRectangle(1,1,5,5);
+  Scroom::Utils::Rectangle<double> const expected = createGdkRectangle(1,1,5,5);
   ResizablePresentationInterfaceStub::Ptr p1 = ResizablePresentationInterfaceStub::create(createGdkRectangle(1,2,3,4));
   ResizablePresentationInterfaceStub::Ptr p2 = ResizablePresentationInterfaceStub::create(createGdkRectangle(2,1,4,3));
   SizeDeterminer::Ptr sd = SizeDeterminer::create();
@@ -214,7 +216,7 @@ BOOST_AUTO_TEST_CASE(open_a_view_then_add_presentations_one_regular_one_resizabl
 {
   SizeDeterminer::Ptr sd = SizeDeterminer::create();
 
-  Rectangle<double> r1 = createGdkRectangle(1,2,3,4);
+  Scroom::Utils::Rectangle<double> r1 = createGdkRectangle(1,2,3,4);
   ResizablePresentationInterfaceStub::Ptr p1 = ResizablePresentationInterfaceStub::create(r1);
   sd->add(p1);
   ViewInterface::Ptr v1 = ViewInterfaceDummy::create();
@@ -224,7 +226,7 @@ BOOST_AUTO_TEST_CASE(open_a_view_then_add_presentations_one_regular_one_resizabl
   BOOST_CHECK(p1->Contains(v1));
   p1->Clear();
 
-  Rectangle<double> const r2 = createGdkRectangle(2,1,4,3);
+  Scroom::Utils::Rectangle<double> const r2 = createGdkRectangle(2,1,4,3);
   PresentationInterfaceStub::Ptr p2 = PresentationInterfaceStub::create(r2);
   sd->add(p2);
   BOOST_CHECK_EQUAL(r2, sd->getRect());
@@ -240,7 +242,7 @@ BOOST_AUTO_TEST_CASE(updates_are_sent_to_multiple_views)
 {
   SizeDeterminer::Ptr sd = SizeDeterminer::create();
 
-  Rectangle<double> r1 = createGdkRectangle(1,2,3,4);
+  Scroom::Utils::Rectangle<double> r1 = createGdkRectangle(1,2,3,4);
   ResizablePresentationInterfaceStub::Ptr p1 = ResizablePresentationInterfaceStub::create(r1);
   sd->add(p1);
   ViewInterface::Ptr vi1 = ViewInterfaceDummy::create();
@@ -258,7 +260,7 @@ BOOST_AUTO_TEST_CASE(updates_are_sent_to_multiple_views)
   p1->Clear();
 
   sd->close(p1, vi3);
-  Rectangle<double> const r2 = createGdkRectangle(2,1,4,3);
+  Scroom::Utils::Rectangle<double> const r2 = createGdkRectangle(2,1,4,3);
   PresentationInterfaceStub::Ptr p2 = PresentationInterfaceStub::create(r2);
   sd->add(p2);
   BOOST_CHECK_EQUAL(r2, sd->getRect());

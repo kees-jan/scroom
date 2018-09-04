@@ -79,10 +79,10 @@ private:
   void initialize();
 
 private:
-  void drawTile(cairo_t* cr, const CompressedTile::Ptr tile, const Rectangle<double> viewArea);
+  void drawTile(cairo_t* cr, const CompressedTile::Ptr tile, const Scroom::Utils::Rectangle<double> viewArea);
   void connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, LayerOperations::Ptr prevLo);
-  void redrawZoomingIn(ViewInterface::Ptr const& vi, cairo_t* cr, Rectangle<int> const& requestedPresentationArea, int zoom);
-  void redrawZoomingOut(ViewInterface::Ptr const& vi, cairo_t* cr, Rectangle<int> const& requestedPresentationArea, int zoom);
+  void redrawZoomingIn(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<int> const& requestedPresentationArea, int zoom);
+  void redrawZoomingOut(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<int> const& requestedPresentationArea, int zoom);
 
 public:
 
@@ -95,7 +95,7 @@ public:
 
   virtual void open(ViewInterface::WeakPtr viewInterface);
   virtual void close(ViewInterface::WeakPtr vi);
-  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Rectangle<double> const& presentationArea, int zoom);
+  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> const& presentationArea, int zoom);
   virtual void clearCaches(ViewInterface::Ptr vi);
 
   ////////////////////////////////////////////////////////////////////////

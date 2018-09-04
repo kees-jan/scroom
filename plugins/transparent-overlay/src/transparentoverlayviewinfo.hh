@@ -76,7 +76,7 @@ public:
 
   void close();
 
-  void redraw(cairo_t* cr, Rectangle<double> const& presentationArea, int zoom);
+  void redraw(cairo_t* cr, Scroom::Utils::Rectangle<double> const& presentationArea, int zoom);
 
   void invalidate() { parentView->invalidate(); }
   ProgressInterface::Ptr getProgressInterface()

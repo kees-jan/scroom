@@ -14,7 +14,7 @@
 
 namespace
 {
-  Rectangle<double> DetermineSize(std::list<PresentationInterface::Ptr> presentations)
+  Scroom::Utils::Rectangle<double> DetermineSize(std::list<PresentationInterface::Ptr> presentations)
   {
     double left = std::numeric_limits<double>::max();
     double top = std::numeric_limits<double>::max();
@@ -23,13 +23,13 @@ namespace
 
     for(PresentationInterface::Ptr const& p: presentations)
     {
-      Rectangle<double> rect = p->getRect();
+      Scroom::Utils::Rectangle<double> rect = p->getRect();
       left = std::min(left, rect.getLeft());
       top = std::min(top, rect.getTop());
       right = std::max(right, rect.getRight());
       bottom = std::max(bottom, rect.getBottom());
     }
-    return Rectangle<double>(left, top, right-left, bottom-top);
+    return Scroom::Utils::Rectangle<double>(left, top, right-left, bottom-top);
   }
 
   template<typename K, typename V>
@@ -81,7 +81,7 @@ void SizeDeterminer::add(PresentationInterface::Ptr const& p)
   sendUpdates();
 }
 
-Rectangle<double> SizeDeterminer::getRect() const
+Scroom::Utils::Rectangle<double> SizeDeterminer::getRect() const
 {
   if(!presentations.empty())
   {
@@ -91,7 +91,7 @@ Rectangle<double> SizeDeterminer::getRect() const
   {
     return DetermineSize(keys(resizablePresentationData));
   }
-  return Rectangle<double>();
+  return Scroom::Utils::Rectangle<double>();
 }
 
 void SizeDeterminer::open(PresentationInterface::Ptr const& p, ViewInterface::WeakPtr const& vi)
@@ -126,7 +126,7 @@ void SizeDeterminer::close(PresentationInterface::Ptr const& p, ViewInterface::W
 
 void SizeDeterminer::sendUpdates()
 {
-  Rectangle<double> rect = getRect();
+  Scroom::Utils::Rectangle<double> rect = getRect();
 
   for(auto const& data: resizablePresentationData)
     for(auto const& view: data.second.views)

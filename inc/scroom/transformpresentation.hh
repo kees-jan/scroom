@@ -16,7 +16,7 @@
 class TransformationData
 {
 private:
-  Point<double> aspectRatio;
+  Scroom::Utils::Point<double> aspectRatio;
   
 public:
   typedef boost::shared_ptr<TransformationData> Ptr;
@@ -24,7 +24,7 @@ public:
   static Ptr create();
 
   void setAspectRatio(double x, double y);
-  Point<double> getAspectRatio() const;
+  Scroom::Utils::Point<double> getAspectRatio() const;
 
 private:
   TransformationData();
@@ -51,8 +51,8 @@ public:
   virtual void close(ViewInterface::WeakPtr vi);
 
   // PresentationInterface
-  virtual Rectangle<double> getRect();
-  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Rectangle<double> presentationArea, int zoom);
+  virtual Scroom::Utils::Rectangle<double> getRect();
+  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom);
   virtual bool getProperty(const std::string& name, std::string& value);
   virtual bool isPropertyDefined(const std::string& name);
   virtual std::string getTitle();

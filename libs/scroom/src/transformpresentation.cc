@@ -13,10 +13,10 @@ TransformationData::Ptr TransformationData::create()
 
 void TransformationData::setAspectRatio(double x, double y)
 {
-  aspectRatio = make_point(x,y);
+  aspectRatio = Scroom::Utils::make_point(x,y);
 }
 
-Point<double> TransformationData::getAspectRatio() const
+Scroom::Utils::Point<double> TransformationData::getAspectRatio() const
 {
   return aspectRatio;
 }
@@ -33,7 +33,7 @@ TransformPresentation::Ptr TransformPresentation::create(PresentationInterface::
   return Ptr(new TransformPresentation(presentation, transformationData));
 }
 
-Rectangle<double> TransformPresentation::getRect()
+Scroom::Utils::Rectangle<double> TransformPresentation::getRect()
 {
   return presentation->getRect() * transformationData->getAspectRatio();
 }
@@ -49,9 +49,9 @@ void TransformPresentation::close(ViewInterface::WeakPtr viewInterface)
 }
 
 void TransformPresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr,
-                                   Rectangle<double> presentationArea, int zoom)
+                                   Scroom::Utils::Rectangle<double> presentationArea, int zoom)
 {
-  Point<double> aspectRatio = transformationData->getAspectRatio();
+  Scroom::Utils::Point<double> aspectRatio = transformationData->getAspectRatio();
 
   cairo_save(cr);
   cairo_scale(cr, aspectRatio.x, aspectRatio.y);

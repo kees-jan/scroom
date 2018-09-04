@@ -57,7 +57,7 @@ private:
   GtkWidget* drawingArea;
   int drawingAreaWidth;
   int drawingAreaHeight;
-  Rectangle<double> presentationRect;
+  Scroom::Utils::Rectangle<double> presentationRect;
   GtkVScrollbar* vscrollbar;
   GtkHScrollbar* hscrollbar;
   GtkAdjustment* vscrollbaradjustment;

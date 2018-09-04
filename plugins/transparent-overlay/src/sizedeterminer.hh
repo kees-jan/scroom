@@ -44,7 +44,7 @@ private:
 public:
   static Ptr create();
   void add(PresentationInterface::Ptr const& p);
-  Rectangle<double> getRect() const;
+  Scroom::Utils::Rectangle<double> getRect() const;
 
   void open(PresentationInterface::Ptr const& p, ViewInterface::WeakPtr const& vi);
   void close(PresentationInterface::Ptr const& p, ViewInterface::WeakPtr const& vi);

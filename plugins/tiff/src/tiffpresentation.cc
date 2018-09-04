@@ -233,7 +233,7 @@ TransformationData::Ptr TiffPresentation::getTransformationData() const
 // PresentationInterface
 ////////////////////////////////////////////////////////////////////////
 
-Rectangle<double> TiffPresentation::getRect()
+Scroom::Utils::Rectangle<double> TiffPresentation::getRect()
 {
   GdkRectangle rect;
   rect.x = 0;
@@ -274,7 +274,7 @@ std::set<ViewInterface::WeakPtr> TiffPresentation::getViews()
 }
 
 void TiffPresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr,
-    Rectangle<double> presentationArea, int zoom)
+    Scroom::Utils::Rectangle<double> presentationArea, int zoom)
 {
   drawOutOfBoundsWithoutBackground(cr, presentationArea, getRect(), pixelSizeFromZoom(zoom));
 
@@ -449,7 +449,7 @@ TransformationData::Ptr TiffPresentationWrapper::getTransformationData() const
   return presentation->getTransformationData();
 }
 
-Rectangle<double> TiffPresentationWrapper::getRect()
+Scroom::Utils::Rectangle<double> TiffPresentationWrapper::getRect()
 {
   return presentation->getRect();
 }
@@ -460,7 +460,7 @@ void TiffPresentationWrapper::viewAdded(ViewInterface::WeakPtr viewInterface)
 }
 
 void TiffPresentationWrapper::redraw(ViewInterface::Ptr const& vi, cairo_t* cr,
-                                     Rectangle<double> presentationArea, int zoom)
+                                     Scroom::Utils::Rectangle<double> presentationArea, int zoom)
 {
   presentation->redraw(vi, cr, presentationArea, zoom);
 }

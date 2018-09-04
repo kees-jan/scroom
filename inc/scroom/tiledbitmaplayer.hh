@@ -263,9 +263,9 @@ public:
   int getDepth()
   { return depth; }
 
-  Rectangle<int> getRect()
+  Scroom::Utils::Rectangle<int> getRect()
   {
-    return Rectangle<int>(0,0,width,height);
+    return Scroom::Utils::Rectangle<int>(0,0,width,height);
   }
 
 public:

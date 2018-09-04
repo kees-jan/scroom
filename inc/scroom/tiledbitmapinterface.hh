@@ -270,7 +270,7 @@ public:
    * @see PresentationInterface::redraw()
    */
   virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr,
-                      const Rectangle<double>& presentationArea, int zoom)=0;
+                      const Scroom::Utils::Rectangle<double>& presentationArea, int zoom)=0;
 
   /**
    * Clear all bitmap caches related to the view.

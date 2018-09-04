@@ -66,8 +66,8 @@ public:
   // PresentationInterface
   ////////////////////////////////////////////////////////////////////////
 
-  virtual Rectangle<double> getRect();
-  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Rectangle<double> presentationArea, int zoom);
+  virtual Scroom::Utils::Rectangle<double> getRect();
+  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom);
   virtual bool getProperty(const std::string& name, std::string& value);
   virtual bool isPropertyDefined(const std::string& name);
   virtual std::string getTitle();
@@ -128,8 +128,8 @@ public:
   // PresentationInterface
   ////////////////////////////////////////////////////////////////////////
 
-  virtual Rectangle<double> getRect();
-  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Rectangle<double> presentationArea, int zoom);
+  virtual Scroom::Utils::Rectangle<double> getRect();
+  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom);
   virtual bool getProperty(const std::string& name, std::string& value);
   virtual bool isPropertyDefined(const std::string& name);
   virtual std::string getTitle();

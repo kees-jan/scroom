@@ -142,7 +142,7 @@ void TransparentOverlayViewInfo::close()
   buttons.clear();
 }
 
-void TransparentOverlayViewInfo::redraw(cairo_t* cr, Rectangle<double> const& pa, int zoom)
+void TransparentOverlayViewInfo::redraw(cairo_t* cr, Scroom::Utils::Rectangle<double> const& pa, int zoom)
 {
   using Scroom::Bitmap::BitmapSurface;
 

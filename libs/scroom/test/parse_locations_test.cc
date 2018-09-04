@@ -38,12 +38,12 @@ public:
   }
 
   // PresentationInterface
-  virtual Rectangle<double> getRect()
+  virtual Scroom::Utils::Rectangle<double> getRect()
   {
     throw std::runtime_error("Operation not supported");
   }
 
-  virtual void redraw(ViewInterface::Ptr const&, cairo_t*, Rectangle<double>, int)
+  virtual void redraw(ViewInterface::Ptr const&, cairo_t*, Scroom::Utils::Rectangle<double>, int)
   {
     throw std::runtime_error("Operation not supported");
   }

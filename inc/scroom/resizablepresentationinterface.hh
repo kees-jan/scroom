@@ -29,5 +29,5 @@ public:
 
   virtual ~ResizablePresentationInterface() {}
 
-  virtual void setRect(ViewInterface::WeakPtr const& vi, Rectangle<double> const& rect)=0;
+  virtual void setRect(ViewInterface::WeakPtr const& vi, Scroom::Utils::Rectangle<double> const& rect)=0;
 };

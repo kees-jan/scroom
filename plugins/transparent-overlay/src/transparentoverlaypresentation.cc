@@ -101,7 +101,7 @@ void TransparentOverlayPresentation::setOptimalColor(PresentationInterface::Ptr 
   }
 }
 
-Rectangle<double> TransparentOverlayPresentation::getRect()
+Scroom::Utils::Rectangle<double> TransparentOverlayPresentation::getRect()
 {
   return sizeDeterminer->getRect();
 }
@@ -133,7 +133,7 @@ std::set<ViewInterface::WeakPtr> TransparentOverlayPresentation::getViews()
 }
 
 void TransparentOverlayPresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr,
-                                            Rectangle<double> presentationArea, int zoom)
+                                            Scroom::Utils::Rectangle<double> presentationArea, int zoom)
 {
   ViewDataMap::const_iterator e = viewData.find(vi);
   if(e != viewData.end())

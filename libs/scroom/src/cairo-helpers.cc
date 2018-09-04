@@ -17,6 +17,8 @@ namespace Colors
   const Color IN_BOUNDS(1,1,1); // White
 }
 
+using Scroom::Utils::Rectangle;
+
 void traceRectangleContour(cairo_t* cr, Rectangle<double> const& viewArea)
 {
   cairo_move_to(cr, viewArea.x(), viewArea.y());
