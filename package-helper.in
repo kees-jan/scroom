@@ -36,6 +36,7 @@ prepare()
     remove_if_exists "zesty.log"
     remove_if_exists "artful.log"
     remove_if_exists "bionic.log"
+    remove_if_exists "cosmic.log"
     remove_if_exists "mutracx.log"
     remove_if_exists "pdebuild.log"
 }
@@ -150,7 +151,7 @@ then
 fi
 
 # Ubuntu source packages
-for source_package in trusty xenial bionic
+for source_package in trusty xenial bionic cosmic
 do
     echo_me $source_package
     ( rm -rf "$BUILD/$source_package" > /dev/null 2>&1 ;
