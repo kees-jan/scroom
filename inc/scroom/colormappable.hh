@@ -191,7 +191,7 @@ public:
   virtual void setOriginalColormap(Colormap::Ptr colormap);
 
 private:
-  NORETURN void OperationNotSupported();
+  [[noreturn]] void OperationNotSupported();
 };
 
 class ColormapHelper : public ColormapHelperBase

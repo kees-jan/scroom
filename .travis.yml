@@ -14,7 +14,7 @@ compiler:
 - gcc
 env:
 - NONE=""
-- SOME_DISTS="trusty xenial" OTHER_DISTS="bionic precise cosmic"
+- SOME_DISTS="trusty xenial" OTHER_DISTS="bionic cosmic"
 - DISTCHECK_CONFIGURE_FLAGS='--enable-debug-tiles --disable-multithreading CFLAGS="-g -O0" CXXFLAGS="-g -O0"' LDFLAGS="-Wl,-z,defs"
 addons:
   apt:

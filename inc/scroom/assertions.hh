@@ -9,14 +9,10 @@
 
 #include <sys/cdefs.h>
 
+#ifndef __clang__
 #define GCC_VERSION (__GNUC__ * 10000           \
                      + __GNUC_MINOR__ * 100     \
                      + __GNUC_PATCHLEVEL__)
-
-#if GCC_VERSION < 40800  // 4.8.0
-#define NORETURN __attribute__((noreturn))  // precise, gcc 4.6.3
-#else
-#define NORETURN [[noreturn]] // others // gcc 4.8.4
 #endif
 
 namespace Scroom
@@ -28,7 +24,7 @@ namespace Scroom
     {
 
       /** Gets called when an assertion failed */
-      NORETURN void assertionFailed(const char *type, const char *expr,
+      [[noreturn]] void assertionFailed(const char *type, const char *expr,
           const char *function, const char *filename, unsigned int line)
               __attribute__ ((noreturn));
     }
