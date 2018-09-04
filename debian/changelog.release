@@ -1,3 +1,10 @@
+scroom (0.10~rc2-1) xenial; urgency=medium
+
+  * Release candidate for version 0.10
+  * For more info see https://github.com/kees-jan/scroom/wiki
+
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Tue, 04 Sep 2018 19:18:44 +0200
+
 scroom (0.10~RC1-1) xenial; urgency=medium
 
   * Release candidate for version 0.10
