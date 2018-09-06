@@ -16,6 +16,7 @@ incscroom_HEADERS = \
 	inc/scroom/cairo-helpers.hh \
 	inc/scroom/color.hh \
 	inc/scroom/colormappable.hh \
+	inc/scroom/compiler.hh \
 	inc/scroom/dont-delete.hh \
 	inc/scroom/function-additor.hh \
 	inc/scroom/global.hh \
