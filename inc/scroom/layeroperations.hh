@@ -20,12 +20,12 @@ public:
   void drawPixelValue(cairo_t* cr, int x, int y, int size, int value, Color const& bgColor);
 
   virtual void initializeCairo(cairo_t* cr);
-  virtual void drawState(cairo_t* cr, TileState s, GdkRectangle viewArea);
+  virtual void drawState(cairo_t* cr, TileState s, Scroom::Utils::Rectangle<double> viewArea);
 
   virtual Scroom::Utils::Stuff cacheZoom(const ConstTile::Ptr tile, int zoom,
                                                 Scroom::Utils::Stuff cache);
   virtual void draw(cairo_t* cr, const ConstTile::Ptr tile,
-                    GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
+                    Scroom::Utils::Rectangle<double> tileArea, Scroom::Utils::Rectangle<double> viewArea, int zoom,
                     Scroom::Utils::Stuff cache);
 };
 
@@ -45,7 +45,7 @@ public:
   virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
 
   virtual void draw(cairo_t* cr, const ConstTile::Ptr tile,
-                    GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
+                    Scroom::Utils::Rectangle<double> tileArea, Scroom::Utils::Rectangle<double> viewArea, int zoom,
                     Scroom::Utils::Stuff cache);
 };
 
@@ -65,7 +65,7 @@ public:
   virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
 
   virtual void draw(cairo_t* cr, const ConstTile::Ptr tile,
-                    GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
+                    Scroom::Utils::Rectangle<double> tileArea, Scroom::Utils::Rectangle<double> viewArea, int zoom,
                     Scroom::Utils::Stuff cache);
 };
 
@@ -106,7 +106,7 @@ public:
   virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
 
   virtual void draw(cairo_t* cr, const ConstTile::Ptr tile,
-                    GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
+                    Scroom::Utils::Rectangle<double> tileArea, Scroom::Utils::Rectangle<double> viewArea, int zoom,
                     Scroom::Utils::Stuff cache);
 };
 

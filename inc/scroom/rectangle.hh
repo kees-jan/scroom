@@ -103,6 +103,14 @@ namespace Scroom
                          vertically.intersection(other.vertically));
       }
 
+      template<typename U>
+      Rectangle<typename std::common_type<T,U>::type> intersection(const Rectangle<U>& other) const
+      {
+        typedef typename std::common_type<T,U>::type R;
+        
+        return Rectangle<R>(*this).intersection(Rectangle<R>(other));
+      }
+
       value_type getTop() const
       {
         return vertically.getStart();
@@ -305,6 +313,11 @@ namespace Scroom
         vertically.setSize(s.y);
       }
 
+      Point<value_type> getSize() const
+      {
+        return Point<value_type>(horizontally.getSize(), vertically.getSize());
+      }
+
     private:
       Segment<value_type> horizontally;
       Segment<value_type> vertically;
@@ -356,6 +369,25 @@ namespace Scroom
     {
       return Rectangle<double>(r) * p;
     }
+
+    template<typename T, typename U>
+    Rectangle<typename std::common_type<T,U>::type> operator-(Rectangle<T> left, Point<U> right)
+    {
+      typedef typename std::common_type<T,U>::type R;
+
+      return Rectangle<R>(left) - Point<R>(right);
+    }
+
+    inline Rectangle<int> roundOutward(Rectangle<double> r)
+    {
+      int x = floor(r.getLeft());
+      int y = floor(r.getTop());
+      int width = ceil(r.getRight()) - x;
+      int height = ceil(r.getBottom()) - y;
+
+      return Rectangle<int>(x,y,width,height);
+    }
+
 
   }
 }

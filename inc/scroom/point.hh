@@ -29,6 +29,11 @@ namespace Scroom
         : x(x), y(y)
       {}
 
+      template<typename U>
+      explicit Point(Point<U> other)
+        : x(other.x), y(other.y)
+      {}
+
       bool operator==(const Point<value_type>& other) const
       {
         return x == other.x && y == other.y;
@@ -87,6 +92,26 @@ namespace Scroom
       return os << '(' << p.x
                 << ',' << p.y
                 << ')';
+    }
+
+    template<typename T, typename U>
+    Point<typename std::common_type<T,U>::type> operator-(Point<T> left, Point<U> right)
+    {
+      typedef typename std::common_type<T,U>::type R;
+      
+      Point<R> result(left);
+      result -= Point<R>(right);
+      return result;
+    }
+
+    template<typename T, typename U>
+    Point<typename std::common_type<T,U>::type> operator+(Point<T> left, Point<U> right)
+    {
+      typedef typename std::common_type<T,U>::type R;
+      
+      Point<R> result(left);
+      result += Point<R>(right);
+      return result;
     }
 
   }

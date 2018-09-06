@@ -13,6 +13,8 @@
 
 #include <stdio.h>
 
+#include <cmath>
+
 #include <boost/thread/mutex.hpp>
 
 #include <scroom/assertions.hh>
@@ -42,6 +44,13 @@ static Scroom::MemoryBlobs::PageProvider::Ptr createProvider(double width, doubl
 
   printf("Creating a PageProvider providing %d blocks of %d bytes\n", blockCount, blockSize);
   return Scroom::MemoryBlobs::PageProvider::create(blockCount, blockSize);
+}
+
+////////////////////////////////////////////////////////////////////////
+
+inline Scroom::Utils::Rectangle<int> TileAreaForIndex(Scroom::Utils::Point<int> tileIndex)
+{
+  return (Scroom::Utils::Rectangle<int>(0,0,1,1) + tileIndex) * TILESIZE;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -236,72 +245,6 @@ Layer::Ptr TiledBitmap::getBottomLayer()
   return layers[0];
 }
 
-inline void computeAreasBeginningZoomingIn(int presentationBegin, int tileOffset, int pixelSize,
-                                           int& tileBegin, int& viewBegin)
-{
-  if(tileOffset >= presentationBegin)
-  {
-    tileBegin = 0;
-    viewBegin = (tileOffset-presentationBegin)*pixelSize;
-  }
-  else
-  {
-    tileBegin = presentationBegin-tileOffset;
-    viewBegin = 0;
-  }
-}
-
-inline void computeAreasEndZoomingIn(int presentationBegin, int presentationSize,
-                            int tileOffset, int pixelSize,
-                            int tileBegin, int& tileSize,
-                            int viewBegin, int& viewSize)
-{
-  UNUSED(viewBegin);
-
-  if(tileOffset + TILESIZE <= presentationBegin + presentationSize)
-  {
-    tileSize = TILESIZE - tileBegin;
-  }
-  else
-  {
-    tileSize = presentationBegin + presentationSize - tileOffset - tileBegin;
-  }
-  viewSize = tileSize*pixelSize;
-}
-
-inline void computeAreasBeginningZoomingOut(int presentationBegin, int tileOffset, int pixelSize,
-                                           int& tileBegin, int& viewBegin)
-{
-  if(tileOffset >= presentationBegin)
-  {
-    tileBegin = 0;
-    viewBegin = (tileOffset-presentationBegin)/pixelSize;
-  }
-  else
-  {
-    tileBegin = presentationBegin-tileOffset;
-    viewBegin = 0;
-  }
-}
-
-inline void computeAreasEndZoomingOut(int presentationBegin, int presentationSize,
-                            int tileOffset, int pixelSize,
-                            int tileBegin, int& tileSize,
-                            int viewBegin, int& viewSize)
-{
-  UNUSED(viewBegin);
-
-  if(tileOffset + TILESIZE <= presentationBegin + presentationSize)
-  {
-    tileSize = TILESIZE - tileBegin;
-  }
-  else
-  {
-    tileSize = presentationBegin + presentationSize - tileOffset - tileBegin;
-  }
-  viewSize = tileSize/pixelSize;
-}
-
 void TiledBitmap::drawTile(cairo_t* cr, const CompressedTile::Ptr tile, const Scroom::Utils::Rectangle<double> viewArea)
 {
   const int margin=5;
@@ -320,78 +263,11 @@ void TiledBitmap::drawTile(cairo_t* cr, const CompressedTile::Ptr tile, const Sc
   }
 }
 
-void TiledBitmap::redrawZoomingIn(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<int> const& requestedPresentationArea, int zoom)
+void TiledBitmap::redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> const& presentationArea, int zoom)
 {
   TiledBitmapViewData::Ptr viewData = this->viewData[vi];
-  GdkRectangle presentationArea = requestedPresentationArea.toGdkRectangle();
+  auto scaledRequestedPresentationArea = presentationArea;
 
-  Layer::Ptr layer = layers[0];
-  LayerOperations::Ptr layerOperations = ls[0];
-
-  const Scroom::Utils::Rectangle<int> actualPresentationArea = layer->getRect();
-  const Scroom::Utils::Rectangle<int> validPresentationArea = requestedPresentationArea.intersection(actualPresentationArea);
-
-  presentationArea.width = validPresentationArea.getRight() - requestedPresentationArea.getLeft();
-  presentationArea.height = validPresentationArea.getBottom() - requestedPresentationArea.getTop();
-
-  const int left = presentationArea.x;
-  const int top = presentationArea.y;
-  const int right = presentationArea.x+presentationArea.width;
-  const int bottom = presentationArea.y+presentationArea.height;
-
-  const int imin = std::max(0, left/TILESIZE);
-  const int imax = (right+TILESIZE-1)/TILESIZE;
-  const int jmin = std::max(0, top/TILESIZE);
-  const int jmax = (bottom+TILESIZE-1)/TILESIZE;
-
-  viewData->setNeededTiles(layer, imin, imax, jmin, jmax, zoom, layerOperations);
-
-  const int pixelSize = 1<<zoom;
-
-  layerOperations->initializeCairo(cr);
-
-  for(int i=imin; i<imax; i++)
-  {
-    for(int j=jmin; j<jmax; j++)
-    {
-      GdkRectangle tileArea;
-      GdkRectangle viewArea;
-
-      computeAreasBeginningZoomingIn(presentationArea.x, i*TILESIZE, pixelSize, tileArea.x, viewArea.x);
-      computeAreasBeginningZoomingIn(presentationArea.y, j*TILESIZE, pixelSize, tileArea.y, viewArea.y);
-      computeAreasEndZoomingIn(presentationArea.x, presentationArea.width, i*TILESIZE, pixelSize,
-                               tileArea.x, tileArea.width, viewArea.x, viewArea.width);
-      computeAreasEndZoomingIn(presentationArea.y, presentationArea.height, j*TILESIZE, pixelSize,
-                               tileArea.y, tileArea.height, viewArea.y, viewArea.height);
-
-      CompressedTile::Ptr tile = layer->getTile(i,j);
-      TileViewState::Ptr tileViewState = tile->getViewState(vi);
-      Scroom::Utils::Stuff cacheResult = tileViewState->getCacheResult();
-      ConstTile::Ptr t = tile->getConstTileAsync();
-
-      if(t)
-      {
-        cairo_save(cr);
-        layerOperations->draw(cr, t, tileArea, viewArea, zoom, cacheResult);
-        cairo_restore(cr);
-      }
-      else
-      {
-        layerOperations->drawState(cr, tile->getState(), viewArea);
-      }
-#ifdef DEBUG_TILES
-      drawTile(cr, tile, viewArea);
-#endif
-    }
-  }
-}
-
-void TiledBitmap::redrawZoomingOut(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<int> const& requestedPresentationArea, int zoom)
-{
-  TiledBitmapViewData::Ptr viewData = this->viewData[vi];
-  Scroom::Utils::Rectangle<int> scaledRequestedPresentationArea = requestedPresentationArea;
-
-  // 1. Pick the correct layer
   unsigned int layerNr=0;
   while(zoom<=-3 && layerNr<layers.size()-1)
   {
@@ -403,10 +279,7 @@ void TiledBitmap::redrawZoomingOut(ViewInterface::Ptr const& vi, cairo_t* cr, Sc
   LayerOperations::Ptr layerOperations = ls[std::min(ls.size()-1, (size_t)layerNr)];
 
   const Scroom::Utils::Rectangle<int> actualPresentationArea = layer->getRect();
-  const Scroom::Utils::Rectangle<int> validPresentationArea = scaledRequestedPresentationArea.intersection(actualPresentationArea);
-
-  scaledRequestedPresentationArea.setSize
-    (validPresentationArea.getBottomRight() - scaledRequestedPresentationArea.getTopLeft());
+  const auto validPresentationArea = scaledRequestedPresentationArea.intersection(actualPresentationArea);
 
   const int left = scaledRequestedPresentationArea.getLeft();
   const int top = scaledRequestedPresentationArea.getTop();
@@ -420,56 +293,46 @@ void TiledBitmap::redrawZoomingOut(ViewInterface::Ptr const& vi, cairo_t* cr, Sc
 
   viewData->setNeededTiles(layer, imin, imax, jmin, jmax, zoom, layerOperations);
 
-  const int pixelSize = 1<<-zoom;
+  const double pixelSize = pixelSizeFromZoom(zoom);
 
   layerOperations->initializeCairo(cr);
 
-  GdkRectangle presentationArea = scaledRequestedPresentationArea.toGdkRectangle();
+  const auto clippedRequestedPresentationArea = scaledRequestedPresentationArea
+    .above(validPresentationArea.getBottom())
+    .leftOf(validPresentationArea.getRight());
+           
   for(int i=imin; i<imax; i++)
   {
     for(int j=jmin; j<jmax; j++)
     {
+      Scroom::Utils::Point<int> tileIndex(i,j);
 
-      GdkRectangle tileArea;
-      GdkRectangle viewArea;
+      const auto tileArea = TileAreaForIndex(tileIndex);
+      const auto visibleTileArea = tileArea.intersection(clippedRequestedPresentationArea);
 
-      // 2. Determine which area in the layer needs being drawn
-      computeAreasBeginningZoomingOut(presentationArea.x, i*TILESIZE, pixelSize, tileArea.x, viewArea.x);
-      computeAreasBeginningZoomingOut(presentationArea.y, j*TILESIZE, pixelSize, tileArea.y, viewArea.y);
-      computeAreasEndZoomingOut(presentationArea.x, presentationArea.width, i*TILESIZE, pixelSize,
-                                tileArea.x, tileArea.width, viewArea.x, viewArea.width);
-      computeAreasEndZoomingOut(presentationArea.y, presentationArea.height, j*TILESIZE, pixelSize,
-                                tileArea.y, tileArea.height, viewArea.y, viewArea.height);
+      const auto tileAreaRect = visibleTileArea - tileArea.getTopLeft();
+      const auto viewAreaRect = (visibleTileArea - clippedRequestedPresentationArea.getTopLeft()) * pixelSize;
 
       CompressedTile::Ptr tile = layer->getTile(i,j);
       TileViewState::Ptr tileViewState = tile->getViewState(vi);
       Scroom::Utils::Stuff cacheResult = tileViewState->getCacheResult();
       ConstTile::Ptr t = tile->getConstTileAsync();
 
-      // 3. Draw the area
       if(t)
       {
         cairo_save(cr);
-        layerOperations->draw(cr, t, tileArea, viewArea, zoom, cacheResult);
+        layerOperations->draw(cr, t, tileAreaRect, viewAreaRect, zoom, cacheResult);
         cairo_restore(cr);
       }
       else
       {
-        layerOperations->drawState(cr, tile->getState(), viewArea);
+        layerOperations->drawState(cr, tile->getState(), viewAreaRect);
       }
 #ifdef DEBUG_TILES
-      drawTile(cr, tile, viewArea);
+      drawTile(cr, tile, viewAreaRect);
 #endif
     }
   }
-}
-
-void TiledBitmap::redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> const& presentationArea, int zoom)
-{
-  if(zoom>0)
-    redrawZoomingIn(vi, cr, presentationArea.toIntRectangle(), zoom);
-  else
-    redrawZoomingOut(vi, cr, presentationArea.toIntRectangle(), zoom);
 }
 
 void TiledBitmap::clearCaches(ViewInterface::Ptr viewInterface)

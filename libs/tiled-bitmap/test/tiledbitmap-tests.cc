@@ -22,8 +22,8 @@ public:
 
   virtual int getBpp() { return 8; }
   virtual void initializeCairo(cairo_t*) {}
-  virtual void draw(cairo_t*, const ConstTile::Ptr, GdkRectangle, GdkRectangle, int, Scroom::Utils::Stuff) {}
-  virtual void drawState(cairo_t*, TileState, GdkRectangle) {}
+  virtual void draw(cairo_t*, const ConstTile::Ptr, Scroom::Utils::Rectangle<double>, Scroom::Utils::Rectangle<double>, int, Scroom::Utils::Stuff) {}
+  virtual void drawState(cairo_t*, TileState, Scroom::Utils::Rectangle<double>) {}
   virtual void reduce(Tile::Ptr, const ConstTile::Ptr, int, int) {}
 };
 

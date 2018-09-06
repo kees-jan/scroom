@@ -77,7 +77,7 @@ void CommonOperations::initializeCairo(cairo_t* cr)
   cairo_set_line_cap(cr, CAIRO_LINE_CAP_SQUARE);
 }
 
-void CommonOperations::drawState(cairo_t* cr, TileState s, GdkRectangle viewArea)
+void CommonOperations::drawState(cairo_t* cr, TileState s, Scroom::Utils::Rectangle<double> viewArea)
 {
   Color c;
 
@@ -169,7 +169,7 @@ Scroom::Utils::Stuff CommonOperations::cacheZoom(const ConstTile::Ptr tile, int 
 }
 
 void CommonOperations::draw(cairo_t* cr, const ConstTile::Ptr tile,
-                    GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
+                    Scroom::Utils::Rectangle<double> tileArea, Scroom::Utils::Rectangle<double> viewArea, int zoom,
                     Scroom::Utils::Stuff cache)
 {
   // In: Cairo surface at requested zoom level
@@ -190,11 +190,10 @@ void CommonOperations::draw(cairo_t* cr, const ConstTile::Ptr tile,
     {
       // Ask Cairo to zoom in for us
       int multiplier = 1<<zoom;
-      int x = viewArea.x / multiplier - tileArea.x;
-      int y = viewArea.y / multiplier - tileArea.y;
+      auto origin = viewArea.getTopLeft() / multiplier - tileArea.getTopLeft();
 
       cairo_scale(cr, multiplier, multiplier);
-      cairo_set_source_surface(cr, source->get(), x, y);
+      cairo_set_source_surface(cr, source->get(), origin.x, origin.y);
       cairo_pattern_set_filter (cairo_get_source (cr), CAIRO_FILTER_NEAREST);
       cairo_paint(cr);
     }
@@ -202,9 +201,9 @@ void CommonOperations::draw(cairo_t* cr, const ConstTile::Ptr tile,
     {
       // Cached bitmap is to scale
       int divider = 1<<-zoom;
-      int x = viewArea.x - tileArea.x / divider;
-      int y = viewArea.y - tileArea.y / divider;
-      cairo_set_source_surface(cr, source->get(), x, y);
+
+      auto origin = viewArea.getTopLeft() - tileArea.getTopLeft() / divider;
+      cairo_set_source_surface(cr, source->get(), origin.x, origin.y);
       cairo_paint(cr);
     }
   }
@@ -289,7 +288,7 @@ void Operations1bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x
 }
 
 void Operations1bpp::draw(cairo_t* cr, const ConstTile::Ptr tile,
-                          GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
+                          Scroom::Utils::Rectangle<double> tileArea, Scroom::Utils::Rectangle<double> viewArea, int zoom,
                           Scroom::Utils::Stuff cache)
 {
   cairo_save(cr);
@@ -308,17 +307,21 @@ void Operations1bpp::draw(cairo_t* cr, const ConstTile::Ptr tile,
 
     Colormap::Ptr colormap = colormapProvider->getColormap();
 
-    for(int y=0; y<tileArea.height; y++)
+    auto tileAreaInt = roundOutward(tileArea);
+    auto offset = tileAreaInt.getTopLeft() - tileArea.getTopLeft();
+    viewArea += offset*multiplier;
+
+    for(int y=0; y<tileAreaInt.getHeight(); y++)
     {
       const byte* const data = tile->data.get();
-      PixelIterator<const byte> current(data+(tileArea.y+y)*stride, tileArea.x, 1);
+      PixelIterator<const byte> current(data+(tileAreaInt.getTop()+y)*stride, tileAreaInt.getLeft(), 1);
 
-      for(int x=0; x<tileArea.width; x++, ++current)
+      for(int x=0; x<tileAreaInt.getWidth(); x++, ++current)
       {
         const int value = *current;
 
         cairo_save(cr);
-        drawPixelValue(cr, viewArea.x+multiplier*x, viewArea.y+multiplier*y, multiplier, value,
+        drawPixelValue(cr, viewArea.x()+multiplier*x, viewArea.y()+multiplier*y, multiplier, value,
                        colormap->colors[value]);
         cairo_restore(cr);
       }
@@ -409,7 +412,7 @@ void Operations8bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x
 }
 
 void Operations8bpp::draw(cairo_t* cr, const ConstTile::Ptr tile,
-                      GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
+                      Scroom::Utils::Rectangle<double> tileArea, Scroom::Utils::Rectangle<double> viewArea, int zoom,
                       Scroom::Utils::Stuff cache)
 {
   cairo_save(cr);
@@ -431,15 +434,19 @@ void Operations8bpp::draw(cairo_t* cr, const ConstTile::Ptr tile,
     const Color& c2 = colormap->colors[1];
     const byte* const data = tile->data.get();
 
-    for(int x=0; x<tileArea.width; x++)
+    auto tileAreaInt = roundOutward(tileArea);
+    auto offset = tileAreaInt.getTopLeft() - tileArea.getTopLeft();
+    viewArea += offset*multiplier;
+
+    for(int x=0; x<tileAreaInt.width(); x++)
     {
-      for(int y=0; y<tileArea.height; y++)
+      for(int y=0; y<tileAreaInt.height(); y++)
       {
-        const int value = data[(tileArea.y+y)*stride + tileArea.x + x];
+        const int value = data[(tileAreaInt.y()+y)*stride + tileAreaInt.x() + x];
         Color c = mix(c2, c1, 1.0*value/255);
 
         cairo_save(cr);
-        drawPixelValue(cr, viewArea.x+multiplier*x, viewArea.y+multiplier*y, multiplier, value, c);
+        drawPixelValue(cr, viewArea.x()+multiplier*x, viewArea.y()+multiplier*y, multiplier, value, c);
         cairo_restore(cr);
       }
     }
@@ -635,7 +642,7 @@ void Operations::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, in
 }
 
 void Operations::draw(cairo_t* cr, const ConstTile::Ptr tile,
-                      GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
+                      Scroom::Utils::Rectangle<double> tileArea, Scroom::Utils::Rectangle<double> viewArea, int zoom,
                       Scroom::Utils::Stuff cache)
 {
   cairo_save(cr);
@@ -654,17 +661,21 @@ void Operations::draw(cairo_t* cr, const ConstTile::Ptr tile,
 
     Colormap::Ptr colormap = colormapProvider->getColormap();
 
-    for(int y=0; y<tileArea.height; y++)
+    auto tileAreaInt = roundOutward(tileArea);
+    auto offset = tileAreaInt.getTopLeft() - tileArea.getTopLeft();
+    viewArea += offset*multiplier;
+
+    for(int y=0; y<tileAreaInt.height(); y++)
     {
       const byte* const data = tile->data.get();
-      PixelIterator<const byte> current(data+(tileArea.y+y)*stride, tileArea.x, bpp);
+      PixelIterator<const byte> current(data+(tileAreaInt.y()+y)*stride, tileAreaInt.x(), bpp);
 
-      for(int x=0; x<tileArea.width; x++, ++current)
+      for(int x=0; x<tileAreaInt.width(); x++, ++current)
       {
         const int value = *current;
 
         cairo_save(cr);
-        drawPixelValue(cr, viewArea.x+multiplier*x, viewArea.y+multiplier*y, multiplier, value,
+        drawPixelValue(cr, viewArea.x()+multiplier*x, viewArea.y()+multiplier*y, multiplier, value,
                        colormap->colors[value]);
         cairo_restore(cr);
       }

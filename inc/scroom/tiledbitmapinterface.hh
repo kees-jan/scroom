@@ -92,7 +92,7 @@ public:
    *    to the value returned by cache()
    */
   virtual void draw(cairo_t* cr, const ConstTile::Ptr tile,
-      GdkRectangle tileArea, GdkRectangle viewArea, int zoom,
+      Scroom::Utils::Rectangle<double> tileArea, Scroom::Utils::Rectangle<double> viewArea, int zoom,
       Scroom::Utils::Stuff cache)=0;
 
   /**
@@ -106,7 +106,7 @@ public:
    * anyway. Implementors might want to just draw an empty rectangle,
    * maybe color-coded to reflect the state of the tile.
    */
-  virtual void drawState(cairo_t* cr, TileState s, GdkRectangle viewArea)=0;
+  virtual void drawState(cairo_t* cr, TileState s, Scroom::Utils::Rectangle<double> viewArea)=0;
 
   /**
    * Cache data for use during later cacheZoom() calls.
