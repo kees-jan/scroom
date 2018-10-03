@@ -12,7 +12,6 @@
 #endif
 
 #include <cmath>
-
 #include <sstream>
 
 #include <boost/lexical_cast.hpp>
@@ -182,6 +181,10 @@ void View::redraw(cairo_t* cr)
       int pixelSize = 1<<(-zoom);
       rect.width = drawingAreaWidth*pixelSize;
       rect.height = drawingAreaHeight*pixelSize;
+
+      // Round to whole pixels
+      rect.x = (rect.x/pixelSize) * pixelSize; 
+      rect.y = (rect.y/pixelSize) * pixelSize; 
     }
 
     presentation->redraw(shared_from_this<View>(), cr, rect, zoom);
