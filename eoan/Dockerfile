@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:eoan
 
 MAINTAINER kees-jan.dijkzeul@iae.nl
 
@@ -14,6 +14,7 @@ RUN \
     libboost-test-dev \
     libboost-thread-dev \
     libgtest-dev \
+    libgmock-dev \
     google-mock \
     libcairo2-dev \
     libglade2-dev \
