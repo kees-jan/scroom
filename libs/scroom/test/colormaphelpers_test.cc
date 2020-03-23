@@ -11,85 +11,52 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_suite.hpp>
 #include <boost/test/parameterized_test.hpp>
+#include <boost/test/data/test_case.hpp>
+#include <boost/test/data/monomorphic.hpp>
 
 #include <scroom/colormappable.hh>
 #include <scroom/unused.hh>
 
-////////////////////////////////////////////////////////////////////////
-// Begin Yuk
-// See http://stackoverflow.com/a/38642890
-
-#if BOOST_VERSION > 105800
-#define MY_BOOST_TEST_ADD_ARGS __FILE__, __LINE__,
-#define MY_BOOST_TEST_DEFAULT_DEC_COLLECTOR ,boost::unit_test::decorator::collector::instance()
-#else
-#define MY_BOOST_TEST_ADD_ARGS
-#define MY_BOOST_TEST_DEFAULT_DEC_COLLECTOR
-#endif
-
-#define BOOST_FIXTURE_PARAM_TEST_CASE( test_name, F, mbegin, mend )     \
-struct test_name : public F {                                           \
-   typedef ::std::remove_const< ::std::remove_reference< decltype(*(mbegin)) >::type>::type param_t; \
-   void test_method(const param_t &);                                   \
-};                                                                      \
-                                                                        \
-void BOOST_AUTO_TC_INVOKER( test_name )(const test_name::param_t &param) \
-{                                                                       \
-    test_name t;                                                        \
-    t.test_method(param);                                               \
-}                                                                       \
-                                                                        \
-BOOST_AUTO_TU_REGISTRAR( test_name )(                                   \
-    boost::unit_test::make_test_case(                                   \
-       &BOOST_AUTO_TC_INVOKER( test_name ), #test_name,                 \
-       MY_BOOST_TEST_ADD_ARGS                                           \
-       (mbegin), (mend))                                                \
-       MY_BOOST_TEST_DEFAULT_DEC_COLLECTOR);                            \
-                                                                        \
-void test_name::test_method(const param_t &param)                       \
-
-#define BOOST_AUTO_PARAM_TEST_CASE( test_name, mbegin, mend )           \
-   BOOST_FIXTURE_PARAM_TEST_CASE( test_name,                            \
-                                  BOOST_AUTO_TEST_CASE_FIXTURE,         \
-                                  mbegin, mend)
-
-// End Yuk
-////////////////////////////////////////////////////////////////////////
 
 namespace
 {
   const Color Blue(0,0,1);
   const double accuracy = 1e-4;
+
+  struct Data
+  {
+    ColormapHelper::Ptr helper;
+    int expectedColors;
+
+    Data(int expectedColors, ColormapHelper::Ptr const& helper)
+      : helper(helper), expectedColors(expectedColors)
+    {}
+  };
+
+  std::ostream& operator<<(std::ostream& os, const Data&)
+  {
+    return os;
+  }
+
+  static std::list<Data> helpers = boost::assign::list_of
+                          (Data(4, ColormapHelper::create(4)))
+                          (Data(2, ColormapHelper::create(Colormap::createDefault(2))))
+                          (Data(4, ColormapHelper::createInverted(4)))
+                          (Data(256, MonochromeColormapHelper::create(256)))
+                          ;
 }
 
 BOOST_AUTO_TEST_SUITE(ColormapHelper_Tests)
 
-struct Data
+BOOST_DATA_TEST_CASE(colormaps_equal_and_correct_count, boost::unit_test::data::make(helpers))
 {
-  ColormapHelper::Ptr helper;
-  int expectedColors;
-
-  Data(int expectedColors, ColormapHelper::Ptr const& helper)
-    : helper(helper), expectedColors(expectedColors)
-  {}
-};
-
-static std::list<Data> helpers = boost::assign::list_of
-  (Data(4, ColormapHelper::create(4)))
-  (Data(2, ColormapHelper::create(Colormap::createDefault(2))))
-  (Data(4, ColormapHelper::createInverted(4)))
-  (Data(256, MonochromeColormapHelper::create(256)))
-  ;
-
-BOOST_AUTO_PARAM_TEST_CASE(colormaps_equal_and_correct_count, helpers.begin(), helpers.end())
-{
-  Colormap::Ptr originalColormap = param.helper->getOriginalColormap();
+  Colormap::Ptr originalColormap = sample.helper->getOriginalColormap();
   BOOST_REQUIRE(originalColormap);
-  BOOST_CHECK_EQUAL(param.expectedColors, originalColormap->colors.size());
+  BOOST_CHECK_EQUAL(sample.expectedColors, originalColormap->colors.size());
 
-  Colormap::Ptr colormap = param.helper->getColormap();
+  Colormap::Ptr colormap = sample.helper->getColormap();
   BOOST_REQUIRE(colormap);
-  BOOST_CHECK_EQUAL(param.expectedColors, colormap->colors.size());
+  BOOST_CHECK_EQUAL(sample.expectedColors, colormap->colors.size());
   BOOST_CHECK_EQUAL(originalColormap, colormap);
 }
 
