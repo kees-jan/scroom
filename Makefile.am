@@ -32,7 +32,6 @@ incscroom_HEADERS = \
 	inc/scroom/progressinterfacehelpers.hh \
 	inc/scroom/rectangle.hh \
 	inc/scroom/resizablepresentationinterface.hh \
-	inc/scroom/roi.hh \
 	inc/scroom/scroominterface.hh \
 	inc/scroom/scroomplugin.hh \
 	inc/scroom/semaphore.hh \
@@ -280,8 +279,6 @@ libs_scroom_src_libsscroom_la_SOURCES = \
 	libs/scroom/src/bitmap-helpers.cc \
 	libs/scroom/src/cairo-helpers.cc \
 	libs/scroom/src/colormap-helpers.cc \
-	libs/scroom/src/roi-parser.cc \
-	libs/scroom/src/roi.cc \
 	libs/scroom/src/presentationinterface.cc \
 	libs/scroom/src/transformpresentation.cc
 
@@ -298,8 +295,7 @@ libs_scroom_test_libscroom_tests_CPPFLAGS = @SCROOMLIB_CFLAGS@ -I $(top_srcdir)/
 
 libs_scroom_test_libscroom_tests_SOURCES = \
 	libs/scroom/test/main.cc \
-	libs/scroom/test/colormaphelpers_test.cc \
-	libs/scroom/test/parse_locations_test.cc
+	libs/scroom/test/colormaphelpers_test.cc
 
 libs_scroom_test_libscroom_tests_LDADD = @BOOSTSYSTEMLIB@ \
 	libs/scroom/src/libsscroom.la \
@@ -512,24 +508,6 @@ plugins_tiff_src_libsptiff_la_LIBADD = @TIFFPLUGIN_LIBS@ -ltiff @BOOSTTHREADLIB@
 	libs/tiled-bitmap/src/libstiledbitmap.la libs/scroom/src/libsscroom.la
 
 ########################################################################
-### plugins/roi
-########################################################################
-
-roi_plugin_libs = \
-	plugins/roi/src/libsproi.la
-
-plugins_roi_src_libsproi_la_CPPFLAGS = @ROIPLUGIN_CFLAGS@ -I $(top_srcdir)/inc
-
-plugins_roi_src_libsproi_la_SOURCES = \
-	plugins/roi/src/main.cc \
-	plugins/roi/src/roiplugin.cc \
-	plugins/roi/src/roiplugin.hh \
-	plugins/roi/src/roiui.cc \
-	plugins/roi/src/roiui.hh 
-
-plugins_roi_src_libsproi_la_LIBADD = @ROIPLUGIN_LIBS@ @BOOSTSYSTEMLIB@ libs/scroom/src/libsscroom.la libs/util/src/libsutil.la 
-
-########################################################################
 ### plugins/colormap
 ########################################################################
 
@@ -604,7 +582,7 @@ root_extra_dist = \
 ########################################################################
 
 ### Plugins
-plugin_LTLIBRARIES = $(example_plugin_libs) $(transparent_overlay_plugin_libs) $(tiff_plugin_libs) $(colormap_plugin_libs) $(roi_plugin_libs) 
+plugin_LTLIBRARIES = $(example_plugin_libs) $(transparent_overlay_plugin_libs) $(tiff_plugin_libs) $(colormap_plugin_libs)
 plugins_check_programs = $(transparent_overlay_plugin_check_programs)
 plugins_tests = $(transparent_overlay_plugin_tests)
 
