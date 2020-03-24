@@ -17,7 +17,6 @@ class DataFetcher
 {
 private:
   Layer::Ptr layer;
-  int width;
   int height;
   int horTileCount;
   int verTileCount;
@@ -28,7 +27,7 @@ private:
 
 public:
   DataFetcher(Layer::Ptr const& layer,
-              int width, int height,
+              int height,
               int horTileCount, int verTileCount,
               SourcePresentation::Ptr sp,
               ThreadPool::WeakQueue::Ptr queue);
@@ -110,7 +109,7 @@ CompressedTileLine& Layer::getTileLine(int j)
 void Layer::fetchData(SourcePresentation::Ptr sp, ThreadPool::WeakQueue::Ptr queue)
 {
   DataFetcher df(shared_from_this<Layer>(),
-                 width, height,
+                 height,
                  horTileCount, verTileCount,
                  sp, queue);
   CpuBound()->schedule(df, DATAFETCH_PRIO, queue);
@@ -154,11 +153,11 @@ void Layer::close(ViewInterface::WeakPtr vi)
 /// DataFetcher
 
 DataFetcher::DataFetcher(Layer::Ptr const& layer,
-                         int width, int height,
+                         int height,
                          int horTileCount, int verTileCount,
                          SourcePresentation::Ptr sp,
                          ThreadPool::WeakQueue::Ptr queue)
-  : layer(layer), width(width), height(height),
+  : layer(layer), height(height),
     horTileCount(horTileCount), verTileCount(verTileCount),
     currentRow(0), sp(sp), threadPool(CpuBound()), queue(queue)
 {

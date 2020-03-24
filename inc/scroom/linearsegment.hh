@@ -9,6 +9,7 @@
 
 #include <ostream>
 #include <cmath>
+#include <type_traits>
 
 #include <boost/operators.hpp>
 
@@ -62,9 +63,10 @@ namespace Scroom
         }
       }
 
-      Segment(Segment<int> const& other)
+      Segment(typename std::enable_if<!std::is_same<int, std::remove_cv<T>>::value,Segment<int> const&>::type other)
         : start(other.getStart()), size(other.getSize())
-      {}
+      {
+      }
 
       Segment moveTo(value_type p) const
       {
