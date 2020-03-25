@@ -1,4 +1,4 @@
-FROM ubuntu:cosmic
+FROM ubuntu:focal
 
 MAINTAINER kees-jan.dijkzeul@iae.nl
 
