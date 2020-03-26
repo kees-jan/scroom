@@ -35,7 +35,6 @@ Makefile.in
 /libs/scroom/test/libscroom-gtests
 /libs/scroom/test/libscroom-tests
 /libs/threadpool/test/preconditions
-/libs/threadpool/test/preconditions
 /libs/threadpool/test/threadpool-tests
 /libs/tiled-bitmap/test/tiled-bitmap-tests
 /libs/tiled-bitmap/tools/measure-framerate
@@ -54,3 +53,4 @@ Makefile.in
 /doc/
 /.google
 test_results.xml
+/cmake-build-*
