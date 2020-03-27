@@ -1,12 +1,13 @@
 cmake_minimum_required(VERSION 3.15)
 
 # Set the project name to your project name, my project isn't very descriptive
-project(myproject CXX)
+project(Scroom LANGUAGES CXX)
 include(cmake/StandardProjectSettings.cmake)
 
 # Link this 'library' to set the c++ standard / compile-time options requested
 add_library(project_options INTERFACE)
 target_compile_features(project_options INTERFACE cxx_std_17)
+target_include_directories(project_options INTERFACE inc)
 
 # Link this 'library' to use the warnings specified in CompilerWarnings.cmake
 add_library(project_warnings INTERFACE)
@@ -26,8 +27,10 @@ enable_doxygen()
 # allow for static analysis options
 include(cmake/StaticAnalyzers.cmake)
 
-option(BUILD_SHARED_LIBS "Enable compilation of shared libraries" OFF)
-option(ENABLE_TESTING "Enable Test Builds" ON)
+option(BUILD_SHARED_LIBS "Enable compilation of shared libraries" ON)
+option(ENABLE_BOOST_TEST "Enable Boost Test builds" ON)
+option(ENABLE_GOOGLE_TEST "Enable Google Test builds" ON)
+option(ENABLE_SLOW_TESTS "Enable tests that take a lot of time" ON)
 
 # Very basic PCH example
 option(ENABLE_PCH "Enable Precompiled Headers" OFF)
@@ -39,11 +42,15 @@ if (ENABLE_PCH)
   target_precompile_headers(project_options INTERFACE <vector> <string> <map> <utility>)
 endif()
 
-
 # Set up some extra Conan dependencies based on our needs
 # before loading Conan
 set(CONAN_EXTRA_REQUIRES "")
 set(CONAN_EXTRA_OPTIONS "")
+
+if(ENABLE_GOOGLE_TEST)
+  set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES}
+          gtest/1.10.0)
+endif()
 
 if(CPP_STARTER_USE_IMGUI)
   set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES}
@@ -64,20 +71,26 @@ endif()
 include(cmake/Conan.cmake)
 run_conan()
 
-if(ENABLE_TESTING)
+if(ENABLE_BOOST_TEST OR ENABLE_GOOGLE_TEST)
   enable_testing()
-  message(
-    "Building Tests. Be sure to check out test/constexpr_tests for constexpr testing"
-  )
-  add_subdirectory(test)
+endif()
+
+if(ENABLE_BOOST_TEST)
+  message("Building Boost Tests.")
+endif()
+
+if(ENABLE_GOOGLE_TEST)
+  message("Building Google Tests.")
 endif()
 
 if(ENABLE_FUZZING)
   message(
     "Building Fuzz Tests, using fuzzing sanitizer https://www.llvm.org/docs/LibFuzzer.html"
   )
-  add_subdirectory(fuzz_test)
+  # add_subdirectory(fuzz_test)
 endif()
 
-
-add_subdirectory(src)
+add_subdirectory(External)
+add_subdirectory(libs)
+add_subdirectory(plugins)
+add_subdirectory(gui)
