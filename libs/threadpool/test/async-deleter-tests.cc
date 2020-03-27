@@ -21,7 +21,7 @@
 #include <scroom/semaphore.hh>
 
 #include "helpers.hh"
-#include "function-additor.hh"
+#include "scroom/function-additor.hh"
 
 using namespace boost::posix_time;
 using namespace Scroom;
@@ -55,7 +55,7 @@ BOOST_AUTO_TEST_CASE(deleter_deletes_asynchronously)
 
   Semaphore barrier2;
   Semaphore signal;
-  CpuBound()->schedule(pass(&barrier)+destroy(a)+clear(&signal));
+  CpuBound()->schedule(pass(&barrier2)+destroy(a)+clear(&signal));
   a.reset();
   barrier2.V();
   BOOST_CHECK(signal.P(long_timeout));

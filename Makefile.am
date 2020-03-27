@@ -204,6 +204,7 @@ libs_threadpool_test_threadpool_tests_CPPFLAGS = -I $(top_srcdir)/inc \
 
 libs_threadpool_test_threadpool_tests_SOURCES = \
 	libs/threadpool/test/main.cc \
+	libs/threadpool/test/async-deleter-tests.cc \
 	libs/threadpool/test/helpers.cc \
 	libs/threadpool/test/helpers.hh \
 	libs/threadpool/test/semaphore-tests.cc \
