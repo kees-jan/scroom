@@ -7,7 +7,8 @@ include(cmake/StandardProjectSettings.cmake)
 # Link this 'library' to set the c++ standard / compile-time options requested
 add_library(project_options INTERFACE)
 target_compile_features(project_options INTERFACE cxx_std_17)
-target_include_directories(project_options INTERFACE inc)
+target_include_directories(project_options INTERFACE inc ${PROJECT_BINARY_DIR})
+target_compile_definitions(project_options INTERFACE HAVE_CONFIG_H)
 
 # Link this 'library' to use the warnings specified in CompilerWarnings.cmake
 add_library(project_warnings INTERFACE)
@@ -31,6 +32,9 @@ option(BUILD_SHARED_LIBS "Enable compilation of shared libraries" ON)
 option(ENABLE_BOOST_TEST "Enable Boost Test builds" ON)
 option(ENABLE_GOOGLE_TEST "Enable Google Test builds" ON)
 option(ENABLE_SLOW_TESTS "Enable tests that take a lot of time" ON)
+option(MULTITHREADING "Use as many threads as needed" ON)
+option(DEBUG_TILES "Visualize internally used tiles" OFF)
+option(XML_TEST_OUTPUT "Have all Boost unittests report in xml format" OFF)
 
 # Very basic PCH example
 option(ENABLE_PCH "Enable Precompiled Headers" OFF)
@@ -90,7 +94,10 @@ if(ENABLE_FUZZING)
   # add_subdirectory(fuzz_test)
 endif()
 
+configure_file(cmake-config.h.in config.h)
+
 add_subdirectory(External)
+add_subdirectory(inc)
 add_subdirectory(libs)
 add_subdirectory(plugins)
 add_subdirectory(gui)

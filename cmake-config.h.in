@@ -1,0 +1,3 @@
+#cmakedefine MULTITHREADING
+#cmakedefine DEBUG_TILES
+#cmakedefine XML_TEST_OUTPUT
