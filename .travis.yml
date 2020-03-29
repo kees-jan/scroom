@@ -40,6 +40,8 @@ before_install:
   -in build_scripts/travis/config/travisci_rsa.enc -out build_scripts/travis/config/travisci_rsa -d
 - chmod 0600 build_scripts/travis/config/travisci_rsa
 - cp build_scripts/travis/config/travisci_rsa ~/.ssh/id_rsa
+install:
+- pip install --user conan cmake
 git:
   depth: 200
   
