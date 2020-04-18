@@ -1,3 +1,16 @@
+scroom (0.10-1) bionic; urgency=medium
+
+  * For more info see https://github.com/kees-jan/scroom/wiki
+
+ -- Kees-Jan Dijkzeul <kees-jan@dijkzeul.eu>  Sat, 18 Apr 2020 19:19:41 +0200
+
+scroom (0.10~rc2-2) xenial; urgency=medium
+
+  * Release candidate for version 0.10
+  * For more info see https://github.com/kees-jan/scroom/wiki
+
+ -- Kees-Jan Dijkzeul <kees-jan.dijkzeul@iae.nl>  Tue, 04 Sep 2018 20:16:14 +0200
+
 scroom (0.10~rc2-1) xenial; urgency=medium
 
   * Release candidate for version 0.10
