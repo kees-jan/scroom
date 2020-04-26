@@ -4,8 +4,6 @@ target_link_libraries(
 target_compile_definitions(scroom PRIVATE
         PLUGIN_DIR="Bla"
         TOP_SRCDIR="Bloe"
-        PACKAGE_DATA_DIR="eh"
-        PACKAGE_NAME="Scroom"
-        PACKAGE_VERSION="1.0")
+        PACKAGE_DATA_DIR="eh")
 
 install(TARGETS scroom)

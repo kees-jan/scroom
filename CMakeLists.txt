@@ -2,13 +2,18 @@ cmake_minimum_required(VERSION 3.15)
 
 # Set the project name to your project name, my project isn't very descriptive
 project(Scroom LANGUAGES CXX)
+
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake-modules")
+include(UseBackportedModules)
+include(GetGitRevisionDescription)
+
 include(cmake/StandardProjectSettings.cmake)
 
 # Link this 'library' to set the c++ standard / compile-time options requested
 add_library(project_options INTERFACE)
 target_compile_features(project_options INTERFACE cxx_std_17)
 target_include_directories(project_options INTERFACE inc ${PROJECT_BINARY_DIR})
-target_compile_definitions(project_options INTERFACE HAVE_CONFIG_H)
+target_compile_definitions(project_options INTERFACE HAVE_CONFIG_H HAVE_VERSION_H)
 
 # Link this 'library' to use the warnings specified in CompilerWarnings.cmake
 add_library(project_warnings INTERFACE)
@@ -27,6 +32,8 @@ enable_doxygen()
 
 # allow for static analysis options
 include(cmake/StaticAnalyzers.cmake)
+
+include(cmake/ProjectVersion.cmake)
 
 option(BUILD_SHARED_LIBS "Enable compilation of shared libraries" ON)
 option(ENABLE_BOOST_TEST "Enable Boost Test builds" ON)
