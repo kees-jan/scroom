@@ -1,6 +1,6 @@
 ATB=@abs_top_builddir@
 export SCROOM_DEV_MODE="yes"
-export SCROOM_PLUGIN_DIRS="/some/bogus/value:${ATB}/plugins/colormap/.libs:${ATB}/plugins/tiff/src/.libs:${ATB}/plugins/example/.libs:${ATB}/plugins/transparent-overlay/src/.libs"
+export SCROOM_PLUGIN_DIRS="/some/bogus/value:${ATB}/plugins/colormap/.libs:${ATB}/plugins/tiff/src/.libs:${ATB}/plugins/example/.libs:${ATB}/plugins/transparent-overlay/src/.libs:${ATB}/lib"
 
 if [ -z "$SCROOM_PATHS_SAVED" ]
 then
@@ -9,4 +9,4 @@ then
 fi
 
 # Seems to be not needed...
-export LD_LIBRARY_PATH="${ATB}/libs/util/src/.libs:${ATB}/libs/threadpool/src/.libs:${ATB}/libs/memory-manager/src/.libs:${ATB}/libs/tiled-bitmap/src/.libs:${ATB}/plugins/transparent-overlay/src/.libs:$SCROOM_SAVED_LIBRARY_PATH"
+export LD_LIBRARY_PATH="${ATB}/libs/util/src/.libs:${ATB}/libs/threadpool/src/.libs:${ATB}/libs/memory-manager/src/.libs:${ATB}/libs/tiled-bitmap/src/.libs:${ATB}/plugins/transparent-overlay/src/.libs:${ATB}/lib:$SCROOM_SAVED_LIBRARY_PATH"

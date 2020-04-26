@@ -2,5 +2,5 @@ add_library(spcolormap SHARED main.cc colormapplugin.cc colormapplugin.hh colorm
 target_link_libraries(
         spcolormap PRIVATE project_options project_warnings PUBLIC PkgConfig::gtk PkgConfig::cairo)
 
-install(TARGETS spcolormap DESTINATION lib/scroom)
+install(TARGETS spcolormap DESTINATION ${PLUGIN_INSTALL_LOCATION_RELATIVE})
 

@@ -2,4 +2,4 @@ add_library(sptransparentoverlay SHARED main.cc sizedeterminer.cc sizedeterminer
 target_link_libraries(
         sptransparentoverlay PRIVATE project_options project_warnings PUBLIC PkgConfig::gtk scroom_lib util)
 
-install(TARGETS sptransparentoverlay DESTINATION lib/scroom)
+install(TARGETS sptransparentoverlay DESTINATION ${PLUGIN_INSTALL_LOCATION_RELATIVE})

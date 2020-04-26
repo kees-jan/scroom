@@ -2,8 +2,8 @@ add_executable(scroom main.cc callbacks.cc callbacks.hh loader.cc loader.hh plug
 target_link_libraries(
         scroom PRIVATE project_options project_warnings PUBLIC PkgConfig::gtk PkgConfig::cairo PkgConfig::glade PkgConfig::gthread PkgConfig::gmodule Boost::system Boost::filesystem util)
 target_compile_definitions(scroom PRIVATE
-        PLUGIN_DIR="Bla"
-        TOP_SRCDIR="Bloe"
+        PLUGIN_DIR="${PLUGIN_INSTALL_LOCATION_ABSOLUTE}"
+        TOP_SRCDIR="${Scroom_SOURCE_DIR}"
         PACKAGE_DATA_DIR="eh")
 
 install(TARGETS scroom)
