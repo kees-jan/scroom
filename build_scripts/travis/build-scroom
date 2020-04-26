@@ -30,8 +30,8 @@ else
 
     if [ "${TRAVIS_JOB_NUMBER}" = "${TRAVIS_BUILD_NUMBER}.1" ]
     then
-        cmake .
-        cmake --build . -- -j4
-        ctest -j4
+        cmake -B /tmp/scroom .
+        cmake --build /tmp/scroom -j2
+        ( cd /tmp/scroom && ctest --no-tests=error -j2 )
     fi
 fi

@@ -7,7 +7,7 @@ script:
   echo TRAVIS_PULL_REQUEST=${TRAVIS_PULL_REQUEST} &&
   echo SHELL=$SHELL
 - ./build_scripts/travis/build-scroom
-sudo: required
+os: linux
 dist: bionic
 compiler:
 - clang
