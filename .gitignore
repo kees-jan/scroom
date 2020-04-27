@@ -8,6 +8,7 @@
 .libs
 .dirstamp
 /.scroom-version
+/inc/version.h
 Makefile
 Makefile.in
 /ar-lib

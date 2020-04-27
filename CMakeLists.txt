@@ -110,3 +110,7 @@ add_subdirectory(inc)
 add_subdirectory(libs)
 add_subdirectory(plugins)
 add_subdirectory(gui)
+
+set(CPACK_PACKAGE_VERSION "${GIT_PROJECT_VERSION}")
+set(CPACK_SOURCE_GENERATOR "TGZ")
+include(CPack)
