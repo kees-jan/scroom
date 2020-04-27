@@ -9,7 +9,10 @@ AC_INIT([Scroom],
         [https://github.com/kees-jan/scroom/issues/new],
         [scroom],
         [https://github.com/kees-jan/scroom/wiki])
-AM_INIT_AUTOMAKE([-Wall -Werror foreign silent-rules subdir-objects serial-tests])
+
+# The configure.ac from Kees-Jan also contained the serial-tests flag for using the serial test harness
+# That one seems to be deprecated though and it seems to work without it
+AM_INIT_AUTOMAKE([-Wall -Werror foreign silent-rules subdir-objects])
 AM_SILENT_RULES([yes])
 AM_PROG_AR
 LT_PREREQ([2.2])
@@ -18,6 +21,24 @@ LT_INIT([dlopen])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([inc/scroom/presentationinterface.hh])
 AC_CONFIG_HEADERS([config.h])
+
+# Detect the target system
+AC_CANONICAL_HOST
+case "${host_os}" in
+    linux*)
+        build_linux=yes
+        AC_MSG_NOTICE([detected linux environment])
+        ;;
+    cygwin*|mingw*|msys*)
+        build_windows=yes
+        AC_MSG_NOTICE([detected windows environment])
+        ;;
+    *)
+        AC_MSG_ERROR(["OS $host_os is not supported. Or maybe the check in configure.ac is just broken."])
+        ;;
+esac
+AM_CONDITIONAL([LINUX], [test "$build_linux" = "yes"])
+AM_CONDITIONAL([WINDOWS], [test "$build_windows" = "yes"])
 
 # Checks for programs.
 AC_PROG_CXX
@@ -49,7 +70,20 @@ SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Woverloaded-virtual])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wsign-promo])
 SCROOM_TEST_ISYSTEM
 
-LDFLAGS="$LDFLAGS -Wl,-z,defs"
+# MinGW doesn't support the -z flag
+AM_COND_IF([LINUX], 
+    [LDFLAGS="$LDFLAGS -Wl,-z,defs"])
+
+AM_COND_IF([WINDOWS], 
+    [AC_DEFINE([OS_mingw], [1], [Let make know we're on Windows])]) 
+
+# Make sure the configure script finds the compiler    
+AM_COND_IF([WINDOWS], 
+    [export PATH=$PATH:/c/msys64/mingw64/bin]) 
+    
+# The .pc files are at a weird place so make sure pkg-config finds them
+AM_COND_IF([WINDOWS], 
+    [export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/mingw64/lib/pkgconfig])    
 
 # Configurable features
 AC_ARG_ENABLE([doxygen-all-code],
