@@ -1,11 +1,12 @@
 cmake_minimum_required(VERSION 3.15)
 
-# Set the project name to your project name, my project isn't very descriptive
 project(Scroom LANGUAGES CXX)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake-modules")
 include(UseBackportedModules)
 include(GetGitRevisionDescription)
+
+include(cmake/ProjectVersion.cmake)
 
 include(cmake/StandardProjectSettings.cmake)
 
@@ -35,8 +36,6 @@ enable_doxygen()
 
 # allow for static analysis options
 include(cmake/StaticAnalyzers.cmake)
-
-include(cmake/ProjectVersion.cmake)
 
 option(BUILD_SHARED_LIBS "Enable compilation of shared libraries" ON)
 option(ENABLE_BOOST_TEST "Enable Boost Test builds" ON)
