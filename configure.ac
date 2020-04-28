@@ -38,7 +38,8 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign silent-rules subdir-objects])
 AM_SILENT_RULES([yes])
 AM_PROG_AR
 LT_PREREQ([2.2])
-LT_INIT([dlopen])
+# LT_INIT([dlopen])
+LT_INIT([win32-dll])
 
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([inc/scroom/presentationinterface.hh])
