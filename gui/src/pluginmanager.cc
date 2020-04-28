@@ -7,21 +7,13 @@
 
 #include "pluginmanager.hh"
 
-#ifdef _WIN32
-	#include <Fileapi.h>
-	#include <WinNT.h>
-#endif
-
-#include <boost/filesystem.hpp>
-
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/types.h>
-#include <dirent.h>
-
 #include <string>
+#include <sys/types.h>
 
 #include <scroom/plugininformationinterface.hh>
+#include <boost/filesystem.hpp>
 
 #include "callbacks.hh"
 
