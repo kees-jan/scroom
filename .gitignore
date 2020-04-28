@@ -54,3 +54,5 @@ Makefile.in
 /doc/
 /.google
 test_results.xml
+/.cproject
+/.settings
