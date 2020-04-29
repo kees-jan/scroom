@@ -26,7 +26,7 @@ namespace Scroom
   }
 }
 
-#if defined(OS_cygwin) || defined(OS_mingw) || defined(OS_msvc6)
+#if _WIN32
 #define __STRING(x)     #x
 #endif
 
