@@ -375,6 +375,8 @@ AC_SUBST([incscroomgmockdir], [$incscroomdir/gmock])
 
 AC_OUTPUT
 
+# There is a bug somewhere in the configure script that causes the string "none required" to be added to libraries as a compiler argument
+sed -e "s/none required//g" -i Makefile
 
 echo \
 "-------------------------------------------------
