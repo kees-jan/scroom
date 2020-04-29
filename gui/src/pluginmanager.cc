@@ -56,9 +56,16 @@ bool PluginManager::doWork() {
       printf("%s = %s\n", SCROOM_PLUGIN_DIRS.c_str(), path);
 
       for (char* i = path; *i != '\0'; i++) {
-        if (*i != ':') {
-          continue;
+// Windows uses semicolons for delimiting environment variables, Linux uses colons
+#ifdef _WIN32
+        if (*i != ';') {
+    	  continue;
         }
+#else
+		if (*i != ':') {
+		  continue;
+		}
+#endif
 
         *i = '\0';
         dirs.push_back(path);
