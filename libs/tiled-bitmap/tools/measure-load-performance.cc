@@ -10,6 +10,7 @@
 #endif
 
 #include <stdlib.h>
+#include <getopt.h>
 
 #include <gtk/gtk.h>
 
