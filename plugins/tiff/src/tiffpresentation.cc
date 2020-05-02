@@ -14,6 +14,8 @@
 #include <scroom/layeroperations.hh>
 #include <scroom/unused.hh>
 
+#include <iostream>
+
 TiffPresentation::TiffPresentation()
   : tif(NULL), height(0), width(0), bps(0), spp(0)
 {
@@ -47,52 +49,52 @@ void TiffPresentation::destroy()
 	if(1!=TIFFGetField(file, field, ##__VA_ARGS__)) \
 	  throw std::invalid_argument("Field not present in tiff file: " #field);
 
-bool TiffPresentation::load(const std::string& fileName)
+bool TiffPresentation::load(const std::string& fileName_)
 {
   try
   {
-    this->fileName = fileName;
-    tif = TIFFOpen(fileName.c_str(), "r");
+    this->fileName = fileName_;
+    tif = TIFFOpen(fileName_.c_str(), "r");
     if (!tif)
     {
       // Todo: report error
-      printf("PANIC: Failed to open file %s\n", fileName.c_str());
+      printf("PANIC: Failed to open file %s\n", fileName_.c_str());
       return false;
     }
 
-    uint16 spp;
+    uint16 spp_ = 0;
     if (1 != TIFFGetField(tif, TIFFTAG_SAMPLESPERPIXEL, &spp))
-      spp = 1; // Default value, according to tiff spec
-    if (spp != 1 && spp != 3)
+      spp_ = 1; // Default value, according to tiff spec
+    if (spp_ != 1 && spp_ != 3)
     {
       printf("PANIC: Samples per pixel is not 1 or 3, but %d. Giving up\n", spp);
       return false;
     }
-    this->spp = spp;
+    this->spp = spp_;
 
     TIFFGetFieldChecked(tif, TIFFTAG_IMAGEWIDTH, &width);
     TIFFGetFieldChecked(tif, TIFFTAG_IMAGELENGTH, &height);
 
-    uint16 bps;
+    uint16 bps_ = 0;
     if( 1 != TIFFGetField(tif, TIFFTAG_BITSPERSAMPLE, &bps))
     {
       if(spp==1)
-        bps = 1;
+        bps_ = 1;
       else
-        bps = 8;
+        bps_ = 8;
     }
     else
     {
       if(spp==3)
       {
-        if(bps!=8)
+        if(bps_!=8)
         {
-          printf("PANIC: Bits per sample is not 8, but %d. Giving up\n", bps);
+          printf("PANIC: Bits per sample is not 8, but %d. Giving up\n", bps_);
           return false;
         }
       }
     }
-    this->bps = bps;
+    this->bps = bps_;
 
     Colormap::Ptr originalColormap;
 
@@ -102,10 +104,10 @@ bool TiffPresentation::load(const std::string& fileName)
     {
       originalColormap = Colormap::create();
       originalColormap->name = "Original";
-      int count = 1 << bps;
+      size_t count = 1UL << bps_;
       originalColormap->colors.resize(count);
 
-      for (int i = 0; i < count; i++)
+      for (size_t i = 0; i < count; i++)
       {
         originalColormap->colors[i] = Color(1.0 * r[i] / 0xFFFF,
             1.0 * g[i] / 0xFFFF, 1.0 * b[i] / 0xFFFF);
@@ -178,9 +180,7 @@ bool TiffPresentation::load(const std::string& fileName)
       resolutionY = 1;
     }
     
-    printf("This bitmap has size %d*%d, aspect ratio %.1f*%.1f\n",
-           width, height, 1/resolutionX, 1/resolutionY);
-    
+    std::cout << "This bitmap has size " << width << "*" << height << ", aspect ratio " << 1 / resolutionX << "*" << 1 / resolutionY << std::endl;
     LayerSpec ls;
 
     if (spp == 3)
@@ -322,33 +322,38 @@ void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth,
   //        firstTile, (int)(firstTile+tiles.size()),
   //        tileWidth);
 
-  const tsize_t scanLineSize = TIFFScanlineSize(tif);
-  const int tileStride = tileWidth*spp*bps/8;
-  byte row[scanLineSize];
+  const uint32 startLine_ = static_cast<uint32>(startLine);
+  const size_t firstTile_ = static_cast<size_t>(firstTile);
+  const size_t scanLineSize = static_cast<size_t>(TIFFScanlineSize(tif));
+  const size_t tileStride = static_cast<size_t>(tileWidth*spp*bps/8);
+  byte* row = new byte[scanLineSize];
 
-  const int tileCount = tiles.size();
-  byte* dataPtr[tileCount];
-  for (int tile = 0; tile < tileCount; tile++)
+  const size_t tileCount = tiles.size();
+  byte** dataPtr = new byte*[tileCount];
+  for (size_t tile = 0; tile < tileCount; tile++)
   {
     dataPtr[tile] = tiles[tile]->data.get();
   }
 
-  for (int i = 0; i < lineCount; i++)
+  for (size_t i = 0; i < static_cast<size_t>(lineCount); i++)
   {
-    TIFFReadScanline(tif, (tdata_t) row, startLine + i);
+    TIFFReadScanline(tif, static_cast<tdata_t>(row), static_cast<uint32>(i) + startLine_);
 
-    for (int tile = 0; tile < tileCount - 1; tile++)
+    for (size_t tile = 0; tile < tileCount - 1; tile++)
     {
       memcpy(dataPtr[tile],
-             row + (firstTile + tile) * tileStride,
+             row + (firstTile_ + tile) * tileStride,
              tileStride);
       dataPtr[tile] += tileStride;
     }
     memcpy(dataPtr[tileCount - 1],
-        row + (firstTile + tileCount - 1) * tileStride,
-        scanLineSize - (firstTile + tileCount - 1) * tileStride);
+        row + (firstTile_ + tileCount - 1) * tileStride,
+        scanLineSize - (firstTile_ + tileCount - 1) * tileStride);
     dataPtr[tileCount - 1] += tileStride;
   }
+
+  delete[] row;
+  delete[] dataPtr;
 }
 
 void TiffPresentation::done()

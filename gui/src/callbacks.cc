@@ -99,7 +99,7 @@ void on_open_activate (GtkMenuItem*, gpointer user_data)
     filterInfo.mime_type = g_content_type_get_mime_type(g_file_info_get_content_type (fileInfo));
     filterInfo.display_name = g_file_info_get_display_name(fileInfo);
     filterInfo.contains =
-      (GtkFileFilterFlags)(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_MIME_TYPE);
+      static_cast<GtkFileFilterFlags>(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_MIME_TYPE);
     printf("Opening file %s\n", filterInfo.filename);
 
     try
@@ -437,16 +437,16 @@ void create_scroom(PresentationInterface::Ptr presentation)
   GtkEditable* xTextBox = GTK_EDITABLE(glade_xml_get_widget(xml, "x_textbox"));
   GtkEditable* yTextBox = GTK_EDITABLE(glade_xml_get_widget(xml, "y_textbox"));
 
-  g_signal_connect ((gpointer) scroom, "hide", G_CALLBACK (on_scroom_hide), view.get());
-  g_signal_connect ((gpointer) closeMenuItem, "activate", G_CALLBACK (on_close_activate), view.get());
-  g_signal_connect ((gpointer) quitMenuItem, "activate", G_CALLBACK (on_quit_activate), view.get());
-  g_signal_connect ((gpointer) openMenuItem, "activate", G_CALLBACK (on_open_activate), scroom);
-  g_signal_connect ((gpointer) fullScreenMenuItem, "activate", G_CALLBACK (on_fullscreen_activate), view.get());
-  g_signal_connect ((gpointer) zoomBox, "changed", G_CALLBACK (on_zoombox_changed), view.get());
-  g_signal_connect ((gpointer) vscrollbaradjustment, "value-changed", G_CALLBACK(on_scrollbar_value_changed), view.get());
-  g_signal_connect ((gpointer) hscrollbaradjustment, "value-changed", G_CALLBACK(on_scrollbar_value_changed), view.get());
-  g_signal_connect ((gpointer) xTextBox, "changed", G_CALLBACK(on_textbox_value_changed), view.get());
-  g_signal_connect ((gpointer) yTextBox, "changed", G_CALLBACK(on_textbox_value_changed), view.get());
+  g_signal_connect (static_cast<gpointer>(scroom), "hide", G_CALLBACK (on_scroom_hide), view.get());
+  g_signal_connect (static_cast<gpointer>(closeMenuItem), "activate", G_CALLBACK (on_close_activate), view.get());
+  g_signal_connect (static_cast<gpointer>(quitMenuItem), "activate", G_CALLBACK (on_quit_activate), view.get());
+  g_signal_connect (static_cast<gpointer>(openMenuItem), "activate", G_CALLBACK (on_open_activate), scroom);
+  g_signal_connect (static_cast<gpointer>(fullScreenMenuItem), "activate", G_CALLBACK (on_fullscreen_activate), view.get());
+  g_signal_connect (static_cast<gpointer>(zoomBox), "changed", G_CALLBACK (on_zoombox_changed), view.get());
+  g_signal_connect (static_cast<gpointer>(vscrollbaradjustment), "value-changed", G_CALLBACK(on_scrollbar_value_changed), view.get());
+  g_signal_connect (static_cast<gpointer>(hscrollbaradjustment), "value-changed", G_CALLBACK(on_scrollbar_value_changed), view.get());
+  g_signal_connect (static_cast<gpointer>(xTextBox), "changed", G_CALLBACK(on_textbox_value_changed), view.get());
+  g_signal_connect (static_cast<gpointer>(yTextBox), "changed", G_CALLBACK(on_textbox_value_changed), view.get());
   // g_signal_connect ((gpointer) cut, "activate",
   //                   G_CALLBACK (on_cut_activate),
   //                   view.get());
@@ -459,13 +459,13 @@ void create_scroom(PresentationInterface::Ptr presentation)
   // g_signal_connect ((gpointer) delete, "activate",
   //                   G_CALLBACK (on_delete_activate),
   //                   view.get());
-  g_signal_connect ((gpointer) aboutMenuItem, "activate", G_CALLBACK (on_about_activate), view.get());
-  g_signal_connect ((gpointer) drawingArea, "expose_event", G_CALLBACK (on_drawingarea_expose_event), view.get());
-  g_signal_connect ((gpointer) drawingArea, "configure_event", G_CALLBACK (on_drawingarea_configure_event), view.get());
-  g_signal_connect ((gpointer) drawingArea, "button-press-event", G_CALLBACK (on_button_press_event), view.get());
-  g_signal_connect ((gpointer) drawingArea, "button-release-event", G_CALLBACK (on_button_release_event), view.get());
-  g_signal_connect ((gpointer) drawingArea, "scroll-event", G_CALLBACK (on_scroll_event), view.get());
-  g_signal_connect ((gpointer) drawingArea, "motion-notify-event", G_CALLBACK (on_motion_notify_event), view.get());
+  g_signal_connect (static_cast<gpointer>(aboutMenuItem), "activate", G_CALLBACK (on_about_activate), view.get());
+  g_signal_connect (static_cast<gpointer>(drawingArea), "expose_event", G_CALLBACK (on_drawingarea_expose_event), view.get());
+  g_signal_connect (static_cast<gpointer>(drawingArea), "configure_event", G_CALLBACK (on_drawingarea_configure_event), view.get());
+  g_signal_connect (static_cast<gpointer>(drawingArea), "button-press-event", G_CALLBACK (on_button_press_event), view.get());
+  g_signal_connect (static_cast<gpointer>(drawingArea), "button-release-event", G_CALLBACK (on_button_release_event), view.get());
+  g_signal_connect (static_cast<gpointer>(drawingArea), "scroll-event", G_CALLBACK (on_scroll_event), view.get());
+  g_signal_connect (static_cast<gpointer>(drawingArea), "motion-notify-event", G_CALLBACK (on_motion_notify_event), view.get());
 }
 
 void on_newPresentationInterfaces_update(const std::map<NewPresentationInterface::Ptr, std::string>& newPresentationInterfaces)

@@ -44,8 +44,8 @@ namespace Scroom
         virtual PageList getPages();
       };
 
-      SwapBasedBlockAllocator::SwapBasedBlockAllocator(size_t count, size_t size)
-        : count(count), size(size), data((uint8_t*)malloc(count*size*sizeof(uint8_t)))
+      SwapBasedBlockAllocator::SwapBasedBlockAllocator(size_t count_, size_t size_)
+        : count(count_), size(size_), data(static_cast<uint8_t*>(malloc(count_*size_*sizeof(uint8_t))))
       {
         if(data==NULL)
           throw std::bad_alloc();

@@ -17,8 +17,8 @@ using namespace Scroom::MemoryBlobs;
 
 ////////////////////////////////////////////////////////////////////////
 /// CompressedTile
-CompressedTile::CompressedTile(int depth, int x, int y, int bpp, PageProvider::Ptr provider, TileStateInternal state)
-  : depth(depth), x(x), y(y), bpp(bpp), state(state), tile(), provider(provider), data(Blob::create(provider, TILESIZE*TILESIZE * bpp / 8))
+CompressedTile::CompressedTile(int depth_, int x_, int y_, int bpp_, PageProvider::Ptr provider_, TileStateInternal state_)
+  : depth(depth_), x(x_), y(y_), bpp(bpp_), state(state_), tile(), provider(provider_), data(Blob::create(provider_, static_cast<size_t>(TILESIZE*TILESIZE/8 * bpp_)))
 {
 }
 
@@ -79,7 +79,7 @@ ConstTile::Ptr CompressedTile::getConstTileAsync()
 Tile::Ptr CompressedTile::initialize()
 {
   Scroom::Utils::Stuff s;
-  Tile::Ptr tile;
+  Tile::Ptr tile_;
 
   bool didInitialize = false;
   {
@@ -95,9 +95,9 @@ Tile::Ptr CompressedTile::initialize()
   }
 
   if(didInitialize)
-    tile = getTileSync(); // Trigger notifyObservers(), without holding the lock
+    tile_ = getTileSync(); // Trigger notifyObservers(), without holding the lock
 
-  return tile;
+  return tile_;
 }
 
 void CompressedTile::reportFinished()
@@ -194,7 +194,7 @@ void CompressedTile::observerAdded(TileInitialisationObserver::Ptr const& observ
 void CompressedTile::observerAdded(TileLoadingObserver::Ptr const& observer, Scroom::Bookkeeping::Token const& token)
 {
   ConstTile::Ptr result = constTile.lock();
-  ThreadPool::Queue::Ptr queue = this->queue.lock();
+  ThreadPool::Queue::Ptr queue_ = this->queue.lock();
 
   if(!result)
   {
@@ -215,12 +215,12 @@ void CompressedTile::observerAdded(TileLoadingObserver::Ptr const& observer, Scr
 
     case TSI_NORMAL:
       // Start an asynchronous load
-      if(!queue)
+      if(!queue_)
       {
-        queue = ThreadPool::Queue::create();
-        this->queue = queue;
+        queue_ = ThreadPool::Queue::create();
+        this->queue = queue_;
       }
-      CpuBound()->schedule(boost::bind(&CompressedTile::do_load, this), LOAD_PRIO, queue);
+      CpuBound()->schedule(boost::bind(&CompressedTile::do_load, this), LOAD_PRIO, queue_);
       state = TSI_LOADING_ASYNCHRONOUSLY;
 
       break;
@@ -228,8 +228,8 @@ void CompressedTile::observerAdded(TileLoadingObserver::Ptr const& observer, Scr
   }
 
   // When the last observer goes away, cancel the load
-  if(queue)
-    token.add(queue);
+  if(queue_)
+    token.add(queue_);
 
   if(result)
     observer->tileLoaded(result);
@@ -245,11 +245,11 @@ void CompressedTile::cleanupState()
   }
 }
 
-void CompressedTile::notifyObservers(ConstTile::Ptr tile)
+void CompressedTile::notifyObservers(ConstTile::Ptr tile_)
 {
   for(TileLoadingObserver::Ptr observer: Observable<TileLoadingObserver>::getObservers())
   {
-    observer->tileLoaded(tile);
+    observer->tileLoaded(tile_);
   }
 }
 

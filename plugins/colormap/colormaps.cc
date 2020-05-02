@@ -52,7 +52,7 @@ namespace Scroom
           // all bad cases, the load() will fail :-)
 
           char* name = d->d_name;
-          int len = strlen(name);
+          size_t len = strlen(name);
           if (!strcmp(name + len - strlen(COLORMAPEXT), COLORMAPEXT))
           {
             Colormap::Ptr c = load(name);
@@ -122,7 +122,7 @@ namespace Scroom
           result = fgets(buffer, BUFFERSIZE, f);
           if (!result)
             throw std::exception();
-          unsigned int count = atoi(result);
+          size_t count = strtoul(result, nullptr, 10);
           if (count == 0)
             throw std::exception();
 

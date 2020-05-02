@@ -38,7 +38,7 @@ private:
   Semaphore* s2;
 
 public:
-  A(Semaphore* s1, Semaphore* s2) : s1(s1), s2(s2) {}
+  A(Semaphore* s1_, Semaphore* s2_) : s1(s1_), s2(s2_) {}
   ~A() { s1->P(); s2->V(); }
 };
 

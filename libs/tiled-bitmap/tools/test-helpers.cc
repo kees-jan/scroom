@@ -16,8 +16,8 @@ TestData::Ptr testData;
 
 ////////////////////////////////////////////////////////////////////////
 
-DummyColormapProvider::DummyColormapProvider(Colormap::Ptr colormap)
-  : colormap(colormap)
+DummyColormapProvider::DummyColormapProvider(Colormap::Ptr colormap_)
+  : colormap(colormap_)
 {}
 
 DummyColormapProvider::Ptr DummyColormapProvider::create(Colormap::Ptr colormap)
@@ -32,11 +32,11 @@ Colormap::Ptr DummyColormapProvider::getColormap()
 
 ////////////////////////////////////////////////////////////////////////
 
-TestData::TestData(DummyColormapProvider::Ptr colormapProvider, const LayerSpec& ls,
-                   TiledBitmapInterface::Ptr tbi, SourcePresentation::Ptr sp, int zoom)
-  : pi(ProgressInterfaceStub::create()), vi(ViewInterfaceStub::create(pi)), colormapProvider(colormapProvider), ls(ls), tbi(tbi), sp(sp), zoom(zoom)
+TestData::TestData(DummyColormapProvider::Ptr colormapProvider_, const LayerSpec& ls_,
+                   TiledBitmapInterface::Ptr tbi_, SourcePresentation::Ptr sp_, int zoom_)
+  : pi(ProgressInterfaceStub::create()), vi(ViewInterfaceStub::create(pi)), colormapProvider(colormapProvider_), ls(ls_), tbi(tbi_), sp(sp_), zoom(zoom_)
 {
-  tbi->open(vi);
+  tbi_->open(vi);
 }
 
 TestData::Ptr TestData::create(DummyColormapProvider::Ptr colormapProvider, const LayerSpec& ls,
@@ -88,8 +88,8 @@ void TestData::redraw(cairo_t* cr)
 
 ////////////////////////////////////////////////////////////////////////
 
-Sleep::Sleep(unsigned int secs)
-  : secs(secs), started(false)
+Sleep::Sleep(unsigned int secs_)
+  : secs(secs_), started(false)
 {
 }
 

@@ -10,6 +10,7 @@
 #endif
 
 #include <stdlib.h>
+#include <getopt.h>
 
 #include <gtk/gtk.h>
 
@@ -32,11 +33,11 @@ void usage(std::string me, std::string message=std::string())
 int main (int argc, char *argv[])
 {
   std::string me = argv[0];
-  char result;
+  int result;
 
   while ((result = getopt(argc, argv, ":h")) != -1)
   {
-    switch (result)
+    switch (static_cast<char>(result))
     {
     case 'h':
       usage(me);
@@ -61,7 +62,6 @@ int main (int argc, char *argv[])
   //   optind++;
   // }
 
-  g_thread_init(NULL);
   gdk_threads_init();
 
   gdk_threads_enter();

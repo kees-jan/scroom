@@ -71,8 +71,8 @@ namespace Scroom
     ////////////////////////////////////////////////////////////////////////
     // implementation
 
-    inline Page::Page(BlockInterface::Ptr bi, size_t id)
-      : bi(bi), id(id)
+    inline Page::Page(BlockInterface::Ptr bi_, size_t id_)
+      : bi(bi_), id(id_)
     {}
 
     inline RawPageData::Ptr Page::get()

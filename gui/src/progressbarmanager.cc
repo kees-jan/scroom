@@ -49,11 +49,11 @@ namespace
   ////////////////////////////////////////////////////////////////////////
   // ProgressBarPulser
 
-  void ProgressBarPulser::start(GtkProgressBar* progressBar)
+  void ProgressBarPulser::start(GtkProgressBar* progressBar_)
   {
     boost::mutex::scoped_lock lock(mut);
 
-    progressbars.push_back(progressBar);
+    progressbars.push_back(progressBar_);
 
     if(progressbars.size()==1)
     {
@@ -62,13 +62,13 @@ namespace
     }
   }
 
-  void ProgressBarPulser::stop(GtkProgressBar* progressBar)
+  void ProgressBarPulser::stop(GtkProgressBar* progressBar_)
   {
     boost::mutex::scoped_lock lock(mut);
 
     for(GtkProgressBar* &p: progressbars)
     {
-      if(p==progressBar)
+      if(p==progressBar_)
         p=NULL;
     }
   }
@@ -102,8 +102,8 @@ namespace
   }
 }
 
-ProgressBarManager::ProgressBarManager(GtkProgressBar* progressBar)
-  :progressBar(progressBar), isWaiting(false)
+ProgressBarManager::ProgressBarManager(GtkProgressBar* progressBar_)
+  :progressBar(progressBar_), isWaiting(false)
 {}
 
 ProgressBarManager::Ptr ProgressBarManager::create(GtkProgressBar* progressBar)
@@ -116,10 +116,10 @@ ProgressBarManager::~ProgressBarManager()
   stopWaiting();
 }
 
-void ProgressBarManager::setProgressBar(GtkProgressBar* progressBar)
+void ProgressBarManager::setProgressBar(GtkProgressBar* progressBar_)
 {
   stopWaiting();
-  this->progressBar = progressBar;
+  this->progressBar = progressBar_;
 }
 
 void ProgressBarManager::startWaiting()

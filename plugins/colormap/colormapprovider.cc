@@ -15,7 +15,7 @@ namespace
 {
   void on_colormap_selected(GtkTreeView *tv, gpointer user_data)
   {
-    Scroom::ColormapImpl::ColormapProvider* cmp = (Scroom::ColormapImpl::ColormapProvider*) user_data;
+    Scroom::ColormapImpl::ColormapProvider* cmp = static_cast<Scroom::ColormapImpl::ColormapProvider*>(user_data);
     cmp->on_colormap_selected(tv);
   }
 }
@@ -54,7 +54,7 @@ namespace Scroom
     ColormapProvider::ColormapProvider(Colormappable::Ptr c)
         : colormappable(c), colormaps(NULL)
     {
-      unsigned int numColors = c->getNumberOfColors();
+      size_t numColors = static_cast<size_t>(c->getNumberOfColors());
       std::list<Colormap::ConstPtr> maps =
           Colormaps::getInstance().getColormaps();
 
@@ -101,7 +101,7 @@ namespace Scroom
           gpointer* pointer = NULL;
           gtk_tree_model_get(GTK_TREE_MODEL(colormaps), &iter, COLUMN_POINTER,
               &pointer, -1);
-          Colormap::Ptr* colormap = (Colormap::Ptr*) pointer;
+          Colormap::Ptr* colormap = reinterpret_cast<Colormap::Ptr*>(pointer);
           delete colormap;
           gtk_list_store_remove(colormaps, &iter);
         }
@@ -119,7 +119,7 @@ namespace Scroom
       GtkCellRenderer* txt = GTK_CELL_RENDERER(gtk_cell_renderer_text_new());
       gtk_tree_view_insert_column_with_attributes(tv, -1, "Name", txt, "text",
           COLUMN_NAME, NULL);
-      g_signal_connect((gpointer)tv, "cursor_changed",
+      g_signal_connect(static_cast<gpointer>(tv), "cursor_changed",
           G_CALLBACK (::on_colormap_selected), this);
       views[vi] = tv;
 
@@ -152,7 +152,7 @@ namespace Scroom
             gpointer* pointer = NULL;
             gtk_tree_model_get(GTK_TREE_MODEL(colormaps), &iter, COLUMN_POINTER,
                 &pointer, -1);
-            Colormap::Ptr& colormap = *(Colormap::Ptr*) pointer;
+            Colormap::Ptr& colormap = *reinterpret_cast<Colormap::Ptr*>(pointer);
             c->setColormap(colormap);
           }
         }

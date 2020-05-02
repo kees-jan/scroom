@@ -38,32 +38,32 @@ public:
 ////////////////////////////////////////////////////////////////////////
 /// Layer
 
-Layer::Layer(TileInitialisationObserver::Ptr observer, int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider)
-  : depth(depth), width(layerWidth), height(layerHeight)
+Layer::Layer(TileInitialisationObserver::Ptr observer, int depth_, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider)
+  : depth(depth_), width(layerWidth), height(layerHeight)
 {
   horTileCount = (width+TILESIZE-1)/TILESIZE;
   verTileCount = (height+TILESIZE-1)/TILESIZE;
 
-  for(int j=0; j<verTileCount; j++)
+  for(size_t j=0; j<static_cast<size_t>(verTileCount); j++)
   {
     tiles.push_back(CompressedTileLine());
     CompressedTileLine& tl = tiles[j];
     for(int i=0; i<horTileCount; i++)
     {
-      CompressedTile::Ptr tile = CompressedTile::create(depth, i, j, bpp, provider);
+      CompressedTile::Ptr tile = CompressedTile::create(depth_, i, static_cast<int>(j), bpp, provider);
       registrations.push_back(tile->registerObserver(observer));
       tl.push_back(tile);
     }
   }
 
-  outOfBounds = CompressedTile::create(depth, -1, -1, bpp, provider, TSI_OUT_OF_BOUNDS);
+  outOfBounds = CompressedTile::create(depth_, -1, -1, bpp, provider, TSI_OUT_OF_BOUNDS);
   for(int i=0; i<horTileCount; i++)
   {
     lineOutOfBounds.push_back(outOfBounds);
   }
 
   printf("Layer %d (%d bpp), %d*%d, TileCount %d*%d\n",
-         depth, bpp, width, height, horTileCount, verTileCount);
+         depth_, bpp, width, height, horTileCount, verTileCount);
 }
 
 Layer::Ptr Layer::create(TileInitialisationObserver::Ptr observer, int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider)
@@ -86,7 +86,7 @@ CompressedTile::Ptr Layer::getTile(int i, int j)
   if(0<=i && i<horTileCount &&
      0<=j && j<verTileCount)
   {
-    return tiles[j][i];
+    return tiles[static_cast<size_t>(j)][static_cast<size_t>(i)];
   }
   else
   {
@@ -98,7 +98,7 @@ CompressedTileLine& Layer::getTileLine(int j)
 {
   if(0<=j && j<verTileCount)
   {
-    return tiles[j];
+    return tiles[static_cast<size_t>(j)];
   }
   else
   {
@@ -152,14 +152,14 @@ void Layer::close(ViewInterface::WeakPtr vi)
 ////////////////////////////////////////////////////////////////////////
 /// DataFetcher
 
-DataFetcher::DataFetcher(Layer::Ptr const& layer,
-                         int height,
-                         int horTileCount, int verTileCount,
-                         SourcePresentation::Ptr sp,
-                         ThreadPool::WeakQueue::Ptr queue)
-  : layer(layer), height(height),
-    horTileCount(horTileCount), verTileCount(verTileCount),
-    currentRow(0), sp(sp), threadPool(CpuBound()), queue(queue)
+DataFetcher::DataFetcher(Layer::Ptr const& layer_,
+                         int height_,
+                         int horTileCount_, int verTileCount_,
+                         SourcePresentation::Ptr sp_,
+                         ThreadPool::WeakQueue::Ptr queue_)
+  : layer(layer_), height(height_),
+    horTileCount(horTileCount_), verTileCount(verTileCount_),
+    currentRow(0), sp(sp_), threadPool(CpuBound()), queue(queue_)
 {
 }
 
@@ -174,7 +174,7 @@ void DataFetcher::operator()()
   std::vector<Tile::Ptr> tiles;
   for(int x = 0; x < horTileCount; x++)
   {
-    CompressedTile::Ptr ti = tileLine[x];
+    CompressedTile::Ptr ti = tileLine[static_cast<size_t>(x)];
     Scroom::Utils::Stuff s = ti->initialize();
     tiles.push_back(ti->getTileSync());
   }
@@ -184,7 +184,7 @@ void DataFetcher::operator()()
 
   for(int x = 0; x < horTileCount; x++)
   {
-    tileLine[x]->reportFinished();
+    tileLine[static_cast<size_t>(x)]->reportFinished();
   }
 
   currentRow++;

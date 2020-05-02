@@ -57,8 +57,8 @@ namespace
     Scroom::Utils::Rectangle<double> rect;
 
   protected:
-    PresentationInterfaceStub(Scroom::Utils::Rectangle<double> const& rect)
-      : rect(rect)
+    PresentationInterfaceStub(Scroom::Utils::Rectangle<double> const& rect_)
+      : rect(rect_)
     {}
 
   public:
@@ -85,22 +85,22 @@ namespace
     std::list<Scroom::Utils::Rectangle<double>> receivedRect;
 
   private:
-    ResizablePresentationInterfaceStub(Scroom::Utils::Rectangle<double> const& rect)
-      : PresentationInterfaceStub(rect)
+    ResizablePresentationInterfaceStub(Scroom::Utils::Rectangle<double> const& rect_)
+      : PresentationInterfaceStub(rect_)
     {}
 
   public:
     static Ptr create(Scroom::Utils::Rectangle<double> const& rect) { return Ptr(new ResizablePresentationInterfaceStub(rect)); }
 
-    virtual void setRect(ViewInterface::WeakPtr const& vi, Scroom::Utils::Rectangle<double> const& rect)
+    virtual void setRect(ViewInterface::WeakPtr const& vi, Scroom::Utils::Rectangle<double> const& rect_)
     {
       receivedVi.push_back(vi);
-      receivedRect.push_back(rect);
+      receivedRect.push_back(rect_);
     }
 
-    void CheckAllEqual(Scroom::Utils::Rectangle<double> const& rect)
+    void CheckAllEqual(Scroom::Utils::Rectangle<double> const& rect_)
     {
-      BOOST_CHECK_EQUAL(std::list<Scroom::Utils::Rectangle<double>>(receivedRect.size(), rect), receivedRect);
+      BOOST_CHECK_EQUAL(std::list<Scroom::Utils::Rectangle<double>>(receivedRect.size(), rect_), receivedRect);
     }
 
     bool Contains(ViewInterface::WeakPtr const& vi)

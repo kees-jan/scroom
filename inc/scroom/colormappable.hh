@@ -54,7 +54,7 @@ public:
   {
     Colormap::Ptr result=create();
     result->name="Default";
-    result->colors.reserve(n);
+    result->colors.reserve(static_cast<std::size_t>(n));
     result->colors.clear();
     double max = n-1;
     for(int i=0; i<n; i++)
@@ -68,7 +68,7 @@ public:
   {
     Colormap::Ptr result=create();
     result->name="0 is white";
-    result->colors.reserve(n);
+    result->colors.reserve(static_cast<std::size_t>(n));
     result->colors.clear();
     double max = n-1;
     for(int i=0; i<n; i++)

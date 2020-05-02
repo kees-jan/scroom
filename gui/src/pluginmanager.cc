@@ -49,23 +49,23 @@ bool PluginManager::doWork() {
     dirs.clear();
 
     if (!devMode) {
-    	dirs.push_back(PLUGIN_DIR);
+      dirs.push_back(PLUGIN_DIR);
     }
 
     if (path != nullptr) {
       printf("%s = %s\n", SCROOM_PLUGIN_DIRS.c_str(), path);
 
       for (char* i = path; *i != '\0'; i++) {
-// Windows uses semicolons for delimiting environment variables, Linux uses colons
-#ifdef _WIN32
-        if (*i != ';') {
-    	  continue;
-        }
-#else
-		if (*i != ':') {
-		  continue;
-		}
-#endif
+        // Windows uses semicolons for delimiting environment variables, Linux uses colons
+        #ifdef _WIN32
+          if (*i != ';') {
+            continue;
+          }
+        #else
+          if (*i != ':') {
+            continue;
+          }
+        #endif
 
         *i = '\0';
         dirs.push_back(path);
@@ -84,25 +84,25 @@ bool PluginManager::doWork() {
   case SCANNING_DIRECTORIES: {
     setStatusBarMessage("Scanning plugin directories");
     if (currentDir == dirs.end()) {
-    	state = LOADING_FILES;
-    	currentFile = files.begin();
-    	break;
+      state = LOADING_FILES;
+      currentFile = files.begin();
+      break;
     }
 
     printf("Scanning directory: %s\n", currentDir->c_str());
-	const char * folder = currentDir->c_str();
+    const char * folder = currentDir->c_str();
 
-	if (folder == nullptr) {
-		printf("Can't open directory...\n");
-		currentDir++;
-		break;
-	}
+    if (folder == nullptr) {
+      printf("Can't open directory...\n");
+      currentDir++;
+      break;
+    }
 
-	namespace fs = boost::filesystem;
-	for (const auto & entry : fs::directory_iterator(folder)) {
-    	if (fs::is_regular_file(entry) || fs::is_symlink(entry) || fs::is_other(entry)) {
-    		files.push_back(entry.path().generic_string());
-    	}
+    namespace fs = boost::filesystem;
+    for (const auto & entry : fs::directory_iterator(folder)) {
+      if (fs::is_regular_file(entry) || fs::is_symlink(entry) || fs::is_other(entry)) {
+        files.push_back(entry.path().generic_string());
+      }
     }
 
     currentDir++;
@@ -112,21 +112,21 @@ bool PluginManager::doWork() {
   case LOADING_FILES: {
     setStatusBarMessage("Loading Plugins");
     if (currentFile == files.end()) {
-    	state = DONE;
-    	break;
+      state = DONE;
+      break;
     }
 
     if (currentFile->compare(currentFile->size() - 3, 3, ".so") == 0) {
-    	// Only read .so files
+      // Only read .so files
         printf("Reading file: %s\n", currentFile->c_str());
-        GModule* plugin = g_module_open(currentFile->c_str(), (GModuleFlags) 0);
+        GModule* plugin = g_module_open(currentFile->c_str(), static_cast<GModuleFlags>(0));
         if (plugin) {
           // Need to pass a gpointer to g_module_symbol. If I pass a
           // PluginFunc, glib 2.16.6/gcc 4.2.4 will complain about
           // type-punned pointers.
           gpointer pgpi;
           if (g_module_symbol(plugin, "getPluginInformation", &pgpi)) {
-            PluginFunc gpi = (PluginFunc)pgpi;
+            PluginFunc gpi = reinterpret_cast<PluginFunc>(pgpi);
             if (gpi) {
               PluginInformationInterface::Ptr pi = (*gpi)();
               if (pi) {
@@ -158,7 +158,7 @@ bool PluginManager::doWork() {
         }
       }
     }
-  	currentFile++;
+    currentFile++;
     break;
   case DONE: {
     setStatusBarMessage("Done loading plugins");
@@ -178,9 +178,9 @@ void PluginManager::setStatusBarMessage(const char*)
   // printf("Statusbar update: %s\n", message);
 }
 
-void PluginManager::addHook(bool devMode)
+void PluginManager::addHook(bool devMode_)
 {
-  this->devMode = devMode;
+  this->devMode = devMode_;
   gtk_idle_add(on_idle, static_cast<WorkInterface*>(this));
   // progressbar = GTK_PROGRESS_BAR(lookup_widget(scroom, "progressbar"));
   // statusbar = GTK_STATUSBAR(lookup_widget(scroom, "statusbar"));

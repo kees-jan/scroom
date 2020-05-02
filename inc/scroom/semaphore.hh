@@ -30,8 +30,8 @@ namespace Scroom
     bool try_P();
   };
 
-  inline Semaphore::Semaphore(unsigned int count)
-    :count(count)
+  inline Semaphore::Semaphore(unsigned int count_)
+    :count(count_)
   {
   }
 
