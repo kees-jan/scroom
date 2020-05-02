@@ -38,8 +38,11 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign silent-rules subdir-objects])
 AM_SILENT_RULES([yes])
 AM_PROG_AR
 LT_PREREQ([2.2])
-# LT_INIT([dlopen])
+
+# This needs to be set manually for the correct platform. dlopen for Linux and win32-dll for Linux
+#LT_INIT([dlopen])
 LT_INIT([win32-dll])
+
 
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([inc/scroom/presentationinterface.hh])
@@ -74,6 +77,7 @@ SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wduplicated-cond])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wduplicated-branches])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wlogical-op])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wuseless-cast])
+#SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Werror])
 SCROOM_TEST_ISYSTEM
 
 # MinGW doesn't support the -z flag
@@ -384,6 +388,12 @@ AC_OUTPUT
 
 # There is a bug somewhere in the configure script that causes the string "none required" to be added to libraries as a compiler argument
 sed -e "s/none required//g" -i Makefile
+
+# Alright, this is nasty. I know. But I found no other way to get all the dependencies loaded as system libraries on Windows.
+# And if they're loaded as normal libraries, g++ floods the terminal with warnings during compilation, as it displays warnings for libraries then
+# So waht is happening here is that I'm replacing all occurrences of the string "-I/mingw" with "-isystem /mingw" in the Makefile
+AM_COND_IF([WINDOWS], 
+    [sed -e "s+-I/mingw+-isystem /mingw+g" -i Makefile])    
 
 echo \
 "-------------------------------------------------

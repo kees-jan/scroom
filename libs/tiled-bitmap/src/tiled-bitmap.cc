@@ -38,10 +38,10 @@ static Scroom::MemoryBlobs::PageProvider::Ptr createProvider(double width, doubl
   double guessedTileSizeAfterCompression = tileSize / 100;
   const size_t pagesize = 4096;
   const double pagesize_d = 4096.0;
-  size_t pagesPerBlock = static_cast<size_t>(std::max(ceil(guessedTileSizeAfterCompression / 10.0 / pagesize_d), 1));
+  size_t pagesPerBlock = static_cast<size_t>(std::max(ceil(guessedTileSizeAfterCompression / 10.0 / pagesize_d), 1.0));
 
   size_t blockSize = pagesPerBlock*pagesize;
-  size_t blockCount = static_cast<size_t>(std::max(ceil(tileCount / 10.0), 64));
+  size_t blockCount = static_cast<size_t>(std::max(ceil(tileCount / 10.0), 64.0));
 
   printf("Creating a PageProvider providing %zu blocks of %zu bytes\n", blockCount, blockSize);
   return Scroom::MemoryBlobs::PageProvider::create(blockCount, blockSize);
