@@ -99,11 +99,11 @@ int main (int argc, char *argv[])
   }
 
 #else
-  char result;
+  int result;
 
   while ((result = getopt(argc, argv, ":h")) != -1)
   {
-    switch (result)
+    switch (static_cast<char>(result))
     {
     case 'h':
       usage(me);
@@ -128,7 +128,6 @@ int main (int argc, char *argv[])
 #endif
 
   Scroom::GtkHelpers::useRecursiveGdkLock();
-  g_thread_init(NULL);
   gdk_threads_init();
 
   gdk_threads_enter();

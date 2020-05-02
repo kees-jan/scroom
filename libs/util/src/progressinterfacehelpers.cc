@@ -39,8 +39,8 @@ namespace Scroom
 
     ////////////////////////////////////////////////////////////////////////
 
-    ProgressInterfaceFromProgressStateInterfaceForwarder::ProgressInterfaceFromProgressStateInterfaceForwarder(ProgressStateInterface::Ptr child)
-      : child(child)
+    ProgressInterfaceFromProgressStateInterfaceForwarder::ProgressInterfaceFromProgressStateInterfaceForwarder(ProgressStateInterface::Ptr child_)
+      : child(child_)
     {
     }
 
@@ -77,8 +77,8 @@ namespace Scroom
 
     ////////////////////////////////////////////////////////////////////////
 
-    ProgressStateInterfaceFromProgressInterfaceForwarder::ProgressStateInterfaceFromProgressInterfaceForwarder(ProgressInterface::Ptr child)
-      : child(child)
+    ProgressStateInterfaceFromProgressInterfaceForwarder::ProgressStateInterfaceFromProgressInterfaceForwarder(ProgressInterface::Ptr child_)
+      : child(child_)
     {
     }
 
@@ -201,9 +201,9 @@ namespace Scroom
       return Ptr(new ProgressInterfaceBroadcaster::Unsubscriber(parent, child));
     }
 
-    ProgressInterfaceBroadcaster::Unsubscriber::Unsubscriber(ProgressInterfaceBroadcaster::Ptr const& parent,
-                                                               ProgressInterface::Ptr const& child)
-      : parent(parent), child(child)
+    ProgressInterfaceBroadcaster::Unsubscriber::Unsubscriber(ProgressInterfaceBroadcaster::Ptr const& parent_,
+                                                               ProgressInterface::Ptr const& child_)
+      : parent(parent_), child(child_)
     {
     }
 
@@ -223,11 +223,11 @@ namespace Scroom
       return Ptr(new ChildData());
     }
 
-    void ProgressInterfaceMultiplexer::ChildData::setProgress(State state, double progress)
+    void ProgressInterfaceMultiplexer::ChildData::setProgress(State state_, double progress_)
     {
       boost::mutex::scoped_lock l(mut);
-      this->state = state;
-      this->progress = progress;
+      this->state = state_;
+      this->progress = progress_;
     }
 
     void ProgressInterfaceMultiplexer::ChildData::clearFinished()
@@ -242,8 +242,8 @@ namespace Scroom
 
     ////////////////////////////////////////////////////////////////////////
 
-    ProgressInterfaceMultiplexer::Child::Child(ProgressInterfaceMultiplexer::Ptr parent, ChildData::Ptr data)
-      : parent(parent), data(data)
+    ProgressInterfaceMultiplexer::Child::Child(ProgressInterfaceMultiplexer::Ptr parent_, ChildData::Ptr data_)
+      : parent(parent_), data(data_)
     {}
 
     ProgressInterfaceMultiplexer::Child::~Child()
@@ -265,8 +265,8 @@ namespace Scroom
 
     ////////////////////////////////////////////////////////////////////////
 
-    ProgressInterfaceMultiplexer::ProgressInterfaceMultiplexer(ProgressInterface::Ptr parent)
-      : parent(ProgressStateInterfaceFromProgressInterfaceForwarder::create(parent))
+    ProgressInterfaceMultiplexer::ProgressInterfaceMultiplexer(ProgressInterface::Ptr parent_)
+      : parent(ProgressStateInterfaceFromProgressInterfaceForwarder::create(parent_))
     {}
 
     ProgressInterfaceMultiplexer::Ptr ProgressInterfaceMultiplexer::create(ProgressInterface::Ptr parent)

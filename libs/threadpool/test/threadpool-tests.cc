@@ -39,8 +39,8 @@ private:
 public:
   typedef boost::shared_ptr<A> Ptr;
 
-  A(Semaphore* s)
-    :s(s)
+  A(Semaphore* s_)
+    :s(s_)
   {}
 
   void operator()()
@@ -64,8 +64,8 @@ private:
 public:
   typedef boost::shared_ptr<B> Ptr;
 
-  B(Semaphore* s, R result)
-    :s(s), result(result)
+  B(Semaphore* s_, R result_)
+    :s(s_), result(result_)
   {}
 
   R operator()()
@@ -89,17 +89,18 @@ R no_op(Semaphore* s, R result)
 
 //////////////////////////////////////////////////////////////
 
-bool has_at_least_n_threads(ThreadPool* pool, int count)
+bool has_at_least_n_threads(ThreadPool* pool, int count_)
 {
-  if(count <= 0)
+  if(count_ <= 0)
     return true;
   else
   {
+    size_t count = static_cast<size_t>(count_);
     std::vector<Semaphore*> semaphores(count);
-    for(int i=0; i<count; i++)
+    for(size_t i=0; i<count; i++)
       semaphores[i] = new Semaphore(0);
 
-    for(int i=0; i<count-1; i++)
+    for(size_t i=0; i<count-1; i++)
       pool->schedule(pass(semaphores[i+1])+clear(semaphores[i]));
 
     // All tasks are blocked on semaphores[count-1]
@@ -116,7 +117,7 @@ bool has_at_least_n_threads(ThreadPool* pool, int count)
       // If there are too few threads, then all threads are still
       // blocked. This will ultimately block the ThreadPool destructor,
       // so we have to unblock them manually here.
-      for(int i=1; i<count; i++)
+      for(size_t i=1; i<count; i++)
         semaphores[i]->V();
     }
     return result;
@@ -137,7 +138,7 @@ BOOST_AUTO_TEST_SUITE(ThreadPool_class_Tests)
 BOOST_AUTO_TEST_CASE(work_gets_done)
 {
   Semaphore s(0);
-  ThreadPool pool(0);
+  ThreadPool pool(0, false);
   pool.schedule(clear(&s));
 
   // Work doesn't get done with no threads
@@ -152,7 +153,7 @@ BOOST_AUTO_TEST_CASE(work_gets_done_by_prio)
 {
   Semaphore high(0);
   Semaphore low(0);
-  ThreadPool pool(0);
+  ThreadPool pool(0, false);
   pool.schedule(clear(&low), PRIO_NORMAL);
   pool.schedule(pass(&low)+clear(&high), PRIO_HIGH);
 
@@ -169,19 +170,19 @@ BOOST_AUTO_TEST_CASE(work_gets_done_by_prio)
 
 BOOST_AUTO_TEST_CASE(construct_0_threads)
 {
-  ThreadPool pool(0);
+  ThreadPool pool(0, false);
   BOOST_CHECK(has_exactly_n_threads(&pool, 0));
 }
 
 BOOST_AUTO_TEST_CASE(construct_1_threads)
 {
-  ThreadPool pool(1);
+  ThreadPool pool(1, false);
   BOOST_CHECK(has_exactly_n_threads(&pool, 1));
 }
 
 BOOST_AUTO_TEST_CASE(construct_2_threads)
 {
-  ThreadPool pool(2);
+  ThreadPool pool(2, false);
   int expected = 2;
 #ifndef MULTITHREADING
   expected=1;
@@ -191,7 +192,7 @@ BOOST_AUTO_TEST_CASE(construct_2_threads)
 
 BOOST_AUTO_TEST_CASE(schedule_shared_pointer)
 {
-  ThreadPool pool(1);
+  ThreadPool pool(1, false);
   Semaphore a(0);
 
   pool.schedule(A::create(&a));
@@ -200,7 +201,7 @@ BOOST_AUTO_TEST_CASE(schedule_shared_pointer)
 
 BOOST_AUTO_TEST_CASE(schedule_future)
 {
-  ThreadPool pool(0);
+  ThreadPool pool(0, false);
   Semaphore a(0);
 
   boost::unique_future<int> result(pool.schedule<int>(boost::bind(no_op<int>, &a, 42)));
@@ -215,7 +216,7 @@ BOOST_AUTO_TEST_CASE(schedule_future)
 
 BOOST_AUTO_TEST_CASE(schedule_shared_pointer_with_future)
 {
-  ThreadPool pool(0);
+  ThreadPool pool(0, false);
   Semaphore a(0);
 
   boost::unique_future<bool> result(pool.schedule<bool,B<bool> >(B<bool>::create(&a, false)));
@@ -237,7 +238,7 @@ BOOST_AUTO_TEST_SUITE(CpuBound_Tests)
 BOOST_AUTO_TEST_CASE(verify_threadcount)
 {
   ThreadPool::Ptr t = CpuBound();
-  int expected = boost::thread::hardware_concurrency();
+  int expected = static_cast<int>(boost::thread::hardware_concurrency());
 #ifndef MULTITHREADING
   expected=1;
 #endif

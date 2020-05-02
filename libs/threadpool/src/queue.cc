@@ -51,7 +51,7 @@ void QueueImpl::jobFinished()
 int QueueImpl::getCount()
 {
   boost::mutex::scoped_lock lock(mut);
-  return count;
+  return static_cast<int>(count);
 }
 
 ////////////////////////////////////////////////////////////////////////

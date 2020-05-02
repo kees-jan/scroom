@@ -44,11 +44,11 @@ namespace Scroom
         void add(const Stuff& s)
         { l.push_back(s); }
 
-        void add(const StuffList l)
-        { this->l.insert(this->l.end(), l.begin(), l.end()); }
+        void add(const StuffList l_)
+        { this->l.insert(this->l.end(), l_.begin(), l_.end()); }
 
-        void merge(StuffList& l)
-        { this->l.splice(this->l.end(), l); }
+        void merge(StuffList& l_)
+        { this->l.splice(this->l.end(), l_); }
 
         void merge(Ptr& rhs)
         { merge(rhs->l); }
@@ -76,8 +76,8 @@ namespace Scroom
         K k;
 
       protected:
-        MapTokenImpl(boost::shared_ptr<Scroom::Bookkeeping::MapBase<K,V> > map, const K& k)
-          : map(map), k(k)
+        MapTokenImpl(boost::shared_ptr<Scroom::Bookkeeping::MapBase<K,V> > map_, const K& k_)
+          : map(map_), k(k_)
         {}
 
       public:
@@ -109,8 +109,8 @@ namespace Scroom
         WeakToken token;
 
       protected:
-        ValueType(V value)
-          : value(value)
+        ValueType(V value_)
+          : value(value_)
         {}
 
       public:
@@ -128,8 +128,8 @@ namespace Scroom
         VTPtr pv;
 
       public:
-        LValue(VTPtr pv)
-          :pv(pv)
+        LValue(VTPtr pv_)
+          :pv(pv_)
         {}
 
         LValue& operator=(const V& v)

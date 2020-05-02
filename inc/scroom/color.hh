@@ -47,13 +47,13 @@ public:
   {}
 
   /** Constructor. Use the given RGB values */
-  Color(double red, double green, double blue, double alpha=1.0)
-    : alpha(alpha), red(red), green(green), blue(blue)
+  Color(double red_, double green_, double blue_, double alpha_=1.0)
+    : alpha(alpha_), red(red_), green(green_), blue(blue_)
   {}
 
   /** Constructor. Create the given gray value */
-  explicit Color(double gray, double alpha=1.0)
-    : alpha(alpha), red(gray), green(gray), blue(gray)
+  explicit Color(double gray, double alpha_=1.0)
+    : alpha(alpha_), red(gray), green(gray), blue(gray)
   {}
 
   Color& operator+=(const Color& rhs)
@@ -65,11 +65,20 @@ public:
   Color& operator*=(double d)
   { alpha *= d; red *= d; green *= d; blue *= d; return *this; }
 
-  uint32_t getRGB24() const
-  { return 0xFF000000 | byteFromDouble(red)<<16 | byteFromDouble(green)<<8 | byteFromDouble(blue) <<0; }
+  uint32_t getRGB24() const {
+    uint32_t r = byteFromDouble(red);
+    uint32_t g = byteFromDouble(green);
+    uint32_t b = byteFromDouble(blue);
+    return 0xFF000000 | r << 16 | g << 8 | b;
+  }
 
-  uint32_t getARGB32() const
-  { return byteFromDouble(alpha)<<24 | byteFromDouble(red)<<16 | byteFromDouble(green)<<8 | byteFromDouble(blue) <<0; }
+  uint32_t getARGB32() const {
+    uint32_t a = byteFromDouble(alpha);
+    uint32_t r = byteFromDouble(red);
+    uint32_t g = byteFromDouble(green);
+    uint32_t b = byteFromDouble(blue);
+    return a << 24 | r << 16 | g << 8 | b;
+  }
 
   void setColor(cairo_t* cr) const
   { cairo_set_source_rgba(cr, red, green, blue, alpha); }
@@ -86,11 +95,11 @@ public:
     return Color(L>0.179?0:1);
   }
 
-  Color& setAlpha(double alpha)
-  { return *this *= alpha; }
+  Color& setAlpha(double alpha_)
+  { return *this *= alpha_; }
 
-  Color setAlpha(double alpha) const
-  { return Color(*this).setAlpha(alpha); }
+  Color setAlpha(double alpha_) const
+  { return Color(*this).setAlpha(alpha_); }
 };
 
 inline Color mix(const Color& a, const Color& b, double alpha)

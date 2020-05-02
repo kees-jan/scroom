@@ -28,8 +28,8 @@ namespace
     ColormapHelper::Ptr helper;
     int expectedColors;
 
-    Data(int expectedColors, ColormapHelper::Ptr const& helper)
-      : helper(helper), expectedColors(expectedColors)
+    Data(int expectedColors_, ColormapHelper::Ptr const& helper_)
+      : helper(helper_), expectedColors(expectedColors_)
     {}
   };
 

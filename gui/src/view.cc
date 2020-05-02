@@ -89,28 +89,28 @@ static void on_newWindow_activate(GtkMenuItem*, gpointer user_data)
 
 ////////////////////////////////////////////////////////////////////////
 
-View::View(GladeXML* scroomXml)
-  : scroomXml(scroomXml), presentation(), sidebarManager(),
+View::View(GladeXML* scroomXml_)
+  : scroomXml(scroomXml_), presentation(), sidebarManager(),
     drawingAreaWidth(0), drawingAreaHeight(0),
     zoom(0), x(0), y(0), measurement(NULL), modifiermove(0)
 {
   PluginManager::Ptr pluginManager = PluginManager::getInstance();
-  window = GTK_WINDOW(glade_xml_get_widget(scroomXml, "scroom"));
-  drawingArea = glade_xml_get_widget(scroomXml, "drawingarea");
-  vscrollbar = GTK_VSCROLLBAR(glade_xml_get_widget(scroomXml, "vscrollbar"));
-  hscrollbar = GTK_HSCROLLBAR(glade_xml_get_widget(scroomXml, "hscrollbar"));
+  window = GTK_WINDOW(glade_xml_get_widget(scroomXml_, "scroom"));
+  drawingArea = glade_xml_get_widget(scroomXml_, "drawingarea");
+  vscrollbar = GTK_VSCROLLBAR(glade_xml_get_widget(scroomXml_, "vscrollbar"));
+  hscrollbar = GTK_HSCROLLBAR(glade_xml_get_widget(scroomXml_, "hscrollbar"));
   vscrollbaradjustment = gtk_range_get_adjustment(GTK_RANGE(vscrollbar));
   hscrollbaradjustment = gtk_range_get_adjustment(GTK_RANGE(hscrollbar));
-  vruler = GTK_RULER(glade_xml_get_widget(scroomXml, "vruler"));
-  hruler = GTK_RULER(glade_xml_get_widget(scroomXml, "hruler"));
-  xTextBox = GTK_ENTRY(glade_xml_get_widget(scroomXml, "x_textbox"));
-  yTextBox = GTK_ENTRY(glade_xml_get_widget(scroomXml, "y_textbox"));
+  vruler = GTK_RULER(glade_xml_get_widget(scroomXml_, "vruler"));
+  hruler = GTK_RULER(glade_xml_get_widget(scroomXml_, "hruler"));
+  xTextBox = GTK_ENTRY(glade_xml_get_widget(scroomXml_, "x_textbox"));
+  yTextBox = GTK_ENTRY(glade_xml_get_widget(scroomXml_, "y_textbox"));
 
-  menubar = GTK_WIDGET(glade_xml_get_widget(scroomXml, "menubar"));
-  statusArea = GTK_WIDGET(glade_xml_get_widget(scroomXml, "status_area"));
-  toolbarArea = GTK_WIDGET(glade_xml_get_widget(scroomXml, "toolbar_area"));
+  menubar = GTK_WIDGET(glade_xml_get_widget(scroomXml_, "menubar"));
+  statusArea = GTK_WIDGET(glade_xml_get_widget(scroomXml_, "status_area"));
+  toolbarArea = GTK_WIDGET(glade_xml_get_widget(scroomXml_, "toolbar_area"));
 
-  zoomBox = GTK_COMBO_BOX(glade_xml_get_widget(scroomXml, "zoomboxcombo"));
+  zoomBox = GTK_COMBO_BOX(glade_xml_get_widget(scroomXml_, "zoomboxcombo"));
   zoomItems = gtk_list_store_new(N_COLUMNS, G_TYPE_STRING, G_TYPE_INT);
 
   gtk_combo_box_set_model(zoomBox, GTK_TREE_MODEL(zoomItems));
@@ -122,15 +122,15 @@ View::View(GladeXML* scroomXml)
                                  "text", COLUMN_TEXT,
                                  NULL);
 
-  progressBar = GTK_PROGRESS_BAR(glade_xml_get_widget(scroomXml, "progressbar"));
+  progressBar = GTK_PROGRESS_BAR(glade_xml_get_widget(scroomXml_, "progressbar"));
   progressBarManager = ProgressBarManager::create(progressBar);
-  statusBar = GTK_STATUSBAR(glade_xml_get_widget(scroomXml, "statusbar"));
+  statusBar = GTK_STATUSBAR(glade_xml_get_widget(scroomXml_, "statusbar"));
   statusBarContextId = gtk_statusbar_get_context_id(statusBar, "View");
 
-  GtkWidget* panelWindow = glade_xml_get_widget(scroomXml, "panelWindow");
-  GtkBox* panel = GTK_BOX(glade_xml_get_widget(scroomXml, "panel"));
+  GtkWidget* panelWindow = glade_xml_get_widget(scroomXml_, "panelWindow");
+  GtkBox* panel = GTK_BOX(glade_xml_get_widget(scroomXml_, "panel"));
   sidebarManager.setWidgets(panelWindow, panel);
-  toolBar = GTK_TOOLBAR(glade_xml_get_widget(scroomXml, "toolbar"));
+  toolBar = GTK_TOOLBAR(glade_xml_get_widget(scroomXml_, "toolbar"));
   toolBarSeparator = NULL;
   toolBarCount = 0;
 
@@ -230,7 +230,7 @@ void View::clearPresentation()
   setPresentation(PresentationInterface::Ptr()); // null
 }
 
-void View::setPresentation(PresentationInterface::Ptr presentation)
+void View::setPresentation(PresentationInterface::Ptr presentation_)
 {
   View::Ptr me = shared_from_this<View>();
 
@@ -240,13 +240,13 @@ void View::setPresentation(PresentationInterface::Ptr presentation)
     this->presentation.reset();
   }
 
-  this->presentation = presentation;
+  this->presentation = presentation_;
 
   if(this->presentation)
   {
-    presentation->open(me);
-    presentationRect = presentation->getRect();
-    std::string s = presentation->getTitle();
+    presentation_->open(me);
+    presentationRect = presentation_->getRect();
+    std::string s = presentation_->getTitle();
     if(s.length())
       s = "Scroom - " + s;
     else
@@ -259,12 +259,12 @@ void View::setPresentation(PresentationInterface::Ptr presentation)
   invalidate();
 }
 
-void View::updateScrollbar(GtkAdjustment* adj, int zoom, double value, double presentationStart, double presentationSize, double windowSize)
+void View::updateScrollbar(GtkAdjustment* adj, int zoom_, double value, double presentationStart, double presentationSize, double windowSize)
 {
-  if(zoom>=0)
+  if(zoom_>=0)
   {
     // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
-    int pixelSize = 1<<zoom;
+    int pixelSize = 1<<zoom_;
     presentationStart -= windowSize/pixelSize/2;
     presentationSize += windowSize/pixelSize;
 
@@ -274,7 +274,7 @@ void View::updateScrollbar(GtkAdjustment* adj, int zoom, double value, double pr
   else
   {
     // Zooming out. Smallest step is 1 window-pixel, which is more than one presentation-pixel
-    int pixelSize = 1<<(-zoom);
+    int pixelSize = 1<<(-zoom_);
     presentationStart -= windowSize*pixelSize/2;
     presentationSize += windowSize*pixelSize;
 
@@ -343,8 +343,8 @@ void View::updateZoom()
 {
   if(presentation)
   {
-    int presentationHeight = presentationRect.height();
-    int presentationWidth = presentationRect.width();
+    int presentationHeight = static_cast<int>(presentationRect.height());
+    int presentationWidth = static_cast<int>(presentationRect.width());
     int minZoom = 0;
 
     while(presentationHeight > drawingAreaHeight/2 || presentationWidth > drawingAreaWidth/2)
@@ -356,20 +356,20 @@ void View::updateZoom()
 
     gtk_widget_set_sensitive(GTK_WIDGET(zoomBox), true);
 
-    int zMax = MaxZoom - minZoom;
-    zMax = std::max(zMax, 1+MaxZoom-zoom);
-    zMax = std::min((size_t)zMax, sizeof(zoomfactor)/sizeof(zoomfactor[0]));
+    size_t zMax = static_cast<size_t>(MaxZoom - minZoom);
+    zMax = std::max(zMax, 1 + static_cast<size_t>(MaxZoom - zoom));
+    zMax = std::min(zMax, sizeof(zoomfactor)/sizeof(zoomfactor[0]));
 
     gtk_list_store_clear(zoomItems);
-    for(int z=0; z<zMax; z++)
+    for(size_t z=0; z<zMax; z++)
     {
       GtkTreeIter iter;
-      gtk_list_store_insert_with_values(zoomItems, &iter, z,
+      gtk_list_store_insert_with_values(zoomItems, &iter, static_cast<gint>(z),
                                         COLUMN_TEXT, zoomfactor[z],
                                         COLUMN_ZOOM, MaxZoom-z,
                                         -1);
 
-      if(zoom == MaxZoom-z)
+      if(static_cast<size_t>(zoom) == MaxZoom-z)
       {
         gtk_combo_box_set_active_iter(zoomBox, &iter);
       }
@@ -433,7 +433,7 @@ void View::on_newPresentationInterfaces_update(const std::map<NewPresentationInt
       gtk_widget_show (menu_item);
       gtk_container_add (GTK_CONTAINER (new_menu), menu_item);
 
-      g_signal_connect ((gpointer) menu_item, "activate", G_CALLBACK (on_new_activate), cur->first.get());
+      g_signal_connect (static_cast<gpointer>(menu_item), "activate", G_CALLBACK (on_new_activate), cur->first.get());
     }
   }
 }
@@ -506,7 +506,7 @@ void View::on_scrollwheel(GdkEventScroll* event)
 
       if(foundZoom==newZoom)
       {
-        on_zoombox_changed(newZoom, event->x, event->y);
+        on_zoombox_changed(newZoom, static_cast<int>(event->x), static_cast<int>(event->y));
         gtk_combo_box_set_active_iter(zoomBox, &iter);
         break;
       }
@@ -613,11 +613,11 @@ void View::on_scrollbar_value_changed(GtkAdjustment* adjustment)
 
   if(adjustment == vscrollbaradjustment)
   {
-    newy = (int)gtk_adjustment_get_value(adjustment);
+    newy = static_cast<int>(gtk_adjustment_get_value(adjustment));
   }
   else
   {
-    newx = (int)gtk_adjustment_get_value(adjustment);
+    newx = static_cast<int>(gtk_adjustment_get_value(adjustment));
   }
 
   updateXY(newx, newy, SCROLLBAR);
@@ -692,8 +692,8 @@ void View::on_motion_notify(GdkEventMotion* event)
     else
     {
       const int pixelSize=1<<-zoom;
-      newx-=(event->x-cachedPoint.x)*pixelSize;
-      newy-=(event->y-cachedPoint.y)*pixelSize;
+      newx-=static_cast<int>((event->x-cachedPoint.x)*pixelSize);
+      newy-=static_cast<int>((event->y-cachedPoint.y)*pixelSize);
       cachedPoint = eventToPoint(event);
     }
 
@@ -828,13 +828,13 @@ GdkPoint View::presentationPointToWindowPoint(GdkPoint pp)
 
 GdkPoint View::eventToPoint(GdkEventButton* event)
 {
-  GdkPoint result = {(gint)event->x, (gint)event->y};
+  GdkPoint result = {static_cast<gint>(event->x), static_cast<gint>(event->y)};
   return result;
 }
 
 GdkPoint View::eventToPoint(GdkEventMotion* event)
 {
-  GdkPoint result = {(gint)event->x, (gint)event->y};
+  GdkPoint result = {static_cast<gint>(event->x), static_cast<gint>(event->y)};
   return result;
 }
 
@@ -906,7 +906,7 @@ void View::updateNewWindowMenu()
       cur->second = m;
       gtk_container_add(GTK_CONTAINER(newWindow_menu), m);
 
-      g_signal_connect ((gpointer)m, "activate",
+      g_signal_connect (static_cast<gpointer>(m), "activate",
                         G_CALLBACK (on_newWindow_activate),
                         const_cast<PresentationInterface::WeakPtr*>(&cur->first));
     }
@@ -946,17 +946,17 @@ void View::updateNewWindowMenu()
   g_object_unref(G_OBJECT(newWindow_menu));
 }
 
-void View::updateXY(int x, int y, LocationChangeCause source)
+void View::updateXY(int x_, int y_, LocationChangeCause source)
 {
   bool changed = false;
-  if(this->x != x)
+  if(this->x != x_)
   {
-    this->x = x;
+    this->x = x_;
     changed = true;
   }
-  if(this->y != y)
+  if(this->y != y_)
   {
-    this->y = y;
+    this->y = y_;
     changed = true;
   }
 

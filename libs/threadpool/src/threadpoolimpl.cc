@@ -72,7 +72,7 @@ namespace
     boost::shared_ptr<T> t;
 
   public:
-    NotifyThreadList(boost::shared_ptr<T> t, const std::string& s) : t(t) { ThreadList::instance()->add(t, s); }
+    NotifyThreadList(boost::shared_ptr<T> t_, const std::string& s) : t(t_) { ThreadList::instance()->add(t_, s); }
 
     operator boost::shared_ptr<T> () { return t; }
   };
@@ -90,11 +90,11 @@ namespace
     std::list<std::pair<boost::weak_ptr<void>, std::string> >::iterator cur = pointers.begin();
     while(cur != pointers.end())
     {
-      const int count = cur->first.use_count();
+      const long count = cur->first.use_count();
 
       if(count)
       {
-        printf("%d references to %s remaining\n", count, cur->second.c_str());
+        printf("%ld references to %s remaining\n", count, cur->second.c_str());
         cur++;
       }
       else
@@ -106,7 +106,7 @@ namespace
   {
     const boost::posix_time::millisec short_timeout(1);
     const boost::posix_time::millisec timeout(250);
-    int count=0;
+    size_t count=0;
 
     {
       boost::mutex::scoped_lock lock(mut);
@@ -129,7 +129,7 @@ namespace
     {
       boost::mutex::scoped_lock lock(mut);
       dumpPointers();
-      printf("Waiting for %d threads to terminate", count);
+      printf("Waiting for %zu threads to terminate", count);
 
       std::list<ThreadPool::ThreadPtr>::iterator cur = threads.begin();
       while(cur != threads.end())
@@ -177,8 +177,8 @@ namespace
 /// ThreadPool::PrivateData
 ////////////////////////////////////////////////////////////////////////
 
-ThreadPool::PrivateData::PrivateData(bool completeAllJobsBeforeDestruction)
-  : jobcount(0), alive(true), completeAllJobsBeforeDestruction(completeAllJobsBeforeDestruction), defaultQueue(ThreadPool::defaultQueue())
+ThreadPool::PrivateData::PrivateData(bool completeAllJobsBeforeDestruction_)
+  : jobcount(0), alive(true), completeAllJobsBeforeDestruction(completeAllJobsBeforeDestruction_), defaultQueue(ThreadPool::defaultQueue())
 {
 }
 
@@ -194,7 +194,7 @@ ThreadPool::PrivateData::Ptr ThreadPool::PrivateData::create(bool completeAllJob
 ThreadPool::ThreadPool(bool completeAllJobsBeforeDestruction)
   : priv(PrivateData::create(completeAllJobsBeforeDestruction))
 {
-  int count = boost::thread::hardware_concurrency();
+  size_t count = boost::thread::hardware_concurrency();
 #ifndef MULTITHREADING
   if(count>1)
     count=1;
@@ -202,7 +202,7 @@ ThreadPool::ThreadPool(bool completeAllJobsBeforeDestruction)
   add(count);
 }
 
-ThreadPool::ThreadPool(int count, bool completeAllJobsBeforeDestruction)
+ThreadPool::ThreadPool(size_t count, bool completeAllJobsBeforeDestruction)
   : priv(PrivateData::create(completeAllJobsBeforeDestruction))
 {
 #ifndef MULTITHREADING
@@ -217,7 +217,7 @@ ThreadPool::Ptr ThreadPool::create(bool completeAllJobsBeforeDestruction)
   return ThreadPool::Ptr(new ThreadPool(completeAllJobsBeforeDestruction));
 }
 
-ThreadPool::Ptr ThreadPool::create(int count, bool completeAllJobsBeforeDestruction)
+ThreadPool::Ptr ThreadPool::create(size_t count, bool completeAllJobsBeforeDestruction)
 {
   return ThreadPool::Ptr(new ThreadPool(count, completeAllJobsBeforeDestruction));
 }
@@ -230,10 +230,10 @@ ThreadPool::ThreadPtr ThreadPool::add()
   return t;
 }
 
-std::vector<ThreadPool::ThreadPtr> ThreadPool::add(int count)
+std::vector<ThreadPool::ThreadPtr> ThreadPool::add(size_t count)
 {
   std::vector<ThreadPool::ThreadPtr> result(count);
-  for(int i=0; i<count; i++)
+  for(size_t i=0; i<count; i++)
     result[i] = add();
 
   return result;
@@ -419,8 +419,8 @@ ThreadPool::Job::Job()
 {
 }
 
-ThreadPool::Job::Job(boost::function<void ()> fn, WeakQueue::Ptr queue)
-:queue(queue->get()), fn(fn)
+ThreadPool::Job::Job(boost::function<void ()> fn_, WeakQueue::Ptr queue_)
+:queue(queue_->get()), fn(fn_)
 {
 }
 
@@ -437,13 +437,13 @@ QueueJumper::Ptr QueueJumper::create()
   return QueueJumper::Ptr(new QueueJumper());
 }
 
-bool QueueJumper::setWork(boost::function<void ()> const& fn)
+bool QueueJumper::setWork(boost::function<void ()> const& fn_)
 {
   boost::mutex::scoped_lock lock(mut);
   if(inQueue)
   {
     // Our turn hasn't passed yet. Accept work.
-    this->fn = fn;
+    this->fn = fn_;
     isSet = true;
   }
   else
@@ -477,7 +477,7 @@ ThreadPool::Ptr CpuBound()
 
 ThreadPool::Ptr Sequentially()
 {
-  static ThreadPool::Ptr sequentially = NotifyThreadList<ThreadPool>(ThreadPool::Ptr(new ThreadPool(1)), "Sequential threadpool");
+  static ThreadPool::Ptr sequentially = NotifyThreadList<ThreadPool>(ThreadPool::Ptr(new ThreadPool(1, false)), "Sequential threadpool");
 
   return sequentially;
 }

@@ -121,7 +121,7 @@ BOOST_AUTO_TEST_CASE(jobs_on_custom_queue_get_executed)
 {
   ThreadPool::Queue::Ptr queue = ThreadPool::Queue::create();
   Semaphore s(0);
-  ThreadPool t(0);
+  ThreadPool t(0, false);
   t.schedule(clear(&s), queue);
   t.add();
   BOOST_CHECK(s.P(long_timeout));
@@ -132,7 +132,7 @@ BOOST_AUTO_TEST_CASE(jobs_on_deleted_queue_dont_get_executed)
   ThreadPool::Queue::Ptr queue = ThreadPool::Queue::create();
   Semaphore s1(0);
   Semaphore s2(0);
-  ThreadPool t(0);
+  ThreadPool t(0, false);
   t.schedule(clear(&s1), queue);
   t.schedule(clear(&s2));
   queue.reset();
@@ -151,7 +151,7 @@ BOOST_AUTO_TEST_CASE(queue_deletion_waits_for_jobs_to_finish)
   Semaphore s3(0);
   Semaphore s4(0);
 
-  ThreadPool pool(0);
+  ThreadPool pool(0, false);
   pool.schedule(clear(&s1)+pass(&s2), queue);
   pool.add();
   BOOST_REQUIRE(s1.P(long_timeout));

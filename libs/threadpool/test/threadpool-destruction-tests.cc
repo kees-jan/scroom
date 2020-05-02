@@ -35,7 +35,7 @@ BOOST_AUTO_TEST_SUITE(ThreadPool_destruction_Tests)
 
 BOOST_AUTO_TEST_CASE(destroy_threadpool_with_nonempty_queue)
 {
-  ThreadPool::Ptr pool = ThreadPool::create(1);
+  ThreadPool::Ptr pool = ThreadPool::create(1, false);
   Semaphore guard(0);
   Semaphore a(0);
   Semaphore b(0);

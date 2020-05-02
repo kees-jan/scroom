@@ -82,8 +82,8 @@ void ExamplePresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scro
   Scroom::Utils::Rectangle<double> actualPresentationArea = getRect();
   drawOutOfBoundsWithBackground(cr, presentationArea, actualPresentationArea, pp);
 
-  int xorig = (int)(-presentationArea.x*pp);
-  int yorig = (int)(-presentationArea.y*pp);
+  int xorig = static_cast<int>(-presentationArea.x*pp);
+  int yorig = static_cast<int>(-presentationArea.y*pp);
 
   cairo_matrix_t m;
   cairo_matrix_init_translate(&m, 505, 505);

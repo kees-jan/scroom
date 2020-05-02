@@ -68,8 +68,8 @@ static bool logSizes()
 
 ////////////////////////////////////////////////////////////////////////
 
-Invalidator::Invalidator(unsigned int secs)
-  : secs(secs), started(false)
+Invalidator::Invalidator(unsigned int secs_)
+  : secs(secs_), started(false)
 {
 }
 
@@ -97,10 +97,10 @@ bool Invalidator::operator()()
 
 unsigned int BaseCounter::columnWidth=0;
 
-BaseCounter::BaseCounter(const std::string& name, unsigned int secs)
-  : name(name), secs(secs), started(false), count(0)
+BaseCounter::BaseCounter(const std::string& name_, unsigned int secs_)
+  : name(name_), secs(secs_), started(false), count(0)
 {
-  columnWidth = std::max(columnWidth, (unsigned int)name.length());
+  columnWidth = std::max(columnWidth, static_cast<unsigned int>(name_.length()));
 }
 
 bool BaseCounter::operator()()
@@ -119,8 +119,8 @@ bool BaseCounter::operator()()
     if(now.tv_sec > t.tv_sec + secs)
     {
       // We're done. Compute frequency.
-      double elapsed = (now.tv_nsec - t.tv_nsec)*1e-9;
-      elapsed += now.tv_sec - t.tv_sec;
+      double elapsed = static_cast<double>(now.tv_nsec - t.tv_nsec)*1e-9;
+      elapsed += static_cast<double>(now.tv_sec - t.tv_sec);
       printf("%-*s: %10.2f Hz\n", columnWidth, name.c_str(), count/elapsed);
 
       return false;
@@ -132,8 +132,8 @@ bool BaseCounter::operator()()
 
 ////////////////////////////////////////////////////////////////////////
 
-InvalidatingCounter::InvalidatingCounter(const std::string& name, unsigned int secs)
-  : BaseCounter(name, secs)
+InvalidatingCounter::InvalidatingCounter(const std::string& name_, unsigned int secs_)
+  : BaseCounter(name_, secs_)
 {
 }
 

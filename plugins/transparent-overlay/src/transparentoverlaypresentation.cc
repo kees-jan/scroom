@@ -31,7 +31,7 @@ namespace
 
   struct ColorComparer
   {
-    bool operator()(Color const& left, Color const& right)
+    bool operator()(Color const& left, Color const& right) const
     {
       return
         boost::make_tuple(left.alpha, left.red, left.green, left.blue) <

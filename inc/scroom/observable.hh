@@ -126,31 +126,31 @@ namespace Scroom
     }
 
     template<typename T>
-    Detail::Registration<T>::Registration(boost::weak_ptr<Observable<T> > observable, boost::shared_ptr<T> observer)
-      : observable(observable), o(observer), observer(observer)
+    Detail::Registration<T>::Registration(boost::weak_ptr<Observable<T> > observable_, boost::shared_ptr<T> observer_)
+      : observable(observable_), o(observer_), observer(observer_)
     {
     }
 
     template<typename T>
-    Detail::Registration<T>::Registration(boost::weak_ptr<Observable<T> > observable, boost::weak_ptr<T> observer)
-      : observable(observable), o(), observer(observer)
+    Detail::Registration<T>::Registration(boost::weak_ptr<Observable<T> > observable_, boost::weak_ptr<T> observer_)
+      : observable(observable_), o(), observer(observer_)
     {
       // We don't want to store a "hard" reference, so field o is intentionally empty.
     }
 
     template<typename T>
-    void Detail::Registration<T>::set(boost::shared_ptr<T> observer)
+    void Detail::Registration<T>::set(boost::shared_ptr<T> observer_)
     {
-      this->o = observer;
-      this->observer = observer;
+      this->o = observer_;
+      this->observer = observer_;
     }
 
     template<typename T>
-    void Detail::Registration<T>::set(boost::weak_ptr<T> observer)
+    void Detail::Registration<T>::set(boost::weak_ptr<T> observer_)
     {
       // We don't want to store a "hard" reference, so field o is intentionally empty.
       this->o.reset();
-      this->observer = observer;
+      this->observer = observer_;
     }
 
     template<typename T>

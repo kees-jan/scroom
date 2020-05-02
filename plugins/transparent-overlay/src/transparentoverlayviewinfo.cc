@@ -42,8 +42,8 @@ namespace
 // ChildView
 ////////////////////////////////////////////////////////////////////////
 
-ChildView::ChildView(TransparentOverlayViewInfo::Ptr const& parent)
-  : parent(parent), progressInterface(parent->getProgressInterface())
+ChildView::ChildView(TransparentOverlayViewInfo::Ptr const& parent_)
+  : parent(parent_), progressInterface(parent->getProgressInterface())
 {}
 
 ChildView::Ptr ChildView::create(TransparentOverlayViewInfo::Ptr const& parent)
@@ -77,20 +77,20 @@ void ChildView::removeFromToolbar(GtkToolItem*)
 // TransparentOverlayViewInfo
 ////////////////////////////////////////////////////////////////////////
 
-TransparentOverlayViewInfo::TransparentOverlayViewInfo(const ViewInterface::WeakPtr& vi, SizeDeterminer::Ptr const& sizeDeterminer)
+TransparentOverlayViewInfo::TransparentOverlayViewInfo(const ViewInterface::WeakPtr& vi, SizeDeterminer::Ptr const& sizeDeterminer_)
   : parentView(vi),
     progressInterfaceMultiplexer(Scroom::Utils::ProgressInterfaceMultiplexer::create(parentView->getProgressInterface())),
-    sizeDeterminer(sizeDeterminer)
+    sizeDeterminer(sizeDeterminer_)
 {}
 
 static void on_toggled(GtkToggleButton* button, gpointer data)
 {
-  ((TransparentOverlayViewInfo*)data)->toggled(button);
+  static_cast<TransparentOverlayViewInfo*>(data)->toggled(button);
 }
 
 void TransparentOverlayViewInfo::createToggleToolButton(PresentationInterface::Ptr const& p)
 {
-  int n = buttons.size()+1;
+  size_t n = buttons.size()+1;
   std::stringstream s;
   s << "_" << n;
 
@@ -101,7 +101,7 @@ void TransparentOverlayViewInfo::createToggleToolButton(PresentationInterface::P
   gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(toggleButton), true);
 
   gtk_container_add(GTK_CONTAINER(button), toggleButton);
-  g_signal_connect((gpointer)toggleButton, "toggled", G_CALLBACK(on_toggled), this);
+  g_signal_connect(static_cast<gpointer>(toggleButton), "toggled", G_CALLBACK(on_toggled), this);
 
   buttons.push_back(toggleButton);
 
@@ -113,9 +113,9 @@ TransparentOverlayViewInfo::Ptr TransparentOverlayViewInfo::create(const ViewInt
   return Ptr(new TransparentOverlayViewInfo(vi, sizeDeterminer));
 }
 
-void TransparentOverlayViewInfo::addChildren(const std::list<PresentationInterface::Ptr>& children)
+void TransparentOverlayViewInfo::addChildren(const std::list<PresentationInterface::Ptr>& children_)
 {
-  for(PresentationInterface::Ptr const& child: children)
+  for(PresentationInterface::Ptr const& child: children_)
     addChild(child);
 }
 
