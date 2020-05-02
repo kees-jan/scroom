@@ -22,7 +22,7 @@ case "${host_os}" in
         AC_MSG_NOTICE([detected windows environment])
         ;;
     *)
-        AC_MSG_ERROR(["OS $host_os is not supported. Or maybe the check in configure.ac is just broken."])
+        AC_MSG_ERROR(["OS $host_os is not supported."])
         ;;
 esac
 AM_CONDITIONAL([LINUX], [test "$build_linux" = "yes"])
@@ -86,6 +86,12 @@ AM_COND_IF([WINDOWS],
 # The .pc files are at a weird place so make sure pkg-config finds them
 AM_COND_IF([WINDOWS], 
     [export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/mingw64/lib/pkgconfig])    
+    
+# This flag is used in Makefile.am and needed for properly generating DLLs on Windows
+loadflag=""
+AM_COND_IF([WINDOWS], 
+    [loadflag="-no-undefined"])
+AC_SUBST([loadflag])
 
 # Configurable features
 AC_ARG_ENABLE([doxygen-all-code],
