@@ -17,6 +17,10 @@
 
 #include "callbacks.hh"
 
+#ifdef _WIN32
+#include <Windows.h>
+#endif
+
 const std::string SCROOM_PLUGIN_DIRS = "SCROOM_PLUGIN_DIRS";
 
 static PluginManager::Ptr pluginManager = PluginManager::create();
@@ -48,24 +52,33 @@ bool PluginManager::doWork() {
     char* path = getenv(SCROOM_PLUGIN_DIRS.c_str());
     dirs.clear();
 
+#ifdef _WIN32
+    // We want to keep everything portable on windows so we look for the plugin folder in the same directory as the .exe
+    char buffer[2048];
+    GetModuleFileName(NULL, buffer, 2047);
+    std::string modulePath(buffer);
+    auto pos = modulePath.rfind("\\");
+    dirs.push_back(modulePath.substr(0, pos) + "\\plugins");
+#else
     if (!devMode) {
       dirs.push_back(PLUGIN_DIR);
     }
+#endif
 
     if (path != nullptr) {
       printf("%s = %s\n", SCROOM_PLUGIN_DIRS.c_str(), path);
 
       for (char* i = path; *i != '\0'; i++) {
-        // Windows uses semicolons for delimiting environment variables, Linux uses colons
-        #ifdef _WIN32
-          if (*i != ';') {
+
+#ifdef _WIN32
+    	  // Windows uses semicolons for delimiting environment variables, Linux uses colons
+    	  const char envDelim = ';';
+#else
+    	  const char envDelim = ':';
+#endif
+          if (*i != envDelim) {
             continue;
           }
-        #else
-          if (*i != ':') {
-            continue;
-          }
-        #endif
 
         *i = '\0';
         dirs.push_back(path);
@@ -116,8 +129,13 @@ bool PluginManager::doWork() {
       break;
     }
 
+#ifdef _WIN32
+    // Only read .dll files
+    if (currentFile->compare(currentFile->size() - 4, 4, ".dll") == 0) {
+#else
+    // Only read .so files
     if (currentFile->compare(currentFile->size() - 3, 3, ".so") == 0) {
-      // Only read .so files
+#endif
         printf("Reading file: %s\n", currentFile->c_str());
         GModule* plugin = g_module_open(currentFile->c_str(), static_cast<GModuleFlags>(0));
         if (plugin) {

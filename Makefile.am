@@ -660,3 +660,19 @@ checkPROGRAMS: all-am $(check_PROGRAMS)
 
 silent-doxygen:
 	@$(MAKE) doxygen-doc > doxygen.log 2>&1
+
+# The stuff below is executed after 'make install'
+# Its purpose is to do a cleanup for the build on windows, rearranging files to make everything executable right away
+install-data-hook:
+	if [ "$(OS)" = "Windows_NT" ]; then\
+		mkdir $(prefix)/libs; \
+		mv $(prefix)/bin/scroom.exe $(prefix)/scroom.exe; \
+		mv $(prefix)/bin/* $(prefix); \
+		mv $(prefix)/share/scroom/scroom.glade $(prefix)/scroom.glade; \
+		mkdir $(prefix)/plugins; \
+		mv $(prefix)/lib/bin/* $(prefix)/plugins; \
+		rm -r $(prefix)/bin; \
+		rm -r $(prefix)/lib; \
+		rm -r $(prefix)/include; \
+		rm -r $(prefix)/share; \
+	fi

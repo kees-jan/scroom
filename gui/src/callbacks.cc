@@ -377,7 +377,7 @@ void on_scroom_bootstrap (const FileNameMap& newFilenames)
   std::string path(buffer);
   auto pos = path.rfind("\\");
   xmlFileName = path.substr(0, pos) + "\\scroom.glade";
-#elif
+#else
   if(devMode)
   {
     xmlFileName = TOP_SRCDIR "/gui/scroom.glade";
