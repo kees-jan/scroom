@@ -30,6 +30,10 @@
 #include "pluginmanager.hh"
 #include "loader.hh"
 
+#ifdef _WIN32
+#include <Windows.h>
+#endif
+
 static const std::string SCROOM_DEV_MODE="SCROOM_DEV_MODE";
 const std::string REGULAR_FILES="Regular files";
 
@@ -366,6 +370,14 @@ void on_scroom_bootstrap (const FileNameMap& newFilenames)
 
   startPluginManager(devMode);
 
+#ifdef _WIN32
+  // We want to keep everything portable on windows so we look for the .glade file in the same directory as the .exe
+  char buffer[2048];
+  GetModuleFileName(NULL, buffer, 2047);
+  std::string path(buffer);
+  auto pos = path.rfind("\\");
+  xmlFileName = path.substr(0, pos) + "\\scroom.glade";
+#elif
   if(devMode)
   {
     xmlFileName = TOP_SRCDIR "/gui/scroom.glade";
@@ -374,6 +386,7 @@ void on_scroom_bootstrap (const FileNameMap& newFilenames)
   {
     xmlFileName = PACKAGE_DATA_DIR "/scroom.glade";
   }
+#endif
 
   aboutDialogXml = glade_xml_new(xmlFileName.c_str(), "aboutDialog", NULL);
   if(aboutDialogXml!=NULL)

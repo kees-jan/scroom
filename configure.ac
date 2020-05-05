@@ -39,10 +39,8 @@ AM_SILENT_RULES([yes])
 AM_PROG_AR
 LT_PREREQ([2.2])
 
-# This needs to be set manually for the correct platform. dlopen for Linux and win32-dll for Linux
-#LT_INIT([dlopen])
-LT_INIT([win32-dll])
-
+# Properly create shared libraries on both Linux and Windows
+LT_INIT([dlopen win32-dll])
 
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([inc/scroom/presentationinterface.hh])
@@ -82,10 +80,7 @@ SCROOM_TEST_ISYSTEM
 
 # MinGW doesn't support the -z flag
 AM_COND_IF([LINUX], 
-    [LDFLAGS="$LDFLAGS -Wl,-z,defs"])
-
-AM_COND_IF([WINDOWS], 
-    [AC_DEFINE([OS_mingw], [1], [Let make know we're on Windows])]) 
+    [LDFLAGS="$LDFLAGS -Wl,-z,defs"]) 
     
 # The .pc files are at a weird place so make sure pkg-config finds them
 AM_COND_IF([WINDOWS], 
@@ -391,7 +386,7 @@ sed -e "s/none required//g" -i Makefile
 
 # Alright, this is nasty. I know. But I found no other way to get all the dependencies loaded as system libraries on Windows.
 # And if they're loaded as normal libraries, g++ floods the terminal with warnings during compilation, as it displays warnings for libraries then
-# So waht is happening here is that I'm replacing all occurrences of the string "-I/mingw" with "-isystem /mingw" in the Makefile
+# So what is happening here is that I'm replacing all occurrences of the string "-I/mingw" with "-isystem /mingw" in the Makefile
 AM_COND_IF([WINDOWS], 
     [sed -e "s+-I/mingw+-isystem /mingw+g" -i Makefile])    
 
