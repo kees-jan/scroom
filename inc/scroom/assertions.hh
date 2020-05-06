@@ -26,7 +26,7 @@ namespace Scroom
   }
 }
 
-#if _WIN32
+#ifdef _WIN32
 #define __STRING(x)     #x
 #endif
 

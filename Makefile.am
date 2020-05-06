@@ -665,11 +665,10 @@ silent-doxygen:
 # Its purpose is to do a cleanup for the build on windows, rearranging files to make everything executable right away
 install-data-hook:
 	if [ "$(OS)" = "Windows_NT" ]; then\
-		mkdir $(prefix)/libs; \
 		mv $(prefix)/bin/scroom.exe $(prefix)/scroom.exe; \
 		mv $(prefix)/bin/* $(prefix); \
 		mv $(prefix)/share/scroom/scroom.glade $(prefix)/scroom.glade; \
-		mkdir $(prefix)/plugins; \
+		mkdir -p $(prefix)/plugins; \
 		mv $(prefix)/lib/bin/* $(prefix)/plugins; \
 		rm -r $(prefix)/bin; \
 		rm -r $(prefix)/lib; \

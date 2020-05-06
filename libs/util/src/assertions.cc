@@ -55,6 +55,8 @@ namespace Scroom::Utils::Detail {
         	isHandlerActive = 1;
         	std::cerr << __FILE__ << ":" << __LINE__ << ": Entering signal handler" << std::endl;
 			#ifdef _WIN32
+        	// Can't easily convert signal number to signal name on windows so the number will have to do
+        	std::cerr << "PROGRAM DEFECTIVE (TERMINATED BY SIGNAL): " << sig << std::endl;
 			#else
         		std::cerr << "PROGRAM DEFECTIVE (TERMINATED BY SIGNAL): " << strsignal(sig) << std::endl;
 			#endif
@@ -69,16 +71,12 @@ namespace Scroom::Utils::Detail {
 	}
 
 	ErrorSignalHandler::ErrorSignalHandler() {
-		#ifdef _WIN32
-		#else
-        	signal(SIGBUS, handler);
-		#endif
         signal(SIGFPE, handler);
         signal(SIGILL, handler);
         signal(SIGABRT, handler);
         signal(SIGSEGV, handler);
-		#ifdef _WIN32
-		#else
+		#ifndef _WIN32
+        	signal(SIGBUS, handler);
         	signal(SIGSYS, handler);
 		#endif
     }
