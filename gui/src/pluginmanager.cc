@@ -59,6 +59,7 @@ bool PluginManager::doWork() {
     std::string modulePath(buffer);
     auto pos = modulePath.rfind("\\");
     dirs.push_back(modulePath.substr(0, pos) + "\\plugins");
+    //dirs.push_back(modulePath.substr(0, pos));
 #else
     if (!devMode) {
       dirs.push_back(PLUGIN_DIR);

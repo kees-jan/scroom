@@ -675,4 +675,5 @@ install-data-hook:
 		rm -r $(prefix)/lib; \
 		rm -r $(prefix)/include; \
 		rm -r $(prefix)/share; \
+		cp C:/msys64/mingw64/bin/{libatk-1.0-0.dll,libboost_filesystem-mt.dll,libboost_program_options-mt.dll,libbz2-1.dll,libcairo-2.dll,libdatrie-1.dll,libexpat-1.dll,libffi-7.dll,libfontconfig-1.dll,libfreetype-6.dll,libfribidi-0.dll,libgcc_s_seh-1.dll,libgdk-win32-2.0-0.dll,libgdk_pixbuf-2.0-0.dll,libgio-2.0-0.dll,libglade-2.0-0.dll,libglib-2.0-0.dll,libgmodule-2.0-0.dll,libgobject-2.0-0.dll,libgraphite2.dll,libgtk-win32-2.0-0.dll,libharfbuzz-0.dll,libiconv-2.dll,libintl-8.dll,liblzma-5.dll,libpango-1.0-0.dll,libpangocairo-1.0-0.dll,libpangoft2-1.0-0.dll,libpangowin32-1.0-0.dll,libpcre-1.dll,libpixman-1-0.dll,libpng16-16.dll,libstdc++-6.dll,libthai-0.dll,libwinpthread-1.dll,libxml2-2.dll,zlib1.dll,libtiff-5.dll,libzstd.dll,libjpeg-8.dll,libboost_thread-mt.dll} $(prefix)/; \
 	fi

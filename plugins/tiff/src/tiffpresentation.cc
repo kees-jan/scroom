@@ -67,7 +67,7 @@ bool TiffPresentation::load(const std::string& fileName_)
       spp_ = 1; // Default value, according to tiff spec
     if (spp_ != 1 && spp_ != 3)
     {
-      printf("PANIC: Samples per pixel is not 1 or 3, but %d. Giving up\n", spp);
+      printf("PANIC: Samples per pixel is not 1 or 3, but %d. Giving up\n", spp_);
       return false;
     }
     this->spp = spp_;
