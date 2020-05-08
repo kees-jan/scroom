@@ -670,6 +670,7 @@ install-data-hook:
 		mv $(prefix)/share/scroom/scroom.glade $(prefix)/scroom.glade; \
 		mkdir -p $(prefix)/plugins; \
 		mv $(prefix)/lib/bin/* $(prefix)/plugins; \
+		mkdir -p $(prefix)/colormaps; \
 		rm -r $(prefix)/bin; \
 		rm -r $(prefix)/lib; \
 		rm -r $(prefix)/include; \

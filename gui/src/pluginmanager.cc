@@ -52,31 +52,30 @@ bool PluginManager::doWork() {
     char* path = getenv(SCROOM_PLUGIN_DIRS.c_str());
     dirs.clear();
 
-#ifdef _WIN32
-    // We want to keep everything portable on windows so we look for the plugin folder in the same directory as the .exe
-    char buffer[2048];
-    GetModuleFileName(NULL, buffer, 2047);
-    std::string modulePath(buffer);
-    auto pos = modulePath.rfind("\\");
-    dirs.push_back(modulePath.substr(0, pos) + "\\plugins");
-    //dirs.push_back(modulePath.substr(0, pos));
-#else
-    if (!devMode) {
-      dirs.push_back(PLUGIN_DIR);
-    }
-#endif
+	  #ifdef _WIN32
+      // We want to keep everything portable on windows so we look for the plugin folder in the same directory as the .exe
+      char buffer[2048];
+      GetModuleFileName(NULL, buffer, 2047);
+      std::string modulePath(buffer);
+      auto pos = modulePath.rfind("\\");
+      dirs.push_back(modulePath.substr(0, pos) + "\\plugins");
+    #else
+      if (!devMode) {
+        dirs.push_back(PLUGIN_DIR);
+      }
+	  #endif
 
     if (path != nullptr) {
       printf("%s = %s\n", SCROOM_PLUGIN_DIRS.c_str(), path);
 
       for (char* i = path; *i != '\0'; i++) {
 
-#ifdef _WIN32
     	  // Windows uses semicolons for delimiting environment variables, Linux uses colons
-    	  const char envDelim = ';';
-#else
-    	  const char envDelim = ':';
-#endif
+		    #ifdef _WIN32
+    	    const char envDelim = ';';
+		    #else
+    	    const char envDelim = ':';
+		    #endif
           if (*i != envDelim) {
             continue;
           }
