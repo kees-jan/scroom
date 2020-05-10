@@ -16,7 +16,7 @@
 #include <gio/gio.h>
 
 #ifdef _WIN32
-#include <boost/dll.hpp>
+#include <Windows.h>
 #endif
 
 #include <scroom/colormappable.hh>
@@ -40,14 +40,17 @@ namespace Scroom
     {
       #ifdef _WIN32
         // We want to keep everything portable on windows so we look for the colormaps folder in the same directory as the .exe
-        char* colormapDirPath = g_build_filename(boost::dll::program_location().parent_path().generic_string().c_str(), "\\", COLORMAPDIR, NULL);
+        char buffer[2048];
+        GetModuleFileName(NULL, buffer, 2047);
+        std::string modulePath(buffer);
+        auto pos = modulePath.rfind("\\");
+        char* colormapDirPath = g_build_filename(modulePath.substr(0, pos).c_str(), "\\", COLORMAPDIR, NULL);
       #else
         const char *homedir = g_getenv("HOME");
         if (!homedir)
           homedir = g_get_home_dir();
 
-        char* colormapDirPath = g_build_filename(homedir, SCROOMDIR, COLORMAPDIR,
-            NULL);
+        char* colormapDirPath = g_build_filename(homedir, SCROOMDIR, COLORMAPDIR, NULL);
       #endif
       DIR* colormapDir = opendir(colormapDirPath);
       if (colormapDir)
@@ -77,7 +80,7 @@ namespace Scroom
         printf("Failed to open dir %s: (%d, %s)\n", colormapDirPath, errno,
             strerror(errno));
       }
-      g_free(colormapDirPath);
+        g_free(colormapDirPath);
     }
 
     Colormaps::~Colormaps()
