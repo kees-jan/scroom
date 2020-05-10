@@ -31,7 +31,7 @@
 #include "loader.hh"
 
 #ifdef _WIN32
-#include <Windows.h>
+#include <boost/dll.hpp>
 #endif
 
 static const std::string SCROOM_DEV_MODE="SCROOM_DEV_MODE";
@@ -372,11 +372,7 @@ void on_scroom_bootstrap (const FileNameMap& newFilenames)
 
   #ifdef _WIN32
     // We want to keep everything portable on windows so we look for the .glade file in the same directory as the .exe
-    char buffer[2048];
-    GetModuleFileName(NULL, buffer, 2047);
-    std::string path(buffer);
-    auto pos = path.rfind("\\");
-    xmlFileName = path.substr(0, pos) + "\\scroom.glade";
+  xmlFileName = (boost::dll::program_location().parent_path() / "scroom.glade").generic_string();
   #else
     if(devMode)
     {
