@@ -46,6 +46,11 @@ namespace Scroom
       std::list<Colormap::ConstPtr> getColormaps();
 
       /**
+       * Get the path where the colormap files are located
+       */
+      char* getColormapDirPath();
+
+      /**
        * Load a colormap by name
        */
       Colormap::Ptr load(const char* name);
