@@ -113,27 +113,27 @@ void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x
       // We want to store the average colour of the 8*8 pixel image
       // with (x, y) as its top-left corner into targetPtr.
       const byte* base = sourcePtr;
-      int sum_a = 0;
-      int sum_r = 0;
-      int sum_g = 0;
-      int sum_b = 0;
+      int sum_c = 0;
+      int sum_m = 0;
+      int sum_y = 0;
+      int sum_k = 0;
       for (int k = 0; k < 8; k++, base += sourceStride)
       {
         const byte* current = base;
         for (int l = 0; l < 8; l++)
         {
-          sum_a += current[0];
-          sum_r += current[1];
-          sum_g += current[2];
-          sum_b += current[3];
+          sum_c += current[0];
+          sum_m += current[1];
+          sum_y += current[2];
+          sum_k += current[3];
           current += 4;
         }
       }
 
-      targetPtr[0] = static_cast<byte>(sum_a / 64);
-      targetPtr[1] = static_cast<byte>(sum_r / 64);
-      targetPtr[2] = static_cast<byte>(sum_g / 64);
-      targetPtr[3] = static_cast<byte>(sum_b / 64);
+      targetPtr[0] = static_cast<byte>(sum_c / 64);
+      targetPtr[1] = static_cast<byte>(sum_m / 64);
+      targetPtr[2] = static_cast<byte>(sum_y / 64);
+      targetPtr[3] = static_cast<byte>(sum_k / 64);
 
       sourcePtr += 8 * 4;
       targetPtr += 4;

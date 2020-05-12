@@ -67,7 +67,7 @@ bool TiffPresentation::load(const std::string& fileName_)
       spp_ = 1; // Default value, according to tiff spec
     if (spp_ != 1 && spp_ != 3 && spp_ != 4)
     {
-      printf("PANIC: Samples per pixel is not 1 or 3, but %d. Giving up\n", spp_);
+      printf("PANIC: Samples per pixel is neither 1 nor 3 nor 4, but %d. Giving up\n", spp_);
       return false;
     }
     this->spp = spp_;
@@ -187,7 +187,7 @@ bool TiffPresentation::load(const std::string& fileName_)
     
     std::cout << "This bitmap has size " << width << "*" << height << ", aspect ratio " << 1 / resolutionX << "*" << 1 / resolutionY << std::endl;
     LayerSpec ls;
-    if (spp == 4)
+    if (spp == 4 && bps == 8)
     {
         ls.push_back(OperationsCMYK::create(bps));
     }
