@@ -73,26 +73,34 @@ bool TiffPresentation::load(const std::string& fileName)
     TIFFGetFieldChecked(tif, TIFFTAG_IMAGEWIDTH, &width);
     TIFFGetFieldChecked(tif, TIFFTAG_IMAGELENGTH, &height);
 
-    uint16 bps;
-    if( 1 != TIFFGetField(tif, TIFFTAG_BITSPERSAMPLE, &bps))
+    uint16 bps[spp];
+    if( 1 != TIFFGetField(tif, TIFFTAG_BITSPERSAMPLE, bps))
     {
       if(spp==1)
-        bps = 1;
+        this->bps = 1;
       else
-        bps = 8;
+        this->bps = 8;
     }
     else
     {
+      this->bps = bps[0];
+      if(spp>1)
+        for(auto current : bps)
+          if(current != this->bps)
+          {
+            printf("PANIC: All samples must have the same bps value (%u != %u)", this->bps, current);
+            return false;
+          }
+
       if(spp==3)
       {
-        if(bps!=8)
+        if(this->bps!=8)
         {
           printf("PANIC: Bits per sample is not 8, but %d. Giving up\n", bps);
           return false;
         }
       }
     }
-    this->bps = bps;
 
     Colormap::Ptr originalColormap;
 
@@ -102,7 +110,7 @@ bool TiffPresentation::load(const std::string& fileName)
     {
       originalColormap = Colormap::create();
       originalColormap->name = "Original";
-      int count = 1 << bps;
+      int count = 1 << this->bps;
       originalColormap->colors.resize(count);
 
       for (int i = 0; i < count; i++)
@@ -122,10 +130,10 @@ bool TiffPresentation::load(const std::string& fileName)
       if (originalColormap)
         printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
 
-      if (bps == 1 || bps == 8)
+      if (this->bps == 1 || this->bps == 8)
         colormapHelper = MonochromeColormapHelper::create(2);
       else
-        colormapHelper = MonochromeColormapHelper::create(1 << bps);
+        colormapHelper = MonochromeColormapHelper::create(1 << this->bps);
 
       properties[MONOCHROME_COLORMAPPABLE_PROPERTY_NAME] = "";
       break;
@@ -134,10 +142,10 @@ bool TiffPresentation::load(const std::string& fileName)
       if (originalColormap)
         printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
 
-      if (bps == 1 || bps == 8)
+      if (this->bps == 1 || this->bps == 8)
         colormapHelper = MonochromeColormapHelper::createInverted(2);
       else
-        colormapHelper = MonochromeColormapHelper::createInverted(1 << bps);
+        colormapHelper = MonochromeColormapHelper::createInverted(1 << this->bps);
 
       properties[MONOCHROME_COLORMAPPABLE_PROPERTY_NAME] = "";
       break;
@@ -146,7 +154,7 @@ bool TiffPresentation::load(const std::string& fileName)
       if (!originalColormap)
       {
         printf("WEIRD: Photometric is palette, but tiff doesn't contain a colormap\n");
-        colormapHelper = ColormapHelper::create(1 << bps);
+        colormapHelper = ColormapHelper::create(1 << this->bps);
       }
       break;
 
@@ -187,30 +195,30 @@ bool TiffPresentation::load(const std::string& fileName)
     {
       ls.push_back(Operations24bpp::create());
     }
-    else if (bps == 2 || bps == 4 || photometric == PHOTOMETRIC_PALETTE)
+    else if (this->bps == 2 || this->bps == 4 || photometric == PHOTOMETRIC_PALETTE)
     {
       ls.push_back(
-          Operations::create(colormapHelper, bps));
+          Operations::create(colormapHelper, this->bps));
       ls.push_back(
           OperationsColormapped::create(colormapHelper,
-              bps));
+                                        this->bps));
       properties[COLORMAPPABLE_PROPERTY_NAME] = "";
     }
-    else if (bps == 1)
+    else if (this->bps == 1)
     {
       ls.push_back(
           Operations1bpp::create(colormapHelper));
       ls.push_back(
           Operations8bpp::create(colormapHelper));
     }
-    else if (bps == 8)
+    else if (this->bps == 8)
     {
       ls.push_back(
           Operations8bpp::create(colormapHelper));
     }
     else
     {
-      printf("PANIC: %d bits per pixel not supported\n", bps);
+      printf("PANIC: %d bits per pixel not supported\n", this->bps);
       return false;
     }
 
