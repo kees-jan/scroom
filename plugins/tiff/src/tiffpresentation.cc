@@ -65,7 +65,7 @@ bool TiffPresentation::load(const std::string& fileName_)
     uint16 spp_ = 0;
     if (1 != TIFFGetField(tif, TIFFTAG_SAMPLESPERPIXEL, &spp_))
       spp_ = 1; // Default value, according to tiff spec
-    if (spp_ != 1 && spp_ != 3)
+    if (spp_ != 1 && spp_ != 3 && spp_ != 4)
     {
       printf("PANIC: Samples per pixel is not 1 or 3, but %d. Giving up\n", spp_);
       return false;
@@ -157,6 +157,11 @@ bool TiffPresentation::load(const std::string& fileName_)
         printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
       break;
 
+    case PHOTOMETRIC_SEPARATED:
+      if (originalColormap)
+        printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
+      break;
+
     default:
       printf("PANIC: Unrecognized value for photometric\n");
       return false;
@@ -182,10 +187,13 @@ bool TiffPresentation::load(const std::string& fileName_)
     
     std::cout << "This bitmap has size " << width << "*" << height << ", aspect ratio " << 1 / resolutionX << "*" << 1 / resolutionY << std::endl;
     LayerSpec ls;
-
-    if (spp == 3)
+    if (spp == 4)
     {
-      ls.push_back(Operations24bpp::create());
+        ls.push_back(OperationsCMYK::create(bps));
+    }
+    else if (spp == 3 && bps == 8)
+    {
+        ls.push_back(Operations24bpp::create());
     }
     else if (bps == 2 || bps == 4 || photometric == PHOTOMETRIC_PALETTE)
     {
