@@ -76,15 +76,15 @@ Scroom::Utils::Stuff OperationsCMYK::cache(const ConstTile::Ptr tile)
     uint32_t CMYK = cur[i];
 
     // Not sure why the order of CMYK is reversed...
-    uint32_t C =  CMYK        & 0xFF;
-    uint32_t M = (CMYK >>  8) & 0xFF;
-    uint32_t Y = (CMYK >> 16) & 0xFF;
-    uint32_t K = (CMYK >> 24) & 0xFF;
-    float K_i = 1.0f - (K / 255.0f);
+    uint8_t C_i = static_cast<uint8_t>(255 - static_cast<uint8_t>(CMYK      ));
+    uint8_t M_i = static_cast<uint8_t>(255 - static_cast<uint8_t>(CMYK >>  8));
+    uint8_t Y_i = static_cast<uint8_t>(255 - static_cast<uint8_t>(CMYK >> 16));
+    uint8_t K = static_cast<uint8_t>(255 - (CMYK >> 24));
+    float K_i = K / 255.0f;
 
-    uint32_t R = boost::math::iround((255.0f - C) * K_i);
-    uint32_t G = boost::math::iround((255.0f - M) * K_i);
-    uint32_t B = boost::math::iround((255.0f - Y) * K_i);
+    uint32_t R = static_cast<uint8_t>(C_i * K_i);
+    uint32_t G = static_cast<uint8_t>(M_i * K_i);
+    uint32_t B = static_cast<uint8_t>(Y_i * K_i);
 
     // Write 255 as alpha (fully opaque)
     row[i] = 255u << 24 | R << 16 | G << 8 | B;
