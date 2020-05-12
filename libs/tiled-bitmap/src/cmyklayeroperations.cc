@@ -96,45 +96,50 @@ Scroom::Utils::Stuff OperationsCMYK::cache(const ConstTile::Ptr tile)
 void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x_, int y_)
 {
   // Reducing by a factor 8. Source tile is 24bpp. Target tile is 24bpp
-  int sourceStride = 3 * source->width; // stride in bytes
+  int sourceStride = 4 * source->width; // stride in bytes
   const byte* sourceBase = source->data.get();
 
-  int targetStride = 3 * target->width; // stride in bytes
+  int targetStride = 4 * target->width; // stride in bytes
   byte* targetBase = target->data.get() +
       (target->height * y_ + x_) * targetStride / 8;
 
-  for (int y = 0; y < source->height; y += 8)
+  for (int y = 0; y < source->height / 8; y++)
   {
-    const byte* sourcePtr = sourceBase + 8 * y * sourceStride;
-    byte* targetPtr = targetBase + y * targetStride;
+    const byte* sourcePtr = sourceBase;
+    byte* targetPtr = targetBase;
 
-    for (int x = 0; x < source->width; x += 8)
+    for (int x = 0; x < source->width / 8; x++)
     {
       // We want to store the average colour of the 8*8 pixel image
       // with (x, y) as its top-left corner into targetPtr.
       const byte* base = sourcePtr;
-      unsigned int sum_r = 0;
-      unsigned int sum_g = 0;
-      unsigned int sum_b = 0;
-
+      int sum_a = 0;
+      int sum_r = 0;
+      int sum_g = 0;
+      int sum_b = 0;
       for (int k = 0; k < 8; k++, base += sourceStride)
       {
         const byte* current = base;
         for (int l = 0; l < 8; l++)
         {
-          sum_r += current[0];
-          sum_g += current[1];
-          sum_b += current[2];
-          current += 3;
+          sum_a += current[0];
+          sum_r += current[1];
+          sum_g += current[2];
+          sum_b += current[3];
+          current += 4;
         }
       }
 
-      targetPtr[0] = (sum_r / 64u) & 0xFFu;
-      targetPtr[1] = (sum_g / 64u) & 0xFFu;
-      targetPtr[2] = (sum_b / 64u) & 0xFFu;
+      targetPtr[0] = static_cast<byte>(sum_a / 64);
+      targetPtr[1] = static_cast<byte>(sum_r / 64);
+      targetPtr[2] = static_cast<byte>(sum_g / 64);
+      targetPtr[3] = static_cast<byte>(sum_b / 64);
 
-      sourcePtr += 8 * 3;
-      targetPtr += 3;
+      sourcePtr += 8 * 4;
+      targetPtr += 4;
     }
+
+    targetBase += targetStride;
+    sourceBase += sourceStride * 8;
   }
 }
