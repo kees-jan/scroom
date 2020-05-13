@@ -83,9 +83,9 @@ Scroom::Utils::Stuff OperationsCMYK::cache(const ConstTile::Ptr tile)
     uint8_t Y_i = static_cast<uint8_t>(255 - cur[i + 2]);
     uint8_t K_i = static_cast<uint8_t>(255 - cur[i + 3]);
 
-    uint32_t R = static_cast<uint8_t>(DivideBy255(C_i * K_i));
-    uint32_t G = static_cast<uint8_t>(DivideBy255(M_i * K_i));
-    uint32_t B = static_cast<uint8_t>(DivideBy255(Y_i * K_i));
+    uint32_t R = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(C_i * K_i)));
+    uint32_t G = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(M_i * K_i)));
+    uint32_t B = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(Y_i * K_i)));
 
     // Write 255 as alpha (fully opaque)
     row[i / 4] = 255u << 24 | R << 16 | G << 8 | B;
