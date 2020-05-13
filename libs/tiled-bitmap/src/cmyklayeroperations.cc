@@ -66,19 +66,16 @@ Scroom::Utils::Stuff OperationsCMYK::cache(const ConstTile::Ptr tile)
   // Row is a pointer to a row of pixels (destination)
   uint32_t* row = reinterpret_cast<uint32_t*>(data.get());
   // Cur is a pointer to the start of the row in the tile (source)
-  const uint32_t* cur = reinterpret_cast<const uint32_t*>(tile->data.get());
+  const uint8_t* cur = tile->data.get();
 
   // assume stride = tile->width * 4
-  for (int i = 0; i < tile->height * tile->width; i++)
+  for (int i = 0; i < 4 * tile->height * tile->width; i += 4)
   {
     // Convert CMYK to ARGB, because cairo doesn't know how to render CMYK.
-    uint32_t CMYK = cur[i];
-
-    // Not sure why the order of CMYK is reversed...
-    uint8_t C_i = static_cast<uint8_t>(255 - static_cast<uint8_t>(CMYK      ));
-    uint8_t M_i = static_cast<uint8_t>(255 - static_cast<uint8_t>(CMYK >>  8));
-    uint8_t Y_i = static_cast<uint8_t>(255 - static_cast<uint8_t>(CMYK >> 16));
-    uint8_t K = static_cast<uint8_t>(255 - (CMYK >> 24));
+    uint8_t C_i = static_cast<uint8_t>(255 - cur[i + 0]);
+    uint8_t M_i = static_cast<uint8_t>(255 - cur[i + 1]);
+    uint8_t Y_i = static_cast<uint8_t>(255 - cur[i + 2]);
+    uint8_t K = static_cast<uint8_t>(255 - cur[i + 3]);
     float K_i = K / 255.0f;
 
     uint32_t R = static_cast<uint8_t>(C_i * K_i);
