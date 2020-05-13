@@ -93,7 +93,7 @@ Scroom::Utils::Stuff OperationsCMYK::cache(const ConstTile::Ptr tile)
   return Scroom::Bitmap::BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
 }
 
-void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x_, int y_)
+void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int top_left_x, int top_left_y)
 {
   // Reducing by a factor 8. Source tile is 24bpp. Target tile is 24bpp
   int sourceStride = 4 * source->width; // stride in bytes
@@ -101,7 +101,7 @@ void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x
 
   int targetStride = 4 * target->width; // stride in bytes
   byte* targetBase = target->data.get() +
-      (target->height * y_ + x_) * targetStride / 8;
+      (target->height * top_left_y + top_left_x) * targetStride / 8;
 
   for (int y = 0; y < source->height / 8; y++)
   {
