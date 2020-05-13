@@ -669,7 +669,7 @@ void View::on_buttonRelease(GdkEventButton* event)
 
 void View::on_motion_notify(GdkEventMotion* event)
 {
-  if((event->state & GDK_BUTTON1_MASK) && modifiermove == GDK_BUTTON1_MASK)
+  if((event->state & GDK_BUTTON1_MASK) && modifiermove == GDK_BUTTON1_MASK && panning)
   {
     int newx = x;
     int newy = y;
