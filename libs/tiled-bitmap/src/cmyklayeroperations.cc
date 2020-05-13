@@ -54,6 +54,12 @@ int OperationsCMYK::getBpp()
   return 32;
 }
 
+// From https://www.pagetable.com/?p=23#comment-1140
+inline uint16_t DivideBy255(uint16_t value)
+{
+  return static_cast<uint16_t>((value + 1 + (value >> 8)) >> 8);
+}
+
 /**
  * Cache the given tile
  */
@@ -75,12 +81,11 @@ Scroom::Utils::Stuff OperationsCMYK::cache(const ConstTile::Ptr tile)
     uint8_t C_i = static_cast<uint8_t>(255 - cur[i + 0]);
     uint8_t M_i = static_cast<uint8_t>(255 - cur[i + 1]);
     uint8_t Y_i = static_cast<uint8_t>(255 - cur[i + 2]);
-    uint8_t K = static_cast<uint8_t>(255 - cur[i + 3]);
-    float K_i = K / 255.0f;
+    uint8_t K_i = static_cast<uint8_t>(255 - cur[i + 3]);
 
-    uint32_t R = static_cast<uint8_t>(C_i * K_i);
-    uint32_t G = static_cast<uint8_t>(M_i * K_i);
-    uint32_t B = static_cast<uint8_t>(Y_i * K_i);
+    uint32_t R = static_cast<uint8_t>(DivideBy255(C_i * K_i));
+    uint32_t G = static_cast<uint8_t>(DivideBy255(M_i * K_i));
+    uint32_t B = static_cast<uint8_t>(DivideBy255(Y_i * K_i));
 
     // Write 255 as alpha (fully opaque)
     row[i] = 255u << 24 | R << 16 | G << 8 | B;
