@@ -39,20 +39,19 @@ namespace
 ////////////////////////////////////////////////////////////////////////
 // OperationsCMYK
 
-LayerOperations::Ptr OperationsCMYK::create(size_t bps)
+LayerOperations::Ptr OperationsCMYK::create()
 {
-  return Ptr(new OperationsCMYK(bps));
+  return Ptr(new OperationsCMYK());
 }
 
-OperationsCMYK::OperationsCMYK(size_t bps_)
-  : bps(bps_)
+OperationsCMYK::OperationsCMYK()
 {
 }
 
 int OperationsCMYK::getBpp()
 {
   // CMYK has 4 channels -> 4 samples per pixel.
-  return static_cast<int>(this->bps * 4);
+  return 32;
 }
 
 /**

@@ -189,7 +189,7 @@ bool TiffPresentation::load(const std::string& fileName_)
     LayerSpec ls;
     if (spp == 4 && bps == 8)
     {
-        ls.push_back(OperationsCMYK::create(bps));
+        ls.push_back(OperationsCMYK::create());
     }
     else if (spp == 3 && bps == 8)
     {

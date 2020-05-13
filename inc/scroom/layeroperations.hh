@@ -145,15 +145,13 @@ public:
 class OperationsCMYK : public CommonOperations
 {
 public:
-  static Ptr create(size_t bps);
-  OperationsCMYK(size_t bps);
+  static Ptr create();
+  OperationsCMYK();
   virtual ~OperationsCMYK()
   {}
 
   virtual int getBpp();
   virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
-private:
-  size_t bps;
 };
 
