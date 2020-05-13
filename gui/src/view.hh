@@ -83,6 +83,7 @@ private:
 
   gint modifiermove;
   GdkPoint cachedPoint;
+  bool panning;
 
   ProgressBarManager::Ptr progressBarManager;
 
@@ -135,6 +136,8 @@ public:
   void on_motion_notify(GdkEventMotion* event);
   void setFullScreen();
   void unsetFullScreen();
+  void setPanning();
+  void unsetPanning();
 
   ////////////////////////////////////////////////////////////////////////
   // ViewInterface

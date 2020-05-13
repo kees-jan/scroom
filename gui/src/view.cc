@@ -136,6 +136,7 @@ View::View(GladeXML* scroomXml_)
 
   cachedPoint.x=0;
   cachedPoint.y=0;
+  panning = true;
 
   on_newPresentationInterfaces_update(pluginManager->getNewPresentationInterfaces());
   updateNewWindowMenu();
@@ -730,6 +731,16 @@ void View::unsetFullScreen()
   gtk_window_unfullscreen(window);
   gtk_widget_set_visible(toolbarArea, true);
   gtk_widget_set_visible(statusArea, true);
+}
+
+void View::setPanning()
+{
+  panning = true;
+}
+
+void View::unsetPanning()
+{
+  panning = false;
 }
 
 ////////////////////////////////////////////////////////////////////////
