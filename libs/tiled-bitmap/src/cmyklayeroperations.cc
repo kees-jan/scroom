@@ -88,7 +88,7 @@ Scroom::Utils::Stuff OperationsCMYK::cache(const ConstTile::Ptr tile)
     uint32_t B = static_cast<uint8_t>(DivideBy255(Y_i * K_i));
 
     // Write 255 as alpha (fully opaque)
-    row[i] = 255u << 24 | R << 16 | G << 8 | B;
+    row[i / 4] = 255u << 24 | R << 16 | G << 8 | B;
   }
 
   return Scroom::Bitmap::BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
