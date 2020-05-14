@@ -31,7 +31,9 @@
 #include "loader.hh"
 
 #ifdef _WIN32
-#include <boost/dll.hpp>
+  #include <boost/dll.hpp>
+  #include <windows.h>
+  #include <shellapi.h>
 #endif
 
 static const std::string SCROOM_DEV_MODE="SCROOM_DEV_MODE";
@@ -350,6 +352,14 @@ gboolean on_scroll_event(GtkWidget*, GdkEventScroll* event, gpointer user_data)
   return true;
 }
 
+#ifdef _WIN32
+gboolean on_open_scroom_website(GtkAboutDialog*, gchar* uri, gpointer)
+{
+  ShellExecute(nullptr, nullptr, uri, nullptr, nullptr, SW_SHOW);
+  return true;
+}
+#endif
+
 void on_scroom_bootstrap (const FileNameMap& newFilenames)
 {
   printf("Bootstrapping Scroom...\n");
@@ -390,6 +400,9 @@ void on_scroom_bootstrap (const FileNameMap& newFilenames)
     aboutDialog = glade_xml_get_widget(aboutDialogXml, "aboutDialog");
     gtk_about_dialog_set_program_name(GTK_ABOUT_DIALOG(aboutDialog), PACKAGE_NAME);
     gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(aboutDialog), PACKAGE_VERSION);
+    #ifdef _WIN32
+      g_signal_connect(G_OBJECT(aboutDialog), "activate-link", G_CALLBACK(on_open_scroom_website), NULL);
+    #endif
   }
   else
   {

@@ -129,7 +129,7 @@ namespace
     {
       boost::mutex::scoped_lock lock(mut);
       dumpPointers();
-      printf("Waiting for %zu threads to terminate", count);
+      printf("Waiting for %u threads to terminate", static_cast<unsigned int>(count));
 
       std::list<ThreadPool::ThreadPtr>::iterator cur = threads.begin();
       while(cur != threads.end())
