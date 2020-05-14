@@ -10,6 +10,10 @@
 #include <scroom/tiledbitmapinterface.hh>
 #include <scroom/colormappable.hh>
 
+struct ColorBaseValue{
+ bool isCMYK;
+};
+
 class CommonOperations : public LayerOperations
 {
 public:
@@ -150,8 +154,17 @@ public:
   virtual ~OperationsCMYK()
   {}
 
+  struct ColorCMYK: ColorBaseValue{
+  uint8_t C;
+  uint8_t M;
+  uint8_t Y;
+  uint8_t K;
+  };
+
   virtual int getBpp();
   virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+  virtual ColorCMYK getPixelValue();
+
 };
 

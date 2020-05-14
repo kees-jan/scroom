@@ -144,3 +144,9 @@ void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int t
     sourceBase += sourceStride * 8;
   }
 }
+OperationsCMYK::ColorCMYK OperationsCMYK::getPixelValue(){
+  OperationsCMYK::ColorCMYK color;
+  color.isCMYK = true;
+  //TODO
+  return color;
+}
