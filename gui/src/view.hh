@@ -136,8 +136,6 @@ public:
   void on_motion_notify(GdkEventMotion* event);
   void setFullScreen();
   void unsetFullScreen();
-  void setPanning();
-  void unsetPanning();
 
   ////////////////////////////////////////////////////////////////////////
   // ViewInterface
@@ -148,6 +146,9 @@ public:
   virtual void removeSideWidget(GtkWidget* w);
   virtual void addToToolbar(GtkToolItem* ti);
   virtual void removeFromToolbar(GtkToolItem* ti);
+  virtual void setPanning();
+  virtual void unsetPanning();
+  virtual void registerSelectionListener();
 
   ////////////////////////////////////////////////////////////////////////
   // Helpers

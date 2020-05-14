@@ -47,6 +47,8 @@ public:
   virtual void removeSideWidget(GtkWidget* w);
   virtual void addToToolbar(GtkToolItem* ti);
   virtual void removeFromToolbar(GtkToolItem* ti);
+  virtual void setPanning();
+  virtual void unsetPanning();
 };
 
 class TransparentOverlayViewInfo : virtual public Scroom::Utils::Base

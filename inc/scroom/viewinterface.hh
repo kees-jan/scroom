@@ -88,5 +88,8 @@ public:
    *    calls)
    */
   virtual void removeFromToolbar(GtkToolItem* ti)=0;
+
+  virtual void setPanning()=0;
+  virtual void unsetPanning()=0;
 };
 
