@@ -148,7 +148,7 @@ public:
   virtual void removeFromToolbar(GtkToolItem* ti);
   virtual void setPanning();
   virtual void unsetPanning();
-  virtual void registerSelectionListener();
+  //virtual void registerSelectionListener();
 
   ////////////////////////////////////////////////////////////////////////
   // Helpers
