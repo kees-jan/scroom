@@ -49,6 +49,7 @@ public:
   virtual void removeFromToolbar(GtkToolItem* ti);
   virtual void setPanning();
   virtual void unsetPanning();
+  virtual void registerSelectionListener(MeasurementListener::Ptr measurementListener);
 };
 
 class TransparentOverlayViewInfo : virtual public Scroom::Utils::Base

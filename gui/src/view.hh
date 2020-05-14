@@ -26,23 +26,6 @@
 #include "sidebarmanager.hh"
 #include "progressbarmanager.hh"
 
-struct Measurement
-{
-public:
-  GdkPoint start;
-  GdkPoint end;
-
-public:
-  Measurement(int x, int y) { start.x=x; start.y=y; end=start; }
-  Measurement(GdkPoint start_) : start(start_), end(start_) {}
-
-  bool endsAt(GdkPoint p) { return end.x==p.x && end.y==p.y; }
-
-  int width() { return abs(end.x-start.x); }
-  int height() { return abs(end.y-start.y); }
-  double length() { return std::sqrt(std::pow(double(width()),2) + std::pow(double(height()),2)); }
-};
-
 class View : public ViewInterface, virtual public Scroom::Utils::Base
 {
 public:
@@ -148,7 +131,7 @@ public:
   virtual void removeFromToolbar(GtkToolItem* ti);
   virtual void setPanning();
   virtual void unsetPanning();
-  //virtual void registerSelectionListener();
+  virtual void registerSelectionListener(MeasurementListener::Ptr measurementListener);
 
   ////////////////////////////////////////////////////////////////////////
   // Helpers

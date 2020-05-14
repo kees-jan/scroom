@@ -16,6 +16,8 @@
 
 #include <boost/lexical_cast.hpp>
 
+#include <scroom/viewinterface.hh>
+
 #include <glib-object.h>
 
 #include "pluginmanager.hh"
@@ -733,16 +735,6 @@ void View::unsetFullScreen()
   gtk_widget_set_visible(statusArea, true);
 }
 
-void View::setPanning()
-{
-  panning = true;
-}
-
-void View::unsetPanning()
-{
-  panning = false;
-}
-
 ////////////////////////////////////////////////////////////////////////
 // ViewInterface
 
@@ -794,6 +786,21 @@ void View::removeFromToolbar(GtkToolItem* ti)
     gtk_container_remove(GTK_CONTAINER(toolBar), GTK_WIDGET(toolBarSeparator));
     toolBarSeparator=NULL;
   }
+}
+
+void View::setPanning()
+{
+  panning = true;
+}
+
+void View::unsetPanning()
+{
+  panning = false;
+}
+
+void View::registerSelectionListener(MeasurementListener::Ptr measurementListener)
+{
+	printf("Cookie registered");
 }
 
 ////////////////////////////////////////////////////////////////////////

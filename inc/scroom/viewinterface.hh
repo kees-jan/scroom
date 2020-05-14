@@ -7,7 +7,10 @@
 
 #pragma once
 
+#include <stdlib.h>
+
 #include <string>
+#include <cmath>
 
 #include <gtk/gtk.h>
 
@@ -15,6 +18,35 @@
 #include <boost/weak_ptr.hpp>
 
 #include <scroom/progressinterface.hh>
+#include <scroom/viewinterface.hh>
+
+struct Measurement
+{
+public:
+  GdkPoint start;
+  GdkPoint end;
+
+public:
+  Measurement(int x, int y) { start.x=x; start.y=y; end=start; }
+  Measurement(GdkPoint start_) : start(start_), end(start_) {}
+
+  bool endsAt(GdkPoint p) { return end.x==p.x && end.y==p.y; }
+
+  int width() { return abs(end.x-start.x); }
+  int height() { return abs(end.y-start.y); }
+  double length() { return std::sqrt(std::pow(double(width()),2) + std::pow(double(height()),2)); }
+};
+
+class MeasurementListener
+{
+public:
+	typedef boost::shared_ptr<MeasurementListener> Ptr;
+
+public:
+	virtual ~MeasurementListener() {}
+
+	virtual void onMeasurement(Measurement measurement)=0;
+};
 
 /**
  * Interface provided to something Viewable
@@ -91,5 +123,6 @@ public:
 
   virtual void setPanning()=0;
   virtual void unsetPanning()=0;
+  virtual void registerSelectionListener(MeasurementListener::Ptr measurementListener)=0;
 };
 

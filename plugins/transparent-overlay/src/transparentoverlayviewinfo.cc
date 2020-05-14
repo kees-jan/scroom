@@ -12,6 +12,7 @@
 #include <scroom/unused.hh>
 #include <scroom/bitmap-helpers.hh>
 #include <scroom/colormappable.hh>
+#include <scroom/viewinterface.hh>
 
 #ifdef HAVE_CONFIG_H
 # include <config.h>
@@ -75,6 +76,7 @@ void ChildView::removeFromToolbar(GtkToolItem*)
 
 void ChildView::setPanning(){}
 void ChildView::unsetPanning(){}
+void ChildView::registerSelectionListener(MeasurementListener::Ptr){}
 
 ////////////////////////////////////////////////////////////////////////
 // TransparentOverlayViewInfo
