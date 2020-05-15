@@ -10,9 +10,6 @@
     <Objective-C-extensions>
       <option name="TAG_PREFIX_OF_LINE_COMMENT" value="AT" />
     </Objective-C-extensions>
-    <clangFormatSettings>
-      <option name="ENABLED" value="true" />
-    </clangFormatSettings>
     <codeStyleSettings language="ObjectiveC">
       <indentOptions>
         <option name="INDENT_SIZE" value="2" />
