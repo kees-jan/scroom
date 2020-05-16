@@ -100,14 +100,15 @@ bool PluginManager::doWork() {
 
     printf("Scanning directory: %s\n", currentDir->c_str());
     const char * folder = currentDir->c_str();
+    namespace fs = boost::filesystem;
+    boost::system::error_code ec;
 
-    if (folder == nullptr) {
+    if (!fs::is_directory(folder, ec)) {
       printf("Can't open directory...\n");
       currentDir++;
       break;
     }
 
-    namespace fs = boost::filesystem;
     for (const auto & entry : fs::directory_iterator(folder)) {
       if (fs::is_regular_file(entry) || fs::is_symlink(entry) || fs::is_other(entry)) {
         files.push_back(entry.path().generic_string());
