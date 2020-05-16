@@ -39,19 +39,20 @@ namespace
 ////////////////////////////////////////////////////////////////////////
 // OperationsCMYK
 
-LayerOperations::Ptr OperationsCMYK::create()
+LayerOperations::Ptr OperationsCMYK::create(uint16_t bps)
 {
-  return Ptr(new OperationsCMYK());
+  return Ptr(new OperationsCMYK(bps));
 }
 
-OperationsCMYK::OperationsCMYK()
+OperationsCMYK::OperationsCMYK(uint16_t bps_)
+  : bps(bps_)
 {
 }
 
 int OperationsCMYK::getBpp()
 {
   // CMYK has 4 channels -> 4 samples per pixel.
-  return 32;
+  return static_cast<int>(this->bps * 4);
 }
 
 // From https://www.pagetable.com/?p=23#comment-1140
@@ -75,20 +76,78 @@ Scroom::Utils::Stuff OperationsCMYK::cache(const ConstTile::Ptr tile)
   const uint8_t* cur = tile->data.get();
 
   // assume stride = tile->width * 4
-  for (int i = 0; i < 4 * tile->height * tile->width; i += 4)
-  {
-    // Convert CMYK to ARGB, because cairo doesn't know how to render CMYK.
-    uint8_t C_i = static_cast<uint8_t>(255 - cur[i + 0]);
-    uint8_t M_i = static_cast<uint8_t>(255 - cur[i + 1]);
-    uint8_t Y_i = static_cast<uint8_t>(255 - cur[i + 2]);
-    uint8_t K_i = static_cast<uint8_t>(255 - cur[i + 3]);
+  if (this->bps == 8) {
+    for (int i = 0; i < 4 * tile->height * tile->width; i += 4)
+    {
+      // Convert CMYK to ARGB, because cairo doesn't know how to render CMYK.
+      uint8_t C_i = static_cast<uint8_t>(255 - cur[i + 0]);
+      uint8_t M_i = static_cast<uint8_t>(255 - cur[i + 1]);
+      uint8_t Y_i = static_cast<uint8_t>(255 - cur[i + 2]);
+      uint8_t K_i = static_cast<uint8_t>(255 - cur[i + 3]);
 
-    uint32_t R = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(C_i * K_i)));
-    uint32_t G = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(M_i * K_i)));
-    uint32_t B = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(Y_i * K_i)));
+      uint32_t R = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(C_i * K_i)));
+      uint32_t G = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(M_i * K_i)));
+      uint32_t B = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(Y_i * K_i)));
 
-    // Write 255 as alpha (fully opaque)
-    row[i / 4] = 255u << 24 | R << 16 | G << 8 | B;
+      // Write 255 as alpha (fully opaque)
+      row[i / 4] = 255u << 24 | R << 16 | G << 8 | B;
+    }
+  } else if (this->bps == 4) {
+    for (int i = 0; i < 2 * tile->height * tile->width; i += 2)
+    {
+      // Convert CMYK to ARGB, because cairo doesn't know how to render CMYK.
+      uint8_t C_i = static_cast<uint8_t>(255 - ((cur[i + 0]       ) >> 4) * 17); // 17 == 255/15
+      uint8_t M_i = static_cast<uint8_t>(255 - ((cur[i + 0] & 0x0F)     ) * 17);
+      uint8_t Y_i = static_cast<uint8_t>(255 - ((cur[i + 1]       ) >> 4) * 17);
+      uint8_t K_i = static_cast<uint8_t>(255 - ((cur[i + 1] & 0x0F)     ) * 17);
+
+      uint32_t R = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(C_i * K_i)));
+      uint32_t G = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(M_i * K_i)));
+      uint32_t B = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(Y_i * K_i)));
+
+      // Write 255 as alpha (fully opaque)
+      row[i / 2] = 255u << 24 | R << 16 | G << 8 | B;
+    }
+  } else if (this->bps == 2) {
+    for (int i = 0; i < tile->height * tile->width; i++)
+    {
+      // Convert CMYK to ARGB, because cairo doesn't know how to render CMYK.
+      uint8_t C_i = static_cast<uint8_t>(255 - ((cur[i]       ) >> 6) * 85); // 85 == 255/3
+      uint8_t M_i = static_cast<uint8_t>(255 - ((cur[i] & 0x30) >> 4) * 85);
+      uint8_t Y_i = static_cast<uint8_t>(255 - ((cur[i] & 0x0C) >> 2) * 85);
+      uint8_t K_i = static_cast<uint8_t>(255 - ((cur[i] & 0x03)     ) * 85);
+
+      uint32_t R = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(C_i * K_i)));
+      uint32_t G = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(M_i * K_i)));
+      uint32_t B = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(Y_i * K_i)));
+
+      // Write 255 as alpha (fully opaque)
+      row[i] = 255u << 24 | R << 16 | G << 8 | B;
+    }
+  } else if (this->bps == 1) {
+    for (int i = 0; i < tile->height * tile->width; i++)
+    {
+      // Convert CMYK to ARGB, because cairo doesn't know how to render CMYK.
+      uint8_t C_i, M_i, Y_i, K_i;
+      if (i & 1 == 0) { // even pixels -> top half of byte
+        C_i = static_cast<uint8_t>(((cur[i / 2]       ) >> 7) - 1); // 0 -> 255 (= -1), 1 -> 0
+        M_i = static_cast<uint8_t>(((cur[i / 2] & 0x40) >> 6) - 1);
+        Y_i = static_cast<uint8_t>(((cur[i / 2] & 0x20) >> 5) - 1);
+        K_i = static_cast<uint8_t>(((cur[i / 2] & 0x10) >> 4) - 1);
+      } else { // odd pixels -> lower half of the byte
+        C_i = static_cast<uint8_t>(((cur[i / 2] & 0x08) >> 3) - 1); // 0 -> 255 (= -1), 1 -> 0
+        M_i = static_cast<uint8_t>(((cur[i / 2] & 0x04) >> 2) - 1);
+        Y_i = static_cast<uint8_t>(((cur[i / 2] & 0x02) >> 1) - 1);
+        K_i = static_cast<uint8_t>(((cur[i / 2] & 0x01)     ) - 1);
+      }
+
+      uint32_t R_1 = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(C_i_1 * K_i_1)));
+      uint32_t G_1 = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(M_i_1 * K_i_1)));
+      uint32_t B_1 = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(Y_i_1 * K_i_1)));
+
+      // Write 255 as alpha (fully opaque)
+      row[i] = 255u << 24 | R_1 << 16 | G_1 << 8 | B_1;
+    }
   }
 
   return Scroom::Bitmap::BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
