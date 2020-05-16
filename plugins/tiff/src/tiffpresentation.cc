@@ -180,7 +180,9 @@ bool TiffPresentation::load(const std::string& fileName_)
       resolutionY = 1;
     }
     
-    std::cout << "This bitmap has size " << width << "*" << height << ", aspect ratio " << 1 / resolutionX << "*" << 1 / resolutionY << std::endl;
+    printf("This bitmap has size %d*%d, aspect ratio %.1f*%.1f\n",
+           width, height, 1/resolutionX, 1/resolutionY);
+
     LayerSpec ls;
 
     if (spp == 3)
