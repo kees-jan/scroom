@@ -51,15 +51,16 @@ bool PluginManager::doWork() {
     char* path = getenv(SCROOM_PLUGIN_DIRS.c_str());
     dirs.clear();
 
-	  #ifdef _WIN32
-      // We want to keep everything portable on windows so we look for the plugin folder in the same directory as the .exe
-      std::string plugin_path = (boost::dll::program_location().parent_path() / "plugins").generic_string();
-      dirs.push_back(plugin_path);
-    #else
       if (!devMode) {
-        dirs.push_back(PLUGIN_DIR);
+        #ifdef _WIN32
+          // We want to keep everything portable on windows so we look for the plugin folder in the same directory as the .exe
+          std::string plugin_path = (boost::dll::program_location().parent_path() / "plugins").generic_string();
+          dirs.push_back(plugin_path);
+        #else
+          dirs.push_back(PLUGIN_DIR);
+        #endif
       }
-	  #endif
+	  
 
     if (path != nullptr) {
       printf("%s = %s\n", SCROOM_PLUGIN_DIRS.c_str(), path);
