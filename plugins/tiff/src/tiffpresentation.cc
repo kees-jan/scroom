@@ -85,19 +85,12 @@ bool TiffPresentation::load(const std::string& fileName_)
     }
     else
     {
-      this->bps = bps[0];
-      if(spp>1)
-        for(auto current : bps_)
-          if(current != this->bps)
-          {
-            printf("PANIC: All samples must have the same bps value (%u != %u)", this->bps, current);
-            return false;
-          }
+      this->bps = bps_[0];
       if(spp==3)
       {
         if(this->bps!=8)
         {
-          printf("PANIC: Bits per sample is not 8, but %d. Giving up\n", bps_);
+          printf("PANIC: Bits per sample is not 8, but %d. Giving up\n", bps);
           return false;
         }
       }
@@ -111,7 +104,7 @@ bool TiffPresentation::load(const std::string& fileName_)
     {
       originalColormap = Colormap::create();
       originalColormap->name = "Original";
-      size_t count = 1UL << bps_;
+      size_t count = 1UL << bps;
       originalColormap->colors.resize(count);
 
       for (size_t i = 0; i < count; i++)
@@ -194,9 +187,9 @@ bool TiffPresentation::load(const std::string& fileName_)
     
     std::cout << "This bitmap has size " << width << "*" << height << ", aspect ratio " << 1 / resolutionX << "*" << 1 / resolutionY << std::endl;
     LayerSpec ls;
-    if (spp == 4 && bps == 8)
+    if (spp == 4 && (bps == 8 || bps == 4 || bps == 2 || bps == 1))
     {
-        ls.push_back(OperationsCMYK::create());
+        ls.push_back(OperationsCMYK::create(bps));
     }
     else if (spp == 3 && bps == 8)
     {

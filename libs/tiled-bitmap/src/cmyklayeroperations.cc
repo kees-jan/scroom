@@ -52,7 +52,7 @@ OperationsCMYK::OperationsCMYK(uint16_t bps_)
 int OperationsCMYK::getBpp()
 {
   // CMYK has 4 channels -> 4 samples per pixel.
-  return static_cast<int>(this->bps * 4);
+  return this->bps * 4;
 }
 
 // From https://www.pagetable.com/?p=23#comment-1140
@@ -129,7 +129,7 @@ Scroom::Utils::Stuff OperationsCMYK::cache(const ConstTile::Ptr tile)
     {
       // Convert CMYK to ARGB, because cairo doesn't know how to render CMYK.
       uint8_t C_i, M_i, Y_i, K_i;
-      if (i & 1 == 0) { // even pixels -> top half of byte
+      if ((i & 1) == 0) { // even pixels -> top half of byte
         C_i = static_cast<uint8_t>(((cur[i / 2]       ) >> 7) - 1); // 0 -> 255 (= -1), 1 -> 0
         M_i = static_cast<uint8_t>(((cur[i / 2] & 0x40) >> 6) - 1);
         Y_i = static_cast<uint8_t>(((cur[i / 2] & 0x20) >> 5) - 1);
@@ -141,9 +141,9 @@ Scroom::Utils::Stuff OperationsCMYK::cache(const ConstTile::Ptr tile)
         K_i = static_cast<uint8_t>(((cur[i / 2] & 0x01)     ) - 1);
       }
 
-      uint32_t R_1 = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(C_i_1 * K_i_1)));
-      uint32_t G_1 = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(M_i_1 * K_i_1)));
-      uint32_t B_1 = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(Y_i_1 * K_i_1)));
+      uint32_t R_1 = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(C_i * K_i)));
+      uint32_t G_1 = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(M_i * K_i)));
+      uint32_t B_1 = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(Y_i * K_i)));
 
       // Write 255 as alpha (fully opaque)
       row[i] = 255u << 24 | R_1 << 16 | G_1 << 8 | B_1;
