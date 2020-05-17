@@ -166,6 +166,10 @@ AC_SUBST([BOOSTSYSTEMLIB], ["$ac_cv_search__ZN5boost6system16generic_categoryEv"
 # Checking for pthreads
 have_pthreads_lib=no
 SCROOM_SEARCH_LIBS([pthread_mutexattr_init], [pthread], [have_pthreads_lib=yes])
+if test "x$ac_cv_search_pthread_mutexattr_init" = xnone\ required
+then
+  ac_cv_search_pthread_mutexattr_init=""
+fi
 AC_SUBST([PTHREADLIB], ["$ac_cv_search_pthread_mutexattr_init"])
 
 # Checking for boost thread
@@ -381,15 +385,6 @@ AC_SUBST([incscroomimpldir], [$incscroomdir/impl])
 AC_SUBST([incscroomgmockdir], [$incscroomdir/gmock])
 
 AC_OUTPUT
-
-# There is a bug somewhere in the configure script that causes the string "none required" to be added to libraries as a compiler argument
-sed -e "s/none required//g" -i Makefile
-
-# Alright, this is nasty. I know. But I found no other way to get all the dependencies loaded as system libraries on Windows.
-# And if they're loaded as normal libraries, g++ floods the terminal with warnings during compilation, as it displays warnings for libraries then
-# So what is happening here is that I'm replacing all occurrences of the string "-I/mingw" with "-isystem /mingw" in the Makefile
-AM_COND_IF([WINDOWS], 
-    [sed -e "s+-I/mingw+-isystem /mingw+g" -i Makefile])    
 
 echo \
 "-------------------------------------------------
