@@ -372,6 +372,11 @@ dnl dnl Add the languages which your application supports here.
 dnl ALL_LINGUAS=""
 dnl AM_GLIB_GNU_GETTEXT
 
+# Execute a script after 'make install' on Windows
+post_install_hook='${top_srcdir}'/build_scripts/windows/post-install-hook.sh\ '${prefix}'
+AM_COND_IF([LINUX], [post_install_hook=":"]) 
+AC_SUBST([POST_INSTALL_HOOK], [$post_install_hook])
+
 
 AC_CONFIG_FILES([Makefile
                  gui/ENVIRONMENT
