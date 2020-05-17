@@ -32,9 +32,7 @@ AM_CONDITIONAL([WINDOWS], [test "$build_windows" = "yes"])
 AM_COND_IF([WINDOWS], 
     [export PATH=$PATH:/c/msys64/mingw64/bin]) 
     
-# The configure.ac from Kees-Jan also contained the serial-tests flag for using the serial test harness
-# That one seems to be deprecated though and it seems to work without it
-AM_INIT_AUTOMAKE([-Wall -Werror foreign silent-rules subdir-objects])
+AM_INIT_AUTOMAKE([-Wall -Werror foreign silent-rules subdir-objects serial-tests])
 AM_SILENT_RULES([yes])
 AM_PROG_AR
 LT_PREREQ([2.2])

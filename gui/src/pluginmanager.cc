@@ -40,7 +40,8 @@ void startPluginManager(bool devMode)
   pluginManager->addHook(devMode);
 }
 
-bool PluginManager::doWork() {
+bool PluginManager::doWork() 
+{
   bool retval = true;
 
   gdk_threads_enter();
