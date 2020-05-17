@@ -661,7 +661,8 @@ checkPROGRAMS: all-am $(check_PROGRAMS)
 silent-doxygen:
 	@$(MAKE) doxygen-doc > doxygen.log 2>&1
 
-install-data-hook: 
+# Target for installing a portable version on Windows. Only does 'install' on Linux
+install-win-portable: install
 	@POST_INSTALL_HOOK@
 
 	
