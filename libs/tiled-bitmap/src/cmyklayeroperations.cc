@@ -153,53 +153,123 @@ Scroom::Utils::Stuff OperationsCMYK::cache(const ConstTile::Ptr tile)
   return Scroom::Bitmap::BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
 }
 
+// http://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetParallel
+uint8_t bitcount(uint32_t c) {
+  c = c - ((c >> 1) & 0x55555555);
+  c = ((c >> 2) & 0x33333333) + (c & 0x33333333);
+  c = ((c >> 4) + c) & 0x0F0F0F0F;
+  c = ((c >> 8) + c) & 0x00FF00FF;
+  return ((c >> 16) + c) & 0x0000FFFF;
+}
+
 void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int top_left_x, int top_left_y)
 {
-  // Reducing by a factor 8. Source tile is 24bpp. Target tile is 24bpp
-  int sourceStride = 4 * source->width; // stride in bytes
+  // Reducing by a factor 8
+  int sourceStride = this->bps * source->width / 2; // stride in bytes
   const byte* sourceBase = source->data.get();
 
-  int targetStride = 4 * target->width; // stride in bytes
+  int targetStride = this->bps * target->width / 2; // stride in bytes
   byte* targetBase = target->data.get() +
       (target->height * top_left_y + top_left_x) * targetStride / 8;
-
-  for (int y = 0; y < source->height / 8; y++)
-  {
-    const byte* sourcePtr = sourceBase;
-    byte* targetPtr = targetBase;
-
-    for (int x = 0; x < source->width / 8; x++)
+  
+  if (this->bps > 1) {
+    for (int y = 0; y < source->height / 8; y++)
     {
-      // We want to store the average colour of the 8*8 pixel image
-      // with (x, y) as its top-left corner into targetPtr.
-      const byte* base = sourcePtr;
-      int sum_c = 0;
-      int sum_m = 0;
-      int sum_y = 0;
-      int sum_k = 0;
-      for (int k = 0; k < 8; k++, base += sourceStride)
+      const byte* sourcePtr = sourceBase;
+      byte* targetPtr = targetBase;
+
+      for (int x = 0; x < source->width / 8; x++)
       {
-        const byte* current = base;
-        for (int l = 0; l < 8; l++)
+        // We want to store the average colour of the 8*8 pixel image
+        // with (x, y) as its top-left corner into targetPtr.
+        const byte* base = sourcePtr;
+        int sum_c = 0;
+        int sum_m = 0;
+        int sum_y = 0;
+        int sum_k = 0;
+        for (int k = 0; k < 8; k++, base += sourceStride)
         {
-          sum_c += current[0];
-          sum_m += current[1];
-          sum_y += current[2];
-          sum_k += current[3];
-          current += 4;
+          size_t current = 0;
+          for (int l = 0; l < 8; l++)
+          {
+            if (this->bps == 8) {
+              sum_c += base[current + 0];
+              sum_m += base[current + 1];
+              sum_y += base[current + 2];
+              sum_k += base[current + 3];
+              current += 4;
+            } else if (this->bps == 4) {
+              sum_c += base[current + 0] >> 4;
+              sum_m += base[current + 0] & 15;
+              sum_y += base[current + 1] >> 4;
+              sum_k += base[current + 1] & 15;
+              current += 2;
+            } else if (this->bps == 2) {
+              sum_c +=  base[current] >> 6;
+              sum_m += (base[current] & 0x30) >> 4;
+              sum_y += (base[current] & 0x0C) >> 2;
+              sum_k +=  base[current] & 0x03;
+              current++;
+            }
+          }
+        }
+
+        if (this->bps == 8) {
+          targetPtr[0] = static_cast<byte>(sum_c / 64);
+          targetPtr[1] = static_cast<byte>(sum_m / 64);
+          targetPtr[2] = static_cast<byte>(sum_y / 64);
+          targetPtr[3] = static_cast<byte>(sum_k / 64);
+        } else if (this->bps == 4) {
+          targetPtr[0] = static_cast<byte>(sum_c / 64) << 4 | static_cast<byte>((sum_m / 64) & 0xF);
+          targetPtr[1] = static_cast<byte>(sum_y / 64) << 4 | static_cast<byte>((sum_k / 64) & 0xF);
+        } else if (this->bps == 2) {
+          targetPtr[0] = static_cast<byte>(sum_c / 64) << 6 | 
+                        static_cast<byte>(((sum_m / 64) & 0x3) << 4) |
+                        static_cast<byte>(((sum_y / 64) & 0x3) << 2) |
+                        static_cast<byte>((sum_k / 64) & 0x3);
+        }
+
+        sourcePtr += 4 * this->bps;
+        targetPtr += this->bps / 2;
+      }
+
+      targetBase += targetStride;
+      sourceBase += sourceStride * 8;
+    }
+  } else {
+    // 1 bps
+    for (int y = 0; y < source->height / 8; y++)
+    {
+      const uint32_t* sourcePtr = reinterpret_cast<const uint32_t*>(sourceBase);
+
+      for (int x = 0; x < source->width / 8; x++)
+      {
+        // Find average of 8x8 pixel area
+        // We don't care about the order of pixels, because
+        // addition is associative.
+        uint32_t row = sourceBase[x];
+        uint8_t sum_c = bitcount(row & 0b10001000100010001000100010001000);
+        uint8_t sum_m = bitcount(row & 0b01000100010001000100010001000100);
+        uint8_t sum_y = bitcount(row & 0b00100010001000100010001000100010);
+        uint8_t sum_k = bitcount(row & 0b00010001000100010001000100010001);
+
+        // Since a single pixel takes up half a byte, we need to do some
+        // bitshifts to get the bits in the right positions.
+        if ((x & 1) == 0) {
+          targetBase[x/2] = ((sum_c & 4) << 5) \
+                       | ((sum_m & 4) << 4) \
+                       | ((sum_y & 4) << 3) \
+                       | ((sum_k & 4) << 2);
+        } else {
+          targetBase[x/2] |= ((sum_c & 4) << 1) \
+                       | ((sum_m & 4)     ) \
+                       | ((sum_y & 4) >> 1) \
+                       | ((sum_k & 4) >> 2);
         }
       }
 
-      targetPtr[0] = static_cast<byte>(sum_c / 64);
-      targetPtr[1] = static_cast<byte>(sum_m / 64);
-      targetPtr[2] = static_cast<byte>(sum_y / 64);
-      targetPtr[3] = static_cast<byte>(sum_k / 64);
-
-      sourcePtr += 8 * 4;
-      targetPtr += 4;
+      targetBase += targetStride;
+      sourceBase += sourceStride * 8;
     }
-
-    targetBase += targetStride;
-    sourceBase += sourceStride * 8;
   }
 }
