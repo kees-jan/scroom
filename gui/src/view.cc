@@ -204,6 +204,10 @@ void View::redraw(cairo_t* cr)
       cairo_set_source_rgb(cr, 1, 0, 0); // Red
       cairo_move_to(cr, start.x, start.y);
       cairo_line_to(cr, end.x, end.y);
+      cairo_line_to(cr, end.x, start.y);
+      cairo_line_to(cr, start.x, start.y);
+      cairo_line_to(cr, start.x, end.y);
+      cairo_line_to(cr, end.x, end.y);
       cairo_stroke(cr);
     }
   }
