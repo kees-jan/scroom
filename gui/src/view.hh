@@ -63,6 +63,7 @@ private:
   int x;
   int y;
   Measurement* measurement;
+  MeasurementListener::Ptr measurementListener;
 
   gint modifiermove;
   GdkPoint cachedPoint;

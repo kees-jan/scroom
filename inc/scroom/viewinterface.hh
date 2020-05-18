@@ -45,7 +45,7 @@ public:
 public:
 	virtual ~MeasurementListener() {}
 
-	virtual void onMeasurement(Measurement measurement)=0;
+	virtual void onMeasurement(Measurement* measurement)=0;
 };
 
 /**

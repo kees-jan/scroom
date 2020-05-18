@@ -663,6 +663,10 @@ void View::on_buttonRelease(GdkEventButton* event)
     if(measurement)
     {
       measurement->end = windowPointToPresentationPoint(eventToPoint(event));
+      if(measurementListener)
+      {
+        measurementListener->onMeasurement(measurement);
+      }
     }
     cachedPoint.x=0;
     cachedPoint.y=0;
@@ -798,9 +802,11 @@ void View::unsetPanning()
   panning = false;
 }
 
-void View::registerSelectionListener(MeasurementListener::Ptr measurementListener)
+void View::registerSelectionListener(MeasurementListener::Ptr listener)
 {
-	printf("Cookie registered");
+	printf("Cookie registered\n");
+	//measurementListener->onMeasurement(0);
+	this->measurementListener = listener;
 }
 
 ////////////////////////////////////////////////////////////////////////
