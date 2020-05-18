@@ -247,7 +247,7 @@ void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int t
         // Find average of 8x8 pixel area
         // We don't care about the order of pixels, because
         // addition is associative.
-        uint32_t row = sourceBase[x];
+        uint32_t row = sourcePtr[x];
         uint8_t sum_c = bitcount(row & 0b10001000100010001000100010001000);
         uint8_t sum_m = bitcount(row & 0b01000100010001000100010001000100);
         uint8_t sum_y = bitcount(row & 0b00100010001000100010001000100010);
@@ -256,15 +256,15 @@ void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int t
         // Since a single pixel takes up half a byte, we need to do some
         // bitshifts to get the bits in the right positions.
         if ((x & 1) == 0) {
-          targetBase[x/2] = ((sum_c & 4) << 5) \
-                       | ((sum_m & 4) << 4) \
-                       | ((sum_y & 4) << 3) \
-                       | ((sum_k & 4) << 2);
+          targetBase[x/2] = ((sum_c >= 4 ? 4 : 0) << 5) \
+                       | ((sum_m >= 4 ? 4 : 0) << 4) \
+                       | ((sum_y >= 4 ? 4 : 0) << 3) \
+                       | ((sum_k >= 4 ? 4 : 0) << 2);
         } else {
-          targetBase[x/2] |= ((sum_c & 4) << 1) \
-                       | ((sum_m & 4)     ) \
-                       | ((sum_y & 4) >> 1) \
-                       | ((sum_k & 4) >> 2);
+          targetBase[x/2] |= ((sum_c >= 4 ? 4 : 0) << 1) \
+                       | ((sum_m >= 4 ? 4 : 0)     ) \
+                       | ((sum_y >= 4 ? 4 : 0) >> 1) \
+                       | ((sum_k >= 4 ? 4 : 0) >> 2);
         }
       }
 
