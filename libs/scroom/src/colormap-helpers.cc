@@ -33,7 +33,7 @@ Colormap::Ptr ColormapHelperBase::getOriginalColormap()
 
 int ColormapHelperBase::getNumberOfColors()
 {
-  return static_cast<int>(originalColormap->colors.size());
+  return originalColormap->colors.size();
 }
 
 Color ColormapHelperBase::getMonochromeColor()
@@ -143,8 +143,9 @@ void MonochromeColormapHelper::regenerateColormap()
 
   }
 
-  for (std::size_t i=0; i<static_cast<std::size_t>(numberOfColors); i++) {
-    colormap->colors[i] = mix(w, b, static_cast<double>(i) / static_cast<double>(numberOfColors - 1));
+  for(int i=0; i<numberOfColors; i++)
+  {
+    colormap->colors[i] = mix(w, b, 1.0*i/(numberOfColors-1));
   }
 }
 

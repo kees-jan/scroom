@@ -35,11 +35,11 @@ void usage(std::string me, std::string message=std::string())
 int main (int argc, char *argv[])
 {
   std::string me = argv[0];
-  int result;
+  char result;
 
   while ((result = getopt(argc, argv, ":h")) != -1)
   {
-    switch (static_cast<char>(result))
+    switch (result)
     {
     case 'h':
       usage(me);
@@ -64,6 +64,7 @@ int main (int argc, char *argv[])
   //   optind++;
   // }
 
+  g_thread_init(NULL);
   gdk_threads_init();
 
   gdk_threads_enter();

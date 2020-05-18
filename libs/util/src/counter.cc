@@ -68,7 +68,7 @@ void Counter::unregisterCount(Count::Ptr count)
 void Counter::dump()
 {
   boost::unique_lock<boost::mutex> lock(mut);
-  printf("%zu", counts.size());
+  printf("%ld", (long)counts.size());
   for(Count::Ptr& c: counts)
   {
     printf(", %s, %ld", c->name.c_str(), c->count);

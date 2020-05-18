@@ -90,11 +90,11 @@ namespace
     std::list<std::pair<boost::weak_ptr<void>, std::string> >::iterator cur = pointers.begin();
     while(cur != pointers.end())
     {
-      const long count = cur->first.use_count();
+      const int count = cur->first.use_count();
 
       if(count)
       {
-        printf("%ld references to %s remaining\n", count, cur->second.c_str());
+        printf("%d references to %s remaining\n", count, cur->second.c_str());
         cur++;
       }
       else
@@ -106,7 +106,7 @@ namespace
   {
     const boost::posix_time::millisec short_timeout(1);
     const boost::posix_time::millisec timeout(250);
-    size_t count=0;
+    int count=0;
 
     {
       boost::mutex::scoped_lock lock(mut);
@@ -129,7 +129,7 @@ namespace
     {
       boost::mutex::scoped_lock lock(mut);
       dumpPointers();
-      printf("Waiting for %u threads to terminate", static_cast<unsigned int>(count));
+      printf("Waiting for %d threads to terminate", static_cast<unsigned int>(count));
 
       std::list<ThreadPool::ThreadPtr>::iterator cur = threads.begin();
       while(cur != threads.end())
@@ -194,7 +194,7 @@ ThreadPool::PrivateData::Ptr ThreadPool::PrivateData::create(bool completeAllJob
 ThreadPool::ThreadPool(bool completeAllJobsBeforeDestruction)
   : priv(PrivateData::create(completeAllJobsBeforeDestruction))
 {
-  size_t count = boost::thread::hardware_concurrency();
+  int count = boost::thread::hardware_concurrency();
 #ifndef MULTITHREADING
   if(count>1)
     count=1;
@@ -202,7 +202,7 @@ ThreadPool::ThreadPool(bool completeAllJobsBeforeDestruction)
   add(count);
 }
 
-ThreadPool::ThreadPool(size_t count, bool completeAllJobsBeforeDestruction)
+ThreadPool::ThreadPool(int count, bool completeAllJobsBeforeDestruction)
   : priv(PrivateData::create(completeAllJobsBeforeDestruction))
 {
 #ifndef MULTITHREADING
@@ -217,7 +217,7 @@ ThreadPool::Ptr ThreadPool::create(bool completeAllJobsBeforeDestruction)
   return ThreadPool::Ptr(new ThreadPool(completeAllJobsBeforeDestruction));
 }
 
-ThreadPool::Ptr ThreadPool::create(size_t count, bool completeAllJobsBeforeDestruction)
+ThreadPool::Ptr ThreadPool::create(int count, bool completeAllJobsBeforeDestruction)
 {
   return ThreadPool::Ptr(new ThreadPool(count, completeAllJobsBeforeDestruction));
 }
@@ -230,10 +230,10 @@ ThreadPool::ThreadPtr ThreadPool::add()
   return t;
 }
 
-std::vector<ThreadPool::ThreadPtr> ThreadPool::add(size_t count)
+std::vector<ThreadPool::ThreadPtr> ThreadPool::add(int count)
 {
   std::vector<ThreadPool::ThreadPtr> result(count);
-  for(size_t i=0; i<count; i++)
+  for(int i=0; i<count; i++)
     result[i] = add();
 
   return result;
@@ -477,7 +477,7 @@ ThreadPool::Ptr CpuBound()
 
 ThreadPool::Ptr Sequentially()
 {
-  static ThreadPool::Ptr sequentially = NotifyThreadList<ThreadPool>(ThreadPool::Ptr(new ThreadPool(1, false)), "Sequential threadpool");
+  static ThreadPool::Ptr sequentially = NotifyThreadList<ThreadPool>(ThreadPool::Ptr(new ThreadPool(1)), "Sequential threadpool");
 
   return sequentially;
 }

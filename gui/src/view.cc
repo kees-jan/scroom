@@ -343,8 +343,8 @@ void View::updateZoom()
 {
   if(presentation)
   {
-    int presentationHeight = static_cast<int>(presentationRect.height());
-    int presentationWidth = static_cast<int>(presentationRect.width());
+    int presentationHeight = presentationRect.height();
+    int presentationWidth = presentationRect.width();
     int minZoom = 0;
 
     while(presentationHeight > drawingAreaHeight/2 || presentationWidth > drawingAreaWidth/2)
@@ -356,20 +356,20 @@ void View::updateZoom()
 
     gtk_widget_set_sensitive(GTK_WIDGET(zoomBox), true);
 
-    size_t zMax = static_cast<size_t>(MaxZoom - minZoom);
-    zMax = std::max(zMax, 1 + static_cast<size_t>(MaxZoom - zoom));
-    zMax = std::min(zMax, sizeof(zoomfactor)/sizeof(zoomfactor[0]));
+    int zMax = MaxZoom - minZoom;
+    zMax = std::max(zMax, 1+MaxZoom-zoom);
+    zMax = std::min((size_t)zMax, sizeof(zoomfactor)/sizeof(zoomfactor[0]));
 
     gtk_list_store_clear(zoomItems);
-    for(size_t z=0; z<zMax; z++)
+    for(int z=0; z<zMax; z++)
     {
       GtkTreeIter iter;
-      gtk_list_store_insert_with_values(zoomItems, &iter, static_cast<gint>(z),
+      gtk_list_store_insert_with_values(zoomItems, &iter, z,
                                         COLUMN_TEXT, zoomfactor[z],
                                         COLUMN_ZOOM, MaxZoom-z,
                                         -1);
 
-      if(static_cast<size_t>(zoom) == MaxZoom-z)
+      if(zoom == MaxZoom-z)
       {
         gtk_combo_box_set_active_iter(zoomBox, &iter);
       }
@@ -506,7 +506,7 @@ void View::on_scrollwheel(GdkEventScroll* event)
 
       if(foundZoom==newZoom)
       {
-        on_zoombox_changed(newZoom, static_cast<int>(event->x), static_cast<int>(event->y));
+        on_zoombox_changed(newZoom, event->x, event->y);
         gtk_combo_box_set_active_iter(zoomBox, &iter);
         break;
       }
@@ -692,8 +692,8 @@ void View::on_motion_notify(GdkEventMotion* event)
     else
     {
       const int pixelSize=1<<-zoom;
-      newx-=static_cast<int>((event->x-cachedPoint.x)*pixelSize);
-      newy-=static_cast<int>((event->y-cachedPoint.y)*pixelSize);
+      newx-=(event->x-cachedPoint.x)*pixelSize;
+      newy-=(event->y-cachedPoint.y)*pixelSize;
       cachedPoint = eventToPoint(event);
     }
 

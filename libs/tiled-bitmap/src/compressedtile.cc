@@ -18,7 +18,7 @@ using namespace Scroom::MemoryBlobs;
 ////////////////////////////////////////////////////////////////////////
 /// CompressedTile
 CompressedTile::CompressedTile(int depth_, int x_, int y_, int bpp_, PageProvider::Ptr provider_, TileStateInternal state_)
-  : depth(depth_), x(x_), y(y_), bpp(bpp_), state(state_), tile(), provider(provider_), data(Blob::create(provider_, static_cast<size_t>(TILESIZE*TILESIZE/8 * bpp_)))
+  : depth(depth_), x(x_), y(y_), bpp(bpp_), state(state_), tile(), provider(provider_), data(Blob::create(provider_, TILESIZE*TILESIZE * bpp / 8))
 {
 }
 

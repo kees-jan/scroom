@@ -52,16 +52,15 @@ bool PluginManager::doWork()
     char* path = getenv(SCROOM_PLUGIN_DIRS.c_str());
     dirs.clear();
 
-      if (!devMode) {
-        #ifdef _WIN32
-          // We want to keep everything portable on windows so we look for the plugin folder in the same directory as the .exe
-          std::string plugin_path = (boost::dll::program_location().parent_path() / "plugins").generic_string();
-          dirs.push_back(plugin_path);
-        #else
-          dirs.push_back(PLUGIN_DIR);
-        #endif
-      }
-	  
+    if (!devMode) {
+      #ifdef _WIN32
+        // We want to keep everything portable on windows so we look for the plugin folder in the same directory as the .exe
+        std::string plugin_path = (boost::dll::program_location().parent_path() / "plugins").generic_string();
+        dirs.push_back(plugin_path);
+      #else
+        dirs.push_back(PLUGIN_DIR);
+      #endif
+    }
 
     if (path != nullptr) {
       printf("%s = %s\n", SCROOM_PLUGIN_DIRS.c_str(), path);
@@ -198,7 +197,7 @@ void PluginManager::setStatusBarMessage(const char*)
 void PluginManager::addHook(bool devMode_)
 {
   this->devMode = devMode_;
-  while (this->doWork());
+  gtk_idle_add(on_idle, static_cast<WorkInterface*>(this));
   // progressbar = GTK_PROGRESS_BAR(lookup_widget(scroom, "progressbar"));
   // statusbar = GTK_STATUSBAR(lookup_widget(scroom, "statusbar"));
   //

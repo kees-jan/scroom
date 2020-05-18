@@ -23,7 +23,7 @@ namespace Scroom
         const size_t pageSize = provider->getPageSize();
 
         stream.next_in = const_cast<uint8_t*>(in);
-        stream.avail_in = static_cast<unsigned int>(size);
+        stream.avail_in = size;
         stream.avail_out = 0;
         stream.zalloc = Z_NULL;
         stream.zfree = Z_NULL;
@@ -48,7 +48,7 @@ namespace Scroom
           RawPageData::Ptr currentPageRaw = currentPage->get();
 
           stream.next_out = currentPageRaw.get();
-          stream.avail_out = static_cast<unsigned int>(pageSize);
+          stream.avail_out = pageSize;
 
           r = deflate(&stream, Z_FINISH);
 
@@ -83,7 +83,7 @@ namespace Scroom
         const size_t pageSize = provider->getPageSize();
 
         stream.next_out = out;
-        stream.avail_out = static_cast<unsigned int>(size);
+        stream.avail_out = size;
         stream.avail_in = 0;
         stream.zalloc = Z_NULL;
         stream.zfree = Z_NULL;
@@ -108,7 +108,7 @@ namespace Scroom
           RawPageData::Ptr currentPageRaw = currentPage->get();
 
           stream.next_in = currentPageRaw.get();
-          stream.avail_in = static_cast<unsigned int>(pageSize);
+          stream.avail_in = pageSize;
 
           int flush = (list.empty()?Z_FINISH:Z_NO_FLUSH);
 

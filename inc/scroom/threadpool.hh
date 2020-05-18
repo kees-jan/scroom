@@ -270,13 +270,13 @@ public:
   ThreadPool(bool completeAllJobsBeforeDestruction=false);
 
   /** Create a ThreadPool with the given number of threads */
-  ThreadPool(size_t count, bool completeAllJobsBeforeDestruction=false);
+  ThreadPool(int count, bool completeAllJobsBeforeDestruction=false);
 
   /** Create a ThreadPool with one thread for each core in the system */
   static ThreadPool::Ptr create(bool completeAllJobsBeforeDestruction=false);
 
   /** Create a ThreadPool with the given number of threads */
-  static ThreadPool::Ptr create(size_t count, bool completeAllJobsBeforeDestruction=false);
+  static ThreadPool::Ptr create(int count, bool completeAllJobsBeforeDestruction=false);
 
   /**
    * Destructor
@@ -382,7 +382,7 @@ public:
    *
    * @return references to the newly added threads.
    */
-  std::vector<ThreadPtr> add(size_t count);
+  std::vector<ThreadPtr> add(int count);
 
 };
 

@@ -75,7 +75,7 @@ private:
   GtkWidget* statusArea;
   GtkWidget* toolbarArea;
   unsigned toolBarCount;
-  unsigned int statusBarContextId;
+  int statusBarContextId;
   int zoom;
   int x;
   int y;

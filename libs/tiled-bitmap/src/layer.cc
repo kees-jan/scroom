@@ -44,13 +44,13 @@ Layer::Layer(TileInitialisationObserver::Ptr observer, int depth_, int layerWidt
   horTileCount = (width+TILESIZE-1)/TILESIZE;
   verTileCount = (height+TILESIZE-1)/TILESIZE;
 
-  for(size_t j=0; j<static_cast<size_t>(verTileCount); j++)
+  for(int j=0; j<verTileCount; j++)
   {
     tiles.push_back(CompressedTileLine());
     CompressedTileLine& tl = tiles[j];
     for(int i=0; i<horTileCount; i++)
     {
-      CompressedTile::Ptr tile = CompressedTile::create(depth_, i, static_cast<int>(j), bpp, provider);
+      CompressedTile::Ptr tile = CompressedTile::create(depth_, i, j, bpp, provider);
       registrations.push_back(tile->registerObserver(observer));
       tl.push_back(tile);
     }
@@ -86,7 +86,7 @@ CompressedTile::Ptr Layer::getTile(int i, int j)
   if(0<=i && i<horTileCount &&
      0<=j && j<verTileCount)
   {
-    return tiles[static_cast<size_t>(j)][static_cast<size_t>(i)];
+    return tiles[j][i];
   }
   else
   {
@@ -98,7 +98,7 @@ CompressedTileLine& Layer::getTileLine(int j)
 {
   if(0<=j && j<verTileCount)
   {
-    return tiles[static_cast<size_t>(j)];
+    return tiles[j];
   }
   else
   {
@@ -174,7 +174,7 @@ void DataFetcher::operator()()
   std::vector<Tile::Ptr> tiles;
   for(int x = 0; x < horTileCount; x++)
   {
-    CompressedTile::Ptr ti = tileLine[static_cast<size_t>(x)];
+    CompressedTile::Ptr ti = tileLine[x];
     Scroom::Utils::Stuff s = ti->initialize();
     tiles.push_back(ti->getTileSync());
   }
@@ -184,7 +184,7 @@ void DataFetcher::operator()()
 
   for(int x = 0; x < horTileCount; x++)
   {
-    tileLine[static_cast<size_t>(x)]->reportFinished();
+    tileLine[x]->reportFinished();
   }
 
   currentRow++;

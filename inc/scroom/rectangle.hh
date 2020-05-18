@@ -52,7 +52,7 @@ namespace Scroom
 
       GdkRectangle toGdkRectangle() const
       {
-        return Scroom::GtkHelpers::createGdkRectangle(static_cast<int>(getLeft()), static_cast<int>(getTop()), static_cast<int>(getWidth()), static_cast<int>(getHeight()));
+        return Scroom::GtkHelpers::createGdkRectangle(getLeft(), getTop(), getWidth(), getHeight());
       }
 
       Rectangle<int> toIntRectangle() const
@@ -380,10 +380,10 @@ namespace Scroom
 
     inline Rectangle<int> roundOutward(Rectangle<double> r)
     {
-      int x = static_cast<int>(floor(r.getLeft()));
-      int y = static_cast<int>(floor(r.getTop()));
-      int width = static_cast<int>(ceil(r.getRight())) - x;
-      int height = static_cast<int>(ceil(r.getBottom())) - y;
+      int x = floor(r.getLeft());
+      int y = floor(r.getTop());
+      int width = ceil(r.getRight()) - x;
+      int height = ceil(r.getBottom()) - y;
 
       return Rectangle<int>(x,y,width,height);
     }
