@@ -172,7 +172,89 @@ void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int t
   byte* targetBase = target->data.get() +
       (target->height * top_left_y + top_left_x) * targetStride / 8;
   
-  if (this->bps > 1) {
+  if (this->bps == 8)
+  {
+    for (int y = 0; y < source->height / 8; y++)
+    {
+      const byte* sourcePtr = sourceBase;
+      byte* targetPtr = targetBase;
+
+      for (int x = 0; x < source->width / 8; x++)
+      {
+        // We want to store the average colour of the 8*8 pixel image
+        // with (x, y) as its top-left corner into targetPtr.
+        const byte* base = sourceBase + 32 * x; // start of the row
+        const byte* end = base + 8 * sourceStride; // end of the row
+
+        int sum_c = 0;
+        int sum_m = 0;
+        int sum_y = 0;
+        int sum_k = 0;
+        for (const byte* row = base; row < end; row += sourceStride)
+        {
+          for (size_t current = 0; current < 8 * 4; current += 4)
+          {
+            sum_c += row[current    ];
+            sum_m += row[current + 1];
+            sum_y += row[current + 2];
+            sum_k += row[current + 3];
+          }
+        }
+
+        targetPtr[0] = static_cast<byte>(sum_c / 64);
+        targetPtr[1] = static_cast<byte>(sum_m / 64);
+        targetPtr[2] = static_cast<byte>(sum_y / 64);
+        targetPtr[3] = static_cast<byte>(sum_k / 64);
+
+        targetPtr += 4;
+      }
+
+      targetBase += targetStride;
+      sourceBase += sourceStride * 8;
+    }
+  }
+  else if (this->bps == 4)
+  {
+    for (int y = 0; y < source->height / 8; y++)
+    {        
+      const byte* sourcePtr = sourceBase;
+      byte* targetPtr = targetBase;
+
+      for (int x = 0; x < source->width / 8; x++)
+      {
+        // We want to store the average colour of the 8*8 pixel image
+        // with (x, y) as its top-left corner into targetPtr.
+        const byte* base = sourcePtr;
+        int sum_c = 0;
+        int sum_m = 0;
+        int sum_y = 0;
+        int sum_k = 0;
+        for (int k = 0; k < 8; k++, base += sourceStride)
+        {
+          for (size_t current = 0; current < 8 * 2; current += 2)
+          {
+            sum_c += base[current    ] >> 4;
+            sum_m += base[current    ] & 15;
+            sum_y += base[current + 1] >> 4;
+            sum_k += base[current + 1] & 15;
+          }
+        }
+
+        targetPtr[0] = static_cast<byte>((sum_c == 15 * 64 ? 15 : sum_c / 60) << 4)
+                     | static_cast<byte>((sum_m == 15 * 64 ? 15 : sum_m / 60));
+        targetPtr[1] = static_cast<byte>((sum_y == 15 * 64 ? 15 : sum_y / 60) << 4)
+                     | static_cast<byte>((sum_k == 15 * 64 ? 15 : sum_k / 60));
+
+        sourcePtr += 4 * 4;
+        targetPtr += 2;
+      }
+
+      targetBase += targetStride;
+      sourceBase += sourceStride * 8;
+    }
+  }
+  else if (this->bps == 2)
+  {
     for (int y = 0; y < source->height / 8; y++)
     {
       const byte* sourcePtr = sourceBase;
@@ -189,48 +271,22 @@ void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int t
         int sum_k = 0;
         for (int k = 0; k < 8; k++, base += sourceStride)
         {
-          size_t current = 0;
-          for (int l = 0; l < 8; l++)
+          for (size_t current = 0; current < 8; current++)
           {
-            if (this->bps == 8) {
-              sum_c += base[current + 0];
-              sum_m += base[current + 1];
-              sum_y += base[current + 2];
-              sum_k += base[current + 3];
-              current += 4;
-            } else if (this->bps == 4) {
-              sum_c += base[current + 0] >> 4;
-              sum_m += base[current + 0] & 15;
-              sum_y += base[current + 1] >> 4;
-              sum_k += base[current + 1] & 15;
-              current += 2;
-            } else if (this->bps == 2) {
-              sum_c +=  base[current] >> 6;
-              sum_m += (base[current] & 0x30) >> 4;
-              sum_y += (base[current] & 0x0C) >> 2;
-              sum_k +=  base[current] & 0x03;
-              current++;
-            }
+            sum_c +=  base[current]         >> 6;
+            sum_m += (base[current] & 0x30) >> 4;
+            sum_y += (base[current] & 0x0C) >> 2;
+            sum_k +=  base[current] & 0x03;
           }
         }
 
-        if (this->bps == 8) {
-          targetPtr[0] = static_cast<byte>(sum_c / 64);
-          targetPtr[1] = static_cast<byte>(sum_m / 64);
-          targetPtr[2] = static_cast<byte>(sum_y / 64);
-          targetPtr[3] = static_cast<byte>(sum_k / 64);
-        } else if (this->bps == 4) {
-          targetPtr[0] = static_cast<byte>(sum_c / 64) << 4 | static_cast<byte>((sum_m / 64) & 0xF);
-          targetPtr[1] = static_cast<byte>(sum_y / 64) << 4 | static_cast<byte>((sum_k / 64) & 0xF);
-        } else if (this->bps == 2) {
-          targetPtr[0] = static_cast<byte>(sum_c / 64) << 6 | 
-                        static_cast<byte>(((sum_m / 64) & 0x3) << 4) |
-                        static_cast<byte>(((sum_y / 64) & 0x3) << 2) |
-                        static_cast<byte>((sum_k / 64) & 0x3);
-        }
+        targetPtr[0] = static_cast<byte>(((sum_c == 192 ? 191 : sum_c) / 48) << 6)
+                     | static_cast<byte>(((sum_m == 192 ? 191 : sum_m) / 48) << 4)
+                     | static_cast<byte>(((sum_y == 192 ? 191 : sum_y) / 48) << 2)
+                     | static_cast<byte>(((sum_k == 192 ? 191 : sum_k) / 48)     );
 
-        sourcePtr += 4 * this->bps;
-        targetPtr += this->bps / 2;
+        sourcePtr += 4 * 2;
+        targetPtr++;
       }
 
       targetBase += targetStride;
