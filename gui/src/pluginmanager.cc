@@ -237,6 +237,8 @@ void PluginManager::registerViewObserver(const std::string& identifier, ViewObse
 {
   printf("Observing Views for %s!\n", identifier.c_str());
   viewObservers[observer] = identifier;
+
+  on_new_viewobserver(observer);
 }
 
 void PluginManager::registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer)
