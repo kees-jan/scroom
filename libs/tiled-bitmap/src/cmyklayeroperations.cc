@@ -236,8 +236,9 @@ void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int t
       targetBase += targetStride;
       sourceBase += sourceStride * 8;
     }
-  } else {
-    // 1 bps
+  }
+  else if (this->bps == 1)
+  {
     for (int y = 0; y < source->height / 8; y++)
     {
       const uint32_t* sourcePtr = reinterpret_cast<const uint32_t*>(sourceBase);
@@ -247,24 +248,33 @@ void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int t
         // Find average of 8x8 pixel area
         // We don't care about the order of pixels, because
         // addition is associative.
-        uint32_t row = sourcePtr[x];
-        uint8_t sum_c = bitcount(row & 0b10001000100010001000100010001000);
-        uint8_t sum_m = bitcount(row & 0b01000100010001000100010001000100);
-        uint8_t sum_y = bitcount(row & 0b00100010001000100010001000100010);
-        uint8_t sum_k = bitcount(row & 0b00010001000100010001000100010001);
+        uint8_t sum_c = 0;
+        uint8_t sum_m = 0;
+        uint8_t sum_y = 0;
+        uint8_t sum_k = 0;
+        const uint32_t* source_save = sourcePtr;
+        for (int k = 0; k < 8; k++) {
+          uint32_t row = sourcePtr[x];
+          sum_c += bitcount(row & 0x88888888);
+          sum_m += bitcount(row & 0x44444444);
+          sum_y += bitcount(row & 0x22222222);
+          sum_k += bitcount(row & 0x11111111);
+          sourcePtr += sourceStride;
+        }
+        sourcePtr = source_save;
 
         // Since a single pixel takes up half a byte, we need to do some
         // bitshifts to get the bits in the right positions.
+        // A colour channel's bit in the result is set to 1 iff at least
+        // half of the  counted pixels have the colour channel set.
+        uint8_t colour = ((sum_c >= 32 ? 1 : 0) << 3) \
+                       | ((sum_m >= 32 ? 1 : 0) << 2) \
+                       | ((sum_y >= 32 ? 1 : 0) << 1) \
+                       | ((sum_k >= 32 ? 1 : 0)     );
         if ((x & 1) == 0) {
-          targetBase[x/2] = ((sum_c >= 4 ? 4 : 0) << 5) \
-                       | ((sum_m >= 4 ? 4 : 0) << 4) \
-                       | ((sum_y >= 4 ? 4 : 0) << 3) \
-                       | ((sum_k >= 4 ? 4 : 0) << 2);
+          targetBase[x/2] = colour << 4;
         } else {
-          targetBase[x/2] |= ((sum_c >= 4 ? 4 : 0) << 1) \
-                       | ((sum_m >= 4 ? 4 : 0)     ) \
-                       | ((sum_y >= 4 ? 4 : 0) >> 1) \
-                       | ((sum_k >= 4 ? 4 : 0) >> 2);
+          targetBase[x/2] |= colour;
         }
       }
 
