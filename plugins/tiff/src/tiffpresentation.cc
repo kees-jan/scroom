@@ -332,7 +332,7 @@ void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth,
   const size_t firstTile_ = static_cast<size_t>(firstTile);
   const size_t scanLineSize = static_cast<size_t>(TIFFScanlineSize(tif));
   const size_t tileStride = static_cast<size_t>(tileWidth*spp*bps/8);
-  auto row = std::vector<byte> row(scanLineSize);
+  std::vector<byte> row(scanLineSize);
 
   const size_t tileCount = tiles.size();
   auto dataPtr = std::vector<byte*>(tileCount);
