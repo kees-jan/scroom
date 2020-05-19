@@ -14,8 +14,6 @@
 #include <scroom/layeroperations.hh>
 #include <scroom/unused.hh>
 
-#include <iostream>
-
 TiffPresentation::TiffPresentation()
   : tif(NULL), height(0), width(0), bps(0), spp(0)
 {
@@ -180,7 +178,9 @@ bool TiffPresentation::load(const std::string& fileName_)
       resolutionY = 1;
     }
     
-    std::cout << "This bitmap has size " << width << "*" << height << ", aspect ratio " << 1 / resolutionX << "*" << 1 / resolutionY << std::endl;
+    printf("This bitmap has size %d*%d, aspect ratio %.1f*%.1f\n",
+           width, height, 1/resolutionX, 1/resolutionY);
+
     LayerSpec ls;
 
     if (spp == 3)
@@ -326,10 +326,10 @@ void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth,
   const size_t firstTile_ = static_cast<size_t>(firstTile);
   const size_t scanLineSize = static_cast<size_t>(TIFFScanlineSize(tif));
   const size_t tileStride = static_cast<size_t>(tileWidth*spp*bps/8);
-  byte* row = new byte[scanLineSize];
+  auto row = std::vector<byte>(scanLineSize);
 
   const size_t tileCount = tiles.size();
-  byte** dataPtr = new byte*[tileCount];
+  auto dataPtr = std::vector<byte*>(tileCount);
   for (size_t tile = 0; tile < tileCount; tile++)
   {
     dataPtr[tile] = tiles[tile]->data.get();
@@ -337,23 +337,20 @@ void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth,
 
   for (size_t i = 0; i < static_cast<size_t>(lineCount); i++)
   {
-    TIFFReadScanline(tif, static_cast<tdata_t>(row), static_cast<uint32>(i) + startLine_);
+    TIFFReadScanline(tif, row.data(), static_cast<uint32>(i) + startLine_);
 
     for (size_t tile = 0; tile < tileCount - 1; tile++)
     {
       memcpy(dataPtr[tile],
-             row + (firstTile_ + tile) * tileStride,
+             row.data() + (firstTile_ + tile) * tileStride,
              tileStride);
       dataPtr[tile] += tileStride;
     }
     memcpy(dataPtr[tileCount - 1],
-        row + (firstTile_ + tileCount - 1) * tileStride,
+        row.data() + (firstTile_ + tileCount - 1) * tileStride,
         scanLineSize - (firstTile_ + tileCount - 1) * tileStride);
     dataPtr[tileCount - 1] += tileStride;
   }
-
-  delete[] row;
-  delete[] dataPtr;
 }
 
 void TiffPresentation::done()

@@ -40,7 +40,8 @@ void startPluginManager(bool devMode)
   pluginManager->addHook(devMode);
 }
 
-bool PluginManager::doWork() {
+bool PluginManager::doWork() 
+{
   bool retval = true;
 
   gdk_threads_enter();
@@ -51,15 +52,15 @@ bool PluginManager::doWork() {
     char* path = getenv(SCROOM_PLUGIN_DIRS.c_str());
     dirs.clear();
 
-	  #ifdef _WIN32
-      // We want to keep everything portable on windows so we look for the plugin folder in the same directory as the .exe
-      std::string plugin_path = (boost::dll::program_location().parent_path() / "plugins").generic_string();
-      dirs.push_back(plugin_path);
-    #else
-      if (!devMode) {
+    if (!devMode) {
+      #ifdef _WIN32
+        // We want to keep everything portable on windows so we look for the plugin folder in the same directory as the .exe
+        std::string plugin_path = (boost::dll::program_location().parent_path() / "plugins").generic_string();
+        dirs.push_back(plugin_path);
+      #else
         dirs.push_back(PLUGIN_DIR);
-      }
-	  #endif
+      #endif
+    }
 
     if (path != nullptr) {
       printf("%s = %s\n", SCROOM_PLUGIN_DIRS.c_str(), path);
@@ -100,14 +101,15 @@ bool PluginManager::doWork() {
 
     printf("Scanning directory: %s\n", currentDir->c_str());
     const char * folder = currentDir->c_str();
+    namespace fs = boost::filesystem;
+    boost::system::error_code ec;
 
-    if (folder == nullptr) {
+    if (!fs::is_directory(folder, ec)) {
       printf("Can't open directory...\n");
       currentDir++;
       break;
     }
 
-    namespace fs = boost::filesystem;
     for (const auto & entry : fs::directory_iterator(folder)) {
       if (fs::is_regular_file(entry) || fs::is_symlink(entry) || fs::is_other(entry)) {
         files.push_back(entry.path().generic_string());
@@ -195,7 +197,7 @@ void PluginManager::setStatusBarMessage(const char*)
 void PluginManager::addHook(bool devMode_)
 {
   this->devMode = devMode_;
-  while (this->doWork());
+  gtk_idle_add(on_idle, static_cast<WorkInterface*>(this));
   // progressbar = GTK_PROGRESS_BAR(lookup_widget(scroom, "progressbar"));
   // statusbar = GTK_STATUSBAR(lookup_widget(scroom, "statusbar"));
   //

@@ -119,8 +119,8 @@ bool BaseCounter::operator()()
     if(now.tv_sec > t.tv_sec + secs)
     {
       // We're done. Compute frequency.
-      double elapsed = static_cast<double>(now.tv_nsec - t.tv_nsec)*1e-9;
-      elapsed += static_cast<double>(now.tv_sec - t.tv_sec);
+      double elapsed = now.tv_nsec - t.tv_nsec*1e-9;
+      elapsed += now.tv_sec - t.tv_sec;
       printf("%-*s: %10.2f Hz\n", columnWidth, name.c_str(), count/elapsed);
 
       return false;

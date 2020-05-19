@@ -31,7 +31,9 @@
 #include "loader.hh"
 
 #ifdef _WIN32
-#include <boost/dll.hpp>
+  #include <boost/dll.hpp>
+  #include <windows.h>
+  #include <shellapi.h>
 #endif
 
 static const std::string SCROOM_DEV_MODE="SCROOM_DEV_MODE";
@@ -350,6 +352,14 @@ gboolean on_scroll_event(GtkWidget*, GdkEventScroll* event, gpointer user_data)
   return true;
 }
 
+#ifdef _WIN32
+gboolean on_open_scroom_website(GtkAboutDialog*, gchar* uri, gpointer)
+{
+  ShellExecute(nullptr, nullptr, uri, nullptr, nullptr, SW_SHOW);
+  return true;
+}
+#endif
+
 void on_scroom_bootstrap (const FileNameMap& newFilenames)
 {
   printf("Bootstrapping Scroom...\n");
@@ -370,19 +380,20 @@ void on_scroom_bootstrap (const FileNameMap& newFilenames)
 
   startPluginManager(devMode);
 
-  #ifdef _WIN32
-    // We want to keep everything portable on windows so we look for the .glade file in the same directory as the .exe
-  xmlFileName = (boost::dll::program_location().parent_path() / "scroom.glade").generic_string();
-  #else
     if(devMode)
     {
       xmlFileName = TOP_SRCDIR "/gui/scroom.glade";
     }
     else
     {
-      xmlFileName = PACKAGE_DATA_DIR "/scroom.glade";
+      #ifdef _WIN32
+        // We want to keep everything portable on windows so we look for the .glade file in the same directory as the .exe
+        xmlFileName = (boost::dll::program_location().parent_path() / "scroom.glade").generic_string();
+      #else
+        xmlFileName = PACKAGE_DATA_DIR "/scroom.glade";
+      #endif
     }
-  #endif
+  
 
   aboutDialogXml = glade_xml_new(xmlFileName.c_str(), "aboutDialog", NULL);
   if(aboutDialogXml!=NULL)
@@ -390,6 +401,9 @@ void on_scroom_bootstrap (const FileNameMap& newFilenames)
     aboutDialog = glade_xml_get_widget(aboutDialogXml, "aboutDialog");
     gtk_about_dialog_set_program_name(GTK_ABOUT_DIALOG(aboutDialog), PACKAGE_NAME);
     gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(aboutDialog), PACKAGE_VERSION);
+    #ifdef _WIN32
+      g_signal_connect(G_OBJECT(aboutDialog), "activate-link", G_CALLBACK(on_open_scroom_website), NULL);
+    #endif
   }
   else
   {
