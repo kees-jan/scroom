@@ -80,7 +80,7 @@ Scroom::Utils::Stuff OperationsCMYK::cache(const ConstTile::Ptr tile)
     for (int i = 0; i < 4 * tile->height * tile->width; i += 4)
     {
       // Convert CMYK to ARGB, because cairo doesn't know how to render CMYK.
-      uint8_t C_i = static_cast<uint8_t>(255 - cur[i + 0]);
+      uint8_t C_i = static_cast<uint8_t>(255 - cur[i    ]);
       uint8_t M_i = static_cast<uint8_t>(255 - cur[i + 1]);
       uint8_t Y_i = static_cast<uint8_t>(255 - cur[i + 2]);
       uint8_t K_i = static_cast<uint8_t>(255 - cur[i + 3]);
@@ -96,8 +96,8 @@ Scroom::Utils::Stuff OperationsCMYK::cache(const ConstTile::Ptr tile)
     for (int i = 0; i < 2 * tile->height * tile->width; i += 2)
     {
       // Convert CMYK to ARGB, because cairo doesn't know how to render CMYK.
-      uint8_t C_i = static_cast<uint8_t>(255 - ((cur[i + 0]       ) >> 4) * 17); // 17 == 255/15
-      uint8_t M_i = static_cast<uint8_t>(255 - ((cur[i + 0] & 0x0F)     ) * 17);
+      uint8_t C_i = static_cast<uint8_t>(255 - ((cur[i    ]       ) >> 4) * 17); // 17 == 255/15
+      uint8_t M_i = static_cast<uint8_t>(255 - ((cur[i    ] & 0x0F)     ) * 17);
       uint8_t Y_i = static_cast<uint8_t>(255 - ((cur[i + 1]       ) >> 4) * 17);
       uint8_t K_i = static_cast<uint8_t>(255 - ((cur[i + 1] & 0x0F)     ) * 17);
 
@@ -141,12 +141,12 @@ Scroom::Utils::Stuff OperationsCMYK::cache(const ConstTile::Ptr tile)
         K_i = static_cast<uint8_t>(((cur[i / 2] & 0x01)     ) - 1);
       }
 
-      uint32_t R_1 = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(C_i * K_i)));
-      uint32_t G_1 = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(M_i * K_i)));
-      uint32_t B_1 = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(Y_i * K_i)));
+      uint32_t R = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(C_i * K_i)));
+      uint32_t G = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(M_i * K_i)));
+      uint32_t B = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(Y_i * K_i)));
 
       // Write 255 as alpha (fully opaque)
-      row[i] = 255u << 24 | R_1 << 16 | G_1 << 8 | B_1;
+      row[i] = 255u << 24 | R << 16 | G << 8 | B;
     }
   }
 
@@ -309,7 +309,8 @@ void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int t
         uint8_t sum_y = 0;
         uint8_t sum_k = 0;
         const uint32_t* source_save = sourcePtr;
-        for (int k = 0; k < 8; k++) {
+        for (int k = 0; k < 8; k++)
+        {
           uint32_t row = sourcePtr[x];
           sum_c += bitcount(row & 0x88888888);
           sum_m += bitcount(row & 0x44444444);
@@ -323,9 +324,9 @@ void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int t
         // bitshifts to get the bits in the right positions.
         // A colour channel's bit in the result is set to 1 iff at least
         // half of the  counted pixels have the colour channel set.
-        uint8_t colour = ((sum_c >= 32 ? 1 : 0) << 3) \
-                       | ((sum_m >= 32 ? 1 : 0) << 2) \
-                       | ((sum_y >= 32 ? 1 : 0) << 1) \
+        uint8_t colour = ((sum_c >= 32 ? 1 : 0) << 3)
+                       | ((sum_m >= 32 ? 1 : 0) << 2)
+                       | ((sum_y >= 32 ? 1 : 0) << 1)
                        | ((sum_k >= 32 ? 1 : 0)     );
         if ((x & 1) == 0) {
           targetBase[x/2] = colour << 4;
