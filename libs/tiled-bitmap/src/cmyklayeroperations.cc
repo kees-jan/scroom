@@ -34,6 +34,15 @@ namespace
     return boost::shared_ptr<unsigned char>(static_cast<unsigned char*>(malloc(size)), free);
   }
 
+  // Adapted from:
+  // http://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetParallel
+  uint8_t bitcount(uint32_t c) {
+    c = c - ((c >> 1) & 0x55555555);
+    c = ((c >> 2) & 0x33333333) + (c & 0x33333333);
+    c = ((c >> 4) + c) & 0x0F0F0F0F;
+    c = ((c >> 8) + c) & 0x00FF00FF;
+    return static_cast<uint8_t>((c >> 16) + c);
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -153,15 +162,6 @@ Scroom::Utils::Stuff OperationsCMYK::cache(const ConstTile::Ptr tile)
   return Scroom::Bitmap::BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
 }
 
-// http://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetParallel
-uint8_t bitcount(uint32_t c) {
-  c = c - ((c >> 1) & 0x55555555);
-  c = ((c >> 2) & 0x33333333) + (c & 0x33333333);
-  c = ((c >> 4) + c) & 0x0F0F0F0F;
-  c = ((c >> 8) + c) & 0x00FF00FF;
-  return ((c >> 16) + c) & 0x0000FFFF;
-}
-
 void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int top_left_x, int top_left_y)
 {
   // Reducing by a factor 8
@@ -176,14 +176,13 @@ void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int t
   {
     for (int y = 0; y < source->height / 8; y++)
     {
-      const byte* sourcePtr = sourceBase;
       byte* targetPtr = targetBase;
 
       for (int x = 0; x < source->width / 8; x++)
       {
         // We want to store the average colour of the 8*8 pixel image
         // with (x, y) as its top-left corner into targetPtr.
-        const byte* base = sourceBase + 32 * x; // start of the row
+        const byte* base = sourceBase + 8 * 4 * x; // start of the row
         const byte* end = base + 8 * sourceStride; // end of the row
 
         int sum_c = 0;
@@ -216,36 +215,36 @@ void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int t
   else if (this->bps == 4)
   {
     for (int y = 0; y < source->height / 8; y++)
-    {        
-      const byte* sourcePtr = sourceBase;
+    {
       byte* targetPtr = targetBase;
 
       for (int x = 0; x < source->width / 8; x++)
       {
         // We want to store the average colour of the 8*8 pixel image
         // with (x, y) as its top-left corner into targetPtr.
-        const byte* base = sourcePtr;
+        const byte* base = sourceBase + 4 * 4 * x; // start of the row
+        const byte* end = base + 8 * sourceStride; // end of the row
+
         int sum_c = 0;
         int sum_m = 0;
         int sum_y = 0;
         int sum_k = 0;
-        for (int k = 0; k < 8; k++, base += sourceStride)
+        for (const byte* row = base; row < end; row += sourceStride)
         {
           for (size_t current = 0; current < 8 * 2; current += 2)
           {
-            sum_c += base[current    ] >> 4;
-            sum_m += base[current    ] & 15;
-            sum_y += base[current + 1] >> 4;
-            sum_k += base[current + 1] & 15;
+            sum_c += row[current    ] >> 4;
+            sum_m += row[current    ] & 15;
+            sum_y += row[current + 1] >> 4;
+            sum_k += row[current + 1] & 15;
           }
         }
 
-        targetPtr[0] = static_cast<byte>((sum_c == 15 * 64 ? 15 : sum_c / 60) << 4)
-                     | static_cast<byte>((sum_m == 15 * 64 ? 15 : sum_m / 60));
-        targetPtr[1] = static_cast<byte>((sum_y == 15 * 64 ? 15 : sum_y / 60) << 4)
-                     | static_cast<byte>((sum_k == 15 * 64 ? 15 : sum_k / 60));
+        targetPtr[2*x   ] = static_cast<byte>( sum_c == 15 * 64 ? 0xF0 : (sum_c / 60) << 4)
+                          | static_cast<byte>((sum_m == 15 * 64 ? 0x0F : sum_m / 60));
+        targetPtr[2*x +1] = static_cast<byte>( sum_y == 15 * 64 ? 0xF0 : (sum_y / 60) << 4)
+                          | static_cast<byte>((sum_k == 15 * 64 ? 0x0F : sum_k / 60));
 
-        sourcePtr += 4 * 4;
         targetPtr += 2;
       }
 
@@ -257,36 +256,32 @@ void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int t
   {
     for (int y = 0; y < source->height / 8; y++)
     {
-      const byte* sourcePtr = sourceBase;
-      byte* targetPtr = targetBase;
-
       for (int x = 0; x < source->width / 8; x++)
       {
         // We want to store the average colour of the 8*8 pixel image
         // with (x, y) as its top-left corner into targetPtr.
-        const byte* base = sourcePtr;
+        const byte* base = sourceBase + 2 * 4 * x; // start of the row
+        const byte* end = base + 8 * sourceStride; // end of the row
+
         int sum_c = 0;
         int sum_m = 0;
         int sum_y = 0;
         int sum_k = 0;
-        for (int k = 0; k < 8; k++, base += sourceStride)
+        for (const byte* row = base; row < end; row += sourceStride)
         {
           for (size_t current = 0; current < 8; current++)
           {
-            sum_c +=  base[current]         >> 6;
-            sum_m += (base[current] & 0x30) >> 4;
-            sum_y += (base[current] & 0x0C) >> 2;
-            sum_k +=  base[current] & 0x03;
+            sum_c +=  row[current]         >> 6;
+            sum_m += (row[current] & 0x30) >> 4;
+            sum_y += (row[current] & 0x0C) >> 2;
+            sum_k +=  row[current] & 0x03;
           }
         }
 
-        targetPtr[0] = static_cast<byte>(((sum_c == 192 ? 191 : sum_c) / 48) << 6)
+        targetBase[x] = static_cast<byte>(((sum_c == 192 ? 191 : sum_c) / 48) << 6)
                      | static_cast<byte>(((sum_m == 192 ? 191 : sum_m) / 48) << 4)
                      | static_cast<byte>(((sum_y == 192 ? 191 : sum_y) / 48) << 2)
                      | static_cast<byte>(((sum_k == 192 ? 191 : sum_k) / 48)     );
-
-        sourcePtr += 4 * 2;
-        targetPtr++;
       }
 
       targetBase += targetStride;
@@ -302,15 +297,16 @@ void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int t
       for (int x = 0; x < source->width / 8; x++)
       {
         // Find average of 8x8 pixel area
-        // We don't care about the order of pixels, because
-        // addition is associative.
-        uint8_t sum_c = 0;
-        uint8_t sum_m = 0;
-        uint8_t sum_y = 0;
-        uint8_t sum_k = 0;
         const uint32_t* source_save = sourcePtr;
+
+        int sum_c = 0;
+        int sum_m = 0;
+        int sum_y = 0;
+        int sum_k = 0;
         for (int k = 0; k < 8; k++)
         {
+          // We don't care about the order of pixels, because
+          // addition is associative.
           uint32_t row = sourcePtr[x];
           sum_c += bitcount(row & 0x88888888);
           sum_m += bitcount(row & 0x44444444);
@@ -318,18 +314,22 @@ void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int t
           sum_k += bitcount(row & 0x11111111);
           sourcePtr += sourceStride;
         }
+
         sourcePtr = source_save;
 
         // Since a single pixel takes up half a byte, we need to do some
         // bitshifts to get the bits in the right positions.
         // A colour channel's bit in the result is set to 1 iff at least
-        // half of the  counted pixels have the colour channel set.
-        uint8_t colour = ((sum_c >= 32 ? 1 : 0) << 3)
-                       | ((sum_m >= 32 ? 1 : 0) << 2)
-                       | ((sum_y >= 32 ? 1 : 0) << 1)
-                       | ((sum_k >= 32 ? 1 : 0)     );
+        // half of the counted pixels have the colour channel set.
+        uint8_t colour = static_cast<uint8_t>(
+                         ((sum_c >= 32 ? 1u : 0u) << 3)
+                       | ((sum_m >= 32 ? 1u : 0u) << 2)
+                       | ((sum_y >= 32 ? 1u : 0u) << 1)
+                       |  (sum_k >= 32 ? 1u : 0u)
+        );
+
         if ((x & 1) == 0) {
-          targetBase[x/2] = colour << 4;
+          targetBase[x/2] = static_cast<uint8_t>(colour << 4);
         } else {
           targetBase[x/2] |= colour;
         }
