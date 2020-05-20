@@ -128,7 +128,6 @@ int main (int argc, char *argv[])
 #endif
 
   Scroom::GtkHelpers::useRecursiveGdkLock();
-  g_thread_init(NULL);
   gdk_threads_init();
 
   gdk_threads_enter();
