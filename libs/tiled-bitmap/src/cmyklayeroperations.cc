@@ -48,9 +48,9 @@ namespace
 ////////////////////////////////////////////////////////////////////////
 // OperationsCMYK
 
-LayerOperations::Ptr OperationsCMYK::create(uint16_t bps)
+LayerOperations::Ptr OperationsCMYK::create(int bps)
 {
-  return Ptr(new OperationsCMYK(bps));
+  return Ptr(new OperationsCMYK(static_cast<uint16_t>(bps)));
 }
 
 OperationsCMYK::OperationsCMYK(uint16_t bps_)
