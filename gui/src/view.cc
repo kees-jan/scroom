@@ -808,9 +808,9 @@ void View::unsetPanning()
 
 void View::registerSelectionListener(MeasurementListener::Ptr listener)
 {
-	printf("Cookie registered\n");
-	//measurementListener->onMeasurement(0);
-	this->measurementListener = listener;
+  printf("Cookie registered\n");
+  // measurementListener->onMeasurement(nullptr);
+  this->measurementListener = listener;
 }
 
 ////////////////////////////////////////////////////////////////////////
