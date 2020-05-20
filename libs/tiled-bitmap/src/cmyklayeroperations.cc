@@ -144,22 +144,20 @@ void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int t
     sourceBase += sourceStride * 8;
   }
 }
-std::vector<size_t> OperationsCMYK::sumPixelValues(Scroom::Utils::Rectangle<int> rect, ConstTile::Ptr tl)
+
+PipetteLayerOperations::PipetteColor OperationsCMYK::sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile)
 {
-  OperationsCMYK::ColorCMYK color;
-  color.isCMYK = true;
   //TODO
+  const uint8_t* data = tile->data.get();
 
-  const uint8_t* data = tl->data.get();
-
-  uint64_t C = 0;
-  uint64_t M = 0;
-  uint64_t Y = 0;
-  uint64_t K = 0;
+  size_t C = 0;
+  size_t M = 0;
+  size_t Y = 0;
+  size_t K = 0;
 
   //naive implementation of summing the components up
   //TODO improve on this method
-  for (int i = 0; i < tl->height * tl->width * 4; i++)
+  for (int i = 0; i < tile->height * tile->width * 4; i++)
   {
     if (i % 4 == 0)
     {
@@ -179,11 +177,6 @@ std::vector<size_t> OperationsCMYK::sumPixelValues(Scroom::Utils::Rectangle<int>
     }
   }
 
-  std::vector<size_t> values;
-  values.push_back(C);
-  values.push_back(M);
-  values.push_back(Y);
-  values.push_back(K);
-
+  std::vector<std::pair<std::string, size_t>> values = { {"C", C}, {"M", M}, {"Y", Y}, {"K", K} };
   return values;
 }

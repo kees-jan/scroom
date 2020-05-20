@@ -9,10 +9,7 @@
 
 #include <scroom/tiledbitmapinterface.hh>
 #include <scroom/colormappable.hh>
-
-struct ColorBaseValue{
- bool isCMYK;
-};
+#include <scroom/pipettelayeroperations.hh>
 
 class CommonOperations : public LayerOperations
 {
@@ -33,16 +30,8 @@ public:
                     Scroom::Utils::Stuff cache);
 };
 
-//could move this to another file
-class PipetteLayerOperations
-{
-public:
-  virtual ~PipetteLayerOperations() {}
-  virtual std::vector<std::size_t> sumPixelValues() = 0;
 
-};
-
-class PipetteCommonOperations: public CommonOperations, PipetteLayerOperations
+class PipetteCommonOperations: public CommonOperations, public PipetteLayerOperations
 {
 public:
   virtual ~PipetteCommonOperations()
@@ -51,7 +40,7 @@ public:
   int spp;
   int bps;
 
-  virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+  virtual PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile);
   
 };
 
@@ -176,17 +165,10 @@ public:
   virtual ~OperationsCMYK()
   {}
 
-  struct ColorCMYK: ColorBaseValue{
-  uint8_t C;
-  uint8_t M;
-  uint8_t Y;
-  uint8_t K;
-  };
-
   virtual int getBpp();
   virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
-  virtual std::vector<size_t> sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile);
+  virtual PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile);
 
 };
 
