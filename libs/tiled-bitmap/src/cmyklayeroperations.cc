@@ -33,16 +33,6 @@ namespace
   {
     return boost::shared_ptr<unsigned char>(static_cast<unsigned char*>(malloc(size)), free);
   }
-
-  // Adapted from:
-  // http://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetParallel
-  uint8_t bitcount(uint32_t c) {
-    c = c - ((c >> 1) & 0x55555555);
-    c = ((c >> 2) & 0x33333333) + (c & 0x33333333);
-    c = ((c >> 4) + c) & 0x0F0F0F0F;
-    c = ((c >> 8) + c) & 0x00FF00FF;
-    return static_cast<uint8_t>((c >> 16) + c);
-  }
 }
 
 ////////////////////////////////////////////////////////////////////////
