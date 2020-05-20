@@ -647,7 +647,7 @@ void View::on_buttonPress(GdkEventButton* event)
       delete measurement;
     }
     cachedPoint = windowPointToPresentationPoint(eventToPoint(event));
-    measurement = new Measurement(cachedPoint);
+    measurement = new Selection(cachedPoint);
   }
 }
 
@@ -667,9 +667,11 @@ void View::on_buttonRelease(GdkEventButton* event)
     if(measurement)
     {
       measurement->end = windowPointToPresentationPoint(eventToPoint(event));
-      if(measurementListener != nullptr)
-      {
-        measurementListener->onMeasurement(measurement);
+
+      // TODO: Also update the required listeners when other mouse buttons
+      // are released.
+      for (auto listener : selectionListeners[MouseButton::SECONDARY]) {
+        listener->onSelection(measurement);
       }
     }
     cachedPoint.x=0;
@@ -806,11 +808,9 @@ void View::unsetPanning()
   panning = false;
 }
 
-void View::registerSelectionListener(MeasurementListener::Ptr listener)
+void View::registerSelectionListener(SelectionListener::Ptr listener, MouseButton button)
 {
-  printf("Cookie registered\n");
-  // measurementListener->onMeasurement(nullptr);
-  this->measurementListener = listener;
+  selectionListeners[button].push_back(listener);
 }
 
 ////////////////////////////////////////////////////////////////////////

@@ -20,15 +20,15 @@
 #include <scroom/progressinterface.hh>
 #include <scroom/viewinterface.hh>
 
-struct Measurement
+struct Selection
 {
 public:
   GdkPoint start;
   GdkPoint end;
 
 public:
-  Measurement(int x, int y) { start.x=x; start.y=y; end=start; }
-  Measurement(GdkPoint start_) : start(start_), end(start_) {}
+  Selection(int x, int y) { start.x=x; start.y=y; end=start; }
+  Selection(GdkPoint point) : start(point), end(point) {}
 
   bool endsAt(GdkPoint p) { return end.x==p.x && end.y==p.y; }
 
@@ -37,15 +37,23 @@ public:
   double length() { return std::sqrt(std::pow(double(width()),2) + std::pow(double(height()),2)); }
 };
 
-class MeasurementListener
+class SelectionListener
 {
 public:
-	typedef boost::shared_ptr<MeasurementListener> Ptr;
+	typedef boost::shared_ptr<SelectionListener> Ptr;
 
 public:
-	virtual ~MeasurementListener() {}
+	virtual ~SelectionListener() {}
 
-	virtual void onMeasurement(Measurement* measurement)=0;
+	virtual void onSelection(Selection* Selection)=0;
+};
+
+// There is no documentation on values 4 and 5, so
+// they are not included here.
+enum class MouseButton : uint {
+  PRIMARY = 1,
+  MIDDLE = 2,
+  SECONDARY = 3
 };
 
 /**
@@ -132,17 +140,13 @@ public:
   virtual void unsetPanning()=0;
 
   /**
-   * Register a MeasurementListener to be updated whenever the
-   * selection changes. When the user changes the selection,
-   * the function 'onMeasurement(Measurement* measurement)' is
-   * called. This function must be implemented by classes that
-   * implement MeasurementListener.
+   * Register a SelectionListener to be updated whenever the
+   * user selects a region using the given mouse button.
+   * When the user changes the selection, the function
+   * 'onSelection(Selection* selection)' is called.
    * 
-   * @note There can only be one selection listener registered
-   * at the same time.
-   * 
-   * @see MeasurementListener
+   * @see SelectionListener
    */
-  virtual void registerSelectionListener(MeasurementListener::Ptr measurementListener)=0;
+  virtual void registerSelectionListener(SelectionListener::Ptr listener, MouseButton button)=0;
 };
 

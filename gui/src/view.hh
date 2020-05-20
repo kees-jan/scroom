@@ -10,6 +10,7 @@
 #include <stdlib.h>
 
 #include <map>
+#include <vector>
 #include <string>
 #include <cmath>
 
@@ -62,8 +63,8 @@ private:
   int zoom;
   int x;
   int y;
-  Measurement* measurement;
-  MeasurementListener::Ptr measurementListener;
+  Selection* measurement;
+  std::map<MouseButton, std::vector<SelectionListener::Ptr>> selectionListeners;
 
   gint modifiermove;
   GdkPoint cachedPoint;
@@ -132,7 +133,7 @@ public:
   virtual void removeFromToolbar(GtkToolItem* ti);
   virtual void setPanning();
   virtual void unsetPanning();
-  virtual void registerSelectionListener(MeasurementListener::Ptr measurementListener);
+  virtual void registerSelectionListener(SelectionListener::Ptr listener, MouseButton button);
 
   ////////////////////////////////////////////////////////////////////////
   // Helpers

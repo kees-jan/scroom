@@ -76,7 +76,8 @@ void ChildView::removeFromToolbar(GtkToolItem*)
 
 void ChildView::setPanning(){}
 void ChildView::unsetPanning(){}
-void ChildView::registerSelectionListener(MeasurementListener::Ptr){}
+void ChildView::registerSelectionListener(SelectionListener::Ptr l, MouseButton b)
+{}
 
 ////////////////////////////////////////////////////////////////////////
 // TransparentOverlayViewInfo
