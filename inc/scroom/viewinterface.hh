@@ -138,6 +138,9 @@ public:
    * called. This function must be implemented by classes that
    * implement MeasurementListener.
    * 
+   * @note There can only be one selection listener registered
+   * at the same time.
+   * 
    * @see MeasurementListener
    */
   virtual void registerSelectionListener(MeasurementListener::Ptr measurementListener)=0;
