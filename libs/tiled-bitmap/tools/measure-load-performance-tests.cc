@@ -84,7 +84,7 @@ void init_tests()
   // const unsigned int testDuration = 15;
   const unsigned int sleepDuration = 2;
 
-  functions.push_back(Sleep(sleepDuration));
+  functions.push_back(Sleeper(sleepDuration));
 
   functions.push_back(boost::bind(setupTest1bpp, -2, width, height));
   functions.push_back(WaitForAsyncOp("File load 1bpp"));

@@ -88,12 +88,12 @@ void TestData::redraw(cairo_t* cr)
 
 ////////////////////////////////////////////////////////////////////////
 
-Sleep::Sleep(unsigned int secs_)
+Sleeper::Sleeper(unsigned int secs_)
   : secs(secs_), started(false)
 {
 }
 
-bool Sleep::operator()()
+bool Sleeper::operator()()
 {
   if(!started && 0==clock_gettime(CLOCK_REALTIME, &t))
   {
