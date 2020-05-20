@@ -667,7 +667,7 @@ void View::on_buttonRelease(GdkEventButton* event)
     if(measurement)
     {
       measurement->end = windowPointToPresentationPoint(eventToPoint(event));
-      if(measurementListener)
+      if(measurementListener != nullptr)
       {
         measurementListener->onMeasurement(measurement);
       }
