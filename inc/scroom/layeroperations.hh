@@ -145,7 +145,7 @@ public:
 class OperationsCMYK : public CommonOperations
 {
 public:
-  static Ptr create(uint16_t bps);
+  static Ptr create(int bps);
   OperationsCMYK(uint16_t bps);
   virtual ~OperationsCMYK()
   {}
