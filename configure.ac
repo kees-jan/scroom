@@ -374,6 +374,10 @@ post_install_hook='${top_srcdir}'/build_scripts/windows/post-install-hook.sh\ '$
 AM_COND_IF([LINUX], [post_install_hook=":"]) 
 AC_SUBST([POST_INSTALL_HOOK], [$post_install_hook])
 
+# On Windows, boost test needs an explicit reference to the sizedeterminer .lo file
+transparentoverlay_boosttest_win_ld_sizedeterminer=""
+AM_COND_IF([WINDOWS], [transparentoverlay_boosttest_win_ld_sizedeterminer=plugins/transparent-overlay/src/libsptransparentoverlay_la-sizedeterminer.lo]) 
+AC_SUBST([TRANSPARENTOVERLAY_BOOSTTEST_WIN_LD_SIZEDETERMINER], [$transparentoverlay_boosttest_win_ld_sizedeterminer])
 
 AC_CONFIG_FILES([Makefile
                  gui/ENVIRONMENT
