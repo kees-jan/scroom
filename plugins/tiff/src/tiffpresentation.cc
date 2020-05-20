@@ -75,26 +75,27 @@ bool TiffPresentation::load(const std::string& fileName_)
     TIFFGetFieldChecked(tif, TIFFTAG_IMAGEWIDTH, &width);
     TIFFGetFieldChecked(tif, TIFFTAG_IMAGELENGTH, &height);
 
-    uint16 bps_[spp];
-    if( 1 != TIFFGetField(tif, TIFFTAG_BITSPERSAMPLE, bps_))
+    uint16 bps_ = 0;
+    if( 1 != TIFFGetField(tif, TIFFTAG_BITSPERSAMPLE, &bps_))
     {
       if(spp==1)
-        this->bps = 1;
+        bps_ = 1;
       else
-        this->bps = 8;
+        bps_ = 8;
     }
     else
     {
-      this->bps = bps_[0];
+      
       if(spp==3)
       {
-        if(this->bps!=8)
+        if(bps_!=8)
         {
-          printf("PANIC: Bits per sample is not 8, but %d. Giving up\n", bps);
+          printf("PANIC: Bits per sample is not 8, but %d. Giving up\n", bps_);
           return false;
         }
       }
     }
+    this->bps = bps_;
 
     Colormap::Ptr originalColormap;
 
