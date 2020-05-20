@@ -496,6 +496,7 @@ plugins_transparent_overlay_test_overlay_tests_SOURCES = \
 
 plugins_transparent_overlay_test_overlay_tests_LDADD = @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @UTILS_LIBS@  \
 	plugins/transparent-overlay/src/libsptransparentoverlay.la \
+	plugins/transparent-overlay/src/libsptransparentoverlay_la-sizedeterminer.lo \
 	libs/util/src/libsutil.la \
 	libs/scroom/src/libsscroom.la \
 	libs/boost-test-helper/src/libsboosttesthelper.la
