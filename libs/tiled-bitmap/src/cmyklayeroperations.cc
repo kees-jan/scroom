@@ -292,41 +292,40 @@ void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int t
   {
     for (int y = 0; y < source->height / 8; y++)
     {
-      const uint32_t* sourcePtr = reinterpret_cast<const uint32_t*>(sourceBase);
-
       for (int x = 0; x < source->width / 8; x++)
       {
-        // Find average of 8x8 pixel area
-        const uint32_t* source_save = sourcePtr;
+        // We want to store the average colour of the 8*8 pixel image
+        // with (x, y) as its top-left corner into targetPtr.
+        const byte* base = sourceBase + 4 * x; // start of the row
+        const byte* end = base + 8 * sourceStride; // end of the row
 
         int sum_c = 0;
         int sum_m = 0;
         int sum_y = 0;
         int sum_k = 0;
-        for (int k = 0; k < 8; k++)
+        for (const byte* row = base; row < end; row += sourceStride)
         {
-          // We don't care about the order of pixels, because
-          // addition is associative.
-          uint32_t row = sourcePtr[x];
-          sum_c += bitcount(row & 0x88888888);
-          sum_m += bitcount(row & 0x44444444);
-          sum_y += bitcount(row & 0x22222222);
-          sum_k += bitcount(row & 0x11111111);
-          sourcePtr += sourceStride;
+          for (size_t current = 0; current < 8; current++)
+          {
+            if ((current & 1) == 0) {
+              sum_c +=  row[current/2]         >> 7;
+              sum_m += (row[current/2] & 0x40) >> 6;
+              sum_y += (row[current/2] & 0x20) >> 5;
+              sum_k += (row[current/2] & 0x10) >> 4;
+            } else {
+              sum_c += (row[current/2] & 0x08) >> 3;
+              sum_m += (row[current/2] & 0x04) >> 2;
+              sum_y += (row[current/2] & 0x02) >> 1;
+              sum_k +=  row[current/2] & 0x01;
+            }
+          }
         }
 
-        sourcePtr = source_save;
-
-        // Since a single pixel takes up half a byte, we need to do some
-        // bitshifts to get the bits in the right positions.
-        // A colour channel's bit in the result is set to 1 iff at least
-        // half of the counted pixels have the colour channel set.
         uint8_t colour = static_cast<uint8_t>(
-                         ((sum_c >= 32 ? 1u : 0u) << 3)
-                       | ((sum_m >= 32 ? 1u : 0u) << 2)
-                       | ((sum_y >= 32 ? 1u : 0u) << 1)
-                       |  (sum_k >= 32 ? 1u : 0u)
-        );
+                         (sum_c >= 32 ? 8 : 0)
+                       | (sum_m >= 32 ? 4 : 0)
+                       | (sum_y >= 32 ? 2 : 0)
+                       | (sum_k >= 32 ? 1 : 0));
 
         if ((x & 1) == 0) {
           targetBase[x/2] = static_cast<uint8_t>(colour << 4);
