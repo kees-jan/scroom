@@ -144,9 +144,46 @@ void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int t
     sourceBase += sourceStride * 8;
   }
 }
-OperationsCMYK::ColorCMYK OperationsCMYK::getPixelValue(){
+std::vector<size_t> OperationsCMYK::sumPixelValues(Scroom::Utils::Rectangle<int> rect, ConstTile::Ptr tl)
+{
   OperationsCMYK::ColorCMYK color;
   color.isCMYK = true;
   //TODO
-  return color;
+
+  const uint8_t* data = tl->data.get();
+
+  uint64_t C = 0;
+  uint64_t M = 0;
+  uint64_t Y = 0;
+  uint64_t K = 0;
+
+  //naive implementation of summing the components up
+  //TODO improve on this method
+  for (int i = 0; i < tl->height * tl->width * 4; i++)
+  {
+    if (i % 4 == 0)
+    {
+      C += data[i];
+    }
+    else if (i % 4 == 1)
+    {
+      M += data[i];
+    }
+    else if (i % 4 == 2)
+    {
+      Y += data[i];
+    }
+    else
+    {
+      K += data[i];
+    }
+  }
+
+  std::vector<size_t> values;
+  values.push_back(C);
+  values.push_back(M);
+  values.push_back(Y);
+  values.push_back(K);
+
+  return values;
 }

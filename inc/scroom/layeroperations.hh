@@ -33,6 +33,28 @@ public:
                     Scroom::Utils::Stuff cache);
 };
 
+//could move this to another file
+class PipetteLayerOperations
+{
+public:
+  virtual ~PipetteLayerOperations() {}
+  virtual std::vector<std::size_t> sumPixelValues() = 0;
+
+};
+
+class PipetteCommonOperations: public CommonOperations, PipetteLayerOperations
+{
+public:
+  virtual ~PipetteCommonOperations()
+  {}
+
+  int spp;
+  int bps;
+
+  virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+  
+};
+
 class Operations1bpp : public CommonOperations
 {
 private:
@@ -164,7 +186,7 @@ public:
   virtual int getBpp();
   virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
-  virtual ColorCMYK getPixelValue();
+  virtual std::vector<size_t> sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile);
 
 };
 
