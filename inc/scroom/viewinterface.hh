@@ -121,8 +121,25 @@ public:
    */
   virtual void removeFromToolbar(GtkToolItem* ti)=0;
 
+  /**
+   * Enable panning the view.
+   */
   virtual void setPanning()=0;
+
+  /**
+   * Disable panning the view.
+   */
   virtual void unsetPanning()=0;
+
+  /**
+   * Register a MeasurementListener to be updated whenever the
+   * selection changes. When the user changes the selection,
+   * the function 'onMeasurement(Measurement* measurement)' is
+   * called. This function must be implemented by classes that
+   * implement MeasurementListener.
+   * 
+   * @see MeasurementListener
+   */
   virtual void registerSelectionListener(MeasurementListener::Ptr measurementListener)=0;
 };
 
