@@ -37,15 +37,26 @@ public:
   double length() { return std::sqrt(std::pow(double(width()),2) + std::pow(double(height()),2)); }
 };
 
+class PostRenderer
+{
+public:
+  typedef boost::shared_ptr<PostRenderer> Ptr;
+
+public:
+  virtual ~PostRenderer() {}
+
+  virtual void render(cairo_t* cr)=0;
+};
+
 class SelectionListener
 {
 public:
-	typedef boost::shared_ptr<SelectionListener> Ptr;
+  typedef boost::shared_ptr<SelectionListener> Ptr;
 
 public:
-	virtual ~SelectionListener() {}
+  virtual ~SelectionListener() {}
 
-	virtual void onSelection(Selection* Selection)=0;
+  virtual void onSelection(Selection* Selection)=0;
 };
 
 // There is no documentation on values 4 and 5, so
@@ -141,12 +152,18 @@ public:
 
   /**
    * Register a SelectionListener to be updated whenever the
-   * user selects a region using the given mouse button.
-   * When the user changes the selection, the function
-   * 'onSelection(Selection* selection)' is called.
+   * user selects a region using the given mouse button. When
+   * the user changes the selection, the function
+   * 'onSelection(Selection* selection)' is called on the
+   * given object.
    * 
    * @see SelectionListener
    */
   virtual void registerSelectionListener(SelectionListener::Ptr listener, MouseButton button)=0;
+
+  /**
+   * Register a postrenderer.
+   */
+  virtual void registerPostRenderer(PostRenderer::Ptr listener)=0;
 };
 

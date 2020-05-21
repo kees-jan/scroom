@@ -65,6 +65,7 @@ private:
   int y;
   Selection* measurement;
   std::map<MouseButton, std::vector<SelectionListener::Ptr>> selectionListeners;
+  std::vector<PostRenderer::Ptr> postRenderers;
 
   gint modifiermove;
   GdkPoint cachedPoint;
@@ -134,6 +135,7 @@ public:
   virtual void setPanning();
   virtual void unsetPanning();
   virtual void registerSelectionListener(SelectionListener::Ptr listener, MouseButton button);
+  virtual void registerPostRenderer(PostRenderer::Ptr renderer);
 
   ////////////////////////////////////////////////////////////////////////
   // Helpers

@@ -192,6 +192,11 @@ void View::redraw(cairo_t* cr)
 
     presentation->redraw(shared_from_this<View>(), cr, rect, zoom);
 
+    for (auto renderer : postRenderers)
+    {
+      renderer->render(cr);
+    }
+
     if(measurement)
     {
       GdkPoint start = presentationPointToWindowPoint(measurement->start);
@@ -811,6 +816,11 @@ void View::unsetPanning()
 void View::registerSelectionListener(SelectionListener::Ptr listener, MouseButton button)
 {
   selectionListeners[button].push_back(listener);
+}
+
+void View::registerPostRenderer(PostRenderer::Ptr renderer)
+{
+  postRenderers.push_back(renderer);
 }
 
 ////////////////////////////////////////////////////////////////////////
