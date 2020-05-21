@@ -76,7 +76,7 @@ namespace Scroom
     template <typename Base>
     Base PixelIterator<Base>::mask(int bpp)
     {
-      return static_cast<Base>(((Base(1) << (bpp - 1)) - 1) << 1) | 1;
+      return (((Base(1) << (bpp - 1)) - 1) << 1) | 1;
     }
 
     template <typename Base>
@@ -87,7 +87,7 @@ namespace Scroom
 
     template <typename Base>
     PixelIterator<Base>::PixelIterator(Base* base, int offset, int bpp_)
-      : currentBase(NULL), currentOffset(0), bpp(bpp_), pixelsPerBase(bitsPerBase/bpp), pixelOffset(bpp_), pixelMask(mask(bpp_))
+      : currentBase(NULL), currentOffset(0), bpp(bpp_), pixelsPerBase(bitsPerBase/bpp_), pixelOffset(bpp_), pixelMask(mask(bpp_))
     {
       div_t d = div(offset, pixelsPerBase);
       currentBase = base+d.quot;
@@ -103,14 +103,13 @@ namespace Scroom
     template <typename Base>
     inline void PixelIterator<Base>::set(Base value)
     {
-      *currentBase =
-        static_cast<Base>((*currentBase & ~(pixelMask << currentOffset*pixelOffset)) | (value << (currentOffset*pixelOffset)));
+      *currentBase = (*currentBase & ~(pixelMask << currentOffset*pixelOffset)) | (value << (currentOffset*pixelOffset));
     }
 
     template <typename Base>
     inline Base PixelIterator<Base>::operator*()
     {
-      return static_cast<Base>((*currentBase>>(currentOffset*pixelOffset)) & pixelMask);
+      return (*currentBase>>(currentOffset*pixelOffset)) & pixelMask;
     }
 
     template <typename Base>

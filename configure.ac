@@ -27,10 +27,6 @@ case "${host_os}" in
 esac
 AM_CONDITIONAL([LINUX], [test "$build_linux" = "yes"])
 AM_CONDITIONAL([WINDOWS], [test "$build_windows" = "yes"])
-
-# Make sure the configure script finds the compiler    
-AM_COND_IF([WINDOWS], 
-    [export PATH=$PATH:/c/msys64/mingw64/bin]) 
     
 AM_INIT_AUTOMAKE([-Wall -Werror foreign silent-rules subdir-objects serial-tests])
 AM_SILENT_RULES([yes])
@@ -78,11 +74,7 @@ SCROOM_TEST_ISYSTEM
 
 # MinGW doesn't support the -z flag
 AM_COND_IF([LINUX], 
-    [LDFLAGS="$LDFLAGS -Wl,-z,defs"]) 
-    
-# The .pc files are at a weird place so make sure pkg-config finds them
-AM_COND_IF([WINDOWS], 
-    [export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/mingw64/lib/pkgconfig])    
+    [LDFLAGS="$LDFLAGS -Wl,-z,defs"])   
     
 # This flag is used in Makefile.am and needed for properly generating DLLs on Windows
 loadflag=""
