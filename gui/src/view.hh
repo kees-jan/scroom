@@ -136,6 +136,7 @@ public:
   virtual void unsetPanning();
   virtual void registerSelectionListener(SelectionListener::Ptr listener, MouseButton button);
   virtual void registerPostRenderer(PostRenderer::Ptr renderer);
+  virtual void setStatusMessage(const std::string& message);
 
   ////////////////////////////////////////////////////////////////////////
   // Helpers
@@ -146,7 +147,6 @@ private:
   GdkPoint eventToPoint(GdkEventButton* event);
   GdkPoint eventToPoint(GdkEventMotion* event);
   void drawCross(cairo_t* cr, GdkPoint p);
-  void setStatusMessage(const std::string& message);
   void displayMeasurement();
   void updateNewWindowMenu();
   void updateXY(int x, int y, LocationChangeCause source);

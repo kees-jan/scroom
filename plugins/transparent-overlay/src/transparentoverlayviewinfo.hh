@@ -51,6 +51,7 @@ public:
   virtual void unsetPanning();
   virtual void registerSelectionListener(SelectionListener::Ptr listener, MouseButton button);
   virtual void registerPostRenderer(PostRenderer::Ptr listener);
+  virtual void setStatusMessage(const std::string& message);
 };
 
 class TransparentOverlayViewInfo : virtual public Scroom::Utils::Base

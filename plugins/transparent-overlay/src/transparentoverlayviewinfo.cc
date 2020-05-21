@@ -86,6 +86,9 @@ void ChildView::registerSelectionListener(SelectionListener::Ptr, MouseButton)
 void ChildView::registerPostRenderer(PostRenderer::Ptr)
 {}
 
+void ChildView::setStatusMessage(const std::string&)
+{}
+
 ////////////////////////////////////////////////////////////////////////
 // TransparentOverlayViewInfo
 ////////////////////////////////////////////////////////////////////////

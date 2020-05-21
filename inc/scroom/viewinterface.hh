@@ -165,5 +165,10 @@ public:
    * Register a postrenderer.
    */
   virtual void registerPostRenderer(PostRenderer::Ptr listener)=0;
+
+  /**
+   * Sets the status message in the status bar of the application.
+   */
+  virtual void setStatusMessage(const std::string& message)=0;
 };
 

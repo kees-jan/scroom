@@ -823,6 +823,12 @@ void View::registerPostRenderer(PostRenderer::Ptr renderer)
   postRenderers.push_back(renderer);
 }
 
+void View::setStatusMessage(const std::string& message)
+{
+  gtk_statusbar_pop(statusBar, statusBarContextId);
+  gtk_statusbar_push(statusBar, statusBarContextId, message.c_str());
+}
+
 ////////////////////////////////////////////////////////////////////////
 // Helpers
 
@@ -883,12 +889,6 @@ void View::drawCross(cairo_t* cr, GdkPoint p)
   cairo_line_to(cr, p.x+size, p.y);
   cairo_move_to(cr, p.x, p.y-size);
   cairo_line_to(cr, p.x, p.y+size);
-}
-
-void View::setStatusMessage(const std::string& message)
-{
-  gtk_statusbar_pop(statusBar, statusBarContextId);
-  gtk_statusbar_push(statusBar, statusBarContextId, message.c_str());
 }
 
 void View::displayMeasurement()
