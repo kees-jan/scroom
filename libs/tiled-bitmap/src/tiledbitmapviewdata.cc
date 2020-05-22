@@ -20,33 +20,33 @@ TiledBitmapViewData::Ptr TiledBitmapViewData::create(ViewInterface::WeakPtr view
   return TiledBitmapViewData::Ptr(new TiledBitmapViewData(viewInterface));
 }
 
-TiledBitmapViewData::TiledBitmapViewData(ViewInterface::WeakPtr viewInterface)
-  : viewInterface(viewInterface),
-    progressInterface(viewInterface.lock()->getProgressInterface()),
+TiledBitmapViewData::TiledBitmapViewData(ViewInterface::WeakPtr viewInterface_)
+  : viewInterface(viewInterface_),
+    progressInterface(viewInterface_.lock()->getProgressInterface()),
     layer(), imin(0), imax(0), jmin(0), jmax(0), zoom(0), layerOperations(),
     redrawPending(false)
 {
 }
 
-void TiledBitmapViewData::setNeededTiles(Layer::Ptr const& l, int imin, int imax, int jmin, int jmax,
-                                         int zoom, LayerOperations::Ptr layerOperations)
+void TiledBitmapViewData::setNeededTiles(Layer::Ptr const& l, int imin_, int imax_, int jmin_, int jmax_,
+                                         int zoom_, LayerOperations::Ptr layerOperations_)
 {
   boost::unique_lock<boost::mutex> lock(mut);
 
-  if(this->layer == l && this->imin <= imin && this->imax >= imax &&
-      this->jmin <= jmin && this->jmax >= jmax && this->zoom == zoom)
+  if(this->layer == l && this->imin <= imin_ && this->imax >= imax_ &&
+      this->jmin <= jmin_ && this->jmax >= jmax_ && this->zoom == zoom_)
   {
     // Nothing to do...
   }
   else
   {
     this->layer = l;
-    this->imin = imin;
-    this->imax = imax;
-    this->jmin = jmin;
-    this->jmax = jmax;
-    this->zoom = zoom;
-    this->layerOperations = layerOperations;
+    this->imin = imin_;
+    this->imax = imax_;
+    this->jmin = jmin_;
+    this->jmax = jmax_;
+    this->zoom = zoom_;
+    this->layerOperations = layerOperations_;
 
     // printf("SetNeededTiles: layer=%d, %d<=i<=%d, %d<=j<=%d, zoom=%d\n",
     //        l->getDepth(), imin, imax, jmin, jmax, zoom);
@@ -120,10 +120,10 @@ static gboolean invalidate_view(ViewInterface::WeakPtr vi)
   return false;
 }
 
-void TiledBitmapViewData::storeVolatileStuff(Scroom::Utils::Stuff stuff)
+void TiledBitmapViewData::storeVolatileStuff(Scroom::Utils::Stuff stuff_)
 {
   boost::unique_lock<boost::mutex> lock(mut);
-  volatileStuff.push_back(stuff);
+  volatileStuff.push_back(stuff_);
 }
 
 void TiledBitmapViewData::clearVolatileStuff()

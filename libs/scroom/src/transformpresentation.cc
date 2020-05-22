@@ -23,9 +23,9 @@ Scroom::Utils::Point<double> TransformationData::getAspectRatio() const
 
 ////////////////////////////////////////////////////////////////////////
 
-TransformPresentation::TransformPresentation(PresentationInterface::Ptr const& presentation, TransformationData::Ptr const& transformationData)
-  : transformationData(transformationData), presentation(presentation),
-    colormappable(boost::dynamic_pointer_cast<Colormappable>(presentation))
+TransformPresentation::TransformPresentation(PresentationInterface::Ptr const& presentation_, TransformationData::Ptr const& transformationData_)
+  : transformationData(transformationData_), presentation(presentation_),
+    colormappable(boost::dynamic_pointer_cast<Colormappable>(presentation_))
 {}
 
 TransformPresentation::Ptr TransformPresentation::create(PresentationInterface::Ptr const& presentation, TransformationData::Ptr const& transformationData)

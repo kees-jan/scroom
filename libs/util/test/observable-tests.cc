@@ -70,8 +70,8 @@ protected:
   virtual void observerAdded(Observer const& observer, Scroom::Bookkeeping::Token const& token);
 };
 
-TestRecursiveObservable::TestRecursiveObservable(TestObservable::Ptr child)
-  :child(child)
+TestRecursiveObservable::TestRecursiveObservable(TestObservable::Ptr child_)
+  :child(child_)
 {
 }
 

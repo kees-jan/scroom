@@ -129,8 +129,8 @@ namespace Scroom
     ////////////////////////////////////////////////////////////////////////
     // Implementation
 
-    inline PageProvider::MarkPageFree::MarkPageFree(PageProvider::Ptr provider)
-      : provider(provider)
+    inline PageProvider::MarkPageFree::MarkPageFree(PageProvider::Ptr provider_)
+      : provider(provider_)
     {}
 
     inline void PageProvider::MarkPageFree::operator()(Scroom::MemoryBlocks::Page* p)
@@ -138,8 +138,8 @@ namespace Scroom
 
     ////////////////////////////////////////////////////////////////////////
 
-    inline Blob::UnloadData::UnloadData(Blob::Ptr blob)
-      : blob(blob)
+    inline Blob::UnloadData::UnloadData(Blob::Ptr blob_)
+      : blob(blob_)
     {}
 
     inline void Blob::UnloadData::operator()(uint8_t*)

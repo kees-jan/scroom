@@ -25,8 +25,8 @@ public:
   Scroom::MemoryBlobs::RawPageData::Ptr data;
 
 public:
-  Tile(int width, int height, int bpp, Scroom::MemoryBlobs::RawPageData::Ptr data)
-    : width(width), height(height), bpp(bpp), data(data)
+  Tile(int width_, int height_, int bpp_, Scroom::MemoryBlobs::RawPageData::Ptr data_)
+    : width(width_), height(height_), bpp(bpp_), data(data_)
   {}
 
   static Tile::Ptr create(int width, int height, int bpp, Scroom::MemoryBlobs::RawPageData::Ptr data)
@@ -45,8 +45,8 @@ public:
   Scroom::MemoryBlobs::RawPageData::ConstPtr data;
 
 public:
-  ConstTile(int width, int height, int bpp, Scroom::MemoryBlobs::RawPageData::ConstPtr data)
-    : width(width), height(height), bpp(bpp), data(data)
+  ConstTile(int width_, int height_, int bpp_, Scroom::MemoryBlobs::RawPageData::ConstPtr data_)
+    : width(width_), height(height_), bpp(bpp_), data(data_)
   {}
 
   static ConstTile::Ptr create(int width, int height, int bpp, Scroom::MemoryBlobs::RawPageData::ConstPtr data)

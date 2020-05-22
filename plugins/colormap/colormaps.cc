@@ -15,6 +15,10 @@
 
 #include <gio/gio.h>
 
+#ifdef _WIN32
+#include <Windows.h>
+#endif
+
 #include <scroom/colormappable.hh>
 
 #define SCROOMDIR   ".scroom"
@@ -34,13 +38,7 @@ namespace Scroom
 
     Colormaps::Colormaps()
     {
-      const char *homedir = g_getenv("HOME");
-      if (!homedir)
-        homedir = g_get_home_dir();
-
-      char* colormapDirPath = g_build_filename(homedir, SCROOMDIR, COLORMAPDIR,
-          NULL);
-
+      char* colormapDirPath = getColormapDirPath();
       DIR* colormapDir = opendir(colormapDirPath);
       if (colormapDir)
       {
@@ -69,7 +67,7 @@ namespace Scroom
         printf("Failed to open dir %s: (%d, %s)\n", colormapDirPath, errno,
             strerror(errno));
       }
-      g_free(colormapDirPath);
+        g_free(colormapDirPath);
     }
 
     Colormaps::~Colormaps()
@@ -82,6 +80,24 @@ namespace Scroom
       return instance;
     }
 
+    char* Colormaps::getColormapDirPath()
+    {
+      #ifdef _WIN32
+        // We want to keep everything portable on windows so we look for the colormaps folder in the same directory as the .exe
+        char buffer[2048];
+        GetModuleFileName(NULL, buffer, 2047);
+        std::string modulePath(buffer);
+        auto pos = modulePath.rfind("\\");
+        return g_build_filename(modulePath.substr(0, pos).c_str(), "\\", COLORMAPDIR, NULL);
+      #else
+        const char *homedir = g_getenv("HOME");
+        if (!homedir)
+          homedir = g_get_home_dir();
+
+        return g_build_filename(homedir, SCROOMDIR, COLORMAPDIR, NULL);
+      #endif
+    }
+
     std::list<Colormap::ConstPtr> Colormaps::getColormaps()
     {
       return colormaps;
@@ -91,12 +107,7 @@ namespace Scroom
     {
       Colormap::Ptr colormap;
 
-      const char *homedir = g_getenv("HOME");
-      if (!homedir)
-        homedir = g_get_home_dir();
-
-      char* fullName = g_build_filename(homedir, SCROOMDIR, COLORMAPDIR, name,
-          NULL);
+      char* fullName = g_build_filename(getColormapDirPath(), name, NULL);
       FILE* f = fopen(fullName, "r");
       if (f)
       {

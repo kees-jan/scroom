@@ -34,7 +34,7 @@ public:
 
 public:
   Measurement(int x, int y) { start.x=x; start.y=y; end=start; }
-  Measurement(GdkPoint start) : start(start), end(start) {}
+  Measurement(GdkPoint start_) : start(start_), end(start_) {}
 
   bool endsAt(GdkPoint p) { return end.x==p.x && end.y==p.y; }
 

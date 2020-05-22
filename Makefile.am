@@ -151,6 +151,8 @@ libs_util_src_libsutil_la_SOURCES = \
 
 libs_util_src_libsutil_la_LIBADD = @UTILS_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
 
+libs_util_src_libsutil_la_LDFLAGS = $(loadflag)
+
 if BOOST_UNITTESTS
 
 libs_util_test_utils_tests_CPPFLAGS = @UTILS_CFLAGS@ -I $(top_srcdir)/inc
@@ -193,6 +195,8 @@ libs_threadpool_src_libsthreadpool_la_SOURCES = \
 	libs/threadpool/src/queue.hh \
 	libs/threadpool/src/async-deleter.cc
 libs_threadpool_src_libsthreadpool_la_LIBADD = @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
+
+libs_threadpool_src_libsthreadpool_la_LDFLAGS = $(loadflag)
 
 if BOOST_UNITTESTS
 
@@ -240,6 +244,8 @@ libs_memory_manager_src_libsmemman_la_LIBADD = \
 	libs/threadpool/src/libsthreadpool.la \
 	@BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
 	@ZLIB@
+	
+libs_memory_manager_src_libsmemman_la_LDFLAGS = $(loadflag)	
 
 if BOOST_UNITTESTS
 
@@ -264,6 +270,7 @@ libs_memory_manager_test_memory_manager_tests_LDADD = \
 
 memory_manager_tests = \
 	libs/memory-manager/test/memory-manager-tests
+	
 
 endif BOOST_UNITTESTS
 
@@ -286,6 +293,8 @@ libs_scroom_src_libsscroom_la_SOURCES = \
 libs_scroom_src_libsscroom_la_LIBADD = \
 	@SCROOMLIB_LIBS@ $(util_libs) \
 	@BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
+
+libs_scroom_src_libsscroom_la_LDFLAGS = $(loadflag)
 
 if BOOST_UNITTESTS
 
@@ -357,6 +366,8 @@ libs_tiled_bitmap_src_libstiledbitmap_la_LIBADD = \
 	libs/memory-manager/src/libsmemman.la \
 	libs/scroom/src/libsscroom.la \
 	@BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
+	
+libs_tiled_bitmap_src_libstiledbitmap_la_LDFLAGS = $(loadflag)
 
 if BOOST_UNITTESTS
 
@@ -421,6 +432,7 @@ libs_tiled_bitmap_tools_measure_load_performance_LDADD = \
 	libs/tiled-bitmap/src/libstiledbitmap.la \
 	libs/util/src/libsutil.la \
 	libs/scroom/src/libsscroom.la
+	
 
 ########################################################################
 ### plugins/example
@@ -440,6 +452,8 @@ plugins_example_libspexample_la_SOURCES = \
 
 plugins_example_libspexample_la_LIBADD = -lm @EXAMPLEPLUGIN_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
 	libs/scroom/src/libsscroom.la
+	
+plugins_example_libspexample_la_LDFLAGS = $(loadflag)
 
 ########################################################################
 ### plugins/transparentoverlay
@@ -466,6 +480,8 @@ plugins_transparent_overlay_src_libsptransparentoverlay_la_LIBADD = -lm @TRANSPA
 	libs/util/src/libsutil.la \
 	libs/scroom/src/libsscroom.la
 
+plugins_transparent_overlay_src_libsptransparentoverlay_la_LDFLAGS = $(loadflag)
+
 if BOOST_UNITTESTS
 
 plugins_transparent_overlay_test_overlay_tests_CPPFLAGS = @TRANSPARENTOVERLAYPLUGIN_CFLAGS@ \
@@ -478,7 +494,7 @@ plugins_transparent_overlay_test_overlay_tests_SOURCES = \
 	plugins/transparent-overlay/test/plugin-test.cc \
 	plugins/transparent-overlay/test/determine-size-test.cc
 
-plugins_transparent_overlay_test_overlay_tests_LDADD = @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @UTILS_LIBS@  \
+plugins_transparent_overlay_test_overlay_tests_LDADD = @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @UTILS_LIBS@ @TRANSPARENTOVERLAY_BOOSTTEST_WIN_LD_SIZEDETERMINER@ \
 	plugins/transparent-overlay/src/libsptransparentoverlay.la \
 	libs/util/src/libsutil.la \
 	libs/scroom/src/libsscroom.la \
@@ -507,6 +523,8 @@ plugins_tiff_src_libsptiff_la_SOURCES = \
 
 plugins_tiff_src_libsptiff_la_LIBADD = @TIFFPLUGIN_LIBS@ -ltiff @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
 	libs/tiled-bitmap/src/libstiledbitmap.la libs/scroom/src/libsscroom.la
+	
+plugins_tiff_src_libsptiff_la_LDFLAGS = $(loadflag)
 
 ########################################################################
 ### plugins/colormap
@@ -527,6 +545,8 @@ plugins_colormap_libspcolormap_la_SOURCES = \
 	plugins/colormap/main.cc
 
 plugins_colormap_libspcolormap_la_LIBADD = @COLORMAPPLUGIN_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
+
+plugins_colormap_libspcolormap_la_LDFLAGS = $(loadflag)
 
 ########################################################################
 ### gui
@@ -640,3 +660,9 @@ checkPROGRAMS: all-am $(check_PROGRAMS)
 
 silent-doxygen:
 	@$(MAKE) doxygen-doc > doxygen.log 2>&1
+
+# Target for installing a portable version on Windows. Only does 'install' on Linux
+install-win-portable: install
+	@POST_INSTALL_HOOK@
+
+	

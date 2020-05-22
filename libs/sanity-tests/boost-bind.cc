@@ -26,8 +26,8 @@ private:
 public:
   typedef boost::shared_ptr<A> Ptr;
 
-  A(int& i)
-    :i(i)
+  A(int& i_)
+    :i(i_)
   {}
 
   void set(int v)

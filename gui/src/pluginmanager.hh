@@ -25,8 +25,8 @@ struct PluginInformation
   GModule* plugin;
   PluginInformationInterface::Ptr pluginInformation;
 
-  PluginInformation(GModule* plugin, PluginInformationInterface::Ptr pluginInformation)
-    : plugin(plugin), pluginInformation(pluginInformation)
+  PluginInformation(GModule* plugin_, PluginInformationInterface::Ptr pluginInformation_)
+    : plugin(plugin_), pluginInformation(pluginInformation_)
   {
   }
 };

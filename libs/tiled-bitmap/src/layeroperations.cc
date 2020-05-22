@@ -217,8 +217,8 @@ LayerOperations::Ptr Operations1bpp::create(ColormapProvider::Ptr colormapProvid
   return Ptr(new Operations1bpp(colormapProvider));
 }
 
-Operations1bpp::Operations1bpp(ColormapProvider::Ptr colormapProvider)
-  : colormapProvider(colormapProvider)
+Operations1bpp::Operations1bpp(ColormapProvider::Ptr colormapProvider_)
+  : colormapProvider(colormapProvider_)
 {
 }
 
@@ -237,7 +237,7 @@ Scroom::Utils::Stuff Operations1bpp::cache(const ConstTile::Ptr tile)
   for(int j=0; j<tile->height; j++, row+=stride)
   {
     PixelIterator<const byte> bit(tile->data.get()+j*tile->width/8, 0);
-    uint32_t* pixel = (uint32_t*)row;
+    uint32_t* pixel = reinterpret_cast<uint32_t*>(row);
     for(int i=0; i<tile->width; i++)
     {
       *pixel = colormap->colors[*bit].getARGB32();
@@ -337,8 +337,8 @@ LayerOperations::Ptr Operations8bpp::create(ColormapProvider::Ptr colormapProvid
   return Ptr(new Operations8bpp(colormapProvider));
 }
 
-Operations8bpp::Operations8bpp(ColormapProvider::Ptr colormapProvider)
-  : colormapProvider(colormapProvider)
+Operations8bpp::Operations8bpp(ColormapProvider::Ptr colormapProvider_)
+  : colormapProvider(colormapProvider_)
 {
 }
 
@@ -360,7 +360,7 @@ Scroom::Utils::Stuff Operations8bpp::cache(const ConstTile::Ptr tile)
   {
     const byte* cur = tile->data.get()+j*tile->width;
 
-    uint32_t* pixel = (uint32_t*)row;
+    uint32_t* pixel = reinterpret_cast<uint32_t*>(row);
     for(int i=0; i<tile->width; i++)
     {
       *pixel = mix(c2, c1, 1.0**cur/255).getARGB32();
@@ -479,7 +479,7 @@ Scroom::Utils::Stuff Operations24bpp::cache(const ConstTile::Ptr tile)
   {
     const byte* cur = tile->data.get()+3*j*tile->width;
 
-    uint32_t* pixel = (uint32_t*)row;
+    uint32_t* pixel = reinterpret_cast<uint32_t*>(row);
     for(int i=0; i<tile->width; i++)
     {
       //         A          R              G             B
@@ -546,9 +546,9 @@ LayerOperations::Ptr Operations::create(ColormapProvider::Ptr colormapProvider, 
   return Ptr(new Operations(colormapProvider, bpp));
 }
 
-Operations::Operations(ColormapProvider::Ptr colormapProvider, int bpp)
-  : colormapProvider(colormapProvider),
-    bpp(bpp), pixelsPerByte(8/bpp), pixelOffset(bpp), pixelMask((1<<bpp)-1)
+Operations::Operations(ColormapProvider::Ptr colormapProvider_, int bpp_)
+  : colormapProvider(colormapProvider_),
+    bpp(bpp_), pixelsPerByte(8/bpp_), pixelOffset(bpp_), pixelMask((1<<bpp_)-1)
 {
 }
 
@@ -568,7 +568,7 @@ Scroom::Utils::Stuff Operations::cache(const ConstTile::Ptr tile)
   {
     PixelIterator<const byte> pixelIn(tile->data.get()+j*tile->width/pixelsPerByte, 0, bpp);
 
-    uint32_t* pixelOut = (uint32_t*)row;
+    uint32_t* pixelOut = reinterpret_cast<uint32_t*>(row);
     for(int i=0; i<tile->width; i++)
     {
       *pixelOut = colormap->colors[*pixelIn].getARGB32();
@@ -597,7 +597,7 @@ void Operations::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, in
   {
     // Iterate vertically over target
     const byte* sourcePtr = sourceBase;
-    PixelIterator<uint16_t> targetPtr((uint16_t*)targetBase, 0, targetMultiplier * bpp);
+    PixelIterator<uint16_t> targetPtr(reinterpret_cast<uint16_t*>(targetBase), 0, targetMultiplier * bpp);
 
     for(int i=0; i<source->width/8;
         i++, sourcePtr+=8/pixelsPerByte, ++targetPtr)
@@ -691,8 +691,8 @@ LayerOperations::Ptr OperationsColormapped::create(ColormapProvider::Ptr colorma
   return Ptr(new OperationsColormapped(colormapProvider, bpp));
 }
 
-OperationsColormapped::OperationsColormapped(ColormapProvider::Ptr colormapProvider, int bpp)
-  : Operations(colormapProvider, bpp)
+OperationsColormapped::OperationsColormapped(ColormapProvider::Ptr colormapProvider_, int bpp_)
+  : Operations(colormapProvider_, bpp_)
 {
 }
 
@@ -712,7 +712,7 @@ Scroom::Utils::Stuff OperationsColormapped::cache(const ConstTile::Ptr tile)
   for(int j=0; j<tile->height; j++, row+=stride)
   {
     PixelIterator<const uint16_t> pixelIn(reinterpret_cast<uint16_t const *>(tile->data.get()+j*multiplier*tile->width/pixelsPerByte), 0, multiplier*bpp);
-    uint32_t* pixelOut = (uint32_t*)row;
+    uint32_t* pixelOut = reinterpret_cast<uint32_t*>(row);
     for(int i=0; i<tile->width; i++)
     {
       *pixelOut = mix(colormap->colors[*pixelIn & pixelMask], colormap->colors[*pixelIn >> pixelOffset], 0.5).getARGB32();
@@ -742,7 +742,7 @@ void OperationsColormapped::reduce(Tile::Ptr target, const ConstTile::Ptr source
   {
     // Iterate vertically over target
     const byte* sourcePtr = sourceBase;
-    PixelIterator<uint16_t> targetPtr((uint16_t*)targetBase, 0, multiplier*bpp);
+    PixelIterator<uint16_t> targetPtr(reinterpret_cast<uint16_t*>(targetBase), 0, multiplier*bpp);
 
     for(int i=0; i<source->width/8;
         i++, sourcePtr+=8*multiplier/pixelsPerByte, ++targetPtr)
@@ -797,8 +797,8 @@ LayerOperations::Ptr Operations1bppClipped::create(ColormapProvider::Ptr colorma
   return Ptr(new Operations1bppClipped(colormapProvider));
 }
 
-Operations1bppClipped::Operations1bppClipped(ColormapProvider::Ptr colormapProvider)
-  : colormapProvider(colormapProvider)
+Operations1bppClipped::Operations1bppClipped(ColormapProvider::Ptr colormapProvider_)
+  : colormapProvider(colormapProvider_)
 {
 }
 
@@ -826,7 +826,7 @@ Scroom::Utils::Stuff Operations1bppClipped::cacheZoom(const ConstTile::Ptr tile,
   unsigned char* row = data.get();
   for(int j=0; j<outputHeight; j++, row+=stride)
   {
-    uint32_t* pixel = (uint32_t*)row;
+    uint32_t* pixel = reinterpret_cast<uint32_t*>(row);
     for(int i=0; i<outputWidth; i++)
     {
       int sum=0;

@@ -25,8 +25,8 @@ namespace Scroom
     public:
       typedef T value_type;
 
-      Point(value_type x, value_type y)
-        : x(x), y(y)
+      Point(value_type x_, value_type y_)
+        : x(x_), y(y_)
       {}
 
       template<typename U>

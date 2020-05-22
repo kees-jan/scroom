@@ -9,11 +9,32 @@ AC_INIT([Scroom],
         [https://github.com/kees-jan/scroom/issues/new],
         [scroom],
         [https://github.com/kees-jan/scroom/wiki])
+        
+# Detect the target system
+AC_CANONICAL_HOST
+case "${host_os}" in
+    linux*)
+        build_linux=yes
+        AC_MSG_NOTICE([detected linux environment])
+        ;;
+    cygwin*|mingw*|msys*)
+        build_windows=yes
+        AC_MSG_NOTICE([detected windows environment])
+        ;;
+    *)
+        AC_MSG_ERROR(["OS $host_os is not supported."])
+        ;;
+esac
+AM_CONDITIONAL([LINUX], [test "$build_linux" = "yes"])
+AM_CONDITIONAL([WINDOWS], [test "$build_windows" = "yes"])
+    
 AM_INIT_AUTOMAKE([-Wall -Werror foreign silent-rules subdir-objects serial-tests])
 AM_SILENT_RULES([yes])
 AM_PROG_AR
 LT_PREREQ([2.2])
-LT_INIT([dlopen])
+
+# Properly create shared libraries on both Linux and Windows
+LT_INIT([dlopen win32-dll])
 
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([inc/scroom/presentationinterface.hh])
@@ -47,9 +68,19 @@ SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wfloat-equal])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wnon-virtual-dtor])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Woverloaded-virtual])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wsign-promo])
+SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wshadow])
+dnl SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-mwindows])
 SCROOM_TEST_ISYSTEM
 
-LDFLAGS="$LDFLAGS -Wl,-z,defs"
+# MinGW doesn't support the -z flag
+AM_COND_IF([LINUX], 
+    [LDFLAGS="$LDFLAGS -Wl,-z,defs"])   
+    
+# This flag is used in Makefile.am and needed for properly generating DLLs on Windows
+loadflag=""
+AM_COND_IF([WINDOWS], 
+    [loadflag="-no-undefined"])
+AC_SUBST([loadflag])
 
 # Configurable features
 AC_ARG_ENABLE([doxygen-all-code],
@@ -124,6 +155,10 @@ AC_SUBST([BOOSTSYSTEMLIB], ["$ac_cv_search__ZN5boost6system16generic_categoryEv"
 # Checking for pthreads
 have_pthreads_lib=no
 SCROOM_SEARCH_LIBS([pthread_mutexattr_init], [pthread], [have_pthreads_lib=yes])
+if test "x$ac_cv_search_pthread_mutexattr_init" = xnone\ required
+then
+  ac_cv_search_pthread_mutexattr_init=""
+fi
 AC_SUBST([PTHREADLIB], ["$ac_cv_search_pthread_mutexattr_init"])
 
 # Checking for boost thread
@@ -326,6 +361,15 @@ dnl dnl Add the languages which your application supports here.
 dnl ALL_LINGUAS=""
 dnl AM_GLIB_GNU_GETTEXT
 
+# Execute a script after 'make install-win-portable' on Windows
+post_install_hook='${top_srcdir}'/build_scripts/windows/post-install-hook.sh\ '${prefix}'
+AM_COND_IF([LINUX], [post_install_hook=":"]) 
+AC_SUBST([POST_INSTALL_HOOK], [$post_install_hook])
+
+# On Windows, boost test needs an explicit reference to the sizedeterminer .lo file
+transparentoverlay_boosttest_win_ld_sizedeterminer=""
+AM_COND_IF([WINDOWS], [transparentoverlay_boosttest_win_ld_sizedeterminer=plugins/transparent-overlay/src/libsptransparentoverlay_la-sizedeterminer.lo]) 
+AC_SUBST([TRANSPARENTOVERLAY_BOOSTTEST_WIN_LD_SIZEDETERMINER], [$transparentoverlay_boosttest_win_ld_sizedeterminer])
 
 AC_CONFIG_FILES([Makefile
                  gui/ENVIRONMENT
@@ -339,7 +383,6 @@ AC_SUBST([incscroomimpldir], [$incscroomdir/impl])
 AC_SUBST([incscroomgmockdir], [$incscroomdir/gmock])
 
 AC_OUTPUT
-
 
 echo \
 "-------------------------------------------------

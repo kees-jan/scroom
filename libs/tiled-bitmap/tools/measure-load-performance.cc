@@ -10,6 +10,7 @@
 #endif
 
 #include <stdlib.h>
+#include <getopt.h>
 
 #include <gtk/gtk.h>
 
@@ -61,7 +62,6 @@ int main (int argc, char *argv[])
   //   optind++;
   // }
 
-  g_thread_init(NULL);
   gdk_threads_init();
 
   gdk_threads_enter();

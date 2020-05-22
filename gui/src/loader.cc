@@ -116,7 +116,7 @@ GtkFileFilterInfoPtr filterInfoFromPath(const std::string& filename)
     filterInfo->mime_type = mime_type.release();
     filterInfo->display_name = display_name.release();
     filterInfo->contains =
-      (GtkFileFilterFlags)(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_MIME_TYPE);
+      static_cast<GtkFileFilterFlags>(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_MIME_TYPE);
   }
   else
   {
