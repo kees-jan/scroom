@@ -230,10 +230,10 @@ void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int t
           }
         }
 
-        targetPtr[2*x   ] = static_cast<byte>( sum_c == 15 * 64 ? 0xF0 : (sum_c / 60) << 4)
-                          | static_cast<byte>((sum_m == 15 * 64 ? 0x0F : sum_m / 60));
-        targetPtr[2*x +1] = static_cast<byte>( sum_y == 15 * 64 ? 0xF0 : (sum_y / 60) << 4)
-                          | static_cast<byte>((sum_k == 15 * 64 ? 0x0F : sum_k / 60));
+        targetPtr[0] = static_cast<byte>( sum_c == 15 * 64 ? 0xF0 : (sum_c / 60) << 4)
+                     | static_cast<byte>((sum_m == 15 * 64 ? 0x0F : sum_m / 60));
+        targetPtr[1] = static_cast<byte>( sum_y == 15 * 64 ? 0xF0 : (sum_y / 60) << 4)
+                     | static_cast<byte>((sum_k == 15 * 64 ? 0x0F : sum_k / 60));
 
         targetPtr += 2;
       }
