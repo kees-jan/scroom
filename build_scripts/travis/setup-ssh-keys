@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -x
+set -e
+set -u
+
+if [ "${TRAVIS_PULL_REQUEST}" = "false" ]
+then
+    openssl aes-256-cbc -K $encrypted_59cb415a9a11_key -iv $encrypted_59cb415a9a11_iv -in build_scripts/travis/config/travisci_rsa.enc -out ~/.ssh/id_rsa -d
+    chmod 0600 ~/.ssh/id_rsa
+fi
