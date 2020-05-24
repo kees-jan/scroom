@@ -7,7 +7,9 @@ script:
   echo TRAVIS_PULL_REQUEST=${TRAVIS_PULL_REQUEST} &&
   echo SHELL=$SHELL
 - ./build_scripts/travis/build-scroom
-sudo: required
+- true
+os:
+- linux
 dist: bionic
 compiler:
 - clang
@@ -36,10 +38,7 @@ addons:
     - doxygen
     - graphviz
 before_install:
-- openssl aes-256-cbc -K $encrypted_59cb415a9a11_key -iv $encrypted_59cb415a9a11_iv
-  -in build_scripts/travis/config/travisci_rsa.enc -out build_scripts/travis/config/travisci_rsa -d
-- chmod 0600 build_scripts/travis/config/travisci_rsa
-- cp build_scripts/travis/config/travisci_rsa ~/.ssh/id_rsa
+- build_scripts/travis/setup-ssh-keys
 git:
   depth: 200
   

@@ -4,6 +4,7 @@
 *~
 *.log
 *.trs
+*.exe
 .deps
 .libs
 .dirstamp
@@ -54,3 +55,4 @@ Makefile.in
 /doc/
 /.google
 test_results.xml
+/.vscode

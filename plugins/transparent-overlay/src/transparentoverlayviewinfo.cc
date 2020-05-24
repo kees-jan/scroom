@@ -90,7 +90,7 @@ static void on_toggled(GtkToggleButton* button, gpointer data)
 
 void TransparentOverlayViewInfo::createToggleToolButton(PresentationInterface::Ptr const& p)
 {
-  size_t n = buttons.size()+1;
+  int n = buttons.size()+1;
   std::stringstream s;
   s << "_" << n;
 

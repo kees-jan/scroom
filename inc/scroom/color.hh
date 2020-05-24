@@ -65,20 +65,11 @@ public:
   Color& operator*=(double d)
   { alpha *= d; red *= d; green *= d; blue *= d; return *this; }
 
-  uint32_t getRGB24() const {
-    uint32_t r = byteFromDouble(red);
-    uint32_t g = byteFromDouble(green);
-    uint32_t b = byteFromDouble(blue);
-    return 0xFF000000 | r << 16 | g << 8 | b;
-  }
+  uint32_t getRGB24() const
+  { return 0xFF000000 | byteFromDouble(red)<<16 | byteFromDouble(green)<<8 | byteFromDouble(blue) <<0; }
 
-  uint32_t getARGB32() const {
-    uint32_t a = byteFromDouble(alpha);
-    uint32_t r = byteFromDouble(red);
-    uint32_t g = byteFromDouble(green);
-    uint32_t b = byteFromDouble(blue);
-    return a << 24 | r << 16 | g << 8 | b;
-  }
+  uint32_t getARGB32() const
+  { return byteFromDouble(alpha)<<24 | byteFromDouble(red)<<16 | byteFromDouble(green)<<8 | byteFromDouble(blue) <<0; }
 
   void setColor(cairo_t* cr) const
   { cairo_set_source_rgba(cr, red, green, blue, alpha); }

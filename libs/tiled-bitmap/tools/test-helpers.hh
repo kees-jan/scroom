@@ -71,14 +71,14 @@ extern TestData::Ptr testData;
 
 ////////////////////////////////////////////////////////////////////////
 
-class Sleep
+class Sleeper
 {
 private:
   unsigned int secs;
   bool started;
   struct timespec t;
 public:
-  Sleep(unsigned int secs);
+  Sleeper(unsigned int secs);
 
   bool operator()();
 };

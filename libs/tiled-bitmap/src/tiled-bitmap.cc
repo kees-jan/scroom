@@ -36,14 +36,13 @@ static Scroom::MemoryBlobs::PageProvider::Ptr createProvider(double width, doubl
   double tileSize = (bpp / 8.0) * TILESIZE * TILESIZE;
 
   double guessedTileSizeAfterCompression = tileSize / 100;
-  const size_t pagesize = 4096;
-  const double pagesize_d = 4096.0;
-  size_t pagesPerBlock = static_cast<size_t>(std::max(ceil(guessedTileSizeAfterCompression / 10.0 / pagesize_d), 1.0));
+  const int pagesize = 4096;
+  int pagesPerBlock = std::max(int(ceil(guessedTileSizeAfterCompression / 10 / pagesize)),1);
 
-  size_t blockSize = pagesPerBlock*pagesize;
-  size_t blockCount = static_cast<size_t>(std::max(ceil(tileCount / 10.0), 64.0));
+  int blockSize = pagesPerBlock*pagesize;
+  int blockCount = std::max(int(ceil(tileCount / 10)), 64);
 
-  printf("Creating a PageProvider providing %zu blocks of %zu bytes\n", blockCount, blockSize);
+  printf("Creating a PageProvider providing %d blocks of %d bytes\n", blockCount, blockSize);
   return Scroom::MemoryBlobs::PageProvider::create(blockCount, blockSize);
 }
 
@@ -163,7 +162,7 @@ void TiledBitmap::initialize()
 
     bpp = lo->getBpp();
 
-    Layer::Ptr layer = Layer::create(shared_from_this<TiledBitmap>(), static_cast<int>(i), width, height, bpp, provider);
+    Layer::Ptr layer = Layer::create(shared_from_this<TiledBitmap>(), i, width, height, bpp, provider);
     layers.push_back(layer);
     if(prevLayer)
     {
@@ -219,7 +218,7 @@ void TiledBitmap::connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer,
     for(int i=0; i<horTileCount; i++)
     {
       int hoffset = i%8;
-      LayerCoordinator::Ptr lc = coordinators_[static_cast<size_t>(i/8)];
+      LayerCoordinator::Ptr lc = coordinators_[i/8];
       lc->addSourceTile(hoffset, voffset, prevLayer->getTile(i,j));
     }
   }
@@ -282,10 +281,10 @@ void TiledBitmap::redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Util
   const Scroom::Utils::Rectangle<int> actualPresentationArea = layer->getRect();
   const auto validPresentationArea = scaledRequestedPresentationArea.intersection(actualPresentationArea);
 
-  const int left = static_cast<int>(scaledRequestedPresentationArea.getLeft());
-  const int top = static_cast<int>(scaledRequestedPresentationArea.getTop());
-  const int right = static_cast<int>(scaledRequestedPresentationArea.getRight());
-  const int bottom = static_cast<int>(scaledRequestedPresentationArea.getBottom());
+  const int left = scaledRequestedPresentationArea.getLeft();
+  const int top = scaledRequestedPresentationArea.getTop();
+  const int right = scaledRequestedPresentationArea.getRight();
+  const int bottom = scaledRequestedPresentationArea.getBottom();
 
   const int imin = std::max(0, left/TILESIZE);
   const int imax = (right+TILESIZE-1)/TILESIZE;
