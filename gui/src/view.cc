@@ -675,9 +675,7 @@ void View::on_buttonRelease(GdkEventButton* event)
 
       // TODO: Also update the required listeners when other mouse buttons
       // are released.
-      for (auto listener : selectionListeners[MouseButton::SECONDARY]) {
-        listener->onSelection(measurement);
-      }
+      updateListeners(measurement, MouseButton::SECONDARY);
       //invalidate();
     }
     cachedPoint.x=0;
@@ -726,9 +724,7 @@ void View::on_motion_notify(GdkEventMotion* event)
     if(measurement && !measurement->endsAt(cachedPoint))
     {
       measurement->end = cachedPoint;
-      for (auto listener : selectionListeners[MouseButton::SECONDARY]) {
-    	listener->onSelection(measurement);
-      }
+      updateListeners(measurement, MouseButton::SECONDARY);
       moved = true;
     }
 
@@ -737,6 +733,13 @@ void View::on_motion_notify(GdkEventMotion* event)
       invalidate();
       displayMeasurement();
     }
+  }
+}
+
+void View::updateListeners(Selection* selection, MouseButton button)
+{
+  for (auto listener : selectionListeners[button]) {
+	listener->onSelection(selection);
   }
 }
 

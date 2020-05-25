@@ -122,6 +122,7 @@ public:
   void on_motion_notify(GdkEventMotion* event);
   void setFullScreen();
   void unsetFullScreen();
+  GdkPoint presentationPointToWindowPoint(GdkPoint pp);
 
   ////////////////////////////////////////////////////////////////////////
   // ViewInterface
@@ -143,12 +144,12 @@ public:
 
 private:
   GdkPoint windowPointToPresentationPoint(GdkPoint wp);
-  GdkPoint presentationPointToWindowPoint(GdkPoint pp);
   GdkPoint eventToPoint(GdkEventButton* event);
   GdkPoint eventToPoint(GdkEventMotion* event);
   void drawCross(cairo_t* cr, GdkPoint p);
   void displayMeasurement();
   void updateNewWindowMenu();
   void updateXY(int x, int y, LocationChangeCause source);
+  void updateListeners(Selection* selection, MouseButton button);
 };
 

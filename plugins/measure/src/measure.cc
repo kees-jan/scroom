@@ -42,7 +42,8 @@ void Measure::registerCapabilities(ScroomPluginInterface::Ptr host)
 // ViewObserver
 ////////////////////////////////////////////////////////////////////////
 
-Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr view){
+Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr view)
+{
   printf("View added\n");
 
   MeasureHandler::Ptr handler = MeasureHandler::create();
