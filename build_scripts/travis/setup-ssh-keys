@@ -4,8 +4,31 @@ set -x
 set -e
 set -u
 
+function setup_ssh_dir {
+    DIR=$1
+
+    mkdir -p ${DIR}
+    cat > ${DIR}/config <<EOF
+Host *
+     IdentityFile $(pwd)/build_scripts/travis/config/project_rsa
+     IdentitiesOnly yes
+EOF
+
+    cat >> ${DIR}/known_hosts <<EOF
+fuzzy.mandryn.eu ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDJc9u6tf7ExO2lCpGkMUDpwCYxWJzpFYjt8WMEK+PJ1KsepVSn09pwq0Ae92tBsFJEFZZyGUmCR4wTX2d4vZChoWgBnHzebojem0xTwhjZkqRSIaZuL6dyHounQ/ljp56z/58S8jLarn0MAQcpeqU9Sx/u3Ycf0wMCtgD/0zI139phG/HinX/dLh1Yk1j3QmWAxxNtLq5vofjdMPyivl3qm7LSd20SpLThdLVn03fmm+5BjQ4eauQOYXXcQ5TJebOLLvkYeuEMTSwSCWdkjxawrnsjm3SIgYFTG8OUsJzvRCcbcMR80H3dVtjzmg75NOdItrMgwR0XMvllLO/Xmclz
+EOF
+}
+
+
 if [ "${TRAVIS_PULL_REQUEST}" = "false" ]
 then
-    openssl aes-256-cbc -K $encrypted_59cb415a9a11_key -iv $encrypted_59cb415a9a11_iv -in build_scripts/travis/config/travisci_rsa.enc -out ~/.ssh/id_rsa -d
-    chmod 0600 ~/.ssh/id_rsa
+    echo "Installing ssh keys"
+    openssl aes-256-cbc -K $encrypted_c3ae50ff08f5_key -iv $encrypted_c3ae50ff08f5_iv -in build_scripts/travis/config/project_rsa.enc -out build_scripts/travis/config/project_rsa -d
+
+    chmod 600 build_scripts/travis/config/project_rsa
+
+    setup_ssh_dir ~/.ssh
+    setup_ssh_dir /home/travis/.ssh
+else
+    echo "Not installing ssh keys"
 fi
