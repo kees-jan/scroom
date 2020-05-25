@@ -170,5 +170,10 @@ public:
    * Sets the status message in the status bar of the application.
    */
   virtual void setStatusMessage(const std::string& message)=0;
+
+  virtual GdkPoint presentationPointToWindowPoint(GdkPoint wp){
+	  (void)wp;
+	  return {0, 0};
+  };
 };
 

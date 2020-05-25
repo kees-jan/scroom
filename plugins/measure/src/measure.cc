@@ -80,13 +80,13 @@ void MeasureHandler::render(cairo_t* cr)
   printf("Render called\n");
   if(this->selection){
 	printf("Selection set\n");
-	//GdkPoint start = presentationPointToWindowPoint(measurement->start);
-	//GdkPoint end = presentationPointToWindowPoint(measurement->end);
+	GdkPoint start = this->view->presentationPointToWindowPoint(this->selection->start);
+	GdkPoint end = this->view->presentationPointToWindowPoint(this->selection->end);
 	cairo_set_line_width(cr, 1);
 	cairo_stroke(cr);
 	cairo_set_source_rgb(cr, 0, 0, 1);
 	cairo_move_to(cr, 0, 0);
-	cairo_line_to(cr, 100, 100);
+	cairo_line_to(cr, end.x, end.y);
 	//cairo_line_to(cr, start.x, end.y);
 	//cairo_line_to(cr, end.x, end.y);
 	cairo_stroke(cr);
