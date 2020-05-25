@@ -197,24 +197,24 @@ void View::redraw(cairo_t* cr)
       renderer->render(cr);
     }
 
-    if(measurement)
-    {
-      GdkPoint start = presentationPointToWindowPoint(measurement->start);
-      GdkPoint end = presentationPointToWindowPoint(measurement->end);
-      cairo_set_line_width(cr, 1);
-      cairo_set_source_rgb(cr, 0.75, 0, 0); // Dark Red
-      drawCross(cr, start);
-      drawCross(cr, end);
-      cairo_stroke(cr);
-      cairo_set_source_rgb(cr, 1, 0, 0); // Red
-      cairo_move_to(cr, start.x, start.y);
-      cairo_line_to(cr, end.x, end.y);
-      //cairo_line_to(cr, end.x, start.y);
-      //cairo_line_to(cr, start.x, start.y);
-      //cairo_line_to(cr, start.x, end.y);
-      //cairo_line_to(cr, end.x, end.y);
-      cairo_stroke(cr);
-    }
+//    if(measurement)
+//    {
+//      GdkPoint start = presentationPointToWindowPoint(measurement->start);
+//      GdkPoint end = presentationPointToWindowPoint(measurement->end);
+//      cairo_set_line_width(cr, 1);
+//      cairo_set_source_rgb(cr, 0.75, 0, 0); // Dark Red
+//      drawCross(cr, start);
+//      drawCross(cr, end);
+//      cairo_stroke(cr);
+//      cairo_set_source_rgb(cr, 1, 0, 0); // Red
+//      cairo_move_to(cr, start.x, start.y);
+//      cairo_line_to(cr, end.x, end.y);
+//      //cairo_line_to(cr, end.x, start.y);
+//      //cairo_line_to(cr, start.x, start.y);
+//      //cairo_line_to(cr, start.x, end.y);
+//      //cairo_line_to(cr, end.x, end.y);
+//      cairo_stroke(cr);
+//    }
   }
   else
   {
@@ -678,6 +678,7 @@ void View::on_buttonRelease(GdkEventButton* event)
       for (auto listener : selectionListeners[MouseButton::SECONDARY]) {
         listener->onSelection(measurement);
       }
+      //invalidate();
     }
     cachedPoint.x=0;
     cachedPoint.y=0;
@@ -725,6 +726,9 @@ void View::on_motion_notify(GdkEventMotion* event)
     if(measurement && !measurement->endsAt(cachedPoint))
     {
       measurement->end = cachedPoint;
+      for (auto listener : selectionListeners[MouseButton::SECONDARY]) {
+    	listener->onSelection(measurement);
+      }
       moved = true;
     }
 
