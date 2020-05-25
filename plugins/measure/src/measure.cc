@@ -45,44 +45,31 @@ void Measure::registerCapabilities(ScroomPluginInterface::Ptr host)
 Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr view){
   printf("View added\n");
 
-  view->registerSelectionListener(MeasureListener::create(), MouseButton::SECONDARY);
-  view->registerPostRenderer(MeasureRenderer::create());
+  MeasureHandler::Ptr handler = MeasureHandler::create();
+  view->registerSelectionListener(handler, MouseButton::SECONDARY);
+  view->registerPostRenderer(handler);
 
   return Scroom::Bookkeeping::Token();
 }
 
 ////////////////////////////////////////////////////////////////////////
-// MeasureListener
+// MeasureHandler
 ////////////////////////////////////////////////////////////////////////
 
-MeasureListener::MeasureListener(){
+MeasureHandler::MeasureHandler(){
 }
 
-MeasureListener::~MeasureListener(){
+MeasureHandler::~MeasureHandler(){
 }
 
-MeasureListener::Ptr MeasureListener::create(){
-  return Ptr(new MeasureListener());
+MeasureHandler::Ptr MeasureHandler::create(){
+  return Ptr(new MeasureHandler());
 }
 
-void MeasureListener::onSelection(Selection* selection){
+void MeasureHandler::onSelection(Selection* selection){
   printf("Cookies received %d %d %d %d\n", selection->start.x, selection->end.x, selection->start.y, selection->end.y);
 }
 
-////////////////////////////////////////////////////////////////////////
-// MeasureRenderer
-////////////////////////////////////////////////////////////////////////
-
-MeasureRenderer::MeasureRenderer(){
-}
-
-MeasureRenderer::~MeasureRenderer(){
-}
-
-MeasureRenderer::Ptr MeasureRenderer::create(){
-	return Ptr(new MeasureRenderer());
-}
-
-void MeasureRenderer::render(cairo_t* cr){
+void MeasureHandler::render(cairo_t* cr){
 	printf("Render called");
 }

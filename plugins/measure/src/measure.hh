@@ -11,36 +11,21 @@
 #include <scroom/utilities.hh>
 #include <scroom/viewinterface.hh>
 
-class MeasureListener : public SelectionListener, virtual public Scroom::Utils::Base{
+class MeasureHandler : public PostRenderer, public SelectionListener, virtual public Scroom::Utils::Base{
 public:
-  MeasureListener();
+	MeasureHandler();
 
 public:
-  typedef boost::shared_ptr<MeasureListener> Ptr;
-
-public:
-  static Ptr create();
-
-public:
-  virtual ~MeasureListener();
-
-  virtual void onSelection(Selection* measurement);
-};
-
-class MeasureRenderer : public PostRenderer, virtual public Scroom::Utils::Base{
-public:
-	MeasureRenderer();
-
-public:
-  typedef boost::shared_ptr<MeasureRenderer> Ptr;
+  typedef boost::shared_ptr<MeasureHandler> Ptr;
 
 public:
   static Ptr create();
 
 public:
-  virtual ~MeasureRenderer();
+  virtual ~MeasureHandler();
 
   virtual void render(cairo_t* cr);
+  virtual void onSelection(Selection* measurement);
 };
 
 class Measure : public PluginInformationInterface, public ViewObserver, virtual public Scroom::Utils::Base
