@@ -76,11 +76,11 @@ void MeasureHandler::displayMeasurement()
   s.precision(1);
   fixed(s);
 
-  s << "l: " << measurement->length()
-    << ", dx: " << measurement->width()
-    << ", dy: " << measurement->height()
-    << ", from: ("<< measurement->start.x << "," << measurement->start.y << ")"
-    << ", to: ("<< measurement->end.x << "," << measurement->end.y << ")";
+  s << "l: " << this->selection->length()
+    << ", dx: " << this->selection->width()
+    << ", dy: " << this->selection->height()
+    << ", from: ("<< this->selection->start.x << "," << this->selection->start.y << ")"
+    << ", to: ("<< this->selection->end.x << "," << this->selection->end.y << ")";
 
   view->setStatusMessage(s.str());
 }

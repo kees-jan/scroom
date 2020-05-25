@@ -732,7 +732,7 @@ void View::on_motion_notify(GdkEventMotion* event)
     if(moved)
     {
       invalidate();
-      displayMeasurement();
+    //  displayMeasurement();
     }
   }
 }
