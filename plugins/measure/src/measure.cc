@@ -46,6 +46,7 @@ Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr view){
   printf("View added\n");
 
   MeasureHandler::Ptr handler = MeasureHandler::create();
+  handler->view = view;
   view->registerSelectionListener(handler, MouseButton::SECONDARY);
   view->registerPostRenderer(handler);
 
@@ -67,9 +68,13 @@ MeasureHandler::Ptr MeasureHandler::create(){
 }
 
 void MeasureHandler::onSelection(Selection* selection){
+  this->selection = selection;
   printf("Cookies received %d %d %d %d\n", selection->start.x, selection->end.x, selection->start.y, selection->end.y);
 }
 
 void MeasureHandler::render(cairo_t* cr){
-	printf("Render called");
+  printf("Render called\n");
+  if(selection){
+	  printf("Selection set\n");
+  }
 }

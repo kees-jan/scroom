@@ -11,12 +11,17 @@
 #include <scroom/utilities.hh>
 #include <scroom/viewinterface.hh>
 
-class MeasureHandler : public PostRenderer, public SelectionListener, virtual public Scroom::Utils::Base{
+class MeasureHandler : public PostRenderer, public SelectionListener, virtual public Scroom::Utils::Base
+{
 public:
 	MeasureHandler();
 
 public:
   typedef boost::shared_ptr<MeasureHandler> Ptr;
+
+private:
+  ViewInterface::Ptr view;
+  Selection* selection;
 
 public:
   static Ptr create();
