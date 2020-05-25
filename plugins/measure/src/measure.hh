@@ -20,8 +20,10 @@ public:
   typedef boost::shared_ptr<MeasureHandler> Ptr;
 
 private:
-  ViewInterface::Ptr view;
   Selection* selection;
+
+public:
+  ViewInterface::Ptr view;
 
 public:
   static Ptr create();

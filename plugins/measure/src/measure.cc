@@ -57,24 +57,38 @@ Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr view){
 // MeasureHandler
 ////////////////////////////////////////////////////////////////////////
 
-MeasureHandler::MeasureHandler(){
+MeasureHandler::MeasureHandler()
+{
+}
+MeasureHandler::~MeasureHandler()
+{
 }
 
-MeasureHandler::~MeasureHandler(){
-}
-
-MeasureHandler::Ptr MeasureHandler::create(){
+MeasureHandler::Ptr MeasureHandler::create()
+{
   return Ptr(new MeasureHandler());
 }
 
-void MeasureHandler::onSelection(Selection* selection){
+void MeasureHandler::onSelection(Selection* selection)
+{
   this->selection = selection;
   printf("Cookies received %d %d %d %d\n", selection->start.x, selection->end.x, selection->start.y, selection->end.y);
 }
 
-void MeasureHandler::render(cairo_t* cr){
+void MeasureHandler::render(cairo_t* cr)
+{
   printf("Render called\n");
-  if(selection){
-	  printf("Selection set\n");
+  if(this->selection){
+	printf("Selection set\n");
+	//GdkPoint start = presentationPointToWindowPoint(measurement->start);
+	//GdkPoint end = presentationPointToWindowPoint(measurement->end);
+	cairo_set_line_width(cr, 1);
+	cairo_stroke(cr);
+	cairo_set_source_rgb(cr, 0, 0, 1);
+	cairo_move_to(cr, 0, 0);
+	cairo_line_to(cr, 100, 100);
+	//cairo_line_to(cr, start.x, end.y);
+	//cairo_line_to(cr, end.x, end.y);
+	cairo_stroke(cr);
   }
 }
