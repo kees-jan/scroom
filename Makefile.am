@@ -494,7 +494,7 @@ plugins_transparent_overlay_test_overlay_tests_SOURCES = \
 	plugins/transparent-overlay/test/plugin-test.cc \
 	plugins/transparent-overlay/test/determine-size-test.cc
 
-plugins_transparent_overlay_test_overlay_tests_LDADD = @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @UTILS_LIBS@  \
+plugins_transparent_overlay_test_overlay_tests_LDADD = @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @UTILS_LIBS@ @TRANSPARENTOVERLAY_BOOSTTEST_WIN_LD_SIZEDETERMINER@ \
 	plugins/transparent-overlay/src/libsptransparentoverlay.la \
 	libs/util/src/libsutil.la \
 	libs/scroom/src/libsscroom.la \

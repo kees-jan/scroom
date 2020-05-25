@@ -166,9 +166,16 @@ bool TiffPresentation::load(const std::string& fileName_)
 
     if(TIFFGetField(tif, TIFFTAG_XRESOLUTION, &resolutionX) &&
        TIFFGetField(tif, TIFFTAG_YRESOLUTION, &resolutionY) &&
-       TIFFGetField(tif, TIFFTAG_RESOLUTIONUNIT, &resolutionUnit) &&
-       resolutionUnit == RESUNIT_NONE)
+       TIFFGetField(tif, TIFFTAG_RESOLUTIONUNIT, &resolutionUnit))
     {
+      if(resolutionUnit != RESUNIT_NONE)
+      {
+        // Fix aspect ratio only
+        float base = std::max(resolutionX, resolutionY);
+        resolutionX = resolutionX/base;
+        resolutionY = resolutionY/base;
+      }
+
       transformationData = TransformationData::create();
       transformationData->setAspectRatio(1/resolutionX, 1/resolutionY);
     }
@@ -177,7 +184,6 @@ bool TiffPresentation::load(const std::string& fileName_)
       resolutionX = 1;
       resolutionY = 1;
     }
-    
     printf("This bitmap has size %d*%d, aspect ratio %.1f*%.1f\n",
            width, height, 1/resolutionX, 1/resolutionY);
 
@@ -326,7 +332,7 @@ void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth,
   const size_t firstTile_ = static_cast<size_t>(firstTile);
   const size_t scanLineSize = static_cast<size_t>(TIFFScanlineSize(tif));
   const size_t tileStride = static_cast<size_t>(tileWidth*spp*bps/8);
-  auto row = std::vector<byte>(scanLineSize);
+  std::vector<byte> row(scanLineSize);
 
   const size_t tileCount = tiles.size();
   auto dataPtr = std::vector<byte*>(tileCount);

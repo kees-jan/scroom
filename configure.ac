@@ -27,10 +27,6 @@ case "${host_os}" in
 esac
 AM_CONDITIONAL([LINUX], [test "$build_linux" = "yes"])
 AM_CONDITIONAL([WINDOWS], [test "$build_windows" = "yes"])
-
-# Make sure the configure script finds the compiler    
-AM_COND_IF([WINDOWS], 
-    [export PATH=$PATH:/c/msys64/mingw64/bin]) 
     
 AM_INIT_AUTOMAKE([-Wall -Werror foreign silent-rules subdir-objects serial-tests])
 AM_SILENT_RULES([yes])
@@ -78,11 +74,7 @@ SCROOM_TEST_ISYSTEM
 
 # MinGW doesn't support the -z flag
 AM_COND_IF([LINUX], 
-    [LDFLAGS="$LDFLAGS -Wl,-z,defs"]) 
-    
-# The .pc files are at a weird place so make sure pkg-config finds them
-AM_COND_IF([WINDOWS], 
-    [export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/mingw64/lib/pkgconfig])    
+    [LDFLAGS="$LDFLAGS -Wl,-z,defs"])   
     
 # This flag is used in Makefile.am and needed for properly generating DLLs on Windows
 loadflag=""
@@ -370,11 +362,15 @@ dnl dnl Add the languages which your application supports here.
 dnl ALL_LINGUAS=""
 dnl AM_GLIB_GNU_GETTEXT
 
-# Execute a script after 'make install' on Windows
+# Execute a script after 'make install-win-portable' on Windows
 post_install_hook='${top_srcdir}'/build_scripts/windows/post-install-hook.sh\ '${prefix}'
 AM_COND_IF([LINUX], [post_install_hook=":"]) 
 AC_SUBST([POST_INSTALL_HOOK], [$post_install_hook])
 
+# On Windows, boost test needs an explicit reference to the sizedeterminer .lo file
+transparentoverlay_boosttest_win_ld_sizedeterminer=""
+AM_COND_IF([WINDOWS], [transparentoverlay_boosttest_win_ld_sizedeterminer=plugins/transparent-overlay/src/libsptransparentoverlay_la-sizedeterminer.lo]) 
+AC_SUBST([TRANSPARENTOVERLAY_BOOSTTEST_WIN_LD_SIZEDETERMINER], [$transparentoverlay_boosttest_win_ld_sizedeterminer])
 
 AC_CONFIG_FILES([Makefile
                  gui/ENVIRONMENT
