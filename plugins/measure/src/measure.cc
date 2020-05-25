@@ -70,9 +70,25 @@ MeasureHandler::Ptr MeasureHandler::create()
   return Ptr(new MeasureHandler());
 }
 
+void MeasureHandler::displayMeasurement()
+{
+  std::ostringstream s;
+  s.precision(1);
+  fixed(s);
+
+  s << "l: " << measurement->length()
+    << ", dx: " << measurement->width()
+    << ", dy: " << measurement->height()
+    << ", from: ("<< measurement->start.x << "," << measurement->start.y << ")"
+    << ", to: ("<< measurement->end.x << "," << measurement->end.y << ")";
+
+  view->setStatusMessage(s.str());
+}
+
 void MeasureHandler::onSelection(Selection* selection)
 {
   this->selection = selection;
+  displayMeasurement();
   printf("Cookies received %d %d %d %d\n", selection->start.x, selection->end.x, selection->start.y, selection->end.y);
 }
 

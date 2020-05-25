@@ -172,8 +172,8 @@ public:
   virtual void setStatusMessage(const std::string& message)=0;
 
   virtual GdkPoint presentationPointToWindowPoint(GdkPoint wp){
-	  (void)wp;
-	  return {0, 0};
+	(void)wp;
+	return {0, 0};
   };
 };
 

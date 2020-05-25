@@ -33,6 +33,9 @@ public:
 
   virtual void render(cairo_t* cr);
   virtual void onSelection(Selection* measurement);
+
+private:
+  virtual void displayMeasurement();
 };
 
 class Measure : public PluginInformationInterface, public ViewObserver, virtual public Scroom::Utils::Base

@@ -529,6 +529,7 @@ void View::on_scrollwheel(GdkEventScroll* event)
 void View::on_zoombox_changed()
 {
   GtkTreeIter iter;
+
   GValue value= G_VALUE_INIT;
   gtk_combo_box_get_active_iter(zoomBox, &iter);
 
@@ -896,24 +897,6 @@ void View::drawCross(cairo_t* cr, GdkPoint p)
   cairo_line_to(cr, p.x+size, p.y);
   cairo_move_to(cr, p.x, p.y-size);
   cairo_line_to(cr, p.x, p.y+size);
-}
-
-void View::displayMeasurement()
-{
-  std::ostringstream s;
-  s.precision(1);
-  fixed(s);
-
-  if(measurement)
-  {
-    s << "l: " << measurement->length()
-      << ", dx: " << measurement->width()
-      << ", dy: " << measurement->height()
-      << ", from: ("<< measurement->start.x << "," << measurement->start.y << ")"
-      << ", to: ("<< measurement->end.x << "," << measurement->end.y << ")";
-  }
-
-  setStatusMessage(s.str());
 }
 
 void View::updateNewWindowMenu()
