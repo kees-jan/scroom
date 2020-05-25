@@ -18,6 +18,7 @@
 #include <scroom/viewinterface.hh>
 #include <scroom/observable.hh>
 #include <scroom/rectangle.hh>
+#include <scroom/pipetteviewinterface.hh>
 
 /**
  * Implement Viewable if you want to be able to receive events when a
@@ -104,6 +105,16 @@ public:
 
   /** Return the title of the presentation */
   virtual std::string getTitle()=0;
+};
+
+class PresentationPipetteInterface: public PresentationInterface, public PipetteViewInterface
+{
+public:
+  virtual ~PresentationPipetteInterface()
+  {}
+
+  /** return the average of each sample defined in the selection */
+  virtual PipetteLayerOperations::PipetteColor getAverages();
 };
 
 class PresentationBase : public PresentationInterface
