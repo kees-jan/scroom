@@ -27,6 +27,12 @@
 #include "sidebarmanager.hh"
 #include "progressbarmanager.hh"
 
+typedef struct
+{
+	Selection* selection;
+	bool pressed;
+} MouseSelection;
+
 class View : public ViewInterface, virtual public Scroom::Utils::Base
 {
 public:
@@ -64,6 +70,7 @@ private:
   int x;
   int y;
   Selection* measurement;
+  std::map<guint, MouseSelection*> selections;
   std::map<MouseButton, std::vector<SelectionListener::Ptr>> selectionListeners;
   std::vector<PostRenderer::Ptr> postRenderers;
 
@@ -150,6 +157,6 @@ private:
   void displayMeasurement();
   void updateNewWindowMenu();
   void updateXY(int x, int y, LocationChangeCause source);
-  void updateListeners(Selection* selection, MouseButton button);
+  void updateListeners(Selection* selection, guint button);
 };
 
