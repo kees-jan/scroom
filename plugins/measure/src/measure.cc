@@ -44,8 +44,6 @@ void Measure::registerCapabilities(ScroomPluginInterface::Ptr host)
 
 Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr view)
 {
-  printf("View added\n");
-
   MeasureHandler::Ptr handler = MeasureHandler::create();
   handler->view = view;
   view->registerSelectionListener(handler, MouseButton::SECONDARY);
@@ -60,6 +58,7 @@ Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr view)
 
 MeasureHandler::MeasureHandler()
 {
+  selection = nullptr;
 }
 MeasureHandler::~MeasureHandler()
 {
@@ -89,14 +88,11 @@ void MeasureHandler::onSelection(Selection* s)
 {
   selection = s;
   displayMeasurement();
-  printf("Cookies receivedf %d %d %d %d\n", selection->start.x, selection->end.x, selection->start.y, selection->end.y);
 }
 
 void MeasureHandler::render(cairo_t* cr)
 {
-  printf("Render called\n");
   if(selection){
-	printf("Selection set\n");
 	GdkPoint start = view->presentationPointToWindowPoint(selection->start);
 	GdkPoint end = view->presentationPointToWindowPoint(selection->end);
 	cairo_set_line_width(cr, 1);

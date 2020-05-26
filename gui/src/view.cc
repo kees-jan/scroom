@@ -140,19 +140,6 @@ View::View(GladeXML* scroomXml_)
   cachedPoint.y=0;
   panning = true;
 
-  //selections[MouseButton::PRIMARY] = {nullptr, false};
-  //selections[MouseButton::MIDDLE] = {nullptr, false};
-  //selections[MouseButton::SECONDARY] = {nullptr, false};
-  //selections[1] = {nullptr, false};
-  //selections[2] = {nullptr, false};
-  //selections[3] = {nullptr, false};
-//  MouseSelection button1 = {nullptr, false};
-//  MouseSelection button2 = {nullptr, false};
-//  MouseSelection button3 = {nullptr, false};
- // selections[1] = new MouseSelection();
- /// selections[2] = new MouseSelection();
- /// selections[3] = new MouseSelection();
-
   on_newPresentationInterfaces_update(pluginManager->getNewPresentationInterfaces());
   updateNewWindowMenu();
   on_configure();
@@ -209,25 +196,6 @@ void View::redraw(cairo_t* cr)
     {
       renderer->render(cr);
     }
-
-//    if(measurement)
-//    {
-//      GdkPoint start = presentationPointToWindowPoint(measurement->start);
-//      GdkPoint end = presentationPointToWindowPoint(measurement->end);
-//      cairo_set_line_width(cr, 1);
-//      cairo_set_source_rgb(cr, 0.75, 0, 0); // Dark Red
-//      drawCross(cr, start);
-//      drawCross(cr, end);
-//      cairo_stroke(cr);
-//      cairo_set_source_rgb(cr, 1, 0, 0); // Red
-//      cairo_move_to(cr, start.x, start.y);
-//      cairo_line_to(cr, end.x, end.y);
-//      //cairo_line_to(cr, end.x, start.y);
-//      //cairo_line_to(cr, start.x, start.y);
-//      //cairo_line_to(cr, start.x, end.y);
-//      //cairo_line_to(cr, end.x, end.y);
-//      cairo_stroke(cr);
-//    }
   }
   else
   {
@@ -657,34 +625,14 @@ void View::on_buttonPress(GdkEventButton* event)
     modifiermove = GDK_BUTTON1_MASK;
     cachedPoint = eventToPoint(event);
   }
-//  else if(event->button==3 && modifiermove==0)
-//  {
-//    // Begin measuring distance
-//    modifiermove = GDK_BUTTON3_MASK;
-//    if(measurement)
-//    {
-//      delete measurement;
-//    }
-//    cachedPoint = windowPointToPresentationPoint(eventToPoint(event));
-//    measurement = new Selection(cachedPoint);
-//  }
-
-  // TODO: figure out if reusing cachedPoint is still safe
 
   // Start selection for the event button
-  printf("on press\n");
   Selection* sel = selections[event->button];
-  printf("on press sel\n");
-  printf("not dead yet\n");
   if(sel)
   {
     delete sel;
   }
-  printf("probably dead\n");
-  //cachedPoint = windowPointToPresentationPoint(eventToPoint(event));
-  printf("after dead\n");
   selections[event->button] = new Selection(windowPointToPresentationPoint(eventToPoint(event)));
-  printf("end\n");
 }
 
 void View::on_buttonRelease(GdkEventButton* event)
@@ -696,33 +644,13 @@ void View::on_buttonRelease(GdkEventButton* event)
     cachedPoint.x=0;
     cachedPoint.y=0;
   }
-//  else if(event->button==3 && modifiermove==GDK_BUTTON3_MASK)
-//  {
-//    // End measuring distance
-//    modifiermove = 0;
-//    if(measurement)
-//    {
-//      measurement->end = windowPointToPresentationPoint(eventToPoint(event));
-//
-//      // TODO: Also update the required listeners when other mouse buttons
-//      // are released.
-//      updateListeners(measurement, MouseButton::SECONDARY);
-//      //invalidate();
-//    }
-//    cachedPoint.x=0;
-//    cachedPoint.y=0;
-//  }
 
   // End selection for the event button
-  printf("on release\n");
   Selection* sel = selections[event->button];
-  printf("on release sel\n");
   if(sel)
   {
     sel->end = windowPointToPresentationPoint(eventToPoint(event));
     updateListeners(sel, event->button);
-    //cachedPoint.x=0;
-    //cachedPoint.y=0;
   }
 }
 
@@ -759,46 +687,22 @@ void View::on_motion_notify(GdkEventMotion* event)
 
     updateXY(newx, newy, OTHER);
   }
-//  else if((event->state & GDK_BUTTON3_MASK) && modifiermove == GDK_BUTTON3_MASK)
-//  {
-//    bool moved=false;
-//
-//    cachedPoint = windowPointToPresentationPoint(eventToPoint(event));
-//    if(measurement && !measurement->endsAt(cachedPoint))
-//    {
-//      measurement->end = cachedPoint;
-//      updateListeners(measurement, MouseButton::SECONDARY);
-//      moved = true;
-//    }
-//
-//    if(moved)
-//    {
-//      invalidate();
-//    //  displayMeasurement();
-//    }
-//  }
 
   // There should be a cleaner way to do this...
-  //printf("on move\n");
   for (int button = 0; button < 3; button++)
   {
     if((event->state & (GDK_BUTTON1_MASK << button)))
     {
-      printf("on move mask\n");
       // Update selection listeners for the event button
       Selection* sel = selections[button + 1];
-      printf("on sel\n");
-      //cachedPoint = windowPointToPresentationPoint(eventToPoint(event));
-      if(sel)// && !sel->selection->endsAt(windowPointToPresentationPoint(eventToPoint(event))))
+      if(sel)
       {
-        printf("sel do\n");
         sel->end = windowPointToPresentationPoint(eventToPoint(event));
         updateListeners(sel, button + 1);
         invalidate();
       }
     }
   }
-  invalidate();
 }
 
 void View::updateListeners(Selection* selection, guint button)
