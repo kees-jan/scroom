@@ -40,7 +40,7 @@ public:
   int spp;
   int bps;
 
-  virtual PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile);
+  virtual PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile) = 0;
   
 };
 
@@ -157,7 +157,7 @@ public:
   virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
 };
 
-class OperationsCMYK : public CommonOperations
+class OperationsCMYK : public PipetteCommonOperations
 {
 public:
   static Ptr create();

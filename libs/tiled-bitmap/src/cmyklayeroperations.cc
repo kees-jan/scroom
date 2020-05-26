@@ -145,38 +145,31 @@ void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int t
   }
 }
 
+/* Returns the sum of pixel values in the rectangle
+  Assumes that the rectangle is fully contained inside the tile
+  Also assumes that the rectangle is scaled on a scale of 4096 x 4096.
+*/
 PipetteLayerOperations::PipetteColor OperationsCMYK::sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile)
-{
-  //TODO
-  const uint8_t* data = tile->data.get();
+{ 
+  const uint8_t* data = tile -> data.get();
 
   size_t C = 0;
   size_t M = 0;
   size_t Y = 0;
   size_t K = 0;
-
+  
   //naive implementation of summing the components up
-  //TODO improve on this method
-  for (int i = 0; i < tile->height * tile->width * 4; i++)
-  {
-    if (i % 4 == 0)
-    {
-      C += data[i];
-    }
-    else if (i % 4 == 1)
-    {
-      M += data[i];
-    }
-    else if (i % 4 == 2)
-    {
-      Y += data[i];
-    }
-    else
-    {
-      K += data[i];
+  for(int y = area.getTopLeft().y; y < area.getBottomRight().y; y++){
+    for(int x = area.getTopLeft().x; x < area.getBottomRight().x; x++){
+      int pos = 4 * x * y;
+      C += data[pos];
+      M += data[pos + 1];
+      Y += data[pos + 2];
+      K += data[pos + 3];
     }
   }
 
-  std::vector<std::pair<std::string, size_t>> values = { {"C", C}, {"M", M}, {"Y", Y}, {"K", K} };
+  PipetteLayerOperations::PipetteColor values = { {"C", C}, {"M", M}, {"Y", Y}, {"K", K} };
+  printf("%lu, %lu, %lu, %lu\n", C, M, Y, K);
   return values;
 }
