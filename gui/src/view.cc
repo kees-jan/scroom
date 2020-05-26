@@ -149,9 +149,9 @@ View::View(GladeXML* scroomXml_)
 //  MouseSelection button1 = {nullptr, false};
 //  MouseSelection button2 = {nullptr, false};
 //  MouseSelection button3 = {nullptr, false};
-  selections[1] = new MouseSelection();
-  selections[2] = new MouseSelection();
-  selections[3] = new MouseSelection();
+ // selections[1] = new MouseSelection();
+ /// selections[2] = new MouseSelection();
+ /// selections[3] = new MouseSelection();
 
   on_newPresentationInterfaces_update(pluginManager->getNewPresentationInterfaces());
   updateNewWindowMenu();
@@ -673,22 +673,18 @@ void View::on_buttonPress(GdkEventButton* event)
 
   // Start selection for the event button
   printf("on press\n");
-  MouseSelection* sel = selections[event->button];
+  Selection* sel = selections[event->button];
+  printf("on press sel\n");
+  printf("not dead yet\n");
   if(sel)
   {
-    printf("on press sel\n");
-    sel->pressed = true;
-    printf("not dead yet\n");
-    if(sel->selection)
-    {
-      delete sel->selection;
-    }
-    printf("probably dead\n");
-    //cachedPoint = windowPointToPresentationPoint(eventToPoint(event));
-    printf("after dead\n");
-    sel->selection = new Selection(windowPointToPresentationPoint(eventToPoint(event)));
-    printf("end\n");
+    delete sel;
   }
+  printf("probably dead\n");
+  //cachedPoint = windowPointToPresentationPoint(eventToPoint(event));
+  printf("after dead\n");
+  selections[event->button] = new Selection(windowPointToPresentationPoint(eventToPoint(event)));
+  printf("end\n");
 }
 
 void View::on_buttonRelease(GdkEventButton* event)
@@ -719,18 +715,14 @@ void View::on_buttonRelease(GdkEventButton* event)
 
   // End selection for the event button
   printf("on release\n");
-  MouseSelection* sel = selections[event->button];
+  Selection* sel = selections[event->button];
+  printf("on release sel\n");
   if(sel)
   {
-    printf("on release sel\n");
-    sel->pressed = false;
-    if(sel->selection)
-    {
-      sel->selection->end = windowPointToPresentationPoint(eventToPoint(event));
-      updateListeners(sel->selection, event->button);
-      //cachedPoint.x=0;
-      //cachedPoint.y=0;
-    }
+    sel->end = windowPointToPresentationPoint(eventToPoint(event));
+    updateListeners(sel, event->button);
+    //cachedPoint.x=0;
+    //cachedPoint.y=0;
   }
 }
 
@@ -794,18 +786,15 @@ void View::on_motion_notify(GdkEventMotion* event)
     {
       printf("on move mask\n");
       // Update selection listeners for the event button
-      MouseSelection* sel = selections[button + 1];
-      if(sel)
+      Selection* sel = selections[button + 1];
+      printf("on sel\n");
+      //cachedPoint = windowPointToPresentationPoint(eventToPoint(event));
+      if(sel)// && !sel->selection->endsAt(windowPointToPresentationPoint(eventToPoint(event))))
       {
-        printf("on sel\n");
-        //cachedPoint = windowPointToPresentationPoint(eventToPoint(event));
-        if(sel->selection)// && !sel->selection->endsAt(windowPointToPresentationPoint(eventToPoint(event))))
-        {
-          printf("sel do\n");
-          sel->selection->end = windowPointToPresentationPoint(eventToPoint(event));
-          updateListeners(sel->selection, button + 1);
-          invalidate();
-        }
+        printf("sel do\n");
+        sel->end = windowPointToPresentationPoint(eventToPoint(event));
+        updateListeners(sel, button + 1);
+        invalidate();
       }
     }
   }

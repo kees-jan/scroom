@@ -70,7 +70,7 @@ private:
   int x;
   int y;
   Selection* measurement;
-  std::map<guint, MouseSelection*> selections;
+  std::map<guint, Selection*> selections;
   std::map<MouseButton, std::vector<SelectionListener::Ptr>> selectionListeners;
   std::vector<PostRenderer::Ptr> postRenderers;
 
