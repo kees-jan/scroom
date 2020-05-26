@@ -799,15 +799,17 @@ void View::on_motion_notify(GdkEventMotion* event)
       {
         printf("on sel\n");
         //cachedPoint = windowPointToPresentationPoint(eventToPoint(event));
-        if(sel->selection && !sel->selection->endsAt(windowPointToPresentationPoint(eventToPoint(event))))
+        if(sel->selection)// && !sel->selection->endsAt(windowPointToPresentationPoint(eventToPoint(event))))
         {
-          sel->selection->end = cachedPoint;
+          printf("sel do\n");
+          sel->selection->end = windowPointToPresentationPoint(eventToPoint(event));
           updateListeners(sel->selection, button + 1);
           invalidate();
         }
       }
     }
   }
+  invalidate();
 }
 
 void View::updateListeners(Selection* selection, guint button)
