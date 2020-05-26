@@ -186,7 +186,6 @@ bool TiffPresentation::load(const std::string& fileName_)
     }
     
     std::cout << "This bitmap has size " << width << "*" << height << ", aspect ratio " << 1 / resolutionX << "*" << 1 / resolutionY << std::endl;
-    LayerSpec ls;
     if (spp == 4 && bps == 8)
     {
         ls.push_back(OperationsCMYK::create());
@@ -224,6 +223,8 @@ bool TiffPresentation::load(const std::string& fileName_)
 
     tbi = createTiledBitmap(width, height, ls);
     tbi->setSource(shared_from_this<SourcePresentation>());
+    this->tbi = tbi;
+    this->ls = ls;
     return true;
   } catch (const std::exception& ex)
   {
@@ -318,6 +319,27 @@ std::string TiffPresentation::getTitle()
   return fileName;
 }
 
+/* Returns the averages of the selected pixels
+  Assumes that the rectangle is completely contained in the presentation
+*/
+PipetteLayerOperations::PipetteColor PipetteTiffPresentation::getAverages(Scroom::Utils::Rectangle<int> area)
+{
+    Layer::Ptr bottomLayer = TiffPresentation::tbi->getBottomLayer();
+    PipetteLayerOperations::PipetteColor test;
+    int horTileCount = bottomLayer->getHorTileCount();
+    int verTileCount = bottomLayer->getVerTileCount();
+    PipetteLayerOperations::PipetteColor sumsComponents;
+  
+    for(int i = 0; i < horTileCount; i++ ){
+      for(int j = 0; j < verTileCount; j++ ){
+        CompressedTile::Ptr tile = bottomLayer->getTile(i, j);
+        ConstTile::Ptr constTile = tile->getConstTileSync();
+        auto pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(ls[0]);
+        sumsComponents = pipetteLayerOperation->sumPixelValues(area, constTile);
+      }
+    }
+    return sumsComponents;
+}
 ////////////////////////////////////////////////////////////////////////
 // SourcePresentation
 ////////////////////////////////////////////////////////////////////////

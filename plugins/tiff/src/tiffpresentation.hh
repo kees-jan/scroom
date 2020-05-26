@@ -26,6 +26,8 @@ class TiffPresentation : public SourcePresentation,
 {
 public:
   typedef boost::shared_ptr<TiffPresentation> Ptr;
+  TiledBitmapInterface::Ptr tbi;
+  LayerSpec ls;
 
 private:
   typedef std::set<ViewInterface::WeakPtr> Views;
@@ -156,3 +158,12 @@ public:
   virtual bool getTransparentBackground();
 };
 
+//May be moved...
+class PipetteTiffPresentation: public TiffPresentation, public PipetteViewInterface
+{
+public:
+  virtual ~PipetteTiffPresentation()
+  {}
+  PipetteLayerOperations::PipetteColor getAverages(Scroom::Utils::Rectangle<int> area) override;
+
+};
