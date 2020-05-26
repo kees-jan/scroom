@@ -76,29 +76,29 @@ void MeasureHandler::displayMeasurement()
   s.precision(1);
   fixed(s);
 
-  s << "l: " << this->selection->length()
-    << ", dx: " << this->selection->width()
-    << ", dy: " << this->selection->height()
-    << ", from: ("<< this->selection->start.x << "," << this->selection->start.y << ")"
-    << ", to: ("<< this->selection->end.x << "," << this->selection->end.y << ")";
+  s << "l: " << selection->length()
+    << ", dx: " << selection->width()
+    << ", dy: " << selection->height()
+    << ", from: ("<< selection->start.x << "," << selection->start.y << ")"
+    << ", to: ("<< selection->end.x << "," << selection->end.y << ")";
 
   view->setStatusMessage(s.str());
 }
 
-void MeasureHandler::onSelection(Selection* selection)
+void MeasureHandler::onSelection(Selection* s)
 {
-  this->selection = selection;
+  selection = s;
   displayMeasurement();
-  printf("Cookies received %d %d %d %d\n", selection->start.x, selection->end.x, selection->start.y, selection->end.y);
+  printf("Cookies receivedf %d %d %d %d\n", selection->start.x, selection->end.x, selection->start.y, selection->end.y);
 }
 
 void MeasureHandler::render(cairo_t* cr)
 {
   printf("Render called\n");
-  if(this->selection){
+  if(selection){
 	printf("Selection set\n");
-	GdkPoint start = this->view->presentationPointToWindowPoint(this->selection->start);
-	GdkPoint end = this->view->presentationPointToWindowPoint(this->selection->end);
+	GdkPoint start = view->presentationPointToWindowPoint(selection->start);
+	GdkPoint end = view->presentationPointToWindowPoint(selection->end);
 	cairo_set_line_width(cr, 1);
 	cairo_set_source_rgb(cr, 0.75, 0, 0); // Dark Red
 	cairo_stroke(cr);

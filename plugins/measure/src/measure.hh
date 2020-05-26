@@ -32,7 +32,7 @@ public:
   virtual ~MeasureHandler();
 
   virtual void render(cairo_t* cr);
-  virtual void onSelection(Selection* measurement);
+  virtual void onSelection(Selection* s);
 
 private:
   virtual void displayMeasurement();
