@@ -5,25 +5,8 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include <scroom/layeroperations.hh>
-
-#include <stdio.h>
-#include <stdint.h>
-#include <string.h>
-
-#include <glib.h>
-
-#include <sstream>
-
-#include <boost/shared_ptr.hpp>
-#include <boost/utility.hpp>
-
 #include <scroom/bitmap-helpers.hh>
-#include <scroom/cairo-helpers.hh>
-#include <scroom/unused.hh>
-
-#include <boost/math/special_functions/round.hpp>
-#include <iostream>
+#include <scroom/layeroperations.hh>
 
 ////////////////////////////////////////////////////////////////////////
 
