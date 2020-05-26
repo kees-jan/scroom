@@ -146,6 +146,12 @@ View::View(GladeXML* scroomXml_)
   //selections[1] = {nullptr, false};
   //selections[2] = {nullptr, false};
   //selections[3] = {nullptr, false};
+//  MouseSelection button1 = {nullptr, false};
+//  MouseSelection button2 = {nullptr, false};
+//  MouseSelection button3 = {nullptr, false};
+  selections[1] = new MouseSelection();
+  selections[2] = new MouseSelection();
+  selections[3] = new MouseSelection();
 
   on_newPresentationInterfaces_update(pluginManager->getNewPresentationInterfaces());
   updateNewWindowMenu();
@@ -666,16 +672,22 @@ void View::on_buttonPress(GdkEventButton* event)
   // TODO: figure out if reusing cachedPoint is still safe
 
   // Start selection for the event button
+  printf("on press\n");
   MouseSelection* sel = selections[event->button];
   if(sel)
   {
+    printf("on press sel\n");
     sel->pressed = true;
+    printf("not dead yet\n");
     if(sel->selection)
     {
       delete sel->selection;
     }
-    cachedPoint = windowPointToPresentationPoint(eventToPoint(event));
-    sel->selection = new Selection(cachedPoint);
+    printf("probably dead\n");
+    //cachedPoint = windowPointToPresentationPoint(eventToPoint(event));
+    printf("after dead\n");
+    sel->selection = new Selection(windowPointToPresentationPoint(eventToPoint(event)));
+    printf("end\n");
   }
 }
 
@@ -706,16 +718,18 @@ void View::on_buttonRelease(GdkEventButton* event)
 //  }
 
   // End selection for the event button
+  printf("on release\n");
   MouseSelection* sel = selections[event->button];
   if(sel)
   {
+    printf("on release sel\n");
     sel->pressed = false;
     if(sel->selection)
     {
       sel->selection->end = windowPointToPresentationPoint(eventToPoint(event));
       updateListeners(sel->selection, event->button);
-      cachedPoint.x=0;
-      cachedPoint.y=0;
+      //cachedPoint.x=0;
+      //cachedPoint.y=0;
     }
   }
 }
@@ -773,16 +787,19 @@ void View::on_motion_notify(GdkEventMotion* event)
 //  }
 
   // There should be a cleaner way to do this...
+  //printf("on move\n");
   for (int button = 0; button < 3; button++)
   {
     if((event->state & (GDK_BUTTON1_MASK << button)))
     {
+      printf("on move mask\n");
       // Update selection listeners for the event button
       MouseSelection* sel = selections[button + 1];
       if(sel)
       {
-        cachedPoint = windowPointToPresentationPoint(eventToPoint(event));
-        if(sel->selection && !sel->selection->endsAt(cachedPoint))
+        printf("on sel\n");
+        //cachedPoint = windowPointToPresentationPoint(eventToPoint(event));
+        if(sel->selection && !sel->selection->endsAt(windowPointToPresentationPoint(eventToPoint(event))))
         {
           sel->selection->end = cachedPoint;
           updateListeners(sel->selection, button + 1);

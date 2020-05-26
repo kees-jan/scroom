@@ -27,11 +27,11 @@
 #include "sidebarmanager.hh"
 #include "progressbarmanager.hh"
 
-typedef struct
+struct MouseSelection
 {
 	Selection* selection;
 	bool pressed;
-} MouseSelection;
+};
 
 class View : public ViewInterface, virtual public Scroom::Utils::Base
 {

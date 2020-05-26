@@ -95,7 +95,7 @@ void MeasureHandler::onSelection(Selection* s)
 void MeasureHandler::render(cairo_t* cr)
 {
   printf("Render called\n");
-  if(selection){
+  if(selection && view){
 	printf("Selection set\n");
 	GdkPoint start = view->presentationPointToWindowPoint(selection->start);
 	GdkPoint end = view->presentationPointToWindowPoint(selection->end);
