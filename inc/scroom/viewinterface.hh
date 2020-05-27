@@ -189,5 +189,18 @@ public:
   {
     return {0, 0};
   }
+
+  /**
+   * Returns a shared pointer to the current presentation.
+   *
+   * The actual return type should be PresentationInterface::Ptr,
+   * but including the required header file causes a cyclic include.
+   * This workaround means that you have to explicitly cast
+   * the result of this function to PresentationInterface::Ptr.
+   */
+  virtual boost::shared_ptr<void> getCurrentPresentation()
+  {
+    return nullptr;
+  }
 };
 
