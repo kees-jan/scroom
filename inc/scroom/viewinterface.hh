@@ -187,7 +187,7 @@ public:
    */
   virtual GdkPoint presentationPointToWindowPoint(GdkPoint)
   {
-	return {0, 0};
+    return {0, 0};
   }
 };
 
