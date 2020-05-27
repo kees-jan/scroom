@@ -18,7 +18,6 @@
 #include <boost/weak_ptr.hpp>
 
 #include <scroom/progressinterface.hh>
-#include <scroom/viewinterface.hh>
 
 struct Selection
 {
@@ -145,12 +144,16 @@ public:
   /**
    * Enable panning the view.
    */
-  virtual void setPanning()=0;
+  virtual void setPanning()
+  {
+  }
 
   /**
    * Disable panning the view.
    */
-  virtual void unsetPanning()=0;
+  virtual void unsetPanning()
+  {
+  }
 
   /**
    * Register a SelectionListener to be updated whenever the
@@ -161,21 +164,30 @@ public:
    * 
    * @see SelectionListener
    */
-  virtual void registerSelectionListener(SelectionListener::Ptr listener, MouseButton button)=0;
+  virtual void registerSelectionListener(SelectionListener::Ptr, MouseButton)
+  {
+  }
 
   /**
    * Register a postrenderer.
    */
-  virtual void registerPostRenderer(PostRenderer::Ptr listener)=0;
+  virtual void registerPostRenderer(PostRenderer::Ptr)
+  {
+  }
 
   /**
    * Sets the status message in the status bar of the application.
    */
-  virtual void setStatusMessage(const std::string& message)=0;
+  virtual void setStatusMessage(const std::string&)
+  {
+  }
 
-  virtual GdkPoint presentationPointToWindowPoint(GdkPoint wp){
-	(void)wp;
+  /**
+   * Converts a point on screen to a presentation pixel.
+   */
+  virtual GdkPoint presentationPointToWindowPoint(GdkPoint)
+  {
 	return {0, 0};
-  };
+  }
 };
 

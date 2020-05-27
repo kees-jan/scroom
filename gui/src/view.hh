@@ -63,7 +63,6 @@ private:
   int zoom;
   int x;
   int y;
-  Selection* measurement;
   std::map<guint, Selection*> selections;
   std::map<MouseButton, std::vector<SelectionListener::Ptr>> selectionListeners;
   std::vector<PostRenderer::Ptr> postRenderers;
@@ -148,9 +147,7 @@ private:
   GdkPoint eventToPoint(GdkEventButton* event);
   GdkPoint eventToPoint(GdkEventMotion* event);
   void drawCross(cairo_t* cr, GdkPoint p);
-  void displayMeasurement();
   void updateNewWindowMenu();
   void updateXY(int x, int y, LocationChangeCause source);
-  void updateListeners(Selection* selection, guint button);
 };
 

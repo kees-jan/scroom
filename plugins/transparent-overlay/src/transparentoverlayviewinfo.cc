@@ -74,21 +74,6 @@ void ChildView::addToToolbar(GtkToolItem*)
 void ChildView::removeFromToolbar(GtkToolItem*)
 {}
 
-void ChildView::setPanning()
-{}
-
-void ChildView::unsetPanning()
-{}
-
-void ChildView::registerSelectionListener(SelectionListener::Ptr, MouseButton)
-{}
-
-void ChildView::registerPostRenderer(PostRenderer::Ptr)
-{}
-
-void ChildView::setStatusMessage(const std::string&)
-{}
-
 ////////////////////////////////////////////////////////////////////////
 // TransparentOverlayViewInfo
 ////////////////////////////////////////////////////////////////////////

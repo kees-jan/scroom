@@ -92,7 +92,7 @@ static void on_newWindow_activate(GtkMenuItem*, gpointer user_data)
 View::View(GladeXML* scroomXml_)
   : scroomXml(scroomXml_), presentation(), sidebarManager(),
     drawingAreaWidth(0), drawingAreaHeight(0),
-    zoom(0), x(0), y(0), measurement(NULL), modifiermove(0)
+    zoom(0), x(0), y(0), modifiermove(0)
 {
   PluginManager::Ptr pluginManager = PluginManager::getInstance();
   window = GTK_WINDOW(glade_xml_get_widget(scroomXml_, "scroom"));
@@ -508,7 +508,6 @@ void View::on_scrollwheel(GdkEventScroll* event)
 void View::on_zoombox_changed()
 {
   GtkTreeIter iter;
-
   GValue value= G_VALUE_INIT;
   gtk_combo_box_get_active_iter(zoomBox, &iter);
 
