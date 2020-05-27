@@ -37,7 +37,8 @@ public:
   virtual void onSelectionEnd(Selection* s);
 };
 
-class Pipette : public PluginInformationInterface, public ViewObserver, virtual public  Scroom::Utils::Base{
+class Pipette : public PluginInformationInterface, public ViewObserver, virtual public  Scroom::Utils::Base
+{
 public:
   typedef boost::shared_ptr<Pipette> Ptr;
 
@@ -56,4 +57,3 @@ public:
 
   virtual ~Pipette();
 };
-
