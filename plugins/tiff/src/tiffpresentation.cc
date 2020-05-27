@@ -15,6 +15,9 @@
 #include <scroom/unused.hh>
 
 #include <iostream>
+#include <libs/tiled-bitmap/src/tiled-bitmap.hh>
+#include <scroom/tiledbitmaplayer.hh>
+#include <algorithm>
 
 TiffPresentation::TiffPresentation()
   : tif(NULL), height(0), width(0), bps(0), spp(0)
@@ -319,13 +322,35 @@ std::string TiffPresentation::getTitle()
   return fileName;
 }
 
+//could change this to operator+ perhaps
+std::vector<std::pair<std::string, size_t>> operator+=(const std::vector<std::pair<std::string,size_t>>&  x, const std::vector<std::pair<std::string,size_t>>&  y){
+    PipetteLayerOperations::PipetteColor result;
+    for(auto element: x){
+        //this needs the algorithm package imported at the top... May be replaced by another for loop...
+        if(std::find(y.begin(), y.end(), element) != y.end()){
+            result.push_back(std::pair<std::string, size_t>(element.first, element.second  + element.second));
+        }
+    }
+    return result;
+}
+
+//these two may be moved to a better location...
+std::vector<std::pair<std::string, size_t>> operator/(const std::vector<std::pair<std::string,size_t>>&  x, int y)
+{
+    PipetteLayerOperations::PipetteColor result;
+    for(auto element : x)
+    {
+      result.push_back(std::pair<std::string, size_t>(element.first, element.second / y));
+    }
+    return result;
+}
 /* Returns the averages of the selected pixels
   Assumes that the rectangle is completely contained in the presentation
 */
 PipetteLayerOperations::PipetteColor PipetteTiffPresentation::getAverages(Scroom::Utils::Rectangle<int> area)
 {
     Layer::Ptr bottomLayer = TiffPresentation::tbi->getBottomLayer();
-    PipetteLayerOperations::PipetteColor test;
+    PipetteLayerOperations::PipetteColor pipetteColors;
     int horTileCount = bottomLayer->getHorTileCount();
     int verTileCount = bottomLayer->getVerTileCount();
     PipetteLayerOperations::PipetteColor sumsComponents;
@@ -335,10 +360,18 @@ PipetteLayerOperations::PipetteColor PipetteTiffPresentation::getAverages(Scroom
         CompressedTile::Ptr tile = bottomLayer->getTile(i, j);
         ConstTile::Ptr constTile = tile->getConstTileSync();
         auto pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(ls[0]);
+        if (pipetteLayerOperation != 0)
+        {
+          sumsComponents = pipetteLayerOperation->sumPixelValues(area, constTile);  
         sumsComponents = pipetteLayerOperation->sumPixelValues(area, constTile);
+          sumsComponents = pipetteLayerOperation->sumPixelValues(area, constTile);  
+          pipetteColors += sumsComponents;
+        }
+        else {
+          printf("Not supported!");}
       }
     }
-    return sumsComponents;
+    return sumsComponents / totalPixels;
 }
 ////////////////////////////////////////////////////////////////////////
 // SourcePresentation
