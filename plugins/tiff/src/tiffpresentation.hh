@@ -18,6 +18,7 @@
 #include <scroom/scroominterface.hh>
 #include <scroom/tiledbitmapinterface.hh>
 #include <scroom/transformpresentation.hh>
+#include <scroom/pipetteviewinterface.hh>
 
 typedef struct tiff TIFF;
 
@@ -36,7 +37,6 @@ private:
   TIFF* tif;
   int height;
   int width;
-  TiledBitmapInterface::Ptr tbi;
   int bps;
   int spp;
   std::map<std::string, std::string> properties;
@@ -107,7 +107,7 @@ private:
   void clearCaches();
 };
 
-class TiffPresentationWrapper : public PresentationBase, public Colormappable
+class TiffPresentationWrapper : public PresentationBase, public Colormappable, public PipetteViewInterface
 {
 public:
   typedef boost::shared_ptr<TiffPresentationWrapper> Ptr;
@@ -136,6 +136,8 @@ public:
   virtual bool isPropertyDefined(const std::string& name);
   virtual std::string getTitle();
 
+  //PipetteViewInterface
+  virtual PipetteLayerOperations::PipetteColor getAverages(Scroom::Utils::Rectangle<int> area);
   ////////////////////////////////////////////////////////////////////////
   // PresentationBase
   ////////////////////////////////////////////////////////////////////////
@@ -156,14 +158,4 @@ public:
   virtual void setTransparentBackground();
   virtual void disableTransparentBackground();
   virtual bool getTransparentBackground();
-};
-
-//May be moved...
-class PipetteTiffPresentation: public TiffPresentation, public PipetteViewInterface
-{
-public:
-  virtual ~PipetteTiffPresentation()
-  {}
-  PipetteLayerOperations::PipetteColor getAverages(Scroom::Utils::Rectangle<int> area) override;
-
 };

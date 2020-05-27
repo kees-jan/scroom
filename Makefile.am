@@ -28,6 +28,8 @@ incscroom_HEADERS = \
 	inc/scroom/plugininformationinterface.hh \
 	inc/scroom/point.hh \
 	inc/scroom/presentationinterface.hh \
+	inc/scroom/pipettelayeroperations.hh\
+	inc/scroom/pipetteviewinterface.hh\
 	inc/scroom/progressinterface.hh \
 	inc/scroom/progressinterfacehelpers.hh \
 	inc/scroom/rectangle.hh \

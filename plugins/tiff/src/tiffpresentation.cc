@@ -351,12 +351,12 @@ PipetteLayerOperations::PipetteColor operator/(const std::vector<std::pair<std::
   Assumes that the rectangle is completely contained in the presentation
   Assumes that TILESIZE is consistent //TODO
 */
-PipetteLayerOperations::PipetteColor PipetteTiffPresentation::getAverages(Scroom::Utils::Rectangle<int> area)
+PipetteLayerOperations::PipetteColor TiffPresentationWrapper::getAverages(Scroom::Utils::Rectangle<int> area)
 {
-    Layer::Ptr bottomLayer = TiffPresentation::tbi->getBottomLayer();
+    Layer::Ptr bottomLayer = presentation->tbi->getBottomLayer();
     PipetteLayerOperations::PipetteColor pipetteColors;
-    //int horTileCount = bottomLayer->getHorTileCount();
-    //int verTileCount = bottomLayer->getVerTileCount();
+    int horTileCount = bottomLayer->getHorTileCount();
+    int verTileCount = bottomLayer->getVerTileCount();
     PipetteLayerOperations::PipetteColor sumsComponents;
     int totalPixels = area.getWidth() * area.getHeight();
 
@@ -427,12 +427,10 @@ PipetteLayerOperations::PipetteColor PipetteTiffPresentation::getAverages(Scroom
         int width   = end_x_area - start_x_area;
         int height  = end_y_area - start_y_area;
 
-        auto sub_rectangle = new Scroom::Utils::Rectangle<int>(start_x_area, start_y_area, width, height);
-
-        pipetteLayerOperation->sumPixelValues(area, constTile);
+        Scroom::Utils::Rectangle<int> sub_rectangle(start_x_area, start_y_area, width, height);
+        auto pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(presentation->ls[0]);
         CompressedTile::Ptr tile = bottomLayer->getTile(y, x);
         ConstTile::Ptr constTile = tile->getConstTileSync();
-        auto pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(ls[0]);
         
         sumsComponents = pipetteLayerOperation->sumPixelValues(sub_rectangle, constTile);  
         pipetteColors += sumsComponents;
@@ -440,22 +438,6 @@ PipetteLayerOperations::PipetteColor PipetteTiffPresentation::getAverages(Scroom
         //continue to next tile
       }
     }
-  
-  /* for(int i = 0; i < horTileCount; i++ ){
-       for(int j = 0; j < verTileCount; j++ ){
-         CompressedTile::Ptr tile = bottomLayer->getTile(i, j);
-         ConstTile::Ptr constTile = tile->getConstTileSync();
-         auto pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(ls[0]);
-         if (pipetteLayerOperation != 0)
-         {
-           sumsComponents = pipetteLayerOperation->sumPixelValues(area, constTile);  
-           pipetteColors += sumsComponents;
-         }
-         else {
-           printf("Not supported!");}
-       }
-     }
-  */
     return pipetteColors / totalPixels;
 }
 ////////////////////////////////////////////////////////////////////////

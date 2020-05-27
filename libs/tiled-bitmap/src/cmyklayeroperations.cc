@@ -151,7 +151,7 @@ void OperationsCMYK::reduce(Tile::Ptr target, const ConstTile::Ptr source, int t
 */
 PipetteLayerOperations::PipetteColor OperationsCMYK::sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile)
 { 
-  const uint8_t* data = tile -> data.get();
+  const uint8_t* data = tile->data.get();
 
   size_t C = 0;
   size_t M = 0;
