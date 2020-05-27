@@ -56,7 +56,9 @@ public:
 public:
   virtual ~SelectionListener() {}
 
-  virtual void onSelection(Selection* selection)=0;
+  virtual void onSelectionStart(GdkPoint start)=0;
+  virtual void onSelectionUpdate(Selection* selection)=0;
+  virtual void onSelectionEnd(Selection* selection)=0;
 };
 
 // There is no documentation on values 4 and 5, so

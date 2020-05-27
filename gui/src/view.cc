@@ -630,7 +630,12 @@ void View::on_buttonPress(GdkEventButton* event)
   {
     delete sel;
   }
-  selections[event->button] = new Selection(windowPointToPresentationPoint(eventToPoint(event)));
+  GdkPoint point = windowPointToPresentationPoint(eventToPoint(event));
+  selections[event->button] = new Selection(point);
+  for (auto listener : selectionListeners[static_cast<MouseButton>(event->button)])
+  {
+    listener->onSelectionStart(point);
+  }
 }
 
 void View::on_buttonRelease(GdkEventButton* event)
@@ -648,7 +653,11 @@ void View::on_buttonRelease(GdkEventButton* event)
   if(sel)
   {
     sel->end = windowPointToPresentationPoint(eventToPoint(event));
-    updateListeners(sel, event->button);
+    for (auto listener : selectionListeners[static_cast<MouseButton>(event->button)])
+    {
+      listener->onSelectionEnd(sel);
+    }
+    invalidate();
   }
 }
 
@@ -696,17 +705,13 @@ void View::on_motion_notify(GdkEventMotion* event)
       if(sel)
       {
         sel->end = windowPointToPresentationPoint(eventToPoint(event));
-        updateListeners(sel, button + 1);
+        for (auto listener : selectionListeners[static_cast<MouseButton>(button + 1)])
+        {
+          listener->onSelectionUpdate(sel);
+        }
         invalidate();
       }
     }
-  }
-}
-
-void View::updateListeners(Selection* selection, guint button)
-{
-  for (auto listener : selectionListeners[static_cast<MouseButton>(button)]) {
-	listener->onSelection(selection);
   }
 }
 

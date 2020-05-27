@@ -84,7 +84,17 @@ void MeasureHandler::displayMeasurement()
   view->setStatusMessage(s.str());
 }
 
-void MeasureHandler::onSelection(Selection* s)
+void MeasureHandler::onSelectionStart(GdkPoint)
+{
+}
+
+void MeasureHandler::onSelectionUpdate(Selection* s)
+{
+  selection = s;
+  displayMeasurement();
+}
+
+void MeasureHandler::onSelectionEnd(Selection* s)
 {
   selection = s;
   displayMeasurement();
