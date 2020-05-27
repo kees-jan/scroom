@@ -8,6 +8,8 @@
 
 Pipette::Pipette()
 {
+  selection = nullptr;
+  enabled = false;
 }
 Pipette::~Pipette()
 {
@@ -35,82 +37,62 @@ void Pipette::registerCapabilities(ScroomPluginInterface::Ptr host)
 
 static void on_toggled(GtkToggleButton* button, gpointer data)
 {
-  ViewInterface* view = static_cast<ViewInterface*>(data);
-  if (gtk_toggle_button_get_active(button))
-  {
-    //TODO: start handling area selection events
-    view->setPanning();
-  }
-  else
-  {
-    view->unsetPanning();
-  }
+  bool* view = reinterpret_cast<bool*>(data);
+  *view = !gtk_toggle_button_get_active(button);
 }
 
-Scroom::Bookkeeping::Token Pipette::viewAdded(ViewInterface::Ptr view)
+Scroom::Bookkeeping::Token Pipette::viewAdded(ViewInterface::Ptr v)
 {
   gdk_threads_enter();
 
-  PipetteHandler::Ptr handler = PipetteHandler::create();
-  handler->view = view;
-  view->registerSelectionListener(handler, MouseButton::PRIMARY);
-  view->registerPostRenderer(handler);
+  view = v;
+  view->registerSelectionListener(shared_from_this<Pipette>(), MouseButton::PRIMARY);
+  view->registerPostRenderer(shared_from_this<Pipette>());
 
   GtkToolItem* button = gtk_tool_item_new();
   GtkWidget* toggleButton = gtk_toggle_button_new_with_mnemonic("p");
   gtk_widget_set_visible(toggleButton, true);
   gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(toggleButton), true);
 
-  //Copy constructor to prevent view from being freed before it is used in the button handler
-  ViewInterface::Ptr callback_ptr(view);
   gtk_container_add(GTK_CONTAINER(button), toggleButton);
-  g_signal_connect(static_cast<gpointer>(toggleButton), "toggled", G_CALLBACK(on_toggled), callback_ptr.get());
+  g_signal_connect(static_cast<gpointer>(toggleButton), "toggled", G_CALLBACK(on_toggled), &enabled);
 
   view->addToToolbar(button);
 
   gdk_threads_leave();
 
   return Scroom::Bookkeeping::Token();
-  //return dunno what a token is or is supposed to do
 }
 
-////////////////////////////////////////////////////////////////////////
-// PipetteHandler
-////////////////////////////////////////////////////////////////////////
-
-PipetteHandler::PipetteHandler()
+void Pipette::onSelectionStart(GdkPoint)
 {
-  selection = nullptr;
-}
-PipetteHandler::~PipetteHandler()
-{
+  if(enabled)
+  {
+    view->unsetPanning();
+  }
 }
 
-PipetteHandler::Ptr PipetteHandler::create()
+void Pipette::onSelectionUpdate(Selection* s)
 {
-  return Ptr(new PipetteHandler());
+  if(enabled)
+  {
+    selection = s;
+  }
 }
 
-void PipetteHandler::onSelectionStart(GdkPoint)
+void Pipette::onSelectionEnd(Selection* s)
 {
-  view->unsetPanning();
+  if(enabled)
+  {
+    selection = s;
+    //TODO show data?
+    view->setPanning();
+  }
 }
 
-void PipetteHandler::onSelectionUpdate(Selection* s)
+void Pipette::render(cairo_t* cr)
 {
-  selection = s;
-}
-
-void PipetteHandler::onSelectionEnd(Selection* s)
-{
-  selection = s;
-  //TODO show data?
-  view->setPanning();
-}
-
-void PipetteHandler::render(cairo_t* cr)
-{
-  if(selection)
+  if(selection && enabled)
   {
 	GdkPoint start = view->presentationPointToWindowPoint(selection->start);
 	GdkPoint end = view->presentationPointToWindowPoint(selection->end);
