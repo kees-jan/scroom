@@ -142,18 +142,54 @@ public:
   virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
 };
 
-class OperationsCMYK : public CommonOperations
+class OperationsCMYK32 : public CommonOperations
 {
 public:
-  static Ptr create(int bps);
-  OperationsCMYK(uint16_t bps);
-  virtual ~OperationsCMYK()
+  static Ptr create();
+  OperationsCMYK32();
+  virtual ~OperationsCMYK32()
   {}
 
   virtual int getBpp();
   virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
-private:
-  uint16_t bps;
 };
 
+class OperationsCMYK16 : public CommonOperations
+{
+public:
+  static Ptr create();
+  OperationsCMYK16();
+  virtual ~OperationsCMYK16()
+  {}
+
+  virtual int getBpp();
+  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
+  virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+};
+
+class OperationsCMYK8 : public CommonOperations
+{
+public:
+  static Ptr create();
+  OperationsCMYK8();
+  virtual ~OperationsCMYK8()
+  {}
+
+  virtual int getBpp();
+  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
+  virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+};
+
+class OperationsCMYK4 : public CommonOperations
+{
+public:
+  static Ptr create();
+  OperationsCMYK4();
+  virtual ~OperationsCMYK4()
+  {}
+
+  virtual int getBpp();
+  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
+  virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+};
