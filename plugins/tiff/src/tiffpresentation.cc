@@ -424,12 +424,19 @@ PipetteLayerOperations::PipetteColor PipetteTiffPresentation::getAverages(Scroom
           end_y_area = TILESIZE;
         }
 
-        //TODO create the rectangle
+        int width   = end_x_area - start_x_area;
+        int height  = end_y_area - start_y_area;
 
-        //TODO pass to sumPixelValues 
+        auto sub_rectangle = new Scroom::Utils::Rectangle<int>(start_x_area, start_y_area, width, height);
 
-        //TODO add values to sumsComponents
-
+        pipetteLayerOperation->sumPixelValues(area, constTile);
+        CompressedTile::Ptr tile = bottomLayer->getTile(y, x);
+        ConstTile::Ptr constTile = tile->getConstTileSync();
+        auto pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(ls[0]);
+        
+        sumsComponents = pipetteLayerOperation->sumPixelValues(sub_rectangle, constTile);  
+        pipetteColors += sumsComponents;
+        
         //continue to next tile
       }
     }
@@ -449,7 +456,7 @@ PipetteLayerOperations::PipetteColor PipetteTiffPresentation::getAverages(Scroom
        }
      }
   */
-    return sumsComponents / totalPixels;
+    return pipetteColors / totalPixels;
 }
 ////////////////////////////////////////////////////////////////////////
 // SourcePresentation
