@@ -173,7 +173,7 @@ void OperationsCMYK16::reduce(Tile::Ptr target, const ConstTile::Ptr source, int
   int sourceStride = 4 * source->width / 2; // stride in bytes
   const byte* sourceBase = source->data.get();
 
-  int targetStride = 4 * target->width / 2; // stride in bytes
+  int targetStride = 8 * target->width / 2; // stride in bytes
   byte* targetBase = target->data.get() +
       (target->height * top_left_y + top_left_x) * targetStride / 8;
 
@@ -203,12 +203,12 @@ void OperationsCMYK16::reduce(Tile::Ptr target, const ConstTile::Ptr source, int
         }
       }
 
-      targetPtr[0] = static_cast<byte>( sum_c == 15 * 64 ? 0xF0 : (sum_c / 60) << 4)
-                   | static_cast<byte>((sum_m == 15 * 64 ? 0x0F : sum_m / 60));
-      targetPtr[1] = static_cast<byte>( sum_y == 15 * 64 ? 0xF0 : (sum_y / 60) << 4)
-                   | static_cast<byte>((sum_k == 15 * 64 ? 0x0F : sum_k / 60));
+      targetPtr[0] = static_cast<byte>(sum_c * 255 / (15 * 64));
+      targetPtr[1] = static_cast<byte>(sum_m * 255 / (15 * 64));
+      targetPtr[2] = static_cast<byte>(sum_y * 255 / (15 * 64));
+      targetPtr[3] = static_cast<byte>(sum_k * 255 / (15 * 64));
 
-      targetPtr += 2;
+      targetPtr += 4;
     }
 
     targetBase += targetStride;
@@ -273,7 +273,7 @@ void OperationsCMYK8::reduce(Tile::Ptr target, const ConstTile::Ptr source, int 
   int sourceStride = source->width; // stride in bytes
   const byte* sourceBase = source->data.get();
 
-  int targetStride = target->width; // stride in bytes
+  int targetStride = 8 * target->width / 2; // stride in bytes
   byte* targetBase = target->data.get() +
       (target->height * top_left_y + top_left_x) * targetStride / 8;
   
@@ -301,10 +301,10 @@ void OperationsCMYK8::reduce(Tile::Ptr target, const ConstTile::Ptr source, int 
         }
       }
 
-      targetBase[x] = static_cast<byte>(((sum_c == 192 ? 191 : sum_c) / 48) << 6)
-                    | static_cast<byte>(((sum_m == 192 ? 191 : sum_m) / 48) << 4)
-                    | static_cast<byte>(((sum_y == 192 ? 191 : sum_y) / 48) << 2)
-                    | static_cast<byte>(((sum_k == 192 ? 191 : sum_k) / 48)     );
+      targetBase[4*x + 0] = static_cast<byte>(sum_c * 255 / 192);
+      targetBase[4*x + 1] = static_cast<byte>(sum_m * 255 / 192);
+      targetBase[4*x + 2] = static_cast<byte>(sum_y * 255 / 192);
+      targetBase[4*x + 3] = static_cast<byte>(sum_k * 255 / 192);
     }
 
     targetBase += targetStride;
@@ -378,7 +378,7 @@ void OperationsCMYK4::reduce(Tile::Ptr target, const ConstTile::Ptr source, int 
   int sourceStride = source->width / 2; // stride in bytes
   const byte* sourceBase = source->data.get();
 
-  int targetStride = target->width / 2; // stride in bytes
+  int targetStride = 8 * target->width / 2; // stride in bytes
   byte* targetBase = target->data.get() +
       (target->height * top_left_y + top_left_x) * targetStride / 8;
 
@@ -397,33 +397,19 @@ void OperationsCMYK4::reduce(Tile::Ptr target, const ConstTile::Ptr source, int 
       int sum_k = 0;
       for (const byte* row = base; row < end; row += sourceStride)
       {
-        for (size_t current = 0; current < 8; current++)
+        for (size_t current = 0; current < 4; current++)
         {
-          if ((current & 1) == 0) {
-            sum_c +=  row[current/2]         >> 7;
-            sum_m += (row[current/2] & 0x40) >> 6;
-            sum_y += (row[current/2] & 0x20) >> 5;
-            sum_k += (row[current/2] & 0x10) >> 4;
-          } else {
-            sum_c += (row[current/2] & 0x08) >> 3;
-            sum_m += (row[current/2] & 0x04) >> 2;
-            sum_y += (row[current/2] & 0x02) >> 1;
-            sum_k +=  row[current/2] & 0x01;
-          }
+          sum_c += ((row[current] >> 7) & 1) + ((row[current] >> 3) & 1);
+          sum_m += ((row[current] >> 6) & 1) + ((row[current] >> 2) & 1);
+          sum_y += ((row[current] >> 5) & 1) + ((row[current] >> 1) & 1);
+          sum_k += ((row[current] >> 4) & 1) + ((row[current] >> 0) & 1);
         }
       }
 
-      uint8_t colour = static_cast<uint8_t>(
-                        (sum_c >= 32 ? 8 : 0)
-                      | (sum_m >= 32 ? 4 : 0)
-                      | (sum_y >= 32 ? 2 : 0)
-                      | (sum_k >= 32 ? 1 : 0));
-
-      if ((x & 1) == 0) {
-        targetBase[x/2] = static_cast<uint8_t>(colour << 4);
-      } else {
-        targetBase[x/2] |= colour;
-      }
+      targetBase[4*x  ] = static_cast<uint8_t>(sum_c * 255 / 64);
+      targetBase[4*x+1] = static_cast<uint8_t>(sum_m * 255 / 64);
+      targetBase[4*x+2] = static_cast<uint8_t>(sum_y * 255 / 64);
+      targetBase[4*x+3] = static_cast<uint8_t>(sum_k * 255 / 64);
     }
 
     targetBase += targetStride;
