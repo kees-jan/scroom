@@ -247,6 +247,11 @@ void PluginManager::registerPresentationObserver(const std::string& identifier, 
   presentationObservers[observer] = identifier;
 }
 
+PresentationInterface::Ptr PluginManager::loadPresentation(const std::string& filename)
+{
+  return on_load_presentation(filename);
+}
+
 const std::map<NewPresentationInterface::Ptr, std::string>& PluginManager::getNewPresentationInterfaces()
 {
   return newPresentationInterfaces;

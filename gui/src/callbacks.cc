@@ -603,3 +603,7 @@ void on_new_viewobserver(ViewObserver::Ptr v)
   }
 }
 
+PresentationInterface::Ptr on_load_presentation(const std::string& filename)
+{
+  return loadPresentation(filename);
+}

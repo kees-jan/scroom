@@ -79,6 +79,8 @@ public:
   virtual void registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer);
   virtual void registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer);
 
+  virtual PresentationInterface::Ptr loadPresentation(const std::string& filename);
+
   const std::map<NewPresentationInterface::Ptr, std::string>& getNewPresentationInterfaces();
   const std::map<std::string, NewAggregateInterface::Ptr>& getNewAggregateInterfaces();
   const std::map<OpenPresentationInterface::Ptr, std::string>& getOpenPresentationInterfaces();

@@ -78,3 +78,5 @@ void on_new_presentationobserver(PresentationObserver::Ptr po);
 void on_new_viewobserver(ViewObserver::Ptr v);
 
 void on_presentation_possibly_destroyed();
+
+PresentationInterface::Ptr on_load_presentation(const std::string& filename);

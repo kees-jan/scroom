@@ -118,5 +118,7 @@ public:
   virtual void registerOpenInterface(const std::string& identifier, OpenInterface::Ptr openInterface)=0;
   virtual void registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer)=0;
   virtual void registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer)=0;
+
+  virtual PresentationInterface::Ptr loadPresentation(const std::string& filename)=0;
 };
 
