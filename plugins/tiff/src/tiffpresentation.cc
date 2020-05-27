@@ -323,26 +323,29 @@ std::string TiffPresentation::getTitle()
 }
 
 //could change this to operator+ perhaps
-std::vector<std::pair<std::string, size_t>> operator+=(const std::vector<std::pair<std::string,size_t>>&  x, const std::vector<std::pair<std::string,size_t>>&  y){
-    PipetteLayerOperations::PipetteColor result;
-    for(auto element: x){
-        //this needs the algorithm package imported at the top... May be replaced by another for loop...
-        if(std::find(y.begin(), y.end(), element) != y.end()){
-            result.push_back(std::pair<std::string, size_t>(element.first, element.second  + element.second));
-        }
+PipetteLayerOperations::PipetteColor operator+=(const std::vector<std::pair<std::string,size_t>>& x, const std::vector<std::pair<std::string,size_t>>& y)
+{
+  PipetteLayerOperations::PipetteColor result;
+  for(auto element : x)
+  {
+    //this needs the algorithm package imported at the top... May be replaced by another for loop...
+    if(std::find(y.begin(), y.end(), element) != y.end())
+    {
+      result.push_back(std::pair<std::string, size_t>(element.first, element.second  + element.second));
     }
+  }
     return result;
 }
 
 //these two may be moved to a better location...
-std::vector<std::pair<std::string, size_t>> operator/(const std::vector<std::pair<std::string,size_t>>&  x, int y)
+PipetteLayerOperations::PipetteColor operator/(const std::vector<std::pair<std::string,size_t>>&  x, int y)
 {
-    PipetteLayerOperations::PipetteColor result;
-    for(auto element : x)
-    {
-      result.push_back(std::pair<std::string, size_t>(element.first, element.second / y));
-    }
-    return result;
+  PipetteLayerOperations::PipetteColor result;
+  for(auto element : x)
+  {
+    result.push_back(std::pair<std::string, size_t>(element.first, element.second / y));
+  }
+  return result;
 }
 /* Returns the averages of the selected pixels
   Assumes that the rectangle is completely contained in the presentation
