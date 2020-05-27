@@ -16,8 +16,6 @@
 
 #include <boost/lexical_cast.hpp>
 
-#include <scroom/viewinterface.hh>
-
 #include <glib-object.h>
 
 #include "pluginmanager.hh"
