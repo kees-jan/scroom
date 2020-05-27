@@ -26,7 +26,6 @@ std::string Pipette::getPluginVersion(){
 
 void Pipette::registerCapabilities(ScroomPluginInterface::Ptr host){
 	host->registerViewObserver("Pipette", shared_from_this<Pipette>());
-	host->registerPresentationObserver("Pipette", shared_from_this<Pipette>());
 }
 
 static void on_toggled(GtkToggleButton* button, gpointer data){

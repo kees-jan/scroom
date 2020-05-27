@@ -573,12 +573,12 @@ plugins_measure_src_libspmeasure_la_LDFLAGS = $(loadflag)
 pipette_plugin_libs = \
 	plugins/pipette/src/libsppipette.la
 
-plugins_pipette_src_libsppipette_la_CPPFLAGS = @PIPETTEPLUGIN_CFLAGS@
+plugins_pipette_src_libsppipette_la_CPPFLAGS = @PIPETTEPLUGIN_CFLAGS@ -I $(top_srcdir)/inc
 
 plugins_pipette_src_libsppipette_la_SOURCES = \
-	plugins/pipette/pipette.cc \
-	plugins/pipette/pipette.hh \
-	plugins/pipette/main.cc
+	plugins/pipette/src/pipette.cc \
+	plugins/pipette/src/pipette.hh \
+	plugins/pipette/src/main.cc
 
 plugins_pipette_src_libsppipette_la_LIBADD = @PIPETTEPLUGIN_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
 
