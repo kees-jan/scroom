@@ -37,12 +37,6 @@ int OperationsCMYK::getBpp()
   return this->bps * 4;
 }
 
-// From https://www.pagetable.com/?p=23#comment-1140
-inline uint16_t DivideBy255(uint16_t value)
-{
-  return static_cast<uint16_t>((value + 1 + (value >> 8)) >> 8);
-}
-
 /**
  * Cache the given tile
  */
@@ -67,9 +61,9 @@ Scroom::Utils::Stuff OperationsCMYK::cache(const ConstTile::Ptr tile)
       uint8_t Y_i = static_cast<uint8_t>(255 - cur[i + 2]);
       uint8_t K_i = static_cast<uint8_t>(255 - cur[i + 3]);
 
-      uint32_t R = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(C_i * K_i)));
-      uint32_t G = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(M_i * K_i)));
-      uint32_t B = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(Y_i * K_i)));
+      uint32_t R = static_cast<uint8_t>((C_i * K_i) / 255);
+      uint32_t G = static_cast<uint8_t>((M_i * K_i) / 255);
+      uint32_t B = static_cast<uint8_t>((Y_i * K_i) / 255);
 
       // Write 255 as alpha (fully opaque)
       row[i / 4] = 255u << 24 | R << 16 | G << 8 | B;
@@ -83,9 +77,9 @@ Scroom::Utils::Stuff OperationsCMYK::cache(const ConstTile::Ptr tile)
       uint8_t Y_i = static_cast<uint8_t>(255 - ((cur[i + 1]       ) >> 4) * 17);
       uint8_t K_i = static_cast<uint8_t>(255 - ((cur[i + 1] & 0x0F)     ) * 17);
 
-      uint32_t R = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(C_i * K_i)));
-      uint32_t G = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(M_i * K_i)));
-      uint32_t B = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(Y_i * K_i)));
+      uint32_t R = static_cast<uint8_t>((C_i * K_i) / 255);
+      uint32_t G = static_cast<uint8_t>((M_i * K_i) / 255);
+      uint32_t B = static_cast<uint8_t>((Y_i * K_i) / 255);
 
       // Write 255 as alpha (fully opaque)
       row[i / 2] = 255u << 24 | R << 16 | G << 8 | B;
@@ -99,9 +93,9 @@ Scroom::Utils::Stuff OperationsCMYK::cache(const ConstTile::Ptr tile)
       uint8_t Y_i = static_cast<uint8_t>(255 - ((cur[i] & 0x0C) >> 2) * 85);
       uint8_t K_i = static_cast<uint8_t>(255 - ((cur[i] & 0x03)     ) * 85);
 
-      uint32_t R = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(C_i * K_i)));
-      uint32_t G = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(M_i * K_i)));
-      uint32_t B = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(Y_i * K_i)));
+      uint32_t R = static_cast<uint8_t>((C_i * K_i) / 255);
+      uint32_t G = static_cast<uint8_t>((M_i * K_i) / 255);
+      uint32_t B = static_cast<uint8_t>((Y_i * K_i) / 255);
 
       // Write 255 as alpha (fully opaque)
       row[i] = 255u << 24 | R << 16 | G << 8 | B;
@@ -123,9 +117,9 @@ Scroom::Utils::Stuff OperationsCMYK::cache(const ConstTile::Ptr tile)
         K_i = static_cast<uint8_t>(((cur[i / 2] & 0x01)     ) - 1);
       }
 
-      uint32_t R = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(C_i * K_i)));
-      uint32_t G = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(M_i * K_i)));
-      uint32_t B = static_cast<uint8_t>(DivideBy255(static_cast<uint16_t>(Y_i * K_i)));
+      uint32_t R = static_cast<uint8_t>((C_i * K_i) / 255);
+      uint32_t G = static_cast<uint8_t>((M_i * K_i) / 255);
+      uint32_t B = static_cast<uint8_t>((Y_i * K_i) / 255);
 
       // Write 255 as alpha (fully opaque)
       row[i] = 255u << 24 | R << 16 | G << 8 | B;
