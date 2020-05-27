@@ -358,6 +358,7 @@ PipetteLayerOperations::PipetteColor PipetteTiffPresentation::getAverages(Scroom
     //int horTileCount = bottomLayer->getHorTileCount();
     //int verTileCount = bottomLayer->getVerTileCount();
     PipetteLayerOperations::PipetteColor sumsComponents;
+    int totalPixels = area.getWidth() * area.getHeight();
 
     //Get start tile (tile_pos_x_start, tile_pos_y_start)
     int tile_pos_x_start = floor(area.getLeft() / TILESIZE);
@@ -433,22 +434,21 @@ PipetteLayerOperations::PipetteColor PipetteTiffPresentation::getAverages(Scroom
       }
     }
   
-    // for(int i = 0; i < horTileCount; i++ ){
-    //   for(int j = 0; j < verTileCount; j++ ){
-    //     CompressedTile::Ptr tile = bottomLayer->getTile(i, j);
-    //     ConstTile::Ptr constTile = tile->getConstTileSync();
-    //     auto pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(ls[0]);
-    //     if (pipetteLayerOperation != 0)
-    //     {
-    //       sumsComponents = pipetteLayerOperation->sumPixelValues(area, constTile);  
-    //     sumsComponents = pipetteLayerOperation->sumPixelValues(area, constTile);
-    //       sumsComponents = pipetteLayerOperation->sumPixelValues(area, constTile);  
-    //       pipetteColors += sumsComponents;
-    //     }
-    //     else {
-    //       printf("Not supported!");}
-    //   }
-    // }
+  /* for(int i = 0; i < horTileCount; i++ ){
+       for(int j = 0; j < verTileCount; j++ ){
+         CompressedTile::Ptr tile = bottomLayer->getTile(i, j);
+         ConstTile::Ptr constTile = tile->getConstTileSync();
+         auto pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(ls[0]);
+         if (pipetteLayerOperation != 0)
+         {
+           sumsComponents = pipetteLayerOperation->sumPixelValues(area, constTile);  
+           pipetteColors += sumsComponents;
+         }
+         else {
+           printf("Not supported!");}
+       }
+     }
+  */
     return sumsComponents / totalPixels;
 }
 ////////////////////////////////////////////////////////////////////////
