@@ -50,7 +50,7 @@ Scroom::Bookkeeping::Token Pipette::viewAdded(ViewInterface::Ptr v)
   view->registerPostRenderer(shared_from_this<Pipette>());
 
   GtkToolItem* button = gtk_tool_item_new();
-  GtkWidget* toggleButton = gtk_toggle_button_new_with_mnemonic("p");
+  GtkWidget* toggleButton = gtk_toggle_button_new_with_mnemonic("pipette");
   gtk_widget_set_visible(toggleButton, true);
   gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(toggleButton), true);
 
@@ -97,7 +97,7 @@ void Pipette::render(cairo_t* cr)
 	GdkPoint start = view->presentationPointToWindowPoint(selection->start);
 	GdkPoint end = view->presentationPointToWindowPoint(selection->end);
 	cairo_set_line_width(cr, 1);
-	cairo_set_source_rgb(cr, 1, 0, 0); // Red
+	cairo_set_source_rgb(cr, 0, 0, 1); // Blue
 	cairo_move_to(cr, end.x, start.y);
 	cairo_line_to(cr, start.x, start.y);
 	cairo_line_to(cr, start.x, end.y);
