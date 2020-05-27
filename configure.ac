@@ -122,6 +122,7 @@ PKG_CHECK_MODULES([COLORMAPPLUGIN], [gtk+-2.0 >= 2.0.0, cairo])
 PKG_CHECK_MODULES([TIFFPLUGIN], [gtk+-2.0 >= 2.0.0, cairo])
 PKG_CHECK_MODULES([GUI],        [gtk+-2.0 >= 2.0.0, libglade-2.0, gthread-2.0, gmodule-2.0, cairo])
 PKG_CHECK_MODULES([MEASUREPLUGIN], [gtk+-2.0 >= 2.0.0, cairo])
+PKG_CHECK_MODULES([PIPETTEPLUGIN], [gtk+-2.0 >= 2.0.0, cairo])
 
 # Checks for libraries.
 
