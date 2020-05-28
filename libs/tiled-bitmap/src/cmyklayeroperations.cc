@@ -513,16 +513,17 @@ PipetteLayerOperations::PipetteColor OperationsCMYK4::sumPixelValues(Scroom::Uti
       int pos = (x + y * tile->width) / 2;
       if ((x + y * tile->width) % 2 == 0)
       {
-        C += (data[pos] >> 3) & 1;
-        M += (data[pos] >> 2) & 1;
-        Y += (data[pos] >> 1) & 1;
-        K += data[pos] & 1;
-      }
-      else {
         C += data[pos] >> 7;
         M += (data[pos] >> 6) & 1;
         Y += (data[pos] >> 5) & 1;
         K += (data[pos] >> 4) & 1;
+      }
+      else
+      {
+        C += (data[pos] >> 3) & 1;
+        M += (data[pos] >> 2) & 1;
+        Y += (data[pos] >> 1) & 1;
+        K += data[pos] & 1;
       }
     }
   }
