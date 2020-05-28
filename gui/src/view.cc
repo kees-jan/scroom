@@ -648,6 +648,9 @@ void View::on_buttonPress(GdkEventButton* event)
   Scroom::Utils::Rectangle<int> rect(1,50,1000,1000);
   auto pipetteColors = boost::dynamic_pointer_cast<PipetteViewInterface>(presentation);
   auto test = pipetteColors->getAverages(rect);
+  for(auto element : test){
+    printf("color %s: %lu\n", element.first.c_str(), element.second);
+  }
 }
 
 void View::on_buttonRelease(GdkEventButton* event)

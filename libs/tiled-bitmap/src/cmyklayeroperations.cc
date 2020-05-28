@@ -161,7 +161,7 @@ PipetteLayerOperations::PipetteColor OperationsCMYK::sumPixelValues(Scroom::Util
   //naive implementation of summing the components up
   for(int y = area.getTopLeft().y; y < area.getBottomRight().y; y++){
     for(int x = area.getTopLeft().x; x < area.getBottomRight().x; x++){
-      int pos = 4 * x * y;
+      int pos = this->bps/2 * x * y;
       C += data[pos];
       M += data[pos + 1];
       Y += data[pos + 2];
@@ -170,6 +170,5 @@ PipetteLayerOperations::PipetteColor OperationsCMYK::sumPixelValues(Scroom::Util
   }
 
   PipetteLayerOperations::PipetteColor values = { {"C", C}, {"M", M}, {"Y", Y}, {"K", K} };
-  printf("%lu, %lu, %lu, %lu\n", C, M, Y, K);
   return values;
 }

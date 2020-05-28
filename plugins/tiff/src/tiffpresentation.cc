@@ -323,9 +323,13 @@ std::string TiffPresentation::getTitle()
 }
 
 //could change this to operator+ perhaps
-PipetteLayerOperations::PipetteColor operator+=(const std::vector<std::pair<std::string,size_t>>& x, const std::vector<std::pair<std::string,size_t>>& y)
+PipetteLayerOperations::PipetteColor operator+(std::vector<std::pair<std::string,size_t>>& x, const std::vector<std::pair<std::string,size_t>>& y)
 {
   PipetteLayerOperations::PipetteColor result;
+  if (x.empty())
+  {
+    return y;
+  }
   for(auto element : x)
   {
     //this needs the algorithm package imported at the top... May be replaced by another for loop...
@@ -432,8 +436,8 @@ PipetteLayerOperations::PipetteColor TiffPresentationWrapper::getAverages(Scroom
         CompressedTile::Ptr tile = bottomLayer->getTile(y, x);
         ConstTile::Ptr constTile = tile->getConstTileSync();
         
-        sumsComponents = pipetteLayerOperation->sumPixelValues(sub_rectangle, constTile);  
-        pipetteColors += sumsComponents;
+        sumsComponents = pipetteLayerOperation->sumPixelValues(sub_rectangle, constTile);
+        pipetteColors = pipetteColors + sumsComponents;
         
         //continue to next tile
       }
