@@ -18,6 +18,7 @@
 #include <boost/weak_ptr.hpp>
 
 #include <scroom/progressinterface.hh>
+#include <scroom/stuff.hh>
 
 struct Selection
 {
@@ -198,7 +199,7 @@ public:
    * This workaround means that you have to explicitly cast
    * the result of this function to PresentationInterface::Ptr.
    */
-  virtual boost::shared_ptr<void> getCurrentPresentation()
+  virtual Scroom::Utils::Stuff getCurrentPresentation()
   {
     return nullptr;
   }
