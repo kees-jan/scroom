@@ -23,6 +23,7 @@
 #include <scroom/viewinterface.hh>
 #include <scroom/presentationinterface.hh>
 #include <scroom/utilities.hh>
+#include <scroom/stuff.hh>
 
 #include "sidebarmanager.hh"
 #include "progressbarmanager.hh"
@@ -122,7 +123,6 @@ public:
   void on_motion_notify(GdkEventMotion* event);
   void setFullScreen();
   void unsetFullScreen();
-  GdkPoint presentationPointToWindowPoint(GdkPoint pp);
 
   ////////////////////////////////////////////////////////////////////////
   // ViewInterface
@@ -138,6 +138,8 @@ public:
   virtual void registerSelectionListener(SelectionListener::Ptr listener, MouseButton button);
   virtual void registerPostRenderer(PostRenderer::Ptr renderer);
   virtual void setStatusMessage(const std::string& message);
+  virtual GdkPoint presentationPointToWindowPoint(GdkPoint presentationpoint);
+  virtual Scroom::Utils::Stuff getCurrentPresentation();
 
   ////////////////////////////////////////////////////////////////////////
   // Helpers
