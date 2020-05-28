@@ -350,6 +350,7 @@ libs_tiled_bitmap_src_libstiledbitmap_la_SOURCES = \
 	libs/tiled-bitmap/src/layercoordinator.cc \
 	libs/tiled-bitmap/src/layercoordinator.hh \
 	libs/tiled-bitmap/src/layeroperations.cc \
+	libs/tiled-bitmap/src/cmyklayeroperations.cc \
 	libs/tiled-bitmap/src/tiled-bitmap.cc \
 	libs/tiled-bitmap/src/tiled-bitmap.hh \
 	libs/tiled-bitmap/src/tiledbitmapviewdata.cc \

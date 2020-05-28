@@ -63,9 +63,9 @@ bool TiffPresentation::load(const std::string& fileName_)
     uint16 spp_ = 0;
     if (1 != TIFFGetField(tif, TIFFTAG_SAMPLESPERPIXEL, &spp_))
       spp_ = 1; // Default value, according to tiff spec
-    if (spp_ != 1 && spp_ != 3)
+    if (spp_ != 1 && spp_ != 3 && spp_ != 4)
     {
-      printf("PANIC: Samples per pixel is not 1 or 3, but %d. Giving up\n", spp_);
+      printf("PANIC: Samples per pixel is neither 1 nor 3 nor 4, but %d. Giving up\n", spp_);
       return false;
     }
     this->spp = spp_;
@@ -83,6 +83,7 @@ bool TiffPresentation::load(const std::string& fileName_)
     }
     else
     {
+      
       if(spp==3)
       {
         if(bps_!=8)
@@ -102,7 +103,7 @@ bool TiffPresentation::load(const std::string& fileName_)
     {
       originalColormap = Colormap::create();
       originalColormap->name = "Original";
-      size_t count = 1UL << bps_;
+      size_t count = 1UL << bps;
       originalColormap->colors.resize(count);
 
       for (size_t i = 0; i < count; i++)
@@ -155,6 +156,11 @@ bool TiffPresentation::load(const std::string& fileName_)
         printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
       break;
 
+    case PHOTOMETRIC_SEPARATED:
+      if (originalColormap)
+        printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
+      break;
+
     default:
       printf("PANIC: Unrecognized value for photometric\n");
       return false;
@@ -188,10 +194,28 @@ bool TiffPresentation::load(const std::string& fileName_)
            width, height, 1/resolutionX, 1/resolutionY);
 
     LayerSpec ls;
-
-    if (spp == 3)
+    if (spp == 4 && bps == 8)
     {
-      ls.push_back(Operations24bpp::create());
+      ls.push_back(OperationsCMYK32::create());
+    }
+    else if (spp == 4 && bps == 4)
+    {
+      ls.push_back(OperationsCMYK16::create());
+      ls.push_back(OperationsCMYK32::create());
+    }
+    else if (spp == 4 && bps == 2)
+    {
+      ls.push_back(OperationsCMYK8::create());
+      ls.push_back(OperationsCMYK32::create());
+    }
+    else if (spp == 4 && bps == 1)
+    {
+      ls.push_back(OperationsCMYK4::create());
+      ls.push_back(OperationsCMYK32::create());
+    }
+    else if (spp == 3 && bps == 8)
+    {
+        ls.push_back(Operations24bpp::create());
     }
     else if (bps == 2 || bps == 4 || photometric == PHOTOMETRIC_PALETTE)
     {
