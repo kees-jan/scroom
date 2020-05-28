@@ -37,9 +37,6 @@ public:
   virtual ~PipetteCommonOperations()
   {}
 
-  int spp;
-  int bps;
-
   virtual PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile) = 0;
   
 };

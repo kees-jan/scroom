@@ -380,92 +380,91 @@ PipetteLayerOperations::PipetteColor operator/(const std::vector<std::pair<std::
 */
 PipetteLayerOperations::PipetteColor TiffPresentationWrapper::getAverages(Scroom::Utils::Rectangle<int> area)
 {
-    Layer::Ptr bottomLayer = presentation->tbi->getBottomLayer();
-    PipetteLayerOperations::PipetteColor pipetteColors;
-    int horTileCount = bottomLayer->getHorTileCount();
-    int verTileCount = bottomLayer->getVerTileCount();
-    PipetteLayerOperations::PipetteColor sumsComponents;
-    int totalPixels = area.getWidth() * area.getHeight();
+  auto pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(presentation->ls[0]);
+  if (pipetteLayerOperation == nullptr)
+  {
+    PipetteLayerOperations::PipetteColor empty;
+    return empty;
+  }
 
-    //Get start tile (tile_pos_x_start, tile_pos_y_start)
-    int tile_pos_x_start = floor(area.getLeft() / TILESIZE);
-    int tile_pos_y_start = floor(area.getTop() / TILESIZE);
+  Layer::Ptr bottomLayer = presentation->tbi->getBottomLayer();
+  PipetteLayerOperations::PipetteColor pipetteColors;
 
-    //Get end tile (tile_pos_x_end, tile_pos_y_end)
-    int tile_pos_x_end = floor(area.getRight() / TILESIZE);
-    int tile_pos_y_end = floor(area.getBottom() / TILESIZE);
-    /** X-coordinates for new area's [<!>Excluding special behavior for tiles of sizes <4096x4096]
-    * if x = tile_pos_x_start
-    *  -> start_x_area = area.getLeft() % 4096
-    *  -> end_x_area = 4096 <!>
-    * if x = tile_pos_x_end
-    *  -> start_x_area = 0
-    *  -> end_x_area = area.getRight() % 4096
-    * else
-    *  -> start_x_area = 0
-    *  -> end_x_area = 4096 <!>
-    */
-    /** X-coordinates for new area's [<!>Excluding special behavior for tiles of sizes <4096x4096]
-    * if x = tile_pos_x_start
-    *  -> start_x_area = area.getLeft() % 4096
-    *  -> end_x_area = 4096 <!>
-    * if x = tile_pos_x_end
-    *  -> start_x_area = 0
-    *  -> end_x_area = area.getRight() % 4096
-    * else
-    *  -> start_x_area = 0
-    *  -> end_x_area = 4096 <!>
-    */
-    for(int x = tile_pos_x_start; x <= tile_pos_x_end; x++){
-      for(int y = tile_pos_y_start; y <= tile_pos_y_end; y++){
-        int start_x_area; //topleft x coordinate
-        int start_y_area; //topleft y coordinate
-        int end_x_area; //bottomright x coordinate
-        int end_y_area; //bottomright y coordinate
-        /*Find X coordinates*/
-        if(x == tile_pos_x_start && x != tile_pos_x_end){ //left side non single
-          start_x_area = area.getLeft() % TILESIZE;
-          end_x_area = TILESIZE;
-        } else if(x == tile_pos_x_end && x != tile_pos_x_start){ //right side non single
-          start_x_area = 0;
-          end_x_area = area.getRight() % TILESIZE;
-        } else if(x == tile_pos_x_start && x == tile_pos_x_end){ //rect is contained in a single tile
-          start_x_area = area.getLeft() % TILESIZE;
-          end_x_area = area.getRight() % TILESIZE;
-        } else{ //tile is between included tiles
-          start_x_area = 0;
-          end_x_area = TILESIZE;
-        }
-        /*Find Y coordinates*/
-        if(y == tile_pos_y_start && y != tile_pos_y_end){ //top side non single
-          start_y_area = area.getTop() % TILESIZE;
-          end_y_area = TILESIZE;
-        } else if(y == tile_pos_y_end && y != tile_pos_y_start){ //bottom side non single
-          start_y_area = 0;
-          end_y_area = area.getBottom() % TILESIZE;
-        } else if(y == tile_pos_y_start && y == tile_pos_y_end){ //rect is contained in a single tile
-          start_y_area = area.getTop() % TILESIZE;
-          end_y_area = area.getBottom() % TILESIZE;
-        } else{ //tile is between included tiles
-          start_y_area = 0;
-          end_y_area = TILESIZE;
-        }
+  int totalPixels = area.getWidth() * area.getHeight();
 
-        int width   = end_x_area - start_x_area;
-        int height  = end_y_area - start_y_area;
+  //Get start tile (tile_pos_x_start, tile_pos_y_start)
+  int tile_pos_x_start = floor(area.getLeft() / TILESIZE);
+  int tile_pos_y_start = floor(area.getTop() / TILESIZE);
 
-        Scroom::Utils::Rectangle<int> sub_rectangle(start_x_area, start_y_area, width, height);
-        auto pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(presentation->ls[0]);
-        CompressedTile::Ptr tile = bottomLayer->getTile(y, x);
-        ConstTile::Ptr constTile = tile->getConstTileSync();
-        
-        sumsComponents = pipetteLayerOperation->sumPixelValues(sub_rectangle, constTile);
-        pipetteColors = pipetteColors + sumsComponents;
-        
-        //continue to next tile
+  //Get end tile (tile_pos_x_end, tile_pos_y_end)
+  int tile_pos_x_end = floor(area.getRight() / TILESIZE);
+  int tile_pos_y_end = floor(area.getBottom() / TILESIZE);
+
+  for(int x = tile_pos_x_start; x <= tile_pos_x_end; x++)
+  {
+    for(int y = tile_pos_y_start; y <= tile_pos_y_end; y++)
+    {
+      int start_x_area; //topleft x coordinate
+      int start_y_area; //topleft y coordinate
+      int end_x_area; //bottomright x coordinate
+      int end_y_area; //bottomright y coordinate
+
+      /*Find X coordinates*/
+      if(x == tile_pos_x_start && x != tile_pos_x_end) //left side non single
+      { 
+        start_x_area = area.getLeft() % TILESIZE;
+        end_x_area = TILESIZE;
       }
+      else if(x == tile_pos_x_end && x != tile_pos_x_start) //right side non single
+      {
+        start_x_area = 0;
+        end_x_area = area.getRight() % TILESIZE;
+      } 
+      else if(x == tile_pos_x_start && x == tile_pos_x_end) //rect is contained in a single tile
+      {
+        start_x_area = area.getLeft() % TILESIZE;
+        end_x_area = area.getRight() % TILESIZE;
+      }
+      else //tile is between included tiles
+      {
+        start_x_area = 0;
+        end_x_area = TILESIZE;
+      }
+
+      /*Find Y coordinates*/
+      if(y == tile_pos_y_start && y != tile_pos_y_end) //top side non single
+      {
+        start_y_area = area.getTop() % TILESIZE;
+        end_y_area = TILESIZE;
+      }
+      else if(y == tile_pos_y_end && y != tile_pos_y_start) //bottom side non single
+      {
+        start_y_area = 0;
+        end_y_area = area.getBottom() % TILESIZE;
+      }
+      else if(y == tile_pos_y_start && y == tile_pos_y_end) //rect is contained in a single tile
+      {
+        start_y_area = area.getTop() % TILESIZE;
+        end_y_area = area.getBottom() % TILESIZE;
+      } 
+      else //tile is between included tiles
+      {
+        start_y_area = 0;
+        end_y_area = TILESIZE;
+      }
+
+      int width   = end_x_area - start_x_area;
+      int height  = end_y_area - start_y_area;
+
+      Scroom::Utils::Rectangle<int> sub_rectangle(start_x_area, start_y_area, width, height);
+      CompressedTile::Ptr tile = bottomLayer->getTile(y, x);
+      ConstTile::Ptr constTile = tile->getConstTileSync();
+      
+      pipetteColors = pipetteColors + pipetteLayerOperation->sumPixelValues(sub_rectangle, constTile);
+      //continue to next tile
     }
-    return pipetteColors / totalPixels;
+  }
+  return pipetteColors / totalPixels;
 }
 ////////////////////////////////////////////////////////////////////////
 // SourcePresentation
