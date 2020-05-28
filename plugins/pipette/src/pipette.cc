@@ -110,15 +110,15 @@ void Pipette::render(cairo_t* cr)
 {
   if(selection && enabled)
   {
-	GdkPoint start = view->presentationPointToWindowPoint(selection->start);
-	GdkPoint end = view->presentationPointToWindowPoint(selection->end);
-	cairo_set_line_width(cr, 1);
-	cairo_set_source_rgb(cr, 0, 0, 1); // Blue
-	cairo_move_to(cr, end.x, start.y);
-	cairo_line_to(cr, start.x, start.y);
-	cairo_line_to(cr, start.x, end.y);
-	cairo_line_to(cr, end.x, end.y);
-	cairo_line_to(cr, end.x, start.y);
-	cairo_stroke(cr);
+    GdkPoint start = view->presentationPointToWindowPoint(selection->start);
+    GdkPoint end = view->presentationPointToWindowPoint(selection->end);
+    cairo_set_line_width(cr, 1);
+    cairo_set_source_rgb(cr, 0, 0, 1); // Blue
+    cairo_move_to(cr, end.x, start.y);
+    cairo_line_to(cr, start.x, start.y);
+    cairo_line_to(cr, start.x, end.y);
+    cairo_line_to(cr, end.x, end.y);
+    cairo_line_to(cr, end.x, start.y);
+    cairo_stroke(cr);
   }
 }
