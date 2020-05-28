@@ -259,7 +259,7 @@ PipetteLayerOperations::PipetteColor OperationsCMYK16::sumPixelValues(Scroom::Ut
   {
     for(int x = area.getTopLeft().x; x < area.getBottomRight().x; x++)
     {
-      int pos = 2 * x * y;
+      int pos = 2 * (x + y * tile->width);
       C += data[pos] >> 4;
       M += data[pos] & 0x0F;
       Y += data[pos + 1] >> 4;
@@ -380,7 +380,7 @@ PipetteLayerOperations::PipetteColor OperationsCMYK8::sumPixelValues(Scroom::Uti
   {
     for(int x = area.getTopLeft().x; x < area.getBottomRight().x; x++)
     {
-      int pos = x * y;
+      int pos = x + y * tile->width;
       C += data[pos] >> 6;
       M += (data[pos] >> 4) & 3;
       Y += (data[pos] >> 2) & 3;
@@ -510,7 +510,7 @@ PipetteLayerOperations::PipetteColor OperationsCMYK4::sumPixelValues(Scroom::Uti
   {
     for(int x = area.getTopLeft().x; x < area.getBottomRight().x; x++)
     {
-      int pos = x * y / 2;
+      int pos = (x + y * tile->width) / 2;
       if ( x * y % 2 == 0)
       {
         C += (data[pos] >> 3) & 1;
