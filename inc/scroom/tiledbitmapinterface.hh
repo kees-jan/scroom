@@ -87,9 +87,9 @@ public:
    * @param zoom The requested zoom level. One pixel of your
    *    presentation should have size 2**@c zoom when drawn. @c zoom
    *    will be negative for all but the first layer.
-   * @param cache Depending on whether the cache() function finished
+   * @param cache Depending on whether the cacheZoom() function finished
    *    already, this may either be an empty reference, or a reference
-   *    to the value returned by cache()
+   *    to the value returned by cacheZoom()
    */
   virtual void draw(cairo_t* cr, const ConstTile::Ptr tile,
       Scroom::Utils::Rectangle<double> tileArea, Scroom::Utils::Rectangle<double> viewArea, int zoom,

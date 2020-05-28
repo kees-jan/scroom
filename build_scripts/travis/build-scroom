@@ -7,14 +7,43 @@ set -u
 # Check for non-blocking output.
 # Non-blocking output triggers a "resource temporarily unavailable"
 # error when catting doxygen.log. See the upload_doxygen_to_github script.
-python -c 'import os,sys,fcntl; flags = fcntl.fcntl(sys.stdout, fcntl.F_GETFL); print(flags&os.O_NONBLOCK);'
+
 # Travis claims to have resolved the issue: https://github.com/travis-ci/travis-ci/issues/4704
 ### python -c 'import os,sys,fcntl; flags = fcntl.fcntl(sys.stdout, fcntl.F_GETFL); fcntl.fcntl(sys.stdout, fcntl.F_SETFL, flags&~os.O_NONBLOCK);'
 ### python -c 'import os,sys,fcntl; flags = fcntl.fcntl(sys.stdout, fcntl.F_GETFL); print(flags&os.O_NONBLOCK);'
 
 autoreconf -i
 
-if [ ! -z "${SOME_DISTS+x}" -a "${CC}" = "gcc" ]
+if [ "${TRAVIS_OS_NAME}" = "windows" ]
+then
+    SCROOM_VERSION="$(cat .scroom-version)"
+    TARGET_BASE=/tmp
+    SCROOM_NAME="scroom-win-${SCROOM_VERSION}"
+    ./configure --prefix="${TARGET_BASE}/${SCROOM_NAME}"
+
+    if [ "${TRAVIS_PULL_REQUEST}" = "false" ]
+    then
+        make -k check
+        make -k install-win-portable
+        ( cd "${TARGET_BASE}" && zip -r "${SCROOM_NAME}.zip" "${SCROOM_NAME}" )
+
+        DESTINATION_ROOT="travis/builds/${TRAVIS_BRANCH}"
+    
+        ssh -T project@fuzzy.mandryn.eu <<EOF
+          set -xeu -o pipefail
+          mkdir -p "${DESTINATION_ROOT}"
+          cd "${DESTINATION_ROOT}"
+          mkdir "${TRAVIS_BUILD_NUMBER}"
+          ln -s "${TRAVIS_BUILD_NUMBER}" "${SCROOM_VERSION}"
+EOF
+    
+        scp "${TARGET_BASE}/${SCROOM_NAME}.zip" \
+            project@fuzzy.mandryn.eu:"${DESTINATION_ROOT}/${TRAVIS_BUILD_NUMBER}"
+    else
+        make distcheck
+    fi
+    
+elif [ ! -z "${SOME_DISTS+x}" -a "${CC}" = "gcc" ]
 then
     make -k -j2 -f build_scripts/docker/docker.mk TARGETS="${SOME_DISTS}"
 elif [ ! -z "${OTHER_DISTS+x}" -a "${CC}" != "gcc" ]

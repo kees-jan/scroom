@@ -99,11 +99,11 @@ int main (int argc, char *argv[])
   }
 
 #else
-  int result;
+  char result;
 
   while ((result = getopt(argc, argv, ":h")) != -1)
   {
-    switch (static_cast<char>(result))
+    switch (result)
     {
     case 'h':
       usage(me);

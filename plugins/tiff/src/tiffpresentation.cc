@@ -14,7 +14,6 @@
 #include <scroom/layeroperations.hh>
 #include <scroom/unused.hh>
 
-#include <iostream>
 #include <libs/tiled-bitmap/src/tiled-bitmap.hh>
 #include <scroom/tiledbitmaplayer.hh>
 #include <algorithm>
@@ -88,6 +87,7 @@ bool TiffPresentation::load(const std::string& fileName_)
     }
     else
     {
+      
       if(spp==3)
       {
         if(bps_!=8)
@@ -107,7 +107,7 @@ bool TiffPresentation::load(const std::string& fileName_)
     {
       originalColormap = Colormap::create();
       originalColormap->name = "Original";
-      size_t count = 1UL << bps_;
+      size_t count = 1UL << bps;
       originalColormap->colors.resize(count);
 
       for (size_t i = 0; i < count; i++)
@@ -176,9 +176,16 @@ bool TiffPresentation::load(const std::string& fileName_)
 
     if(TIFFGetField(tif, TIFFTAG_XRESOLUTION, &resolutionX) &&
        TIFFGetField(tif, TIFFTAG_YRESOLUTION, &resolutionY) &&
-       TIFFGetField(tif, TIFFTAG_RESOLUTIONUNIT, &resolutionUnit) &&
-       resolutionUnit == RESUNIT_NONE)
+       TIFFGetField(tif, TIFFTAG_RESOLUTIONUNIT, &resolutionUnit))
     {
+      if(resolutionUnit != RESUNIT_NONE)
+      {
+        // Fix aspect ratio only
+        float base = std::max(resolutionX, resolutionY);
+        resolutionX = resolutionX/base;
+        resolutionY = resolutionY/base;
+      }
+
       transformationData = TransformationData::create();
       transformationData->setAspectRatio(1/resolutionX, 1/resolutionY);
     }
@@ -187,11 +194,27 @@ bool TiffPresentation::load(const std::string& fileName_)
       resolutionX = 1;
       resolutionY = 1;
     }
-    
-    std::cout << "This bitmap has size " << width << "*" << height << ", aspect ratio " << 1 / resolutionX << "*" << 1 / resolutionY << std::endl;
+    printf("This bitmap has size %d*%d, aspect ratio %.1f*%.1f\n",
+           width, height, 1/resolutionX, 1/resolutionY);
+
     if (spp == 4 && bps == 8)
     {
-        ls.push_back(OperationsCMYK::create());
+      ls.push_back(OperationsCMYK32::create());
+    }
+    else if (spp == 4 && bps == 4)
+    {
+      ls.push_back(OperationsCMYK16::create());
+      ls.push_back(OperationsCMYK32::create());
+    }
+    else if (spp == 4 && bps == 2)
+    {
+      ls.push_back(OperationsCMYK8::create());
+      ls.push_back(OperationsCMYK32::create());
+    }
+    else if (spp == 4 && bps == 1)
+    {
+      ls.push_back(OperationsCMYK4::create());
+      ls.push_back(OperationsCMYK32::create());
     }
     else if (spp == 3 && bps == 8)
     {
@@ -460,10 +483,10 @@ void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth,
   const size_t firstTile_ = static_cast<size_t>(firstTile);
   const size_t scanLineSize = static_cast<size_t>(TIFFScanlineSize(tif));
   const size_t tileStride = static_cast<size_t>(tileWidth*spp*bps/8);
-  byte* row = new byte[scanLineSize];
+  std::vector<byte> row(scanLineSize);
 
   const size_t tileCount = tiles.size();
-  byte** dataPtr = new byte*[tileCount];
+  auto dataPtr = std::vector<byte*>(tileCount);
   for (size_t tile = 0; tile < tileCount; tile++)
   {
     dataPtr[tile] = tiles[tile]->data.get();
@@ -471,23 +494,20 @@ void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth,
 
   for (size_t i = 0; i < static_cast<size_t>(lineCount); i++)
   {
-    TIFFReadScanline(tif, static_cast<tdata_t>(row), static_cast<uint32>(i) + startLine_);
+    TIFFReadScanline(tif, row.data(), static_cast<uint32>(i) + startLine_);
 
     for (size_t tile = 0; tile < tileCount - 1; tile++)
     {
       memcpy(dataPtr[tile],
-             row + (firstTile_ + tile) * tileStride,
+             row.data() + (firstTile_ + tile) * tileStride,
              tileStride);
       dataPtr[tile] += tileStride;
     }
     memcpy(dataPtr[tileCount - 1],
-        row + (firstTile_ + tileCount - 1) * tileStride,
+        row.data() + (firstTile_ + tileCount - 1) * tileStride,
         scanLineSize - (firstTile_ + tileCount - 1) * tileStride);
     dataPtr[tileCount - 1] += tileStride;
   }
-
-  delete[] row;
-  delete[] dataPtr;
 }
 
 void TiffPresentation::done()
