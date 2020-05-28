@@ -1,6 +1,8 @@
 #include "pipette.hh"
 
 #include <gdk/gdk.h>
+#include <cmath>
+#include <scroom/pipetteviewinterface.hh>
 
 ////////////////////////////////////////////////////////////////////////
 // Pipette
@@ -92,13 +94,45 @@ void Pipette::onSelectionUpdate(Selection* s)
   }
 }
 
+template<class T>
+const T& clamp( const T& v, const T& lo, const T& hi )
+{
+    return (v < lo) ? lo : (hi < v) ? hi : v;
+}
+
 void Pipette::onSelectionEnd(Selection* s)
 {
   if(enabled)
   {
     selection = s;
     //TODO show data?
+
     view->setPanning();
+
+    PresentationInterface::Ptr p = boost::static_pointer_cast<PresentationInterface>(view->getCurrentPresentation());
+    Scroom::Utils::Rectangle<double> rect = p->getRect();
+
+    int min_x = std::min(selection->start.x, selection->end.x);
+    min_x = clamp(min_x, 0, static_cast<int>(std::lround(rect.getWidth())));
+    int min_y = std::min(selection->start.y, selection->end.y);
+    min_y = clamp(min_y, 0, static_cast<int>(std::lround(rect.getHeight())));
+    int max_x = std::max(selection->start.x, selection->end.x);
+    max_x = clamp(max_x, 0, static_cast<int>(std::lround(rect.getWidth())));
+    int max_y = std::max(selection->start.y, selection->end.y);
+    max_y = clamp(max_y, 0, static_cast<int>(std::lround(rect.getHeight())));
+
+    if(max_x - min_x == 0 || max_y - min_y == 0){
+    	return;
+    }
+
+    //This is a temp method to test the getAverages.
+    //Take this out for the merge to pipette.
+    Scroom::Utils::Rectangle<int> r(min_x, min_y, max_x - min_x, max_y - min_y);
+    auto pipetteColors = boost::dynamic_pointer_cast<PipetteViewInterface>(p);
+    auto test = pipetteColors->getAverages(r);
+    for(auto element : test){
+      printf("color %s: %lu\n", element.first.c_str(), element.second);
+    }
   }
 }
 
