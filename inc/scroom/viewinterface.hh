@@ -63,7 +63,7 @@ public:
 
 // There is no documentation on values 4 and 5, so
 // they are not included here.
-enum class MouseButton : uint {
+enum class MouseButton : unsigned int {
   PRIMARY = 1,
   MIDDLE = 2,
   SECONDARY = 3
