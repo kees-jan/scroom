@@ -457,7 +457,7 @@ PipetteLayerOperations::PipetteColor TiffPresentationWrapper::getAverages(Scroom
       int height  = end_y_area - start_y_area;
 
       Scroom::Utils::Rectangle<int> sub_rectangle(start_x_area, start_y_area, width, height);
-      CompressedTile::Ptr tile = bottomLayer->getTile(y, x);
+      CompressedTile::Ptr tile = bottomLayer->getTile(x, y);
       ConstTile::Ptr constTile = tile->getConstTileSync();
       
       pipetteColors = pipetteColors + pipetteLayerOperation->sumPixelValues(sub_rectangle, constTile);

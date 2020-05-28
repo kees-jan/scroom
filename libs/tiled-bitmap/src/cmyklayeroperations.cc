@@ -135,7 +135,7 @@ PipetteLayerOperations::PipetteColor OperationsCMYK32::sumPixelValues(Scroom::Ut
   {
     for(int x = area.getTopLeft().x; x < area.getBottomRight().x; x++)
     {
-      int pos = 4 * x * y;
+      int pos = 4 * (x + y * tile->width);
       C += data[pos];
       M += data[pos + 1];
       Y += data[pos + 2];
