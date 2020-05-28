@@ -24,8 +24,6 @@ public:
 
 private:
   Selection* selection;
-
-public:
   ViewInterface::Ptr view;
 
 public:
