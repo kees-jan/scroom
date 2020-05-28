@@ -25,21 +25,34 @@ public:
 private:
   Selection* selection;
   bool enabled;
-
-public:
   ViewInterface::Ptr view;
 
 public:
+  ////////////////////////////////////////////////////////////////////////
+  // PluginInformationInterface
+
   virtual std::string getPluginName();
   virtual std::string getPluginVersion();
   virtual void registerCapabilities(ScroomPluginInterface::Ptr host);
 
+  ////////////////////////////////////////////////////////////////////////
+  // ViewObserver
+
   virtual Scroom::Bookkeeping::Token viewAdded(ViewInterface::Ptr v);
 
+  ////////////////////////////////////////////////////////////////////////
+  // PostRenderer
+
   virtual void render(cairo_t* cr);
+
+  ////////////////////////////////////////////////////////////////////////
+  // SelectionListener
+
   virtual void onSelectionStart(GdkPoint p);
   virtual void onSelectionUpdate(Selection* s);
   virtual void onSelectionEnd(Selection* s);
+
+  ////////////////////////////////////////////////////////////////////////
 
   virtual ~Pipette();
 };
