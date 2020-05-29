@@ -14,6 +14,10 @@
 #include <scroom/layeroperations.hh>
 #include <scroom/unused.hh>
 
+#include <libs/tiled-bitmap/src/tiled-bitmap.hh>
+#include <scroom/tiledbitmaplayer.hh>
+#include <algorithm>
+
 TiffPresentation::TiffPresentation()
   : tif(NULL), height(0), width(0), bps(0), spp(0)
 {
@@ -63,9 +67,9 @@ bool TiffPresentation::load(const std::string& fileName_)
     uint16 spp_ = 0;
     if (1 != TIFFGetField(tif, TIFFTAG_SAMPLESPERPIXEL, &spp_))
       spp_ = 1; // Default value, according to tiff spec
-    if (spp_ != 1 && spp_ != 3)
+    if (spp_ != 1 && spp_ != 3 && spp_ != 4)
     {
-      printf("PANIC: Samples per pixel is not 1 or 3, but %d. Giving up\n", spp_);
+      printf("PANIC: Samples per pixel is neither 1 nor 3 nor 4, but %d. Giving up\n", spp_);
       return false;
     }
     this->spp = spp_;
@@ -83,6 +87,7 @@ bool TiffPresentation::load(const std::string& fileName_)
     }
     else
     {
+      
       if(spp==3)
       {
         if(bps_!=8)
@@ -102,7 +107,7 @@ bool TiffPresentation::load(const std::string& fileName_)
     {
       originalColormap = Colormap::create();
       originalColormap->name = "Original";
-      size_t count = 1UL << bps_;
+      size_t count = 1UL << bps;
       originalColormap->colors.resize(count);
 
       for (size_t i = 0; i < count; i++)
@@ -155,6 +160,11 @@ bool TiffPresentation::load(const std::string& fileName_)
         printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
       break;
 
+    case PHOTOMETRIC_SEPARATED:
+      if (originalColormap)
+        printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
+      break;
+
     default:
       printf("PANIC: Unrecognized value for photometric\n");
       return false;
@@ -187,11 +197,28 @@ bool TiffPresentation::load(const std::string& fileName_)
     printf("This bitmap has size %d*%d, aspect ratio %.1f*%.1f\n",
            width, height, 1/resolutionX, 1/resolutionY);
 
-    LayerSpec ls;
-
-    if (spp == 3)
+    if (spp == 4 && bps == 8)
     {
-      ls.push_back(Operations24bpp::create());
+      ls.push_back(OperationsCMYK32::create());
+    }
+    else if (spp == 4 && bps == 4)
+    {
+      ls.push_back(OperationsCMYK16::create());
+      ls.push_back(OperationsCMYK32::create());
+    }
+    else if (spp == 4 && bps == 2)
+    {
+      ls.push_back(OperationsCMYK8::create());
+      ls.push_back(OperationsCMYK32::create());
+    }
+    else if (spp == 4 && bps == 1)
+    {
+      ls.push_back(OperationsCMYK4::create());
+      ls.push_back(OperationsCMYK32::create());
+    }
+    else if (spp == 3 && bps == 8)
+    {
+        ls.push_back(Operations24bpp::create());
     }
     else if (bps == 2 || bps == 4 || photometric == PHOTOMETRIC_PALETTE)
     {
@@ -222,6 +249,8 @@ bool TiffPresentation::load(const std::string& fileName_)
 
     tbi = createTiledBitmap(width, height, ls);
     tbi->setSource(shared_from_this<SourcePresentation>());
+    this->tbi = tbi;
+    this->ls = ls;
     return true;
   } catch (const std::exception& ex)
   {
@@ -316,6 +345,127 @@ std::string TiffPresentation::getTitle()
   return fileName;
 }
 
+//could change this to operator+ perhaps
+PipetteLayerOperations::PipetteColor operator+(std::vector<std::pair<std::string,size_t>>& x, const std::vector<std::pair<std::string,size_t>>& y)
+{
+  PipetteLayerOperations::PipetteColor result;
+  if (x.empty())
+  {
+    return y;
+  }
+  for(auto element : x)
+  {
+    //this needs the algorithm package imported at the top... May be replaced by another for loop...
+    if(std::find(y.begin(), y.end(), element) != y.end())
+    {
+      result.push_back(std::pair<std::string, size_t>(element.first, element.second  + element.second));
+    }
+  }
+    return result;
+}
+
+//these two may be moved to a better location...
+PipetteLayerOperations::PipetteColor operator/(const std::vector<std::pair<std::string,size_t>>&  x, int y)
+{
+  PipetteLayerOperations::PipetteColor result;
+  for(auto element : x)
+  {
+    result.push_back(std::pair<std::string, size_t>(element.first, element.second / y));
+  }
+  return result;
+}
+/* Returns the averages of the selected pixels
+  Assumes that the rectangle is completely contained in the presentation
+  Assumes that TILESIZE is consistent //TODO
+*/
+PipetteLayerOperations::PipetteColor TiffPresentationWrapper::getAverages(Scroom::Utils::Rectangle<int> area)
+{
+  auto pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(presentation->ls[0]);
+  if (pipetteLayerOperation == nullptr)
+  {
+    PipetteLayerOperations::PipetteColor empty;
+    return empty;
+  }
+
+  Layer::Ptr bottomLayer = presentation->tbi->getBottomLayer();
+  PipetteLayerOperations::PipetteColor pipetteColors;
+
+  int totalPixels = area.getWidth() * area.getHeight();
+
+  //Get start tile (tile_pos_x_start, tile_pos_y_start)
+  int tile_pos_x_start = floor(area.getLeft() / TILESIZE);
+  int tile_pos_y_start = floor(area.getTop() / TILESIZE);
+
+  //Get end tile (tile_pos_x_end, tile_pos_y_end)
+  int tile_pos_x_end = floor(area.getRight() / TILESIZE);
+  int tile_pos_y_end = floor(area.getBottom() / TILESIZE);
+
+  for(int x = tile_pos_x_start; x <= tile_pos_x_end; x++)
+  {
+    for(int y = tile_pos_y_start; y <= tile_pos_y_end; y++)
+    {
+      int start_x_area; //topleft x coordinate
+      int start_y_area; //topleft y coordinate
+      int end_x_area; //bottomright x coordinate
+      int end_y_area; //bottomright y coordinate
+
+      /*Find X coordinates*/
+      if(x == tile_pos_x_start && x != tile_pos_x_end) //left side non single
+      { 
+        start_x_area = area.getLeft() % TILESIZE;
+        end_x_area = TILESIZE;
+      }
+      else if(x == tile_pos_x_end && x != tile_pos_x_start) //right side non single
+      {
+        start_x_area = 0;
+        end_x_area = area.getRight() % TILESIZE;
+      } 
+      else if(x == tile_pos_x_start && x == tile_pos_x_end) //rect is contained in a single tile
+      {
+        start_x_area = area.getLeft() % TILESIZE;
+        end_x_area = area.getRight() % TILESIZE;
+      }
+      else //tile is between included tiles
+      {
+        start_x_area = 0;
+        end_x_area = TILESIZE;
+      }
+
+      /*Find Y coordinates*/
+      if(y == tile_pos_y_start && y != tile_pos_y_end) //top side non single
+      {
+        start_y_area = area.getTop() % TILESIZE;
+        end_y_area = TILESIZE;
+      }
+      else if(y == tile_pos_y_end && y != tile_pos_y_start) //bottom side non single
+      {
+        start_y_area = 0;
+        end_y_area = area.getBottom() % TILESIZE;
+      }
+      else if(y == tile_pos_y_start && y == tile_pos_y_end) //rect is contained in a single tile
+      {
+        start_y_area = area.getTop() % TILESIZE;
+        end_y_area = area.getBottom() % TILESIZE;
+      } 
+      else //tile is between included tiles
+      {
+        start_y_area = 0;
+        end_y_area = TILESIZE;
+      }
+
+      int width   = end_x_area - start_x_area;
+      int height  = end_y_area - start_y_area;
+
+      Scroom::Utils::Rectangle<int> sub_rectangle(start_x_area, start_y_area, width, height);
+      CompressedTile::Ptr tile = bottomLayer->getTile(x, y);
+      ConstTile::Ptr constTile = tile->getConstTileSync();
+      
+      pipetteColors = pipetteColors + pipetteLayerOperation->sumPixelValues(sub_rectangle, constTile);
+      //continue to next tile
+    }
+  }
+  return pipetteColors / totalPixels;
+}
 ////////////////////////////////////////////////////////////////////////
 // SourcePresentation
 ////////////////////////////////////////////////////////////////////////

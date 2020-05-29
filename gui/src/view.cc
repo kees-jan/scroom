@@ -20,6 +20,7 @@
 
 #include "pluginmanager.hh"
 #include "callbacks.hh"
+#include "scroom/pipetteviewinterface.hh"
 
 #ifndef G_VALUE_INIT
 #define G_VALUE_INIT {0,{{0}}}
@@ -634,6 +635,14 @@ void View::on_buttonPress(GdkEventButton* event)
   for (auto listener : selectionListeners[static_cast<MouseButton>(event->button)])
   {
     listener->onSelectionStart(point);
+  }
+  //This is a temp method to test the getAverages.
+  //Take this out for the merge to pipette.
+  Scroom::Utils::Rectangle<int> rect(1,50,1000,1000);
+  auto pipetteColors = boost::dynamic_pointer_cast<PipetteViewInterface>(presentation);
+  auto test = pipetteColors->getAverages(rect);
+  for(auto element : test){
+    printf("color %s: %lu\n", element.first.c_str(), element.second);
   }
 }
 

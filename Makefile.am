@@ -28,6 +28,8 @@ incscroom_HEADERS = \
 	inc/scroom/plugininformationinterface.hh \
 	inc/scroom/point.hh \
 	inc/scroom/presentationinterface.hh \
+	inc/scroom/pipettelayeroperations.hh\
+	inc/scroom/pipetteviewinterface.hh\
 	inc/scroom/progressinterface.hh \
 	inc/scroom/progressinterfacehelpers.hh \
 	inc/scroom/rectangle.hh \
@@ -350,6 +352,7 @@ libs_tiled_bitmap_src_libstiledbitmap_la_SOURCES = \
 	libs/tiled-bitmap/src/layercoordinator.cc \
 	libs/tiled-bitmap/src/layercoordinator.hh \
 	libs/tiled-bitmap/src/layeroperations.cc \
+	libs/tiled-bitmap/src/cmyklayeroperations.cc \
 	libs/tiled-bitmap/src/tiled-bitmap.cc \
 	libs/tiled-bitmap/src/tiled-bitmap.hh \
 	libs/tiled-bitmap/src/tiledbitmapviewdata.cc \
