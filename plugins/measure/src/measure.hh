@@ -11,33 +11,25 @@
 #include <scroom/utilities.hh>
 #include <scroom/viewinterface.hh>
 
-class Measure : public PostRenderer, public SelectionListener, public PluginInformationInterface, public ViewObserver, virtual public Scroom::Utils::Base
+class MeasureHandler : public PostRenderer, public SelectionListener, virtual public Scroom::Utils::Base
 {
 public:
-  typedef boost::shared_ptr<Measure> Ptr;
+	MeasureHandler();
+
+public:
+  typedef boost::shared_ptr<MeasureHandler> Ptr;
 
 private:
-  Measure();
+  Selection* selection;
+
+public:
+  ViewInterface::Ptr view;
 
 public:
   static Ptr create();
 
-private:
-  Selection* selection;
-  ViewInterface::Ptr view;
-
 public:
-  ////////////////////////////////////////////////////////////////////////
-  // PluginInformationInterface
-
-  virtual std::string getPluginName();
-  virtual std::string getPluginVersion();
-  virtual void registerCapabilities(ScroomPluginInterface::Ptr host);
-
-  ////////////////////////////////////////////////////////////////////////
-  // ViewObserver
-
-  virtual Scroom::Bookkeeping::Token viewAdded(ViewInterface::Ptr v);
+  virtual ~MeasureHandler();
 
   ////////////////////////////////////////////////////////////////////////
   // PostRenderer
@@ -53,9 +45,35 @@ public:
 
   ////////////////////////////////////////////////////////////////////////
 
-  virtual ~Measure();
-
 private:
   virtual void displayMeasurement();
 };
 
+class Measure : public PluginInformationInterface, public ViewObserver, virtual public Scroom::Utils::Base
+{
+public:
+  typedef boost::shared_ptr<Measure> Ptr;
+
+private:
+  Measure();
+
+public:
+  static Ptr create();
+
+public:
+  ////////////////////////////////////////////////////////////////////////
+  // PluginInformationInterface
+
+  virtual std::string getPluginName();
+  virtual std::string getPluginVersion();
+  virtual void registerCapabilities(ScroomPluginInterface::Ptr host);
+
+  ////////////////////////////////////////////////////////////////////////
+  // ViewObserver
+
+  virtual Scroom::Bookkeeping::Token viewAdded(ViewInterface::Ptr v);
+
+  ////////////////////////////////////////////////////////////////////////
+
+  virtual ~Measure();
+};

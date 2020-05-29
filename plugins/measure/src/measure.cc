@@ -13,7 +13,6 @@
 
 Measure::Measure()
 {
-  selection = nullptr;
 }
 Measure::~Measure()
 {
@@ -43,7 +42,38 @@ void Measure::registerCapabilities(ScroomPluginInterface::Ptr host)
   host->registerViewObserver("Measure tool", shared_from_this<Measure>());
 }
 
-void Measure::displayMeasurement()
+////////////////////////////////////////////////////////////////////////
+// ViewObserver
+////////////////////////////////////////////////////////////////////////
+
+Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr v)
+{
+  MeasureHandler::Ptr handler = MeasureHandler::create();
+  handler->view = v;
+  v->registerSelectionListener(handler, MouseButton::SECONDARY);
+  v->registerPostRenderer(handler);
+
+  return Scroom::Bookkeeping::Token();
+}
+
+////////////////////////////////////////////////////////////////////////
+// MeasureHandler
+////////////////////////////////////////////////////////////////////////
+
+MeasureHandler::MeasureHandler()
+{
+  selection = nullptr;
+}
+MeasureHandler::~MeasureHandler()
+{
+}
+
+MeasureHandler::Ptr MeasureHandler::create()
+{
+  return Ptr(new MeasureHandler());
+}
+
+void MeasureHandler::displayMeasurement()
 {
   std::ostringstream s;
   s.precision(1);
@@ -59,33 +89,20 @@ void Measure::displayMeasurement()
 }
 
 ////////////////////////////////////////////////////////////////////////
-// ViewObserver
-////////////////////////////////////////////////////////////////////////
-
-Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr v)
-{
-  view = v;
-  view->registerSelectionListener(shared_from_this<Measure>(), MouseButton::SECONDARY);
-  view->registerPostRenderer(shared_from_this<Measure>());
-
-  return Scroom::Bookkeeping::Token();
-}
-
-////////////////////////////////////////////////////////////////////////
 // SelectionListener
 ////////////////////////////////////////////////////////////////////////
 
-void Measure::onSelectionStart(GdkPoint)
+void MeasureHandler::onSelectionStart(GdkPoint)
 {
 }
 
-void Measure::onSelectionUpdate(Selection* s)
+void MeasureHandler::onSelectionUpdate(Selection* s)
 {
   selection = s;
   displayMeasurement();
 }
 
-void Measure::onSelectionEnd(Selection* s)
+void MeasureHandler::onSelectionEnd(Selection* s)
 {
   selection = s;
   displayMeasurement();
@@ -95,7 +112,7 @@ void Measure::onSelectionEnd(Selection* s)
 // PostRenderer
 ////////////////////////////////////////////////////////////////////////
 
-void Measure::render(cairo_t* cr)
+void MeasureHandler::render(cairo_t* cr)
 {
   if(selection)
   {
