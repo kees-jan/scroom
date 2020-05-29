@@ -579,7 +579,7 @@ gui_src_scroom_CPPFLAGS = -I $(top_srcdir)/inc \
 	@GUI_CFLAGS@
 
 gui_src_scroom_LDADD = @GUI_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @BOOSTPROGRAMOPTIONSLIB@ @BOOSTFILESYSTEMLIB@ $(INTLLIBS) \
-	libs/util/src/libsutil.la @WIN_ICON_RESOURCE@
+	libs/util/src/libsutil.la @WIN_ICON_RES@
 
 gui_extra_dist = \
 	gui/scroom.glade \
@@ -662,8 +662,12 @@ checkPROGRAMS: all-am $(check_PROGRAMS)
 silent-doxygen:
 	@$(MAKE) doxygen-doc > doxygen.log 2>&1
 
+# Target for compiling icon resource on Windows. Called by install-win-portable, does nothing on Linux
+compile-icon-res:
+	@WIN_ICON_RES_COMPILE_CMD@
+
 # Target for installing a portable version on Windows. Only does 'install' on Linux
-install-win-portable: install
+install-win-portable: compile-icon-res install
 	@POST_INSTALL_HOOK@
 
 	

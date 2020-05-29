@@ -371,16 +371,19 @@ transparentoverlay_boosttest_win_ld_sizedeterminer=""
 AM_COND_IF([WINDOWS], [transparentoverlay_boosttest_win_ld_sizedeterminer=plugins/transparent-overlay/src/libsptransparentoverlay_la-sizedeterminer.lo]) 
 AC_SUBST([TRANSPARENTOVERLAY_BOOSTTEST_WIN_LD_SIZEDETERMINER], [$transparentoverlay_boosttest_win_ld_sizedeterminer])
 
-# Generate the Icon resource to be passed to the compiler on Windows
-win_icon_resource=""
+# Create command for compiling icon resource and location of resource on Windows
+win_icon_res_compile_cmd=":"
+win_icon_res=""
 AM_COND_IF([WINDOWS],[AC_CHECK_PROG([WINDRES], [windres], [yes], [no])])
 if test x"${WINDRES}" == x"yes" ; then
-  windres "$srcdir"/build_scripts/windows/icon.rc -O coff -o "$srcdir"/build_scripts/windows/icon.res;
-  win_icon_resource="$srcdir"/build_scripts/windows/icon.res;
+  win_icon_res_compile_cmd=windres\ '${top_srcdir}'/build_scripts/windows/icon.rc\ -O\ coff\ -o\ '${top_srcdir}'/icon.res
+  win_icon_res='${top_srcdir}'/icon.res
 elif test x"${WINDRES}" == x"no" ; then
   AC_MSG_WARN(["windres not found - won't create icon for executable"])
 fi
-AC_SUBST([WIN_ICON_RESOURCE], [$win_icon_resource])
+AC_SUBST([WIN_ICON_RES_COMPILE_CMD], [$win_icon_res_compile_cmd])
+AC_SUBST([WIN_ICON_RES], [$win_icon_res])
+
 
 AC_CONFIG_FILES([Makefile
                  gui/ENVIRONMENT

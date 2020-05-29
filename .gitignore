@@ -56,4 +56,4 @@ Makefile.in
 /.google
 test_results.xml
 /.vscode
-build_scripts/windows/icon.res
+icon.res
