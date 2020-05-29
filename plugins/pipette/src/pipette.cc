@@ -132,9 +132,9 @@ void Pipette::onSelectionEnd(Selection* s)
     auto test = pipetteColors->getAverages(r);
 
     std::stringstream colours;
-    colours << "Colours:";
+    colours << "Colors:";
     for (auto element : test) {
-      colours << ' ' << element.first.c_str() << ':' << element.second;
+      colours << ' ' << element.first.c_str() << ": " << element.second;
     }
 
     view->setStatusMessage(colours.str());
