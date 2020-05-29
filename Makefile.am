@@ -579,7 +579,7 @@ gui_src_scroom_CPPFLAGS = -I $(top_srcdir)/inc \
 	@GUI_CFLAGS@
 
 gui_src_scroom_LDADD = @GUI_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @BOOSTPROGRAMOPTIONSLIB@ @BOOSTFILESYSTEMLIB@ $(INTLLIBS) \
-	libs/util/src/libsutil.la
+	libs/util/src/libsutil.la @WIN_ICON_RESOURCE@
 
 gui_extra_dist = \
 	gui/scroom.glade \
