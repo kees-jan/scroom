@@ -375,10 +375,8 @@ AC_SUBST([TRANSPARENTOVERLAY_BOOSTTEST_WIN_LD_SIZEDETERMINER], [$transparentover
 win_icon_resource=""
 AM_COND_IF([WINDOWS],[AC_CHECK_PROG([WINDRES], [windres], [yes], [no])])
 if test x"${WINDRES}" == x"yes" ; then
-  AM_COND_IF([WINDOWS],[
-    [windres build_scripts/windows/icon.rc -O coff -o build_scripts/windows/icon.res]
-    [win_icon_resource=build_scripts/windows/icon.res]
-    ])
+  windres build_scripts/windows/icon.rc -O coff -o build_scripts/windows/icon.res;
+  win_icon_resource=build_scripts/windows/icon.res;
 elif test x"${WINDRES}" == x"no" ; then
   AC_MSG_WARN(["windres not found - won't create icon for executable"])
 fi
