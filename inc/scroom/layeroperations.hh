@@ -157,7 +157,7 @@ public:
 class OperationsCMYK32 : public PipetteCommonOperations
 {
 public:
-  static Ptr create();
+  static LayerOperations::Ptr create();
   OperationsCMYK32();
   virtual ~OperationsCMYK32()
   {}
@@ -172,7 +172,7 @@ public:
 class OperationsCMYK16 : public PipetteCommonOperations
 {
 public:
-  static Ptr create();
+  static LayerOperations::Ptr create();
   OperationsCMYK16();
   virtual ~OperationsCMYK16()
   {}
@@ -186,7 +186,7 @@ public:
 class OperationsCMYK8 : public PipetteCommonOperations
 {
 public:
-  static Ptr create();
+  static LayerOperations::Ptr create();
   OperationsCMYK8();
   virtual ~OperationsCMYK8()
   {}
@@ -200,7 +200,7 @@ public:
 class OperationsCMYK4 : public PipetteCommonOperations
 {
 public:
-  static Ptr create();
+  static LayerOperations::Ptr create();
   OperationsCMYK4();
   virtual ~OperationsCMYK4()
   {}

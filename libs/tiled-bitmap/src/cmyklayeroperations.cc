@@ -23,7 +23,7 @@ namespace
 
 LayerOperations::Ptr OperationsCMYK32::create()
 {
-  return Ptr(new OperationsCMYK32());
+  return LayerOperations::Ptr(new OperationsCMYK32());
 }
 
 OperationsCMYK32::OperationsCMYK32()
@@ -131,9 +131,9 @@ PipetteLayerOperations::PipetteColor OperationsCMYK32::sumPixelValues(Scroom::Ut
   size_t K = 0;
   
   //naive implementation of summing the components up
-  for(int y = area.getTopLeft().y; y < area.getBottomRight().y; y++)
+  for(int y = area.getTop(); y < area.getBottom(); y++)
   {
-    for(int x = area.getTopLeft().x; x < area.getBottomRight().x; x++)
+    for(int x = area.getLeft(); x < area.getRight(); x++)
     {
       int pos = 4 * (x + y * tile->width);
       C += data[pos];
@@ -151,7 +151,7 @@ PipetteLayerOperations::PipetteColor OperationsCMYK32::sumPixelValues(Scroom::Ut
 
 LayerOperations::Ptr OperationsCMYK16::create()
 {
-  return Ptr(new OperationsCMYK16());
+  return LayerOperations::Ptr(new OperationsCMYK16());
 }
 
 OperationsCMYK16::OperationsCMYK16()
@@ -255,9 +255,9 @@ PipetteLayerOperations::PipetteColor OperationsCMYK16::sumPixelValues(Scroom::Ut
   size_t K = 0;
   
   //naive implementation of summing the components up
-  for(int y = area.getTopLeft().y; y < area.getBottomRight().y; y++)
+  for(int y = area.getTop(); y < area.getBottom(); y++)
   {
-    for(int x = area.getTopLeft().x; x < area.getBottomRight().x; x++)
+    for(int x = area.getLeft(); x < area.getRight(); x++)
     {
       int pos = 2 * (x + y * tile->width);
       C += data[pos] >> 4;
@@ -275,7 +275,7 @@ PipetteLayerOperations::PipetteColor OperationsCMYK16::sumPixelValues(Scroom::Ut
 
 LayerOperations::Ptr OperationsCMYK8::create()
 {
-  return Ptr(new OperationsCMYK8());
+  return LayerOperations::Ptr(new OperationsCMYK8());
 }
 
 OperationsCMYK8::OperationsCMYK8()
@@ -376,9 +376,9 @@ PipetteLayerOperations::PipetteColor OperationsCMYK8::sumPixelValues(Scroom::Uti
   size_t K = 0;
   
   //naive implementation of summing the components up
-  for(int y = area.getTopLeft().y; y < area.getBottomRight().y; y++)
+  for(int y = area.getTop(); y < area.getBottom(); y++)
   {
-    for(int x = area.getTopLeft().x; x < area.getBottomRight().x; x++)
+    for(int x = area.getLeft(); x < area.getRight(); x++)
     {
       int pos = x + y * tile->width;
       C += data[pos] >> 6;
@@ -396,7 +396,7 @@ PipetteLayerOperations::PipetteColor OperationsCMYK8::sumPixelValues(Scroom::Uti
 
 LayerOperations::Ptr OperationsCMYK4::create()
 {
-  return Ptr(new OperationsCMYK4());
+  return LayerOperations::Ptr(new OperationsCMYK4());
 }
 
 OperationsCMYK4::OperationsCMYK4()
@@ -506,9 +506,9 @@ PipetteLayerOperations::PipetteColor OperationsCMYK4::sumPixelValues(Scroom::Uti
   size_t K = 0;
   
   //naive implementation of summing the components up
-  for(int y = area.getTopLeft().y; y < area.getBottomRight().y; y++)
+  for(int y = area.getTop(); y < area.getBottom(); y++)
   {
-    for(int x = area.getTopLeft().x; x < area.getBottomRight().x; x++)
+    for(int x = area.getLeft(); x < area.getRight(); x++)
     {
       int pos = (x + y * tile->width) / 2;
       if ((x + y * tile->width) % 2 == 0)

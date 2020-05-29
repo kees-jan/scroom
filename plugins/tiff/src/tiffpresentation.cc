@@ -380,11 +380,10 @@ PipetteLayerOperations::PipetteColor operator/(const std::vector<std::pair<std::
 */
 PipetteLayerOperations::PipetteColor TiffPresentationWrapper::getAverages(Scroom::Utils::Rectangle<int> area)
 {
-  auto pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(presentation->ls[0]);
-  if (pipetteLayerOperation == nullptr)
+  PipetteLayerOperations::Ptr pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(presentation->ls[0]);
+  if (!pipetteLayerOperation)
   {
-    PipetteLayerOperations::PipetteColor empty;
-    return empty;
+    return {};
   }
 
   Layer::Ptr bottomLayer = presentation->tbi->getBottomLayer();
