@@ -393,12 +393,12 @@ PipetteLayerOperations::PipetteColor TiffPresentationWrapper::getAverages(Scroom
   int totalPixels = area.getWidth() * area.getHeight();
 
   //Get start tile (tile_pos_x_start, tile_pos_y_start)
-  int tile_pos_x_start = floor(area.getLeft() / TILESIZE);
-  int tile_pos_y_start = floor(area.getTop() / TILESIZE);
+  int tile_pos_x_start = (area.getLeft() - 1) / TILESIZE;
+  int tile_pos_y_start = (area.getTop() - 1) / TILESIZE;
 
   //Get end tile (tile_pos_x_end, tile_pos_y_end)
-  int tile_pos_x_end = floor(area.getRight() / TILESIZE);
-  int tile_pos_y_end = floor(area.getBottom() / TILESIZE);
+  int tile_pos_x_end = (area.getRight() - 1) / TILESIZE;
+  int tile_pos_y_end = (area.getBottom() - 1) / TILESIZE;
 
   for(int x = tile_pos_x_start; x <= tile_pos_x_end; x++)
   {
@@ -418,12 +418,12 @@ PipetteLayerOperations::PipetteColor TiffPresentationWrapper::getAverages(Scroom
       else if(x == tile_pos_x_end && x != tile_pos_x_start) //right side non single
       {
         start_x_area = 0;
-        end_x_area = area.getRight() % TILESIZE;
+        end_x_area = (area.getRight() - 1) % TILESIZE;
       } 
       else if(x == tile_pos_x_start && x == tile_pos_x_end) //rect is contained in a single tile
       {
         start_x_area = area.getLeft() % TILESIZE;
-        end_x_area = area.getRight() % TILESIZE;
+        end_x_area = (area.getRight() - 1) % TILESIZE;
       }
       else //tile is between included tiles
       {
@@ -440,12 +440,12 @@ PipetteLayerOperations::PipetteColor TiffPresentationWrapper::getAverages(Scroom
       else if(y == tile_pos_y_end && y != tile_pos_y_start) //bottom side non single
       {
         start_y_area = 0;
-        end_y_area = area.getBottom() % TILESIZE;
+        end_y_area = (area.getBottom() - 1) % TILESIZE;
       }
       else if(y == tile_pos_y_start && y == tile_pos_y_end) //rect is contained in a single tile
       {
         start_y_area = area.getTop() % TILESIZE;
-        end_y_area = area.getBottom() % TILESIZE;
+        end_y_area = (area.getBottom() - 1) % TILESIZE;
       } 
       else //tile is between included tiles
       {
@@ -453,13 +453,13 @@ PipetteLayerOperations::PipetteColor TiffPresentationWrapper::getAverages(Scroom
         end_y_area = TILESIZE;
       }
 
-      int width   = end_x_area - start_x_area;
-      int height  = end_y_area - start_y_area;
+      int width = end_x_area - start_x_area + 1;
+      int height = end_y_area - start_y_area + 1;
 
       Scroom::Utils::Rectangle<int> sub_rectangle(start_x_area, start_y_area, width, height);
       CompressedTile::Ptr tile = bottomLayer->getTile(x, y);
       ConstTile::Ptr constTile = tile->getConstTileSync();
-      
+
       pipetteColors = pipetteColors + pipetteLayerOperation->sumPixelValues(sub_rectangle, constTile);
       //continue to next tile
     }
