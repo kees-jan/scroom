@@ -122,7 +122,7 @@ void Pipette::onSelectionEnd(Selection* s)
     max_y = clamp(max_y, 0, static_cast<int>(std::lround(rect.getHeight())));
 
     if(max_x - min_x == 0 || max_y - min_y == 0){
-    	return;
+      return;
     }
 
     //This is a temp method to test the getAverages.
