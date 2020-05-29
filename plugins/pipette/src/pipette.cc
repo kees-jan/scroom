@@ -111,46 +111,35 @@ void PipetteHandler::onSelectionUpdate(Selection* s)
   }
 }
 
-template<class T>
-const T& clamp( const T& v, const T& lo, const T& hi )
-{
-    return (v < lo) ? lo : (hi < v) ? hi : v;
-}
-
 void PipetteHandler::onSelectionEnd(Selection* s)
 {
   if(enabled)
   {
     selection = s;
-    //TODO show data?
 
     view->setPanning();
 
-    PresentationInterface::Ptr p = boost::static_pointer_cast<PresentationInterface>(view->getCurrentPresentation());
-    Scroom::Utils::Rectangle<double> rect = p->getRect();
+    // Get the image rectangle
+    auto presentation = view->getCurrentPresentation();
+    PresentationInterface::Ptr p = boost::static_pointer_cast<PresentationInterface>(presentation);
+    auto image = p->getRect().toIntRectangle();
 
-    int min_x = std::min(selection->start.x, selection->end.x);
-    min_x = clamp(min_x, 0, static_cast<int>(std::lround(rect.getWidth())));
-    int min_y = std::min(selection->start.y, selection->end.y);
-    min_y = clamp(min_y, 0, static_cast<int>(std::lround(rect.getHeight())));
-    int max_x = std::max(selection->start.x, selection->end.x);
-    max_x = clamp(max_x, 0, static_cast<int>(std::lround(rect.getWidth())));
-    int max_y = std::max(selection->start.y, selection->end.y);
-    max_y = clamp(max_y, 0, static_cast<int>(std::lround(rect.getHeight())));
+    // Get the selection rectangle
+    unsigned int sel_x = std::min(selection->start.x, selection->end.x);
+    unsigned int sel_y = std::min(selection->start.y, selection->end.y);
+    auto sel_rect = Scroom::Utils::Rectangle<int>(sel_x, sel_y, selection->width(), selection->height());
 
-    if(max_x - min_x == 0 || max_y - min_y == 0){
-      return;
-    }
+    // Intersect both rectangles to get the part of the selection that overlaps the image
+    auto rect = sel_rect.intersection(image);
 
-    //This is a temp method to test the getAverages.
-    //Take this out for the merge to pipette.
-    Scroom::Utils::Rectangle<int> r(min_x, min_y, max_x - min_x, max_y - min_y);
-    auto pipetteColors = boost::dynamic_pointer_cast<PipetteViewInterface>(p);
-    auto test = pipetteColors->getAverages(r);
+    // Get the average color within the rectangle
+    auto pipette = boost::static_pointer_cast<PipetteViewInterface>(presentation);
+    auto colors = pipette->getAverages(rect);
 
+    // Show the result on the status bar
     std::stringstream colours;
     colours << "Colors:";
-    for (auto element : test) {
+    for (auto element : colors) {
       colours << ' ' << element.first.c_str() << ": " << element.second;
     }
 
