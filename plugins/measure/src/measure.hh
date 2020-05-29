@@ -14,7 +14,7 @@
 class MeasureHandler : public PostRenderer, public SelectionListener, virtual public Scroom::Utils::Base
 {
 public:
-	MeasureHandler();
+  MeasureHandler();
 
 public:
   typedef boost::shared_ptr<MeasureHandler> Ptr;
