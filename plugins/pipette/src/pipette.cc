@@ -45,8 +45,8 @@ void Pipette::registerCapabilities(ScroomPluginInterface::Ptr host)
 
 static void on_toggled(GtkToggleButton* button, gpointer data)
 {
-  bool* view = reinterpret_cast<bool*>(data);
-  *view = !gtk_toggle_button_get_active(button);
+  bool* flag = reinterpret_cast<bool*>(data);
+  *flag = gtk_toggle_button_get_active(button);
 }
 
 Scroom::Bookkeeping::Token Pipette::viewAdded(ViewInterface::Ptr v)
@@ -61,7 +61,7 @@ Scroom::Bookkeeping::Token Pipette::viewAdded(ViewInterface::Ptr v)
   GtkToolItem* button = gtk_tool_item_new();
   GtkWidget* toggleButton = gtk_toggle_button_new_with_mnemonic("pipette");
   gtk_widget_set_visible(toggleButton, true);
-  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(toggleButton), true);
+  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(toggleButton), false);
 
   gtk_container_add(GTK_CONTAINER(button), toggleButton);
   g_signal_connect(static_cast<gpointer>(toggleButton), "toggled", G_CALLBACK(on_toggled), &handler->enabled);
