@@ -376,8 +376,8 @@ win_icon_res_compile_cmd=":"
 win_icon_res=""
 AM_COND_IF([WINDOWS],[AC_CHECK_PROG([WINDRES], [windres], [yes], [no])])
 if test x"${WINDRES}" == x"yes" ; then
-  win_icon_res_compile_cmd=windres\ '${top_srcdir}'/build_scripts/windows/icon.rc\ -O\ coff\ -o\ '${top_srcdir}'/icon.res
-  win_icon_res='${top_srcdir}'/icon.res
+  win_icon_res_compile_cmd=windres\ '${top_srcdir}'/build_scripts/windows/icon.rc\ -O\ coff\ -o\ icon.res
+  win_icon_res=icon.res
 elif test x"${WINDRES}" == x"no" ; then
   AC_MSG_WARN(["windres not found - won't create icon for executable"])
 fi
