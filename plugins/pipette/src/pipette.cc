@@ -130,9 +130,14 @@ void Pipette::onSelectionEnd(Selection* s)
     Scroom::Utils::Rectangle<int> r(min_x, min_y, max_x - min_x, max_y - min_y);
     auto pipetteColors = boost::dynamic_pointer_cast<PipetteViewInterface>(p);
     auto test = pipetteColors->getAverages(r);
-    for(auto element : test){
-      printf("color %s: %lu\n", element.first.c_str(), element.second);
+
+    std::stringstream colours;
+    colours << "Colours:";
+    for (auto element : test) {
+      colours << ' ' << element.first.c_str() << ':' << element.second;
     }
+
+    view->setStatusMessage(colours.str());
   }
 }
 
