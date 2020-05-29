@@ -190,7 +190,7 @@ void View::redraw(cairo_t* cr)
 
     presentation->redraw(shared_from_this<View>(), cr, rect, zoom);
 
-    for (auto renderer : postRenderers)
+    for(auto renderer : postRenderers)
     {
       renderer->render(cr);
     }
@@ -631,7 +631,7 @@ void View::on_buttonPress(GdkEventButton* event)
   }
   GdkPoint point = windowPointToPresentationPoint(eventToPoint(event));
   selections[event->button] = new Selection(point);
-  for (auto listener : selectionListeners[static_cast<MouseButton>(event->button)])
+  for(auto listener : selectionListeners[static_cast<MouseButton>(event->button)])
   {
     listener->onSelectionStart(point);
   }
@@ -652,7 +652,7 @@ void View::on_buttonRelease(GdkEventButton* event)
   if(sel)
   {
     sel->end = windowPointToPresentationPoint(eventToPoint(event));
-    for (auto listener : selectionListeners[static_cast<MouseButton>(event->button)])
+    for(auto listener : selectionListeners[static_cast<MouseButton>(event->button)])
     {
       listener->onSelectionEnd(sel);
     }
@@ -695,7 +695,7 @@ void View::on_motion_notify(GdkEventMotion* event)
   }
 
   // There should be a cleaner way to do this...
-  for (int button = 0; button < 3; button++)
+  for(int button = 0; button < 3; button++)
   {
     if((event->state & (GDK_BUTTON1_MASK << button)))
     {
@@ -704,7 +704,7 @@ void View::on_motion_notify(GdkEventMotion* event)
       if(sel)
       {
         sel->end = windowPointToPresentationPoint(eventToPoint(event));
-        for (auto listener : selectionListeners[static_cast<MouseButton>(button + 1)])
+        for(auto listener : selectionListeners[static_cast<MouseButton>(button + 1)])
         {
           listener->onSelectionUpdate(sel);
         }
