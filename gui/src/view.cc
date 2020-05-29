@@ -807,6 +807,11 @@ void View::setStatusMessage(const std::string& message)
   gtk_statusbar_push(statusBar, statusBarContextId, message.c_str());
 }
 
+Scroom::Utils::Stuff View::getCurrentPresentation()
+{
+  return presentation;
+}
+
 ////////////////////////////////////////////////////////////////////////
 // Helpers
 

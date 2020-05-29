@@ -11,36 +11,7 @@
 #include <scroom/utilities.hh>
 #include <scroom/viewinterface.hh>
 
-class MeasureHandler : public PostRenderer, public SelectionListener, virtual public Scroom::Utils::Base
-{
-public:
-	MeasureHandler();
-
-public:
-  typedef boost::shared_ptr<MeasureHandler> Ptr;
-
-private:
-  Selection* selection;
-
-public:
-  ViewInterface::Ptr view;
-
-public:
-  static Ptr create();
-
-public:
-  virtual ~MeasureHandler();
-
-  virtual void render(cairo_t* cr);
-  virtual void onSelectionStart(GdkPoint p);
-  virtual void onSelectionUpdate(Selection* s);
-  virtual void onSelectionEnd(Selection* s);
-
-private:
-  virtual void displayMeasurement();
-};
-
-class Measure : public PluginInformationInterface, public ViewObserver, virtual public Scroom::Utils::Base
+class Measure : public PostRenderer, public SelectionListener, public PluginInformationInterface, public ViewObserver, virtual public Scroom::Utils::Base
 {
 public:
   typedef boost::shared_ptr<Measure> Ptr;
@@ -50,6 +21,10 @@ private:
 
 public:
   static Ptr create();
+
+private:
+  Selection* selection;
+  ViewInterface::Ptr view;
 
 public:
   ////////////////////////////////////////////////////////////////////////
@@ -65,7 +40,22 @@ public:
   virtual Scroom::Bookkeeping::Token viewAdded(ViewInterface::Ptr v);
 
   ////////////////////////////////////////////////////////////////////////
+  // PostRenderer
+
+  virtual void render(cairo_t* cr);
+
+  ////////////////////////////////////////////////////////////////////////
+  // SelectionListener
+
+  virtual void onSelectionStart(GdkPoint p);
+  virtual void onSelectionUpdate(Selection* s);
+  virtual void onSelectionEnd(Selection* s);
+
+  ////////////////////////////////////////////////////////////////////////
 
   virtual ~Measure();
+
+private:
+  virtual void displayMeasurement();
 };
 

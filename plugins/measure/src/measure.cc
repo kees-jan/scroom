@@ -7,8 +7,13 @@
 
 #include "measure.hh"
 
+////////////////////////////////////////////////////////////////////////
+// Measure
+////////////////////////////////////////////////////////////////////////
+
 Measure::Measure()
 {
+  selection = nullptr;
 }
 Measure::~Measure()
 {
@@ -38,38 +43,7 @@ void Measure::registerCapabilities(ScroomPluginInterface::Ptr host)
   host->registerViewObserver("Measure tool", shared_from_this<Measure>());
 }
 
-////////////////////////////////////////////////////////////////////////
-// ViewObserver
-////////////////////////////////////////////////////////////////////////
-
-Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr view)
-{
-  MeasureHandler::Ptr handler = MeasureHandler::create();
-  handler->view = view;
-  view->registerSelectionListener(handler, MouseButton::SECONDARY);
-  view->registerPostRenderer(handler);
-
-  return Scroom::Bookkeeping::Token();
-}
-
-////////////////////////////////////////////////////////////////////////
-// MeasureHandler
-////////////////////////////////////////////////////////////////////////
-
-MeasureHandler::MeasureHandler()
-{
-  selection = nullptr;
-}
-MeasureHandler::~MeasureHandler()
-{
-}
-
-MeasureHandler::Ptr MeasureHandler::create()
-{
-  return Ptr(new MeasureHandler());
-}
-
-void MeasureHandler::displayMeasurement()
+void Measure::displayMeasurement()
 {
   std::ostringstream s;
   s.precision(1);
@@ -84,37 +58,58 @@ void MeasureHandler::displayMeasurement()
   view->setStatusMessage(s.str());
 }
 
-void MeasureHandler::onSelectionStart(GdkPoint)
+////////////////////////////////////////////////////////////////////////
+// ViewObserver
+////////////////////////////////////////////////////////////////////////
+
+Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr v)
+{
+  view = v;
+  view->registerSelectionListener(shared_from_this<Measure>(), MouseButton::SECONDARY);
+  view->registerPostRenderer(shared_from_this<Measure>());
+
+  return Scroom::Bookkeeping::Token();
+}
+
+////////////////////////////////////////////////////////////////////////
+// SelectionListener
+////////////////////////////////////////////////////////////////////////
+
+void Measure::onSelectionStart(GdkPoint)
 {
 }
 
-void MeasureHandler::onSelectionUpdate(Selection* s)
+void Measure::onSelectionUpdate(Selection* s)
 {
   selection = s;
   displayMeasurement();
 }
 
-void MeasureHandler::onSelectionEnd(Selection* s)
+void Measure::onSelectionEnd(Selection* s)
 {
   selection = s;
   displayMeasurement();
 }
 
-void MeasureHandler::render(cairo_t* cr)
+////////////////////////////////////////////////////////////////////////
+// PostRenderer
+////////////////////////////////////////////////////////////////////////
+
+void Measure::render(cairo_t* cr)
 {
-  if(selection){
-	GdkPoint start = view->presentationPointToWindowPoint(selection->start);
-	GdkPoint end = view->presentationPointToWindowPoint(selection->end);
-	cairo_set_line_width(cr, 1);
-	cairo_set_source_rgb(cr, 0.75, 0, 0); // Dark Red
-	cairo_stroke(cr);
-	cairo_set_source_rgb(cr, 1, 0, 0); // Red
-	cairo_move_to(cr, start.x, start.y);
-	cairo_line_to(cr, end.x, end.y);
-	cairo_line_to(cr, end.x, start.y);
-	cairo_line_to(cr, start.x, start.y);
-	cairo_line_to(cr, start.x, end.y);
-	cairo_line_to(cr, end.x, end.y);
-	cairo_stroke(cr);
+  if(selection)
+  {
+    GdkPoint start = view->presentationPointToWindowPoint(selection->start);
+    GdkPoint end = view->presentationPointToWindowPoint(selection->end);
+    cairo_set_line_width(cr, 1);
+    cairo_stroke(cr);
+    cairo_set_source_rgb(cr, 1, 0, 0); // Red
+    cairo_move_to(cr, start.x, start.y);
+    cairo_line_to(cr, end.x, end.y);
+    cairo_line_to(cr, end.x, start.y);
+    cairo_line_to(cr, start.x, start.y);
+    cairo_line_to(cr, start.x, end.y);
+    cairo_line_to(cr, end.x, end.y);
+    cairo_stroke(cr);
   }
 }

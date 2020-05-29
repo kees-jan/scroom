@@ -18,6 +18,7 @@
 #include <boost/weak_ptr.hpp>
 
 #include <scroom/progressinterface.hh>
+#include <scroom/stuff.hh>
 
 struct Selection
 {
@@ -62,7 +63,7 @@ public:
 
 // There is no documentation on values 4 and 5, so
 // they are not included here.
-enum class MouseButton : uint {
+enum class MouseButton : guint {
   PRIMARY = 1,
   MIDDLE = 2,
   SECONDARY = 3
@@ -187,7 +188,20 @@ public:
    */
   virtual GdkPoint presentationPointToWindowPoint(GdkPoint)
   {
-	return {0, 0};
+    return {0, 0};
+  }
+
+  /**
+   * Returns a shared pointer to the current presentation.
+   *
+   * The actual return type should be PresentationInterface::Ptr,
+   * but including the required header file causes a cyclic include.
+   * This workaround means that you have to explicitly cast
+   * the result of this function to PresentationInterface::Ptr.
+   */
+  virtual Scroom::Utils::Stuff getCurrentPresentation()
+  {
+    return nullptr;
   }
 };
 
