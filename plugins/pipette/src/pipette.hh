@@ -11,7 +11,41 @@
 #include <scroom/utilities.hh>
 #include <scroom/viewinterface.hh>
 
-class Pipette : public PostRenderer, public SelectionListener, public PluginInformationInterface, public ViewObserver, virtual public  Scroom::Utils::Base
+class PipetteHandler : public PostRenderer, public SelectionListener, virtual public Scroom::Utils::Base
+{
+public:
+  PipetteHandler();
+
+public:
+  typedef boost::shared_ptr<PipetteHandler> Ptr;
+
+private:
+  Selection* selection;
+
+public:
+  ViewInterface::Ptr view;
+  bool enabled;
+
+public:
+  static Ptr create();
+
+public:
+  virtual ~PipetteHandler();
+
+  ////////////////////////////////////////////////////////////////////////
+  // PostRenderer
+
+  virtual void render(cairo_t* cr);
+
+  ////////////////////////////////////////////////////////////////////////
+  // SelectionListener
+
+  virtual void onSelectionStart(GdkPoint p);
+  virtual void onSelectionUpdate(Selection* s);
+  virtual void onSelectionEnd(Selection* s);
+};
+
+class Pipette : public PluginInformationInterface, public ViewObserver, virtual public  Scroom::Utils::Base
 {
 public:
   typedef boost::shared_ptr<Pipette> Ptr;
@@ -21,11 +55,6 @@ private:
 
 public:
   static Ptr create();
-
-private:
-  Selection* selection;
-  bool enabled;
-  ViewInterface::Ptr view;
 
 public:
   ////////////////////////////////////////////////////////////////////////
@@ -39,18 +68,6 @@ public:
   // ViewObserver
 
   virtual Scroom::Bookkeeping::Token viewAdded(ViewInterface::Ptr v);
-
-  ////////////////////////////////////////////////////////////////////////
-  // PostRenderer
-
-  virtual void render(cairo_t* cr);
-
-  ////////////////////////////////////////////////////////////////////////
-  // SelectionListener
-
-  virtual void onSelectionStart(GdkPoint p);
-  virtual void onSelectionUpdate(Selection* s);
-  virtual void onSelectionEnd(Selection* s);
 
   ////////////////////////////////////////////////////////////////////////
 

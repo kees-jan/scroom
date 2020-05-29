@@ -10,8 +10,6 @@
 
 Pipette::Pipette()
 {
-  selection = nullptr;
-  enabled = false;
 }
 Pipette::~Pipette()
 {
@@ -55,9 +53,10 @@ Scroom::Bookkeeping::Token Pipette::viewAdded(ViewInterface::Ptr v)
 {
   gdk_threads_enter();
 
-  view = v;
-  view->registerSelectionListener(shared_from_this<Pipette>(), MouseButton::PRIMARY);
-  view->registerPostRenderer(shared_from_this<Pipette>());
+  PipetteHandler::Ptr handler = PipetteHandler::create();
+  handler->view = v;
+  v->registerSelectionListener(handler, MouseButton::PRIMARY);
+  v->registerPostRenderer(handler);
 
   GtkToolItem* button = gtk_tool_item_new();
   GtkWidget* toggleButton = gtk_toggle_button_new_with_mnemonic("pipette");
@@ -65,9 +64,9 @@ Scroom::Bookkeeping::Token Pipette::viewAdded(ViewInterface::Ptr v)
   gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(toggleButton), true);
 
   gtk_container_add(GTK_CONTAINER(button), toggleButton);
-  g_signal_connect(static_cast<gpointer>(toggleButton), "toggled", G_CALLBACK(on_toggled), &enabled);
+  g_signal_connect(static_cast<gpointer>(toggleButton), "toggled", G_CALLBACK(on_toggled), &handler->enabled);
 
-  view->addToToolbar(button);
+  v->addToToolbar(button);
 
   gdk_threads_leave();
 
@@ -75,10 +74,28 @@ Scroom::Bookkeeping::Token Pipette::viewAdded(ViewInterface::Ptr v)
 }
 
 ////////////////////////////////////////////////////////////////////////
+// PipetteHandler
+////////////////////////////////////////////////////////////////////////
+
+PipetteHandler::PipetteHandler()
+{
+  selection = nullptr;
+  enabled = false;
+}
+PipetteHandler::~PipetteHandler()
+{
+}
+
+PipetteHandler::Ptr PipetteHandler::create()
+{
+  return Ptr(new PipetteHandler());
+}
+
+////////////////////////////////////////////////////////////////////////
 // SelectionListener
 ////////////////////////////////////////////////////////////////////////
 
-void Pipette::onSelectionStart(GdkPoint)
+void PipetteHandler::onSelectionStart(GdkPoint)
 {
   if(enabled)
   {
@@ -86,7 +103,7 @@ void Pipette::onSelectionStart(GdkPoint)
   }
 }
 
-void Pipette::onSelectionUpdate(Selection* s)
+void PipetteHandler::onSelectionUpdate(Selection* s)
 {
   if(enabled)
   {
@@ -100,7 +117,7 @@ const T& clamp( const T& v, const T& lo, const T& hi )
     return (v < lo) ? lo : (hi < v) ? hi : v;
 }
 
-void Pipette::onSelectionEnd(Selection* s)
+void PipetteHandler::onSelectionEnd(Selection* s)
 {
   if(enabled)
   {
@@ -145,7 +162,7 @@ void Pipette::onSelectionEnd(Selection* s)
 // PostRenderer
 ////////////////////////////////////////////////////////////////////////
 
-void Pipette::render(cairo_t* cr)
+void PipetteHandler::render(cairo_t* cr)
 {
   if(selection && enabled)
   {
