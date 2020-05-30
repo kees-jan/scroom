@@ -384,9 +384,8 @@ AC_SUBST([TRANSPARENTOVERLAY_BOOSTTEST_WIN_LD_SIZEDETERMINER], [$transparentover
 
 # Create command for compiling icon resource and location of resource on Windows
 AM_COND_IF([WINDOWS],[AC_CHECK_PROG([WINDRES], [windres], [yes], [no])])
-if test x"${WINDRES}" == x"yes" ; then
-  AM_CONDITIONAL([HAVE_WINDRES], [true])
-elif test x"${WINDRES}" == x"no" ; then
+AM_CONDITIONAL([HAVE_WINDRES], [test x"${WINDRES}" == x"yes"])
+if test x"${WINDRES}" == x"no" ; then
   AC_MSG_WARN(["windres not found - won't create icon for executable"])
 fi
 
