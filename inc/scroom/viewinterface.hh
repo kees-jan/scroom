@@ -20,6 +20,11 @@
 #include <scroom/progressinterface.hh>
 #include <scroom/stuff.hh>
 
+/**
+ * Structure that represents a selection made
+ * by the user. This structure was previously
+ * called 'Measurement'.
+ */
 struct Selection
 {
 public:
@@ -37,6 +42,10 @@ public:
   double length() { return std::sqrt(std::pow(double(width()),2) + std::pow(double(height()),2)); }
 };
 
+/**
+ * Interface provided to something that wants to
+ * draw on top of the current presentation.
+ */
 class PostRenderer
 {
 public:
@@ -45,9 +54,25 @@ public:
 public:
   virtual ~PostRenderer() {}
 
+  /**
+   * This funtion is called whenever the presentation
+   * is redrawn. A cairo instance is passed as an
+   * argument, which can be used for drawing on top
+   * of the presentation.
+   */
   virtual void render(cairo_t* cr)=0;
 };
 
+/**
+ * Interface provided to something that wants to be
+ * notified of selection updates.
+ * 
+ * Whenever the user selection changes, the appropriate
+ * functions are called with either the starting point
+ * or the full selection as argument.
+ *
+ * @see Selection
+ */
 class SelectionListener
 {
 public:
@@ -56,13 +81,44 @@ public:
 public:
   virtual ~SelectionListener() {}
 
+  /**
+   * This function is called whenever the user clicks
+   * a view. The point that is clicked is passed as
+   * an argument.
+   * 
+   * The passed point is a point in the presentation
+   * coordinate space.
+   */
   virtual void onSelectionStart(GdkPoint start)=0;
+
+  /**
+   * This function is called whenever the selection
+   * updates. That is, whenever the user moves the
+   * mouse while keeping the mouse button pressed.
+   * 
+   * The updated selection is passed as an argument.
+   * 
+   * @see Selection
+   */
   virtual void onSelectionUpdate(Selection* selection)=0;
+
+  /**
+   * This function is called whenever the selection
+   * ends. That is, whenever the user releases the
+   * mouse button that was pressed.
+   * 
+   * The final selection is passed as an argument.
+   * 
+   * @see Selection
+   */
   virtual void onSelectionEnd(Selection* selection)=0;
 };
 
-// There is no documentation on values 4 and 5, so
-// they are not included here.
+/**
+ * Enum for easier access to the constants Gtk uses for
+ * mouse buttons. There is no documentation on any other
+ * values, so they are not included in this enum.
+ */
 enum class MouseButton : guint
 {
   PRIMARY = 1,
@@ -78,7 +134,7 @@ enum class MouseButton : guint
  * presentation, you typically want to influence whatever is being
  * shown. This interface allows you to do so.
  *
- * @see PresentationInterface, Viewable
+ * @see PresentationInterface, SelectionListener, PostRenderer, Viewable
  */
 class ViewInterface
 {
@@ -160,9 +216,8 @@ public:
   /**
    * Register a SelectionListener to be updated whenever the
    * user selects a region using the given mouse button. When
-   * the user changes the selection, the function
-   * 'onSelection(Selection* selection)' is called on the
-   * given object.
+   * the user changes the selection, various functions on the
+   * given instance are called.
    * 
    * @see SelectionListener
    */
@@ -171,7 +226,17 @@ public:
   }
 
   /**
-   * Register a postrenderer.
+   * Register a postrenderer to be updated whenever a redraw
+   * occurs. When this happens, the 'redraw(cairo_t * cr)'
+   * function gets called on the instance that is passed to
+   * the given instance.
+   * 
+   * Note that the order in which different registered instances
+   * get updated is the order in which they register to the
+   * view. This order remains constant throughout the view's
+   * lifetime.
+   * 
+   * @see PostRenderer
    */
   virtual void registerPostRenderer(PostRenderer::Ptr)
   {
@@ -199,6 +264,8 @@ public:
    * but including the required header file causes a cyclic include.
    * This workaround means that you have to explicitly cast
    * the result of this function to PresentationInterface::Ptr.
+   * 
+   * @see PresentationInterface
    */
   virtual Scroom::Utils::Stuff getCurrentPresentation()
   {
