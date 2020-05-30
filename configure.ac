@@ -77,11 +77,11 @@ AM_COND_IF([LINUX], [
     SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wredundant-decls])
 ])   
 AM_COND_IF([WINDOWS], [
-    # - Warns for C pointer declarations - On windows there are a lot of those in gtk headers
-    SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wno-parentheses])
     # - On Windows, gtk uses deprecated glib stuff - need to move to gtk3 ;-)
     SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wno-deprecated-declarations])
 ])   
+# - Warns for C pointer declarations - With gcc 10 there are a lot of those in gtk headers
+SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wno-parentheses])
 
 # MinGW doesn't support the -z flag
 AM_COND_IF([LINUX], 
