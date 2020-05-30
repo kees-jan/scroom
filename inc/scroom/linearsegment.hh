@@ -63,7 +63,9 @@ namespace Scroom
         }
       }
 
-      Segment(typename std::enable_if<!std::is_same<int, std::remove_cv<T>>::value,Segment<int> const&>::type other)
+      /** Implicit conversion from Segment<int> to Segment<T>. If T!=int */
+      template<bool T_is_int = std::is_same<int, typename std::remove_cv<T>::type>::value>
+      Segment(typename std::enable_if<!T_is_int,Segment<int> const&>::type other)
         : start(other.getStart()), size(other.getSize())
       {
       }

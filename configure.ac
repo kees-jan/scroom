@@ -57,7 +57,6 @@ dnl SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wconversion])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wpointer-arith])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wwrite-strings])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wunused])
-SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wredundant-decls])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wuninitialized])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Winit-self])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wcast-qual])
@@ -71,6 +70,18 @@ SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wsign-promo])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wshadow])
 dnl SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-mwindows])
 SCROOM_TEST_ISYSTEM
+
+# Disabled warnings
+AM_COND_IF([LINUX], [
+    # - Lots of warnings on Windows
+    SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wredundant-decls])
+])   
+AM_COND_IF([WINDOWS], [
+    # - Warns for C pointer declarations - On windows there are a lot of those in gtk headers
+    SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wno-parentheses])
+    # - On Windows, gtk uses deprecated glib stuff - need to move to gtk3 ;-)
+    SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wno-deprecated-declarations])
+])   
 
 # MinGW doesn't support the -z flag
 AM_COND_IF([LINUX], 
