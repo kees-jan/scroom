@@ -4,6 +4,8 @@
 #include <cmath>
 #include <scroom/pipetteviewinterface.hh>
 
+#include <iostream> // Temporary - for debugging purposes
+
 ////////////////////////////////////////////////////////////////////////
 // Pipette
 ////////////////////////////////////////////////////////////////////////
@@ -116,34 +118,49 @@ void PipetteHandler::onSelectionEnd(Selection* s)
   if(enabled)
   {
     selection = s;
-
     view->setPanning();
 
     // Get the image rectangle
-    auto presentation = view->getCurrentPresentation();
-    PresentationInterface::Ptr p = boost::static_pointer_cast<PresentationInterface>(presentation);
-    auto image = p->getRect().toIntRectangle();
+    auto presentation = boost::static_pointer_cast<PresentationInterface>(view->getCurrentPresentation());
+    if(presentation == nullptr)
+    {
+      printf("PANIC: Current presentation does not implement PresentationInterface!\n");
+      view->setStatusMessage("Error when requesting the image data.");
+      return;
+    }
+    auto image = presentation->getRect().toIntRectangle();
 
     // Get the selection rectangle
-    unsigned int sel_x = std::min(selection->start.x, selection->end.x);
-    unsigned int sel_y = std::min(selection->start.y, selection->end.y);
+    int sel_x = std::min(selection->start.x, selection->end.x);
+    int sel_y = std::min(selection->start.y, selection->end.y);
     auto sel_rect = Scroom::Utils::Rectangle<int>(sel_x, sel_y, selection->width(), selection->height());
 
     // Intersect both rectangles to get the part of the selection that overlaps the image
     auto rect = sel_rect.intersection(image);
 
     // Get the average color within the rectangle
-    auto pipette = boost::static_pointer_cast<PipetteViewInterface>(presentation);
+    auto pipette = boost::dynamic_pointer_cast<PipetteViewInterface>(presentation);
+    if(pipette == nullptr)
+    {
+      printf("PANIC: Presentation does not implement PipetteViewInterface!\n");
+      view->setStatusMessage("Error when requesting the image data.");
+      return;
+    }
+    std::cout << rect << std::endl;
     auto colors = pipette->getAverages(rect);
 
-    // Show the result on the status bar
-    std::stringstream colours;
-    colours << "Colors:";
-    for (auto element : colors) {
-      colours << ' ' << element.first.c_str() << ": " << element.second;
+    // If there is a result, show it on the status bar
+    if(colors.empty())
+      return;
+
+    std::stringstream color_stream;
+    color_stream << "Colors:";
+    for(auto element : colors)
+    {
+      color_stream << ' ' << element.first.c_str() << ": " << element.second;
     }
 
-    view->setStatusMessage(colours.str());
+    view->setStatusMessage(color_stream.str());
   }
 }
 
