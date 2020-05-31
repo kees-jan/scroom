@@ -9,6 +9,7 @@
 
 #include <boost/shared_ptr.hpp>
 #include <boost/utility.hpp>
+#include <boost/operators.hpp>
 
 #include <scroom/global.hh>
 
@@ -54,11 +55,12 @@ namespace Scroom
      * @param Base the larger type that contains the samples. Typically uint8_t
      */
     template <typename Base>
-    class SampleIterator
+    class SampleIterator : public boost::addable2<SampleIterator<Base>, unsigned int>
     {
-    private:
+    public:
       Base* currentBase;
       int currentOffset;
+
       const int bps;
       const int samplesPerBase;
       static const int bitsPerBase;
@@ -91,10 +93,13 @@ namespace Scroom
       SampleIterator operator++(int);
 
       /** Move @c x samples further */
-      SampleIterator& operator+=(int x);
+      SampleIterator& operator+=(unsigned int x);
 
       /** Get the value of the current sample */
       Base operator*();
+
+      bool operator==(const SampleIterator<Base>& other) const;
+
     };
 
     template <typename Base>
@@ -162,7 +167,7 @@ namespace Scroom
     }
 
     template <typename Base>
-    SampleIterator<Base>& SampleIterator<Base>::operator+=(int x)
+    SampleIterator<Base>& SampleIterator<Base>::operator+=(unsigned int x)
     {
       int offset = samplesPerBase-1-currentOffset+x;
       div_t d = div(offset, samplesPerBase);
@@ -171,6 +176,13 @@ namespace Scroom
 
       return *this;
     }
+
+    template <typename Base>
+    bool SampleIterator<Base>::operator==(const SampleIterator<Base>& other) const
+    {
+      return currentBase == other.currentBase && currentOffset == other.currentOffset && bps == other.bps;
+    }
+
   }
 }
 

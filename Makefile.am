@@ -379,7 +379,8 @@ libs_tiled_bitmap_test_tiled_bitmap_tests_CPPFLAGS = @TILEDBITMAP_CFLAGS@ -I $(t
 
 libs_tiled_bitmap_test_tiled_bitmap_tests_SOURCES = \
 	libs/tiled-bitmap/test/main.cc \
-	libs/tiled-bitmap/test/tiledbitmap-tests.cc
+	libs/tiled-bitmap/test/tiledbitmap-tests.cc \
+	libs/tiled-bitmap/test/sampleiterator-tests.cc
 
 libs_tiled_bitmap_test_tiled_bitmap_tests_LDADD = \
 	@BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
