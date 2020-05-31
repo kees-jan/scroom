@@ -39,7 +39,7 @@ public:
 
   int width() { return abs(end.x-start.x); }
   int height() { return abs(end.y-start.y); }
-  double length() { return std::sqrt(std::pow(double(width()),2) + std::pow(double(height()),2)); }
+  double length() { return std::hypot(width(), height()); }
 };
 
 /**
