@@ -602,7 +602,7 @@ root_extra_dist = \
 	.cproject \
 	.project \
 	.settings/org.eclipse.cdt.core.prefs \
-	gui/icon.ico
+	build_scripts/windows/icon.ico
 
 ########################################################################
 ### Wrapping up
