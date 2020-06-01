@@ -601,7 +601,8 @@ root_extra_dist = \
 	.scroom-version \
 	.cproject \
 	.project \
-	.settings/org.eclipse.cdt.core.prefs
+	.settings/org.eclipse.cdt.core.prefs \
+	gui/icon.ico
 
 ########################################################################
 ### Wrapping up
