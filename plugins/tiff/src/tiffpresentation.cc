@@ -345,34 +345,34 @@ std::string TiffPresentation::getTitle()
   return fileName;
 }
 
-//could change this to operator+ perhaps
-PipetteLayerOperations::PipetteColor operator+(std::vector<std::pair<std::string,size_t>>& x, const std::vector<std::pair<std::string,size_t>>& y)
+/* Method to override operator+= method
+* Returns y if x is empty.
+* Otherwise adds the values of the same key.
+*/
+PipetteLayerOperations::PipetteColor operator+=(PipetteLayerOperations::PipetteColor& x, const PipetteLayerOperations::PipetteColor& y)
 {
-  PipetteLayerOperations::PipetteColor result;
   if (x.empty())
   {
-    return y;
+    x = y;
+    return x;
   }
-  for(auto element : x)
+  for(auto const& elem : y)
   {
-    //this needs the algorithm package imported at the top... May be replaced by another for loop...
-    if(std::find(y.begin(), y.end(), element) != y.end())
-    {
-      result.push_back(std::pair<std::string, size_t>(element.first, element.second  + element.second));
-    }
+    x[elem.first] += elem.second;
   }
-    return result;
+  return x;
 }
 
-//these two may be moved to a better location...
-PipetteLayerOperations::PipetteColor operator/(const std::vector<std::pair<std::string,size_t>>&  x, int y)
+/* Override operator/ method
+*  Divides each element inside the map by a constant
+*/
+PipetteLayerOperations::PipetteColor operator/(PipetteLayerOperations::PipetteColor x, const int y)
 {
-  PipetteLayerOperations::PipetteColor result;
-  for(auto element : x)
+  for(auto elem : x)
   {
-    result.push_back(std::pair<std::string, size_t>(element.first, element.second / y));
+    x[elem.first] = elem.second / y;
   }
-  return result;
+  return x;
 }
 /* Returns the averages of the selected pixels
   Assumes that the rectangle is completely contained in the presentation
@@ -390,6 +390,10 @@ PipetteLayerOperations::PipetteColor TiffPresentationWrapper::getAverages(Scroom
   PipetteLayerOperations::PipetteColor pipetteColors;
 
   int totalPixels = area.getWidth() * area.getHeight();
+  
+  if (totalPixels == 0){
+    return {};
+  }
 
   //Get start tile (tile_pos_x_start, tile_pos_y_start)
   int tile_pos_x_start = (area.getLeft() - 1) / TILESIZE;
@@ -459,7 +463,7 @@ PipetteLayerOperations::PipetteColor TiffPresentationWrapper::getAverages(Scroom
       CompressedTile::Ptr tile = bottomLayer->getTile(x, y);
       ConstTile::Ptr constTile = tile->getConstTileSync();
 
-      pipetteColors = pipetteColors + pipetteLayerOperation->sumPixelValues(sub_rectangle, constTile);
+      pipetteColors += pipetteLayerOperation->sumPixelValues(sub_rectangle, constTile);
       //continue to next tile
     }
   }

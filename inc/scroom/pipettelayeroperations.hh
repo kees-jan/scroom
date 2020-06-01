@@ -7,7 +7,7 @@
 class PipetteLayerOperations : public virtual Scroom::Utils::Base
 {
 public:
-    typedef std::vector<std::pair<std::string, size_t>> PipetteColor;
+    typedef std::map<std::string, size_t> PipetteColor;
     typedef boost::shared_ptr<PipetteLayerOperations> Ptr;
     
     virtual ~PipetteLayerOperations() {}
