@@ -407,72 +407,14 @@ PipetteLayerOperations::PipetteColor TiffPresentationWrapper::getAverages(Scroom
   {
     for(int y = tile_pos_y_start; y <= tile_pos_y_end; y++)
     {
-      int start_x_area; //topleft x coordinate
-      int start_y_area; //topleft y coordinate
-      int end_x_area; //bottomright x coordinate
-      int end_y_area; //bottomright y coordinate
-
-      /*Find X coordinates*/
-      if(x == tile_pos_x_start && x != tile_pos_x_end) //left side non single
-      { 
-        start_x_area = area.getLeft() % TILESIZE;
-        end_x_area = TILESIZE;
-      }
-      else if(x == tile_pos_x_end && x != tile_pos_x_start) //right side non single
-      {
-        start_x_area = 0;
-        end_x_area = (area.getRight() - 1) % TILESIZE;
-      } 
-      else if(x == tile_pos_x_start && x == tile_pos_x_end) //rect is contained in a single tile
-      {
-        start_x_area = area.getLeft() % TILESIZE;
-        end_x_area = (area.getRight() - 1) % TILESIZE;
-      }
-      else //tile is between included tiles
-      {
-        start_x_area = 0;
-        end_x_area = TILESIZE;
-      }
-
-      /*Find Y coordinates*/
-      if(y == tile_pos_y_start && y != tile_pos_y_end) //top side non single
-      {
-        start_y_area = area.getTop() % TILESIZE;
-        end_y_area = TILESIZE;
-      }
-      else if(y == tile_pos_y_end && y != tile_pos_y_start) //bottom side non single
-      {
-        start_y_area = 0;
-        end_y_area = (area.getBottom() - 1) % TILESIZE;
-      }
-      else if(y == tile_pos_y_start && y == tile_pos_y_end) //rect is contained in a single tile
-      {
-        start_y_area = area.getTop() % TILESIZE;
-        end_y_area = (area.getBottom() - 1) % TILESIZE;
-      } 
-      else //tile is between included tiles
-      {
-        start_y_area = 0;
-        end_y_area = TILESIZE;
-      }
-
       CompressedTile::Ptr tile = bottomLayer->getTile(x, y); //grab the tile
       ConstTile::Ptr constTile = tile->getConstTileSync(); 
-      int tile_width = x*TILESIZE + constTile->width; //width of current tile (might be non-TILESIZE)
-      int tile_height = y*TILESIZE + constTile->height; //height of current tile (might be non-TILESIZE)
-      Scroom::Utils::Rectangle<int> tile_rectangle(x*TILESIZE, y*TILESIZE, tile_width, tile_height);
+      Scroom::Utils::Rectangle<int> tile_rectangle(x * TILESIZE, y * TILESIZE, constTile->width, constTile->height);
 
       auto inter_rect = tile_rectangle.intersection(area); //rectangle with non base-0
-      Scroom::Utils::Point<int> base(x*TILESIZE, y*TILESIZE);
+      Scroom::Utils::Point<int> base(x * TILESIZE, y * TILESIZE);
 
       inter_rect -= base; //rectangle with base 0 in regards to constTile
-
-      //int width = end_x_area - start_x_area + 1;
-      //int height = end_y_area - start_y_area + 1;
-
-      //Scroom::Utils::Rectangle<int> sub_rectangle(start_x_area, start_y_area, width, height);
-      //CompressedTile::Ptr tile = bottomLayer->getTile(x, y);
-      //ConstTile::Ptr constTile = tile->getConstTileSync();
 
       pipetteColors += pipetteLayerOperation->sumPixelValues(inter_rect, constTile);
       //continue to next tile
