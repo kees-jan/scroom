@@ -427,6 +427,54 @@ void TiffPresentation::done()
 }
 
 ////////////////////////////////////////////////////////////////////////
+// PipetteViewInterface
+////////////////////////////////////////////////////////////////////////
+PipetteLayerOperations::PipetteColor TiffPresentation::getAverages(Scroom::Utils::Rectangle<int> area)
+{
+  PipetteLayerOperations::Ptr pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(this->ls[0]);
+  if(!pipetteLayerOperation)
+  {
+    return {};
+  }
+
+  Layer::Ptr bottomLayer = this->tbi->getBottomLayer();
+  PipetteLayerOperations::PipetteColor pipetteColors;
+
+  int totalPixels = area.getWidth() * area.getHeight();
+  
+  if(totalPixels == 0){
+    return {};
+  }
+
+  //Get start tile (tile_pos_x_start, tile_pos_y_start)
+  int tile_pos_x_start = (area.getLeft() - 1) / TILESIZE;
+  int tile_pos_y_start = (area.getTop() - 1) / TILESIZE;
+
+  //Get end tile (tile_pos_x_end, tile_pos_y_end)
+  int tile_pos_x_end = (area.getRight() - 1) / TILESIZE;
+  int tile_pos_y_end = (area.getBottom() - 1) / TILESIZE;
+
+  for(int x = tile_pos_x_start; x <= tile_pos_x_end; x++)
+  {
+    for(int y = tile_pos_y_start; y <= tile_pos_y_end; y++)
+    {
+      CompressedTile::Ptr tile = bottomLayer->getTile(x, y); //grab the tile
+      ConstTile::Ptr constTile = tile->getConstTileSync(); 
+      Scroom::Utils::Rectangle<int> tile_rectangle(x * TILESIZE, y * TILESIZE, constTile->width, constTile->height);
+
+      auto inter_rect = tile_rectangle.intersection(area); //rectangle with non base-0
+      Scroom::Utils::Point<int> base(x * TILESIZE, y * TILESIZE);
+
+      inter_rect -= base; //rectangle with base 0 in regards to constTile
+
+      pipetteColors += pipetteLayerOperation->sumPixelValues(inter_rect, constTile);
+      //continue to next tile
+    }
+  }
+  return pipetteColors / totalPixels;
+}
+
+////////////////////////////////////////////////////////////////////////
 // Colormappable
 ////////////////////////////////////////////////////////////////////////
 
@@ -605,45 +653,5 @@ bool TiffPresentationWrapper::getTransparentBackground()
  */
 PipetteLayerOperations::PipetteColor TiffPresentationWrapper::getAverages(Scroom::Utils::Rectangle<int> area)
 {
-  PipetteLayerOperations::Ptr pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(presentation->ls[0]);
-  if(!pipetteLayerOperation)
-  {
-    return {};
-  }
-
-  Layer::Ptr bottomLayer = presentation->tbi->getBottomLayer();
-  PipetteLayerOperations::PipetteColor pipetteColors;
-
-  int totalPixels = area.getWidth() * area.getHeight();
-  
-  if(totalPixels == 0){
-    return {};
-  }
-
-  //Get start tile (tile_pos_x_start, tile_pos_y_start)
-  int tile_pos_x_start = (area.getLeft() - 1) / TILESIZE;
-  int tile_pos_y_start = (area.getTop() - 1) / TILESIZE;
-
-  //Get end tile (tile_pos_x_end, tile_pos_y_end)
-  int tile_pos_x_end = (area.getRight() - 1) / TILESIZE;
-  int tile_pos_y_end = (area.getBottom() - 1) / TILESIZE;
-
-  for(int x = tile_pos_x_start; x <= tile_pos_x_end; x++)
-  {
-    for(int y = tile_pos_y_start; y <= tile_pos_y_end; y++)
-    {
-      CompressedTile::Ptr tile = bottomLayer->getTile(x, y); //grab the tile
-      ConstTile::Ptr constTile = tile->getConstTileSync(); 
-      Scroom::Utils::Rectangle<int> tile_rectangle(x * TILESIZE, y * TILESIZE, constTile->width, constTile->height);
-
-      auto inter_rect = tile_rectangle.intersection(area); //rectangle with non base-0
-      Scroom::Utils::Point<int> base(x * TILESIZE, y * TILESIZE);
-
-      inter_rect -= base; //rectangle with base 0 in regards to constTile
-
-      pipetteColors += pipetteLayerOperation->sumPixelValues(inter_rect, constTile);
-      //continue to next tile
-    }
-  }
-  return pipetteColors / totalPixels;
+  return presentation->getAverages(area);
 }
