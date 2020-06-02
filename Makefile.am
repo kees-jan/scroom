@@ -571,6 +571,10 @@ gui_src_scroom_SOURCES = \
 	gui/src/progressbarmanager.hh \
 	gui/src/workinterface.hh
 
+if HAVE_WINDRES
+gui_src_scroom_SOURCES += build_scripts/windows/icon.rc
+endif
+
 gui_src_scroom_CPPFLAGS = -I $(top_srcdir)/inc \
 	-DPACKAGE_DATA_DIR=\""$(pkgdatadir)"\" \
 	-DPLUGIN_DIR=\""$(plugindir)"\" \
@@ -583,7 +587,9 @@ gui_src_scroom_LDADD = @GUI_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @BOOSTPROGRA
 
 gui_extra_dist = \
 	gui/scroom.glade \
-	gui/ENVIRONMENT
+	gui/ENVIRONMENT \
+	build_scripts/windows/icon.ico \
+	build_scripts/windows/icon.rc
 
 gui_pkgdata_data = \
 	gui/scroom.glade
@@ -666,4 +672,6 @@ silent-doxygen:
 install-win-portable: install
 	@POST_INSTALL_HOOK@
 
-	
+# Define how the .rc file for the icon on Windows has to be compiled
+.rc.o:
+	windres $< -O coff -o $@
