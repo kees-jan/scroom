@@ -117,10 +117,6 @@ void OperationsCMYK32::reduce(Tile::Ptr target, const ConstTile::Ptr source, int
   }
 }
 
-/* Returns the sum of pixel values in the rectangle
-  Assumes that the rectangle is fully contained inside the tile
-  Also assumes that the rectangle is scaled on a scale of 4096 x 4096.
-*/
 PipetteLayerOperations::PipetteColor OperationsCMYK32::sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile)
 { 
   const uint8_t* data = tile->data.get();
@@ -130,7 +126,6 @@ PipetteLayerOperations::PipetteColor OperationsCMYK32::sumPixelValues(Scroom::Ut
   size_t Y = 0;
   size_t K = 0;
   
-  //naive implementation of summing the components up
   for(int y = area.getTop(); y < area.getBottom(); y++)
   {
     for(int x = area.getLeft(); x < area.getRight(); x++)
@@ -254,7 +249,6 @@ PipetteLayerOperations::PipetteColor OperationsCMYK16::sumPixelValues(Scroom::Ut
   size_t Y = 0;
   size_t K = 0;
   
-  //naive implementation of summing the components up
   for(int y = area.getTop(); y < area.getBottom(); y++)
   {
     for(int x = area.getLeft(); x < area.getRight(); x++)
@@ -375,7 +369,6 @@ PipetteLayerOperations::PipetteColor OperationsCMYK8::sumPixelValues(Scroom::Uti
   size_t Y = 0;
   size_t K = 0;
   
-  //naive implementation of summing the components up
   for(int y = area.getTop(); y < area.getBottom(); y++)
   {
     for(int x = area.getLeft(); x < area.getRight(); x++)
@@ -387,6 +380,7 @@ PipetteLayerOperations::PipetteColor OperationsCMYK8::sumPixelValues(Scroom::Uti
       K += data[pos] & 3;
     }
   }
+
   PipetteLayerOperations::PipetteColor values = { {"C", C}, {"M", M}, {"Y", Y}, {"K", K} };
   return values;
 }
@@ -505,7 +499,6 @@ PipetteLayerOperations::PipetteColor OperationsCMYK4::sumPixelValues(Scroom::Uti
   size_t Y = 0;
   size_t K = 0;
   
-  //naive implementation of summing the components up
   for(int y = area.getTop(); y < area.getBottom(); y++)
   {
     for(int x = area.getLeft(); x < area.getRight(); x++)
@@ -527,6 +520,7 @@ PipetteLayerOperations::PipetteColor OperationsCMYK4::sumPixelValues(Scroom::Uti
       }
     }
   }
+  
   PipetteLayerOperations::PipetteColor values = { {"C", C}, {"M", M}, {"Y", Y}, {"K", K} };
   return values;
 }

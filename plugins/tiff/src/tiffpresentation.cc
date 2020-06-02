@@ -345,13 +345,14 @@ std::string TiffPresentation::getTitle()
   return fileName;
 }
 
-/* Method to override operator+= method
-* Returns y if x is empty.
-* Otherwise adds the values of the same key.
-*/
+/**
+ * Method to override operator+= method
+ * Returns y if x is empty.
+ * Otherwise adds the values of the same key.
+ */
 PipetteLayerOperations::PipetteColor operator+=(PipetteLayerOperations::PipetteColor& x, const PipetteLayerOperations::PipetteColor& y)
 {
-  if (x.empty())
+  if(x.empty())
   {
     x = y;
     return x;
@@ -363,9 +364,10 @@ PipetteLayerOperations::PipetteColor operator+=(PipetteLayerOperations::PipetteC
   return x;
 }
 
-/* Override operator/ method
-*  Divides each element inside the map by a constant
-*/
+/**
+ * Override operator/ method
+ * Divides each element inside the map by a constant
+ */
 PipetteLayerOperations::PipetteColor operator/(PipetteLayerOperations::PipetteColor x, const int y)
 {
   for(auto elem : x)
@@ -597,14 +599,14 @@ bool TiffPresentationWrapper::getTransparentBackground()
   return presentation->getTransparentBackground();
 }
 
-/* 
-  Returns the averages of the selected pixels
-  Assumes that the rectangle is completely contained in the presentation
-*/
+/**
+ * Returns the averages of the selected pixels
+ * Assumes that the rectangle is completely contained in the presentation
+ */
 PipetteLayerOperations::PipetteColor TiffPresentationWrapper::getAverages(Scroom::Utils::Rectangle<int> area)
 {
   PipetteLayerOperations::Ptr pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(presentation->ls[0]);
-  if (!pipetteLayerOperation)
+  if(!pipetteLayerOperation)
   {
     return {};
   }
@@ -614,7 +616,7 @@ PipetteLayerOperations::PipetteColor TiffPresentationWrapper::getAverages(Scroom
 
   int totalPixels = area.getWidth() * area.getHeight();
   
-  if (totalPixels == 0){
+  if(totalPixels == 0){
     return {};
   }
 
