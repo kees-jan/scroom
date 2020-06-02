@@ -587,7 +587,9 @@ gui_src_scroom_LDADD = @GUI_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @BOOSTPROGRA
 
 gui_extra_dist = \
 	gui/scroom.glade \
-	gui/ENVIRONMENT
+	gui/ENVIRONMENT \
+	build_scripts/windows/icon.ico \
+	build_scripts/windows/icon.rc
 
 gui_pkgdata_data = \
 	gui/scroom.glade
@@ -601,8 +603,7 @@ root_extra_dist = \
 	.scroom-version \
 	.cproject \
 	.project \
-	.settings/org.eclipse.cdt.core.prefs \
-	build_scripts/windows/icon.ico
+	.settings/org.eclipse.cdt.core.prefs
 
 ########################################################################
 ### Wrapping up
