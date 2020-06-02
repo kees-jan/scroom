@@ -30,15 +30,6 @@ public:
                     Scroom::Utils::Stuff cache);
 };
 
-class PipetteCommonOperations: public CommonOperations, public PipetteLayerOperations
-{
-public:
-  virtual ~PipetteCommonOperations()
-  {}
-
-  virtual PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile) = 0;
-  
-};
 
 class Operations1bpp : public CommonOperations
 {
@@ -80,7 +71,7 @@ public:
                     Scroom::Utils::Stuff cache);
 };
 
-class Operations24bpp : public PipetteCommonOperations
+class Operations24bpp : public CommonOperations, public PipetteLayerOperations
 {
 public:
   static LayerOperations::Ptr create();
@@ -155,7 +146,7 @@ public:
   virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
 };
 
-class OperationsCMYK32 : public PipetteCommonOperations
+class OperationsCMYK32 : public CommonOperations, public PipetteLayerOperations
 {
 public:
   static LayerOperations::Ptr create();
@@ -170,7 +161,7 @@ public:
   virtual PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile);
 };
 
-class OperationsCMYK16 : public PipetteCommonOperations
+class OperationsCMYK16 : public CommonOperations, public PipetteLayerOperations
 {
 public:
   static LayerOperations::Ptr create();
@@ -185,7 +176,7 @@ public:
   virtual PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile);
 };
 
-class OperationsCMYK8 : public PipetteCommonOperations
+class OperationsCMYK8 : public CommonOperations, public PipetteLayerOperations
 {
 public:
   static LayerOperations::Ptr create();
@@ -200,7 +191,7 @@ public:
   virtual PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile);
 };
 
-class OperationsCMYK4 : public PipetteCommonOperations
+class OperationsCMYK4 : public CommonOperations, public PipetteLayerOperations
 {
 public:
   static LayerOperations::Ptr create();

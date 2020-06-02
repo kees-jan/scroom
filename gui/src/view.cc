@@ -20,7 +20,6 @@
 
 #include "pluginmanager.hh"
 #include "callbacks.hh"
-#include "scroom/pipetteviewinterface.hh"
 
 #ifndef G_VALUE_INIT
 #define G_VALUE_INIT {0,{{0}}}
