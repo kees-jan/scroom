@@ -47,7 +47,7 @@ private:
   ColormapProvider::Ptr colormapProvider;
 
 public:
-  static Ptr create(ColormapProvider::Ptr colormapProvider);
+  static LayerOperations::Ptr create(ColormapProvider::Ptr colormapProvider);
   Operations1bpp(ColormapProvider::Ptr colormapProvider);
   virtual ~Operations1bpp()
   {}
@@ -67,7 +67,7 @@ private:
   ColormapProvider::Ptr colormapProvider;
 
 public:
-  static Ptr create(ColormapProvider::Ptr colormapProvider);
+  static LayerOperations::Ptr create(ColormapProvider::Ptr colormapProvider);
   Operations8bpp(ColormapProvider::Ptr colormapProvider);
   virtual ~Operations8bpp()
   {}
@@ -81,10 +81,10 @@ public:
                     Scroom::Utils::Stuff cache);
 };
 
-class Operations24bpp : public CommonOperations
+class Operations24bpp : public PipetteCommonOperations
 {
 public:
-  static Ptr create();
+  static LayerOperations::Ptr create();
   Operations24bpp();
   virtual ~Operations24bpp()
   {}
@@ -92,6 +92,8 @@ public:
   virtual int getBpp();
   virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+
+  virtual PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile);
 };
 
 class Operations : public CommonOperations
@@ -104,7 +106,7 @@ protected:
   const unsigned pixelMask;
 
 public:
-  static Ptr create(ColormapProvider::Ptr colormapProvider, int bpp);
+  static LayerOperations::Ptr create(ColormapProvider::Ptr colormapProvider, int bpp);
   Operations(ColormapProvider::Ptr colormapProvider, int bpp);
 
   virtual ~Operations()
@@ -125,7 +127,7 @@ public:
 class OperationsColormapped : public Operations
 {
 public:
-  static Ptr create(ColormapProvider::Ptr colormapProvider, int bpp);
+  static LayerOperations::Ptr create(ColormapProvider::Ptr colormapProvider, int bpp);
   OperationsColormapped(ColormapProvider::Ptr colormapProvider, int bpp);
 
   virtual ~OperationsColormapped()
@@ -142,7 +144,7 @@ private:
   ColormapProvider::Ptr colormapProvider;
 
 public:
-  static Ptr create(ColormapProvider::Ptr colormapProvider);
+  static LayerOperations::Ptr create(ColormapProvider::Ptr colormapProvider);
   Operations1bppClipped(ColormapProvider::Ptr colormapProvider);
   virtual ~Operations1bppClipped()
   {}

@@ -214,7 +214,7 @@ void CommonOperations::draw(cairo_t* cr, const ConstTile::Ptr tile,
 
 LayerOperations::Ptr Operations1bpp::create(ColormapProvider::Ptr colormapProvider)
 {
-  return Ptr(new Operations1bpp(colormapProvider));
+  return LayerOperations::Ptr(new Operations1bpp(colormapProvider));
 }
 
 Operations1bpp::Operations1bpp(ColormapProvider::Ptr colormapProvider_)
@@ -334,7 +334,7 @@ void Operations1bpp::draw(cairo_t* cr, const ConstTile::Ptr tile,
 
 LayerOperations::Ptr Operations8bpp::create(ColormapProvider::Ptr colormapProvider)
 {
-  return Ptr(new Operations8bpp(colormapProvider));
+  return LayerOperations::Ptr(new Operations8bpp(colormapProvider));
 }
 
 Operations8bpp::Operations8bpp(ColormapProvider::Ptr colormapProvider_)
@@ -458,7 +458,7 @@ void Operations8bpp::draw(cairo_t* cr, const ConstTile::Ptr tile,
 
 LayerOperations::Ptr Operations24bpp::create()
 {
-  return Ptr(new Operations24bpp());
+  return LayerOperations::Ptr(new Operations24bpp());
 }
 
 Operations24bpp::Operations24bpp()
@@ -537,13 +537,36 @@ void Operations24bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int 
     }
   }
 }
+PipetteLayerOperations::PipetteColor Operations24bpp::sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile)
+{
+  const uint8_t* data = tile->data.get();
+
+  size_t R = 0;
+  size_t G = 0;
+  size_t B = 0;
+  
+  //naive implementation of summing the components up
+  for(int y = area.getTop(); y < area.getBottom(); y++)
+  {
+    for(int x = area.getLeft(); x < area.getRight(); x++)
+    {
+      int pos = 3 * (x + y * tile->width);
+
+      R += data[pos];
+      G += data[pos + 1];
+      B += data[pos + 2];
+    }
+  }
+  PipetteLayerOperations::PipetteColor values = { {"R", R}, {"G", G}, {"B", B}};
+  return values;
+}
 
 ////////////////////////////////////////////////////////////////////////
 // Operations
 
 LayerOperations::Ptr Operations::create(ColormapProvider::Ptr colormapProvider, int bpp)
 {
-  return Ptr(new Operations(colormapProvider, bpp));
+  return LayerOperations::Ptr(new Operations(colormapProvider, bpp));
 }
 
 Operations::Operations(ColormapProvider::Ptr colormapProvider_, int bpp_)
@@ -688,7 +711,7 @@ void Operations::draw(cairo_t* cr, const ConstTile::Ptr tile,
 
 LayerOperations::Ptr OperationsColormapped::create(ColormapProvider::Ptr colormapProvider, int bpp)
 {
-  return Ptr(new OperationsColormapped(colormapProvider, bpp));
+  return LayerOperations::Ptr(new OperationsColormapped(colormapProvider, bpp));
 }
 
 OperationsColormapped::OperationsColormapped(ColormapProvider::Ptr colormapProvider_, int bpp_)
@@ -794,7 +817,7 @@ void OperationsColormapped::reduce(Tile::Ptr target, const ConstTile::Ptr source
 
 LayerOperations::Ptr Operations1bppClipped::create(ColormapProvider::Ptr colormapProvider)
 {
-  return Ptr(new Operations1bppClipped(colormapProvider));
+  return LayerOperations::Ptr(new Operations1bppClipped(colormapProvider));
 }
 
 Operations1bppClipped::Operations1bppClipped(ColormapProvider::Ptr colormapProvider_)
