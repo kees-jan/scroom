@@ -20,8 +20,7 @@ const std::string COLOR_CHANNELS = "CMYK" "RGB" "ADEFHIJLNOPQSTUVWXZ";
 /**
  * This struct is just here to compare two keys according to the order defined above
  */
-struct ColorComparator : public std::binary_function<std::string, std::string, bool> {
-public:
+struct ColorComparator {
   bool operator()(const std::string& key_a, const std::string& key_b) const {
     return COLOR_CHANNELS.find(key_a) < COLOR_CHANNELS.find(key_b);
   }
