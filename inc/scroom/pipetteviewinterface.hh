@@ -19,5 +19,10 @@ public:
   virtual ~PipetteViewInterface()
   {}
 
+  /** 
+   * Method to get the average pixel values in the area.
+   * The method assumes that the selected area is completely contained in the presentation.
+   * Returns a map of strings and size_t, representing averages for each component.
+   */
   virtual PipetteLayerOperations::PipetteColor getAverages(Scroom::Utils::Rectangle<int> area)=0;
 };

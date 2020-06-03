@@ -21,5 +21,10 @@ public:
   virtual ~PipetteLayerOperations()
   {}
 
+  /**
+   * Method that each layer Operation that supports the pipette tool will implement.
+   * This will, given a tile and an area, where the area is contained in the tile, compute the sum of all components.
+   * A map of strings and size_t will then be returned, representing the sum for each component.
+   */
   virtual PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile)=0;
 };

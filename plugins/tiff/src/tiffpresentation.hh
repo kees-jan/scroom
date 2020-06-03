@@ -27,8 +27,6 @@ class TiffPresentation : public SourcePresentation,
 {
 public:
   typedef boost::shared_ptr<TiffPresentation> Ptr;
-  TiledBitmapInterface::Ptr tbi;
-  LayerSpec ls;
 
 private:
   typedef std::set<ViewInterface::WeakPtr> Views;
@@ -37,6 +35,8 @@ private:
   TIFF* tif;
   int height;
   int width;
+  TiledBitmapInterface::Ptr tbi;
+  LayerSpec ls;
   int bps;
   int spp;
   std::map<std::string, std::string> properties;

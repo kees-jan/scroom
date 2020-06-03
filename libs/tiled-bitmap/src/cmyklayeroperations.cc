@@ -503,8 +503,10 @@ PipetteLayerOperations::PipetteColor OperationsCMYK4::sumPixelValues(Scroom::Uti
   {
     for(int x = area.getLeft(); x < area.getRight(); x++)
     {
-      int pos = (x + y * tile->width) / 2;
-      if ((x + y * tile->width) % 2 == 0)
+      int pixel = x + y * tile->width;
+      int pos = pixel / 2;
+
+      if(pixel % 2 == 0)
       {
         sum_c += data[pos] >> 7;
         sum_m += (data[pos] >> 6) & 1;

@@ -542,9 +542,9 @@ PipetteLayerOperations::PipetteColor Operations24bpp::sumPixelValues(Scroom::Uti
 {
   const uint8_t* data = tile->data.get();
 
-  size_t R = 0;
-  size_t G = 0;
-  size_t B = 0;
+  size_t sum_r = 0;
+  size_t sum_g = 0;
+  size_t sum_b = 0;
   
   for(int y = area.getTop(); y < area.getBottom(); y++)
   {
@@ -552,13 +552,13 @@ PipetteLayerOperations::PipetteColor Operations24bpp::sumPixelValues(Scroom::Uti
     {
       int pos = 3 * (x + y * tile->width);
 
-      R += data[pos];
-      G += data[pos + 1];
-      B += data[pos + 2];
+      sum_r += data[pos];
+      sum_g += data[pos + 1];
+      sum_b += data[pos + 2];
     }
   }
-  
-  PipetteLayerOperations::PipetteColor values = { {"R", R}, {"G", G}, {"B", B}};
+
+  PipetteLayerOperations::PipetteColor values = { {"R", sum_r}, {"G", sum_g}, {"B", sum_b} };
   return values;
 }
 

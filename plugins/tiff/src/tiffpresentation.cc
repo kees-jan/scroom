@@ -249,8 +249,6 @@ bool TiffPresentation::load(const std::string& fileName_)
 
     tbi = createTiledBitmap(width, height, ls);
     tbi->setSource(shared_from_this<SourcePresentation>());
-    this->tbi = tbi;
-    this->ls = ls;
     return true;
   } catch (const std::exception& ex)
   {
