@@ -139,7 +139,7 @@ public:
   virtual void registerPostRenderer(PostRenderer::Ptr renderer);
   virtual void setStatusMessage(const std::string& message);
   virtual GdkPoint presentationPointToWindowPoint(GdkPoint presentationpoint);
-  virtual Scroom::Utils::Stuff getCurrentPresentation();
+  virtual PresentationInterface::Ptr getCurrentPresentation();
 
   ////////////////////////////////////////////////////////////////////////
   // Helpers

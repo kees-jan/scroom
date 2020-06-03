@@ -21,6 +21,11 @@
 #include <scroom/stuff.hh>
 
 /**
+ * Forward declaration for ViewInterface::getCurrentPresentation()
+ */
+class PresentationInterface;
+
+/**
  * Structure that represents a selection made
  * by the user.
  */
@@ -258,15 +263,10 @@ public:
 
   /**
    * Returns a shared pointer to the current presentation.
-   *
-   * The actual return type should be PresentationInterface::Ptr,
-   * but including the required header file causes a cyclic include.
-   * This workaround means that you have to explicitly cast
-   * the result of this function to PresentationInterface::Ptr.
    * 
    * @see PresentationInterface
    */
-  virtual Scroom::Utils::Stuff getCurrentPresentation()
+  virtual boost::shared_ptr<PresentationInterface> getCurrentPresentation()
   {
     return nullptr;
   }
