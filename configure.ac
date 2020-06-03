@@ -382,6 +382,13 @@ transparentoverlay_boosttest_win_ld_sizedeterminer=""
 AM_COND_IF([WINDOWS], [transparentoverlay_boosttest_win_ld_sizedeterminer=plugins/transparent-overlay/src/libsptransparentoverlay_la-sizedeterminer.lo]) 
 AC_SUBST([TRANSPARENTOVERLAY_BOOSTTEST_WIN_LD_SIZEDETERMINER], [$transparentoverlay_boosttest_win_ld_sizedeterminer])
 
+# Create command for compiling icon resource and location of resource on Windows
+AM_COND_IF([WINDOWS],[AC_CHECK_PROG([WINDRES], [windres], [yes], [no])])
+AM_CONDITIONAL([HAVE_WINDRES], [test x"${WINDRES}" == x"yes"])
+if test x"${WINDRES}" == x"no" ; then
+  AC_MSG_WARN(["windres not found - won't create icon for executable"])
+fi
+
 AC_CONFIG_FILES([Makefile
                  gui/ENVIRONMENT
                  doxyfile
