@@ -341,38 +341,6 @@ std::string TiffPresentation::getTitle()
   return fileName;
 }
 
-/**
- * Method to override operator+= method
- * Returns y if x is empty.
- * Otherwise adds the values of the same key.
- */
-PipetteLayerOperations::PipetteColor operator+=(PipetteLayerOperations::PipetteColor& x, const PipetteLayerOperations::PipetteColor& y)
-{
-  if(x.empty())
-  {
-    x = y;
-    return x;
-  }
-  for(auto const& elem : y)
-  {
-    x[elem.first] += elem.second;
-  }
-  return x;
-}
-
-/**
- * Override operator/ method
- * Divides each element inside the map by a constant
- */
-PipetteLayerOperations::PipetteColor operator/(PipetteLayerOperations::PipetteColor x, const int y)
-{
-  for(auto elem : x)
-  {
-    x[elem.first] = elem.second / y;
-  }
-  return x;
-}
-
 ////////////////////////////////////////////////////////////////////////
 // SourcePresentation
 ////////////////////////////////////////////////////////////////////////
@@ -420,6 +388,38 @@ void TiffPresentation::done()
 {
   TIFFClose(tif);
   tif = NULL;
+}
+
+/**
+ * Method to override operator+= method
+ * Returns y if x is empty.
+ * Otherwise adds the values of the same key.
+ */
+PipetteLayerOperations::PipetteColor operator+=(PipetteLayerOperations::PipetteColor& x, const PipetteLayerOperations::PipetteColor& y)
+{
+  if(x.empty())
+  {
+    x = y;
+    return x;
+  }
+  for(auto const& elem : y)
+  {
+    x[elem.first] += elem.second;
+  }
+  return x;
+}
+
+/**
+ * Override operator/ method
+ * Divides each element inside the map by a constant
+ */
+PipetteLayerOperations::PipetteColor operator/(PipetteLayerOperations::PipetteColor x, const int y)
+{
+  for(auto elem : x)
+  {
+    x[elem.first] = elem.second / y;
+  }
+  return x;
 }
 
 ////////////////////////////////////////////////////////////////////////
