@@ -22,8 +22,7 @@
 
 /**
  * Structure that represents a selection made
- * by the user. This structure was previously
- * called 'Measurement'.
+ * by the user.
  */
 struct Selection
 {
