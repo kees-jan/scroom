@@ -112,7 +112,6 @@ void MeasureHandler::render(cairo_t* cr)
     GdkPoint start = view->presentationPointToWindowPoint(selection->start);
     GdkPoint end = view->presentationPointToWindowPoint(selection->end);
     cairo_set_line_width(cr, 1);
-    cairo_stroke(cr);
     cairo_set_source_rgb(cr, 1, 0, 0); // Red
     cairo_move_to(cr, start.x, start.y);
     cairo_line_to(cr, end.x, end.y);
