@@ -14,9 +14,7 @@
 #include <scroom/layeroperations.hh>
 #include <scroom/unused.hh>
 
-#include <libs/tiled-bitmap/src/tiled-bitmap.hh>
 #include <scroom/tiledbitmaplayer.hh>
-#include <algorithm>
 
 TiffPresentation::TiffPresentation()
   : tif(NULL), height(0), width(0), bps(0), spp(0)
@@ -249,8 +247,6 @@ bool TiffPresentation::load(const std::string& fileName_)
 
     tbi = createTiledBitmap(width, height, ls);
     tbi->setSource(shared_from_this<SourcePresentation>());
-    this->tbi = tbi;
-    this->ls = ls;
     return true;
   } catch (const std::exception& ex)
   {
@@ -345,127 +341,38 @@ std::string TiffPresentation::getTitle()
   return fileName;
 }
 
-//could change this to operator+ perhaps
-PipetteLayerOperations::PipetteColor operator+(std::vector<std::pair<std::string,size_t>>& x, const std::vector<std::pair<std::string,size_t>>& y)
+/**
+ * Method to override operator+= method
+ * Returns y if x is empty.
+ * Otherwise adds the values of the same key.
+ */
+PipetteLayerOperations::PipetteColor operator+=(PipetteLayerOperations::PipetteColor& x, const PipetteLayerOperations::PipetteColor& y)
 {
-  PipetteLayerOperations::PipetteColor result;
-  if (x.empty())
+  if(x.empty())
   {
-    return y;
+    x = y;
+    return x;
   }
-  for(auto element : x)
+  for(auto const& elem : y)
   {
-    //this needs the algorithm package imported at the top... May be replaced by another for loop...
-    if(std::find(y.begin(), y.end(), element) != y.end())
-    {
-      result.push_back(std::pair<std::string, size_t>(element.first, element.second  + element.second));
-    }
+    x[elem.first] += elem.second;
   }
-    return result;
+  return x;
 }
 
-//these two may be moved to a better location...
-PipetteLayerOperations::PipetteColor operator/(const std::vector<std::pair<std::string,size_t>>&  x, int y)
+/**
+ * Override operator/ method
+ * Divides each element inside the map by a constant
+ */
+PipetteLayerOperations::PipetteColor operator/(PipetteLayerOperations::PipetteColor x, const int y)
 {
-  PipetteLayerOperations::PipetteColor result;
-  for(auto element : x)
+  for(auto elem : x)
   {
-    result.push_back(std::pair<std::string, size_t>(element.first, element.second / y));
+    x[elem.first] = elem.second / y;
   }
-  return result;
+  return x;
 }
-/* Returns the averages of the selected pixels
-  Assumes that the rectangle is completely contained in the presentation
-  Assumes that TILESIZE is consistent //TODO
-*/
-PipetteLayerOperations::PipetteColor TiffPresentationWrapper::getAverages(Scroom::Utils::Rectangle<int> area)
-{
-  auto pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(presentation->ls[0]);
-  if (pipetteLayerOperation == nullptr)
-  {
-    PipetteLayerOperations::PipetteColor empty;
-    return empty;
-  }
 
-  Layer::Ptr bottomLayer = presentation->tbi->getBottomLayer();
-  PipetteLayerOperations::PipetteColor pipetteColors;
-
-  int totalPixels = area.getWidth() * area.getHeight();
-
-  //Get start tile (tile_pos_x_start, tile_pos_y_start)
-  int tile_pos_x_start = floor(area.getLeft() / TILESIZE);
-  int tile_pos_y_start = floor(area.getTop() / TILESIZE);
-
-  //Get end tile (tile_pos_x_end, tile_pos_y_end)
-  int tile_pos_x_end = floor(area.getRight() / TILESIZE);
-  int tile_pos_y_end = floor(area.getBottom() / TILESIZE);
-
-  for(int x = tile_pos_x_start; x <= tile_pos_x_end; x++)
-  {
-    for(int y = tile_pos_y_start; y <= tile_pos_y_end; y++)
-    {
-      int start_x_area; //topleft x coordinate
-      int start_y_area; //topleft y coordinate
-      int end_x_area; //bottomright x coordinate
-      int end_y_area; //bottomright y coordinate
-
-      /*Find X coordinates*/
-      if(x == tile_pos_x_start && x != tile_pos_x_end) //left side non single
-      { 
-        start_x_area = area.getLeft() % TILESIZE;
-        end_x_area = TILESIZE;
-      }
-      else if(x == tile_pos_x_end && x != tile_pos_x_start) //right side non single
-      {
-        start_x_area = 0;
-        end_x_area = area.getRight() % TILESIZE;
-      } 
-      else if(x == tile_pos_x_start && x == tile_pos_x_end) //rect is contained in a single tile
-      {
-        start_x_area = area.getLeft() % TILESIZE;
-        end_x_area = area.getRight() % TILESIZE;
-      }
-      else //tile is between included tiles
-      {
-        start_x_area = 0;
-        end_x_area = TILESIZE;
-      }
-
-      /*Find Y coordinates*/
-      if(y == tile_pos_y_start && y != tile_pos_y_end) //top side non single
-      {
-        start_y_area = area.getTop() % TILESIZE;
-        end_y_area = TILESIZE;
-      }
-      else if(y == tile_pos_y_end && y != tile_pos_y_start) //bottom side non single
-      {
-        start_y_area = 0;
-        end_y_area = area.getBottom() % TILESIZE;
-      }
-      else if(y == tile_pos_y_start && y == tile_pos_y_end) //rect is contained in a single tile
-      {
-        start_y_area = area.getTop() % TILESIZE;
-        end_y_area = area.getBottom() % TILESIZE;
-      } 
-      else //tile is between included tiles
-      {
-        start_y_area = 0;
-        end_y_area = TILESIZE;
-      }
-
-      int width   = end_x_area - start_x_area;
-      int height  = end_y_area - start_y_area;
-
-      Scroom::Utils::Rectangle<int> sub_rectangle(start_x_area, start_y_area, width, height);
-      CompressedTile::Ptr tile = bottomLayer->getTile(x, y);
-      ConstTile::Ptr constTile = tile->getConstTileSync();
-      
-      pipetteColors = pipetteColors + pipetteLayerOperation->sumPixelValues(sub_rectangle, constTile);
-      //continue to next tile
-    }
-  }
-  return pipetteColors / totalPixels;
-}
 ////////////////////////////////////////////////////////////////////////
 // SourcePresentation
 ////////////////////////////////////////////////////////////////////////
@@ -513,6 +420,53 @@ void TiffPresentation::done()
 {
   TIFFClose(tif);
   tif = NULL;
+}
+
+////////////////////////////////////////////////////////////////////////
+// PipetteViewInterface
+////////////////////////////////////////////////////////////////////////
+PipetteLayerOperations::PipetteColor TiffPresentation::getAverages(Scroom::Utils::Rectangle<int> area)
+{
+  PipetteLayerOperations::Ptr pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(this->ls[0]);
+  if(!pipetteLayerOperation)
+  {
+    return {};
+  }
+
+  Layer::Ptr bottomLayer = this->tbi->getBottomLayer();
+  PipetteLayerOperations::PipetteColor pipetteColors;
+
+  int totalPixels = area.getWidth() * area.getHeight();
+  
+  if(totalPixels == 0){
+    return {};
+  }
+
+  //Get start tile (tile_pos_x_start, tile_pos_y_start)
+  int tile_pos_x_start = (area.getLeft() - 1) / TILESIZE;
+  int tile_pos_y_start = (area.getTop() - 1) / TILESIZE;
+
+  //Get end tile (tile_pos_x_end, tile_pos_y_end)
+  int tile_pos_x_end = (area.getRight() - 1) / TILESIZE;
+  int tile_pos_y_end = (area.getBottom() - 1) / TILESIZE;
+
+  for(int x = tile_pos_x_start; x <= tile_pos_x_end; x++)
+  {
+    for(int y = tile_pos_y_start; y <= tile_pos_y_end; y++)
+    {
+      ConstTile::Ptr tile = bottomLayer->getTile(x, y)->getConstTileSync(); 
+      Scroom::Utils::Rectangle<int> tile_rectangle(x * TILESIZE, y * TILESIZE, tile->width, tile->height);
+
+      Scroom::Utils::Rectangle<int> inter_rect = tile_rectangle.intersection(area);
+      Scroom::Utils::Point<int> base(x * TILESIZE, y * TILESIZE);
+
+      inter_rect -= base; //rectangle coordinates relative to constTile with topleft corner (0,0)
+
+      pipetteColors += pipetteLayerOperation->sumPixelValues(inter_rect, tile);
+      //continue to next tile
+    }
+  }
+  return pipetteColors / totalPixels;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -686,4 +640,13 @@ void TiffPresentationWrapper::disableTransparentBackground()
 bool TiffPresentationWrapper::getTransparentBackground()
 {
   return presentation->getTransparentBackground();
+}
+
+/**
+ * Returns the averages of the selected pixels
+ * Assumes that the rectangle is completely contained in the presentation
+ */
+PipetteLayerOperations::PipetteColor TiffPresentationWrapper::getAverages(Scroom::Utils::Rectangle<int> area)
+{
+  return presentation->getAverages(area);
 }
