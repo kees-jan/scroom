@@ -64,8 +64,8 @@ private:
   int zoom;
   int x;
   int y;
-  std::map<guint, Selection*> selections;
-  std::map<MouseButton, std::vector<SelectionListener::Ptr>> selectionListeners;
+  Selection* selection;
+  std::vector<SelectionListener::Ptr> selectionListeners;
   std::vector<PostRenderer::Ptr> postRenderers;
 
   gint modifiermove;
@@ -135,7 +135,7 @@ public:
   virtual void removeFromToolbar(GtkToolItem* ti);
   virtual void setPanning();
   virtual void unsetPanning();
-  virtual void registerSelectionListener(SelectionListener::Ptr listener, MouseButton button);
+  virtual void registerSelectionListener(SelectionListener::Ptr listener);
   virtual void registerPostRenderer(PostRenderer::Ptr renderer);
   virtual void setStatusMessage(const std::string& message);
   virtual GdkPoint presentationPointToWindowPoint(GdkPoint presentationpoint);

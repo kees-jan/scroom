@@ -124,18 +124,6 @@ public:
 };
 
 /**
- * Enum for easier access to the constants Gtk uses for
- * mouse buttons. There is no documentation on any other
- * values, so they are not included in this enum.
- */
-enum class MouseButton : guint
-{
-  PRIMARY = 1,
-  MIDDLE = 2,
-  SECONDARY = 3
-};
-
-/**
  * Interface provided to something Viewable
  *
  * Internally, scroom uses a View to represent the fact that something
@@ -224,13 +212,12 @@ public:
 
   /**
    * Register a SelectionListener to be updated whenever the
-   * user selects a region using the given mouse button. When
-   * the user changes the selection, various functions on the
-   * given instance are called.
+   * user selects a region . When the user changes the selection,
+   * various functions on the given instance are called.
    * 
    * @see SelectionListener
    */
-  virtual void registerSelectionListener(SelectionListener::Ptr, MouseButton)
+  virtual void registerSelectionListener(SelectionListener::Ptr)
   {
   }
 

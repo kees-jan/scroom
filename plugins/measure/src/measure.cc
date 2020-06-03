@@ -42,7 +42,7 @@ void Measure::registerCapabilities(ScroomPluginInterface::Ptr host)
 Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr view)
 {
   MeasureHandler::Ptr handler = MeasureHandler::create();
-  view->registerSelectionListener(handler, MouseButton::SECONDARY);
+  view->registerSelectionListener(handler);
   view->registerPostRenderer(handler);
 
   return Scroom::Bookkeeping::Token();

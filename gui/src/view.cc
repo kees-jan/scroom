@@ -621,18 +621,18 @@ void View::on_buttonPress(GdkEventButton* event)
     modifiermove = GDK_BUTTON1_MASK;
     cachedPoint = eventToPoint(event);
   }
-
-  // Start selection for the event button
-  Selection* sel = selections[event->button];
-  if(sel)
+  else if(event->button==3)
   {
-    delete sel;
-  }
-  GdkPoint point = windowPointToPresentationPoint(eventToPoint(event));
-  selections[event->button] = new Selection(point);
-  for(auto listener : selectionListeners[static_cast<MouseButton>(event->button)])
-  {
-    listener->onSelectionStart(point, shared_from_this<ViewInterface>());
+    if(selection)
+    {
+      delete selection;
+    }
+    GdkPoint point = windowPointToPresentationPoint(eventToPoint(event));
+    selection = new Selection(point);
+    for(auto listener : selectionListeners)
+    {
+      listener->onSelectionStart(point, shared_from_this<ViewInterface>());
+    }
   }
 }
 
@@ -645,15 +645,12 @@ void View::on_buttonRelease(GdkEventButton* event)
     cachedPoint.x=0;
     cachedPoint.y=0;
   }
-
-  // End selection for the event button
-  Selection* sel = selections[event->button];
-  if(sel)
+  else if(event->button==3 && selection)
   {
-    sel->end = windowPointToPresentationPoint(eventToPoint(event));
-    for(auto listener : selectionListeners[static_cast<MouseButton>(event->button)])
+    selection->end = windowPointToPresentationPoint(eventToPoint(event));
+    for(auto listener : selectionListeners)
     {
-      listener->onSelectionEnd(sel, shared_from_this<ViewInterface>());
+      listener->onSelectionEnd(selection, shared_from_this<ViewInterface>());
     }
     invalidate();
   }
@@ -692,24 +689,14 @@ void View::on_motion_notify(GdkEventMotion* event)
 
     updateXY(newx, newy, OTHER);
   }
-
-  // There should be a cleaner way to do this...
-  for(int button = 0; button < 3; button++)
+  else if((event->state & GDK_BUTTON3_MASK) && selection)
   {
-    if((event->state & (GDK_BUTTON1_MASK << button)))
+    selection->end = windowPointToPresentationPoint(eventToPoint(event));
+    for(auto listener : selectionListeners)
     {
-      // Update selection listeners for the event button
-      Selection* sel = selections[button + 1];
-      if(sel)
-      {
-        sel->end = windowPointToPresentationPoint(eventToPoint(event));
-        for(auto listener : selectionListeners[static_cast<MouseButton>(button + 1)])
-        {
-          listener->onSelectionUpdate(sel, shared_from_this<ViewInterface>());
-        }
-        invalidate();
-      }
+      listener->onSelectionUpdate(selection, shared_from_this<ViewInterface>());
     }
+    invalidate();
   }
 }
 
@@ -790,9 +777,9 @@ void View::unsetPanning()
   panning = false;
 }
 
-void View::registerSelectionListener(SelectionListener::Ptr listener, MouseButton button)
+void View::registerSelectionListener(SelectionListener::Ptr listener)
 {
-  selectionListeners[button].push_back(listener);
+  selectionListeners.push_back(listener);
 }
 
 void View::registerPostRenderer(PostRenderer::Ptr renderer)
