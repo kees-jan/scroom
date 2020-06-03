@@ -88,13 +88,13 @@ void MeasureHandler::onSelectionStart(GdkPoint, ViewInterface::Ptr)
 {
 }
 
-void MeasureHandler::onSelectionUpdate(Selection* s, ViewInterface::Ptr view)
+void MeasureHandler::onSelectionUpdate(Selection::Ptr s, ViewInterface::Ptr view)
 {
   selection = s;
   displayMeasurement(view);
 }
 
-void MeasureHandler::onSelectionEnd(Selection* s, ViewInterface::Ptr view)
+void MeasureHandler::onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view)
 {
   selection = s;
   displayMeasurement(view);

@@ -37,6 +37,9 @@ class ViewInterface;
 struct Selection
 {
 public:
+  typedef boost::shared_ptr<Selection> Ptr;
+
+public:
   GdkPoint start;
   GdkPoint end;
 
@@ -109,7 +112,7 @@ public:
    * 
    * @see Selection
    */
-  virtual void onSelectionUpdate(Selection* selection, boost::shared_ptr<ViewInterface> view)=0;
+  virtual void onSelectionUpdate(Selection::Ptr selection, boost::shared_ptr<ViewInterface> view)=0;
 
   /**
    * This function is called whenever the selection
@@ -120,7 +123,7 @@ public:
    * 
    * @see Selection
    */
-  virtual void onSelectionEnd(Selection* selection, boost::shared_ptr<ViewInterface> view)=0;
+  virtual void onSelectionEnd(Selection::Ptr selection, boost::shared_ptr<ViewInterface> view)=0;
 };
 
 /**

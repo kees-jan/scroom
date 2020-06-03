@@ -623,12 +623,8 @@ void View::on_buttonPress(GdkEventButton* event)
   }
   else if(event->button==3)
   {
-    if(selection)
-    {
-      delete selection;
-    }
     GdkPoint point = windowPointToPresentationPoint(eventToPoint(event));
-    selection = new Selection(point);
+    selection = Selection::Ptr(new Selection(point));
     for(auto listener : selectionListeners)
     {
       listener->onSelectionStart(point, shared_from_this<ViewInterface>());

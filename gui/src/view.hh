@@ -64,7 +64,7 @@ private:
   int zoom;
   int x;
   int y;
-  Selection* selection;
+  Selection::Ptr selection;
   std::vector<SelectionListener::Ptr> selectionListeners;
   std::vector<PostRenderer::Ptr> postRenderers;
 

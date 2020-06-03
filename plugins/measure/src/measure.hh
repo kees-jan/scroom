@@ -20,7 +20,7 @@ public:
   typedef boost::shared_ptr<MeasureHandler> Ptr;
 
 private:
-  Selection* selection;
+  Selection::Ptr selection;
 
 public:
   static Ptr create();
@@ -37,8 +37,8 @@ public:
   // SelectionListener
 
   virtual void onSelectionStart(GdkPoint p, ViewInterface::Ptr view);
-  virtual void onSelectionUpdate(Selection* s, ViewInterface::Ptr view);
-  virtual void onSelectionEnd(Selection* s, ViewInterface::Ptr view);
+  virtual void onSelectionUpdate(Selection::Ptr s, ViewInterface::Ptr view);
+  virtual void onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view);
 
   ////////////////////////////////////////////////////////////////////////
 
