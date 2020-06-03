@@ -92,7 +92,7 @@ static void on_newWindow_activate(GtkMenuItem*, gpointer user_data)
 View::View(GladeXML* scroomXml_)
   : scroomXml(scroomXml_), presentation(), sidebarManager(),
     drawingAreaWidth(0), drawingAreaHeight(0),
-    zoom(0), x(0), y(0), modifiermove(0)
+    zoom(0), x(0), y(0), modifiermove(0), panning(true)
 {
   PluginManager::Ptr pluginManager = PluginManager::getInstance();
   window = GTK_WINDOW(glade_xml_get_widget(scroomXml_, "scroom"));
@@ -136,7 +136,6 @@ View::View(GladeXML* scroomXml_)
 
   cachedPoint.x=0;
   cachedPoint.y=0;
-  panning = true;
 
   on_newPresentationInterfaces_update(pluginManager->getNewPresentationInterfaces());
   updateNewWindowMenu();
