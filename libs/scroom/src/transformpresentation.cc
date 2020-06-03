@@ -117,9 +117,6 @@ bool TransformPresentation::getTransparentBackground()
 PipetteLayerOperations::PipetteColor TransformPresentation::getPixelAverages(Scroom::Utils::Rectangle<int> area)
 {
   PipetteViewInterface::Ptr pipettePresentation = boost::dynamic_pointer_cast<PipetteViewInterface>(presentation);
-  if(pipettePresentation)
-  {
-    return pipettePresentation->getPixelAverages(area);
-  }
-  return {};
+  require(pipettePresentation);
+  return pipettePresentation->getPixelAverages(area);
 }

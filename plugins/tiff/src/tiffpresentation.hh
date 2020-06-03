@@ -43,7 +43,7 @@ private:
   ColormapHelper::Ptr colormapHelper;
   TransformationData::Ptr transformationData;
 
-  PipetteLayerOperations::Ptr pipetteLayer;  //holds the most bottom layer for pipette operations
+  PipetteLayerOperations::Ptr pipetteLayer;  //holds the most bottom LayerOperations for pipette operations
 
 private:
   TiffPresentation();
@@ -152,11 +152,6 @@ public:
   // PipetteViewInterface
   ////////////////////////////////////////////////////////////////////////
 
-  /** 
-   * Returns the average pixel values for each component, contained in the area
-   * 
-   * @param area selected area to get the pixel values from
-   */
   virtual PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<int> area);
 
   ////////////////////////////////////////////////////////////////////////

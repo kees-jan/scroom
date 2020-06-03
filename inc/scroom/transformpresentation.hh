@@ -60,11 +60,6 @@ public:
   virtual std::string getTitle();
 
   // PipetteViewInterface
-  /** 
-   * Returns the average pixel values for each component, contained in the area
-   * 
-   * @param area selected area to get the pixel values from.
-   */
   virtual PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<int> area);
 
   // Colormappable
