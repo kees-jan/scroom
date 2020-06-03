@@ -458,16 +458,15 @@ PipetteLayerOperations::PipetteColor TiffPresentation::getAverages(Scroom::Utils
   {
     for(int y = tile_pos_y_start; y <= tile_pos_y_end; y++)
     {
-      CompressedTile::Ptr tile = bottomLayer->getTile(x, y);
-      ConstTile::Ptr constTile = tile->getConstTileSync(); 
-      Scroom::Utils::Rectangle<int> tile_rectangle(x * TILESIZE, y * TILESIZE, constTile->width, constTile->height);
+      ConstTile::Ptr tile = bottomLayer->getTile(x, y)->getConstTileSync(); 
+      Scroom::Utils::Rectangle<int> tile_rectangle(x * TILESIZE, y * TILESIZE, tile->width, tile->height);
 
       Scroom::Utils::Rectangle<int> inter_rect = tile_rectangle.intersection(area);
       Scroom::Utils::Point<int> base(x * TILESIZE, y * TILESIZE);
 
       inter_rect -= base; //rectangle coordinates relative to constTile with topleft corner (0,0)
 
-      pipetteColors += pipetteLayerOperation->sumPixelValues(inter_rect, constTile);
+      pipetteColors += pipetteLayerOperation->sumPixelValues(inter_rect, tile);
       //continue to next tile
     }
   }
