@@ -55,7 +55,7 @@ public:
   typedef boost::shared_ptr<Measure> Ptr;
 
 private:
-  Measure();
+  Measure() {};
 
 public:
   static Ptr create();
@@ -74,6 +74,4 @@ public:
   virtual Scroom::Bookkeeping::Token viewAdded(ViewInterface::Ptr v);
 
   ////////////////////////////////////////////////////////////////////////
-
-  virtual ~Measure();
 };

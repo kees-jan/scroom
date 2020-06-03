@@ -11,13 +11,6 @@
 // Measure
 ////////////////////////////////////////////////////////////////////////
 
-Measure::Measure()
-{
-}
-Measure::~Measure()
-{
-}
-
 Measure::Ptr Measure::create()
 {
   return Ptr(new Measure());
