@@ -14,9 +14,7 @@
 #include <scroom/layeroperations.hh>
 #include <scroom/unused.hh>
 
-#include <libs/tiled-bitmap/src/tiled-bitmap.hh>
 #include <scroom/tiledbitmaplayer.hh>
-#include <algorithm>
 
 TiffPresentation::TiffPresentation()
   : tif(NULL), height(0), width(0), bps(0), spp(0)

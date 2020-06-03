@@ -30,7 +30,6 @@ public:
                     Scroom::Utils::Stuff cache);
 };
 
-
 class Operations1bpp : public CommonOperations
 {
 private:

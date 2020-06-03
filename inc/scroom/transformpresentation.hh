@@ -13,7 +13,6 @@
 #include <scroom/point.hh>
 #include <scroom/presentationinterface.hh>
 #include <scroom/pipetteviewinterface.hh>
-#include <scroom/pipettelayeroperations.hh>
 #include <scroom/rectangle.hh>
 
 class TransformationData
