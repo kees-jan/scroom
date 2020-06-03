@@ -236,7 +236,7 @@ Scroom::Utils::Stuff Operations1bpp::cache(const ConstTile::Ptr tile)
   unsigned char* row = data.get();
   for(int j=0; j<tile->height; j++, row+=stride)
   {
-    PixelIterator<const byte> bit(tile->data.get()+j*tile->width/8, 0);
+    SampleIterator<const byte> bit(tile->data.get()+j*tile->width/8, 0);
     uint32_t* pixel = reinterpret_cast<uint32_t*>(row);
     for(int i=0; i<tile->width; i++)
     {
@@ -314,7 +314,7 @@ void Operations1bpp::draw(cairo_t* cr, const ConstTile::Ptr tile,
     for(int y=0; y<tileAreaInt.getHeight(); y++)
     {
       const byte* const data = tile->data.get();
-      PixelIterator<const byte> current(data+(tileAreaInt.getTop()+y)*stride, tileAreaInt.getLeft(), 1);
+      SampleIterator<const byte> current(data+(tileAreaInt.getTop()+y)*stride, tileAreaInt.getLeft(), 1);
 
       for(int x=0; x<tileAreaInt.getWidth(); x++, ++current)
       {
@@ -566,7 +566,7 @@ Scroom::Utils::Stuff Operations::cache(const ConstTile::Ptr tile)
   unsigned char* row = data.get();
   for(int j=0; j<tile->height; j++, row+=stride)
   {
-    PixelIterator<const byte> pixelIn(tile->data.get()+j*tile->width/pixelsPerByte, 0, bpp);
+    SampleIterator<const byte> pixelIn(tile->data.get()+j*tile->width/pixelsPerByte, 0, bpp);
 
     uint32_t* pixelOut = reinterpret_cast<uint32_t*>(row);
     for(int i=0; i<tile->width; i++)
@@ -597,7 +597,7 @@ void Operations::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, in
   {
     // Iterate vertically over target
     const byte* sourcePtr = sourceBase;
-    PixelIterator<uint16_t> targetPtr(reinterpret_cast<uint16_t*>(targetBase), 0, targetMultiplier * bpp);
+    SampleIterator<uint16_t> targetPtr(reinterpret_cast<uint16_t*>(targetBase), 0, targetMultiplier * bpp);
 
     for(int i=0; i<source->width/8;
         i++, sourcePtr+=8/pixelsPerByte, ++targetPtr)
@@ -612,7 +612,7 @@ void Operations::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, in
 
       for(int k=0; k<8; k++, base+=sourceStride)
       {
-        PixelIterator<const byte> current(base, 0, bpp);
+        SampleIterator<const byte> current(base, 0, bpp);
         for(int l=0; l<8; l++, ++current)
           ++(lookup[*current]);
       }
@@ -668,7 +668,7 @@ void Operations::draw(cairo_t* cr, const ConstTile::Ptr tile,
     for(int y=0; y<tileAreaInt.height(); y++)
     {
       const byte* const data = tile->data.get();
-      PixelIterator<const byte> current(data+(tileAreaInt.y()+y)*stride, tileAreaInt.x(), bpp);
+      SampleIterator<const byte> current(data+(tileAreaInt.y()+y)*stride, tileAreaInt.x(), bpp);
 
       for(int x=0; x<tileAreaInt.width(); x++, ++current)
       {
@@ -711,7 +711,7 @@ Scroom::Utils::Stuff OperationsColormapped::cache(const ConstTile::Ptr tile)
   unsigned char* row = data.get();
   for(int j=0; j<tile->height; j++, row+=stride)
   {
-    PixelIterator<const uint16_t> pixelIn(reinterpret_cast<uint16_t const *>(tile->data.get()+j*multiplier*tile->width/pixelsPerByte), 0, multiplier*bpp);
+    SampleIterator<const uint16_t> pixelIn(reinterpret_cast<uint16_t const *>(tile->data.get()+j*multiplier*tile->width/pixelsPerByte), 0, multiplier*bpp);
     uint32_t* pixelOut = reinterpret_cast<uint32_t*>(row);
     for(int i=0; i<tile->width; i++)
     {
@@ -742,7 +742,7 @@ void OperationsColormapped::reduce(Tile::Ptr target, const ConstTile::Ptr source
   {
     // Iterate vertically over target
     const byte* sourcePtr = sourceBase;
-    PixelIterator<uint16_t> targetPtr(reinterpret_cast<uint16_t*>(targetBase), 0, multiplier*bpp);
+    SampleIterator<uint16_t> targetPtr(reinterpret_cast<uint16_t*>(targetBase), 0, multiplier*bpp);
 
     for(int i=0; i<source->width/8;
         i++, sourcePtr+=8*multiplier/pixelsPerByte, ++targetPtr)
@@ -757,7 +757,7 @@ void OperationsColormapped::reduce(Tile::Ptr target, const ConstTile::Ptr source
 
       for(int k=0; k<8; k++, base+=sourceStride)
       {
-        PixelIterator<const uint16_t> current(reinterpret_cast<uint16_t const*>(base), 0, multiplier*bpp);
+        SampleIterator<const uint16_t> current(reinterpret_cast<uint16_t const*>(base), 0, multiplier*bpp);
         for(int l=0; l<8; l++, ++current)
         {
           ++lookup[*current & pixelMask];
@@ -836,7 +836,7 @@ Scroom::Utils::Stuff Operations1bppClipped::cacheZoom(const ConstTile::Ptr tile,
         const byte* inputByte = tile->data.get() + (j*pixelSize+y)*tile->width/8 + pixelSize*i/8;
         byte inputBit = pixelSize*i%8;
 
-        PixelIterator<const byte> bit(inputByte, inputBit);
+        SampleIterator<const byte> bit(inputByte, inputBit);
 
         for(int x=0; x<pixelSize; x++, ++bit)
         {
@@ -871,7 +871,7 @@ void Operations1bppClipped::reduce(Tile::Ptr target, const ConstTile::Ptr source
   {
     // Iterate vertically over target
     const byte* sourcePtr = sourceBase;
-    PixelIterator<byte> targetPtr(targetBase,0);
+    SampleIterator<byte> targetPtr(targetBase,0);
 
     for(int i=0; i<source->width/8;
         i++, sourcePtr++, targetPtr++)
