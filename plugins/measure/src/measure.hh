@@ -23,9 +23,6 @@ private:
   Selection* selection;
 
 public:
-  ViewInterface::Ptr view;
-
-public:
   static Ptr create();
 
 public:
@@ -34,19 +31,19 @@ public:
   ////////////////////////////////////////////////////////////////////////
   // PostRenderer
 
-  virtual void render(cairo_t* cr);
+  virtual void render(cairo_t* cr, ViewInterface::Ptr view);
 
   ////////////////////////////////////////////////////////////////////////
   // SelectionListener
 
-  virtual void onSelectionStart(GdkPoint p);
-  virtual void onSelectionUpdate(Selection* s);
-  virtual void onSelectionEnd(Selection* s);
+  virtual void onSelectionStart(GdkPoint p, ViewInterface::Ptr view);
+  virtual void onSelectionUpdate(Selection* s, ViewInterface::Ptr view);
+  virtual void onSelectionEnd(Selection* s, ViewInterface::Ptr view);
 
   ////////////////////////////////////////////////////////////////////////
 
 private:
-  virtual void displayMeasurement();
+  virtual void displayMeasurement(ViewInterface::Ptr view);
 };
 
 class Measure : public PluginInformationInterface, public ViewObserver, virtual public Scroom::Utils::Base

@@ -26,6 +26,11 @@
 class PresentationInterface;
 
 /**
+ * Forward declaration for SelectionListener and PostRenderer
+ */
+class ViewInterface;
+
+/**
  * Structure that represents a selection made
  * by the user.
  */
@@ -64,7 +69,7 @@ public:
    * argument, which can be used for drawing on top
    * of the presentation.
    */
-  virtual void render(cairo_t* cr)=0;
+  virtual void render(cairo_t* cr, boost::shared_ptr<ViewInterface> view)=0;
 };
 
 /**
@@ -93,7 +98,7 @@ public:
    * The passed point is a point in the presentation
    * coordinate space.
    */
-  virtual void onSelectionStart(GdkPoint start)=0;
+  virtual void onSelectionStart(GdkPoint start, boost::shared_ptr<ViewInterface> view)=0;
 
   /**
    * This function is called whenever the selection
@@ -104,7 +109,7 @@ public:
    * 
    * @see Selection
    */
-  virtual void onSelectionUpdate(Selection* selection)=0;
+  virtual void onSelectionUpdate(Selection* selection, boost::shared_ptr<ViewInterface> view)=0;
 
   /**
    * This function is called whenever the selection
@@ -115,7 +120,7 @@ public:
    * 
    * @see Selection
    */
-  virtual void onSelectionEnd(Selection* selection)=0;
+  virtual void onSelectionEnd(Selection* selection, boost::shared_ptr<ViewInterface> view)=0;
 };
 
 /**

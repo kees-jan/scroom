@@ -39,12 +39,11 @@ void Measure::registerCapabilities(ScroomPluginInterface::Ptr host)
 // ViewObserver
 ////////////////////////////////////////////////////////////////////////
 
-Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr v)
+Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr view)
 {
   MeasureHandler::Ptr handler = MeasureHandler::create();
-  handler->view = v;
-  v->registerSelectionListener(handler, MouseButton::SECONDARY);
-  v->registerPostRenderer(handler);
+  view->registerSelectionListener(handler, MouseButton::SECONDARY);
+  view->registerPostRenderer(handler);
 
   return Scroom::Bookkeeping::Token();
 }
@@ -66,7 +65,7 @@ MeasureHandler::Ptr MeasureHandler::create()
   return Ptr(new MeasureHandler());
 }
 
-void MeasureHandler::displayMeasurement()
+void MeasureHandler::displayMeasurement(ViewInterface::Ptr view)
 {
   std::ostringstream s;
   s.precision(1);
@@ -85,27 +84,27 @@ void MeasureHandler::displayMeasurement()
 // SelectionListener
 ////////////////////////////////////////////////////////////////////////
 
-void MeasureHandler::onSelectionStart(GdkPoint)
+void MeasureHandler::onSelectionStart(GdkPoint, ViewInterface::Ptr)
 {
 }
 
-void MeasureHandler::onSelectionUpdate(Selection* s)
+void MeasureHandler::onSelectionUpdate(Selection* s, ViewInterface::Ptr view)
 {
   selection = s;
-  displayMeasurement();
+  displayMeasurement(view);
 }
 
-void MeasureHandler::onSelectionEnd(Selection* s)
+void MeasureHandler::onSelectionEnd(Selection* s, ViewInterface::Ptr view)
 {
   selection = s;
-  displayMeasurement();
+  displayMeasurement(view);
 }
 
 ////////////////////////////////////////////////////////////////////////
 // PostRenderer
 ////////////////////////////////////////////////////////////////////////
 
-void MeasureHandler::render(cairo_t* cr)
+void MeasureHandler::render(cairo_t* cr, ViewInterface::Ptr view)
 {
   if(selection)
   {

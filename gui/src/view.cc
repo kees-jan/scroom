@@ -191,7 +191,7 @@ void View::redraw(cairo_t* cr)
 
     for(auto renderer : postRenderers)
     {
-      renderer->render(cr);
+      renderer->render(cr, shared_from_this<ViewInterface>());
     }
   }
   else
@@ -632,7 +632,7 @@ void View::on_buttonPress(GdkEventButton* event)
   selections[event->button] = new Selection(point);
   for(auto listener : selectionListeners[static_cast<MouseButton>(event->button)])
   {
-    listener->onSelectionStart(point);
+    listener->onSelectionStart(point, shared_from_this<ViewInterface>());
   }
 }
 
@@ -653,7 +653,7 @@ void View::on_buttonRelease(GdkEventButton* event)
     sel->end = windowPointToPresentationPoint(eventToPoint(event));
     for(auto listener : selectionListeners[static_cast<MouseButton>(event->button)])
     {
-      listener->onSelectionEnd(sel);
+      listener->onSelectionEnd(sel, shared_from_this<ViewInterface>());
     }
     invalidate();
   }
@@ -705,7 +705,7 @@ void View::on_motion_notify(GdkEventMotion* event)
         sel->end = windowPointToPresentationPoint(eventToPoint(event));
         for(auto listener : selectionListeners[static_cast<MouseButton>(button + 1)])
         {
-          listener->onSelectionUpdate(sel);
+          listener->onSelectionUpdate(sel, shared_from_this<ViewInterface>());
         }
         invalidate();
       }
