@@ -45,6 +45,10 @@ Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr view)
   view->registerSelectionListener(handler);
   view->registerPostRenderer(handler);
 
+  view->addToolButton("Test 1", nullptr);
+  view->addToolButton("Test 2", nullptr);
+  view->addToolButton("Test 3", nullptr);
+
   return Scroom::Bookkeeping::Token();
 }
 

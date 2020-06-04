@@ -18,6 +18,7 @@
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
 #include <cairo.h>
+#include <gmodule.h>
 
 #include <scroom/scroominterface.hh>
 #include <scroom/viewinterface.hh>
@@ -67,6 +68,7 @@ private:
   Selection::Ptr selection;
   std::vector<SelectionListener::Ptr> selectionListeners;
   std::vector<PostRenderer::Ptr> postRenderers;
+  GtkWidget* pluginButtonGroup;
 
   gint modifiermove;
   GdkPoint cachedPoint;
@@ -140,6 +142,7 @@ public:
   virtual void setStatusMessage(const std::string& message);
   virtual GdkPoint presentationPointToWindowPoint(GdkPoint presentationpoint);
   virtual PresentationInterface::Ptr getCurrentPresentation();
+  virtual void addToolButton(const std::string&, std::function<void(bool)>);
 
   ////////////////////////////////////////////////////////////////////////
   // Helpers

@@ -265,5 +265,9 @@ public:
   {
     return nullptr;
   }
+
+  virtual void addToolButton(const std::string&, std::function<void(bool)>)
+  {
+  }
 };
 
