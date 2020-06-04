@@ -127,6 +127,32 @@ public:
 };
 
 /**
+ * Interface provided to something that wants to
+ * listener to enable/disable events from its
+ * tool button.
+ */
+class ToolStateListener
+{
+public:
+  typedef boost::shared_ptr<ToolStateListener> Ptr;
+
+public:
+  virtual ~ToolStateListener() {}
+
+  /**
+   * This function is called whenever the tool
+   * button is select.
+   */
+  virtual void onEnable()=0;
+
+  /**
+   * Then function is called whenever the tool
+   * button is deselected.
+   */
+  virtual void onDisable()=0;
+};
+
+/**
  * Interface provided to something Viewable
  *
  * Internally, scroom uses a View to represent the fact that something
@@ -134,7 +160,7 @@ public:
  * presentation, you typically want to influence whatever is being
  * shown. This interface allows you to do so.
  *
- * @see PresentationInterface, SelectionListener, PostRenderer, Viewable
+ * @see PresentationInterface, Viewable, SelectionListener, PostRenderer
  */
 class ViewInterface
 {
@@ -266,7 +292,7 @@ public:
     return nullptr;
   }
 
-  virtual void addToolButton(const std::string&, std::function<void(bool)>)
+  virtual void addToolButton(const std::string&, ToolStateListener::Ptr)
   {
   }
 };

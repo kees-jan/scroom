@@ -11,7 +11,7 @@
 #include <scroom/utilities.hh>
 #include <scroom/viewinterface.hh>
 
-class MeasureHandler : public PostRenderer, public SelectionListener, virtual public Scroom::Utils::Base
+class MeasureHandler : public ToolStateListener, public PostRenderer, public SelectionListener, virtual public Scroom::Utils::Base
 {
 public:
   MeasureHandler();
@@ -21,6 +21,7 @@ public:
 
 private:
   Selection::Ptr selection;
+  bool enabled;
 
 public:
   static Ptr create();
@@ -39,6 +40,12 @@ public:
   virtual void onSelectionStart(GdkPoint p, ViewInterface::Ptr view);
   virtual void onSelectionUpdate(Selection::Ptr s, ViewInterface::Ptr view);
   virtual void onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view);
+
+  ////////////////////////////////////////////////////////////////////////
+  // SelectionListener
+
+  virtual void onEnable();
+  virtual void onDisable();
 
   ////////////////////////////////////////////////////////////////////////
 

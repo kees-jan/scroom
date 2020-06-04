@@ -795,33 +795,41 @@ PresentationInterface::Ptr View::getCurrentPresentation()
   return presentation;
 }
 
-void View::addToolButton(const std::string& name, std::function<void(bool)> callback)
+static void plugin_button_toggled(GtkToggleButton* button, gpointer data){
+  ToolStateListener* listener = static_cast<ToolStateListener*>(data);
+  if(gtk_toggle_button_get_active(button))
+  {
+    listener->onEnable();
+  }
+  else
+  {
+    listener->onDisable();
+  }
+}
+
+void View::addToolButton(const std::string& name, ToolStateListener::Ptr callback)
 {
-  //TODO
-
-  printf("Adding button %s\n", name.c_str());
-
   gdk_threads_enter();
 
   GtkWidget* button;
   if(pluginButtonGroup)
   {
-    printf("Second+ run\n");
     button = gtk_radio_button_new_with_label_from_widget(GTK_RADIO_BUTTON(pluginButtonGroup), name.c_str());
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), false);
   }
   else
   {
-    printf("First run\n");
     button = gtk_radio_button_new_with_label(NULL, name.c_str());
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), true);
     pluginButtonGroup = button;
+    callback->onEnable();
   }
   gtk_widget_set_visible(button, true);
 
+  ToolStateListener::Ptr callback_ptr(callback);
   GtkToolItem* toolItem = gtk_tool_item_new();
   gtk_container_add(GTK_CONTAINER(toolItem), button);
-  //g_signal_connect(static_cast<gpointer>(toggleButton), "toggled", G_CALLBACK(on_toggled), &handler->enabled);
+  g_signal_connect(static_cast<gpointer>(button), "toggled", G_CALLBACK(plugin_button_toggled), callback_ptr.get());
 
   addToToolbar(toolItem);
 

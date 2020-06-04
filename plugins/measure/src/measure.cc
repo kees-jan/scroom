@@ -45,9 +45,7 @@ Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr view)
   view->registerSelectionListener(handler);
   view->registerPostRenderer(handler);
 
-  view->addToolButton("Test 1", nullptr);
-  view->addToolButton("Test 2", nullptr);
-  view->addToolButton("Test 3", nullptr);
+  view->addToolButton("Measure", handler);
 
   return Scroom::Bookkeeping::Token();
 }
@@ -59,6 +57,7 @@ Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr view)
 MeasureHandler::MeasureHandler()
 {
   selection = nullptr;
+  enabled = false;
 }
 MeasureHandler::~MeasureHandler()
 {
@@ -94,14 +93,20 @@ void MeasureHandler::onSelectionStart(GdkPoint, ViewInterface::Ptr)
 
 void MeasureHandler::onSelectionUpdate(Selection::Ptr s, ViewInterface::Ptr view)
 {
-  selection = s;
-  displayMeasurement(view);
+  if(enabled)
+  {
+    selection = s;
+    displayMeasurement(view);
+  }
 }
 
 void MeasureHandler::onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view)
 {
-  selection = s;
-  displayMeasurement(view);
+  if(enabled)
+  {
+    selection = s;
+    displayMeasurement(view);
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -124,4 +129,17 @@ void MeasureHandler::render(cairo_t* cr, ViewInterface::Ptr view)
     cairo_line_to(cr, end.x, end.y);
     cairo_stroke(cr);
   }
+}
+
+////////////////////////////////////////////////////////////////////////
+// ToolStateListener
+////////////////////////////////////////////////////////////////////////
+
+void MeasureHandler::onDisable(){
+  selection = nullptr;
+  enabled = false;
+}
+
+void MeasureHandler::onEnable(){
+  enabled = true;
 }
