@@ -18,7 +18,6 @@
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
 #include <cairo.h>
-#include <gmodule.h>
 
 #include <scroom/scroominterface.hh>
 #include <scroom/viewinterface.hh>
