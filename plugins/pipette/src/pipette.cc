@@ -157,7 +157,7 @@ void PipetteHandler::onSelectionEnd(Selection* s)
     color_stream << "Colors:";
     for(auto element : colors)
     {
-      color_stream << ' ' << element.first.c_str() << ": " << element.second;
+      color_stream << ' ' << element.first << ": " << element.second;
     }
 
     view->setStatusMessage(color_stream.str());
