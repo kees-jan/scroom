@@ -51,6 +51,7 @@ public:
 
 private:
   virtual void displayMeasurement(ViewInterface::Ptr view);
+  virtual void drawCross(cairo_t* cr, GdkPoint p);
 };
 
 class Measure : public PluginInformationInterface, public ViewObserver, virtual public Scroom::Utils::Base

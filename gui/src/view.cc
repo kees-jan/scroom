@@ -889,15 +889,6 @@ GdkPoint View::eventToPoint(GdkEventMotion* event)
   return result;
 }
 
-void View::drawCross(cairo_t* cr, GdkPoint p)
-{
-  static const int size = 10;
-  cairo_move_to(cr, p.x-size, p.y);
-  cairo_line_to(cr, p.x+size, p.y);
-  cairo_move_to(cr, p.x, p.y-size);
-  cairo_line_to(cr, p.x, p.y+size);
-}
-
 void View::updateNewWindowMenu()
 {
   GtkWidget* newWindow_menu_item = glade_xml_get_widget(scroomXml, "newWindow");

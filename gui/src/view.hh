@@ -150,7 +150,6 @@ private:
   GdkPoint windowPointToPresentationPoint(GdkPoint wp);
   GdkPoint eventToPoint(GdkEventButton* event);
   GdkPoint eventToPoint(GdkEventMotion* event);
-  void drawCross(cairo_t* cr, GdkPoint p);
   void updateNewWindowMenu();
   void updateXY(int x, int y, LocationChangeCause source);
 };
