@@ -68,10 +68,15 @@ public:
   virtual ~PostRenderer() {}
 
   /**
-   * This funtion is called whenever the presentation
-   * is redrawn. A cairo instance is passed as an
-   * argument, which can be used for drawing on top
-   * of the presentation.
+   * This function is called after the presentation
+   * finishes redrawing.
+   *
+   * @param vi The ViewInterface on whose behalf the request is made
+   * @param cr The context to with, the origin of the context is
+   *    translated to be the same as the origin of the presentation.
+   * @param presentationArea the area of the presentation that is visible.
+   * @param zoom The requested zoom level. One pixel should have
+   *    size 2**@c zoom when drawn. @c zoom may be negative.
    */
   virtual void render(boost::shared_ptr<ViewInterface> const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom)=0;
 };

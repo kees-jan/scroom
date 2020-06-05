@@ -6,6 +6,7 @@
  */
 
 #include "measure.hh"
+#include <scroom/unused.hh>
 
 ////////////////////////////////////////////////////////////////////////
 // Measure
@@ -124,15 +125,14 @@ void MeasureHandler::onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view)
 
 void MeasureHandler::render(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom)
 {
+  UNUSED(vi);
+  UNUSED(presentationArea);
+
   if(selection)
   {
-    //GdkPoint start = vi->presentationPointToWindowPoint(selection->start);
-    //GdkPoint end = vi->presentationPointToWindowPoint(selection->end);
-
     Scroom::Utils::Point<double> start(selection->start.x, selection->start.y);
     Scroom::Utils::Point<double> end(selection->end.x, selection->end.y);
 
-    double factor;
     if(zoom>=0)
     {
       const int pixelSize=1<<zoom;
@@ -154,10 +154,6 @@ void MeasureHandler::render(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::U
     cairo_set_source_rgb(cr, 1, 0, 0); // Red
     cairo_move_to(cr, start.x, start.y);
     cairo_line_to(cr, end.x, end.y);
-    cairo_stroke(cr);
-
-    cairo_move_to(cr, 0, 0);
-    cairo_line_to(cr, 100, 100);
     cairo_stroke(cr);
   }
 }
