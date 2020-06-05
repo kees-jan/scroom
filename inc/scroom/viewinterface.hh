@@ -66,7 +66,9 @@ public:
    * @param vi The ViewInterface on whose behalf the request is made
    * @param cr The context to with, the origin of the context is
    *    translated to be the same as the origin of the presentation.
-   * @param presentationArea the area of the presentation that is visible.
+   * @param presentationArea the area that is to be drawn. The given
+   *    @c x and @c y coordinates should map on 0,0 of the given
+   *    context @c cr.
    * @param zoom The requested zoom level. One pixel should have
    *    size 2**@c zoom when drawn. @c zoom may be negative.
    */
