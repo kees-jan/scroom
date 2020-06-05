@@ -83,7 +83,7 @@ void MeasureHandler::displayMeasurement(ViewInterface::Ptr view)
   view->setStatusMessage(s.str());
 }
 
-void MeasureHandler::drawCross(cairo_t* cr, GdkPoint p)
+void MeasureHandler::drawCross(cairo_t* cr, Scroom::Utils::Point<double> p)
 {
   static const int size = 10;
   cairo_move_to(cr, p.x-size, p.y);
@@ -122,12 +122,30 @@ void MeasureHandler::onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view)
 // PostRenderer
 ////////////////////////////////////////////////////////////////////////
 
-void MeasureHandler::render(cairo_t* cr, ViewInterface::Ptr view)
+void MeasureHandler::render(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom)
 {
   if(selection)
   {
-    GdkPoint start = view->presentationPointToWindowPoint(selection->start);
-    GdkPoint end = view->presentationPointToWindowPoint(selection->end);
+    //GdkPoint start = vi->presentationPointToWindowPoint(selection->start);
+    //GdkPoint end = vi->presentationPointToWindowPoint(selection->end);
+
+    Scroom::Utils::Point<double> start(selection->start.x, selection->start.y);
+    Scroom::Utils::Point<double> end(selection->end.x, selection->end.y);
+
+    double factor;
+    if(zoom>=0)
+    {
+      const int pixelSize=1<<zoom;
+      start *= pixelSize;
+      end *= pixelSize;
+    }
+    else
+    {
+      const int pixelSize=1<<-zoom;
+      start /= pixelSize;
+      end /= pixelSize;
+    }
+
     cairo_set_line_width(cr, 1);
     cairo_set_source_rgb(cr, 0.75, 0, 0); // Dark Red
     drawCross(cr, start);
@@ -136,6 +154,10 @@ void MeasureHandler::render(cairo_t* cr, ViewInterface::Ptr view)
     cairo_set_source_rgb(cr, 1, 0, 0); // Red
     cairo_move_to(cr, start.x, start.y);
     cairo_line_to(cr, end.x, end.y);
+    cairo_stroke(cr);
+
+    cairo_move_to(cr, 0, 0);
+    cairo_line_to(cr, 100, 100);
     cairo_stroke(cr);
   }
 }

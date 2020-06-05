@@ -169,12 +169,17 @@ void View::redraw(cairo_t* cr)
     GdkRectangle rect;
     rect.x=x;
     rect.y=y;
+    int tx=-x;
+    int ty=-y;
     if(zoom>=0)
     {
       // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
       int pixelSize = 1<<zoom;
       rect.width = (drawingAreaWidth+pixelSize-1)/pixelSize;
       rect.height = (drawingAreaHeight+pixelSize-1)/pixelSize;
+
+      tx *= pixelSize;
+      ty *= pixelSize;
     }
     else
     {
@@ -186,13 +191,18 @@ void View::redraw(cairo_t* cr)
       // Round to whole pixels
       rect.x = (rect.x/pixelSize) * pixelSize; 
       rect.y = (rect.y/pixelSize) * pixelSize; 
+
+      tx /= pixelSize;
+      ty /= pixelSize;
     }
 
     presentation->redraw(shared_from_this<View>(), cr, rect, zoom);
 
+    // Apply a translation such that (0, 0) is also (0, 0) for the presentation
+    cairo_translate(cr, tx, ty);
     for(auto renderer : postRenderers)
     {
-      renderer->render(cr, shared_from_this<ViewInterface>());
+      renderer->render(shared_from_this<View>(), cr, rect, zoom);
     }
   }
   else

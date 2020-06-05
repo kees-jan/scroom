@@ -10,6 +10,7 @@
 #include <scroom/plugininformationinterface.hh>
 #include <scroom/utilities.hh>
 #include <scroom/viewinterface.hh>
+#include <scroom/point.hh>
 
 class MeasureHandler : public ToolStateListener, public PostRenderer, public SelectionListener, virtual public Scroom::Utils::Base
 {
@@ -32,7 +33,7 @@ public:
   ////////////////////////////////////////////////////////////////////////
   // PostRenderer
 
-  virtual void render(cairo_t* cr, ViewInterface::Ptr view);
+  virtual void render(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom);
 
   ////////////////////////////////////////////////////////////////////////
   // SelectionListener
@@ -51,7 +52,7 @@ public:
 
 private:
   virtual void displayMeasurement(ViewInterface::Ptr view);
-  virtual void drawCross(cairo_t* cr, GdkPoint p);
+  virtual void drawCross(cairo_t* cr, Scroom::Utils::Point<double> p);
 };
 
 class Measure : public PluginInformationInterface, public ViewObserver, virtual public Scroom::Utils::Base

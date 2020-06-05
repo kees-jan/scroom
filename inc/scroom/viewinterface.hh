@@ -19,6 +19,7 @@
 
 #include <scroom/progressinterface.hh>
 #include <scroom/stuff.hh>
+#include <scroom/rectangle.hh>
 
 /**
  * Forward declaration for ViewInterface::getCurrentPresentation()
@@ -72,7 +73,7 @@ public:
    * argument, which can be used for drawing on top
    * of the presentation.
    */
-  virtual void render(cairo_t* cr, boost::shared_ptr<ViewInterface> view)=0;
+  virtual void render(boost::shared_ptr<ViewInterface> const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom)=0;
 };
 
 /**
