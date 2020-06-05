@@ -133,7 +133,7 @@ View::View(GladeXML* scroomXml_)
   toolBar = GTK_TOOLBAR(glade_xml_get_widget(scroomXml_, "toolbar"));
   toolBarSeparator = NULL;
   toolBarCount = 0;
-  pluginButtonGroup = NULL;
+  toolButtonGroup = NULL;
 
   cachedPoint.x=0;
   cachedPoint.y=0;
@@ -822,16 +822,16 @@ void View::addToolButton(const std::string& name, ToolStateListener::Ptr callbac
   gdk_threads_enter();
 
   GtkWidget* button;
-  if(pluginButtonGroup)
+  if(toolButtonGroup)
   {
-    button = gtk_radio_button_new_with_label_from_widget(GTK_RADIO_BUTTON(pluginButtonGroup), name.c_str());
+    button = gtk_radio_button_new_with_label_from_widget(GTK_RADIO_BUTTON(toolButtonGroup), name.c_str());
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), false);
   }
   else
   {
     button = gtk_radio_button_new_with_label(NULL, name.c_str());
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), true);
-    pluginButtonGroup = button;
+    toolButtonGroup = button;
     callback->onEnable();
   }
   gtk_widget_set_visible(button, true);

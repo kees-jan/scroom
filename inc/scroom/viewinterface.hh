@@ -18,7 +18,6 @@
 #include <boost/weak_ptr.hpp>
 
 #include <scroom/progressinterface.hh>
-#include <scroom/stuff.hh>
 #include <scroom/rectangle.hh>
 
 class PresentationInterface;
