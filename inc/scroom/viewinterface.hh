@@ -21,14 +21,7 @@
 #include <scroom/stuff.hh>
 #include <scroom/rectangle.hh>
 
-/**
- * Forward declaration for ViewInterface::getCurrentPresentation()
- */
 class PresentationInterface;
-
-/**
- * Forward declaration for SelectionListener and PostRenderer
- */
 class ViewInterface;
 
 /**
@@ -147,7 +140,7 @@ public:
 
   /**
    * This function is called whenever the tool
-   * button is select.
+   * button is selected.
    */
   virtual void onEnable()=0;
 

@@ -67,7 +67,7 @@ private:
   Selection::Ptr selection;
   std::vector<SelectionListener::Ptr> selectionListeners;
   std::vector<PostRenderer::Ptr> postRenderers;
-  GtkWidget* pluginButtonGroup;
+  GtkWidget* toolButtonGroup;
 
   gint modifiermove;
   GdkPoint cachedPoint;
