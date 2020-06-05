@@ -73,6 +73,29 @@ void ChildView::addToToolbar(GtkToolItem*)
 void ChildView::removeFromToolbar(GtkToolItem*)
 {}
 
+void ChildView::setPanning()
+{}
+
+void ChildView::unsetPanning()
+{}
+
+void ChildView::registerSelectionListener(SelectionListener::Ptr)
+{}
+
+void ChildView::registerPostRenderer(PostRenderer::Ptr)
+{}
+
+void ChildView::setStatusMessage(const std::string&)
+{}
+
+boost::shared_ptr<PresentationInterface> ChildView::getCurrentPresentation()
+{
+  return nullptr;
+}
+
+void ChildView::addToolButton(const std::string&, ToolStateListener::Ptr)
+{}
+
 ////////////////////////////////////////////////////////////////////////
 // TransparentOverlayViewInfo
 ////////////////////////////////////////////////////////////////////////

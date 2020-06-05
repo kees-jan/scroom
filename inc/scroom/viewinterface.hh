@@ -234,16 +234,12 @@ public:
   /**
    * Enable panning the view.
    */
-  virtual void setPanning()
-  {
-  }
+  virtual void setPanning()=0;
 
   /**
    * Disable panning the view.
    */
-  virtual void unsetPanning()
-  {
-  }
+  virtual void unsetPanning()=0;
 
   /**
    * Register a SelectionListener to be updated whenever the
@@ -252,14 +248,12 @@ public:
    * 
    * @see SelectionListener
    */
-  virtual void registerSelectionListener(SelectionListener::Ptr)
-  {
-  }
+  virtual void registerSelectionListener(SelectionListener::Ptr)=0;
 
   /**
    * Register a postrenderer to be updated whenever a redraw
-   * occurs. When this happens, the 'redraw(cairo_t * cr)'
-   * function gets called on the instance that is passed to
+   * occurs. When this happens, the 'render' function
+   * gets called on the instance that is passed to
    * the given instance.
    * 
    * Note that the order in which different registered instances
@@ -269,37 +263,20 @@ public:
    * 
    * @see PostRenderer
    */
-  virtual void registerPostRenderer(PostRenderer::Ptr)
-  {
-  }
+  virtual void registerPostRenderer(PostRenderer::Ptr)=0;
 
   /**
    * Sets the status message in the status bar of the application.
    */
-  virtual void setStatusMessage(const std::string&)
-  {
-  }
-
-  /**
-   * Converts a point on screen to a presentation pixel.
-   */
-  virtual GdkPoint presentationPointToWindowPoint(GdkPoint)
-  {
-    return {0, 0};
-  }
+  virtual void setStatusMessage(const std::string&)=0;
 
   /**
    * Returns a shared pointer to the current presentation.
    * 
    * @see PresentationInterface
    */
-  virtual boost::shared_ptr<PresentationInterface> getCurrentPresentation()
-  {
-    return nullptr;
-  }
+  virtual boost::shared_ptr<PresentationInterface> getCurrentPresentation()=0;
 
-  virtual void addToolButton(const std::string&, ToolStateListener::Ptr)
-  {
-  }
+  virtual void addToolButton(const std::string&, ToolStateListener::Ptr)=0;
 };
 

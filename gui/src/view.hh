@@ -139,7 +139,6 @@ public:
   virtual void registerSelectionListener(SelectionListener::Ptr listener);
   virtual void registerPostRenderer(PostRenderer::Ptr renderer);
   virtual void setStatusMessage(const std::string& message);
-  virtual GdkPoint presentationPointToWindowPoint(GdkPoint presentationpoint);
   virtual PresentationInterface::Ptr getCurrentPresentation();
   virtual void addToolButton(const std::string&, ToolStateListener::Ptr);
 
@@ -148,6 +147,7 @@ public:
 
 private:
   GdkPoint windowPointToPresentationPoint(GdkPoint wp);
+  GdkPoint presentationPointToWindowPoint(GdkPoint presentationpoint);
   GdkPoint eventToPoint(GdkEventButton* event);
   GdkPoint eventToPoint(GdkEventMotion* event);
   void updateNewWindowMenu();
