@@ -261,6 +261,13 @@ public:
    */
   virtual boost::shared_ptr<PresentationInterface> getCurrentPresentation()=0;
 
+  /**
+   * Adds a new tool button to the toolbar. The given ToolStateListener
+   * will be informed when the tool is turned on or off. Only one
+   * tool will be active at the same time.
+   *
+   * @see ToolStateListener
+   */
   virtual void addToolButton(GtkToggleButton*, ToolStateListener::Ptr)=0;
 };
 
