@@ -379,7 +379,8 @@ libs_tiled_bitmap_test_tiled_bitmap_tests_CPPFLAGS = @TILEDBITMAP_CFLAGS@ -I $(t
 
 libs_tiled_bitmap_test_tiled_bitmap_tests_SOURCES = \
 	libs/tiled-bitmap/test/main.cc \
-	libs/tiled-bitmap/test/tiledbitmap-tests.cc
+	libs/tiled-bitmap/test/tiledbitmap-tests.cc \
+	libs/tiled-bitmap/test/sampleiterator-tests.cc
 
 libs_tiled_bitmap_test_tiled_bitmap_tests_LDADD = \
 	@BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
@@ -589,6 +590,10 @@ gui_src_scroom_SOURCES = \
 	gui/src/progressbarmanager.hh \
 	gui/src/workinterface.hh
 
+if HAVE_WINDRES
+gui_src_scroom_SOURCES += build_scripts/windows/icon.rc
+endif
+
 gui_src_scroom_CPPFLAGS = -I $(top_srcdir)/inc \
 	-DPACKAGE_DATA_DIR=\""$(pkgdatadir)"\" \
 	-DPLUGIN_DIR=\""$(plugindir)"\" \
@@ -601,7 +606,9 @@ gui_src_scroom_LDADD = @GUI_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @BOOSTPROGRA
 
 gui_extra_dist = \
 	gui/scroom.glade \
-	gui/ENVIRONMENT
+	gui/ENVIRONMENT \
+	build_scripts/windows/icon.ico \
+	build_scripts/windows/icon.rc
 
 gui_pkgdata_data = \
 	gui/scroom.glade
@@ -684,4 +691,6 @@ silent-doxygen:
 install-win-portable: install
 	@POST_INSTALL_HOOK@
 
-	
+# Define how the .rc file for the icon on Windows has to be compiled
+.rc.o:
+	windres $< -O coff -o $@
