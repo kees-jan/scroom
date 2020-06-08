@@ -391,35 +391,32 @@ void TiffPresentation::done()
 }
 
 /**
- * Method to override operator+= method
- * Returns y if x is empty.
- * Otherwise adds the values of the same key.
+ * Overriden operator+= to add two values of the same key.
+ * 
+ * Loops through rhs, adds values of the same key to each other and assigns it back to lhs.
+ * Return lhs at the end.
  */
-PipetteLayerOperations::PipetteColor operator+=(PipetteLayerOperations::PipetteColor& x, const PipetteLayerOperations::PipetteColor& y)
+PipetteLayerOperations::PipetteColor operator+=(PipetteLayerOperations::PipetteColor& lhs, const PipetteLayerOperations::PipetteColor& rhs)
 {
-  if(x.empty())
+  for(auto const& elem : rhs)
   {
-    x = y;
-    return x;
+    lhs[elem.first] += elem.second;
   }
-  for(auto const& elem : y)
-  {
-    x[elem.first] += elem.second;
-  }
-  return x;
+  return lhs;
 }
 
 /**
- * Override operator/ method
- * Divides each element inside the map by a constant
+ * Overriden operator/ method to divide each element in the map by a constant.
+ * 
+ * Divides each element inside elements by by a constant divisor.
  */
-PipetteLayerOperations::PipetteColor operator/(PipetteLayerOperations::PipetteColor x, const int y)
+PipetteLayerOperations::PipetteColor operator/(PipetteLayerOperations::PipetteColor elements, const int divisor )
 {
-  for(auto elem : x)
+  for(auto elem : elements)
   {
-    x[elem.first] = elem.second / y;
+    elements[elem.first] = elem.second / divisor;
   }
-  return x;
+  return elements;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -463,7 +460,6 @@ PipetteLayerOperations::PipetteColor TiffPresentation::getAverages(Scroom::Utils
       inter_rect -= base; //rectangle coordinates relative to constTile with topleft corner (0,0)
 
       pipetteColors += pipetteLayerOperation->sumPixelValues(inter_rect, tile);
-      //continue to next tile
     }
   }
   return pipetteColors / totalPixels;

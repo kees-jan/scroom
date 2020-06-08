@@ -22,7 +22,8 @@ public:
   {}
 
   /**
-   * Method that each layer Operation that supports the pipette tool will implement.
+   * Sums the components of each pixel contained in the area of the tile.
+   * 
    * This will, given a tile and an area, where the area is contained in the tile, compute the sum of all components.
    * A map of strings and size_t will then be returned, representing the sum for each component.
    */
