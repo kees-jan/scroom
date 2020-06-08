@@ -43,6 +43,11 @@ ProgressInterface::Ptr ViewInterfaceStub::getProgressInterface()
   return pi;
 }
 
+boost::shared_ptr<PresentationInterface> ViewInterfaceStub::getCurrentPresentation()
+{
+  return nullptr;
+}
+
 void Source1Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<Tile::Ptr>& tiles)
 {
   for(Tile::Ptr tile: tiles)
