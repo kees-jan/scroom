@@ -125,7 +125,6 @@ void MeasureHandler::onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view)
 void MeasureHandler::render(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom)
 {
   UNUSED(vi);
-  UNUSED(presentationArea);
 
   if(selection)
   {
