@@ -93,7 +93,7 @@ PresentationInterface::Ptr ChildView::getCurrentPresentation()
   return parent->getChild(shared_from_this<ChildView>());
 }
 
-void ChildView::addToolButton(const std::string&, ToolStateListener::Ptr)
+void ChildView::addToolButton(GtkToggleButton*, ToolStateListener::Ptr)
 {}
 
 ////////////////////////////////////////////////////////////////////////

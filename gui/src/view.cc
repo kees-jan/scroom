@@ -133,7 +133,6 @@ View::View(GladeXML* scroomXml_)
   toolBar = GTK_TOOLBAR(glade_xml_get_widget(scroomXml_, "toolbar"));
   toolBarSeparator = NULL;
   toolBarCount = 0;
-  toolButtonGroup = NULL;
 
   cachedPoint.x=0;
   cachedPoint.y=0;
@@ -394,6 +393,27 @@ void View::updateRulers()
     int pixelSize = 1<<(-zoom);
     gtk_ruler_set_range(hruler, x, x + drawingAreaWidth*pixelSize, 0, presentationRect.x() + presentationRect.width());
     gtk_ruler_set_range(vruler, y, y + drawingAreaHeight*pixelSize, 0, presentationRect.y() + presentationRect.height());
+  }
+}
+
+void View::toolButtonToggled(GtkToggleButton* button)
+{
+  ToolStateListener::Ptr listener = tools[button];
+  if(gtk_toggle_button_get_active(button))
+  {
+    for(auto tool : tools)
+    {
+      if(tool.first != button && gtk_toggle_button_get_active(tool.first))
+      {
+        gtk_toggle_button_set_active(tool.first, false);
+        tools[tool.first]->onDisable();
+      }
+    }
+    listener->onEnable();
+  }
+  else
+  {
+    listener->onDisable();
   }
 }
 
@@ -785,41 +805,22 @@ PresentationInterface::Ptr View::getCurrentPresentation()
   return presentation;
 }
 
-static void plugin_button_toggled(GtkToggleButton* button, gpointer data){
-  ToolStateListener* listener = static_cast<ToolStateListener*>(data);
-  if(gtk_toggle_button_get_active(button))
-  {
-    listener->onEnable();
-  }
-  else
-  {
-    listener->onDisable();
-  }
+static void tool_button_toggled(GtkToggleButton* button, gpointer data)
+{
+  static_cast<View*>(data)->toolButtonToggled(button);
 }
 
-void View::addToolButton(const std::string& name, ToolStateListener::Ptr callback)
+void View::addToolButton(GtkToggleButton* button, ToolStateListener::Ptr callback)
 {
   gdk_threads_enter();
 
-  GtkWidget* button;
-  if(toolButtonGroup)
-  {
-    button = gtk_radio_button_new_with_label_from_widget(GTK_RADIO_BUTTON(toolButtonGroup), name.c_str());
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), false);
-  }
-  else
-  {
-    button = gtk_radio_button_new_with_label(NULL, name.c_str());
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), true);
-    toolButtonGroup = button;
-    callback->onEnable();
-  }
-  gtk_widget_set_visible(button, true);
+  gtk_toggle_button_set_active(button, false);
+  tools[button] = callback;
+  gtk_widget_set_visible(GTK_WIDGET(button), true);
 
-  ToolStateListener::Ptr callback_ptr(callback);
   GtkToolItem* toolItem = gtk_tool_item_new();
-  gtk_container_add(GTK_CONTAINER(toolItem), button);
-  g_signal_connect(static_cast<gpointer>(button), "toggled", G_CALLBACK(plugin_button_toggled), callback_ptr.get());
+  gtk_container_add(GTK_CONTAINER(toolItem), GTK_WIDGET(button));
+  g_signal_connect(static_cast<gpointer>(button), "toggled", G_CALLBACK(tool_button_toggled), this);
 
   addToToolbar(toolItem);
 

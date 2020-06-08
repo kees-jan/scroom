@@ -53,7 +53,7 @@ public:
   virtual void registerPostRenderer(PostRenderer::Ptr renderer);
   virtual void setStatusMessage(const std::string& message);
   virtual PresentationInterface::Ptr getCurrentPresentation();
-  virtual void addToolButton(const std::string& name, ToolStateListener::Ptr callback);
+  virtual void addToolButton(GtkToggleButton* name, ToolStateListener::Ptr callback);
 };
 
 class TransparentOverlayViewInfo : virtual public Scroom::Utils::Base

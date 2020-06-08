@@ -139,7 +139,7 @@ namespace
     virtual void registerPostRenderer(PostRenderer::Ptr) {};
     virtual void setStatusMessage(const std::string&) {};
     virtual boost::shared_ptr<PresentationInterface> getCurrentPresentation() { return boost::shared_ptr<PresentationInterface>(); };
-    virtual void addToolButton(const std::string&, ToolStateListener::Ptr) {};
+    virtual void addToolButton(GtkToggleButton*, ToolStateListener::Ptr) {};
   };
 
 }

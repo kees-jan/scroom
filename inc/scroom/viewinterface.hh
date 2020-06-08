@@ -261,6 +261,6 @@ public:
    */
   virtual boost::shared_ptr<PresentationInterface> getCurrentPresentation()=0;
 
-  virtual void addToolButton(const std::string&, ToolStateListener::Ptr)=0;
+  virtual void addToolButton(GtkToggleButton*, ToolStateListener::Ptr)=0;
 };
 

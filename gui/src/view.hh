@@ -67,7 +67,7 @@ private:
   Selection::Ptr selection;
   std::vector<SelectionListener::Ptr> selectionListeners;
   std::vector<PostRenderer::Ptr> postRenderers;
-  GtkWidget* toolButtonGroup;
+  std::map<GtkToggleButton*, ToolStateListener::Ptr> tools;
 
   gint modifiermove;
   GdkPoint cachedPoint;
@@ -104,6 +104,7 @@ public:
   void updateZoom();
   void updateRulers();
   void updateTextbox();
+  void toolButtonToggled(GtkToggleButton* button);
 
   ////////////////////////////////////////////////////////////////////////
   // Scroom events
@@ -137,7 +138,7 @@ public:
   virtual void registerPostRenderer(PostRenderer::Ptr renderer);
   virtual void setStatusMessage(const std::string& message);
   virtual PresentationInterface::Ptr getCurrentPresentation();
-  virtual void addToolButton(const std::string&, ToolStateListener::Ptr);
+  virtual void addToolButton(GtkToggleButton*, ToolStateListener::Ptr);
 
   ////////////////////////////////////////////////////////////////////////
   // Helpers

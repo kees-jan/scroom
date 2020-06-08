@@ -46,7 +46,7 @@ Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr view)
   view->registerSelectionListener(handler);
   view->registerPostRenderer(handler);
 
-  view->addToolButton("Measure", handler);
+  view->addToolButton(GTK_TOGGLE_BUTTON(gtk_toggle_button_new_with_label("Measure")), handler);
 
   return Scroom::Bookkeeping::Token();
 }
