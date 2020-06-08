@@ -35,8 +35,7 @@ namespace Scroom
         : x(other.x), y(other.y)
       {}
 
-      template<int>
-      explicit Point(GdkPoint other)
+      explicit Point(GdkPoint& other)
         : x(other.x), y(other.y)
       {}
 

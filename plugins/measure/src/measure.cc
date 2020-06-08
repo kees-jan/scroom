@@ -130,8 +130,8 @@ void MeasureHandler::render(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::U
 
   if(selection)
   {
-    Scroom::Utils::Point<double> start(selection->start.x - presentationArea.getLeft(), selection->start.y - presentationArea.getTop());
-    Scroom::Utils::Point<double> end(selection->end.x - presentationArea.getLeft(), selection->end.y - presentationArea.getTop());
+    auto start = Scroom::Utils::Point<int>(selection->start) - presentationArea.getTopLeft();
+    auto end = Scroom::Utils::Point<int>(selection->end) - presentationArea.getTopLeft();
 
     if(zoom>=0)
     {
