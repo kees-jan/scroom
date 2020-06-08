@@ -88,9 +88,9 @@ void ChildView::registerPostRenderer(PostRenderer::Ptr)
 void ChildView::setStatusMessage(const std::string&)
 {}
 
-boost::shared_ptr<PresentationInterface> ChildView::getCurrentPresentation()
+PresentationInterface::Ptr ChildView::getCurrentPresentation()
 {
-  return nullptr;
+  return parent->getChild(shared_from_this<ChildView>());
 }
 
 void ChildView::addToolButton(const std::string&, ToolStateListener::Ptr)
@@ -150,6 +150,17 @@ void TransparentOverlayViewInfo::addChild(const PresentationInterface::Ptr& chil
   sizeDeterminer->open(child, view);
   children.push_back(child);
   createToggleToolButton(child);
+}
+
+PresentationInterface::Ptr TransparentOverlayViewInfo::getChild(const ChildView::Ptr& cv){
+  for(ChildMap::value_type const& v: childViews)
+  {
+    if(v.second == cv)
+    {
+      return v.first;
+    }
+  }
+  return PresentationInterface::Ptr();
 }
 
 void TransparentOverlayViewInfo::close()

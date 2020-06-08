@@ -52,7 +52,7 @@ public:
   virtual void registerSelectionListener(SelectionListener::Ptr listener);
   virtual void registerPostRenderer(PostRenderer::Ptr renderer);
   virtual void setStatusMessage(const std::string& message);
-  virtual boost::shared_ptr<PresentationInterface> getCurrentPresentation();
+  virtual PresentationInterface::Ptr getCurrentPresentation();
   virtual void addToolButton(const std::string& name, ToolStateListener::Ptr callback);
 };
 
@@ -80,6 +80,7 @@ public:
   static Ptr create(const ViewInterface::WeakPtr& vi, SizeDeterminer::Ptr const& sizeDeterminer);
   void addChildren(const std::list<PresentationInterface::Ptr>& children);
   void addChild(const PresentationInterface::Ptr& child);
+  PresentationInterface::Ptr getChild(const ChildView::Ptr& cv);
 
   void close();
 
