@@ -36,7 +36,7 @@ private:
   ColormapProvider::Ptr colormapProvider;
 
 public:
-  static LayerOperations::Ptr create(ColormapProvider::Ptr colormapProvider);
+  static Ptr create(ColormapProvider::Ptr colormapProvider);
   Operations1bpp(ColormapProvider::Ptr colormapProvider);
   virtual ~Operations1bpp()
   {}
@@ -56,7 +56,7 @@ private:
   ColormapProvider::Ptr colormapProvider;
 
 public:
-  static LayerOperations::Ptr create(ColormapProvider::Ptr colormapProvider);
+  static Ptr create(ColormapProvider::Ptr colormapProvider);
   Operations8bpp(ColormapProvider::Ptr colormapProvider);
   virtual ~Operations8bpp()
   {}

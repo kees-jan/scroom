@@ -214,7 +214,7 @@ void CommonOperations::draw(cairo_t* cr, const ConstTile::Ptr tile,
 
 LayerOperations::Ptr Operations1bpp::create(ColormapProvider::Ptr colormapProvider)
 {
-  return LayerOperations::Ptr(new Operations1bpp(colormapProvider));
+  return Ptr(new Operations1bpp(colormapProvider));
 }
 
 Operations1bpp::Operations1bpp(ColormapProvider::Ptr colormapProvider_)
@@ -334,7 +334,7 @@ void Operations1bpp::draw(cairo_t* cr, const ConstTile::Ptr tile,
 
 LayerOperations::Ptr Operations8bpp::create(ColormapProvider::Ptr colormapProvider)
 {
-  return LayerOperations::Ptr(new Operations8bpp(colormapProvider));
+  return Ptr(new Operations8bpp(colormapProvider));
 }
 
 Operations8bpp::Operations8bpp(ColormapProvider::Ptr colormapProvider_)
