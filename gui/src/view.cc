@@ -92,7 +92,7 @@ static void on_newWindow_activate(GtkMenuItem*, gpointer user_data)
 View::View(GladeXML* scroomXml_)
   : scroomXml(scroomXml_), presentation(), sidebarManager(),
     drawingAreaWidth(0), drawingAreaHeight(0),
-    zoom(0), x(0), y(0), modifiermove(0), panning(true)
+    zoom(0), x(0), y(0), modifiermove(0)
 {
   PluginManager::Ptr pluginManager = PluginManager::getInstance();
   window = GTK_WINDOW(glade_xml_get_widget(scroomXml_, "scroom"));
@@ -655,7 +655,7 @@ void View::on_buttonRelease(GdkEventButton* event)
 
 void View::on_motion_notify(GdkEventMotion* event)
 {
-  if((event->state & GDK_BUTTON1_MASK) && modifiermove == GDK_BUTTON1_MASK && panning)
+  if((event->state & GDK_BUTTON1_MASK) && modifiermove == GDK_BUTTON1_MASK)
   {
     int newx = x;
     int newy = y;
@@ -762,16 +762,6 @@ void View::removeFromToolbar(GtkToolItem* ti)
     gtk_container_remove(GTK_CONTAINER(toolBar), GTK_WIDGET(toolBarSeparator));
     toolBarSeparator=NULL;
   }
-}
-
-void View::setPanning()
-{
-  panning = true;
-}
-
-void View::unsetPanning()
-{
-  panning = false;
 }
 
 void View::registerSelectionListener(SelectionListener::Ptr listener)

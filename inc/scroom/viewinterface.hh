@@ -226,16 +226,6 @@ public:
   virtual void removeFromToolbar(GtkToolItem* ti)=0;
 
   /**
-   * Enable panning the view.
-   */
-  virtual void setPanning()=0;
-
-  /**
-   * Disable panning the view.
-   */
-  virtual void unsetPanning()=0;
-
-  /**
    * Register a SelectionListener to be updated whenever the
    * user selects a region . When the user changes the selection,
    * various functions on the given instance are called.
