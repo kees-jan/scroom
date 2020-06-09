@@ -422,7 +422,7 @@ PipetteLayerOperations::PipetteColor operator/(PipetteLayerOperations::PipetteCo
 ////////////////////////////////////////////////////////////////////////
 // PipetteViewInterface
 ////////////////////////////////////////////////////////////////////////
-PipetteLayerOperations::PipetteColor TiffPresentation::getAverages(Scroom::Utils::Rectangle<int> area)
+PipetteLayerOperations::PipetteColor TiffPresentation::getPixelAverages(Scroom::Utils::Rectangle<int> area)
 {
   PipetteLayerOperations::Ptr pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(this->ls[0]);
   if(!pipetteLayerOperation)
@@ -638,11 +638,7 @@ bool TiffPresentationWrapper::getTransparentBackground()
   return presentation->getTransparentBackground();
 }
 
-/**
- * Returns the averages of the selected pixels
- * Assumes that the rectangle is completely contained in the presentation
- */
-PipetteLayerOperations::PipetteColor TiffPresentationWrapper::getAverages(Scroom::Utils::Rectangle<int> area)
+PipetteLayerOperations::PipetteColor TiffPresentationWrapper::getPixelAverages(Scroom::Utils::Rectangle<int> area)
 {
-  return presentation->getAverages(area);
+  return presentation->getPixelAverages(area);
 }

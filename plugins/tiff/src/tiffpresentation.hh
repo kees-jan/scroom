@@ -93,7 +93,12 @@ public:
   // PipetteViewInterface
   ////////////////////////////////////////////////////////////////////////
 public:
-  virtual PipetteLayerOperations::PipetteColor getAverages(Scroom::Utils::Rectangle<int> area);
+  /** 
+   * Returns the average pixel values for each component, contained in the area
+   * 
+   * @param area selected area to get the pixel values from
+   */
+  virtual PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<int> area);
 
   ////////////////////////////////////////////////////////////////////////
   // Colormappable
@@ -146,7 +151,12 @@ public:
   // PipetteViewInterface
   ////////////////////////////////////////////////////////////////////////
 
-  virtual PipetteLayerOperations::PipetteColor getAverages(Scroom::Utils::Rectangle<int> area);
+  /** 
+   * Returns the average pixel values for each component, contained in the area
+   * 
+   * @param area selected area to get the pixel values from
+   */
+  virtual PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<int> area);
 
   ////////////////////////////////////////////////////////////////////////
   // PresentationBase
