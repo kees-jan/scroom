@@ -57,7 +57,6 @@ dnl SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wconversion])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wpointer-arith])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wwrite-strings])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wunused])
-SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wredundant-decls])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wuninitialized])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Winit-self])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wcast-qual])
@@ -71,6 +70,18 @@ SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wsign-promo])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wshadow])
 dnl SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-mwindows])
 SCROOM_TEST_ISYSTEM
+
+# Disabled warnings
+AM_COND_IF([LINUX], [
+    # - Lots of warnings on Windows
+    SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wredundant-decls])
+])   
+AM_COND_IF([WINDOWS], [
+    # - On Windows, gtk uses deprecated glib stuff - need to move to gtk3 ;-)
+    SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wno-deprecated-declarations])
+])   
+# - Warns for C pointer declarations - With gcc 10 there are a lot of those in gtk headers
+SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wno-parentheses])
 
 # MinGW doesn't support the -z flag
 AM_COND_IF([LINUX], 
@@ -370,6 +381,13 @@ AC_SUBST([POST_INSTALL_HOOK], [$post_install_hook])
 transparentoverlay_boosttest_win_ld_sizedeterminer=""
 AM_COND_IF([WINDOWS], [transparentoverlay_boosttest_win_ld_sizedeterminer=plugins/transparent-overlay/src/libsptransparentoverlay_la-sizedeterminer.lo]) 
 AC_SUBST([TRANSPARENTOVERLAY_BOOSTTEST_WIN_LD_SIZEDETERMINER], [$transparentoverlay_boosttest_win_ld_sizedeterminer])
+
+# Create command for compiling icon resource and location of resource on Windows
+AM_COND_IF([WINDOWS],[AC_CHECK_PROG([WINDRES], [windres], [yes], [no])])
+AM_CONDITIONAL([HAVE_WINDRES], [test x"${WINDRES}" == x"yes"])
+if test x"${WINDRES}" == x"no" ; then
+  AC_MSG_WARN(["windres not found - won't create icon for executable"])
+fi
 
 AC_CONFIG_FILES([Makefile
                  gui/ENVIRONMENT
