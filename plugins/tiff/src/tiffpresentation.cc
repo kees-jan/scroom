@@ -199,29 +199,34 @@ bool TiffPresentation::load(const std::string& fileName_)
     if (spp == 4 && bps == 8)
     {
       ls.push_back(OperationsCMYK32::create());
+      properties[PIPETTE_PROPERTY_NAME] = "";
       this->pipetteLayer = ls[0];
     }
     else if (spp == 4 && bps == 4)
     {
       ls.push_back(OperationsCMYK16::create());
       ls.push_back(OperationsCMYK32::create());
+      properties[PIPETTE_PROPERTY_NAME] = "";
       this->pipetteLayer = ls[0];
     }
     else if (spp == 4 && bps == 2)
     {
       ls.push_back(OperationsCMYK8::create());
       ls.push_back(OperationsCMYK32::create());
+      properties[PIPETTE_PROPERTY_NAME] = "";
       this->pipetteLayer = ls[0];
     }
     else if (spp == 4 && bps == 1)
     {
       ls.push_back(OperationsCMYK4::create());
       ls.push_back(OperationsCMYK32::create());
+      properties[PIPETTE_PROPERTY_NAME] = "";
       this->pipetteLayer = ls[0];
     }
     else if (spp == 3 && bps == 8)
     {
       ls.push_back(Operations24bpp::create());
+      properties[PIPETTE_PROPERTY_NAME] = "";
       this->pipetteLayer = ls[0];
     }
     else if (bps == 2 || bps == 4 || photometric == PHOTOMETRIC_PALETTE)

@@ -10,6 +10,8 @@
 #include <scroom/pipettelayeroperations.hh>
 #include <scroom/rectangle.hh>
 
+const std::string PIPETTE_PROPERTY_NAME="Pipette";
+
 class PipetteViewInterface : public virtual Scroom::Utils::Base
 {
 public:
