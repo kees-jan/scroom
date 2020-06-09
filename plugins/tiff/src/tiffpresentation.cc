@@ -195,28 +195,34 @@ bool TiffPresentation::load(const std::string& fileName_)
     printf("This bitmap has size %d*%d, aspect ratio %.1f*%.1f\n",
            width, height, 1/resolutionX, 1/resolutionY);
 
+    LayerSpec ls;
     if (spp == 4 && bps == 8)
     {
       ls.push_back(OperationsCMYK32::create());
+      this->pipetteLayer = ls[0];
     }
     else if (spp == 4 && bps == 4)
     {
       ls.push_back(OperationsCMYK16::create());
       ls.push_back(OperationsCMYK32::create());
+      this->pipetteLayer = ls[0];
     }
     else if (spp == 4 && bps == 2)
     {
       ls.push_back(OperationsCMYK8::create());
       ls.push_back(OperationsCMYK32::create());
+      this->pipetteLayer = ls[0];
     }
     else if (spp == 4 && bps == 1)
     {
       ls.push_back(OperationsCMYK4::create());
       ls.push_back(OperationsCMYK32::create());
+      this->pipetteLayer = ls[0];
     }
     else if (spp == 3 && bps == 8)
     {
-        ls.push_back(Operations24bpp::create());
+      ls.push_back(Operations24bpp::create());
+      this->pipetteLayer = ls[0];
     }
     else if (bps == 2 || bps == 4 || photometric == PHOTOMETRIC_PALETTE)
     {
@@ -391,12 +397,12 @@ void TiffPresentation::done()
 }
 
 /**
- * Overriden operator+= to add two values of the same key.
+ * Add two pipette color map values of the same key.
  * 
  * Loops through rhs, adds values of the same key to each other and assigns it back to lhs.
  * Return lhs at the end.
  */
-PipetteLayerOperations::PipetteColor operator+=(PipetteLayerOperations::PipetteColor& lhs, const PipetteLayerOperations::PipetteColor& rhs)
+PipetteLayerOperations::PipetteColor sumPipetteColors(PipetteLayerOperations::PipetteColor& lhs, const PipetteLayerOperations::PipetteColor& rhs)
 {
   for(auto const& elem : rhs)
   {
@@ -406,11 +412,9 @@ PipetteLayerOperations::PipetteColor operator+=(PipetteLayerOperations::PipetteC
 }
 
 /**
- * Overriden operator/ method to divide each element in the map by a constant.
- * 
  * Divides each element inside elements by by a constant divisor.
  */
-PipetteLayerOperations::PipetteColor operator/(PipetteLayerOperations::PipetteColor elements, const int divisor )
+PipetteLayerOperations::PipetteColor dividePipetteColors(PipetteLayerOperations::PipetteColor elements, const int divisor )
 {
   for(auto elem : elements)
   {
@@ -424,11 +428,15 @@ PipetteLayerOperations::PipetteColor operator/(PipetteLayerOperations::PipetteCo
 ////////////////////////////////////////////////////////////////////////
 PipetteLayerOperations::PipetteColor TiffPresentation::getPixelAverages(Scroom::Utils::Rectangle<int> area)
 {
-  PipetteLayerOperations::Ptr pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(this->ls[0]);
+  PipetteLayerOperations::Ptr pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(this->pipetteLayer);
+
   if(!pipetteLayerOperation)
   {
     return {};
   }
+
+  Scroom::Utils::Rectangle<int> presentationArea = this->getRect().toIntRectangle();
+  area = area.intersection(presentationArea);
 
   Layer::Ptr bottomLayer = this->tbi->getBottomLayer();
   PipetteLayerOperations::PipetteColor pipetteColors;
@@ -459,10 +467,10 @@ PipetteLayerOperations::PipetteColor TiffPresentation::getPixelAverages(Scroom::
 
       inter_rect -= base; //rectangle coordinates relative to constTile with topleft corner (0,0)
 
-      pipetteColors += pipetteLayerOperation->sumPixelValues(inter_rect, tile);
+      pipetteColors = sumPipetteColors(pipetteColors, pipetteLayerOperation->sumPixelValues(inter_rect, tile));
     }
   }
-  return pipetteColors / totalPixels;
+  return dividePipetteColors(pipetteColors, totalPixels);
 }
 
 ////////////////////////////////////////////////////////////////////////

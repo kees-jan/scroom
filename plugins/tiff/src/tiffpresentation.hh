@@ -36,13 +36,14 @@ private:
   int height;
   int width;
   TiledBitmapInterface::Ptr tbi;
-  LayerSpec ls;
   int bps;
   int spp;
   std::map<std::string, std::string> properties;
   Views views;
   ColormapHelper::Ptr colormapHelper;
   TransformationData::Ptr transformationData;
+
+  LayerOperations::Ptr pipetteLayer;  //holds the most bottom layer for pipette operations
 
 private:
   TiffPresentation();
