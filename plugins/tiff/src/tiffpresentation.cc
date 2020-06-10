@@ -453,8 +453,8 @@ PipetteLayerOperations::PipetteColor TiffPresentation::getPixelAverages(Scroom::
   }
 
   //Get start tile (tile_pos_x_start, tile_pos_y_start)
-  int tile_pos_x_start = (area.getLeft() - 1) / TILESIZE;
-  int tile_pos_y_start = (area.getTop() - 1) / TILESIZE;
+  int tile_pos_x_start = area.getLeft() / TILESIZE;
+  int tile_pos_y_start = area.getTop() / TILESIZE;
 
   //Get end tile (tile_pos_x_end, tile_pos_y_end)
   int tile_pos_x_end = (area.getRight() - 1) / TILESIZE;
