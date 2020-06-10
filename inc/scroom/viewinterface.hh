@@ -160,7 +160,7 @@ public:
  * presentation, you typically want to influence whatever is being
  * shown. This interface allows you to do so.
  *
- * @see PresentationInterface, Viewable, SelectionListener, PostRenderer
+ * @see PresentationInterface, Viewable, SelectionListener, PostRenderer, ToolStateListener
  */
 class ViewInterface
 {

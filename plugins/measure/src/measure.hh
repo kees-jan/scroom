@@ -43,7 +43,7 @@ public:
   virtual void onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view);
 
   ////////////////////////////////////////////////////////////////////////
-  // SelectionListener
+  // ToolStateListener
 
   virtual void onEnable();
   virtual void onDisable();
