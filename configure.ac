@@ -68,7 +68,13 @@ SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wnon-virtual-dtor])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Woverloaded-virtual])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wsign-promo])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wshadow])
+
+dnl Compile with -mwindows to suppress a new console from opening if the executable is not started from a console
+dnl This does not suppress the stdout and stderr streams. These are still visible if scroom.exe is started from a 
+dnl command prompt/console.
 dnl SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-mwindows])
+AM_COND_IF([WINDOWS], 
+    [LDFLAGS="$LDFLAGS -mwindows"])
 SCROOM_TEST_ISYSTEM
 
 # Disabled warnings
