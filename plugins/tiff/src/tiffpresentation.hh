@@ -43,7 +43,7 @@ private:
   ColormapHelper::Ptr colormapHelper;
   TransformationData::Ptr transformationData;
 
-  LayerOperations::Ptr pipetteLayer;  //holds the most bottom layer for pipette operations
+  PipetteLayerOperations::Ptr pipetteLayer;  //holds the most bottom layer for pipette operations
 
 private:
   TiffPresentation();

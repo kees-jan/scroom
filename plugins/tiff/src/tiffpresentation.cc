@@ -200,34 +200,34 @@ bool TiffPresentation::load(const std::string& fileName_)
     {
       ls.push_back(OperationsCMYK32::create());
       properties[PIPETTE_PROPERTY_NAME] = "";
-      this->pipetteLayer = ls[0];
+      this->pipetteLayer = boost::dynamic_pointer_cast<PipetteLayerOperations>(ls[0]);
     }
     else if (spp == 4 && bps == 4)
     {
       ls.push_back(OperationsCMYK16::create());
       ls.push_back(OperationsCMYK32::create());
       properties[PIPETTE_PROPERTY_NAME] = "";
-      this->pipetteLayer = ls[0];
+      this->pipetteLayer = boost::dynamic_pointer_cast<PipetteLayerOperations>(ls[0]);
     }
     else if (spp == 4 && bps == 2)
     {
       ls.push_back(OperationsCMYK8::create());
       ls.push_back(OperationsCMYK32::create());
       properties[PIPETTE_PROPERTY_NAME] = "";
-      this->pipetteLayer = ls[0];
+      this->pipetteLayer = boost::dynamic_pointer_cast<PipetteLayerOperations>(ls[0]);
     }
     else if (spp == 4 && bps == 1)
     {
       ls.push_back(OperationsCMYK4::create());
       ls.push_back(OperationsCMYK32::create());
       properties[PIPETTE_PROPERTY_NAME] = "";
-      this->pipetteLayer = ls[0];
+      this->pipetteLayer = boost::dynamic_pointer_cast<PipetteLayerOperations>(ls[0]);
     }
     else if (spp == 3 && bps == 8)
     {
       ls.push_back(Operations24bpp::create());
       properties[PIPETTE_PROPERTY_NAME] = "";
-      this->pipetteLayer = ls[0];
+      this->pipetteLayer = boost::dynamic_pointer_cast<PipetteLayerOperations>(ls[0]);
     }
     else if (bps == 2 || bps == 4 || photometric == PHOTOMETRIC_PALETTE)
     {
@@ -433,7 +433,7 @@ PipetteLayerOperations::PipetteColor dividePipetteColors(PipetteLayerOperations:
 ////////////////////////////////////////////////////////////////////////
 PipetteLayerOperations::PipetteColor TiffPresentation::getPixelAverages(Scroom::Utils::Rectangle<int> area)
 {
-  PipetteLayerOperations::Ptr pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(this->pipetteLayer);
+  PipetteLayerOperations::Ptr pipetteLayerOperation = this->pipetteLayer;
 
   if(!pipetteLayerOperation)
   {
