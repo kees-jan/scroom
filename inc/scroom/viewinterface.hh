@@ -18,10 +18,20 @@
 #include <boost/weak_ptr.hpp>
 
 #include <scroom/progressinterface.hh>
-#include <scroom/stuff.hh>
+#include <scroom/rectangle.hh>
 
+class PresentationInterface;
+class ViewInterface;
+
+/**
+ * Structure that represents a selection made
+ * by the user.
+ */
 struct Selection
 {
+public:
+  typedef boost::shared_ptr<Selection> Ptr;
+
 public:
   GdkPoint start;
   GdkPoint end;
@@ -34,9 +44,13 @@ public:
 
   int width() { return abs(end.x-start.x); }
   int height() { return abs(end.y-start.y); }
-  double length() { return std::sqrt(std::pow(double(width()),2) + std::pow(double(height()),2)); }
+  double length() { return std::hypot(width(), height()); }
 };
 
+/**
+ * Interface provided to something that wants to
+ * draw on top of the current presentation.
+ */
 class PostRenderer
 {
 public:
@@ -45,9 +59,32 @@ public:
 public:
   virtual ~PostRenderer() {}
 
-  virtual void render(cairo_t* cr)=0;
+  /**
+   * This function is called after the presentation
+   * finishes redrawing.
+   *
+   * @param vi The ViewInterface on whose behalf the request is made
+   * @param cr The context to with, the origin of the context is
+   *    translated to be the same as the origin of the presentation.
+   * @param presentationArea the area that is to be drawn. The given
+   *    @c x and @c y coordinates should map on 0,0 of the given
+   *    context @c cr.
+   * @param zoom The requested zoom level. One pixel should have
+   *    size 2**@c zoom when drawn. @c zoom may be negative.
+   */
+  virtual void render(boost::shared_ptr<ViewInterface> const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom)=0;
 };
 
+/**
+ * Interface provided to something that wants to be
+ * notified of selection updates.
+ * 
+ * Whenever the user selection changes, the appropriate
+ * functions are called with either the starting point
+ * or the full selection as argument.
+ *
+ * @see Selection
+ */
 class SelectionListener
 {
 public:
@@ -56,17 +93,63 @@ public:
 public:
   virtual ~SelectionListener() {}
 
-  virtual void onSelectionStart(GdkPoint start)=0;
-  virtual void onSelectionUpdate(Selection* selection)=0;
-  virtual void onSelectionEnd(Selection* selection)=0;
+  /**
+   * This function is called whenever the user clicks
+   * a view. The point that is clicked is passed as
+   * an argument.
+   * 
+   * The passed point is a point in the presentation
+   * coordinate space.
+   */
+  virtual void onSelectionStart(GdkPoint start, boost::shared_ptr<ViewInterface> view)=0;
+
+  /**
+   * This function is called whenever the selection
+   * updates. That is, whenever the user moves the
+   * mouse while keeping the mouse button pressed.
+   * 
+   * The updated selection is passed as an argument.
+   * 
+   * @see Selection
+   */
+  virtual void onSelectionUpdate(Selection::Ptr selection, boost::shared_ptr<ViewInterface> view)=0;
+
+  /**
+   * This function is called whenever the selection
+   * ends. That is, whenever the user releases the
+   * mouse button that was pressed.
+   * 
+   * The final selection is passed as an argument.
+   * 
+   * @see Selection
+   */
+  virtual void onSelectionEnd(Selection::Ptr selection, boost::shared_ptr<ViewInterface> view)=0;
 };
 
-// There is no documentation on values 4 and 5, so
-// they are not included here.
-enum class MouseButton : guint {
-  PRIMARY = 1,
-  MIDDLE = 2,
-  SECONDARY = 3
+/**
+ * Interface provided to something that wants to
+ * listener to enable/disable events from its
+ * tool button.
+ */
+class ToolStateListener
+{
+public:
+  typedef boost::shared_ptr<ToolStateListener> Ptr;
+
+public:
+  virtual ~ToolStateListener() {}
+
+  /**
+   * This function is called whenever the tool
+   * button is selected.
+   */
+  virtual void onEnable()=0;
+
+  /**
+   * Then function is called whenever the tool
+   * button is deselected.
+   */
+  virtual void onDisable()=0;
 };
 
 /**
@@ -77,7 +160,7 @@ enum class MouseButton : guint {
  * presentation, you typically want to influence whatever is being
  * shown. This interface allows you to do so.
  *
- * @see PresentationInterface, Viewable
+ * @see PresentationInterface, Viewable, SelectionListener, PostRenderer, ToolStateListener
  */
 class ViewInterface
 {
@@ -143,65 +226,48 @@ public:
   virtual void removeFromToolbar(GtkToolItem* ti)=0;
 
   /**
-   * Enable panning the view.
-   */
-  virtual void setPanning()
-  {
-  }
-
-  /**
-   * Disable panning the view.
-   */
-  virtual void unsetPanning()
-  {
-  }
-
-  /**
    * Register a SelectionListener to be updated whenever the
-   * user selects a region using the given mouse button. When
-   * the user changes the selection, the function
-   * 'onSelection(Selection* selection)' is called on the
-   * given object.
+   * user selects a region . When the user changes the selection,
+   * various functions on the given instance are called.
    * 
    * @see SelectionListener
    */
-  virtual void registerSelectionListener(SelectionListener::Ptr, MouseButton)
-  {
-  }
+  virtual void registerSelectionListener(SelectionListener::Ptr)=0;
 
   /**
-   * Register a postrenderer.
+   * Register a postrenderer to be updated whenever a redraw
+   * occurs. When this happens, the 'render' function
+   * gets called on the instance that is passed to
+   * the given instance.
+   * 
+   * Note that the order in which different registered instances
+   * get updated is the order in which they register to the
+   * view. This order remains constant throughout the view's
+   * lifetime.
+   * 
+   * @see PostRenderer
    */
-  virtual void registerPostRenderer(PostRenderer::Ptr)
-  {
-  }
+  virtual void registerPostRenderer(PostRenderer::Ptr)=0;
 
   /**
    * Sets the status message in the status bar of the application.
    */
-  virtual void setStatusMessage(const std::string&)
-  {
-  }
-
-  /**
-   * Converts a point on screen to a presentation pixel.
-   */
-  virtual GdkPoint presentationPointToWindowPoint(GdkPoint)
-  {
-    return {0, 0};
-  }
+  virtual void setStatusMessage(const std::string&)=0;
 
   /**
    * Returns a shared pointer to the current presentation.
-   *
-   * The actual return type should be PresentationInterface::Ptr,
-   * but including the required header file causes a cyclic include.
-   * This workaround means that you have to explicitly cast
-   * the result of this function to PresentationInterface::Ptr.
+   * 
+   * @see PresentationInterface
    */
-  virtual Scroom::Utils::Stuff getCurrentPresentation()
-  {
-    return nullptr;
-  }
+  virtual boost::shared_ptr<PresentationInterface> getCurrentPresentation()=0;
+
+  /**
+   * Adds a new tool button to the toolbar. The given ToolStateListener
+   * will be informed when the tool is turned on or off. Only one
+   * tool will be active at the same time.
+   *
+   * @see ToolStateListener
+   */
+  virtual void addToolButton(GtkToggleButton*, ToolStateListener::Ptr)=0;
 };
 

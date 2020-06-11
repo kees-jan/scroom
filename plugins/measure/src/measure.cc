@@ -6,17 +6,11 @@
  */
 
 #include "measure.hh"
+#include <scroom/unused.hh>
 
 ////////////////////////////////////////////////////////////////////////
 // Measure
 ////////////////////////////////////////////////////////////////////////
-
-Measure::Measure()
-{
-}
-Measure::~Measure()
-{
-}
 
 Measure::Ptr Measure::create()
 {
@@ -46,12 +40,13 @@ void Measure::registerCapabilities(ScroomPluginInterface::Ptr host)
 // ViewObserver
 ////////////////////////////////////////////////////////////////////////
 
-Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr v)
+Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr view)
 {
   MeasureHandler::Ptr handler = MeasureHandler::create();
-  handler->view = v;
-  v->registerSelectionListener(handler, MouseButton::SECONDARY);
-  v->registerPostRenderer(handler);
+  view->registerSelectionListener(handler);
+  view->registerPostRenderer(handler);
+
+  view->addToolButton(GTK_TOGGLE_BUTTON(gtk_toggle_button_new_with_label("Measure")), handler);
 
   return Scroom::Bookkeeping::Token();
 }
@@ -61,8 +56,8 @@ Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr v)
 ////////////////////////////////////////////////////////////////////////
 
 MeasureHandler::MeasureHandler()
+  : selection(nullptr), enabled(false)
 {
-  selection = nullptr;
 }
 MeasureHandler::~MeasureHandler()
 {
@@ -73,7 +68,7 @@ MeasureHandler::Ptr MeasureHandler::create()
   return Ptr(new MeasureHandler());
 }
 
-void MeasureHandler::displayMeasurement()
+void MeasureHandler::displayMeasurement(ViewInterface::Ptr view)
 {
   std::ostringstream s;
   s.precision(1);
@@ -88,45 +83,88 @@ void MeasureHandler::displayMeasurement()
   view->setStatusMessage(s.str());
 }
 
+void MeasureHandler::drawCross(cairo_t* cr, Scroom::Utils::Point<double> p)
+{
+  static const int size = 10;
+  cairo_move_to(cr, p.x-size, p.y);
+  cairo_line_to(cr, p.x+size, p.y);
+  cairo_move_to(cr, p.x, p.y-size);
+  cairo_line_to(cr, p.x, p.y+size);
+}
+
 ////////////////////////////////////////////////////////////////////////
 // SelectionListener
 ////////////////////////////////////////////////////////////////////////
 
-void MeasureHandler::onSelectionStart(GdkPoint)
+void MeasureHandler::onSelectionStart(GdkPoint, ViewInterface::Ptr)
 {
 }
 
-void MeasureHandler::onSelectionUpdate(Selection* s)
+void MeasureHandler::onSelectionUpdate(Selection::Ptr s, ViewInterface::Ptr view)
 {
-  selection = s;
-  displayMeasurement();
+  if(enabled)
+  {
+    selection = s;
+    displayMeasurement(view);
+  }
 }
 
-void MeasureHandler::onSelectionEnd(Selection* s)
+void MeasureHandler::onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view)
 {
-  selection = s;
-  displayMeasurement();
+  if(enabled)
+  {
+    selection = s;
+    displayMeasurement(view);
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////
 // PostRenderer
 ////////////////////////////////////////////////////////////////////////
 
-void MeasureHandler::render(cairo_t* cr)
+void MeasureHandler::render(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom)
 {
+  UNUSED(vi);
+
   if(selection)
   {
-    GdkPoint start = view->presentationPointToWindowPoint(selection->start);
-    GdkPoint end = view->presentationPointToWindowPoint(selection->end);
+    auto start = Scroom::Utils::Point<int>(selection->start) - presentationArea.getTopLeft();
+    auto end = Scroom::Utils::Point<int>(selection->end) - presentationArea.getTopLeft();
+
+    if(zoom>=0)
+    {
+      const int pixelSize=1<<zoom;
+      start *= pixelSize;
+      end *= pixelSize;
+    }
+    else
+    {
+      const int pixelSize=1<<-zoom;
+      start /= pixelSize;
+      end /= pixelSize;
+    }
+
     cairo_set_line_width(cr, 1);
+    cairo_set_source_rgb(cr, 0.75, 0, 0); // Dark Red
+    drawCross(cr, start);
+    drawCross(cr, end);
     cairo_stroke(cr);
     cairo_set_source_rgb(cr, 1, 0, 0); // Red
     cairo_move_to(cr, start.x, start.y);
     cairo_line_to(cr, end.x, end.y);
-    cairo_line_to(cr, end.x, start.y);
-    cairo_line_to(cr, start.x, start.y);
-    cairo_line_to(cr, start.x, end.y);
-    cairo_line_to(cr, end.x, end.y);
     cairo_stroke(cr);
   }
+}
+
+////////////////////////////////////////////////////////////////////////
+// ToolStateListener
+////////////////////////////////////////////////////////////////////////
+
+void MeasureHandler::onDisable(){
+  selection = nullptr;
+  enabled = false;
+}
+
+void MeasureHandler::onEnable(){
+  enabled = true;
 }

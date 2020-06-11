@@ -15,14 +15,20 @@ compiler:
 - clang
 env:
 - NONE=""
-- SOME_DISTS="eoan" OTHER_DISTS="bionic focal"
+- DISTS="true"
 - DISTCHECK_CONFIGURE_FLAGS='--enable-debug-tiles --disable-multithreading CFLAGS="-g -O0" CXXFLAGS="-g -O0"' LDFLAGS="-Wl,-z,defs"
 jobs:
   exclude:
+  - os: linux
+    compiler: clang
+    env: DISTS="true"
+  - os: linux
+    compiler: clang
+    env: DISTCHECK_CONFIGURE_FLAGS='--enable-debug-tiles --disable-multithreading CFLAGS="-g -O0" CXXFLAGS="-g -O0"' LDFLAGS="-Wl,-z,defs"
   - os: windows
     compiler: clang
   - os: windows
-    env: SOME_DISTS="eoan" OTHER_DISTS="bionic focal"
+    env: DISTS="true"
   - os: windows
     env: DISTCHECK_CONFIGURE_FLAGS='--enable-debug-tiles --disable-multithreading CFLAGS="-g -O0" CXXFLAGS="-g -O0"' LDFLAGS="-Wl,-z,defs"
 addons:
@@ -79,7 +85,6 @@ before_install:
                zip
         taskkill //IM gpg-agent.exe //F  # https://travis-ci.community/t/4967
         export PATH=/C/tools/msys64/mingw64/bin:$PATH
-        export MAKE=mingw32-make  # so that Autotools can find it
         export prefix="$mingw64"
         ;;
       *)

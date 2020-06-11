@@ -10,8 +10,9 @@
 #include <scroom/plugininformationinterface.hh>
 #include <scroom/utilities.hh>
 #include <scroom/viewinterface.hh>
+#include <scroom/point.hh>
 
-class MeasureHandler : public PostRenderer, public SelectionListener, virtual public Scroom::Utils::Base
+class MeasureHandler : public ToolStateListener, public PostRenderer, public SelectionListener, virtual public Scroom::Utils::Base
 {
 public:
   MeasureHandler();
@@ -20,10 +21,8 @@ public:
   typedef boost::shared_ptr<MeasureHandler> Ptr;
 
 private:
-  Selection* selection;
-
-public:
-  ViewInterface::Ptr view;
+  Selection::Ptr selection;
+  bool enabled;
 
 public:
   static Ptr create();
@@ -34,19 +33,26 @@ public:
   ////////////////////////////////////////////////////////////////////////
   // PostRenderer
 
-  virtual void render(cairo_t* cr);
+  virtual void render(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom);
 
   ////////////////////////////////////////////////////////////////////////
   // SelectionListener
 
-  virtual void onSelectionStart(GdkPoint p);
-  virtual void onSelectionUpdate(Selection* s);
-  virtual void onSelectionEnd(Selection* s);
+  virtual void onSelectionStart(GdkPoint p, ViewInterface::Ptr view);
+  virtual void onSelectionUpdate(Selection::Ptr s, ViewInterface::Ptr view);
+  virtual void onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view);
+
+  ////////////////////////////////////////////////////////////////////////
+  // ToolStateListener
+
+  virtual void onEnable();
+  virtual void onDisable();
 
   ////////////////////////////////////////////////////////////////////////
 
 private:
-  virtual void displayMeasurement();
+  virtual void displayMeasurement(ViewInterface::Ptr view);
+  virtual void drawCross(cairo_t* cr, Scroom::Utils::Point<double> p);
 };
 
 class Measure : public PluginInformationInterface, public ViewObserver, virtual public Scroom::Utils::Base
@@ -55,7 +61,7 @@ public:
   typedef boost::shared_ptr<Measure> Ptr;
 
 private:
-  Measure();
+  Measure() {};
 
 public:
   static Ptr create();
@@ -74,6 +80,4 @@ public:
   virtual Scroom::Bookkeeping::Token viewAdded(ViewInterface::Ptr v);
 
   ////////////////////////////////////////////////////////////////////////
-
-  virtual ~Measure();
 };

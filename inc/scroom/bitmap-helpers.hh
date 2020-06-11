@@ -9,6 +9,7 @@
 
 #include <boost/shared_ptr.hpp>
 #include <boost/utility.hpp>
+#include <boost/operators.hpp>
 
 #include <scroom/global.hh>
 
@@ -42,83 +43,108 @@ namespace Scroom
     };
 
     ////////////////////////////////////////////////////////////////////////
-    // PixelIterator
+    // SampleIterator
 
+    /**
+     * Iterate over samples (bits) within a larger type, for example a byte
+     * 
+     * Allows you to extract (or set) specific bits in a larger datatype, 
+     * as well as iterate over samples within the larger datatype, or even
+     * continuing with the next, if you reach the end of the current one
+     * 
+     * @param Base the larger type that contains the samples. Typically uint8_t
+     */
     template <typename Base>
-    class PixelIterator
+    class SampleIterator : public boost::addable2<SampleIterator<Base>, unsigned int>
     {
-    private:
+    public:
       Base* currentBase;
       int currentOffset;
-      const int bpp;
-      const int pixelsPerBase;
+
+      const int bps;
+      const int samplesPerBase;
       static const int bitsPerBase;
       const int pixelOffset;
       const Base pixelMask;
 
     private:
-      static Base mask(int bpp);
+      static Base mask(int bps);
 
     public:
-      PixelIterator();
-      PixelIterator(Base* base, int offset=0, int bpp=1);
+      /**
+       * Construct a new SampleIterator
+       * 
+       * @param base Pointer to the element that contains the current sample
+       * @param offset number of the sample within that element
+       * @param bps Number of bits per sample
+       */
+      SampleIterator(Base* base, int offset=0, int bps=1);
+
+      /** Get the value of the current sample */
       Base get();
+
+      /** Set the value of the current sample */
       void set(Base value);
-      PixelIterator& operator++();
-      PixelIterator operator++(int);
-      PixelIterator& operator+=(int x);
+
+      /** Move to the next sample */
+      SampleIterator& operator++();
+
+      /** Move to the next sample */
+      SampleIterator operator++(int);
+
+      /** Move @c x samples further */
+      SampleIterator& operator+=(unsigned int x);
+
+      /** Get the value of the current sample */
       Base operator*();
+
+      bool operator==(const SampleIterator<Base>& other) const;
+
     };
 
     template <typename Base>
-    const int PixelIterator<Base>::bitsPerBase = 8*sizeof(Base)/sizeof(byte);
+    const int SampleIterator<Base>::bitsPerBase = 8*sizeof(Base)/sizeof(byte);
 
     template <typename Base>
-    Base PixelIterator<Base>::mask(int bpp)
+    Base SampleIterator<Base>::mask(int bps)
     {
-      return (((Base(1) << (bpp - 1)) - 1) << 1) | 1;
+      return (((Base(1) << (bps - 1)) - 1) << 1) | 1;
     }
 
     template <typename Base>
-    PixelIterator<Base>::PixelIterator()
-      : currentBase(NULL), currentOffset(0), bpp(0), pixelsPerBase(0), pixelOffset(0), pixelMask(0)
+    SampleIterator<Base>::SampleIterator(Base* base, int offset, int bps_)
+      : currentBase(NULL), currentOffset(0), bps(bps_), samplesPerBase(bitsPerBase/bps_), pixelOffset(bps_), pixelMask(mask(bps_))
     {
-    }
-
-    template <typename Base>
-    PixelIterator<Base>::PixelIterator(Base* base, int offset, int bpp_)
-      : currentBase(NULL), currentOffset(0), bpp(bpp_), pixelsPerBase(bitsPerBase/bpp_), pixelOffset(bpp_), pixelMask(mask(bpp_))
-    {
-      div_t d = div(offset, pixelsPerBase);
+      div_t d = div(offset, samplesPerBase);
       currentBase = base+d.quot;
-      currentOffset = pixelsPerBase-1-d.rem;
+      currentOffset = samplesPerBase-1-d.rem;
     }
 
     template <typename Base>
-    inline Base PixelIterator<Base>::get()
+    inline Base SampleIterator<Base>::get()
     {
       return (*currentBase>>(currentOffset*pixelOffset)) & pixelMask;
     }
 
     template <typename Base>
-    inline void PixelIterator<Base>::set(Base value)
+    inline void SampleIterator<Base>::set(Base value)
     {
       *currentBase = (*currentBase & ~(pixelMask << currentOffset*pixelOffset)) | (value << (currentOffset*pixelOffset));
     }
 
     template <typename Base>
-    inline Base PixelIterator<Base>::operator*()
+    inline Base SampleIterator<Base>::operator*()
     {
       return (*currentBase>>(currentOffset*pixelOffset)) & pixelMask;
     }
 
     template <typename Base>
-    inline PixelIterator<Base>& PixelIterator<Base>::operator++()
+    inline SampleIterator<Base>& SampleIterator<Base>::operator++()
     {
       // Prefix operator
       if(!(currentOffset--))
       {
-        currentOffset=pixelsPerBase-1;
+        currentOffset=samplesPerBase-1;
         ++currentBase;
       }
 
@@ -126,14 +152,14 @@ namespace Scroom
     }
 
     template <typename Base>
-    inline PixelIterator<Base> PixelIterator<Base>::operator++(int)
+    inline SampleIterator<Base> SampleIterator<Base>::operator++(int)
     {
       // Postfix operator
-      PixelIterator<Base> result = *this;
+      SampleIterator<Base> result = *this;
 
       if(!(currentOffset--))
       {
-        currentOffset=pixelsPerBase-1;
+        currentOffset=samplesPerBase-1;
         ++currentBase;
       }
 
@@ -141,15 +167,22 @@ namespace Scroom
     }
 
     template <typename Base>
-    PixelIterator<Base>& PixelIterator<Base>::operator+=(int x)
+    SampleIterator<Base>& SampleIterator<Base>::operator+=(unsigned int x)
     {
-      int offset = pixelsPerBase-1-currentOffset+x;
-      div_t d = div(offset, pixelsPerBase);
+      int offset = samplesPerBase-1-currentOffset+x;
+      div_t d = div(offset, samplesPerBase);
       currentBase += d.quot;
-      currentOffset = pixelsPerBase-1-d.rem;
+      currentOffset = samplesPerBase-1-d.rem;
 
       return *this;
     }
+
+    template <typename Base>
+    bool SampleIterator<Base>::operator==(const SampleIterator<Base>& other) const
+    {
+      return currentBase == other.currentBase && currentOffset == other.currentOffset && bps == other.bps;
+    }
+
   }
 }
 

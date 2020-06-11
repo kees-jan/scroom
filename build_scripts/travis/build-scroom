@@ -43,12 +43,9 @@ EOF
         make distcheck
     fi
     
-elif [ ! -z "${SOME_DISTS+x}" -a "${CC}" = "gcc" ]
+elif [ ! -z "${DISTS+x}" ]
 then
-    make -k -j2 -f build_scripts/docker/docker.mk TARGETS="${SOME_DISTS}"
-elif [ ! -z "${OTHER_DISTS+x}" -a "${CC}" != "gcc" ]
-then
-    make -k -j2 -f build_scripts/docker/docker.mk TARGETS="${OTHER_DISTS}"
+    make -k -j2 -f build_scripts/docker/docker.mk TARGETS="bionic eoan focal"
 else
 
     ./configure --enable-doxygen-all-code
