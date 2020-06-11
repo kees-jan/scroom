@@ -2,7 +2,9 @@
 
 #include <gdk/gdk.h>
 #include <cmath>
+
 #include <scroom/pipetteviewinterface.hh>
+#include <scroom/unused.hh>
 
 #include <iostream> // Temporary - for debugging purposes
 
@@ -45,32 +47,13 @@ void Pipette::registerCapabilities(ScroomPluginInterface::Ptr host)
 // ViewObserver
 ////////////////////////////////////////////////////////////////////////
 
-static void on_toggled(GtkToggleButton* button, gpointer data)
+Scroom::Bookkeeping::Token Pipette::viewAdded(ViewInterface::Ptr view)
 {
-  bool* flag = reinterpret_cast<bool*>(data);
-  *flag = gtk_toggle_button_get_active(button);
-}
-
-Scroom::Bookkeeping::Token Pipette::viewAdded(ViewInterface::Ptr v)
-{
-  gdk_threads_enter();
-
   PipetteHandler::Ptr handler = PipetteHandler::create();
-  handler->view = v;
-  v->registerSelectionListener(handler, MouseButton::PRIMARY);
-  v->registerPostRenderer(handler);
+  view->registerSelectionListener(handler);
+  view->registerPostRenderer(handler);
 
-  GtkToolItem* button = gtk_tool_item_new();
-  GtkWidget* toggleButton = gtk_toggle_button_new_with_mnemonic("pipette");
-  gtk_widget_set_visible(toggleButton, true);
-  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(toggleButton), false);
-
-  gtk_container_add(GTK_CONTAINER(button), toggleButton);
-  g_signal_connect(static_cast<gpointer>(toggleButton), "toggled", G_CALLBACK(on_toggled), &handler->enabled);
-
-  v->addToToolbar(button);
-
-  gdk_threads_leave();
+  view->addToolButton(GTK_TOGGLE_BUTTON(gtk_toggle_button_new_with_label("Pipette")), handler);
 
   return Scroom::Bookkeeping::Token();
 }
@@ -97,28 +80,24 @@ PipetteHandler::Ptr PipetteHandler::create()
 // SelectionListener
 ////////////////////////////////////////////////////////////////////////
 
-void PipetteHandler::onSelectionStart(GdkPoint)
+void PipetteHandler::onSelectionStart(GdkPoint, ViewInterface::Ptr)
 {
-  if(enabled)
-  {
-    view->unsetPanning();
-  }
 }
 
-void PipetteHandler::onSelectionUpdate(Selection* s)
+void PipetteHandler::onSelectionUpdate(Selection::Ptr s, ViewInterface::Ptr view)
 {
+  UNUSED(view);
   if(enabled)
   {
     selection = s;
   }
 }
 
-void PipetteHandler::onSelectionEnd(Selection* s)
+void PipetteHandler::onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view)
 {
   if(enabled)
   {
     selection = s;
-    view->setPanning();
 
     // Get the image rectangle
     auto presentation = boost::static_pointer_cast<PresentationInterface>(view->getCurrentPresentation());
@@ -168,12 +147,28 @@ void PipetteHandler::onSelectionEnd(Selection* s)
 // PostRenderer
 ////////////////////////////////////////////////////////////////////////
 
-void PipetteHandler::render(cairo_t* cr)
+void PipetteHandler::render(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom)
 {
-  if(selection && enabled)
+  UNUSED(vi);
+
+  if(selection)
   {
-    GdkPoint start = view->presentationPointToWindowPoint(selection->start);
-    GdkPoint end = view->presentationPointToWindowPoint(selection->end);
+    auto start = Scroom::Utils::Point<int>(selection->start) - presentationArea.getTopLeft();
+    auto end = Scroom::Utils::Point<int>(selection->end) - presentationArea.getTopLeft();
+
+    if(zoom>=0)
+    {
+      const int pixelSize=1<<zoom;
+      start *= pixelSize;
+      end *= pixelSize;
+    }
+    else
+    {
+      const int pixelSize=1<<-zoom;
+      start /= pixelSize;
+      end /= pixelSize;
+    }
+
     cairo_set_line_width(cr, 1);
     cairo_set_source_rgb(cr, 0, 0, 1); // Blue
     cairo_move_to(cr, end.x, start.y);
@@ -183,4 +178,17 @@ void PipetteHandler::render(cairo_t* cr)
     cairo_line_to(cr, end.x, start.y);
     cairo_stroke(cr);
   }
+}
+
+////////////////////////////////////////////////////////////////////////
+// ToolStateListener
+////////////////////////////////////////////////////////////////////////
+
+void PipetteHandler::onDisable(){
+  selection = nullptr;
+  enabled = false;
+}
+
+void PipetteHandler::onEnable(){
+  enabled = true;
 }

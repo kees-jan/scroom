@@ -11,7 +11,7 @@
 #include <scroom/utilities.hh>
 #include <scroom/viewinterface.hh>
 
-class PipetteHandler : public PostRenderer, public SelectionListener, virtual public Scroom::Utils::Base
+class PipetteHandler : public ToolStateListener, public PostRenderer, public SelectionListener, virtual public Scroom::Utils::Base
 {
 public:
   PipetteHandler();
@@ -20,10 +20,7 @@ public:
   typedef boost::shared_ptr<PipetteHandler> Ptr;
 
 private:
-  Selection* selection;
-
-public:
-  ViewInterface::Ptr view;
+  Selection::Ptr selection;
   bool enabled;
 
 public:
@@ -35,14 +32,22 @@ public:
   ////////////////////////////////////////////////////////////////////////
   // PostRenderer
 
-  virtual void render(cairo_t* cr);
+  virtual void render(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom);
 
   ////////////////////////////////////////////////////////////////////////
   // SelectionListener
 
-  virtual void onSelectionStart(GdkPoint p);
-  virtual void onSelectionUpdate(Selection* s);
-  virtual void onSelectionEnd(Selection* s);
+  virtual void onSelectionStart(GdkPoint p, ViewInterface::Ptr view);
+  virtual void onSelectionUpdate(Selection::Ptr s, ViewInterface::Ptr view);
+  virtual void onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view);
+
+  ////////////////////////////////////////////////////////////////////////
+  // ToolStateListener
+
+  virtual void onEnable();
+  virtual void onDisable();
+
+  ////////////////////////////////////////////////////////////////////////
 };
 
 class Pipette : public PluginInformationInterface, public ViewObserver, virtual public  Scroom::Utils::Base
