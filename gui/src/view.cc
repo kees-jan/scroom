@@ -398,7 +398,6 @@ void View::updateRulers()
 
 void View::toolButtonToggled(GtkToggleButton* button)
 {
-  ToolStateListener::Ptr listener = tools[button];
   if(gtk_toggle_button_get_active(button))
   {
     for(auto tool : tools)
@@ -411,11 +410,7 @@ void View::toolButtonToggled(GtkToggleButton* button)
       }
     }
     gtk_widget_set_sensitive(GTK_WIDGET(button), false);
-    listener->onEnable();
-  }
-  else
-  {
-    listener->onDisable();
+    tools[button]->onEnable();
   }
 }
 
