@@ -10,6 +10,7 @@
 #include <stdlib.h>
 
 #include <map>
+#include <vector>
 #include <string>
 #include <cmath>
 
@@ -22,26 +23,10 @@
 #include <scroom/viewinterface.hh>
 #include <scroom/presentationinterface.hh>
 #include <scroom/utilities.hh>
+#include <scroom/stuff.hh>
 
 #include "sidebarmanager.hh"
 #include "progressbarmanager.hh"
-
-struct Measurement
-{
-public:
-  GdkPoint start;
-  GdkPoint end;
-
-public:
-  Measurement(int x, int y) { start.x=x; start.y=y; end=start; }
-  Measurement(GdkPoint start_) : start(start_), end(start_) {}
-
-  bool endsAt(GdkPoint p) { return end.x==p.x && end.y==p.y; }
-
-  int width() { return abs(end.x-start.x); }
-  int height() { return abs(end.y-start.y); }
-  double length() { return std::sqrt(std::pow(double(width()),2) + std::pow(double(height()),2)); }
-};
 
 class View : public ViewInterface, virtual public Scroom::Utils::Base
 {
@@ -79,7 +64,10 @@ private:
   int zoom;
   int x;
   int y;
-  Measurement* measurement;
+  Selection::Ptr selection;
+  std::vector<SelectionListener::Ptr> selectionListeners;
+  std::vector<PostRenderer::Ptr> postRenderers;
+  std::map<GtkToggleButton*, ToolStateListener::Ptr> tools;
 
   gint modifiermove;
   GdkPoint cachedPoint;
@@ -116,6 +104,7 @@ public:
   void updateZoom();
   void updateRulers();
   void updateTextbox();
+  void toolButtonToggled(GtkToggleButton* button);
 
   ////////////////////////////////////////////////////////////////////////
   // Scroom events
@@ -145,18 +134,20 @@ public:
   virtual void removeSideWidget(GtkWidget* w);
   virtual void addToToolbar(GtkToolItem* ti);
   virtual void removeFromToolbar(GtkToolItem* ti);
+  virtual void registerSelectionListener(SelectionListener::Ptr listener);
+  virtual void registerPostRenderer(PostRenderer::Ptr renderer);
+  virtual void setStatusMessage(const std::string& message);
+  virtual PresentationInterface::Ptr getCurrentPresentation();
+  virtual void addToolButton(GtkToggleButton*, ToolStateListener::Ptr);
 
   ////////////////////////////////////////////////////////////////////////
   // Helpers
 
 private:
   GdkPoint windowPointToPresentationPoint(GdkPoint wp);
-  GdkPoint presentationPointToWindowPoint(GdkPoint pp);
+  GdkPoint presentationPointToWindowPoint(GdkPoint presentationpoint);
   GdkPoint eventToPoint(GdkEventButton* event);
   GdkPoint eventToPoint(GdkEventMotion* event);
-  void drawCross(cairo_t* cr, GdkPoint p);
-  void setStatusMessage(const std::string& message);
-  void displayMeasurement();
   void updateNewWindowMenu();
   void updateXY(int x, int y, LocationChangeCause source);
 };

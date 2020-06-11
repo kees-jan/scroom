@@ -49,6 +49,11 @@ public:
   virtual void removeSideWidget(GtkWidget*)           {}
   virtual void addToToolbar(GtkToolItem*)             {}
   virtual void removeFromToolbar(GtkToolItem*)        {}
+  virtual void registerSelectionListener(SelectionListener::Ptr) {};
+  virtual void registerPostRenderer(PostRenderer::Ptr) {};
+  virtual void setStatusMessage(const std::string&) {};
+  virtual boost::shared_ptr<PresentationInterface> getCurrentPresentation() { return boost::shared_ptr<PresentationInterface>(); };
+  virtual void addToolButton(GtkToggleButton*, ToolStateListener::Ptr) {};
 };
 
 class Source1Bpp : public SourcePresentation

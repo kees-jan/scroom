@@ -55,4 +55,5 @@ Makefile.in
 /doc/
 /.google
 test_results.xml
+/scroom-build
 /.vscode

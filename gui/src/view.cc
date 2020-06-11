@@ -92,7 +92,7 @@ static void on_newWindow_activate(GtkMenuItem*, gpointer user_data)
 View::View(GladeXML* scroomXml_)
   : scroomXml(scroomXml_), presentation(), sidebarManager(),
     drawingAreaWidth(0), drawingAreaHeight(0),
-    zoom(0), x(0), y(0), measurement(NULL), modifiermove(0)
+    zoom(0), x(0), y(0), modifiermove(0)
 {
   PluginManager::Ptr pluginManager = PluginManager::getInstance();
   window = GTK_WINDOW(glade_xml_get_widget(scroomXml_, "scroom"));
@@ -189,19 +189,9 @@ void View::redraw(cairo_t* cr)
 
     presentation->redraw(shared_from_this<View>(), cr, rect, zoom);
 
-    if(measurement)
+    for(auto renderer : postRenderers)
     {
-      GdkPoint start = presentationPointToWindowPoint(measurement->start);
-      GdkPoint end = presentationPointToWindowPoint(measurement->end);
-      cairo_set_line_width(cr, 1);
-      cairo_set_source_rgb(cr, 0.75, 0, 0); // Dark Red
-      drawCross(cr, start);
-      drawCross(cr, end);
-      cairo_stroke(cr);
-      cairo_set_source_rgb(cr, 1, 0, 0); // Red
-      cairo_move_to(cr, start.x, start.y);
-      cairo_line_to(cr, end.x, end.y);
-      cairo_stroke(cr);
+      renderer->render(shared_from_this<View>(), cr, rect, zoom);
     }
   }
   else
@@ -403,6 +393,24 @@ void View::updateRulers()
     int pixelSize = 1<<(-zoom);
     gtk_ruler_set_range(hruler, x, x + drawingAreaWidth*pixelSize, 0, presentationRect.x() + presentationRect.width());
     gtk_ruler_set_range(vruler, y, y + drawingAreaHeight*pixelSize, 0, presentationRect.y() + presentationRect.height());
+  }
+}
+
+void View::toolButtonToggled(GtkToggleButton* button)
+{
+  if(gtk_toggle_button_get_active(button))
+  {
+    for(auto tool : tools)
+    {
+      if(tool.first != button && gtk_toggle_button_get_active(tool.first))
+      {
+        gtk_toggle_button_set_active(tool.first, false);
+        gtk_widget_set_sensitive(GTK_WIDGET(tool.first), true);
+        tools[tool.first]->onDisable();
+      }
+    }
+    gtk_widget_set_sensitive(GTK_WIDGET(button), false);
+    tools[button]->onEnable();
   }
 }
 
@@ -631,16 +639,14 @@ void View::on_buttonPress(GdkEventButton* event)
     modifiermove = GDK_BUTTON1_MASK;
     cachedPoint = eventToPoint(event);
   }
-  else if(event->button==3 && modifiermove==0)
+  else if(event->button==3)
   {
-    // Begin measuring distance
-    modifiermove = GDK_BUTTON3_MASK;
-    if(measurement)
+    GdkPoint point = windowPointToPresentationPoint(eventToPoint(event));
+    selection = Selection::Ptr(new Selection(point));
+    for(auto listener : selectionListeners)
     {
-      delete measurement;
+      listener->onSelectionStart(point, shared_from_this<ViewInterface>());
     }
-    cachedPoint = windowPointToPresentationPoint(eventToPoint(event));
-    measurement = new Measurement(cachedPoint);
   }
 }
 
@@ -653,16 +659,14 @@ void View::on_buttonRelease(GdkEventButton* event)
     cachedPoint.x=0;
     cachedPoint.y=0;
   }
-  else if(event->button==3 && modifiermove==GDK_BUTTON3_MASK)
+  else if(event->button==3 && selection)
   {
-    // End measuring distance
-    modifiermove = 0;
-    if(measurement)
+    selection->end = windowPointToPresentationPoint(eventToPoint(event));
+    for(auto listener : selectionListeners)
     {
-      measurement->end = windowPointToPresentationPoint(eventToPoint(event));
+      listener->onSelectionEnd(selection, shared_from_this<ViewInterface>());
     }
-    cachedPoint.x=0;
-    cachedPoint.y=0;
+    invalidate();
   }
 }
 
@@ -699,22 +703,14 @@ void View::on_motion_notify(GdkEventMotion* event)
 
     updateXY(newx, newy, OTHER);
   }
-  else if((event->state & GDK_BUTTON3_MASK) && modifiermove == GDK_BUTTON3_MASK)
+  else if((event->state & GDK_BUTTON3_MASK) && selection)
   {
-    bool moved=false;
-
-    cachedPoint = windowPointToPresentationPoint(eventToPoint(event));
-    if(measurement && !measurement->endsAt(cachedPoint))
+    selection->end = windowPointToPresentationPoint(eventToPoint(event));
+    for(auto listener : selectionListeners)
     {
-      measurement->end = cachedPoint;
-      moved = true;
+      listener->onSelectionUpdate(selection, shared_from_this<ViewInterface>());
     }
-
-    if(moved)
-    {
-      invalidate();
-      displayMeasurement();
-    }
+    invalidate();
   }
 }
 
@@ -785,6 +781,59 @@ void View::removeFromToolbar(GtkToolItem* ti)
   }
 }
 
+void View::registerSelectionListener(SelectionListener::Ptr listener)
+{
+  selectionListeners.push_back(listener);
+}
+
+void View::registerPostRenderer(PostRenderer::Ptr renderer)
+{
+  postRenderers.push_back(renderer);
+}
+
+void View::setStatusMessage(const std::string& message)
+{
+  gtk_statusbar_pop(statusBar, statusBarContextId);
+  gtk_statusbar_push(statusBar, statusBarContextId, message.c_str());
+}
+
+PresentationInterface::Ptr View::getCurrentPresentation()
+{
+  return presentation;
+}
+
+static void tool_button_toggled(GtkToggleButton* button, gpointer data)
+{
+  static_cast<View*>(data)->toolButtonToggled(button);
+}
+
+void View::addToolButton(GtkToggleButton* button, ToolStateListener::Ptr callback)
+{
+  gdk_threads_enter();
+
+  GtkToolItem* toolItem = gtk_tool_item_new();
+  gtk_container_add(GTK_CONTAINER(toolItem), GTK_WIDGET(button));
+  gtk_widget_set_visible(GTK_WIDGET(button), true);
+  g_signal_connect(static_cast<gpointer>(button), "toggled", G_CALLBACK(tool_button_toggled), this);
+
+  addToToolbar(toolItem);
+
+  tools[button] = callback;
+  if(tools.size() == 1)
+  {
+    gtk_toggle_button_set_active(button, true);
+    gtk_widget_set_sensitive(GTK_WIDGET(button), false);
+    callback->onEnable();
+  }
+  else
+  {
+	gtk_toggle_button_set_active(button, false);
+	gtk_widget_set_sensitive(GTK_WIDGET(button), true);
+  }
+
+  gdk_threads_leave();
+}
+
 ////////////////////////////////////////////////////////////////////////
 // Helpers
 
@@ -836,39 +885,6 @@ GdkPoint View::eventToPoint(GdkEventMotion* event)
 {
   GdkPoint result = {static_cast<gint>(event->x), static_cast<gint>(event->y)};
   return result;
-}
-
-void View::drawCross(cairo_t* cr, GdkPoint p)
-{
-  static const int size = 10;
-  cairo_move_to(cr, p.x-size, p.y);
-  cairo_line_to(cr, p.x+size, p.y);
-  cairo_move_to(cr, p.x, p.y-size);
-  cairo_line_to(cr, p.x, p.y+size);
-}
-
-void View::setStatusMessage(const std::string& message)
-{
-  gtk_statusbar_pop(statusBar, statusBarContextId);
-  gtk_statusbar_push(statusBar, statusBarContextId, message.c_str());
-}
-
-void View::displayMeasurement()
-{
-  std::ostringstream s;
-  s.precision(1);
-  fixed(s);
-
-  if(measurement)
-  {
-    s << "l: " << measurement->length()
-      << ", dx: " << measurement->width()
-      << ", dy: " << measurement->height()
-      << ", from: ("<< measurement->start.x << "," << measurement->start.y << ")"
-      << ", to: ("<< measurement->end.x << "," << measurement->end.y << ")";
-  }
-
-  setStatusMessage(s.str());
 }
 
 void View::updateNewWindowMenu()

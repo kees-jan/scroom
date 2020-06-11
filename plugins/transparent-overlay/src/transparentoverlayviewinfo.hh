@@ -47,6 +47,13 @@ public:
   virtual void removeSideWidget(GtkWidget* w);
   virtual void addToToolbar(GtkToolItem* ti);
   virtual void removeFromToolbar(GtkToolItem* ti);
+  virtual void setPanning();
+  virtual void unsetPanning();
+  virtual void registerSelectionListener(SelectionListener::Ptr listener);
+  virtual void registerPostRenderer(PostRenderer::Ptr renderer);
+  virtual void setStatusMessage(const std::string& message);
+  virtual PresentationInterface::Ptr getCurrentPresentation();
+  virtual void addToolButton(GtkToggleButton* name, ToolStateListener::Ptr callback);
 };
 
 class TransparentOverlayViewInfo : virtual public Scroom::Utils::Base
@@ -73,6 +80,7 @@ public:
   static Ptr create(const ViewInterface::WeakPtr& vi, SizeDeterminer::Ptr const& sizeDeterminer);
   void addChildren(const std::list<PresentationInterface::Ptr>& children);
   void addChild(const PresentationInterface::Ptr& child);
+  PresentationInterface::Ptr getChild(const ChildView::Ptr& cv);
 
   void close();
 

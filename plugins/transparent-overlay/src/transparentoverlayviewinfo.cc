@@ -73,6 +73,29 @@ void ChildView::addToToolbar(GtkToolItem*)
 void ChildView::removeFromToolbar(GtkToolItem*)
 {}
 
+void ChildView::setPanning()
+{}
+
+void ChildView::unsetPanning()
+{}
+
+void ChildView::registerSelectionListener(SelectionListener::Ptr)
+{}
+
+void ChildView::registerPostRenderer(PostRenderer::Ptr)
+{}
+
+void ChildView::setStatusMessage(const std::string&)
+{}
+
+PresentationInterface::Ptr ChildView::getCurrentPresentation()
+{
+  return parent->getChild(shared_from_this<ChildView>());
+}
+
+void ChildView::addToolButton(GtkToggleButton*, ToolStateListener::Ptr)
+{}
+
 ////////////////////////////////////////////////////////////////////////
 // TransparentOverlayViewInfo
 ////////////////////////////////////////////////////////////////////////
@@ -127,6 +150,17 @@ void TransparentOverlayViewInfo::addChild(const PresentationInterface::Ptr& chil
   sizeDeterminer->open(child, view);
   children.push_back(child);
   createToggleToolButton(child);
+}
+
+PresentationInterface::Ptr TransparentOverlayViewInfo::getChild(const ChildView::Ptr& cv){
+  for(ChildMap::value_type const& v: childViews)
+  {
+    if(v.second == cv)
+    {
+      return v.first;
+    }
+  }
+  return PresentationInterface::Ptr();
 }
 
 void TransparentOverlayViewInfo::close()

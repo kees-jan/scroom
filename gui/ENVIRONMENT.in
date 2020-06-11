@@ -1,6 +1,6 @@
 ATB=@abs_top_builddir@
 export SCROOM_DEV_MODE="yes"
-export SCROOM_PLUGIN_DIRS="/some/bogus/value:${ATB}/plugins/colormap/.libs:${ATB}/plugins/tiff/src/.libs:${ATB}/plugins/example/.libs:${ATB}/plugins/transparent-overlay/src/.libs"
+export SCROOM_PLUGIN_DIRS="/some/bogus/value:${ATB}/plugins/colormap/.libs:${ATB}/plugins/tiff/src/.libs:${ATB}/plugins/example/.libs:${ATB}/plugins/transparent-overlay/src/.libs:${ATB}/plugins/measure/src/.libs"
 
 if [ -z "$SCROOM_PATHS_SAVED" ]
 then

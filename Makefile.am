@@ -551,6 +551,24 @@ plugins_colormap_libspcolormap_la_LIBADD = @COLORMAPPLUGIN_LIBS@ @BOOSTTHREADLIB
 plugins_colormap_libspcolormap_la_LDFLAGS = $(loadflag)
 
 ########################################################################
+### plugins/measure
+########################################################################
+
+measure_plugin_libs = \
+	plugins/measure/src/libspmeasure.la
+
+plugins_measure_src_libspmeasure_la_CPPFLAGS = @MEASUREPLUGIN_CFLAGS@ -I $(top_srcdir)/inc
+
+plugins_measure_src_libspmeasure_la_SOURCES = \
+	plugins/measure/src/main.cc \
+	plugins/measure/src/measure.cc \
+	plugins/measure/src/measure.hh
+
+plugins_measure_src_libspmeasure_la_LIBADD = @MEASUREPLUGIN_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
+	
+plugins_measure_src_libspmeasure_la_LDFLAGS = $(loadflag)
+
+########################################################################
 ### gui
 ########################################################################
 
@@ -611,7 +629,7 @@ root_extra_dist = \
 ########################################################################
 
 ### Plugins
-plugin_LTLIBRARIES = $(example_plugin_libs) $(transparent_overlay_plugin_libs) $(tiff_plugin_libs) $(colormap_plugin_libs)
+plugin_LTLIBRARIES = $(example_plugin_libs) $(transparent_overlay_plugin_libs) $(tiff_plugin_libs) $(colormap_plugin_libs) $(measure_plugin_libs)
 plugins_check_programs = $(transparent_overlay_plugin_check_programs)
 plugins_tests = $(transparent_overlay_plugin_tests)
 
