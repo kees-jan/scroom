@@ -407,13 +407,18 @@ void TiffPresentation::done()
  * Loops through rhs, adds values of the same key to each other and assigns it back to lhs.
  * Return lhs at the end.
  */
-PipetteLayerOperations::PipetteColor sumPipetteColors(PipetteLayerOperations::PipetteColor& lhs, const PipetteLayerOperations::PipetteColor& rhs)
+PipetteLayerOperations::PipetteColor sumPipetteColors(const PipetteLayerOperations::PipetteColor& lhs, const PipetteLayerOperations::PipetteColor& rhs)
 {
+  PipetteLayerOperations::PipetteColor result;
   for(auto const& elem : rhs)
   {
-    lhs[elem.first] += elem.second;
+    result[elem.first] = elem.second;
+    if(lhs.find(elem.first) != lhs.end())
+    {
+      result[elem.first] += lhs.at(elem.first);
+    }
   }
-  return lhs;
+  return result;
 }
 
 /**
