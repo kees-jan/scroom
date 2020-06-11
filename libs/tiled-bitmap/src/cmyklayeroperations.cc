@@ -121,10 +121,10 @@ PipetteLayerOperations::PipetteColor OperationsCMYK32::sumPixelValues(Scroom::Ut
 { 
   const uint8_t* data = tile->data.get();
 
-  size_t sum_c = 0;
-  size_t sum_m = 0;
-  size_t sum_y = 0;
-  size_t sum_k = 0;
+  double sum_c = 0;
+  double sum_m = 0;
+  double sum_y = 0;
+  double sum_k = 0;
   
   for(int y = area.getTop(); y < area.getBottom(); y++)
   {
@@ -244,10 +244,10 @@ PipetteLayerOperations::PipetteColor OperationsCMYK16::sumPixelValues(Scroom::Ut
 {
   const uint8_t* data = tile->data.get();
 
-  size_t sum_c = 0;
-  size_t sum_m = 0;
-  size_t sum_y = 0;
-  size_t sum_k = 0;
+  double sum_c = 0;
+  double sum_m = 0;
+  double sum_y = 0;
+  double sum_k = 0;
   
   for(int y = area.getTop(); y < area.getBottom(); y++)
   {
@@ -364,10 +364,10 @@ PipetteLayerOperations::PipetteColor OperationsCMYK8::sumPixelValues(Scroom::Uti
 {
   const uint8_t* data = tile->data.get();
 
-  size_t sum_c = 0;
-  size_t sum_m = 0;
-  size_t sum_y = 0;
-  size_t sum_k = 0;
+  double sum_c = 0;
+  double sum_m = 0;
+  double sum_y = 0;
+  double sum_k = 0;
   
   for(int y = area.getTop(); y < area.getBottom(); y++)
   {
@@ -494,10 +494,10 @@ PipetteLayerOperations::PipetteColor OperationsCMYK4::sumPixelValues(Scroom::Uti
 {
   const uint8_t* data = tile->data.get();
 
-  size_t sum_c = 0;
-  size_t sum_m = 0;
-  size_t sum_y = 0;
-  size_t sum_k = 0;
+  double sum_c = 0;
+  double sum_m = 0;
+  double sum_y = 0;
+  double sum_k = 0;
   
   for(int y = area.getTop(); y < area.getBottom(); y++)
   {
