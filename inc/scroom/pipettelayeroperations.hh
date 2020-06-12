@@ -22,10 +22,12 @@ public:
   {}
 
   /**
-   * Sums the components of each pixel contained in the area of the tile.
+   * Sums the samples of each pixel contained in the area of the tile.
    * 
-   * This will, given a tile and an area, where the area is contained in the tile, compute the sum of all components.
-   * A map of strings and size_t will then be returned, representing the sum for each component.
+   * @param area The rectangular area in which pixels are summed up.
+   * @param tile The tile in which the pixels are located in.
+   * @param bps bits per sample of the presentation.
+   * @param spp samples per pixel of the presentation.
    */
-  virtual PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile)=0;
+  virtual PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile, int bps, int spp)=0;
 };

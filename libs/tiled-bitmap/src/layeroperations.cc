@@ -209,6 +209,52 @@ void CommonOperations::draw(cairo_t* cr, const ConstTile::Ptr tile,
   }
 }
 
+PipetteLayerOperations::PipetteColor PipetteCommonOperations::sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile, int bps, int spp)
+{ 
+  Scroom::Bitmap::SampleIterator<const uint8_t> si(tile->data.get() + area.getTop(), 0, bps);
+  int stride = tile->width - area.getWidth();
+  if(spp == 4)
+  {
+    size_t sum_c = 0;
+    size_t sum_m = 0;
+    size_t sum_y = 0;
+    size_t sum_k = 0;
+  
+    for(int y = area.getTop(); y < area.getBottom(); y++)
+    {
+      for(int x = area.getLeft(); x < area.getRight(); x++)
+      {
+        sum_c += *si++;
+        sum_m += *si++;
+        sum_y += *si++;
+        sum_k += *si++;
+      }
+      si += spp * stride;
+    }
+  return { {"C", sum_c}, {"M", sum_m}, {"Y", sum_y}, {"K", sum_k} };
+  }
+  else if(spp == 3)
+  {
+    size_t sum_r = 0;
+    size_t sum_g = 0;
+    size_t sum_b = 0;
+  
+    for(int y = area.getTop(); y < area.getBottom(); y++)
+    {
+      for(int x = area.getLeft(); x < area.getRight(); x++)
+      {
+        sum_r += *si++;
+        sum_g += *si++;
+        sum_b += *si++;
+      }
+      si += spp * stride;
+    }
+  
+  return { {"R", sum_r}, {"G", sum_g}, {"B", sum_b} };
+  }
+  return {};
+}
+
 ////////////////////////////////////////////////////////////////////////
 // Operations1bpp
 
@@ -538,29 +584,6 @@ void Operations24bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int 
   }
 }
 
-PipetteLayerOperations::PipetteColor Operations24bpp::sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile)
-{
-  const uint8_t* data = tile->data.get();
-
-  size_t sum_r = 0;
-  size_t sum_g = 0;
-  size_t sum_b = 0;
-  
-  for(int y = area.getTop(); y < area.getBottom(); y++)
-  {
-    for(int x = area.getLeft(); x < area.getRight(); x++)
-    {
-      int pos = 3 * (x + y * tile->width);
-
-      sum_r += data[pos];
-      sum_g += data[pos + 1];
-      sum_b += data[pos + 2];
-    }
-  }
-
-  PipetteLayerOperations::PipetteColor values = { {"R", sum_r}, {"G", sum_g}, {"B", sum_b} };
-  return values;
-}
 
 ////////////////////////////////////////////////////////////////////////
 // Operations

@@ -117,30 +117,6 @@ void OperationsCMYK32::reduce(Tile::Ptr target, const ConstTile::Ptr source, int
   }
 }
 
-PipetteLayerOperations::PipetteColor OperationsCMYK32::sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile)
-{ 
-  const uint8_t* data = tile->data.get();
-
-  double sum_c = 0;
-  double sum_m = 0;
-  double sum_y = 0;
-  double sum_k = 0;
-  
-  for(int y = area.getTop(); y < area.getBottom(); y++)
-  {
-    for(int x = area.getLeft(); x < area.getRight(); x++)
-    {
-      int pos = 4 * (x + y * tile->width);
-      sum_c += data[pos];
-      sum_m += data[pos + 1];
-      sum_y += data[pos + 2];
-      sum_k += data[pos + 3];
-    }
-  }
-
-  PipetteLayerOperations::PipetteColor values = { {"C", sum_c}, {"M", sum_m}, {"Y", sum_y}, {"K", sum_k} };
-  return values;
-}
 ////////////////////////////////////////////////////////////////////////
 // OperationsCMYK16
 
@@ -240,30 +216,6 @@ void OperationsCMYK16::reduce(Tile::Ptr target, const ConstTile::Ptr source, int
   }
 }
 
-PipetteLayerOperations::PipetteColor OperationsCMYK16::sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile)
-{
-  const uint8_t* data = tile->data.get();
-
-  double sum_c = 0;
-  double sum_m = 0;
-  double sum_y = 0;
-  double sum_k = 0;
-  
-  for(int y = area.getTop(); y < area.getBottom(); y++)
-  {
-    for(int x = area.getLeft(); x < area.getRight(); x++)
-    {
-      int pos = 2 * (x + y * tile->width);
-      sum_c += data[pos] >> 4;
-      sum_m += data[pos] & 0x0F;
-      sum_y += data[pos + 1] >> 4;
-      sum_k += data[pos + 1] & 0x0F;
-    }
-  }
-
-  PipetteLayerOperations::PipetteColor values = { {"C", sum_c}, {"M", sum_m}, {"Y", sum_y}, {"K", sum_k} };
-  return values;
-}
 ////////////////////////////////////////////////////////////////////////
 // OperationsCMYK8
 
@@ -358,31 +310,6 @@ void OperationsCMYK8::reduce(Tile::Ptr target, const ConstTile::Ptr source, int 
     targetBase += targetStride;
     sourceBase += sourceStride * 8;
   }
-}
-
-PipetteLayerOperations::PipetteColor OperationsCMYK8::sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile)
-{
-  const uint8_t* data = tile->data.get();
-
-  double sum_c = 0;
-  double sum_m = 0;
-  double sum_y = 0;
-  double sum_k = 0;
-  
-  for(int y = area.getTop(); y < area.getBottom(); y++)
-  {
-    for(int x = area.getLeft(); x < area.getRight(); x++)
-    {
-      int pos = x + y * tile->width;
-      sum_c += data[pos] >> 6;
-      sum_m += (data[pos] >> 4) & 3;
-      sum_y += (data[pos] >> 2) & 3;
-      sum_k += data[pos] & 3;
-    }
-  }
-
-  PipetteLayerOperations::PipetteColor values = { {"C", sum_c}, {"M", sum_m}, {"Y", sum_y}, {"K", sum_k} };
-  return values;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -490,39 +417,3 @@ void OperationsCMYK4::reduce(Tile::Ptr target, const ConstTile::Ptr source, int 
   }
 }
 
-PipetteLayerOperations::PipetteColor OperationsCMYK4::sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile)
-{
-  const uint8_t* data = tile->data.get();
-
-  double sum_c = 0;
-  double sum_m = 0;
-  double sum_y = 0;
-  double sum_k = 0;
-  
-  for(int y = area.getTop(); y < area.getBottom(); y++)
-  {
-    for(int x = area.getLeft(); x < area.getRight(); x++)
-    {
-      int pixel = x + y * tile->width;
-      int pos = pixel / 2;
-
-      if(pixel % 2 == 0)
-      {
-        sum_c += data[pos] >> 7;
-        sum_m += (data[pos] >> 6) & 1;
-        sum_y += (data[pos] >> 5) & 1;
-        sum_k += (data[pos] >> 4) & 1;
-      }
-      else
-      {
-        sum_c += (data[pos] >> 3) & 1;
-        sum_m += (data[pos] >> 2) & 1;
-        sum_y += (data[pos] >> 1) & 1;
-        sum_k += data[pos] & 1;
-      }
-    }
-  }
-
-  PipetteLayerOperations::PipetteColor values = { {"C", sum_c}, {"M", sum_m}, {"Y", sum_y}, {"K", sum_k} };
-  return values;
-}

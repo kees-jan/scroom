@@ -474,7 +474,7 @@ PipetteLayerOperations::PipetteColor TiffPresentation::getPixelAverages(Scroom::
 
       inter_rect -= base; //rectangle coordinates relative to constTile with topleft corner (0,0)
 
-      pipetteColors = sumPipetteColors(pipetteColors, pipetteLayerOperation->sumPixelValues(inter_rect, tile));
+      pipetteColors = sumPipetteColors(pipetteColors, pipetteLayerOperation->sumPixelValues(inter_rect, tile, bps, spp));
     }
   }
   return dividePipetteColors(pipetteColors, totalPixels);
