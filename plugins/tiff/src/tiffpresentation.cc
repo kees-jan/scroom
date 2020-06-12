@@ -198,36 +198,41 @@ bool TiffPresentation::load(const std::string& fileName_)
     LayerSpec ls;
     if (spp == 4 && bps == 8)
     {
-      ls.push_back(OperationsCMYK32::create());
+      auto cmykOperations = OperationsCMYK32::create();
+      pipetteLayer = cmykOperations;
+      ls.push_back(cmykOperations);
       properties[PIPETTE_PROPERTY_NAME] = "";
-      pipetteLayer = boost::dynamic_pointer_cast<PipetteLayerOperations>(ls[0]);
     }
     else if (spp == 4 && bps == 4)
     {
-      ls.push_back(OperationsCMYK16::create());
+      auto cmykOperations = OperationsCMYK16::create();
+      pipetteLayer = cmykOperations;
+      ls.push_back(cmykOperations);
       ls.push_back(OperationsCMYK32::create());
       properties[PIPETTE_PROPERTY_NAME] = "";
-      pipetteLayer = boost::dynamic_pointer_cast<PipetteLayerOperations>(ls[0]);
     }
     else if (spp == 4 && bps == 2)
     {
-      ls.push_back(OperationsCMYK8::create());
+      auto cmykOperations = OperationsCMYK8::create();
+      pipetteLayer = cmykOperations;
+      ls.push_back(cmykOperations);
       ls.push_back(OperationsCMYK32::create());
       properties[PIPETTE_PROPERTY_NAME] = "";
-      pipetteLayer = boost::dynamic_pointer_cast<PipetteLayerOperations>(ls[0]);
     }
     else if (spp == 4 && bps == 1)
     {
-      ls.push_back(OperationsCMYK4::create());
+      auto cmykOperations = OperationsCMYK4::create();
+      pipetteLayer = cmykOperations;
+      ls.push_back(cmykOperations);
       ls.push_back(OperationsCMYK32::create());
       properties[PIPETTE_PROPERTY_NAME] = "";
-      pipetteLayer = boost::dynamic_pointer_cast<PipetteLayerOperations>(ls[0]);
     }
     else if (spp == 3 && bps == 8)
     {
-      ls.push_back(Operations24bpp::create());
+      auto rgbOperations = Operations24bpp::create();
+      pipetteLayer = rgbOperations;
+      ls.push_back(rgbOperations);
       properties[PIPETTE_PROPERTY_NAME] = "";
-      pipetteLayer = boost::dynamic_pointer_cast<PipetteLayerOperations>(ls[0]);
     }
     else if (bps == 2 || bps == 4 || photometric == PHOTOMETRIC_PALETTE)
     {
@@ -424,9 +429,9 @@ PipetteLayerOperations::PipetteColor sumPipetteColors(const PipetteLayerOperatio
 /**
  * Divides each element inside elements by by a constant divisor.
  */
-PipetteLayerOperations::PipetteColor dividePipetteColors(PipetteLayerOperations::PipetteColor elements, const int divisor )
+PipetteLayerOperations::PipetteColor dividePipetteColors(PipetteLayerOperations::PipetteColor elements, const int divisor)
 {
-  for(auto elem : elements)
+  for(auto& elem : elements)
   {
     elem.second /= divisor;
   }

@@ -21,9 +21,9 @@ namespace
 ////////////////////////////////////////////////////////////////////////
 // OperationsCMYK32
 
-LayerOperations::Ptr OperationsCMYK32::create()
+PipetteCommonOperations::Ptr OperationsCMYK32::create()
 {
-  return LayerOperations::Ptr(new OperationsCMYK32());
+  return PipetteCommonOperations::Ptr(new OperationsCMYK32());
 }
 
 OperationsCMYK32::OperationsCMYK32()
@@ -120,9 +120,9 @@ void OperationsCMYK32::reduce(Tile::Ptr target, const ConstTile::Ptr source, int
 ////////////////////////////////////////////////////////////////////////
 // OperationsCMYK16
 
-LayerOperations::Ptr OperationsCMYK16::create()
+PipetteCommonOperations::Ptr OperationsCMYK16::create()
 {
-  return LayerOperations::Ptr(new OperationsCMYK16());
+  return PipetteCommonOperations::Ptr(new OperationsCMYK16());
 }
 
 OperationsCMYK16::OperationsCMYK16()
@@ -219,9 +219,9 @@ void OperationsCMYK16::reduce(Tile::Ptr target, const ConstTile::Ptr source, int
 ////////////////////////////////////////////////////////////////////////
 // OperationsCMYK8
 
-LayerOperations::Ptr OperationsCMYK8::create()
+PipetteCommonOperations::Ptr OperationsCMYK8::create()
 {
-  return LayerOperations::Ptr(new OperationsCMYK8());
+  return PipetteCommonOperations::Ptr(new OperationsCMYK8());
 }
 
 OperationsCMYK8::OperationsCMYK8()
@@ -315,9 +315,9 @@ void OperationsCMYK8::reduce(Tile::Ptr target, const ConstTile::Ptr source, int 
 ////////////////////////////////////////////////////////////////////////
 // OperationsCMYK4
 
-LayerOperations::Ptr OperationsCMYK4::create()
+PipetteCommonOperations::Ptr OperationsCMYK4::create()
 {
-  return LayerOperations::Ptr(new OperationsCMYK4());
+  return PipetteCommonOperations::Ptr(new OperationsCMYK4());
 }
 
 OperationsCMYK4::OperationsCMYK4()

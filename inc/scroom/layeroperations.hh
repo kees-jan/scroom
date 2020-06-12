@@ -33,6 +33,9 @@ public:
 class PipetteCommonOperations : public CommonOperations, public PipetteLayerOperations
 {
 public:
+  typedef boost::shared_ptr<PipetteCommonOperations> Ptr;
+
+public:
   virtual ~PipetteCommonOperations()
   {}
 
@@ -83,7 +86,7 @@ public:
 class Operations24bpp : public PipetteCommonOperations
 {
 public:
-  static LayerOperations::Ptr create();
+  static PipetteCommonOperations::Ptr create();
   Operations24bpp();
   virtual ~Operations24bpp()
   {}
@@ -157,7 +160,7 @@ public:
 class OperationsCMYK32 : public PipetteCommonOperations
 {
 public:
-  static LayerOperations::Ptr create();
+  static PipetteCommonOperations::Ptr create();
   OperationsCMYK32();
   virtual ~OperationsCMYK32()
   {}
@@ -171,7 +174,7 @@ public:
 class OperationsCMYK16 : public PipetteCommonOperations
 {
 public:
-  static LayerOperations::Ptr create();
+  static PipetteCommonOperations::Ptr create();
   OperationsCMYK16();
   virtual ~OperationsCMYK16()
   {}
@@ -185,7 +188,7 @@ public:
 class OperationsCMYK8 : public PipetteCommonOperations
 {
 public:
-  static LayerOperations::Ptr create();
+  static PipetteCommonOperations::Ptr create();
   OperationsCMYK8();
   virtual ~OperationsCMYK8()
   {}
@@ -199,7 +202,7 @@ public:
 class OperationsCMYK4 : public PipetteCommonOperations
 {
 public:
-  static LayerOperations::Ptr create();
+  static PipetteCommonOperations::Ptr create();
   OperationsCMYK4();
   virtual ~OperationsCMYK4()
   {}

@@ -502,9 +502,9 @@ void Operations8bpp::draw(cairo_t* cr, const ConstTile::Ptr tile,
 ////////////////////////////////////////////////////////////////////////
 // Operations24bpp
 
-LayerOperations::Ptr Operations24bpp::create()
+PipetteCommonOperations::Ptr Operations24bpp::create()
 {
-  return LayerOperations::Ptr(new Operations24bpp());
+  return PipetteCommonOperations::Ptr(new Operations24bpp());
 }
 
 Operations24bpp::Operations24bpp()
@@ -583,7 +583,6 @@ void Operations24bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int 
     }
   }
 }
-
 
 ////////////////////////////////////////////////////////////////////////
 // Operations
