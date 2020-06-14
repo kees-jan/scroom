@@ -211,8 +211,10 @@ void CommonOperations::draw(cairo_t* cr, const ConstTile::Ptr tile,
 
 PipetteLayerOperations::PipetteColor PipetteCommonOperations::sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile, int bps, int spp)
 { 
-  Scroom::Bitmap::SampleIterator<const uint8_t> si(tile->data.get() + area.getTop(), 0, bps);
+  int offset = area.getTop() * tile->width + area.getLeft();
   int stride = tile->width - area.getWidth();
+  Scroom::Bitmap::SampleIterator<const uint8_t> si(tile->data.get() + offset, 0, bps);
+  
   if(spp == 4)
   {
     size_t sum_c = 0;
