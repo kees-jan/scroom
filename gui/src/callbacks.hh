@@ -61,6 +61,8 @@ void on_textbox_value_changed(GtkEditable* editable, gpointer user_data);
 
 void on_scroom_bootstrap (const FileNameMap& newFilenames);
 
+void on_scroom_terminating();
+
 void find_or_create_scroom(PresentationInterface::Ptr presentation);
 
 void create_scroom(PresentationInterface::Ptr presentation);
