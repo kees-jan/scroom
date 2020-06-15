@@ -66,6 +66,7 @@ PipetteHandler::PipetteHandler()
 {
   selection = nullptr;
   enabled = false;
+  pendingJobs = ThreadPool::Queue::createAsync();
 }
 PipetteHandler::~PipetteHandler()
 {
@@ -74,6 +75,57 @@ PipetteHandler::~PipetteHandler()
 PipetteHandler::Ptr PipetteHandler::create()
 {
   return Ptr(new PipetteHandler());
+}
+
+void PipetteHandler::computeValues(ViewInterface::Ptr view)
+{
+  printf("I hope we don't segfault");
+
+  // Get the image rectangle
+  auto presentation = boost::static_pointer_cast<PresentationInterface>(view->getCurrentPresentation());
+  if(presentation == nullptr)
+  {
+    printf("PANIC: Current presentation does not implement PresentationInterface!\n");
+    view->setStatusMessage("Error when requesting the image data.");
+    return;
+  }
+  auto image = presentation->getRect().toIntRectangle();
+
+  // Get the selection rectangle
+  int sel_x = std::min(selection->start.x, selection->end.x);
+  int sel_y = std::min(selection->start.y, selection->end.y);
+  auto sel_rect = Scroom::Utils::Rectangle<int>(sel_x, sel_y, selection->width(), selection->height());
+
+  // Intersect both rectangles to get the part of the selection that overlaps the image
+  auto rect = sel_rect.intersection(image);
+
+  // Get the average color within the rectangle
+  auto pipette = boost::dynamic_pointer_cast<PipetteViewInterface>(presentation);
+  if(pipette == nullptr)
+  {
+    printf("PANIC: Presentation does not implement PipetteViewInterface!\n");
+    view->setStatusMessage("Error when requesting the image data.");
+    return;
+  }
+  std::cout << rect << std::endl;
+  auto colors = pipette->getAverages(rect);
+
+  // If there is a result, show it on the status bar
+  if(colors.empty())
+    return;
+
+  std::stringstream info;
+  info << "Top-left: " << rect.getTopLeft();
+  info << ", Bottom-right: " << rect.getBottomRight();
+  info << ", Height: " << rect.getHeight();
+  info << ", Width: " << rect.getWidth();
+  info << ", Colors:";
+  for(auto element : colors)
+  {
+    info << ' ' << element.first << ": " << element.second;
+  }
+
+  view->setStatusMessage(info.str());
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -99,51 +151,7 @@ void PipetteHandler::onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view)
   {
     selection = s;
 
-    // Get the image rectangle
-    auto presentation = boost::static_pointer_cast<PresentationInterface>(view->getCurrentPresentation());
-    if(presentation == nullptr)
-    {
-      printf("PANIC: Current presentation does not implement PresentationInterface!\n");
-      view->setStatusMessage("Error when requesting the image data.");
-      return;
-    }
-    auto image = presentation->getRect().toIntRectangle();
-
-    // Get the selection rectangle
-    int sel_x = std::min(selection->start.x, selection->end.x);
-    int sel_y = std::min(selection->start.y, selection->end.y);
-    auto sel_rect = Scroom::Utils::Rectangle<int>(sel_x, sel_y, selection->width(), selection->height());
-
-    // Intersect both rectangles to get the part of the selection that overlaps the image
-    auto rect = sel_rect.intersection(image);
-
-    // Get the average color within the rectangle
-    auto pipette = boost::dynamic_pointer_cast<PipetteViewInterface>(presentation);
-    if(pipette == nullptr)
-    {
-      printf("PANIC: Presentation does not implement PipetteViewInterface!\n");
-      view->setStatusMessage("Error when requesting the image data.");
-      return;
-    }
-    std::cout << rect << std::endl;
-    auto colors = pipette->getAverages(rect);
-
-    // If there is a result, show it on the status bar
-    if(colors.empty())
-      return;
-
-    std::stringstream info;
-    info << "Top-left: " << rect.getTopLeft();
-    info << ", Bottom-right: " << rect.getBottomRight();
-    info << ", Height: " << rect.getHeight();
-    info << ", Width: " << rect.getWidth();
-    info << ", Colors:";
-    for(auto element : colors)
-    {
-      info << ' ' << element.first << ": " << element.second;
-    }
-
-    view->setStatusMessage(info.str());
+    CpuBound()->schedule(boost::bind(&PipetteHandler::computeValues, shared_from_this<PipetteHandler>(), view), PRIO_HIGHER, pendingJobs);
   }
 }
 

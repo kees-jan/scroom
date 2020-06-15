@@ -10,6 +10,7 @@
 #include <scroom/plugininformationinterface.hh>
 #include <scroom/utilities.hh>
 #include <scroom/viewinterface.hh>
+#include <scroom/threadpool.hh>
 
 class PipetteHandler : public ToolStateListener, public PostRenderer, public SelectionListener, virtual public Scroom::Utils::Base
 {
@@ -22,6 +23,7 @@ public:
 private:
   Selection::Ptr selection;
   bool enabled;
+  ThreadPool::Queue::Ptr pendingJobs;
 
 public:
   static Ptr create();
@@ -48,6 +50,8 @@ public:
   virtual void onDisable();
 
   ////////////////////////////////////////////////////////////////////////
+
+  virtual void computeValues(ViewInterface::Ptr view);
 };
 
 class Pipette : public PluginInformationInterface, public ViewObserver, virtual public  Scroom::Utils::Base

@@ -584,7 +584,7 @@ plugins_pipette_src_libsppipette_la_SOURCES = \
 	plugins/pipette/src/pipette.hh \
 	plugins/pipette/src/main.cc
 
-plugins_pipette_src_libsppipette_la_LIBADD = @PIPETTEPLUGIN_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
+plugins_pipette_src_libsppipette_la_LIBADD = @PIPETTEPLUGIN_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ libs/threadpool/src/libsthreadpool.la
 
 plugins_pipette_src_libsppipette_la_LDFLAGS = $(loadflag)
 
