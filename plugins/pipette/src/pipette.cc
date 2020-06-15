@@ -6,8 +6,6 @@
 #include <scroom/pipetteviewinterface.hh>
 #include <scroom/unused.hh>
 
-#include <iostream> // Temporary - for debugging purposes
-
 ////////////////////////////////////////////////////////////////////////
 // Pipette
 ////////////////////////////////////////////////////////////////////////
@@ -79,7 +77,6 @@ PipetteHandler::Ptr PipetteHandler::create()
 
 void PipetteHandler::computeValues(ViewInterface::Ptr view)
 {
-  // Show some indication that we are doing something
   gdk_threads_enter();
   view->setStatusMessage("Computing colors values...");
   gdk_threads_leave();
@@ -114,21 +111,14 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view)
     gdk_threads_leave();
     return;
   }
-  std::cout << rect << std::endl;
   auto colors = pipette->getAverages(rect);
 
   // If selection became null the plugin was switched off so ignore the result
-  if(selection == nullptr)
+  if(selection == nullptr || colors.empty())
   {
     return;
   }
   enabled = true;
-
-  // If there is a result, show it on the status bar
-  if(colors.empty())
-  {
-    return;
-  }
 
   std::stringstream info;
   info << "Top-left: " << rect.getTopLeft();
@@ -171,7 +161,7 @@ void PipetteHandler::onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view)
 
     // Prevent more than one job
     enabled = false;
-    CpuBound()->schedule(boost::bind(&PipetteHandler::computeValues, shared_from_this<PipetteHandler>(), view), pendingJobs);
+    Sequentially()->schedule(boost::bind(&PipetteHandler::computeValues, shared_from_this<PipetteHandler>(), view), pendingJobs);
   }
 }
 
