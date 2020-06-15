@@ -26,8 +26,6 @@ public:
    * 
    * @param area The rectangular area in which pixels are summed up.
    * @param tile The tile in which the pixels are located in.
-   * @param bps bits per sample of the presentation.
-   * @param spp samples per pixel of the presentation.
    */
-  virtual PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile, int bps, int spp)=0;
+  virtual PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile)=0;
 };

@@ -198,38 +198,38 @@ bool TiffPresentation::load(const std::string& fileName_)
     LayerSpec ls;
     if (spp == 4 && bps == 8)
     {
-      auto cmykOperations = OperationsCMYK32::create();
+      auto cmykOperations = OperationsCMYK32::create(bps);
       pipetteLayer = cmykOperations;
       ls.push_back(cmykOperations);
       properties[PIPETTE_PROPERTY_NAME] = "";
     }
     else if (spp == 4 && bps == 4)
     {
-      auto cmykOperations = OperationsCMYK16::create();
+      auto cmykOperations = OperationsCMYK16::create(bps);
       pipetteLayer = cmykOperations;
       ls.push_back(cmykOperations);
-      ls.push_back(OperationsCMYK32::create());
+      ls.push_back(OperationsCMYK32::create(8));
       properties[PIPETTE_PROPERTY_NAME] = "";
     }
     else if (spp == 4 && bps == 2)
     {
-      auto cmykOperations = OperationsCMYK8::create();
+      auto cmykOperations = OperationsCMYK8::create(bps);
       pipetteLayer = cmykOperations;
       ls.push_back(cmykOperations);
-      ls.push_back(OperationsCMYK32::create());
+      ls.push_back(OperationsCMYK32::create(8));
       properties[PIPETTE_PROPERTY_NAME] = "";
     }
     else if (spp == 4 && bps == 1)
     {
-      auto cmykOperations = OperationsCMYK4::create();
+      auto cmykOperations = OperationsCMYK4::create(bps);
       pipetteLayer = cmykOperations;
       ls.push_back(cmykOperations);
-      ls.push_back(OperationsCMYK32::create());
+      ls.push_back(OperationsCMYK32::create(8));
       properties[PIPETTE_PROPERTY_NAME] = "";
     }
     else if (spp == 3 && bps == 8)
     {
-      auto rgbOperations = Operations24bpp::create();
+      auto rgbOperations = Operations24bpp::create(bps);
       pipetteLayer = rgbOperations;
       ls.push_back(rgbOperations);
       properties[PIPETTE_PROPERTY_NAME] = "";
@@ -408,20 +408,13 @@ void TiffPresentation::done()
 
 /**
  * Add two pipette color map values of the same key.
- * 
- * Loops through rhs, adds values of the same key to each other and assigns it back to lhs.
- * Return lhs at the end.
  */
 PipetteLayerOperations::PipetteColor sumPipetteColors(const PipetteLayerOperations::PipetteColor& lhs, const PipetteLayerOperations::PipetteColor& rhs)
 {
-  PipetteLayerOperations::PipetteColor result;
+  PipetteLayerOperations::PipetteColor result = lhs;
   for(auto const& elem : rhs)
   {
-    result[elem.first] = elem.second;
-    if(lhs.find(elem.first) != lhs.end())
-    {
-      result[elem.first] += lhs.at(elem.first);
-    }
+    result[elem.first] += elem.second;
   }
   return result;
 }
@@ -479,7 +472,7 @@ PipetteLayerOperations::PipetteColor TiffPresentation::getPixelAverages(Scroom::
 
       inter_rect -= base; //rectangle coordinates relative to constTile with topleft corner (0,0)
 
-      pipetteColors = sumPipetteColors(pipetteColors, pipetteLayerOperation->sumPixelValues(inter_rect, tile, bps, spp));
+      pipetteColors = sumPipetteColors(pipetteColors, pipetteLayerOperation->sumPixelValues(inter_rect, tile));
     }
   }
   return dividePipetteColors(pipetteColors, totalPixels);

@@ -209,52 +209,55 @@ void CommonOperations::draw(cairo_t* cr, const ConstTile::Ptr tile,
   }
 }
 
-PipetteLayerOperations::PipetteColor PipetteCommonOperations::sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile, int bps, int spp)
-{ 
-  int offset = area.getTop() * tile->width + area.getLeft();
-  int stride = tile->width - area.getWidth();
-  Scroom::Bitmap::SampleIterator<const uint8_t> si(tile->data.get() + offset, 0, bps);
-  
-  if(spp == 4)
+PipetteLayerOperations::PipetteColor PipetteCommonOperationsCMYK::sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile)
+{
+  int offset = 4 * (area.getTop() * tile->width + area.getLeft());
+  int stride = 4 * (tile->width - area.getWidth());
+  Scroom::Bitmap::SampleIterator<const uint8_t> si(tile->data.get(), 0, bps);
+  si += offset;
+
+  size_t sum_c = 0;
+  size_t sum_m = 0;
+  size_t sum_y = 0;
+  size_t sum_k = 0;
+
+  for(int y = area.getTop(); y < area.getBottom(); y++)
   {
-    size_t sum_c = 0;
-    size_t sum_m = 0;
-    size_t sum_y = 0;
-    size_t sum_k = 0;
-  
-    for(int y = area.getTop(); y < area.getBottom(); y++)
+    for(int x = area.getLeft(); x < area.getRight(); x++)
     {
-      for(int x = area.getLeft(); x < area.getRight(); x++)
-      {
-        sum_c += *si++;
-        sum_m += *si++;
-        sum_y += *si++;
-        sum_k += *si++;
-      }
-      si += spp * stride;
+      sum_c += *si++;
+      sum_m += *si++;
+      sum_y += *si++;
+      sum_k += *si++;
     }
+    si += stride;
+  }
   return { {"C", sum_c}, {"M", sum_m}, {"Y", sum_y}, {"K", sum_k} };
-  }
-  else if(spp == 3)
+}
+
+PipetteLayerOperations::PipetteColor PipetteCommonOperationsRGB::sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile)
+{
+  int offset = 3 * (area.getTop() * tile->width + area.getLeft());
+  int stride = 3 * (tile->width - area.getWidth());
+  Scroom::Bitmap::SampleIterator<const uint8_t> si(tile->data.get(), 0, bps);
+  si += offset;
+
+  size_t sum_r = 0;
+  size_t sum_g = 0;
+  size_t sum_b = 0;
+
+  for(int y = area.getTop(); y < area.getBottom(); y++)
   {
-    size_t sum_r = 0;
-    size_t sum_g = 0;
-    size_t sum_b = 0;
-  
-    for(int y = area.getTop(); y < area.getBottom(); y++)
+    for(int x = area.getLeft(); x < area.getRight(); x++)
     {
-      for(int x = area.getLeft(); x < area.getRight(); x++)
-      {
-        sum_r += *si++;
-        sum_g += *si++;
-        sum_b += *si++;
-      }
-      si += spp * stride;
+      sum_r += *si++;
+      sum_g += *si++;
+      sum_b += *si++;
     }
-  
-  return { {"R", sum_r}, {"G", sum_g}, {"B", sum_b} };
+    si += stride;
   }
-  return {};
+
+  return { {"R", sum_r}, {"G", sum_g}, {"B", sum_b} };
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -504,12 +507,12 @@ void Operations8bpp::draw(cairo_t* cr, const ConstTile::Ptr tile,
 ////////////////////////////////////////////////////////////////////////
 // Operations24bpp
 
-PipetteCommonOperations::Ptr Operations24bpp::create()
+PipetteCommonOperations::Ptr Operations24bpp::create(int bps)
 {
-  return PipetteCommonOperations::Ptr(new Operations24bpp());
+  return PipetteCommonOperations::Ptr(new Operations24bpp(bps));
 }
 
-Operations24bpp::Operations24bpp()
+Operations24bpp::Operations24bpp(int bps_) : PipetteCommonOperationsRGB(bps_)
 {
 }
 
