@@ -132,14 +132,18 @@ void PipetteHandler::onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view)
     if(colors.empty())
       return;
 
-    std::stringstream color_stream;
-    color_stream << "Colors:";
+    std::stringstream info;
+    info << "Top-left: " << rect.getTopLeft();
+    info << ", Bottom-right: " << rect.getBottomRight();
+    info << ", Height: " << rect.getHeight();
+    info << ", Width: " << rect.getWidth();
+    info << ", Colors:";
     for(auto element : colors)
     {
-      color_stream << ' ' << element.first << ": " << element.second;
+      info << ' ' << element.first << ": " << element.second;
     }
 
-    view->setStatusMessage(color_stream.str());
+    view->setStatusMessage(info.str());
   }
 }
 
