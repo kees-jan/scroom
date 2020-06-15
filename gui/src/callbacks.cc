@@ -22,6 +22,7 @@
 #include <list>
 #include <map>
 
+#include <scroom/assertions.hh>
 #include <scroom/bookkeeping.hh>
 
 #include "workinterface.hh"
@@ -301,6 +302,7 @@ void on_done_loading_plugins()
     if(presentations.empty())
     {
       // Aparently, we couldn't load any of our presentations. Terminate...
+      ensure(views.empty());
       gtk_main_quit();
     }
   }
@@ -415,6 +417,11 @@ void on_scroom_bootstrap (const FileNameMap& newFilenames)
   {
     create_scroom(PresentationInterface::Ptr());
   }
+}
+
+void on_scroom_terminating()
+{
+  ensure(views.empty());
 }
 
 void find_or_create_scroom(PresentationInterface::Ptr presentation)

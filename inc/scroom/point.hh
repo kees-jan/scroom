@@ -10,6 +10,7 @@
 #include <ostream>
 
 #include <boost/operators.hpp>
+#include <gdk/gdk.h>
 
 namespace Scroom
 {
@@ -31,6 +32,10 @@ namespace Scroom
 
       template<typename U>
       explicit Point(Point<U> other)
+        : x(other.x), y(other.y)
+      {}
+
+      explicit Point(GdkPoint& other)
         : x(other.x), y(other.y)
       {}
 

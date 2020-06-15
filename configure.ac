@@ -68,7 +68,13 @@ SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wnon-virtual-dtor])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Woverloaded-virtual])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wsign-promo])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wshadow])
+
+dnl Compile with -mwindows to suppress a new console from opening if the executable is not started from a console
+dnl This does not suppress the stdout and stderr streams. These are still visible if scroom.exe is started from a 
+dnl command prompt/console.
 dnl SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-mwindows])
+AM_COND_IF([WINDOWS], 
+    [LDFLAGS="$LDFLAGS -mwindows"])
 SCROOM_TEST_ISYSTEM
 
 # Disabled warnings
@@ -132,6 +138,7 @@ PKG_CHECK_MODULES([TRANSPARENTOVERLAYPLUGIN], [gtk+-2.0 >= 2.0.0])
 PKG_CHECK_MODULES([COLORMAPPLUGIN], [gtk+-2.0 >= 2.0.0, cairo])
 PKG_CHECK_MODULES([TIFFPLUGIN], [gtk+-2.0 >= 2.0.0, cairo])
 PKG_CHECK_MODULES([GUI],        [gtk+-2.0 >= 2.0.0, libglade-2.0, gthread-2.0, gmodule-2.0, cairo])
+PKG_CHECK_MODULES([MEASUREPLUGIN], [gtk+-2.0 >= 2.0.0, cairo])
 
 # Checks for libraries.
 
