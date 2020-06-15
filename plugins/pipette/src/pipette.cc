@@ -79,14 +79,19 @@ PipetteHandler::Ptr PipetteHandler::create()
 
 void PipetteHandler::computeValues(ViewInterface::Ptr view)
 {
-  printf("I hope we don't segfault");
+  // Show some indication that we are doing something
+  gdk_threads_enter();
+  view->setStatusMessage("Computing colors values...");
+  gdk_threads_leave();
 
   // Get the image rectangle
   auto presentation = boost::static_pointer_cast<PresentationInterface>(view->getCurrentPresentation());
   if(presentation == nullptr)
   {
     printf("PANIC: Current presentation does not implement PresentationInterface!\n");
+    gdk_threads_enter();
     view->setStatusMessage("Error when requesting the image data.");
+    gdk_threads_leave();
     return;
   }
   auto image = presentation->getRect().toIntRectangle();
@@ -104,15 +109,26 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view)
   if(pipette == nullptr)
   {
     printf("PANIC: Presentation does not implement PipetteViewInterface!\n");
+    gdk_threads_enter();
     view->setStatusMessage("Error when requesting the image data.");
+    gdk_threads_leave();
     return;
   }
   std::cout << rect << std::endl;
   auto colors = pipette->getAverages(rect);
 
+  // If selection became null the plugin was switched off so ignore the result
+  if(selection == nullptr)
+  {
+    return;
+  }
+  enabled = true;
+
   // If there is a result, show it on the status bar
   if(colors.empty())
+  {
     return;
+  }
 
   std::stringstream info;
   info << "Top-left: " << rect.getTopLeft();
@@ -125,7 +141,9 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view)
     info << ' ' << element.first << ": " << element.second;
   }
 
+  gdk_threads_enter();
   view->setStatusMessage(info.str());
+  gdk_threads_leave();
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -151,7 +169,9 @@ void PipetteHandler::onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view)
   {
     selection = s;
 
-    CpuBound()->schedule(boost::bind(&PipetteHandler::computeValues, shared_from_this<PipetteHandler>(), view), PRIO_HIGHER, pendingJobs);
+    // Prevent more than one job
+    enabled = false;
+    CpuBound()->schedule(boost::bind(&PipetteHandler::computeValues, shared_from_this<PipetteHandler>(), view), pendingJobs);
   }
 }
 
