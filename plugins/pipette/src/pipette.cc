@@ -89,6 +89,7 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view)
     gdk_threads_enter();
     view->setStatusMessage("Error when requesting the image data.");
     gdk_threads_leave();
+    enabled = true;
     return;
   }
   auto image = presentation->getRect().toIntRectangle();
@@ -109,26 +110,29 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view)
     gdk_threads_enter();
     view->setStatusMessage("Error when requesting the image data.");
     gdk_threads_leave();
+    enabled = true;
     return;
   }
   auto colors = pipette->getAverages(rect);
 
   // If selection became null the plugin was switched off so ignore the result
-  if(selection == nullptr || colors.empty())
+  enabled = true;
+  if(selection == nullptr)
   {
     return;
   }
-  enabled = true;
 
   std::stringstream info;
   info << "Top-left: " << rect.getTopLeft();
   info << ", Bottom-right: " << rect.getBottomRight();
   info << ", Height: " << rect.getHeight();
   info << ", Width: " << rect.getWidth();
-  info << ", Colors:";
-  for(auto element : colors)
-  {
-    info << ' ' << element.first << ": " << element.second;
+  if(!colors.empty()){
+    info << ", Colors:";
+    for(auto element : colors)
+    {
+      info << ' ' << element.first << ": " << element.second;
+    }
   }
 
   gdk_threads_enter();
