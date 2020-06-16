@@ -117,7 +117,6 @@ public:
   virtual int getBpp();
   virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
   virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
-
 };
 
 class Operations : public CommonOperations
@@ -130,7 +129,7 @@ protected:
   const unsigned pixelMask;
 
 public:
-  static LayerOperations::Ptr create(ColormapProvider::Ptr colormapProvider, int bpp);
+  static Ptr create(ColormapProvider::Ptr colormapProvider, int bpp);
   Operations(ColormapProvider::Ptr colormapProvider, int bpp);
 
   virtual ~Operations()
@@ -151,7 +150,7 @@ public:
 class OperationsColormapped : public Operations
 {
 public:
-  static LayerOperations::Ptr create(ColormapProvider::Ptr colormapProvider, int bpp);
+  static Ptr create(ColormapProvider::Ptr colormapProvider, int bpp);
   OperationsColormapped(ColormapProvider::Ptr colormapProvider, int bpp);
 
   virtual ~OperationsColormapped()
@@ -168,7 +167,7 @@ private:
   ColormapProvider::Ptr colormapProvider;
 
 public:
-  static LayerOperations::Ptr create(ColormapProvider::Ptr colormapProvider);
+  static Ptr create(ColormapProvider::Ptr colormapProvider);
   Operations1bppClipped(ColormapProvider::Ptr colormapProvider);
   virtual ~Operations1bppClipped()
   {}
