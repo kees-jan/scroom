@@ -199,14 +199,14 @@ bool TiffPresentation::load(const std::string& fileName_)
     if (spp == 4 && bps == 8)
     {
       auto cmykOperations = OperationsCMYK32::create(bps);
-      pipetteLayer = cmykOperations;
+      pipetteLayerOperation = cmykOperations;
       ls.push_back(cmykOperations);
       properties[PIPETTE_PROPERTY_NAME] = "";
     }
     else if (spp == 4 && bps == 4)
     {
       auto cmykOperations = OperationsCMYK16::create(bps);
-      pipetteLayer = cmykOperations;
+      pipetteLayerOperation = cmykOperations;
       ls.push_back(cmykOperations);
       ls.push_back(OperationsCMYK32::create(8));
       properties[PIPETTE_PROPERTY_NAME] = "";
@@ -214,7 +214,7 @@ bool TiffPresentation::load(const std::string& fileName_)
     else if (spp == 4 && bps == 2)
     {
       auto cmykOperations = OperationsCMYK8::create(bps);
-      pipetteLayer = cmykOperations;
+      pipetteLayerOperation = cmykOperations;
       ls.push_back(cmykOperations);
       ls.push_back(OperationsCMYK32::create(8));
       properties[PIPETTE_PROPERTY_NAME] = "";
@@ -222,7 +222,7 @@ bool TiffPresentation::load(const std::string& fileName_)
     else if (spp == 4 && bps == 1)
     {
       auto cmykOperations = OperationsCMYK4::create(bps);
-      pipetteLayer = cmykOperations;
+      pipetteLayerOperation = cmykOperations;
       ls.push_back(cmykOperations);
       ls.push_back(OperationsCMYK32::create(8));
       properties[PIPETTE_PROPERTY_NAME] = "";
@@ -230,7 +230,7 @@ bool TiffPresentation::load(const std::string& fileName_)
     else if (spp == 3 && bps == 8)
     {
       auto rgbOperations = Operations24bpp::create(bps);
-      pipetteLayer = rgbOperations;
+      pipetteLayerOperation = rgbOperations;
       ls.push_back(rgbOperations);
       properties[PIPETTE_PROPERTY_NAME] = "";
     }
@@ -437,7 +437,6 @@ PipetteLayerOperations::PipetteColor dividePipetteColors(PipetteLayerOperations:
 
 PipetteLayerOperations::PipetteColor TiffPresentation::getPixelAverages(Scroom::Utils::Rectangle<int> area)
 {
-  PipetteLayerOperations::Ptr pipetteLayerOperation = pipetteLayer;
   require(pipetteLayerOperation);
 
   Scroom::Utils::Rectangle<int> presentationArea = getRect().toIntRectangle();
