@@ -92,7 +92,7 @@ static void on_newWindow_activate(GtkMenuItem*, gpointer user_data)
 View::View(GladeXML* scroomXml_)
   : scroomXml(scroomXml_), presentation(), sidebarManager(),
     drawingAreaWidth(0), drawingAreaHeight(0),
-    zoom(0), x(0), y(0), modifiermove(0)
+    zoom(0), x(0), y(0), aspectRatio(Scroom::Utils::make_point(1.0, 1.0)), modifiermove(0)
 {
   PluginManager::Ptr pluginManager = PluginManager::getInstance();
   window = GTK_WINDOW(glade_xml_get_widget(scroomXml_, "scroom"));
@@ -172,8 +172,8 @@ void View::redraw(cairo_t* cr)
     {
       // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
       int pixelSize = 1<<zoom;
-      rect.width = (drawingAreaWidth+pixelSize-1)/pixelSize;
-      rect.height = (drawingAreaHeight+pixelSize-1)/pixelSize;
+      rect.width = (drawingAreaWidth+(pixelSize)-1)/(pixelSize);
+      rect.height = (drawingAreaHeight+(pixelSize)-1)/(pixelSize);
     }
     else
     {
@@ -183,8 +183,8 @@ void View::redraw(cairo_t* cr)
       rect.height = drawingAreaHeight*pixelSize;
 
       // Round to whole pixels
-      rect.x = (rect.x/pixelSize) * pixelSize; 
-      rect.y = (rect.y/pixelSize) * pixelSize; 
+      rect.x = (rect.x/(pixelSize)) * pixelSize;
+      rect.y = (rect.y/(pixelSize)) * pixelSize;
     }
 
     presentation->redraw(shared_from_this<View>(), cr, rect, zoom);
@@ -236,6 +236,7 @@ void View::setPresentation(PresentationInterface::Ptr presentation_)
   {
     presentation_->open(me);
     presentationRect = presentation_->getRect();
+    aspectRatio = presentation_->getAspectRatio();
     std::string s = presentation_->getTitle();
     if(s.length())
       s = "Scroom - " + s;
@@ -306,15 +307,15 @@ void View::updateTextbox()
     {
       // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
       int pixelSize = 1<<zoom;
-      daw /= pixelSize;
-      dah /= pixelSize;
+      daw /= (pixelSize*aspectRatio.x);
+      dah /= (pixelSize*aspectRatio.y);
     }
     else
     {
       // Zooming out. Smallest step is 1 window-pixel, which is more than one presentation-pixel
       int pixelSize = 1<<(-zoom);
-      daw *= pixelSize;
-      dah *= pixelSize;
+      daw *= (pixelSize*aspectRatio.x);
+      dah *= (pixelSize*aspectRatio.y);
     }
 
     std::string xs = boost::lexical_cast<std::string>(x+daw/2);
@@ -384,15 +385,15 @@ void View::updateRulers()
   {
     // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
     int pixelSize = 1<<zoom;
-    gtk_ruler_set_range(hruler, x, x + 1.0*drawingAreaWidth/pixelSize, 0, presentationRect.x() + presentationRect.width());
-    gtk_ruler_set_range(vruler, y, y + 1.0*drawingAreaHeight/pixelSize, 0, presentationRect.y() + presentationRect.height());
+    gtk_ruler_set_range(hruler, x, x + 1.0*drawingAreaWidth/(pixelSize*aspectRatio.x), 0, presentationRect.x() + presentationRect.width());
+    gtk_ruler_set_range(vruler, y, y + 1.0*drawingAreaHeight/(pixelSize*aspectRatio.y), 0, presentationRect.y() + presentationRect.height());
   }
   else
   {
     // Zooming out. Smallest step is 1 window-pixel, which is more than one presentation-pixel
     int pixelSize = 1<<(-zoom);
-    gtk_ruler_set_range(hruler, x, x + drawingAreaWidth*pixelSize, 0, presentationRect.x() + presentationRect.width());
-    gtk_ruler_set_range(vruler, y, y + drawingAreaHeight*pixelSize, 0, presentationRect.y() + presentationRect.height());
+    gtk_ruler_set_range(hruler, x, x + drawingAreaWidth*(pixelSize*aspectRatio.x), 0, presentationRect.x() + presentationRect.width());
+    gtk_ruler_set_range(vruler, y, y + drawingAreaHeight*(pixelSize*aspectRatio.y), 0, presentationRect.y() + presentationRect.height());
   }
 }
 
@@ -478,14 +479,14 @@ void View::on_window_size_changed(int newWidth, int newHeight)
   if(zoom>=0)
   {
     const int pixelSize = 1<<zoom;
-    x+=(drawingAreaWidth-newWidth)/pixelSize/2;
-    y+=(drawingAreaHeight-newHeight)/pixelSize/2;
+    x+=(drawingAreaWidth-newWidth)/(pixelSize*aspectRatio.x)/2;
+    y+=(drawingAreaHeight-newHeight)/(pixelSize*aspectRatio.y)/2;
   }
   else
   {
     const int pixelSize = 1<<-zoom;
-    x+=(drawingAreaWidth-newWidth)*pixelSize/2;
-    y+=(drawingAreaHeight-newHeight)*pixelSize/2;
+    x+=(drawingAreaWidth-newWidth)*(pixelSize*aspectRatio.x)/2;
+    y+=(drawingAreaHeight-newHeight)*(pixelSize*aspectRatio.y)/2;
   }
 
   drawingAreaHeight = newHeight;
@@ -543,27 +544,27 @@ void View::on_zoombox_changed(int newzoom, int mousex, int mousey)
     if(zoom>=0)
     {
       const int pixelsize = 1<<zoom;
-      x+=mousex/pixelsize;
-      y+=mousey/pixelsize;
+      x+=mousex/(pixelsize*aspectRatio.x);
+      y+=mousey/(pixelsize*aspectRatio.y);
     }
     else
     {
       const int pixelsize = 1<<-zoom;
-      x+=mousex*pixelsize;
-      y+=mousey*pixelsize;
+      x+=mousex*pixelsize*aspectRatio.x;
+      y+=mousey*pixelsize*aspectRatio.y;
     }
 
     if(newzoom>=0)
     {
       const int pixelsize = 1<<newzoom;
-      x-=mousex/pixelsize;
-      y-=mousey/pixelsize;
+      x-=mousex/(pixelsize*aspectRatio.x);
+      y-=mousey/(pixelsize*aspectRatio.y);
     }
     else
     {
       const int pixelsize = 1<<-newzoom;
-      x-=mousex*pixelsize;
-      y-=mousey*pixelsize;
+      x-=mousex*pixelsize*aspectRatio.x;
+      y-=mousey*pixelsize*aspectRatio.y;
     }
 
     zoom = newzoom;
@@ -586,15 +587,15 @@ void View::on_textbox_value_changed(GtkEditable* editable)
     {
       // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
       int pixelSize = 1<<zoom;
-      daw /= pixelSize;
-      dah /= pixelSize;
+      daw /= (pixelSize*aspectRatio.x);
+      dah /= (pixelSize*aspectRatio.y);
     }
     else
     {
       // Zooming out. Smallest step is 1 window-pixel, which is more than one presentation-pixel
       int pixelSize = 1<<(-zoom);
-      daw *= pixelSize;
-      dah *= pixelSize;
+      daw *= pixelSize * aspectRatio.x;
+      dah *= pixelSize * aspectRatio.y;
     }
 
     if(editable == GTK_EDITABLE(yTextBox))
@@ -680,24 +681,24 @@ void View::on_motion_notify(GdkEventMotion* event)
     if(zoom>=0)
     {
       const int pixelSize=1<<zoom;
-      if(std::abs(event->x-cachedPoint.x)>=pixelSize)
+      if(std::abs(event->x-cachedPoint.x)>=pixelSize*aspectRatio.x)
       {
-        int delta = (int(event->x)-cachedPoint.x)/pixelSize;
-        cachedPoint.x += delta*pixelSize;
+        int delta = (event->x-cachedPoint.x)/(pixelSize*aspectRatio.x);
+        cachedPoint.x += delta*pixelSize*aspectRatio.x;
         newx-=delta;
       }
-      if(std::abs(event->y-cachedPoint.y)>=pixelSize)
+      if(std::abs(event->y-cachedPoint.y)>=pixelSize*aspectRatio.y)
       {
-        int delta = (int(event->y)-cachedPoint.y)/pixelSize;
-        cachedPoint.y += delta*pixelSize;
+        int delta = (event->y-cachedPoint.y)/(pixelSize*aspectRatio.y);
+        cachedPoint.y += delta*pixelSize*aspectRatio.y;
         newy-=delta;
       }
     }
     else
     {
       const int pixelSize=1<<-zoom;
-      newx-=(event->x-cachedPoint.x)*pixelSize;
-      newy-=(event->y-cachedPoint.y)*pixelSize;
+      newx-=(event->x-cachedPoint.x)*pixelSize*aspectRatio.x;
+      newy-=(event->y-cachedPoint.y)*pixelSize*aspectRatio.y;
       cachedPoint = eventToPoint(event);
     }
 
@@ -841,12 +842,13 @@ GdkPoint View::windowPointToPresentationPoint(GdkPoint wp)
 {
   GdkPoint result = {0,0};
 
-  auto aspectRatio = presentation->getAspectRatio();
   if(zoom>=0)
   {
     const int pixelSize=1<<zoom;
+    printf("Before: %d, %d\n", wp.x, wp.y);
     result.x = x+(wp.x+(pixelSize*aspectRatio.x)/2)/(pixelSize*aspectRatio.x); // Round to make measurements snap
     result.y = y+(wp.y+(pixelSize*aspectRatio.y)/2)/(pixelSize*aspectRatio.y); // in the expected direction
+    printf("After: %d, %d\n", result.x, result.y);
   }
   else
   {
@@ -864,14 +866,14 @@ GdkPoint View::presentationPointToWindowPoint(GdkPoint pp)
   if(zoom>=0)
   {
     const int pixelSize=1<<zoom;
-    result.x = (pp.x-x)*pixelSize;
-    result.y = (pp.y-y)*pixelSize;
+    result.x = (pp.x-x)*pixelSize*aspectRatio.x;
+    result.y = (pp.y-y)*pixelSize*aspectRatio.y;
   }
   else
   {
     const int pixelSize=1<<-zoom;
-    result.x = (pp.x-x)/pixelSize;
-    result.y = (pp.y-y)/pixelSize;
+    result.x = (pp.x-x)/(pixelSize*aspectRatio.x);
+    result.y = (pp.y-y)/(pixelSize*aspectRatio.y);
   }
   return result;
 }
