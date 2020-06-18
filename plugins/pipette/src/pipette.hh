@@ -11,6 +11,7 @@
 #include <scroom/utilities.hh>
 #include <scroom/viewinterface.hh>
 #include <scroom/threadpool.hh>
+#include <scroom/pipetteviewinterface.hh>
 
 class PipetteHandler : public ToolStateListener, public PostRenderer, public SelectionListener, virtual public Scroom::Utils::Base
 {
@@ -52,6 +53,7 @@ public:
   ////////////////////////////////////////////////////////////////////////
 
   virtual void computeValues(ViewInterface::Ptr view);
+  virtual void displayValues(ViewInterface::Ptr view, Scroom::Utils::Rectangle<int> rect, PipetteLayerOperations::PipetteColor colors);
 };
 
 class Pipette : public PluginInformationInterface, public ViewObserver, virtual public  Scroom::Utils::Base

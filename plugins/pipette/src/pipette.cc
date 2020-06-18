@@ -3,7 +3,6 @@
 #include <gdk/gdk.h>
 #include <cmath>
 
-#include <scroom/pipetteviewinterface.hh>
 #include <scroom/unused.hh>
 
 ////////////////////////////////////////////////////////////////////////
@@ -76,10 +75,7 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view)
   PresentationInterface::Ptr presentation = view->getCurrentPresentation();
   if(presentation == nullptr)
   {
-    printf("PANIC: Current presentation does not implement PresentationInterface!\n");
-    gdk_threads_enter();
-    view->setStatusMessage("Error when requesting the image data.");
-    gdk_threads_leave();
+    // No current presentation in the view
     enabled = true;
     return;
   }
@@ -113,6 +109,11 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view)
   }
   enabled = true;
 
+  displayValues(view, rect, colors);
+}
+
+void PipetteHandler::displayValues(ViewInterface::Ptr view, Scroom::Utils::Rectangle<int> rect, PipetteLayerOperations::PipetteColor colors)
+{
   std::stringstream info;
   info.precision(2);
   fixed(info);
