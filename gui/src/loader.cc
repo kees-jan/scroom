@@ -340,6 +340,7 @@ PresentationInterface::Ptr ScroomInterfaceImpl::loadPresentation(std::string con
 
 void ScroomInterfaceImpl::showPresentation(PresentationInterface::Ptr const& presentation)
 {
+  on_presentation_created(presentation);
   find_or_create_scroom(presentation);
 }
 

@@ -113,7 +113,7 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view)
     enabled = true;
     return;
   }
-  auto colors = pipette->getAverages(rect);
+  auto colors = pipette->getPixelAverages(rect);
 
   // If selection became null the plugin was switched off so ignore the result
   enabled = true;

@@ -195,28 +195,44 @@ bool TiffPresentation::load(const std::string& fileName_)
     printf("This bitmap has size %d*%d, aspect ratio %.1f*%.1f\n",
            width, height, 1/resolutionX, 1/resolutionY);
 
+    LayerSpec ls;
     if (spp == 4 && bps == 8)
     {
-      ls.push_back(OperationsCMYK32::create());
+      auto cmykOperations = OperationsCMYK32::create(bps);
+      pipetteLayerOperation = cmykOperations;
+      ls.push_back(cmykOperations);
+      properties[PIPETTE_PROPERTY_NAME] = "";
     }
     else if (spp == 4 && bps == 4)
     {
-      ls.push_back(OperationsCMYK16::create());
-      ls.push_back(OperationsCMYK32::create());
+      auto cmykOperations = OperationsCMYK16::create(bps);
+      pipetteLayerOperation = cmykOperations;
+      ls.push_back(cmykOperations);
+      ls.push_back(OperationsCMYK32::create(8));
+      properties[PIPETTE_PROPERTY_NAME] = "";
     }
     else if (spp == 4 && bps == 2)
     {
-      ls.push_back(OperationsCMYK8::create());
-      ls.push_back(OperationsCMYK32::create());
+      auto cmykOperations = OperationsCMYK8::create(bps);
+      pipetteLayerOperation = cmykOperations;
+      ls.push_back(cmykOperations);
+      ls.push_back(OperationsCMYK32::create(8));
+      properties[PIPETTE_PROPERTY_NAME] = "";
     }
     else if (spp == 4 && bps == 1)
     {
-      ls.push_back(OperationsCMYK4::create());
-      ls.push_back(OperationsCMYK32::create());
+      auto cmykOperations = OperationsCMYK4::create(bps);
+      pipetteLayerOperation = cmykOperations;
+      ls.push_back(cmykOperations);
+      ls.push_back(OperationsCMYK32::create(8));
+      properties[PIPETTE_PROPERTY_NAME] = "";
     }
     else if (spp == 3 && bps == 8)
     {
-        ls.push_back(Operations24bpp::create());
+      auto rgbOperations = Operations24bpp::create(bps);
+      pipetteLayerOperation = rgbOperations;
+      ls.push_back(rgbOperations);
+      properties[PIPETTE_PROPERTY_NAME] = "";
     }
     else if (bps == 2 || bps == 4 || photometric == PHOTOMETRIC_PALETTE)
     {
@@ -341,38 +357,6 @@ std::string TiffPresentation::getTitle()
   return fileName;
 }
 
-/**
- * Method to override operator+= method
- * Returns y if x is empty.
- * Otherwise adds the values of the same key.
- */
-PipetteLayerOperations::PipetteColor operator+=(PipetteLayerOperations::PipetteColor& x, const PipetteLayerOperations::PipetteColor& y)
-{
-  if(x.empty())
-  {
-    x = y;
-    return x;
-  }
-  for(auto const& elem : y)
-  {
-    x[elem.first] += elem.second;
-  }
-  return x;
-}
-
-/**
- * Override operator/ method
- * Divides each element inside the map by a constant
- */
-PipetteLayerOperations::PipetteColor operator/(PipetteLayerOperations::PipetteColor x, const int y)
-{
-  for(auto elem : x)
-  {
-    x[elem.first] = elem.second / y;
-  }
-  return x;
-}
-
 ////////////////////////////////////////////////////////////////////////
 // SourcePresentation
 ////////////////////////////////////////////////////////////////////////
@@ -422,18 +406,43 @@ void TiffPresentation::done()
   tif = NULL;
 }
 
+/**
+ * Add two pipette color map values of the same key.
+ */
+PipetteLayerOperations::PipetteColor sumPipetteColors(const PipetteLayerOperations::PipetteColor& lhs, const PipetteLayerOperations::PipetteColor& rhs)
+{
+  PipetteLayerOperations::PipetteColor result = lhs;
+  for(auto const& elem : rhs)
+  {
+    result[elem.first] += elem.second;
+  }
+  return result;
+}
+
+/**
+ * Divides each element inside elements by by a constant divisor.
+ */
+PipetteLayerOperations::PipetteColor dividePipetteColors(PipetteLayerOperations::PipetteColor elements, const int divisor)
+{
+  for(auto& elem : elements)
+  {
+    elem.second /= divisor;
+  }
+  return elements;
+}
+
 ////////////////////////////////////////////////////////////////////////
 // PipetteViewInterface
 ////////////////////////////////////////////////////////////////////////
-PipetteLayerOperations::PipetteColor TiffPresentation::getAverages(Scroom::Utils::Rectangle<int> area)
-{
-  PipetteLayerOperations::Ptr pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(this->ls[0]);
-  if(!pipetteLayerOperation)
-  {
-    return {};
-  }
 
-  Layer::Ptr bottomLayer = this->tbi->getBottomLayer();
+PipetteLayerOperations::PipetteColor TiffPresentation::getPixelAverages(Scroom::Utils::Rectangle<int> area)
+{
+  require(pipetteLayerOperation);
+
+  Scroom::Utils::Rectangle<int> presentationArea = getRect().toIntRectangle();
+  area = area.intersection(presentationArea);
+
+  Layer::Ptr bottomLayer = tbi->getBottomLayer();
   PipetteLayerOperations::PipetteColor pipetteColors;
 
   int totalPixels = area.getWidth() * area.getHeight();
@@ -443,8 +452,8 @@ PipetteLayerOperations::PipetteColor TiffPresentation::getAverages(Scroom::Utils
   }
 
   //Get start tile (tile_pos_x_start, tile_pos_y_start)
-  int tile_pos_x_start = (area.getLeft() - 1) / TILESIZE;
-  int tile_pos_y_start = (area.getTop() - 1) / TILESIZE;
+  int tile_pos_x_start = area.getLeft() / TILESIZE;
+  int tile_pos_y_start = area.getTop() / TILESIZE;
 
   //Get end tile (tile_pos_x_end, tile_pos_y_end)
   int tile_pos_x_end = (area.getRight() - 1) / TILESIZE;
@@ -462,11 +471,10 @@ PipetteLayerOperations::PipetteColor TiffPresentation::getAverages(Scroom::Utils
 
       inter_rect -= base; //rectangle coordinates relative to constTile with topleft corner (0,0)
 
-      pipetteColors += pipetteLayerOperation->sumPixelValues(inter_rect, tile);
-      //continue to next tile
+      pipetteColors = sumPipetteColors(pipetteColors, pipetteLayerOperation->sumPixelValues(inter_rect, tile));
     }
   }
-  return pipetteColors / totalPixels;
+  return dividePipetteColors(pipetteColors, totalPixels);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -642,11 +650,7 @@ bool TiffPresentationWrapper::getTransparentBackground()
   return presentation->getTransparentBackground();
 }
 
-/**
- * Returns the averages of the selected pixels
- * Assumes that the rectangle is completely contained in the presentation
- */
-PipetteLayerOperations::PipetteColor TiffPresentationWrapper::getAverages(Scroom::Utils::Rectangle<int> area)
+PipetteLayerOperations::PipetteColor TiffPresentationWrapper::getPixelAverages(Scroom::Utils::Rectangle<int> area)
 {
-  return presentation->getAverages(area);
+  return presentation->getPixelAverages(area);
 }

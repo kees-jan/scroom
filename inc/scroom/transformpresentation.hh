@@ -60,7 +60,7 @@ public:
   virtual std::string getTitle();
 
   // PipetteViewInterface
-  virtual PipetteLayerOperations::PipetteColor getAverages(Scroom::Utils::Rectangle<int> area);
+  virtual PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<int> area);
 
   // Colormappable
   virtual void setColormap(Colormap::Ptr colormap);

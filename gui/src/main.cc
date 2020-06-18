@@ -139,6 +139,7 @@ int main (int argc, char *argv[])
   gtk_main ();
   gdk_threads_leave();
 
+  on_scroom_terminating();
   printf("DEBUG: Scroom terminating...\n");
   return 0;
 }
