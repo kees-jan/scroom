@@ -54,10 +54,8 @@ Scroom::Bookkeeping::Token Pipette::viewAdded(ViewInterface::Ptr view)
 ////////////////////////////////////////////////////////////////////////
 
 PipetteHandler::PipetteHandler()
+  : selection(nullptr), enabled(false), pendingJobs(ThreadPool::Queue::createAsync())
 {
-  selection = nullptr;
-  enabled = false;
-  pendingJobs = ThreadPool::Queue::createAsync();
 }
 PipetteHandler::~PipetteHandler()
 {
