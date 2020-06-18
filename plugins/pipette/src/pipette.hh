@@ -60,7 +60,7 @@ public:
   typedef boost::shared_ptr<Pipette> Ptr;
 
 private:
-  Pipette();
+  Pipette() {};
 
 public:
   static Ptr create();
@@ -79,6 +79,4 @@ public:
   virtual Scroom::Bookkeeping::Token viewAdded(ViewInterface::Ptr v);
 
   ////////////////////////////////////////////////////////////////////////
-
-  virtual ~Pipette();
 };

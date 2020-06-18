@@ -10,13 +10,6 @@
 // Pipette
 ////////////////////////////////////////////////////////////////////////
 
-Pipette::Pipette()
-{
-}
-Pipette::~Pipette()
-{
-}
-
 Pipette::Ptr Pipette::create()
 {
   return Ptr(new Pipette());
