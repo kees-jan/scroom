@@ -57,7 +57,7 @@ void TransformPresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr,
 
   cairo_save(cr);
   cairo_scale(cr, aspectRatio.x, aspectRatio.y);
-  presentation->redraw(vi, cr, presentationArea / aspectRatio, zoom);
+  presentation->redraw(vi, cr, presentationArea, zoom);
   cairo_restore(cr);
 }
 
