@@ -128,6 +128,7 @@ void MeasureHandler::render(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::U
 
   if(selection)
   {
+    auto aspectRatio = vi->getCurrentPresentation()->getAspectRatio();
     auto start = Scroom::Utils::Point<int>(selection->start) - presentationArea.getTopLeft();
     auto end = Scroom::Utils::Point<int>(selection->end) - presentationArea.getTopLeft();
 
@@ -135,13 +136,17 @@ void MeasureHandler::render(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::U
     {
       const int pixelSize=1<<zoom;
       start *= pixelSize;
+      start *= aspectRatio;
       end *= pixelSize;
+      end *= aspectRatio;
     }
     else
     {
       const int pixelSize=1<<-zoom;
       start /= pixelSize;
+      start /= aspectRatio;
       end /= pixelSize;
+      end /= aspectRatio;
     }
 
     cairo_set_line_width(cr, 1);

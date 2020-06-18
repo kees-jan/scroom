@@ -841,17 +841,18 @@ GdkPoint View::windowPointToPresentationPoint(GdkPoint wp)
 {
   GdkPoint result = {0,0};
 
+  auto aspectRatio = presentation->getAspectRatio();
   if(zoom>=0)
   {
     const int pixelSize=1<<zoom;
-    result.x = x+(wp.x+pixelSize/2)/pixelSize; // Round to make measurements snap
-    result.y = y+(wp.y+pixelSize/2)/pixelSize; // in the expected direction
+    result.x = x+(wp.x+(pixelSize*aspectRatio.x)/2)/(pixelSize*aspectRatio.x); // Round to make measurements snap
+    result.y = y+(wp.y+(pixelSize*aspectRatio.y)/2)/(pixelSize*aspectRatio.y); // in the expected direction
   }
   else
   {
     const int pixelSize=1<<-zoom;
-    result.x = x+wp.x*pixelSize;
-    result.y = y+wp.y*pixelSize;
+    result.x = x+wp.x*pixelSize*aspectRatio.x;
+    result.y = y+wp.y*pixelSize*aspectRatio.y;
   }
   return result;
 }

@@ -19,6 +19,8 @@
 #include <scroom/observable.hh>
 #include <scroom/rectangle.hh>
 
+#include <iostream>
+
 /**
  * Implement Viewable if you want to be able to receive events when a
  * View is created and/or deleted.
@@ -104,6 +106,12 @@ public:
 
   /** Return the title of the presentation */
   virtual std::string getTitle()=0;
+
+  virtual Scroom::Utils::Point<double> getAspectRatio() const
+  {
+    //std::cout << "default" << "\n";
+    return Scroom::Utils::make_point(1.0, 1.0);
+  }
 };
 
 class PresentationBase : public PresentationInterface
