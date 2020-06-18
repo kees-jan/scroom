@@ -69,11 +69,11 @@ PipetteHandler::Ptr PipetteHandler::create()
 void PipetteHandler::computeValues(ViewInterface::Ptr view)
 {
   gdk_threads_enter();
-  view->setStatusMessage("Computing colors values...");
+  view->setStatusMessage("Computing color values...");
   gdk_threads_leave();
 
   // Get the image rectangle
-  auto presentation = boost::static_pointer_cast<PresentationInterface>(view->getCurrentPresentation());
+  PresentationInterface::Ptr presentation = view->getCurrentPresentation();
   if(presentation == nullptr)
   {
     printf("PANIC: Current presentation does not implement PresentationInterface!\n");
