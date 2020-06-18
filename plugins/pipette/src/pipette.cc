@@ -123,6 +123,9 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view)
   }
 
   std::stringstream info;
+  info.precision(2);
+  fixed(info);
+
   info << "Top-left: " << rect.getTopLeft();
   info << ", Bottom-right: " << rect.getBottomRight();
   info << ", Height: " << rect.getHeight();
