@@ -1,8 +1,5 @@
 #include <scroom/transformpresentation.hh>
-
 #include <scroom/rectangle.hh>
-#include <iostream>
-
 
 TransformationData::TransformationData()
   : aspectRatio(1,1)
@@ -125,6 +122,5 @@ PipetteLayerOperations::PipetteColor TransformPresentation::getPixelAverages(Scr
 
 Scroom::Utils::Point<double> TransformPresentation::getAspectRatio() const
 {
-  //std::cout << "I got my data" << transformationData->getAspectRatio() << "\n";
   return transformationData->getAspectRatio();
 }

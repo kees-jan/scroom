@@ -172,8 +172,8 @@ void View::redraw(cairo_t* cr)
     {
       // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
       int pixelSize = 1<<zoom;
-      rect.width = (drawingAreaWidth+(pixelSize)-1)/(pixelSize);
-      rect.height = (drawingAreaHeight+(pixelSize)-1)/(pixelSize);
+      rect.width = (drawingAreaWidth+pixelSize-1)/pixelSize;
+      rect.height = (drawingAreaHeight+pixelSize-1)/pixelSize;
     }
     else
     {
@@ -183,8 +183,8 @@ void View::redraw(cairo_t* cr)
       rect.height = drawingAreaHeight*pixelSize;
 
       // Round to whole pixels
-      rect.x = (rect.x/(pixelSize)) * pixelSize;
-      rect.y = (rect.y/(pixelSize)) * pixelSize;
+      rect.x = (rect.x/pixelSize) * pixelSize;
+      rect.y = (rect.y/pixelSize) * pixelSize;
     }
 
     presentation->redraw(shared_from_this<View>(), cr, rect, zoom);
@@ -307,15 +307,15 @@ void View::updateTextbox()
     {
       // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
       int pixelSize = 1<<zoom;
-      daw /= (pixelSize*aspectRatio.x);
-      dah /= (pixelSize*aspectRatio.y);
+      daw /= pixelSize*aspectRatio.x;
+      dah /= pixelSize*aspectRatio.y;
     }
     else
     {
       // Zooming out. Smallest step is 1 window-pixel, which is more than one presentation-pixel
       int pixelSize = 1<<(-zoom);
-      daw *= (pixelSize*aspectRatio.x);
-      dah *= (pixelSize*aspectRatio.y);
+      daw *= pixelSize*aspectRatio.x;
+      dah *= pixelSize*aspectRatio.y;
     }
 
     std::string xs = boost::lexical_cast<std::string>(x+daw/2);
@@ -392,8 +392,8 @@ void View::updateRulers()
   {
     // Zooming out. Smallest step is 1 window-pixel, which is more than one presentation-pixel
     int pixelSize = 1<<(-zoom);
-    gtk_ruler_set_range(hruler, x, x + drawingAreaWidth*(pixelSize*aspectRatio.x), 0, presentationRect.x() + presentationRect.width());
-    gtk_ruler_set_range(vruler, y, y + drawingAreaHeight*(pixelSize*aspectRatio.y), 0, presentationRect.y() + presentationRect.height());
+    gtk_ruler_set_range(hruler, x, x + drawingAreaWidth*pixelSize*aspectRatio.x, 0, presentationRect.x() + presentationRect.width());
+    gtk_ruler_set_range(vruler, y, y + drawingAreaHeight*pixelSize*aspectRatio.y, 0, presentationRect.y() + presentationRect.height());
   }
 }
 
@@ -587,8 +587,8 @@ void View::on_textbox_value_changed(GtkEditable* editable)
     {
       // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
       int pixelSize = 1<<zoom;
-      daw /= (pixelSize*aspectRatio.x);
-      dah /= (pixelSize*aspectRatio.y);
+      daw /= pixelSize*aspectRatio.x;
+      dah /= pixelSize*aspectRatio.y;
     }
     else
     {
@@ -845,10 +845,8 @@ GdkPoint View::windowPointToPresentationPoint(GdkPoint wp)
   if(zoom>=0)
   {
     const int pixelSize=1<<zoom;
-    printf("Before: %d, %d\n", wp.x, wp.y);
     result.x = x+(wp.x+(pixelSize*aspectRatio.x)/2)/(pixelSize*aspectRatio.x); // Round to make measurements snap
     result.y = y+(wp.y+(pixelSize*aspectRatio.y)/2)/(pixelSize*aspectRatio.y); // in the expected direction
-    printf("After: %d, %d\n", result.x, result.y);
   }
   else
   {

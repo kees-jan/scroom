@@ -19,8 +19,6 @@
 #include <scroom/observable.hh>
 #include <scroom/rectangle.hh>
 
-#include <iostream>
-
 /**
  * Implement Viewable if you want to be able to receive events when a
  * View is created and/or deleted.
@@ -109,7 +107,6 @@ public:
 
   virtual Scroom::Utils::Point<double> getAspectRatio() const
   {
-    //std::cout << "default" << "\n";
     return Scroom::Utils::make_point(1.0, 1.0);
   }
 };
