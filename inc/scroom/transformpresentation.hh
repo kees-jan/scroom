@@ -12,6 +12,8 @@
 #include <scroom/colormappable.hh>
 #include <scroom/point.hh>
 #include <scroom/presentationinterface.hh>
+#include <scroom/pipetteviewinterface.hh>
+#include <scroom/rectangle.hh>
 
 class TransformationData
 {
@@ -30,7 +32,7 @@ private:
   TransformationData();
 };
 
-class TransformPresentation : public PresentationInterface, public Colormappable
+class TransformPresentation : public PresentationInterface, public Colormappable, public PipetteViewInterface
 {
 public:
   typedef boost::shared_ptr<TransformPresentation> Ptr;
@@ -56,6 +58,9 @@ public:
   virtual bool getProperty(const std::string& name, std::string& value);
   virtual bool isPropertyDefined(const std::string& name);
   virtual std::string getTitle();
+
+  // PipetteViewInterface
+  virtual PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<int> area);
 
   // Colormappable
   virtual void setColormap(Colormap::Ptr colormap);

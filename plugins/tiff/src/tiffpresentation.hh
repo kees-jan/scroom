@@ -18,6 +18,7 @@
 #include <scroom/scroominterface.hh>
 #include <scroom/tiledbitmapinterface.hh>
 #include <scroom/transformpresentation.hh>
+#include <scroom/pipetteviewinterface.hh>
 
 typedef struct tiff TIFF;
 
@@ -41,6 +42,8 @@ private:
   Views views;
   ColormapHelper::Ptr colormapHelper;
   TransformationData::Ptr transformationData;
+
+  PipetteLayerOperations::Ptr pipetteLayerOperation;
 
 private:
   TiffPresentation();
@@ -88,6 +91,17 @@ public:
   virtual void done();
 
   ////////////////////////////////////////////////////////////////////////
+  // PipetteViewInterface
+  ////////////////////////////////////////////////////////////////////////
+public:
+  /** 
+   * Returns the average pixel values for each component, contained in the area
+   * 
+   * @param area selected area to get the pixel values from
+   */
+  virtual PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<int> area);
+
+  ////////////////////////////////////////////////////////////////////////
   // Colormappable
   ////////////////////////////////////////////////////////////////////////
 
@@ -105,7 +119,7 @@ private:
   void clearCaches();
 };
 
-class TiffPresentationWrapper : public PresentationBase, public Colormappable
+class TiffPresentationWrapper : public PresentationBase, public Colormappable, public PipetteViewInterface
 {
 public:
   typedef boost::shared_ptr<TiffPresentationWrapper> Ptr;
@@ -135,6 +149,12 @@ public:
   virtual std::string getTitle();
 
   ////////////////////////////////////////////////////////////////////////
+  // PipetteViewInterface
+  ////////////////////////////////////////////////////////////////////////
+
+  virtual PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<int> area);
+
+  ////////////////////////////////////////////////////////////////////////
   // PresentationBase
   ////////////////////////////////////////////////////////////////////////
 
@@ -155,4 +175,3 @@ public:
   virtual void disableTransparentBackground();
   virtual bool getTransparentBackground();
 };
-

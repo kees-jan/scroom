@@ -209,6 +209,57 @@ void CommonOperations::draw(cairo_t* cr, const ConstTile::Ptr tile,
   }
 }
 
+PipetteLayerOperations::PipetteColor PipetteCommonOperationsCMYK::sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile)
+{
+  int offset = 4 * (area.getTop() * tile->width + area.getLeft());
+  int stride = 4 * (tile->width - area.getWidth());
+  Scroom::Bitmap::SampleIterator<const uint8_t> si(tile->data.get(), 0, bps);
+  si += offset;
+
+  size_t sum_c = 0;
+  size_t sum_m = 0;
+  size_t sum_y = 0;
+  size_t sum_k = 0;
+
+  for(int y = area.getTop(); y < area.getBottom(); y++)
+  {
+    for(int x = area.getLeft(); x < area.getRight(); x++)
+    {
+      sum_c += *si++;
+      sum_m += *si++;
+      sum_y += *si++;
+      sum_k += *si++;
+    }
+    si += stride;
+  }
+  return { {"C", sum_c}, {"M", sum_m}, {"Y", sum_y}, {"K", sum_k} };
+}
+
+PipetteLayerOperations::PipetteColor PipetteCommonOperationsRGB::sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile)
+{
+  int offset = 3 * (area.getTop() * tile->width + area.getLeft());
+  int stride = 3 * (tile->width - area.getWidth());
+  Scroom::Bitmap::SampleIterator<const uint8_t> si(tile->data.get(), 0, bps);
+  si += offset;
+
+  size_t sum_r = 0;
+  size_t sum_g = 0;
+  size_t sum_b = 0;
+
+  for(int y = area.getTop(); y < area.getBottom(); y++)
+  {
+    for(int x = area.getLeft(); x < area.getRight(); x++)
+    {
+      sum_r += *si++;
+      sum_g += *si++;
+      sum_b += *si++;
+    }
+    si += stride;
+  }
+
+  return { {"R", sum_r}, {"G", sum_g}, {"B", sum_b} };
+}
+
 ////////////////////////////////////////////////////////////////////////
 // Operations1bpp
 
@@ -456,12 +507,12 @@ void Operations8bpp::draw(cairo_t* cr, const ConstTile::Ptr tile,
 ////////////////////////////////////////////////////////////////////////
 // Operations24bpp
 
-LayerOperations::Ptr Operations24bpp::create()
+PipetteCommonOperations::Ptr Operations24bpp::create(int bps)
 {
-  return Ptr(new Operations24bpp());
+  return PipetteCommonOperations::Ptr(new Operations24bpp(bps));
 }
 
-Operations24bpp::Operations24bpp()
+Operations24bpp::Operations24bpp(int bps_) : PipetteCommonOperationsRGB(bps_)
 {
 }
 

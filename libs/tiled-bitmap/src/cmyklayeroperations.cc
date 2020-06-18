@@ -21,12 +21,12 @@ namespace
 ////////////////////////////////////////////////////////////////////////
 // OperationsCMYK32
 
-LayerOperations::Ptr OperationsCMYK32::create()
+PipetteCommonOperations::Ptr OperationsCMYK32::create(int bps)
 {
-  return Ptr(new OperationsCMYK32());
+  return PipetteCommonOperations::Ptr(new OperationsCMYK32(bps));
 }
 
-OperationsCMYK32::OperationsCMYK32()
+OperationsCMYK32::OperationsCMYK32(int bps_) : PipetteCommonOperationsCMYK(bps_)
 {
 }
 
@@ -120,12 +120,12 @@ void OperationsCMYK32::reduce(Tile::Ptr target, const ConstTile::Ptr source, int
 ////////////////////////////////////////////////////////////////////////
 // OperationsCMYK16
 
-LayerOperations::Ptr OperationsCMYK16::create()
+PipetteCommonOperations::Ptr OperationsCMYK16::create(int bps)
 {
-  return Ptr(new OperationsCMYK16());
+  return PipetteCommonOperations::Ptr(new OperationsCMYK16(bps));
 }
 
-OperationsCMYK16::OperationsCMYK16()
+OperationsCMYK16::OperationsCMYK16(int bps_) : PipetteCommonOperationsCMYK(bps_)
 {
 }
 
@@ -219,12 +219,12 @@ void OperationsCMYK16::reduce(Tile::Ptr target, const ConstTile::Ptr source, int
 ////////////////////////////////////////////////////////////////////////
 // OperationsCMYK8
 
-LayerOperations::Ptr OperationsCMYK8::create()
+PipetteCommonOperations::Ptr OperationsCMYK8::create(int bps)
 {
-  return Ptr(new OperationsCMYK8());
+  return PipetteCommonOperations::Ptr(new OperationsCMYK8(bps));
 }
 
-OperationsCMYK8::OperationsCMYK8()
+OperationsCMYK8::OperationsCMYK8(int bps_) : PipetteCommonOperationsCMYK(bps_)
 {
 }
 
@@ -315,12 +315,12 @@ void OperationsCMYK8::reduce(Tile::Ptr target, const ConstTile::Ptr source, int 
 ////////////////////////////////////////////////////////////////////////
 // OperationsCMYK4
 
-LayerOperations::Ptr OperationsCMYK4::create()
+PipetteCommonOperations::Ptr OperationsCMYK4::create(int bps)
 {
-  return Ptr(new OperationsCMYK4());
+  return PipetteCommonOperations::Ptr(new OperationsCMYK4(bps));
 }
 
-OperationsCMYK4::OperationsCMYK4()
+OperationsCMYK4::OperationsCMYK4(int bps_) : PipetteCommonOperationsCMYK(bps_)
 {
 }
 

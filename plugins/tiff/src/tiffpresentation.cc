@@ -14,6 +14,8 @@
 #include <scroom/layeroperations.hh>
 #include <scroom/unused.hh>
 
+#include <scroom/tiledbitmaplayer.hh>
+
 TiffPresentation::TiffPresentation()
   : tif(NULL), height(0), width(0), bps(0), spp(0)
 {
@@ -196,26 +198,41 @@ bool TiffPresentation::load(const std::string& fileName_)
     LayerSpec ls;
     if (spp == 4 && bps == 8)
     {
-      ls.push_back(OperationsCMYK32::create());
+      auto cmykOperations = OperationsCMYK32::create(bps);
+      pipetteLayerOperation = cmykOperations;
+      ls.push_back(cmykOperations);
+      properties[PIPETTE_PROPERTY_NAME] = "";
     }
     else if (spp == 4 && bps == 4)
     {
-      ls.push_back(OperationsCMYK16::create());
-      ls.push_back(OperationsCMYK32::create());
+      auto cmykOperations = OperationsCMYK16::create(bps);
+      pipetteLayerOperation = cmykOperations;
+      ls.push_back(cmykOperations);
+      ls.push_back(OperationsCMYK32::create(8));
+      properties[PIPETTE_PROPERTY_NAME] = "";
     }
     else if (spp == 4 && bps == 2)
     {
-      ls.push_back(OperationsCMYK8::create());
-      ls.push_back(OperationsCMYK32::create());
+      auto cmykOperations = OperationsCMYK8::create(bps);
+      pipetteLayerOperation = cmykOperations;
+      ls.push_back(cmykOperations);
+      ls.push_back(OperationsCMYK32::create(8));
+      properties[PIPETTE_PROPERTY_NAME] = "";
     }
     else if (spp == 4 && bps == 1)
     {
-      ls.push_back(OperationsCMYK4::create());
-      ls.push_back(OperationsCMYK32::create());
+      auto cmykOperations = OperationsCMYK4::create(bps);
+      pipetteLayerOperation = cmykOperations;
+      ls.push_back(cmykOperations);
+      ls.push_back(OperationsCMYK32::create(8));
+      properties[PIPETTE_PROPERTY_NAME] = "";
     }
     else if (spp == 3 && bps == 8)
     {
-        ls.push_back(Operations24bpp::create());
+      auto rgbOperations = Operations24bpp::create(bps);
+      pipetteLayerOperation = rgbOperations;
+      ls.push_back(rgbOperations);
+      properties[PIPETTE_PROPERTY_NAME] = "";
     }
     else if (bps == 2 || bps == 4 || photometric == PHOTOMETRIC_PALETTE)
     {
@@ -389,6 +406,77 @@ void TiffPresentation::done()
   tif = NULL;
 }
 
+/**
+ * Add two pipette color map values of the same key.
+ */
+PipetteLayerOperations::PipetteColor sumPipetteColors(const PipetteLayerOperations::PipetteColor& lhs, const PipetteLayerOperations::PipetteColor& rhs)
+{
+  PipetteLayerOperations::PipetteColor result = lhs;
+  for(auto const& elem : rhs)
+  {
+    result[elem.first] += elem.second;
+  }
+  return result;
+}
+
+/**
+ * Divides each element inside elements by by a constant divisor.
+ */
+PipetteLayerOperations::PipetteColor dividePipetteColors(PipetteLayerOperations::PipetteColor elements, const int divisor)
+{
+  for(auto& elem : elements)
+  {
+    elem.second /= divisor;
+  }
+  return elements;
+}
+
+////////////////////////////////////////////////////////////////////////
+// PipetteViewInterface
+////////////////////////////////////////////////////////////////////////
+
+PipetteLayerOperations::PipetteColor TiffPresentation::getPixelAverages(Scroom::Utils::Rectangle<int> area)
+{
+  require(pipetteLayerOperation);
+
+  Scroom::Utils::Rectangle<int> presentationArea = getRect().toIntRectangle();
+  area = area.intersection(presentationArea);
+
+  Layer::Ptr bottomLayer = tbi->getBottomLayer();
+  PipetteLayerOperations::PipetteColor pipetteColors;
+
+  int totalPixels = area.getWidth() * area.getHeight();
+  
+  if(totalPixels == 0){
+    return {};
+  }
+
+  //Get start tile (tile_pos_x_start, tile_pos_y_start)
+  int tile_pos_x_start = area.getLeft() / TILESIZE;
+  int tile_pos_y_start = area.getTop() / TILESIZE;
+
+  //Get end tile (tile_pos_x_end, tile_pos_y_end)
+  int tile_pos_x_end = (area.getRight() - 1) / TILESIZE;
+  int tile_pos_y_end = (area.getBottom() - 1) / TILESIZE;
+
+  for(int x = tile_pos_x_start; x <= tile_pos_x_end; x++)
+  {
+    for(int y = tile_pos_y_start; y <= tile_pos_y_end; y++)
+    {
+      ConstTile::Ptr tile = bottomLayer->getTile(x, y)->getConstTileSync(); 
+      Scroom::Utils::Rectangle<int> tile_rectangle(x * TILESIZE, y * TILESIZE, tile->width, tile->height);
+
+      Scroom::Utils::Rectangle<int> inter_rect = tile_rectangle.intersection(area);
+      Scroom::Utils::Point<int> base(x * TILESIZE, y * TILESIZE);
+
+      inter_rect -= base; //rectangle coordinates relative to constTile with topleft corner (0,0)
+
+      pipetteColors = sumPipetteColors(pipetteColors, pipetteLayerOperation->sumPixelValues(inter_rect, tile));
+    }
+  }
+  return dividePipetteColors(pipetteColors, totalPixels);
+}
+
 ////////////////////////////////////////////////////////////////////////
 // Colormappable
 ////////////////////////////////////////////////////////////////////////
@@ -560,4 +648,9 @@ void TiffPresentationWrapper::disableTransparentBackground()
 bool TiffPresentationWrapper::getTransparentBackground()
 {
   return presentation->getTransparentBackground();
+}
+
+PipetteLayerOperations::PipetteColor TiffPresentationWrapper::getPixelAverages(Scroom::Utils::Rectangle<int> area)
+{
+  return presentation->getPixelAverages(area);
 }
