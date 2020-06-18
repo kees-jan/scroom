@@ -107,11 +107,11 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view)
   auto colors = pipette->getPixelAverages(rect);
 
   // If selection became null the plugin was switched off so ignore the result
-  enabled = true;
   if(selection == nullptr)
   {
     return;
   }
+  enabled = true;
 
   std::stringstream info;
   info.precision(2);
