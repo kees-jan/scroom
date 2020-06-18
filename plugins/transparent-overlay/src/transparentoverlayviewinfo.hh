@@ -47,8 +47,6 @@ public:
   virtual void removeSideWidget(GtkWidget* w);
   virtual void addToToolbar(GtkToolItem* ti);
   virtual void removeFromToolbar(GtkToolItem* ti);
-  virtual void setPanning();
-  virtual void unsetPanning();
   virtual void registerSelectionListener(SelectionListener::Ptr listener);
   virtual void registerPostRenderer(PostRenderer::Ptr renderer);
   virtual void setStatusMessage(const std::string& message);
