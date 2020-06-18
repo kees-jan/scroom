@@ -24,7 +24,8 @@ public:
 private:
   Selection::Ptr selection;
   bool enabled;
-  ThreadPool::Queue::Ptr pendingJobs;
+  bool jobRunning;
+  ThreadPool::Queue::Ptr currentJob;
 
 public:
   static Ptr create();

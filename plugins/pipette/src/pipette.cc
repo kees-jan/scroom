@@ -53,7 +53,8 @@ Scroom::Bookkeeping::Token Pipette::viewAdded(ViewInterface::Ptr view)
 ////////////////////////////////////////////////////////////////////////
 
 PipetteHandler::PipetteHandler()
-  : selection(nullptr), enabled(false), pendingJobs(ThreadPool::Queue::createAsync())
+  : selection(nullptr), enabled(false), jobRunning(false),
+    currentJob(ThreadPool::Queue::createAsync())
 {
 }
 PipetteHandler::~PipetteHandler()
@@ -76,7 +77,7 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view)
   if(presentation == nullptr)
   {
     // No current presentation in the view
-    enabled = true;
+    jobRunning = false;
     return;
   }
   auto image = presentation->getRect().toIntRectangle();
@@ -97,19 +98,20 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view)
     gdk_threads_enter();
     view->setStatusMessage("Error when requesting the image data.");
     gdk_threads_leave();
-    enabled = true;
+    jobRunning = false;
     return;
   }
   auto colors = pipette->getPixelAverages(rect);
 
-  // If selection became null the plugin was switched off so ignore the result
-  if(selection == nullptr)
+  // If the plugin was switched off ignore the result
+  if(!enabled)
   {
+    jobRunning = false;
     return;
   }
-  enabled = true;
 
   displayValues(view, rect, colors);
+  jobRunning = false;
 }
 
 void PipetteHandler::displayValues(ViewInterface::Ptr view, Scroom::Utils::Rectangle<int> rect, PipetteLayerOperations::PipetteColor colors)
@@ -146,7 +148,7 @@ void PipetteHandler::onSelectionStart(GdkPoint, ViewInterface::Ptr)
 void PipetteHandler::onSelectionUpdate(Selection::Ptr s, ViewInterface::Ptr view)
 {
   UNUSED(view);
-  if(enabled)
+  if(enabled && !jobRunning)
   {
     selection = s;
   }
@@ -154,13 +156,13 @@ void PipetteHandler::onSelectionUpdate(Selection::Ptr s, ViewInterface::Ptr view
 
 void PipetteHandler::onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view)
 {
-  if(enabled)
+  if(enabled && !jobRunning)
   {
     selection = s;
 
     // Prevent more than one job
-    enabled = false;
-    Sequentially()->schedule(boost::bind(&PipetteHandler::computeValues, shared_from_this<PipetteHandler>(), view), pendingJobs);
+    jobRunning = true;
+    Sequentially()->schedule(boost::bind(&PipetteHandler::computeValues, shared_from_this<PipetteHandler>(), view), currentJob);
   }
 }
 
