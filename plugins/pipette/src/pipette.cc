@@ -83,8 +83,7 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view)
   auto image = presentation->getRect().toIntRectangle();
 
   // Get the selection rectangle
-  auto sel_rect = Scroom::Utils::Rectangle<int>(selection->start.x, selection->start.y,
-      selection->end.x - selection->start.x, selection->end.y - selection->start.y);
+  auto sel_rect = Scroom::Utils::Rectangle<int>(selection->start, selection->end);
 
   // Intersect both rectangles to get the part of the selection that overlaps the image
   auto rect = sel_rect.intersection(image);
