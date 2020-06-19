@@ -88,13 +88,10 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view)
   auto colors = pipette->getPixelAverages(rect);
 
   // If the plugin was switched off ignore the result
-  if(!enabled)
+  if(enabled)
   {
-    jobRunning = false;
-    return;
+    displayValues(view, rect, colors);
   }
-
-  displayValues(view, rect, colors);
   jobRunning = false;
 }
 
