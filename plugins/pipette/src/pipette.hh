@@ -54,6 +54,7 @@ public:
   ////////////////////////////////////////////////////////////////////////
 
   virtual void computeValues(ViewInterface::Ptr view);
+  virtual Scroom::Utils::Rectangle<int> getSelectedArea(PresentationInterface::Ptr presentation);
   virtual void displayValues(ViewInterface::Ptr view, Scroom::Utils::Rectangle<int> rect, PipetteLayerOperations::PipetteColor colors);
 };
 

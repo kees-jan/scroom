@@ -72,23 +72,8 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view)
   view->setStatusMessage("Computing color values...");
   gdk_threads_leave();
 
-  // Get the image rectangle
-  PresentationInterface::Ptr presentation = view->getCurrentPresentation();
-  if(presentation == nullptr)
-  {
-    // No current presentation in the view
-    jobRunning = false;
-    return;
-  }
-  auto image = presentation->getRect().toIntRectangle();
-
-  // Get the selection rectangle
-  auto sel_rect = Scroom::Utils::Rectangle<int>(selection->start, selection->end);
-
-  // Intersect both rectangles to get the part of the selection that overlaps the image
-  auto rect = sel_rect.intersection(image);
-
   // Get the average color within the rectangle
+  PresentationInterface::Ptr presentation = view->getCurrentPresentation();
   auto pipette = boost::dynamic_pointer_cast<PipetteViewInterface>(presentation);
   if(pipette == nullptr)
   {
@@ -99,6 +84,7 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view)
     jobRunning = false;
     return;
   }
+  Scroom::Utils::Rectangle<int> rect = getSelectedArea(presentation);
   auto colors = pipette->getPixelAverages(rect);
 
   // If the plugin was switched off ignore the result
@@ -110,6 +96,17 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view)
 
   displayValues(view, rect, colors);
   jobRunning = false;
+}
+
+Scroom::Utils::Rectangle<int> PipetteHandler::getSelectedArea(PresentationInterface::Ptr presentation){
+  // Get the image rectangle
+  auto image = presentation->getRect().toIntRectangle();
+
+  // Get the selection rectangle
+  auto sel_rect = Scroom::Utils::Rectangle<int>(selection->start, selection->end);
+
+  // Intersect both rectangles to get the part of the selection that overlaps the image
+  return sel_rect.intersection(image);
 }
 
 void PipetteHandler::displayValues(ViewInterface::Ptr view, Scroom::Utils::Rectangle<int> rect, PipetteLayerOperations::PipetteColor colors)
