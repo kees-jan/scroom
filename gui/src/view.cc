@@ -172,19 +172,19 @@ void View::redraw(cairo_t* cr)
     {
       // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
       int pixelSize = 1<<zoom;
-      rect.width = (drawingAreaWidth+pixelSize-1)/pixelSize;
-      rect.height = (drawingAreaHeight+pixelSize-1)/pixelSize;
+      rect.width = (drawingAreaWidth+pixelSize*aspectRatio.x-1)/(pixelSize*aspectRatio.x);
+      rect.height = (drawingAreaHeight+pixelSize*aspectRatio.y-1)/(pixelSize*aspectRatio.y);
     }
     else
     {
       // Zooming out. Smallest step is 1 window-pixel, which is more than one presentation-pixel
       int pixelSize = 1<<(-zoom);
-      rect.width = drawingAreaWidth*pixelSize;
-      rect.height = drawingAreaHeight*pixelSize;
+      rect.width = drawingAreaWidth*pixelSize*aspectRatio.x;
+      rect.height = drawingAreaHeight*pixelSize*aspectRatio.y;
 
       // Round to whole pixels
-      rect.x = (rect.x/pixelSize) * pixelSize;
-      rect.y = (rect.y/pixelSize) * pixelSize;
+      rect.x = (rect.x/(pixelSize*aspectRatio.x)) * pixelSize * aspectRatio.x;
+      rect.y = (rect.y/(pixelSize*aspectRatio.y)) * pixelSize * aspectRatio.y;
     }
 
     presentation->redraw(shared_from_this<View>(), cr, rect, zoom);
@@ -697,8 +697,8 @@ void View::on_motion_notify(GdkEventMotion* event)
     else
     {
       const int pixelSize=1<<-zoom;
-      newx-=(event->x-cachedPoint.x)*pixelSize*aspectRatio.x;
-      newy-=(event->y-cachedPoint.y)*pixelSize*aspectRatio.y;
+      newx-=(event->x-cachedPoint.x)*(pixelSize/aspectRatio.x);
+      newy-=(event->y-cachedPoint.y)*(pixelSize/aspectRatio.y);
       cachedPoint = eventToPoint(event);
     }
 
