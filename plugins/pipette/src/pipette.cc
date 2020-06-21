@@ -53,8 +53,7 @@ Scroom::Bookkeeping::Token Pipette::viewAdded(ViewInterface::Ptr view)
 ////////////////////////////////////////////////////////////////////////
 
 PipetteHandler::PipetteHandler()
-  : selection(nullptr), enabled(false), jobRunning(false),
-    currentJob(ThreadPool::Queue::createAsync())
+  : selection(nullptr), enabled(false), currentJob(ThreadPool::Queue::createAsync())
 {
 }
 PipetteHandler::~PipetteHandler()
@@ -66,8 +65,10 @@ PipetteHandler::Ptr PipetteHandler::create()
   return Ptr(new PipetteHandler());
 }
 
-void PipetteHandler::computeValues(ViewInterface::Ptr view)
+void PipetteHandler::computeValues(ViewInterface::Ptr view, Scroom::Utils::Rectangle<int> sel_rect)
 {
+  jobMutex.lock();
+
   gdk_threads_enter();
   view->setStatusMessage("Computing color values...");
   gdk_threads_leave();
@@ -79,31 +80,23 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view)
   {
     printf("PANIC: Presentation does not implement PipetteViewInterface!\n");
     gdk_threads_enter();
-    view->setStatusMessage("Error when requesting the image data.");
+    view->setStatusMessage("Pipette is not supported for this presentation.");
     gdk_threads_leave();
-    jobRunning = false;
+    jobMutex.unlock();
     return;
   }
-  Scroom::Utils::Rectangle<int> rect = getSelectedArea(presentation);
+  auto image = presentation->getRect().toIntRectangle();
+  auto rect = sel_rect.intersection(image);
   auto colors = pipette->getPixelAverages(rect);
 
   // If the plugin was switched off ignore the result
-  if(enabled)
+  if(!wasDisabled.test_and_set())
   {
     displayValues(view, rect, colors);
   }
-  jobRunning = false;
-}
 
-Scroom::Utils::Rectangle<int> PipetteHandler::getSelectedArea(PresentationInterface::Ptr presentation){
-  // Get the image rectangle
-  auto image = presentation->getRect().toIntRectangle();
-
-  // Get the selection rectangle
-  auto sel_rect = Scroom::Utils::Rectangle<int>(selection->start, selection->end);
-
-  // Intersect both rectangles to get the part of the selection that overlaps the image
-  return sel_rect.intersection(image);
+  wasDisabled.clear();
+  jobMutex.unlock();
 }
 
 void PipetteHandler::displayValues(ViewInterface::Ptr view, Scroom::Utils::Rectangle<int> rect, PipetteLayerOperations::PipetteColor colors)
@@ -140,21 +133,23 @@ void PipetteHandler::onSelectionStart(GdkPoint, ViewInterface::Ptr)
 void PipetteHandler::onSelectionUpdate(Selection::Ptr s, ViewInterface::Ptr view)
 {
   UNUSED(view);
-  if(enabled && !jobRunning)
+  if(enabled && jobMutex.try_lock())
   {
     selection = s;
+    jobMutex.unlock();
   }
 }
 
 void PipetteHandler::onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view)
 {
-  if(enabled && !jobRunning)
+  if(enabled && jobMutex.try_lock())
   {
     selection = s;
 
-    // Prevent more than one job
-    jobRunning = true;
-    Sequentially()->schedule(boost::bind(&PipetteHandler::computeValues, shared_from_this<PipetteHandler>(), view), currentJob);
+    // Get the selection rectangle
+    auto sel_rect = Scroom::Utils::Rectangle<int>(selection->start, selection->end);
+    Sequentially()->schedule(boost::bind(&PipetteHandler::computeValues, shared_from_this<PipetteHandler>(), view, sel_rect), currentJob);
+    jobMutex.unlock();
   }
 }
 
@@ -202,8 +197,14 @@ void PipetteHandler::render(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::U
 void PipetteHandler::onDisable(){
   selection = nullptr;
   enabled = false;
+  wasDisabled.test_and_set();
 }
 
 void PipetteHandler::onEnable(){
   enabled = true;
+  if(jobMutex.try_lock())
+  {
+    wasDisabled.clear();
+    jobMutex.unlock();
+  }
 }

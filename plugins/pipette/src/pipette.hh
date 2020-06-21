@@ -12,6 +12,8 @@
 #include <scroom/viewinterface.hh>
 #include <scroom/threadpool.hh>
 #include <scroom/pipetteviewinterface.hh>
+#include <mutex>
+#include <atomic>
 
 class PipetteHandler : public ToolStateListener, public PostRenderer, public SelectionListener, virtual public Scroom::Utils::Base
 {
@@ -24,7 +26,8 @@ public:
 private:
   Selection::Ptr selection;
   bool enabled;
-  bool jobRunning;
+  std::atomic_flag wasDisabled;
+  std::mutex jobMutex;
   ThreadPool::Queue::Ptr currentJob;
 
 public:
@@ -53,8 +56,7 @@ public:
 
   ////////////////////////////////////////////////////////////////////////
 
-  virtual void computeValues(ViewInterface::Ptr view);
-  virtual Scroom::Utils::Rectangle<int> getSelectedArea(PresentationInterface::Ptr presentation);
+  virtual void computeValues(ViewInterface::Ptr view, Scroom::Utils::Rectangle<int> sel_rect);
   virtual void displayValues(ViewInterface::Ptr view, Scroom::Utils::Rectangle<int> rect, PipetteLayerOperations::PipetteColor colors);
 };
 
