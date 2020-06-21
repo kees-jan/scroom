@@ -507,12 +507,12 @@ void Operations8bpp::draw(cairo_t* cr, const ConstTile::Ptr tile,
 ////////////////////////////////////////////////////////////////////////
 // Operations24bpp
 
-PipetteCommonOperations::Ptr Operations24bpp::create(int bps)
+PipetteCommonOperationsRGB::Ptr Operations24bpp::create()
 {
-  return PipetteCommonOperations::Ptr(new Operations24bpp(bps));
+  return PipetteCommonOperationsRGB::Ptr(new Operations24bpp());
 }
 
-Operations24bpp::Operations24bpp(int bps_) : PipetteCommonOperationsRGB(bps_)
+Operations24bpp::Operations24bpp() : PipetteCommonOperationsRGB(8)
 {
 }
 
