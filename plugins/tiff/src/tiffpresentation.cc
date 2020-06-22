@@ -411,10 +411,14 @@ void TiffPresentation::done()
  */
 PipetteLayerOperations::PipetteColor sumPipetteColors(const PipetteLayerOperations::PipetteColor& lhs, const PipetteLayerOperations::PipetteColor& rhs)
 {
-  PipetteLayerOperations::PipetteColor result = lhs;
-  for(auto const& elem : rhs)
+  PipetteLayerOperations::PipetteColor result;
+  if(lhs.empty())
   {
-    result[elem.first] += elem.second;
+    return rhs;
+  }
+  for(unsigned int i = 0; i < rhs.size(); i++ )
+  {
+    result.push_back({ rhs[i].first, rhs[i].second + lhs[i].second });
   }
   return result;
 }
