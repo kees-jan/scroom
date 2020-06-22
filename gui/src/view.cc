@@ -179,12 +179,12 @@ void View::redraw(cairo_t* cr)
     {
       // Zooming out. Smallest step is 1 window-pixel, which is more than one presentation-pixel
       int pixelSize = 1<<(-zoom);
-      rect.width = drawingAreaWidth*pixelSize*aspectRatio.x;
-      rect.height = drawingAreaHeight*pixelSize*aspectRatio.y;
+      rect.width = drawingAreaWidth*(pixelSize/aspectRatio.x);
+      rect.height = drawingAreaHeight*(pixelSize/aspectRatio.y);
 
       // Round to whole pixels
-      rect.x = (rect.x/(pixelSize*aspectRatio.x)) * pixelSize * aspectRatio.x;
-      rect.y = (rect.y/(pixelSize*aspectRatio.y)) * pixelSize * aspectRatio.y;
+      rect.x = (rect.x/(pixelSize/aspectRatio.x)) * (pixelSize / aspectRatio.x);
+      rect.y = (rect.y/(pixelSize/aspectRatio.y)) * (pixelSize / aspectRatio.y);
     }
 
     presentation->redraw(shared_from_this<View>(), cr, rect, zoom);
@@ -550,8 +550,8 @@ void View::on_zoombox_changed(int newzoom, int mousex, int mousey)
     else
     {
       const int pixelsize = 1<<-zoom;
-      x+=mousex*pixelsize*aspectRatio.x;
-      y+=mousey*pixelsize*aspectRatio.y;
+      x+=mousex*(pixelsize/aspectRatio.x);
+      y+=mousey*(pixelsize/aspectRatio.y);
     }
 
     if(newzoom>=0)
@@ -563,8 +563,8 @@ void View::on_zoombox_changed(int newzoom, int mousex, int mousey)
     else
     {
       const int pixelsize = 1<<-newzoom;
-      x-=mousex*pixelsize*aspectRatio.x;
-      y-=mousey*pixelsize*aspectRatio.y;
+      x-=mousex*(pixelsize/aspectRatio.x);
+      y-=mousey*(pixelsize/aspectRatio.y);
     }
 
     zoom = newzoom;
@@ -851,8 +851,8 @@ GdkPoint View::windowPointToPresentationPoint(GdkPoint wp)
   else
   {
     const int pixelSize=1<<-zoom;
-    result.x = x+wp.x*pixelSize*aspectRatio.x;
-    result.y = y+wp.y*pixelSize*aspectRatio.y;
+    result.x = x+wp.x*(pixelSize/aspectRatio.x);
+    result.y = y+wp.y*(pixelSize/aspectRatio.y);
   }
   return result;
 }
@@ -870,8 +870,8 @@ GdkPoint View::presentationPointToWindowPoint(GdkPoint pp)
   else
   {
     const int pixelSize=1<<-zoom;
-    result.x = (pp.x-x)/(pixelSize*aspectRatio.x);
-    result.y = (pp.y-y)/(pixelSize*aspectRatio.y);
+    result.x = (pp.x-x)/(pixelSize/aspectRatio.x);
+    result.y = (pp.y-y)/(pixelSize/aspectRatio.y);
   }
   return result;
 }
