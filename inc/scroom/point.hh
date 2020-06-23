@@ -63,10 +63,24 @@ namespace Scroom
         return *this;
       }
 
+      Point<value_type>& operator*=(const Point<value_type> &other)
+      {
+        x *= other.x;
+        y *= other.y;
+        return *this;
+      }
+
       Point<value_type>& operator/=(value_type other)
       {
         x /= other;
         y /= other;
+        return *this;
+      }
+
+      Point<value_type>& operator/=(const Point<value_type> &other)
+      {
+        x /= other.x;
+        y /= other.y;
         return *this;
       }
 
@@ -118,6 +132,5 @@ namespace Scroom
       result += Point<R>(right);
       return result;
     }
-
   }
 }

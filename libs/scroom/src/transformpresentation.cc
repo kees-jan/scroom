@@ -1,5 +1,4 @@
 #include <scroom/transformpresentation.hh>
-
 #include <scroom/rectangle.hh>
 
 TransformationData::TransformationData()
@@ -55,7 +54,7 @@ void TransformPresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr,
 
   cairo_save(cr);
   cairo_scale(cr, aspectRatio.x, aspectRatio.y);
-  presentation->redraw(vi, cr, presentationArea / aspectRatio, zoom);
+  presentation->redraw(vi, cr, presentationArea, zoom);
   cairo_restore(cr);
 }
 
@@ -119,4 +118,9 @@ PipetteLayerOperations::PipetteColor TransformPresentation::getPixelAverages(Scr
   PipetteViewInterface::Ptr pipettePresentation = boost::dynamic_pointer_cast<PipetteViewInterface>(presentation);
   require(pipettePresentation);
   return pipettePresentation->getPixelAverages(area);
+}
+
+Scroom::Utils::Point<double> TransformPresentation::getAspectRatio() const
+{
+  return transformationData->getAspectRatio();
 }

@@ -68,6 +68,7 @@ private:
   std::vector<SelectionListener::Ptr> selectionListeners;
   std::vector<PostRenderer::Ptr> postRenderers;
   std::map<GtkToggleButton*, ToolStateListener::Ptr> tools;
+  Scroom::Utils::Point<double> aspectRatio;
 
   gint modifiermove;
   GdkPoint cachedPoint;
