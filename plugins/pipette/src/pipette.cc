@@ -76,7 +76,7 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view, Scroom::Utils::Recta
   // Get the average color within the rectangle
   PresentationInterface::Ptr presentation = view->getCurrentPresentation();
   auto pipette = boost::dynamic_pointer_cast<PipetteViewInterface>(presentation);
-  if(pipette == nullptr)
+  if(pipette == nullptr || !presentation->isPropertyDefined(PIPETTE_PROPERTY_NAME))
   {
     printf("PANIC: Presentation does not implement PipetteViewInterface!\n");
     gdk_threads_enter();
