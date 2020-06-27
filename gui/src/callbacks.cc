@@ -31,6 +31,9 @@
 #include "pluginmanager.hh"
 #include "loader.hh"
 
+#include <boost/algorithm/string.hpp>
+#include <boost/format.hpp>
+
 #ifdef _WIN32
   #include <boost/dll.hpp>
   #include <windows.h>
@@ -438,6 +441,44 @@ void find_or_create_scroom(PresentationInterface::Ptr presentation)
   create_scroom(presentation);
 }
 
+void
+onDragDataReceived(GtkWidget *, GdkDragContext *, int, int,
+                        GtkSelectionData *seldata, guint, guint,
+                        gpointer)
+{
+  printf("Dropping file(s) onto SCROOM %s\n", (gchar*)seldata->data);
+  std::string urilist((gchar*)seldata->data);
+  
+  // Split all the filenames in the dropped uri list to a vector of strings
+  std::vector<std::string> dropped_filenames;
+  boost::split(dropped_filenames, urilist, boost::is_space());
+  
+  for(const auto & filename : dropped_filenames) {
+  	// check that the filename starts with file:///
+	if(filename.empty() || filename.rfind("file:///", 0) == std::string::npos) continue;
+	
+	try {
+	  load(filename.substr(8));
+	} 
+	catch (std::invalid_argument & ex) 
+	{
+	  boost::format warningFormat =
+          boost::format("Warning: unable to load file %s") % filename;
+      printf("%s\n", warningFormat.str().c_str());
+      if (gdk_display_get_default()) {
+        // We're not running headless, don't open the popup
+        // We don't have a pointer to the parent window, so nullptr should suffice
+        GtkWidget *dialog =
+          gtk_message_dialog_new(nullptr, GTK_DIALOG_DESTROY_WITH_PARENT, GTK_MESSAGE_WARNING,
+        						 GTK_BUTTONS_CLOSE, warningFormat.str().c_str());
+        
+        gtk_dialog_run(GTK_DIALOG(dialog));
+        gtk_widget_destroy(dialog);
+      }
+    }
+  }
+}
+
 void create_scroom(PresentationInterface::Ptr presentation)
 {
   GladeXML* xml = glade_xml_new(xmlFileName.c_str(), "scroom", NULL);
@@ -496,6 +537,18 @@ void create_scroom(PresentationInterface::Ptr presentation)
   g_signal_connect (static_cast<gpointer>(drawingArea), "button-release-event", G_CALLBACK (on_button_release_event), view.get());
   g_signal_connect (static_cast<gpointer>(drawingArea), "scroll-event", G_CALLBACK (on_scroll_event), view.get());
   g_signal_connect (static_cast<gpointer>(drawingArea), "motion-notify-event", G_CALLBACK (on_motion_notify_event), view.get());
+
+
+  char * uriList = strdup("text/uri-list");
+  GtkTargetEntry targets[] = {{uriList, 0, 0}};
+  
+  printf("%s\n", uriList);
+  gtk_drag_dest_set(scroom, GTK_DEST_DEFAULT_ALL, targets, 1,
+  				  static_cast<GdkDragAction>(GDK_ACTION_COPY|GDK_ACTION_MOVE|GDK_ACTION_LINK));
+  
+  g_signal_connect(static_cast<gpointer>(scroom), "drag_data_received",
+  				 G_CALLBACK(onDragDataReceived), NULL);
+  
 }
 
 void on_newPresentationInterfaces_update(const std::map<NewPresentationInterface::Ptr, std::string>& newPresentationInterfaces)
