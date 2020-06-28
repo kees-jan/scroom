@@ -103,7 +103,6 @@ void PipetteHandler::displayValues(ViewInterface::Ptr view, Scroom::Utils::Recta
 {
   std::stringstream info;
   info.precision(2);
-  fixed(info);
 
   info << "Top-left: " << rect.getTopLeft();
   info << ", Bottom-right: " << rect.getBottomRight();
@@ -113,7 +112,7 @@ void PipetteHandler::displayValues(ViewInterface::Ptr view, Scroom::Utils::Recta
     info << ", Colors:";
     for(auto element : colors)
     {
-      info << ' ' << element.first << ": " << element.second;
+      info << ' ' << element.first << ": " << std::fixed << element.second;
     }
   }
 
@@ -159,10 +158,9 @@ void PipetteHandler::onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view)
 
 void PipetteHandler::render(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom)
 {
-  UNUSED(vi);
-
   if(selection)
   {
+    auto aspectRatio = vi->getCurrentPresentation()->getAspectRatio();
     auto start = Scroom::Utils::Point<int>(selection->start) - presentationArea.getTopLeft();
     auto end = Scroom::Utils::Point<int>(selection->end) - presentationArea.getTopLeft();
 
@@ -170,12 +168,16 @@ void PipetteHandler::render(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::U
     {
       const int pixelSize=1<<zoom;
       start *= pixelSize;
+      start *= aspectRatio;
       end *= pixelSize;
+      end *= aspectRatio;
     }
     else
     {
       const int pixelSize=1<<-zoom;
+      start *= aspectRatio;
       start /= pixelSize;
+      end *= aspectRatio;
       end /= pixelSize;
     }
 
