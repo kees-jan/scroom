@@ -65,6 +65,22 @@ void on_new_activate (GtkMenuItem*, gpointer user_data)
   create(newPresentationInterface);
 }
 
+gboolean combinedFileFilter(const GtkFileFilterInfo *filter_info, gpointer data) {
+  // Convert the data back to a filter vector
+  std::vector<GtkFileFilter *> * filters = static_cast<std::vector<GtkFileFilter *> *>(data);
+  
+  // Return true if any of the filters matches the filter_info
+  for(const auto & f : *filters) {
+    if(gtk_file_filter_filter(f, filter_info)) 
+    {
+      return true;
+    }
+  }
+  
+  // None of the filters matched
+  return false;
+}
+
 void on_open_activate (GtkMenuItem*, gpointer user_data)
 {
   GtkWidget* dialog;
@@ -82,18 +98,36 @@ void on_open_activate (GtkMenuItem*, gpointer user_data)
   const std::map<OpenPresentationInterface::Ptr, std::string>& openPresentationInterfaces = PluginManager::getInstance()->getOpenPresentationInterfaces();
   const std::map<OpenInterface::Ptr, std::string>& openInterfaces = PluginManager::getInstance()->getOpenInterfaces();
 
+  // Store all the file filters so that we can create a custom file filter that allows any supported type (by default)
+  std::vector<GtkFileFilter *> filters;
+  GtkFileFilter* allSupportedFileTypesFilter = gtk_file_filter_new();
+  gtk_file_filter_set_name(allSupportedFileTypesFilter, "Any supported file type");
+
+  // Cannot beforehand determine which data might be needed for the plugins, so we ask GTK to load everything!
+  GtkFileFilterFlags filterFlags = static_cast<GtkFileFilterFlags>(
+		GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_MIME_TYPE | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_URI);
+  // Register the combined filter logic for this filter
+  gtk_file_filter_add_custom(allSupportedFileTypesFilter,filterFlags,&combinedFileFilter, &filters, NULL);
+  
+  // Register the combined filter in the dialog
+  gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dialog), allSupportedFileTypesFilter);
+  
+  // Register the separate presentation filters in the dialog and in the combined filter
   for(auto const& cur: openPresentationInterfaces)
   {
     for(auto const& f: cur.first->getFilters())
     {
       gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dialog), f);
+	  filters.push_back(f);
     }
   }
+  // Register the separate open interfaces in the dialog and in the combined filter
   for(auto const& cur: openInterfaces)
   {
     for(auto const& f: cur.first->getFilters())
     {
       gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dialog), f);
+	  filters.push_back(f);
     }
   }
 
