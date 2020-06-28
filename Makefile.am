@@ -246,7 +246,7 @@ libs_memory_manager_src_libsmemman_la_LIBADD = \
 	libs/threadpool/src/libsthreadpool.la \
 	@BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
 	@ZLIB@
-	
+
 libs_memory_manager_src_libsmemman_la_LDFLAGS = $(loadflag)	
 
 if BOOST_UNITTESTS
@@ -272,7 +272,7 @@ libs_memory_manager_test_memory_manager_tests_LDADD = \
 
 memory_manager_tests = \
 	libs/memory-manager/test/memory-manager-tests
-	
+
 
 endif BOOST_UNITTESTS
 
@@ -369,7 +369,7 @@ libs_tiled_bitmap_src_libstiledbitmap_la_LIBADD = \
 	libs/memory-manager/src/libsmemman.la \
 	libs/scroom/src/libsscroom.la \
 	@BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
-	
+
 libs_tiled_bitmap_src_libstiledbitmap_la_LDFLAGS = $(loadflag)
 
 if BOOST_UNITTESTS
@@ -436,7 +436,7 @@ libs_tiled_bitmap_tools_measure_load_performance_LDADD = \
 	libs/tiled-bitmap/src/libstiledbitmap.la \
 	libs/util/src/libsutil.la \
 	libs/scroom/src/libsscroom.la
-	
+
 
 ########################################################################
 ### plugins/example
@@ -456,7 +456,7 @@ plugins_example_libspexample_la_SOURCES = \
 
 plugins_example_libspexample_la_LIBADD = -lm @EXAMPLEPLUGIN_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
 	libs/scroom/src/libsscroom.la
-	
+
 plugins_example_libspexample_la_LDFLAGS = $(loadflag)
 
 ########################################################################
@@ -527,7 +527,7 @@ plugins_tiff_src_libsptiff_la_SOURCES = \
 
 plugins_tiff_src_libsptiff_la_LIBADD = @TIFFPLUGIN_LIBS@ -ltiff @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
 	libs/tiled-bitmap/src/libstiledbitmap.la libs/scroom/src/libsscroom.la libs/util/src/libsutil.la
-	
+
 plugins_tiff_src_libsptiff_la_LDFLAGS = $(loadflag)
 
 ########################################################################
@@ -567,8 +567,49 @@ plugins_measure_src_libspmeasure_la_SOURCES = \
 	plugins/measure/src/measure.hh
 
 plugins_measure_src_libspmeasure_la_LIBADD = @MEASUREPLUGIN_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
-	
+
 plugins_measure_src_libspmeasure_la_LDFLAGS = $(loadflag)
+
+########################################################################
+### plugins/pipette
+########################################################################
+
+pipette_plugin_libs = \
+	plugins/pipette/src/libsppipette.la
+
+plugins_pipette_src_libsppipette_la_CPPFLAGS = @PIPETTEPLUGIN_CFLAGS@ -I $(top_srcdir)/inc
+
+plugins_pipette_src_libsppipette_la_SOURCES = \
+	plugins/pipette/src/pipette.cc \
+	plugins/pipette/src/pipette.hh \
+	plugins/pipette/src/main.cc
+
+plugins_pipette_src_libsppipette_la_LIBADD = @PIPETTEPLUGIN_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ libs/threadpool/src/libsthreadpool.la
+
+plugins_pipette_src_libsppipette_la_LDFLAGS = $(loadflag)
+
+if BOOST_UNITTESTS
+
+pipette_plugin_tests = \
+	plugins/pipette/test/pipette-tests
+
+pipette_plugin_check_programs = \
+	plugins/pipette/test/pipette-tests
+
+plugins_pipette_test_pipette_tests_CPPFLAGS = @PIPETTEPLUGIN_CFLAGS@ -I $(top_srcdir)/inc
+
+plugins_pipette_test_pipette_tests_LDFLAGS = -pthread
+
+plugins_pipette_test_pipette_tests_SOURCES = \
+	plugins/pipette/test/main.cc \
+	plugins/pipette/test/pipette-tests.cc
+
+plugins_pipette_test_pipette_tests_LDADD = \
+	@BOOSTTESTLIB@ @PIPETTEPLUGIN_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @BOOSTFILESYSTEMLIB@ libs/scroom/src/libsscroom.la  libs/threadpool/src/libsthreadpool.la -ldl \
+	plugins/pipette/src/libsppipette.la \
+	plugins/pipette/src/*.lo
+
+endif BOOST_UNITTESTS
 
 ########################################################################
 ### gui
@@ -631,9 +672,9 @@ root_extra_dist = \
 ########################################################################
 
 ### Plugins
-plugin_LTLIBRARIES = $(example_plugin_libs) $(transparent_overlay_plugin_libs) $(tiff_plugin_libs) $(colormap_plugin_libs) $(measure_plugin_libs)
-plugins_check_programs = $(transparent_overlay_plugin_check_programs)
-plugins_tests = $(transparent_overlay_plugin_tests)
+plugin_LTLIBRARIES = $(example_plugin_libs) $(transparent_overlay_plugin_libs) $(tiff_plugin_libs) $(colormap_plugin_libs) $(measure_plugin_libs) $(pipette_plugin_libs)
+plugins_check_programs = $(transparent_overlay_plugin_check_programs) $(pipette_plugin_check_programs)
+plugins_tests = $(transparent_overlay_plugin_tests) $(pipette_plugin_tests)
 
 ### Libs
 libs_libs = $(boost_test_helper_libs) $(sanity_tests_libs) $(util_libs) $(threadpool_libs) $(memory_manager_libs) $(scroomlib_libs) $(tiled_bitmap_libs)
