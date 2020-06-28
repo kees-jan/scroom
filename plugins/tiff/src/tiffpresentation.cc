@@ -198,38 +198,38 @@ bool TiffPresentation::load(const std::string& fileName_)
     LayerSpec ls;
     if (spp == 4 && bps == 8)
     {
-      auto cmykOperations = OperationsCMYK32::create(bps);
+      auto cmykOperations = OperationsCMYK32::create();
       pipetteLayerOperation = cmykOperations;
       ls.push_back(cmykOperations);
       properties[PIPETTE_PROPERTY_NAME] = "";
     }
     else if (spp == 4 && bps == 4)
     {
-      auto cmykOperations = OperationsCMYK16::create(bps);
+      auto cmykOperations = OperationsCMYK16::create();
       pipetteLayerOperation = cmykOperations;
       ls.push_back(cmykOperations);
-      ls.push_back(OperationsCMYK32::create(8));
+      ls.push_back(OperationsCMYK32::create());
       properties[PIPETTE_PROPERTY_NAME] = "";
     }
     else if (spp == 4 && bps == 2)
     {
-      auto cmykOperations = OperationsCMYK8::create(bps);
+      auto cmykOperations = OperationsCMYK8::create();
       pipetteLayerOperation = cmykOperations;
       ls.push_back(cmykOperations);
-      ls.push_back(OperationsCMYK32::create(8));
+      ls.push_back(OperationsCMYK32::create());
       properties[PIPETTE_PROPERTY_NAME] = "";
     }
     else if (spp == 4 && bps == 1)
     {
-      auto cmykOperations = OperationsCMYK4::create(bps);
+      auto cmykOperations = OperationsCMYK4::create();
       pipetteLayerOperation = cmykOperations;
       ls.push_back(cmykOperations);
-      ls.push_back(OperationsCMYK32::create(8));
+      ls.push_back(OperationsCMYK32::create());
       properties[PIPETTE_PROPERTY_NAME] = "";
     }
     else if (spp == 3 && bps == 8)
     {
-      auto rgbOperations = Operations24bpp::create(bps);
+      auto rgbOperations = Operations24bpp::create();
       pipetteLayerOperation = rgbOperations;
       ls.push_back(rgbOperations);
       properties[PIPETTE_PROPERTY_NAME] = "";
@@ -411,10 +411,14 @@ void TiffPresentation::done()
  */
 PipetteLayerOperations::PipetteColor sumPipetteColors(const PipetteLayerOperations::PipetteColor& lhs, const PipetteLayerOperations::PipetteColor& rhs)
 {
-  PipetteLayerOperations::PipetteColor result = lhs;
-  for(auto const& elem : rhs)
+  PipetteLayerOperations::PipetteColor result;
+  if(lhs.empty())
   {
-    result[elem.first] += elem.second;
+    return rhs;
+  }
+  for(unsigned int i = 0; i < rhs.size(); i++ )
+  {
+    result.push_back({ rhs[i].first, rhs[i].second + lhs[i].second });
   }
   return result;
 }

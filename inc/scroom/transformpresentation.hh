@@ -58,6 +58,7 @@ public:
   virtual bool getProperty(const std::string& name, std::string& value);
   virtual bool isPropertyDefined(const std::string& name);
   virtual std::string getTitle();
+  virtual Scroom::Utils::Point<double> getAspectRatio() const;
 
   // PipetteViewInterface
   virtual PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<int> area);

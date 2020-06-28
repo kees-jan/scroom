@@ -1,0 +1,96 @@
+# Due to windows docker issues, we can't configure/build in the volume mount.
+# As a workaround, we clone the repo to C:\scroom manually for Windows jobs
+# The image used for windows jobs is a windows server core docker image with 
+# an msys2 install. It includes all required msys packages
+
+stages:
+  - build
+  - install
+
+build-windows:
+  stage: build
+  image: registry.gitlab.com/sep-group-2/scroom-ci:windows
+  variables:
+    GIT_STRATEGY: none
+  tags:
+    - Windows
+  script:
+      # Verify CI vars work in mingw TODO; remove
+    - C:/msys64/usr/bin/env MSYSTEM=MINGW64 c:/msys64/usr/bin/bash -l -c "ls /c/builds/$CI_PROJECT_PATH/"
+    - if (Test-Path '.\scroom') { Remove-Item '.\scroom' -Recurse -Force; }
+    - cd C:\
+    - if (Test-Path '.\scroom') { Remove-Item '.\scroom' -Recurse -Force; }
+      # Mingw doesn't inherit the Powershell working directory, so we can either:
+      #  * in-line all steps / script them
+      #  * Move to the correct directory in each step.
+      #  The second option allows us to split commands, so we are sticking with that for now.
+    - C:/msys64/usr/bin/env MSYSTEM=MINGW64 c:/msys64/usr/bin/bash -l -c "cd /c/ && git clone https://gitlab.com/sep-group-2/scroom"
+    - C:/msys64/usr/bin/env MSYSTEM=MINGW64 c:/msys64/usr/bin/bash -l -c "cd /c/scroom && git checkout $CI_COMMIT_SHA"
+    - C:/msys64/usr/bin/env MSYSTEM=MINGW64 c:/msys64/usr/bin/bash -l -c "cd /c/scroom && autoreconf -i"
+    - C:/msys64/usr/bin/env MSYSTEM=MINGW64 c:/msys64/usr/bin/bash -l -c "cd /c/scroom && ./configure --prefix='C:/build'"
+    - C:/msys64/usr/bin/env MSYSTEM=MINGW64 c:/msys64/usr/bin/bash -l -c "cd /c/scroom && make 2> /dev/null"
+    # Finally, we copy the build into the shared volume, so gitlab can upload it
+    - cp -r "C:/scroom" "C:/builds/$CI_PROJECT_PATH/scroom"
+  retry:
+    max: 2
+    when: runner_system_failure
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - scroom/
+
+windows-portable:
+  stage: install
+  image: registry.gitlab.com/sep-group-2/scroom-ci:windows
+  variables:
+    GIT_STRATEGY: none
+  tags:
+    - Windows
+  script:
+    - if (Test-Path '.\scroom_build') { Remove-Item '.\scroom_build' -Recurse -Force; }
+    - C:/msys64/usr/bin/env MSYSTEM=MINGW64 c:/msys64/usr/bin/bash -l -c "cd /c/builds/$CI_PROJECT_PATH/scroom && make install-win-portable"
+    # Finally, we copy the build into the shared volume, so gitlab can upload it
+    - cp -r "C:/build" "C:/builds/$CI_PROJECT_PATH/scroom_build"
+  retry:
+    max: 2
+    when: runner_system_failure
+  artifacts:
+    name: "Scroom Windows Portable"
+    paths:
+      - scroom_build
+
+windows-dev:
+  stage: install
+  image: registry.gitlab.com/sep-group-2/scroom-ci:windows
+  variables:
+    GIT_STRATEGY: none
+  tags:
+    - Windows
+  script:
+    - if (Test-Path '.\scroom_build') { Remove-Item '.\scroom_build' -Recurse -Force; }
+    - C:/msys64/usr/bin/env MSYSTEM=MINGW64 c:/msys64/usr/bin/bash -l -c "cd /c/builds/$CI_PROJECT_PATH/scroom && make install"
+    # Finally, we copy the build into the shared volume, so gitlab can upload it
+    - cp -r "C:/build" "C:/builds/$CI_PROJECT_PATH/scroom_build"
+  retry:
+    max: 2
+    when: runner_system_failure
+  artifacts:
+    paths:
+      - scroom_build
+
+linux-dev:
+  stage: build
+  image: registry.gitlab.com/sep-group-2/scroom-ci:latest
+  script:
+    - ls -l
+    - autoreconf -i
+    - path=$(pwd)/scroom-install
+    - mkdir scroom-install
+    - mkdir scroom-build
+    - cd scroom-build
+    - ../configure --prefix $path
+    - make -k -j2 install
+  artifacts:
+    name: "Scroom Linux Portable"
+    paths:
+      - scroom-install
