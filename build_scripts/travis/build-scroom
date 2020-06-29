@@ -27,7 +27,7 @@ then
         make -k install-win-portable
         ( cd "${TARGET_BASE}" && zip -r "${SCROOM_NAME}.zip" "${SCROOM_NAME}" )
 
-        DESTINATION_ROOT="travis/builds/${TRAVIS_BRANCH}"
+        DESTINATION_ROOT="travis/scroom/builds/${TRAVIS_BRANCH}"
     
         ssh -T project@fuzzy.mandryn.eu <<EOF
           set -xeu -o pipefail
