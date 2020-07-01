@@ -71,7 +71,7 @@ class DummyPluginInterface : public ScroomPluginInterface {
                                     PresentationObserver::Ptr){};
 };
 
-BOOST_AUTO_TEST_CASE(selection_end) {
+BOOST_AUTO_TEST_CASE(pipette_selection_end) {
   PipetteHandler::Ptr handler = PipetteHandler::create();
 
   Selection::Ptr sel = Selection::Ptr(new Selection(10, 11));
@@ -89,7 +89,7 @@ BOOST_AUTO_TEST_CASE(selection_end) {
   BOOST_CHECK(handler->selection == nullptr);
 }
 
-BOOST_AUTO_TEST_CASE(selection_update) {
+BOOST_AUTO_TEST_CASE(pipette_selection_update) {
   PipetteHandler::Ptr handler = PipetteHandler::create();
 
   // should not do anything but will be called from the view so should not crash
@@ -118,7 +118,7 @@ BOOST_AUTO_TEST_CASE(selection_update) {
   handler->render(vi, cr, Scroom::Utils::Rectangle<int>(0, 0, 0, 0), 1);
 }
 
-BOOST_AUTO_TEST_CASE(enable_disable) {
+BOOST_AUTO_TEST_CASE(pipette_enable_disable) {
   PipetteHandler::Ptr handler = PipetteHandler::create();
 
   // questionably useful
@@ -128,7 +128,7 @@ BOOST_AUTO_TEST_CASE(enable_disable) {
   BOOST_CHECK(!handler->enabled);
 }
 
-BOOST_AUTO_TEST_CASE(metadata) {
+BOOST_AUTO_TEST_CASE(pipette_metadata) {
   Pipette::Ptr pipette = Pipette::create();
 
   int pre_view_observers = view_observers;
@@ -142,7 +142,7 @@ BOOST_AUTO_TEST_CASE(metadata) {
   BOOST_CHECK(pre_view_observers + 1 == view_observers);
 }
 
-BOOST_AUTO_TEST_CASE(value_display) {
+BOOST_AUTO_TEST_CASE(pipette_value_display) {
   PipetteHandler::Ptr handler = PipetteHandler::create();
 
   presentation = PresentationInterface::Ptr(new DummyPresentation());
@@ -184,7 +184,7 @@ BOOST_AUTO_TEST_CASE(value_display) {
   BOOST_CHECK(pre_msg_set + 6 == msg_set);
 }
 
-BOOST_AUTO_TEST_CASE(view_add) {
+BOOST_AUTO_TEST_CASE(pipette_view_add) {
   Pipette::Ptr pipette = Pipette::create();
 
   int pre_reg_sel = reg_sel;
