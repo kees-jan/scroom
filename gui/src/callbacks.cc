@@ -31,6 +31,9 @@
 #include "pluginmanager.hh"
 #include "loader.hh"
 
+#include <boost/algorithm/string.hpp>
+#include <boost/format.hpp>
+
 #ifdef _WIN32
   #include <boost/dll.hpp>
   #include <windows.h>
@@ -49,6 +52,21 @@ static Views views;
 static std::list<PresentationInterface::WeakPtr> presentations;
 static FileNameMap filenames;
 static std::string currentFolder;
+
+void ShowModalDialog(const std::string &message) {
+  printf("%s\n", message.c_str());
+  if (gdk_display_get_default()) {
+    // We're not running headless, don't open the popup
+    // We don't have a pointer to the parent window, so nullptr should
+    // suffice
+    GtkWidget *dialog = gtk_message_dialog_new(
+        nullptr, GTK_DIALOG_DESTROY_WITH_PARENT, GTK_MESSAGE_WARNING,
+        GTK_BUTTONS_CLOSE, "%s", message.c_str());
+
+    gtk_dialog_run(GTK_DIALOG(dialog));
+    gtk_widget_destroy(dialog);
+  }
+}
 
 void on_scroom_hide (GtkWidget*, gpointer user_data)
 {
@@ -472,6 +490,41 @@ void find_or_create_scroom(PresentationInterface::Ptr presentation)
   create_scroom(presentation);
 }
 
+void
+onDragDataReceived(GtkWidget *, GdkDragContext *, int, int,
+                        GtkSelectionData *seldata, guint, guint,
+                        gpointer)
+{
+  printf("Dropping file(s) onto Scroom:\n");
+  gchar** uris = g_uri_list_extract_uris(reinterpret_cast<const gchar*>(seldata->data));
+  for(gchar** uri = uris; *uri != NULL; uri++)
+  {
+    printf("\t%s\n", *uri);
+
+    GError* error = NULL;
+    gchar* filename = g_filename_from_uri(*uri, NULL, &error);
+    if(error != NULL)
+    {
+      ShowModalDialog(error->message);
+      g_error_free(error);
+    }
+    else
+    {
+      try {
+        load(filename);
+      } catch (std::invalid_argument &ex) {
+        boost::format warning =
+            boost::format("Warning: unable to load file %s") % filename;
+        ShowModalDialog(warning.str());
+      }
+    }
+
+    g_free(filename);
+  }
+
+  g_strfreev(uris);
+}
+
 void create_scroom(PresentationInterface::Ptr presentation)
 {
   GladeXML* xml = glade_xml_new(xmlFileName.c_str(), "scroom", NULL);
@@ -530,6 +583,15 @@ void create_scroom(PresentationInterface::Ptr presentation)
   g_signal_connect (static_cast<gpointer>(drawingArea), "button-release-event", G_CALLBACK (on_button_release_event), view.get());
   g_signal_connect (static_cast<gpointer>(drawingArea), "scroll-event", G_CALLBACK (on_scroll_event), view.get());
   g_signal_connect (static_cast<gpointer>(drawingArea), "motion-notify-event", G_CALLBACK (on_motion_notify_event), view.get());
+
+  char uriList[] = "text/uri-list";
+  GtkTargetEntry targets[] = {{uriList, 0, 0}};
+  gtk_drag_dest_set(scroom, GTK_DEST_DEFAULT_ALL, targets, 1,
+  				  static_cast<GdkDragAction>(GDK_ACTION_COPY|GDK_ACTION_MOVE|GDK_ACTION_LINK));
+  
+  g_signal_connect(static_cast<gpointer>(scroom), "drag_data_received",
+  				 G_CALLBACK(onDragDataReceived), NULL);
+  
 }
 
 void on_newPresentationInterfaces_update(const std::map<NewPresentationInterface::Ptr, std::string>& newPresentationInterfaces)
