@@ -1,4 +1,4 @@
-FROM ubuntu:eoan
+FROM ubuntu:groovy
 
 MAINTAINER kees-jan.dijkzeul@iae.nl
 
