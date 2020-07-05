@@ -39,6 +39,7 @@ prepare()
     remove_if_exists "cosmic.log"
     remove_if_exists "eoan.log"
     remove_if_exists "focal.log"
+    remove_if_exists "groovy.log"
     remove_if_exists "mutracx.log"
     remove_if_exists "pdebuild.log"
 }
@@ -153,7 +154,7 @@ then
 fi
 
 # Ubuntu source packages
-for source_package in bionic eoan focal
+for source_package in bionic focal groovy
 do
     echo_me $source_package
     ( rm -rf "$BUILD/$source_package" > /dev/null 2>&1 ;
