@@ -45,7 +45,7 @@ EOF
     
 elif [ ! -z "${DISTS+x}" ]
 then
-    make -k -j2 -f build_scripts/docker/docker.mk TARGETS="bionic eoan focal"
+    make -k -j2 -f build_scripts/docker/docker.mk TARGETS="bionic focal groovy"
 else
 
     ./configure --enable-doxygen-all-code
