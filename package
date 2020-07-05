@@ -71,21 +71,15 @@ esac
 
 ROOTDIR="$(ls $TMPDIR)" # yuk
 TMPSRCDIR="$TMPDIR/$ROOTDIR" 
-if [ ! -x "$TMPSRCDIR/configure"  ]
+
+if [ ! -r "$TMPSRCDIR/.scroom-version" ]
 then
-    echo_me "ERROR: Configure ($TMPSRCDIR/configure) not executable"
-    exit 1;
+   echo_me "ERROR: .scroom-version ($TMPSRCDIR/.scroom-version) is not readable"
+   exit 1
 fi
+VERSION=$(sed -e 's/_/~/g' "$TMPSRCDIR/.scroom-version")
 
-echo_me "Executing configure"
 
-if ! (cd "$TMPSRCDIR" && ./configure ) > configure.log 2>&1
-then
-    echo_me "ERROR: Configure failed. See configure.log"
-    mv "$TMPSRCDIR/config.log" .
-    exit 1
-fi
+export TMPDIR TMPSRCDIR SOURCE BUILD NAME EMAIL VERSION
 
-export TMPDIR TMPSRCDIR SOURCE BUILD NAME EMAIL
-
-"$TMPSRCDIR/config.status" --file package-helper && chmod +x ./package-helper && ./package-helper
+cp package-helper.in package-helper && chmod +x ./package-helper && ./package-helper

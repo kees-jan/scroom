@@ -45,14 +45,6 @@ prepare()
 }
 
 ME="$0"
-PACKAGE_NAME="@PACKAGE_NAME@"
-PACKAGE_TARNAME="@PACKAGE_TARNAME@"
-PACKAGE_VERSION="@PACKAGE_VERSION@"
-PACKAGE_STRING="@PACKAGE_STRING@"
-PACKAGE_BUGREPORT="@PACKAGE_BUGREPORT@"
-PACKAGE_URL="@PACKAGE_URL@"
-PACKAGE="@PACKAGE@"
-VERSION=$(echo "@VERSION@" | sed -e 's/_/~/g')
 
 # echo_me "Hello world"
 # echo_me "TMPDIR:    $TMPDIR"
@@ -64,13 +56,10 @@ VERSION=$(echo "@VERSION@" | sed -e 's/_/~/g')
 [ -d "$TMPSRCDIR" ] || exit 1
 [ -f "$SOURCE" -a -r "$SOURCE" ] || exit 1
 [ -d "$BUILD" -a -w "$BUILD" ] || exit 1
+[ ! -z "$VERSION" ] || exit 1
 
+echo_me "Packaging scroom version $VERSION"
 
-if [ "$PACKAGE" != "scroom" ]
-then
-    echo_me "ERROR: $SOURCE doesn't contain scroom!"
-    exit 1
-fi
 if [ -e "$TMPSRCDIR/debian" ]
 then
     echo_me "ERROR: $TMPSRCDIR/debian exists"
