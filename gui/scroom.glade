@@ -520,7 +520,14 @@
     <property name="website">https://github.com/kees-jan/scroom/wiki</property>
     <property name="website_label" translatable="yes">Visit the Scroom website</property>
     <property name="license" translatable="yes">LGPL, v2</property>
-    <property name="authors">Kees-Jan Dijkzeul &lt;kees-jan.dijkzeul@iae.nl&gt;</property>
+    <property name="authors">Kees-Jan Dijkzeul &lt;kees-jan@dijkzeul.eu&gt;
+Joost van Pinxten &lt;joost.vanpinxten@cpp.canon&gt;
+Sep group 2, Q4 2019-2020,
+  Department of Mathematics and Computer Science,
+  Eindhoven University of Technology
+
+Icon:
+Clker-Free-Vector-Images from Pixabay</property>
     <property name="translator_credits" translatable="yes" comments="TRANSLATORS: Replace this string with your names, one name per line.">translator-credits</property>
     <child internal-child="vbox">
       <widget class="GtkVBox" id="dialog-vbox1">
