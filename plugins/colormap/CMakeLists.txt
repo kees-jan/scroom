@@ -1,4 +1,5 @@
-add_library(spcolormap SHARED main.cc colormapplugin.cc colormapplugin.hh colormapprovider.cc colormapprovider.hh colormaps.cc colormaps.hh)
+add_library(spcolormap SHARED)
+target_sources(spcolormap PRIVATE main.cc colormapplugin.cc colormapplugin.hh colormapprovider.cc colormapprovider.hh colormaps.cc colormaps.hh)
 target_link_libraries(
         spcolormap PRIVATE project_options project_warnings PUBLIC PkgConfig::gtk PkgConfig::cairo)
 
