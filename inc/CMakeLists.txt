@@ -1,5 +1,5 @@
-install(FILES
-        scroom/assertions.hh
+install(
+  FILES scroom/assertions.hh
         scroom/async-deleter.hh
         scroom/bitmap-helpers.hh
         scroom/blockallocator.hh
@@ -36,14 +36,8 @@ install(FILES
         scroom/unused.hh
         scroom/utilities.hh
         scroom/viewinterface.hh
-        DESTINATION include/scroom)
+  DESTINATION include/scroom)
 
-install(FILES
-        scroom/impl/bookkeepingimpl.hh
-        scroom/impl/threadpoolimpl.hh
-        DESTINATION include/scroom/impl)
+install(FILES scroom/impl/bookkeepingimpl.hh scroom/impl/threadpoolimpl.hh DESTINATION include/scroom/impl)
 
-install(FILES
-        scroom/gmock/colormappable.hh
-        scroom/gmock/presentationinterface.hh
-        DESTINATION include/scroom/gmock)
+install(FILES scroom/gmock/colormappable.hh scroom/gmock/presentationinterface.hh DESTINATION include/scroom/gmock)
