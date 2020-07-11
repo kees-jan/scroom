@@ -1,7 +1,8 @@
 add_library(tiledbitmap)
 target_sources(
   tiledbitmap
-  PRIVATE src/compressedtile.cc
+  PRIVATE src/cmyklayeroperations.cc
+          src/compressedtile.cc
           src/layer.cc
           src/layercoordinator.cc
           src/layercoordinator.hh
