@@ -42,8 +42,8 @@ public:
   bool operator()();
 };
 
-WaitForAsyncOp::WaitForAsyncOp(const std::string& name)
-  : name(name), started(false)
+WaitForAsyncOp::WaitForAsyncOp(const std::string& name_)
+  : name(name_), started(false)
 {
 }
 
@@ -68,10 +68,9 @@ bool WaitForAsyncOp::operator()()
   struct timespec now;
   if(0==clock_gettime(CLOCK_REALTIME, &now))
   {
-	  double duration = now.tv_sec - t.tv_sec +
-			  (now.tv_nsec - t.tv_nsec) / 1E9;
-
-	  std::cout << name << " took " << duration << "s" << std::endl;
+    double duration = now.tv_sec - t.tv_sec + (now.tv_nsec - t.tv_nsec) / 1E9;
+    
+    std::cout << name << " took " << duration << "s" << std::endl;
   }
   return false;
 }
@@ -85,7 +84,7 @@ void init_tests()
   // const unsigned int testDuration = 15;
   const unsigned int sleepDuration = 2;
 
-  functions.push_back(Sleep(sleepDuration));
+  functions.push_back(Sleeper(sleepDuration));
 
   functions.push_back(boost::bind(setupTest1bpp, -2, width, height));
   functions.push_back(WaitForAsyncOp("File load 1bpp"));

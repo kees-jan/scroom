@@ -28,6 +28,8 @@ incscroom_HEADERS = \
 	inc/scroom/plugininformationinterface.hh \
 	inc/scroom/point.hh \
 	inc/scroom/presentationinterface.hh \
+	inc/scroom/pipettelayeroperations.hh \
+	inc/scroom/pipetteviewinterface.hh \
 	inc/scroom/progressinterface.hh \
 	inc/scroom/progressinterfacehelpers.hh \
 	inc/scroom/rectangle.hh \
@@ -151,6 +153,8 @@ libs_util_src_libsutil_la_SOURCES = \
 
 libs_util_src_libsutil_la_LIBADD = @UTILS_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
 
+libs_util_src_libsutil_la_LDFLAGS = $(loadflag)
+
 if BOOST_UNITTESTS
 
 libs_util_test_utils_tests_CPPFLAGS = @UTILS_CFLAGS@ -I $(top_srcdir)/inc
@@ -193,6 +197,8 @@ libs_threadpool_src_libsthreadpool_la_SOURCES = \
 	libs/threadpool/src/queue.hh \
 	libs/threadpool/src/async-deleter.cc
 libs_threadpool_src_libsthreadpool_la_LIBADD = @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
+
+libs_threadpool_src_libsthreadpool_la_LDFLAGS = $(loadflag)
 
 if BOOST_UNITTESTS
 
@@ -241,6 +247,8 @@ libs_memory_manager_src_libsmemman_la_LIBADD = \
 	@BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
 	@ZLIB@
 
+libs_memory_manager_src_libsmemman_la_LDFLAGS = $(loadflag)	
+
 if BOOST_UNITTESTS
 
 memory_manager_check_programs = \
@@ -265,6 +273,7 @@ libs_memory_manager_test_memory_manager_tests_LDADD = \
 memory_manager_tests = \
 	libs/memory-manager/test/memory-manager-tests
 
+
 endif BOOST_UNITTESTS
 
 ########################################################################
@@ -286,6 +295,8 @@ libs_scroom_src_libsscroom_la_SOURCES = \
 libs_scroom_src_libsscroom_la_LIBADD = \
 	@SCROOMLIB_LIBS@ $(util_libs) \
 	@BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
+
+libs_scroom_src_libsscroom_la_LDFLAGS = $(loadflag)
 
 if BOOST_UNITTESTS
 
@@ -341,6 +352,7 @@ libs_tiled_bitmap_src_libstiledbitmap_la_SOURCES = \
 	libs/tiled-bitmap/src/layercoordinator.cc \
 	libs/tiled-bitmap/src/layercoordinator.hh \
 	libs/tiled-bitmap/src/layeroperations.cc \
+	libs/tiled-bitmap/src/cmyklayeroperations.cc \
 	libs/tiled-bitmap/src/tiled-bitmap.cc \
 	libs/tiled-bitmap/src/tiled-bitmap.hh \
 	libs/tiled-bitmap/src/tiledbitmapviewdata.cc \
@@ -358,6 +370,8 @@ libs_tiled_bitmap_src_libstiledbitmap_la_LIBADD = \
 	libs/scroom/src/libsscroom.la \
 	@BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
 
+libs_tiled_bitmap_src_libstiledbitmap_la_LDFLAGS = $(loadflag)
+
 if BOOST_UNITTESTS
 
 tiled_bitmap_tests = \
@@ -367,7 +381,8 @@ libs_tiled_bitmap_test_tiled_bitmap_tests_CPPFLAGS = @TILEDBITMAP_CFLAGS@ -I $(t
 
 libs_tiled_bitmap_test_tiled_bitmap_tests_SOURCES = \
 	libs/tiled-bitmap/test/main.cc \
-	libs/tiled-bitmap/test/tiledbitmap-tests.cc
+	libs/tiled-bitmap/test/tiledbitmap-tests.cc \
+	libs/tiled-bitmap/test/sampleiterator-tests.cc
 
 libs_tiled_bitmap_test_tiled_bitmap_tests_LDADD = \
 	@BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
@@ -422,6 +437,7 @@ libs_tiled_bitmap_tools_measure_load_performance_LDADD = \
 	libs/util/src/libsutil.la \
 	libs/scroom/src/libsscroom.la
 
+
 ########################################################################
 ### plugins/example
 ########################################################################
@@ -440,6 +456,8 @@ plugins_example_libspexample_la_SOURCES = \
 
 plugins_example_libspexample_la_LIBADD = -lm @EXAMPLEPLUGIN_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
 	libs/scroom/src/libsscroom.la
+
+plugins_example_libspexample_la_LDFLAGS = $(loadflag)
 
 ########################################################################
 ### plugins/transparentoverlay
@@ -466,6 +484,8 @@ plugins_transparent_overlay_src_libsptransparentoverlay_la_LIBADD = -lm @TRANSPA
 	libs/util/src/libsutil.la \
 	libs/scroom/src/libsscroom.la
 
+plugins_transparent_overlay_src_libsptransparentoverlay_la_LDFLAGS = $(loadflag)
+
 if BOOST_UNITTESTS
 
 plugins_transparent_overlay_test_overlay_tests_CPPFLAGS = @TRANSPARENTOVERLAYPLUGIN_CFLAGS@ \
@@ -478,7 +498,7 @@ plugins_transparent_overlay_test_overlay_tests_SOURCES = \
 	plugins/transparent-overlay/test/plugin-test.cc \
 	plugins/transparent-overlay/test/determine-size-test.cc
 
-plugins_transparent_overlay_test_overlay_tests_LDADD = @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @UTILS_LIBS@  \
+plugins_transparent_overlay_test_overlay_tests_LDADD = @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @UTILS_LIBS@ @TRANSPARENTOVERLAY_BOOSTTEST_WIN_LD_SIZEDETERMINER@ \
 	plugins/transparent-overlay/src/libsptransparentoverlay.la \
 	libs/util/src/libsutil.la \
 	libs/scroom/src/libsscroom.la \
@@ -506,7 +526,9 @@ plugins_tiff_src_libsptiff_la_SOURCES = \
 	plugins/tiff/src/tiffpresentation.hh
 
 plugins_tiff_src_libsptiff_la_LIBADD = @TIFFPLUGIN_LIBS@ -ltiff @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
-	libs/tiled-bitmap/src/libstiledbitmap.la libs/scroom/src/libsscroom.la
+	libs/tiled-bitmap/src/libstiledbitmap.la libs/scroom/src/libsscroom.la libs/util/src/libsutil.la
+
+plugins_tiff_src_libsptiff_la_LDFLAGS = $(loadflag)
 
 ########################################################################
 ### plugins/colormap
@@ -527,6 +549,67 @@ plugins_colormap_libspcolormap_la_SOURCES = \
 	plugins/colormap/main.cc
 
 plugins_colormap_libspcolormap_la_LIBADD = @COLORMAPPLUGIN_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
+
+plugins_colormap_libspcolormap_la_LDFLAGS = $(loadflag)
+
+########################################################################
+### plugins/measure
+########################################################################
+
+measure_plugin_libs = \
+	plugins/measure/src/libspmeasure.la
+
+plugins_measure_src_libspmeasure_la_CPPFLAGS = @MEASUREPLUGIN_CFLAGS@ -I $(top_srcdir)/inc
+
+plugins_measure_src_libspmeasure_la_SOURCES = \
+	plugins/measure/src/main.cc \
+	plugins/measure/src/measure.cc \
+	plugins/measure/src/measure.hh
+
+plugins_measure_src_libspmeasure_la_LIBADD = @MEASUREPLUGIN_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@
+
+plugins_measure_src_libspmeasure_la_LDFLAGS = $(loadflag)
+
+########################################################################
+### plugins/pipette
+########################################################################
+
+pipette_plugin_libs = \
+	plugins/pipette/src/libsppipette.la
+
+plugins_pipette_src_libsppipette_la_CPPFLAGS = @PIPETTEPLUGIN_CFLAGS@ -I $(top_srcdir)/inc
+
+plugins_pipette_src_libsppipette_la_SOURCES = \
+	plugins/pipette/src/pipette.cc \
+	plugins/pipette/src/pipette.hh \
+	plugins/pipette/src/main.cc
+
+plugins_pipette_src_libsppipette_la_LIBADD = @PIPETTEPLUGIN_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ libs/threadpool/src/libsthreadpool.la
+
+plugins_pipette_src_libsppipette_la_LDFLAGS = $(loadflag)
+
+if BOOST_UNITTESTS
+
+pipette_plugin_tests = \
+	plugins/pipette/test/pipette-tests
+
+pipette_plugin_check_programs = \
+	plugins/pipette/test/pipette-tests
+
+plugins_pipette_test_pipette_tests_CPPFLAGS = @PIPETTEPLUGIN_CFLAGS@ -I $(top_srcdir)/inc
+
+plugins_pipette_test_pipette_tests_LDFLAGS = -pthread
+
+plugins_pipette_test_pipette_tests_SOURCES = \
+	plugins/pipette/test/main.cc \
+	plugins/pipette/test/pipette-tests.cc
+
+plugins_pipette_test_pipette_tests_LDADD = \
+	@BOOSTTESTLIB@ @PIPETTEPLUGIN_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @BOOSTFILESYSTEMLIB@ libs/scroom/src/libsscroom.la  libs/threadpool/src/libsthreadpool.la -ldl \
+	plugins/pipette/src/libsppipette.la \
+	plugins/pipette/src/*.lo
+
+endif BOOST_UNITTESTS
 
 ########################################################################
 ### gui
@@ -550,6 +633,10 @@ gui_src_scroom_SOURCES = \
 	gui/src/progressbarmanager.hh \
 	gui/src/workinterface.hh
 
+if HAVE_WINDRES
+gui_src_scroom_SOURCES += gui/icon/icon.rc
+endif
+
 gui_src_scroom_CPPFLAGS = -I $(top_srcdir)/inc \
 	-DPACKAGE_DATA_DIR=\""$(pkgdatadir)"\" \
 	-DPLUGIN_DIR=\""$(plugindir)"\" \
@@ -562,7 +649,9 @@ gui_src_scroom_LDADD = @GUI_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @BOOSTPROGRA
 
 gui_extra_dist = \
 	gui/scroom.glade \
-	gui/ENVIRONMENT
+	gui/ENVIRONMENT \
+	gui/icon/icon.ico \
+	gui/icon/icon.rc
 
 gui_pkgdata_data = \
 	gui/scroom.glade
@@ -583,9 +672,9 @@ root_extra_dist = \
 ########################################################################
 
 ### Plugins
-plugin_LTLIBRARIES = $(example_plugin_libs) $(transparent_overlay_plugin_libs) $(tiff_plugin_libs) $(colormap_plugin_libs)
-plugins_check_programs = $(transparent_overlay_plugin_check_programs)
-plugins_tests = $(transparent_overlay_plugin_tests)
+plugin_LTLIBRARIES = $(example_plugin_libs) $(transparent_overlay_plugin_libs) $(tiff_plugin_libs) $(colormap_plugin_libs) $(measure_plugin_libs) $(pipette_plugin_libs)
+plugins_check_programs = $(transparent_overlay_plugin_check_programs) $(pipette_plugin_check_programs)
+plugins_tests = $(transparent_overlay_plugin_tests) $(pipette_plugin_tests)
 
 ### Libs
 libs_libs = $(boost_test_helper_libs) $(sanity_tests_libs) $(util_libs) $(threadpool_libs) $(memory_manager_libs) $(scroomlib_libs) $(tiled_bitmap_libs)
@@ -640,3 +729,11 @@ checkPROGRAMS: all-am $(check_PROGRAMS)
 
 silent-doxygen:
 	@$(MAKE) doxygen-doc > doxygen.log 2>&1
+
+# Target for installing a portable version on Windows. Only does 'install' on Linux
+install-win-portable: install
+	@POST_INSTALL_HOOK@
+
+# Define how the .rc file for the icon on Windows has to be compiled
+.rc.o:
+	windres $< -O coff -o $@

@@ -13,7 +13,7 @@
 
 #include <boost/test/unit_test.hpp>
 #include <boost/shared_ptr.hpp>
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 #include <boost/function.hpp>
 
 //////////////////////////////////////////////////////////////
@@ -26,8 +26,8 @@ private:
 public:
   typedef boost::shared_ptr<A> Ptr;
 
-  A(int& i)
-    :i(i)
+  A(int& i_)
+    :i(i_)
   {}
 
   void set(int v)

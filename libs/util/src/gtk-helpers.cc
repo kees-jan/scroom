@@ -29,8 +29,8 @@ namespace Scroom
         Wrapper(const boost::function<bool()>& f);
       };
 
-      Wrapper::Wrapper(const boost::function<bool()>& f)
-      :f(f)
+      Wrapper::Wrapper(const boost::function<bool()>& f_)
+      :f(f_)
       {}
 
       gpointer Wrapper::create(const boost::function<bool()>& f)
@@ -48,8 +48,8 @@ namespace Scroom
       }
     }
 
-    Wrapper::Wrapper(const boost::function<bool()>& f)
-        : f(&Detail::gtkWrapper), data(Detail::Wrapper::create(f))
+    Wrapper::Wrapper(const boost::function<bool()>& f_)
+        : f(&Detail::gtkWrapper), data(Detail::Wrapper::create(f_))
     {
     }
 

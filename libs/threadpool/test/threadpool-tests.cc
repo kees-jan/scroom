@@ -39,8 +39,8 @@ private:
 public:
   typedef boost::shared_ptr<A> Ptr;
 
-  A(Semaphore* s)
-    :s(s)
+  A(Semaphore* s_)
+    :s(s_)
   {}
 
   void operator()()
@@ -64,8 +64,8 @@ private:
 public:
   typedef boost::shared_ptr<B> Ptr;
 
-  B(Semaphore* s, R result)
-    :s(s), result(result)
+  B(Semaphore* s_, R result_)
+    :s(s_), result(result_)
   {}
 
   R operator()()
@@ -89,24 +89,24 @@ R no_op(Semaphore* s, R result)
 
 //////////////////////////////////////////////////////////////
 
-bool has_at_least_n_threads(ThreadPool* pool, int count)
+bool has_at_least_n_threads(ThreadPool* pool, int count_)
 {
-  if(count <= 0)
+  if(count_ <= 0)
     return true;
   else
   {
-    std::vector<Semaphore*> semaphores(count);
-    for(int i=0; i<count; i++)
+    std::vector<Semaphore*> semaphores(count_);
+    for(int i=0; i<count_; i++)
       semaphores[i] = new Semaphore(0);
 
-    for(int i=0; i<count-1; i++)
+    for(int i=0; i<count_-1; i++)
       pool->schedule(pass(semaphores[i+1])+clear(semaphores[i]));
 
     // All tasks are blocked on semaphores[count-1]
 
-    pool->schedule(clear(semaphores[count-1]));
+    pool->schedule(clear(semaphores[count_-1]));
     // If jobs of the same priority are scheduled in order, and if
-    // there are at least count threads, then this final job will get
+    // there are at least count_ threads, then this final job will get
     // scheduled on the last available thread, thus freeing all
     // others.
     bool result=semaphores[0]->P(long_timeout);
@@ -116,7 +116,7 @@ bool has_at_least_n_threads(ThreadPool* pool, int count)
       // If there are too few threads, then all threads are still
       // blocked. This will ultimately block the ThreadPool destructor,
       // so we have to unblock them manually here.
-      for(int i=1; i<count; i++)
+      for(int i=1; i<count_; i++)
         semaphores[i]->V();
     }
     return result;

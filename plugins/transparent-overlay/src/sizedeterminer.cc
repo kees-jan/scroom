@@ -53,8 +53,8 @@ SizeDeterminer::PresentationData::PresentationData()
   defect();
 }
 
-SizeDeterminer::PresentationData::PresentationData(ResizablePresentationInterface::Ptr const& resizablePresentationInterface)
-  : resizablePresentationInterface(resizablePresentationInterface)
+SizeDeterminer::PresentationData::PresentationData(ResizablePresentationInterface::Ptr const& resizablePresentationInterface_)
+  : resizablePresentationInterface(resizablePresentationInterface_)
 {}
 
 ////////////////////////////////////////////////////////////////////////

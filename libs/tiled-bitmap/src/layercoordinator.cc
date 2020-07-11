@@ -16,9 +16,9 @@ LayerCoordinator::Ptr LayerCoordinator::create(CompressedTile::Ptr targetTile, L
   return LayerCoordinator::Ptr(new LayerCoordinator(targetTile, lo));
 }
 
-LayerCoordinator::LayerCoordinator(CompressedTile::Ptr targetTile,
-                                   LayerOperations::Ptr lo)
-  : targetTile(targetTile), lo(lo), unfinishedSourceTiles(0)
+LayerCoordinator::LayerCoordinator(CompressedTile::Ptr targetTile_,
+                                   LayerOperations::Ptr lo_)
+  : targetTile(targetTile_), lo(lo_), unfinishedSourceTiles(0)
 {
 }
 

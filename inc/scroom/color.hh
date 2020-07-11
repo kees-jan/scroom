@@ -47,13 +47,13 @@ public:
   {}
 
   /** Constructor. Use the given RGB values */
-  Color(double red, double green, double blue, double alpha=1.0)
-    : alpha(alpha), red(red), green(green), blue(blue)
+  Color(double red_, double green_, double blue_, double alpha_=1.0)
+    : alpha(alpha_), red(red_), green(green_), blue(blue_)
   {}
 
   /** Constructor. Create the given gray value */
-  explicit Color(double gray, double alpha=1.0)
-    : alpha(alpha), red(gray), green(gray), blue(gray)
+  explicit Color(double gray, double alpha_=1.0)
+    : alpha(alpha_), red(gray), green(gray), blue(gray)
   {}
 
   Color& operator+=(const Color& rhs)
@@ -86,11 +86,11 @@ public:
     return Color(L>0.179?0:1);
   }
 
-  Color& setAlpha(double alpha)
-  { return *this *= alpha; }
+  Color& setAlpha(double alpha_)
+  { return *this *= alpha_; }
 
-  Color setAlpha(double alpha) const
-  { return Color(*this).setAlpha(alpha); }
+  Color setAlpha(double alpha_) const
+  { return Color(*this).setAlpha(alpha_); }
 };
 
 inline Color mix(const Color& a, const Color& b, double alpha)

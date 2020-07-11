@@ -10,6 +10,7 @@
 #include <ostream>
 
 #include <boost/operators.hpp>
+#include <gdk/gdk.h>
 
 namespace Scroom
 {
@@ -25,12 +26,16 @@ namespace Scroom
     public:
       typedef T value_type;
 
-      Point(value_type x, value_type y)
-        : x(x), y(y)
+      Point(value_type x_, value_type y_)
+        : x(x_), y(y_)
       {}
 
       template<typename U>
       explicit Point(Point<U> other)
+        : x(other.x), y(other.y)
+      {}
+
+      explicit Point(GdkPoint& other)
         : x(other.x), y(other.y)
       {}
 
@@ -58,10 +63,24 @@ namespace Scroom
         return *this;
       }
 
+      Point<value_type>& operator*=(const Point<value_type> &other)
+      {
+        x *= other.x;
+        y *= other.y;
+        return *this;
+      }
+
       Point<value_type>& operator/=(value_type other)
       {
         x /= other;
         y /= other;
+        return *this;
+      }
+
+      Point<value_type>& operator/=(const Point<value_type> &other)
+      {
+        x /= other.x;
+        y /= other.y;
         return *this;
       }
 
@@ -113,6 +132,5 @@ namespace Scroom
       result += Point<R>(right);
       return result;
     }
-
   }
 }

@@ -41,13 +41,13 @@ void Scroom::Detail::ThreadPool::FunctionAdditor::operator()()
 
 ////////////////////////////////////////////////////////////////////////
 
-Scroom::Detail::ThreadPool::FunctionMultiplier::FunctionMultiplier(boost::function<void ()> const& f, unsigned int i)
-  : f(f), i(i)
+Scroom::Detail::ThreadPool::FunctionMultiplier::FunctionMultiplier(boost::function<void ()> const& f_, unsigned int i_)
+  : f(f_), i(i_)
 {}
 
-Scroom::Detail::ThreadPool::FunctionMultiplier& Scroom::Detail::ThreadPool::FunctionMultiplier::operator*(unsigned int i)
+Scroom::Detail::ThreadPool::FunctionMultiplier& Scroom::Detail::ThreadPool::FunctionMultiplier::operator*(unsigned int i_)
 {
-  this->i *= i;
+  this->i *= i_;
   return *this;
 }
 

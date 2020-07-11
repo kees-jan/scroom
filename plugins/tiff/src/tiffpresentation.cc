@@ -14,6 +14,8 @@
 #include <scroom/layeroperations.hh>
 #include <scroom/unused.hh>
 
+#include <scroom/tiledbitmaplayer.hh>
+
 TiffPresentation::TiffPresentation()
   : tif(NULL), height(0), width(0), bps(0), spp(0)
 {
@@ -47,52 +49,53 @@ void TiffPresentation::destroy()
 	if(1!=TIFFGetField(file, field, ##__VA_ARGS__)) \
 	  throw std::invalid_argument("Field not present in tiff file: " #field);
 
-bool TiffPresentation::load(const std::string& fileName)
+bool TiffPresentation::load(const std::string& fileName_)
 {
   try
   {
-    this->fileName = fileName;
-    tif = TIFFOpen(fileName.c_str(), "r");
+    this->fileName = fileName_;
+    tif = TIFFOpen(fileName_.c_str(), "r");
     if (!tif)
     {
       // Todo: report error
-      printf("PANIC: Failed to open file %s\n", fileName.c_str());
+      printf("PANIC: Failed to open file %s\n", fileName_.c_str());
       return false;
     }
 
-    uint16 spp;
-    if (1 != TIFFGetField(tif, TIFFTAG_SAMPLESPERPIXEL, &spp))
-      spp = 1; // Default value, according to tiff spec
-    if (spp != 1 && spp != 3)
+    uint16 spp_ = 0;
+    if (1 != TIFFGetField(tif, TIFFTAG_SAMPLESPERPIXEL, &spp_))
+      spp_ = 1; // Default value, according to tiff spec
+    if (spp_ != 1 && spp_ != 3 && spp_ != 4)
     {
-      printf("PANIC: Samples per pixel is not 1 or 3, but %d. Giving up\n", spp);
+      printf("PANIC: Samples per pixel is neither 1 nor 3 nor 4, but %d. Giving up\n", spp_);
       return false;
     }
-    this->spp = spp;
+    this->spp = spp_;
 
     TIFFGetFieldChecked(tif, TIFFTAG_IMAGEWIDTH, &width);
     TIFFGetFieldChecked(tif, TIFFTAG_IMAGELENGTH, &height);
 
-    uint16 bps;
-    if( 1 != TIFFGetField(tif, TIFFTAG_BITSPERSAMPLE, &bps))
+    uint16 bps_ = 0;
+    if( 1 != TIFFGetField(tif, TIFFTAG_BITSPERSAMPLE, &bps_))
     {
       if(spp==1)
-        bps = 1;
+        bps_ = 1;
       else
-        bps = 8;
+        bps_ = 8;
     }
     else
     {
+      
       if(spp==3)
       {
-        if(bps!=8)
+        if(bps_!=8)
         {
-          printf("PANIC: Bits per sample is not 8, but %d. Giving up\n", bps);
+          printf("PANIC: Bits per sample is not 8, but %d. Giving up\n", bps_);
           return false;
         }
       }
     }
-    this->bps = bps;
+    this->bps = bps_;
 
     Colormap::Ptr originalColormap;
 
@@ -102,10 +105,10 @@ bool TiffPresentation::load(const std::string& fileName)
     {
       originalColormap = Colormap::create();
       originalColormap->name = "Original";
-      int count = 1 << bps;
+      size_t count = 1UL << bps;
       originalColormap->colors.resize(count);
 
-      for (int i = 0; i < count; i++)
+      for (size_t i = 0; i < count; i++)
       {
         originalColormap->colors[i] = Color(1.0 * r[i] / 0xFFFF,
             1.0 * g[i] / 0xFFFF, 1.0 * b[i] / 0xFFFF);
@@ -155,6 +158,11 @@ bool TiffPresentation::load(const std::string& fileName)
         printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
       break;
 
+    case PHOTOMETRIC_SEPARATED:
+      if (originalColormap)
+        printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
+      break;
+
     default:
       printf("PANIC: Unrecognized value for photometric\n");
       return false;
@@ -166,9 +174,16 @@ bool TiffPresentation::load(const std::string& fileName)
 
     if(TIFFGetField(tif, TIFFTAG_XRESOLUTION, &resolutionX) &&
        TIFFGetField(tif, TIFFTAG_YRESOLUTION, &resolutionY) &&
-       TIFFGetField(tif, TIFFTAG_RESOLUTIONUNIT, &resolutionUnit) &&
-       resolutionUnit == RESUNIT_NONE)
+       TIFFGetField(tif, TIFFTAG_RESOLUTIONUNIT, &resolutionUnit))
     {
+      if(resolutionUnit != RESUNIT_NONE)
+      {
+        // Fix aspect ratio only
+        float base = std::max(resolutionX, resolutionY);
+        resolutionX = resolutionX/base;
+        resolutionY = resolutionY/base;
+      }
+
       transformationData = TransformationData::create();
       transformationData->setAspectRatio(1/resolutionX, 1/resolutionY);
     }
@@ -177,15 +192,47 @@ bool TiffPresentation::load(const std::string& fileName)
       resolutionX = 1;
       resolutionY = 1;
     }
-    
     printf("This bitmap has size %d*%d, aspect ratio %.1f*%.1f\n",
            width, height, 1/resolutionX, 1/resolutionY);
-    
-    LayerSpec ls;
 
-    if (spp == 3)
+    LayerSpec ls;
+    if (spp == 4 && bps == 8)
     {
-      ls.push_back(Operations24bpp::create());
+      auto cmykOperations = OperationsCMYK32::create();
+      pipetteLayerOperation = cmykOperations;
+      ls.push_back(cmykOperations);
+      properties[PIPETTE_PROPERTY_NAME] = "";
+    }
+    else if (spp == 4 && bps == 4)
+    {
+      auto cmykOperations = OperationsCMYK16::create();
+      pipetteLayerOperation = cmykOperations;
+      ls.push_back(cmykOperations);
+      ls.push_back(OperationsCMYK32::create());
+      properties[PIPETTE_PROPERTY_NAME] = "";
+    }
+    else if (spp == 4 && bps == 2)
+    {
+      auto cmykOperations = OperationsCMYK8::create();
+      pipetteLayerOperation = cmykOperations;
+      ls.push_back(cmykOperations);
+      ls.push_back(OperationsCMYK32::create());
+      properties[PIPETTE_PROPERTY_NAME] = "";
+    }
+    else if (spp == 4 && bps == 1)
+    {
+      auto cmykOperations = OperationsCMYK4::create();
+      pipetteLayerOperation = cmykOperations;
+      ls.push_back(cmykOperations);
+      ls.push_back(OperationsCMYK32::create());
+      properties[PIPETTE_PROPERTY_NAME] = "";
+    }
+    else if (spp == 3 && bps == 8)
+    {
+      auto rgbOperations = Operations24bpp::create();
+      pipetteLayerOperation = rgbOperations;
+      ls.push_back(rgbOperations);
+      properties[PIPETTE_PROPERTY_NAME] = "";
     }
     else if (bps == 2 || bps == 4 || photometric == PHOTOMETRIC_PALETTE)
     {
@@ -322,31 +369,33 @@ void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth,
   //        firstTile, (int)(firstTile+tiles.size()),
   //        tileWidth);
 
-  const tsize_t scanLineSize = TIFFScanlineSize(tif);
-  const int tileStride = tileWidth*spp*bps/8;
-  byte row[scanLineSize];
+  const uint32 startLine_ = static_cast<uint32>(startLine);
+  const size_t firstTile_ = static_cast<size_t>(firstTile);
+  const size_t scanLineSize = static_cast<size_t>(TIFFScanlineSize(tif));
+  const size_t tileStride = static_cast<size_t>(tileWidth*spp*bps/8);
+  std::vector<byte> row(scanLineSize);
 
-  const int tileCount = tiles.size();
-  byte* dataPtr[tileCount];
-  for (int tile = 0; tile < tileCount; tile++)
+  const size_t tileCount = tiles.size();
+  auto dataPtr = std::vector<byte*>(tileCount);
+  for (size_t tile = 0; tile < tileCount; tile++)
   {
     dataPtr[tile] = tiles[tile]->data.get();
   }
 
-  for (int i = 0; i < lineCount; i++)
+  for (size_t i = 0; i < static_cast<size_t>(lineCount); i++)
   {
-    TIFFReadScanline(tif, (tdata_t) row, startLine + i);
+    TIFFReadScanline(tif, row.data(), static_cast<uint32>(i) + startLine_);
 
-    for (int tile = 0; tile < tileCount - 1; tile++)
+    for (size_t tile = 0; tile < tileCount - 1; tile++)
     {
       memcpy(dataPtr[tile],
-             row + (firstTile + tile) * tileStride,
+             row.data() + (firstTile_ + tile) * tileStride,
              tileStride);
       dataPtr[tile] += tileStride;
     }
     memcpy(dataPtr[tileCount - 1],
-        row + (firstTile + tileCount - 1) * tileStride,
-        scanLineSize - (firstTile + tileCount - 1) * tileStride);
+        row.data() + (firstTile_ + tileCount - 1) * tileStride,
+        scanLineSize - (firstTile_ + tileCount - 1) * tileStride);
     dataPtr[tileCount - 1] += tileStride;
   }
 }
@@ -355,6 +404,81 @@ void TiffPresentation::done()
 {
   TIFFClose(tif);
   tif = NULL;
+}
+
+/**
+ * Add two pipette color map values of the same key.
+ */
+PipetteLayerOperations::PipetteColor sumPipetteColors(const PipetteLayerOperations::PipetteColor& lhs, const PipetteLayerOperations::PipetteColor& rhs)
+{
+  PipetteLayerOperations::PipetteColor result;
+  if(lhs.empty())
+  {
+    return rhs;
+  }
+  for(unsigned int i = 0; i < rhs.size(); i++ )
+  {
+    result.push_back({ rhs[i].first, rhs[i].second + lhs[i].second });
+  }
+  return result;
+}
+
+/**
+ * Divides each element inside elements by by a constant divisor.
+ */
+PipetteLayerOperations::PipetteColor dividePipetteColors(PipetteLayerOperations::PipetteColor elements, const int divisor)
+{
+  for(auto& elem : elements)
+  {
+    elem.second /= divisor;
+  }
+  return elements;
+}
+
+////////////////////////////////////////////////////////////////////////
+// PipetteViewInterface
+////////////////////////////////////////////////////////////////////////
+
+PipetteLayerOperations::PipetteColor TiffPresentation::getPixelAverages(Scroom::Utils::Rectangle<int> area)
+{
+  require(pipetteLayerOperation);
+
+  Scroom::Utils::Rectangle<int> presentationArea = getRect().toIntRectangle();
+  area = area.intersection(presentationArea);
+
+  Layer::Ptr bottomLayer = tbi->getBottomLayer();
+  PipetteLayerOperations::PipetteColor pipetteColors;
+
+  int totalPixels = area.getWidth() * area.getHeight();
+  
+  if(totalPixels == 0){
+    return {};
+  }
+
+  //Get start tile (tile_pos_x_start, tile_pos_y_start)
+  int tile_pos_x_start = area.getLeft() / TILESIZE;
+  int tile_pos_y_start = area.getTop() / TILESIZE;
+
+  //Get end tile (tile_pos_x_end, tile_pos_y_end)
+  int tile_pos_x_end = (area.getRight() - 1) / TILESIZE;
+  int tile_pos_y_end = (area.getBottom() - 1) / TILESIZE;
+
+  for(int x = tile_pos_x_start; x <= tile_pos_x_end; x++)
+  {
+    for(int y = tile_pos_y_start; y <= tile_pos_y_end; y++)
+    {
+      ConstTile::Ptr tile = bottomLayer->getTile(x, y)->getConstTileSync(); 
+      Scroom::Utils::Rectangle<int> tile_rectangle(x * TILESIZE, y * TILESIZE, tile->width, tile->height);
+
+      Scroom::Utils::Rectangle<int> inter_rect = tile_rectangle.intersection(area);
+      Scroom::Utils::Point<int> base(x * TILESIZE, y * TILESIZE);
+
+      inter_rect -= base; //rectangle coordinates relative to constTile with topleft corner (0,0)
+
+      pipetteColors = sumPipetteColors(pipetteColors, pipetteLayerOperation->sumPixelValues(inter_rect, tile));
+    }
+  }
+  return dividePipetteColors(pipetteColors, totalPixels);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -528,4 +652,9 @@ void TiffPresentationWrapper::disableTransparentBackground()
 bool TiffPresentationWrapper::getTransparentBackground()
 {
   return presentation->getTransparentBackground();
+}
+
+PipetteLayerOperations::PipetteColor TiffPresentationWrapper::getPixelAverages(Scroom::Utils::Rectangle<int> area)
+{
+  return presentation->getPixelAverages(area);
 }

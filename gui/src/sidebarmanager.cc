@@ -12,10 +12,10 @@ SidebarManager::SidebarManager()
 {
 }
 
-void SidebarManager::setWidgets(GtkWidget* panelWindow, GtkBox* panel)
+void SidebarManager::setWidgets(GtkWidget* panelWindow_, GtkBox* panel_)
 {
-  this->panelWindow = panelWindow;
-  this->panel = panel;
+  this->panelWindow = panelWindow_;
+  this->panel = panel_;
 }
 
 void SidebarManager::addSideWidget(std::string title, GtkWidget* w)

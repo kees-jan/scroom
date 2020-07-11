@@ -209,6 +209,57 @@ void CommonOperations::draw(cairo_t* cr, const ConstTile::Ptr tile,
   }
 }
 
+PipetteLayerOperations::PipetteColor PipetteCommonOperationsCMYK::sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile)
+{
+  int offset = 4 * (area.getTop() * tile->width + area.getLeft());
+  int stride = 4 * (tile->width - area.getWidth());
+  Scroom::Bitmap::SampleIterator<const uint8_t> si(tile->data.get(), 0, bps);
+  si += offset;
+
+  size_t sum_c = 0;
+  size_t sum_m = 0;
+  size_t sum_y = 0;
+  size_t sum_k = 0;
+
+  for(int y = area.getTop(); y < area.getBottom(); y++)
+  {
+    for(int x = area.getLeft(); x < area.getRight(); x++)
+    {
+      sum_c += *si++;
+      sum_m += *si++;
+      sum_y += *si++;
+      sum_k += *si++;
+    }
+    si += stride;
+  }
+  return { {"C", sum_c}, {"M", sum_m}, {"Y", sum_y}, {"K", sum_k} };
+}
+
+PipetteLayerOperations::PipetteColor PipetteCommonOperationsRGB::sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile)
+{
+  int offset = 3 * (area.getTop() * tile->width + area.getLeft());
+  int stride = 3 * (tile->width - area.getWidth());
+  Scroom::Bitmap::SampleIterator<const uint8_t> si(tile->data.get(), 0, bps);
+  si += offset;
+
+  size_t sum_r = 0;
+  size_t sum_g = 0;
+  size_t sum_b = 0;
+
+  for(int y = area.getTop(); y < area.getBottom(); y++)
+  {
+    for(int x = area.getLeft(); x < area.getRight(); x++)
+    {
+      sum_r += *si++;
+      sum_g += *si++;
+      sum_b += *si++;
+    }
+    si += stride;
+  }
+
+  return { {"R", sum_r}, {"G", sum_g}, {"B", sum_b} };
+}
+
 ////////////////////////////////////////////////////////////////////////
 // Operations1bpp
 
@@ -217,8 +268,8 @@ LayerOperations::Ptr Operations1bpp::create(ColormapProvider::Ptr colormapProvid
   return Ptr(new Operations1bpp(colormapProvider));
 }
 
-Operations1bpp::Operations1bpp(ColormapProvider::Ptr colormapProvider)
-  : colormapProvider(colormapProvider)
+Operations1bpp::Operations1bpp(ColormapProvider::Ptr colormapProvider_)
+  : colormapProvider(colormapProvider_)
 {
 }
 
@@ -236,8 +287,8 @@ Scroom::Utils::Stuff Operations1bpp::cache(const ConstTile::Ptr tile)
   unsigned char* row = data.get();
   for(int j=0; j<tile->height; j++, row+=stride)
   {
-    PixelIterator<const byte> bit(tile->data.get()+j*tile->width/8, 0);
-    uint32_t* pixel = (uint32_t*)row;
+    SampleIterator<const byte> bit(tile->data.get()+j*tile->width/8, 0);
+    uint32_t* pixel = reinterpret_cast<uint32_t*>(row);
     for(int i=0; i<tile->width; i++)
     {
       *pixel = colormap->colors[*bit].getARGB32();
@@ -314,7 +365,7 @@ void Operations1bpp::draw(cairo_t* cr, const ConstTile::Ptr tile,
     for(int y=0; y<tileAreaInt.getHeight(); y++)
     {
       const byte* const data = tile->data.get();
-      PixelIterator<const byte> current(data+(tileAreaInt.getTop()+y)*stride, tileAreaInt.getLeft(), 1);
+      SampleIterator<const byte> current(data+(tileAreaInt.getTop()+y)*stride, tileAreaInt.getLeft(), 1);
 
       for(int x=0; x<tileAreaInt.getWidth(); x++, ++current)
       {
@@ -337,8 +388,8 @@ LayerOperations::Ptr Operations8bpp::create(ColormapProvider::Ptr colormapProvid
   return Ptr(new Operations8bpp(colormapProvider));
 }
 
-Operations8bpp::Operations8bpp(ColormapProvider::Ptr colormapProvider)
-  : colormapProvider(colormapProvider)
+Operations8bpp::Operations8bpp(ColormapProvider::Ptr colormapProvider_)
+  : colormapProvider(colormapProvider_)
 {
 }
 
@@ -360,7 +411,7 @@ Scroom::Utils::Stuff Operations8bpp::cache(const ConstTile::Ptr tile)
   {
     const byte* cur = tile->data.get()+j*tile->width;
 
-    uint32_t* pixel = (uint32_t*)row;
+    uint32_t* pixel = reinterpret_cast<uint32_t*>(row);
     for(int i=0; i<tile->width; i++)
     {
       *pixel = mix(c2, c1, 1.0**cur/255).getARGB32();
@@ -456,12 +507,12 @@ void Operations8bpp::draw(cairo_t* cr, const ConstTile::Ptr tile,
 ////////////////////////////////////////////////////////////////////////
 // Operations24bpp
 
-LayerOperations::Ptr Operations24bpp::create()
+PipetteCommonOperationsRGB::Ptr Operations24bpp::create()
 {
-  return Ptr(new Operations24bpp());
+  return PipetteCommonOperationsRGB::Ptr(new Operations24bpp());
 }
 
-Operations24bpp::Operations24bpp()
+Operations24bpp::Operations24bpp() : PipetteCommonOperationsRGB(8)
 {
 }
 
@@ -479,7 +530,7 @@ Scroom::Utils::Stuff Operations24bpp::cache(const ConstTile::Ptr tile)
   {
     const byte* cur = tile->data.get()+3*j*tile->width;
 
-    uint32_t* pixel = (uint32_t*)row;
+    uint32_t* pixel = reinterpret_cast<uint32_t*>(row);
     for(int i=0; i<tile->width; i++)
     {
       //         A          R              G             B
@@ -546,9 +597,9 @@ LayerOperations::Ptr Operations::create(ColormapProvider::Ptr colormapProvider, 
   return Ptr(new Operations(colormapProvider, bpp));
 }
 
-Operations::Operations(ColormapProvider::Ptr colormapProvider, int bpp)
-  : colormapProvider(colormapProvider),
-    bpp(bpp), pixelsPerByte(8/bpp), pixelOffset(bpp), pixelMask((1<<bpp)-1)
+Operations::Operations(ColormapProvider::Ptr colormapProvider_, int bpp_)
+  : colormapProvider(colormapProvider_),
+    bpp(bpp_), pixelsPerByte(8/bpp_), pixelOffset(bpp_), pixelMask((1<<bpp_)-1)
 {
 }
 
@@ -566,9 +617,9 @@ Scroom::Utils::Stuff Operations::cache(const ConstTile::Ptr tile)
   unsigned char* row = data.get();
   for(int j=0; j<tile->height; j++, row+=stride)
   {
-    PixelIterator<const byte> pixelIn(tile->data.get()+j*tile->width/pixelsPerByte, 0, bpp);
+    SampleIterator<const byte> pixelIn(tile->data.get()+j*tile->width/pixelsPerByte, 0, bpp);
 
-    uint32_t* pixelOut = (uint32_t*)row;
+    uint32_t* pixelOut = reinterpret_cast<uint32_t*>(row);
     for(int i=0; i<tile->width; i++)
     {
       *pixelOut = colormap->colors[*pixelIn].getARGB32();
@@ -597,7 +648,7 @@ void Operations::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, in
   {
     // Iterate vertically over target
     const byte* sourcePtr = sourceBase;
-    PixelIterator<uint16_t> targetPtr((uint16_t*)targetBase, 0, targetMultiplier * bpp);
+    SampleIterator<uint16_t> targetPtr(reinterpret_cast<uint16_t*>(targetBase), 0, targetMultiplier * bpp);
 
     for(int i=0; i<source->width/8;
         i++, sourcePtr+=8/pixelsPerByte, ++targetPtr)
@@ -612,7 +663,7 @@ void Operations::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, in
 
       for(int k=0; k<8; k++, base+=sourceStride)
       {
-        PixelIterator<const byte> current(base, 0, bpp);
+        SampleIterator<const byte> current(base, 0, bpp);
         for(int l=0; l<8; l++, ++current)
           ++(lookup[*current]);
       }
@@ -668,7 +719,7 @@ void Operations::draw(cairo_t* cr, const ConstTile::Ptr tile,
     for(int y=0; y<tileAreaInt.height(); y++)
     {
       const byte* const data = tile->data.get();
-      PixelIterator<const byte> current(data+(tileAreaInt.y()+y)*stride, tileAreaInt.x(), bpp);
+      SampleIterator<const byte> current(data+(tileAreaInt.y()+y)*stride, tileAreaInt.x(), bpp);
 
       for(int x=0; x<tileAreaInt.width(); x++, ++current)
       {
@@ -691,8 +742,8 @@ LayerOperations::Ptr OperationsColormapped::create(ColormapProvider::Ptr colorma
   return Ptr(new OperationsColormapped(colormapProvider, bpp));
 }
 
-OperationsColormapped::OperationsColormapped(ColormapProvider::Ptr colormapProvider, int bpp)
-  : Operations(colormapProvider, bpp)
+OperationsColormapped::OperationsColormapped(ColormapProvider::Ptr colormapProvider_, int bpp_)
+  : Operations(colormapProvider_, bpp_)
 {
 }
 
@@ -711,8 +762,8 @@ Scroom::Utils::Stuff OperationsColormapped::cache(const ConstTile::Ptr tile)
   unsigned char* row = data.get();
   for(int j=0; j<tile->height; j++, row+=stride)
   {
-    PixelIterator<const uint16_t> pixelIn(reinterpret_cast<uint16_t const *>(tile->data.get()+j*multiplier*tile->width/pixelsPerByte), 0, multiplier*bpp);
-    uint32_t* pixelOut = (uint32_t*)row;
+    SampleIterator<const uint16_t> pixelIn(reinterpret_cast<uint16_t const *>(tile->data.get()+j*multiplier*tile->width/pixelsPerByte), 0, multiplier*bpp);
+    uint32_t* pixelOut = reinterpret_cast<uint32_t*>(row);
     for(int i=0; i<tile->width; i++)
     {
       *pixelOut = mix(colormap->colors[*pixelIn & pixelMask], colormap->colors[*pixelIn >> pixelOffset], 0.5).getARGB32();
@@ -742,7 +793,7 @@ void OperationsColormapped::reduce(Tile::Ptr target, const ConstTile::Ptr source
   {
     // Iterate vertically over target
     const byte* sourcePtr = sourceBase;
-    PixelIterator<uint16_t> targetPtr((uint16_t*)targetBase, 0, multiplier*bpp);
+    SampleIterator<uint16_t> targetPtr(reinterpret_cast<uint16_t*>(targetBase), 0, multiplier*bpp);
 
     for(int i=0; i<source->width/8;
         i++, sourcePtr+=8*multiplier/pixelsPerByte, ++targetPtr)
@@ -757,7 +808,7 @@ void OperationsColormapped::reduce(Tile::Ptr target, const ConstTile::Ptr source
 
       for(int k=0; k<8; k++, base+=sourceStride)
       {
-        PixelIterator<const uint16_t> current(reinterpret_cast<uint16_t const*>(base), 0, multiplier*bpp);
+        SampleIterator<const uint16_t> current(reinterpret_cast<uint16_t const*>(base), 0, multiplier*bpp);
         for(int l=0; l<8; l++, ++current)
         {
           ++lookup[*current & pixelMask];
@@ -797,8 +848,8 @@ LayerOperations::Ptr Operations1bppClipped::create(ColormapProvider::Ptr colorma
   return Ptr(new Operations1bppClipped(colormapProvider));
 }
 
-Operations1bppClipped::Operations1bppClipped(ColormapProvider::Ptr colormapProvider)
-  : colormapProvider(colormapProvider)
+Operations1bppClipped::Operations1bppClipped(ColormapProvider::Ptr colormapProvider_)
+  : colormapProvider(colormapProvider_)
 {
 }
 
@@ -826,7 +877,7 @@ Scroom::Utils::Stuff Operations1bppClipped::cacheZoom(const ConstTile::Ptr tile,
   unsigned char* row = data.get();
   for(int j=0; j<outputHeight; j++, row+=stride)
   {
-    uint32_t* pixel = (uint32_t*)row;
+    uint32_t* pixel = reinterpret_cast<uint32_t*>(row);
     for(int i=0; i<outputWidth; i++)
     {
       int sum=0;
@@ -836,7 +887,7 @@ Scroom::Utils::Stuff Operations1bppClipped::cacheZoom(const ConstTile::Ptr tile,
         const byte* inputByte = tile->data.get() + (j*pixelSize+y)*tile->width/8 + pixelSize*i/8;
         byte inputBit = pixelSize*i%8;
 
-        PixelIterator<const byte> bit(inputByte, inputBit);
+        SampleIterator<const byte> bit(inputByte, inputBit);
 
         for(int x=0; x<pixelSize; x++, ++bit)
         {
@@ -871,7 +922,7 @@ void Operations1bppClipped::reduce(Tile::Ptr target, const ConstTile::Ptr source
   {
     // Iterate vertically over target
     const byte* sourcePtr = sourceBase;
-    PixelIterator<byte> targetPtr(targetBase,0);
+    SampleIterator<byte> targetPtr(targetBase,0);
 
     for(int i=0; i<source->width/8;
         i++, sourcePtr++, targetPtr++)

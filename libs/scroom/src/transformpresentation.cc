@@ -1,5 +1,4 @@
 #include <scroom/transformpresentation.hh>
-
 #include <scroom/rectangle.hh>
 
 TransformationData::TransformationData()
@@ -23,9 +22,9 @@ Scroom::Utils::Point<double> TransformationData::getAspectRatio() const
 
 ////////////////////////////////////////////////////////////////////////
 
-TransformPresentation::TransformPresentation(PresentationInterface::Ptr const& presentation, TransformationData::Ptr const& transformationData)
-  : transformationData(transformationData), presentation(presentation),
-    colormappable(boost::dynamic_pointer_cast<Colormappable>(presentation))
+TransformPresentation::TransformPresentation(PresentationInterface::Ptr const& presentation_, TransformationData::Ptr const& transformationData_)
+  : transformationData(transformationData_), presentation(presentation_),
+    colormappable(boost::dynamic_pointer_cast<Colormappable>(presentation_))
 {}
 
 TransformPresentation::Ptr TransformPresentation::create(PresentationInterface::Ptr const& presentation, TransformationData::Ptr const& transformationData)
@@ -55,7 +54,7 @@ void TransformPresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr,
 
   cairo_save(cr);
   cairo_scale(cr, aspectRatio.x, aspectRatio.y);
-  presentation->redraw(vi, cr, presentationArea / aspectRatio, zoom);
+  presentation->redraw(vi, cr, presentationArea, zoom);
   cairo_restore(cr);
 }
 
@@ -112,4 +111,16 @@ void TransformPresentation::disableTransparentBackground()
 bool TransformPresentation::getTransparentBackground()
 {
   return colormappable->getTransparentBackground();
+}
+
+PipetteLayerOperations::PipetteColor TransformPresentation::getPixelAverages(Scroom::Utils::Rectangle<int> area)
+{
+  PipetteViewInterface::Ptr pipettePresentation = boost::dynamic_pointer_cast<PipetteViewInterface>(presentation);
+  require(pipettePresentation);
+  return pipettePresentation->getPixelAverages(area);
+}
+
+Scroom::Utils::Point<double> TransformPresentation::getAspectRatio() const
+{
+  return transformationData->getAspectRatio();
 }

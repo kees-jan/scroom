@@ -22,15 +22,14 @@ void Scroom::Utils::dumpCounts()
 
 gboolean timedDumpCounts(gpointer data)
 {
-  Counter* c = (Counter*) data;
-  c->dump();
+  static_cast<Counter*>(data)->dump();
   return true;
 }
 
 ///////////////////////////////////////////////////////////////////////
 
-Count::Count(const std::string& name)
-  : name(name), mut(), count(0)
+Count::Count(const std::string& name_)
+  : name(name_), mut(), count(0)
 {
 }
 

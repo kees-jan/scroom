@@ -10,6 +10,7 @@
 #endif
 
 #include <stdlib.h>
+#include <getopt.h>
 
 #include <gtk/gtk.h>
 
@@ -127,7 +128,6 @@ int main (int argc, char *argv[])
 #endif
 
   Scroom::GtkHelpers::useRecursiveGdkLock();
-  g_thread_init(NULL);
   gdk_threads_init();
 
   gdk_threads_enter();
@@ -139,6 +139,7 @@ int main (int argc, char *argv[])
   gtk_main ();
   gdk_threads_leave();
 
+  on_scroom_terminating();
   printf("DEBUG: Scroom terminating...\n");
   return 0;
 }

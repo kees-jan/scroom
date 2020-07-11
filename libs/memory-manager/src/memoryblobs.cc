@@ -21,8 +21,8 @@ namespace Scroom
 {
   namespace MemoryBlobs
   {
-    PageProvider::PageProvider(size_t blockCount, size_t blockSize)
-      : blockCount(blockCount), blockSize(blockSize), blockFactoryInterface(getBlockFactoryInterface())
+    PageProvider::PageProvider(size_t blockCount_, size_t blockSize_)
+      : blockCount(blockCount_), blockSize(blockSize_), blockFactoryInterface(getBlockFactoryInterface())
     {}
 
     PageProvider::Ptr PageProvider::create(size_t blockCount, size_t blockSize)
@@ -67,8 +67,8 @@ namespace Scroom
       return Ptr(new Blob(provider, size));
     }
 
-    Blob::Blob(PageProvider::Ptr provider, size_t size)
-      : provider(provider), size(size), data(NULL), state(UNINITIALIZED), cpuBound(CpuBound()), refcount(0)
+    Blob::Blob(PageProvider::Ptr provider_, size_t size_)
+      : provider(provider_), size(size_), data(NULL), state(UNINITIALIZED), cpuBound(CpuBound()), refcount(0)
     {
     }
 
@@ -85,11 +85,11 @@ namespace Scroom
         {
         case UNINITIALIZED:
           // Allocate new data
-          data = (uint8_t*)malloc(size*sizeof(uint8_t));
+          data = static_cast<uint8_t*>(malloc(size*sizeof(uint8_t)));
           break;
         case CLEAN:
           // Decompress data
-          data = (uint8_t*)malloc(size*sizeof(uint8_t));
+          data = static_cast<uint8_t*>(malloc(size*sizeof(uint8_t)));
           Detail::decompressBlob(data, size, pages, provider);
           break;
         case DIRTY:

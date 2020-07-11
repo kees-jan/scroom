@@ -71,12 +71,12 @@ GtkWidget* create_window()
   gtk_window_set_title(GTK_WINDOW(window), "Measure Framerate");
   gtk_window_maximize(GTK_WINDOW(window));
 
-  g_signal_connect ((gpointer) window, "hide", G_CALLBACK (on_hide), NULL);
+  g_signal_connect (static_cast<gpointer>(window), "hide", G_CALLBACK (on_hide), NULL);
 
   drawingArea = gtk_drawing_area_new();
   gtk_container_add(GTK_CONTAINER(window), drawingArea);
-  g_signal_connect ((gpointer) drawingArea, "expose_event", G_CALLBACK (on_expose), NULL);
-  g_signal_connect ((gpointer) drawingArea, "configure_event", G_CALLBACK (on_configure), NULL);
+  g_signal_connect (static_cast<gpointer>(drawingArea), "expose_event", G_CALLBACK (on_expose), NULL);
+  g_signal_connect (static_cast<gpointer>(drawingArea), "configure_event", G_CALLBACK (on_configure), NULL);
 
   gtk_widget_show(drawingArea);
   gtk_widget_show(window);

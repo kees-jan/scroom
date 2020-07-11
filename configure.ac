@@ -9,11 +9,32 @@ AC_INIT([Scroom],
         [https://github.com/kees-jan/scroom/issues/new],
         [scroom],
         [https://github.com/kees-jan/scroom/wiki])
+        
+# Detect the target system
+AC_CANONICAL_HOST
+case "${host_os}" in
+    linux*)
+        build_linux=yes
+        AC_MSG_NOTICE([detected linux environment])
+        ;;
+    cygwin*|mingw*|msys*)
+        build_windows=yes
+        AC_MSG_NOTICE([detected windows environment])
+        ;;
+    *)
+        AC_MSG_ERROR(["OS $host_os is not supported."])
+        ;;
+esac
+AM_CONDITIONAL([LINUX], [test "$build_linux" = "yes"])
+AM_CONDITIONAL([WINDOWS], [test "$build_windows" = "yes"])
+    
 AM_INIT_AUTOMAKE([-Wall -Werror foreign silent-rules subdir-objects serial-tests])
 AM_SILENT_RULES([yes])
 AM_PROG_AR
 LT_PREREQ([2.2])
-LT_INIT([dlopen])
+
+# Properly create shared libraries on both Linux and Windows
+LT_INIT([dlopen win32-dll])
 
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([inc/scroom/presentationinterface.hh])
@@ -36,7 +57,6 @@ dnl SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wconversion])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wpointer-arith])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wwrite-strings])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wunused])
-SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wredundant-decls])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wuninitialized])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Winit-self])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wcast-qual])
@@ -47,9 +67,37 @@ SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wfloat-equal])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wnon-virtual-dtor])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Woverloaded-virtual])
 SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wsign-promo])
+SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wshadow])
+
+dnl Compile with -mwindows to suppress a new console from opening if the executable is not started from a console
+dnl This does not suppress the stdout and stderr streams. These are still visible if scroom.exe is started from a 
+dnl command prompt/console.
+dnl SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-mwindows])
+AM_COND_IF([WINDOWS], 
+    [LDFLAGS="$LDFLAGS -mwindows"])
 SCROOM_TEST_ISYSTEM
 
-LDFLAGS="$LDFLAGS -Wl,-z,defs"
+# Disabled warnings
+AM_COND_IF([LINUX], [
+    # - Lots of warnings on Windows
+    SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wredundant-decls])
+])   
+AM_COND_IF([WINDOWS], [
+    # - On Windows, gtk uses deprecated glib stuff - need to move to gtk3 ;-)
+    SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wno-deprecated-declarations])
+])   
+# - Warns for C pointer declarations - With gcc 10 there are a lot of those in gtk headers
+SCROOM_ADD_CXXFLAGS_IF_SUPPORTED([-Wno-parentheses])
+
+# MinGW doesn't support the -z flag
+AM_COND_IF([LINUX], 
+    [LDFLAGS="$LDFLAGS -Wl,-z,defs"])   
+    
+# This flag is used in Makefile.am and needed for properly generating DLLs on Windows
+loadflag=""
+AM_COND_IF([WINDOWS], 
+    [loadflag="-no-undefined"])
+AC_SUBST([loadflag])
 
 # Configurable features
 AC_ARG_ENABLE([doxygen-all-code],
@@ -90,6 +138,8 @@ PKG_CHECK_MODULES([TRANSPARENTOVERLAYPLUGIN], [gtk+-2.0 >= 2.0.0])
 PKG_CHECK_MODULES([COLORMAPPLUGIN], [gtk+-2.0 >= 2.0.0, cairo])
 PKG_CHECK_MODULES([TIFFPLUGIN], [gtk+-2.0 >= 2.0.0, cairo])
 PKG_CHECK_MODULES([GUI],        [gtk+-2.0 >= 2.0.0, libglade-2.0, gthread-2.0, gmodule-2.0, cairo])
+PKG_CHECK_MODULES([MEASUREPLUGIN], [gtk+-2.0 >= 2.0.0, cairo])
+PKG_CHECK_MODULES([PIPETTEPLUGIN], [gtk+-2.0 >= 2.0.0, cairo])
 
 # Checks for libraries.
 
@@ -124,6 +174,10 @@ AC_SUBST([BOOSTSYSTEMLIB], ["$ac_cv_search__ZN5boost6system16generic_categoryEv"
 # Checking for pthreads
 have_pthreads_lib=no
 SCROOM_SEARCH_LIBS([pthread_mutexattr_init], [pthread], [have_pthreads_lib=yes])
+if test "x$ac_cv_search_pthread_mutexattr_init" = xnone\ required
+then
+  ac_cv_search_pthread_mutexattr_init=""
+fi
 AC_SUBST([PTHREADLIB], ["$ac_cv_search_pthread_mutexattr_init"])
 
 # Checking for boost thread
@@ -326,6 +380,22 @@ dnl dnl Add the languages which your application supports here.
 dnl ALL_LINGUAS=""
 dnl AM_GLIB_GNU_GETTEXT
 
+# Execute a script after 'make install-win-portable' on Windows
+post_install_hook='${top_srcdir}'/build_scripts/windows/post-install-hook.sh\ '${prefix}'
+AM_COND_IF([LINUX], [post_install_hook=":"]) 
+AC_SUBST([POST_INSTALL_HOOK], [$post_install_hook])
+
+# On Windows, boost test needs an explicit reference to the sizedeterminer .lo file
+transparentoverlay_boosttest_win_ld_sizedeterminer=""
+AM_COND_IF([WINDOWS], [transparentoverlay_boosttest_win_ld_sizedeterminer=plugins/transparent-overlay/src/libsptransparentoverlay_la-sizedeterminer.lo]) 
+AC_SUBST([TRANSPARENTOVERLAY_BOOSTTEST_WIN_LD_SIZEDETERMINER], [$transparentoverlay_boosttest_win_ld_sizedeterminer])
+
+# Create command for compiling icon resource and location of resource on Windows
+AM_COND_IF([WINDOWS],[AC_CHECK_PROG([WINDRES], [windres], [yes], [no])])
+AM_CONDITIONAL([HAVE_WINDRES], [test x"${WINDRES}" == x"yes"])
+if test x"${WINDRES}" == x"no" ; then
+  AC_MSG_WARN(["windres not found - won't create icon for executable"])
+fi
 
 AC_CONFIG_FILES([Makefile
                  gui/ENVIRONMENT
@@ -339,7 +409,6 @@ AC_SUBST([incscroomimpldir], [$incscroomdir/impl])
 AC_SUBST([incscroomgmockdir], [$incscroomdir/gmock])
 
 AC_OUTPUT
-
 
 echo \
 "-------------------------------------------------

@@ -116,7 +116,7 @@ GtkFileFilterInfoPtr filterInfoFromPath(const std::string& filename)
     filterInfo->mime_type = mime_type.release();
     filterInfo->display_name = display_name.release();
     filterInfo->contains =
-      (GtkFileFilterFlags)(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_MIME_TYPE);
+      static_cast<GtkFileFilterFlags>(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_MIME_TYPE);
   }
   else
   {
@@ -340,6 +340,7 @@ PresentationInterface::Ptr ScroomInterfaceImpl::loadPresentation(std::string con
 
 void ScroomInterfaceImpl::showPresentation(PresentationInterface::Ptr const& presentation)
 {
+  on_presentation_created(presentation);
   find_or_create_scroom(presentation);
 }
 

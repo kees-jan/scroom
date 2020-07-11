@@ -9,6 +9,7 @@
 
 #include <scroom/tiledbitmapinterface.hh>
 #include <scroom/colormappable.hh>
+#include <scroom/pipettelayeroperations.hh>
 
 class CommonOperations : public LayerOperations
 {
@@ -27,6 +28,38 @@ public:
   virtual void draw(cairo_t* cr, const ConstTile::Ptr tile,
                     Scroom::Utils::Rectangle<double> tileArea, Scroom::Utils::Rectangle<double> viewArea, int zoom,
                     Scroom::Utils::Stuff cache);
+};
+
+class PipetteCommonOperationsCMYK : public PipetteLayerOperations, public CommonOperations
+{
+protected:
+  int bps;
+
+public:
+  typedef boost::shared_ptr<PipetteCommonOperationsCMYK> Ptr;
+
+public:
+  PipetteCommonOperationsCMYK(int bps_) : bps(bps_) {};
+  virtual ~PipetteCommonOperationsCMYK()
+  {}
+
+  PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile);
+};
+
+class PipetteCommonOperationsRGB : public PipetteLayerOperations, public CommonOperations
+{
+protected:
+  int bps;
+
+public:
+  typedef boost::shared_ptr<PipetteCommonOperationsRGB> Ptr;
+
+public:
+  PipetteCommonOperationsRGB(int bps_) : bps(bps_) {};
+  virtual ~PipetteCommonOperationsRGB()
+  {}
+
+  PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile);
 };
 
 class Operations1bpp : public CommonOperations
@@ -69,7 +102,7 @@ public:
                     Scroom::Utils::Stuff cache);
 };
 
-class Operations24bpp : public CommonOperations
+class Operations24bpp : public PipetteCommonOperationsRGB
 {
 public:
   static Ptr create();
@@ -142,3 +175,54 @@ public:
   virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
 };
 
+class OperationsCMYK32 : public PipetteCommonOperationsCMYK
+{
+public:
+  static Ptr create();
+  OperationsCMYK32();
+  virtual ~OperationsCMYK32()
+  {}
+
+  virtual int getBpp();
+  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
+  virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+};
+
+class OperationsCMYK16 : public PipetteCommonOperationsCMYK
+{
+public:
+  static Ptr create();
+  OperationsCMYK16();
+  virtual ~OperationsCMYK16()
+  {}
+
+  virtual int getBpp();
+  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
+  virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+};
+
+class OperationsCMYK8 : public PipetteCommonOperationsCMYK
+{
+public:
+  static Ptr create();
+  OperationsCMYK8();
+  virtual ~OperationsCMYK8()
+  {}
+
+  virtual int getBpp();
+  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
+  virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+};
+
+class OperationsCMYK4 : public PipetteCommonOperationsCMYK
+{
+public:
+  static Ptr create();
+  OperationsCMYK4();
+  virtual ~OperationsCMYK4()
+  {}
+
+  virtual int getBpp();
+  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
+  virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+};

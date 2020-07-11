@@ -46,7 +46,13 @@ namespace Scroom
         : horizontally(rect.x, rect.width), vertically(rect.y, rect.height)
       {}
 
-      Rectangle(const Rectangle<int>& rect)
+      Rectangle(const GdkPoint first, const GdkPoint second)
+        : horizontally(first.x, second.x - first.x), vertically(first.y, second.y - first.y)
+      {}
+
+      /** Implicit conversion from Rectangle<int> to Rectangle<T>. If T!=int */
+      template<bool T_is_int = std::is_same<int, typename std::remove_cv<T>::type>::value>
+      Rectangle(typename std::enable_if<!T_is_int,Rectangle<int> const&>::type rect)
         : horizontally(rect.getHorizontally()), vertically(rect.getVertically())
       {}
 
