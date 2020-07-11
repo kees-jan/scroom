@@ -8,7 +8,7 @@ target_sources(
           src/transformpresentation.cc)
 target_link_libraries(
   scroom_lib
-  PRIVATE project_options project_warnings
+  PRIVATE project_options project_warnings util
   PUBLIC PkgConfig::gtk PkgConfig::cairo)
 
 install(

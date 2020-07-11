@@ -1,6 +1,6 @@
 name: CMake
 
-on: [push]
+on: [push, pull_request]
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
@@ -12,15 +12,37 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest]
-
+        os:
+        - [ubuntu-20.04]
+        - [ubuntu-18.04]
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 200
+        submodules: true
 
     - name: Create Build Environment
       # Some projects don't allow in-source building, so create a separate build directory
       # We'll use this as our working directory for all subsequent commands
       run: cmake -E make_directory ${{runner.workspace}}/build
+
+    - name: Install apt packages
+      shell: bash
+      run: >
+        sudo apt-get -yq --no-install-suggests --no-install-recommends install
+        libboost-dev
+        libboost-filesystem-dev
+        libboost-program-options-dev
+        libboost-system-dev
+        libboost-test-dev
+        libboost-thread-dev
+        libcairo2-dev
+        libglade2-dev
+        libglib2.0-dev
+        libgtest-dev
+        libgtk2.0-dev
+        libtiff5-dev
+        pkg-config
 
     - name: Install conan
       shell: bash
@@ -47,11 +69,11 @@ jobs:
       working-directory: ${{runner.workspace}}/build
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
-      run: cmake --build . --config $BUILD_TYPE
+      run: cmake --build . --config $BUILD_TYPE -j2
 
     - name: Test
       working-directory: ${{runner.workspace}}/build
       shell: bash
       # Execute tests defined by the CMake configuration.  
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
-      run: ctest -C $BUILD_TYPE
+      run: ctest -C $BUILD_TYPE -j2

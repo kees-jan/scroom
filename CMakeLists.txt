@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.15)
 project(Scroom LANGUAGES CXX)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake-modules")
+message(NOTICE "Source dir: ${CMAKE_CURRENT_SOURCE_DIR}" )
 include(UseBackportedModules)
 include(GetGitRevisionDescription)
 

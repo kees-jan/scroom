@@ -51,7 +51,14 @@ addons:
     - doxygen
     - graphviz
 install:
-- pip install --user conan cmake
+  - |-
+    case $TRAVIS_OS_NAME in
+      windows)
+        $prefix true
+        ;;
+      *)
+        pip install --user conan cmake
+    esac
 git:
   depth: 200
 before_install:
