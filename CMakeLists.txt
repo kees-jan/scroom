@@ -9,6 +9,7 @@ include(GetGitRevisionDescription)
 include(cmake/ProjectVersion.cmake)
 
 include(cmake/StandardProjectSettings.cmake)
+include(cmake/PreventInSourceBuilds.cmake)
 
 set(PLUGIN_INSTALL_LOCATION_RELATIVE "lib/scroom")
 set(PLUGIN_INSTALL_LOCATION_ABSOLUTE "${CMAKE_INSTALL_PREFIX}/${PLUGIN_INSTALL_LOCATION_RELATIVE}")
@@ -22,8 +23,18 @@ target_compile_features(project_options INTERFACE cxx_std_17)
 target_include_directories(project_options INTERFACE inc ${PROJECT_BINARY_DIR})
 target_compile_definitions(project_options INTERFACE HAVE_CONFIG_H HAVE_VERSION_H)
 
+if(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
+  option(ENABLE_BUILD_WITH_TIME_TRACE "Enable -ftime-trace to generate time tracing .json files on clang" OFF)
+  if(ENABLE_BUILD_WITH_TIME_TRACE)
+    add_compile_definitions(project_options INTERFACE -ftime-trace)
+  endif()
+endif()
+
 # Link this 'library' to use the warnings specified in CompilerWarnings.cmake
 add_library(project_warnings INTERFACE)
+
+# enable cache system
+include(cmake/Cache.cmake)
 
 # standard compiler warnings
 include(cmake/CompilerWarnings.cmake)
@@ -50,16 +61,19 @@ option(XML_TEST_OUTPUT "Have all Boost unittests report in xml format" OFF)
 
 # Very basic PCH example
 option(ENABLE_PCH "Enable Precompiled Headers" OFF)
-if (ENABLE_PCH)
-  # This sets a global PCH parameter, each project will build its own PCH, which
-  # is a good idea if any #define's change
-  # 
-  # 
-  target_precompile_headers(project_options INTERFACE <vector> <string> <map> <utility>)
+if(ENABLE_PCH)
+  # This sets a global PCH parameter, each project will build its own PCH, which is a good idea if any #define's change
+  #
+  # consider breaking this out per project as necessary
+  target_precompile_headers(
+    project_options
+    INTERFACE
+    <vector>
+    <string>
+    <map>
+    <utility>)
 endif()
 
-# Set up some extra Conan dependencies based on our needs
-# before loading Conan
 set(CONAN_EXTRA_REQUIRES "")
 set(CONAN_EXTRA_OPTIONS "")
 
@@ -69,20 +83,16 @@ if(ENABLE_GOOGLE_TEST)
 endif()
 
 if(CPP_STARTER_USE_IMGUI)
-  set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES}
-                           imgui-sfml/2.1@bincrafters/stable)
+  set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES} imgui-sfml/2.1@bincrafters/stable)
 
-  # set(CONAN_EXTRA_OPTIONS ${CONAN_EXTRA_OPTIONS} sfml:shared=False
-  # sfml:graphics=True sfml:audio=False sfml:window=True
-  # libalsa:disable_python=True)
+  # set(CONAN_EXTRA_OPTIONS ${CONAN_EXTRA_OPTIONS} sfml:shared=False sfml:graphics=True sfml:audio=False
+  # sfml:window=True libalsa:disable_python=True)
 endif()
 
 if(CPP_STARTER_USE_SDL)
-  set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES}
-                           sdl2/2.0.10@bincrafters/stable)
+  set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES} sdl2/2.0.10@bincrafters/stable)
   # set(CONAN_EXTRA_OPTIONS ${CONAN_EXTRA_OPTIONS} sdl2:wayland=True)
 endif()
-
 
 include(cmake/Conan.cmake)
 run_conan()
@@ -100,14 +110,11 @@ if(ENABLE_GOOGLE_TEST)
 endif()
 
 if(ENABLE_FUZZING)
-  message(
-    "Building Fuzz Tests, using fuzzing sanitizer https://www.llvm.org/docs/LibFuzzer.html"
-  )
+  message("Building Fuzz Tests, using fuzzing sanitizer https://www.llvm.org/docs/LibFuzzer.html")
   # add_subdirectory(fuzz_test)
 endif()
 
 configure_file(cmake-config.h.in config.h)
-
 add_subdirectory(External)
 add_subdirectory(inc)
 add_subdirectory(libs)
