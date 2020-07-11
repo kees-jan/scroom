@@ -13,6 +13,6 @@ target_link_libraries(
 target_compile_definitions(scroom PRIVATE
         PLUGIN_DIR="${PLUGIN_INSTALL_LOCATION_ABSOLUTE}"
         TOP_SRCDIR="${Scroom_SOURCE_DIR}"
-        PACKAGE_DATA_DIR="eh")
+        PACKAGE_DATA_DIR="${PKG_DIR_ABSOLUTE}")
 
 install(TARGETS scroom)

@@ -13,6 +13,9 @@ include(cmake/StandardProjectSettings.cmake)
 set(PLUGIN_INSTALL_LOCATION_RELATIVE "lib/scroom")
 set(PLUGIN_INSTALL_LOCATION_ABSOLUTE "${CMAKE_INSTALL_PREFIX}/${PLUGIN_INSTALL_LOCATION_RELATIVE}")
 
+set(PKG_DIR_RELATIVE "share/scroom")
+set(PKG_DIR_ABSOLUTE "${CMAKE_INSTALL_PREFIX}/${PKG_DIR_RELATIVE}")
+
 # Link this 'library' to set the c++ standard / compile-time options requested
 add_library(project_options INTERFACE)
 target_compile_features(project_options INTERFACE cxx_std_17)
