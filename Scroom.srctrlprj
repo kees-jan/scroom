@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <source_groups>
+        <source_group_840fa752-3ef8-4496-a253-62e5ee7d5453>
+            <build_file_path>
+                <compilation_db_path>cmake-build-relwithdebinfo-clang-10/compile_commands.json</compilation_db_path>
+            </build_file_path>
+            <indexed_header_paths>
+                <indexed_header_path>cmake-build-relwithdebinfo-clang-10</indexed_header_path>
+                <indexed_header_path>gui/src</indexed_header_path>
+                <indexed_header_path>inc</indexed_header_path>
+                <indexed_header_path>libs/boost-test-helper/src</indexed_header_path>
+                <indexed_header_path>libs/boost-test-helper/test</indexed_header_path>
+                <indexed_header_path>libs/memory-manager/src</indexed_header_path>
+                <indexed_header_path>libs/memory-manager/test</indexed_header_path>
+                <indexed_header_path>libs/sanity-tests</indexed_header_path>
+                <indexed_header_path>libs/scroom/src</indexed_header_path>
+                <indexed_header_path>libs/scroom/test</indexed_header_path>
+                <indexed_header_path>libs/threadpool/src</indexed_header_path>
+                <indexed_header_path>libs/threadpool/test</indexed_header_path>
+                <indexed_header_path>libs/tiled-bitmap/src</indexed_header_path>
+                <indexed_header_path>libs/tiled-bitmap/test</indexed_header_path>
+                <indexed_header_path>libs/tiled-bitmap/tools</indexed_header_path>
+                <indexed_header_path>libs/util/src</indexed_header_path>
+                <indexed_header_path>libs/util/test</indexed_header_path>
+                <indexed_header_path>plugins/colormap</indexed_header_path>
+                <indexed_header_path>plugins/example</indexed_header_path>
+                <indexed_header_path>plugins/tiff/src</indexed_header_path>
+                <indexed_header_path>plugins/transparent-overlay/src</indexed_header_path>
+                <indexed_header_path>plugins/transparent-overlay/test</indexed_header_path>
+            </indexed_header_paths>
+            <name>C/C++ from Compilation Database</name>
+            <pch_flags>
+                <use_compiler_flags>1</use_compiler_flags>
+            </pch_flags>
+            <status>enabled</status>
+            <type>C/C++ from Compilation Database</type>
+        </source_group_840fa752-3ef8-4496-a253-62e5ee7d5453>
+    </source_groups>
+    <version>8</version>
+</config>

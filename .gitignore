@@ -55,3 +55,5 @@ Makefile.in
 /.google
 test_results.xml
 /cmake-build-*
+/Scroom.srctrlbm*
+/Scroom.srctrldb*
