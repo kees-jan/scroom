@@ -349,7 +349,7 @@ void View::updateZoom()
 
     int zMax = MaxZoom - minZoom;
     zMax = std::max(zMax, 1+MaxZoom-zoom);
-    zMax = std::min((size_t)zMax, sizeof(zoomfactor)/sizeof(zoomfactor[0]));
+    zMax = std::min<size_t>(zMax, sizeof(zoomfactor)/sizeof(zoomfactor[0]));
 
     gtk_list_store_clear(zoomItems);
     for(int z=0; z<zMax; z++)

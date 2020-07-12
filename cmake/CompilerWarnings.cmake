@@ -31,7 +31,7 @@ function(set_project_warnings project_name)
       /permissive- # standards conformance mode for MSVC compiler.
   )
 
-  set(CLANG_WARNINGS
+  set(COMMON_WARNINGS
       -Wall
       -Wextra # reasonable and standard
       -Wshadow # warn the user if a variable declaration shadows one from a parent context
@@ -42,26 +42,41 @@ function(set_project_warnings project_name)
       -Wunused # warn on anything being unused
       -Woverloaded-virtual # warn if you overload (not override) a virtual function
       -Wpedantic # warn if non-standard C++ is used
-      -Wconversion # warn on type conversions that may lose data
       -Wsign-conversion # warn on sign conversions
       -Wnull-dereference # warn if a null dereference is detected
-      -Wdouble-promotion # warn if float is implicit promoted to double
+      # -Wdouble-promotion # warn if float is implicit promoted to double
       -Wformat=2 # warn on security issues around functions that format output (ie printf)
+      # Haven't fixed these (yet)
   )
 
   if(WARNINGS_AS_ERRORS)
-    set(CLANG_WARNINGS ${CLANG_WARNINGS} -Werror)
+    set(COMMON_WARNINGS ${COMMON_WARNINGS} -Werror)
     set(MSVC_WARNINGS ${MSVC_WARNINGS} /WX)
   endif()
 
+  set(CLANG_WARNINGS
+      ${COMMON_WARNINGS}
+      -Wconversion # Disable for gcc for now # warn on type conversions that may lose data
+      # Haven't fixed these (yet)
+      -Wno-gnu-zero-variadic-macro-arguments
+      -Wno-implicit-int-conversion
+      -Wno-implicit-int-float-conversion
+      -Wno-shorten-64-to-32
+      -Wno-vla-extension
+      -Wno-float-conversion
+      -Wno-sign-conversion)
+
   set(GCC_WARNINGS
-      ${CLANG_WARNINGS}
+      ${COMMON_WARNINGS}
       -Wmisleading-indentation # warn if indentation implies blocks where blocks do not exist
       -Wduplicated-cond # warn if if / else chain has duplicated conditions
       -Wduplicated-branches # warn if if / else branches have duplicated code
       -Wlogical-op # warn about logical operations being used where bitwise were probably wanted
       -Wuseless-cast # warn if you perform a cast to the same type
-  )
+      # Haven't fixed these (yet)
+      -Wno-vla
+      -Wno-float-conversion
+      -Wno-sign-conversion)
 
   if(MSVC)
     set(PROJECT_WARNINGS ${MSVC_WARNINGS})
