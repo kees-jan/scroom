@@ -17,3 +17,4 @@ target_link_libraries(
          PkgConfig::cairo)
 
 install(TARGETS sptiff DESTINATION ${PLUGIN_INSTALL_LOCATION_RELATIVE})
+install_plugin_dependencies(sptiff)

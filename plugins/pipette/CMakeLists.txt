@@ -6,6 +6,7 @@ target_link_libraries(
   PUBLIC PkgConfig::gtk threadpool PkgConfig::cairo)
 
 install(TARGETS sppipette DESTINATION ${PLUGIN_INSTALL_LOCATION_RELATIVE})
+install_plugin_dependencies(sppipette)
 
 if(ENABLE_BOOST_TEST)
   add_executable(sppipette_tests)

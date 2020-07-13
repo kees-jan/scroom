@@ -6,3 +6,4 @@ target_link_libraries(
   PUBLIC PkgConfig::gtk PkgConfig::cairo)
 
 install(TARGETS spmeasure DESTINATION ${PLUGIN_INSTALL_LOCATION_RELATIVE})
+install_plugin_dependencies(spmeasure)

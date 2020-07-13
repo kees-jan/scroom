@@ -16,6 +16,7 @@ target_link_libraries(
   PUBLIC PkgConfig::gtk scroom_lib util)
 
 install(TARGETS sptransparentoverlay DESTINATION ${PLUGIN_INSTALL_LOCATION_RELATIVE})
+install_plugin_dependencies(sptransparentoverlay)
 
 if(ENABLE_BOOST_TEST)
   add_executable(transparentoverlay_tests)

@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.15)
 project(Scroom LANGUAGES CXX)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake-modules")
-message(NOTICE "Source dir: ${CMAKE_CURRENT_SOURCE_DIR}" )
 include(UseBackportedModules)
 include(GetGitRevisionDescription)
 
@@ -114,12 +113,46 @@ if(ENABLE_FUZZING)
   # add_subdirectory(fuzz_test)
 endif()
 
+set(PLUGINS
+    ""
+    CACHE INTERNAL "List of all plugins")
+function(install_plugin_dependencies plugin-name)
+  list(APPEND PLUGINS "bin/lib${plugin-name}.dll")
+  set(PLUGINS
+      "${PLUGINS}"
+      CACHE INTERNAL "List of all plugins")
+endfunction()
+
 configure_file(cmake-config.h.in config.h)
 add_subdirectory(External)
 add_subdirectory(inc)
 add_subdirectory(libs)
 add_subdirectory(plugins)
 add_subdirectory(gui)
+
+if(WIN32)
+  message(NOTICE "Going to gather dependencies on Windows")
+  install(CODE "set(PLUGINS \"${PLUGINS}\")")
+  install(
+    CODE [[
+      message("Gathering dependencies for: ${PLUGINS}")
+      file(GET_RUNTIME_DEPENDENCIES
+        EXECUTABLES bin/scroom.exe
+        LIBRARIES ${PLUGINS}
+        RESOLVED_DEPENDENCIES_VAR resolved
+        UNRESOLVED_DEPENDENCIES_VAR unresolved
+        POST_EXCLUDE_REGEXES ^C:.Windows.system32/.*
+        DIRECTORIES c:/msys64/mingw64/bin)
+      list(LENGTH unresolved unresolved_count)
+      if(${unresolved_count} GREATER "0")
+        message(SEND_ERROR "There are unresolved dependencies: ${unresolved}")
+      endif()
+      file(INSTALL ${resolved}
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+  ]])
+else()
+  message(NOTICE "Not on Windows. Not gathering dependencies")
+endif()
 
 set(CPACK_PACKAGE_VERSION "${GIT_PROJECT_VERSION}")
 set(CPACK_SOURCE_GENERATOR "TGZ")
