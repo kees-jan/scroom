@@ -7,8 +7,6 @@
 
 #pragma once
 
-#include <gmodule.h>
-
 #include <boost/shared_ptr.hpp>
 
 class PluginInformationInterface;
@@ -17,5 +15,5 @@ extern "C"
 {
   typedef boost::shared_ptr<PluginInformationInterface> (*PluginFunc)();
 
-  G_MODULE_IMPORT boost::shared_ptr<PluginInformationInterface> getPluginInformation();
+  boost::shared_ptr<PluginInformationInterface> getPluginInformation();
 }

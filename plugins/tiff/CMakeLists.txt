@@ -11,6 +11,7 @@ target_link_libraries(
   PRIVATE project_options project_warnings
   PUBLIC PkgConfig::gtk
          scroom_lib
+         util
          TIFF::TIFF
          tiledbitmap
          PkgConfig::cairo)
