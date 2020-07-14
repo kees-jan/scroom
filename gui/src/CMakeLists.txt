@@ -15,6 +15,11 @@ target_sources(
           view.cc
           view.hh
           workinterface.hh)
+
+if(WIN32)
+    target_sources(scroom PRIVATE ../icon/icon.rc)
+endif()
+
 target_link_libraries(
   scroom
   PRIVATE project_options project_warnings
