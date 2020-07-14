@@ -1,4 +1,4 @@
-add_executable(scroom)
+add_executable(scroom WIN32)
 target_sources(
   scroom
   PRIVATE main.cc
