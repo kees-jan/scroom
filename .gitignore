@@ -27,7 +27,6 @@ Makefile.in
 /configure
 /depcomp
 /doxyfile
-/build-Build_(GNU)_check
 /compile
 /gui/ENVIRONMENT
 /gui/src/scroom
@@ -58,5 +57,6 @@ Makefile.in
 /.google
 test_results.xml
 /cmake-build-*
+/build
 /Scroom.srctrlbm*
 /Scroom.srctrldb*

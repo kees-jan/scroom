@@ -7,18 +7,16 @@ env:
   BUILD_TYPE: RelWithDebInfo
 
 jobs:
-  build:
-
+  build-linux:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os:
-        - [ubuntu-20.04]
-        - [ubuntu-18.04]
+        os: [ubuntu-20.04, ubuntu-18.04]
+      fail-fast: false
     steps:
     - uses: actions/checkout@v2
       with:
-        fetch-depth: 200
+        fetch-depth: 0
         submodules: true
 
     - name: Create Build Environment
@@ -27,7 +25,6 @@ jobs:
       run: cmake -E make_directory ${{runner.workspace}}/build
 
     - name: Install apt packages
-      shell: bash
       run: >
         sudo apt-get -yq --no-install-suggests --no-install-recommends install
         libboost-dev
@@ -45,16 +42,12 @@ jobs:
         pkg-config
 
     - name: Install conan
-      shell: bash
       run: |
         python3 -m pip install --upgrade pip setuptools
         python3 -m pip install conan
         source ~/.profile
 
     - name: Configure CMake
-      # Use a bash shell so we can use the same syntax for environment variable
-      # access regardless of the host operating system
-      shell: bash
       working-directory: ${{runner.workspace}}/build
       # Note the current convention is to use the -S and -B options here to specify source 
       # and build directories, but this is only available with CMake 3.13 and higher.  
@@ -67,13 +60,51 @@ jobs:
 
     - name: Build
       working-directory: ${{runner.workspace}}/build
-      shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
       run: cmake --build . --config $BUILD_TYPE -j2
 
     - name: Test
       working-directory: ${{runner.workspace}}/build
-      shell: bash
-      # Execute tests defined by the CMake configuration.  
+      # Execute tests defined by the CMake configuration.
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: ctest -C $BUILD_TYPE -j2
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          submodules: true
+
+      - name: Install Pacman packages
+        run: >
+          build_scripts\github\msysdo pacman --sync --noconfirm --needed
+          git
+          make
+          mingw-w64-x86_64-boost
+          mingw-w64-x86_64-dlfcn
+          mingw-w64-x86_64-gcc
+          mingw-w64-x86_64-glade
+          mingw-w64-x86_64-gtk2
+          mingw-w64-x86_64-libglade
+          mingw-w64-x86_64-toolchain
+          pkg-config
+          zip
+          mingw64/mingw-w64-x86_64-cmake
+          mingw64/mingw-w64-x86_64-python
+          mingw64/mingw-w64-x86_64-python-pip
+
+      - name: Install conan
+        run: >
+          build_scripts\github\mingwdo
+          pip install --user conan
+
+      - name: Build
+        run: >
+          build_scripts\github\mingwdo
+          build_scripts/github/build-cmake-mingw
+
+      - uses: actions/upload-artifact@v2
+        with:
+          path: scroom-win-*.zip

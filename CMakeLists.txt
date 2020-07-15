@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.15)
 project(Scroom LANGUAGES CXX)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake-modules")
+
 include(UseBackportedModules)
 include(GetGitRevisionDescription)
 
@@ -131,7 +132,7 @@ add_subdirectory(plugins)
 add_subdirectory(gui)
 
 if(WIN32)
-  message(NOTICE "Going to gather dependencies on Windows")
+  message("Going to gather dependencies on Windows")
   install(CODE "set(PLUGINS \"${PLUGINS}\")")
   install(
     CODE [[
@@ -141,8 +142,10 @@ if(WIN32)
         LIBRARIES ${PLUGINS}
         RESOLVED_DEPENDENCIES_VAR resolved
         UNRESOLVED_DEPENDENCIES_VAR unresolved
-        POST_EXCLUDE_REGEXES ^C:.Windows.system32/.*
+        PRE_EXCLUDE_REGEXES "^api-ms-win.*" "^ext-ms-.*"
+        POST_EXCLUDE_REGEXES "[Ww]indows.system32/"
         DIRECTORIES c:/msys64/mingw64/bin)
+      message("Resolved: ${resolved}")
       list(LENGTH unresolved unresolved_count)
       if(${unresolved_count} GREATER "0")
         message(SEND_ERROR "There are unresolved dependencies: ${unresolved}")
