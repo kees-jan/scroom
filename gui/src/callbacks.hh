@@ -5,19 +5,19 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include <gtk/gtk.h>
-
-#include <map>
 #include <list>
+#include <map>
 #include <string>
 
-#include <scroom/scroominterface.hh>
+#include <gtk/gtk.h>
 
 #include <scroom/presentationinterface.hh>
+#include <scroom/scroominterface.hh>
+
 #include "view.hh"
 
-typedef std::map<std::string, std::list<std::string> > FileNameMap;
-extern const std::string REGULAR_FILES;
+typedef std::map<std::string, std::list<std::string>> FileNameMap;
+extern const std::string                              REGULAR_FILES;
 
 void on_scroom_hide(GtkWidget* widget, gpointer user_data);
 
@@ -59,7 +59,7 @@ void on_scrollbar_value_changed(GtkAdjustment* adjustment, gpointer user_data);
 
 void on_textbox_value_changed(GtkEditable* editable, gpointer user_data);
 
-void on_scroom_bootstrap (const FileNameMap& newFilenames);
+void on_scroom_bootstrap(const FileNameMap& newFilenames);
 
 void on_scroom_terminating();
 

@@ -18,7 +18,6 @@ namespace Scroom
         static ::ThreadPool::Ptr deleter = ::ThreadPool::Ptr(new ::ThreadPool(1, true));
         return deleter;
       }
-    }
-  }
-}
-
+    } // namespace ThreadPool
+  }   // namespace Detail
+} // namespace Scroom

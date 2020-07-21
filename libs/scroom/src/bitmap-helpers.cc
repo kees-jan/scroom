@@ -17,29 +17,30 @@ namespace Scroom
       return BitmapSurface::Ptr(new BitmapSurface(width, height, format));
     }
 
-    BitmapSurface::Ptr BitmapSurface::create(int width, int height, cairo_format_t format,
-                                             int stride, boost::shared_ptr<unsigned char> const& data)
+    BitmapSurface::Ptr BitmapSurface::create(int                                     width,
+                                             int                                     height,
+                                             cairo_format_t                          format,
+                                             int                                     stride,
+                                             boost::shared_ptr<unsigned char> const& data)
     {
       return BitmapSurface::Ptr(new BitmapSurface(width, height, format, stride, data));
     }
 
-    BitmapSurface::~BitmapSurface()
-    {
-      cairo_surface_destroy(surface);
-    }
+    BitmapSurface::~BitmapSurface() { cairo_surface_destroy(surface); }
 
-    cairo_surface_t* BitmapSurface::get()
-    {
-      return surface;
-    }
+    cairo_surface_t* BitmapSurface::get() { return surface; }
 
     BitmapSurface::BitmapSurface(int width, int height, cairo_format_t format)
       : surface(cairo_image_surface_create(format, width, height))
     {}
 
-    BitmapSurface::BitmapSurface(int width, int height, cairo_format_t format,
-                                 int stride, boost::shared_ptr<unsigned char> const& data_)
-      : surface(cairo_image_surface_create_for_data(data_.get(), format, width, height, stride)), data(data_)
+    BitmapSurface::BitmapSurface(int                                     width,
+                                 int                                     height,
+                                 cairo_format_t                          format,
+                                 int                                     stride,
+                                 boost::shared_ptr<unsigned char> const& data_)
+      : surface(cairo_image_surface_create_for_data(data_.get(), format, width, height, stride))
+      , data(data_)
     {}
 
   } // namespace Bitmap

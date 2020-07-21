@@ -16,13 +16,12 @@ class ProgressInterface
 {
 public:
   typedef boost::shared_ptr<ProgressInterface> Ptr;
-  typedef boost::weak_ptr<ProgressInterface> WeakPtr;
+  typedef boost::weak_ptr<ProgressInterface>   WeakPtr;
 
   virtual ~ProgressInterface() {}
 
-  virtual void setIdle()=0;
-  virtual void setWaiting(double progress=0.0)=0;
-  virtual void setWorking(double progress)=0;
-  virtual void setFinished()=0;
+  virtual void setIdle()                         = 0;
+  virtual void setWaiting(double progress = 0.0) = 0;
+  virtual void setWorking(double progress)       = 0;
+  virtual void setFinished()                     = 0;
 };
-

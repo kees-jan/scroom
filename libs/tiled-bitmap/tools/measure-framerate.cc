@@ -9,22 +9,22 @@
 #  include <config.h>
 #endif
 
-#include <stdlib.h>
+#include <string>
+
 #include <getopt.h>
+#include <stdlib.h>
 
 #include <gtk/gtk.h>
-
-#include <string>
 
 #include <scroom/unused.hh>
 
 #include "measure-framerate-callbacks.hh"
 #include "measure-framerate-tests.hh"
 
-void usage(std::string me, std::string message=std::string())
+void usage(std::string me, std::string message = std::string())
 {
   if(message.length() != 0)
-    printf ("ERROR: %s\n\n", message.c_str());
+    printf("ERROR: %s\n\n", message.c_str());
 
   printf("Usage: %s [options] [input files]\n\n", me.c_str());
   printf("Options:\n");
@@ -32,14 +32,14 @@ void usage(std::string me, std::string message=std::string())
   exit(-1);
 }
 
-int main (int argc, char *argv[])
+int main(int argc, char* argv[])
 {
   std::string me = argv[0];
-  char result;
+  char        result;
 
-  while ((result = getopt(argc, argv, ":h")) != -1)
+  while((result = getopt(argc, argv, ":h")) != -1)
   {
-    switch (result)
+    switch(result)
     {
     case 'h':
       usage(me);
@@ -67,8 +67,8 @@ int main (int argc, char *argv[])
   gdk_threads_init();
 
   gdk_threads_enter();
-  gtk_set_locale ();
-  gtk_init (&argc, &argv);
+  gtk_set_locale();
+  gtk_init(&argc, &argv);
 
   GtkWidget* window = create_window();
   UNUSED(window);
@@ -76,8 +76,7 @@ int main (int argc, char *argv[])
   init_tests();
   init();
 
-  gtk_main ();
+  gtk_main();
   gdk_threads_leave();
   return 0;
 }
-

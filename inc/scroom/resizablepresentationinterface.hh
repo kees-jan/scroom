@@ -7,16 +7,17 @@
 
 #pragma once
 
+#include <set>
+
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
 
 #include <gdk/gdk.h>
+
 #include <cairo.h>
 
-#include <set>
-
-#include <scroom/viewinterface.hh>
 #include <scroom/observable.hh>
+#include <scroom/viewinterface.hh>
 
 /**
  * Represent some 2D content that can assume any given size.
@@ -25,9 +26,9 @@ class ResizablePresentationInterface
 {
 public:
   typedef boost::shared_ptr<ResizablePresentationInterface> Ptr;
-  typedef boost::weak_ptr<ResizablePresentationInterface> WeakPtr;
+  typedef boost::weak_ptr<ResizablePresentationInterface>   WeakPtr;
 
   virtual ~ResizablePresentationInterface() {}
 
-  virtual void setRect(ViewInterface::WeakPtr const& vi, Scroom::Utils::Rectangle<double> const& rect)=0;
+  virtual void setRect(ViewInterface::WeakPtr const& vi, Scroom::Utils::Rectangle<double> const& rect) = 0;
 };

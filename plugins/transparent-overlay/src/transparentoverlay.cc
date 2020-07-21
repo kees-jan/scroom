@@ -13,28 +13,15 @@
 
 ////////////////////////////////////////////////////////////////////////
 
-TransparentOverlay::Ptr TransparentOverlay::create()
-{
-  return Ptr(new TransparentOverlay());
-}
+TransparentOverlay::Ptr TransparentOverlay::create() { return Ptr(new TransparentOverlay()); }
 
-std::string TransparentOverlay::getPluginName()
-{
-  return "TransparentOverlay";
-}
+std::string TransparentOverlay::getPluginName() { return "TransparentOverlay"; }
 
-std::string TransparentOverlay::getPluginVersion()
-{
-  return "0.0";
-}
+std::string TransparentOverlay::getPluginVersion() { return "0.0"; }
 
 void TransparentOverlay::registerCapabilities(ScroomPluginInterface::Ptr host)
 {
   host->registerNewAggregateInterface("Transparent Overlay", shared_from_this<TransparentOverlay>());
 }
 
-Aggregate::Ptr TransparentOverlay::createNew()
-{
-  return TransparentOverlayPresentation::create();
-}
-
+Aggregate::Ptr TransparentOverlay::createNew() { return TransparentOverlayPresentation::create(); }

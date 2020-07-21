@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include <ostream>
 #include <cmath>
+#include <ostream>
 #include <type_traits>
 
 #include <boost/operators.hpp>
@@ -17,46 +17,49 @@ namespace Scroom
 {
   namespace Utils
   {
-    
-    template<typename T>
+
+    template <typename T>
     bool isZero(T v);
 
-    template<>
+    template <>
     inline bool isZero<int>(int v)
     {
-      return v==0;
+      return v == 0;
     }
 
-    template<>
+    template <>
     inline bool isZero<double>(double v)
     {
       return std::abs(v) < 1e-6;
     }
 
-    template<typename T>
+    template <typename T>
     bool areEqual(T a, T b)
     {
-      return isZero(a-b);
+      return isZero(a - b);
     }
 
-    template<typename T>
-    class Segment: public boost::addable2<Segment<T>, T>,
-                   public boost::subtractable2<Segment<T>, T>,
-                   public boost::multipliable2<Segment<T>, T>,
-                   public boost::dividable2<Segment<T>, T>,
-                   public boost::andable<Segment<T>>
+    template <typename T>
+    class Segment
+      : public boost::addable2<Segment<T>, T>
+      , public boost::subtractable2<Segment<T>, T>
+      , public boost::multipliable2<Segment<T>, T>
+      , public boost::dividable2<Segment<T>, T>
+      , public boost::andable<Segment<T>>
     {
     public:
       typedef T value_type;
 
       Segment()
-        : start (0), size (0)
+        : start(0)
+        , size(0)
       {}
 
       Segment(value_type start_, value_type size_)
-        : start (start_), size (size_)
+        : start(start_)
+        , size(size_)
       {
-        if (size < 0)
+        if(size < 0)
         {
           start += size;
           size = -size;
@@ -64,91 +67,67 @@ namespace Scroom
       }
 
       /** Implicit conversion from Segment<int> to Segment<T>. If T!=int */
-      template<bool T_is_int = std::is_same<int, typename std::remove_cv<T>::type>::value>
-      Segment(typename std::enable_if<!T_is_int,Segment<int> const&>::type other)
-        : start(other.getStart()), size(other.getSize())
-      {
-      }
+      template <bool T_is_int = std::is_same<int, typename std::remove_cv<T>::type>::value>
+      Segment(typename std::enable_if<!T_is_int, Segment<int> const&>::type other)
+        : start(other.getStart())
+        , size(other.getSize())
+      {}
 
-      Segment moveTo(value_type p) const
-      {
-        return Segment(p, size);
-      }
+      Segment moveTo(value_type p) const { return Segment(p, size); }
 
-      bool contains(value_type p) const
-      {
-        return start <= p && p < (start + size);
-      }
+      bool contains(value_type p) const { return start <= p && p < (start + size); }
 
       bool contains(const Segment<value_type>& other) const
       {
-        return getStart () <= other.getStart () && other.getEnd () <= getEnd ();
+        return getStart() <= other.getStart() && other.getEnd() <= getEnd();
       }
 
       bool intersects(const Segment<value_type>& other) const
       {
-        return getStart () < other.getEnd () && other.getStart () < getEnd () && !isEmpty () && !other.isEmpty ();
+        return getStart() < other.getEnd() && other.getStart() < getEnd() && !isEmpty() && !other.isEmpty();
       }
 
-      void reduceSizeToMultipleOf(value_type m)
-      {
-        size -= size % m;
-      }
+      void reduceSizeToMultipleOf(value_type m) { size -= size % m; }
 
       Segment<value_type> intersection(const Segment<value_type>& other) const
       {
-        const value_type newStart = std::max (getStart (), other.getStart ());
-        const value_type newEnd = std::min (getEnd (), other.getEnd ());
-        const value_type newSize = newEnd - newStart;
+        const value_type newStart = std::max(getStart(), other.getStart());
+        const value_type newEnd   = std::min(getEnd(), other.getEnd());
+        const value_type newSize  = newEnd - newStart;
 
-        if (newSize >= 0)
-          return Segment<value_type> (newStart, newSize);
+        if(newSize >= 0)
+          return Segment<value_type>(newStart, newSize);
         else
-          return Segment<value_type> (); // empty segment
+          return Segment<value_type>(); // empty segment
       }
 
-      void intersect(const Segment<value_type>& other)
-      {
-        *this = intersection (other);
-      }
+      void intersect(const Segment<value_type>& other) { *this = intersection(other); }
 
       Segment<value_type> before(value_type v) const
       {
         if(v < start)
           return Segment<value_type>();
-        if(v < start+size)
-          return Segment<value_type>(start, v-start);
+        if(v < start + size)
+          return Segment<value_type>(start, v - start);
         return *this;
       }
 
       Segment<value_type> after(value_type v) const
       {
-        if(v > start+size)
+        if(v > start + size)
           return Segment<value_type>();
         if(v > start)
-          return Segment<value_type>(v, start+size-v);
+          return Segment<value_type>(v, start + size - v);
         return *this;
       }
 
-      value_type getStart() const
-      {
-        return start;
-      }
+      value_type getStart() const { return start; }
 
-      value_type getEnd() const
-      {
-        return start + size;
-      }
+      value_type getEnd() const { return start + size; }
 
-      value_type getSize() const
-      {
-        return size;
-      }
+      value_type getSize() const { return size; }
 
-      bool isEmpty() const
-      {
-        return isZero(getSize());
-      }
+      bool isEmpty() const { return isZero(getSize()); }
 
       bool operator==(const Segment<value_type>& other) const
       {
@@ -160,10 +139,7 @@ namespace Scroom
           return areEqual(start, other.start) && areEqual(size, other.size);
       }
 
-      bool operator!=(const Segment<value_type>& other) const
-      {
-        return !(*this == other);
-      }
+      bool operator!=(const Segment<value_type>& other) const { return !(*this == other); }
 
       Segment<value_type>& operator+=(value_type n)
       {
@@ -189,32 +165,27 @@ namespace Scroom
       }
       Segment<value_type>& operator&=(const Segment<value_type>& other)
       {
-        intersect (other);
+        intersect(other);
         return *this;
       }
-      void setSize(value_type n)
-      {
-        size = n;
-      }
+      void setSize(value_type n) { size = n; }
 
     private:
       value_type start;
       value_type size;
     };
 
-    template<typename T>
+    template <typename T>
     Segment<T> make_segment(T start, T size)
     {
       return Segment<T>(start, size);
     }
 
-    template<typename T>
+    template <typename T>
     std::ostream& operator<<(std::ostream& os, const Segment<T>& s)
     {
-      return os << '(' << s.getStart()
-                << ',' << s.getSize()
-                << ')';
+      return os << '(' << s.getStart() << ',' << s.getSize() << ')';
     }
 
-  }
-}
+  } // namespace Utils
+} // namespace Scroom

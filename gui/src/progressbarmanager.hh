@@ -18,7 +18,7 @@ public:
 
 private:
   GtkProgressBar* progressBar;
-  bool isWaiting;
+  bool            isWaiting;
 
 private:
   ProgressBarManager(GtkProgressBar* progressBar);
@@ -27,7 +27,7 @@ private:
   void startWaiting();
 
 public:
-  static Ptr create(GtkProgressBar* progressBar=NULL);
+  static Ptr create(GtkProgressBar* progressBar = NULL);
 
   ~ProgressBarManager();
 
@@ -36,8 +36,7 @@ public:
   // ProgressInterface ///////////////////////////////////////////////////
 
   virtual void setIdle();
-  virtual void setWaiting(double progress=0.0);
+  virtual void setWaiting(double progress = 0.0);
   virtual void setWorking(double progress);
   virtual void setFinished();
 };
-

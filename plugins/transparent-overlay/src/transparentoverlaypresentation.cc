@@ -7,48 +7,43 @@
 
 #include "transparentoverlaypresentation.hh"
 
-#include <math.h>
-
 #include <sstream>
+
+#include <math.h>
 
 #include <boost/assign.hpp>
 #include <boost/tuple/tuple_comparison.hpp>
 
-#include <scroom/unused.hh>
 #include <scroom/colormappable.hh>
+#include <scroom/unused.hh>
 
 namespace
 {
-  const std::list<Color> colors = boost::assign::list_of<Color>
-    (Color(doubleFromByte(2), doubleFromByte(63), doubleFromByte(165)))
-    (Color(doubleFromByte(142), doubleFromByte(6), doubleFromByte(59)))
-    (Color(doubleFromByte(74), doubleFromByte(111), doubleFromByte(227)))
-    (Color(doubleFromByte(211), doubleFromByte(63), doubleFromByte(106)))
-    (Color(doubleFromByte(17), doubleFromByte(198), doubleFromByte(56)))
-    (Color(doubleFromByte(239), doubleFromByte(151), doubleFromByte(8)))
-    (Color(doubleFromByte(15), doubleFromByte(207), doubleFromByte(192)))
-    (Color(doubleFromByte(247), doubleFromByte(156), doubleFromByte(212)));
+  const std::list<Color> colors =
+    boost::assign::list_of<Color>(Color(doubleFromByte(2), doubleFromByte(63), doubleFromByte(165)))(
+      Color(doubleFromByte(142), doubleFromByte(6), doubleFromByte(59)))(
+      Color(doubleFromByte(74), doubleFromByte(111), doubleFromByte(227)))(
+      Color(doubleFromByte(211), doubleFromByte(63), doubleFromByte(106)))(
+      Color(doubleFromByte(17), doubleFromByte(198), doubleFromByte(56)))(
+      Color(doubleFromByte(239), doubleFromByte(151), doubleFromByte(8)))(
+      Color(doubleFromByte(15), doubleFromByte(207), doubleFromByte(192)))(
+      Color(doubleFromByte(247), doubleFromByte(156), doubleFromByte(212)));
 
   struct ColorComparer
   {
     bool operator()(Color const& left, Color const& right) const
     {
-      return
-        boost::make_tuple(left.alpha, left.red, left.green, left.blue) <
-        boost::make_tuple(right.alpha, right.red, right.green, right.blue);
+      return boost::make_tuple(left.alpha, left.red, left.green, left.blue)
+             < boost::make_tuple(right.alpha, right.red, right.green, right.blue);
     }
   };
-}
+} // namespace
 
-TransparentOverlayPresentation::Ptr TransparentOverlayPresentation::create()
-{
-  return Ptr(new TransparentOverlayPresentation());
-}
+TransparentOverlayPresentation::Ptr TransparentOverlayPresentation::create() { return Ptr(new TransparentOverlayPresentation()); }
 
 TransparentOverlayPresentation::TransparentOverlayPresentation()
   : sizeDeterminer(SizeDeterminer::create())
-{
-}
+{}
 
 void TransparentOverlayPresentation::addPresentation(PresentationInterface::Ptr const& p)
 {
@@ -64,7 +59,6 @@ void TransparentOverlayPresentation::addPresentation(PresentationInterface::Ptr 
 
     for(ViewDataMap::value_type const& v: viewData)
       v.second->addChild(p);
-
   }
   else
     printf("PANIC: Can't add a nonexistent presentation\n");
@@ -85,14 +79,14 @@ void TransparentOverlayPresentation::setOptimalColor(PresentationInterface::Ptr 
       }
     }
 
-    Color minimumColor=c->getMonochromeColor();
-    int minimumColorValue = currentColors[minimumColor];
+    Color minimumColor      = c->getMonochromeColor();
+    int   minimumColorValue = currentColors[minimumColor];
 
     for(Color const& color: colors)
     {
       if(currentColors[color] < minimumColorValue)
       {
-        minimumColor = color;
+        minimumColor      = color;
         minimumColorValue = currentColors[color];
       }
     }
@@ -101,10 +95,7 @@ void TransparentOverlayPresentation::setOptimalColor(PresentationInterface::Ptr 
   }
 }
 
-Scroom::Utils::Rectangle<double> TransparentOverlayPresentation::getRect()
-{
-  return sizeDeterminer->getRect();
-}
+Scroom::Utils::Rectangle<double> TransparentOverlayPresentation::getRect() { return sizeDeterminer->getRect(); }
 
 void TransparentOverlayPresentation::viewAdded(ViewInterface::WeakPtr vi)
 {
@@ -132,8 +123,10 @@ std::set<ViewInterface::WeakPtr> TransparentOverlayPresentation::getViews()
   return result;
 }
 
-void TransparentOverlayPresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr,
-                                            Scroom::Utils::Rectangle<double> presentationArea, int zoom)
+void TransparentOverlayPresentation::redraw(ViewInterface::Ptr const&        vi,
+                                            cairo_t*                         cr,
+                                            Scroom::Utils::Rectangle<double> presentationArea,
+                                            int                              zoom)
 {
   ViewDataMap::const_iterator e = viewData.find(vi);
   if(e != viewData.end())
@@ -158,7 +151,7 @@ std::string TransparentOverlayPresentation::getTitle()
 {
   std::stringstream s;
   s << "Overlay(";
-  bool hasPrevious=false;
+  bool hasPrevious = false;
   for(PresentationInterface::Ptr const& child: children)
   {
     if(hasPrevious)
@@ -170,4 +163,3 @@ std::string TransparentOverlayPresentation::getTitle()
 
   return s.str();
 }
-

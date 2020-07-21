@@ -1,33 +1,27 @@
-#include <scroom/transformpresentation.hh>
 #include <scroom/rectangle.hh>
+#include <scroom/transformpresentation.hh>
 
 TransformationData::TransformationData()
-  : aspectRatio(1,1)
+  : aspectRatio(1, 1)
 {}
 
-TransformationData::Ptr TransformationData::create()
-{
-  return Ptr(new TransformationData());
-}
+TransformationData::Ptr TransformationData::create() { return Ptr(new TransformationData()); }
 
-void TransformationData::setAspectRatio(double x, double y)
-{
-  aspectRatio = Scroom::Utils::make_point(x,y);
-}
+void TransformationData::setAspectRatio(double x, double y) { aspectRatio = Scroom::Utils::make_point(x, y); }
 
-Scroom::Utils::Point<double> TransformationData::getAspectRatio() const
-{
-  return aspectRatio;
-}
+Scroom::Utils::Point<double> TransformationData::getAspectRatio() const { return aspectRatio; }
 
 ////////////////////////////////////////////////////////////////////////
 
-TransformPresentation::TransformPresentation(PresentationInterface::Ptr const& presentation_, TransformationData::Ptr const& transformationData_)
-  : transformationData(transformationData_), presentation(presentation_),
-    colormappable(boost::dynamic_pointer_cast<Colormappable>(presentation_))
+TransformPresentation::TransformPresentation(PresentationInterface::Ptr const& presentation_,
+                                             TransformationData::Ptr const&    transformationData_)
+  : transformationData(transformationData_)
+  , presentation(presentation_)
+  , colormappable(boost::dynamic_pointer_cast<Colormappable>(presentation_))
 {}
 
-TransformPresentation::Ptr TransformPresentation::create(PresentationInterface::Ptr const& presentation, TransformationData::Ptr const& transformationData)
+TransformPresentation::Ptr TransformPresentation::create(PresentationInterface::Ptr const& presentation,
+                                                         TransformationData::Ptr const&    transformationData)
 {
   return Ptr(new TransformPresentation(presentation, transformationData));
 }
@@ -37,18 +31,14 @@ Scroom::Utils::Rectangle<double> TransformPresentation::getRect()
   return presentation->getRect() * transformationData->getAspectRatio();
 }
 
-void TransformPresentation::open(ViewInterface::WeakPtr viewInterface)
-{
-  presentation->open(viewInterface);
-}
+void TransformPresentation::open(ViewInterface::WeakPtr viewInterface) { presentation->open(viewInterface); }
 
-void TransformPresentation::close(ViewInterface::WeakPtr viewInterface)
-{
-  presentation->close(viewInterface);
-}
+void TransformPresentation::close(ViewInterface::WeakPtr viewInterface) { presentation->close(viewInterface); }
 
-void TransformPresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr,
-                                   Scroom::Utils::Rectangle<double> presentationArea, int zoom)
+void TransformPresentation::redraw(ViewInterface::Ptr const&        vi,
+                                   cairo_t*                         cr,
+                                   Scroom::Utils::Rectangle<double> presentationArea,
+                                   int                              zoom)
 {
   Scroom::Utils::Point<double> aspectRatio = transformationData->getAspectRatio();
 
@@ -63,55 +53,25 @@ bool TransformPresentation::getProperty(const std::string& name, std::string& va
   return presentation->getProperty(name, value);
 }
 
-bool TransformPresentation::isPropertyDefined(const std::string& name)
-{
-  return presentation->isPropertyDefined(name);
-}
+bool TransformPresentation::isPropertyDefined(const std::string& name) { return presentation->isPropertyDefined(name); }
 
-std::string TransformPresentation::getTitle()
-{
-  return presentation->getTitle();
-}
+std::string TransformPresentation::getTitle() { return presentation->getTitle(); }
 
-void TransformPresentation::setColormap(Colormap::Ptr colormap)
-{
-  colormappable->setColormap(colormap);
-}
+void TransformPresentation::setColormap(Colormap::Ptr colormap) { colormappable->setColormap(colormap); }
 
-Colormap::Ptr TransformPresentation::getOriginalColormap()
-{
-  return colormappable->getOriginalColormap();
-}
+Colormap::Ptr TransformPresentation::getOriginalColormap() { return colormappable->getOriginalColormap(); }
 
-int TransformPresentation::getNumberOfColors()
-{
-  return colormappable->getNumberOfColors();
-}
+int TransformPresentation::getNumberOfColors() { return colormappable->getNumberOfColors(); }
 
-Color TransformPresentation::getMonochromeColor()
-{
-  return colormappable->getMonochromeColor();
-}
+Color TransformPresentation::getMonochromeColor() { return colormappable->getMonochromeColor(); }
 
-void TransformPresentation::setMonochromeColor(const Color& c)
-{
-  colormappable->setMonochromeColor(c);
-}
+void TransformPresentation::setMonochromeColor(const Color& c) { colormappable->setMonochromeColor(c); }
 
-void TransformPresentation::setTransparentBackground()
-{
-  colormappable->setTransparentBackground();
-}
+void TransformPresentation::setTransparentBackground() { colormappable->setTransparentBackground(); }
 
-void TransformPresentation::disableTransparentBackground()
-{
-  colormappable->disableTransparentBackground();
-}
+void TransformPresentation::disableTransparentBackground() { colormappable->disableTransparentBackground(); }
 
-bool TransformPresentation::getTransparentBackground()
-{
-  return colormappable->getTransparentBackground();
-}
+bool TransformPresentation::getTransparentBackground() { return colormappable->getTransparentBackground(); }
 
 PipetteLayerOperations::PipetteColor TransformPresentation::getPixelAverages(Scroom::Utils::Rectangle<int> area)
 {
@@ -120,7 +80,4 @@ PipetteLayerOperations::PipetteColor TransformPresentation::getPixelAverages(Scr
   return pipettePresentation->getPixelAverages(area);
 }
 
-Scroom::Utils::Point<double> TransformPresentation::getAspectRatio() const
-{
-  return transformationData->getAspectRatio();
-}
+Scroom::Utils::Point<double> TransformPresentation::getAspectRatio() const { return transformationData->getAspectRatio(); }

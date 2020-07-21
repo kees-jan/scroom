@@ -21,10 +21,9 @@
  * executing a job on the queue. This might take some time you do not
  * wish to wait.
  */
-template<typename T>
+template <typename T>
 class DontDelete
 {
 public:
   void operator()(T*) {}
 };
-

@@ -11,10 +11,10 @@
 
 #include <iostream>
 
-#include <boost/test/unit_test.hpp>
-#include <boost/shared_ptr.hpp>
 #include <boost/bind/bind.hpp>
 #include <boost/function.hpp>
+#include <boost/shared_ptr.hpp>
+#include <boost/test/unit_test.hpp>
 
 //////////////////////////////////////////////////////////////
 
@@ -27,23 +27,14 @@ public:
   typedef boost::shared_ptr<A> Ptr;
 
   A(int& i_)
-    :i(i_)
+    : i(i_)
   {}
 
-  void set(int v)
-  {
-    i=v;
-  }
+  void set(int v) { i = v; }
 
-  int get()
-  {
-    return i;
-  }
+  int get() { return i; }
 
-  static Ptr create(int& i)
-  {
-    return Ptr(new A(i));
-  }
+  static Ptr create(int& i) { return Ptr(new A(i)); }
 };
 
 //////////////////////////////////////////////////////////////
@@ -52,10 +43,10 @@ BOOST_AUTO_TEST_SUITE(boost_bind_Tests)
 
 BOOST_AUTO_TEST_CASE(keeps_object_alive_while_setting)
 {
-  int value=25;
-  const int expected = 1;
-  A::Ptr a = A::create(value);
-  boost::function<void ()> f = boost::bind(&A::set, a, expected);
+  int                     value    = 25;
+  const int               expected = 1;
+  A::Ptr                  a        = A::create(value);
+  boost::function<void()> f        = boost::bind(&A::set, a, expected);
 
   a.reset();
   f();
@@ -64,10 +55,10 @@ BOOST_AUTO_TEST_CASE(keeps_object_alive_while_setting)
 
 BOOST_AUTO_TEST_CASE(keeps_object_alive_while_getting)
 {
-  int value=25;
-  const int expected = value;
-  A::Ptr a = A::create(value);
-  boost::function<int ()> f = boost::bind(&A::get, a);
+  int                    value    = 25;
+  const int              expected = value;
+  A::Ptr                 a        = A::create(value);
+  boost::function<int()> f        = boost::bind(&A::get, a);
 
   a.reset();
   BOOST_CHECK_EQUAL(expected, f());

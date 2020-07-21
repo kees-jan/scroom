@@ -10,4 +10,3 @@
 #include <scroom/semaphore.hh>
 
 void init_tests();
-

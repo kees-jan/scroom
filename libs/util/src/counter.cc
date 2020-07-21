@@ -5,20 +5,17 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include <scroom/utilities.hh>
-
 #include <stdio.h>
 
 #include <glib.h>
+
+#include <scroom/utilities.hh>
 
 using namespace Scroom::Utils;
 
 ///////////////////////////////////////////////////////////////////////
 
-void Scroom::Utils::dumpCounts()
-{
-  Counter::instance()->dump();
-}
+void Scroom::Utils::dumpCounts() { Counter::instance()->dump(); }
 
 gboolean timedDumpCounts(gpointer data)
 {
@@ -29,9 +26,10 @@ gboolean timedDumpCounts(gpointer data)
 ///////////////////////////////////////////////////////////////////////
 
 Count::Count(const std::string& name_)
-  : name(name_), mut(), count(0)
-{
-}
+  : name(name_)
+  , mut()
+  , count(0)
+{}
 
 Count::Ptr Count::create(const std::string& name)
 {
@@ -48,10 +46,7 @@ Counter* Counter::instance()
   return me;
 }
 
-Counter::Counter()
-{
-  g_timeout_add_seconds(10, timedDumpCounts, this);
-}
+Counter::Counter() { g_timeout_add_seconds(10, timedDumpCounts, this); }
 
 void Counter::registerCount(Count::Ptr count)
 {

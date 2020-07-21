@@ -7,15 +7,20 @@
 
 #pragma once
 
+#include <atomic>
+#include <mutex>
+
+#include <scroom/pipetteviewinterface.hh>
 #include <scroom/plugininformationinterface.hh>
+#include <scroom/threadpool.hh>
 #include <scroom/utilities.hh>
 #include <scroom/viewinterface.hh>
-#include <scroom/threadpool.hh>
-#include <scroom/pipetteviewinterface.hh>
-#include <mutex>
-#include <atomic>
 
-class PipetteHandler : public ToolStateListener, public PostRenderer, public SelectionListener, virtual public Scroom::Utils::Base
+class PipetteHandler
+  : public ToolStateListener
+  , public PostRenderer
+  , public SelectionListener
+  , virtual public Scroom::Utils::Base
 {
 public:
   PipetteHandler();
@@ -24,10 +29,10 @@ public:
   typedef boost::shared_ptr<PipetteHandler> Ptr;
 
 private:
-  Selection::Ptr selection;
-  bool enabled;
-  std::atomic_flag wasDisabled;
-  std::mutex jobMutex;
+  Selection::Ptr         selection;
+  bool                   enabled;
+  std::atomic_flag       wasDisabled;
+  std::mutex             jobMutex;
   ThreadPool::Queue::Ptr currentJob;
 
 public:
@@ -57,16 +62,20 @@ public:
   ////////////////////////////////////////////////////////////////////////
 
   virtual void computeValues(ViewInterface::Ptr view, Scroom::Utils::Rectangle<int> sel_rect);
-  virtual void displayValues(ViewInterface::Ptr view, Scroom::Utils::Rectangle<int> rect, PipetteLayerOperations::PipetteColor colors);
+  virtual void
+    displayValues(ViewInterface::Ptr view, Scroom::Utils::Rectangle<int> rect, PipetteLayerOperations::PipetteColor colors);
 };
 
-class Pipette : public PluginInformationInterface, public ViewObserver, virtual public  Scroom::Utils::Base
+class Pipette
+  : public PluginInformationInterface
+  , public ViewObserver
+  , virtual public Scroom::Utils::Base
 {
 public:
   typedef boost::shared_ptr<Pipette> Ptr;
 
 private:
-  Pipette() {};
+  Pipette(){};
 
 public:
   static Ptr create();
@@ -77,7 +86,7 @@ public:
 
   virtual std::string getPluginName();
   virtual std::string getPluginVersion();
-  virtual void registerCapabilities(ScroomPluginInterface::Ptr host);
+  virtual void        registerCapabilities(ScroomPluginInterface::Ptr host);
 
   ////////////////////////////////////////////////////////////////////////
   // ViewObserver

@@ -13,7 +13,10 @@
 #include <scroom/presentationinterface.hh>
 #include <scroom/utilities.hh>
 
-class Example : public PluginInformationInterface, public NewPresentationInterface, virtual public  Scroom::Utils::Base
+class Example
+  : public PluginInformationInterface
+  , public NewPresentationInterface
+  , virtual public Scroom::Utils::Base
 {
 public:
   typedef boost::shared_ptr<Example> Ptr;
@@ -27,10 +30,9 @@ public:
 public:
   virtual std::string getPluginName();
   virtual std::string getPluginVersion();
-  virtual void registerCapabilities(ScroomPluginInterface::Ptr host);
+  virtual void        registerCapabilities(ScroomPluginInterface::Ptr host);
 
   virtual PresentationInterface::Ptr createNew();
 
   virtual ~Example();
 };
-

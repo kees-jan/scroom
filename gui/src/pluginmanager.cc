@@ -7,18 +7,21 @@
 
 #include "pluginmanager.hh"
 
+#include <string>
+
 #include <stdio.h>
 #include <stdlib.h>
-#include <string>
-#include <sys/types.h>
+
+#include <boost/filesystem.hpp>
 
 #include <scroom/plugininformationinterface.hh>
-#include <boost/filesystem.hpp>
 
 #include "callbacks.hh"
 
+#include <sys/types.h>
+
 #ifdef _WIN32
-#include <boost/dll.hpp>
+#  include <boost/dll.hpp>
 #endif
 
 const std::string SCROOM_PLUGIN_DIRS = "SCROOM_PLUGIN_DIRS";
@@ -26,56 +29,55 @@ const std::string SCROOM_PLUGIN_DIRS = "SCROOM_PLUGIN_DIRS";
 static PluginManager::Ptr pluginManager = PluginManager::create();
 
 PluginManager::PluginManager()
-: devMode(false), state(FINDING_DIRECTORIES)
-{
-}
+  : devMode(false)
+  , state(FINDING_DIRECTORIES)
+{}
 
-PluginManager::Ptr PluginManager::create()
-{
-  return Ptr(new PluginManager());
-}
+PluginManager::Ptr PluginManager::create() { return Ptr(new PluginManager()); }
 
-void startPluginManager(bool devMode)
-{
-  pluginManager->addHook(devMode);
-}
+void startPluginManager(bool devMode) { pluginManager->addHook(devMode); }
 
-bool PluginManager::doWork() 
+bool PluginManager::doWork()
 {
   bool retval = true;
 
   gdk_threads_enter();
-  switch (state)
+  switch(state)
   {
-  case FINDING_DIRECTORIES: {
+  case FINDING_DIRECTORIES:
+  {
     setStatusBarMessage("Locating plugin directories");
     char* path = getenv(SCROOM_PLUGIN_DIRS.c_str());
     dirs.clear();
 
-    if (!devMode) {
-      #ifdef _WIN32
-        // We want to keep everything portable on windows so we look for the plugin folder in the same directory as the .exe
-        std::string plugin_path = (boost::dll::program_location().parent_path() / "plugins").generic_string();
-        dirs.push_back(plugin_path);
-      #else
-        dirs.push_back(PLUGIN_DIR);
-      #endif
+    if(!devMode)
+    {
+#ifdef _WIN32
+      // We want to keep everything portable on windows so we look for the plugin folder in the same directory as the .exe
+      std::string plugin_path = (boost::dll::program_location().parent_path() / "plugins").generic_string();
+      dirs.push_back(plugin_path);
+#else
+      dirs.push_back(PLUGIN_DIR);
+#endif
     }
 
-    if (path != nullptr) {
+    if(path != nullptr)
+    {
       printf("%s = %s\n", SCROOM_PLUGIN_DIRS.c_str(), path);
 
-      for (char* i = path; *i != '\0'; i++) {
+      for(char* i = path; *i != '\0'; i++)
+      {
 
-    	  // Windows uses semicolons for delimiting environment variables, Linux uses colons
-		    #ifdef _WIN32
-    	    const char envDelim = ';';
-		    #else
-    	    const char envDelim = ':';
-		    #endif
-          if (*i != envDelim) {
-            continue;
-          }
+// Windows uses semicolons for delimiting environment variables, Linux uses colons
+#ifdef _WIN32
+        const char envDelim = ';';
+#else
+        const char envDelim = ':';
+#endif
+        if(*i != envDelim)
+        {
+          continue;
+        }
 
         *i = '\0';
         dirs.push_back(path);
@@ -91,27 +93,32 @@ bool PluginManager::doWork()
     break;
   }
 
-  case SCANNING_DIRECTORIES: {
+  case SCANNING_DIRECTORIES:
+  {
     setStatusBarMessage("Scanning plugin directories");
-    if (currentDir == dirs.end()) {
-      state = LOADING_FILES;
+    if(currentDir == dirs.end())
+    {
+      state       = LOADING_FILES;
       currentFile = files.begin();
       break;
     }
 
     printf("Scanning directory: %s\n", currentDir->c_str());
-    const char * folder = currentDir->c_str();
-    namespace fs = boost::filesystem;
+    const char* folder = currentDir->c_str();
+    namespace fs       = boost::filesystem;
     boost::system::error_code ec;
 
-    if (!fs::is_directory(folder, ec)) {
+    if(!fs::is_directory(folder, ec))
+    {
       printf("Can't open directory...\n");
       currentDir++;
       break;
     }
 
-    for (const auto & entry : fs::directory_iterator(folder)) {
-      if (fs::is_regular_file(entry) || fs::is_symlink(entry) || fs::is_other(entry)) {
+    for(const auto& entry: fs::directory_iterator(folder))
+    {
+      if(fs::is_regular_file(entry) || fs::is_symlink(entry) || fs::is_other(entry))
+      {
         files.push_back(entry.path().generic_string());
       }
     }
@@ -120,63 +127,83 @@ bool PluginManager::doWork()
     break;
   }
 
-  case LOADING_FILES: {
+  case LOADING_FILES:
+  {
     setStatusBarMessage("Loading Plugins");
-    if (currentFile == files.end()) {
+    if(currentFile == files.end())
+    {
       state = DONE;
       break;
     }
 
 #ifdef _WIN32
     // Only read .dll files
-    if (currentFile->compare(currentFile->size() - 4, 4, ".dll") == 0) {
+    if(currentFile->compare(currentFile->size() - 4, 4, ".dll") == 0)
+    {
 #else
     // Only read .so files
-    if (currentFile->compare(currentFile->size() - 3, 3, ".so") == 0) {
+    if(currentFile->compare(currentFile->size() - 3, 3, ".so") == 0)
+    {
 #endif
-        printf("Reading file: %s\n", currentFile->c_str());
-        GModule* plugin = g_module_open(currentFile->c_str(), static_cast<GModuleFlags>(0));
-        if (plugin) {
-          // Need to pass a gpointer to g_module_symbol. If I pass a
-          // PluginFunc, glib 2.16.6/gcc 4.2.4 will complain about
-          // type-punned pointers.
-          gpointer pgpi;
-          if (g_module_symbol(plugin, "getPluginInformation", &pgpi)) {
-            PluginFunc gpi = reinterpret_cast<PluginFunc>(pgpi);
-            if (gpi) {
-              PluginInformationInterface::Ptr pi = (*gpi)();
-              if (pi) {
-                if (pi->pluginApiVersion == PLUGIN_API_VERSION) {
-                  pluginInformationList.push_back(PluginInformation(plugin, pi));
-                  pi->registerCapabilities(shared_from_this<PluginManager>());
-                  plugin = nullptr;
-                  gpi = nullptr;
-                  pi.reset();
-                } else {
-                  printf("Plugin has incorrect API version %d, instead of %d\n",
-                         pi->pluginApiVersion, PLUGIN_API_VERSION);
-                }
-              } else {
-                printf("GetPluginInformation returned NULL\n");
+      printf("Reading file: %s\n", currentFile->c_str());
+      GModule* plugin = g_module_open(currentFile->c_str(), static_cast<GModuleFlags>(0));
+      if(plugin)
+      {
+        // Need to pass a gpointer to g_module_symbol. If I pass a
+        // PluginFunc, glib 2.16.6/gcc 4.2.4 will complain about
+        // type-punned pointers.
+        gpointer pgpi;
+        if(g_module_symbol(plugin, "getPluginInformation", &pgpi))
+        {
+          PluginFunc gpi = reinterpret_cast<PluginFunc>(pgpi);
+          if(gpi)
+          {
+            PluginInformationInterface::Ptr pi = (*gpi)();
+            if(pi)
+            {
+              if(pi->pluginApiVersion == PLUGIN_API_VERSION)
+              {
+                pluginInformationList.push_back(PluginInformation(plugin, pi));
+                pi->registerCapabilities(shared_from_this<PluginManager>());
+                plugin = nullptr;
+                gpi    = nullptr;
+                pi.reset();
               }
-            } else {
-              printf("Can't find the getPluginInterface function: %s\n", g_module_error());
+              else
+              {
+                printf("Plugin has incorrect API version %d, instead of %d\n", pi->pluginApiVersion, PLUGIN_API_VERSION);
+              }
             }
-          } else {
-            printf("Can't lookup symbols: %s\n", g_module_error());
+            else
+            {
+              printf("GetPluginInformation returned NULL\n");
+            }
           }
+          else
+          {
+            printf("Can't find the getPluginInterface function: %s\n", g_module_error());
+          }
+        }
+        else
+        {
+          printf("Can't lookup symbols: %s\n", g_module_error());
+        }
 
-          if (plugin) {
-            g_module_close(plugin);
-          }
-        } else {
-          printf("Something went wrong: %s\n", g_module_error());
+        if(plugin)
+        {
+          g_module_close(plugin);
         }
       }
+      else
+      {
+        printf("Something went wrong: %s\n", g_module_error());
+      }
     }
+  }
     currentFile++;
     break;
-  case DONE: {
+  case DONE:
+  {
     setStatusBarMessage("Done loading plugins");
     on_done_loading_plugins();
     retval = false;
@@ -205,7 +232,8 @@ void PluginManager::addHook(bool devMode_)
   state = FINDING_DIRECTORIES;
 }
 
-void PluginManager::registerNewPresentationInterface(const std::string& identifier, NewPresentationInterface::Ptr newPresentationInterface)
+void PluginManager::registerNewPresentationInterface(const std::string&            identifier,
+                                                     NewPresentationInterface::Ptr newPresentationInterface)
 {
   printf("I learned how to create a new %s!\n", identifier.c_str());
   newPresentationInterfaces[newPresentationInterface] = identifier;
@@ -219,7 +247,8 @@ void PluginManager::registerNewAggregateInterface(const std::string& identifier,
   newAggregateInterfaces[identifier] = newAggregateInterface;
 }
 
-void PluginManager::registerOpenPresentationInterface(const std::string& extension, OpenPresentationInterface::Ptr openPresentationInterface)
+void PluginManager::registerOpenPresentationInterface(const std::string&             extension,
+                                                      OpenPresentationInterface::Ptr openPresentationInterface)
 {
   printf("I learned how to open a %s file!\n", extension.c_str());
 
@@ -262,22 +291,13 @@ const std::map<OpenPresentationInterface::Ptr, std::string>& PluginManager::getO
   return openPresentationInterfaces;
 }
 
-const std::map<OpenInterface::Ptr, std::string>& PluginManager::getOpenInterfaces()
-{
-  return openInterfaces;
-}
+const std::map<OpenInterface::Ptr, std::string>& PluginManager::getOpenInterfaces() { return openInterfaces; }
 
-const std::map<ViewObserver::Ptr, std::string>& PluginManager::getViewObservers()
-{
-  return viewObservers;
-}
+const std::map<ViewObserver::Ptr, std::string>& PluginManager::getViewObservers() { return viewObservers; }
 
 const std::map<PresentationObserver::Ptr, std::string>& PluginManager::getPresentationObservers()
 {
   return presentationObservers;
 }
 
-PluginManager::Ptr PluginManager::getInstance()
-{
-  return pluginManager;
-}
+PluginManager::Ptr PluginManager::getInstance() { return pluginManager; }

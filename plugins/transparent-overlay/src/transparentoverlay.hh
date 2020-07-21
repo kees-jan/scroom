@@ -13,13 +13,16 @@
 #include <scroom/presentationinterface.hh>
 #include <scroom/utilities.hh>
 
-class TransparentOverlay : public PluginInformationInterface, public NewAggregateInterface, virtual public  Scroom::Utils::Base
+class TransparentOverlay
+  : public PluginInformationInterface
+  , public NewAggregateInterface
+  , virtual public Scroom::Utils::Base
 {
 public:
   typedef boost::shared_ptr<TransparentOverlay> Ptr;
 
 private:
-  TransparentOverlay() {};
+  TransparentOverlay(){};
 
 public:
   static Ptr create();
@@ -27,8 +30,7 @@ public:
 public:
   virtual std::string getPluginName();
   virtual std::string getPluginVersion();
-  virtual void registerCapabilities(ScroomPluginInterface::Ptr host);
+  virtual void        registerCapabilities(ScroomPluginInterface::Ptr host);
 
   virtual Aggregate::Ptr createNew();
 };
-

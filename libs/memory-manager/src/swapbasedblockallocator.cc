@@ -6,7 +6,6 @@
  */
 
 #include <scroom/blockallocator.hh>
-
 #include <scroom/utilities.hh>
 
 namespace Scroom
@@ -17,19 +16,21 @@ namespace Scroom
     {
       namespace
       {
-        template<typename T>
+        template <typename T>
         class DontDelete
         {
         public:
           void operator()(T*) {}
         };
-      }
+      } // namespace
 
-      class SwapBasedBlockAllocator : public BlockInterface, public virtual Scroom::Utils::Base
+      class SwapBasedBlockAllocator
+        : public BlockInterface
+        , public virtual Scroom::Utils::Base
       {
       private:
-        size_t count;
-        size_t size;
+        size_t   count;
+        size_t   size;
         uint8_t* data;
 
       private:
@@ -41,27 +42,26 @@ namespace Scroom
       public:
         ~SwapBasedBlockAllocator();
         static BlockInterface::Ptr create(size_t count, size_t size);
-        virtual PageList getPages();
+        virtual PageList           getPages();
       };
 
       SwapBasedBlockAllocator::SwapBasedBlockAllocator(size_t count_, size_t size_)
-        : count(count_), size(size_), data(static_cast<uint8_t*>(malloc(count_*size_*sizeof(uint8_t))))
+        : count(count_)
+        , size(size_)
+        , data(static_cast<uint8_t*>(malloc(count_ * size_ * sizeof(uint8_t))))
       {
-        if(data==NULL)
+        if(data == NULL)
           throw std::bad_alloc();
       }
 
-      SwapBasedBlockAllocator::~SwapBasedBlockAllocator()
-      {
-        free(data);
-      }
+      SwapBasedBlockAllocator::~SwapBasedBlockAllocator() { free(data); }
 
       RawPageData::Ptr SwapBasedBlockAllocator::get(size_t id)
       {
-        if(id>=count)
+        if(id >= count)
           throw std::out_of_range("");
 
-        return RawPageData::Ptr(data+id*size, DontDelete<uint8_t>());
+        return RawPageData::Ptr(data + id * size, DontDelete<uint8_t>());
       }
 
       BlockInterface::Ptr SwapBasedBlockAllocator::create(size_t count, size_t size)
@@ -74,7 +74,7 @@ namespace Scroom
         BlockInterface::Ptr me = shared_from_this<BlockInterface>();
 
         PageList result;
-        for(size_t i=0; i<count; i++)
+        for(size_t i = 0; i < count; i++)
           result.push_back(Page(me, i));
 
         return result;
@@ -88,12 +88,11 @@ namespace Scroom
         SwapBasedBlockAllocatorFactory();
 
       public:
-        static Ptr create();
+        static Ptr                  create();
         virtual BlockInterface::Ptr create(size_t count, size_t size);
       };
 
-      SwapBasedBlockAllocatorFactory::SwapBasedBlockAllocatorFactory()
-      {}
+      SwapBasedBlockAllocatorFactory::SwapBasedBlockAllocatorFactory() {}
 
       BlockFactoryInterface::Ptr SwapBasedBlockAllocatorFactory::create()
       {
@@ -104,7 +103,7 @@ namespace Scroom
       {
         return SwapBasedBlockAllocator::create(count, size);
       }
-    }
+    } // namespace Detail
 
     ////////////////////////////////////////////////////////////////////////
 
@@ -113,6 +112,5 @@ namespace Scroom
       static BlockFactoryInterface::Ptr instance = Detail::SwapBasedBlockAllocatorFactory::create();
       return instance;
     }
-  }
-}
-
+  } // namespace MemoryBlocks
+} // namespace Scroom

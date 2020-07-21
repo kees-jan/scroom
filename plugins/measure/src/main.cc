@@ -12,7 +12,4 @@
 
 #include "measure.hh"
 
-PluginInformationInterface::Ptr getPluginInformation()
-{
-  return Measure::create();
-}
+PluginInformationInterface::Ptr getPluginInformation() { return Measure::create(); }

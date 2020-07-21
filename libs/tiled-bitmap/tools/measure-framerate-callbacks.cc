@@ -7,15 +7,15 @@
 
 #include "measure-framerate-callbacks.hh"
 
-#include "test-helpers.hh"
-
 #include <scroom/unused.hh>
+
+#include "test-helpers.hh"
 
 ////////////////////////////////////////////////////////////////////////
 
-std::vector<boost::function<bool ()> > functions;
-static unsigned int current=0;
-static GtkWidget* drawingArea=NULL;
+std::vector<boost::function<bool()>> functions;
+static unsigned int                  current     = 0;
+static GtkWidget*                    drawingArea = NULL;
 
 ////////////////////////////////////////////////////////////////////////
 // Internals
@@ -23,11 +23,11 @@ static GtkWidget* drawingArea=NULL;
 static gboolean on_configure(GtkWidget*, GdkEventConfigure*, gpointer)
 {
   // There should be a simpler way to do this...
-  GdkRegion* r = gdk_drawable_get_visible_region(GDK_DRAWABLE(gtk_widget_get_window(drawingArea)));
+  GdkRegion*   r = gdk_drawable_get_visible_region(GDK_DRAWABLE(gtk_widget_get_window(drawingArea)));
   GdkRectangle rect;
   gdk_region_get_clipbox(r, &rect);
 
-  drawingAreaWidth = rect.width;
+  drawingAreaWidth  = rect.width;
   drawingAreaHeight = rect.height;
 
   gdk_region_destroy(r);
@@ -35,10 +35,7 @@ static gboolean on_configure(GtkWidget*, GdkEventConfigure*, gpointer)
   return FALSE;
 }
 
-static void on_hide(GtkWidget*, gpointer)
-{
-  gtk_main_quit();
-}
+static void on_hide(GtkWidget*, gpointer) { gtk_main_quit(); }
 
 static gboolean on_expose(GtkWidget* widget, GdkEventExpose*, gpointer)
 {
@@ -53,7 +50,7 @@ static gboolean on_expose(GtkWidget* widget, GdkEventExpose*, gpointer)
 
 static gboolean on_idle(gpointer)
 {
-  if(current>=functions.size())
+  if(current >= functions.size())
     return false;
 
   if(!functions[current]())
@@ -71,12 +68,12 @@ GtkWidget* create_window()
   gtk_window_set_title(GTK_WINDOW(window), "Measure Framerate");
   gtk_window_maximize(GTK_WINDOW(window));
 
-  g_signal_connect (static_cast<gpointer>(window), "hide", G_CALLBACK (on_hide), NULL);
+  g_signal_connect(static_cast<gpointer>(window), "hide", G_CALLBACK(on_hide), NULL);
 
   drawingArea = gtk_drawing_area_new();
   gtk_container_add(GTK_CONTAINER(window), drawingArea);
-  g_signal_connect (static_cast<gpointer>(drawingArea), "expose_event", G_CALLBACK (on_expose), NULL);
-  g_signal_connect (static_cast<gpointer>(drawingArea), "configure_event", G_CALLBACK (on_configure), NULL);
+  g_signal_connect(static_cast<gpointer>(drawingArea), "expose_event", G_CALLBACK(on_expose), NULL);
+  g_signal_connect(static_cast<gpointer>(drawingArea), "configure_event", G_CALLBACK(on_configure), NULL);
 
   gtk_widget_show(drawingArea);
   gtk_widget_show(window);
@@ -84,10 +81,7 @@ GtkWidget* create_window()
   return window;
 }
 
-void init()
-{
-  gtk_idle_add(on_idle, NULL);
-}
+void init() { gtk_idle_add(on_idle, NULL); }
 
 void invalidate()
 {

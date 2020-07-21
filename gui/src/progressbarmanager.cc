@@ -7,14 +7,14 @@
 
 #include "progressbarmanager.hh"
 
-#include <boost/thread.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/thread.hpp>
 
 #include <scroom/assertions.hh>
 #include <scroom/gtk-helpers.hh>
 
-#include "workinterface.hh"
 #include "callbacks.hh"
+#include "workinterface.hh"
 
 namespace
 {
@@ -24,8 +24,8 @@ namespace
     typedef boost::shared_ptr<ProgressBarPulser> Ptr;
 
   private:
-    boost::mutex mut;
-    std::list<GtkProgressBar*> progressbars;
+    boost::mutex                         mut;
+    std::list<GtkProgressBar*>           progressbars;
     std::list<GtkProgressBar*>::iterator current;
 
   public:
@@ -55,7 +55,7 @@ namespace
 
     progressbars.push_back(progressBar_);
 
-    if(progressbars.size()==1)
+    if(progressbars.size() == 1)
     {
       current = progressbars.begin();
       g_timeout_add(100, on_idle, static_cast<WorkInterface*>(this));
@@ -66,10 +66,10 @@ namespace
   {
     boost::mutex::scoped_lock lock(mut);
 
-    for(GtkProgressBar* &p: progressbars)
+    for(GtkProgressBar*& p: progressbars)
     {
-      if(p==progressBar_)
-        p=NULL;
+      if(p == progressBar_)
+        p = NULL;
     }
   }
 
@@ -77,9 +77,9 @@ namespace
   {
     // Locking these the other way around results in a deadlock. See ticket #40
     Scroom::GtkHelpers::TakeGdkLock gdkLock;
-    boost::mutex::scoped_lock lock(mut);
+    boost::mutex::scoped_lock       lock(mut);
 
-    while(current == progressbars.end() || *current==NULL)
+    while(current == progressbars.end() || *current == NULL)
     {
       if(progressbars.empty())
       {
@@ -87,7 +87,7 @@ namespace
       }
       else if(current == progressbars.end())
         current = progressbars.begin();
-      else if (*current == NULL)
+      else if(*current == NULL)
         current = progressbars.erase(current);
       else
       {
@@ -100,10 +100,11 @@ namespace
 
     return true;
   }
-}
+} // namespace
 
 ProgressBarManager::ProgressBarManager(GtkProgressBar* progressBar_)
-  :progressBar(progressBar_), isWaiting(false)
+  : progressBar(progressBar_)
+  , isWaiting(false)
 {}
 
 ProgressBarManager::Ptr ProgressBarManager::create(GtkProgressBar* progressBar)
@@ -111,10 +112,7 @@ ProgressBarManager::Ptr ProgressBarManager::create(GtkProgressBar* progressBar)
   return Ptr(new ProgressBarManager(progressBar));
 }
 
-ProgressBarManager::~ProgressBarManager()
-{
-  stopWaiting();
-}
+ProgressBarManager::~ProgressBarManager() { stopWaiting(); }
 
 void ProgressBarManager::setProgressBar(GtkProgressBar* progressBar_)
 {
@@ -144,15 +142,9 @@ void ProgressBarManager::stopWaiting()
 
 // ProgressInterface ///////////////////////////////////////////////////
 
-void ProgressBarManager::setIdle()
-{
-  setWorking(0.0);
-}
+void ProgressBarManager::setIdle() { setWorking(0.0); }
 
-void ProgressBarManager::setWaiting(double)
-{
-  startWaiting();
-}
+void ProgressBarManager::setWaiting(double) { startWaiting(); }
 
 void ProgressBarManager::setWorking(double progress)
 {
@@ -162,7 +154,4 @@ void ProgressBarManager::setWorking(double progress)
   gtk_progress_bar_set_fraction(progressBar, progress);
 }
 
-void ProgressBarManager::setFinished()
-{
-  setIdle();
-}
+void ProgressBarManager::setFinished() { setIdle(); }

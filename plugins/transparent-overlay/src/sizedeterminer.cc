@@ -9,31 +9,31 @@
 
 #include <algorithm>
 
-#include <scroom/gtk-helpers.hh>
 #include <scroom/assertions.hh>
+#include <scroom/gtk-helpers.hh>
 
 namespace
 {
   Scroom::Utils::Rectangle<double> DetermineSize(std::list<PresentationInterface::Ptr> presentations)
   {
-    double left = std::numeric_limits<double>::max();
-    double top = std::numeric_limits<double>::max();
-    double right = std::numeric_limits<double>::min();
+    double left   = std::numeric_limits<double>::max();
+    double top    = std::numeric_limits<double>::max();
+    double right  = std::numeric_limits<double>::min();
     double bottom = std::numeric_limits<double>::min();
 
     for(PresentationInterface::Ptr const& p: presentations)
     {
       Scroom::Utils::Rectangle<double> rect = p->getRect();
-      left = std::min(left, rect.getLeft());
-      top = std::min(top, rect.getTop());
-      right = std::max(right, rect.getRight());
-      bottom = std::max(bottom, rect.getBottom());
+      left                                  = std::min(left, rect.getLeft());
+      top                                   = std::min(top, rect.getTop());
+      right                                 = std::max(right, rect.getRight());
+      bottom                                = std::max(bottom, rect.getBottom());
     }
-    return Scroom::Utils::Rectangle<double>(left, top, right-left, bottom-top);
+    return Scroom::Utils::Rectangle<double>(left, top, right - left, bottom - top);
   }
 
-  template<typename K, typename V>
-  std::list<K> keys(std::map<K,V> const& m)
+  template <typename K, typename V>
+  std::list<K> keys(std::map<K, V> const& m)
   {
     std::list<K> k;
     for(auto const& p: m)
@@ -41,7 +41,7 @@ namespace
 
     return k;
   }
-}
+} // namespace
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -59,21 +59,16 @@ SizeDeterminer::PresentationData::PresentationData(ResizablePresentationInterfac
 
 ////////////////////////////////////////////////////////////////////////
 
-SizeDeterminer::Ptr SizeDeterminer::create()
-{
-  return Ptr(new SizeDeterminer());
-}
+SizeDeterminer::Ptr SizeDeterminer::create() { return Ptr(new SizeDeterminer()); }
 
-SizeDeterminer::SizeDeterminer()
-{
-}
+SizeDeterminer::SizeDeterminer() {}
 
 void SizeDeterminer::add(PresentationInterface::Ptr const& p)
 {
   ResizablePresentationInterface::Ptr r = boost::dynamic_pointer_cast<ResizablePresentationInterface>(p);
   if(r)
   {
-    resizablePresentationData.insert(std::make_pair(p,PresentationData(r)));
+    resizablePresentationData.insert(std::make_pair(p, PresentationData(r)));
   }
   else
     presentations.push_back(p);

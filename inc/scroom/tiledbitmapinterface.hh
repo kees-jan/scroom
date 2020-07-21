@@ -7,13 +7,14 @@
 
 #pragma once
 
-#include <gdk/gdk.h>
-#include <gtk/gtk.h>
-#include <cairo.h>
-
 #include <vector>
 
 #include <boost/shared_ptr.hpp>
+
+#include <gdk/gdk.h>
+#include <gtk/gtk.h>
+
+#include <cairo.h>
 
 #include <scroom/presentationinterface.hh>
 #include <scroom/rectangle.hh>
@@ -30,10 +31,10 @@
 typedef enum
 {
   TILE_UNINITIALIZED, /**< Tile does not yet contain any data */
-  TILE_UNLOADED, /**< Tile does contain data, but has been swapped out */
-  TILE_LOADED, /**< Tile does contain data, and data is in memory */
+  TILE_UNLOADED,      /**< Tile does contain data, but has been swapped out */
+  TILE_LOADED,        /**< Tile does contain data, and data is in memory */
   TILE_OUT_OF_BOUNDS
-/**< Tile is located outside the bitmap area */
+  /**< Tile is located outside the bitmap area */
 } TileState;
 
 /**
@@ -52,9 +53,7 @@ public:
   typedef boost::shared_ptr<LayerOperations> Ptr;
 
 public:
-  virtual ~LayerOperations()
-  {
-  }
+  virtual ~LayerOperations() {}
 
   /**
    * Return the number of bits per pixel that the layer will use.
@@ -62,7 +61,7 @@ public:
    * This number will be used to compute the amount of memory required
    * to store one tile
    */
-  virtual int getBpp()=0;
+  virtual int getBpp() = 0;
 
   /**
    * Initialize the canvas for drawing the bitmap
@@ -75,7 +74,7 @@ public:
    * set various properties that are needed in all subsequent calls to
    * draw() and drawState(), such as anti-aliasing and line caps.
    */
-  virtual void initializeCairo(cairo_t* cr)=0;
+  virtual void initializeCairo(cairo_t* cr) = 0;
 
   /**
    * Draw the given tileArea into the given viewArea at the requested zoom level
@@ -91,9 +90,12 @@ public:
    *    already, this may either be an empty reference, or a reference
    *    to the value returned by cacheZoom()
    */
-  virtual void draw(cairo_t* cr, const ConstTile::Ptr tile,
-      Scroom::Utils::Rectangle<double> tileArea, Scroom::Utils::Rectangle<double> viewArea, int zoom,
-      Scroom::Utils::Stuff cache)=0;
+  virtual void draw(cairo_t*                         cr,
+                    const ConstTile::Ptr             tile,
+                    Scroom::Utils::Rectangle<double> tileArea,
+                    Scroom::Utils::Rectangle<double> viewArea,
+                    int                              zoom,
+                    Scroom::Utils::Stuff             cache) = 0;
 
   /**
    * Draw the given state into the given viewArea
@@ -106,7 +108,7 @@ public:
    * anyway. Implementors might want to just draw an empty rectangle,
    * maybe color-coded to reflect the state of the tile.
    */
-  virtual void drawState(cairo_t* cr, TileState s, Scroom::Utils::Rectangle<double> viewArea)=0;
+  virtual void drawState(cairo_t* cr, TileState s, Scroom::Utils::Rectangle<double> viewArea) = 0;
 
   /**
    * Cache data for use during later cacheZoom() calls.
@@ -147,8 +149,7 @@ public:
    * @param zoom the requested zoom level
    * @param cache the output of cache(const ConstTile::Ptr)
    */
-  virtual Scroom::Utils::Stuff cacheZoom(const ConstTile::Ptr tile, int zoom,
-      Scroom::Utils::Stuff cache)
+  virtual Scroom::Utils::Stuff cacheZoom(const ConstTile::Ptr tile, int zoom, Scroom::Utils::Stuff cache)
   {
     UNUSED(tile);
     UNUSED(zoom);
@@ -173,8 +174,7 @@ public:
    *    on the ::LayerSpec given to ::createTiledBitmap()
    *
    */
-  virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x,
-      int y)=0;
+  virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y) = 0;
 };
 
 /**
@@ -220,15 +220,14 @@ public:
    *    the first @c x coordinate is @c firsttile * @c tileWidth
    * @param tiles The tiles that are to be filled.
    */
-  virtual void fillTiles(int startLine, int lineCount, int tileWidth,
-      int firstTile, std::vector<Tile::Ptr>& tiles)=0;
+  virtual void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles) = 0;
 
   /**
    * Done reading bitmap data
    *
    * Any open files can be closed now
    */
-  virtual void done()=0;
+  virtual void done() = 0;
 };
 
 class Layer;
@@ -236,12 +235,12 @@ class Layer;
 /**
  * Interact with your TiledBitmap
  */
-class TiledBitmapInterface: public Viewable
+class TiledBitmapInterface : public Viewable
 {
 public:
   typedef boost::shared_ptr<TiledBitmapInterface> Ptr;
 
-  virtual ~TiledBitmapInterface()  {}
+  virtual ~TiledBitmapInterface() {}
 
   /**
    * Provide bitmap data to the TiledBitmap
@@ -251,7 +250,7 @@ public:
    *
    * @param sp source of the bitmap data
    */
-  virtual void setSource(SourcePresentation::Ptr sp)=0;
+  virtual void setSource(SourcePresentation::Ptr sp) = 0;
 
   /**
    * Retrieve the bottom layer of the TiledBitmap.
@@ -260,7 +259,7 @@ public:
    *
    * @see setSource()
    */
-  virtual boost::shared_ptr<Layer> getBottomLayer()=0;
+  virtual boost::shared_ptr<Layer> getBottomLayer() = 0;
 
   /**
    * Redraw a portion of the bitmap.
@@ -269,8 +268,8 @@ public:
    *
    * @see PresentationInterface::redraw()
    */
-  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr,
-                      const Scroom::Utils::Rectangle<double>& presentationArea, int zoom)=0;
+  virtual void
+    redraw(ViewInterface::Ptr const& vi, cairo_t* cr, const Scroom::Utils::Rectangle<double>& presentationArea, int zoom) = 0;
 
   /**
    * Clear all bitmap caches related to the view.
@@ -280,7 +279,7 @@ public:
    *
    * @param vi The ViewInterface for which to clear the caches
    */
-  virtual void clearCaches(ViewInterface::Ptr vi)=0;
+  virtual void clearCaches(ViewInterface::Ptr vi) = 0;
 };
 
 /**
@@ -322,6 +321,4 @@ public:
  *    use this pointer to manipulate your bitmap.
  *
  */
-TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight,
-    LayerSpec const& ls);
-
+TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec const& ls);

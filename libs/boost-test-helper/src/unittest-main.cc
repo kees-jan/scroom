@@ -10,19 +10,16 @@
 #endif
 
 #include <iostream>
-#include <string>
 #include <sstream>
+#include <string>
 
 #define BOOST_TEST_ALTERNATIVE_INIT_API
-#include <boost/test/unit_test.hpp>
 #include <boost/test/results_reporter.hpp>
+#include <boost/test/unit_test.hpp>
 
 #include <scroom/unused.hh>
 
-bool init_unit_test()
-{
-  return true;
-}
+bool init_unit_test() { return true; }
 
 std::string extract_path(const std::string& cmd)
 {
@@ -31,17 +28,17 @@ std::string extract_path(const std::string& cmd)
     return "";
   else
   {
-    return cmd.substr(0,n);
+    return cmd.substr(0, n);
   }
 }
 
-int main( int argc, char* argv[] )
+int main(int argc, char* argv[])
 {
 #ifdef XML_TEST_OUTPUT
-  if(argc>1)
+  if(argc > 1)
     std::cerr << "You have requested XML output. Your command-line arguments will be ignored" << std::endl;
 
-  std::string path = extract_path(argv[0]);
+  std::string       path = extract_path(argv[0]);
   std::stringstream outputArgument;
   outputArgument << "--log_sink=";
   if(!path.empty())
@@ -51,17 +48,17 @@ int main( int argc, char* argv[] )
   std::string outputArgumentString = outputArgument.str();
 
   // Apparently, order is important here. Weird but true...
-  const char * alternative[] = {
+  const char* alternative[] = {
     "--log_format=XML",
     "--log_level=all",
     outputArgumentString.c_str(),
     "--output_format=XML",
     "--report_level=no",
   };
-  int count = sizeof(alternative)/sizeof(alternative[0]);
+  int count = sizeof(alternative) / sizeof(alternative[0]);
 
-  return ::boost::unit_test::unit_test_main( &init_unit_test, count, const_cast<char**>(alternative) );
+  return ::boost::unit_test::unit_test_main(&init_unit_test, count, const_cast<char**>(alternative));
 #else
-  return ::boost::unit_test::unit_test_main( &init_unit_test, argc, argv );
+  return ::boost::unit_test::unit_test_main(&init_unit_test, argc, argv);
 #endif
 }

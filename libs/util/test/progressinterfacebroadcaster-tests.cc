@@ -7,8 +7,8 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include <scroom/progressinterfacehelpers.hh>
 #include <scroom/assertions.hh>
+#include <scroom/progressinterfacehelpers.hh>
 
 #include "progressstateinterfacestub.hh"
 

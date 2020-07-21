@@ -16,7 +16,7 @@ class SidebarManager
 {
 private:
   GtkWidget* panelWindow;
-  GtkBox* panel;
+  GtkBox*    panel;
 
   std::map<GtkWidget*, GtkWidget*> widgets;
 
@@ -27,4 +27,3 @@ public:
   void addSideWidget(std::string title, GtkWidget* w);
   void removeSideWidget(GtkWidget* w);
 };
-

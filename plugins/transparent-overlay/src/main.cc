@@ -12,7 +12,4 @@
 
 #include "transparentoverlay.hh"
 
-PluginInformationInterface::Ptr getPluginInformation()
-{
-  return TransparentOverlay::create();
-}
+PluginInformationInterface::Ptr getPluginInformation() { return TransparentOverlay::create(); }

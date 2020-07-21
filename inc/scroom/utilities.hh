@@ -38,14 +38,14 @@ namespace Scroom
        * Calls shared_from_this() with a built-in dynamic cast, to
        * make it usable in subclasses.
        */
-      template<typename R>
+      template <typename R>
       boost::shared_ptr<R> shared_from_this();
 
       /**
        * Calls shared_from_this() with a built-in dynamic cast, to
        * make it usable in subclasses.
        */
-      template<typename R>
+      template <typename R>
       boost::shared_ptr<R const> shared_from_this() const;
     };
 
@@ -74,16 +74,26 @@ namespace Scroom
 
     public:
       const std::string name;
-      boost::mutex mut;
-      long count;
+      boost::mutex      mut;
+      long              count;
 
     public:
       static Ptr create(const std::string& name);
-      void ping() { /* dumpCounts(); */ }
+      void       ping()
+      { /* dumpCounts(); */
+      }
       void inc()
-      { boost::unique_lock<boost::mutex> lock(mut); ++count; ping(); }
+      {
+        boost::unique_lock<boost::mutex> lock(mut);
+        ++count;
+        ping();
+      }
       void dec()
-      { boost::unique_lock<boost::mutex> lock(mut); --count; ping(); }
+      {
+        boost::unique_lock<boost::mutex> lock(mut);
+        --count;
+        ping();
+      }
 
     private:
       Count(const std::string& name);
@@ -94,19 +104,18 @@ namespace Scroom
     class Counter
     {
     public:
-
     private:
       std::list<Count::Ptr> counts;
-      boost::mutex mut;
+      boost::mutex          mut;
 
     private:
       Counter();
 
     public:
-      static Counter* instance();
-      void registerCount(Count::Ptr count);
-      void unregisterCount(Count::Ptr count);
-      void dump();
+      static Counter*       instance();
+      void                  registerCount(Count::Ptr count);
+      void                  unregisterCount(Count::Ptr count);
+      void                  dump();
       std::list<Count::Ptr> getCounts();
     };
 
@@ -137,11 +146,7 @@ namespace Scroom
         data->inc();
       }
 
-      virtual ~Counted()
-      {
-        data->dec();
-      }
+      virtual ~Counted() { data->dec(); }
     };
-  }
-}
-
+  } // namespace Utils
+} // namespace Scroom

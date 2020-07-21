@@ -11,12 +11,12 @@
 
 namespace
 {
-  template<typename T>
+  template <typename T>
   void call_delete(T* p)
   {
     delete p;
   }
-}
+} // namespace
 
 namespace Scroom
 {
@@ -26,8 +26,8 @@ namespace Scroom
     {
       ::ThreadPool::Ptr getDeleter();
     }
-  }
-}
+  } // namespace Detail
+} // namespace Scroom
 
 /**
  * Allow boost shared pointers to asynchronously delete their targets.
@@ -43,7 +43,7 @@ namespace Scroom
  * executing a job on the queue. This might take some time you do not
  * wish to wait.
  */
-template<typename T>
+template <typename T>
 class AsyncDeleter
 {
 private:
@@ -56,9 +56,5 @@ public:
 
   ~AsyncDeleter() {}
 
-  void operator()(T* p)
-  {
-    deleter->schedule(boost::bind(&call_delete<T>, p));
-  }
+  void operator()(T* p) { deleter->schedule(boost::bind(&call_delete<T>, p)); }
 };
-

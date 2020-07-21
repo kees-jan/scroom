@@ -5,24 +5,29 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include <scroom/tiledbitmapinterface.hh>
-
 #include <boost/test/unit_test.hpp>
 #include <boost/weak_ptr.hpp>
 
 #include <scroom/rectangle.hh>
+#include <scroom/tiledbitmapinterface.hh>
 
 //////////////////////////////////////////////////////////////
 
-class DummyLayerOperations: public LayerOperations
+class DummyLayerOperations : public LayerOperations
 {
 public:
   static Ptr create() { return Ptr(new DummyLayerOperations()); }
   virtual ~DummyLayerOperations() {}
 
-  virtual int getBpp() { return 8; }
+  virtual int  getBpp() { return 8; }
   virtual void initializeCairo(cairo_t*) {}
-  virtual void draw(cairo_t*, const ConstTile::Ptr, Scroom::Utils::Rectangle<double>, Scroom::Utils::Rectangle<double>, int, Scroom::Utils::Stuff) {}
+  virtual void draw(cairo_t*,
+                    const ConstTile::Ptr,
+                    Scroom::Utils::Rectangle<double>,
+                    Scroom::Utils::Rectangle<double>,
+                    int,
+                    Scroom::Utils::Stuff)
+  {}
   virtual void drawState(cairo_t*, TileState, Scroom::Utils::Rectangle<double>) {}
   virtual void reduce(Tile::Ptr, const ConstTile::Ptr, int, int) {}
 };

@@ -10,23 +10,24 @@
 #include <map>
 #include <utility>
 
-#include <boost/thread.hpp>
-#include <boost/shared_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
+#include <boost/shared_ptr.hpp>
+#include <boost/thread.hpp>
 
-#include "scroom/tiledbitmaplayer.hh"
+#include <scroom/tiledbitmaplayer.hh>
 
-class LayerCoordinator: public TileInitialisationObserver,
-                        public virtual Scroom::Utils::Base
+class LayerCoordinator
+  : public TileInitialisationObserver
+  , public virtual Scroom::Utils::Base
 {
 private:
-  CompressedTile::Ptr targetTile;
-  Tile::Ptr targetTileData;
-  std::map<CompressedTile::Ptr,std::pair<int,int> > sourceTiles;
-  Scroom::Utils::StuffList registrations;
-  LayerOperations::Ptr lo;
-  boost::mutex mut;
-  int unfinishedSourceTiles;
+  CompressedTile::Ptr                                targetTile;
+  Tile::Ptr                                          targetTileData;
+  std::map<CompressedTile::Ptr, std::pair<int, int>> sourceTiles;
+  Scroom::Utils::StuffList                           registrations;
+  LayerOperations::Ptr                               lo;
+  boost::mutex                                       mut;
+  int                                                unfinishedSourceTiles;
 
 public:
   typedef boost::shared_ptr<LayerCoordinator> Ptr;
@@ -47,4 +48,3 @@ public:
   /// TileInitialisationObserver
   virtual void tileFinished(CompressedTile::Ptr tile);
 };
-

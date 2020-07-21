@@ -9,17 +9,17 @@
 #  include <config.h>
 #endif
 
-#include <stdlib.h>
+#include <iostream>
+#include <list>
+#include <string>
+
 #include <getopt.h>
+#include <stdlib.h>
 
 #include <gtk/gtk.h>
 
-#include <list>
-#include <string>
-#include <iostream>
-
 #ifdef HAVE_BOOST_PROGRAM_OPTIONS_HPP
-#include <boost/program_options.hpp>
+#  include <boost/program_options.hpp>
 namespace po = boost::program_options;
 #endif
 
@@ -30,7 +30,7 @@ namespace po = boost::program_options;
 
 #ifdef HAVE_BOOST_PROGRAM_OPTIONS_HPP
 
-void usage(const std::string& me, const po::options_description& desc, const std::string& message=std::string())
+void usage(const std::string& me, const po::options_description& desc, const std::string& message = std::string())
 {
   if(message.length() != 0)
     std::cout << "ERROR: " << message << std::endl << std::endl;
@@ -43,10 +43,10 @@ void usage(const std::string& me, const po::options_description& desc, const std
 
 #else
 
-void usage(const std::string& me, const std::string& message=std::string())
+void usage(const std::string& me, const std::string& message = std::string())
 {
   if(message.length() != 0)
-    printf ("ERROR: %s\n\n", message.c_str());
+    printf("ERROR: %s\n\n", message.c_str());
 
   printf("Usage: %s [options] [input files]\n\n", me.c_str());
   printf("Options:\n");
@@ -56,17 +56,15 @@ void usage(const std::string& me, const std::string& message=std::string())
 
 #endif
 
-int main (int argc, char *argv[])
+int main(int argc, char* argv[])
 {
-  std::string me = argv[0];
-  std::map<std::string, std::list<std::string> > filenames;
+  std::string                                   me = argv[0];
+  std::map<std::string, std::list<std::string>> filenames;
 
 #ifdef HAVE_BOOST_PROGRAM_OPTIONS_HPP
   po::options_description desc("Available options");
-  desc.add_options()
-    ("help,h", "Show this help message")
-    ("load,l", po::value<std::vector<std::string> >(), "Load given filenames")
-    ("transparent-overlay", po::value<std::vector<std::string> >()->multitoken(), "Show given files in transparent overlay");
+  desc.add_options()("help,h", "Show this help message")("load,l", po::value<std::vector<std::string>>(), "Load given filenames")(
+    "transparent-overlay", po::value<std::vector<std::string>>()->multitoken(), "Show given files in transparent overlay");
 
   po::positional_options_description p;
   p.add("load", -1);
@@ -83,13 +81,13 @@ int main (int argc, char *argv[])
 
     if(vm.count("load"))
     {
-      const std::vector<std::string>& names = vm["load"].as<std::vector<std::string> >();
+      const std::vector<std::string>& names = vm["load"].as<std::vector<std::string>>();
       filenames[REGULAR_FILES].assign(names.begin(), names.end());
     }
 
     if(vm.count("transparent-overlay"))
     {
-      const std::vector<std::string>& names = vm["transparent-overlay"].as<std::vector<std::string> >();
+      const std::vector<std::string>& names = vm["transparent-overlay"].as<std::vector<std::string>>();
       filenames["Transparent Overlay"].assign(names.begin(), names.end());
     }
   }
@@ -101,9 +99,9 @@ int main (int argc, char *argv[])
 #else
   char result;
 
-  while ((result = getopt(argc, argv, ":h")) != -1)
+  while((result = getopt(argc, argv, ":h")) != -1)
   {
-    switch (result)
+    switch(result)
     {
     case 'h':
       usage(me);
@@ -131,16 +129,15 @@ int main (int argc, char *argv[])
   gdk_threads_init();
 
   gdk_threads_enter();
-  gtk_set_locale ();
-  gtk_init (&argc, &argv);
+  gtk_set_locale();
+  gtk_init(&argc, &argv);
 
   on_scroom_bootstrap(filenames);
 
-  gtk_main ();
+  gtk_main();
   gdk_threads_leave();
 
   on_scroom_terminating();
   printf("DEBUG: Scroom terminating...\n");
   return 0;
 }
-

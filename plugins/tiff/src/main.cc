@@ -12,7 +12,4 @@
 
 #include "tiff.hh"
 
-PluginInformationInterface::Ptr getPluginInformation()
-{
-  return Tiff::create();
-}
+PluginInformationInterface::Ptr getPluginInformation() { return Tiff::create(); }

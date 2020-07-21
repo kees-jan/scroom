@@ -5,31 +5,31 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include "scroom/tiledbitmaplayer.hh"
-
 #include <stdio.h>
 
 #include <scroom/threadpool.hh>
+#include <scroom/tiledbitmaplayer.hh>
 
 #include "local.hh"
 
 class DataFetcher
 {
 private:
-  Layer::Ptr layer;
-  int height;
-  int horTileCount;
-  int verTileCount;
-  int currentRow;
-  SourcePresentation::Ptr sp;
-  ThreadPool::Ptr threadPool;
+  Layer::Ptr                 layer;
+  int                        height;
+  int                        horTileCount;
+  int                        verTileCount;
+  int                        currentRow;
+  SourcePresentation::Ptr    sp;
+  ThreadPool::Ptr            threadPool;
   ThreadPool::WeakQueue::Ptr queue;
 
 public:
-  DataFetcher(Layer::Ptr const& layer,
-              int height,
-              int horTileCount, int verTileCount,
-              SourcePresentation::Ptr sp,
+  DataFetcher(Layer::Ptr const&          layer,
+              int                        height,
+              int                        horTileCount,
+              int                        verTileCount,
+              SourcePresentation::Ptr    sp,
               ThreadPool::WeakQueue::Ptr queue);
 
   void operator()();
@@ -38,17 +38,24 @@ public:
 ////////////////////////////////////////////////////////////////////////
 /// Layer
 
-Layer::Layer(TileInitialisationObserver::Ptr observer, int depth_, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider)
-  : depth(depth_), width(layerWidth), height(layerHeight)
+Layer::Layer(TileInitialisationObserver::Ptr        observer,
+             int                                    depth_,
+             int                                    layerWidth,
+             int                                    layerHeight,
+             int                                    bpp,
+             Scroom::MemoryBlobs::PageProvider::Ptr provider)
+  : depth(depth_)
+  , width(layerWidth)
+  , height(layerHeight)
 {
-  horTileCount = (width+TILESIZE-1)/TILESIZE;
-  verTileCount = (height+TILESIZE-1)/TILESIZE;
+  horTileCount = (width + TILESIZE - 1) / TILESIZE;
+  verTileCount = (height + TILESIZE - 1) / TILESIZE;
 
-  for(int j=0; j<verTileCount; j++)
+  for(int j = 0; j < verTileCount; j++)
   {
     tiles.push_back(CompressedTileLine());
     CompressedTileLine& tl = tiles[j];
-    for(int i=0; i<horTileCount; i++)
+    for(int i = 0; i < horTileCount; i++)
     {
       CompressedTile::Ptr tile = CompressedTile::create(depth_, i, j, bpp, provider);
       registrations.push_back(tile->registerObserver(observer));
@@ -57,34 +64,31 @@ Layer::Layer(TileInitialisationObserver::Ptr observer, int depth_, int layerWidt
   }
 
   outOfBounds = CompressedTile::create(depth_, -1, -1, bpp, provider, TSI_OUT_OF_BOUNDS);
-  for(int i=0; i<horTileCount; i++)
+  for(int i = 0; i < horTileCount; i++)
   {
     lineOutOfBounds.push_back(outOfBounds);
   }
 
-  printf("Layer %d (%d bpp), %d*%d, TileCount %d*%d\n",
-         depth_, bpp, width, height, horTileCount, verTileCount);
+  printf("Layer %d (%d bpp), %d*%d, TileCount %d*%d\n", depth_, bpp, width, height, horTileCount, verTileCount);
 }
 
-Layer::Ptr Layer::create(TileInitialisationObserver::Ptr observer, int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider)
+Layer::Ptr Layer::create(TileInitialisationObserver::Ptr        observer,
+                         int                                    depth,
+                         int                                    layerWidth,
+                         int                                    layerHeight,
+                         int                                    bpp,
+                         Scroom::MemoryBlobs::PageProvider::Ptr provider)
 {
   return Ptr(new Layer(observer, depth, layerWidth, layerHeight, bpp, provider));
 }
 
-int Layer::getHorTileCount()
-{
-  return horTileCount;
-}
+int Layer::getHorTileCount() { return horTileCount; }
 
-int Layer::getVerTileCount()
-{
-  return verTileCount;
-}
+int Layer::getVerTileCount() { return verTileCount; }
 
 CompressedTile::Ptr Layer::getTile(int i, int j)
 {
-  if(0<=i && i<horTileCount &&
-     0<=j && j<verTileCount)
+  if(0 <= i && i < horTileCount && 0 <= j && j < verTileCount)
   {
     return tiles[j][i];
   }
@@ -96,7 +100,7 @@ CompressedTile::Ptr Layer::getTile(int i, int j)
 
 CompressedTileLine& Layer::getTileLine(int j)
 {
-  if(0<=j && j<verTileCount)
+  if(0 <= j && j < verTileCount)
   {
     return tiles[j];
   }
@@ -108,10 +112,7 @@ CompressedTileLine& Layer::getTileLine(int j)
 
 void Layer::fetchData(SourcePresentation::Ptr sp, ThreadPool::WeakQueue::Ptr queue)
 {
-  DataFetcher df(shared_from_this<Layer>(),
-                 height,
-                 horTileCount, verTileCount,
-                 sp, queue);
+  DataFetcher df(shared_from_this<Layer>(), height, horTileCount, verTileCount, sp, queue);
   CpuBound()->schedule(df, DATAFETCH_PRIO, queue);
 }
 
@@ -152,16 +153,21 @@ void Layer::close(ViewInterface::WeakPtr vi)
 ////////////////////////////////////////////////////////////////////////
 /// DataFetcher
 
-DataFetcher::DataFetcher(Layer::Ptr const& layer_,
-                         int height_,
-                         int horTileCount_, int verTileCount_,
-                         SourcePresentation::Ptr sp_,
+DataFetcher::DataFetcher(Layer::Ptr const&          layer_,
+                         int                        height_,
+                         int                        horTileCount_,
+                         int                        verTileCount_,
+                         SourcePresentation::Ptr    sp_,
                          ThreadPool::WeakQueue::Ptr queue_)
-  : layer(layer_), height(height_),
-    horTileCount(horTileCount_), verTileCount(verTileCount_),
-    currentRow(0), sp(sp_), threadPool(CpuBound()), queue(queue_)
-{
-}
+  : layer(layer_)
+  , height(height_)
+  , horTileCount(horTileCount_)
+  , verTileCount(verTileCount_)
+  , currentRow(0)
+  , sp(sp_)
+  , threadPool(CpuBound())
+  , queue(queue_)
+{}
 
 void DataFetcher::operator()()
 {
@@ -170,15 +176,15 @@ void DataFetcher::operator()()
 
   threadPool->schedule(qj, REDUCE_PRIO, queue);
 
-  CompressedTileLine& tileLine = layer->getTileLine(currentRow);
+  CompressedTileLine&    tileLine = layer->getTileLine(currentRow);
   std::vector<Tile::Ptr> tiles;
   for(int x = 0; x < horTileCount; x++)
   {
-    CompressedTile::Ptr ti = tileLine[x];
-    Scroom::Utils::Stuff s = ti->initialize();
+    CompressedTile::Ptr  ti = tileLine[x];
+    Scroom::Utils::Stuff s  = ti->initialize();
     tiles.push_back(ti->getTileSync());
   }
-  int lineCount = std::min(TILESIZE, height-currentRow*TILESIZE);
+  int lineCount = std::min(TILESIZE, height - currentRow * TILESIZE);
 
   sp->fillTiles(currentRow * TILESIZE, lineCount, TILESIZE, 0, tiles);
 
@@ -188,7 +194,7 @@ void DataFetcher::operator()()
   }
 
   currentRow++;
-  if(currentRow<verTileCount)
+  if(currentRow < verTileCount)
   {
     DataFetcher successor(*this);
     if(!qj->setWork(successor))

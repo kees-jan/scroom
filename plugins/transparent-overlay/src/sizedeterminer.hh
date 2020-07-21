@@ -8,8 +8,8 @@
 #pragma once
 
 #include <list>
-#include <set>
 #include <map>
+#include <set>
 
 #include <boost/shared_ptr.hpp>
 
@@ -26,7 +26,7 @@ private:
   {
   public:
     ResizablePresentationInterface::Ptr const resizablePresentationInterface;
-    std::set<ViewInterface::WeakPtr> views;
+    std::set<ViewInterface::WeakPtr>          views;
 
   public:
     PresentationData(); // Don't use
@@ -34,19 +34,18 @@ private:
   };
 
 private:
-  std::list<PresentationInterface::Ptr> presentations;
-  std::map<PresentationInterface::Ptr,PresentationData> resizablePresentationData;
+  std::list<PresentationInterface::Ptr>                  presentations;
+  std::map<PresentationInterface::Ptr, PresentationData> resizablePresentationData;
 
 private:
   SizeDeterminer();
   void sendUpdates();
 
 public:
-  static Ptr create();
-  void add(PresentationInterface::Ptr const& p);
+  static Ptr                       create();
+  void                             add(PresentationInterface::Ptr const& p);
   Scroom::Utils::Rectangle<double> getRect() const;
 
   void open(PresentationInterface::Ptr const& p, ViewInterface::WeakPtr const& vi);
   void close(PresentationInterface::Ptr const& p, ViewInterface::WeakPtr const& vi);
 };
-

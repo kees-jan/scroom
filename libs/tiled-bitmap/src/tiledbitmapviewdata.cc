@@ -21,31 +21,41 @@ TiledBitmapViewData::Ptr TiledBitmapViewData::create(ViewInterface::WeakPtr view
 }
 
 TiledBitmapViewData::TiledBitmapViewData(ViewInterface::WeakPtr viewInterface_)
-  : viewInterface(viewInterface_),
-    progressInterface(viewInterface_.lock()->getProgressInterface()),
-    layer(), imin(0), imax(0), jmin(0), jmax(0), zoom(0), layerOperations(),
-    redrawPending(false)
-{
-}
+  : viewInterface(viewInterface_)
+  , progressInterface(viewInterface_.lock()->getProgressInterface())
+  , layer()
+  , imin(0)
+  , imax(0)
+  , jmin(0)
+  , jmax(0)
+  , zoom(0)
+  , layerOperations()
+  , redrawPending(false)
+{}
 
-void TiledBitmapViewData::setNeededTiles(Layer::Ptr const& l, int imin_, int imax_, int jmin_, int jmax_,
-                                         int zoom_, LayerOperations::Ptr layerOperations_)
+void TiledBitmapViewData::setNeededTiles(Layer::Ptr const&    l,
+                                         int                  imin_,
+                                         int                  imax_,
+                                         int                  jmin_,
+                                         int                  jmax_,
+                                         int                  zoom_,
+                                         LayerOperations::Ptr layerOperations_)
 {
   boost::unique_lock<boost::mutex> lock(mut);
 
-  if(this->layer == l && this->imin <= imin_ && this->imax >= imax_ &&
-      this->jmin <= jmin_ && this->jmax >= jmax_ && this->zoom == zoom_)
+  if(this->layer == l && this->imin <= imin_ && this->imax >= imax_ && this->jmin <= jmin_ && this->jmax >= jmax_
+     && this->zoom == zoom_)
   {
     // Nothing to do...
   }
   else
   {
-    this->layer = l;
-    this->imin = imin_;
-    this->imax = imax_;
-    this->jmin = jmin_;
-    this->jmax = jmax_;
-    this->zoom = zoom_;
+    this->layer           = l;
+    this->imin            = imin_;
+    this->imax            = imax_;
+    this->jmin            = jmin_;
+    this->jmax            = jmax_;
+    this->zoom            = zoom_;
     this->layerOperations = layerOperations_;
 
     // printf("SetNeededTiles: layer=%d, %d<=i<=%d, %d<=j<=%d, zoom=%d\n",
@@ -68,9 +78,9 @@ void TiledBitmapViewData::resetNeededTiles()
 
   // If we just cleared out oldStuff, old tiles would be unloaded, and
   // we might still need them. So create a backup to throw away later
-  std::list<boost::shared_ptr<void> > oldStuff;
+  std::list<boost::shared_ptr<void>> oldStuff;
   oldStuff.swap(stuff);
-  std::list<boost::shared_ptr<void> > oldVolatileStuff;
+  std::list<boost::shared_ptr<void>> oldVolatileStuff;
   oldVolatileStuff.swap(volatileStuff);
 
   lock.unlock();
@@ -79,15 +89,15 @@ void TiledBitmapViewData::resetNeededTiles()
   // if the tile was already loaded. Hence, we cannot hold the lock while registering
   // observers.
 
-  std::list<boost::shared_ptr<void> > newStuff;
+  std::list<boost::shared_ptr<void>> newStuff;
   // If we don't hold the lock, we cannot add to the stuff list directly. Hence,
   // temporarily add registrations to the newStuff list, and add the newStuff to
   // stuff later.
 
-  for(int i=imin; i<imax; i++)
-    for(int j=jmin; j<jmax; j++)
+  for(int i = imin; i < imax; i++)
+    for(int j = jmin; j < jmax; j++)
     {
-      CompressedTile::Ptr tile = layer->getTile(i,j);
+      CompressedTile::Ptr tile = layer->getTile(i, j);
 
       TileViewState::Ptr tileViewState = tile->getViewState(viewInterface);
       tileViewState->setViewData(shared_from_this<TiledBitmapViewData>());
@@ -128,8 +138,8 @@ void TiledBitmapViewData::storeVolatileStuff(Scroom::Utils::Stuff stuff_)
 
 void TiledBitmapViewData::clearVolatileStuff()
 {
-  //printf("Erasing volatile stuff for %p\n", viewInterface);
-  std::list<boost::shared_ptr<void> > oldVolatileStuff;
+  // printf("Erasing volatile stuff for %p\n", viewInterface);
+  std::list<boost::shared_ptr<void>> oldVolatileStuff;
   {
     boost::unique_lock<boost::mutex> lock(mut);
     oldVolatileStuff.swap(volatileStuff);
@@ -153,29 +163,16 @@ void TiledBitmapViewData::tileLoaded(ConstTile::Ptr tile)
     // We're not sure about whether gdk_threads_enter() has been
     // called or not, so we have no choice but to invalidate on
     // another thread.
-    Scroom::GtkHelpers::Wrapper w =
-        Scroom::GtkHelpers::wrap(boost::bind(invalidate_view, viewInterface));
+    Scroom::GtkHelpers::Wrapper w = Scroom::GtkHelpers::wrap(boost::bind(invalidate_view, viewInterface));
     gtk_idle_add(w.f, w.data);
     redrawPending = true;
   }
 }
 
-void TiledBitmapViewData::setIdle()
-{
-  progressInterface->setIdle();
-}
+void TiledBitmapViewData::setIdle() { progressInterface->setIdle(); }
 
-void TiledBitmapViewData::setWaiting(double progress)
-{
-  progressInterface->setWaiting(progress);
-}
+void TiledBitmapViewData::setWaiting(double progress) { progressInterface->setWaiting(progress); }
 
-void TiledBitmapViewData::setWorking(double progress)
-{
-  progressInterface->setWorking(progress);
-}
+void TiledBitmapViewData::setWorking(double progress) { progressInterface->setWorking(progress); }
 
-void TiledBitmapViewData::setFinished()
-{
-  progressInterface->setFinished();
-}
+void TiledBitmapViewData::setFinished() { progressInterface->setFinished(); }

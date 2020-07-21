@@ -16,11 +16,11 @@ LayerCoordinator::Ptr LayerCoordinator::create(CompressedTile::Ptr targetTile, L
   return LayerCoordinator::Ptr(new LayerCoordinator(targetTile, lo));
 }
 
-LayerCoordinator::LayerCoordinator(CompressedTile::Ptr targetTile_,
-                                   LayerOperations::Ptr lo_)
-  : targetTile(targetTile_), lo(lo_), unfinishedSourceTiles(0)
-{
-}
+LayerCoordinator::LayerCoordinator(CompressedTile::Ptr targetTile_, LayerOperations::Ptr lo_)
+  : targetTile(targetTile_)
+  , lo(lo_)
+  , unfinishedSourceTiles(0)
+{}
 
 LayerCoordinator::~LayerCoordinator()
 {
@@ -32,7 +32,7 @@ void LayerCoordinator::addSourceTile(int x, int y, CompressedTile::Ptr tile)
 {
   boost::unique_lock<boost::mutex> lock(mut);
 
-  sourceTiles[tile] = std::make_pair(x,y);
+  sourceTiles[tile] = std::make_pair(x, y);
   registrations.push_back(tile->registerObserver(shared_from_this<LayerCoordinator>()));
   unfinishedSourceTiles++;
 }
@@ -48,7 +48,8 @@ void LayerCoordinator::tileFinished(CompressedTile::Ptr tile)
     printf("WEIRD: Tile finished but not loaded?\n");
   }
 
-  CpuBound()->schedule(boost::bind(&LayerCoordinator::reduceSourceTile, shared_from_this<LayerCoordinator>(), tile, tileData), REDUCE_PRIO);
+  CpuBound()->schedule(boost::bind(&LayerCoordinator::reduceSourceTile, shared_from_this<LayerCoordinator>(), tile, tileData),
+                       REDUCE_PRIO);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -63,10 +64,10 @@ void LayerCoordinator::reduceSourceTile(CompressedTile::Ptr tile, ConstTile::Ptr
   // Other than that side-effect, we have no use for tileData
   UNUSED(tileData);
 
-  Scroom::Utils::Stuff s = targetTile->initialize();
-  const std::pair<int,int> location = sourceTiles[tile];
-  const int x = location.first;
-  const int y = location.second;
+  Scroom::Utils::Stuff      s        = targetTile->initialize();
+  const std::pair<int, int> location = sourceTiles[tile];
+  const int                 x        = location.first;
+  const int                 y        = location.second;
 
   if(!targetTileData)
     targetTileData = targetTile->getTileSync();

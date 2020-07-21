@@ -8,38 +8,25 @@
 #include "tiff.hh"
 
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+#  include <config.h>
 #endif
 
-#include "scroom/transformpresentation.hh"
+#include <scroom/transformpresentation.hh>
 
 #include "tiffpresentation.hh"
 
-Tiff::Tiff()
-{
-}
-Tiff::~Tiff()
-{
-}
+Tiff::Tiff() {}
+Tiff::~Tiff() {}
 
-Tiff::Ptr Tiff::create()
-{
-  return Ptr(new Tiff());
-}
+Tiff::Ptr Tiff::create() { return Ptr(new Tiff()); }
 
 ////////////////////////////////////////////////////////////////////////
 // PluginInformationInterface
 ////////////////////////////////////////////////////////////////////////
 
-std::string Tiff::getPluginName()
-{
-  return "Tiff";
-}
+std::string Tiff::getPluginName() { return "Tiff"; }
 
-std::string Tiff::getPluginVersion()
-{
-  return "0.0";
-}
+std::string Tiff::getPluginVersion() { return "0.0"; }
 
 void Tiff::registerCapabilities(ScroomPluginInterface::Ptr host)
 {

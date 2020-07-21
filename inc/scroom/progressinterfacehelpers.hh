@@ -11,8 +11,8 @@
 
 #include <boost/thread.hpp>
 
-#include <scroom/stuff.hh>
 #include <scroom/progressinterface.hh>
+#include <scroom/stuff.hh>
 #include <scroom/utilities.hh>
 
 namespace Scroom
@@ -26,29 +26,30 @@ namespace Scroom
     {
     public:
       typedef boost::shared_ptr<ProgressStateInterface> Ptr;
-      typedef boost::weak_ptr<ProgressStateInterface> WeakPtr;
+      typedef boost::weak_ptr<ProgressStateInterface>   WeakPtr;
 
       typedef enum
-        {
-          IDLE,
-          WAITING,
-          WORKING,
-          FINISHED
-        } State;
+      {
+        IDLE,
+        WAITING,
+        WORKING,
+        FINISHED
+      } State;
 
       virtual ~ProgressStateInterface() {}
 
-      virtual void setProgress(State s, double progress=0.0)=0;
+      virtual void setProgress(State s, double progress = 0.0) = 0;
     };
 
-    class ProgressInterfaceFromProgressStateInterface : public ProgressInterface, protected ProgressStateInterface
+    class ProgressInterfaceFromProgressStateInterface
+      : public ProgressInterface
+      , protected ProgressStateInterface
     {
     public:
-
       // ProgressInterface ///////////////////////////////////////////////////
 
       virtual void setIdle();
-      virtual void setWaiting(double progress=0.0);
+      virtual void setWaiting(double progress = 0.0);
       virtual void setWorking(double progress);
       virtual void setFinished();
     };
@@ -69,13 +70,15 @@ namespace Scroom
 
     protected:
       // ProgressStateInterface //////////////////////////////////////////////
-      virtual void setProgress(State s, double progress=0.0);
+      virtual void setProgress(State s, double progress = 0.0);
     };
 
-    class ProgressStateInterfaceFromProgressInterface : public ProgressStateInterface, protected ProgressInterface
+    class ProgressStateInterfaceFromProgressInterface
+      : public ProgressStateInterface
+      , protected ProgressInterface
     {
     public:
-      virtual void setProgress(State s, double progress=0.0);
+      virtual void setProgress(State s, double progress = 0.0);
     };
 
     class ProgressStateInterfaceFromProgressInterfaceForwarder : public ProgressStateInterfaceFromProgressInterface
@@ -94,7 +97,7 @@ namespace Scroom
 
     protected:
       virtual void setIdle();
-      virtual void setWaiting(double progress=0.0);
+      virtual void setWaiting(double progress = 0.0);
       virtual void setWorking(double progress);
       virtual void setFinished();
     };
@@ -107,7 +110,7 @@ namespace Scroom
         typedef boost::shared_ptr<ProgressStore> Ptr;
 
       private:
-        State state;
+        State  state;
         double progress;
 
       private:
@@ -116,15 +119,17 @@ namespace Scroom
       public:
         static Ptr create();
 
-        void init(ProgressInterface::Ptr const & i);
+        void init(ProgressInterface::Ptr const& i);
 
       protected:
         // ProgressStateInterface //////////////////////////////////////////////
-        virtual void setProgress(State s, double progress=0.0);
+        virtual void setProgress(State s, double progress = 0.0);
       };
-    }
+    } // namespace Detail
 
-    class ProgressInterfaceBroadcaster : virtual public Base, public ProgressInterface
+    class ProgressInterfaceBroadcaster
+      : virtual public Base
+      , public ProgressInterface
     {
     public:
       typedef boost::shared_ptr<ProgressInterfaceBroadcaster> Ptr;
@@ -137,7 +142,7 @@ namespace Scroom
 
       private:
         ProgressInterfaceBroadcaster::Ptr parent;
-        ProgressInterface::Ptr child;
+        ProgressInterface::Ptr            child;
 
       private:
         Unsubscriber(ProgressInterfaceBroadcaster::Ptr const& parent, ProgressInterface::Ptr const& child);
@@ -150,9 +155,9 @@ namespace Scroom
       friend class Unsubscriber;
 
     private:
-      boost::mutex mut;
+      boost::mutex                     mut;
       std::set<ProgressInterface::Ptr> children;
-      Detail::ProgressStore::Ptr store;
+      Detail::ProgressStore::Ptr       store;
 
     public:
       static Ptr create();
@@ -168,7 +173,7 @@ namespace Scroom
       // ProgressInterface ///////////////////////////////////////////////////
 
       virtual void setIdle();
-      virtual void setWaiting(double progress=0.0);
+      virtual void setWaiting(double progress = 0.0);
       virtual void setWorking(double progress);
       virtual void setFinished();
     };
@@ -185,9 +190,9 @@ namespace Scroom
         typedef boost::shared_ptr<ChildData> Ptr;
 
       public:
-        boost::mutex mut;
+        boost::mutex                  mut;
         ProgressStateInterface::State state;
-        double progress;
+        double                        progress;
 
       private:
         ChildData();
@@ -198,7 +203,7 @@ namespace Scroom
         void clearFinished();
 
         // ProgressStateInterface ///////////////////////////////////////////////////
-        virtual void setProgress(State s, double progress=0.0);
+        virtual void setProgress(State s, double progress = 0.0);
       };
 
       class Child : public ProgressInterfaceFromProgressStateInterface
@@ -208,7 +213,7 @@ namespace Scroom
 
       private:
         ProgressInterfaceMultiplexer::Ptr parent;
-        ChildData::Ptr data;
+        ChildData::Ptr                    data;
 
       private:
         Child(ProgressInterfaceMultiplexer::Ptr parent, ChildData::Ptr data);
@@ -218,15 +223,15 @@ namespace Scroom
         ~Child();
 
         // ProgressStateInterface ///////////////////////////////////////////////////
-        virtual void setProgress(State s, double progress=0.0);
+        virtual void setProgress(State s, double progress = 0.0);
       };
 
       friend class Child;
 
     private:
-      boost::mutex mut;
+      boost::mutex                mut;
       ProgressStateInterface::Ptr parent;
-      std::set<ChildData::Ptr> children;
+      std::set<ChildData::Ptr>    children;
 
     private:
       ProgressInterfaceMultiplexer(ProgressInterface::Ptr parent);
@@ -240,6 +245,5 @@ namespace Scroom
       void updateProgressState();
       void unsubscribe(ChildData::Ptr data);
     };
-  }
-}
-
+  } // namespace Utils
+} // namespace Scroom

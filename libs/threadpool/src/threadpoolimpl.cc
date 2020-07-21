@@ -9,12 +9,12 @@
 #  include <config.h>
 #endif
 
-#include <stdio.h>
-
 #include <utility>
 
-#include <scroom/threadpool.hh>
+#include <stdio.h>
+
 #include <scroom/async-deleter.hh>
+#include <scroom/threadpool.hh>
 
 #include "queue.hh"
 
@@ -35,18 +35,18 @@ namespace
     typedef boost::shared_ptr<ThreadList> Ptr;
 
   private:
-    boost::mutex mut;
-    std::list<ThreadPool::ThreadPtr> threads;
-    std::list<std::pair<boost::weak_ptr<void>, std::string> > pointers;
+    boost::mutex                                             mut;
+    std::list<ThreadPool::ThreadPtr>                         threads;
+    std::list<std::pair<boost::weak_ptr<void>, std::string>> pointers;
 
   private:
     void dumpPointers();
 
   public:
     static Ptr instance();
-    void wait();
-    void add(ThreadPool::ThreadPtr t);
-    void add(boost::shared_ptr<void> t, const std::string& s);
+    void       wait();
+    void       add(ThreadPool::ThreadPtr t);
+    void       add(boost::shared_ptr<void> t, const std::string& s);
   };
 
   /**
@@ -58,6 +58,7 @@ namespace
   {
   private:
     ThreadList::Ptr threadList;
+
   public:
     ThreadWaiter();
     ~ThreadWaiter();
@@ -65,16 +66,20 @@ namespace
 
   ThreadWaiter waiter;
 
-  template<typename T>
+  template <typename T>
   class NotifyThreadList
   {
   private:
     boost::shared_ptr<T> t;
 
   public:
-    NotifyThreadList(boost::shared_ptr<T> t_, const std::string& s) : t(t_) { ThreadList::instance()->add(t_, s); }
+    NotifyThreadList(boost::shared_ptr<T> t_, const std::string& s)
+      : t(t_)
+    {
+      ThreadList::instance()->add(t_, s);
+    }
 
-    operator boost::shared_ptr<T> () { return t; }
+    operator boost::shared_ptr<T>() { return t; }
   };
 
   ////////////////////////////////////////////////////////////////////////
@@ -87,7 +92,7 @@ namespace
 
   void ThreadList::dumpPointers()
   {
-    std::list<std::pair<boost::weak_ptr<void>, std::string> >::iterator cur = pointers.begin();
+    std::list<std::pair<boost::weak_ptr<void>, std::string>>::iterator cur = pointers.begin();
     while(cur != pointers.end())
     {
       const int count = cur->first.use_count();
@@ -98,7 +103,7 @@ namespace
         cur++;
       }
       else
-        cur=pointers.erase(cur);
+        cur = pointers.erase(cur);
     }
   }
 
@@ -106,7 +111,7 @@ namespace
   {
     const boost::posix_time::millisec short_timeout(1);
     const boost::posix_time::millisec timeout(250);
-    int count=0;
+    int                               count = 0;
 
     {
       boost::mutex::scoped_lock lock(mut);
@@ -115,17 +120,17 @@ namespace
       while(cur != threads.end())
       {
         if((*cur)->timed_join(short_timeout))
-          cur=threads.erase(cur);
+          cur = threads.erase(cur);
         else
           cur++;
       }
 
-      count=threads.size();
+      count = threads.size();
     }
 
     int triesRemaining = 256;
     printf("\n");
-    while(triesRemaining>0 && count>0)
+    while(triesRemaining > 0 && count > 0)
     {
       boost::mutex::scoped_lock lock(mut);
       dumpPointers();
@@ -135,7 +140,7 @@ namespace
       while(cur != threads.end())
       {
         if((*cur)->timed_join(timeout))
-          cur=threads.erase(cur);
+          cur = threads.erase(cur);
         else
           cur++;
 
@@ -143,11 +148,11 @@ namespace
       }
 
       printf("\n");
-      count=threads.size();
+      count = threads.size();
       triesRemaining--;
     }
 
-    if(0<threads.size())
+    if(0 < threads.size())
       abort();
   }
 
@@ -160,27 +165,26 @@ namespace
   void ThreadList::add(boost::shared_ptr<void> t, const std::string& s)
   {
     boost::mutex::scoped_lock lock(mut);
-    pointers.push_back(std::make_pair<boost::weak_ptr<void>,std::string>(t, std::string(s)));
+    pointers.push_back(std::make_pair<boost::weak_ptr<void>, std::string>(t, std::string(s)));
   }
 
   ThreadWaiter::ThreadWaiter()
     : threadList(ThreadList::instance())
   {}
 
-  ThreadWaiter::~ThreadWaiter()
-  {
-    threadList->wait();
-  }
-}
+  ThreadWaiter::~ThreadWaiter() { threadList->wait(); }
+} // namespace
 
 ////////////////////////////////////////////////////////////////////////
 /// ThreadPool::PrivateData
 ////////////////////////////////////////////////////////////////////////
 
 ThreadPool::PrivateData::PrivateData(bool completeAllJobsBeforeDestruction_)
-  : jobcount(0), alive(true), completeAllJobsBeforeDestruction(completeAllJobsBeforeDestruction_), defaultQueue(ThreadPool::defaultQueue())
-{
-}
+  : jobcount(0)
+  , alive(true)
+  , completeAllJobsBeforeDestruction(completeAllJobsBeforeDestruction_)
+  , defaultQueue(ThreadPool::defaultQueue())
+{}
 
 ThreadPool::PrivateData::Ptr ThreadPool::PrivateData::create(bool completeAllJobsBeforeDestruction)
 {
@@ -196,8 +200,8 @@ ThreadPool::ThreadPool(bool completeAllJobsBeforeDestruction)
 {
   int count = boost::thread::hardware_concurrency();
 #ifndef MULTITHREADING
-  if(count>1)
-    count=1;
+  if(count > 1)
+    count = 1;
 #endif
   add(count);
 }
@@ -206,8 +210,8 @@ ThreadPool::ThreadPool(int count, bool completeAllJobsBeforeDestruction)
   : priv(PrivateData::create(completeAllJobsBeforeDestruction))
 {
 #ifndef MULTITHREADING
-  if(count>1)
-    count=1;
+  if(count > 1)
+    count = 1;
 #endif
   add(count);
 }
@@ -233,7 +237,7 @@ ThreadPool::ThreadPtr ThreadPool::add()
 std::vector<ThreadPool::ThreadPtr> ThreadPool::add(int count)
 {
   std::vector<ThreadPool::ThreadPtr> result(count);
-  for(int i=0; i<count; i++)
+  for(int i = 0; i < count; i++)
     result[i] = add();
 
   return result;
@@ -260,7 +264,7 @@ void ThreadPool::work(ThreadPool::PrivateData::Ptr priv)
   boost::mutex::scoped_lock lock(priv->mut);
   while(priv->alive)
   {
-    if(priv->jobcount>0)
+    if(priv->jobcount > 0)
     {
       priv->jobcount--;
       lock.unlock();
@@ -276,7 +280,7 @@ void ThreadPool::work(ThreadPool::PrivateData::Ptr priv)
   bool busy = priv->completeAllJobsBeforeDestruction;
   while(busy)
   {
-    if(priv->jobcount>0)
+    if(priv->jobcount > 0)
     {
       priv->jobcount--;
       lock.unlock();
@@ -322,17 +326,17 @@ void ThreadPool::do_one(ThreadPool::PrivateData::Ptr priv)
   }
 }
 
-void ThreadPool::schedule(boost::function<void ()> const& fn, int priority, ThreadPool::Queue::Ptr queue)
+void ThreadPool::schedule(boost::function<void()> const& fn, int priority, ThreadPool::Queue::Ptr queue)
 {
   schedule(fn, priority, queue->getWeak());
 }
 
-void ThreadPool::schedule(boost::function<void ()> const& fn, ThreadPool::Queue::Ptr queue)
+void ThreadPool::schedule(boost::function<void()> const& fn, ThreadPool::Queue::Ptr queue)
 {
   schedule(fn, defaultPriority, queue);
 }
 
-void ThreadPool::schedule(boost::function<void ()> const& fn, int priority, ThreadPool::WeakQueue::Ptr queue)
+void ThreadPool::schedule(boost::function<void()> const& fn, int priority, ThreadPool::WeakQueue::Ptr queue)
 {
   boost::mutex::scoped_lock lock(priv->mut);
   priv->jobs[priority].push(Job(fn, queue));
@@ -340,7 +344,7 @@ void ThreadPool::schedule(boost::function<void ()> const& fn, int priority, Thre
   priv->cond.notify_one();
 }
 
-void ThreadPool::schedule(boost::function<void ()> const& fn, ThreadPool::WeakQueue::Ptr queue)
+void ThreadPool::schedule(boost::function<void()> const& fn, ThreadPool::WeakQueue::Ptr queue)
 {
   schedule(fn, defaultPriority, queue);
 }
@@ -357,10 +361,7 @@ const int ThreadPool::defaultPriority = PRIO_NORMAL;
 /// ThreadPool::Queue
 ////////////////////////////////////////////////////////////////////////
 
-ThreadPool::Queue::Ptr ThreadPool::Queue::create()
-{
-  return ThreadPool::Queue::Ptr(new ThreadPool::Queue());
-}
+ThreadPool::Queue::Ptr ThreadPool::Queue::create() { return ThreadPool::Queue::Ptr(new ThreadPool::Queue()); }
 
 ThreadPool::Queue::Ptr ThreadPool::Queue::createAsync()
 {
@@ -368,83 +369,63 @@ ThreadPool::Queue::Ptr ThreadPool::Queue::createAsync()
 }
 
 ThreadPool::Queue::Queue()
-: weak(WeakQueue::create())
-{
-}
+  : weak(WeakQueue::create())
+{}
 
-ThreadPool::Queue::~Queue()
-{
-  weak->get()->deletingQueue();
-}
+ThreadPool::Queue::~Queue() { weak->get()->deletingQueue(); }
 
-QueueImpl::Ptr ThreadPool::Queue::get()
-{
-  return weak->get();
-}
+QueueImpl::Ptr ThreadPool::Queue::get() { return weak->get(); }
 
-ThreadPool::WeakQueue::Ptr ThreadPool::Queue::getWeak()
-{
-  return weak;
-}
+ThreadPool::WeakQueue::Ptr ThreadPool::Queue::getWeak() { return weak; }
 
 ////////////////////////////////////////////////////////////////////////
 /// ThreadPool::WeakQueue
 ////////////////////////////////////////////////////////////////////////
 
-ThreadPool::WeakQueue::Ptr ThreadPool::WeakQueue::create()
-{
-  return ThreadPool::WeakQueue::Ptr(new ThreadPool::WeakQueue());
-}
+ThreadPool::WeakQueue::Ptr ThreadPool::WeakQueue::create() { return ThreadPool::WeakQueue::Ptr(new ThreadPool::WeakQueue()); }
 
 ThreadPool::WeakQueue::WeakQueue()
-: qi(QueueImpl::create())
-{
-}
+  : qi(QueueImpl::create())
+{}
 
-ThreadPool::WeakQueue::~WeakQueue()
-{
-}
+ThreadPool::WeakQueue::~WeakQueue() {}
 
-QueueImpl::Ptr ThreadPool::WeakQueue::get()
-{
-  return qi;
-}
+QueueImpl::Ptr ThreadPool::WeakQueue::get() { return qi; }
 
 ////////////////////////////////////////////////////////////////////////
 /// ThreadPool::Job
 ////////////////////////////////////////////////////////////////////////
 
 ThreadPool::Job::Job()
-: queue(), fn()
-{
-}
+  : queue()
+  , fn()
+{}
 
-ThreadPool::Job::Job(boost::function<void ()> fn_, WeakQueue::Ptr queue_)
-:queue(queue_->get()), fn(fn_)
-{
-}
+ThreadPool::Job::Job(boost::function<void()> fn_, WeakQueue::Ptr queue_)
+  : queue(queue_->get())
+  , fn(fn_)
+{}
 
 ////////////////////////////////////////////////////////////////////////
 /// QueueJumper
 ////////////////////////////////////////////////////////////////////////
 
 QueueJumper::QueueJumper()
-  : mut(), inQueue(true), isSet(false)
+  : mut()
+  , inQueue(true)
+  , isSet(false)
 {}
 
-QueueJumper::Ptr QueueJumper::create()
-{
-  return QueueJumper::Ptr(new QueueJumper());
-}
+QueueJumper::Ptr QueueJumper::create() { return QueueJumper::Ptr(new QueueJumper()); }
 
-bool QueueJumper::setWork(boost::function<void ()> const& fn_)
+bool QueueJumper::setWork(boost::function<void()> const& fn_)
 {
   boost::mutex::scoped_lock lock(mut);
   if(inQueue)
   {
     // Our turn hasn't passed yet. Accept work.
     this->fn = fn_;
-    isSet = true;
+    isSet    = true;
   }
   else
   {
@@ -461,7 +442,7 @@ void QueueJumper::operator()()
   {
     fn();
   }
-  inQueue=false;
+  inQueue = false;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -481,4 +462,3 @@ ThreadPool::Ptr Sequentially()
 
   return sequentially;
 }
-

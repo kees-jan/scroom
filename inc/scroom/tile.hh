@@ -17,39 +17,48 @@ class Tile
 {
 public:
   typedef boost::shared_ptr<Tile> Ptr;
-  typedef boost::weak_ptr<Tile> WeakPtr;
+  typedef boost::weak_ptr<Tile>   WeakPtr;
 
-  int width;
-  int height;
-  int bpp;
+  int                                   width;
+  int                                   height;
+  int                                   bpp;
   Scroom::MemoryBlobs::RawPageData::Ptr data;
 
 public:
   Tile(int width_, int height_, int bpp_, Scroom::MemoryBlobs::RawPageData::Ptr data_)
-    : width(width_), height(height_), bpp(bpp_), data(data_)
+    : width(width_)
+    , height(height_)
+    , bpp(bpp_)
+    , data(data_)
   {}
 
   static Tile::Ptr create(int width, int height, int bpp, Scroom::MemoryBlobs::RawPageData::Ptr data)
-  { return Ptr(new Tile(width, height, bpp, data)); }
+  {
+    return Ptr(new Tile(width, height, bpp, data));
+  }
 };
 
 class ConstTile
 {
 public:
   typedef boost::shared_ptr<ConstTile> Ptr;
-  typedef boost::weak_ptr<ConstTile> WeakPtr;
+  typedef boost::weak_ptr<ConstTile>   WeakPtr;
 
-  int width;
-  int height;
-  int bpp;
+  int                                        width;
+  int                                        height;
+  int                                        bpp;
   Scroom::MemoryBlobs::RawPageData::ConstPtr data;
 
 public:
   ConstTile(int width_, int height_, int bpp_, Scroom::MemoryBlobs::RawPageData::ConstPtr data_)
-    : width(width_), height(height_), bpp(bpp_), data(data_)
+    : width(width_)
+    , height(height_)
+    , bpp(bpp_)
+    , data(data_)
   {}
 
   static ConstTile::Ptr create(int width, int height, int bpp, Scroom::MemoryBlobs::RawPageData::ConstPtr data)
-  { return Ptr(new ConstTile(width, height, bpp, data)); }
+  {
+    return Ptr(new ConstTile(width, height, bpp, data));
+  }
 };
-

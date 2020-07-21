@@ -15,7 +15,7 @@ public:
   typedef boost::shared_ptr<ProgressStateInterfaceStub> Ptr;
 
 public:
-  State state;
+  State  state;
   double progress;
 
 public:
@@ -29,4 +29,3 @@ public:
   // ProgressStateInterface
   virtual void setProgress(State s, double d);
 };
-

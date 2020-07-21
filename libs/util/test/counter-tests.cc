@@ -5,10 +5,10 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include <scroom/utilities.hh>
-
-#include <boost/test/unit_test.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/test/unit_test.hpp>
+
+#include <scroom/utilities.hh>
 
 using namespace Scroom::Utils;
 
@@ -24,9 +24,9 @@ BOOST_AUTO_TEST_SUITE(Counter_Tests)
 
 BOOST_AUTO_TEST_CASE(count)
 {
-  Counter* counter = Counter::instance();
-  std::string testCountedName = typeid(TestCounted).name();
-  std::list<Count::Ptr> counts = counter->getCounts();
+  Counter*              counter         = Counter::instance();
+  std::string           testCountedName = typeid(TestCounted).name();
+  std::list<Count::Ptr> counts          = counter->getCounts();
   BOOST_CHECK_EQUAL(0, counts.size());
   Count::Ptr c;
 

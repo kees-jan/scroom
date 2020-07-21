@@ -6,30 +6,22 @@
  */
 
 #include "measure.hh"
+
 #include <scroom/unused.hh>
 
 ////////////////////////////////////////////////////////////////////////
 // Measure
 ////////////////////////////////////////////////////////////////////////
 
-Measure::Ptr Measure::create()
-{
-  return Ptr(new Measure());
-}
+Measure::Ptr Measure::create() { return Ptr(new Measure()); }
 
 ////////////////////////////////////////////////////////////////////////
 // PluginInformationInterface
 ////////////////////////////////////////////////////////////////////////
 
-std::string Measure::getPluginName()
-{
-  return "Measure";
-}
+std::string Measure::getPluginName() { return "Measure"; }
 
-std::string Measure::getPluginVersion()
-{
-  return "0.0";
-}
+std::string Measure::getPluginVersion() { return "0.0"; }
 
 void Measure::registerCapabilities(ScroomPluginInterface::Ptr host)
 {
@@ -56,17 +48,12 @@ Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr view)
 ////////////////////////////////////////////////////////////////////////
 
 MeasureHandler::MeasureHandler()
-  : selection(nullptr), enabled(false)
-{
-}
-MeasureHandler::~MeasureHandler()
-{
-}
+  : selection(nullptr)
+  , enabled(false)
+{}
+MeasureHandler::~MeasureHandler() {}
 
-MeasureHandler::Ptr MeasureHandler::create()
-{
-  return Ptr(new MeasureHandler());
-}
+MeasureHandler::Ptr MeasureHandler::create() { return Ptr(new MeasureHandler()); }
 
 void MeasureHandler::displayMeasurement(ViewInterface::Ptr view)
 {
@@ -74,11 +61,9 @@ void MeasureHandler::displayMeasurement(ViewInterface::Ptr view)
   s.precision(1);
   fixed(s);
 
-  s << "l: " << selection->length()
-    << ", dx: " << selection->width()
-    << ", dy: " << selection->height()
-    << ", from: ("<< selection->start.x << "," << selection->start.y << ")"
-    << ", to: ("<< selection->end.x << "," << selection->end.y << ")";
+  s << "l: " << selection->length() << ", dx: " << selection->width() << ", dy: " << selection->height() << ", from: ("
+    << selection->start.x << "," << selection->start.y << ")"
+    << ", to: (" << selection->end.x << "," << selection->end.y << ")";
 
   view->setStatusMessage(s.str());
 }
@@ -86,19 +71,17 @@ void MeasureHandler::displayMeasurement(ViewInterface::Ptr view)
 void MeasureHandler::drawCross(cairo_t* cr, Scroom::Utils::Point<double> p)
 {
   static const int size = 10;
-  cairo_move_to(cr, p.x-size, p.y);
-  cairo_line_to(cr, p.x+size, p.y);
-  cairo_move_to(cr, p.x, p.y-size);
-  cairo_line_to(cr, p.x, p.y+size);
+  cairo_move_to(cr, p.x - size, p.y);
+  cairo_line_to(cr, p.x + size, p.y);
+  cairo_move_to(cr, p.x, p.y - size);
+  cairo_line_to(cr, p.x, p.y + size);
 }
 
 ////////////////////////////////////////////////////////////////////////
 // SelectionListener
 ////////////////////////////////////////////////////////////////////////
 
-void MeasureHandler::onSelectionStart(GdkPoint, ViewInterface::Ptr)
-{
-}
+void MeasureHandler::onSelectionStart(GdkPoint, ViewInterface::Ptr) {}
 
 void MeasureHandler::onSelectionUpdate(Selection::Ptr s, ViewInterface::Ptr view)
 {
@@ -122,19 +105,22 @@ void MeasureHandler::onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view)
 // PostRenderer
 ////////////////////////////////////////////////////////////////////////
 
-void MeasureHandler::render(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom)
+void MeasureHandler::render(ViewInterface::Ptr const&        vi,
+                            cairo_t*                         cr,
+                            Scroom::Utils::Rectangle<double> presentationArea,
+                            int                              zoom)
 {
   UNUSED(vi);
 
   if(selection)
   {
     auto aspectRatio = vi->getCurrentPresentation()->getAspectRatio();
-    auto start = Scroom::Utils::Point<int>(selection->start) - presentationArea.getTopLeft();
-    auto end = Scroom::Utils::Point<int>(selection->end) - presentationArea.getTopLeft();
+    auto start       = Scroom::Utils::Point<int>(selection->start) - presentationArea.getTopLeft();
+    auto end         = Scroom::Utils::Point<int>(selection->end) - presentationArea.getTopLeft();
 
-    if(zoom>=0)
+    if(zoom >= 0)
     {
-      const int pixelSize=1<<zoom;
+      const int pixelSize = 1 << zoom;
       start *= pixelSize;
       start *= aspectRatio;
       end *= pixelSize;
@@ -142,7 +128,7 @@ void MeasureHandler::render(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::U
     }
     else
     {
-      const int pixelSize=1<<-zoom;
+      const int pixelSize = 1 << -zoom;
       start *= aspectRatio;
       start /= pixelSize;
       end *= aspectRatio;
@@ -165,11 +151,10 @@ void MeasureHandler::render(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::U
 // ToolStateListener
 ////////////////////////////////////////////////////////////////////////
 
-void MeasureHandler::onDisable(){
+void MeasureHandler::onDisable()
+{
   selection = nullptr;
-  enabled = false;
+  enabled   = false;
 }
 
-void MeasureHandler::onEnable(){
-  enabled = true;
-}
+void MeasureHandler::onEnable() { enabled = true; }

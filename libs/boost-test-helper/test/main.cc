@@ -5,5 +5,5 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#define BOOST_TEST_MODULE Test-helper tests
+#define BOOST_TEST_MODULE Test - helper tests
 #include <boost/test/unit_test.hpp>

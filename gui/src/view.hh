@@ -7,83 +7,86 @@
 
 #pragma once
 
+#include <cmath>
+#include <map>
+#include <string>
+#include <vector>
+
 #include <stdlib.h>
 
-#include <map>
-#include <vector>
-#include <string>
-#include <cmath>
-
-#include <glade/glade.h>
 #include <gdk/gdk.h>
+#include <glade/glade.h>
 #include <gtk/gtk.h>
+
 #include <cairo.h>
 
-#include <scroom/scroominterface.hh>
-#include <scroom/viewinterface.hh>
 #include <scroom/presentationinterface.hh>
-#include <scroom/utilities.hh>
+#include <scroom/scroominterface.hh>
 #include <scroom/stuff.hh>
+#include <scroom/utilities.hh>
+#include <scroom/viewinterface.hh>
 
-#include "sidebarmanager.hh"
 #include "progressbarmanager.hh"
+#include "sidebarmanager.hh"
 
-class View : public ViewInterface, virtual public Scroom::Utils::Base
+class View
+  : public ViewInterface
+  , virtual public Scroom::Utils::Base
 {
 public:
   typedef boost::shared_ptr<View> Ptr;
 
 private:
-  GladeXML* scroomXml;
-  PresentationInterface::Ptr presentation;
-  SidebarManager sidebarManager;
-  GtkWindow* window;
-  GtkWidget* menubar;
-  GtkWidget* drawingArea;
-  int drawingAreaWidth;
-  int drawingAreaHeight;
-  Scroom::Utils::Rectangle<double> presentationRect;
-  GtkVScrollbar* vscrollbar;
-  GtkHScrollbar* hscrollbar;
-  GtkAdjustment* vscrollbaradjustment;
-  GtkAdjustment* hscrollbaradjustment;
-  GtkRuler* hruler;
-  GtkRuler* vruler;
-  GtkComboBox* zoomBox;
-  GtkListStore* zoomItems;
-  GtkProgressBar* progressBar;
-  GtkStatusbar* statusBar;
-  GtkToolbar* toolBar;
-  GtkToolItem* toolBarSeparator;
-  GtkEntry* xTextBox;
-  GtkEntry* yTextBox;
-  GtkWidget* statusArea;
-  GtkWidget* toolbarArea;
-  unsigned toolBarCount;
-  int statusBarContextId;
-  int zoom;
-  int x;
-  int y;
-  Selection::Ptr selection;
-  std::vector<SelectionListener::Ptr> selectionListeners;
-  std::vector<PostRenderer::Ptr> postRenderers;
+  GladeXML*                                          scroomXml;
+  PresentationInterface::Ptr                         presentation;
+  SidebarManager                                     sidebarManager;
+  GtkWindow*                                         window;
+  GtkWidget*                                         menubar;
+  GtkWidget*                                         drawingArea;
+  int                                                drawingAreaWidth;
+  int                                                drawingAreaHeight;
+  Scroom::Utils::Rectangle<double>                   presentationRect;
+  GtkVScrollbar*                                     vscrollbar;
+  GtkHScrollbar*                                     hscrollbar;
+  GtkAdjustment*                                     vscrollbaradjustment;
+  GtkAdjustment*                                     hscrollbaradjustment;
+  GtkRuler*                                          hruler;
+  GtkRuler*                                          vruler;
+  GtkComboBox*                                       zoomBox;
+  GtkListStore*                                      zoomItems;
+  GtkProgressBar*                                    progressBar;
+  GtkStatusbar*                                      statusBar;
+  GtkToolbar*                                        toolBar;
+  GtkToolItem*                                       toolBarSeparator;
+  GtkEntry*                                          xTextBox;
+  GtkEntry*                                          yTextBox;
+  GtkWidget*                                         statusArea;
+  GtkWidget*                                         toolbarArea;
+  unsigned                                           toolBarCount;
+  int                                                statusBarContextId;
+  int                                                zoom;
+  int                                                x;
+  int                                                y;
+  Selection::Ptr                                     selection;
+  std::vector<SelectionListener::Ptr>                selectionListeners;
+  std::vector<PostRenderer::Ptr>                     postRenderers;
   std::map<GtkToggleButton*, ToolStateListener::Ptr> tools;
-  Scroom::Utils::Point<double> aspectRatio;
+  Scroom::Utils::Point<double>                       aspectRatio;
 
-  gint modifiermove;
+  gint     modifiermove;
   GdkPoint cachedPoint;
 
   ProgressBarManager::Ptr progressBarManager;
 
-  std::map<PresentationInterface::WeakPtr,GtkWidget*> presentations;
+  std::map<PresentationInterface::WeakPtr, GtkWidget*> presentations;
 
 private:
   enum LocationChangeCause
-    {
-      SCROLLBAR,
-      TEXTBOX,
-      OTHER
-    };
+  {
+    SCROLLBAR,
+    TEXTBOX,
+    OTHER
+  };
 
 private:
   View(GladeXML* scroomXml);
@@ -99,8 +102,12 @@ public:
   void setPresentation(PresentationInterface::Ptr presentation);
   void clearPresentation();
 
-  void updateScrollbar(GtkAdjustment* adj, int zoom, double value,
-                       double presentationStart, double presentationSize, double windowSize);
+  void updateScrollbar(GtkAdjustment* adj,
+                       int            zoom,
+                       double         value,
+                       double         presentationStart,
+                       double         presentationSize,
+                       double         windowSize);
   void updateScrollbars();
   void updateZoom();
   void updateRulers();
@@ -129,17 +136,17 @@ public:
   ////////////////////////////////////////////////////////////////////////
   // ViewInterface
 
-  virtual void invalidate();
-  virtual ProgressInterface::Ptr getProgressInterface();
-  virtual void addSideWidget(std::string title, GtkWidget* w);
-  virtual void removeSideWidget(GtkWidget* w);
-  virtual void addToToolbar(GtkToolItem* ti);
-  virtual void removeFromToolbar(GtkToolItem* ti);
-  virtual void registerSelectionListener(SelectionListener::Ptr listener);
-  virtual void registerPostRenderer(PostRenderer::Ptr renderer);
-  virtual void setStatusMessage(const std::string& message);
+  virtual void                       invalidate();
+  virtual ProgressInterface::Ptr     getProgressInterface();
+  virtual void                       addSideWidget(std::string title, GtkWidget* w);
+  virtual void                       removeSideWidget(GtkWidget* w);
+  virtual void                       addToToolbar(GtkToolItem* ti);
+  virtual void                       removeFromToolbar(GtkToolItem* ti);
+  virtual void                       registerSelectionListener(SelectionListener::Ptr listener);
+  virtual void                       registerPostRenderer(PostRenderer::Ptr renderer);
+  virtual void                       setStatusMessage(const std::string& message);
   virtual PresentationInterface::Ptr getCurrentPresentation();
-  virtual void addToolButton(GtkToggleButton*, ToolStateListener::Ptr);
+  virtual void                       addToolButton(GtkToggleButton*, ToolStateListener::Ptr);
 
   ////////////////////////////////////////////////////////////////////////
   // Helpers
@@ -149,7 +156,6 @@ private:
   GdkPoint presentationPointToWindowPoint(GdkPoint presentationpoint);
   GdkPoint eventToPoint(GdkEventButton* event);
   GdkPoint eventToPoint(GdkEventMotion* event);
-  void updateNewWindowMenu();
-  void updateXY(int x, int y, LocationChangeCause source);
+  void     updateNewWindowMenu();
+  void     updateXY(int x, int y, LocationChangeCause source);
 };
-

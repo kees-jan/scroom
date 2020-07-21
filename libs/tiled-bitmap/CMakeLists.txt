@@ -70,7 +70,7 @@ target_link_libraries(
 
 if(ENABLE_BOOST_TEST)
   add_executable(tiledbitmap_tests)
-  target_sources(tiledbitmap_tests PRIVATE test/main.cc test/tiledbitmap-tests.cc)
+  target_sources(tiledbitmap_tests PRIVATE test/main.cc test/tiledbitmap-tests.cc test/sampleiterator-tests.cc)
   target_link_libraries(
     tiledbitmap_tests
     PRIVATE boosttesthelper

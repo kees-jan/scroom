@@ -12,23 +12,27 @@
 
 #include <scroom/presentationinterface.hh>
 
-#include "transparentoverlayviewinfo.hh"
 #include "sizedeterminer.hh"
+#include "transparentoverlayviewinfo.hh"
 
-class TransparentOverlayPresentation : public PresentationBase, public Aggregate
+class TransparentOverlayPresentation
+  : public PresentationBase
+  , public Aggregate
 {
 public:
   typedef boost::shared_ptr<TransparentOverlayPresentation> Ptr;
 
 private:
   typedef std::map<ViewInterface::WeakPtr, TransparentOverlayViewInfo::Ptr> ViewDataMap;
+
 private:
   std::list<PresentationInterface::Ptr> children;
-  SizeDeterminer::Ptr sizeDeterminer;
+  SizeDeterminer::Ptr                   sizeDeterminer;
 
   ViewDataMap viewData;
 
   TransparentOverlayPresentation();
+
 public:
   static Ptr create();
 
@@ -37,9 +41,9 @@ public:
   virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom);
   virtual bool getProperty(const std::string& name, std::string& value);
   virtual bool isPropertyDefined(const std::string& name);
-  virtual std::string getTitle();
-  virtual void viewAdded(ViewInterface::WeakPtr vi);
-  virtual void viewRemoved(ViewInterface::WeakPtr vi);
+  virtual std::string                      getTitle();
+  virtual void                             viewAdded(ViewInterface::WeakPtr vi);
+  virtual void                             viewRemoved(ViewInterface::WeakPtr vi);
   virtual std::set<ViewInterface::WeakPtr> getViews();
 
   // Aggregate ///////////////////////////////////////////////////////////
@@ -49,4 +53,3 @@ public:
 private:
   void setOptimalColor(PresentationInterface::Ptr const& p);
 };
-

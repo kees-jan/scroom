@@ -12,7 +12,4 @@
 
 #include "colormapplugin.hh"
 
-PluginInformationInterface::Ptr getPluginInformation()
-{
-  return Scroom::ColormapImpl::ColormapPlugin::create();
-}
+PluginInformationInterface::Ptr getPluginInformation() { return Scroom::ColormapImpl::ColormapPlugin::create(); }

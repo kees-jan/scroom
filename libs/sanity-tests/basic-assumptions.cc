@@ -5,8 +5,8 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include <boost/test/unit_test.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/test/unit_test.hpp>
 #include <boost/weak_ptr.hpp>
 
 //////////////////////////////////////////////////////////////
@@ -19,23 +19,23 @@ BOOST_AUTO_TEST_CASE(weak_pointer_equality)
     boost::weak_ptr<int> a;
     boost::weak_ptr<int> b;
     // Uninitialised weak pointers are equal
-    BOOST_CHECK(!(a<b) && !(b<a));
+    BOOST_CHECK(!(a < b) && !(b < a));
 
     // Pointers to something that has been deleted are different from
     // uninitialized ones
     boost::shared_ptr<int> c = boost::shared_ptr<int>(new int());
-    a=c;
-    BOOST_CHECK((a<b) || (b<a));
+    a                        = c;
+    BOOST_CHECK((a < b) || (b < a));
     c.reset();
-    BOOST_CHECK((a<b) || (b<a));
+    BOOST_CHECK((a < b) || (b < a));
 
     // Pointers to something that has been deleted are still equal
     c = boost::shared_ptr<int>(new int());
-    a=c;
-    b=c;
-    BOOST_CHECK(!(a<b) && !(b<a));
+    a = c;
+    b = c;
+    BOOST_CHECK(!(a < b) && !(b < a));
     c.reset();
-    BOOST_CHECK(!(a<b) && !(b<a));
+    BOOST_CHECK(!(a < b) && !(b < a));
     BOOST_CHECK(!a.lock());
     BOOST_CHECK(!b.lock());
     BOOST_CHECK_EQUAL(a.lock(), b.lock());

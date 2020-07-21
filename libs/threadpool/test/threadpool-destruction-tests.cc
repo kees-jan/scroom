@@ -13,15 +13,15 @@
 
 #include <iostream>
 
-#include <boost/test/unit_test.hpp>
-#include <boost/thread.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/test/unit_test.hpp>
+#include <boost/thread.hpp>
 
+#include <scroom/function-additor.hh>
 #include <scroom/semaphore.hh>
 
 #include "helpers.hh"
-#include "scroom/function-additor.hh"
 
 using namespace boost::posix_time;
 using namespace Scroom;
@@ -36,18 +36,18 @@ BOOST_AUTO_TEST_SUITE(ThreadPool_destruction_Tests)
 BOOST_AUTO_TEST_CASE(destroy_threadpool_with_nonempty_queue)
 {
   ThreadPool::Ptr pool = ThreadPool::create(1);
-  Semaphore guard(0);
-  Semaphore a(0);
-  Semaphore b(0);
-  Semaphore c(0);
+  Semaphore       guard(0);
+  Semaphore       a(0);
+  Semaphore       b(0);
+  Semaphore       c(0);
 
-  pool->schedule(clear(&a)+pass(&b));
+  pool->schedule(clear(&a) + pass(&b));
   pool->schedule(clear(&c));
 
   // Give the thread some time to start the job
   a.P();
 
-  boost::thread t(pass(&guard)+destroy(pool));
+  boost::thread t(pass(&guard) + destroy(pool));
   pool.reset();
   guard.V();
 
@@ -63,18 +63,18 @@ BOOST_AUTO_TEST_CASE(destroy_threadpool_with_nonempty_queue)
 BOOST_AUTO_TEST_CASE(destroy_threadpool_with_nonempty_queue_with_completeAllJobsBeforeDestruction_true)
 {
   ThreadPool::Ptr pool = ThreadPool::create(1, true);
-  Semaphore guard(0);
-  Semaphore a(0);
-  Semaphore b(0);
-  Semaphore c(0);
+  Semaphore       guard(0);
+  Semaphore       a(0);
+  Semaphore       b(0);
+  Semaphore       c(0);
 
-  pool->schedule(clear(&a)+pass(&b));
+  pool->schedule(clear(&a) + pass(&b));
   pool->schedule(clear(&c));
 
   // Give the thread some time to start the job
   a.P();
 
-  boost::thread t(pass(&guard)+destroy(pool));
+  boost::thread t(pass(&guard) + destroy(pool));
   pool.reset();
   guard.V();
 

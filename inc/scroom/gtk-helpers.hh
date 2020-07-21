@@ -9,9 +9,9 @@
 
 #include <ostream>
 
-#include <gtk/gtk.h>
-
 #include <boost/function.hpp>
+
+#include <gtk/gtk.h>
 
 namespace Scroom
 {
@@ -21,13 +21,13 @@ namespace Scroom
     {
     public:
       GtkFunction f;
-      gpointer data;
+      gpointer    data;
 
     public:
-      Wrapper(const boost::function<bool ()>& f);
+      Wrapper(const boost::function<bool()>& f);
     };
 
-    Wrapper wrap(boost::function<bool ()> f);
+    Wrapper wrap(boost::function<bool()> f);
 
     class TakeGdkLock
     {
@@ -41,23 +41,19 @@ namespace Scroom
     inline GdkRectangle createGdkRectangle(int x, int y, int width, int height)
     {
       GdkRectangle rect;
-      rect.x = x;
-      rect.y = y;
-      rect.width = width;
+      rect.x      = x;
+      rect.y      = y;
+      rect.width  = width;
       rect.height = height;
       return rect;
     }
 
-  }
-}
+  } // namespace GtkHelpers
+} // namespace Scroom
 
 inline bool operator==(GdkRectangle const& left, GdkRectangle const& right)
 {
-  return
-    left.x == right.x &&
-    left.y == right.y &&
-    left.width == right.width &&
-    left.height == right.height;
+  return left.x == right.x && left.y == right.y && left.width == right.width && left.height == right.height;
 }
 
 std::ostream& operator<<(std::ostream& os, GdkRectangle const& r);

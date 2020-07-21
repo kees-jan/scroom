@@ -13,21 +13,20 @@ using namespace Scroom::Detail::ThreadPool;
 /// QueueImpl
 ////////////////////////////////////////////////////////////////////////
 
-QueueImpl::Ptr QueueImpl::create()
-{
-  return QueueImpl::Ptr(new QueueImpl());
-}
+QueueImpl::Ptr QueueImpl::create() { return QueueImpl::Ptr(new QueueImpl()); }
 
 QueueImpl::QueueImpl()
-: mut(), cond(), count(0), isDeleted(false)
-{
-}
+  : mut()
+  , cond()
+  , count(0)
+  , isDeleted(false)
+{}
 
 void QueueImpl::deletingQueue()
 {
   boost::mutex::scoped_lock lock(mut);
   isDeleted = true;
-  while(count!=0)
+  while(count != 0)
   {
     cond.wait(lock);
   }
@@ -59,16 +58,10 @@ int QueueImpl::getCount()
 ////////////////////////////////////////////////////////////////////////
 
 QueueLock::QueueLock(QueueImpl::Ptr queue)
-:q(queue), isValid(q->jobStarted())
-{
-}
+  : q(queue)
+  , isValid(q->jobStarted())
+{}
 
-bool QueueLock::queueExists()
-{
-  return isValid;
-}
+bool QueueLock::queueExists() { return isValid; }
 
-QueueLock::~QueueLock()
-{
-  q->jobFinished();
-}
+QueueLock::~QueueLock() { q->jobFinished(); }

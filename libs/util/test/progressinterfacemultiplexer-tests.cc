@@ -7,8 +7,8 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include <scroom/progressinterfacehelpers.hh>
 #include <scroom/assertions.hh>
+#include <scroom/progressinterfacehelpers.hh>
 
 #include "progressstateinterfacestub.hh"
 
@@ -20,12 +20,11 @@ class ProgressInterfaceMultiplexer_Fixture
 {
 public:
   ProgressStateInterfaceStub::Ptr stub;
-  ProgressInterface::Ptr p1;
-  ProgressInterface::Ptr p2;
+  ProgressInterface::Ptr          p1;
+  ProgressInterface::Ptr          p2;
 
 public:
   ProgressInterfaceMultiplexer_Fixture();
-
 };
 
 ProgressInterfaceMultiplexer_Fixture::ProgressInterfaceMultiplexer_Fixture()

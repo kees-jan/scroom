@@ -7,23 +7,24 @@
 
 #pragma once
 
-#include <string>
-#include <map>
 #include <list>
+#include <map>
 #include <set>
+#include <string>
 
 #include <scroom/colormappable.hh>
 #include <scroom/observable.hh>
+#include <scroom/pipetteviewinterface.hh>
 #include <scroom/presentationinterface.hh>
 #include <scroom/scroominterface.hh>
 #include <scroom/tiledbitmapinterface.hh>
 #include <scroom/transformpresentation.hh>
-#include <scroom/pipetteviewinterface.hh>
 
 typedef struct tiff TIFF;
 
-class TiffPresentation : public SourcePresentation,
-                         public virtual Scroom::Utils::Base
+class TiffPresentation
+  : public SourcePresentation
+  , public virtual Scroom::Utils::Base
 {
 public:
   typedef boost::shared_ptr<TiffPresentation> Ptr;
@@ -31,17 +32,17 @@ public:
 private:
   typedef std::set<ViewInterface::WeakPtr> Views;
 
-  std::string fileName;
-  TIFF* tif;
-  int height;
-  int width;
-  TiledBitmapInterface::Ptr tbi;
-  int bps;
-  int spp;
+  std::string                        fileName;
+  TIFF*                              tif;
+  int                                height;
+  int                                width;
+  TiledBitmapInterface::Ptr          tbi;
+  int                                bps;
+  int                                spp;
   std::map<std::string, std::string> properties;
-  Views views;
-  ColormapHelper::Ptr colormapHelper;
-  TransformationData::Ptr transformationData;
+  Views                              views;
+  ColormapHelper::Ptr                colormapHelper;
+  TransformationData::Ptr            transformationData;
 
   PipetteLayerOperations::Ptr pipetteLayerOperation;
 
@@ -62,7 +63,7 @@ public:
    */
   void destroy();
 
-  bool load(const std::string& fileName);
+  bool                    load(const std::string& fileName);
   TransformationData::Ptr getTransformationData() const;
 
   ////////////////////////////////////////////////////////////////////////
@@ -79,8 +80,8 @@ public:
   // PresentationBase
   ////////////////////////////////////////////////////////////////////////
 
-  virtual void viewAdded(ViewInterface::WeakPtr viewInterface);
-  virtual void viewRemoved(ViewInterface::WeakPtr vi);
+  virtual void                             viewAdded(ViewInterface::WeakPtr viewInterface);
+  virtual void                             viewRemoved(ViewInterface::WeakPtr vi);
   virtual std::set<ViewInterface::WeakPtr> getViews();
 
   ////////////////////////////////////////////////////////////////////////
@@ -94,9 +95,9 @@ public:
   // PipetteViewInterface
   ////////////////////////////////////////////////////////////////////////
 public:
-  /** 
+  /**
    * Returns the average pixel values for each component, contained in the area
-   * 
+   *
    * @param area selected area to get the pixel values from
    */
   virtual PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<int> area);
@@ -106,20 +107,23 @@ public:
   ////////////////////////////////////////////////////////////////////////
 
 public:
-  virtual void setColormap(Colormap::Ptr colormap);
+  virtual void          setColormap(Colormap::Ptr colormap);
   virtual Colormap::Ptr getOriginalColormap();
-  virtual int getNumberOfColors();
-  virtual Color getMonochromeColor();
-  virtual void setMonochromeColor(const Color& c);
-  virtual void setTransparentBackground();
-  virtual void disableTransparentBackground();
-  virtual bool getTransparentBackground();
+  virtual int           getNumberOfColors();
+  virtual Color         getMonochromeColor();
+  virtual void          setMonochromeColor(const Color& c);
+  virtual void          setTransparentBackground();
+  virtual void          disableTransparentBackground();
+  virtual bool          getTransparentBackground();
 
 private:
   void clearCaches();
 };
 
-class TiffPresentationWrapper : public PresentationBase, public Colormappable, public PipetteViewInterface
+class TiffPresentationWrapper
+  : public PresentationBase
+  , public Colormappable
+  , public PipetteViewInterface
 {
 public:
   typedef boost::shared_ptr<TiffPresentationWrapper> Ptr;
@@ -135,7 +139,7 @@ public:
 
   virtual ~TiffPresentationWrapper();
 
-  bool load(const std::string& fileName);
+  bool                    load(const std::string& fileName);
   TransformationData::Ptr getTransformationData() const;
 
   ////////////////////////////////////////////////////////////////////////
@@ -158,20 +162,20 @@ public:
   // PresentationBase
   ////////////////////////////////////////////////////////////////////////
 
-  virtual void viewAdded(ViewInterface::WeakPtr viewInterface);
-  virtual void viewRemoved(ViewInterface::WeakPtr vi);
+  virtual void                             viewAdded(ViewInterface::WeakPtr viewInterface);
+  virtual void                             viewRemoved(ViewInterface::WeakPtr vi);
   virtual std::set<ViewInterface::WeakPtr> getViews();
 
   ////////////////////////////////////////////////////////////////////////
   // Colormappable
   ////////////////////////////////////////////////////////////////////////
 
-  virtual void setColormap(Colormap::Ptr colormap);
+  virtual void          setColormap(Colormap::Ptr colormap);
   virtual Colormap::Ptr getOriginalColormap();
-  virtual int getNumberOfColors();
-  virtual Color getMonochromeColor();
-  virtual void setMonochromeColor(const Color& c);
-  virtual void setTransparentBackground();
-  virtual void disableTransparentBackground();
-  virtual bool getTransparentBackground();
+  virtual int           getNumberOfColors();
+  virtual Color         getMonochromeColor();
+  virtual void          setMonochromeColor(const Color& c);
+  virtual void          setTransparentBackground();
+  virtual void          disableTransparentBackground();
+  virtual bool          getTransparentBackground();
 };

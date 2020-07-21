@@ -11,7 +11,7 @@
 
 #include <gtk/gtk.h>
 
-#include<scroom/colormappable.hh>
+#include <scroom/colormappable.hh>
 
 namespace Scroom
 {
@@ -56,6 +56,5 @@ namespace Scroom
       Colormap::Ptr load(const char* name);
     };
 
-  }
-}
-
+  } // namespace ColormapImpl
+} // namespace Scroom

@@ -7,32 +7,35 @@
 
 #pragma once
 
-#include <gtk/gtk.h>
-
 #include <boost/shared_ptr.hpp>
 
-#include <scroom/viewinterface.hh>
-#include <scroom/observable.hh>
-#include <scroom/bookkeeping.hh>
-#include "scroom/tiledbitmaplayer.hh"
+#include <gtk/gtk.h>
 
-class TiledBitmapViewData : virtual public Scroom::Utils::Base, public TileLoadingObserver, public ProgressInterface
+#include <scroom/bookkeeping.hh>
+#include <scroom/observable.hh>
+#include <scroom/tiledbitmaplayer.hh>
+#include <scroom/viewinterface.hh>
+
+class TiledBitmapViewData
+  : virtual public Scroom::Utils::Base
+  , public TileLoadingObserver
+  , public ProgressInterface
 {
 public:
   typedef boost::shared_ptr<TiledBitmapViewData> Ptr;
 
 public:
-  ViewInterface::WeakPtr viewInterface;
-  ProgressInterface::Ptr progressInterface;
+  ViewInterface::WeakPtr     viewInterface;
+  ProgressInterface::Ptr     progressInterface;
   Scroom::Bookkeeping::Token token;
 
 private:
-  Layer::Ptr layer;
-  int imin;
-  int imax;
-  int jmin;
-  int jmax;
-  int zoom;
+  Layer::Ptr           layer;
+  int                  imin;
+  int                  imax;
+  int                  jmin;
+  int                  jmax;
+  int                  zoom;
   LayerOperations::Ptr layerOperations;
 
   /**
@@ -63,7 +66,8 @@ private:
 public:
   static Ptr create(ViewInterface::WeakPtr viewInterface);
 
-  void setNeededTiles(Layer::Ptr const& l, int imin, int imax, int jmin, int jmax, int zoom, LayerOperations::Ptr layerOperations);
+  void
+       setNeededTiles(Layer::Ptr const& l, int imin, int imax, int jmin, int jmax, int zoom, LayerOperations::Ptr layerOperations);
   void resetNeededTiles();
   void storeVolatileStuff(Scroom::Utils::Stuff stuff);
   void clearVolatileStuff();
@@ -73,8 +77,7 @@ public:
 
   // ProgressInterface ///////////////////////////////////////////////////
   virtual void setIdle();
-  virtual void setWaiting(double progress=0.0);
+  virtual void setWaiting(double progress = 0.0);
   virtual void setWorking(double progress);
   virtual void setFinished();
 };
-

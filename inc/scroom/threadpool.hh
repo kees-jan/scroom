@@ -14,23 +14,23 @@
 #include <queue>
 #include <vector>
 
-#include <boost/thread.hpp>
 #include <boost/function.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/thread.hpp>
 
 #include <scroom/semaphore.hh>
 
 /** Priorities for scheduling on the ThreadPool */
 enum
-  {
-    PRIO_HIGHEST = 100,
-    PRIO_HIGHER,
-    PRIO_HIGH,
-    PRIO_NORMAL,
-    PRIO_LOW,
-    PRIO_LOWER,
-    PRIO_LOWEST,
-  };
+{
+  PRIO_HIGHEST = 100,
+  PRIO_HIGHER,
+  PRIO_HIGH,
+  PRIO_NORMAL,
+  PRIO_LOW,
+  PRIO_LOWER,
+  PRIO_LOWEST,
+};
 
 namespace Scroom
 {
@@ -40,8 +40,8 @@ namespace Scroom
     {
       class QueueImpl;
     }
-  }
-}
+  } // namespace Detail
+} // namespace Scroom
 
 /**
  * Generic threadpool
@@ -86,7 +86,7 @@ public:
   {
   public:
     typedef boost::shared_ptr<Queue> Ptr;
-    typedef boost::weak_ptr<Queue> WeakPtr;
+    typedef boost::weak_ptr<Queue>   WeakPtr;
 
   public:
     /**
@@ -104,7 +104,7 @@ public:
     static Ptr createAsync();
     ~Queue();
     boost::shared_ptr<Scroom::Detail::ThreadPool::QueueImpl> get();
-    boost::shared_ptr<WeakQueue> getWeak();
+    boost::shared_ptr<WeakQueue>                             getWeak();
 
   private:
     Queue();
@@ -136,7 +136,7 @@ public:
   {
   public:
     typedef boost::shared_ptr<WeakQueue> Ptr;
-    typedef boost::weak_ptr<WeakQueue> WeakPtr;
+    typedef boost::weak_ptr<WeakQueue>   WeakPtr;
 
   public:
     static Ptr create();
@@ -154,18 +154,17 @@ private:
   struct Job
   {
     boost::shared_ptr<Scroom::Detail::ThreadPool::QueueImpl> queue;
-    boost::function<void ()> fn;
+    boost::function<void()>                                  fn;
 
     Job();
-    Job(boost::function<void ()> fn, WeakQueue::Ptr queue);
+    Job(boost::function<void()> fn, WeakQueue::Ptr queue);
   };
 
 public:
-  typedef boost::shared_ptr<ThreadPool> Ptr;
+  typedef boost::shared_ptr<ThreadPool>    Ptr;
   typedef boost::shared_ptr<boost::thread> ThreadPtr;
 
 private:
-
   /**
    * Data needed by the threads to do their work.
    *
@@ -192,10 +191,10 @@ private:
     typedef boost::shared_ptr<PrivateData> Ptr;
 
   public:
-    unsigned int jobcount;               /**< current number of tasks in ThreadPool::jobs */
-    boost::mutex mut;                    /**< For protecting ThreadPool::jobs */
-    bool alive;                          /**< @c true if this ThreadPool is not in the process of being destroyed */
-    boost::condition_variable cond;      /**< For signalling newly queued jobs */
+    unsigned int              jobcount; /**< current number of tasks in ThreadPool::jobs */
+    boost::mutex              mut;      /**< For protecting ThreadPool::jobs */
+    bool                      alive;    /**< @c true if this ThreadPool is not in the process of being destroyed */
+    boost::condition_variable cond;     /**< For signalling newly queued jobs */
 
     /**
      * Jobs that remain to be executed
@@ -205,7 +204,7 @@ private:
      * the map. If a new job for that priority is scheduled, it is added
      * again.
      */
-    std::map<int, std::queue<Job> > jobs;
+    std::map<int, std::queue<Job>> jobs;
 
     /**
      * If @c true, this ThreadPool completes all jobs before being destroyed.
@@ -239,8 +238,8 @@ private:
     static Ptr create(bool completeAllJobsBeforeDestruction);
   };
 
-  std::list<ThreadPtr> threads;        /**< Threads in this ThreadPool */
-  PrivateData::Ptr priv;
+  std::list<ThreadPtr> threads; /**< Threads in this ThreadPool */
+  PrivateData::Ptr     priv;
 
 private:
   /**
@@ -263,20 +262,20 @@ private:
   static void do_one(PrivateData::Ptr priv);
 
   static Queue::Ptr defaultQueue();
-  static const int defaultPriority;
+  static const int  defaultPriority;
 
 public:
   /** Create a ThreadPool with one thread for each core in the system */
-  ThreadPool(bool completeAllJobsBeforeDestruction=false);
+  ThreadPool(bool completeAllJobsBeforeDestruction = false);
 
   /** Create a ThreadPool with the given number of threads */
-  ThreadPool(int count, bool completeAllJobsBeforeDestruction=false);
+  ThreadPool(int count, bool completeAllJobsBeforeDestruction = false);
 
   /** Create a ThreadPool with one thread for each core in the system */
-  static ThreadPool::Ptr create(bool completeAllJobsBeforeDestruction=false);
+  static ThreadPool::Ptr create(bool completeAllJobsBeforeDestruction = false);
 
   /** Create a ThreadPool with the given number of threads */
-  static ThreadPool::Ptr create(int count, bool completeAllJobsBeforeDestruction=false);
+  static ThreadPool::Ptr create(int count, bool completeAllJobsBeforeDestruction = false);
 
   /**
    * Destructor
@@ -287,83 +286,72 @@ public:
   ~ThreadPool();
 
   /** Schedule the given job at the given priority */
-  void schedule(boost::function<void ()> const& fn,
-                int priority=defaultPriority,
-                Queue::Ptr queue=defaultQueue());
+  void schedule(boost::function<void()> const& fn, int priority = defaultPriority, Queue::Ptr queue = defaultQueue());
 
   /** Schedule the given job at the given queue */
-  void schedule(boost::function<void ()> const& fn, Queue::Ptr queue);
+  void schedule(boost::function<void()> const& fn, Queue::Ptr queue);
 
   /**
    * Schedule the given job at the given priority
    *
    * @pre T::operator()() must be defined
    */
-  template<typename T>
-  void schedule(boost::shared_ptr<T> fn,
-                int priority=defaultPriority,
-                Queue::Ptr queue=defaultQueue());
+  template <typename T>
+  void schedule(boost::shared_ptr<T> fn, int priority = defaultPriority, Queue::Ptr queue = defaultQueue());
 
   /**
    * Schedule the given job at the given priority
    *
    * @pre T::operator()() must be defined
    */
-  template<typename T>
+  template <typename T>
   void schedule(boost::shared_ptr<T> fn, Queue::Ptr queue);
 
   /** Schedule the given job at the given priority */
-  void schedule(boost::function<void ()> const& fn,
-                int priority, WeakQueue::Ptr queue);
+  void schedule(boost::function<void()> const& fn, int priority, WeakQueue::Ptr queue);
 
   /** Schedule the given job at the given queue */
-  void schedule(boost::function<void ()> const& fn, WeakQueue::Ptr queue);
+  void schedule(boost::function<void()> const& fn, WeakQueue::Ptr queue);
 
   /**
    * Schedule the given job at the given priority
    *
    * @pre T::operator()() must be defined
    */
-  template<typename T>
-  void schedule(boost::shared_ptr<T> fn,
-                int priority, WeakQueue::Ptr queue);
+  template <typename T>
+  void schedule(boost::shared_ptr<T> fn, int priority, WeakQueue::Ptr queue);
 
   /**
    * Schedule the given job at the given priority
    *
    * @pre T::operator()() must be defined
    */
-  template<typename T>
+  template <typename T>
   void schedule(boost::shared_ptr<T> fn, WeakQueue::Ptr queue);
 
-  template<typename R>
-  boost::unique_future<R> schedule(boost::function<R ()> const& fn,
-                                   int priority=defaultPriority,
-                                   Queue::Ptr queue=defaultQueue());
+  template <typename R>
+  boost::unique_future<R>
+    schedule(boost::function<R()> const& fn, int priority = defaultPriority, Queue::Ptr queue = defaultQueue());
 
-  template<typename R>
-  boost::unique_future<R> schedule(boost::function<R ()> const& fn, Queue::Ptr queue);
+  template <typename R>
+  boost::unique_future<R> schedule(boost::function<R()> const& fn, Queue::Ptr queue);
 
-  template<typename R, typename T>
-  boost::unique_future<R> schedule(boost::shared_ptr<T> fn,
-                                   int priority=defaultPriority,
-                                   Queue::Ptr queue=defaultQueue());
+  template <typename R, typename T>
+  boost::unique_future<R> schedule(boost::shared_ptr<T> fn, int priority = defaultPriority, Queue::Ptr queue = defaultQueue());
 
-  template<typename R, typename T>
+  template <typename R, typename T>
   boost::unique_future<R> schedule(boost::shared_ptr<T> fn, Queue::Ptr queue);
 
-  template<typename R>
-  boost::unique_future<R> schedule(boost::function<R ()> const& fn,
-                                   int priority, WeakQueue::Ptr queue);
+  template <typename R>
+  boost::unique_future<R> schedule(boost::function<R()> const& fn, int priority, WeakQueue::Ptr queue);
 
-  template<typename R>
-  boost::unique_future<R> schedule(boost::function<R ()> const& fn, WeakQueue::Ptr queue);
+  template <typename R>
+  boost::unique_future<R> schedule(boost::function<R()> const& fn, WeakQueue::Ptr queue);
 
-  template<typename R, typename T>
-  boost::unique_future<R> schedule(boost::shared_ptr<T> fn,
-                                   int priority, WeakQueue::Ptr queue);
+  template <typename R, typename T>
+  boost::unique_future<R> schedule(boost::shared_ptr<T> fn, int priority, WeakQueue::Ptr queue);
 
-  template<typename R, typename T>
+  template <typename R, typename T>
   boost::unique_future<R> schedule(boost::shared_ptr<T> fn, WeakQueue::Ptr queue);
 
   /**
@@ -383,7 +371,6 @@ public:
    * @return references to the newly added threads.
    */
   std::vector<ThreadPtr> add(int count);
-
 };
 
 /**
@@ -540,10 +527,10 @@ public:
 
 private:
   boost::mutex mut;
-  bool inQueue;
-  bool isSet;
+  bool         inQueue;
+  bool         isSet;
 
-  boost::function<void ()> fn;
+  boost::function<void()> fn;
 
 protected:
   QueueJumper();
@@ -570,7 +557,7 @@ public:
    * @retval true if the QueueJumper is still in the queue (and the function will get executed)
    * @retval false if the QueueJumper no longer is in the queue (@c fn will be ignored)
    */
-  bool setWork(boost::function<void ()> const& fn);
+  bool setWork(boost::function<void()> const& fn);
 
   void operator()();
 };
@@ -607,4 +594,3 @@ ThreadPool::Ptr CpuBound();
 ThreadPool::Ptr Sequentially();
 
 #include <scroom/impl/threadpoolimpl.hh>
-

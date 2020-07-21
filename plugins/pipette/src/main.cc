@@ -5,7 +5,4 @@
 
 #include "pipette.hh"
 
-PluginInformationInterface::Ptr getPluginInformation()
-{
-  return Pipette::create();
-}
+PluginInformationInterface::Ptr getPluginInformation() { return Pipette::create(); }

@@ -5,11 +5,11 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include <scroom/blockallocator.hh>
+#include <string.h>
 
 #include <boost/test/unit_test.hpp>
 
-#include <string.h>
+#include <scroom/blockallocator.hh>
 
 //////////////////////////////////////////////////////////////
 
@@ -19,11 +19,11 @@ BOOST_AUTO_TEST_SUITE(Swap_based_Block_Allocator_Tests)
 
 BOOST_AUTO_TEST_CASE(allocator_provides_a_number_of_independent_blocks_of_a_given_size)
 {
-  const size_t size = 16*1024;
+  const size_t size  = 16 * 1024;
   const size_t count = 16;
 
   BlockFactoryInterface::Ptr bfi = getBlockFactoryInterface();
-  BlockInterface::Ptr bi = bfi->create(count, size);
+  BlockInterface::Ptr        bi  = bfi->create(count, size);
 
   PageList pages = bi->getPages();
   BOOST_CHECK_EQUAL(count, pages.size());
@@ -40,7 +40,7 @@ BOOST_AUTO_TEST_CASE(allocator_provides_a_number_of_independent_blocks_of_a_give
     data++;
   }
 
-  data=0;
+  data = 0;
   uint8_t expected[size];
   for(Page& p: pages)
   {

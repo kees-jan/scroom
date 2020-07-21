@@ -64,7 +64,8 @@ function(set_project_warnings project_name)
       -Wno-shorten-64-to-32
       -Wno-vla-extension
       -Wno-float-conversion
-      -Wno-sign-conversion)
+      -Wno-sign-conversion
+      -Wno-incompatible-ms-struct)
 
   set(GCC_WARNINGS
       ${COMMON_WARNINGS}

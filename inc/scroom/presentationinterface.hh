@@ -7,17 +7,18 @@
 
 #pragma once
 
+#include <set>
+
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
 
 #include <gdk/gdk.h>
+
 #include <cairo.h>
 
-#include <set>
-
-#include <scroom/viewinterface.hh>
 #include <scroom/observable.hh>
 #include <scroom/rectangle.hh>
+#include <scroom/viewinterface.hh>
 
 /**
  * Implement Viewable if you want to be able to receive events when a
@@ -31,7 +32,7 @@ class Viewable
 {
 public:
   typedef boost::shared_ptr<Viewable> Ptr;
-  typedef boost::weak_ptr<Viewable> WeakPtr;
+  typedef boost::weak_ptr<Viewable>   WeakPtr;
 
 public:
   virtual ~Viewable() {}
@@ -43,7 +44,7 @@ public:
    *    (i.e. between gdk_threads_enter() and gdk_threads_leave()
    *    calls)
    */
-  virtual void open(ViewInterface::WeakPtr vi)=0;
+  virtual void open(ViewInterface::WeakPtr vi) = 0;
 
   /**
    * Gets called just before the View is destroyed
@@ -52,7 +53,7 @@ public:
    *    (i.e. between gdk_threads_enter() and gdk_threads_leave()
    *    calls)
    */
-  virtual void close(ViewInterface::WeakPtr vi)=0;
+  virtual void close(ViewInterface::WeakPtr vi) = 0;
 };
 
 typedef Scroom::Utils::Observable<Viewable> ViewObservable;
@@ -66,14 +67,16 @@ typedef Scroom::Utils::Observable<Viewable> ViewObservable;
  * Objects implementing this interface are typically returned by
  * NewPresentationInterface::createNew() and OpenPresentationInterface::open().
  */
-class PresentationInterface : public Viewable, public ViewObservable
+class PresentationInterface
+  : public Viewable
+  , public ViewObservable
 {
 public:
   typedef boost::shared_ptr<PresentationInterface> Ptr;
-  typedef boost::weak_ptr<PresentationInterface> WeakPtr;
+  typedef boost::weak_ptr<PresentationInterface>   WeakPtr;
 
   /** Return the dimensions of your presentation */
-  virtual Scroom::Utils::Rectangle<double> getRect()=0;
+  virtual Scroom::Utils::Rectangle<double> getRect() = 0;
 
   /**
    * Draw the requested ara at the requested zoom level
@@ -87,7 +90,7 @@ public:
    *    presentation should have size 2**@c zoom when drawn. @c zoom
    *    may be negative.
    */
-  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom)=0;
+  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom) = 0;
 
   /**
    * Return the value of the requested property
@@ -97,18 +100,15 @@ public:
    * @retval true if the property existed
    * @retval false if the property didn't exist
    */
-  virtual bool getProperty(const std::string& name, std::string& value)=0;
+  virtual bool getProperty(const std::string& name, std::string& value) = 0;
 
   /** Return true if the named property exists */
-  virtual bool isPropertyDefined(const std::string& name)=0;
+  virtual bool isPropertyDefined(const std::string& name) = 0;
 
   /** Return the title of the presentation */
-  virtual std::string getTitle()=0;
+  virtual std::string getTitle() = 0;
 
-  virtual Scroom::Utils::Point<double> getAspectRatio() const
-  {
-    return Scroom::Utils::make_point(1.0, 1.0);
-  }
+  virtual Scroom::Utils::Point<double> getAspectRatio() const { return Scroom::Utils::make_point(1.0, 1.0); }
 };
 
 class PresentationBase : public PresentationInterface
@@ -123,9 +123,9 @@ protected:
   virtual void observerAdded(Viewable::Ptr const& viewable, Scroom::Bookkeeping::Token const& t);
 
 protected:
-  virtual void viewAdded(ViewInterface::WeakPtr vi)=0;
-  virtual void viewRemoved(ViewInterface::WeakPtr vi)=0;
-  virtual std::set<ViewInterface::WeakPtr> getViews()=0;
+  virtual void                             viewAdded(ViewInterface::WeakPtr vi)   = 0;
+  virtual void                             viewRemoved(ViewInterface::WeakPtr vi) = 0;
+  virtual std::set<ViewInterface::WeakPtr> getViews()                             = 0;
 };
 
 /**
@@ -139,5 +139,5 @@ public:
 public:
   virtual ~Aggregate() {}
 
-  virtual void addPresentation(PresentationInterface::Ptr const& presentation)=0;
+  virtual void addPresentation(PresentationInterface::Ptr const& presentation) = 0;
 };

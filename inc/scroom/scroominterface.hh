@@ -7,16 +7,16 @@
 
 #pragma once
 
-#include <gtk/gtk.h>
-
-#include <string>
 #include <list>
+#include <string>
 
 #include <boost/shared_ptr.hpp>
 
+#include <gtk/gtk.h>
+
+#include <scroom/bookkeeping.hh>
 #include <scroom/presentationinterface.hh>
 #include <scroom/viewinterface.hh>
-#include <scroom/bookkeeping.hh>
 
 class ScroomInterface
 {
@@ -26,11 +26,11 @@ public:
 public:
   virtual ~ScroomInterface() {}
 
-  virtual PresentationInterface::Ptr newPresentation(std::string const& name)=0;
-  virtual Aggregate::Ptr newAggregate(std::string const& name)=0;
-  virtual PresentationInterface::Ptr loadPresentation(std::string const& name, std::string const& relativeTo=std::string())=0;
+  virtual PresentationInterface::Ptr newPresentation(std::string const& name)                                                 = 0;
+  virtual Aggregate::Ptr             newAggregate(std::string const& name)                                                    = 0;
+  virtual PresentationInterface::Ptr loadPresentation(std::string const& name, std::string const& relativeTo = std::string()) = 0;
 
-  virtual void showPresentation(PresentationInterface::Ptr const& presentation)=0;
+  virtual void showPresentation(PresentationInterface::Ptr const& presentation) = 0;
 };
 
 class NewPresentationInterface
@@ -41,7 +41,7 @@ public:
 public:
   virtual ~NewPresentationInterface() {}
 
-  virtual PresentationInterface::Ptr createNew()=0;
+  virtual PresentationInterface::Ptr createNew() = 0;
 };
 
 class NewAggregateInterface
@@ -52,7 +52,7 @@ public:
 public:
   virtual ~NewAggregateInterface() {}
 
-  virtual Aggregate::Ptr createNew()=0;
+  virtual Aggregate::Ptr createNew() = 0;
 };
 
 class OpenPresentationInterface
@@ -63,9 +63,9 @@ public:
 public:
   virtual ~OpenPresentationInterface() {}
 
-  virtual std::list<GtkFileFilter*> getFilters()=0;
+  virtual std::list<GtkFileFilter*> getFilters() = 0;
 
-  virtual PresentationInterface::Ptr open(const std::string& fileName)=0;
+  virtual PresentationInterface::Ptr open(const std::string& fileName) = 0;
 };
 
 class OpenInterface
@@ -76,9 +76,9 @@ public:
 public:
   virtual ~OpenInterface() {}
 
-  virtual std::list<GtkFileFilter*> getFilters()=0;
+  virtual std::list<GtkFileFilter*> getFilters() = 0;
 
-  virtual void open(const std::string& fileName, ScroomInterface::Ptr const& scroomInterface)=0;
+  virtual void open(const std::string& fileName, ScroomInterface::Ptr const& scroomInterface) = 0;
 };
 
 class PresentationObserver
@@ -89,8 +89,8 @@ public:
 public:
   virtual ~PresentationObserver() {}
 
-  virtual void presentationAdded(PresentationInterface::Ptr p)=0;
-  virtual void presentationDeleted()=0;
+  virtual void presentationAdded(PresentationInterface::Ptr p) = 0;
+  virtual void presentationDeleted()                           = 0;
 };
 
 class ViewObserver
@@ -101,7 +101,7 @@ public:
 public:
   virtual ~ViewObserver() {}
 
-  virtual Scroom::Bookkeeping::Token viewAdded(ViewInterface::Ptr v)=0;
+  virtual Scroom::Bookkeeping::Token viewAdded(ViewInterface::Ptr v) = 0;
 };
 
 class ScroomPluginInterface
@@ -112,11 +112,12 @@ public:
 public:
   virtual ~ScroomPluginInterface() {}
 
-  virtual void registerNewPresentationInterface(const std::string& identifier, NewPresentationInterface::Ptr newPresentationInterface)=0;
-  virtual void registerNewAggregateInterface(const std::string& identifier, NewAggregateInterface::Ptr newAggregateInterface)=0;
-  virtual void registerOpenPresentationInterface(const std::string& identifier, OpenPresentationInterface::Ptr openPresentationInterface)=0;
-  virtual void registerOpenInterface(const std::string& identifier, OpenInterface::Ptr openInterface)=0;
-  virtual void registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer)=0;
-  virtual void registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer)=0;
+  virtual void registerNewPresentationInterface(const std::string&            identifier,
+                                                NewPresentationInterface::Ptr newPresentationInterface)                       = 0;
+  virtual void registerNewAggregateInterface(const std::string& identifier, NewAggregateInterface::Ptr newAggregateInterface) = 0;
+  virtual void registerOpenPresentationInterface(const std::string&             identifier,
+                                                 OpenPresentationInterface::Ptr openPresentationInterface)                    = 0;
+  virtual void registerOpenInterface(const std::string& identifier, OpenInterface::Ptr openInterface)                         = 0;
+  virtual void registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer)                                = 0;
+  virtual void registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer)                = 0;
 };
-

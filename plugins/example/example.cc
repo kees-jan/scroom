@@ -15,35 +15,18 @@
 
 ////////////////////////////////////////////////////////////////////////
 
-Example::Example()
-{
-}
-Example::~Example()
-{
-}
+Example::Example() {}
+Example::~Example() {}
 
-Example::Ptr Example::create()
-{
-  return Ptr(new Example());
-}
+Example::Ptr Example::create() { return Ptr(new Example()); }
 
-std::string Example::getPluginName()
-{
-  return "Example";
-}
+std::string Example::getPluginName() { return "Example"; }
 
-std::string Example::getPluginVersion()
-{
-  return "0.0";
-}
+std::string Example::getPluginVersion() { return "0.0"; }
 
 void Example::registerCapabilities(ScroomPluginInterface::Ptr host)
 {
   host->registerNewPresentationInterface("Example", shared_from_this<Example>());
 }
 
-PresentationInterface::Ptr Example::createNew()
-{
-  return PresentationInterface::Ptr(new ExamplePresentation());
-}
-
+PresentationInterface::Ptr Example::createNew() { return PresentationInterface::Ptr(new ExamplePresentation()); }

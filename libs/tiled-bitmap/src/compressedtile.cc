@@ -5,9 +5,9 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include "scroom/tiledbitmaplayer.hh"
-
 #include <string.h>
+
+#include <scroom/tiledbitmaplayer.hh>
 
 #include "local.hh"
 #include "tileviewstate.hh"
@@ -18,11 +18,22 @@ using namespace Scroom::MemoryBlobs;
 ////////////////////////////////////////////////////////////////////////
 /// CompressedTile
 CompressedTile::CompressedTile(int depth_, int x_, int y_, int bpp_, PageProvider::Ptr provider_, TileStateInternal state_)
-  : depth(depth_), x(x_), y(y_), bpp(bpp_), state(state_), tile(), provider(provider_), data(Blob::create(provider_, TILESIZE*TILESIZE * bpp / 8))
-{
-}
+  : depth(depth_)
+  , x(x_)
+  , y(y_)
+  , bpp(bpp_)
+  , state(state_)
+  , tile()
+  , provider(provider_)
+  , data(Blob::create(provider_, TILESIZE * TILESIZE * bpp / 8))
+{}
 
-CompressedTile::Ptr CompressedTile::create(int depth, int x, int y, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider, TileStateInternal state)
+CompressedTile::Ptr CompressedTile::create(int                                    depth,
+                                           int                                    x,
+                                           int                                    y,
+                                           int                                    bpp,
+                                           Scroom::MemoryBlobs::PageProvider::Ptr provider,
+                                           TileStateInternal                      state)
 {
   CompressedTile::Ptr tile = CompressedTile::Ptr(new CompressedTile(depth, x, y, bpp, provider, state));
 
@@ -63,7 +74,7 @@ Tile::Ptr CompressedTile::getTileSync()
     {
       boost::mutex::scoped_lock lock(tileData);
       result = Tile::Ptr(new Tile(TILESIZE, TILESIZE, bpp, data->get()));
-      tile = result;
+      tile   = result;
     }
   }
 
@@ -79,7 +90,7 @@ ConstTile::Ptr CompressedTile::getConstTileAsync()
 Tile::Ptr CompressedTile::initialize()
 {
   Scroom::Utils::Stuff s;
-  Tile::Ptr tile_;
+  Tile::Ptr            tile_;
 
   bool didInitialize = false;
   {
@@ -88,8 +99,8 @@ Tile::Ptr CompressedTile::initialize()
 
     if(state == TSI_UNINITIALIZED)
     {
-      s = data->initialize(0);
-      state = TSI_NORMAL;
+      s             = data->initialize(0);
+      state         = TSI_NORMAL;
       didInitialize = true;
     }
   }
@@ -103,7 +114,7 @@ Tile::Ptr CompressedTile::initialize()
 void CompressedTile::reportFinished()
 {
   CompressedTile::Ptr me = shared_from_this<CompressedTile>();
-  ConstTile::Ptr t = do_load();
+  ConstTile::Ptr      t  = do_load();
   for(TileInitialisationObserver::Ptr observer: Observable<TileInitialisationObserver>::getObservers())
   {
     observer->tileFinished(me);
@@ -129,9 +140,9 @@ ConstTile::Ptr CompressedTile::do_load()
     result = constTile.lock(); // This ought to fail
     if(!result)
     {
-      result = ConstTile::Ptr(new ConstTile(TILESIZE, TILESIZE, bpp, data->getConst()));
+      result    = ConstTile::Ptr(new ConstTile(TILESIZE, TILESIZE, bpp, data->getConst()));
       constTile = result;
-      didLoad = true;
+      didLoad   = true;
     }
   }
   {
@@ -151,7 +162,7 @@ TileViewState::Ptr CompressedTile::getViewState(ViewInterface::WeakPtr vi)
 
   if(!result)
   {
-    result = TileViewState::create(shared_from_this<CompressedTile>());
+    result         = TileViewState::create(shared_from_this<CompressedTile>());
     viewStates[vi] = result;
   }
 
@@ -164,14 +175,14 @@ TileState CompressedTile::getState()
   switch(state)
   {
   case TSI_NORMAL:
-    {
-      Tile::Ptr t = tile.lock();
-      if(t)
-        result = TILE_LOADED;
-      else
-        result = TILE_UNLOADED;
-    }
-    break;
+  {
+    Tile::Ptr t = tile.lock();
+    if(t)
+      result = TILE_LOADED;
+    else
+      result = TILE_UNLOADED;
+  }
+  break;
   case TSI_OUT_OF_BOUNDS:
     result = TILE_OUT_OF_BOUNDS;
     break;
@@ -193,7 +204,7 @@ void CompressedTile::observerAdded(TileInitialisationObserver::Ptr const& observ
 
 void CompressedTile::observerAdded(TileLoadingObserver::Ptr const& observer, Scroom::Bookkeeping::Token const& token)
 {
-  ConstTile::Ptr result = constTile.lock();
+  ConstTile::Ptr         result = constTile.lock();
   ThreadPool::Queue::Ptr queue_ = this->queue.lock();
 
   if(!result)
@@ -217,7 +228,7 @@ void CompressedTile::observerAdded(TileLoadingObserver::Ptr const& observer, Scr
       // Start an asynchronous load
       if(!queue_)
       {
-        queue_ = ThreadPool::Queue::create();
+        queue_      = ThreadPool::Queue::create();
         this->queue = queue_;
       }
       CpuBound()->schedule(boost::bind(&CompressedTile::do_load, this), LOAD_PRIO, queue_);
@@ -258,19 +269,11 @@ void CompressedTile::open(ViewInterface::WeakPtr)
   // On open, we do nothing. On close, we destroy any resources related to the view.
 }
 
-void CompressedTile::close(ViewInterface::WeakPtr vi)
-{
-  viewStates.erase(vi);
-}
+void CompressedTile::close(ViewInterface::WeakPtr vi) { viewStates.erase(vi); }
 
 ////////////////////////////////////////////////////////////////////////
 /// TileInitialisationObserver
 
-void TileInitialisationObserver::tileFinished(CompressedTile::Ptr)
-{
-}
+void TileInitialisationObserver::tileFinished(CompressedTile::Ptr) {}
 
-void TileInitialisationObserver::tileCreated(CompressedTile::Ptr)
-{
-}
-
+void TileInitialisationObserver::tileCreated(CompressedTile::Ptr) {}

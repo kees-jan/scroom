@@ -16,24 +16,18 @@ namespace
   {
     return boost::shared_ptr<unsigned char>(static_cast<unsigned char*>(malloc(size)), free);
   }
-}
+} // namespace
 
 ////////////////////////////////////////////////////////////////////////
 // OperationsCMYK32
 
-PipetteCommonOperationsCMYK::Ptr OperationsCMYK32::create()
-{
-  return PipetteCommonOperationsCMYK::Ptr(new OperationsCMYK32());
-}
+PipetteCommonOperationsCMYK::Ptr OperationsCMYK32::create() { return PipetteCommonOperationsCMYK::Ptr(new OperationsCMYK32()); }
 
-OperationsCMYK32::OperationsCMYK32() : PipetteCommonOperationsCMYK(8)
-{
-}
+OperationsCMYK32::OperationsCMYK32()
+  : PipetteCommonOperationsCMYK(8)
+{}
 
-int OperationsCMYK32::getBpp()
-{
-  return 32;
-}
+int OperationsCMYK32::getBpp() { return 32; }
 
 /**
  * Cache the given tile
@@ -41,18 +35,18 @@ int OperationsCMYK32::getBpp()
 Scroom::Utils::Stuff OperationsCMYK32::cache(const ConstTile::Ptr tile)
 {
   // Allocate the space for the cache - stride is the height of one row
-  const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
-  boost::shared_ptr<uint8_t> data = shared_malloc(static_cast<size_t>(stride * tile->height));
+  const int                  stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
+  boost::shared_ptr<uint8_t> data   = shared_malloc(static_cast<size_t>(stride * tile->height));
 
   // Row is a pointer to a row of pixels (destination)
   uint32_t* row = reinterpret_cast<uint32_t*>(data.get());
   // Cur is a pointer to the start of the row in the tile (source)
   const uint8_t* cur = tile->data.get();
 
-  for (int i = 0; i < 4 * tile->height * tile->width; i += 4)
+  for(int i = 0; i < 4 * tile->height * tile->width; i += 4)
   {
     // Convert CMYK to ARGB, because cairo doesn't know how to render CMYK.
-    uint8_t C_i = static_cast<uint8_t>(255 - cur[i    ]);
+    uint8_t C_i = static_cast<uint8_t>(255 - cur[i]);
     uint8_t M_i = static_cast<uint8_t>(255 - cur[i + 1]);
     uint8_t Y_i = static_cast<uint8_t>(255 - cur[i + 2]);
     uint8_t K_i = static_cast<uint8_t>(255 - cur[i + 3]);
@@ -71,33 +65,32 @@ Scroom::Utils::Stuff OperationsCMYK32::cache(const ConstTile::Ptr tile)
 void OperationsCMYK32::reduce(Tile::Ptr target, const ConstTile::Ptr source, int top_left_x, int top_left_y)
 {
   // Reducing by a factor 8
-  int sourceStride = 8 * source->width / 2; // stride in bytes
-  const byte* sourceBase = source->data.get();
+  int         sourceStride = 8 * source->width / 2; // stride in bytes
+  const byte* sourceBase   = source->data.get();
 
-  int targetStride = 8 * target->width / 2; // stride in bytes
-  byte* targetBase = target->data.get() +
-      (target->height * top_left_y + top_left_x) * targetStride / 8;
+  int   targetStride = 8 * target->width / 2; // stride in bytes
+  byte* targetBase   = target->data.get() + (target->height * top_left_y + top_left_x) * targetStride / 8;
 
-  for (int y = 0; y < source->height / 8; y++)
+  for(int y = 0; y < source->height / 8; y++)
   {
     byte* targetPtr = targetBase;
 
-    for (int x = 0; x < source->width / 8; x++)
+    for(int x = 0; x < source->width / 8; x++)
     {
       // We want to store the average colour of the 8*8 pixel image
       // with (x, y) as its top-left corner into targetPtr.
-      const byte* base = sourceBase + 8 * 4 * x; // start of the row
-      const byte* end = base + 8 * sourceStride; // end of the row
+      const byte* base = sourceBase + 8 * 4 * x;  // start of the row
+      const byte* end  = base + 8 * sourceStride; // end of the row
 
       int sum_c = 0;
       int sum_m = 0;
       int sum_y = 0;
       int sum_k = 0;
-      for (const byte* row = base; row < end; row += sourceStride)
+      for(const byte* row = base; row < end; row += sourceStride)
       {
-        for (size_t current = 0; current < 8 * 4; current += 4)
+        for(size_t current = 0; current < 8 * 4; current += 4)
         {
-          sum_c += row[current    ];
+          sum_c += row[current];
           sum_m += row[current + 1];
           sum_y += row[current + 2];
           sum_k += row[current + 3];
@@ -120,19 +113,13 @@ void OperationsCMYK32::reduce(Tile::Ptr target, const ConstTile::Ptr source, int
 ////////////////////////////////////////////////////////////////////////
 // OperationsCMYK16
 
-PipetteCommonOperationsCMYK::Ptr OperationsCMYK16::create()
-{
-  return PipetteCommonOperationsCMYK::Ptr(new OperationsCMYK16());
-}
+PipetteCommonOperationsCMYK::Ptr OperationsCMYK16::create() { return PipetteCommonOperationsCMYK::Ptr(new OperationsCMYK16()); }
 
-OperationsCMYK16::OperationsCMYK16() : PipetteCommonOperationsCMYK(4)
-{
-}
+OperationsCMYK16::OperationsCMYK16()
+  : PipetteCommonOperationsCMYK(4)
+{}
 
-int OperationsCMYK16::getBpp()
-{
-  return 16;
-}
+int OperationsCMYK16::getBpp() { return 16; }
 
 /**
  * Cache the given tile
@@ -140,21 +127,21 @@ int OperationsCMYK16::getBpp()
 Scroom::Utils::Stuff OperationsCMYK16::cache(const ConstTile::Ptr tile)
 {
   // Allocate the space for the cache - stride is the height of one row
-  const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
-  boost::shared_ptr<uint8_t> data = shared_malloc(static_cast<size_t>(stride * tile->height));
+  const int                  stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
+  boost::shared_ptr<uint8_t> data   = shared_malloc(static_cast<size_t>(stride * tile->height));
 
   // Row is a pointer to a row of pixels (destination)
   uint32_t* row = reinterpret_cast<uint32_t*>(data.get());
   // Cur is a pointer to the start of the row in the tile (source)
   const uint8_t* cur = tile->data.get();
 
-  for (int i = 0; i < 2 * tile->height * tile->width; i += 2)
+  for(int i = 0; i < 2 * tile->height * tile->width; i += 2)
   {
     // Convert CMYK to ARGB, because cairo doesn't know how to render CMYK.
-    uint8_t C_i = static_cast<uint8_t>(255 - ((cur[i    ]       ) >> 4) * 17); // 17 == 255/15
-    uint8_t M_i = static_cast<uint8_t>(255 - ((cur[i    ] & 0x0F)     ) * 17);
-    uint8_t Y_i = static_cast<uint8_t>(255 - ((cur[i + 1]       ) >> 4) * 17);
-    uint8_t K_i = static_cast<uint8_t>(255 - ((cur[i + 1] & 0x0F)     ) * 17);
+    uint8_t C_i = static_cast<uint8_t>(255 - ((cur[i]) >> 4) * 17); // 17 == 255/15
+    uint8_t M_i = static_cast<uint8_t>(255 - ((cur[i] & 0x0F)) * 17);
+    uint8_t Y_i = static_cast<uint8_t>(255 - ((cur[i + 1]) >> 4) * 17);
+    uint8_t K_i = static_cast<uint8_t>(255 - ((cur[i + 1] & 0x0F)) * 17);
 
     uint32_t R = static_cast<uint8_t>((C_i * K_i) / 255);
     uint32_t G = static_cast<uint8_t>((M_i * K_i) / 255);
@@ -170,34 +157,33 @@ Scroom::Utils::Stuff OperationsCMYK16::cache(const ConstTile::Ptr tile)
 void OperationsCMYK16::reduce(Tile::Ptr target, const ConstTile::Ptr source, int top_left_x, int top_left_y)
 {
   // Reducing by a factor 8
-  int sourceStride = 4 * source->width / 2; // stride in bytes
-  const byte* sourceBase = source->data.get();
+  int         sourceStride = 4 * source->width / 2; // stride in bytes
+  const byte* sourceBase   = source->data.get();
 
-  int targetStride = 8 * target->width / 2; // stride in bytes
-  byte* targetBase = target->data.get() +
-      (target->height * top_left_y + top_left_x) * targetStride / 8;
+  int   targetStride = 8 * target->width / 2; // stride in bytes
+  byte* targetBase   = target->data.get() + (target->height * top_left_y + top_left_x) * targetStride / 8;
 
-  for (int y = 0; y < source->height / 8; y++)
+  for(int y = 0; y < source->height / 8; y++)
   {
     byte* targetPtr = targetBase;
 
-    for (int x = 0; x < source->width / 8; x++)
+    for(int x = 0; x < source->width / 8; x++)
     {
       // We want to store the average colour of the 8*8 pixel image
       // with (x, y) as its top-left corner into targetPtr.
-      const byte* base = sourceBase + 4 * 4 * x; // start of the row
-      const byte* end = base + 8 * sourceStride; // end of the row
+      const byte* base = sourceBase + 4 * 4 * x;  // start of the row
+      const byte* end  = base + 8 * sourceStride; // end of the row
 
       int sum_c = 0;
       int sum_m = 0;
       int sum_y = 0;
       int sum_k = 0;
-      for (const byte* row = base; row < end; row += sourceStride)
+      for(const byte* row = base; row < end; row += sourceStride)
       {
-        for (size_t current = 0; current < 8 * 2; current += 2)
+        for(size_t current = 0; current < 8 * 2; current += 2)
         {
-          sum_c += row[current    ] >> 4;
-          sum_m += row[current    ] & 15;
+          sum_c += row[current] >> 4;
+          sum_m += row[current] & 15;
           sum_y += row[current + 1] >> 4;
           sum_k += row[current + 1] & 15;
         }
@@ -219,19 +205,13 @@ void OperationsCMYK16::reduce(Tile::Ptr target, const ConstTile::Ptr source, int
 ////////////////////////////////////////////////////////////////////////
 // OperationsCMYK8
 
-PipetteCommonOperationsCMYK::Ptr OperationsCMYK8::create()
-{
-  return PipetteCommonOperationsCMYK::Ptr(new OperationsCMYK8());
-}
+PipetteCommonOperationsCMYK::Ptr OperationsCMYK8::create() { return PipetteCommonOperationsCMYK::Ptr(new OperationsCMYK8()); }
 
-OperationsCMYK8::OperationsCMYK8() : PipetteCommonOperationsCMYK(2)
-{
-}
+OperationsCMYK8::OperationsCMYK8()
+  : PipetteCommonOperationsCMYK(2)
+{}
 
-int OperationsCMYK8::getBpp()
-{
-  return 8;
-}
+int OperationsCMYK8::getBpp() { return 8; }
 
 /**
  * Cache the given tile
@@ -239,8 +219,8 @@ int OperationsCMYK8::getBpp()
 Scroom::Utils::Stuff OperationsCMYK8::cache(const ConstTile::Ptr tile)
 {
   // Allocate the space for the cache - stride is the height of one row
-  const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
-  boost::shared_ptr<uint8_t> data = shared_malloc(static_cast<size_t>(stride * tile->height));
+  const int                  stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
+  boost::shared_ptr<uint8_t> data   = shared_malloc(static_cast<size_t>(stride * tile->height));
 
   // Row is a pointer to a row of pixels (destination)
   uint32_t* row = reinterpret_cast<uint32_t*>(data.get());
@@ -248,13 +228,13 @@ Scroom::Utils::Stuff OperationsCMYK8::cache(const ConstTile::Ptr tile)
   const uint8_t* cur = tile->data.get();
 
   // assume stride = tile->width * 4
-  for (int i = 0; i < tile->height * tile->width; i++)
+  for(int i = 0; i < tile->height * tile->width; i++)
   {
     // Convert CMYK to ARGB, because cairo doesn't know how to render CMYK.
-    uint8_t C_i = static_cast<uint8_t>(255 - ((cur[i]       ) >> 6) * 85); // 85 == 255/3
+    uint8_t C_i = static_cast<uint8_t>(255 - ((cur[i]) >> 6) * 85); // 85 == 255/3
     uint8_t M_i = static_cast<uint8_t>(255 - ((cur[i] & 0x30) >> 4) * 85);
     uint8_t Y_i = static_cast<uint8_t>(255 - ((cur[i] & 0x0C) >> 2) * 85);
-    uint8_t K_i = static_cast<uint8_t>(255 - ((cur[i] & 0x03)     ) * 85);
+    uint8_t K_i = static_cast<uint8_t>(255 - ((cur[i] & 0x03)) * 85);
 
     uint32_t R = static_cast<uint8_t>((C_i * K_i) / 255);
     uint32_t G = static_cast<uint8_t>((M_i * K_i) / 255);
@@ -270,41 +250,40 @@ Scroom::Utils::Stuff OperationsCMYK8::cache(const ConstTile::Ptr tile)
 void OperationsCMYK8::reduce(Tile::Ptr target, const ConstTile::Ptr source, int top_left_x, int top_left_y)
 {
   // Reducing by a factor 8
-  int sourceStride = source->width; // stride in bytes
-  const byte* sourceBase = source->data.get();
+  int         sourceStride = source->width; // stride in bytes
+  const byte* sourceBase   = source->data.get();
 
-  int targetStride = 8 * target->width / 2; // stride in bytes
-  byte* targetBase = target->data.get() +
-      (target->height * top_left_y + top_left_x) * targetStride / 8;
-  
-  for (int y = 0; y < source->height / 8; y++)
+  int   targetStride = 8 * target->width / 2; // stride in bytes
+  byte* targetBase   = target->data.get() + (target->height * top_left_y + top_left_x) * targetStride / 8;
+
+  for(int y = 0; y < source->height / 8; y++)
   {
-    for (int x = 0; x < source->width / 8; x++)
+    for(int x = 0; x < source->width / 8; x++)
     {
       // We want to store the average colour of the 8*8 pixel image
       // with (x, y) as its top-left corner into targetPtr.
-      const byte* base = sourceBase + 2 * 4 * x; // start of the row
-      const byte* end = base + 8 * sourceStride; // end of the row
+      const byte* base = sourceBase + 2 * 4 * x;  // start of the row
+      const byte* end  = base + 8 * sourceStride; // end of the row
 
       int sum_c = 0;
       int sum_m = 0;
       int sum_y = 0;
       int sum_k = 0;
-      for (const byte* row = base; row < end; row += sourceStride)
+      for(const byte* row = base; row < end; row += sourceStride)
       {
-        for (size_t current = 0; current < 8; current++)
+        for(size_t current = 0; current < 8; current++)
         {
-          sum_c +=  row[current]         >> 6;
+          sum_c += row[current] >> 6;
           sum_m += (row[current] & 0x30) >> 4;
           sum_y += (row[current] & 0x0C) >> 2;
-          sum_k +=  row[current] & 0x03;
+          sum_k += row[current] & 0x03;
         }
       }
 
-      targetBase[4*x + 0] = static_cast<byte>(sum_c * 255 / 192);
-      targetBase[4*x + 1] = static_cast<byte>(sum_m * 255 / 192);
-      targetBase[4*x + 2] = static_cast<byte>(sum_y * 255 / 192);
-      targetBase[4*x + 3] = static_cast<byte>(sum_k * 255 / 192);
+      targetBase[4 * x + 0] = static_cast<byte>(sum_c * 255 / 192);
+      targetBase[4 * x + 1] = static_cast<byte>(sum_m * 255 / 192);
+      targetBase[4 * x + 2] = static_cast<byte>(sum_y * 255 / 192);
+      targetBase[4 * x + 3] = static_cast<byte>(sum_k * 255 / 192);
     }
 
     targetBase += targetStride;
@@ -315,14 +294,11 @@ void OperationsCMYK8::reduce(Tile::Ptr target, const ConstTile::Ptr source, int 
 ////////////////////////////////////////////////////////////////////////
 // OperationsCMYK4
 
-PipetteCommonOperationsCMYK::Ptr OperationsCMYK4::create()
-{
-  return PipetteCommonOperationsCMYK::Ptr(new OperationsCMYK4());
-}
+PipetteCommonOperationsCMYK::Ptr OperationsCMYK4::create() { return PipetteCommonOperationsCMYK::Ptr(new OperationsCMYK4()); }
 
-OperationsCMYK4::OperationsCMYK4() : PipetteCommonOperationsCMYK(1)
-{
-}
+OperationsCMYK4::OperationsCMYK4()
+  : PipetteCommonOperationsCMYK(1)
+{}
 
 int OperationsCMYK4::getBpp()
 {
@@ -336,8 +312,8 @@ int OperationsCMYK4::getBpp()
 Scroom::Utils::Stuff OperationsCMYK4::cache(const ConstTile::Ptr tile)
 {
   // Allocate the space for the cache - stride is the height of one row
-  const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
-  boost::shared_ptr<uint8_t> data = shared_malloc(static_cast<size_t>(stride * tile->height));
+  const int                  stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
+  boost::shared_ptr<uint8_t> data   = shared_malloc(static_cast<size_t>(stride * tile->height));
 
   // Row is a pointer to a row of pixels (destination)
   uint32_t* row = reinterpret_cast<uint32_t*>(data.get());
@@ -345,20 +321,23 @@ Scroom::Utils::Stuff OperationsCMYK4::cache(const ConstTile::Ptr tile)
   const uint8_t* cur = tile->data.get();
 
   // assume stride = tile->width * 4
-  for (int i = 0; i < tile->height * tile->width; i++)
+  for(int i = 0; i < tile->height * tile->width; i++)
   {
     // Convert CMYK to ARGB, because cairo doesn't know how to render CMYK.
     uint8_t C_i, M_i, Y_i, K_i;
-    if ((i & 1) == 0) { // even pixels -> top half of byte
-      C_i = static_cast<uint8_t>(((cur[i / 2]       ) >> 7) - 1); // 0 -> 255 (= -1), 1 -> 0
+    if((i & 1) == 0)
+    {                                                      // even pixels -> top half of byte
+      C_i = static_cast<uint8_t>(((cur[i / 2]) >> 7) - 1); // 0 -> 255 (= -1), 1 -> 0
       M_i = static_cast<uint8_t>(((cur[i / 2] & 0x40) >> 6) - 1);
       Y_i = static_cast<uint8_t>(((cur[i / 2] & 0x20) >> 5) - 1);
       K_i = static_cast<uint8_t>(((cur[i / 2] & 0x10) >> 4) - 1);
-    } else { // odd pixels -> lower half of the byte
+    }
+    else
+    {                                                             // odd pixels -> lower half of the byte
       C_i = static_cast<uint8_t>(((cur[i / 2] & 0x08) >> 3) - 1); // 0 -> 255 (= -1), 1 -> 0
       M_i = static_cast<uint8_t>(((cur[i / 2] & 0x04) >> 2) - 1);
       Y_i = static_cast<uint8_t>(((cur[i / 2] & 0x02) >> 1) - 1);
-      K_i = static_cast<uint8_t>(((cur[i / 2] & 0x01)     ) - 1);
+      K_i = static_cast<uint8_t>(((cur[i / 2] & 0x01)) - 1);
     }
 
     uint32_t R = static_cast<uint8_t>((C_i * K_i) / 255);
@@ -375,29 +354,28 @@ Scroom::Utils::Stuff OperationsCMYK4::cache(const ConstTile::Ptr tile)
 void OperationsCMYK4::reduce(Tile::Ptr target, const ConstTile::Ptr source, int top_left_x, int top_left_y)
 {
   // Reducing by a factor 8
-  int sourceStride = source->width / 2; // stride in bytes
-  const byte* sourceBase = source->data.get();
+  int         sourceStride = source->width / 2; // stride in bytes
+  const byte* sourceBase   = source->data.get();
 
-  int targetStride = 8 * target->width / 2; // stride in bytes
-  byte* targetBase = target->data.get() +
-      (target->height * top_left_y + top_left_x) * targetStride / 8;
+  int   targetStride = 8 * target->width / 2; // stride in bytes
+  byte* targetBase   = target->data.get() + (target->height * top_left_y + top_left_x) * targetStride / 8;
 
-  for (int y = 0; y < source->height / 8; y++)
+  for(int y = 0; y < source->height / 8; y++)
   {
-    for (int x = 0; x < source->width / 8; x++)
+    for(int x = 0; x < source->width / 8; x++)
     {
       // We want to store the average colour of the 8*8 pixel image
       // with (x, y) as its top-left corner into targetPtr.
-      const byte* base = sourceBase + 4 * x; // start of the row
-      const byte* end = base + 8 * sourceStride; // end of the row
+      const byte* base = sourceBase + 4 * x;      // start of the row
+      const byte* end  = base + 8 * sourceStride; // end of the row
 
       int sum_c = 0;
       int sum_m = 0;
       int sum_y = 0;
       int sum_k = 0;
-      for (const byte* row = base; row < end; row += sourceStride)
+      for(const byte* row = base; row < end; row += sourceStride)
       {
-        for (size_t current = 0; current < 4; current++)
+        for(size_t current = 0; current < 4; current++)
         {
           sum_c += ((row[current] >> 7) & 1) + ((row[current] >> 3) & 1);
           sum_m += ((row[current] >> 6) & 1) + ((row[current] >> 2) & 1);
@@ -406,10 +384,10 @@ void OperationsCMYK4::reduce(Tile::Ptr target, const ConstTile::Ptr source, int 
         }
       }
 
-      targetBase[4*x  ] = static_cast<uint8_t>(sum_c * 255 / 64);
-      targetBase[4*x+1] = static_cast<uint8_t>(sum_m * 255 / 64);
-      targetBase[4*x+2] = static_cast<uint8_t>(sum_y * 255 / 64);
-      targetBase[4*x+3] = static_cast<uint8_t>(sum_k * 255 / 64);
+      targetBase[4 * x]     = static_cast<uint8_t>(sum_c * 255 / 64);
+      targetBase[4 * x + 1] = static_cast<uint8_t>(sum_m * 255 / 64);
+      targetBase[4 * x + 2] = static_cast<uint8_t>(sum_y * 255 / 64);
+      targetBase[4 * x + 3] = static_cast<uint8_t>(sum_k * 255 / 64);
     }
 
     targetBase += targetStride;

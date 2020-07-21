@@ -71,14 +71,17 @@ IncludeCategories:
 - Regex: ^<glib
   Priority: 13
 - Regex: ^<boost/.*>$
-  Priority: 3
-- Regex: ^<(gmock|gtest)/.*>$
   Priority: 4
+- Regex: ^<(gmock|gtest)/.*>$
+  Priority: 5
 - Regex: <cairo\.h>
   Priority: 15
-- Regex: <[[:alnum:]]+\.h>
-  Priority: 2
-- Regex: <[[:alnum:]]+>
+- Regex: <windows\.h>
+  Priority: 3
+  SortPriority: 2
+- Regex: <[[:alnum:]_-]+\.h>
+  Priority: 3
+- Regex: <[[:alnum:]_-]+>
   Priority: 1
 IncludeIsMainRegex: (Test)?$
 IndentCaseLabels: false

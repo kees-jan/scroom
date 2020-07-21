@@ -9,11 +9,10 @@
 #  include <config.h>
 #endif
 
-#include <boost/test/unit_test.hpp>
-
-#include <boost/function.hpp>
 #include <boost/bind/bind.hpp>
+#include <boost/function.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/test/unit_test.hpp>
 #include <boost/weak_ptr.hpp>
 
 //////////////////////////////////////////////////////////////
@@ -24,13 +23,13 @@ namespace
   {
   public:
     typedef boost::shared_ptr<A> Ptr;
-    typedef boost::weak_ptr<A> WeakPtr;
+    typedef boost::weak_ptr<A>   WeakPtr;
 
     void whatever() {}
 
     static Ptr create() { return Ptr(new A()); }
   };
-}
+} // namespace
 
 //////////////////////////////////////////////////////////////
 
@@ -43,7 +42,7 @@ BOOST_AUTO_TEST_CASE(bind_copies_smart_pointer)
   A::WeakPtr a_weak = a;
   BOOST_CHECK(a_weak.lock());
 
-  boost::function<void ()> fn = boost::bind(&A::whatever, a);
+  boost::function<void()> fn = boost::bind(&A::whatever, a);
   a.reset();
   BOOST_CHECK(!a);
   BOOST_CHECK(a_weak.lock());

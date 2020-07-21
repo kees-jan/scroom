@@ -8,11 +8,15 @@
 #pragma once
 
 #include <scroom/plugininformationinterface.hh>
+#include <scroom/point.hh>
 #include <scroom/utilities.hh>
 #include <scroom/viewinterface.hh>
-#include <scroom/point.hh>
 
-class MeasureHandler : public ToolStateListener, public PostRenderer, public SelectionListener, virtual public Scroom::Utils::Base
+class MeasureHandler
+  : public ToolStateListener
+  , public PostRenderer
+  , public SelectionListener
+  , virtual public Scroom::Utils::Base
 {
 public:
   MeasureHandler();
@@ -22,7 +26,7 @@ public:
 
 private:
   Selection::Ptr selection;
-  bool enabled;
+  bool           enabled;
 
 public:
   static Ptr create();
@@ -55,13 +59,16 @@ private:
   virtual void drawCross(cairo_t* cr, Scroom::Utils::Point<double> p);
 };
 
-class Measure : public PluginInformationInterface, public ViewObserver, virtual public Scroom::Utils::Base
+class Measure
+  : public PluginInformationInterface
+  , public ViewObserver
+  , virtual public Scroom::Utils::Base
 {
 public:
   typedef boost::shared_ptr<Measure> Ptr;
 
 private:
-  Measure() {};
+  Measure(){};
 
 public:
   static Ptr create();
@@ -72,7 +79,7 @@ public:
 
   virtual std::string getPluginName();
   virtual std::string getPluginVersion();
-  virtual void registerCapabilities(ScroomPluginInterface::Ptr host);
+  virtual void        registerCapabilities(ScroomPluginInterface::Ptr host);
 
   ////////////////////////////////////////////////////////////////////////
   // ViewObserver

@@ -52,10 +52,10 @@ namespace Scroom
         int getCount();
 
       private:
-        boost::mutex mut;                 /**< Guard internal data */
-        boost::condition_variable cond;   /**< Gets signaled when a job completes */
-        unsigned int count;               /**< Number of jobs currently running */
-        bool isDeleted;                   /**< @c true if the last reference to ThreadPool::Queue goes away */
+        boost::mutex              mut;       /**< Guard internal data */
+        boost::condition_variable cond;      /**< Gets signaled when a job completes */
+        unsigned int              count;     /**< Number of jobs currently running */
+        bool                      isDeleted; /**< @c true if the last reference to ThreadPool::Queue goes away */
 
       private:
         QueueImpl();
@@ -66,8 +66,8 @@ namespace Scroom
        */
       class QueueLock
       {
-        QueueImpl::Ptr q;  /**< Reference to our QueueImpl */
-        bool isValid;      /**< @c true if there are still references to the ThreadPool::Queue associated with @c q */
+        QueueImpl::Ptr q;       /**< Reference to our QueueImpl */
+        bool           isValid; /**< @c true if there are still references to the ThreadPool::Queue associated with @c q */
 
       public:
         QueueLock(QueueImpl::Ptr queue);
@@ -77,7 +77,6 @@ namespace Scroom
         bool queueExists();
       };
 
-    }
-  }
-}
-
+    } // namespace ThreadPool
+  }   // namespace Detail
+} // namespace Scroom

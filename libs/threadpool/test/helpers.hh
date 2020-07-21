@@ -15,7 +15,6 @@
 
 using namespace Scroom;
 
-boost::function<void ()> pass(Semaphore* s);
-boost::function<void ()> clear(Semaphore* s);
-boost::function<void ()> destroy(boost::shared_ptr<void> p);
-
+boost::function<void()> pass(Semaphore* s);
+boost::function<void()> clear(Semaphore* s);
+boost::function<void()> destroy(boost::shared_ptr<void> p);

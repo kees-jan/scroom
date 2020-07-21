@@ -18,27 +18,25 @@ namespace Scroom
     {
 
       /** Gets called when an assertion failed */
-      [[noreturn]] void assertionFailed(const char *type, const char *expr,
-          const char *function, const char *filename, unsigned int line)
-              __attribute__ ((noreturn));
-    }
+      [[noreturn]] void
+        assertionFailed(const char* type, const char* expr, const char* function, const char* filename, unsigned int line)
+          __attribute__((noreturn));
+    } // namespace Detail
 
-  }
-}
+  } // namespace Utils
+} // namespace Scroom
 
 #ifdef _WIN32
-#define __STRING(x)     #x
+#  define __STRING(x) #  x
 #endif
 
-#define require(expr)                                                       \
-  ((expr) ? ((void) 0) : Scroom::Utils::Detail::assertionFailed             \
-   ("precondition", __STRING(expr), __PRETTY_FUNCTION__, __FILE__, __LINE__))
-#define ensure(expr)                                                        \
-  ((expr) ? ((void) 0) : Scroom::Utils::Detail::assertionFailed             \
-   ("postcondition", __STRING(expr), __PRETTY_FUNCTION__,  __FILE__, __LINE__))
-#define verify(expr)                                                        \
-  ((expr) ? ((void) 0) : Scroom::Utils::Detail::assertionFailed             \
-   ("assertion", __STRING(expr), __PRETTY_FUNCTION__,__FILE__, __LINE__))
-#define defect()                                                            \
-  Scroom::Utils::Detail::assertionFailed("control flow assertion",          \
-                                     "", __PRETTY_FUNCTION__,__FILE__, __LINE__)
+#define require(expr) \
+  ((expr) ? ((void)0) \
+          : Scroom::Utils::Detail::assertionFailed("precondition", __STRING(expr), __PRETTY_FUNCTION__, __FILE__, __LINE__))
+#define ensure(expr)  \
+  ((expr) ? ((void)0) \
+          : Scroom::Utils::Detail::assertionFailed("postcondition", __STRING(expr), __PRETTY_FUNCTION__, __FILE__, __LINE__))
+#define verify(expr)  \
+  ((expr) ? ((void)0) \
+          : Scroom::Utils::Detail::assertionFailed("assertion", __STRING(expr), __PRETTY_FUNCTION__, __FILE__, __LINE__))
+#define defect() Scroom::Utils::Detail::assertionFailed("control flow assertion", "", __PRETTY_FUNCTION__, __FILE__, __LINE__)

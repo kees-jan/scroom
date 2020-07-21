@@ -9,14 +9,14 @@
 
 #include <map>
 
+#include <boost/enable_shared_from_this.hpp>
+#include <boost/shared_ptr.hpp>
+
 #include <gtk/gtk.h>
 
-#include <boost/shared_ptr.hpp>
-#include <boost/enable_shared_from_this.hpp>
-
-#include <scroom/presentationinterface.hh>
 #include <scroom/colormappable.hh>
 #include <scroom/observable.hh>
+#include <scroom/presentationinterface.hh>
 
 namespace Scroom
 {
@@ -27,8 +27,9 @@ namespace Scroom
      *
      * When the user selects one of the colormaps, they will be set.
      */
-    class ColormapProvider: public Viewable,
-        public boost::enable_shared_from_this<ColormapProvider>
+    class ColormapProvider
+      : public Viewable
+      , public boost::enable_shared_from_this<ColormapProvider>
     {
     public:
       typedef boost::shared_ptr<ColormapProvider> Ptr;
@@ -68,9 +69,7 @@ namespace Scroom
 
       /** The user selected a colormap */
       void on_colormap_selected(GtkTreeView* tv);
-
     };
 
-  }
-}
-
+  } // namespace ColormapImpl
+} // namespace Scroom

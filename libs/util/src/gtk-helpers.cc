@@ -5,13 +5,12 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include <scroom/gtk-helpers.hh>
-
 #include <boost/thread.hpp>
 
 #include <scroom/assertions.hh>
+#include <scroom/gtk-helpers.hh>
 
-typedef boost::shared_ptr<boost::function<bool()> > GtkFuncPtr;
+typedef boost::shared_ptr<boost::function<bool()>> GtkFuncPtr;
 
 namespace Scroom
 {
@@ -30,33 +29,27 @@ namespace Scroom
       };
 
       Wrapper::Wrapper(const boost::function<bool()>& f_)
-      :f(f_)
+        : f(f_)
       {}
 
-      gpointer Wrapper::create(const boost::function<bool()>& f)
-      {
-        return new Wrapper(f);
-      }
+      gpointer Wrapper::create(const boost::function<bool()>& f) { return new Wrapper(f); }
 
       static int gtkWrapper(gpointer data)
       {
-        Wrapper* w = reinterpret_cast<Wrapper*>(data);
-        bool result = w->f();
+        Wrapper* w      = reinterpret_cast<Wrapper*>(data);
+        bool     result = w->f();
         if(!result)
           delete w;
         return result;
       }
-    }
+    } // namespace Detail
 
     Wrapper::Wrapper(const boost::function<bool()>& f_)
-        : f(&Detail::gtkWrapper), data(Detail::Wrapper::create(f_))
-    {
-    }
+      : f(&Detail::gtkWrapper)
+      , data(Detail::Wrapper::create(f_))
+    {}
 
-    Wrapper wrap(boost::function<bool()> f)
-    {
-      return Wrapper(f);
-    }
+    Wrapper wrap(boost::function<bool()> f) { return Wrapper(f); }
 
     namespace Detail
     {
@@ -66,39 +59,20 @@ namespace Scroom
         return me;
       }
 
-      void lockGdkMutex()
-      {
-        GdkMutex().lock();
-      }
+      void lockGdkMutex() { GdkMutex().lock(); }
 
-      void unlockGdkMutex()
-      {
-        GdkMutex().unlock();
-      }
-    }
+      void unlockGdkMutex() { GdkMutex().unlock(); }
+    } // namespace Detail
 
-    void useRecursiveGdkLock()
-    {
-      gdk_threads_set_lock_functions(&Detail::lockGdkMutex, &Detail::unlockGdkMutex);
-    }
+    void useRecursiveGdkLock() { gdk_threads_set_lock_functions(&Detail::lockGdkMutex, &Detail::unlockGdkMutex); }
 
-    TakeGdkLock::TakeGdkLock()
-    {
-      gdk_threads_enter();
-    }
+    TakeGdkLock::TakeGdkLock() { gdk_threads_enter(); }
 
-    TakeGdkLock::~TakeGdkLock()
-    {
-      gdk_threads_leave();
-    }
-  }
-}
+    TakeGdkLock::~TakeGdkLock() { gdk_threads_leave(); }
+  } // namespace GtkHelpers
+} // namespace Scroom
 
 std::ostream& operator<<(std::ostream& os, GdkRectangle const& r)
 {
-  return os << "GdkRectangle("
-            << r.x << ", "
-            << r.y << ", "
-            << r.width << ", "
-            << r.height << ")";
+  return os << "GdkRectangle(" << r.x << ", " << r.y << ", " << r.width << ", " << r.height << ")";
 }

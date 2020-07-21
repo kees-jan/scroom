@@ -10,18 +10,18 @@
 #include <list>
 #include <map>
 
-#include <boost/thread.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/thread.hpp>
 #include <boost/weak_ptr.hpp>
 
-#include <scroom/utilities.hh>
 #include <scroom/bookkeeping.hh>
+#include <scroom/utilities.hh>
 
 namespace Scroom
 {
   namespace Utils
   {
-    template<typename T>
+    template <typename T>
     class Observable;
 
     namespace Detail
@@ -31,28 +31,28 @@ namespace Scroom
        *
        * Performs de-registration on destruction
        */
-      template<typename T>
+      template <typename T>
       class Registration
       {
       public:
-        boost::weak_ptr<Observable<T> > observable;
-        boost::shared_ptr<T> o;      /**< Reference to the observer (for non-weak registrations) */
-        boost::weak_ptr<T> observer; /**< Reference to the observer */
+        boost::weak_ptr<Observable<T>> observable;
+        boost::shared_ptr<T>           o;        /**< Reference to the observer (for non-weak registrations) */
+        boost::weak_ptr<T>             observer; /**< Reference to the observer */
 
         typedef boost::shared_ptr<Registration> Ptr;
 
       public:
         Registration();
-        Registration(boost::weak_ptr<Observable<T> > observable, boost::shared_ptr<T> observer);
-        Registration(boost::weak_ptr<Observable<T> > observable, boost::weak_ptr<T> observer);
+        Registration(boost::weak_ptr<Observable<T>> observable, boost::shared_ptr<T> observer);
+        Registration(boost::weak_ptr<Observable<T>> observable, boost::weak_ptr<T> observer);
         ~Registration();
         void set(boost::shared_ptr<T> observer);
         void set(boost::weak_ptr<T> observer);
 
-        static Ptr create(boost::weak_ptr<Observable<T> > observable, boost::shared_ptr<T> observer);
-        static Ptr create(boost::weak_ptr<Observable<T> > observable, boost::weak_ptr<T> observer);
+        static Ptr create(boost::weak_ptr<Observable<T>> observable, boost::shared_ptr<T> observer);
+        static Ptr create(boost::weak_ptr<Observable<T>> observable, boost::weak_ptr<T> observer);
       };
-    }
+    } // namespace Detail
 
     /**
      * Base class for something that accepts observers.
@@ -69,21 +69,22 @@ namespace Scroom
      * @note When you register one Observer with both a @c shared_ptr
      *    and a @c weak_ptr, unpredictable things will happen.
      */
-    template<typename T>
-    class Observable : public boost::noncopyable,
-                       public virtual Base
+    template <typename T>
+    class Observable
+      : public boost::noncopyable
+      , public virtual Base
     {
     public:
-      typedef boost::shared_ptr<T> Observer;
-      typedef boost::shared_ptr<Observable<T> > Ptr;
+      typedef boost::shared_ptr<T>             Observer;
+      typedef boost::shared_ptr<Observable<T>> Ptr;
 
     private:
-      typedef boost::weak_ptr<T> ObserverWeak;
+      typedef boost::weak_ptr<T>      ObserverWeak;
       typedef Detail::Registration<T> Registration;
 
     private:
       /** Map all registrations to their registration data */
-      typename Scroom::Bookkeeping::Map<ObserverWeak, typename Registration::Ptr >::Ptr registrationMap;
+      typename Scroom::Bookkeeping::Map<ObserverWeak, typename Registration::Ptr>::Ptr registrationMap;
 
     protected:
       /**
@@ -119,33 +120,37 @@ namespace Scroom
     ////////////////////////////////////////////////////////////////////////
     // Detail::Registration implementation
 
-    template<typename T>
+    template <typename T>
     Detail::Registration<T>::Registration()
-      : observable(), o(), observer()
-    {
-    }
+      : observable()
+      , o()
+      , observer()
+    {}
 
-    template<typename T>
-    Detail::Registration<T>::Registration(boost::weak_ptr<Observable<T> > observable_, boost::shared_ptr<T> observer_)
-      : observable(observable_), o(observer_), observer(observer_)
-    {
-    }
+    template <typename T>
+    Detail::Registration<T>::Registration(boost::weak_ptr<Observable<T>> observable_, boost::shared_ptr<T> observer_)
+      : observable(observable_)
+      , o(observer_)
+      , observer(observer_)
+    {}
 
-    template<typename T>
-    Detail::Registration<T>::Registration(boost::weak_ptr<Observable<T> > observable_, boost::weak_ptr<T> observer_)
-      : observable(observable_), o(), observer(observer_)
+    template <typename T>
+    Detail::Registration<T>::Registration(boost::weak_ptr<Observable<T>> observable_, boost::weak_ptr<T> observer_)
+      : observable(observable_)
+      , o()
+      , observer(observer_)
     {
       // We don't want to store a "hard" reference, so field o is intentionally empty.
     }
 
-    template<typename T>
+    template <typename T>
     void Detail::Registration<T>::set(boost::shared_ptr<T> observer_)
     {
-      this->o = observer_;
+      this->o        = observer_;
       this->observer = observer_;
     }
 
-    template<typename T>
+    template <typename T>
     void Detail::Registration<T>::set(boost::weak_ptr<T> observer_)
     {
       // We don't want to store a "hard" reference, so field o is intentionally empty.
@@ -153,34 +158,33 @@ namespace Scroom
       this->observer = observer_;
     }
 
-    template<typename T>
-    typename Detail::Registration<T>::Ptr Detail::Registration<T>::create(boost::weak_ptr<Observable<T> > observable,
-                                                           boost::shared_ptr<T> observer)
+    template <typename T>
+    typename Detail::Registration<T>::Ptr Detail::Registration<T>::create(boost::weak_ptr<Observable<T>> observable,
+                                                                          boost::shared_ptr<T>           observer)
     {
       return typename Detail::Registration<T>::Ptr(new Detail::Registration<T>(observable, observer));
     }
 
-    template<typename T>
-    typename Detail::Registration<T>::Ptr Detail::Registration<T>::create(boost::weak_ptr<Observable<T> > observable,
-                                                           boost::weak_ptr<T> observer)
+    template <typename T>
+    typename Detail::Registration<T>::Ptr Detail::Registration<T>::create(boost::weak_ptr<Observable<T>> observable,
+                                                                          boost::weak_ptr<T>             observer)
     {
       return typename Detail::Registration<T>::Ptr(new Detail::Registration<T>(observable, observer));
     }
 
-    template<typename T>
+    template <typename T>
     Detail::Registration<T>::~Registration()
-    {
-    }
+    {}
 
     ////////////////////////////////////////////////////////////////////////
     // Observable implementation
-    template<typename T>
+    template <typename T>
     Observable<T>::Observable()
     {
-      registrationMap = Scroom::Bookkeeping::Map<ObserverWeak, typename Registration::Ptr >::create();
+      registrationMap = Scroom::Bookkeeping::Map<ObserverWeak, typename Registration::Ptr>::create();
     }
 
-    template<typename T>
+    template <typename T>
     Observable<T>::~Observable()
     {
       // Destroy strong references to any observers
@@ -199,7 +203,7 @@ namespace Scroom
       }
     }
 
-    template<typename T>
+    template <typename T>
     std::list<typename Observable<T>::Observer> Observable<T>::getObservers()
     {
       std::list<typename Observable<T>::Observer> result;
@@ -213,10 +217,10 @@ namespace Scroom
       return result;
     }
 
-    template<typename T>
+    template <typename T>
     Scroom::Bookkeeping::Token Observable<T>::registerStrongObserver(Observable<T>::Observer const& observer)
     {
-      Scroom::Bookkeeping::Token t = registrationMap->reReserve(observer);
+      Scroom::Bookkeeping::Token            t = registrationMap->reReserve(observer);
       typename Detail::Registration<T>::Ptr r = registrationMap->get(observer);
       if(r)
       {
@@ -224,7 +228,7 @@ namespace Scroom
       }
       else
       {
-        r = Detail::Registration<T>::create(shared_from_this<Observable<T> >(), observer);
+        r = Detail::Registration<T>::create(shared_from_this<Observable<T>>(), observer);
         registrationMap->set(observer, r);
       }
 
@@ -233,10 +237,10 @@ namespace Scroom
       return t;
     }
 
-    template<typename T>
+    template <typename T>
     Scroom::Bookkeeping::Token Observable<T>::registerObserver(Observable<T>::ObserverWeak const& observer)
     {
-      Scroom::Bookkeeping::Token t = registrationMap->reReserve(observer);
+      Scroom::Bookkeeping::Token            t = registrationMap->reReserve(observer);
       typename Detail::Registration<T>::Ptr r = registrationMap->get(observer);
       if(r)
       {
@@ -244,8 +248,8 @@ namespace Scroom
       }
       else
       {
-        r = Detail::Registration<T>::create(shared_from_this<Observable<T> >(), observer);
-        registrationMap->set(observer,r);
+        r = Detail::Registration<T>::create(shared_from_this<Observable<T>>(), observer);
+        registrationMap->set(observer, r);
       }
 
       observerAdded(typename Observable<T>::Observer(observer), t);
@@ -253,17 +257,16 @@ namespace Scroom
       return t;
     }
 
-    template<typename T>
+    template <typename T>
     void Observable<T>::unregisterObserver(Observable<T>::ObserverWeak const& observer)
     {
       registrationMap->remove(observer);
     }
 
-    template<typename T>
+    template <typename T>
     void Observable<T>::observerAdded(Observable<T>::Observer const&, Scroom::Bookkeeping::Token const&)
     {
       // Do nothing
     }
-  }
-}
-
+  } // namespace Utils
+} // namespace Scroom

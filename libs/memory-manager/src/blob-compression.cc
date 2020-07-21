@@ -18,22 +18,21 @@ namespace Scroom
     {
       PageList compressBlob(const uint8_t* in, size_t size, PageProvider::Ptr provider)
       {
-        PageList result;
-        z_stream stream;
+        PageList     result;
+        z_stream     stream;
         const size_t pageSize = provider->getPageSize();
 
-        stream.next_in = const_cast<uint8_t*>(in);
-        stream.avail_in = size;
+        stream.next_in   = const_cast<uint8_t*>(in);
+        stream.avail_in  = size;
         stream.avail_out = 0;
-        stream.zalloc = Z_NULL;
-        stream.zfree = Z_NULL;
-        stream.opaque = Z_NULL;
+        stream.zalloc    = Z_NULL;
+        stream.zfree     = Z_NULL;
+        stream.opaque    = Z_NULL;
 
         int r = deflateInit(&stream, Z_BEST_SPEED);
         if(r != Z_OK)
         {
-          printf("PANIC: deflateInit said: %d (%s)\n",
-                 r, (stream.msg?stream.msg:""));
+          printf("PANIC: deflateInit said: %d (%s)\n", r, (stream.msg ? stream.msg : ""));
           exit(-1);
         }
 
@@ -47,25 +46,23 @@ namespace Scroom
 
           RawPageData::Ptr currentPageRaw = currentPage->get();
 
-          stream.next_out = currentPageRaw.get();
+          stream.next_out  = currentPageRaw.get();
           stream.avail_out = pageSize;
 
           r = deflate(&stream, Z_FINISH);
 
-        } while(r==Z_OK);
+        } while(r == Z_OK);
 
-        if(r!=Z_STREAM_END)
+        if(r != Z_STREAM_END)
         {
-          printf("PANIC: deflate said: %d (%s)\n",
-                 r, (stream.msg?stream.msg:""));
+          printf("PANIC: deflate said: %d (%s)\n", r, (stream.msg ? stream.msg : ""));
           exit(-1);
         }
 
         r = deflateEnd(&stream);
-        if(r!=Z_OK)
+        if(r != Z_OK)
         {
-          printf("PANIC: deflateEnd said: %d (%s)\n",
-                 r, (stream.msg?stream.msg:""));
+          printf("PANIC: deflateEnd said: %d (%s)\n", r, (stream.msg ? stream.msg : ""));
           exit(-1);
         }
 
@@ -79,25 +76,24 @@ namespace Scroom
 
       void decompressBlob(uint8_t* out, size_t size, PageList list, PageProvider::Ptr provider)
       {
-        z_stream stream;
+        z_stream     stream;
         const size_t pageSize = provider->getPageSize();
 
-        stream.next_out = out;
+        stream.next_out  = out;
         stream.avail_out = size;
-        stream.avail_in = 0;
-        stream.zalloc = Z_NULL;
-        stream.zfree = Z_NULL;
-        stream.opaque = Z_NULL;
+        stream.avail_in  = 0;
+        stream.zalloc    = Z_NULL;
+        stream.zfree     = Z_NULL;
+        stream.opaque    = Z_NULL;
 
         int r = inflateInit(&stream);
         if(r != Z_OK)
         {
-          printf("PANIC: inflateInit said: %d (%s)\n",
-                 r, (stream.msg?stream.msg:""));
+          printf("PANIC: inflateInit said: %d (%s)\n", r, (stream.msg ? stream.msg : ""));
           exit(-1);
         }
 
-        while(!list.empty() && r== Z_OK)
+        while(!list.empty() && r == Z_OK)
         {
           if(stream.avail_in != 0)
             printf("PANIC! Some data available after inflation finishes\n");
@@ -107,29 +103,26 @@ namespace Scroom
 
           RawPageData::Ptr currentPageRaw = currentPage->get();
 
-          stream.next_in = currentPageRaw.get();
+          stream.next_in  = currentPageRaw.get();
           stream.avail_in = pageSize;
 
-          int flush = (list.empty()?Z_FINISH:Z_NO_FLUSH);
+          int flush = (list.empty() ? Z_FINISH : Z_NO_FLUSH);
 
           r = inflate(&stream, flush);
         }
-        if(r!=Z_OK && r!=Z_STREAM_END)
+        if(r != Z_OK && r != Z_STREAM_END)
         {
-          printf("PANIC: inflate said: %d (%s)\n",
-                 r, (stream.msg?stream.msg:""));
+          printf("PANIC: inflate said: %d (%s)\n", r, (stream.msg ? stream.msg : ""));
           exit(-1);
         }
 
         r = inflateEnd(&stream);
-        if(r!=Z_OK)
+        if(r != Z_OK)
         {
-          printf("PANIC: inflateEnd said: %d (%s)\n",
-                 r, (stream.msg?stream.msg:""));
+          printf("PANIC: inflateEnd said: %d (%s)\n", r, (stream.msg ? stream.msg : ""));
           exit(-1);
         }
       }
-    }
-  }
-}
-
+    } // namespace Detail
+  }   // namespace MemoryBlobs
+} // namespace Scroom

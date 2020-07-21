@@ -5,10 +5,9 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include <scroom/memoryblobs.hh>
-
 #include <stdio.h>
 
+#include <scroom/memoryblobs.hh>
 #include <scroom/threadpool.hh>
 
 #include "blob-compression.hh"
@@ -22,7 +21,9 @@ namespace Scroom
   namespace MemoryBlobs
   {
     PageProvider::PageProvider(size_t blockCount_, size_t blockSize_)
-      : blockCount(blockCount_), blockSize(blockSize_), blockFactoryInterface(getBlockFactoryInterface())
+      : blockCount(blockCount_)
+      , blockSize(blockSize_)
+      , blockFactoryInterface(getBlockFactoryInterface())
     {}
 
     PageProvider::Ptr PageProvider::create(size_t blockCount, size_t blockSize)
@@ -49,10 +50,7 @@ namespace Scroom
       return result;
     }
 
-    size_t PageProvider::getPageSize()
-    {
-      return blockSize;
-    }
+    size_t PageProvider::getPageSize() { return blockSize; }
 
     void PageProvider::markPageFree(Scroom::MemoryBlocks::Page* p)
     {
@@ -62,19 +60,18 @@ namespace Scroom
 
     ////////////////////////////////////////////////////////////////////////
 
-    Blob::Ptr Blob::create(PageProvider::Ptr provider, size_t size)
-    {
-      return Ptr(new Blob(provider, size));
-    }
+    Blob::Ptr Blob::create(PageProvider::Ptr provider, size_t size) { return Ptr(new Blob(provider, size)); }
 
     Blob::Blob(PageProvider::Ptr provider_, size_t size_)
-      : provider(provider_), size(size_), data(NULL), state(UNINITIALIZED), cpuBound(CpuBound()), refcount(0)
-    {
-    }
+      : provider(provider_)
+      , size(size_)
+      , data(NULL)
+      , state(UNINITIALIZED)
+      , cpuBound(CpuBound())
+      , refcount(0)
+    {}
 
-    Blob::~Blob()
-    {
-    }
+    Blob::~Blob() {}
 
     RawPageData::Ptr Blob::load()
     {
@@ -85,11 +82,11 @@ namespace Scroom
         {
         case UNINITIALIZED:
           // Allocate new data
-          data = static_cast<uint8_t*>(malloc(size*sizeof(uint8_t)));
+          data = static_cast<uint8_t*>(malloc(size * sizeof(uint8_t)));
           break;
         case CLEAN:
           // Decompress data
-          data = static_cast<uint8_t*>(malloc(size*sizeof(uint8_t)));
+          data = static_cast<uint8_t*>(malloc(size * sizeof(uint8_t)));
           Detail::decompressBlob(data, size, pages, provider);
           break;
         case DIRTY:
@@ -104,7 +101,7 @@ namespace Scroom
         }
 
         // data should point to something valid here...
-        result = RawPageData::Ptr(data, UnloadData(shared_from_this<Blob>()));
+        result   = RawPageData::Ptr(data, UnloadData(shared_from_this<Blob>()));
         weakData = result;
         refcount++;
       }
@@ -116,9 +113,9 @@ namespace Scroom
     {
       boost::mutex::scoped_lock lock(mut);
       refcount--;
-      if(refcount==0)
+      if(refcount == 0)
       {
-        if(state==DIRTY)
+        if(state == DIRTY)
         {
           state = COMPRESSING;
           cpuBound->schedule(boost::bind(&Blob::compress, shared_from_this<Blob>()), COMPRESS_PRIO);
@@ -134,32 +131,32 @@ namespace Scroom
     void Blob::compress()
     {
       boost::mutex::scoped_lock lock(mut);
-      if(state==COMPRESSING)
+      if(state == COMPRESSING)
       {
-        if(refcount!=0)
+        if(refcount != 0)
           printf("PANIC: Compressing with pending references\n");
 
         pages = Detail::compressBlob(data, size, provider);
         free(data);
         data = NULL;
 
-        state=CLEAN;
+        state = CLEAN;
       }
     }
 
     RawPageData::Ptr Blob::get()
     {
       boost::mutex::scoped_lock lock(mut);
-      RawPageData::Ptr result = load();
-      state = DIRTY;
+      RawPageData::Ptr          result = load();
+      state                            = DIRTY;
       return result;
     }
 
     RawPageData::Ptr Blob::initialize(uint8_t value)
     {
       boost::mutex::scoped_lock lock(mut);
-      RawPageData::Ptr result = load();
-      state = DIRTY;
+      RawPageData::Ptr          result = load();
+      state                            = DIRTY;
       memset(result.get(), value, size);
       return result;
     }
@@ -169,6 +166,5 @@ namespace Scroom
       boost::mutex::scoped_lock lock(mut);
       return load();
     }
-  }
-}
-
+  } // namespace MemoryBlobs
+} // namespace Scroom

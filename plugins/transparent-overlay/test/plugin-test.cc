@@ -7,14 +7,11 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include <scroom/scroomplugin.hh>
 #include <scroom/plugininformationinterface.hh>
+#include <scroom/scroomplugin.hh>
 
 BOOST_AUTO_TEST_SUITE(Plugin_tests)
 
-BOOST_AUTO_TEST_CASE(get_plugin_information)
-{
-  PluginInformationInterface::Ptr pi = getPluginInformation();
-}
+BOOST_AUTO_TEST_CASE(get_plugin_information) { PluginInformationInterface::Ptr pi = getPluginInformation(); }
 
 BOOST_AUTO_TEST_SUITE_END()

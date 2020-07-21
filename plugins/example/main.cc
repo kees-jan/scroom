@@ -12,7 +12,4 @@
 
 #include "example.hh"
 
-PluginInformationInterface::Ptr getPluginInformation()
-{
-  return Example::create();
-}
+PluginInformationInterface::Ptr getPluginInformation() { return Example::create(); }
