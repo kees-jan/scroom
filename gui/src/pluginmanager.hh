@@ -41,13 +41,13 @@ public:
   typedef boost::shared_ptr<PluginManager> Ptr;
 
 private:
-  typedef enum
+  enum PluginManagerState
   {
     FINDING_DIRECTORIES,
     SCANNING_DIRECTORIES,
     LOADING_FILES,
     DONE
-  } PluginManagerState;
+  };
 
 private:
   bool                                                  devMode;

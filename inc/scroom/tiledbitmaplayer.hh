@@ -31,14 +31,14 @@
  * Represent the state of one of the tiles that make up a layer in the
  * bitmap.
  */
-typedef enum
+enum TileStateInternal
 {
   TSI_UNINITIALIZED,
   TSI_NORMAL,
   TSI_OUT_OF_BOUNDS,
   TSI_LOADING_SYNCHRONOUSLY,
   TSI_LOADING_ASYNCHRONOUSLY
-} TileStateInternal;
+};
 
 class TileViewState;
 class CompressedTile;

@@ -28,13 +28,13 @@ namespace Scroom
       typedef boost::shared_ptr<ProgressStateInterface> Ptr;
       typedef boost::weak_ptr<ProgressStateInterface>   WeakPtr;
 
-      typedef enum
+      enum State
       {
         IDLE,
         WAITING,
         WORKING,
         FINISHED
-      } State;
+      };
 
       virtual ~ProgressStateInterface() {}
 

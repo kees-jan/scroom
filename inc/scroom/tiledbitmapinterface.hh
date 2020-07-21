@@ -28,14 +28,13 @@
  * Represent the state of one of the tiles that make up a layer in the
  * bitmap.
  */
-typedef enum
+enum TileState
 {
   TILE_UNINITIALIZED, /**< Tile does not yet contain any data */
   TILE_UNLOADED,      /**< Tile does contain data, but has been swapped out */
   TILE_LOADED,        /**< Tile does contain data, and data is in memory */
-  TILE_OUT_OF_BOUNDS
-  /**< Tile is located outside the bitmap area */
-} TileState;
+  TILE_OUT_OF_BOUNDS  /**< Tile is located outside the bitmap area */
+};
 
 /**
  * Operations on a layer in the TiledBitmap
