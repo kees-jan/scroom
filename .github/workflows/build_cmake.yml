@@ -107,4 +107,8 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
+          path: Scroom-*Source.tar.gz
+          
+      - uses: actions/upload-artifact@v2
+        with:
           path: scroom-win-*.zip

@@ -11,6 +11,10 @@ cd ../build
 cmake ../scroom -G "MSYS Makefiles" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_INSTALL_PREFIX="../scroom-installed/scroom" -DENABLE_CACHE=OFF
 cmake --build . -j2
 ctest -j2
+
+cmake --build . --target package_source -j2
+mv Scroom-*Source.tar.gz ../scroom
+
 cmake --install .
 ../scroom/build_scripts/windows/post-install-cmake-hook.sh ../scroom-installed/scroom
 cd ../scroom-installed
