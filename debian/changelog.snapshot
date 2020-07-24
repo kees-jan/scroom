@@ -1,8 +1,8 @@
-scroom (0.10-357-g88f28547c-1) bionic; urgency=medium
+scroom (0.11-1) bionic; urgency=medium
 
-  * Snapshot release
+  * For more info see https://github.com/kees-jan/scroom/wiki
 
- -- Kees-Jan Dijkzeul <kees-jan@dijkzeul.eu>  Sun, 05 Jul 2020 19:26:29 +0200
+ -- Kees-Jan Dijkzeul <kees-jan@dijkzeul.eu>  Wed, 08 Jul 2020 20:11:52 +0200
 
 scroom (0.10-1) bionic; urgency=medium
 
