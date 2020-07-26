@@ -596,7 +596,8 @@ pipette_plugin_tests = \
 pipette_plugin_check_programs = \
 	plugins/pipette/test/pipette-tests
 
-plugins_pipette_test_pipette_tests_CPPFLAGS = @PIPETTEPLUGIN_CFLAGS@ -I $(top_srcdir)/inc
+plugins_pipette_test_pipette_tests_CPPFLAGS = @PIPETTEPLUGIN_CFLAGS@ -I $(top_srcdir)/inc \
+	-I $(top_srcdir)/plugins/pipette/src
 
 plugins_pipette_test_pipette_tests_LDFLAGS = -pthread
 
@@ -605,8 +606,13 @@ plugins_pipette_test_pipette_tests_SOURCES = \
 	plugins/pipette/test/pipette-tests.cc
 
 plugins_pipette_test_pipette_tests_LDADD = \
-	@BOOSTTESTLIB@ @PIPETTEPLUGIN_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @BOOSTFILESYSTEMLIB@ libs/scroom/src/libsscroom.la  libs/threadpool/src/libsthreadpool.la -ldl \
+	@BOOSTTESTLIB@ @PIPETTEPLUGIN_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
+	@BOOSTFILESYSTEMLIB@ @BOOSTCHRONOLIB@ \
+	libs/scroom/src/libsscroom.la  \
+	libs/threadpool/src/libsthreadpool.la \
+	-ldl \
 	plugins/pipette/src/libsppipette.la \
+	libs/util/src/libsutil.la \
 	plugins/pipette/src/*.lo
 
 endif BOOST_UNITTESTS

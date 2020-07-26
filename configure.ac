@@ -187,6 +187,11 @@ have_boost_thread_lib=no
 SCROOM_SEARCH_LIBS([_ZN5boost6thread6detachEv], [boost_thread-mt boost_thread], [have_boost_thread_lib=yes])
 AC_SUBST([BOOSTTHREADLIB], ["$ac_cv_search__ZN5boost6thread6detachEv $ac_cv_search_pthread_mutexattr_init"])
 
+# Checking for boost chrono
+have_boost_chrono_lib=no
+SCROOM_SEARCH_LIBS([_ZN5boost6chrono12steady_clock3nowEv], [boost_chrono-mt boost_chrono], [have_boost_chrono_lib=yes])
+AC_SUBST([BOOSTCHRONOLIB], ["$ac_cv_search__ZN5boost6chrono12steady_clock3nowEv"])
+
 #checking for boost unittests
 have_boost_test_headers=no
 AC_CHECK_HEADERS([boost/test/unit_test.hpp], [have_boost_test_headers=yes])
@@ -299,6 +304,10 @@ fi
 if test "x${have_boost_thread_lib}" = xno
 then
   AC_MSG_ERROR([Boost thread library not found.])
+fi
+if test "x${have_boost_chrono_lib}" = xno
+then
+  AC_MSG_ERROR([Boost chrono library not found.])
 fi
 if test "x${have_boost_operators}" = xno
 then

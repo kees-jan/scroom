@@ -64,6 +64,12 @@ public:
   virtual void computeValues(ViewInterface::Ptr view, Scroom::Utils::Rectangle<int> sel_rect);
   virtual void
     displayValues(ViewInterface::Ptr view, Scroom::Utils::Rectangle<int> rect, PipetteLayerOperations::PipetteColor colors);
+
+  ////////////////////////////////////////////////////////////////////////
+  // Testing
+
+  Selection::ConstPtr getSelection() const { return selection; }
+  bool isEnabled() const { return enabled; }
 };
 
 class Pipette

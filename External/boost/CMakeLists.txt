@@ -3,7 +3,8 @@ find_package(
   COMPONENTS thread
              system
              unit_test_framework
-             filesystem)
+             filesystem
+             chrono)
 
 if(Boost_FOUND)
   set_target_properties(
@@ -12,5 +13,6 @@ if(Boost_FOUND)
     Boost::thread
     Boost::unit_test_framework
     Boost::filesystem
+    Boost::chrono
     PROPERTIES IMPORTED_GLOBAL TRUE)
 endif()

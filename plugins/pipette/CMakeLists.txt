@@ -11,12 +11,15 @@ install_plugin_dependencies(sppipette)
 if(ENABLE_BOOST_TEST)
   add_executable(sppipette_tests)
   target_sources(sppipette_tests PRIVATE test/main.cc test/pipette-tests.cc)
+  target_include_directories(sppipette_tests PRIVATE src)
   target_link_libraries(
     sppipette_tests
     PRIVATE boosttesthelper
+            Boost::chrono
             project_options
             project_warnings
-            sppipette)
+            sppipette
+            util)
   target_include_directories(sppipette_tests PRIVATE src)
 
   add_test(NAME sppipette_tests COMMAND sppipette_tests)

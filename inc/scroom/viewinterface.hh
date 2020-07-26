@@ -19,6 +19,7 @@
 
 #include <scroom/progressinterface.hh>
 #include <scroom/rectangle.hh>
+#include <scroom/gtk-helpers.hh>
 
 class PresentationInterface;
 class ViewInterface;
@@ -31,6 +32,7 @@ struct Selection
 {
 public:
   typedef boost::shared_ptr<Selection> Ptr;
+  typedef boost::shared_ptr<const Selection> ConstPtr;
 
 public:
   GdkPoint start;
@@ -48,7 +50,7 @@ public:
     , end(point)
   {}
 
-  bool endsAt(GdkPoint p) { return end.x == p.x && end.y == p.y; }
+  bool endsAt(GdkPoint p) { return end == p; }
 
   int    width() { return abs(end.x - start.x); }
   int    height() { return abs(end.y - start.y); }
