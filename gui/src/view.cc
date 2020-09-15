@@ -162,8 +162,8 @@ void View::redraw(cairo_t* cr)
       rect.height   = drawingAreaHeight * (pixelSize / aspectRatio.y);
 
       // Round to whole pixels
-      rect.x = (rect.x / (pixelSize / aspectRatio.x)) * (pixelSize / aspectRatio.x);
-      rect.y = (rect.y / (pixelSize / aspectRatio.y)) * (pixelSize / aspectRatio.y);
+      rect.x = floor(rect.x / (pixelSize / aspectRatio.x)) * (pixelSize / aspectRatio.x);
+      rect.y = floor(rect.y / (pixelSize / aspectRatio.y)) * (pixelSize / aspectRatio.y);
     }
 
     presentation->redraw(shared_from_this<View>(), cr, rect, zoom);
