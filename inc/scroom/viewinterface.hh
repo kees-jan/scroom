@@ -17,9 +17,9 @@
 
 #include <gtk/gtk.h>
 
+#include <scroom/gtk-helpers.hh>
 #include <scroom/progressinterface.hh>
 #include <scroom/rectangle.hh>
-#include <scroom/gtk-helpers.hh>
 
 class PresentationInterface;
 class ViewInterface;
@@ -31,7 +31,7 @@ class ViewInterface;
 struct Selection
 {
 public:
-  typedef boost::shared_ptr<Selection> Ptr;
+  typedef boost::shared_ptr<Selection>       Ptr;
   typedef boost::shared_ptr<const Selection> ConstPtr;
 
 public:

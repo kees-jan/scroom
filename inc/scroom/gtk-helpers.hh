@@ -56,10 +56,7 @@ inline bool operator==(GdkRectangle const& left, GdkRectangle const& right)
   return left.x == right.x && left.y == right.y && left.width == right.width && left.height == right.height;
 }
 
-inline bool operator==(GdkPoint const& left, GdkPoint const& right)
-{
-  return left.x == right.x && left.y == right.y;
-}
+inline bool operator==(GdkPoint const& left, GdkPoint const& right) { return left.x == right.x && left.y == right.y; }
 
 std::ostream& operator<<(std::ostream& os, GdkRectangle const& r);
 std::ostream& operator<<(std::ostream& os, GdkPoint const& p);

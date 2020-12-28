@@ -69,7 +69,7 @@ public:
   // Testing
 
   Selection::ConstPtr getSelection() const { return selection; }
-  bool isEnabled() const { return enabled; }
+  bool                isEnabled() const { return enabled; }
 };
 
 class Pipette
