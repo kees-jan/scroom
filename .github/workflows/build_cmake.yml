@@ -44,7 +44,7 @@ jobs:
     - name: Install conan
       run: |
         python3 -m pip install --upgrade pip setuptools
-        python3 -m pip install conan
+        python3 -m pip install --no-warn-script-location conan
         source ~/.profile
 
     - name: Configure CMake

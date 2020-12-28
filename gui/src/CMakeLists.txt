@@ -17,7 +17,7 @@ target_sources(
           workinterface.hh)
 
 if(WIN32)
-    target_sources(scroom PRIVATE ../icon/icon.rc)
+  target_sources(scroom PRIVATE ../icon/icon.rc)
 endif()
 
 target_link_libraries(

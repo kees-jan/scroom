@@ -15,7 +15,7 @@ jobs:
           fetch-depth: 0
           submodules: true
 
-      - name: Install apt packages
+      - name: Install packages
         run: >
           sudo apt-get -yq --no-install-suggests --no-install-recommends install
           clang-format
@@ -23,6 +23,28 @@ jobs:
       - name: Run clang-format
         run: |
           find . \( -name \*.cc -o -name \*.hh \) -exec clang-format -i \{\} \+
+
+      - name: Report results
+        run: |
+          git diff --exit-code
+
+  check-cmake-format:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          submodules: true
+
+      - name: Install packages
+        run: >
+          pip install --no-warn-script-location cmake-format
+
+      - name: Run cmake-format
+        run: |
+          source ~/.profile
+          find . \( -name cmake-modules -o -name .git \) -type d -prune \
+            -o \( -name CMakeLists.txt  -o -name \*.cmake \) -exec cmake-format -i \{\} \+
 
       - name: Report results
         run: |
