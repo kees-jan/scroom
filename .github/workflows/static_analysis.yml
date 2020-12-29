@@ -78,7 +78,7 @@ jobs:
       - name: Upload to Codacy
         env:
           PROJECT_TOKEN: ${{ secrets.CODACY_API_KEY }}
+          COMMIT: ${{ github.sha }}
         run: |
-          export COMMIT=${GITHUB_SHA}
           mv /tmp/codacy-clang-tidy-latest .
           /tmp/codacy-clang-tidy/scripts/send-results.sh < ct.log
