@@ -73,12 +73,12 @@ jobs:
 
       - name: Clang-Tidy
         # Execute the build.  You can specify a specific target with "--target <NAME>"
-        run: find . -name \*.cc -print0 | parallel -0 --eta clang-tidy-10 --quiet -p="${{runner.workspace}}/build" \{\} > /tmp/ct.log
+        run: find . -name \*.cc -print0 | parallel -0 --eta clang-tidy-10 --quiet -p="${{runner.workspace}}/build" \{\} > ct.log
 
       - name: Upload to Codacy
-        working-directory: /tmp
         env:
           PROJECT_TOKEN: ${{ secrets.CODACY_API_KEY }}
         run: |
           export COMMIT=${GITHUB_SHA}
-          ./codacy-clang-tidy/scripts/send-results.sh < ct.log
+          mv /tmp/codacy-clang-tidy-latest .
+          /tmp/codacy-clang-tidy/scripts/send-results.sh < ct.log
