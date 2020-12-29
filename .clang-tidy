@@ -1,7 +1,7 @@
 ---
-Checks:          '*,-fuchsia-*,-google-*,-zircon-*,-abseil-*,-modernize-use-trailing-return-type,-llvm-*'
-WarningsAsErrors: '*'
-HeaderFilterRegex: ''
+Checks: '*,-fuchsia-*,-google-*,-zircon-*,-abseil-*,-modernize-use-trailing-return-type,-llvm-*,-llvmlibc-*'
+WarningsAsErrors: ''
+HeaderFilterRegex: 'scroom/.*'
 FormatStyle:     file
 
 
