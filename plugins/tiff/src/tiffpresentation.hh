@@ -51,6 +51,10 @@ private:
 
 public:
   virtual ~TiffPresentation();
+  TiffPresentation(const TiffPresentation&) = delete;
+  TiffPresentation(TiffPresentation&&)      = delete;
+  TiffPresentation operator=(const TiffPresentation&) = delete;
+  TiffPresentation operator=(TiffPresentation&&) = delete;
 
   static Ptr create();
 
@@ -138,6 +142,10 @@ public:
   static Ptr create();
 
   virtual ~TiffPresentationWrapper();
+  TiffPresentationWrapper(const TiffPresentationWrapper&) = delete;
+  TiffPresentationWrapper(TiffPresentationWrapper&&)      = delete;
+  TiffPresentationWrapper operator=(const TiffPresentationWrapper&) = delete;
+  TiffPresentationWrapper operator=(TiffPresentationWrapper&&) = delete;
 
   bool                    load(const std::string& fileName);
   TransformationData::Ptr getTransformationData() const;

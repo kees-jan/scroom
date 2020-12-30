@@ -5,6 +5,9 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
+#include <boost/move/make_unique.hpp>
+#include <boost/move/unique_ptr.hpp>
+
 #include <scroom/blockallocator.hh>
 #include <scroom/utilities.hh>
 
@@ -29,9 +32,9 @@ namespace Scroom
         , public virtual Scroom::Utils::Base
       {
       private:
-        size_t   count;
-        size_t   size;
-        uint8_t* data;
+        size_t                                count;
+        size_t                                size;
+        boost::movelib::unique_ptr<uint8_t[]> data;
 
       private:
         SwapBasedBlockAllocator(size_t count, size_t size);
@@ -40,7 +43,6 @@ namespace Scroom
         virtual RawPageData::Ptr get(size_t id);
 
       public:
-        ~SwapBasedBlockAllocator();
         static BlockInterface::Ptr create(size_t count, size_t size);
         virtual PageList           getPages();
       };
@@ -48,20 +50,15 @@ namespace Scroom
       SwapBasedBlockAllocator::SwapBasedBlockAllocator(size_t count_, size_t size_)
         : count(count_)
         , size(size_)
-        , data(static_cast<uint8_t*>(malloc(count_ * size_ * sizeof(uint8_t))))
-      {
-        if(data == NULL)
-          throw std::bad_alloc();
-      }
-
-      SwapBasedBlockAllocator::~SwapBasedBlockAllocator() { free(data); }
+        , data(boost::movelib::make_unique<uint8_t[]>(count_ * size_))
+      {}
 
       RawPageData::Ptr SwapBasedBlockAllocator::get(size_t id)
       {
         if(id >= count)
           throw std::out_of_range("");
 
-        return RawPageData::Ptr(data + id * size, DontDelete<uint8_t>());
+        return RawPageData::Ptr(shared_from_this<SwapBasedBlockAllocator>(), data.get() + id * size);
       }
 
       BlockInterface::Ptr SwapBasedBlockAllocator::create(size_t count, size_t size)
@@ -92,7 +89,7 @@ namespace Scroom
         virtual BlockInterface::Ptr create(size_t count, size_t size);
       };
 
-      SwapBasedBlockAllocatorFactory::SwapBasedBlockAllocatorFactory() {}
+      SwapBasedBlockAllocatorFactory::SwapBasedBlockAllocatorFactory() = default;
 
       BlockFactoryInterface::Ptr SwapBasedBlockAllocatorFactory::create()
       {

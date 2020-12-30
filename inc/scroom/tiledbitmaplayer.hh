@@ -15,6 +15,7 @@
 #include <boost/thread.hpp>
 #include <boost/weak_ptr.hpp>
 
+#include <scroom/interface.hh>
 #include <scroom/memoryblobs.hh>
 #include <scroom/observable.hh>
 #include <scroom/presentationinterface.hh>
@@ -46,13 +47,11 @@ class CompressedTile;
 ////////////////////////////////////////////////////////////////////////
 
 /** Events related to filling a tile with data. */
-class TileInitialisationObserver
+class TileInitialisationObserver : private Interface
 {
 public:
   typedef boost::shared_ptr<TileInitialisationObserver> Ptr;
   typedef boost::weak_ptr<TileInitialisationObserver>   WeakPtr;
-
-  virtual ~TileInitialisationObserver() {}
 
   /**
    * The tile has been created.
@@ -79,13 +78,11 @@ public:
 ////////////////////////////////////////////////////////////////////////
 
 /** Events related to swapping tiles in/out */
-class TileLoadingObserver
+class TileLoadingObserver : private Interface
 {
 public:
   typedef boost::shared_ptr<TileLoadingObserver> Ptr;
   typedef boost::weak_ptr<TileLoadingObserver>   WeakPtr;
-
-  virtual ~TileLoadingObserver(){};
 
   /** The Tile has been loaded. */
   virtual void tileLoaded(ConstTile::Ptr tile) = 0;

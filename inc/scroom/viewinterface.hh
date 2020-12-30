@@ -18,6 +18,7 @@
 #include <gtk/gtk.h>
 
 #include <scroom/gtk-helpers.hh>
+#include <scroom/interface.hh>
 #include <scroom/progressinterface.hh>
 #include <scroom/rectangle.hh>
 
@@ -61,14 +62,12 @@ public:
  * Interface provided to something that wants to
  * draw on top of the current presentation.
  */
-class PostRenderer
+class PostRenderer : private Interface
 {
 public:
   typedef boost::shared_ptr<PostRenderer> Ptr;
 
 public:
-  virtual ~PostRenderer() {}
-
   /**
    * This function is called after the presentation
    * finishes redrawing.
@@ -98,14 +97,12 @@ public:
  *
  * @see Selection
  */
-class SelectionListener
+class SelectionListener : private Interface
 {
 public:
   typedef boost::shared_ptr<SelectionListener> Ptr;
 
 public:
-  virtual ~SelectionListener() {}
-
   /**
    * This function is called whenever the user clicks
    * a view. The point that is clicked is passed as
@@ -144,14 +141,12 @@ public:
  * listener to enable/disable events from its
  * tool button.
  */
-class ToolStateListener
+class ToolStateListener : private Interface
 {
 public:
   typedef boost::shared_ptr<ToolStateListener> Ptr;
 
 public:
-  virtual ~ToolStateListener() {}
-
   /**
    * This function is called whenever the tool
    * button is selected.
@@ -175,15 +170,13 @@ public:
  *
  * @see PresentationInterface, Viewable, SelectionListener, PostRenderer, ToolStateListener
  */
-class ViewInterface
+class ViewInterface : private Interface
 {
 public:
   typedef boost::shared_ptr<ViewInterface> Ptr;
   typedef boost::weak_ptr<ViewInterface>   WeakPtr;
 
 public:
-  virtual ~ViewInterface() {}
-
   /**
    * Request that the window content is redrawn.
    *

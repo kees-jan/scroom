@@ -35,7 +35,7 @@ bool rects_are_close(Scroom::Utils::Rectangle<double> const& a, Scroom::Utils::R
 
 bool operator==(ViewInterface::WeakPtr const& a, ViewInterface::WeakPtr const& b) { return a.lock() == b.lock(); }
 
-TEST(TransformPresentation_Tests, TransformationData_supports_aspect_ratio)
+TEST(TransformPresentation_Tests, TransformationData_supports_aspect_ratio) // NOLINT
 {
   TransformationData::Ptr td = TransformationData::create();
   td->setAspectRatio(2, 3);

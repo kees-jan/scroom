@@ -17,7 +17,6 @@ class DummyLayerOperations : public LayerOperations
 {
 public:
   static Ptr create() { return Ptr(new DummyLayerOperations()); }
-  virtual ~DummyLayerOperations() {}
 
   virtual int  getBpp() { return 8; }
   virtual void initializeCairo(cairo_t*) {}

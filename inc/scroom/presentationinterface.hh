@@ -16,6 +16,7 @@
 
 #include <cairo.h>
 
+#include <scroom/interface.hh>
 #include <scroom/observable.hh>
 #include <scroom/rectangle.hh>
 #include <scroom/viewinterface.hh>
@@ -28,15 +29,13 @@
  * something on-screen (PresentationInterface, ColormapProvider), or
  * want to store data related to a View (TiledBitmapInterface).
  */
-class Viewable
+class Viewable : private Interface
 {
 public:
   typedef boost::shared_ptr<Viewable> Ptr;
   typedef boost::weak_ptr<Viewable>   WeakPtr;
 
 public:
-  virtual ~Viewable() {}
-
   /**
    * Gets called just after the View is created
    *
@@ -131,13 +130,11 @@ protected:
 /**
  * Base class for something that composes several presentations.
  */
-class Aggregate
+class Aggregate : private Interface
 {
 public:
   typedef boost::shared_ptr<Aggregate> Ptr;
 
 public:
-  virtual ~Aggregate() {}
-
   virtual void addPresentation(PresentationInterface::Ptr const& presentation) = 0;
 };

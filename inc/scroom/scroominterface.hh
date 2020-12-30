@@ -15,17 +15,16 @@
 #include <gtk/gtk.h>
 
 #include <scroom/bookkeeping.hh>
+#include <scroom/interface.hh>
 #include <scroom/presentationinterface.hh>
 #include <scroom/viewinterface.hh>
 
-class ScroomInterface
+class ScroomInterface : private Interface
 {
 public:
   typedef boost::shared_ptr<ScroomInterface> Ptr;
 
 public:
-  virtual ~ScroomInterface() {}
-
   virtual PresentationInterface::Ptr newPresentation(std::string const& name)                                                 = 0;
   virtual Aggregate::Ptr             newAggregate(std::string const& name)                                                    = 0;
   virtual PresentationInterface::Ptr loadPresentation(std::string const& name, std::string const& relativeTo = std::string()) = 0;
@@ -33,85 +32,71 @@ public:
   virtual void showPresentation(PresentationInterface::Ptr const& presentation) = 0;
 };
 
-class NewPresentationInterface
+class NewPresentationInterface : private Interface
 {
 public:
   typedef boost::shared_ptr<NewPresentationInterface> Ptr;
 
 public:
-  virtual ~NewPresentationInterface() {}
-
   virtual PresentationInterface::Ptr createNew() = 0;
 };
 
-class NewAggregateInterface
+class NewAggregateInterface : private Interface
 {
 public:
   typedef boost::shared_ptr<NewAggregateInterface> Ptr;
 
 public:
-  virtual ~NewAggregateInterface() {}
-
   virtual Aggregate::Ptr createNew() = 0;
 };
 
-class OpenPresentationInterface
+class OpenPresentationInterface : private Interface
 {
 public:
   typedef boost::shared_ptr<OpenPresentationInterface> Ptr;
 
 public:
-  virtual ~OpenPresentationInterface() {}
-
   virtual std::list<GtkFileFilter*> getFilters() = 0;
 
   virtual PresentationInterface::Ptr open(const std::string& fileName) = 0;
 };
 
-class OpenInterface
+class OpenInterface : private Interface
 {
 public:
   typedef boost::shared_ptr<OpenInterface> Ptr;
 
 public:
-  virtual ~OpenInterface() {}
-
   virtual std::list<GtkFileFilter*> getFilters() = 0;
 
   virtual void open(const std::string& fileName, ScroomInterface::Ptr const& scroomInterface) = 0;
 };
 
-class PresentationObserver
+class PresentationObserver : private Interface
 {
 public:
   typedef boost::shared_ptr<PresentationObserver> Ptr;
 
 public:
-  virtual ~PresentationObserver() {}
-
   virtual void presentationAdded(PresentationInterface::Ptr p) = 0;
   virtual void presentationDeleted()                           = 0;
 };
 
-class ViewObserver
+class ViewObserver : private Interface
 {
 public:
   typedef boost::shared_ptr<ViewObserver> Ptr;
 
 public:
-  virtual ~ViewObserver() {}
-
   virtual Scroom::Bookkeeping::Token viewAdded(ViewInterface::Ptr v) = 0;
 };
 
-class ScroomPluginInterface
+class ScroomPluginInterface : private Interface
 {
 public:
   typedef boost::shared_ptr<ScroomPluginInterface> Ptr;
 
 public:
-  virtual ~ScroomPluginInterface() {}
-
   virtual void registerNewPresentationInterface(const std::string&            identifier,
                                                 NewPresentationInterface::Ptr newPresentationInterface)                       = 0;
   virtual void registerNewAggregateInterface(const std::string& identifier, NewAggregateInterface::Ptr newAggregateInterface) = 0;

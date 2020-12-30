@@ -95,6 +95,11 @@ public:
   static Ptr create(GladeXML* scroomXml, PresentationInterface::Ptr presentation);
 
   virtual ~View();
+  View(const View&) = delete;
+  View(View&&)      = delete;
+  View operator=(const View&) = delete;
+  View operator=(View&&) = delete;
+
 
   void redraw(cairo_t* cr);
   void hide();

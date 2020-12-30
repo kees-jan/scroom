@@ -62,6 +62,10 @@ namespace
   public:
     ThreadWaiter();
     ~ThreadWaiter();
+    ThreadWaiter(const ThreadWaiter&) = delete;
+    ThreadWaiter(ThreadWaiter&&)      = delete;
+    ThreadWaiter operator=(const ThreadWaiter&) = delete;
+    ThreadWaiter operator=(ThreadWaiter&&) = delete;
   };
 
   ThreadWaiter waiter;
@@ -388,7 +392,7 @@ ThreadPool::WeakQueue::WeakQueue()
   : qi(QueueImpl::create())
 {}
 
-ThreadPool::WeakQueue::~WeakQueue() {}
+ThreadPool::WeakQueue::~WeakQueue() = default;
 
 QueueImpl::Ptr ThreadPool::WeakQueue::get() { return qi; }
 

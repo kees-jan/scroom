@@ -33,9 +33,6 @@ namespace Scroom
       /** Constructor */
       Colormaps();
 
-      /** Destructor */
-      ~Colormaps();
-
     public:
       /** Get a reference to the instance */
       static Colormaps& getInstance();

@@ -20,7 +20,7 @@ public:
   typedef boost::shared_ptr<Tiff> Ptr;
 
 private:
-  Tiff();
+  Tiff() = default;
 
 public:
   static Ptr create();
@@ -38,8 +38,4 @@ public:
 
   virtual std::list<GtkFileFilter*>  getFilters();
   virtual PresentationInterface::Ptr open(const std::string& fileName);
-
-  ////////////////////////////////////////////////////////////////////////
-
-  virtual ~Tiff();
 };

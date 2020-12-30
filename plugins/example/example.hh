@@ -22,7 +22,7 @@ public:
   typedef boost::shared_ptr<Example> Ptr;
 
 private:
-  Example();
+  Example() = default;
 
 public:
   static Ptr create();
@@ -33,6 +33,4 @@ public:
   virtual void        registerCapabilities(ScroomPluginInterface::Ptr host);
 
   virtual PresentationInterface::Ptr createNew();
-
-  virtual ~Example();
 };

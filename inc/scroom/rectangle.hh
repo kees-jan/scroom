@@ -32,7 +32,7 @@ namespace Scroom
     public:
       typedef T value_type;
 
-      Rectangle() {}
+      Rectangle() = default;
 
       Rectangle(value_type x_, value_type y_, value_type width_, value_type height_)
         : horizontally(x_, width_)

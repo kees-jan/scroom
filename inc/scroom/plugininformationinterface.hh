@@ -9,11 +9,12 @@
 
 #include <boost/shared_ptr.hpp>
 
+#include <scroom/interface.hh>
 #include <scroom/scroominterface.hh>
 
 #define PLUGIN_API_VERSION 4
 
-class PluginInformationInterface
+class PluginInformationInterface : private Interface
 {
 public:
   typedef boost::shared_ptr<PluginInformationInterface> Ptr;
@@ -25,8 +26,6 @@ public:
   PluginInformationInterface()
     : pluginApiVersion(PLUGIN_API_VERSION)
   {}
-
-  virtual ~PluginInformationInterface() {}
 
   virtual std::string getPluginName()                                       = 0;
   virtual std::string getPluginVersion()                                    = 0;

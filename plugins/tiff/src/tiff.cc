@@ -15,9 +15,6 @@
 
 #include "tiffpresentation.hh"
 
-Tiff::Tiff() {}
-Tiff::~Tiff() {}
-
 Tiff::Ptr Tiff::create() { return Ptr(new Tiff()); }
 
 ////////////////////////////////////////////////////////////////////////

@@ -32,7 +32,6 @@ namespace Scroom
 
     public:
       static Ptr create();
-      virtual ~ColormapPlugin();
 
     public:
       virtual std::string getPluginName();

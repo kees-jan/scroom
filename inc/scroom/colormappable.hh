@@ -103,14 +103,11 @@ public:
  * available colormaps, and when one is selected, setColormap() will
  * be called.
  */
-class Colormappable
+class Colormappable : private Interface
 {
 public:
   typedef boost::shared_ptr<Colormappable> Ptr;
   typedef boost::weak_ptr<Colormappable>   WeakPtr;
-
-  /** Virtual destructor */
-  virtual ~Colormappable() {}
 
   /** Request that the presentation use the given colormap */
   virtual void setColormap(Colormap::Ptr colormap) = 0;
@@ -139,15 +136,13 @@ public:
   /** @} */
 };
 
-class ColormapProvider
+class ColormapProvider : private Interface
 {
 public:
   typedef boost::shared_ptr<ColormapProvider> Ptr;
 
 public:
   virtual Colormap::Ptr getColormap() = 0;
-
-  virtual ~ColormapProvider() {}
 };
 
 class ColormapHelperBase

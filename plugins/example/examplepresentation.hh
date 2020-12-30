@@ -19,6 +19,10 @@ private:
 public:
   ExamplePresentation();
   virtual ~ExamplePresentation();
+  ExamplePresentation(const ExamplePresentation&) = delete;
+  ExamplePresentation(ExamplePresentation&&)      = delete;
+  ExamplePresentation operator=(const ExamplePresentation&) = delete;
+  ExamplePresentation operator=(ExamplePresentation&&) = delete;
 
   virtual Scroom::Utils::Rectangle<double> getRect();
   virtual void                             open(ViewInterface::WeakPtr viewInterface);

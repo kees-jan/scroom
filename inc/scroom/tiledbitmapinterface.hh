@@ -16,6 +16,7 @@
 
 #include <cairo.h>
 
+#include <scroom/interface.hh>
 #include <scroom/presentationinterface.hh>
 #include <scroom/rectangle.hh>
 #include <scroom/scroominterface.hh>
@@ -46,14 +47,12 @@ enum TileState
  *
  * @see Layer
  */
-class LayerOperations
+class LayerOperations : private Interface
 {
 public:
   typedef boost::shared_ptr<LayerOperations> Ptr;
 
 public:
-  virtual ~LayerOperations() {}
-
   /**
    * Return the number of bits per pixel that the layer will use.
    *
@@ -193,14 +192,12 @@ typedef std::vector<LayerOperations::Ptr> LayerSpec;
 /**
  * Provide bitmap data
  */
-class SourcePresentation
+class SourcePresentation : private Interface
 {
 public:
   typedef boost::shared_ptr<SourcePresentation> Ptr;
 
 public:
-  virtual ~SourcePresentation() {}
-
   /**
    * Provide bitmap data
    *
@@ -238,8 +235,6 @@ class TiledBitmapInterface : public Viewable
 {
 public:
   typedef boost::shared_ptr<TiledBitmapInterface> Ptr;
-
-  virtual ~TiledBitmapInterface() {}
 
   /**
    * Provide bitmap data to the TiledBitmap

@@ -24,8 +24,6 @@ namespace Scroom
 
     ColormapPlugin::Ptr ColormapPlugin::create() { return Ptr(new ColormapPlugin()); }
 
-    ColormapPlugin::~ColormapPlugin() {}
-
     std::string ColormapPlugin::getPluginName() { return "Colormap"; }
 
     std::string ColormapPlugin::getPluginVersion() { return "0.0"; }

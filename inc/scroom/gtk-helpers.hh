@@ -33,6 +33,10 @@ namespace Scroom
     {
     public:
       TakeGdkLock();
+      TakeGdkLock(const TakeGdkLock&) = delete;
+      TakeGdkLock(TakeGdkLock&&)      = delete;
+      TakeGdkLock& operator=(const TakeGdkLock&) = delete;
+      TakeGdkLock& operator=(TakeGdkLock&&) = delete;
       ~TakeGdkLock();
     };
 

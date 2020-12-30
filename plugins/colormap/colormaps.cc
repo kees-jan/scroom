@@ -69,8 +69,6 @@ namespace Scroom
       g_free(colormapDirPath);
     }
 
-    Colormaps::~Colormaps() {}
-
     Colormaps& Colormaps::getInstance()
     {
       static Colormaps instance;

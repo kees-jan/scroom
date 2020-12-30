@@ -9,16 +9,16 @@
 
 #include <boost/shared_ptr.hpp>
 
+#include <scroom/interface.hh>
+
 /**
  * Interface used for reporting progress information
  */
-class ProgressInterface
+class ProgressInterface : private Interface
 {
 public:
   typedef boost::shared_ptr<ProgressInterface> Ptr;
   typedef boost::weak_ptr<ProgressInterface>   WeakPtr;
-
-  virtual ~ProgressInterface() {}
 
   virtual void setIdle()                         = 0;
   virtual void setWaiting(double progress = 0.0) = 0;

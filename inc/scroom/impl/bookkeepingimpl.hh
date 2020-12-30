@@ -65,7 +65,7 @@ namespace Scroom
         static Scroom::Bookkeeping::Token create() { return Scroom::Bookkeeping::Token(Ptr(new TokenImpl)); }
 
       protected:
-        TokenImpl() {}
+        TokenImpl() = default;
 
       private:
         StuffList l;
@@ -87,6 +87,11 @@ namespace Scroom
           : map(map_)
           , k(k_)
         {}
+
+        MapTokenImpl(const MapTokenImpl&) = delete;
+        MapTokenImpl(MapTokenImpl&&)      = delete;
+        MapTokenImpl operator=(const MapTokenImpl&) = delete;
+        MapTokenImpl operator=(MapTokenImpl&&) = delete;
 
       public:
         ~MapTokenImpl()

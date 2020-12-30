@@ -14,6 +14,8 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
 
+#include <scroom/interface.hh>
+
 namespace Scroom
 {
   namespace MemoryBlocks
@@ -40,7 +42,7 @@ namespace Scroom
 
     typedef std::list<Page> PageList;
 
-    class BlockInterface
+    class BlockInterface : private Interface
     {
     public:
       typedef boost::shared_ptr<BlockInterface> Ptr;
@@ -50,19 +52,16 @@ namespace Scroom
       virtual RawPageData::Ptr get(size_t id) = 0;
 
     public:
-      virtual ~BlockInterface() {}
-
       virtual PageList getPages() = 0;
 
       friend class Page;
     };
 
-    class BlockFactoryInterface
+    class BlockFactoryInterface : private Interface
     {
     public:
       typedef boost::shared_ptr<BlockFactoryInterface> Ptr;
 
-      virtual ~BlockFactoryInterface() {}
       virtual BlockInterface::Ptr create(size_t count, size_t size) = 0;
     };
 

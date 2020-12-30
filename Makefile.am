@@ -21,6 +21,7 @@ incscroom_HEADERS = \
 	inc/scroom/function-additor.hh \
 	inc/scroom/global.hh \
 	inc/scroom/gtk-helpers.hh \
+	inc/scroom/interface.hh \
 	inc/scroom/layeroperations.hh \
 	inc/scroom/linearsegment.hh \
 	inc/scroom/memoryblobs.hh \

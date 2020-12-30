@@ -71,8 +71,6 @@ namespace Scroom
       , refcount(0)
     {}
 
-    Blob::~Blob() {}
-
     RawPageData::Ptr Blob::load()
     {
       RawPageData::Ptr result = weakData.lock();

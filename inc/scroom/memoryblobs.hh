@@ -118,8 +118,6 @@ namespace Scroom
       void             compress();
 
     public:
-      ~Blob();
-
       static Ptr            create(PageProvider::Ptr provider, size_t size);
       RawPageData::Ptr      get();
       RawPageData::ConstPtr getConst();

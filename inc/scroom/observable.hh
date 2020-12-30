@@ -42,10 +42,9 @@ namespace Scroom
         typedef boost::shared_ptr<Registration> Ptr;
 
       public:
-        Registration();
+        Registration() = default;
         Registration(boost::weak_ptr<Observable<T>> observable, boost::shared_ptr<T> observer);
         Registration(boost::weak_ptr<Observable<T>> observable, boost::weak_ptr<T> observer);
-        ~Registration();
         void set(boost::shared_ptr<T> observer);
         void set(boost::weak_ptr<T> observer);
 
@@ -70,9 +69,7 @@ namespace Scroom
      *    and a @c weak_ptr, unpredictable things will happen.
      */
     template <typename T>
-    class Observable
-      : public boost::noncopyable
-      , public virtual Base
+    class Observable : public virtual Base
     {
     public:
       typedef boost::shared_ptr<T>             Observer;
@@ -99,6 +96,10 @@ namespace Scroom
     public:
       Observable();
       virtual ~Observable();
+      Observable(const Observable&) = delete;
+      Observable(Observable&&)      = delete;
+      Observable operator=(const Observable&) = delete;
+      Observable operator=(Observable&&) = delete;
 
     protected:
       /**
@@ -119,13 +120,6 @@ namespace Scroom
 
     ////////////////////////////////////////////////////////////////////////
     // Detail::Registration implementation
-
-    template <typename T>
-    Detail::Registration<T>::Registration()
-      : observable()
-      , o()
-      , observer()
-    {}
 
     template <typename T>
     Detail::Registration<T>::Registration(boost::weak_ptr<Observable<T>> observable_, boost::shared_ptr<T> observer_)
@@ -171,10 +165,6 @@ namespace Scroom
     {
       return typename Detail::Registration<T>::Ptr(new Detail::Registration<T>(observable, observer));
     }
-
-    template <typename T>
-    Detail::Registration<T>::~Registration()
-    {}
 
     ////////////////////////////////////////////////////////////////////////
     // Observable implementation

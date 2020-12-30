@@ -19,7 +19,7 @@ namespace Scroom
 {
   namespace Bitmap
   {
-    class BitmapSurface : public boost::noncopyable
+    class BitmapSurface
     {
     public:
       typedef boost::shared_ptr<BitmapSurface> Ptr;
@@ -33,6 +33,10 @@ namespace Scroom
       static Ptr create(int width, int height, cairo_format_t format, int stride, boost::shared_ptr<unsigned char> const& data);
 
       ~BitmapSurface();
+      BitmapSurface(const BitmapSurface&) = delete;
+      BitmapSurface(BitmapSurface&&)      = delete;
+      BitmapSurface& operator=(const BitmapSurface&) = delete;
+      BitmapSurface& operator=(BitmapSurface&&) = delete;
 
       cairo_surface_t* get();
 

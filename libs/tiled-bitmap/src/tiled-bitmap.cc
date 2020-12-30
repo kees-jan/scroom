@@ -95,8 +95,6 @@ public:
   static Ptr
     create(ThreadPool::WeakQueue::Ptr queue, Layer::Ptr const& l, SourcePresentation::Ptr sp, ProgressInterface::Ptr progress);
 
-  virtual ~LoadOperation() {}
-
   virtual void operator()();
   virtual void finished();
   virtual void abort();

@@ -49,7 +49,6 @@ PipetteHandler::PipetteHandler()
   , enabled(false)
   , currentJob(ThreadPool::Queue::createAsync())
 {}
-PipetteHandler::~PipetteHandler() {}
 
 PipetteHandler::Ptr PipetteHandler::create() { return Ptr(new PipetteHandler()); }
 

@@ -126,7 +126,7 @@ namespace
   class ViewInterfaceDummy : public ViewInterface
   {
   private:
-    ViewInterfaceDummy() {}
+    ViewInterfaceDummy() = default;
 
   public:
     static Ptr create() { return Ptr(new ViewInterfaceDummy()); }

@@ -102,12 +102,17 @@ public:
      * running for some time.
      */
     static Ptr createAsync();
+
     ~Queue();
     boost::shared_ptr<Scroom::Detail::ThreadPool::QueueImpl> get();
     boost::shared_ptr<WeakQueue>                             getWeak();
 
   private:
     Queue();
+    Queue(const Queue&) = delete;
+    Queue(Queue&&)      = delete;
+    Queue& operator=(const Queue&) = delete;
+    Queue& operator=(Queue&&) = delete;
 
   private:
     boost::shared_ptr<WeakQueue> weak;
@@ -145,6 +150,10 @@ public:
 
   private:
     WeakQueue();
+    WeakQueue(const WeakQueue&) = delete;
+    WeakQueue(WeakQueue&&)      = delete;
+    WeakQueue& operator=(const WeakQueue&) = delete;
+    WeakQueue& operator=(WeakQueue&&) = delete;
 
   private:
     boost::shared_ptr<Scroom::Detail::ThreadPool::QueueImpl> qi;
@@ -276,6 +285,11 @@ public:
 
   /** Create a ThreadPool with the given number of threads */
   static ThreadPool::Ptr create(int count, bool completeAllJobsBeforeDestruction = false);
+
+  ThreadPool(const ThreadPool&) = delete;
+  ThreadPool(ThreadPool&&)      = delete;
+  ThreadPool operator=(const ThreadPool&) = delete;
+  ThreadPool operator=(ThreadPool&&) = delete;
 
   /**
    * Destructor

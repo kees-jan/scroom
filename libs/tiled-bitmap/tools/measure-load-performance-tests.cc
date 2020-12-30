@@ -36,6 +36,10 @@ private:
 public:
   WaitForAsyncOp(const std::string& name);
   WaitForAsyncOp(const WaitForAsyncOp& other);
+  WaitForAsyncOp(WaitForAsyncOp&&);
+  WaitForAsyncOp operator=(const WaitForAsyncOp&) = delete;
+  WaitForAsyncOp operator=(WaitForAsyncOp&&) = delete;
+  ~WaitForAsyncOp()                          = default;
 
   bool operator()();
 };
@@ -50,6 +54,13 @@ WaitForAsyncOp::WaitForAsyncOp(const WaitForAsyncOp& other)
   , s()
   , started(other.started)
   , t(other.t)
+{}
+
+WaitForAsyncOp::WaitForAsyncOp(WaitForAsyncOp&& other)
+  : name(std::move(other.name))
+  , s()
+  , started(std::move(other.started))
+  , t(std::move(other.t))
 {}
 
 bool WaitForAsyncOp::operator()()

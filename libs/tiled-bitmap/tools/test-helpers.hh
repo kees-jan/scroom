@@ -68,6 +68,11 @@ public:
                     int                        zoom);
 
   ~TestData();
+  TestData(const TestData&) = delete;
+  TestData(TestData&&)      = delete;
+  TestData operator=(const TestData&) = delete;
+  TestData operator=(TestData&&) = delete;
+
 
   void redraw(cairo_t* cr);
   bool wait();

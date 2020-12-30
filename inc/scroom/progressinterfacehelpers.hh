@@ -22,7 +22,7 @@ namespace Scroom
     /**
      * Alternative interface used for reporting progress information
      */
-    class ProgressStateInterface
+    class ProgressStateInterface : private Interface
     {
     public:
       typedef boost::shared_ptr<ProgressStateInterface> Ptr;
@@ -35,8 +35,6 @@ namespace Scroom
         WORKING,
         FINISHED
       };
-
-      virtual ~ProgressStateInterface() {}
 
       virtual void setProgress(State s, double progress = 0.0) = 0;
     };
@@ -146,6 +144,10 @@ namespace Scroom
 
       private:
         Unsubscriber(ProgressInterfaceBroadcaster::Ptr const& parent, ProgressInterface::Ptr const& child);
+        Unsubscriber(const Unsubscriber&) = delete;
+        Unsubscriber(Unsubscriber&&)      = delete;
+        Unsubscriber& operator=(const Unsubscriber&) = delete;
+        Unsubscriber& operator=(Unsubscriber&&) = delete;
 
       public:
         static Ptr create(ProgressInterfaceBroadcaster::Ptr const& parent, ProgressInterface::Ptr const& child);
@@ -220,6 +222,11 @@ namespace Scroom
 
       public:
         static Ptr create(ProgressInterfaceMultiplexer::Ptr parent, ChildData::Ptr data);
+
+        Child(const Child&) = delete;
+        Child(Child&&)      = delete;
+        Child& operator=(const Child&) = delete;
+        Child& operator=(Child&&) = delete;
         ~Child();
 
         // ProgressStateInterface ///////////////////////////////////////////////////

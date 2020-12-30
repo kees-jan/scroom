@@ -14,6 +14,7 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/thread/mutex.hpp>
 
+#include <scroom/interface.hh>
 #include <scroom/progressinterfacehelpers.hh>
 #include <scroom/scroominterface.hh>
 #include <scroom/threadpool.hh>
@@ -25,7 +26,7 @@
 
 class TiledBitmap;
 
-class FileOperation
+class FileOperation : private Interface
 {
 public:
   typedef boost::shared_ptr<FileOperation> Ptr;
@@ -39,8 +40,6 @@ protected:
   FileOperation(ProgressInterface::Ptr progress);
 
 public:
-  virtual ~FileOperation() {}
-
   virtual void doneWaiting();
   virtual void finished()   = 0;
   virtual void operator()() = 0;
@@ -75,6 +74,11 @@ private:
 public:
   static Ptr create(int bitmapWidth, int bitmapHeight, LayerSpec const& ls);
   virtual ~TiledBitmap();
+  TiledBitmap(const TiledBitmap&) = delete;
+  TiledBitmap(TiledBitmap&&)      = delete;
+  TiledBitmap operator=(const TiledBitmap&) = delete;
+  TiledBitmap operator=(TiledBitmap&&) = delete;
+
 
 private:
   TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec const& ls);

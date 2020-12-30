@@ -9,18 +9,19 @@
 
 #include <string>
 
+#include <scroom/interface.hh>
 #include <scroom/rectangle.hh>
 #include <scroom/tile.hh>
 
-class PipetteLayerOperations : public virtual Scroom::Utils::Base
+class PipetteLayerOperations
+  : public virtual Scroom::Utils::Base
+  , private Interface
 {
 public:
   typedef boost::shared_ptr<PipetteLayerOperations>   Ptr;
   typedef std::vector<std::pair<std::string, double>> PipetteColor;
 
 public:
-  virtual ~PipetteLayerOperations() {}
-
   /**
    * Sums the samples of each pixel contained in the area of the tile.
    *

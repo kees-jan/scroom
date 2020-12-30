@@ -77,6 +77,11 @@ public:
       filters.pop_front();
     }
   }
+
+  GtkFileFilterListDestroyer(const GtkFileFilterListDestroyer&) = delete;
+  GtkFileFilterListDestroyer(GtkFileFilterListDestroyer&&)      = delete;
+  GtkFileFilterListDestroyer operator=(const GtkFileFilterListDestroyer&) = delete;
+  GtkFileFilterListDestroyer operator=(GtkFileFilterListDestroyer&&) = delete;
 };
 
 ////////////////////////////////////////////////////////////////////////
@@ -267,7 +272,7 @@ ScroomInterfaceImpl::Ptr ScroomInterfaceImpl::instance()
   return i;
 }
 
-ScroomInterfaceImpl::ScroomInterfaceImpl() {}
+ScroomInterfaceImpl::ScroomInterfaceImpl() = default;
 
 PresentationInterface::Ptr ScroomInterfaceImpl::newPresentation(std::string const& name)
 {

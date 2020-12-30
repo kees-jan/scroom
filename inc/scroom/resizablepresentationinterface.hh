@@ -16,19 +16,18 @@
 
 #include <cairo.h>
 
+#include <scroom/interface.hh>
 #include <scroom/observable.hh>
 #include <scroom/viewinterface.hh>
 
 /**
  * Represent some 2D content that can assume any given size.
  */
-class ResizablePresentationInterface
+class ResizablePresentationInterface : private Interface
 {
 public:
   typedef boost::shared_ptr<ResizablePresentationInterface> Ptr;
   typedef boost::weak_ptr<ResizablePresentationInterface>   WeakPtr;
-
-  virtual ~ResizablePresentationInterface() {}
 
   virtual void setRect(ViewInterface::WeakPtr const& vi, Scroom::Utils::Rectangle<double> const& rect) = 0;
 };

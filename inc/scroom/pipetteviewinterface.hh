@@ -7,19 +7,20 @@
 
 #pragma once
 
+#include <scroom/interface.hh>
 #include <scroom/pipettelayeroperations.hh>
 #include <scroom/rectangle.hh>
 
 const std::string PIPETTE_PROPERTY_NAME = "Pipette";
 
-class PipetteViewInterface : public virtual Scroom::Utils::Base
+class PipetteViewInterface
+  : public virtual Scroom::Utils::Base
+  , private Interface
 {
 public:
   typedef boost::shared_ptr<PipetteViewInterface> Ptr;
 
 public:
-  virtual ~PipetteViewInterface() {}
-
   /**
    * Returns the average pixel values for each component, contained in the area.
    *

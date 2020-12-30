@@ -20,7 +20,6 @@ public:
 
 public:
   static Ptr create();
-  virtual ~ProgressStateInterfaceStub() {}
 
 private:
   ProgressStateInterfaceStub();

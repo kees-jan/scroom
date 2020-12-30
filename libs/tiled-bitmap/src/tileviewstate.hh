@@ -57,6 +57,10 @@ private:
 
 public:
   ~TileViewState();
+  TileViewState(const TileViewState&) = delete;
+  TileViewState(TileViewState&&)      = delete;
+  TileViewState operator=(const TileViewState&) = delete;
+  TileViewState operator=(TileViewState&&) = delete;
 
   static Ptr create(boost::shared_ptr<CompressedTile> parent);
 

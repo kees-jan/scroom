@@ -31,9 +31,6 @@ private:
 public:
   static Ptr create();
 
-public:
-  virtual ~MeasureHandler();
-
   ////////////////////////////////////////////////////////////////////////
   // PostRenderer
 

@@ -51,7 +51,6 @@ MeasureHandler::MeasureHandler()
   : selection(nullptr)
   , enabled(false)
 {}
-MeasureHandler::~MeasureHandler() {}
 
 MeasureHandler::Ptr MeasureHandler::create() { return Ptr(new MeasureHandler()); }
 

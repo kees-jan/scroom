@@ -32,7 +32,12 @@ namespace Scroom
     class Base : public boost::enable_shared_from_this<Base>
     {
     public:
-      virtual ~Base() {}
+      Base()            = default;
+      Base(const Base&) = delete;
+      Base(Base&&)      = delete;
+      Base& operator=(const Base&) = delete;
+      Base& operator=(Base&&) = delete;
+      virtual ~Base()         = default;
 
       /**
        * Calls shared_from_this() with a built-in dynamic cast, to
@@ -145,6 +150,15 @@ namespace Scroom
       {
         data->inc();
       }
+
+      Counted(Counted&&)
+        : data(count_instance())
+      {
+        data->inc();
+      }
+
+      Counted& operator=(const Counted&) = default;
+      Counted& operator=(Counted&&) = default;
 
       virtual ~Counted() { data->dec(); }
     };

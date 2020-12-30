@@ -7,10 +7,10 @@
 
 #pragma once
 
-class WorkInterface
+#include <scroom/interface.hh>
+
+class WorkInterface : private Interface
 {
 public:
-  virtual ~WorkInterface() {}
-
   virtual bool doWork() = 0;
 };

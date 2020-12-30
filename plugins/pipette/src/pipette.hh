@@ -39,8 +39,6 @@ public:
   static Ptr create();
 
 public:
-  virtual ~PipetteHandler();
-
   ////////////////////////////////////////////////////////////////////////
   // PostRenderer
 

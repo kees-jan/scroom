@@ -8,14 +8,13 @@
 #pragma once
 
 #include <scroom/colormappable.hh>
+#include <scroom/interface.hh>
 #include <scroom/pipettelayeroperations.hh>
 #include <scroom/tiledbitmapinterface.hh>
 
 class CommonOperations : public LayerOperations
 {
 public:
-  virtual ~CommonOperations() {}
-
   void drawPixelValue(cairo_t* cr, int x, int y, int size, int value);
   void drawPixelValue(cairo_t* cr, int x, int y, int size, int value, Color const& bgColor);
 
@@ -44,7 +43,6 @@ public:
 public:
   PipetteCommonOperationsCMYK(int bps_)
     : bps(bps_){};
-  virtual ~PipetteCommonOperationsCMYK() {}
 
   PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile);
 };
@@ -62,7 +60,6 @@ public:
 public:
   PipetteCommonOperationsRGB(int bps_)
     : bps(bps_){};
-  virtual ~PipetteCommonOperationsRGB() {}
 
   PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile);
 };
@@ -75,7 +72,6 @@ private:
 public:
   static Ptr create(ColormapProvider::Ptr colormapProvider);
   Operations1bpp(ColormapProvider::Ptr colormapProvider);
-  virtual ~Operations1bpp() {}
 
   virtual int                  getBpp();
   virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
@@ -97,7 +93,6 @@ private:
 public:
   static Ptr create(ColormapProvider::Ptr colormapProvider);
   Operations8bpp(ColormapProvider::Ptr colormapProvider);
-  virtual ~Operations8bpp() {}
 
   virtual int                  getBpp();
   virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
@@ -116,7 +111,6 @@ class Operations24bpp : public PipetteCommonOperationsRGB
 public:
   static Ptr create();
   Operations24bpp();
-  virtual ~Operations24bpp() {}
 
   virtual int                  getBpp();
   virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
@@ -135,8 +129,6 @@ protected:
 public:
   static Ptr create(ColormapProvider::Ptr colormapProvider, int bpp);
   Operations(ColormapProvider::Ptr colormapProvider, int bpp);
-
-  virtual ~Operations() {}
 
   ////////////////////////////////////////////////////////////////////////
   // LayerOperations
@@ -159,8 +151,6 @@ public:
   static Ptr create(ColormapProvider::Ptr colormapProvider, int bpp);
   OperationsColormapped(ColormapProvider::Ptr colormapProvider, int bpp);
 
-  virtual ~OperationsColormapped() {}
-
   virtual int                  getBpp();
   virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
   virtual void                 reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
@@ -174,7 +164,6 @@ private:
 public:
   static Ptr create(ColormapProvider::Ptr colormapProvider);
   Operations1bppClipped(ColormapProvider::Ptr colormapProvider);
-  virtual ~Operations1bppClipped() {}
 
   virtual int                  getBpp();
   virtual Scroom::Utils::Stuff cacheZoom(const ConstTile::Ptr tile, int zoom, Scroom::Utils::Stuff cache);
@@ -187,7 +176,6 @@ class OperationsCMYK32 : public PipetteCommonOperationsCMYK
 public:
   static Ptr create();
   OperationsCMYK32();
-  virtual ~OperationsCMYK32() {}
 
   virtual int                  getBpp();
   virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
@@ -199,7 +187,6 @@ class OperationsCMYK16 : public PipetteCommonOperationsCMYK
 public:
   static Ptr create();
   OperationsCMYK16();
-  virtual ~OperationsCMYK16() {}
 
   virtual int                  getBpp();
   virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
@@ -211,7 +198,6 @@ class OperationsCMYK8 : public PipetteCommonOperationsCMYK
 public:
   static Ptr create();
   OperationsCMYK8();
-  virtual ~OperationsCMYK8() {}
 
   virtual int                  getBpp();
   virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
@@ -223,7 +209,6 @@ class OperationsCMYK4 : public PipetteCommonOperationsCMYK
 public:
   static Ptr create();
   OperationsCMYK4();
-  virtual ~OperationsCMYK4() {}
 
   virtual int                  getBpp();
   virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
