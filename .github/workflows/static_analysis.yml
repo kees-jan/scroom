@@ -1,6 +1,6 @@
 name: Static analysis
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
@@ -73,7 +73,7 @@ jobs:
 
       - name: Clang-Tidy
         # Execute the build.  You can specify a specific target with "--target <NAME>"
-        run: find . -name \*.cc -print0 | parallel -0 --eta clang-tidy-10 --quiet -p="${{runner.workspace}}/build" \{\} > ct.log
+        run: find . -name \*.cc -print0 | parallel -0 clang-tidy-10 --quiet -p="${{runner.workspace}}/build" \{\} | tee ct.log
 
       - name: Upload to Codacy
         env:
