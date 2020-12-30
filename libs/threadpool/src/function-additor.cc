@@ -69,7 +69,7 @@ Scroom::Detail::ThreadPool::FunctionAdditor& operator+(boost::function<void()> c
   return f2;
 }
 
-Scroom::Detail::ThreadPool::FunctionMultiplier& operator*(unsigned int i, Scroom::Detail::ThreadPool::FunctionMultiplier m)
+Scroom::Detail::ThreadPool::FunctionMultiplier& operator*(unsigned int i, Scroom::Detail::ThreadPool::FunctionMultiplier& m)
 {
   return m * i;
 }

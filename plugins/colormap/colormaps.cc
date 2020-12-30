@@ -113,14 +113,14 @@ namespace Scroom
           char* result = fgets(buffer, BUFFERSIZE, f);
           if(!result)
             throw std::exception();
-          if(strncmp(buffer, PAL_HEADER, strlen(PAL_HEADER)))
+          if(0 != strncmp(buffer, PAL_HEADER, strlen(PAL_HEADER)))
             throw std::exception();
 
           // Read version
           result = fgets(buffer, BUFFERSIZE, f);
           if(!result)
             throw std::exception();
-          if(strncmp(buffer, PAL_VERSION, strlen(PAL_VERSION)))
+          if(0 != strncmp(buffer, PAL_VERSION, strlen(PAL_VERSION)))
             throw std::exception();
 
           // Read ColorCount
