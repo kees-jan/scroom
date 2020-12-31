@@ -16,8 +16,8 @@
 class Tile
 {
 public:
-  typedef boost::shared_ptr<Tile> Ptr;
-  typedef boost::weak_ptr<Tile>   WeakPtr;
+  using Ptr     = boost::shared_ptr<Tile>;
+  using WeakPtr = boost::weak_ptr<Tile>;
 
   int                                   width;
   int                                   height;
@@ -41,8 +41,8 @@ public:
 class ConstTile
 {
 public:
-  typedef boost::shared_ptr<ConstTile> Ptr;
-  typedef boost::weak_ptr<ConstTile>   WeakPtr;
+  using Ptr     = boost::shared_ptr<ConstTile>;
+  using WeakPtr = boost::weak_ptr<ConstTile>;
 
   int                                        width;
   int                                        height;

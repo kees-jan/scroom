@@ -50,8 +50,8 @@ class CompressedTile;
 class TileInitialisationObserver : private Interface
 {
 public:
-  typedef boost::shared_ptr<TileInitialisationObserver> Ptr;
-  typedef boost::weak_ptr<TileInitialisationObserver>   WeakPtr;
+  using Ptr     = boost::shared_ptr<TileInitialisationObserver>;
+  using WeakPtr = boost::weak_ptr<TileInitialisationObserver>;
 
   /**
    * The tile has been created.
@@ -81,8 +81,8 @@ public:
 class TileLoadingObserver : private Interface
 {
 public:
-  typedef boost::shared_ptr<TileLoadingObserver> Ptr;
-  typedef boost::weak_ptr<TileLoadingObserver>   WeakPtr;
+  using Ptr     = boost::shared_ptr<TileLoadingObserver>;
+  using WeakPtr = boost::weak_ptr<TileLoadingObserver>;
 
   /** The Tile has been loaded. */
   virtual void tileLoaded(ConstTile::Ptr tile) = 0;
@@ -106,7 +106,7 @@ class CompressedTile
   , public Viewable
 {
 public:
-  typedef boost::shared_ptr<CompressedTile> Ptr;
+  using Ptr = boost::shared_ptr<CompressedTile>;
 
 public:
   const int depth; /**< Layer number of this tile */
@@ -230,8 +230,8 @@ public:
   void close(ViewInterface::WeakPtr vi) override;
 };
 
-typedef std::vector<CompressedTile::Ptr> CompressedTileLine;
-typedef std::vector<CompressedTileLine>  CompressedTileGrid;
+using CompressedTileLine = std::vector<CompressedTile::Ptr>;
+using CompressedTileGrid = std::vector<CompressedTileLine>;
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -240,7 +240,7 @@ class Layer
   , public virtual Scroom::Utils::Base
 {
 public:
-  typedef boost::shared_ptr<Layer> Ptr;
+  using Ptr = boost::shared_ptr<Layer>;
 
 private:
   int                      depth;

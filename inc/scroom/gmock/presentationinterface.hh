@@ -34,7 +34,7 @@ class ColormappablePresentationMock
   , public ColormappableMock
 {
 public:
-  typedef boost::shared_ptr<ColormappablePresentationMock> Ptr;
+  using Ptr = boost::shared_ptr<ColormappablePresentationMock>;
 
   static Ptr create() { return Ptr(new ColormappablePresentationMock()); }
 };

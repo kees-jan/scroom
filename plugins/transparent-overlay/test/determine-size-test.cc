@@ -80,7 +80,7 @@ namespace
     , public ResizablePresentationInterface
   {
   public:
-    typedef boost::shared_ptr<ResizablePresentationInterfaceStub> Ptr;
+    using Ptr = boost::shared_ptr<ResizablePresentationInterfaceStub>;
 
   public:
     std::list<ViewInterface::WeakPtr>           receivedVi;

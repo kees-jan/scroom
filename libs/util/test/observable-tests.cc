@@ -18,7 +18,7 @@ class TestObserver
 {
 public:
   typedef boost::shared_ptr<TestObserver> Ptr;
-  typedef boost::weak_ptr<TestObserver>   WeakPtr;
+  using WeakPtr = boost::weak_ptr<TestObserver>;
 
   static Ptr create();
 };
@@ -30,7 +30,7 @@ TestObserver::Ptr TestObserver::create() { return TestObserver::Ptr(new TestObse
 class TestObservable : public Observable<TestObserver>
 {
 public:
-  typedef boost::shared_ptr<TestObservable> Ptr;
+  using Ptr = boost::shared_ptr<TestObservable>;
 
   std::list<Observer> getObservers();
 
@@ -51,7 +51,7 @@ private:
   TestRecursiveObservable(TestObservable::Ptr child);
 
 public:
-  typedef boost::shared_ptr<TestRecursiveObservable> Ptr;
+  using Ptr = boost::shared_ptr<TestRecursiveObservable>;
 
   std::list<Observer> getObservers();
 

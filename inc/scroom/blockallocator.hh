@@ -22,8 +22,8 @@ namespace Scroom
   {
     namespace RawPageData
     {
-      typedef boost::shared_ptr<uint8_t> Ptr;
-      typedef boost::weak_ptr<uint8_t>   WeakPtr;
+      using Ptr     = boost::shared_ptr<uint8_t>;
+      using WeakPtr = boost::weak_ptr<uint8_t>;
     } // namespace RawPageData
 
     class BlockInterface;
@@ -40,13 +40,13 @@ namespace Scroom
       RawPageData::Ptr get();
     };
 
-    typedef std::list<Page> PageList;
+    using PageList = std::list<Page>;
 
     class BlockInterface : private Interface
     {
     public:
-      typedef boost::shared_ptr<BlockInterface> Ptr;
-      typedef boost::weak_ptr<BlockInterface>   WeakPtr;
+      using Ptr     = boost::shared_ptr<BlockInterface>;
+      using WeakPtr = boost::weak_ptr<BlockInterface>;
 
     protected:
       virtual RawPageData::Ptr get(size_t id) = 0;
@@ -60,7 +60,7 @@ namespace Scroom
     class BlockFactoryInterface : private Interface
     {
     public:
-      typedef boost::shared_ptr<BlockFactoryInterface> Ptr;
+      using Ptr = boost::shared_ptr<BlockFactoryInterface>;
 
       virtual BlockInterface::Ptr create(size_t count, size_t size) = 0;
     };

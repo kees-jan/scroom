@@ -145,7 +145,7 @@ bool filterMatchesInfo(GtkFileFilterInfo const& info, std::list<GtkFileFilter*> 
 class ScroomInterfaceImpl : public ScroomInterface
 {
 public:
-  typedef boost::shared_ptr<ScroomInterfaceImpl> Ptr;
+  using Ptr = boost::shared_ptr<ScroomInterfaceImpl>;
 
 private:
   ScroomInterfaceImpl();

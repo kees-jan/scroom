@@ -21,7 +21,7 @@ private:
   Scroom::Utils::Point<double> aspectRatio;
 
 public:
-  typedef boost::shared_ptr<TransformationData> Ptr;
+  using Ptr = boost::shared_ptr<TransformationData>;
 
   static Ptr create();
 
@@ -38,7 +38,7 @@ class TransformPresentation
   , public PipetteViewInterface
 {
 public:
-  typedef boost::shared_ptr<TransformPresentation> Ptr;
+  using Ptr = boost::shared_ptr<TransformPresentation>;
 
 private:
   TransformationData::Ptr    transformationData;

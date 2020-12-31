@@ -38,7 +38,7 @@ class PluginManager
   , virtual public Scroom::Utils::Base
 {
 public:
-  typedef boost::shared_ptr<PluginManager> Ptr;
+  using Ptr = boost::shared_ptr<PluginManager>;
 
 private:
   enum PluginManagerState

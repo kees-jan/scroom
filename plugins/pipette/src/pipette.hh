@@ -76,7 +76,7 @@ class Pipette
   , virtual public Scroom::Utils::Base
 {
 public:
-  typedef boost::shared_ptr<Pipette> Ptr;
+  using Ptr = boost::shared_ptr<Pipette>;
 
 private:
   Pipette(){};

@@ -18,8 +18,8 @@ class PipetteLayerOperations
   , private Interface
 {
 public:
-  typedef boost::shared_ptr<PipetteLayerOperations>   Ptr;
-  typedef std::vector<std::pair<std::string, double>> PipetteColor;
+  using Ptr          = boost::shared_ptr<PipetteLayerOperations>;
+  using PipetteColor = std::vector<std::pair<std::string, double>>;
 
 public:
   /**

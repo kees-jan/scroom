@@ -30,7 +30,7 @@ namespace Scroom
       , public boost::dividable2<Rectangle<T>, Point<T>>
     {
     public:
-      typedef T value_type;
+      using value_type = T;
 
       Rectangle() = default;
 
@@ -104,7 +104,7 @@ namespace Scroom
       template <typename U>
       Rectangle<typename std::common_type<T, U>::type> intersection(const Rectangle<U>& other) const
       {
-        typedef typename std::common_type<T, U>::type R;
+        using R = typename std::common_type<T, U>::type;
 
         return Rectangle<R>(*this).intersection(Rectangle<R>(other));
       }
@@ -282,7 +282,7 @@ namespace Scroom
     template <typename T, typename U>
     Rectangle<typename std::common_type<T, U>::type> operator-(Rectangle<T> left, Point<U> right)
     {
-      typedef typename std::common_type<T, U>::type R;
+      using R = typename std::common_type<T, U>::type;
 
       return Rectangle<R>(left) - Point<R>(right);
     }

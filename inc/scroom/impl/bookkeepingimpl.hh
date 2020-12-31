@@ -50,7 +50,7 @@ namespace Scroom
       class TokenImpl
       {
       public:
-        typedef boost::shared_ptr<TokenImpl> Ptr;
+        using Ptr = boost::shared_ptr<TokenImpl>;
 
       public:
         void add(const Stuff& s) { l.push_back(s); }
@@ -75,7 +75,7 @@ namespace Scroom
       class MapTokenImpl : public TokenImpl
       {
       public:
-        typedef boost::shared_ptr<MapTokenImpl<K, V>> Ptr;
+        using Ptr = boost::shared_ptr<MapTokenImpl<K, V>>;
 
       private:
         boost::weak_ptr<Scroom::Bookkeeping::MapBase<K, V>> map;
@@ -114,8 +114,8 @@ namespace Scroom
       class ValueType
       {
       public:
-        typedef boost::shared_ptr<ValueType<V>> Ptr;
-        typedef boost::weak_ptr<ValueType<V>>   WeakPtr;
+        using Ptr     = boost::shared_ptr<ValueType<V>>;
+        using WeakPtr = boost::weak_ptr<ValueType<V>>;
 
       public:
         V         value;
@@ -134,7 +134,7 @@ namespace Scroom
       class LValue
       {
       public:
-        typedef typename ValueType<V>::Ptr VTPtr;
+        using VTPtr = typename ValueType<V>::Ptr;
 
       private:
         VTPtr pv;

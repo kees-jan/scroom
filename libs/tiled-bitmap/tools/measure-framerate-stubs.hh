@@ -13,7 +13,7 @@
 class ProgressInterfaceStub : public ProgressInterface
 {
 public:
-  typedef boost::shared_ptr<ProgressInterfaceStub> Ptr;
+  using Ptr = boost::shared_ptr<ProgressInterfaceStub>;
 
 private:
   bool finished;
@@ -36,7 +36,7 @@ public:
 class ViewInterfaceStub : public ViewInterface
 {
 public:
-  typedef boost::shared_ptr<ViewInterfaceStub> Ptr;
+  using Ptr = boost::shared_ptr<ViewInterfaceStub>;
 
 private:
   ProgressInterface::Ptr pi;

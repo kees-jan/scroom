@@ -56,7 +56,7 @@ private:
   R          result;
 
 public:
-  typedef boost::shared_ptr<B> Ptr;
+  using Ptr = boost::shared_ptr<B<R>>;
 
   B(Semaphore* s_, R result_)
     : s(s_)

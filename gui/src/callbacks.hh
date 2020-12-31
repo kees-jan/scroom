@@ -16,8 +16,8 @@
 
 #include "view.hh"
 
-typedef std::map<std::string, std::list<std::string>> FileNameMap;
-extern const std::string                              REGULAR_FILES;
+using FileNameMap = std::map<std::string, std::list<std::string>>;
+extern const std::string REGULAR_FILES;
 
 void on_scroom_hide(GtkWidget* widget, gpointer user_data);
 

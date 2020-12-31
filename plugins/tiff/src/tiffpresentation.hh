@@ -20,17 +20,17 @@
 #include <scroom/tiledbitmapinterface.hh>
 #include <scroom/transformpresentation.hh>
 
-typedef struct tiff TIFF;
+using TIFF = struct tiff;
 
 class TiffPresentation
   : public SourcePresentation
   , public virtual Scroom::Utils::Base
 {
 public:
-  typedef boost::shared_ptr<TiffPresentation> Ptr;
+  using Ptr = boost::shared_ptr<TiffPresentation>;
 
 private:
-  typedef std::set<ViewInterface::WeakPtr> Views;
+  using Views = std::set<ViewInterface::WeakPtr>;
 
   std::string                        fileName;
   TIFF*                              tif;
@@ -130,7 +130,7 @@ class TiffPresentationWrapper
   , public PipetteViewInterface
 {
 public:
-  typedef boost::shared_ptr<TiffPresentationWrapper> Ptr;
+  using Ptr = boost::shared_ptr<TiffPresentationWrapper>;
 
 private:
   TiffPresentation::Ptr presentation;

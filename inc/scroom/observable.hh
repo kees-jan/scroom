@@ -39,7 +39,7 @@ namespace Scroom
         boost::shared_ptr<T>           o;        /**< Reference to the observer (for non-weak registrations) */
         boost::weak_ptr<T>             observer; /**< Reference to the observer */
 
-        typedef boost::shared_ptr<Registration> Ptr;
+        using Ptr = boost::shared_ptr<Registration<T>>;
 
       public:
         Registration() = default;
@@ -72,12 +72,12 @@ namespace Scroom
     class Observable : public virtual Base
     {
     public:
-      typedef boost::shared_ptr<T>             Observer;
-      typedef boost::shared_ptr<Observable<T>> Ptr;
+      using Observer = boost::shared_ptr<T>;
+      using Ptr      = boost::shared_ptr<Observable<T>>;
 
     private:
-      typedef boost::weak_ptr<T>      ObserverWeak;
-      typedef Detail::Registration<T> Registration;
+      using ObserverWeak = boost::weak_ptr<T>;
+      using Registration = Detail::Registration<T>;
 
     private:
       /** Map all registrations to their registration data */

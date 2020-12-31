@@ -26,8 +26,8 @@
 class ResizablePresentationInterface : private Interface
 {
 public:
-  typedef boost::shared_ptr<ResizablePresentationInterface> Ptr;
-  typedef boost::weak_ptr<ResizablePresentationInterface>   WeakPtr;
+  using Ptr     = boost::shared_ptr<ResizablePresentationInterface>;
+  using WeakPtr = boost::weak_ptr<ResizablePresentationInterface>;
 
   virtual void setRect(ViewInterface::WeakPtr const& vi, Scroom::Utils::Rectangle<double> const& rect) = 0;
 };

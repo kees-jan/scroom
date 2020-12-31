@@ -62,7 +62,7 @@ class Measure
   , virtual public Scroom::Utils::Base
 {
 public:
-  typedef boost::shared_ptr<Measure> Ptr;
+  using Ptr = boost::shared_ptr<Measure>;
 
 private:
   Measure(){};

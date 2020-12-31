@@ -22,7 +22,7 @@ class TiledBitmapViewData
   , public ProgressInterface
 {
 public:
-  typedef boost::shared_ptr<TiledBitmapViewData> Ptr;
+  using Ptr = boost::shared_ptr<TiledBitmapViewData>;
 
 public:
   ViewInterface::WeakPtr     viewInterface;

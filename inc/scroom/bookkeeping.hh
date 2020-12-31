@@ -55,7 +55,7 @@ namespace Scroom
       Token const&          operator+=(const Stuff& rhs) const;
     };
 
-    typedef boost::weak_ptr<Detail::TokenImpl> WeakToken;
+    using WeakToken = boost::weak_ptr<Detail::TokenImpl>;
 
     template <typename K, typename V>
     class MapBase
@@ -63,7 +63,7 @@ namespace Scroom
       , public boost::noncopyable
     {
     private:
-      typedef typename std::map<K, boost::weak_ptr<Detail::ValueType<V>>> MapType;
+      using MapType = typename std::map<K, boost::weak_ptr<Detail::ValueType<V>>>;
 
       MapType              map;
       mutable boost::mutex mut;
@@ -84,7 +84,7 @@ namespace Scroom
     class Map : public MapBase<K, V>
     {
     public:
-      typedef boost::shared_ptr<Map<K, V>> Ptr;
+      using Ptr = boost::shared_ptr<Map<K, V>>;
 
     public:
       static Ptr create();

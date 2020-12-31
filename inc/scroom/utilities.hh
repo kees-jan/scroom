@@ -75,7 +75,7 @@ namespace Scroom
     class Count
     {
     public:
-      typedef boost::shared_ptr<Count> Ptr;
+      using Ptr = boost::shared_ptr<Count>;
 
     public:
       const std::string name;

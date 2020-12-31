@@ -20,10 +20,10 @@ class TransparentOverlayPresentation
   , public Aggregate
 {
 public:
-  typedef boost::shared_ptr<TransparentOverlayPresentation> Ptr;
+  using Ptr = boost::shared_ptr<TransparentOverlayPresentation>;
 
 private:
-  typedef std::map<ViewInterface::WeakPtr, TransparentOverlayViewInfo::Ptr> ViewDataMap;
+  using ViewDataMap = std::map<ViewInterface::WeakPtr, TransparentOverlayViewInfo::Ptr>;
 
 private:
   std::list<PresentationInterface::Ptr> children;

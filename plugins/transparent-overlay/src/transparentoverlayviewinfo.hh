@@ -31,7 +31,7 @@ class ChildView
   , virtual public Scroom::Utils::Base
 {
 public:
-  typedef boost::shared_ptr<ChildView> Ptr;
+  using Ptr = boost::shared_ptr<ChildView>;
 
 private:
   boost::shared_ptr<TransparentOverlayViewInfo> parent;
@@ -60,10 +60,10 @@ public:
 class TransparentOverlayViewInfo : virtual public Scroom::Utils::Base
 {
 public:
-  typedef boost::shared_ptr<TransparentOverlayViewInfo> Ptr;
+  using Ptr = boost::shared_ptr<TransparentOverlayViewInfo>;
 
 private:
-  typedef std::map<PresentationInterface::Ptr, ChildView::Ptr> ChildMap;
+  using ChildMap = std::map<PresentationInterface::Ptr, ChildView::Ptr>;
 
 private:
   ViewInterface::Ptr                               parentView;

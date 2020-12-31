@@ -13,7 +13,7 @@ class PluginInformationInterface;
 
 extern "C"
 {
-  typedef boost::shared_ptr<PluginInformationInterface> (*PluginFunc)();
+  using PluginFunc = boost::shared_ptr<PluginInformationInterface> (*)();
 
   boost::shared_ptr<PluginInformationInterface> getPluginInformation();
 }

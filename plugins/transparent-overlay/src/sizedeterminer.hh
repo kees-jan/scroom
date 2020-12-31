@@ -19,7 +19,7 @@
 class SizeDeterminer
 {
 public:
-  typedef boost::shared_ptr<SizeDeterminer> Ptr;
+  using Ptr = boost::shared_ptr<SizeDeterminer>;
 
 private:
   class PresentationData

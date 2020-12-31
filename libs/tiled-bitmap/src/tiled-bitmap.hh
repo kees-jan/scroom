@@ -52,9 +52,9 @@ class TiledBitmap
   , public virtual Scroom::Utils::Base
 {
 public:
-  typedef boost::shared_ptr<TiledBitmap>                             Ptr;
-  typedef boost::weak_ptr<TiledBitmap>                               WeakPtr;
-  typedef std::map<ViewInterface::WeakPtr, TiledBitmapViewData::Ptr> ViewDataMap;
+  using Ptr         = boost::shared_ptr<TiledBitmap>;
+  using WeakPtr     = boost::weak_ptr<TiledBitmap>;
+  using ViewDataMap = std::map<ViewInterface::WeakPtr, TiledBitmapViewData::Ptr>;
 
 private:
   int                                              bitmapWidth;

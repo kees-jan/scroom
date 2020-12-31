@@ -24,8 +24,8 @@ class TileViewState
   , public TileLoadingObserver
 {
 public:
-  typedef boost::shared_ptr<TileViewState> Ptr;
-  typedef boost::weak_ptr<TileViewState>   WeakPtr;
+  using Ptr     = boost::shared_ptr<TileViewState>;
+  using WeakPtr = boost::weak_ptr<TileViewState>;
 
   enum State
   {

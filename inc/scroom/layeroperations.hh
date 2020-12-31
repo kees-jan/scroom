@@ -38,7 +38,7 @@ protected:
   int bps;
 
 public:
-  typedef boost::shared_ptr<PipetteCommonOperationsCMYK> Ptr;
+  using Ptr = boost::shared_ptr<PipetteCommonOperationsCMYK>;
 
 public:
   PipetteCommonOperationsCMYK(int bps_)
@@ -55,7 +55,7 @@ protected:
   int bps;
 
 public:
-  typedef boost::shared_ptr<PipetteCommonOperationsRGB> Ptr;
+  using Ptr = boost::shared_ptr<PipetteCommonOperationsRGB>;
 
 public:
   PipetteCommonOperationsRGB(int bps_)

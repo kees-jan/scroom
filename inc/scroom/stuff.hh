@@ -17,8 +17,8 @@ namespace Scroom
   namespace Utils
   {
     /** Stuff is a pointer to some private data. */
-    typedef boost::shared_ptr<void> Stuff;
-    typedef boost::weak_ptr<void>   StuffWeak;
-    typedef std::list<Stuff>        StuffList;
+    using Stuff     = boost::shared_ptr<void>;
+    using StuffWeak = boost::weak_ptr<void>;
+    using StuffList = std::list<Stuff>;
   } // namespace Utils
 } // namespace Scroom

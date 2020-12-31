@@ -30,7 +30,7 @@ private:
   int                                                unfinishedSourceTiles;
 
 public:
-  typedef boost::shared_ptr<LayerCoordinator> Ptr;
+  using Ptr = boost::shared_ptr<LayerCoordinator>;
 
   static Ptr create(CompressedTile::Ptr targetTile, LayerOperations::Ptr lo);
 

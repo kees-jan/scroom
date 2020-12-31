@@ -86,7 +86,7 @@ public:
   {
   public:
     typedef boost::shared_ptr<Queue> Ptr;
-    typedef boost::weak_ptr<Queue>   WeakPtr;
+    using WeakPtr = boost::weak_ptr<Queue>;
 
   public:
     /**
@@ -140,8 +140,8 @@ public:
   class WeakQueue
   {
   public:
-    typedef boost::shared_ptr<WeakQueue> Ptr;
-    typedef boost::weak_ptr<WeakQueue>   WeakPtr;
+    using Ptr     = boost::shared_ptr<WeakQueue>;
+    using WeakPtr = boost::weak_ptr<WeakQueue>;
 
   public:
     static Ptr create();
@@ -170,8 +170,8 @@ private:
   };
 
 public:
-  typedef boost::shared_ptr<ThreadPool>    Ptr;
-  typedef boost::shared_ptr<boost::thread> ThreadPtr;
+  using Ptr       = boost::shared_ptr<ThreadPool>;
+  using ThreadPtr = boost::shared_ptr<boost::thread>;
 
 private:
   /**
@@ -197,7 +197,7 @@ private:
   class PrivateData
   {
   public:
-    typedef boost::shared_ptr<PrivateData> Ptr;
+    using Ptr = boost::shared_ptr<PrivateData>;
 
   public:
     unsigned int              jobcount; /**< current number of tasks in ThreadPool::jobs */
@@ -537,7 +537,7 @@ public:
 class QueueJumper
 {
 public:
-  typedef boost::shared_ptr<QueueJumper> Ptr;
+  using Ptr = boost::shared_ptr<QueueJumper>;
 
 private:
   boost::mutex mut;

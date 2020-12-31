@@ -17,7 +17,7 @@
 class PluginInformationInterface : private Interface
 {
 public:
-  typedef boost::shared_ptr<PluginInformationInterface> Ptr;
+  using Ptr = boost::shared_ptr<PluginInformationInterface>;
 
 public:
   const int pluginApiVersion;

@@ -26,21 +26,21 @@ namespace Scroom
   {
     namespace RawPageData
     {
-      typedef boost::shared_ptr<uint8_t>       Ptr;
-      typedef boost::shared_ptr<const uint8_t> ConstPtr;
-      typedef boost::weak_ptr<uint8_t>         WeakPtr;
+      using Ptr      = boost::shared_ptr<uint8_t>;
+      using ConstPtr = boost::shared_ptr<const uint8_t>;
+      using WeakPtr  = boost::weak_ptr<uint8_t>;
     } // namespace RawPageData
 
     namespace Page
     {
-      typedef boost::shared_ptr<Scroom::MemoryBlocks::Page> Ptr;
+      using Ptr = boost::shared_ptr<Scroom::MemoryBlocks::Page>;
     }
-    typedef std::list<Page::Ptr> PageList;
+    using PageList = std::list<Page::Ptr>;
 
     class PageProvider : virtual public Scroom::Utils::Base
     {
     public:
-      typedef boost::shared_ptr<PageProvider> Ptr;
+      using Ptr = boost::shared_ptr<PageProvider>;
 
     private:
       size_t                                           blockCount;
@@ -77,7 +77,7 @@ namespace Scroom
     class Blob : virtual public Scroom::Utils::Base
     {
     public:
-      typedef boost::shared_ptr<Blob> Ptr;
+      using Ptr = boost::shared_ptr<Blob>;
 
     private:
       enum State

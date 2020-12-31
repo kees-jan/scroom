@@ -32,8 +32,8 @@
 class Viewable : private Interface
 {
 public:
-  typedef boost::shared_ptr<Viewable> Ptr;
-  typedef boost::weak_ptr<Viewable>   WeakPtr;
+  using Ptr     = boost::shared_ptr<Viewable>;
+  using WeakPtr = boost::weak_ptr<Viewable>;
 
 public:
   /**
@@ -55,7 +55,7 @@ public:
   virtual void close(ViewInterface::WeakPtr vi) = 0;
 };
 
-typedef Scroom::Utils::Observable<Viewable> ViewObservable;
+using ViewObservable = Scroom::Utils::Observable<Viewable>;
 
 /**
  * Represent some 2D content
@@ -71,8 +71,8 @@ class PresentationInterface
   , public ViewObservable
 {
 public:
-  typedef boost::shared_ptr<PresentationInterface> Ptr;
-  typedef boost::weak_ptr<PresentationInterface>   WeakPtr;
+  using Ptr     = boost::shared_ptr<PresentationInterface>;
+  using WeakPtr = boost::weak_ptr<PresentationInterface>;
 
   /** Return the dimensions of your presentation */
   virtual Scroom::Utils::Rectangle<double> getRect() = 0;
@@ -133,7 +133,7 @@ protected:
 class Aggregate : private Interface
 {
 public:
-  typedef boost::shared_ptr<Aggregate> Ptr;
+  using Ptr = boost::shared_ptr<Aggregate>;
 
 public:
   virtual void addPresentation(PresentationInterface::Ptr const& presentation) = 0;

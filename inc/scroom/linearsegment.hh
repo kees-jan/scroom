@@ -48,7 +48,7 @@ namespace Scroom
       , public boost::andable<Segment<T>>
     {
     public:
-      typedef T value_type;
+      using value_type = T;
 
       Segment()
         : start(0)

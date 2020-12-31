@@ -32,7 +32,7 @@ namespace Scroom
       , public boost::enable_shared_from_this<ColormapProvider>
     {
     public:
-      typedef boost::shared_ptr<ColormapProvider> Ptr;
+      using Ptr = boost::shared_ptr<ColormapProvider>;
 
     private:
       /** The Colormappable interface of the presentation to which we're associated */

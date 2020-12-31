@@ -24,7 +24,7 @@ extern int drawingAreaHeight;
 class DummyColormapProvider : public ColormapProvider
 {
 public:
-  typedef boost::shared_ptr<DummyColormapProvider> Ptr;
+  using Ptr = boost::shared_ptr<DummyColormapProvider>;
 
 private:
   Colormap::Ptr colormap;
@@ -42,7 +42,7 @@ public:
 class TestData
 {
 public:
-  typedef boost::shared_ptr<TestData> Ptr;
+  using Ptr = boost::shared_ptr<TestData>;
 
 private:
   ProgressInterfaceStub::Ptr pi;

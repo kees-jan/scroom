@@ -50,7 +50,7 @@ enum TileState
 class LayerOperations : private Interface
 {
 public:
-  typedef boost::shared_ptr<LayerOperations> Ptr;
+  using Ptr = boost::shared_ptr<LayerOperations>;
 
 public:
   /**
@@ -187,7 +187,7 @@ public:
  * LayerOperations objects in the ::LayerSpec, then the last
  * LayerOperations object will be used for all remaining layers.
  */
-typedef std::vector<LayerOperations::Ptr> LayerSpec;
+using LayerSpec = std::vector<LayerOperations::Ptr>;
 
 /**
  * Provide bitmap data
@@ -195,7 +195,7 @@ typedef std::vector<LayerOperations::Ptr> LayerSpec;
 class SourcePresentation : private Interface
 {
 public:
-  typedef boost::shared_ptr<SourcePresentation> Ptr;
+  using Ptr = boost::shared_ptr<SourcePresentation>;
 
 public:
   /**
@@ -234,7 +234,7 @@ class Layer;
 class TiledBitmapInterface : public Viewable
 {
 public:
-  typedef boost::shared_ptr<TiledBitmapInterface> Ptr;
+  using Ptr = boost::shared_ptr<TiledBitmapInterface>;
 
   /**
    * Provide bitmap data to the TiledBitmap

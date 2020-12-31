@@ -82,7 +82,7 @@ public:
 class DummyPluginInterface : public ScroomPluginInterface
 {
 public:
-  typedef boost::shared_ptr<DummyPluginInterface> Ptr;
+  using Ptr = boost::shared_ptr<DummyPluginInterface>;
 
   static Ptr create() { return Ptr(new DummyPluginInterface()); }
 

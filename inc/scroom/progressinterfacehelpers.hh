@@ -25,8 +25,8 @@ namespace Scroom
     class ProgressStateInterface : private Interface
     {
     public:
-      typedef boost::shared_ptr<ProgressStateInterface> Ptr;
-      typedef boost::weak_ptr<ProgressStateInterface>   WeakPtr;
+      using Ptr     = boost::shared_ptr<ProgressStateInterface>;
+      using WeakPtr = boost::weak_ptr<ProgressStateInterface>;
 
       enum State
       {
@@ -55,7 +55,7 @@ namespace Scroom
     class ProgressInterfaceFromProgressStateInterfaceForwarder : public ProgressInterfaceFromProgressStateInterface
     {
     public:
-      typedef boost::shared_ptr<ProgressInterfaceFromProgressStateInterfaceForwarder> Ptr;
+      using Ptr = boost::shared_ptr<ProgressInterfaceFromProgressStateInterfaceForwarder>;
 
     private:
       ProgressStateInterface::Ptr child;
@@ -82,7 +82,7 @@ namespace Scroom
     class ProgressStateInterfaceFromProgressInterfaceForwarder : public ProgressStateInterfaceFromProgressInterface
     {
     public:
-      typedef boost::shared_ptr<ProgressStateInterfaceFromProgressInterfaceForwarder> Ptr;
+      using Ptr = boost::shared_ptr<ProgressStateInterfaceFromProgressInterfaceForwarder>;
 
     private:
       ProgressInterface::Ptr child;
@@ -105,7 +105,7 @@ namespace Scroom
       class ProgressStore : public ProgressInterfaceFromProgressStateInterface
       {
       public:
-        typedef boost::shared_ptr<ProgressStore> Ptr;
+        using Ptr = boost::shared_ptr<ProgressStore>;
 
       private:
         State  state;
@@ -130,13 +130,13 @@ namespace Scroom
       , public ProgressInterface
     {
     public:
-      typedef boost::shared_ptr<ProgressInterfaceBroadcaster> Ptr;
+      using Ptr = boost::shared_ptr<ProgressInterfaceBroadcaster>;
 
     private:
       class Unsubscriber
       {
       public:
-        typedef boost::shared_ptr<Unsubscriber> Ptr;
+        using Ptr = boost::shared_ptr<Unsubscriber>;
 
       private:
         ProgressInterfaceBroadcaster::Ptr parent;
@@ -183,13 +183,13 @@ namespace Scroom
     class ProgressInterfaceMultiplexer : public virtual Base
     {
     public:
-      typedef boost::shared_ptr<ProgressInterfaceMultiplexer> Ptr;
+      using Ptr = boost::shared_ptr<ProgressInterfaceMultiplexer>;
 
     private:
       class ChildData : public ProgressStateInterface
       {
       public:
-        typedef boost::shared_ptr<ChildData> Ptr;
+        using Ptr = boost::shared_ptr<ChildData>;
 
       public:
         boost::mutex                  mut;
@@ -211,7 +211,7 @@ namespace Scroom
       class Child : public ProgressInterfaceFromProgressStateInterface
       {
       public:
-        typedef boost::shared_ptr<Child> Ptr;
+        using Ptr = boost::shared_ptr<Child>;
 
       private:
         ProgressInterfaceMultiplexer::Ptr parent;

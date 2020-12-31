@@ -26,7 +26,7 @@ namespace Scroom
       class QueueImpl
       {
       public:
-        typedef boost::shared_ptr<QueueImpl> Ptr;
+        using Ptr = boost::shared_ptr<QueueImpl>;
 
         static Ptr create();
 

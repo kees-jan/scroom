@@ -22,7 +22,7 @@
 class ScroomInterface : private Interface
 {
 public:
-  typedef boost::shared_ptr<ScroomInterface> Ptr;
+  using Ptr = boost::shared_ptr<ScroomInterface>;
 
 public:
   virtual PresentationInterface::Ptr newPresentation(std::string const& name)                                                 = 0;
@@ -35,7 +35,7 @@ public:
 class NewPresentationInterface : private Interface
 {
 public:
-  typedef boost::shared_ptr<NewPresentationInterface> Ptr;
+  using Ptr = boost::shared_ptr<NewPresentationInterface>;
 
 public:
   virtual PresentationInterface::Ptr createNew() = 0;
@@ -44,7 +44,7 @@ public:
 class NewAggregateInterface : private Interface
 {
 public:
-  typedef boost::shared_ptr<NewAggregateInterface> Ptr;
+  using Ptr = boost::shared_ptr<NewAggregateInterface>;
 
 public:
   virtual Aggregate::Ptr createNew() = 0;
@@ -53,7 +53,7 @@ public:
 class OpenPresentationInterface : private Interface
 {
 public:
-  typedef boost::shared_ptr<OpenPresentationInterface> Ptr;
+  using Ptr = boost::shared_ptr<OpenPresentationInterface>;
 
 public:
   virtual std::list<GtkFileFilter*> getFilters() = 0;
@@ -64,7 +64,7 @@ public:
 class OpenInterface : private Interface
 {
 public:
-  typedef boost::shared_ptr<OpenInterface> Ptr;
+  using Ptr = boost::shared_ptr<OpenInterface>;
 
 public:
   virtual std::list<GtkFileFilter*> getFilters() = 0;
@@ -75,7 +75,7 @@ public:
 class PresentationObserver : private Interface
 {
 public:
-  typedef boost::shared_ptr<PresentationObserver> Ptr;
+  using Ptr = boost::shared_ptr<PresentationObserver>;
 
 public:
   virtual void presentationAdded(PresentationInterface::Ptr p) = 0;
@@ -85,7 +85,7 @@ public:
 class ViewObserver : private Interface
 {
 public:
-  typedef boost::shared_ptr<ViewObserver> Ptr;
+  using Ptr = boost::shared_ptr<ViewObserver>;
 
 public:
   virtual Scroom::Bookkeeping::Token viewAdded(ViewInterface::Ptr v) = 0;
@@ -94,7 +94,7 @@ public:
 class ScroomPluginInterface : private Interface
 {
 public:
-  typedef boost::shared_ptr<ScroomPluginInterface> Ptr;
+  using Ptr = boost::shared_ptr<ScroomPluginInterface>;
 
 public:
   virtual void registerNewPresentationInterface(const std::string&            identifier,

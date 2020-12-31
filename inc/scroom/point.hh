@@ -26,7 +26,7 @@ namespace Scroom
       , public boost::dividable2<Point<T>, T>
     {
     public:
-      typedef T value_type;
+      using value_type = T;
 
       Point(value_type x_, value_type y_)
         : x(x_)
@@ -107,7 +107,7 @@ namespace Scroom
     template <typename T, typename U>
     Point<typename std::common_type<T, U>::type> operator-(Point<T> left, Point<U> right)
     {
-      typedef typename std::common_type<T, U>::type R;
+      using R = typename std::common_type<T, U>::type;
 
       Point<R> result(left);
       result -= Point<R>(right);
@@ -117,7 +117,7 @@ namespace Scroom
     template <typename T, typename U>
     Point<typename std::common_type<T, U>::type> operator+(Point<T> left, Point<U> right)
     {
-      typedef typename std::common_type<T, U>::type R;
+      using R = typename std::common_type<T, U>::type;
 
       Point<R> result(left);
       result += Point<R>(right);

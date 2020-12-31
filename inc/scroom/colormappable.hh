@@ -28,9 +28,9 @@ const std::string TRANSPARENT_BACKGROUND_PROPERTY_NAME   = "Transparent Backgrou
 class Colormap
 {
 public:
-  typedef boost::shared_ptr<Colormap>       Ptr;
-  typedef boost::shared_ptr<const Colormap> ConstPtr;
-  typedef boost::weak_ptr<Colormap>         WeakPtr;
+  using Ptr      = boost::shared_ptr<Colormap>;
+  using ConstPtr = boost::shared_ptr<const Colormap>;
+  using WeakPtr  = boost::weak_ptr<Colormap>;
 
 public:
   std::string        name;   /**< Name of this colormap */
@@ -106,8 +106,8 @@ public:
 class Colormappable : private Interface
 {
 public:
-  typedef boost::shared_ptr<Colormappable> Ptr;
-  typedef boost::weak_ptr<Colormappable>   WeakPtr;
+  using Ptr     = boost::shared_ptr<Colormappable>;
+  using WeakPtr = boost::weak_ptr<Colormappable>;
 
   /** Request that the presentation use the given colormap */
   virtual void setColormap(Colormap::Ptr colormap) = 0;
@@ -139,7 +139,7 @@ public:
 class ColormapProvider : private Interface
 {
 public:
-  typedef boost::shared_ptr<ColormapProvider> Ptr;
+  using Ptr = boost::shared_ptr<ColormapProvider>;
 
 public:
   virtual Colormap::Ptr getColormap() = 0;
@@ -150,7 +150,7 @@ class ColormapHelperBase
   , public Colormappable
 {
 public:
-  typedef boost::shared_ptr<ColormapHelperBase> Ptr;
+  using Ptr = boost::shared_ptr<ColormapHelperBase>;
 
 public:
   Colormap::Ptr colormap;

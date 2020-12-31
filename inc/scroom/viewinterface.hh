@@ -32,8 +32,8 @@ class ViewInterface;
 struct Selection
 {
 public:
-  typedef boost::shared_ptr<Selection>       Ptr;
-  typedef boost::shared_ptr<const Selection> ConstPtr;
+  using Ptr      = boost::shared_ptr<Selection>;
+  using ConstPtr = boost::shared_ptr<const Selection>;
 
 public:
   GdkPoint start;
@@ -65,7 +65,7 @@ public:
 class PostRenderer : private Interface
 {
 public:
-  typedef boost::shared_ptr<PostRenderer> Ptr;
+  using Ptr = boost::shared_ptr<PostRenderer>;
 
 public:
   /**
@@ -100,7 +100,7 @@ public:
 class SelectionListener : private Interface
 {
 public:
-  typedef boost::shared_ptr<SelectionListener> Ptr;
+  using Ptr = boost::shared_ptr<SelectionListener>;
 
 public:
   /**
@@ -144,7 +144,7 @@ public:
 class ToolStateListener : private Interface
 {
 public:
-  typedef boost::shared_ptr<ToolStateListener> Ptr;
+  using Ptr = boost::shared_ptr<ToolStateListener>;
 
 public:
   /**
@@ -173,8 +173,8 @@ public:
 class ViewInterface : private Interface
 {
 public:
-  typedef boost::shared_ptr<ViewInterface> Ptr;
-  typedef boost::weak_ptr<ViewInterface>   WeakPtr;
+  using Ptr     = boost::shared_ptr<ViewInterface>;
+  using WeakPtr = boost::weak_ptr<ViewInterface>;
 
 public:
   /**
