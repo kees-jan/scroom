@@ -87,7 +87,9 @@ bool Invalidator::operator()()
   if(0 == clock_gettime(CLOCK_REALTIME, &now))
   {
     if(now.tv_sec > t.tv_sec + secs)
+    {
       return false;
+    }
   }
 
   return true;

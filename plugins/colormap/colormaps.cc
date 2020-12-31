@@ -87,7 +87,9 @@ namespace Scroom
 #else
       const char* homedir = g_getenv("HOME");
       if(!homedir)
+      {
         homedir = g_get_home_dir();
+      }
 
       return g_build_filename(homedir, SCROOMDIR, COLORMAPDIR, NULL);
 #endif
@@ -110,24 +112,36 @@ namespace Scroom
           // Read header
           char* result = fgets(buffer, BUFFERSIZE, f);
           if(!result)
+          {
             throw std::exception();
+          }
           if(0 != strncmp(buffer, PAL_HEADER, strlen(PAL_HEADER)))
+          {
             throw std::exception();
+          }
 
           // Read version
           result = fgets(buffer, BUFFERSIZE, f);
           if(!result)
+          {
             throw std::exception();
+          }
           if(0 != strncmp(buffer, PAL_VERSION, strlen(PAL_VERSION)))
+          {
             throw std::exception();
+          }
 
           // Read ColorCount
           result = fgets(buffer, BUFFERSIZE, f);
           if(!result)
+          {
             throw std::exception();
+          }
           unsigned int count = atoi(result);
           if(count == 0)
+          {
             throw std::exception();
+          }
 
           colormap                   = Colormap::create();
           colormap->name             = name;
@@ -140,7 +154,9 @@ namespace Scroom
             colors.emplace_back(red / 255.0, green / 255.0, blue / 255.0);
           }
           if(colors.size() != count)
+          {
             throw std::exception();
+          }
         }
         catch(std::exception& e)
         {

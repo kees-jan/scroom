@@ -39,7 +39,9 @@ namespace Scroom
         auto* w      = reinterpret_cast<Wrapper*>(data);
         bool  result = w->f();
         if(!result)
+        {
           delete w;
+        }
         return result;
       }
     } // namespace Detail

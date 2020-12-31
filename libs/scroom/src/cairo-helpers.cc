@@ -113,9 +113,13 @@ double pixelSizeFromZoom(int zoom)
 {
   double pixelSize = 1.0;
   if(zoom >= 0)
+  {
     pixelSize *= 1 << zoom;
+  }
   else
+  {
     pixelSize /= 1 << (-zoom);
+  }
 
   return pixelSize;
 }

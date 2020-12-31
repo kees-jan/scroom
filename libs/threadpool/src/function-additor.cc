@@ -51,7 +51,9 @@ Scroom::Detail::ThreadPool::FunctionMultiplier& Scroom::Detail::ThreadPool::Func
 void Scroom::Detail::ThreadPool::FunctionMultiplier::operator()()
 {
   for(unsigned int c = 0; c < i; c++)
+  {
     f();
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////

@@ -116,7 +116,9 @@ TransparentOverlayViewInfo::Ptr TransparentOverlayViewInfo::create(const ViewInt
 void TransparentOverlayViewInfo::addChildren(const std::list<PresentationInterface::Ptr>& children_)
 {
   for(PresentationInterface::Ptr const& child: children_)
+  {
     addChild(child);
+  }
 }
 
 void TransparentOverlayViewInfo::addChild(const PresentationInterface::Ptr& child)
@@ -194,7 +196,9 @@ void TransparentOverlayViewInfo::redraw(cairo_t* cr, Scroom::Utils::Rectangle<do
       if(c && p->isPropertyDefined(TRANSPARENT_BACKGROUND_PROPERTY_NAME))
       {
         if(count == 0)
+        {
           c->disableTransparentBackground();
+        }
         else
         {
           c->setTransparentBackground();
@@ -214,12 +218,18 @@ void TransparentOverlayViewInfo::redraw(cairo_t* cr, Scroom::Utils::Rectangle<do
       cairo_set_source_surface(cr, surface, 0, 0);
 
       if(hasTransparentBackground)
+      {
         cairo_paint(cr);
+      }
       else
+      {
         cairo_paint_with_alpha(cr, 1.0 / (count + 1));
+      }
 
       if(!hasTransparentBackground)
+      {
         count++;
+      }
     }
   }
 

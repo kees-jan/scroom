@@ -198,8 +198,12 @@ void DataFetcher::operator()()
   {
     DataFetcher successor(*this);
     if(!qj->setWork(successor))
+    {
       threadPool->schedule(successor, DATAFETCH_PRIO, queue);
+    }
   }
   else
+  {
     sp->done();
+  }
 }

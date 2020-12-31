@@ -53,7 +53,9 @@ bool TiffPresentation::load(const std::string& fileName_)
 
     uint16 spp_ = 0;
     if(1 != TIFFGetField(tif, TIFFTAG_SAMPLESPERPIXEL, &spp_))
+    {
       spp_ = 1; // Default value, according to tiff spec
+    }
     if(spp_ != 1 && spp_ != 3 && spp_ != 4)
     {
       printf("PANIC: Samples per pixel is neither 1 nor 3 nor 4, but %d. Giving up\n", spp_);
@@ -68,9 +70,13 @@ bool TiffPresentation::load(const std::string& fileName_)
     if(1 != TIFFGetField(tif, TIFFTAG_BITSPERSAMPLE, &bps_))
     {
       if(spp == 1)
+      {
         bps_ = 1;
+      }
       else
+      {
         bps_ = 8;
+      }
     }
     else
     {
@@ -111,24 +117,36 @@ bool TiffPresentation::load(const std::string& fileName_)
     {
     case PHOTOMETRIC_MINISBLACK:
       if(originalColormap)
+      {
         printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
+      }
 
       if(bps == 1 || bps == 8)
+      {
         colormapHelper = MonochromeColormapHelper::create(2);
+      }
       else
+      {
         colormapHelper = MonochromeColormapHelper::create(1 << bps);
+      }
 
       properties[MONOCHROME_COLORMAPPABLE_PROPERTY_NAME] = "";
       break;
 
     case PHOTOMETRIC_MINISWHITE:
       if(originalColormap)
+      {
         printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
+      }
 
       if(bps == 1 || bps == 8)
+      {
         colormapHelper = MonochromeColormapHelper::createInverted(2);
+      }
       else
+      {
         colormapHelper = MonochromeColormapHelper::createInverted(1 << bps);
+      }
 
       properties[MONOCHROME_COLORMAPPABLE_PROPERTY_NAME] = "";
       break;
@@ -143,12 +161,16 @@ bool TiffPresentation::load(const std::string& fileName_)
 
     case PHOTOMETRIC_RGB:
       if(originalColormap)
+      {
         printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
+      }
       break;
 
     case PHOTOMETRIC_SEPARATED:
       if(originalColormap)
+      {
         printf("WEIRD: Tiff contains a colormap, but photometric isn't palette\n");
+      }
       break;
 
     default:
@@ -274,7 +296,9 @@ void TiffPresentation::viewAdded(ViewInterface::WeakPtr viewInterface)
   views.insert(viewInterface);
 
   if(tbi)
+  {
     tbi->open(viewInterface);
+  }
   else
   {
     printf("ERROR: TiffPresentation::open(): No TiledBitmapInterface available!\n");
@@ -286,7 +310,9 @@ void TiffPresentation::viewRemoved(ViewInterface::WeakPtr vi)
   views.erase(vi);
 
   if(tbi)
+  {
     tbi->close(vi);
+  }
   else
   {
     printf("ERROR: TiffPresentation::close(): No TiledBitmapInterface available!\n");
@@ -303,7 +329,9 @@ void TiffPresentation::redraw(ViewInterface::Ptr const&        vi,
   drawOutOfBoundsWithoutBackground(cr, presentationArea, getRect(), pixelSizeFromZoom(zoom));
 
   if(tbi)
+  {
     tbi->redraw(vi, cr, presentationArea, zoom);
+  }
 }
 
 bool TiffPresentation::getProperty(const std::string& name, std::string& value)

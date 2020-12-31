@@ -201,7 +201,9 @@ namespace Scroom
       {
         Observer o = registration->observer.lock();
         if(o)
+        {
           result.push_back(o);
+        }
       }
 
       return result;

@@ -93,6 +93,7 @@ void TiledBitmapViewData::resetNeededTiles()
   // stuff later.
 
   for(int i = imin; i < imax; i++)
+  {
     for(int j = jmin; j < jmax; j++)
     {
       CompressedTile::Ptr tile = layer->getTile(i, j);
@@ -103,6 +104,7 @@ void TiledBitmapViewData::resetNeededTiles()
       newStuff.emplace_back(tileViewState);
       newStuff.emplace_back(tileViewState->registerObserver(shared_from_this<TiledBitmapViewData>()));
     }
+  }
 
   // At this point, everything we need is either in the stuff list, or the newStuff list.
   // Hence, this is an excellent time to clear the oldStuff list. We cannot clear the

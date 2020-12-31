@@ -43,7 +43,9 @@ ConstTile::Ptr CompressedTile::getConstTileSync()
 {
   ConstTile::Ptr result = constTile.lock();
   if(!result)
+  {
     result = do_load();
+  }
 
   return result;
 }
@@ -105,7 +107,9 @@ Tile::Ptr CompressedTile::initialize()
   }
 
   if(didInitialize)
+  {
     tile_ = getTileSync(); // Trigger notifyObservers(), without holding the lock
+  }
 
   return tile_;
 }
@@ -149,7 +153,9 @@ ConstTile::Ptr CompressedTile::do_load()
     cleanupState();
     state = TSI_NORMAL;
     if(didLoad)
+    {
       notifyObservers(result);
+    }
   }
 
   return result;
@@ -177,9 +183,13 @@ TileState CompressedTile::getState()
   {
     Tile::Ptr t = tile.lock();
     if(t)
+    {
       result = TILE_LOADED;
+    }
     else
+    {
       result = TILE_UNLOADED;
+    }
   }
   break;
   case TSI_OUT_OF_BOUNDS:
@@ -239,10 +249,14 @@ void CompressedTile::observerAdded(TileLoadingObserver::Ptr const& observer, Scr
 
   // When the last observer goes away, cancel the load
   if(queue_)
+  {
     token.add(queue_);
+  }
 
   if(result)
+  {
     observer->tileLoaded(result);
+  }
 }
 
 void CompressedTile::cleanupState()

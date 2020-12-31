@@ -210,9 +210,13 @@ void View::setPresentation(PresentationInterface::Ptr presentation_)
     aspectRatio      = presentation_->getAspectRatio();
     std::string s    = presentation_->getTitle();
     if(s.length())
+    {
       s = "Scroom - " + s;
+    }
     else
+    {
       s = "Scroom";
+    }
     gtk_window_set_title(window, s.c_str());
   }
   updateZoom();
@@ -446,7 +450,9 @@ void View::on_configure()
   int newHeight = rect.height;
 
   if(drawingAreaHeight != newHeight || drawingAreaWidth != newWidth)
+  {
     on_window_size_changed(newWidth, newHeight);
+  }
 
   gdk_region_destroy(r);
 }
@@ -842,7 +848,9 @@ void View::updateNewWindowMenu()
 
   GtkWidget* newWindow_menu = gtk_menu_item_get_submenu(GTK_MENU_ITEM(newWindow_menu_item));
   if(!newWindow_menu)
+  {
     newWindow_menu = gtk_menu_new();
+  }
   g_object_ref_sink(G_OBJECT(newWindow_menu));
 
   auto cur = presentations.begin();
@@ -865,7 +873,9 @@ void View::updateNewWindowMenu()
       // Add a menu item
       std::string s = p->getTitle();
       if(!s.length())
+      {
         s = "Default";
+      }
       m = gtk_menu_item_new_with_label(s.c_str());
       gtk_widget_show(m);
       cur->second = m;
@@ -929,12 +939,18 @@ void View::updateXY(int x_, int y_, LocationChangeCause source)
   if(changed)
   {
     if(source != SCROLLBAR)
+    {
       updateScrollbars();
+    }
     else
+    {
       updateRulers();
+    }
 
     if(source != TEXTBOX)
+    {
       updateTextbox();
+    }
 
     invalidate();
   }

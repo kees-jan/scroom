@@ -96,9 +96,13 @@ namespace Scroom
         const value_type newSize  = newEnd - newStart;
 
         if(newSize >= 0)
+        {
           return Segment<value_type>(newStart, newSize);
+        }
         else
+        {
           return Segment<value_type>(); // empty segment
+        }
       }
 
       void intersect(const Segment<value_type>& other) { *this = intersection(other); }
@@ -106,18 +110,26 @@ namespace Scroom
       [[nodiscard]] Segment<value_type> before(value_type v) const
       {
         if(v < start)
+        {
           return Segment<value_type>();
+        }
         if(v < start + size)
+        {
           return Segment<value_type>(start, v - start);
+        }
         return *this;
       }
 
       [[nodiscard]] Segment<value_type> after(value_type v) const
       {
         if(v > start + size)
+        {
           return Segment<value_type>();
+        }
         if(v > start)
+        {
           return Segment<value_type>(v, start + size - v);
+        }
         return *this;
       }
 
@@ -132,11 +144,17 @@ namespace Scroom
       bool operator==(const Segment<value_type>& other) const
       {
         if(isEmpty() != other.isEmpty())
+        {
           return false;
+        }
         else if(isEmpty())
+        {
           return true;
+        }
         else
+        {
           return areEqual(start, other.start) && areEqual(size, other.size);
+        }
       }
 
       bool operator!=(const Segment<value_type>& other) const { return !(*this == other); }

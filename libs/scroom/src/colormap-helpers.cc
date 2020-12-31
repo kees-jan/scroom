@@ -83,9 +83,13 @@ MonochromeColormapHelper::MonochromeColormapHelper(int numberOfColors_, bool inv
 void MonochromeColormapHelper::setMonochromeColor(const Color& c)
 {
   if(inverted)
+  {
     whitish = c;
+  }
   else
+  {
     blackish = c;
+  }
 
   regenerateColormap();
 }
@@ -99,9 +103,13 @@ void MonochromeColormapHelper::regenerateColormap()
   if(transparentBackground)
   {
     if(inverted)
+    {
       b.setAlpha(0);
+    }
     else
+    {
       w.setAlpha(0);
+    }
   }
 
   for(int i = 0; i < numberOfColors; i++)

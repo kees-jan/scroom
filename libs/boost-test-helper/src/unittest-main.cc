@@ -25,7 +25,9 @@ std::string extract_path(const std::string& cmd)
 {
   size_t n = cmd.find_last_of('/');
   if(n == std::string::npos)
+  {
     return "";
+  }
   else
   {
     return cmd.substr(0, n);

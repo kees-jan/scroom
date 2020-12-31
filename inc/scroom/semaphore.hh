@@ -65,7 +65,9 @@ namespace Scroom
     while(count == 0)
     {
       if(!cond.timed_wait(lock, timeout))
+      {
         return false;
+      }
     }
     count--;
     return true;

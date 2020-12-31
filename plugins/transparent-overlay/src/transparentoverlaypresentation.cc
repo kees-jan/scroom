@@ -58,10 +58,14 @@ void TransparentOverlayPresentation::addPresentation(PresentationInterface::Ptr 
     sizeDeterminer->add(p);
 
     for(ViewDataMap::value_type const& v: viewData)
+    {
       v.second->addChild(p);
+    }
   }
   else
+  {
     printf("PANIC: Can't add a nonexistent presentation\n");
+  }
 }
 
 void TransparentOverlayPresentation::setOptimalColor(PresentationInterface::Ptr const& p)
@@ -118,7 +122,9 @@ std::set<ViewInterface::WeakPtr> TransparentOverlayPresentation::getViews()
 {
   std::set<ViewInterface::WeakPtr> result;
   for(auto const& p: viewData)
+  {
     result.insert(p.first);
+  }
 
   return result;
 }
@@ -130,7 +136,9 @@ void TransparentOverlayPresentation::redraw(ViewInterface::Ptr const&        vi,
 {
   auto e = viewData.find(vi);
   if(e != viewData.end())
+  {
     e->second->redraw(cr, presentationArea, zoom);
+  }
 }
 
 bool TransparentOverlayPresentation::getProperty(const std::string& name, std::string& value)
@@ -155,7 +163,9 @@ std::string TransparentOverlayPresentation::getTitle()
   for(PresentationInterface::Ptr const& child: children)
   {
     if(hasPrevious)
+    {
       s << ", ";
+    }
     s << child->getTitle();
     hasPrevious = true;
   }

@@ -37,7 +37,9 @@ namespace
   {
     std::list<K> k;
     for(auto const& p: m)
+    {
       k.push_back(p.first);
+    }
 
     return k;
   }
@@ -71,7 +73,9 @@ void SizeDeterminer::add(PresentationInterface::Ptr const& p)
     resizablePresentationData.insert(std::make_pair(p, PresentationData(r)));
   }
   else
+  {
     presentations.push_back(p);
+  }
 
   sendUpdates();
 }
@@ -124,6 +128,10 @@ void SizeDeterminer::sendUpdates()
   Scroom::Utils::Rectangle<double> rect = getRect();
 
   for(auto const& data: resizablePresentationData)
+  {
     for(auto const& view: data.second.views)
+    {
       data.second.resizablePresentationInterface->setRect(view, rect);
+    }
+  }
 }

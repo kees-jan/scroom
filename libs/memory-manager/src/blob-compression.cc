@@ -39,7 +39,9 @@ namespace Scroom
         do
         {
           if(stream.avail_out != 0)
+          {
             printf("PANIC! Some space available after compression finishes\n");
+          }
 
           Page::Ptr currentPage = provider->getFreePage();
           result.push_back(currentPage);
@@ -96,7 +98,9 @@ namespace Scroom
         while(!list.empty() && r == Z_OK)
         {
           if(stream.avail_in != 0)
+          {
             printf("PANIC! Some data available after inflation finishes\n");
+          }
 
           Page::Ptr currentPage = list.front();
           list.pop_front();

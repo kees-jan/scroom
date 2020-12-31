@@ -162,7 +162,9 @@ void TiledBitmap::initialize()
   do
   {
     if(i < ls.size())
+    {
       lo = ls[i];
+    }
 
     bpp = lo->getBpp();
 

@@ -26,7 +26,9 @@ BOOST_AUTO_TEST_CASE(compression_decompression_retains_data)
 
   uint8_t in[blobSize];
   for(size_t i = 0; i < blobSize; i++)
+  {
     in[i] = i / 256 + i % 256;
+  }
 
   PageProvider::Ptr provider = PageProvider::create(blockCount, blockSize);
 
@@ -46,7 +48,9 @@ BOOST_AUTO_TEST_CASE(compression_decompression_retains_data_with_large_blocks)
 
   uint8_t in[blobSize];
   for(size_t i = 0; i < blobSize; i++)
+  {
     in[i] = i / 256 + i % 256;
+  }
 
   PageProvider::Ptr provider = PageProvider::create(blockCount, blockSize);
 

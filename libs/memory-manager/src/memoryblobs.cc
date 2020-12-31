@@ -132,7 +132,9 @@ namespace Scroom
       if(state == COMPRESSING)
       {
         if(refcount != 0)
+        {
           printf("PANIC: Compressing with pending references\n");
+        }
 
         pages = Detail::compressBlob(data, size, provider);
         free(data);

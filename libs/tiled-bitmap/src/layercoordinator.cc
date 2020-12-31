@@ -70,7 +70,9 @@ void LayerCoordinator::reduceSourceTile(CompressedTile::Ptr tile, ConstTile::Ptr
   const int                 y        = location.second;
 
   if(!targetTileData)
+  {
     targetTileData = targetTile->getTileSync();
+  }
   ConstTile::Ptr source = tile->getConstTileSync();
 
   lo->reduce(targetTileData, source, x, y);

@@ -98,7 +98,9 @@ namespace Scroom
         {
           boost::shared_ptr<Scroom::Bookkeeping::MapBase<K, V>> m = map.lock();
           if(m)
+          {
             m->remove(k, t);
+          }
         }
 
       public:
@@ -203,7 +205,9 @@ namespace Scroom
     {
       boost::mutex::scoped_lock lock(mut);
       if(map.end() != map.find(k))
+      {
         throw std::invalid_argument("Key already exists");
+      }
 
       typename Detail::ValueType<V>::Ptr pv = Detail::ValueType<V>::create(V());
       map[k]                                = pv;
@@ -276,7 +280,9 @@ namespace Scroom
       typename MapType::iterator i = map.find(k);
 
       if(map.end() != i)
+      {
         map.erase(i);
+      }
     }
 
     template <typename K, typename V>
@@ -289,7 +295,9 @@ namespace Scroom
       {
         typename Detail::ValueType<V>::Ptr pv = i->second.lock();
         if(pv)
+        {
           return Detail::LValue<V>(pv);
+        }
       }
 
       throw std::invalid_argument("Invalid key");
@@ -353,7 +361,9 @@ namespace Scroom
       {
         typename Detail::ValueType<V>::Ptr pv = el.second.lock();
         if(pv)
+        {
           result.push_back(pv->value);
+        }
       }
       return result;
     }

@@ -145,28 +145,36 @@ namespace Scroom
     {
       boost::mutex::scoped_lock lock(mut);
       for(ProgressInterface::Ptr const& child: children)
+      {
         child->setIdle();
+      }
     }
 
     void ProgressInterfaceBroadcaster::setWaiting(double progress)
     {
       boost::mutex::scoped_lock lock(mut);
       for(ProgressInterface::Ptr const& child: children)
+      {
         child->setWaiting(progress);
+      }
     }
 
     void ProgressInterfaceBroadcaster::setWorking(double progress)
     {
       boost::mutex::scoped_lock lock(mut);
       for(ProgressInterface::Ptr const& child: children)
+      {
         child->setWorking(progress);
+      }
     }
 
     void ProgressInterfaceBroadcaster::setFinished()
     {
       boost::mutex::scoped_lock lock(mut);
       for(ProgressInterface::Ptr const& child: children)
+      {
         child->setFinished();
+      }
     }
 
     ////////////////////////////////////////////////////////////////////////
@@ -281,19 +289,25 @@ namespace Scroom
           break;
         case ProgressStateInterface::WAITING:
           if(state == ProgressStateInterface::IDLE || state == ProgressStateInterface::FINISHED)
+          {
             state = ProgressStateInterface::WAITING;
+          }
           progress += child->progress;
           workers++;
           break;
         case ProgressStateInterface::WORKING:
           if(state != ProgressStateInterface::WORKING)
+          {
             state = ProgressStateInterface::WORKING;
+          }
           progress += child->progress;
           workers++;
           break;
         case ProgressStateInterface::FINISHED:
           if(state == ProgressStateInterface::IDLE)
+          {
             state = ProgressStateInterface::FINISHED;
+          }
           progress += 1.0;
           workers++;
           break;

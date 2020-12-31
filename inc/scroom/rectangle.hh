@@ -174,7 +174,9 @@ namespace Scroom
       [[nodiscard]] Rectangle<value_type> leftOf(Rectangle<value_type> const& r) const
       {
         if(r.isEmpty())
+        {
           return r;
+        }
 
         return Rectangle<value_type>(horizontally.before(r.horizontally.getStart()), vertically.intersection(r.vertically));
       }
@@ -182,7 +184,9 @@ namespace Scroom
       [[nodiscard]] Rectangle<value_type> rightOf(Rectangle<value_type> const& r) const
       {
         if(r.isEmpty())
+        {
           return r;
+        }
 
         return Rectangle<value_type>(horizontally.after(r.horizontally.getEnd()), vertically.intersection(r.vertically));
       }
@@ -190,7 +194,9 @@ namespace Scroom
       [[nodiscard]] Rectangle<value_type> above(Rectangle<value_type> const& r) const
       {
         if(r.isEmpty())
+        {
           return r;
+        }
 
         return Rectangle<value_type>(horizontally.intersection(r.horizontally), vertically.before(r.vertically.getStart()));
       }
@@ -198,7 +204,9 @@ namespace Scroom
       [[nodiscard]] Rectangle<value_type> below(Rectangle<value_type> const& r) const
       {
         if(r.isEmpty())
+        {
           return r;
+        }
 
         return Rectangle<value_type>(horizontally.intersection(r.horizontally), vertically.after(r.vertically.getEnd()));
       }
@@ -206,11 +214,17 @@ namespace Scroom
       bool operator==(const Rectangle& other) const
       {
         if(isEmpty() != other.isEmpty())
+        {
           return false;
+        }
         else if(isEmpty())
+        {
           return true;
+        }
         else
+        {
           return horizontally == other.horizontally && vertically == other.vertically;
+        }
       }
 
       bool operator!=(const Rectangle& other) const { return !(*this == other); }

@@ -69,7 +69,9 @@ namespace
     for(GtkProgressBar*& p: progressbars)
     {
       if(p == progressBar_)
+      {
         p = nullptr;
+      }
     }
   }
 
@@ -86,9 +88,13 @@ namespace
         return false;
       }
       else if(current == progressbars.end())
+      {
         current = progressbars.begin();
+      }
       else if(*current == NULL)
+      {
         current = progressbars.erase(current);
+      }
       else
       {
         defect();

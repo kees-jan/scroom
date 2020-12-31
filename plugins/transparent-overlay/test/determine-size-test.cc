@@ -23,10 +23,14 @@ std::ostream& dumpContainer(std::ostream& os, std::string const& name, Iter cons
   os << name << "(";
   Iter cur = begin;
   if(cur != end)
+  {
     os << *cur++;
+  }
 
   while(cur != end)
+  {
     os << ", " << *cur++;
+  }
 
   os << ")";
   return os;

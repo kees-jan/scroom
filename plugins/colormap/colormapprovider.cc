@@ -47,7 +47,9 @@ namespace Scroom
         result->registration   = r;
       }
       else
+      {
         printf("PANIC: Presentation doesn't implement Colormappable\n");
+      }
 
       return result;
     }
@@ -152,7 +154,9 @@ namespace Scroom
         }
       }
       else
+      {
         printf("PANIC: Colormappable Presentation is gone??\n");
+      }
     }
   } // namespace ColormapImpl
 } // namespace Scroom

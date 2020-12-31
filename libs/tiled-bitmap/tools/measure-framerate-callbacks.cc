@@ -42,7 +42,9 @@ static gboolean on_expose(GtkWidget* widget, GdkEventExpose*, gpointer)
   cairo_t* cr = gdk_cairo_create(widget->window);
 
   if(testData)
+  {
     testData->redraw(cr);
+  }
 
   cairo_destroy(cr);
   return FALSE;
@@ -51,10 +53,14 @@ static gboolean on_expose(GtkWidget* widget, GdkEventExpose*, gpointer)
 static gboolean on_idle(gpointer)
 {
   if(current >= functions.size())
+  {
     return false;
+  }
 
   if(!functions[current]())
+  {
     current++;
+  }
 
   return true;
 }

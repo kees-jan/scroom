@@ -323,7 +323,9 @@ void Operations1bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x
       const byte* current = sourcePtr;
       int         sum     = 0;
       for(int k = 0; k < 8; k++, current += sourceStride)
+      {
         sum += bcl.lookup(*current);
+      }
 
       *targetPtr = sum * 255 / 64;
     }
@@ -439,7 +441,9 @@ void Operations8bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x
       {
         const byte* current = base;
         for(int l = 0; l < 8; l++, current++)
+        {
           sum += *current;
+        }
       }
 
       *targetPtr = sum / 64;
@@ -637,7 +641,9 @@ void Operations::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, in
       {
         SampleIterator<const byte> current(base, 0, bpp);
         for(int l = 0; l < 8; l++, ++current)
+        {
           ++(lookup[*current]);
+        }
       }
       unsigned first  = 0;
       unsigned second = 1;
@@ -654,10 +660,14 @@ void Operations::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, in
           first  = c;
         }
         else if(lookup[c] > lookup[second])
+        {
           second = c;
+        }
       }
       if(lookup[second] == 0)
+      {
         second = first;
+      }
 
       targetPtr.set(first << pixelOffset | second);
     }
@@ -797,10 +807,14 @@ void OperationsColormapped::reduce(Tile::Ptr target, const ConstTile::Ptr source
           first  = c;
         }
         else if(lookup[c] > lookup[second])
+        {
           second = c;
+        }
       }
       if(lookup[second] == 0)
+      {
         second = first;
+      }
 
       targetPtr.set(first << pixelOffset | second);
     }
@@ -826,7 +840,9 @@ Scroom::Utils::Stuff Operations1bppClipped::cacheZoom(const ConstTile::Ptr tile,
   UNUSED(cache);
 
   if(zoom >= 0)
+  {
     zoom = 0;
+  }
 
   const int pixelSize    = 1 << (-zoom);
   const int outputWidth  = tile->width / pixelSize;
@@ -854,12 +870,16 @@ Scroom::Utils::Stuff Operations1bppClipped::cacheZoom(const ConstTile::Ptr tile,
         for(int x = 0; x < pixelSize; x++, ++bit)
         {
           if(*bit)
+          {
             sum++;
+          }
         }
       }
 
       if(sum > 0)
+      {
         sum = 1;
+      }
       *pixel = colormap->colors[sum].getARGB32();
       pixel++;
     }
@@ -895,7 +915,9 @@ void Operations1bppClipped::reduce(Tile::Ptr target, const ConstTile::Ptr source
       const byte* current = sourcePtr;
       int         sum     = 0;
       for(int k = 0; k < 8; k++, current += sourceStride)
+      {
         sum += bcl.lookup(*current);
+      }
 
       targetPtr.set((sum > 0) ? 1 : 0);
     }

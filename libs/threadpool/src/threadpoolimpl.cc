@@ -107,7 +107,9 @@ namespace
         cur++;
       }
       else
+      {
         cur = pointers.erase(cur);
+      }
     }
   }
 
@@ -124,9 +126,13 @@ namespace
       while(cur != threads.end())
       {
         if((*cur)->timed_join(short_timeout))
+        {
           cur = threads.erase(cur);
+        }
         else
+        {
           cur++;
+        }
       }
 
       count = threads.size();
@@ -144,9 +150,13 @@ namespace
       while(cur != threads.end())
       {
         if((*cur)->timed_join(timeout))
+        {
           cur = threads.erase(cur);
+        }
         else
+        {
           cur++;
+        }
 
         printf(".");
       }
@@ -157,7 +167,9 @@ namespace
     }
 
     if(0 < threads.size())
+    {
       abort();
+    }
   }
 
   void ThreadList::add(ThreadPool::ThreadPtr t)
@@ -242,7 +254,9 @@ std::vector<ThreadPool::ThreadPtr> ThreadPool::add(int count)
 {
   std::vector<ThreadPool::ThreadPtr> result(count);
   for(int i = 0; i < count; i++)
+  {
     result[i] = add();
+  }
 
   return result;
 }
@@ -306,7 +320,9 @@ void ThreadPool::do_one(ThreadPool::PrivateData::Ptr priv)
     boost::mutex::scoped_lock lock(priv->mut);
 
     while(!priv->jobs.empty() && priv->jobs.begin()->second.empty())
+    {
       priv->jobs.erase(priv->jobs.begin());
+    }
 
     if(!priv->jobs.empty() && !priv->jobs.begin()->second.empty())
     {

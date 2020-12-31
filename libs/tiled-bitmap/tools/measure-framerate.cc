@@ -24,7 +24,9 @@
 void usage(std::string me, std::string message = std::string())
 {
   if(message.length() != 0)
+  {
     printf("ERROR: %s\n\n", message.c_str());
+  }
 
   printf("Usage: %s [options] [input files]\n\n", me.c_str());
   printf("Options:\n");

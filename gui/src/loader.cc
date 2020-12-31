@@ -64,7 +64,9 @@ public:
     : filters(f)
   {
     for(auto const filter: filters)
+    {
       g_object_ref_sink(filter);
+    }
   }
 
   ~GtkFileFilterListDestroyer()
@@ -91,11 +93,15 @@ char* charpFromString(std::string const& s)
   size_t                  n = s.size();
   std::unique_ptr<char[]> result(new char[n + 1]);
   if(!result)
+  {
     throw std::bad_alloc();
+  }
 
   strncpy(result.get(), s.c_str(), n + 1);
   if(result[n] != 0)
+  {
     throw std::length_error("String size changed during copying");
+  }
 
   return result.release();
 }
@@ -134,12 +140,14 @@ GtkFileFilterInfoPtr filterInfoFromPath(const std::string& filename)
 bool filterMatchesInfo(GtkFileFilterInfo const& info, std::list<GtkFileFilter*> const& filters)
 {
   for(auto const& f: filters)
+  {
     if(gtk_file_filter_filter(f, &info))
+    {
       return true;
-
+    }
+  }
   return false;
 }
-
 ////////////////////////////////////////////////////////////////////////
 
 class ScroomInterfaceImpl : public ScroomInterface
@@ -173,7 +181,9 @@ void create(NewPresentationInterface* interface)
     find_or_create_scroom(presentation);
   }
   else
+  {
     throw std::invalid_argument("Unable to create requested presentation");
+  }
 }
 
 PresentationInterface::Ptr loadPresentation(const std::string& filename)
@@ -220,7 +230,9 @@ PresentationInterface::Ptr loadPresentation(GtkFileFilterInfo const& info)
     return presentation;
   }
   else
+  {
     throw std::invalid_argument("Don't know how to load presentation " + std::string(info.filename));
+  }
 }
 
 PresentationInterface::Ptr loadPresentation(GtkFileFilterInfoPtr const& info) { return loadPresentation(*info); }
@@ -312,12 +324,16 @@ Aggregate::Ptr ScroomInterfaceImpl::newAggregate(std::string const& name)
       PresentationInterface::Ptr aggregatePresentation = boost::dynamic_pointer_cast<PresentationInterface>(aggregate);
 
       if(aggregatePresentation)
+      {
         on_presentation_created(aggregatePresentation);
+      }
 
       return aggregate;
     }
     else
+    {
       throw std::invalid_argument("Failed to create a new" + name);
+    }
   }
   throw std::invalid_argument("Don't know how to create a new " + name);
 }

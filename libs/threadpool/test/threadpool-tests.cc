@@ -84,15 +84,21 @@ R no_op(Semaphore* s, R result)
 bool has_at_least_n_threads(ThreadPool* pool, int count_)
 {
   if(count_ <= 0)
+  {
     return true;
+  }
   else
   {
     std::vector<Semaphore*> semaphores(count_);
     for(int i = 0; i < count_; i++)
+    {
       semaphores[i] = new Semaphore(0);
+    }
 
     for(int i = 0; i < count_ - 1; i++)
+    {
       pool->schedule(pass(semaphores[i + 1]) + clear(semaphores[i]));
+    }
 
     // All tasks are blocked on semaphores[count-1]
 
@@ -109,7 +115,9 @@ bool has_at_least_n_threads(ThreadPool* pool, int count_)
       // blocked. This will ultimately block the ThreadPool destructor,
       // so we have to unblock them manually here.
       for(int i = 1; i < count_; i++)
+      {
         semaphores[i]->V();
+      }
     }
     return result;
   }

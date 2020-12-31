@@ -80,7 +80,9 @@ void on_scroom_hide(GtkWidget*, gpointer user_data)
   on_view_destroyed(view);
 
   if(views.empty())
+  {
     gtk_main_quit();
+  }
 }
 
 void on_new_activate(GtkMenuItem*, gpointer user_data)
@@ -220,9 +222,13 @@ void on_fullscreen_activate(GtkMenuItem* item, gpointer user_data)
   gboolean          active = gtk_check_menu_item_get_active(cmi);
 
   if(active)
+  {
     view->setFullScreen();
+  }
   else
+  {
     view->unsetFullScreen();
+  }
 }
 
 void on_close_activate(GtkMenuItem*, gpointer user_data)
@@ -328,7 +334,9 @@ void on_done_loading_plugins()
             find_or_create_scroom(aggregatePresentation);
           }
           else
+          {
             printf("ERROR: Don't know how to display a %s\n", aggregateName.c_str());
+          }
         }
         catch(std::exception& ex)
         {
@@ -604,7 +612,9 @@ void on_presentation_created(PresentationInterface::Ptr presentation)
   auto cur = presentationObservers.begin();
   auto end = presentationObservers.end();
   for(; cur != end; cur++)
+  {
     cur->first->presentationAdded(presentation);
+  }
 }
 
 void on_view_created(View::Ptr v)
@@ -626,7 +636,9 @@ void on_view_created(View::Ptr v)
   auto cur = viewObservers.begin();
   auto end = viewObservers.end();
   for(; cur != end; cur++)
+  {
     t.add(cur->first->viewAdded(v));
+  }
 }
 
 void on_presentation_possibly_destroyed()
@@ -648,13 +660,17 @@ void on_presentation_possibly_destroyed()
   if(presentationDestroyed)
   {
     for(auto const& p: views)
+    {
       p.first->on_presentation_destroyed();
+    }
 
     const std::map<PresentationObserver::Ptr, std::string>& presentationObservers =
       PluginManager::getInstance()->getPresentationObservers();
 
     for(auto const& p: presentationObservers)
+    {
       p.first->presentationDeleted();
+    }
   }
 }
 

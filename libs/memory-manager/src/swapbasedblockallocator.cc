@@ -56,7 +56,9 @@ namespace Scroom
       RawPageData::Ptr SwapBasedBlockAllocator::get(size_t id)
       {
         if(id >= count)
+        {
           throw std::out_of_range("");
+        }
 
         return RawPageData::Ptr(shared_from_this<SwapBasedBlockAllocator>(), data.get() + id * size);
       }
@@ -72,7 +74,9 @@ namespace Scroom
 
         PageList result;
         for(size_t i = 0; i < count; i++)
+        {
           result.push_back(Page(me, i));
+        }
 
         return result;
       }

@@ -43,7 +43,11 @@ void SidebarManager::removeSideWidget(GtkWidget* w)
     widgets.erase(cur);
   }
   if(widgets.empty())
+  {
     gtk_widget_hide(panelWindow);
+  }
   else
+  {
     gtk_widget_show(panelWindow);
+  }
 }

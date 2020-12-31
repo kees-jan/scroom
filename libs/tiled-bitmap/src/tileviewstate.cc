@@ -95,7 +95,9 @@ void TileViewState::setZoom(LayerOperations::Ptr lo_, int zoom_)
   }
 
   if(mustKick)
+  {
     kick();
+  }
 }
 
 void TileViewState::kick()
@@ -235,7 +237,9 @@ void TileViewState::clear()
   boost::mutex::scoped_lock l(mut);
 
   if(state >= LOADED)
+  {
     state = LOADED;
+  }
 
   queue.reset();
   weakQueue.reset();
