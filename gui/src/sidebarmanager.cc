@@ -7,11 +7,7 @@
 
 #include "sidebarmanager.hh"
 
-SidebarManager::SidebarManager()
-  : panelWindow(nullptr)
-  , panel(nullptr)
-
-{}
+SidebarManager::SidebarManager() = default;
 
 void SidebarManager::setWidgets(GtkWidget* panelWindow_, GtkBox* panel_)
 {

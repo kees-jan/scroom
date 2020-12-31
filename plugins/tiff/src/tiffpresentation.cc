@@ -15,15 +15,7 @@
 #include <scroom/tiledbitmaplayer.hh>
 #include <scroom/unused.hh>
 
-TiffPresentation::TiffPresentation()
-  : tif(nullptr)
-  , height(0)
-  , width(0)
-  , bps(0)
-  , spp(0)
-{
-  colormapHelper = ColormapHelper::create(256);
-}
+TiffPresentation::TiffPresentation() { colormapHelper = ColormapHelper::create(256); }
 
 TiffPresentation::Ptr TiffPresentation::create() { return Ptr(new TiffPresentation()); }
 

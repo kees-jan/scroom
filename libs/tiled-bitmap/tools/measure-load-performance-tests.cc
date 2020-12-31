@@ -95,27 +95,27 @@ void init_tests()
   // const unsigned int testDuration = 15;
   const unsigned int sleepDuration = 2;
 
-  functions.push_back(Sleeper(sleepDuration));
+  functions.emplace_back(Sleeper(sleepDuration));
 
-  functions.push_back(boost::bind(setupTest1bpp, -2, width, height));
-  functions.push_back(WaitForAsyncOp("File load 1bpp"));
+  functions.emplace_back(boost::bind(setupTest1bpp, -2, width, height));
+  functions.emplace_back(WaitForAsyncOp("File load 1bpp"));
 
   // First run may fill the cache
-  functions.push_back(boost::bind(setupTest1bpp, -2, width, height));
-  functions.push_back(WaitForAsyncOp("File load 1bpp"));
+  functions.emplace_back(boost::bind(setupTest1bpp, -2, width, height));
+  functions.emplace_back(WaitForAsyncOp("File load 1bpp"));
 
-  functions.push_back(boost::bind(setupTest2bpp, -2, width, height));
-  functions.push_back(WaitForAsyncOp("File load 2bpp"));
+  functions.emplace_back(boost::bind(setupTest2bpp, -2, width, height));
+  functions.emplace_back(WaitForAsyncOp("File load 2bpp"));
 
-  functions.push_back(boost::bind(setupTest4bpp, -2, width, height));
-  functions.push_back(WaitForAsyncOp("File load 4bpp"));
+  functions.emplace_back(boost::bind(setupTest4bpp, -2, width, height));
+  functions.emplace_back(WaitForAsyncOp("File load 4bpp"));
 
-  functions.push_back(boost::bind(setupTest8bpp, -2, width, height));
-  functions.push_back(WaitForAsyncOp("File load 8bpp greyscale"));
+  functions.emplace_back(boost::bind(setupTest8bpp, -2, width, height));
+  functions.emplace_back(WaitForAsyncOp("File load 8bpp greyscale"));
 
-  functions.push_back(boost::bind(setupTest8bppColormapped, -2, width, height));
-  functions.push_back(WaitForAsyncOp("File load 8bpp colormapped"));
+  functions.emplace_back(boost::bind(setupTest8bppColormapped, -2, width, height));
+  functions.emplace_back(WaitForAsyncOp("File load 8bpp colormapped"));
 
-  functions.push_back(reset);
-  functions.push_back(quit);
+  functions.emplace_back(reset);
+  functions.emplace_back(quit);
 }

@@ -411,10 +411,7 @@ ThreadPool::Job::Job(boost::function<void()> fn_, WeakQueue::Ptr queue_)
 /// QueueJumper
 ////////////////////////////////////////////////////////////////////////
 
-QueueJumper::QueueJumper()
-  : inQueue(true)
-  , isSet(false)
-{}
+QueueJumper::QueueJumper() = default;
 
 QueueJumper::Ptr QueueJumper::create() { return QueueJumper::Ptr(new QueueJumper()); }
 

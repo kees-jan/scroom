@@ -50,8 +50,8 @@ private:
   };
 
 private:
-  bool                                                  devMode;
-  PluginManagerState                                    state;
+  bool                                                  devMode{false};
+  PluginManagerState                                    state{FINDING_DIRECTORIES};
   std::list<std::string>                                dirs;
   std::list<std::string>::iterator                      currentDir;
   std::list<std::string>                                files;

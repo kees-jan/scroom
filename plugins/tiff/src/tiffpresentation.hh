@@ -33,12 +33,12 @@ private:
   using Views = std::set<ViewInterface::WeakPtr>;
 
   std::string                        fileName;
-  TIFF*                              tif;
-  int                                height;
-  int                                width;
+  TIFF*                              tif{nullptr};
+  int                                height{0};
+  int                                width{0};
   TiledBitmapInterface::Ptr          tbi;
-  int                                bps;
-  int                                spp;
+  int                                bps{0};
+  int                                spp{0};
   std::map<std::string, std::string> properties;
   Views                              views;
   ColormapHelper::Ptr                colormapHelper;

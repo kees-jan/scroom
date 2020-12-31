@@ -28,10 +28,7 @@ const std::string SCROOM_PLUGIN_DIRS = "SCROOM_PLUGIN_DIRS";
 
 static PluginManager::Ptr pluginManager = PluginManager::create();
 
-PluginManager::PluginManager()
-  : devMode(false)
-  , state(FINDING_DIRECTORIES)
-{}
+PluginManager::PluginManager() = default;
 
 PluginManager::Ptr PluginManager::create() { return Ptr(new PluginManager()); }
 
@@ -57,7 +54,7 @@ bool PluginManager::doWork()
       std::string plugin_path = (boost::dll::program_location().parent_path() / "plugins").generic_string();
       dirs.push_back(plugin_path);
 #else
-      dirs.push_back(PLUGIN_DIR);
+      dirs.emplace_back(PLUGIN_DIR);
 #endif
     }
 
@@ -80,11 +77,11 @@ bool PluginManager::doWork()
         }
 
         *i = '\0';
-        dirs.push_back(path);
+        dirs.emplace_back(path);
         path = i + 1;
       }
 
-      dirs.push_back(path);
+      dirs.emplace_back(path);
     }
 
     currentDir = dirs.begin();
@@ -163,7 +160,7 @@ bool PluginManager::doWork()
             {
               if(pi->pluginApiVersion == PLUGIN_API_VERSION)
               {
-                pluginInformationList.push_back(PluginInformation(plugin, pi));
+                pluginInformationList.emplace_back(plugin, pi);
                 pi->registerCapabilities(shared_from_this<PluginManager>());
                 plugin = nullptr;
                 gpi    = nullptr;

@@ -591,7 +591,7 @@ void on_newPresentationInterfaces_update(const std::map<NewPresentationInterface
 
 void on_presentation_created(PresentationInterface::Ptr presentation)
 {
-  presentations.push_back(presentation);
+  presentations.emplace_back(presentation);
 
   for(const Views::value_type& p: views)
   {

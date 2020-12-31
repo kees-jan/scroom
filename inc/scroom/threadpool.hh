@@ -541,8 +541,8 @@ public:
 
 private:
   boost::mutex mut;
-  bool         inQueue;
-  bool         isSet;
+  bool         inQueue{true};
+  bool         isSet{false};
 
   boost::function<void()> fn;
 

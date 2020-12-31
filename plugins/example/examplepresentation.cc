@@ -12,11 +12,7 @@
 #include <scroom/cairo-helpers.hh>
 #include <scroom/unused.hh>
 
-ExamplePresentation::ExamplePresentation()
-  : pattern(nullptr)
-{
-  fillPattern();
-}
+ExamplePresentation::ExamplePresentation() { fillPattern(); }
 
 ExamplePresentation::~ExamplePresentation() { cairo_pattern_destroy(pattern); }
 

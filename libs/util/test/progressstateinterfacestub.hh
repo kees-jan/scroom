@@ -15,8 +15,8 @@ public:
   using Ptr = boost::shared_ptr<ProgressStateInterfaceStub>;
 
 public:
-  State  state;
-  double progress;
+  State  state{IDLE};
+  double progress{0.0};
 
 public:
   static Ptr create();

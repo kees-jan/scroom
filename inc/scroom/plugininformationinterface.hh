@@ -20,12 +20,10 @@ public:
   using Ptr = boost::shared_ptr<PluginInformationInterface>;
 
 public:
-  const int pluginApiVersion;
+  const int pluginApiVersion{PLUGIN_API_VERSION};
 
 public:
-  PluginInformationInterface()
-    : pluginApiVersion(PLUGIN_API_VERSION)
-  {}
+  PluginInformationInterface() = default;
 
   virtual std::string getPluginName()                                       = 0;
   virtual std::string getPluginVersion()                                    = 0;

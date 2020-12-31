@@ -56,7 +56,7 @@ namespace Scroom
             Colormap::Ptr c = load(name);
             if(c)
             {
-              colormaps.push_back(c);
+              colormaps.emplace_back(c);
             }
           }
         }
@@ -137,7 +137,7 @@ namespace Scroom
           int                 blue   = 0;
           while(colors.size() < count && fgets(buffer, BUFFERSIZE, f) && 3 == sscanf(buffer, "%d %d %d", &red, &green, &blue))
           {
-            colors.push_back(Color(red / 255.0, green / 255.0, blue / 255.0));
+            colors.emplace_back(red / 255.0, green / 255.0, blue / 255.0);
           }
           if(colors.size() != count)
             throw std::exception();

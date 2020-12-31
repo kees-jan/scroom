@@ -12,7 +12,7 @@
 class ExamplePresentation : public PresentationInterface
 {
 private:
-  cairo_pattern_t* pattern;
+  cairo_pattern_t* pattern{nullptr};
 
   void fillPattern();
 

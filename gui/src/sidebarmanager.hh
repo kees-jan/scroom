@@ -15,8 +15,8 @@
 class SidebarManager
 {
 private:
-  GtkWidget* panelWindow;
-  GtkBox*    panel;
+  GtkWidget* panelWindow{nullptr};
+  GtkBox*    panel{nullptr};
 
   std::map<GtkWidget*, GtkWidget*> widgets;
 

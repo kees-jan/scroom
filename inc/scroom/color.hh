@@ -34,19 +34,14 @@ class Color
   , public boost::multiplicative<Color, double>
 {
 public:
-  double alpha; /**< Alpha value */
-  double red;   /**< R value */
-  double green; /**< G value */
-  double blue;  /**< B value */
+  double alpha{1.0}; /**< Alpha value */
+  double red{0.0};   /**< R value */
+  double green{0.0}; /**< G value */
+  double blue{0.0};  /**< B value */
 
 public:
   /** Default constructor. Create black */
-  Color()
-    : alpha(1.0)
-    , red(0.0)
-    , green(0.0)
-    , blue(0.0)
-  {}
+  Color() = default;
 
   /** Constructor. Use the given RGB values */
   Color(double red_, double green_, double blue_, double alpha_ = 1.0)

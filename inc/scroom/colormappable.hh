@@ -55,7 +55,7 @@ public:
     result->colors.clear();
     double max = n - 1;
     for(int i = 0; i < n; i++)
-      result->colors.push_back(Color(i / max)); // Min is black
+      result->colors.emplace_back(i / max); // Min is black
 
     return result;
   }
@@ -69,7 +69,7 @@ public:
     result->colors.clear();
     double max = n - 1;
     for(int i = 0; i < n; i++)
-      result->colors.push_back(Color((max - i) / max)); // Min is white
+      result->colors.emplace_back((max - i) / max); // Min is white
 
     return result;
   }

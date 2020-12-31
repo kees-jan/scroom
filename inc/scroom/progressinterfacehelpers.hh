@@ -108,8 +108,8 @@ namespace Scroom
         using Ptr = boost::shared_ptr<ProgressStore>;
 
       private:
-        State  state;
-        double progress;
+        State  state{IDLE};
+        double progress{0.0};
 
       private:
         ProgressStore();
@@ -193,8 +193,8 @@ namespace Scroom
 
       public:
         boost::mutex                  mut;
-        ProgressStateInterface::State state;
-        double                        progress;
+        ProgressStateInterface::State state{ProgressStateInterface::IDLE};
+        double                        progress{0.0};
 
       private:
         ChildData();

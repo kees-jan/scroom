@@ -15,10 +15,7 @@ using namespace Scroom::Detail::ThreadPool;
 
 QueueImpl::Ptr QueueImpl::create() { return QueueImpl::Ptr(new QueueImpl()); }
 
-QueueImpl::QueueImpl()
-  : count(0)
-  , isDeleted(false)
-{}
+QueueImpl::QueueImpl() = default;
 
 void QueueImpl::deletingQueue()
 {

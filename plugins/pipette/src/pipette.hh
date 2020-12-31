@@ -30,7 +30,7 @@ public:
 
 private:
   Selection::Ptr         selection;
-  bool                   enabled;
+  bool                   enabled{false};
   std::atomic_flag       wasDisabled;
   std::mutex             jobMutex;
   ThreadPool::Queue::Ptr currentJob;

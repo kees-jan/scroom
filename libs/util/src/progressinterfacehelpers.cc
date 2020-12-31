@@ -90,10 +90,7 @@ namespace Scroom
     {
       ProgressStore::Ptr ProgressStore::create() { return Ptr(new ProgressStore()); }
 
-      ProgressStore::ProgressStore()
-        : state(IDLE)
-        , progress(0.0)
-      {}
+      ProgressStore::ProgressStore() = default;
 
       void ProgressStore::init(ProgressInterface::Ptr const& i)
       {
@@ -191,10 +188,7 @@ namespace Scroom
 
     ////////////////////////////////////////////////////////////////////////
 
-    ProgressInterfaceMultiplexer::ChildData::ChildData()
-      : state(ProgressStateInterface::IDLE)
-      , progress(0.0)
-    {}
+    ProgressInterfaceMultiplexer::ChildData::ChildData() = default;
 
     ProgressInterfaceMultiplexer::ChildData::Ptr ProgressInterfaceMultiplexer::ChildData::create()
     {

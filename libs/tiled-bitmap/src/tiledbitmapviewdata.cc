@@ -100,8 +100,8 @@ void TiledBitmapViewData::resetNeededTiles()
       TileViewState::Ptr tileViewState = tile->getViewState(viewInterface);
       tileViewState->setViewData(shared_from_this<TiledBitmapViewData>());
       tileViewState->setZoom(layerOperations, zoom);
-      newStuff.push_back(tileViewState);
-      newStuff.push_back(tileViewState->registerObserver(shared_from_this<TiledBitmapViewData>()));
+      newStuff.emplace_back(tileViewState);
+      newStuff.emplace_back(tileViewState->registerObserver(shared_from_this<TiledBitmapViewData>()));
     }
 
   // At this point, everything we need is either in the stuff list, or the newStuff list.

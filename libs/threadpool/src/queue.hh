@@ -52,10 +52,10 @@ namespace Scroom
         int getCount();
 
       private:
-        boost::mutex              mut;       /**< Guard internal data */
-        boost::condition_variable cond;      /**< Gets signaled when a job completes */
-        unsigned int              count;     /**< Number of jobs currently running */
-        bool                      isDeleted; /**< @c true if the last reference to ThreadPool::Queue goes away */
+        boost::mutex              mut;              /**< Guard internal data */
+        boost::condition_variable cond;             /**< Gets signaled when a job completes */
+        unsigned int              count{0};         /**< Number of jobs currently running */
+        bool                      isDeleted{false}; /**< @c true if the last reference to ThreadPool::Queue goes away */
 
       private:
         QueueImpl();

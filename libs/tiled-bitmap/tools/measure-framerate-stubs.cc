@@ -9,9 +9,7 @@
 
 #include <scroom/progressinterfacehelpers.hh>
 
-ProgressInterfaceStub::ProgressInterfaceStub()
-  : finished(false)
-{}
+ProgressInterfaceStub::ProgressInterfaceStub() = default;
 
 ProgressInterfaceStub::Ptr ProgressInterfaceStub::create() { return Ptr(new ProgressInterfaceStub()); }
 

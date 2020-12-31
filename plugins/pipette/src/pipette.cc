@@ -46,7 +46,6 @@ Scroom::Bookkeeping::Token Pipette::viewAdded(ViewInterface::Ptr view)
 
 PipetteHandler::PipetteHandler()
   : selection(nullptr)
-  , enabled(false)
   , currentJob(ThreadPool::Queue::createAsync())
 {}
 

@@ -26,7 +26,7 @@ public:
 
 private:
   Selection::Ptr selection;
-  bool           enabled;
+  bool           enabled{false};
 
 public:
   static Ptr create();

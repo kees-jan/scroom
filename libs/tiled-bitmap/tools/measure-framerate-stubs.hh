@@ -16,7 +16,7 @@ public:
   using Ptr = boost::shared_ptr<ProgressInterfaceStub>;
 
 private:
-  bool finished;
+  bool finished{false};
 
 private:
   ProgressInterfaceStub();
