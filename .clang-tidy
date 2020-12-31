@@ -1,6 +1,6 @@
 ---
-Checks: '*,-fuchsia-*,-google-*,-zircon-*,-abseil-*,-modernize-use-trailing-return-type,-llvm-*,-llvmlibc-*,-readability-redundant-access-specifiers'
-WarningsAsErrors: 'clang-analyzer-core.StackAddrEscapeBase,bugprone-macro-parentheses,bugprone-suspicious-string-compare,cppcoreguidelines-special-member-functions,,cppcoreguidelines-explicit-virtual-functions,readability-redundant-member-init'
+Checks: '*,-fuchsia-*,-google-*,-zircon-*,-abseil-*,-modernize-use-trailing-return-type,-llvm-*,-llvmlibc-*,-readability-redundant-access-specifiers,-readability-implicit-bool-conversion'
+WarningsAsErrors: 'clang-analyzer-core.StackAddrEscapeBase,bugprone-macro-parentheses,bugprone-suspicious-string-compare,cppcoreguidelines-special-member-functions,,cppcoreguidelines-explicit-virtual-functions,readability-redundant-member-init,readability-static-definition-in-anonymous-namespace'
 HeaderFilterRegex: 'scroom/.*'
 FormatStyle: file
 

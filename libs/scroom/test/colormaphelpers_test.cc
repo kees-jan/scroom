@@ -36,7 +36,7 @@ namespace
 
   std::ostream& operator<<(std::ostream& os, const Data&) { return os; }
 
-  static std::list<Data> helpers =
+  std::list<Data> helpers =
     boost::assign::list_of(Data(4, ColormapHelper::create(4)))(Data(2, ColormapHelper::create(Colormap::createDefault(2))))(
       Data(4, ColormapHelper::createInverted(4)))(Data(256, MonochromeColormapHelper::create(256)));
 } // namespace
