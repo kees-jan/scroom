@@ -122,12 +122,12 @@ void Layer::open(ViewInterface::WeakPtr vi)
 {
   for(CompressedTileLine& line: tiles)
   {
-    for(CompressedTile::Ptr tile: line)
+    for(const CompressedTile::Ptr& tile: line)
     {
       tile->open(vi);
     }
   }
-  for(CompressedTile::Ptr tile: lineOutOfBounds)
+  for(const CompressedTile::Ptr& tile: lineOutOfBounds)
   {
     tile->open(vi);
   }
@@ -138,12 +138,12 @@ void Layer::close(ViewInterface::WeakPtr vi)
 {
   for(CompressedTileLine& line: tiles)
   {
-    for(CompressedTile::Ptr tile: line)
+    for(const CompressedTile::Ptr& tile: line)
     {
       tile->close(vi);
     }
   }
-  for(CompressedTile::Ptr tile: lineOutOfBounds)
+  for(const CompressedTile::Ptr& tile: lineOutOfBounds)
   {
     tile->close(vi);
   }

@@ -43,7 +43,7 @@ BOOST_AUTO_TEST_CASE(Provider_provides_any_number_of_independent_blocks_of_a_giv
 
   data = 0;
   uint8_t expected[size];
-  for(Page::Ptr p: pages)
+  for(const Page::Ptr& p: pages)
   {
     RawPageData::Ptr raw = p->get();
     BOOST_REQUIRE(raw.get());

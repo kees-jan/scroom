@@ -100,7 +100,7 @@ void PipetteHandler::displayValues(ViewInterface::Ptr                   view,
   if(!colors.empty())
   {
     info << ", Colors:";
-    for(auto element: colors)
+    for(const auto& element: colors)
     {
       info << ' ' << element.first << ": " << std::fixed << element.second;
     }

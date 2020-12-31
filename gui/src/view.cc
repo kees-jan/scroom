@@ -166,7 +166,7 @@ void View::redraw(cairo_t* cr)
 
     presentation->redraw(shared_from_this<View>(), cr, rect, zoom);
 
-    for(auto renderer: postRenderers)
+    for(const auto& renderer: postRenderers)
     {
       renderer->render(shared_from_this<View>(), cr, rect, zoom);
     }
@@ -382,7 +382,7 @@ void View::toolButtonToggled(GtkToggleButton* button)
 {
   if(gtk_toggle_button_get_active(button))
   {
-    for(auto tool: tools)
+    for(const auto& tool: tools)
     {
       if(tool.first != button && gtk_toggle_button_get_active(tool.first))
       {
@@ -621,7 +621,7 @@ void View::on_buttonPress(GdkEventButton* event)
   {
     GdkPoint point = windowPointToPresentationPoint(eventToPoint(event));
     selection      = Selection::Ptr(new Selection(point));
-    for(auto listener: selectionListeners)
+    for(const auto& listener: selectionListeners)
     {
       listener->onSelectionStart(point, shared_from_this<ViewInterface>());
     }
@@ -640,7 +640,7 @@ void View::on_buttonRelease(GdkEventButton* event)
   else if(event->button == 3 && selection)
   {
     selection->end = windowPointToPresentationPoint(eventToPoint(event));
-    for(auto listener: selectionListeners)
+    for(const auto& listener: selectionListeners)
     {
       listener->onSelectionEnd(selection, shared_from_this<ViewInterface>());
     }
@@ -684,7 +684,7 @@ void View::on_motion_notify(GdkEventMotion* event)
   else if((event->state & GDK_BUTTON3_MASK) && selection)
   {
     selection->end = windowPointToPresentationPoint(eventToPoint(event));
-    for(auto listener: selectionListeners)
+    for(const auto& listener: selectionListeners)
     {
       listener->onSelectionUpdate(selection, shared_from_this<ViewInterface>());
     }

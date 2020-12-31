@@ -29,7 +29,7 @@ ProgressInterface::Ptr ViewInterfaceStub::getProgressInterface() { return pi; }
 
 void Source1Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<Tile::Ptr>& tiles)
 {
-  for(Tile::Ptr tile: tiles)
+  for(const Tile::Ptr& tile: tiles)
   {
     byte* data = tile->data.get();
     for(int y = 0; y < lineCount; y += 2)
@@ -50,7 +50,7 @@ void Source1Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<T
 
 void Source2Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<Tile::Ptr>& tiles)
 {
-  for(Tile::Ptr tile: tiles)
+  for(const Tile::Ptr& tile: tiles)
   {
     byte* data = tile->data.get();
     for(int y = 0; y < lineCount; y++)
@@ -68,7 +68,7 @@ void Source2Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<T
 
 void Source4Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<Tile::Ptr>& tiles)
 {
-  for(Tile::Ptr tile: tiles)
+  for(const Tile::Ptr& tile: tiles)
   {
     byte* data = tile->data.get();
     for(int y = 0; y < lineCount; y++)
@@ -86,7 +86,7 @@ void Source4Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<T
 
 void Source8Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<Tile::Ptr>& tiles)
 {
-  for(Tile::Ptr tile: tiles)
+  for(const Tile::Ptr& tile: tiles)
   {
     byte* data = tile->data.get();
     for(int y = 0; y < lineCount; y++)

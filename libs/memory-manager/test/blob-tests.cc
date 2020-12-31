@@ -37,7 +37,7 @@ BOOST_AUTO_TEST_CASE(blobs_retain_their_data)
   provider.reset();
 
   uint8_t data = 0;
-  for(Blob::Ptr b: blobList)
+  for(const Blob::Ptr& b: blobList)
   {
     RawPageData::Ptr raw = b->get();
     BOOST_REQUIRE(raw.get());
@@ -48,7 +48,7 @@ BOOST_AUTO_TEST_CASE(blobs_retain_their_data)
 
   data = 0;
   uint8_t expected[blobSize];
-  for(Blob::Ptr b: blobList)
+  for(const Blob::Ptr& b: blobList)
   {
     RawPageData::ConstPtr raw = b->getConst();
     BOOST_REQUIRE(raw.get());
@@ -77,7 +77,7 @@ BOOST_AUTO_TEST_CASE(blobs_can_be_updated)
   provider.reset();
 
   uint8_t data = 0;
-  for(Blob::Ptr b: blobList)
+  for(const Blob::Ptr& b: blobList)
   {
     RawPageData::Ptr raw = b->get();
     BOOST_REQUIRE(raw.get());
@@ -87,7 +87,7 @@ BOOST_AUTO_TEST_CASE(blobs_can_be_updated)
   }
 
   data = 0;
-  for(Blob::Ptr b: blobList)
+  for(const Blob::Ptr& b: blobList)
   {
     RawPageData::Ptr raw = b->get();
     BOOST_REQUIRE(raw.get());
@@ -98,7 +98,7 @@ BOOST_AUTO_TEST_CASE(blobs_can_be_updated)
 
   data = 0;
   uint8_t expected[blobSize];
-  for(Blob::Ptr b: blobList)
+  for(const Blob::Ptr& b: blobList)
   {
     RawPageData::ConstPtr raw = b->getConst();
     BOOST_REQUIRE(raw.get());

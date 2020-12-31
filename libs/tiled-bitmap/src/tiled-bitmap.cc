@@ -210,9 +210,9 @@ void TiledBitmap::connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, 
       // New line of target tiles
       coordinators_.clear();
       CompressedTileLine& tileLine = layer->getTileLine(j / 8);
-      for(unsigned int z = 0; z < tileLine.size(); z++)
+      for(auto& z: tileLine)
       {
-        LayerCoordinator::Ptr lc = LayerCoordinator::create(tileLine[z], prevLo);
+        LayerCoordinator::Ptr lc = LayerCoordinator::create(z, prevLo);
         coordinators_.push_back(lc);
         this->coordinators.push_back(lc);
       }

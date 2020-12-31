@@ -337,7 +337,7 @@ namespace Scroom
     {
       boost::mutex::scoped_lock lock(mut);
       std::list<K>              result;
-      for(typename MapType::value_type el: map)
+      for(const typename MapType::value_type& el: map)
       {
         result.push_back(el.first);
       }
@@ -349,7 +349,7 @@ namespace Scroom
     {
       boost::mutex::scoped_lock lock(mut);
       std::list<V>              result;
-      for(typename MapType::value_type el: map)
+      for(const typename MapType::value_type& el: map)
       {
         typename Detail::ValueType<V>::Ptr pv = el.second.lock();
         if(pv)

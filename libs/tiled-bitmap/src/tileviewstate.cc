@@ -223,7 +223,7 @@ void TileViewState::reportDone(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr til
   // printf("reportDone: Tile %d, %d, %d: state=%d, desired=%d\n",
   //        parent->depth, parent->x, parent->y, state, desiredState);
 
-  for(TileLoadingObserver::Ptr observer: Scroom::Utils::Observable<TileLoadingObserver>::getObservers())
+  for(const TileLoadingObserver::Ptr& observer: Scroom::Utils::Observable<TileLoadingObserver>::getObservers())
   {
     observer->tileLoaded(tile_);
   }

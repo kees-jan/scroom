@@ -612,9 +612,9 @@ void on_view_created(View::Ptr v)
   Scroom::Bookkeeping::Token t;
   views[v] = t;
 
-  for(std::list<PresentationInterface::WeakPtr>::iterator cur = presentations.begin(); cur != presentations.end(); cur++)
+  for(auto& presentation: presentations)
   {
-    PresentationInterface::Ptr p = cur->lock();
+    PresentationInterface::Ptr p = presentation.lock();
     if(p)
     {
       v->on_presentation_created(p);
@@ -671,9 +671,9 @@ void on_view_destroyed(View* v)
 
 void on_new_presentationobserver(PresentationObserver::Ptr po)
 {
-  for(std::list<PresentationInterface::WeakPtr>::iterator cur = presentations.begin(); cur != presentations.end(); cur++)
+  for(auto& presentation: presentations)
   {
-    PresentationInterface::Ptr p = cur->lock();
+    PresentationInterface::Ptr p = presentation.lock();
     if(p)
     {
       po->presentationAdded(p);

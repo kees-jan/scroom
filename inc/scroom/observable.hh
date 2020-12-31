@@ -187,7 +187,7 @@ namespace Scroom
       // deleted (which is now), it should no longer hold any
       // references to any Observers. Hence, we should manually reset
       // references to observers here.
-      for(typename Registration::Ptr registration: registrationMap->values())
+      for(const typename Registration::Ptr& registration: registrationMap->values())
       {
         registration->o.reset();
       }
@@ -197,7 +197,7 @@ namespace Scroom
     std::list<typename Observable<T>::Observer> Observable<T>::getObservers()
     {
       std::list<typename Observable<T>::Observer> result;
-      for(typename Registration::Ptr registration: registrationMap->values())
+      for(const typename Registration::Ptr& registration: registrationMap->values())
       {
         Observer o = registration->observer.lock();
         if(o)

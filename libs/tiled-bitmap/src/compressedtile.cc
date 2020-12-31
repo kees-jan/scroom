@@ -114,11 +114,11 @@ void CompressedTile::reportFinished()
 {
   CompressedTile::Ptr me = shared_from_this<CompressedTile>();
   ConstTile::Ptr      t  = do_load();
-  for(TileInitialisationObserver::Ptr observer: Observable<TileInitialisationObserver>::getObservers())
+  for(const TileInitialisationObserver::Ptr& observer: Observable<TileInitialisationObserver>::getObservers())
   {
     observer->tileFinished(me);
   }
-  for(TileLoadingObserver::Ptr observer: Observable<TileLoadingObserver>::getObservers())
+  for(const TileLoadingObserver::Ptr& observer: Observable<TileLoadingObserver>::getObservers())
   {
     observer->tileLoaded(t);
   }
@@ -257,7 +257,7 @@ void CompressedTile::cleanupState()
 
 void CompressedTile::notifyObservers(ConstTile::Ptr tile_)
 {
-  for(TileLoadingObserver::Ptr observer: Observable<TileLoadingObserver>::getObservers())
+  for(const TileLoadingObserver::Ptr& observer: Observable<TileLoadingObserver>::getObservers())
   {
     observer->tileLoaded(tile_);
   }
