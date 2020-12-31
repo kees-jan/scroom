@@ -35,9 +35,7 @@ public:
     : Rectangle(horizontalStart, verticalStart, horizontalSize, verticalSize)
   {}
 
-  RectangleHorizontalTestScaffold()
-    : Rectangle()
-  {}
+  RectangleHorizontalTestScaffold() {}
 
   RectangleHorizontalTestScaffold(const Rectangle<int>& r)
     : Rectangle(r)
@@ -75,9 +73,7 @@ public:
     : Rectangle(horizontalStart, verticalStart, horizontalSize, verticalSize)
   {}
 
-  RectangleVerticalTestScaffold()
-    : Rectangle()
-  {}
+  RectangleVerticalTestScaffold() {}
 
   RectangleVerticalTestScaffold(const Rectangle<int>& r)
     : Rectangle(r)

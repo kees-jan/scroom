@@ -57,7 +57,6 @@ inline Scroom::Utils::Rectangle<int> TileAreaForIndex(Scroom::Utils::Point<int> 
 
 FileOperation::FileOperation(ProgressInterface::Ptr progress_)
   : progress(progress_)
-  , waitingMutex()
   , waiting(true)
 {
   progress_->setWaiting();
@@ -146,7 +145,6 @@ TiledBitmap::TiledBitmap(int bitmapWidth_, int bitmapHeight_, LayerSpec const& l
   , ls(ls_)
   , tileCount(0)
   , tileFinishedCount(0)
-  , fileOperation()
   , progressBroadcaster(Scroom::Utils::ProgressInterfaceBroadcaster::create())
   , queue(ThreadPool::Queue::createAsync())
 {}

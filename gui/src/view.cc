@@ -67,8 +67,6 @@ static void on_newWindow_activate(GtkMenuItem*, gpointer user_data)
 
 View::View(GladeXML* scroomXml_)
   : scroomXml(scroomXml_)
-  , presentation()
-  , sidebarManager()
   , drawingAreaWidth(0)
   , drawingAreaHeight(0)
   , zoom(0)

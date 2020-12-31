@@ -400,10 +400,7 @@ QueueImpl::Ptr ThreadPool::WeakQueue::get() { return qi; }
 /// ThreadPool::Job
 ////////////////////////////////////////////////////////////////////////
 
-ThreadPool::Job::Job()
-  : queue()
-  , fn()
-{}
+ThreadPool::Job::Job() {}
 
 ThreadPool::Job::Job(boost::function<void()> fn_, WeakQueue::Ptr queue_)
   : queue(queue_->get())
@@ -415,8 +412,7 @@ ThreadPool::Job::Job(boost::function<void()> fn_, WeakQueue::Ptr queue_)
 ////////////////////////////////////////////////////////////////////////
 
 QueueJumper::QueueJumper()
-  : mut()
-  , inQueue(true)
+  : inQueue(true)
   , isSet(false)
 {}
 

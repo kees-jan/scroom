@@ -18,9 +18,7 @@ namespace Scroom
   namespace ColormapImpl
   {
 
-    ColormapPlugin::ColormapPlugin()
-      : presentations()
-    {}
+    ColormapPlugin::ColormapPlugin() {}
 
     ColormapPlugin::Ptr ColormapPlugin::create() { return Ptr(new ColormapPlugin()); }
 

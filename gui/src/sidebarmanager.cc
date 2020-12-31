@@ -10,7 +10,7 @@
 SidebarManager::SidebarManager()
   : panelWindow(NULL)
   , panel(NULL)
-  , widgets()
+
 {}
 
 void SidebarManager::setWidgets(GtkWidget* panelWindow_, GtkBox* panel_)

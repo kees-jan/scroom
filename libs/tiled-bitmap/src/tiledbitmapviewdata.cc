@@ -23,13 +23,11 @@ TiledBitmapViewData::Ptr TiledBitmapViewData::create(ViewInterface::WeakPtr view
 TiledBitmapViewData::TiledBitmapViewData(ViewInterface::WeakPtr viewInterface_)
   : viewInterface(viewInterface_)
   , progressInterface(viewInterface_.lock()->getProgressInterface())
-  , layer()
   , imin(0)
   , imax(0)
   , jmin(0)
   , jmax(0)
   , zoom(0)
-  , layerOperations()
   , redrawPending(false)
 {}
 
