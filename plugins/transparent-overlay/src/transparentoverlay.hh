@@ -22,7 +22,8 @@ public:
   typedef boost::shared_ptr<TransparentOverlay> Ptr;
 
 private:
-  TransparentOverlay(){};
+  TransparentOverlay() = default;
+  ;
 
 public:
   static Ptr create();

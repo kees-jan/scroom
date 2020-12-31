@@ -79,7 +79,8 @@ public:
   using Ptr = boost::shared_ptr<Pipette>;
 
 private:
-  Pipette(){};
+  Pipette() = default;
+  ;
 
 public:
   static Ptr create();

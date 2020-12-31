@@ -400,7 +400,7 @@ QueueImpl::Ptr ThreadPool::WeakQueue::get() { return qi; }
 /// ThreadPool::Job
 ////////////////////////////////////////////////////////////////////////
 
-ThreadPool::Job::Job() {}
+ThreadPool::Job::Job() = default;
 
 ThreadPool::Job::Job(boost::function<void()> fn_, WeakQueue::Ptr queue_)
   : queue(queue_->get())

@@ -73,23 +73,23 @@ namespace Scroom
         , size(other.getSize())
       {}
 
-      Segment moveTo(value_type p) const { return Segment(p, size); }
+      [[nodiscard]] Segment moveTo(value_type p) const { return Segment(p, size); }
 
-      bool contains(value_type p) const { return start <= p && p < (start + size); }
+      [[nodiscard]] bool contains(value_type p) const { return start <= p && p < (start + size); }
 
-      bool contains(const Segment<value_type>& other) const
+      [[nodiscard]] bool contains(const Segment<value_type>& other) const
       {
         return getStart() <= other.getStart() && other.getEnd() <= getEnd();
       }
 
-      bool intersects(const Segment<value_type>& other) const
+      [[nodiscard]] bool intersects(const Segment<value_type>& other) const
       {
         return getStart() < other.getEnd() && other.getStart() < getEnd() && !isEmpty() && !other.isEmpty();
       }
 
       void reduceSizeToMultipleOf(value_type m) { size -= size % m; }
 
-      Segment<value_type> intersection(const Segment<value_type>& other) const
+      [[nodiscard]] Segment<value_type> intersection(const Segment<value_type>& other) const
       {
         const value_type newStart = std::max(getStart(), other.getStart());
         const value_type newEnd   = std::min(getEnd(), other.getEnd());
@@ -103,7 +103,7 @@ namespace Scroom
 
       void intersect(const Segment<value_type>& other) { *this = intersection(other); }
 
-      Segment<value_type> before(value_type v) const
+      [[nodiscard]] Segment<value_type> before(value_type v) const
       {
         if(v < start)
           return Segment<value_type>();
@@ -112,7 +112,7 @@ namespace Scroom
         return *this;
       }
 
-      Segment<value_type> after(value_type v) const
+      [[nodiscard]] Segment<value_type> after(value_type v) const
       {
         if(v > start + size)
           return Segment<value_type>();
@@ -121,13 +121,13 @@ namespace Scroom
         return *this;
       }
 
-      value_type getStart() const { return start; }
+      [[nodiscard]] value_type getStart() const { return start; }
 
-      value_type getEnd() const { return start + size; }
+      [[nodiscard]] value_type getEnd() const { return start + size; }
 
-      value_type getSize() const { return size; }
+      [[nodiscard]] value_type getSize() const { return size; }
 
-      bool isEmpty() const { return isZero(getSize()); }
+      [[nodiscard]] bool isEmpty() const { return isZero(getSize()); }
 
       bool operator==(const Segment<value_type>& other) const
       {

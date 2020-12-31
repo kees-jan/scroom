@@ -42,9 +42,9 @@ private:
   void sendUpdates();
 
 public:
-  static Ptr                       create();
-  void                             add(PresentationInterface::Ptr const& p);
-  Scroom::Utils::Rectangle<double> getRect() const;
+  static Ptr                                     create();
+  void                                           add(PresentationInterface::Ptr const& p);
+  [[nodiscard]] Scroom::Utils::Rectangle<double> getRect() const;
 
   void open(PresentationInterface::Ptr const& p, ViewInterface::WeakPtr const& vi);
   void close(PresentationInterface::Ptr const& p, ViewInterface::WeakPtr const& vi);

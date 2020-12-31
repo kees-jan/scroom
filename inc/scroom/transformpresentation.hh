@@ -25,8 +25,8 @@ public:
 
   static Ptr create();
 
-  void                         setAspectRatio(double x, double y);
-  Scroom::Utils::Point<double> getAspectRatio() const;
+  void                                       setAspectRatio(double x, double y);
+  [[nodiscard]] Scroom::Utils::Point<double> getAspectRatio() const;
 
 private:
   TransformationData();

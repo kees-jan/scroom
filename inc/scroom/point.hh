@@ -85,7 +85,7 @@ namespace Scroom
 
       Point<value_type> operator-() const { return Point<value_type>(-x, -y); }
 
-      double magnitude() const { return sqrt(x * x + y * y); }
+      [[nodiscard]] double magnitude() const { return sqrt(x * x + y * y); }
 
     public:
       value_type x;

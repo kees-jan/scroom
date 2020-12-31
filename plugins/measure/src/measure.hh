@@ -65,7 +65,8 @@ public:
   using Ptr = boost::shared_ptr<Measure>;
 
 private:
-  Measure(){};
+  Measure() = default;
+  ;
 
 public:
   static Ptr create();

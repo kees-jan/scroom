@@ -61,31 +61,31 @@ namespace Scroom
         , vertically(rect.getVertically())
       {}
 
-      GdkRectangle toGdkRectangle() const
+      [[nodiscard]] GdkRectangle toGdkRectangle() const
       {
         return Scroom::GtkHelpers::createGdkRectangle(getLeft(), getTop(), getWidth(), getHeight());
       }
 
-      Rectangle<int> toIntRectangle() const { return Rectangle<int>(getLeft(), getTop(), getWidth(), getHeight()); }
+      [[nodiscard]] Rectangle<int> toIntRectangle() const { return Rectangle<int>(getLeft(), getTop(), getWidth(), getHeight()); }
 
-      Rectangle moveTo(Point<value_type> const& other) const { return moveTo(other.x, other.y); }
+      [[nodiscard]] Rectangle moveTo(Point<value_type> const& other) const { return moveTo(other.x, other.y); }
 
-      Rectangle moveTo(value_type const& x, value_type const& y) const
+      [[nodiscard]] Rectangle moveTo(value_type const& x, value_type const& y) const
       {
         return Rectangle(horizontally.moveTo(x), vertically.moveTo(y));
       }
 
-      bool contains(Point<value_type> const& other) const
+      [[nodiscard]] bool contains(Point<value_type> const& other) const
       {
         return horizontally.contains(other.x) && vertically.contains(other.y);
       }
 
-      bool contains(const Rectangle& other) const
+      [[nodiscard]] bool contains(const Rectangle& other) const
       {
         return horizontally.contains(other.horizontally) && vertically.contains(other.vertically);
       }
 
-      bool intersects(const Rectangle& other) const
+      [[nodiscard]] bool intersects(const Rectangle& other) const
       {
         return horizontally.intersects(other.horizontally) && vertically.intersects(other.vertically);
       }
@@ -96,58 +96,82 @@ namespace Scroom
         vertically.reduceSizeToMultipleOf(size);
       }
 
-      Rectangle intersection(const Rectangle& other) const
+      [[nodiscard]] Rectangle intersection(const Rectangle& other) const
       {
         return Rectangle(horizontally.intersection(other.horizontally), vertically.intersection(other.vertically));
       }
 
       template <typename U>
-      Rectangle<typename std::common_type<T, U>::type> intersection(const Rectangle<U>& other) const
+      [[nodiscard]] Rectangle<typename std::common_type<T, U>::type> intersection(const Rectangle<U>& other) const
       {
         using R = typename std::common_type<T, U>::type;
 
         return Rectangle<R>(*this).intersection(Rectangle<R>(other));
       }
 
-      value_type getTop() const { return vertically.getStart(); }
+      [[nodiscard]] value_type getTop() const { return vertically.getStart(); }
 
-      value_type getLeft() const { return horizontally.getStart(); }
+      [[nodiscard]] value_type getLeft() const { return horizontally.getStart(); }
 
-      value_type getBottom() const { return vertically.getEnd(); }
+      [[nodiscard]] value_type getBottom() const { return vertically.getEnd(); }
 
-      value_type getRight() const { return horizontally.getEnd(); }
+      [[nodiscard]] value_type getRight() const { return horizontally.getEnd(); }
 
-      value_type getWidth() const { return horizontally.getSize(); }
+      [[nodiscard]] value_type getWidth() const { return horizontally.getSize(); }
 
-      value_type getHeight() const { return vertically.getSize(); }
+      [[nodiscard]] value_type getHeight() const { return vertically.getSize(); }
 
-      value_type x() const { return getLeft(); }
+      [[nodiscard]] value_type x() const { return getLeft(); }
 
-      value_type y() const { return getTop(); }
+      [[nodiscard]] value_type y() const { return getTop(); }
 
-      value_type width() const { return getWidth(); }
+      [[nodiscard]] value_type width() const { return getWidth(); }
 
-      value_type height() const { return getHeight(); }
+      [[nodiscard]] value_type height() const { return getHeight(); }
 
-      Point<value_type> getTopLeft() const { return Point<value_type>(horizontally.getStart(), vertically.getStart()); }
+      [[nodiscard]] Point<value_type> getTopLeft() const
+      {
+        return Point<value_type>(horizontally.getStart(), vertically.getStart());
+      }
 
-      Point<value_type> getTopRight() const { return Point<value_type>(horizontally.getEnd(), vertically.getStart()); }
+      [[nodiscard]] Point<value_type> getTopRight() const
+      {
+        return Point<value_type>(horizontally.getEnd(), vertically.getStart());
+      }
 
-      Point<value_type> getBottomLeft() const { return Point<value_type>(horizontally.getStart(), vertically.getEnd()); }
+      [[nodiscard]] Point<value_type> getBottomLeft() const
+      {
+        return Point<value_type>(horizontally.getStart(), vertically.getEnd());
+      }
 
-      Point<value_type> getBottomRight() const { return Point<value_type>(horizontally.getEnd(), vertically.getEnd()); }
+      [[nodiscard]] Point<value_type> getBottomRight() const
+      {
+        return Point<value_type>(horizontally.getEnd(), vertically.getEnd());
+      }
 
-      bool isEmpty() const { return horizontally.isEmpty() || vertically.isEmpty(); }
+      [[nodiscard]] bool isEmpty() const { return horizontally.isEmpty() || vertically.isEmpty(); }
 
-      Rectangle<value_type> leftOf(value_type v) const { return Rectangle<value_type>(horizontally.before(v), vertically); }
+      [[nodiscard]] Rectangle<value_type> leftOf(value_type v) const
+      {
+        return Rectangle<value_type>(horizontally.before(v), vertically);
+      }
 
-      Rectangle<value_type> rightOf(value_type v) const { return Rectangle<value_type>(horizontally.after(v), vertically); }
+      [[nodiscard]] Rectangle<value_type> rightOf(value_type v) const
+      {
+        return Rectangle<value_type>(horizontally.after(v), vertically);
+      }
 
-      Rectangle<value_type> above(value_type v) const { return Rectangle<value_type>(horizontally, vertically.before(v)); }
+      [[nodiscard]] Rectangle<value_type> above(value_type v) const
+      {
+        return Rectangle<value_type>(horizontally, vertically.before(v));
+      }
 
-      Rectangle<value_type> below(value_type v) const { return Rectangle<value_type>(horizontally, vertically.after(v)); }
+      [[nodiscard]] Rectangle<value_type> below(value_type v) const
+      {
+        return Rectangle<value_type>(horizontally, vertically.after(v));
+      }
 
-      Rectangle<value_type> leftOf(Rectangle<value_type> const& r) const
+      [[nodiscard]] Rectangle<value_type> leftOf(Rectangle<value_type> const& r) const
       {
         if(r.isEmpty())
           return r;
@@ -155,7 +179,7 @@ namespace Scroom
         return Rectangle<value_type>(horizontally.before(r.horizontally.getStart()), vertically.intersection(r.vertically));
       }
 
-      Rectangle<value_type> rightOf(Rectangle<value_type> const& r) const
+      [[nodiscard]] Rectangle<value_type> rightOf(Rectangle<value_type> const& r) const
       {
         if(r.isEmpty())
           return r;
@@ -163,7 +187,7 @@ namespace Scroom
         return Rectangle<value_type>(horizontally.after(r.horizontally.getEnd()), vertically.intersection(r.vertically));
       }
 
-      Rectangle<value_type> above(Rectangle<value_type> const& r) const
+      [[nodiscard]] Rectangle<value_type> above(Rectangle<value_type> const& r) const
       {
         if(r.isEmpty())
           return r;
@@ -171,7 +195,7 @@ namespace Scroom
         return Rectangle<value_type>(horizontally.intersection(r.horizontally), vertically.before(r.vertically.getStart()));
       }
 
-      Rectangle<value_type> below(Rectangle<value_type> const& r) const
+      [[nodiscard]] Rectangle<value_type> below(Rectangle<value_type> const& r) const
       {
         if(r.isEmpty())
           return r;
@@ -228,9 +252,9 @@ namespace Scroom
         return *this;
       }
 
-      const Segment<value_type>& getHorizontally() const { return horizontally; }
+      [[nodiscard]] const Segment<value_type>& getHorizontally() const { return horizontally; }
 
-      const Segment<value_type>& getVertically() const { return vertically; }
+      [[nodiscard]] const Segment<value_type>& getVertically() const { return vertically; }
 
       void setSize(Point<value_type> const& s)
       {
@@ -238,7 +262,7 @@ namespace Scroom
         vertically.setSize(s.y);
       }
 
-      Point<value_type> getSize() const { return Point<value_type>(horizontally.getSize(), vertically.getSize()); }
+      [[nodiscard]] Point<value_type> getSize() const { return Point<value_type>(horizontally.getSize(), vertically.getSize()); }
 
     private:
       Segment<value_type> horizontally;

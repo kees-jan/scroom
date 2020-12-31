@@ -35,21 +35,21 @@ public:
     : Rectangle(horizontalStart, verticalStart, horizontalSize, verticalSize)
   {}
 
-  RectangleHorizontalTestScaffold() {}
+  RectangleHorizontalTestScaffold() = default;
 
   RectangleHorizontalTestScaffold(const Rectangle<int>& r)
     : Rectangle(r)
   {}
 
-  int getSize() const { return getWidth(); }
+  [[nodiscard]] int getSize() const { return getWidth(); }
 
-  int  getStart() const { return getLeft(); }
-  int  getEnd() const { return getLeft() + getWidth(); }
-  bool contains(int x) const { return Rectangle::contains(make_point(x, verticalContainedStart)); }
+  [[nodiscard]] int  getStart() const { return getLeft(); }
+  [[nodiscard]] int  getEnd() const { return getLeft() + getWidth(); }
+  [[nodiscard]] bool contains(int x) const { return Rectangle::contains(make_point(x, verticalContainedStart)); }
 
-  bool contains(const RectangleHorizontalTestScaffold& other) const { return Rectangle<int>::contains(other); }
+  [[nodiscard]] bool contains(const RectangleHorizontalTestScaffold& other) const { return Rectangle<int>::contains(other); }
 
-  RectangleHorizontalTestScaffold intersection(const RectangleHorizontalTestScaffold& other) const
+  [[nodiscard]] RectangleHorizontalTestScaffold intersection(const RectangleHorizontalTestScaffold& other) const
   {
     return Rectangle<int>::intersection(other);
   }
@@ -73,20 +73,20 @@ public:
     : Rectangle(horizontalStart, verticalStart, horizontalSize, verticalSize)
   {}
 
-  RectangleVerticalTestScaffold() {}
+  RectangleVerticalTestScaffold() = default;
 
   RectangleVerticalTestScaffold(const Rectangle<int>& r)
     : Rectangle(r)
   {}
 
-  int  getSize() const { return getHeight(); }
-  int  getStart() const { return getTop(); }
-  int  getEnd() const { return getTop() + getHeight(); }
-  bool contains(int y) const { return Rectangle::contains(make_point(horizontalContainedStart, y)); }
+  [[nodiscard]] int  getSize() const { return getHeight(); }
+  [[nodiscard]] int  getStart() const { return getTop(); }
+  [[nodiscard]] int  getEnd() const { return getTop() + getHeight(); }
+  [[nodiscard]] bool contains(int y) const { return Rectangle::contains(make_point(horizontalContainedStart, y)); }
 
-  bool contains(const RectangleVerticalTestScaffold& other) const { return Rectangle<int>::contains(other); }
+  [[nodiscard]] bool contains(const RectangleVerticalTestScaffold& other) const { return Rectangle<int>::contains(other); }
 
-  RectangleVerticalTestScaffold intersection(const RectangleVerticalTestScaffold& other) const
+  [[nodiscard]] RectangleVerticalTestScaffold intersection(const RectangleVerticalTestScaffold& other) const
   {
     return Rectangle<int>::intersection(other);
   }

@@ -91,21 +91,21 @@ public:
     return *this;
   }
 
-  uint32_t getRGB24() const
+  [[nodiscard]] uint32_t getRGB24() const
   {
     return 0xFF000000 | byteFromDouble(red) << 16 | byteFromDouble(green) << 8 | byteFromDouble(blue) << 0;
   }
 
-  uint32_t getARGB32() const
+  [[nodiscard]] uint32_t getARGB32() const
   {
     return byteFromDouble(alpha) << 24 | byteFromDouble(red) << 16 | byteFromDouble(green) << 8 | byteFromDouble(blue) << 0;
   }
 
   void setColor(cairo_t* cr) const { cairo_set_source_rgba(cr, red, green, blue, alpha); }
 
-  GdkColor getGdkColor() const { return {0, shortFromDouble(red), shortFromDouble(green), shortFromDouble(blue)}; }
+  [[nodiscard]] GdkColor getGdkColor() const { return {0, shortFromDouble(red), shortFromDouble(green), shortFromDouble(blue)}; }
 
-  Color getContrastingBlackOrWhite() const
+  [[nodiscard]] Color getContrastingBlackOrWhite() const
   {
     // see http://stackoverflow.com/a/3943023
     double L = 0.2126 * computeC(red) + 0.7152 * computeC(green) + 0.0722 * computeC(blue);
@@ -114,7 +114,7 @@ public:
 
   Color& setAlpha(double alpha_) { return *this *= alpha_; }
 
-  Color setAlpha(double alpha_) const { return Color(*this).setAlpha(alpha_); }
+  [[nodiscard]] Color setAlpha(double alpha_) const { return Color(*this).setAlpha(alpha_); }
 };
 
 inline Color mix(const Color& a, const Color& b, double alpha) { return a * alpha + b * (1.0 - alpha); }

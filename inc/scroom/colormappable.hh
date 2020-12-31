@@ -74,7 +74,7 @@ public:
     return result;
   }
 
-  Ptr clone() const { return Ptr(new Colormap(*this)); }
+  [[nodiscard]] Ptr clone() const { return Ptr(new Colormap(*this)); }
 
   void setAlpha(double alpha)
   {
@@ -82,7 +82,7 @@ public:
       c.setAlpha(alpha);
   }
 
-  Ptr setAlpha(double alpha) const
+  [[nodiscard]] Ptr setAlpha(double alpha) const
   {
     Ptr result = clone();
     result->setAlpha(alpha);
