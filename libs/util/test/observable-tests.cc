@@ -58,7 +58,7 @@ public:
   static Ptr create(TestObservable::Ptr child);
 
 protected:
-  virtual void observerAdded(Observer const& observer, Scroom::Bookkeeping::Token const& token);
+  void observerAdded(Observer const& observer, Scroom::Bookkeeping::Token const& token) override;
 };
 
 TestRecursiveObservable::TestRecursiveObservable(TestObservable::Ptr child_)

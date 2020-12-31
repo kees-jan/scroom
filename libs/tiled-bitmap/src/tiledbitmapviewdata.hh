@@ -73,11 +73,11 @@ public:
   void clearVolatileStuff();
 
   // TileLoadingObserver ////////////////////////////////////////////////
-  virtual void tileLoaded(ConstTile::Ptr tile);
+  void tileLoaded(ConstTile::Ptr tile) override;
 
   // ProgressInterface ///////////////////////////////////////////////////
-  virtual void setIdle();
-  virtual void setWaiting(double progress = 0.0);
-  virtual void setWorking(double progress);
-  virtual void setFinished();
+  void setIdle() override;
+  void setWaiting(double progress = 0.0) override;
+  void setWorking(double progress) override;
+  void setFinished() override;
 };

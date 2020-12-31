@@ -18,17 +18,17 @@ class DummyLayerOperations : public LayerOperations
 public:
   static Ptr create() { return Ptr(new DummyLayerOperations()); }
 
-  virtual int  getBpp() { return 8; }
-  virtual void initializeCairo(cairo_t*) {}
-  virtual void draw(cairo_t*,
-                    const ConstTile::Ptr,
-                    Scroom::Utils::Rectangle<double>,
-                    Scroom::Utils::Rectangle<double>,
-                    int,
-                    Scroom::Utils::Stuff)
+  int  getBpp() override { return 8; }
+  void initializeCairo(cairo_t*) override {}
+  void draw(cairo_t*,
+            const ConstTile::Ptr,
+            Scroom::Utils::Rectangle<double>,
+            Scroom::Utils::Rectangle<double>,
+            int,
+            Scroom::Utils::Stuff) override
   {}
-  virtual void drawState(cairo_t*, TileState, Scroom::Utils::Rectangle<double>) {}
-  virtual void reduce(Tile::Ptr, const ConstTile::Ptr, int, int) {}
+  void drawState(cairo_t*, TileState, Scroom::Utils::Rectangle<double>) override {}
+  void reduce(Tile::Ptr, const ConstTile::Ptr, int, int) override {}
 };
 
 //////////////////////////////////////////////////////////////

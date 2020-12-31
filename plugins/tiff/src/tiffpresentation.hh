@@ -92,8 +92,8 @@ public:
   // SourcePresentation
   ////////////////////////////////////////////////////////////////////////
 public:
-  virtual void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles);
-  virtual void done();
+  void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles) override;
+  void done() override;
 
   ////////////////////////////////////////////////////////////////////////
   // PipetteViewInterface
@@ -154,36 +154,36 @@ public:
   // PresentationInterface
   ////////////////////////////////////////////////////////////////////////
 
-  virtual Scroom::Utils::Rectangle<double> getRect();
-  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom);
-  virtual bool getProperty(const std::string& name, std::string& value);
-  virtual bool isPropertyDefined(const std::string& name);
-  virtual std::string getTitle();
+  Scroom::Utils::Rectangle<double> getRect() override;
+  void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom) override;
+  bool getProperty(const std::string& name, std::string& value) override;
+  bool isPropertyDefined(const std::string& name) override;
+  std::string getTitle() override;
 
   ////////////////////////////////////////////////////////////////////////
   // PipetteViewInterface
   ////////////////////////////////////////////////////////////////////////
 
-  virtual PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<int> area);
+  PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<int> area) override;
 
   ////////////////////////////////////////////////////////////////////////
   // PresentationBase
   ////////////////////////////////////////////////////////////////////////
 
-  virtual void                             viewAdded(ViewInterface::WeakPtr viewInterface);
-  virtual void                             viewRemoved(ViewInterface::WeakPtr vi);
-  virtual std::set<ViewInterface::WeakPtr> getViews();
+  void                             viewAdded(ViewInterface::WeakPtr viewInterface) override;
+  void                             viewRemoved(ViewInterface::WeakPtr vi) override;
+  std::set<ViewInterface::WeakPtr> getViews() override;
 
   ////////////////////////////////////////////////////////////////////////
   // Colormappable
   ////////////////////////////////////////////////////////////////////////
 
-  virtual void          setColormap(Colormap::Ptr colormap);
-  virtual Colormap::Ptr getOriginalColormap();
-  virtual int           getNumberOfColors();
-  virtual Color         getMonochromeColor();
-  virtual void          setMonochromeColor(const Color& c);
-  virtual void          setTransparentBackground();
-  virtual void          disableTransparentBackground();
-  virtual bool          getTransparentBackground();
+  void          setColormap(Colormap::Ptr colormap) override;
+  Colormap::Ptr getOriginalColormap() override;
+  int           getNumberOfColors() override;
+  Color         getMonochromeColor() override;
+  void          setMonochromeColor(const Color& c) override;
+  void          setTransparentBackground() override;
+  void          disableTransparentBackground() override;
+  bool          getTransparentBackground() override;
 };

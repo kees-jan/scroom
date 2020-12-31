@@ -46,10 +46,10 @@ namespace Scroom
     public:
       // ProgressInterface ///////////////////////////////////////////////////
 
-      virtual void setIdle();
-      virtual void setWaiting(double progress = 0.0);
-      virtual void setWorking(double progress);
-      virtual void setFinished();
+      void setIdle() override;
+      void setWaiting(double progress = 0.0) override;
+      void setWorking(double progress) override;
+      void setFinished() override;
     };
 
     class ProgressInterfaceFromProgressStateInterfaceForwarder : public ProgressInterfaceFromProgressStateInterface
@@ -68,7 +68,7 @@ namespace Scroom
 
     protected:
       // ProgressStateInterface //////////////////////////////////////////////
-      virtual void setProgress(State s, double progress = 0.0);
+      void setProgress(State s, double progress = 0.0) override;
     };
 
     class ProgressStateInterfaceFromProgressInterface
@@ -76,7 +76,7 @@ namespace Scroom
       , protected ProgressInterface
     {
     public:
-      virtual void setProgress(State s, double progress = 0.0);
+      void setProgress(State s, double progress = 0.0) override;
     };
 
     class ProgressStateInterfaceFromProgressInterfaceForwarder : public ProgressStateInterfaceFromProgressInterface
@@ -94,10 +94,10 @@ namespace Scroom
       static Ptr create(ProgressInterface::Ptr child);
 
     protected:
-      virtual void setIdle();
-      virtual void setWaiting(double progress = 0.0);
-      virtual void setWorking(double progress);
-      virtual void setFinished();
+      void setIdle() override;
+      void setWaiting(double progress = 0.0) override;
+      void setWorking(double progress) override;
+      void setFinished() override;
     };
 
     namespace Detail
@@ -121,7 +121,7 @@ namespace Scroom
 
       protected:
         // ProgressStateInterface //////////////////////////////////////////////
-        virtual void setProgress(State s, double progress = 0.0);
+        void setProgress(State s, double progress = 0.0) override;
       };
     } // namespace Detail
 
@@ -174,10 +174,10 @@ namespace Scroom
 
       // ProgressInterface ///////////////////////////////////////////////////
 
-      virtual void setIdle();
-      virtual void setWaiting(double progress = 0.0);
-      virtual void setWorking(double progress);
-      virtual void setFinished();
+      void setIdle() override;
+      void setWaiting(double progress = 0.0) override;
+      void setWorking(double progress) override;
+      void setFinished() override;
     };
 
     class ProgressInterfaceMultiplexer : public virtual Base
@@ -205,7 +205,7 @@ namespace Scroom
         void clearFinished();
 
         // ProgressStateInterface ///////////////////////////////////////////////////
-        virtual void setProgress(State s, double progress = 0.0);
+        void setProgress(State s, double progress = 0.0) override;
       };
 
       class Child : public ProgressInterfaceFromProgressStateInterface
@@ -230,7 +230,7 @@ namespace Scroom
         ~Child();
 
         // ProgressStateInterface ///////////////////////////////////////////////////
-        virtual void setProgress(State s, double progress = 0.0);
+        void setProgress(State s, double progress = 0.0) override;
       };
 
       friend class Child;

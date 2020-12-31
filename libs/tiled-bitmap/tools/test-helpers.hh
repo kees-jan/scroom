@@ -36,7 +36,7 @@ public:
   static Ptr create(Colormap::Ptr colormap);
 
 public:
-  virtual Colormap::Ptr getColormap();
+  Colormap::Ptr getColormap() override;
 };
 
 class TestData

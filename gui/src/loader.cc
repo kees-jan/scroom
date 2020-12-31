@@ -155,11 +155,11 @@ public:
 
   // ScroomInterface //////////////////////////////////////////////////////
 
-  virtual PresentationInterface::Ptr newPresentation(std::string const& name);
-  virtual Aggregate::Ptr             newAggregate(std::string const& name);
-  virtual PresentationInterface::Ptr loadPresentation(std::string const& name, std::string const& relativeTo = std::string());
+  PresentationInterface::Ptr newPresentation(std::string const& name) override;
+  Aggregate::Ptr             newAggregate(std::string const& name) override;
+  PresentationInterface::Ptr loadPresentation(std::string const& name, std::string const& relativeTo = std::string()) override;
 
-  virtual void showPresentation(PresentationInterface::Ptr const& presentation);
+  void showPresentation(PresentationInterface::Ptr const& presentation) override;
 };
 
 ////////////////////////////////////////////////////////////////////////

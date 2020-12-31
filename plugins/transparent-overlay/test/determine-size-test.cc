@@ -64,15 +64,15 @@ namespace
   public:
     static Ptr create(Scroom::Utils::Rectangle<double> const& rect) { return Ptr(new PresentationInterfaceStub(rect)); }
 
-    virtual Scroom::Utils::Rectangle<double> getRect() { return rect; }
+    Scroom::Utils::Rectangle<double> getRect() override { return rect; }
 
-    virtual void        redraw(ViewInterface::Ptr const&, cairo_t*, Scroom::Utils::Rectangle<double>, int) {}
-    virtual bool        getProperty(const std::string&, std::string&) { return false; }
-    virtual bool        isPropertyDefined(const std::string&) { return false; }
-    virtual std::string getTitle() { return ""; }
+    void        redraw(ViewInterface::Ptr const&, cairo_t*, Scroom::Utils::Rectangle<double>, int) override {}
+    bool        getProperty(const std::string&, std::string&) override { return false; }
+    bool        isPropertyDefined(const std::string&) override { return false; }
+    std::string getTitle() override { return ""; }
 
-    virtual void open(ViewInterface::WeakPtr) {}
-    virtual void close(ViewInterface::WeakPtr) {}
+    void open(ViewInterface::WeakPtr) override {}
+    void close(ViewInterface::WeakPtr) override {}
   };
 
   class ResizablePresentationInterfaceStub
@@ -94,7 +94,7 @@ namespace
   public:
     static Ptr create(Scroom::Utils::Rectangle<double> const& rect) { return Ptr(new ResizablePresentationInterfaceStub(rect)); }
 
-    virtual void setRect(ViewInterface::WeakPtr const& vi, Scroom::Utils::Rectangle<double> const& rect_)
+    void setRect(ViewInterface::WeakPtr const& vi, Scroom::Utils::Rectangle<double> const& rect_) override
     {
       receivedVi.push_back(vi);
       receivedRect.push_back(rect_);
@@ -131,20 +131,20 @@ namespace
   public:
     static Ptr create() { return Ptr(new ViewInterfaceDummy()); }
 
-    virtual void                                     invalidate() {}
-    virtual ProgressInterface::Ptr                   getProgressInterface() { return ProgressInterface::Ptr(); }
-    virtual void                                     addSideWidget(std::string, GtkWidget*) {}
-    virtual void                                     removeSideWidget(GtkWidget*) {}
-    virtual void                                     addToToolbar(GtkToolItem*) {}
-    virtual void                                     removeFromToolbar(GtkToolItem*) {}
-    virtual void                                     registerSelectionListener(SelectionListener::Ptr){};
-    virtual void                                     registerPostRenderer(PostRenderer::Ptr){};
-    virtual void                                     setStatusMessage(const std::string&){};
-    virtual boost::shared_ptr<PresentationInterface> getCurrentPresentation()
+    void                                     invalidate() override {}
+    ProgressInterface::Ptr                   getProgressInterface() override { return ProgressInterface::Ptr(); }
+    void                                     addSideWidget(std::string, GtkWidget*) override {}
+    void                                     removeSideWidget(GtkWidget*) override {}
+    void                                     addToToolbar(GtkToolItem*) override {}
+    void                                     removeFromToolbar(GtkToolItem*) override {}
+    void                                     registerSelectionListener(SelectionListener::Ptr) override{};
+    void                                     registerPostRenderer(PostRenderer::Ptr) override{};
+    void                                     setStatusMessage(const std::string&) override{};
+    boost::shared_ptr<PresentationInterface> getCurrentPresentation() override
     {
       return boost::shared_ptr<PresentationInterface>();
     };
-    virtual void addToolButton(GtkToggleButton*, ToolStateListener::Ptr){};
+    void addToolButton(GtkToggleButton*, ToolStateListener::Ptr) override{};
   };
 
 } // namespace

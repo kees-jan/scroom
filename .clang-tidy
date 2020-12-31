@@ -1,7 +1,7 @@
 ---
 Checks: '*,-fuchsia-*,-google-*,-zircon-*,-abseil-*,-modernize-use-trailing-return-type,-llvm-*,-llvmlibc-*,-readability-redundant-access-specifiers'
-WarningsAsErrors: 'clang-analyzer-core.StackAddrEscapeBase,bugprone-macro-parentheses,bugprone-suspicious-string-compare,cppcoreguidelines-special-member-functions'
+WarningsAsErrors: 'clang-analyzer-core.StackAddrEscapeBase,bugprone-macro-parentheses,bugprone-suspicious-string-compare,cppcoreguidelines-special-member-functions,,cppcoreguidelines-explicit-virtual-functions'
 HeaderFilterRegex: 'scroom/.*'
-FormatStyle:     file
+FormatStyle: file
 
 

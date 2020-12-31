@@ -162,19 +162,19 @@ public:
   ////////////////////////////////////////////////////////////////////////
   // Colormappable
   ////////////////////////////////////////////////////////////////////////
-  virtual void          setColormap(Colormap::Ptr colormap);
-  virtual Colormap::Ptr getOriginalColormap();
-  virtual int           getNumberOfColors();
-  virtual Color         getMonochromeColor();
-  virtual void          setMonochromeColor(const Color& c);
-  virtual void          setTransparentBackground();
-  virtual void          disableTransparentBackground();
-  virtual bool          getTransparentBackground();
+  void          setColormap(Colormap::Ptr colormap) override;
+  Colormap::Ptr getOriginalColormap() override;
+  int           getNumberOfColors() override;
+  Color         getMonochromeColor() override;
+  void          setMonochromeColor(const Color& c) override;
+  void          setTransparentBackground() override;
+  void          disableTransparentBackground() override;
+  bool          getTransparentBackground() override;
 
   ////////////////////////////////////////////////////////////////////////
   // ColormapProvider
   ////////////////////////////////////////////////////////////////////////
-  virtual Colormap::Ptr getColormap();
+  Colormap::Ptr getColormap() override;
 
   ////////////////////////////////////////////////////////////////////////
   // Helpers
@@ -206,11 +206,11 @@ public:
   // Colormappable
   ////////////////////////////////////////////////////////////////////////
 
-  virtual Color getMonochromeColor();
-  virtual void  setMonochromeColor(const Color& c);
-  virtual void  setTransparentBackground();
-  virtual void  disableTransparentBackground();
-  virtual bool  getTransparentBackground();
+  Color getMonochromeColor() override;
+  void  setMonochromeColor(const Color& c) override;
+  void  setTransparentBackground() override;
+  void  disableTransparentBackground() override;
+  bool  getTransparentBackground() override;
 
 private:
   MonochromeColormapHelper(int numberOfColors, bool inverted);

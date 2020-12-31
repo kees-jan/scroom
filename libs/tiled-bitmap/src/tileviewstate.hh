@@ -69,7 +69,7 @@ public:
   void                 setZoom(LayerOperations::Ptr lo, int zoom);
 
   // TileLoadingObserver /////////////////////////////////////////////////
-  virtual void tileLoaded(ConstTile::Ptr tile);
+  void tileLoaded(ConstTile::Ptr tile) override;
 
 private:
   TileViewState(boost::shared_ptr<CompressedTile> parent);

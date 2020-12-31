@@ -37,18 +37,18 @@ public:
   static Ptr create();
 
   // PresentationInterface ///////////////////////////////////////////////
-  virtual Scroom::Utils::Rectangle<double> getRect();
-  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom);
-  virtual bool getProperty(const std::string& name, std::string& value);
-  virtual bool isPropertyDefined(const std::string& name);
-  virtual std::string                      getTitle();
-  virtual void                             viewAdded(ViewInterface::WeakPtr vi);
-  virtual void                             viewRemoved(ViewInterface::WeakPtr vi);
-  virtual std::set<ViewInterface::WeakPtr> getViews();
+  Scroom::Utils::Rectangle<double> getRect() override;
+  void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom) override;
+  bool getProperty(const std::string& name, std::string& value) override;
+  bool isPropertyDefined(const std::string& name) override;
+  std::string                      getTitle() override;
+  void                             viewAdded(ViewInterface::WeakPtr vi) override;
+  void                             viewRemoved(ViewInterface::WeakPtr vi) override;
+  std::set<ViewInterface::WeakPtr> getViews() override;
 
   // Aggregate ///////////////////////////////////////////////////////////
 
-  virtual void addPresentation(PresentationInterface::Ptr const& p);
+  void addPresentation(PresentationInterface::Ptr const& p) override;
 
 private:
   void setOptimalColor(PresentationInterface::Ptr const& p);

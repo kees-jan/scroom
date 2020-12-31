@@ -72,18 +72,18 @@ private:
 public:
   static Ptr create();
 
-  virtual bool doWork();
+  bool doWork() override;
 
   void addHook(bool devMode);
 
-  virtual void registerNewPresentationInterface(const std::string&            identifier,
-                                                NewPresentationInterface::Ptr newPresentationInterface);
-  virtual void registerNewAggregateInterface(const std::string& identifier, NewAggregateInterface::Ptr newAggregateInterface);
-  virtual void registerOpenPresentationInterface(const std::string&             extension,
-                                                 OpenPresentationInterface::Ptr openPresentationInterface);
-  virtual void registerOpenInterface(const std::string& extension, OpenInterface::Ptr openInterface);
-  virtual void registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer);
-  virtual void registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer);
+  void registerNewPresentationInterface(const std::string&            identifier,
+                                        NewPresentationInterface::Ptr newPresentationInterface) override;
+  void registerNewAggregateInterface(const std::string& identifier, NewAggregateInterface::Ptr newAggregateInterface) override;
+  void registerOpenPresentationInterface(const std::string&             extension,
+                                         OpenPresentationInterface::Ptr openPresentationInterface) override;
+  void registerOpenInterface(const std::string& extension, OpenInterface::Ptr openInterface) override;
+  void registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer) override;
+  void registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer) override;
 
   const std::map<NewPresentationInterface::Ptr, std::string>&  getNewPresentationInterfaces();
   const std::map<std::string, NewAggregateInterface::Ptr>&     getNewAggregateInterfaces();

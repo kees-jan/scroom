@@ -153,12 +153,12 @@ protected:
    * TileInitialisationObserver::tileCreated() event immediately, on your
    * thread. Be careful with your mutexes :-)
    */
-  virtual void observerAdded(TileInitialisationObserver::Ptr const& observer, Scroom::Bookkeeping::Token const& token);
+  void observerAdded(TileInitialisationObserver::Ptr const& observer, Scroom::Bookkeeping::Token const& token) override;
 
   /**
    * Keep track of new TileLoadingObserver registrations.
    */
-  virtual void observerAdded(TileLoadingObserver::Ptr const& observer, Scroom::Bookkeeping::Token const& token);
+  void observerAdded(TileLoadingObserver::Ptr const& observer, Scroom::Bookkeeping::Token const& token) override;
 
 public:
   // To choose between overloaded functions, the compiler needs some extra convincing
@@ -226,8 +226,8 @@ private:
 
   // Viewable ////////////////////////////////////////////////////////////
 public:
-  virtual void open(ViewInterface::WeakPtr vi);
-  virtual void close(ViewInterface::WeakPtr vi);
+  void open(ViewInterface::WeakPtr vi) override;
+  void close(ViewInterface::WeakPtr vi) override;
 };
 
 typedef std::vector<CompressedTile::Ptr> CompressedTileLine;
@@ -286,6 +286,6 @@ public:
 
 public:
   // Viewable ////////////////////////////////////////////////////////////
-  void open(ViewInterface::WeakPtr vi);
-  void close(ViewInterface::WeakPtr vi);
+  void open(ViewInterface::WeakPtr vi) override;
+  void close(ViewInterface::WeakPtr vi) override;
 };

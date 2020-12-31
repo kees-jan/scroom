@@ -27,10 +27,10 @@ public:
   bool isFinished();
 
   // ProgressInterface ///////////////////////////////////////////////////
-  virtual void setIdle() {}
-  virtual void setWaiting(double) {}
-  virtual void setWorking(double) {}
-  virtual void setFinished();
+  void setIdle() override {}
+  void setWaiting(double) override {}
+  void setWorking(double) override {}
+  void setFinished() override;
 };
 
 class ViewInterfaceStub : public ViewInterface
@@ -45,47 +45,47 @@ private:
   ViewInterfaceStub(ProgressInterface::Ptr pi);
 
 public:
-  static Ptr                                       create(ProgressInterface::Ptr pi);
-  virtual void                                     invalidate() {}
-  virtual ProgressInterface::Ptr                   getProgressInterface();
-  virtual void                                     addSideWidget(std::string, GtkWidget*) {}
-  virtual void                                     removeSideWidget(GtkWidget*) {}
-  virtual void                                     addToToolbar(GtkToolItem*) {}
-  virtual void                                     removeFromToolbar(GtkToolItem*) {}
-  virtual void                                     registerSelectionListener(SelectionListener::Ptr){};
-  virtual void                                     registerPostRenderer(PostRenderer::Ptr){};
-  virtual void                                     setStatusMessage(const std::string&){};
-  virtual boost::shared_ptr<PresentationInterface> getCurrentPresentation()
+  static Ptr                               create(ProgressInterface::Ptr pi);
+  void                                     invalidate() override {}
+  ProgressInterface::Ptr                   getProgressInterface() override;
+  void                                     addSideWidget(std::string, GtkWidget*) override {}
+  void                                     removeSideWidget(GtkWidget*) override {}
+  void                                     addToToolbar(GtkToolItem*) override {}
+  void                                     removeFromToolbar(GtkToolItem*) override {}
+  void                                     registerSelectionListener(SelectionListener::Ptr) override{};
+  void                                     registerPostRenderer(PostRenderer::Ptr) override{};
+  void                                     setStatusMessage(const std::string&) override{};
+  boost::shared_ptr<PresentationInterface> getCurrentPresentation() override
   {
     return boost::shared_ptr<PresentationInterface>();
   };
-  virtual void addToolButton(GtkToggleButton*, ToolStateListener::Ptr){};
+  void addToolButton(GtkToggleButton*, ToolStateListener::Ptr) override{};
 };
 
 class Source1Bpp : public SourcePresentation
 {
 public:
-  virtual void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles);
-  virtual void done(){};
+  void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles) override;
+  void done() override{};
 };
 
 class Source2Bpp : public SourcePresentation
 {
 public:
-  virtual void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles);
-  virtual void done(){};
+  void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles) override;
+  void done() override{};
 };
 
 class Source4Bpp : public SourcePresentation
 {
 public:
-  virtual void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles);
-  virtual void done(){};
+  void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles) override;
+  void done() override{};
 };
 
 class Source8Bpp : public SourcePresentation
 {
 public:
-  virtual void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles);
-  virtual void done(){};
+  void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles) override;
+  void done() override{};
 };

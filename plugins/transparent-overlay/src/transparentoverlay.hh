@@ -28,9 +28,9 @@ public:
   static Ptr create();
 
 public:
-  virtual std::string getPluginName();
-  virtual std::string getPluginVersion();
-  virtual void        registerCapabilities(ScroomPluginInterface::Ptr host);
+  std::string getPluginName() override;
+  std::string getPluginVersion() override;
+  void        registerCapabilities(ScroomPluginInterface::Ptr host) override;
 
-  virtual Aggregate::Ptr createNew();
+  Aggregate::Ptr createNew() override;
 };

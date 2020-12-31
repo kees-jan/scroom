@@ -52,27 +52,27 @@ public:
   static Ptr create(PresentationInterface::Ptr const& presentation, TransformationData::Ptr const& transformationData);
 
   // Viewable
-  virtual void open(ViewInterface::WeakPtr vi);
-  virtual void close(ViewInterface::WeakPtr vi);
+  void open(ViewInterface::WeakPtr vi) override;
+  void close(ViewInterface::WeakPtr vi) override;
 
   // PresentationInterface
-  virtual Scroom::Utils::Rectangle<double> getRect();
-  virtual void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom);
-  virtual bool getProperty(const std::string& name, std::string& value);
-  virtual bool isPropertyDefined(const std::string& name);
-  virtual std::string                  getTitle();
-  virtual Scroom::Utils::Point<double> getAspectRatio() const;
+  Scroom::Utils::Rectangle<double> getRect() override;
+  void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom) override;
+  bool getProperty(const std::string& name, std::string& value) override;
+  bool isPropertyDefined(const std::string& name) override;
+  std::string                  getTitle() override;
+  Scroom::Utils::Point<double> getAspectRatio() const override;
 
   // PipetteViewInterface
-  virtual PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<int> area);
+  PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<int> area) override;
 
   // Colormappable
-  virtual void          setColormap(Colormap::Ptr colormap);
-  virtual Colormap::Ptr getOriginalColormap();
-  virtual int           getNumberOfColors();
-  virtual Color         getMonochromeColor();
-  virtual void          setMonochromeColor(const Color& c);
-  virtual void          setTransparentBackground();
-  virtual void          disableTransparentBackground();
-  virtual bool          getTransparentBackground();
+  void          setColormap(Colormap::Ptr colormap) override;
+  Colormap::Ptr getOriginalColormap() override;
+  int           getNumberOfColors() override;
+  Color         getMonochromeColor() override;
+  void          setMonochromeColor(const Color& c) override;
+  void          setTransparentBackground() override;
+  void          disableTransparentBackground() override;
+  bool          getTransparentBackground() override;
 };

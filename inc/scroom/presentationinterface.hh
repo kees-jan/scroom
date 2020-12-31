@@ -114,12 +114,12 @@ class PresentationBase : public PresentationInterface
 {
 public:
   // Viewable
-  virtual void open(ViewInterface::WeakPtr vi);
-  virtual void close(ViewInterface::WeakPtr vi);
+  void open(ViewInterface::WeakPtr vi) override;
+  void close(ViewInterface::WeakPtr vi) override;
 
 protected:
   // ViewObservable
-  virtual void observerAdded(Viewable::Ptr const& viewable, Scroom::Bookkeeping::Token const& t);
+  void observerAdded(Viewable::Ptr const& viewable, Scroom::Bookkeeping::Token const& t) override;
 
 protected:
   virtual void                             viewAdded(ViewInterface::WeakPtr vi)   = 0;

@@ -44,17 +44,17 @@ public:
   static Ptr create(boost::shared_ptr<TransparentOverlayViewInfo> const& parent);
 
   // ViewInterface ///////////////////////////////////////////////////////
-  virtual void                       invalidate();
-  virtual ProgressInterface::Ptr     getProgressInterface();
-  virtual void                       addSideWidget(std::string title, GtkWidget* w);
-  virtual void                       removeSideWidget(GtkWidget* w);
-  virtual void                       addToToolbar(GtkToolItem* ti);
-  virtual void                       removeFromToolbar(GtkToolItem* ti);
-  virtual void                       registerSelectionListener(SelectionListener::Ptr listener);
-  virtual void                       registerPostRenderer(PostRenderer::Ptr renderer);
-  virtual void                       setStatusMessage(const std::string& message);
-  virtual PresentationInterface::Ptr getCurrentPresentation();
-  virtual void                       addToolButton(GtkToggleButton* name, ToolStateListener::Ptr callback);
+  void                       invalidate() override;
+  ProgressInterface::Ptr     getProgressInterface() override;
+  void                       addSideWidget(std::string title, GtkWidget* w) override;
+  void                       removeSideWidget(GtkWidget* w) override;
+  void                       addToToolbar(GtkToolItem* ti) override;
+  void                       removeFromToolbar(GtkToolItem* ti) override;
+  void                       registerSelectionListener(SelectionListener::Ptr listener) override;
+  void                       registerPostRenderer(PostRenderer::Ptr renderer) override;
+  void                       setStatusMessage(const std::string& message) override;
+  PresentationInterface::Ptr getCurrentPresentation() override;
+  void                       addToolButton(GtkToggleButton* name, ToolStateListener::Ptr callback) override;
 };
 
 class TransparentOverlayViewInfo : virtual public Scroom::Utils::Base

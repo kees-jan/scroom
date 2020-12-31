@@ -40,11 +40,11 @@ namespace Scroom
         SwapBasedBlockAllocator(size_t count, size_t size);
 
       protected:
-        virtual RawPageData::Ptr get(size_t id);
+        RawPageData::Ptr get(size_t id) override;
 
       public:
         static BlockInterface::Ptr create(size_t count, size_t size);
-        virtual PageList           getPages();
+        PageList                   getPages() override;
       };
 
       SwapBasedBlockAllocator::SwapBasedBlockAllocator(size_t count_, size_t size_)
@@ -85,8 +85,8 @@ namespace Scroom
         SwapBasedBlockAllocatorFactory();
 
       public:
-        static Ptr                  create();
-        virtual BlockInterface::Ptr create(size_t count, size_t size);
+        static Ptr          create();
+        BlockInterface::Ptr create(size_t count, size_t size) override;
       };
 
       SwapBasedBlockAllocatorFactory::SwapBasedBlockAllocatorFactory() = default;

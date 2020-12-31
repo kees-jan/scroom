@@ -26,5 +26,5 @@ private:
 
 public:
   // ProgressStateInterface
-  virtual void setProgress(State s, double d);
+  void setProgress(State s, double d) override;
 };

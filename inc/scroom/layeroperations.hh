@@ -18,16 +18,16 @@ public:
   void drawPixelValue(cairo_t* cr, int x, int y, int size, int value);
   void drawPixelValue(cairo_t* cr, int x, int y, int size, int value, Color const& bgColor);
 
-  virtual void initializeCairo(cairo_t* cr);
-  virtual void drawState(cairo_t* cr, TileState s, Scroom::Utils::Rectangle<double> viewArea);
+  void initializeCairo(cairo_t* cr) override;
+  void drawState(cairo_t* cr, TileState s, Scroom::Utils::Rectangle<double> viewArea) override;
 
-  virtual Scroom::Utils::Stuff cacheZoom(const ConstTile::Ptr tile, int zoom, Scroom::Utils::Stuff cache);
-  virtual void                 draw(cairo_t*                         cr,
-                                    const ConstTile::Ptr             tile,
-                                    Scroom::Utils::Rectangle<double> tileArea,
-                                    Scroom::Utils::Rectangle<double> viewArea,
-                                    int                              zoom,
-                                    Scroom::Utils::Stuff             cache);
+  Scroom::Utils::Stuff cacheZoom(const ConstTile::Ptr tile, int zoom, Scroom::Utils::Stuff cache) override;
+  void                 draw(cairo_t*                         cr,
+                            const ConstTile::Ptr             tile,
+                            Scroom::Utils::Rectangle<double> tileArea,
+                            Scroom::Utils::Rectangle<double> viewArea,
+                            int                              zoom,
+                            Scroom::Utils::Stuff             cache) override;
 };
 
 class PipetteCommonOperationsCMYK
@@ -44,7 +44,7 @@ public:
   PipetteCommonOperationsCMYK(int bps_)
     : bps(bps_){};
 
-  PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile);
+  PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile) override;
 };
 
 class PipetteCommonOperationsRGB
@@ -61,7 +61,7 @@ public:
   PipetteCommonOperationsRGB(int bps_)
     : bps(bps_){};
 
-  PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile);
+  PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile) override;
 };
 
 class Operations1bpp : public CommonOperations
@@ -73,16 +73,16 @@ public:
   static Ptr create(ColormapProvider::Ptr colormapProvider);
   Operations1bpp(ColormapProvider::Ptr colormapProvider);
 
-  virtual int                  getBpp();
-  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
-  virtual void                 reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+  int                  getBpp() override;
+  Scroom::Utils::Stuff cache(const ConstTile::Ptr tile) override;
+  void                 reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y) override;
 
-  virtual void draw(cairo_t*                         cr,
-                    const ConstTile::Ptr             tile,
-                    Scroom::Utils::Rectangle<double> tileArea,
-                    Scroom::Utils::Rectangle<double> viewArea,
-                    int                              zoom,
-                    Scroom::Utils::Stuff             cache);
+  void draw(cairo_t*                         cr,
+            const ConstTile::Ptr             tile,
+            Scroom::Utils::Rectangle<double> tileArea,
+            Scroom::Utils::Rectangle<double> viewArea,
+            int                              zoom,
+            Scroom::Utils::Stuff             cache) override;
 };
 
 class Operations8bpp : public CommonOperations
@@ -94,16 +94,16 @@ public:
   static Ptr create(ColormapProvider::Ptr colormapProvider);
   Operations8bpp(ColormapProvider::Ptr colormapProvider);
 
-  virtual int                  getBpp();
-  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
-  virtual void                 reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+  int                  getBpp() override;
+  Scroom::Utils::Stuff cache(const ConstTile::Ptr tile) override;
+  void                 reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y) override;
 
-  virtual void draw(cairo_t*                         cr,
-                    const ConstTile::Ptr             tile,
-                    Scroom::Utils::Rectangle<double> tileArea,
-                    Scroom::Utils::Rectangle<double> viewArea,
-                    int                              zoom,
-                    Scroom::Utils::Stuff             cache);
+  void draw(cairo_t*                         cr,
+            const ConstTile::Ptr             tile,
+            Scroom::Utils::Rectangle<double> tileArea,
+            Scroom::Utils::Rectangle<double> viewArea,
+            int                              zoom,
+            Scroom::Utils::Stuff             cache) override;
 };
 
 class Operations24bpp : public PipetteCommonOperationsRGB
@@ -112,9 +112,9 @@ public:
   static Ptr create();
   Operations24bpp();
 
-  virtual int                  getBpp();
-  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
-  virtual void                 reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+  int                  getBpp() override;
+  Scroom::Utils::Stuff cache(const ConstTile::Ptr tile) override;
+  void                 reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y) override;
 };
 
 class Operations : public CommonOperations
@@ -133,16 +133,16 @@ public:
   ////////////////////////////////////////////////////////////////////////
   // LayerOperations
 
-  virtual int                  getBpp();
-  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
-  virtual void                 reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+  int                  getBpp() override;
+  Scroom::Utils::Stuff cache(const ConstTile::Ptr tile) override;
+  void                 reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y) override;
 
-  virtual void draw(cairo_t*                         cr,
-                    const ConstTile::Ptr             tile,
-                    Scroom::Utils::Rectangle<double> tileArea,
-                    Scroom::Utils::Rectangle<double> viewArea,
-                    int                              zoom,
-                    Scroom::Utils::Stuff             cache);
+  void draw(cairo_t*                         cr,
+            const ConstTile::Ptr             tile,
+            Scroom::Utils::Rectangle<double> tileArea,
+            Scroom::Utils::Rectangle<double> viewArea,
+            int                              zoom,
+            Scroom::Utils::Stuff             cache) override;
 };
 
 class OperationsColormapped : public Operations
@@ -151,9 +151,9 @@ public:
   static Ptr create(ColormapProvider::Ptr colormapProvider, int bpp);
   OperationsColormapped(ColormapProvider::Ptr colormapProvider, int bpp);
 
-  virtual int                  getBpp();
-  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
-  virtual void                 reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+  int                  getBpp() override;
+  Scroom::Utils::Stuff cache(const ConstTile::Ptr tile) override;
+  void                 reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y) override;
 };
 
 class Operations1bppClipped : public CommonOperations
@@ -165,10 +165,10 @@ public:
   static Ptr create(ColormapProvider::Ptr colormapProvider);
   Operations1bppClipped(ColormapProvider::Ptr colormapProvider);
 
-  virtual int                  getBpp();
-  virtual Scroom::Utils::Stuff cacheZoom(const ConstTile::Ptr tile, int zoom, Scroom::Utils::Stuff cache);
+  int                  getBpp() override;
+  Scroom::Utils::Stuff cacheZoom(const ConstTile::Ptr tile, int zoom, Scroom::Utils::Stuff cache) override;
 
-  virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+  void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y) override;
 };
 
 class OperationsCMYK32 : public PipetteCommonOperationsCMYK
@@ -177,9 +177,9 @@ public:
   static Ptr create();
   OperationsCMYK32();
 
-  virtual int                  getBpp();
-  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
-  virtual void                 reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+  int                  getBpp() override;
+  Scroom::Utils::Stuff cache(const ConstTile::Ptr tile) override;
+  void                 reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y) override;
 };
 
 class OperationsCMYK16 : public PipetteCommonOperationsCMYK
@@ -188,9 +188,9 @@ public:
   static Ptr create();
   OperationsCMYK16();
 
-  virtual int                  getBpp();
-  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
-  virtual void                 reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+  int                  getBpp() override;
+  Scroom::Utils::Stuff cache(const ConstTile::Ptr tile) override;
+  void                 reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y) override;
 };
 
 class OperationsCMYK8 : public PipetteCommonOperationsCMYK
@@ -199,9 +199,9 @@ public:
   static Ptr create();
   OperationsCMYK8();
 
-  virtual int                  getBpp();
-  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
-  virtual void                 reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+  int                  getBpp() override;
+  Scroom::Utils::Stuff cache(const ConstTile::Ptr tile) override;
+  void                 reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y) override;
 };
 
 class OperationsCMYK4 : public PipetteCommonOperationsCMYK
@@ -210,7 +210,7 @@ public:
   static Ptr create();
   OperationsCMYK4();
 
-  virtual int                  getBpp();
-  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile);
-  virtual void                 reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y);
+  int                  getBpp() override;
+  Scroom::Utils::Stuff cache(const ConstTile::Ptr tile) override;
+  void                 reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y) override;
 };

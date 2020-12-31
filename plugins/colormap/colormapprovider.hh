@@ -65,10 +65,10 @@ namespace Scroom
       // Viewable ////////////////////////////////////////////////////////////
 
       /** A new view was opened */
-      virtual void open(ViewInterface::WeakPtr vi);
+      void open(ViewInterface::WeakPtr vi) override;
 
       /** An existing view was closed */
-      virtual void close(ViewInterface::WeakPtr vi);
+      void close(ViewInterface::WeakPtr vi) override;
 
       // Helpers /////////////////////////////////////////////////////////////
 

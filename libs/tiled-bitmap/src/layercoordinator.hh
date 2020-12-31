@@ -50,5 +50,5 @@ private:
 public:
   ////////////////////////////////////////////////////////////////////////
   /// TileInitialisationObserver
-  virtual void tileFinished(CompressedTile::Ptr tile);
+  void tileFinished(CompressedTile::Ptr tile) override;
 };

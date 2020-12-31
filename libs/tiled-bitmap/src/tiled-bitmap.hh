@@ -93,18 +93,20 @@ public:
   // TiledBitmapInterface
 
 public:
-  virtual void       setSource(SourcePresentation::Ptr sp);
-  virtual Layer::Ptr getBottomLayer();
+  void       setSource(SourcePresentation::Ptr sp) override;
+  Layer::Ptr getBottomLayer() override;
 
-  virtual void open(ViewInterface::WeakPtr viewInterface);
-  virtual void close(ViewInterface::WeakPtr vi);
-  virtual void
-               redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> const& presentationArea, int zoom);
-  virtual void clearCaches(ViewInterface::Ptr vi);
+  void open(ViewInterface::WeakPtr viewInterface) override;
+  void close(ViewInterface::WeakPtr vi) override;
+  void redraw(ViewInterface::Ptr const&               vi,
+              cairo_t*                                cr,
+              Scroom::Utils::Rectangle<double> const& presentationArea,
+              int                                     zoom) override;
+  void clearCaches(ViewInterface::Ptr vi) override;
 
   ////////////////////////////////////////////////////////////////////////
   // TileInitialisationObserver
 
-  virtual void tileCreated(CompressedTile::Ptr tile);
-  virtual void tileFinished(CompressedTile::Ptr tile);
+  void tileCreated(CompressedTile::Ptr tile) override;
+  void tileFinished(CompressedTile::Ptr tile) override;
 };
