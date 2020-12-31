@@ -106,7 +106,7 @@ void TransparentOverlayPresentation::viewAdded(ViewInterface::WeakPtr vi)
 
 void TransparentOverlayPresentation::viewRemoved(ViewInterface::WeakPtr vi)
 {
-  ViewDataMap::const_iterator e = viewData.find(vi);
+  auto e = viewData.find(vi);
   if(e != viewData.end())
   {
     e->second->close();
@@ -128,7 +128,7 @@ void TransparentOverlayPresentation::redraw(ViewInterface::Ptr const&        vi,
                                             Scroom::Utils::Rectangle<double> presentationArea,
                                             int                              zoom)
 {
-  ViewDataMap::const_iterator e = viewData.find(vi);
+  auto e = viewData.find(vi);
   if(e != viewData.end())
     e->second->redraw(cr, presentationArea, zoom);
 }

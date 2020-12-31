@@ -302,8 +302,8 @@ void View::updateTextbox()
       dah *= pixelSize * aspectRatio.y;
     }
 
-    std::string xs = boost::lexical_cast<std::string>(x + daw / 2);
-    std::string ys = boost::lexical_cast<std::string>(y + dah / 2);
+    auto xs = boost::lexical_cast<std::string>(x + daw / 2);
+    auto ys = boost::lexical_cast<std::string>(y + dah / 2);
     gtk_entry_set_text(xTextBox, xs.c_str());
     gtk_entry_set_text(yTextBox, ys.c_str());
   }
@@ -416,9 +416,7 @@ void View::on_newPresentationInterfaces_update(
     GtkWidget* new_menu = gtk_menu_new();
     gtk_menu_item_set_submenu(GTK_MENU_ITEM(new_menu_item), new_menu);
 
-    for(std::map<NewPresentationInterface::Ptr, std::string>::const_iterator cur = newPresentationInterfaces.begin();
-        cur != newPresentationInterfaces.end();
-        cur++)
+    for(auto cur = newPresentationInterfaces.begin(); cur != newPresentationInterfaces.end(); cur++)
     {
       GtkWidget* menu_item = gtk_menu_item_new_with_label(cur->second.c_str());
       gtk_widget_show(menu_item);
@@ -847,12 +845,12 @@ void View::updateNewWindowMenu()
     newWindow_menu = gtk_menu_new();
   g_object_ref_sink(G_OBJECT(newWindow_menu));
 
-  std::map<PresentationInterface::WeakPtr, GtkWidget*>::iterator cur = presentations.begin();
-  std::map<PresentationInterface::WeakPtr, GtkWidget*>::iterator end = presentations.end();
+  auto cur = presentations.begin();
+  auto end = presentations.end();
 
   while(cur != end)
   {
-    std::map<PresentationInterface::WeakPtr, GtkWidget*>::iterator next = cur;
+    auto next = cur;
     next++;
 
     //// Update menu

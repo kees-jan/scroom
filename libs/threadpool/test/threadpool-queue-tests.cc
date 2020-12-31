@@ -90,7 +90,7 @@ BOOST_AUTO_TEST_CASE(destroy_using_QueueLock)
   ThreadPool::Queue::Ptr     queue     = ThreadPool::Queue::create();
   ThreadPool::Queue::WeakPtr weakQueue = queue;
   BOOST_CHECK(queue);
-  QueueLock* l = new QueueLock(queue->get());
+  auto* l = new QueueLock(queue->get());
 
   Semaphore     s0(0);
   Semaphore     s1(0);

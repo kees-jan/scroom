@@ -36,8 +36,8 @@ namespace Scroom
 
       static int gtkWrapper(gpointer data)
       {
-        Wrapper* w      = reinterpret_cast<Wrapper*>(data);
-        bool     result = w->f();
+        auto* w      = reinterpret_cast<Wrapper*>(data);
+        bool  result = w->f();
         if(!result)
           delete w;
         return result;

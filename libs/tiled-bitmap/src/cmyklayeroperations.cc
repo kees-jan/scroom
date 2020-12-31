@@ -39,17 +39,17 @@ Scroom::Utils::Stuff OperationsCMYK32::cache(const ConstTile::Ptr tile)
   boost::shared_ptr<uint8_t> data   = shared_malloc(static_cast<size_t>(stride * tile->height));
 
   // Row is a pointer to a row of pixels (destination)
-  uint32_t* row = reinterpret_cast<uint32_t*>(data.get());
+  auto* row = reinterpret_cast<uint32_t*>(data.get());
   // Cur is a pointer to the start of the row in the tile (source)
   const uint8_t* cur = tile->data.get();
 
   for(int i = 0; i < 4 * tile->height * tile->width; i += 4)
   {
     // Convert CMYK to ARGB, because cairo doesn't know how to render CMYK.
-    uint8_t C_i = static_cast<uint8_t>(255 - cur[i]);
-    uint8_t M_i = static_cast<uint8_t>(255 - cur[i + 1]);
-    uint8_t Y_i = static_cast<uint8_t>(255 - cur[i + 2]);
-    uint8_t K_i = static_cast<uint8_t>(255 - cur[i + 3]);
+    auto C_i = static_cast<uint8_t>(255 - cur[i]);
+    auto M_i = static_cast<uint8_t>(255 - cur[i + 1]);
+    auto Y_i = static_cast<uint8_t>(255 - cur[i + 2]);
+    auto K_i = static_cast<uint8_t>(255 - cur[i + 3]);
 
     uint32_t R = static_cast<uint8_t>((C_i * K_i) / 255);
     uint32_t G = static_cast<uint8_t>((M_i * K_i) / 255);
@@ -131,17 +131,17 @@ Scroom::Utils::Stuff OperationsCMYK16::cache(const ConstTile::Ptr tile)
   boost::shared_ptr<uint8_t> data   = shared_malloc(static_cast<size_t>(stride * tile->height));
 
   // Row is a pointer to a row of pixels (destination)
-  uint32_t* row = reinterpret_cast<uint32_t*>(data.get());
+  auto* row = reinterpret_cast<uint32_t*>(data.get());
   // Cur is a pointer to the start of the row in the tile (source)
   const uint8_t* cur = tile->data.get();
 
   for(int i = 0; i < 2 * tile->height * tile->width; i += 2)
   {
     // Convert CMYK to ARGB, because cairo doesn't know how to render CMYK.
-    uint8_t C_i = static_cast<uint8_t>(255 - ((cur[i]) >> 4) * 17); // 17 == 255/15
-    uint8_t M_i = static_cast<uint8_t>(255 - ((cur[i] & 0x0F)) * 17);
-    uint8_t Y_i = static_cast<uint8_t>(255 - ((cur[i + 1]) >> 4) * 17);
-    uint8_t K_i = static_cast<uint8_t>(255 - ((cur[i + 1] & 0x0F)) * 17);
+    auto C_i = static_cast<uint8_t>(255 - ((cur[i]) >> 4) * 17); // 17 == 255/15
+    auto M_i = static_cast<uint8_t>(255 - ((cur[i] & 0x0F)) * 17);
+    auto Y_i = static_cast<uint8_t>(255 - ((cur[i + 1]) >> 4) * 17);
+    auto K_i = static_cast<uint8_t>(255 - ((cur[i + 1] & 0x0F)) * 17);
 
     uint32_t R = static_cast<uint8_t>((C_i * K_i) / 255);
     uint32_t G = static_cast<uint8_t>((M_i * K_i) / 255);
@@ -223,7 +223,7 @@ Scroom::Utils::Stuff OperationsCMYK8::cache(const ConstTile::Ptr tile)
   boost::shared_ptr<uint8_t> data   = shared_malloc(static_cast<size_t>(stride * tile->height));
 
   // Row is a pointer to a row of pixels (destination)
-  uint32_t* row = reinterpret_cast<uint32_t*>(data.get());
+  auto* row = reinterpret_cast<uint32_t*>(data.get());
   // Cur is a pointer to the start of the row in the tile (source)
   const uint8_t* cur = tile->data.get();
 
@@ -231,10 +231,10 @@ Scroom::Utils::Stuff OperationsCMYK8::cache(const ConstTile::Ptr tile)
   for(int i = 0; i < tile->height * tile->width; i++)
   {
     // Convert CMYK to ARGB, because cairo doesn't know how to render CMYK.
-    uint8_t C_i = static_cast<uint8_t>(255 - ((cur[i]) >> 6) * 85); // 85 == 255/3
-    uint8_t M_i = static_cast<uint8_t>(255 - ((cur[i] & 0x30) >> 4) * 85);
-    uint8_t Y_i = static_cast<uint8_t>(255 - ((cur[i] & 0x0C) >> 2) * 85);
-    uint8_t K_i = static_cast<uint8_t>(255 - ((cur[i] & 0x03)) * 85);
+    auto C_i = static_cast<uint8_t>(255 - ((cur[i]) >> 6) * 85); // 85 == 255/3
+    auto M_i = static_cast<uint8_t>(255 - ((cur[i] & 0x30) >> 4) * 85);
+    auto Y_i = static_cast<uint8_t>(255 - ((cur[i] & 0x0C) >> 2) * 85);
+    auto K_i = static_cast<uint8_t>(255 - ((cur[i] & 0x03)) * 85);
 
     uint32_t R = static_cast<uint8_t>((C_i * K_i) / 255);
     uint32_t G = static_cast<uint8_t>((M_i * K_i) / 255);
@@ -316,7 +316,7 @@ Scroom::Utils::Stuff OperationsCMYK4::cache(const ConstTile::Ptr tile)
   boost::shared_ptr<uint8_t> data   = shared_malloc(static_cast<size_t>(stride * tile->height));
 
   // Row is a pointer to a row of pixels (destination)
-  uint32_t* row = reinterpret_cast<uint32_t*>(data.get());
+  auto* row = reinterpret_cast<uint32_t*>(data.get());
   // Cur is a pointer to the start of the row in the tile (source)
   const uint8_t* cur = tile->data.get();
 

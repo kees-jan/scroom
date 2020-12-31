@@ -41,7 +41,7 @@ Count::Ptr Count::create(const std::string& name)
 
 Counter* Counter::instance()
 {
-  static Counter* me = new Counter();
+  static auto* me = new Counter();
   return me;
 }
 

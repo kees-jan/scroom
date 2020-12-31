@@ -217,8 +217,8 @@ namespace Scroom
     template <typename K, typename V>
     inline Token MapBase<K, V>::reReserve(const K& k)
     {
-      boost::mutex::scoped_lock  lock(mut);
-      typename MapType::iterator i = map.find(k);
+      boost::mutex::scoped_lock lock(mut);
+      auto                      i = map.find(k);
 
       if(map.end() == i)
       {
@@ -247,8 +247,8 @@ namespace Scroom
     template <typename K, typename V>
     inline void MapBase<K, V>::remove(const K& k, WeakToken wt)
     {
-      boost::mutex::scoped_lock  lock(mut);
-      typename MapType::iterator i = map.find(k);
+      boost::mutex::scoped_lock lock(mut);
+      auto                      i = map.find(k);
 
       if(map.end() != i)
       {
@@ -282,8 +282,8 @@ namespace Scroom
     template <typename K, typename V>
     inline Detail::LValue<V> MapBase<K, V>::at(const K& k)
     {
-      boost::mutex::scoped_lock  lock(mut);
-      typename MapType::iterator i = map.find(k);
+      boost::mutex::scoped_lock lock(mut);
+      auto                      i = map.find(k);
 
       if(map.end() != i)
       {
@@ -298,8 +298,8 @@ namespace Scroom
     template <typename K, typename V>
     inline void MapBase<K, V>::set(const K& k, const V& v)
     {
-      boost::mutex::scoped_lock  lock(mut);
-      typename MapType::iterator i = map.find(k);
+      boost::mutex::scoped_lock lock(mut);
+      auto                      i = map.find(k);
 
       if(map.end() != i)
       {
@@ -317,8 +317,8 @@ namespace Scroom
     template <typename K, typename V>
     inline V MapBase<K, V>::get(const K& k)
     {
-      boost::mutex::scoped_lock  lock(mut);
-      typename MapType::iterator i = map.find(k);
+      boost::mutex::scoped_lock lock(mut);
+      auto                      i = map.find(k);
 
       if(map.end() != i)
       {

@@ -35,7 +35,7 @@ void SidebarManager::addSideWidget(std::string title, GtkWidget* w)
 
 void SidebarManager::removeSideWidget(GtkWidget* w)
 {
-  std::map<GtkWidget*, GtkWidget*>::iterator cur = widgets.find(w);
+  auto cur = widgets.find(w);
   if(cur == widgets.end())
   {
     printf("PANIC: Can't find the widget I'm supposed to remove\n");

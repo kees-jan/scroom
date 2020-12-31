@@ -284,7 +284,7 @@ Scroom::Utils::Stuff Operations1bpp::cache(const ConstTile::Ptr tile)
   for(int j = 0; j < tile->height; j++, row += stride)
   {
     SampleIterator<const byte> bit(tile->data.get() + j * tile->width / 8, 0);
-    uint32_t*                  pixel = reinterpret_cast<uint32_t*>(row);
+    auto*                      pixel = reinterpret_cast<uint32_t*>(row);
     for(int i = 0; i < tile->width; i++)
     {
       *pixel = colormap->colors[*bit].getARGB32();
@@ -400,7 +400,7 @@ Scroom::Utils::Stuff Operations8bpp::cache(const ConstTile::Ptr tile)
   {
     const byte* cur = tile->data.get() + j * tile->width;
 
-    uint32_t* pixel = reinterpret_cast<uint32_t*>(row);
+    auto* pixel = reinterpret_cast<uint32_t*>(row);
     for(int i = 0; i < tile->width; i++)
     {
       *pixel = mix(c2, c1, 1.0 * *cur / 255).getARGB32();
@@ -510,7 +510,7 @@ Scroom::Utils::Stuff Operations24bpp::cache(const ConstTile::Ptr tile)
   {
     const byte* cur = tile->data.get() + 3 * j * tile->width;
 
-    uint32_t* pixel = reinterpret_cast<uint32_t*>(row);
+    auto* pixel = reinterpret_cast<uint32_t*>(row);
     for(int i = 0; i < tile->width; i++)
     {
       //         A          R              G             B
@@ -594,7 +594,7 @@ Scroom::Utils::Stuff Operations::cache(const ConstTile::Ptr tile)
   {
     SampleIterator<const byte> pixelIn(tile->data.get() + j * tile->width / pixelsPerByte, 0, bpp);
 
-    uint32_t* pixelOut = reinterpret_cast<uint32_t*>(row);
+    auto* pixelOut = reinterpret_cast<uint32_t*>(row);
     for(int i = 0; i < tile->width; i++)
     {
       *pixelOut = colormap->colors[*pixelIn].getARGB32();
@@ -733,7 +733,7 @@ Scroom::Utils::Stuff OperationsColormapped::cache(const ConstTile::Ptr tile)
   {
     SampleIterator<const uint16_t> pixelIn(
       reinterpret_cast<uint16_t const*>(tile->data.get() + j * multiplier * tile->width / pixelsPerByte), 0, multiplier * bpp);
-    uint32_t* pixelOut = reinterpret_cast<uint32_t*>(row);
+    auto* pixelOut = reinterpret_cast<uint32_t*>(row);
     for(int i = 0; i < tile->width; i++)
     {
       *pixelOut = mix(colormap->colors[*pixelIn & pixelMask], colormap->colors[*pixelIn >> pixelOffset], 0.5).getARGB32();
@@ -839,7 +839,7 @@ Scroom::Utils::Stuff Operations1bppClipped::cacheZoom(const ConstTile::Ptr tile,
   unsigned char* row = data.get();
   for(int j = 0; j < outputHeight; j++, row += stride)
   {
-    uint32_t* pixel = reinterpret_cast<uint32_t*>(row);
+    auto* pixel = reinterpret_cast<uint32_t*>(row);
     for(int i = 0; i < outputWidth; i++)
     {
       int sum = 0;

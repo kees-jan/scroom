@@ -85,14 +85,14 @@ void on_scroom_hide(GtkWidget*, gpointer user_data)
 
 void on_new_activate(GtkMenuItem*, gpointer user_data)
 {
-  NewPresentationInterface* newPresentationInterface = static_cast<NewPresentationInterface*>(user_data);
+  auto* newPresentationInterface = static_cast<NewPresentationInterface*>(user_data);
   create(newPresentationInterface);
 }
 
 gboolean combinedFileFilter(const GtkFileFilterInfo* filter_info, gpointer data)
 {
   // Convert the data back to a filter vector
-  std::vector<GtkFileFilter*>* filters = static_cast<std::vector<GtkFileFilter*>*>(data);
+  auto* filters = static_cast<std::vector<GtkFileFilter*>*>(data);
 
   // Return true if any of the filters matches the filter_info
   for(const auto& f: *filters)
@@ -110,7 +110,7 @@ gboolean combinedFileFilter(const GtkFileFilterInfo* filter_info, gpointer data)
 void on_open_activate(GtkMenuItem*, gpointer user_data)
 {
   GtkWidget* dialog;
-  GtkWidget* scroom = static_cast<GtkWidget*>(user_data);
+  auto*      scroom = static_cast<GtkWidget*>(user_data);
 
   printf("Creating the open dialog\n");
   dialog = gtk_file_chooser_dialog_new("Open File",
@@ -133,8 +133,8 @@ void on_open_activate(GtkMenuItem*, gpointer user_data)
   gtk_file_filter_set_name(allSupportedFileTypesFilter, "Any supported file type");
 
   // Cannot beforehand determine which data might be needed for the plugins, so we ask GTK to load everything!
-  GtkFileFilterFlags filterFlags = static_cast<GtkFileFilterFlags>(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_MIME_TYPE
-                                                                   | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_URI);
+  auto filterFlags = static_cast<GtkFileFilterFlags>(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_MIME_TYPE
+                                                     | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_URI);
   // Register the combined filter logic for this filter
   gtk_file_filter_add_custom(allSupportedFileTypesFilter, filterFlags, &combinedFileFilter, &filters, nullptr);
 
@@ -308,7 +308,7 @@ void on_done_loading_plugins()
       std::string const&            aggregateName = v.first;
       std::list<std::string> const& files         = v.second;
 
-      std::map<std::string, NewAggregateInterface::Ptr>::const_iterator i = newAggregateInterfaces.find(aggregateName);
+      auto i = newAggregateInterfaces.find(aggregateName);
       if(i != newAggregateInterfaces.end())
       {
         try
@@ -601,8 +601,8 @@ void on_presentation_created(PresentationInterface::Ptr presentation)
   const std::map<PresentationObserver::Ptr, std::string>& presentationObservers =
     PluginManager::getInstance()->getPresentationObservers();
 
-  std::map<PresentationObserver::Ptr, std::string>::const_iterator cur = presentationObservers.begin();
-  std::map<PresentationObserver::Ptr, std::string>::const_iterator end = presentationObservers.end();
+  auto cur = presentationObservers.begin();
+  auto end = presentationObservers.end();
   for(; cur != end; cur++)
     cur->first->presentationAdded(presentation);
 }
@@ -623,8 +623,8 @@ void on_view_created(View::Ptr v)
 
   const std::map<ViewObserver::Ptr, std::string>& viewObservers = PluginManager::getInstance()->getViewObservers();
 
-  std::map<ViewObserver::Ptr, std::string>::const_iterator cur = viewObservers.begin();
-  std::map<ViewObserver::Ptr, std::string>::const_iterator end = viewObservers.end();
+  auto cur = viewObservers.begin();
+  auto end = viewObservers.end();
   for(; cur != end; cur++)
     t.add(cur->first->viewAdded(v));
 }
@@ -633,13 +633,13 @@ void on_presentation_possibly_destroyed()
 {
   bool presentationDestroyed = false;
 
-  for(std::list<PresentationInterface::WeakPtr>::iterator cur = presentations.begin(); cur != presentations.end(); cur++)
+  for(auto cur = presentations.begin(); cur != presentations.end(); cur++)
   {
     PresentationInterface::Ptr p = cur->lock();
     if(!p)
     {
-      presentationDestroyed                                    = true;
-      std::list<PresentationInterface::WeakPtr>::iterator temp = cur;
+      presentationDestroyed = true;
+      auto temp             = cur;
       temp--;
       presentations.erase(cur);
       cur = temp;

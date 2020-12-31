@@ -303,7 +303,7 @@ Aggregate::Ptr ScroomInterfaceImpl::newAggregate(std::string const& name)
 {
   std::map<std::string, NewAggregateInterface::Ptr> const& newAggregateInterfaces =
     PluginManager::getInstance()->getNewAggregateInterfaces();
-  std::map<std::string, NewAggregateInterface::Ptr>::const_iterator i = newAggregateInterfaces.find(name);
+  auto i = newAggregateInterfaces.find(name);
   if(i != newAggregateInterfaces.end())
   {
     Aggregate::Ptr aggregate = i->second->createNew();

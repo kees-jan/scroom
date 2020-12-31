@@ -155,7 +155,7 @@ bool PluginManager::doWork()
         gpointer pgpi;
         if(g_module_symbol(plugin, "getPluginInformation", &pgpi))
         {
-          PluginFunc gpi = reinterpret_cast<PluginFunc>(pgpi);
+          auto gpi = reinterpret_cast<PluginFunc>(pgpi);
           if(gpi)
           {
             PluginInformationInterface::Ptr pi = (*gpi)();

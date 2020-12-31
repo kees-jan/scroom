@@ -96,7 +96,7 @@ namespace
 
   void ThreadList::dumpPointers()
   {
-    std::list<std::pair<boost::weak_ptr<void>, std::string>>::iterator cur = pointers.begin();
+    auto cur = pointers.begin();
     while(cur != pointers.end())
     {
       const int count = cur->first.use_count();
@@ -120,7 +120,7 @@ namespace
     {
       boost::mutex::scoped_lock lock(mut);
 
-      std::list<ThreadPool::ThreadPtr>::iterator cur = threads.begin();
+      auto cur = threads.begin();
       while(cur != threads.end())
       {
         if((*cur)->timed_join(short_timeout))
@@ -140,7 +140,7 @@ namespace
       dumpPointers();
       printf("Waiting for %d threads to terminate", static_cast<unsigned int>(count));
 
-      std::list<ThreadPool::ThreadPtr>::iterator cur = threads.begin();
+      auto cur = threads.begin();
       while(cur != threads.end())
       {
         if((*cur)->timed_join(timeout))

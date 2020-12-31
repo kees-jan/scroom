@@ -316,8 +316,8 @@ void TiffPresentation::redraw(ViewInterface::Ptr const&        vi,
 
 bool TiffPresentation::getProperty(const std::string& name, std::string& value)
 {
-  std::map<std::string, std::string>::iterator p     = properties.find(name);
-  bool                                         found = false;
+  auto p     = properties.find(name);
+  bool found = false;
   if(p == properties.end())
   {
     found = false;
@@ -347,10 +347,10 @@ void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth, in
   //        firstTile, (int)(firstTile+tiles.size()),
   //        tileWidth);
 
-  const uint32      startLine_   = static_cast<uint32>(startLine);
-  const size_t      firstTile_   = static_cast<size_t>(firstTile);
-  const size_t      scanLineSize = static_cast<size_t>(TIFFScanlineSize(tif));
-  const size_t      tileStride   = static_cast<size_t>(tileWidth * spp * bps / 8);
+  const auto        startLine_   = static_cast<uint32>(startLine);
+  const auto        firstTile_   = static_cast<size_t>(firstTile);
+  const auto        scanLineSize = static_cast<size_t>(TIFFScanlineSize(tif));
+  const auto        tileStride   = static_cast<size_t>(tileWidth * spp * bps / 8);
   std::vector<byte> row(scanLineSize);
 
   const size_t tileCount = tiles.size();
