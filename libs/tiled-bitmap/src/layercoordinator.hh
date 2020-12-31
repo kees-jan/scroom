@@ -34,7 +34,7 @@ public:
 
   static Ptr create(CompressedTile::Ptr targetTile, LayerOperations::Ptr lo);
 
-  virtual ~LayerCoordinator();
+  ~LayerCoordinator() override;
   LayerCoordinator(const LayerCoordinator&) = delete;
   LayerCoordinator(LayerCoordinator&&)      = delete;
   LayerCoordinator operator=(const LayerCoordinator&) = delete;

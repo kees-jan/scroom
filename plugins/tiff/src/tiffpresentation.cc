@@ -16,7 +16,7 @@
 #include <scroom/unused.hh>
 
 TiffPresentation::TiffPresentation()
-  : tif(NULL)
+  : tif(nullptr)
   , height(0)
   , width(0)
   , bps(0)
@@ -31,10 +31,10 @@ TiffPresentation::~TiffPresentation()
 {
   printf("TiffPresentation: Destructing...\n");
 
-  if(tif != NULL)
+  if(tif != nullptr)
   {
     TIFFClose(tif);
-    tif = NULL;
+    tif = nullptr;
   }
 
   tbi.reset();
@@ -379,7 +379,7 @@ void TiffPresentation::fillTiles(int startLine, int lineCount, int tileWidth, in
 void TiffPresentation::done()
 {
   TIFFClose(tif);
-  tif = NULL;
+  tif = nullptr;
 }
 
 /**

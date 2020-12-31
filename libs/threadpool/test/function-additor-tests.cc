@@ -139,11 +139,11 @@ BOOST_AUTO_TEST_SUITE(Combined_Tests)
 
 BOOST_AUTO_TEST_CASE(Test_If_Expressions_Compile)
 {
-  (void)(clear(NULL) + 5 * clear(NULL));
-  (void)(clear(NULL) + (5 * clear(NULL)) * 5);
-  (void)(clear(NULL) + 5 * (5 * clear(NULL)));
-  (void)(4 * (clear(NULL) + clear(NULL)));
-  (void)((clear(NULL) + clear(NULL)) * 4);
+  (void)(clear(nullptr) + 5 * clear(nullptr));
+  (void)(clear(nullptr) + (5 * clear(nullptr)) * 5);
+  (void)(clear(nullptr) + 5 * (5 * clear(nullptr)));
+  (void)(4 * (clear(nullptr) + clear(nullptr)));
+  (void)((clear(nullptr) + clear(nullptr)) * 4);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

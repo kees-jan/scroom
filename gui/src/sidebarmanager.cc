@@ -8,8 +8,8 @@
 #include "sidebarmanager.hh"
 
 SidebarManager::SidebarManager()
-  : panelWindow(NULL)
-  , panel(NULL)
+  : panelWindow(nullptr)
+  , panel(nullptr)
 
 {}
 

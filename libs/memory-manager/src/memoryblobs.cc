@@ -65,7 +65,7 @@ namespace Scroom
     Blob::Blob(PageProvider::Ptr provider_, size_t size_)
       : provider(provider_)
       , size(size_)
-      , data(NULL)
+      , data(nullptr)
       , state(UNINITIALIZED)
       , cpuBound(CpuBound())
       , refcount(0)
@@ -121,7 +121,7 @@ namespace Scroom
         else
         {
           free(data);
-          data = NULL;
+          data = nullptr;
         }
       }
     }
@@ -136,7 +136,7 @@ namespace Scroom
 
         pages = Detail::compressBlob(data, size, provider);
         free(data);
-        data = NULL;
+        data = nullptr;
 
         state = CLEAN;
       }

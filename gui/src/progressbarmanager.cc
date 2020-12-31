@@ -69,7 +69,7 @@ namespace
     for(GtkProgressBar*& p: progressbars)
     {
       if(p == progressBar_)
-        p = NULL;
+        p = nullptr;
     }
   }
 

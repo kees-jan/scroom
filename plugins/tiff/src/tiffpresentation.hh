@@ -50,7 +50,7 @@ private:
   TiffPresentation();
 
 public:
-  virtual ~TiffPresentation();
+  ~TiffPresentation() override;
   TiffPresentation(const TiffPresentation&) = delete;
   TiffPresentation(TiffPresentation&&)      = delete;
   TiffPresentation operator=(const TiffPresentation&) = delete;
@@ -141,7 +141,7 @@ private:
 public:
   static Ptr create();
 
-  virtual ~TiffPresentationWrapper();
+  ~TiffPresentationWrapper() override;
   TiffPresentationWrapper(const TiffPresentationWrapper&) = delete;
   TiffPresentationWrapper(TiffPresentationWrapper&&)      = delete;
   TiffPresentationWrapper operator=(const TiffPresentationWrapper&) = delete;

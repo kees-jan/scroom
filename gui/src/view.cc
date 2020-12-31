@@ -108,7 +108,7 @@ View::View(GladeXML* scroomXml_)
   GtkBox*    panel       = GTK_BOX(glade_xml_get_widget(scroomXml_, "panel"));
   sidebarManager.setWidgets(panelWindow, panel);
   toolBar          = GTK_TOOLBAR(glade_xml_get_widget(scroomXml_, "toolbar"));
-  toolBarSeparator = NULL;
+  toolBarSeparator = nullptr;
   toolBarCount     = 0;
 
   cachedPoint.x = 0;
@@ -184,7 +184,7 @@ void View::redraw(cairo_t* cr)
 
 void View::hide() { gtk_widget_hide(GTK_WIDGET(window)); }
 
-bool View::hasPresentation() { return presentation != NULL; }
+bool View::hasPresentation() { return presentation != nullptr; }
 
 void View::clearPresentation()
 {
@@ -407,7 +407,7 @@ void View::on_newPresentationInterfaces_update(
   if(newPresentationInterfaces.empty())
   {
     gtk_widget_set_sensitive(new_menu_item, false);
-    gtk_menu_item_set_submenu(GTK_MENU_ITEM(new_menu_item), NULL);
+    gtk_menu_item_set_submenu(GTK_MENU_ITEM(new_menu_item), nullptr);
   }
   else
   {
@@ -431,7 +431,7 @@ void View::on_newPresentationInterfaces_update(
 
 void View::on_presentation_created(PresentationInterface::Ptr p)
 {
-  presentations[p] = NULL;
+  presentations[p] = nullptr;
   updateNewWindowMenu();
 }
 
@@ -709,7 +709,7 @@ void View::unsetFullScreen()
 ////////////////////////////////////////////////////////////////////////
 // ViewInterface
 
-void View::invalidate() { gdk_window_invalidate_rect(gtk_widget_get_window(drawingArea), NULL, false); }
+void View::invalidate() { gdk_window_invalidate_rect(gtk_widget_get_window(drawingArea), nullptr, false); }
 
 ProgressInterface::Ptr View::getProgressInterface() { return progressBarManager; }
 
@@ -740,7 +740,7 @@ void View::removeFromToolbar(GtkToolItem* ti)
   if(toolBarCount == 0)
   {
     gtk_container_remove(GTK_CONTAINER(toolBar), GTK_WIDGET(toolBarSeparator));
-    toolBarSeparator = NULL;
+    toolBarSeparator = nullptr;
   }
 }
 
@@ -903,7 +903,7 @@ void View::updateNewWindowMenu()
   if(presentations.empty())
   {
     gtk_widget_set_sensitive(newWindow_menu_item, false);
-    gtk_menu_item_set_submenu(GTK_MENU_ITEM(newWindow_menu_item), NULL);
+    gtk_menu_item_set_submenu(GTK_MENU_ITEM(newWindow_menu_item), nullptr);
   }
   else
   {

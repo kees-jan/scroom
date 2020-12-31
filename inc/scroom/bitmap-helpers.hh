@@ -115,7 +115,7 @@ namespace Scroom
 
     template <typename Base>
     SampleIterator<Base>::SampleIterator(Base* base, int offset, int bps_)
-      : currentBase(NULL)
+      : currentBase(nullptr)
       , currentOffset(0)
       , bps(bps_)
       , samplesPerBase(bitsPerBase / bps_)

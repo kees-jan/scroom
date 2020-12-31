@@ -55,7 +55,7 @@ namespace Scroom
       static ColormapProvider::Ptr create(PresentationInterface::Ptr p);
 
       /** Destructor */
-      ~ColormapProvider();
+      ~ColormapProvider() override;
 
       ColormapProvider(const ColormapProvider&) = delete;
       ColormapProvider(ColormapProvider&&)      = delete;

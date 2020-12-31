@@ -227,7 +227,7 @@ namespace Scroom
         Child(Child&&)      = delete;
         Child& operator=(const Child&) = delete;
         Child& operator=(Child&&) = delete;
-        ~Child();
+        ~Child() override;
 
         // ProgressStateInterface ///////////////////////////////////////////////////
         void setProgress(State s, double progress = 0.0) override;

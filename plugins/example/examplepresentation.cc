@@ -13,7 +13,7 @@
 #include <scroom/unused.hh>
 
 ExamplePresentation::ExamplePresentation()
-  : pattern(NULL)
+  : pattern(nullptr)
 {
   fillPattern();
 }

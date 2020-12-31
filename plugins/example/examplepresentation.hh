@@ -18,7 +18,7 @@ private:
 
 public:
   ExamplePresentation();
-  virtual ~ExamplePresentation();
+  ~ExamplePresentation() override;
   ExamplePresentation(const ExamplePresentation&) = delete;
   ExamplePresentation(ExamplePresentation&&)      = delete;
   ExamplePresentation operator=(const ExamplePresentation&) = delete;

@@ -106,7 +106,7 @@ GtkFileFilterInfoPtr filterInfoFromPath(const std::string& filename)
 
   std::unique_ptr<GFile, GObjectUnref<GFile>>         file(g_file_new_for_path(filename.c_str()));
   std::unique_ptr<GFileInfo, GObjectUnref<GFileInfo>> fileInfo(
-    g_file_query_info(file.get(), "standard::*", G_FILE_QUERY_INFO_NONE, NULL, NULL));
+    g_file_query_info(file.get(), "standard::*", G_FILE_QUERY_INFO_NONE, nullptr, nullptr));
   if(fileInfo)
   {
     // g_file_info_get_name(fileInfo) doesn't provide path info.

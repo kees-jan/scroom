@@ -94,7 +94,7 @@ private:
 public:
   static Ptr create(GladeXML* scroomXml, PresentationInterface::Ptr presentation);
 
-  virtual ~View();
+  ~View() override;
   View(const View&) = delete;
   View(View&&)      = delete;
   View operator=(const View&) = delete;

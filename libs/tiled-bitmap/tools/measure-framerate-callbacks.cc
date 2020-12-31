@@ -15,7 +15,7 @@
 
 std::vector<boost::function<bool()>> functions;
 static unsigned int                  current     = 0;
-static GtkWidget*                    drawingArea = NULL;
+static GtkWidget*                    drawingArea = nullptr;
 
 ////////////////////////////////////////////////////////////////////////
 // Internals
@@ -81,12 +81,12 @@ GtkWidget* create_window()
   return window;
 }
 
-void init() { gtk_idle_add(on_idle, NULL); }
+void init() { gtk_idle_add(on_idle, nullptr); }
 
 void invalidate()
 {
   GdkWindow* window = gtk_widget_get_window(drawingArea);
-  gdk_window_invalidate_rect(window, NULL, false);
+  gdk_window_invalidate_rect(window, nullptr, false);
 
   gdk_threads_enter();
   gdk_window_process_all_updates();

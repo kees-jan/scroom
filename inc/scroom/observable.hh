@@ -95,7 +95,7 @@ namespace Scroom
 
     public:
       Observable();
-      virtual ~Observable();
+      ~Observable() override;
       Observable(const Observable&) = delete;
       Observable(Observable&&)      = delete;
       Observable operator=(const Observable&) = delete;

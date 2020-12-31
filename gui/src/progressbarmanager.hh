@@ -27,9 +27,9 @@ private:
   void startWaiting();
 
 public:
-  static Ptr create(GtkProgressBar* progressBar = NULL);
+  static Ptr create(GtkProgressBar* progressBar = nullptr);
 
-  ~ProgressBarManager();
+  ~ProgressBarManager() override;
   ProgressBarManager(const ProgressBarManager&) = delete;
   ProgressBarManager(ProgressBarManager&&)      = delete;
   ProgressBarManager operator=(const ProgressBarManager&) = delete;

@@ -63,10 +63,10 @@ BOOST_DATA_TEST_CASE(SampleIterator_iterates, data::make(bit_depths), bps)
 
 BOOST_AUTO_TEST_CASE(equality)
 {
-  BOOST_CHECK_EQUAL(SampleIterator<uint8_t>(0, 0, 1), SampleIterator<uint8_t>(0, 0, 1));
-  BOOST_CHECK_NE(SampleIterator<const uint8_t>(0, 0, 1), SampleIterator<const uint8_t>(testData, 0, 1));
-  BOOST_CHECK_NE(SampleIterator<uint8_t>(0, 0, 1), SampleIterator<uint8_t>(0, 1, 1));
-  BOOST_CHECK_NE(SampleIterator<uint8_t>(0, 0, 1), SampleIterator<uint8_t>(0, 0, 2));
+  BOOST_CHECK_EQUAL(SampleIterator<uint8_t>(nullptr, 0, 1), SampleIterator<uint8_t>(nullptr, 0, 1));
+  BOOST_CHECK_NE(SampleIterator<const uint8_t>(nullptr, 0, 1), SampleIterator<const uint8_t>(testData, 0, 1));
+  BOOST_CHECK_NE(SampleIterator<uint8_t>(nullptr, 0, 1), SampleIterator<uint8_t>(nullptr, 1, 1));
+  BOOST_CHECK_NE(SampleIterator<uint8_t>(nullptr, 0, 1), SampleIterator<uint8_t>(nullptr, 0, 2));
 }
 
 BOOST_DATA_TEST_CASE(arithmetic,
@@ -75,7 +75,7 @@ BOOST_DATA_TEST_CASE(arithmetic,
                      initial_offset,
                      delta)
 {
-  const SampleIterator<const uint8_t> start(0, initial_offset, bps);
+  const SampleIterator<const uint8_t> start(nullptr, initial_offset, bps);
   SampleIterator<const uint8_t>       expected = start;
   for(auto i = 0; i < delta; i++, expected++)
   {

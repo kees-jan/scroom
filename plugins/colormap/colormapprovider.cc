@@ -54,7 +54,7 @@ namespace Scroom
 
     ColormapProvider::ColormapProvider(Colormappable::Ptr c)
       : colormappable(c)
-      , colormaps(NULL)
+      , colormaps(nullptr)
     {
       unsigned int                  numColors = c->getNumberOfColors();
       std::list<Colormap::ConstPtr> maps      = Colormaps::getInstance().getColormaps();
@@ -97,7 +97,7 @@ namespace Scroom
         GtkTreeIter iter;
         while(gtk_tree_model_get_iter_first(GTK_TREE_MODEL(colormaps), &iter))
         {
-          gpointer* pointer = NULL;
+          gpointer* pointer = nullptr;
           gtk_tree_model_get(GTK_TREE_MODEL(colormaps), &iter, COLUMN_POINTER, &pointer, -1);
           Colormap::Ptr* colormap = reinterpret_cast<Colormap::Ptr*>(pointer);
           delete colormap;
@@ -105,7 +105,7 @@ namespace Scroom
         }
         g_object_unref(colormaps);
       }
-      colormaps = NULL;
+      colormaps = nullptr;
     }
 
     void ColormapProvider::open(ViewInterface::WeakPtr vi)
@@ -138,13 +138,13 @@ namespace Scroom
       {
         GtkTreeSelection* ts = gtk_tree_view_get_selection(tv);
         GtkTreeIter       iter;
-        GtkTreeModel*     model    = NULL;
+        GtkTreeModel*     model    = nullptr;
         bool              selected = gtk_tree_selection_get_selected(ts, &model, &iter);
         if(selected)
         {
           if(gtk_list_store_iter_is_valid(colormaps, &iter))
           {
-            gpointer* pointer = NULL;
+            gpointer* pointer = nullptr;
             gtk_tree_model_get(GTK_TREE_MODEL(colormaps), &iter, COLUMN_POINTER, &pointer, -1);
             Colormap::Ptr& colormap = *reinterpret_cast<Colormap::Ptr*>(pointer);
             c->setColormap(colormap);

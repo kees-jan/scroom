@@ -73,7 +73,7 @@ private:
 
 public:
   static Ptr create(int bitmapWidth, int bitmapHeight, LayerSpec const& ls);
-  virtual ~TiledBitmap();
+  ~TiledBitmap() override;
   TiledBitmap(const TiledBitmap&) = delete;
   TiledBitmap(TiledBitmap&&)      = delete;
   TiledBitmap operator=(const TiledBitmap&) = delete;

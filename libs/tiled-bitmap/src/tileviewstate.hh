@@ -56,7 +56,7 @@ private:
   ThreadPool::Ptr                      cpuBound;
 
 public:
-  ~TileViewState();
+  ~TileViewState() override;
   TileViewState(const TileViewState&) = delete;
   TileViewState(TileViewState&&)      = delete;
   TileViewState operator=(const TileViewState&) = delete;

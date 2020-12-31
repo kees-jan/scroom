@@ -49,8 +49,8 @@ static const std::string SCROOM_DEV_MODE = "SCROOM_DEV_MODE";
 const std::string        REGULAR_FILES   = "Regular files";
 
 static std::string xmlFileName;
-static GladeXML*   aboutDialogXml = NULL;
-static GtkWidget*  aboutDialog    = NULL;
+static GladeXML*   aboutDialogXml = nullptr;
+static GtkWidget*  aboutDialog    = nullptr;
 
 typedef std::map<View::Ptr, Scroom::Bookkeeping::Token> Views;
 static Views                                            views;
@@ -136,7 +136,7 @@ void on_open_activate(GtkMenuItem*, gpointer user_data)
   GtkFileFilterFlags filterFlags = static_cast<GtkFileFilterFlags>(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_MIME_TYPE
                                                                    | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_URI);
   // Register the combined filter logic for this filter
-  gtk_file_filter_add_custom(allSupportedFileTypesFilter, filterFlags, &combinedFileFilter, &filters, NULL);
+  gtk_file_filter_add_custom(allSupportedFileTypesFilter, filterFlags, &combinedFileFilter, &filters, nullptr);
 
   // Register the combined filter in the dialog
   gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dialog), allSupportedFileTypesFilter);
@@ -163,7 +163,7 @@ void on_open_activate(GtkMenuItem*, gpointer user_data)
   if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT)
   {
     GFile*            file     = g_file_new_for_path(gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog)));
-    GFileInfo*        fileInfo = g_file_query_info(file, "standard::*", G_FILE_QUERY_INFO_NONE, NULL, NULL);
+    GFileInfo*        fileInfo = g_file_query_info(file, "standard::*", G_FILE_QUERY_INFO_NONE, nullptr, nullptr);
     GtkFileFilterInfo filterInfo;
     filterInfo.filename     = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog));
     filterInfo.mime_type    = g_content_type_get_mime_type(g_file_info_get_content_type(fileInfo));
@@ -263,7 +263,7 @@ gboolean on_drawingarea_configure_event(GtkWidget*, GdkEventConfigure*, gpointer
 
 gboolean on_idle(gpointer user_data)
 {
-  if(user_data == NULL)
+  if(user_data == nullptr)
   {
     return 0;
   }
@@ -411,7 +411,7 @@ void on_scroom_bootstrap(const FileNameMap& newFilenames)
   filenames     = newFilenames;
   currentFolder = ".";
 
-  bool devMode = NULL != getenv(SCROOM_DEV_MODE.c_str());
+  bool devMode = nullptr != getenv(SCROOM_DEV_MODE.c_str());
   if(devMode)
   {
     printf(
@@ -440,8 +440,8 @@ void on_scroom_bootstrap(const FileNameMap& newFilenames)
   }
 
 
-  aboutDialogXml = glade_xml_new(xmlFileName.c_str(), "aboutDialog", NULL);
-  if(aboutDialogXml != NULL)
+  aboutDialogXml = glade_xml_new(xmlFileName.c_str(), "aboutDialog", nullptr);
+  if(aboutDialogXml != nullptr)
   {
     aboutDialog = glade_xml_get_widget(aboutDialogXml, "aboutDialog");
     gtk_about_dialog_set_program_name(GTK_ABOUT_DIALOG(aboutDialog), "Scroom");
@@ -482,13 +482,13 @@ void onDragDataReceived(GtkWidget*, GdkDragContext*, int, int, GtkSelectionData*
 {
   printf("Dropping file(s) onto Scroom:\n");
   gchar** uris = g_uri_list_extract_uris(reinterpret_cast<const gchar*>(seldata->data));
-  for(gchar** uri = uris; *uri != NULL; uri++)
+  for(gchar** uri = uris; *uri != nullptr; uri++)
   {
     printf("\t%s\n", *uri);
 
-    GError* error    = NULL;
-    gchar*  filename = g_filename_from_uri(*uri, NULL, &error);
-    if(error != NULL)
+    GError* error    = nullptr;
+    gchar*  filename = g_filename_from_uri(*uri, nullptr, &error);
+    if(error != nullptr)
     {
       ShowModalDialog(error->message);
       g_error_free(error);
@@ -514,9 +514,9 @@ void onDragDataReceived(GtkWidget*, GdkDragContext*, int, int, GtkSelectionData*
 
 void create_scroom(PresentationInterface::Ptr presentation)
 {
-  GladeXML* xml = glade_xml_new(xmlFileName.c_str(), "scroom", NULL);
+  GladeXML* xml = glade_xml_new(xmlFileName.c_str(), "scroom", nullptr);
 
-  if(xml == NULL)
+  if(xml == nullptr)
   {
     printf("Opening xml failed\n");
     exit(-1);
