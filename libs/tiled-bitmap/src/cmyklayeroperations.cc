@@ -324,7 +324,13 @@ Scroom::Utils::Stuff OperationsCMYK4::cache(const ConstTile::Ptr tile)
   for(int i = 0; i < tile->height * tile->width; i++)
   {
     // Convert CMYK to ARGB, because cairo doesn't know how to render CMYK.
-    uint8_t C_i, M_i, Y_i, K_i;
+    uint8_t C_i;
+
+    uint8_t M_i;
+
+    uint8_t Y_i;
+
+    uint8_t K_i;
     if((i & 1) == 0)
     {                                                      // even pixels -> top half of byte
       C_i = static_cast<uint8_t>(((cur[i / 2]) >> 7) - 1); // 0 -> 255 (= -1), 1 -> 0

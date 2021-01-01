@@ -94,7 +94,11 @@ bool TiffPresentation::load(const std::string& fileName_)
 
     Colormap::Ptr originalColormap;
 
-    uint16 *r, *g, *b;
+    uint16* r;
+
+    uint16* g;
+
+    uint16* b;
     int     result = TIFFGetField(tif, TIFFTAG_COLORMAP, &r, &g, &b);
     if(result == 1)
     {
