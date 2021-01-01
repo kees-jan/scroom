@@ -51,11 +51,11 @@ public:
     , end(point)
   {}
 
-  bool endsAt(GdkPoint p) { return end == p; }
+  [[nodiscard]] bool endsAt(GdkPoint p) const { return end == p; }
 
-  int    width() { return abs(end.x - start.x); }
-  int    height() { return abs(end.y - start.y); }
-  double length() { return std::hypot(width(), height()); }
+  [[nodiscard]] int width() const { return abs(end.x - start.x); }
+  [[nodiscard]] int height() const { return abs(end.y - start.y); }
+  double            length() { return std::hypot(width(), height()); }
 };
 
 /**

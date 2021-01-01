@@ -82,9 +82,9 @@ Layer::Ptr Layer::create(TileInitialisationObserver::Ptr        observer,
   return Ptr(new Layer(observer, depth, layerWidth, layerHeight, bpp, provider));
 }
 
-int Layer::getHorTileCount() { return horTileCount; }
+int Layer::getHorTileCount() const { return horTileCount; }
 
-int Layer::getVerTileCount() { return verTileCount; }
+int Layer::getVerTileCount() const { return verTileCount; }
 
 CompressedTile::Ptr Layer::getTile(int i, int j)
 {

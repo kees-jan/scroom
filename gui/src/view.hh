@@ -107,17 +107,17 @@ public:
   void setPresentation(PresentationInterface::Ptr presentation);
   void clearPresentation();
 
-  void updateScrollbar(GtkAdjustment* adj,
-                       int            zoom,
-                       double         value,
-                       double         presentationStart,
-                       double         presentationSize,
-                       double         windowSize);
-  void updateScrollbars();
-  void updateZoom();
-  void updateRulers();
-  void updateTextbox();
-  void toolButtonToggled(GtkToggleButton* button);
+  static void updateScrollbar(GtkAdjustment* adj,
+                              int            zoom,
+                              double         value,
+                              double         presentationStart,
+                              double         presentationSize,
+                              double         windowSize);
+  void        updateScrollbars();
+  void        updateZoom();
+  void        updateRulers();
+  void        updateTextbox();
+  void        toolButtonToggled(GtkToggleButton* button);
 
   ////////////////////////////////////////////////////////////////////////
   // Scroom events
@@ -157,10 +157,10 @@ public:
   // Helpers
 
 private:
-  GdkPoint windowPointToPresentationPoint(GdkPoint wp);
-  GdkPoint presentationPointToWindowPoint(GdkPoint presentationpoint);
-  GdkPoint eventToPoint(GdkEventButton* event);
-  GdkPoint eventToPoint(GdkEventMotion* event);
-  void     updateNewWindowMenu();
-  void     updateXY(int x, int y, LocationChangeCause source);
+  GdkPoint        windowPointToPresentationPoint(GdkPoint wp) const;
+  GdkPoint        presentationPointToWindowPoint(GdkPoint presentationpoint) const;
+  static GdkPoint eventToPoint(GdkEventButton* event);
+  static GdkPoint eventToPoint(GdkEventMotion* event);
+  void            updateNewWindowMenu();
+  void            updateXY(int x, int y, LocationChangeCause source);
 };

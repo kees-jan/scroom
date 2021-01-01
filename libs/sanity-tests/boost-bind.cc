@@ -32,7 +32,7 @@ public:
 
   void set(int v) { i = v; }
 
-  int get() { return i; }
+  [[nodiscard]] int get() const { return i; }
 
   static Ptr create(int& i) { return Ptr(new A(i)); }
 };

@@ -50,7 +50,7 @@ namespace Scroom
       return result;
     }
 
-    size_t PageProvider::getPageSize() { return blockSize; }
+    size_t PageProvider::getPageSize() const { return blockSize; }
 
     void PageProvider::markPageFree(Scroom::MemoryBlocks::Page* p)
     {

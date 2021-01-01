@@ -268,21 +268,21 @@ public:
                     int                                    layerHeight,
                     int                                    bpp,
                     Scroom::MemoryBlobs::PageProvider::Ptr provider);
-  int        getHorTileCount();
-  int        getVerTileCount();
+  int        getHorTileCount() const;
+  int        getVerTileCount() const;
 
   CompressedTile::Ptr getTile(int i, int j);
   CompressedTileLine& getTileLine(int j);
   void                fetchData(SourcePresentation::Ptr sp, ThreadPool::WeakQueue::Ptr queue);
 
 public:
-  int getWidth() { return width; }
+  int getWidth() const { return width; }
 
-  int getHeight() { return height; }
+  int getHeight() const { return height; }
 
-  int getDepth() { return depth; }
+  int getDepth() const { return depth; }
 
-  Scroom::Utils::Rectangle<int> getRect() { return Scroom::Utils::Rectangle<int>(0, 0, width, height); }
+  Scroom::Utils::Rectangle<int> getRect() const { return Scroom::Utils::Rectangle<int>(0, 0, width, height); }
 
 public:
   // Viewable ////////////////////////////////////////////////////////////

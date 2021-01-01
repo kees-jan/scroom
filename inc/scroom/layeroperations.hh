@@ -15,8 +15,8 @@
 class CommonOperations : public LayerOperations
 {
 public:
-  void drawPixelValue(cairo_t* cr, int x, int y, int size, int value);
-  void drawPixelValue(cairo_t* cr, int x, int y, int size, int value, Color const& bgColor);
+  static void drawPixelValue(cairo_t* cr, int x, int y, int size, int value);
+  void        drawPixelValue(cairo_t* cr, int x, int y, int size, int value, Color const& bgColor);
 
   void initializeCairo(cairo_t* cr) override;
   void drawState(cairo_t* cr, TileState s, Scroom::Utils::Rectangle<double> viewArea) override;

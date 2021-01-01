@@ -78,7 +78,7 @@ namespace Scroom
         ~QueueLock();
 
         /** Return @c true if there are still references to the ThreadPool::Queue associated with @c q */
-        bool queueExists();
+        [[nodiscard]] bool queueExists() const;
       };
 
     } // namespace ThreadPool

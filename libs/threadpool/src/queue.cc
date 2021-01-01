@@ -57,6 +57,6 @@ QueueLock::QueueLock(QueueImpl::Ptr queue)
   , isValid(q->jobStarted())
 {}
 
-bool QueueLock::queueExists() { return isValid; }
+bool QueueLock::queueExists() const { return isValid; }
 
 QueueLock::~QueueLock() { q->jobFinished(); }

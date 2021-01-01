@@ -104,7 +104,7 @@ namespace
       receivedRect.push_back(rect_);
     }
 
-    void CheckAllEqual(Scroom::Utils::Rectangle<double> const& rect_)
+    void CheckAllEqual(Scroom::Utils::Rectangle<double> const& rect_) const
     {
       BOOST_CHECK_EQUAL(std::list<Scroom::Utils::Rectangle<double>>(receivedRect.size(), rect_), receivedRect);
     }
@@ -114,7 +114,7 @@ namespace
       return std::find(receivedVi.begin(), receivedVi.end(), vi) != receivedVi.end();
     }
 
-    void CheckEmpty()
+    void CheckEmpty() const
     {
       BOOST_CHECK(receivedVi.empty());
       BOOST_CHECK(receivedRect.empty());

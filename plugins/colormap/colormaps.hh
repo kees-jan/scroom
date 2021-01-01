@@ -45,7 +45,7 @@ namespace Scroom
       /**
        * Get the path where the colormap files are located
        */
-      char* getColormapDirPath();
+      static char* getColormapDirPath();
 
       /**
        * Load a colormap by name

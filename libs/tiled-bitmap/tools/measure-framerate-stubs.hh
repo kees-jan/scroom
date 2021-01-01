@@ -24,7 +24,7 @@ private:
 public:
   static Ptr create();
 
-  bool isFinished();
+  [[nodiscard]] bool isFinished() const;
 
   // ProgressInterface ///////////////////////////////////////////////////
   void setIdle() override {}

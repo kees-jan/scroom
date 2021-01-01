@@ -792,7 +792,7 @@ void View::addToolButton(GtkToggleButton* button, ToolStateListener::Ptr callbac
 ////////////////////////////////////////////////////////////////////////
 // Helpers
 
-GdkPoint View::windowPointToPresentationPoint(GdkPoint wp)
+GdkPoint View::windowPointToPresentationPoint(GdkPoint wp) const
 {
   GdkPoint result = {0, 0};
 
@@ -811,7 +811,7 @@ GdkPoint View::windowPointToPresentationPoint(GdkPoint wp)
   return result;
 }
 
-GdkPoint View::presentationPointToWindowPoint(GdkPoint pp)
+GdkPoint View::presentationPointToWindowPoint(GdkPoint pp) const
 {
   GdkPoint result = {0, 0};
 

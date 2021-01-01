@@ -71,7 +71,7 @@ namespace Scroom
     public:
       static Ptr create(size_t blockCount, size_t blockSize);
       Page::Ptr  getFreePage();
-      size_t     getPageSize();
+      size_t     getPageSize() const;
     };
 
     class Blob : virtual public Scroom::Utils::Base
