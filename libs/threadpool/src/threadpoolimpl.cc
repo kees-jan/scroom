@@ -166,7 +166,7 @@ namespace
       triesRemaining--;
     }
 
-    if(0 < threads.size())
+    if(!threads.empty())
     {
       abort();
     }

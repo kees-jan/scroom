@@ -109,7 +109,7 @@ BOOST_AUTO_TEST_CASE(register_observer)
   // Unregistering succeeds
   registration.reset();
   observers = observable->getObservers();
-  BOOST_REQUIRE(0 == observers.size());
+  BOOST_REQUIRE(observers.empty());
 }
 
 BOOST_AUTO_TEST_CASE(register_weak_observer)
@@ -130,7 +130,7 @@ BOOST_AUTO_TEST_CASE(register_weak_observer)
   registration.reset();
   BOOST_CHECK(!weakObserver.expired());
   observers = observable->getObservers();
-  BOOST_REQUIRE(0 == observers.size());
+  BOOST_REQUIRE(observers.empty());
   observer.reset();
   BOOST_CHECK(weakObserver.expired());
 }
@@ -154,14 +154,14 @@ BOOST_AUTO_TEST_CASE(registered_weak_observer_goes_away)
   observer.reset();
   BOOST_CHECK(!observer);
   observers = observable->getObservers();
-  BOOST_REQUIRE(0 == observers.size());
+  BOOST_REQUIRE(observers.empty());
   BOOST_CHECK(weakObserver.expired());
   BOOST_CHECK(registration);
 
   // Unregistering succeeds
   registration.reset();
   observers = observable->getObservers();
-  BOOST_REQUIRE(0 == observers.size());
+  BOOST_REQUIRE(observers.empty());
 }
 
 BOOST_AUTO_TEST_CASE(register_multiple_observers)
@@ -238,7 +238,7 @@ BOOST_AUTO_TEST_CASE(register_observer_multiple_times)
   BOOST_CHECK_EQUAL(observer, observers.front());
   r2.reset();
   observers = observable->getObservers();
-  BOOST_REQUIRE(0 == observers.size());
+  BOOST_REQUIRE(observers.empty());
 }
 
 BOOST_AUTO_TEST_CASE(register_weak_observer_multiple_times)
@@ -264,7 +264,7 @@ BOOST_AUTO_TEST_CASE(register_weak_observer_multiple_times)
   BOOST_CHECK_EQUAL(observer, observers.front());
   r2.reset();
   observers = observable->getObservers();
-  BOOST_REQUIRE(0 == observers.size());
+  BOOST_REQUIRE(observers.empty());
 }
 
 BOOST_AUTO_TEST_CASE(register_observer_recursively)
@@ -287,9 +287,9 @@ BOOST_AUTO_TEST_CASE(register_observer_recursively)
   // Unregistering succeeds
   registration.reset();
   observers = observable->getObservers();
-  BOOST_REQUIRE(0 == observers.size());
+  BOOST_REQUIRE(observers.empty());
   observers = recursiveObservable->getObservers();
-  BOOST_REQUIRE(0 == observers.size());
+  BOOST_REQUIRE(observers.empty());
 }
 
 BOOST_AUTO_TEST_CASE(shared_from_this)
