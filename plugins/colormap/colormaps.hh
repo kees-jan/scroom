@@ -50,7 +50,7 @@ namespace Scroom
       /**
        * Load a colormap by name
        */
-      Colormap::Ptr load(const char* name);
+      static Colormap::Ptr load(const char* name);
     };
 
   } // namespace ColormapImpl

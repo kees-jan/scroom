@@ -53,9 +53,9 @@ public:
 
   [[nodiscard]] bool endsAt(GdkPoint p) const { return end == p; }
 
-  [[nodiscard]] int width() const { return abs(end.x - start.x); }
-  [[nodiscard]] int height() const { return abs(end.y - start.y); }
-  double            length() { return std::hypot(width(), height()); }
+  [[nodiscard]] int    width() const { return abs(end.x - start.x); }
+  [[nodiscard]] int    height() const { return abs(end.y - start.y); }
+  [[nodiscard]] double length() const { return std::hypot(width(), height()); }
 };
 
 /**
