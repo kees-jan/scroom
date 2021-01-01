@@ -21,7 +21,7 @@ namespace
   class ProgressBarPulser : public WorkInterface
   {
   public:
-    typedef boost::shared_ptr<ProgressBarPulser> Ptr;
+    using Ptr = boost::shared_ptr<ProgressBarPulser>;
 
   private:
     boost::mutex                         mut;

@@ -41,7 +41,7 @@ public:
   }
 };
 
-typedef std::unique_ptr<GtkFileFilterInfo, GtkFileFilterInfoDeleter> GtkFileFilterInfoPtr;
+using GtkFileFilterInfoPtr = std::unique_ptr<GtkFileFilterInfo, GtkFileFilterInfoDeleter>;
 
 void destroyGtkFileFilterList(std::list<GtkFileFilter*>& l)
 {

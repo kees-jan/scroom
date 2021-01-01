@@ -22,7 +22,7 @@ public:
   MeasureHandler();
 
 public:
-  typedef boost::shared_ptr<MeasureHandler> Ptr;
+  using Ptr = boost::shared_ptr<MeasureHandler>;
 
 private:
   Selection::Ptr selection;

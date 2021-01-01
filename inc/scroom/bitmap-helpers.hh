@@ -24,7 +24,7 @@ namespace Scroom
     class BitmapSurface
     {
     public:
-      typedef boost::shared_ptr<BitmapSurface> Ptr;
+      using Ptr = boost::shared_ptr<BitmapSurface>;
 
     private:
       cairo_surface_t* const                 surface;

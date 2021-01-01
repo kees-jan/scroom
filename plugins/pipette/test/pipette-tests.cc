@@ -31,7 +31,7 @@ public:
 class DummyView : public ViewInterface
 {
 public:
-  typedef boost::shared_ptr<DummyView> Ptr;
+  using Ptr = boost::shared_ptr<DummyView>;
 
   static Ptr createWithPresentation() { return create(DummyPresentation::create()); }
   static Ptr createWithoutPresentation() { return create(nullptr); }

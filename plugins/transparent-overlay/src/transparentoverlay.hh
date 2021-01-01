@@ -19,7 +19,7 @@ class TransparentOverlay
   , virtual public Scroom::Utils::Base
 {
 public:
-  typedef boost::shared_ptr<TransparentOverlay> Ptr;
+  using Ptr = boost::shared_ptr<TransparentOverlay>;
 
 private:
   TransparentOverlay() = default;

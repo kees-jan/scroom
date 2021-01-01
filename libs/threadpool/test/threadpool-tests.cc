@@ -37,7 +37,7 @@ private:
   Semaphore* s;
 
 public:
-  typedef boost::shared_ptr<A> Ptr;
+  using Ptr = boost::shared_ptr<A>;
 
   A(Semaphore* s_)
     : s(s_)

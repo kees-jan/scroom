@@ -29,7 +29,7 @@ class TiledBitmap;
 class FileOperation : private Interface
 {
 public:
-  typedef boost::shared_ptr<FileOperation> Ptr;
+  using Ptr = boost::shared_ptr<FileOperation>;
 
 private:
   ProgressInterface::Ptr progress;

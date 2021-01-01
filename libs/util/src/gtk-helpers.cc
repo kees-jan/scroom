@@ -10,7 +10,7 @@
 #include <scroom/assertions.hh>
 #include <scroom/gtk-helpers.hh>
 
-typedef boost::shared_ptr<boost::function<bool()>> GtkFuncPtr;
+using GtkFuncPtr = boost::shared_ptr<boost::function<bool()>>;
 
 namespace Scroom
 {

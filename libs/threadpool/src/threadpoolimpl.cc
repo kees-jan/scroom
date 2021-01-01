@@ -32,7 +32,7 @@ namespace
   class ThreadList
   {
   public:
-    typedef boost::shared_ptr<ThreadList> Ptr;
+    using Ptr = boost::shared_ptr<ThreadList>;
 
   private:
     boost::mutex                                             mut;

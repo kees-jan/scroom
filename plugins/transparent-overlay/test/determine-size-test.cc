@@ -55,7 +55,7 @@ namespace
   class PresentationInterfaceStub : public PresentationInterface
   {
   public:
-    typedef boost::shared_ptr<PresentationInterfaceStub> Ptr;
+    using Ptr = boost::shared_ptr<PresentationInterfaceStub>;
 
   private:
     Scroom::Utils::Rectangle<double> rect;

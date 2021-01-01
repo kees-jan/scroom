@@ -26,7 +26,7 @@ public:
   PipetteHandler();
 
 public:
-  typedef boost::shared_ptr<PipetteHandler> Ptr;
+  using Ptr = boost::shared_ptr<PipetteHandler>;
 
 private:
   Selection::Ptr         selection;

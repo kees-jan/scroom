@@ -15,7 +15,7 @@
 class PresentationMock : public PresentationInterface
 {
 public:
-  typedef boost::shared_ptr<PresentationMock> Ptr;
+  using Ptr = boost::shared_ptr<PresentationMock>;
 
   static Ptr create() { return Ptr(new PresentationMock()); }
 

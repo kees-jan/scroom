@@ -94,7 +94,7 @@ public:
   Rectangle moveTo(int y) { return Rectangle::moveTo(make_point(horizontalContainedStart, y)); }
 };
 
-typedef boost::mpl::list<Segment<int>, RectangleHorizontalTestScaffold, RectangleVerticalTestScaffold> test_types;
+using test_types = boost::mpl::list<Segment<int>, RectangleHorizontalTestScaffold, RectangleVerticalTestScaffold>;
 
 ////////////////////////////////////////////////////////////////////////
 // Tests

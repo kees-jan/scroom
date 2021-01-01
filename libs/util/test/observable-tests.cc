@@ -17,7 +17,7 @@ using namespace Scroom::Utils;
 class TestObserver
 {
 public:
-  typedef boost::shared_ptr<TestObserver> Ptr;
+  using Ptr     = boost::shared_ptr<TestObserver>;
   using WeakPtr = boost::weak_ptr<TestObserver>;
 
   static Ptr create();

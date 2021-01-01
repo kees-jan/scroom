@@ -22,7 +22,7 @@ namespace
   class A
   {
   public:
-    typedef boost::shared_ptr<A> Ptr;
+    using Ptr     = boost::shared_ptr<A>;
     using WeakPtr = boost::weak_ptr<A>;
 
     void whatever() {}

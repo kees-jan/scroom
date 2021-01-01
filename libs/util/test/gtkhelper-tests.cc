@@ -21,7 +21,7 @@ namespace
   class B
   {
   public:
-    typedef boost::shared_ptr<B> Ptr;
+    using Ptr     = boost::shared_ptr<B>;
     using WeakPtr = boost::weak_ptr<B>;
 
     static Ptr create() { return Ptr(new B()); }

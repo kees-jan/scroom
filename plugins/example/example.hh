@@ -19,7 +19,7 @@ class Example
   , virtual public Scroom::Utils::Base
 {
 public:
-  typedef boost::shared_ptr<Example> Ptr;
+  using Ptr = boost::shared_ptr<Example>;
 
 private:
   Example() = default;

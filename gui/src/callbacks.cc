@@ -52,11 +52,11 @@ static std::string xmlFileName;
 static GladeXML*   aboutDialogXml = nullptr;
 static GtkWidget*  aboutDialog    = nullptr;
 
-typedef std::map<View::Ptr, Scroom::Bookkeeping::Token> Views;
-static Views                                            views;
-static std::list<PresentationInterface::WeakPtr>        presentations;
-static FileNameMap                                      filenames;
-static std::string                                      currentFolder;
+using Views = std::map<View::Ptr, Scroom::Bookkeeping::Token>;
+static Views                                     views;
+static std::list<PresentationInterface::WeakPtr> presentations;
+static FileNameMap                               filenames;
+static std::string                               currentFolder;
 
 void ShowModalDialog(const std::string& message)
 {
