@@ -65,17 +65,27 @@ namespace Scroom
     public:
       using Base = typename std::remove_const<ConstBase>::type;
 
+      static const int bitsPerBase{8 * sizeof(ConstBase) / sizeof(byte)};
+
+      const int       bps;
+      const int       samplesPerBase;
+      const int       pixelOffset;
+      const ConstBase pixelMask;
+
       ConstBase* currentBase;
       int        currentOffset;
 
-      const int        bps;
-      const int        samplesPerBase;
-      static const int bitsPerBase{8 * sizeof(ConstBase) / sizeof(byte)};
-      const int        pixelOffset;
-      const ConstBase  pixelMask;
-
     private:
       static Base mask(int bps) { return (((ConstBase(1) << (bps - 1)) - 1) << 1) | 1; }
+
+      SampleIterator(div_t d, ConstBase* base, int bps_)
+        : bps(bps_)
+        , samplesPerBase(bitsPerBase / bps)
+        , pixelOffset(bps)
+        , pixelMask(mask(bps))
+        , currentBase(base + d.quot)
+        , currentOffset(samplesPerBase - 1 - d.rem)
+      {}
 
     public:
       /**
@@ -85,18 +95,11 @@ namespace Scroom
        * @param offset number of the sample within that element
        * @param bps Number of bits per sample
        */
+      // https://bugs.llvm.org/show_bug.cgi?id=37902
+      // NOLINTNEXTLINE (cppcoreguidelines-pro-type-member-init,hicpp-member-init)
       explicit SampleIterator(ConstBase* base, int offset = 0, int bps_ = 1)
-        : currentBase(nullptr)
-        , currentOffset(0)
-        , bps(bps_)
-        , samplesPerBase(bitsPerBase / bps)
-        , pixelOffset(bps)
-        , pixelMask(mask(bps))
-      {
-        div_t d       = div(offset, samplesPerBase);
-        currentBase   = base + d.quot;
-        currentOffset = samplesPerBase - 1 - d.rem;
-      }
+        : SampleIterator(div(offset, /* samplesPerBase */ bitsPerBase / bps_), base, bps_)
+      {}
 
       /** Get the value of the current sample */
       Base get() { return (*currentBase >> (currentOffset * pixelOffset)) & pixelMask; }
