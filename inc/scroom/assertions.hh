@@ -30,13 +30,17 @@ namespace Scroom
 #  define __STRING(x) #  x
 #endif
 
+// NOLINTNEXTLINE
 #define require(expr) \
   ((expr) ? ((void)0) \
           : Scroom::Utils::Detail::assertionFailed("precondition", __STRING(expr), __PRETTY_FUNCTION__, __FILE__, __LINE__))
+// NOLINTNEXTLINE
 #define ensure(expr)  \
   ((expr) ? ((void)0) \
           : Scroom::Utils::Detail::assertionFailed("postcondition", __STRING(expr), __PRETTY_FUNCTION__, __FILE__, __LINE__))
+// NOLINTNEXTLINE
 #define verify(expr)  \
   ((expr) ? ((void)0) \
           : Scroom::Utils::Detail::assertionFailed("assertion", __STRING(expr), __PRETTY_FUNCTION__, __FILE__, __LINE__))
+// NOLINTNEXTLINE
 #define defect() Scroom::Utils::Detail::assertionFailed("control flow assertion", "", __PRETTY_FUNCTION__, __FILE__, __LINE__)

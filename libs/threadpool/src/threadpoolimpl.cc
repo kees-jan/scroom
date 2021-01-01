@@ -408,15 +408,11 @@ ThreadPool::WeakQueue::WeakQueue()
   : qi(QueueImpl::create())
 {}
 
-ThreadPool::WeakQueue::~WeakQueue() = default;
-
 QueueImpl::Ptr ThreadPool::WeakQueue::get() { return qi; }
 
 ////////////////////////////////////////////////////////////////////////
 /// ThreadPool::Job
 ////////////////////////////////////////////////////////////////////////
-
-ThreadPool::Job::Job() = default;
 
 ThreadPool::Job::Job(boost::function<void()> fn_, WeakQueue::Ptr queue_)
   : queue(queue_->get())
@@ -426,8 +422,6 @@ ThreadPool::Job::Job(boost::function<void()> fn_, WeakQueue::Ptr queue_)
 ////////////////////////////////////////////////////////////////////////
 /// QueueJumper
 ////////////////////////////////////////////////////////////////////////
-
-QueueJumper::QueueJumper() = default;
 
 QueueJumper::Ptr QueueJumper::create() { return QueueJumper::Ptr(new QueueJumper()); }
 

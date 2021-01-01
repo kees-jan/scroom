@@ -67,7 +67,7 @@ private:
 private:
   void setStatusBarMessage(const char* message);
 
-  PluginManager();
+  PluginManager() = default;
 
 public:
   static Ptr create();

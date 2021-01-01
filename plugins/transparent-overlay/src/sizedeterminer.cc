@@ -63,8 +63,6 @@ SizeDeterminer::PresentationData::PresentationData(ResizablePresentationInterfac
 
 SizeDeterminer::Ptr SizeDeterminer::create() { return Ptr(new SizeDeterminer()); }
 
-SizeDeterminer::SizeDeterminer() = default;
-
 void SizeDeterminer::add(PresentationInterface::Ptr const& p)
 {
   ResizablePresentationInterface::Ptr r = boost::dynamic_pointer_cast<ResizablePresentationInterface>(p);

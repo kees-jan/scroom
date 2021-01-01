@@ -156,7 +156,7 @@ public:
   using Ptr = boost::shared_ptr<ScroomInterfaceImpl>;
 
 private:
-  ScroomInterfaceImpl();
+  ScroomInterfaceImpl() = default;
 
 public:
   static Ptr instance();
@@ -283,8 +283,6 @@ ScroomInterfaceImpl::Ptr ScroomInterfaceImpl::instance()
   static ScroomInterfaceImpl::Ptr i(new ScroomInterfaceImpl());
   return i;
 }
-
-ScroomInterfaceImpl::ScroomInterfaceImpl() = default;
 
 PresentationInterface::Ptr ScroomInterfaceImpl::newPresentation(std::string const& name)
 {

@@ -90,8 +90,6 @@ namespace Scroom
     {
       ProgressStore::Ptr ProgressStore::create() { return Ptr(new ProgressStore()); }
 
-      ProgressStore::ProgressStore() = default;
-
       void ProgressStore::init(ProgressInterface::Ptr const& i)
       {
         switch(state)
@@ -195,8 +193,6 @@ namespace Scroom
     ProgressInterfaceBroadcaster::Unsubscriber::~Unsubscriber() { parent->unsubscribe(child); }
 
     ////////////////////////////////////////////////////////////////////////
-
-    ProgressInterfaceMultiplexer::ChildData::ChildData() = default;
 
     ProgressInterfaceMultiplexer::ChildData::Ptr ProgressInterfaceMultiplexer::ChildData::create()
     {

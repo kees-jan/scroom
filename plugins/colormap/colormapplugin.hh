@@ -28,7 +28,7 @@ namespace Scroom
       std::list<PresentationInterface::WeakPtr> presentations;
 
     private:
-      ColormapPlugin();
+      ColormapPlugin() = default;
 
     public:
       static Ptr create();

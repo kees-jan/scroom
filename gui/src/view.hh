@@ -34,7 +34,7 @@ class View
   , virtual public Scroom::Utils::Base
 {
 public:
-  typedef boost::shared_ptr<View> Ptr;
+  using Ptr = boost::shared_ptr<View>;
 
 private:
   GladeXML*                                          scroomXml;

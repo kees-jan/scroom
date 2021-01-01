@@ -38,7 +38,7 @@ private:
   std::map<PresentationInterface::Ptr, PresentationData> resizablePresentationData;
 
 private:
-  SizeDeterminer();
+  SizeDeterminer() = default;
   void sendUpdates();
 
 public:

@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include <type_traits>
+
 #include <boost/operators.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/utility.hpp>
@@ -57,21 +59,23 @@ namespace Scroom
      *
      * @param Base the larger type that contains the samples. Typically uint8_t
      */
-    template <typename Base>
-    class SampleIterator : public boost::addable2<SampleIterator<Base>, unsigned int>
+    template <typename ConstBase>
+    class SampleIterator : public boost::addable2<SampleIterator<ConstBase>, unsigned int>
     {
     public:
-      Base* currentBase;
-      int   currentOffset;
+      using Base = typename std::remove_const<ConstBase>::type;
+
+      ConstBase* currentBase;
+      int        currentOffset;
 
       const int        bps;
       const int        samplesPerBase;
-      static const int bitsPerBase;
+      static const int bitsPerBase{8 * sizeof(ConstBase) / sizeof(byte)};
       const int        pixelOffset;
-      const Base       pixelMask;
+      const ConstBase  pixelMask;
 
     private:
-      static Base mask(int bps);
+      static Base mask(int bps) { return (((ConstBase(1) << (bps - 1)) - 1) << 1) | 1; }
 
     public:
       /**
@@ -81,114 +85,75 @@ namespace Scroom
        * @param offset number of the sample within that element
        * @param bps Number of bits per sample
        */
-      SampleIterator(Base* base, int offset = 0, int bps = 1);
+      explicit SampleIterator(ConstBase* base, int offset = 0, int bps_ = 1)
+        : currentBase(nullptr)
+        , currentOffset(0)
+        , bps(bps_)
+        , samplesPerBase(bitsPerBase / bps)
+        , pixelOffset(bps)
+        , pixelMask(mask(bps))
+      {
+        div_t d       = div(offset, samplesPerBase);
+        currentBase   = base + d.quot;
+        currentOffset = samplesPerBase - 1 - d.rem;
+      }
 
       /** Get the value of the current sample */
-      Base get();
+      Base get() { return (*currentBase >> (currentOffset * pixelOffset)) & pixelMask; }
 
       /** Set the value of the current sample */
-      void set(Base value);
+      void set(ConstBase value)
+      {
+        *currentBase = (*currentBase & ~(pixelMask << currentOffset * pixelOffset)) | (value << (currentOffset * pixelOffset));
+      }
 
       /** Move to the next sample */
-      SampleIterator& operator++();
+      SampleIterator& operator++()
+      {
+        // Prefix operator
+        if(!(currentOffset--))
+        {
+          currentOffset = samplesPerBase - 1;
+          ++currentBase;
+        }
+
+        return *this;
+      }
 
       /** Move to the next sample */
-      SampleIterator operator++(int);
+      SampleIterator operator++(int)
+      {
+        // Postfix operator
+        SampleIterator<ConstBase> result = *this;
+
+        if(!(currentOffset--))
+        {
+          currentOffset = samplesPerBase - 1;
+          ++currentBase;
+        }
+
+        return result;
+      }
 
       /** Move @c x samples further */
-      SampleIterator& operator+=(unsigned int x);
+      SampleIterator& operator+=(unsigned int x)
+      {
+        int   offset = samplesPerBase - 1 - currentOffset + x;
+        div_t d      = div(offset, samplesPerBase);
+        currentBase += d.quot;
+        currentOffset = samplesPerBase - 1 - d.rem;
+
+        return *this;
+      }
 
       /** Get the value of the current sample */
-      Base operator*();
+      Base operator*() { return (*currentBase >> (currentOffset * pixelOffset)) & pixelMask; }
 
-      bool operator==(const SampleIterator<Base>& other) const;
+      bool operator==(const SampleIterator<ConstBase>& other) const
+      {
+        return currentBase == other.currentBase && currentOffset == other.currentOffset && bps == other.bps;
+      }
     };
-
-    template <typename Base>
-    const int SampleIterator<Base>::bitsPerBase = 8 * sizeof(Base) / sizeof(byte);
-
-    template <typename Base>
-    Base SampleIterator<Base>::mask(int bps)
-    {
-      return (((Base(1) << (bps - 1)) - 1) << 1) | 1;
-    }
-
-    template <typename Base>
-    SampleIterator<Base>::SampleIterator(Base* base, int offset, int bps_)
-      : currentBase(nullptr)
-      , currentOffset(0)
-      , bps(bps_)
-      , samplesPerBase(bitsPerBase / bps_)
-      , pixelOffset(bps_)
-      , pixelMask(mask(bps_))
-    {
-      div_t d       = div(offset, samplesPerBase);
-      currentBase   = base + d.quot;
-      currentOffset = samplesPerBase - 1 - d.rem;
-    }
-
-    template <typename Base>
-    inline Base SampleIterator<Base>::get()
-    {
-      return (*currentBase >> (currentOffset * pixelOffset)) & pixelMask;
-    }
-
-    template <typename Base>
-    inline void SampleIterator<Base>::set(Base value)
-    {
-      *currentBase = (*currentBase & ~(pixelMask << currentOffset * pixelOffset)) | (value << (currentOffset * pixelOffset));
-    }
-
-    template <typename Base>
-    inline Base SampleIterator<Base>::operator*()
-    {
-      return (*currentBase >> (currentOffset * pixelOffset)) & pixelMask;
-    }
-
-    template <typename Base>
-    inline SampleIterator<Base>& SampleIterator<Base>::operator++()
-    {
-      // Prefix operator
-      if(!(currentOffset--))
-      {
-        currentOffset = samplesPerBase - 1;
-        ++currentBase;
-      }
-
-      return *this;
-    }
-
-    template <typename Base>
-    inline SampleIterator<Base> SampleIterator<Base>::operator++(int)
-    {
-      // Postfix operator
-      SampleIterator<Base> result = *this;
-
-      if(!(currentOffset--))
-      {
-        currentOffset = samplesPerBase - 1;
-        ++currentBase;
-      }
-
-      return result;
-    }
-
-    template <typename Base>
-    SampleIterator<Base>& SampleIterator<Base>::operator+=(unsigned int x)
-    {
-      int   offset = samplesPerBase - 1 - currentOffset + x;
-      div_t d      = div(offset, samplesPerBase);
-      currentBase += d.quot;
-      currentOffset = samplesPerBase - 1 - d.rem;
-
-      return *this;
-    }
-
-    template <typename Base>
-    bool SampleIterator<Base>::operator==(const SampleIterator<Base>& other) const
-    {
-      return currentBase == other.currentBase && currentOffset == other.currentOffset && bps == other.bps;
-    }
 
   } // namespace Bitmap
 } // namespace Scroom

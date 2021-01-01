@@ -17,9 +17,6 @@ namespace Scroom
 {
   namespace ColormapImpl
   {
-
-    ColormapPlugin::ColormapPlugin() = default;
-
     ColormapPlugin::Ptr ColormapPlugin::create() { return Ptr(new ColormapPlugin()); }
 
     std::string ColormapPlugin::getPluginName() { return "Colormap"; }

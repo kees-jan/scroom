@@ -80,7 +80,6 @@ public:
 
 private:
   Pipette() = default;
-  ;
 
 public:
   static Ptr create();

@@ -22,7 +22,7 @@ public:
   static Ptr create();
 
 private:
-  ProgressStateInterfaceStub();
+  ProgressStateInterfaceStub() = default;
 
 public:
   // ProgressStateInterface

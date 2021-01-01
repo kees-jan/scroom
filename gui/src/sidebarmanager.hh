@@ -21,7 +21,6 @@ private:
   std::map<GtkWidget*, GtkWidget*> widgets;
 
 public:
-  SidebarManager();
   void setWidgets(GtkWidget* panelWindow, GtkBox* panel);
 
   void addSideWidget(std::string title, GtkWidget* w);

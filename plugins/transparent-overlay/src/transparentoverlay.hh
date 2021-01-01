@@ -23,7 +23,6 @@ public:
 
 private:
   TransparentOverlay() = default;
-  ;
 
 public:
   static Ptr create();

@@ -66,7 +66,6 @@ public:
 
 private:
   Measure() = default;
-  ;
 
 public:
   static Ptr create();

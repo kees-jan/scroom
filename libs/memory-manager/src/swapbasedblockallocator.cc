@@ -86,14 +86,12 @@ namespace Scroom
       class SwapBasedBlockAllocatorFactory : public BlockFactoryInterface
       {
       private:
-        SwapBasedBlockAllocatorFactory();
+        SwapBasedBlockAllocatorFactory() = default;
 
       public:
         static Ptr          create();
         BlockInterface::Ptr create(size_t count, size_t size) override;
       };
-
-      SwapBasedBlockAllocatorFactory::SwapBasedBlockAllocatorFactory() = default;
 
       BlockFactoryInterface::Ptr SwapBasedBlockAllocatorFactory::create()
       {

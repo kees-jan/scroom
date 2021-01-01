@@ -19,7 +19,7 @@ private:
   bool finished{false};
 
 private:
-  ProgressInterfaceStub();
+  ProgressInterfaceStub() = default;
 
 public:
   static Ptr create();

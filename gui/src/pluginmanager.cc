@@ -28,8 +28,6 @@ const std::string SCROOM_PLUGIN_DIRS = "SCROOM_PLUGIN_DIRS";
 
 static PluginManager::Ptr pluginManager = PluginManager::create();
 
-PluginManager::PluginManager() = default;
-
 PluginManager::Ptr PluginManager::create() { return Ptr(new PluginManager()); }
 
 void startPluginManager(bool devMode) { pluginManager->addHook(devMode); }

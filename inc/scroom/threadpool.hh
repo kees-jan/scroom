@@ -85,7 +85,7 @@ public:
   class Queue
   {
   public:
-    typedef boost::shared_ptr<Queue> Ptr;
+    using Ptr     = boost::shared_ptr<Queue>;
     using WeakPtr = boost::weak_ptr<Queue>;
 
   public:
@@ -144,16 +144,18 @@ public:
     using WeakPtr = boost::weak_ptr<WeakQueue>;
 
   public:
-    static Ptr create();
-    ~WeakQueue();
-    boost::shared_ptr<Scroom::Detail::ThreadPool::QueueImpl> get();
+    ~WeakQueue() = default;
 
-  private:
-    WeakQueue();
     WeakQueue(const WeakQueue&) = delete;
     WeakQueue(WeakQueue&&)      = delete;
     WeakQueue& operator=(const WeakQueue&) = delete;
     WeakQueue& operator=(WeakQueue&&) = delete;
+
+    static Ptr                                               create();
+    boost::shared_ptr<Scroom::Detail::ThreadPool::QueueImpl> get();
+
+  private:
+    WeakQueue();
 
   private:
     boost::shared_ptr<Scroom::Detail::ThreadPool::QueueImpl> qi;
@@ -165,7 +167,7 @@ private:
     boost::shared_ptr<Scroom::Detail::ThreadPool::QueueImpl> queue;
     boost::function<void()>                                  fn;
 
-    Job();
+    Job() = default;
     Job(boost::function<void()> fn, WeakQueue::Ptr queue);
   };
 
@@ -547,7 +549,7 @@ private:
   boost::function<void()> fn;
 
 protected:
-  QueueJumper();
+  QueueJumper() = default;
 
 public:
   /**

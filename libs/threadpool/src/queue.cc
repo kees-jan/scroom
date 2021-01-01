@@ -15,8 +15,6 @@ using namespace Scroom::Detail::ThreadPool;
 
 QueueImpl::Ptr QueueImpl::create() { return QueueImpl::Ptr(new QueueImpl()); }
 
-QueueImpl::QueueImpl() = default;
-
 void QueueImpl::deletingQueue()
 {
   boost::mutex::scoped_lock lock(mut);

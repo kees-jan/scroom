@@ -58,7 +58,7 @@ namespace Scroom
         bool                      isDeleted{false}; /**< @c true if the last reference to ThreadPool::Queue goes away */
 
       private:
-        QueueImpl();
+        QueueImpl() = default;
       };
 
       /**

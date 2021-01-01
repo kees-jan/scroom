@@ -112,7 +112,7 @@ namespace Scroom
         double progress{0.0};
 
       private:
-        ProgressStore();
+        ProgressStore() = default;
 
       public:
         static Ptr create();
@@ -197,7 +197,7 @@ namespace Scroom
         double                        progress{0.0};
 
       private:
-        ChildData();
+        ChildData() = default;
 
       public:
         static Ptr create();

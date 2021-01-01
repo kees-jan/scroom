@@ -7,8 +7,6 @@
 
 #include "sidebarmanager.hh"
 
-SidebarManager::SidebarManager() = default;
-
 void SidebarManager::setWidgets(GtkWidget* panelWindow_, GtkBox* panel_)
 {
   this->panelWindow = panelWindow_;
