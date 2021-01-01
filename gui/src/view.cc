@@ -111,9 +111,6 @@ View::View(GladeXML* scroomXml_)
   toolBarSeparator = nullptr;
   toolBarCount     = 0;
 
-  cachedPoint.x = 0;
-  cachedPoint.y = 0;
-
   on_newPresentationInterfaces_update(pluginManager->getNewPresentationInterfaces());
   updateNewWindowMenu();
   on_configure();

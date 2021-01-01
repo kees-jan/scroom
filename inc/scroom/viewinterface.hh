@@ -41,12 +41,11 @@ public:
 
 public:
   Selection(int x, int y)
-  {
-    start.x = x;
-    start.y = y;
-    end     = start;
-  }
-  Selection(GdkPoint point)
+    : start{x, y}
+    , end{start}
+  {}
+
+  explicit Selection(GdkPoint point)
     : start(point)
     , end(point)
   {}

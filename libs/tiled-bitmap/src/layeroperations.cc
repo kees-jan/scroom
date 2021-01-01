@@ -50,6 +50,7 @@ public:
 
 BitCountLut bcl;
 
+// NOLINTNEXTLINE
 BitCountLut::BitCountLut()
 {
   for(int i = 0; i < 256; i++)

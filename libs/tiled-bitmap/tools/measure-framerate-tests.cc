@@ -25,11 +25,11 @@ class Invalidator
 {
 private:
   unsigned int    secs;
-  bool            started;
-  struct timespec t;
+  bool            started{false};
+  struct timespec t = {0, 0};
 
 public:
-  Invalidator(unsigned int secs);
+  explicit Invalidator(unsigned int secs);
 
   bool operator()();
 };
@@ -39,9 +39,9 @@ class BaseCounter
 private:
   std::string     name;
   unsigned int    secs;
-  bool            started;
-  unsigned int    count;
-  struct timespec t;
+  bool            started{false};
+  unsigned int    count{0};
+  struct timespec t = {0, 0};
 
   static unsigned int columnWidth;
 
@@ -70,7 +70,6 @@ static bool logSizes()
 
 Invalidator::Invalidator(unsigned int secs_)
   : secs(secs_)
-  , started(false)
 {}
 
 bool Invalidator::operator()()
@@ -83,7 +82,7 @@ bool Invalidator::operator()()
     return true;
   }
 
-  struct timespec now;
+  struct timespec now = {0, 0};
   if(0 == clock_gettime(CLOCK_REALTIME, &now))
   {
     if(now.tv_sec > t.tv_sec + secs)
@@ -102,8 +101,6 @@ unsigned int BaseCounter::columnWidth = 0;
 BaseCounter::BaseCounter(const std::string& name_, unsigned int secs_)
   : name(name_)
   , secs(secs_)
-  , started(false)
-  , count(0)
 {
   columnWidth = std::max(columnWidth, static_cast<unsigned int>(name_.length()));
 }
@@ -118,7 +115,7 @@ bool BaseCounter::operator()()
 
   count++;
 
-  struct timespec now;
+  struct timespec now = {0, 0};
   if(0 == clock_gettime(CLOCK_REALTIME, &now))
   {
     if(now.tv_sec > t.tv_sec + secs)

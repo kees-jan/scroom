@@ -96,7 +96,6 @@ void TestData::redraw(cairo_t* cr)
 
 Sleeper::Sleeper(unsigned int secs_)
   : secs(secs_)
-  , started(false)
 {}
 
 bool Sleeper::operator()()
@@ -107,7 +106,7 @@ bool Sleeper::operator()()
     return true;
   }
 
-  struct timespec now;
+  struct timespec now = {0, 0};
   if(0 == clock_gettime(CLOCK_REALTIME, &now))
   {
     if(now.tv_sec > t.tv_sec + secs)

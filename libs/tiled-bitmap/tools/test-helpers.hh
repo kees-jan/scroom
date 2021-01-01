@@ -86,11 +86,11 @@ class Sleeper
 {
 private:
   unsigned int    secs;
-  bool            started;
-  struct timespec t;
+  bool            started{false};
+  struct timespec t = {0, 0};
 
 public:
-  Sleeper(unsigned int secs);
+  explicit Sleeper(unsigned int secs);
 
   bool operator()();
 };

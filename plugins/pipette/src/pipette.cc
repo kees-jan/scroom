@@ -44,11 +44,6 @@ Scroom::Bookkeeping::Token Pipette::viewAdded(ViewInterface::Ptr view)
 // PipetteHandler
 ////////////////////////////////////////////////////////////////////////
 
-PipetteHandler::PipetteHandler()
-  : selection(nullptr)
-  , currentJob(ThreadPool::Queue::createAsync())
-{}
-
 PipetteHandler::Ptr PipetteHandler::create() { return Ptr(new PipetteHandler()); }
 
 void PipetteHandler::computeValues(ViewInterface::Ptr view, Scroom::Utils::Rectangle<int> sel_rect)

@@ -30,8 +30,8 @@ class WaitForAsyncOp
 private:
   std::string       name;
   Scroom::Semaphore s;
-  bool              started;
-  struct timespec   t;
+  bool              started{false};
+  struct timespec   t = {0, 0};
 
 public:
   WaitForAsyncOp(const std::string& name);
@@ -46,7 +46,6 @@ public:
 
 WaitForAsyncOp::WaitForAsyncOp(const std::string& name_)
   : name(name_)
-  , started(false)
 {}
 
 WaitForAsyncOp::WaitForAsyncOp(const WaitForAsyncOp& other)
@@ -76,7 +75,7 @@ bool WaitForAsyncOp::operator()()
   }
 
   s.P();
-  struct timespec now;
+  struct timespec now = {0, 0};
   if(0 == clock_gettime(CLOCK_REALTIME, &now))
   {
     double duration = now.tv_sec - t.tv_sec + (now.tv_nsec - t.tv_nsec) / 1E9;

@@ -74,7 +74,7 @@ private:
   Scroom::Utils::Point<double>                       aspectRatio;
 
   gint     modifiermove;
-  GdkPoint cachedPoint;
+  GdkPoint cachedPoint{0, 0};
 
   ProgressBarManager::Ptr progressBarManager;
 

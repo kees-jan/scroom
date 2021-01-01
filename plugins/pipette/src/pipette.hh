@@ -23,17 +23,14 @@ class PipetteHandler
   , virtual public Scroom::Utils::Base
 {
 public:
-  PipetteHandler();
-
-public:
   using Ptr = boost::shared_ptr<PipetteHandler>;
 
 private:
-  Selection::Ptr         selection;
+  Selection::Ptr         selection{nullptr};
   bool                   enabled{false};
-  std::atomic_flag       wasDisabled;
+  std::atomic_flag       wasDisabled = ATOMIC_FLAG_INIT;
   std::mutex             jobMutex;
-  ThreadPool::Queue::Ptr currentJob;
+  ThreadPool::Queue::Ptr currentJob{ThreadPool::Queue::createAsync()};
 
 public:
   static Ptr create();
