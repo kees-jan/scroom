@@ -9,9 +9,13 @@
 #  include <config.h>
 #endif
 
+#include <list>
+#include <string>
 #include <utility>
+#include <vector>
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #include <scroom/async-deleter.hh>
 #include <scroom/threadpool.hh>

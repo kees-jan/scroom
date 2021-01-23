@@ -5,8 +5,14 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include <stdio.h>
+#include <list>
 
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include <scroom/blockallocator.hh>
 #include <scroom/memoryblobs.hh>
 #include <scroom/threadpool.hh>
 

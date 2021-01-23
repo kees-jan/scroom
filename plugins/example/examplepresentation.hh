@@ -7,7 +7,13 @@
 
 #pragma once
 
+#include <string>
+
+#include <cairo.h>
+
 #include <scroom/presentationinterface.hh>
+#include <scroom/rectangle.hh>
+#include <scroom/viewinterface.hh>
 
 class ExamplePresentation : public PresentationInterface
 {

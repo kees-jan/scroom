@@ -1,5 +1,16 @@
+#include <string>
+
+#include <cairo.h>
+
+#include <scroom/color.hh>
+#include <scroom/colormappable.hh>
+#include <scroom/pipettelayeroperations.hh>
+#include <scroom/pipetteviewinterface.hh>
+#include <scroom/point.hh>
+#include <scroom/presentationinterface.hh>
 #include <scroom/rectangle.hh>
 #include <scroom/transformpresentation.hh>
+#include <scroom/viewinterface.hh>
 
 TransformationData::TransformationData()
   : aspectRatio(1, 1)

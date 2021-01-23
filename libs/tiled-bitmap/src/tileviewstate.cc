@@ -7,6 +7,13 @@
 
 #include "tileviewstate.hh"
 
+#include <stdio.h>
+
+#include <scroom/observable.hh>
+#include <scroom/stuff.hh>
+#include <scroom/threadpool.hh>
+#include <scroom/tiledbitmapinterface.hh>
+#include <scroom/tiledbitmaplayer.hh>
 #include <scroom/unused.hh>
 
 #include "local.hh"

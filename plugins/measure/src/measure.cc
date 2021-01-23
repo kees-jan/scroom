@@ -7,7 +7,15 @@
 
 #include "measure.hh"
 
+#include <ostream>
+
+#include <gtk/gtk.h>
+
+#include <scroom/impl/bookkeepingimpl.hh>
+#include <scroom/point.hh>
+#include <scroom/presentationinterface.hh>
 #include <scroom/unused.hh>
+#include <scroom/viewinterface.hh>
 
 ////////////////////////////////////////////////////////////////////////
 // Measure

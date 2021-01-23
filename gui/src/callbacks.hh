@@ -9,6 +9,8 @@
 #include <map>
 #include <string>
 
+#include <gdk/gdk.h>
+#include <glib.h>
 #include <gtk/gtk.h>
 
 #include <scroom/presentationinterface.hh>

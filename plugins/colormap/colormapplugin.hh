@@ -7,7 +7,12 @@
 
 #pragma once
 
+#include <list>
+#include <string>
+
 #include <scroom/plugininformationinterface.hh>
+#include <scroom/presentationinterface.hh>
+#include <scroom/scroominterface.hh>
 #include <scroom/utilities.hh>
 
 namespace Scroom

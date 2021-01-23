@@ -6,6 +6,7 @@
  */
 
 #include <scroom/presentationinterface.hh>
+#include <scroom/viewinterface.hh>
 
 void PresentationBase::open(ViewInterface::WeakPtr vi)
 {

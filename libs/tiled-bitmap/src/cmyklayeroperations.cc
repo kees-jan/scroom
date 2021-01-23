@@ -5,8 +5,17 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
+#include <stdint.h>
+#include <stdlib.h>
+
+#include <cairo.h>
+
 #include <scroom/bitmap-helpers.hh>
+#include <scroom/global.hh>
 #include <scroom/layeroperations.hh>
+#include <scroom/memoryblobs.hh>
+#include <scroom/stuff.hh>
+#include <scroom/tile.hh>
 
 ////////////////////////////////////////////////////////////////////////
 

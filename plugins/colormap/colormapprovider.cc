@@ -7,6 +7,16 @@
 
 #include "colormapprovider.hh"
 
+#include <list>
+
+#include <stdio.h>
+
+#include <glib.h>
+
+#include <scroom/bookkeeping.hh>
+#include <scroom/colormappable.hh>
+#include <scroom/presentationinterface.hh>
+
 #include "colormaps.hh"
 
 ////////////////////////////////////////////////////////////////////////

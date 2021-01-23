@@ -7,8 +7,17 @@
 
 #pragma once
 
+#include <string>
+#include <vector>
+
+#include <gtk/gtk.h>
+
+#include <scroom/progressinterface.hh>
+#include <scroom/tile.hh>
 #include <scroom/tiledbitmapinterface.hh>
 #include <scroom/viewinterface.hh>
+
+class PresentationInterface;
 
 class ProgressInterfaceStub : public ProgressInterface
 {

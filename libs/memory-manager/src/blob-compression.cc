@@ -8,7 +8,11 @@
 #include "blob-compression.hh"
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <zlib.h>
+
+#include <scroom/blockallocator.hh>
+#include <scroom/memoryblobs.hh>
 
 namespace Scroom
 {

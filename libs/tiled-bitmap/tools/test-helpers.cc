@@ -7,6 +7,12 @@
 
 #include "test-helpers.hh"
 
+#include <gdk/gdk.h>
+#include <gtk/gtk.h>
+
+#include <scroom/colormappable.hh>
+#include <scroom/layeroperations.hh>
+
 ////////////////////////////////////////////////////////////////////////
 
 int drawingAreaWidth  = 0;

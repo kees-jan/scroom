@@ -9,6 +9,8 @@
 
 #include <math.h>
 
+#include <gdk/gdk.h>
+
 #include <scroom/cairo-helpers.hh>
 #include <scroom/unused.hh>
 

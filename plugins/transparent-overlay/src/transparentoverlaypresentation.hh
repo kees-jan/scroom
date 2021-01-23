@@ -9,8 +9,14 @@
 
 #include <list>
 #include <map>
+#include <set>
+#include <string>
+
+#include <cairo.h>
 
 #include <scroom/presentationinterface.hh>
+#include <scroom/rectangle.hh>
+#include <scroom/viewinterface.hh>
 
 #include "sizedeterminer.hh"
 #include "transparentoverlayviewinfo.hh"

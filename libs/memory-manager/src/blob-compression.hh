@@ -7,6 +7,9 @@
 
 #pragma once
 
+#include <stddef.h>
+#include <stdint.h>
+
 #include <scroom/memoryblobs.hh>
 
 namespace Scroom

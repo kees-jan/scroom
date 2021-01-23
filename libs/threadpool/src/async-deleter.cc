@@ -6,6 +6,7 @@
  */
 
 #include <scroom/async-deleter.hh>
+#include <scroom/threadpool.hh>
 
 namespace Scroom
 {

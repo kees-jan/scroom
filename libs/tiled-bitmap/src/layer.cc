@@ -5,10 +5,18 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
+#include <vector>
+
 #include <stdio.h>
 
+#include <scroom/impl/threadpoolimpl.hh>
+#include <scroom/memoryblobs.hh>
+#include <scroom/stuff.hh>
 #include <scroom/threadpool.hh>
+#include <scroom/tile.hh>
+#include <scroom/tiledbitmapinterface.hh>
 #include <scroom/tiledbitmaplayer.hh>
+#include <scroom/viewinterface.hh>
 
 #include "local.hh"
 
