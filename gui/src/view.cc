@@ -216,6 +216,12 @@ void View::setPresentation(PresentationInterface::Ptr presentation_)
     }
     gtk_window_set_title(window, s.c_str());
   }
+
+  zoom                = 0;
+  const int pixelSize = 1 << zoom;
+  x                   = -drawingAreaWidth / (pixelSize * aspectRatio.x) / 2;
+  y                   = -drawingAreaHeight / (pixelSize * aspectRatio.y) / 2;
+
   updateZoom();
   updateScrollbars();
   updateTextbox();

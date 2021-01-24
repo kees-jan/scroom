@@ -65,8 +65,8 @@ private:
   unsigned                                           toolBarCount;
   int                                                statusBarContextId;
   int                                                zoom;
-  int                                                x;
-  int                                                y;
+  int                                                x; /**< x-coordinate of the top left visible pixel */
+  int                                                y; /**< y-coordinate of the top left visible pixel */
   Selection::Ptr                                     selection;
   std::vector<SelectionListener::Ptr>                selectionListeners;
   std::vector<PostRenderer::Ptr>                     postRenderers;
