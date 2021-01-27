@@ -611,7 +611,6 @@ plugins_pipette_test_pipette_tests_LDADD = \
 	@BOOSTFILESYSTEMLIB@ @BOOSTCHRONOLIB@ \
 	libs/scroom/src/libsscroom.la  \
 	libs/threadpool/src/libsthreadpool.la \
-	-ldl \
 	plugins/pipette/src/libsppipette.la \
 	libs/util/src/libsutil.la \
 	plugins/pipette/src/*.lo
