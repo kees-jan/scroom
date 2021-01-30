@@ -255,7 +255,7 @@ void PluginManager::registerOpenTiledBitmapInterface(const std::string&         
 {
   printf("I learned how to open a %s file!\n", extension.c_str());
 
-  // openTiledBitmapInterfaces[openTiledBitmapInterface] = extension;
+  openTiledBitmapInterfaces[openTiledBitmapInterface] = extension;
 }
 
 void PluginManager::registerOpenInterface(const std::string& extension, OpenInterface::Ptr openInterface)

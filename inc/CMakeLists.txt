@@ -17,6 +17,7 @@ install(
         scroom/linearsegment.hh
         scroom/memoryblobs.hh
         scroom/observable.hh
+        scroom/opentiledbitmapinterface.hh
         scroom/plugininformationinterface.hh
         scroom/point.hh
         scroom/presentationinterface.hh

@@ -26,6 +26,7 @@ incscroom_HEADERS = \
 	inc/scroom/linearsegment.hh \
 	inc/scroom/memoryblobs.hh \
 	inc/scroom/observable.hh \
+	inc/scroom/opentiledbitmapinterface.hh \
 	inc/scroom/plugininformationinterface.hh \
 	inc/scroom/point.hh \
 	inc/scroom/presentationinterface.hh \

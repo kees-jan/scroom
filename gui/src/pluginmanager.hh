@@ -13,6 +13,7 @@
 
 #include <gtk/gtk.h>
 
+#include <scroom/opentiledbitmapinterface.hh>
 #include <scroom/plugininformationinterface.hh>
 #include <scroom/scroominterface.hh>
 #include <scroom/scroomplugin.hh>
@@ -60,6 +61,7 @@ private:
   std::map<NewPresentationInterface::Ptr, std::string>  newPresentationInterfaces;
   std::map<std::string, NewAggregateInterface::Ptr>     newAggregateInterfaces;
   std::map<OpenPresentationInterface::Ptr, std::string> openPresentationInterfaces;
+  std::map<OpenTiledBitmapInterface::Ptr, std::string>  openTiledBitmapInterfaces;
   std::map<OpenInterface::Ptr, std::string>             openInterfaces;
   std::map<ViewObserver::Ptr, std::string>              viewObservers;
   std::map<PresentationObserver::Ptr, std::string>      presentationObservers;
