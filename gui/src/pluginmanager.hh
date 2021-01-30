@@ -51,20 +51,20 @@ private:
   };
 
 private:
-  bool                                                  devMode{false};
-  PluginManagerState                                    state{FINDING_DIRECTORIES};
-  std::list<std::string>                                dirs;
-  std::list<std::string>::iterator                      currentDir;
-  std::list<std::string>                                files;
-  std::list<std::string>::iterator                      currentFile;
-  std::list<PluginInformation>                          pluginInformationList;
-  std::map<NewPresentationInterface::Ptr, std::string>  newPresentationInterfaces;
-  std::map<std::string, NewAggregateInterface::Ptr>     newAggregateInterfaces;
-  std::map<OpenPresentationInterface::Ptr, std::string> openPresentationInterfaces;
-  std::map<OpenTiledBitmapInterface::Ptr, std::string>  openTiledBitmapInterfaces;
-  std::map<OpenInterface::Ptr, std::string>             openInterfaces;
-  std::map<ViewObserver::Ptr, std::string>              viewObservers;
-  std::map<PresentationObserver::Ptr, std::string>      presentationObservers;
+  bool                                                                      devMode{false};
+  PluginManagerState                                                        state{FINDING_DIRECTORIES};
+  std::list<std::string>                                                    dirs;
+  std::list<std::string>::iterator                                          currentDir;
+  std::list<std::string>                                                    files;
+  std::list<std::string>::iterator                                          currentFile;
+  std::list<PluginInformation>                                              pluginInformationList;
+  std::map<NewPresentationInterface::Ptr, std::string>                      newPresentationInterfaces;
+  std::map<std::string, NewAggregateInterface::Ptr>                         newAggregateInterfaces;
+  std::map<OpenPresentationInterface::Ptr, std::string>                     openPresentationInterfaces;
+  std::map<Scroom::TiledBitmap::OpenTiledBitmapInterface::Ptr, std::string> openTiledBitmapInterfaces;
+  std::map<OpenInterface::Ptr, std::string>                                 openInterfaces;
+  std::map<ViewObserver::Ptr, std::string>                                  viewObservers;
+  std::map<PresentationObserver::Ptr, std::string>                          presentationObservers;
 
 private:
   void setStatusBarMessage(const char* message);
@@ -83,8 +83,9 @@ public:
   void registerNewAggregateInterface(const std::string& identifier, NewAggregateInterface::Ptr newAggregateInterface) override;
   void registerOpenPresentationInterface(const std::string&             extension,
                                          OpenPresentationInterface::Ptr openPresentationInterface) override;
-  void registerOpenTiledBitmapInterface(const std::string&                          identifier,
-                                        boost::shared_ptr<OpenTiledBitmapInterface> openTiledBitmapInterface) override;
+  void registerOpenTiledBitmapInterface(
+    const std::string&                                               identifier,
+    boost::shared_ptr<Scroom::TiledBitmap::OpenTiledBitmapInterface> openTiledBitmapInterface) override;
   void registerOpenInterface(const std::string& extension, OpenInterface::Ptr openInterface) override;
   void registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer) override;
   void registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer) override;

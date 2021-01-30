@@ -11,15 +11,38 @@
 
 #include <gtk/gtk.h>
 
+#include <scroom/colormappable.hh>
 #include <scroom/interface.hh>
+#include <scroom/point.hh>
+#include <scroom/rectangle.hh>
+#include <scroom/tiledbitmaplayer.hh>
 
-class OpenTiledBitmapInterface : private Interface
+namespace Scroom
 {
-public:
-  using Ptr = boost::shared_ptr<OpenTiledBitmapInterface>;
+  namespace TiledBitmap
+  {
+    using ReloadFunction = std::function<void()>;
 
-public:
-  virtual std::list<GtkFileFilter*> getFilters() = 0;
+    struct BitmapData
+    {
+      std::string                   type;
+      unsigned int                  bitsPerSample;
+      unsigned int                  samplesPerPixel;
+      Scroom::Utils::Rectangle<int> size; /**< size & offset, in pixels, excluding any deformation by @c aspectRatio */
+      Scroom::Utils::Point<double>  aspectRatio;
+      Colormap::Ptr                 colormap;
+    };
 
-  virtual void open(const std::string& fileName) = 0;
-};
+    class OpenTiledBitmapInterface : private Interface
+    {
+    public:
+      using Ptr = boost::shared_ptr<OpenTiledBitmapInterface>;
+
+    public:
+      virtual std::list<GtkFileFilter*> getFilters() = 0;
+
+      virtual std::tuple<BitmapData, Layer::Ptr, ReloadFunction> open(const std::string& fileName) = 0;
+    };
+
+  } // namespace TiledBitmap
+} // namespace Scroom

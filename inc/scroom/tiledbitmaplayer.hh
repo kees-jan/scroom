@@ -26,7 +26,6 @@
 #include <scroom/tiledbitmapinterface.hh>
 
 #define TILESIZE 4096
-// #define TILESIZE 1024
 
 /**
  * Represent the state of one of the tiles that make up a layer in the

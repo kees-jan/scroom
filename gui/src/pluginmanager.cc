@@ -250,8 +250,9 @@ void PluginManager::registerOpenPresentationInterface(const std::string&        
   openPresentationInterfaces[openPresentationInterface] = extension;
 }
 
-void PluginManager::registerOpenTiledBitmapInterface(const std::string&                          extension,
-                                                     boost::shared_ptr<OpenTiledBitmapInterface> openTiledBitmapInterface)
+void PluginManager::registerOpenTiledBitmapInterface(
+  const std::string&                                               extension,
+  boost::shared_ptr<Scroom::TiledBitmap::OpenTiledBitmapInterface> openTiledBitmapInterface)
 {
   printf("I learned how to open a %s file!\n", extension.c_str());
 
