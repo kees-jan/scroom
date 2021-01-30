@@ -357,6 +357,7 @@ libs_tiled_bitmap_src_libstiledbitmap_la_SOURCES = \
 	libs/tiled-bitmap/src/cmyklayeroperations.cc \
 	libs/tiled-bitmap/src/tiled-bitmap.cc \
 	libs/tiled-bitmap/src/tiled-bitmap.hh \
+	libs/tiled-bitmap/src/tiledbitmappresentation.cc \
 	libs/tiled-bitmap/src/tiledbitmapviewdata.cc \
 	libs/tiled-bitmap/src/tiledbitmapviewdata.hh \
 	libs/tiled-bitmap/src/compressedtile.cc \
@@ -652,6 +653,7 @@ gui_src_scroom_CPPFLAGS = -I $(top_srcdir)/inc \
 	@GUI_CFLAGS@
 
 gui_src_scroom_LDADD = @GUI_LIBS@ @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ @BOOSTPROGRAMOPTIONSLIB@ @BOOSTFILESYSTEMLIB@ $(INTLLIBS) \
+	libs/tiled-bitmap/src/libstiledbitmap.la \
 	libs/util/src/libsutil.la
 
 gui_extra_dist = \

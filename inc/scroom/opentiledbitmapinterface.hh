@@ -23,7 +23,7 @@ namespace Scroom
   {
     using ReloadFunction = std::function<void()>;
 
-    struct BitmapData
+    struct BitmapMetaData
     {
       std::string                   type;
       unsigned int                  bitsPerSample;
@@ -41,8 +41,9 @@ namespace Scroom
     public:
       virtual std::list<GtkFileFilter*> getFilters() = 0;
 
-      virtual std::tuple<BitmapData, Layer::Ptr, ReloadFunction> open(const std::string& fileName) = 0;
+      virtual std::tuple<BitmapMetaData, Layer::Ptr, ReloadFunction> open(const std::string& fileName) = 0;
     };
 
+    OpenPresentationInterface::Ptr ToOpenPresentationInterface(OpenTiledBitmapInterface::Ptr openTiledBitmapInterface);
   } // namespace TiledBitmap
 } // namespace Scroom

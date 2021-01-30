@@ -1,4 +1,4 @@
-add_library(tiledbitmap)
+add_library(tiledbitmap src/tiledbitmappresentation.cc)
 target_sources(
   tiledbitmap
   PRIVATE src/cmyklayeroperations.cc

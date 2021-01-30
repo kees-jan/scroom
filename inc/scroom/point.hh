@@ -28,6 +28,8 @@ namespace Scroom
     public:
       using value_type = T;
 
+      Point() = default;
+
       Point(value_type x_, value_type y_)
         : x(x_)
         , y(y_)

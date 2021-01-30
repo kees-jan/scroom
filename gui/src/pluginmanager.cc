@@ -256,7 +256,8 @@ void PluginManager::registerOpenTiledBitmapInterface(
 {
   printf("I learned how to open a %s file!\n", extension.c_str());
 
-  openTiledBitmapInterfaces[openTiledBitmapInterface] = extension;
+  openTiledBitmapInterfaces[openTiledBitmapInterface]                               = extension;
+  openPresentationInterfaces[ToOpenPresentationInterface(openTiledBitmapInterface)] = extension;
 }
 
 void PluginManager::registerOpenInterface(const std::string& extension, OpenInterface::Ptr openInterface)
@@ -293,6 +294,11 @@ const std::map<std::string, NewAggregateInterface::Ptr>& PluginManager::getNewAg
 const std::map<OpenPresentationInterface::Ptr, std::string>& PluginManager::getOpenPresentationInterfaces()
 {
   return openPresentationInterfaces;
+}
+
+const std::map<Scroom::TiledBitmap::OpenTiledBitmapInterface::Ptr, std::string>& PluginManager::getOpenTiledBitmapInterfaces()
+{
+  return openTiledBitmapInterfaces;
 }
 
 const std::map<OpenInterface::Ptr, std::string>& PluginManager::getOpenInterfaces() { return openInterfaces; }

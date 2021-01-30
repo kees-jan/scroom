@@ -90,12 +90,13 @@ public:
   void registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer) override;
   void registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer) override;
 
-  const std::map<NewPresentationInterface::Ptr, std::string>&  getNewPresentationInterfaces();
-  const std::map<std::string, NewAggregateInterface::Ptr>&     getNewAggregateInterfaces();
-  const std::map<OpenPresentationInterface::Ptr, std::string>& getOpenPresentationInterfaces();
-  const std::map<OpenInterface::Ptr, std::string>&             getOpenInterfaces();
-  const std::map<ViewObserver::Ptr, std::string>&              getViewObservers();
-  const std::map<PresentationObserver::Ptr, std::string>&      getPresentationObservers();
+  const std::map<NewPresentationInterface::Ptr, std::string>&                      getNewPresentationInterfaces();
+  const std::map<std::string, NewAggregateInterface::Ptr>&                         getNewAggregateInterfaces();
+  const std::map<OpenPresentationInterface::Ptr, std::string>&                     getOpenPresentationInterfaces();
+  const std::map<Scroom::TiledBitmap::OpenTiledBitmapInterface::Ptr, std::string>& getOpenTiledBitmapInterfaces();
+  const std::map<OpenInterface::Ptr, std::string>&                                 getOpenInterfaces();
+  const std::map<ViewObserver::Ptr, std::string>&                                  getViewObservers();
+  const std::map<PresentationObserver::Ptr, std::string>&                          getPresentationObservers();
 
 public:
   static PluginManager::Ptr getInstance();
