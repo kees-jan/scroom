@@ -61,6 +61,8 @@ public:
   virtual PresentationInterface::Ptr open(const std::string& fileName) = 0;
 };
 
+class OpenTiledBitmapInterface;
+
 class OpenInterface : private Interface
 {
 public:
@@ -102,6 +104,8 @@ public:
   virtual void registerNewAggregateInterface(const std::string& identifier, NewAggregateInterface::Ptr newAggregateInterface) = 0;
   virtual void registerOpenPresentationInterface(const std::string&             identifier,
                                                  OpenPresentationInterface::Ptr openPresentationInterface)                    = 0;
+  virtual void registerOpenTiledBitmapInterface(const std::string&                          identifier,
+                                                boost::shared_ptr<OpenTiledBitmapInterface> openTiledBitmapInterface)         = 0;
   virtual void registerOpenInterface(const std::string& identifier, OpenInterface::Ptr openInterface)                         = 0;
   virtual void registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer)                                = 0;
   virtual void registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer)                = 0;

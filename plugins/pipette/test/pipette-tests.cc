@@ -92,6 +92,8 @@ public:
                                      NewAggregateInterface::Ptr /*newAggregateInterface*/) override{};
   void registerOpenPresentationInterface(const std::string& /*identifier*/,
                                          OpenPresentationInterface::Ptr /*openPresentationInterface*/) override{};
+  void registerOpenTiledBitmapInterface(const std::string& /*identifier*/,
+                                        boost::shared_ptr<OpenTiledBitmapInterface> /*openTiledBitmapInterface*/) override{};
   void registerOpenInterface(const std::string& /*identifier*/, OpenInterface::Ptr /*openInterface*/) override{};
   void registerViewObserver(const std::string& /*identifier*/, ViewObserver::Ptr /*observer*/) override { view_observers++; };
   void registerPresentationObserver(const std::string& /*identifier*/, PresentationObserver::Ptr /*observer*/) override{};

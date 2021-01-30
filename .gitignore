@@ -58,5 +58,6 @@ Makefile.in
 test_results.xml
 /cmake-build-*
 /build
+/build-autoconf
 /Scroom.srctrlbm*
 /Scroom.srctrldb*
