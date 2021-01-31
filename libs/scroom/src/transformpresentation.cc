@@ -16,9 +16,19 @@ TransformationData::TransformationData()
   : aspectRatio(1, 1)
 {}
 
+TransformationData::TransformationData(Scroom::Utils::Point<double> aspectRatio_)
+  : aspectRatio(aspectRatio_)
+{}
+
 TransformationData::Ptr TransformationData::create() { return Ptr(new TransformationData()); }
 
+TransformationData::Ptr TransformationData::create(Scroom::Utils::Point<double> aspectRatio_)
+{
+  return Ptr(new TransformationData(aspectRatio_));
+}
+
 void TransformationData::setAspectRatio(double x, double y) { aspectRatio = Scroom::Utils::make_point(x, y); }
+void TransformationData::setAspectRatio(Scroom::Utils::Point<double> aspectRatio_) { aspectRatio = aspectRatio_; }
 
 Scroom::Utils::Point<double> TransformationData::getAspectRatio() const { return aspectRatio; }
 

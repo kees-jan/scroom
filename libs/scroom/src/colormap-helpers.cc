@@ -61,6 +61,8 @@ ColormapHelper::ColormapHelper(Colormap::Ptr const& colormap_)
   : ColormapHelperBase(colormap_)
 {}
 
+std::map<std::string, std::string> ColormapHelper::getProperties() { return {{COLORMAPPABLE_PROPERTY_NAME, ""}}; }
+
 ////////////////////////////////////////////////////////////////////////
 // MonochromeColormapHelper
 
@@ -139,3 +141,8 @@ void MonochromeColormapHelper::disableTransparentBackground()
 }
 
 bool MonochromeColormapHelper::getTransparentBackground() { return transparentBackground; }
+
+std::map<std::string, std::string> MonochromeColormapHelper::getProperties()
+{
+  return {{MONOCHROME_COLORMAPPABLE_PROPERTY_NAME, ""}};
+}

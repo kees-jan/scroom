@@ -28,9 +28,9 @@ namespace Scroom
       std::string                   type;
       unsigned int                  bitsPerSample;
       unsigned int                  samplesPerPixel;
-      Scroom::Utils::Rectangle<int> size; /**< size & offset, in pixels, excluding any deformation by @c aspectRatio */
-      Scroom::Utils::Point<double>  aspectRatio;
-      Colormap::Ptr                 colormap;
+      Scroom::Utils::Rectangle<int> rect; /**< size & offset, in pixels, excluding any deformation by @c aspectRatio */
+      boost::optional<Scroom::Utils::Point<double>> aspectRatio;
+      ColormapHelperBase::Ptr                       colormapHelper;
     };
 
     class OpenTiledBitmapInterface : private Interface

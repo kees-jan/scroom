@@ -23,13 +23,16 @@ private:
 public:
   using Ptr = boost::shared_ptr<TransformationData>;
 
+  static Ptr create(Scroom::Utils::Point<double> aspectRatio_);
   static Ptr create();
 
   void                                       setAspectRatio(double x, double y);
+  void                                       setAspectRatio(Scroom::Utils::Point<double> aspectRatio_);
   [[nodiscard]] Scroom::Utils::Point<double> getAspectRatio() const;
 
 private:
   TransformationData();
+  explicit TransformationData(Scroom::Utils::Point<double> aspectRatio_);
 };
 
 class TransformPresentation

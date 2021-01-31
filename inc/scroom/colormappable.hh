@@ -163,7 +163,8 @@ public:
   Colormap::Ptr originalColormap;
 
 public:
-  ColormapHelperBase(Colormap::Ptr const& colormap);
+  explicit ColormapHelperBase(Colormap::Ptr const& colormap);
+  virtual std::map<std::string, std::string> getProperties() = 0;
 
   ////////////////////////////////////////////////////////////////////////
   // Colormappable
@@ -198,8 +199,10 @@ public:
   static Ptr createInverted(int numberOfColors);
   static Ptr create(Colormap::Ptr const& colormap);
 
+  std::map<std::string, std::string> getProperties() override;
+
 private:
-  ColormapHelper(Colormap::Ptr const& colormap);
+  explicit ColormapHelper(Colormap::Ptr const& colormap);
 };
 
 class MonochromeColormapHelper : public ColormapHelperBase
@@ -207,6 +210,8 @@ class MonochromeColormapHelper : public ColormapHelperBase
 public:
   static Ptr create(int numberOfColors);
   static Ptr createInverted(int numberOfColors);
+
+  std::map<std::string, std::string> getProperties() override;
 
   ////////////////////////////////////////////////////////////////////////
   // Colormappable

@@ -47,6 +47,7 @@ namespace Scroom
       {}
 
       bool operator==(const Point<value_type>& other) const { return x == other.x && y == other.y; }
+      bool operator!=(const Point<value_type>& other) const { return !(*this == other); }
 
       Point<value_type>& operator+=(const Point<value_type>& other)
       {

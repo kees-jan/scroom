@@ -46,6 +46,14 @@ namespace
     return elements;
   }
 
+  std::tuple<TiledBitmapInterface::Ptr, PipetteLayerOperations::Ptr> toTiledBitmap(const BitmapMetaData& bmd,
+                                                                                   Layer::Ptr            baseLayer)
+  {
+    // Todo... add stuff...
+
+    return std::tuple<TiledBitmapInterface::Ptr, PipetteLayerOperations::Ptr>();
+  }
+
   class TiledBitmapPresentation
     : public PresentationBase
     , public Colormappable
@@ -62,7 +70,7 @@ namespace
     TiledBitmapInterface::Ptr          tbi;
     std::map<std::string, std::string> properties;
     Views                              views;
-    ColormapHelper::Ptr                colormapHelper;
+    ColormapHelperBase::Ptr            colormapHelper;
     PipetteLayerOperations::Ptr        pipetteLayerOperation;
 
   public:
@@ -70,15 +78,13 @@ namespace
                                                Scroom::Utils::Rectangle<int>      rect_,
                                                TiledBitmapInterface::Ptr          tbi_,
                                                std::map<std::string, std::string> properties_,
-                                               Views                              views_,
-                                               ColormapHelper::Ptr                colormapHelper_,
+                                               ColormapHelperBase::Ptr            colormapHelper_,
                                                PipetteLayerOperations::Ptr        pipetteLayerOperation_)
     {
       return Ptr(new TiledBitmapPresentation(std::move(name_),
                                              std::move(rect_),
                                              std::move(tbi_),
                                              std::move(properties_),
-                                             std::move(views_),
                                              std::move(colormapHelper_),
                                              std::move(pipetteLayerOperation_)));
     }
@@ -126,14 +132,12 @@ namespace
                             Scroom::Utils::Rectangle<int>&&      rect_,
                             TiledBitmapInterface::Ptr&&          tbi_,
                             std::map<std::string, std::string>&& properties_,
-                            Views&&                              views_,
-                            ColormapHelper::Ptr&&                colormapHelper_,
+                            ColormapHelperBase::Ptr&&            colormapHelper_,
                             PipetteLayerOperations::Ptr&&        pipetteLayerOperation_)
       : name(name_)
       , rect(rect_)
       , tbi(tbi_)
       , properties(properties_)
-      , views(views_)
       , colormapHelper(colormapHelper_)
       , pipetteLayerOperation(pipetteLayerOperation_)
     {}
@@ -347,8 +351,26 @@ namespace
     Layer::Ptr     layer = std::move(std::get<1>(t));
     ReloadFunction load  = std::move(std::get<2>(t));
 
-    // Todo... add stuff...
-    return TiledBitmapPresentation::Ptr();
+    auto                        r                     = toTiledBitmap(bmd, layer);
+    TiledBitmapInterface::Ptr   tbi                   = std::move(std::get<0>(r));
+    PipetteLayerOperations::Ptr pipetteLayerOperation = std::move(std::get<1>(r));
+
+    std::map<std::string, std::string> properties = bmd.colormapHelper->getProperties();
+    if(pipetteLayerOperation)
+    {
+      properties[PIPETTE_PROPERTY_NAME] = "";
+    }
+
+    PresentationInterface::Ptr result =
+      TiledBitmapPresentation::create(fileName, bmd.rect, tbi, properties, bmd.colormapHelper, pipetteLayerOperation);
+
+    load();
+
+    if(bmd.aspectRatio)
+    {
+      result = TransformPresentation::create(result, TransformationData::create(*bmd.aspectRatio));
+    }
+    return result;
   }
 } // namespace
 
