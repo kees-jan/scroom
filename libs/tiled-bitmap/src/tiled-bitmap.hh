@@ -70,6 +70,7 @@ private:
   FileOperation::Ptr                               fileOperation;
   Scroom::Utils::ProgressInterfaceBroadcaster::Ptr progressBroadcaster;
   ThreadPool::Queue::Ptr                           queue;
+  Scroom::Utils::StuffList                         registrations;
 
 public:
   static Ptr create(int bitmapWidth, int bitmapHeight, LayerSpec const& ls);
@@ -78,7 +79,6 @@ public:
   TiledBitmap(TiledBitmap&&)      = delete;
   TiledBitmap operator=(const TiledBitmap&) = delete;
   TiledBitmap operator=(TiledBitmap&&) = delete;
-
 
 private:
   TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec const& ls);

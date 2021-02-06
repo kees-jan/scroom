@@ -161,19 +161,19 @@ protected:
 
 public:
   // To choose between overloaded functions, the compiler needs some extra convincing
-  virtual Scroom::Utils::Stuff registerStrongObserver(TileInitialisationObserver::Ptr const& observer)
+  Scroom::Bookkeeping::Token registerStrongObserver(TileInitialisationObserver::Ptr const& observer)
   {
     return Scroom::Utils::Observable<TileInitialisationObserver>::registerStrongObserver(observer);
   }
-  virtual Scroom::Utils::Stuff registerObserver(TileInitialisationObserver::WeakPtr const& observer)
+  Scroom::Bookkeeping::Token registerObserver(TileInitialisationObserver::WeakPtr const& observer)
   {
     return Scroom::Utils::Observable<TileInitialisationObserver>::registerObserver(observer);
   }
-  virtual Scroom::Utils::Stuff registerStrongObserver(TileLoadingObserver::Ptr const& observer)
+  Scroom::Bookkeeping::Token registerStrongObserver(TileLoadingObserver::Ptr const& observer)
   {
     return Scroom::Utils::Observable<TileLoadingObserver>::registerStrongObserver(observer);
   }
-  virtual Scroom::Utils::Stuff registerObserver(TileLoadingObserver::WeakPtr const& observer)
+  Scroom::Bookkeeping::Token registerObserver(TileLoadingObserver::WeakPtr const& observer)
   {
     return Scroom::Utils::Observable<TileLoadingObserver>::registerObserver(observer);
   }
@@ -242,31 +242,20 @@ public:
   using Ptr = boost::shared_ptr<Layer>;
 
 private:
-  int                      depth;
-  int                      width;
-  int                      height;
-  Scroom::Utils::StuffList registrations;
-  int                      horTileCount;
-  int                      verTileCount;
-  CompressedTileGrid       tiles;
-  CompressedTile::Ptr      outOfBounds;
-  CompressedTileLine       lineOutOfBounds;
+  int                 depth;
+  int                 width;
+  int                 height;
+  int                 horTileCount;
+  int                 verTileCount;
+  CompressedTileGrid  tiles;
+  CompressedTile::Ptr outOfBounds;
+  CompressedTileLine  lineOutOfBounds;
 
 private:
-  Layer(TileInitialisationObserver::Ptr        observer,
-        int                                    depth,
-        int                                    layerWidth,
-        int                                    layerHeight,
-        int                                    bpp,
-        Scroom::MemoryBlobs::PageProvider::Ptr provider);
+  Layer(int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider);
 
 public:
-  static Ptr create(TileInitialisationObserver::Ptr        observer,
-                    int                                    depth,
-                    int                                    layerWidth,
-                    int                                    layerHeight,
-                    int                                    bpp,
-                    Scroom::MemoryBlobs::PageProvider::Ptr provider);
+  static Ptr create(int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider);
   int        getHorTileCount() const;
   int        getVerTileCount() const;
 
@@ -282,6 +271,8 @@ public:
   int getDepth() const { return depth; }
 
   Scroom::Utils::Rectangle<int> getRect() const { return Scroom::Utils::Rectangle<int>(0, 0, width, height); }
+
+  Scroom::Bookkeeping::Token registerObserver(const TileInitialisationObserver::Ptr& observer);
 
 public:
   // Viewable ////////////////////////////////////////////////////////////

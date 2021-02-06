@@ -168,7 +168,8 @@ void TiledBitmap::initialize()
 
     bpp = lo->getBpp();
 
-    Layer::Ptr layer = Layer::create(shared_from_this<TiledBitmap>(), i, width, height, bpp, provider);
+    Layer::Ptr layer = Layer::create(i, width, height, bpp, provider);
+    registrations.push_back(layer->registerObserver(shared_from_this<TileInitialisationObserver>()));
     layers.push_back(layer);
     if(prevLayer)
     {

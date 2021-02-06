@@ -46,12 +46,7 @@ public:
 ////////////////////////////////////////////////////////////////////////
 /// Layer
 
-Layer::Layer(TileInitialisationObserver::Ptr        observer,
-             int                                    depth_,
-             int                                    layerWidth,
-             int                                    layerHeight,
-             int                                    bpp,
-             Scroom::MemoryBlobs::PageProvider::Ptr provider)
+Layer::Layer(int depth_, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider)
   : depth(depth_)
   , width(layerWidth)
   , height(layerHeight)
@@ -66,7 +61,6 @@ Layer::Layer(TileInitialisationObserver::Ptr        observer,
     for(int i = 0; i < horTileCount; i++)
     {
       CompressedTile::Ptr tile = CompressedTile::create(depth_, i, j, bpp, provider);
-      registrations.push_back(tile->registerObserver(observer));
       tl.push_back(tile);
     }
   }
@@ -80,14 +74,23 @@ Layer::Layer(TileInitialisationObserver::Ptr        observer,
   printf("Layer %d (%d bpp), %d*%d, TileCount %d*%d\n", depth_, bpp, width, height, horTileCount, verTileCount);
 }
 
-Layer::Ptr Layer::create(TileInitialisationObserver::Ptr        observer,
-                         int                                    depth,
-                         int                                    layerWidth,
-                         int                                    layerHeight,
-                         int                                    bpp,
-                         Scroom::MemoryBlobs::PageProvider::Ptr provider)
+Layer::Ptr Layer::create(int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider)
 {
-  return Ptr(new Layer(observer, depth, layerWidth, layerHeight, bpp, provider));
+  return Ptr(new Layer(depth, layerWidth, layerHeight, bpp, provider));
+}
+
+Scroom::Bookkeeping::Token Layer::registerObserver(const TileInitialisationObserver::Ptr& observer)
+{
+  Scroom::Bookkeeping::Token t;
+
+  for(auto& line: tiles)
+  {
+    for(auto& tile: line)
+    {
+      t.add(tile->registerObserver(observer));
+    }
+  }
+  return t;
 }
 
 int Layer::getHorTileCount() const { return horTileCount; }
