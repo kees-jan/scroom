@@ -7,6 +7,7 @@ target_sources(
           src/layercoordinator.cc
           src/layercoordinator.hh
           src/layeroperations.cc
+          src/layerspecforbitmap.cc
           src/local.hh
           src/tiled-bitmap.cc
           src/tiled-bitmap.hh

@@ -45,5 +45,18 @@ namespace Scroom
     };
 
     OpenPresentationInterface::Ptr ToOpenPresentationInterface(OpenTiledBitmapInterface::Ptr openTiledBitmapInterface);
+
+    ///////////////////////////////////////////////////////////////////
+
+    extern const std::string RGB;
+    extern const std::string CMYK;
+    extern const std::string Greyscale;
+    extern const std::string Colormapped;
+
+    using LayerSpecResult        = std::tuple<LayerSpec, ColormapHelperBase::Ptr>;
+    using LayerSpecForBitmapFunc = std::function<LayerSpecResult(const BitmapMetaData& bitmapMetaData)>;
+
+    LayerSpecResult LayerSpecForBitmap(const BitmapMetaData& bitmapMetaData);
+
   } // namespace TiledBitmap
 } // namespace Scroom
