@@ -242,20 +242,22 @@ public:
   using Ptr = boost::shared_ptr<Layer>;
 
 private:
-  int                 depth;
-  int                 width;
-  int                 height;
-  int                 horTileCount;
-  int                 verTileCount;
-  CompressedTileGrid  tiles;
-  CompressedTile::Ptr outOfBounds;
-  CompressedTileLine  lineOutOfBounds;
+  int                                    depth;
+  int                                    width;
+  int                                    height;
+  int                                    horTileCount;
+  int                                    verTileCount;
+  CompressedTileGrid                     tiles;
+  CompressedTile::Ptr                    outOfBounds;
+  CompressedTileLine                     lineOutOfBounds;
+  Scroom::MemoryBlobs::PageProvider::Ptr pageProvider;
 
 private:
   Layer(int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider);
 
 public:
   static Ptr create(int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider);
+  static Ptr create(int layerWidth, int layerHeight, int bpp);
   int        getHorTileCount() const;
   int        getVerTileCount() const;
 
@@ -273,6 +275,8 @@ public:
   Scroom::Utils::Rectangle<int> getRect() const { return Scroom::Utils::Rectangle<int>(0, 0, width, height); }
 
   Scroom::Bookkeeping::Token registerObserver(const TileInitialisationObserver::Ptr& observer);
+
+  Scroom::MemoryBlobs::PageProvider::Ptr getPageProvider() { return pageProvider; }
 
 public:
   // Viewable ////////////////////////////////////////////////////////////

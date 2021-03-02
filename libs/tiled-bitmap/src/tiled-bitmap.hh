@@ -15,6 +15,7 @@
 #include <boost/thread/mutex.hpp>
 
 #include <scroom/interface.hh>
+#include <scroom/opentiledbitmapinterface.hh>
 #include <scroom/progressinterfacehelpers.hh>
 #include <scroom/scroominterface.hh>
 #include <scroom/threadpool.hh>
@@ -74,6 +75,8 @@ private:
 
 public:
   static Ptr create(int bitmapWidth, int bitmapHeight, LayerSpec const& ls);
+  static Ptr create(const Layer::Ptr& bottom, const LayerSpec& ls);
+
   ~TiledBitmap() override;
   TiledBitmap(const TiledBitmap&) = delete;
   TiledBitmap(TiledBitmap&&)      = delete;
@@ -81,11 +84,13 @@ public:
   TiledBitmap operator=(TiledBitmap&&) = delete;
 
 private:
-  TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec const& ls);
+  TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec ls);
+
   void initialize();
+  void initialize(const Layer::Ptr bottom);
 
 private:
-  static void drawTile(cairo_t* cr, const CompressedTile::Ptr tile, const Scroom::Utils::Rectangle<double> viewArea);
+  static void drawTile(cairo_t* cr, const CompressedTile::Ptr& tile, const Scroom::Utils::Rectangle<double>& viewArea);
   void        connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, LayerOperations::Ptr prevLo);
 
 public:
@@ -110,3 +115,5 @@ public:
   void tileCreated(CompressedTile::Ptr tile) override;
   void tileFinished(CompressedTile::Ptr tile) override;
 };
+
+TiledBitmapInterface::Ptr createTiledBitmap(const Layer::Ptr& bottom, LayerSpec const& ls);

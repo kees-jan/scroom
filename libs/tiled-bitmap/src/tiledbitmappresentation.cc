@@ -12,6 +12,8 @@
 #include <scroom/pipetteviewinterface.hh>
 #include <scroom/transformpresentation.hh>
 
+#include "tiled-bitmap.hh"
+
 namespace
 {
   using namespace Scroom::TiledBitmap;
@@ -44,14 +46,6 @@ namespace
       elem.second /= divisor;
     }
     return elements;
-  }
-
-  std::tuple<TiledBitmapInterface::Ptr, PipetteLayerOperations::Ptr> toTiledBitmap(const BitmapMetaData& bmd,
-                                                                                   Layer::Ptr            baseLayer)
-  {
-    // Todo... add stuff...
-
-    return std::tuple<TiledBitmapInterface::Ptr, PipetteLayerOperations::Ptr>();
   }
 
   class TiledBitmapPresentation
@@ -346,29 +340,35 @@ namespace
 
   PresentationInterface::Ptr OpenTiledBitmapAsPresentation::open(const std::string& fileName)
   {
-    auto           t     = openTiledBitmapInterface->open(fileName);
-    BitmapMetaData bmd   = std::move(std::get<0>(t));
-    Layer::Ptr     layer = std::move(std::get<1>(t));
-    ReloadFunction load  = std::move(std::get<2>(t));
+    auto           t           = openTiledBitmapInterface->open(fileName);
+    BitmapMetaData bmd         = std::move(std::get<0>(t));
+    Layer::Ptr     bottomLayer = std::move(std::get<1>(t));
+    ReloadFunction load        = std::move(std::get<2>(t));
 
-    auto                        r                     = toTiledBitmap(bmd, layer);
-    TiledBitmapInterface::Ptr   tbi                   = std::move(std::get<0>(r));
-    PipetteLayerOperations::Ptr pipetteLayerOperation = std::move(std::get<1>(r));
+    auto                    lsr            = LayerSpecForBitmap(bmd);
+    LayerSpec               layerSpec      = std::move(std::get<0>(lsr));
+    ColormapHelperBase::Ptr colormapHelper = std::move(std::get<1>(lsr));
 
-    std::map<std::string, std::string> properties = bmd.colormapHelper->getProperties();
-    if(pipetteLayerOperation)
+    PresentationInterface::Ptr result;
+    if(bottomLayer && !layerSpec.empty())
     {
-      properties[PIPETTE_PROPERTY_NAME] = "";
-    }
+      TiledBitmapInterface::Ptr   tbi                   = createTiledBitmap(bottomLayer, layerSpec);
+      PipetteLayerOperations::Ptr pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(layerSpec[0]);
 
-    PresentationInterface::Ptr result =
-      TiledBitmapPresentation::create(fileName, bmd.rect, tbi, properties, bmd.colormapHelper, pipetteLayerOperation);
+      std::map<std::string, std::string> properties = bmd.colormapHelper->getProperties();
+      if(pipetteLayerOperation)
+      {
+        properties[PIPETTE_PROPERTY_NAME] = "";
+      }
 
-    load();
+      result = TiledBitmapPresentation::create(fileName, bmd.rect, tbi, properties, colormapHelper, pipetteLayerOperation);
 
-    if(bmd.aspectRatio)
-    {
-      result = TransformPresentation::create(result, TransformationData::create(*bmd.aspectRatio));
+      load();
+
+      if(bmd.aspectRatio)
+      {
+        result = TransformPresentation::create(result, TransformationData::create(*bmd.aspectRatio));
+      }
     }
     return result;
   }

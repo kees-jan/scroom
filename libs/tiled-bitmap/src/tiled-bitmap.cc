@@ -29,21 +29,9 @@ TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight, L
   return TiledBitmap::create(bitmapWidth, bitmapHeight, ls);
 }
 
-////////////////////////////////////////////////////////////////////////
-static Scroom::MemoryBlobs::PageProvider::Ptr createProvider(double width, double height, int bpp)
+TiledBitmapInterface::Ptr createTiledBitmap(const Layer::Ptr& bottom, LayerSpec const& ls)
 {
-  double tileCount = (width * height) / (TILESIZE * TILESIZE);
-  double tileSize  = (bpp / 8.0) * TILESIZE * TILESIZE;
-
-  double    guessedTileSizeAfterCompression = tileSize / 100;
-  const int pagesize                        = 4096;
-  int       pagesPerBlock                   = std::max(int(ceil(guessedTileSizeAfterCompression / 10 / pagesize)), 1);
-
-  int blockSize  = pagesPerBlock * pagesize;
-  int blockCount = std::max(int(ceil(tileCount / 10)), 64);
-
-  printf("Creating a PageProvider providing %d blocks of %d bytes\n", blockCount, blockSize);
-  return Scroom::MemoryBlobs::PageProvider::create(blockCount, blockSize);
+  return TiledBitmap::create(bottom, ls);
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -139,50 +127,63 @@ TiledBitmap::Ptr TiledBitmap::create(int bitmapWidth, int bitmapHeight, LayerSpe
   return result;
 }
 
-TiledBitmap::TiledBitmap(int bitmapWidth_, int bitmapHeight_, LayerSpec const& ls_)
+TiledBitmap::Ptr TiledBitmap::create(const Layer::Ptr& bottom, LayerSpec const& ls)
+{
+  TiledBitmap::Ptr result(new TiledBitmap(bottom->getWidth(), bottom->getHeight(), ls));
+  result->initialize(bottom);
+  return result;
+}
+
+TiledBitmap::TiledBitmap(int bitmapWidth_, int bitmapHeight_, LayerSpec ls_)
   : bitmapWidth(bitmapWidth_)
   , bitmapHeight(bitmapHeight_)
-  , ls(ls_)
+  , ls(std::move(ls_))
   , tileCount(0)
   , tileFinishedCount(0)
   , progressBroadcaster(Scroom::Utils::ProgressInterfaceBroadcaster::create())
   , queue(ThreadPool::Queue::createAsync())
 {}
 
-void TiledBitmap::initialize()
+void TiledBitmap::initialize(const Layer::Ptr bottom)
 {
-  int                                    width  = bitmapWidth;
-  int                                    height = bitmapHeight;
-  unsigned int                           i      = 0;
-  int                                    bpp    = 0;
-  LayerOperations::Ptr                   lo     = ls[i];
-  Layer::Ptr                             prevLayer;
-  LayerOperations::Ptr                   prevLo;
-  Scroom::MemoryBlobs::PageProvider::Ptr provider = createProvider(width, height, lo->getBpp());
-  do
+  int                                    width    = bitmapWidth;
+  int                                    height   = bitmapHeight;
+  unsigned int                           i        = 0;
+  LayerOperations::Ptr                   lo       = ls[i];
+  Scroom::MemoryBlobs::PageProvider::Ptr provider = bottom->getPageProvider();
+
+  registrations.push_back(bottom->registerObserver(shared_from_this<TileInitialisationObserver>()));
+  layers.push_back(bottom);
+
+  Layer::Ptr           prevLayer = bottom;
+  LayerOperations::Ptr prevLo    = lo;
+
+  width  = (width + 7) / 8; // Round up
+  height = (height + 7) / 8;
+  i++;
+
+  while(std::max(width, height) > TILESIZE / 4)
   {
     if(i < ls.size())
     {
       lo = ls[i];
     }
 
-    bpp = lo->getBpp();
-
-    Layer::Ptr layer = Layer::create(i, width, height, bpp, provider);
+    Layer::Ptr layer = Layer::create(i, width, height, lo->getBpp(), provider);
     registrations.push_back(layer->registerObserver(shared_from_this<TileInitialisationObserver>()));
     layers.push_back(layer);
-    if(prevLayer)
-    {
-      connect(layer, prevLayer, prevLo);
-    }
+
+    connect(layer, prevLayer, prevLo);
 
     prevLayer = layer;
     prevLo    = lo;
     width     = (width + 7) / 8; // Round up
     height    = (height + 7) / 8;
     i++;
-  } while(std::max(width, height) > TILESIZE / 4);
+  }
 }
+
+void TiledBitmap::initialize() { initialize(Layer::create(bitmapWidth, bitmapHeight, ls[0]->getBpp())); }
 
 TiledBitmap::~TiledBitmap()
 {
@@ -248,7 +249,7 @@ void TiledBitmap::setSource(SourcePresentation::Ptr sp)
 
 Layer::Ptr TiledBitmap::getBottomLayer() { return layers[0]; }
 
-void TiledBitmap::drawTile(cairo_t* cr, const CompressedTile::Ptr tile, const Scroom::Utils::Rectangle<double> viewArea)
+void TiledBitmap::drawTile(cairo_t* cr, const CompressedTile::Ptr& tile, const Scroom::Utils::Rectangle<double>& viewArea)
 {
   const int margin = 5;
 

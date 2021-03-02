@@ -125,9 +125,9 @@ void on_open_activate(GtkMenuItem*, gpointer user_data)
                                        NULL);
   gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(dialog), currentFolder.c_str());
 
-  const std::map<OpenPresentationInterface::Ptr, std::string>& openPresentationInterfaces =
-    PluginManager::getInstance()->getOpenPresentationInterfaces();
-  const std::map<OpenInterface::Ptr, std::string>& openInterfaces = PluginManager::getInstance()->getOpenInterfaces();
+  const auto  pm                         = PluginManager::getInstance();
+  const auto& openPresentationInterfaces = pm->getOpenPresentationInterfaces();
+  const auto& openInterfaces             = pm->getOpenInterfaces();
 
   // Store all the file filters so that we can create a custom file filter that allows any supported type (by default)
   std::vector<GtkFileFilter*> filters;
@@ -137,13 +137,10 @@ void on_open_activate(GtkMenuItem*, gpointer user_data)
   // Cannot beforehand determine which data might be needed for the plugins, so we ask GTK to load everything!
   auto filterFlags = static_cast<GtkFileFilterFlags>(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_MIME_TYPE
                                                      | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_URI);
-  // Register the combined filter logic for this filter
-  gtk_file_filter_add_custom(allSupportedFileTypesFilter, filterFlags, &combinedFileFilter, &filters, nullptr);
 
-  // Register the combined filter in the dialog
+  gtk_file_filter_add_custom(allSupportedFileTypesFilter, filterFlags, &combinedFileFilter, &filters, nullptr);
   gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dialog), allSupportedFileTypesFilter);
 
-  // Register the separate presentation filters in the dialog and in the combined filter
   for(auto const& cur: openPresentationInterfaces)
   {
     for(auto const& f: cur.first->getFilters())
@@ -152,7 +149,6 @@ void on_open_activate(GtkMenuItem*, gpointer user_data)
       filters.push_back(f);
     }
   }
-  // Register the separate open interfaces in the dialog and in the combined filter
   for(auto const& cur: openInterfaces)
   {
     for(auto const& f: cur.first->getFilters())

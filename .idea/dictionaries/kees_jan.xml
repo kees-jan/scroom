@@ -3,8 +3,10 @@
     <words>
       <w>additor</w>
       <w>colormapped</w>
+      <w>dijkzeul</w>
       <w>progressinterfacehelpers</w>
       <w>scroom</w>
+      <w>spdx</w>
       <w>threadpool</w>
       <w>threadpoolimpl</w>
     </words>

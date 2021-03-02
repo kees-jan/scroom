@@ -239,20 +239,10 @@ PresentationInterface::Ptr loadPresentation(GtkFileFilterInfoPtr const& info) { 
 
 void load(GtkFileFilterInfo const& info)
 {
-  const std::map<OpenPresentationInterface::Ptr, std::string>& openPresentationInterfaces =
-    PluginManager::getInstance()->getOpenPresentationInterfaces();
-  const std::map<OpenInterface::Ptr, std::string>& openInterfaces = PluginManager::getInstance()->getOpenInterfaces();
+  const auto  pm                         = PluginManager::getInstance();
+  const auto& openPresentationInterfaces = pm->getOpenPresentationInterfaces();
+  const auto& openInterfaces             = pm->getOpenInterfaces();
 
-  for(auto const& cur: openInterfaces)
-  {
-    std::list<GtkFileFilter*>  filters = cur.first->getFilters();
-    GtkFileFilterListDestroyer destroyer(filters);
-    if(filterMatchesInfo(info, filters))
-    {
-      cur.first->open(info.filename, ScroomInterfaceImpl::instance());
-      return;
-    }
-  }
   for(auto const& cur: openPresentationInterfaces)
   {
     std::list<GtkFileFilter*>  filters = cur.first->getFilters();
@@ -266,6 +256,16 @@ void load(GtkFileFilterInfo const& info)
         find_or_create_scroom(presentation);
         return;
       }
+    }
+  }
+  for(auto const& cur: openInterfaces)
+  {
+    std::list<GtkFileFilter*>  filters = cur.first->getFilters();
+    GtkFileFilterListDestroyer destroyer(filters);
+    if(filterMatchesInfo(info, filters))
+    {
+      cur.first->open(info.filename, ScroomInterfaceImpl::instance());
+      return;
     }
   }
 

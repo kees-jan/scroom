@@ -20,6 +20,23 @@
 
 #include "local.hh"
 
+static Scroom::MemoryBlobs::PageProvider::Ptr createProvider(double width, double height, int bpp)
+{
+  double tileCount = (width * height) / (TILESIZE * TILESIZE);
+  double tileSize  = (bpp / 8.0) * TILESIZE * TILESIZE;
+
+  double    guessedTileSizeAfterCompression = tileSize / 100;
+  const int pagesize                        = 4096;
+  int       pagesPerBlock                   = std::max(int(ceil(guessedTileSizeAfterCompression / 10 / pagesize)), 1);
+
+  int blockSize  = pagesPerBlock * pagesize;
+  int blockCount = std::max(int(ceil(tileCount / 10)), 64);
+
+  printf("Creating a PageProvider providing %d blocks of %d bytes\n", blockCount, blockSize);
+  return Scroom::MemoryBlobs::PageProvider::create(blockCount, blockSize);
+}
+
+
 class DataFetcher
 {
 private:
@@ -50,6 +67,7 @@ Layer::Layer(int depth_, int layerWidth, int layerHeight, int bpp, Scroom::Memor
   : depth(depth_)
   , width(layerWidth)
   , height(layerHeight)
+  , pageProvider(provider)
 {
   horTileCount = (width + TILESIZE - 1) / TILESIZE;
   verTileCount = (height + TILESIZE - 1) / TILESIZE;
@@ -77,6 +95,13 @@ Layer::Layer(int depth_, int layerWidth, int layerHeight, int bpp, Scroom::Memor
 Layer::Ptr Layer::create(int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider)
 {
   return Ptr(new Layer(depth, layerWidth, layerHeight, bpp, provider));
+}
+
+Layer::Ptr Layer::create(int layerWidth, int layerHeight, int bpp)
+{
+  Scroom::MemoryBlobs::PageProvider::Ptr provider = createProvider(layerWidth, layerHeight, bpp);
+
+  return create(0, layerWidth, layerHeight, bpp, provider);
 }
 
 Scroom::Bookkeeping::Token Layer::registerObserver(const TileInitialisationObserver::Ptr& observer)
