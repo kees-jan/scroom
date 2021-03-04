@@ -21,7 +21,7 @@ install(
   NAMESPACE scroom)
 
 if(ENABLE_BOOST_TEST)
-  add_executable(util_tests)
+  add_executable(util_tests test/scope-exit-tests.cpp)
   target_sources(
     util_tests
     PRIVATE test/bookkeeping-tests.cc

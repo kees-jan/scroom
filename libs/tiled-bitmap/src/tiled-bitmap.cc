@@ -67,20 +67,26 @@ void FileOperation::doneWaiting()
 class LoadOperation : public FileOperation
 {
 private:
-  Layer::Ptr                 target;
-  SourcePresentation::Ptr    thePresentation;
-  Scroom::Semaphore          done;
-  ThreadPool::WeakQueue::Ptr queue;
+  Layer::Ptr                           target;
+  SourcePresentation::Ptr              thePresentation;
+  boost::shared_ptr<Scroom::Semaphore> done;
+  ThreadPool::WeakQueue::Ptr           queue;
 
 private:
-  LoadOperation(ThreadPool::WeakQueue::Ptr queue,
-                Layer::Ptr const&          l,
-                SourcePresentation::Ptr    sp,
-                ProgressInterface::Ptr     progress);
+  LoadOperation(ThreadPool::WeakQueue::Ptr           queue,
+                Layer::Ptr const&                    l,
+                SourcePresentation::Ptr              sp,
+                boost::shared_ptr<Scroom::Semaphore> done,
+                ProgressInterface::Ptr               progress);
 
 public:
   static Ptr
     create(ThreadPool::WeakQueue::Ptr queue, Layer::Ptr const& l, SourcePresentation::Ptr sp, ProgressInterface::Ptr progress);
+  static Ptr create(ThreadPool::WeakQueue::Ptr           queue,
+                    Layer::Ptr const&                    l,
+                    SourcePresentation::Ptr              sp,
+                    boost::shared_ptr<Scroom::Semaphore> done,
+                    ProgressInterface::Ptr               progress);
 
   void operator()() override;
   void finished() override;
@@ -92,16 +98,27 @@ FileOperation::Ptr LoadOperation::create(ThreadPool::WeakQueue::Ptr queue,
                                          SourcePresentation::Ptr    sp,
                                          ProgressInterface::Ptr     progress)
 {
-  return FileOperation::Ptr(new LoadOperation(queue, l, sp, progress));
+  return FileOperation::Ptr(new LoadOperation(queue, l, sp, boost::make_shared<Scroom::Semaphore>(), progress));
 }
 
-LoadOperation::LoadOperation(ThreadPool::WeakQueue::Ptr queue_,
-                             Layer::Ptr const&          l,
-                             SourcePresentation::Ptr    sp,
-                             ProgressInterface::Ptr     progress_)
+FileOperation::Ptr LoadOperation::create(ThreadPool::WeakQueue::Ptr           queue,
+                                         Layer::Ptr const&                    l,
+                                         SourcePresentation::Ptr              sp,
+                                         boost::shared_ptr<Scroom::Semaphore> done,
+                                         ProgressInterface::Ptr               progress)
+{
+  return FileOperation::Ptr(new LoadOperation(queue, l, sp, done, progress));
+}
+
+LoadOperation::LoadOperation(ThreadPool::WeakQueue::Ptr           queue_,
+                             Layer::Ptr const&                    l,
+                             SourcePresentation::Ptr              sp,
+                             boost::shared_ptr<Scroom::Semaphore> done_,
+                             ProgressInterface::Ptr               progress_)
   : FileOperation(progress_)
   , target(l)
   , thePresentation(sp)
+  , done(done_)
   , queue(queue_)
 {}
 
@@ -110,12 +127,12 @@ void LoadOperation::operator()()
   doneWaiting();
 
   target->fetchData(thePresentation, queue);
-  done.P();
+  done->P();
 }
 
-void LoadOperation::abort() { done.V(); }
+void LoadOperation::abort() { done->V(); }
 
-void LoadOperation::finished() { done.V(); }
+void LoadOperation::finished() { done->V(); }
 
 ////////////////////////////////////////////////////////////////////////
 // TiledBitmap

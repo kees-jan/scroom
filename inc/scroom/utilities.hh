@@ -54,6 +54,30 @@ namespace Scroom
       boost::shared_ptr<R const> shared_from_this() const;
     };
 
+    template <typename F>
+    class on_scope_exit
+    {
+    public:
+      explicit on_scope_exit(F f_)
+        : f(std::move(f_))
+      {}
+      on_scope_exit(const on_scope_exit&) = delete;
+      on_scope_exit(on_scope_exit&&)      = delete;
+      on_scope_exit& operator=(const on_scope_exit&) = delete;
+      on_scope_exit& operator=(on_scope_exit&&) = delete;
+
+      ~on_scope_exit() { f(); }
+
+    private:
+      F f;
+    };
+
+    template <typename F>
+    boost::shared_ptr<void> on_destruction(F f)
+    {
+      return boost::make_shared<on_scope_exit<F>>(std::move(f));
+    }
+
     template <typename R>
     boost::shared_ptr<R> Base::shared_from_this()
     {
