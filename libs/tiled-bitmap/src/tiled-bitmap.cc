@@ -12,12 +12,10 @@
 #endif
 
 #include <cmath>
-
-#include <stdio.h>
+#include <cstdio>
 
 #include <boost/thread/mutex.hpp>
 
-#include <scroom/assertions.hh>
 #include <scroom/cairo-helpers.hh>
 #include <scroom/semaphore.hh>
 #include <scroom/unused.hh>
@@ -92,7 +90,7 @@ TiledBitmap::TiledBitmap(int bitmapWidth_, int bitmapHeight_, LayerSpec ls_)
   , progressBroadcaster(Scroom::Utils::ProgressInterfaceBroadcaster::create())
 {}
 
-void TiledBitmap::initialize(const Layer::Ptr bottom)
+void TiledBitmap::initialize(const Layer::Ptr& bottom)
 {
   int                                    width    = bitmapWidth;
   int                                    height   = bitmapHeight;
@@ -141,7 +139,7 @@ TiledBitmap::~TiledBitmap()
   layers.clear();
 }
 
-void TiledBitmap::connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, LayerOperations::Ptr prevLo)
+void TiledBitmap::connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, const LayerOperations::Ptr& prevLo)
 {
   int horTileCount = prevLayer->getHorTileCount();
   int verTileCount = prevLayer->getVerTileCount();

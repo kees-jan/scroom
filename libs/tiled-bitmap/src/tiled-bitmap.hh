@@ -63,11 +63,11 @@ private:
   TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec ls);
 
   void initialize();
-  void initialize(const Layer::Ptr bottom);
+  void initialize(const Layer::Ptr& bottom);
 
 private:
   static void drawTile(cairo_t* cr, const CompressedTile::Ptr& tile, const Scroom::Utils::Rectangle<double>& viewArea);
-  void        connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, LayerOperations::Ptr prevLo);
+  void        connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, const LayerOperations::Ptr& prevLo);
 
 public:
   ////////////////////////////////////////////////////////////////////////

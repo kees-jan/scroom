@@ -5,9 +5,9 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
+#include <cstdio>
+#include <utility>
 #include <vector>
-
-#include <stdio.h>
 
 #include <scroom/impl/threadpoolimpl.hh>
 #include <scroom/memoryblobs.hh>
@@ -51,7 +51,7 @@ private:
   std::function<void()>      on_finished;
 
 public:
-  DataFetcher(Layer::Ptr const&          layer,
+  DataFetcher(Layer::Ptr                 layer,
               int                        height,
               int                        horTileCount,
               int                        verTileCount,
@@ -69,23 +69,22 @@ Layer::Layer(int depth_, int layerWidth, int layerHeight, int bpp, Scroom::Memor
   : depth(depth_)
   , width(layerWidth)
   , height(layerHeight)
-  , pageProvider(provider)
+  , horTileCount((width + TILESIZE - 1) / TILESIZE)
+  , verTileCount((height + TILESIZE - 1) / TILESIZE)
+  , pageProvider(std::move(provider))
 {
-  horTileCount = (width + TILESIZE - 1) / TILESIZE;
-  verTileCount = (height + TILESIZE - 1) / TILESIZE;
-
   for(int j = 0; j < verTileCount; j++)
   {
     tiles.push_back(CompressedTileLine());
     CompressedTileLine& tl = tiles[j];
     for(int i = 0; i < horTileCount; i++)
     {
-      CompressedTile::Ptr tile = CompressedTile::create(depth_, i, j, bpp, provider);
+      CompressedTile::Ptr tile = CompressedTile::create(depth_, i, j, bpp, pageProvider);
       tl.push_back(tile);
     }
   }
 
-  outOfBounds = CompressedTile::create(depth_, -1, -1, bpp, provider, TSI_OUT_OF_BOUNDS);
+  outOfBounds = CompressedTile::create(depth_, -1, -1, bpp, pageProvider, TSI_OUT_OF_BOUNDS);
   for(int i = 0; i < horTileCount; i++)
   {
     lineOutOfBounds.push_back(outOfBounds);
@@ -96,7 +95,7 @@ Layer::Layer(int depth_, int layerWidth, int layerHeight, int bpp, Scroom::Memor
 
 Layer::Ptr Layer::create(int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider)
 {
-  return Ptr(new Layer(depth, layerWidth, layerHeight, bpp, provider));
+  return Ptr(new Layer(depth, layerWidth, layerHeight, bpp, std::move(provider)));
 }
 
 Layer::Ptr Layer::create(int layerWidth, int layerHeight, int bpp)
@@ -130,10 +129,8 @@ CompressedTile::Ptr Layer::getTile(int i, int j)
   {
     return tiles[j][i];
   }
-  else
-  {
-    return outOfBounds;
-  }
+
+  return outOfBounds;
 }
 
 CompressedTileLine& Layer::getTileLine(int j)
@@ -142,15 +139,13 @@ CompressedTileLine& Layer::getTileLine(int j)
   {
     return tiles[j];
   }
-  else
-  {
-    return lineOutOfBounds;
-  }
+
+  return lineOutOfBounds;
 }
 
 void Layer::fetchData(SourcePresentation::Ptr sp, const ThreadPool::WeakQueue::Ptr& queue, std::function<void()> on_finished)
 {
-  DataFetcher df(shared_from_this<Layer>(), height, horTileCount, verTileCount, std::move(sp), queue, on_finished);
+  DataFetcher df(shared_from_this<Layer>(), height, horTileCount, verTileCount, std::move(sp), queue, std::move(on_finished));
   CpuBound()->schedule(df, DATAFETCH_PRIO, queue);
 }
 
@@ -191,22 +186,22 @@ void Layer::close(ViewInterface::WeakPtr vi)
 ////////////////////////////////////////////////////////////////////////
 /// DataFetcher
 
-DataFetcher::DataFetcher(Layer::Ptr const&          layer_,
+DataFetcher::DataFetcher(Layer::Ptr                 layer_,
                          int                        height_,
                          int                        horTileCount_,
                          int                        verTileCount_,
                          SourcePresentation::Ptr    sp_,
                          ThreadPool::WeakQueue::Ptr queue_,
                          std::function<void()>      on_finished_)
-  : layer(layer_)
+  : layer(std::move(layer_))
   , height(height_)
   , horTileCount(horTileCount_)
   , verTileCount(verTileCount_)
   , currentRow(0)
-  , sp(sp_)
+  , sp(std::move(sp_))
   , threadPool(CpuBound())
-  , queue(queue_)
-  , on_finished(on_finished_)
+  , queue(std::move(queue_))
+  , on_finished(std::move(on_finished_))
 {}
 
 void DataFetcher::operator()()
