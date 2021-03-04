@@ -25,28 +25,6 @@
 #include "layercoordinator.hh"
 #include "tiledbitmapviewdata.hh"
 
-class TiledBitmap;
-
-class FileOperation : private Interface
-{
-public:
-  using Ptr = boost::shared_ptr<FileOperation>;
-
-private:
-  ProgressInterface::Ptr progress;
-  boost::mutex           waitingMutex;
-  bool                   waiting;
-
-protected:
-  FileOperation(ProgressInterface::Ptr progress);
-
-public:
-  virtual void doneWaiting();
-  virtual void finished()   = 0;
-  virtual void operator()() = 0;
-  virtual void abort()      = 0;
-};
-
 class TiledBitmap
   : public TiledBitmapInterface
   , public TileInitialisationObserver
@@ -68,9 +46,7 @@ private:
   int                                              tileCount;
   boost::mutex                                     tileFinishedMutex;
   int                                              tileFinishedCount;
-  FileOperation::Ptr                               fileOperation;
   Scroom::Utils::ProgressInterfaceBroadcaster::Ptr progressBroadcaster;
-  ThreadPool::Queue::Ptr                           queue;
   Scroom::Utils::StuffList                         registrations;
 
 public:
@@ -117,3 +93,5 @@ public:
 };
 
 TiledBitmapInterface::Ptr createTiledBitmap(const Layer::Ptr& bottom, LayerSpec const& ls);
+Scroom::Utils::Stuff
+  scheduleLoadingBitmap(const SourcePresentation::Ptr& sp, const Layer::Ptr& layer, const ProgressInterface::Ptr& progress);

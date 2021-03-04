@@ -48,6 +48,7 @@ private:
   SourcePresentation::Ptr    sp;
   ThreadPool::Ptr            threadPool;
   ThreadPool::WeakQueue::Ptr queue;
+  std::function<void()>      on_finished;
 
 public:
   DataFetcher(Layer::Ptr const&          layer,
@@ -55,7 +56,8 @@ public:
               int                        horTileCount,
               int                        verTileCount,
               SourcePresentation::Ptr    sp,
-              ThreadPool::WeakQueue::Ptr queue);
+              ThreadPool::WeakQueue::Ptr queue,
+              std::function<void()>      on_finished);
 
   void operator()();
 };
@@ -146,9 +148,9 @@ CompressedTileLine& Layer::getTileLine(int j)
   }
 }
 
-void Layer::fetchData(SourcePresentation::Ptr sp, ThreadPool::WeakQueue::Ptr queue)
+void Layer::fetchData(SourcePresentation::Ptr sp, const ThreadPool::WeakQueue::Ptr& queue, std::function<void()> on_finished)
 {
-  DataFetcher df(shared_from_this<Layer>(), height, horTileCount, verTileCount, sp, queue);
+  DataFetcher df(shared_from_this<Layer>(), height, horTileCount, verTileCount, std::move(sp), queue, on_finished);
   CpuBound()->schedule(df, DATAFETCH_PRIO, queue);
 }
 
@@ -194,7 +196,8 @@ DataFetcher::DataFetcher(Layer::Ptr const&          layer_,
                          int                        horTileCount_,
                          int                        verTileCount_,
                          SourcePresentation::Ptr    sp_,
-                         ThreadPool::WeakQueue::Ptr queue_)
+                         ThreadPool::WeakQueue::Ptr queue_,
+                         std::function<void()>      on_finished_)
   : layer(layer_)
   , height(height_)
   , horTileCount(horTileCount_)
@@ -203,6 +206,7 @@ DataFetcher::DataFetcher(Layer::Ptr const&          layer_,
   , sp(sp_)
   , threadPool(CpuBound())
   , queue(queue_)
+  , on_finished(on_finished_)
 {}
 
 void DataFetcher::operator()()
@@ -241,5 +245,6 @@ void DataFetcher::operator()()
   else
   {
     sp->done();
+    on_finished();
   }
 }

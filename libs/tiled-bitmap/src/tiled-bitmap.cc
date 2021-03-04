@@ -34,105 +34,37 @@ TiledBitmapInterface::Ptr createTiledBitmap(const Layer::Ptr& bottom, LayerSpec 
   return TiledBitmap::create(bottom, ls);
 }
 
+Scroom::Utils::Stuff
+  scheduleLoadingBitmap(const SourcePresentation::Ptr& sp, const Layer::Ptr& layer, const ProgressInterface::Ptr& progress)
+{
+  auto wait_until_done = boost::make_shared<Scroom::Semaphore>();
+  auto queue           = ThreadPool::Queue::createAsync();
+  auto weakQueue       = queue->getWeak();
+  auto abort           = [wait_until_done, queue]() mutable {
+    queue.reset();
+    wait_until_done->V();
+  };
+
+  auto on_finished = [wait_until_done] { wait_until_done->V(); };
+  progress->setWaiting();
+
+  Sequentially()->schedule([progress, layer, sp, weakQueue, on_finished, wait_until_done] {
+    gdk_threads_enter();
+    progress->setWorking(0);
+    gdk_threads_leave();
+    layer->fetchData(sp, weakQueue, on_finished);
+    wait_until_done->P();
+  });
+
+  return Scroom::Utils::on_destruction(abort);
+}
+
 ////////////////////////////////////////////////////////////////////////
 
 inline Scroom::Utils::Rectangle<int> TileAreaForIndex(Scroom::Utils::Point<int> tileIndex)
 {
   return (Scroom::Utils::Rectangle<int>(0, 0, 1, 1) + tileIndex) * TILESIZE;
 }
-
-////////////////////////////////////////////////////////////////////////
-
-FileOperation::FileOperation(ProgressInterface::Ptr progress_)
-  : progress(progress_)
-  , waiting(true)
-{
-  progress_->setWaiting();
-}
-
-void FileOperation::doneWaiting()
-{
-  boost::mutex::scoped_lock lock(waitingMutex);
-  if(waiting)
-  {
-    gdk_threads_enter();
-    progress->setWorking(0);
-    gdk_threads_leave();
-    waiting = false;
-  }
-}
-
-////////////////////////////////////////////////////////////////////////
-
-class LoadOperation : public FileOperation
-{
-private:
-  Layer::Ptr                           target;
-  SourcePresentation::Ptr              thePresentation;
-  boost::shared_ptr<Scroom::Semaphore> done;
-  ThreadPool::WeakQueue::Ptr           queue;
-
-private:
-  LoadOperation(ThreadPool::WeakQueue::Ptr           queue,
-                Layer::Ptr const&                    l,
-                SourcePresentation::Ptr              sp,
-                boost::shared_ptr<Scroom::Semaphore> done,
-                ProgressInterface::Ptr               progress);
-
-public:
-  static Ptr
-    create(ThreadPool::WeakQueue::Ptr queue, Layer::Ptr const& l, SourcePresentation::Ptr sp, ProgressInterface::Ptr progress);
-  static Ptr create(ThreadPool::WeakQueue::Ptr           queue,
-                    Layer::Ptr const&                    l,
-                    SourcePresentation::Ptr              sp,
-                    boost::shared_ptr<Scroom::Semaphore> done,
-                    ProgressInterface::Ptr               progress);
-
-  void operator()() override;
-  void finished() override;
-  void abort() override;
-};
-
-FileOperation::Ptr LoadOperation::create(ThreadPool::WeakQueue::Ptr queue,
-                                         Layer::Ptr const&          l,
-                                         SourcePresentation::Ptr    sp,
-                                         ProgressInterface::Ptr     progress)
-{
-  return FileOperation::Ptr(new LoadOperation(queue, l, sp, boost::make_shared<Scroom::Semaphore>(), progress));
-}
-
-FileOperation::Ptr LoadOperation::create(ThreadPool::WeakQueue::Ptr           queue,
-                                         Layer::Ptr const&                    l,
-                                         SourcePresentation::Ptr              sp,
-                                         boost::shared_ptr<Scroom::Semaphore> done,
-                                         ProgressInterface::Ptr               progress)
-{
-  return FileOperation::Ptr(new LoadOperation(queue, l, sp, done, progress));
-}
-
-LoadOperation::LoadOperation(ThreadPool::WeakQueue::Ptr           queue_,
-                             Layer::Ptr const&                    l,
-                             SourcePresentation::Ptr              sp,
-                             boost::shared_ptr<Scroom::Semaphore> done_,
-                             ProgressInterface::Ptr               progress_)
-  : FileOperation(progress_)
-  , target(l)
-  , thePresentation(sp)
-  , done(done_)
-  , queue(queue_)
-{}
-
-void LoadOperation::operator()()
-{
-  doneWaiting();
-
-  target->fetchData(thePresentation, queue);
-  done->P();
-}
-
-void LoadOperation::abort() { done->V(); }
-
-void LoadOperation::finished() { done->V(); }
 
 ////////////////////////////////////////////////////////////////////////
 // TiledBitmap
@@ -158,7 +90,6 @@ TiledBitmap::TiledBitmap(int bitmapWidth_, int bitmapHeight_, LayerSpec ls_)
   , tileCount(0)
   , tileFinishedCount(0)
   , progressBroadcaster(Scroom::Utils::ProgressInterfaceBroadcaster::create())
-  , queue(ThreadPool::Queue::createAsync())
 {}
 
 void TiledBitmap::initialize(const Layer::Ptr bottom)
@@ -205,13 +136,7 @@ void TiledBitmap::initialize() { initialize(Layer::create(bitmapWidth, bitmapHei
 TiledBitmap::~TiledBitmap()
 {
   printf("TiledBitmap: Destructing...\n");
-  queue.reset();
 
-  if(fileOperation)
-  {
-    fileOperation->abort();
-    fileOperation.reset();
-  }
   coordinators.clear();
   layers.clear();
 }
@@ -253,15 +178,7 @@ void TiledBitmap::connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, 
 
 void TiledBitmap::setSource(SourcePresentation::Ptr sp)
 {
-  if(!fileOperation)
-  {
-    fileOperation = LoadOperation::create(queue->getWeak(), layers[0], sp, progressBroadcaster);
-    Sequentially()->schedule(fileOperation);
-  }
-  else
-  {
-    printf("PANIC: Another operation is already in progress\n");
-  }
+  registrations.push_back(scheduleLoadingBitmap(sp, layers[0], progressBroadcaster));
 }
 
 Layer::Ptr TiledBitmap::getBottomLayer() { return layers[0]; }
@@ -422,11 +339,6 @@ void TiledBitmap::tileFinished(CompressedTile::Ptr tile)
     if(tileFinishedCount == tileCount)
     {
       progressBroadcaster->setFinished();
-      if(fileOperation)
-      {
-        fileOperation->finished();
-        fileOperation.reset();
-      }
       printf("INFO: Finished loading file\n");
     }
     gdk_threads_leave();

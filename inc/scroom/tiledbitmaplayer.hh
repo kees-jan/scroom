@@ -263,7 +263,7 @@ public:
 
   CompressedTile::Ptr getTile(int i, int j);
   CompressedTileLine& getTileLine(int j);
-  void                fetchData(SourcePresentation::Ptr sp, ThreadPool::WeakQueue::Ptr queue);
+  void fetchData(SourcePresentation::Ptr sp, const ThreadPool::WeakQueue::Ptr& queue, std::function<void()> on_finished);
 
 public:
   int getWidth() const { return width; }
