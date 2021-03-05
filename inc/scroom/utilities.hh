@@ -78,6 +78,33 @@ namespace Scroom
       return boost::make_shared<on_scope_exit<F>>(std::move(f));
     }
 
+    template <typename F>
+    class optional_cleanup
+    {
+    public:
+      explicit optional_cleanup(F f_)
+        : f(std::move(f_))
+      {}
+      optional_cleanup(const optional_cleanup&) = delete;
+      optional_cleanup(optional_cleanup&&)      = delete;
+      optional_cleanup& operator=(const optional_cleanup&) = delete;
+      optional_cleanup& operator=(optional_cleanup&&) = delete;
+
+      ~optional_cleanup()
+      {
+        if(cleanup)
+        {
+          f();
+        }
+      }
+
+      void cancel() { cleanup = false; }
+
+    private:
+      bool cleanup{true};
+      F    f;
+    };
+
     template <typename R>
     boost::shared_ptr<R> Base::shared_from_this()
     {

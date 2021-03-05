@@ -9,8 +9,7 @@
 
 #include <scroom/utilities.hh>
 
-using Scroom::Utils::on_destruction;
-using Scroom::Utils::on_scope_exit;
+using namespace Scroom::Utils;
 
 BOOST_AUTO_TEST_SUITE(scope_exit_tests)
 
@@ -31,6 +30,27 @@ BOOST_AUTO_TEST_CASE(test_on_destruction)
   BOOST_TEST(!result);
   s.reset();
   BOOST_TEST(result);
+}
+
+BOOST_AUTO_TEST_CASE(test_desired_optional_cleanup)
+{
+  bool result = false;
+  {
+    optional_cleanup set_result_to_true([&] { result = true; });
+    BOOST_TEST(!result);
+  }
+  BOOST_TEST(result);
+}
+
+BOOST_AUTO_TEST_CASE(test_undesired_optional_cleanup)
+{
+  bool result = false;
+  {
+    optional_cleanup set_result_to_true([&] { result = true; });
+    BOOST_TEST(!result);
+    set_result_to_true.cancel();
+  }
+  BOOST_TEST(!result);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
