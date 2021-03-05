@@ -90,8 +90,11 @@ public:
 
   void tileCreated(CompressedTile::Ptr tile) override;
   void tileFinished(CompressedTile::Ptr tile) override;
+
+  ////////////////////////////////////////////////////////////////////////
+  // Helpers
+  ProgressInterface::Ptr progressInterface() { return progressBroadcaster; }
 };
 
-TiledBitmapInterface::Ptr createTiledBitmap(const Layer::Ptr& bottom, LayerSpec const& ls);
 Scroom::Utils::Stuff
   scheduleLoadingBitmap(const SourcePresentation::Ptr& sp, const Layer::Ptr& layer, const ProgressInterface::Ptr& progress);

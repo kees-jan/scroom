@@ -27,11 +27,6 @@ TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight, L
   return TiledBitmap::create(bitmapWidth, bitmapHeight, ls);
 }
 
-TiledBitmapInterface::Ptr createTiledBitmap(const Layer::Ptr& bottom, LayerSpec const& ls)
-{
-  return TiledBitmap::create(bottom, ls);
-}
-
 Scroom::Utils::Stuff
   scheduleLoadingBitmap(const SourcePresentation::Ptr& sp, const Layer::Ptr& layer, const ProgressInterface::Ptr& progress)
 {

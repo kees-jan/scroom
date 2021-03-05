@@ -66,6 +66,7 @@ namespace
     Views                              views;
     ColormapHelperBase::Ptr            colormapHelper;
     PipetteLayerOperations::Ptr        pipetteLayerOperation;
+    Scroom::Utils::StuffList           stuff;
 
   public:
     static TiledBitmapPresentation::Ptr create(std::string                        name_,
@@ -111,6 +112,12 @@ namespace
     void          setTransparentBackground() override;
     void          disableTransparentBackground() override;
     bool          getTransparentBackground() override;
+
+    ////////////////////////////////////////////////////////////////////////
+    // Helpers
+    ////////////////////////////////////////////////////////////////////////
+
+    void add(Scroom::Utils::Stuff s) { stuff.push_back(std::move(s)); }
 
   protected:
     ////////////////////////////////////////////////////////////////////////
@@ -352,7 +359,7 @@ namespace
     PresentationInterface::Ptr result;
     if(bottomLayer && !layerSpec.empty())
     {
-      TiledBitmapInterface::Ptr   tbi                   = createTiledBitmap(bottomLayer, layerSpec);
+      auto                        tiledBitmap           = TiledBitmap::create(bottomLayer, layerSpec);
       PipetteLayerOperations::Ptr pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(layerSpec[0]);
 
       std::map<std::string, std::string> properties = bmd.colormapHelper->getProperties();
@@ -361,13 +368,17 @@ namespace
         properties[PIPETTE_PROPERTY_NAME] = "";
       }
 
-      result = TiledBitmapPresentation::create(fileName, bmd.rect, tbi, properties, colormapHelper, pipetteLayerOperation);
-
-      load();
+      auto tiledBitmapPresentation =
+        TiledBitmapPresentation::create(fileName, bmd.rect, tiledBitmap, properties, colormapHelper, pipetteLayerOperation);
+      tiledBitmapPresentation->add(load(tiledBitmap->progressInterface()));
 
       if(bmd.aspectRatio)
       {
-        result = TransformPresentation::create(result, TransformationData::create(*bmd.aspectRatio));
+        result = TransformPresentation::create(tiledBitmapPresentation, TransformationData::create(*bmd.aspectRatio));
+      }
+      else
+      {
+        result = tiledBitmapPresentation;
       }
     }
     return result;
