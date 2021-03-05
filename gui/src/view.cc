@@ -192,20 +192,20 @@ void View::setPresentation(PresentationInterface::Ptr presentation_)
 {
   View::Ptr me = shared_from_this<View>();
 
-  if(this->presentation)
+  if(presentation)
   {
-    this->presentation->close(me);
-    this->presentation.reset();
+    presentation->close(me);
+    presentation.reset();
   }
 
-  this->presentation = presentation_;
+  presentation = std::move(presentation_);
 
-  if(this->presentation)
+  if(presentation)
   {
-    presentation_->open(me);
-    presentationRect = presentation_->getRect();
-    aspectRatio      = presentation_->getAspectRatio();
-    std::string s    = presentation_->getTitle();
+    presentation->open(me);
+    presentationRect = presentation->getRect();
+    aspectRatio      = presentation->getAspectRatio();
+    std::string s    = presentation->getTitle();
     if(s.length())
     {
       s = "Scroom - " + s;

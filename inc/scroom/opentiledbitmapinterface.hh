@@ -37,7 +37,7 @@ namespace Scroom
      * @see Sequentially()
      * @see scheduleLoadingBitmap() for an example implementation
      */
-    using ReloadFunction = std::function<Scroom::Utils::Stuff(const ProgressInterface::Ptr)>;
+    using ReloadFunction = std::function<Scroom::Utils::Stuff(const ProgressInterface::Ptr&)>;
 
     struct BitmapMetaData
     {
@@ -48,6 +48,9 @@ namespace Scroom
       boost::optional<Scroom::Utils::Point<double>> aspectRatio;
       ColormapHelperBase::Ptr                       colormapHelper;
     };
+
+    std::ostream& to_stream(std::ostream& os, const BitmapMetaData& bmd);
+    std::string   to_string(const BitmapMetaData& bmd);
 
     class OpenTiledBitmapInterface : private Interface
     {
@@ -73,6 +76,9 @@ namespace Scroom
     using LayerSpecForBitmapFunc = std::function<LayerSpecResult(const BitmapMetaData& bitmapMetaData)>;
 
     LayerSpecResult LayerSpecForBitmap(const BitmapMetaData& bitmapMetaData);
+
+    Scroom::Utils::Stuff
+      scheduleLoadingBitmap(const SourcePresentation::Ptr& sp, const Layer::Ptr& layer, const ProgressInterface::Ptr& progress);
 
   } // namespace TiledBitmap
 } // namespace Scroom

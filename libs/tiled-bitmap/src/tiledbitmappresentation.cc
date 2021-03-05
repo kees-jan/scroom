@@ -362,7 +362,11 @@ namespace
       auto                        tiledBitmap           = TiledBitmap::create(bottomLayer, layerSpec);
       PipetteLayerOperations::Ptr pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(layerSpec[0]);
 
-      std::map<std::string, std::string> properties = bmd.colormapHelper->getProperties();
+      std::map<std::string, std::string> properties;
+      if(bmd.colormapHelper)
+      {
+        properties = bmd.colormapHelper->getProperties();
+      }
       if(pipetteLayerOperation)
       {
         properties[PIPETTE_PROPERTY_NAME] = "";

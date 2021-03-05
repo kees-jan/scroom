@@ -52,9 +52,17 @@ Scroom::Utils::Rectangle<double> TransformPresentation::getRect()
   return presentation->getRect() * transformationData->getAspectRatio();
 }
 
-void TransformPresentation::open(ViewInterface::WeakPtr viewInterface) { presentation->open(viewInterface); }
+void TransformPresentation::open(ViewInterface::WeakPtr viewInterface)
+{
+  presentation->open(viewInterface);
+  PresentationBase::open(viewInterface);
+}
 
-void TransformPresentation::close(ViewInterface::WeakPtr viewInterface) { presentation->close(viewInterface); }
+void TransformPresentation::close(ViewInterface::WeakPtr viewInterface)
+{
+  PresentationBase::close(viewInterface);
+  presentation->close(viewInterface);
+}
 
 void TransformPresentation::redraw(ViewInterface::Ptr const&        vi,
                                    cairo_t*                         cr,

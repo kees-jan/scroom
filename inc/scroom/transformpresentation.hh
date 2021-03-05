@@ -36,7 +36,7 @@ private:
 };
 
 class TransformPresentation
-  : public PresentationInterface
+  : public PresentationBaseSimple
   , public Colormappable
   , public PipetteViewInterface
 {

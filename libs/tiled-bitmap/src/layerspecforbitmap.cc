@@ -14,6 +14,27 @@ namespace Scroom
 {
   namespace TiledBitmap
   {
+    namespace
+    {
+      const char* to_string(bool b) { return b ? "true" : "false"; }
+    } // namespace
+
+    std::ostream& to_stream(std::ostream& os, const BitmapMetaData& bmd)
+    {
+      os << "Type=\"" << bmd.type << "\", rect=" << bmd.rect << ", spp=" << bmd.samplesPerPixel << ", bps=" << bmd.bitsPerSample
+         << ", colormapped=" << to_string(static_cast<bool>(bmd.colormapHelper));
+
+      return os;
+    }
+
+    std::string to_string(const BitmapMetaData& bmd)
+    {
+      std::stringstream ss;
+      to_stream(ss, bmd);
+      return ss.str();
+    }
+
+
     const std::string RGB         = "RGB";
     const std::string CMYK        = "CMYK";
     const std::string Greyscale   = "Greyscale";
@@ -79,7 +100,7 @@ namespace Scroom
 
       if(bmd.bitsPerSample != 8)
       {
-        printf("PANIC: Bits per sample is not 8, but %d. Giving up\n", bmd.bitsPerSample);
+        printf("ERROR: RGB bitmaps with %u bits per sample are not supported\n", bmd.bitsPerSample);
         return {};
       }
 
@@ -105,14 +126,22 @@ namespace Scroom
       else if(bmd.bitsPerSample == 4)
       {
         ls.push_back(OperationsCMYK16::create());
+        ls.push_back(OperationsCMYK32::create());
       }
       else if(bmd.bitsPerSample == 2)
       {
         ls.push_back(OperationsCMYK8::create());
+        ls.push_back(OperationsCMYK32::create());
       }
       else if(bmd.bitsPerSample == 1)
       {
         ls.push_back(OperationsCMYK4::create());
+        ls.push_back(OperationsCMYK32::create());
+      }
+      else
+      {
+        printf("ERROR: CMYK bitmaps with %u bits per sample are not supported\n", bmd.bitsPerSample);
+        return {};
       }
 
       return LayerSpecResult(ls, nullptr);
@@ -126,6 +155,12 @@ namespace Scroom
       }
 
       require(bmd.samplesPerPixel == 1);
+
+      if(bmd.bitsPerSample != 1 && bmd.bitsPerSample != 2 && bmd.bitsPerSample != 4 && bmd.bitsPerSample != 8)
+      {
+        printf("ERROR: Greyscale bitmaps with %u bits per pixel are not supported (yet)\n", bmd.bitsPerSample);
+        return {};
+      }
 
       LayerSpec               ls;
       ColormapHelperBase::Ptr colormapHelper = bmd.colormapHelper;
@@ -159,6 +194,12 @@ namespace Scroom
       }
       require(bmd.samplesPerPixel == 1);
       require(bmd.colormapHelper);
+
+      if(bmd.bitsPerSample != 1 && bmd.bitsPerSample != 2 && bmd.bitsPerSample != 4 && bmd.bitsPerSample != 8)
+      {
+        printf("ERROR: Colormapped bitmaps with %u bits per pixel are not supported (yet)\n", bmd.bitsPerSample);
+        return {};
+      }
 
       LayerSpec ls;
       ls.push_back(Operations::create(bmd.colormapHelper, bmd.bitsPerSample));

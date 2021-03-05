@@ -12,6 +12,7 @@
 
 #include <gtk/gtk.h>
 
+#include <scroom/opentiledbitmapinterface.hh>
 #include <scroom/plugininformationinterface.hh>
 #include <scroom/presentationinterface.hh>
 #include <scroom/scroominterface.hh>
@@ -19,7 +20,8 @@
 
 class Tiff
   : public PluginInformationInterface
-  , public OpenPresentationInterface
+  //  , public OpenPresentationInterface
+  , public Scroom::TiledBitmap::OpenTiledBitmapInterface
   , virtual public Scroom::Utils::Base
 {
 public:
@@ -42,6 +44,14 @@ public:
   ////////////////////////////////////////////////////////////////////////
   // OpenPresentationInterface
 
-  std::list<GtkFileFilter*>  getFilters() override;
-  PresentationInterface::Ptr open(const std::string& fileName) override;
+  //  std::list<GtkFileFilter*>  getFilters() override;
+  //  PresentationInterface::Ptr open(const std::string& fileName) override;
+
+  ////////////////////////////////////////////////////////////////////////
+  // OpenTiledBitmapInterface
+
+  std::list<GtkFileFilter*> getFilters() override;
+
+  std::tuple<Scroom::TiledBitmap::BitmapMetaData, Layer::Ptr, Scroom::TiledBitmap::ReloadFunction>
+    open(const std::string& fileName) override;
 };

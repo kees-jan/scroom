@@ -95,6 +95,3 @@ public:
   // Helpers
   ProgressInterface::Ptr progressInterface() { return progressBroadcaster; }
 };
-
-Scroom::Utils::Stuff
-  scheduleLoadingBitmap(const SourcePresentation::Ptr& sp, const Layer::Ptr& layer, const ProgressInterface::Ptr& progress);

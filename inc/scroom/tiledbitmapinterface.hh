@@ -224,6 +224,8 @@ public:
    * Any open files can be closed now
    */
   virtual void done() = 0;
+
+  virtual std::string getName() = 0;
 };
 
 class Layer;

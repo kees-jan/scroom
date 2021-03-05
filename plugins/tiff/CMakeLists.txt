@@ -4,8 +4,8 @@ target_sources(
   PRIVATE src/main.cc
           src/tiff.cc
           src/tiff.hh
-          src/tiffpresentation.cc
-          src/tiffpresentation.hh)
+          src/tiffsource.hh
+          src/tiffsource.cc)
 target_link_libraries(
   sptiff
   PRIVATE project_options project_warnings

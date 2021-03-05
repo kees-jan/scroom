@@ -1,6 +1,6 @@
 name: Check Formatting
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
@@ -43,7 +43,7 @@ jobs:
       - name: Run cmake-format
         run: |
           source ~/.profile
-          find . \( -name cmake-modules -o -name .git \) -type d -prune \
+          find . \( -name cmake-modules -o -name .git -o -name cmake-build-\* \) -type d -prune \
             -o \( -name CMakeLists.txt  -o -name \*.cmake \) -exec cmake-format -i \{\} \+
 
       - name: Report results

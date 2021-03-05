@@ -526,8 +526,8 @@ plugins_tiff_src_libsptiff_la_SOURCES = \
 	plugins/tiff/src/main.cc \
 	plugins/tiff/src/tiff.cc \
 	plugins/tiff/src/tiff.hh \
-	plugins/tiff/src/tiffpresentation.cc \
-	plugins/tiff/src/tiffpresentation.hh
+	plugins/tiff/src/tiffsource.cc \
+	plugins/tiff/src/tiffsource.hh 
 
 plugins_tiff_src_libsptiff_la_LIBADD = @TIFFPLUGIN_LIBS@ -ltiff @BOOSTTHREADLIB@ @BOOSTSYSTEMLIB@ \
 	libs/tiled-bitmap/src/libstiledbitmap.la libs/scroom/src/libsscroom.la libs/util/src/libsutil.la

@@ -20,5 +20,7 @@ namespace Scroom
     using Stuff     = boost::shared_ptr<void>;
     using StuffWeak = boost::weak_ptr<void>;
     using StuffList = std::list<Stuff>;
+
+    inline Stuff Empty() { return Stuff(); }
   } // namespace Utils
 } // namespace Scroom

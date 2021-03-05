@@ -27,8 +27,9 @@ TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight, L
   return TiledBitmap::create(bitmapWidth, bitmapHeight, ls);
 }
 
-Scroom::Utils::Stuff
-  scheduleLoadingBitmap(const SourcePresentation::Ptr& sp, const Layer::Ptr& layer, const ProgressInterface::Ptr& progress)
+Scroom::Utils::Stuff Scroom::TiledBitmap::scheduleLoadingBitmap(const SourcePresentation::Ptr& sp,
+                                                                const Layer::Ptr&              layer,
+                                                                const ProgressInterface::Ptr&  progress)
 {
   auto wait_until_done = boost::make_shared<Scroom::Semaphore>();
   auto queue           = ThreadPool::Queue::createAsync();
@@ -171,7 +172,7 @@ void TiledBitmap::connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, 
 
 void TiledBitmap::setSource(SourcePresentation::Ptr sp)
 {
-  registrations.push_back(scheduleLoadingBitmap(sp, layers[0], progressBroadcaster));
+  registrations.push_back(Scroom::TiledBitmap::scheduleLoadingBitmap(sp, layers[0], progressBroadcaster));
 }
 
 Layer::Ptr TiledBitmap::getBottomLayer() { return layers[0]; }

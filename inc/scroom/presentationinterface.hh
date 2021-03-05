@@ -127,6 +127,17 @@ protected:
   virtual std::set<ViewInterface::WeakPtr> getViews()                             = 0;
 };
 
+class PresentationBaseSimple : public PresentationBase
+{
+private:
+  std::set<ViewInterface::WeakPtr> views;
+
+private:
+  void                             viewAdded(ViewInterface::WeakPtr vi) final { views.insert(vi); }
+  void                             viewRemoved(ViewInterface::WeakPtr vi) final { views.erase(vi); }
+  std::set<ViewInterface::WeakPtr> getViews() final { return views; }
+};
+
 /**
  * Base class for something that composes several presentations.
  */
