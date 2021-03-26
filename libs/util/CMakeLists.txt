@@ -21,7 +21,7 @@ install(
   NAMESPACE scroom)
 
 if(ENABLE_BOOST_TEST)
-  add_executable(util_tests test/scope-exit-tests.cpp)
+  add_executable(util_tests)
   target_sources(
     util_tests
     PRIVATE test/bookkeeping-tests.cc
@@ -33,7 +33,8 @@ if(ENABLE_BOOST_TEST)
             test/progressinterfaceconversion-tests.cc
             test/progressinterfacemultiplexer-tests.cc
             test/progressstateinterfacestub.cc
-            test/progressstateinterfacestub.hh)
+            test/progressstateinterfacestub.hh
+            test/scope-exit-tests.cpp)
   target_link_libraries(
     util_tests
     PRIVATE boosttesthelper

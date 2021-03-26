@@ -91,8 +91,8 @@ namespace Scroom
       [[nodiscard]] double magnitude() const { return sqrt(x * x + y * y); }
 
     public:
-      value_type x;
-      value_type y;
+      value_type x{0};
+      value_type y{0};
     };
 
     template <typename T>

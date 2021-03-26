@@ -20,7 +20,6 @@
 
 class Tiff
   : public PluginInformationInterface
-  //  , public OpenPresentationInterface
   , public Scroom::TiledBitmap::OpenTiledBitmapInterface
   , virtual public Scroom::Utils::Base
 {
@@ -40,12 +39,6 @@ public:
   std::string getPluginName() override;
   std::string getPluginVersion() override;
   void        registerCapabilities(ScroomPluginInterface::Ptr host) override;
-
-  ////////////////////////////////////////////////////////////////////////
-  // OpenPresentationInterface
-
-  //  std::list<GtkFileFilter*>  getFilters() override;
-  //  PresentationInterface::Ptr open(const std::string& fileName) override;
 
   ////////////////////////////////////////////////////////////////////////
   // OpenTiledBitmapInterface
