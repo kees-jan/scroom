@@ -60,10 +60,9 @@ namespace Scroom
 {
   namespace Tiff
   {
-    using Scroom::Utils::optional_cleanup;
     using namespace Scroom::TiledBitmap;
 
-    Colormap::Ptr getColorMap(TIFFPtr tif, uint16_t bps)
+    Colormap::Ptr getColorMap(const TIFFPtr& tif, uint16_t bps)
     {
       uint16*       r{};
       uint16*       g{};
@@ -87,7 +86,7 @@ namespace Scroom
       return colormap;
     }
 
-    boost::optional<Scroom::Utils::Point<double>> getAspectRatio(TIFFPtr tif)
+    boost::optional<Scroom::Utils::Point<double>> getAspectRatio(const TIFFPtr& tif)
     {
       float  resolutionX{};
       float  resolutionY{};
@@ -109,7 +108,7 @@ namespace Scroom
       return {};
     }
 
-    ColormapHelperBase::Ptr getColormapHelper(TIFFPtr tif, uint16_t bps)
+    ColormapHelperBase::Ptr getColormapHelper(const TIFFPtr& tif, uint16_t bps)
     {
       auto colorMap = getColorMap(tif, bps);
       return colorMap ? ColormapHelper::create(colorMap) : nullptr;
@@ -222,13 +221,13 @@ namespace Scroom
 
     Source::Ptr Source::create(std::string fileName, TIFFPtr tif, BitmapMetaData bmd)
     {
-      return Ptr(new Source(std::move(fileName), tif, bmd));
+      return Ptr(new Source(std::move(fileName), std::move(tif), bmd));
     }
 
     Source::Source(std::string fileName_, TIFFPtr tif_, BitmapMetaData bmd_)
       : fileName(std::move(fileName_))
-      , preOpenedTif(tif_)
-      , bmd(bmd_)
+      , preOpenedTif(std::move(tif_))
+      , bmd(std::move(bmd_))
     {}
 
     bool Source::reset()
