@@ -15,11 +15,10 @@
 #  include <version.h>
 #endif
 
+#include <cstdlib>
 #include <list>
 #include <map>
 #include <string>
-
-#include <stdlib.h>
 
 #include <boost/algorithm/string.hpp>
 #include <boost/format.hpp>

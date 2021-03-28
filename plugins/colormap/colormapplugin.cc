@@ -7,7 +7,7 @@
 
 #include "colormapplugin.hh"
 
-#include <stdio.h>
+#include <cstdio>
 
 #include <scroom/colormappable.hh>
 

@@ -7,9 +7,8 @@
 
 #include "measure-framerate-tests.hh"
 
+#include <ctime>
 #include <string>
-
-#include <time.h>
 
 #include <boost/shared_ptr.hpp>
 

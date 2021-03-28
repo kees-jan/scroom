@@ -5,10 +5,9 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
+#include <cstdio>
 #include <list>
 #include <string>
-
-#include <stdio.h>
 
 #include <glib.h>
 

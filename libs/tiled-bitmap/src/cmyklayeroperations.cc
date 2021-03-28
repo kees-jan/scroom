@@ -5,8 +5,8 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include <stdint.h>
-#include <stdlib.h>
+#include <cstdint>
+#include <cstdlib>
 
 #include <cairo.h>
 

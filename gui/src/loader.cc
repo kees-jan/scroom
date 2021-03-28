@@ -11,7 +11,7 @@
 #  include <config.h>
 #endif
 
-#include <stdio.h>
+#include <cstdio>
 
 #include <boost/filesystem.hpp>
 

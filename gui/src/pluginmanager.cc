@@ -7,10 +7,9 @@
 
 #include "pluginmanager.hh"
 
+#include <cstdio>
+#include <cstdlib>
 #include <string>
-
-#include <stdio.h>
-#include <stdlib.h>
 
 #include <boost/filesystem.hpp>
 

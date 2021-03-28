@@ -7,8 +7,9 @@
 
 #include "blob-compression.hh"
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cstdlib>
+
 #include <zlib.h>
 
 #include <scroom/blockallocator.hh>

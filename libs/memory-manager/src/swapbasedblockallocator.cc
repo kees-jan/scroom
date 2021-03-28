@@ -5,10 +5,9 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
+#include <cstddef>
+#include <cstdint>
 #include <stdexcept>
-
-#include <stddef.h>
-#include <stdint.h>
 
 #include <boost/move/make_unique.hpp>
 #include <boost/move/unique_ptr.hpp>

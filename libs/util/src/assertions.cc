@@ -1,4 +1,4 @@
-#include <errno.h>
+#include <cerrno>
 
 #include <scroom/assertions.hh>
 #ifdef _WIN32
@@ -6,11 +6,10 @@
 #else
 #  include <execinfo.h>
 #endif
+#include <csignal>
 #include <cstdlib>
+#include <cstring>
 #include <iostream>
-
-#include <signal.h>
-#include <string.h>
 
 
 namespace Scroom

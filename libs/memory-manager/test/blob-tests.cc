@@ -5,9 +5,8 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
+#include <cstring>
 #include <list>
-
-#include <string.h>
 
 #include <boost/test/unit_test.hpp>
 

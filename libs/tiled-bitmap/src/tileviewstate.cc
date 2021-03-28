@@ -7,7 +7,7 @@
 
 #include "tileviewstate.hh"
 
-#include <stdio.h>
+#include <cstdio>
 
 #include <scroom/observable.hh>
 #include <scroom/stuff.hh>

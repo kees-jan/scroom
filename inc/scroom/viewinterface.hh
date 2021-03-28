@@ -8,9 +8,8 @@
 #pragma once
 
 #include <cmath>
+#include <cstdlib>
 #include <string>
-
-#include <stdlib.h>
 
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>

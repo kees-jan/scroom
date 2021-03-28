@@ -7,7 +7,7 @@
 
 #include "layercoordinator.hh"
 
-#include <stdio.h>
+#include <cstdio>
 
 #include <scroom/threadpool.hh>
 #include <scroom/tiledbitmaplayer.hh>

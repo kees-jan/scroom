@@ -7,9 +7,8 @@
 
 #pragma once
 
+#include <cstdint>
 #include <list>
-
-#include <stdint.h>
 
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>

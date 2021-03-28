@@ -7,9 +7,8 @@
 
 #include "colormapprovider.hh"
 
+#include <cstdio>
 #include <list>
-
-#include <stdio.h>
 
 #include <glib.h>
 

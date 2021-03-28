@@ -5,11 +5,10 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
+#include <cstdint>
+#include <cstdio>
+#include <cstring>
 #include <sstream>
-
-#include <stdint.h>
-#include <stdio.h>
-#include <string.h>
 
 #include <boost/shared_ptr.hpp>
 #include <boost/utility.hpp>

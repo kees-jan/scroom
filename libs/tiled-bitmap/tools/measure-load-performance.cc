@@ -9,10 +9,10 @@
 #  include <config.h>
 #endif
 
+#include <cstdlib>
 #include <string>
 
 #include <getopt.h>
-#include <stdlib.h>
 
 #include <gtk/gtk.h>
 

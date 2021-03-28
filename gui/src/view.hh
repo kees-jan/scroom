@@ -8,11 +8,10 @@
 #pragma once
 
 #include <cmath>
+#include <cstdlib>
 #include <map>
 #include <string>
 #include <vector>
-
-#include <stdlib.h>
 
 #include <gdk/gdk.h>
 #include <glade/glade.h>

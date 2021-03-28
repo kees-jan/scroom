@@ -7,9 +7,8 @@
 
 #include "transparentoverlaypresentation.hh"
 
+#include <cmath>
 #include <sstream>
-
-#include <math.h>
 
 #include <boost/assign.hpp>
 #include <boost/tuple/tuple_comparison.hpp>

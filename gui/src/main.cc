@@ -9,12 +9,12 @@
 #  include <config.h>
 #endif
 
+#include <cstdlib>
 #include <iostream>
 #include <list>
 #include <string>
 
 #include <getopt.h>
-#include <stdlib.h>
 
 #include <gtk/gtk.h>
 

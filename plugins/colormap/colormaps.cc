@@ -7,10 +7,11 @@
 
 #include "colormaps.hh"
 
+#include <cerrno>
+#include <cstdio>
+#include <cstring>
+
 #include <dirent.h>
-#include <errno.h>
-#include <stdio.h>
-#include <string.h>
 
 #include <gio/gio.h>
 
