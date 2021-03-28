@@ -55,9 +55,9 @@ namespace Scroom
       public:
         void add(const Stuff& s) { l.push_back(s); }
 
-        void add(const StuffList l_) { this->l.insert(this->l.end(), l_.begin(), l_.end()); }
+        void add(const StuffList l_) { l.insert(l.end(), l_.begin(), l_.end()); }
 
-        void merge(StuffList& l_) { this->l.splice(this->l.end(), l_); }
+        void merge(StuffList& l_) { l.splice(l.end(), l_); }
 
         void merge(Ptr& rhs) { merge(rhs->l); }
 

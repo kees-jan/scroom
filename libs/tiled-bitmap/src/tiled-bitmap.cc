@@ -154,7 +154,7 @@ void TiledBitmap::connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, 
       {
         LayerCoordinator::Ptr lc = LayerCoordinator::create(z, prevLo);
         coordinators_.push_back(lc);
-        this->coordinators.push_back(lc);
+        coordinators.push_back(lc);
       }
     }
 
@@ -200,7 +200,7 @@ void TiledBitmap::redraw(ViewInterface::Ptr const&               vi,
                          Scroom::Utils::Rectangle<double> const& presentationArea,
                          int                                     zoom)
 {
-  TiledBitmapViewData::Ptr viewData_                       = this->viewData[vi];
+  TiledBitmapViewData::Ptr viewData_                       = viewData[vi];
   auto                     scaledRequestedPresentationArea = presentationArea;
 
   unsigned int layerNr = 0;

@@ -44,7 +44,7 @@ Scroom::Detail::ThreadPool::FunctionMultiplier::FunctionMultiplier(boost::functi
 
 Scroom::Detail::ThreadPool::FunctionMultiplier& Scroom::Detail::ThreadPool::FunctionMultiplier::operator*(unsigned int i_)
 {
-  this->i *= i_;
+  i *= i_;
   return *this;
 }
 

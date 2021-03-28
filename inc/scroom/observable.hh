@@ -140,16 +140,16 @@ namespace Scroom
     template <typename T>
     void Detail::Registration<T>::set(boost::shared_ptr<T> observer_)
     {
-      this->o        = observer_;
-      this->observer = observer_;
+      o        = observer_;
+      observer = observer_;
     }
 
     template <typename T>
     void Detail::Registration<T>::set(boost::weak_ptr<T> observer_)
     {
       // We don't want to store a "hard" reference, so field o is intentionally empty.
-      this->o.reset();
-      this->observer = observer_;
+      o.reset();
+      observer = observer_;
     }
 
     template <typename T>

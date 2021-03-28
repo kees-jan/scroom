@@ -434,8 +434,8 @@ bool QueueJumper::setWork(boost::function<void()> const& fn_)
   if(inQueue)
   {
     // Our turn hasn't passed yet. Accept work.
-    this->fn = fn_;
-    isSet    = true;
+    fn    = fn_;
+    isSet = true;
   }
   else
   {

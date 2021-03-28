@@ -202,8 +202,8 @@ namespace Scroom
     void ProgressInterfaceMultiplexer::ChildData::setProgress(State state_, double progress_)
     {
       boost::mutex::scoped_lock l(mut);
-      this->state    = state_;
-      this->progress = progress_;
+      state    = state_;
+      progress = progress_;
     }
 
     void ProgressInterfaceMultiplexer::ChildData::clearFinished()

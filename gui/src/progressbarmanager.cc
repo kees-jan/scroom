@@ -123,7 +123,7 @@ ProgressBarManager::~ProgressBarManager() { stopWaiting(); }
 void ProgressBarManager::setProgressBar(GtkProgressBar* progressBar_)
 {
   stopWaiting();
-  this->progressBar = progressBar_;
+  progressBar = progressBar_;
 }
 
 void ProgressBarManager::startWaiting()

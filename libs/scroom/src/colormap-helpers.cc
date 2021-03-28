@@ -19,9 +19,9 @@ ColormapHelperBase::ColormapHelperBase(Colormap::Ptr const& colormap_)
   , originalColormap(colormap_)
 {}
 
-void ColormapHelperBase::setColormap(Colormap::Ptr colormap_) { this->colormap = colormap_; }
+void ColormapHelperBase::setColormap(Colormap::Ptr colormap_) { colormap = colormap_; }
 
-void ColormapHelperBase::setOriginalColormap(Colormap::Ptr colormap_) { this->originalColormap = colormap_; }
+void ColormapHelperBase::setOriginalColormap(Colormap::Ptr colormap_) { originalColormap = colormap_; }
 
 Colormap::Ptr ColormapHelperBase::getOriginalColormap() { return originalColormap; }
 

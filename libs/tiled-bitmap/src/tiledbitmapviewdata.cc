@@ -41,20 +41,19 @@ void TiledBitmapViewData::setNeededTiles(Layer::Ptr const&    l,
 {
   boost::unique_lock<boost::mutex> lock(mut);
 
-  if(this->layer == l && this->imin <= imin_ && this->imax >= imax_ && this->jmin <= jmin_ && this->jmax >= jmax_
-     && this->zoom == zoom_)
+  if(layer == l && imin <= imin_ && imax >= imax_ && jmin <= jmin_ && jmax >= jmax_ && zoom == zoom_)
   {
     // Nothing to do...
   }
   else
   {
-    this->layer           = l;
-    this->imin            = imin_;
-    this->imax            = imax_;
-    this->jmin            = jmin_;
-    this->jmax            = jmax_;
-    this->zoom            = zoom_;
-    this->layerOperations = layerOperations_;
+    layer           = l;
+    imin            = imin_;
+    imax            = imax_;
+    jmin            = jmin_;
+    jmax            = jmax_;
+    zoom            = zoom_;
+    layerOperations = layerOperations_;
 
     // printf("SetNeededTiles: layer=%d, %d<=i<=%d, %d<=j<=%d, zoom=%d\n",
     //        l->getDepth(), imin, imax, jmin, jmax, zoom);

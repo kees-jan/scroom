@@ -928,14 +928,14 @@ void View::updateNewWindowMenu()
 void View::updateXY(int x_, int y_, LocationChangeCause source)
 {
   bool changed = false;
-  if(this->x != x_)
+  if(x != x_)
   {
-    this->x = x_;
+    x       = x_;
     changed = true;
   }
-  if(this->y != y_)
+  if(y != y_)
   {
-    this->y = y_;
+    y       = y_;
     changed = true;
   }
 

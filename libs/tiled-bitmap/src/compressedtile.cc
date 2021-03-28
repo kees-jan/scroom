@@ -214,7 +214,7 @@ void CompressedTile::observerAdded(TileInitialisationObserver::Ptr const& observ
 void CompressedTile::observerAdded(TileLoadingObserver::Ptr const& observer, Scroom::Bookkeeping::Token const& token)
 {
   ConstTile::Ptr         result = constTile.lock();
-  ThreadPool::Queue::Ptr queue_ = this->queue.lock();
+  ThreadPool::Queue::Ptr queue_ = queue.lock();
 
   if(!result)
   {
@@ -237,8 +237,8 @@ void CompressedTile::observerAdded(TileLoadingObserver::Ptr const& observer, Scr
       // Start an asynchronous load
       if(!queue_)
       {
-        queue_      = ThreadPool::Queue::create();
-        this->queue = queue_;
+        queue_ = ThreadPool::Queue::create();
+        queue  = queue_;
       }
       CpuBound()->schedule(boost::bind(&CompressedTile::do_load, this), LOAD_PRIO, queue_);
       state = TSI_LOADING_ASYNCHRONOUSLY;
