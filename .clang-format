@@ -58,7 +58,7 @@ ForEachMacros:
 IncludeCategories:
 - Regex: ^<scroom/
   Priority: 25
-- Regex: ".*\\.hh"
+- Regex: \"
   Priority: 26
 - Regex: ^<gdk/
   Priority: 13
@@ -79,11 +79,11 @@ IncludeCategories:
 - Regex: <windows\.h>
   Priority: 3
   SortPriority: 2
-- Regex: <[[:alnum:]_-]+\.h>
+- Regex: <[-[:alnum:]_/]+\.h>
   Priority: 3
-- Regex: <[[:alnum:]_-]+>
+- Regex: <[-[:alnum:]_/]+>
   Priority: 1
-IncludeIsMainRegex: (Test)?$
+IncludeIsMainRegex: (_?[Tt]est)?$
 IndentCaseLabels: false
 IndentWidth: 2
 IndentWrappedFunctionNames: true

@@ -12,10 +12,9 @@
 #include <cstring>
 
 #include <dirent.h>
+#include <sys/types.h>
 
 #include <gio/gio.h>
-
-#include <sys/types.h>
 
 #ifdef _WIN32
 #  include <Windows.h>

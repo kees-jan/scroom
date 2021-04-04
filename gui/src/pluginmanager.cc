@@ -11,13 +11,13 @@
 #include <cstdlib>
 #include <string>
 
+#include <sys/types.h>
+
 #include <boost/filesystem.hpp>
 
 #include <scroom/plugininformationinterface.hh>
 
 #include "callbacks.hh"
-
-#include <sys/types.h>
 
 #ifdef _WIN32
 #  include <boost/dll.hpp>
