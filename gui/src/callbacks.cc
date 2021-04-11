@@ -124,8 +124,9 @@ void on_open_activate(GtkMenuItem*, gpointer user_data)
                                        NULL);
   gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(dialog), currentFolder.c_str());
 
-  const auto  pm             = PluginManager::getInstance();
-  const auto& openInterfaces = pm->getOpenInterfaces();
+  const auto  pm                         = PluginManager::getInstance();
+  const auto& openInterfaces             = pm->getOpenInterfaces();
+  const auto& openPresentationInterfaces = pm->getOpenPresentationInterfaces();
 
   // Store all the file filters so that we can create a custom file filter that allows any supported type (by default)
   std::vector<GtkFileFilter*> filters;
@@ -139,6 +140,14 @@ void on_open_activate(GtkMenuItem*, gpointer user_data)
   gtk_file_filter_add_custom(allSupportedFileTypesFilter, filterFlags, &combinedFileFilter, &filters, nullptr);
   gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dialog), allSupportedFileTypesFilter);
 
+  for(auto const& cur: openPresentationInterfaces)
+  {
+    for(auto const& f: cur.first->getFilters())
+    {
+      gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dialog), f);
+      filters.push_back(f);
+    }
+  }
   for(auto const& cur: openInterfaces)
   {
     for(auto const& f: cur.first->getFilters())
