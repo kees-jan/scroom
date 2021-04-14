@@ -99,8 +99,8 @@ namespace Scroom
         {
           // Fix aspect ratio only
           float base  = std::max(resolutionX, resolutionY);
-          resolutionX = resolutionX / base;
-          resolutionY = resolutionY / base;
+          resolutionX = base / resolutionX;
+          resolutionY = base / resolutionY;
         }
         return Scroom::Utils::make_point<double>(resolutionX, resolutionY);
       }
@@ -171,7 +171,7 @@ namespace Scroom
         auto aspectRatio = getAspectRatio(tif);
         if(aspectRatio)
         {
-          printf("This bitmap has size %u*%u, aspect ratio %.1f*%.1f\n", width, height, 1 / aspectRatio->x, 1 / aspectRatio->y);
+          printf("This bitmap has size %u*%u, aspect ratio %.1f*%.1f\n", width, height, aspectRatio->x, aspectRatio->y);
         }
         else
         {
