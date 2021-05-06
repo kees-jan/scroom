@@ -163,7 +163,7 @@ void TiledBitmapViewData::tileLoaded(ConstTile::Ptr tile)
     // called or not, so we have no choice but to invalidate on
     // another thread.
     Scroom::GtkHelpers::Wrapper w = Scroom::GtkHelpers::wrap(boost::bind(invalidate_view, viewInterface));
-    gtk_idle_add(w.f, w.data);
+    gdk_threads_add_idle(w.f, w.data);
     redrawPending = true;
   }
 }

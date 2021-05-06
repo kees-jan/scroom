@@ -20,7 +20,7 @@ namespace Scroom
     class Wrapper
     {
     public:
-      GtkFunction f;
+      GSourceFunc f;
       gpointer    data;
 
     public:

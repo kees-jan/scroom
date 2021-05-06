@@ -35,7 +35,7 @@ BOOST_AUTO_TEST_SUITE(Gtk_Helpers_Tests)
 BOOST_AUTO_TEST_CASE(function_returning_bool)
 {
   bool        in   = true;
-  GtkFunction f    = nullptr;
+  GSourceFunc f    = nullptr;
   gpointer    data = nullptr;
   B::WeakPtr  wb;
 
