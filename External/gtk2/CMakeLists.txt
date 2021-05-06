@@ -4,7 +4,7 @@ pkg_check_modules(
   gtk
   REQUIRED
   IMPORTED_TARGET
-  gtk+-2.0)
+  gtk+-3.0)
 pkg_check_modules(
   cairo
   REQUIRED
