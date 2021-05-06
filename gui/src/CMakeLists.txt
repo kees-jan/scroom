@@ -1,15 +1,17 @@
+project(scroom LANGUAGES CXX C)
+
 add_executable(scroom WIN32)
 target_sources(
   scroom
   PRIVATE main.cc
           callbacks.cc
           callbacks.hh
+          gtkruler.c
+          gtkruler.h
           loader.cc
           loader.hh
           pluginmanager.cc
           pluginmanager.hh
-          gtkruler.c
-          gtkruler.h
           progressbarmanager.cc
           progressbarmanager.hh
           sidebarmanager.cc

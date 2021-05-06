@@ -160,9 +160,9 @@ void TransparentOverlayViewInfo::redraw(cairo_t* cr, Scroom::Utils::Rectangle<do
 {
   using Scroom::Bitmap::BitmapSurface;
 
-  GdkRectangle presentationArea = pa.toGdkRectangle();
+  cairo_rectangle_int_t presentationArea = pa.toGdkRectangle();
 
-  GdkRectangle viewArea;
+  cairo_rectangle_int_t viewArea;
   viewArea.x = 0;
   viewArea.y = 0;
 

@@ -139,7 +139,7 @@ void View::redraw(cairo_t* cr)
 {
   if(presentation)
   {
-    GdkRectangle rect;
+    cairo_rectangle_int_t rect;
     rect.x = x;
     rect.y = y;
     if(zoom >= 0)

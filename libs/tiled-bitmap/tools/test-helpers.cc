@@ -76,7 +76,7 @@ void TestData::redraw(cairo_t* cr)
 {
   if(tbi)
   {
-    GdkRectangle rect;
+    cairo_rectangle_int_t rect;
     rect.x = 0;
     rect.y = 0;
     if(zoom >= 0)
