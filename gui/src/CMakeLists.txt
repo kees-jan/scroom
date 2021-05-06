@@ -8,6 +8,8 @@ target_sources(
           loader.hh
           pluginmanager.cc
           pluginmanager.hh
+          gtkruler.c
+          gtkruler.h
           progressbarmanager.cc
           progressbarmanager.hh
           sidebarmanager.cc
@@ -31,7 +33,8 @@ target_link_libraries(
          Boost::system
          Boost::filesystem
          util
-         tiledbitmap)
+         tiledbitmap
+         m)
 target_compile_definitions(scroom PRIVATE PLUGIN_DIR="${PLUGIN_INSTALL_LOCATION_ABSOLUTE}"
                                           TOP_SRCDIR="${Scroom_SOURCE_DIR}" PACKAGE_DATA_DIR="${PKG_DIR_ABSOLUTE}")
 

@@ -445,9 +445,9 @@ void View::on_presentation_destroyed() { updateNewWindowMenu(); }
 void View::on_configure()
 {
   // There should be a simpler way to do this...
-  GdkRegion*   r = gdk_drawable_get_visible_region(GDK_DRAWABLE(gtk_widget_get_window(drawingArea)));
-  GdkRectangle rect;
-  gdk_region_get_clipbox(r, &rect);
+  cairo_region_t*   r = gdk_window_get_visible_region(gtk_widget_get_window(drawingArea));
+  cairo_rectangle_int_t rect;
+  cairo_region_get_extents(r, &rect);
 
   int newWidth  = rect.width;
   int newHeight = rect.height;
@@ -457,7 +457,7 @@ void View::on_configure()
     on_window_size_changed(newWidth, newHeight);
   }
 
-  gdk_region_destroy(r);
+  cairo_region_destroy(r);
 }
 
 void View::on_window_size_changed(int newWidth, int newHeight)
