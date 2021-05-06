@@ -23,14 +23,14 @@ static GtkWidget*                    drawingArea = nullptr;
 static gboolean on_configure(GtkWidget*, GdkEventConfigure*, gpointer)
 {
   // There should be a simpler way to do this...
-  GdkRegion*   r = gdk_drawable_get_visible_region(GDK_DRAWABLE(gtk_widget_get_window(drawingArea)));
-  GdkRectangle rect;
-  gdk_region_get_clipbox(r, &rect);
+  cairo_region_t*   r = gdk_window_get_visible_region(gtk_widget_get_window(drawingArea));
+  cairo_rectangle_int_t rect;
+  cairo_region_get_extents(r, &rect);
 
   drawingAreaWidth  = rect.width;
   drawingAreaHeight = rect.height;
 
-  gdk_region_destroy(r);
+  cairo_region_destroy(r);
 
   return FALSE;
 }
@@ -39,7 +39,7 @@ static void on_hide(GtkWidget*, gpointer) { gtk_main_quit(); }
 
 static gboolean on_expose(GtkWidget* widget, GdkEventExpose*, gpointer)
 {
-  cairo_t* cr = gdk_cairo_create(widget->window);
+  cairo_t* cr = gdk_cairo_create(gtk_widget_get_window(widget));
 
   if(testData)
   {
@@ -87,7 +87,7 @@ GtkWidget* create_window()
   return window;
 }
 
-void init() { gtk_idle_add(on_idle, nullptr); }
+void init() { gdk_threads_add_idle(on_idle, nullptr); }
 
 void invalidate()
 {

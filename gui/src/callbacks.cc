@@ -246,7 +246,7 @@ gboolean on_drawingarea_expose_event(GtkWidget* widget, GdkEventExpose*, gpointe
 {
   // printf("expose\n");
 
-  cairo_t* cr   = gdk_cairo_create(widget->window);
+  cairo_t* cr   = gdk_cairo_create(gtk_widget_get_window(widget));
   View*    view = static_cast<View*>(user_data);
   view->redraw(cr);
 
@@ -484,7 +484,7 @@ void find_or_create_scroom(PresentationInterface::Ptr presentation)
 void onDragDataReceived(GtkWidget*, GdkDragContext*, int, int, GtkSelectionData* seldata, guint, guint, gpointer)
 {
   printf("Dropping file(s) onto Scroom:\n");
-  gchar** uris = g_uri_list_extract_uris(reinterpret_cast<const gchar*>(seldata->data));
+  gchar** uris = g_uri_list_extract_uris(reinterpret_cast<const gchar*>(gtk_selection_data_get_data(seldata)));
   for(gchar** uri = uris; *uri != nullptr; uri++)
   {
     printf("\t%s\n", *uri);

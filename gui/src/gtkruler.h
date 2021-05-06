@@ -31,6 +31,9 @@
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
 #include <gtk/gtkwidget.h>
+#include <math.h>
+#include <string.h>
+
 
 
 #ifdef __cplusplus

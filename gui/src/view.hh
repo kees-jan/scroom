@@ -25,7 +25,6 @@
 #include <scroom/utilities.hh>
 #include <scroom/viewinterface.hh>
 #include "gtkruler.h"
-#include "gtkruler.c"
 #include "progressbarmanager.hh"
 #include "sidebarmanager.hh"
 
