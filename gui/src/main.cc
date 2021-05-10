@@ -63,7 +63,7 @@ int main(int argc, char* argv[])
   std::string                                   me = argv[0];
   std::map<std::string, std::list<std::string>> filenames;
 
-  gtk_init(nullptr, nullptr);
+//  gtk_init(nullptr, nullptr);
 
 #ifdef HAVE_BOOST_PROGRAM_OPTIONS_HPP
   po::options_description desc("Available options");

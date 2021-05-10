@@ -28,12 +28,12 @@ namespace
     {
       Color    col   = c->getMonochromeColor();
       GdkColor bgCol = col.getGdkColor();
-      gtk_widget_modify_bg(w, GTK_STATE_ACTIVE, &bgCol);
+      gtk_widget_override_background_color(w, static_cast<GtkStateFlags>(GTK_STATE_ACTIVE), reinterpret_cast<const GdkRGBA*>(&bgCol));
 
       GdkColor   fgCol = col.getContrastingBlackOrWhite().getGdkColor();
       GtkWidget* label = gtk_bin_get_child(GTK_BIN(w));
 
-      gtk_widget_modify_fg(label, GTK_STATE_ACTIVE, &fgCol);
+      gtk_widget_override_color(label, static_cast<GtkStateFlags>(GTK_STATE_ACTIVE), reinterpret_cast<const GdkRGBA*>(&fgCol));
     }
   }
 } // namespace
