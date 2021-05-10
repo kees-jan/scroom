@@ -117,9 +117,9 @@ void on_open_activate(GtkMenuItem*, gpointer user_data)
   dialog = gtk_file_chooser_dialog_new("Open File",
                                        GTK_WINDOW(scroom),
                                        GTK_FILE_CHOOSER_ACTION_OPEN,
-                                       GTK_STOCK_CANCEL,
+                                       ("_Cancel"),
                                        GTK_RESPONSE_CANCEL,
-                                       GTK_STOCK_OPEN,
+                                       ("_Open"),
                                        GTK_RESPONSE_ACCEPT,
                                        NULL);
   gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(dialog), currentFolder.c_str());

@@ -45,8 +45,8 @@ private:
   int                                                drawingAreaWidth;
   int                                                drawingAreaHeight;
   Scroom::Utils::Rectangle<double>                   presentationRect;
-  GtkVScrollbar*                                     vscrollbar;
-  GtkHScrollbar*                                     hscrollbar;
+  GtkScrollbar*                                      vscrollbar;
+  GtkScrollbar*                                      hscrollbar;
   GtkAdjustment*                                     vscrollbaradjustment;
   GtkAdjustment*                                     hscrollbaradjustment;
   GtkRuler*                                          hruler;

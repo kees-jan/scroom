@@ -1,4 +1,7 @@
-project(scroom LANGUAGES CXX C)
+#project(scroom LANGUAGES CXX C)
+
+#set(CMAKE_CXX_FLAGS "-DGTK_DISABLE_SINGLE_INCLUDES")
+#set(CMAKE_CXX_FLAGS "-DGKD_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED")
 
 add_executable(scroom WIN32)
 target_sources(

@@ -78,8 +78,8 @@ View::View(GladeXML* scroomXml_)
   PluginManager::Ptr pluginManager = PluginManager::getInstance();
   window                           = GTK_WINDOW(glade_xml_get_widget(scroomXml_, "scroom"));
   drawingArea                      = glade_xml_get_widget(scroomXml_, "drawingarea");
-  vscrollbar                       = GTK_VSCROLLBAR(glade_xml_get_widget(scroomXml_, "vscrollbar"));
-  hscrollbar                       = GTK_HSCROLLBAR(glade_xml_get_widget(scroomXml_, "hscrollbar"));
+  vscrollbar                       = GTK_SCROLLBAR(glade_xml_get_widget(scroomXml_, "vscrollbar"));
+  hscrollbar                       = GTK_SCROLLBAR(glade_xml_get_widget(scroomXml_, "hscrollbar"));
   vscrollbaradjustment             = gtk_range_get_adjustment(GTK_RANGE(vscrollbar));
   hscrollbaradjustment             = gtk_range_get_adjustment(GTK_RANGE(hscrollbar));
   vruler                           = GTK_RULER(glade_xml_get_widget(scroomXml_, "vruler"));
