@@ -32,7 +32,6 @@ target_link_libraries(
   PRIVATE project_options project_warnings
   PUBLIC PkgConfig::gtk
          PkgConfig::cairo
-         PkgConfig::glade
          PkgConfig::gthread
          PkgConfig::gmodule
          Boost::system

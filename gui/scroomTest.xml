@@ -1,0 +1,503 @@
+<?xml version="1.0"?>
+<interface>
+  <object class="GtkAdjustment" id="adjustment1">
+    <property name="value">0</property>
+    <property name="lower">0</property>
+    <property name="upper">0</property>
+    <property name="step_increment">0</property>
+    <property name="page_increment">0</property>
+    <property name="page_size">0</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment2">
+    <property name="value">0</property>
+    <property name="lower">0</property>
+    <property name="upper">0</property>
+    <property name="step_increment">0</property>
+    <property name="page_increment">0</property>
+    <property name="page_size">0</property>
+  </object>
+  <object class="GtkUIManager" id="uimanager1">
+    <child>
+      <object class="GtkActionGroup" id="actiongroup1">
+        <child>
+          <object class="GtkAction" id="file_menu_item">
+            <property name="label" translatable="yes">_File</property>
+            <property name="name">file_menu_item</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="new">
+            <property name="stock_id">gtk-new</property>
+            <property name="label">_New</property>
+            <property name="name">new</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="open">
+            <property name="stock_id">gtk-open</property>
+            <property name="name">open</property>
+            <signal name="activate" handler="on_open_activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="newWindow">
+            <property name="stock_id">gtk-new</property>
+            <property name="label" translatable="yes">New _Window</property>
+            <property name="name">newWindow</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="open-with">
+            <property name="stock_id">gtk-open</property>
+            <property name="label" translatable="yes">Open with</property>
+            <property name="name">open-with</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="save">
+            <property name="stock_id">gtk-save</property>
+            <property name="name">save</property>
+            <signal name="activate" handler="on_save_activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="save_as">
+            <property name="stock_id">gtk-save-as</property>
+            <property name="name">save_as</property>
+            <signal name="activate" handler="on_save_as_activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="close">
+            <property name="stock_id">gtk-close</property>
+            <property name="name">close</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="quit">
+            <property name="stock_id">gtk-quit</property>
+            <property name="name">quit</property>
+            <signal name="activate" handler="on_quit_activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="edit_menu_item">
+            <property name="label" translatable="yes">_Edit</property>
+            <property name="name">edit_menu_item</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="cut">
+            <property name="stock_id">gtk-cut</property>
+            <property name="name">cut</property>
+            <signal name="activate" handler="on_cut_activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="copy">
+            <property name="stock_id">gtk-copy</property>
+            <property name="name">copy</property>
+            <signal name="activate" handler="on_copy_activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="paste">
+            <property name="stock_id">gtk-paste</property>
+            <property name="name">paste</property>
+            <signal name="activate" handler="on_paste_activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="delete">
+            <property name="stock_id">gtk-delete</property>
+            <property name="name">delete</property>
+            <signal name="activate" handler="on_delete_activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="view_menu_item">
+            <property name="label" translatable="yes">_View</property>
+            <property name="name">view_menu_item</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkToggleAction" id="fullscreen_menu_item">
+            <property name="label" translatable="yes">_Full Screen</property>
+            <property name="active">False</property>
+            <property name="name">fullscreen_menu_item</property>
+          </object>
+          <accelerator key="F11" modifiers=""/>
+        </child>
+        <child>
+          <object class="GtkAction" id="help_menu_item">
+            <property name="label" translatable="yes">_Help</property>
+            <property name="name">help_menu_item</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="about">
+            <property name="label" translatable="yes">_About</property>
+            <property name="name">about</property>
+            <signal name="activate" handler="on_about_activate"/>
+          </object>
+        </child>
+      </object>
+    </child>
+    <ui>
+      <menubar name="menubar">
+        <menu action="file_menu_item">
+          <menuitem action="new"/>
+          <menuitem action="open"/>
+          <menuitem action="newWindow"/>
+          <menuitem action="open-with"/>
+          <menuitem action="save"/>
+          <menuitem action="save_as"/>
+          <menuitem action="close"/>
+          <separator/>
+          <menuitem action="quit"/>
+        </menu>
+        <menu action="edit_menu_item">
+          <menuitem action="cut"/>
+          <menuitem action="copy"/>
+          <menuitem action="paste"/>
+          <menuitem action="delete"/>
+        </menu>
+        <menu action="view_menu_item">
+          <menuitem action="fullscreen_menu_item"/>
+        </menu>
+        <menu action="help_menu_item">
+          <menuitem action="about"/>
+        </menu>
+      </menubar>
+    </ui>
+  </object>
+  <!-- interface-requires gtk+ 2.16 -->
+  <!-- interface-naming-policy toplevel-contextual -->
+  <object class="GtkAboutDialog" id="aboutDialog">
+    <property name="border_width">5</property>
+    <property name="destroy_with_parent">True</property>
+    <property name="type_hint">normal</property>
+    <property name="copyright" translatable="yes">(C)2009-2021 Kees-Jan Dijkzeul</property>
+    <property name="comments" translatable="yes">Utility to scroll &amp; zoom (large) data sets</property>
+    <property name="website">https://github.com/kees-jan/scroom/wiki</property>
+    <property name="website_label" translatable="yes">Visit the Scroom website</property>
+    <property name="license" translatable="yes">LGPL, v2</property>
+    <property name="authors">Kees-Jan Dijkzeul &lt;kees-jan@dijkzeul.eu&gt;
+Joost van Pinxten &lt;joost.vanpinxten@cpp.canon&gt;
+Sep group 2, Q4 2019-2020,
+  Department of Mathematics and Computer Science,
+  Eindhoven University of Technology
+
+Icon:
+Clker-Free-Vector-Images from Pixabay</property>
+    <property name="translator_credits" translatable="yes" comments="TRANSLATORS: Replace this string with your names, one name per line.">translator-credits</property>
+    <child internal-child="vbox">
+      <object class="GtkVBox" id="dialog-vbox1">
+        <child internal-child="action_area">
+          <object class="GtkHButtonBox" id="dialog-action_area1"/>
+          <packing>
+            <property name="expand">False</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkVBox" id="vbox1">
+    <property name="visible">True</property>
+    <child>
+      <object class="GtkMenuBar" id="menubar" constructor="uimanager1">
+        <property name="visible">True</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">False</property>
+        <property name="position">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkHBox" id="toolbar_area">
+        <property name="visible">True</property>
+        <property name="homogeneous">False</property>
+        <property name="spacing">0</property>
+        <child>
+          <object class="GtkToolbar" id="toolbar">
+            <property name="visible">True</property>
+            <property name="toolbar_style">both</property>
+            <child>
+              <object class="GtkToolItem" id="zoombox">
+                <property name="visible">True</property>
+                <child>
+                  <object class="GtkComboBox" id="zoomboxcombo">
+                    <property name="visible">True</property>
+                    <property name="add_tearoffs">True</property>
+                    <property name="tearoff_title">Zoom</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="x_label">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">_x</property>
+            <property name="use_underline">True</property>
+            <property name="use_markup">False</property>
+            <property name="justify">GTK_JUSTIFY_LEFT</property>
+            <property name="wrap">False</property>
+            <property name="selectable">False</property>
+            <property name="xalign">0.5</property>
+            <property name="yalign">0.5</property>
+            <property name="xpad">3</property>
+            <property name="ypad">0</property>
+            <property name="mnemonic_widget">x_textbox</property>
+            <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+            <property name="width_chars">-1</property>
+            <property name="single_line_mode">False</property>
+            <property name="angle">0</property>
+          </object>
+          <packing>
+            <property name="padding">0</property>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="x_textbox">
+            <property name="width_request">70</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="editable">True</property>
+            <property name="visibility">True</property>
+            <property name="max_length">0</property>
+            <property name="text" translatable="yes"/>
+            <property name="has_frame">True</property>
+            <property name="invisible_char">&#x25CF;</property>
+            <property name="activates_default">False</property>
+          </object>
+          <packing>
+            <property name="padding">0</property>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="y_label">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">_y</property>
+            <property name="use_underline">True</property>
+            <property name="use_markup">False</property>
+            <property name="justify">GTK_JUSTIFY_LEFT</property>
+            <property name="wrap">False</property>
+            <property name="selectable">False</property>
+            <property name="xalign">0.5</property>
+            <property name="yalign">0.5</property>
+            <property name="xpad">3</property>
+            <property name="ypad">0</property>
+            <property name="mnemonic_widget">y_textbox</property>
+            <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+            <property name="width_chars">-1</property>
+            <property name="single_line_mode">False</property>
+            <property name="angle">0</property>
+          </object>
+          <packing>
+            <property name="padding">0</property>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="y_textbox">
+            <property name="width_request">70</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="editable">True</property>
+            <property name="visibility">True</property>
+            <property name="max_length">0</property>
+            <property name="text" translatable="yes"/>
+            <property name="has_frame">True</property>
+            <property name="invisible_char">&#x25CF;</property>
+            <property name="activates_default">False</property>
+          </object>
+          <packing>
+            <property name="padding">0</property>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="padding">0</property>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkHPaned" id="hpaned1">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <child>
+          <object class="GtkTable" id="table1">
+            <property name="visible">True</property>
+            <property name="n_rows">3</property>
+            <property name="n_columns">3</property>
+            <child>
+              <object class="GtkHScrollbar" id="hscrollbar">
+                <property name="visible">True</property>
+                <property name="adjustment">adjustment1</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">2</property>
+                <property name="bottom_attach">3</property>
+                <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+                <property name="y_options"/>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkVScrollbar" id="vscrollbar">
+                <property name="visible">True</property>
+                <property name="adjustment">adjustment2</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="right_attach">3</property>
+                <property name="top_attach">1</property>
+                <property name="bottom_attach">2</property>
+                <property name="x_options"/>
+                <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkDrawingArea" id="drawingarea">
+                <property name="visible">True</property>
+                <property name="events">GDK_EXPOSURE_MASK | GDK_POINTER_MOTION_MASK | GDK_BUTTON_MOTION_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_SCROLL_MASK</property>
+                <signal name="expose_event" handler="on_drawingarea_expose_event"/>
+                <signal name="configure_event" handler="on_drawingarea_configure_event"/>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">1</property>
+                <property name="bottom_attach">2</property>
+                <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+                <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkHRuler" id="hruler">
+                <property name="visible">True</property>
+                <property name="upper">10</property>
+                <property name="position">5</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="x_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+                <property name="y_options"/>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkVRuler" id="vruler">
+                <property name="visible">True</property>
+                <property name="upper">10</property>
+                <property name="position">5</property>
+              </object>
+              <packing>
+                <property name="top_attach">1</property>
+                <property name="bottom_attach">2</property>
+                <property name="x_options"/>
+                <property name="y_options">GTK_EXPAND | GTK_SHRINK | GTK_FILL</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="resize">True</property>
+            <property name="shrink">True</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow" id="panelWindow">
+            <property name="width_request">25</property>
+            <property name="can_focus">True</property>
+            <property name="hscrollbar_policy">never</property>
+            <property name="vscrollbar_policy">automatic</property>
+            <child>
+              <object class="GtkViewport" id="viewport1">
+                <property name="visible">True</property>
+                <property name="resize_mode">queue</property>
+                <child>
+                  <object class="GtkVBox" id="panel">
+                    <property name="visible">True</property>
+                    <child>
+                      <placeholder/>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="resize">True</property>
+            <property name="shrink">True</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="position">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkHBox" id="status_area">
+        <property name="visible">True</property>
+        <child>
+          <object class="GtkProgressBar" id="progressbar">
+            <property name="visible">True</property>
+            <property name="pulse_step">0.10000000149</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkStatusbar" id="statusbar">
+            <property name="visible">True</property>
+          </object>
+          <packing>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">False</property>
+        <property name="position">3</property>
+      </packing>
+    </child>
+  </object>
+</interface>

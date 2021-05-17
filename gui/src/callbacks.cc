@@ -24,7 +24,6 @@
 #include <boost/format.hpp>
 
 #include <gdk/gdk.h>
-#include <glade/glade.h>
 #include <gtk/gtk.h>
 
 #include <cairo.h>
@@ -48,7 +47,8 @@ static const std::string SCROOM_DEV_MODE = "SCROOM_DEV_MODE";
 const std::string        REGULAR_FILES   = "Regular files";
 
 static std::string xmlFileName;
-static GladeXML*   aboutDialogXml = nullptr;
+static GtkBuilder*   aboutDialogXml = nullptr;
+GError* error = NULL;
 static GtkWidget*  aboutDialog    = nullptr;
 
 using Views = std::map<View::Ptr, Scroom::Bookkeeping::Token>;
@@ -430,7 +430,7 @@ void on_scroom_bootstrap(const FileNameMap& newFilenames)
 
   if(devMode)
   {
-    xmlFileName = TOP_SRCDIR "/gui/scroom.glade";
+    xmlFileName = TOP_SRCDIR "/gui/scroomTest.xml";
   }
   else
   {
@@ -438,15 +438,22 @@ void on_scroom_bootstrap(const FileNameMap& newFilenames)
     // We want to keep everything portable on windows so we look for the .glade file in the same directory as the .exe
     xmlFileName = (boost::dll::program_location().parent_path() / "scroom.glade").generic_string();
 #else
-    xmlFileName = PACKAGE_DATA_DIR "/scroom.glade";
+    xmlFileName = PACKAGE_DATA_DIR "/scroomTest.xml";
 #endif
   }
 
 
-  aboutDialogXml = glade_xml_new(xmlFileName.c_str(), "aboutDialog", nullptr);
+  aboutDialogXml = gtk_builder_new_from_file(xmlFileName.c_str());
+
+  if (!gtk_builder_add_from_file(aboutDialogXml, xmlFileName.c_str(), &error))
+  {
+    g_warning("Couldn't load builder file: %s", error->message);
+    g_error_free(error);
+  }
+
   if(aboutDialogXml != nullptr)
   {
-    aboutDialog = glade_xml_get_widget(aboutDialogXml, "aboutDialog");
+    aboutDialog = GTK_WIDGET(gtk_builder_get_object(aboutDialogXml, "aboutDialog"));
     gtk_about_dialog_set_program_name(GTK_ABOUT_DIALOG(aboutDialog), "Scroom");
     gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(aboutDialog), PACKAGE_VERSION);
 #ifdef _WIN32
@@ -517,7 +524,13 @@ void onDragDataReceived(GtkWidget*, GdkDragContext*, int, int, GtkSelectionData*
 
 void create_scroom(PresentationInterface::Ptr presentation)
 {
-  GladeXML* xml = glade_xml_new(xmlFileName.c_str(), "scroom", nullptr);
+  GtkBuilder* xml = gtk_builder_new_from_file(xmlFileName.c_str());
+
+  if (!gtk_builder_add_from_file(xml, xmlFileName.c_str(), &error))
+  {
+    g_warning("Couldn't load builder file: %s", error->message);
+    g_error_free(error);
+  }
 
   if(xml == nullptr)
   {
@@ -528,21 +541,21 @@ void create_scroom(PresentationInterface::Ptr presentation)
   View::Ptr view = View::create(xml, presentation);
   on_view_created(view);
 
-  GtkWidget* scroom = glade_xml_get_widget(xml, "scroom");
+  GtkWidget* scroom = GTK_WIDGET(gtk_builder_get_object(xml, "scroom"));
   // GtkWidget* newMenuItem = glade_xml_get_widget(xml, "new");
-  GtkWidget*     openMenuItem         = glade_xml_get_widget(xml, "open");
-  GtkWidget*     closeMenuItem        = glade_xml_get_widget(xml, "close");
-  GtkWidget*     quitMenuItem         = glade_xml_get_widget(xml, "quit");
-  GtkWidget*     fullScreenMenuItem   = glade_xml_get_widget(xml, "fullscreen_menu_item");
-  GtkWidget*     aboutMenuItem        = glade_xml_get_widget(xml, "about");
-  GtkWidget*     drawingArea          = glade_xml_get_widget(xml, "drawingarea");
-  GtkWidget*     zoomBox              = glade_xml_get_widget(xml, "zoomboxcombo");
-  GtkWidget*     vscrollbar           = glade_xml_get_widget(xml, "vscrollbar");
-  GtkWidget*     hscrollbar           = glade_xml_get_widget(xml, "hscrollbar");
+  GtkWidget*     openMenuItem         = GTK_WIDGET(gtk_builder_get_object(xml, "open"));
+  GtkWidget*     closeMenuItem        = GTK_WIDGET(gtk_builder_get_object(xml, "close"));
+  GtkWidget*     quitMenuItem         = GTK_WIDGET(gtk_builder_get_object(xml, "quit"));
+  GtkWidget*     fullScreenMenuItem   = GTK_WIDGET(gtk_builder_get_object(xml, "fullscreen_menu_item"));
+  GtkWidget*     aboutMenuItem        = GTK_WIDGET(gtk_builder_get_object(xml, "about"));
+  GtkWidget*     drawingArea          = GTK_WIDGET(gtk_builder_get_object(xml, "drawingarea"));
+  GtkWidget*     zoomBox              = GTK_WIDGET(gtk_builder_get_object(xml, "zoomboxcombo"));
+  GtkWidget*     vscrollbar           = GTK_WIDGET(gtk_builder_get_object(xml, "vscrollbar"));
+  GtkWidget*     hscrollbar           = GTK_WIDGET(gtk_builder_get_object(xml, "hscrollbar"));
   GtkAdjustment* vscrollbaradjustment = gtk_range_get_adjustment(GTK_RANGE(vscrollbar));
   GtkAdjustment* hscrollbaradjustment = gtk_range_get_adjustment(GTK_RANGE(hscrollbar));
-  GtkEditable*   xTextBox             = GTK_EDITABLE(glade_xml_get_widget(xml, "x_textbox"));
-  GtkEditable*   yTextBox             = GTK_EDITABLE(glade_xml_get_widget(xml, "y_textbox"));
+  GtkEditable*   xTextBox             = GTK_EDITABLE(GTK_WIDGET(gtk_builder_get_object(xml, "x_textbox")));
+  GtkEditable*   yTextBox             = GTK_EDITABLE(GTK_WIDGET(gtk_builder_get_object(xml, "y_textbox")));
 
   g_signal_connect(static_cast<gpointer>(scroom), "hide", G_CALLBACK(on_scroom_hide), view.get());
   g_signal_connect(static_cast<gpointer>(closeMenuItem), "activate", G_CALLBACK(on_close_activate), view.get());
