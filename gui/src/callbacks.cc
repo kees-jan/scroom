@@ -430,7 +430,7 @@ void on_scroom_bootstrap(const FileNameMap& newFilenames)
 
   if(devMode)
   {
-    xmlFileName = TOP_SRCDIR "/gui/scroomTest.xml";
+    xmlFileName = TOP_SRCDIR "/gui/scroomBeast.glade";
   }
   else
   {
@@ -438,7 +438,7 @@ void on_scroom_bootstrap(const FileNameMap& newFilenames)
     // We want to keep everything portable on windows so we look for the .glade file in the same directory as the .exe
     xmlFileName = (boost::dll::program_location().parent_path() / "scroom.glade").generic_string();
 #else
-    xmlFileName = PACKAGE_DATA_DIR "/scroomTest.xml";
+    xmlFileName = PACKAGE_DATA_DIR "/scroomBeast.glade";
 #endif
   }
 
@@ -582,7 +582,7 @@ void create_scroom(PresentationInterface::Ptr presentation)
   //                   G_CALLBACK (on_delete_activate),
   //                   view.get());
   g_signal_connect(static_cast<gpointer>(aboutMenuItem), "activate", G_CALLBACK(on_about_activate), view.get());
-  g_signal_connect(static_cast<gpointer>(drawingArea), "expose_event", G_CALLBACK(on_drawingarea_expose_event), view.get());
+  g_signal_connect(static_cast<gpointer>(drawingArea), "draw", G_CALLBACK(on_drawingarea_expose_event), view.get());
   g_signal_connect(static_cast<gpointer>(drawingArea), "configure_event", G_CALLBACK(on_drawingarea_configure_event), view.get());
   g_signal_connect(static_cast<gpointer>(drawingArea), "button-press-event", G_CALLBACK(on_button_press_event), view.get());
   g_signal_connect(static_cast<gpointer>(drawingArea), "button-release-event", G_CALLBACK(on_button_release_event), view.get());

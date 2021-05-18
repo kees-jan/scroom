@@ -78,7 +78,7 @@ GtkWidget* create_window()
 
   drawingArea = gtk_drawing_area_new();
   gtk_container_add(GTK_CONTAINER(window), drawingArea);
-  g_signal_connect(static_cast<gpointer>(drawingArea), "expose_event", G_CALLBACK(on_expose), NULL);
+  g_signal_connect(static_cast<gpointer>(drawingArea), "draw", G_CALLBACK(on_expose), NULL);
   g_signal_connect(static_cast<gpointer>(drawingArea), "configure_event", G_CALLBACK(on_configure), NULL);
 
   gtk_widget_show(drawingArea);
