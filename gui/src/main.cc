@@ -63,8 +63,6 @@ int main(int argc, char* argv[])
   std::string                                   me = argv[0];
   std::map<std::string, std::list<std::string>> filenames;
 
-//  gtk_init(nullptr, nullptr);
-
 #ifdef HAVE_BOOST_PROGRAM_OPTIONS_HPP
   po::options_description desc("Available options");
   desc.add_options()("help,h", "Show this help message")("load,l", po::value<std::vector<std::string>>(), "Load given filenames")(
