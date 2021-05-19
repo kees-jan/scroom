@@ -35,7 +35,7 @@ public:
   using Ptr = boost::shared_ptr<View>;
 
 private:
-  GtkBuilder*                                          scroomXml;
+  GtkBuilder*                                        scroomXml;
   PresentationInterface::Ptr                         presentation;
   SidebarManager                                     sidebarManager;
   GtkWindow*                                         window;

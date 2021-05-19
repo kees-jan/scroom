@@ -443,13 +443,11 @@ void on_scroom_bootstrap(const FileNameMap& newFilenames)
   }
 
 
-  aboutDialogXml = gtk_builder_new_from_file(xmlFileName.c_str());
+  aboutDialogXml = gtk_builder_new();
+  gchar **obj = new gchar*[1];
+  obj[0] = "aboutDialog";
+  gtk_builder_add_objects_from_file(aboutDialogXml, xmlFileName.c_str(), obj, NULL);
 
-  if (!gtk_builder_add_from_file(aboutDialogXml, xmlFileName.c_str(), &error))
-  {
-    g_warning("Couldn't load builder file: %s", error->message);
-    g_error_free(error);
-  }
 
   if(aboutDialogXml != nullptr)
   {
@@ -524,13 +522,10 @@ void onDragDataReceived(GtkWidget*, GdkDragContext*, int, int, GtkSelectionData*
 
 void create_scroom(PresentationInterface::Ptr presentation)
 {
-  GtkBuilder* xml = gtk_builder_new_from_file(xmlFileName.c_str());
-
-  if (!gtk_builder_add_from_file(xml, xmlFileName.c_str(), &error))
-  {
-    g_warning("Couldn't load builder file: %s", error->message);
-    g_error_free(error);
-  }
+  GtkBuilder* xml = gtk_builder_new();
+  gchar **obj = new gchar*[1];
+  obj[0] = "scroom";
+  gtk_builder_add_objects_from_file(xml, xmlFileName.c_str(), obj, NULL);
 
   if(xml == nullptr)
   {

@@ -87,6 +87,7 @@ Clker-Free-Vector-Images from Pixabay</property>
                         <property name="label">gtk-open</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                       </object>
                     </child>
@@ -279,7 +280,7 @@ Clker-Free-Vector-Images from Pixabay</property>
                     </child>
                   </object>
                   <packing>
-                    <property name="expand">True</property>
+                    <property name="expand">False</property>
                     <property name="homogeneous">False</property>
                   </packing>
                 </child>
@@ -287,6 +288,7 @@ Clker-Free-Vector-Images from Pixabay</property>
               <packing>
                 <property name="expand">True</property>
                 <property name="fill">True</property>
+                <property name="padding">1</property>
                 <property name="position">0</property>
               </packing>
             </child>

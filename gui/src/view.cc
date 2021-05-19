@@ -276,7 +276,7 @@ void View::updateScrollbars()
 
     updateScrollbar(hscrollbaradjustment, zoom, x, presentationRect.x(), presentationRect.width(), drawingAreaWidth);
     updateScrollbar(vscrollbaradjustment, zoom, y, presentationRect.y(), presentationRect.height(), drawingAreaHeight);
-    updateRulers();
+    //updateRulers();
   }
   else
   {
@@ -947,7 +947,7 @@ void View::updateXY(int x_, int y_, LocationChangeCause source)
     }
     else
     {
-      updateRulers();
+      //updateRulers();
     }
 
     if(source != TEXTBOX)
