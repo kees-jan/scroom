@@ -43,9 +43,8 @@ addons:
     - libgtest-dev
     - google-mock
     - libcairo2-dev
-    - libglade2-dev
     - libglib2.0-dev
-    - libgtk2.0-dev
+    - libgtk-3-dev
     - libtiff5-dev
     - pkg-config
     - doxygen
@@ -88,8 +87,7 @@ before_install:
                mingw-w64-x86_64-gcc \
                mingw-w64-x86_64-glade \
                mingw-w64-x86_64-gtest \
-               mingw-w64-x86_64-gtk2 \
-               mingw-w64-x86_64-libglade \
+               mingw-w64-x86_64-gtk3 \
                pkg-config \
                zip
         taskkill //IM gpg-agent.exe //F  # https://travis-ci.community/t/4967
