@@ -78,6 +78,7 @@ jobs:
         env:
           PROJECT_TOKEN: ${{ secrets.CODACY_API_KEY }}
           COMMIT: ${{ github.sha }}
+        if: ${{ github.repository_owner == 'kees-jan' }}
         run: |
           mv /tmp/codacy-clang-tidy-latest .
           /tmp/codacy-clang-tidy/scripts/send-results.sh < ct.log
