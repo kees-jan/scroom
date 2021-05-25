@@ -22,7 +22,7 @@ jobs:
 
       - name: Run clang-format
         run: |
-          find . \( -name \*.cc -o -name \*.hh -o -name \*.c -o -name \*.h \) -exec clang-format -i \{\} \+
+          find . \( -name \*.cc -o -name \*.hh \) -exec clang-format -i \{\} \+
 
       - name: Report results
         run: |
