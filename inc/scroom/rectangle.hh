@@ -313,9 +313,15 @@ namespace Scroom
       return right * left;
     }
 
-    inline Rectangle<double> operator*(cairo_rectangle_int_t const& r, Point<double> const& p) { return Rectangle<double>(r) * p; }
+    inline Rectangle<double> operator*(cairo_rectangle_int_t const& r, Point<double> const& p)
+    {
+      return Rectangle<double>(r) * p;
+    }
 
-    inline Rectangle<double> operator*(Point<double> const& p, cairo_rectangle_int_t const& r) { return Rectangle<double>(r) * p; }
+    inline Rectangle<double> operator*(Point<double> const& p, cairo_rectangle_int_t const& r)
+    {
+      return Rectangle<double>(r) * p;
+    }
 
     template <typename T, typename U>
     Rectangle<typename std::common_type<T, U>::type> operator-(Rectangle<T> left, Point<U> right)

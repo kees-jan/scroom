@@ -47,8 +47,8 @@ static const std::string SCROOM_DEV_MODE = "SCROOM_DEV_MODE";
 const std::string        REGULAR_FILES   = "Regular files";
 
 static std::string xmlFileName;
-static GtkBuilder*   aboutDialogXml = nullptr;
-GError* error = NULL;
+static GtkBuilder* aboutDialogXml = nullptr;
+GError*            error          = NULL;
 static GtkWidget*  aboutDialog    = nullptr;
 
 using Views = std::map<View::Ptr, Scroom::Bookkeeping::Token>;
@@ -444,8 +444,8 @@ void on_scroom_bootstrap(const FileNameMap& newFilenames)
 
 
   aboutDialogXml = gtk_builder_new();
-  gchar **obj = new gchar*[1];
-  obj[0] = "aboutDialog";
+  gchar** obj    = new gchar*[1];
+  obj[0]         = "aboutDialog";
   gtk_builder_add_objects_from_file(aboutDialogXml, xmlFileName.c_str(), obj, NULL);
 
 
@@ -523,8 +523,8 @@ void onDragDataReceived(GtkWidget*, GdkDragContext*, int, int, GtkSelectionData*
 void create_scroom(PresentationInterface::Ptr presentation)
 {
   GtkBuilder* xml = gtk_builder_new();
-  gchar **obj = new gchar*[1];
-  obj[0] = "scroom";
+  gchar**     obj = new gchar*[1];
+  obj[0]          = "scroom";
   gtk_builder_add_objects_from_file(xml, xmlFileName.c_str(), obj, NULL);
 
   if(xml == nullptr)

@@ -21,12 +21,19 @@ namespace
   const std::list<Color> colors =
     boost::assign::list_of<Color>(Color(doubleFromByte(2), doubleFromByte(63), doubleFromByte(165)))(
       Color(doubleFromByte(142), doubleFromByte(6), doubleFromByte(59)))(
-      Color(doubleFromByte(74), doubleFromByte(111), doubleFromByte(227)))(
-      Color(doubleFromByte(211), doubleFromByte(63), doubleFromByte(106)))(
-      Color(doubleFromByte(17), doubleFromByte(198), doubleFromByte(56)))(
-      Color(doubleFromByte(239), doubleFromByte(151), doubleFromByte(8)))(
-      Color(doubleFromByte(15), doubleFromByte(207), doubleFromByte(192)))(
-      Color(doubleFromByte(247), doubleFromByte(156), doubleFromByte(212)));
+      Color(doubleFromByte(74), doubleFromByte(111), doubleFromByte(227)))(Color(
+      doubleFromByte(211),
+      doubleFromByte(63),
+      doubleFromByte(106)))(Color(doubleFromByte(17),
+                                  doubleFromByte(198),
+                                  doubleFromByte(56)))(Color(doubleFromByte(239),
+                                                             doubleFromByte(151),
+                                                             doubleFromByte(8)))(Color(doubleFromByte(15),
+                                                                                       doubleFromByte(207),
+                                                                                       doubleFromByte(
+                                                                                         192)))(Color(doubleFromByte(247),
+                                                                                                      doubleFromByte(156),
+                                                                                                      doubleFromByte(212)));
 
   struct ColorComparer
   {

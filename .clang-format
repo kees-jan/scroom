@@ -52,37 +52,37 @@ DisableFormat: false
 ExperimentalAutoDetectBinPacking: true
 FixNamespaceComments: true
 ForEachMacros:
-- foreach
-- Q_FOREACH
-- BOOST_FOREACH
+  - foreach
+  - Q_FOREACH
+  - BOOST_FOREACH
 IncludeCategories:
-- Regex: ^<scroom/
-  Priority: 25
-- Regex: \"
-  Priority: 26
-- Regex: ^<gdk/
-  Priority: 13
-- Regex: ^<gtk/
-  Priority: 13
-- Regex: ^<glade/
-  Priority: 13
-- Regex: ^<gio/
-  Priority: 13
-- Regex: ^<glib
-  Priority: 13
-- Regex: ^<boost/.*>$
-  Priority: 4
-- Regex: ^<(gmock|gtest)/.*>$
-  Priority: 5
-- Regex: <cairo\.h>
-  Priority: 15
-- Regex: <windows\.h>
-  Priority: 3
-  SortPriority: 2
-- Regex: <[-[:alnum:]_/]+\.h>
-  Priority: 3
-- Regex: <[-[:alnum:]_/]+>
-  Priority: 1
+  - Regex: ^<scroom/
+    Priority: 25
+  - Regex: \"
+    Priority: 26
+  - Regex: ^<gdk/
+    Priority: 13
+  - Regex: ^<gtk/
+    Priority: 13
+  - Regex: ^<glade/
+    Priority: 13
+  - Regex: ^<gio/
+    Priority: 13
+  - Regex: ^<glib
+    Priority: 13
+  - Regex: ^<boost/.*>$
+    Priority: 4
+  - Regex: ^<(gmock|gtest)/.*>$
+    Priority: 5
+  - Regex: <cairo\.h>
+    Priority: 15
+  - Regex: <windows\.h>
+    Priority: 3
+    SortPriority: 2
+  - Regex: <[-[:alnum:]_/]+\.h>
+    Priority: 3
+  - Regex: <[-[:alnum:]_/]+>
+    Priority: 1
 IncludeIsMainRegex: (_?[Tt]est)?$
 IndentCaseLabels: false
 IndentWidth: 2

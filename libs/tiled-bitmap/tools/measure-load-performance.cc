@@ -67,7 +67,7 @@ int main(int argc, char* argv[])
   gdk_threads_init();
 
   gdk_threads_enter();
-  setlocale (LC_ALL, "");
+  setlocale(LC_ALL, "");
   gtk_init(&argc, &argv);
 
   init_tests();

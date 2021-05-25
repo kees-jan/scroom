@@ -23,7 +23,7 @@ static GtkWidget*                    drawingArea = nullptr;
 static gboolean on_configure(GtkWidget*, GdkEventConfigure*, gpointer)
 {
   // There should be a simpler way to do this...
-  cairo_region_t*   r = gdk_window_get_visible_region(gtk_widget_get_window(drawingArea));
+  cairo_region_t*       r = gdk_window_get_visible_region(gtk_widget_get_window(drawingArea));
   cairo_rectangle_int_t rect;
   cairo_region_get_extents(r, &rect);
 
