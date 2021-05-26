@@ -12,7 +12,8 @@ include(cmake/ProjectVersion.cmake)
 include(cmake/StandardProjectSettings.cmake)
 include(cmake/PreventInSourceBuilds.cmake)
 
-set(PLUGIN_INSTALL_LOCATION_RELATIVE "lib/scroom" PARENT_SCOPE)
+set(PLUGIN_INSTALL_LOCATION_RELATIVE "lib/scroom")
+set(PLUGIN_INSTALL_LOCATION_RELATIVE ${PLUGIN_INSTALL_LOCATION_RELATIVE} PARENT_SCOPE)
 set(PLUGIN_INSTALL_LOCATION_ABSOLUTE "${CMAKE_INSTALL_PREFIX}/${PLUGIN_INSTALL_LOCATION_RELATIVE}")
 
 set(PKG_DIR_RELATIVE "share/scroom")
