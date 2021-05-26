@@ -65,10 +65,8 @@ int main(int argc, char* argv[])
 
 #ifdef HAVE_BOOST_PROGRAM_OPTIONS_HPP
   po::options_description desc("Available options");
-  desc.add_options()("help,h", "Show this help message")(
-    "load,l", po::value<std::vector<std::string>>(), "Load given filenames")("transparent-overlay",
-                                                                             po::value<std::vector<std::string>>()->multitoken(),
-                                                                             "Show given files in transparent overlay");
+  desc.add_options()("help,h", "Show this help message")("load,l", po::value<std::vector<std::string>>(), "Load given filenames")(
+    "transparent-overlay", po::value<std::vector<std::string>>()->multitoken(), "Show given files in transparent overlay");
 
   po::positional_options_description p;
   p.add("load", -1);
