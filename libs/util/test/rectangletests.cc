@@ -316,7 +316,7 @@ BOOST_AUTO_TEST_CASE(testRetrievingHorizontallyAndVertically)
 
 BOOST_AUTO_TEST_CASE(testConversionToAndFromGdkRectangle)
 {
-  const cairo_rectangle_int_t original = Scroom::GtkHelpers::createGdkRectangle(1, 2, 3, 4);
+  const cairo_rectangle_int_t original = Scroom::GtkHelpers::createCairoIntRectangle(1, 2, 3, 4);
   const Rectangle<int>        rect     = original;
   BOOST_CHECK_EQUAL(make_rect(1, 2, 3, 4), rect);
 

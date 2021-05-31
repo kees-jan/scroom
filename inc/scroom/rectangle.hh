@@ -63,7 +63,7 @@ namespace Scroom
 
       [[nodiscard]] cairo_rectangle_int_t toGdkRectangle() const
       {
-        return Scroom::GtkHelpers::createGdkRectangle(getLeft(), getTop(), getWidth(), getHeight());
+        return Scroom::GtkHelpers::createCairoIntRectangle(getLeft(), getTop(), getWidth(), getHeight());
       }
 
       [[nodiscard]] Rectangle<int> toIntRectangle() const { return Rectangle<int>(getLeft(), getTop(), getWidth(), getHeight()); }

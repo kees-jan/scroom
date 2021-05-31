@@ -42,7 +42,7 @@ namespace Scroom
 
     void useRecursiveGdkLock();
 
-    inline cairo_rectangle_int_t createGdkRectangle(int x, int y, int width, int height)
+    inline cairo_rectangle_int_t createCairoIntRectangle(int x, int y, int width, int height)
     {
       cairo_rectangle_int_t rect;
       rect.x      = x;
