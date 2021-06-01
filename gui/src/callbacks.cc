@@ -523,8 +523,9 @@ void onDragDataReceived(GtkWidget*, GdkDragContext*, int, int, GtkSelectionData*
 void create_scroom(PresentationInterface::Ptr presentation)
 {
   GtkBuilder* xml = gtk_builder_new();
-  gchar**     obj = new gchar*[1];
+  gchar**     obj = new gchar*[2];
   obj[0]          = "scroom";
+  obj[1]          = nullptr;
   gtk_builder_add_objects_from_file(xml, xmlFileName.c_str(), obj, NULL);
 
   if(xml == nullptr)
