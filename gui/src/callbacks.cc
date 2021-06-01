@@ -591,6 +591,8 @@ void create_scroom(PresentationInterface::Ptr presentation)
     scroom, GTK_DEST_DEFAULT_ALL, targets, 1, static_cast<GdkDragAction>(GDK_ACTION_COPY | GDK_ACTION_MOVE | GDK_ACTION_LINK));
 
   g_signal_connect(static_cast<gpointer>(scroom), "drag_data_received", G_CALLBACK(onDragDataReceived), NULL);
+  delete[] obj;
+  //delete xml; //Breaks code for some reason. It seems that this xml is freed somewhere else...
 }
 
 void on_newPresentationInterfaces_update(const std::map<NewPresentationInterface::Ptr, std::string>& newPresentationInterfaces)
