@@ -11,6 +11,7 @@ Ruler::Ptr Ruler::create(Ruler::Orientation orientation, GtkWidget *drawingArea)
     {
         ruler->setDrawingArea(drawingArea);
     }
+    ruler->update();
     return ruler;
 }
 

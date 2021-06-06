@@ -56,7 +56,7 @@ private:
     Orientation orientation;
 
     // The range to be displayed.
-    double lowerLimit{-10};
+    double lowerLimit{0};
     double upperLimit{10};
 
     // The width and height of the drawing area widget.
