@@ -24,8 +24,8 @@
 #include <scroom/utilities.hh>
 #include <scroom/viewinterface.hh>
 
-#include "gtkruler.h"
 #include "progressbarmanager.hh"
+#include "ruler.hh"
 #include "sidebarmanager.hh"
 
 class View
@@ -49,8 +49,11 @@ private:
   GtkScrollbar*                                      hscrollbar;
   GtkAdjustment*                                     vscrollbaradjustment;
   GtkAdjustment*                                     hscrollbaradjustment;
-  GtkRuler*                                          hruler;
-  GtkRuler*                                          vruler;
+  GtkDrawingArea*                                    hruler_area;
+  GtkDrawingArea*                                    vruler_area;
+  Ruler::Ptr                                         vruler;
+  Ruler::Ptr                                         hruler;
+
   GtkComboBox*                                       zoomBox;
   GtkListStore*                                      zoomItems;
   GtkProgressBar*                                    progressBar;

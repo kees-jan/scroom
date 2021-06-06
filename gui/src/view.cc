@@ -82,10 +82,14 @@ View::View(GtkBuilder* scroomXml_)
   hscrollbar                       = GTK_SCROLLBAR(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "hscrollbar")));
   vscrollbaradjustment             = gtk_range_get_adjustment(GTK_RANGE(vscrollbar));
   hscrollbaradjustment             = gtk_range_get_adjustment(GTK_RANGE(hscrollbar));
-  vruler                           = GTK_RULER(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "vruler")));
-  hruler                           = GTK_RULER(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "hruler")));
+  vruler_area                      = GTK_DRAWING_AREA(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "vruler_area")));
+  hruler_area                      = GTK_DRAWING_AREA(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "hruler_area")));
   xTextBox                         = GTK_ENTRY(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "x_textbox")));
   yTextBox                         = GTK_ENTRY(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "y_textbox")));
+
+  // Create rulers and attach ruler areas to them
+  vruler = Ruler::create(Ruler::VERTICAL, GTK_WIDGET(vruler_area));
+  hruler = Ruler::create(Ruler::HORIZONTAL, GTK_WIDGET(hruler_area));
 
   menubar     = GTK_WIDGET(gtk_builder_get_object(scroomXml_, "menubar"));
   statusArea  = GTK_WIDGET(gtk_builder_get_object(scroomXml_, "status_area"));
@@ -276,7 +280,7 @@ void View::updateScrollbars()
 
     updateScrollbar(hscrollbaradjustment, zoom, x, presentationRect.x(), presentationRect.width(), drawingAreaWidth);
     updateScrollbar(vscrollbaradjustment, zoom, y, presentationRect.y(), presentationRect.height(), drawingAreaHeight);
-    // updateRulers();
+    updateRulers();
   }
   else
   {
@@ -369,19 +373,15 @@ void View::updateRulers()
   {
     // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
     int pixelSize = 1 << zoom;
-    gtk_ruler_set_range(
-      hruler, x, x + 1.0 * drawingAreaWidth / (pixelSize * aspectRatio.x), 0, presentationRect.x() + presentationRect.width());
-    gtk_ruler_set_range(
-      vruler, y, y + 1.0 * drawingAreaHeight / (pixelSize * aspectRatio.y), 0, presentationRect.y() + presentationRect.height());
+    hruler->setRange(x, x + drawingAreaWidth / (pixelSize * aspectRatio.x));
+    vruler->setRange(y, y + drawingAreaHeight / (pixelSize * aspectRatio.y));
   }
   else
   {
     // Zooming out. Smallest step is 1 window-pixel, which is more than one presentation-pixel
     int pixelSize = 1 << (-zoom);
-    gtk_ruler_set_range(
-      hruler, x, x + drawingAreaWidth * pixelSize * aspectRatio.x, 0, presentationRect.x() + presentationRect.width());
-    gtk_ruler_set_range(
-      vruler, y, y + drawingAreaHeight * pixelSize * aspectRatio.y, 0, presentationRect.y() + presentationRect.height());
+    hruler->setRange(x, x + drawingAreaWidth * pixelSize * aspectRatio.x);
+    vruler->setRange(y, y + drawingAreaHeight * pixelSize * aspectRatio.y);
   }
 }
 
@@ -947,7 +947,7 @@ void View::updateXY(int x_, int y_, LocationChangeCause source)
     }
     else
     {
-      // updateRulers();
+      updateRulers();
     }
 
     if(source != TEXTBOX)

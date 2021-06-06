@@ -4,8 +4,6 @@ target_sources(
   PRIVATE main.cc
           callbacks.cc
           callbacks.hh
-          gtkruler.c
-          gtkruler.h
           loader.cc
           loader.hh
           pluginmanager.cc
@@ -16,7 +14,9 @@ target_sources(
           sidebarmanager.hh
           view.cc
           view.hh
-          workinterface.hh)
+          workinterface.hh
+          ruler.cc
+          ruler.hh)
 
 if(WIN32)
   target_sources(scroom PRIVATE ../icon/icon.rc)
