@@ -13,7 +13,12 @@ include(cmake/StandardProjectSettings.cmake)
 include(cmake/PreventInSourceBuilds.cmake)
 
 set(PLUGIN_INSTALL_LOCATION_RELATIVE "lib/scroom")
-set(PLUGIN_INSTALL_LOCATION_RELATIVE ${PLUGIN_INSTALL_LOCATION_RELATIVE} PARENT_SCOPE)
+get_directory_property(hasParent PARENT_DIRECTORY)
+if(hasParent)
+  # If a parent_scope exists, set the PLUGIN_INSTALL_LOCATION_RELATIVE accessible by the parent, so
+  # any plugins outside of the base scroom directory
+  set(PLUGIN_INSTALL_LOCATION_RELATIVE ${PLUGIN_INSTALL_LOCATION_RELATIVE} PARENT_SCOPE)
+endif()
 set(PLUGIN_INSTALL_LOCATION_ABSOLUTE "${CMAKE_INSTALL_PREFIX}/${PLUGIN_INSTALL_LOCATION_RELATIVE}")
 
 set(PKG_DIR_RELATIVE "share/scroom")
