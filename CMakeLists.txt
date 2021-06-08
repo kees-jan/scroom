@@ -136,7 +136,7 @@ if(WIN32)
   message("Going to gather dependencies on Windows")
   install(CODE "set(PLUGINS \"${PLUGINS}\")")
   if (SCROOMBINDIR)
-    install(CODE "set(SCROOMBINDIR \"${SCROOMBINDIR}\"")
+    install(CODE "set(SCROOMBINDIR \"${SCROOMBINDIR}\")")
   endif()
   install(
     CODE [[
