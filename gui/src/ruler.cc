@@ -122,8 +122,6 @@ double Ruler::mapRange(double x, double a_lower, double a_upper, double b_lower,
     return b_lower + scale * (x - a_lower);
 }
 
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "ConstantFunctionResult"
 gboolean Ruler::drawCallback(GtkWidget *widget, cairo_t *cr, gpointer data)
 {
 
@@ -182,15 +180,22 @@ gboolean Ruler::drawCallback(GtkWidget *widget, cairo_t *cr, gpointer data)
         lineLength = Ruler::MAJOR_TICK_LENGTH * width;
     }
 
-    // Draw positive side of the ruler from lower to upper
-    ruler->drawTicks(cr, 0, ruler->upperLimit, true, lineLength);
+    // Draw positive side of the ruler
+    if (ruler->upperLimit > 0) // If part of the range is indeed positive
+    {
+        // Draw the range [max(0, lowerLimit), upperLimit]
+        ruler->drawTicks(cr, std::max(0.0, ruler->lowerLimit), ruler->upperLimit, true, lineLength);
+    }
 
     // Draw negative side of the ruler from upper to lower
-    ruler->drawTicks(cr, ruler->lowerLimit, 0, false, lineLength);
+    if (ruler->lowerLimit < 0) // If part of the range is indeed negative
+    {
+        // Draw the range [lowerLimit, min(0, lowerLimit)]
+        ruler->drawTicks(cr, ruler->lowerLimit, std::min(0.0, ruler->upperLimit), false, lineLength);
+    }
 
     return FALSE;
 }
-#pragma clang diagnostic pop
 
 void Ruler::drawTicks(cairo_t *cr, double lower, double upper, bool lowerToUpper, double lineLength)
 {
