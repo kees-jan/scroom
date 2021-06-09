@@ -84,6 +84,13 @@ private:
 
     // ==== DRAWING PROPERTIES ====
 
+    /**
+     * Cairo integer coordinates map to points halfway between pixels.
+     * Therefore, if we offset coordinates by 0.5 in the appropriate
+     * direction, we can draw clear lines.
+     */
+    static constexpr double LINE_COORD_OFFSET{0.5};
+
     static constexpr double FONT_SIZE{11};
 
     static constexpr double LABEL_OFFSET{4};
@@ -93,7 +100,7 @@ private:
 
     GdkRGBA lineColor{0, 0, 0, 1};
 
-    static constexpr double LINE_WIDTH{2};
+    static constexpr double LINE_WIDTH{1};
 
     /** Length of the major tick lines as a fraction of the width/height. */
     static constexpr double MAJOR_TICK_LENGTH{0.8};
