@@ -48,7 +48,7 @@ private:
     static constexpr double DEFAULT_UPPER{10};
 
     /** The minimum space between major ticks. */
-    static constexpr int MIN_SEGMENT_SIZE{50};
+    static constexpr int MIN_SEGMENT_SIZE{80};
 
     /** The minimum space between sub-ticks. */
     static constexpr int MIN_SPACE_SUBTICKS{5};
