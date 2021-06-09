@@ -124,7 +124,11 @@ set(PLUGINS
     ""
     CACHE INTERNAL "List of all plugins")
 function(install_plugin_dependencies plugin-name)
-  list(APPEND PLUGINS "${SCROOMBINDIR}bin/lib${plugin-name}.dll")
+  if (SCROOMBINDIR)
+    list(APPEND PLUGINS "${SCROOMBINDIR}bin/lib${plugin-name}.dll")
+  else()
+    list(APPEND PLUGINS "bin/lib${plugin-name}.dll")
+  endif()
   set(PLUGINS
       "${PLUGINS}"
       CACHE INTERNAL "List of all plugins")
