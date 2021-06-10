@@ -21,7 +21,6 @@ Sep group 2, Q4 2019-2020,
 Icon:
 Clker-Free-Vector-Images from Pixabay</property>
     <property name="translator_credits" translatable="yes" comments="TRANSLATORS: Replace this string with your names, one name per line.">translator-credits</property>
-    <property name="logo_icon_name">image-missing</property>
     <child type="titlebar">
       <placeholder/>
     </child>
