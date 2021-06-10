@@ -27,7 +27,8 @@ mkdir -p $1/share/gtk-2.0;
 if ! cp /mingw64/share/themes/MS-Windows/gtk-2.0/gtkrc $1/share/gtk-2.0/gtkrc; then
   echo "Warning: Failed to copy GTK theme";
 fi;
-mkdir -p $1/lib/gtk-2.0/2.10.0/engines;
-if ! cp /mingw64/lib/gtk-2.0/2.10.0/engines/*.dll $1/lib/gtk-2.0/2.10.0/engines/; then
+
+if ! cp -r /mingw64/lib/gdk-pixbuf-2.0 $1/lib/gdk-pixbuf-2.0/; then
   echo "Warning: Failed to copy GTK theme";
 fi
+
