@@ -24,16 +24,16 @@ rm -r $1/include;
 rm -r $1/share;
 
 mkdir -p $1/lib/gdk-pixbuf-2.0/
-if ! cp -r /mingw64/lib/gdk-pixbuf-2.0/ $1/lib/gdk-pixbuf-2.0/; then
+if ! cp -r /mingw64/lib/gdk-pixbuf-2.0/ $1/lib/; then
   echo "Warning: Failed to copy GTK theme";
 fi
 
 mkdir -p $1/share/glib-2.0/
-if ! cp -r /mingw64/share/glib-2.0/ $1/share/glib-2.0/; then
+if ! cp -r /mingw64/share/glib-2.0/ $1/share/; then
   echo "Warning: Failed to copy GTK theme";
 fi
 
 mkdir -p $1/share/icons/
-if ! cp -r /mingw64/share/icons/ $1/share/icons/; then
+if ! cp -r /mingw64/share/icons/ $1/share/; then
   echo "Warning: Failed to copy GTK theme";
 fi
