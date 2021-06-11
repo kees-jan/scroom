@@ -325,6 +325,8 @@ int RulerCalculations::calculateInterval(double lower, double upper, double allo
 
 int RulerCalculations::intervalPixelSpacing(double interval, double lower, double upper, double allocatedSize)
 {
+    if (upper <= lower) { return -1; }
+
     const double RANGE_SIZE = upper - lower;
     return static_cast<int>(round((allocatedSize / RANGE_SIZE) * interval));
 }

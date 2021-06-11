@@ -407,7 +407,7 @@ Clker-Free-Vector-Images from Pixabay</property>
                 </child>
                 <child>
                   <object class="GtkDrawingArea" id="hruler_area">
-                    <property name="height_request">20</property>
+                    <property name="height_request">25</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                   </object>
@@ -418,7 +418,7 @@ Clker-Free-Vector-Images from Pixabay</property>
                 </child>
                 <child>
                   <object class="GtkDrawingArea" id="vruler_area">
-                    <property name="width_request">20</property>
+                    <property name="width_request">25</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                   </object>

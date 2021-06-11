@@ -104,7 +104,7 @@ private:
     static constexpr double LABEL_ALIGN{0.7};
 
     /** The length of a tick one "level" down, as a fraction of the line length of the ticks one level up. */
-    static constexpr double LINE_MULTIPLIER{0.6};
+    static constexpr double LINE_MULTIPLIER{0.5};
 
     GdkRGBA lineColor{0, 0, 0, 1};
 
@@ -213,7 +213,7 @@ public:
      * @param lower Lower limit of the ruler range. Must be strictly less than \p upper.
      * @param upper Upper limit of the ruler range. Must be strictly greater than \p lower.
      * @param allocatedSize The allocated width/height in pixels for the ruler.
-     * @return The spacing in pixels between tick marks for a given interval.
+     * @return The spacing in pixels between tick marks for a given interval, or -1 if the given range is invalid.
      */
     static int intervalPixelSpacing(double interval, double lower, double upper, double allocatedSize);
 
