@@ -28,7 +28,8 @@ if(ENABLE_BOOST_TEST)
   target_link_libraries(
           ruler_lib
           PRIVATE project_options project_warnings
-          PUBLIC PkgConfig::gtk
+          PUBLIC util
+                 PkgConfig::gtk
                  Boost::system)
 endif()
 

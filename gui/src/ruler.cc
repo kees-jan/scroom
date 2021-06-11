@@ -1,6 +1,9 @@
+#include "ruler.hh"
+
 #include <cmath>
 #include <iostream>
-#include "ruler.hh"
+
+#include <scroom/assertions.hh>
 
 ////////////////////////////////////////////////////////////////////////
 // Ruler
@@ -12,14 +15,12 @@ Ruler::Ptr Ruler::create(Ruler::Orientation orientation, GtkWidget *drawingArea)
 }
 
 Ruler::Ruler(Ruler::Orientation orientation, GtkWidget* drawingAreaWidget)
-        : orientation{orientation}
-        , drawingArea{drawingAreaWidget}
+        : drawingArea{drawingAreaWidget}
+        , orientation{orientation}
         , width{gtk_widget_get_allocated_width(drawingAreaWidget)}
         , height{gtk_widget_get_allocated_height(drawingAreaWidget)}
 {
-    // [TODO] Scroom contains a require() macro.
-    //  We'll need to add this when we move this code to Scroom.
-    //require(drawingArea != nullptr);
+    require(drawingArea != nullptr); // NOLINT(cppcoreguidelines-pro-bounds-array-to-pointer-decay,hicpp-no-array-decay)
 
     // Connect signal handlers
     g_signal_connect(drawingAreaWidget, "draw", G_CALLBACK(drawCallback), this); // NOLINT(cppcoreguidelines-pro-type-cstyle-cast)
@@ -233,7 +234,7 @@ void Ruler::drawSingleTick(cairo_t *cr, double linePosition, double lineLength, 
 void Ruler::drawSubTicks(cairo_t *cr, double lower, double upper, int depth, double lineLength, bool lowerToUpper)
 {
     // We don't need to divide the segment any further so return
-    if (depth >= SUBTICK_SEGMENTS.size()) { return; }
+    if (static_cast<unsigned int>(depth) >= SUBTICK_SEGMENTS.size()) { return; }
 
     int numSegments = SUBTICK_SEGMENTS.at(depth);
     double interval = abs(upper - lower) / numSegments;
