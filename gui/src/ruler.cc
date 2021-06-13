@@ -4,21 +4,32 @@
 #include <iostream>
 
 #include <scroom/assertions.hh>
+#include <utility>
 
 ////////////////////////////////////////////////////////////////////////
 // Ruler
 
 Ruler::Ptr Ruler::create(Ruler::Orientation orientation, GtkWidget* drawingArea)
 {
-  Ruler::Ptr ruler{new Ruler(orientation, drawingArea)};
+  Ruler::Ptr ruler;
+  // We pass a different drawing strategy to the ruler depending on orientation
+  if (orientation == HORIZONTAL)
+  {
+    ruler = Ruler::Ptr(new Ruler(orientation, HorizontalDrawStrategy::create(), drawingArea));
+  }
+  else
+  {
+    ruler = Ruler::Ptr(new Ruler(orientation, VerticalDrawStrategy::create(), drawingArea));
+  }
   return ruler;
 }
 
-Ruler::Ruler(Ruler::Orientation orientation, GtkWidget* drawingAreaWidget)
+Ruler::Ruler(Ruler::Orientation orientation, RulerDrawStrategyInterface::Ptr drawStrategy, GtkWidget* drawingAreaWidget)
   : drawingArea{drawingAreaWidget}
   , orientation{orientation}
   , width{gtk_widget_get_allocated_width(drawingAreaWidget)}
   , height{gtk_widget_get_allocated_height(drawingAreaWidget)}
+  , drawStrategy{std::move(drawStrategy)}
 {
   require(drawingArea != nullptr); // NOLINT(cppcoreguidelines-pro-bounds-array-to-pointer-decay,hicpp-no-array-decay)
 
@@ -50,6 +61,10 @@ double Ruler::getLowerLimit() const { return lowerLimit; }
 
 double Ruler::getUpperLimit() const { return upperLimit; }
 
+int Ruler::getWidth() const { return width; }
+
+int Ruler::getHeight() const { return height; }
+
 void Ruler::sizeAllocateCallback(GtkWidget* widget, GdkRectangle* /*allocation*/, gpointer data)
 {
   auto* ruler = static_cast<Ruler*>(data);
@@ -62,7 +77,7 @@ void Ruler::sizeAllocateCallback(GtkWidget* widget, GdkRectangle* /*allocation*/
 
 void Ruler::calculateTickIntervals()
 {
-  const double ALLOCATED_SIZE = (orientation == HORIZONTAL) ? width : height;
+  const double ALLOCATED_SIZE = drawStrategy->getDrawAreaSize(width, height);
   // Calculate the interval between major ruler ticks
   majorInterval = RulerCalculations::calculateInterval(lowerLimit, upperLimit, ALLOCATED_SIZE);
   // Calculate the spacing in pixels between major ruler ticks
@@ -83,51 +98,9 @@ void Ruler::draw(GtkWidget* widget, cairo_t* cr)
   GtkStyleContext* context = gtk_widget_get_style_context(widget);
   gtk_render_background(context, cr, 0, 0, width, height);
 
-  // Draw outline along left and right sides and along the bottom
+  // Draw outline
   gdk_cairo_set_source_rgba(cr, &lineColor);
-  cairo_set_line_width(cr, LINE_WIDTH);
-  // Cairo integer coordinates map to points halfway between pixels.
-  // We need to offset the coordinates by 0.5 times the line width
-  // to get clear lines
-  double drawOffset = LINE_WIDTH * LINE_COORD_OFFSET;
-  if(orientation == HORIZONTAL)
-  {
-    // Draw line along left side of ruler
-    cairo_move_to(cr, drawOffset, 0);
-    cairo_line_to(cr, drawOffset, height);
-
-    // Draw line along right side of ruler
-    cairo_move_to(cr, width - drawOffset, 0);
-    cairo_line_to(cr, width - drawOffset, height);
-    // Render both lines
-    cairo_stroke(cr);
-
-    // Draw thicker border along bottom of ruler
-    cairo_set_line_width(cr, 2 * LINE_WIDTH);
-    drawOffset = 2 * LINE_WIDTH * LINE_COORD_OFFSET;
-    cairo_move_to(cr, 0, height - drawOffset);
-    cairo_line_to(cr, width, height - drawOffset);
-    cairo_stroke(cr);
-  }
-  else
-  {
-    // Draw line along top side of ruler
-    cairo_move_to(cr, 0, drawOffset);
-    cairo_line_to(cr, width, drawOffset);
-
-    // Draw line along bottom side of ruler
-    cairo_move_to(cr, 0, height - drawOffset);
-    cairo_line_to(cr, width, height - drawOffset);
-    // Render both lines
-    cairo_stroke(cr);
-
-    // Draw thicker border along right of ruler
-    cairo_set_line_width(cr, 2 * LINE_WIDTH);
-    drawOffset = 2 * LINE_WIDTH * LINE_COORD_OFFSET;
-    cairo_move_to(cr, width - drawOffset, 0);
-    cairo_line_to(cr, width - drawOffset, height);
-    cairo_stroke(cr);
-  }
+  drawStrategy->drawOutline(cr, LINE_WIDTH, width, height);
   cairo_set_line_width(cr, Ruler::LINE_WIDTH);
 
   // The majorInterval is invalid, don't attempt to draw anything else
@@ -137,7 +110,7 @@ void Ruler::draw(GtkWidget* widget, cairo_t* cr)
   }
 
   // Calculate the line length for the major ticks given the size of the ruler
-  double lineLength = (orientation == HORIZONTAL) ? MAJOR_TICK_LENGTH * height : MAJOR_TICK_LENGTH * width;
+  double lineLength = drawStrategy->getMajorTickLength(width, height, MAJOR_TICK_LENGTH);
 
   int firstTick = RulerCalculations::firstTick(lowerLimit, majorInterval);
 
@@ -153,7 +126,7 @@ void Ruler::drawTicks(cairo_t* cr, double lower, double upper, double lineLength
   const double DRAW_AREA_ORIGIN = 0;
   // We need to scale to either [0, width] or [0, height] depending
   // on the orientation of the ruler
-  const double DRAW_AREA_SIZE = (orientation == HORIZONTAL) ? width : height;
+  const double DRAW_AREA_SIZE = drawStrategy->getDrawAreaSize(width, height);
 
   // Move pos across range
   while(pos < upper)
@@ -170,27 +143,12 @@ void Ruler::drawTicks(cairo_t* cr, double lower, double upper, double lineLength
 
 void Ruler::drawSingleTick(cairo_t* cr, double linePosition, double lineLength, bool drawLabel, const std::string& label)
 {
-  const double DRAW_AREA_SIZE = (orientation == HORIZONTAL) ? width : height;
+  const double DRAW_AREA_SIZE = drawStrategy->getDrawAreaSize(width, height);
   // Draw the line if is within the drawing area
   if(0 < linePosition && linePosition < DRAW_AREA_SIZE)
   {
     // Draw line
-    cairo_set_line_width(cr, LINE_WIDTH);
-    // Offset the line to get a clear line
-    const double DRAW_OFFSET = LINE_WIDTH * LINE_COORD_OFFSET;
-    if(orientation == HORIZONTAL)
-    {
-      // Draw vertical line
-      cairo_move_to(cr, linePosition + DRAW_OFFSET, height);
-      cairo_line_to(cr, linePosition + DRAW_OFFSET, height - round(lineLength));
-    }
-    else
-    {
-      // Draw horizontal line
-      cairo_move_to(cr, width, linePosition + DRAW_OFFSET);
-      cairo_line_to(cr, width - round(lineLength), linePosition + DRAW_OFFSET);
-    }
-    cairo_stroke(cr);
+    drawStrategy->drawTickLine(cr, linePosition, LINE_WIDTH, lineLength, width, height);
   }
 
   // We'll be modifying the transformation matrix so
@@ -201,27 +159,8 @@ void Ruler::drawSingleTick(cairo_t* cr, double linePosition, double lineLength, 
     // Set text font and size
     cairo_select_font_face(cr, "sans-serif", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL);
     cairo_set_font_size(cr, FONT_SIZE);
-    // Get the extents of the text if it were drawn
-    cairo_text_extents_t textExtents;
-    cairo_text_extents(cr, label.c_str(), &textExtents);
-    // Draw the label if there's enough room between the major ticks and at least part of the text is within the drawing area
-    if(textExtents.x_advance < majorTickSpacing && linePosition + textExtents.x_advance > 0 && linePosition < DRAW_AREA_SIZE)
-    {
-      if(orientation == HORIZONTAL)
-      {
-        // Center the text on the line
-        cairo_move_to(
-          cr, linePosition + LABEL_OFFSET, height - LABEL_ALIGN * lineLength - LINE_MULTIPLIER * textExtents.y_bearing);
-        cairo_show_text(cr, label.c_str());
-      }
-      else
-      {
-        cairo_move_to(
-          cr, width - LABEL_ALIGN * lineLength - LINE_MULTIPLIER * textExtents.y_bearing, linePosition - LABEL_OFFSET);
-        cairo_rotate(cr, -M_PI / 2);
-        cairo_show_text(cr, label.c_str());
-      }
-    }
+    // drawTickText(cairo_t *cr, std::string label, double linePosition, double labelOffset, double labelAlign, double lineLength, int width, int height) = 0;
+    drawStrategy->drawTickText(cr, label, linePosition, LABEL_OFFSET, LABEL_ALIGN, lineLength, width, height);
   }
   cairo_restore(cr);
 }
@@ -244,7 +183,7 @@ void Ruler::drawSubTicks(cairo_t* cr, double lower, double upper, int depth, dou
 
   // We draw from lower->upper / upper->lower, but in the process, we might be exceeding
   // the ruler area, so we also check that we're still inside the drawing area
-  const double DRAW_AREA_SIZE = (orientation == HORIZONTAL) ? width : height;
+  const double DRAW_AREA_SIZE = drawStrategy->getDrawAreaSize(width, height);
   const double limit          = DRAW_AREA_SIZE;
 
   // Position along the ruler to draw tick at
@@ -313,7 +252,7 @@ int RulerCalculations::calculateInterval(double lower, double upper, double allo
 
     // Otherwise, try the next interval
     intervalIndex++;
-    if(intervalIndex == VALID_INTERVALS.size())
+    if(static_cast<unsigned int>(intervalIndex) == VALID_INTERVALS.size())
     {
       // We tried all intervals for the current n, increment n
       intervalIndex = 0;

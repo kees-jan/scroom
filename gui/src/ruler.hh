@@ -4,6 +4,8 @@
 
 #include <gtk/gtk.h>
 
+#include "rulerstrategies.hh"
+
 /**
  * This class draws a ruler to a GtkDrawingArea.
  * It is intended as a replacement for the old GTK2 ruler widget and is written
@@ -54,6 +56,18 @@ public:
    */
   [[nodiscard]] double getUpperLimit() const;
 
+  /**
+   * Returns the allocated width for the ruler's drawing area.
+   * @return The allocated width for the ruler's drawing area.
+   */
+  [[nodiscard]] int getWidth() const;
+
+  /**
+   * Returns the allocated height for the ruler's drawing area.
+   * @return The allocated height for the ruler's drawing area.
+   */
+  [[nodiscard]] int getHeight() const;
+
 private:
   GtkWidget* drawingArea{};
 
@@ -83,6 +97,8 @@ private:
   int majorTickSpacing{};
 
   // ==== DRAWING PROPERTIES ====
+
+  RulerDrawStrategyInterface::Ptr drawStrategy;
 
   /**
    * Cairo integer coordinates map to points halfway between pixels.
@@ -117,7 +133,7 @@ private:
    * @param orientation The orientation of the ruler.
    * @param drawingArea The GtkDrawingArea to draw the ruler to.
    */
-  Ruler(Orientation orientation, GtkWidget* drawingArea);
+  Ruler(Orientation orientation, RulerDrawStrategyInterface::Ptr drawStrategy, GtkWidget* drawingArea);
 
   /**
    * A callback to be connected to a GtkDrawingArea's "draw" signal.

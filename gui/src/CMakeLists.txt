@@ -16,7 +16,9 @@ target_sources(
           view.hh
           workinterface.hh
           ruler.cc
-          ruler.hh)
+          ruler.hh
+          rulerstrategies.cc
+          rulerstrategies.hh)
 
 if(ENABLE_BOOST_TEST)
   # Add a ruler code to library for unit testing
@@ -24,7 +26,9 @@ if(ENABLE_BOOST_TEST)
   target_sources(
           ruler_lib
           PRIVATE ruler.cc
-                  ruler.hh)
+                  ruler.hh
+                  rulerstrategies.cc
+                  rulerstrategies.hh)
   target_link_libraries(
           ruler_lib
           PRIVATE project_options project_warnings
