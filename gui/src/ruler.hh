@@ -78,7 +78,7 @@ private:
     int height{};
 
     /** The chosen interval between major ticks. */
-    double majorInterval{1};
+    int majorInterval{1};
 
     /** The space between major ticks when drawn. */
     int majorTickSpacing{};
@@ -104,7 +104,7 @@ private:
     static constexpr double LABEL_ALIGN{0.7};
 
     /** The length of a tick one "level" down, as a fraction of the line length of the ticks one level up. */
-    static constexpr double LINE_MULTIPLIER{0.5};
+    static constexpr double LINE_MULTIPLIER{0.6};
 
     GdkRGBA lineColor{0, 0, 0, 1};
 
@@ -152,14 +152,13 @@ private:
     void calculateTickIntervals();
 
     /**
-     * Draws the tick marks of the ruler for a given subset of the range.
+     * Draws the tick marks of the ruler for a given subset of the range from left-to-right / bottom-to-top.
      * @param cr Cairo context to draw to.
      * @param lower The lower limit of the range to draw.
      * @param upper The upper limit of the range to draw.
-     * @param lowerToUpper True if the ticks should be drawn from lower to upper. False if from upper to lower.
      * @param lineLength Length of the lines in pixels.
      */
-    void drawTicks(cairo_t *cr, double lower, double upper, bool lowerToUpper, double lineLength);
+    void drawTicks(cairo_t *cr, double lower, double upper, double lineLength);
 
     /**
      * Draws a single tick, taking into account the ruler's orientation.
@@ -172,15 +171,14 @@ private:
     void drawSingleTick(cairo_t *cr, double linePosition, double lineLength, bool drawLabel, const std::string &label);
 
     /**
-     * Draws the smaller ticks in between the major ticks.
+     * Draws the smaller ticks in between the major ticks from left-to-right / bottom-to-top.
      * @param cr Cairo context to draw to.
      * @param lower The lower limit of the range in draw space.
      * @param upper The upper limit of the range in draw space.
      * @param depth The depth of this recursive function. Functions as an index into the ruler's SUBTICK_SEGMENTS array.
      * @param lineLength Length of the lines in pixels.
-     * @param lowerToUpper True if the ticks should be drawn from lower to upper. False if from upper to lower.
      */
-    void drawSubTicks(cairo_t *cr, double lower, double upper, int depth, double lineLength, bool lowerToUpper);
+    void drawSubTicks(cairo_t *cr, double lower, double upper, int depth, double lineLength);
 };
 
 /**
@@ -216,6 +214,14 @@ public:
      * @return The spacing in pixels between tick marks for a given interval, or -1 if the given range is invalid.
      */
     static int intervalPixelSpacing(double interval, double lower, double upper, double allocatedSize);
+
+    /**
+     * Returns the position in the ruler range to start drawing from.
+     * @param lower The lower limit of the ruler range.
+     * @param interval The interval between major ticks that the ruler will be drawn with.
+     * @return The position of in the ruler to start drawing from.
+     */
+    static int firstTick(double lower, int interval);
 
     /**
      * Scales a number \p x in the range [\p src_lower, \p src_upper] to the range [\p dest_lower, \p dest_upper].

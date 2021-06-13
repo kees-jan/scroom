@@ -254,4 +254,100 @@ BOOST_AUTO_TEST_CASE(Ruler_intervalPixelSpacing_range_0_to_1000_interval_5000000
     BOOST_CHECK(RulerCalculations::intervalPixelSpacing(50000000, 0, 1000000000, 1920) == 96);
 }
 
+
+///////////////
+// Testing firstTick()
+
+
+
+BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_0_interval_1,
+     * utf::description("Tests that a lower limit of 0 and interval 1 gives first tick position of 0"))
+{
+    BOOST_CHECK(RulerCalculations::firstTick(0, 1) == 0);
+}
+
+BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_0_interval_25,
+     * utf::description("Tests that a lower limit of 0 and interval 25 gives first tick position of 0"))
+{
+    BOOST_CHECK(RulerCalculations::firstTick(0, 25) == 0);
+}
+
+BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_0_interval_50000,
+     * utf::description("Tests that a lower limit of 0 and interval 50000 gives first tick position of 0"))
+{
+    BOOST_CHECK(RulerCalculations::firstTick(0, 50000) == 0);
+}
+
+BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_neg123_interval_1,
+     * utf::description("Tests that a lower limit of -123 and interval 1 gives first tick position of -123"))
+{
+    BOOST_CHECK(RulerCalculations::firstTick(-123, 1) == -123);
+}
+
+BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_neg123_interval_25,
+     * utf::description("Tests that a lower limit of -123 and interval 25 gives first tick position of -125"))
+{
+    BOOST_CHECK(RulerCalculations::firstTick(-123, 25) == -125);
+}
+
+BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_neg123_interval_50000,
+     * utf::description("Tests that a lower limit of -123 and interval 50000 gives first tick position of -50000"))
+{
+    BOOST_CHECK(RulerCalculations::firstTick(-123, 50000) == -50000);
+}
+
+BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_360_interval_1,
+     * utf::description("Tests that a lower limit of 360 and interval 1 gives first tick position of 360"))
+{
+    BOOST_CHECK(RulerCalculations::firstTick(360, 1) == 360);
+}
+
+BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_360_interval_25,
+     * utf::description("Tests that a lower limit of 360 and interval 25 gives first tick position of 350"))
+{
+    BOOST_CHECK(RulerCalculations::firstTick(360, 25) == 350);
+}
+
+BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_360_interval_50000,
+     * utf::description("Tests that a lower limit of 360 and interval 50000 gives first tick position of 0"))
+{
+    BOOST_CHECK(RulerCalculations::firstTick(360, 50000) == 0);
+}
+
+BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_0p1_interval_1,
+     * utf::description("Tests that a lower limit of 0.1 and interval 1 gives first tick position of 0"))
+{
+    BOOST_CHECK(RulerCalculations::firstTick(0.1, 1) == 0);
+}
+
+BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_0p1_interval_25,
+     * utf::description("Tests that a lower limit of 0.1 and interval 25 gives first tick position of 0"))
+{
+    BOOST_CHECK(RulerCalculations::firstTick(0.1, 25) == 0);
+}
+
+BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_0p1_interval_50000,
+     * utf::description("Tests that a lower limit of 0.1 and interval 50000 gives first tick position of 0"))
+{
+    BOOST_CHECK(RulerCalculations::firstTick(0.1, 50000) == 0);
+}
+
+BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_neg0p1_interval_1,
+     * utf::description("Tests that a lower limit of -0.1 and interval 1 gives first tick position of -1"))
+{
+    BOOST_CHECK(RulerCalculations::firstTick(-0.1, 1) == -1);
+}
+
+BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_neg0p1_interval_25,
+     * utf::description("Tests that a lower limit of -0.1 and interval 25 gives first tick position of -25"))
+{
+    BOOST_CHECK(RulerCalculations::firstTick(-0.1, 25) == -25);
+}
+
+BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_neg0p1_interval_50000,
+     * utf::description("Tests that a lower limit of -0.1 and interval 50000 gives first tick position of -50000"))
+{
+    BOOST_CHECK(RulerCalculations::firstTick(-0.1, 50000) == -50000);
+}
+
 BOOST_AUTO_TEST_SUITE_END()
