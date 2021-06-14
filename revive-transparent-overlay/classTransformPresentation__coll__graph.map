@@ -1,0 +1,16 @@
+<map id="TransformPresentation" name="TransformPresentation">
+<area shape="rect" id="node2" href="$classPresentationBaseSimple.html" title="{PresentationBaseSimple\n||&#45; viewAdded()\l&#45; viewRemoved()\l&#45; getViews()\l}" alt="" coords="287,2159,468,2265"/>
+<area shape="rect" id="node3" href="$classPresentationBase.html" title="{PresentationBase\n||+ open()\l+ close()\l# observerAdded()\l# viewAdded()\l# viewRemoved()\l# getViews()\l}" alt="" coords="305,1945,450,2096"/>
+<area shape="rect" id="node4" href="$classPresentationInterface.html" title="Represent some 2D content. " alt="" coords="296,1732,459,1883"/>
+<area shape="rect" id="node5" href="$classViewable.html" title="Implement Viewable if you want to be able to receive events when a View is created and/or deleted..." alt="" coords="240,1273,323,1365"/>
+<area shape="rect" id="node6" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="137,993,253,1144"/>
+<area shape="rect" id="node19" href="$classColormappable.html" title="Interface for Colormappable presentations. " alt="" coords="105,1455,351,1708"/>
+<area shape="rect" id="node20" href="$classPipetteViewInterface.html" title="{PipetteViewInterface\n||+ getPixelAverages()\l}" alt="" coords="5,1280,165,1357"/>
+<area shape="rect" id="node7" href="$classScroom_1_1Utils_1_1Observable.html" title="Base class for something that accepts observers. " alt="" coords="346,1207,545,1431"/>
+<area shape="rect" id="node8" href="$classScroom_1_1Utils_1_1Base.html" title="Base class that inherits from boost::enable_shared_from_this. " alt="" coords="236,147,396,327"/>
+<area shape="rect" id="node11" href="$classScroom_1_1Bookkeeping_1_1MapBase.html" title="{Scroom::Bookkeeping\l::MapBase\&lt; ObserverWeak,\l typename Registration::Ptr \&gt;\n|&#45; map\l&#45; mut\l|+ reserve()\l+ reReserve()\l+ remove()\l+ remove()\l+ at()\l+ set()\l+ get()\l+ keys()\l+ values()\l}" alt="" coords="343,677,558,916"/>
+<area shape="rect" id="node13" href="$classScroom_1_1Bookkeeping_1_1MapBase.html" title="{Scroom::Bookkeeping\l::MapBase\&lt; K, V \&gt;\n|&#45; map\l&#45; mut\l|+ reserve()\l+ reReserve()\l+ remove()\l+ remove()\l+ at()\l+ set()\l+ get()\l+ keys()\l+ values()\l}" alt="" coords="553,376,717,600"/>
+<area shape="rect" id="node10" href="$classScroom_1_1Bookkeeping_1_1Map.html" title="{Scroom::Bookkeeping\l::Map\&lt; ObserverWeak,\l typename Registration\l::Ptr \&gt;\n||+ create()\l}" alt="" coords="363,1008,538,1129"/>
+<area shape="rect" id="node15" href="$classScroom_1_1Bookkeeping_1_1Map.html" title="{Scroom::Bookkeeping\l::Map\&lt; K, V \&gt;\n||+ create()\l}" alt="" coords="602,751,766,843"/>
+<area shape="rect" id="node17" title="STL class. " alt="" coords="532,1769,641,1846"/>
+</map>

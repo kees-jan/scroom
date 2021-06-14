@@ -1,0 +1,101 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$classScroom_1_1Utils_1_1Base.html" title="Base class that inherits from boost::enable_shared_from_this. " alt="" coords="277,1124,427,1150"/>
+<area shape="rect" id="node3" href="$classChildView.html" title="ChildView" alt="" coords="592,1294,679,1321"/>
+<area shape="rect" id="node4" href="$classLayer.html" title="Layer" alt="" coords="606,261,665,288"/>
+<area shape="rect" id="node5" href="$classLayerCoordinator.html" title="LayerCoordinator" alt="" coords="568,312,703,338"/>
+<area shape="rect" id="node6" href="$classScroom_1_1Bookkeeping_1_1MapBase.html" title="Scroom::Bookkeeping\l::MapBase\&lt; ObserverWeak,\l typename Registration::Ptr \&gt;" alt="" coords="528,1345,743,1401"/>
+<area shape="rect" id="node8" href="$classMeasure.html" title="Measure" alt="" coords="597,1644,674,1670"/>
+<area shape="rect" id="node9" href="$classMeasureHandler.html" title="MeasureHandler" alt="" coords="571,1977,699,2004"/>
+<area shape="rect" id="node10" href="$classScroom_1_1Utils_1_1Observable.html" title="Scroom::Utils::Observable\l\&lt; TileInitialisationObserver \&gt;" alt="" coords="527,762,743,803"/>
+<area shape="rect" id="node12" href="$classScroom_1_1Utils_1_1Observable.html" title="Scroom::Utils::Observable\l\&lt; TileLoadingObserver \&gt;" alt="" coords="540,1178,731,1219"/>
+<area shape="rect" id="node14" href="$classPipette.html" title="Pipette" alt="" coords="601,1593,669,1620"/>
+<area shape="rect" id="node15" href="$classPipetteHandler.html" title="PipetteHandler" alt="" coords="576,1926,695,1953"/>
+<area shape="rect" id="node16" href="$classPipetteLayerOperations.html" title="PipetteLayerOperations" alt="" coords="548,1745,723,1772"/>
+<area shape="rect" id="node24" href="$classPipetteViewInterface.html" title="PipetteViewInterface" alt="" coords="1156,310,1315,337"/>
+<area shape="rect" id="node27" href="$classPluginManager.html" title="PluginManager" alt="" coords="576,442,695,469"/>
+<area shape="rect" id="node28" href="$classScroom_1_1Bookkeeping_1_1MapBase.html" title="Scroom::Bookkeeping\l::MapBase\&lt; K, V \&gt;" alt="" coords="553,1426,717,1467"/>
+<area shape="rect" id="node30" href="$classScroom_1_1MemoryBlobs_1_1Blob.html" title="Scroom::MemoryBlobs\l::Blob" alt="" coords="551,930,719,971"/>
+<area shape="rect" id="node31" href="$classScroom_1_1MemoryBlobs_1_1PageProvider.html" title="Scroom::MemoryBlobs\l::PageProvider" alt="" coords="551,995,719,1036"/>
+<area shape="rect" id="node32" href="$classScroom_1_1MemoryBlocks_1_1Detail_1_1SwapBasedBlockAllocator.html" title="Scroom::MemoryBlocks\l::Detail::SwapBasedBlockAllocator" alt="" coords="512,696,759,738"/>
+<area shape="rect" id="node33" href="$classScroom_1_1Utils_1_1Observable.html" title="Base class for something that accepts observers. " alt="" coords="521,878,750,905"/>
+<area shape="rect" id="node40" href="$classScroom_1_1Utils_1_1ProgressInterfaceBroadcaster.html" title="Scroom::Utils::ProgressInterface\lBroadcaster" alt="" coords="520,2028,751,2070"/>
+<area shape="rect" id="node41" href="$classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer.html" title="Scroom::Utils::ProgressInterface\lMultiplexer" alt="" coords="520,1060,751,1102"/>
+<area shape="rect" id="node42" href="$classTiff.html" title="Tiff" alt="" coords="614,1542,657,1569"/>
+<area shape="rect" id="node43" href="$classTiledBitmap.html" title="TiledBitmap" alt="" coords="901,210,1003,237"/>
+<area shape="rect" id="node44" href="$classTiledBitmapViewData.html" title="TiledBitmapViewData" alt="" coords="553,1796,717,1822"/>
+<area shape="rect" id="node45" href="$classTransparentOverlay.html" title="TransparentOverlay" alt="" coords="561,1492,710,1518"/>
+<area shape="rect" id="node46" href="$classTransparentOverlayViewInfo.html" title="TransparentOverlayViewInfo" alt="" coords="532,1126,739,1153"/>
+<area shape="rect" id="node47" href="$classView.html" title="View" alt="" coords="608,1244,663,1270"/>
+<area shape="rect" id="node7" href="$classScroom_1_1Bookkeeping_1_1Map.html" title="Scroom::Bookkeeping\l::Map\&lt; ObserverWeak,\l typename Registration\l::Ptr \&gt;" alt="" coords="865,1335,1039,1406"/>
+<area shape="rect" id="node11" href="$classCompressedTile.html" title="Internal data structure representing a Tile. " alt="" coords="889,341,1015,368"/>
+<area shape="rect" id="node13" href="$classTileViewState.html" title="TileViewState" alt="" coords="896,1593,1008,1620"/>
+<area shape="rect" id="node17" href="$classPipetteCommonOperationsCMYK.html" title="PipetteCommonOperationsCMYK" alt="" coords="835,1769,1069,1796"/>
+<area shape="rect" id="node22" href="$classPipetteCommonOperationsRGB.html" title="PipetteCommonOperationsRGB" alt="" coords="839,1920,1065,1946"/>
+<area shape="rect" id="node18" href="$classOperationsCMYK16.html" title="OperationsCMYK16" alt="" coords="1162,1845,1309,1872"/>
+<area shape="rect" id="node19" href="$classOperationsCMYK32.html" title="OperationsCMYK32" alt="" coords="1162,1693,1309,1720"/>
+<area shape="rect" id="node20" href="$classOperationsCMYK4.html" title="OperationsCMYK4" alt="" coords="1166,1744,1305,1770"/>
+<area shape="rect" id="node21" href="$classOperationsCMYK8.html" title="OperationsCMYK8" alt="" coords="1166,1794,1305,1821"/>
+<area shape="rect" id="node23" href="$classOperations24bpp.html" title="Operations24bpp" alt="" coords="1169,1920,1302,1946"/>
+<area shape="rect" id="node25" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html" title="anonymous_namespace\l\{tiledbitmappresentation.cc\}\l::TiledBitmapPresentation" alt="" coords="1385,354,1599,410"/>
+<area shape="rect" id="node26" href="$classTransformPresentation.html" title="TransformPresentation" alt="" coords="1659,434,1828,461"/>
+<area shape="rect" id="node29" href="$classScroom_1_1Bookkeeping_1_1Map.html" title="Scroom::Bookkeeping\l::Map\&lt; K, V \&gt;" alt="" coords="870,1430,1034,1471"/>
+<area shape="rect" id="node34" href="$classPresentationInterface.html" title="Represent some 2D content. " alt="" coords="871,442,1033,469"/>
+<area shape="rect" id="node35" href="$classPresentationBase.html" title="PresentationBase" alt="" coords="1167,430,1303,457"/>
+<area shape="rect" id="node38" href="$classPresentationMock.html" title="PresentationMock" alt="" coords="1166,532,1305,558"/>
+<area shape="rect" id="node36" href="$classPresentationBaseSimple.html" title="PresentationBaseSimple" alt="" coords="1401,434,1583,461"/>
+<area shape="rect" id="node37" href="$classTransparentOverlayPresentation.html" title="TransparentOverlayPresentation" alt="" coords="1377,485,1607,512"/>
+<area shape="rect" id="node39" href="$classColormappablePresentationMock.html" title="ColormappablePresentationMock" alt="" coords="1373,560,1611,586"/>
+<area shape="rect" id="node48" href="$classInterface.html" title="Interface" alt="" coords="59,1494,139,1521"/>
+<area shape="rect" id="node49" href="$classAggregate.html" title="Base class for something that composes several presentations. " alt="" coords="1191,481,1280,508"/>
+<area shape="rect" id="node50" href="$classColormappable.html" title="Interface for Colormappable presentations. " alt="" coords="891,594,1013,621"/>
+<area shape="rect" id="node55" href="$classColormapProvider.html" title="ColormapProvider" alt="" coords="883,670,1021,697"/>
+<area shape="rect" id="node56" href="$classLayerOperations.html" title="Operations on a layer in the TiledBitmap. " alt="" coords="287,2061,417,2088"/>
+<area shape="rect" id="node63" href="$classNewAggregateInterface.html" title="NewAggregateInterface" alt="" coords="264,1326,440,1353"/>
+<area shape="rect" id="node64" href="$classNewPresentationInterface.html" title="NewPresentationInterface" alt="" coords="257,1174,447,1201"/>
+<area shape="rect" id="node65" href="$classOpenInterface.html" title="OpenInterface" alt="" coords="295,1225,409,1252"/>
+<area shape="rect" id="node66" href="$classOpenPresentationInterface.html" title="OpenPresentationInterface" alt="" coords="254,1810,450,1837"/>
+<area shape="rect" id="node68" href="$classPluginInformationInterface.html" title="PluginInformationInterface" alt="" coords="254,1596,450,1622"/>
+<area shape="rect" id="node69" href="$classPostRenderer.html" title="Interface provided to something that wants to draw on top of the current presentation. " alt="" coords="298,1977,406,2004"/>
+<area shape="rect" id="node70" href="$classPresentationObserver.html" title="PresentationObserver" alt="" coords="271,1444,433,1470"/>
+<area shape="rect" id="node71" href="$classProgressInterface.html" title="Interface used for reporting progress information. " alt="" coords="284,2129,420,2156"/>
+<area shape="rect" id="node79" href="$classResizablePresentationInterface.html" title="Represent some 2D content that can assume any given size. " alt="" coords="240,1545,464,1572"/>
+<area shape="rect" id="node80" href="$classScroom_1_1MemoryBlocks_1_1BlockFactoryInterface.html" title="Scroom::MemoryBlocks\l::BlockFactoryInterface" alt="" coords="265,2290,439,2331"/>
+<area shape="rect" id="node82" href="$classScroom_1_1MemoryBlocks_1_1BlockInterface.html" title="Scroom::MemoryBlocks\l::BlockInterface" alt="" coords="265,876,439,918"/>
+<area shape="rect" id="node83" href="$classScroom_1_1TiledBitmap_1_1OpenTiledBitmapInterface.html" title="Scroom::TiledBitmap\l::OpenTiledBitmapInterface" alt="" coords="251,1378,453,1419"/>
+<area shape="rect" id="node84" href="$classScroom_1_1Utils_1_1ProgressStateInterface.html" title="Alternative interface used for reporting progress information. " alt="" coords="249,2206,455,2247"/>
+<area shape="rect" id="node86" href="$classScroomInterface.html" title="ScroomInterface" alt="" coords="287,2392,417,2418"/>
+<area shape="rect" id="node88" href="$classScroomPluginInterface.html" title="ScroomPluginInterface" alt="" coords="267,442,437,469"/>
+<area shape="rect" id="node89" href="$classSelectionListener.html" title="Interface provided to something that wants to be notified of selection updates. " alt="" coords="285,1926,419,1953"/>
+<area shape="rect" id="node90" href="$classSourcePresentation.html" title="Provide bitmap data. " alt="" coords="278,2514,426,2541"/>
+<area shape="rect" id="node92" href="$classTileInitialisationObserver.html" title="Events related to filling a tile with data. " alt="" coords="259,312,445,338"/>
+<area shape="rect" id="node93" href="$classTileLoadingObserver.html" title="Events related to swapping tiles in/out. " alt="" coords="274,1697,430,1724"/>
+<area shape="rect" id="node94" href="$classToolStateListener.html" title="Interface provided to something that wants to listener to enable/disable events from its tool button..." alt="" coords="285,1876,419,1902"/>
+<area shape="rect" id="node95" href="$classViewable.html" title="Implement Viewable if you want to be able to receive events when a View is created and/or deleted..." alt="" coords="311,160,393,186"/>
+<area shape="rect" id="node97" href="$classViewInterface.html" title="Interface provided to something Viewable. " alt="" coords="296,1276,408,1302"/>
+<area shape="rect" id="node98" href="$classViewObserver.html" title="ViewObserver" alt="" coords="295,1646,409,1673"/>
+<area shape="rect" id="node99" href="$classWorkInterface.html" title="WorkInterface" alt="" coords="295,392,409,418"/>
+<area shape="rect" id="node51" href="$classColormapHelperBase.html" title="ColormapHelperBase" alt="" coords="1155,684,1315,710"/>
+<area shape="rect" id="node54" href="$classColormappableMock.html" title="ColormappableMock" alt="" coords="1158,582,1313,609"/>
+<area shape="rect" id="node52" href="$classColormapHelper.html" title="ColormapHelper" alt="" coords="1428,684,1556,710"/>
+<area shape="rect" id="node53" href="$classMonochromeColormapHelper.html" title="MonochromeColormapHelper" alt="" coords="1386,734,1598,761"/>
+<area shape="rect" id="node57" href="$classCommonOperations.html" title="CommonOperations" alt="" coords="559,2094,711,2121"/>
+<area shape="rect" id="node58" href="$classOperations.html" title="Operations" alt="" coords="905,1993,999,2020"/>
+<area shape="rect" id="node60" href="$classOperations1bpp.html" title="Operations1bpp" alt="" coords="889,2044,1015,2070"/>
+<area shape="rect" id="node61" href="$classOperations1bppClipped.html" title="Operations1bppClipped" alt="" coords="865,2094,1039,2121"/>
+<area shape="rect" id="node62" href="$classOperations8bpp.html" title="Operations8bpp" alt="" coords="889,2145,1015,2172"/>
+<area shape="rect" id="node59" href="$classOperationsColormapped.html" title="OperationsColormapped" alt="" coords="1145,1993,1325,2020"/>
+<area shape="rect" id="node67" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html" title="anonymous_namespace\l\{tiledbitmappresentation.cc\}\l::OpenTiledBitmapAsPresentation" alt="" coords="515,1846,756,1902"/>
+<area shape="rect" id="node72" href="$classProgressBarManager.html" title="ProgressBarManager" alt="" coords="557,2145,713,2172"/>
+<area shape="rect" id="node73" href="$classScroom_1_1Utils_1_1ProgressInterfaceFromProgressStateInterface.html" title="Scroom::Utils::ProgressInterface\lFromProgressStateInterface" alt="" coords="520,2262,751,2303"/>
+<area shape="rect" id="node77" href="$classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterface.html" title="Scroom::Utils::ProgressState\lInterfaceFromProgressInterface" alt="" coords="522,2196,749,2238"/>
+<area shape="rect" id="node74" href="$classScroom_1_1Utils_1_1Detail_1_1ProgressStore.html" title="Scroom::Utils::Detail\l::ProgressStore" alt="" coords="874,2327,1030,2368"/>
+<area shape="rect" id="node75" href="$classScroom_1_1Utils_1_1ProgressInterfaceFromProgressStateInterfaceForwarder.html" title="Scroom::Utils::ProgressInterface\lFromProgressStateInterfaceForwarder" alt="" coords="819,2392,1085,2434"/>
+<area shape="rect" id="node76" href="$classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer_1_1Child.html" title="Scroom::Utils::ProgressInterface\lMultiplexer::Child" alt="" coords="837,2262,1067,2303"/>
+<area shape="rect" id="node78" href="$classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterfaceForwarder.html" title="Scroom::Utils::ProgressState\lInterfaceFromProgressInterfaceForwarder" alt="" coords="807,2196,1097,2238"/>
+<area shape="rect" id="node81" href="$classScroom_1_1MemoryBlocks_1_1Detail_1_1SwapBasedBlockAllocatorFactory.html" title="Scroom::MemoryBlocks\l::Detail::SwapBasedBlockAllocator\lFactory" alt="" coords="512,2393,759,2449"/>
+<area shape="rect" id="node85" href="$classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer_1_1ChildData.html" title="Scroom::Utils::ProgressInterface\lMultiplexer::ChildData" alt="" coords="520,2327,751,2368"/>
+<area shape="rect" id="node87" href="$classScroomInterfaceImpl.html" title="ScroomInterfaceImpl" alt="" coords="556,2473,715,2500"/>
+<area shape="rect" id="node91" href="$classScroom_1_1Tiff_1_1Source.html" title="Scroom::Tiff::Source" alt="" coords="559,2524,711,2550"/>
+<area shape="rect" id="node96" href="$classTiledBitmapInterface.html" title="Interact with your TiledBitmap. " alt="" coords="556,58,715,85"/>
+<area shape="rect" id="node100" href="$classanonymous__namespace_02progressbarmanager_8cc_03_1_1ProgressBarPulser.html" title="anonymous_namespace\l\{progressbarmanager.cc\}\l::ProgressBarPulser" alt="" coords="540,362,731,418"/>
+</map>

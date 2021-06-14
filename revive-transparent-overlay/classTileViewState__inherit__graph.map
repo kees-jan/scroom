@@ -1,0 +1,7 @@
+<map id="TileViewState" name="TileViewState">
+<area shape="rect" id="node2" href="$classScroom_1_1Utils_1_1Observable.html" title="{Scroom::Utils::Observable\l\&lt; TileLoadingObserver \&gt;\n|&#45; registrationMap\l|+ Observable()\l+ Observable()\l+ Observable()\l+ ~Observable()\l+ operator=()\l+ operator=()\l+ registerStrongObserver()\l+ registerObserver()\l# getObservers()\l# observerAdded()\l&#45; unregisterObserver()\l}" alt="" coords="120,663,319,901"/>
+<area shape="rect" id="node3" href="$classScroom_1_1Utils_1_1Base.html" title="Base class that inherits from boost::enable_shared_from_this. " alt="" coords="6,147,166,327"/>
+<area shape="rect" id="node5" href="$classScroom_1_1Utils_1_1Observable.html" title="Base class for something that accepts observers. " alt="" coords="107,376,337,600"/>
+<area shape="rect" id="node6" href="$classTileLoadingObserver.html" title="Events related to swapping tiles in/out. " alt="" coords="343,743,499,821"/>
+<area shape="rect" id="node7" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="363,413,479,563"/>
+</map>

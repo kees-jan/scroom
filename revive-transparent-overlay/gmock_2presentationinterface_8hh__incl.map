@@ -1,0 +1,19 @@
+<map id="inc/scroom/gmock/presentationinterface.hh" name="inc/scroom/gmock/presentationinterface.hh">
+<area shape="rect" id="node3" href="$gmock_2colormappable_8hh.html" title="scroom/gmock/colormappable.hh" alt="" coords="1064,80,1303,107"/>
+<area shape="rect" id="node28" href="$presentationinterface_8hh.html" title="scroom/presentationinterface.hh" alt="" coords="1363,229,1598,256"/>
+<area shape="rect" id="node4" href="$colormappable_8hh.html" title="scroom/colormappable.hh" alt="" coords="1100,155,1291,181"/>
+<area shape="rect" id="node9" href="$assertions_8hh.html" title="scroom/assertions.hh" alt="" coords="92,229,253,256"/>
+<area shape="rect" id="node11" href="$color_8hh.html" title="scroom/color.hh" alt="" coords="2235,453,2361,480"/>
+<area shape="rect" id="node17" href="$observable_8hh.html" title="scroom/observable.hh" alt="" coords="783,304,949,331"/>
+<area shape="rect" id="node21" href="$bookkeeping_8hh.html" title="scroom/bookkeeping.hh" alt="" coords="777,379,955,405"/>
+<area shape="rect" id="node24" href="$utilities_8hh.html" title="scroom/utilities.hh" alt="" coords="111,453,253,480"/>
+<area shape="rect" id="node23" href="$stuff_8hh.html" title="scroom/stuff.hh" alt="" coords="1118,453,1241,480"/>
+<area shape="rect" id="node26" href="$bookkeepingimpl_8hh.html" title="scroom/impl/bookkeepingimpl.hh" alt="" coords="454,453,694,480"/>
+<area shape="rect" id="node30" href="$interface_8hh.html" title="scroom/interface.hh" alt="" coords="1569,453,1721,480"/>
+<area shape="rect" id="node31" href="$rectangle_8hh.html" title="scroom/rectangle.hh" alt="" coords="2422,379,2577,405"/>
+<area shape="rect" id="node39" href="$viewinterface_8hh.html" title="scroom/viewinterface.hh" alt="" coords="1632,304,1815,331"/>
+<area shape="rect" id="node33" href="$gtk-helpers_8hh.html" title="scroom/gtk&#45;helpers.hh" alt="" coords="2043,453,2211,480"/>
+<area shape="rect" id="node36" href="$linearsegment_8hh.html" title="scroom/linearsegment.hh" alt="" coords="2639,453,2827,480"/>
+<area shape="rect" id="node38" href="$point_8hh.html" title="scroom/point.hh" alt="" coords="2436,453,2563,480"/>
+<area shape="rect" id="node41" href="$progressinterface_8hh.html" title="scroom/progressinterface.hh" alt="" coords="1619,379,1827,405"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="Operations24bpp" name="Operations24bpp">
+<area shape="rect" id="node2" href="$classPipetteCommonOperationsRGB.html" title="{PipetteCommonOperationsRGB\n|# bps\l|+ PipetteCommonOperationsRGB()\l+ sumPixelValues()\l}" alt="" coords="90,631,341,723"/>
+<area shape="rect" id="node3" href="$classPipetteLayerOperations.html" title="{PipetteLayerOperations\n||+ sumPixelValues()\l}" alt="" coords="35,469,209,546"/>
+<area shape="rect" id="node4" href="$classScroom_1_1Utils_1_1Base.html" title="Base class that inherits from boost::enable_shared_from_this. " alt="" coords="6,204,166,384"/>
+<area shape="rect" id="node6" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="221,5,337,156"/>
+<area shape="rect" id="node8" href="$classLayerOperations.html" title="Operations on a layer in the TiledBitmap. " alt="" coords="241,211,379,377"/>
+<area shape="rect" id="node7" href="$classCommonOperations.html" title="{CommonOperations\n||+ initializeCairo()\l+ drawState()\l+ cacheZoom()\l+ draw()\l+ drawPixelValue()\l+ drawPixelValue()\l}" alt="" coords="234,432,386,583"/>
+</map>

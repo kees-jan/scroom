@@ -1,0 +1,11 @@
+<map id="inc/scroom/scroomplugin.hh" name="inc/scroom/scroomplugin.hh">
+<area shape="rect" id="node2" href="$pluginmanager_8hh.html" title="gui/src/pluginmanager.hh" alt="" coords="237,87,423,114"/>
+<area shape="rect" id="node7" href="$plugins_2measure_2src_2main_8cc.html" title="plugins/measure/src\l/main.cc" alt="" coords="448,80,601,121"/>
+<area shape="rect" id="node8" href="$plugins_2transparent-overlay_2src_2main_8cc.html" title="plugins/transparent\l&#45;overlay/src/main.cc" alt="" coords="626,80,781,121"/>
+<area shape="rect" id="node9" href="$plugins_2pipette_2src_2main_8cc.html" title="plugins/pipette/src\l/main.cc" alt="" coords="805,80,948,121"/>
+<area shape="rect" id="node10" href="$plugins_2tiff_2src_2main_8cc.html" title="plugins/tiff/src/main.cc" alt="" coords="972,87,1141,114"/>
+<area shape="rect" id="node3" href="$callbacks_8cc.html" title="gui/src/callbacks.cc" alt="" coords="5,169,153,196"/>
+<area shape="rect" id="node4" href="$loader_8cc.html" title="gui/src/loader.cc" alt="" coords="177,169,304,196"/>
+<area shape="rect" id="node5" href="$pluginmanager_8cc.html" title="gui/src/pluginmanager.cc" alt="" coords="329,169,513,196"/>
+<area shape="rect" id="node6" href="$view_8cc.html" title="gui/src/view.cc" alt="" coords="537,169,654,196"/>
+</map>

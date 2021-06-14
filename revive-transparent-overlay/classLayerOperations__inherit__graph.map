@@ -1,0 +1,16 @@
+<map id="LayerOperations" name="LayerOperations">
+<area shape="rect" id="node3" href="$classCommonOperations.html" title="{CommonOperations\n||+ initializeCairo()\l+ drawState()\l+ cacheZoom()\l+ draw()\l+ drawPixelValue()\l+ drawPixelValue()\l}" alt="" coords="505,417,657,568"/>
+<area shape="rect" id="node2" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="523,5,639,156"/>
+<area shape="rect" id="node4" href="$classOperations.html" title="{Operations\n|# colormapProvider\l# bpp\l# pixelsPerByte\l# pixelOffset\l# pixelMask\l|+ Operations()\l+ getBpp()\l+ cache()\l+ reduce()\l+ draw()\l+ create()\l}" alt="" coords="32,616,184,825"/>
+<area shape="rect" id="node6" href="$classOperations1bpp.html" title="{Operations1bpp\n|&#45; colormapProvider\l|+ Operations1bpp()\l+ getBpp()\l+ cache()\l+ reduce()\l+ draw()\l+ create()\l}" alt="" coords="209,645,359,796"/>
+<area shape="rect" id="node7" href="$classOperations1bppClipped.html" title="{Operations1bppClipped\n|&#45; colormapProvider\l|+ Operations1bppClipped()\l+ getBpp()\l+ cacheZoom()\l+ reduce()\l+ create()\l}" alt="" coords="383,653,582,789"/>
+<area shape="rect" id="node8" href="$classOperations8bpp.html" title="{Operations8bpp\n|&#45; colormapProvider\l|+ Operations8bpp()\l+ getBpp()\l+ cache()\l+ reduce()\l+ draw()\l+ create()\l}" alt="" coords="606,645,757,796"/>
+<area shape="rect" id="node9" href="$classPipetteCommonOperationsCMYK.html" title="{PipetteCommonOperationsCMYK\n|# bps\l|+ PipetteCommonOperationsCMYK()\l+ sumPixelValues()\l}" alt="" coords="781,675,1041,767"/>
+<area shape="rect" id="node14" href="$classPipetteCommonOperationsRGB.html" title="{PipetteCommonOperationsRGB\n|# bps\l|+ PipetteCommonOperationsRGB()\l+ sumPixelValues()\l}" alt="" coords="1112,675,1363,767"/>
+<area shape="rect" id="node5" href="$classOperationsColormapped.html" title="{OperationsColormapped\n||+ OperationsColormapped()\l+ getBpp()\l+ cache()\l+ reduce()\l+ create()\l}" alt="" coords="5,873,211,1009"/>
+<area shape="rect" id="node10" href="$classOperationsCMYK16.html" title="{OperationsCMYK16\n||+ OperationsCMYK16()\l+ getBpp()\l+ cache()\l+ reduce()\l+ create()\l}" alt="" coords="440,873,611,1009"/>
+<area shape="rect" id="node11" href="$classOperationsCMYK32.html" title="{OperationsCMYK32\n||+ OperationsCMYK32()\l+ getBpp()\l+ cache()\l+ reduce()\l+ create()\l}" alt="" coords="635,873,805,1009"/>
+<area shape="rect" id="node12" href="$classOperationsCMYK4.html" title="{OperationsCMYK4\n||+ OperationsCMYK4()\l+ getBpp()\l+ cache()\l+ reduce()\l+ create()\l}" alt="" coords="829,873,992,1009"/>
+<area shape="rect" id="node13" href="$classOperationsCMYK8.html" title="{OperationsCMYK8\n||+ OperationsCMYK8()\l+ getBpp()\l+ cache()\l+ reduce()\l+ create()\l}" alt="" coords="1016,873,1179,1009"/>
+<area shape="rect" id="node15" href="$classOperations24bpp.html" title="{Operations24bpp\n||+ Operations24bpp()\l+ getBpp()\l+ cache()\l+ reduce()\l+ create()\l}" alt="" coords="1203,873,1362,1009"/>
+</map>

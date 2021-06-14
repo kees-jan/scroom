@@ -1,0 +1,5 @@
+<map id="Operations8bpp" name="Operations8bpp">
+<area shape="rect" id="node2" href="$classCommonOperations.html" title="{CommonOperations\n||+ initializeCairo()\l+ drawState()\l+ cacheZoom()\l+ draw()\l+ drawPixelValue()\l+ drawPixelValue()\l}" alt="" coords="5,417,157,568"/>
+<area shape="rect" id="node3" href="$classLayerOperations.html" title="Operations on a layer in the TiledBitmap. " alt="" coords="13,204,150,369"/>
+<area shape="rect" id="node4" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="23,5,139,156"/>
+</map>

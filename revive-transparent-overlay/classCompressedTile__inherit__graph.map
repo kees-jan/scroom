@@ -1,0 +1,8 @@
+<map id="CompressedTile" name="CompressedTile">
+<area shape="rect" id="node2" href="$classScroom_1_1Utils_1_1Observable.html" title="{Scroom::Utils::Observable\l\&lt; TileInitialisationObserver \&gt;\n|&#45; registrationMap\l|+ Observable()\l+ Observable()\l+ Observable()\l+ ~Observable()\l+ operator=()\l+ operator=()\l+ registerStrongObserver()\l+ registerObserver()\l# getObservers()\l# observerAdded()\l&#45; unregisterObserver()\l}" alt="" coords="5,663,221,901"/>
+<area shape="rect" id="node3" href="$classScroom_1_1Utils_1_1Base.html" title="Base class that inherits from boost::enable_shared_from_this. " alt="" coords="203,147,363,327"/>
+<area shape="rect" id="node5" href="$classScroom_1_1Utils_1_1Observable.html" title="Base class for something that accepts observers. " alt="" coords="168,376,397,600"/>
+<area shape="rect" id="node6" href="$classScroom_1_1Utils_1_1Observable.html" title="{Scroom::Utils::Observable\l\&lt; TileLoadingObserver \&gt;\n|&#45; registrationMap\l|+ Observable()\l+ Observable()\l+ Observable()\l+ ~Observable()\l+ operator=()\l+ operator=()\l+ registerStrongObserver()\l+ registerObserver()\l# getObservers()\l# observerAdded()\l&#45; unregisterObserver()\l}" alt="" coords="305,663,503,901"/>
+<area shape="rect" id="node7" href="$classViewable.html" title="Implement Viewable if you want to be able to receive events when a View is created and/or deleted..." alt="" coords="556,736,639,828"/>
+<area shape="rect" id="node8" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="570,413,686,563"/>
+</map>

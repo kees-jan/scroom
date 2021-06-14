@@ -1,0 +1,6 @@
+<map id="OperationsColormapped" name="OperationsColormapped">
+<area shape="rect" id="node2" href="$classOperations.html" title="{Operations\n|# colormapProvider\l# bpp\l# pixelsPerByte\l# pixelOffset\l# pixelMask\l|+ Operations()\l+ getBpp()\l+ cache()\l+ reduce()\l+ draw()\l+ create()\l}" alt="" coords="32,616,184,825"/>
+<area shape="rect" id="node3" href="$classCommonOperations.html" title="{CommonOperations\n||+ initializeCairo()\l+ drawState()\l+ cacheZoom()\l+ draw()\l+ drawPixelValue()\l+ drawPixelValue()\l}" alt="" coords="32,417,184,568"/>
+<area shape="rect" id="node4" href="$classLayerOperations.html" title="Operations on a layer in the TiledBitmap. " alt="" coords="39,204,177,369"/>
+<area shape="rect" id="node5" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="50,5,166,156"/>
+</map>

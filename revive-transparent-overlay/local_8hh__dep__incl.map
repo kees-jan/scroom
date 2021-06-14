@@ -1,0 +1,6 @@
+<map id="libs/tiled&#45;bitmap/src/local.hh" name="libs/tiled&#45;bitmap/src/local.hh">
+<area shape="rect" id="node2" href="$compressedtile_8cc.html" title="libs/tiled&#45;bitmap/src\l/compressedtile.cc" alt="" coords="5,95,157,136"/>
+<area shape="rect" id="node3" href="$layer_8cc.html" title="libs/tiled&#45;bitmap/src\l/layer.cc" alt="" coords="181,95,333,136"/>
+<area shape="rect" id="node4" href="$layercoordinator_8cc.html" title="libs/tiled&#45;bitmap/src\l/layercoordinator.cc" alt="" coords="357,95,509,136"/>
+<area shape="rect" id="node5" href="$tileviewstate_8cc.html" title="libs/tiled&#45;bitmap/src\l/tileviewstate.cc" alt="" coords="533,95,685,136"/>
+</map>

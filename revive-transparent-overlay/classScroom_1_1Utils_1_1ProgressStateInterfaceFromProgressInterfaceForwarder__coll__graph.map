@@ -1,0 +1,6 @@
+<map id="Scroom::Utils::ProgressStateInterfaceFromProgressInterfaceForwarder" name="Scroom::Utils::ProgressStateInterfaceFromProgressInterfaceForwarder">
+<area shape="rect" id="node2" href="$classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterface.html" title="{Scroom::Utils::ProgressState\lInterfaceFromProgressInterface\n||+ setProgress()\l}" alt="" coords="93,373,319,465"/>
+<area shape="rect" id="node3" href="$classScroom_1_1Utils_1_1ProgressStateInterface.html" title="Alternative interface used for reporting progress information. " alt="" coords="5,219,212,311"/>
+<area shape="rect" id="node4" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="148,5,264,156"/>
+<area shape="rect" id="node5" href="$classProgressInterface.html" title="Interface used for reporting progress information. " alt="" coords="237,204,373,325"/>
+</map>

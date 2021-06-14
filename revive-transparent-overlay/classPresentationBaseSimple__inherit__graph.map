@@ -1,0 +1,9 @@
+<map id="PresentationBaseSimple" name="PresentationBaseSimple">
+<area shape="rect" id="node9" href="$classTransformPresentation.html" title="{TransformPresentation\n|&#45; transformationData\l&#45; presentation\l&#45; colormappable\l|+ open()\l+ close()\l+ getRect()\l+ redraw()\l+ getProperty()\l+ isPropertyDefined()\l+ getTitle()\l+ getAspectRatio()\l+ getPixelAverages()\l+ setColormap()\land 7 more...\l+ create()\l&#45; TransformPresentation()\l}" alt="" coords="51,1197,239,1480"/>
+<area shape="rect" id="node2" href="$classPresentationBase.html" title="{PresentationBase\n||+ open()\l+ close()\l# observerAdded()\l# viewAdded()\l# viewRemoved()\l# getViews()\l}" alt="" coords="72,844,217,995"/>
+<area shape="rect" id="node3" href="$classPresentationInterface.html" title="Represent some 2D content. " alt="" coords="63,645,226,796"/>
+<area shape="rect" id="node4" href="$classViewable.html" title="Implement Viewable if you want to be able to receive events when a View is created and/or deleted..." alt="" coords="22,439,105,531"/>
+<area shape="rect" id="node5" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="5,160,121,311"/>
+<area shape="rect" id="node6" href="$classScroom_1_1Utils_1_1Observable.html" title="Base class for something that accepts observers. " alt="" coords="128,373,327,597"/>
+<area shape="rect" id="node7" href="$classScroom_1_1Utils_1_1Base.html" title="Base class that inherits from boost::enable_shared_from_this. " alt="" coords="147,145,307,325"/>
+</map>

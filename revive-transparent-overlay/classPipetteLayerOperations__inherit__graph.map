@@ -1,0 +1,11 @@
+<map id="PipetteLayerOperations" name="PipetteLayerOperations">
+<area shape="rect" id="node5" href="$classPipetteCommonOperationsCMYK.html" title="{PipetteCommonOperationsCMYK\n|# bps\l|+ PipetteCommonOperationsCMYK()\l+ sumPixelValues()\l}" alt="" coords="346,499,606,591"/>
+<area shape="rect" id="node10" href="$classPipetteCommonOperationsRGB.html" title="{PipetteCommonOperationsRGB\n|# bps\l|+ PipetteCommonOperationsRGB()\l+ sumPixelValues()\l}" alt="" coords="676,499,927,591"/>
+<area shape="rect" id="node2" href="$classScroom_1_1Utils_1_1Base.html" title="Base class that inherits from boost::enable_shared_from_this. " alt="" coords="455,145,615,325"/>
+<area shape="rect" id="node4" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="639,160,755,311"/>
+<area shape="rect" id="node6" href="$classOperationsCMYK16.html" title="{OperationsCMYK16\n||+ OperationsCMYK16()\l+ getBpp()\l+ cache()\l+ reduce()\l+ create()\l}" alt="" coords="5,639,176,775"/>
+<area shape="rect" id="node7" href="$classOperationsCMYK32.html" title="{OperationsCMYK32\n||+ OperationsCMYK32()\l+ getBpp()\l+ cache()\l+ reduce()\l+ create()\l}" alt="" coords="200,639,371,775"/>
+<area shape="rect" id="node8" href="$classOperationsCMYK4.html" title="{OperationsCMYK4\n||+ OperationsCMYK4()\l+ getBpp()\l+ cache()\l+ reduce()\l+ create()\l}" alt="" coords="395,639,557,775"/>
+<area shape="rect" id="node9" href="$classOperationsCMYK8.html" title="{OperationsCMYK8\n||+ OperationsCMYK8()\l+ getBpp()\l+ cache()\l+ reduce()\l+ create()\l}" alt="" coords="581,639,744,775"/>
+<area shape="rect" id="node11" href="$classOperations24bpp.html" title="{Operations24bpp\n||+ Operations24bpp()\l+ getBpp()\l+ cache()\l+ reduce()\l+ create()\l}" alt="" coords="769,639,927,775"/>
+</map>

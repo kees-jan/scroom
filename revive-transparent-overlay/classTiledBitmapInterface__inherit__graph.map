@@ -1,0 +1,5 @@
+<map id="TiledBitmapInterface" name="TiledBitmapInterface">
+<area shape="rect" id="node4" href="$classTiledBitmap.html" title="{TiledBitmap\n|&#45; bitmapWidth\l&#45; bitmapHeight\l&#45; ls\l&#45; layers\l&#45; coordinators\l&#45; viewDataMutex\l&#45; viewData\l&#45; tileCount\l&#45; tileFinishedMutex\l&#45; tileFinishedCount\l&#45; progressBroadcaster\l&#45; registrations\l|+ ~TiledBitmap()\l+ TiledBitmap()\l+ TiledBitmap()\l+ operator=()\l+ operator=()\l+ setSource()\l+ getBottomLayer()\l+ open()\l+ close()\l+ redraw()\l+ clearCaches()\l+ tileCreated()\l+ tileFinished()\l+ progressInterface()\l+ create()\l+ create()\l&#45; TiledBitmap()\l&#45; initialize()\l&#45; initialize()\l&#45; connect()\l&#45; drawTile()\l}" alt="" coords="5,513,171,1045"/>
+<area shape="rect" id="node2" href="$classViewable.html" title="Implement Viewable if you want to be able to receive events when a View is created and/or deleted..." alt="" coords="47,204,129,296"/>
+<area shape="rect" id="node3" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="30,5,146,156"/>
+</map>
