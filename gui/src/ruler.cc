@@ -33,11 +33,14 @@ Ruler::Ruler(Ruler::Orientation orientation, RulerDrawStrategyInterface::Ptr dra
 {
   require(drawingArea != nullptr); // NOLINT(cppcoreguidelines-pro-bounds-array-to-pointer-decay,hicpp-no-array-decay)
 
+  // Set size for drawStrategy
+  this->drawStrategy->setAllocatedSize(width, height);
+
   // Connect signal handlers
   g_signal_connect(drawingAreaWidget, "draw", G_CALLBACK(drawCallback), this); // NOLINT(cppcoreguidelines-pro-type-cstyle-cast)
   g_signal_connect(drawingAreaWidget, "size-allocate", G_CALLBACK(sizeAllocateCallback), this); // NOLINT(cppcoreguidelines-pro-type-cstyle-cast)
   // Calculate tick intervals and spacing
-  calculateTickIntervals();
+  updateMajorTickInterval();
 }
 
 Ruler::~Ruler()
@@ -51,7 +54,7 @@ void Ruler::setRange(double lower, double upper)
   lowerLimit = lower;
   upperLimit = upper;
 
-  calculateTickIntervals();
+  updateMajorTickInterval();
 
   // We need to manually trigger the widget to redraw
   gtk_widget_queue_draw(drawingArea);
@@ -65,19 +68,28 @@ int Ruler::getWidth() const { return width; }
 
 int Ruler::getHeight() const { return height; }
 
+void Ruler::updateAllocatedSize(int width, int height)
+{
+  this->width = width;
+  this->height = height;
+  drawStrategy->setAllocatedSize(width, height);
+
+  updateMajorTickInterval();
+}
+
 void Ruler::sizeAllocateCallback(GtkWidget* widget, GdkRectangle* /*allocation*/, gpointer data)
 {
   auto* ruler = static_cast<Ruler*>(data);
 
-  ruler->width  = gtk_widget_get_allocated_width(widget);
-  ruler->height = gtk_widget_get_allocated_height(widget);
+  int width = gtk_widget_get_allocated_width(widget);
+  int height = gtk_widget_get_allocated_height(widget);
 
-  ruler->calculateTickIntervals();
+  ruler->updateAllocatedSize(width, height);
 }
 
-void Ruler::calculateTickIntervals()
+void Ruler::updateMajorTickInterval()
 {
-  const double ALLOCATED_SIZE = drawStrategy->getDrawAreaSize(width, height);
+  const double ALLOCATED_SIZE = drawStrategy->getDrawAreaSize();
   // Calculate the interval between major ruler ticks
   majorInterval = RulerCalculations::calculateInterval(lowerLimit, upperLimit, ALLOCATED_SIZE);
   // Calculate the spacing in pixels between major ruler ticks
@@ -100,7 +112,7 @@ void Ruler::draw(GtkWidget* widget, cairo_t* cr)
 
   // Draw outline
   gdk_cairo_set_source_rgba(cr, &lineColor);
-  drawStrategy->drawOutline(cr, LINE_WIDTH, width, height);
+  drawStrategy->drawOutline(cr, LINE_WIDTH);
   cairo_set_line_width(cr, Ruler::LINE_WIDTH);
 
   // The majorInterval is invalid, don't attempt to draw anything else
@@ -110,7 +122,7 @@ void Ruler::draw(GtkWidget* widget, cairo_t* cr)
   }
 
   // Calculate the line length for the major ticks given the size of the ruler
-  double lineLength = drawStrategy->getMajorTickLength(width, height, MAJOR_TICK_LENGTH);
+  double lineLength = drawStrategy->getMajorTickLength(MAJOR_TICK_LENGTH);
 
   int firstTick = RulerCalculations::firstTick(lowerLimit, majorInterval);
 
@@ -126,7 +138,7 @@ void Ruler::drawTicks(cairo_t* cr, double lower, double upper, double lineLength
   const double DRAW_AREA_ORIGIN = 0;
   // We need to scale to either [0, width] or [0, height] depending
   // on the orientation of the ruler
-  const double DRAW_AREA_SIZE = drawStrategy->getDrawAreaSize(width, height);
+  const double DRAW_AREA_SIZE = drawStrategy->getDrawAreaSize();
 
   // Move pos across range
   while(pos < upper)
@@ -143,12 +155,12 @@ void Ruler::drawTicks(cairo_t* cr, double lower, double upper, double lineLength
 
 void Ruler::drawSingleTick(cairo_t* cr, double linePosition, double lineLength, bool drawLabel, const std::string& label)
 {
-  const double DRAW_AREA_SIZE = drawStrategy->getDrawAreaSize(width, height);
+  const double DRAW_AREA_SIZE = drawStrategy->getDrawAreaSize();
   // Draw the line if is within the drawing area
   if(0 < linePosition && linePosition < DRAW_AREA_SIZE)
   {
     // Draw line
-    drawStrategy->drawTickLine(cr, linePosition, LINE_WIDTH, lineLength, width, height);
+    drawStrategy->drawTickLine(cr, linePosition, LINE_WIDTH, lineLength);
   }
 
   // We'll be modifying the transformation matrix so
@@ -160,7 +172,7 @@ void Ruler::drawSingleTick(cairo_t* cr, double linePosition, double lineLength, 
     cairo_select_font_face(cr, "sans-serif", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL);
     cairo_set_font_size(cr, FONT_SIZE);
     // drawTickText(cairo_t *cr, std::string label, double linePosition, double labelOffset, double labelAlign, double lineLength, int width, int height) = 0;
-    drawStrategy->drawTickText(cr, label, linePosition, LABEL_OFFSET, LABEL_ALIGN, lineLength, width, height);
+    drawStrategy->drawTickText(cr, label, linePosition, LABEL_OFFSET, LABEL_ALIGN, lineLength);
   }
   cairo_restore(cr);
 }
@@ -183,7 +195,7 @@ void Ruler::drawSubTicks(cairo_t* cr, double lower, double upper, int depth, dou
 
   // We draw from lower->upper / upper->lower, but in the process, we might be exceeding
   // the ruler area, so we also check that we're still inside the drawing area
-  const double DRAW_AREA_SIZE = drawStrategy->getDrawAreaSize(width, height);
+  const double DRAW_AREA_SIZE = drawStrategy->getDrawAreaSize();
   const double limit          = DRAW_AREA_SIZE;
 
   // Position along the ruler to draw tick at

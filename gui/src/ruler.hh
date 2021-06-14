@@ -162,9 +162,16 @@ private:
   static void sizeAllocateCallback(GtkWidget* widget, GdkRectangle* allocation, gpointer data);
 
   /**
+   * Updates the stored allocated size of the ruler.
+   * @param width The width of the ruler in pixels.
+   * @param height The height of the ruler in pixels.
+   */
+  void updateAllocatedSize(int width, int height);
+
+  /**
    * Calculates an appropriate interval between major ticks, given the current range and dimensions.
    */
-  void calculateTickIntervals();
+  void updateMajorTickInterval();
 
   /**
    * Draws the tick marks of the ruler for a given subset of the range from left-to-right / bottom-to-top.
