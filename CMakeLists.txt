@@ -15,9 +15,11 @@ include(cmake/PreventInSourceBuilds.cmake)
 set(PLUGIN_INSTALL_LOCATION_RELATIVE "lib/scroom")
 get_directory_property(hasParent PARENT_DIRECTORY)
 if(hasParent)
-  # If a parent_scope exists, set the PLUGIN_INSTALL_LOCATION_RELATIVE accessible by the parent, so
-  # any plugins outside of the base scroom directory
-  set(PLUGIN_INSTALL_LOCATION_RELATIVE ${PLUGIN_INSTALL_LOCATION_RELATIVE} PARENT_SCOPE)
+  # If a parent_scope exists, set the PLUGIN_INSTALL_LOCATION_RELATIVE accessible by the parent, so any plugins outside
+  # of the base scroom directory
+  set(PLUGIN_INSTALL_LOCATION_RELATIVE
+      ${PLUGIN_INSTALL_LOCATION_RELATIVE}
+      PARENT_SCOPE)
 endif()
 set(PLUGIN_INSTALL_LOCATION_ABSOLUTE "${CMAKE_INSTALL_PREFIX}/${PLUGIN_INSTALL_LOCATION_RELATIVE}")
 
@@ -124,7 +126,7 @@ set(PLUGINS
     ""
     CACHE INTERNAL "List of all plugins")
 function(install_plugin_dependencies plugin-name)
-  if (SCROOMBINDIR)
+  if(SCROOMBINDIR)
     list(APPEND PLUGINS "${SCROOMBINDIR}bin/lib${plugin-name}.dll")
   else()
     list(APPEND PLUGINS "bin/lib${plugin-name}.dll")
@@ -144,7 +146,7 @@ add_subdirectory(gui)
 if(WIN32)
   message("Going to gather dependencies on Windows")
   install(CODE "set(PLUGINS \"${PLUGINS}\")")
-  if (SCROOMBINDIR)
+  if(SCROOMBINDIR)
     install(CODE "set(SCROOMBINDIR \"${SCROOMBINDIR}\")")
   endif()
   install(
