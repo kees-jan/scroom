@@ -24,17 +24,15 @@ if(ENABLE_BOOST_TEST)
   # Add a ruler code to library for unit testing
   add_library(ruler_lib)
   target_sources(
-          ruler_lib
-          PRIVATE ruler.cc
-                  ruler.hh
-                  rulerstrategies.cc
-                  rulerstrategies.hh)
+    ruler_lib
+    PRIVATE ruler.cc
+            ruler.hh
+            rulerstrategies.cc
+            rulerstrategies.hh)
   target_link_libraries(
-          ruler_lib
-          PRIVATE project_options project_warnings
-          PUBLIC util
-                 PkgConfig::gtk
-                 Boost::system)
+    ruler_lib
+    PRIVATE project_options project_warnings
+    PUBLIC util PkgConfig::gtk Boost::system)
 endif()
 
 if(WIN32)
