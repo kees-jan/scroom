@@ -24,8 +24,8 @@
 #include <scroom/utilities.hh>
 #include <scroom/viewinterface.hh>
 
+#include "../ruler/src/ruler.hh"
 #include "progressbarmanager.hh"
-#include "ruler.hh"
 #include "sidebarmanager.hh"
 
 class View

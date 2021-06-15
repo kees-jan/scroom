@@ -14,26 +14,7 @@ target_sources(
           sidebarmanager.hh
           view.cc
           view.hh
-          workinterface.hh
-          ruler.cc
-          ruler.hh
-          rulerstrategies.cc
-          rulerstrategies.hh)
-
-if(ENABLE_BOOST_TEST)
-  # Add a ruler code to library for unit testing
-  add_library(ruler_lib)
-  target_sources(
-    ruler_lib
-    PRIVATE ruler.cc
-            ruler.hh
-            rulerstrategies.cc
-            rulerstrategies.hh)
-  target_link_libraries(
-    ruler_lib
-    PRIVATE project_options project_warnings
-    PUBLIC util PkgConfig::gtk Boost::system)
-endif()
+          workinterface.hh)
 
 if(WIN32)
   target_sources(scroom PRIVATE ../icon/icon.rc)
@@ -50,7 +31,8 @@ target_link_libraries(
          Boost::filesystem
          util
          tiledbitmap
-         m)
+         m
+         ruler_lib)
 target_compile_definitions(scroom PRIVATE PLUGIN_DIR="${PLUGIN_INSTALL_LOCATION_ABSOLUTE}"
                                           TOP_SRCDIR="${Scroom_SOURCE_DIR}" PACKAGE_DATA_DIR="${PKG_DIR_ABSOLUTE}")
 

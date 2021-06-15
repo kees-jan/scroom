@@ -2,7 +2,7 @@
 #include <boost/test/unit_test.hpp>
 namespace utf = boost::unit_test;
 
-#include "../src/ruler.hh"
+#include "ruler.hh"
 
 BOOST_AUTO_TEST_SUITE(Ruler_Tests)
 
