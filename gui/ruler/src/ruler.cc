@@ -106,6 +106,10 @@ gboolean Ruler::drawCallback(GtkWidget* widget, cairo_t* cr, gpointer data)
 
 void Ruler::draw(GtkWidget* widget, cairo_t* cr)
 {
+  // Initialize cairo
+  cairo_set_antialias(cr, CAIRO_ANTIALIAS_NONE);
+  cairo_set_line_cap(cr, CAIRO_LINE_CAP_SQUARE);
+
   // Draw background using widget's style context
   GtkStyleContext* context = gtk_widget_get_style_context(widget);
   gtk_render_background(context, cr, 0, 0, width, height);
