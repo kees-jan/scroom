@@ -158,7 +158,7 @@ if(WIN32)
         RESOLVED_DEPENDENCIES_VAR resolved
         UNRESOLVED_DEPENDENCIES_VAR unresolved
         PRE_EXCLUDE_REGEXES "^api-ms-win.*" "^ext-ms-.*"
-        POST_EXCLUDE_REGEXES "[Ww]indows.system32/"
+        POST_EXCLUDE_REGEXES "[Ww][Ii][Nn][Dd][Oo][Ww][Ss].[Ss][Yy][Ss][Tt][Ee][Mm]32/"
         DIRECTORIES c:/msys64/mingw64/bin)
       message("Resolved: ${resolved}")
       list(LENGTH unresolved unresolved_count)
