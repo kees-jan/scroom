@@ -24,6 +24,8 @@ Ruler::Ptr Ruler::create(Ruler::Orientation orientation, GtkWidget* drawingArea)
   return ruler;
 }
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "cppcoreguidelines-pro-type-cstyle-cast"
 Ruler::Ruler(Ruler::Orientation orientation, RulerDrawStrategyInterface::Ptr drawStrategy, GtkWidget* drawingAreaWidget)
   : drawingArea{drawingAreaWidget}
   , orientation{orientation}
@@ -37,12 +39,13 @@ Ruler::Ruler(Ruler::Orientation orientation, RulerDrawStrategyInterface::Ptr dra
   this->drawStrategy->setAllocatedSize(width, height);
 
   // Connect signal handlers
-  g_signal_connect(drawingAreaWidget, "draw", G_CALLBACK(drawCallback), this); // NOLINT(cppcoreguidelines-pro-type-cstyle-cast)
+  g_signal_connect(drawingAreaWidget, "draw", G_CALLBACK(drawCallback), this);
   g_signal_connect(
-    drawingAreaWidget, "size-allocate", G_CALLBACK(sizeAllocateCallback), this); // NOLINT(cppcoreguidelines-pro-type-cstyle-cast)
+    drawingAreaWidget, "size-allocate", G_CALLBACK(sizeAllocateCallback), this);
   // Calculate tick intervals and spacing
   updateMajorTickInterval();
 }
+#pragma clang diagnostic pop
 
 Ruler::~Ruler()
 {
