@@ -130,10 +130,10 @@ private:
 
   /**
    * Creates a Ruler.
-   * @param orientation The orientation of the ruler.
+   * @param rulerOrientation The rulerOrientation of the ruler.
    * @param drawingArea The GtkDrawingArea to draw the ruler to.
    */
-  Ruler(Orientation orientation, RulerDrawStrategyInterface::Ptr drawStrategy, GtkWidget* drawingArea);
+  Ruler(Orientation rulerOrientation, RulerDrawStrategyInterface::Ptr strategy, GtkWidget* drawingArea);
 
   /**
    * A callback to be connected to a GtkDrawingArea's "draw" signal.
@@ -163,10 +163,10 @@ private:
 
   /**
    * Updates the stored allocated size of the ruler.
-   * @param width The width of the ruler in pixels.
-   * @param height The height of the ruler in pixels.
+   * @param newWidth The newWidth of the ruler in pixels.
+   * @param newHeight The newHeight of the ruler in pixels.
    */
-  void updateAllocatedSize(int width, int height);
+  void updateAllocatedSize(int newWidth, int newHeight);
 
   /**
    * Calculates an appropriate interval between major ticks, given the current range and dimensions.

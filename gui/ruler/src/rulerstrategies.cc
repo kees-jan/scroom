@@ -3,10 +3,10 @@
 #include <cmath>
 #include <string>
 
-void RulerDrawStrategyInterface::setAllocatedSize(int width, int height)
+void RulerDrawStrategyInterface::setAllocatedSize(int newWidth, int newHeight)
 {
-  this->width  = width;
-  this->height = height;
+  this->width  = newWidth;
+  this->height = newHeight;
 }
 
 RulerDrawStrategyInterface::Ptr HorizontalDrawStrategy::create()

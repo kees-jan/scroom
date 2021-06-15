@@ -24,18 +24,16 @@ Ruler::Ptr Ruler::create(Ruler::Orientation orientation, GtkWidget* drawingArea)
   return ruler;
 }
 
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "cppcoreguidelines-pro-type-cstyle-cast"
-Ruler::Ruler(Ruler::Orientation orientation, RulerDrawStrategyInterface::Ptr drawStrategy, GtkWidget* drawingAreaWidget)
+Ruler::Ruler(Ruler::Orientation rulerOrientation, RulerDrawStrategyInterface::Ptr strategy, GtkWidget* drawingAreaWidget)
   : drawingArea{drawingAreaWidget}
-  , orientation{orientation}
+  , orientation{rulerOrientation}
   , width{gtk_widget_get_allocated_width(drawingAreaWidget)}
   , height{gtk_widget_get_allocated_height(drawingAreaWidget)}
-  , drawStrategy{std::move(drawStrategy)}
+  , drawStrategy{std::move(strategy)}
 {
-  require(drawingArea != nullptr); // NOLINT(cppcoreguidelines-pro-bounds-array-to-pointer-decay,hicpp-no-array-decay)
+  require(drawingArea != nullptr);
 
-  // Set size for drawStrategy
+  // Set size for strategy
   this->drawStrategy->setAllocatedSize(width, height);
 
   // Connect signal handlers
@@ -45,7 +43,6 @@ Ruler::Ruler(Ruler::Orientation orientation, RulerDrawStrategyInterface::Ptr dra
   // Calculate tick intervals and spacing
   updateMajorTickInterval();
 }
-#pragma clang diagnostic pop
 
 Ruler::~Ruler()
 {
@@ -72,11 +69,11 @@ int Ruler::getWidth() const { return width; }
 
 int Ruler::getHeight() const { return height; }
 
-void Ruler::updateAllocatedSize(int width, int height)
+void Ruler::updateAllocatedSize(int newWidth, int newHeight)
 {
-  this->width  = width;
-  this->height = height;
-  drawStrategy->setAllocatedSize(width, height);
+  this->width  = newWidth;
+  this->height = newHeight;
+  drawStrategy->setAllocatedSize(newWidth, newHeight);
 
   updateMajorTickInterval();
 }

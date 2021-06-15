@@ -75,11 +75,11 @@ public:
                             double             lineLength) = 0;
 
   /**
-   * Sets the allocated width and height for the ruler.
-   * @param width Allocated width for the ruler in pixels.
+   * Sets the allocated newWidth and height for the ruler.
+   * @param newWidth Allocated newWidth for the ruler in pixels.
    * @param height Allocated height for the ruler in pixels.
    */
-  void setAllocatedSize(int width, int height);
+  void setAllocatedSize(int newWidth, int height);
 
 protected:
   static constexpr double LINE_COORD_OFFSET{0.5};
