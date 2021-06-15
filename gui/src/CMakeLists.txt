@@ -30,6 +30,7 @@ target_link_libraries(
          PkgConfig::gmodule
          Boost::system
          Boost::filesystem
+         Boost::program_options
          util
          tiledbitmap)
 target_compile_definitions(scroom PRIVATE PLUGIN_DIR="${PLUGIN_INSTALL_LOCATION_ABSOLUTE}"
