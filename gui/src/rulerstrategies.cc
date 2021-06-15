@@ -5,7 +5,7 @@
 
 void RulerDrawStrategyInterface::setAllocatedSize(int width, int height)
 {
-  this->width = width;
+  this->width  = width;
   this->height = height;
 }
 
@@ -19,27 +19,15 @@ RulerDrawStrategyInterface::Ptr VerticalDrawStrategy::create()
   return RulerDrawStrategyInterface::Ptr(new VerticalDrawStrategy());
 }
 
-double HorizontalDrawStrategy::getMajorTickLength(double percentage)
-{
-  return percentage * height;
-}
+double HorizontalDrawStrategy::getMajorTickLength(double percentage) { return percentage * height; }
 
-double VerticalDrawStrategy::getMajorTickLength(double percentage)
-{
-  return percentage * width;
-}
+double VerticalDrawStrategy::getMajorTickLength(double percentage) { return percentage * width; }
 
-double HorizontalDrawStrategy::getDrawAreaSize()
-{
-  return width;
-}
+double HorizontalDrawStrategy::getDrawAreaSize() { return width; }
 
-double VerticalDrawStrategy::getDrawAreaSize()
-{
-  return height;
-}
+double VerticalDrawStrategy::getDrawAreaSize() { return height; }
 
-void   HorizontalDrawStrategy::drawOutline(cairo_t* cr, double lineWidth)
+void HorizontalDrawStrategy::drawOutline(cairo_t* cr, double lineWidth)
 {
   cairo_set_line_width(cr, lineWidth);
   double drawOffset = lineWidth * LINE_COORD_OFFSET;
@@ -62,7 +50,7 @@ void   HorizontalDrawStrategy::drawOutline(cairo_t* cr, double lineWidth)
   cairo_stroke(cr);
 }
 
-void   VerticalDrawStrategy::drawOutline(cairo_t* cr, double lineWidth)
+void VerticalDrawStrategy::drawOutline(cairo_t* cr, double lineWidth)
 {
   cairo_set_line_width(cr, lineWidth);
   double drawOffset = lineWidth * LINE_COORD_OFFSET;
@@ -107,25 +95,33 @@ void VerticalDrawStrategy::drawTickLine(cairo_t* cr, double linePosition, double
   cairo_stroke(cr);
 }
 
-void HorizontalDrawStrategy::drawTickText(cairo_t *cr, const std::string& label, double linePosition, double labelOffset, double labelAlign, double lineLength)
+void HorizontalDrawStrategy::drawTickText(cairo_t*           cr,
+                                          const std::string& label,
+                                          double             linePosition,
+                                          double             labelOffset,
+                                          double             labelAlign,
+                                          double             lineLength)
 {
   // Get the extents of the text if it were drawn
   cairo_text_extents_t textExtents;
   cairo_text_extents(cr, label.c_str(), &textExtents);
   // Center the text on the line
-  cairo_move_to(
-    cr, linePosition + labelOffset, height - labelAlign * lineLength - TEXT_ANCHOR * textExtents.y_bearing);
+  cairo_move_to(cr, linePosition + labelOffset, height - labelAlign * lineLength - TEXT_ANCHOR * textExtents.y_bearing);
   cairo_show_text(cr, label.c_str());
 }
 
-void VerticalDrawStrategy::drawTickText(cairo_t *cr, const std::string& label, double linePosition, double labelOffset, double labelAlign, double lineLength)
+void VerticalDrawStrategy::drawTickText(cairo_t*           cr,
+                                        const std::string& label,
+                                        double             linePosition,
+                                        double             labelOffset,
+                                        double             labelAlign,
+                                        double             lineLength)
 {
   // Get the extents of the text if it were drawn
   cairo_text_extents_t textExtents;
   cairo_text_extents(cr, label.c_str(), &textExtents);
   // Center the text on the line
-  cairo_move_to(
-    cr, width - labelAlign * lineLength - TEXT_ANCHOR * textExtents.y_bearing, linePosition - labelOffset);
+  cairo_move_to(cr, width - labelAlign * lineLength - TEXT_ANCHOR * textExtents.y_bearing, linePosition - labelOffset);
   // Draw text rotated 90 degrees anti-clockwise
   cairo_rotate(cr, -M_PI / 2);
   cairo_show_text(cr, label.c_str());

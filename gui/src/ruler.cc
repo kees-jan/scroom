@@ -2,9 +2,9 @@
 
 #include <cmath>
 #include <iostream>
+#include <utility>
 
 #include <scroom/assertions.hh>
-#include <utility>
 
 ////////////////////////////////////////////////////////////////////////
 // Ruler
@@ -13,7 +13,7 @@ Ruler::Ptr Ruler::create(Ruler::Orientation orientation, GtkWidget* drawingArea)
 {
   Ruler::Ptr ruler;
   // We pass a different drawing strategy to the ruler depending on orientation
-  if (orientation == HORIZONTAL)
+  if(orientation == HORIZONTAL)
   {
     ruler = Ruler::Ptr(new Ruler(orientation, HorizontalDrawStrategy::create(), drawingArea));
   }
@@ -38,7 +38,8 @@ Ruler::Ruler(Ruler::Orientation orientation, RulerDrawStrategyInterface::Ptr dra
 
   // Connect signal handlers
   g_signal_connect(drawingAreaWidget, "draw", G_CALLBACK(drawCallback), this); // NOLINT(cppcoreguidelines-pro-type-cstyle-cast)
-  g_signal_connect(drawingAreaWidget, "size-allocate", G_CALLBACK(sizeAllocateCallback), this); // NOLINT(cppcoreguidelines-pro-type-cstyle-cast)
+  g_signal_connect(
+    drawingAreaWidget, "size-allocate", G_CALLBACK(sizeAllocateCallback), this); // NOLINT(cppcoreguidelines-pro-type-cstyle-cast)
   // Calculate tick intervals and spacing
   updateMajorTickInterval();
 }
@@ -70,7 +71,7 @@ int Ruler::getHeight() const { return height; }
 
 void Ruler::updateAllocatedSize(int width, int height)
 {
-  this->width = width;
+  this->width  = width;
   this->height = height;
   drawStrategy->setAllocatedSize(width, height);
 
@@ -81,7 +82,7 @@ void Ruler::sizeAllocateCallback(GtkWidget* widget, GdkRectangle* /*allocation*/
 {
   auto* ruler = static_cast<Ruler*>(data);
 
-  int width = gtk_widget_get_allocated_width(widget);
+  int width  = gtk_widget_get_allocated_width(widget);
   int height = gtk_widget_get_allocated_height(widget);
 
   ruler->updateAllocatedSize(width, height);
@@ -171,7 +172,8 @@ void Ruler::drawSingleTick(cairo_t* cr, double linePosition, double lineLength, 
     // Set text font and size
     cairo_select_font_face(cr, "sans-serif", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL);
     cairo_set_font_size(cr, FONT_SIZE);
-    // drawTickText(cairo_t *cr, std::string label, double linePosition, double labelOffset, double labelAlign, double lineLength, int width, int height) = 0;
+    // drawTickText(cairo_t *cr, std::string label, double linePosition, double labelOffset, double labelAlign, double lineLength,
+    // int width, int height) = 0;
     drawStrategy->drawTickText(cr, label, linePosition, LABEL_OFFSET, LABEL_ALIGN, lineLength);
   }
   cairo_restore(cr);

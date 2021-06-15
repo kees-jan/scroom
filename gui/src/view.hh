@@ -36,23 +36,23 @@ public:
   using Ptr = boost::shared_ptr<View>;
 
 private:
-  GtkBuilder*                                        scroomXml;
-  PresentationInterface::Ptr                         presentation;
-  SidebarManager                                     sidebarManager;
-  GtkWindow*                                         window;
-  GtkWidget*                                         menubar;
-  GtkWidget*                                         drawingArea;
-  int                                                drawingAreaWidth;
-  int                                                drawingAreaHeight;
-  Scroom::Utils::Rectangle<double>                   presentationRect;
-  GtkScrollbar*                                      vscrollbar;
-  GtkScrollbar*                                      hscrollbar;
-  GtkAdjustment*                                     vscrollbaradjustment;
-  GtkAdjustment*                                     hscrollbaradjustment;
-  GtkDrawingArea*                                    hruler_area;
-  GtkDrawingArea*                                    vruler_area;
-  Ruler::Ptr                                         vruler;
-  Ruler::Ptr                                         hruler;
+  GtkBuilder*                      scroomXml;
+  PresentationInterface::Ptr       presentation;
+  SidebarManager                   sidebarManager;
+  GtkWindow*                       window;
+  GtkWidget*                       menubar;
+  GtkWidget*                       drawingArea;
+  int                              drawingAreaWidth;
+  int                              drawingAreaHeight;
+  Scroom::Utils::Rectangle<double> presentationRect;
+  GtkScrollbar*                    vscrollbar;
+  GtkScrollbar*                    hscrollbar;
+  GtkAdjustment*                   vscrollbaradjustment;
+  GtkAdjustment*                   hscrollbaradjustment;
+  GtkDrawingArea*                  hruler_area;
+  GtkDrawingArea*                  vruler_area;
+  Ruler::Ptr                       vruler;
+  Ruler::Ptr                       hruler;
 
   GtkComboBox*                                       zoomBox;
   GtkListStore*                                      zoomItems;

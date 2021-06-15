@@ -446,8 +446,8 @@ void on_scroom_bootstrap(const FileNameMap& newFilenames)
 
   aboutDialogXml = gtk_builder_new();
   boost::scoped_array<gchar*> obj{new gchar*[2]};
-  obj[0]         = "aboutDialog";
-  obj[1]         = nullptr;
+  obj[0] = "aboutDialog";
+  obj[1] = nullptr;
   gtk_builder_add_objects_from_file(aboutDialogXml, xmlFileName.c_str(), obj.get(), NULL);
 
 
@@ -524,10 +524,10 @@ void onDragDataReceived(GtkWidget*, GdkDragContext*, int, int, GtkSelectionData*
 
 void create_scroom(PresentationInterface::Ptr presentation)
 {
-  GtkBuilder* xml = gtk_builder_new();
-  boost::scoped_array<char*>    obj { new gchar*[2] };
-  obj[0]          = "scroom";
-  obj[1]          = nullptr;
+  GtkBuilder*                xml = gtk_builder_new();
+  boost::scoped_array<char*> obj{new gchar*[2]};
+  obj[0] = "scroom";
+  obj[1] = nullptr;
   gtk_builder_add_objects_from_file(xml, xmlFileName.c_str(), obj.get(), NULL);
 
   if(xml == nullptr)
@@ -593,7 +593,7 @@ void create_scroom(PresentationInterface::Ptr presentation)
     scroom, GTK_DEST_DEFAULT_ALL, targets, 1, static_cast<GdkDragAction>(GDK_ACTION_COPY | GDK_ACTION_MOVE | GDK_ACTION_LINK));
 
   g_signal_connect(static_cast<gpointer>(scroom), "drag_data_received", G_CALLBACK(onDragDataReceived), NULL);
-  //delete xml; //Breaks code for some reason. It seems that this xml is freed somewhere else...
+  // delete xml; //Breaks code for some reason. It seems that this xml is freed somewhere else...
 }
 
 void on_newPresentationInterfaces_update(const std::map<NewPresentationInterface::Ptr, std::string>& newPresentationInterfaces)

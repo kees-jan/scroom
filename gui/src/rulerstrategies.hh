@@ -35,7 +35,7 @@ public:
    */
   virtual double getDrawAreaSize() = 0;
 
-  
+
   /**
    * Draws the outline around the ruler.
    * @param cr Cairo context to draw to.
@@ -43,8 +43,8 @@ public:
    * @param width Allocated width for the ruler in pixels.
    * @param height Allocated height for the ruler in pixels.
    */
-  virtual void drawOutline(cairo_t *cr, double lineWidth) = 0;
-  
+  virtual void drawOutline(cairo_t* cr, double lineWidth) = 0;
+
   /**
    * Draws the line for a ruler tick.
    * @param cr Cairo context to draw to.
@@ -54,7 +54,7 @@ public:
    * @param width Allocated width for the ruler in pixels.
    * @param height Allocated height for the ruler in pixels.
    */
-  virtual void drawTickLine(cairo_t *cr, double linePosition, double lineWidth, double lineLength) = 0;
+  virtual void drawTickLine(cairo_t* cr, double linePosition, double lineWidth, double lineLength) = 0;
 
   /**
    * Draws the label to the right of a tick line.
@@ -67,7 +67,12 @@ public:
    * @param width Allocated width for the ruler in pixels.
    * @param height Allocated height for the ruler in pixels.
    */
-  virtual void drawTickText(cairo_t *cr, const std::string& label, double linePosition, double labelOffset, double labelAlign, double lineLength) = 0;
+  virtual void drawTickText(cairo_t*           cr,
+                            const std::string& label,
+                            double             linePosition,
+                            double             labelOffset,
+                            double             labelAlign,
+                            double             lineLength) = 0;
 
   /**
    * Sets the allocated width and height for the ruler.
@@ -101,9 +106,14 @@ public:
   double getMajorTickLength(double percentage) override;
   double getDrawAreaSize() override;
 
-  void drawOutline(cairo_t *cr, double lineWidth) override;
-  void drawTickLine(cairo_t *cr, double linePosition, double lineWidth, double lineLength) override;
-  void drawTickText(cairo_t *cr, const std::string& label, double linePosition, double labelOffset, double labelAlign, double lineLength) override;
+  void drawOutline(cairo_t* cr, double lineWidth) override;
+  void drawTickLine(cairo_t* cr, double linePosition, double lineWidth, double lineLength) override;
+  void drawTickText(cairo_t*           cr,
+                    const std::string& label,
+                    double             linePosition,
+                    double             labelOffset,
+                    double             labelAlign,
+                    double             lineLength) override;
 };
 
 /**
@@ -121,7 +131,12 @@ public:
   double getMajorTickLength(double percentage) override;
   double getDrawAreaSize() override;
 
-  void drawOutline(cairo_t *cr, double lineWidth) override;
-  void drawTickLine(cairo_t *cr, double linePosition, double lineWidth, double lineLength) override;
-  void drawTickText(cairo_t *cr, const std::string& label, double linePosition, double labelOffset, double labelAlign, double lineLength) override;
+  void drawOutline(cairo_t* cr, double lineWidth) override;
+  void drawTickLine(cairo_t* cr, double linePosition, double lineWidth, double lineLength) override;
+  void drawTickText(cairo_t*           cr,
+                    const std::string& label,
+                    double             linePosition,
+                    double             labelOffset,
+                    double             labelAlign,
+                    double             lineLength) override;
 };
