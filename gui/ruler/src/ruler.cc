@@ -38,8 +38,7 @@ Ruler::Ruler(Ruler::Orientation rulerOrientation, RulerDrawStrategyInterface::Pt
 
   // Connect signal handlers
   g_signal_connect(drawingAreaWidget, "draw", G_CALLBACK(drawCallback), this);
-  g_signal_connect(
-    drawingAreaWidget, "size-allocate", G_CALLBACK(sizeAllocateCallback), this);
+  g_signal_connect(drawingAreaWidget, "size-allocate", G_CALLBACK(sizeAllocateCallback), this);
   // Calculate tick intervals and spacing
   updateMajorTickInterval();
 }

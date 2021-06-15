@@ -8,9 +8,7 @@ target_sources(
 target_link_libraries(
   ruler_lib
   PRIVATE project_options project_warnings
-  PUBLIC util
-         PkgConfig::gtk
-         Boost::system)
+  PUBLIC util PkgConfig::gtk Boost::system)
 
 if(ENABLE_BOOST_TEST)
   add_executable(ruler_tests)
