@@ -27,7 +27,7 @@ double VerticalDrawStrategy::getDrawAreaSize() { return getHeight(); }
 
 void HorizontalDrawStrategy::drawOutline(cairo_t* cr, double lineWidth)
 {
-  int width_ = getWidth();
+  int width_  = getWidth();
   int height_ = getHeight();
 
   cairo_set_line_width(cr, lineWidth);
@@ -51,7 +51,7 @@ void HorizontalDrawStrategy::drawOutline(cairo_t* cr, double lineWidth)
 
 void VerticalDrawStrategy::drawOutline(cairo_t* cr, double lineWidth)
 {
-  int width_ = getWidth();
+  int width_  = getWidth();
   int height_ = getHeight();
 
   cairo_set_line_width(cr, lineWidth);
