@@ -24,7 +24,7 @@ Ruler::Ptr Ruler::create(Ruler::Orientation orientation, GtkWidget* drawingArea)
   return ruler;
 }
 
-Ruler::Ruler(Ruler::Orientation rulerOrientation, RulerDrawStrategyInterface::Ptr strategy, GtkWidget* drawingAreaWidget)
+Ruler::Ruler(Ruler::Orientation rulerOrientation, RulerDrawStrategy::Ptr strategy, GtkWidget* drawingAreaWidget)
   : drawingArea{drawingAreaWidget}
   , orientation{rulerOrientation}
   , width{gtk_widget_get_allocated_width(drawingAreaWidget)}
@@ -240,7 +240,7 @@ int RulerCalculations::calculateInterval(double lower, double upper, double allo
   // from smallest to largest until we find an interval which will produce a
   // spacing of a large enough width/height when drawn
 
-  if(upper <= lower)
+  if(upper <= lower || upper - lower < 1 || allocatedSize <= 0)
   {
     return -1;
   }
@@ -261,6 +261,10 @@ int RulerCalculations::calculateInterval(double lower, double upper, double allo
     // Calculate the drawn size for this interval by mapping from the ruler range
     // to the ruler size on the screen
     double spacing = intervalPixelSpacing(interval, lower, upper, allocatedSize);
+    if (spacing < 0)
+    {
+      return -1;
+    }
     // If we've found a segment of appropriate size, we can stop
     if(spacing >= MIN_SPACE_MAJORTICKS)
     {
@@ -282,13 +286,13 @@ int RulerCalculations::calculateInterval(double lower, double upper, double allo
 
 int RulerCalculations::intervalPixelSpacing(double interval, double lower, double upper, double allocatedSize)
 {
-  if(upper <= lower)
+  if(upper <= lower || allocatedSize <= 0)
   {
     return -1;
   }
 
   const double RANGE_SIZE = upper - lower;
-  return static_cast<int>(round((allocatedSize / RANGE_SIZE) * interval));
+  return floor((allocatedSize / RANGE_SIZE) * interval);
 }
 
 int RulerCalculations::firstTick(double lower, int interval) { return static_cast<int>(floor(lower / interval)) * interval; }
