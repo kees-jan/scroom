@@ -8,13 +8,13 @@
 
 /**
  * The Ruler class employs the Strategy pattern to draw the horizontal and vertical ruler.
- * Implementations of this interface contain the code to draw the parts of the ruler that
+ * Implementations of this class contain the code to draw the parts of the ruler that
  * need to be oriented differently.
  */
-class RulerDrawStrategyInterface : private Interface
+class RulerDrawStrategy : private Interface
 {
 public:
-  using Ptr = boost::shared_ptr<RulerDrawStrategyInterface>;
+  using Ptr = boost::shared_ptr<RulerDrawStrategy>;
 
   /**
    * Returns the length of the major tick lines, given the ruler dimensions.
@@ -81,10 +81,23 @@ public:
    */
   void setAllocatedSize(int newWidth, int height);
 
+  /**
+   * Returns the allocated width.
+   * @return The allocated width.
+   */
+  [[nodiscard]] int getWidth() const;
+
+  /**
+   * Returns the allocated height.
+   * @return The allocated height.
+   */
+  [[nodiscard]] int getHeight() const;
+
 protected:
   static constexpr double LINE_COORD_OFFSET{0.5};
   static constexpr double TEXT_ANCHOR{0.5};
 
+private:
   /** Allocated width for the ruler in pixels. */
   int width;
   /** Allocated height for the ruler in pixels. */
@@ -94,14 +107,14 @@ protected:
 /**
  * This class implements the drawing code for a horizontal ruler.
  */
-class HorizontalDrawStrategy : public RulerDrawStrategyInterface
+class HorizontalDrawStrategy : public RulerDrawStrategy
 {
 public:
   /**
    * Creates a new HorizontalDrawStrategy.
    * @return A new HorizontalDrawStrategy.
    */
-  static RulerDrawStrategyInterface::Ptr create();
+  static RulerDrawStrategy::Ptr create();
 
   double getMajorTickLength(double percentage) override;
   double getDrawAreaSize() override;
@@ -119,14 +132,14 @@ public:
 /**
  * This class implements the drawing code for a vertical ruler.
  */
-class VerticalDrawStrategy : public RulerDrawStrategyInterface
+class VerticalDrawStrategy : public RulerDrawStrategy
 {
 public:
   /**
    * Creates a new VerticalDrawStrategy.
    * @return A new VerticalDrawStrategy.
    */
-  static RulerDrawStrategyInterface::Ptr create();
+  static RulerDrawStrategy::Ptr create();
 
   double getMajorTickLength(double percentage) override;
   double getDrawAreaSize() override;

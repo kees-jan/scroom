@@ -3,78 +3,92 @@
 #include <cmath>
 #include <string>
 
-void RulerDrawStrategyInterface::setAllocatedSize(int newWidth, int newHeight)
+void RulerDrawStrategy::setAllocatedSize(int newWidth, int newHeight)
 {
   this->width  = newWidth;
   this->height = newHeight;
 }
 
-RulerDrawStrategyInterface::Ptr HorizontalDrawStrategy::create()
+int RulerDrawStrategy::getWidth() const
 {
-  return RulerDrawStrategyInterface::Ptr(new HorizontalDrawStrategy());
+  return width;
 }
 
-RulerDrawStrategyInterface::Ptr VerticalDrawStrategy::create()
+int RulerDrawStrategy::getHeight() const
 {
-  return RulerDrawStrategyInterface::Ptr(new VerticalDrawStrategy());
+  return height;
 }
 
-double HorizontalDrawStrategy::getMajorTickLength(double percentage) { return percentage * height; }
+RulerDrawStrategy::Ptr HorizontalDrawStrategy::create()
+{
+  return RulerDrawStrategy::Ptr(new HorizontalDrawStrategy());
+}
 
-double VerticalDrawStrategy::getMajorTickLength(double percentage) { return percentage * width; }
+RulerDrawStrategy::Ptr VerticalDrawStrategy::create()
+{
+  return RulerDrawStrategy::Ptr(new VerticalDrawStrategy());
+}
 
-double HorizontalDrawStrategy::getDrawAreaSize() { return width; }
+double HorizontalDrawStrategy::getMajorTickLength(double percentage) { return percentage * getHeight(); }
 
-double VerticalDrawStrategy::getDrawAreaSize() { return height; }
+double VerticalDrawStrategy::getMajorTickLength(double percentage) { return percentage * getWidth(); }
+
+double HorizontalDrawStrategy::getDrawAreaSize() { return getWidth(); }
+
+double VerticalDrawStrategy::getDrawAreaSize() { return getHeight(); }
 
 void HorizontalDrawStrategy::drawOutline(cairo_t* cr, double lineWidth)
 {
+  int width = getWidth();
+  int height = getHeight();
+
   cairo_set_line_width(cr, lineWidth);
-  double drawOffset = lineWidth * LINE_COORD_OFFSET;
+  const double DRAW_OFFSET = lineWidth * LINE_COORD_OFFSET;
 
   // Draw line along left side of ruler
-  cairo_move_to(cr, drawOffset, 0);
-  cairo_line_to(cr, drawOffset, height);
+  cairo_move_to(cr, DRAW_OFFSET, 0);
+  cairo_line_to(cr, DRAW_OFFSET, height);
 
   // Draw line along right side of ruler
-  cairo_move_to(cr, width - drawOffset, 0);
-  cairo_line_to(cr, width - drawOffset, height);
-  // Render both lines
-  cairo_stroke(cr);
+  cairo_move_to(cr, width - DRAW_OFFSET, 0);
+  cairo_line_to(cr, width - DRAW_OFFSET, height);
 
   // Draw thicker border along bottom of ruler
-  cairo_set_line_width(cr, 2 * lineWidth);
-  drawOffset = 2 * lineWidth * LINE_COORD_OFFSET;
-  cairo_move_to(cr, 0, height - drawOffset);
-  cairo_line_to(cr, width, height - drawOffset);
+  cairo_move_to(cr, 0, height - DRAW_OFFSET);
+  cairo_line_to(cr, width, height - DRAW_OFFSET);
+
+  // Render all lines
   cairo_stroke(cr);
 }
 
 void VerticalDrawStrategy::drawOutline(cairo_t* cr, double lineWidth)
 {
+  int width = getWidth();
+  int height = getHeight();
+
   cairo_set_line_width(cr, lineWidth);
-  double drawOffset = lineWidth * LINE_COORD_OFFSET;
+  const double DRAW_OFFSET = lineWidth * LINE_COORD_OFFSET;
 
   // Draw line along top side of ruler
-  cairo_move_to(cr, 0, drawOffset);
-  cairo_line_to(cr, width, drawOffset);
+  cairo_move_to(cr, 0, DRAW_OFFSET);
+  cairo_line_to(cr, width, DRAW_OFFSET);
 
   // Draw line along bottom side of ruler
-  cairo_move_to(cr, 0, height - drawOffset);
-  cairo_line_to(cr, width, height - drawOffset);
-  // Render both lines
-  cairo_stroke(cr);
+  cairo_move_to(cr, 0, height - DRAW_OFFSET);
+  cairo_line_to(cr, width, height - DRAW_OFFSET);
 
   // Draw thicker border along right of ruler
-  cairo_set_line_width(cr, 2 * lineWidth);
-  drawOffset = 2 * lineWidth * LINE_COORD_OFFSET;
-  cairo_move_to(cr, width - drawOffset, 0);
-  cairo_line_to(cr, width - drawOffset, height);
+  cairo_move_to(cr, width - DRAW_OFFSET, 0);
+  cairo_line_to(cr, width - DRAW_OFFSET, height);
+
+  // Render all lines
   cairo_stroke(cr);
 }
 
 void HorizontalDrawStrategy::drawTickLine(cairo_t* cr, double linePosition, double lineWidth, double lineLength)
 {
+  int height = getHeight();
+
   cairo_set_line_width(cr, lineWidth);
   const double DRAW_OFFSET = lineWidth * LINE_COORD_OFFSET;
 
@@ -86,6 +100,8 @@ void HorizontalDrawStrategy::drawTickLine(cairo_t* cr, double linePosition, doub
 
 void VerticalDrawStrategy::drawTickLine(cairo_t* cr, double linePosition, double lineWidth, double lineLength)
 {
+  int width = getWidth();
+
   cairo_set_line_width(cr, lineWidth);
   const double DRAW_OFFSET = lineWidth * LINE_COORD_OFFSET;
 
@@ -102,6 +118,8 @@ void HorizontalDrawStrategy::drawTickText(cairo_t*           cr,
                                           double             labelAlign,
                                           double             lineLength)
 {
+  int height = getHeight();
+
   // Get the extents of the text if it were drawn
   cairo_text_extents_t textExtents;
   cairo_text_extents(cr, label.c_str(), &textExtents);
@@ -117,6 +135,8 @@ void VerticalDrawStrategy::drawTickText(cairo_t*           cr,
                                         double             labelAlign,
                                         double             lineLength)
 {
+  int width = getWidth();
+
   // Get the extents of the text if it were drawn
   cairo_text_extents_t textExtents;
   cairo_text_extents(cr, label.c_str(), &textExtents);

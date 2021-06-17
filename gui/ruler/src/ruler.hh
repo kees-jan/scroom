@@ -98,7 +98,7 @@ private:
 
   // ==== DRAWING PROPERTIES ====
 
-  RulerDrawStrategyInterface::Ptr drawStrategy;
+  RulerDrawStrategy::Ptr drawStrategy;
 
   /**
    * Cairo integer coordinates map to points halfway between pixels.
@@ -133,7 +133,7 @@ private:
    * @param rulerOrientation The rulerOrientation of the ruler.
    * @param drawingArea The GtkDrawingArea to draw the ruler to.
    */
-  Ruler(Orientation rulerOrientation, RulerDrawStrategyInterface::Ptr strategy, GtkWidget* drawingArea);
+  Ruler(Orientation rulerOrientation, RulerDrawStrategy::Ptr strategy, GtkWidget* drawingArea);
 
   /**
    * A callback to be connected to a GtkDrawingArea's "draw" signal.
@@ -209,13 +209,13 @@ private:
 class RulerCalculations
 {
 private:
-  /** The minimum space between major ticks. */
-  static constexpr int MIN_SPACE_MAJORTICKS{80};
-
   /** Valid intervals between major ticks. */
   constexpr static std::array<int, 4> VALID_INTERVALS{1, 5, 10, 25};
 
 public:
+  /** The minimum space between major ticks. */
+  static constexpr int MIN_SPACE_MAJORTICKS{80};
+
   /**
    * Calculates an appropriate interval between major ticks on a ruler.
    * @param lower Lower limit of the ruler range. Must be strictly less than \p upper.
@@ -230,7 +230,7 @@ public:
    * @param interval The interval to calculate the spacing for.
    * @param lower Lower limit of the ruler range. Must be strictly less than \p upper.
    * @param upper Upper limit of the ruler range. Must be strictly greater than \p lower.
-   * @param allocatedSize The allocated width/height in pixels for the ruler.
+   * @param allocatedSize The allocated width/height in pixels for the ruler. Must be greater than 0.
    * @return The spacing in pixels between tick marks for a given interval, or -1 if the given range is invalid.
    */
   static int intervalPixelSpacing(double interval, double lower, double upper, double allocatedSize);
