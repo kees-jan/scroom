@@ -7,7 +7,6 @@ namespace utf = boost::unit_test;
 #include "ruler.hh"
 
 
-
 BOOST_AUTO_TEST_SUITE(Ruler_Tests)
 
 BOOST_AUTO_TEST_CASE(Ruler_creation_horizontal_signal_handlers)
@@ -154,15 +153,15 @@ BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_lower_greater_than_
 ///////////////
 // Testing INVALID range of size < 1
 
-  BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_of_size_0p1__width_540px)
-  {
-    BOOST_CHECK(RulerCalculations::calculateInterval(0, 0.1, 540) == -1);
-  }
+BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_of_size_0p1__width_540px)
+{
+  BOOST_CHECK(RulerCalculations::calculateInterval(0, 0.1, 540) == -1);
+}
 
-  BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_of_size_0p1__width_1920px)
-  {
-    BOOST_CHECK(RulerCalculations::calculateInterval(0, 0.1, 1920) == -1);
-  }
+BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_of_size_0p1__width_1920px)
+{
+  BOOST_CHECK(RulerCalculations::calculateInterval(0, 0.1, 1920) == -1);
+}
 
 ///////////////
 // Testing INVALID allocatedSize = 0
@@ -193,14 +192,12 @@ BOOST_AUTO_TEST_CASE(Ruler_scaleToRange_src_neg28_neg40__dest_0_100__x_neg28)
   BOOST_CHECK(RulerCalculations::scaleToRange(-28, -10, -40, 0, 100) == 60);
 }
 
-BOOST_AUTO_TEST_CASE(
-  Ruler_scaleToRange_src_LARGE__dest_LARGE__x_LARGE)
+BOOST_AUTO_TEST_CASE(Ruler_scaleToRange_src_LARGE__dest_LARGE__x_LARGE)
 {
   BOOST_CHECK(RulerCalculations::scaleToRange(3.532e4, -4.230e8, 3.243e8, 193, 8.234e5) == 466198);
 }
 
-BOOST_AUTO_TEST_CASE(
-  Ruler_scaleToRange_src_SMALL__dest_SMALL__x_SMALL)
+BOOST_AUTO_TEST_CASE(Ruler_scaleToRange_src_SMALL__dest_SMALL__x_SMALL)
 {
   BOOST_CHECK(RulerCalculations::scaleToRange(0.23, 0, 1, 0.4, 0.75) == 0.4);
 }
@@ -209,50 +206,42 @@ BOOST_AUTO_TEST_CASE(
 ///////////////
 // Testing intervalPixelSpacing()
 
-BOOST_AUTO_TEST_CASE(
-  Ruler_intervalPixelSpacing_range_0_to_1000_interval_1_size_540px)
+BOOST_AUTO_TEST_CASE(Ruler_intervalPixelSpacing_range_0_to_1000_interval_1_size_540px)
 {
   BOOST_CHECK(RulerCalculations::intervalPixelSpacing(1, 0, 1000, 540) == 0);
 }
 
-BOOST_AUTO_TEST_CASE(
-  Ruler_intervalPixelSpacing_range_0_to_1000_interval_1_size_1920px)
+BOOST_AUTO_TEST_CASE(Ruler_intervalPixelSpacing_range_0_to_1000_interval_1_size_1920px)
 {
   BOOST_CHECK(RulerCalculations::intervalPixelSpacing(1, 0, 1000, 1920) == 1);
 }
 
-BOOST_AUTO_TEST_CASE(
-  Ruler_intervalPixelSpacing_range_0_to_1000_interval_5_size_540px)
+BOOST_AUTO_TEST_CASE(Ruler_intervalPixelSpacing_range_0_to_1000_interval_5_size_540px)
 {
   BOOST_CHECK(RulerCalculations::intervalPixelSpacing(5, 0, 1000, 540) == 2);
 }
 
-BOOST_AUTO_TEST_CASE(
-  Ruler_intervalPixelSpacing_range_0_to_1000_interval_5_size_1920px)
+BOOST_AUTO_TEST_CASE(Ruler_intervalPixelSpacing_range_0_to_1000_interval_5_size_1920px)
 {
   BOOST_CHECK(RulerCalculations::intervalPixelSpacing(5, 0, 1000, 1920) == 9);
 }
 
-BOOST_AUTO_TEST_CASE(
-  Ruler_intervalPixelSpacing_range_0_to_1000_interval_25_size_540px)
+BOOST_AUTO_TEST_CASE(Ruler_intervalPixelSpacing_range_0_to_1000_interval_25_size_540px)
 {
   BOOST_CHECK(RulerCalculations::intervalPixelSpacing(25, 0, 1000, 540) == 13);
 }
 
-BOOST_AUTO_TEST_CASE(
-  Ruler_intervalPixelSpacing_range_0_to_1000_interval_25_size_1920px)
+BOOST_AUTO_TEST_CASE(Ruler_intervalPixelSpacing_range_0_to_1000_interval_25_size_1920px)
 {
   BOOST_CHECK(RulerCalculations::intervalPixelSpacing(25, 0, 1000, 1920) == 48);
 }
 
-BOOST_AUTO_TEST_CASE(
-  Ruler_intervalPixelSpacing_range_0_to_1000_interval_50000000_size_540px)
+BOOST_AUTO_TEST_CASE(Ruler_intervalPixelSpacing_range_0_to_1000_interval_50000000_size_540px)
 {
   BOOST_CHECK(RulerCalculations::intervalPixelSpacing(50000000, 0, 1000000000, 540) == 27);
 }
 
-BOOST_AUTO_TEST_CASE(
-  Ruler_intervalPixelSpacing_range_0_to_1000_interval_50000000_size_1920px)
+BOOST_AUTO_TEST_CASE(Ruler_intervalPixelSpacing_range_0_to_1000_interval_50000000_size_1920px)
 {
   BOOST_CHECK(RulerCalculations::intervalPixelSpacing(50000000, 0, 1000000000, 1920) == 95);
 }
@@ -262,25 +251,13 @@ BOOST_AUTO_TEST_CASE(
 // Testing firstTick()
 
 
-BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_0_interval_1)
-{
-  BOOST_CHECK(RulerCalculations::firstTick(0, 1) == 0);
-}
+BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_0_interval_1) { BOOST_CHECK(RulerCalculations::firstTick(0, 1) == 0); }
 
-BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_0_interval_25)
-{
-  BOOST_CHECK(RulerCalculations::firstTick(0, 25) == 0);
-}
+BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_0_interval_25) { BOOST_CHECK(RulerCalculations::firstTick(0, 25) == 0); }
 
-BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_0_interval_50000)
-{
-  BOOST_CHECK(RulerCalculations::firstTick(0, 50000) == 0);
-}
+BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_0_interval_50000) { BOOST_CHECK(RulerCalculations::firstTick(0, 50000) == 0); }
 
-BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_neg123_interval_1)
-{
-  BOOST_CHECK(RulerCalculations::firstTick(-123, 1) == -123);
-}
+BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_neg123_interval_1) { BOOST_CHECK(RulerCalculations::firstTick(-123, 1) == -123); }
 
 BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_neg123_interval_25)
 {
@@ -292,40 +269,25 @@ BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_neg123_interval_50000)
   BOOST_CHECK(RulerCalculations::firstTick(-123, 50000) == -50000);
 }
 
-BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_360_interval_1)
-{
-  BOOST_CHECK(RulerCalculations::firstTick(360, 1) == 360);
-}
+BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_360_interval_1) { BOOST_CHECK(RulerCalculations::firstTick(360, 1) == 360); }
 
-BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_360_interval_25)
-{
-  BOOST_CHECK(RulerCalculations::firstTick(360, 25) == 350);
-}
+BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_360_interval_25) { BOOST_CHECK(RulerCalculations::firstTick(360, 25) == 350); }
 
 BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_360_interval_50000)
 {
   BOOST_CHECK(RulerCalculations::firstTick(360, 50000) == 0);
 }
 
-BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_0p1_interval_1)
-{
-  BOOST_CHECK(RulerCalculations::firstTick(0.1, 1) == 0);
-}
+BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_0p1_interval_1) { BOOST_CHECK(RulerCalculations::firstTick(0.1, 1) == 0); }
 
-BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_0p1_interval_25)
-{
-  BOOST_CHECK(RulerCalculations::firstTick(0.1, 25) == 0);
-}
+BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_0p1_interval_25) { BOOST_CHECK(RulerCalculations::firstTick(0.1, 25) == 0); }
 
 BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_0p1_interval_50000)
 {
   BOOST_CHECK(RulerCalculations::firstTick(0.1, 50000) == 0);
 }
 
-BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_neg0p1_interval_1)
-{
-  BOOST_CHECK(RulerCalculations::firstTick(-0.1, 1) == -1);
-}
+BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_neg0p1_interval_1) { BOOST_CHECK(RulerCalculations::firstTick(-0.1, 1) == -1); }
 
 BOOST_AUTO_TEST_CASE(Ruler_firstTick_lowerLimit_neg0p1_interval_25)
 {

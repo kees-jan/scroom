@@ -261,7 +261,7 @@ int RulerCalculations::calculateInterval(double lower, double upper, double allo
     // Calculate the drawn size for this interval by mapping from the ruler range
     // to the ruler size on the screen
     double spacing = intervalPixelSpacing(interval, lower, upper, allocatedSize);
-    if (spacing < 0)
+    if(spacing < 0)
     {
       return -1;
     }

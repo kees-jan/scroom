@@ -9,25 +9,13 @@ void RulerDrawStrategy::setAllocatedSize(int newWidth, int newHeight)
   this->height = newHeight;
 }
 
-int RulerDrawStrategy::getWidth() const
-{
-  return width;
-}
+int RulerDrawStrategy::getWidth() const { return width; }
 
-int RulerDrawStrategy::getHeight() const
-{
-  return height;
-}
+int RulerDrawStrategy::getHeight() const { return height; }
 
-RulerDrawStrategy::Ptr HorizontalDrawStrategy::create()
-{
-  return RulerDrawStrategy::Ptr(new HorizontalDrawStrategy());
-}
+RulerDrawStrategy::Ptr HorizontalDrawStrategy::create() { return RulerDrawStrategy::Ptr(new HorizontalDrawStrategy()); }
 
-RulerDrawStrategy::Ptr VerticalDrawStrategy::create()
-{
-  return RulerDrawStrategy::Ptr(new VerticalDrawStrategy());
-}
+RulerDrawStrategy::Ptr VerticalDrawStrategy::create() { return RulerDrawStrategy::Ptr(new VerticalDrawStrategy()); }
 
 double HorizontalDrawStrategy::getMajorTickLength(double percentage) { return percentage * getHeight(); }
 
@@ -39,7 +27,7 @@ double VerticalDrawStrategy::getDrawAreaSize() { return getHeight(); }
 
 void HorizontalDrawStrategy::drawOutline(cairo_t* cr, double lineWidth)
 {
-  int width = getWidth();
+  int width  = getWidth();
   int height = getHeight();
 
   cairo_set_line_width(cr, lineWidth);
@@ -63,7 +51,7 @@ void HorizontalDrawStrategy::drawOutline(cairo_t* cr, double lineWidth)
 
 void VerticalDrawStrategy::drawOutline(cairo_t* cr, double lineWidth)
 {
-  int width = getWidth();
+  int width  = getWidth();
   int height = getHeight();
 
   cairo_set_line_width(cr, lineWidth);
