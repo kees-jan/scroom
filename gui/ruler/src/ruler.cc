@@ -33,6 +33,9 @@ Ruler::Ruler(Ruler::Orientation rulerOrientation, RulerDrawStrategy::Ptr strateg
 {
   require(drawingArea != nullptr);
 
+  // Increment reference count of drawing area
+  g_object_ref_sink(drawingArea);
+
   // Set size for strategy
   this->drawStrategy->setAllocatedSize(width, height);
 
@@ -47,6 +50,8 @@ Ruler::~Ruler()
 {
   // Disconnect all signal handlers for this object from the drawing area
   g_signal_handlers_disconnect_by_data(drawingArea, this);
+  // Decrement reference count drawing area
+  g_object_unref(drawingArea);
 }
 
 void Ruler::setRange(double lower, double upper)
