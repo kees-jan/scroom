@@ -65,61 +65,61 @@ void testCorrectIntervalForMinWidth(double lowerLimit, double upperLimit, int ex
   BOOST_CHECK(RulerCalculations::calculateInterval(lowerLimit, upperLimit, minRulerWidth) == expectedInterval);
 }
 
-BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width__interval_1__range_0_to_10)
+BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width_interval_1_range_0_to_10)
 {
   testCorrectIntervalForMinWidth(0, 10, 1);
 }
-BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width__interval_1__range_236_to_877)
+BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width_interval_1_range_236_to_877)
 {
   testCorrectIntervalForMinWidth(236, 877, 1);
 }
-BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width__interval_1__range_158p2_to_687p3)
+BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width_interval_1_range_158p2_to_687p3)
 {
   testCorrectIntervalForMinWidth(158.2, 687.3, 1);
 }
-BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width__interval_1__range_neg791_to_neg312)
+BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width_interval_1_range_neg791_to_neg312)
 {
   testCorrectIntervalForMinWidth(-791, -312, 1);
 }
-BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width__interval_1__range_neg12p56_to27p82)
+BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width_interval_1_range_neg12p56_to27p82)
 {
   testCorrectIntervalForMinWidth(-12.56, 27.82, 1);
 }
-BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width__interval_1__range_negLARGE_to_LARGE)
+BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width_interval_1_range_negLARGE_to_LARGE)
 {
   testCorrectIntervalForMinWidth(-4.2303e5, 3.2434e5, 1);
 }
-BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width__interval_1__range_0_to_1)
+BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width_interval_1_range_0_to_1)
 {
   testCorrectIntervalForMinWidth(0, 1, 1);
 }
 
 
-BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width__interval_5__range_0_to_10)
+BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width_interval_5_range_0_to_10)
 {
   testCorrectIntervalForMinWidth(0, 10, 5);
 }
-BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width__interval_5__range_236_to_877)
+BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width_interval_5_range_236_to_877)
 {
   testCorrectIntervalForMinWidth(236, 877, 5);
 }
-BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width__interval_5__range_158p2_to_687p3)
+BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width_interval_5_range_158p2_to_687p3)
 {
   testCorrectIntervalForMinWidth(158.2, 687.3, 5);
 }
-BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width__interval_5__range_neg791_to_neg312)
+BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width_interval_5_range_neg791_to_neg312)
 {
   testCorrectIntervalForMinWidth(-791, -312, 5);
 }
-BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width__interval_5__range_neg12p56_to27p82)
+BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width_interval_5_range_neg12p56_to27p82)
 {
   testCorrectIntervalForMinWidth(-12.56, 27.82, 5);
 }
-BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width__interval_5__range_negLARGE_to_LARGE)
+BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width_interval_5_range_negLARGE_to_LARGE)
 {
   testCorrectIntervalForMinWidth(-4.2303e5, 3.2434e5, 5);
 }
-BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width__interval_5__range_0_to_1)
+BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width_interval_5_range_0_to_1)
 {
   testCorrectIntervalForMinWidth(0, 1, 5);
 }
@@ -127,12 +127,12 @@ BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width__interval_5__range
 ///////////////
 // Testing INVALID range lower = upper
 
-BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_lower_equals_upper__width_540px)
+BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_lower_equals_upper_width_540px)
 {
   BOOST_CHECK(RulerCalculations::calculateInterval(0, 0, 540) == -1);
 }
 
-BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_lower_equals_upper__width_1920px)
+BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_lower_equals_upper_width_1920px)
 {
   BOOST_CHECK(RulerCalculations::calculateInterval(0, 0, 1920) == -1);
 }
@@ -140,12 +140,12 @@ BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_lower_equals_upper_
 ///////////////
 // Testing INVALID range lower > upper
 
-BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_lower_greater_than_upper__width_540px)
+BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_lower_greater_than_upper_width_540px)
 {
   BOOST_CHECK(RulerCalculations::calculateInterval(0, -100, 540) == -1);
 }
 
-BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_lower_greater_than_upper__width_1920px)
+BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_lower_greater_than_upper_width_1920px)
 {
   BOOST_CHECK(RulerCalculations::calculateInterval(0, -100, 1920) == -1);
 }
@@ -153,12 +153,12 @@ BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_lower_greater_than_
 ///////////////
 // Testing INVALID range of size < 1
 
-BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_of_size_0p1__width_540px)
+BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_of_size_0p1_width_540px)
 {
   BOOST_CHECK(RulerCalculations::calculateInterval(0, 0.1, 540) == -1);
 }
 
-BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_of_size_0p1__width_1920px)
+BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_of_size_0p1_width_1920px)
 {
   BOOST_CHECK(RulerCalculations::calculateInterval(0, 0.1, 1920) == -1);
 }
@@ -182,22 +182,22 @@ BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_allocatedSize_less_than_0px)
 ///////////////
 // Testing scaleToRange()
 
-BOOST_AUTO_TEST_CASE(Ruler_scaleToRange_src_0_to_10__dest_0_100__x_5)
+BOOST_AUTO_TEST_CASE(Ruler_scaleToRange_src_0_to_10_dest_0_100_x_5)
 {
   BOOST_CHECK(RulerCalculations::scaleToRange(15, 10, 20, 0, 100) == 50);
 }
 
-BOOST_AUTO_TEST_CASE(Ruler_scaleToRange_src_neg28_neg40__dest_0_100__x_neg28)
+BOOST_AUTO_TEST_CASE(Ruler_scaleToRange_src_neg28_neg40_dest_0_100_x_neg28)
 {
   BOOST_CHECK(RulerCalculations::scaleToRange(-28, -10, -40, 0, 100) == 60);
 }
 
-BOOST_AUTO_TEST_CASE(Ruler_scaleToRange_src_LARGE__dest_LARGE__x_LARGE)
+BOOST_AUTO_TEST_CASE(Ruler_scaleToRange_src_LARGE_dest_LARGE_x_LARGE)
 {
   BOOST_CHECK(RulerCalculations::scaleToRange(3.532e4, -4.230e8, 3.243e8, 193, 8.234e5) == 466198);
 }
 
-BOOST_AUTO_TEST_CASE(Ruler_scaleToRange_src_SMALL__dest_SMALL__x_SMALL)
+BOOST_AUTO_TEST_CASE(Ruler_scaleToRange_src_SMALL_dest_SMALL_x_SMALL)
 {
   BOOST_CHECK(RulerCalculations::scaleToRange(0.23, 0, 1, 0.4, 0.75) == 0.4);
 }
