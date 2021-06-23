@@ -15,18 +15,17 @@ Ruler::Ptr Ruler::create(Ruler::Orientation orientation, GtkWidget* drawingArea)
   // We pass a different drawing strategy to the ruler depending on orientation
   if(orientation == HORIZONTAL)
   {
-    ruler = Ruler::Ptr(new Ruler(orientation, HorizontalDrawStrategy::create(), drawingArea));
+    ruler = Ruler::Ptr(new Ruler(HorizontalDrawStrategy::create(), drawingArea));
   }
   else
   {
-    ruler = Ruler::Ptr(new Ruler(orientation, VerticalDrawStrategy::create(), drawingArea));
+    ruler = Ruler::Ptr(new Ruler(VerticalDrawStrategy::create(), drawingArea));
   }
   return ruler;
 }
 
-Ruler::Ruler(Ruler::Orientation rulerOrientation, RulerDrawStrategy::Ptr strategy, GtkWidget* drawingAreaWidget)
+Ruler::Ruler(RulerDrawStrategy::Ptr strategy, GtkWidget* drawingAreaWidget)
   : drawingArea{drawingAreaWidget}
-  , orientation{rulerOrientation}
   , width{gtk_widget_get_allocated_width(drawingAreaWidget)}
   , height{gtk_widget_get_allocated_height(drawingAreaWidget)}
   , drawStrategy{std::move(strategy)}

@@ -80,8 +80,6 @@ private:
    */
   constexpr static std::array<int, 2> SUBTICK_SEGMENTS{5, 2};
 
-  Orientation orientation;
-
   // The range to be displayed.
   double lowerLimit{DEFAULT_LOWER};
   double upperLimit{DEFAULT_UPPER};
@@ -133,7 +131,7 @@ private:
    * @param rulerOrientation The rulerOrientation of the ruler.
    * @param drawingArea The GtkDrawingArea to draw the ruler to.
    */
-  Ruler(Orientation rulerOrientation, RulerDrawStrategy::Ptr strategy, GtkWidget* drawingArea);
+  Ruler(RulerDrawStrategy::Ptr strategy, GtkWidget* drawingArea);
 
   /**
    * A callback to be connected to a GtkDrawingArea's "draw" signal.
