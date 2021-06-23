@@ -101,8 +101,4 @@ void invalidate()
 {
   GdkWindow* window = gtk_widget_get_window(drawingArea);
   gdk_window_invalidate_rect(window, nullptr, false);
-
-  gdk_threads_enter();
-  gdk_window_process_all_updates();
-  gdk_threads_leave();
 }

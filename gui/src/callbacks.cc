@@ -247,11 +247,20 @@ gboolean on_drawingarea_expose_event(GtkWidget* widget, GdkEventExpose*, gpointe
 {
   // printf("expose\n");
 
-  cairo_t* cr   = gdk_cairo_create(gtk_widget_get_window(widget));
-  View*    view = static_cast<View*>(user_data);
+  cairo_region_t* re = cairo_region_create();
+
+  GdkDrawingContext* dc;
+  dc = gdk_window_begin_draw_frame(gtk_widget_get_window(widget), re);
+
+  cairo_t* cr = gdk_drawing_context_get_cairo_context(dc);
+
+  View* view = static_cast<View*>(user_data);
   view->redraw(cr);
 
-  cairo_destroy(cr);
+  gdk_window_end_draw_frame(gtk_widget_get_window(widget), dc);
+
+  cairo_region_destroy(re);
+
   return FALSE;
 }
 
@@ -446,8 +455,9 @@ void on_scroom_bootstrap(const FileNameMap& newFilenames)
 
   aboutDialogXml = gtk_builder_new();
   boost::scoped_array<gchar*> obj{new gchar*[2]};
-  obj[0] = "aboutDialog";
-  obj[1] = nullptr;
+  std::string                 str = "aboutDialog";
+  obj[0]                          = const_cast<char*>(str.c_str());
+  obj[1]                          = nullptr;
   gtk_builder_add_objects_from_file(aboutDialogXml, xmlFileName.c_str(), obj.get(), NULL);
 
 
@@ -496,8 +506,8 @@ void onDragDataReceived(GtkWidget*, GdkDragContext*, int, int, GtkSelectionData*
   {
     printf("\t%s\n", *uri);
 
-    GError* error    = nullptr;
-    gchar*  filename = g_filename_from_uri(*uri, nullptr, &error);
+    error           = nullptr;
+    gchar* filename = g_filename_from_uri(*uri, nullptr, &error);
     if(error != nullptr)
     {
       ShowModalDialog(error->message);
@@ -526,8 +536,9 @@ void create_scroom(PresentationInterface::Ptr presentation)
 {
   GtkBuilder*                xml = gtk_builder_new();
   boost::scoped_array<char*> obj{new gchar*[2]};
-  obj[0] = "scroom";
-  obj[1] = nullptr;
+  std::string                str = "scroom";
+  obj[0]                         = const_cast<char*>(str.c_str());
+  obj[1]                         = nullptr;
   gtk_builder_add_objects_from_file(xml, xmlFileName.c_str(), obj.get(), NULL);
 
   if(xml == nullptr)
