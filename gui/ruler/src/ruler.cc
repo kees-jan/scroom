@@ -244,10 +244,9 @@ int RulerCalculations::calculateInterval(double lower, double upper, double allo
   // from smallest to largest until we find an interval which will produce a
   // spacing of a large enough width/height when drawn
 
-  if(upper <= lower || upper - lower < 1 || allocatedSize <= 0)
-  {
-    return -1;
-  }
+  require(upper > lower);
+  require(upper - lower >= 1);
+  require(allocatedSize > 0);
 
   // Index in the ruler's VALID_INTERVALS array
   int intervalIndex = 0;
@@ -290,10 +289,8 @@ int RulerCalculations::calculateInterval(double lower, double upper, double allo
 
 int RulerCalculations::intervalPixelSpacing(double interval, double lower, double upper, double allocatedSize)
 {
-  if(upper <= lower || allocatedSize <= 0)
-  {
-    return -1;
-  }
+  require(upper > lower);
+  require(allocatedSize > 0);
 
   const double RANGE_SIZE = upper - lower;
   return floor((allocatedSize / RANGE_SIZE) * interval);

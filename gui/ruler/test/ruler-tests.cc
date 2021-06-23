@@ -125,61 +125,6 @@ BOOST_AUTO_TEST_CASE(Ruler_correct_interval_for_minimum_width_interval_5_range_0
 }
 
 ///////////////
-// Testing INVALID range lower = upper
-
-BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_lower_equals_upper_width_540px)
-{
-  BOOST_CHECK(RulerCalculations::calculateInterval(0, 0, 540) == -1);
-}
-
-BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_lower_equals_upper_width_1920px)
-{
-  BOOST_CHECK(RulerCalculations::calculateInterval(0, 0, 1920) == -1);
-}
-
-///////////////
-// Testing INVALID range lower > upper
-
-BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_lower_greater_than_upper_width_540px)
-{
-  BOOST_CHECK(RulerCalculations::calculateInterval(0, -100, 540) == -1);
-}
-
-BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_lower_greater_than_upper_width_1920px)
-{
-  BOOST_CHECK(RulerCalculations::calculateInterval(0, -100, 1920) == -1);
-}
-
-///////////////
-// Testing INVALID range of size < 1
-
-BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_of_size_0p1_width_540px)
-{
-  BOOST_CHECK(RulerCalculations::calculateInterval(0, 0.1, 540) == -1);
-}
-
-BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_invalid_range_of_size_0p1_width_1920px)
-{
-  BOOST_CHECK(RulerCalculations::calculateInterval(0, 0.1, 1920) == -1);
-}
-
-///////////////
-// Testing INVALID allocatedSize = 0
-
-BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_allocatedSize_0px)
-{
-  BOOST_CHECK(RulerCalculations::calculateInterval(0, -100, 0) == -1);
-}
-
-///////////////
-// Testing INVALID allocatedSize < 1
-
-BOOST_AUTO_TEST_CASE(Ruler_intervalCalculation_allocatedSize_less_than_0px)
-{
-  BOOST_CHECK(RulerCalculations::calculateInterval(0, -100, -50) == -1);
-}
-
-///////////////
 // Testing scaleToRange()
 
 BOOST_AUTO_TEST_CASE(Ruler_scaleToRange_src_0_to_10_dest_0_100_x_5)
