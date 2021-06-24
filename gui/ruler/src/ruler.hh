@@ -44,30 +44,6 @@ public:
    */
   void setRange(double lower, double upper);
 
-  /**
-   * Returns the current lower limit of the ruler's range.
-   * @return The current lower limit of the ruler's range.
-   */
-  [[nodiscard]] double getLowerLimit() const;
-
-  /**
-   * Returns the current upper limit of the ruler's range.
-   * @return The current upper limit of the ruler's range.
-   */
-  [[nodiscard]] double getUpperLimit() const;
-
-  /**
-   * Returns the allocated width for the ruler's drawing area.
-   * @return The allocated width for the ruler's drawing area.
-   */
-  [[nodiscard]] int getWidth() const;
-
-  /**
-   * Returns the allocated height for the ruler's drawing area.
-   * @return The allocated height for the ruler's drawing area.
-   */
-  [[nodiscard]] int getHeight() const;
-
 private:
   GtkWidget* drawingArea{};
 
@@ -97,13 +73,6 @@ private:
   // ==== DRAWING PROPERTIES ====
 
   RulerDrawStrategy::Ptr drawStrategy;
-
-  /**
-   * Cairo integer coordinates map to points halfway between pixels.
-   * Therefore, if we offset coordinates by 0.5 in the appropriate
-   * direction, we can draw clear lines.
-   */
-  static constexpr double LINE_COORD_OFFSET{0.5};
 
   /** The minimum space between sub-ticks. */
   static constexpr int MIN_SPACE_SUBTICKS{5};

@@ -64,14 +64,6 @@ void Ruler::setRange(double lower, double upper)
   gtk_widget_queue_draw(drawingArea);
 }
 
-double Ruler::getLowerLimit() const { return lowerLimit; }
-
-double Ruler::getUpperLimit() const { return upperLimit; }
-
-int Ruler::getWidth() const { return width; }
-
-int Ruler::getHeight() const { return height; }
-
 void Ruler::updateAllocatedSize(int newWidth, int newHeight)
 {
   this->width  = newWidth;
