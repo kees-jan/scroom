@@ -26,36 +26,35 @@ namespace
     Colormappable::Ptr c = boost::dynamic_pointer_cast<Colormappable>(p);
     if(c && p->isPropertyDefined(MONOCHROME_COLORMAPPABLE_PROPERTY_NAME))
     {
-      Color    col   = c->getMonochromeColor();
-      GtkCssProvider *bgCssProvider = gtk_css_provider_new();
-      std::string     bgCss       = "* { background-image:none; background-color: #" + col.getHex() + " ;}";
+      Color           col           = c->getMonochromeColor();
+      GtkCssProvider* bgCssProvider = gtk_css_provider_new();
+      std::string     bgCss         = "* { background-image:none; background-color: #" + col.getHex() + " ;}";
 
       // Fill the provider with the correct data bgCss string
       gtk_css_provider_load_from_data(bgCssProvider, bgCss.c_str(), -1, nullptr);
 
       // Get the style context
-      GtkStyleContext * bgContext = gtk_widget_get_style_context(w);
+      GtkStyleContext* bgContext = gtk_widget_get_style_context(w);
 
       // Add the provider
       gtk_style_context_add_provider(bgContext, GTK_STYLE_PROVIDER(bgCssProvider), GTK_STYLE_PROVIDER_PRIORITY_USER);
 
       g_object_unref(bgCssProvider);
 
-      std::string fgCss = "* { color: #" + col.getContrastingBlackOrWhite().getHex() + " ;}";
-      GtkWidget* label = gtk_bin_get_child(GTK_BIN(w));
-      GtkCssProvider *fgCssProvider = gtk_css_provider_new();
+      std::string     fgCss         = "* { color: #" + col.getContrastingBlackOrWhite().getHex() + " ;}";
+      GtkWidget*      label         = gtk_bin_get_child(GTK_BIN(w));
+      GtkCssProvider* fgCssProvider = gtk_css_provider_new();
 
       // Fill the provider with the correct data fgCss string
       gtk_css_provider_load_from_data(fgCssProvider, fgCss.c_str(), -1, nullptr);
 
       // Get the style context
-      GtkStyleContext *fgContext = gtk_widget_get_style_context(label);
+      GtkStyleContext* fgContext = gtk_widget_get_style_context(label);
 
       // Add the provider
       gtk_style_context_add_provider(fgContext, GTK_STYLE_PROVIDER(fgCssProvider), GTK_STYLE_PROVIDER_PRIORITY_USER);
 
       g_object_unref(fgContext);
-
     }
   }
 } // namespace

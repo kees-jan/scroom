@@ -91,7 +91,7 @@ public:
   {
     std::stringstream stream;
     stream << std::hex << (byteFromDouble(red) << 16 | byteFromDouble(green) << 8 | byteFromDouble(blue) << 0);
-    return  stream.str();
+    return stream.str();
   }
 
   [[nodiscard]] uint32_t getRGB24() const
