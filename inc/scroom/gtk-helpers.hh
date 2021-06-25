@@ -20,7 +20,7 @@ namespace Scroom
     class Wrapper
     {
     public:
-      GtkFunction f;
+      GSourceFunc f;
       gpointer    data;
 
     public:
@@ -42,9 +42,9 @@ namespace Scroom
 
     void useRecursiveGdkLock();
 
-    inline GdkRectangle createGdkRectangle(int x, int y, int width, int height)
+    inline cairo_rectangle_int_t createCairoIntRectangle(int x, int y, int width, int height)
     {
-      GdkRectangle rect;
+      cairo_rectangle_int_t rect;
       rect.x      = x;
       rect.y      = y;
       rect.width  = width;
@@ -55,12 +55,12 @@ namespace Scroom
   } // namespace GtkHelpers
 } // namespace Scroom
 
-inline bool operator==(GdkRectangle const& left, GdkRectangle const& right)
+inline bool operator==(cairo_rectangle_int_t const& left, cairo_rectangle_int_t const& right)
 {
   return left.x == right.x && left.y == right.y && left.width == right.width && left.height == right.height;
 }
 
 inline bool operator==(GdkPoint const& left, GdkPoint const& right) { return left.x == right.x && left.y == right.y; }
 
-std::ostream& operator<<(std::ostream& os, GdkRectangle const& r);
+std::ostream& operator<<(std::ostream& os, cairo_rectangle_int_t const& r);
 std::ostream& operator<<(std::ostream& os, GdkPoint const& p);

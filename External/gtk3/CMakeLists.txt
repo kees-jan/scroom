@@ -4,17 +4,12 @@ pkg_check_modules(
   gtk
   REQUIRED
   IMPORTED_TARGET
-  gtk+-2.0)
+  gtk+-3.0)
 pkg_check_modules(
   cairo
   REQUIRED
   IMPORTED_TARGET
   cairo)
-pkg_check_modules(
-  glade
-  REQUIRED
-  IMPORTED_TARGET
-  libglade-2.0)
 pkg_check_modules(
   gthread
   REQUIRED
@@ -31,9 +26,6 @@ if(gtk_FOUND)
 endif()
 if(cairo_FOUND)
   set_target_properties(PkgConfig::cairo PROPERTIES IMPORTED_GLOBAL TRUE)
-endif()
-if(glade_FOUND)
-  set_target_properties(PkgConfig::glade PROPERTIES IMPORTED_GLOBAL TRUE)
 endif()
 if(gthread_FOUND)
   set_target_properties(PkgConfig::gthread PROPERTIES IMPORTED_GLOBAL TRUE)

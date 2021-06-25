@@ -1,3 +1,4 @@
+add_subdirectory(ruler)
 add_subdirectory(src)
 
 set(abs_top_builddir "${Scroom_BINARY_DIR}")

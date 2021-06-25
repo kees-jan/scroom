@@ -14,7 +14,6 @@
 #include <vector>
 
 #include <gdk/gdk.h>
-#include <glade/glade.h>
 #include <gtk/gtk.h>
 
 #include <cairo.h>
@@ -25,6 +24,7 @@
 #include <scroom/utilities.hh>
 #include <scroom/viewinterface.hh>
 
+#include "../ruler/src/ruler.hh"
 #include "progressbarmanager.hh"
 #include "sidebarmanager.hh"
 
@@ -36,21 +36,24 @@ public:
   using Ptr = boost::shared_ptr<View>;
 
 private:
-  GladeXML*                                          scroomXml;
-  PresentationInterface::Ptr                         presentation;
-  SidebarManager                                     sidebarManager;
-  GtkWindow*                                         window;
-  GtkWidget*                                         menubar;
-  GtkWidget*                                         drawingArea;
-  int                                                drawingAreaWidth;
-  int                                                drawingAreaHeight;
-  Scroom::Utils::Rectangle<double>                   presentationRect;
-  GtkVScrollbar*                                     vscrollbar;
-  GtkHScrollbar*                                     hscrollbar;
-  GtkAdjustment*                                     vscrollbaradjustment;
-  GtkAdjustment*                                     hscrollbaradjustment;
-  GtkRuler*                                          hruler;
-  GtkRuler*                                          vruler;
+  GtkBuilder*                      scroomXml;
+  PresentationInterface::Ptr       presentation;
+  SidebarManager                   sidebarManager;
+  GtkWindow*                       window;
+  GtkWidget*                       menubar;
+  GtkWidget*                       drawingArea;
+  int                              drawingAreaWidth;
+  int                              drawingAreaHeight;
+  Scroom::Utils::Rectangle<double> presentationRect;
+  GtkScrollbar*                    vscrollbar;
+  GtkScrollbar*                    hscrollbar;
+  GtkAdjustment*                   vscrollbaradjustment;
+  GtkAdjustment*                   hscrollbaradjustment;
+  GtkDrawingArea*                  hruler_area;
+  GtkDrawingArea*                  vruler_area;
+  Ruler::Ptr                       vruler;
+  Ruler::Ptr                       hruler;
+
   GtkComboBox*                                       zoomBox;
   GtkListStore*                                      zoomItems;
   GtkProgressBar*                                    progressBar;
@@ -88,10 +91,10 @@ private:
   };
 
 private:
-  View(GladeXML* scroomXml);
+  View(GtkBuilder* scroomXml);
 
 public:
-  static Ptr create(GladeXML* scroomXml, PresentationInterface::Ptr presentation);
+  static Ptr create(GtkBuilder* scroomXml, PresentationInterface::Ptr presentation);
 
   ~View() override;
   View(const View&) = delete;

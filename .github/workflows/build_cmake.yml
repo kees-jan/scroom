@@ -1,6 +1,6 @@
 name: CMake
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
@@ -16,73 +16,76 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-20.04, ubuntu-18.04]
+        os: [ ubuntu-20.04, ubuntu-18.04 ]
       fail-fast: false
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-        submodules: true
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          submodules: true
 
-    - name: Cache
-      uses: actions/cache@v2
-      env:
-        cache-name: cache-conan-modules
-      with:
-        path: |
-          ${{ env.CONAN_USER_HOME }}
-          ~/.cache/pip
-        key: ${{ runner.os }}-${{ env.BUILD_TYPE }}-${{ hashFiles('CMakeLists.txt') }}-${{ hashFiles('cmake/Conan.cmake') }}
+      - name: Cache
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-conan-modules
+        with:
+          path: |
+            ${{ env.CONAN_USER_HOME }}
+            ~/.cache/pip
+          key: ${{ runner.os }}-${{ env.BUILD_TYPE }}-${{ hashFiles('CMakeLists.txt') }}-${{ hashFiles('cmake/Conan.cmake') }}
 
-    - name: Create Build Environment
-      # Some projects don't allow in-source building, so create a separate build directory
-      # We'll use this as our working directory for all subsequent commands
-      run: cmake -E make_directory ${{runner.workspace}}/build
+      - name: Create Build Environment
+        # Some projects don't allow in-source building, so create a separate build directory
+        # We'll use this as our working directory for all subsequent commands
+        run: cmake -E make_directory ${{runner.workspace}}/build
+      
+      - name: Update apt package repos
+        run: >
+          sudo apt-get update
+      
+      - name: Install apt packages
+        run: >
+          sudo apt-get -yq --no-install-suggests --no-install-recommends install
+          libboost-dev
+          libboost-filesystem-dev
+          libboost-program-options-dev
+          libboost-system-dev
+          libboost-test-dev
+          libboost-thread-dev
+          libcairo2-dev
+          libglib2.0-dev
+          libgtest-dev
+          libgtk-3-dev
+          libtiff5-dev
+          pkg-config
 
-    - name: Install apt packages
-      run: >
-        sudo apt-get -yq --no-install-suggests --no-install-recommends install
-        libboost-dev
-        libboost-filesystem-dev
-        libboost-program-options-dev
-        libboost-system-dev
-        libboost-test-dev
-        libboost-thread-dev
-        libcairo2-dev
-        libglade2-dev
-        libglib2.0-dev
-        libgtest-dev
-        libgtk2.0-dev
-        libtiff5-dev
-        pkg-config
+      - name: Install conan
+        run: |
+          python3 -m pip install --upgrade pip setuptools
+          python3 -m pip install --no-warn-script-location conan
+          source ~/.profile
 
-    - name: Install conan
-      run: |
-        python3 -m pip install --upgrade pip setuptools
-        python3 -m pip install --no-warn-script-location conan
-        source ~/.profile
+      - name: Configure CMake
+        working-directory: ${{runner.workspace}}/build
+        # Note the current convention is to use the -S and -B options here to specify source
+        # and build directories, but this is only available with CMake 3.13 and higher.
+        # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
+        #
+        # We need to source the profile file to make sure conan is in PATH
+        run: |
+          source ~/.profile
+          cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE
 
-    - name: Configure CMake
-      working-directory: ${{runner.workspace}}/build
-      # Note the current convention is to use the -S and -B options here to specify source
-      # and build directories, but this is only available with CMake 3.13 and higher.
-      # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
-      #
-      # We need to source the profile file to make sure conan is in PATH
-      run: |
-        source ~/.profile
-        cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+      - name: Build
+        working-directory: ${{runner.workspace}}/build
+        # Execute the build.  You can specify a specific target with "--target <NAME>"
+        run: cmake --build . --config $BUILD_TYPE -j2
 
-    - name: Build
-      working-directory: ${{runner.workspace}}/build
-      # Execute the build.  You can specify a specific target with "--target <NAME>"
-      run: cmake --build . --config $BUILD_TYPE -j2
-
-    - name: Test
-      working-directory: ${{runner.workspace}}/build
-      # Execute tests defined by the CMake configuration.
-      # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
-      run: ctest -C $BUILD_TYPE -j2
+      - name: Test
+        working-directory: ${{runner.workspace}}/build
+        # Execute tests defined by the CMake configuration.
+        # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
+        run: xvfb-run ctest -C $BUILD_TYPE -j2 --output-on-failure
 
   build-windows:
     runs-on: windows-latest
@@ -101,8 +104,8 @@ jobs:
           mingw-w64-x86_64-dlfcn
           mingw-w64-x86_64-gcc
           mingw-w64-x86_64-glade
-          mingw-w64-x86_64-gtk2
-          mingw-w64-x86_64-libglade
+          mingw-w64-x86_64-gtk3
+          mingw-w64-x86_64-gtk-update-icon-cache
           mingw-w64-x86_64-toolchain
           pkg-config
           zip
@@ -123,7 +126,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           path: Scroom-*Source.tar.gz
-          
+
       - uses: actions/upload-artifact@v2
         with:
           path: scroom-win-*.zip

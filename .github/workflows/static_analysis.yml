@@ -30,10 +30,9 @@ jobs:
           libboost-test-dev
           libboost-thread-dev
           libcairo2-dev
-          libglade2-dev
           libglib2.0-dev
           libgtest-dev
-          libgtk2.0-dev
+          libgtk-3-dev
           libtiff5-dev
           pkg-config
           parallel
@@ -79,6 +78,7 @@ jobs:
         env:
           PROJECT_TOKEN: ${{ secrets.CODACY_API_KEY }}
           COMMIT: ${{ github.sha }}
+        if: ${{ github.repository_owner == 'kees-jan' }}
         run: |
           mv /tmp/codacy-clang-tidy-latest .
           /tmp/codacy-clang-tidy/scripts/send-results.sh < ct.log

@@ -69,7 +69,7 @@ int main(int argc, char* argv[])
   gdk_threads_init();
 
   gdk_threads_enter();
-  gtk_set_locale();
+  setlocale(LC_ALL, "");
   gtk_init(&argc, &argv);
 
   GtkWidget* window = create_window();

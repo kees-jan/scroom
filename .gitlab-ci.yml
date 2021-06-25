@@ -15,15 +15,15 @@ build-windows:
   tags:
     - Windows
   script:
-      # Verify CI vars work in mingw TODO; remove
+    # Verify CI vars work in mingw TODO; remove
     - C:/msys64/usr/bin/env MSYSTEM=MINGW64 c:/msys64/usr/bin/bash -l -c "ls /c/builds/$CI_PROJECT_PATH/"
     - if (Test-Path '.\scroom') { Remove-Item '.\scroom' -Recurse -Force; }
     - cd C:\
     - if (Test-Path '.\scroom') { Remove-Item '.\scroom' -Recurse -Force; }
-      # Mingw doesn't inherit the Powershell working directory, so we can either:
-      #  * in-line all steps / script them
-      #  * Move to the correct directory in each step.
-      #  The second option allows us to split commands, so we are sticking with that for now.
+    # Mingw doesn't inherit the Powershell working directory, so we can either:
+    #  * in-line all steps / script them
+    #  * Move to the correct directory in each step.
+    #  The second option allows us to split commands, so we are sticking with that for now.
     - C:/msys64/usr/bin/env MSYSTEM=MINGW64 c:/msys64/usr/bin/bash -l -c "cd /c/ && git clone https://gitlab.com/sep-group-2/scroom"
     - C:/msys64/usr/bin/env MSYSTEM=MINGW64 c:/msys64/usr/bin/bash -l -c "cd /c/scroom && git checkout $CI_COMMIT_SHA"
     - C:/msys64/usr/bin/env MSYSTEM=MINGW64 c:/msys64/usr/bin/bash -l -c "cd /c/scroom && autoreconf -i"

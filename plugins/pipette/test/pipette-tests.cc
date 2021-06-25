@@ -5,6 +5,14 @@
 
 #include "pipette.hh"
 
+class GtkInitFixture
+{
+public:
+  GtkInitFixture() { gtk_init(0, NULL); }
+};
+
+BOOST_GLOBAL_FIXTURE(GtkInitFixture);
+
 BOOST_AUTO_TEST_SUITE(Pipette_Tests)
 
 class DummyPresentation

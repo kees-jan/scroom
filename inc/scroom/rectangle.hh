@@ -44,7 +44,7 @@ namespace Scroom
         , vertically(vertically_)
       {}
 
-      Rectangle(const GdkRectangle& rect)
+      Rectangle(const cairo_rectangle_int_t& rect)
         : horizontally(rect.x, rect.width)
         , vertically(rect.y, rect.height)
       {}
@@ -61,9 +61,9 @@ namespace Scroom
         , vertically(rect.getVertically())
       {}
 
-      [[nodiscard]] GdkRectangle toGdkRectangle() const
+      [[nodiscard]] cairo_rectangle_int_t toGdkRectangle() const
       {
-        return Scroom::GtkHelpers::createGdkRectangle(getLeft(), getTop(), getWidth(), getHeight());
+        return Scroom::GtkHelpers::createCairoIntRectangle(getLeft(), getTop(), getWidth(), getHeight());
       }
 
       [[nodiscard]] Rectangle<int> toIntRectangle() const { return Rectangle<int>(getLeft(), getTop(), getWidth(), getHeight()); }
@@ -297,7 +297,7 @@ namespace Scroom
       return os;
     }
 
-    inline std::ostream& operator<<(std::ostream& os, const GdkRectangle& r) { return os << Rectangle<double>(r); }
+    inline std::ostream& operator<<(std::ostream& os, const cairo_rectangle_int_t& r) { return os << Rectangle<double>(r); }
 
     template <typename T, typename U>
     Rectangle<typename std::common_type<T, U>::type> operator*(Rectangle<T> left, U right)
@@ -313,9 +313,15 @@ namespace Scroom
       return right * left;
     }
 
-    inline Rectangle<double> operator*(GdkRectangle const& r, Point<double> const& p) { return Rectangle<double>(r) * p; }
+    inline Rectangle<double> operator*(cairo_rectangle_int_t const& r, Point<double> const& p)
+    {
+      return Rectangle<double>(r) * p;
+    }
 
-    inline Rectangle<double> operator*(Point<double> const& p, GdkRectangle const& r) { return Rectangle<double>(r) * p; }
+    inline Rectangle<double> operator*(Point<double> const& p, cairo_rectangle_int_t const& r)
+    {
+      return Rectangle<double>(r) * p;
+    }
 
     template <typename T, typename U>
     Rectangle<typename std::common_type<T, U>::type> operator-(Rectangle<T> left, Point<U> right)

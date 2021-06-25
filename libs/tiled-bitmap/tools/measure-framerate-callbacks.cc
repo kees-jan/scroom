@@ -23,14 +23,14 @@ static GtkWidget*                    drawingArea = nullptr;
 static gboolean on_configure(GtkWidget*, GdkEventConfigure*, gpointer)
 {
   // There should be a simpler way to do this...
-  GdkRegion*   r = gdk_drawable_get_visible_region(GDK_DRAWABLE(gtk_widget_get_window(drawingArea)));
-  GdkRectangle rect;
-  gdk_region_get_clipbox(r, &rect);
+  cairo_region_t*       r = gdk_window_get_visible_region(gtk_widget_get_window(drawingArea));
+  cairo_rectangle_int_t rect;
+  cairo_region_get_extents(r, &rect);
 
   drawingAreaWidth  = rect.width;
   drawingAreaHeight = rect.height;
 
-  gdk_region_destroy(r);
+  cairo_region_destroy(r);
 
   return FALSE;
 }
@@ -39,14 +39,22 @@ static void on_hide(GtkWidget*, gpointer) { gtk_main_quit(); }
 
 static gboolean on_expose(GtkWidget* widget, GdkEventExpose*, gpointer)
 {
-  cairo_t* cr = gdk_cairo_create(widget->window);
+  cairo_region_t* re = cairo_region_create();
+
+  GdkDrawingContext* dc;
+  dc = gdk_window_begin_draw_frame(gtk_widget_get_window(widget), re);
+
+  cairo_t* cr = gdk_drawing_context_get_cairo_context(dc);
 
   if(testData)
   {
     testData->redraw(cr);
   }
 
-  cairo_destroy(cr);
+  gdk_window_end_draw_frame(gtk_widget_get_window(widget), dc);
+
+  cairo_region_destroy(re);
+
   return FALSE;
 }
 
@@ -78,7 +86,7 @@ GtkWidget* create_window()
 
   drawingArea = gtk_drawing_area_new();
   gtk_container_add(GTK_CONTAINER(window), drawingArea);
-  g_signal_connect(static_cast<gpointer>(drawingArea), "expose_event", G_CALLBACK(on_expose), NULL);
+  g_signal_connect(static_cast<gpointer>(drawingArea), "draw", G_CALLBACK(on_expose), NULL);
   g_signal_connect(static_cast<gpointer>(drawingArea), "configure_event", G_CALLBACK(on_configure), NULL);
 
   gtk_widget_show(drawingArea);
@@ -87,14 +95,10 @@ GtkWidget* create_window()
   return window;
 }
 
-void init() { gtk_idle_add(on_idle, nullptr); }
+void init() { gdk_threads_add_idle(on_idle, nullptr); }
 
 void invalidate()
 {
   GdkWindow* window = gtk_widget_get_window(drawingArea);
   gdk_window_invalidate_rect(window, nullptr, false);
-
-  gdk_threads_enter();
-  gdk_window_process_all_updates();
-  gdk_threads_leave();
 }

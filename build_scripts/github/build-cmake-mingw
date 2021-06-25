@@ -10,7 +10,7 @@ mkdir -p ../build
 cd ../build
 cmake ../scroom -G "MSYS Makefiles" -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_INSTALL_PREFIX="../scroom-installed/scroom" -DENABLE_CACHE=OFF
 cmake --build . -j2
-ctest -j2
+ctest -j2 --output-on-failure
 
 cmake --build . --target package_source -j2
 mv Scroom-*Source.tar.gz ../scroom

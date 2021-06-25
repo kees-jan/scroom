@@ -1,55 +1,54 @@
 language: cpp
 script:
-- echo TRAVIS_BUILD_NUMBER=${TRAVIS_BUILD_NUMBER} &&
-  echo TRAVIS_JOB_NUMBER=${TRAVIS_JOB_NUMBER} &&
-  echo TRAVIS_BRANCH=${TRAVIS_BRANCH} &&
-  echo TRAVIS_PULL_REQUEST=${TRAVIS_PULL_REQUEST} &&
-  echo SHELL=$SHELL
-- $prefix ./build_scripts/travis/build-scroom
+  - echo TRAVIS_BUILD_NUMBER=${TRAVIS_BUILD_NUMBER} &&
+    echo TRAVIS_JOB_NUMBER=${TRAVIS_JOB_NUMBER} &&
+    echo TRAVIS_BRANCH=${TRAVIS_BRANCH} &&
+    echo TRAVIS_PULL_REQUEST=${TRAVIS_PULL_REQUEST} &&
+    echo SHELL=$SHELL
+  - $prefix ./build_scripts/travis/build-scroom
 os:
-- linux
-- windows
+  - linux
+  - windows
 dist: bionic
 compiler:
-- gcc
-- clang
+  - gcc
+  - clang
 env:
-- NONE=""
-- DISTS="true"
-- DISTCHECK_CONFIGURE_FLAGS='--enable-debug-tiles --disable-multithreading CFLAGS="-g -O0" CXXFLAGS="-g -O0"' LDFLAGS="-Wl,-z,defs"
+  - NONE=""
+  - DISTS="true"
+  - DISTCHECK_CONFIGURE_FLAGS='--enable-debug-tiles --disable-multithreading CFLAGS="-g -O0" CXXFLAGS="-g -O0"' LDFLAGS="-Wl,-z,defs"
 jobs:
   exclude:
-  - os: linux
-    compiler: clang
-    env: DISTS="true"
-  - os: linux
-    compiler: clang
-    env: DISTCHECK_CONFIGURE_FLAGS='--enable-debug-tiles --disable-multithreading CFLAGS="-g -O0" CXXFLAGS="-g -O0"' LDFLAGS="-Wl,-z,defs"
-  - os: windows
-    compiler: clang
-  - os: windows
-    env: DISTS="true"
-  - os: windows
-    env: DISTCHECK_CONFIGURE_FLAGS='--enable-debug-tiles --disable-multithreading CFLAGS="-g -O0" CXXFLAGS="-g -O0"' LDFLAGS="-Wl,-z,defs"
+    - os: linux
+      compiler: clang
+      env: DISTS="true"
+    - os: linux
+      compiler: clang
+      env: DISTCHECK_CONFIGURE_FLAGS='--enable-debug-tiles --disable-multithreading CFLAGS="-g -O0" CXXFLAGS="-g -O0"' LDFLAGS="-Wl,-z,defs"
+    - os: windows
+      compiler: clang
+    - os: windows
+      env: DISTS="true"
+    - os: windows
+      env: DISTCHECK_CONFIGURE_FLAGS='--enable-debug-tiles --disable-multithreading CFLAGS="-g -O0" CXXFLAGS="-g -O0"' LDFLAGS="-Wl,-z,defs"
 addons:
   apt:
     packages:
-    - libboost-test-dev
-    - libboost-dev
-    - libboost-filesystem-dev
-    - libboost-program-options-dev
-    - libboost-system-dev
-    - libboost-thread-dev
-    - libgtest-dev
-    - google-mock
-    - libcairo2-dev
-    - libglade2-dev
-    - libglib2.0-dev
-    - libgtk2.0-dev
-    - libtiff5-dev
-    - pkg-config
-    - doxygen
-    - graphviz
+      - libboost-test-dev
+      - libboost-dev
+      - libboost-filesystem-dev
+      - libboost-program-options-dev
+      - libboost-system-dev
+      - libboost-thread-dev
+      - libgtest-dev
+      - google-mock
+      - libcairo2-dev
+      - libglib2.0-dev
+      - libgtk-3-dev
+      - libtiff5-dev
+      - pkg-config
+      - doxygen
+      - graphviz
 install:
   - |-
     case $TRAVIS_OS_NAME in
@@ -62,7 +61,7 @@ install:
 git:
   depth: 200
 before_install:
-- |-
+  - |-
     case $TRAVIS_OS_NAME in
       windows)
         [[ ! -f C:/tools/msys64/msys2_shell.cmd ]] && rm -rf C:/tools/msys64
@@ -88,8 +87,7 @@ before_install:
                mingw-w64-x86_64-gcc \
                mingw-w64-x86_64-glade \
                mingw-w64-x86_64-gtest \
-               mingw-w64-x86_64-gtk2 \
-               mingw-w64-x86_64-libglade \
+               mingw-w64-x86_64-gtk3 \
                pkg-config \
                zip
         taskkill //IM gpg-agent.exe //F  # https://travis-ci.community/t/4967
@@ -99,4 +97,4 @@ before_install:
       *)
         export prefix=""
     esac
-- $prefix build_scripts/travis/setup-ssh-keys
+  - $prefix build_scripts/travis/setup-ssh-keys

@@ -48,7 +48,7 @@ void ExamplePresentation::fillPattern()
 
 Scroom::Utils::Rectangle<double> ExamplePresentation::getRect()
 {
-  GdkRectangle rect;
+  cairo_rectangle_int_t rect;
   rect.x      = -500;
   rect.y      = -500;
   rect.width  = 1000;
@@ -63,7 +63,7 @@ void ExamplePresentation::close(ViewInterface::WeakPtr vi) { UNUSED(vi); }
 
 void ExamplePresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> pa, int zoom)
 {
-  GdkRectangle presentationArea = pa.toGdkRectangle();
+  cairo_rectangle_int_t presentationArea = pa.toGdkRectangle();
   UNUSED(vi);
   double pp    = pixelSizeFromZoom(zoom);
   double scale = pow(2, -zoom);

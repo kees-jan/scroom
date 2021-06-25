@@ -74,7 +74,7 @@ namespace Scroom
   } // namespace GtkHelpers
 } // namespace Scroom
 
-std::ostream& operator<<(std::ostream& os, GdkRectangle const& r)
+std::ostream& operator<<(std::ostream& os, cairo_rectangle_int_t const& r)
 {
   return os << "GdkRectangle(" << r.x << ", " << r.y << ", " << r.width << ", " << r.height << ")";
 }
