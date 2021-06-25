@@ -27,14 +27,35 @@ namespace
     if(c && p->isPropertyDefined(MONOCHROME_COLORMAPPABLE_PROPERTY_NAME))
     {
       Color    col   = c->getMonochromeColor();
-      GdkColor bgCol = col.getGdkColor();
-      gtk_widget_override_background_color(
-        w, static_cast<GtkStateFlags>(GTK_STATE_ACTIVE), reinterpret_cast<const GdkRGBA*>(&bgCol));
+      GtkCssProvider *bgCssProvider = gtk_css_provider_new();
+      std::string     bgCss       = "* { background-image:none; background-color: #" + col.getHex() + " ;}";
 
-      GdkColor   fgCol = col.getContrastingBlackOrWhite().getGdkColor();
+      // Fill the provider with the correct data bgCss string
+      gtk_css_provider_load_from_data(bgCssProvider, bgCss.c_str(), -1, nullptr);
+
+      // Get the style context
+      GtkStyleContext * bgContext = gtk_widget_get_style_context(w);
+
+      // Add the provider
+      gtk_style_context_add_provider(bgContext, GTK_STYLE_PROVIDER(bgCssProvider), GTK_STYLE_PROVIDER_PRIORITY_USER);
+
+      g_object_unref(bgCssProvider);
+
+      std::string fgCss = "* { color: #" + col.getContrastingBlackOrWhite().getHex() + " ;}";
       GtkWidget* label = gtk_bin_get_child(GTK_BIN(w));
+      GtkCssProvider *fgCssProvider = gtk_css_provider_new();
 
-      gtk_widget_override_color(label, static_cast<GtkStateFlags>(GTK_STATE_ACTIVE), reinterpret_cast<const GdkRGBA*>(&fgCol));
+      // Fill the provider with the correct data fgCss string
+      gtk_css_provider_load_from_data(fgCssProvider, fgCss.c_str(), -1, nullptr);
+
+      // Get the style context
+      GtkStyleContext *fgContext = gtk_widget_get_style_context(label);
+
+      // Add the provider
+      gtk_style_context_add_provider(fgContext, GTK_STYLE_PROVIDER(fgCssProvider), GTK_STYLE_PROVIDER_PRIORITY_USER);
+
+      g_object_unref(fgContext);
+
     }
   }
 } // namespace

@@ -9,6 +9,7 @@
 
 #include <cmath>
 #include <cstdint>
+#include <sstream>
 
 #include <boost/operators.hpp>
 
@@ -84,6 +85,13 @@ public:
     green *= d;
     blue *= d;
     return *this;
+  }
+
+  [[nodiscard]] std::string getHex() const
+  {
+    std::stringstream stream;
+    stream << std::hex << (byteFromDouble(red) << 16 | byteFromDouble(green) << 8 | byteFromDouble(blue) << 0);
+    return  stream.str();
   }
 
   [[nodiscard]] uint32_t getRGB24() const
