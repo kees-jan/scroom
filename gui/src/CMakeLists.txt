@@ -29,6 +29,7 @@ target_link_libraries(
          PkgConfig::gmodule
          Boost::system
          Boost::filesystem
+         Boost::program_options
          util
          tiledbitmap
          m

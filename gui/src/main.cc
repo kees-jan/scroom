@@ -14,26 +14,22 @@
 #include <list>
 #include <string>
 
-#include <getopt.h>
+#include <boost/program_options.hpp>
 
 #include <gtk/gtk.h>
-
-#ifdef HAVE_BOOST_PROGRAM_OPTIONS_HPP
-#  include <boost/program_options.hpp>
-namespace po = boost::program_options;
-#endif
 
 #include <scroom/gtk-helpers.hh>
 
 #include "callbacks.hh"
-#include "loader.hh"
 
-#ifdef HAVE_BOOST_PROGRAM_OPTIONS_HPP
+namespace po = boost::program_options;
 
 void usage(const std::string& me, const po::options_description& desc, const std::string& message = std::string())
 {
   if(message.length() != 0)
+  {
     std::cout << "ERROR: " << message << std::endl << std::endl;
+  }
 
   std::cout << "Usage: " << me << " [options] [input files]" << std::endl << std::endl;
 
@@ -41,29 +37,11 @@ void usage(const std::string& me, const po::options_description& desc, const std
   exit(-1);
 }
 
-#else
-
-void usage(const std::string& me, const std::string& message = std::string())
-{
-  if(message.length() != 0)
-  {
-    printf("ERROR: %s\n\n", message.c_str());
-  }
-
-  printf("Usage: %s [options] [input files]\n\n", me.c_str());
-  printf("Options:\n");
-  printf(" -h            : Show this help\n");
-  exit(-1);
-}
-
-#endif
-
 int main(int argc, char* argv[])
 {
   std::string                                   me = argv[0];
   std::map<std::string, std::list<std::string>> filenames;
 
-#ifdef HAVE_BOOST_PROGRAM_OPTIONS_HPP
   po::options_description desc("Available options");
   desc.add_options()("help,h", "Show this help message")("load,l", po::value<std::vector<std::string>>(), "Load given filenames")(
     "transparent-overlay", po::value<std::vector<std::string>>()->multitoken(), "Show given files in transparent overlay");
@@ -79,17 +57,19 @@ int main(int argc, char* argv[])
     po::notify(vm);
 
     if(vm.count("help"))
+    {
       usage(me, desc);
+    }
 
     if(vm.count("load"))
     {
-      const std::vector<std::string>& names = vm["load"].as<std::vector<std::string>>();
+      const auto& names = vm["load"].as<std::vector<std::string>>();
       filenames[REGULAR_FILES].assign(names.begin(), names.end());
     }
 
     if(vm.count("transparent-overlay"))
     {
-      const std::vector<std::string>& names = vm["transparent-overlay"].as<std::vector<std::string>>();
+      const auto& names = vm["transparent-overlay"].as<std::vector<std::string>>();
       filenames["Transparent Overlay"].assign(names.begin(), names.end());
     }
   }
@@ -97,35 +77,6 @@ int main(int argc, char* argv[])
   {
     usage(me, desc, ex.what());
   }
-
-#else
-  char result;
-
-  while((result = getopt(argc, argv, ":h")) != -1)
-  {
-    switch(result)
-    {
-    case 'h':
-      usage(me);
-      break;
-    case '?':
-      usage(me, "Unknown option");
-      break;
-    case ':':
-      usage(me, "Option requires an argument");
-      break;
-    default:
-      usage(me, "This shouldn't be happening");
-      break;
-    }
-  }
-
-  while(optind < argc)
-  {
-    filenames[REGULAR_FILES].push_back(std::string(argv[optind]));
-    optind++;
-  }
-#endif
 
   Scroom::GtkHelpers::useRecursiveGdkLock();
   gdk_threads_init();
