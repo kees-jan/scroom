@@ -28,7 +28,7 @@ namespace
     {
       Color           col           = c->getMonochromeColor();
       GtkCssProvider* bgCssProvider = gtk_css_provider_new();
-      std::string     bgCss         = "* { background-image:none; background-color: #" + col.getHex() + " ;}";
+      std::string     bgCss         = "* { background-image:none; background-color: #" + col.getHex() + ";}";
 
       // Fill the provider with the correct data bgCss string
       gtk_css_provider_load_from_data(bgCssProvider, bgCss.c_str(), -1, nullptr);
@@ -39,9 +39,8 @@ namespace
       // Add the provider
       gtk_style_context_add_provider(bgContext, GTK_STYLE_PROVIDER(bgCssProvider), GTK_STYLE_PROVIDER_PRIORITY_USER);
 
-      g_object_unref(bgCssProvider);
 
-      std::string     fgCss         = "* { color: #" + col.getContrastingBlackOrWhite().getHex() + " ;}";
+      std::string     fgCss         = "* { color: #" + col.getContrastingBlackOrWhite().getHex() + ";}";
       GtkWidget*      label         = gtk_bin_get_child(GTK_BIN(w));
       GtkCssProvider* fgCssProvider = gtk_css_provider_new();
 
@@ -53,8 +52,6 @@ namespace
 
       // Add the provider
       gtk_style_context_add_provider(fgContext, GTK_STYLE_PROVIDER(fgCssProvider), GTK_STYLE_PROVIDER_PRIORITY_USER);
-
-      g_object_unref(fgContext);
     }
   }
 } // namespace
