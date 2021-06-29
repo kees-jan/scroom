@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['anonymous_5fnamespace_7blayerspecforbitmap_2ecc_7d_1609',['anonymous_namespace{layerspecforbitmap.cc}',['../namespaceScroom_1_1TiledBitmap_1_1anonymous__namespace_02layerspecforbitmap_8cc_03.html',1,'Scroom::TiledBitmap']]],
+  ['anonymous_5fnamespace_7bswapbasedblockallocator_2ecc_7d_1610',['anonymous_namespace{swapbasedblockallocator.cc}',['../namespaceScroom_1_1MemoryBlocks_1_1Detail_1_1anonymous__namespace_02swapbasedblockallocator_8cc_03.html',1,'Scroom::MemoryBlocks::Detail']]],
+  ['bitmap_1611',['Bitmap',['../namespaceScroom_1_1Bitmap.html',1,'Scroom']]],
+  ['bookkeeping_1612',['Bookkeeping',['../namespaceScroom_1_1Bookkeeping.html',1,'Scroom']]],
+  ['colormapimpl_1613',['ColormapImpl',['../namespaceScroom_1_1ColormapImpl.html',1,'Scroom']]],
+  ['detail_1614',['Detail',['../namespaceScroom_1_1Bookkeeping_1_1Detail.html',1,'Scroom::Bookkeeping::Detail'],['../namespaceScroom_1_1Detail.html',1,'Scroom::Detail'],['../namespaceScroom_1_1GtkHelpers_1_1Detail.html',1,'Scroom::GtkHelpers::Detail'],['../namespaceScroom_1_1MemoryBlobs_1_1Detail.html',1,'Scroom::MemoryBlobs::Detail'],['../namespaceScroom_1_1MemoryBlocks_1_1Detail.html',1,'Scroom::MemoryBlocks::Detail'],['../namespaceScroom_1_1Utils_1_1Detail.html',1,'Scroom::Utils::Detail']]],
+  ['gtkhelpers_1615',['GtkHelpers',['../namespaceScroom_1_1GtkHelpers.html',1,'Scroom']]],
+  ['memoryblobs_1616',['MemoryBlobs',['../namespaceScroom_1_1MemoryBlobs.html',1,'Scroom']]],
+  ['memoryblocks_1617',['MemoryBlocks',['../namespaceScroom_1_1MemoryBlocks.html',1,'Scroom']]],
+  ['page_1618',['Page',['../namespaceScroom_1_1MemoryBlobs_1_1Page.html',1,'Scroom::MemoryBlobs']]],
+  ['rawpagedata_1619',['RawPageData',['../namespaceScroom_1_1MemoryBlobs_1_1RawPageData.html',1,'Scroom::MemoryBlobs::RawPageData'],['../namespaceScroom_1_1MemoryBlocks_1_1RawPageData.html',1,'Scroom::MemoryBlocks::RawPageData']]],
+  ['scroom_1620',['Scroom',['../namespaceScroom.html',1,'']]],
+  ['threadpool_1621',['ThreadPool',['../namespaceScroom_1_1Detail_1_1ThreadPool.html',1,'Scroom::Detail']]],
+  ['tiff_1622',['Tiff',['../namespaceScroom_1_1Tiff.html',1,'Scroom']]],
+  ['tiledbitmap_1623',['TiledBitmap',['../namespaceScroom_1_1TiledBitmap.html',1,'Scroom']]],
+  ['utils_1624',['Utils',['../namespaceScroom_1_1Utils.html',1,'Scroom']]]
+];

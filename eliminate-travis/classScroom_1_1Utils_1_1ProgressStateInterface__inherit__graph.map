@@ -1,0 +1,12 @@
+<map id="Scroom::Utils::ProgressStateInterface" name="Scroom::Utils::ProgressStateInterface">
+<area shape="rect" id="node1" title=" " alt="" coords="387,204,594,296"/>
+<area shape="rect" id="node3" href="$classProgressStateInterfaceStub.html" title=" " alt="" coords="5,366,224,487"/>
+<area shape="rect" id="node4" href="$classScroom_1_1Utils_1_1ProgressInterfaceFromProgressStateInterface.html" title=" " alt="" coords="249,359,479,495"/>
+<area shape="rect" id="node8" href="$classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer_1_1ChildData.html" title=" " alt="" coords="503,344,734,509"/>
+<area shape="rect" id="node9" href="$classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterface.html" title=" " alt="" coords="784,381,1011,473"/>
+<area shape="rect" id="node2" href="$classInterface.html" title=" " alt="" coords="433,5,549,156"/>
+<area shape="rect" id="node5" href="$classScroom_1_1Utils_1_1Detail_1_1ProgressStore.html" title=" " alt="" coords="38,587,194,737"/>
+<area shape="rect" id="node6" href="$classScroom_1_1Utils_1_1ProgressInterfaceFromProgressStateInterfaceForwarder.html" title=" " alt="" coords="218,594,486,730"/>
+<area shape="rect" id="node7" href="$classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer_1_1Child.html" title=" " alt="" coords="510,557,741,767"/>
+<area shape="rect" id="node10" href="$classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterfaceForwarder.html" title=" " alt="" coords="765,572,1057,752"/>
+</map>

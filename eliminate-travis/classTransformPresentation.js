@@ -1,0 +1,26 @@
+var classTransformPresentation =
+[
+    [ "Ptr", "classTransformPresentation.html#adfd467360b0f5b53ab8ff7ceb11b0db4", null ],
+    [ "TransformPresentation", "classTransformPresentation.html#a3961047491e98aea707dd6870046c1fb", null ],
+    [ "close", "classTransformPresentation.html#aa8a233e2cf3d2b78088f64321ec0cc6e", null ],
+    [ "create", "classTransformPresentation.html#a0bb3a42de4a22b82be66bffff34c4e7d", null ],
+    [ "disableTransparentBackground", "classTransformPresentation.html#a7471c9df007b7595fd1177adcef2abfa", null ],
+    [ "getAspectRatio", "classTransformPresentation.html#a969c44d9131e0318d039ff509f8dbed9", null ],
+    [ "getMonochromeColor", "classTransformPresentation.html#a1d508b386f74549c2fff13c04f5b970e", null ],
+    [ "getNumberOfColors", "classTransformPresentation.html#a7fc20cee82ebc28404c074b10e44add9", null ],
+    [ "getOriginalColormap", "classTransformPresentation.html#a12344a3eeaf492b1c7bdd2fa80db7729", null ],
+    [ "getPixelAverages", "classTransformPresentation.html#a5988d5b21dda784830481bd4a5a88fb6", null ],
+    [ "getProperty", "classTransformPresentation.html#a8202e9c8f864e64bf5071a1297401d05", null ],
+    [ "getRect", "classTransformPresentation.html#ae8896ce9e1b7bc669f6c4febc8823dd1", null ],
+    [ "getTitle", "classTransformPresentation.html#a40750146eb0946054dd322371dfdf6da", null ],
+    [ "getTransparentBackground", "classTransformPresentation.html#a30829d965c1917a27fe95501a6e094df", null ],
+    [ "isPropertyDefined", "classTransformPresentation.html#a5638f266baa20a20901f9ae3225a2944", null ],
+    [ "open", "classTransformPresentation.html#a8aac4359f5f251bf4c89882857d1b0f9", null ],
+    [ "redraw", "classTransformPresentation.html#aae93c031e922657598b8a3047e699267", null ],
+    [ "setColormap", "classTransformPresentation.html#ac54fec8e9d05effd1b8377a52a91ee1a", null ],
+    [ "setMonochromeColor", "classTransformPresentation.html#a778ce565d6a8d478c5655008174fb949", null ],
+    [ "setTransparentBackground", "classTransformPresentation.html#a7e5ba7edfebb16456fefec941e4f3eb3", null ],
+    [ "colormappable", "classTransformPresentation.html#ad383e05a9aa2cbd83a077bd83ced7abd", null ],
+    [ "presentation", "classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee", null ],
+    [ "transformationData", "classTransformPresentation.html#ad5804a0827bf975f5dd39061f7a5060a", null ]
+];
