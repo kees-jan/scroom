@@ -1,0 +1,58 @@
+#!/bin/bash
+
+set -x
+set -e
+set -u
+
+BUILD="$1/build"
+COMMIT_USER="Documentation Builder"
+COMMIT_EMAIL="project@mandryn.org"
+CHANGESET=$(git rev-parse --verify HEAD)
+BRANCH="${GITHUB_REF#refs/heads/}"
+
+cd ../doc
+
+if [ -e ${BRANCH} ]
+then
+  git rm -rf ${BRANCH}
+fi
+mkdir -p ${BRANCH}
+pushd ${BRANCH}
+mv "${BUILD}/html"/* .
+git add .
+
+# Regenerate master index
+popd
+cat > index.html <<EOF
+<html>
+<head>
+<title>Scroom doxygen documentation</title>
+<link href="master/doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+<tbody>
+<tr style="height: 56px;">
+<td style="padding-left: 0.5em;">
+<div id="projectname">Scroom doxygen documentation</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1>
+<ul>
+$(for f in $(find * -mindepth 1 -name index.html) ; do echo "<li><a href=\"$f\">$(dirname $f)</a><br/>&nbsp;</li>" ; done)
+</ul>
+</h1>
+</body>
+</html>
+EOF
+git add index.html
+
+# Commit and push
+git config user.name "${COMMIT_USER}"
+git config user.email "${COMMIT_EMAIL}"
+git commit -m "Automated documentation build for branch ${BRANCH}, changeset ${CHANGESET}."
+git push origin gh-pages

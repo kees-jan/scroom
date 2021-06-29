@@ -1,0 +1,59 @@
+name: Generate documentation
+
+on: [ push, pull_request ]
+
+jobs:
+  generate-documentation:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Checkout docs
+        run: git worktree add -b gh-pages ../doc origin/gh-pages
+
+      - name: Create Build Environment
+        run: cmake -E make_directory ${{runner.workspace}}/build
+
+      - name: Install apt packages
+        run: >
+          sudo apt-get -yq --no-install-suggests --no-install-recommends install
+          libboost-dev
+          libboost-filesystem-dev
+          libboost-program-options-dev
+          libboost-system-dev
+          libboost-test-dev
+          libboost-thread-dev
+          libcairo2-dev
+          libglib2.0-dev
+          libgtest-dev
+          libgtk-3-dev
+          libtiff5-dev
+          pkg-config
+          parallel
+          clang-tidy
+          doxygen
+          graphviz
+
+      - name: Install conan
+        run: |
+          python3 -m pip install --upgrade pip setuptools
+          python3 -m pip install --no-warn-script-location conan
+
+      - name: Configure CMake
+        working-directory: ${{runner.workspace}}/build
+        run: |
+          source ~/.profile
+          cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE -DENABLE_DOXYGEN=TRUE
+
+      - name: Doxygen
+        working-directory: ${{runner.workspace}}
+        run: cmake --build build --target doxygen-docs
+
+      - name: Upload to Github
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        run: build_scripts/github/upload_doxygen_to_github ${{runner.workspace}}
