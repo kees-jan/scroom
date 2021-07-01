@@ -1,26 +1,109 @@
+#
+# This file is generated from Dockerfile.in. Do not edit!
+#
+
 FROM ubuntu:groovy
 
-MAINTAINER kees-jan.dijkzeul@iae.nl
+MAINTAINER kees-jan@dijkzeul.eu
 
 RUN \
   export DEBIAN_FRONTEND=noninteractive && \
   apt-get update -y && \
   apt-get install -y \
-    autoconf automake libtool \
+    git \
+    gpg \
     libboost-dev \
     libboost-filesystem-dev \
     libboost-program-options-dev \
     libboost-system-dev \
     libboost-test-dev \
     libboost-thread-dev \
-    libgtest-dev \
-    libgmock-dev \
-    google-mock \
     libcairo2-dev \
-    libglade2-dev \
     libglib2.0-dev \
-    libgtk2.0-dev \
-    libtiff-dev \
-    time
+    libgtest-dev \
+    libgtk-3-dev \
+    libtiff5-dev \
+    ninja-build \
+    python3 \
+    python3-pip \
+    software-properties-common \
+    time \
+    wget \
+    xvfb
+
+# CMake repo
+
+RUN \
+  wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | \
+    gpg --dearmor - > /etc/apt/trusted.gpg.d/kitware-archive-keyring.gpg
+
+RUN \
+  if [ "groovy" = "focal" -o  "groovy" = "bionic" ] ; then \
+    echo 'deb https://apt.kitware.com/ubuntu/ groovy main' > /etc/apt/sources.list.d/kitware.list ; \
+  fi
+
+RUN \
+  export DEBIAN_FRONTEND=noninteractive && \
+  apt-get update -y && \
+  apt-get install -y \
+    cmake
+
+# GCC repo
+
+RUN \
+  add-apt-repository ppa:ubuntu-toolchain-r/test
+
+RUN \
+  export DEBIAN_FRONTEND=noninteractive && \
+  apt-get update -y && \
+  if grep -q LTS /etc/lsb-release ; then \
+    apt-get install -y gcc-11 g++-11 && \
+    update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 110 \
+      --slave /usr/bin/g++ g++ /usr/bin/g++-11 \
+      --slave /usr/bin/gcov gcov /usr/bin/gcov-11 ; \
+  else \
+    apt-get install -y gcc g++ ; \
+  fi
+  
+# LLVM repo
+
+RUN \
+  wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key 2>/dev/null | \
+    gpg --dearmor - > /etc/apt/trusted.gpg.d/llvm-snapshot.gpg
+  
+RUN \
+  if [ "groovy" != "impish" ] ; then \
+    echo 'deb http://apt.llvm.org/groovy/ llvm-toolchain-groovy-11 main' > /etc/apt/sources.list.d/llvm.list ; \
+  fi
+  
+RUN \
+  export DEBIAN_FRONTEND=noninteractive && \
+  apt-get update -y && \
+  if [ "groovy" != "impish" ] ; then \
+    apt-get install -y \
+      clang++-11 \
+      clang-11 && \
+    update-alternatives --install /usr/bin/clang clang /usr/bin/clang-11 110 \
+      --slave /usr/bin/clang++ clang++ /usr/bin/clang++-11 ; \
+  else \
+    apt-get install -y \
+      clang ; \
+  fi
+
+RUN \
+  update-alternatives --install /usr/bin/python python /usr/bin/python3 30 \
+    --slave /usr/bin/pip pip /usr/bin/pip3
+
+RUN \
+  pip install conan
+
+# Fill up conan cache
+
+RUN \
+  mkdir /tmp/scroom && \
+  git clone --recurse-submodules --depth 1 --shallow-submodules \
+    https://github.com/kees-jan/scroom.git /tmp/scroom/src && \
+  cmake -S /tmp/scroom/src -B /tmp/scroom/build -GNinja && \
+  rm -rf /tmp/scroom 
 
 CMD ["/bin/bash"]

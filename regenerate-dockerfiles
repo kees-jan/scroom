@@ -5,6 +5,10 @@ set -u -e
 for d in $(cat supported-ubuntu-releases)
 do
     mkdir -p $d
-    sed -e 's/@DISTRIB_CODENAME@/'$d'/g' < Dockerfile.in > $d/Dockerfile
+    echo "#"                                                         > $d/Dockerfile
+    echo "# This file is generated from Dockerfile.in. Do not edit!" >> $d/Dockerfile
+    echo "#"                                                         >> $d/Dockerfile
+    echo ""                                                          >> $d/Dockerfile
+    sed -e 's/@DISTRIB_CODENAME@/'$d'/g' < Dockerfile.in >> $d/Dockerfile
     git add $d/Dockerfile
 done    

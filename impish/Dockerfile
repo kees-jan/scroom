@@ -2,7 +2,7 @@
 # This file is generated from Dockerfile.in. Do not edit!
 #
 
-FROM ubuntu:focal
+FROM ubuntu:impish
 
 MAINTAINER kees-jan@dijkzeul.eu
 
@@ -38,8 +38,8 @@ RUN \
     gpg --dearmor - > /etc/apt/trusted.gpg.d/kitware-archive-keyring.gpg
 
 RUN \
-  if [ "focal" = "focal" -o  "focal" = "bionic" ] ; then \
-    echo 'deb https://apt.kitware.com/ubuntu/ focal main' > /etc/apt/sources.list.d/kitware.list ; \
+  if [ "impish" = "focal" -o  "impish" = "bionic" ] ; then \
+    echo 'deb https://apt.kitware.com/ubuntu/ impish main' > /etc/apt/sources.list.d/kitware.list ; \
   fi
 
 RUN \
@@ -72,14 +72,14 @@ RUN \
     gpg --dearmor - > /etc/apt/trusted.gpg.d/llvm-snapshot.gpg
   
 RUN \
-  if [ "focal" != "impish" ] ; then \
-    echo 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-11 main' > /etc/apt/sources.list.d/llvm.list ; \
+  if [ "impish" != "impish" ] ; then \
+    echo 'deb http://apt.llvm.org/impish/ llvm-toolchain-impish-11 main' > /etc/apt/sources.list.d/llvm.list ; \
   fi
   
 RUN \
   export DEBIAN_FRONTEND=noninteractive && \
   apt-get update -y && \
-  if [ "focal" != "impish" ] ; then \
+  if [ "impish" != "impish" ] ; then \
     apt-get install -y \
       clang++-11 \
       clang-11 && \

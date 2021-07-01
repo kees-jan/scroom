@@ -1,33 +1,18 @@
-#!/bin/sh
+#!/bin/sh -uex
 
-set -u -e -x
+parallel docker build -t test-scroom-dockerfiles:\{\} \{\} < supported-ubuntu-releases
 
-for d in $(cat supported-ubuntu-releases)
-do
-    docker build -t test-scroom-dockerfiles:$d $d
-done    
+echo Docker images built succesfully
 
-if [ -n "$1" -a -d "$1" ]
+if [ -n "${1+x}" ] && [ -n "$1" ] && [ -d "$1" ]
 then
     SCROOM="$1"
-
-    if [ -f "$SCROOM/Makefile" ]
-    then
-        echo "$SCROOM is configured - run make distclean there"
-        exit 1
-    fi
-
-    if [ ! -f "$SCROOM/configure" ]
-    then
-        echo "$SCROOM/configure does not exist - run autoreconf -i there"
-        exit 1
-    fi
 
     SCROOM_ABSOLUTE="$(cd $SCROOM && pwd)"
     for d in $(cat supported-ubuntu-releases)
     do
         echo $d
-        if docker run -v "$SCROOM_ABSOLUTE":/home/build/scroom --rm test-scroom-dockerfiles:$d sh -x -c "cd \$(mktemp -d) && /home/build/scroom/configure && make -j20 check" > ${d}.log 2>&1
+        if docker run -v "$SCROOM_ABSOLUTE":/home/build/scroom --rm test-scroom-dockerfiles:$d sh -x -c "D=\$(mktemp -d) && cmake -S /home/build/scroom -B \$D -GNinja && cmake --build \$D && cd \$D && xvfb-run ctest -j \$(nproc)" > $d.log 2>&1
         then
             echo "$d - succeeded"
         else
@@ -35,3 +20,4 @@ then
         fi
     done    
 fi
+
