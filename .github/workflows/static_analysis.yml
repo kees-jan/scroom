@@ -35,18 +35,12 @@ jobs:
           libgtk-3-dev
           libtiff5-dev
           pkg-config
-          parallel
           clang-tidy
 
       - name: Install conan
         run: |
           python3 -m pip install --upgrade pip setuptools
           python3 -m pip install --no-warn-script-location conan
-
-      - name: Shut up Parallel
-        run: |
-          mkdir ~/.parallel
-          touch ~/.parallel/will-cite
 
       - name: Get Codacy Clang-tidy
         env:
