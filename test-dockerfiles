@@ -12,7 +12,8 @@ then
     for d in $(cat supported-ubuntu-releases)
     do
         echo $d
-        if docker run -v "$SCROOM_ABSOLUTE":/home/build/scroom --rm test-scroom-dockerfiles:$d sh -x -c "D=\$(mktemp -d) && cmake -S /home/build/scroom -B \$D -GNinja && cmake --build \$D && cd \$D && xvfb-run ctest -j \$(nproc)" > $d.log 2>&1
+        if docker run -v "$SCROOM_ABSOLUTE":/home/build/scroom --rm test-scroom-dockerfiles:$d sh -x -c \
+              "D=\$(mktemp -d) && cmake -S /home/build/scroom -B \$D -GNinja && cmake --build \$D && cd \$D && xvfb-run ctest -j \$(nproc)" > $d.log 2>&1
         then
             echo "$d - succeeded"
         else
@@ -20,4 +21,3 @@ then
         fi
     done    
 fi
-

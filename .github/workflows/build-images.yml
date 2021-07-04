@@ -12,16 +12,30 @@ jobs:
         run: |
           parallel docker build -t ghcr.io/kees-jan/scroom-build-container:\{\} \{\} < supported-ubuntu-releases
 
+      - uses: actions/checkout@v2
+        with:
+          ref: 'next'
+          submodules: recursive
+          path: 'scroom-next'
+
+      - name: Test images
+        run: |
+          SCROOM_ABSOLUTE="$(cd scroom-next && pwd)"
+          for d in $(cat supported-ubuntu-releases)
+          do
+            docker run -v "$SCROOM_ABSOLUTE":/home/build/scroom --rm \
+              ghcr.io/kees-jan/scroom-build-container:$d sh -x -c \
+                "D=\$(mktemp -d) && cmake -S /home/build/scroom -B \$D -GNinja && cmake --build \$D && cd \$D && xvfb-run ctest -j \$(nproc)"
+          done    
+
       - name: Login to Packages Container registry
         uses: docker/login-action@v1 
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-        if: github.ref == 'refs/heads/docker-build-containers'
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
 
-      - name: Upload to GHCR
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload to Packages Container registry
         if: github.ref == 'refs/heads/docker-build-containers'
         run: parallel docker push ghcr.io/kees-jan/scroom-build-container:\{\} < supported-ubuntu-releases
