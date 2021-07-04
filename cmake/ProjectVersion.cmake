@@ -11,5 +11,5 @@ endif()
 
 file(
   GENERATE
-  OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/inc/version.h
+  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/version.h
   CONTENT "#define PACKAGE_VERSION \"${GIT_PROJECT_VERSION}\"")
