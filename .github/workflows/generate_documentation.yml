@@ -32,8 +32,6 @@ jobs:
           libgtk-3-dev
           libtiff5-dev
           pkg-config
-          parallel
-          clang-tidy
           doxygen
           graphviz
 
@@ -55,5 +53,5 @@ jobs:
       - name: Upload to Github
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: github.event.pull_request.head.repo.full_name == github.repository
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
         run: build_scripts/github/upload_doxygen_to_github ${{runner.workspace}}

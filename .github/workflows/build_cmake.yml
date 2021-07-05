@@ -130,3 +130,20 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           path: scroom-win-*.zip
+
+  build-many-ubuntus:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+          path: 'scroom-src'
+
+      - uses: actions/checkout@v2
+        with:
+          ref: 'docker-build-containers'
+          path: 'scroom-build-containers'
+
+      - name: Build
+        working-directory: scroom-src
+        run: make -k -j$(nproc) -f build_scripts/docker/docker.mk TARGETS="$(cat ../scroom-build-containers/supported-ubuntu-releases)"
