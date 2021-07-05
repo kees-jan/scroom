@@ -1,6 +1,9 @@
 <map id="inc/scroom/bitmap&#45;helpers.hh" name="inc/scroom/bitmap&#45;helpers.hh">
-<area shape="rect" id="node2" href="$bitmap-helpers_8cc.html" title="libs/scroom/src/bitmap\l&#45;helpers.cc" alt="" coords="5,80,176,121"/>
-<area shape="rect" id="node3" href="$cmyklayeroperations_8cc.html" title="libs/tiled&#45;bitmap/src\l/cmyklayeroperations.cc" alt="" coords="201,80,383,121"/>
-<area shape="rect" id="node4" href="$layeroperations_8cc.html" title="libs/tiled&#45;bitmap/src\l/layeroperations.cc" alt="" coords="408,80,560,121"/>
-<area shape="rect" id="node5" href="$transparentoverlayviewinfo_8cc.html" title="plugins/transparent\l&#45;overlay/src/transparentoverlayviewinfo.cc" alt="" coords="584,80,885,121"/>
+<area shape="rect" id="node1" title=" " alt="" coords="580,5,796,32"/>
+<area shape="rect" id="node2" href="$bitmap-helpers_8cc.html" title=" " alt="" coords="5,80,176,121"/>
+<area shape="rect" id="node3" href="$transformpresentation__test_8cc.html" title=" " alt="" coords="201,80,477,121"/>
+<area shape="rect" id="node4" href="$cmyklayeroperations_8cc.html" title=" " alt="" coords="501,80,683,121"/>
+<area shape="rect" id="node5" href="$layeroperations_8cc.html" title=" " alt="" coords="708,80,860,121"/>
+<area shape="rect" id="node6" href="$sampleiterator-tests_8cc.html" title=" " alt="" coords="885,80,1062,121"/>
+<area shape="rect" id="node7" href="$transparentoverlayviewinfo_8cc.html" title=" " alt="" coords="1087,80,1388,121"/>
 </map>

@@ -1,4 +1,9 @@
 <map id="Scroom::Utils::Rectangle&lt; T &gt;" name="Scroom::Utils::Rectangle&lt; T &gt;">
-<area shape="rect" id="node8" href="$classScroom_1_1Utils_1_1Rectangle.html" title="{Scroom::Utils::Rectangle\l\&lt; double \&gt;\n|&#45; horizontally\l&#45; vertically\l|+ Rectangle()\l+ Rectangle()\l+ Rectangle()\l+ Rectangle()\l+ Rectangle()\l+ Rectangle()\l+ toGdkRectangle()\l+ toIntRectangle()\l+ moveTo()\l+ moveTo()\land 41 more...\l}" alt="" coords="432,463,613,716"/>
-<area shape="rect" id="node9" href="$classScroom_1_1Utils_1_1Rectangle.html" title="{Scroom::Utils::Rectangle\l\&lt; int \&gt;\n|&#45; horizontally\l&#45; vertically\l|+ Rectangle()\l+ Rectangle()\l+ Rectangle()\l+ Rectangle()\l+ Rectangle()\l+ Rectangle()\l+ toGdkRectangle()\l+ toIntRectangle()\l+ moveTo()\l+ moveTo()\land 41 more...\l}" alt="" coords="637,463,819,716"/>
+<area shape="rect" id="node1" title=" " alt="" coords="517,160,737,325"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,13,212,105"/>
+<area shape="rect" id="node3" title=" " alt="" coords="237,5,418,112"/>
+<area shape="rect" id="node4" title=" " alt="" coords="442,13,613,105"/>
+<area shape="rect" id="node5" title=" " alt="" coords="637,5,818,112"/>
+<area shape="rect" id="node6" title=" " alt="" coords="842,13,1002,105"/>
+<area shape="rect" id="node7" title=" " alt="" coords="1026,5,1197,112"/>
 </map>

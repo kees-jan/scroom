@@ -1,0 +1,14 @@
+<map id="TiledBitmap::redraw" name="TiledBitmap::redraw">
+<area shape="rect" id="node1" title=" " alt="" coords="5,235,160,262"/>
+<area shape="rect" id="node2" href="$classTiledBitmap.html#a6254a409a4f8869cb3429c55a342cdbe" title=" " alt="" coords="217,111,382,138"/>
+<area shape="rect" id="node9" href="$classScroom_1_1Utils_1_1Rectangle.html#ad623b0b902d4e2cd1d858300728c78d1" title=" " alt="" coords="208,163,391,204"/>
+<area shape="rect" id="node10" href="$classScroom_1_1Utils_1_1Rectangle.html#aa93bcd537f48183edeb70a668f7352cf" title=" " alt="" coords="208,228,391,269"/>
+<area shape="rect" id="node11" href="$cairo-helpers_8hh.html#ac7a152a4cc864e9c67acbc6686a9d3a4" title=" " alt="" coords="224,294,375,321"/>
+<area shape="rect" id="node12" href="$tiled-bitmap_8cc.html#a1e35e4080b41bdb0e0c0e4798a8295be" title=" " alt="" coords="233,345,365,371"/>
+<area shape="rect" id="node3" href="$cairo-helpers_8hh.html#a249906dbe982d14efe1755b4efa57c4c" title=" " alt="" coords="439,111,609,138"/>
+<area shape="rect" id="node5" href="$classScroom_1_1Utils_1_1Rectangle.html#a1262f445c07c33e16069e2497aed581f" title=" " alt="" coords="884,5,1067,47"/>
+<area shape="rect" id="node6" href="$classScroom_1_1Utils_1_1Rectangle.html#aac53b13b110251e6666a6e8499c19f27" title=" " alt="" coords="884,72,1067,113"/>
+<area shape="rect" id="node7" href="$classScroom_1_1Utils_1_1Rectangle.html#a72976ed3a84a5c482d396038aa67f077" title=" " alt="" coords="876,142,1075,169"/>
+<area shape="rect" id="node8" href="$classScroom_1_1Utils_1_1Rectangle.html#a405cfffb11cdb9f2fa5600e2bf15231c" title=" " alt="" coords="876,199,1075,226"/>
+<area shape="rect" id="node4" href="$cairo-helpers_8cc.html#a3c761221238966e436006bd09ab04a91" title=" " alt="" coords="657,111,828,138"/>
+</map>

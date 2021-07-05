@@ -6,6 +6,7 @@ var classColor =
     [ "getARGB32", "classColor.html#a52fc7f748b78eac3e266df3e58cb4ac5", null ],
     [ "getContrastingBlackOrWhite", "classColor.html#a49dddd32e110bbfc3c96e159a70eb0f5", null ],
     [ "getGdkColor", "classColor.html#aefae4983052184f69c7b07baa8aa350a", null ],
+    [ "getHex", "classColor.html#a09b8ac4c9ffab88e55186ebc0b25345a", null ],
     [ "getRGB24", "classColor.html#ac95a4d960c7a871d713babdf95c78b4e", null ],
     [ "operator*=", "classColor.html#a0a66837aa87140f963963a1efa68489a", null ],
     [ "operator+=", "classColor.html#acc174d44b7c00532ba90f669fb9e2a1b", null ],

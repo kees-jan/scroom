@@ -1,0 +1,7 @@
+<map id="libs/tiled&#45;bitmap/tools/test&#45;helpers.hh" name="libs/tiled&#45;bitmap/tools/test&#45;helpers.hh">
+<area shape="rect" id="node1" title=" " alt="" coords="403,5,568,47"/>
+<area shape="rect" id="node2" href="$measure-framerate-callbacks_8cc.html" title=" " alt="" coords="5,102,243,143"/>
+<area shape="rect" id="node3" href="$measure-framerate-tests_8cc.html" title=" " alt="" coords="267,102,475,143"/>
+<area shape="rect" id="node4" href="$measure-load-performance-tests_8cc.html" title=" " alt="" coords="499,95,703,151"/>
+<area shape="rect" id="node5" href="$test-helpers_8cc.html" title=" " alt="" coords="728,102,893,143"/>
+</map>

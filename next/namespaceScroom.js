@@ -2,6 +2,7 @@ var namespaceScroom =
 [
     [ "Bitmap", "namespaceScroom_1_1Bitmap.html", "namespaceScroom_1_1Bitmap" ],
     [ "Bookkeeping", "namespaceScroom_1_1Bookkeeping.html", "namespaceScroom_1_1Bookkeeping" ],
+    [ "ColormapImpl", "namespaceScroom_1_1ColormapImpl.html", "namespaceScroom_1_1ColormapImpl" ],
     [ "Detail", "namespaceScroom_1_1Detail.html", "namespaceScroom_1_1Detail" ],
     [ "GtkHelpers", "namespaceScroom_1_1GtkHelpers.html", "namespaceScroom_1_1GtkHelpers" ],
     [ "MemoryBlobs", "namespaceScroom_1_1MemoryBlobs.html", "namespaceScroom_1_1MemoryBlobs" ],

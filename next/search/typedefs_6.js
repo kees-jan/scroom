@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['observer',['Observer',['../classScroom_1_1Utils_1_1Observable.html#a12a1837c0230f0e4dfb37e3fd0b7ba28',1,'Scroom::Utils::Observable']]],
-  ['observerweak',['ObserverWeak',['../classScroom_1_1Utils_1_1Observable.html#abc0d74223619b6f121a0368d7c58e474',1,'Scroom::Utils::Observable']]]
+  ['maptype_2848',['MapType',['../classScroom_1_1Bookkeeping_1_1MapBase.html#a8cf14ba9040b618d452494f4bbd71f29',1,'Scroom::Bookkeeping::MapBase']]]
 ];

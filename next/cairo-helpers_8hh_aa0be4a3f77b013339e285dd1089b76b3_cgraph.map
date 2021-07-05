@@ -1,0 +1,16 @@
+<map id="drawOutOfBoundsWithBackgroundColor" name="drawOutOfBoundsWithBackgroundColor">
+<area shape="rect" id="node1" title=" " alt="" coords="5,311,252,353"/>
+<area shape="rect" id="node2" href="$cairo-helpers_8cc.html#a72b76dcfe2a11213e72c72dee13488d6" title=" " alt="" coords="300,319,568,345"/>
+<area shape="rect" id="node5" href="$cairo-helpers_8cc.html#a4f46197f43bbf408ce995b3b0a428c68" title=" " alt="" coords="648,31,767,57"/>
+<area shape="rect" id="node12" href="$classScroom_1_1Utils_1_1Rectangle.html#a6bd413e3bd23ecee6446af182ca8c38d" title=" " alt="" coords="616,605,799,646"/>
+<area shape="rect" id="node3" href="$classScroom_1_1Utils_1_1Rectangle.html#a9531590fea575c3339a63ec865e0cfb8" title=" " alt="" coords="616,82,799,123"/>
+<area shape="rect" id="node4" href="$classScroom_1_1Utils_1_1Rectangle.html#aebd20853fb69e478c7cf3cd6ec6b19d7" title=" " alt="" coords="616,147,799,189"/>
+<area shape="rect" id="node8" href="$classScroom_1_1Utils_1_1Rectangle.html#af497bd1988b10b5e521a82bc05285eed" title=" " alt="" coords="616,213,799,254"/>
+<area shape="rect" id="node9" href="$classScroom_1_1Utils_1_1Rectangle.html#ad623b0b902d4e2cd1d858300728c78d1" title=" " alt="" coords="616,278,799,319"/>
+<area shape="rect" id="node10" href="$classScroom_1_1Utils_1_1Rectangle.html#ac0a99c1ecbac98201ef36d88bf56eb40" title=" " alt="" coords="616,343,799,385"/>
+<area shape="rect" id="node11" href="$classScroom_1_1Utils_1_1Rectangle.html#a23ed938b3f63186f48c5828024a9d6ab" title=" " alt="" coords="616,409,799,450"/>
+<area shape="rect" id="node13" href="$classScroom_1_1Utils_1_1Rectangle.html#adf62135f8fc93f9269d33baf77f0a083" title=" " alt="" coords="616,474,799,515"/>
+<area shape="rect" id="node14" href="$classScroom_1_1Utils_1_1Rectangle.html#aca81333b9b8350b037fc707748784976" title=" " alt="" coords="616,539,799,581"/>
+<area shape="rect" id="node6" href="$cairo-helpers_8cc.html#a7eaa96a970e5ff603afbea0a3a0bf761" title=" " alt="" coords="873,5,939,32"/>
+<area shape="rect" id="node7" href="$classColor.html#a80526917d45f7674d1ffdb1df0aba14a" title=" " alt="" coords="847,56,965,83"/>
+</map>

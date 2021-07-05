@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['rectangle',['Rectangle',['../classScroom_1_1Utils_1_1Rectangle.html',1,'Scroom::Utils']]],
-  ['rectangle_3c_20double_20_3e',['Rectangle&lt; double &gt;',['../classScroom_1_1Utils_1_1Rectangle.html',1,'Scroom::Utils']]],
-  ['rectangle_3c_20int_20_3e',['Rectangle&lt; int &gt;',['../classScroom_1_1Utils_1_1Rectangle.html',1,'Scroom::Utils']]],
-  ['registration',['Registration',['../classScroom_1_1Utils_1_1Detail_1_1Registration.html',1,'Scroom::Utils::Detail']]],
-  ['resizablepresentationinterface',['ResizablePresentationInterface',['../classResizablePresentationInterface.html',1,'']]]
+  ['queue_1511',['Queue',['../classThreadPool_1_1Queue.html',1,'ThreadPool']]],
+  ['queueimpl_1512',['QueueImpl',['../classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html',1,'Scroom::Detail::ThreadPool']]],
+  ['queuejumper_1513',['QueueJumper',['../classQueueJumper.html',1,'']]],
+  ['queuelock_1514',['QueueLock',['../classScroom_1_1Detail_1_1ThreadPool_1_1QueueLock.html',1,'Scroom::Detail::ThreadPool']]]
 ];

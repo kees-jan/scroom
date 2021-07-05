@@ -9,8 +9,8 @@ var classScroom_1_1Bitmap_1_1BitmapSurface =
     [ "create", "classScroom_1_1Bitmap_1_1BitmapSurface.html#a697961480f8888e1a149d4be54adb9e7", null ],
     [ "create", "classScroom_1_1Bitmap_1_1BitmapSurface.html#a2c710e1bb4790ff1f891bff019018287", null ],
     [ "get", "classScroom_1_1Bitmap_1_1BitmapSurface.html#a4e20b367582344b95c31226ba88ae3a1", null ],
-    [ "operator=", "classScroom_1_1Bitmap_1_1BitmapSurface.html#a0ce332ca1beb87966a5e06b490ab1378", null ],
     [ "operator=", "classScroom_1_1Bitmap_1_1BitmapSurface.html#a32b29bd80a5a34800776a1cd9f9eae07", null ],
-    [ "data", "classScroom_1_1Bitmap_1_1BitmapSurface.html#a6aa191f4dccca0bdd1f03da1c753398c", null ],
+    [ "operator=", "classScroom_1_1Bitmap_1_1BitmapSurface.html#a0ce332ca1beb87966a5e06b490ab1378", null ],
+    [ "data", "classScroom_1_1Bitmap_1_1BitmapSurface.html#a0f3cdd7f76369811a67be17211ffbcc7", null ],
     [ "surface", "classScroom_1_1Bitmap_1_1BitmapSurface.html#a52d5cf41eb8104774d48618032e21c2b", null ]
 ];

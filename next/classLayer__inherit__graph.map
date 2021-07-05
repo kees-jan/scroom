@@ -1,5 +1,7 @@
 <map id="Layer" name="Layer">
-<area shape="rect" id="node2" href="$classViewable.html" title="Implement Viewable if you want to be able to receive events when a View is created and/or deleted..." alt="" coords="26,248,109,340"/>
-<area shape="rect" id="node3" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="5,5,121,156"/>
-<area shape="rect" id="node4" href="$classScroom_1_1Utils_1_1Base.html" title="Base class that inherits from boost::enable_shared_from_this. " alt="" coords="141,204,301,384"/>
+<area shape="rect" id="node1" title=" " alt="" coords="67,403,220,671"/>
+<area shape="rect" id="node2" href="$classViewable.html" title=" " alt="" coords="27,233,110,325"/>
+<area shape="rect" id="node3" href="$classInterface.html" title=" " alt="" coords="5,5,121,156"/>
+<area shape="rect" id="node4" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="145,204,294,355"/>
+<area shape="rect" id="node5" title=" " alt="" coords="145,35,307,127"/>
 </map>

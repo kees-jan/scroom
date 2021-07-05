@@ -1,7 +1,9 @@
 <map id="PipetteHandler" name="PipetteHandler">
-<area shape="rect" id="node2" href="$classToolStateListener.html" title="Interface provided to something that wants to listener to enable/disable events from its tool button..." alt="" coords="5,248,140,340"/>
-<area shape="rect" id="node3" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="160,5,276,156"/>
-<area shape="rect" id="node4" href="$classPostRenderer.html" title="Interface provided to something that wants to draw on top of the current presentation. " alt="" coords="164,255,272,333"/>
-<area shape="rect" id="node5" href="$classSelectionListener.html" title="Interface provided to something that wants to be notified of selection updates. " alt="" coords="297,241,467,347"/>
-<area shape="rect" id="node6" href="$classScroom_1_1Utils_1_1Base.html" title="Base class that inherits from boost::enable_shared_from_this. " alt="" coords="491,204,651,384"/>
+<area shape="rect" id="node1" title=" " alt="" coords="215,403,386,627"/>
+<area shape="rect" id="node2" href="$classToolStateListener.html" title=" " alt="" coords="5,233,140,325"/>
+<area shape="rect" id="node3" href="$classInterface.html" title=" " alt="" coords="161,5,277,156"/>
+<area shape="rect" id="node4" href="$classPostRenderer.html" title=" " alt="" coords="165,241,274,318"/>
+<area shape="rect" id="node5" href="$classSelectionListener.html" title=" " alt="" coords="298,226,469,333"/>
+<area shape="rect" id="node6" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="493,204,642,355"/>
+<area shape="rect" id="node7" title=" " alt="" coords="487,35,648,127"/>
 </map>

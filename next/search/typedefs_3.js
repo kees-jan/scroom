@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['gtkfilefilterinfoptr',['GtkFileFilterInfoPtr',['../loader_8cc.html#aaa2bcc997dd40c9cba73d9beb88ecbc4',1,'loader.cc']]],
-  ['gtkfuncptr',['GtkFuncPtr',['../gtk-helpers_8cc.html#a3b65a7f555d7809b40228a7d522f3fd1',1,'gtk-helpers.cc']]]
+  ['filenamemap_2842',['FileNameMap',['../callbacks_8hh.html#ae888da5a09e1e63d73a703afd3b0801d',1,'callbacks.hh']]]
 ];

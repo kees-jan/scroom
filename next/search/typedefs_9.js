@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['stuff',['Stuff',['../namespaceScroom_1_1Utils.html#af120558cf332de898d5e994cc6645d9a',1,'Scroom::Utils']]],
-  ['stufflist',['StuffList',['../namespaceScroom_1_1Utils.html#acf77d2a64982c6e01e5111ebec656515',1,'Scroom::Utils']]],
-  ['stuffweak',['StuffWeak',['../namespaceScroom_1_1Utils.html#aa788c53b33d361f060b300fbe190b36b',1,'Scroom::Utils']]]
+  ['registration_2855',['Registration',['../classScroom_1_1Utils_1_1Observable.html#aebd85f42cb1237848725431cf4363562',1,'Scroom::Utils::Observable']]],
+  ['reloadfunction_2856',['ReloadFunction',['../namespaceScroom_1_1TiledBitmap.html#abcdc6501ad25d0c72901a0ef53452506',1,'Scroom::TiledBitmap']]]
 ];

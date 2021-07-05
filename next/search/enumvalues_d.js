@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['zoom_5fcomputed',['ZOOM_COMPUTED',['../classTileViewState.html#a0a229ff2bb85654a101ca1842211842fa55fe6567e4b3808995b5ab4746607ee1',1,'TileViewState']]]
+  ['vertical_2917',['VERTICAL',['../classRuler.html#aa50e16ab1a754e6558a58c346d07b297a22152cdd7245bf5ee0fe9f77d3b7ac7b',1,'Ruler']]]
 ];
