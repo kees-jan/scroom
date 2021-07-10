@@ -102,6 +102,8 @@ void TransformPresentation::disableTransparentBackground() { colormappable->disa
 
 bool TransformPresentation::getTransparentBackground() { return colormappable->getTransparentBackground(); }
 
+void TransformPresentation::showMetadata() { presentation->showMetadata(); }
+
 PipetteLayerOperations::PipetteColor TransformPresentation::getPixelAverages(Scroom::Utils::Rectangle<int> area)
 {
   PipetteViewInterface::Ptr pipettePresentation = boost::dynamic_pointer_cast<PipetteViewInterface>(presentation);

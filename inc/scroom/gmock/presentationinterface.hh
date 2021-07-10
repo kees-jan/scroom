@@ -27,6 +27,7 @@ public:
   MOCK_METHOD2(getProperty, bool(const std::string&, std::string&));
   MOCK_METHOD1(isPropertyDefined, bool(const std::string&));
   MOCK_METHOD0(getTitle, std::string());
+  MOCK_METHOD0(showMetadata, void());
 };
 
 class ColormappablePresentationMock

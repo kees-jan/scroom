@@ -34,6 +34,7 @@ public:
   void        open(ViewInterface::WeakPtr /*vi*/) override{};
   void        close(ViewInterface::WeakPtr /*vi*/) override{};
   PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<int> /*area*/) override { return {{"C", 1.0}}; }
+  void                                 showMetadata() override{};
 };
 
 class DummyView : public ViewInterface
