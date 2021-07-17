@@ -20,8 +20,8 @@
 #include <map>
 #include <string>
 
-#include <boost/algorithm/string.hpp>
-#include <boost/format.hpp>
+#include <fmt/core.h>
+
 #include <boost/scoped_array.hpp>
 
 #include <gdk/gdk.h>
@@ -521,8 +521,7 @@ void onDragDataReceived(GtkWidget*, GdkDragContext*, int, int, GtkSelectionData*
       }
       catch(std::invalid_argument& ex)
       {
-        boost::format warning = boost::format("Warning: unable to load file %s") % filename;
-        ShowModalDialog(warning.str());
+        ShowModalDialog(fmt::format("Warning: unable to load file {}", filename));
       }
     }
 
