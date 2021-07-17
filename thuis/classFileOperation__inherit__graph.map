@@ -1,4 +1,0 @@
-<map id="FileOperation" name="FileOperation">
-<area shape="rect" id="node3" href="$classLoadOperation.html" title="{LoadOperation\n|&#45; target\l&#45; thePresentation\l&#45; done\l&#45; queue\l|+ operator()()\l+ finished()\l+ abort()\l+ create()\l&#45; LoadOperation()\l}" alt="" coords="5,417,141,597"/>
-<area shape="rect" id="node2" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="15,5,131,156"/>
-</map>

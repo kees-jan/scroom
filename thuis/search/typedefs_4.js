@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['layerspec',['LayerSpec',['../tiledbitmapinterface_8hh.html#a00279dcefa7f911f75fec39af1d48e87',1,'tiledbitmapinterface.hh']]]
+  ['gtkfilefilterinfoptr_2843',['GtkFileFilterInfoPtr',['../loader_8cc.html#aaa2bcc997dd40c9cba73d9beb88ecbc4',1,'loader.cc']]],
+  ['gtkfuncptr_2844',['GtkFuncPtr',['../gtk-helpers_8cc.html#a3b65a7f555d7809b40228a7d522f3fd1',1,'gtk-helpers.cc']]]
 ];

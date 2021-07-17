@@ -1,9 +1,0 @@
-<map id="TiffPresentation" name="TiffPresentation">
-<area shape="rect" id="node2" href="$classSourcePresentation.html" title="Provide bitmap data. " alt="" coords="5,432,153,524"/>
-<area shape="rect" id="node3" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="21,160,137,311"/>
-<area shape="rect" id="node4" href="$classScroom_1_1Utils_1_1Base.html" title="Base class that inherits from boost::enable_shared_from_this. " alt="" coords="178,388,338,568"/>
-<area shape="rect" id="node7" title="STL class. " alt="" coords="398,197,507,274"/>
-<area shape="rect" id="node12" title="STL class. " alt="" coords="571,197,705,274"/>
-<area shape="rect" id="node10" title="STL class. " alt="" coords="789,197,876,274"/>
-<area shape="rect" id="node11" title="STL class. " alt="" coords="763,5,902,97"/>
-</map>

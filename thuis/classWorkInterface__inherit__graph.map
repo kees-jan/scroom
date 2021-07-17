@@ -1,5 +1,6 @@
 <map id="WorkInterface" name="WorkInterface">
-<area shape="rect" id="node3" href="$classanonymous__namespace_02progressbarmanager_8cc_03_1_1ProgressBarPulser.html" title="{anonymous_namespace\l\{progressbarmanager.cc\}\l::ProgressBarPulser\n|&#45; mut\l&#45; progressbars\l&#45; current\l|+ start()\l+ stop()\l+ doWork()\l}" alt="" coords="5,505,196,671"/>
-<area shape="rect" id="node4" href="$classPluginManager.html" title="{PluginManager\n|&#45; devMode\l&#45; state\l&#45; dirs\l&#45; currentDir\l&#45; files\l&#45; currentFile\l&#45; pluginInformationList\l&#45; newPresentationInterfaces\l&#45; newAggregateInterfaces\l&#45; openPresentationInterfaces\l&#45; openInterfaces\l&#45; viewObservers\l&#45; presentationObservers\l|+ doWork()\l+ addHook()\l+ registerNewPresentationInterface()\l+ registerNewAggregateInterface()\l+ registerOpenPresentation\lInterface()\l+ registerOpenInterface()\l+ registerViewObserver()\l+ registerPresentationObserver()\l+ getNewPresentationInterfaces()\l+ getNewAggregateInterfaces()\l+ getOpenPresentationInterfaces()\l+ getOpenInterfaces()\l+ getViewObservers()\l+ getPresentationObservers()\l+ create()\l+ getInstance()\l&#45; setStatusBarMessage()\l&#45; PluginManager()\l}" alt="" coords="221,329,487,847"/>
-<area shape="rect" id="node2" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="169,5,285,156"/>
+<area shape="rect" id="node1" title=" " alt="" coords="171,204,284,281"/>
+<area shape="rect" id="node3" href="$classanonymous__namespace_02progressbarmanager_8cc_03_1_1ProgressBarPulser.html" title=" " alt="" coords="5,395,196,561"/>
+<area shape="rect" id="node4" href="$classPluginManager.html" title=" " alt="" coords="221,329,487,627"/>
+<area shape="rect" id="node2" href="$classInterface.html" title=" " alt="" coords="169,5,285,156"/>
 </map>

@@ -1,17 +1,14 @@
 var searchData=
 [
-  ['sampleiterator',['SampleIterator',['../classScroom_1_1Bitmap_1_1SampleIterator.html',1,'Scroom::Bitmap']]],
-  ['scroominterface',['ScroomInterface',['../classScroomInterface.html',1,'']]],
-  ['scroominterfaceimpl',['ScroomInterfaceImpl',['../classScroomInterfaceImpl.html',1,'']]],
-  ['scroomplugininterface',['ScroomPluginInterface',['../classScroomPluginInterface.html',1,'']]],
-  ['segment',['Segment',['../classScroom_1_1Utils_1_1Segment.html',1,'Scroom::Utils']]],
-  ['segment_3c_20value_5ftype_20_3e',['Segment&lt; value_type &gt;',['../classScroom_1_1Utils_1_1Segment.html',1,'Scroom::Utils']]],
-  ['selection',['Selection',['../structSelection.html',1,'']]],
-  ['selectionlistener',['SelectionListener',['../classSelectionListener.html',1,'']]],
-  ['semaphore',['Semaphore',['../classScroom_1_1Semaphore.html',1,'Scroom']]],
-  ['sidebarmanager',['SidebarManager',['../classSidebarManager.html',1,'']]],
-  ['sizedeterminer',['SizeDeterminer',['../classSizeDeterminer.html',1,'']]],
-  ['sourcepresentation',['SourcePresentation',['../classSourcePresentation.html',1,'']]],
-  ['swapbasedblockallocator',['SwapBasedBlockAllocator',['../classScroom_1_1MemoryBlocks_1_1Detail_1_1SwapBasedBlockAllocator.html',1,'Scroom::MemoryBlocks::Detail']]],
-  ['swapbasedblockallocatorfactory',['SwapBasedBlockAllocatorFactory',['../classScroom_1_1MemoryBlocks_1_1Detail_1_1SwapBasedBlockAllocatorFactory.html',1,'Scroom::MemoryBlocks::Detail']]]
+  ['rectangle_1515',['Rectangle',['../classScroom_1_1Utils_1_1Rectangle.html',1,'Scroom::Utils']]],
+  ['rectangle_3c_20double_20_3e_1516',['Rectangle&lt; double &gt;',['../classScroom_1_1Utils_1_1Rectangle.html',1,'Scroom::Utils']]],
+  ['rectangle_3c_20int_20_3e_1517',['Rectangle&lt; int &gt;',['../classScroom_1_1Utils_1_1Rectangle.html',1,'Scroom::Utils']]],
+  ['rectanglehorizontaltestscaffold_1518',['RectangleHorizontalTestScaffold',['../classRectangleHorizontalTestScaffold.html',1,'']]],
+  ['rectangleverticaltestscaffold_1519',['RectangleVerticalTestScaffold',['../classRectangleVerticalTestScaffold.html',1,'']]],
+  ['registration_1520',['Registration',['../classScroom_1_1Utils_1_1Detail_1_1Registration.html',1,'Scroom::Utils::Detail']]],
+  ['resizablepresentationinterface_1521',['ResizablePresentationInterface',['../classResizablePresentationInterface.html',1,'']]],
+  ['resizablepresentationinterfacestub_1522',['ResizablePresentationInterfaceStub',['../classanonymous__namespace_02determine-size-test_8cc_03_1_1ResizablePresentationInterfaceStub.html',1,'anonymous_namespace{determine-size-test.cc}']]],
+  ['ruler_1523',['Ruler',['../classRuler.html',1,'']]],
+  ['rulercalculations_1524',['RulerCalculations',['../classRulerCalculations.html',1,'']]],
+  ['rulerdrawstrategy_1525',['RulerDrawStrategy',['../classRulerDrawStrategy.html',1,'']]]
 ];

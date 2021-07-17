@@ -1,5 +1,0 @@
-<map id="LoadOperation" name="LoadOperation">
-<area shape="rect" id="node2" href="$classFileOperation.html" title="{FileOperation\n|&#45; progress\l&#45; waitingMutex\l&#45; waiting\l|+ doneWaiting()\l+ finished()\l+ operator()()\l+ abort()\l# FileOperation()\l}" alt="" coords="5,205,139,371"/>
-<area shape="rect" id="node3" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="14,5,130,156"/>
-<area shape="rect" id="node4" href="$classScroom_1_1Semaphore.html" title="{Scroom::Semaphore\n|&#45; count\l&#45; cond\l&#45; mut\l|+ Semaphore()\l+ P()\l+ V()\l+ P()\l+ try_P()\l}" alt="" coords="163,205,317,371"/>
-</map>

@@ -5,6 +5,6 @@ var dir_dfef9edec1ab26efb093607c91ba8f61 =
     [ "tiff.hh", "tiff_8hh.html", [
       [ "Tiff", "classTiff.html", "classTiff" ]
     ] ],
-    [ "tiffpresentation.cc", "tiffpresentation_8cc.html", "tiffpresentation_8cc" ],
-    [ "tiffpresentation.hh", "tiffpresentation_8hh.html", "tiffpresentation_8hh" ]
+    [ "tiffsource.cc", "tiffsource_8cc.html", "tiffsource_8cc" ],
+    [ "tiffsource.hh", "tiffsource_8hh.html", "tiffsource_8hh" ]
 ];

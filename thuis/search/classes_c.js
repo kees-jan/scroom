@@ -1,18 +1,6 @@
 var searchData=
 [
-  ['observable',['Observable',['../classScroom_1_1Utils_1_1Observable.html',1,'Scroom::Utils']]],
-  ['observable_3c_20tileinitialisationobserver_20_3e',['Observable&lt; TileInitialisationObserver &gt;',['../classScroom_1_1Utils_1_1Observable.html',1,'Scroom::Utils']]],
-  ['observable_3c_20tileloadingobserver_20_3e',['Observable&lt; TileLoadingObserver &gt;',['../classScroom_1_1Utils_1_1Observable.html',1,'Scroom::Utils']]],
-  ['openinterface',['OpenInterface',['../classOpenInterface.html',1,'']]],
-  ['openpresentationinterface',['OpenPresentationInterface',['../classOpenPresentationInterface.html',1,'']]],
-  ['operations',['Operations',['../classOperations.html',1,'']]],
-  ['operations1bpp',['Operations1bpp',['../classOperations1bpp.html',1,'']]],
-  ['operations1bppclipped',['Operations1bppClipped',['../classOperations1bppClipped.html',1,'']]],
-  ['operations24bpp',['Operations24bpp',['../classOperations24bpp.html',1,'']]],
-  ['operations8bpp',['Operations8bpp',['../classOperations8bpp.html',1,'']]],
-  ['operationscmyk16',['OperationsCMYK16',['../classOperationsCMYK16.html',1,'']]],
-  ['operationscmyk32',['OperationsCMYK32',['../classOperationsCMYK32.html',1,'']]],
-  ['operationscmyk4',['OperationsCMYK4',['../classOperationsCMYK4.html',1,'']]],
-  ['operationscmyk8',['OperationsCMYK8',['../classOperationsCMYK8.html',1,'']]],
-  ['operationscolormapped',['OperationsColormapped',['../classOperationsColormapped.html',1,'']]]
+  ['newaggregateinterface_1452',['NewAggregateInterface',['../classNewAggregateInterface.html',1,'']]],
+  ['newpresentationinterface_1453',['NewPresentationInterface',['../classNewPresentationInterface.html',1,'']]],
+  ['notifythreadlist_1454',['NotifyThreadList',['../classanonymous__namespace_02threadpoolimpl_8cc_03_1_1NotifyThreadList.html',1,'anonymous_namespace{threadpoolimpl.cc}']]]
 ];

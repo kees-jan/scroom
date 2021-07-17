@@ -1,7 +1,8 @@
 <map id="Scroom::Utils::Observable&lt; T &gt;" name="Scroom::Utils::Observable&lt; T &gt;">
-<area shape="rect" id="node2" href="$classScroom_1_1Utils_1_1Base.html" title="Base class that inherits from boost::enable_shared_from_this. " alt="" coords="69,147,229,327"/>
-<area shape="rect" id="node5" href="$classScroom_1_1Bookkeeping_1_1MapBase.html" title="{Scroom::Bookkeeping\l::MapBase\&lt; ObserverWeak,\l typename Registration::Ptr \&gt;\n|&#45; map\l&#45; mut\l|+ reserve()\l+ reReserve()\l+ remove()\l+ remove()\l+ at()\l+ set()\l+ get()\l+ keys()\l+ values()\l}" alt="" coords="145,677,359,916"/>
-<area shape="rect" id="node7" href="$classScroom_1_1Bookkeeping_1_1MapBase.html" title="{Scroom::Bookkeeping\l::MapBase\&lt; K, V \&gt;\n|&#45; map\l&#45; mut\l|+ reserve()\l+ reReserve()\l+ remove()\l+ remove()\l+ at()\l+ set()\l+ get()\l+ keys()\l+ values()\l}" alt="" coords="361,376,525,600"/>
-<area shape="rect" id="node4" href="$classScroom_1_1Bookkeeping_1_1Map.html" title="{Scroom::Bookkeeping\l::Map\&lt; ObserverWeak,\l typename Registration\l::Ptr \&gt;\n||+ create()\l}" alt="" coords="165,993,339,1115"/>
-<area shape="rect" id="node9" href="$classScroom_1_1Bookkeeping_1_1Map.html" title="{Scroom::Bookkeeping\l::Map\&lt; K, V \&gt;\n||+ create()\l}" alt="" coords="403,751,567,843"/>
+<area shape="rect" id="node1" title=" " alt="" coords="101,775,330,969"/>
+<area shape="rect" id="node2" href="$classScroom_1_1Bookkeeping_1_1Map.html" title=" " alt="" coords="128,591,303,712"/>
+<area shape="rect" id="node3" href="$classScroom_1_1Bookkeeping_1_1MapBase.html" title=" " alt="" coords="107,347,323,541"/>
+<area shape="rect" id="node4" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="11,147,161,297"/>
+<area shape="rect" id="node5" title=" " alt="" coords="5,5,167,97"/>
+<area shape="rect" id="node6" title=" " alt="" coords="185,183,334,261"/>
 </map>

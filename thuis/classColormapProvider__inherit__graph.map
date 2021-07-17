@@ -1,6 +1,8 @@
 <map id="ColormapProvider" name="ColormapProvider">
-<area shape="rect" id="node3" href="$classColormapHelperBase.html" title="{ColormapHelperBase\n|+ colormap\l+ originalColormap\l|+ ColormapHelperBase()\l+ setColormap()\l+ getOriginalColormap()\l+ getNumberOfColors()\l+ getMonochromeColor()\l+ setMonochromeColor()\l+ setTransparentBackground()\l+ disableTransparentBackground()\l+ getTransparentBackground()\l+ getColormap()\l+ setOriginalColormap()\l&#45; OperationNotSupported()\l}" alt="" coords="66,329,313,583"/>
-<area shape="rect" id="node2" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="131,5,247,156"/>
-<area shape="rect" id="node4" href="$classColormapHelper.html" title="{ColormapHelper\n||+ create()\l+ createInverted()\l+ create()\l&#45; ColormapHelper()\l}" alt="" coords="5,704,152,825"/>
-<area shape="rect" id="node5" href="$classMonochromeColormapHelper.html" title="{MonochromeColormapHelper\n|&#45; numberOfColors\l&#45; inverted\l&#45; blackish\l&#45; whitish\l&#45; transparentBackground\l|+ getMonochromeColor()\l+ setMonochromeColor()\l+ setTransparentBackground()\l+ disableTransparentBackground()\l+ getTransparentBackground()\l+ create()\l+ createInverted()\l&#45; MonochromeColormapHelper()\l&#45; regenerateColormap()\l&#45; generateInitialColormap()\l}" alt="" coords="177,631,423,899"/>
+<area shape="rect" id="node1" title=" " alt="" coords="233,204,372,281"/>
+<area shape="rect" id="node3" href="$classColormapHelperBase.html" title=" " alt="" coords="92,329,287,509"/>
+<area shape="rect" id="node6" href="$classDummyColormapProvider.html" title=" " alt="" coords="311,366,521,473"/>
+<area shape="rect" id="node2" href="$classInterface.html" title=" " alt="" coords="245,5,361,156"/>
+<area shape="rect" id="node4" href="$classColormapHelper.html" title=" " alt="" coords="5,631,152,767"/>
+<area shape="rect" id="node5" href="$classMonochromeColormapHelper.html" title=" " alt="" coords="177,557,423,840"/>
 </map>

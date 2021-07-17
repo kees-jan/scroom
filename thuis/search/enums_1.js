@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pluginmanagerstate',['PluginManagerState',['../classPluginManager.html#abd85725b4ba73b52f19bd7f1b99ffc92',1,'PluginManager']]]
+  ['orientation_2872',['Orientation',['../classRuler.html#aa50e16ab1a754e6558a58c346d07b297',1,'Ruler']]]
 ];

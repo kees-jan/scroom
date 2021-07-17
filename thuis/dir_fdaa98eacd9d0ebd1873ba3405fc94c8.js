@@ -45,6 +45,7 @@ var dir_fdaa98eacd9d0ebd1873ba3405fc94c8 =
       [ "Registration", "classScroom_1_1Utils_1_1Detail_1_1Registration.html", "classScroom_1_1Utils_1_1Detail_1_1Registration" ],
       [ "Observable", "classScroom_1_1Utils_1_1Observable.html", "classScroom_1_1Utils_1_1Observable" ]
     ] ],
+    [ "opentiledbitmapinterface.hh", "opentiledbitmapinterface_8hh.html", "opentiledbitmapinterface_8hh" ],
     [ "pipettelayeroperations.hh", "pipettelayeroperations_8hh.html", [
       [ "PipetteLayerOperations", "classPipetteLayerOperations.html", "classPipetteLayerOperations" ]
     ] ],

@@ -7,6 +7,7 @@ var classColormapHelperBase =
     [ "getMonochromeColor", "classColormapHelperBase.html#a6809764e5d3b572dc243e06ab60f0ba6", null ],
     [ "getNumberOfColors", "classColormapHelperBase.html#a40edaee47ece696a93bfff0176183029", null ],
     [ "getOriginalColormap", "classColormapHelperBase.html#a049ca37488f74843a67bca8f2e73dd9b", null ],
+    [ "getProperties", "classColormapHelperBase.html#ada34c85b0d1bd9c3634601572561904d", null ],
     [ "getTransparentBackground", "classColormapHelperBase.html#a97d03cdad03977108e174f6d67106fe3", null ],
     [ "OperationNotSupported", "classColormapHelperBase.html#aa18e2ef3643e90b27cd5dc0f258e1f26", null ],
     [ "setColormap", "classColormapHelperBase.html#a6a6d03551fdab11d5821b2d3b909d712", null ],

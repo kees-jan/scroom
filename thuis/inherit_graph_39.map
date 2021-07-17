@@ -1,10 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node2" href="$classColor.html" title="Represent a (ARGB) color. " alt="" coords="253,5,309,32"/>
-<area shape="rect" id="node3" href="$classScroom_1_1Utils_1_1Point.html" title="Scroom::Utils::Point\l\&lt; double \&gt;" alt="" coords="205,57,356,98"/>
-<area shape="rect" id="node4" href="$classScroom_1_1Utils_1_1Point.html" title="Scroom::Utils::Point\&lt; T \&gt;" alt="" coords="187,123,375,149"/>
-<area shape="rect" id="node6" href="$classScroom_1_1Utils_1_1Rectangle.html" title="Scroom::Utils::Rectangle\l\&lt; double \&gt;" alt="" coords="190,174,371,215"/>
-<area shape="rect" id="node7" href="$classScroom_1_1Bitmap_1_1SampleIterator.html" title="Iterate over samples (bits) within a larger type, for example a byte. " alt="" coords="165,407,396,449"/>
-<area shape="rect" id="node8" href="$classScroom_1_1Utils_1_1Rectangle.html" title="Scroom::Utils::Rectangle\&lt; T \&gt;" alt="" coords="171,240,390,267"/>
-<area shape="rect" id="node9" href="$classScroom_1_1Utils_1_1Segment.html" title="Scroom::Utils::Segment\&lt; T \&gt;" alt="" coords="174,291,387,317"/>
-<area shape="rect" id="node10" href="$classScroom_1_1Utils_1_1Segment.html" title="Scroom::Utils::Segment\l\&lt; value_type \&gt;" alt="" coords="193,342,368,383"/>
+<area shape="rect" id="node1" href="$classScroom_1_1Detail_1_1ThreadPool_1_1QueueLock.html" title=" " alt="" coords="5,5,204,47"/>
 </map>

@@ -1,0 +1,17 @@
+<map id="setupTest8bppColormapped" name="setupTest8bppColormapped">
+<area shape="rect" id="node1" title=" " alt="" coords="5,151,208,178"/>
+<area shape="rect" id="node2" href="$classDummyColormapProvider.html#adf88a93181d29006d5772cb1c442dce0" title=" " alt="" coords="256,5,447,47"/>
+<area shape="rect" id="node4" href="$classTestData.html#a01603e8c3e24c12587823ee79808c817" title=" " alt="" coords="287,71,415,98"/>
+<area shape="rect" id="node6" href="$classOperations.html#a59ca763acb5f4fc36330ad8add4f55ff" title=" " alt="" coords="280,122,423,149"/>
+<area shape="rect" id="node8" href="$classOperationsColormapped.html#a0b0991af5a7714e81ac4ea1845dc3910" title=" " alt="" coords="261,173,441,215"/>
+<area shape="rect" id="node10" href="$classColormap.html#afe589913d62741a00d269c5e72c3641b" title=" " alt="" coords="260,239,443,266"/>
+<area shape="rect" id="node13" href="$tiledbitmapinterface_8hh.html#afb81a705ea3c38444cb0f4fb12410f43" title=" " alt="" coords="280,290,423,317"/>
+<area shape="rect" id="node3" href="$classDummyColormapProvider.html#a9d99e0c941ca65c0ec0605c3372efeab" title=" " alt="" coords="495,5,693,47"/>
+<area shape="rect" id="node5" href="$classTestData.html#a50cc3dcb8b3ff6c331c549ad89f86ba7" title=" " alt="" coords="522,71,666,98"/>
+<area shape="rect" id="node7" href="$classOperations.html#a00588e0f6844ee39e3123548103cc70f" title=" " alt="" coords="508,122,680,149"/>
+<area shape="rect" id="node9" href="$classOperationsColormapped.html#ad28f529ff07160827c9f9b40d6a6a272" title=" " alt="" coords="500,173,688,215"/>
+<area shape="rect" id="node11" href="$classColormap.html#a9966b8a719d851b5e28b6b99ec6d2245" title=" " alt="" coords="527,239,661,266"/>
+<area shape="rect" id="node12" href="$classColormap.html#afbda2916eb43f89f99512e951ca2c7de" title=" " alt="" coords="757,239,913,266"/>
+<area shape="rect" id="node14" href="$classTiledBitmap.html#aac0fd55f26ab59b362f0c64d27a9e139" title=" " alt="" coords="519,290,669,317"/>
+<area shape="rect" id="node15" href="$classTiledBitmap.html#ac362c97e106dd9a7099c553783681767" title=" " alt="" coords="741,290,929,317"/>
+</map>

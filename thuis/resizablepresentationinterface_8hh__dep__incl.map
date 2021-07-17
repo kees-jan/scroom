@@ -1,9 +1,11 @@
 <map id="inc/scroom/resizablepresentationinterface.hh" name="inc/scroom/resizablepresentationinterface.hh">
-<area shape="rect" id="node2" href="$sizedeterminer_8hh.html" title="plugins/transparent\l&#45;overlay/src/sizedeterminer.hh" alt="" coords="171,80,391,121"/>
-<area shape="rect" id="node3" href="$sizedeterminer_8cc.html" title="plugins/transparent\l&#45;overlay/src/sizedeterminer.cc" alt="" coords="25,169,244,211"/>
-<area shape="rect" id="node4" href="$transparentoverlaypresentation_8hh.html" title="plugins/transparent\l&#45;overlay/src/transparentoverlaypresentation.hh" alt="" coords="117,259,446,300"/>
-<area shape="rect" id="node7" href="$transparentoverlayviewinfo_8hh.html" title="plugins/transparent\l&#45;overlay/src/transparentoverlayviewinfo.hh" alt="" coords="319,169,622,211"/>
-<area shape="rect" id="node5" href="$transparentoverlay_8cc.html" title="plugins/transparent\l&#45;overlay/src/transparentoverlay.cc" alt="" coords="5,348,248,389"/>
-<area shape="rect" id="node6" href="$transparentoverlaypresentation_8cc.html" title="plugins/transparent\l&#45;overlay/src/transparentoverlaypresentation.cc" alt="" coords="273,348,599,389"/>
-<area shape="rect" id="node8" href="$transparentoverlayviewinfo_8cc.html" title="plugins/transparent\l&#45;overlay/src/transparentoverlayviewinfo.cc" alt="" coords="471,259,772,300"/>
+<area shape="rect" id="node1" title=" " alt="" coords="386,5,702,32"/>
+<area shape="rect" id="node2" href="$sizedeterminer_8hh.html" title=" " alt="" coords="361,80,581,121"/>
+<area shape="rect" id="node9" href="$determine-size-test_8cc.html" title=" " alt="" coords="647,169,823,225"/>
+<area shape="rect" id="node3" href="$sizedeterminer_8cc.html" title=" " alt="" coords="25,177,244,218"/>
+<area shape="rect" id="node4" href="$transparentoverlaypresentation_8hh.html" title=" " alt="" coords="117,273,446,315"/>
+<area shape="rect" id="node7" href="$transparentoverlayviewinfo_8hh.html" title=" " alt="" coords="319,177,622,218"/>
+<area shape="rect" id="node5" href="$transparentoverlay_8cc.html" title=" " alt="" coords="5,363,248,404"/>
+<area shape="rect" id="node6" href="$transparentoverlaypresentation_8cc.html" title=" " alt="" coords="273,363,599,404"/>
+<area shape="rect" id="node8" href="$transparentoverlayviewinfo_8cc.html" title=" " alt="" coords="471,273,772,315"/>
 </map>

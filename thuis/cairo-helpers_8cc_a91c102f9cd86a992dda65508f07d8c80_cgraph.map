@@ -1,0 +1,8 @@
+<map id="drawOutOfBoundsWithBackground" name="drawOutOfBoundsWithBackground">
+<area shape="rect" id="node1" title=" " alt="" coords="5,89,252,116"/>
+<area shape="rect" id="node2" href="$cairo-helpers_8cc.html#a4f46197f43bbf408ce995b3b0a428c68" title=" " alt="" coords="332,31,451,57"/>
+<area shape="rect" id="node5" href="$classScroom_1_1Utils_1_1Rectangle.html#a6bd413e3bd23ecee6446af182ca8c38d" title=" " alt="" coords="300,82,483,123"/>
+<area shape="rect" id="node6" href="$classScroom_1_1Utils_1_1Rectangle.html#a230646c08fadaccfabc516926b85283b" title=" " alt="" coords="300,147,483,189"/>
+<area shape="rect" id="node3" href="$cairo-helpers_8cc.html#a7eaa96a970e5ff603afbea0a3a0bf761" title=" " alt="" coords="557,5,623,32"/>
+<area shape="rect" id="node4" href="$classColor.html#a80526917d45f7674d1ffdb1df0aba14a" title=" " alt="" coords="531,56,649,83"/>
+</map>

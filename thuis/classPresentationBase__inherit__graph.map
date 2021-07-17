@@ -1,9 +1,11 @@
 <map id="PresentationBase" name="PresentationBase">
-<area shape="rect" id="node8" href="$classTiffPresentationWrapper.html" title="{TiffPresentationWrapper\n|&#45; presentation\l|+ ~TiffPresentationWrapper()\l+ TiffPresentationWrapper()\l+ TiffPresentationWrapper()\l+ operator=()\l+ operator=()\l+ load()\l+ getTransformationData()\l+ getRect()\l+ redraw()\l+ getProperty()\land 14 more...\l+ create()\l&#45; TiffPresentationWrapper()\l}" alt="" coords="5,1050,220,1303"/>
-<area shape="rect" id="node9" href="$classTransparentOverlayPresentation.html" title="{TransparentOverlayPresentation\n|&#45; children\l&#45; sizeDeterminer\l&#45; viewData\l|+ getRect()\l+ redraw()\l+ getProperty()\l+ isPropertyDefined()\l+ getTitle()\l+ viewAdded()\l+ viewRemoved()\l+ getViews()\l+ addPresentation()\l+ create()\l&#45; TransparentOverlayPresentation()\l&#45; setOptimalColor()\l}" alt="" coords="245,1043,495,1311"/>
-<area shape="rect" id="node2" href="$classPresentationInterface.html" title="Represent some 2D content. " alt="" coords="159,645,322,796"/>
-<area shape="rect" id="node3" href="$classViewable.html" title="Implement Viewable if you want to be able to receive events when a View is created and/or deleted..." alt="" coords="118,439,201,531"/>
-<area shape="rect" id="node4" href="$classInterface.html" title="{Interface\n||+ Interface()\l+ Interface()\l+ operator=()\l+ Interface()\l+ operator=()\l+ ~Interface()\l}" alt="" coords="101,160,217,311"/>
-<area shape="rect" id="node5" href="$classScroom_1_1Utils_1_1Observable.html" title="Base class for something that accepts observers. " alt="" coords="224,373,423,597"/>
-<area shape="rect" id="node6" href="$classScroom_1_1Utils_1_1Base.html" title="Base class that inherits from boost::enable_shared_from_this. " alt="" coords="243,145,403,325"/>
+<area shape="rect" id="node1" title=" " alt="" coords="261,645,406,796"/>
+<area shape="rect" id="node6" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html" title=" " alt="" coords="5,844,219,1185"/>
+<area shape="rect" id="node7" href="$classPresentationBaseSimple.html" title=" " alt="" coords="243,961,424,1068"/>
+<area shape="rect" id="node9" href="$classTransparentOverlayPresentation.html" title=" " alt="" coords="448,903,699,1127"/>
+<area shape="rect" id="node2" href="$classPresentationInterface.html" title=" " alt="" coords="252,447,415,597"/>
+<area shape="rect" id="node3" href="$classViewable.html" title=" " alt="" coords="217,255,300,347"/>
+<area shape="rect" id="node4" href="$classInterface.html" title=" " alt="" coords="201,5,317,156"/>
+<area shape="rect" id="node5" href="$classScroom_1_1Utils_1_1Observable.html" title=" " alt="" coords="325,204,491,399"/>
+<area shape="rect" id="node8" href="$classTransformPresentation.html" title=" " alt="" coords="239,1233,427,1443"/>
 </map>
