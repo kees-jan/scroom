@@ -30,6 +30,7 @@ target_link_libraries(
          Boost::system
          Boost::filesystem
          Boost::program_options
+         CONAN_PKG::fmt
          util
          tiledbitmap
          m
