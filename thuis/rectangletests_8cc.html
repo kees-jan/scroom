@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Scroom
-   &#160;<span id="projectnumber">0.12.2-110-g9097dc7d7</span>
+   &#160;<span id="projectnumber">0.12.2-111-gf29013c9b</span>
    </div>
   </td>
  </tr>
@@ -135,7 +135,7 @@ Functions</h2></td></tr>
 <tr class="memitem:a5ea92059d572f1e41584ffee83250d38"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="rectangletests_8cc.html#a5ea92059d572f1e41584ffee83250d38">containedSegmentEqualsIntersection</a> (const Scaffold &amp;container, const Scaffold &amp;contained)</td></tr>
 <tr class="separator:a5ea92059d572f1e41584ffee83250d38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9efe8024f034d9dd7d2ad130dcace77"><td class="memTemplParams" colspan="2">template&lt;class Scaffold &gt; </td></tr>
-<tr class="memitem:ac9efe8024f034d9dd7d2ad130dcace77"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="rectangletests_8cc.html#ac9efe8024f034d9dd7d2ad130dcace77">intersectsImpliesNonEmptyIntersection</a> (const Scaffold &amp;a, const Scaffold &amp;<a class="el" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>)</td></tr>
+<tr class="memitem:ac9efe8024f034d9dd7d2ad130dcace77"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="rectangletests_8cc.html#ac9efe8024f034d9dd7d2ad130dcace77">intersectsImpliesNonEmptyIntersection</a> (const Scaffold &amp;a, const Scaffold &amp;<a class="el" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>)</td></tr>
 <tr class="separator:ac9efe8024f034d9dd7d2ad130dcace77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9526991bc46875ab8a0c13d1e1402a59"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rectangletests_8cc.html#a9526991bc46875ab8a0c13d1e1402a59">BOOST_AUTO_TEST_CASE_TEMPLATE</a> (testCreateSegment, Scaffold, <a class="el" href="rectangletests_8cc.html#abd88b397c8150cb266dde8924abfff71">test_types</a>)</td></tr>
 <tr class="separator:a9526991bc46875ab8a0c13d1e1402a59"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -879,7 +879,7 @@ Here is the call graph for this function:</div>
 <map name="rectangletests_8cc_a485abb9fb75bcd2ad35e349fd86ed2db_cgraph" id="rectangletests_8cc_a485abb9fb75bcd2ad35e349fd86ed2db_cgraph">
 <area shape="rect" title=" " alt="" coords="5,23,196,65"/>
 <area shape="rect" href="rectangletests_8cc.html#ac9efe8024f034d9dd7d2ad130dcace77" title=" " alt="" coords="244,23,447,65"/>
-<area shape="rect" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783" title=" " alt="" coords="561,5,599,32"/>
+<area shape="rect" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b" title=" " alt="" coords="561,5,599,32"/>
 <area shape="rect" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5" title=" " alt="" coords="495,56,665,83"/>
 </map>
 </div>
@@ -1078,10 +1078,10 @@ template&lt;class Scaffold &gt; </div>
       </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;{</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <a class="code" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a>(a.intersects(<a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>), <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>.intersects(a));</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <a class="code" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a>(a.intersects(<a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>), !a.intersection(<a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>).isEmpty());</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <a class="code" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a>(<a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>.intersects(a), !<a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>.intersection(a).isEmpty());</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <a class="code" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a>(a.intersection(<a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>), <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>.intersection(a));</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <a class="code" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a>(a.intersects(<a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>), <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>.intersects(a));</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <a class="code" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a>(a.intersects(<a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>), !a.intersection(<a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>).isEmpty());</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <a class="code" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a>(<a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>.intersects(a), !<a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>.intersection(a).isEmpty());</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <a class="code" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a>(a.intersection(<a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>), <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>.intersection(a));</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="rectangletests_8cc.html#a485abb9fb75bcd2ad35e349fd86ed2db">BOOST_AUTO_TEST_CASE_TEMPLATE()</a>.</p>
@@ -1091,7 +1091,7 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="rectangletests_8cc_ac9efe8024f034d9dd7d2ad130dcace77_cgraph.png" border="0" usemap="#rectangletests_8cc_ac9efe8024f034d9dd7d2ad130dcace77_cgraph" alt=""/></div>
 <map name="rectangletests_8cc_ac9efe8024f034d9dd7d2ad130dcace77_cgraph" id="rectangletests_8cc_ac9efe8024f034d9dd7d2ad130dcace77_cgraph">
 <area shape="rect" title=" " alt="" coords="5,23,208,65"/>
-<area shape="rect" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783" title=" " alt="" coords="322,5,361,32"/>
+<area shape="rect" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b" title=" " alt="" coords="322,5,361,32"/>
 <area shape="rect" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5" title=" " alt="" coords="256,56,427,83"/>
 </map>
 </div>
@@ -1113,15 +1113,15 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="acolormaphelpers__test_8cc_html_afcf7bee9df01428085e7e8c754e219f5"><div class="ttname"><a href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a></div><div class="ttdeci">BOOST_CHECK_EQUAL(sample.expectedColors, originalColormap-&gt;colors.size())</div></div>
 <div class="ttc" id="anamespaceScroom_1_1Utils_html_ab180ef35718c488735a883d3798c6c8b"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#ab180ef35718c488735a883d3798c6c8b">Scroom::Utils::make_rect</a></div><div class="ttdeci">Rectangle&lt; T &gt; make_rect(T x, T y, T width, T height)</div><div class="ttdef"><b>Definition:</b> rectangle.hh:287</div></div>
 <div class="ttc" id="arectangletests_8cc_html_a5ea92059d572f1e41584ffee83250d38"><div class="ttname"><a href="rectangletests_8cc.html#a5ea92059d572f1e41584ffee83250d38">containedSegmentEqualsIntersection</a></div><div class="ttdeci">void containedSegmentEqualsIntersection(const Scaffold &amp;container, const Scaffold &amp;contained)</div><div class="ttdef"><b>Definition:</b> rectangletests.cc:105</div></div>
+<div class="ttc" id="agtkhelper-tests_8cc_html_a0ed3d3c3d4a74a90bde7347df4bc658b"><div class="ttname"><a href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a></div><div class="ttdeci">static void b(B::Ptr)</div><div class="ttdef"><b>Definition:</b> gtkhelper-tests.cc:31</div></div>
 <div class="ttc" id="anamespaceScroom_1_1Utils_html_aec6a39c97f4eef824b1c61dfc3b01c72"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#aec6a39c97f4eef824b1c61dfc3b01c72">Scroom::Utils::make_point</a></div><div class="ttdeci">Point&lt; T &gt; make_point(T x, T y)</div><div class="ttdef"><b>Definition:</b> point.hh:99</div></div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1Rectangle_html_aebd20853fb69e478c7cf3cd6ec6b19d7"><div class="ttname"><a href="classScroom_1_1Utils_1_1Rectangle.html#aebd20853fb69e478c7cf3cd6ec6b19d7">Scroom::Utils::Rectangle::below</a></div><div class="ttdeci">Rectangle&lt; value_type &gt; below(value_type v) const</div><div class="ttdef"><b>Definition:</b> rectangle.hh:169</div></div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1Segment_html"><div class="ttname"><a href="classScroom_1_1Utils_1_1Segment.html">Scroom::Utils::Segment</a></div><div class="ttdef"><b>Definition:</b> linearsegment.hh:43</div></div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1Rectangle_html_a9531590fea575c3339a63ec865e0cfb8"><div class="ttname"><a href="classScroom_1_1Utils_1_1Rectangle.html#a9531590fea575c3339a63ec865e0cfb8">Scroom::Utils::Rectangle::above</a></div><div class="ttdeci">Rectangle&lt; value_type &gt; above(value_type v) const</div><div class="ttdef"><b>Definition:</b> rectangle.hh:164</div></div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1Rectangle_html_a2b1f95eea80820e7f6434cc7ec1bee52"><div class="ttname"><a href="classScroom_1_1Utils_1_1Rectangle.html#a2b1f95eea80820e7f6434cc7ec1bee52">Scroom::Utils::Rectangle::toGdkRectangle</a></div><div class="ttdeci">cairo_rectangle_int_t toGdkRectangle() const</div><div class="ttdef"><b>Definition:</b> rectangle.hh:64</div></div>
 <div class="ttc" id="anamespaceScroom_1_1Utils_html_aa08251a37a550efbeabbf72d5e4b844d"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#aa08251a37a550efbeabbf72d5e4b844d">Scroom::Utils::make_segment</a></div><div class="ttdeci">Segment&lt; T &gt; make_segment(T start, T size)</div><div class="ttdef"><b>Definition:</b> linearsegment.hh:197</div></div>
-<div class="ttc" id="agtkhelper-tests_8cc_html_a822ba6df376d382b6a6a8653cc527783"><div class="ttname"><a href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a></div><div class="ttdeci">static bool b(bool &amp;in, B::Ptr)</div><div class="ttdef"><b>Definition:</b> gtkhelper-tests.cc:31</div></div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1Rectangle_html"><div class="ttname"><a href="classScroom_1_1Utils_1_1Rectangle.html">Scroom::Utils::Rectangle</a></div><div class="ttdef"><b>Definition:</b> rectangle.hh:24</div></div>
-<div class="ttc" id="anamespaceScroom_1_1GtkHelpers_html_a5260b667cc757819028aac849da3304e"><div class="ttname"><a href="namespaceScroom_1_1GtkHelpers.html#a5260b667cc757819028aac849da3304e">Scroom::GtkHelpers::createCairoIntRectangle</a></div><div class="ttdeci">cairo_rectangle_int_t createCairoIntRectangle(int x, int y, int width, int height)</div><div class="ttdef"><b>Definition:</b> gtk-helpers.hh:45</div></div>
+<div class="ttc" id="anamespaceScroom_1_1GtkHelpers_html_a5260b667cc757819028aac849da3304e"><div class="ttname"><a href="namespaceScroom_1_1GtkHelpers.html#a5260b667cc757819028aac849da3304e">Scroom::GtkHelpers::createCairoIntRectangle</a></div><div class="ttdeci">cairo_rectangle_int_t createCairoIntRectangle(int x, int y, int width, int height)</div><div class="ttdef"><b>Definition:</b> gtk-helpers.hh:56</div></div>
 <div class="ttc" id="arectangletests_8cc_html_ac9efe8024f034d9dd7d2ad130dcace77"><div class="ttname"><a href="rectangletests_8cc.html#ac9efe8024f034d9dd7d2ad130dcace77">intersectsImpliesNonEmptyIntersection</a></div><div class="ttdeci">void intersectsImpliesNonEmptyIntersection(const Scaffold &amp;a, const Scaffold &amp;b)</div><div class="ttdef"><b>Definition:</b> rectangletests.cc:115</div></div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1Rectangle_html_adf62135f8fc93f9269d33baf77f0a083"><div class="ttname"><a href="classScroom_1_1Utils_1_1Rectangle.html#adf62135f8fc93f9269d33baf77f0a083">Scroom::Utils::Rectangle::leftOf</a></div><div class="ttdeci">Rectangle&lt; value_type &gt; leftOf(value_type v) const</div><div class="ttdef"><b>Definition:</b> rectangle.hh:154</div></div>
 <!-- start footer part -->

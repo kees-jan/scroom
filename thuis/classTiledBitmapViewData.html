@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Scroom
-   &#160;<span id="projectnumber">0.12.2-110-g9097dc7d7</span>
+   &#160;<span id="projectnumber">0.12.2-111-gf29013c9b</span>
    </div>
   </td>
  </tr>
@@ -304,19 +304,19 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;{</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  <span class="comment">// printf(&quot;Erasing volatile stuff for %p\n&quot;, viewInterface);</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  std::list&lt;boost::shared_ptr&lt;void&gt;&gt; oldVolatileStuff;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  {</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    boost::unique_lock&lt;boost::mutex&gt; lock(<a class="code" href="classTiledBitmapViewData.html#a86cf1099b453666642cbc60a1a2b41d3">mut</a>);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    oldVolatileStuff.swap(<a class="code" href="classTiledBitmapViewData.html#a2853b453228e7924601b29cb42748fce">volatileStuff</a>);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  }</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="comment">// oldVolatileStuff gets erased here, without holding the lock. So</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <span class="comment">// if anyone is calling storeVolatileStuff() as a side effect, they</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <span class="comment">// can do so safely.</span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  oldVolatileStuff.clear();</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <a class="code" href="classTiledBitmapViewData.html#ac2a59a87aaf27ba0e2e0e13b45289f11">resetNeededTiles</a>();</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;{</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  <span class="comment">// printf(&quot;Erasing volatile stuff for %p\n&quot;, viewInterface);</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  std::list&lt;boost::shared_ptr&lt;void&gt;&gt; oldVolatileStuff;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    boost::unique_lock&lt;boost::mutex&gt; lock(<a class="code" href="classTiledBitmapViewData.html#a86cf1099b453666642cbc60a1a2b41d3">mut</a>);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    oldVolatileStuff.swap(<a class="code" href="classTiledBitmapViewData.html#a2853b453228e7924601b29cb42748fce">volatileStuff</a>);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  }</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <span class="comment">// oldVolatileStuff gets erased here, without holding the lock. So</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="comment">// if anyone is calling storeVolatileStuff() as a side effect, they</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <span class="comment">// can do so safely.</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  oldVolatileStuff.clear();</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <a class="code" href="classTiledBitmapViewData.html#ac2a59a87aaf27ba0e2e0e13b45289f11">resetNeededTiles</a>();</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;}</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -477,7 +477,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classProgressInterface.html#a105f361cdc153bc96d0b9c7d304979f1">ProgressInterface</a>.</p>
-<div class="fragment"><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;{ <a class="code" href="classTiledBitmapViewData.html#a57c5017fa0fe0fd83afeb684bd65ee22">progressInterface</a>-&gt;setFinished(); }</div>
+<div class="fragment"><div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;{ <a class="code" href="classTiledBitmapViewData.html#a57c5017fa0fe0fd83afeb684bd65ee22">progressInterface</a>-&gt;setFinished(); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -505,7 +505,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classProgressInterface.html#ac8c5f2885eb3c2e0e9f95bf1995ef18b">ProgressInterface</a>.</p>
-<div class="fragment"><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;{ <a class="code" href="classTiledBitmapViewData.html#a57c5017fa0fe0fd83afeb684bd65ee22">progressInterface</a>-&gt;setIdle(); }</div>
+<div class="fragment"><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;{ <a class="code" href="classTiledBitmapViewData.html#a57c5017fa0fe0fd83afeb684bd65ee22">progressInterface</a>-&gt;setIdle(); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -631,7 +631,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classProgressInterface.html#aeedab48efa102344ee3e7080c3237b9f">ProgressInterface</a>.</p>
-<div class="fragment"><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;{ <a class="code" href="classTiledBitmapViewData.html#a57c5017fa0fe0fd83afeb684bd65ee22">progressInterface</a>-&gt;setWaiting(progress); }</div>
+<div class="fragment"><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;{ <a class="code" href="classTiledBitmapViewData.html#a57c5017fa0fe0fd83afeb684bd65ee22">progressInterface</a>-&gt;setWaiting(progress); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -660,7 +660,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classProgressInterface.html#a7dea5a7069270275fa36de3f150beb13">ProgressInterface</a>.</p>
-<div class="fragment"><div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;{ <a class="code" href="classTiledBitmapViewData.html#a57c5017fa0fe0fd83afeb684bd65ee22">progressInterface</a>-&gt;setWorking(progress); }</div>
+<div class="fragment"><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;{ <a class="code" href="classTiledBitmapViewData.html#a57c5017fa0fe0fd83afeb684bd65ee22">progressInterface</a>-&gt;setWorking(progress); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -679,10 +679,10 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;{</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  boost::unique_lock&lt;boost::mutex&gt; lock(<a class="code" href="classTiledBitmapViewData.html#a86cf1099b453666642cbc60a1a2b41d3">mut</a>);</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  <a class="code" href="classTiledBitmapViewData.html#a2853b453228e7924601b29cb42748fce">volatileStuff</a>.push_back(stuff_);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;{</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  boost::unique_lock&lt;boost::mutex&gt; lock(<a class="code" href="classTiledBitmapViewData.html#a86cf1099b453666642cbc60a1a2b41d3">mut</a>);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  <a class="code" href="classTiledBitmapViewData.html#a2853b453228e7924601b29cb42748fce">volatileStuff</a>.push_back(stuff_);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -712,30 +712,30 @@ Here is the call graph for this function:</div>
 <p>The <a class="el" href="classTile.html">Tile</a> has been loaded. </p>
 
 <p>Implements <a class="el" href="classTileLoadingObserver.html#afdd49a1d330076f47e13e494c39dc713">TileLoadingObserver</a>.</p>
-<div class="fragment"><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;{</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  boost::unique_lock&lt;boost::mutex&gt; lock(<a class="code" href="classTiledBitmapViewData.html#a86cf1099b453666642cbc60a1a2b41d3">mut</a>);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  <a class="code" href="classTiledBitmapViewData.html#a052b3df2cb314ba3521422d731271621">stuff</a>.push_back(tile);</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <span class="comment">// printf(&quot;TiledBitmapViewData::tileLoaded: redrawPending=%d\n&quot;, redrawPending);</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <span class="keywordflow">if</span>(!<a class="code" href="classTiledBitmapViewData.html#a3304b2a780bd0a23d4cdd974e842f5d5">redrawPending</a>)</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  {</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="comment">// We&#39;re not sure about whether gdk_threads_enter() has been</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="comment">// called or not, so we have no choice but to invalidate on</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="comment">// another thread.</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <a class="code" href="classScroom_1_1GtkHelpers_1_1Wrapper.html">Scroom::GtkHelpers::Wrapper</a> w = <a class="code" href="namespaceScroom_1_1GtkHelpers.html#a968ac1d1becfe0819715f89916a81248">Scroom::GtkHelpers::wrap</a>(boost::bind(<a class="code" href="tiledbitmapviewdata_8cc.html#af32b1dddcb044cfdf445db8f34409874">invalidate_view</a>, <a class="code" href="classTiledBitmapViewData.html#a664ac60117059d72da12a5931df4890a">viewInterface</a>));</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    gdk_threads_add_idle(w.<a class="code" href="classScroom_1_1GtkHelpers_1_1Wrapper.html#a9a115339dc9699ddecdaa58db226a465">f</a>, w.<a class="code" href="classScroom_1_1GtkHelpers_1_1Wrapper.html#ad7295a33e5954a0e1b800810f96da49f">data</a>);</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <a class="code" href="classTiledBitmapViewData.html#a3304b2a780bd0a23d4cdd974e842f5d5">redrawPending</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  }</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;{</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  boost::unique_lock&lt;boost::mutex&gt; lock(<a class="code" href="classTiledBitmapViewData.html#a86cf1099b453666642cbc60a1a2b41d3">mut</a>);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  <a class="code" href="classTiledBitmapViewData.html#a052b3df2cb314ba3521422d731271621">stuff</a>.push_back(tile);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  <span class="comment">// printf(&quot;TiledBitmapViewData::tileLoaded: redrawPending=%d\n&quot;, redrawPending);</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  <span class="keywordflow">if</span>(!<a class="code" href="classTiledBitmapViewData.html#a3304b2a780bd0a23d4cdd974e842f5d5">redrawPending</a>)</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  {</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="comment">// We&#39;re not sure about whether gdk_threads_enter() has been</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="comment">// called or not, so we have no choice but to invalidate on</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="comment">// another thread.</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <a class="code" href="namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1">Scroom::GtkHelpers::async_on_ui_thread</a>([=] { <a class="code" href="tiledbitmapviewdata_8cc.html#a3f7e7c230eb08d46353c4789ae7eb3e0">invalidate_view</a>(<a class="code" href="classTiledBitmapViewData.html#a664ac60117059d72da12a5931df4890a">viewInterface</a>); });</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <a class="code" href="classTiledBitmapViewData.html#a3304b2a780bd0a23d4cdd974e842f5d5">redrawPending</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  }</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;}</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classTiledBitmapViewData_a5c47329fb642dad6a239fd7cb513d6a1_cgraph.png" border="0" usemap="#classTiledBitmapViewData_a5c47329fb642dad6a239fd7cb513d6a1_cgraph" alt=""/></div>
 <map name="classTiledBitmapViewData_a5c47329fb642dad6a239fd7cb513d6a1_cgraph" id="classTiledBitmapViewData_a5c47329fb642dad6a239fd7cb513d6a1_cgraph">
-<area shape="rect" title=" " alt="" coords="5,27,169,69"/>
-<area shape="rect" href="tiledbitmapviewdata_8cc.html#af32b1dddcb044cfdf445db8f34409874" title=" " alt="" coords="231,5,356,32"/>
-<area shape="rect" href="namespaceScroom_1_1GtkHelpers.html#a968ac1d1becfe0819715f89916a81248" title=" " alt="" coords="217,57,369,98"/>
+<area shape="rect" title=" " alt="" coords="5,35,169,76"/>
+<area shape="rect" href="namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1" title=" " alt="" coords="217,5,376,47"/>
+<area shape="rect" href="tiledbitmapviewdata_8cc.html#a3f7e7c230eb08d46353c4789ae7eb3e0" title=" " alt="" coords="234,71,359,98"/>
+<area shape="rect" href="namespaceScroom_1_1GtkHelpers.html#ac6ea38c746831ab3ff96ce29ffe5bf7a" title=" " alt="" coords="424,5,576,47"/>
 </map>
 </div>
 
@@ -1071,26 +1071,23 @@ Here is the call graph for this function:</div>
 <div class="ttc" id="aclassTiledBitmapViewData_html_ac2a59a87aaf27ba0e2e0e13b45289f11"><div class="ttname"><a href="classTiledBitmapViewData.html#ac2a59a87aaf27ba0e2e0e13b45289f11">TiledBitmapViewData::resetNeededTiles</a></div><div class="ttdeci">void resetNeededTiles()</div><div class="ttdef"><b>Definition:</b> tiledbitmapviewdata.cc:72</div></div>
 <div class="ttc" id="aclassTiledBitmapViewData_html_a664ac60117059d72da12a5931df4890a"><div class="ttname"><a href="classTiledBitmapViewData.html#a664ac60117059d72da12a5931df4890a">TiledBitmapViewData::viewInterface</a></div><div class="ttdeci">ViewInterface::WeakPtr viewInterface</div><div class="ttdef"><b>Definition:</b> tiledbitmapviewdata.hh:28</div></div>
 <div class="ttc" id="aclassTiledBitmapViewData_html_a69cbd39dd13baf0479c7920feb738d46"><div class="ttname"><a href="classTiledBitmapViewData.html#a69cbd39dd13baf0479c7920feb738d46">TiledBitmapViewData::TiledBitmapViewData</a></div><div class="ttdeci">TiledBitmapViewData(ViewInterface::WeakPtr viewInterface)</div><div class="ttdef"><b>Definition:</b> tiledbitmapviewdata.cc:23</div></div>
+<div class="ttc" id="anamespaceScroom_1_1GtkHelpers_html_ac2709d76d34bc51f4310e34502d17ed1"><div class="ttname"><a href="namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1">Scroom::GtkHelpers::async_on_ui_thread</a></div><div class="ttdeci">void async_on_ui_thread(T f)</div><div class="ttdef"><b>Definition:</b> gtk-helpers.hh:37</div></div>
 <div class="ttc" id="aclassTiledBitmapViewData_html_a86cf1099b453666642cbc60a1a2b41d3"><div class="ttname"><a href="classTiledBitmapViewData.html#a86cf1099b453666642cbc60a1a2b41d3">TiledBitmapViewData::mut</a></div><div class="ttdeci">boost::mutex mut</div><div class="ttdef"><b>Definition:</b> tiledbitmapviewdata.hh:61</div></div>
 <div class="ttc" id="aclassTiledBitmapViewData_html_a57c5017fa0fe0fd83afeb684bd65ee22"><div class="ttname"><a href="classTiledBitmapViewData.html#a57c5017fa0fe0fd83afeb684bd65ee22">TiledBitmapViewData::progressInterface</a></div><div class="ttdeci">ProgressInterface::Ptr progressInterface</div><div class="ttdef"><b>Definition:</b> tiledbitmapviewdata.hh:29</div></div>
 <div class="ttc" id="aclassTiledBitmapViewData_html_a2853b453228e7924601b29cb42748fce"><div class="ttname"><a href="classTiledBitmapViewData.html#a2853b453228e7924601b29cb42748fce">TiledBitmapViewData::volatileStuff</a></div><div class="ttdeci">Scroom::Utils::StuffList volatileStuff</div><div class="ttdef"><b>Definition:</b> tiledbitmapviewdata.hh:56</div></div>
 <div class="ttc" id="aclassTiledBitmapViewData_html_ae657da01eb88cdd929ab1a377a133991"><div class="ttname"><a href="classTiledBitmapViewData.html#ae657da01eb88cdd929ab1a377a133991">TiledBitmapViewData::Ptr</a></div><div class="ttdeci">boost::shared_ptr&lt; TiledBitmapViewData &gt; Ptr</div><div class="ttdef"><b>Definition:</b> tiledbitmapviewdata.hh:25</div></div>
 <div class="ttc" id="aclassTileViewState_html_ab0d300ae511d475e94b30ea31c5dcc2a"><div class="ttname"><a href="classTileViewState.html#ab0d300ae511d475e94b30ea31c5dcc2a">TileViewState::Ptr</a></div><div class="ttdeci">boost::shared_ptr&lt; TileViewState &gt; Ptr</div><div class="ttdef"><b>Definition:</b> tileviewstate.hh:27</div></div>
 <div class="ttc" id="aclassTiledBitmapViewData_html_a8763e9d5a41ec0562e5ba36bc67d166e"><div class="ttname"><a href="classTiledBitmapViewData.html#a8763e9d5a41ec0562e5ba36bc67d166e">TiledBitmapViewData::layer</a></div><div class="ttdeci">Layer::Ptr layer</div><div class="ttdef"><b>Definition:</b> tiledbitmapviewdata.hh:33</div></div>
-<div class="ttc" id="aclassScroom_1_1GtkHelpers_1_1Wrapper_html"><div class="ttname"><a href="classScroom_1_1GtkHelpers_1_1Wrapper.html">Scroom::GtkHelpers::Wrapper</a></div><div class="ttdef"><b>Definition:</b> gtk-helpers.hh:20</div></div>
-<div class="ttc" id="anamespaceScroom_1_1GtkHelpers_html_a968ac1d1becfe0819715f89916a81248"><div class="ttname"><a href="namespaceScroom_1_1GtkHelpers.html#a968ac1d1becfe0819715f89916a81248">Scroom::GtkHelpers::wrap</a></div><div class="ttdeci">Wrapper wrap(boost::function&lt; bool()&gt; f)</div><div class="ttdef"><b>Definition:</b> gtk-helpers.cc:54</div></div>
+<div class="ttc" id="atiledbitmapviewdata_8cc_html_a3f7e7c230eb08d46353c4789ae7eb3e0"><div class="ttname"><a href="tiledbitmapviewdata_8cc.html#a3f7e7c230eb08d46353c4789ae7eb3e0">invalidate_view</a></div><div class="ttdeci">static void invalidate_view(ViewInterface::WeakPtr vi)</div><div class="ttdef"><b>Definition:</b> tiledbitmapviewdata.cc:120</div></div>
 <div class="ttc" id="aclassTiledBitmapViewData_html_a3304b2a780bd0a23d4cdd974e842f5d5"><div class="ttname"><a href="classTiledBitmapViewData.html#a3304b2a780bd0a23d4cdd974e842f5d5">TiledBitmapViewData::redrawPending</a></div><div class="ttdeci">bool redrawPending</div><div class="ttdef"><b>Definition:</b> tiledbitmapviewdata.hh:58</div></div>
 <div class="ttc" id="aclassTiledBitmapViewData_html_a6cad2d15edc0da0c8e43c55206f5afd0"><div class="ttname"><a href="classTiledBitmapViewData.html#a6cad2d15edc0da0c8e43c55206f5afd0">TiledBitmapViewData::imin</a></div><div class="ttdeci">int imin</div><div class="ttdef"><b>Definition:</b> tiledbitmapviewdata.hh:34</div></div>
-<div class="ttc" id="aclassScroom_1_1GtkHelpers_1_1Wrapper_html_a9a115339dc9699ddecdaa58db226a465"><div class="ttname"><a href="classScroom_1_1GtkHelpers_1_1Wrapper.html#a9a115339dc9699ddecdaa58db226a465">Scroom::GtkHelpers::Wrapper::f</a></div><div class="ttdeci">GSourceFunc f</div><div class="ttdef"><b>Definition:</b> gtk-helpers.hh:23</div></div>
 <div class="ttc" id="aclassTiledBitmapViewData_html_a404733ec9c267e49eefc0ff3875033e3"><div class="ttname"><a href="classTiledBitmapViewData.html#a404733ec9c267e49eefc0ff3875033e3">TiledBitmapViewData::imax</a></div><div class="ttdeci">int imax</div><div class="ttdef"><b>Definition:</b> tiledbitmapviewdata.hh:35</div></div>
 <div class="ttc" id="aclassTiledBitmapViewData_html_a052b3df2cb314ba3521422d731271621"><div class="ttname"><a href="classTiledBitmapViewData.html#a052b3df2cb314ba3521422d731271621">TiledBitmapViewData::stuff</a></div><div class="ttdeci">Scroom::Utils::StuffList stuff</div><div class="ttdef"><b>Definition:</b> tiledbitmapviewdata.hh:48</div></div>
 <div class="ttc" id="aclassTiledBitmapViewData_html_a8de9aed1a45f2ddc8d22710e0cfcfc9f"><div class="ttname"><a href="classTiledBitmapViewData.html#a8de9aed1a45f2ddc8d22710e0cfcfc9f">TiledBitmapViewData::layerOperations</a></div><div class="ttdeci">LayerOperations::Ptr layerOperations</div><div class="ttdef"><b>Definition:</b> tiledbitmapviewdata.hh:39</div></div>
 <div class="ttc" id="aclassCompressedTile_html_a808f3171290f6850961c8cee236589a1"><div class="ttname"><a href="classCompressedTile.html#a808f3171290f6850961c8cee236589a1">CompressedTile::Ptr</a></div><div class="ttdeci">boost::shared_ptr&lt; CompressedTile &gt; Ptr</div><div class="ttdef"><b>Definition:</b> tiledbitmaplayer.hh:108</div></div>
 <div class="ttc" id="aclassTiledBitmapViewData_html_a4e7e1ca283ae5cc118ba29073cb0e1aa"><div class="ttname"><a href="classTiledBitmapViewData.html#a4e7e1ca283ae5cc118ba29073cb0e1aa">TiledBitmapViewData::jmin</a></div><div class="ttdeci">int jmin</div><div class="ttdef"><b>Definition:</b> tiledbitmapviewdata.hh:36</div></div>
 <div class="ttc" id="aclassTiledBitmapViewData_html_a6d23881ff25fe4225ffb337bce42a1c6"><div class="ttname"><a href="classTiledBitmapViewData.html#a6d23881ff25fe4225ffb337bce42a1c6">TiledBitmapViewData::zoom</a></div><div class="ttdeci">int zoom</div><div class="ttdef"><b>Definition:</b> tiledbitmapviewdata.hh:38</div></div>
-<div class="ttc" id="aclassScroom_1_1GtkHelpers_1_1Wrapper_html_ad7295a33e5954a0e1b800810f96da49f"><div class="ttname"><a href="classScroom_1_1GtkHelpers_1_1Wrapper.html#ad7295a33e5954a0e1b800810f96da49f">Scroom::GtkHelpers::Wrapper::data</a></div><div class="ttdeci">gpointer data</div><div class="ttdef"><b>Definition:</b> gtk-helpers.hh:24</div></div>
 <div class="ttc" id="aclassTiledBitmapViewData_html_ad86feea87ce335387dc1237e9c537b61"><div class="ttname"><a href="classTiledBitmapViewData.html#ad86feea87ce335387dc1237e9c537b61">TiledBitmapViewData::jmax</a></div><div class="ttdeci">int jmax</div><div class="ttdef"><b>Definition:</b> tiledbitmapviewdata.hh:37</div></div>
-<div class="ttc" id="atiledbitmapviewdata_8cc_html_af32b1dddcb044cfdf445db8f34409874"><div class="ttname"><a href="tiledbitmapviewdata_8cc.html#af32b1dddcb044cfdf445db8f34409874">invalidate_view</a></div><div class="ttdeci">static gboolean invalidate_view(ViewInterface::WeakPtr vi)</div><div class="ttdef"><b>Definition:</b> tiledbitmapviewdata.cc:120</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

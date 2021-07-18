@@ -54,7 +54,8 @@ var searchData=
   ['async_2ddeleter_2dtests_2ecc_52',['async-deleter-tests.cc',['../async-deleter-tests_8cc.html',1,'']]],
   ['async_2ddeleter_2ecc_53',['async-deleter.cc',['../async-deleter_8cc.html',1,'']]],
   ['async_2ddeleter_2ehh_54',['async-deleter.hh',['../async-deleter_8hh.html',1,'']]],
-  ['asyncdeleter_55',['AsyncDeleter',['../classAsyncDeleter.html',1,'AsyncDeleter&lt; T &gt;'],['../classAsyncDeleter.html#a78dce23b8bc0fe9ca5be3da6bba596c8',1,'AsyncDeleter::AsyncDeleter()']]],
-  ['at_56',['at',['../classScroom_1_1Bookkeeping_1_1MapBase.html#a95cb93662641b37130f3f230da348440',1,'Scroom::Bookkeeping::MapBase']]],
-  ['august_57',['August',['../LICENSE__1__0_8txt.html#ae71537e16143fd1fb0983ebba966a63f',1,'LICENSE_1_0.txt']]]
+  ['async_5fon_5fui_5fthread_55',['async_on_ui_thread',['../namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1',1,'Scroom::GtkHelpers']]],
+  ['asyncdeleter_56',['AsyncDeleter',['../classAsyncDeleter.html',1,'AsyncDeleter&lt; T &gt;'],['../classAsyncDeleter.html#a78dce23b8bc0fe9ca5be3da6bba596c8',1,'AsyncDeleter::AsyncDeleter()']]],
+  ['at_57',['at',['../classScroom_1_1Bookkeeping_1_1MapBase.html#a95cb93662641b37130f3f230da348440',1,'Scroom::Bookkeeping::MapBase']]],
+  ['august_58',['August',['../LICENSE__1__0_8txt.html#ae71537e16143fd1fb0983ebba966a63f',1,'LICENSE_1_0.txt']]]
 ];

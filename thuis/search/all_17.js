@@ -22,6 +22,5 @@ var searchData=
   ['working_1334',['WORKING',['../classScroom_1_1Utils_1_1ProgressStateInterface.html#af17b9367dd613c97f7a56479638aff55a6bf9ea9a6fc8476222da7bd57e772ae3',1,'Scroom::Utils::ProgressStateInterface']]],
   ['workinterface_1335',['WorkInterface',['../classWorkInterface.html',1,'']]],
   ['workinterface_2ehh_1336',['workinterface.hh',['../workinterface_8hh.html',1,'']]],
-  ['wrap_1337',['wrap',['../namespaceScroom_1_1GtkHelpers.html#a968ac1d1becfe0819715f89916a81248',1,'Scroom::GtkHelpers']]],
-  ['wrapper_1338',['Wrapper',['../classScroom_1_1GtkHelpers_1_1Wrapper.html',1,'Scroom::GtkHelpers::Wrapper'],['../classScroom_1_1GtkHelpers_1_1Detail_1_1Wrapper.html',1,'Scroom::GtkHelpers::Detail::Wrapper'],['../classScroom_1_1GtkHelpers_1_1Wrapper.html#aefa0d79762e3da33a561fd919b0cdb3e',1,'Scroom::GtkHelpers::Wrapper::Wrapper()'],['../classScroom_1_1GtkHelpers_1_1Detail_1_1Wrapper.html#ae2dc7c3f4c732a6523b02e56d119edd8',1,'Scroom::GtkHelpers::Detail::Wrapper::Wrapper()']]]
+  ['wrap_1337',['wrap',['../namespaceScroom_1_1GtkHelpers.html#ac6ea38c746831ab3ff96ce29ffe5bf7a',1,'Scroom::GtkHelpers']]]
 ];

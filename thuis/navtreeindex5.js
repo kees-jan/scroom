@@ -1,13 +1,5 @@
 var NAVTREEINDEX5 =
 {
-"classScroom_1_1MemoryBlocks_1_1Detail_1_1SwapBasedBlockAllocatorFactory.html#a05fb8d669b0cbf2cfacb0e5fd3c609a4":[2,0,8,6,0,2,1],
-"classScroom_1_1MemoryBlocks_1_1Detail_1_1SwapBasedBlockAllocatorFactory.html#a8f524586f109d989a7bca28e28ef38f8":[2,0,8,6,0,2,0],
-"classScroom_1_1MemoryBlocks_1_1Detail_1_1SwapBasedBlockAllocatorFactory.html#ae363b5484929b35faaf0caee98d24cdb":[2,0,8,6,0,2,2],
-"classScroom_1_1MemoryBlocks_1_1Detail_1_1anonymous__namespace_02swapbasedblockallocator_8cc_03_1_1DontDelete.html":[2,0,8,6,0,0,0],
-"classScroom_1_1MemoryBlocks_1_1Detail_1_1anonymous__namespace_02swapbasedblockallocator_8cc_03_1_1DontDelete.html#a9c80210aaa07ef6bf5246efca5502bb2":[2,0,8,6,0,0,0,0],
-"classScroom_1_1MemoryBlocks_1_1Page.html":[2,0,8,6,3],
-"classScroom_1_1MemoryBlocks_1_1Page.html#a0e11aa9c8f5db49b0abce2e4ae047010":[2,0,8,6,3,2],
-"classScroom_1_1MemoryBlocks_1_1Page.html#a38455f2de5f3ef96d5089330db28847f":[2,0,8,6,3,1],
 "classScroom_1_1MemoryBlocks_1_1Page.html#a52df8a5f5f00d12186baff2714f4acb9":[2,0,8,6,3,3],
 "classScroom_1_1MemoryBlocks_1_1Page.html#ae69b259383bc0ea4638706135987c050":[2,0,8,6,3,0],
 "classScroom_1_1Semaphore.html":[2,0,8,10],
@@ -249,5 +241,13 @@ var NAVTREEINDEX5 =
 "classScroom_1_1Utils_1_1Rectangle.html#a4b1bfd88dfb9f4e74ec2410a62b14ab6":[2,0,8,9,16,52],
 "classScroom_1_1Utils_1_1Rectangle.html#a5f2b17d554fd97616123782938a242b8":[2,0,8,9,16,6],
 "classScroom_1_1Utils_1_1Rectangle.html#a606827d1c16c8b8ebe05fc1c0fdf4132":[2,0,8,9,16,3],
-"classScroom_1_1Utils_1_1Rectangle.html#a62a44f08a52ffba8f9caf5e44848bef3":[2,0,8,9,16,17]
+"classScroom_1_1Utils_1_1Rectangle.html#a62a44f08a52ffba8f9caf5e44848bef3":[2,0,8,9,16,17],
+"classScroom_1_1Utils_1_1Rectangle.html#a63d218d52a6e28b5f3af118feb624019":[2,0,8,9,16,30],
+"classScroom_1_1Utils_1_1Rectangle.html#a67601b0eaa9319fe17dfb17392a78b19":[2,0,8,9,16,42],
+"classScroom_1_1Utils_1_1Rectangle.html#a6bd413e3bd23ecee6446af182ca8c38d":[2,0,8,9,16,22],
+"classScroom_1_1Utils_1_1Rectangle.html#a71e91d8bfe978364ead1522a06118cf6":[2,0,8,9,16,14],
+"classScroom_1_1Utils_1_1Rectangle.html#a72976ed3a84a5c482d396038aa67f077":[2,0,8,9,16,50],
+"classScroom_1_1Utils_1_1Rectangle.html#a848489d9f6085b6353ac0092334d4f0d":[2,0,8,9,16,46],
+"classScroom_1_1Utils_1_1Rectangle.html#a8bafbe715dcf9dc732ea2f197b9ecba1":[2,0,8,9,16,1],
+"classScroom_1_1Utils_1_1Rectangle.html#a952feac8d48e488edb8ad7d805871b71":[2,0,8,9,16,24]
 };

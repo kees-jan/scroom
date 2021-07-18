@@ -76,15 +76,15 @@ var NAVTREEINDEX =
 "classHorizontalDrawStrategy.html#a9e9201354fc44a0b6f296e7f74138cea",
 "classPluginManager.html#a15f829b11a018ca1baff4f688365750e",
 "classScroomPluginInterface.html#ae9fb29cc2661840ad2053a88eb2d6748",
-"classScroom_1_1MemoryBlocks_1_1Detail_1_1SwapBasedBlockAllocatorFactory.html#a05fb8d669b0cbf2cfacb0e5fd3c609a4",
-"classScroom_1_1Utils_1_1Rectangle.html#a63d218d52a6e28b5f3af118feb624019",
-"classTiff.html#a60cdb34d44199fe7d20df2a74e6b3fe2",
-"classView.html#a48a34368a98821187870ba62e21be68d",
-"color_8hh.html#a4602012b20f6c31c205a715fef9f1be4",
-"globals_defs.html",
-"namespaceScroom_1_1MemoryBlocks.html",
-"ruler_8hh_source.html",
-"transparentoverlaypresentation_8hh.html"
+"classScroom_1_1MemoryBlocks_1_1Page.html#a52df8a5f5f00d12186baff2714f4acb9",
+"classScroom_1_1Utils_1_1Rectangle.html#a9531590fea575c3339a63ec865e0cfb8",
+"classTile.html#a1ceee2a6a986af91980d62c039ffe792",
+"classView.html#a59499988b6bd33aeb7d92e7353e4230f",
+"colormaphelpers__test_8cc.html#a14008efb9696827fb7c79e710cd108ec",
+"globals_func_d.html",
+"namespaceScroom_1_1TiledBitmap.html",
+"sampleiterator-tests_8cc.html#a84d38fa38463603a2167ab970d0aacb4",
+"unittest-main_8cc.html#a21ea3cc84cf29315cebb034aa105cb6a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

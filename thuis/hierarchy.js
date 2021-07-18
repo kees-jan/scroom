@@ -114,10 +114,10 @@ var hierarchy =
     [ "GtkFileFilterListDestroyer", "classGtkFileFilterListDestroyer.html", null ],
     [ "GtkInitFixture", "classGtkInitFixture.html", null ],
     [ "hash< Key >", "classhash.html", null ],
+    [ "hash_map< Key, Val, HashFcn, EqualKey, Alloc >", "classhash__map.html", null ],
     [ "hash_map", null, [
       [ "hash_map< Key, Val, hash< Key >, equal_to< Val > >", "classhash__map_3_01Key_00_01Val_00_01hash_3_01Key_01_4_00_01equal__to_3_01Val_01_4_01_4.html", null ]
     ] ],
-    [ "hash_map< Key, Val, HashFcn, EqualKey, Alloc >", "classhash__map.html", null ],
     [ "Interface", "classInterface.html", [
       [ "Aggregate", "classAggregate.html", [
         [ "TransparentOverlayPresentation", "classTransparentOverlayPresentation.html", null ]
@@ -374,7 +374,5 @@ var hierarchy =
     [ "Scroom::Utils::ProgressInterfaceBroadcaster::Unsubscriber", "classScroom_1_1Utils_1_1ProgressInterfaceBroadcaster_1_1Unsubscriber.html", null ],
     [ "Scroom::Bookkeeping::Detail::ValueType< V >", "classScroom_1_1Bookkeeping_1_1Detail_1_1ValueType.html", null ],
     [ "WaitForAsyncOp", "classWaitForAsyncOp.html", null ],
-    [ "ThreadPool::WeakQueue", "classThreadPool_1_1WeakQueue.html", null ],
-    [ "Scroom::GtkHelpers::Wrapper", "classScroom_1_1GtkHelpers_1_1Wrapper.html", null ],
-    [ "Scroom::GtkHelpers::Detail::Wrapper", "classScroom_1_1GtkHelpers_1_1Detail_1_1Wrapper.html", null ]
+    [ "ThreadPool::WeakQueue", "classThreadPool_1_1WeakQueue.html", null ]
 ];

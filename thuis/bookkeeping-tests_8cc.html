@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Scroom
-   &#160;<span id="projectnumber">0.12.2-110-g9097dc7d7</span>
+   &#160;<span id="projectnumber">0.12.2-111-gf29013c9b</span>
    </div>
   </td>
  </tr>
@@ -141,11 +141,11 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="classScroom_1_1Bookkeeping_1_1Token.html">Token</a> a    = map-&gt;<a class="code" href="classScroom_1_1Bookkeeping_1_1MapBase.html#ab1637319528a07f46e90ad35b4bb699b">reserve</a>(1);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  map-&gt;<a class="code" href="classScroom_1_1Bookkeeping_1_1MapBase.html#a95cb93662641b37130f3f230da348440">at</a>(1) = 1;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="classScroom_1_1Bookkeeping_1_1Token.html">Token</a> <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>    = map-&gt;<a class="code" href="classScroom_1_1Bookkeeping_1_1MapBase.html#ab1637319528a07f46e90ad35b4bb699b">reserve</a>(2);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="classScroom_1_1Bookkeeping_1_1Token.html">Token</a> <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>    = map-&gt;<a class="code" href="classScroom_1_1Bookkeeping_1_1MapBase.html#ab1637319528a07f46e90ad35b4bb699b">reserve</a>(2);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  map-&gt;<a class="code" href="classScroom_1_1Bookkeeping_1_1MapBase.html#a95cb93662641b37130f3f230da348440">at</a>(2) = 2;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  BOOST_CHECK(a);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  BOOST_CHECK(<a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  BOOST_CHECK(<a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <a class="code" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a>(1, <span class="keywordtype">int</span>(map-&gt;<a class="code" href="classScroom_1_1Bookkeeping_1_1MapBase.html#a95cb93662641b37130f3f230da348440">at</a>(1)));</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a>(2, <span class="keywordtype">int</span>(map-&gt;<a class="code" href="classScroom_1_1Bookkeeping_1_1MapBase.html#a95cb93662641b37130f3f230da348440">at</a>(2)));</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a>(1, map-&gt;<a class="code" href="classScroom_1_1Bookkeeping_1_1MapBase.html#a1c00174b9d2e744dff954408dcc0b17a">get</a>(1));</div>
@@ -154,14 +154,14 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <a class="code" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a>(2, map-&gt;<a class="code" href="classScroom_1_1Bookkeeping_1_1MapBase.html#af53f87156861f71a05069d94d82dd224">values</a>().size());</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  BOOST_CHECK_THROW(map-&gt;<a class="code" href="classScroom_1_1Bookkeeping_1_1MapBase.html#a95cb93662641b37130f3f230da348440">at</a>(3), std::invalid_argument);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  BOOST_CHECK_THROW(map-&gt;<a class="code" href="classScroom_1_1Bookkeeping_1_1MapBase.html#ab1637319528a07f46e90ad35b4bb699b">reserve</a>(2), std::invalid_argument);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <a class="code" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a>(<a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>, map-&gt;<a class="code" href="classScroom_1_1Bookkeeping_1_1MapBase.html#a35d6bda7d3d5521f753cea7fdef31368">reReserve</a>(2));</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <a class="code" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a>(<a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>, map-&gt;<a class="code" href="classScroom_1_1Bookkeeping_1_1MapBase.html#a35d6bda7d3d5521f753cea7fdef31368">reReserve</a>(2));</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <a class="code" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a>(2, map-&gt;<a class="code" href="classScroom_1_1Bookkeeping_1_1MapBase.html#a1c00174b9d2e744dff954408dcc0b17a">get</a>(2));</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <a class="code" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a>(1, map-&gt;<a class="code" href="classScroom_1_1Bookkeeping_1_1MapBase.html#a1c00174b9d2e744dff954408dcc0b17a">get</a>(1));</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  map-&gt;<a class="code" href="classScroom_1_1Bookkeeping_1_1MapBase.html#a3ce4badd74451cca2b795635fd7e98c0">set</a>(2, 5);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a>(5, map-&gt;<a class="code" href="classScroom_1_1Bookkeeping_1_1MapBase.html#a1c00174b9d2e744dff954408dcc0b17a">get</a>(2));</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a>(2, map-&gt;<a class="code" href="classScroom_1_1Bookkeeping_1_1MapBase.html#affd434e799aa471bed9b93cad7695afd">keys</a>().size());</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <a class="code" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a>(2, map-&gt;<a class="code" href="classScroom_1_1Bookkeeping_1_1MapBase.html#af53f87156861f71a05069d94d82dd224">values</a>().size());</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>.reset();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>.reset();</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  BOOST_CHECK_THROW(map-&gt;<a class="code" href="classScroom_1_1Bookkeeping_1_1MapBase.html#a95cb93662641b37130f3f230da348440">at</a>(2), std::invalid_argument);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <a class="code" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a>(1, map-&gt;<a class="code" href="classScroom_1_1Bookkeeping_1_1MapBase.html#a1c00174b9d2e744dff954408dcc0b17a">get</a>(1));</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <a class="code" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a>(1, map-&gt;<a class="code" href="classScroom_1_1Bookkeeping_1_1MapBase.html#affd434e799aa471bed9b93cad7695afd">keys</a>().size());</div>
@@ -176,7 +176,7 @@ Here is the call graph for this function:</div>
 <map name="bookkeeping-tests_8cc_a7f01720577ff97f68eedaa7af58f5238_cgraph" id="bookkeeping-tests_8cc_a7f01720577ff97f68eedaa7af58f5238_cgraph">
 <area shape="rect" title=" " alt="" coords="5,297,196,323"/>
 <area shape="rect" href="classScroom_1_1Bookkeeping_1_1MapBase.html#a95cb93662641b37130f3f230da348440" title=" " alt="" coords="248,5,411,47"/>
-<area shape="rect" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783" title=" " alt="" coords="310,71,349,98"/>
+<area shape="rect" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b" title=" " alt="" coords="310,71,349,98"/>
 <area shape="rect" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5" title=" " alt="" coords="244,122,415,149"/>
 <area shape="rect" href="colormaphelpers__test_8cc.html#a14008efb9696827fb7c79e710cd108ec" title=" " alt="" coords="263,173,395,199"/>
 <area shape="rect" href="classScroom_1_1Bookkeeping_1_1Map.html#ab1c85f32de69734c55e5835bcaa6e419" title=" " alt="" coords="248,224,411,265"/>
@@ -208,13 +208,13 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <a class="code" href="classScroom_1_1Bookkeeping_1_1Token.html">Token</a>     a;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <a class="code" href="classScroom_1_1Bookkeeping_1_1Token.html">Token</a>     <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <a class="code" href="classScroom_1_1Bookkeeping_1_1Token.html">Token</a>     c = a + <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <a class="code" href="classScroom_1_1Bookkeeping_1_1Token.html">Token</a>     <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <a class="code" href="classScroom_1_1Bookkeeping_1_1Token.html">Token</a>     c = a + <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <a class="code" href="namespaceScroom_1_1Bookkeeping.html#a9a246ed917abe21b6bc95f463e992c94">WeakToken</a> wa(a);</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  a.reset();</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  BOOST_CHECK(wa.lock());</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <a class="code" href="namespaceScroom_1_1Bookkeeping.html#a9a246ed917abe21b6bc95f463e992c94">WeakToken</a> wb(<a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>.reset();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <a class="code" href="namespaceScroom_1_1Bookkeeping.html#a9a246ed917abe21b6bc95f463e992c94">WeakToken</a> wb(<a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>.reset();</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  BOOST_CHECK(wb.lock());</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  c.reset();</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  BOOST_CHECK(!wa.lock());</div>
@@ -226,7 +226,7 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="bookkeeping-tests_8cc_ac7f1686ca36c22c382bba2f5a628fe13_cgraph.png" border="0" usemap="#bookkeeping-tests_8cc_ac7f1686ca36c22c382bba2f5a628fe13_cgraph" alt=""/></div>
 <map name="bookkeeping-tests_8cc_ac7f1686ca36c22c382bba2f5a628fe13_cgraph" id="bookkeeping-tests_8cc_ac7f1686ca36c22c382bba2f5a628fe13_cgraph">
 <area shape="rect" title=" " alt="" coords="5,5,196,32"/>
-<area shape="rect" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783" title=" " alt="" coords="244,5,283,32"/>
+<area shape="rect" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b" title=" " alt="" coords="244,5,283,32"/>
 </map>
 </div>
 
@@ -237,6 +237,7 @@ Here is the call graph for this function:</div>
 <div class="ttc" id="aclassScroom_1_1Bookkeeping_1_1MapBase_html_a3ce4badd74451cca2b795635fd7e98c0"><div class="ttname"><a href="classScroom_1_1Bookkeeping_1_1MapBase.html#a3ce4badd74451cca2b795635fd7e98c0">Scroom::Bookkeeping::MapBase::set</a></div><div class="ttdeci">void set(const K &amp;k, const V &amp;v)</div><div class="ttdef"><b>Definition:</b> bookkeepingimpl.hh:307</div></div>
 <div class="ttc" id="aclassScroom_1_1Bookkeeping_1_1MapBase_html_affd434e799aa471bed9b93cad7695afd"><div class="ttname"><a href="classScroom_1_1Bookkeeping_1_1MapBase.html#affd434e799aa471bed9b93cad7695afd">Scroom::Bookkeeping::MapBase::keys</a></div><div class="ttdeci">std::list&lt; K &gt; keys() const</div><div class="ttdef"><b>Definition:</b> bookkeepingimpl.hh:344</div></div>
 <div class="ttc" id="acolormaphelpers__test_8cc_html_afcf7bee9df01428085e7e8c754e219f5"><div class="ttname"><a href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a></div><div class="ttdeci">BOOST_CHECK_EQUAL(sample.expectedColors, originalColormap-&gt;colors.size())</div></div>
+<div class="ttc" id="agtkhelper-tests_8cc_html_a0ed3d3c3d4a74a90bde7347df4bc658b"><div class="ttname"><a href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a></div><div class="ttdeci">static void b(B::Ptr)</div><div class="ttdef"><b>Definition:</b> gtkhelper-tests.cc:31</div></div>
 <div class="ttc" id="aclassScroom_1_1Bookkeeping_1_1MapBase_html_ab1637319528a07f46e90ad35b4bb699b"><div class="ttname"><a href="classScroom_1_1Bookkeeping_1_1MapBase.html#ab1637319528a07f46e90ad35b4bb699b">Scroom::Bookkeeping::MapBase::reserve</a></div><div class="ttdeci">Token reserve(const K &amp;k)</div><div class="ttdef"><b>Definition:</b> bookkeepingimpl.hh:204</div></div>
 <div class="ttc" id="aclassScroom_1_1Bookkeeping_1_1MapBase_html_a95cb93662641b37130f3f230da348440"><div class="ttname"><a href="classScroom_1_1Bookkeeping_1_1MapBase.html#a95cb93662641b37130f3f230da348440">Scroom::Bookkeeping::MapBase::at</a></div><div class="ttdeci">Detail::LValue&lt; V &gt; at(const K &amp;k)</div><div class="ttdef"><b>Definition:</b> bookkeepingimpl.hh:289</div></div>
 <div class="ttc" id="acolormaphelpers__test_8cc_html_a14008efb9696827fb7c79e710cd108ec"><div class="ttname"><a href="colormaphelpers__test_8cc.html#a14008efb9696827fb7c79e710cd108ec">BOOST_REQUIRE</a></div><div class="ttdeci">BOOST_REQUIRE(originalColormap)</div></div>
@@ -245,7 +246,6 @@ Here is the call graph for this function:</div>
 <div class="ttc" id="aclassScroom_1_1Bookkeeping_1_1MapBase_html_a1c00174b9d2e744dff954408dcc0b17a"><div class="ttname"><a href="classScroom_1_1Bookkeeping_1_1MapBase.html#a1c00174b9d2e744dff954408dcc0b17a">Scroom::Bookkeeping::MapBase::get</a></div><div class="ttdeci">V get(const K &amp;k)</div><div class="ttdef"><b>Definition:</b> bookkeepingimpl.hh:326</div></div>
 <div class="ttc" id="aclassScroom_1_1Bookkeeping_1_1Map_html_a57d9559fc35c1bd7912d212b472e5992"><div class="ttname"><a href="classScroom_1_1Bookkeeping_1_1Map.html#a57d9559fc35c1bd7912d212b472e5992">Scroom::Bookkeeping::Map::Ptr</a></div><div class="ttdeci">boost::shared_ptr&lt; Map&lt; K, V &gt; &gt; Ptr</div><div class="ttdef"><b>Definition:</b> bookkeeping.hh:87</div></div>
 <div class="ttc" id="anamespaceScroom_1_1Bookkeeping_html_a9a246ed917abe21b6bc95f463e992c94"><div class="ttname"><a href="namespaceScroom_1_1Bookkeeping.html#a9a246ed917abe21b6bc95f463e992c94">Scroom::Bookkeeping::WeakToken</a></div><div class="ttdeci">boost::weak_ptr&lt; Detail::TokenImpl &gt; WeakToken</div><div class="ttdef"><b>Definition:</b> bookkeeping.hh:58</div></div>
-<div class="ttc" id="agtkhelper-tests_8cc_html_a822ba6df376d382b6a6a8653cc527783"><div class="ttname"><a href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a></div><div class="ttdeci">static bool b(bool &amp;in, B::Ptr)</div><div class="ttdef"><b>Definition:</b> gtkhelper-tests.cc:31</div></div>
 <div class="ttc" id="aclassScroom_1_1Bookkeeping_1_1Token_html"><div class="ttname"><a href="classScroom_1_1Bookkeeping_1_1Token.html">Scroom::Bookkeeping::Token</a></div><div class="ttdef"><b>Definition:</b> bookkeeping.hh:39</div></div>
 <div class="ttc" id="aloader_8cc_html_aa16c64386dde90b66ae796ec3183dcef"><div class="ttname"><a href="loader_8cc.html#aa16c64386dde90b66ae796ec3183dcef">create</a></div><div class="ttdeci">void create(NewPresentationInterface *interface)</div><div class="ttdef"><b>Definition:</b> loader.cc:175</div></div>
 <!-- start footer part -->

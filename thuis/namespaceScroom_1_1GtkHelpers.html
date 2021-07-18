@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Scroom
-   &#160;<span id="projectnumber">0.12.2-110-g9097dc7d7</span>
+   &#160;<span id="projectnumber">0.12.2-111-gf29013c9b</span>
    </div>
   </td>
  </tr>
@@ -100,19 +100,65 @@ Namespaces</h2></td></tr>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScroom_1_1GtkHelpers_1_1TakeGdkLock.html">TakeGdkLock</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScroom_1_1GtkHelpers_1_1Wrapper.html">Wrapper</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a968ac1d1becfe0819715f89916a81248"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classScroom_1_1GtkHelpers_1_1Wrapper.html">Wrapper</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1GtkHelpers.html#a968ac1d1becfe0819715f89916a81248">wrap</a> (boost::function&lt; bool()&gt; f)</td></tr>
-<tr class="separator:a968ac1d1becfe0819715f89916a81248"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6ea38c746831ab3ff96ce29ffe5bf7a"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ac6ea38c746831ab3ff96ce29ffe5bf7a"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; GSourceFunc, gpointer &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1GtkHelpers.html#ac6ea38c746831ab3ff96ce29ffe5bf7a">wrap</a> (T f)</td></tr>
+<tr class="separator:ac6ea38c746831ab3ff96ce29ffe5bf7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2709d76d34bc51f4310e34502d17ed1"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ac2709d76d34bc51f4310e34502d17ed1"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1">async_on_ui_thread</a> (T f)</td></tr>
+<tr class="separator:ac2709d76d34bc51f4310e34502d17ed1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4974ded72574a54f85c97f918b791095"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1GtkHelpers.html#a4974ded72574a54f85c97f918b791095">useRecursiveGdkLock</a> ()</td></tr>
 <tr class="separator:a4974ded72574a54f85c97f918b791095"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5260b667cc757819028aac849da3304e"><td class="memItemLeft" align="right" valign="top">cairo_rectangle_int_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1GtkHelpers.html#a5260b667cc757819028aac849da3304e">createCairoIntRectangle</a> (int x, int y, int width, int height)</td></tr>
 <tr class="separator:a5260b667cc757819028aac849da3304e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ac2709d76d34bc51f4310e34502d17ed1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2709d76d34bc51f4310e34502d17ed1">&#9670;&nbsp;</a></span>async_on_ui_thread()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void Scroom::GtkHelpers::async_on_ui_thread </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">auto</span> w = <a class="code" href="namespaceScroom_1_1GtkHelpers.html#ac6ea38c746831ab3ff96ce29ffe5bf7a">wrap</a>(std::move(f));</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    gdk_threads_add_idle(w.first, w.second);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  }</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="classTiledBitmapViewData.html#a5c47329fb642dad6a239fd7cb513d6a1">TiledBitmapViewData::tileLoaded()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceScroom_1_1GtkHelpers_ac2709d76d34bc51f4310e34502d17ed1_cgraph.png" border="0" usemap="#namespaceScroom_1_1GtkHelpers_ac2709d76d34bc51f4310e34502d17ed1_cgraph" alt=""/></div>
+<map name="namespaceScroom_1_1GtkHelpers_ac2709d76d34bc51f4310e34502d17ed1_cgraph" id="namespaceScroom_1_1GtkHelpers_ac2709d76d34bc51f4310e34502d17ed1_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,164,47"/>
+<area shape="rect" href="namespaceScroom_1_1GtkHelpers.html#ac6ea38c746831ab3ff96ce29ffe5bf7a" title=" " alt="" coords="212,5,364,47"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceScroom_1_1GtkHelpers_ac2709d76d34bc51f4310e34502d17ed1_icgraph.png" border="0" usemap="#namespaceScroom_1_1GtkHelpers_ac2709d76d34bc51f4310e34502d17ed1_icgraph" alt=""/></div>
+<map name="namespaceScroom_1_1GtkHelpers_ac2709d76d34bc51f4310e34502d17ed1_icgraph" id="namespaceScroom_1_1GtkHelpers_ac2709d76d34bc51f4310e34502d17ed1_icgraph">
+<area shape="rect" title=" " alt="" coords="217,5,376,47"/>
+<area shape="rect" href="classTiledBitmapViewData.html#a5c47329fb642dad6a239fd7cb513d6a1" title=" " alt="" coords="5,5,169,47"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="a5260b667cc757819028aac849da3304e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5260b667cc757819028aac849da3304e">&#9670;&nbsp;</a></span>createCairoIntRectangle()</h2>
 
@@ -158,14 +204,14 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      cairo_rectangle_int_t rect;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      rect.x      = x;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      rect.y      = y;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      rect.width  = width;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      rect.height = height;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      <span class="keywordflow">return</span> rect;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    cairo_rectangle_int_t rect;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    rect.x      = x;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    rect.y      = y;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    rect.width  = width;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    rect.height = height;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">return</span> rect;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="rectangletests_8cc.html#a8db307fdddadfda0f7f86caf46cfbb98">BOOST_AUTO_TEST_CASE()</a>, and <a class="el" href="classScroom_1_1Utils_1_1Rectangle.html#a2b1f95eea80820e7f6434cc7ec1bee52">Scroom::Utils::Rectangle&lt; int &gt;::toGdkRectangle()</a>.</p>
 <div class="dynheader">
@@ -195,7 +241,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;{ gdk_threads_set_lock_functions(&amp;<a class="code" href="namespaceScroom_1_1GtkHelpers_1_1Detail.html#a754301735d48d8b854599fe4fbded235">Detail::lockGdkMutex</a>, &amp;<a class="code" href="namespaceScroom_1_1GtkHelpers_1_1Detail.html#a6de374a2468bef38e5221f4de7c84f88">Detail::unlockGdkMutex</a>); }</div>
+<div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{ gdk_threads_set_lock_functions(&amp;<a class="code" href="namespaceScroom_1_1GtkHelpers_1_1Detail.html#a754301735d48d8b854599fe4fbded235">Detail::lockGdkMutex</a>, &amp;<a class="code" href="namespaceScroom_1_1GtkHelpers_1_1Detail.html#a6de374a2468bef38e5221f4de7c84f88">Detail::unlockGdkMutex</a>); }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="gui_2src_2main_8cc.html#a0ddf1224851353fc92bfbff6f499fa97">main()</a>.</p>
 <div class="dynheader">
@@ -221,32 +267,37 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a968ac1d1becfe0819715f89916a81248"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a968ac1d1becfe0819715f89916a81248">&#9670;&nbsp;</a></span>wrap()</h2>
+<a id="ac6ea38c746831ab3ff96ce29ffe5bf7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6ea38c746831ab3ff96ce29ffe5bf7a">&#9670;&nbsp;</a></span>wrap()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classScroom_1_1GtkHelpers_1_1Wrapper.html">Wrapper</a> Scroom::GtkHelpers::wrap </td>
+          <td class="memname">std::pair&lt;GSourceFunc, gpointer&gt; Scroom::GtkHelpers::wrap </td>
           <td>(</td>
-          <td class="paramtype">boost::function&lt; bool()&gt;&#160;</td>
+          <td class="paramtype">T&#160;</td>
           <td class="paramname"><em>f</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{ <span class="keywordflow">return</span> Wrapper(f); }</div>
+<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">return</span> std::make_pair&lt;GSourceFunc, gpointer&gt;(Detail::gtkWrapper&lt;T&gt;, <span class="keyword">new</span> T(std::move(f)));</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="gtkhelper-tests_8cc.html#abce25c5dd3483eeb76bc9d32912f50ab">BOOST_AUTO_TEST_CASE()</a>, and <a class="el" href="classTiledBitmapViewData.html#a5c47329fb642dad6a239fd7cb513d6a1">TiledBitmapViewData::tileLoaded()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1">async_on_ui_thread()</a>, and <a class="el" href="gtkhelper-tests_8cc.html#abce25c5dd3483eeb76bc9d32912f50ab">BOOST_AUTO_TEST_CASE()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="namespaceScroom_1_1GtkHelpers_a968ac1d1becfe0819715f89916a81248_icgraph.png" border="0" usemap="#namespaceScroom_1_1GtkHelpers_a968ac1d1becfe0819715f89916a81248_icgraph" alt=""/></div>
-<map name="namespaceScroom_1_1GtkHelpers_a968ac1d1becfe0819715f89916a81248_icgraph" id="namespaceScroom_1_1GtkHelpers_a968ac1d1becfe0819715f89916a81248_icgraph">
-<area shape="rect" title=" " alt="" coords="244,27,396,69"/>
-<area shape="rect" href="gtkhelper-tests_8cc.html#abce25c5dd3483eeb76bc9d32912f50ab" title=" " alt="" coords="5,5,196,32"/>
-<area shape="rect" href="classTiledBitmapViewData.html#a5c47329fb642dad6a239fd7cb513d6a1" title=" " alt="" coords="19,57,183,98"/>
+<div class="center"><img src="namespaceScroom_1_1GtkHelpers_ac6ea38c746831ab3ff96ce29ffe5bf7a_icgraph.png" border="0" usemap="#namespaceScroom_1_1GtkHelpers_ac6ea38c746831ab3ff96ce29ffe5bf7a_icgraph" alt=""/></div>
+<map name="namespaceScroom_1_1GtkHelpers_ac6ea38c746831ab3ff96ce29ffe5bf7a_icgraph" id="namespaceScroom_1_1GtkHelpers_ac6ea38c746831ab3ff96ce29ffe5bf7a_icgraph">
+<area shape="rect" title=" " alt="" coords="456,35,608,76"/>
+<area shape="rect" href="namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1" title=" " alt="" coords="233,5,392,47"/>
+<area shape="rect" href="gtkhelper-tests_8cc.html#abce25c5dd3483eeb76bc9d32912f50ab" title=" " alt="" coords="217,71,408,98"/>
+<area shape="rect" href="classTiledBitmapViewData.html#a5c47329fb642dad6a239fd7cb513d6a1" title=" " alt="" coords="5,5,169,47"/>
 </map>
 </div>
 
@@ -254,8 +305,9 @@ Here is the caller graph for this function:</div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="anamespaceScroom_1_1GtkHelpers_1_1Detail_html_a6de374a2468bef38e5221f4de7c84f88"><div class="ttname"><a href="namespaceScroom_1_1GtkHelpers_1_1Detail.html#a6de374a2468bef38e5221f4de7c84f88">Scroom::GtkHelpers::Detail::unlockGdkMutex</a></div><div class="ttdeci">void unlockGdkMutex()</div><div class="ttdef"><b>Definition:</b> gtk-helpers.cc:66</div></div>
-<div class="ttc" id="anamespaceScroom_1_1GtkHelpers_1_1Detail_html_a754301735d48d8b854599fe4fbded235"><div class="ttname"><a href="namespaceScroom_1_1GtkHelpers_1_1Detail.html#a754301735d48d8b854599fe4fbded235">Scroom::GtkHelpers::Detail::lockGdkMutex</a></div><div class="ttdeci">void lockGdkMutex()</div><div class="ttdef"><b>Definition:</b> gtk-helpers.cc:64</div></div>
+<div class="ttc" id="anamespaceScroom_1_1GtkHelpers_html_ac6ea38c746831ab3ff96ce29ffe5bf7a"><div class="ttname"><a href="namespaceScroom_1_1GtkHelpers.html#ac6ea38c746831ab3ff96ce29ffe5bf7a">Scroom::GtkHelpers::wrap</a></div><div class="ttdeci">std::pair&lt; GSourceFunc, gpointer &gt; wrap(T f)</div><div class="ttdef"><b>Definition:</b> gtk-helpers.hh:31</div></div>
+<div class="ttc" id="anamespaceScroom_1_1GtkHelpers_1_1Detail_html_a6de374a2468bef38e5221f4de7c84f88"><div class="ttname"><a href="namespaceScroom_1_1GtkHelpers_1_1Detail.html#a6de374a2468bef38e5221f4de7c84f88">Scroom::GtkHelpers::Detail::unlockGdkMutex</a></div><div class="ttdeci">void unlockGdkMutex()</div><div class="ttdef"><b>Definition:</b> gtk-helpers.cc:25</div></div>
+<div class="ttc" id="anamespaceScroom_1_1GtkHelpers_1_1Detail_html_a754301735d48d8b854599fe4fbded235"><div class="ttname"><a href="namespaceScroom_1_1GtkHelpers_1_1Detail.html#a754301735d48d8b854599fe4fbded235">Scroom::GtkHelpers::Detail::lockGdkMutex</a></div><div class="ttdeci">void lockGdkMutex()</div><div class="ttdef"><b>Definition:</b> gtk-helpers.cc:23</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

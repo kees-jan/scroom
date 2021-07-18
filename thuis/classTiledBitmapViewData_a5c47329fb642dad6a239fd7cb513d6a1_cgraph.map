@@ -1,5 +1,6 @@
 <map id="TiledBitmapViewData::tileLoaded" name="TiledBitmapViewData::tileLoaded">
-<area shape="rect" id="node1" title=" " alt="" coords="5,27,169,69"/>
-<area shape="rect" id="node2" href="$tiledbitmapviewdata_8cc.html#af32b1dddcb044cfdf445db8f34409874" title=" " alt="" coords="231,5,356,32"/>
-<area shape="rect" id="node3" href="$namespaceScroom_1_1GtkHelpers.html#a968ac1d1becfe0819715f89916a81248" title=" " alt="" coords="217,57,369,98"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,35,169,76"/>
+<area shape="rect" id="node2" href="$namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1" title=" " alt="" coords="217,5,376,47"/>
+<area shape="rect" id="node4" href="$tiledbitmapviewdata_8cc.html#a3f7e7c230eb08d46353c4789ae7eb3e0" title=" " alt="" coords="234,71,359,98"/>
+<area shape="rect" id="node3" href="$namespaceScroom_1_1GtkHelpers.html#ac6ea38c746831ab3ff96ce29ffe5bf7a" title=" " alt="" coords="424,5,576,47"/>
 </map>

@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Scroom
-   &#160;<span id="projectnumber">0.12.2-110-g9097dc7d7</span>
+   &#160;<span id="projectnumber">0.12.2-111-gf29013c9b</span>
    </div>
   </td>
  </tr>
@@ -127,28 +127,28 @@ Functions</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  {</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    boost::weak_ptr&lt;int&gt; a;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    boost::weak_ptr&lt;int&gt; <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    boost::weak_ptr&lt;int&gt; <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="comment">// Uninitialised weak pointers are equal</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    BOOST_CHECK(!(a &lt; <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>) &amp;&amp; !(<a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a> &lt; a));</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    BOOST_CHECK(!(a &lt; <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>) &amp;&amp; !(<a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a> &lt; a));</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="comment">// Pointers to something that has been deleted are different from</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">// uninitialized ones</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    boost::shared_ptr&lt;int&gt; c = boost::shared_ptr&lt;int&gt;(<span class="keyword">new</span> <span class="keywordtype">int</span>());</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    a                        = c;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    BOOST_CHECK((a &lt; <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>) || (<a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a> &lt; a));</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    BOOST_CHECK((a &lt; <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>) || (<a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a> &lt; a));</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    c.reset();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    BOOST_CHECK((a &lt; <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>) || (<a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a> &lt; a));</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    BOOST_CHECK((a &lt; <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>) || (<a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a> &lt; a));</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">// Pointers to something that has been deleted are still equal</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    c = boost::shared_ptr&lt;int&gt;(<span class="keyword">new</span> <span class="keywordtype">int</span>());</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    a = c;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a> = c;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    BOOST_CHECK(!(a &lt; <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>) &amp;&amp; !(<a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a> &lt; a));</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a> = c;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    BOOST_CHECK(!(a &lt; <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>) &amp;&amp; !(<a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a> &lt; a));</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    c.reset();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    BOOST_CHECK(!(a &lt; <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>) &amp;&amp; !(<a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a> &lt; a));</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    BOOST_CHECK(!(a &lt; <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>) &amp;&amp; !(<a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a> &lt; a));</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    BOOST_CHECK(!a.lock());</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    BOOST_CHECK(!<a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>.lock());</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a>(a.lock(), <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>.lock());</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    BOOST_CHECK(!<a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>.lock());</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a>(a.lock(), <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>.lock());</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">// Locking something that has been deleted equals an uninitialized pointer (?)</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    boost::shared_ptr&lt;int&gt; d;</div>
@@ -161,7 +161,7 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="basic-assumptions_8cc_a1ed40454f396dbc34d386887ecebfe55_cgraph.png" border="0" usemap="#basic-assumptions_8cc_a1ed40454f396dbc34d386887ecebfe55_cgraph" alt=""/></div>
 <map name="basic-assumptions_8cc_a1ed40454f396dbc34d386887ecebfe55_cgraph" id="basic-assumptions_8cc_a1ed40454f396dbc34d386887ecebfe55_cgraph">
 <area shape="rect" title=" " alt="" coords="5,31,196,57"/>
-<area shape="rect" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783" title=" " alt="" coords="310,5,349,32"/>
+<area shape="rect" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b" title=" " alt="" coords="310,5,349,32"/>
 <area shape="rect" href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5" title=" " alt="" coords="244,56,415,83"/>
 </map>
 </div>
@@ -171,7 +171,7 @@ Here is the call graph for this function:</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="acolormaphelpers__test_8cc_html_afcf7bee9df01428085e7e8c754e219f5"><div class="ttname"><a href="colormaphelpers__test_8cc.html#afcf7bee9df01428085e7e8c754e219f5">BOOST_CHECK_EQUAL</a></div><div class="ttdeci">BOOST_CHECK_EQUAL(sample.expectedColors, originalColormap-&gt;colors.size())</div></div>
-<div class="ttc" id="agtkhelper-tests_8cc_html_a822ba6df376d382b6a6a8653cc527783"><div class="ttname"><a href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a></div><div class="ttdeci">static bool b(bool &amp;in, B::Ptr)</div><div class="ttdef"><b>Definition:</b> gtkhelper-tests.cc:31</div></div>
+<div class="ttc" id="agtkhelper-tests_8cc_html_a0ed3d3c3d4a74a90bde7347df4bc658b"><div class="ttname"><a href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a></div><div class="ttdeci">static void b(B::Ptr)</div><div class="ttdef"><b>Definition:</b> gtkhelper-tests.cc:31</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

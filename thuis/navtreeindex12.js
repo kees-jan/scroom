@@ -1,15 +1,5 @@
 var NAVTREEINDEX12 =
 {
-"ruler_8hh_source.html":[3,0,1,0,0,1],
-"rulerstrategies_8cc.html":[3,0,1,0,0,2],
-"rulerstrategies_8hh.html":[3,0,1,0,0,3],
-"rulerstrategies_8hh_source.html":[3,0,1,0,0,3],
-"sampleiterator-tests_8cc.html":[3,0,3,5,1,1],
-"sampleiterator-tests_8cc.html#a437d26ece966bc7a8ba58cdaf7674e67":[3,0,3,5,1,1,6],
-"sampleiterator-tests_8cc.html#a46a1a3acb2ff4ba47611ec022bbfa1ef":[3,0,3,5,1,1,4],
-"sampleiterator-tests_8cc.html#a5d0785bb2feab5228fc445f0f5bf3719":[3,0,3,5,1,1,10],
-"sampleiterator-tests_8cc.html#a7761b437139a1903b3fb12eb94ad1b60":[3,0,3,5,1,1,3],
-"sampleiterator-tests_8cc.html#a78a464b281445692e45ae74e9956639c":[3,0,3,5,1,1,0],
 "sampleiterator-tests_8cc.html#a84d38fa38463603a2167ab970d0aacb4":[3,0,3,5,1,1,2],
 "sampleiterator-tests_8cc.html#a8f9ecb9b9edcd3f6d2b5865d6c1b8ab6":[3,0,3,5,1,1,11],
 "sampleiterator-tests_8cc.html#aa69fb4a20df5ff7d8dd3b9bd3b5dd1c1":[3,0,3,5,1,1,5],
@@ -229,7 +219,7 @@ var NAVTREEINDEX12 =
 "tiledbitmappresentation_8cc.html#abae3a7fd8f52b1b6ce0a5e0252747cf3":[3,0,3,5,0,10,3],
 "tiledbitmappresentation_8cc.html#abd171862b26335d75a34704553701421":[3,0,3,5,0,10,4],
 "tiledbitmapviewdata_8cc.html":[3,0,3,5,0,11],
-"tiledbitmapviewdata_8cc.html#af32b1dddcb044cfdf445db8f34409874":[3,0,3,5,0,11,0],
+"tiledbitmapviewdata_8cc.html#a3f7e7c230eb08d46353c4789ae7eb3e0":[3,0,3,5,0,11,0],
 "tiledbitmapviewdata_8hh.html":[3,0,3,5,0,12],
 "tiledbitmapviewdata_8hh_source.html":[3,0,3,5,0,12],
 "tileviewstate_8cc.html":[3,0,3,5,0,13],
@@ -249,5 +239,15 @@ var NAVTREEINDEX12 =
 "transparentoverlay_8hh.html":[3,0,4,5,0,4],
 "transparentoverlay_8hh_source.html":[3,0,4,5,0,4],
 "transparentoverlaypresentation_8cc.html":[3,0,4,5,0,5],
-"transparentoverlaypresentation_8cc.html#a5d2074d7840f9d66c2b18260065ef697":[3,0,4,5,0,5,1]
+"transparentoverlaypresentation_8cc.html#a5d2074d7840f9d66c2b18260065ef697":[3,0,4,5,0,5,1],
+"transparentoverlaypresentation_8hh.html":[3,0,4,5,0,6],
+"transparentoverlaypresentation_8hh_source.html":[3,0,4,5,0,6],
+"transparentoverlayviewinfo_8cc.html":[3,0,4,5,0,7],
+"transparentoverlayviewinfo_8cc.html#a706649399a1cf1938cfbfed014fd3917":[3,0,4,5,0,7,1],
+"transparentoverlayviewinfo_8cc.html#aafa184efb6eac85ffee43095f44fa12b":[3,0,4,5,0,7,0],
+"transparentoverlayviewinfo_8hh.html":[3,0,4,5,0,8],
+"transparentoverlayviewinfo_8hh_source.html":[3,0,4,5,0,8],
+"unittest-main_8cc.html":[3,0,3,0,0,0],
+"unittest-main_8cc.html#a0ddf1224851353fc92bfbff6f499fa97":[3,0,3,0,0,0,3],
+"unittest-main_8cc.html#a19823c5af9fff4070c144dacf022bf94":[3,0,3,0,0,0,2]
 };

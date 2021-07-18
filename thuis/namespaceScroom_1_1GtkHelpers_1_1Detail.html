@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Scroom
-   &#160;<span id="projectnumber">0.12.2-110-g9097dc7d7</span>
+   &#160;<span id="projectnumber">0.12.2-111-gf29013c9b</span>
    </div>
   </td>
  </tr>
@@ -83,22 +83,17 @@ $(document).ready(function(){initNavTree('namespaceScroom_1_1GtkHelpers_1_1Detai
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Scroom::GtkHelpers::Detail Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScroom_1_1GtkHelpers_1_1Detail_1_1Wrapper.html">Wrapper</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ab72249ca6d552730978a68f28015e9a6"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1GtkHelpers_1_1Detail.html#ab72249ca6d552730978a68f28015e9a6">gtkWrapper</a> (gpointer data)</td></tr>
-<tr class="separator:ab72249ca6d552730978a68f28015e9a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49fe9082a2e319cd57551e663b5a8f3e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a49fe9082a2e319cd57551e663b5a8f3e"><td class="memTemplItemLeft" align="right" valign="top">static int&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1GtkHelpers_1_1Detail.html#a49fe9082a2e319cd57551e663b5a8f3e">gtkWrapper</a> (gpointer data)</td></tr>
+<tr class="separator:a49fe9082a2e319cd57551e663b5a8f3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab76ab2a086ad8d4af4f98d44f435b448"><td class="memItemLeft" align="right" valign="top">boost::recursive_mutex &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1GtkHelpers_1_1Detail.html#ab76ab2a086ad8d4af4f98d44f435b448">GdkMutex</a> ()</td></tr>
 <tr class="separator:ab76ab2a086ad8d4af4f98d44f435b448"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a754301735d48d8b854599fe4fbded235"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1GtkHelpers_1_1Detail.html#a754301735d48d8b854599fe4fbded235">lockGdkMutex</a> ()</td></tr>
@@ -121,10 +116,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keyword">static</span> boost::recursive_mutex me;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">return</span> me;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      }</div>
+<div class="fragment"><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;      <span class="keyword">static</span> boost::recursive_mutex me;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;      <span class="keywordflow">return</span> me;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="namespaceScroom_1_1GtkHelpers_1_1Detail.html#a754301735d48d8b854599fe4fbded235">lockGdkMutex()</a>, and <a class="el" href="namespaceScroom_1_1GtkHelpers_1_1Detail.html#a6de374a2468bef38e5221f4de7c84f88">unlockGdkMutex()</a>.</p>
 <div class="dynheader">
@@ -142,11 +137,13 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ab72249ca6d552730978a68f28015e9a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab72249ca6d552730978a68f28015e9a6">&#9670;&nbsp;</a></span>gtkWrapper()</h2>
+<a id="a49fe9082a2e319cd57551e663b5a8f3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49fe9082a2e319cd57551e663b5a8f3e">&#9670;&nbsp;</a></span>gtkWrapper()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -165,15 +162,12 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;      {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keyword">auto</span>* w      = <span class="keyword">reinterpret_cast&lt;</span>Wrapper*<span class="keyword">&gt;</span>(data);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordtype">bool</span>  result = w-&gt;f();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">if</span>(!result)</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;          <span class="keyword">delete</span> w;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      }</div>
+<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;      <span class="keyword">auto</span>* w = <span class="keyword">reinterpret_cast&lt;</span>T*<span class="keyword">&gt;</span>(data);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;      (*w)();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;      <span class="keyword">delete</span> w;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -191,7 +185,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;{ <a class="code" href="namespaceScroom_1_1GtkHelpers_1_1Detail.html#ab76ab2a086ad8d4af4f98d44f435b448">GdkMutex</a>().lock(); }</div>
+<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{ <a class="code" href="namespaceScroom_1_1GtkHelpers_1_1Detail.html#ab76ab2a086ad8d4af4f98d44f435b448">GdkMutex</a>().lock(); }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="namespaceScroom_1_1GtkHelpers.html#a4974ded72574a54f85c97f918b791095">Scroom::GtkHelpers::useRecursiveGdkLock()</a>.</p>
 <div class="dynheader">
@@ -230,7 +224,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;{ <a class="code" href="namespaceScroom_1_1GtkHelpers_1_1Detail.html#ab76ab2a086ad8d4af4f98d44f435b448">GdkMutex</a>().unlock(); }</div>
+<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{ <a class="code" href="namespaceScroom_1_1GtkHelpers_1_1Detail.html#ab76ab2a086ad8d4af4f98d44f435b448">GdkMutex</a>().unlock(); }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="namespaceScroom_1_1GtkHelpers.html#a4974ded72574a54f85c97f918b791095">Scroom::GtkHelpers::useRecursiveGdkLock()</a>.</p>
 <div class="dynheader">
@@ -257,7 +251,7 @@ Here is the caller graph for this function:</div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="anamespaceScroom_1_1GtkHelpers_1_1Detail_html_ab76ab2a086ad8d4af4f98d44f435b448"><div class="ttname"><a href="namespaceScroom_1_1GtkHelpers_1_1Detail.html#ab76ab2a086ad8d4af4f98d44f435b448">Scroom::GtkHelpers::Detail::GdkMutex</a></div><div class="ttdeci">boost::recursive_mutex &amp; GdkMutex()</div><div class="ttdef"><b>Definition:</b> gtk-helpers.cc:58</div></div>
+<div class="ttc" id="anamespaceScroom_1_1GtkHelpers_1_1Detail_html_ab76ab2a086ad8d4af4f98d44f435b448"><div class="ttname"><a href="namespaceScroom_1_1GtkHelpers_1_1Detail.html#ab76ab2a086ad8d4af4f98d44f435b448">Scroom::GtkHelpers::Detail::GdkMutex</a></div><div class="ttdeci">boost::recursive_mutex &amp; GdkMutex()</div><div class="ttdef"><b>Definition:</b> gtk-helpers.cc:17</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

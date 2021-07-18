@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Scroom
-   &#160;<span id="projectnumber">0.12.2-110-g9097dc7d7</span>
+   &#160;<span id="projectnumber">0.12.2-111-gf29013c9b</span>
    </div>
   </td>
  </tr>
@@ -146,10 +146,10 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <a class="code" href="classScroom_1_1MemoryBlobs_1_1PageProvider.html#a7105b86c9fdfc1a88fe83bee19fa6859">PageProvider::Ptr</a> provider = <a class="code" href="loader_8cc.html#aa16c64386dde90b66ae796ec3183dcef">PageProvider::create</a>(blockCount, blockSize);</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <a class="code" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a261cc92d452cb5fa49d2628cb44a72c7">Blob::Ptr</a> <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a> = <a class="code" href="loader_8cc.html#aa16c64386dde90b66ae796ec3183dcef">Blob::create</a>(provider, blobSize);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <a class="code" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a261cc92d452cb5fa49d2628cb44a72c7">Blob::Ptr</a> <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a> = <a class="code" href="loader_8cc.html#aa16c64386dde90b66ae796ec3183dcef">Blob::create</a>(provider, blobSize);</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  provider.reset();</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <a class="code" href="namespaceScroom_1_1MemoryBlobs_1_1RawPageData.html#a2f9b0138bfddef61fcad37357ae398ed">RawPageData::Ptr</a> raw = <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>-&gt;initialize(value);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <a class="code" href="namespaceScroom_1_1MemoryBlobs_1_1RawPageData.html#a2f9b0138bfddef61fcad37357ae398ed">RawPageData::Ptr</a> raw = <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>-&gt;initialize(value);</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  uint8_t expected[blobSize];</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  memset(expected, value, blobSize);</div>
@@ -162,7 +162,7 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="blob-tests_8cc_a48f83a77f757a2d7fb905094ddd04867_cgraph.png" border="0" usemap="#blob-tests_8cc_a48f83a77f757a2d7fb905094ddd04867_cgraph" alt=""/></div>
 <map name="blob-tests_8cc_a48f83a77f757a2d7fb905094ddd04867_cgraph" id="blob-tests_8cc_a48f83a77f757a2d7fb905094ddd04867_cgraph">
 <area shape="rect" title=" " alt="" coords="5,64,196,91"/>
-<area shape="rect" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783" title=" " alt="" coords="309,5,348,32"/>
+<area shape="rect" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b" title=" " alt="" coords="309,5,348,32"/>
 <area shape="rect" href="classScroom_1_1MemoryBlobs_1_1PageProvider.html#a1b4d5f7c0692f14a3a9062cc24034dd4" title=" " alt="" coords="244,57,413,98"/>
 <area shape="rect" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a4efac4819c3d9d77e9fbf022c61fe4c2" title=" " alt="" coords="244,122,413,163"/>
 <area shape="rect" href="classScroom_1_1MemoryBlobs_1_1PageProvider.html#aaadea74fd603076780c869a3ce350370" title=" " alt="" coords="461,57,669,98"/>
@@ -204,9 +204,9 @@ Here is the call graph for this function:</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  provider.reset();</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  uint8_t data = 0;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordflow">for</span>(<span class="keyword">const</span> <a class="code" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a261cc92d452cb5fa49d2628cb44a72c7">Blob::Ptr</a>&amp; <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>: blobList)</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordflow">for</span>(<span class="keyword">const</span> <a class="code" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a261cc92d452cb5fa49d2628cb44a72c7">Blob::Ptr</a>&amp; <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>: blobList)</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="namespaceScroom_1_1MemoryBlobs_1_1RawPageData.html#a2f9b0138bfddef61fcad37357ae398ed">RawPageData::Ptr</a> raw = <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>-&gt;get();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="namespaceScroom_1_1MemoryBlobs_1_1RawPageData.html#a2f9b0138bfddef61fcad37357ae398ed">RawPageData::Ptr</a> raw = <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>-&gt;get();</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="colormaphelpers__test_8cc.html#a14008efb9696827fb7c79e710cd108ec">BOOST_REQUIRE</a>(raw.get());</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    memset(raw.get(), data, blobSize);</div>
@@ -214,9 +214,9 @@ Here is the call graph for this function:</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  }</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  data = 0;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keywordflow">for</span>(<span class="keyword">const</span> <a class="code" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a261cc92d452cb5fa49d2628cb44a72c7">Blob::Ptr</a>&amp; <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>: blobList)</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keywordflow">for</span>(<span class="keyword">const</span> <a class="code" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a261cc92d452cb5fa49d2628cb44a72c7">Blob::Ptr</a>&amp; <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>: blobList)</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="namespaceScroom_1_1MemoryBlobs_1_1RawPageData.html#a2f9b0138bfddef61fcad37357ae398ed">RawPageData::Ptr</a> raw = <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>-&gt;get();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="namespaceScroom_1_1MemoryBlobs_1_1RawPageData.html#a2f9b0138bfddef61fcad37357ae398ed">RawPageData::Ptr</a> raw = <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>-&gt;get();</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="colormaphelpers__test_8cc.html#a14008efb9696827fb7c79e710cd108ec">BOOST_REQUIRE</a>(raw.get());</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    memset(raw.get(), 255 - data, blobSize);</div>
@@ -225,9 +225,9 @@ Here is the call graph for this function:</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  data = 0;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  uint8_t expected[blobSize];</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="keywordflow">for</span>(<span class="keyword">const</span> <a class="code" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a261cc92d452cb5fa49d2628cb44a72c7">Blob::Ptr</a>&amp; <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>: blobList)</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="keywordflow">for</span>(<span class="keyword">const</span> <a class="code" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a261cc92d452cb5fa49d2628cb44a72c7">Blob::Ptr</a>&amp; <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>: blobList)</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <a class="code" href="namespaceScroom_1_1MemoryBlobs_1_1RawPageData.html#a099d91eabdf7188b170145a09420c53f">RawPageData::ConstPtr</a> raw = <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>-&gt;getConst();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <a class="code" href="namespaceScroom_1_1MemoryBlobs_1_1RawPageData.html#a099d91eabdf7188b170145a09420c53f">RawPageData::ConstPtr</a> raw = <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>-&gt;getConst();</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <a class="code" href="colormaphelpers__test_8cc.html#a14008efb9696827fb7c79e710cd108ec">BOOST_REQUIRE</a>(raw.get());</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    memset(expected, 255 - data, blobSize);</div>
@@ -241,7 +241,7 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="blob-tests_8cc_ae2022a6f79e93daead7ed523e40ed5f4_cgraph.png" border="0" usemap="#blob-tests_8cc_ae2022a6f79e93daead7ed523e40ed5f4_cgraph" alt=""/></div>
 <map name="blob-tests_8cc_ae2022a6f79e93daead7ed523e40ed5f4_cgraph" id="blob-tests_8cc_ae2022a6f79e93daead7ed523e40ed5f4_cgraph">
 <area shape="rect" title=" " alt="" coords="5,85,196,112"/>
-<area shape="rect" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783" title=" " alt="" coords="309,5,348,32"/>
+<area shape="rect" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b" title=" " alt="" coords="309,5,348,32"/>
 <area shape="rect" href="colormaphelpers__test_8cc.html#a14008efb9696827fb7c79e710cd108ec" title=" " alt="" coords="263,56,395,83"/>
 <area shape="rect" href="classScroom_1_1MemoryBlobs_1_1PageProvider.html#a1b4d5f7c0692f14a3a9062cc24034dd4" title=" " alt="" coords="244,107,413,149"/>
 <area shape="rect" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a4efac4819c3d9d77e9fbf022c61fe4c2" title=" " alt="" coords="244,173,413,214"/>
@@ -284,9 +284,9 @@ Here is the call graph for this function:</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  provider.reset();</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  uint8_t data = 0;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordflow">for</span>(<span class="keyword">const</span> <a class="code" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a261cc92d452cb5fa49d2628cb44a72c7">Blob::Ptr</a>&amp; <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>: blobList)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordflow">for</span>(<span class="keyword">const</span> <a class="code" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a261cc92d452cb5fa49d2628cb44a72c7">Blob::Ptr</a>&amp; <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>: blobList)</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="namespaceScroom_1_1MemoryBlobs_1_1RawPageData.html#a2f9b0138bfddef61fcad37357ae398ed">RawPageData::Ptr</a> raw = <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>-&gt;get();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="namespaceScroom_1_1MemoryBlobs_1_1RawPageData.html#a2f9b0138bfddef61fcad37357ae398ed">RawPageData::Ptr</a> raw = <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>-&gt;get();</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="colormaphelpers__test_8cc.html#a14008efb9696827fb7c79e710cd108ec">BOOST_REQUIRE</a>(raw.get());</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    memset(raw.get(), data, blobSize);</div>
@@ -295,9 +295,9 @@ Here is the call graph for this function:</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  data = 0;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  uint8_t expected[blobSize];</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordflow">for</span>(<span class="keyword">const</span> <a class="code" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a261cc92d452cb5fa49d2628cb44a72c7">Blob::Ptr</a>&amp; <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>: blobList)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordflow">for</span>(<span class="keyword">const</span> <a class="code" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a261cc92d452cb5fa49d2628cb44a72c7">Blob::Ptr</a>&amp; <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>: blobList)</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="namespaceScroom_1_1MemoryBlobs_1_1RawPageData.html#a099d91eabdf7188b170145a09420c53f">RawPageData::ConstPtr</a> raw = <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>-&gt;getConst();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="namespaceScroom_1_1MemoryBlobs_1_1RawPageData.html#a099d91eabdf7188b170145a09420c53f">RawPageData::ConstPtr</a> raw = <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>-&gt;getConst();</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="colormaphelpers__test_8cc.html#a14008efb9696827fb7c79e710cd108ec">BOOST_REQUIRE</a>(raw.get());</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    memset(expected, data, blobSize);</div>
@@ -311,7 +311,7 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="blob-tests_8cc_aae71f0cea296d32624262d27bad8ad60_cgraph.png" border="0" usemap="#blob-tests_8cc_aae71f0cea296d32624262d27bad8ad60_cgraph" alt=""/></div>
 <map name="blob-tests_8cc_aae71f0cea296d32624262d27bad8ad60_cgraph" id="blob-tests_8cc_aae71f0cea296d32624262d27bad8ad60_cgraph">
 <area shape="rect" title=" " alt="" coords="5,85,196,112"/>
-<area shape="rect" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783" title=" " alt="" coords="309,5,348,32"/>
+<area shape="rect" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b" title=" " alt="" coords="309,5,348,32"/>
 <area shape="rect" href="colormaphelpers__test_8cc.html#a14008efb9696827fb7c79e710cd108ec" title=" " alt="" coords="263,56,395,83"/>
 <area shape="rect" href="classScroom_1_1MemoryBlobs_1_1PageProvider.html#a1b4d5f7c0692f14a3a9062cc24034dd4" title=" " alt="" coords="244,107,413,149"/>
 <area shape="rect" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a4efac4819c3d9d77e9fbf022c61fe4c2" title=" " alt="" coords="244,173,413,214"/>
@@ -327,9 +327,9 @@ Here is the call graph for this function:</div>
 <div class="ttc" id="aclassScroom_1_1MemoryBlobs_1_1PageProvider_html_a7105b86c9fdfc1a88fe83bee19fa6859"><div class="ttname"><a href="classScroom_1_1MemoryBlobs_1_1PageProvider.html#a7105b86c9fdfc1a88fe83bee19fa6859">Scroom::MemoryBlobs::PageProvider::Ptr</a></div><div class="ttdeci">boost::shared_ptr&lt; PageProvider &gt; Ptr</div><div class="ttdef"><b>Definition:</b> memoryblobs.hh:42</div></div>
 <div class="ttc" id="anamespaceScroom_1_1MemoryBlobs_1_1RawPageData_html_a099d91eabdf7188b170145a09420c53f"><div class="ttname"><a href="namespaceScroom_1_1MemoryBlobs_1_1RawPageData.html#a099d91eabdf7188b170145a09420c53f">Scroom::MemoryBlobs::RawPageData::ConstPtr</a></div><div class="ttdeci">boost::shared_ptr&lt; const uint8_t &gt; ConstPtr</div><div class="ttdef"><b>Definition:</b> memoryblobs.hh:29</div></div>
 <div class="ttc" id="aclassScroom_1_1MemoryBlobs_1_1Blob_html_a261cc92d452cb5fa49d2628cb44a72c7"><div class="ttname"><a href="classScroom_1_1MemoryBlobs_1_1Blob.html#a261cc92d452cb5fa49d2628cb44a72c7">Scroom::MemoryBlobs::Blob::Ptr</a></div><div class="ttdeci">boost::shared_ptr&lt; Blob &gt; Ptr</div><div class="ttdef"><b>Definition:</b> memoryblobs.hh:79</div></div>
+<div class="ttc" id="agtkhelper-tests_8cc_html_a0ed3d3c3d4a74a90bde7347df4bc658b"><div class="ttname"><a href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a></div><div class="ttdeci">static void b(B::Ptr)</div><div class="ttdef"><b>Definition:</b> gtkhelper-tests.cc:31</div></div>
 <div class="ttc" id="anamespaceScroom_1_1MemoryBlobs_1_1RawPageData_html_a2f9b0138bfddef61fcad37357ae398ed"><div class="ttname"><a href="namespaceScroom_1_1MemoryBlobs_1_1RawPageData.html#a2f9b0138bfddef61fcad37357ae398ed">Scroom::MemoryBlobs::RawPageData::Ptr</a></div><div class="ttdeci">boost::shared_ptr&lt; uint8_t &gt; Ptr</div><div class="ttdef"><b>Definition:</b> memoryblobs.hh:28</div></div>
 <div class="ttc" id="acolormaphelpers__test_8cc_html_a14008efb9696827fb7c79e710cd108ec"><div class="ttname"><a href="colormaphelpers__test_8cc.html#a14008efb9696827fb7c79e710cd108ec">BOOST_REQUIRE</a></div><div class="ttdeci">BOOST_REQUIRE(originalColormap)</div></div>
-<div class="ttc" id="agtkhelper-tests_8cc_html_a822ba6df376d382b6a6a8653cc527783"><div class="ttname"><a href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a></div><div class="ttdeci">static bool b(bool &amp;in, B::Ptr)</div><div class="ttdef"><b>Definition:</b> gtkhelper-tests.cc:31</div></div>
 <div class="ttc" id="aloader_8cc_html_aa16c64386dde90b66ae796ec3183dcef"><div class="ttname"><a href="loader_8cc.html#aa16c64386dde90b66ae796ec3183dcef">create</a></div><div class="ttdeci">void create(NewPresentationInterface *interface)</div><div class="ttdef"><b>Definition:</b> loader.cc:175</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

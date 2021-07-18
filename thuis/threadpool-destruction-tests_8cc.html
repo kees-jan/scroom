@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Scroom
-   &#160;<span id="projectnumber">0.12.2-110-g9097dc7d7</span>
+   &#160;<span id="projectnumber">0.12.2-111-gf29013c9b</span>
    </div>
   </td>
  </tr>
@@ -151,10 +151,10 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="classThreadPool.html#a60143f0f2001f70595bef06790d77af5">ThreadPool::Ptr</a> pool = <a class="code" href="classThreadPool.html#aa4c7f373ae1c02455e2c7f4d2096270e">ThreadPool::create</a>(1);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="classScroom_1_1Semaphore.html">Semaphore</a>       guard(0);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="classScroom_1_1Semaphore.html">Semaphore</a>       a(0);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="classScroom_1_1Semaphore.html">Semaphore</a>       <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>(0);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="classScroom_1_1Semaphore.html">Semaphore</a>       <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>(0);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <a class="code" href="classScroom_1_1Semaphore.html">Semaphore</a>       c(0);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  pool-&gt;schedule(<a class="code" href="helpers_8cc.html#a66ff7f37fdae1af04806f788e9e8bc68">clear</a>(&amp;a) + <a class="code" href="helpers_8cc.html#a265d001f12a52b5613c4ee52075e536d">pass</a>(&amp;<a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>));</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  pool-&gt;schedule(<a class="code" href="helpers_8cc.html#a66ff7f37fdae1af04806f788e9e8bc68">clear</a>(&amp;a) + <a class="code" href="helpers_8cc.html#a265d001f12a52b5613c4ee52075e536d">pass</a>(&amp;<a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>));</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  pool-&gt;schedule(<a class="code" href="helpers_8cc.html#a66ff7f37fdae1af04806f788e9e8bc68">clear</a>(&amp;c));</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="comment">// Give the thread some time to start the job</span></div>
@@ -169,7 +169,7 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="comment">// though the threadpool is blocked on pass(&amp;b)</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  BOOST_CHECK(t.timed_join(<a class="code" href="threadpool-destruction-tests_8cc.html#acf1a301c89fe656d5f69f8f61b90536f">long_timeout</a>));</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="colormaphelpers__test_8cc.html#a14008efb9696827fb7c79e710cd108ec">BOOST_REQUIRE</a>(boost::thread::id() == t.get_id());</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>.V();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>.V();</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  BOOST_CHECK(!c.P(<a class="code" href="threadpool-destruction-tests_8cc.html#acf1a301c89fe656d5f69f8f61b90536f">long_timeout</a>));</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
 </div><!-- fragment --><div class="dynheader">
@@ -178,7 +178,7 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="threadpool-destruction-tests_8cc_a40608cd013e10b2b821917052ba322a0_cgraph.png" border="0" usemap="#threadpool-destruction-tests_8cc_a40608cd013e10b2b821917052ba322a0_cgraph" alt=""/></div>
 <map name="threadpool-destruction-tests_8cc_a40608cd013e10b2b821917052ba322a0_cgraph" id="threadpool-destruction-tests_8cc_a40608cd013e10b2b821917052ba322a0_cgraph">
 <area shape="rect" title=" " alt="" coords="5,208,196,235"/>
-<area shape="rect" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783" title=" " alt="" coords="297,5,335,32"/>
+<area shape="rect" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b" title=" " alt="" coords="297,5,335,32"/>
 <area shape="rect" href="colormaphelpers__test_8cc.html#a14008efb9696827fb7c79e710cd108ec" title=" " alt="" coords="250,56,382,83"/>
 <area shape="rect" href="helpers_8cc.html#a66ff7f37fdae1af04806f788e9e8bc68" title=" " alt="" coords="289,107,343,133"/>
 <area shape="rect" href="classScroom_1_1Semaphore.html#a7288ef73832e54d1d7cc36d434ae8b47" title=" " alt="" coords="679,128,849,155"/>
@@ -220,10 +220,10 @@ Here is the call graph for this function:</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <a class="code" href="classThreadPool.html#a60143f0f2001f70595bef06790d77af5">ThreadPool::Ptr</a> pool = <a class="code" href="classThreadPool.html#aa4c7f373ae1c02455e2c7f4d2096270e">ThreadPool::create</a>(1, <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <a class="code" href="classScroom_1_1Semaphore.html">Semaphore</a>       guard(0);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <a class="code" href="classScroom_1_1Semaphore.html">Semaphore</a>       a(0);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <a class="code" href="classScroom_1_1Semaphore.html">Semaphore</a>       <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>(0);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <a class="code" href="classScroom_1_1Semaphore.html">Semaphore</a>       <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>(0);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <a class="code" href="classScroom_1_1Semaphore.html">Semaphore</a>       c(0);</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  pool-&gt;schedule(<a class="code" href="helpers_8cc.html#a66ff7f37fdae1af04806f788e9e8bc68">clear</a>(&amp;a) + <a class="code" href="helpers_8cc.html#a265d001f12a52b5613c4ee52075e536d">pass</a>(&amp;<a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>));</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  pool-&gt;schedule(<a class="code" href="helpers_8cc.html#a66ff7f37fdae1af04806f788e9e8bc68">clear</a>(&amp;a) + <a class="code" href="helpers_8cc.html#a265d001f12a52b5613c4ee52075e536d">pass</a>(&amp;<a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>));</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  pool-&gt;schedule(<a class="code" href="helpers_8cc.html#a66ff7f37fdae1af04806f788e9e8bc68">clear</a>(&amp;c));</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="comment">// Give the thread some time to start the job</span></div>
@@ -238,7 +238,7 @@ Here is the call graph for this function:</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="comment">// though the threadpool is blocked on pass(&amp;b)</span></div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  BOOST_CHECK(t.timed_join(<a class="code" href="threadpool-destruction-tests_8cc.html#acf1a301c89fe656d5f69f8f61b90536f">long_timeout</a>));</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <a class="code" href="colormaphelpers__test_8cc.html#a14008efb9696827fb7c79e710cd108ec">BOOST_REQUIRE</a>(boost::thread::id() == t.get_id());</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <a class="code" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a>.V();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <a class="code" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a>.V();</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  BOOST_CHECK(c.P(<a class="code" href="threadpool-destruction-tests_8cc.html#acf1a301c89fe656d5f69f8f61b90536f">long_timeout</a>));</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
 </div><!-- fragment --><div class="dynheader">
@@ -247,7 +247,7 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="threadpool-destruction-tests_8cc_a26a1f6cc76238d5c47e076c6a5fa6df8_cgraph.png" border="0" usemap="#threadpool-destruction-tests_8cc_a26a1f6cc76238d5c47e076c6a5fa6df8_cgraph" alt=""/></div>
 <map name="threadpool-destruction-tests_8cc_a26a1f6cc76238d5c47e076c6a5fa6df8_cgraph" id="threadpool-destruction-tests_8cc_a26a1f6cc76238d5c47e076c6a5fa6df8_cgraph">
 <area shape="rect" title=" " alt="" coords="5,208,196,235"/>
-<area shape="rect" href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783" title=" " alt="" coords="297,5,335,32"/>
+<area shape="rect" href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b" title=" " alt="" coords="297,5,335,32"/>
 <area shape="rect" href="colormaphelpers__test_8cc.html#a14008efb9696827fb7c79e710cd108ec" title=" " alt="" coords="250,56,382,83"/>
 <area shape="rect" href="helpers_8cc.html#a66ff7f37fdae1af04806f788e9e8bc68" title=" " alt="" coords="289,107,343,133"/>
 <area shape="rect" href="classScroom_1_1Semaphore.html#a7288ef73832e54d1d7cc36d434ae8b47" title=" " alt="" coords="679,128,849,155"/>
@@ -322,12 +322,12 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="aclassThreadPool_html_a60143f0f2001f70595bef06790d77af5"><div class="ttname"><a href="classThreadPool.html#a60143f0f2001f70595bef06790d77af5">ThreadPool::Ptr</a></div><div class="ttdeci">boost::shared_ptr&lt; ThreadPool &gt; Ptr</div><div class="ttdef"><b>Definition:</b> threadpool.hh:175</div></div>
 <div class="ttc" id="ahelpers_8cc_html_a66ff7f37fdae1af04806f788e9e8bc68"><div class="ttname"><a href="helpers_8cc.html#a66ff7f37fdae1af04806f788e9e8bc68">clear</a></div><div class="ttdeci">boost::function&lt; void()&gt; clear(Semaphore *s)</div><div class="ttdef"><b>Definition:</b> helpers.cc:27</div></div>
 <div class="ttc" id="ahelpers_8cc_html_abe35dac0ce5269080abaeef9af3a148a"><div class="ttname"><a href="helpers_8cc.html#abe35dac0ce5269080abaeef9af3a148a">destroy</a></div><div class="ttdeci">boost::function&lt; void()&gt; destroy(boost::shared_ptr&lt; void &gt; p)</div><div class="ttdef"><b>Definition:</b> helpers.cc:29</div></div>
+<div class="ttc" id="agtkhelper-tests_8cc_html_a0ed3d3c3d4a74a90bde7347df4bc658b"><div class="ttname"><a href="gtkhelper-tests_8cc.html#a0ed3d3c3d4a74a90bde7347df4bc658b">b</a></div><div class="ttdeci">static void b(B::Ptr)</div><div class="ttdef"><b>Definition:</b> gtkhelper-tests.cc:31</div></div>
 <div class="ttc" id="athreadpool-destruction-tests_8cc_html_acf1a301c89fe656d5f69f8f61b90536f"><div class="ttname"><a href="threadpool-destruction-tests_8cc.html#acf1a301c89fe656d5f69f8f61b90536f">long_timeout</a></div><div class="ttdeci">const millisec long_timeout(2000)</div></div>
 <div class="ttc" id="aclassScroom_1_1Semaphore_html"><div class="ttname"><a href="classScroom_1_1Semaphore.html">Scroom::Semaphore</a></div><div class="ttdef"><b>Definition:</b> semaphore.hh:15</div></div>
 <div class="ttc" id="aclassThreadPool_html_aa4c7f373ae1c02455e2c7f4d2096270e"><div class="ttname"><a href="classThreadPool.html#aa4c7f373ae1c02455e2c7f4d2096270e">ThreadPool::create</a></div><div class="ttdeci">static ThreadPool::Ptr create(bool completeAllJobsBeforeDestruction=false)</div><div class="ttdef"><b>Definition:</b> threadpoolimpl.cc:238</div></div>
 <div class="ttc" id="acolormaphelpers__test_8cc_html_a14008efb9696827fb7c79e710cd108ec"><div class="ttname"><a href="colormaphelpers__test_8cc.html#a14008efb9696827fb7c79e710cd108ec">BOOST_REQUIRE</a></div><div class="ttdeci">BOOST_REQUIRE(originalColormap)</div></div>
 <div class="ttc" id="ahelpers_8cc_html_a265d001f12a52b5613c4ee52075e536d"><div class="ttname"><a href="helpers_8cc.html#a265d001f12a52b5613c4ee52075e536d">pass</a></div><div class="ttdeci">boost::function&lt; void()&gt; pass(Semaphore *s)</div><div class="ttdef"><b>Definition:</b> helpers.cc:25</div></div>
-<div class="ttc" id="agtkhelper-tests_8cc_html_a822ba6df376d382b6a6a8653cc527783"><div class="ttname"><a href="gtkhelper-tests_8cc.html#a822ba6df376d382b6a6a8653cc527783">b</a></div><div class="ttdeci">static bool b(bool &amp;in, B::Ptr)</div><div class="ttdef"><b>Definition:</b> gtkhelper-tests.cc:31</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
