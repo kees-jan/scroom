@@ -117,7 +117,7 @@ void TiledBitmapViewData::resetNeededTiles()
   stuff.splice(stuff.end(), newStuff, newStuff.begin(), newStuff.end());
 }
 
-static gboolean invalidate_view(ViewInterface::WeakPtr vi)
+static void invalidate_view(ViewInterface::WeakPtr vi)
 {
   ViewInterface::Ptr v = vi.lock();
   if(v)
@@ -126,7 +126,6 @@ static gboolean invalidate_view(ViewInterface::WeakPtr vi)
     v->invalidate();
     gdk_threads_leave();
   }
-  return false;
 }
 
 void TiledBitmapViewData::storeVolatileStuff(Scroom::Utils::Stuff stuff_)
@@ -162,8 +161,7 @@ void TiledBitmapViewData::tileLoaded(ConstTile::Ptr tile)
     // We're not sure about whether gdk_threads_enter() has been
     // called or not, so we have no choice but to invalidate on
     // another thread.
-    Scroom::GtkHelpers::Wrapper w = Scroom::GtkHelpers::wrap(boost::bind(invalidate_view, viewInterface));
-    gdk_threads_add_idle(w.f, w.data);
+    Scroom::GtkHelpers::async_on_ui_thread([=] { invalidate_view(viewInterface); });
     redrawPending = true;
   }
 }

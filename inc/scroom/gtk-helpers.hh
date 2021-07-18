@@ -13,47 +13,57 @@
 
 #include <gtk/gtk.h>
 
-namespace Scroom
+namespace Scroom::GtkHelpers
 {
-  namespace GtkHelpers
+  namespace Detail
   {
-    class Wrapper
+    template <typename T>
+    static int gtkWrapper(gpointer data)
     {
-    public:
-      GSourceFunc f;
-      gpointer    data;
-
-    public:
-      Wrapper(const boost::function<bool()>& f);
-    };
-
-    Wrapper wrap(boost::function<bool()> f);
-
-    class TakeGdkLock
-    {
-    public:
-      TakeGdkLock();
-      TakeGdkLock(const TakeGdkLock&) = delete;
-      TakeGdkLock(TakeGdkLock&&)      = delete;
-      TakeGdkLock& operator=(const TakeGdkLock&) = delete;
-      TakeGdkLock& operator=(TakeGdkLock&&) = delete;
-      ~TakeGdkLock();
-    };
-
-    void useRecursiveGdkLock();
-
-    inline cairo_rectangle_int_t createCairoIntRectangle(int x, int y, int width, int height)
-    {
-      cairo_rectangle_int_t rect;
-      rect.x      = x;
-      rect.y      = y;
-      rect.width  = width;
-      rect.height = height;
-      return rect;
+      auto* w = reinterpret_cast<T*>(data);
+      (*w)();
+      delete w;
+      return false;
     }
+  } // namespace Detail
 
-  } // namespace GtkHelpers
-} // namespace Scroom
+  template <typename T>
+  std::pair<GSourceFunc, gpointer> wrap(T f)
+  {
+    return std::make_pair<GSourceFunc, gpointer>(Detail::gtkWrapper<T>, new T(std::move(f)));
+  }
+
+  template <typename T>
+  void async_on_ui_thread(T f)
+  {
+    auto w = wrap(std::move(f));
+    gdk_threads_add_idle(w.first, w.second);
+  }
+
+  class TakeGdkLock
+  {
+  public:
+    TakeGdkLock();
+    TakeGdkLock(const TakeGdkLock&) = delete;
+    TakeGdkLock(TakeGdkLock&&)      = delete;
+    TakeGdkLock& operator=(const TakeGdkLock&) = delete;
+    TakeGdkLock& operator=(TakeGdkLock&&) = delete;
+    ~TakeGdkLock();
+  };
+
+  void useRecursiveGdkLock();
+
+  inline cairo_rectangle_int_t createCairoIntRectangle(int x, int y, int width, int height)
+  {
+    cairo_rectangle_int_t rect;
+    rect.x      = x;
+    rect.y      = y;
+    rect.width  = width;
+    rect.height = height;
+    return rect;
+  }
+
+} // namespace Scroom::GtkHelpers
 
 inline bool operator==(cairo_rectangle_int_t const& left, cairo_rectangle_int_t const& right)
 {

@@ -28,31 +28,26 @@ namespace
   };
 } // namespace
 
-static bool b(bool& in, B::Ptr) { return in; }
+static void b(B::Ptr) {}
 
 BOOST_AUTO_TEST_SUITE(Gtk_Helpers_Tests)
 
 BOOST_AUTO_TEST_CASE(function_returning_bool)
 {
-  bool        in   = true;
   GSourceFunc f    = nullptr;
   gpointer    data = nullptr;
   B::WeakPtr  wb;
 
   {
-    B::Ptr sb = B::create();
-    wb        = sb;
-    Wrapper w = wrap(boost::bind(b, boost::ref(in), sb));
-    f         = w.f;
-    data      = w.data;
+    B::Ptr sb                          = B::create();
+    wb                                 = sb;
+    std::pair<GSourceFunc, gpointer> w = wrap(boost::bind(b, sb));
+    f                                  = w.first;
+    data                               = w.second;
   }
   BOOST_CHECK(wb.lock());
 
   bool result = (*f)(data);
-  BOOST_CHECK_EQUAL(true, result);
-  BOOST_CHECK(wb.lock());
-  in     = false;
-  result = (*f)(data);
   BOOST_CHECK_EQUAL(false, result);
   BOOST_CHECK(!wb.lock());
 }
