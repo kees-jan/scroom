@@ -10,69 +10,27 @@
 #include <scroom/assertions.hh>
 #include <scroom/gtk-helpers.hh>
 
-using GtkFuncPtr = boost::shared_ptr<boost::function<bool()>>;
-
-namespace Scroom
+namespace Scroom::GtkHelpers
 {
-  namespace GtkHelpers
+  namespace Detail
   {
-    namespace Detail
+    boost::recursive_mutex& GdkMutex()
     {
-      class Wrapper
-      {
-      public:
-        boost::function<bool()> f;
+      static boost::recursive_mutex me;
+      return me;
+    }
 
-      public:
-        static gpointer create(const boost::function<bool()>& f);
-        Wrapper(const boost::function<bool()>& f);
-      };
+    void lockGdkMutex() { GdkMutex().lock(); }
 
-      Wrapper::Wrapper(const boost::function<bool()>& f_)
-        : f(f_)
-      {}
+    void unlockGdkMutex() { GdkMutex().unlock(); }
+  } // namespace Detail
 
-      gpointer Wrapper::create(const boost::function<bool()>& f) { return new Wrapper(f); }
+  void useRecursiveGdkLock() { gdk_threads_set_lock_functions(&Detail::lockGdkMutex, &Detail::unlockGdkMutex); }
 
-      static int gtkWrapper(gpointer data)
-      {
-        auto* w      = reinterpret_cast<Wrapper*>(data);
-        bool  result = w->f();
-        if(!result)
-        {
-          delete w;
-        }
-        return result;
-      }
-    } // namespace Detail
+  TakeGdkLock::TakeGdkLock() { gdk_threads_enter(); }
 
-    Wrapper::Wrapper(const boost::function<bool()>& f_)
-      : f(&Detail::gtkWrapper)
-      , data(Detail::Wrapper::create(f_))
-    {}
-
-    Wrapper wrap(boost::function<bool()> f) { return Wrapper(f); }
-
-    namespace Detail
-    {
-      boost::recursive_mutex& GdkMutex()
-      {
-        static boost::recursive_mutex me;
-        return me;
-      }
-
-      void lockGdkMutex() { GdkMutex().lock(); }
-
-      void unlockGdkMutex() { GdkMutex().unlock(); }
-    } // namespace Detail
-
-    void useRecursiveGdkLock() { gdk_threads_set_lock_functions(&Detail::lockGdkMutex, &Detail::unlockGdkMutex); }
-
-    TakeGdkLock::TakeGdkLock() { gdk_threads_enter(); }
-
-    TakeGdkLock::~TakeGdkLock() { gdk_threads_leave(); }
-  } // namespace GtkHelpers
-} // namespace Scroom
+  TakeGdkLock::~TakeGdkLock() { gdk_threads_leave(); }
+} // namespace Scroom::GtkHelpers
 
 std::ostream& operator<<(std::ostream& os, cairo_rectangle_int_t const& r)
 {
