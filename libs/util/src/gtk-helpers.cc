@@ -25,6 +25,20 @@ namespace Scroom::GtkHelpers
     void unlockGdkMutex() { GdkMutex().unlock(); }
   } // namespace Detail
 
+  namespace
+  {
+    std::optional<std::thread::id> ui_thread; // NOLINT(cppcoreguidelines-avoid-non-const-global-variables)
+  }
+
+  void this_is_the_ui_thread() { ui_thread = std::this_thread::get_id(); }
+
+  bool on_ui_thread()
+  {
+    require(ui_thread);
+
+    return *ui_thread == std::this_thread::get_id();
+  }
+
   void useRecursiveGdkLock() { gdk_threads_set_lock_functions(&Detail::lockGdkMutex, &Detail::unlockGdkMutex); }
 
   TakeGdkLock::TakeGdkLock() { gdk_threads_enter(); }

@@ -78,6 +78,7 @@ int main(int argc, char* argv[])
     usage(me, desc, ex.what());
   }
 
+  Scroom::GtkHelpers::this_is_the_ui_thread();
   Scroom::GtkHelpers::useRecursiveGdkLock();
   gdk_threads_init();
 

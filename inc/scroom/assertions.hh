@@ -9,38 +9,25 @@
 
 #include <sys/cdefs.h>
 
-namespace Scroom
+namespace Scroom::Utils::Detail
 {
-  namespace Utils
-  {
-
-    namespace Detail
-    {
-
-      /** Gets called when an assertion failed */
-      [[noreturn]] void
-        assertionFailed(const char* type, const char* expr, const char* function, const char* filename, unsigned int line)
-          __attribute__((noreturn));
-    } // namespace Detail
-
-  } // namespace Utils
-} // namespace Scroom
+  /** Gets called when an assertion failed */
+  [[noreturn]] void
+    assertionFailed(const char* type, const char* expr, const char* function, const char* filename, unsigned int line)
+      __attribute__((noreturn));
+} // namespace Scroom::Utils::Detail
 
 #ifdef _WIN32
 #  define __STRING(x) #  x
 #endif
 
-// NOLINTNEXTLINE
 #define require(expr) \
   ((expr) ? ((void)0) \
           : Scroom::Utils::Detail::assertionFailed("precondition", __STRING(expr), __PRETTY_FUNCTION__, __FILE__, __LINE__))
-// NOLINTNEXTLINE
 #define ensure(expr)  \
   ((expr) ? ((void)0) \
           : Scroom::Utils::Detail::assertionFailed("postcondition", __STRING(expr), __PRETTY_FUNCTION__, __FILE__, __LINE__))
-// NOLINTNEXTLINE
 #define verify(expr)  \
   ((expr) ? ((void)0) \
           : Scroom::Utils::Detail::assertionFailed("assertion", __STRING(expr), __PRETTY_FUNCTION__, __FILE__, __LINE__))
-// NOLINTNEXTLINE
 #define defect() Scroom::Utils::Detail::assertionFailed("control flow assertion", "", __PRETTY_FUNCTION__, __FILE__, __LINE__)

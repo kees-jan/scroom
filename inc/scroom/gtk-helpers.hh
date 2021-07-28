@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include <future>
 #include <ostream>
 
 #include <boost/function.hpp>
@@ -38,6 +39,31 @@ namespace Scroom::GtkHelpers
   {
     auto w = wrap(std::move(f));
     gdk_threads_add_idle(w.first, w.second);
+  }
+
+  template <typename T>
+  void async_on_ui_thread_and_wait(T f)
+  {
+    std::packaged_task<void(void)> t(f);
+    std::future<void>              future = t.get_future();
+    async_on_ui_thread(std::move(t));
+    future.wait();
+  }
+
+  void this_is_the_ui_thread();
+  bool on_ui_thread();
+
+  template <typename T>
+  void sync_on_ui_thread(T f)
+  {
+    if(on_ui_thread())
+    {
+      f();
+    }
+    else
+    {
+      async_on_ui_thread_and_wait(std::move(f));
+    }
   }
 
   class TakeGdkLock
