@@ -122,9 +122,7 @@ static void invalidate_view(ViewInterface::WeakPtr vi)
   ViewInterface::Ptr v = vi.lock();
   if(v)
   {
-    gdk_threads_enter();
-    v->invalidate();
-    gdk_threads_leave();
+    Scroom::GtkHelpers::sync_on_ui_thread([=] { v->invalidate(); });
   }
 }
 

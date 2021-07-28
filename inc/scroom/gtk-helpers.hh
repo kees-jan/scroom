@@ -14,6 +14,8 @@
 
 #include <gtk/gtk.h>
 
+#include "assertions.hh"
+
 namespace Scroom::GtkHelpers
 {
   namespace Detail
@@ -34,6 +36,8 @@ namespace Scroom::GtkHelpers
     return std::make_pair<GSourceFunc, gpointer>(Detail::gtkWrapper<T>, new T(std::move(f)));
   }
 
+  bool on_ui_thread();
+
   template <typename T>
   void async_on_ui_thread(T f)
   {
@@ -44,14 +48,12 @@ namespace Scroom::GtkHelpers
   template <typename T>
   void async_on_ui_thread_and_wait(T f)
   {
+    require(!on_ui_thread());
     std::packaged_task<void(void)> t(f);
     std::future<void>              future = t.get_future();
     async_on_ui_thread(std::move(t));
     future.wait();
   }
-
-  void this_is_the_ui_thread();
-  bool on_ui_thread();
 
   template <typename T>
   void sync_on_ui_thread(T f)
@@ -65,8 +67,6 @@ namespace Scroom::GtkHelpers
       async_on_ui_thread_and_wait(std::move(f));
     }
   }
-
-  void useRecursiveGdkLock();
 
   inline cairo_rectangle_int_t createCairoIntRectangle(int x, int y, int width, int height)
   {

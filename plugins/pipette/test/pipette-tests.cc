@@ -1,19 +1,14 @@
 #include <stack>
+#include <thread>
 
 #include <boost/dll.hpp>
 #include <boost/test/unit_test.hpp>
 
+#include <scroom/gtk-test-helpers.hh>
+
 #include "pipette.hh"
 
-class GtkInitFixture
-{
-public:
-  GtkInitFixture() { gtk_init(0, NULL); }
-};
-
-BOOST_GLOBAL_FIXTURE(GtkInitFixture);
-
-BOOST_AUTO_TEST_SUITE(Pipette_Tests)
+BOOST_FIXTURE_TEST_SUITE(Pipette_Tests, Scroom::GtkTestHelpers::GtkMainLoop)
 
 class DummyPresentation
   : public PresentationInterface

@@ -12,6 +12,7 @@ install(
         scroom/function-additor.hh
         scroom/global.hh
         scroom/gtk-helpers.hh
+        scroom/gtk-test-helpers.hh
         scroom/interface.hh
         scroom/layeroperations.hh
         scroom/linearsegment.hh

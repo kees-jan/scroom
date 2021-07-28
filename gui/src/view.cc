@@ -767,29 +767,27 @@ static void tool_button_toggled(GtkToggleButton* button, gpointer data) { static
 
 void View::addToolButton(GtkToggleButton* button, ToolStateListener::Ptr callback)
 {
-  gdk_threads_enter();
+  Scroom::GtkHelpers::sync_on_ui_thread([=] {
+    GtkToolItem* toolItem = gtk_tool_item_new();
+    gtk_container_add(GTK_CONTAINER(toolItem), GTK_WIDGET(button));
+    gtk_widget_set_visible(GTK_WIDGET(button), true);
+    g_signal_connect(static_cast<gpointer>(button), "toggled", G_CALLBACK(tool_button_toggled), this);
 
-  GtkToolItem* toolItem = gtk_tool_item_new();
-  gtk_container_add(GTK_CONTAINER(toolItem), GTK_WIDGET(button));
-  gtk_widget_set_visible(GTK_WIDGET(button), true);
-  g_signal_connect(static_cast<gpointer>(button), "toggled", G_CALLBACK(tool_button_toggled), this);
+    addToToolbar(toolItem);
 
-  addToToolbar(toolItem);
-
-  tools[button] = callback;
-  if(tools.size() == 1)
-  {
-    gtk_toggle_button_set_active(button, true);
-    gtk_widget_set_sensitive(GTK_WIDGET(button), false);
-    callback->onEnable();
-  }
-  else
-  {
-    gtk_toggle_button_set_active(button, false);
-    gtk_widget_set_sensitive(GTK_WIDGET(button), true);
-  }
-
-  gdk_threads_leave();
+    tools[button] = callback;
+    if(tools.size() == 1)
+    {
+      gtk_toggle_button_set_active(button, true);
+      gtk_widget_set_sensitive(GTK_WIDGET(button), false);
+      callback->onEnable();
+    }
+    else
+    {
+      gtk_toggle_button_set_active(button, false);
+      gtk_widget_set_sensitive(GTK_WIDGET(button), true);
+    }
+  });
 }
 
 ////////////////////////////////////////////////////////////////////////

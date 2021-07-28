@@ -4,6 +4,7 @@ target_sources(
   PRIVATE src/assertions.cc
           src/counter.cc
           src/gtk-helpers.cc
+          src/gtk-test-helpers.cc
           src/progressinterfacehelpers.cc)
 target_link_libraries(
   util

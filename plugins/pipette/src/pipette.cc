@@ -50,9 +50,7 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view, Scroom::Utils::Recta
 {
   jobMutex.lock();
 
-  gdk_threads_enter();
-  view->setStatusMessage("Computing color values...");
-  gdk_threads_leave();
+  Scroom::GtkHelpers::sync_on_ui_thread([=] { view->setStatusMessage("Computing color values..."); });
 
   // Get the average color within the rectangle
   PresentationInterface::Ptr presentation = view->getCurrentPresentation();
@@ -60,9 +58,7 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view, Scroom::Utils::Recta
   if(pipette == nullptr || !presentation->isPropertyDefined(PIPETTE_PROPERTY_NAME))
   {
     printf("PANIC: Presentation does not implement PipetteViewInterface!\n");
-    gdk_threads_enter();
-    view->setStatusMessage("Pipette is not supported for this presentation.");
-    gdk_threads_leave();
+    Scroom::GtkHelpers::sync_on_ui_thread([=] { view->setStatusMessage("Pipette is not supported for this presentation."); });
     jobMutex.unlock();
     return;
   }
@@ -100,9 +96,7 @@ void PipetteHandler::displayValues(ViewInterface::Ptr                   view,
     }
   }
 
-  gdk_threads_enter();
-  view->setStatusMessage(info.str());
-  gdk_threads_leave();
+  Scroom::GtkHelpers::sync_on_ui_thread([=] { view->setStatusMessage(info.str()); });
 }
 
 ////////////////////////////////////////////////////////////////////////

@@ -78,18 +78,12 @@ int main(int argc, char* argv[])
     usage(me, desc, ex.what());
   }
 
-  Scroom::GtkHelpers::this_is_the_ui_thread();
-  Scroom::GtkHelpers::useRecursiveGdkLock();
-  gdk_threads_init();
-
-  gdk_threads_enter();
   setlocale(LC_ALL, "");
   gtk_init(&argc, &argv);
 
   on_scroom_bootstrap(filenames);
 
   gtk_main();
-  gdk_threads_leave();
 
   on_scroom_terminating();
   printf("DEBUG: Scroom terminating...\n");

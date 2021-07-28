@@ -66,9 +66,6 @@ int main(int argc, char* argv[])
   //   optind++;
   // }
 
-  gdk_threads_init();
-
-  gdk_threads_enter();
   setlocale(LC_ALL, "");
   gtk_init(&argc, &argv);
 
@@ -79,6 +76,5 @@ int main(int argc, char* argv[])
   init();
 
   gtk_main();
-  gdk_threads_leave();
   return 0;
 }

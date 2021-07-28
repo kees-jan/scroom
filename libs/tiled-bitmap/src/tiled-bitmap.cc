@@ -43,9 +43,7 @@ Scroom::Utils::Stuff Scroom::TiledBitmap::scheduleLoadingBitmap(const SourcePres
   progress->setWaiting();
 
   Sequentially()->schedule([progress, layer, sp, weakQueue, on_finished, wait_until_done] {
-    gdk_threads_enter();
-    progress->setWorking(0);
-    gdk_threads_leave();
+    Scroom::GtkHelpers::sync_on_ui_thread([=] { progress->setWorking(0); });
     layer->fetchData(sp, weakQueue, on_finished);
     wait_until_done->P();
   });
@@ -328,13 +326,13 @@ void TiledBitmap::tileFinished(CompressedTile::Ptr tile)
   }
   else
   {
-    gdk_threads_enter();
-    progressBroadcaster->setWorking(1.0 * tileFinishedCount / tileCount);
-    if(tileFinishedCount == tileCount)
-    {
-      progressBroadcaster->setFinished();
-      printf("INFO: Finished loading file\n");
-    }
-    gdk_threads_leave();
+    Scroom::GtkHelpers::sync_on_ui_thread([=] {
+      progressBroadcaster->setWorking(1.0 * tileFinishedCount / tileCount);
+      if(tileFinishedCount == tileCount)
+      {
+        progressBroadcaster->setFinished();
+        printf("INFO: Finished loading file\n");
+      }
+    });
   }
 }

@@ -35,7 +35,6 @@ bool PluginManager::doWork()
 {
   bool retval = true;
 
-  gdk_threads_enter();
   switch(state)
   {
   case FINDING_DIRECTORIES:
@@ -204,7 +203,6 @@ bool PluginManager::doWork()
     break;
   }
   }
-  gdk_threads_leave();
   return retval;
 }
 
