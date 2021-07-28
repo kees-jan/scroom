@@ -77,9 +77,7 @@ namespace
 
   bool ProgressBarPulser::doWork()
   {
-    // Locking these the other way around results in a deadlock. See ticket #40
-    Scroom::GtkHelpers::TakeGdkLock gdkLock;
-    boost::mutex::scoped_lock       lock(mut);
+    boost::mutex::scoped_lock lock(mut);
 
     while(current == progressbars.end() || *current == NULL)
     {
@@ -87,7 +85,8 @@ namespace
       {
         return false;
       }
-      else if(current == progressbars.end())
+
+      if(current == progressbars.end())
       {
         current = progressbars.begin();
       }
@@ -103,7 +102,6 @@ namespace
 
     gtk_progress_bar_pulse(*current);
     ++current;
-
     return true;
   }
 } // namespace
@@ -156,8 +154,7 @@ void ProgressBarManager::setWorking(double progress)
 {
   stopWaiting();
 
-  Scroom::GtkHelpers::TakeGdkLock gdkLock;
-  gtk_progress_bar_set_fraction(progressBar, progress);
+  Scroom::GtkHelpers::sync_on_ui_thread([=] { gtk_progress_bar_set_fraction(progressBar, progress); });
 }
 
 void ProgressBarManager::setFinished() { setIdle(); }

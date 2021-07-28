@@ -66,17 +66,6 @@ namespace Scroom::GtkHelpers
     }
   }
 
-  class TakeGdkLock
-  {
-  public:
-    TakeGdkLock();
-    TakeGdkLock(const TakeGdkLock&) = delete;
-    TakeGdkLock(TakeGdkLock&&)      = delete;
-    TakeGdkLock& operator=(const TakeGdkLock&) = delete;
-    TakeGdkLock& operator=(TakeGdkLock&&) = delete;
-    ~TakeGdkLock();
-  };
-
   void useRecursiveGdkLock();
 
   inline cairo_rectangle_int_t createCairoIntRectangle(int x, int y, int width, int height)

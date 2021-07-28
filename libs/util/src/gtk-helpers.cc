@@ -40,10 +40,6 @@ namespace Scroom::GtkHelpers
   }
 
   void useRecursiveGdkLock() { gdk_threads_set_lock_functions(&Detail::lockGdkMutex, &Detail::unlockGdkMutex); }
-
-  TakeGdkLock::TakeGdkLock() { gdk_threads_enter(); }
-
-  TakeGdkLock::~TakeGdkLock() { gdk_threads_leave(); }
 } // namespace Scroom::GtkHelpers
 
 std::ostream& operator<<(std::ostream& os, cairo_rectangle_int_t const& r)
