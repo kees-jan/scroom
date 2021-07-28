@@ -5,10 +5,6 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
-#endif
-
 #include <cstdlib>
 #include <string>
 
@@ -64,9 +60,7 @@ int main(int argc, char* argv[])
   //   optind++;
   // }
 
-  gdk_threads_init();
-
-  setlocale(LC_ALL, "");
+  setlocale(LC_ALL, ""); // NOLINT(concurrency-mt-unsafe)
   gtk_init(&argc, &argv);
 
   init_tests();

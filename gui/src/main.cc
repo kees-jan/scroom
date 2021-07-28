@@ -5,10 +5,6 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
-#endif
-
 #include <cstdlib>
 #include <iostream>
 #include <list>
@@ -17,8 +13,6 @@
 #include <boost/program_options.hpp>
 
 #include <gtk/gtk.h>
-
-#include <scroom/gtk-helpers.hh>
 
 #include "callbacks.hh"
 
@@ -34,12 +28,12 @@ void usage(const std::string& me, const po::options_description& desc, const std
   std::cout << "Usage: " << me << " [options] [input files]" << std::endl << std::endl;
 
   std::cout << desc << std::endl;
-  exit(-1);
+  exit(-1); // NOLINT(concurrency-mt-unsafe)
 }
 
 int main(int argc, char* argv[])
 {
-  std::string                                   me = argv[0];
+  std::string                                   me = argv[0]; // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   std::map<std::string, std::list<std::string>> filenames;
 
   po::options_description desc("Available options");
@@ -78,7 +72,7 @@ int main(int argc, char* argv[])
     usage(me, desc, ex.what());
   }
 
-  setlocale(LC_ALL, "");
+  setlocale(LC_ALL, ""); // NOLINT(concurrency-mt-unsafe)
   gtk_init(&argc, &argv);
 
   on_scroom_bootstrap(filenames);

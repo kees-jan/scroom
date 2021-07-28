@@ -96,7 +96,7 @@ void PipetteHandler::displayValues(ViewInterface::Ptr                   view,
     }
   }
 
-  Scroom::GtkHelpers::sync_on_ui_thread([=] { view->setStatusMessage(info.str()); });
+  Scroom::GtkHelpers::sync_on_ui_thread([view, status = info.str()] { view->setStatusMessage(status); });
 }
 
 ////////////////////////////////////////////////////////////////////////
