@@ -11,9 +11,4 @@
 
 class PluginInformationInterface;
 
-extern "C"
-{
-  using PluginFunc = boost::shared_ptr<PluginInformationInterface> (*)();
-
-  boost::shared_ptr<PluginInformationInterface> getPluginInformation();
-}
+boost::shared_ptr<PluginInformationInterface> getPluginInformation();

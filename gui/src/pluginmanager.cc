@@ -142,12 +142,23 @@ bool PluginManager::doWork()
       GModule* plugin = g_module_open(currentFile->c_str(), static_cast<GModuleFlags>(0));
       if(plugin)
       {
-        // Need to pass a gpointer to g_module_symbol. If I pass a
-        // PluginFunc, glib 2.16.6/gcc 4.2.4 will complain about
-        // type-punned pointers.
-        gpointer pgpi;
-        if(g_module_symbol(plugin, "getPluginInformation", &pgpi))
+        gpointer pgpi         = nullptr;
+        bool     symbol_found = false;
+
+        if(g_module_symbol(plugin, "_Z20getPluginInformationv", &pgpi))
         {
+          symbol_found = true;
+        }
+        else if(g_module_symbol(plugin, "getPluginInformation", &pgpi))
+        {
+          symbol_found = true;
+          printf("WARNING: Plugin uses C-style GetPluginInformation - You need to recompile it\n");
+        }
+
+        if(symbol_found)
+        {
+          using PluginFunc = boost::shared_ptr<PluginInformationInterface> (*)();
+
           auto gpi = reinterpret_cast<PluginFunc>(pgpi);
           if(gpi)
           {
