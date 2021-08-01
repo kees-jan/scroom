@@ -1,0 +1,3 @@
+set ATB=@abs_top_builddir@
+set SCROOM_DEV_MODE=yes
+set SCROOM_PLUGIN_DIRS=/some/bogus/value;%ATB%/bin

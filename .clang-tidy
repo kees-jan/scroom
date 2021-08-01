@@ -2,6 +2,7 @@
 Checks: >
   *,
   -abseil-*,
+  -altera-*,
   -cert-dcl16-c,
   -fuchsia-*,
   -google-*,
