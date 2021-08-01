@@ -3,7 +3,10 @@ target_sources(sppipette PRIVATE src/main.cc src/pipette.cc src/pipette.hh)
 target_link_libraries(
   sppipette
   PRIVATE project_options project_warnings
-  PUBLIC PkgConfig::gtk threadpool PkgConfig::cairo)
+  PUBLIC PkgConfig::gtk
+         threadpool
+         PkgConfig::cairo
+         util)
 
 install(TARGETS sppipette DESTINATION ${PLUGIN_INSTALL_LOCATION_RELATIVE})
 install_plugin_dependencies(sppipette)

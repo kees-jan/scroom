@@ -159,7 +159,7 @@ void TiledBitmapViewData::tileLoaded(ConstTile::Ptr tile)
     // We're not sure about whether gdk_threads_enter() has been
     // called or not, so we have no choice but to invalidate on
     // another thread.
-    Scroom::GtkHelpers::async_on_ui_thread([=] { invalidate_view(viewInterface); });
+    Scroom::GtkHelpers::async_on_ui_thread([=, this] { invalidate_view(viewInterface); });
     redrawPending = true;
   }
 }

@@ -64,9 +64,9 @@ namespace Scroom
 
     Colormap::Ptr getColorMap(const TIFFPtr& tif, uint16_t bps)
     {
-      uint16*       r{};
-      uint16*       g{};
-      uint16*       b{};
+      uint16_t*     r{};
+      uint16_t*     g{};
+      uint16_t*     b{};
       Colormap::Ptr colormap;
 
       int result = TIFFGetField(tif.get(), TIFFTAG_COLORMAP, &r, &g, &b);
@@ -88,9 +88,9 @@ namespace Scroom
 
     boost::optional<Scroom::Utils::Point<double>> getAspectRatio(const TIFFPtr& tif)
     {
-      float  resolutionX{};
-      float  resolutionY{};
-      uint16 resolutionUnit{};
+      float    resolutionX{};
+      float    resolutionY{};
+      uint16_t resolutionUnit{};
 
       if(TIFFGetField(tif.get(), TIFFTAG_XRESOLUTION, &resolutionX) && TIFFGetField(tif.get(), TIFFTAG_YRESOLUTION, &resolutionY)
          && TIFFGetField(tif.get(), TIFFTAG_RESOLUTIONUNIT, &resolutionUnit))
@@ -268,7 +268,7 @@ namespace Scroom
       auto spp = bmd.samplesPerPixel;
       auto bps = bmd.bitsPerSample;
 
-      const auto        startLine_   = static_cast<uint32>(startLine);
+      const auto        startLine_   = static_cast<uint32_t>(startLine);
       const auto        firstTile_   = static_cast<size_t>(firstTile);
       const auto        scanLineSize = static_cast<size_t>(TIFFScanlineSize(tif.get()));
       const auto        tileStride   = static_cast<size_t>(tileWidth * spp * bps / 8);
@@ -283,7 +283,7 @@ namespace Scroom
 
       for(size_t i = 0; i < static_cast<size_t>(lineCount); i++)
       {
-        TIFFReadScanline(tif.get(), row.data(), static_cast<uint32>(i) + startLine_);
+        TIFFReadScanline(tif.get(), row.data(), static_cast<uint32_t>(i) + startLine_);
 
         for(size_t tile = 0; tile < tileCount - 1; tile++)
         {
