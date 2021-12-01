@@ -63,7 +63,7 @@ void TransparentOverlayPresentation::addPresentation(PresentationInterface::Ptr 
   }
   else
   {
-    printf("PANIC: Can't add a nonexistent presentation\n");
+    defect_message("Can't add a nonexistent presentation");
   }
 }
 

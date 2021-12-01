@@ -2,6 +2,8 @@
 
 #include <cmath>
 
+#include <spdlog/spdlog.h>
+
 #include <gdk/gdk.h>
 
 #include <scroom/unused.hh>
@@ -57,7 +59,7 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view, Scroom::Utils::Recta
   auto                       pipette      = boost::dynamic_pointer_cast<PipetteViewInterface>(presentation);
   if(pipette == nullptr || !presentation->isPropertyDefined(PIPETTE_PROPERTY_NAME))
   {
-    printf("PANIC: Presentation does not implement PipetteViewInterface!\n");
+    spdlog::error("Presentation does not implement PipetteViewInterface!");
     Scroom::GtkHelpers::sync_on_ui_thread([=] { view->setStatusMessage("Pipette is not supported for this presentation."); });
     jobMutex.unlock();
     return;

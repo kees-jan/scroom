@@ -22,7 +22,10 @@ endif()
 
 target_link_libraries(
   scroom
-  PRIVATE project_options project_warnings
+  PRIVATE project_options
+          project_warnings
+          CONAN_PKG::spdlog
+          CONAN_PKG::fmt
   PUBLIC PkgConfig::gtk
          PkgConfig::cairo
          PkgConfig::gthread
@@ -30,7 +33,6 @@ target_link_libraries(
          Boost::system
          Boost::filesystem
          Boost::program_options
-         CONAN_PKG::fmt
          util
          tiledbitmap
          m

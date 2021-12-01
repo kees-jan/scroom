@@ -10,6 +10,10 @@
 #include <list>
 #include <string>
 
+#include <spdlog/sinks/stdout_color_sinks.h>
+#include <spdlog/spdlog.h>
+
+#include <boost/lexical_cast.hpp>
 #include <boost/program_options.hpp>
 
 #include <gtk/gtk.h>
@@ -22,12 +26,13 @@ void usage(const std::string& me, const po::options_description& desc, const std
 {
   if(message.length() != 0)
   {
-    std::cout << "ERROR: " << message << std::endl << std::endl;
+    spdlog::error("{}", message);
   }
 
-  std::cout << "Usage: " << me << " [options] [input files]" << std::endl << std::endl;
+  spdlog::info("Usage: {}  [options] [input files]", me);
 
-  std::cout << desc << std::endl;
+  spdlog::info("{}", boost::lexical_cast<std::string>(desc));
+
   exit(-1); // NOLINT(concurrency-mt-unsafe)
 }
 
@@ -35,6 +40,8 @@ int main(int argc, char* argv[])
 {
   std::string                                   me = argv[0]; // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   std::map<std::string, std::list<std::string>> filenames;
+
+  spdlog::set_level(spdlog::level::debug);
 
   po::options_description desc("Available options");
   desc.add_options()("help,h", "Show this help message")("load,l", po::value<std::vector<std::string>>(), "Load given filenames")(
@@ -80,6 +87,6 @@ int main(int argc, char* argv[])
   gtk_main();
 
   on_scroom_terminating();
-  printf("DEBUG: Scroom terminating...\n");
+  spdlog::debug("Scroom terminating...");
   return 0;
 }

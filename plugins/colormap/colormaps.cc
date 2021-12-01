@@ -12,6 +12,7 @@
 #include <cstring>
 
 #include <dirent.h>
+#include <spdlog/spdlog.h>
 #include <sys/types.h>
 
 #include <gio/gio.h>
@@ -64,7 +65,7 @@ namespace Scroom
       }
       else
       {
-        printf("Failed to open dir %s: (%d, %s)\n", colormapDirPath, errno, strerror(errno));
+        spdlog::info("Failed to open dir {}: ({}, {})", colormapDirPath, errno, strerror(errno));
       }
       g_free(colormapDirPath);
     }
@@ -160,7 +161,7 @@ namespace Scroom
         }
         catch(std::exception& e)
         {
-          printf("ERROR: Couldn't parse file\n");
+          spdlog::error("Couldn't parse file");
           colormap.reset();
         }
         fclose(f);

@@ -55,18 +55,13 @@ void TiledBitmapViewData::setNeededTiles(Layer::Ptr const&    l,
     zoom            = zoom_;
     layerOperations = layerOperations_;
 
-    // printf("SetNeededTiles: layer=%d, %d<=i<=%d, %d<=j<=%d, zoom=%d\n",
-    //        l->getDepth(), imin, imax, jmin, jmax, zoom);
-
     // Get data for new tiles
     redrawPending = true; // if it isn't already
-    // printf("setNeededTiles: redrawPending\n");
     lock.unlock();
     resetNeededTiles();
     lock.lock();
   }
   redrawPending = false;
-  // printf("setNeededTiles: !redrawPending\n");
 }
 
 void TiledBitmapViewData::resetNeededTiles()
@@ -134,7 +129,6 @@ void TiledBitmapViewData::storeVolatileStuff(Scroom::Utils::Stuff stuff_)
 
 void TiledBitmapViewData::clearVolatileStuff()
 {
-  // printf("Erasing volatile stuff for %p\n", viewInterface);
   std::list<boost::shared_ptr<void>> oldVolatileStuff;
   {
     boost::unique_lock<boost::mutex> lock(mut);
@@ -151,8 +145,6 @@ void TiledBitmapViewData::tileLoaded(ConstTile::Ptr tile)
 {
   boost::unique_lock<boost::mutex> lock(mut);
   stuff.push_back(tile);
-
-  // printf("TiledBitmapViewData::tileLoaded: redrawPending=%d\n", redrawPending);
 
   if(!redrawPending)
   {

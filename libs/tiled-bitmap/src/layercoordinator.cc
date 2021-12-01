@@ -47,10 +47,7 @@ void LayerCoordinator::addSourceTile(int x, int y, CompressedTile::Ptr tile)
 void LayerCoordinator::tileFinished(CompressedTile::Ptr tile)
 {
   ConstTile::Ptr tileData = tile->getConstTileAsync();
-  if(!tileData)
-  {
-    printf("WEIRD: Tile finished but not loaded?\n");
-  }
+  require(tileData);
 
   CpuBound()->schedule(boost::bind(&LayerCoordinator::reduceSourceTile, shared_from_this<LayerCoordinator>(), tile, tileData),
                        REDUCE_PRIO);

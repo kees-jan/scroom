@@ -16,6 +16,9 @@
 #include <utility>
 #include <vector>
 
+#include <spdlog/spdlog.h>
+
+#include <scroom/assertions.hh>
 #include <scroom/async-deleter.hh>
 #include <scroom/threadpool.hh>
 
@@ -102,11 +105,11 @@ namespace
     auto cur = pointers.begin();
     while(cur != pointers.end())
     {
-      const int count = cur->first.use_count();
+      const auto count = cur->first.use_count();
 
       if(count)
       {
-        printf("%d references to %s remaining\n", count, cur->second.c_str());
+        spdlog::info("{} references to {} remaining", count, cur->second);
         cur++;
       }
       else
@@ -120,7 +123,7 @@ namespace
   {
     const boost::posix_time::millisec short_timeout(1);
     const boost::posix_time::millisec timeout(250);
-    int                               count = 0;
+    decltype(threads.size())          count = 0;
 
     {
       boost::mutex::scoped_lock lock(mut);
@@ -142,12 +145,11 @@ namespace
     }
 
     int triesRemaining = 256;
-    printf("\n");
     while(triesRemaining > 0 && count > 0)
     {
       boost::mutex::scoped_lock lock(mut);
       dumpPointers();
-      printf("Waiting for %d threads to terminate", static_cast<unsigned int>(count));
+      spdlog::info("Waiting for {} threads to terminate", count);
 
       auto cur = threads.begin();
       while(cur != threads.end())
@@ -160,11 +162,8 @@ namespace
         {
           cur++;
         }
-
-        printf(".");
       }
 
-      printf("\n");
       count = threads.size();
       triesRemaining--;
     }
@@ -334,7 +333,7 @@ void ThreadPool::do_one(ThreadPool::PrivateData::Ptr priv)
     }
     else
     {
-      printf("PANIC: JobQueue empty while it shouldn't be\n");
+      defect_message("JobQueue empty while it shouldn't be");
     }
   }
 

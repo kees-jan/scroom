@@ -141,7 +141,7 @@ Scroom::Utils::Stuff CommonOperations::cacheZoom(const ConstTile::Ptr tile, int 
   }
   else if(!cache)
   {
-    printf("PANIC: Base caching failed to return anything\n");
+    defect_message("Base caching failed to return anything");
   }
   else
   {

@@ -10,6 +10,8 @@
 #include <cstdio>
 #include <list>
 
+#include <spdlog/spdlog.h>
+
 #include <glib.h>
 
 #include <scroom/bookkeeping.hh>
@@ -57,7 +59,7 @@ namespace Scroom
       }
       else
       {
-        printf("PANIC: Presentation doesn't implement Colormappable\n");
+        defect_message("PANIC: Presentation doesn't implement Colormappable\n");
       }
 
       return result;
@@ -102,7 +104,7 @@ namespace Scroom
     ColormapProvider::~ColormapProvider()
     {
       // Clear out all the smart pointers
-      printf("ColormapProvider: Destructing...\n");
+      spdlog::debug("ColormapProvider: Destructing...");
       if(colormaps)
       {
         GtkTreeIter iter;
@@ -122,7 +124,7 @@ namespace Scroom
     void ColormapProvider::open(ViewInterface::WeakPtr vi)
     {
       ViewInterface::Ptr vil(vi);
-      printf("ColormapProvider: Adding a view.\n");
+      spdlog::debug("ColormapProvider: Adding a view.");
       GtkTreeView*     tv  = GTK_TREE_VIEW(gtk_tree_view_new_with_model(GTK_TREE_MODEL(colormaps)));
       GtkCellRenderer* txt = GTK_CELL_RENDERER(gtk_cell_renderer_text_new());
       gtk_tree_view_insert_column_with_attributes(tv, -1, "Name", txt, "text", COLUMN_NAME, NULL);
@@ -134,11 +136,11 @@ namespace Scroom
 
     void ColormapProvider::close(ViewInterface::WeakPtr vi)
     {
-      printf("ColormapProvider: Removing a view.\n");
+      spdlog::debug("ColormapProvider: Removing a view.");
       views.erase(vi);
       if(views.empty())
       {
-        printf("ColormapProvider: Last view has gone.\n");
+        spdlog::debug("ColormapProvider: Last view has gone.");
       }
     }
 
@@ -164,7 +166,7 @@ namespace Scroom
       }
       else
       {
-        printf("PANIC: Colormappable Presentation is gone??\n");
+        defect_message("PANIC: Colormappable Presentation is gone??\n");
       }
     }
   } // namespace ColormapImpl

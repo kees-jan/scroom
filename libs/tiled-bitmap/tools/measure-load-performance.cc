@@ -8,7 +8,9 @@
 #include <cstdlib>
 #include <string>
 
+#include <fmt/core.h>
 #include <getopt.h>
+#include <spdlog/spdlog.h>
 
 #include <gtk/gtk.h>
 
@@ -19,13 +21,13 @@ void usage(std::string me, std::string message = std::string())
 {
   if(message.length() != 0)
   {
-    printf("ERROR: %s\n\n", message.c_str());
+    spdlog::error("{}", message);
   }
 
-  printf("Usage: %s [options] [input files]\n\n", me.c_str());
-  printf("Options:\n");
-  printf(" -h            : Show this help\n");
-  exit(-1);
+  fmt::print("Usage: {} [options] [input files]\n\n", me);
+  fmt::print("Options:\n");
+  fmt::print(" -h            : Show this help\n");
+  exit(-1); // NOLINT(concurrency-mt-unsafe)
 }
 
 int main(int argc, char* argv[])

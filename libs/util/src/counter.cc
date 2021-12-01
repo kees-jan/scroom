@@ -9,6 +9,8 @@
 #include <list>
 #include <string>
 
+#include <spdlog/spdlog.h>
+
 #include <glib.h>
 
 #include <scroom/utilities.hh>
@@ -64,12 +66,14 @@ void Counter::unregisterCount(Count::Ptr count)
 void Counter::dump()
 {
   boost::unique_lock<boost::mutex> lock(mut);
-  printf("%ld", static_cast<long>(counts.size()));
-  for(Count::Ptr& c: counts)
+  std::stringstream                out;
+
+  out << counts.size();
+  for(Count::Ptr& count: counts)
   {
-    printf(", %s, %ld", c->name.c_str(), c->count);
+    out << ", " << count->name << ", " << count->count;
   }
-  printf("\n");
+  spdlog::trace("{}", out.str());
 }
 
 std::list<Count::Ptr> Counter::getCounts()

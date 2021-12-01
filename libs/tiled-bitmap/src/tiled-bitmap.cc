@@ -14,6 +14,9 @@
 #include <cmath>
 #include <cstdio>
 
+#include <fmt/format.h>
+#include <spdlog/spdlog.h>
+
 #include <boost/thread/mutex.hpp>
 
 #include <scroom/cairo-helpers.hh>
@@ -127,7 +130,7 @@ void TiledBitmap::initialize() { initialize(Layer::create(bitmapWidth, bitmapHei
 
 TiledBitmap::~TiledBitmap()
 {
-  printf("TiledBitmap: Destructing...\n");
+  spdlog::debug("TiledBitmap: Destructing...");
 
   coordinators.clear();
   layers.clear();
@@ -186,10 +189,10 @@ void TiledBitmap::drawTile(cairo_t* cr, const CompressedTile::Ptr& tile, const S
 
     cairo_set_source_rgb(cr, 0, 0, 0); // Black
     drawRectangleContour(cr, rect);
-    char buffer[256];
-    snprintf(buffer, 256, "Layer %d, Tile (%d, %d), %d bpp", tile->depth, tile->x, tile->y, tile->bpp);
+
+    std::string label = fmt::format("Layer {}, Tile ({}, {}), {} bpp", tile->depth, tile->x, tile->y, tile->bpp);
     cairo_move_to(cr, rect.x() + 20, rect.y() + 20);
-    cairo_show_text(cr, buffer);
+    cairo_show_text(cr, label.c_str());
   }
 }
 
@@ -322,7 +325,7 @@ void TiledBitmap::tileFinished(CompressedTile::Ptr tile)
   tileFinishedCount++;
   if(tileFinishedCount > tileCount)
   {
-    printf("ERROR: Too many tiles are finished!\n");
+    defect_message("ERROR: Too many tiles are finished!");
   }
   else
   {
@@ -331,7 +334,7 @@ void TiledBitmap::tileFinished(CompressedTile::Ptr tile)
       if(tileFinishedCount == tileCount)
       {
         progressBroadcaster->setFinished();
-        printf("INFO: Finished loading file\n");
+        spdlog::info("Finished loading file");
       }
     });
   }

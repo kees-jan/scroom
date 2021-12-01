@@ -9,6 +9,7 @@
 
 #include <string>
 
+#include <spdlog/spdlog.h>
 #include <time.h>
 
 namespace Scroom
@@ -37,11 +38,11 @@ namespace Scroom
         {
           double elapsed = (t2.tv_nsec - t.tv_nsec) * 1e-9;
           elapsed += t2.tv_sec - t.tv_sec;
-          printf("%s: %.9f\n", label.c_str(), elapsed);
+          spdlog::trace("{}: {.9f}", label, elapsed);
         }
         else
         {
-          printf("%s: Clock invalid\n", label.c_str());
+          spdlog::error("{}: Clock invalid", label);
         }
       }
     };

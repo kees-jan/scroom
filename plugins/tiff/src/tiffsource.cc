@@ -7,6 +7,8 @@
 
 #include "tiffsource.hh"
 
+#include <spdlog/spdlog.h>
+
 namespace
 {
   using TagInfo = std::pair<ttag_t, std::string>;
@@ -122,7 +124,7 @@ namespace Scroom
         if(!tif)
         {
           // Todo: report error
-          printf("PANIC: Failed to open file %s\n", fileName.c_str());
+          spdlog::error("Failed to open file {}", fileName);
           return {};
         }
 
@@ -136,7 +138,7 @@ namespace Scroom
 
         if(photometric != PHOTOMETRIC_PALETTE && colormapHelper)
         {
-          printf("WARNING: Tiff contains a colormap, but photometric isn't palette\n");
+          spdlog::warn("Tiff contains a colormap, but photometric isn't palette");
           colormapHelper.reset();
         }
 
@@ -154,7 +156,7 @@ namespace Scroom
         case PHOTOMETRIC_PALETTE:
           if(!colormapHelper)
           {
-            printf("WEIRD: Photometric is palette, but tiff doesn't contain a colormap\n");
+            spdlog::warn("Photometric is palette, but tiff doesn't contain a colormap");
             colormapHelper = ColormapHelper::create(1 << bps);
           }
           break;
@@ -164,25 +166,25 @@ namespace Scroom
           break;
 
         default:
-          printf("ERROR: Unrecognized value %d for photometric\n", photometric);
+          spdlog::error("Unrecognized value {} for photometric", photometric);
           return {};
         }
 
         auto aspectRatio = getAspectRatio(tif);
         if(aspectRatio)
         {
-          printf("This bitmap has size %u*%u, aspect ratio %.1f*%.1f\n", width, height, aspectRatio->x, aspectRatio->y);
+          spdlog::debug("This bitmap has size {}*{}, aspect ratio {:.2}*{:.2}", width, height, aspectRatio->x, aspectRatio->y);
         }
         else
         {
-          printf("This bitmap has size %u*%u\n", width, height);
+          spdlog::debug("This bitmap has size {}*{}", width, height);
         }
 
         BitmapMetaData bmd{{}, bps, spp, Scroom::Utils::make_rect<int>(0, 0, width, height), aspectRatio, colormapHelper};
 
         if(bps != 1 && bps != 2 && bps != 4 && bps != 8)
         {
-          printf("ERROR: %u bits per sample not supported (yet)\n", bps);
+          spdlog::error("{} bits per sample not supported (yet)", bps);
           return {};
         }
 
@@ -196,7 +198,7 @@ namespace Scroom
 
           if(bps != 8)
           {
-            printf("ERROR: A RGB bitmap with %u samples per pixel isn't supported (yet)", bps);
+            spdlog::error("A RGB bitmap with {} samples per pixel isn't supported (yet)", bps);
             return {};
           }
         }
@@ -206,7 +208,7 @@ namespace Scroom
         }
         else
         {
-          printf("PANIC: %u samples per pixel not supported (yet)\n", spp);
+          spdlog::error("{} samples per pixel not supported (yet)", spp);
           return {};
         }
 
@@ -214,7 +216,7 @@ namespace Scroom
       }
       catch(const std::exception& ex)
       {
-        printf("PANIC: %s\n", ex.what());
+        spdlog::error("{}", ex.what());
         return {};
       }
     }
@@ -246,9 +248,9 @@ namespace Scroom
         {
           if(r)
           {
-            printf("ERROR: Can't reload. Bitmap changed too much\n");
-            printf("INFO: Previously: %s\n", to_string(bmd).c_str());
-            printf("INFO: Now:        %s\n", to_string(std::get<0>(*r)).c_str());
+            spdlog::error("Can't reload. Bitmap changed too much");
+            spdlog::info("Previously: {}", to_string(bmd));
+            spdlog::info("Now:        {}", to_string(std::get<0>(*r)));
           }
           // if (!r) then the error has already been reported by open()
           return false;
@@ -261,10 +263,6 @@ namespace Scroom
 
     void Source::fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles)
     {
-      // printf("Filling lines %d to %d, tile %d to %d (tileWidth = %d)\n",
-      //        startLine, startLine+lineCount,
-      //        firstTile, (int)(firstTile+tiles.size()),
-      //        tileWidth);
       auto spp = bmd.samplesPerPixel;
       auto bps = bmd.bitsPerSample;
 

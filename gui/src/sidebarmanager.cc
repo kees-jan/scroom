@@ -10,6 +10,8 @@
 #include <cstdio>
 #include <utility>
 
+#include <scroom/assertions.hh>
+
 void SidebarManager::setWidgets(GtkWidget* panelWindow_, GtkBox* panel_)
 {
   panelWindow = panelWindow_;
@@ -33,16 +35,12 @@ void SidebarManager::addSideWidget(std::string title, GtkWidget* w)
 void SidebarManager::removeSideWidget(GtkWidget* w)
 {
   auto cur = widgets.find(w);
-  if(cur == widgets.end())
-  {
-    printf("PANIC: Can't find the widget I'm supposed to remove\n");
-    gtk_widget_destroy(w);
-  }
-  else
-  {
-    gtk_widget_destroy(cur->second);
-    widgets.erase(cur);
-  }
+
+  require(cur != widgets.end());
+
+  gtk_widget_destroy(cur->second);
+  widgets.erase(cur);
+
   if(widgets.empty())
   {
     gtk_widget_hide(panelWindow);

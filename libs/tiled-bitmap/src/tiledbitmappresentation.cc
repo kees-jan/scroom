@@ -7,6 +7,8 @@
 
 #include <utility>
 
+#include <spdlog/spdlog.h>
+
 #include <scroom/cairo-helpers.hh>
 #include <scroom/opentiledbitmapinterface.hh>
 #include <scroom/pipetteviewinterface.hh>
@@ -265,7 +267,7 @@ namespace
     }
     else
     {
-      printf("ERROR: TiffPresentation::open(): No TiledBitmapInterface available!\n");
+      spdlog::error("TiffPresentation::open(): No TiledBitmapInterface available!");
     }
   }
 
@@ -279,7 +281,7 @@ namespace
     }
     else
     {
-      printf("ERROR: TiffPresentation::close(): No TiledBitmapInterface available!\n");
+      spdlog::error("TiffPresentation::close(): No TiledBitmapInterface available!");
     }
   }
 

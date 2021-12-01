@@ -62,10 +62,7 @@ Tile::Ptr CompressedTile::getTileSync()
     // Retrieve the const tile, such that all observers are properly
     // notified of the loading
     ConstTile::Ptr temp = getConstTileSync();
-    if(!temp)
-    {
-      printf("PANIC: getConstTileSync() didn't return a tile!");
-    }
+    require(temp);
     {
       // Check again. Maybe someone else has beaten us to it...
       boost::mutex::scoped_lock lock(tileData);

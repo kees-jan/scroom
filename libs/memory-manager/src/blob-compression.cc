@@ -10,128 +10,97 @@
 #include <cstdio>
 #include <cstdlib>
 
+#include <fmt/format.h>
 #include <zlib.h>
 
-#include <scroom/blockallocator.hh>
+#include <scroom/assertions.hh>
 #include <scroom/memoryblobs.hh>
 
-namespace Scroom
+#define zlib_verify(condition, function_name, r, stream)                                                    \
+  ((condition) ? ((void)0)                                                                                  \
+               : Scroom::Utils::Detail::assertionFailed(                                                    \
+                 "assertion",                                                                               \
+                 fmt::format("{} said: {} ({})", (function_name), (r), ((stream).msg ? (stream).msg : "")), \
+                 static_cast<const char*>(__PRETTY_FUNCTION__),                                             \
+                 __FILE__,                                                                                  \
+                 __LINE__))
+
+namespace Scroom::MemoryBlobs::Detail
 {
-  namespace MemoryBlobs
+  PageList compressBlob(const uint8_t* in, size_t size, const PageProvider::Ptr& provider)
   {
-    namespace Detail
+    PageList     result;
+    z_stream     stream;
+    const size_t pageSize = provider->getPageSize();
+
+    stream.next_in   = const_cast<uint8_t*>(in); // NOLINT(cppcoreguidelines-pro-type-const-cast)
+    stream.avail_in  = size;
+    stream.avail_out = 0;
+    stream.zalloc    = Z_NULL;
+    stream.zfree     = Z_NULL;
+    stream.opaque    = Z_NULL;
+
+    int r = deflateInit(&stream, Z_BEST_SPEED);
+    zlib_verify(r == Z_OK, "deflateInit", r, stream);
+
+    do
     {
-      PageList compressBlob(const uint8_t* in, size_t size, PageProvider::Ptr provider)
-      {
-        PageList     result;
-        z_stream     stream;
-        const size_t pageSize = provider->getPageSize();
+      verify(stream.avail_out == 0);
 
-        stream.next_in   = const_cast<uint8_t*>(in);
-        stream.avail_in  = size;
-        stream.avail_out = 0;
-        stream.zalloc    = Z_NULL;
-        stream.zfree     = Z_NULL;
-        stream.opaque    = Z_NULL;
+      Page::Ptr currentPage = provider->getFreePage();
+      result.push_back(currentPage);
 
-        int r = deflateInit(&stream, Z_BEST_SPEED);
-        if(r != Z_OK)
-        {
-          printf("PANIC: deflateInit said: %d (%s)\n", r, (stream.msg ? stream.msg : ""));
-          exit(-1);
-        }
+      RawPageData::Ptr currentPageRaw = currentPage->get();
 
-        do
-        {
-          if(stream.avail_out != 0)
-          {
-            printf("PANIC! Some space available after compression finishes\n");
-          }
+      stream.next_out  = currentPageRaw.get();
+      stream.avail_out = pageSize;
 
-          Page::Ptr currentPage = provider->getFreePage();
-          result.push_back(currentPage);
+      r = deflate(&stream, Z_FINISH);
 
-          RawPageData::Ptr currentPageRaw = currentPage->get();
+    } while(r == Z_OK);
 
-          stream.next_out  = currentPageRaw.get();
-          stream.avail_out = pageSize;
+    zlib_verify(r == Z_STREAM_END, "deflate", r, stream);
 
-          r = deflate(&stream, Z_FINISH);
+    r = deflateEnd(&stream);
+    zlib_verify(r == Z_OK, "deflateEnd", r, stream);
 
-        } while(r == Z_OK);
+    return result;
+  }
 
-        if(r != Z_STREAM_END)
-        {
-          printf("PANIC: deflate said: %d (%s)\n", r, (stream.msg ? stream.msg : ""));
-          exit(-1);
-        }
+  void decompressBlob(uint8_t* out, size_t size, PageList list, const PageProvider::Ptr& provider)
+  {
+    z_stream     stream;
+    const size_t pageSize = provider->getPageSize();
 
-        r = deflateEnd(&stream);
-        if(r != Z_OK)
-        {
-          printf("PANIC: deflateEnd said: %d (%s)\n", r, (stream.msg ? stream.msg : ""));
-          exit(-1);
-        }
+    stream.next_out  = out;
+    stream.avail_out = size;
+    stream.avail_in  = 0;
+    stream.zalloc    = Z_NULL;
+    stream.zfree     = Z_NULL;
+    stream.opaque    = Z_NULL;
 
-        // printf("Compression finished: Before: %ld, After: %ld (%lu*%lu=%lu) (%.2f%%, %.2f%%)\n",
-        //        stream.total_in, stream.total_out, result.size(), pageSize, result.size()*pageSize,
-        //        100.0*stream.total_out/stream.total_in,
-        //        100.0*result.size()*pageSize/stream.total_in);
+    int r = inflateInit(&stream);
+    zlib_verify(r == Z_OK, "inflateInit", r, stream);
 
-        return result;
-      }
+    while(!list.empty() && r == Z_OK)
+    {
+      verify(stream.avail_in == 0);
 
-      void decompressBlob(uint8_t* out, size_t size, PageList list, PageProvider::Ptr provider)
-      {
-        z_stream     stream;
-        const size_t pageSize = provider->getPageSize();
+      Page::Ptr currentPage = list.front();
+      list.pop_front();
 
-        stream.next_out  = out;
-        stream.avail_out = size;
-        stream.avail_in  = 0;
-        stream.zalloc    = Z_NULL;
-        stream.zfree     = Z_NULL;
-        stream.opaque    = Z_NULL;
+      RawPageData::Ptr currentPageRaw = currentPage->get();
 
-        int r = inflateInit(&stream);
-        if(r != Z_OK)
-        {
-          printf("PANIC: inflateInit said: %d (%s)\n", r, (stream.msg ? stream.msg : ""));
-          exit(-1);
-        }
+      stream.next_in  = currentPageRaw.get();
+      stream.avail_in = pageSize;
 
-        while(!list.empty() && r == Z_OK)
-        {
-          if(stream.avail_in != 0)
-          {
-            printf("PANIC! Some data available after inflation finishes\n");
-          }
+      int flush = (list.empty() ? Z_FINISH : Z_NO_FLUSH);
 
-          Page::Ptr currentPage = list.front();
-          list.pop_front();
+      r = inflate(&stream, flush);
+    }
+    zlib_verify(r == Z_OK || r == Z_STREAM_END, "inflate", r, stream);
 
-          RawPageData::Ptr currentPageRaw = currentPage->get();
-
-          stream.next_in  = currentPageRaw.get();
-          stream.avail_in = pageSize;
-
-          int flush = (list.empty() ? Z_FINISH : Z_NO_FLUSH);
-
-          r = inflate(&stream, flush);
-        }
-        if(r != Z_OK && r != Z_STREAM_END)
-        {
-          printf("PANIC: inflate said: %d (%s)\n", r, (stream.msg ? stream.msg : ""));
-          exit(-1);
-        }
-
-        r = inflateEnd(&stream);
-        if(r != Z_OK)
-        {
-          printf("PANIC: inflateEnd said: %d (%s)\n", r, (stream.msg ? stream.msg : ""));
-          exit(-1);
-        }
-      }
-    } // namespace Detail
-  }   // namespace MemoryBlobs
-} // namespace Scroom
+    r = inflateEnd(&stream);
+    zlib_verify(r == Z_OK, "inflateEnd", r, stream);
+  }
+} // namespace Scroom::MemoryBlobs::Detail

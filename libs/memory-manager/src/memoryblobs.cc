@@ -11,6 +11,9 @@
 #include <cstring>
 #include <list>
 
+#include <fmt/format.h>
+
+#include <scroom/assertions.hh>
 #include <scroom/blockallocator.hh>
 #include <scroom/memoryblobs.hh>
 #include <scroom/threadpool.hh>
@@ -99,7 +102,7 @@ namespace Scroom
           state = DIRTY;
           break;
         default:
-          printf("PANIC: Illegal state %d\n", state);
+          defect_message(fmt::format("Illegal state {}", state));
           break;
         }
 
@@ -136,10 +139,7 @@ namespace Scroom
       boost::mutex::scoped_lock lock(mut);
       if(state == COMPRESSING)
       {
-        if(refcount != 0)
-        {
-          printf("PANIC: Compressing with pending references\n");
-        }
+        require(refcount == 0);
 
         pages = Detail::compressBlob(data, size, provider);
         free(data);

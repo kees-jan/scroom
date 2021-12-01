@@ -9,38 +9,37 @@
 
 #include <cstdio>
 
+#include <spdlog/spdlog.h>
+
 #include <scroom/colormappable.hh>
 
 #include "colormapprovider.hh"
 
 ////////////////////////////////////////////////////////////////////////
 
-namespace Scroom
+namespace Scroom::ColormapImpl
 {
-  namespace ColormapImpl
+  ColormapPlugin::Ptr ColormapPlugin::create() { return Ptr(new ColormapPlugin()); }
+
+  std::string ColormapPlugin::getPluginName() { return "Colormap"; }
+
+  std::string ColormapPlugin::getPluginVersion() { return "0.0"; }
+
+  void ColormapPlugin::registerCapabilities(ScroomPluginInterface::Ptr host)
   {
-    ColormapPlugin::Ptr ColormapPlugin::create() { return Ptr(new ColormapPlugin()); }
+    host->registerPresentationObserver("Colormap", shared_from_this<ColormapPlugin>());
+  }
 
-    std::string ColormapPlugin::getPluginName() { return "Colormap"; }
-
-    std::string ColormapPlugin::getPluginVersion() { return "0.0"; }
-
-    void ColormapPlugin::registerCapabilities(ScroomPluginInterface::Ptr host)
+  void ColormapPlugin::presentationAdded(PresentationInterface::Ptr p)
+  {
+    spdlog::debug("ColormapPlugin: A presentation was created");
+    if(p->isPropertyDefined(COLORMAPPABLE_PROPERTY_NAME))
     {
-      host->registerPresentationObserver("Colormap", shared_from_this<ColormapPlugin>());
+      spdlog::debug("ColormapPlugin: It is colormappable!");
+      ColormapProvider::Ptr cmp = ColormapProvider::create(p);
     }
+  }
 
-    void ColormapPlugin::presentationAdded(PresentationInterface::Ptr p)
-    {
-      printf("ColormapPlugin: A presentation was created\n");
-      if(p->isPropertyDefined(COLORMAPPABLE_PROPERTY_NAME))
-      {
-        printf("ColormapPlugin: It is colormappable!\n");
-        ColormapProvider::Ptr cmp = ColormapProvider::create(p);
-      }
-    }
+  void ColormapPlugin::presentationDeleted() { spdlog::debug("ColormapPlugin: A presentation may have been deleted"); }
 
-    void ColormapPlugin::presentationDeleted() { printf("ColormapPlugin: A presentation may have been deleted\n"); }
-
-  } // namespace ColormapImpl
-} // namespace Scroom
+} // namespace Scroom::ColormapImpl

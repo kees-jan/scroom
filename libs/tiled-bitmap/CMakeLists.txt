@@ -23,6 +23,8 @@ target_link_libraries(
           threadpool
           memory_manager
           scroom_lib
+          CONAN_PKG::spdlog
+          CONAN_PKG::fmt
   PUBLIC PkgConfig::gtk PkgConfig::cairo)
 
 install(
@@ -55,7 +57,8 @@ target_link_libraries(
           project_warnings
           measure_tools
           Boost::system
-          PkgConfig::gthread)
+          PkgConfig::gthread
+          CONAN_PKG::spdlog)
 
 add_executable(measure_load_performance)
 target_sources(
@@ -67,7 +70,8 @@ target_link_libraries(
           project_warnings
           measure_tools
           threadpool
-          PkgConfig::gthread)
+          PkgConfig::gthread
+          CONAN_PKG::spdlog)
 
 if(ENABLE_BOOST_TEST)
   add_executable(tiledbitmap_tests)

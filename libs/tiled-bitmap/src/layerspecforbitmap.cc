@@ -5,6 +5,8 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
+#include <spdlog/spdlog.h>
+
 #include <boost/range/adaptor/reversed.hpp>
 
 #include <scroom/layeroperations.hh>
@@ -100,7 +102,7 @@ namespace Scroom
 
       if(bmd.bitsPerSample != 8)
       {
-        printf("ERROR: RGB bitmaps with %u bits per sample are not supported\n", bmd.bitsPerSample);
+        spdlog::error("RGB bitmaps with {} bits per sample are not supported", bmd.bitsPerSample);
         return {};
       }
 
@@ -140,7 +142,7 @@ namespace Scroom
       }
       else
       {
-        printf("ERROR: CMYK bitmaps with %u bits per sample are not supported\n", bmd.bitsPerSample);
+        spdlog::error("CMYK bitmaps with {} bits per sample are not supported", bmd.bitsPerSample);
         return {};
       }
 
@@ -158,7 +160,7 @@ namespace Scroom
 
       if(bmd.bitsPerSample != 1 && bmd.bitsPerSample != 2 && bmd.bitsPerSample != 4 && bmd.bitsPerSample != 8)
       {
-        printf("ERROR: Greyscale bitmaps with %u bits per pixel are not supported (yet)\n", bmd.bitsPerSample);
+        spdlog::error("Greyscale bitmaps with {} bits per pixel are not supported (yet)", bmd.bitsPerSample);
         return {};
       }
 
@@ -197,7 +199,7 @@ namespace Scroom
 
       if(bmd.bitsPerSample != 1 && bmd.bitsPerSample != 2 && bmd.bitsPerSample != 4 && bmd.bitsPerSample != 8)
       {
-        printf("ERROR: Colormapped bitmaps with %u bits per pixel are not supported (yet)\n", bmd.bitsPerSample);
+        spdlog::error("Colormapped bitmaps with {} bits per pixel are not supported (yet)", bmd.bitsPerSample);
         return {};
       }
 

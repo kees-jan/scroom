@@ -11,7 +11,8 @@ target_link_libraries(
           project_warnings
           util
           threadpool
-          ZLIB::ZLIB)
+          ZLIB::ZLIB
+          CONAN_PKG::fmt)
 
 install(
   TARGETS memory_manager

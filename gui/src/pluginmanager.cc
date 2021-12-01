@@ -11,6 +11,7 @@
 #include <cstdlib>
 #include <string>
 
+#include <spdlog/spdlog.h>
 #include <sys/types.h>
 
 #include <boost/filesystem.hpp>
@@ -56,7 +57,7 @@ bool PluginManager::doWork()
 
     if(path != nullptr)
     {
-      printf("%s = %s\n", SCROOM_PLUGIN_DIRS.c_str(), path);
+      spdlog::debug("{} = {}", SCROOM_PLUGIN_DIRS, path);
 
       for(char* i = path; *i != '\0'; i++)
       {
@@ -96,14 +97,14 @@ bool PluginManager::doWork()
       break;
     }
 
-    printf("Scanning directory: %s\n", currentDir->c_str());
+    spdlog::debug("Scanning directory: {}", *currentDir);
     const char* folder = currentDir->c_str();
     namespace fs       = boost::filesystem;
     boost::system::error_code ec;
 
     if(!fs::is_directory(folder, ec))
     {
-      printf("Can't open directory...\n");
+      spdlog::error("Can't open directory: {}", folder);
       currentDir++;
       break;
     }
@@ -138,7 +139,7 @@ bool PluginManager::doWork()
     if(currentFile->compare(currentFile->size() - 3, 3, ".so") == 0)
     {
 #endif
-      printf("Reading file: %s\n", currentFile->c_str());
+      spdlog::debug("Reading file: {}", *currentFile);
       GModule* plugin = g_module_open(currentFile->c_str(), static_cast<GModuleFlags>(0));
       if(plugin)
       {
@@ -152,7 +153,7 @@ bool PluginManager::doWork()
         else if(g_module_symbol(plugin, "getPluginInformation", &pgpi))
         {
           symbol_found = true;
-          printf("WARNING: Plugin uses C-style GetPluginInformation - You need to recompile it\n");
+          spdlog::warn("Plugin {} uses C-style GetPluginInformation - You need to recompile it", *currentFile);
         }
 
         if(symbol_found)
@@ -175,22 +176,25 @@ bool PluginManager::doWork()
               }
               else
               {
-                printf("Plugin has incorrect API version %d, instead of %d\n", pi->pluginApiVersion, PLUGIN_API_VERSION);
+                spdlog::error("Plugin {} has incorrect API version {}, instead of {}",
+                              *currentFile,
+                              pi->pluginApiVersion,
+                              PLUGIN_API_VERSION);
               }
             }
             else
             {
-              printf("GetPluginInformation returned NULL\n");
+              spdlog::error("GetPluginInformation returned NULL for file {}", *currentFile);
             }
           }
           else
           {
-            printf("Can't find the getPluginInterface function: %s\n", g_module_error());
+            spdlog::error("Can't find the getPluginInterface function in file {}: {}", *currentFile, g_module_error());
           }
         }
         else
         {
-          printf("Can't lookup symbols: %s\n", g_module_error());
+          spdlog::warn("Can't lookup symbols in file {}: {}", *currentFile, g_module_error());
         }
 
         if(plugin)
@@ -200,12 +204,12 @@ bool PluginManager::doWork()
       }
       else
       {
-        printf("Something went wrong: %s\n", g_module_error());
+        spdlog::error("Something went wrong for file {}: {}", *currentFile, g_module_error());
       }
     }
-  }
     currentFile++;
     break;
+  }
   case DONE:
   {
     setStatusBarMessage("Done loading plugins");
@@ -221,7 +225,6 @@ void PluginManager::setStatusBarMessage(const char*)
 {
   // gtk_statusbar_pop(statusbar, status_context_id);
   // gtk_statusbar_push(statusbar, status_context_id, message);
-  // printf("Statusbar update: %s\n", message);
 }
 
 void PluginManager::addHook(bool devMode_)
@@ -238,7 +241,7 @@ void PluginManager::addHook(bool devMode_)
 void PluginManager::registerNewPresentationInterface(const std::string&            identifier,
                                                      NewPresentationInterface::Ptr newPresentationInterface)
 {
-  printf("I learned how to create a new %s!\n", identifier.c_str());
+  spdlog::debug("I learned how to create a new {}!", identifier);
   newPresentationInterfaces[newPresentationInterface] = identifier;
 
   on_newPresentationInterfaces_update(newPresentationInterfaces);
@@ -246,14 +249,14 @@ void PluginManager::registerNewPresentationInterface(const std::string&         
 
 void PluginManager::registerNewAggregateInterface(const std::string& identifier, NewAggregateInterface::Ptr newAggregateInterface)
 {
-  printf("I learned how to create a new %s aggregate!\n", identifier.c_str());
+  spdlog::debug("I learned how to create a new {} aggregate!", identifier);
   newAggregateInterfaces[identifier] = newAggregateInterface;
 }
 
 void PluginManager::registerOpenPresentationInterface(const std::string&             extension,
                                                       OpenPresentationInterface::Ptr openPresentationInterface)
 {
-  printf("I learned how to open a %s file!\n", extension.c_str());
+  spdlog::debug("I learned how to open a {} file!", extension);
 
   openPresentationInterfaces[openPresentationInterface] = extension;
 }
@@ -262,7 +265,7 @@ void PluginManager::registerOpenTiledBitmapInterface(
   const std::string&                                               extension,
   boost::shared_ptr<Scroom::TiledBitmap::OpenTiledBitmapInterface> openTiledBitmapInterface)
 {
-  printf("I learned how to open a %s file!\n", extension.c_str());
+  spdlog::debug("I learned how to open a {} file!", extension);
 
   openTiledBitmapInterfaces[openTiledBitmapInterface]                               = extension;
   openPresentationInterfaces[ToOpenPresentationInterface(openTiledBitmapInterface)] = extension;
@@ -270,14 +273,14 @@ void PluginManager::registerOpenTiledBitmapInterface(
 
 void PluginManager::registerOpenInterface(const std::string& extension, OpenInterface::Ptr openInterface)
 {
-  printf("I learned how to open a %s file!\n", extension.c_str());
+  spdlog::debug("I learned how to open a {} file!", extension);
 
   openInterfaces[openInterface] = extension;
 }
 
 void PluginManager::registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer)
 {
-  printf("Observing Views for %s!\n", identifier.c_str());
+  spdlog::debug("Observing Views for {}!", identifier);
   viewObservers[observer] = identifier;
 
   on_new_viewobserver(observer);
@@ -285,7 +288,7 @@ void PluginManager::registerViewObserver(const std::string& identifier, ViewObse
 
 void PluginManager::registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer)
 {
-  printf("Observing Presentations for %s!\n", identifier.c_str());
+  spdlog::debug("Observing Presentations for {}!", identifier);
   presentationObservers[observer] = identifier;
 }
 

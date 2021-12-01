@@ -11,12 +11,17 @@
 #  include <config.h>
 #endif
 
+#include <array>
 #include <cmath>
 #include <sstream>
+
+#include <spdlog/spdlog.h>
 
 #include <boost/lexical_cast.hpp>
 
 #include <glib-object.h>
+
+#include <scroom/assertions.hh>
 
 #include "callbacks.hh"
 #include "pluginmanager.hh"
@@ -33,7 +38,7 @@
     }
 #endif
 
-static const char* zoomfactor[] = {
+static const std::array<const char*, 36> zoomfactor = {
   "32:1",          "16:1",          "8:1",           "4:1",         "2:1",         "1:1",          "1:2",          "1:4",
   "1:8",           "1:16",          "1:32",          "1:64",        "1:128",       "1:250",        "1:500",        "1:1000",
   "1:2000",        "1:4000",        "1:8000",        "1:16000",     "1:32000",     "1:64000",      "1:128000",     "1:250000",
@@ -123,7 +128,7 @@ View::View(GtkBuilder* scroomXml_)
 View::Ptr View::create(GtkBuilder* scroomXml, PresentationInterface::Ptr presentation)
 {
   Ptr view(new View(scroomXml));
-  printf("Creating a new view\n");
+  spdlog::debug("Creating a new view");
 
   if(presentation)
   {
@@ -135,7 +140,7 @@ View::Ptr View::create(GtkBuilder* scroomXml, PresentationInterface::Ptr present
 
 View::~View()
 {
-  printf("Destroying view...\n");
+  spdlog::debug("Destroying view...");
   gtk_widget_destroy(GTK_WIDGET(window));
 }
 
@@ -902,7 +907,7 @@ void View::updateNewWindowMenu()
     else
     {
       // This cannot happen
-      printf("PANIC! Logic error in view.cc\n");
+      defect();
     }
     //// Done updating menu
 

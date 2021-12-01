@@ -21,6 +21,7 @@
 #include <string>
 
 #include <fmt/core.h>
+#include <spdlog/spdlog.h>
 
 #include <boost/scoped_array.hpp>
 
@@ -60,7 +61,7 @@ static std::string                               currentFolder;
 
 void ShowModalDialog(const std::string& message)
 {
-  printf("%s\n", message.c_str());
+  spdlog::error(message);
   if(gdk_display_get_default())
   {
     // We're not running headless, don't open the popup
@@ -114,7 +115,7 @@ void on_open_activate(GtkMenuItem*, gpointer user_data)
   GtkWidget* dialog;
   auto*      scroom = static_cast<GtkWidget*>(user_data);
 
-  printf("Creating the open dialog\n");
+  spdlog::debug("Creating the open dialog");
   dialog = gtk_file_chooser_dialog_new("Open File",
                                        GTK_WINDOW(scroom),
                                        GTK_FILE_CHOOSER_ACTION_OPEN,
@@ -168,7 +169,7 @@ void on_open_activate(GtkMenuItem*, gpointer user_data)
     filterInfo.display_name = g_file_info_get_display_name(fileInfo);
     filterInfo.contains =
       static_cast<GtkFileFilterFlags>(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_MIME_TYPE);
-    printf("Opening file %s\n", filterInfo.filename);
+    spdlog::debug("Opening file {}", filterInfo.filename);
 
     try
     {
@@ -176,7 +177,7 @@ void on_open_activate(GtkMenuItem*, gpointer user_data)
     }
     catch(std::exception& ex)
     {
-      printf("ERROR: %s\n", ex.what());
+      spdlog::error(ex.what());
       on_presentation_possibly_destroyed();
     }
   }
@@ -245,8 +246,6 @@ void on_about_activate(GtkMenuItem*, gpointer)
 
 gboolean on_drawingarea_expose_event(GtkWidget* widget, GdkEventExpose*, gpointer user_data)
 {
-  // printf("expose\n");
-
   cairo_region_t* re = cairo_region_create();
 
   GdkDrawingContext* dc;
@@ -266,7 +265,6 @@ gboolean on_drawingarea_expose_event(GtkWidget* widget, GdkEventExpose*, gpointe
 
 gboolean on_drawingarea_configure_event(GtkWidget*, GdkEventConfigure*, gpointer user_data)
 {
-  // printf("configure\n");
   View* view = static_cast<View*>(user_data);
   view->on_configure();
   return FALSE;
@@ -300,7 +298,7 @@ void on_done_loading_plugins()
         }
         catch(std::exception& ex)
         {
-          printf("ERROR: %s\n", ex.what());
+          spdlog::error(ex.what());
           on_presentation_possibly_destroyed();
         }
         gchar* dir    = g_path_get_dirname(file.c_str());
@@ -340,24 +338,24 @@ void on_done_loading_plugins()
           }
           else
           {
-            printf("ERROR: Don't know how to display a %s\n", aggregateName.c_str());
+            spdlog::error("Don't know how to display a {}", aggregateName);
           }
         }
         catch(std::exception& ex)
         {
-          printf("ERROR: While creating %s: %s\n", aggregateName.c_str(), ex.what());
+          spdlog::error("While creating {}: {}", aggregateName, ex.what());
           on_presentation_possibly_destroyed();
         }
       }
       else
       {
-        printf("ERROR: Don't know how to create %s\n", aggregateName.c_str());
+        spdlog::error("Don't know how to create {}", aggregateName);
       }
     }
 
     if(presentations.empty())
     {
-      // Aparently, we couldn't load any of our presentations. Terminate...
+      // Apparently, we couldn't load any of our presentations. Terminate...
       ensure(views.empty());
       gtk_main_quit();
     }
@@ -420,20 +418,19 @@ gboolean on_open_scroom_website(GtkAboutDialog*, gchar* uri, gpointer)
 
 void on_scroom_bootstrap(const FileNameMap& newFilenames)
 {
-  printf("Bootstrapping Scroom...\n");
+  spdlog::info("Bootstrapping Scroom...");
   filenames     = newFilenames;
   currentFolder = ".";
 
   bool devMode = nullptr != getenv(SCROOM_DEV_MODE.c_str());
   if(devMode)
   {
-    printf(
-      "+----------------------------------------------------------------------+\n"
-      "| ENTERING DEVELOPMENT MODE                                            |\n"
-      "| All the default directories are not searched                         |\n"
-      "| Instead, only environment variables and the local source tree        |\n"
-      "| are consulted.                                                       |\n"
-      "+----------------------------------------------------------------------+\n");
+    spdlog::info("+----------------------------------------------------------------------+");
+    spdlog::info("| ENTERING DEVELOPMENT MODE                                            |");
+    spdlog::info("| All the default directories are not searched                         |");
+    spdlog::info("| Instead, only environment variables and the local source tree        |");
+    spdlog::info("| are consulted.                                                       |");
+    spdlog::info("+----------------------------------------------------------------------+");
   }
 
   startPluginManager(devMode);
@@ -472,8 +469,8 @@ void on_scroom_bootstrap(const FileNameMap& newFilenames)
   }
   else
   {
-    printf("Opening xml failed\n");
-    exit(-1);
+    spdlog::error("Opening xml failed");
+    exit(-1); // NOLINT(concurrency-mt-unsafe)
   }
 
   if(filenames.empty())
@@ -500,11 +497,10 @@ void find_or_create_scroom(PresentationInterface::Ptr presentation)
 
 void onDragDataReceived(GtkWidget*, GdkDragContext*, int, int, GtkSelectionData* seldata, guint, guint, gpointer)
 {
-  printf("Dropping file(s) onto Scroom:\n");
   gchar** uris = g_uri_list_extract_uris(reinterpret_cast<const gchar*>(gtk_selection_data_get_data(seldata)));
   for(gchar** uri = uris; *uri != nullptr; uri++)
   {
-    printf("\t%s\n", *uri);
+    spdlog::info("Dropping file onto Scroom: {}", *uri);
 
     error           = nullptr;
     gchar* filename = g_filename_from_uri(*uri, nullptr, &error);
@@ -542,8 +538,8 @@ void create_scroom(PresentationInterface::Ptr presentation)
 
   if(xml == nullptr)
   {
-    printf("Opening xml failed\n");
-    exit(-1);
+    spdlog::error("Opening xml failed");
+    exit(-1); // NOLINT(concurrency-mt-unsafe)
   }
 
   View::Ptr view = View::create(xml, presentation);

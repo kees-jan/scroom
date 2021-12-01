@@ -88,7 +88,7 @@ if(ENABLE_PCH)
 endif()
 
 set(CONAN_EXTRA_REQUIRES "")
-set(CONAN_EXTRA_OPTIONS "")
+set(CONAN_EXTRA_OPTIONS "fmt:shared=True;spdlog:shared=True")
 
 if(ENABLE_GOOGLE_TEST)
   set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES} gtest/1.10.0)
@@ -153,6 +153,7 @@ if(WIN32)
   if(SCROOMBINDIR)
     install(CODE "set(SCROOMBINDIR \"${SCROOMBINDIR}\")")
   endif()
+  install(CODE "set(CONAN_PATHS ${CONAN_LIB_DIRS} ${CONAN_BIN_DIRS})")
   install(
     CODE [[
       message("Gathering dependencies for: ${PLUGINS}")
@@ -163,7 +164,7 @@ if(WIN32)
         UNRESOLVED_DEPENDENCIES_VAR unresolved
         PRE_EXCLUDE_REGEXES "^api-ms-win.*" "^ext-ms-.*"
         POST_EXCLUDE_REGEXES "[Ww][Ii][Nn][Dd][Oo][Ww][Ss].[Ss][Yy][Ss][Tt][Ee][Mm]32/"
-        DIRECTORIES c:/msys64/mingw64/bin)
+        DIRECTORIES c:/msys64/mingw64/bin ${CONAN_PATHS})
       message("Resolved: ${resolved}")
       list(LENGTH unresolved unresolved_count)
       if(${unresolved_count} GREATER "0")

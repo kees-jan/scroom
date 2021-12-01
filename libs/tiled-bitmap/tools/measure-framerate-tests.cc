@@ -10,6 +10,8 @@
 #include <ctime>
 #include <string>
 
+#include <spdlog/spdlog.h>
+
 #include <boost/shared_ptr.hpp>
 
 #include <scroom/unused.hh>
@@ -61,7 +63,7 @@ public:
 
 static bool logSizes()
 {
-  printf("Canvas size: %dx%d\n", drawingAreaWidth, drawingAreaHeight);
+  spdlog::info("Canvas size: {}x{}", drawingAreaWidth, drawingAreaHeight);
   return false;
 }
 
@@ -122,7 +124,7 @@ bool BaseCounter::operator()()
       // We're done. Compute frequency.
       double elapsed = now.tv_nsec - t.tv_nsec * 1e-9;
       elapsed += now.tv_sec - t.tv_sec;
-      printf("%-*s: %10.2f Hz\n", columnWidth, name.c_str(), count / elapsed);
+      spdlog::info("{:{}}: {:10.2} Hz", name, columnWidth, count / elapsed);
 
       return false;
     }

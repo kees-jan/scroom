@@ -9,6 +9,8 @@
 #include <utility>
 #include <vector>
 
+#include <spdlog/spdlog.h>
+
 #include <scroom/impl/threadpoolimpl.hh>
 #include <scroom/memoryblobs.hh>
 #include <scroom/stuff.hh>
@@ -32,7 +34,7 @@ static Scroom::MemoryBlobs::PageProvider::Ptr createProvider(double width, doubl
   int blockSize  = pagesPerBlock * pagesize;
   int blockCount = std::max(int(ceil(tileCount / 10)), 64);
 
-  printf("Creating a PageProvider providing %d blocks of %d bytes\n", blockCount, blockSize);
+  spdlog::debug("Creating a PageProvider providing {} blocks of {} bytes", blockCount, blockSize);
   return Scroom::MemoryBlobs::PageProvider::create(blockCount, blockSize);
 }
 
@@ -90,7 +92,7 @@ Layer::Layer(int depth_, int layerWidth, int layerHeight, int bpp, Scroom::Memor
     lineOutOfBounds.push_back(outOfBounds);
   }
 
-  printf("Layer %d (%d bpp), %d*%d, TileCount %d*%d\n", depth_, bpp, width, height, horTileCount, verTileCount);
+  spdlog::debug("Layer {} ({} bpp), {}*{}, TileCount {}*{}", depth_, bpp, width, height, horTileCount, verTileCount);
 }
 
 Layer::Ptr Layer::create(int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider)
@@ -206,7 +208,6 @@ DataFetcher::DataFetcher(Layer::Ptr                 layer_,
 
 void DataFetcher::operator()()
 {
-  // printf("Attempting to fetch bitmap data for tileRow %d...\n", currentRow);
   QueueJumper::Ptr qj = QueueJumper::create();
 
   threadPool->schedule(qj, REDUCE_PRIO, queue);
