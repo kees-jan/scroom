@@ -5,6 +5,7 @@ on: [ push, pull_request ]
 jobs:
   generate-documentation:
     runs-on: ubuntu-20.04
+    concurrency: gh-pages
     steps:
       - uses: actions/checkout@v2
         with:
