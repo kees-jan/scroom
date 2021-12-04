@@ -416,13 +416,15 @@ gboolean on_open_scroom_website(GtkAboutDialog*, gchar* uri, gpointer)
 }
 #endif
 
+bool in_devmode() { return nullptr != getenv(SCROOM_DEV_MODE.c_str()); }
+
 void on_scroom_bootstrap(const FileNameMap& newFilenames)
 {
   spdlog::info("Bootstrapping Scroom...");
   filenames     = newFilenames;
   currentFolder = ".";
 
-  bool devMode = nullptr != getenv(SCROOM_DEV_MODE.c_str());
+  const bool devMode = in_devmode();
   if(devMode)
   {
     spdlog::info("+----------------------------------------------------------------------+");

@@ -18,6 +18,15 @@
 
 #include <gtk/gtk.h>
 
+#ifdef _WIN32
+#  include <spdlog/sinks/basic_file_sink.h>
+#  include <unistd.h>
+
+#  include <boost/dll.hpp>
+#  include <boost/filesystem.hpp>
+#endif
+
+
 #include "callbacks.hh"
 
 namespace po = boost::program_options;
@@ -41,7 +50,24 @@ int main(int argc, char* argv[])
   std::string                                   me = argv[0]; // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   std::map<std::string, std::list<std::string>> filenames;
 
+#ifdef _WIN32
+  // In windows, redirect all logging to file.
+  // On the off-chance that we're running in a debugger that does capture console logging, redirect to console as well.
+  const auto logDirParent = in_devmode() ? boost::filesystem::path(TOP_SRCDIR) : boost::dll::program_location().parent_path();
+  const auto logDir       = logDirParent / "logs";
+  const auto logFile      = logDir / fmt::format("scroom-log-{}.txt", getpid());
+
+  boost::filesystem::create_directory(logDir);
+
+  auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
+  auto file_sink    = std::make_shared<spdlog::sinks::basic_file_sink_mt>(logFile.string(), true);
+
+  std::shared_ptr<spdlog::logger> logger(new spdlog::logger("scroom", {console_sink, file_sink}));
+  spdlog::set_default_logger(logger);
+#endif
+
   spdlog::set_level(spdlog::level::debug);
+  spdlog::set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%t] [%^%-5l%$] %v");
 
   po::options_description desc("Available options");
   desc.add_options()("help,h", "Show this help message")("load,l", po::value<std::vector<std::string>>(), "Load given filenames")(

@@ -82,3 +82,5 @@ void on_new_presentationobserver(PresentationObserver::Ptr po);
 void on_new_viewobserver(ViewObserver::Ptr v);
 
 void on_presentation_possibly_destroyed();
+
+bool in_devmode();
