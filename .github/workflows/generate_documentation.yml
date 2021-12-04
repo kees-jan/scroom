@@ -18,6 +18,10 @@ jobs:
       - name: Create Build Environment
         run: cmake -E make_directory ${{runner.workspace}}/build
 
+      - name: Update apt package repos
+        run: >
+          sudo apt-get update
+
       - name: Install apt packages
         run: >
           sudo apt-get -yq --no-install-suggests --no-install-recommends install

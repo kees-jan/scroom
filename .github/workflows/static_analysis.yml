@@ -20,6 +20,10 @@ jobs:
         # We'll use this as our working directory for all subsequent commands
         run: cmake -E make_directory ${{runner.workspace}}/build
 
+      - name: Update apt package repos
+        run: >
+          sudo apt-get update
+
       - name: Install apt packages
         run: >
           sudo apt-get -yq --no-install-suggests --no-install-recommends install
