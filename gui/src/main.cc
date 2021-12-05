@@ -26,7 +26,6 @@
 #  include <boost/filesystem.hpp>
 #endif
 
-
 #include "callbacks.hh"
 
 namespace po = boost::program_options;

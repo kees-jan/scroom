@@ -1,6 +1,7 @@
 add_subdirectory(colormap)
 add_subdirectory(example)
 add_subdirectory(measure)
+add_subdirectory(metadata)
 add_subdirectory(pipette)
 add_subdirectory(tiff)
 add_subdirectory(transparent-overlay)
