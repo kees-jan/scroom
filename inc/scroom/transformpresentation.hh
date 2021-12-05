@@ -14,6 +14,7 @@
 #include <scroom/point.hh>
 #include <scroom/presentationinterface.hh>
 #include <scroom/rectangle.hh>
+#include <scroom/showmetadatainterface.hh>
 
 class TransformationData
 {
@@ -39,6 +40,7 @@ class TransformPresentation
   : public PresentationBaseSimple
   , public Colormappable
   , public PipetteViewInterface
+  , public ShowMetadataInterface
 {
 public:
   using Ptr = boost::shared_ptr<TransformPresentation>;
@@ -47,6 +49,7 @@ private:
   TransformationData::Ptr    transformationData;
   PresentationInterface::Ptr presentation;
   Colormappable::Ptr         colormappable;
+  ShowMetadataInterface::Ptr showMetaDataInterface;
 
 private:
   TransformPresentation(PresentationInterface::Ptr const& presentation, TransformationData::Ptr const& transformationData);

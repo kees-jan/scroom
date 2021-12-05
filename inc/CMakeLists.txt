@@ -18,7 +18,7 @@ install(
         scroom/linearsegment.hh
         scroom/memoryblobs.hh
         scroom/observable.hh
-        scroom/imagemdinterface.hh
+        scroom/showmetadatainterface.hh
         scroom/opentiledbitmapinterface.hh
         scroom/plugininformationinterface.hh
         scroom/point.hh
@@ -40,7 +40,6 @@ install(
         scroom/unused.hh
         scroom/utilities.hh
         scroom/viewinterface.hh
-        scroom/imagemdinterface.hh
   DESTINATION include/scroom)
 
 install(FILES scroom/impl/bookkeepingimpl.hh scroom/impl/threadpoolimpl.hh DESTINATION include/scroom/impl)

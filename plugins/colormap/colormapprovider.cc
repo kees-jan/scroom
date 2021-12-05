@@ -59,7 +59,7 @@ namespace Scroom
       }
       else
       {
-        defect_message("PANIC: Presentation doesn't implement Colormappable\n");
+        defect_message("PANIC: Presentation doesn't implement Colormappable");
       }
 
       return result;

@@ -77,7 +77,6 @@ namespace
 
     void open(ViewInterface::WeakPtr) override {}
     void close(ViewInterface::WeakPtr) override {}
-    void showMetadata() override {}
   };
 
   class ResizablePresentationInterfaceStub

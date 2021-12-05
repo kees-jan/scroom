@@ -37,5 +37,4 @@ public:
   bool getProperty(const std::string& name, std::string& value) override;
   bool isPropertyDefined(const std::string& name) override;
   std::string getTitle() override;
-  void        showMetadata() override;
 };

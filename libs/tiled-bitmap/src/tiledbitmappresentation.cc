@@ -11,9 +11,9 @@
 #include <spdlog/spdlog.h>
 
 #include <scroom/cairo-helpers.hh>
-#include <scroom/imagemdinterface.hh>
 #include <scroom/opentiledbitmapinterface.hh>
 #include <scroom/pipetteviewinterface.hh>
+#include <scroom/showmetadatainterface.hh>
 #include <scroom/transformpresentation.hh>
 
 #include "tiled-bitmap.hh"
@@ -57,6 +57,7 @@ namespace
     : public PresentationBase
     , public Colormappable
     , public PipetteViewInterface
+    , public ShowMetadataInterface
   {
   public:
     using Ptr = boost::shared_ptr<TiledBitmapPresentation>;
@@ -504,6 +505,7 @@ namespace
       {
         properties[PIPETTE_PROPERTY_NAME] = "";
       }
+      properties[METADATA_PROPERTY_NAME] = "";
 
       auto tiledBitmapPresentation = TiledBitmapPresentation::create(
         fileName, it->second.rect, tiledBitmap, properties, colormapHelper, pipetteLayerOperation);

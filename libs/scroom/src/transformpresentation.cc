@@ -39,6 +39,7 @@ TransformPresentation::TransformPresentation(PresentationInterface::Ptr const& p
   : transformationData(transformationData_)
   , presentation(presentation_)
   , colormappable(boost::dynamic_pointer_cast<Colormappable>(presentation_))
+  , showMetaDataInterface(boost::dynamic_pointer_cast<ShowMetadataInterface>(presentation_))
 {}
 
 TransformPresentation::Ptr TransformPresentation::create(PresentationInterface::Ptr const& presentation,
@@ -102,7 +103,7 @@ void TransformPresentation::disableTransparentBackground() { colormappable->disa
 
 bool TransformPresentation::getTransparentBackground() { return colormappable->getTransparentBackground(); }
 
-void TransformPresentation::showMetadata() { presentation->showMetadata(); }
+void TransformPresentation::showMetadata() { showMetaDataInterface->showMetadata(); }
 
 PipetteLayerOperations::PipetteColor TransformPresentation::getPixelAverages(Scroom::Utils::Rectangle<int> area)
 {

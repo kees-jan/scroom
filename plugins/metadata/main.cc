@@ -1,11 +1,11 @@
-//
-// Created by andy on 13-06-21.
-//
-
-#include <stdio.h>
+/*
+ * Scroom - Generic viewer for 2D data
+ * Copyright (C) 2009-2021 Kees-Jan Dijkzeul
+ *
+ * SPDX-License-Identifier: LGPL-2.1
+ */
 
 #include <scroom/scroomplugin.hh>
-#include <scroom/unused.hh>
 
 #include "metadata.hh"
 

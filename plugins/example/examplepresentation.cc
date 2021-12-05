@@ -100,4 +100,3 @@ bool ExamplePresentation::isPropertyDefined(const std::string& name)
 }
 
 std::string ExamplePresentation::getTitle() { return ""; }
-void        ExamplePresentation::showMetadata() {}

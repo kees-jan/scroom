@@ -1,14 +1,13 @@
-// Metadata plugin class
-// Created by andy on 13-06-21.
-//
+/*
+ * Scroom - Generic viewer for 2D data
+ * Copyright (C) 2009-2021 Kees-Jan Dijkzeul
+ *
+ * SPDX-License-Identifier: LGPL-2.1
+ */
 
-#include <scroom/imagemdinterface.hh>
+#pragma once
+
 #include <scroom/plugininformationinterface.hh>
-#include <scroom/threadpool.hh>
-#include <scroom/utilities.hh>
-#include <scroom/viewinterface.hh>
-
-void on_image_properties_activate(GtkMenuItem*, gpointer user_data);
 
 class Metadata
   : public PluginInformationInterface

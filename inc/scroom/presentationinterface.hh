@@ -16,7 +16,6 @@
 
 #include <cairo.h>
 
-#include <scroom/imagemdinterface.hh>
 #include <scroom/interface.hh>
 #include <scroom/observable.hh>
 #include <scroom/rectangle.hh>
@@ -70,7 +69,6 @@ using ViewObservable = Scroom::Utils::Observable<Viewable>;
 class PresentationInterface
   : public Viewable
   , public ViewObservable
-  , public virtual MetadataViewInterface
 {
 public:
   using Ptr     = boost::shared_ptr<PresentationInterface>;
@@ -118,8 +116,6 @@ public:
   // Viewable
   void open(ViewInterface::WeakPtr vi) override;
   void close(ViewInterface::WeakPtr vi) override;
-  /** Show image metadata of the current presentation */
-  void showMetadata() override;
 
 protected:
   // ViewObservable
