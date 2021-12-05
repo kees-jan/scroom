@@ -95,9 +95,9 @@ Scroom::Bookkeeping::Token Metadata::viewAdded(ViewInterface::Ptr view)
   // connect signal to the button for when it is being pressed
   g_signal_connect(static_cast<gpointer>(buttonMetadata), "pressed", G_CALLBACK(on_image_properties_activate), presentation);
 
-  gdk_threads_enter();
-  view->addToToolbar(button); // adds metadata button next to other tools in toolbar
-  gdk_threads_leave();
+  Scroom::GtkHelpers::sync_on_ui_thread([&] {
+    view->addToToolbar(button); // adds metadata button next to other tools in toolbar
+  });
 
   return Scroom::Bookkeeping::Token();
 }

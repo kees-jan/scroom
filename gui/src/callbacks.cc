@@ -548,10 +548,8 @@ void create_scroom(PresentationInterface::Ptr presentation)
   View::Ptr view = View::create(xml, presentation);
   on_view_created(view);
 
-  GtkWidget* scroom = GTK_WIDGET(gtk_builder_get_object(xml, "scroom"));
-  // GtkWidget* newMenuItem = glade_xml_get_widget(xml, "new");
+  GtkWidget*     scroom               = GTK_WIDGET(gtk_builder_get_object(xml, "scroom"));
   GtkWidget*     openMenuItem         = GTK_WIDGET(gtk_builder_get_object(xml, "open"));
-  GtkWidget*     propertiesMenuItem   = GTK_WIDGET(gtk_builder_get_object(xml, "properties"));
   GtkWidget*     closeMenuItem        = GTK_WIDGET(gtk_builder_get_object(xml, "close"));
   GtkWidget*     quitMenuItem         = GTK_WIDGET(gtk_builder_get_object(xml, "quit"));
   GtkWidget*     fullScreenMenuItem   = GTK_WIDGET(gtk_builder_get_object(xml, "fullscreen_menu_item"));
@@ -569,7 +567,6 @@ void create_scroom(PresentationInterface::Ptr presentation)
   g_signal_connect(static_cast<gpointer>(closeMenuItem), "activate", G_CALLBACK(on_close_activate), view.get());
   g_signal_connect(static_cast<gpointer>(quitMenuItem), "activate", G_CALLBACK(on_quit_activate), view.get());
   g_signal_connect(static_cast<gpointer>(openMenuItem), "activate", G_CALLBACK(on_open_activate), scroom);
-  // g_signal_connect(static_cast<gpointer>(propertiesMenuItem), "activate", G_CALLBACK(on_image_properties_activate), scroom);
   g_signal_connect(static_cast<gpointer>(fullScreenMenuItem), "activate", G_CALLBACK(on_fullscreen_activate), view.get());
   g_signal_connect(static_cast<gpointer>(zoomBox), "changed", G_CALLBACK(on_zoombox_changed), view.get());
   g_signal_connect(
