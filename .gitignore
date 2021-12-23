@@ -2,8 +2,8 @@
 .#*
 \#*#
 /cmake-build-*
-/build
 /Scroom.srctrlbm*
 /Scroom.srctrldb*
 /.scroom-version
 /logs
+/doc/_build

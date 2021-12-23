@@ -39,11 +39,12 @@ jobs:
           pkg-config
           doxygen
           graphviz
+          plantuml
 
       - name: Install conan
         run: |
           python3 -m pip install --upgrade pip setuptools
-          python3 -m pip install --no-warn-script-location conan
+          python3 -m pip install --no-warn-script-location conan sphinx sphinxcontrib-plantuml sphinxcontrib-doxylink
 
       - name: Configure CMake
         working-directory: ${{runner.workspace}}/build
@@ -54,6 +55,16 @@ jobs:
       - name: Doxygen
         working-directory: ${{runner.workspace}}
         run: cmake --build build --target doxygen-docs
+
+      - name: Add doxygen to Sphinx
+        working-directory: ${{runner.workspace}}/build
+        run: |
+          mv html ${GITHUB_WORKSPACE}/doc/_static/doxygen
+
+      - name: Sphinx
+        working-directory: ${{runner.workspace}}/scroom/doc
+        run: |
+          make
 
       - name: Upload to Github
         env:

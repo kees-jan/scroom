@@ -4,7 +4,7 @@ set -x
 set -e
 set -u
 
-BUILD="$1/build"
+SPHINX="$1/scroom/doc/_build/html"
 COMMIT_USER="Documentation Builder"
 COMMIT_EMAIL="project@mandryn.org"
 CHANGESET=$(git rev-parse --verify HEAD)
@@ -12,13 +12,14 @@ BRANCH="${GITHUB_REF#refs/heads/}"
 
 cd ../doc
 
-if [ -e ${BRANCH} ]
+if [ -e "${BRANCH}" ]
 then
-  git rm -rf ${BRANCH}
+  git rm -rf "${BRANCH}"
 fi
-mkdir -p ${BRANCH}
-pushd ${BRANCH}
-mv "${BUILD}/html"/* .
+mkdir -p "${BRANCH}"
+pushd "${BRANCH}"
+mv "${SPHINX}"/* .
+touch .documentation_root
 git add .
 
 # Regenerate master index
@@ -27,7 +28,7 @@ cat > index.html <<EOF
 <html>
 <head>
 <title>Scroom doxygen documentation</title>
-<link href="master/doxygen.css" rel="stylesheet" type="text/css" />
+<link href="$(find master -name doxygen.css)" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="titlearea">
@@ -43,7 +44,15 @@ cat > index.html <<EOF
 </div>
 <h1>
 <ul>
-$(for f in $(find * -mindepth 1 -name index.html) ; do echo "<li><a href=\"$f\">$(dirname $f)</a><br/>&nbsp;</li>" ; done)
+$(for f in $(find * -mindepth 1 -maxdepth 1 -name index.html)
+  do
+    if [ -f "$(dirname "$f")/_static/doxygen/index.html" ]
+    then
+      echo "<li><a href=\"$f\">$(dirname $f)</a> <a href=\"$(dirname "$f")/doxygen/index.html\">Doxygen</a><br/>&nbsp;</li>"
+    else
+      echo "<li>$(dirname $f) <a href=\"$f\">Doxygen</a><br/>&nbsp;</li>"
+    fi
+  done)
 </ul>
 </h1>
 </body>
