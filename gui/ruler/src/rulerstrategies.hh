@@ -40,8 +40,6 @@ public:
    * Draws the outline around the ruler.
    * @param cr Cairo context to draw to.
    * @param lineWidth Width of the outline in pixels.
-   * @param width Allocated width for the ruler in pixels.
-   * @param height Allocated height for the ruler in pixels.
    */
   virtual void drawOutline(cairo_t* cr, double lineWidth) = 0;
 
