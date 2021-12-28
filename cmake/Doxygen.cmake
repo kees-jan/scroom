@@ -16,6 +16,7 @@ function(enable_doxygen)
     set(DOXYGEN_UML_LOOK YES)
     set(DOXYGEN_UML_LIMIT_NUM_FIELDS 5)
     set(DOXYGEN_TAB_SIZE 2)
+    set(DOXYGEN_GENERATE_TAGFILE ${CMAKE_CURRENT_BINARY_DIR}/html/scroom.tag)
 
     find_package(Doxygen REQUIRED dot)
     doxygen_add_docs(doxygen-docs ${PROJECT_SOURCE_DIR})
