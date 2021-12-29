@@ -12,3 +12,6 @@ Text before...
 Text after...
 
 Reference to :scroom:`ThreadPool::create(bool)`
+
+Solid principles
+----------------

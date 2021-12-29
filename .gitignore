@@ -7,3 +7,4 @@
 /.scroom-version
 /logs
 /doc/_build
+/doc/_static/doxygen

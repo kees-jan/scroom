@@ -1,2 +1,9 @@
 Patterns
 ========
+
+create() methods
+----------------
+
+
+RAII
+----
