@@ -64,3 +64,5 @@ html_theme_options = {
 doxylink = {
     'scroom': ('_static/doxygen/scroom.tag', '_static/doxygen')
 }
+
+html_favicon = 'favicon.ico'
