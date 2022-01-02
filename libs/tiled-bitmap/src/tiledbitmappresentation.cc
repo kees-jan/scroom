@@ -13,11 +13,11 @@
 #include <scroom/cairo-helpers.hh>
 #include <scroom/opentiledbitmapinterface.hh>
 #include <scroom/pipetteviewinterface.hh>
+#include <scroom/showmetadata.hh>
 #include <scroom/showmetadatainterface.hh>
 #include <scroom/transformpresentation.hh>
 
 #include "tiled-bitmap.hh"
-
 
 namespace
 {
@@ -65,26 +65,25 @@ namespace
   private:
     using Views = std::set<ViewInterface::WeakPtr>;
 
-    std::string                                                name;
-    Scroom::Utils::Rectangle<int>                              rect;
-    TiledBitmapInterface::Ptr                                  tbi;
-    std::map<std::string, std::string>                         properties;
-    Views                                                      views;
-    ColormapHelperBase::Ptr                                    colormapHelper;
-    PipetteLayerOperations::Ptr                                pipetteLayerOperation;
-    Scroom::Utils::StuffList                                   stuff;
-    std::map<std::string, Scroom::TiledBitmap::BitmapMetaData> bmd;
+    std::string                         name;
+    Scroom::TiledBitmap::BitmapMetaData bmd;
+    TiledBitmapInterface::Ptr           tbi;
+    std::map<std::string, std::string>  properties;
+    Views                               views;
+    ColormapHelperBase::Ptr             colormapHelper;
+    PipetteLayerOperations::Ptr         pipetteLayerOperation;
+    Scroom::Utils::StuffList            stuff;
 
   public:
     static TiledBitmapPresentation::Ptr create(std::string                        name_,
-                                               Scroom::Utils::Rectangle<int>      rect_,
+                                               BitmapMetaData                     bmd_,
                                                TiledBitmapInterface::Ptr          tbi_,
                                                std::map<std::string, std::string> properties_,
                                                ColormapHelperBase::Ptr            colormapHelper_,
                                                PipetteLayerOperations::Ptr        pipetteLayerOperation_)
     {
       return Ptr(new TiledBitmapPresentation(std::move(name_),
-                                             std::move(rect_),
+                                             std::move(bmd_),
                                              std::move(tbi_),
                                              std::move(properties_),
                                              std::move(colormapHelper_),
@@ -108,11 +107,10 @@ namespace
     PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<int> area) override;
 
     ////////////////////////////////////////////////////////////////////////
-    // imageMdInterface
+    // ShowMetaDataInterface
     ////////////////////////////////////////////////////////////////////////
 
     void showMetadata() override;
-    void getMap(std::map<std::string, Scroom::TiledBitmap::BitmapMetaData> bm) { bmd = bm; }
 
     ////////////////////////////////////////////////////////////////////////
     // Colormappable
@@ -144,13 +142,13 @@ namespace
   private:
     void clearCaches();
     TiledBitmapPresentation(std::string&&                        name_,
-                            Scroom::Utils::Rectangle<int>&&      rect_,
+                            BitmapMetaData&&                     bmd_,
                             TiledBitmapInterface::Ptr&&          tbi_,
                             std::map<std::string, std::string>&& properties_,
                             ColormapHelperBase::Ptr&&            colormapHelper_,
                             PipetteLayerOperations::Ptr&&        pipetteLayerOperation_)
       : name(name_)
-      , rect(rect_)
+      , bmd(bmd_)
       , tbi(tbi_)
       , properties(properties_)
       , colormapHelper(colormapHelper_)
@@ -178,7 +176,7 @@ namespace
   // PresentationInterface
   ////////////////////////////////////////////////////////////////////////
 
-  Scroom::Utils::Rectangle<double> TiledBitmapPresentation::getRect() { return rect; }
+  Scroom::Utils::Rectangle<double> TiledBitmapPresentation::getRect() { return bmd.rect; }
 
   void TiledBitmapPresentation::redraw(const ViewInterface::Ptr&        vi,
                                        cairo_t*                         cr,
@@ -266,7 +264,7 @@ namespace
   }
 
   ////////////////////////////////////////////////////////////////////////
-  // imageMdInterface
+  // ShowMetaDataInterface
   ////////////////////////////////////////////////////////////////////////
 
   /**
@@ -275,110 +273,11 @@ namespace
    */
   void TiledBitmapPresentation::showMetadata()
   {
+    std::string filepath = getTitle();
+    std::string title    = "Properties: " + filepath.substr(filepath.find_last_of("/\\") + 1);
 
-    GtkSizeGroup *group, *group2, *group3, *group4, *group5, *group6;
-    GtkWidget *window, *grid, *label, *label2, *label3, *label4, *label5, *label6, *label7, *label8, *label9, *label10, *label11,
-      *label12;
-
-    // Check for which file is the metadata requested
-    auto        it       = bmd.find(getTitle());
-    std::string fileName = "Properties: " + getTitle().substr(getTitle().find_last_of("/\\") + 1);
-
-    // Store values for properties in the correct type for the gtk label
-    std::string aspect_ratio = "1.00 : 1.00";
-    if(it->second.aspectRatio)
-    {
-      float             aspect_x = static_cast<float>(it->second.aspectRatio->x);
-      float             aspect_y = static_cast<float>(it->second.aspectRatio->y);
-      std::string       sign     = ":";
-      std::stringstream stream;
-      std::stringstream stream2;
-      stream << std::fixed << std::setprecision(2) << aspect_x;
-      stream2 << std::fixed << std::setprecision(2) << aspect_y;
-      std::string str_aspect_x = stream.str();
-      std::string str_aspect_y = stream2.str();
-      aspect_ratio             = str_aspect_x + " " + sign + " " + str_aspect_y;
-    }
-
-    // Create properties window
-    window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    gtk_window_set_title(GTK_WINDOW(window), fileName.c_str());
-    grid = gtk_grid_new();
-    gtk_container_add(GTK_CONTAINER(window), grid);
-
-    auto gtk_label_with_markup = [](auto text) {
-      GtkWidget* new_label = gtk_label_new(text);
-      gtk_label_set_use_markup(GTK_LABEL(new_label), true);
-      return new_label;
-    };
-
-    // Add properties value to the labels
-    label = gtk_label_with_markup("<b>Color representation:</b>");
-    gtk_grid_attach(GTK_GRID(grid), label, 0, GTK_POS_RIGHT, 3, 3);
-
-    label2 = gtk_label_new(it->second.type.c_str());
-    gtk_grid_attach_next_to(GTK_GRID(grid), label2, label, GTK_POS_RIGHT, 3, 3);
-
-    label3 = gtk_label_with_markup("<b>Sample per pixels:</b>");
-    gtk_grid_attach_next_to(GTK_GRID(grid), label3, label, GTK_POS_BOTTOM, 3, 3);
-
-    label4 = gtk_label_new(std::to_string(it->second.samplesPerPixel).c_str());
-    gtk_grid_attach_next_to(GTK_GRID(grid), label4, label3, GTK_POS_RIGHT, 3, 3);
-
-    label5 = gtk_label_with_markup("<b>Bits per sample:</b>");
-    gtk_grid_attach_next_to(GTK_GRID(grid), label5, label3, GTK_POS_BOTTOM, 3, 3);
-
-    label6 = gtk_label_new(std::to_string(it->second.bitsPerSample).c_str());
-    gtk_grid_attach_next_to(GTK_GRID(grid), label6, label5, GTK_POS_RIGHT, 3, 3);
-
-    label7 = gtk_label_with_markup("<b>Aspect ratio:</b>");
-    gtk_grid_attach_next_to(GTK_GRID(grid), label7, label5, GTK_POS_BOTTOM, 3, 3);
-
-    label8 = gtk_label_new(aspect_ratio.c_str());
-    gtk_grid_attach_next_to(GTK_GRID(grid), label8, label7, GTK_POS_RIGHT, 3, 3);
-
-    label9 = gtk_label_with_markup("<b>Width:</b>");
-    gtk_grid_attach_next_to(GTK_GRID(grid), label9, label7, GTK_POS_BOTTOM, 3, 3);
-
-    label10 = gtk_label_new(std::to_string(it->second.rect.getWidth()).c_str());
-    gtk_grid_attach_next_to(GTK_GRID(grid), label10, label9, GTK_POS_RIGHT, 3, 3);
-
-    label11 = gtk_label_with_markup("<b>Height:</b>");
-    gtk_grid_attach_next_to(GTK_GRID(grid), label11, label9, GTK_POS_BOTTOM, 3, 3);
-
-    label12 = gtk_label_new(std::to_string(it->second.rect.getHeight()).c_str());
-    gtk_grid_attach_next_to(GTK_GRID(grid), label12, label11, GTK_POS_RIGHT, 3, 3);
-
-    // Create separate groups for the view
-    group = gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
-    gtk_size_group_add_widget(group, label);
-    gtk_size_group_add_widget(group, label2);
-
-    group2 = gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
-    gtk_size_group_add_widget(group2, label3);
-    gtk_size_group_add_widget(group2, label4);
-
-    group3 = gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
-    gtk_size_group_add_widget(group3, label5);
-    gtk_size_group_add_widget(group3, label6);
-
-    group4 = gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
-    gtk_size_group_add_widget(group4, label7);
-    gtk_size_group_add_widget(group4, label8);
-
-    group5 = gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
-    gtk_size_group_add_widget(group5, label9);
-    gtk_size_group_add_widget(group5, label10);
-
-    group6 = gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
-    gtk_size_group_add_widget(group6, label11);
-    gtk_size_group_add_widget(group6, label12);
-
-    // Display the widgets
-    gtk_widget_show_all(window);
-    gtk_widget_grab_focus(window);
+    Scroom::Metadata::showMetaData(title, to_metadata(bmd));
   }
-
 
   ////////////////////////////////////////////////////////////////////////
   // PresentationBase
@@ -448,7 +347,6 @@ namespace
 
   bool TiledBitmapPresentation::getTransparentBackground() { return colormapHelper->getTransparentBackground(); }
 
-
   // OpenTiledBitmapAsPresentation ////////////////////////////////////
   class OpenTiledBitmapAsPresentation : public OpenPresentationInterface
   {
@@ -477,16 +375,12 @@ namespace
 
   PresentationInterface::Ptr OpenTiledBitmapAsPresentation::open(const std::string& fileName)
   {
-    auto t = openTiledBitmapInterface->open(fileName);
-
-    // Map to hold the bitmap medata values for a specific file
-    std::map<std::string, Scroom::TiledBitmap::BitmapMetaData> bm;
-    bm.insert({fileName, std::move(std::get<0>(t))});
-    auto           it          = bm.find(fileName);
+    auto           t           = openTiledBitmapInterface->open(fileName);
+    BitmapMetaData bmd         = std::move(std::get<0>(t));
     Layer::Ptr     bottomLayer = std::move(std::get<1>(t));
     ReloadFunction load        = std::move(std::get<2>(t));
 
-    auto                    lsr            = LayerSpecForBitmap(it->second);
+    auto                    lsr            = LayerSpecForBitmap(bmd);
     LayerSpec               layerSpec      = std::move(std::get<0>(lsr));
     ColormapHelperBase::Ptr colormapHelper = std::move(std::get<1>(lsr));
 
@@ -497,9 +391,9 @@ namespace
       PipetteLayerOperations::Ptr pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(layerSpec[0]);
 
       std::map<std::string, std::string> properties;
-      if(it->second.colormapHelper)
+      if(bmd.colormapHelper)
       {
-        properties = it->second.colormapHelper->getProperties();
+        properties = bmd.colormapHelper->getProperties();
       }
       if(pipetteLayerOperation)
       {
@@ -507,14 +401,13 @@ namespace
       }
       properties[METADATA_PROPERTY_NAME] = "";
 
-      auto tiledBitmapPresentation = TiledBitmapPresentation::create(
-        fileName, it->second.rect, tiledBitmap, properties, colormapHelper, pipetteLayerOperation);
-      tiledBitmapPresentation->getMap(bm);
+      auto tiledBitmapPresentation =
+        TiledBitmapPresentation::create(fileName, bmd, tiledBitmap, properties, colormapHelper, pipetteLayerOperation);
       tiledBitmapPresentation->add(load(tiledBitmap->progressInterface()));
 
-      if(it->second.aspectRatio)
+      if(bmd.aspectRatio)
       {
-        result = TransformPresentation::create(tiledBitmapPresentation, TransformationData::create(*it->second.aspectRatio));
+        result = TransformPresentation::create(tiledBitmapPresentation, TransformationData::create(*bmd.aspectRatio));
       }
       else
       {

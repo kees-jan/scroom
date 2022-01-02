@@ -36,6 +36,21 @@ namespace Scroom
       return ss.str();
     }
 
+    Metadata::Metadata to_metadata(const BitmapMetaData& bmd)
+    {
+      Scroom::Utils::Point<double> aspectRatio       = bmd.aspectRatio ? *bmd.aspectRatio : Scroom::Utils::Point<double>{1, 1};
+      std::string                  aspect_ratio_text = fmt::format("{:.2f} : {:.2f}", aspectRatio.x, aspectRatio.y);
+
+      return {
+        {"Color representation", bmd.type},
+        {"Samples per pixel", std::to_string(bmd.samplesPerPixel)},
+        {"Bits per sample", std::to_string(bmd.bitsPerSample)},
+        {"Aspect ratio", aspect_ratio_text},
+        {"Width", std::to_string(bmd.rect.getWidth())},
+        {"Height", std::to_string(bmd.rect.getHeight())},
+      };
+    }
+
 
     const std::string RGB         = "RGB";
     const std::string CMYK        = "CMYK";

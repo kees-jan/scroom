@@ -30,6 +30,7 @@ install(
         scroom/scroominterface.hh
         scroom/scroomplugin.hh
         scroom/semaphore.hh
+        scroom/showmetadata.hh
         scroom/stuff.hh
         scroom/threadpool.hh
         scroom/tile.hh

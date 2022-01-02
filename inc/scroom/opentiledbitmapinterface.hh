@@ -15,6 +15,7 @@
 #include <scroom/interface.hh>
 #include <scroom/point.hh>
 #include <scroom/rectangle.hh>
+#include <scroom/showmetadata.hh>
 #include <scroom/tiledbitmaplayer.hh>
 
 namespace Scroom
@@ -49,8 +50,9 @@ namespace Scroom
       ColormapHelperBase::Ptr                       colormapHelper;
     };
 
-    std::ostream& to_stream(std::ostream& os, const BitmapMetaData& bmd);
-    std::string   to_string(const BitmapMetaData& bmd);
+    std::ostream&      to_stream(std::ostream& os, const BitmapMetaData& bmd);
+    std::string        to_string(const BitmapMetaData& bmd);
+    Metadata::Metadata to_metadata(const BitmapMetaData& bmd);
 
     class OpenTiledBitmapInterface : private Interface
     {

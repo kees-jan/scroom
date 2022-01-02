@@ -212,7 +212,6 @@ void on_paste_activate(GtkMenuItem*, gpointer) {}
 
 void on_delete_activate(GtkMenuItem*, gpointer) {}
 
-
 void on_fullscreen_activate(GtkMenuItem* item, gpointer user_data)
 {
   View*             view   = static_cast<View*>(user_data);
@@ -452,7 +451,6 @@ void on_scroom_bootstrap(const FileNameMap& newFilenames)
 #endif
   }
 
-  // create a gtk builder and add the widgets from the glade file
   aboutDialogXml = gtk_builder_new();
   boost::scoped_array<gchar*> obj{new gchar*[2]};
   std::string                 str = "aboutDialog";
@@ -460,7 +458,6 @@ void on_scroom_bootstrap(const FileNameMap& newFilenames)
   obj[1]                          = nullptr;
   gtk_builder_add_objects_from_file(aboutDialogXml, xmlFileName.c_str(), obj.get(), NULL);
 
-  // make sure the gtk builder is not null
   if(aboutDialogXml != nullptr)
   {
     aboutDialog = GTK_WIDGET(gtk_builder_get_object(aboutDialogXml, "aboutDialog"));

@@ -38,7 +38,7 @@ namespace Scroom
         {
           double elapsed = (t2.tv_nsec - t.tv_nsec) * 1e-9;
           elapsed += t2.tv_sec - t.tv_sec;
-          spdlog::trace("{}: {.9f}", label, elapsed);
+          spdlog::trace("{}: {:.9f}", label, elapsed);
         }
         else
         {

@@ -4,6 +4,7 @@
   <component name="CidrRootsConfiguration">
     <excludeRoots>
       <file path="$PROJECT_DIR$/doc/_build" />
+      <file path="$PROJECT_DIR$/doc/_static/doxygen" />
     </excludeRoots>
   </component>
   <component name="JavaScriptSettings">

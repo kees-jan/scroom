@@ -4,11 +4,15 @@ target_sources(
   PRIVATE src/bitmap-helpers.cc
           src/cairo-helpers.cc
           src/colormap-helpers.cc
+          src/showmetadata.cc
           src/presentationinterface.cc
           src/transformpresentation.cc)
 target_link_libraries(
   scroom_lib
-  PRIVATE project_options project_warnings util
+  PRIVATE project_options
+          project_warnings
+          util
+          CONAN_PKG::fmt
   PUBLIC PkgConfig::gtk PkgConfig::cairo)
 
 install(
