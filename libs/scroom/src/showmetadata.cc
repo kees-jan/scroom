@@ -64,7 +64,7 @@ namespace Scroom::Metadata
     }
   } // namespace
 
-  void showMetaData(std::string title, Metadata data)
+  void showMetaData(GtkWindow* parent, std::string title, Metadata data)
   {
     for(auto& [key, _]: data)
     {
@@ -93,6 +93,8 @@ namespace Scroom::Metadata
       previousKey = key;
     }
 
+    gtk_window_set_transient_for(GTK_WINDOW(window), parent);
+    gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER_ON_PARENT);
     gtk_widget_show_all(window);
     gtk_widget_grab_focus(window);
   }

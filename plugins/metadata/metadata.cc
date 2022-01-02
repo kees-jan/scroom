@@ -18,13 +18,13 @@
  *  @param user_data gpointer to the view passed on clicking metadata button
  *  @post metadata of image is shown in window if presentation != null
  */
-void on_image_properties_activate(GtkMenuItem*, gpointer user_data)
+void on_image_properties_activate(GtkButton* self, gpointer user_data)
 {
   auto* view                  = static_cast<ViewInterface*>(user_data);
   auto  showMetaDataInterface = boost::dynamic_pointer_cast<ShowMetadataInterface>(view->getCurrentPresentation());
   require(showMetaDataInterface);
 
-  showMetaDataInterface->showMetadata();
+  showMetaDataInterface->showMetadata(Scroom::GtkHelpers::get_parent_window(GTK_WIDGET(self)));
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -92,7 +92,7 @@ Scroom::Bookkeeping::Token Metadata::viewAdded(ViewInterface::Ptr view)
     gtk_widget_set_visible(buttonMetadata, true);
     gtk_container_add(GTK_CONTAINER(button), buttonMetadata);
     // connect signal to the button for when it is being pressed
-    g_signal_connect(static_cast<gpointer>(buttonMetadata), "pressed", G_CALLBACK(on_image_properties_activate), view.get());
+    g_signal_connect(static_cast<gpointer>(buttonMetadata), "clicked", G_CALLBACK(on_image_properties_activate), view.get());
 
     Scroom::GtkHelpers::sync_on_ui_thread([&] {
       view->addToToolbar(button); // adds metadata button next to other tools in toolbar

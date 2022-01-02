@@ -110,7 +110,7 @@ namespace
     // ShowMetaDataInterface
     ////////////////////////////////////////////////////////////////////////
 
-    void showMetadata() override;
+    void showMetadata(GtkWindow* parent) override;
 
     ////////////////////////////////////////////////////////////////////////
     // Colormappable
@@ -271,12 +271,12 @@ namespace
    * Show all metadata in the image properties window for a tiledbitmappresentation
    * @override the base showMetadata() function in PresentationBase
    */
-  void TiledBitmapPresentation::showMetadata()
+  void TiledBitmapPresentation::showMetadata(GtkWindow* parent)
   {
     std::string filepath = getTitle();
     std::string title    = "Properties: " + filepath.substr(filepath.find_last_of("/\\") + 1);
 
-    Scroom::Metadata::showMetaData(title, to_metadata(bmd));
+    Scroom::Metadata::showMetaData(parent, title, to_metadata(bmd));
   }
 
   ////////////////////////////////////////////////////////////////////////

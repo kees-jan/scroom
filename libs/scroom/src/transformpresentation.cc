@@ -103,7 +103,7 @@ void TransformPresentation::disableTransparentBackground() { colormappable->disa
 
 bool TransformPresentation::getTransparentBackground() { return colormappable->getTransparentBackground(); }
 
-void TransformPresentation::showMetadata() { showMetaDataInterface->showMetadata(); }
+void TransformPresentation::showMetadata(GtkWindow* parent) { showMetaDataInterface->showMetadata(parent); }
 
 PipetteLayerOperations::PipetteColor TransformPresentation::getPixelAverages(Scroom::Utils::Rectangle<int> area)
 {

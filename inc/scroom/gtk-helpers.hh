@@ -78,6 +78,8 @@ namespace Scroom::GtkHelpers
     return rect;
   }
 
+  GtkWindow* get_parent_window(GtkWidget* widget);
+
 } // namespace Scroom::GtkHelpers
 
 inline bool operator==(cairo_rectangle_int_t const& left, cairo_rectangle_int_t const& right)

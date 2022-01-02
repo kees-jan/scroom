@@ -20,5 +20,10 @@ class ShowMetadataInterface : private Interface
 public:
   using Ptr = boost::shared_ptr<ShowMetadataInterface>;
 
-  virtual void showMetadata() = 0;
+  /**
+   * Request to show a window containing the presentation metadata
+   *
+   * @param parent the parent window, if found. Nullptr otherwise
+   */
+  virtual void showMetadata(GtkWindow* parent) = 0;
 };

@@ -81,5 +81,5 @@ public:
   void          setTransparentBackground() override;
   void          disableTransparentBackground() override;
   bool          getTransparentBackground() override;
-  void          showMetadata() override;
+  void          showMetadata(GtkWindow* parent) override;
 };

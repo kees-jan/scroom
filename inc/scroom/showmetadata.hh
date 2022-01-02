@@ -14,5 +14,5 @@ namespace Scroom::Metadata
 {
   using Metadata = std::vector<std::pair<std::string, std::string>>;
 
-  void showMetaData(std::string title, Metadata data);
+  void showMetaData(GtkWindow* parent, std::string title, Metadata data);
 } // namespace Scroom::Metadata
