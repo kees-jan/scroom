@@ -154,7 +154,7 @@ void ProgressBarManager::setWorking(double progress)
 {
   stopWaiting();
 
-  Scroom::GtkHelpers::sync_on_ui_thread([=, this] { gtk_progress_bar_set_fraction(progressBar, progress); });
+  Scroom::GtkHelpers::sync_on_ui_thread([=] { gtk_progress_bar_set_fraction(progressBar, progress); });
 }
 
 void ProgressBarManager::setFinished() { setIdle(); }

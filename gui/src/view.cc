@@ -772,7 +772,7 @@ static void tool_button_toggled(GtkToggleButton* button, gpointer data) { static
 
 void View::addToolButton(GtkToggleButton* button, ToolStateListener::Ptr callback)
 {
-  Scroom::GtkHelpers::sync_on_ui_thread([=, this] {
+  Scroom::GtkHelpers::sync_on_ui_thread([=] {
     GtkToolItem* toolItem = gtk_tool_item_new();
     gtk_container_add(GTK_CONTAINER(toolItem), GTK_WIDGET(button));
     gtk_widget_set_visible(GTK_WIDGET(button), true);

@@ -11,6 +11,7 @@
 #include <gtk/gtk.h>
 
 #include <scroom/showmetadata.hh>
+#include <scroom/unused.hh>
 
 namespace Scroom::Metadata
 {
@@ -68,6 +69,7 @@ namespace Scroom::Metadata
   {
     for(auto& [key, _]: data)
     {
+      UNUSED(_);
       key = fmt::format("<b>{}:</b>", key);
     }
     const auto* windowData = new MetaDataWindowData{std::move(title), std::move(data)}; // NOLINT(cppcoreguidelines-owning-memory)
