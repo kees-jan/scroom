@@ -483,12 +483,15 @@ void on_scroom_terminating() { ensure(views.empty()); }
 
 void find_or_create_scroom(PresentationInterface::Ptr presentation)
 {
+  require(presentation);
+
   for(const Views::value_type& p: views)
   {
     View::Ptr view = p.first;
     if(!view->hasPresentation())
     {
       view->setPresentation(presentation);
+      on_presentation_added_to_view(view);
       return;
     }
   }
@@ -544,6 +547,10 @@ void create_scroom(PresentationInterface::Ptr presentation)
 
   View::Ptr view = View::create(xml, presentation);
   on_view_created(view);
+  if(presentation)
+  {
+    on_presentation_added_to_view(view);
+  }
 
   GtkWidget*     scroom               = GTK_WIDGET(gtk_builder_get_object(xml, "scroom"));
   GtkWidget*     openMenuItem         = GTK_WIDGET(gtk_builder_get_object(xml, "open"));
@@ -629,7 +636,7 @@ void on_presentation_created(PresentationInterface::Ptr presentation)
   }
 }
 
-void on_view_created(View::Ptr v)
+void on_view_created(const View::Ptr& v)
 {
   Scroom::Bookkeeping::Token t;
   views[v] = t;
@@ -642,14 +649,17 @@ void on_view_created(View::Ptr v)
       v->on_presentation_created(p);
     }
   }
+}
 
+void on_presentation_added_to_view(const View::Ptr& v)
+{
   const std::map<ViewObserver::Ptr, std::string>& viewObservers = PluginManager::getInstance()->getViewObservers();
 
   auto cur = viewObservers.begin();
   auto end = viewObservers.end();
   for(; cur != end; cur++)
   {
-    t.add(cur->first->viewAdded(v));
+    views[v].add(cur->first->viewAdded(v));
   }
 }
 
@@ -709,10 +719,13 @@ void on_new_presentationobserver(PresentationObserver::Ptr po)
   }
 }
 
-void on_new_viewobserver(ViewObserver::Ptr v)
+void on_new_viewobserver(ViewObserver::Ptr viewObserver)
 {
-  for(Views::value_type& p: views)
+  for(auto& [view, token]: views)
   {
-    p.second.add(v->viewAdded(p.first));
+    if(view->hasPresentation())
+    {
+      token.add(viewObserver->viewAdded(view));
+    }
   }
 }

@@ -73,13 +73,15 @@ void on_newPresentationInterfaces_update(const std::map<NewPresentationInterface
 
 void on_presentation_created(PresentationInterface::Ptr p);
 
-void on_view_created(View::Ptr v);
+void on_view_created(const View::Ptr& v);
+
+void on_presentation_added_to_view(const View::Ptr& v);
 
 void on_view_destroyed(View* v);
 
 void on_new_presentationobserver(PresentationObserver::Ptr po);
 
-void on_new_viewobserver(ViewObserver::Ptr v);
+void on_new_viewobserver(ViewObserver::Ptr viewObserver);
 
 void on_presentation_possibly_destroyed();
 
