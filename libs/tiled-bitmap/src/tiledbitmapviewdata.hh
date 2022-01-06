@@ -1,6 +1,6 @@
 /*
  * Scroom - Generic viewer for 2D data
- * Copyright (C) 2009-2021 Kees-Jan Dijkzeul
+ * Copyright (C) 2009-2022 Kees-Jan Dijkzeul
  *
  * SPDX-License-Identifier: LGPL-2.1
  */
@@ -67,7 +67,7 @@ public:
   static Ptr create(ViewInterface::WeakPtr viewInterface);
 
   void
-       setNeededTiles(Layer::Ptr const& l, int imin, int imax, int jmin, int jmax, int zoom, LayerOperations::Ptr layerOperations);
+    setNeededTiles(Layer::Ptr const& l, int imin, int imax, int jmin, int jmax, int zoom, LayerOperations::Ptr layerOperations);
   void resetNeededTiles();
   void storeVolatileStuff(Scroom::Utils::Stuff stuff);
   void clearVolatileStuff();
