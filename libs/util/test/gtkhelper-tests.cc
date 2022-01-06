@@ -13,6 +13,7 @@
 #include <gtk/gtk.h>
 
 #include <scroom/gtk-helpers.hh>
+#include <scroom/gtk-test-helpers.hh>
 
 using namespace Scroom::GtkHelpers;
 
@@ -50,6 +51,14 @@ BOOST_AUTO_TEST_CASE(function_returning_bool)
   bool result = (*f)(data);
   BOOST_CHECK_EQUAL(false, result);
   BOOST_CHECK(!wb.lock());
+}
+
+BOOST_AUTO_TEST_CASE(on_ui_thread_test)
+{
+  Scroom::GtkTestHelpers::GtkMainLoop mainLoop;
+
+  BOOST_REQUIRE(!on_ui_thread());
+  sync_on_ui_thread([] { BOOST_CHECK(on_ui_thread()); });
 }
 
 BOOST_AUTO_TEST_SUITE_END()
