@@ -462,6 +462,7 @@ Clker-Free-Vector-Images from Pixabay</property>
                       <object class="GtkBox" id="panel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="orientation">vertical</property>
                         <property name="spacing">1</property>
                         <child>
                           <placeholder/>
