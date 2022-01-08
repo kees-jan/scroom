@@ -86,10 +86,21 @@ void Ruler::sizeAllocateCallback(GtkWidget* widget, GdkRectangle* /*allocation*/
 void Ruler::updateMajorTickInterval()
 {
   const double ALLOCATED_SIZE = drawStrategy->getDrawAreaSize();
-  // Calculate the interval between major ruler ticks
-  majorInterval = RulerCalculations::calculateInterval(lowerLimit, upperLimit, ALLOCATED_SIZE);
-  // Calculate the spacing in pixels between major ruler ticks
-  majorTickSpacing = RulerCalculations::intervalPixelSpacing(majorInterval, lowerLimit, upperLimit, ALLOCATED_SIZE);
+
+  // lowerLimit could equal upperLimit, ALLOCATED_SIZE could be 0
+  if(lowerLimit < upperLimit && 0 < ALLOCATED_SIZE)
+  {
+    // Calculate the interval between major ruler ticks
+    majorInterval = RulerCalculations::calculateInterval(lowerLimit, upperLimit, ALLOCATED_SIZE);
+    // Calculate the spacing in pixels between major ruler ticks
+    majorTickSpacing = RulerCalculations::intervalPixelSpacing(majorInterval, lowerLimit, upperLimit, ALLOCATED_SIZE);
+  }
+  else
+  {
+    // Arbitrary numbers
+    majorInterval    = 10;
+    majorTickSpacing = 10;
+  }
 }
 
 gboolean Ruler::drawCallback(GtkWidget* widget, cairo_t* cr, gpointer data)
