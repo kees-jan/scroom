@@ -13,6 +13,8 @@
 
 #include <scroom/showmetadatainterface.hh>
 
+#include "version.h"
+
 /** On Metadata button press, open and populate properties window
  *
  *  @param user_data gpointer to the view passed on clicking metadata button
@@ -54,7 +56,7 @@ std::string Metadata::getPluginName() { return "Metadata"; }
  *
  * @return std::string "0.0"
  */
-std::string Metadata::getPluginVersion() { return "0.0"; }
+std::string Metadata::getPluginVersion() { return PACKAGE_VERSION; }
 
 /**
  * Register plugin to observers

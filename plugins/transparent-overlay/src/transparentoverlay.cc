@@ -10,6 +10,7 @@
 #include <gdk/gdk.h>
 
 #include "transparentoverlaypresentation.hh"
+#include "version.h"
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -17,7 +18,7 @@ TransparentOverlay::Ptr TransparentOverlay::create() { return Ptr(new Transparen
 
 std::string TransparentOverlay::getPluginName() { return "TransparentOverlay"; }
 
-std::string TransparentOverlay::getPluginVersion() { return "0.0"; }
+std::string TransparentOverlay::getPluginVersion() { return PACKAGE_VERSION; }
 
 void TransparentOverlay::registerCapabilities(ScroomPluginInterface::Ptr host)
 {

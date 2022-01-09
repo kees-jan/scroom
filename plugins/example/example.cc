@@ -10,6 +10,7 @@
 #include <gdk/gdk.h>
 
 #include "examplepresentation.hh"
+#include "version.h"
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -17,7 +18,7 @@ Example::Ptr Example::create() { return Ptr(new Example()); }
 
 std::string Example::getPluginName() { return "Example"; }
 
-std::string Example::getPluginVersion() { return "0.0"; }
+std::string Example::getPluginVersion() { return PACKAGE_VERSION; }
 
 void Example::registerCapabilities(ScroomPluginInterface::Ptr host)
 {

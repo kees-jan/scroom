@@ -213,6 +213,22 @@ bool PluginManager::doWork()
   case DONE:
   {
     setStatusBarMessage("Done loading plugins");
+
+    std::vector<std::pair<std::string, std::string>> pluginInfo;
+    pluginInfo.reserve(pluginInformationList.size());
+    size_t maxPluginNameLength = 0;
+    for(const auto& plugin: pluginInformationList)
+    {
+      pluginInfo.emplace_back(plugin.pluginInformation->getPluginName(), plugin.pluginInformation->getPluginVersion());
+      maxPluginNameLength = std::max(maxPluginNameLength, plugin.pluginInformation->getPluginName().size());
+    }
+    std::sort(pluginInfo.begin(), pluginInfo.end());
+    spdlog::info("Loaded plugins:");
+    for(const auto& [name, version]: pluginInfo)
+    {
+      spdlog::info("  {:{}} : {}", name, maxPluginNameLength, version);
+    }
+
     on_done_loading_plugins();
     retval = false;
     break;
@@ -241,7 +257,6 @@ void PluginManager::addHook(bool devMode_)
 void PluginManager::registerNewPresentationInterface(const std::string&            identifier,
                                                      NewPresentationInterface::Ptr newPresentationInterface)
 {
-  spdlog::debug("I learned how to create a new {}!", identifier);
   newPresentationInterfaces[newPresentationInterface] = identifier;
 
   on_newPresentationInterfaces_update(newPresentationInterfaces);
@@ -249,15 +264,12 @@ void PluginManager::registerNewPresentationInterface(const std::string&         
 
 void PluginManager::registerNewAggregateInterface(const std::string& identifier, NewAggregateInterface::Ptr newAggregateInterface)
 {
-  spdlog::debug("I learned how to create a new {} aggregate!", identifier);
   newAggregateInterfaces[identifier] = newAggregateInterface;
 }
 
 void PluginManager::registerOpenPresentationInterface(const std::string&             extension,
                                                       OpenPresentationInterface::Ptr openPresentationInterface)
 {
-  spdlog::debug("I learned how to open a {} file!", extension);
-
   openPresentationInterfaces[openPresentationInterface] = extension;
 }
 
@@ -265,22 +277,17 @@ void PluginManager::registerOpenTiledBitmapInterface(
   const std::string&                                               extension,
   boost::shared_ptr<Scroom::TiledBitmap::OpenTiledBitmapInterface> openTiledBitmapInterface)
 {
-  spdlog::debug("I learned how to open a {} file!", extension);
-
   openTiledBitmapInterfaces[openTiledBitmapInterface]                               = extension;
   openPresentationInterfaces[ToOpenPresentationInterface(openTiledBitmapInterface)] = extension;
 }
 
 void PluginManager::registerOpenInterface(const std::string& extension, OpenInterface::Ptr openInterface)
 {
-  spdlog::debug("I learned how to open a {} file!", extension);
-
   openInterfaces[openInterface] = extension;
 }
 
 void PluginManager::registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer)
 {
-  spdlog::debug("Observing Views for {}!", identifier);
   viewObservers[observer] = identifier;
 
   on_new_viewobserver(observer);
@@ -288,7 +295,6 @@ void PluginManager::registerViewObserver(const std::string& identifier, ViewObse
 
 void PluginManager::registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer)
 {
-  spdlog::debug("Observing Presentations for {}!", identifier);
   presentationObservers[observer] = identifier;
 }
 

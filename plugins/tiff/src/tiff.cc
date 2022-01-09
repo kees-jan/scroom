@@ -17,6 +17,7 @@
 #include <scroom/transformpresentation.hh>
 
 #include "tiffsource.hh"
+#include "version.h"
 
 using namespace Scroom::TiledBitmap;
 using namespace Scroom::Utils;
@@ -29,7 +30,7 @@ Tiff::Ptr Tiff::create() { return Ptr(new Tiff()); }
 
 std::string Tiff::getPluginName() { return "Tiff"; }
 
-std::string Tiff::getPluginVersion() { return "0.0"; }
+std::string Tiff::getPluginVersion() { return PACKAGE_VERSION; }
 
 void Tiff::registerCapabilities(ScroomPluginInterface::Ptr host)
 {

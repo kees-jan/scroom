@@ -14,6 +14,7 @@
 #include <scroom/colormappable.hh>
 
 #include "colormapprovider.hh"
+#include "version.h"
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -23,7 +24,7 @@ namespace Scroom::ColormapImpl
 
   std::string ColormapPlugin::getPluginName() { return "Colormap"; }
 
-  std::string ColormapPlugin::getPluginVersion() { return "0.0"; }
+  std::string ColormapPlugin::getPluginVersion() { return PACKAGE_VERSION; }
 
   void ColormapPlugin::registerCapabilities(ScroomPluginInterface::Ptr host)
   {

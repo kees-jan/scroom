@@ -17,6 +17,8 @@
 #include <scroom/unused.hh>
 #include <scroom/viewinterface.hh>
 
+#include "version.h"
+
 ////////////////////////////////////////////////////////////////////////
 // Measure
 ////////////////////////////////////////////////////////////////////////
@@ -29,7 +31,7 @@ Measure::Ptr Measure::create() { return Ptr(new Measure()); }
 
 std::string Measure::getPluginName() { return "Measure"; }
 
-std::string Measure::getPluginVersion() { return "0.0"; }
+std::string Measure::getPluginVersion() { return PACKAGE_VERSION; }
 
 void Measure::registerCapabilities(ScroomPluginInterface::Ptr host)
 {

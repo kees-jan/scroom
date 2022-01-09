@@ -1,3 +1,10 @@
+/*
+ * Scroom - Generic viewer for 2D data
+ * Copyright (C) 2009-2022 Kees-Jan Dijkzeul
+ *
+ * SPDX-License-Identifier: LGPL-2.1
+ */
+
 #include "pipette.hh"
 
 #include <cmath>
@@ -7,6 +14,8 @@
 #include <gdk/gdk.h>
 
 #include <scroom/unused.hh>
+
+#include "version.h"
 
 ////////////////////////////////////////////////////////////////////////
 // Pipette
@@ -20,7 +29,7 @@ Pipette::Ptr Pipette::create() { return Ptr(new Pipette()); }
 
 std::string Pipette::getPluginName() { return "Pipette"; }
 
-std::string Pipette::getPluginVersion() { return "0.0"; }
+std::string Pipette::getPluginVersion() { return PACKAGE_VERSION; }
 
 void Pipette::registerCapabilities(ScroomPluginInterface::Ptr host)
 {
