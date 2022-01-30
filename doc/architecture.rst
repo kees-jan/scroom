@@ -49,6 +49,3 @@ Overview
    gui --> includes
 
 
-
-Solid principles
-----------------
