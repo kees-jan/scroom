@@ -232,7 +232,7 @@ void TransparentOverlayViewInfo::redraw(cairo_t* cr, Scroom::Utils::Rectangle<do
       cairo_restore(cr_sub);
 
       cairo_save(cr_sub);
-      p->redraw(childViews[p], cr_sub, presentationArea, zoom);
+      p->redraw(childViews[p], cr_sub, pa, zoom);
       cairo_restore(cr_sub);
 
       cairo_set_source_surface(cr, surface, 0, 0);

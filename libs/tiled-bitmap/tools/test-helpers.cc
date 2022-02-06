@@ -13,6 +13,8 @@
 #include <scroom/colormappable.hh>
 #include <scroom/layeroperations.hh>
 
+#include "scroom/cairo-helpers.hh"
+
 ////////////////////////////////////////////////////////////////////////
 
 int drawingAreaWidth  = 0;
@@ -77,25 +79,10 @@ void TestData::redraw(cairo_t* cr)
 {
   if(tbi)
   {
-    cairo_rectangle_int_t rect;
-    rect.x = 0;
-    rect.y = 0;
-    if(zoom >= 0)
-    {
-      // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
-      int pixelSize = 1 << zoom;
-      rect.width    = (drawingAreaWidth + pixelSize - 1) / pixelSize;
-      rect.height   = (drawingAreaHeight + pixelSize - 1) / pixelSize;
-    }
-    else
-    {
-      // Zooming out. Smallest step is 1 window-pixel, which is more than one presentation-pixel
-      int pixelSize = 1 << (-zoom);
-      rect.width    = drawingAreaWidth * pixelSize;
-      rect.height   = drawingAreaHeight * pixelSize;
-    }
+    const auto                          pixelSize = pixelSizeFromZoom(zoom);
+    const Scroom::Utils::Rectangle<int> rect{0, 0, drawingAreaWidth, drawingAreaHeight};
 
-    tbi->redraw(vi, cr, rect, zoom);
+    tbi->redraw(vi, cr, rect.to<double>() / pixelSize, zoom);
   }
 }
 

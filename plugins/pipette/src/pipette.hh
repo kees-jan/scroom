@@ -44,7 +44,7 @@ public:
   ////////////////////////////////////////////////////////////////////////
   // SelectionListener
 
-  void onSelectionStart(GdkPoint p, ViewInterface::Ptr view) override;
+  void onSelectionStart(Selection::Ptr p, ViewInterface::Ptr view) override;
   void onSelectionUpdate(Selection::Ptr s, ViewInterface::Ptr view) override;
   void onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view) override;
 

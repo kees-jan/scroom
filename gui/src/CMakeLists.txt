@@ -33,6 +33,7 @@ target_link_libraries(
          Boost::system
          Boost::filesystem
          Boost::program_options
+         scroom_lib
          util
          tiledbitmap
          m

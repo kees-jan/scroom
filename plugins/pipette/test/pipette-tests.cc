@@ -24,7 +24,7 @@ class DummyPresentation
 public:
   static PresentationInterface::Ptr create() { return PresentationInterface::Ptr(new DummyPresentation()); }
 
-  Scroom::Utils::Rectangle<double> getRect() override { return Scroom::Utils::Rectangle<int>(0, 0, 100, 100); }
+  Scroom::Utils::Rectangle<double> getRect() override { return {0, 0, 100, 100}; }
   void                             redraw(ViewInterface::Ptr const& /*vi*/,
                                           cairo_t* /*cr*/,
                                           Scroom::Utils::Rectangle<double> /*presentationArea*/,
@@ -127,7 +127,7 @@ BOOST_AUTO_TEST_CASE(pipette_selection_end)
   handler->onSelectionEnd(sel, DummyView::createWithPresentation());
   auto selection = handler->getSelection();
   BOOST_REQUIRE(selection);
-  GdkPoint expected{10, 11};
+  Scroom::Utils::Point<double> expected{10, 11};
   BOOST_CHECK_EQUAL(selection->start, expected);
 
   handler->onDisable();
@@ -139,10 +139,10 @@ BOOST_AUTO_TEST_CASE(pipette_selection_update)
 {
   PipetteHandler::Ptr handler = PipetteHandler::create();
 
-  // should not do anything but will be called from the view so should not crash
-  handler->onSelectionStart({0, 0}, nullptr);
-
   Selection::Ptr sel = Selection::Ptr(new Selection(10, 11));
+
+  // should not do anything but will be called from the view so should not crash
+  handler->onSelectionStart(sel, nullptr);
 
   handler->onSelectionUpdate(sel, nullptr);
   BOOST_CHECK(!handler->getSelection());
@@ -151,18 +151,18 @@ BOOST_AUTO_TEST_CASE(pipette_selection_update)
   handler->onSelectionUpdate(sel, nullptr);
   auto selection = handler->getSelection();
   BOOST_REQUIRE(selection);
-  GdkPoint expected{10, 11};
+  Scroom::Utils::Point<double> expected{10, 11};
   BOOST_CHECK_EQUAL(selection->start, expected);
 
   ViewInterface::Ptr vi = DummyView::createWithPresentation();
   cairo_t*           cr = cairo_create(cairo_image_surface_create(CAIRO_FORMAT_ARGB32, 1, 1));
-  handler->render(vi, cr, Scroom::Utils::Rectangle<int>(0, 0, 0, 0), 1);
-  handler->render(vi, cr, Scroom::Utils::Rectangle<int>(0, 0, 0, 0), -2);
+  handler->render(vi, cr, {0, 0, 0, 0}, 1);
+  handler->render(vi, cr, {0, 0, 0, 0}, -2);
 
   handler->onDisable();
   handler->onSelectionUpdate(sel, nullptr);
   BOOST_CHECK(!handler->getSelection());
-  handler->render(vi, cr, Scroom::Utils::Rectangle<int>(0, 0, 0, 0), 1);
+  handler->render(vi, cr, {0, 0, 0, 0}, 1);
 }
 
 BOOST_AUTO_TEST_CASE(pipette_enable_disable)

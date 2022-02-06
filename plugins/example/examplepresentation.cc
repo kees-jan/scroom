@@ -46,16 +46,7 @@ void ExamplePresentation::fillPattern()
   cairo_surface_destroy(surface);
 }
 
-Scroom::Utils::Rectangle<double> ExamplePresentation::getRect()
-{
-  cairo_rectangle_int_t rect;
-  rect.x      = -500;
-  rect.y      = -500;
-  rect.width  = 1000;
-  rect.height = 1000;
-
-  return rect;
-}
+Scroom::Utils::Rectangle<double> ExamplePresentation::getRect() { return {-500, -500, 1000, 1000}; }
 
 void ExamplePresentation::open(ViewInterface::WeakPtr viewInterface) { UNUSED(viewInterface); }
 
@@ -69,7 +60,7 @@ void ExamplePresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scro
   double scale = pow(2, -zoom);
 
   Scroom::Utils::Rectangle<double> actualPresentationArea = getRect();
-  drawOutOfBoundsWithBackground(cr, presentationArea, actualPresentationArea, pp);
+  drawOutOfBoundsWithBackground(cr, pa, actualPresentationArea, pp);
 
   int xorig = static_cast<int>(-presentationArea.x * pp);
   int yorig = static_cast<int>(-presentationArea.y * pp);

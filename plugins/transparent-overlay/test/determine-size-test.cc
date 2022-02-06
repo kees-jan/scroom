@@ -159,9 +159,9 @@ BOOST_AUTO_TEST_SUITE(Determine_size_tests)
 
 BOOST_AUTO_TEST_CASE(determine_size_of_one_regular)
 {
-  Scroom::Utils::Rectangle<double> const expected = createCairoIntRectangle(1, 2, 3, 4);
-  PresentationInterfaceStub::Ptr         p        = PresentationInterfaceStub::create(expected);
-  SizeDeterminer::Ptr                    sd       = SizeDeterminer::create();
+  Scroom::Utils::Rectangle<double> const expected(1, 2, 3, 4);
+  PresentationInterfaceStub::Ptr         p  = PresentationInterfaceStub::create(expected);
+  SizeDeterminer::Ptr                    sd = SizeDeterminer::create();
   sd->add(p);
 
   BOOST_CHECK_EQUAL(expected, sd->getRect());
@@ -169,10 +169,10 @@ BOOST_AUTO_TEST_CASE(determine_size_of_one_regular)
 
 BOOST_AUTO_TEST_CASE(determine_size_of_two_regular)
 {
-  Scroom::Utils::Rectangle<double> const expected = createCairoIntRectangle(1, 1, 5, 5);
-  PresentationInterfaceStub::Ptr         p1       = PresentationInterfaceStub::create(createCairoIntRectangle(1, 2, 3, 4));
-  PresentationInterfaceStub::Ptr         p2       = PresentationInterfaceStub::create(createCairoIntRectangle(2, 1, 4, 3));
-  SizeDeterminer::Ptr                    sd       = SizeDeterminer::create();
+  Scroom::Utils::Rectangle<double> const expected(1, 1, 5, 5);
+  PresentationInterfaceStub::Ptr         p1 = PresentationInterfaceStub::create({1, 2, 3, 4});
+  PresentationInterfaceStub::Ptr         p2 = PresentationInterfaceStub::create({2, 1, 4, 3});
+  SizeDeterminer::Ptr                    sd = SizeDeterminer::create();
   sd->add(p1);
   sd->add(p2);
 
@@ -181,9 +181,9 @@ BOOST_AUTO_TEST_CASE(determine_size_of_two_regular)
 
 BOOST_AUTO_TEST_CASE(determine_size_of_one_regular_one_resizable)
 {
-  Scroom::Utils::Rectangle<double> const  expected = createCairoIntRectangle(2, 1, 4, 3);
-  ResizablePresentationInterfaceStub::Ptr p1 = ResizablePresentationInterfaceStub::create(createCairoIntRectangle(1, 2, 3, 4));
-  PresentationInterfaceStub::Ptr          p2 = PresentationInterfaceStub::create(createCairoIntRectangle(2, 1, 4, 3));
+  Scroom::Utils::Rectangle<double> const  expected(2, 1, 4, 3);
+  ResizablePresentationInterfaceStub::Ptr p1 = ResizablePresentationInterfaceStub::create({1, 2, 3, 4});
+  PresentationInterfaceStub::Ptr          p2 = PresentationInterfaceStub::create({2, 1, 4, 3});
   SizeDeterminer::Ptr                     sd = SizeDeterminer::create();
   sd->add(p1);
   sd->add(p2);
@@ -204,9 +204,9 @@ BOOST_AUTO_TEST_CASE(determine_size_of_one_regular_one_resizable)
 
 BOOST_AUTO_TEST_CASE(determine_size_of_two_resizable)
 {
-  Scroom::Utils::Rectangle<double> const  expected = createCairoIntRectangle(1, 1, 5, 5);
-  ResizablePresentationInterfaceStub::Ptr p1 = ResizablePresentationInterfaceStub::create(createCairoIntRectangle(1, 2, 3, 4));
-  ResizablePresentationInterfaceStub::Ptr p2 = ResizablePresentationInterfaceStub::create(createCairoIntRectangle(2, 1, 4, 3));
+  Scroom::Utils::Rectangle<double> const  expected(1, 1, 5, 5);
+  ResizablePresentationInterfaceStub::Ptr p1 = ResizablePresentationInterfaceStub::create({1, 2, 3, 4});
+  ResizablePresentationInterfaceStub::Ptr p2 = ResizablePresentationInterfaceStub::create({2, 1, 4, 3});
   SizeDeterminer::Ptr                     sd = SizeDeterminer::create();
   sd->add(p1);
   sd->add(p2);
@@ -232,7 +232,7 @@ BOOST_AUTO_TEST_CASE(open_a_view_then_add_presentations_one_regular_one_resizabl
 {
   SizeDeterminer::Ptr sd = SizeDeterminer::create();
 
-  Scroom::Utils::Rectangle<double>        r1 = createCairoIntRectangle(1, 2, 3, 4);
+  Scroom::Utils::Rectangle<double>        r1(1, 2, 3, 4);
   ResizablePresentationInterfaceStub::Ptr p1 = ResizablePresentationInterfaceStub::create(r1);
   sd->add(p1);
   ViewInterface::Ptr v1 = ViewInterfaceDummy::create();
@@ -242,7 +242,7 @@ BOOST_AUTO_TEST_CASE(open_a_view_then_add_presentations_one_regular_one_resizabl
   BOOST_CHECK(p1->Contains(v1));
   p1->Clear();
 
-  Scroom::Utils::Rectangle<double> const r2 = createCairoIntRectangle(2, 1, 4, 3);
+  Scroom::Utils::Rectangle<double> const r2(2, 1, 4, 3);
   PresentationInterfaceStub::Ptr         p2 = PresentationInterfaceStub::create(r2);
   sd->add(p2);
   BOOST_CHECK_EQUAL(r2, sd->getRect());
@@ -258,7 +258,7 @@ BOOST_AUTO_TEST_CASE(updates_are_sent_to_multiple_views)
 {
   SizeDeterminer::Ptr sd = SizeDeterminer::create();
 
-  Scroom::Utils::Rectangle<double>        r1 = createCairoIntRectangle(1, 2, 3, 4);
+  Scroom::Utils::Rectangle<double>        r1(1, 2, 3, 4);
   ResizablePresentationInterfaceStub::Ptr p1 = ResizablePresentationInterfaceStub::create(r1);
   sd->add(p1);
   ViewInterface::Ptr vi1 = ViewInterfaceDummy::create();
@@ -276,7 +276,7 @@ BOOST_AUTO_TEST_CASE(updates_are_sent_to_multiple_views)
   p1->Clear();
 
   sd->close(p1, vi3);
-  Scroom::Utils::Rectangle<double> const r2 = createCairoIntRectangle(2, 1, 4, 3);
+  Scroom::Utils::Rectangle<double> const r2(2, 1, 4, 3);
   PresentationInterfaceStub::Ptr         p2 = PresentationInterfaceStub::create(r2);
   sd->add(p2);
   BOOST_CHECK_EQUAL(r2, sd->getRect());

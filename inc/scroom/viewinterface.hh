@@ -35,26 +35,24 @@ public:
   using ConstPtr = boost::shared_ptr<const Selection>;
 
 public:
-  GdkPoint start;
-  GdkPoint end;
+  Scroom::Utils::Point<double> start;
+  Scroom::Utils::Point<double> end;
 
 public:
-  Selection(int x, int y)
+  Selection(double x, double y)
     : start{x, y}
     , end{start}
   {
   }
 
-  explicit Selection(GdkPoint point)
+  explicit Selection(Scroom::Utils::Point<double> point)
     : start(point)
     , end(point)
   {
   }
 
-  [[nodiscard]] bool endsAt(GdkPoint p) const { return end == p; }
-
-  [[nodiscard]] int    width() const { return abs(end.x - start.x); }
-  [[nodiscard]] int    height() const { return abs(end.y - start.y); }
+  [[nodiscard]] double width() const { return abs(end.x - start.x); }
+  [[nodiscard]] double height() const { return abs(end.y - start.y); }
   [[nodiscard]] double length() const { return std::hypot(width(), height()); }
 };
 
@@ -111,7 +109,7 @@ public:
    * The passed point is a point in the presentation
    * coordinate space.
    */
-  virtual void onSelectionStart(GdkPoint start, boost::shared_ptr<ViewInterface> view) = 0;
+  virtual void onSelectionStart(Selection::Ptr selection, boost::shared_ptr<ViewInterface> view) = 0;
 
   /**
    * This function is called whenever the selection

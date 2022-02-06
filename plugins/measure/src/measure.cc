@@ -11,6 +11,7 @@
 
 #include <gtk/gtk.h>
 
+#include <scroom/cairo-helpers.hh>
 #include <scroom/impl/bookkeepingimpl.hh>
 #include <scroom/point.hh>
 #include <scroom/presentationinterface.hh>
@@ -91,7 +92,7 @@ void MeasureHandler::drawCross(cairo_t* cr, Scroom::Utils::Point<double> p)
 // SelectionListener
 ////////////////////////////////////////////////////////////////////////
 
-void MeasureHandler::onSelectionStart(GdkPoint, ViewInterface::Ptr) {}
+void MeasureHandler::onSelectionStart(Selection::Ptr, ViewInterface::Ptr) {}
 
 void MeasureHandler::onSelectionUpdate(Selection::Ptr s, ViewInterface::Ptr view)
 {
@@ -120,30 +121,12 @@ void MeasureHandler::render(ViewInterface::Ptr const&        vi,
                             Scroom::Utils::Rectangle<double> presentationArea,
                             int                              zoom)
 {
-  UNUSED(vi);
-
   if(selection)
   {
-    auto aspectRatio = vi->getCurrentPresentation()->getAspectRatio();
-    auto start       = Scroom::Utils::Point<int>(selection->start) - presentationArea.getTopLeft();
-    auto end         = Scroom::Utils::Point<int>(selection->end) - presentationArea.getTopLeft();
-
-    if(zoom >= 0)
-    {
-      const int pixelSize = 1 << zoom;
-      start *= pixelSize;
-      start *= aspectRatio;
-      end *= pixelSize;
-      end *= aspectRatio;
-    }
-    else
-    {
-      const int pixelSize = 1 << -zoom;
-      start *= aspectRatio;
-      start /= pixelSize;
-      end *= aspectRatio;
-      end /= pixelSize;
-    }
+    const auto aspectRatio = vi->getCurrentPresentation()->getAspectRatio();
+    const auto pixelSize   = pixelSizeFromZoom(zoom);
+    const auto start       = (selection->start - presentationArea.getTopLeft()) * pixelSize * aspectRatio;
+    const auto end         = (selection->end - presentationArea.getTopLeft()) * pixelSize * aspectRatio;
 
     cairo_set_line_width(cr, 1);
     cairo_set_source_rgb(cr, 0.75, 0, 0); // Dark Red

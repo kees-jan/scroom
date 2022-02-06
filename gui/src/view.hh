@@ -42,8 +42,7 @@ private:
   GtkWindow*                       window;
   GtkWidget*                       menubar;
   GtkWidget*                       drawingArea;
-  int                              drawingAreaWidth;
-  int                              drawingAreaHeight;
+  Scroom::Utils::Point<int>        drawingAreaSize;
   Scroom::Utils::Rectangle<double> presentationRect;
   GtkScrollbar*                    vscrollbar;
   GtkScrollbar*                    hscrollbar;
@@ -67,16 +66,15 @@ private:
   unsigned                                           toolBarCount;
   int                                                statusBarContextId;
   int                                                zoom;
-  int                                                x; /**< x-coordinate of the top left visible pixel */
-  int                                                y; /**< y-coordinate of the top left visible pixel */
+  Scroom::Utils::Point<double>                       position; /**< of the top left visible pixel */
   Selection::Ptr                                     selection;
   std::vector<SelectionListener::Ptr>                selectionListeners;
   std::vector<PostRenderer::Ptr>                     postRenderers;
   std::map<GtkToggleButton*, ToolStateListener::Ptr> tools;
   Scroom::Utils::Point<double>                       aspectRatio;
 
-  gint     modifiermove;
-  GdkPoint cachedPoint{0, 0};
+  gint                         modifiermove;
+  Scroom::Utils::Point<double> cachedPoint;
 
   ProgressBarManager::Ptr progressBarManager;
 
@@ -128,9 +126,8 @@ public:
   void on_presentation_created(PresentationInterface::Ptr p);
   void on_presentation_destroyed();
   void on_configure();
-  void on_window_size_changed(int newWidth, int newHeight);
+  void on_window_size_changed(const Scroom::Utils::Point<int>& newSize);
   void on_zoombox_changed();
-  void on_zoombox_changed(int newZoom, int mousex, int mousey);
   void on_textbox_value_changed(GtkEditable* editable);
   void on_scrollbar_value_changed(GtkAdjustment* adjustment);
   void on_scrollwheel(GdkEventScroll* event);
@@ -159,10 +156,9 @@ public:
   // Helpers
 
 private:
-  GdkPoint        windowPointToPresentationPoint(GdkPoint wp) const;
-  GdkPoint        presentationPointToWindowPoint(GdkPoint presentationpoint) const;
-  static GdkPoint eventToPoint(GdkEventButton* event);
-  static GdkPoint eventToPoint(GdkEventMotion* event);
-  void            updateNewWindowMenu();
-  void            updateXY(int x, int y, LocationChangeCause source);
+  Scroom::Utils::Point<double> windowPointToPresentationPoint(Scroom::Utils::Point<double> wp) const;
+  Scroom::Utils::Point<double> presentationPointToWindowPoint(Scroom::Utils::Point<double> presentationpoint) const;
+  void                         updateNewWindowMenu();
+  void                         on_zoombox_changed(int newzoom, const Scroom::Utils::Point<double>& mousePos);
+  void                         updateXY(const Scroom::Utils::Point<double>& newPos, const LocationChangeCause& source);
 };

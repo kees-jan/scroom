@@ -22,6 +22,8 @@
 #include <glib-object.h>
 
 #include <scroom/assertions.hh>
+#include <scroom/cairo-helpers.hh>
+#include <scroom/rounding.hh>
 
 #include "callbacks.hh"
 #include "pluginmanager.hh"
@@ -57,6 +59,16 @@ enum
 ////////////////////////////////////////////////////////////////////////
 /// Helpers
 
+static GdkPoint eventToGdkPoint(GdkEventButton* event)
+{
+  GdkPoint result = {static_cast<gint>(event->x), static_cast<gint>(event->y)};
+  return result;
+}
+
+[[maybe_unused]] static Scroom::Utils::Point<double> eventToPoint(GdkEventButton* event) { return {event->x, event->y}; }
+
+[[maybe_unused]] static Scroom::Utils::Point<double> eventToPoint(GdkEventMotion* event) { return {event->x, event->y}; }
+
 // This one has too much View-internal knowledge to hide in callbacks.cc
 static void on_newWindow_activate(GtkMenuItem*, gpointer user_data)
 {
@@ -72,11 +84,7 @@ static void on_newWindow_activate(GtkMenuItem*, gpointer user_data)
 
 View::View(GtkBuilder* scroomXml_)
   : scroomXml(scroomXml_)
-  , drawingAreaWidth(0)
-  , drawingAreaHeight(0)
   , zoom(0)
-  , x(0)
-  , y(0)
   , aspectRatio(Scroom::Utils::make_point(1.0, 1.0))
   , modifiermove(0)
 {
@@ -148,30 +156,13 @@ void View::redraw(cairo_t* cr)
 {
   if(presentation)
   {
-    cairo_rectangle_int_t rect;
-    rect.x = x;
-    rect.y = y;
-    if(zoom >= 0)
-    {
-      // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
-      int pixelSize = 1 << zoom;
-      rect.width    = (drawingAreaWidth + pixelSize * aspectRatio.x - 1) / (pixelSize * aspectRatio.x);
-      rect.height   = (drawingAreaHeight + pixelSize * aspectRatio.y - 1) / (pixelSize * aspectRatio.y);
-    }
-    else
-    {
-      // Zooming out. Smallest step is 1 window-pixel, which is more than one presentation-pixel
-      int pixelSize = 1 << (-zoom);
-      rect.width    = drawingAreaWidth * (pixelSize / aspectRatio.x);
-      rect.height   = drawingAreaHeight * (pixelSize / aspectRatio.y);
+    double                       pixelSize             = pixelSizeFromZoom(zoom);
+    Scroom::Utils::Point<double> visibleRegionPosition = round_down_to_multiple_of(position, 1 / pixelSize / aspectRatio);
+    Scroom::Utils::Point<double> visibleRegionSize     = ceiled_divide_by(drawingAreaSize.to<double>(), pixelSize * aspectRatio);
 
-      // Round to whole pixels
-      rect.x = floor(rect.x / (pixelSize / aspectRatio.x)) * (pixelSize / aspectRatio.x);
-      rect.y = floor(rect.y / (pixelSize / aspectRatio.y)) * (pixelSize / aspectRatio.y);
-    }
+    auto rect = Scroom::Utils::make_rect(visibleRegionPosition, visibleRegionSize);
 
     presentation->redraw(shared_from_this<View>(), cr, rect, zoom);
-
     for(const auto& renderer: postRenderers)
     {
       renderer->render(shared_from_this<View>(), cr, rect, zoom);
@@ -226,10 +217,9 @@ void View::setPresentation(PresentationInterface::Ptr presentation_)
     gtk_window_set_title(window, s.c_str());
   }
 
-  zoom                = 0;
-  const int pixelSize = 1 << zoom;
-  x                   = -drawingAreaWidth / (pixelSize * aspectRatio.x) / 2;
-  y                   = -drawingAreaHeight / (pixelSize * aspectRatio.y) / 2;
+  zoom                   = 0;
+  const double pixelSize = pixelSizeFromZoom(zoom);
+  position               = -drawingAreaSize / (pixelSize * aspectRatio) / 2;
 
   updateZoom();
   updateScrollbars();
@@ -244,36 +234,18 @@ void View::updateScrollbar(GtkAdjustment* adj,
                            double         presentationSize,
                            double         windowSize)
 {
-  if(zoom_ >= 0)
-  {
-    // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
-    int pixelSize = 1 << zoom_;
-    presentationStart -= windowSize / pixelSize / 2;
-    presentationSize += windowSize / pixelSize;
+  const double pixelSize = pixelSizeFromZoom(zoom_);
 
-    gtk_adjustment_configure(adj,
-                             value,
-                             presentationStart,
-                             presentationStart + presentationSize,
-                             1,
-                             3 * windowSize / pixelSize / 4,
-                             windowSize / pixelSize);
-  }
-  else
-  {
-    // Zooming out. Smallest step is 1 window-pixel, which is more than one presentation-pixel
-    int pixelSize = 1 << (-zoom_);
-    presentationStart -= windowSize * pixelSize / 2;
-    presentationSize += windowSize * pixelSize;
+  presentationStart -= windowSize / pixelSize / 2;
+  presentationSize += windowSize / pixelSize;
 
-    gtk_adjustment_configure(adj,
-                             value,
-                             presentationStart,
-                             presentationStart + presentationSize,
-                             pixelSize,
-                             3 * windowSize * pixelSize / 4,
-                             windowSize * pixelSize);
-  }
+  gtk_adjustment_configure(adj,
+                           value,
+                           presentationStart,
+                           presentationStart + presentationSize,
+                           std::max(1.0, 1 / pixelSize),
+                           3 * windowSize / pixelSize / 4,
+                           windowSize / pixelSize);
 }
 
 void View::updateScrollbars()
@@ -283,8 +255,8 @@ void View::updateScrollbars()
     gtk_widget_set_sensitive(GTK_WIDGET(vscrollbar), true);
     gtk_widget_set_sensitive(GTK_WIDGET(hscrollbar), true);
 
-    updateScrollbar(hscrollbaradjustment, zoom, x, presentationRect.x(), presentationRect.width(), drawingAreaWidth);
-    updateScrollbar(vscrollbaradjustment, zoom, y, presentationRect.y(), presentationRect.height(), drawingAreaHeight);
+    updateScrollbar(hscrollbaradjustment, zoom, position.x, presentationRect.x(), presentationRect.width(), drawingAreaSize.x);
+    updateScrollbar(vscrollbaradjustment, zoom, position.y, presentationRect.y(), presentationRect.height(), drawingAreaSize.y);
     updateRulers();
   }
   else
@@ -301,25 +273,10 @@ void View::updateTextbox()
     gtk_widget_set_sensitive(GTK_WIDGET(xTextBox), true);
     gtk_widget_set_sensitive(GTK_WIDGET(yTextBox), true);
 
-    int daw = drawingAreaWidth;
-    int dah = drawingAreaHeight;
-    if(zoom >= 0)
-    {
-      // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
-      int pixelSize = 1 << zoom;
-      daw /= pixelSize * aspectRatio.x;
-      dah /= pixelSize * aspectRatio.y;
-    }
-    else
-    {
-      // Zooming out. Smallest step is 1 window-pixel, which is more than one presentation-pixel
-      int pixelSize = 1 << (-zoom);
-      daw *= pixelSize * aspectRatio.x;
-      dah *= pixelSize * aspectRatio.y;
-    }
+    auto center = position + drawingAreaSize.to<double>() / pixelSizeFromZoom(zoom) * aspectRatio / 2;
 
-    auto xs = boost::lexical_cast<std::string>(x + daw / 2);
-    auto ys = boost::lexical_cast<std::string>(y + dah / 2);
+    auto xs = std::to_string(center.x);
+    auto ys = std::to_string(center.y);
     gtk_entry_set_text(xTextBox, xs.c_str());
     gtk_entry_set_text(yTextBox, ys.c_str());
   }
@@ -338,7 +295,7 @@ void View::updateZoom()
     int presentationWidth  = presentationRect.width();
     int minZoom            = 0;
 
-    while(presentationHeight > drawingAreaHeight / 2 || presentationWidth > drawingAreaWidth / 2)
+    while(presentationHeight > drawingAreaSize.y / 2 || presentationWidth > drawingAreaSize.x / 2)
     {
       presentationHeight >>= 1;
       presentationWidth >>= 1;
@@ -374,20 +331,12 @@ void View::updateZoom()
 
 void View::updateRulers()
 {
-  if(zoom >= 0)
-  {
-    // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
-    int pixelSize = 1 << zoom;
-    hruler->setRange(x, x + drawingAreaWidth / (pixelSize * aspectRatio.x));
-    vruler->setRange(y, y + drawingAreaHeight / (pixelSize * aspectRatio.y));
-  }
-  else
-  {
-    // Zooming out. Smallest step is 1 window-pixel, which is more than one presentation-pixel
-    int pixelSize = 1 << (-zoom);
-    hruler->setRange(x, x + drawingAreaWidth * pixelSize * aspectRatio.x);
-    vruler->setRange(y, y + drawingAreaHeight * pixelSize * aspectRatio.y);
-  }
+  const double pixelSize   = pixelSizeFromZoom(zoom);
+  const auto   topLeft     = position;
+  const auto   bottomRight = topLeft + drawingAreaSize / (pixelSize * aspectRatio);
+
+  hruler->setRange(topLeft.x, bottomRight.x);
+  vruler->setRange(topLeft.y, bottomRight.y);
 }
 
 void View::toolButtonToggled(GtkToggleButton* button)
@@ -454,34 +403,22 @@ void View::on_configure()
   cairo_rectangle_int_t rect;
   cairo_region_get_extents(r, &rect);
 
-  int newWidth  = rect.width;
-  int newHeight = rect.height;
+  Scroom::Utils::Point<int> newSize(rect.width, rect.height);
 
-  if(drawingAreaHeight != newHeight || drawingAreaWidth != newWidth)
+  if(drawingAreaSize != newSize)
   {
-    on_window_size_changed(newWidth, newHeight);
+    on_window_size_changed(newSize);
   }
 
   cairo_region_destroy(r);
 }
 
-void View::on_window_size_changed(int newWidth, int newHeight)
+void View::on_window_size_changed(const Scroom::Utils::Point<int>& newSize)
 {
-  if(zoom >= 0)
-  {
-    const int pixelSize = 1 << zoom;
-    x += (drawingAreaWidth - newWidth) / (pixelSize * aspectRatio.x) / 2;
-    y += (drawingAreaHeight - newHeight) / (pixelSize * aspectRatio.y) / 2;
-  }
-  else
-  {
-    const int pixelSize = 1 << -zoom;
-    x += (drawingAreaWidth - newWidth) * (pixelSize * aspectRatio.x) / 2;
-    y += (drawingAreaHeight - newHeight) * (pixelSize * aspectRatio.y) / 2;
-  }
+  auto pixelSize = pixelSizeFromZoom(zoom);
+  position += (drawingAreaSize - newSize) / (pixelSize * aspectRatio) / 2;
 
-  drawingAreaHeight = newHeight;
-  drawingAreaWidth  = newWidth;
+  drawingAreaSize = newSize;
   updateZoom();
   updateScrollbars();
   invalidate();
@@ -504,7 +441,7 @@ void View::on_scrollwheel(GdkEventScroll* event)
 
       if(foundZoom == newZoom)
       {
-        on_zoombox_changed(newZoom, event->x, event->y);
+        on_zoombox_changed(newZoom, {event->x, event->y});
         gtk_combo_box_set_active_iter(zoomBox, &iter);
         break;
       }
@@ -522,39 +459,16 @@ void View::on_zoombox_changed()
   {
     gtk_tree_model_get_value(GTK_TREE_MODEL(zoomItems), &iter, COLUMN_ZOOM, &value);
     int newZoom = g_value_get_int(&value);
-    on_zoombox_changed(newZoom, drawingAreaWidth / 2, drawingAreaHeight / 2);
+    on_zoombox_changed(newZoom, drawingAreaSize.to<double>() / 2);
   }
 }
 
-void View::on_zoombox_changed(int newzoom, int mousex, int mousey)
+void View::on_zoombox_changed(int newzoom, const Scroom::Utils::Point<double>& mousePos)
 {
   if(newzoom != zoom)
   {
-    if(zoom >= 0)
-    {
-      const int pixelsize = 1 << zoom;
-      x += mousex / (pixelsize * aspectRatio.x);
-      y += mousey / (pixelsize * aspectRatio.y);
-    }
-    else
-    {
-      const int pixelsize = 1 << -zoom;
-      x += mousex * (pixelsize / aspectRatio.x);
-      y += mousey * (pixelsize / aspectRatio.y);
-    }
-
-    if(newzoom >= 0)
-    {
-      const int pixelsize = 1 << newzoom;
-      x -= mousex / (pixelsize * aspectRatio.x);
-      y -= mousey / (pixelsize * aspectRatio.y);
-    }
-    else
-    {
-      const int pixelsize = 1 << -newzoom;
-      x -= mousex * (pixelsize / aspectRatio.x);
-      y -= mousey * (pixelsize / aspectRatio.y);
-    }
+    position += mousePos / (pixelSizeFromZoom(zoom) * aspectRatio);
+    position -= mousePos / (pixelSizeFromZoom(newzoom) * aspectRatio);
 
     zoom = newzoom;
     updateScrollbars();
@@ -567,36 +481,21 @@ void View::on_textbox_value_changed(GtkEditable* editable)
 {
   try
   {
-    int newx = x;
-    int newy = y;
+    auto newPos = position;
 
-    int daw = drawingAreaWidth;
-    int dah = drawingAreaHeight;
-    if(zoom >= 0)
-    {
-      // Zooming in. Smallest step is 1 presentation pixel, which is more than one window-pixel
-      int pixelSize = 1 << zoom;
-      daw /= pixelSize * aspectRatio.x;
-      dah /= pixelSize * aspectRatio.y;
-    }
-    else
-    {
-      // Zooming out. Smallest step is 1 window-pixel, which is more than one presentation-pixel
-      int pixelSize = 1 << (-zoom);
-      daw *= pixelSize * aspectRatio.x;
-      dah *= pixelSize * aspectRatio.y;
-    }
+    const double pixelSize = pixelSizeFromZoom(zoom);
+    const auto   da        = drawingAreaSize.to<double>() / (pixelSize * aspectRatio);
 
     if(editable == GTK_EDITABLE(yTextBox))
     {
-      newy = boost::lexical_cast<int>(gtk_entry_get_text(yTextBox)) - dah / 2;
+      newPos.y = boost::lexical_cast<int>(gtk_entry_get_text(yTextBox)) - da.x / 2;
     }
     else
     {
-      newx = boost::lexical_cast<int>(gtk_entry_get_text(xTextBox)) - daw / 2;
+      newPos.x = boost::lexical_cast<int>(gtk_entry_get_text(xTextBox)) - da.y / 2;
     }
 
-    updateXY(newx, newy, TEXTBOX);
+    updateXY(newPos, TEXTBOX);
   }
   catch(boost::bad_lexical_cast& ex)
   {
@@ -606,19 +505,18 @@ void View::on_textbox_value_changed(GtkEditable* editable)
 
 void View::on_scrollbar_value_changed(GtkAdjustment* adjustment)
 {
-  int newx = x;
-  int newy = y;
+  auto newPos = position;
 
   if(adjustment == vscrollbaradjustment)
   {
-    newy = static_cast<int>(gtk_adjustment_get_value(adjustment));
+    newPos.y = gtk_adjustment_get_value(adjustment);
   }
   else
   {
-    newx = static_cast<int>(gtk_adjustment_get_value(adjustment));
+    newPos.x = gtk_adjustment_get_value(adjustment);
   }
 
-  updateXY(newx, newy, SCROLLBAR);
+  updateXY(newPos, SCROLLBAR);
 }
 
 void View::on_buttonPress(GdkEventButton* event)
@@ -631,11 +529,11 @@ void View::on_buttonPress(GdkEventButton* event)
   }
   else if(event->button == 3)
   {
-    GdkPoint point = windowPointToPresentationPoint(eventToPoint(event));
-    selection      = Selection::Ptr(new Selection(point));
+    auto point = windowPointToPresentationPoint(Scroom::Utils::Point<double>(eventToGdkPoint(event)));
+    selection  = boost::make_shared<Selection>(point);
     for(const auto& listener: selectionListeners)
     {
-      listener->onSelectionStart(point, shared_from_this<ViewInterface>());
+      listener->onSelectionStart(selection, shared_from_this<ViewInterface>());
     }
   }
 }
@@ -651,7 +549,7 @@ void View::on_buttonRelease(GdkEventButton* event)
   }
   else if(event->button == 3 && selection)
   {
-    selection->end = windowPointToPresentationPoint(eventToPoint(event));
+    selection->end = windowPointToPresentationPoint(Scroom::Utils::Point<double>(eventToGdkPoint(event)));
     for(const auto& listener: selectionListeners)
     {
       listener->onSelectionEnd(selection, shared_from_this<ViewInterface>());
@@ -664,34 +562,13 @@ void View::on_motion_notify(GdkEventMotion* event)
 {
   if((event->state & GDK_BUTTON1_MASK) && modifiermove == GDK_BUTTON1_MASK)
   {
-    int newx = x;
-    int newy = y;
+    auto mousePos = eventToPoint(event);
 
-    if(zoom >= 0)
-    {
-      const int pixelSize = 1 << zoom;
-      if(std::abs(event->x - cachedPoint.x) >= pixelSize * aspectRatio.x)
-      {
-        int delta = (event->x - cachedPoint.x) / (pixelSize * aspectRatio.x);
-        cachedPoint.x += delta * pixelSize * aspectRatio.x;
-        newx -= delta;
-      }
-      if(std::abs(event->y - cachedPoint.y) >= pixelSize * aspectRatio.y)
-      {
-        int delta = (event->y - cachedPoint.y) / (pixelSize * aspectRatio.y);
-        cachedPoint.y += delta * pixelSize * aspectRatio.y;
-        newy -= delta;
-      }
-    }
-    else
-    {
-      const int pixelSize = 1 << -zoom;
-      newx -= (event->x - cachedPoint.x) * (pixelSize / aspectRatio.x);
-      newy -= (event->y - cachedPoint.y) * (pixelSize / aspectRatio.y);
-      cachedPoint = eventToPoint(event);
-    }
+    const auto pixelSize = pixelSizeFromZoom(zoom);
+    const auto newPos    = position - (mousePos - cachedPoint) / (pixelSize * aspectRatio);
+    cachedPoint          = mousePos;
 
-    updateXY(newx, newy, OTHER);
+    updateXY(newPos, OTHER);
   }
   else if((event->state & GDK_BUTTON3_MASK) && selection)
   {
@@ -798,54 +675,14 @@ void View::addToolButton(GtkToggleButton* button, ToolStateListener::Ptr callbac
 ////////////////////////////////////////////////////////////////////////
 // Helpers
 
-GdkPoint View::windowPointToPresentationPoint(GdkPoint wp) const
+Scroom::Utils::Point<double> View::windowPointToPresentationPoint(Scroom::Utils::Point<double> wp) const
 {
-  GdkPoint result = {0, 0};
-
-  if(zoom >= 0)
-  {
-    const int pixelSize = 1 << zoom;
-    result.x = x + (wp.x + (pixelSize * aspectRatio.x) / 2) / (pixelSize * aspectRatio.x); // Round to make measurements snap
-    result.y = y + (wp.y + (pixelSize * aspectRatio.y) / 2) / (pixelSize * aspectRatio.y); // in the expected direction
-  }
-  else
-  {
-    const int pixelSize = 1 << -zoom;
-    result.x            = x + wp.x * (pixelSize / aspectRatio.x);
-    result.y            = y + wp.y * (pixelSize / aspectRatio.y);
-  }
-  return result;
+  return position + wp / pixelSizeFromZoom(zoom) / aspectRatio;
 }
 
-GdkPoint View::presentationPointToWindowPoint(GdkPoint pp) const
+Scroom::Utils::Point<double> View::presentationPointToWindowPoint(Scroom::Utils::Point<double> presentationpoint) const
 {
-  GdkPoint result = {0, 0};
-
-  if(zoom >= 0)
-  {
-    const int pixelSize = 1 << zoom;
-    result.x            = (pp.x - x) * pixelSize * aspectRatio.x;
-    result.y            = (pp.y - y) * pixelSize * aspectRatio.y;
-  }
-  else
-  {
-    const int pixelSize = 1 << -zoom;
-    result.x            = (pp.x - x) / (pixelSize / aspectRatio.x);
-    result.y            = (pp.y - y) / (pixelSize / aspectRatio.y);
-  }
-  return result;
-}
-
-GdkPoint View::eventToPoint(GdkEventButton* event)
-{
-  GdkPoint result = {static_cast<gint>(event->x), static_cast<gint>(event->y)};
-  return result;
-}
-
-GdkPoint View::eventToPoint(GdkEventMotion* event)
-{
-  GdkPoint result = {static_cast<gint>(event->x), static_cast<gint>(event->y)};
-  return result;
+  return (presentationpoint - position) * pixelSizeFromZoom(zoom) * aspectRatio;
 }
 
 void View::updateNewWindowMenu()
@@ -928,22 +765,12 @@ void View::updateNewWindowMenu()
   g_object_unref(G_OBJECT(newWindow_menu));
 }
 
-void View::updateXY(int x_, int y_, LocationChangeCause source)
+void View::updateXY(const Scroom::Utils::Point<double>& newPos, const View::LocationChangeCause& source)
 {
-  bool changed = false;
-  if(x != x_)
+  if(position != newPos)
   {
-    x       = x_;
-    changed = true;
-  }
-  if(y != y_)
-  {
-    y       = y_;
-    changed = true;
-  }
+    position = newPos;
 
-  if(changed)
-  {
     if(source != SCROLLBAR)
     {
       updateScrollbars();

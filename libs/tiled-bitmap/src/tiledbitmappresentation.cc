@@ -177,7 +177,7 @@ namespace
   // PresentationInterface
   ////////////////////////////////////////////////////////////////////////
 
-  Scroom::Utils::Rectangle<double> TiledBitmapPresentation::getRect() { return bmd.rect; }
+  Scroom::Utils::Rectangle<double> TiledBitmapPresentation::getRect() { return Scroom::Utils::Rectangle<double>(bmd.rect); }
 
   void TiledBitmapPresentation::redraw(const ViewInterface::Ptr&        vi,
                                        cairo_t*                         cr,

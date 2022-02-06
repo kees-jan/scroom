@@ -65,7 +65,7 @@ int main(int argc, char* argv[])
   spdlog::set_default_logger(logger);
 #endif
 
-  spdlog::set_level(spdlog::level::debug);
+  spdlog::set_level(spdlog::level::trace);
   spdlog::set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%t] [%^%-5l%$] %v");
 
   po::options_description desc("Available options");

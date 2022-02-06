@@ -15,6 +15,7 @@
 
 #include <scroom/unused.hh>
 
+#include "scroom/cairo-helpers.hh"
 #include "version.h"
 
 ////////////////////////////////////////////////////////////////////////
@@ -114,7 +115,7 @@ void PipetteHandler::displayValues(ViewInterface::Ptr                   view,
 // SelectionListener
 ////////////////////////////////////////////////////////////////////////
 
-void PipetteHandler::onSelectionStart(GdkPoint, ViewInterface::Ptr) {}
+void PipetteHandler::onSelectionStart(Selection::Ptr, ViewInterface::Ptr) {}
 
 void PipetteHandler::onSelectionUpdate(Selection::Ptr s, ViewInterface::Ptr view)
 {
@@ -133,7 +134,7 @@ void PipetteHandler::onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view)
     selection = s;
 
     // Get the selection rectangle
-    auto sel_rect = Scroom::Utils::Rectangle<int>(selection->start, selection->end);
+    auto sel_rect = roundOutward(Scroom::Utils::make_rect_from_start_end(selection->start, selection->end)).to<int>();
     Sequentially()->schedule(boost::bind(&PipetteHandler::computeValues, shared_from_this<PipetteHandler>(), view, sel_rect),
                              currentJob);
     jobMutex.unlock();
@@ -151,26 +152,10 @@ void PipetteHandler::render(ViewInterface::Ptr const&        vi,
 {
   if(selection)
   {
-    auto aspectRatio = vi->getCurrentPresentation()->getAspectRatio();
-    auto start       = Scroom::Utils::Point<int>(selection->start) - presentationArea.getTopLeft();
-    auto end         = Scroom::Utils::Point<int>(selection->end) - presentationArea.getTopLeft();
-
-    if(zoom >= 0)
-    {
-      const int pixelSize = 1 << zoom;
-      start *= pixelSize;
-      start *= aspectRatio;
-      end *= pixelSize;
-      end *= aspectRatio;
-    }
-    else
-    {
-      const int pixelSize = 1 << -zoom;
-      start *= aspectRatio;
-      start /= pixelSize;
-      end *= aspectRatio;
-      end /= pixelSize;
-    }
+    const auto aspectRatio = vi->getCurrentPresentation()->getAspectRatio();
+    const auto pixelSize   = pixelSizeFromZoom(zoom);
+    const auto start       = (selection->start - presentationArea.getTopLeft()) * pixelSize * aspectRatio;
+    const auto end         = (selection->end - presentationArea.getTopLeft()) * pixelSize * aspectRatio;
 
     cairo_set_line_width(cr, 1);
     cairo_set_source_rgb(cr, 0, 0, 1); // Blue

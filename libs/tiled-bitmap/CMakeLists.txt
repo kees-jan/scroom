@@ -46,7 +46,12 @@ target_sources(
           tools/measure-framerate-callbacks.hh
           tools/measure-framerate-stubs.cc
           tools/measure-framerate-stubs.hh)
-target_link_libraries(measure_tools PUBLIC project_options project_warnings tiledbitmap)
+target_link_libraries(
+  measure_tools
+  PUBLIC project_options
+         project_warnings
+         tiledbitmap
+         scroom_lib)
 
 add_executable(measure_framerate)
 target_sources(measure_framerate PRIVATE tools/measure-framerate.cc tools/measure-framerate-tests.cc

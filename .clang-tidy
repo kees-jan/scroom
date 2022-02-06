@@ -3,6 +3,7 @@ Checks: >
   *,
   -abseil-*,
   -altera-*,
+  -bugprone-easily-swappable-parameters,
   -cert-dcl16-c,
   -fuchsia-*,
   -google-*,

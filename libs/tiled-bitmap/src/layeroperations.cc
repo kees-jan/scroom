@@ -354,7 +354,7 @@ void Operations1bpp::draw(cairo_t*                         cr,
 
     Colormap::Ptr colormap = colormapProvider->getColormap();
 
-    auto tileAreaInt = roundOutward(tileArea);
+    auto tileAreaInt = roundOutward(tileArea).to<int>();
     auto offset      = tileAreaInt.getTopLeft() - tileArea.getTopLeft();
     viewArea += offset * multiplier;
 
@@ -477,7 +477,7 @@ void Operations8bpp::draw(cairo_t*                         cr,
     const Color&      c2       = colormap->colors[1];
     const byte* const data     = tile->data.get();
 
-    auto tileAreaInt = roundOutward(tileArea);
+    auto tileAreaInt = roundOutward(tileArea).to<int>();
     auto offset      = tileAreaInt.getTopLeft() - tileArea.getTopLeft();
     viewArea += offset * multiplier;
 
@@ -699,7 +699,7 @@ void Operations::draw(cairo_t*                         cr,
 
     Colormap::Ptr colormap = colormapProvider->getColormap();
 
-    auto tileAreaInt = roundOutward(tileArea);
+    auto tileAreaInt = roundOutward(tileArea).to<int>();
     auto offset      = tileAreaInt.getTopLeft() - tileArea.getTopLeft();
     viewArea += offset * multiplier;
 

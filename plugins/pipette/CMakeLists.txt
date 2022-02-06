@@ -2,7 +2,10 @@ add_library(sppipette SHARED)
 target_sources(sppipette PRIVATE src/main.cc src/pipette.cc src/pipette.hh)
 target_link_libraries(
   sppipette
-  PRIVATE project_options project_warnings CONAN_PKG::spdlog
+  PRIVATE project_options
+          project_warnings
+          scroom_lib
+          CONAN_PKG::spdlog
   PUBLIC PkgConfig::gtk
          threadpool
          PkgConfig::cairo

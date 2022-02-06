@@ -13,6 +13,8 @@
 
 #include <gdk/gdk.h>
 
+#include <scroom/rounding.hh>
+
 namespace Scroom
 {
   namespace Utils
@@ -43,7 +45,7 @@ namespace Scroom
       {
       }
 
-      explicit Point(GdkPoint& other)
+      explicit Point(const GdkPoint& other)
         : x(other.x)
         , y(other.y)
       {
@@ -93,6 +95,14 @@ namespace Scroom
 
       [[nodiscard]] double magnitude() const { return sqrt(x * x + y * y); }
 
+      template <typename U>
+      [[nodiscard]] Point<U> to() const
+      {
+        return {static_cast<U>(x), static_cast<U>(y)};
+      }
+
+      [[nodiscard]] GdkPoint toGdkPoint() const { return {static_cast<int>(x), static_cast<int>(y)}; }
+
     public:
       value_type x{0};
       value_type y{0};
@@ -128,6 +138,74 @@ namespace Scroom
       Point<R> result(left);
       result += Point<R>(right);
       return result;
+    }
+
+    template <typename T, typename U>
+    Point<typename std::common_type<T, U>::type> operator*(Point<T> left, Point<U> right)
+    {
+      using R = typename std::common_type<T, U>::type;
+
+      Point<R> result(left);
+      result *= Point<R>(right);
+      return result;
+    }
+
+    template <typename T, typename U>
+    Point<typename std::common_type<T, U>::type> operator/(Point<T> left, Point<U> right)
+    {
+      using R = typename std::common_type<T, U>::type;
+
+      Point<R> result(left);
+      result /= Point<R>(right);
+      return result;
+    }
+
+    template <typename T, typename U>
+    Point<typename std::common_type<T, U>::type> operator/(T left, Point<U> right)
+    {
+      return make_point(left, left) / right;
+    }
+
+    template <typename T>
+    Point<T> rounded_divide_by(Point<T> value, T factor)
+    {
+      using ::rounded_divide_by;
+      return {rounded_divide_by(value.x, factor), rounded_divide_by(value.y, factor)};
+    }
+
+    template <typename T>
+    Point<T> ceiled_divide_by(Point<T> value, T factor)
+    {
+      using ::ceiled_divide_by;
+      return {ceiled_divide_by(value.x, factor), ceiled_divide_by(value.y, factor)};
+    }
+
+    template <typename T>
+    Point<T> floored_divide_by(Point<T> value, T factor)
+    {
+      using ::floored_divide_by;
+      return {floored_divide_by(value.x, factor), floored_divide_by(value.y, factor)};
+    }
+
+    template <typename T>
+    Point<T> rounded_divide_by(Point<T> value, Point<T> factor)
+    {
+      using ::rounded_divide_by;
+      return {rounded_divide_by(value.x, factor.x), rounded_divide_by(value.y, factor.y)};
+    }
+
+    template <typename T>
+    Point<T> ceiled_divide_by(Point<T> value, Point<T> factor)
+    {
+      using ::ceiled_divide_by;
+      return {ceiled_divide_by(value.x, factor.x), ceiled_divide_by(value.y, factor.y)};
+    }
+
+    template <typename T>
+    Point<T> floored_divide_by(Point<T> value, Point<T> factor)
+    {
+      using ::floored_divide_by;
+      return {floored_divide_by(value.x, factor.x), floored_divide_by(value.y, factor.y)};
     }
   } // namespace Utils
 } // namespace Scroom
