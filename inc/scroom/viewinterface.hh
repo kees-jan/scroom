@@ -42,12 +42,14 @@ public:
   Selection(int x, int y)
     : start{x, y}
     , end{start}
-  {}
+  {
+  }
 
   explicit Selection(GdkPoint point)
     : start(point)
     , end(point)
-  {}
+  {
+  }
 
   [[nodiscard]] bool endsAt(GdkPoint p) const { return end == p; }
 

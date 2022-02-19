@@ -51,7 +51,8 @@ public:
     , red(red_)
     , green(green_)
     , blue(blue_)
-  {}
+  {
+  }
 
   /** Constructor. Create the given gray value */
   explicit Color(double gray, double alpha_ = 1.0)
@@ -59,7 +60,8 @@ public:
     , red(gray)
     , green(gray)
     , blue(gray)
-  {}
+  {
+  }
 
   Color& operator+=(const Color& rhs)
   {

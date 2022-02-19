@@ -30,7 +30,8 @@ struct PluginInformation
   PluginInformation(GModule* plugin_, PluginInformationInterface::Ptr pluginInformation_)
     : plugin(plugin_)
     , pluginInformation(pluginInformation_)
-  {}
+  {
+  }
 };
 
 class PluginManager

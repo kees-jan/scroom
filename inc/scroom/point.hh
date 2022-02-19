@@ -33,18 +33,21 @@ namespace Scroom
       Point(value_type x_, value_type y_)
         : x(x_)
         , y(y_)
-      {}
+      {
+      }
 
       template <typename U>
       explicit Point(Point<U> other)
         : x(other.x)
         , y(other.y)
-      {}
+      {
+      }
 
       explicit Point(GdkPoint& other)
         : x(other.x)
         , y(other.y)
-      {}
+      {
+      }
 
       bool operator==(const Point<value_type>& other) const { return x == other.x && y == other.y; }
       bool operator!=(const Point<value_type>& other) const { return !(*this == other); }

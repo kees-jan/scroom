@@ -17,7 +17,8 @@ bool ProgressInterfaceStub::isFinished() const { return finished; }
 
 ViewInterfaceStub::ViewInterfaceStub(ProgressInterface::Ptr pi_)
   : pi(pi_)
-{}
+{
+}
 
 ViewInterfaceStub::Ptr ViewInterfaceStub::create(ProgressInterface::Ptr pi) { return Ptr(new ViewInterfaceStub(pi)); }
 

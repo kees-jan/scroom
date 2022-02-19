@@ -41,7 +41,8 @@ public:
 
   A(Semaphore* s_)
     : s(s_)
-  {}
+  {
+  }
 
   void operator()() { s->V(); }
 
@@ -61,7 +62,8 @@ public:
   B(Semaphore* s_, R result_)
     : s(s_)
     , result(result_)
-  {}
+  {
+  }
 
   R operator()()
   {

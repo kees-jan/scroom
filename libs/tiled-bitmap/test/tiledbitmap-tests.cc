@@ -26,7 +26,8 @@ public:
             Scroom::Utils::Rectangle<double>,
             int,
             Scroom::Utils::Stuff) override
-  {}
+  {
+  }
   void drawState(cairo_t*, TileState, Scroom::Utils::Rectangle<double>) override {}
   void reduce(Tile::Ptr, const ConstTile::Ptr, int, int) override {}
 };

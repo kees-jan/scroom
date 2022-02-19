@@ -32,7 +32,8 @@ namespace Scroom
 
   inline Semaphore::Semaphore(unsigned int count_)
     : count(count_)
-  {}
+  {
+  }
 
   inline void Semaphore::P()
   {

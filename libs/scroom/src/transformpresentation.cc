@@ -14,11 +14,13 @@
 
 TransformationData::TransformationData()
   : aspectRatio(1, 1)
-{}
+{
+}
 
 TransformationData::TransformationData(Scroom::Utils::Point<double> aspectRatio_)
   : aspectRatio(aspectRatio_)
-{}
+{
+}
 
 TransformationData::Ptr TransformationData::create() { return Ptr(new TransformationData()); }
 
@@ -40,7 +42,8 @@ TransformPresentation::TransformPresentation(PresentationInterface::Ptr const& p
   , presentation(presentation_)
   , colormappable(boost::dynamic_pointer_cast<Colormappable>(presentation_))
   , showMetaDataInterface(boost::dynamic_pointer_cast<ShowMetadataInterface>(presentation_))
-{}
+{
+}
 
 TransformPresentation::Ptr TransformPresentation::create(PresentationInterface::Ptr const& presentation,
                                                          TransformationData::Ptr const&    transformationData)

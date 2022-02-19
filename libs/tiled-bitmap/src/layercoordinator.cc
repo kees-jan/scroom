@@ -24,7 +24,8 @@ LayerCoordinator::LayerCoordinator(CompressedTile::Ptr targetTile_, LayerOperati
   : targetTile(targetTile_)
   , lo(lo_)
   , unfinishedSourceTiles(0)
-{}
+{
+}
 
 LayerCoordinator::~LayerCoordinator()
 {

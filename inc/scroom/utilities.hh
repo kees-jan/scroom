@@ -60,7 +60,8 @@ namespace Scroom
     public:
       explicit on_scope_exit(F f_)
         : f(std::move(f_))
-      {}
+      {
+      }
       on_scope_exit(const on_scope_exit&) = delete;
       on_scope_exit(on_scope_exit&&)      = delete;
       on_scope_exit& operator=(const on_scope_exit&) = delete;
@@ -84,7 +85,8 @@ namespace Scroom
     public:
       explicit optional_cleanup(F f_)
         : f(std::move(f_))
-      {}
+      {
+      }
       optional_cleanup(const optional_cleanup&) = delete;
       optional_cleanup(optional_cleanup&&)      = delete;
       optional_cleanup& operator=(const optional_cleanup&) = delete;

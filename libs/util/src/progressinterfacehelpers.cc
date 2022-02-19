@@ -29,7 +29,8 @@ namespace Scroom
     ProgressInterfaceFromProgressStateInterfaceForwarder::ProgressInterfaceFromProgressStateInterfaceForwarder(
       ProgressStateInterface::Ptr child_)
       : child(child_)
-    {}
+    {
+    }
 
     ProgressInterfaceFromProgressStateInterfaceForwarder::Ptr
       ProgressInterfaceFromProgressStateInterfaceForwarder::create(ProgressStateInterface::Ptr child)
@@ -68,7 +69,8 @@ namespace Scroom
     ProgressStateInterfaceFromProgressInterfaceForwarder::ProgressStateInterfaceFromProgressInterfaceForwarder(
       ProgressInterface::Ptr child_)
       : child(child_)
-    {}
+    {
+    }
 
     ProgressStateInterfaceFromProgressInterfaceForwarder::Ptr
       ProgressStateInterfaceFromProgressInterfaceForwarder::create(ProgressInterface::Ptr child)
@@ -188,7 +190,8 @@ namespace Scroom
                                                              ProgressInterface::Ptr const&            child_)
       : parent(parent_)
       , child(child_)
-    {}
+    {
+    }
 
     ProgressInterfaceBroadcaster::Unsubscriber::~Unsubscriber() { parent->unsubscribe(child); }
 
@@ -221,7 +224,8 @@ namespace Scroom
     ProgressInterfaceMultiplexer::Child::Child(ProgressInterfaceMultiplexer::Ptr parent_, ChildData::Ptr data_)
       : parent(parent_)
       , data(data_)
-    {}
+    {
+    }
 
     ProgressInterfaceMultiplexer::Child::~Child()
     {
@@ -245,7 +249,8 @@ namespace Scroom
 
     ProgressInterfaceMultiplexer::ProgressInterfaceMultiplexer(ProgressInterface::Ptr parent_)
       : parent(ProgressStateInterfaceFromProgressInterfaceForwarder::create(parent_))
-    {}
+    {
+    }
 
     ProgressInterfaceMultiplexer::Ptr ProgressInterfaceMultiplexer::create(ProgressInterface::Ptr parent)
     {

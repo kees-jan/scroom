@@ -109,7 +109,8 @@ namespace
 ProgressBarManager::ProgressBarManager(GtkProgressBar* progressBar_)
   : progressBar(progressBar_)
   , isWaiting(false)
-{}
+{
+}
 
 ProgressBarManager::Ptr ProgressBarManager::create(GtkProgressBar* progressBar)
 {

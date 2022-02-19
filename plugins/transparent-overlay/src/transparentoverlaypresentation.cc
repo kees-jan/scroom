@@ -42,7 +42,8 @@ TransparentOverlayPresentation::Ptr TransparentOverlayPresentation::create() { r
 
 TransparentOverlayPresentation::TransparentOverlayPresentation()
   : sizeDeterminer(SizeDeterminer::create())
-{}
+{
+}
 
 void TransparentOverlayPresentation::addPresentation(PresentationInterface::Ptr const& p)
 {

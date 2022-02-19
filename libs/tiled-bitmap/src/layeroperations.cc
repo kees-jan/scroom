@@ -270,7 +270,8 @@ LayerOperations::Ptr Operations1bpp::create(ColormapProvider::Ptr colormapProvid
 
 Operations1bpp::Operations1bpp(ColormapProvider::Ptr colormapProvider_)
   : colormapProvider(colormapProvider_)
-{}
+{
+}
 
 int Operations1bpp::getBpp() { return 1; }
 
@@ -385,7 +386,8 @@ LayerOperations::Ptr Operations8bpp::create(ColormapProvider::Ptr colormapProvid
 
 Operations8bpp::Operations8bpp(ColormapProvider::Ptr colormapProvider_)
   : colormapProvider(colormapProvider_)
-{}
+{
+}
 
 int Operations8bpp::getBpp() { return 8; }
 
@@ -501,7 +503,8 @@ PipetteCommonOperationsRGB::Ptr Operations24bpp::create() { return PipetteCommon
 
 Operations24bpp::Operations24bpp()
   : PipetteCommonOperationsRGB(8)
-{}
+{
+}
 
 int Operations24bpp::getBpp() { return 24; }
 
@@ -583,7 +586,8 @@ Operations::Operations(ColormapProvider::Ptr colormapProvider_, int bpp_)
   , pixelsPerByte(8 / bpp_)
   , pixelOffset(bpp_)
   , pixelMask((1 << bpp_) - 1)
-{}
+{
+}
 
 int Operations::getBpp() { return bpp; }
 
@@ -727,7 +731,8 @@ LayerOperations::Ptr OperationsColormapped::create(ColormapProvider::Ptr colorma
 
 OperationsColormapped::OperationsColormapped(ColormapProvider::Ptr colormapProvider_, int bpp_)
   : Operations(colormapProvider_, bpp_)
-{}
+{
+}
 
 int OperationsColormapped::getBpp() { return 2 * bpp; }
 
@@ -831,7 +836,8 @@ LayerOperations::Ptr Operations1bppClipped::create(ColormapProvider::Ptr colorma
 
 Operations1bppClipped::Operations1bppClipped(ColormapProvider::Ptr colormapProvider_)
   : colormapProvider(colormapProvider_)
-{}
+{
+}
 
 int Operations1bppClipped::getBpp() { return 1; }
 

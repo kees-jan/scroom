@@ -188,7 +188,8 @@ namespace
 
   ThreadWaiter::ThreadWaiter()
     : threadList(ThreadList::instance())
-  {}
+  {
+  }
 
   ThreadWaiter::~ThreadWaiter() { threadList->wait(); }
 } // namespace
@@ -202,7 +203,8 @@ ThreadPool::PrivateData::PrivateData(bool completeAllJobsBeforeDestruction_)
   , alive(true)
   , completeAllJobsBeforeDestruction(completeAllJobsBeforeDestruction_)
   , defaultQueue(ThreadPool::defaultQueue())
-{}
+{
+}
 
 ThreadPool::PrivateData::Ptr ThreadPool::PrivateData::create(bool completeAllJobsBeforeDestruction)
 {
@@ -392,7 +394,8 @@ ThreadPool::Queue::Ptr ThreadPool::Queue::createAsync()
 
 ThreadPool::Queue::Queue()
   : weak(WeakQueue::create())
-{}
+{
+}
 
 ThreadPool::Queue::~Queue() { weak->get()->deletingQueue(); }
 
@@ -408,7 +411,8 @@ ThreadPool::WeakQueue::Ptr ThreadPool::WeakQueue::create() { return ThreadPool::
 
 ThreadPool::WeakQueue::WeakQueue()
   : qi(QueueImpl::create())
-{}
+{
+}
 
 QueueImpl::Ptr ThreadPool::WeakQueue::get() { return qi; }
 
@@ -419,7 +423,8 @@ QueueImpl::Ptr ThreadPool::WeakQueue::get() { return qi; }
 ThreadPool::Job::Job(boost::function<void()> fn_, WeakQueue::Ptr queue_)
   : queue(queue_->get())
   , fn(fn_)
-{}
+{
+}
 
 ////////////////////////////////////////////////////////////////////////
 /// QueueJumper

@@ -72,7 +72,8 @@ namespace Scroom
     inline Page::Page(BlockInterface::Ptr bi_, size_t id_)
       : bi(bi_)
       , id(id_)
-    {}
+    {
+    }
 
     inline RawPageData::Ptr Page::get() { return bi->get(id); }
   } // namespace MemoryBlocks

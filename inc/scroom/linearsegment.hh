@@ -53,7 +53,8 @@ namespace Scroom
       Segment()
         : start(0)
         , size(0)
-      {}
+      {
+      }
 
       Segment(value_type start_, value_type size_)
         : start(start_)
@@ -71,7 +72,8 @@ namespace Scroom
       Segment(typename std::enable_if<!T_is_int, Segment<int> const&>::type other)
         : start(other.getStart())
         , size(other.getSize())
-      {}
+      {
+      }
 
       [[nodiscard]] Segment moveTo(value_type p) const { return Segment(p, size); }
 

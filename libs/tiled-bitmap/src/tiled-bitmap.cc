@@ -85,7 +85,8 @@ TiledBitmap::TiledBitmap(int bitmapWidth_, int bitmapHeight_, LayerSpec ls_)
   , tileCount(0)
   , tileFinishedCount(0)
   , progressBroadcaster(Scroom::Utils::ProgressInterfaceBroadcaster::create())
-{}
+{
+}
 
 void TiledBitmap::initialize(const Layer::Ptr& bottom)
 {

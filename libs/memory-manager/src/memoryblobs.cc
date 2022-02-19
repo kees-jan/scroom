@@ -32,7 +32,8 @@ namespace Scroom
       : blockCount(blockCount_)
       , blockSize(blockSize_)
       , blockFactoryInterface(getBlockFactoryInterface())
-    {}
+    {
+    }
 
     PageProvider::Ptr PageProvider::create(size_t blockCount, size_t blockSize)
     {
@@ -77,7 +78,8 @@ namespace Scroom
       , state(UNINITIALIZED)
       , cpuBound(CpuBound())
       , refcount(0)
-    {}
+    {
+    }
 
     RawPageData::Ptr Blob::load()
     {

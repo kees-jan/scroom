@@ -55,7 +55,8 @@ namespace Scroom
         : count(count_)
         , size(size_)
         , data(boost::movelib::make_unique<uint8_t[]>(count_ * size_))
-      {}
+      {
+      }
 
       RawPageData::Ptr SwapBasedBlockAllocator::get(size_t id)
       {

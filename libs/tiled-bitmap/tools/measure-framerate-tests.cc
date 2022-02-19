@@ -71,7 +71,8 @@ static bool logSizes()
 
 Invalidator::Invalidator(unsigned int secs_)
   : secs(secs_)
-{}
+{
+}
 
 bool Invalidator::operator()()
 {
@@ -137,7 +138,8 @@ bool BaseCounter::operator()()
 
 InvalidatingCounter::InvalidatingCounter(const std::string& name_, unsigned int secs_)
   : BaseCounter(name_, secs_)
-{}
+{
+}
 
 bool InvalidatingCounter::operator()()
 {

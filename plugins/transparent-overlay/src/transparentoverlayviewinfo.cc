@@ -63,7 +63,8 @@ namespace
 ChildView::ChildView(TransparentOverlayViewInfo::Ptr const& parent_)
   : parent(parent_)
   , progressInterface(parent->getProgressInterface())
-{}
+{
+}
 
 ChildView::Ptr ChildView::create(TransparentOverlayViewInfo::Ptr const& parent) { return Ptr(new ChildView(parent)); }
 
@@ -98,7 +99,8 @@ TransparentOverlayViewInfo::TransparentOverlayViewInfo(const ViewInterface::Weak
   : parentView(vi)
   , progressInterfaceMultiplexer(Scroom::Utils::ProgressInterfaceMultiplexer::create(parentView->getProgressInterface()))
   , sizeDeterminer(sizeDeterminer_)
-{}
+{
+}
 
 static void on_toggled(GtkToggleButton* button, gpointer data)
 {

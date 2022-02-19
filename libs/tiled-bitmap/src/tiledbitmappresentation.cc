@@ -153,7 +153,8 @@ namespace
       , properties(properties_)
       , colormapHelper(colormapHelper_)
       , pipetteLayerOperation(pipetteLayerOperation_)
-    {}
+    {
+    }
   };
 
   void TiledBitmapPresentation::clearCaches()
@@ -370,7 +371,8 @@ namespace
   private:
     explicit OpenTiledBitmapAsPresentation(OpenTiledBitmapInterface::Ptr openTiledBitmapInterface_)
       : openTiledBitmapInterface(std::move(openTiledBitmapInterface_))
-    {}
+    {
+    }
   };
 
   PresentationInterface::Ptr OpenTiledBitmapAsPresentation::open(const std::string& fileName)

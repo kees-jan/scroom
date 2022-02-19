@@ -40,7 +40,8 @@ private:
   /** Constructor. Create an empty colormap */
   Colormap()
     : name("Empty")
-  {}
+  {
+  }
 
 public:
   /** Constructor. Create a smart pointer to an empty colormap */

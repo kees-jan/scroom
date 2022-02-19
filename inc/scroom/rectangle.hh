@@ -37,29 +37,34 @@ namespace Scroom
       Rectangle(value_type x_, value_type y_, value_type width_, value_type height_)
         : horizontally(x_, width_)
         , vertically(y_, height_)
-      {}
+      {
+      }
 
       Rectangle(const Segment<value_type>& horizontally_, const Segment<value_type>& vertically_)
         : horizontally(horizontally_)
         , vertically(vertically_)
-      {}
+      {
+      }
 
       Rectangle(const cairo_rectangle_int_t& rect)
         : horizontally(rect.x, rect.width)
         , vertically(rect.y, rect.height)
-      {}
+      {
+      }
 
       Rectangle(const GdkPoint first, const GdkPoint second)
         : horizontally(first.x, second.x - first.x)
         , vertically(first.y, second.y - first.y)
-      {}
+      {
+      }
 
       /** Implicit conversion from Rectangle<int> to Rectangle<T>. If T!=int */
       template <bool T_is_int = std::is_same<int, typename std::remove_cv<T>::type>::value>
       Rectangle(typename std::enable_if<!T_is_int, Rectangle<int> const&>::type rect)
         : horizontally(rect.getHorizontally())
         , vertically(rect.getVertically())
-      {}
+      {
+      }
 
       [[nodiscard]] cairo_rectangle_int_t toGdkRectangle() const
       {

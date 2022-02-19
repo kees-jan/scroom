@@ -53,7 +53,8 @@ int QueueImpl::getCount()
 QueueLock::QueueLock(QueueImpl::Ptr queue)
   : q(queue)
   , isValid(q->jobStarted())
-{}
+{
+}
 
 bool QueueLock::queueExists() const { return isValid; }
 

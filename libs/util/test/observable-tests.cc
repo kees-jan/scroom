@@ -63,7 +63,8 @@ protected:
 
 TestRecursiveObservable::TestRecursiveObservable(TestObservable::Ptr child_)
   : child(child_)
-{}
+{
+}
 
 std::list<TestRecursiveObservable::Observer> TestRecursiveObservable::getObservers()
 {

@@ -24,7 +24,8 @@ TestData::Ptr testData;
 
 DummyColormapProvider::DummyColormapProvider(Colormap::Ptr colormap_)
   : colormap(colormap_)
-{}
+{
+}
 
 DummyColormapProvider::Ptr DummyColormapProvider::create(Colormap::Ptr colormap)
 {
@@ -102,7 +103,8 @@ void TestData::redraw(cairo_t* cr)
 
 Sleeper::Sleeper(unsigned int secs_)
   : secs(secs_)
-{}
+{
+}
 
 bool Sleeper::operator()()
 {

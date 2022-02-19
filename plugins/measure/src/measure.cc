@@ -60,7 +60,8 @@ Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr view)
 MeasureHandler::MeasureHandler()
   : selection(nullptr)
 
-{}
+{
+}
 
 MeasureHandler::Ptr MeasureHandler::create() { return Ptr(new MeasureHandler()); }
 

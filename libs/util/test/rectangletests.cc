@@ -33,13 +33,15 @@ private:
 public:
   RectangleHorizontalTestScaffold(int horizontalStart, int horizontalSize)
     : Rectangle(horizontalStart, verticalStart, horizontalSize, verticalSize)
-  {}
+  {
+  }
 
   RectangleHorizontalTestScaffold() = default;
 
   RectangleHorizontalTestScaffold(const Rectangle<int>& r)
     : Rectangle(r)
-  {}
+  {
+  }
 
   [[nodiscard]] int getSize() const { return getWidth(); }
 
@@ -71,13 +73,15 @@ private:
 public:
   RectangleVerticalTestScaffold(int verticalStart, int verticalSize)
     : Rectangle(horizontalStart, verticalStart, horizontalSize, verticalSize)
-  {}
+  {
+  }
 
   RectangleVerticalTestScaffold() = default;
 
   RectangleVerticalTestScaffold(const Rectangle<int>& r)
     : Rectangle(r)
-  {}
+  {
+  }
 
   [[nodiscard]] int  getSize() const { return getHeight(); }
   [[nodiscard]] int  getStart() const { return getTop(); }

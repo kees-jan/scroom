@@ -52,7 +52,8 @@ private:
 public:
   AsyncDeleter()
     : deleter(Scroom::Detail::ThreadPool::getDeleter())
-  {}
+  {
+  }
 
   void operator()(T* p) { deleter->schedule(boost::bind(&call_delete<T>, p)); }
 };

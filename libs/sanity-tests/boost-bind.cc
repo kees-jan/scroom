@@ -28,7 +28,8 @@ public:
 
   A(int& i_)
     : i(i_)
-  {}
+  {
+  }
 
   void set(int v) { i = v; }
 

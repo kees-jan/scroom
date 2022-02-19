@@ -17,7 +17,8 @@
 ColormapHelperBase::ColormapHelperBase(Colormap::Ptr const& colormap_)
   : colormap(colormap_)
   , originalColormap(colormap_)
-{}
+{
+}
 
 void ColormapHelperBase::setColormap(Colormap::Ptr colormap_) { colormap = colormap_; }
 
@@ -59,7 +60,8 @@ ColormapHelper::Ptr ColormapHelper::createInverted(int numberOfColors)
 
 ColormapHelper::ColormapHelper(Colormap::Ptr const& colormap_)
   : ColormapHelperBase(colormap_)
-{}
+{
+}
 
 std::map<std::string, std::string> ColormapHelper::getProperties() { return {{COLORMAPPABLE_PROPERTY_NAME, ""}}; }
 
@@ -83,7 +85,8 @@ MonochromeColormapHelper::MonochromeColormapHelper(int numberOfColors_, bool inv
   , blackish(Color(inverted_ ? 1 : 0))
   , whitish(Color(inverted_ ? 0 : 1))
   , transparentBackground(false)
-{}
+{
+}
 
 void MonochromeColormapHelper::setMonochromeColor(const Color& c)
 {

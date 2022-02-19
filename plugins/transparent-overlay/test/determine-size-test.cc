@@ -63,7 +63,8 @@ namespace
   protected:
     PresentationInterfaceStub(Scroom::Utils::Rectangle<double> const& rect_)
       : rect(rect_)
-    {}
+    {
+    }
 
   public:
     static Ptr create(Scroom::Utils::Rectangle<double> const& rect) { return Ptr(new PresentationInterfaceStub(rect)); }
@@ -93,7 +94,8 @@ namespace
   private:
     ResizablePresentationInterfaceStub(Scroom::Utils::Rectangle<double> const& rect_)
       : PresentationInterfaceStub(rect_)
-    {}
+    {
+    }
 
   public:
     static Ptr create(Scroom::Utils::Rectangle<double> const& rect) { return Ptr(new ResizablePresentationInterfaceStub(rect)); }

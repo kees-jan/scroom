@@ -57,7 +57,8 @@ SizeDeterminer::PresentationData::PresentationData()
 
 SizeDeterminer::PresentationData::PresentationData(ResizablePresentationInterface::Ptr const& resizablePresentationInterface_)
   : resizablePresentationInterface(resizablePresentationInterface_)
-{}
+{
+}
 
 ////////////////////////////////////////////////////////////////////////
 

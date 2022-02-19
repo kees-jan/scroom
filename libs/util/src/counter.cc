@@ -32,7 +32,8 @@ gboolean timedDumpCounts(gpointer data)
 Count::Count(const std::string& name_)
   : name(name_)
   , count(0)
-{}
+{
+}
 
 Count::Ptr Count::create(const std::string& name)
 {

@@ -25,7 +25,8 @@ CompressedTile::CompressedTile(int depth_, int x_, int y_, int bpp_, PageProvide
   , state(state_)
   , provider(provider_)
   , data(Blob::create(provider_, TILESIZE * TILESIZE * bpp / 8))
-{}
+{
+}
 
 CompressedTile::Ptr CompressedTile::create(int                                    depth,
                                            int                                    x,

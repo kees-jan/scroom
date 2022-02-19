@@ -29,7 +29,8 @@ public:
                                           cairo_t* /*cr*/,
                                           Scroom::Utils::Rectangle<double> /*presentationArea*/,
                                           int /*zoom*/) override
-  {}
+  {
+  }
   bool        getProperty(const std::string& /*name*/, std::string& /*value*/) override { return false; }
   bool        isPropertyDefined(const std::string& name) override { return PIPETTE_PROPERTY_NAME == name; }
   std::string getTitle() override { return {}; }
@@ -49,7 +50,8 @@ public:
 
   explicit DummyView(PresentationInterface::Ptr presentation_)
     : presentation(std::move(presentation_))
-  {}
+  {
+  }
 
   void                   invalidate() override {}
   ProgressInterface::Ptr getProgressInterface() override { return nullptr; }

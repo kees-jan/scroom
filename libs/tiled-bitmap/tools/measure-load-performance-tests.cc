@@ -45,21 +45,24 @@ public:
 
 WaitForAsyncOp::WaitForAsyncOp(const std::string& name_)
   : name(name_)
-{}
+{
+}
 
 WaitForAsyncOp::WaitForAsyncOp(const WaitForAsyncOp& other)
   : name(other.name)
   , s()
   , started(other.started)
   , t(other.t)
-{}
+{
+}
 
 WaitForAsyncOp::WaitForAsyncOp(WaitForAsyncOp&& other)
   : name(std::move(other.name))
   , s()
   , started(std::move(other.started))
   , t(std::move(other.t))
-{}
+{
+}
 
 bool WaitForAsyncOp::operator()()
 {

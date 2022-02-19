@@ -34,7 +34,8 @@ PipetteCommonOperationsCMYK::Ptr OperationsCMYK32::create() { return PipetteComm
 
 OperationsCMYK32::OperationsCMYK32()
   : PipetteCommonOperationsCMYK(8)
-{}
+{
+}
 
 int OperationsCMYK32::getBpp() { return 32; }
 
@@ -126,7 +127,8 @@ PipetteCommonOperationsCMYK::Ptr OperationsCMYK16::create() { return PipetteComm
 
 OperationsCMYK16::OperationsCMYK16()
   : PipetteCommonOperationsCMYK(4)
-{}
+{
+}
 
 int OperationsCMYK16::getBpp() { return 16; }
 
@@ -218,7 +220,8 @@ PipetteCommonOperationsCMYK::Ptr OperationsCMYK8::create() { return PipetteCommo
 
 OperationsCMYK8::OperationsCMYK8()
   : PipetteCommonOperationsCMYK(2)
-{}
+{
+}
 
 int OperationsCMYK8::getBpp() { return 8; }
 
@@ -307,7 +310,8 @@ PipetteCommonOperationsCMYK::Ptr OperationsCMYK4::create() { return PipetteCommo
 
 OperationsCMYK4::OperationsCMYK4()
   : PipetteCommonOperationsCMYK(1)
-{}
+{
+}
 
 int OperationsCMYK4::getBpp()
 {

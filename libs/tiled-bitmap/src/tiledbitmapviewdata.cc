@@ -29,7 +29,8 @@ TiledBitmapViewData::TiledBitmapViewData(ViewInterface::WeakPtr viewInterface_)
   , jmax(0)
   , zoom(0)
   , redrawPending(false)
-{}
+{
+}
 
 void TiledBitmapViewData::setNeededTiles(Layer::Ptr const&    l,
                                          int                  imin_,

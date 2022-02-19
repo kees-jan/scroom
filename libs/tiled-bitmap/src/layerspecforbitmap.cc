@@ -98,7 +98,8 @@ namespace Scroom
     private:
       LayerSpecForBitmapper()
         : functions({RGBBitmap, CMYKBitmap, GreyscaleBitmap, ColormappedBitmap})
-      {}
+      {
+      }
 
       std::vector<LayerSpecForBitmapFunc> functions;
     };

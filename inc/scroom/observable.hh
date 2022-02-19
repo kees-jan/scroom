@@ -126,7 +126,8 @@ namespace Scroom
       : observable(observable_)
       , o(observer_)
       , observer(observer_)
-    {}
+    {
+    }
 
     template <typename T>
     Detail::Registration<T>::Registration(boost::weak_ptr<Observable<T>> observable_, boost::weak_ptr<T> observer_)

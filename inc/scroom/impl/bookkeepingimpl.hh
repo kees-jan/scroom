@@ -20,7 +20,8 @@ namespace Scroom
       public:
         TokenAddition(const Scroom::Bookkeeping::Token& t)
           : Scroom::Bookkeeping::Token(t)
-        {}
+        {
+        }
 
         TokenAddition& operator+(const Stuff& rhs)
         {
@@ -86,7 +87,8 @@ namespace Scroom
         MapTokenImpl(boost::shared_ptr<Scroom::Bookkeeping::MapBase<K, V>> map_, const K& k_)
           : map(map_)
           , k(k_)
-        {}
+        {
+        }
 
         MapTokenImpl(const MapTokenImpl&) = delete;
         MapTokenImpl(MapTokenImpl&&)      = delete;
@@ -126,7 +128,8 @@ namespace Scroom
       protected:
         ValueType(V value_)
           : value(value_)
-        {}
+        {
+        }
 
       public:
         static Ptr create(V value) { return Ptr(new ValueType<V>(value)); }
@@ -144,7 +147,8 @@ namespace Scroom
       public:
         LValue(VTPtr pv_)
           : pv(pv_)
-        {}
+        {
+        }
 
         LValue& operator=(const V& v)
         {
@@ -160,15 +164,18 @@ namespace Scroom
 
     inline Token::Token(const boost::shared_ptr<Detail::TokenImpl>& t)
       : boost::shared_ptr<Detail::TokenImpl>(t)
-    {}
+    {
+    }
 
     inline Token::Token(const boost::weak_ptr<Detail::TokenImpl>& t)
       : boost::shared_ptr<Detail::TokenImpl>(t)
-    {}
+    {
+    }
 
     inline Token::Token()
       : boost::shared_ptr<Detail::TokenImpl>(Detail::TokenImpl::create())
-    {}
+    {
+    }
 
     inline Token::Token(const Stuff& s)
       : boost::shared_ptr<Detail::TokenImpl>(Detail::TokenImpl::create())

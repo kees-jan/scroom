@@ -85,7 +85,8 @@ namespace Scroom
         , pixelMask(mask(bps))
         , currentBase(base + d.quot)
         , currentOffset(samplesPerBase - 1 - d.rem)
-      {}
+      {
+      }
 
     public:
       /**
@@ -99,7 +100,8 @@ namespace Scroom
       // NOLINTNEXTLINE (cppcoreguidelines-pro-type-member-init,hicpp-member-init)
       explicit SampleIterator(ConstBase* base, int offset = 0, int bps_ = 1)
         : SampleIterator(div(offset, /* samplesPerBase */ bitsPerBase / bps_), base, bps_)
-      {}
+      {
+      }
 
       /** Get the value of the current sample */
       Base get() { return (*currentBase >> (currentOffset * pixelOffset)) & pixelMask; }

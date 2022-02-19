@@ -31,7 +31,8 @@ namespace
     Data(int expectedColors_, ColormapHelper::Ptr const& helper_)
       : helper(helper_)
       , expectedColors(expectedColors_)
-    {}
+    {
+    }
   };
 
   std::ostream& operator<<(std::ostream& os, const Data&) { return os; }

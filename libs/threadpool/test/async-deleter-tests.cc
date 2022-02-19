@@ -41,7 +41,8 @@ public:
   A(Semaphore* s1_, Semaphore* s2_)
     : s1(s1_)
     , s2(s2_)
-  {}
+  {
+  }
   ~A()
   {
     s1->P();

@@ -204,7 +204,8 @@ DataFetcher::DataFetcher(Layer::Ptr                 layer_,
   , threadPool(CpuBound())
   , queue(std::move(queue_))
   , on_finished(std::move(on_finished_))
-{}
+{
+}
 
 void DataFetcher::operator()()
 {

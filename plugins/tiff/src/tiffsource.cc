@@ -230,7 +230,8 @@ namespace Scroom
       : fileName(std::move(fileName_))
       , preOpenedTif(std::move(tif_))
       , bmd(std::move(bmd_))
-    {}
+    {
+    }
 
     bool Source::reset()
     {

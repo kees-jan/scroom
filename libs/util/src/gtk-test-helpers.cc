@@ -7,7 +7,8 @@ namespace Scroom::GtkTestHelpers
 {
   GtkMainLoop::GtkMainLoop()
     : gtk_thread(GtkMainLoop::run_gtk)
-  {}
+  {
+  }
 
   GtkMainLoop::~GtkMainLoop()
   {
