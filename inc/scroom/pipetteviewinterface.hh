@@ -26,5 +26,5 @@ public:
    *
    * @param area selected area to get the pixel values from.
    */
-  virtual PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<int> area) = 0;
+  virtual PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<double> area) = 0;
 };

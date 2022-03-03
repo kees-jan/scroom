@@ -64,8 +64,6 @@ namespace Scroom::Utils
       return Scroom::GtkHelpers::createCairoIntRectangle(getLeft(), getTop(), getWidth(), getHeight());
     }
 
-    [[nodiscard]] Rectangle<int> toIntRectangle() const { return Rectangle<int>(getLeft(), getTop(), getWidth(), getHeight()); }
-
     [[nodiscard]] Rectangle moveTo(xy_type const& other) const { return moveTo(other.x, other.y); }
 
     [[nodiscard]] Rectangle moveTo(value_type const& x, value_type const& y) const

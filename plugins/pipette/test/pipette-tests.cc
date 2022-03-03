@@ -36,7 +36,10 @@ public:
   std::string getTitle() override { return {}; }
   void        open(ViewInterface::WeakPtr /*vi*/) override{};
   void        close(ViewInterface::WeakPtr /*vi*/) override{};
-  PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<int> /*area*/) override { return {{"C", 1.0}}; }
+  PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<double> /*area*/) override
+  {
+    return {{"C", 1.0}};
+  }
 };
 
 class DummyView : public ViewInterface
@@ -199,13 +202,13 @@ BOOST_AUTO_TEST_CASE(pipette_value_display_presentation)
 
   handler->onEnable();
 
-  handler->computeValues(view, Scroom::Utils::Rectangle<int>(10, 11, 12, 13));
+  handler->computeValues(view, Scroom::Utils::Rectangle<double>(10, 11, 12, 13));
   BOOST_CHECK_EQUAL(view->nextStatusMessage(), "Computing color values...");
   BOOST_CHECK_EQUAL(view->nextStatusMessage(),
                     "Top-left: (10,11), Bottom-right: (22,24), Height: 13, Width: 12, "
                     "Colors: C: 1.00");
 
-  handler->computeValues(view, Scroom::Utils::Rectangle<int>(-10, -11, 20, 22));
+  handler->computeValues(view, Scroom::Utils::Rectangle<double>(-10, -11, 20, 22));
   BOOST_CHECK_EQUAL(view->nextStatusMessage(), "Computing color values...");
   BOOST_CHECK_EQUAL(view->nextStatusMessage(),
                     "Top-left: (0,0), Bottom-right: (10,11), Height: 11, Width: 10, "
@@ -219,7 +222,7 @@ BOOST_AUTO_TEST_CASE(pipette_value_display_no_presentation)
 
   handler->onEnable();
 
-  handler->computeValues(view, Scroom::Utils::Rectangle<int>(10, 11, 12, 13));
+  handler->computeValues(view, Scroom::Utils::Rectangle<double>(10, 11, 12, 13));
   BOOST_CHECK_EQUAL(view->nextStatusMessage(), "Computing color values...");
   BOOST_CHECK_EQUAL(view->nextStatusMessage(), "Pipette is not supported for this presentation.");
 }

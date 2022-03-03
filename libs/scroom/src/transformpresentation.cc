@@ -77,7 +77,7 @@ void TransformPresentation::redraw(ViewInterface::Ptr const&        vi,
 
   cairo_save(cr);
   cairo_scale(cr, aspectRatio.x, aspectRatio.y);
-  presentation->redraw(vi, cr, presentationArea, zoom);
+  presentation->redraw(vi, cr, presentationArea / aspectRatio, zoom);
   cairo_restore(cr);
 }
 
@@ -108,11 +108,11 @@ bool TransformPresentation::getTransparentBackground() { return colormappable->g
 
 void TransformPresentation::showMetadata(GtkWindow* parent) { showMetaDataInterface->showMetadata(parent); }
 
-PipetteLayerOperations::PipetteColor TransformPresentation::getPixelAverages(Scroom::Utils::Rectangle<int> area)
+PipetteLayerOperations::PipetteColor TransformPresentation::getPixelAverages(Scroom::Utils::Rectangle<double> area)
 {
   PipetteViewInterface::Ptr pipettePresentation = boost::dynamic_pointer_cast<PipetteViewInterface>(presentation);
   require(pipettePresentation);
-  return pipettePresentation->getPixelAverages(area);
+  return pipettePresentation->getPixelAverages(area / getAspectRatio());
 }
 
 Scroom::Utils::Point<double> TransformPresentation::getAspectRatio() const { return transformationData->getAspectRatio(); }

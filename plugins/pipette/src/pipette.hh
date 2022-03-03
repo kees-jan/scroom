@@ -56,9 +56,9 @@ public:
 
   ////////////////////////////////////////////////////////////////////////
 
-  virtual void computeValues(ViewInterface::Ptr view, Scroom::Utils::Rectangle<int> sel_rect);
+  virtual void computeValues(ViewInterface::Ptr view, Scroom::Utils::Rectangle<double> sel_rect);
   virtual void
-    displayValues(ViewInterface::Ptr view, Scroom::Utils::Rectangle<int> rect, PipetteLayerOperations::PipetteColor colors);
+    displayValues(ViewInterface::Ptr view, Scroom::Utils::Rectangle<double> rect, PipetteLayerOperations::PipetteColor colors);
 
   ////////////////////////////////////////////////////////////////////////
   // Testing

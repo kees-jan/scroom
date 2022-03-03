@@ -104,7 +104,7 @@ namespace
     // PipetteViewInterface
     ////////////////////////////////////////////////////////////////////////
 
-    PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<int> area) override;
+    PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<double> area) override;
 
     ////////////////////////////////////////////////////////////////////////
     // ShowMetaDataInterface
@@ -221,17 +221,16 @@ namespace
   // PipetteViewInterface
   ////////////////////////////////////////////////////////////////////////
 
-  PipetteLayerOperations::PipetteColor TiledBitmapPresentation::getPixelAverages(Scroom::Utils::Rectangle<int> area)
+  PipetteLayerOperations::PipetteColor TiledBitmapPresentation::getPixelAverages(Scroom::Utils::Rectangle<double> area)
   {
     require(pipetteLayerOperation);
 
-    Scroom::Utils::Rectangle<int> presentationArea = getRect().toIntRectangle();
-    area                                           = area.intersection(presentationArea);
+    auto intArea = roundOutward(area.intersection(getRect())).to<int>();
 
     Layer::Ptr                           bottomLayer = tbi->getBottomLayer();
     PipetteLayerOperations::PipetteColor pipetteColors;
 
-    int totalPixels = area.getWidth() * area.getHeight();
+    int totalPixels = intArea.getWidth() * intArea.getHeight();
 
     if(totalPixels == 0)
     {
@@ -239,12 +238,12 @@ namespace
     }
 
     // Get start tile (tile_pos_x_start, tile_pos_y_start)
-    int tile_pos_x_start = area.getLeft() / TILESIZE;
-    int tile_pos_y_start = area.getTop() / TILESIZE;
+    int tile_pos_x_start = intArea.getLeft() / TILESIZE;
+    int tile_pos_y_start = intArea.getTop() / TILESIZE;
 
     // Get end tile (tile_pos_x_end, tile_pos_y_end)
-    int tile_pos_x_end = (area.getRight() - 1) / TILESIZE;
-    int tile_pos_y_end = (area.getBottom() - 1) / TILESIZE;
+    int tile_pos_x_end = (intArea.getRight() - 1) / TILESIZE;
+    int tile_pos_y_end = (intArea.getBottom() - 1) / TILESIZE;
 
     for(int x = tile_pos_x_start; x <= tile_pos_x_end; x++)
     {
@@ -253,7 +252,7 @@ namespace
         ConstTile::Ptr                tile = bottomLayer->getTile(x, y)->getConstTileSync();
         Scroom::Utils::Rectangle<int> tile_rectangle(x * TILESIZE, y * TILESIZE, tile->width, tile->height);
 
-        Scroom::Utils::Rectangle<int> inter_rect = tile_rectangle.intersection(area);
+        Scroom::Utils::Rectangle<int> inter_rect = tile_rectangle.intersection(intArea);
         Scroom::Utils::Point<int>     base(x * TILESIZE, y * TILESIZE);
 
         inter_rect -= base; // rectangle coordinates relative to constTile with topleft corner (0,0)

@@ -57,17 +57,38 @@ enum
 };
 
 ////////////////////////////////////////////////////////////////////////
+/// Tweakers
+
+class TweakPresentationPosition
+{
+public:
+  using Ptr   = boost::shared_ptr<TweakPresentationPosition>;
+  using Point = Scroom::Utils::Point<double>;
+
+  static Ptr create(Scroom::Utils::Point<double> aspectRatio_) { return Ptr(new TweakPresentationPosition(aspectRatio_)); }
+
+  Point tweakPosition(Point currentPosition, Scroom::Utils::Point<int> /*drawingAreaSize*/, int zoom)
+  {
+    return round_to_multiple_of(currentPosition, Point(50 / pixelSizeFromZoom(zoom)));
+  }
+
+private:
+  explicit TweakPresentationPosition(Scroom::Utils::Point<double> aspectRatio_)
+    : aspectRatio(aspectRatio_)
+  {
+  }
+
+private:
+  Scroom::Utils::Point<double> aspectRatio;
+  //  int                          tileSize = 4096;
+};
+
+////////////////////////////////////////////////////////////////////////
 /// Helpers
 
-static GdkPoint eventToGdkPoint(GdkEventButton* event)
-{
-  GdkPoint result = {static_cast<gint>(event->x), static_cast<gint>(event->y)};
-  return result;
-}
+static Scroom::Utils::Point<double> eventToPoint(GdkEventButton* event) { return {event->x, event->y}; }
 
-[[maybe_unused]] static Scroom::Utils::Point<double> eventToPoint(GdkEventButton* event) { return {event->x, event->y}; }
-
-[[maybe_unused]] static Scroom::Utils::Point<double> eventToPoint(GdkEventMotion* event) { return {event->x, event->y}; }
+static Scroom::Utils::Point<double> eventToPoint(GdkEventMotion* event) { return {event->x, event->y}; }
 
 // This one has too much View-internal knowledge to hide in callbacks.cc
 static void on_newWindow_activate(GtkMenuItem*, gpointer user_data)
@@ -156,11 +177,10 @@ void View::redraw(cairo_t* cr)
 {
   if(presentation)
   {
-    double                       pixelSize             = pixelSizeFromZoom(zoom);
-    Scroom::Utils::Point<double> visibleRegionPosition = round_down_to_multiple_of(position, 1 / pixelSize / aspectRatio);
-    Scroom::Utils::Point<double> visibleRegionSize     = ceiled_divide_by(drawingAreaSize.to<double>(), pixelSize * aspectRatio);
+    double                       pixelSize         = pixelSizeFromZoom(zoom);
+    Scroom::Utils::Point<double> visibleRegionSize = drawingAreaSize.to<double>() / pixelSize;
 
-    auto rect = Scroom::Utils::make_rect(visibleRegionPosition, visibleRegionSize);
+    auto rect = Scroom::Utils::make_rect(position, visibleRegionSize);
 
     presentation->redraw(shared_from_this<View>(), cr, rect, zoom);
     for(const auto& renderer: postRenderers)
@@ -219,7 +239,7 @@ void View::setPresentation(PresentationInterface::Ptr presentation_)
 
   zoom                   = 0;
   const double pixelSize = pixelSizeFromZoom(zoom);
-  position               = -drawingAreaSize / (pixelSize * aspectRatio) / 2;
+  position               = -drawingAreaSize.to<double>() / pixelSize / 2;
 
   updateZoom();
   updateScrollbars();
@@ -273,7 +293,7 @@ void View::updateTextbox()
     gtk_widget_set_sensitive(GTK_WIDGET(xTextBox), true);
     gtk_widget_set_sensitive(GTK_WIDGET(yTextBox), true);
 
-    auto center = position + drawingAreaSize.to<double>() / pixelSizeFromZoom(zoom) * aspectRatio / 2;
+    auto center = position + drawingAreaSize.to<double>() / pixelSizeFromZoom(zoom) / 2;
 
     auto xs = std::to_string(center.x);
     auto ys = std::to_string(center.y);
@@ -333,7 +353,7 @@ void View::updateRulers()
 {
   const double pixelSize   = pixelSizeFromZoom(zoom);
   const auto   topLeft     = position;
-  const auto   bottomRight = topLeft + drawingAreaSize / (pixelSize * aspectRatio);
+  const auto   bottomRight = topLeft + drawingAreaSize / pixelSize;
 
   hruler->setRange(topLeft.x, bottomRight.x);
   vruler->setRange(topLeft.y, bottomRight.y);
@@ -416,7 +436,7 @@ void View::on_configure()
 void View::on_window_size_changed(const Scroom::Utils::Point<int>& newSize)
 {
   auto pixelSize = pixelSizeFromZoom(zoom);
-  position += (drawingAreaSize - newSize) / (pixelSize * aspectRatio) / 2;
+  position += (drawingAreaSize - newSize) / pixelSize / 2;
 
   drawingAreaSize = newSize;
   updateZoom();
@@ -467,8 +487,8 @@ void View::on_zoombox_changed(int newzoom, const Scroom::Utils::Point<double>& m
 {
   if(newzoom != zoom)
   {
-    position += mousePos / (pixelSizeFromZoom(zoom) * aspectRatio);
-    position -= mousePos / (pixelSizeFromZoom(newzoom) * aspectRatio);
+    position += mousePos / pixelSizeFromZoom(zoom);
+    position -= mousePos / pixelSizeFromZoom(newzoom);
 
     zoom = newzoom;
     updateScrollbars();
@@ -484,7 +504,7 @@ void View::on_textbox_value_changed(GtkEditable* editable)
     auto newPos = position;
 
     const double pixelSize = pixelSizeFromZoom(zoom);
-    const auto   da        = drawingAreaSize.to<double>() / (pixelSize * aspectRatio);
+    const auto   da        = drawingAreaSize.to<double>() / pixelSize;
 
     if(editable == GTK_EDITABLE(yTextBox))
     {
@@ -529,7 +549,7 @@ void View::on_buttonPress(GdkEventButton* event)
   }
   else if(event->button == 3)
   {
-    auto point = windowPointToPresentationPoint(Scroom::Utils::Point<double>(eventToGdkPoint(event)));
+    auto point = windowPointToPresentationPoint(eventToPoint(event));
     selection  = boost::make_shared<Selection>(point);
     for(const auto& listener: selectionListeners)
     {
@@ -549,7 +569,7 @@ void View::on_buttonRelease(GdkEventButton* event)
   }
   else if(event->button == 3 && selection)
   {
-    selection->end = windowPointToPresentationPoint(Scroom::Utils::Point<double>(eventToGdkPoint(event)));
+    selection->end = windowPointToPresentationPoint(eventToPoint(event));
     for(const auto& listener: selectionListeners)
     {
       listener->onSelectionEnd(selection, shared_from_this<ViewInterface>());
@@ -565,7 +585,7 @@ void View::on_motion_notify(GdkEventMotion* event)
     auto mousePos = eventToPoint(event);
 
     const auto pixelSize = pixelSizeFromZoom(zoom);
-    const auto newPos    = position - (mousePos - cachedPoint) / (pixelSize * aspectRatio);
+    const auto newPos    = position - (mousePos - cachedPoint) / pixelSize;
     cachedPoint          = mousePos;
 
     updateXY(newPos, OTHER);
@@ -649,27 +669,29 @@ static void tool_button_toggled(GtkToggleButton* button, gpointer data) { static
 
 void View::addToolButton(GtkToggleButton* button, ToolStateListener::Ptr callback)
 {
-  Scroom::GtkHelpers::sync_on_ui_thread([=] {
-    GtkToolItem* toolItem = gtk_tool_item_new();
-    gtk_container_add(GTK_CONTAINER(toolItem), GTK_WIDGET(button));
-    gtk_widget_set_visible(GTK_WIDGET(button), true);
-    g_signal_connect(static_cast<gpointer>(button), "toggled", G_CALLBACK(tool_button_toggled), this);
-
-    addToToolbar(toolItem);
-
-    tools[button] = callback;
-    if(tools.size() == 1)
+  Scroom::GtkHelpers::sync_on_ui_thread(
+    [=]
     {
-      gtk_toggle_button_set_active(button, true);
-      gtk_widget_set_sensitive(GTK_WIDGET(button), false);
-      callback->onEnable();
-    }
-    else
-    {
-      gtk_toggle_button_set_active(button, false);
-      gtk_widget_set_sensitive(GTK_WIDGET(button), true);
-    }
-  });
+      GtkToolItem* toolItem = gtk_tool_item_new();
+      gtk_container_add(GTK_CONTAINER(toolItem), GTK_WIDGET(button));
+      gtk_widget_set_visible(GTK_WIDGET(button), true);
+      g_signal_connect(static_cast<gpointer>(button), "toggled", G_CALLBACK(tool_button_toggled), this);
+
+      addToToolbar(toolItem);
+
+      tools[button] = callback;
+      if(tools.size() == 1)
+      {
+        gtk_toggle_button_set_active(button, true);
+        gtk_widget_set_sensitive(GTK_WIDGET(button), false);
+        callback->onEnable();
+      }
+      else
+      {
+        gtk_toggle_button_set_active(button, false);
+        gtk_widget_set_sensitive(GTK_WIDGET(button), true);
+      }
+    });
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -677,12 +699,12 @@ void View::addToolButton(GtkToggleButton* button, ToolStateListener::Ptr callbac
 
 Scroom::Utils::Point<double> View::windowPointToPresentationPoint(Scroom::Utils::Point<double> wp) const
 {
-  return position + wp / pixelSizeFromZoom(zoom) / aspectRatio;
+  return position + wp / pixelSizeFromZoom(zoom);
 }
 
 Scroom::Utils::Point<double> View::presentationPointToWindowPoint(Scroom::Utils::Point<double> presentationpoint) const
 {
-  return (presentationpoint - position) * pixelSizeFromZoom(zoom) * aspectRatio;
+  return (presentationpoint - position) * pixelSizeFromZoom(zoom);
 }
 
 void View::updateNewWindowMenu()

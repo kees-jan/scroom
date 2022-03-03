@@ -32,6 +32,11 @@ namespace Scroom
 
       Point() = default;
 
+      explicit Point(value_type xy)
+        : Point(xy, xy)
+      {
+      }
+
       Point(value_type x_, value_type y_)
         : x(x_)
         , y(y_)
@@ -164,6 +169,12 @@ namespace Scroom
     Point<typename std::common_type<T, U>::type> operator/(T left, Point<U> right)
     {
       return make_point(left, left) / right;
+    }
+
+    template <typename T, typename U>
+    Point<typename std::common_type<T, U>::type> operator/(Point<T> left, U right)
+    {
+      return left / make_point(right, right);
     }
 
     template <typename T>

@@ -70,7 +70,7 @@ public:
   Scroom::Utils::Point<double> getAspectRatio() const override;
 
   // PipetteViewInterface
-  PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<int> area) override;
+  PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<double> area) override;
 
   // Colormappable
   void          setColormap(Colormap::Ptr colormap) override;

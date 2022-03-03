@@ -58,7 +58,7 @@ Scroom::Bookkeeping::Token Pipette::viewAdded(ViewInterface::Ptr view)
 
 PipetteHandler::Ptr PipetteHandler::create() { return Ptr(new PipetteHandler()); }
 
-void PipetteHandler::computeValues(ViewInterface::Ptr view, Scroom::Utils::Rectangle<int> sel_rect)
+void PipetteHandler::computeValues(ViewInterface::Ptr view, Scroom::Utils::Rectangle<double> sel_rect)
 {
   jobMutex.lock();
 
@@ -74,7 +74,7 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view, Scroom::Utils::Recta
     jobMutex.unlock();
     return;
   }
-  auto image  = presentation->getRect().toIntRectangle();
+  auto image  = presentation->getRect();
   auto rect   = sel_rect.intersection(image);
   auto colors = pipette->getPixelAverages(rect);
 
@@ -89,7 +89,7 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view, Scroom::Utils::Recta
 }
 
 void PipetteHandler::displayValues(ViewInterface::Ptr                   view,
-                                   Scroom::Utils::Rectangle<int>        rect,
+                                   Scroom::Utils::Rectangle<double>     rect,
                                    PipetteLayerOperations::PipetteColor colors)
 {
   std::stringstream info;
@@ -134,7 +134,7 @@ void PipetteHandler::onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view)
     selection = s;
 
     // Get the selection rectangle
-    auto sel_rect = roundOutward(Scroom::Utils::make_rect_from_start_end(selection->start, selection->end)).to<int>();
+    auto sel_rect = roundOutward(Scroom::Utils::make_rect_from_start_end(selection->start, selection->end));
     Sequentially()->schedule(boost::bind(&PipetteHandler::computeValues, shared_from_this<PipetteHandler>(), view, sel_rect),
                              currentJob);
     jobMutex.unlock();
