@@ -32,12 +32,12 @@ namespace Scroom
     class Base : public boost::enable_shared_from_this<Base>
     {
     public:
-      Base()            = default;
-      Base(const Base&) = delete;
-      Base(Base&&)      = delete;
+      Base()                       = default;
+      Base(const Base&)            = delete;
+      Base(Base&&)                 = delete;
       Base& operator=(const Base&) = delete;
-      Base& operator=(Base&&) = delete;
-      virtual ~Base()         = default;
+      Base& operator=(Base&&)      = delete;
+      virtual ~Base()              = default;
 
       /**
        * Calls shared_from_this() with a built-in dynamic cast, to
@@ -62,10 +62,10 @@ namespace Scroom
         : f(std::move(f_))
       {
       }
-      on_scope_exit(const on_scope_exit&) = delete;
-      on_scope_exit(on_scope_exit&&)      = delete;
+      on_scope_exit(const on_scope_exit&)            = delete;
+      on_scope_exit(on_scope_exit&&)                 = delete;
       on_scope_exit& operator=(const on_scope_exit&) = delete;
-      on_scope_exit& operator=(on_scope_exit&&) = delete;
+      on_scope_exit& operator=(on_scope_exit&&)      = delete;
 
       ~on_scope_exit() { f(); }
 
@@ -87,10 +87,10 @@ namespace Scroom
         : f(std::move(f_))
       {
       }
-      optional_cleanup(const optional_cleanup&) = delete;
-      optional_cleanup(optional_cleanup&&)      = delete;
+      optional_cleanup(const optional_cleanup&)            = delete;
+      optional_cleanup(optional_cleanup&&)                 = delete;
       optional_cleanup& operator=(const optional_cleanup&) = delete;
-      optional_cleanup& operator=(optional_cleanup&&) = delete;
+      optional_cleanup& operator=(optional_cleanup&&)      = delete;
 
       ~optional_cleanup()
       {
@@ -211,7 +211,7 @@ namespace Scroom
       }
 
       Counted& operator=(const Counted&) = default;
-      Counted& operator=(Counted&&) = default;
+      Counted& operator=(Counted&&)      = default;
 
       virtual ~Counted() { data->dec(); }
     };

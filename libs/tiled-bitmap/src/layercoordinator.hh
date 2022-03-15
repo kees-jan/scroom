@@ -35,10 +35,10 @@ public:
   static Ptr create(CompressedTile::Ptr targetTile, LayerOperations::Ptr lo);
 
   ~LayerCoordinator() override;
-  LayerCoordinator(const LayerCoordinator&) = delete;
-  LayerCoordinator(LayerCoordinator&&)      = delete;
+  LayerCoordinator(const LayerCoordinator&)           = delete;
+  LayerCoordinator(LayerCoordinator&&)                = delete;
   LayerCoordinator operator=(const LayerCoordinator&) = delete;
-  LayerCoordinator operator=(LayerCoordinator&&) = delete;
+  LayerCoordinator operator=(LayerCoordinator&&)      = delete;
 
   void addSourceTile(int x, int y, CompressedTile::Ptr tile);
 

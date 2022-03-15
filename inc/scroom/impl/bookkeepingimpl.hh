@@ -90,10 +90,10 @@ namespace Scroom
         {
         }
 
-        MapTokenImpl(const MapTokenImpl&) = delete;
-        MapTokenImpl(MapTokenImpl&&)      = delete;
+        MapTokenImpl(const MapTokenImpl&)           = delete;
+        MapTokenImpl(MapTokenImpl&&)                = delete;
         MapTokenImpl operator=(const MapTokenImpl&) = delete;
-        MapTokenImpl operator=(MapTokenImpl&&) = delete;
+        MapTokenImpl operator=(MapTokenImpl&&)      = delete;
 
       public:
         ~MapTokenImpl()

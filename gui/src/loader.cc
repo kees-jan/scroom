@@ -80,10 +80,10 @@ public:
     }
   }
 
-  GtkFileFilterListDestroyer(const GtkFileFilterListDestroyer&) = delete;
-  GtkFileFilterListDestroyer(GtkFileFilterListDestroyer&&)      = delete;
+  GtkFileFilterListDestroyer(const GtkFileFilterListDestroyer&)           = delete;
+  GtkFileFilterListDestroyer(GtkFileFilterListDestroyer&&)                = delete;
   GtkFileFilterListDestroyer operator=(const GtkFileFilterListDestroyer&) = delete;
-  GtkFileFilterListDestroyer operator=(GtkFileFilterListDestroyer&&) = delete;
+  GtkFileFilterListDestroyer operator=(GtkFileFilterListDestroyer&&)      = delete;
 };
 
 ////////////////////////////////////////////////////////////////////////

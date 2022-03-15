@@ -144,10 +144,10 @@ namespace Scroom
 
       private:
         Unsubscriber(ProgressInterfaceBroadcaster::Ptr const& parent, ProgressInterface::Ptr const& child);
-        Unsubscriber(const Unsubscriber&) = delete;
-        Unsubscriber(Unsubscriber&&)      = delete;
+        Unsubscriber(const Unsubscriber&)            = delete;
+        Unsubscriber(Unsubscriber&&)                 = delete;
         Unsubscriber& operator=(const Unsubscriber&) = delete;
-        Unsubscriber& operator=(Unsubscriber&&) = delete;
+        Unsubscriber& operator=(Unsubscriber&&)      = delete;
 
       public:
         static Ptr create(ProgressInterfaceBroadcaster::Ptr const& parent, ProgressInterface::Ptr const& child);
@@ -223,10 +223,10 @@ namespace Scroom
       public:
         static Ptr create(ProgressInterfaceMultiplexer::Ptr parent, ChildData::Ptr data);
 
-        Child(const Child&) = delete;
-        Child(Child&&)      = delete;
+        Child(const Child&)            = delete;
+        Child(Child&&)                 = delete;
         Child& operator=(const Child&) = delete;
-        Child& operator=(Child&&) = delete;
+        Child& operator=(Child&&)      = delete;
         ~Child() override;
 
         // ProgressStateInterface ///////////////////////////////////////////////////

@@ -37,8 +37,8 @@ public:
   WaitForAsyncOp(const WaitForAsyncOp& other);
   WaitForAsyncOp(WaitForAsyncOp&&);
   WaitForAsyncOp operator=(const WaitForAsyncOp&) = delete;
-  WaitForAsyncOp operator=(WaitForAsyncOp&&) = delete;
-  ~WaitForAsyncOp()                          = default;
+  WaitForAsyncOp operator=(WaitForAsyncOp&&)      = delete;
+  ~WaitForAsyncOp()                               = default;
 
   bool operator()();
 };

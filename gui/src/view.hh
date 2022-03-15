@@ -95,10 +95,10 @@ public:
   static Ptr create(GtkBuilder* scroomXml, PresentationInterface::Ptr presentation);
 
   ~View() override;
-  View(const View&) = delete;
-  View(View&&)      = delete;
+  View(const View&)           = delete;
+  View(View&&)                = delete;
   View operator=(const View&) = delete;
-  View operator=(View&&) = delete;
+  View operator=(View&&)      = delete;
 
 
   void redraw(cairo_t* cr);

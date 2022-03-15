@@ -96,10 +96,10 @@ namespace Scroom
     public:
       Observable();
       ~Observable() override;
-      Observable(const Observable&) = delete;
-      Observable(Observable&&)      = delete;
+      Observable(const Observable&)           = delete;
+      Observable(Observable&&)                = delete;
       Observable operator=(const Observable&) = delete;
-      Observable operator=(Observable&&) = delete;
+      Observable operator=(Observable&&)      = delete;
 
     protected:
       /**

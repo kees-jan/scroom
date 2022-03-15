@@ -65,9 +65,8 @@ std::tuple<BitmapMetaData, Layer::Ptr, ReloadFunction> Tiff::open(const std::str
 
     auto sp = Scroom::Tiff::Source::create(fileName, tif, bmd);
 
-    auto load = [sp, layer](const ProgressInterface::Ptr& pi) {
-      return sp->reset() ? scheduleLoadingBitmap(sp, layer, pi) : Empty();
-    };
+    auto load = [sp, layer](const ProgressInterface::Ptr& pi)
+    { return sp->reset() ? scheduleLoadingBitmap(sp, layer, pi) : Empty(); };
 
     return {bmd, layer, load};
   }

@@ -30,10 +30,10 @@ public:
   static Ptr create(GtkProgressBar* progressBar = nullptr);
 
   ~ProgressBarManager() override;
-  ProgressBarManager(const ProgressBarManager&) = delete;
-  ProgressBarManager(ProgressBarManager&&)      = delete;
+  ProgressBarManager(const ProgressBarManager&)           = delete;
+  ProgressBarManager(ProgressBarManager&&)                = delete;
   ProgressBarManager operator=(const ProgressBarManager&) = delete;
-  ProgressBarManager operator=(ProgressBarManager&&) = delete;
+  ProgressBarManager operator=(ProgressBarManager&&)      = delete;
 
 
   void setProgressBar(GtkProgressBar* progressBar);

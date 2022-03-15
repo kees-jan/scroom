@@ -18,10 +18,10 @@ namespace Scroom::GtkTestHelpers
 
   public:
     GtkMainLoop();
-    GtkMainLoop(const GtkMainLoop&) = delete;
+    GtkMainLoop(const GtkMainLoop&)            = delete;
     GtkMainLoop& operator=(const GtkMainLoop&) = delete;
     GtkMainLoop(GtkMainLoop&&)                 = delete;
-    GtkMainLoop& operator=(GtkMainLoop&&) = delete;
+    GtkMainLoop& operator=(GtkMainLoop&&)      = delete;
     ~GtkMainLoop();
 
   private:

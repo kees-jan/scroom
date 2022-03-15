@@ -25,10 +25,10 @@ private:
 public:
   ExamplePresentation();
   ~ExamplePresentation() override;
-  ExamplePresentation(const ExamplePresentation&) = delete;
-  ExamplePresentation(ExamplePresentation&&)      = delete;
+  ExamplePresentation(const ExamplePresentation&)           = delete;
+  ExamplePresentation(ExamplePresentation&&)                = delete;
   ExamplePresentation operator=(const ExamplePresentation&) = delete;
-  ExamplePresentation operator=(ExamplePresentation&&) = delete;
+  ExamplePresentation operator=(ExamplePresentation&&)      = delete;
 
   Scroom::Utils::Rectangle<double> getRect() override;
   void                             open(ViewInterface::WeakPtr viewInterface) override;

@@ -71,10 +71,10 @@ namespace Scroom
 
       public:
         QueueLock(QueueImpl::Ptr queue);
-        QueueLock(const QueueLock&) = delete;
-        QueueLock(QueueLock&&)      = delete;
+        QueueLock(const QueueLock&)            = delete;
+        QueueLock(QueueLock&&)                 = delete;
         QueueLock& operator=(const QueueLock&) = delete;
-        QueueLock& operator=(QueueLock&&) = delete;
+        QueueLock& operator=(QueueLock&&)      = delete;
         ~QueueLock();
 
         /** Return @c true if there are still references to the ThreadPool::Queue associated with @c q */

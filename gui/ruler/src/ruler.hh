@@ -32,10 +32,10 @@ public:
   static Ptr create(Orientation orientation, GtkWidget* drawArea);
 
   ~Ruler();
-  Ruler(const Ruler&) = delete;
-  Ruler(Ruler&&)      = delete;
+  Ruler(const Ruler&)           = delete;
+  Ruler(Ruler&&)                = delete;
   Ruler operator=(const Ruler&) = delete;
-  Ruler operator=(Ruler&&) = delete;
+  Ruler operator=(Ruler&&)      = delete;
 
   /**
    * Sets the range for the ruler to display.

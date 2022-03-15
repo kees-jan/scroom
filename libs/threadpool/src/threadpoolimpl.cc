@@ -68,10 +68,10 @@ namespace
   public:
     ThreadWaiter();
     ~ThreadWaiter();
-    ThreadWaiter(const ThreadWaiter&) = delete;
-    ThreadWaiter(ThreadWaiter&&)      = delete;
+    ThreadWaiter(const ThreadWaiter&)           = delete;
+    ThreadWaiter(ThreadWaiter&&)                = delete;
     ThreadWaiter operator=(const ThreadWaiter&) = delete;
-    ThreadWaiter operator=(ThreadWaiter&&) = delete;
+    ThreadWaiter operator=(ThreadWaiter&&)      = delete;
   };
 
   ThreadWaiter waiter;

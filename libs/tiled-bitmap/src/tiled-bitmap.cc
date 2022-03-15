@@ -37,7 +37,8 @@ Scroom::Utils::Stuff Scroom::TiledBitmap::scheduleLoadingBitmap(const SourcePres
   auto wait_until_done = boost::make_shared<Scroom::Semaphore>();
   auto queue           = ThreadPool::Queue::createAsync();
   auto weakQueue       = queue->getWeak();
-  auto abort           = [wait_until_done, queue]() mutable {
+  auto abort           = [wait_until_done, queue]() mutable
+  {
     queue.reset();
     wait_until_done->V();
   };
@@ -45,11 +46,13 @@ Scroom::Utils::Stuff Scroom::TiledBitmap::scheduleLoadingBitmap(const SourcePres
   auto on_finished = [wait_until_done] { wait_until_done->V(); };
   progress->setWaiting();
 
-  Sequentially()->schedule([progress, layer, sp, weakQueue, on_finished, wait_until_done] {
-    Scroom::GtkHelpers::sync_on_ui_thread([=] { progress->setWorking(0); });
-    layer->fetchData(sp, weakQueue, on_finished);
-    wait_until_done->P();
-  });
+  Sequentially()->schedule(
+    [progress, layer, sp, weakQueue, on_finished, wait_until_done]
+    {
+      Scroom::GtkHelpers::sync_on_ui_thread([=] { progress->setWorking(0); });
+      layer->fetchData(sp, weakQueue, on_finished);
+      wait_until_done->P();
+    });
 
   return Scroom::Utils::on_destruction(abort);
 }
@@ -330,13 +333,15 @@ void TiledBitmap::tileFinished(CompressedTile::Ptr tile)
   }
   else
   {
-    Scroom::GtkHelpers::sync_on_ui_thread([=] {
-      progressBroadcaster->setWorking(1.0 * tileFinishedCount / tileCount);
-      if(tileFinishedCount == tileCount)
+    Scroom::GtkHelpers::sync_on_ui_thread(
+      [=]
       {
-        progressBroadcaster->setFinished();
-        spdlog::info("Finished loading file");
-      }
-    });
+        progressBroadcaster->setWorking(1.0 * tileFinishedCount / tileCount);
+        if(tileFinishedCount == tileCount)
+        {
+          progressBroadcaster->setFinished();
+          spdlog::info("Finished loading file");
+        }
+      });
   }
 }

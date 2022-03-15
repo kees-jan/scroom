@@ -54,10 +54,10 @@ public:
   static Ptr create(const Layer::Ptr& bottom, const LayerSpec& ls);
 
   ~TiledBitmap() override;
-  TiledBitmap(const TiledBitmap&) = delete;
-  TiledBitmap(TiledBitmap&&)      = delete;
+  TiledBitmap(const TiledBitmap&)           = delete;
+  TiledBitmap(TiledBitmap&&)                = delete;
   TiledBitmap operator=(const TiledBitmap&) = delete;
-  TiledBitmap operator=(TiledBitmap&&) = delete;
+  TiledBitmap operator=(TiledBitmap&&)      = delete;
 
 private:
   TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec ls);

@@ -57,10 +57,10 @@ namespace Scroom
       /** Destructor */
       ~ColormapProvider() override;
 
-      ColormapProvider(const ColormapProvider&) = delete;
-      ColormapProvider(ColormapProvider&&)      = delete;
+      ColormapProvider(const ColormapProvider&)           = delete;
+      ColormapProvider(ColormapProvider&&)                = delete;
       ColormapProvider operator=(const ColormapProvider&) = delete;
-      ColormapProvider operator=(ColormapProvider&&) = delete;
+      ColormapProvider operator=(ColormapProvider&&)      = delete;
 
       // Viewable ////////////////////////////////////////////////////////////
 

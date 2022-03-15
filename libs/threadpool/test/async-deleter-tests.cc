@@ -49,10 +49,10 @@ public:
     s2->V();
   }
 
-  A(const A&) = delete;
-  A(A&&)      = delete;
+  A(const A&)            = delete;
+  A(A&&)                 = delete;
   A& operator=(const A&) = delete;
-  A& operator=(A&&) = delete;
+  A& operator=(A&&)      = delete;
 };
 
 //////////////////////////////////////////////////////////////
