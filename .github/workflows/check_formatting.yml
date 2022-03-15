@@ -15,6 +15,17 @@ jobs:
           fetch-depth: 0
           submodules: recursive
 
+      - name: Obtain LLVM repo key
+        run: >
+          wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key 2>/dev/null | 
+          gpg --dearmor - | 
+          sudo dd of=/etc/apt/trusted.gpg.d/llvm-snapshot.gpg
+
+      - name: Add LLVM repo
+        run: >
+          . /etc/lsb-release &&
+          echo "deb http://apt.llvm.org/${DISTRIB_CODENAME}/ llvm-toolchain-${DISTRIB_CODENAME}-14 main" | sudo dd of=/etc/apt/sources.list.d/llvm.list
+
       - name: Update apt package repos
         run: >
           sudo apt-get update
@@ -22,11 +33,11 @@ jobs:
       - name: Install packages
         run: >
           sudo apt-get -yq --no-install-suggests --no-install-recommends install
-          clang-format
+          clang-format-14
 
       - name: Run clang-format
         run: |
-          find . \( -name \*.cc -o -name \*.hh \) -exec clang-format -i \{\} \+
+          find . \( -name \*.cc -o -name \*.hh \) -exec clang-format-14 -i \{\} \+
 
       - name: Report results
         run: |
