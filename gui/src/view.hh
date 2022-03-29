@@ -30,6 +30,7 @@
 
 class TweakPresentationPosition;
 class TweakPositionTextBox;
+class TweakRulers;
 
 class View
   : public ViewInterface
@@ -77,6 +78,7 @@ private:
   Scroom::Utils::Point<double>                       aspectRatio;
   boost::shared_ptr<TweakPresentationPosition>       tweakPresentationPosition;
   boost::shared_ptr<TweakPositionTextBox>            tweakPositionTextBox;
+  boost::shared_ptr<TweakRulers>                     tweakRulers;
 
   gint                         modifiermove;
   Scroom::Utils::Point<double> cachedPoint;

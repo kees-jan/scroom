@@ -85,6 +85,31 @@ private:
   //  const int                          tileSize = 4096;
 };
 
+class TweakRulers
+{
+public:
+  using Ptr   = boost::shared_ptr<TweakRulers>;
+  using Point = Scroom::Utils::Point<double>;
+
+  static Ptr create(Point aspectRatio_) { return Ptr(new TweakRulers(aspectRatio_)); }
+
+  Scroom::Utils::Rectangle<double> tweakRulers(Point currentPosition, Scroom::Utils::Point<int> drawingAreaSize, int zoom)
+  {
+    return Scroom::Utils::make_rect(currentPosition, drawingAreaSize.to<double>() / pixelSizeFromZoom(zoom)) / aspectRatio;
+  }
+
+  void setAspectRatio(Point aspectRatio_) { aspectRatio = aspectRatio_; }
+
+private:
+  explicit TweakRulers(Point aspectRatio_)
+    : aspectRatio(aspectRatio_)
+  {
+  }
+
+private:
+  Point aspectRatio;
+};
+
 class TweakPositionTextBox
 {
 public:
@@ -145,6 +170,7 @@ View::View(GtkBuilder* scroomXml_)
   , aspectRatio(Scroom::Utils::make_point(1.0, 1.0))
   , tweakPresentationPosition(TweakPresentationPosition::create(aspectRatio))
   , tweakPositionTextBox(TweakPositionTextBox::create(aspectRatio))
+  , tweakRulers(TweakRulers::create(aspectRatio))
   , modifiermove(0)
 {
   PluginManager::Ptr pluginManager = PluginManager::getInstance();
@@ -267,6 +293,7 @@ void View::setPresentation(PresentationInterface::Ptr presentation_)
 
     tweakPresentationPosition->setAspectRatio(aspectRatio);
     tweakPositionTextBox->setAspectRatio(aspectRatio);
+    tweakRulers->setAspectRatio(aspectRatio);
 
     if(s.length())
     {
@@ -391,9 +418,10 @@ void View::updateZoom()
 
 void View::updateRulers()
 {
-  const double pixelSize   = pixelSizeFromZoom(zoom);
-  const auto   topLeft     = tweakedPosition();
-  const auto   bottomRight = topLeft + drawingAreaSize / pixelSize;
+  auto visible = tweakRulers->tweakRulers(tweakedPosition(), drawingAreaSize, zoom);
+
+  const auto topLeft     = visible.getTopLeft();
+  const auto bottomRight = visible.getBottomRight();
 
   hruler->setRange(topLeft.x, bottomRight.x);
   vruler->setRange(topLeft.y, bottomRight.y);
