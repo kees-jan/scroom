@@ -65,24 +65,58 @@ public:
   using Ptr   = boost::shared_ptr<TweakPresentationPosition>;
   using Point = Scroom::Utils::Point<double>;
 
-  static Ptr create(Scroom::Utils::Point<double> aspectRatio_) { return Ptr(new TweakPresentationPosition(aspectRatio_)); }
+  static Ptr create(Point aspectRatio_) { return Ptr(new TweakPresentationPosition(aspectRatio_)); }
 
   Point tweakPosition(Point currentPosition, Scroom::Utils::Point<int> /*drawingAreaSize*/, int zoom)
   {
     return round_to_multiple_of(currentPosition, Point(50 / pixelSizeFromZoom(zoom)));
   }
 
-  void setAspectRatio(Scroom::Utils::Point<double> aspectRatio_) { aspectRatio = aspectRatio_; }
+  void setAspectRatio(Point aspectRatio_) { aspectRatio = aspectRatio_; }
 
 private:
-  explicit TweakPresentationPosition(Scroom::Utils::Point<double> aspectRatio_)
+  explicit TweakPresentationPosition(Point aspectRatio_)
     : aspectRatio(aspectRatio_)
   {
   }
 
 private:
-  Scroom::Utils::Point<double> aspectRatio;
+  Point aspectRatio;
   //  const int                          tileSize = 4096;
+};
+
+class TweakPositionTextBox
+{
+public:
+  using Ptr   = boost::shared_ptr<TweakPositionTextBox>;
+  using Point = Scroom::Utils::Point<double>;
+
+  static Ptr create(Point aspectRatio_) { return Ptr(new TweakPositionTextBox(aspectRatio_)); }
+
+  Point parse(std::string_view x, std::string_view y, Scroom::Utils::Point<int> drawingAreaSize, int zoom)
+  {
+    Point entered_position(boost::lexical_cast<double>(x), boost::lexical_cast<double>(y));
+
+    return entered_position * aspectRatio - drawingAreaSize.to<double>() / pixelSizeFromZoom(zoom) / 2;
+  }
+
+  std::pair<std::string, std::string> display(Point position, Scroom::Utils::Point<int> drawingAreaSize, int zoom)
+  {
+    const Point center = (position + drawingAreaSize.to<double>() / pixelSizeFromZoom(zoom) / 2) / aspectRatio;
+
+    return std::make_pair(fmt::format("{:.0f}", center.x), fmt::format("{:.0f}", center.y));
+  }
+
+  void setAspectRatio(Point aspectRatio_) { aspectRatio = aspectRatio_; }
+
+private:
+  explicit TweakPositionTextBox(Point aspectRatio_)
+    : aspectRatio(aspectRatio_)
+  {
+  }
+
+private:
+  Point aspectRatio;
 };
 
 ////////////////////////////////////////////////////////////////////////
@@ -110,6 +144,7 @@ View::View(GtkBuilder* scroomXml_)
   , zoom(0)
   , aspectRatio(Scroom::Utils::make_point(1.0, 1.0))
   , tweakPresentationPosition(TweakPresentationPosition::create(aspectRatio))
+  , tweakPositionTextBox(TweakPositionTextBox::create(aspectRatio))
   , modifiermove(0)
 {
   PluginManager::Ptr pluginManager = PluginManager::getInstance();
@@ -231,6 +266,7 @@ void View::setPresentation(PresentationInterface::Ptr presentation_)
     std::string s    = presentation->getTitle();
 
     tweakPresentationPosition->setAspectRatio(aspectRatio);
+    tweakPositionTextBox->setAspectRatio(aspectRatio);
 
     if(s.length())
     {
@@ -299,10 +335,8 @@ void View::updateTextbox()
     gtk_widget_set_sensitive(GTK_WIDGET(xTextBox), true);
     gtk_widget_set_sensitive(GTK_WIDGET(yTextBox), true);
 
-    auto center = position + drawingAreaSize.to<double>() / pixelSizeFromZoom(zoom) / 2;
+    const auto [xs, ys] = tweakPositionTextBox->display(position, drawingAreaSize, zoom);
 
-    auto xs = std::to_string(center.x);
-    auto ys = std::to_string(center.y);
     gtk_entry_set_text(xTextBox, xs.c_str());
     gtk_entry_set_text(yTextBox, ys.c_str());
   }
@@ -503,23 +537,11 @@ void View::on_zoombox_changed(int newzoom, const Scroom::Utils::Point<double>& m
   }
 }
 
-void View::on_textbox_value_changed(GtkEditable* editable)
+void View::on_textbox_value_changed(GtkEditable* /*editable*/)
 {
   try
   {
-    auto newPos = position;
-
-    const double pixelSize = pixelSizeFromZoom(zoom);
-    const auto   da        = drawingAreaSize.to<double>() / pixelSize;
-
-    if(editable == GTK_EDITABLE(yTextBox))
-    {
-      newPos.y = boost::lexical_cast<int>(gtk_entry_get_text(yTextBox)) - da.x / 2;
-    }
-    else
-    {
-      newPos.x = boost::lexical_cast<int>(gtk_entry_get_text(xTextBox)) - da.y / 2;
-    }
+    auto newPos = tweakPositionTextBox->parse(gtk_entry_get_text(xTextBox), gtk_entry_get_text(yTextBox), drawingAreaSize, zoom);
 
     updateXY(newPos, TEXTBOX);
   }

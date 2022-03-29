@@ -29,6 +29,7 @@
 #include "sidebarmanager.hh"
 
 class TweakPresentationPosition;
+class TweakPositionTextBox;
 
 class View
   : public ViewInterface
@@ -75,6 +76,7 @@ private:
   std::map<GtkToggleButton*, ToolStateListener::Ptr> tools;
   Scroom::Utils::Point<double>                       aspectRatio;
   boost::shared_ptr<TweakPresentationPosition>       tweakPresentationPosition;
+  boost::shared_ptr<TweakPositionTextBox>            tweakPositionTextBox;
 
   gint                         modifiermove;
   Scroom::Utils::Point<double> cachedPoint;
