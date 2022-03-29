@@ -342,5 +342,17 @@ namespace Scroom::Utils
     };
   }
 
+  inline Rectangle<double> roundCorners(Rectangle<double> r)
+  {
+    return make_rect_from_start_end(round_to_multiple_of(r.getTopLeft(), make_point(1.0)),
+                                    round_to_multiple_of(r.getBottomRight(), make_point(1.0)));
+  }
+
+  template <typename T>
+  inline Point<T> center(Rectangle<T> r)
+  {
+    return make_point(center(r.getHorizontally()), center(r.getVertically()));
+  }
+
 
 } // namespace Scroom::Utils

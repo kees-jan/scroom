@@ -31,6 +31,7 @@
 class TweakPresentationPosition;
 class TweakPositionTextBox;
 class TweakRulers;
+class TweakSelection;
 
 class View
   : public ViewInterface
@@ -72,6 +73,7 @@ private:
   int                                                zoom;
   Scroom::Utils::Point<double>                       position; /**< of the top left visible pixel */
   Selection::Ptr                                     selection;
+  Selection::Ptr                                     tweakedSelection;
   std::vector<SelectionListener::Ptr>                selectionListeners;
   std::vector<PostRenderer::Ptr>                     postRenderers;
   std::map<GtkToggleButton*, ToolStateListener::Ptr> tools;
@@ -79,6 +81,7 @@ private:
   boost::shared_ptr<TweakPresentationPosition>       tweakPresentationPosition;
   boost::shared_ptr<TweakPositionTextBox>            tweakPositionTextBox;
   boost::shared_ptr<TweakRulers>                     tweakRulers;
+  boost::shared_ptr<TweakSelection>                  tweakSelection;
 
   gint                         modifiermove;
   Scroom::Utils::Point<double> cachedPoint;

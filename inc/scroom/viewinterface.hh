@@ -33,21 +33,26 @@ struct Selection
 public:
   using Ptr      = boost::shared_ptr<Selection>;
   using ConstPtr = boost::shared_ptr<const Selection>;
+  using Point    = Scroom::Utils::Point<double>;
 
 public:
-  Scroom::Utils::Point<double> start;
-  Scroom::Utils::Point<double> end;
+  Point start;
+  Point end;
 
 public:
   Selection(double x, double y)
-    : start{x, y}
-    , end{start}
+    : Selection(Scroom::Utils::make_point(x, y))
   {
   }
 
-  explicit Selection(Scroom::Utils::Point<double> point)
-    : start(point)
-    , end(point)
+  explicit Selection(Point point)
+    : Selection(point, point)
+  {
+  }
+
+  Selection(Point start_, Point end_)
+    : start(start_)
+    , end(end_)
   {
   }
 

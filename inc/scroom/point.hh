@@ -120,6 +120,12 @@ namespace Scroom
     }
 
     template <typename T>
+    Point<T> make_point(T c)
+    {
+      return Point<T>(c, c);
+    }
+
+    template <typename T>
     std::ostream& operator<<(std::ostream& os, const Point<T>& p)
     {
       return os << '(' << p.x << ',' << p.y << ')';

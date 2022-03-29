@@ -110,6 +110,86 @@ private:
   Point aspectRatio;
 };
 
+enum class Corner
+{
+  TOP_LEFT,
+  TOP_RIGHT,
+  BOTTOM_LEFT,
+  BOTTOM_RIGHT
+};
+
+
+std::function<Scroom::Utils::Point<double>(Scroom::Utils::Rectangle<double>)> corner_getter(Corner c)
+{
+  switch(c)
+  {
+  case Corner::TOP_LEFT:
+    return [](Scroom::Utils::Rectangle<double> r) { return r.getTopLeft(); };
+  case Corner::TOP_RIGHT:
+    return [](Scroom::Utils::Rectangle<double> r) { return r.getTopLeft(); };
+  case Corner::BOTTOM_LEFT:
+    return [](Scroom::Utils::Rectangle<double> r) { return r.getTopLeft(); };
+  case Corner::BOTTOM_RIGHT:
+    return [](Scroom::Utils::Rectangle<double> r) { return r.getTopLeft(); };
+  }
+  defect();
+}
+
+Corner find_closest_corner(Scroom::Utils::Point<double> p, Scroom::Utils::Rectangle<double> r)
+{
+  const std::array<std::array<Corner, 2>, 2> corners = {{
+    {Corner::TOP_LEFT, Corner::BOTTOM_LEFT},
+    {Corner::TOP_RIGHT, Corner::BOTTOM_RIGHT},
+  }};
+
+  const auto c = center(r);
+
+  return corners.at(c.x < p.x).at(c.y < p.y);
+}
+
+std::function<Scroom::Utils::Point<double>(Scroom::Utils::Rectangle<double>)> corner_getter(Scroom::Utils::Point<double>     p,
+                                                                                            Scroom::Utils::Rectangle<double> r)
+{
+  return corner_getter(find_closest_corner(p, r));
+}
+
+
+Scroom::Utils::Rectangle<double> toRectangle(Selection s) { return Scroom::Utils::make_rect_from_start_end(s.start, s.end); }
+
+class TweakSelection
+{
+public:
+  using Ptr       = boost::shared_ptr<TweakSelection>;
+  using Point     = Scroom::Utils::Point<double>;
+  using Rectangle = Scroom::Utils::Rectangle<double>;
+
+  static Ptr create(Point aspectRatio_) { return Ptr(new TweakSelection(aspectRatio_)); }
+
+  Rectangle tweakSelection(Rectangle selection) { return roundCorners(selection / aspectRatio) * aspectRatio; }
+
+  Selection tweakSelection(Selection selection)
+  {
+    const auto original = toRectangle(selection);
+    const auto tweaked  = tweakSelection(original);
+
+    const auto start = corner_getter(selection.start, original)(tweaked);
+    const auto end   = corner_getter(selection.end, original)(tweaked);
+
+    return {start, end};
+  }
+
+  void setAspectRatio(Point aspectRatio_) { aspectRatio = aspectRatio_; }
+
+private:
+  explicit TweakSelection(Point aspectRatio_)
+    : aspectRatio(aspectRatio_)
+  {
+  }
+
+private:
+  Point aspectRatio;
+};
+
 class TweakPositionTextBox
 {
 public:
@@ -171,6 +251,7 @@ View::View(GtkBuilder* scroomXml_)
   , tweakPresentationPosition(TweakPresentationPosition::create(aspectRatio))
   , tweakPositionTextBox(TweakPositionTextBox::create(aspectRatio))
   , tweakRulers(TweakRulers::create(aspectRatio))
+  , tweakSelection(TweakSelection::create(aspectRatio))
   , modifiermove(0)
 {
   PluginManager::Ptr pluginManager = PluginManager::getInstance();
@@ -294,6 +375,7 @@ void View::setPresentation(PresentationInterface::Ptr presentation_)
     tweakPresentationPosition->setAspectRatio(aspectRatio);
     tweakPositionTextBox->setAspectRatio(aspectRatio);
     tweakRulers->setAspectRatio(aspectRatio);
+    tweakSelection->setAspectRatio(aspectRatio);
 
     if(s.length())
     {
@@ -605,11 +687,12 @@ void View::on_buttonPress(GdkEventButton* event)
   }
   else if(event->button == 3)
   {
-    auto point = windowPointToPresentationPoint(eventToPoint(event));
-    selection  = boost::make_shared<Selection>(point);
+    auto point       = windowPointToPresentationPoint(eventToPoint(event));
+    selection        = boost::make_shared<Selection>(point);
+    tweakedSelection = boost::make_shared<Selection>(tweakSelection->tweakSelection(*selection));
     for(const auto& listener: selectionListeners)
     {
-      listener->onSelectionStart(selection, shared_from_this<ViewInterface>());
+      listener->onSelectionStart(tweakedSelection, shared_from_this<ViewInterface>());
     }
   }
 }
@@ -623,12 +706,13 @@ void View::on_buttonRelease(GdkEventButton* event)
     cachedPoint.x = 0;
     cachedPoint.y = 0;
   }
-  else if(event->button == 3 && selection)
+  else if(event->button == 3 && selection && tweakedSelection)
   {
-    selection->end = windowPointToPresentationPoint(eventToPoint(event));
+    selection->end    = windowPointToPresentationPoint(eventToPoint(event));
+    *tweakedSelection = tweakSelection->tweakSelection(*selection);
     for(const auto& listener: selectionListeners)
     {
-      listener->onSelectionEnd(selection, shared_from_this<ViewInterface>());
+      listener->onSelectionEnd(tweakedSelection, shared_from_this<ViewInterface>());
     }
     invalidate();
   }

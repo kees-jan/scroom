@@ -242,5 +242,10 @@ namespace Scroom::Utils
     return make_segment_from_start_end(round_down_to_multiple_of(s.getStart(), 1.0), round_up_to_multiple_of(s.getEnd(), 1.0));
   }
 
+  template <typename T>
+  T center(Segment<T> s)
+  {
+    return s.getStart() + s.getSize() / 2;
+  }
 
 } // namespace Scroom::Utils
