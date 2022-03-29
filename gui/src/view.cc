@@ -72,6 +72,8 @@ public:
     return round_to_multiple_of(currentPosition, Point(50 / pixelSizeFromZoom(zoom)));
   }
 
+  void setAspectRatio(Scroom::Utils::Point<double> aspectRatio_) { aspectRatio = aspectRatio_; }
+
 private:
   explicit TweakPresentationPosition(Scroom::Utils::Point<double> aspectRatio_)
     : aspectRatio(aspectRatio_)
@@ -80,7 +82,7 @@ private:
 
 private:
   Scroom::Utils::Point<double> aspectRatio;
-  //  int                          tileSize = 4096;
+  //  const int                          tileSize = 4096;
 };
 
 ////////////////////////////////////////////////////////////////////////
@@ -107,6 +109,7 @@ View::View(GtkBuilder* scroomXml_)
   : scroomXml(scroomXml_)
   , zoom(0)
   , aspectRatio(Scroom::Utils::make_point(1.0, 1.0))
+  , tweakPresentationPosition(TweakPresentationPosition::create(aspectRatio))
   , modifiermove(0)
 {
   PluginManager::Ptr pluginManager = PluginManager::getInstance();
@@ -180,7 +183,7 @@ void View::redraw(cairo_t* cr)
     double                       pixelSize         = pixelSizeFromZoom(zoom);
     Scroom::Utils::Point<double> visibleRegionSize = drawingAreaSize.to<double>() / pixelSize;
 
-    auto rect = Scroom::Utils::make_rect(position, visibleRegionSize);
+    auto rect = Scroom::Utils::make_rect(tweakedPosition(), visibleRegionSize);
 
     presentation->redraw(shared_from_this<View>(), cr, rect, zoom);
     for(const auto& renderer: postRenderers)
@@ -226,6 +229,9 @@ void View::setPresentation(PresentationInterface::Ptr presentation_)
     presentationRect = presentation->getRect();
     aspectRatio      = presentation->getAspectRatio();
     std::string s    = presentation->getTitle();
+
+    tweakPresentationPosition->setAspectRatio(aspectRatio);
+
     if(s.length())
     {
       s = "Scroom - " + s;
@@ -352,7 +358,7 @@ void View::updateZoom()
 void View::updateRulers()
 {
   const double pixelSize   = pixelSizeFromZoom(zoom);
-  const auto   topLeft     = position;
+  const auto   topLeft     = tweakedPosition();
   const auto   bottomRight = topLeft + drawingAreaSize / pixelSize;
 
   hruler->setRange(topLeft.x, bottomRight.x);
@@ -699,12 +705,12 @@ void View::addToolButton(GtkToggleButton* button, ToolStateListener::Ptr callbac
 
 Scroom::Utils::Point<double> View::windowPointToPresentationPoint(Scroom::Utils::Point<double> wp) const
 {
-  return position + wp / pixelSizeFromZoom(zoom);
+  return tweakedPosition() + wp / pixelSizeFromZoom(zoom);
 }
 
 Scroom::Utils::Point<double> View::presentationPointToWindowPoint(Scroom::Utils::Point<double> presentationpoint) const
 {
-  return (presentationpoint - position) * pixelSizeFromZoom(zoom);
+  return (presentationpoint - tweakedPosition()) * pixelSizeFromZoom(zoom);
 }
 
 void View::updateNewWindowMenu()
@@ -809,4 +815,9 @@ void View::updateXY(const Scroom::Utils::Point<double>& newPos, const View::Loca
 
     invalidate();
   }
+}
+
+Scroom::Utils::Point<double> View::tweakedPosition() const
+{
+  return tweakPresentationPosition->tweakPosition(position, drawingAreaSize, zoom);
 }

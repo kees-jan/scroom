@@ -28,6 +28,8 @@
 #include "progressbarmanager.hh"
 #include "sidebarmanager.hh"
 
+class TweakPresentationPosition;
+
 class View
   : public ViewInterface
   , virtual public Scroom::Utils::Base
@@ -72,6 +74,7 @@ private:
   std::vector<PostRenderer::Ptr>                     postRenderers;
   std::map<GtkToggleButton*, ToolStateListener::Ptr> tools;
   Scroom::Utils::Point<double>                       aspectRatio;
+  boost::shared_ptr<TweakPresentationPosition>       tweakPresentationPosition;
 
   gint                         modifiermove;
   Scroom::Utils::Point<double> cachedPoint;
@@ -89,17 +92,16 @@ private:
   };
 
 private:
-  View(GtkBuilder* scroomXml);
+  explicit View(GtkBuilder* scroomXml);
 
 public:
   static Ptr create(GtkBuilder* scroomXml, PresentationInterface::Ptr presentation);
 
   ~View() override;
-  View(const View&)           = delete;
-  View(View&&)                = delete;
+  View(const View&) = delete;
+  View(View&&)      = delete;
   View operator=(const View&) = delete;
-  View operator=(View&&)      = delete;
-
+  View operator=(View&&) = delete;
 
   void redraw(cairo_t* cr);
   void hide();
@@ -158,6 +160,7 @@ public:
 private:
   Scroom::Utils::Point<double> windowPointToPresentationPoint(Scroom::Utils::Point<double> wp) const;
   Scroom::Utils::Point<double> presentationPointToWindowPoint(Scroom::Utils::Point<double> presentationpoint) const;
+  Scroom::Utils::Point<double> tweakedPosition() const;
   void                         updateNewWindowMenu();
   void                         on_zoombox_changed(int newzoom, const Scroom::Utils::Point<double>& mousePos);
   void                         updateXY(const Scroom::Utils::Point<double>& newPos, const LocationChangeCause& source);
