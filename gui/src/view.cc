@@ -23,6 +23,7 @@
 
 #include <scroom/assertions.hh>
 #include <scroom/cairo-helpers.hh>
+#include <scroom/format_stuff.hh>
 #include <scroom/rounding.hh>
 
 #include "callbacks.hh"
@@ -126,11 +127,11 @@ std::function<Scroom::Utils::Point<double>(Scroom::Utils::Rectangle<double>)> co
   case Corner::TOP_LEFT:
     return [](Scroom::Utils::Rectangle<double> r) { return r.getTopLeft(); };
   case Corner::TOP_RIGHT:
-    return [](Scroom::Utils::Rectangle<double> r) { return r.getTopLeft(); };
+    return [](Scroom::Utils::Rectangle<double> r) { return r.getTopRight(); };
   case Corner::BOTTOM_LEFT:
-    return [](Scroom::Utils::Rectangle<double> r) { return r.getTopLeft(); };
+    return [](Scroom::Utils::Rectangle<double> r) { return r.getBottomLeft(); };
   case Corner::BOTTOM_RIGHT:
-    return [](Scroom::Utils::Rectangle<double> r) { return r.getTopLeft(); };
+    return [](Scroom::Utils::Rectangle<double> r) { return r.getBottomRight(); };
   }
   defect();
 }
@@ -730,12 +731,13 @@ void View::on_motion_notify(GdkEventMotion* event)
 
     updateXY(newPos, OTHER);
   }
-  else if((event->state & GDK_BUTTON3_MASK) && selection)
+  else if((event->state & GDK_BUTTON3_MASK) && selection && tweakedSelection)
   {
-    selection->end = windowPointToPresentationPoint(eventToPoint(event));
+    selection->end    = windowPointToPresentationPoint(eventToPoint(event));
+    *tweakedSelection = tweakSelection->tweakSelection(*selection);
     for(const auto& listener: selectionListeners)
     {
-      listener->onSelectionUpdate(selection, shared_from_this<ViewInterface>());
+      listener->onSelectionUpdate(tweakedSelection, shared_from_this<ViewInterface>());
     }
     invalidate();
   }

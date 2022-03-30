@@ -15,7 +15,6 @@
 #include <scroom/impl/bookkeepingimpl.hh>
 #include <scroom/point.hh>
 #include <scroom/presentationinterface.hh>
-#include <scroom/unused.hh>
 #include <scroom/viewinterface.hh>
 
 #include "version.h"
@@ -51,7 +50,7 @@ Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr view)
 
   view->addToolButton(GTK_TOGGLE_BUTTON(gtk_toggle_button_new_with_label("Measure")), handler);
 
-  return Scroom::Bookkeeping::Token();
+  return {};
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -66,15 +65,18 @@ MeasureHandler::MeasureHandler()
 
 MeasureHandler::Ptr MeasureHandler::create() { return Ptr(new MeasureHandler()); }
 
-void MeasureHandler::displayMeasurement(ViewInterface::Ptr view)
+void MeasureHandler::displayMeasurement(const ViewInterface::Ptr& view)
 {
   std::ostringstream s;
   s.precision(1);
   fixed(s);
 
-  s << "l: " << selection->length() << ", dx: " << selection->width() << ", dy: " << selection->height() << ", from: ("
-    << selection->start.x << "," << selection->start.y << ")"
-    << ", to: (" << selection->end.x << "," << selection->end.y << ")";
+  const auto      aspectRatio = view->getCurrentPresentation()->getAspectRatio();
+  const Selection tweaked(selection->start / aspectRatio, selection->end / aspectRatio);
+
+  s << "l: " << tweaked.length() << ", dx: " << tweaked.width() << ", dy: " << tweaked.height() << ", from: (" << tweaked.start.x
+    << "," << tweaked.start.y << ")"
+    << ", to: (" << tweaked.end.x << "," << tweaked.end.y << ")";
 
   view->setStatusMessage(s.str());
 }
@@ -92,7 +94,7 @@ void MeasureHandler::drawCross(cairo_t* cr, Scroom::Utils::Point<double> p)
 // SelectionListener
 ////////////////////////////////////////////////////////////////////////
 
-void MeasureHandler::onSelectionStart(Selection::Ptr, ViewInterface::Ptr) {}
+void MeasureHandler::onSelectionStart(Selection::Ptr /*selection*/, ViewInterface::Ptr /*view*/) {}
 
 void MeasureHandler::onSelectionUpdate(Selection::Ptr s, ViewInterface::Ptr view)
 {
@@ -116,17 +118,16 @@ void MeasureHandler::onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view)
 // PostRenderer
 ////////////////////////////////////////////////////////////////////////
 
-void MeasureHandler::render(ViewInterface::Ptr const&        vi,
+void MeasureHandler::render(ViewInterface::Ptr const& /*vi*/,
                             cairo_t*                         cr,
                             Scroom::Utils::Rectangle<double> presentationArea,
                             int                              zoom)
 {
   if(selection)
   {
-    const auto aspectRatio = vi->getCurrentPresentation()->getAspectRatio();
-    const auto pixelSize   = pixelSizeFromZoom(zoom);
-    const auto start       = (selection->start - presentationArea.getTopLeft()) * pixelSize * aspectRatio;
-    const auto end         = (selection->end - presentationArea.getTopLeft()) * pixelSize * aspectRatio;
+    const auto pixelSize = pixelSizeFromZoom(zoom);
+    const auto start     = (selection->start - presentationArea.getTopLeft()) * pixelSize;
+    const auto end       = (selection->end - presentationArea.getTopLeft()) * pixelSize;
 
     cairo_set_line_width(cr, 1);
     cairo_set_source_rgb(cr, 0.75, 0, 0); // Dark Red

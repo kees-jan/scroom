@@ -52,7 +52,7 @@ public:
   ////////////////////////////////////////////////////////////////////////
 
 private:
-  virtual void displayMeasurement(ViewInterface::Ptr view);
+  virtual void displayMeasurement(const ViewInterface::Ptr& view);
   virtual void drawCross(cairo_t* cr, Scroom::Utils::Point<double> p);
 };
 

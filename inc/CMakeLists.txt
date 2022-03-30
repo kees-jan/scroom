@@ -10,6 +10,7 @@ install(
         scroom/compiler.hh
         scroom/dont-delete.hh
         scroom/function-additor.hh
+        scroom/format_stuff.hh
         scroom/global.hh
         scroom/gtk-helpers.hh
         scroom/gtk-test-helpers.hh
