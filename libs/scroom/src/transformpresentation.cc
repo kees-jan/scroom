@@ -12,6 +12,8 @@
 #include <scroom/transformpresentation.hh>
 #include <scroom/viewinterface.hh>
 
+#include "scroom/cairo-helpers.hh"
+
 TransformationData::TransformationData()
   : aspectRatio(1, 1)
 {
@@ -58,14 +60,21 @@ Scroom::Utils::Rectangle<double> TransformPresentation::getRect()
 
 void TransformPresentation::open(ViewInterface::WeakPtr viewInterface)
 {
-  presentation->open(viewInterface);
+  auto [it, inserted] = viewData.insert({viewInterface, Detail::ViewData::create(viewInterface)});
+  require(inserted);
+  auto& [_, data] = *it;
+
+  presentation->open(data);
   PresentationBase::open(viewInterface);
 }
 
 void TransformPresentation::close(ViewInterface::WeakPtr viewInterface)
 {
+  auto data = viewData.at(viewInterface);
+  viewData.erase(viewInterface);
+
   PresentationBase::close(viewInterface);
-  presentation->close(viewInterface);
+  presentation->close(data);
 }
 
 void TransformPresentation::redraw(ViewInterface::Ptr const&        vi,
@@ -74,10 +83,31 @@ void TransformPresentation::redraw(ViewInterface::Ptr const&        vi,
                                    int                              zoom)
 {
   Scroom::Utils::Point<double> aspectRatio = transformationData->getAspectRatio();
+  const auto                   data        = viewData.at(vi);
+
+  if(data->presentationArea != presentationArea || data->zoom != zoom)
+  {
+    data->image.reset();
+  }
+  if(!data->image)
+  {
+    auto pixelSize = pixelSizeFromZoom(zoom);
+    auto viewArea  = ceil((presentationArea * pixelSize / aspectRatio).getSize()).to<int>();
+
+    data->image = Scroom::Bitmap::BitmapSurface::create(viewArea.x, viewArea.y, CAIRO_FORMAT_ARGB32);
+
+    cairo_surface_t* surface  = data->image->get();
+    cairo_t*         image_cr = cairo_create(surface);
+
+    presentation->redraw(data, image_cr, presentationArea / aspectRatio, zoom);
+
+    cairo_destroy(image_cr);
+  }
 
   cairo_save(cr);
   cairo_scale(cr, aspectRatio.x, aspectRatio.y);
-  presentation->redraw(vi, cr, presentationArea / aspectRatio, zoom);
+  cairo_set_source_surface(cr, data->image->get(), 0, 0);
+  cairo_paint(cr);
   cairo_restore(cr);
 }
 
@@ -116,3 +146,31 @@ PipetteLayerOperations::PipetteColor TransformPresentation::getPixelAverages(Scr
 }
 
 Scroom::Utils::Point<double> TransformPresentation::getAspectRatio() const { return transformationData->getAspectRatio(); }
+
+namespace Detail
+{
+  ViewData::ViewData(ViewInterface::WeakPtr parent_)
+    : weakParent(parent_)
+  {
+  }
+
+  ViewInterface::Ptr ViewData::parent() const { return ViewInterface::Ptr(weakParent); }
+
+  void ViewData::invalidate()
+  {
+    image.reset();
+    parent()->invalidate();
+  }
+
+  ProgressInterface::Ptr ViewData::getProgressInterface() { return parent()->getProgressInterface(); }
+  void                   ViewData::addSideWidget(std::string title, GtkWidget* w) { parent()->addSideWidget(title, w); }
+  void                   ViewData::removeSideWidget(GtkWidget* w) { parent()->removeSideWidget(w); }
+  void                   ViewData::addToToolbar(GtkToolItem* ti) { parent()->addToToolbar(ti); }
+  void                   ViewData::removeFromToolbar(GtkToolItem* ti) { parent()->removeFromToolbar(ti); }
+  void ViewData::registerSelectionListener(SelectionListener::Ptr ptr) { parent()->registerSelectionListener(ptr); }
+  void ViewData::registerPostRenderer(PostRenderer::Ptr ptr) { parent()->registerPostRenderer(ptr); }
+  void ViewData::setStatusMessage(const std::string& string) { parent()->setStatusMessage(string); }
+  boost::shared_ptr<PresentationInterface> ViewData::getCurrentPresentation() { return parent()->getCurrentPresentation(); }
+  void ViewData::addToolButton(GtkToggleButton* button, ToolStateListener::Ptr ptr) { parent()->addToolButton(button, ptr); }
+  ViewData::Ptr ViewData::create(const ViewInterface::WeakPtr& parent) { return ViewData::Ptr(new ViewData(parent)); }
+} // namespace Detail

@@ -44,7 +44,7 @@ public:
   PipetteCommonOperationsCMYK(int bps_)
     : bps(bps_){};
 
-  PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile) override;
+  PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr& tile) override;
 };
 
 class PipetteCommonOperationsRGB
@@ -61,7 +61,7 @@ public:
   PipetteCommonOperationsRGB(int bps_)
     : bps(bps_){};
 
-  PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile) override;
+  PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr& tile) override;
 };
 
 class Operations1bpp : public CommonOperations

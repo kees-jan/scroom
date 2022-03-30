@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include <cmath>
 #include <ostream>
 
 #include <boost/operators.hpp>
@@ -224,5 +225,13 @@ namespace Scroom
       using ::floored_divide_by;
       return {floored_divide_by(value.x, factor.x), floored_divide_by(value.y, factor.y)};
     }
+
+    template <typename T>
+    Point<T> ceil(Point<T> p)
+    {
+      using std::ceil;
+      return {ceil(p.x), ceil(p.y)};
+    }
+
   } // namespace Utils
 } // namespace Scroom

@@ -9,6 +9,7 @@
 
 #include <boost/shared_ptr.hpp>
 
+#include <scroom/bitmap-helpers.hh>
 #include <scroom/colormappable.hh>
 #include <scroom/pipetteviewinterface.hh>
 #include <scroom/point.hh>
@@ -36,6 +37,42 @@ private:
   explicit TransformationData(Scroom::Utils::Point<double> aspectRatio_);
 };
 
+namespace Detail
+{
+  class ViewData : public ViewInterface
+  {
+  public:
+    using Ptr = boost::shared_ptr<ViewData>;
+
+  public:
+    Scroom::Utils::Rectangle<double>   presentationArea;
+    int                                zoom{0};
+    Scroom::Bitmap::BitmapSurface::Ptr image;
+    ViewInterface::WeakPtr             weakParent;
+
+  public:
+    ViewInterface::Ptr   parent() const;
+    static ViewData::Ptr create(const ViewInterface::WeakPtr& parent);
+
+    // ViewInterface
+    void                                     invalidate() override;
+    ProgressInterface::Ptr                   getProgressInterface() override;
+    void                                     addSideWidget(std::string title, GtkWidget* w) override;
+    void                                     removeSideWidget(GtkWidget* w) override;
+    void                                     addToToolbar(GtkToolItem* ti) override;
+    void                                     removeFromToolbar(GtkToolItem* ti) override;
+    void                                     registerSelectionListener(SelectionListener::Ptr ptr) override;
+    void                                     registerPostRenderer(PostRenderer::Ptr ptr) override;
+    void                                     setStatusMessage(const std::string& string) override;
+    boost::shared_ptr<PresentationInterface> getCurrentPresentation() override;
+    void                                     addToolButton(GtkToggleButton* button, ToolStateListener::Ptr ptr) override;
+
+  private:
+    explicit ViewData(ViewInterface::WeakPtr parent_);
+  };
+
+} // namespace Detail
+
 class TransformPresentation
   : public PresentationBaseSimple
   , public Colormappable
@@ -46,10 +83,11 @@ public:
   using Ptr = boost::shared_ptr<TransformPresentation>;
 
 private:
-  TransformationData::Ptr    transformationData;
-  PresentationInterface::Ptr presentation;
-  Colormappable::Ptr         colormappable;
-  ShowMetadataInterface::Ptr showMetaDataInterface;
+  TransformationData::Ptr                                 transformationData;
+  PresentationInterface::Ptr                              presentation;
+  Colormappable::Ptr                                      colormappable;
+  ShowMetadataInterface::Ptr                              showMetaDataInterface;
+  std::map<ViewInterface::WeakPtr, Detail::ViewData::Ptr> viewData;
 
 private:
   TransformPresentation(PresentationInterface::Ptr const& presentation, TransformationData::Ptr const& transformationData);

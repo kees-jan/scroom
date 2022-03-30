@@ -33,6 +33,64 @@ class TweakPositionTextBox;
 class TweakRulers;
 class TweakSelection;
 
+/**
+ * Protect a value from being assigned.
+ *
+ * When the presentation position changes, scroll-bars and textboxes need updating, which in turn generate their own
+ * value-changed events, sometimes with different values. It is a mess.
+ *
+ * By locking the current position, we keep those events from changing (and thereby corrupting) the updated value.
+ */
+template <typename T>
+class Freezable
+{
+public:
+  using value_type = T;
+  using Me         = Freezable<T>;
+
+  Freezable() = default;
+
+  explicit Freezable(value_type v)
+    : value(std::move(v))
+  {
+  }
+
+  const value_type& get() const { return value; }
+
+  bool set(value_type v)
+  {
+    if(!locked)
+    {
+      value = std::move(v);
+    }
+    return locked;
+  }
+
+  void lock() { locked++; }
+
+  void unlock()
+  {
+    require(locked > 0);
+    locked--;
+  }
+  bool is_locked() const { return locked; }
+
+      operator const value_type&() const { return value; } // NOLINT(hicpp-explicit-conversions)
+  Me& operator=(value_type v)
+  {
+    set(std::move(v));
+    return *this;
+  }
+  const value_type* operator*() const { return &value; }
+  const value_type* operator->() const { return &value; }
+  Me&               operator+=(value_type v) { return operator=(value + v); }
+  Me&               operator-=(value_type v) { return operator=(value - v); }
+
+private:
+  value_type value;
+  unsigned   locked{0};
+};
+
 class View
   : public ViewInterface
   , virtual public Scroom::Utils::Base
@@ -71,7 +129,7 @@ private:
   unsigned                                           toolBarCount;
   int                                                statusBarContextId;
   int                                                zoom;
-  Scroom::Utils::Point<double>                       position; /**< of the top left visible pixel */
+  Freezable<Scroom::Utils::Point<double>>            position; /**< of the top left visible pixel */
   Selection::Ptr                                     selection;
   Selection::Ptr                                     tweakedSelection;
   std::vector<SelectionListener::Ptr>                selectionListeners;

@@ -9,9 +9,12 @@
 
 #include <ostream>
 
+#include <fmt/format.h>
+
 #include <gtk/gtk.h>
 
 #include <scroom/cairo-helpers.hh>
+#include <scroom/format_stuff.hh>
 #include <scroom/impl/bookkeepingimpl.hh>
 #include <scroom/point.hh>
 #include <scroom/presentationinterface.hh>
@@ -67,18 +70,15 @@ MeasureHandler::Ptr MeasureHandler::create() { return Ptr(new MeasureHandler());
 
 void MeasureHandler::displayMeasurement(const ViewInterface::Ptr& view)
 {
-  std::ostringstream s;
-  s.precision(1);
-  fixed(s);
-
   const auto      aspectRatio = view->getCurrentPresentation()->getAspectRatio();
   const Selection tweaked(selection->start / aspectRatio, selection->end / aspectRatio);
 
-  s << "l: " << tweaked.length() << ", dx: " << tweaked.width() << ", dy: " << tweaked.height() << ", from: (" << tweaked.start.x
-    << "," << tweaked.start.y << ")"
-    << ", to: (" << tweaked.end.x << "," << tweaked.end.y << ")";
-
-  view->setStatusMessage(s.str());
+  view->setStatusMessage(fmt::format("l: {:.1f}, dx: {}, dy: {}, from: {}, to: {}",
+                                     tweaked.length(),
+                                     tweaked.width(),
+                                     tweaked.height(),
+                                     tweaked.start,
+                                     tweaked.end));
 }
 
 void MeasureHandler::drawCross(cairo_t* cr, Scroom::Utils::Point<double> p)

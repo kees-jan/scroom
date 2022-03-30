@@ -16,9 +16,12 @@
 
 using ::testing::_;
 using ::testing::AtLeast;
+using ::testing::ByRef;
 using ::testing::DoAll;
+using ::testing::Eq;
 using ::testing::Return;
 using ::testing::SaveArg;
+using ::testing::Sequence;
 
 using Scroom::Bitmap::BitmapSurface;
 using Scroom::Utils::make_rect;
@@ -45,17 +48,18 @@ TEST(TransformPresentation_Tests, TransformationData_supports_aspect_ratio) // N
 
   TransformPresentation::Ptr tp = TransformPresentation::create(cpm, td);
 
-  ViewInterface::Ptr const     vi(reinterpret_cast<ViewInterface*>(1), DontDelete<ViewInterface>());
-  ViewInterface::WeakPtr const viw(vi);
-
+  ViewInterface::Ptr const vi(reinterpret_cast<ViewInterface*>(1), DontDelete<ViewInterface>());
   EXPECT_CALL(*cpm, getRect()).WillRepeatedly(Return(make_rect(1.0, 2.0, 3.0, 4.0)));
-  EXPECT_CALL(*cpm, open(viw));
-  EXPECT_CALL(*cpm, close(viw));
+
+  ViewInterface::WeakPtr viw;
+  Sequence               seq;
+  EXPECT_CALL(*cpm, open(_)).InSequence(seq).WillOnce(SaveArg<0>(&viw));
   const Scroom::Utils::Rectangle<double> to_be_drawn = make_rect(1.0, 4.5, 4.0, 9.0);
   const int                              zoom_to_use = 3;
   Scroom::Utils::Rectangle<double>       requested_to_be_drawn;
   int                                    used_zoom;
-  EXPECT_CALL(*cpm, redraw(vi, _, _, _)).WillOnce(DoAll(SaveArg<2>(&requested_to_be_drawn), SaveArg<3>(&used_zoom)));
+  EXPECT_CALL(*cpm, redraw(Eq(ByRef(viw)), _, _, _)).WillOnce(DoAll(SaveArg<2>(&requested_to_be_drawn), SaveArg<3>(&used_zoom)));
+  EXPECT_CALL(*cpm, close(Eq(ByRef(viw))));
 
   Scroom::Utils::Rectangle<double> r = tp->getRect();
   EXPECT_PRED2(rects_are_close, make_rect(2.0, 6.0, 6.0, 12.0), r);
@@ -68,9 +72,7 @@ TEST(TransformPresentation_Tests, TransformationData_supports_aspect_ratio) // N
 
   tp->redraw(vi, cr, to_be_drawn, zoom_to_use);
 
-  // Transformpresentation used to be responsible for scaling the presentation,
-  // but that (incorrectly) got moved to the View during the sep project
-  // EXPECT_PRED2(rects_are_close, make_rect(0.5, 1.5, 2.0, 3.0), requested_to_be_drawn);
+  EXPECT_PRED2(rects_are_close, make_rect(0.5, 1.5, 2.0, 3.0), requested_to_be_drawn);
   EXPECT_EQ(zoom_to_use, used_zoom);
   cairo_destroy(cr);
 

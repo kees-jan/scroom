@@ -7,15 +7,14 @@
 
 #include "pipette.hh"
 
-#include <cmath>
-
 #include <spdlog/spdlog.h>
 
 #include <gdk/gdk.h>
 
+#include <scroom/cairo-helpers.hh>
+#include <scroom/format_stuff.hh>
 #include <scroom/unused.hh>
 
-#include "scroom/cairo-helpers.hh"
 #include "version.h"
 
 ////////////////////////////////////////////////////////////////////////
@@ -49,7 +48,7 @@ Scroom::Bookkeeping::Token Pipette::viewAdded(ViewInterface::Ptr view)
 
   view->addToolButton(GTK_TOGGLE_BUTTON(gtk_toggle_button_new_with_label("Pipette")), handler);
 
-  return Scroom::Bookkeeping::Token();
+  return {};
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -58,7 +57,7 @@ Scroom::Bookkeeping::Token Pipette::viewAdded(ViewInterface::Ptr view)
 
 PipetteHandler::Ptr PipetteHandler::create() { return Ptr(new PipetteHandler()); }
 
-void PipetteHandler::computeValues(ViewInterface::Ptr view, Scroom::Utils::Rectangle<double> sel_rect)
+void PipetteHandler::computeValues(const ViewInterface::Ptr& view, Scroom::Utils::Rectangle<double> sel_rect)
 {
   jobMutex.lock();
 
@@ -78,33 +77,36 @@ void PipetteHandler::computeValues(ViewInterface::Ptr view, Scroom::Utils::Recta
   auto rect   = sel_rect.intersection(image);
   auto colors = pipette->getPixelAverages(rect);
 
+  const auto display_rect = roundOutward(rect / presentation->getAspectRatio());
+
   // If the plugin was switched off ignore the result
   if(!wasDisabled.test_and_set())
   {
-    displayValues(view, rect, colors);
+    displayValues(view, display_rect, colors);
   }
 
   wasDisabled.clear();
   jobMutex.unlock();
 }
 
-void PipetteHandler::displayValues(ViewInterface::Ptr                   view,
-                                   Scroom::Utils::Rectangle<double>     rect,
-                                   PipetteLayerOperations::PipetteColor colors)
+void PipetteHandler::displayValues(const ViewInterface::Ptr&                   view,
+                                   Scroom::Utils::Rectangle<double>            rect,
+                                   const PipetteLayerOperations::PipetteColor& colors)
 {
   std::stringstream info;
-  info.precision(2);
 
-  info << "Top-left: " << rect.getTopLeft();
-  info << ", Bottom-right: " << rect.getBottomRight();
-  info << ", Height: " << rect.getHeight();
-  info << ", Width: " << rect.getWidth();
+  info << fmt::format("Top-left: {}, Bottom-right: {}, Height: {}, Width: {}",
+                      rect.getTopLeft(),
+                      rect.getBottomRight(),
+                      rect.getHeight(),
+                      rect.getWidth());
+
   if(!colors.empty())
   {
     info << ", Colors:";
-    for(const auto& element: colors)
+    for(const auto& [name, value]: colors)
     {
-      info << ' ' << element.first << ": " << std::fixed << element.second;
+      info << fmt::format(" {}: {:.2f}", name, value);
     }
   }
 
@@ -115,7 +117,7 @@ void PipetteHandler::displayValues(ViewInterface::Ptr                   view,
 // SelectionListener
 ////////////////////////////////////////////////////////////////////////
 
-void PipetteHandler::onSelectionStart(Selection::Ptr, ViewInterface::Ptr) {}
+void PipetteHandler::onSelectionStart(Selection::Ptr /*selection*/, ViewInterface::Ptr /*view*/) {}
 
 void PipetteHandler::onSelectionUpdate(Selection::Ptr s, ViewInterface::Ptr view)
 {
@@ -134,8 +136,8 @@ void PipetteHandler::onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view)
     selection = s;
 
     // Get the selection rectangle
-    auto sel_rect = roundOutward(Scroom::Utils::make_rect_from_start_end(selection->start, selection->end));
-    Sequentially()->schedule(boost::bind(&PipetteHandler::computeValues, shared_from_this<PipetteHandler>(), view, sel_rect),
+    const auto sel_rect = Scroom::Utils::make_rect_from_start_end(selection->start, selection->end);
+    Sequentially()->schedule([me = shared_from_this<PipetteHandler>(), view, sel_rect] { me->computeValues(view, sel_rect); },
                              currentJob);
     jobMutex.unlock();
   }
@@ -145,17 +147,16 @@ void PipetteHandler::onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view)
 // PostRenderer
 ////////////////////////////////////////////////////////////////////////
 
-void PipetteHandler::render(ViewInterface::Ptr const&        vi,
+void PipetteHandler::render(ViewInterface::Ptr const& /*vi*/,
                             cairo_t*                         cr,
                             Scroom::Utils::Rectangle<double> presentationArea,
                             int                              zoom)
 {
   if(selection)
   {
-    const auto aspectRatio = vi->getCurrentPresentation()->getAspectRatio();
-    const auto pixelSize   = pixelSizeFromZoom(zoom);
-    const auto start       = (selection->start - presentationArea.getTopLeft()) * pixelSize * aspectRatio;
-    const auto end         = (selection->end - presentationArea.getTopLeft()) * pixelSize * aspectRatio;
+    const auto pixelSize = pixelSizeFromZoom(zoom);
+    const auto start     = (selection->start - presentationArea.getTopLeft()) * pixelSize;
+    const auto end       = (selection->end - presentationArea.getTopLeft()) * pixelSize;
 
     cairo_set_line_width(cr, 1);
     cairo_set_source_rgb(cr, 0, 0, 1); // Blue

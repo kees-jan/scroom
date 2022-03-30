@@ -18,15 +18,15 @@ struct fmt::formatter<Scroom::Utils::Rectangle<T>> : formatter<T>
   template <typename FormatContext>
   auto format(const Scroom::Utils::Rectangle<T>& r, FormatContext& ctx) -> decltype(ctx.out())
   {
-    format_to(ctx.out(), "{{l: ");
+    format_to(ctx.out(), "<");
     formatter<T>::format(r.getLeft(), ctx);
-    format_to(ctx.out(), ", t: ");
+    format_to(ctx.out(), ",");
     formatter<T>::format(r.getTop(), ctx);
-    format_to(ctx.out(), ", r: ");
-    formatter<T>::format(r.getRight(), ctx);
-    format_to(ctx.out(), ", b: ");
-    formatter<T>::format(r.getBottom(), ctx);
-    format_to(ctx.out(), "}}");
+    format_to(ctx.out(), ",");
+    formatter<T>::format(r.getWidth(), ctx);
+    format_to(ctx.out(), ",");
+    formatter<T>::format(r.getHeight(), ctx);
+    format_to(ctx.out(), ">");
 
     return ctx.out();
   }
@@ -38,11 +38,11 @@ struct fmt::formatter<Scroom::Utils::Point<T>> : formatter<T>
   template <typename FormatContext>
   auto format(const Scroom::Utils::Point<T>& p, FormatContext& ctx) -> decltype(ctx.out())
   {
-    format_to(ctx.out(), "{{");
+    format_to(ctx.out(), "(");
     formatter<T>::format(p.x, ctx);
-    format_to(ctx.out(), ", ");
+    format_to(ctx.out(), ",");
     formatter<T>::format(p.y, ctx);
-    format_to(ctx.out(), "}}");
+    format_to(ctx.out(), ")");
 
     return ctx.out();
   }

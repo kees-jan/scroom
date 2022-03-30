@@ -6,14 +6,11 @@
  */
 
 #include <cstdint>
-#include <cstdio>
 #include <cstring>
 #include <sstream>
 
 #include <boost/shared_ptr.hpp>
 #include <boost/utility.hpp>
-
-#include <glib.h>
 
 #include <scroom/bitmap-helpers.hh>
 #include <scroom/cairo-helpers.hh>
@@ -201,6 +198,7 @@ void CommonOperations::draw(cairo_t*                         cr,
       int divider = 1 << -zoom;
 
       auto origin = viewArea.getTopLeft() - tileArea.getTopLeft() / divider;
+
       cairo_set_source_surface(cr, source->get(), origin.x, origin.y);
       cairo_paint(cr);
     }
@@ -208,7 +206,7 @@ void CommonOperations::draw(cairo_t*                         cr,
 }
 
 PipetteLayerOperations::PipetteColor PipetteCommonOperationsCMYK::sumPixelValues(Scroom::Utils::Rectangle<int> area,
-                                                                                 const ConstTile::Ptr          tile)
+                                                                                 const ConstTile::Ptr&         tile)
 {
   int                                           offset = 4 * (area.getTop() * tile->width + area.getLeft());
   int                                           stride = 4 * (tile->width - area.getWidth());
@@ -235,7 +233,7 @@ PipetteLayerOperations::PipetteColor PipetteCommonOperationsCMYK::sumPixelValues
 }
 
 PipetteLayerOperations::PipetteColor PipetteCommonOperationsRGB::sumPixelValues(Scroom::Utils::Rectangle<int> area,
-                                                                                const ConstTile::Ptr          tile)
+                                                                                const ConstTile::Ptr&         tile)
 {
   int                                           offset = 3 * (area.getTop() * tile->width + area.getLeft());
   int                                           stride = 3 * (tile->width - area.getWidth());

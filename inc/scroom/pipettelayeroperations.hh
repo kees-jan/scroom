@@ -28,5 +28,5 @@ public:
    * @param area The rectangular area in which pixels are summed up.
    * @param tile The tile in which the pixels are located in.
    */
-  virtual PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr tile) = 0;
+  virtual PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr& tile) = 0;
 };

@@ -7,12 +7,7 @@
 
 #include "view.hh"
 
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
-#endif
-
 #include <array>
-#include <cmath>
 #include <sstream>
 
 #include <spdlog/spdlog.h>
@@ -68,9 +63,9 @@ public:
 
   static Ptr create(Point aspectRatio_) { return Ptr(new TweakPresentationPosition(aspectRatio_)); }
 
-  Point tweakPosition(Point currentPosition, Scroom::Utils::Point<int> /*drawingAreaSize*/, int zoom)
+  Point tweakPosition(Point currentPosition, Scroom::Utils::Point<int> /*drawingAreaSize*/, int zoom) const
   {
-    return round_to_multiple_of(currentPosition, Point(50 / pixelSizeFromZoom(zoom)));
+    return round_to_multiple_of(currentPosition, aspectRatio / pixelSizeFromZoom(zoom));
   }
 
   void setAspectRatio(Point aspectRatio_) { aspectRatio = aspectRatio_; }
@@ -83,7 +78,6 @@ private:
 
 private:
   Point aspectRatio;
-  //  const int                          tileSize = 4096;
 };
 
 class TweakRulers
@@ -94,7 +88,7 @@ public:
 
   static Ptr create(Point aspectRatio_) { return Ptr(new TweakRulers(aspectRatio_)); }
 
-  Scroom::Utils::Rectangle<double> tweakRulers(Point currentPosition, Scroom::Utils::Point<int> drawingAreaSize, int zoom)
+  Scroom::Utils::Rectangle<double> tweakRulers(Point currentPosition, Scroom::Utils::Point<int> drawingAreaSize, int zoom) const
   {
     return Scroom::Utils::make_rect(currentPosition, drawingAreaSize.to<double>() / pixelSizeFromZoom(zoom)) / aspectRatio;
   }
@@ -166,9 +160,9 @@ public:
 
   static Ptr create(Point aspectRatio_) { return Ptr(new TweakSelection(aspectRatio_)); }
 
-  Rectangle tweakSelection(Rectangle selection) { return roundCorners(selection / aspectRatio) * aspectRatio; }
+  Rectangle tweakSelection(Rectangle selection) const { return roundCorners(selection / aspectRatio) * aspectRatio; }
 
-  Selection tweakSelection(Selection selection)
+  Selection tweakSelection(Selection selection) const
   {
     const auto original = toRectangle(selection);
     const auto tweaked  = tweakSelection(original);
@@ -199,14 +193,14 @@ public:
 
   static Ptr create(Point aspectRatio_) { return Ptr(new TweakPositionTextBox(aspectRatio_)); }
 
-  Point parse(std::string_view x, std::string_view y, Scroom::Utils::Point<int> drawingAreaSize, int zoom)
+  Point parse(std::string_view x, std::string_view y, Scroom::Utils::Point<int> drawingAreaSize, int zoom) const
   {
     Point entered_position(boost::lexical_cast<double>(x), boost::lexical_cast<double>(y));
 
     return entered_position * aspectRatio - drawingAreaSize.to<double>() / pixelSizeFromZoom(zoom) / 2;
   }
 
-  std::pair<std::string, std::string> display(Point position, Scroom::Utils::Point<int> drawingAreaSize, int zoom)
+  std::pair<std::string, std::string> display(Point position, Scroom::Utils::Point<int> drawingAreaSize, int zoom) const
   {
     const Point center = (position + drawingAreaSize.to<double>() / pixelSizeFromZoom(zoom) / 2) / aspectRatio;
 
@@ -415,7 +409,7 @@ void View::updateScrollbar(GtkAdjustment* adj,
                            value,
                            presentationStart,
                            presentationStart + presentationSize,
-                           std::max(1.0, 1 / pixelSize),
+                           1 / pixelSize / 2,
                            3 * windowSize / pixelSize / 4,
                            windowSize / pixelSize);
 }
@@ -427,8 +421,8 @@ void View::updateScrollbars()
     gtk_widget_set_sensitive(GTK_WIDGET(vscrollbar), true);
     gtk_widget_set_sensitive(GTK_WIDGET(hscrollbar), true);
 
-    updateScrollbar(hscrollbaradjustment, zoom, position.x, presentationRect.x(), presentationRect.width(), drawingAreaSize.x);
-    updateScrollbar(vscrollbaradjustment, zoom, position.y, presentationRect.y(), presentationRect.height(), drawingAreaSize.y);
+    updateScrollbar(hscrollbaradjustment, zoom, position->x, presentationRect.x(), presentationRect.width(), drawingAreaSize.x);
+    updateScrollbar(vscrollbaradjustment, zoom, position->y, presentationRect.y(), presentationRect.height(), drawingAreaSize.y);
     updateRulers();
   }
   else
@@ -589,6 +583,7 @@ void View::on_window_size_changed(const Scroom::Utils::Point<int>& newSize)
   auto pixelSize = pixelSizeFromZoom(zoom);
   position += (drawingAreaSize - newSize) / pixelSize / 2;
 
+  std::scoped_lock protect_position(position);
   drawingAreaSize = newSize;
   updateZoom();
   updateScrollbars();
@@ -641,6 +636,7 @@ void View::on_zoombox_changed(int newzoom, const Scroom::Utils::Point<double>& m
     position += mousePos / pixelSizeFromZoom(zoom);
     position -= mousePos / pixelSizeFromZoom(newzoom);
 
+    std::scoped_lock protect_position(position);
     zoom = newzoom;
     updateScrollbars();
     updateTextbox();
@@ -664,7 +660,7 @@ void View::on_textbox_value_changed(GtkEditable* /*editable*/)
 
 void View::on_scrollbar_value_changed(GtkAdjustment* adjustment)
 {
-  auto newPos = position;
+  auto newPos = position.get();
 
   if(adjustment == vscrollbaradjustment)
   {
@@ -931,10 +927,11 @@ void View::updateNewWindowMenu()
 
 void View::updateXY(const Scroom::Utils::Point<double>& newPos, const View::LocationChangeCause& source)
 {
-  if(position != newPos)
+  if(position.get() != newPos)
   {
     position = newPos;
 
+    std::scoped_lock protect_position(position);
     if(source != SCROLLBAR)
     {
       updateScrollbars();
