@@ -11,6 +11,11 @@ env:
   CONAN_USER_HOME: "${{ github.workspace }}/conan-cache"
   CONAN_USER_HOME_SHORT: "${{ github.workspace }}/conan-cache/short"
 
+  CCACHE_BASEDIR: ${{github.workspace}}
+  CCACHE_DIR: ${{github.workspace}}/.ccache
+  CCACHE_COMPRESS: true
+  CCACHE_COMPRESSLEVEL: 6
+
 jobs:
   build-linux:
     runs-on: ${{ matrix.os }}
@@ -24,7 +29,7 @@ jobs:
           fetch-depth: 0
           submodules: recursive
 
-      - name: Cache
+      - name: Conan Cache
         uses: actions/cache@v2
         env:
           cache-name: cache-conan-modules
@@ -33,6 +38,21 @@ jobs:
             ${{ env.CONAN_USER_HOME }}
             ~/.cache/pip
           key: ${{ matrix.os }}-${{ env.BUILD_TYPE }}-${{ hashFiles('CMakeLists.txt') }}-${{ hashFiles('cmake/Conan.cmake') }}
+
+      - name: Prepare ccache timestamp
+        id: ccache_cache_timestamp
+        shell: cmake -P {0}
+        run: |
+          string(TIMESTAMP current_date "%Y-%m-%d-%H;%M;%S" UTC)
+          message("::set-output name=timestamp::${current_date}")
+
+      - name: ccache cache files
+        uses: actions/cache@v1.1.0
+        with:
+          path: .ccache
+          key: ${{ matrix.os }}-${{ env.BUILD_TYPE }}-ccache-${{ steps.ccache_cache_timestamp.outputs.timestamp }}
+          restore-keys: |
+            ${{ matrix.os }}-${{ env.BUILD_TYPE }}-ccache-
 
       - name: Create Build Environment
         # Some projects don't allow in-source building, so create a separate build directory
@@ -46,6 +66,7 @@ jobs:
       - name: Install apt packages
         run: >
           sudo apt-get -yq --no-install-suggests --no-install-recommends install
+          ccache
           libboost-dev
           libboost-filesystem-dev
           libboost-program-options-dev
