@@ -24,8 +24,8 @@ target_link_libraries(
   scroom
   PRIVATE project_options
           project_warnings
-          CONAN_PKG::spdlog
-          CONAN_PKG::fmt
+          spdlog
+          fmt
   PUBLIC PkgConfig::gtk
          PkgConfig::cairo
          PkgConfig::gthread

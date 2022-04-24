@@ -5,7 +5,7 @@ target_link_libraries(
   PRIVATE project_options
           project_warnings
           scroom_lib
-          CONAN_PKG::fmt
+          fmt
   PUBLIC PkgConfig::gtk PkgConfig::cairo)
 
 install(TARGETS spmeasure DESTINATION ${PLUGIN_INSTALL_LOCATION_RELATIVE})

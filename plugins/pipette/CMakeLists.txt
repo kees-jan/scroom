@@ -5,7 +5,7 @@ target_link_libraries(
   PRIVATE project_options
           project_warnings
           scroom_lib
-          CONAN_PKG::spdlog
+          spdlog
   PUBLIC PkgConfig::gtk
          threadpool
          PkgConfig::cairo

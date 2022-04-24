@@ -1,7 +1,4 @@
 set ATB=@abs_top_builddir@
-set CONAN_LIBS=@CONAN_LIB_DIRS@
-set CONAN_BINS=@CONAN_BIN_DIRS@
-
 set SCROOM_DEV_MODE=yes
 set SCROOM_PLUGIN_DIRS=/some/bogus/value;%ATB%/bin
 
@@ -12,4 +9,4 @@ set SCROOM_SAVED_PATH="%PATH%"
 
 :saved
 
-set PATH=%SCROOM_SAVED_PATH%;%CONAN_BINS%;C:\msys64\mingw64\bin;
+set PATH=C:/msys64/mingw64/bin;%SCROOM_SAVED_PATH%

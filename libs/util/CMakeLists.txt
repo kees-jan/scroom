@@ -8,7 +8,7 @@ target_sources(
           src/progressinterfacehelpers.cc)
 target_link_libraries(
   util
-  PRIVATE project_options project_warnings CONAN_PKG::spdlog
+  PRIVATE project_options project_warnings spdlog
   PUBLIC PkgConfig::gtk pthreads Boost::system)
 
 install(

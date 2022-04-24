@@ -50,7 +50,6 @@ const std::string        REGULAR_FILES   = "Regular files";
 
 static std::string xmlFileName;
 static GtkBuilder* aboutDialogXml = nullptr;
-GError*            error          = NULL;
 static GtkWidget*  aboutDialog    = nullptr;
 
 using Views = std::map<View::Ptr, Scroom::Bookkeeping::Token>;
@@ -505,8 +504,8 @@ void onDragDataReceived(GtkWidget*, GdkDragContext*, int, int, GtkSelectionData*
   {
     spdlog::info("Dropping file onto Scroom: {}", *uri);
 
-    error           = nullptr;
-    gchar* filename = g_filename_from_uri(*uri, nullptr, &error);
+    GError* error    = nullptr;
+    gchar*  filename = g_filename_from_uri(*uri, nullptr, &error);
     if(error != nullptr)
     {
       ShowModalDialog(error->message);

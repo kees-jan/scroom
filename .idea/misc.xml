@@ -3,6 +3,10 @@
   <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$" />
   <component name="CidrRootsConfiguration">
     <excludeRoots>
+      <file path="$PROJECT_DIR$/cmake-build-debug-clang-10" />
+      <file path="$PROJECT_DIR$/cmake-build-debug-gcc-10" />
+      <file path="$PROJECT_DIR$/cmake-build-relwithdebinfo-clang-10" />
+      <file path="$PROJECT_DIR$/cmake-build-relwithdebinfo-gcc-10" />
       <file path="$PROJECT_DIR$/doc/_build" />
       <file path="$PROJECT_DIR$/doc/_static/doxygen" />
     </excludeRoots>

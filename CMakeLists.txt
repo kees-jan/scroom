@@ -12,6 +12,12 @@ include(cmake/ProjectVersion.cmake)
 include(cmake/StandardProjectSettings.cmake)
 include(cmake/PreventInSourceBuilds.cmake)
 
+set(SCROOM_BUILD_OUTPUT_DIR
+    ${PROJECT_BINARY_DIR}
+    CACHE FILEPATH "Directory where the build output is to be stored")
+include(cmake/TargetLocations.cmake)
+scroom_output_dirs_setup()
+
 set(PLUGIN_INSTALL_LOCATION_RELATIVE "lib/scroom")
 get_directory_property(hasParent PARENT_DIRECTORY)
 if(hasParent)
@@ -87,28 +93,6 @@ if(ENABLE_PCH)
     <utility>)
 endif()
 
-set(CONAN_EXTRA_REQUIRES "")
-set(CONAN_EXTRA_OPTIONS "fmt:shared=True;spdlog:shared=True")
-
-if(ENABLE_GOOGLE_TEST)
-  set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES} gtest/1.11.0)
-endif()
-
-if(CPP_STARTER_USE_IMGUI)
-  set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES} imgui-sfml/2.1@bincrafters/stable)
-
-  # set(CONAN_EXTRA_OPTIONS ${CONAN_EXTRA_OPTIONS} sfml:shared=False sfml:graphics=True sfml:audio=False
-  # sfml:window=True libalsa:disable_python=True)
-endif()
-
-if(CPP_STARTER_USE_SDL)
-  set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES} sdl2/2.0.10@bincrafters/stable)
-  # set(CONAN_EXTRA_OPTIONS ${CONAN_EXTRA_OPTIONS} sdl2:wayland=True)
-endif()
-
-include(cmake/Conan.cmake)
-run_conan()
-
 if(ENABLE_BOOST_TEST OR ENABLE_GOOGLE_TEST)
   enable_testing()
 endif()
@@ -153,7 +137,6 @@ if(WIN32)
   if(SCROOMBINDIR)
     install(CODE "set(SCROOMBINDIR \"${SCROOMBINDIR}\")")
   endif()
-  install(CODE "set(CONAN_PATHS ${CONAN_LIB_DIRS} ${CONAN_BIN_DIRS})")
   install(
     CODE [[
       message("Gathering dependencies for: ${PLUGINS}")
@@ -164,7 +147,7 @@ if(WIN32)
         UNRESOLVED_DEPENDENCIES_VAR unresolved
         PRE_EXCLUDE_REGEXES "^api-ms-win.*" "^ext-ms-.*"
         POST_EXCLUDE_REGEXES "[Ww][Ii][Nn][Dd][Oo][Ww][Ss].[Ss][Yy][Ss][Tt][Ee][Mm]32/"
-        DIRECTORIES c:/msys64/mingw64/bin ${CONAN_PATHS})
+        DIRECTORIES c:/msys64/mingw64/bin)
       message("Resolved: ${resolved}")
       list(LENGTH unresolved unresolved_count)
       if(${unresolved_count} GREATER "0")

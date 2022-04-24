@@ -8,7 +8,7 @@ target_sources(
           src/threadpoolimpl.cc)
 target_link_libraries(
   threadpool
-  PRIVATE project_options project_warnings CONAN_PKG::spdlog
+  PRIVATE project_options project_warnings spdlog
   PUBLIC Boost::thread util)
 
 install(

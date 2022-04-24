@@ -12,7 +12,7 @@ target_link_libraries(
   PRIVATE project_options
           project_warnings
           util
-          CONAN_PKG::fmt
+          fmt
   PUBLIC PkgConfig::gtk PkgConfig::cairo)
 
 install(
@@ -48,7 +48,7 @@ if(ENABLE_GOOGLE_TEST)
             project_warnings
             scroom_lib
             Boost::system
-            CONAN_PKG::gtest)
+            gmock_main)
 
   add_test(NAME scroom_lib_gtests COMMAND scroom_lib_gtests)
 endif()

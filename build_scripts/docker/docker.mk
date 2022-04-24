@@ -10,7 +10,7 @@ echo-build-step = +@printf "[%-5s] %s\n" $1 $2
 
 ifeq ($(TEST),)
 docker-pull = $(Q)docker pull ghcr.io/kees-jan/scroom-build-container:$(1) > /dev/null
-docker-build = $(Q)docker run -v $$$$(pwd):/home/build/scroom --rm ghcr.io/kees-jan/scroom-build-container:$(1) sh -x -c "pip install --upgrade conan && D=\$$$$(mktemp -d) && cmake -S /home/build/scroom -B \$$$$D -GNinja && cmake --build \$$$$D && cd \$$$$D && xvfb-run ctest -j \$$$$(nproc) --output-on-failure"
+docker-build = $(Q)docker run -v $$$$(pwd):/home/build/scroom --rm ghcr.io/kees-jan/scroom-build-container:$(1) sh -x -c "D=\$$$$(mktemp -d) && cmake -S /home/build/scroom -B \$$$$D -GNinja && cmake --build \$$$$D && cd \$$$$D && xvfb-run ctest -j \$$$$(nproc) --output-on-failure"
 else
 docker-pull = $(Q)sleep 2
 docker-build = $(Q)sleep 3

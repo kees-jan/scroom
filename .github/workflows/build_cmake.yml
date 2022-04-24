@@ -6,11 +6,6 @@ env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: RelWithDebInfo
 
-  # Conan cache environment variables
-  CONAN_SYSREQUIRES_MODE: enabled
-  CONAN_USER_HOME: "${{ github.workspace }}/conan-cache"
-  CONAN_USER_HOME_SHORT: "${{ github.workspace }}/conan-cache/short"
-
   CCACHE_BASEDIR: ${{github.workspace}}
   CCACHE_DIR: ${{github.workspace}}/.ccache
   CCACHE_COMPRESS: true
@@ -22,22 +17,15 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-18.04, ubuntu-20.04 ]
+        type: [ RelWithDebInfo, Debug ]
       fail-fast: false
+    env:
+      BUILD_TYPE: ${{ matrix.type }}
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
           submodules: recursive
-
-      - name: Conan Cache
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-conan-modules
-        with:
-          path: |
-            ${{ env.CONAN_USER_HOME }}
-            ~/.cache/pip
-          key: ${{ matrix.os }}-${{ env.BUILD_TYPE }}-${{ hashFiles('CMakeLists.txt') }}-${{ hashFiles('cmake/Conan.cmake') }}
 
       - name: Prepare ccache timestamp
         id: ccache_cache_timestamp
@@ -80,21 +68,12 @@ jobs:
           libtiff5-dev
           pkg-config
 
-      - name: Install conan
-        run: |
-          python3 -m pip install --upgrade pip setuptools
-          python3 -m pip install --no-warn-script-location conan
-          source ~/.profile
-
       - name: Configure CMake
         working-directory: ${{runner.workspace}}/build
         # Note the current convention is to use the -S and -B options here to specify source
         # and build directories, but this is only available with CMake 3.13 and higher.
         # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
-        #
-        # We need to source the profile file to make sure conan is in PATH
         run: |
-          source ~/.profile
           cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_CXX_COMPILER=g++-10 -DCMAKE_C_COMPILER=gcc-10
 
       - name: Build
@@ -134,13 +113,6 @@ jobs:
           mingw-w64-x86_64-toolchain
           zip
           mingw64/mingw-w64-x86_64-cmake
-          mingw64/mingw-w64-x86_64-python
-          mingw64/mingw-w64-x86_64-python-pip
-
-      - name: Install conan
-        run: >
-          build_scripts\github\mingwdo
-          pip install --user conan
 
       - name: Build
         run: >

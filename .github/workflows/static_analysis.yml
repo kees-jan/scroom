@@ -41,11 +41,6 @@ jobs:
           pkg-config
           clang-tidy
 
-      - name: Install conan
-        run: |
-          python3 -m pip install --upgrade pip setuptools
-          python3 -m pip install --no-warn-script-location conan
-
       - name: Get Codacy Clang-tidy
         env:
           CODACY_CLANG_TIDY: https://github.com/codacy/codacy-clang-tidy/
@@ -62,10 +57,7 @@ jobs:
         # Note the current convention is to use the -S and -B options here to specify source
         # and build directories, but this is only available with CMake 3.13 and higher.
         # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
-        #
-        # We need to source the profile file to make sure conan is in PATH
         run: |
-          source ~/.profile
           cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE
 
       - name: Clang-Tidy

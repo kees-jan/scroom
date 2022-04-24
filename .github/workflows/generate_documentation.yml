@@ -41,15 +41,14 @@ jobs:
           graphviz
           plantuml
 
-      - name: Install conan
+      - name: Install python packages
         run: |
           python3 -m pip install --upgrade pip setuptools
-          python3 -m pip install --no-warn-script-location conan sphinx sphinxcontrib-plantuml sphinxcontrib-doxylink
+          python3 -m pip install --no-warn-script-location sphinx sphinxcontrib-plantuml sphinxcontrib-doxylink
 
       - name: Configure CMake
         working-directory: ${{runner.workspace}}/build
         run: |
-          source ~/.profile
           cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE -DENABLE_DOXYGEN=TRUE
 
       - name: Doxygen

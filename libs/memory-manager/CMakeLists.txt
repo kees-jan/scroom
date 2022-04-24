@@ -12,7 +12,7 @@ target_link_libraries(
           util
           threadpool
           ZLIB::ZLIB
-          CONAN_PKG::fmt)
+          fmt)
 
 install(
   TARGETS memory_manager

@@ -1,6 +1,4 @@
 ATB=@abs_top_builddir@
-CONAN_LIBS="@CONAN_LIB_DIRS@"
-CONAN_BINS="@CONAN_BIN_DIRS@"
 
 export SCROOM_DEV_MODE="yes"
 
@@ -13,7 +11,6 @@ fi
 
 if [ -n "${MINGW_PREFIX+x}" ]
 then
-    export PATH=${SCROOM_SAVED_PATH}:$(cygpath -p "${CONAN_BINS}")
     export SCROOM_PLUGIN_DIRS="/some/bogus/value;${ATB}/bin"
 else
     export SCROOM_PLUGIN_DIRS="/some/bogus/value:${ATB}/lib"

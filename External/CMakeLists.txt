@@ -1,5 +1,10 @@
+include(FetchContent)
+
 add_subdirectory(pthreads)
 add_subdirectory(boost)
 add_subdirectory(gtk3)
 add_subdirectory(zlib)
 add_subdirectory(tiff)
+add_subdirectory(gtest)
+add_subdirectory(libfmt)
+add_subdirectory(spdlog)

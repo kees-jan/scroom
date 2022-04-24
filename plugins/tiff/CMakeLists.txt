@@ -8,7 +8,7 @@ target_sources(
           src/tiffsource.cc)
 target_link_libraries(
   sptiff
-  PRIVATE project_options project_warnings CONAN_PKG::spdlog
+  PRIVATE project_options project_warnings spdlog
   PUBLIC PkgConfig::gtk
          scroom_lib
          util
