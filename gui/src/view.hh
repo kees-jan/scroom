@@ -32,7 +32,7 @@
 class TweakPresentationPosition;
 class TweakPositionTextBox;
 class TweakRulers;
-class TweakSelection;
+class ITweakSelection;
 
 /**
  * Protect a value from being assigned.
@@ -117,30 +117,29 @@ private:
   Ruler::Ptr                       vruler;
   Ruler::Ptr                       hruler;
 
-  GtkComboBox*                                       zoomBox;
-  GtkListStore*                                      zoomItems;
-  GtkProgressBar*                                    progressBar;
-  GtkStatusbar*                                      statusBar;
-  GtkToolbar*                                        toolBar;
-  GtkToolItem*                                       toolBarSeparator;
-  GtkEntry*                                          xTextBox;
-  GtkEntry*                                          yTextBox;
-  GtkWidget*                                         statusArea;
-  GtkWidget*                                         toolbarArea;
-  unsigned                                           toolBarCount;
-  int                                                statusBarContextId;
-  int                                                zoom;
-  Freezable<Scroom::Utils::Point<double>>            position; /**< of the top left visible pixel */
-  std::optional<Selection>                           selection;
-  std::optional<Selection>                           tweakedSelection;
-  std::vector<SelectionListener::Ptr>                selectionListeners;
-  std::vector<PostRenderer::Ptr>                     postRenderers;
-  std::map<GtkToggleButton*, ToolStateListener::Ptr> tools;
-  Scroom::Utils::Point<double>                       aspectRatio;
-  boost::shared_ptr<TweakPresentationPosition>       tweakPresentationPosition;
-  boost::shared_ptr<TweakPositionTextBox>            tweakPositionTextBox;
-  boost::shared_ptr<TweakRulers>                     tweakRulers;
-  boost::shared_ptr<TweakSelection>                  tweakSelection;
+  GtkComboBox*                                              zoomBox;
+  GtkListStore*                                             zoomItems;
+  GtkProgressBar*                                           progressBar;
+  GtkStatusbar*                                             statusBar;
+  GtkToolbar*                                               toolBar;
+  GtkToolItem*                                              toolBarSeparator;
+  GtkEntry*                                                 xTextBox;
+  GtkEntry*                                                 yTextBox;
+  GtkWidget*                                                statusArea;
+  GtkWidget*                                                toolbarArea;
+  unsigned                                                  toolBarCount;
+  int                                                       statusBarContextId;
+  int                                                       zoom;
+  Freezable<Scroom::Utils::Point<double>>                   position; /**< of the top left visible pixel */
+  std::optional<Selection>                                  selection;
+  std::vector<SelectionListener::Ptr>                       selectionListeners;
+  std::vector<PostRenderer::Ptr>                            postRenderers;
+  std::map<GtkToggleButton*, ToolStateListener::Ptr>        tools;
+  Scroom::Utils::Point<double>                              aspectRatio;
+  boost::shared_ptr<TweakPresentationPosition>              tweakPresentationPosition;
+  boost::shared_ptr<TweakPositionTextBox>                   tweakPositionTextBox;
+  boost::shared_ptr<TweakRulers>                            tweakRulers;
+  std::map<std::string, boost::shared_ptr<ITweakSelection>> tweakSelection;
 
   gint                         modifiermove;
   Scroom::Utils::Point<double> cachedPoint;

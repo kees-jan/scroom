@@ -45,9 +45,10 @@ public:
   ////////////////////////////////////////////////////////////////////////
   // SelectionListener
 
-  void onSelectionStart(Selection p, ViewInterface::Ptr view) override;
-  void onSelectionUpdate(Selection s, ViewInterface::Ptr view) override;
-  void onSelectionEnd(Selection s, ViewInterface::Ptr view) override;
+  std::string getSelectionType() override;
+  void        onSelectionStart(Selection p, ViewInterface::Ptr view) override;
+  void        onSelectionUpdate(Selection s, ViewInterface::Ptr view) override;
+  void        onSelectionEnd(Selection s, ViewInterface::Ptr view) override;
 
   ////////////////////////////////////////////////////////////////////////
   // ToolStateListener

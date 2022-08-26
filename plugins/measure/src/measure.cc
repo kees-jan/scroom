@@ -7,8 +7,6 @@
 
 #include "measure.hh"
 
-#include <ostream>
-
 #include <fmt/format.h>
 
 #include <gtk/gtk.h>

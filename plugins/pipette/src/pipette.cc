@@ -117,6 +117,8 @@ void PipetteHandler::displayValues(const ViewInterface::Ptr&                   v
 // SelectionListener
 ////////////////////////////////////////////////////////////////////////
 
+std::string PipetteHandler::getSelectionType() { return SelectionType::PIXEL; }
+
 void PipetteHandler::onSelectionStart(Selection /*selection*/, ViewInterface::Ptr /*view*/) {}
 
 void PipetteHandler::onSelectionUpdate(Selection s, ViewInterface::Ptr view)

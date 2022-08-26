@@ -24,6 +24,13 @@
 class PresentationInterface;
 class ViewInterface;
 
+namespace SelectionType
+{
+  const std::string GRID("GridSelection");
+  const std::string PIXEL("PixelSelection");
+  const std::string DEFAULT(GRID);
+} // namespace SelectionType
+
 /**
  * Structure that represents a selection made
  * by the user.
@@ -111,6 +118,8 @@ public:
   using Ptr = boost::shared_ptr<SelectionListener>;
 
 public:
+  virtual std::string getSelectionType() { return SelectionType::DEFAULT; }
+
   /**
    * This function is called whenever the user clicks
    * a view. The point that is clicked is passed as
