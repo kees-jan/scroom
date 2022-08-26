@@ -685,11 +685,11 @@ void View::on_buttonPress(GdkEventButton* event)
   else if(event->button == 3)
   {
     auto point       = windowPointToPresentationPoint(eventToPoint(event));
-    selection        = boost::make_shared<Selection>(point);
-    tweakedSelection = boost::make_shared<Selection>(tweakSelection->tweakSelection(*selection));
+    selection        = point;
+    tweakedSelection = tweakSelection->tweakSelection(*selection);
     for(const auto& listener: selectionListeners)
     {
-      listener->onSelectionStart(tweakedSelection, shared_from_this<ViewInterface>());
+      listener->onSelectionStart(*tweakedSelection, shared_from_this<ViewInterface>());
     }
   }
 }
@@ -705,11 +705,11 @@ void View::on_buttonRelease(GdkEventButton* event)
   }
   else if(event->button == 3 && selection && tweakedSelection)
   {
-    selection->end    = windowPointToPresentationPoint(eventToPoint(event));
-    *tweakedSelection = tweakSelection->tweakSelection(*selection);
+    selection->end   = windowPointToPresentationPoint(eventToPoint(event));
+    tweakedSelection = tweakSelection->tweakSelection(*selection);
     for(const auto& listener: selectionListeners)
     {
-      listener->onSelectionEnd(tweakedSelection, shared_from_this<ViewInterface>());
+      listener->onSelectionEnd(*tweakedSelection, shared_from_this<ViewInterface>());
     }
     invalidate();
   }
@@ -729,11 +729,11 @@ void View::on_motion_notify(GdkEventMotion* event)
   }
   else if((event->state & GDK_BUTTON3_MASK) && selection && tweakedSelection)
   {
-    selection->end    = windowPointToPresentationPoint(eventToPoint(event));
-    *tweakedSelection = tweakSelection->tweakSelection(*selection);
+    selection->end   = windowPointToPresentationPoint(eventToPoint(event));
+    tweakedSelection = tweakSelection->tweakSelection(*selection);
     for(const auto& listener: selectionListeners)
     {
-      listener->onSelectionUpdate(tweakedSelection, shared_from_this<ViewInterface>());
+      listener->onSelectionUpdate(*tweakedSelection, shared_from_this<ViewInterface>());
     }
     invalidate();
   }

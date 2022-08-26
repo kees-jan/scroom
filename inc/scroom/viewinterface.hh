@@ -31,9 +31,7 @@ class ViewInterface;
 struct Selection
 {
 public:
-  using Ptr      = boost::shared_ptr<Selection>;
-  using ConstPtr = boost::shared_ptr<const Selection>;
-  using Point    = Scroom::Utils::Point<double>;
+  using Point = Scroom::Utils::Point<double>;
 
 public:
   Point start;
@@ -54,6 +52,13 @@ public:
     : start(start_)
     , end(end_)
   {
+  }
+
+  Selection& operator=(const Point& p)
+  {
+    start = p;
+    end   = p;
+    return *this;
   }
 
   [[nodiscard]] double width() const { return abs(end.x - start.x); }
@@ -114,7 +119,7 @@ public:
    * The passed point is a point in the presentation
    * coordinate space.
    */
-  virtual void onSelectionStart(Selection::Ptr selection, boost::shared_ptr<ViewInterface> view) = 0;
+  virtual void onSelectionStart(Selection selection, boost::shared_ptr<ViewInterface> view) = 0;
 
   /**
    * This function is called whenever the selection
@@ -125,7 +130,7 @@ public:
    *
    * @see Selection
    */
-  virtual void onSelectionUpdate(Selection::Ptr selection, boost::shared_ptr<ViewInterface> view) = 0;
+  virtual void onSelectionUpdate(Selection selection, boost::shared_ptr<ViewInterface> view) = 0;
 
   /**
    * This function is called whenever the selection
@@ -136,7 +141,7 @@ public:
    *
    * @see Selection
    */
-  virtual void onSelectionEnd(Selection::Ptr selection, boost::shared_ptr<ViewInterface> view) = 0;
+  virtual void onSelectionEnd(Selection selection, boost::shared_ptr<ViewInterface> view) = 0;
 };
 
 /**

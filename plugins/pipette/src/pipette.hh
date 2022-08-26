@@ -9,6 +9,7 @@
 
 #include <atomic>
 #include <mutex>
+#include <optional>
 
 #include <scroom/pipetteviewinterface.hh>
 #include <scroom/plugininformationinterface.hh>
@@ -26,11 +27,11 @@ public:
   using Ptr = boost::shared_ptr<PipetteHandler>;
 
 private:
-  Selection::Ptr         selection{nullptr};
-  bool                   enabled{false};
-  std::atomic_flag       wasDisabled = ATOMIC_FLAG_INIT;
-  std::mutex             jobMutex;
-  ThreadPool::Queue::Ptr currentJob{ThreadPool::Queue::createAsync()};
+  std::optional<Selection> selection;
+  bool                     enabled{false};
+  std::atomic_flag         wasDisabled = ATOMIC_FLAG_INIT;
+  std::mutex               jobMutex;
+  ThreadPool::Queue::Ptr   currentJob{ThreadPool::Queue::createAsync()};
 
 public:
   static Ptr create();
@@ -44,9 +45,9 @@ public:
   ////////////////////////////////////////////////////////////////////////
   // SelectionListener
 
-  void onSelectionStart(Selection::Ptr p, ViewInterface::Ptr view) override;
-  void onSelectionUpdate(Selection::Ptr s, ViewInterface::Ptr view) override;
-  void onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view) override;
+  void onSelectionStart(Selection p, ViewInterface::Ptr view) override;
+  void onSelectionUpdate(Selection s, ViewInterface::Ptr view) override;
+  void onSelectionEnd(Selection s, ViewInterface::Ptr view) override;
 
   ////////////////////////////////////////////////////////////////////////
   // ToolStateListener
@@ -64,8 +65,8 @@ public:
   ////////////////////////////////////////////////////////////////////////
   // Testing
 
-  Selection::ConstPtr getSelection() const { return selection; }
-  bool                isEnabled() const { return enabled; }
+  std::optional<Selection> getSelection() const { return selection; }
+  bool                     isEnabled() const { return enabled; }
 };
 
 class Pipette

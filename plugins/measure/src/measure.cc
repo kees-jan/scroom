@@ -60,12 +60,6 @@ Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr view)
 // MeasureHandler
 ////////////////////////////////////////////////////////////////////////
 
-MeasureHandler::MeasureHandler()
-  : selection(nullptr)
-
-{
-}
-
 MeasureHandler::Ptr MeasureHandler::create() { return Ptr(new MeasureHandler()); }
 
 void MeasureHandler::displayMeasurement(const ViewInterface::Ptr& view)
@@ -94,9 +88,9 @@ void MeasureHandler::drawCross(cairo_t* cr, Scroom::Utils::Point<double> p)
 // SelectionListener
 ////////////////////////////////////////////////////////////////////////
 
-void MeasureHandler::onSelectionStart(Selection::Ptr /*selection*/, ViewInterface::Ptr /*view*/) {}
+void MeasureHandler::onSelectionStart(Selection /*selection*/, ViewInterface::Ptr /*view*/) {}
 
-void MeasureHandler::onSelectionUpdate(Selection::Ptr s, ViewInterface::Ptr view)
+void MeasureHandler::onSelectionUpdate(Selection s, ViewInterface::Ptr view)
 {
   if(enabled)
   {
@@ -105,7 +99,7 @@ void MeasureHandler::onSelectionUpdate(Selection::Ptr s, ViewInterface::Ptr view
   }
 }
 
-void MeasureHandler::onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view)
+void MeasureHandler::onSelectionEnd(Selection s, ViewInterface::Ptr view)
 {
   if(enabled)
   {
@@ -147,8 +141,8 @@ void MeasureHandler::render(ViewInterface::Ptr const& /*vi*/,
 
 void MeasureHandler::onDisable()
 {
-  selection = nullptr;
-  enabled   = false;
+  selection.reset();
+  enabled = false;
 }
 
 void MeasureHandler::onEnable() { enabled = true; }

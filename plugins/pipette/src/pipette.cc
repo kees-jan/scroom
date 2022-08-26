@@ -117,9 +117,9 @@ void PipetteHandler::displayValues(const ViewInterface::Ptr&                   v
 // SelectionListener
 ////////////////////////////////////////////////////////////////////////
 
-void PipetteHandler::onSelectionStart(Selection::Ptr /*selection*/, ViewInterface::Ptr /*view*/) {}
+void PipetteHandler::onSelectionStart(Selection /*selection*/, ViewInterface::Ptr /*view*/) {}
 
-void PipetteHandler::onSelectionUpdate(Selection::Ptr s, ViewInterface::Ptr view)
+void PipetteHandler::onSelectionUpdate(Selection s, ViewInterface::Ptr view)
 {
   UNUSED(view);
   if(enabled && jobMutex.try_lock())
@@ -129,7 +129,7 @@ void PipetteHandler::onSelectionUpdate(Selection::Ptr s, ViewInterface::Ptr view
   }
 }
 
-void PipetteHandler::onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view)
+void PipetteHandler::onSelectionEnd(Selection s, ViewInterface::Ptr view)
 {
   if(enabled && jobMutex.try_lock())
   {
@@ -175,8 +175,8 @@ void PipetteHandler::render(ViewInterface::Ptr const& /*vi*/,
 
 void PipetteHandler::onDisable()
 {
-  selection = nullptr;
-  enabled   = false;
+  selection.reset();
+  enabled = false;
   wasDisabled.test_and_set();
 }
 

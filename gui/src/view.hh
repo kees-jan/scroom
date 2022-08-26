@@ -10,6 +10,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <map>
+#include <optional>
 #include <string>
 #include <vector>
 
@@ -130,8 +131,8 @@ private:
   int                                                statusBarContextId;
   int                                                zoom;
   Freezable<Scroom::Utils::Point<double>>            position; /**< of the top left visible pixel */
-  Selection::Ptr                                     selection;
-  Selection::Ptr                                     tweakedSelection;
+  std::optional<Selection>                           selection;
+  std::optional<Selection>                           tweakedSelection;
   std::vector<SelectionListener::Ptr>                selectionListeners;
   std::vector<PostRenderer::Ptr>                     postRenderers;
   std::map<GtkToggleButton*, ToolStateListener::Ptr> tools;

@@ -121,7 +121,7 @@ BOOST_AUTO_TEST_CASE(pipette_selection_end)
 {
   PipetteHandler::Ptr handler = PipetteHandler::create();
 
-  Selection::Ptr sel = Selection::Ptr(new Selection(10, 11));
+  Selection sel(10, 11);
 
   handler->onSelectionEnd(sel, nullptr);
   BOOST_CHECK(!handler->getSelection());
@@ -142,7 +142,7 @@ BOOST_AUTO_TEST_CASE(pipette_selection_update)
 {
   PipetteHandler::Ptr handler = PipetteHandler::create();
 
-  Selection::Ptr sel = Selection::Ptr(new Selection(10, 11));
+  Selection sel(10, 11);
 
   // should not do anything but will be called from the view so should not crash
   handler->onSelectionStart(sel, nullptr);

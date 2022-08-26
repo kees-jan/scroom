@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include <optional>
+
 #include <scroom/plugininformationinterface.hh>
 #include <scroom/point.hh>
 #include <scroom/utilities.hh>
@@ -19,14 +21,11 @@ class MeasureHandler
   , virtual public Scroom::Utils::Base
 {
 public:
-  MeasureHandler();
-
-public:
   using Ptr = boost::shared_ptr<MeasureHandler>;
 
 private:
-  Selection::Ptr selection;
-  bool           enabled{false};
+  std::optional<Selection> selection;
+  bool                     enabled{false};
 
 public:
   static Ptr create();
@@ -39,9 +38,9 @@ public:
   ////////////////////////////////////////////////////////////////////////
   // SelectionListener
 
-  void onSelectionStart(Selection::Ptr p, ViewInterface::Ptr view) override;
-  void onSelectionUpdate(Selection::Ptr s, ViewInterface::Ptr view) override;
-  void onSelectionEnd(Selection::Ptr s, ViewInterface::Ptr view) override;
+  void onSelectionStart(Selection p, ViewInterface::Ptr view) override;
+  void onSelectionUpdate(Selection s, ViewInterface::Ptr view) override;
+  void onSelectionEnd(Selection s, ViewInterface::Ptr view) override;
 
   ////////////////////////////////////////////////////////////////////////
   // ToolStateListener
