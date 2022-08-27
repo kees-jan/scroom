@@ -1,6 +1,6 @@
 #!/bin/sh -uex
 
-parallel docker build -t test-scroom-dockerfiles:\{\} \{\} < supported-ubuntu-releases
+parallel --tag docker build -t test-scroom-dockerfiles:\{\} \{\} < supported-ubuntu-releases
 
 echo Docker images built succesfully
 

@@ -2,7 +2,7 @@
 # This file is generated from Dockerfile.in. Do not edit!
 #
 
-FROM ubuntu:hirsute
+FROM ubuntu:jammy
 
 MAINTAINER kees-jan@dijkzeul.eu
 
@@ -38,8 +38,8 @@ RUN \
     gpg --dearmor - > /etc/apt/trusted.gpg.d/kitware-archive-keyring.gpg
 
 RUN \
-  if [ "hirsute" = "focal" -o  "hirsute" = "bionic" ] ; then \
-    echo 'deb https://apt.kitware.com/ubuntu/ hirsute main' > /etc/apt/sources.list.d/kitware.list ; \
+  if [ "jammy" = "focal" -o  "jammy" = "bionic" ] ; then \
+    echo 'deb https://apt.kitware.com/ubuntu/ jammy main' > /etc/apt/sources.list.d/kitware.list ; \
   fi
 
 RUN \
@@ -72,14 +72,14 @@ RUN \
     gpg --dearmor - > /etc/apt/trusted.gpg.d/llvm-snapshot.gpg
   
 RUN \
-  if [ "hirsute" != "impish" ] ; then \
-    echo 'deb http://apt.llvm.org/hirsute/ llvm-toolchain-hirsute-11 main' > /etc/apt/sources.list.d/llvm.list ; \
+  if [ "jammy" != "jammy" ] ; then \
+    echo 'deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-11 main' > /etc/apt/sources.list.d/llvm.list ; \
   fi
   
 RUN \
   export DEBIAN_FRONTEND=noninteractive && \
   apt-get update -y && \
-  if [ "hirsute" != "impish" ] ; then \
+  if [ "jammy" != "jammy" ] ; then \
     apt-get install -y \
       clang++-11 \
       clang-11 && \

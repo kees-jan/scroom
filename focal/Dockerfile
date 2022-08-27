@@ -72,14 +72,14 @@ RUN \
     gpg --dearmor - > /etc/apt/trusted.gpg.d/llvm-snapshot.gpg
   
 RUN \
-  if [ "focal" != "impish" ] ; then \
+  if [ "focal" != "jammy" ] ; then \
     echo 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-11 main' > /etc/apt/sources.list.d/llvm.list ; \
   fi
   
 RUN \
   export DEBIAN_FRONTEND=noninteractive && \
   apt-get update -y && \
-  if [ "focal" != "impish" ] ; then \
+  if [ "focal" != "jammy" ] ; then \
     apt-get install -y \
       clang++-11 \
       clang-11 && \

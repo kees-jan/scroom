@@ -68,14 +68,14 @@ RUN \
     gpg --dearmor - > /etc/apt/trusted.gpg.d/llvm-snapshot.gpg
   
 RUN \
-  if [ "@DISTRIB_CODENAME@" != "impish" ] ; then \
+  if [ "@DISTRIB_CODENAME@" != "jammy" ] ; then \
     echo 'deb http://apt.llvm.org/@DISTRIB_CODENAME@/ llvm-toolchain-@DISTRIB_CODENAME@-11 main' > /etc/apt/sources.list.d/llvm.list ; \
   fi
   
 RUN \
   export DEBIAN_FRONTEND=noninteractive && \
   apt-get update -y && \
-  if [ "@DISTRIB_CODENAME@" != "impish" ] ; then \
+  if [ "@DISTRIB_CODENAME@" != "jammy" ] ; then \
     apt-get install -y \
       clang++-11 \
       clang-11 && \
