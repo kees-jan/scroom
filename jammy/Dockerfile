@@ -72,14 +72,14 @@ RUN \
     gpg --dearmor - > /etc/apt/trusted.gpg.d/llvm-snapshot.gpg
   
 RUN \
-  if [ "jammy" != "jammy" ] ; then \
+  if [ "jammy" = "bionic" ] || [ "jammy" = "focal" ] ; then \
     echo 'deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-11 main' > /etc/apt/sources.list.d/llvm.list ; \
   fi
   
 RUN \
   export DEBIAN_FRONTEND=noninteractive && \
   apt-get update -y && \
-  if [ "jammy" != "jammy" ] ; then \
+  if [ "jammy" = "bionic" ] || [ "jammy" = "focal" ] ; then \
     apt-get install -y \
       clang++-11 \
       clang-11 && \

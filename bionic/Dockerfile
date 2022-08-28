@@ -72,14 +72,14 @@ RUN \
     gpg --dearmor - > /etc/apt/trusted.gpg.d/llvm-snapshot.gpg
   
 RUN \
-  if [ "bionic" != "jammy" ] ; then \
+  if [ "bionic" = "bionic" ] || [ "bionic" = "focal" ] ; then \
     echo 'deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-11 main' > /etc/apt/sources.list.d/llvm.list ; \
   fi
   
 RUN \
   export DEBIAN_FRONTEND=noninteractive && \
   apt-get update -y && \
-  if [ "bionic" != "jammy" ] ; then \
+  if [ "bionic" = "bionic" ] || [ "bionic" = "focal" ] ; then \
     apt-get install -y \
       clang++-11 \
       clang-11 && \
