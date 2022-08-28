@@ -90,16 +90,4 @@ RUN \
   update-alternatives --install /usr/bin/python python /usr/bin/python3 30 \
     --slave /usr/bin/pip pip /usr/bin/pip3
 
-RUN \
-  pip install conan
-
-# Fill up conan cache
-
-RUN \
-  mkdir /tmp/scroom && \
-  git clone --recurse-submodules --depth 1 --shallow-submodules \
-    https://github.com/kees-jan/scroom.git /tmp/scroom/src && \
-  cmake -S /tmp/scroom/src -B /tmp/scroom/build -GNinja && \
-  rm -rf /tmp/scroom 
-
 CMD ["/bin/bash"]
