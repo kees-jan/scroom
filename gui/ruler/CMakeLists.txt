@@ -2,13 +2,14 @@ add_library(ruler_lib SHARED)
 target_sources(
   ruler_lib
   PRIVATE src/ruler.cc
-          src/ruler.hh
+          inc/ruler.hh
           src/rulerstrategies.cc
-          src/rulerstrategies.hh)
+          inc/rulerstrategies.hh)
 target_link_libraries(
   ruler_lib
   PRIVATE project_options project_warnings
   PUBLIC util PkgConfig::gtk Boost::system)
+target_include_directories(ruler_lib PUBLIC inc)
 
 if(ENABLE_BOOST_TEST)
   add_executable(ruler_tests)
