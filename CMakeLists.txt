@@ -114,11 +114,7 @@ set(PLUGINS
     ""
     CACHE INTERNAL "List of all plugins")
 function(install_plugin_dependencies plugin-name)
-  if(SCROOMBINDIR)
-    list(APPEND PLUGINS "${SCROOMBINDIR}bin/lib${plugin-name}.dll")
-  else()
-    list(APPEND PLUGINS "bin/lib${plugin-name}.dll")
-  endif()
+  list(APPEND PLUGINS "bin/lib${plugin-name}.dll")
   set(PLUGINS
       "${PLUGINS}"
       CACHE INTERNAL "List of all plugins")
@@ -134,14 +130,12 @@ add_subdirectory(gui)
 if(WIN32)
   message("Going to gather dependencies on Windows")
   install(CODE "set(PLUGINS \"${PLUGINS}\")")
-  if(SCROOMBINDIR)
-    install(CODE "set(SCROOMBINDIR \"${SCROOMBINDIR}\")")
-  endif()
+  install(CODE "set(SCROOM_BUILD_OUTPUT_DIR \"${SCROOM_BUILD_OUTPUT_DIR}\")")
   install(
     CODE [[
       message("Gathering dependencies for: ${PLUGINS}")
       file(GET_RUNTIME_DEPENDENCIES
-        EXECUTABLES ${SCROOMBINDIR}bin/scroom.exe
+        EXECUTABLES ${SCROOM_BUILD_OUTPUT_DIR}/bin/scroom.exe
         LIBRARIES ${PLUGINS}
         RESOLVED_DEPENDENCIES_VAR resolved
         UNRESOLVED_DEPENDENCIES_VAR unresolved
