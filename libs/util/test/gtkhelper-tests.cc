@@ -40,22 +40,22 @@ BOOST_AUTO_TEST_CASE(function_returning_bool)
   B::WeakPtr  wb;
 
   {
-    B::Ptr sb                          = B::create();
-    wb                                 = sb;
-    std::pair<GSourceFunc, gpointer> w = wrap(boost::bind(b, sb));
-    f                                  = w.first;
-    data                               = w.second;
+    B::Ptr const sb                          = B::create();
+    wb                                       = sb;
+    std::pair<GSourceFunc, gpointer> const w = wrap(boost::bind(b, sb));
+    f                                        = w.first;
+    data                                     = w.second;
   }
   BOOST_CHECK(wb.lock());
 
-  bool result = (*f)(data);
+  bool const result = (*f)(data);
   BOOST_CHECK_EQUAL(false, result);
   BOOST_CHECK(!wb.lock());
 }
 
 BOOST_AUTO_TEST_CASE(on_ui_thread_test)
 {
-  Scroom::GtkTestHelpers::GtkMainLoop mainLoop;
+  Scroom::GtkTestHelpers::GtkMainLoop const mainLoop;
 
   BOOST_REQUIRE(!on_ui_thread());
   sync_on_ui_thread([] { BOOST_CHECK(on_ui_thread()); });

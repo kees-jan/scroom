@@ -23,7 +23,7 @@ bool init_unit_test() { return true; }
 
 std::string extract_path(const std::string& cmd)
 {
-  size_t n = cmd.find_last_of('/');
+  const size_t n = cmd.find_last_of('/');
   if(n == std::string::npos)
   {
     return "";

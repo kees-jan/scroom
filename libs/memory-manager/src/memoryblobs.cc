@@ -40,7 +40,7 @@ namespace Scroom::MemoryBlobs
 
   Page::Ptr PageProvider::getFreePage()
   {
-    boost::mutex::scoped_lock lock(mut);
+    boost::mutex::scoped_lock const lock(mut);
     if(freePages.empty())
     {
       Scroom::MemoryBlocks::PageList pages = blockFactoryInterface->create(blockCount, blockSize)->getPages();
@@ -61,7 +61,7 @@ namespace Scroom::MemoryBlobs
 
   void PageProvider::markPageFree(Scroom::MemoryBlocks::Page* p)
   {
-    boost::mutex::scoped_lock lock(mut);
+    boost::mutex::scoped_lock const lock(mut);
     freePages.push_front(p);
   }
 
@@ -115,7 +115,7 @@ namespace Scroom::MemoryBlobs
 
   void Blob::unload()
   {
-    boost::mutex::scoped_lock lock(mut);
+    boost::mutex::scoped_lock const lock(mut);
     refcount--;
     if(refcount == 0)
     {
@@ -134,7 +134,7 @@ namespace Scroom::MemoryBlobs
 
   void Blob::compress()
   {
-    boost::mutex::scoped_lock lock(mut);
+    boost::mutex::scoped_lock const lock(mut);
     if(state == COMPRESSING)
     {
       require(refcount == 0);
@@ -149,24 +149,24 @@ namespace Scroom::MemoryBlobs
 
   RawPageData::Ptr Blob::get()
   {
-    boost::mutex::scoped_lock lock(mut);
-    RawPageData::Ptr          result = load();
-    state                            = DIRTY;
+    boost::mutex::scoped_lock const lock(mut);
+    RawPageData::Ptr                result = load();
+    state                                  = DIRTY;
     return result;
   }
 
   RawPageData::Ptr Blob::initialize(uint8_t value)
   {
-    boost::mutex::scoped_lock lock(mut);
-    RawPageData::Ptr          result = load();
-    state                            = DIRTY;
+    boost::mutex::scoped_lock const lock(mut);
+    RawPageData::Ptr                result = load();
+    state                                  = DIRTY;
     memset(result.get(), value, size);
     return result;
   }
 
   RawPageData::ConstPtr Blob::getConst()
   {
-    boost::mutex::scoped_lock lock(mut);
+    boost::mutex::scoped_lock const lock(mut);
     return load();
   }
 } // namespace Scroom::MemoryBlobs

@@ -30,9 +30,9 @@ BOOST_AUTO_TEST_CASE(compression_decompression_retains_data)
     in[i] = i / 256 + i % 256;
   }
 
-  PageProvider::Ptr provider = PageProvider::create(blockCount, blockSize);
+  PageProvider::Ptr const provider = PageProvider::create(blockCount, blockSize);
 
-  PageList l = compressBlob(in, blobSize, provider);
+  PageList const l = compressBlob(in, blobSize, provider);
 
   uint8_t out[blobSize];
   decompressBlob(out, blobSize, l, provider);
@@ -52,9 +52,9 @@ BOOST_AUTO_TEST_CASE(compression_decompression_retains_data_with_large_blocks)
     in[i] = i / 256 + i % 256;
   }
 
-  PageProvider::Ptr provider = PageProvider::create(blockCount, blockSize);
+  PageProvider::Ptr const provider = PageProvider::create(blockCount, blockSize);
 
-  PageList l = compressBlob(in, blobSize, provider);
+  PageList const l = compressBlob(in, blobSize, provider);
 
   uint8_t out[blobSize];
   decompressBlob(out, blobSize, l, provider);

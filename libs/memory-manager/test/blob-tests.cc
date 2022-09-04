@@ -38,7 +38,7 @@ BOOST_AUTO_TEST_CASE(blobs_retain_their_data)
   uint8_t data = 0;
   for(const Blob::Ptr& b: blobList)
   {
-    RawPageData::Ptr raw = b->get();
+    RawPageData::Ptr const raw = b->get();
     BOOST_REQUIRE(raw.get());
 
     memset(raw.get(), data, blobSize);
@@ -49,7 +49,7 @@ BOOST_AUTO_TEST_CASE(blobs_retain_their_data)
   uint8_t expected[blobSize];
   for(const Blob::Ptr& b: blobList)
   {
-    RawPageData::ConstPtr raw = b->getConst();
+    RawPageData::ConstPtr const raw = b->getConst();
     BOOST_REQUIRE(raw.get());
 
     memset(expected, data, blobSize);
@@ -78,7 +78,7 @@ BOOST_AUTO_TEST_CASE(blobs_can_be_updated)
   uint8_t data = 0;
   for(const Blob::Ptr& b: blobList)
   {
-    RawPageData::Ptr raw = b->get();
+    RawPageData::Ptr const raw = b->get();
     BOOST_REQUIRE(raw.get());
 
     memset(raw.get(), data, blobSize);
@@ -88,7 +88,7 @@ BOOST_AUTO_TEST_CASE(blobs_can_be_updated)
   data = 0;
   for(const Blob::Ptr& b: blobList)
   {
-    RawPageData::Ptr raw = b->get();
+    RawPageData::Ptr const raw = b->get();
     BOOST_REQUIRE(raw.get());
 
     memset(raw.get(), 255 - data, blobSize);
@@ -99,7 +99,7 @@ BOOST_AUTO_TEST_CASE(blobs_can_be_updated)
   uint8_t expected[blobSize];
   for(const Blob::Ptr& b: blobList)
   {
-    RawPageData::ConstPtr raw = b->getConst();
+    RawPageData::ConstPtr const raw = b->getConst();
     BOOST_REQUIRE(raw.get());
 
     memset(expected, 255 - data, blobSize);
@@ -117,10 +117,10 @@ BOOST_AUTO_TEST_CASE(blobs_can_be_initialized)
 
   PageProvider::Ptr provider = PageProvider::create(blockCount, blockSize);
 
-  Blob::Ptr b = Blob::create(provider, blobSize);
+  Blob::Ptr const b = Blob::create(provider, blobSize);
   provider.reset();
 
-  RawPageData::Ptr raw = b->initialize(value);
+  RawPageData::Ptr const raw = b->initialize(value);
 
   uint8_t expected[blobSize];
   memset(expected, value, blobSize);

@@ -195,7 +195,7 @@ void on_save_as_activate(GtkMenuItem*, gpointer) {}
 
 void on_quit_activate(GtkMenuItem*, gpointer)
 {
-  Views v(views);
+  Views const v(views);
   for(const Views::value_type& p: v)
   {
     p.first->hide();
@@ -215,7 +215,7 @@ void on_fullscreen_activate(GtkMenuItem* item, gpointer user_data)
 {
   View*             view   = static_cast<View*>(user_data);
   GtkCheckMenuItem* cmi    = GTK_CHECK_MENU_ITEM(item);
-  gboolean          active = gtk_check_menu_item_get_active(cmi);
+  const gboolean    active = gtk_check_menu_item_get_active(cmi);
 
   if(active)
   {
@@ -288,7 +288,7 @@ void on_done_loading_plugins()
 
       while(!fn.empty())
       {
-        std::string& file = fn.front();
+        const std::string& file = fn.front();
         try
         {
           load(file);
@@ -306,12 +306,12 @@ void on_done_loading_plugins()
     }
     filenames.erase(REGULAR_FILES);
 
-    PluginManager::Ptr                                       instance               = PluginManager::getInstance();
+    PluginManager::Ptr const                                 instance               = PluginManager::getInstance();
     std::map<std::string, NewAggregateInterface::Ptr> const& newAggregateInterfaces = instance->getNewAggregateInterfaces();
 
     for(FileNameMap::value_type const& v: filenames)
     {
-      std::string const&            aggregateName = v.first;
+      const std::string&            aggregateName = v.first;
       std::list<std::string> const& files         = v.second;
 
       auto i = newAggregateInterfaces.find(aggregateName);
@@ -319,14 +319,14 @@ void on_done_loading_plugins()
       {
         try
         {
-          Aggregate::Ptr             aggregate             = i->second->createNew();
-          PresentationInterface::Ptr aggregatePresentation = boost::dynamic_pointer_cast<PresentationInterface>(aggregate);
+          Aggregate::Ptr const             aggregate             = i->second->createNew();
+          PresentationInterface::Ptr const aggregatePresentation = boost::dynamic_pointer_cast<PresentationInterface>(aggregate);
 
           if(aggregatePresentation)
           {
-            for(std::string const& file: files)
+            for(const std::string& file: files)
             {
-              PresentationInterface::Ptr p = loadPresentation(file);
+              PresentationInterface::Ptr const p = loadPresentation(file);
               aggregate->addPresentation(p);
             }
 
@@ -449,10 +449,10 @@ void on_scroom_bootstrap(const FileNameMap& newFilenames)
   }
 
   aboutDialogXml = gtk_builder_new();
-  boost::scoped_array<gchar*> obj{new gchar*[2]};
-  std::string                 str = "aboutDialog";
-  obj[0]                          = const_cast<char*>(str.c_str());
-  obj[1]                          = nullptr;
+  boost::scoped_array<gchar*> const obj{new gchar*[2]};
+  const std::string                 str = "aboutDialog";
+  obj[0]                                = const_cast<char*>(str.c_str());
+  obj[1]                                = nullptr;
   gtk_builder_add_objects_from_file(aboutDialogXml, xmlFileName.c_str(), obj.get(), nullptr);
 
   if(aboutDialogXml != nullptr)
@@ -484,7 +484,7 @@ void find_or_create_scroom(PresentationInterface::Ptr presentation)
 
   for(const Views::value_type& p: views)
   {
-    View::Ptr view = p.first;
+    View::Ptr const view = p.first;
     if(!view->hasPresentation())
     {
       view->setPresentation(presentation);
@@ -529,11 +529,11 @@ void onDragDataReceived(GtkWidget*, GdkDragContext*, int, int, GtkSelectionData*
 
 void create_scroom(PresentationInterface::Ptr presentation)
 {
-  GtkBuilder*                xml = gtk_builder_new();
-  boost::scoped_array<char*> obj{new gchar*[2]};
-  std::string                str = "scroom";
-  obj[0]                         = const_cast<char*>(str.c_str());
-  obj[1]                         = nullptr;
+  GtkBuilder*                      xml = gtk_builder_new();
+  boost::scoped_array<char*> const obj{new gchar*[2]};
+  const std::string                str = "scroom";
+  obj[0]                               = const_cast<char*>(str.c_str());
+  obj[1]                               = nullptr;
   gtk_builder_add_objects_from_file(xml, xmlFileName.c_str(), obj.get(), nullptr);
 
   if(xml == nullptr)
@@ -542,7 +542,7 @@ void create_scroom(PresentationInterface::Ptr presentation)
     exit(-1); // NOLINT(concurrency-mt-unsafe)
   }
 
-  View::Ptr view = View::create(xml, presentation);
+  View::Ptr const view = View::create(xml, presentation);
   on_view_created(view);
   if(presentation)
   {
@@ -635,12 +635,12 @@ void on_presentation_created(PresentationInterface::Ptr presentation)
 
 void on_view_created(const View::Ptr& v)
 {
-  Scroom::Bookkeeping::Token t;
+  Scroom::Bookkeeping::Token const t;
   views[v] = t;
 
   for(auto& presentation: presentations)
   {
-    PresentationInterface::Ptr p = presentation.lock();
+    PresentationInterface::Ptr const p = presentation.lock();
     if(p)
     {
       v->on_presentation_created(p);
@@ -666,7 +666,7 @@ void on_presentation_possibly_destroyed()
 
   for(auto cur = presentations.begin(); cur != presentations.end(); cur++)
   {
-    PresentationInterface::Ptr p = cur->lock();
+    PresentationInterface::Ptr const p = cur->lock();
     if(!p)
     {
       presentationDestroyed = true;
@@ -708,7 +708,7 @@ void on_new_presentationobserver(PresentationObserver::Ptr po)
 {
   for(auto& presentation: presentations)
   {
-    PresentationInterface::Ptr p = presentation.lock();
+    PresentationInterface::Ptr const p = presentation.lock();
     if(p)
     {
       po->presentationAdded(p);

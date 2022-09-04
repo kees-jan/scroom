@@ -44,10 +44,10 @@ BOOST_AUTO_TEST_SUITE(boost_bind_Tests)
 
 BOOST_AUTO_TEST_CASE(keeps_object_alive_while_setting)
 {
-  int                     value    = 25;
-  const int               expected = 1;
-  A::Ptr                  a        = A::create(value);
-  boost::function<void()> f        = boost::bind(&A::set, a, expected);
+  int                           value    = 25;
+  const int                     expected = 1;
+  A::Ptr                        a        = A::create(value);
+  boost::function<void()> const f        = boost::bind(&A::set, a, expected);
 
   a.reset();
   f();
@@ -56,10 +56,10 @@ BOOST_AUTO_TEST_CASE(keeps_object_alive_while_setting)
 
 BOOST_AUTO_TEST_CASE(keeps_object_alive_while_getting)
 {
-  int                    value    = 25;
-  const int              expected = value;
-  A::Ptr                 a        = A::create(value);
-  boost::function<int()> f        = boost::bind(&A::get, a);
+  int                          value    = 25;
+  const int                    expected = value;
+  A::Ptr                       a        = A::create(value);
+  boost::function<int()> const f        = boost::bind(&A::get, a);
 
   a.reset();
   BOOST_CHECK_EQUAL(expected, f());

@@ -35,7 +35,7 @@ LayerCoordinator::~LayerCoordinator()
 
 void LayerCoordinator::addSourceTile(int x, int y, CompressedTile::Ptr tile)
 {
-  boost::unique_lock<boost::mutex> lock(mut);
+  boost::unique_lock<boost::mutex> const lock(mut);
 
   sourceTiles[tile] = std::make_pair(x, y);
   registrations.emplace_back(tile->registerObserver(shared_from_this<LayerCoordinator>()));
@@ -47,7 +47,7 @@ void LayerCoordinator::addSourceTile(int x, int y, CompressedTile::Ptr tile)
 
 void LayerCoordinator::tileFinished(CompressedTile::Ptr tile)
 {
-  ConstTile::Ptr tileData = tile->getConstTileAsync();
+  ConstTile::Ptr const tileData = tile->getConstTileAsync();
   require(tileData);
 
   CpuBound()->schedule(boost::bind(&LayerCoordinator::reduceSourceTile, shared_from_this<LayerCoordinator>(), tile, tileData),
@@ -66,20 +66,20 @@ void LayerCoordinator::reduceSourceTile(CompressedTile::Ptr tile, ConstTile::Ptr
   // Other than that side-effect, we have no use for tileData
   UNUSED(tileData);
 
-  Scroom::Utils::Stuff      s        = targetTile->initialize();
-  const std::pair<int, int> location = sourceTiles[tile];
-  const int                 x        = location.first;
-  const int                 y        = location.second;
+  Scroom::Utils::Stuff const s        = targetTile->initialize();
+  const std::pair<int, int>  location = sourceTiles[tile];
+  const int                  x        = location.first;
+  const int                  y        = location.second;
 
   if(!targetTileData)
   {
     targetTileData = targetTile->getTileSync();
   }
-  ConstTile::Ptr source = tile->getConstTileSync();
+  ConstTile::Ptr const source = tile->getConstTileSync();
 
   lo->reduce(targetTileData, source, x, y);
 
-  boost::unique_lock<boost::mutex> lock(mut);
+  boost::unique_lock<boost::mutex> const lock(mut);
   unfinishedSourceTiles--;
   if(!unfinishedSourceTiles)
   {

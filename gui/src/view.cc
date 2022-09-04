@@ -244,7 +244,7 @@ public:
 
   [[nodiscard]] Point parse(std::string_view x, std::string_view y, Scroom::Utils::Point<int> drawingAreaSize, int zoom) const
   {
-    Point entered_position(boost::lexical_cast<double>(x), boost::lexical_cast<double>(y));
+    const Point entered_position(boost::lexical_cast<double>(x), boost::lexical_cast<double>(y));
 
     return entered_position * aspectRatio - drawingAreaSize.to<double>() / pixelSizeFromZoom(zoom) / 2;
   }
@@ -279,8 +279,8 @@ static Scroom::Utils::Point<double> eventToPoint(GdkEventMotion* event) { return
 // This one has too much View-internal knowledge to hide in callbacks.cc
 static void on_newWindow_activate(GtkMenuItem*, gpointer user_data)
 {
-  PresentationInterface::WeakPtr& wp = *static_cast<PresentationInterface::WeakPtr*>(user_data); // Yuk!
-  PresentationInterface::Ptr      p  = wp.lock();
+  PresentationInterface::WeakPtr const& wp = *static_cast<PresentationInterface::WeakPtr*>(user_data); // Yuk!
+  PresentationInterface::Ptr const      p  = wp.lock();
   if(p)
   {
     find_or_create_scroom(p);
@@ -299,17 +299,17 @@ View::View(GtkBuilder* scroomXml_)
                    {SelectionType::PIXEL, TweakPixelSelection::create(aspectRatio)}}
 
 {
-  PluginManager::Ptr pluginManager = PluginManager::getInstance();
-  window                           = GTK_WINDOW(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "scroom")));
-  drawingArea                      = GTK_WIDGET(gtk_builder_get_object(scroomXml_, "drawingarea"));
-  vscrollbar                       = GTK_SCROLLBAR(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "vscrollbar")));
-  hscrollbar                       = GTK_SCROLLBAR(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "hscrollbar")));
-  vscrollbaradjustment             = gtk_range_get_adjustment(GTK_RANGE(vscrollbar));
-  hscrollbaradjustment             = gtk_range_get_adjustment(GTK_RANGE(hscrollbar));
-  vruler_area                      = GTK_DRAWING_AREA(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "vruler_area")));
-  hruler_area                      = GTK_DRAWING_AREA(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "hruler_area")));
-  xTextBox                         = GTK_ENTRY(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "x_textbox")));
-  yTextBox                         = GTK_ENTRY(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "y_textbox")));
+  PluginManager::Ptr const pluginManager = PluginManager::getInstance();
+  window                                 = GTK_WINDOW(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "scroom")));
+  drawingArea                            = GTK_WIDGET(gtk_builder_get_object(scroomXml_, "drawingarea"));
+  vscrollbar                             = GTK_SCROLLBAR(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "vscrollbar")));
+  hscrollbar                             = GTK_SCROLLBAR(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "hscrollbar")));
+  vscrollbaradjustment                   = gtk_range_get_adjustment(GTK_RANGE(vscrollbar));
+  hscrollbaradjustment                   = gtk_range_get_adjustment(GTK_RANGE(hscrollbar));
+  vruler_area                            = GTK_DRAWING_AREA(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "vruler_area")));
+  hruler_area                            = GTK_DRAWING_AREA(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "hruler_area")));
+  xTextBox                               = GTK_ENTRY(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "x_textbox")));
+  yTextBox                               = GTK_ENTRY(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "y_textbox")));
 
   // Create rulers and attach ruler areas to them
   vruler = Ruler::create(Ruler::VERTICAL, GTK_WIDGET(vruler_area));
@@ -367,8 +367,8 @@ void View::redraw(cairo_t* cr)
 {
   if(presentation)
   {
-    double                       pixelSize         = pixelSizeFromZoom(zoom);
-    Scroom::Utils::Point<double> visibleRegionSize = drawingAreaSize.to<double>() / pixelSize;
+    const double                       pixelSize         = pixelSizeFromZoom(zoom);
+    Scroom::Utils::Point<double> const visibleRegionSize = drawingAreaSize.to<double>() / pixelSize;
 
     auto rect = Scroom::Utils::make_rect(tweakedPosition(), visibleRegionSize);
 
@@ -400,7 +400,7 @@ void View::clearPresentation()
 
 void View::setPresentation(PresentationInterface::Ptr presentation_)
 {
-  View::Ptr me = shared_from_this<View>();
+  View::Ptr const me = shared_from_this<View>();
 
   if(presentation)
   {
@@ -621,7 +621,7 @@ void View::on_configure()
   cairo_rectangle_int_t rect;
   cairo_region_get_extents(r, &rect);
 
-  Scroom::Utils::Point<int> newSize(rect.width, rect.height);
+  Scroom::Utils::Point<int> const newSize(rect.width, rect.height);
 
   if(drawingAreaSize != newSize)
   {
@@ -636,7 +636,7 @@ void View::on_window_size_changed(const Scroom::Utils::Point<int>& newSize)
   auto pixelSize = pixelSizeFromZoom(zoom);
   position += (drawingAreaSize - newSize) / pixelSize / 2;
 
-  std::scoped_lock protect_position(position);
+  std::scoped_lock const protect_position(position);
   drawingAreaSize = newSize;
   updateZoom();
   updateScrollbars();
@@ -656,7 +656,7 @@ void View::on_scrollwheel(GdkEventScroll* event)
     {
       GValue value = G_VALUE_INIT;
       gtk_tree_model_get_value(GTK_TREE_MODEL(zoomItems), &iter, COLUMN_ZOOM, &value);
-      int foundZoom = g_value_get_int(&value);
+      const int foundZoom = g_value_get_int(&value);
 
       if(foundZoom == newZoom)
       {
@@ -677,7 +677,7 @@ void View::on_zoombox_changed()
   if(gtk_list_store_iter_is_valid(zoomItems, &iter))
   {
     gtk_tree_model_get_value(GTK_TREE_MODEL(zoomItems), &iter, COLUMN_ZOOM, &value);
-    int newZoom = g_value_get_int(&value);
+    const int newZoom = g_value_get_int(&value);
     on_zoombox_changed(newZoom, drawingAreaSize.to<double>() / 2);
   }
 }
@@ -689,7 +689,7 @@ void View::on_zoombox_changed(int newzoom, const Scroom::Utils::Point<double>& m
     position += mousePos / pixelSizeFromZoom(zoom);
     position -= mousePos / pixelSizeFromZoom(newzoom);
 
-    std::scoped_lock protect_position(position);
+    std::scoped_lock const protect_position(position);
     zoom = newzoom;
     updateScrollbars();
     updateTextbox();
@@ -924,8 +924,8 @@ void View::updateNewWindowMenu()
     next++;
 
     //// Update menu
-    PresentationInterface::Ptr p = cur->first.lock();
-    GtkWidget*                 m = cur->second;
+    PresentationInterface::Ptr const p = cur->first.lock();
+    GtkWidget*                       m = cur->second;
     if(p && m)
     {
       // Do nothing
@@ -990,7 +990,7 @@ void View::updateXY(const Scroom::Utils::Point<double>& newPos, const View::Loca
   {
     position = newPos;
 
-    std::scoped_lock protect_position(position);
+    std::scoped_lock const protect_position(position);
     if(source != SCROLLBAR)
     {
       updateScrollbars();

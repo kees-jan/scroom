@@ -379,31 +379,31 @@ BOOST_AUTO_TEST_CASE(testCuts)
 
 BOOST_AUTO_TEST_CASE(testPlus)
 {
-  Segment<int> result = 5 + make_segment(7, 3);
-  Segment<int> expected(12, 3);
+  Segment<int> const result = 5 + make_segment(7, 3);
+  Segment<int> const expected(12, 3);
   BOOST_CHECK_EQUAL(expected, result);
 }
 
 BOOST_AUTO_TEST_CASE(testMinus)
 {
-  Segment<int> result = make_segment(7, 3) - 10;
-  Segment<int> expected(-3, 3);
+  Segment<int> const result = make_segment(7, 3) - 10;
+  Segment<int> const expected(-3, 3);
   BOOST_CHECK_EQUAL(expected, result);
 }
 
 BOOST_AUTO_TEST_CASE(testMultiply)
 {
-  Segment<int> result = make_segment(7, 3) * 5;
-  Segment<int> expected(35, 15);
+  Segment<int> const result = make_segment(7, 3) * 5;
+  Segment<int> const expected(35, 15);
   BOOST_CHECK_EQUAL(expected, result);
 }
 
 BOOST_AUTO_TEST_CASE(testAnd)
 {
-  Segment<int> left(1, 4);
-  Segment<int> right(3, 7);
-  Segment<int> result = left & right;
-  Segment<int> expected(3, 2);
+  Segment<int> const left(1, 4);
+  Segment<int> const right(3, 7);
+  Segment<int> const result = left & right;
+  Segment<int> const expected(3, 2);
   BOOST_CHECK_EQUAL(expected, result);
 }
 

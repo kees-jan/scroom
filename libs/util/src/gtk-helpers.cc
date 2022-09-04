@@ -31,4 +31,4 @@ std::ostream& operator<<(std::ostream& os, cairo_rectangle_int_t const& r)
   return os << "cairo_rectangle_int_t(" << r.x << ", " << r.y << ", " << r.width << ", " << r.height << ")";
 }
 
-std::ostream& operator<<(std::ostream& os, GdkPoint const& p) { return os << "GdkPoint(" << p.x << ", " << p.y << ")"; }
+std::ostream& operator<<(std::ostream& os, const GdkPoint& p) { return os << "GdkPoint(" << p.x << ", " << p.y << ")"; }

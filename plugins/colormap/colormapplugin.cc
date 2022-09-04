@@ -37,7 +37,7 @@ namespace Scroom::ColormapImpl
     if(p->isPropertyDefined(COLORMAPPABLE_PROPERTY_NAME))
     {
       spdlog::debug("ColormapPlugin: It is colormappable!");
-      ColormapProvider::Ptr cmp = ColormapProvider::create(p);
+      ColormapProvider::Ptr const cmp = ColormapProvider::create(p);
     }
   }
 

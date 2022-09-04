@@ -41,7 +41,7 @@ BOOST_AUTO_TEST_CASE(weak_pointer_equality)
     BOOST_CHECK_EQUAL(a.lock(), b.lock());
 
     // Locking something that has been deleted equals an uninitialized pointer (?)
-    boost::shared_ptr<int> d;
+    boost::shared_ptr<int> const d;
     BOOST_CHECK_EQUAL(a.lock(), d);
   }
 }

@@ -40,7 +40,7 @@ TileViewState::TileViewState(boost::shared_ptr<CompressedTile> parent_)
 
 void TileViewState::tileLoaded(ConstTile::Ptr tile_)
 {
-  boost::mutex::scoped_lock l(mut);
+  boost::mutex::scoped_lock const l(mut);
 
   tile = tile_;
 
@@ -58,13 +58,13 @@ void TileViewState::tileLoaded(ConstTile::Ptr tile_)
 
 Scroom::Utils::Stuff TileViewState::getCacheResult()
 {
-  boost::mutex::scoped_lock l(mut);
+  boost::mutex::scoped_lock const l(mut);
   return zoomCache;
 }
 
 void TileViewState::setViewData(TiledBitmapViewData::Ptr tbvd_)
 {
-  boost::mutex::scoped_lock l(mut);
+  boost::mutex::scoped_lock const l(mut);
   tbvd = tbvd_;
 
   Scroom::Utils::Stuff lifeTimeManager_ = lifeTimeManager.lock();
@@ -83,7 +83,7 @@ void TileViewState::setZoom(LayerOperations::Ptr lo_, int zoom_)
 {
   bool mustKick = false;
 
-  boost::mutex::scoped_lock l(mut);
+  boost::mutex::scoped_lock const l(mut);
   if(desiredState != DONE || zoom_ != zoom)
   {
     zoom         = zoom_;
@@ -114,7 +114,7 @@ void TileViewState::kick()
     defect_message("PANIC: State LOADED and no tile shouldn't happen.");
   }
 
-  TiledBitmapViewData::Ptr tbvd_ = tbvd.lock();
+  TiledBitmapViewData::Ptr const tbvd_ = tbvd.lock();
 
   if(state >= LOADED && desiredState >= state && !queue && tbvd_)
   {
@@ -171,7 +171,7 @@ void TileViewState::process(ThreadPool::WeakQueue::Ptr wq)
   }
 
   {
-    boost::mutex::scoped_lock l(mut);
+    boost::mutex::scoped_lock const l(mut);
 
     if(wq == weakQueue)
     {
@@ -183,10 +183,10 @@ void TileViewState::process(ThreadPool::WeakQueue::Ptr wq)
 
 void TileViewState::computeBase(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr tile_, LayerOperations::Ptr lo_)
 {
-  Scroom::Utils::Stuff baseCache_ = lo_->cache(tile_);
+  Scroom::Utils::Stuff const baseCache_ = lo_->cache(tile_);
 
-  boost::mutex::scoped_lock l(mut);
-  TiledBitmapViewData::Ptr  tbvd_ = tbvd.lock();
+  boost::mutex::scoped_lock const l(mut);
+  TiledBitmapViewData::Ptr const  tbvd_ = tbvd.lock();
 
   if(tbvd_ && desiredState >= BASE_COMPUTED && weakQueue == wq)
   {
@@ -201,10 +201,10 @@ void TileViewState::computeZoom(ThreadPool::WeakQueue::Ptr wq,
                                 Scroom::Utils::Stuff       baseCache_,
                                 int                        zoom_)
 {
-  Scroom::Utils::Stuff zoomCache_ = lo_->cacheZoom(tile_, zoom_, baseCache_);
+  Scroom::Utils::Stuff const zoomCache_ = lo_->cacheZoom(tile_, zoom_, baseCache_);
 
-  boost::mutex::scoped_lock l(mut);
-  TiledBitmapViewData::Ptr  tbvd_ = tbvd.lock();
+  boost::mutex::scoped_lock const l(mut);
+  TiledBitmapViewData::Ptr const  tbvd_ = tbvd.lock();
   if(tbvd_ && desiredState >= ZOOM_COMPUTED && zoom == zoom_ && weakQueue == wq)
   {
     zoomCache = zoomCache_;
@@ -224,7 +224,7 @@ void TileViewState::reportDone(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr til
 
 void TileViewState::clear()
 {
-  boost::mutex::scoped_lock l(mut);
+  boost::mutex::scoped_lock const l(mut);
 
   if(state >= LOADED)
   {

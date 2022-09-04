@@ -32,9 +32,9 @@ ProgressInterfaceMultiplexer_Fixture::ProgressInterfaceMultiplexer_Fixture()
   stub = ProgressStateInterfaceStub::create();
   BOOST_CHECK(stub);
   BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
-  ProgressInterface::Ptr parent = ProgressInterfaceFromProgressStateInterfaceForwarder::create(stub);
+  ProgressInterface::Ptr const parent = ProgressInterfaceFromProgressStateInterfaceForwarder::create(stub);
 
-  ProgressInterfaceMultiplexer::Ptr multiplexer = ProgressInterfaceMultiplexer::create(parent);
+  ProgressInterfaceMultiplexer::Ptr const multiplexer = ProgressInterfaceMultiplexer::create(parent);
   BOOST_CHECK(multiplexer);
   BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
 

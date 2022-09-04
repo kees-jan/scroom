@@ -46,7 +46,7 @@ void usage(const std::string& me, const po::options_description& desc, const std
 
 int main(int argc, char* argv[])
 {
-  std::string                                   me = argv[0]; // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
+  const std::string                             me = argv[0]; // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   std::map<std::string, std::list<std::string>> filenames;
 
 #ifdef _WIN32

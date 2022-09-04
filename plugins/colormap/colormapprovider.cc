@@ -46,14 +46,14 @@ namespace Scroom::ColormapImpl
 
   ColormapProvider::Ptr ColormapProvider::create(PresentationInterface::Ptr p)
   {
-    Colormappable::Ptr    c = boost::dynamic_pointer_cast<Colormappable, PresentationInterface>(p);
-    ColormapProvider::Ptr result;
+    Colormappable::Ptr const c = boost::dynamic_pointer_cast<Colormappable, PresentationInterface>(p);
+    ColormapProvider::Ptr    result;
     if(c)
     {
       result = ColormapProvider::Ptr(new ColormapProvider(c));
 
-      Scroom::Utils::Stuff r = p->registerStrongObserver(result);
-      result->registration   = r;
+      Scroom::Utils::Stuff const r = p->registerStrongObserver(result);
+      result->registration         = r;
     }
     else
     {
@@ -67,14 +67,14 @@ namespace Scroom::ColormapImpl
     : colormappable(c)
 
   {
-    unsigned int                  numColors = c->getNumberOfColors();
+    unsigned const int            numColors = c->getNumberOfColors();
     std::list<Colormap::ConstPtr> maps      = Colormaps::getInstance().getColormaps();
 
     colormaps = gtk_list_store_new(N_COLUMNS, G_TYPE_STRING, G_TYPE_POINTER);
 
     {
       // Add the original colormap, if any
-      Colormap::Ptr orig = c->getOriginalColormap();
+      Colormap::Ptr const orig = c->getOriginalColormap();
       if(orig)
       {
         auto*       cc = new Colormap::ConstPtr(orig);
@@ -121,7 +121,7 @@ namespace Scroom::ColormapImpl
 
   void ColormapProvider::open(ViewInterface::WeakPtr vi)
   {
-    ViewInterface::Ptr vil(vi);
+    ViewInterface::Ptr const vil(vi);
     spdlog::debug("ColormapProvider: Adding a view.");
     GtkTreeView*     tv  = GTK_TREE_VIEW(gtk_tree_view_new_with_model(GTK_TREE_MODEL(colormaps)));
     GtkCellRenderer* txt = GTK_CELL_RENDERER(gtk_cell_renderer_text_new());
@@ -144,20 +144,20 @@ namespace Scroom::ColormapImpl
 
   void ColormapProvider::on_colormap_selected(GtkTreeView* tv)
   {
-    Colormappable::Ptr c = colormappable.lock();
+    Colormappable::Ptr const c = colormappable.lock();
     if(c)
     {
       GtkTreeSelection* ts = gtk_tree_view_get_selection(tv);
       GtkTreeIter       iter;
       GtkTreeModel*     model    = nullptr;
-      bool              selected = gtk_tree_selection_get_selected(ts, &model, &iter);
+      bool const        selected = gtk_tree_selection_get_selected(ts, &model, &iter);
       if(selected)
       {
         if(gtk_list_store_iter_is_valid(colormaps, &iter))
         {
           gpointer* pointer = nullptr;
           gtk_tree_model_get(GTK_TREE_MODEL(colormaps), &iter, COLUMN_POINTER, &pointer, -1);
-          Colormap::Ptr& colormap = *reinterpret_cast<Colormap::Ptr*>(pointer);
+          Colormap::Ptr const& colormap = *reinterpret_cast<Colormap::Ptr*>(pointer);
           c->setColormap(colormap);
         }
       }

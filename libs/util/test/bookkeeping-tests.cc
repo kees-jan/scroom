@@ -17,13 +17,13 @@ BOOST_AUTO_TEST_SUITE(Bookkeeping_Tests)
 
 BOOST_AUTO_TEST_CASE(token_arithmatic)
 {
-  Token     a;
-  Token     b;
-  Token     c = a + b;
-  WeakToken wa(a);
+  Token           a;
+  Token           b;
+  Token           c = a + b;
+  WeakToken const wa(a);
   a.reset();
   BOOST_CHECK(wa.lock());
-  WeakToken wb(b);
+  WeakToken const wb(b);
   b.reset();
   BOOST_CHECK(wb.lock());
   c.reset();
@@ -36,10 +36,10 @@ BOOST_AUTO_TEST_CASE(basic_usage)
   Map<int, int>::Ptr map = Map<int, int>::create();
   BOOST_REQUIRE(map);
 
-  Token a    = map->reserve(1);
-  map->at(1) = 1;
-  Token b    = map->reserve(2);
-  map->at(2) = 2;
+  Token const a = map->reserve(1);
+  map->at(1)    = 1;
+  Token b       = map->reserve(2);
+  map->at(2)    = 2;
 
   BOOST_CHECK(a);
   BOOST_CHECK(b);

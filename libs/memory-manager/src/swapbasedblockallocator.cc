@@ -73,7 +73,7 @@ namespace Scroom::MemoryBlocks
 
     PageList SwapBasedBlockAllocator::getPages()
     {
-      BlockInterface::Ptr me = shared_from_this<BlockInterface>();
+      BlockInterface::Ptr const me = shared_from_this<BlockInterface>();
 
       PageList result;
       for(size_t i = 0; i < count; i++)
@@ -111,7 +111,7 @@ namespace Scroom::MemoryBlocks
 
   BlockFactoryInterface::Ptr getBlockFactoryInterface()
   {
-    static BlockFactoryInterface::Ptr instance = Detail::SwapBasedBlockAllocatorFactory::create();
+    static BlockFactoryInterface::Ptr const instance = Detail::SwapBasedBlockAllocatorFactory::create();
     return instance;
   }
 } // namespace Scroom::MemoryBlocks

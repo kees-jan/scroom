@@ -23,12 +23,12 @@ namespace
 {
   void setToggleButtonColor(GtkWidget* w, PresentationInterface::Ptr const& p)
   {
-    Colormappable::Ptr c = boost::dynamic_pointer_cast<Colormappable>(p);
+    Colormappable::Ptr const c = boost::dynamic_pointer_cast<Colormappable>(p);
     if(c && p->isPropertyDefined(MONOCHROME_COLORMAPPABLE_PROPERTY_NAME))
     {
-      Color           col           = c->getMonochromeColor();
-      GtkCssProvider* bgCssProvider = gtk_css_provider_new();
-      std::string     bgCss         = "* { background-image:none; background-color: #" + col.getHex() + ";}";
+      Color const       col           = c->getMonochromeColor();
+      GtkCssProvider*   bgCssProvider = gtk_css_provider_new();
+      const std::string bgCss         = "* { background-image:none; background-color: #" + col.getHex() + ";}";
 
       // Fill the provider with the correct data bgCss string
       gtk_css_provider_load_from_data(bgCssProvider, bgCss.c_str(), -1, nullptr);
@@ -40,9 +40,9 @@ namespace
       gtk_style_context_add_provider(bgContext, GTK_STYLE_PROVIDER(bgCssProvider), GTK_STYLE_PROVIDER_PRIORITY_USER);
 
 
-      std::string     fgCss         = "* { color: #" + col.getContrastingBlackOrWhite().getHex() + ";}";
-      GtkWidget*      label         = gtk_bin_get_child(GTK_BIN(w));
-      GtkCssProvider* fgCssProvider = gtk_css_provider_new();
+      const std::string fgCss         = "* { color: #" + col.getContrastingBlackOrWhite().getHex() + ";}";
+      GtkWidget*        label         = gtk_bin_get_child(GTK_BIN(w));
+      GtkCssProvider*   fgCssProvider = gtk_css_provider_new();
 
       // Fill the provider with the correct data fgCss string
       gtk_css_provider_load_from_data(fgCssProvider, fgCss.c_str(), -1, nullptr);
@@ -109,7 +109,7 @@ static void on_toggled(GtkToggleButton* button, gpointer data)
 
 void TransparentOverlayViewInfo::createToggleToolButton(PresentationInterface::Ptr const& p)
 {
-  int               n = buttons.size() + 1;
+  const int         n = buttons.size() + 1;
   std::stringstream s;
   s << "_" << n;
 
@@ -143,8 +143,8 @@ void TransparentOverlayViewInfo::addChildren(const std::list<PresentationInterfa
 
 void TransparentOverlayViewInfo::addChild(const PresentationInterface::Ptr& child)
 {
-  ChildView::Ptr view = ChildView::create(shared_from_this<TransparentOverlayViewInfo>());
-  childViews[child]   = view;
+  ChildView::Ptr const view = ChildView::create(shared_from_this<TransparentOverlayViewInfo>());
+  childViews[child]         = view;
   child->open(view);
   sizeDeterminer->open(child, view);
   children.push_back(child);
@@ -180,7 +180,7 @@ void TransparentOverlayViewInfo::redraw(cairo_t* cr, Scroom::Utils::Rectangle<do
 {
   using Scroom::Bitmap::BitmapSurface;
 
-  cairo_rectangle_int_t presentationArea = pa.toGdkRectangle();
+  cairo_rectangle_int_t const presentationArea = pa.toGdkRectangle();
 
   cairo_rectangle_int_t viewArea;
   viewArea.x = 0;
@@ -199,9 +199,9 @@ void TransparentOverlayViewInfo::redraw(cairo_t* cr, Scroom::Utils::Rectangle<do
     viewArea.height     = presentationArea.height / pixelSize;
   }
 
-  BitmapSurface::Ptr s       = BitmapSurface::create(viewArea.width, viewArea.height, CAIRO_FORMAT_ARGB32);
-  cairo_surface_t*   surface = s->get();
-  cairo_t*           cr_sub  = cairo_create(surface);
+  BitmapSurface::Ptr const s       = BitmapSurface::create(viewArea.width, viewArea.height, CAIRO_FORMAT_ARGB32);
+  cairo_surface_t*         surface = s->get();
+  cairo_t*                 cr_sub  = cairo_create(surface);
 
   int count = 0;
 
@@ -209,10 +209,10 @@ void TransparentOverlayViewInfo::redraw(cairo_t* cr, Scroom::Utils::Rectangle<do
   {
     if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(buttons[i])))
     {
-      PresentationInterface::Ptr& p = children[i];
+      PresentationInterface::Ptr const& p = children[i];
 
-      Colormappable::Ptr c                        = boost::dynamic_pointer_cast<Colormappable>(p);
-      bool               hasTransparentBackground = false;
+      Colormappable::Ptr const c                        = boost::dynamic_pointer_cast<Colormappable>(p);
+      bool                     hasTransparentBackground = false;
       if(c && p->isPropertyDefined(TRANSPARENT_BACKGROUND_PROPERTY_NAME))
       {
         if(count == 0)

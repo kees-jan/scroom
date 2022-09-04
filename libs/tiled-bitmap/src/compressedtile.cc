@@ -55,23 +55,23 @@ Tile::Ptr CompressedTile::getTileSync()
 {
   Tile::Ptr result;
   {
-    boost::mutex::scoped_lock lock(tileData);
+    boost::mutex::scoped_lock const lock(tileData);
     result = tile.lock();
   }
   if(!result)
   {
     // Retrieve the const tile, such that all observers are properly
     // notified of the loading
-    ConstTile::Ptr temp = getConstTileSync();
+    ConstTile::Ptr const temp = getConstTileSync();
     require(temp);
     {
       // Check again. Maybe someone else has beaten us to it...
-      boost::mutex::scoped_lock lock(tileData);
+      boost::mutex::scoped_lock const lock(tileData);
       result = tile.lock();
     }
     if(!result)
     {
-      boost::mutex::scoped_lock lock(tileData);
+      boost::mutex::scoped_lock const lock(tileData);
       result = Tile::Ptr(new Tile(TILESIZE, TILESIZE, bpp, data->get()));
       tile   = result;
     }
@@ -93,8 +93,8 @@ Tile::Ptr CompressedTile::initialize()
 
   bool didInitialize = false;
   {
-    boost::mutex::scoped_lock stateLock(stateData);
-    boost::mutex::scoped_lock dataLock(tileData);
+    boost::mutex::scoped_lock const stateLock(stateData);
+    boost::mutex::scoped_lock const dataLock(tileData);
 
     if(state == TSI_UNINITIALIZED)
     {
@@ -114,8 +114,8 @@ Tile::Ptr CompressedTile::initialize()
 
 void CompressedTile::reportFinished()
 {
-  CompressedTile::Ptr me = shared_from_this<CompressedTile>();
-  ConstTile::Ptr      t  = do_load();
+  CompressedTile::Ptr const me = shared_from_this<CompressedTile>();
+  ConstTile::Ptr const      t  = do_load();
   for(const TileInitialisationObserver::Ptr& observer: Observable<TileInitialisationObserver>::getObservers())
   {
     observer->tileFinished(me);
@@ -132,12 +132,12 @@ ConstTile::Ptr CompressedTile::do_load()
 
   ConstTile::Ptr result;
   {
-    boost::mutex::scoped_lock lock(stateData);
+    boost::mutex::scoped_lock const lock(stateData);
     cleanupState();
     state = TSI_LOADING_SYNCHRONOUSLY;
   }
   {
-    boost::mutex::scoped_lock lock(tileData);
+    boost::mutex::scoped_lock const lock(tileData);
     result = constTile.lock(); // This ought to fail
     if(!result)
     {
@@ -147,7 +147,7 @@ ConstTile::Ptr CompressedTile::do_load()
     }
   }
   {
-    boost::mutex::scoped_lock lock(stateData);
+    boost::mutex::scoped_lock const lock(stateData);
     cleanupState();
     state = TSI_NORMAL;
     if(didLoad)
@@ -179,7 +179,7 @@ TileState CompressedTile::getState()
   {
   case TSI_NORMAL:
   {
-    Tile::Ptr t = tile.lock();
+    Tile::Ptr const t = tile.lock();
     if(t)
     {
       result = TILE_LOADED;
@@ -211,12 +211,12 @@ void CompressedTile::observerAdded(TileInitialisationObserver::Ptr const& observ
 
 void CompressedTile::observerAdded(TileLoadingObserver::Ptr const& observer, Scroom::Bookkeeping::Token const& token)
 {
-  ConstTile::Ptr         result = constTile.lock();
+  ConstTile::Ptr const   result = constTile.lock();
   ThreadPool::Queue::Ptr queue_ = queue.lock();
 
   if(!result)
   {
-    boost::mutex::scoped_lock lock(stateData);
+    boost::mutex::scoped_lock const lock(stateData);
     cleanupState();
     switch(state)
     {

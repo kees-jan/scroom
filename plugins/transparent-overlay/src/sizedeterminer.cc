@@ -23,11 +23,11 @@ namespace
 
     for(PresentationInterface::Ptr const& p: presentations)
     {
-      Scroom::Utils::Rectangle<double> rect = p->getRect();
-      left                                  = std::min(left, rect.getLeft());
-      top                                   = std::min(top, rect.getTop());
-      right                                 = std::max(right, rect.getRight());
-      bottom                                = std::max(bottom, rect.getBottom());
+      Scroom::Utils::Rectangle<double> const rect = p->getRect();
+      left                                        = std::min(left, rect.getLeft());
+      top                                         = std::min(top, rect.getTop());
+      right                                       = std::max(right, rect.getRight());
+      bottom                                      = std::max(bottom, rect.getBottom());
     }
     return Scroom::Utils::Rectangle<double>(left, top, right - left, bottom - top);
   }
@@ -66,7 +66,7 @@ SizeDeterminer::Ptr SizeDeterminer::create() { return Ptr(new SizeDeterminer());
 
 void SizeDeterminer::add(PresentationInterface::Ptr const& p)
 {
-  ResizablePresentationInterface::Ptr r = boost::dynamic_pointer_cast<ResizablePresentationInterface>(p);
+  ResizablePresentationInterface::Ptr const r = boost::dynamic_pointer_cast<ResizablePresentationInterface>(p);
   if(r)
   {
     resizablePresentationData.insert(std::make_pair(p, PresentationData(r)));
@@ -124,7 +124,7 @@ void SizeDeterminer::close(PresentationInterface::Ptr const& p, ViewInterface::W
 
 void SizeDeterminer::sendUpdates()
 {
-  Scroom::Utils::Rectangle<double> rect = getRect();
+  Scroom::Utils::Rectangle<double> const rect = getRect();
 
   for(auto const& data: resizablePresentationData)
   {

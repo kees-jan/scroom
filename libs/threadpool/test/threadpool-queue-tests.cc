@@ -38,7 +38,7 @@ BOOST_AUTO_TEST_SUITE(Queue_Tests)
 
 BOOST_AUTO_TEST_CASE(basic_jobcounting)
 {
-  QueueImpl::Ptr queue = QueueImpl::create();
+  QueueImpl::Ptr const queue = QueueImpl::create();
   BOOST_CHECK(queue);
   BOOST_CHECK_EQUAL(0, queue->getCount());
   queue->jobStarted();
@@ -53,9 +53,9 @@ BOOST_AUTO_TEST_CASE(basic_jobcounting)
 
 BOOST_AUTO_TEST_CASE(destroy_waits_for_jobs_to_finish)
 {
-  ThreadPool::Queue::Ptr     queue     = ThreadPool::Queue::create();
-  ThreadPool::Queue::WeakPtr weakQueue = queue;
-  QueueImpl::Ptr             qi        = queue->get();
+  ThreadPool::Queue::Ptr           queue     = ThreadPool::Queue::create();
+  ThreadPool::Queue::WeakPtr const weakQueue = queue;
+  QueueImpl::Ptr const             qi        = queue->get();
   BOOST_CHECK(queue);
   BOOST_CHECK(qi);
   BOOST_CHECK_EQUAL(0, qi->getCount());
@@ -64,10 +64,10 @@ BOOST_AUTO_TEST_CASE(destroy_waits_for_jobs_to_finish)
   qi->jobStarted();
   BOOST_CHECK_EQUAL(2, qi->getCount());
 
-  Semaphore     s0(0);
-  Semaphore     s1(0);
-  Semaphore     s2(0);
-  boost::thread t(pass(&s1) + destroy(queue) + clear(&s2));
+  Semaphore const     s0(0);
+  Semaphore           s1(0);
+  Semaphore           s2(0);
+  boost::thread const t(pass(&s1) + destroy(queue) + clear(&s2));
   queue.reset();
   BOOST_CHECK(weakQueue.lock());
   s1.V();
@@ -87,15 +87,15 @@ BOOST_AUTO_TEST_CASE(destroy_waits_for_jobs_to_finish)
 
 BOOST_AUTO_TEST_CASE(destroy_using_QueueLock)
 {
-  ThreadPool::Queue::Ptr     queue     = ThreadPool::Queue::create();
-  ThreadPool::Queue::WeakPtr weakQueue = queue;
+  ThreadPool::Queue::Ptr           queue     = ThreadPool::Queue::create();
+  ThreadPool::Queue::WeakPtr const weakQueue = queue;
   BOOST_CHECK(queue);
   auto* l = new QueueLock(queue->get());
 
-  Semaphore     s0(0);
-  Semaphore     s1(0);
-  Semaphore     s2(0);
-  boost::thread t(clear(&s0) + pass(&s1) + destroy(queue) + clear(&s2));
+  Semaphore           s0(0);
+  Semaphore           s1(0);
+  Semaphore           s2(0);
+  boost::thread const t(clear(&s0) + pass(&s1) + destroy(queue) + clear(&s2));
   s0.P();
   BOOST_REQUIRE(!s2.P(short_timeout));
   queue.reset();
@@ -118,9 +118,9 @@ BOOST_AUTO_TEST_SUITE(Queue_Tests)
 
 BOOST_AUTO_TEST_CASE(jobs_on_custom_queue_get_executed)
 {
-  ThreadPool::Queue::Ptr queue = ThreadPool::Queue::create();
-  Semaphore              s(0);
-  ThreadPool             t(0);
+  ThreadPool::Queue::Ptr const queue = ThreadPool::Queue::create();
+  Semaphore                    s(0);
+  ThreadPool                   t(0);
   t.schedule(clear(&s), queue);
   t.add();
   BOOST_CHECK(s.P(long_timeout));
@@ -142,13 +142,13 @@ BOOST_AUTO_TEST_CASE(jobs_on_deleted_queue_dont_get_executed)
 
 BOOST_AUTO_TEST_CASE(queue_deletion_waits_for_jobs_to_finish)
 {
-  ThreadPool::Queue::Ptr     queue     = ThreadPool::Queue::create();
-  ThreadPool::Queue::WeakPtr weakQueue = queue;
-  Semaphore                  s0(0);
-  Semaphore                  s1(0);
-  Semaphore                  s2(0);
-  Semaphore                  s3(0);
-  Semaphore                  s4(0);
+  ThreadPool::Queue::Ptr           queue     = ThreadPool::Queue::create();
+  ThreadPool::Queue::WeakPtr const weakQueue = queue;
+  Semaphore const                  s0(0);
+  Semaphore                        s1(0);
+  Semaphore                        s2(0);
+  Semaphore                        s3(0);
+  Semaphore                        s4(0);
 
   ThreadPool pool(0);
   pool.schedule(clear(&s1) + pass(&s2), queue);
@@ -159,7 +159,7 @@ BOOST_AUTO_TEST_CASE(queue_deletion_waits_for_jobs_to_finish)
   // Setup: Create a thread that will delete the queue. Then delete our
   // reference, because if our reference is the last, our thread will block,
   // resulting in deadlock
-  boost::thread t(pass(&s3) + destroy(queue) + clear(&s4));
+  boost::thread const t(pass(&s3) + destroy(queue) + clear(&s4));
   queue.reset();
 
   // Tell the thread to start deleting the Queue

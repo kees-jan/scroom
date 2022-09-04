@@ -25,9 +25,9 @@ public:
   using Ptr = boost::shared_ptr<ScroomInterface>;
 
 public:
-  virtual PresentationInterface::Ptr newPresentation(std::string const& name)                                                 = 0;
-  virtual Aggregate::Ptr             newAggregate(std::string const& name)                                                    = 0;
-  virtual PresentationInterface::Ptr loadPresentation(std::string const& name, std::string const& relativeTo = std::string()) = 0;
+  virtual PresentationInterface::Ptr newPresentation(const std::string& name)                                                 = 0;
+  virtual Aggregate::Ptr             newAggregate(const std::string& name)                                                    = 0;
+  virtual PresentationInterface::Ptr loadPresentation(const std::string& name, const std::string& relativeTo = std::string()) = 0;
 
   virtual void showPresentation(PresentationInterface::Ptr const& presentation) = 0;
 };

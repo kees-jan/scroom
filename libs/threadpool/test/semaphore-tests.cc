@@ -100,7 +100,7 @@ BOOST_AUTO_TEST_CASE(pass_many)
   boost::this_thread::sleep(millisec(50));
   s.V();
   t.timed_join(millisec(250));
-  bool success = boost::thread::id() == t.get_id();
+  bool const success = boost::thread::id() == t.get_id();
   BOOST_REQUIRE(success);
   if(!success)
   {

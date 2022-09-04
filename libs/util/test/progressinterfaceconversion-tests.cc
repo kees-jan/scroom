@@ -18,11 +18,11 @@ BOOST_AUTO_TEST_SUITE(test_converters)
 
 BOOST_AUTO_TEST_CASE(test_ProgressInterfaceFromProgressStateInterface)
 {
-  ProgressStateInterfaceStub::Ptr stub = ProgressStateInterfaceStub::create();
+  ProgressStateInterfaceStub::Ptr const stub = ProgressStateInterfaceStub::create();
   BOOST_REQUIRE(stub);
   BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
 
-  ProgressInterface::Ptr pi = ProgressInterfaceFromProgressStateInterfaceForwarder::create(stub);
+  ProgressInterface::Ptr const pi = ProgressInterfaceFromProgressStateInterfaceForwarder::create(stub);
   BOOST_REQUIRE(pi);
   BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
 
@@ -52,15 +52,15 @@ BOOST_AUTO_TEST_CASE(test_ProgressInterfaceFromProgressStateInterface)
 
 BOOST_AUTO_TEST_CASE(test_ProgressStateInterfaceFromProgressInterface)
 {
-  ProgressStateInterfaceStub::Ptr stub = ProgressStateInterfaceStub::create();
+  ProgressStateInterfaceStub::Ptr const stub = ProgressStateInterfaceStub::create();
   BOOST_REQUIRE(stub);
   BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
 
-  ProgressInterface::Ptr pi = ProgressInterfaceFromProgressStateInterfaceForwarder::create(stub);
+  ProgressInterface::Ptr const pi = ProgressInterfaceFromProgressStateInterfaceForwarder::create(stub);
   BOOST_REQUIRE(pi);
   BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
 
-  ProgressStateInterface::Ptr ps = ProgressStateInterfaceFromProgressInterfaceForwarder::create(pi);
+  ProgressStateInterface::Ptr const ps = ProgressStateInterfaceFromProgressInterfaceForwarder::create(pi);
   BOOST_REQUIRE(ps);
   BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
 

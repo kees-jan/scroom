@@ -12,7 +12,7 @@ namespace Scroom::Detail::ThreadPool
 {
   ::ThreadPool::Ptr getDeleter()
   {
-    static ::ThreadPool::Ptr deleter = ::ThreadPool::Ptr(new ::ThreadPool(1, true));
+    static ::ThreadPool::Ptr const deleter = ::ThreadPool::Ptr(new ::ThreadPool(1, true));
     return deleter;
   }
 } // namespace Scroom::Detail::ThreadPool

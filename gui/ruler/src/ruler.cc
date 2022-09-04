@@ -77,8 +77,8 @@ void Ruler::sizeAllocateCallback(GtkWidget* widget, GdkRectangle* /*allocation*/
 {
   auto* ruler = static_cast<Ruler*>(data);
 
-  int width  = gtk_widget_get_allocated_width(widget);
-  int height = gtk_widget_get_allocated_height(widget);
+  const int width  = gtk_widget_get_allocated_width(widget);
+  const int height = gtk_widget_get_allocated_height(widget);
 
   ruler->updateAllocatedSize(width, height);
 }
@@ -133,9 +133,9 @@ void Ruler::draw(GtkWidget* widget, cairo_t* cr)
   }
 
   // Calculate the line length for the major ticks given the size of the ruler
-  double lineLength = drawStrategy->getMajorTickLength(MAJOR_TICK_LENGTH);
+  const double lineLength = drawStrategy->getMajorTickLength(MAJOR_TICK_LENGTH);
 
-  int firstTick = RulerCalculations::firstTick(lowerLimit, majorInterval);
+  const int firstTick = RulerCalculations::firstTick(lowerLimit, majorInterval);
 
   // Draw the range [0, upperLimit]
   drawTicks(cr, firstTick, upperLimit, lineLength);
@@ -155,7 +155,8 @@ void Ruler::drawTicks(cairo_t* cr, double lower, double upper, double lineLength
   while(pos < upper)
   {
     // Map pos from the ruler range to a drawing area position
-    double s = RulerCalculations::scaleToRange(pos, lowerLimit, upperLimit, DRAW_AREA_ORIGIN, DRAW_AREA_ORIGIN + DRAW_AREA_SIZE);
+    const double s =
+      RulerCalculations::scaleToRange(pos, lowerLimit, upperLimit, DRAW_AREA_ORIGIN, DRAW_AREA_ORIGIN + DRAW_AREA_SIZE);
     // Draw tick for this position
     drawSingleTick(cr, s, lineLength, true, std::to_string(static_cast<int>(floor(pos))));
 
@@ -197,8 +198,8 @@ void Ruler::drawSubTicks(cairo_t* cr, double lower, double upper, int depth, dou
     return;
   }
 
-  int    numSegments = SUBTICK_SEGMENTS.at(depth);
-  double interval    = abs(upper - lower) / numSegments;
+  const int    numSegments = SUBTICK_SEGMENTS.at(depth);
+  const double interval    = abs(upper - lower) / numSegments;
 
   if(interval < MIN_SPACE_SUBTICKS)
   {
@@ -233,9 +234,9 @@ void Ruler::drawSubTicks(cairo_t* cr, double lower, double upper, int depth, dou
 
 double RulerCalculations::scaleToRange(double x, double src_lower, double src_upper, double dest_lower, double dest_upper)
 {
-  double src_size  = src_upper - src_lower;
-  double dest_size = dest_upper - dest_lower;
-  double scale     = dest_size / src_size;
+  const double src_size  = src_upper - src_lower;
+  const double dest_size = dest_upper - dest_lower;
+  const double scale     = dest_size / src_size;
 
   return dest_lower + round(scale * (x - src_lower));
 }
@@ -266,7 +267,7 @@ int RulerCalculations::calculateInterval(double lower, double upper, double allo
 
     // Calculate the drawn size for this interval by mapping from the ruler range
     // to the ruler size on the screen
-    double spacing = intervalPixelSpacing(interval, lower, upper, allocatedSize);
+    const double spacing = intervalPixelSpacing(interval, lower, upper, allocatedSize);
     if(spacing < 0)
     {
       return -1;

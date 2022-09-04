@@ -34,7 +34,7 @@ namespace Scroom::Utils::Detail
     os << "stack trace (innermost first):" << std::endl;
     static const size_t maxTraces = 100;
     void*               array[maxTraces];
-    size_t              nTraces = backtrace(array, maxTraces);
+    const size_t        nTraces = backtrace(array, maxTraces);
     char**              strings = backtrace_symbols(array, static_cast<int>(nTraces));
     for(size_t i = cutoff + 1; i < nTraces; i++)
     {
@@ -96,7 +96,7 @@ namespace Scroom::Utils::Detail
         break;
       }
 #else
-      std::string_view sigName = strsignal(sig); // NOLINT(concurrency-mt-unsafe)
+      std::string_view const sigName = strsignal(sig); // NOLINT(concurrency-mt-unsafe)
 #endif
       std::cerr << "PROGRAM DEFECTIVE (TERMINATED BY SIGNAL): " << sigName << std::endl;
       std::cerr << stackTrace(1);

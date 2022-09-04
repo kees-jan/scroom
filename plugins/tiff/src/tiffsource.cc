@@ -69,12 +69,12 @@ namespace Scroom::Tiff
     uint16_t*     b{};
     Colormap::Ptr colormap;
 
-    int result = TIFFGetField(tif.get(), TIFFTAG_COLORMAP, &r, &g, &b);
+    const int result = TIFFGetField(tif.get(), TIFFTAG_COLORMAP, &r, &g, &b);
     if(result == 1)
     {
-      colormap       = Colormap::create();
-      colormap->name = "Original";
-      size_t count   = 1UL << bps;
+      colormap           = Colormap::create();
+      colormap->name     = "Original";
+      const size_t count = 1UL << bps;
       colormap->colors.resize(count);
 
       for(size_t i = 0; i < count; i++)
@@ -98,9 +98,9 @@ namespace Scroom::Tiff
       if(resolutionUnit != RESUNIT_NONE)
       {
         // Fix aspect ratio only
-        float base  = std::max(resolutionX, resolutionY);
-        resolutionX = base / resolutionX;
-        resolutionY = base / resolutionY;
+        float const base = std::max(resolutionX, resolutionY);
+        resolutionX      = base / resolutionX;
+        resolutionY      = base / resolutionY;
       }
       return Scroom::Utils::make_point<double>(resolutionX, resolutionY);
     }
@@ -118,7 +118,7 @@ namespace Scroom::Tiff
   {
     try
     {
-      TIFFPtr tif(TIFFOpen(fileName.c_str(), "r"), &TIFFCloseUnlessNull);
+      TIFFPtr const tif(TIFFOpen(fileName.c_str(), "r"), &TIFFCloseUnlessNull);
       if(!tif)
       {
         // Todo: report error

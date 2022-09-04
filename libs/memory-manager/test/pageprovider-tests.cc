@@ -29,10 +29,10 @@ BOOST_AUTO_TEST_CASE(Provider_provides_any_number_of_independent_blocks_of_a_giv
   uint8_t data = 0;
   for(size_t i = 0; i < testCount; i++)
   {
-    Page::Ptr p = provider->getFreePage();
+    Page::Ptr const p = provider->getFreePage();
     pages.push_back(p);
 
-    RawPageData::Ptr raw = p->get();
+    RawPageData::Ptr const raw = p->get();
     BOOST_REQUIRE(raw.get());
 
     memset(raw.get(), data, size);
@@ -45,7 +45,7 @@ BOOST_AUTO_TEST_CASE(Provider_provides_any_number_of_independent_blocks_of_a_giv
   uint8_t expected[size];
   for(const Page::Ptr& p: pages)
   {
-    RawPageData::Ptr raw = p->get();
+    RawPageData::Ptr const raw = p->get();
     BOOST_REQUIRE(raw.get());
 
     memset(expected, data, size);

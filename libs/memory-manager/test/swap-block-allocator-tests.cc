@@ -22,8 +22,8 @@ BOOST_AUTO_TEST_CASE(allocator_provides_a_number_of_independent_blocks_of_a_give
   const size_t size  = 16 * 1024;
   const size_t count = 16;
 
-  BlockFactoryInterface::Ptr bfi = getBlockFactoryInterface();
-  BlockInterface::Ptr        bi  = bfi->create(count, size);
+  BlockFactoryInterface::Ptr const bfi = getBlockFactoryInterface();
+  BlockInterface::Ptr              bi  = bfi->create(count, size);
 
   PageList pages = bi->getPages();
   BOOST_CHECK_EQUAL(count, pages.size());
@@ -33,7 +33,7 @@ BOOST_AUTO_TEST_CASE(allocator_provides_a_number_of_independent_blocks_of_a_give
   uint8_t data = 0;
   for(Page& p: pages)
   {
-    RawPageData::Ptr raw = p.get();
+    RawPageData::Ptr const raw = p.get();
     BOOST_REQUIRE(raw.get());
 
     memset(raw.get(), data, size);
@@ -44,7 +44,7 @@ BOOST_AUTO_TEST_CASE(allocator_provides_a_number_of_independent_blocks_of_a_give
   uint8_t expected[size];
   for(Page& p: pages)
   {
-    RawPageData::Ptr raw = p.get();
+    RawPageData::Ptr const raw = p.get();
     BOOST_REQUIRE(raw.get());
 
     memset(expected, data, size);

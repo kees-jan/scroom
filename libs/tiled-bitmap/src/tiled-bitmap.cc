@@ -91,11 +91,11 @@ TiledBitmap::TiledBitmap(int bitmapWidth_, int bitmapHeight_, LayerSpec ls_)
 
 void TiledBitmap::initialize(const Layer::Ptr& bottom)
 {
-  int                                    width    = bitmapWidth;
-  int                                    height   = bitmapHeight;
-  unsigned int                           i        = 0;
-  LayerOperations::Ptr                   lo       = ls[i];
-  Scroom::MemoryBlobs::PageProvider::Ptr provider = bottom->getPageProvider();
+  int                                          width    = bitmapWidth;
+  int                                          height   = bitmapHeight;
+  unsigned int                                 i        = 0;
+  LayerOperations::Ptr                         lo       = ls[i];
+  Scroom::MemoryBlobs::PageProvider::Ptr const provider = bottom->getPageProvider();
 
   registrations.emplace_back(bottom->registerObserver(shared_from_this<TileInitialisationObserver>()));
   layers.push_back(bottom);
@@ -114,7 +114,7 @@ void TiledBitmap::initialize(const Layer::Ptr& bottom)
       lo = ls[i];
     }
 
-    Layer::Ptr layer = Layer::create(i, width, height, lo->getBpp(), provider);
+    Layer::Ptr const layer = Layer::create(i, width, height, lo->getBpp(), provider);
     registrations.emplace_back(layer->registerObserver(shared_from_this<TileInitialisationObserver>()));
     layers.push_back(layer);
 
@@ -140,22 +140,22 @@ TiledBitmap::~TiledBitmap()
 
 void TiledBitmap::connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, const LayerOperations::Ptr& prevLo)
 {
-  int horTileCount = prevLayer->getHorTileCount();
-  int verTileCount = prevLayer->getVerTileCount();
+  const int horTileCount = prevLayer->getHorTileCount();
+  const int verTileCount = prevLayer->getVerTileCount();
 
   std::vector<LayerCoordinator::Ptr> coordinators_;
 
   for(int j = 0; j < verTileCount; j++)
   {
-    int voffset = j % 8;
+    const int voffset = j % 8;
     if(!voffset)
     {
       // New line of target tiles
       coordinators_.clear();
-      CompressedTileLine& tileLine = layer->getTileLine(j / 8);
+      CompressedTileLine const& tileLine = layer->getTileLine(j / 8);
       for(auto& z: tileLine)
       {
-        LayerCoordinator::Ptr lc = LayerCoordinator::create(z, prevLo);
+        LayerCoordinator::Ptr const lc = LayerCoordinator::create(z, prevLo);
         coordinators_.push_back(lc);
         coordinators.push_back(lc);
       }
@@ -163,8 +163,8 @@ void TiledBitmap::connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, 
 
     for(int i = 0; i < horTileCount; i++)
     {
-      int                   hoffset = i % 8;
-      LayerCoordinator::Ptr lc      = coordinators_[i / 8];
+      const int                   hoffset = i % 8;
+      LayerCoordinator::Ptr const lc      = coordinators_[i / 8];
       lc->addSourceTile(hoffset, voffset, prevLayer->getTile(i, j));
     }
   }
@@ -186,13 +186,13 @@ void TiledBitmap::drawTile(cairo_t* cr, const CompressedTile::Ptr& tile, const S
 
   if(viewArea.width() > 2 * margin && viewArea.height() > 2 * margin)
   {
-    Scroom::Utils::Rectangle<double> rect(
+    Scroom::Utils::Rectangle<double> const rect(
       viewArea.x() + margin, viewArea.y() + margin, viewArea.width() - 2 * margin, viewArea.height() - 2 * margin);
 
     cairo_set_source_rgb(cr, 0, 0, 0); // Black
     drawRectangleContour(cr, rect);
 
-    std::string label = fmt::format("Layer {}, Tile ({}, {}), {} bpp", tile->depth, tile->x, tile->y, tile->bpp);
+    const std::string label = fmt::format("Layer {}, Tile ({}, {}), {} bpp", tile->depth, tile->x, tile->y, tile->bpp);
     cairo_move_to(cr, rect.x() + 20, rect.y() + 20);
     cairo_show_text(cr, label.c_str());
   }
@@ -203,8 +203,8 @@ void TiledBitmap::redraw(ViewInterface::Ptr const&               vi,
                          Scroom::Utils::Rectangle<double> const& presentationArea,
                          int                                     zoom)
 {
-  TiledBitmapViewData::Ptr viewData_                       = viewData[vi];
-  auto                     scaledRequestedPresentationArea = presentationArea;
+  TiledBitmapViewData::Ptr const viewData_                       = viewData[vi];
+  auto                           scaledRequestedPresentationArea = presentationArea;
 
   unsigned int layerNr = 0;
   while(zoom <= -3 && layerNr < layers.size() - 1)
@@ -213,8 +213,8 @@ void TiledBitmap::redraw(ViewInterface::Ptr const&               vi,
     zoom += 3;
     scaledRequestedPresentationArea /= 8;
   }
-  Layer::Ptr           layer           = layers[layerNr];
-  LayerOperations::Ptr layerOperations = ls[std::min(ls.size() - 1, static_cast<size_t>(layerNr))];
+  Layer::Ptr const           layer           = layers[layerNr];
+  LayerOperations::Ptr const layerOperations = ls[std::min(ls.size() - 1, static_cast<size_t>(layerNr))];
 
   const Scroom::Utils::Rectangle<int> actualPresentationArea = layer->getRect();
   const auto validPresentationArea = scaledRequestedPresentationArea.intersection(actualPresentationArea);
@@ -242,7 +242,7 @@ void TiledBitmap::redraw(ViewInterface::Ptr const&               vi,
   {
     for(int j = jmin; j < jmax; j++)
     {
-      Scroom::Utils::Point<int> tileIndex(i, j);
+      Scroom::Utils::Point<int> const tileIndex(i, j);
 
       const auto tileArea        = TileAreaForIndex(tileIndex);
       const auto visibleTileArea = tileArea.intersection(clippedRequestedPresentationArea);
@@ -250,10 +250,10 @@ void TiledBitmap::redraw(ViewInterface::Ptr const&               vi,
       const auto tileAreaRect = visibleTileArea - tileArea.getTopLeft();
       const auto viewAreaRect = (visibleTileArea - clippedRequestedPresentationArea.getTopLeft()) * pixelSize;
 
-      CompressedTile::Ptr  tile          = layer->getTile(i, j);
-      TileViewState::Ptr   tileViewState = tile->getViewState(vi);
-      Scroom::Utils::Stuff cacheResult   = tileViewState->getCacheResult();
-      ConstTile::Ptr       t             = tile->getConstTileAsync();
+      CompressedTile::Ptr const  tile          = layer->getTile(i, j);
+      TileViewState::Ptr const   tileViewState = tile->getViewState(vi);
+      Scroom::Utils::Stuff const cacheResult   = tileViewState->getCacheResult();
+      ConstTile::Ptr const       t             = tile->getConstTileAsync();
 
       if(t)
       {
@@ -274,8 +274,8 @@ void TiledBitmap::redraw(ViewInterface::Ptr const&               vi,
 
 void TiledBitmap::clearCaches(ViewInterface::Ptr viewInterface)
 {
-  boost::mutex::scoped_lock lock(viewDataMutex);
-  TiledBitmapViewData::Ptr  tbvd = viewData[viewInterface];
+  boost::mutex::scoped_lock const lock(viewDataMutex);
+  TiledBitmapViewData::Ptr const  tbvd = viewData[viewInterface];
   if(tbvd)
   {
     tbvd->clearVolatileStuff();
@@ -284,9 +284,9 @@ void TiledBitmap::clearCaches(ViewInterface::Ptr viewInterface)
 
 void TiledBitmap::open(ViewInterface::WeakPtr viewInterface)
 {
-  boost::mutex::scoped_lock lock(viewDataMutex);
-  TiledBitmapViewData::Ptr  vd = TiledBitmapViewData::create(viewInterface);
-  viewData[viewInterface]      = vd;
+  boost::mutex::scoped_lock      lock(viewDataMutex);
+  TiledBitmapViewData::Ptr const vd = TiledBitmapViewData::create(viewInterface);
+  viewData[viewInterface]           = vd;
   vd->token.add(progressBroadcaster->subscribe(vd));
   lock.unlock();
 
@@ -303,8 +303,8 @@ void TiledBitmap::close(ViewInterface::WeakPtr vi)
     l->close(vi);
   }
 
-  boost::mutex::scoped_lock lock(viewDataMutex);
-  TiledBitmapViewData::Ptr  vd = viewData[vi];
+  boost::mutex::scoped_lock const lock(viewDataMutex);
+  TiledBitmapViewData::Ptr const  vd = viewData[vi];
   // Yuk. ProgressBroadcaster has a reference to viewData, so erasing it
   // from the map isn't enough.
   vd->token.reset();
@@ -323,7 +323,7 @@ void TiledBitmap::tileCreated(CompressedTile::Ptr tile)
 void TiledBitmap::tileFinished(CompressedTile::Ptr tile)
 {
   UNUSED(tile);
-  boost::mutex::scoped_lock lock(tileFinishedMutex);
+  boost::mutex::scoped_lock const lock(tileFinishedMutex);
   tileFinishedCount++;
   if(tileFinishedCount > tileCount)
   {

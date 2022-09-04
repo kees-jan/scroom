@@ -161,7 +161,7 @@ namespace
   {
     for(const Views::value_type& p: views)
     {
-      ViewInterface::Ptr v = p.lock();
+      ViewInterface::Ptr const v = p.lock();
       if(v)
       {
         if(tbi)
@@ -227,10 +227,10 @@ namespace
 
     auto intArea = roundOutward(area.intersection(getRect())).to<int>();
 
-    Layer::Ptr                           bottomLayer = tbi->getBottomLayer();
+    Layer::Ptr const                     bottomLayer = tbi->getBottomLayer();
     PipetteLayerOperations::PipetteColor pipetteColors;
 
-    int totalPixels = intArea.getWidth() * intArea.getHeight();
+    const int totalPixels = intArea.getWidth() * intArea.getHeight();
 
     if(totalPixels == 0)
     {
@@ -238,22 +238,22 @@ namespace
     }
 
     // Get start tile (tile_pos_x_start, tile_pos_y_start)
-    int tile_pos_x_start = intArea.getLeft() / TILESIZE;
-    int tile_pos_y_start = intArea.getTop() / TILESIZE;
+    const int tile_pos_x_start = intArea.getLeft() / TILESIZE;
+    const int tile_pos_y_start = intArea.getTop() / TILESIZE;
 
     // Get end tile (tile_pos_x_end, tile_pos_y_end)
-    int tile_pos_x_end = (intArea.getRight() - 1) / TILESIZE;
-    int tile_pos_y_end = (intArea.getBottom() - 1) / TILESIZE;
+    const int tile_pos_x_end = (intArea.getRight() - 1) / TILESIZE;
+    const int tile_pos_y_end = (intArea.getBottom() - 1) / TILESIZE;
 
     for(int x = tile_pos_x_start; x <= tile_pos_x_end; x++)
     {
       for(int y = tile_pos_y_start; y <= tile_pos_y_end; y++)
       {
-        ConstTile::Ptr                tile = bottomLayer->getTile(x, y)->getConstTileSync();
-        Scroom::Utils::Rectangle<int> tile_rectangle(x * TILESIZE, y * TILESIZE, tile->width, tile->height);
+        ConstTile::Ptr const                tile = bottomLayer->getTile(x, y)->getConstTileSync();
+        Scroom::Utils::Rectangle<int> const tile_rectangle(x * TILESIZE, y * TILESIZE, tile->width, tile->height);
 
-        Scroom::Utils::Rectangle<int> inter_rect = tile_rectangle.intersection(intArea);
-        Scroom::Utils::Point<int>     base(x * TILESIZE, y * TILESIZE);
+        Scroom::Utils::Rectangle<int>   inter_rect = tile_rectangle.intersection(intArea);
+        Scroom::Utils::Point<int> const base(x * TILESIZE, y * TILESIZE);
 
         inter_rect -= base; // rectangle coordinates relative to constTile with topleft corner (0,0)
 
@@ -273,8 +273,8 @@ namespace
    */
   void TiledBitmapPresentation::showMetadata(GtkWindow* parent)
   {
-    std::string filepath = getTitle();
-    std::string title    = "Properties: " + filepath.substr(filepath.find_last_of("/\\") + 1);
+    const std::string filepath = getTitle();
+    const std::string title    = "Properties: " + filepath.substr(filepath.find_last_of("/\\") + 1);
 
     Scroom::Metadata::showMetaData(parent, title, to_metadata(bmd));
   }
@@ -376,20 +376,20 @@ namespace
 
   PresentationInterface::Ptr OpenTiledBitmapAsPresentation::open(const std::string& fileName)
   {
-    auto           t           = openTiledBitmapInterface->open(fileName);
-    BitmapMetaData bmd         = std::move(std::get<0>(t));
-    Layer::Ptr     bottomLayer = std::move(std::get<1>(t));
-    ReloadFunction load        = std::move(std::get<2>(t));
+    auto                 t           = openTiledBitmapInterface->open(fileName);
+    BitmapMetaData       bmd         = std::move(std::get<0>(t));
+    Layer::Ptr const     bottomLayer = std::move(std::get<1>(t));
+    ReloadFunction const load        = std::move(std::get<2>(t));
 
-    auto                    lsr            = LayerSpecForBitmap(bmd);
-    LayerSpec               layerSpec      = std::move(std::get<0>(lsr));
-    ColormapHelperBase::Ptr colormapHelper = std::move(std::get<1>(lsr));
+    auto                          lsr            = LayerSpecForBitmap(bmd);
+    LayerSpec                     layerSpec      = std::move(std::get<0>(lsr));
+    ColormapHelperBase::Ptr const colormapHelper = std::move(std::get<1>(lsr));
 
     PresentationInterface::Ptr result;
     if(bottomLayer && !layerSpec.empty())
     {
-      auto                        tiledBitmap           = TiledBitmap::create(bottomLayer, layerSpec);
-      PipetteLayerOperations::Ptr pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(layerSpec[0]);
+      auto                              tiledBitmap           = TiledBitmap::create(bottomLayer, layerSpec);
+      PipetteLayerOperations::Ptr const pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(layerSpec[0]);
 
       std::map<std::string, std::string> properties;
       if(bmd.colormapHelper)

@@ -42,7 +42,7 @@ namespace
 
   ProgressBarPulser::Ptr instance()
   {
-    static ProgressBarPulser::Ptr pulser = ProgressBarPulser::Ptr(new ProgressBarPulser());
+    static ProgressBarPulser::Ptr const pulser = ProgressBarPulser::Ptr(new ProgressBarPulser());
     return pulser;
   }
 
@@ -51,7 +51,7 @@ namespace
 
   void ProgressBarPulser::start(GtkProgressBar* progressBar_)
   {
-    boost::mutex::scoped_lock lock(mut);
+    boost::mutex::scoped_lock const lock(mut);
 
     progressbars.push_back(progressBar_);
 
@@ -64,7 +64,7 @@ namespace
 
   void ProgressBarPulser::stop(GtkProgressBar* progressBar_)
   {
-    boost::mutex::scoped_lock lock(mut);
+    boost::mutex::scoped_lock const lock(mut);
 
     for(GtkProgressBar*& p: progressbars)
     {
@@ -77,7 +77,7 @@ namespace
 
   bool ProgressBarPulser::doWork()
   {
-    boost::mutex::scoped_lock lock(mut);
+    boost::mutex::scoped_lock const lock(mut);
 
     while(current == progressbars.end() || *current == NULL)
     {

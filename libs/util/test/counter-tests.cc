@@ -25,13 +25,13 @@ BOOST_AUTO_TEST_SUITE(Counter_Tests)
 BOOST_AUTO_TEST_CASE(count)
 {
   Counter*              counter         = Counter::instance();
-  std::string           testCountedName = typeid(TestCounted).name();
+  const std::string     testCountedName = typeid(TestCounted).name();
   std::list<Count::Ptr> counts          = counter->getCounts();
   BOOST_CHECK_EQUAL(0, counts.size());
   Count::Ptr c;
 
   {
-    TestCounted t;
+    TestCounted const t;
     counts = counter->getCounts();
     BOOST_REQUIRE_EQUAL(1, counts.size());
     c = counts.front();
@@ -39,7 +39,7 @@ BOOST_AUTO_TEST_CASE(count)
     BOOST_CHECK_EQUAL(1, c->count);
 
     {
-      TestCounted t2;
+      TestCounted const t2;
       counts = counter->getCounts();
       BOOST_REQUIRE_EQUAL(1, counts.size());
       c = counts.front();

@@ -29,7 +29,7 @@ Scroom::Detail::ThreadPool::FunctionAdditor&
 
 void Scroom::Detail::ThreadPool::FunctionAdditor::operator()()
 {
-  for(boost::function<void()>& f: functions)
+  for(boost::function<void()> const& f: functions)
   {
     f();
   }

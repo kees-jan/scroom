@@ -32,8 +32,8 @@ void usage(std::string me, std::string message = std::string())
 
 int main(int argc, char* argv[])
 {
-  std::string me = argv[0];
-  char        result;
+  const std::string me = argv[0];
+  char              result;
 
   while((result = getopt(argc, argv, ":h")) != -1)
   {

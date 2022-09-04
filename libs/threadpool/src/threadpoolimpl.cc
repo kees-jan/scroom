@@ -96,7 +96,7 @@ namespace
 
   ThreadList::Ptr ThreadList::instance()
   {
-    static Ptr threadList = Ptr(new ThreadList());
+    static Ptr const threadList = Ptr(new ThreadList());
     return threadList;
   }
 
@@ -126,7 +126,7 @@ namespace
     decltype(threads.size())          count = 0;
 
     {
-      boost::mutex::scoped_lock lock(mut);
+      boost::mutex::scoped_lock const lock(mut);
 
       auto cur = threads.begin();
       while(cur != threads.end())
@@ -147,7 +147,7 @@ namespace
     int triesRemaining = 256;
     while(triesRemaining > 0 && count > 0)
     {
-      boost::mutex::scoped_lock lock(mut);
+      boost::mutex::scoped_lock const lock(mut);
       dumpPointers();
       spdlog::info("Waiting for {} threads to terminate", count);
 
@@ -176,13 +176,13 @@ namespace
 
   void ThreadList::add(ThreadPool::ThreadPtr t)
   {
-    boost::mutex::scoped_lock lock(mut);
+    boost::mutex::scoped_lock const lock(mut);
     threads.push_back(t);
   }
 
   void ThreadList::add(boost::shared_ptr<void> t, const std::string& s)
   {
-    boost::mutex::scoped_lock lock(mut);
+    boost::mutex::scoped_lock const lock(mut);
     pointers.push_back(std::make_pair<boost::weak_ptr<void>, std::string>(t, std::string(s)));
   }
 
@@ -216,7 +216,7 @@ ThreadPool::PrivateData::Ptr ThreadPool::PrivateData::create(bool completeAllJob
 ThreadPool::ThreadPool(bool completeAllJobsBeforeDestruction)
   : priv(PrivateData::create(completeAllJobsBeforeDestruction))
 {
-  int count = boost::thread::hardware_concurrency();
+  const int count = boost::thread::hardware_concurrency();
 #ifndef MULTITHREADING
   if(count > 1)
     count = 1;
@@ -273,7 +273,7 @@ ThreadPool::~ThreadPool()
   // See also https://svn.boost.org/trac/boost/ticket/2330
 
   {
-    boost::mutex::scoped_lock lock(priv->mut);
+    boost::mutex::scoped_lock const lock(priv->mut);
     priv->alive = false;
     priv->cond.notify_all();
   }
@@ -319,7 +319,7 @@ void ThreadPool::do_one(ThreadPool::PrivateData::Ptr priv)
   ThreadPool::Job job;
 
   {
-    boost::mutex::scoped_lock lock(priv->mut);
+    boost::mutex::scoped_lock const lock(priv->mut);
 
     while(!priv->jobs.empty() && priv->jobs.begin()->second.empty())
     {
@@ -339,10 +339,10 @@ void ThreadPool::do_one(ThreadPool::PrivateData::Ptr priv)
 
   if(job.queue)
   {
-    QueueLock l(job.queue);
+    QueueLock const l(job.queue);
     if(l.queueExists())
     {
-      boost::this_thread::disable_interruption while_executing_jobs;
+      boost::this_thread::disable_interruption const while_executing_jobs;
       job.fn();
     }
   }
@@ -360,7 +360,7 @@ void ThreadPool::schedule(boost::function<void()> const& fn, ThreadPool::Queue::
 
 void ThreadPool::schedule(boost::function<void()> const& fn, int priority, ThreadPool::WeakQueue::Ptr queue)
 {
-  boost::mutex::scoped_lock lock(priv->mut);
+  boost::mutex::scoped_lock const lock(priv->mut);
   priv->jobs[priority].emplace(fn, queue);
   priv->jobcount++;
   priv->cond.notify_one();
@@ -373,7 +373,7 @@ void ThreadPool::schedule(boost::function<void()> const& fn, ThreadPool::WeakQue
 
 ThreadPool::Queue::Ptr ThreadPool::defaultQueue()
 {
-  static ThreadPool::Queue::Ptr queue = ThreadPool::Queue::create();
+  static ThreadPool::Queue::Ptr const queue = ThreadPool::Queue::create();
   return queue;
 }
 
@@ -432,7 +432,7 @@ QueueJumper::Ptr QueueJumper::create() { return QueueJumper::Ptr(new QueueJumper
 
 bool QueueJumper::setWork(boost::function<void()> const& fn_)
 {
-  boost::mutex::scoped_lock lock(mut);
+  boost::mutex::scoped_lock const lock(mut);
   if(inQueue)
   {
     // Our turn hasn't passed yet. Accept work.
@@ -449,7 +449,7 @@ bool QueueJumper::setWork(boost::function<void()> const& fn_)
 
 void QueueJumper::operator()()
 {
-  boost::mutex::scoped_lock lock(mut);
+  boost::mutex::scoped_lock const lock(mut);
   if(isSet)
   {
     fn();
@@ -463,14 +463,15 @@ void QueueJumper::operator()()
 
 ThreadPool::Ptr CpuBound()
 {
-  static ThreadPool::Ptr cpuBound = NotifyThreadList<ThreadPool>(ThreadPool::Ptr(new ThreadPool()), "CpuBound threadpool");
+  static ThreadPool::Ptr const cpuBound = NotifyThreadList<ThreadPool>(ThreadPool::Ptr(new ThreadPool()), "CpuBound threadpool");
 
   return cpuBound;
 }
 
 ThreadPool::Ptr Sequentially()
 {
-  static ThreadPool::Ptr sequentially = NotifyThreadList<ThreadPool>(ThreadPool::Ptr(new ThreadPool(1)), "Sequential threadpool");
+  static ThreadPool::Ptr const sequentially =
+    NotifyThreadList<ThreadPool>(ThreadPool::Ptr(new ThreadPool(1)), "Sequential threadpool");
 
   return sequentially;
 }

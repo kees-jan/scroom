@@ -27,7 +27,7 @@ void QueueImpl::deletingQueue()
 
 bool QueueImpl::jobStarted()
 {
-  boost::mutex::scoped_lock lock(mut);
+  boost::mutex::scoped_lock const lock(mut);
   count++;
 
   return !isDeleted;
@@ -35,14 +35,14 @@ bool QueueImpl::jobStarted()
 
 void QueueImpl::jobFinished()
 {
-  boost::mutex::scoped_lock lock(mut);
+  boost::mutex::scoped_lock const lock(mut);
   count--;
   cond.notify_all();
 }
 
 int QueueImpl::getCount()
 {
-  boost::mutex::scoped_lock lock(mut);
+  boost::mutex::scoped_lock const lock(mut);
   return count;
 }
 

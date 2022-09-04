@@ -96,7 +96,7 @@ namespace Scroom::Bookkeeping
     public:
       ~MapTokenImpl()
       {
-        boost::shared_ptr<Scroom::Bookkeeping::MapBase<K, V>> m = map.lock();
+        boost::shared_ptr<Scroom::Bookkeeping::MapBase<K, V>> const m = map.lock();
         if(m)
         {
           m->remove(k, t);
@@ -106,8 +106,8 @@ namespace Scroom::Bookkeeping
     public:
       static Scroom::Bookkeeping::Token create(boost::shared_ptr<Scroom::Bookkeeping::MapBase<K, V>> map, const K& k)
       {
-        Ptr t = Ptr(new MapTokenImpl<K, V>(map, k));
-        t->t  = t;
+        Ptr const t = Ptr(new MapTokenImpl<K, V>(map, k));
+        t->t        = t;
         return Scroom::Bookkeeping::Token(TokenImpl::Ptr(t));
       }
     };
@@ -208,14 +208,14 @@ namespace Scroom::Bookkeeping
   template <typename K, typename V>
   inline Token MapBase<K, V>::reserve(const K& k)
   {
-    boost::mutex::scoped_lock lock(mut);
+    boost::mutex::scoped_lock const lock(mut);
     if(map.end() != map.find(k))
     {
       throw std::invalid_argument("Key already exists");
     }
 
-    typename Detail::ValueType<V>::Ptr pv = Detail::ValueType<V>::create(V());
-    map[k]                                = pv;
+    typename Detail::ValueType<V>::Ptr const pv = Detail::ValueType<V>::create(V());
+    map[k]                                      = pv;
 
     Token t = Detail::MapTokenImpl<K, V>::create(shared_from_this<MapBase<K, V>>(), k);
     t.add(pv);
@@ -226,8 +226,8 @@ namespace Scroom::Bookkeeping
   template <typename K, typename V>
   inline Token MapBase<K, V>::reReserve(const K& k)
   {
-    boost::mutex::scoped_lock lock(mut);
-    auto                      i = map.find(k);
+    boost::mutex::scoped_lock const lock(mut);
+    auto                            i = map.find(k);
 
     if(map.end() == i)
     {
@@ -256,16 +256,16 @@ namespace Scroom::Bookkeeping
   template <typename K, typename V>
   inline void MapBase<K, V>::remove(const K& k, WeakToken wt)
   {
-    boost::mutex::scoped_lock lock(mut);
-    auto                      i = map.find(k);
+    boost::mutex::scoped_lock const lock(mut);
+    auto                            i = map.find(k);
 
     if(map.end() != i)
     {
-      typename Detail::ValueType<V>::Ptr pv = i->second.lock();
+      typename Detail::ValueType<V>::Ptr const pv = i->second.lock();
       if(pv)
       {
-        Token t      = wt.lock();
-        Token t_orig = pv->token.lock();
+        Token const t      = wt.lock();
+        Token const t_orig = pv->token.lock();
         if(t == t_orig)
         {
           map.erase(i);
@@ -293,12 +293,12 @@ namespace Scroom::Bookkeeping
   template <typename K, typename V>
   inline Detail::LValue<V> MapBase<K, V>::at(const K& k)
   {
-    boost::mutex::scoped_lock lock(mut);
-    auto                      i = map.find(k);
+    boost::mutex::scoped_lock const lock(mut);
+    auto                            i = map.find(k);
 
     if(map.end() != i)
     {
-      typename Detail::ValueType<V>::Ptr pv = i->second.lock();
+      typename Detail::ValueType<V>::Ptr const pv = i->second.lock();
       if(pv)
       {
         return Detail::LValue<V>(pv);
@@ -311,12 +311,12 @@ namespace Scroom::Bookkeeping
   template <typename K, typename V>
   inline void MapBase<K, V>::set(const K& k, const V& v)
   {
-    boost::mutex::scoped_lock lock(mut);
-    auto                      i = map.find(k);
+    boost::mutex::scoped_lock const lock(mut);
+    auto                            i = map.find(k);
 
     if(map.end() != i)
     {
-      typename Detail::ValueType<V>::Ptr pv = i->second.lock();
+      typename Detail::ValueType<V>::Ptr const pv = i->second.lock();
       if(pv)
       {
         pv->value = v;
@@ -330,12 +330,12 @@ namespace Scroom::Bookkeeping
   template <typename K, typename V>
   inline V MapBase<K, V>::get(const K& k)
   {
-    boost::mutex::scoped_lock lock(mut);
-    auto                      i = map.find(k);
+    boost::mutex::scoped_lock const lock(mut);
+    auto                            i = map.find(k);
 
     if(map.end() != i)
     {
-      typename Detail::ValueType<V>::Ptr pv = i->second.lock();
+      typename Detail::ValueType<V>::Ptr const pv = i->second.lock();
       if(pv)
       {
         return pv->value;
@@ -348,8 +348,8 @@ namespace Scroom::Bookkeeping
   template <typename K, typename V>
   inline std::list<K> MapBase<K, V>::keys() const
   {
-    boost::mutex::scoped_lock lock(mut);
-    std::list<K>              result;
+    boost::mutex::scoped_lock const lock(mut);
+    std::list<K>                    result;
     for(const typename MapType::value_type& el: map)
     {
       result.push_back(el.first);
@@ -360,11 +360,11 @@ namespace Scroom::Bookkeeping
   template <typename K, typename V>
   inline std::list<V> MapBase<K, V>::values() const
   {
-    boost::mutex::scoped_lock lock(mut);
-    std::list<V>              result;
+    boost::mutex::scoped_lock const lock(mut);
+    std::list<V>                    result;
     for(const typename MapType::value_type& el: map)
     {
-      typename Detail::ValueType<V>::Ptr pv = el.second.lock();
+      typename Detail::ValueType<V>::Ptr const pv = el.second.lock();
       if(pv)
       {
         result.push_back(pv->value);

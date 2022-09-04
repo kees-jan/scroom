@@ -50,7 +50,7 @@ namespace Scroom::GtkHelpers
   {
     require(!on_ui_thread());
     std::packaged_task<void(void)> t(f);
-    std::future<void>              future = t.get_future();
+    std::future<void> const        future = t.get_future();
     async_on_ui_thread(std::move(t));
     future.wait();
   }
@@ -87,7 +87,7 @@ inline bool operator==(cairo_rectangle_int_t const& left, cairo_rectangle_int_t 
   return left.x == right.x && left.y == right.y && left.width == right.width && left.height == right.height;
 }
 
-inline bool operator==(GdkPoint const& left, GdkPoint const& right) { return left.x == right.x && left.y == right.y; }
+inline bool operator==(const GdkPoint& left, const GdkPoint& right) { return left.x == right.x && left.y == right.y; }
 
 std::ostream& operator<<(std::ostream& os, cairo_rectangle_int_t const& r);
-std::ostream& operator<<(std::ostream& os, GdkPoint const& p);
+std::ostream& operator<<(std::ostream& os, const GdkPoint& p);

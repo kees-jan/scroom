@@ -47,7 +47,7 @@ namespace Scroom
 
   inline bool Semaphore::try_P()
   {
-    boost::mutex::scoped_lock lock(mut);
+    boost::mutex::scoped_lock const lock(mut);
     if(count > 0)
     {
       count--;
@@ -60,7 +60,7 @@ namespace Scroom
   template <typename duration_type>
   inline bool Semaphore::P(duration_type const& rel_time)
   {
-    boost::posix_time::ptime timeout = boost::posix_time::second_clock::universal_time() + rel_time;
+    boost::posix_time::ptime const timeout = boost::posix_time::second_clock::universal_time() + rel_time;
 
     boost::mutex::scoped_lock lock(mut);
     while(count == 0)
@@ -76,7 +76,7 @@ namespace Scroom
 
   inline void Semaphore::V()
   {
-    boost::mutex::scoped_lock lock(mut);
+    boost::mutex::scoped_lock const lock(mut);
     count++;
     cond.notify_one();
   }

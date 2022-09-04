@@ -88,9 +88,9 @@ public:
 
 ////////////////////////////////////////////////////////////////////////
 
-char* charpFromString(std::string const& s)
+char* charpFromString(const std::string& s)
 {
-  size_t                  n = s.size();
+  const size_t            n = s.size();
   std::unique_ptr<char[]> result(new char[n + 1]);
   if(!result)
   {
@@ -110,8 +110,8 @@ GtkFileFilterInfoPtr filterInfoFromPath(const std::string& filename)
 {
   GtkFileFilterInfoPtr filterInfo;
 
-  std::unique_ptr<GFile, GObjectUnref<GFile>>         file(g_file_new_for_path(filename.c_str()));
-  std::unique_ptr<GFileInfo, GObjectUnref<GFileInfo>> fileInfo(
+  std::unique_ptr<GFile, GObjectUnref<GFile>> const         file(g_file_new_for_path(filename.c_str()));
+  std::unique_ptr<GFileInfo, GObjectUnref<GFileInfo>> const fileInfo(
     g_file_query_info(file.get(), "standard::*", G_FILE_QUERY_INFO_NONE, nullptr, nullptr));
   if(fileInfo)
   {
@@ -163,9 +163,9 @@ public:
 
   // ScroomInterface //////////////////////////////////////////////////////
 
-  PresentationInterface::Ptr newPresentation(std::string const& name) override;
-  Aggregate::Ptr             newAggregate(std::string const& name) override;
-  PresentationInterface::Ptr loadPresentation(std::string const& name, std::string const& relativeTo = std::string()) override;
+  PresentationInterface::Ptr newPresentation(const std::string& name) override;
+  Aggregate::Ptr             newAggregate(const std::string& name) override;
+  PresentationInterface::Ptr loadPresentation(const std::string& name, const std::string& relativeTo = std::string()) override;
 
   void showPresentation(PresentationInterface::Ptr const& presentation) override;
 };
@@ -174,7 +174,7 @@ public:
 
 void create(NewPresentationInterface* interface)
 {
-  PresentationInterface::Ptr presentation = interface->createNew();
+  PresentationInterface::Ptr const presentation = interface->createNew();
   if(presentation)
   {
     on_presentation_created(presentation);
@@ -201,7 +201,7 @@ PresentationInterface::Ptr loadPresentation(GtkFileFilterInfo const& info)
 #ifdef HAVE_BOOST_FILESYSTEM_CANONICAL
   boost::filesystem::path key(canonical(boost::filesystem::path(info.filename)));
 #else
-  boost::filesystem::path key(absolute(boost::filesystem::path(info.filename)));
+  boost::filesystem::path const key(absolute(boost::filesystem::path(info.filename)));
 #endif
 
   PresentationInterface::Ptr presentation = loadedPresentations[key].lock();
@@ -210,7 +210,7 @@ PresentationInterface::Ptr loadPresentation(GtkFileFilterInfo const& info)
   {
     for(auto const& cur: openPresentationInterfaces)
     {
-      std::list<GtkFileFilter*> filters = cur.first->getFilters();
+      std::list<GtkFileFilter*> const filters = cur.first->getFilters();
       if(filterMatchesInfo(info, filters))
       {
         presentation = cur.first->open(info.filename);
@@ -243,11 +243,11 @@ void load(GtkFileFilterInfo const& info)
 
   for(auto const& cur: openPresentationInterfaces)
   {
-    std::list<GtkFileFilter*>  filters = cur.first->getFilters();
-    GtkFileFilterListDestroyer destroyer(filters);
+    std::list<GtkFileFilter*>        filters = cur.first->getFilters();
+    GtkFileFilterListDestroyer const destroyer(filters);
     if(filterMatchesInfo(info, filters))
     {
-      PresentationInterface::Ptr presentation = cur.first->open(info.filename);
+      PresentationInterface::Ptr const presentation = cur.first->open(info.filename);
       if(presentation)
       {
         on_presentation_created(presentation);
@@ -258,8 +258,8 @@ void load(GtkFileFilterInfo const& info)
   }
   for(auto const& cur: openInterfaces)
   {
-    std::list<GtkFileFilter*>  filters = cur.first->getFilters();
-    GtkFileFilterListDestroyer destroyer(filters);
+    std::list<GtkFileFilter*>        filters = cur.first->getFilters();
+    GtkFileFilterListDestroyer const destroyer(filters);
     if(filterMatchesInfo(info, filters))
     {
       cur.first->open(info.filename, ScroomInterfaceImpl::instance());
@@ -278,11 +278,11 @@ void load(const std::string& filename) { load(filterInfoFromPath(filename)); }
 
 ScroomInterfaceImpl::Ptr ScroomInterfaceImpl::instance()
 {
-  static ScroomInterfaceImpl::Ptr i(new ScroomInterfaceImpl());
+  static ScroomInterfaceImpl::Ptr const i(new ScroomInterfaceImpl());
   return i;
 }
 
-PresentationInterface::Ptr ScroomInterfaceImpl::newPresentation(std::string const& name)
+PresentationInterface::Ptr ScroomInterfaceImpl::newPresentation(const std::string& name)
 {
   const std::map<NewPresentationInterface::Ptr, std::string>& newPresentationInterfaces =
     PluginManager::getInstance()->getNewPresentationInterfaces();
@@ -305,7 +305,7 @@ PresentationInterface::Ptr ScroomInterfaceImpl::newPresentation(std::string cons
   throw std::invalid_argument("Don't know how to create a new " + name);
 }
 
-Aggregate::Ptr ScroomInterfaceImpl::newAggregate(std::string const& name)
+Aggregate::Ptr ScroomInterfaceImpl::newAggregate(const std::string& name)
 {
   std::map<std::string, NewAggregateInterface::Ptr> const& newAggregateInterfaces =
     PluginManager::getInstance()->getNewAggregateInterfaces();
@@ -315,7 +315,7 @@ Aggregate::Ptr ScroomInterfaceImpl::newAggregate(std::string const& name)
     Aggregate::Ptr aggregate = i->second->createNew();
     if(aggregate)
     {
-      PresentationInterface::Ptr aggregatePresentation = boost::dynamic_pointer_cast<PresentationInterface>(aggregate);
+      PresentationInterface::Ptr const aggregatePresentation = boost::dynamic_pointer_cast<PresentationInterface>(aggregate);
 
       if(aggregatePresentation)
       {
@@ -330,10 +330,10 @@ Aggregate::Ptr ScroomInterfaceImpl::newAggregate(std::string const& name)
   throw std::invalid_argument("Don't know how to create a new " + name);
 }
 
-PresentationInterface::Ptr ScroomInterfaceImpl::loadPresentation(std::string const& n, std::string const& rt)
+PresentationInterface::Ptr ScroomInterfaceImpl::loadPresentation(const std::string& n, const std::string& rt)
 {
-  boost::filesystem::path name(n);
-  boost::filesystem::path relativeTo(rt);
+  boost::filesystem::path       name(n);
+  boost::filesystem::path const relativeTo(rt);
 
   if(!name.is_absolute() && relativeTo.has_parent_path())
   {

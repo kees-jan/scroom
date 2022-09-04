@@ -82,8 +82,8 @@ void TransformPresentation::redraw(ViewInterface::Ptr const&        vi,
                                    Scroom::Utils::Rectangle<double> presentationArea,
                                    int                              zoom)
 {
-  Scroom::Utils::Point<double> aspectRatio = transformationData->getAspectRatio();
-  const auto                   data        = viewData.at(vi);
+  Scroom::Utils::Point<double> const aspectRatio = transformationData->getAspectRatio();
+  const auto                         data        = viewData.at(vi);
 
   if(data->presentationArea != presentationArea || data->zoom != zoom)
   {
@@ -140,7 +140,7 @@ void TransformPresentation::showMetadata(GtkWindow* parent) { showMetaDataInterf
 
 PipetteLayerOperations::PipetteColor TransformPresentation::getPixelAverages(Scroom::Utils::Rectangle<double> area)
 {
-  PipetteViewInterface::Ptr pipettePresentation = boost::dynamic_pointer_cast<PipetteViewInterface>(presentation);
+  PipetteViewInterface::Ptr const pipettePresentation = boost::dynamic_pointer_cast<PipetteViewInterface>(presentation);
   require(pipettePresentation);
   return pipettePresentation->getPixelAverages(area / getAspectRatio());
 }

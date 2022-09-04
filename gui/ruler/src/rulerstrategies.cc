@@ -27,8 +27,8 @@ double VerticalDrawStrategy::getDrawAreaSize() { return getHeight(); }
 
 void HorizontalDrawStrategy::drawOutline(cairo_t* cr, double lineWidth)
 {
-  int width_  = getWidth();
-  int height_ = getHeight();
+  const int width_  = getWidth();
+  const int height_ = getHeight();
 
   cairo_set_line_width(cr, lineWidth);
   const double DRAW_OFFSET = lineWidth * LINE_COORD_OFFSET;
@@ -51,8 +51,8 @@ void HorizontalDrawStrategy::drawOutline(cairo_t* cr, double lineWidth)
 
 void VerticalDrawStrategy::drawOutline(cairo_t* cr, double lineWidth)
 {
-  int width_  = getWidth();
-  int height_ = getHeight();
+  const int width_  = getWidth();
+  const int height_ = getHeight();
 
   cairo_set_line_width(cr, lineWidth);
   const double DRAW_OFFSET = lineWidth * LINE_COORD_OFFSET;
@@ -75,7 +75,7 @@ void VerticalDrawStrategy::drawOutline(cairo_t* cr, double lineWidth)
 
 void HorizontalDrawStrategy::drawTickLine(cairo_t* cr, double linePosition, double lineWidth, double lineLength)
 {
-  int height_ = getHeight();
+  const int height_ = getHeight();
 
   cairo_set_line_width(cr, lineWidth);
   const double DRAW_OFFSET = lineWidth * LINE_COORD_OFFSET;
@@ -88,7 +88,7 @@ void HorizontalDrawStrategy::drawTickLine(cairo_t* cr, double linePosition, doub
 
 void VerticalDrawStrategy::drawTickLine(cairo_t* cr, double linePosition, double lineWidth, double lineLength)
 {
-  int width_ = getWidth();
+  const int width_ = getWidth();
 
   cairo_set_line_width(cr, lineWidth);
   const double DRAW_OFFSET = lineWidth * LINE_COORD_OFFSET;
@@ -106,7 +106,7 @@ void HorizontalDrawStrategy::drawTickText(cairo_t*           cr,
                                           double             labelAlign,
                                           double             lineLength)
 {
-  int height_ = getHeight();
+  const int height_ = getHeight();
 
   // Get the extents of the text if it were drawn
   cairo_text_extents_t textExtents;
@@ -123,7 +123,7 @@ void VerticalDrawStrategy::drawTickText(cairo_t*           cr,
                                         double             labelAlign,
                                         double             lineLength)
 {
-  int width_ = getWidth();
+  const int width_ = getWidth();
 
   // Get the extents of the text if it were drawn
   cairo_text_extents_t textExtents;

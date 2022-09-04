@@ -95,7 +95,7 @@ void drawOutOfBoundsWithoutBackground(cairo_t*                 cr,
                                       Rectangle<double> const& actualPresentationArea,
                                       double                   pixelSize)
 {
-  std::list<Rectangle<double>> border =
+  std::list<Rectangle<double>> const border =
     boost::assign::list_of(requestedPresentationArea.leftOf(actualPresentationArea.getLeft()))(requestedPresentationArea.rightOf(
       actualPresentationArea.getRight()))(requestedPresentationArea.above(actualPresentationArea.getTop()))(
       requestedPresentationArea.below(actualPresentationArea.getBottom()));

@@ -127,7 +127,7 @@ namespace Scroom::Utils
 
   Stuff ProgressInterfaceBroadcaster::subscribe(ProgressInterface::Ptr const& child)
   {
-    boost::mutex::scoped_lock lock(mut);
+    boost::mutex::scoped_lock const lock(mut);
     store->init(child);
     children.insert(child);
     return Unsubscriber::create(shared_from_this<ProgressInterfaceBroadcaster>(), child);
@@ -135,13 +135,13 @@ namespace Scroom::Utils
 
   void ProgressInterfaceBroadcaster::unsubscribe(ProgressInterface::Ptr const& child)
   {
-    boost::mutex::scoped_lock lock(mut);
+    boost::mutex::scoped_lock const lock(mut);
     children.erase(child);
   }
 
   void ProgressInterfaceBroadcaster::setIdle()
   {
-    boost::mutex::scoped_lock lock(mut);
+    boost::mutex::scoped_lock const lock(mut);
     for(ProgressInterface::Ptr const& child: children)
     {
       child->setIdle();
@@ -150,7 +150,7 @@ namespace Scroom::Utils
 
   void ProgressInterfaceBroadcaster::setWaiting(double progress)
   {
-    boost::mutex::scoped_lock lock(mut);
+    boost::mutex::scoped_lock const lock(mut);
     for(ProgressInterface::Ptr const& child: children)
     {
       child->setWaiting(progress);
@@ -159,7 +159,7 @@ namespace Scroom::Utils
 
   void ProgressInterfaceBroadcaster::setWorking(double progress)
   {
-    boost::mutex::scoped_lock lock(mut);
+    boost::mutex::scoped_lock const lock(mut);
     for(ProgressInterface::Ptr const& child: children)
     {
       child->setWorking(progress);
@@ -168,7 +168,7 @@ namespace Scroom::Utils
 
   void ProgressInterfaceBroadcaster::setFinished()
   {
-    boost::mutex::scoped_lock lock(mut);
+    boost::mutex::scoped_lock const lock(mut);
     for(ProgressInterface::Ptr const& child: children)
     {
       child->setFinished();
@@ -199,14 +199,14 @@ namespace Scroom::Utils
 
   void ProgressInterfaceMultiplexer::ChildData::setProgress(State state_, double progress_)
   {
-    boost::mutex::scoped_lock l(mut);
+    boost::mutex::scoped_lock const l(mut);
     state    = state_;
     progress = progress_;
   }
 
   void ProgressInterfaceMultiplexer::ChildData::clearFinished()
   {
-    boost::mutex::scoped_lock l(mut);
+    boost::mutex::scoped_lock const l(mut);
     if(state == FINISHED)
     {
       state    = IDLE;
@@ -254,10 +254,10 @@ namespace Scroom::Utils
 
   ProgressInterface::Ptr ProgressInterfaceMultiplexer::createProgressInterface()
   {
-    ChildData::Ptr data  = ChildData::create();
-    Child::Ptr     child = Child::create(shared_from_this<ProgressInterfaceMultiplexer>(), data);
+    ChildData::Ptr const data  = ChildData::create();
+    Child::Ptr           child = Child::create(shared_from_this<ProgressInterfaceMultiplexer>(), data);
 
-    boost::mutex::scoped_lock l(mut);
+    boost::mutex::scoped_lock const l(mut);
     children.insert(data);
 
     return child;
@@ -265,7 +265,7 @@ namespace Scroom::Utils
 
   void ProgressInterfaceMultiplexer::unsubscribe(ChildData::Ptr data)
   {
-    boost::mutex::scoped_lock l(mut);
+    boost::mutex::scoped_lock const l(mut);
     children.erase(data);
   }
 
@@ -275,10 +275,10 @@ namespace Scroom::Utils
     double                        progress = 0.0;
     int                           workers  = 0;
 
-    boost::mutex::scoped_lock l(mut);
+    boost::mutex::scoped_lock const l(mut);
     for(const ChildData::Ptr& child: children)
     {
-      boost::mutex::scoped_lock child_lock(child->mut);
+      boost::mutex::scoped_lock const child_lock(child->mut);
       switch(child->state)
       {
       case ProgressStateInterface::IDLE:

@@ -108,7 +108,7 @@ bool has_at_least_n_threads(ThreadPool* pool, int count_)
   // there are at least count_ threads, then this final job will get
   // scheduled on the last available thread, thus freeing all
   // others.
-  bool result = semaphores[0]->P(long_timeout);
+  bool const result = semaphores[0]->P(long_timeout);
 
   if(!result)
   {
@@ -182,7 +182,7 @@ BOOST_AUTO_TEST_CASE(construct_1_threads)
 BOOST_AUTO_TEST_CASE(construct_2_threads)
 {
   ThreadPool pool(2);
-  int        expected = 2;
+  const int  expected = 2;
 #ifndef MULTITHREADING
   expected = 1;
 #endif
@@ -236,8 +236,8 @@ BOOST_AUTO_TEST_SUITE(CpuBound_Tests)
 
 BOOST_AUTO_TEST_CASE(verify_threadcount)
 {
-  ThreadPool::Ptr t        = CpuBound();
-  int             expected = boost::thread::hardware_concurrency();
+  ThreadPool::Ptr const t        = CpuBound();
+  const int             expected = boost::thread::hardware_concurrency();
 #ifndef MULTITHREADING
   expected = 1;
 #endif
@@ -252,7 +252,7 @@ BOOST_AUTO_TEST_SUITE(Sequentially_Tests)
 
 BOOST_AUTO_TEST_CASE(verify_threadcount)
 {
-  ThreadPool::Ptr t = Sequentially();
+  ThreadPool::Ptr const t = Sequentially();
   BOOST_CHECK(has_exactly_n_threads(t.get(), 1));
 }
 

@@ -140,13 +140,13 @@ namespace Scroom::Utils
     }
     void inc()
     {
-      boost::unique_lock<boost::mutex> lock(mut);
+      boost::unique_lock<boost::mutex> const lock(mut);
       ++count;
       ping();
     }
     void dec()
     {
-      boost::unique_lock<boost::mutex> lock(mut);
+      boost::unique_lock<boost::mutex> const lock(mut);
       --count;
       ping();
     }
@@ -186,7 +186,7 @@ namespace Scroom::Utils
   public:
     static Count::Ptr count_instance()
     {
-      static Count::Ptr instance = Count::create(typeid(C).name());
+      static Count::Ptr const instance = Count::create(typeid(C).name());
       return instance;
     }
 

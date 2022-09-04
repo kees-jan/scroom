@@ -36,8 +36,8 @@ namespace Scroom::TiledBitmap
 
   Metadata::Metadata to_metadata(const BitmapMetaData& bmd)
   {
-    Scroom::Utils::Point<double> aspectRatio       = bmd.aspectRatio ? *bmd.aspectRatio : Scroom::Utils::Point<double>{1, 1};
-    std::string                  aspect_ratio_text = fmt::format("{:.2f} : {:.2f}", aspectRatio.x, aspectRatio.y);
+    Scroom::Utils::Point<double> const aspectRatio = bmd.aspectRatio ? *bmd.aspectRatio : Scroom::Utils::Point<double>{1, 1};
+    std::string                        aspect_ratio_text = fmt::format("{:.2f} : {:.2f}", aspectRatio.x, aspectRatio.y);
 
     return {
       {"Color representation", bmd.type},
@@ -69,7 +69,7 @@ namespace Scroom::TiledBitmap
 
     static Ptr instance()
     {
-      static Ptr lsfb(new LayerSpecForBitmapper);
+      static Ptr const lsfb(new LayerSpecForBitmapper);
       return lsfb;
     }
 

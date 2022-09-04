@@ -87,9 +87,9 @@ BOOST_AUTO_TEST_SUITE(Observable_Tests)
 
 BOOST_AUTO_TEST_CASE(register_observer)
 {
-  TestObservable::Ptr                 observable   = TestObservable::create();
+  TestObservable::Ptr const           observable   = TestObservable::create();
   TestObserver::Ptr                   observer     = TestObserver::create();
-  TestObserver::WeakPtr               weakObserver = observer;
+  TestObserver::WeakPtr const         weakObserver = observer;
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
@@ -115,9 +115,9 @@ BOOST_AUTO_TEST_CASE(register_observer)
 
 BOOST_AUTO_TEST_CASE(register_weak_observer)
 {
-  TestObservable::Ptr                 observable   = TestObservable::create();
+  TestObservable::Ptr const           observable   = TestObservable::create();
   TestObserver::Ptr                   observer     = TestObserver::create();
-  TestObserver::WeakPtr               weakObserver = observer;
+  TestObserver::WeakPtr const         weakObserver = observer;
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
@@ -138,9 +138,9 @@ BOOST_AUTO_TEST_CASE(register_weak_observer)
 
 BOOST_AUTO_TEST_CASE(registered_weak_observer_goes_away)
 {
-  TestObservable::Ptr                 observable   = TestObservable::create();
+  TestObservable::Ptr const           observable   = TestObservable::create();
   TestObserver::Ptr                   observer     = TestObserver::create();
-  TestObserver::WeakPtr               weakObserver = observer;
+  TestObserver::WeakPtr const         weakObserver = observer;
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
@@ -167,11 +167,11 @@ BOOST_AUTO_TEST_CASE(registered_weak_observer_goes_away)
 
 BOOST_AUTO_TEST_CASE(register_multiple_observers)
 {
-  TestObservable::Ptr                 observable   = TestObservable::create();
-  TestObserver::Ptr                   o1           = TestObserver::create();
-  TestObserver::Ptr                   o2           = TestObserver::create();
-  TestObserver::Ptr                   o3           = TestObserver::create();
-  TestObserver::WeakPtr               weakObserver = o1;
+  TestObservable::Ptr const           observable   = TestObservable::create();
+  TestObserver::Ptr const             o1           = TestObserver::create();
+  TestObserver::Ptr const             o2           = TestObserver::create();
+  TestObserver::Ptr const             o3           = TestObserver::create();
+  TestObserver::WeakPtr const         weakObserver = o1;
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
@@ -218,8 +218,8 @@ BOOST_AUTO_TEST_CASE(register_multiple_observers)
 
 BOOST_AUTO_TEST_CASE(register_observer_multiple_times)
 {
-  TestObservable::Ptr                 observable = TestObservable::create();
-  TestObserver::Ptr                   observer   = TestObserver::create();
+  TestObservable::Ptr const           observable = TestObservable::create();
+  TestObserver::Ptr const             observer   = TestObserver::create();
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
@@ -244,8 +244,8 @@ BOOST_AUTO_TEST_CASE(register_observer_multiple_times)
 
 BOOST_AUTO_TEST_CASE(register_weak_observer_multiple_times)
 {
-  TestObservable::Ptr                 observable = TestObservable::create();
-  TestObserver::Ptr                   observer   = TestObserver::create();
+  TestObservable::Ptr const           observable = TestObservable::create();
+  TestObserver::Ptr const             observer   = TestObserver::create();
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
@@ -270,9 +270,9 @@ BOOST_AUTO_TEST_CASE(register_weak_observer_multiple_times)
 
 BOOST_AUTO_TEST_CASE(register_observer_recursively)
 {
-  TestObservable::Ptr                 observable          = TestObservable::create();
-  TestRecursiveObservable::Ptr        recursiveObservable = TestRecursiveObservable::create(observable);
-  TestObserver::Ptr                   observer            = TestObserver::create();
+  TestObservable::Ptr const           observable          = TestObservable::create();
+  TestRecursiveObservable::Ptr const  recursiveObservable = TestRecursiveObservable::create(observable);
+  TestObserver::Ptr const             observer            = TestObserver::create();
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
@@ -295,10 +295,10 @@ BOOST_AUTO_TEST_CASE(register_observer_recursively)
 
 BOOST_AUTO_TEST_CASE(shared_from_this)
 {
-  TestObservable::Ptr                     original = TestObservable::create();
-  TestObservable::Ptr                     copy1    = original->shared_from_this<TestObservable>();
-  boost::shared_ptr<TestObservable const> copy2    = original;
-  boost::shared_ptr<TestObservable const> copy3    = copy2->shared_from_this<TestObservable>();
+  TestObservable::Ptr const                     original = TestObservable::create();
+  TestObservable::Ptr const                     copy1    = original->shared_from_this<TestObservable>();
+  boost::shared_ptr<TestObservable const> const copy2    = original;
+  boost::shared_ptr<TestObservable const> const copy3    = copy2->shared_from_this<TestObservable>();
 
   BOOST_CHECK_EQUAL(original, copy1);
   BOOST_CHECK_EQUAL(copy2, copy3);
@@ -309,11 +309,11 @@ BOOST_AUTO_TEST_CASE(deleting_observable_deletes_observer)
 {
   TestObservable::Ptr                 observable   = TestObservable::create();
   TestObserver::Ptr                   observer     = TestObserver::create();
-  TestObserver::WeakPtr               weakObserver = observer;
+  TestObserver::WeakPtr const         weakObserver = observer;
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
-  Stuff registration = observable->registerStrongObserver(observer);
+  Stuff const registration = observable->registerStrongObserver(observer);
   BOOST_CHECK(registration);
 
   // Observable has a reference to observer, so it doesn't go away

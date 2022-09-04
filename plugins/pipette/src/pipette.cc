@@ -42,7 +42,7 @@ void Pipette::registerCapabilities(ScroomPluginInterface::Ptr host)
 
 Scroom::Bookkeeping::Token Pipette::viewAdded(ViewInterface::Ptr view)
 {
-  PipetteHandler::Ptr handler = PipetteHandler::create();
+  PipetteHandler::Ptr const handler = PipetteHandler::create();
   view->registerSelectionListener(handler);
   view->registerPostRenderer(handler);
 
@@ -64,8 +64,8 @@ void PipetteHandler::computeValues(const ViewInterface::Ptr& view, Scroom::Utils
   Scroom::GtkHelpers::sync_on_ui_thread([=] { view->setStatusMessage("Computing color values..."); });
 
   // Get the average color within the rectangle
-  PresentationInterface::Ptr presentation = view->getCurrentPresentation();
-  auto                       pipette      = boost::dynamic_pointer_cast<PipetteViewInterface>(presentation);
+  PresentationInterface::Ptr const presentation = view->getCurrentPresentation();
+  auto                             pipette      = boost::dynamic_pointer_cast<PipetteViewInterface>(presentation);
   if(pipette == nullptr || !presentation->isPropertyDefined(PIPETTE_PROPERTY_NAME))
   {
     spdlog::error("Presentation does not implement PipetteViewInterface!");

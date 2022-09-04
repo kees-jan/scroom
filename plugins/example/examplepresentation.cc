@@ -23,8 +23,8 @@ void ExamplePresentation::fillPattern()
   cairo_surface_t* surface = cairo_image_surface_create(CAIRO_FORMAT_A1, 1010, 1010);
   cairo_t*         cr      = cairo_create(surface);
 
-  int xorig = 505;
-  int yorig = 505;
+  const int xorig = 505;
+  const int yorig = 505;
 
   for(int i = -500; i <= 500; i += 50)
   {
@@ -54,16 +54,16 @@ void ExamplePresentation::close(ViewInterface::WeakPtr vi) { UNUSED(vi); }
 
 void ExamplePresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> pa, int zoom)
 {
-  cairo_rectangle_int_t presentationArea = pa.toGdkRectangle();
+  cairo_rectangle_int_t const presentationArea = pa.toGdkRectangle();
   UNUSED(vi);
-  double pp    = pixelSizeFromZoom(zoom);
-  double scale = pow(2, -zoom);
+  const double pp    = pixelSizeFromZoom(zoom);
+  const double scale = pow(2, -zoom);
 
-  Scroom::Utils::Rectangle<double> actualPresentationArea = getRect();
+  Scroom::Utils::Rectangle<double> const actualPresentationArea = getRect();
   drawOutOfBoundsWithBackground(cr, pa, actualPresentationArea, pp);
 
-  int xorig = static_cast<int>(-presentationArea.x * pp);
-  int yorig = static_cast<int>(-presentationArea.y * pp);
+  const int xorig = static_cast<int>(-presentationArea.x * pp);
+  const int yorig = static_cast<int>(-presentationArea.y * pp);
 
   cairo_matrix_t m;
   cairo_matrix_init_translate(&m, 505, 505);

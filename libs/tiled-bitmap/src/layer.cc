@@ -24,15 +24,15 @@
 
 static Scroom::MemoryBlobs::PageProvider::Ptr createProvider(double width, double height, int bpp)
 {
-  double tileCount = (width * height) / (TILESIZE * TILESIZE);
-  double tileSize  = (bpp / 8.0) * TILESIZE * TILESIZE;
+  const double tileCount = (width * height) / (TILESIZE * TILESIZE);
+  const double tileSize  = (bpp / 8.0) * TILESIZE * TILESIZE;
 
-  double    guessedTileSizeAfterCompression = tileSize / 100;
-  const int pagesize                        = 4096;
-  int       pagesPerBlock                   = std::max(int(ceil(guessedTileSizeAfterCompression / 10 / pagesize)), 1);
+  const double guessedTileSizeAfterCompression = tileSize / 100;
+  const int    pagesize                        = 4096;
+  const int    pagesPerBlock                   = std::max(int(ceil(guessedTileSizeAfterCompression / 10 / pagesize)), 1);
 
-  int blockSize  = pagesPerBlock * pagesize;
-  int blockCount = std::max(int(ceil(tileCount / 10)), 64);
+  const int blockSize  = pagesPerBlock * pagesize;
+  const int blockCount = std::max(int(ceil(tileCount / 10)), 64);
 
   spdlog::debug("Creating a PageProvider providing {} blocks of {} bytes", blockCount, blockSize);
   return Scroom::MemoryBlobs::PageProvider::create(blockCount, blockSize);
@@ -81,7 +81,7 @@ Layer::Layer(int depth_, int layerWidth, int layerHeight, int bpp, Scroom::Memor
     CompressedTileLine& tl = tiles[j];
     for(int i = 0; i < horTileCount; i++)
     {
-      CompressedTile::Ptr tile = CompressedTile::create(depth_, i, j, bpp, pageProvider);
+      CompressedTile::Ptr const tile = CompressedTile::create(depth_, i, j, bpp, pageProvider);
       tl.push_back(tile);
     }
   }
@@ -102,7 +102,7 @@ Layer::Ptr Layer::create(int depth, int layerWidth, int layerHeight, int bpp, Sc
 
 Layer::Ptr Layer::create(int layerWidth, int layerHeight, int bpp)
 {
-  Scroom::MemoryBlobs::PageProvider::Ptr provider = createProvider(layerWidth, layerHeight, bpp);
+  Scroom::MemoryBlobs::PageProvider::Ptr const provider = createProvider(layerWidth, layerHeight, bpp);
 
   return create(0, layerWidth, layerHeight, bpp, provider);
 }
@@ -147,7 +147,8 @@ CompressedTileLine& Layer::getTileLine(int j)
 
 void Layer::fetchData(SourcePresentation::Ptr sp, const ThreadPool::WeakQueue::Ptr& queue, std::function<void()> on_finished)
 {
-  DataFetcher df(shared_from_this<Layer>(), height, horTileCount, verTileCount, std::move(sp), queue, std::move(on_finished));
+  DataFetcher const df(
+    shared_from_this<Layer>(), height, horTileCount, verTileCount, std::move(sp), queue, std::move(on_finished));
   CpuBound()->schedule(df, DATAFETCH_PRIO, queue);
 }
 
@@ -155,7 +156,7 @@ void Layer::fetchData(SourcePresentation::Ptr sp, const ThreadPool::WeakQueue::P
 
 void Layer::open(ViewInterface::WeakPtr vi)
 {
-  for(CompressedTileLine& line: tiles)
+  for(CompressedTileLine const& line: tiles)
   {
     for(const CompressedTile::Ptr& tile: line)
     {
@@ -171,7 +172,7 @@ void Layer::open(ViewInterface::WeakPtr vi)
 
 void Layer::close(ViewInterface::WeakPtr vi)
 {
-  for(CompressedTileLine& line: tiles)
+  for(CompressedTileLine const& line: tiles)
   {
     for(const CompressedTile::Ptr& tile: line)
     {
@@ -208,7 +209,7 @@ DataFetcher::DataFetcher(Layer::Ptr                 layer_,
 
 void DataFetcher::operator()()
 {
-  QueueJumper::Ptr qj = QueueJumper::create();
+  QueueJumper::Ptr const qj = QueueJumper::create();
 
   threadPool->schedule(qj, REDUCE_PRIO, queue);
 
@@ -216,11 +217,11 @@ void DataFetcher::operator()()
   std::vector<Tile::Ptr> tiles;
   for(int x = 0; x < horTileCount; x++)
   {
-    CompressedTile::Ptr  ti = tileLine[x];
-    Scroom::Utils::Stuff s  = ti->initialize();
+    CompressedTile::Ptr const  ti = tileLine[x];
+    Scroom::Utils::Stuff const s  = ti->initialize();
     tiles.push_back(ti->getTileSync());
   }
-  int lineCount = std::min(TILESIZE, height - currentRow * TILESIZE);
+  const int lineCount = std::min(TILESIZE, height - currentRow * TILESIZE);
 
   sp->fillTiles(currentRow * TILESIZE, lineCount, TILESIZE, 0, tiles);
 
@@ -232,7 +233,7 @@ void DataFetcher::operator()()
   currentRow++;
   if(currentRow < verTileCount)
   {
-    DataFetcher successor(*this);
+    DataFetcher const successor(*this);
     if(!qj->setWork(successor))
     {
       threadPool->schedule(successor, DATAFETCH_PRIO, queue);

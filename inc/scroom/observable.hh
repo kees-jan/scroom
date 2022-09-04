@@ -198,7 +198,7 @@ namespace Scroom::Utils
     std::list<typename Observable<T>::Observer> result;
     for(const typename Registration::Ptr& registration: registrationMap->values())
     {
-      Observer o = registration->observer.lock();
+      Observer const o = registration->observer.lock();
       if(o)
       {
         result.push_back(o);

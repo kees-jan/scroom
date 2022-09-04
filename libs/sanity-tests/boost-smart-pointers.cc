@@ -39,10 +39,10 @@ BOOST_AUTO_TEST_CASE(bind_copies_smart_pointer)
 {
   A::Ptr a = A::create();
   BOOST_CHECK(a);
-  A::WeakPtr a_weak = a;
+  A::WeakPtr const a_weak = a;
   BOOST_CHECK(a_weak.lock());
 
-  boost::function<void()> fn = boost::bind(&A::whatever, a);
+  boost::function<void()> const fn = boost::bind(&A::whatever, a);
   a.reset();
   BOOST_CHECK(!a);
   BOOST_CHECK(a_weak.lock());

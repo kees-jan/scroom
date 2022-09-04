@@ -80,8 +80,8 @@ boost::unique_future<R> ThreadPool::schedule(boost::function<R()> const& fn, int
   // undefined behaviour. Move semantics seem to work OK there...
   //
   // See https://svn.boost.org/trac/boost/ticket/8596
-  boost::shared_ptr<boost::packaged_task<R>> t(new boost::packaged_task<R>(static_cast<boost::function<R()>>(fn)));
-  boost::unique_future<R>                    f = t->get_future();
+  boost::shared_ptr<boost::packaged_task<R>> const t(new boost::packaged_task<R>(static_cast<boost::function<R()>>(fn)));
+  boost::unique_future<R>                          f = t->get_future();
   schedule(boost::bind(threadPoolExecute<void, boost::packaged_task<R>>, t), priority, queue);
   return f;
 }
@@ -97,8 +97,8 @@ boost::unique_future<R> ThreadPool::schedule(boost::shared_ptr<T> fn, int priori
 {
   // Todo: If boost::function supported move semantics, we could do without
   // the shared pointer.
-  boost::shared_ptr<boost::packaged_task<R>> t(new boost::packaged_task<R>(boost::bind(threadPoolExecute<R, T>, fn)));
-  boost::unique_future<R>                    f = t->get_future();
+  boost::shared_ptr<boost::packaged_task<R>> const t(new boost::packaged_task<R>(boost::bind(threadPoolExecute<R, T>, fn)));
+  boost::unique_future<R>                          f = t->get_future();
   schedule(boost::bind(threadPoolExecute<void, boost::packaged_task<R>>, t), priority, queue);
   return f;
 }

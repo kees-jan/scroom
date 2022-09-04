@@ -66,7 +66,7 @@ public:
   void                   registerPostRenderer(PostRenderer::Ptr /*unused*/) override { reg_post++; }
   void                   setStatusMessage(const std::string& msg) override
   {
-    boost::mutex::scoped_lock l(mut);
+    boost::mutex::scoped_lock const l(mut);
     statusMessages.push_back(msg);
     cond.notify_all();
   }
@@ -119,9 +119,9 @@ public:
 
 BOOST_AUTO_TEST_CASE(pipette_selection_end)
 {
-  PipetteHandler::Ptr handler = PipetteHandler::create();
+  PipetteHandler::Ptr const handler = PipetteHandler::create();
 
-  Selection sel(10, 11);
+  Selection const sel(10, 11);
 
   handler->onSelectionEnd(sel, nullptr);
   BOOST_CHECK(!handler->getSelection());
@@ -130,7 +130,7 @@ BOOST_AUTO_TEST_CASE(pipette_selection_end)
   handler->onSelectionEnd(sel, DummyView::createWithPresentation());
   auto selection = handler->getSelection();
   BOOST_REQUIRE(selection);
-  Scroom::Utils::Point<double> expected{10, 11};
+  Scroom::Utils::Point<double> const expected{10, 11};
   BOOST_CHECK_EQUAL(selection->start, expected);
 
   handler->onDisable();
@@ -140,9 +140,9 @@ BOOST_AUTO_TEST_CASE(pipette_selection_end)
 
 BOOST_AUTO_TEST_CASE(pipette_selection_update)
 {
-  PipetteHandler::Ptr handler = PipetteHandler::create();
+  PipetteHandler::Ptr const handler = PipetteHandler::create();
 
-  Selection sel(10, 11);
+  Selection const sel(10, 11);
 
   // should not do anything but will be called from the view so should not crash
   handler->onSelectionStart(sel, nullptr);
@@ -154,11 +154,11 @@ BOOST_AUTO_TEST_CASE(pipette_selection_update)
   handler->onSelectionUpdate(sel, nullptr);
   auto selection = handler->getSelection();
   BOOST_REQUIRE(selection);
-  Scroom::Utils::Point<double> expected{10, 11};
+  Scroom::Utils::Point<double> const expected{10, 11};
   BOOST_CHECK_EQUAL(selection->start, expected);
 
-  ViewInterface::Ptr vi = DummyView::createWithPresentation();
-  cairo_t*           cr = cairo_create(cairo_image_surface_create(CAIRO_FORMAT_ARGB32, 1, 1));
+  ViewInterface::Ptr const vi = DummyView::createWithPresentation();
+  cairo_t*                 cr = cairo_create(cairo_image_surface_create(CAIRO_FORMAT_ARGB32, 1, 1));
   handler->render(vi, cr, {0, 0, 0, 0}, 1);
   handler->render(vi, cr, {0, 0, 0, 0}, -2);
 
@@ -170,7 +170,7 @@ BOOST_AUTO_TEST_CASE(pipette_selection_update)
 
 BOOST_AUTO_TEST_CASE(pipette_enable_disable)
 {
-  PipetteHandler::Ptr handler = PipetteHandler::create();
+  PipetteHandler::Ptr const handler = PipetteHandler::create();
 
   // questionably useful
   handler->onEnable();
@@ -183,9 +183,9 @@ BOOST_AUTO_TEST_CASE(pipette_metadata)
 {
   const auto pluginInterface = DummyPluginInterface::create();
 
-  Pipette::Ptr pipette = Pipette::create();
+  Pipette::Ptr const pipette = Pipette::create();
 
-  int pre_view_observers = pluginInterface->view_observers;
+  const int pre_view_observers = pluginInterface->view_observers;
 
   pipette->registerCapabilities(pluginInterface);
 
@@ -197,8 +197,8 @@ BOOST_AUTO_TEST_CASE(pipette_metadata)
 
 BOOST_AUTO_TEST_CASE(pipette_value_display_presentation)
 {
-  PipetteHandler::Ptr handler = PipetteHandler::create();
-  const auto          view    = DummyView::createWithPresentation();
+  PipetteHandler::Ptr const handler = PipetteHandler::create();
+  const auto                view    = DummyView::createWithPresentation();
 
   handler->onEnable();
 
@@ -217,8 +217,8 @@ BOOST_AUTO_TEST_CASE(pipette_value_display_presentation)
 
 BOOST_AUTO_TEST_CASE(pipette_value_display_no_presentation)
 {
-  PipetteHandler::Ptr handler = PipetteHandler::create();
-  const auto          view    = DummyView::createWithoutPresentation();
+  PipetteHandler::Ptr const handler = PipetteHandler::create();
+  const auto                view    = DummyView::createWithoutPresentation();
 
   handler->onEnable();
 
@@ -229,14 +229,14 @@ BOOST_AUTO_TEST_CASE(pipette_value_display_no_presentation)
 
 BOOST_AUTO_TEST_CASE(pipette_view_add)
 {
-  Pipette::Ptr pipette = Pipette::create();
-  const auto   view    = DummyView::createWithPresentation();
+  Pipette::Ptr const pipette = Pipette::create();
+  const auto         view    = DummyView::createWithPresentation();
 
-  int pre_reg_sel  = view->reg_sel;
-  int pre_reg_post = view->reg_post;
-  int pre_tool_btn = view->tool_btn;
+  const int pre_reg_sel  = view->reg_sel;
+  const int pre_reg_post = view->reg_post;
+  const int pre_tool_btn = view->tool_btn;
 
-  Scroom::Bookkeeping::Token token = pipette->viewAdded(view);
+  Scroom::Bookkeeping::Token const token = pipette->viewAdded(view);
 
   BOOST_CHECK_EQUAL(pre_reg_sel + 1, view->reg_sel);
   BOOST_CHECK_EQUAL(pre_reg_post + 1, view->reg_post);

@@ -141,8 +141,8 @@ namespace Scroom::Bitmap
     /** Move @c x samples further */
     SampleIterator& operator+=(unsigned int x)
     {
-      int   offset = samplesPerBase - 1 - currentOffset + x;
-      div_t d      = div(offset, samplesPerBase);
+      const int   offset = samplesPerBase - 1 - currentOffset + x;
+      const div_t d      = div(offset, samplesPerBase);
       currentBase += d.quot;
       currentOffset = samplesPerBase - 1 - d.rem;
 

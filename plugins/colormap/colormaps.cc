@@ -48,11 +48,11 @@ namespace Scroom::ColormapImpl
         // directory or whatever. However, we can safely assume that in
         // all bad cases, the load() will fail :-)
 
-        char* name = d->d_name;
-        int   len  = strlen(name);
+        char*     name = d->d_name;
+        const int len  = strlen(name);
         if(!strcmp(name + len - strlen(COLORMAPEXT), COLORMAPEXT))
         {
-          Colormap::Ptr c = load(name);
+          Colormap::Ptr const c = load(name);
           if(c)
           {
             colormaps.emplace_back(c);
@@ -136,7 +136,7 @@ namespace Scroom::ColormapImpl
         {
           throw std::exception();
         }
-        unsigned int count = atoi(result);
+        unsigned const int count = atoi(result);
         if(count == 0)
         {
           throw std::exception();

@@ -78,7 +78,7 @@ bool WaitForAsyncOp::operator()()
   struct timespec now = {0, 0};
   if(0 == clock_gettime(CLOCK_REALTIME, &now))
   {
-    double duration = now.tv_sec - t.tv_sec + (now.tv_nsec - t.tv_nsec) / 1E9;
+    const double duration = now.tv_sec - t.tv_sec + (now.tv_nsec - t.tv_nsec) / 1E9;
 
     std::cout << name << " took " << duration << "s" << std::endl;
   }

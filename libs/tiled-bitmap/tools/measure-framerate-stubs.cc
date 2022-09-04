@@ -54,7 +54,7 @@ void Source2Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<T
     {
       for(int x = 0; x < tileWidth / 4; x++)
       {
-        byte v = 4 * x + y;
+        byte const v = 4 * x + y;
 
         *data = ((v & 0x3) << 6) | (((v + 1) & 0x3) << 4) | (((v + 2) & 0x3) << 2) | (((v + 3) & 0x3) << 0);
         data++;
@@ -72,7 +72,7 @@ void Source4Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<T
     {
       for(int x = 0; x < tileWidth / 2; x++)
       {
-        byte v = 2 * x + y;
+        byte const v = 2 * x + y;
 
         *data = ((v & 0xF) << 4) | ((v + 1) & 0xF);
         data++;

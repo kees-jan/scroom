@@ -54,23 +54,23 @@ Counter::Counter() { g_timeout_add_seconds(10, timedDumpCounts, this); }
 
 void Counter::registerCount(Count::Ptr count)
 {
-  boost::unique_lock<boost::mutex> lock(mut);
+  boost::unique_lock<boost::mutex> const lock(mut);
   counts.push_back(count);
 }
 
 void Counter::unregisterCount(Count::Ptr count)
 {
-  boost::unique_lock<boost::mutex> lock(mut);
+  boost::unique_lock<boost::mutex> const lock(mut);
   counts.remove(count);
 }
 
 void Counter::dump()
 {
-  boost::unique_lock<boost::mutex> lock(mut);
-  std::stringstream                out;
+  boost::unique_lock<boost::mutex> const lock(mut);
+  std::stringstream                      out;
 
   out << counts.size();
-  for(Count::Ptr& count: counts)
+  for(Count::Ptr const& count: counts)
   {
     out << ", " << count->name << ", " << count->count;
   }
@@ -79,6 +79,6 @@ void Counter::dump()
 
 std::list<Count::Ptr> Counter::getCounts()
 {
-  boost::unique_lock<boost::mutex> lock(mut);
+  boost::unique_lock<boost::mutex> const lock(mut);
   return counts;
 }

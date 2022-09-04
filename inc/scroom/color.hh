@@ -121,7 +121,7 @@ public:
   [[nodiscard]] Color getContrastingBlackOrWhite() const
   {
     // see http://stackoverflow.com/a/3943023
-    double L = 0.2126 * computeC(red) + 0.7152 * computeC(green) + 0.0722 * computeC(blue);
+    const double L = 0.2126 * computeC(red) + 0.7152 * computeC(green) + 0.0722 * computeC(blue);
     return Color(L > 0.179 ? 0 : 1);
   }
 

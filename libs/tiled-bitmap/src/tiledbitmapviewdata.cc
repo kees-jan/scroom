@@ -86,9 +86,9 @@ void TiledBitmapViewData::resetNeededTiles()
   {
     for(int j = jmin; j < jmax; j++)
     {
-      CompressedTile::Ptr tile = layer->getTile(i, j);
+      CompressedTile::Ptr const tile = layer->getTile(i, j);
 
-      TileViewState::Ptr tileViewState = tile->getViewState(viewInterface);
+      TileViewState::Ptr const tileViewState = tile->getViewState(viewInterface);
       tileViewState->setViewData(shared_from_this<TiledBitmapViewData>());
       tileViewState->setZoom(layerOperations, zoom);
       newStuff.emplace_back(tileViewState);
@@ -110,7 +110,7 @@ void TiledBitmapViewData::resetNeededTiles()
 
 static void invalidate_view(ViewInterface::WeakPtr vi)
 {
-  ViewInterface::Ptr v = vi.lock();
+  ViewInterface::Ptr const v = vi.lock();
   if(v)
   {
     Scroom::GtkHelpers::sync_on_ui_thread([=] { v->invalidate(); });
@@ -119,7 +119,7 @@ static void invalidate_view(ViewInterface::WeakPtr vi)
 
 void TiledBitmapViewData::storeVolatileStuff(Scroom::Utils::Stuff stuff_)
 {
-  boost::unique_lock<boost::mutex> lock(mut);
+  boost::unique_lock<boost::mutex> const lock(mut);
   volatileStuff.push_back(stuff_);
 }
 
@@ -127,7 +127,7 @@ void TiledBitmapViewData::clearVolatileStuff()
 {
   std::list<boost::shared_ptr<void>> oldVolatileStuff;
   {
-    boost::unique_lock<boost::mutex> lock(mut);
+    boost::unique_lock<boost::mutex> const lock(mut);
     oldVolatileStuff.swap(volatileStuff);
   }
   // oldVolatileStuff gets erased here, without holding the lock. So
@@ -139,7 +139,7 @@ void TiledBitmapViewData::clearVolatileStuff()
 
 void TiledBitmapViewData::tileLoaded(ConstTile::Ptr tile)
 {
-  boost::unique_lock<boost::mutex> lock(mut);
+  boost::unique_lock<boost::mutex> const lock(mut);
   stuff.emplace_back(tile);
 
   if(!redrawPending)

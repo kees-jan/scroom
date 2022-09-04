@@ -47,10 +47,10 @@ namespace Scroom::MemoryBlobs::Detail
     {
       verify(stream.avail_out == 0);
 
-      Page::Ptr currentPage = provider->getFreePage();
+      Page::Ptr const currentPage = provider->getFreePage();
       result.push_back(currentPage);
 
-      RawPageData::Ptr currentPageRaw = currentPage->get();
+      RawPageData::Ptr const currentPageRaw = currentPage->get();
 
       stream.next_out  = currentPageRaw.get();
       stream.avail_out = pageSize;
@@ -86,15 +86,15 @@ namespace Scroom::MemoryBlobs::Detail
     {
       verify(stream.avail_in == 0);
 
-      Page::Ptr currentPage = list.front();
+      Page::Ptr const currentPage = list.front();
       list.pop_front();
 
-      RawPageData::Ptr currentPageRaw = currentPage->get();
+      RawPageData::Ptr const currentPageRaw = currentPage->get();
 
       stream.next_in  = currentPageRaw.get();
       stream.avail_in = pageSize;
 
-      int flush = (list.empty() ? Z_FINISH : Z_NO_FLUSH);
+      const int flush = (list.empty() ? Z_FINISH : Z_NO_FLUSH);
 
       r = inflate(&stream, flush);
     }
