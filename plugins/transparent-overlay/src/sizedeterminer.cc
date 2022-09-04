@@ -30,7 +30,7 @@ namespace
       right                                       = std::max(right, rect.getRight());
       bottom                                      = std::max(bottom, rect.getBottom());
     }
-    return Scroom::Utils::Rectangle<double>(left, top, right - left, bottom - top);
+    return {left, top, right - left, bottom - top};
   }
 
   template <typename K, typename V>
@@ -90,7 +90,7 @@ Scroom::Utils::Rectangle<double> SizeDeterminer::getRect() const
   {
     return DetermineSize(keys(resizablePresentationData));
   }
-  return Scroom::Utils::Rectangle<double>();
+  return {};
 }
 
 void SizeDeterminer::open(PresentationInterface::Ptr const& p, ViewInterface::WeakPtr const& vi)

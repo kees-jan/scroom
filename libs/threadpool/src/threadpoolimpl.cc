@@ -376,10 +376,7 @@ const int ThreadPool::defaultPriority = PRIO_NORMAL;
 
 ThreadPool::Queue::Ptr ThreadPool::Queue::create() { return ThreadPool::Queue::Ptr(new ThreadPool::Queue()); }
 
-ThreadPool::Queue::Ptr ThreadPool::Queue::createAsync()
-{
-  return ThreadPool::Queue::Ptr(new ThreadPool::Queue(), AsyncDeleter<ThreadPool::Queue>());
-}
+ThreadPool::Queue::Ptr ThreadPool::Queue::createAsync() { return {new ThreadPool::Queue(), AsyncDeleter<ThreadPool::Queue>()}; }
 
 ThreadPool::Queue::Queue()
   : weak(WeakQueue::create())

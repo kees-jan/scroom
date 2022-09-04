@@ -64,10 +64,7 @@ public:
   void                                     registerSelectionListener(SelectionListener::Ptr /*unused*/) override{};
   void                                     registerPostRenderer(PostRenderer::Ptr /*unused*/) override{};
   void                                     setStatusMessage(const std::string& /*unused*/) override{};
-  boost::shared_ptr<PresentationInterface> getCurrentPresentation() override
-  {
-    return boost::shared_ptr<PresentationInterface>();
-  };
+  boost::shared_ptr<PresentationInterface> getCurrentPresentation() override { return {}; };
   void addToolButton(GtkToggleButton* /*unused*/, ToolStateListener::Ptr /*unused*/) override{};
 };
 

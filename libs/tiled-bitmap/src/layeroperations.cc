@@ -25,10 +25,7 @@ using namespace Scroom::Bitmap;
 
 namespace
 {
-  boost::shared_ptr<unsigned char> shared_malloc(size_t size)
-  {
-    return boost::shared_ptr<unsigned char>(static_cast<unsigned char*>(malloc(size)), free);
-  }
+  boost::shared_ptr<unsigned char> shared_malloc(size_t size) { return {static_cast<unsigned char*>(malloc(size)), free}; }
 
 } // namespace
 ////////////////////////////////////////////////////////////////////////

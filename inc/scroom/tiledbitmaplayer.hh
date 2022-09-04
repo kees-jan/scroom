@@ -277,7 +277,7 @@ public:
 
   int getDepth() const { return depth; }
 
-  Scroom::Utils::Rectangle<int> getRect() const { return Scroom::Utils::Rectangle<int>(0, 0, width, height); }
+  Scroom::Utils::Rectangle<int> getRect() const { return {0, 0, width, height}; }
 
   Scroom::Bookkeeping::Token registerObserver(const TileInitialisationObserver::Ptr& observer);
 

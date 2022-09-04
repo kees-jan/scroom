@@ -143,7 +143,7 @@ namespace
     static Ptr create() { return Ptr(new ViewInterfaceDummy()); }
 
     void                                     invalidate() override {}
-    ProgressInterface::Ptr                   getProgressInterface() override { return ProgressInterface::Ptr(); }
+    ProgressInterface::Ptr                   getProgressInterface() override { return {}; }
     void                                     addSideWidget(std::string /*title*/, GtkWidget* /*w*/) override {}
     void                                     removeSideWidget(GtkWidget* /*w*/) override {}
     void                                     addToToolbar(GtkToolItem* /*ti*/) override {}
@@ -151,10 +151,7 @@ namespace
     void                                     registerSelectionListener(SelectionListener::Ptr /*unused*/) override{};
     void                                     registerPostRenderer(PostRenderer::Ptr /*unused*/) override{};
     void                                     setStatusMessage(const std::string& /*unused*/) override{};
-    boost::shared_ptr<PresentationInterface> getCurrentPresentation() override
-    {
-      return boost::shared_ptr<PresentationInterface>();
-    };
+    boost::shared_ptr<PresentationInterface> getCurrentPresentation() override { return {}; };
     void addToolButton(GtkToggleButton* /*unused*/, ToolStateListener::Ptr /*unused*/) override{};
   };
 

@@ -24,10 +24,11 @@ WarningsAsErrors: >
   cppcoreguidelines-explicit-virtual-functions,
   cppcoreguidelines-pro-type-member-init,
   cppcoreguidelines-special-member-functions,
-  hicpp-member-init,
   hicpp-explicit-conversions,
+  hicpp-member-init,
   modernize-deprecated-headers,
   modernize-loop-convert,
+  modernize-pass-by-value,
   modernize-use-auto,
   modernize-use-default-member-init,
   modernize-use-emplace,
@@ -44,8 +45,8 @@ WarningsAsErrors: >
   readability-convert-member-functions-to-static,
   readability-isolate-declaration,
   readability-make-member-function-const,
+  readability-named-parameter,
   readability-redundant-member-init,
   readability-static-definition-in-anonymous-namespace,
-  readability-named-parameter,
 HeaderFilterRegex: 'inc/scroom|libs|gui|plugins'
 FormatStyle: file

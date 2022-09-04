@@ -19,5 +19,5 @@ namespace Scroom::Utils
   using StuffWeak = boost::weak_ptr<void>;
   using StuffList = std::list<Stuff>;
 
-  inline Stuff Empty() { return Stuff(); }
+  inline Stuff Empty() { return {}; }
 } // namespace Scroom::Utils

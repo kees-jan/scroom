@@ -160,7 +160,7 @@ PresentationInterface::Ptr TransparentOverlayViewInfo::getChild(const ChildView:
       return v.first;
     }
   }
-  return PresentationInterface::Ptr();
+  return {};
 }
 
 void TransparentOverlayViewInfo::close()

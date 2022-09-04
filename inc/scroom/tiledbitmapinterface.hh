@@ -126,7 +126,7 @@ public:
   virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile)
   {
     UNUSED(tile);
-    return Scroom::Utils::Stuff();
+    return {};
   }
 
   /**
@@ -152,7 +152,7 @@ public:
     UNUSED(tile);
     UNUSED(zoom);
     UNUSED(cache);
-    return Scroom::Utils::Stuff();
+    return {};
   }
 
   /**
