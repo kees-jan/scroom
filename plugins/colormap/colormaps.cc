@@ -101,7 +101,7 @@ namespace Scroom::ColormapImpl
     Colormap::Ptr colormap;
 
     char* fullName = g_build_filename(getColormapDirPath(), name, NULL);
-    FILE* f        = fopen(fullName, "r");
+    FILE* f        = fopen(fullName, "re");
     if(f)
     {
       try
