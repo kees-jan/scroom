@@ -9,6 +9,7 @@
 
 #include <list>
 #include <map>
+#include <utility>
 
 #include <boost/shared_ptr.hpp>
 #include <boost/thread.hpp>
@@ -121,7 +122,7 @@ namespace Scroom::Utils
 
   template <typename T>
   Detail::Registration<T>::Registration(boost::weak_ptr<Observable<T>> observable_, boost::shared_ptr<T> observer_)
-    : observable(observable_)
+    : observable(std::move(observable_))
     , o(observer_)
     , observer(observer_)
   {
@@ -129,9 +130,9 @@ namespace Scroom::Utils
 
   template <typename T>
   Detail::Registration<T>::Registration(boost::weak_ptr<Observable<T>> observable_, boost::weak_ptr<T> observer_)
-    : observable(observable_)
+    : observable(std::move(observable_))
     , o()
-    , observer(observer_)
+    , observer(std::move(observer_))
   {
     // We don't want to store a "hard" reference, so field o is intentionally empty.
   }

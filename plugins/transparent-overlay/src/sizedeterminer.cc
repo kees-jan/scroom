@@ -8,6 +8,7 @@
 #include "sizedeterminer.hh"
 
 #include <algorithm>
+#include <utility>
 
 #include <scroom/assertions.hh>
 #include <scroom/gtk-helpers.hh>
@@ -55,8 +56,8 @@ SizeDeterminer::PresentationData::PresentationData()
   defect();
 }
 
-SizeDeterminer::PresentationData::PresentationData(ResizablePresentationInterface::Ptr const& resizablePresentationInterface_)
-  : resizablePresentationInterface(resizablePresentationInterface_)
+SizeDeterminer::PresentationData::PresentationData(ResizablePresentationInterface::Ptr resizablePresentationInterface_)
+  : resizablePresentationInterface(std::move(resizablePresentationInterface_))
 {
 }
 

@@ -141,7 +141,7 @@ namespace Scroom::Utils
       ProgressInterface::Ptr            child;
 
     private:
-      Unsubscriber(ProgressInterfaceBroadcaster::Ptr const& parent, ProgressInterface::Ptr const& child);
+      Unsubscriber(ProgressInterfaceBroadcaster::Ptr parent, ProgressInterface::Ptr child);
       Unsubscriber(const Unsubscriber&)            = delete;
       Unsubscriber(Unsubscriber&&)                 = delete;
       Unsubscriber& operator=(const Unsubscriber&) = delete;

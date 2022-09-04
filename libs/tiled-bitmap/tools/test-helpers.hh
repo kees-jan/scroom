@@ -55,7 +55,7 @@ private:
 
 private:
   TestData(DummyColormapProvider::Ptr       colormapProvider,
-           const LayerSpec&                 ls,
+           LayerSpec                        ls,
            const TiledBitmapInterface::Ptr& tbi,
            SourcePresentation::Ptr          sp,
            int                              zoom);

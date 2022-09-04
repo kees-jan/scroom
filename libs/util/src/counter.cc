@@ -8,6 +8,7 @@
 #include <cstdio>
 #include <list>
 #include <string>
+#include <utility>
 
 #include <spdlog/spdlog.h>
 
@@ -29,8 +30,8 @@ gboolean timedDumpCounts(gpointer data)
 
 ///////////////////////////////////////////////////////////////////////
 
-Count::Count(const std::string& name_)
-  : name(name_)
+Count::Count(std::string name_)
+  : name(std::move(name_))
 
 {
 }

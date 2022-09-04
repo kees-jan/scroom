@@ -186,10 +186,10 @@ namespace Scroom::Utils
     return Ptr(new ProgressInterfaceBroadcaster::Unsubscriber(parent, child));
   }
 
-  ProgressInterfaceBroadcaster::Unsubscriber::Unsubscriber(ProgressInterfaceBroadcaster::Ptr const& parent_,
-                                                           ProgressInterface::Ptr const&            child_)
-    : parent(parent_)
-    , child(child_)
+  ProgressInterfaceBroadcaster::Unsubscriber::Unsubscriber(ProgressInterfaceBroadcaster::Ptr parent_,
+                                                           ProgressInterface::Ptr            child_)
+    : parent(std::move(parent_))
+    , child(std::move(child_))
   {
   }
 

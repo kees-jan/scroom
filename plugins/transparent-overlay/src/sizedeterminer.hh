@@ -30,7 +30,7 @@ private:
 
   public:
     PresentationData(); // Don't use
-    explicit PresentationData(ResizablePresentationInterface::Ptr const& resizablePresentationInterface);
+    explicit PresentationData(ResizablePresentationInterface::Ptr resizablePresentationInterface);
   };
 
 private:

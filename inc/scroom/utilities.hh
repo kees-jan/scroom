@@ -152,7 +152,7 @@ namespace Scroom::Utils
     }
 
   private:
-    explicit Count(const std::string& name);
+    explicit Count(std::string name);
   };
 
   ////////////////////////////////////////////////////////////////////////

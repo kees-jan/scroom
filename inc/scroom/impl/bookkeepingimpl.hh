@@ -8,6 +8,7 @@
 #pragma once
 
 #include <stdexcept>
+#include <utility>
 
 namespace Scroom::Bookkeeping
 {
@@ -82,9 +83,9 @@ namespace Scroom::Bookkeeping
       K                                                   k;
 
     protected:
-      MapTokenImpl(boost::shared_ptr<Scroom::Bookkeeping::MapBase<K, V>> map_, const K& k_)
+      MapTokenImpl(boost::shared_ptr<Scroom::Bookkeeping::MapBase<K, V>> map_, K k_)
         : map(map_)
-        , k(k_)
+        , k(std::move(k_))
       {
       }
 
@@ -125,7 +126,7 @@ namespace Scroom::Bookkeeping
 
     protected:
       explicit ValueType(V value_)
-        : value(value_)
+        : value(std::move(value_))
       {
       }
 
@@ -144,7 +145,7 @@ namespace Scroom::Bookkeeping
 
     public:
       explicit LValue(VTPtr pv_)
-        : pv(pv_)
+        : pv(std::move(pv_))
       {
       }
 

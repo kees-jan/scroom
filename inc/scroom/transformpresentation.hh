@@ -90,7 +90,7 @@ private:
   std::map<ViewInterface::WeakPtr, Detail::ViewData::Ptr> viewData;
 
 private:
-  TransformPresentation(PresentationInterface::Ptr const& presentation, TransformationData::Ptr const& transformationData);
+  TransformPresentation(PresentationInterface::Ptr const& presentation, TransformationData::Ptr transformationData);
 
 public:
   static Ptr create(PresentationInterface::Ptr const& presentation, TransformationData::Ptr const& transformationData);

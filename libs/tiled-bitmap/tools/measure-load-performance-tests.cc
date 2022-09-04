@@ -9,6 +9,7 @@
 
 #include <ctime>
 #include <string>
+#include <utility>
 
 #include <boost/shared_ptr.hpp>
 
@@ -33,7 +34,7 @@ private:
   struct timespec   t = {0, 0};
 
 public:
-  explicit WaitForAsyncOp(const std::string& name);
+  explicit WaitForAsyncOp(std::string name);
   WaitForAsyncOp(const WaitForAsyncOp& other);
   WaitForAsyncOp(WaitForAsyncOp&& /*other*/);
   WaitForAsyncOp operator=(const WaitForAsyncOp&) = delete;
@@ -43,8 +44,8 @@ public:
   bool operator()();
 };
 
-WaitForAsyncOp::WaitForAsyncOp(const std::string& name_)
-  : name(name_)
+WaitForAsyncOp::WaitForAsyncOp(std::string name_)
+  : name(std::move(name_))
 {
 }
 

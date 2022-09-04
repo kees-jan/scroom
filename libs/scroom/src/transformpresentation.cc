@@ -40,8 +40,8 @@ Scroom::Utils::Point<double> TransformationData::getAspectRatio() const { return
 ////////////////////////////////////////////////////////////////////////
 
 TransformPresentation::TransformPresentation(PresentationInterface::Ptr const& presentation_,
-                                             TransformationData::Ptr const&    transformationData_)
-  : transformationData(transformationData_)
+                                             TransformationData::Ptr           transformationData_)
+  : transformationData(std::move(transformationData_))
   , presentation(presentation_)
   , colormappable(boost::dynamic_pointer_cast<Colormappable>(presentation_))
   , showMetaDataInterface(boost::dynamic_pointer_cast<ShowMetadataInterface>(presentation_))

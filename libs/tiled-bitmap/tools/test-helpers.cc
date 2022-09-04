@@ -41,14 +41,14 @@ Colormap::Ptr DummyColormapProvider::getColormap() { return colormap; }
 ////////////////////////////////////////////////////////////////////////
 
 TestData::TestData(DummyColormapProvider::Ptr       colormapProvider_,
-                   const LayerSpec&                 ls_,
+                   LayerSpec                        ls_,
                    const TiledBitmapInterface::Ptr& tbi_,
                    SourcePresentation::Ptr          sp_,
                    int                              zoom_)
   : pi(ProgressInterfaceStub::create())
   , vi(ViewInterfaceStub::create(pi))
   , colormapProvider(std::move(colormapProvider_))
-  , ls(ls_)
+  , ls(std::move(ls_))
   , tbi(tbi_)
   , sp(std::move(sp_))
   , zoom(zoom_)

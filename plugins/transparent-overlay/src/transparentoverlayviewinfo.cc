@@ -8,6 +8,7 @@
 #include "transparentoverlayviewinfo.hh"
 
 #include <sstream>
+#include <utility>
 
 #include <scroom/bitmap-helpers.hh>
 #include <scroom/colormappable.hh>
@@ -60,8 +61,8 @@ namespace
 // ChildView
 ////////////////////////////////////////////////////////////////////////
 
-ChildView::ChildView(TransparentOverlayViewInfo::Ptr const& parent_)
-  : parent(parent_)
+ChildView::ChildView(TransparentOverlayViewInfo::Ptr parent_)
+  : parent(std::move(parent_))
   , progressInterface(parent->getProgressInterface())
 {
 }
@@ -94,11 +95,10 @@ void ChildView::addToolButton(GtkToggleButton* /*unused*/, ToolStateListener::Pt
 // TransparentOverlayViewInfo
 ////////////////////////////////////////////////////////////////////////
 
-TransparentOverlayViewInfo::TransparentOverlayViewInfo(const ViewInterface::WeakPtr& vi,
-                                                       SizeDeterminer::Ptr const&    sizeDeterminer_)
+TransparentOverlayViewInfo::TransparentOverlayViewInfo(const ViewInterface::WeakPtr& vi, SizeDeterminer::Ptr sizeDeterminer_)
   : parentView(vi)
   , progressInterfaceMultiplexer(Scroom::Utils::ProgressInterfaceMultiplexer::create(parentView->getProgressInterface()))
-  , sizeDeterminer(sizeDeterminer_)
+  , sizeDeterminer(std::move(sizeDeterminer_))
 {
 }
 

@@ -7,6 +7,7 @@
 
 #include <list>
 #include <type_traits>
+#include <utility>
 
 #include <boost/assign/list_of.hpp>
 #include <boost/test/data/monomorphic.hpp>
@@ -28,8 +29,8 @@ namespace
     ColormapHelper::Ptr helper;
     int                 expectedColors;
 
-    Data(int expectedColors_, ColormapHelper::Ptr const& helper_)
-      : helper(helper_)
+    Data(int expectedColors_, ColormapHelper::Ptr helper_)
+      : helper(std::move(helper_))
       , expectedColors(expectedColors_)
     {
     }

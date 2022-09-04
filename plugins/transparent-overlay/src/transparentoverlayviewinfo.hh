@@ -38,7 +38,7 @@ private:
   ProgressInterface::Ptr                        progressInterface;
 
 private:
-  explicit ChildView(boost::shared_ptr<TransparentOverlayViewInfo> const& parent);
+  explicit ChildView(boost::shared_ptr<TransparentOverlayViewInfo> parent);
 
 public:
   static Ptr create(boost::shared_ptr<TransparentOverlayViewInfo> const& parent);
@@ -74,7 +74,7 @@ private:
   SizeDeterminer::Ptr                              sizeDeterminer;
 
 private:
-  TransparentOverlayViewInfo(const ViewInterface::WeakPtr& vi, SizeDeterminer::Ptr const& sizeDeterminer);
+  TransparentOverlayViewInfo(const ViewInterface::WeakPtr& vi, SizeDeterminer::Ptr sizeDeterminer);
   void createToggleToolButton(PresentationInterface::Ptr const& p);
 
 public:
