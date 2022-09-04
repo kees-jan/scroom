@@ -21,7 +21,7 @@ private:
   bool            isWaiting{false};
 
 private:
-  ProgressBarManager(GtkProgressBar* progressBar);
+  explicit ProgressBarManager(GtkProgressBar* progressBar);
 
   void stopWaiting();
   void startWaiting();

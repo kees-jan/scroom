@@ -20,7 +20,7 @@ namespace Scroom
     boost::mutex              mut;
 
   public:
-    Semaphore(unsigned int count = 0);
+    explicit Semaphore(unsigned int count = 0);
     void P();
     void V();
 

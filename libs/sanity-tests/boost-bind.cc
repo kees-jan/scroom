@@ -26,7 +26,7 @@ private:
 public:
   using Ptr = boost::shared_ptr<A>;
 
-  A(int& i_)
+  explicit A(int& i_)
     : i(i_)
   {
   }

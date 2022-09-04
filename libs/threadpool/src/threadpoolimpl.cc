@@ -77,20 +77,11 @@ namespace
   ThreadWaiter waiter;
 
   template <typename T>
-  class NotifyThreadList
+  boost::shared_ptr<T> NotifyThreadList(boost::shared_ptr<T> t, const std::string& s)
   {
-  private:
-    boost::shared_ptr<T> t;
-
-  public:
-    NotifyThreadList(boost::shared_ptr<T> t_, const std::string& s)
-      : t(t_)
-    {
-      ThreadList::instance()->add(t_, s);
-    }
-
-    operator boost::shared_ptr<T>() { return t; }
-  };
+    ThreadList::instance()->add(t, s);
+    return t;
+  }
 
   ////////////////////////////////////////////////////////////////////////
 

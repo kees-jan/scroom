@@ -37,11 +37,11 @@ namespace Scroom::Bookkeeping
   class Token : public boost::shared_ptr<Detail::TokenImpl>
   {
   public:
-    Token(const boost::shared_ptr<Detail::TokenImpl>& t);
-    Token(const boost::weak_ptr<Detail::TokenImpl>& t);
+    explicit Token(const boost::shared_ptr<Detail::TokenImpl>& t);
+    explicit Token(const boost::weak_ptr<Detail::TokenImpl>& t);
     Token();
-    Token(const Stuff& s);
-    Token(const StuffList& l);
+    explicit Token(const Stuff& s);
+    explicit Token(const StuffList& l);
 
     void add(const Stuff& s) const;
     void add(const StuffList& l) const;

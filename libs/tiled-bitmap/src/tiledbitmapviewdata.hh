@@ -61,7 +61,7 @@ private:
   boost::mutex mut;
 
 private:
-  TiledBitmapViewData(ViewInterface::WeakPtr viewInterface);
+  explicit TiledBitmapViewData(ViewInterface::WeakPtr viewInterface);
 
 public:
   static Ptr create(ViewInterface::WeakPtr viewInterface);

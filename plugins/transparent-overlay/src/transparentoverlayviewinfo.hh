@@ -38,7 +38,7 @@ private:
   ProgressInterface::Ptr                        progressInterface;
 
 private:
-  ChildView(boost::shared_ptr<TransparentOverlayViewInfo> const& parent);
+  explicit ChildView(boost::shared_ptr<TransparentOverlayViewInfo> const& parent);
 
 public:
   static Ptr create(boost::shared_ptr<TransparentOverlayViewInfo> const& parent);

@@ -72,7 +72,7 @@ public:
   void tileLoaded(ConstTile::Ptr tile) override;
 
 private:
-  TileViewState(boost::shared_ptr<CompressedTile> parent);
+  explicit TileViewState(boost::shared_ptr<CompressedTile> parent);
 
   /**
    * Kick the internal state machine into making some progress

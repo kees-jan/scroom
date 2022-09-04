@@ -237,7 +237,7 @@ private:
     Queue::Ptr defaultQueue;
 
   private:
-    PrivateData(bool completeAllJobsBeforeDestruction);
+    explicit PrivateData(bool completeAllJobsBeforeDestruction);
 
   public:
     static Ptr create(bool completeAllJobsBeforeDestruction);
@@ -271,10 +271,10 @@ private:
 
 public:
   /** Create a ThreadPool with one thread for each core in the system */
-  ThreadPool(bool completeAllJobsBeforeDestruction = false);
+  explicit ThreadPool(bool completeAllJobsBeforeDestruction = false);
 
   /** Create a ThreadPool with the given number of threads */
-  ThreadPool(int count, bool completeAllJobsBeforeDestruction = false);
+  explicit ThreadPool(int count, bool completeAllJobsBeforeDestruction = false);
 
   /** Create a ThreadPool with one thread for each core in the system */
   static ThreadPool::Ptr create(bool completeAllJobsBeforeDestruction = false);

@@ -66,7 +66,7 @@ namespace Scroom::Detail::ThreadPool
     bool           isValid; /**< @c true if there are still references to the ThreadPool::Queue associated with @c q */
 
   public:
-    QueueLock(QueueImpl::Ptr queue);
+    explicit QueueLock(QueueImpl::Ptr queue);
     QueueLock(const QueueLock&)            = delete;
     QueueLock(QueueLock&&)                 = delete;
     QueueLock& operator=(const QueueLock&) = delete;

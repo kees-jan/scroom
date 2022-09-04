@@ -46,7 +46,7 @@ namespace Scroom::ColormapImpl
     Scroom::Utils::Stuff registration;
 
     /** Constructor */
-    ColormapProvider(Colormappable::Ptr c);
+    explicit ColormapProvider(Colormappable::Ptr c);
 
   public:
     /** Constructor */

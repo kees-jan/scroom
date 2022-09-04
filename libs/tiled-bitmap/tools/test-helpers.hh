@@ -30,7 +30,7 @@ private:
   Colormap::Ptr colormap;
 
 private:
-  DummyColormapProvider(Colormap::Ptr colormap);
+  explicit DummyColormapProvider(Colormap::Ptr colormap);
 
 public:
   static Ptr create(Colormap::Ptr colormap);

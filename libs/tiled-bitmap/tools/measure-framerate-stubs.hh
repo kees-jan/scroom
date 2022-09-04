@@ -51,7 +51,7 @@ private:
   ProgressInterface::Ptr pi;
 
 private:
-  ViewInterfaceStub(ProgressInterface::Ptr pi);
+  explicit ViewInterfaceStub(ProgressInterface::Ptr pi);
 
 public:
   static Ptr                               create(ProgressInterface::Ptr pi);

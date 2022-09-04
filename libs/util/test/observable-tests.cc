@@ -48,7 +48,7 @@ class TestRecursiveObservable : public Observable<TestObserver>
 private:
   TestObservable::Ptr child;
 
-  TestRecursiveObservable(TestObservable::Ptr child);
+  explicit TestRecursiveObservable(TestObservable::Ptr child);
 
 public:
   using Ptr = boost::shared_ptr<TestRecursiveObservable>;

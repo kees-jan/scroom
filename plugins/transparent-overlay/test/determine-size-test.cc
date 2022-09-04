@@ -61,7 +61,7 @@ namespace
     Scroom::Utils::Rectangle<double> rect;
 
   protected:
-    PresentationInterfaceStub(Scroom::Utils::Rectangle<double> const& rect_)
+    explicit PresentationInterfaceStub(Scroom::Utils::Rectangle<double> const& rect_)
       : rect(rect_)
     {
     }
@@ -92,7 +92,7 @@ namespace
     std::list<Scroom::Utils::Rectangle<double>> receivedRect;
 
   private:
-    ResizablePresentationInterfaceStub(Scroom::Utils::Rectangle<double> const& rect_)
+    explicit ResizablePresentationInterfaceStub(Scroom::Utils::Rectangle<double> const& rect_)
       : PresentationInterfaceStub(rect_)
     {
     }

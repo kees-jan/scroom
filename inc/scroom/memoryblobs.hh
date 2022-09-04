@@ -54,7 +54,7 @@ namespace Scroom::MemoryBlobs
       PageProvider::Ptr provider;
 
     public:
-      MarkPageFree(PageProvider::Ptr provider);
+      explicit MarkPageFree(PageProvider::Ptr provider);
       void operator()(Scroom::MemoryBlocks::Page* page);
     };
 
@@ -91,7 +91,7 @@ namespace Scroom::MemoryBlobs
       Blob::Ptr blob;
 
     public:
-      UnloadData(Blob::Ptr blob);
+      explicit UnloadData(Blob::Ptr blob);
       void operator()(uint8_t* data);
     };
 

@@ -41,7 +41,7 @@ public:
   using Ptr = boost::shared_ptr<PipetteCommonOperationsCMYK>;
 
 public:
-  PipetteCommonOperationsCMYK(int bps_)
+  explicit PipetteCommonOperationsCMYK(int bps_)
     : bps(bps_){};
 
   PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr& tile) override;
@@ -58,7 +58,7 @@ public:
   using Ptr = boost::shared_ptr<PipetteCommonOperationsRGB>;
 
 public:
-  PipetteCommonOperationsRGB(int bps_)
+  explicit PipetteCommonOperationsRGB(int bps_)
     : bps(bps_){};
 
   PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr& tile) override;
@@ -71,7 +71,7 @@ private:
 
 public:
   static Ptr create(ColormapProvider::Ptr colormapProvider);
-  Operations1bpp(ColormapProvider::Ptr colormapProvider);
+  explicit Operations1bpp(ColormapProvider::Ptr colormapProvider);
 
   int                  getBpp() override;
   Scroom::Utils::Stuff cache(const ConstTile::Ptr tile) override;
@@ -92,7 +92,7 @@ private:
 
 public:
   static Ptr create(ColormapProvider::Ptr colormapProvider);
-  Operations8bpp(ColormapProvider::Ptr colormapProvider);
+  explicit Operations8bpp(ColormapProvider::Ptr colormapProvider);
 
   int                  getBpp() override;
   Scroom::Utils::Stuff cache(const ConstTile::Ptr tile) override;
@@ -163,7 +163,7 @@ private:
 
 public:
   static Ptr create(ColormapProvider::Ptr colormapProvider);
-  Operations1bppClipped(ColormapProvider::Ptr colormapProvider);
+  explicit Operations1bppClipped(ColormapProvider::Ptr colormapProvider);
 
   int                  getBpp() override;
   Scroom::Utils::Stuff cacheZoom(const ConstTile::Ptr tile, int zoom, Scroom::Utils::Stuff cache) override;

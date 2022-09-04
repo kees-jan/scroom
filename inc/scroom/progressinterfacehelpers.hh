@@ -59,7 +59,7 @@ namespace Scroom::Utils
     ProgressStateInterface::Ptr child;
 
   private:
-    ProgressInterfaceFromProgressStateInterfaceForwarder(ProgressStateInterface::Ptr child);
+    explicit ProgressInterfaceFromProgressStateInterfaceForwarder(ProgressStateInterface::Ptr child);
 
   public:
     static Ptr create(ProgressStateInterface::Ptr child);
@@ -86,7 +86,7 @@ namespace Scroom::Utils
     ProgressInterface::Ptr child;
 
   private:
-    ProgressStateInterfaceFromProgressInterfaceForwarder(ProgressInterface::Ptr child);
+    explicit ProgressStateInterfaceFromProgressInterfaceForwarder(ProgressInterface::Ptr child);
 
   public:
     static Ptr create(ProgressInterface::Ptr child);
@@ -239,7 +239,7 @@ namespace Scroom::Utils
     std::set<ChildData::Ptr>    children;
 
   private:
-    ProgressInterfaceMultiplexer(ProgressInterface::Ptr parent);
+    explicit ProgressInterfaceMultiplexer(ProgressInterface::Ptr parent);
 
   public:
     static Ptr create(ProgressInterface::Ptr parent);

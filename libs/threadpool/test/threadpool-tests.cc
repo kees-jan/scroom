@@ -39,7 +39,7 @@ private:
 public:
   using Ptr = boost::shared_ptr<A>;
 
-  A(Semaphore* s_)
+  explicit A(Semaphore* s_)
     : s(s_)
   {
   }

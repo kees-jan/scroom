@@ -33,7 +33,7 @@ private:
   struct timespec   t = {0, 0};
 
 public:
-  WaitForAsyncOp(const std::string& name);
+  explicit WaitForAsyncOp(const std::string& name);
   WaitForAsyncOp(const WaitForAsyncOp& other);
   WaitForAsyncOp(WaitForAsyncOp&&);
   WaitForAsyncOp operator=(const WaitForAsyncOp&) = delete;

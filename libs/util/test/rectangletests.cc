@@ -38,7 +38,7 @@ public:
 
   RectangleHorizontalTestScaffold() = default;
 
-  RectangleHorizontalTestScaffold(const Rectangle<int>& r)
+  RectangleHorizontalTestScaffold(const Rectangle<int>& r) // NOLINT(hicpp-explicit-conversions)
     : Rectangle(r)
   {
   }
@@ -78,7 +78,7 @@ public:
 
   RectangleVerticalTestScaffold() = default;
 
-  RectangleVerticalTestScaffold(const Rectangle<int>& r)
+  RectangleVerticalTestScaffold(const Rectangle<int>& r) // NOLINT(hicpp-explicit-conversions)
     : Rectangle(r)
   {
   }

@@ -60,7 +60,7 @@ private:
   std::list<GtkFileFilter*>& filters;
 
 public:
-  GtkFileFilterListDestroyer(std::list<GtkFileFilter*>& f)
+  explicit GtkFileFilterListDestroyer(std::list<GtkFileFilter*>& f)
     : filters(f)
   {
     for(auto const filter: filters)

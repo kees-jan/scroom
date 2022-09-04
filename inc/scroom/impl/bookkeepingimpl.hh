@@ -16,7 +16,7 @@ namespace Scroom::Bookkeeping
     class TokenAddition : public Scroom::Bookkeeping::Token
     {
     public:
-      TokenAddition(const Scroom::Bookkeeping::Token& t)
+      explicit TokenAddition(const Scroom::Bookkeeping::Token& t)
         : Scroom::Bookkeeping::Token(t)
       {
       }
@@ -124,7 +124,7 @@ namespace Scroom::Bookkeeping
       WeakToken token;
 
     protected:
-      ValueType(V value_)
+      explicit ValueType(V value_)
         : value(value_)
       {
       }
@@ -143,7 +143,7 @@ namespace Scroom::Bookkeeping
       VTPtr pv;
 
     public:
-      LValue(VTPtr pv_)
+      explicit LValue(VTPtr pv_)
         : pv(pv_)
       {
       }
@@ -154,7 +154,7 @@ namespace Scroom::Bookkeeping
         return *this;
       }
 
-      operator V() { return pv->value; }
+      explicit operator V() { return pv->value; }
     };
   } // namespace Detail
 
@@ -242,7 +242,7 @@ namespace Scroom::Bookkeeping
       i->second = pv;
     }
 
-    Token t = pv->token.lock();
+    Token t(pv->token.lock());
     if(!t)
     {
       t = Detail::MapTokenImpl<K, V>::create(shared_from_this<MapBase<K, V>>(), k);
@@ -264,8 +264,8 @@ namespace Scroom::Bookkeeping
       typename Detail::ValueType<V>::Ptr const pv = i->second.lock();
       if(pv)
       {
-        Token const t      = wt.lock();
-        Token const t_orig = pv->token.lock();
+        Token const t(wt.lock());
+        Token const t_orig(pv->token.lock());
         if(t == t_orig)
         {
           map.erase(i);
