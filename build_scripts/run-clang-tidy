@@ -1,0 +1,19 @@
+#!/bin/bash -eux
+
+FIXES=$(mktemp -d)
+BUILD=cmake-build-debug-clang-10
+CLANG_VERSION=16
+MY_LOCATION=$(dirname "$0")
+
+for w in $WARNINGS
+do
+  rm -f "$FIXES"/*
+  find . \( -name cmake-build-\* -prune \) -o \( -name \*.cc -print0 \) | \
+    parallel -0 -v clang-tidy-${CLANG_VERSION} --quiet -p=$BUILD --checks='-*,'"$w" --export-fixes="$FIXES"/\{\#\}.yaml \{\} > "$FIXES"/ct.log
+  (cd $BUILD && clang-apply-replacements-${CLANG_VERSION} "$FIXES" )
+  "${MY_LOCATION}"/clang-format
+  git commit -a -m "clang-tidy: $w"
+  cmake --build $BUILD
+  (cd $BUILD && ctest -j "$(nproc)" )
+done
+

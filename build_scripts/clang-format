@@ -1,0 +1,3 @@
+#!/bin/bash -eux
+
+find . \( -name \*.cc -o -name \*.hh \) -exec clang-format-14 -i \{\} \+

@@ -37,7 +37,7 @@ jobs:
 
       - name: Run clang-format
         run: |
-          find . \( -name \*.cc -o -name \*.hh \) -exec clang-format-14 -i \{\} \+
+          build_scripts/clang-format
 
       - name: Report results
         run: |
@@ -58,8 +58,7 @@ jobs:
       - name: Run cmake-format
         run: |
           source ~/.profile
-          find . \( -name cmake-modules -o -name .git -o -name cmake-build-\* \) -type d -prune \
-            -o \( -name CMakeLists.txt  -o -name \*.cmake \) -exec cmake-format -i \{\} \+
+          build_scripts/cmake-format
 
       - name: Report results
         run: |
