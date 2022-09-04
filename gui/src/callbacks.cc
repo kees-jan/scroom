@@ -455,7 +455,7 @@ void on_scroom_bootstrap(const FileNameMap& newFilenames)
   std::string                 str = "aboutDialog";
   obj[0]                          = const_cast<char*>(str.c_str());
   obj[1]                          = nullptr;
-  gtk_builder_add_objects_from_file(aboutDialogXml, xmlFileName.c_str(), obj.get(), NULL);
+  gtk_builder_add_objects_from_file(aboutDialogXml, xmlFileName.c_str(), obj.get(), nullptr);
 
   if(aboutDialogXml != nullptr)
   {
@@ -536,7 +536,7 @@ void create_scroom(PresentationInterface::Ptr presentation)
   std::string                str = "scroom";
   obj[0]                         = const_cast<char*>(str.c_str());
   obj[1]                         = nullptr;
-  gtk_builder_add_objects_from_file(xml, xmlFileName.c_str(), obj.get(), NULL);
+  gtk_builder_add_objects_from_file(xml, xmlFileName.c_str(), obj.get(), nullptr);
 
   if(xml == nullptr)
   {

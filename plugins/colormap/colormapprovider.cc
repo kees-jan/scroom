@@ -67,7 +67,7 @@ namespace Scroom
 
     ColormapProvider::ColormapProvider(Colormappable::Ptr c)
       : colormappable(c)
-      , colormaps(nullptr)
+
     {
       unsigned int                  numColors = c->getNumberOfColors();
       std::list<Colormap::ConstPtr> maps      = Colormaps::getInstance().getColormaps();

@@ -139,22 +139,22 @@ namespace Scroom
 
       if(bmd.bitsPerSample == 8)
       {
-        ls.push_back(OperationsCMYK32::create());
+        ls.emplace_back(OperationsCMYK32::create());
       }
       else if(bmd.bitsPerSample == 4)
       {
-        ls.push_back(OperationsCMYK16::create());
-        ls.push_back(OperationsCMYK32::create());
+        ls.emplace_back(OperationsCMYK16::create());
+        ls.emplace_back(OperationsCMYK32::create());
       }
       else if(bmd.bitsPerSample == 2)
       {
-        ls.push_back(OperationsCMYK8::create());
-        ls.push_back(OperationsCMYK32::create());
+        ls.emplace_back(OperationsCMYK8::create());
+        ls.emplace_back(OperationsCMYK32::create());
       }
       else if(bmd.bitsPerSample == 1)
       {
-        ls.push_back(OperationsCMYK4::create());
-        ls.push_back(OperationsCMYK32::create());
+        ls.emplace_back(OperationsCMYK4::create());
+        ls.emplace_back(OperationsCMYK32::create());
       }
       else
       {

@@ -42,7 +42,7 @@ namespace Scroom
       std::map<ViewInterface::WeakPtr, GtkTreeView*> views;
 
       /** The colormaps we're offering to our views */
-      GtkListStore* colormaps;
+      GtkListStore* colormaps{nullptr};
 
       /** Our registration with the Colormappable */
       Scroom::Utils::Stuff registration;

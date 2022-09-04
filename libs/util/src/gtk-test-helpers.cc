@@ -18,7 +18,7 @@ namespace Scroom::GtkTestHelpers
 
   void GtkMainLoop::run_gtk()
   {
-    gtk_init(0, NULL);
+    gtk_init(nullptr, nullptr);
     gtk_main();
   }
 

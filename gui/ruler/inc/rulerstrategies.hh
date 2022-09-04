@@ -97,9 +97,9 @@ protected:
 
 private:
   /** Allocated width for the ruler in pixels. */
-  int width;
+  int width{};
   /** Allocated height for the ruler in pixels. */
-  int height;
+  int height{};
 };
 
 /**

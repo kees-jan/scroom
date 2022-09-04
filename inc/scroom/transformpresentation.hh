@@ -51,8 +51,8 @@ namespace Detail
     ViewInterface::WeakPtr             weakParent;
 
   public:
-    ViewInterface::Ptr   parent() const;
-    static ViewData::Ptr create(const ViewInterface::WeakPtr& parent);
+    [[nodiscard]] ViewInterface::Ptr parent() const;
+    static ViewData::Ptr             create(const ViewInterface::WeakPtr& parent);
 
     // ViewInterface
     void                                     invalidate() override;

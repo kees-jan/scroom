@@ -63,7 +63,7 @@ public:
 
   static Ptr create(Point aspectRatio_) { return Ptr(new TweakPresentationPosition(aspectRatio_)); }
 
-  Point tweakPosition(Point currentPosition, Scroom::Utils::Point<int> /*drawingAreaSize*/, int zoom) const
+  [[nodiscard]] Point tweakPosition(Point currentPosition, Scroom::Utils::Point<int> /*drawingAreaSize*/, int zoom) const
   {
     return round_to_multiple_of(currentPosition, aspectRatio / pixelSizeFromZoom(zoom));
   }
@@ -88,7 +88,8 @@ public:
 
   static Ptr create(Point aspectRatio_) { return Ptr(new TweakRulers(aspectRatio_)); }
 
-  Scroom::Utils::Rectangle<double> tweakRulers(Point currentPosition, Scroom::Utils::Point<int> drawingAreaSize, int zoom) const
+  [[nodiscard]] Scroom::Utils::Rectangle<double>
+    tweakRulers(Point currentPosition, Scroom::Utils::Point<int> drawingAreaSize, int zoom) const
   {
     return Scroom::Utils::make_rect(currentPosition, drawingAreaSize.to<double>() / pixelSizeFromZoom(zoom)) / aspectRatio;
   }
@@ -166,8 +167,8 @@ public:
   using Ptr   = boost::shared_ptr<ITweakSelection>;
   using Point = Scroom::Utils::Point<double>;
 
-  virtual Selection tweakSelection(Selection selection) const = 0;
-  virtual void      setAspectRatio(Point aspectRatio_)        = 0;
+  [[nodiscard]] virtual Selection tweakSelection(Selection selection) const = 0;
+  virtual void                    setAspectRatio(Point aspectRatio_)        = 0;
 };
 
 class TweakSelection : public ITweakSelection
@@ -175,9 +176,9 @@ class TweakSelection : public ITweakSelection
 public:
   using Rectangle = Scroom::Utils::Rectangle<double>;
 
-  virtual Rectangle tweakSelection(Rectangle selection) const = 0;
+  [[nodiscard]] virtual Rectangle tweakSelection(Rectangle selection) const = 0;
 
-  Selection tweakSelection(Selection selection) const override
+  [[nodiscard]] Selection tweakSelection(Selection selection) const override
   {
     const auto original = toRectangle(selection);
     const auto tweaked  = tweakSelection(original);
@@ -208,7 +209,10 @@ class TweakGridSelection : public TweakSelection
 public:
   static Ptr create(Point aspectRatio_) { return Ptr(new TweakGridSelection(aspectRatio_)); }
 
-  Rectangle tweakSelection(Rectangle selection) const override { return roundCorners(selection / aspectRatio) * aspectRatio; }
+  [[nodiscard]] Rectangle tweakSelection(Rectangle selection) const override
+  {
+    return roundCorners(selection / aspectRatio) * aspectRatio;
+  }
   using TweakSelection::tweakSelection;
 
   using TweakSelection::TweakSelection;
@@ -219,7 +223,10 @@ class TweakPixelSelection : public TweakSelection
 public:
   static Ptr create(Point aspectRatio_) { return Ptr(new TweakPixelSelection(aspectRatio_)); }
 
-  Rectangle tweakSelection(Rectangle selection) const override { return roundOutward(selection / aspectRatio) * aspectRatio; }
+  [[nodiscard]] Rectangle tweakSelection(Rectangle selection) const override
+  {
+    return roundOutward(selection / aspectRatio) * aspectRatio;
+  }
 
   using TweakSelection::tweakSelection;
 
@@ -235,14 +242,15 @@ public:
 
   static Ptr create(Point aspectRatio_) { return Ptr(new TweakPositionTextBox(aspectRatio_)); }
 
-  Point parse(std::string_view x, std::string_view y, Scroom::Utils::Point<int> drawingAreaSize, int zoom) const
+  [[nodiscard]] Point parse(std::string_view x, std::string_view y, Scroom::Utils::Point<int> drawingAreaSize, int zoom) const
   {
     Point entered_position(boost::lexical_cast<double>(x), boost::lexical_cast<double>(y));
 
     return entered_position * aspectRatio - drawingAreaSize.to<double>() / pixelSizeFromZoom(zoom) / 2;
   }
 
-  std::pair<std::string, std::string> display(Point position, Scroom::Utils::Point<int> drawingAreaSize, int zoom) const
+  [[nodiscard]] std::pair<std::string, std::string>
+    display(Point position, Scroom::Utils::Point<int> drawingAreaSize, int zoom) const
   {
     const Point center = (position + drawingAreaSize.to<double>() / pixelSizeFromZoom(zoom) / 2) / aspectRatio;
 
@@ -283,14 +291,13 @@ static void on_newWindow_activate(GtkMenuItem*, gpointer user_data)
 
 View::View(GtkBuilder* scroomXml_)
   : scroomXml(scroomXml_)
-  , zoom(0)
   , aspectRatio(Scroom::Utils::make_point(1.0, 1.0))
   , tweakPresentationPosition(TweakPresentationPosition::create(aspectRatio))
   , tweakPositionTextBox(TweakPositionTextBox::create(aspectRatio))
   , tweakRulers(TweakRulers::create(aspectRatio))
   , tweakSelection{{SelectionType::GRID, TweakGridSelection::create(aspectRatio)},
                    {SelectionType::PIXEL, TweakPixelSelection::create(aspectRatio)}}
-  , modifiermove(0)
+
 {
   PluginManager::Ptr pluginManager = PluginManager::getInstance();
   window                           = GTK_WINDOW(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "scroom")));

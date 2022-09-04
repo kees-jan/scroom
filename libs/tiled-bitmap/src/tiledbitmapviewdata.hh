@@ -31,11 +31,11 @@ public:
 
 private:
   Layer::Ptr           layer;
-  int                  imin;
-  int                  imax;
-  int                  jmin;
-  int                  jmax;
-  int                  zoom;
+  int                  imin{0};
+  int                  imax{0};
+  int                  jmin{0};
+  int                  jmax{0};
+  int                  zoom{0};
   LayerOperations::Ptr layerOperations;
 
   /**
@@ -55,7 +55,7 @@ private:
    */
   Scroom::Utils::StuffList volatileStuff;
 
-  bool redrawPending;
+  bool redrawPending{false};
 
   /** Protect @c stuff and @c redrawPending */
   boost::mutex mut;

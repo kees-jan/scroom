@@ -27,7 +27,7 @@ private:
   Scroom::Utils::StuffList                           registrations;
   LayerOperations::Ptr                               lo;
   boost::mutex                                       mut;
-  int                                                unfinishedSourceTiles;
+  int                                                unfinishedSourceTiles{0};
 
 public:
   using Ptr = boost::shared_ptr<LayerCoordinator>;

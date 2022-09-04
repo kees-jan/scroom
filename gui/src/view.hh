@@ -56,7 +56,7 @@ public:
   {
   }
 
-  const value_type& get() const { return value; }
+  [[nodiscard]] const value_type& get() const { return value; }
 
   bool set(value_type v)
   {
@@ -74,7 +74,7 @@ public:
     require(locked > 0);
     locked--;
   }
-  bool is_locked() const { return locked; }
+  [[nodiscard]] bool is_locked() const { return locked; }
 
       operator const value_type&() const { return value; } // NOLINT(hicpp-explicit-conversions)
   Me& operator=(value_type v)
@@ -129,7 +129,7 @@ private:
   GtkWidget*                                                toolbarArea;
   unsigned                                                  toolBarCount;
   int                                                       statusBarContextId;
-  int                                                       zoom;
+  int                                                       zoom{0};
   Freezable<Scroom::Utils::Point<double>>                   position; /**< of the top left visible pixel */
   std::optional<Selection>                                  selection;
   std::vector<SelectionListener::Ptr>                       selectionListeners;
@@ -141,7 +141,7 @@ private:
   boost::shared_ptr<TweakRulers>                            tweakRulers;
   std::map<std::string, boost::shared_ptr<ITweakSelection>> tweakSelection;
 
-  gint                         modifiermove;
+  gint                         modifiermove{0};
   Scroom::Utils::Point<double> cachedPoint;
 
   ProgressBarManager::Ptr progressBarManager;

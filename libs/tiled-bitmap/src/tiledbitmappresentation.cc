@@ -36,7 +36,7 @@ namespace
     }
     for(unsigned int i = 0; i < rhs.size(); i++)
     {
-      result.push_back({rhs[i].first, rhs[i].second + lhs[i].second});
+      result.emplace_back(rhs[i].first, rhs[i].second + lhs[i].second);
     }
     return result;
   }

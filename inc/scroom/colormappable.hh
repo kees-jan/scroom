@@ -234,5 +234,5 @@ private:
   bool  inverted;
   Color blackish;
   Color whitish;
-  bool  transparentBackground;
+  bool  transparentBackground{false};
 };

@@ -43,9 +43,9 @@ private:
   std::list<LayerCoordinator::Ptr>                 coordinators;
   boost::mutex                                     viewDataMutex;
   ViewDataMap                                      viewData;
-  int                                              tileCount;
+  int                                              tileCount{0};
   boost::mutex                                     tileFinishedMutex;
-  int                                              tileFinishedCount;
+  int                                              tileFinishedCount{0};
   Scroom::Utils::ProgressInterfaceBroadcaster::Ptr progressBroadcaster;
   Scroom::Utils::StuffList                         registrations;
 

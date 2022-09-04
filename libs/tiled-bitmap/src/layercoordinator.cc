@@ -23,7 +23,7 @@ LayerCoordinator::Ptr LayerCoordinator::create(CompressedTile::Ptr targetTile, L
 LayerCoordinator::LayerCoordinator(CompressedTile::Ptr targetTile_, LayerOperations::Ptr lo_)
   : targetTile(targetTile_)
   , lo(lo_)
-  , unfinishedSourceTiles(0)
+
 {
 }
 
@@ -38,7 +38,7 @@ void LayerCoordinator::addSourceTile(int x, int y, CompressedTile::Ptr tile)
   boost::unique_lock<boost::mutex> lock(mut);
 
   sourceTiles[tile] = std::make_pair(x, y);
-  registrations.push_back(tile->registerObserver(shared_from_this<LayerCoordinator>()));
+  registrations.emplace_back(tile->registerObserver(shared_from_this<LayerCoordinator>()));
   unfinishedSourceTiles++;
 }
 

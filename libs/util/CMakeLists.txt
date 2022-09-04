@@ -35,7 +35,8 @@ if(ENABLE_BOOST_TEST)
             test/progressinterfacemultiplexer-tests.cc
             test/progressstateinterfacestub.cc
             test/progressstateinterfacestub.hh
-            test/scope-exit-tests.cpp)
+            test/scope-exit-tests.cpp
+            test/rectangletests.cc)
   target_link_libraries(
     util_tests
     PRIVATE boosttesthelper

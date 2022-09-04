@@ -46,7 +46,7 @@ private:
   int                        height;
   int                        horTileCount;
   int                        verTileCount;
-  int                        currentRow;
+  int                        currentRow{0};
   SourcePresentation::Ptr    sp;
   ThreadPool::Ptr            threadPool;
   ThreadPool::WeakQueue::Ptr queue;
@@ -77,7 +77,7 @@ Layer::Layer(int depth_, int layerWidth, int layerHeight, int bpp, Scroom::Memor
 {
   for(int j = 0; j < verTileCount; j++)
   {
-    tiles.push_back(CompressedTileLine());
+    tiles.emplace_back();
     CompressedTileLine& tl = tiles[j];
     for(int i = 0; i < horTileCount; i++)
     {
@@ -199,7 +199,6 @@ DataFetcher::DataFetcher(Layer::Ptr                 layer_,
   , height(height_)
   , horTileCount(horTileCount_)
   , verTileCount(verTileCount_)
-  , currentRow(0)
   , sp(std::move(sp_))
   , threadPool(CpuBound())
   , queue(std::move(queue_))

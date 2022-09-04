@@ -133,7 +133,7 @@ namespace Scroom
     public:
       const std::string name;
       boost::mutex      mut;
-      long              count;
+      long              count{0};
 
     public:
       static Ptr create(const std::string& name);

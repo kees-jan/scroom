@@ -34,9 +34,6 @@ TileViewState::Ptr TileViewState::create(boost::shared_ptr<CompressedTile> paren
 
 TileViewState::TileViewState(boost::shared_ptr<CompressedTile> parent_)
   : parent(parent_)
-  , state(INIT)
-  , desiredState(LOADED)
-  , zoom(0)
   , cpuBound(CpuBound())
 {
 }

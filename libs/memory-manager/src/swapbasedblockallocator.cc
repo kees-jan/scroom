@@ -80,7 +80,7 @@ namespace Scroom
         PageList result;
         for(size_t i = 0; i < count; i++)
         {
-          result.push_back(Page(me, i));
+          result.emplace_back(me, i);
         }
 
         return result;

@@ -199,9 +199,7 @@ namespace
 ////////////////////////////////////////////////////////////////////////
 
 ThreadPool::PrivateData::PrivateData(bool completeAllJobsBeforeDestruction_)
-  : jobcount(0)
-  , alive(true)
-  , completeAllJobsBeforeDestruction(completeAllJobsBeforeDestruction_)
+  : completeAllJobsBeforeDestruction(completeAllJobsBeforeDestruction_)
   , defaultQueue(ThreadPool::defaultQueue())
 {
 }
@@ -363,7 +361,7 @@ void ThreadPool::schedule(boost::function<void()> const& fn, ThreadPool::Queue::
 void ThreadPool::schedule(boost::function<void()> const& fn, int priority, ThreadPool::WeakQueue::Ptr queue)
 {
   boost::mutex::scoped_lock lock(priv->mut);
-  priv->jobs[priority].push(Job(fn, queue));
+  priv->jobs[priority].emplace(fn, queue);
   priv->jobcount++;
   priv->cond.notify_one();
 }

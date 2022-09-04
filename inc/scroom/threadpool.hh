@@ -202,10 +202,10 @@ private:
     using Ptr = boost::shared_ptr<PrivateData>;
 
   public:
-    unsigned int              jobcount; /**< current number of tasks in ThreadPool::jobs */
-    boost::mutex              mut;      /**< For protecting ThreadPool::jobs */
-    bool                      alive;    /**< @c true if this ThreadPool is not in the process of being destroyed */
-    boost::condition_variable cond;     /**< For signalling newly queued jobs */
+    unsigned int              jobcount{0}; /**< current number of tasks in ThreadPool::jobs */
+    boost::mutex              mut;         /**< For protecting ThreadPool::jobs */
+    bool                      alive{true}; /**< @c true if this ThreadPool is not in the process of being destroyed */
+    boost::condition_variable cond;        /**< For signalling newly queued jobs */
 
     /**
      * Jobs that remain to be executed

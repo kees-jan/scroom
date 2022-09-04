@@ -102,13 +102,13 @@ namespace Scroom
     private:
       PageProvider::Ptr             provider;
       size_t                        size;
-      uint8_t*                      data;
-      State                         state;
+      uint8_t*                      data{nullptr};
+      State                         state{UNINITIALIZED};
       boost::mutex                  mut;
       RawPageData::WeakPtr          weakData;
       PageList                      pages;
       boost::shared_ptr<ThreadPool> cpuBound;
-      int                           refcount; // Yuk
+      int                           refcount{0}; // Yuk
 
     private:
       Blob(PageProvider::Ptr provider, size_t size);

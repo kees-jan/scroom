@@ -58,11 +58,13 @@ jobs:
         # and build directories, but this is only available with CMake 3.13 and higher.
         # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
         run: |
-          cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE
+          cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
 
       - name: Clang-Tidy
         # Execute the build.  You can specify a specific target with "--target <NAME>"
-        run: find . -name \*.cc -print0 | parallel -0 clang-tidy-10 --quiet -p="${{runner.workspace}}/build" \{\} | tee ct.log
+        run: |
+          set -o pipefail
+          find . -name \*.cc -print0 | parallel -0 clang-tidy-10 --quiet -p="${{runner.workspace}}/build" \{\} | tee ct.log
 
       - name: Upload to Codacy
         env:

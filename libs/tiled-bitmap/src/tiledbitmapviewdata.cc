@@ -23,12 +23,7 @@ TiledBitmapViewData::Ptr TiledBitmapViewData::create(ViewInterface::WeakPtr view
 TiledBitmapViewData::TiledBitmapViewData(ViewInterface::WeakPtr viewInterface_)
   : viewInterface(viewInterface_)
   , progressInterface(viewInterface_.lock()->getProgressInterface())
-  , imin(0)
-  , imax(0)
-  , jmin(0)
-  , jmax(0)
-  , zoom(0)
-  , redrawPending(false)
+
 {
 }
 
@@ -145,7 +140,7 @@ void TiledBitmapViewData::clearVolatileStuff()
 void TiledBitmapViewData::tileLoaded(ConstTile::Ptr tile)
 {
   boost::unique_lock<boost::mutex> lock(mut);
-  stuff.push_back(tile);
+  stuff.emplace_back(tile);
 
   if(!redrawPending)
   {

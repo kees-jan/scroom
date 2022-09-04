@@ -85,8 +85,6 @@ TiledBitmap::TiledBitmap(int bitmapWidth_, int bitmapHeight_, LayerSpec ls_)
   : bitmapWidth(bitmapWidth_)
   , bitmapHeight(bitmapHeight_)
   , ls(std::move(ls_))
-  , tileCount(0)
-  , tileFinishedCount(0)
   , progressBroadcaster(Scroom::Utils::ProgressInterfaceBroadcaster::create())
 {
 }
@@ -99,7 +97,7 @@ void TiledBitmap::initialize(const Layer::Ptr& bottom)
   LayerOperations::Ptr                   lo       = ls[i];
   Scroom::MemoryBlobs::PageProvider::Ptr provider = bottom->getPageProvider();
 
-  registrations.push_back(bottom->registerObserver(shared_from_this<TileInitialisationObserver>()));
+  registrations.emplace_back(bottom->registerObserver(shared_from_this<TileInitialisationObserver>()));
   layers.push_back(bottom);
 
   Layer::Ptr           prevLayer = bottom;
@@ -117,7 +115,7 @@ void TiledBitmap::initialize(const Layer::Ptr& bottom)
     }
 
     Layer::Ptr layer = Layer::create(i, width, height, lo->getBpp(), provider);
-    registrations.push_back(layer->registerObserver(shared_from_this<TileInitialisationObserver>()));
+    registrations.emplace_back(layer->registerObserver(shared_from_this<TileInitialisationObserver>()));
     layers.push_back(layer);
 
     connect(layer, prevLayer, prevLo);

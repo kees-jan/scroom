@@ -84,7 +84,7 @@ MonochromeColormapHelper::MonochromeColormapHelper(int numberOfColors_, bool inv
   , inverted(inverted_)
   , blackish(Color(inverted_ ? 1 : 0))
   , whitish(Color(inverted_ ? 0 : 1))
-  , transparentBackground(false)
+
 {
 }
 

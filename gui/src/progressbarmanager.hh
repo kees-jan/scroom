@@ -18,7 +18,7 @@ public:
 
 private:
   GtkProgressBar* progressBar;
-  bool            isWaiting;
+  bool            isWaiting{false};
 
 private:
   ProgressBarManager(GtkProgressBar* progressBar);

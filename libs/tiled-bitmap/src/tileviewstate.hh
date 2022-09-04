@@ -41,15 +41,15 @@ public:
 private:
   boost::shared_ptr<CompressedTile>    parent;
   boost::mutex                         mut;
-  State                                state;
-  State                                desiredState;
+  State                                state{INIT};
+  State                                desiredState{LOADED};
   ThreadPool::Queue::Ptr               queue;
   ThreadPool::WeakQueue::Ptr           weakQueue;
   Scroom::Utils::Stuff                 r;
   ConstTile::Ptr                       tile;
   boost::weak_ptr<TiledBitmapViewData> tbvd;
   LayerOperations::Ptr                 lo;
-  int                                  zoom;
+  int                                  zoom{0};
   Scroom::Utils::StuffWeak             lifeTimeManager;
   Scroom::Utils::Stuff                 baseCache;
   Scroom::Utils::Stuff                 zoomCache;

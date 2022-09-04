@@ -74,10 +74,8 @@ namespace Scroom
     Blob::Blob(PageProvider::Ptr provider_, size_t size_)
       : provider(provider_)
       , size(size_)
-      , data(nullptr)
-      , state(UNINITIALIZED)
       , cpuBound(CpuBound())
-      , refcount(0)
+
     {
     }
 

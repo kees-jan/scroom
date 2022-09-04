@@ -5,7 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include <stdio.h>
+#include <cstdio>
 
 #include <scroom/scroomplugin.hh>
 #include <scroom/unused.hh>
