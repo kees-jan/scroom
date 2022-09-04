@@ -169,8 +169,8 @@ namespace Scroom::Utils
 
   public:
     static Counter*       instance();
-    void                  registerCount(Count::Ptr count);
-    void                  unregisterCount(Count::Ptr count);
+    void                  registerCount(const Count::Ptr& count);
+    void                  unregisterCount(const Count::Ptr& count);
     void                  dump();
     std::list<Count::Ptr> getCounts();
   };

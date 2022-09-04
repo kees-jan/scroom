@@ -17,7 +17,7 @@
 #include "measure-framerate-callbacks.hh"
 #include "measure-load-performance-tests.hh"
 
-void usage(std::string me, std::string message = std::string())
+void usage(const std::string& me, const std::string& message = std::string())
 {
   if(message.length() != 0)
   {

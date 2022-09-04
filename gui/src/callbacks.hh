@@ -65,13 +65,13 @@ void on_scroom_bootstrap(const FileNameMap& newFilenames);
 
 void on_scroom_terminating();
 
-void find_or_create_scroom(PresentationInterface::Ptr presentation);
+void find_or_create_scroom(const PresentationInterface::Ptr& presentation);
 
-void create_scroom(PresentationInterface::Ptr presentation);
+void create_scroom(const PresentationInterface::Ptr& presentation);
 
 void on_newPresentationInterfaces_update(const std::map<NewPresentationInterface::Ptr, std::string>& newPresentationInterfaces);
 
-void on_presentation_created(PresentationInterface::Ptr p);
+void on_presentation_created(const PresentationInterface::Ptr& p);
 
 void on_view_created(const View::Ptr& v);
 
@@ -79,9 +79,9 @@ void on_presentation_added_to_view(const View::Ptr& v);
 
 void on_view_destroyed(View* v);
 
-void on_new_presentationobserver(PresentationObserver::Ptr po);
+void on_new_presentationobserver(const PresentationObserver::Ptr& po);
 
-void on_new_viewobserver(ViewObserver::Ptr viewObserver);
+void on_new_viewobserver(const ViewObserver::Ptr& viewObserver);
 
 void on_presentation_possibly_destroyed();
 

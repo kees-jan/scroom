@@ -14,7 +14,7 @@
 
 namespace
 {
-  Scroom::Utils::Rectangle<double> DetermineSize(std::list<PresentationInterface::Ptr> presentations)
+  Scroom::Utils::Rectangle<double> DetermineSize(const std::list<PresentationInterface::Ptr>& presentations)
   {
     double left   = std::numeric_limits<double>::max();
     double top    = std::numeric_limits<double>::max();

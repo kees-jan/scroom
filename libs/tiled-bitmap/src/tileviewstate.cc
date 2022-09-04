@@ -8,6 +8,7 @@
 #include "tileviewstate.hh"
 
 #include <cstdio>
+#include <utility>
 
 #include <fmt/format.h>
 
@@ -23,7 +24,7 @@
 
 TileViewState::~TileViewState() { r.reset(); }
 
-TileViewState::Ptr TileViewState::create(boost::shared_ptr<CompressedTile> parent)
+TileViewState::Ptr TileViewState::create(const boost::shared_ptr<CompressedTile>& parent)
 {
   TileViewState::Ptr result(new TileViewState(parent));
 
@@ -33,7 +34,7 @@ TileViewState::Ptr TileViewState::create(boost::shared_ptr<CompressedTile> paren
 }
 
 TileViewState::TileViewState(boost::shared_ptr<CompressedTile> parent_)
-  : parent(parent_)
+  : parent(std::move(parent_))
   , cpuBound(CpuBound())
 {
 }
@@ -62,7 +63,7 @@ Scroom::Utils::Stuff TileViewState::getCacheResult()
   return zoomCache;
 }
 
-void TileViewState::setViewData(TiledBitmapViewData::Ptr tbvd_)
+void TileViewState::setViewData(const TiledBitmapViewData::Ptr& tbvd_)
 {
   boost::mutex::scoped_lock const l(mut);
   tbvd = tbvd_;
@@ -87,7 +88,7 @@ void TileViewState::setZoom(LayerOperations::Ptr lo_, int zoom_)
   if(desiredState != DONE || zoom_ != zoom)
   {
     zoom         = zoom_;
-    lo           = lo_;
+    lo           = std::move(lo_);
     desiredState = DONE;
     mustKick     = true;
 
@@ -125,7 +126,7 @@ void TileViewState::kick()
   }
 }
 
-void TileViewState::process(ThreadPool::WeakQueue::Ptr wq)
+void TileViewState::process(const ThreadPool::WeakQueue::Ptr& wq)
 {
   for(;;)
   {
@@ -181,9 +182,9 @@ void TileViewState::process(ThreadPool::WeakQueue::Ptr wq)
   }
 }
 
-void TileViewState::computeBase(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr tile_, LayerOperations::Ptr lo_)
+void TileViewState::computeBase(const ThreadPool::WeakQueue::Ptr& wq, ConstTile::Ptr tile_, const LayerOperations::Ptr& lo_)
 {
-  Scroom::Utils::Stuff const baseCache_ = lo_->cache(tile_);
+  Scroom::Utils::Stuff const baseCache_ = lo_->cache(std::move(tile_));
 
   boost::mutex::scoped_lock const l(mut);
   TiledBitmapViewData::Ptr const  tbvd_ = tbvd.lock();
@@ -195,13 +196,13 @@ void TileViewState::computeBase(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr ti
   }
 }
 
-void TileViewState::computeZoom(ThreadPool::WeakQueue::Ptr wq,
-                                ConstTile::Ptr             tile_,
-                                LayerOperations::Ptr       lo_,
-                                Scroom::Utils::Stuff       baseCache_,
-                                int                        zoom_)
+void TileViewState::computeZoom(const ThreadPool::WeakQueue::Ptr& wq,
+                                ConstTile::Ptr                    tile_,
+                                const LayerOperations::Ptr&       lo_,
+                                Scroom::Utils::Stuff              baseCache_,
+                                int                               zoom_)
 {
-  Scroom::Utils::Stuff const zoomCache_ = lo_->cacheZoom(tile_, zoom_, baseCache_);
+  Scroom::Utils::Stuff const zoomCache_ = lo_->cacheZoom(std::move(tile_), zoom_, std::move(baseCache_));
 
   boost::mutex::scoped_lock const l(mut);
   TiledBitmapViewData::Ptr const  tbvd_ = tbvd.lock();
@@ -212,7 +213,7 @@ void TileViewState::computeZoom(ThreadPool::WeakQueue::Ptr wq,
   }
 }
 
-void TileViewState::reportDone(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr tile_)
+void TileViewState::reportDone(const ThreadPool::WeakQueue::Ptr& wq, const ConstTile::Ptr& tile_)
 {
   UNUSED(wq);
 

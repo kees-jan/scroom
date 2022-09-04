@@ -162,7 +162,7 @@ private:
     boost::function<void()>                                  fn;
 
     Job() = default;
-    Job(boost::function<void()> fn, WeakQueue::Ptr queue);
+    Job(boost::function<void()> fn, const WeakQueue::Ptr& queue);
   };
 
 public:
@@ -256,7 +256,7 @@ private:
    *
    * Those last two tasks will be performed by do_one()
    */
-  static void work(PrivateData::Ptr priv);
+  static void work(const PrivateData::Ptr& priv);
 
   /**
    * Execute one job.
@@ -264,7 +264,7 @@ private:
    * This gets called from work(). It fetches and executes the
    * highest-prio job from ThreadPool::jobs
    */
-  static void do_one(PrivateData::Ptr priv);
+  static void do_one(const PrivateData::Ptr& priv);
 
   static Queue::Ptr defaultQueue();
   static const int  defaultPriority;
@@ -296,7 +296,7 @@ public:
   ~ThreadPool();
 
   /** Schedule the given job at the given priority */
-  void schedule(boost::function<void()> const& fn, int priority = defaultPriority, Queue::Ptr queue = defaultQueue());
+  void schedule(boost::function<void()> const& fn, int priority = defaultPriority, const Queue::Ptr& queue = defaultQueue());
 
   /** Schedule the given job at the given queue */
   void schedule(boost::function<void()> const& fn, Queue::Ptr queue);
@@ -318,7 +318,7 @@ public:
   void schedule(boost::shared_ptr<T> fn, Queue::Ptr queue);
 
   /** Schedule the given job at the given priority */
-  void schedule(boost::function<void()> const& fn, int priority, WeakQueue::Ptr queue);
+  void schedule(boost::function<void()> const& fn, int priority, const WeakQueue::Ptr& queue);
 
   /** Schedule the given job at the given queue */
   void schedule(boost::function<void()> const& fn, WeakQueue::Ptr queue);

@@ -7,6 +7,8 @@
 
 #include "tiledbitmapviewdata.hh"
 
+#include <utility>
+
 #include <scroom/gtk-helpers.hh>
 #include <scroom/progressinterfacehelpers.hh>
 
@@ -17,10 +19,10 @@
 
 TiledBitmapViewData::Ptr TiledBitmapViewData::create(ViewInterface::WeakPtr viewInterface)
 {
-  return TiledBitmapViewData::Ptr(new TiledBitmapViewData(viewInterface));
+  return TiledBitmapViewData::Ptr(new TiledBitmapViewData(std::move(viewInterface)));
 }
 
-TiledBitmapViewData::TiledBitmapViewData(ViewInterface::WeakPtr viewInterface_)
+TiledBitmapViewData::TiledBitmapViewData(const ViewInterface::WeakPtr& viewInterface_)
   : viewInterface(viewInterface_)
   , progressInterface(viewInterface_.lock()->getProgressInterface())
 
@@ -49,7 +51,7 @@ void TiledBitmapViewData::setNeededTiles(Layer::Ptr const&    l,
     jmin            = jmin_;
     jmax            = jmax_;
     zoom            = zoom_;
-    layerOperations = layerOperations_;
+    layerOperations = std::move(layerOperations_);
 
     // Get data for new tiles
     redrawPending = true; // if it isn't already
@@ -108,7 +110,7 @@ void TiledBitmapViewData::resetNeededTiles()
   stuff.splice(stuff.end(), newStuff, newStuff.begin(), newStuff.end());
 }
 
-static void invalidate_view(ViewInterface::WeakPtr vi)
+static void invalidate_view(const ViewInterface::WeakPtr& vi)
 {
   ViewInterface::Ptr const v = vi.lock();
   if(v)
@@ -117,7 +119,7 @@ static void invalidate_view(ViewInterface::WeakPtr vi)
   }
 }
 
-void TiledBitmapViewData::storeVolatileStuff(Scroom::Utils::Stuff stuff_)
+void TiledBitmapViewData::storeVolatileStuff(const Scroom::Utils::Stuff& stuff_)
 {
   boost::unique_lock<boost::mutex> const lock(mut);
   volatileStuff.push_back(stuff_);

@@ -344,7 +344,7 @@ View::View(GtkBuilder* scroomXml_)
   on_configure();
 }
 
-View::Ptr View::create(GtkBuilder* scroomXml, PresentationInterface::Ptr presentation)
+View::Ptr View::create(GtkBuilder* scroomXml, const PresentationInterface::Ptr& presentation)
 {
   Ptr view(new View(scroomXml));
   spdlog::debug("Creating a new view");
@@ -606,7 +606,7 @@ void View::on_newPresentationInterfaces_update(
   }
 }
 
-void View::on_presentation_created(PresentationInterface::Ptr p)
+void View::on_presentation_created(const PresentationInterface::Ptr& p)
 {
   presentations[p] = nullptr;
   updateNewWindowMenu();

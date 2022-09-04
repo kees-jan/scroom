@@ -478,7 +478,7 @@ void on_scroom_bootstrap(const FileNameMap& newFilenames)
 
 void on_scroom_terminating() { ensure(views.empty()); }
 
-void find_or_create_scroom(PresentationInterface::Ptr presentation)
+void find_or_create_scroom(const PresentationInterface::Ptr& presentation)
 {
   require(presentation);
 
@@ -527,7 +527,7 @@ void onDragDataReceived(GtkWidget*, GdkDragContext*, int, int, GtkSelectionData*
   g_strfreev(uris);
 }
 
-void create_scroom(PresentationInterface::Ptr presentation)
+void create_scroom(const PresentationInterface::Ptr& presentation)
 {
   GtkBuilder*                      xml = gtk_builder_new();
   boost::scoped_array<char*> const obj{new gchar*[2]};
@@ -613,7 +613,7 @@ void on_newPresentationInterfaces_update(const std::map<NewPresentationInterface
   }
 }
 
-void on_presentation_created(PresentationInterface::Ptr presentation)
+void on_presentation_created(const PresentationInterface::Ptr& presentation)
 {
   presentations.emplace_back(presentation);
 
@@ -704,7 +704,7 @@ void on_view_destroyed(View* v)
   on_presentation_possibly_destroyed();
 }
 
-void on_new_presentationobserver(PresentationObserver::Ptr po)
+void on_new_presentationobserver(const PresentationObserver::Ptr& po)
 {
   for(auto& presentation: presentations)
   {
@@ -716,7 +716,7 @@ void on_new_presentationobserver(PresentationObserver::Ptr po)
   }
 }
 
-void on_new_viewobserver(ViewObserver::Ptr viewObserver)
+void on_new_viewobserver(const ViewObserver::Ptr& viewObserver)
 {
   for(auto& [view, token]: views)
   {

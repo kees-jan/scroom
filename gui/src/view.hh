@@ -160,7 +160,7 @@ private:
   explicit View(GtkBuilder* scroomXml);
 
 public:
-  static Ptr create(GtkBuilder* scroomXml, PresentationInterface::Ptr presentation);
+  static Ptr create(GtkBuilder* scroomXml, const PresentationInterface::Ptr& presentation);
 
   ~View() override;
   View(const View&)           = delete;
@@ -190,7 +190,7 @@ public:
   // Scroom events
 
   void on_newPresentationInterfaces_update(const std::map<NewPresentationInterface::Ptr, std::string>& newPresentationInterfaces);
-  void on_presentation_created(PresentationInterface::Ptr p);
+  void on_presentation_created(const PresentationInterface::Ptr& p);
   void on_presentation_destroyed();
   void on_configure();
   void on_window_size_changed(const Scroom::Utils::Point<int>& newSize);

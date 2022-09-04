@@ -7,6 +7,8 @@
 
 #include "test-helpers.hh"
 
+#include <utility>
+
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
 
@@ -25,30 +27,30 @@ TestData::Ptr testData;
 ////////////////////////////////////////////////////////////////////////
 
 DummyColormapProvider::DummyColormapProvider(Colormap::Ptr colormap_)
-  : colormap(colormap_)
+  : colormap(std::move(colormap_))
 {
 }
 
 DummyColormapProvider::Ptr DummyColormapProvider::create(Colormap::Ptr colormap)
 {
-  return Ptr(new DummyColormapProvider(colormap));
+  return Ptr(new DummyColormapProvider(std::move(colormap)));
 }
 
 Colormap::Ptr DummyColormapProvider::getColormap() { return colormap; }
 
 ////////////////////////////////////////////////////////////////////////
 
-TestData::TestData(DummyColormapProvider::Ptr colormapProvider_,
-                   const LayerSpec&           ls_,
-                   TiledBitmapInterface::Ptr  tbi_,
-                   SourcePresentation::Ptr    sp_,
-                   int                        zoom_)
+TestData::TestData(DummyColormapProvider::Ptr       colormapProvider_,
+                   const LayerSpec&                 ls_,
+                   const TiledBitmapInterface::Ptr& tbi_,
+                   SourcePresentation::Ptr          sp_,
+                   int                              zoom_)
   : pi(ProgressInterfaceStub::create())
   , vi(ViewInterfaceStub::create(pi))
-  , colormapProvider(colormapProvider_)
+  , colormapProvider(std::move(colormapProvider_))
   , ls(ls_)
   , tbi(tbi_)
-  , sp(sp_)
+  , sp(std::move(sp_))
   , zoom(zoom_)
 {
   tbi_->open(vi);
@@ -60,7 +62,7 @@ TestData::Ptr TestData::create(DummyColormapProvider::Ptr colormapProvider,
                                SourcePresentation::Ptr    sp,
                                int                        zoom)
 {
-  return TestData::Ptr(new TestData(colormapProvider, ls, tbi, sp, zoom));
+  return TestData::Ptr(new TestData(std::move(colormapProvider), ls, std::move(tbi), std::move(sp), zoom));
 }
 
 bool TestData::wait() { return !pi->isFinished(); }

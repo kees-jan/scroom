@@ -7,6 +7,8 @@
 
 #include "tiffsource.hh"
 
+#include <utility>
+
 #include <spdlog/spdlog.h>
 
 namespace
@@ -221,7 +223,7 @@ namespace Scroom::Tiff
 
   Source::Ptr Source::create(std::string fileName, TIFFPtr tif, BitmapMetaData bmd)
   {
-    return Ptr(new Source(std::move(fileName), std::move(tif), bmd));
+    return Ptr(new Source(std::move(fileName), std::move(tif), std::move(bmd)));
   }
 
   Source::Source(std::string fileName_, TIFFPtr tif_, BitmapMetaData bmd_)

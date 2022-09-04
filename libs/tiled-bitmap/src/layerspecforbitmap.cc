@@ -73,7 +73,7 @@ namespace Scroom::TiledBitmap
       return lsfb;
     }
 
-    void registerFunction(LayerSpecForBitmapFunc f) { functions.push_back(f); }
+    void registerFunction(const LayerSpecForBitmapFunc& f) { functions.push_back(f); }
 
     LayerSpecResult get(const BitmapMetaData& bmd)
     {

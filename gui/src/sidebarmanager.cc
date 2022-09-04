@@ -18,7 +18,7 @@ void SidebarManager::setWidgets(GtkWidget* panelWindow_, GtkBox* panel_)
   panel       = panel_;
 }
 
-void SidebarManager::addSideWidget(std::string title, GtkWidget* w)
+void SidebarManager::addSideWidget(const std::string& title, GtkWidget* w)
 {
   GtkWidget* e = gtk_expander_new(title.c_str());
   gtk_expander_set_expanded(GTK_EXPANDER(e), true);

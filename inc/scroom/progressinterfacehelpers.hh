@@ -248,6 +248,6 @@ namespace Scroom::Utils
 
   private:
     void updateProgressState();
-    void unsubscribe(ChildData::Ptr data);
+    void unsubscribe(const ChildData::Ptr& data);
   };
 } // namespace Scroom::Utils

@@ -10,6 +10,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <list>
+#include <utility>
 
 #include <fmt/format.h>
 
@@ -67,10 +68,10 @@ namespace Scroom::MemoryBlobs
 
   ////////////////////////////////////////////////////////////////////////
 
-  Blob::Ptr Blob::create(PageProvider::Ptr provider, size_t size) { return Ptr(new Blob(provider, size)); }
+  Blob::Ptr Blob::create(PageProvider::Ptr provider, size_t size) { return Ptr(new Blob(std::move(provider), size)); }
 
   Blob::Blob(PageProvider::Ptr provider_, size_t size_)
-    : provider(provider_)
+    : provider(std::move(provider_))
     , size(size_)
     , cpuBound(CpuBound())
 

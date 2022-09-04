@@ -44,7 +44,7 @@ namespace Scroom::ColormapImpl
 
   ////////////////////////////////////////////////////////////////////////
 
-  ColormapProvider::Ptr ColormapProvider::create(PresentationInterface::Ptr p)
+  ColormapProvider::Ptr ColormapProvider::create(const PresentationInterface::Ptr& p)
   {
     Colormappable::Ptr const c = boost::dynamic_pointer_cast<Colormappable, PresentationInterface>(p);
     ColormapProvider::Ptr    result;
@@ -63,7 +63,7 @@ namespace Scroom::ColormapImpl
     return result;
   }
 
-  ColormapProvider::ColormapProvider(Colormappable::Ptr c)
+  ColormapProvider::ColormapProvider(const Colormappable::Ptr& c)
     : colormappable(c)
 
   {

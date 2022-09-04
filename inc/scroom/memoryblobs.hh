@@ -9,6 +9,7 @@
 
 #include <cstdint>
 #include <list>
+#include <utility>
 
 #include <boost/shared_ptr.hpp>
 #include <boost/thread.hpp>
@@ -125,7 +126,7 @@ namespace Scroom::MemoryBlobs
   // Implementation
 
   inline PageProvider::MarkPageFree::MarkPageFree(PageProvider::Ptr provider_)
-    : provider(provider_)
+    : provider(std::move(provider_))
   {
   }
 
@@ -134,7 +135,7 @@ namespace Scroom::MemoryBlobs
   ////////////////////////////////////////////////////////////////////////
 
   inline Blob::UnloadData::UnloadData(Blob::Ptr blob_)
-    : blob(blob_)
+    : blob(std::move(blob_))
   {
   }
 

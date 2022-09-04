@@ -8,6 +8,7 @@
 #include "layercoordinator.hh"
 
 #include <cstdio>
+#include <utility>
 
 #include <scroom/threadpool.hh>
 #include <scroom/tiledbitmaplayer.hh>
@@ -17,12 +18,12 @@
 
 LayerCoordinator::Ptr LayerCoordinator::create(CompressedTile::Ptr targetTile, LayerOperations::Ptr lo)
 {
-  return LayerCoordinator::Ptr(new LayerCoordinator(targetTile, lo));
+  return LayerCoordinator::Ptr(new LayerCoordinator(std::move(targetTile), std::move(lo)));
 }
 
 LayerCoordinator::LayerCoordinator(CompressedTile::Ptr targetTile_, LayerOperations::Ptr lo_)
-  : targetTile(targetTile_)
-  , lo(lo_)
+  : targetTile(std::move(targetTile_))
+  , lo(std::move(lo_))
 
 {
 }
@@ -33,7 +34,7 @@ LayerCoordinator::~LayerCoordinator()
   sourceTiles.clear();
 }
 
-void LayerCoordinator::addSourceTile(int x, int y, CompressedTile::Ptr tile)
+void LayerCoordinator::addSourceTile(int x, int y, const CompressedTile::Ptr& tile)
 {
   boost::unique_lock<boost::mutex> const lock(mut);
 
@@ -57,7 +58,7 @@ void LayerCoordinator::tileFinished(CompressedTile::Ptr tile)
 ////////////////////////////////////////////////////////////////////////
 /// Helpers
 
-void LayerCoordinator::reduceSourceTile(CompressedTile::Ptr tile, ConstTile::Ptr const& tileData)
+void LayerCoordinator::reduceSourceTile(const CompressedTile::Ptr& tile, ConstTile::Ptr const& tileData)
 {
   // If tileData contains a valid pointer, then fetching
   // sourcetiledata, below, will be instananeous. Otherwise, it will

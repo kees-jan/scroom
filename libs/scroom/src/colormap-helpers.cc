@@ -6,6 +6,7 @@
  */
 
 #include <stdexcept>
+#include <utility>
 
 #include <scroom/color.hh>
 #include <scroom/colormappable.hh>
@@ -22,7 +23,7 @@ ColormapHelperBase::ColormapHelperBase(Colormap::Ptr const& colormap_)
 
 void ColormapHelperBase::setColormap(Colormap::Ptr colormap_) { colormap = colormap_; }
 
-void ColormapHelperBase::setOriginalColormap(Colormap::Ptr colormap_) { originalColormap = colormap_; }
+void ColormapHelperBase::setOriginalColormap(Colormap::Ptr colormap_) { originalColormap = std::move(colormap_); }
 
 Colormap::Ptr ColormapHelperBase::getOriginalColormap() { return originalColormap; }
 

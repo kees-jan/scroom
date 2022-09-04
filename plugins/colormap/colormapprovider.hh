@@ -46,11 +46,11 @@ namespace Scroom::ColormapImpl
     Scroom::Utils::Stuff registration;
 
     /** Constructor */
-    explicit ColormapProvider(Colormappable::Ptr c);
+    explicit ColormapProvider(const Colormappable::Ptr& c);
 
   public:
     /** Constructor */
-    static ColormapProvider::Ptr create(PresentationInterface::Ptr p);
+    static ColormapProvider::Ptr create(const PresentationInterface::Ptr& p);
 
     /** Destructor */
     ~ColormapProvider() override;

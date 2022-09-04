@@ -23,6 +23,6 @@ private:
 public:
   void setWidgets(GtkWidget* panelWindow, GtkBox* panel);
 
-  void addSideWidget(std::string title, GtkWidget* w);
+  void addSideWidget(const std::string& title, GtkWidget* w);
   void removeSideWidget(GtkWidget* w);
 };

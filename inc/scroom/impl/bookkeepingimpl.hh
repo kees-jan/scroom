@@ -54,7 +54,7 @@ namespace Scroom::Bookkeeping
     public:
       void add(const Stuff& s) { l.push_back(s); }
 
-      void add(const StuffList l_) { l.insert(l.end(), l_.begin(), l_.end()); }
+      void add(const StuffList& l_) { l.insert(l.end(), l_.begin(), l_.end()); }
 
       void merge(StuffList& l_) { l.splice(l.end(), l_); }
 
@@ -254,7 +254,7 @@ namespace Scroom::Bookkeeping
   }
 
   template <typename K, typename V>
-  inline void MapBase<K, V>::remove(const K& k, WeakToken wt)
+  inline void MapBase<K, V>::remove(const K& k, const WeakToken& wt)
   {
     boost::mutex::scoped_lock const lock(mut);
     auto                            i = map.find(k);

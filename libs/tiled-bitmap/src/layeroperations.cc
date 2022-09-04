@@ -8,6 +8,7 @@
 #include <cstdint>
 #include <cstring>
 #include <sstream>
+#include <utility>
 
 #include <boost/shared_ptr.hpp>
 #include <boost/utility.hpp>
@@ -263,11 +264,11 @@ PipetteLayerOperations::PipetteColor PipetteCommonOperationsRGB::sumPixelValues(
 
 LayerOperations::Ptr Operations1bpp::create(ColormapProvider::Ptr colormapProvider)
 {
-  return Ptr(new Operations1bpp(colormapProvider));
+  return Ptr(new Operations1bpp(std::move(colormapProvider)));
 }
 
 Operations1bpp::Operations1bpp(ColormapProvider::Ptr colormapProvider_)
-  : colormapProvider(colormapProvider_)
+  : colormapProvider(std::move(colormapProvider_))
 {
 }
 
@@ -379,11 +380,11 @@ void Operations1bpp::draw(cairo_t*                         cr,
 
 LayerOperations::Ptr Operations8bpp::create(ColormapProvider::Ptr colormapProvider)
 {
-  return Ptr(new Operations8bpp(colormapProvider));
+  return Ptr(new Operations8bpp(std::move(colormapProvider)));
 }
 
 Operations8bpp::Operations8bpp(ColormapProvider::Ptr colormapProvider_)
-  : colormapProvider(colormapProvider_)
+  : colormapProvider(std::move(colormapProvider_))
 {
 }
 
@@ -575,11 +576,11 @@ void Operations24bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int 
 
 LayerOperations::Ptr Operations::create(ColormapProvider::Ptr colormapProvider, int bpp)
 {
-  return Ptr(new Operations(colormapProvider, bpp));
+  return Ptr(new Operations(std::move(colormapProvider), bpp));
 }
 
 Operations::Operations(ColormapProvider::Ptr colormapProvider_, int bpp_)
-  : colormapProvider(colormapProvider_)
+  : colormapProvider(std::move(colormapProvider_))
   , bpp(bpp_)
   , pixelsPerByte(8 / bpp_)
   , pixelOffset(bpp_)
@@ -724,11 +725,11 @@ void Operations::draw(cairo_t*                         cr,
 
 LayerOperations::Ptr OperationsColormapped::create(ColormapProvider::Ptr colormapProvider, int bpp)
 {
-  return Ptr(new OperationsColormapped(colormapProvider, bpp));
+  return Ptr(new OperationsColormapped(std::move(colormapProvider), bpp));
 }
 
 OperationsColormapped::OperationsColormapped(ColormapProvider::Ptr colormapProvider_, int bpp_)
-  : Operations(colormapProvider_, bpp_)
+  : Operations(std::move(colormapProvider_), bpp_)
 {
 }
 
@@ -829,11 +830,11 @@ void OperationsColormapped::reduce(Tile::Ptr target, const ConstTile::Ptr source
 
 LayerOperations::Ptr Operations1bppClipped::create(ColormapProvider::Ptr colormapProvider)
 {
-  return Ptr(new Operations1bppClipped(colormapProvider));
+  return Ptr(new Operations1bppClipped(std::move(colormapProvider)));
 }
 
 Operations1bppClipped::Operations1bppClipped(ColormapProvider::Ptr colormapProvider_)
-  : colormapProvider(colormapProvider_)
+  : colormapProvider(std::move(colormapProvider_))
 {
 }
 

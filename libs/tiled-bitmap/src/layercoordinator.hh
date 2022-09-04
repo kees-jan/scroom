@@ -40,12 +40,12 @@ public:
   LayerCoordinator operator=(const LayerCoordinator&) = delete;
   LayerCoordinator operator=(LayerCoordinator&&)      = delete;
 
-  void addSourceTile(int x, int y, CompressedTile::Ptr tile);
+  void addSourceTile(int x, int y, const CompressedTile::Ptr& tile);
 
 private:
   LayerCoordinator(CompressedTile::Ptr targetTile, LayerOperations::Ptr lo);
 
-  void reduceSourceTile(CompressedTile::Ptr tile, ConstTile::Ptr const& tileData);
+  void reduceSourceTile(const CompressedTile::Ptr& tile, ConstTile::Ptr const& tileData);
 
 public:
   ////////////////////////////////////////////////////////////////////////

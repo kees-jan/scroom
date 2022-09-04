@@ -70,7 +70,7 @@ namespace Scroom::Bookkeeping
     Token             reserve(const K& k);
     Token             reReserve(const K& k);
     void              remove(const K& k);
-    void              remove(const K& k, WeakToken t);
+    void              remove(const K& k, const WeakToken& t);
     Detail::LValue<V> at(const K& k);
     void              set(const K& k, const V& v);
     V                 get(const K& k);

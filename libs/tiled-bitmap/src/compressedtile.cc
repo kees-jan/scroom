@@ -6,6 +6,7 @@
  */
 
 #include <cstring>
+#include <utility>
 
 #include <scroom/tiledbitmaplayer.hh>
 
@@ -17,7 +18,7 @@ using namespace Scroom::MemoryBlobs;
 
 ////////////////////////////////////////////////////////////////////////
 /// CompressedTile
-CompressedTile::CompressedTile(int depth_, int x_, int y_, int bpp_, PageProvider::Ptr provider_, TileStateInternal state_)
+CompressedTile::CompressedTile(int depth_, int x_, int y_, int bpp_, const PageProvider::Ptr& provider_, TileStateInternal state_)
   : depth(depth_)
   , x(x_)
   , y(y_)
@@ -35,7 +36,7 @@ CompressedTile::Ptr CompressedTile::create(int                                  
                                            Scroom::MemoryBlobs::PageProvider::Ptr provider,
                                            TileStateInternal                      state)
 {
-  CompressedTile::Ptr tile = CompressedTile::Ptr(new CompressedTile(depth, x, y, bpp, provider, state));
+  CompressedTile::Ptr tile = CompressedTile::Ptr(new CompressedTile(depth, x, y, bpp, std::move(provider), state));
 
   return tile;
 }
@@ -159,7 +160,7 @@ ConstTile::Ptr CompressedTile::do_load()
   return result;
 }
 
-TileViewState::Ptr CompressedTile::getViewState(ViewInterface::WeakPtr vi)
+TileViewState::Ptr CompressedTile::getViewState(const ViewInterface::WeakPtr& vi)
 {
   TileViewState::Ptr result = viewStates[vi].lock();
 
@@ -267,7 +268,7 @@ void CompressedTile::cleanupState()
   }
 }
 
-void CompressedTile::notifyObservers(ConstTile::Ptr tile_)
+void CompressedTile::notifyObservers(const ConstTile::Ptr& tile_)
 {
   for(const TileLoadingObserver::Ptr& observer: Observable<TileLoadingObserver>::getObservers())
   {

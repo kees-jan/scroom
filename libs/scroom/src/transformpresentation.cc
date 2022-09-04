@@ -1,4 +1,5 @@
 #include <string>
+#include <utility>
 
 #include <cairo.h>
 
@@ -150,7 +151,7 @@ Scroom::Utils::Point<double> TransformPresentation::getAspectRatio() const { ret
 namespace Detail
 {
   ViewData::ViewData(ViewInterface::WeakPtr parent_)
-    : weakParent(parent_)
+    : weakParent(std::move(parent_))
   {
   }
 

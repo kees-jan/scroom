@@ -7,6 +7,8 @@
 
 #include "helpers.hh"
 
+#include <utility>
+
 #include <scroom/semaphore.hh>
 
 //////////////////////////////////////////////////////////////
@@ -26,4 +28,4 @@ boost::function<void()> pass(Semaphore* s) { return boost::bind(passImpl, s); }
 
 boost::function<void()> clear(Semaphore* s) { return boost::bind(clearImpl, s); }
 
-boost::function<void()> destroy(boost::shared_ptr<void> p) { return boost::bind(destroyImpl, p); }
+boost::function<void()> destroy(boost::shared_ptr<void> p) { return boost::bind(destroyImpl, std::move(p)); }

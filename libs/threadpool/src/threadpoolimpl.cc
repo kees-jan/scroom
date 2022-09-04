@@ -51,8 +51,8 @@ namespace
   public:
     static Ptr instance();
     void       wait();
-    void       add(ThreadPool::ThreadPtr t);
-    void       add(boost::shared_ptr<void> t, const std::string& s);
+    void       add(const ThreadPool::ThreadPtr& t);
+    void       add(const boost::shared_ptr<void>& t, const std::string& s);
   };
 
   /**
@@ -165,13 +165,13 @@ namespace
     }
   }
 
-  void ThreadList::add(ThreadPool::ThreadPtr t)
+  void ThreadList::add(const ThreadPool::ThreadPtr& t)
   {
     boost::mutex::scoped_lock const lock(mut);
     threads.push_back(t);
   }
 
-  void ThreadList::add(boost::shared_ptr<void> t, const std::string& s)
+  void ThreadList::add(const boost::shared_ptr<void>& t, const std::string& s)
   {
     boost::mutex::scoped_lock const lock(mut);
     pointers.push_back(std::make_pair<boost::weak_ptr<void>, std::string>(t, std::string(s)));
@@ -270,7 +270,7 @@ ThreadPool::~ThreadPool()
   }
 }
 
-void ThreadPool::work(ThreadPool::PrivateData::Ptr priv)
+void ThreadPool::work(const ThreadPool::PrivateData::Ptr& priv)
 {
   boost::mutex::scoped_lock lock(priv->mut);
   while(priv->alive)
@@ -305,7 +305,7 @@ void ThreadPool::work(ThreadPool::PrivateData::Ptr priv)
   }
 }
 
-void ThreadPool::do_one(ThreadPool::PrivateData::Ptr priv)
+void ThreadPool::do_one(const ThreadPool::PrivateData::Ptr& priv)
 {
   ThreadPool::Job job;
 
@@ -339,17 +339,17 @@ void ThreadPool::do_one(ThreadPool::PrivateData::Ptr priv)
   }
 }
 
-void ThreadPool::schedule(boost::function<void()> const& fn, int priority, ThreadPool::Queue::Ptr queue)
+void ThreadPool::schedule(boost::function<void()> const& fn, int priority, const ThreadPool::Queue::Ptr& queue)
 {
   schedule(fn, priority, queue->getWeak());
 }
 
 void ThreadPool::schedule(boost::function<void()> const& fn, ThreadPool::Queue::Ptr queue)
 {
-  schedule(fn, defaultPriority, queue);
+  schedule(fn, defaultPriority, std::move(queue));
 }
 
-void ThreadPool::schedule(boost::function<void()> const& fn, int priority, ThreadPool::WeakQueue::Ptr queue)
+void ThreadPool::schedule(boost::function<void()> const& fn, int priority, const ThreadPool::WeakQueue::Ptr& queue)
 {
   boost::mutex::scoped_lock const lock(priv->mut);
   priv->jobs[priority].emplace(fn, queue);
@@ -359,7 +359,7 @@ void ThreadPool::schedule(boost::function<void()> const& fn, int priority, Threa
 
 void ThreadPool::schedule(boost::function<void()> const& fn, ThreadPool::WeakQueue::Ptr queue)
 {
-  schedule(fn, defaultPriority, queue);
+  schedule(fn, defaultPriority, std::move(queue));
 }
 
 ThreadPool::Queue::Ptr ThreadPool::defaultQueue()
@@ -409,9 +409,9 @@ QueueImpl::Ptr ThreadPool::WeakQueue::get() { return qi; }
 /// ThreadPool::Job
 ////////////////////////////////////////////////////////////////////////
 
-ThreadPool::Job::Job(boost::function<void()> fn_, WeakQueue::Ptr queue_)
+ThreadPool::Job::Job(boost::function<void()> fn_, const WeakQueue::Ptr& queue_)
   : queue(queue_->get())
-  , fn(fn_)
+  , fn(std::move(fn_))
 {
 }
 

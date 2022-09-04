@@ -10,6 +10,7 @@
 #include <list>
 #include <map>
 #include <string>
+#include <utility>
 
 #include <gtk/gtk.h>
 
@@ -29,7 +30,7 @@ struct PluginInformation
 
   PluginInformation(GModule* plugin_, PluginInformationInterface::Ptr pluginInformation_)
     : plugin(plugin_)
-    , pluginInformation(pluginInformation_)
+    , pluginInformation(std::move(pluginInformation_))
   {
   }
 };

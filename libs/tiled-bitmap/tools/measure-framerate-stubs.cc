@@ -7,6 +7,8 @@
 
 #include "measure-framerate-stubs.hh"
 
+#include <utility>
+
 #include <scroom/progressinterfacehelpers.hh>
 
 ProgressInterfaceStub::Ptr ProgressInterfaceStub::create() { return Ptr(new ProgressInterfaceStub()); }
@@ -16,11 +18,11 @@ void ProgressInterfaceStub::setFinished() { finished = true; }
 bool ProgressInterfaceStub::isFinished() const { return finished; }
 
 ViewInterfaceStub::ViewInterfaceStub(ProgressInterface::Ptr pi_)
-  : pi(pi_)
+  : pi(std::move(pi_))
 {
 }
 
-ViewInterfaceStub::Ptr ViewInterfaceStub::create(ProgressInterface::Ptr pi) { return Ptr(new ViewInterfaceStub(pi)); }
+ViewInterfaceStub::Ptr ViewInterfaceStub::create(ProgressInterface::Ptr pi) { return Ptr(new ViewInterfaceStub(std::move(pi))); }
 
 ProgressInterface::Ptr ViewInterfaceStub::getProgressInterface() { return pi; }
 

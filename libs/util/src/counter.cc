@@ -52,13 +52,13 @@ Counter* Counter::instance()
 
 Counter::Counter() { g_timeout_add_seconds(10, timedDumpCounts, this); }
 
-void Counter::registerCount(Count::Ptr count)
+void Counter::registerCount(const Count::Ptr& count)
 {
   boost::unique_lock<boost::mutex> const lock(mut);
   counts.push_back(count);
 }
 
-void Counter::unregisterCount(Count::Ptr count)
+void Counter::unregisterCount(const Count::Ptr& count)
 {
   boost::unique_lock<boost::mutex> const lock(mut);
   counts.remove(count);

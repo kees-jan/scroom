@@ -9,6 +9,7 @@
 
 #include <cstdint>
 #include <list>
+#include <utility>
 
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
@@ -68,7 +69,7 @@ namespace Scroom::MemoryBlocks
   // implementation
 
   inline Page::Page(BlockInterface::Ptr bi_, size_t id_)
-    : bi(bi_)
+    : bi(std::move(bi_))
     , id(id_)
   {
   }

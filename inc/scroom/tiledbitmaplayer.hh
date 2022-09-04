@@ -127,7 +127,12 @@ private:
   std::map<ViewInterface::WeakPtr, boost::weak_ptr<TileViewState>> viewStates;
 
 private:
-  CompressedTile(int depth, int x, int y, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider, TileStateInternal state);
+  CompressedTile(int                                           depth,
+                 int                                           x,
+                 int                                           y,
+                 int                                           bpp,
+                 const Scroom::MemoryBlobs::PageProvider::Ptr& provider,
+                 TileStateInternal                             state);
 
 public:
   static Ptr create(int                                    depth,
@@ -211,7 +216,7 @@ public:
 
   TileState getState();
 
-  boost::shared_ptr<TileViewState> getViewState(ViewInterface::WeakPtr vi);
+  boost::shared_ptr<TileViewState> getViewState(const ViewInterface::WeakPtr& vi);
 
 private:
   /**
@@ -221,7 +226,7 @@ private:
    */
   void           cleanupState();
   ConstTile::Ptr do_load();
-  void           notifyObservers(ConstTile::Ptr tile);
+  void           notifyObservers(const ConstTile::Ptr& tile);
 
   // Viewable ////////////////////////////////////////////////////////////
 public:

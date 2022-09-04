@@ -5,6 +5,8 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
+#include <utility>
+
 #include <boost/shared_ptr.hpp>
 #include <boost/test/unit_test.hpp>
 
@@ -62,7 +64,7 @@ protected:
 };
 
 TestRecursiveObservable::TestRecursiveObservable(TestObservable::Ptr child_)
-  : child(child_)
+  : child(std::move(child_))
 {
 }
 
@@ -73,7 +75,7 @@ std::list<TestRecursiveObservable::Observer> TestRecursiveObservable::getObserve
 
 TestRecursiveObservable::Ptr TestRecursiveObservable::create(TestObservable::Ptr child)
 {
-  return TestRecursiveObservable::Ptr(new TestRecursiveObservable(child));
+  return TestRecursiveObservable::Ptr(new TestRecursiveObservable(std::move(child)));
 }
 
 void TestRecursiveObservable::observerAdded(Observer const& observer, Scroom::Bookkeeping::Token const& token)

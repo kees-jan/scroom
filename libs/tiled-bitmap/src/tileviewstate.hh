@@ -62,10 +62,10 @@ public:
   TileViewState operator=(const TileViewState&) = delete;
   TileViewState operator=(TileViewState&&)      = delete;
 
-  static Ptr create(boost::shared_ptr<CompressedTile> parent);
+  static Ptr create(const boost::shared_ptr<CompressedTile>& parent);
 
   Scroom::Utils::Stuff getCacheResult();
-  void                 setViewData(boost::shared_ptr<TiledBitmapViewData> tbvd);
+  void                 setViewData(const boost::shared_ptr<TiledBitmapViewData>& tbvd);
   void                 setZoom(LayerOperations::Ptr lo, int zoom);
 
   // TileLoadingObserver /////////////////////////////////////////////////
@@ -82,14 +82,14 @@ private:
   /**
    * Asynchronously do work to make the state machine progress
    */
-  void process(ThreadPool::WeakQueue::Ptr wq);
+  void process(const ThreadPool::WeakQueue::Ptr& wq);
 
-  void computeBase(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr tile, LayerOperations::Ptr lo);
-  void computeZoom(ThreadPool::WeakQueue::Ptr wq,
-                   ConstTile::Ptr             tile,
-                   LayerOperations::Ptr       lo,
-                   Scroom::Utils::Stuff       baseCache,
-                   int                        zoom);
-  void reportDone(ThreadPool::WeakQueue::Ptr wq, ConstTile::Ptr tile);
+  void computeBase(const ThreadPool::WeakQueue::Ptr& wq, ConstTile::Ptr tile, const LayerOperations::Ptr& lo);
+  void computeZoom(const ThreadPool::WeakQueue::Ptr& wq,
+                   ConstTile::Ptr                    tile,
+                   const LayerOperations::Ptr&       lo,
+                   Scroom::Utils::Stuff              baseCache,
+                   int                               zoom);
+  void reportDone(const ThreadPool::WeakQueue::Ptr& wq, const ConstTile::Ptr& tile);
   void clear();
 };

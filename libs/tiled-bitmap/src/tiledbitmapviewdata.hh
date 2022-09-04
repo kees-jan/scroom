@@ -61,7 +61,7 @@ private:
   boost::mutex mut;
 
 private:
-  explicit TiledBitmapViewData(ViewInterface::WeakPtr viewInterface);
+  explicit TiledBitmapViewData(const ViewInterface::WeakPtr& viewInterface);
 
 public:
   static Ptr create(ViewInterface::WeakPtr viewInterface);
@@ -69,7 +69,7 @@ public:
   void
     setNeededTiles(Layer::Ptr const& l, int imin, int imax, int jmin, int jmax, int zoom, LayerOperations::Ptr layerOperations);
   void resetNeededTiles();
-  void storeVolatileStuff(Scroom::Utils::Stuff stuff);
+  void storeVolatileStuff(const Scroom::Utils::Stuff& stuff);
   void clearVolatileStuff();
 
   // TileLoadingObserver ////////////////////////////////////////////////

@@ -7,6 +7,8 @@
 
 #include "queue.hh"
 
+#include <utility>
+
 using namespace Scroom::Detail::ThreadPool;
 
 ////////////////////////////////////////////////////////////////////////
@@ -51,7 +53,7 @@ int QueueImpl::getCount()
 ////////////////////////////////////////////////////////////////////////
 
 QueueLock::QueueLock(QueueImpl::Ptr queue)
-  : q(queue)
+  : q(std::move(queue))
   , isValid(q->jobStarted())
 {
 }
