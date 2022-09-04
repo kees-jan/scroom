@@ -56,11 +56,11 @@ TestData::TestData(DummyColormapProvider::Ptr       colormapProvider_,
   tbi_->open(vi);
 }
 
-TestData::Ptr TestData::create(DummyColormapProvider::Ptr colormapProvider,
-                               const LayerSpec&           ls,
-                               TiledBitmapInterface::Ptr  tbi,
-                               SourcePresentation::Ptr    sp,
-                               int                        zoom)
+TestData::Ptr TestData::create(DummyColormapProvider::Ptr       colormapProvider,
+                               const LayerSpec&                 ls,
+                               const TiledBitmapInterface::Ptr& tbi,
+                               SourcePresentation::Ptr          sp,
+                               int                              zoom)
 {
   return TestData::Ptr(new TestData(std::move(colormapProvider), ls, std::move(tbi), std::move(sp), zoom));
 }

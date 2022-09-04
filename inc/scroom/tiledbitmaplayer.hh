@@ -135,12 +135,12 @@ private:
                  TileStateInternal                             state);
 
 public:
-  static Ptr create(int                                    depth,
-                    int                                    x,
-                    int                                    y,
-                    int                                    bpp,
-                    Scroom::MemoryBlobs::PageProvider::Ptr provider,
-                    TileStateInternal                      state = TSI_UNINITIALIZED);
+  static Ptr create(int                                           depth,
+                    int                                           x,
+                    int                                           y,
+                    int                                           bpp,
+                    const Scroom::MemoryBlobs::PageProvider::Ptr& provider,
+                    TileStateInternal                             state = TSI_UNINITIALIZED);
 
   /**
    * Initializes the tile data

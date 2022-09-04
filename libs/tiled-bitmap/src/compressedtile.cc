@@ -29,12 +29,12 @@ CompressedTile::CompressedTile(int depth_, int x_, int y_, int bpp_, const PageP
 {
 }
 
-CompressedTile::Ptr CompressedTile::create(int                                    depth,
-                                           int                                    x,
-                                           int                                    y,
-                                           int                                    bpp,
-                                           Scroom::MemoryBlobs::PageProvider::Ptr provider,
-                                           TileStateInternal                      state)
+CompressedTile::Ptr CompressedTile::create(int                                           depth,
+                                           int                                           x,
+                                           int                                           y,
+                                           int                                           bpp,
+                                           const Scroom::MemoryBlobs::PageProvider::Ptr& provider,
+                                           TileStateInternal                             state)
 {
   CompressedTile::Ptr tile = CompressedTile::Ptr(new CompressedTile(depth, x, y, bpp, std::move(provider), state));
 

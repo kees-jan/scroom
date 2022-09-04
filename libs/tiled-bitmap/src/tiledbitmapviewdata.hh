@@ -64,7 +64,7 @@ private:
   explicit TiledBitmapViewData(const ViewInterface::WeakPtr& viewInterface);
 
 public:
-  static Ptr create(ViewInterface::WeakPtr viewInterface);
+  static Ptr create(const ViewInterface::WeakPtr& viewInterface);
 
   void
     setNeededTiles(Layer::Ptr const& l, int imin, int imax, int jmin, int jmax, int zoom, LayerOperations::Ptr layerOperations);

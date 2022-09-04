@@ -344,7 +344,7 @@ void ThreadPool::schedule(boost::function<void()> const& fn, int priority, const
   schedule(fn, priority, queue->getWeak());
 }
 
-void ThreadPool::schedule(boost::function<void()> const& fn, ThreadPool::Queue::Ptr queue)
+void ThreadPool::schedule(boost::function<void()> const& fn, const ThreadPool::Queue::Ptr& queue)
 {
   schedule(fn, defaultPriority, std::move(queue));
 }
@@ -357,7 +357,7 @@ void ThreadPool::schedule(boost::function<void()> const& fn, int priority, const
   priv->cond.notify_one();
 }
 
-void ThreadPool::schedule(boost::function<void()> const& fn, ThreadPool::WeakQueue::Ptr queue)
+void ThreadPool::schedule(boost::function<void()> const& fn, const ThreadPool::WeakQueue::Ptr& queue)
 {
   schedule(fn, defaultPriority, std::move(queue));
 }

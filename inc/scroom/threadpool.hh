@@ -299,7 +299,7 @@ public:
   void schedule(boost::function<void()> const& fn, int priority = defaultPriority, const Queue::Ptr& queue = defaultQueue());
 
   /** Schedule the given job at the given queue */
-  void schedule(boost::function<void()> const& fn, Queue::Ptr queue);
+  void schedule(boost::function<void()> const& fn, const Queue::Ptr& queue);
 
   /**
    * Schedule the given job at the given priority
@@ -307,7 +307,7 @@ public:
    * @pre T::operator()() must be defined
    */
   template <typename T>
-  void schedule(boost::shared_ptr<T> fn, int priority = defaultPriority, Queue::Ptr queue = defaultQueue());
+  void schedule(boost::shared_ptr<T> fn, int priority = defaultPriority, const Queue::Ptr& queue = defaultQueue());
 
   /**
    * Schedule the given job at the given priority
@@ -321,7 +321,7 @@ public:
   void schedule(boost::function<void()> const& fn, int priority, const WeakQueue::Ptr& queue);
 
   /** Schedule the given job at the given queue */
-  void schedule(boost::function<void()> const& fn, WeakQueue::Ptr queue);
+  void schedule(boost::function<void()> const& fn, const WeakQueue::Ptr& queue);
 
   /**
    * Schedule the given job at the given priority

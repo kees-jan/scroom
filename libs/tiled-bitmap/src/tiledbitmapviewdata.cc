@@ -17,7 +17,7 @@
 ////////////////////////////////////////////////////////////////////////
 // TiledBitmapViewData
 
-TiledBitmapViewData::Ptr TiledBitmapViewData::create(ViewInterface::WeakPtr viewInterface)
+TiledBitmapViewData::Ptr TiledBitmapViewData::create(const ViewInterface::WeakPtr& viewInterface)
 {
   return TiledBitmapViewData::Ptr(new TiledBitmapViewData(std::move(viewInterface)));
 }

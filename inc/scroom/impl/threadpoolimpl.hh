@@ -22,7 +22,7 @@ namespace
 } // namespace
 
 template <typename T>
-void ThreadPool::schedule(boost::shared_ptr<T> fn, int priority, ThreadPool::Queue::Ptr queue)
+void ThreadPool::schedule(boost::shared_ptr<T> fn, int priority, const ThreadPool::Queue::Ptr& queue)
 {
   schedule(fn, priority, queue->getWeak());
 }

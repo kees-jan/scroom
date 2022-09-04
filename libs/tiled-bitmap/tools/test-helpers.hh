@@ -61,11 +61,11 @@ private:
            int                              zoom);
 
 public:
-  static Ptr create(DummyColormapProvider::Ptr colormapProvider,
-                    const LayerSpec&           ls,
-                    TiledBitmapInterface::Ptr  tbi,
-                    SourcePresentation::Ptr    sp,
-                    int                        zoom);
+  static Ptr create(DummyColormapProvider::Ptr       colormapProvider,
+                    const LayerSpec&                 ls,
+                    const TiledBitmapInterface::Ptr& tbi,
+                    SourcePresentation::Ptr          sp,
+                    int                              zoom);
 
   ~TestData();
   TestData(const TestData&)           = delete;
