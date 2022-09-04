@@ -14,11 +14,11 @@
 namespace Scroom::Utils::Detail
 {
   /** Gets called when an assertion failed */
-  [[noreturn]] void assertionFailed(const std::string_view type,
-                                    const std::string_view expr,
-                                    const std::string_view function,
-                                    const std::string_view filename,
-                                    unsigned int           line) __attribute__((noreturn));
+  [[noreturn]] void assertionFailed(std::string_view type,
+                                    std::string_view expr,
+                                    std::string_view function,
+                                    std::string_view filename,
+                                    unsigned int     line) __attribute__((noreturn));
 } // namespace Scroom::Utils::Detail
 
 #ifdef _WIN32

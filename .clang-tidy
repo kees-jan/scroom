@@ -46,5 +46,6 @@ WarningsAsErrors: >
   readability-make-member-function-const,
   readability-redundant-member-init,
   readability-static-definition-in-anonymous-namespace,
+  readability-named-parameter,
 HeaderFilterRegex: 'inc/scroom|libs|gui|plugins'
 FormatStyle: file

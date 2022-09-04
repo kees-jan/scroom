@@ -89,7 +89,7 @@ public:
    *    to the value returned by cacheZoom()
    */
   virtual void draw(cairo_t*                         cr,
-                    const ConstTile::Ptr             tile,
+                    ConstTile::Ptr                   tile,
                     Scroom::Utils::Rectangle<double> tileArea,
                     Scroom::Utils::Rectangle<double> viewArea,
                     int                              zoom,
@@ -172,7 +172,7 @@ public:
    *    on the ::LayerSpec given to ::createTiledBitmap()
    *
    */
-  virtual void reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y) = 0;
+  virtual void reduce(Tile::Ptr target, ConstTile::Ptr source, int x, int y) = 0;
 };
 
 /**

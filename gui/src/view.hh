@@ -217,7 +217,7 @@ public:
   void                       registerPostRenderer(PostRenderer::Ptr renderer) override;
   void                       setStatusMessage(const std::string& message) override;
   PresentationInterface::Ptr getCurrentPresentation() override;
-  void                       addToolButton(GtkToggleButton*, ToolStateListener::Ptr) override;
+  void                       addToolButton(GtkToggleButton* /*button*/, ToolStateListener::Ptr /*callback*/) override;
 
   ////////////////////////////////////////////////////////////////////////
   // Helpers
