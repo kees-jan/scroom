@@ -50,5 +50,5 @@ private:
 public:
   ////////////////////////////////////////////////////////////////////////
   /// TileInitialisationObserver
-  void tileFinished(CompressedTile::Ptr tile) override;
+  void tileFinished(const CompressedTile::Ptr& tile) override;
 };

@@ -34,7 +34,7 @@ namespace Scroom::Detail::ThreadPool
     unsigned int            i;
 
   public:
-    FunctionMultiplier(boost::function<void()> const& f, unsigned int i);
+    FunctionMultiplier(boost::function<void()> f_, unsigned int i_);
 
     FunctionMultiplier& operator*(unsigned int i);
     void                operator()();

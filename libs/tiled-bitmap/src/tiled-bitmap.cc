@@ -314,13 +314,13 @@ void TiledBitmap::close(ViewInterface::WeakPtr vi)
 ////////////////////////////////////////////////////////////////////////
 // TileInitialisationObserver
 
-void TiledBitmap::tileCreated(CompressedTile::Ptr tile)
+void TiledBitmap::tileCreated(const CompressedTile::Ptr& tile)
 {
   UNUSED(tile);
   tileCount++;
 }
 
-void TiledBitmap::tileFinished(CompressedTile::Ptr tile)
+void TiledBitmap::tileFinished(const CompressedTile::Ptr& tile)
 {
   UNUSED(tile);
   boost::mutex::scoped_lock const lock(tileFinishedMutex);

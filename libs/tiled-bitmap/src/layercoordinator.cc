@@ -46,7 +46,7 @@ void LayerCoordinator::addSourceTile(int x, int y, const CompressedTile::Ptr& ti
 ////////////////////////////////////////////////////////////////////////
 /// TileInitialisationObserver
 
-void LayerCoordinator::tileFinished(CompressedTile::Ptr tile)
+void LayerCoordinator::tileFinished(const CompressedTile::Ptr& tile)
 {
   ConstTile::Ptr const tileData = tile->getConstTileAsync();
   require(tileData);

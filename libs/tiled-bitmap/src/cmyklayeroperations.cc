@@ -39,7 +39,7 @@ int OperationsCMYK32::getBpp() { return 32; }
 /**
  * Cache the given tile
  */
-Scroom::Utils::Stuff OperationsCMYK32::cache(const ConstTile::Ptr tile)
+Scroom::Utils::Stuff OperationsCMYK32::cache(const ConstTile::Ptr& tile)
 {
   // Allocate the space for the cache - stride is the height of one row
   const int                        stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
@@ -132,7 +132,7 @@ int OperationsCMYK16::getBpp() { return 16; }
 /**
  * Cache the given tile
  */
-Scroom::Utils::Stuff OperationsCMYK16::cache(const ConstTile::Ptr tile)
+Scroom::Utils::Stuff OperationsCMYK16::cache(const ConstTile::Ptr& tile)
 {
   // Allocate the space for the cache - stride is the height of one row
   const int                        stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
@@ -225,7 +225,7 @@ int OperationsCMYK8::getBpp() { return 8; }
 /**
  * Cache the given tile
  */
-Scroom::Utils::Stuff OperationsCMYK8::cache(const ConstTile::Ptr tile)
+Scroom::Utils::Stuff OperationsCMYK8::cache(const ConstTile::Ptr& tile)
 {
   // Allocate the space for the cache - stride is the height of one row
   const int                        stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
@@ -319,7 +319,7 @@ int OperationsCMYK4::getBpp()
 /**
  * Cache the given tile
  */
-Scroom::Utils::Stuff OperationsCMYK4::cache(const ConstTile::Ptr tile)
+Scroom::Utils::Stuff OperationsCMYK4::cache(const ConstTile::Ptr& tile)
 {
   // Allocate the space for the cache - stride is the height of one row
   const int                        stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);

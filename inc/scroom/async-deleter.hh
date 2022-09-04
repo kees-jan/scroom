@@ -9,14 +9,14 @@
 
 #include <scroom/threadpool.hh>
 
-namespace
+namespace Detail
 {
   template <typename T>
   void call_delete(T* p)
   {
     delete p;
   }
-} // namespace
+} // namespace Detail
 
 namespace Scroom::Detail::ThreadPool
 {
@@ -49,5 +49,5 @@ public:
   {
   }
 
-  void operator()(T* p) { deleter->schedule(boost::bind(&call_delete<T>, p)); }
+  void operator()(T* p) { deleter->schedule(boost::bind(&Detail::call_delete<T>, p)); }
 };

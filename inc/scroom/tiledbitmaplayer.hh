@@ -61,7 +61,7 @@ public:
    * @note This event will be sent using the thread that is
    *    registering the observer. Be careful with your mutexes :-)
    */
-  virtual void tileCreated(boost::shared_ptr<CompressedTile> tile);
+  virtual void tileCreated(const boost::shared_ptr<CompressedTile>& tile);
 
   /**
    * This event will be sent when the tile is completely filled with
@@ -71,7 +71,7 @@ public:
    * @note This event will be sent on the thread that is filling the
    *    tile with data.
    */
-  virtual void tileFinished(boost::shared_ptr<CompressedTile> tile);
+  virtual void tileFinished(const boost::shared_ptr<CompressedTile>& tile);
 };
 
 ////////////////////////////////////////////////////////////////////////

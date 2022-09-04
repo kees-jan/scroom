@@ -84,9 +84,9 @@ private:
    */
   void process(const ThreadPool::WeakQueue::Ptr& wq);
 
-  void computeBase(const ThreadPool::WeakQueue::Ptr& wq, ConstTile::Ptr tile, const LayerOperations::Ptr& lo);
+  void computeBase(const ThreadPool::WeakQueue::Ptr& wq, const ConstTile::Ptr& tile_, const LayerOperations::Ptr& lo_);
   void computeZoom(const ThreadPool::WeakQueue::Ptr& wq,
-                   ConstTile::Ptr                    tile,
+                   const ConstTile::Ptr&             tile,
                    const LayerOperations::Ptr&       lo,
                    Scroom::Utils::Stuff              baseCache,
                    int                               zoom);

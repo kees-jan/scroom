@@ -37,8 +37,8 @@ void Scroom::Detail::ThreadPool::FunctionAdditor::operator()()
 
 ////////////////////////////////////////////////////////////////////////
 
-Scroom::Detail::ThreadPool::FunctionMultiplier::FunctionMultiplier(boost::function<void()> const& f_, unsigned int i_)
-  : f(f_)
+Scroom::Detail::ThreadPool::FunctionMultiplier::FunctionMultiplier(boost::function<void()> f_, unsigned int i_)
+  : f(std::move(f_))
   , i(i_)
 {
 }

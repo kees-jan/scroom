@@ -21,7 +21,7 @@ public:
   int  getBpp() override { return 8; }
   void initializeCairo(cairo_t* /*cr*/) override {}
   void draw(cairo_t* /*cr*/,
-            const ConstTile::Ptr /*tile*/,
+            const ConstTile::Ptr& /*tile*/,
             Scroom::Utils::Rectangle<double> /*tileArea*/,
             Scroom::Utils::Rectangle<double> /*viewArea*/,
             int /*zoom*/,

@@ -88,8 +88,8 @@ public:
   ////////////////////////////////////////////////////////////////////////
   // TileInitialisationObserver
 
-  void tileCreated(CompressedTile::Ptr tile) override;
-  void tileFinished(CompressedTile::Ptr tile) override;
+  void tileCreated(const CompressedTile::Ptr& tile) override;
+  void tileFinished(const CompressedTile::Ptr& tile) override;
 
   ////////////////////////////////////////////////////////////////////////
   // Helpers

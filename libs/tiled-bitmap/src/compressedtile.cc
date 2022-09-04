@@ -286,6 +286,6 @@ void CompressedTile::close(ViewInterface::WeakPtr vi) { viewStates.erase(vi); }
 ////////////////////////////////////////////////////////////////////////
 /// TileInitialisationObserver
 
-void TileInitialisationObserver::tileFinished(CompressedTile::Ptr /*unused*/) {}
+void TileInitialisationObserver::tileFinished(const CompressedTile::Ptr& /*unused*/) {}
 
-void TileInitialisationObserver::tileCreated(CompressedTile::Ptr /*unused*/) {}
+void TileInitialisationObserver::tileCreated(const CompressedTile::Ptr& /*unused*/) {}

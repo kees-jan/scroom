@@ -22,11 +22,11 @@ inline uint8_t  byteFromDouble(double d) { return uint8_t(255 * d); }
 inline double   doubleFromByte(uint8_t b) { return b / 255.0; }
 inline uint16_t shortFromDouble(double d) { return uint16_t(0xFFFF * d); }
 
-namespace
+namespace Detail
 {
   // see http://stackoverflow.com/a/3943023
-  double computeC(double c) { return c <= 0.03928 ? c / 12.92 : pow((c + 0.055) / 1.055, 2.4); }
-} // namespace
+  inline double computeC(double c) { return c <= 0.03928 ? c / 12.92 : pow((c + 0.055) / 1.055, 2.4); }
+} // namespace Detail
 
 /**
  * Represent a (ARGB) color
@@ -121,7 +121,7 @@ public:
   [[nodiscard]] Color getContrastingBlackOrWhite() const
   {
     // see http://stackoverflow.com/a/3943023
-    const double L = 0.2126 * computeC(red) + 0.7152 * computeC(green) + 0.0722 * computeC(blue);
+    const double L = 0.2126 * Detail::computeC(red) + 0.7152 * Detail::computeC(green) + 0.0722 * Detail::computeC(blue);
     return Color(L > 0.179 ? 0 : 1);
   }
 

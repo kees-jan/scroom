@@ -124,7 +124,7 @@ void CommonOperations::drawPixelValue(cairo_t* cr, int x, int y, int size, int v
   drawPixelValue(cr, x, y, size, value);
 }
 
-Scroom::Utils::Stuff CommonOperations::cacheZoom(const ConstTile::Ptr tile, int zoom, Scroom::Utils::Stuff cache)
+Scroom::Utils::Stuff CommonOperations::cacheZoom(const ConstTile::Ptr& tile, int zoom, Stuff& cache)
 {
   // In: Cairo surface at zoom level 0
   // Out: Cairo surface at requested zoom level
@@ -159,7 +159,7 @@ Scroom::Utils::Stuff CommonOperations::cacheZoom(const ConstTile::Ptr tile, int 
 }
 
 void CommonOperations::draw(cairo_t*                         cr,
-                            const ConstTile::Ptr             tile,
+                            const ConstTile::Ptr&            tile,
                             Scroom::Utils::Rectangle<double> tileArea,
                             Scroom::Utils::Rectangle<double> viewArea,
                             int                              zoom,
@@ -271,7 +271,7 @@ Operations1bpp::Operations1bpp(ColormapProvider::Ptr colormapProvider_)
 
 int Operations1bpp::getBpp() { return 1; }
 
-Scroom::Utils::Stuff Operations1bpp::cache(const ConstTile::Ptr tile)
+Scroom::Utils::Stuff Operations1bpp::cache(const ConstTile::Ptr& tile)
 {
   const int                              stride   = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
   boost::shared_ptr<unsigned char> const data     = shared_malloc(stride * tile->height);
@@ -330,7 +330,7 @@ void Operations1bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x
 }
 
 void Operations1bpp::draw(cairo_t*                         cr,
-                          const ConstTile::Ptr             tile,
+                          const ConstTile::Ptr&            tile,
                           Scroom::Utils::Rectangle<double> tileArea,
                           Scroom::Utils::Rectangle<double> viewArea,
                           int                              zoom,
@@ -387,7 +387,7 @@ Operations8bpp::Operations8bpp(ColormapProvider::Ptr colormapProvider_)
 
 int Operations8bpp::getBpp() { return 8; }
 
-Scroom::Utils::Stuff Operations8bpp::cache(const ConstTile::Ptr tile)
+Scroom::Utils::Stuff Operations8bpp::cache(const ConstTile::Ptr& tile)
 {
   const int                              stride   = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
   boost::shared_ptr<unsigned char> const data     = shared_malloc(stride * tile->height);
@@ -450,7 +450,7 @@ void Operations8bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x
 }
 
 void Operations8bpp::draw(cairo_t*                         cr,
-                          const ConstTile::Ptr             tile,
+                          const ConstTile::Ptr&            tile,
                           Scroom::Utils::Rectangle<double> tileArea,
                           Scroom::Utils::Rectangle<double> viewArea,
                           int                              zoom,
@@ -504,7 +504,7 @@ Operations24bpp::Operations24bpp()
 
 int Operations24bpp::getBpp() { return 24; }
 
-Scroom::Utils::Stuff Operations24bpp::cache(const ConstTile::Ptr tile)
+Scroom::Utils::Stuff Operations24bpp::cache(const ConstTile::Ptr& tile)
 {
   const int                              stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
   boost::shared_ptr<unsigned char> const data   = shared_malloc(stride * tile->height);
@@ -587,7 +587,7 @@ Operations::Operations(ColormapProvider::Ptr colormapProvider_, int bpp_)
 
 int Operations::getBpp() { return bpp; }
 
-Scroom::Utils::Stuff Operations::cache(const ConstTile::Ptr tile)
+Scroom::Utils::Stuff Operations::cache(const ConstTile::Ptr& tile)
 {
   const int                              stride   = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
   boost::shared_ptr<unsigned char> const data     = shared_malloc(stride * tile->height);
@@ -675,7 +675,7 @@ void Operations::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, in
 }
 
 void Operations::draw(cairo_t*                         cr,
-                      const ConstTile::Ptr             tile,
+                      const ConstTile::Ptr&            tile,
                       Scroom::Utils::Rectangle<double> tileArea,
                       Scroom::Utils::Rectangle<double> viewArea,
                       int                              zoom,
@@ -732,7 +732,7 @@ OperationsColormapped::OperationsColormapped(ColormapProvider::Ptr colormapProvi
 
 int OperationsColormapped::getBpp() { return 2 * bpp; }
 
-Scroom::Utils::Stuff OperationsColormapped::cache(const ConstTile::Ptr tile)
+Scroom::Utils::Stuff OperationsColormapped::cache(const ConstTile::Ptr& tile)
 {
   const int                              stride     = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
   boost::shared_ptr<unsigned char> const data       = shared_malloc(stride * tile->height);
@@ -837,7 +837,7 @@ Operations1bppClipped::Operations1bppClipped(ColormapProvider::Ptr colormapProvi
 
 int Operations1bppClipped::getBpp() { return 1; }
 
-Scroom::Utils::Stuff Operations1bppClipped::cacheZoom(const ConstTile::Ptr tile, int zoom, Scroom::Utils::Stuff cache)
+Scroom::Utils::Stuff Operations1bppClipped::cacheZoom(const ConstTile::Ptr& tile, int zoom, Stuff& cache)
 {
   UNUSED(cache);
 

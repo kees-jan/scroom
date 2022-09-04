@@ -182,9 +182,11 @@ void TileViewState::process(const ThreadPool::WeakQueue::Ptr& wq)
   }
 }
 
-void TileViewState::computeBase(const ThreadPool::WeakQueue::Ptr& wq, ConstTile::Ptr tile_, const LayerOperations::Ptr& lo_)
+void TileViewState::computeBase(const ThreadPool::WeakQueue::Ptr& wq,
+                                const ConstTile::Ptr&             tile_,
+                                const LayerOperations::Ptr&       lo_)
 {
-  Scroom::Utils::Stuff const baseCache_ = lo_->cache(std::move(tile_));
+  Scroom::Utils::Stuff const baseCache_ = lo_->cache(tile_);
 
   boost::mutex::scoped_lock const l(mut);
   TiledBitmapViewData::Ptr const  tbvd_ = tbvd.lock();
@@ -197,12 +199,12 @@ void TileViewState::computeBase(const ThreadPool::WeakQueue::Ptr& wq, ConstTile:
 }
 
 void TileViewState::computeZoom(const ThreadPool::WeakQueue::Ptr& wq,
-                                ConstTile::Ptr                    tile_,
+                                const ConstTile::Ptr&             tile_,
                                 const LayerOperations::Ptr&       lo_,
                                 Scroom::Utils::Stuff              baseCache_,
                                 int                               zoom_)
 {
-  Scroom::Utils::Stuff const zoomCache_ = lo_->cacheZoom(std::move(tile_), zoom_, std::move(baseCache_));
+  Scroom::Utils::Stuff const zoomCache_ = lo_->cacheZoom(tile_, zoom_, baseCache_);
 
   boost::mutex::scoped_lock const l(mut);
   TiledBitmapViewData::Ptr const  tbvd_ = tbvd.lock();

@@ -89,7 +89,7 @@ public:
    *    to the value returned by cacheZoom()
    */
   virtual void draw(cairo_t*                         cr,
-                    ConstTile::Ptr                   tile,
+                    const ConstTile::Ptr&            tile,
                     Scroom::Utils::Rectangle<double> tileArea,
                     Scroom::Utils::Rectangle<double> viewArea,
                     int                              zoom,
@@ -123,7 +123,7 @@ public:
    *
    * @param tile the Tile for which caching is requested
    */
-  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr tile)
+  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr& tile)
   {
     UNUSED(tile);
     return {};
@@ -147,7 +147,7 @@ public:
    * @param zoom the requested zoom level
    * @param cache the output of cache(const ConstTile::Ptr)
    */
-  virtual Scroom::Utils::Stuff cacheZoom(const ConstTile::Ptr tile, int zoom, Scroom::Utils::Stuff cache)
+  virtual Scroom::Utils::Stuff cacheZoom(const ConstTile::Ptr& tile, int zoom, Scroom::Utils::Stuff& cache)
   {
     UNUSED(tile);
     UNUSED(zoom);
