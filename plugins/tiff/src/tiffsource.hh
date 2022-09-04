@@ -23,38 +23,35 @@
 #include <scroom/tiledbitmapinterface.hh>
 #include <scroom/transformpresentation.hh>
 
-namespace Scroom
+namespace Scroom::Tiff
 {
-  namespace Tiff
+  using TIFFPtr = boost::shared_ptr<TIFF>;
+
+  using namespace Scroom::TiledBitmap;
+
+  boost::optional<std::tuple<Scroom::TiledBitmap::BitmapMetaData, TIFFPtr>> open(const std::string& fileName);
+
+  class Source : public SourcePresentation
   {
-    using TIFFPtr = boost::shared_ptr<TIFF>;
+  private:
+    std::string    fileName;
+    TIFFPtr        preOpenedTif;
+    TIFFPtr        tif;
+    BitmapMetaData bmd;
 
-    using namespace Scroom::TiledBitmap;
+  public:
+    using Ptr = boost::shared_ptr<Source>;
 
-    boost::optional<std::tuple<Scroom::TiledBitmap::BitmapMetaData, TIFFPtr>> open(const std::string& fileName);
+    static Ptr create(std::string fileName, TIFFPtr tif, BitmapMetaData bmd);
 
-    class Source : public SourcePresentation
-    {
-    private:
-      std::string    fileName;
-      TIFFPtr        preOpenedTif;
-      TIFFPtr        tif;
-      BitmapMetaData bmd;
+    bool reset();
 
-    public:
-      using Ptr = boost::shared_ptr<Source>;
+    // SourcePresenentation
+    void        fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles) override;
+    void        done() override;
+    std::string getName() override { return fileName; }
 
-      static Ptr create(std::string fileName, TIFFPtr tif, BitmapMetaData bmd);
-
-      bool reset();
-
-      // SourcePresenentation
-      void        fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles) override;
-      void        done() override;
-      std::string getName() override { return fileName; }
-
-    private:
-      Source(std::string fileName, TIFFPtr tif, BitmapMetaData bmd);
-    };
-  } // namespace Tiff
-} // namespace Scroom
+  private:
+    Source(std::string fileName, TIFFPtr tif, BitmapMetaData bmd);
+  };
+} // namespace Scroom::Tiff

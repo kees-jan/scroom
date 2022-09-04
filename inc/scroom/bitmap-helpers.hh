@@ -17,148 +17,145 @@
 
 #include <scroom/global.hh>
 
-namespace Scroom
+namespace Scroom::Bitmap
 {
-  namespace Bitmap
+  class BitmapSurface
   {
-    class BitmapSurface
+  public:
+    using Ptr = boost::shared_ptr<BitmapSurface>;
+
+  private:
+    cairo_surface_t* const                 surface;
+    boost::shared_ptr<unsigned char> const data;
+
+  public:
+    static Ptr create(int width, int height, cairo_format_t format);
+    static Ptr create(int width, int height, cairo_format_t format, int stride, boost::shared_ptr<unsigned char> const& data);
+
+    ~BitmapSurface();
+    BitmapSurface(const BitmapSurface&)            = delete;
+    BitmapSurface(BitmapSurface&&)                 = delete;
+    BitmapSurface& operator=(const BitmapSurface&) = delete;
+    BitmapSurface& operator=(BitmapSurface&&)      = delete;
+
+    cairo_surface_t* get();
+
+  private:
+    BitmapSurface(int width, int height, cairo_format_t format);
+    BitmapSurface(int width, int height, cairo_format_t format, int stride, boost::shared_ptr<unsigned char> const& data);
+  };
+
+  ////////////////////////////////////////////////////////////////////////
+  // SampleIterator
+
+  /**
+   * Iterate over samples (bits) within a larger type, for example a byte
+   *
+   * Allows you to extract (or set) specific bits in a larger datatype,
+   * as well as iterate over samples within the larger datatype, or even
+   * continuing with the next, if you reach the end of the current one
+   *
+   * @param Base the larger type that contains the samples. Typically uint8_t
+   */
+  template <typename ConstBase>
+  class SampleIterator : public boost::addable2<SampleIterator<ConstBase>, unsigned int>
+  {
+  public:
+    using Base = typename std::remove_const<ConstBase>::type;
+
+    static const int bitsPerBase{8 * sizeof(ConstBase) / sizeof(byte)};
+
+    const int       bps;
+    const int       samplesPerBase;
+    const int       pixelOffset;
+    const ConstBase pixelMask;
+
+    ConstBase* currentBase;
+    int        currentOffset;
+
+  private:
+    static Base mask(int bps) { return (((ConstBase(1) << (bps - 1)) - 1) << 1) | 1; }
+
+    SampleIterator(div_t d, ConstBase* base, int bps_)
+      : bps(bps_)
+      , samplesPerBase(bitsPerBase / bps)
+      , pixelOffset(bps)
+      , pixelMask(mask(bps))
+      , currentBase(base + d.quot)
+      , currentOffset(samplesPerBase - 1 - d.rem)
     {
-    public:
-      using Ptr = boost::shared_ptr<BitmapSurface>;
+    }
 
-    private:
-      cairo_surface_t* const                 surface;
-      boost::shared_ptr<unsigned char> const data;
-
-    public:
-      static Ptr create(int width, int height, cairo_format_t format);
-      static Ptr create(int width, int height, cairo_format_t format, int stride, boost::shared_ptr<unsigned char> const& data);
-
-      ~BitmapSurface();
-      BitmapSurface(const BitmapSurface&)            = delete;
-      BitmapSurface(BitmapSurface&&)                 = delete;
-      BitmapSurface& operator=(const BitmapSurface&) = delete;
-      BitmapSurface& operator=(BitmapSurface&&)      = delete;
-
-      cairo_surface_t* get();
-
-    private:
-      BitmapSurface(int width, int height, cairo_format_t format);
-      BitmapSurface(int width, int height, cairo_format_t format, int stride, boost::shared_ptr<unsigned char> const& data);
-    };
-
-    ////////////////////////////////////////////////////////////////////////
-    // SampleIterator
-
+  public:
     /**
-     * Iterate over samples (bits) within a larger type, for example a byte
+     * Construct a new SampleIterator
      *
-     * Allows you to extract (or set) specific bits in a larger datatype,
-     * as well as iterate over samples within the larger datatype, or even
-     * continuing with the next, if you reach the end of the current one
-     *
-     * @param Base the larger type that contains the samples. Typically uint8_t
+     * @param base Pointer to the element that contains the current sample
+     * @param offset number of the sample within that element
+     * @param bps Number of bits per sample
      */
-    template <typename ConstBase>
-    class SampleIterator : public boost::addable2<SampleIterator<ConstBase>, unsigned int>
+    // https://bugs.llvm.org/show_bug.cgi?id=37902
+    // NOLINTNEXTLINE (cppcoreguidelines-pro-type-member-init,hicpp-member-init)
+    explicit SampleIterator(ConstBase* base, int offset = 0, int bps_ = 1)
+      : SampleIterator(div(offset, /* samplesPerBase */ bitsPerBase / bps_), base, bps_)
     {
-    public:
-      using Base = typename std::remove_const<ConstBase>::type;
+    }
 
-      static const int bitsPerBase{8 * sizeof(ConstBase) / sizeof(byte)};
+    /** Get the value of the current sample */
+    Base get() { return (*currentBase >> (currentOffset * pixelOffset)) & pixelMask; }
 
-      const int       bps;
-      const int       samplesPerBase;
-      const int       pixelOffset;
-      const ConstBase pixelMask;
+    /** Set the value of the current sample */
+    void set(ConstBase value)
+    {
+      *currentBase = (*currentBase & ~(pixelMask << currentOffset * pixelOffset)) | (value << (currentOffset * pixelOffset));
+    }
 
-      ConstBase* currentBase;
-      int        currentOffset;
-
-    private:
-      static Base mask(int bps) { return (((ConstBase(1) << (bps - 1)) - 1) << 1) | 1; }
-
-      SampleIterator(div_t d, ConstBase* base, int bps_)
-        : bps(bps_)
-        , samplesPerBase(bitsPerBase / bps)
-        , pixelOffset(bps)
-        , pixelMask(mask(bps))
-        , currentBase(base + d.quot)
-        , currentOffset(samplesPerBase - 1 - d.rem)
+    /** Move to the next sample */
+    SampleIterator& operator++()
+    {
+      // Prefix operator
+      if(!(currentOffset--))
       {
+        currentOffset = samplesPerBase - 1;
+        ++currentBase;
       }
 
-    public:
-      /**
-       * Construct a new SampleIterator
-       *
-       * @param base Pointer to the element that contains the current sample
-       * @param offset number of the sample within that element
-       * @param bps Number of bits per sample
-       */
-      // https://bugs.llvm.org/show_bug.cgi?id=37902
-      // NOLINTNEXTLINE (cppcoreguidelines-pro-type-member-init,hicpp-member-init)
-      explicit SampleIterator(ConstBase* base, int offset = 0, int bps_ = 1)
-        : SampleIterator(div(offset, /* samplesPerBase */ bitsPerBase / bps_), base, bps_)
+      return *this;
+    }
+
+    /** Move to the next sample */
+    SampleIterator operator++(int)
+    {
+      // Postfix operator
+      SampleIterator<ConstBase> result = *this;
+
+      if(!(currentOffset--))
       {
+        currentOffset = samplesPerBase - 1;
+        ++currentBase;
       }
 
-      /** Get the value of the current sample */
-      Base get() { return (*currentBase >> (currentOffset * pixelOffset)) & pixelMask; }
+      return result;
+    }
 
-      /** Set the value of the current sample */
-      void set(ConstBase value)
-      {
-        *currentBase = (*currentBase & ~(pixelMask << currentOffset * pixelOffset)) | (value << (currentOffset * pixelOffset));
-      }
+    /** Move @c x samples further */
+    SampleIterator& operator+=(unsigned int x)
+    {
+      int   offset = samplesPerBase - 1 - currentOffset + x;
+      div_t d      = div(offset, samplesPerBase);
+      currentBase += d.quot;
+      currentOffset = samplesPerBase - 1 - d.rem;
 
-      /** Move to the next sample */
-      SampleIterator& operator++()
-      {
-        // Prefix operator
-        if(!(currentOffset--))
-        {
-          currentOffset = samplesPerBase - 1;
-          ++currentBase;
-        }
+      return *this;
+    }
 
-        return *this;
-      }
+    /** Get the value of the current sample */
+    Base operator*() { return (*currentBase >> (currentOffset * pixelOffset)) & pixelMask; }
 
-      /** Move to the next sample */
-      SampleIterator operator++(int)
-      {
-        // Postfix operator
-        SampleIterator<ConstBase> result = *this;
+    bool operator==(const SampleIterator<ConstBase>& other) const
+    {
+      return currentBase == other.currentBase && currentOffset == other.currentOffset && bps == other.bps;
+    }
+  };
 
-        if(!(currentOffset--))
-        {
-          currentOffset = samplesPerBase - 1;
-          ++currentBase;
-        }
-
-        return result;
-      }
-
-      /** Move @c x samples further */
-      SampleIterator& operator+=(unsigned int x)
-      {
-        int   offset = samplesPerBase - 1 - currentOffset + x;
-        div_t d      = div(offset, samplesPerBase);
-        currentBase += d.quot;
-        currentOffset = samplesPerBase - 1 - d.rem;
-
-        return *this;
-      }
-
-      /** Get the value of the current sample */
-      Base operator*() { return (*currentBase >> (currentOffset * pixelOffset)) & pixelMask; }
-
-      bool operator==(const SampleIterator<ConstBase>& other) const
-      {
-        return currentBase == other.currentBase && currentOffset == other.currentOffset && bps == other.bps;
-      }
-    };
-
-  } // namespace Bitmap
-} // namespace Scroom
+} // namespace Scroom::Bitmap

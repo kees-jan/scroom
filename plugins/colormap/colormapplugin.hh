@@ -15,37 +15,34 @@
 #include <scroom/scroominterface.hh>
 #include <scroom/utilities.hh>
 
-namespace Scroom
-{
-  namespace ColormapImpl
-  { /**
-     * Register the ColormapPlugin, keep track of PresentationInterface instances
-     */
-    class ColormapPlugin
-      : public PluginInformationInterface
-      , public PresentationObserver
-      , virtual public Scroom::Utils::Base
-    {
-    public:
-      using Ptr = boost::shared_ptr<ColormapPlugin>;
+namespace Scroom::ColormapImpl
+{ /**
+   * Register the ColormapPlugin, keep track of PresentationInterface instances
+   */
+  class ColormapPlugin
+    : public PluginInformationInterface
+    , public PresentationObserver
+    , virtual public Scroom::Utils::Base
+  {
+  public:
+    using Ptr = boost::shared_ptr<ColormapPlugin>;
 
-    private:
-      std::list<PresentationInterface::WeakPtr> presentations;
+  private:
+    std::list<PresentationInterface::WeakPtr> presentations;
 
-    private:
-      ColormapPlugin() = default;
+  private:
+    ColormapPlugin() = default;
 
-    public:
-      static Ptr create();
+  public:
+    static Ptr create();
 
-    public:
-      std::string getPluginName() override;
-      std::string getPluginVersion() override;
-      void        registerCapabilities(ScroomPluginInterface::Ptr host) override;
+  public:
+    std::string getPluginName() override;
+    std::string getPluginVersion() override;
+    void        registerCapabilities(ScroomPluginInterface::Ptr host) override;
 
-      void presentationAdded(PresentationInterface::Ptr p) override;
-      void presentationDeleted() override;
-    };
+    void presentationAdded(PresentationInterface::Ptr p) override;
+    void presentationDeleted() override;
+  };
 
-  } // namespace ColormapImpl
-} // namespace Scroom
+} // namespace Scroom::ColormapImpl

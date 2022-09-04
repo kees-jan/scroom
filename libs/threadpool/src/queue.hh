@@ -9,78 +9,72 @@
 
 #include <scroom/threadpool.hh>
 
-namespace Scroom
+namespace Scroom::Detail::ThreadPool
 {
-  namespace Detail
+  /**
+   * ThreadPool::Queue implementation class.
+   *
+   * Keeps track of whether the actual ThreadPool::Queue still exists,
+   * and whether jobs are currently being executed. When the last reference
+   * to the ThreadPool::Queue is being deleted, it calls deletingQueue(),
+   * which blocks until all jobs finish executing.
+   */
+  class QueueImpl
   {
-    namespace ThreadPool
-    {
-      /**
-       * ThreadPool::Queue implementation class.
-       *
-       * Keeps track of whether the actual ThreadPool::Queue still exists,
-       * and whether jobs are currently being executed. When the last reference
-       * to the ThreadPool::Queue is being deleted, it calls deletingQueue(),
-       * which blocks until all jobs finish executing.
-       */
-      class QueueImpl
-      {
-      public:
-        using Ptr = boost::shared_ptr<QueueImpl>;
+  public:
+    using Ptr = boost::shared_ptr<QueueImpl>;
 
-        static Ptr create();
+    static Ptr create();
 
-        /**
-         * Indicate that a job is being started
-         *
-         * @retval true if the ThreadPool::Queue still exists
-         * @retval false if the ThreadPool::Queue has been deleted
-         */
-        bool jobStarted();
+    /**
+     * Indicate that a job is being started
+     *
+     * @retval true if the ThreadPool::Queue still exists
+     * @retval false if the ThreadPool::Queue has been deleted
+     */
+    bool jobStarted();
 
-        /** Indicate that a job is finished */
-        void jobFinished();
+    /** Indicate that a job is finished */
+    void jobFinished();
 
-        /**
-         * Indicate that the ThreadPool::Queue is being deleted
-         *
-         * This sets @c isDeleted to @c true and blocks until all jobs have finished executing.
-         */
-        void deletingQueue();
+    /**
+     * Indicate that the ThreadPool::Queue is being deleted
+     *
+     * This sets @c isDeleted to @c true and blocks until all jobs have finished executing.
+     */
+    void deletingQueue();
 
-        /** Return the number of jobs currently running. Used for testing */
-        int getCount();
+    /** Return the number of jobs currently running. Used for testing */
+    int getCount();
 
-      private:
-        boost::mutex              mut;              /**< Guard internal data */
-        boost::condition_variable cond;             /**< Gets signaled when a job completes */
-        unsigned int              count{0};         /**< Number of jobs currently running */
-        bool                      isDeleted{false}; /**< @c true if the last reference to ThreadPool::Queue goes away */
+  private:
+    boost::mutex              mut;              /**< Guard internal data */
+    boost::condition_variable cond;             /**< Gets signaled when a job completes */
+    unsigned int              count{0};         /**< Number of jobs currently running */
+    bool                      isDeleted{false}; /**< @c true if the last reference to ThreadPool::Queue goes away */
 
-      private:
-        QueueImpl() = default;
-      };
+  private:
+    QueueImpl() = default;
+  };
 
-      /**
-       * Call Queue::jobStarted() and Queue::jobFinished().
-       */
-      class QueueLock
-      {
-        QueueImpl::Ptr q;       /**< Reference to our QueueImpl */
-        bool           isValid; /**< @c true if there are still references to the ThreadPool::Queue associated with @c q */
+  /**
+   * Call Queue::jobStarted() and Queue::jobFinished().
+   */
+  class QueueLock
+  {
+    QueueImpl::Ptr q;       /**< Reference to our QueueImpl */
+    bool           isValid; /**< @c true if there are still references to the ThreadPool::Queue associated with @c q */
 
-      public:
-        QueueLock(QueueImpl::Ptr queue);
-        QueueLock(const QueueLock&)            = delete;
-        QueueLock(QueueLock&&)                 = delete;
-        QueueLock& operator=(const QueueLock&) = delete;
-        QueueLock& operator=(QueueLock&&)      = delete;
-        ~QueueLock();
+  public:
+    QueueLock(QueueImpl::Ptr queue);
+    QueueLock(const QueueLock&)            = delete;
+    QueueLock(QueueLock&&)                 = delete;
+    QueueLock& operator=(const QueueLock&) = delete;
+    QueueLock& operator=(QueueLock&&)      = delete;
+    ~QueueLock();
 
-        /** Return @c true if there are still references to the ThreadPool::Queue associated with @c q */
-        [[nodiscard]] bool queueExists() const;
-      };
+    /** Return @c true if there are still references to the ThreadPool::Queue associated with @c q */
+    [[nodiscard]] bool queueExists() const;
+  };
 
-    } // namespace ThreadPool
-  }   // namespace Detail
-} // namespace Scroom
+} // namespace Scroom::Detail::ThreadPool

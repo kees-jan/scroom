@@ -11,41 +11,35 @@
 
 #include <boost/function.hpp>
 
-namespace Scroom
+namespace Scroom::Detail::ThreadPool
 {
-  namespace Detail
+  class FunctionAdditor
   {
-    namespace ThreadPool
-    {
-      class FunctionAdditor
-      {
-      private:
-        std::list<boost::function<void()>> functions;
+  private:
+    std::list<boost::function<void()>> functions;
 
-      public:
-        void addBefore(boost::function<void()> const& fn);
-        void addAfter(boost::function<void()> const& fn);
+  public:
+    void addBefore(boost::function<void()> const& fn);
+    void addAfter(boost::function<void()> const& fn);
 
-        FunctionAdditor& operator+(boost::function<void()> const& fn);
-        FunctionAdditor& operator+=(boost::function<void()> const& fn);
-        void             operator()();
-      };
+    FunctionAdditor& operator+(boost::function<void()> const& fn);
+    FunctionAdditor& operator+=(boost::function<void()> const& fn);
+    void             operator()();
+  };
 
-      class FunctionMultiplier
-      {
-      private:
-        boost::function<void()> f;
-        unsigned int            i;
+  class FunctionMultiplier
+  {
+  private:
+    boost::function<void()> f;
+    unsigned int            i;
 
-      public:
-        FunctionMultiplier(boost::function<void()> const& f, unsigned int i);
+  public:
+    FunctionMultiplier(boost::function<void()> const& f, unsigned int i);
 
-        FunctionMultiplier& operator*(unsigned int i);
-        void                operator()();
-      };
-    } // namespace ThreadPool
-  }   // namespace Detail
-} // namespace Scroom
+    FunctionMultiplier& operator*(unsigned int i);
+    void                operator()();
+  };
+} // namespace Scroom::Detail::ThreadPool
 
 Scroom::Detail::ThreadPool::FunctionAdditor     operator+(boost::function<void()> const& f1, boost::function<void()> const& f2);
 Scroom::Detail::ThreadPool::FunctionAdditor&    operator+(boost::function<void()> const&               f1,

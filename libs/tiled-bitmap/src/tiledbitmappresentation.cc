@@ -419,13 +419,10 @@ namespace
   }
 } // namespace
 
-namespace Scroom
+namespace Scroom::TiledBitmap
 {
-  namespace TiledBitmap
+  OpenPresentationInterface::Ptr ToOpenPresentationInterface(OpenTiledBitmapInterface::Ptr openTiledBitmapInterface)
   {
-    OpenPresentationInterface::Ptr ToOpenPresentationInterface(OpenTiledBitmapInterface::Ptr openTiledBitmapInterface)
-    {
-      return OpenTiledBitmapAsPresentation::create(std::move(openTiledBitmapInterface));
-    }
-  } // namespace TiledBitmap
-} // namespace Scroom
+    return OpenTiledBitmapAsPresentation::create(std::move(openTiledBitmapInterface));
+  }
+} // namespace Scroom::TiledBitmap

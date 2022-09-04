@@ -32,16 +32,10 @@ enum
   PRIO_LOWEST,
 };
 
-namespace Scroom
+namespace Scroom::Detail::ThreadPool
 {
-  namespace Detail
-  {
-    namespace ThreadPool
-    {
-      class QueueImpl;
-    }
-  } // namespace Detail
-} // namespace Scroom
+  class QueueImpl;
+} // namespace Scroom::Detail::ThreadPool
 
 /**
  * Generic threadpool

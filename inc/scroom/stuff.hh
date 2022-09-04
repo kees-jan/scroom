@@ -12,15 +12,12 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
 
-namespace Scroom
+namespace Scroom::Utils
 {
-  namespace Utils
-  {
-    /** Stuff is a pointer to some private data. */
-    using Stuff     = boost::shared_ptr<void>;
-    using StuffWeak = boost::weak_ptr<void>;
-    using StuffList = std::list<Stuff>;
+  /** Stuff is a pointer to some private data. */
+  using Stuff     = boost::shared_ptr<void>;
+  using StuffWeak = boost::weak_ptr<void>;
+  using StuffList = std::list<Stuff>;
 
-    inline Stuff Empty() { return Stuff(); }
-  } // namespace Utils
-} // namespace Scroom
+  inline Stuff Empty() { return Stuff(); }
+} // namespace Scroom::Utils

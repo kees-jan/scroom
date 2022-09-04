@@ -61,13 +61,10 @@ public:
   virtual PresentationInterface::Ptr open(const std::string& fileName) = 0;
 };
 
-namespace Scroom
+namespace Scroom::TiledBitmap
 {
-  namespace TiledBitmap
-  {
-    class OpenTiledBitmapInterface;
-  }
-} // namespace Scroom
+  class OpenTiledBitmapInterface;
+} // namespace Scroom::TiledBitmap
 
 class OpenInterface : private Interface
 {

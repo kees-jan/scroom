@@ -13,45 +13,42 @@
 
 #include <scroom/colormappable.hh>
 
-namespace Scroom
+namespace Scroom::ColormapImpl
 {
-  namespace ColormapImpl
+  /**
+   * Manage the list of colormap files.
+   *
+   * Upon request, load the selected file, producing a Colormap object.
+   *
+   * This is a singleton object.
+   */
+  class Colormaps
   {
+  private:
+    std::list<Colormap::ConstPtr> colormaps;
+
+  private:
+    /** Constructor */
+    Colormaps();
+
+  public:
+    /** Get a reference to the instance */
+    static Colormaps& getInstance();
+
     /**
-     * Manage the list of colormap files.
-     *
-     * Upon request, load the selected file, producing a Colormap object.
-     *
-     * This is a singleton object.
+     * Get a copy of the list of Colormap objects.
      */
-    class Colormaps
-    {
-    private:
-      std::list<Colormap::ConstPtr> colormaps;
+    std::list<Colormap::ConstPtr> getColormaps();
 
-    private:
-      /** Constructor */
-      Colormaps();
+    /**
+     * Get the path where the colormap files are located
+     */
+    static char* getColormapDirPath();
 
-    public:
-      /** Get a reference to the instance */
-      static Colormaps& getInstance();
+    /**
+     * Load a colormap by name
+     */
+    static Colormap::Ptr load(const char* name);
+  };
 
-      /**
-       * Get a copy of the list of Colormap objects.
-       */
-      std::list<Colormap::ConstPtr> getColormaps();
-
-      /**
-       * Get the path where the colormap files are located
-       */
-      static char* getColormapDirPath();
-
-      /**
-       * Load a colormap by name
-       */
-      static Colormap::Ptr load(const char* name);
-    };
-
-  } // namespace ColormapImpl
-} // namespace Scroom
+} // namespace Scroom::ColormapImpl

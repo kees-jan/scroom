@@ -8,17 +8,11 @@
 #include <scroom/async-deleter.hh>
 #include <scroom/threadpool.hh>
 
-namespace Scroom
+namespace Scroom::Detail::ThreadPool
 {
-  namespace Detail
+  ::ThreadPool::Ptr getDeleter()
   {
-    namespace ThreadPool
-    {
-      ::ThreadPool::Ptr getDeleter()
-      {
-        static ::ThreadPool::Ptr deleter = ::ThreadPool::Ptr(new ::ThreadPool(1, true));
-        return deleter;
-      }
-    } // namespace ThreadPool
-  }   // namespace Detail
-} // namespace Scroom
+    static ::ThreadPool::Ptr deleter = ::ThreadPool::Ptr(new ::ThreadPool(1, true));
+    return deleter;
+  }
+} // namespace Scroom::Detail::ThreadPool

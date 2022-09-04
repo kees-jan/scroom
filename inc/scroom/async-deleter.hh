@@ -18,16 +18,10 @@ namespace
   }
 } // namespace
 
-namespace Scroom
+namespace Scroom::Detail::ThreadPool
 {
-  namespace Detail
-  {
-    namespace ThreadPool
-    {
-      ::ThreadPool::Ptr getDeleter();
-    }
-  } // namespace Detail
-} // namespace Scroom
+  ::ThreadPool::Ptr getDeleter();
+} // namespace Scroom::Detail::ThreadPool
 
 /**
  * Allow boost shared pointers to asynchronously delete their targets.

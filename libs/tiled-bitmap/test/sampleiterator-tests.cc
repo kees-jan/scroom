@@ -23,17 +23,14 @@ namespace
   const int     deltas[]          = {0, 1, 5};
 } // namespace
 
-namespace Scroom
+namespace Scroom::Bitmap
 {
-  namespace Bitmap
+  template <typename T>
+  std::ostream& operator<<(std::ostream& os, const SampleIterator<T>& it)
   {
-    template <typename T>
-    std::ostream& operator<<(std::ostream& os, const SampleIterator<T>& it)
-    {
-      return os << '(' << static_cast<const void*>(it.currentBase) << ", " << it.currentOffset << ", " << it.bps << ')';
-    }
-  } // namespace Bitmap
-} // namespace Scroom
+    return os << '(' << static_cast<const void*>(it.currentBase) << ", " << it.currentOffset << ", " << it.bps << ')';
+  }
+} // namespace Scroom::Bitmap
 
 
 BOOST_AUTO_TEST_SUITE(SampleIterator_Tests)
