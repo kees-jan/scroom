@@ -229,10 +229,8 @@ PresentationInterface::Ptr loadPresentation(GtkFileFilterInfo const& info)
   {
     return presentation;
   }
-  else
-  {
-    throw std::invalid_argument("Don't know how to load presentation " + std::string(info.filename));
-  }
+
+  throw std::invalid_argument("Don't know how to load presentation " + std::string(info.filename));
 }
 
 PresentationInterface::Ptr loadPresentation(GtkFileFilterInfoPtr const& info) { return loadPresentation(*info); }
@@ -299,10 +297,8 @@ PresentationInterface::Ptr ScroomInterfaceImpl::newPresentation(std::string cons
         on_presentation_created(presentation);
         return presentation;
       }
-      else
-      {
-        throw std::invalid_argument("Failed to create a new " + name);
-      }
+
+      throw std::invalid_argument("Failed to create a new " + name);
     }
   }
 
@@ -328,10 +324,8 @@ Aggregate::Ptr ScroomInterfaceImpl::newAggregate(std::string const& name)
 
       return aggregate;
     }
-    else
-    {
-      throw std::invalid_argument("Failed to create a new" + name);
-    }
+
+    throw std::invalid_argument("Failed to create a new" + name);
   }
   throw std::invalid_argument("Don't know how to create a new " + name);
 }

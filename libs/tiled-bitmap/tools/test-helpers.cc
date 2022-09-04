@@ -135,10 +135,8 @@ bool wait()
   {
     return testData->wait();
   }
-  else
-  {
-    return false;
-  }
+
+  return false;
 }
 
 ////////////////////////////////////////////////////////////////////////

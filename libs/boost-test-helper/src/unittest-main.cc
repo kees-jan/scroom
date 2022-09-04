@@ -28,10 +28,8 @@ std::string extract_path(const std::string& cmd)
   {
     return "";
   }
-  else
-  {
-    return cmd.substr(0, n);
-  }
+
+  return cmd.substr(0, n);
 }
 
 int main(int argc, char* argv[])

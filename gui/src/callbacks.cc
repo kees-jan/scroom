@@ -275,10 +275,8 @@ gboolean on_idle(gpointer user_data)
   {
     return 0;
   }
-  else
-  {
-    return reinterpret_cast<WorkInterface*>(user_data)->doWork();
-  }
+
+  return reinterpret_cast<WorkInterface*>(user_data)->doWork();
 }
 
 void on_done_loading_plugins()

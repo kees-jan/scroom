@@ -21,10 +21,8 @@ namespace Scroom::GtkHelpers
     {
       return GTK_WINDOW(topLevel);
     }
-    else
-    {
-      return nullptr;
-    }
+
+    return nullptr;
   }
 } // namespace Scroom::GtkHelpers
 
