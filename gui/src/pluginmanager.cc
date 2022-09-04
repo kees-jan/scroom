@@ -237,7 +237,7 @@ bool PluginManager::doWork()
   return retval;
 }
 
-void PluginManager::setStatusBarMessage(const char*)
+void PluginManager::setStatusBarMessage(const char* /*unused*/)
 {
   // gtk_statusbar_pop(statusbar, status_context_id);
   // gtk_statusbar_push(statusbar, status_context_id, message);

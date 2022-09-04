@@ -149,7 +149,7 @@ void ProgressBarManager::stopWaiting()
 
 void ProgressBarManager::setIdle() { setWorking(0.0); }
 
-void ProgressBarManager::setWaiting(double) { startWaiting(); }
+void ProgressBarManager::setWaiting(double /*progress*/) { startWaiting(); }
 
 void ProgressBarManager::setWorking(double progress)
 {

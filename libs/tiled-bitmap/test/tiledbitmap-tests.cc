@@ -19,17 +19,17 @@ public:
   static Ptr create() { return Ptr(new DummyLayerOperations()); }
 
   int  getBpp() override { return 8; }
-  void initializeCairo(cairo_t*) override {}
-  void draw(cairo_t*,
-            const ConstTile::Ptr,
-            Scroom::Utils::Rectangle<double>,
-            Scroom::Utils::Rectangle<double>,
-            int,
-            Scroom::Utils::Stuff) override
+  void initializeCairo(cairo_t* /*cr*/) override {}
+  void draw(cairo_t* /*cr*/,
+            const ConstTile::Ptr /*tile*/,
+            Scroom::Utils::Rectangle<double> /*tileArea*/,
+            Scroom::Utils::Rectangle<double> /*viewArea*/,
+            int /*zoom*/,
+            Scroom::Utils::Stuff /*cache*/) override
   {
   }
-  void drawState(cairo_t*, TileState, Scroom::Utils::Rectangle<double>) override {}
-  void reduce(Tile::Ptr, const ConstTile::Ptr, int, int) override {}
+  void drawState(cairo_t* /*cr*/, TileState /*s*/, Scroom::Utils::Rectangle<double> /*viewArea*/) override {}
+  void reduce(Tile::Ptr /*target*/, const ConstTile::Ptr /*source*/, int /*x*/, int /*y*/) override {}
 };
 
 //////////////////////////////////////////////////////////////

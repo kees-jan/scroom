@@ -277,7 +277,7 @@ static Scroom::Utils::Point<double> eventToPoint(GdkEventButton* event) { return
 static Scroom::Utils::Point<double> eventToPoint(GdkEventMotion* event) { return {event->x, event->y}; }
 
 // This one has too much View-internal knowledge to hide in callbacks.cc
-static void on_newWindow_activate(GtkMenuItem*, gpointer user_data)
+static void on_newWindow_activate(GtkMenuItem* /*unused*/, gpointer user_data)
 {
   PresentationInterface::WeakPtr const& wp = *static_cast<PresentationInterface::WeakPtr*>(user_data); // Yuk!
   PresentationInterface::Ptr const      p  = wp.lock();

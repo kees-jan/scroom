@@ -74,7 +74,7 @@ void ShowModalDialog(const std::string& message)
   }
 }
 
-void on_scroom_hide(GtkWidget*, gpointer user_data)
+void on_scroom_hide(GtkWidget* /*unused*/, gpointer user_data)
 {
   View* view = static_cast<View*>(user_data);
   on_view_destroyed(view);
@@ -85,7 +85,7 @@ void on_scroom_hide(GtkWidget*, gpointer user_data)
   }
 }
 
-void on_new_activate(GtkMenuItem*, gpointer user_data)
+void on_new_activate(GtkMenuItem* /*unused*/, gpointer user_data)
 {
   auto* newPresentationInterface = static_cast<NewPresentationInterface*>(user_data);
   create(newPresentationInterface);
@@ -109,7 +109,7 @@ gboolean combinedFileFilter(const GtkFileFilterInfo* filter_info, gpointer data)
   return false;
 }
 
-void on_open_activate(GtkMenuItem*, gpointer user_data)
+void on_open_activate(GtkMenuItem* /*unused*/, gpointer user_data)
 {
   GtkWidget* dialog;
   auto*      scroom = static_cast<GtkWidget*>(user_data);
@@ -189,11 +189,11 @@ void on_open_activate(GtkMenuItem*, gpointer user_data)
   gtk_widget_destroy(dialog);
 }
 
-void on_save_activate(GtkMenuItem*, gpointer) {}
+void on_save_activate(GtkMenuItem* /*unused*/, gpointer /*unused*/) {}
 
-void on_save_as_activate(GtkMenuItem*, gpointer) {}
+void on_save_as_activate(GtkMenuItem* /*unused*/, gpointer /*unused*/) {}
 
-void on_quit_activate(GtkMenuItem*, gpointer)
+void on_quit_activate(GtkMenuItem* /*unused*/, gpointer /*unused*/)
 {
   Views const v(views);
   for(const Views::value_type& p: v)
@@ -203,13 +203,13 @@ void on_quit_activate(GtkMenuItem*, gpointer)
   gtk_main_quit();
 }
 
-void on_cut_activate(GtkMenuItem*, gpointer) {}
+void on_cut_activate(GtkMenuItem* /*unused*/, gpointer /*unused*/) {}
 
-void on_copy_activate(GtkMenuItem*, gpointer) {}
+void on_copy_activate(GtkMenuItem* /*unused*/, gpointer /*unused*/) {}
 
-void on_paste_activate(GtkMenuItem*, gpointer) {}
+void on_paste_activate(GtkMenuItem* /*unused*/, gpointer /*unused*/) {}
 
-void on_delete_activate(GtkMenuItem*, gpointer) {}
+void on_delete_activate(GtkMenuItem* /*unused*/, gpointer /*unused*/) {}
 
 void on_fullscreen_activate(GtkMenuItem* item, gpointer user_data)
 {
@@ -227,14 +227,14 @@ void on_fullscreen_activate(GtkMenuItem* item, gpointer user_data)
   }
 }
 
-void on_close_activate(GtkMenuItem*, gpointer user_data)
+void on_close_activate(GtkMenuItem* /*unused*/, gpointer user_data)
 {
   View* view = static_cast<View*>(user_data);
 
   view->hide();
 }
 
-void on_about_activate(GtkMenuItem*, gpointer)
+void on_about_activate(GtkMenuItem* /*unused*/, gpointer /*unused*/)
 {
   // GtkWidget* aboutdialog;
   // aboutdialog = create_aboutdialog ();
@@ -243,7 +243,7 @@ void on_about_activate(GtkMenuItem*, gpointer)
   // gtk_widget_destroy (aboutdialog);
 }
 
-gboolean on_drawingarea_expose_event(GtkWidget* widget, GdkEventExpose*, gpointer user_data)
+gboolean on_drawingarea_expose_event(GtkWidget* widget, GdkEventExpose* /*unused*/, gpointer user_data)
 {
   cairo_region_t* re = cairo_region_create();
 
@@ -262,7 +262,7 @@ gboolean on_drawingarea_expose_event(GtkWidget* widget, GdkEventExpose*, gpointe
   return FALSE;
 }
 
-gboolean on_drawingarea_configure_event(GtkWidget*, GdkEventConfigure*, gpointer user_data)
+gboolean on_drawingarea_configure_event(GtkWidget* /*unused*/, GdkEventConfigure* /*unused*/, gpointer user_data)
 {
   View* view = static_cast<View*>(user_data);
   view->on_configure();
@@ -359,7 +359,7 @@ void on_done_loading_plugins()
   }
 }
 
-void on_zoombox_changed(GtkComboBox*, gpointer user_data)
+void on_zoombox_changed(GtkComboBox* /*unused*/, gpointer user_data)
 {
   View* view = static_cast<View*>(user_data);
   view->on_zoombox_changed();
@@ -377,28 +377,28 @@ void on_scrollbar_value_changed(GtkAdjustment* adjustment, gpointer user_data)
   view->on_scrollbar_value_changed(adjustment);
 }
 
-gboolean on_button_press_event(GtkWidget*, GdkEventButton* event, gpointer user_data)
+gboolean on_button_press_event(GtkWidget* /*unused*/, GdkEventButton* event, gpointer user_data)
 {
   View* view = static_cast<View*>(user_data);
   view->on_buttonPress(event);
   return true;
 }
 
-gboolean on_button_release_event(GtkWidget*, GdkEventButton* event, gpointer user_data)
+gboolean on_button_release_event(GtkWidget* /*unused*/, GdkEventButton* event, gpointer user_data)
 {
   View* view = static_cast<View*>(user_data);
   view->on_buttonRelease(event);
   return true;
 }
 
-gboolean on_motion_notify_event(GtkWidget*, GdkEventMotion* event, gpointer user_data)
+gboolean on_motion_notify_event(GtkWidget* /*unused*/, GdkEventMotion* event, gpointer user_data)
 {
   View* view = static_cast<View*>(user_data);
   view->on_motion_notify(event);
   return true;
 }
 
-gboolean on_scroll_event(GtkWidget*, GdkEventScroll* event, gpointer user_data)
+gboolean on_scroll_event(GtkWidget* /*unused*/, GdkEventScroll* event, gpointer user_data)
 {
   View* view = static_cast<View*>(user_data);
   view->on_scrollwheel(event);
@@ -495,7 +495,14 @@ void find_or_create_scroom(const PresentationInterface::Ptr& presentation)
   create_scroom(presentation);
 }
 
-void onDragDataReceived(GtkWidget*, GdkDragContext*, int, int, GtkSelectionData* seldata, guint, guint, gpointer)
+void onDragDataReceived(GtkWidget* /*unused*/,
+                        GdkDragContext* /*unused*/,
+                        int /*unused*/,
+                        int /*unused*/,
+                        GtkSelectionData* seldata,
+                        guint /*unused*/,
+                        guint /*unused*/,
+                        gpointer /*unused*/)
 {
   gchar** uris = g_uri_list_extract_uris(reinterpret_cast<const gchar*>(gtk_selection_data_get_data(seldata)));
   for(gchar** uri = uris; *uri != nullptr; uri++)

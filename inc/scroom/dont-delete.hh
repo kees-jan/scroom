@@ -25,5 +25,5 @@ template <typename T>
 class DontDelete
 {
 public:
-  void operator()(T*) {}
+  void operator()(T* /*unused*/) {}
 };

@@ -255,7 +255,7 @@ namespace Scroom::Utils
   }
 
   template <typename T>
-  void Observable<T>::observerAdded(Observable<T>::Observer const&, Scroom::Bookkeeping::Token const&)
+  void Observable<T>::observerAdded(Observable<T>::Observer const& /*unused*/, Scroom::Bookkeeping::Token const& /*unused*/)
   {
     // Do nothing
   }

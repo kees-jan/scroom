@@ -72,23 +72,23 @@ void ChildView::invalidate() { parent->invalidate(); }
 
 ProgressInterface::Ptr ChildView::getProgressInterface() { return progressInterface; }
 
-void ChildView::addSideWidget(std::string, GtkWidget*) {}
+void ChildView::addSideWidget(std::string /*title*/, GtkWidget* /*w*/) {}
 
-void ChildView::removeSideWidget(GtkWidget*) {}
+void ChildView::removeSideWidget(GtkWidget* /*w*/) {}
 
-void ChildView::addToToolbar(GtkToolItem*) {}
+void ChildView::addToToolbar(GtkToolItem* /*ti*/) {}
 
-void ChildView::removeFromToolbar(GtkToolItem*) {}
+void ChildView::removeFromToolbar(GtkToolItem* /*ti*/) {}
 
-void ChildView::registerSelectionListener(SelectionListener::Ptr) {}
+void ChildView::registerSelectionListener(SelectionListener::Ptr /*unused*/) {}
 
-void ChildView::registerPostRenderer(PostRenderer::Ptr) {}
+void ChildView::registerPostRenderer(PostRenderer::Ptr /*unused*/) {}
 
-void ChildView::setStatusMessage(const std::string&) {}
+void ChildView::setStatusMessage(const std::string& /*unused*/) {}
 
 PresentationInterface::Ptr ChildView::getCurrentPresentation() { return parent->getChild(shared_from_this<ChildView>()); }
 
-void ChildView::addToolButton(GtkToggleButton*, ToolStateListener::Ptr) {}
+void ChildView::addToolButton(GtkToggleButton* /*unused*/, ToolStateListener::Ptr /*unused*/) {}
 
 ////////////////////////////////////////////////////////////////////////
 // TransparentOverlayViewInfo
@@ -256,4 +256,4 @@ void TransparentOverlayViewInfo::redraw(cairo_t* cr, Scroom::Utils::Rectangle<do
   cairo_destroy(cr_sub);
 }
 
-void TransparentOverlayViewInfo::toggled(GtkToggleButton*) { invalidate(); }
+void TransparentOverlayViewInfo::toggled(GtkToggleButton* /*unused*/) { invalidate(); }

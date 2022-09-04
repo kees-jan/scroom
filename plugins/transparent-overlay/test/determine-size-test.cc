@@ -71,13 +71,18 @@ namespace
 
     Scroom::Utils::Rectangle<double> getRect() override { return rect; }
 
-    void        redraw(ViewInterface::Ptr const&, cairo_t*, Scroom::Utils::Rectangle<double>, int) override {}
-    bool        getProperty(const std::string&, std::string&) override { return false; }
-    bool        isPropertyDefined(const std::string&) override { return false; }
+    void redraw(ViewInterface::Ptr const& /*vi*/,
+                cairo_t* /*cr*/,
+                Scroom::Utils::Rectangle<double> /*presentationArea*/,
+                int /*zoom*/) override
+    {
+    }
+    bool        getProperty(const std::string& /*name*/, std::string& /*value*/) override { return false; }
+    bool        isPropertyDefined(const std::string& /*name*/) override { return false; }
     std::string getTitle() override { return ""; }
 
-    void open(ViewInterface::WeakPtr) override {}
-    void close(ViewInterface::WeakPtr) override {}
+    void open(ViewInterface::WeakPtr /*vi*/) override {}
+    void close(ViewInterface::WeakPtr /*vi*/) override {}
   };
 
   class ResizablePresentationInterfaceStub
@@ -139,18 +144,18 @@ namespace
 
     void                                     invalidate() override {}
     ProgressInterface::Ptr                   getProgressInterface() override { return ProgressInterface::Ptr(); }
-    void                                     addSideWidget(std::string, GtkWidget*) override {}
-    void                                     removeSideWidget(GtkWidget*) override {}
-    void                                     addToToolbar(GtkToolItem*) override {}
-    void                                     removeFromToolbar(GtkToolItem*) override {}
-    void                                     registerSelectionListener(SelectionListener::Ptr) override{};
-    void                                     registerPostRenderer(PostRenderer::Ptr) override{};
-    void                                     setStatusMessage(const std::string&) override{};
+    void                                     addSideWidget(std::string /*title*/, GtkWidget* /*w*/) override {}
+    void                                     removeSideWidget(GtkWidget* /*w*/) override {}
+    void                                     addToToolbar(GtkToolItem* /*ti*/) override {}
+    void                                     removeFromToolbar(GtkToolItem* /*ti*/) override {}
+    void                                     registerSelectionListener(SelectionListener::Ptr /*unused*/) override{};
+    void                                     registerPostRenderer(PostRenderer::Ptr /*unused*/) override{};
+    void                                     setStatusMessage(const std::string& /*unused*/) override{};
     boost::shared_ptr<PresentationInterface> getCurrentPresentation() override
     {
       return boost::shared_ptr<PresentationInterface>();
     };
-    void addToolButton(GtkToggleButton*, ToolStateListener::Ptr) override{};
+    void addToolButton(GtkToggleButton* /*unused*/, ToolStateListener::Ptr /*unused*/) override{};
   };
 
 } // namespace

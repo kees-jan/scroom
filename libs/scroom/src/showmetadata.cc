@@ -59,7 +59,7 @@ namespace Scroom::Metadata
       g_object_unref(group);
     }
 
-    void on_metadata_destroyed(GtkWidget*, gpointer user_data)
+    void on_metadata_destroyed(GtkWidget* /*unused*/, gpointer user_data)
     {
       delete static_cast<const MetaDataWindowData*>(user_data); // NOLINT(cppcoreguidelines-owning-memory)
     }

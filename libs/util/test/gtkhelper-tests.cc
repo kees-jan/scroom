@@ -29,7 +29,7 @@ namespace
   };
 } // namespace
 
-static void b(const B::Ptr&) {}
+static void b(const B::Ptr& /*unused*/) {}
 
 BOOST_AUTO_TEST_SUITE(Gtk_Helpers_Tests)
 

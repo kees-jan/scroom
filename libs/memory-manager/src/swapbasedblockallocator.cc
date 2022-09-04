@@ -25,7 +25,7 @@ namespace Scroom::MemoryBlocks
       class DontDelete
       {
       public:
-        void operator()(T*) {}
+        void operator()(T* /*unused*/) {}
       };
     } // namespace
 

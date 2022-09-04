@@ -196,13 +196,13 @@ namespace Scroom::Utils
       data->inc();
     }
 
-    Counted(const Counted&)
+    Counted(const Counted& /*unused*/)
       : data(count_instance())
     {
       data->inc();
     }
 
-    Counted(Counted&&)
+    Counted(Counted&& /*unused*/)
       : data(count_instance())
     {
       data->inc();

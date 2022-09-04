@@ -35,7 +35,7 @@ namespace
     }
   };
 
-  std::ostream& operator<<(std::ostream& os, const Data&) { return os; }
+  std::ostream& operator<<(std::ostream& os, const Data& /*unused*/) { return os; }
 
   std::list<Data> helpers =
     boost::assign::list_of(Data(4, ColormapHelper::create(4)))(Data(2, ColormapHelper::create(Colormap::createDefault(2))))(

@@ -20,7 +20,7 @@ static GtkWidget*                    drawingArea = nullptr;
 ////////////////////////////////////////////////////////////////////////
 // Internals
 
-static gboolean on_configure(GtkWidget*, GdkEventConfigure*, gpointer)
+static gboolean on_configure(GtkWidget* /*unused*/, GdkEventConfigure* /*unused*/, gpointer /*unused*/)
 {
   // There should be a simpler way to do this...
   cairo_region_t*       r = gdk_window_get_visible_region(gtk_widget_get_window(drawingArea));
@@ -35,9 +35,9 @@ static gboolean on_configure(GtkWidget*, GdkEventConfigure*, gpointer)
   return FALSE;
 }
 
-static void on_hide(GtkWidget*, gpointer) { gtk_main_quit(); }
+static void on_hide(GtkWidget* /*unused*/, gpointer /*unused*/) { gtk_main_quit(); }
 
-static gboolean on_expose(GtkWidget* widget, GdkEventExpose*, gpointer)
+static gboolean on_expose(GtkWidget* widget, GdkEventExpose* /*unused*/, gpointer /*unused*/)
 {
   cairo_region_t* re = cairo_region_create();
 
@@ -58,7 +58,7 @@ static gboolean on_expose(GtkWidget* widget, GdkEventExpose*, gpointer)
   return FALSE;
 }
 
-static gboolean on_idle(gpointer)
+static gboolean on_idle(gpointer /*unused*/)
 {
   if(current >= functions.size())
   {

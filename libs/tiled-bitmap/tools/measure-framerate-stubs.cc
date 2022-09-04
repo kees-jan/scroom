@@ -26,7 +26,7 @@ ViewInterfaceStub::Ptr ViewInterfaceStub::create(ProgressInterface::Ptr pi) { re
 
 ProgressInterface::Ptr ViewInterfaceStub::getProgressInterface() { return pi; }
 
-void Source1Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<Tile::Ptr>& tiles)
+void Source1Bpp::fillTiles(int /*startLine*/, int lineCount, int tileWidth, int /*firstTile*/, std::vector<Tile::Ptr>& tiles)
 {
   for(const Tile::Ptr& tile: tiles)
   {
@@ -47,7 +47,7 @@ void Source1Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<T
   }
 }
 
-void Source2Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<Tile::Ptr>& tiles)
+void Source2Bpp::fillTiles(int /*startLine*/, int lineCount, int tileWidth, int /*firstTile*/, std::vector<Tile::Ptr>& tiles)
 {
   for(const Tile::Ptr& tile: tiles)
   {
@@ -65,7 +65,7 @@ void Source2Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<T
   }
 }
 
-void Source4Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<Tile::Ptr>& tiles)
+void Source4Bpp::fillTiles(int /*startLine*/, int lineCount, int tileWidth, int /*firstTile*/, std::vector<Tile::Ptr>& tiles)
 {
   for(const Tile::Ptr& tile: tiles)
   {
@@ -83,7 +83,7 @@ void Source4Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<T
   }
 }
 
-void Source8Bpp::fillTiles(int, int lineCount, int tileWidth, int, std::vector<Tile::Ptr>& tiles)
+void Source8Bpp::fillTiles(int /*startLine*/, int lineCount, int tileWidth, int /*firstTile*/, std::vector<Tile::Ptr>& tiles)
 {
   for(const Tile::Ptr& tile: tiles)
   {

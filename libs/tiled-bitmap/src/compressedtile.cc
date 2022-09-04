@@ -205,7 +205,7 @@ TileState CompressedTile::getState()
   return result;
 }
 
-void CompressedTile::observerAdded(TileInitialisationObserver::Ptr const& observer, Scroom::Bookkeeping::Token const&)
+void CompressedTile::observerAdded(TileInitialisationObserver::Ptr const& observer, Scroom::Bookkeeping::Token const& /*unused*/)
 {
   observer->tileCreated(shared_from_this<CompressedTile>());
 }
@@ -276,7 +276,7 @@ void CompressedTile::notifyObservers(const ConstTile::Ptr& tile_)
   }
 }
 
-void CompressedTile::open(ViewInterface::WeakPtr)
+void CompressedTile::open(ViewInterface::WeakPtr /*vi*/)
 {
   // On open, we do nothing. On close, we destroy any resources related to the view.
 }
@@ -286,6 +286,6 @@ void CompressedTile::close(ViewInterface::WeakPtr vi) { viewStates.erase(vi); }
 ////////////////////////////////////////////////////////////////////////
 /// TileInitialisationObserver
 
-void TileInitialisationObserver::tileFinished(CompressedTile::Ptr) {}
+void TileInitialisationObserver::tileFinished(CompressedTile::Ptr /*unused*/) {}
 
-void TileInitialisationObserver::tileCreated(CompressedTile::Ptr) {}
+void TileInitialisationObserver::tileCreated(CompressedTile::Ptr /*unused*/) {}

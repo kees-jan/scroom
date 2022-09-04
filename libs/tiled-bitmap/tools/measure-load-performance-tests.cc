@@ -35,7 +35,7 @@ private:
 public:
   explicit WaitForAsyncOp(const std::string& name);
   WaitForAsyncOp(const WaitForAsyncOp& other);
-  WaitForAsyncOp(WaitForAsyncOp&&);
+  WaitForAsyncOp(WaitForAsyncOp&& /*other*/);
   WaitForAsyncOp operator=(const WaitForAsyncOp&) = delete;
   WaitForAsyncOp operator=(WaitForAsyncOp&&)      = delete;
   ~WaitForAsyncOp()                               = default;

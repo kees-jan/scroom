@@ -139,7 +139,7 @@ namespace Scroom::MemoryBlobs
   {
   }
 
-  inline void Blob::UnloadData::operator()(uint8_t*)
+  inline void Blob::UnloadData::operator()(uint8_t* /*unused*/)
   {
     blob->unload();
     blob.reset();
