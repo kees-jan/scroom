@@ -8,10 +8,9 @@
 #pragma once
 
 #include <map>
+#include <memory>
 #include <utility>
 
-#include <boost/enable_shared_from_this.hpp>
-#include <boost/shared_ptr.hpp>
 #include <boost/thread.hpp>
 
 #include <scroom/tiledbitmaplayer.hh>
@@ -30,7 +29,7 @@ private:
   int                                                unfinishedSourceTiles{0};
 
 public:
-  using Ptr = boost::shared_ptr<LayerCoordinator>;
+  using Ptr = std::shared_ptr<LayerCoordinator>;
 
   static Ptr create(CompressedTile::Ptr targetTile, LayerOperations::Ptr lo);
 

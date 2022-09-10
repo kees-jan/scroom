@@ -7,9 +7,8 @@
 
 #pragma once
 
+#include <memory>
 #include <vector>
-
-#include <boost/shared_ptr.hpp>
 
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
@@ -50,7 +49,7 @@ enum TileState
 class LayerOperations : private Interface
 {
 public:
-  using Ptr = boost::shared_ptr<LayerOperations>;
+  using Ptr = std::shared_ptr<LayerOperations>;
 
 public:
   /**
@@ -195,7 +194,7 @@ using LayerSpec = std::vector<LayerOperations::Ptr>;
 class SourcePresentation : private Interface
 {
 public:
-  using Ptr = boost::shared_ptr<SourcePresentation>;
+  using Ptr = std::shared_ptr<SourcePresentation>;
 
 public:
   /**
@@ -236,7 +235,7 @@ class Layer;
 class TiledBitmapInterface : public Viewable
 {
 public:
-  using Ptr = boost::shared_ptr<TiledBitmapInterface>;
+  using Ptr = std::shared_ptr<TiledBitmapInterface>;
 
   /**
    * Provide bitmap data to the TiledBitmap
@@ -255,7 +254,7 @@ public:
    *
    * @see setSource()
    */
-  virtual boost::shared_ptr<Layer> getBottomLayer() = 0;
+  virtual std::shared_ptr<Layer> getBottomLayer() = 0;
 
   /**
    * Redraw a portion of the bitmap.

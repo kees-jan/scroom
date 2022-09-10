@@ -24,7 +24,7 @@ class Tiff
   , virtual public Scroom::Utils::Base
 {
 public:
-  using Ptr = boost::shared_ptr<Tiff>;
+  using Ptr = std::shared_ptr<Tiff>;
 
 private:
   Tiff() = default;

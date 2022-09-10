@@ -1,6 +1,7 @@
 #pragma once
 
-#include <boost/shared_ptr.hpp>
+#include <array>
+#include <memory>
 
 #include <gtk/gtk.h>
 
@@ -15,7 +16,7 @@ class Ruler
 {
 
 public:
-  using Ptr = boost::shared_ptr<Ruler>;
+  using Ptr = std::shared_ptr<Ruler>;
 
   enum Orientation
   {

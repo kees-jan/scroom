@@ -14,7 +14,7 @@
 class ProgressBarManager : public ProgressInterface
 {
 public:
-  using Ptr = boost::shared_ptr<ProgressBarManager>;
+  using Ptr = std::shared_ptr<ProgressBarManager>;
 
 private:
   GtkProgressBar* progressBar;

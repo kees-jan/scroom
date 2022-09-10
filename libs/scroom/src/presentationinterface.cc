@@ -34,7 +34,7 @@ void PresentationBase::close(ViewInterface::WeakPtr vi)
 
 void PresentationBase::observerAdded(Viewable::Ptr const& viewable, Scroom::Bookkeeping::Token const& /*unused*/)
 {
-  std::set<ViewInterface::WeakPtr> const views = getViews();
+  Scroom::Utils::WeakKeySet<ViewInterface::WeakPtr> const views = getViews();
 
   for(ViewInterface::WeakPtr const& view: views)
   {

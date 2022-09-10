@@ -5,10 +5,10 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
+#include <memory>
+
 #include <boost/bind/bind.hpp>
-#include <boost/shared_ptr.hpp>
 #include <boost/test/unit_test.hpp>
-#include <boost/weak_ptr.hpp>
 
 #include <gtk/gtk.h>
 
@@ -22,10 +22,10 @@ namespace
   class B
   {
   public:
-    using Ptr     = boost::shared_ptr<B>;
-    using WeakPtr = boost::weak_ptr<B>;
+    using Ptr     = std::shared_ptr<B>;
+    using WeakPtr = std::weak_ptr<B>;
 
-    static Ptr create() { return Ptr(new B()); }
+    static Ptr create() { return std::make_shared<B>(); }
   };
 } // namespace
 

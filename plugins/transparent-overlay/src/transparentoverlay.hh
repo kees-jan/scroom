@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 #include <scroom/plugininformationinterface.hh>
 #include <scroom/presentationinterface.hh>
@@ -19,7 +19,7 @@ class TransparentOverlay
   , virtual public Scroom::Utils::Base
 {
 public:
-  using Ptr = boost::shared_ptr<TransparentOverlay>;
+  using Ptr = std::shared_ptr<TransparentOverlay>;
 
 private:
   TransparentOverlay() = default;

@@ -7,10 +7,10 @@
 
 #include <cstdint>
 #include <cstring>
+#include <memory>
 #include <sstream>
 #include <utility>
 
-#include <boost/shared_ptr.hpp>
 #include <boost/utility.hpp>
 
 #include <scroom/bitmap-helpers.hh>
@@ -25,7 +25,7 @@ using namespace Scroom::Bitmap;
 
 namespace
 {
-  boost::shared_ptr<unsigned char> shared_malloc(size_t size) { return {static_cast<unsigned char*>(malloc(size)), free}; }
+  std::shared_ptr<unsigned char> shared_malloc(size_t size) { return {static_cast<unsigned char*>(malloc(size)), free}; }
 
 } // namespace
 ////////////////////////////////////////////////////////////////////////
@@ -141,7 +141,7 @@ Scroom::Utils::Stuff CommonOperations::cacheZoom(const ConstTile::Ptr& tile, int
   else
   {
     const int                divider = 1 << -zoom;
-    BitmapSurface::Ptr const source  = boost::static_pointer_cast<BitmapSurface>(cache);
+    BitmapSurface::Ptr const source  = std::static_pointer_cast<BitmapSurface>(cache);
     BitmapSurface::Ptr const target  = BitmapSurface::create(tile->width / divider, tile->height / divider, CAIRO_FORMAT_ARGB32);
     result                           = target;
 
@@ -177,7 +177,7 @@ void CommonOperations::draw(cairo_t*                         cr,
   }
   else
   {
-    BitmapSurface::Ptr const source = boost::static_pointer_cast<BitmapSurface>(cache);
+    BitmapSurface::Ptr const source = std::static_pointer_cast<BitmapSurface>(cache);
 
     if(zoom > 0)
     {
@@ -273,9 +273,9 @@ int Operations1bpp::getBpp() { return 1; }
 
 Scroom::Utils::Stuff Operations1bpp::cache(const ConstTile::Ptr& tile)
 {
-  const int                              stride   = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
-  boost::shared_ptr<unsigned char> const data     = shared_malloc(stride * tile->height);
-  Colormap::Ptr const                    colormap = colormapProvider->getColormap();
+  const int                            stride   = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
+  std::shared_ptr<unsigned char> const data     = shared_malloc(stride * tile->height);
+  Colormap::Ptr const                  colormap = colormapProvider->getColormap();
 
   unsigned char* row = data.get();
   for(int j = 0; j < tile->height; j++, row += stride)
@@ -389,11 +389,11 @@ int Operations8bpp::getBpp() { return 8; }
 
 Scroom::Utils::Stuff Operations8bpp::cache(const ConstTile::Ptr& tile)
 {
-  const int                              stride   = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
-  boost::shared_ptr<unsigned char> const data     = shared_malloc(stride * tile->height);
-  Colormap::Ptr const                    colormap = colormapProvider->getColormap();
-  const Color&                           c1       = colormap->colors[0];
-  const Color&                           c2       = colormap->colors[1];
+  const int                            stride   = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
+  std::shared_ptr<unsigned char> const data     = shared_malloc(stride * tile->height);
+  Colormap::Ptr const                  colormap = colormapProvider->getColormap();
+  const Color&                         c1       = colormap->colors[0];
+  const Color&                         c2       = colormap->colors[1];
 
   unsigned char* row = data.get();
   for(int j = 0; j < tile->height; j++, row += stride)
@@ -506,9 +506,9 @@ int Operations24bpp::getBpp() { return 24; }
 
 Scroom::Utils::Stuff Operations24bpp::cache(const ConstTile::Ptr& tile)
 {
-  const int                              stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
-  boost::shared_ptr<unsigned char> const data   = shared_malloc(stride * tile->height);
-  unsigned char*                         row    = data.get();
+  const int                            stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
+  std::shared_ptr<unsigned char> const data   = shared_malloc(stride * tile->height);
+  unsigned char*                       row    = data.get();
   for(int j = 0; j < tile->height; j++, row += stride)
   {
     const byte* cur = tile->data.get() + 3 * j * tile->width;
@@ -589,9 +589,9 @@ int Operations::getBpp() { return bpp; }
 
 Scroom::Utils::Stuff Operations::cache(const ConstTile::Ptr& tile)
 {
-  const int                              stride   = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
-  boost::shared_ptr<unsigned char> const data     = shared_malloc(stride * tile->height);
-  Colormap::Ptr const                    colormap = colormapProvider->getColormap();
+  const int                            stride   = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
+  std::shared_ptr<unsigned char> const data     = shared_malloc(stride * tile->height);
+  Colormap::Ptr const                  colormap = colormapProvider->getColormap();
 
   unsigned char* row = data.get();
   for(int j = 0; j < tile->height; j++, row += stride)
@@ -734,10 +734,10 @@ int OperationsColormapped::getBpp() { return 2 * bpp; }
 
 Scroom::Utils::Stuff OperationsColormapped::cache(const ConstTile::Ptr& tile)
 {
-  const int                              stride     = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
-  boost::shared_ptr<unsigned char> const data       = shared_malloc(stride * tile->height);
-  Colormap::Ptr const                    colormap   = colormapProvider->getColormap();
-  const int                              multiplier = 2; // data is 2*bpp, containing 2 colors
+  const int                            stride     = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
+  std::shared_ptr<unsigned char> const data       = shared_malloc(stride * tile->height);
+  Colormap::Ptr const                  colormap   = colormapProvider->getColormap();
+  const int                            multiplier = 2; // data is 2*bpp, containing 2 colors
 
   unsigned char* row = data.get();
   for(int j = 0; j < tile->height; j++, row += stride)
@@ -850,9 +850,9 @@ Scroom::Utils::Stuff Operations1bppClipped::cacheZoom(const ConstTile::Ptr& tile
   const int outputWidth  = tile->width / pixelSize;
   const int outputHeight = tile->height / pixelSize;
 
-  const int                              stride   = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, outputWidth);
-  boost::shared_ptr<unsigned char> const data     = shared_malloc(stride * outputHeight);
-  Colormap::Ptr const                    colormap = colormapProvider->getColormap();
+  const int                            stride   = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, outputWidth);
+  std::shared_ptr<unsigned char> const data     = shared_malloc(stride * outputHeight);
+  Colormap::Ptr const                  colormap = colormapProvider->getColormap();
 
   unsigned char* row = data.get();
   for(int j = 0; j < outputHeight; j++, row += stride)

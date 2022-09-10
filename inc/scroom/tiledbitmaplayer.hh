@@ -8,12 +8,10 @@
 #pragma once
 
 #include <map>
+#include <memory>
 #include <vector>
 
-#include <boost/enable_shared_from_this.hpp>
-#include <boost/shared_ptr.hpp>
 #include <boost/thread.hpp>
-#include <boost/weak_ptr.hpp>
 
 #include <scroom/interface.hh>
 #include <scroom/memoryblobs.hh>
@@ -49,8 +47,8 @@ class CompressedTile;
 class TileInitialisationObserver : private Interface
 {
 public:
-  using Ptr     = boost::shared_ptr<TileInitialisationObserver>;
-  using WeakPtr = boost::weak_ptr<TileInitialisationObserver>;
+  using Ptr     = std::shared_ptr<TileInitialisationObserver>;
+  using WeakPtr = std::weak_ptr<TileInitialisationObserver>;
 
   /**
    * The tile has been created.
@@ -61,7 +59,7 @@ public:
    * @note This event will be sent using the thread that is
    *    registering the observer. Be careful with your mutexes :-)
    */
-  virtual void tileCreated(const boost::shared_ptr<CompressedTile>& tile);
+  virtual void tileCreated(const std::shared_ptr<CompressedTile>& tile);
 
   /**
    * This event will be sent when the tile is completely filled with
@@ -71,7 +69,7 @@ public:
    * @note This event will be sent on the thread that is filling the
    *    tile with data.
    */
-  virtual void tileFinished(const boost::shared_ptr<CompressedTile>& tile);
+  virtual void tileFinished(const std::shared_ptr<CompressedTile>& tile);
 };
 
 ////////////////////////////////////////////////////////////////////////
@@ -80,8 +78,8 @@ public:
 class TileLoadingObserver : private Interface
 {
 public:
-  using Ptr     = boost::shared_ptr<TileLoadingObserver>;
-  using WeakPtr = boost::weak_ptr<TileLoadingObserver>;
+  using Ptr     = std::shared_ptr<TileLoadingObserver>;
+  using WeakPtr = std::weak_ptr<TileLoadingObserver>;
 
   /** The Tile has been loaded. */
   virtual void tileLoaded(ConstTile::Ptr tile) = 0;
@@ -105,7 +103,7 @@ class CompressedTile
   , public Viewable
 {
 public:
-  using Ptr = boost::shared_ptr<CompressedTile>;
+  using Ptr = std::shared_ptr<CompressedTile>;
 
 public:
   const int depth; /**< Layer number of this tile */
@@ -124,7 +122,7 @@ private:
 
   ThreadPool::Queue::WeakPtr queue; /**< Queue on which the load operation is executed */
 
-  std::map<ViewInterface::WeakPtr, boost::weak_ptr<TileViewState>> viewStates;
+  Scroom::Utils::WeakKeyMap<ViewInterface::WeakPtr, std::weak_ptr<TileViewState>> viewStates;
 
 private:
   CompressedTile(int                                           depth,
@@ -216,7 +214,7 @@ public:
 
   TileState getState();
 
-  boost::shared_ptr<TileViewState> getViewState(const ViewInterface::WeakPtr& vi);
+  std::shared_ptr<TileViewState> getViewState(const ViewInterface::WeakPtr& vi);
 
 private:
   /**
@@ -244,7 +242,7 @@ class Layer
   , public virtual Scroom::Utils::Base
 {
 public:
-  using Ptr = boost::shared_ptr<Layer>;
+  using Ptr = std::shared_ptr<Layer>;
 
 private:
   int                                    depth;

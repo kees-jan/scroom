@@ -158,7 +158,7 @@ bool PluginManager::doWork()
 
         if(symbol_found)
         {
-          using PluginFunc = boost::shared_ptr<PluginInformationInterface> (*)();
+          using PluginFunc = std::shared_ptr<PluginInformationInterface> (*)();
 
           auto gpi = reinterpret_cast<PluginFunc>(pgpi);
           if(gpi)
@@ -274,8 +274,8 @@ void PluginManager::registerOpenPresentationInterface(const std::string&        
 }
 
 void PluginManager::registerOpenTiledBitmapInterface(
-  const std::string&                                               extension,
-  boost::shared_ptr<Scroom::TiledBitmap::OpenTiledBitmapInterface> openTiledBitmapInterface)
+  const std::string&                                             extension,
+  std::shared_ptr<Scroom::TiledBitmap::OpenTiledBitmapInterface> openTiledBitmapInterface)
 {
   openTiledBitmapInterfaces[openTiledBitmapInterface]                               = extension;
   openPresentationInterfaces[ToOpenPresentationInterface(openTiledBitmapInterface)] = extension;

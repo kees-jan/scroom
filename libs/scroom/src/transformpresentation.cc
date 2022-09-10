@@ -43,8 +43,8 @@ TransformPresentation::TransformPresentation(PresentationInterface::Ptr const& p
                                              TransformationData::Ptr           transformationData_)
   : transformationData(std::move(transformationData_))
   , presentation(presentation_)
-  , colormappable(boost::dynamic_pointer_cast<Colormappable>(presentation_))
-  , showMetaDataInterface(boost::dynamic_pointer_cast<ShowMetadataInterface>(presentation_))
+  , colormappable(std::dynamic_pointer_cast<Colormappable>(presentation_))
+  , showMetaDataInterface(std::dynamic_pointer_cast<ShowMetadataInterface>(presentation_))
 {
 }
 
@@ -141,7 +141,7 @@ void TransformPresentation::showMetadata(GtkWindow* parent) { showMetaDataInterf
 
 PipetteLayerOperations::PipetteColor TransformPresentation::getPixelAverages(Scroom::Utils::Rectangle<double> area)
 {
-  PipetteViewInterface::Ptr const pipettePresentation = boost::dynamic_pointer_cast<PipetteViewInterface>(presentation);
+  PipetteViewInterface::Ptr const pipettePresentation = std::dynamic_pointer_cast<PipetteViewInterface>(presentation);
   require(pipettePresentation);
   return pipettePresentation->getPixelAverages(area / getAspectRatio());
 }
@@ -171,7 +171,7 @@ namespace Detail
   void ViewData::registerSelectionListener(SelectionListener::Ptr ptr) { parent()->registerSelectionListener(ptr); }
   void ViewData::registerPostRenderer(PostRenderer::Ptr ptr) { parent()->registerPostRenderer(ptr); }
   void ViewData::setStatusMessage(const std::string& string) { parent()->setStatusMessage(string); }
-  boost::shared_ptr<PresentationInterface> ViewData::getCurrentPresentation() { return parent()->getCurrentPresentation(); }
+  std::shared_ptr<PresentationInterface> ViewData::getCurrentPresentation() { return parent()->getCurrentPresentation(); }
   void ViewData::addToolButton(GtkToggleButton* button, ToolStateListener::Ptr ptr) { parent()->addToolButton(button, ptr); }
   ViewData::Ptr ViewData::create(const ViewInterface::WeakPtr& parent) { return ViewData::Ptr(new ViewData(parent)); }
 } // namespace Detail

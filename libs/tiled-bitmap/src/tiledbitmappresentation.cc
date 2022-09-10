@@ -60,10 +60,10 @@ namespace
     , public ShowMetadataInterface
   {
   public:
-    using Ptr = boost::shared_ptr<TiledBitmapPresentation>;
+    using Ptr = std::shared_ptr<TiledBitmapPresentation>;
 
   private:
-    using Views = std::set<ViewInterface::WeakPtr>;
+    using Views = Scroom::Utils::WeakKeySet<ViewInterface::WeakPtr>;
 
     std::string                         name;
     Scroom::TiledBitmap::BitmapMetaData bmd;
@@ -135,9 +135,9 @@ namespace
     ////////////////////////////////////////////////////////////////////////
     // PresentationBase
     ////////////////////////////////////////////////////////////////////////
-    void                             viewAdded(ViewInterface::WeakPtr vi) override;
-    void                             viewRemoved(ViewInterface::WeakPtr vi) override;
-    std::set<ViewInterface::WeakPtr> getViews() override;
+    void                                              viewAdded(ViewInterface::WeakPtr vi) override;
+    void                                              viewRemoved(ViewInterface::WeakPtr vi) override;
+    Scroom::Utils::WeakKeySet<ViewInterface::WeakPtr> getViews() override;
 
   private:
     void clearCaches();
@@ -311,7 +311,7 @@ namespace
     }
   }
 
-  std::set<ViewInterface::WeakPtr> TiledBitmapPresentation::getViews() { return views; }
+  Scroom::Utils::WeakKeySet<ViewInterface::WeakPtr> TiledBitmapPresentation::getViews() { return views; }
 
   ////////////////////////////////////////////////////////////////////////
   // Colormappable
@@ -351,7 +351,7 @@ namespace
   class OpenTiledBitmapAsPresentation : public OpenPresentationInterface
   {
   public:
-    using Ptr = boost::shared_ptr<OpenTiledBitmapAsPresentation>;
+    using Ptr = std::shared_ptr<OpenTiledBitmapAsPresentation>;
 
   private:
     OpenTiledBitmapInterface::Ptr openTiledBitmapInterface;
@@ -389,7 +389,7 @@ namespace
     if(bottomLayer && !layerSpec.empty())
     {
       auto                              tiledBitmap           = TiledBitmap::create(bottomLayer, layerSpec);
-      PipetteLayerOperations::Ptr const pipetteLayerOperation = boost::dynamic_pointer_cast<PipetteLayerOperations>(layerSpec[0]);
+      PipetteLayerOperations::Ptr const pipetteLayerOperation = std::dynamic_pointer_cast<PipetteLayerOperations>(layerSpec[0]);
 
       std::map<std::string, std::string> properties;
       if(bmd.colormapHelper)

@@ -19,7 +19,7 @@ namespace
 
   void clearImpl(Semaphore* s) { s->V(); }
 
-  void destroyImpl(boost::shared_ptr<void>& p) { p.reset(); }
+  void destroyImpl(std::shared_ptr<void>& p) { p.reset(); }
 } // namespace
 
 //////////////////////////////////////////////////////////////
@@ -28,4 +28,4 @@ boost::function<void()> pass(Semaphore* s) { return boost::bind(passImpl, s); }
 
 boost::function<void()> clear(Semaphore* s) { return boost::bind(clearImpl, s); }
 
-boost::function<void()> destroy(boost::shared_ptr<void> p) { return boost::bind(destroyImpl, std::move(p)); }
+boost::function<void()> destroy(std::shared_ptr<void> p) { return boost::bind(destroyImpl, std::move(p)); }

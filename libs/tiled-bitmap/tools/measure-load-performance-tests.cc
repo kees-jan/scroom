@@ -8,10 +8,9 @@
 #include "measure-load-performance-tests.hh"
 
 #include <ctime>
+#include <memory>
 #include <string>
 #include <utility>
-
-#include <boost/shared_ptr.hpp>
 
 #include <scroom/semaphore.hh>
 #include <scroom/threadpool.hh>

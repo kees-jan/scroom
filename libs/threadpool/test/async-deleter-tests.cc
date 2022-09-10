@@ -12,9 +12,9 @@
 #endif
 
 #include <iostream>
+#include <memory>
 
 #include <boost/date_time/posix_time/posix_time.hpp>
-#include <boost/shared_ptr.hpp>
 #include <boost/test/unit_test.hpp>
 #include <boost/thread.hpp>
 
@@ -61,9 +61,9 @@ BOOST_AUTO_TEST_SUITE(Async_Deleter_Tests)
 
 BOOST_AUTO_TEST_CASE(deleter_deletes_asynchronously)
 {
-  Semaphore            barrier1;
-  Semaphore            destroyed;
-  boost::shared_ptr<A> a = boost::shared_ptr<A>(new A(&barrier1, &destroyed), AsyncDeleter<A>());
+  Semaphore          barrier1;
+  Semaphore          destroyed;
+  std::shared_ptr<A> a = std::shared_ptr<A>(new A(&barrier1, &destroyed), AsyncDeleter<A>());
   BOOST_CHECK(!destroyed.P(short_timeout));
 
   Semaphore barrier2;

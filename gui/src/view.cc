@@ -58,7 +58,7 @@ enum
 class TweakPresentationPosition
 {
 public:
-  using Ptr   = boost::shared_ptr<TweakPresentationPosition>;
+  using Ptr   = std::shared_ptr<TweakPresentationPosition>;
   using Point = Scroom::Utils::Point<double>;
 
   static Ptr create(Point aspectRatio_) { return Ptr(new TweakPresentationPosition(aspectRatio_)); }
@@ -83,7 +83,7 @@ private:
 class TweakRulers
 {
 public:
-  using Ptr   = boost::shared_ptr<TweakRulers>;
+  using Ptr   = std::shared_ptr<TweakRulers>;
   using Point = Scroom::Utils::Point<double>;
 
   static Ptr create(Point aspectRatio_) { return Ptr(new TweakRulers(aspectRatio_)); }
@@ -164,7 +164,7 @@ Scroom::Utils::Rectangle<double> toRectangle(Selection s) { return Scroom::Utils
 class ITweakSelection : public Interface
 {
 public:
-  using Ptr   = boost::shared_ptr<ITweakSelection>;
+  using Ptr   = std::shared_ptr<ITweakSelection>;
   using Point = Scroom::Utils::Point<double>;
 
   [[nodiscard]] virtual Selection tweakSelection(Selection selection) const = 0;
@@ -237,7 +237,7 @@ public:
 class TweakPositionTextBox
 {
 public:
-  using Ptr   = boost::shared_ptr<TweakPositionTextBox>;
+  using Ptr   = std::shared_ptr<TweakPositionTextBox>;
   using Point = Scroom::Utils::Point<double>;
 
   static Ptr create(Point aspectRatio_) { return Ptr(new TweakPositionTextBox(aspectRatio_)); }

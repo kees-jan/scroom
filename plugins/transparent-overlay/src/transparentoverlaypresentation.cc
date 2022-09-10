@@ -70,13 +70,13 @@ void TransparentOverlayPresentation::addPresentation(PresentationInterface::Ptr 
 
 void TransparentOverlayPresentation::setOptimalColor(PresentationInterface::Ptr const& p)
 {
-  Colormappable::Ptr const c = boost::dynamic_pointer_cast<Colormappable>(p);
+  Colormappable::Ptr const c = std::dynamic_pointer_cast<Colormappable>(p);
   if(c)
   {
     std::map<Color, int, ColorComparer> currentColors;
     for(PresentationInterface::Ptr const& child: children)
     {
-      Colormappable::Ptr const cChild = boost::dynamic_pointer_cast<Colormappable>(child);
+      Colormappable::Ptr const cChild = std::dynamic_pointer_cast<Colormappable>(child);
       if(cChild && child->isPropertyDefined(MONOCHROME_COLORMAPPABLE_PROPERTY_NAME))
       {
         currentColors[cChild->getMonochromeColor()]++;
@@ -118,9 +118,9 @@ void TransparentOverlayPresentation::viewRemoved(ViewInterface::WeakPtr vi)
   }
 }
 
-std::set<ViewInterface::WeakPtr> TransparentOverlayPresentation::getViews()
+Scroom::Utils::WeakKeySet<ViewInterface::WeakPtr> TransparentOverlayPresentation::getViews()
 {
-  std::set<ViewInterface::WeakPtr> result;
+  Scroom::Utils::WeakKeySet<ViewInterface::WeakPtr> result;
   for(auto const& p: viewData)
   {
     result.insert(p.first);

@@ -9,10 +9,8 @@
 
 #include <cstdint>
 #include <list>
+#include <memory>
 #include <utility>
-
-#include <boost/shared_ptr.hpp>
-#include <boost/weak_ptr.hpp>
 
 #include <scroom/interface.hh>
 
@@ -20,8 +18,8 @@ namespace Scroom::MemoryBlocks
 {
   namespace RawPageData
   {
-    using Ptr     = boost::shared_ptr<uint8_t>;
-    using WeakPtr = boost::weak_ptr<uint8_t>;
+    using Ptr     = std::shared_ptr<uint8_t>;
+    using WeakPtr = std::weak_ptr<uint8_t>;
   } // namespace RawPageData
 
   class BlockInterface;
@@ -29,11 +27,11 @@ namespace Scroom::MemoryBlocks
   class Page
   {
   private:
-    boost::shared_ptr<BlockInterface> bi;
-    size_t                            id;
+    std::shared_ptr<BlockInterface> bi;
+    size_t                          id;
 
   public:
-    Page(boost::shared_ptr<BlockInterface> bi, size_t id);
+    Page(std::shared_ptr<BlockInterface> bi, size_t id);
 
     RawPageData::Ptr get();
   };
@@ -43,8 +41,8 @@ namespace Scroom::MemoryBlocks
   class BlockInterface : private Interface
   {
   public:
-    using Ptr     = boost::shared_ptr<BlockInterface>;
-    using WeakPtr = boost::weak_ptr<BlockInterface>;
+    using Ptr     = std::shared_ptr<BlockInterface>;
+    using WeakPtr = std::weak_ptr<BlockInterface>;
 
   protected:
     virtual RawPageData::Ptr get(size_t id) = 0;
@@ -58,7 +56,7 @@ namespace Scroom::MemoryBlocks
   class BlockFactoryInterface : private Interface
   {
   public:
-    using Ptr = boost::shared_ptr<BlockFactoryInterface>;
+    using Ptr = std::shared_ptr<BlockFactoryInterface>;
 
     virtual BlockInterface::Ptr create(size_t count, size_t size) = 0;
   };

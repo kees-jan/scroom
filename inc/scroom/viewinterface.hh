@@ -9,10 +9,8 @@
 
 #include <cmath>
 #include <cstdlib>
+#include <memory>
 #include <string>
-
-#include <boost/shared_ptr.hpp>
-#include <boost/weak_ptr.hpp>
 
 #include <gtk/gtk.h>
 
@@ -80,7 +78,7 @@ public:
 class PostRenderer : private Interface
 {
 public:
-  using Ptr = boost::shared_ptr<PostRenderer>;
+  using Ptr = std::shared_ptr<PostRenderer>;
 
 public:
   /**
@@ -96,10 +94,10 @@ public:
    * @param zoom The requested zoom level. One pixel should have
    *    size 2**@c zoom when drawn. @c zoom may be negative.
    */
-  virtual void render(boost::shared_ptr<ViewInterface> const& vi,
-                      cairo_t*                                cr,
-                      Scroom::Utils::Rectangle<double>        presentationArea,
-                      int                                     zoom) = 0;
+  virtual void render(std::shared_ptr<ViewInterface> const& vi,
+                      cairo_t*                              cr,
+                      Scroom::Utils::Rectangle<double>      presentationArea,
+                      int                                   zoom) = 0;
 };
 
 /**
@@ -115,7 +113,7 @@ public:
 class SelectionListener : private Interface
 {
 public:
-  using Ptr = boost::shared_ptr<SelectionListener>;
+  using Ptr = std::shared_ptr<SelectionListener>;
 
 public:
   virtual std::string getSelectionType() { return SelectionType::DEFAULT; }
@@ -128,7 +126,7 @@ public:
    * The passed point is a point in the presentation
    * coordinate space.
    */
-  virtual void onSelectionStart(Selection selection, boost::shared_ptr<ViewInterface> view) = 0;
+  virtual void onSelectionStart(Selection selection, std::shared_ptr<ViewInterface> view) = 0;
 
   /**
    * This function is called whenever the selection
@@ -139,7 +137,7 @@ public:
    *
    * @see Selection
    */
-  virtual void onSelectionUpdate(Selection selection, boost::shared_ptr<ViewInterface> view) = 0;
+  virtual void onSelectionUpdate(Selection selection, std::shared_ptr<ViewInterface> view) = 0;
 
   /**
    * This function is called whenever the selection
@@ -150,7 +148,7 @@ public:
    *
    * @see Selection
    */
-  virtual void onSelectionEnd(Selection selection, boost::shared_ptr<ViewInterface> view) = 0;
+  virtual void onSelectionEnd(Selection selection, std::shared_ptr<ViewInterface> view) = 0;
 };
 
 /**
@@ -161,7 +159,7 @@ public:
 class ToolStateListener : private Interface
 {
 public:
-  using Ptr = boost::shared_ptr<ToolStateListener>;
+  using Ptr = std::shared_ptr<ToolStateListener>;
 
 public:
   /**
@@ -190,8 +188,8 @@ public:
 class ViewInterface : private Interface
 {
 public:
-  using Ptr     = boost::shared_ptr<ViewInterface>;
-  using WeakPtr = boost::weak_ptr<ViewInterface>;
+  using Ptr     = std::shared_ptr<ViewInterface>;
+  using WeakPtr = std::weak_ptr<ViewInterface>;
 
 public:
   /**
@@ -282,7 +280,7 @@ public:
    *
    * @see PresentationInterface
    */
-  virtual boost::shared_ptr<PresentationInterface> getCurrentPresentation() = 0;
+  virtual std::shared_ptr<PresentationInterface> getCurrentPresentation() = 0;
 
   /**
    * Adds a new tool button to the toolbar. The given ToolStateListener

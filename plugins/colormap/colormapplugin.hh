@@ -25,7 +25,7 @@ namespace Scroom::ColormapImpl
     , virtual public Scroom::Utils::Base
   {
   public:
-    using Ptr = boost::shared_ptr<ColormapPlugin>;
+    using Ptr = std::shared_ptr<ColormapPlugin>;
 
   private:
     std::list<PresentationInterface::WeakPtr> presentations;

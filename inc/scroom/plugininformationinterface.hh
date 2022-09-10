@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 #include <scroom/interface.hh>
 #include <scroom/scroominterface.hh>
@@ -17,7 +17,7 @@
 class PluginInformationInterface : private Interface
 {
 public:
-  using Ptr = boost::shared_ptr<PluginInformationInterface>;
+  using Ptr = std::shared_ptr<PluginInformationInterface>;
 
 public:
   const int pluginApiVersion{PLUGIN_API_VERSION};

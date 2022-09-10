@@ -8,9 +8,8 @@
 #pragma once
 
 #include <list>
+#include <memory>
 #include <string>
-
-#include <boost/shared_ptr.hpp>
 
 #include <gtk/gtk.h>
 
@@ -22,7 +21,7 @@
 class ScroomInterface : private Interface
 {
 public:
-  using Ptr = boost::shared_ptr<ScroomInterface>;
+  using Ptr = std::shared_ptr<ScroomInterface>;
 
 public:
   virtual PresentationInterface::Ptr newPresentation(const std::string& name)                                                 = 0;
@@ -35,7 +34,7 @@ public:
 class NewPresentationInterface : private Interface
 {
 public:
-  using Ptr = boost::shared_ptr<NewPresentationInterface>;
+  using Ptr = std::shared_ptr<NewPresentationInterface>;
 
 public:
   virtual PresentationInterface::Ptr createNew() = 0;
@@ -44,7 +43,7 @@ public:
 class NewAggregateInterface : private Interface
 {
 public:
-  using Ptr = boost::shared_ptr<NewAggregateInterface>;
+  using Ptr = std::shared_ptr<NewAggregateInterface>;
 
 public:
   virtual Aggregate::Ptr createNew() = 0;
@@ -53,7 +52,7 @@ public:
 class OpenPresentationInterface : private Interface
 {
 public:
-  using Ptr = boost::shared_ptr<OpenPresentationInterface>;
+  using Ptr = std::shared_ptr<OpenPresentationInterface>;
 
 public:
   virtual std::list<GtkFileFilter*> getFilters() = 0;
@@ -69,7 +68,7 @@ namespace Scroom::TiledBitmap
 class OpenInterface : private Interface
 {
 public:
-  using Ptr = boost::shared_ptr<OpenInterface>;
+  using Ptr = std::shared_ptr<OpenInterface>;
 
 public:
   virtual std::list<GtkFileFilter*> getFilters() = 0;
@@ -80,7 +79,7 @@ public:
 class PresentationObserver : private Interface
 {
 public:
-  using Ptr = boost::shared_ptr<PresentationObserver>;
+  using Ptr = std::shared_ptr<PresentationObserver>;
 
 public:
   virtual void presentationAdded(PresentationInterface::Ptr p) = 0;
@@ -90,7 +89,7 @@ public:
 class ViewObserver : private Interface
 {
 public:
-  using Ptr = boost::shared_ptr<ViewObserver>;
+  using Ptr = std::shared_ptr<ViewObserver>;
 
 public:
   virtual Scroom::Bookkeeping::Token viewAdded(ViewInterface::Ptr v) = 0;
@@ -99,7 +98,7 @@ public:
 class ScroomPluginInterface : private Interface
 {
 public:
-  using Ptr = boost::shared_ptr<ScroomPluginInterface>;
+  using Ptr = std::shared_ptr<ScroomPluginInterface>;
 
 public:
   virtual void registerNewPresentationInterface(const std::string&            identifier,
@@ -107,9 +106,9 @@ public:
   virtual void registerNewAggregateInterface(const std::string& identifier, NewAggregateInterface::Ptr newAggregateInterface) = 0;
   virtual void registerOpenPresentationInterface(const std::string&             identifier,
                                                  OpenPresentationInterface::Ptr openPresentationInterface)                    = 0;
-  virtual void registerOpenTiledBitmapInterface(
-    const std::string&                                               identifier,
-    boost::shared_ptr<Scroom::TiledBitmap::OpenTiledBitmapInterface> openTiledBitmapInterface)                 = 0;
+  virtual void
+               registerOpenTiledBitmapInterface(const std::string&                                             identifier,
+                                                std::shared_ptr<Scroom::TiledBitmap::OpenTiledBitmapInterface> openTiledBitmapInterface) = 0;
   virtual void registerOpenInterface(const std::string& identifier, OpenInterface::Ptr openInterface)          = 0;
   virtual void registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer)                 = 0;
   virtual void registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer) = 0;

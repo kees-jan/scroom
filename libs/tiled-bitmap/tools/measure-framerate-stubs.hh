@@ -22,7 +22,7 @@ class PresentationInterface;
 class ProgressInterfaceStub : public ProgressInterface
 {
 public:
-  using Ptr = boost::shared_ptr<ProgressInterfaceStub>;
+  using Ptr = std::shared_ptr<ProgressInterfaceStub>;
 
 private:
   bool finished{false};
@@ -45,7 +45,7 @@ public:
 class ViewInterfaceStub : public ViewInterface
 {
 public:
-  using Ptr = boost::shared_ptr<ViewInterfaceStub>;
+  using Ptr = std::shared_ptr<ViewInterfaceStub>;
 
 private:
   ProgressInterface::Ptr pi;
@@ -54,18 +54,18 @@ private:
   explicit ViewInterfaceStub(ProgressInterface::Ptr pi);
 
 public:
-  static Ptr                               create(ProgressInterface::Ptr pi);
-  void                                     invalidate() override {}
-  ProgressInterface::Ptr                   getProgressInterface() override;
-  void                                     addSideWidget(std::string /*title*/, GtkWidget* /*w*/) override {}
-  void                                     removeSideWidget(GtkWidget* /*w*/) override {}
-  void                                     addToToolbar(GtkToolItem* /*ti*/) override {}
-  void                                     removeFromToolbar(GtkToolItem* /*ti*/) override {}
-  void                                     registerSelectionListener(SelectionListener::Ptr /*unused*/) override{};
-  void                                     registerPostRenderer(PostRenderer::Ptr /*unused*/) override{};
-  void                                     setStatusMessage(const std::string& /*unused*/) override{};
-  boost::shared_ptr<PresentationInterface> getCurrentPresentation() override { return {}; };
-  void addToolButton(GtkToggleButton* /*unused*/, ToolStateListener::Ptr /*unused*/) override{};
+  static Ptr                             create(ProgressInterface::Ptr pi);
+  void                                   invalidate() override {}
+  ProgressInterface::Ptr                 getProgressInterface() override;
+  void                                   addSideWidget(std::string /*title*/, GtkWidget* /*w*/) override {}
+  void                                   removeSideWidget(GtkWidget* /*w*/) override {}
+  void                                   addToToolbar(GtkToolItem* /*ti*/) override {}
+  void                                   removeFromToolbar(GtkToolItem* /*ti*/) override {}
+  void                                   registerSelectionListener(SelectionListener::Ptr /*unused*/) override{};
+  void                                   registerPostRenderer(PostRenderer::Ptr /*unused*/) override{};
+  void                                   setStatusMessage(const std::string& /*unused*/) override{};
+  std::shared_ptr<PresentationInterface> getCurrentPresentation() override { return {}; };
+  void                                   addToolButton(GtkToggleButton* /*unused*/, ToolStateListener::Ptr /*unused*/) override{};
 };
 
 class Source1Bpp : public SourcePresentation

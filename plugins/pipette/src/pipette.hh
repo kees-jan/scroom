@@ -24,7 +24,7 @@ class PipetteHandler
   , virtual public Scroom::Utils::Base
 {
 public:
-  using Ptr = boost::shared_ptr<PipetteHandler>;
+  using Ptr = std::shared_ptr<PipetteHandler>;
 
 private:
   std::optional<Selection> selection;
@@ -76,7 +76,7 @@ class Pipette
   , virtual public Scroom::Utils::Base
 {
 public:
-  using Ptr = boost::shared_ptr<Pipette>;
+  using Ptr = std::shared_ptr<Pipette>;
 
 private:
   Pipette() = default;

@@ -7,7 +7,8 @@
 
 #include "progressbarmanager.hh"
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
+
 #include <boost/thread.hpp>
 
 #include <scroom/assertions.hh>
@@ -21,7 +22,7 @@ namespace
   class ProgressBarPulser : public WorkInterface
   {
   public:
-    using Ptr = boost::shared_ptr<ProgressBarPulser>;
+    using Ptr = std::shared_ptr<ProgressBarPulser>;
 
   private:
     boost::mutex                         mut;
@@ -42,7 +43,7 @@ namespace
 
   ProgressBarPulser::Ptr instance()
   {
-    static ProgressBarPulser::Ptr const pulser = ProgressBarPulser::Ptr(new ProgressBarPulser());
+    static ProgressBarPulser::Ptr const pulser = std::make_shared<ProgressBarPulser>();
     return pulser;
   }
 

@@ -5,7 +5,8 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
+
 #include <boost/test/unit_test.hpp>
 
 #include <scroom/utilities.hh>

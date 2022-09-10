@@ -9,9 +9,8 @@
 
 #include <list>
 #include <map>
+#include <memory>
 #include <set>
-
-#include <boost/shared_ptr.hpp>
 
 #include <scroom/presentationinterface.hh>
 #include <scroom/resizablepresentationinterface.hh>
@@ -19,14 +18,14 @@
 class SizeDeterminer
 {
 public:
-  using Ptr = boost::shared_ptr<SizeDeterminer>;
+  using Ptr = std::shared_ptr<SizeDeterminer>;
 
 private:
   class PresentationData
   {
   public:
-    ResizablePresentationInterface::Ptr const resizablePresentationInterface;
-    std::set<ViewInterface::WeakPtr>          views;
+    ResizablePresentationInterface::Ptr const         resizablePresentationInterface;
+    Scroom::Utils::WeakKeySet<ViewInterface::WeakPtr> views;
 
   public:
     PresentationData(); // Don't use

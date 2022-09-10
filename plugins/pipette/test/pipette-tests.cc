@@ -5,6 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
+#include <memory>
 #include <stack>
 #include <thread>
 
@@ -45,11 +46,11 @@ public:
 class DummyView : public ViewInterface
 {
 public:
-  using Ptr = boost::shared_ptr<DummyView>;
+  using Ptr = std::shared_ptr<DummyView>;
 
   static Ptr createWithPresentation() { return create(DummyPresentation::create()); }
   static Ptr createWithoutPresentation() { return create(nullptr); }
-  static Ptr create(PresentationInterface::Ptr presentation_) { return Ptr(new DummyView(std::move(presentation_))); }
+  static Ptr create(PresentationInterface::Ptr presentation_) { return std::make_shared<DummyView>(std::move(presentation_)); }
 
   explicit DummyView(PresentationInterface::Ptr presentation_)
     : presentation(std::move(presentation_))
@@ -97,9 +98,9 @@ public:
 class DummyPluginInterface : public ScroomPluginInterface
 {
 public:
-  using Ptr = boost::shared_ptr<DummyPluginInterface>;
+  using Ptr = std::shared_ptr<DummyPluginInterface>;
 
-  static Ptr create() { return Ptr(new DummyPluginInterface()); }
+  static Ptr create() { return std::make_shared<DummyPluginInterface>(); }
 
   void registerNewPresentationInterface(const std::string& /*identifier*/,
                                         NewPresentationInterface::Ptr /*newPresentationInterface*/) override{};
@@ -109,7 +110,7 @@ public:
                                          OpenPresentationInterface::Ptr /*openPresentationInterface*/) override{};
   void registerOpenTiledBitmapInterface(
     const std::string& /*identifier*/,
-    boost::shared_ptr<Scroom::TiledBitmap::OpenTiledBitmapInterface> /*openTiledBitmapInterface*/) override{};
+    std::shared_ptr<Scroom::TiledBitmap::OpenTiledBitmapInterface> /*openTiledBitmapInterface*/) override{};
   void registerOpenInterface(const std::string& /*identifier*/, OpenInterface::Ptr /*openInterface*/) override{};
   void registerViewObserver(const std::string& /*identifier*/, ViewObserver::Ptr /*observer*/) override { view_observers++; };
   void registerPresentationObserver(const std::string& /*identifier*/, PresentationObserver::Ptr /*observer*/) override{};

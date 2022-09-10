@@ -7,6 +7,8 @@
 
 #include "pipette.hh"
 
+#include <memory>
+
 #include <spdlog/spdlog.h>
 
 #include <gdk/gdk.h>
@@ -55,7 +57,7 @@ Scroom::Bookkeeping::Token Pipette::viewAdded(ViewInterface::Ptr view)
 // PipetteHandler
 ////////////////////////////////////////////////////////////////////////
 
-PipetteHandler::Ptr PipetteHandler::create() { return Ptr(new PipetteHandler()); }
+PipetteHandler::Ptr PipetteHandler::create() { return std::make_shared<PipetteHandler>(); }
 
 void PipetteHandler::computeValues(const ViewInterface::Ptr& view, Scroom::Utils::Rectangle<double> sel_rect)
 {
@@ -65,7 +67,7 @@ void PipetteHandler::computeValues(const ViewInterface::Ptr& view, Scroom::Utils
 
   // Get the average color within the rectangle
   PresentationInterface::Ptr const presentation = view->getCurrentPresentation();
-  auto                             pipette      = boost::dynamic_pointer_cast<PipetteViewInterface>(presentation);
+  auto                             pipette      = std::dynamic_pointer_cast<PipetteViewInterface>(presentation);
   if(pipette == nullptr || !presentation->isPropertyDefined(PIPETTE_PROPERTY_NAME))
   {
     spdlog::error("Presentation does not implement PipetteViewInterface!");

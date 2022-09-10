@@ -67,7 +67,7 @@ SizeDeterminer::Ptr SizeDeterminer::create() { return Ptr(new SizeDeterminer());
 
 void SizeDeterminer::add(PresentationInterface::Ptr const& p)
 {
-  ResizablePresentationInterface::Ptr const r = boost::dynamic_pointer_cast<ResizablePresentationInterface>(p);
+  ResizablePresentationInterface::Ptr const r = std::dynamic_pointer_cast<ResizablePresentationInterface>(p);
   if(r)
   {
     resizablePresentationData.insert(std::make_pair(p, PresentationData(r)));
@@ -105,7 +105,7 @@ void SizeDeterminer::open(PresentationInterface::Ptr const& p, ViewInterface::We
   }
   else
   {
-    require(!boost::dynamic_pointer_cast<ResizablePresentationInterface>(p));
+    require(!std::dynamic_pointer_cast<ResizablePresentationInterface>(p));
   }
 }
 
@@ -119,7 +119,7 @@ void SizeDeterminer::close(PresentationInterface::Ptr const& p, ViewInterface::W
   }
   else
   {
-    require(!boost::dynamic_pointer_cast<ResizablePresentationInterface>(p));
+    require(!std::dynamic_pointer_cast<ResizablePresentationInterface>(p));
   }
 }
 

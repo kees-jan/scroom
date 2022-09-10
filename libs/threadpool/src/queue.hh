@@ -22,7 +22,7 @@ namespace Scroom::Detail::ThreadPool
   class QueueImpl
   {
   public:
-    using Ptr = boost::shared_ptr<QueueImpl>;
+    using Ptr = std::shared_ptr<QueueImpl>;
 
     static Ptr create();
 

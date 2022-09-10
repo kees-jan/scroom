@@ -1,6 +1,6 @@
 #pragma once
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 #include <gtk/gtk.h>
 
@@ -14,7 +14,7 @@
 class RulerDrawStrategy : private Interface
 {
 public:
-  using Ptr = boost::shared_ptr<RulerDrawStrategy>;
+  using Ptr = std::shared_ptr<RulerDrawStrategy>;
 
   /**
    * Returns the length of the major tick lines, given the ruler dimensions.

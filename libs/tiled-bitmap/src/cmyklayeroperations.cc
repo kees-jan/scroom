@@ -18,13 +18,6 @@
 #include <scroom/tile.hh>
 
 ////////////////////////////////////////////////////////////////////////
-
-namespace
-{
-  boost::shared_ptr<unsigned char> shared_malloc(size_t size) { return {static_cast<unsigned char*>(malloc(size)), free}; }
-} // namespace
-
-////////////////////////////////////////////////////////////////////////
 // OperationsCMYK32
 
 PipetteCommonOperationsCMYK::Ptr OperationsCMYK32::create() { return PipetteCommonOperationsCMYK::Ptr(new OperationsCMYK32()); }
@@ -42,8 +35,8 @@ int OperationsCMYK32::getBpp() { return 32; }
 Scroom::Utils::Stuff OperationsCMYK32::cache(const ConstTile::Ptr& tile)
 {
   // Allocate the space for the cache - stride is the height of one row
-  const int                        stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
-  boost::shared_ptr<uint8_t> const data   = shared_malloc(static_cast<size_t>(stride * tile->height));
+  const int                      stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
+  std::shared_ptr<uint8_t> const data   = Scroom::Utils::shared_malloc(static_cast<size_t>(stride * tile->height));
 
   // Row is a pointer to a row of pixels (destination)
   auto* row = reinterpret_cast<uint32_t*>(data.get());
@@ -135,8 +128,8 @@ int OperationsCMYK16::getBpp() { return 16; }
 Scroom::Utils::Stuff OperationsCMYK16::cache(const ConstTile::Ptr& tile)
 {
   // Allocate the space for the cache - stride is the height of one row
-  const int                        stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
-  boost::shared_ptr<uint8_t> const data   = shared_malloc(static_cast<size_t>(stride * tile->height));
+  const int                      stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
+  std::shared_ptr<uint8_t> const data   = Scroom::Utils::shared_malloc(static_cast<size_t>(stride * tile->height));
 
   // Row is a pointer to a row of pixels (destination)
   auto* row = reinterpret_cast<uint32_t*>(data.get());
@@ -228,8 +221,8 @@ int OperationsCMYK8::getBpp() { return 8; }
 Scroom::Utils::Stuff OperationsCMYK8::cache(const ConstTile::Ptr& tile)
 {
   // Allocate the space for the cache - stride is the height of one row
-  const int                        stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
-  boost::shared_ptr<uint8_t> const data   = shared_malloc(static_cast<size_t>(stride * tile->height));
+  const int                      stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
+  std::shared_ptr<uint8_t> const data   = Scroom::Utils::shared_malloc(static_cast<size_t>(stride * tile->height));
 
   // Row is a pointer to a row of pixels (destination)
   auto* row = reinterpret_cast<uint32_t*>(data.get());
@@ -322,8 +315,8 @@ int OperationsCMYK4::getBpp()
 Scroom::Utils::Stuff OperationsCMYK4::cache(const ConstTile::Ptr& tile)
 {
   // Allocate the space for the cache - stride is the height of one row
-  const int                        stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
-  boost::shared_ptr<uint8_t> const data   = shared_malloc(static_cast<size_t>(stride * tile->height));
+  const int                      stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
+  std::shared_ptr<uint8_t> const data   = Scroom::Utils::shared_malloc(static_cast<size_t>(stride * tile->height));
 
   // Row is a pointer to a row of pixels (destination)
   auto* row = reinterpret_cast<uint32_t*>(data.get());

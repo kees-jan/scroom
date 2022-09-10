@@ -6,6 +6,7 @@
  */
 
 #include <cstring>
+#include <memory>
 #include <utility>
 
 #include <scroom/tiledbitmaplayer.hh>
@@ -73,7 +74,7 @@ Tile::Ptr CompressedTile::getTileSync()
     if(!result)
     {
       boost::mutex::scoped_lock const lock(tileData);
-      result = Tile::Ptr(new Tile(TILESIZE, TILESIZE, bpp, data->get()));
+      result = std::make_shared<Tile>(TILESIZE, TILESIZE, bpp, data->get());
       tile   = result;
     }
   }
@@ -142,7 +143,7 @@ ConstTile::Ptr CompressedTile::do_load()
     result = constTile.lock(); // This ought to fail
     if(!result)
     {
-      result    = ConstTile::Ptr(new ConstTile(TILESIZE, TILESIZE, bpp, data->getConst()));
+      result    = std::make_shared<ConstTile>(TILESIZE, TILESIZE, bpp, data->getConst());
       constTile = result;
       didLoad   = true;
     }

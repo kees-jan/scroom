@@ -1,5 +1,4 @@
 add_subdirectory(boost-test-helper)
-add_subdirectory(sanity-tests)
 add_subdirectory(util)
 add_subdirectory(threadpool)
 add_subdirectory(memory-manager)

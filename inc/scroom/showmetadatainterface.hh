@@ -7,9 +7,8 @@
 
 #pragma once
 
+#include <memory>
 #include <string>
-
-#include <boost/shared_ptr.hpp>
 
 #include <scroom/interface.hh>
 
@@ -18,7 +17,7 @@ const std::string METADATA_PROPERTY_NAME = "Metadata";
 class ShowMetadataInterface : private Interface
 {
 public:
-  using Ptr = boost::shared_ptr<ShowMetadataInterface>;
+  using Ptr = std::shared_ptr<ShowMetadataInterface>;
 
   /**
    * Request to show a window containing the presentation metadata

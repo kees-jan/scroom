@@ -16,7 +16,7 @@ namespace Scroom::Bitmap
   }
 
   BitmapSurface::Ptr
-    BitmapSurface::create(int width, int height, cairo_format_t format, int stride, boost::shared_ptr<unsigned char> const& data)
+    BitmapSurface::create(int width, int height, cairo_format_t format, int stride, std::shared_ptr<unsigned char> const& data)
   {
     return BitmapSurface::Ptr(new BitmapSurface(width, height, format, stride, data));
   }
@@ -30,11 +30,11 @@ namespace Scroom::Bitmap
   {
   }
 
-  BitmapSurface::BitmapSurface(int                                     width,
-                               int                                     height,
-                               cairo_format_t                          format,
-                               int                                     stride,
-                               boost::shared_ptr<unsigned char> const& data_)
+  BitmapSurface::BitmapSurface(int                                   width,
+                               int                                   height,
+                               cairo_format_t                        format,
+                               int                                   stride,
+                               std::shared_ptr<unsigned char> const& data_)
     : surface(cairo_image_surface_create_for_data(data_.get(), format, width, height, stride))
     , data(data_)
   {

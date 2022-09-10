@@ -7,9 +7,9 @@
 
 #pragma once
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
+
 #include <boost/thread.hpp>
-#include <boost/weak_ptr.hpp>
 
 #include <scroom/observable.hh>
 #include <scroom/stuff.hh>
@@ -24,8 +24,8 @@ class TileViewState
   , public TileLoadingObserver
 {
 public:
-  using Ptr     = boost::shared_ptr<TileViewState>;
-  using WeakPtr = boost::weak_ptr<TileViewState>;
+  using Ptr     = std::shared_ptr<TileViewState>;
+  using WeakPtr = std::weak_ptr<TileViewState>;
 
   enum State
   {
@@ -39,21 +39,21 @@ public:
   };
 
 private:
-  boost::shared_ptr<CompressedTile>    parent;
-  boost::mutex                         mut;
-  State                                state{INIT};
-  State                                desiredState{LOADED};
-  ThreadPool::Queue::Ptr               queue;
-  ThreadPool::WeakQueue::Ptr           weakQueue;
-  Scroom::Utils::Stuff                 r;
-  ConstTile::Ptr                       tile;
-  boost::weak_ptr<TiledBitmapViewData> tbvd;
-  LayerOperations::Ptr                 lo;
-  int                                  zoom{0};
-  Scroom::Utils::StuffWeak             lifeTimeManager;
-  Scroom::Utils::Stuff                 baseCache;
-  Scroom::Utils::Stuff                 zoomCache;
-  ThreadPool::Ptr                      cpuBound;
+  std::shared_ptr<CompressedTile>    parent;
+  boost::mutex                       mut;
+  State                              state{INIT};
+  State                              desiredState{LOADED};
+  ThreadPool::Queue::Ptr             queue;
+  ThreadPool::WeakQueue::Ptr         weakQueue;
+  Scroom::Utils::Stuff               r;
+  ConstTile::Ptr                     tile;
+  std::weak_ptr<TiledBitmapViewData> tbvd;
+  LayerOperations::Ptr               lo;
+  int                                zoom{0};
+  Scroom::Utils::StuffWeak           lifeTimeManager;
+  Scroom::Utils::Stuff               baseCache;
+  Scroom::Utils::Stuff               zoomCache;
+  ThreadPool::Ptr                    cpuBound;
 
 public:
   ~TileViewState() override;
@@ -62,17 +62,17 @@ public:
   TileViewState operator=(const TileViewState&) = delete;
   TileViewState operator=(TileViewState&&)      = delete;
 
-  static Ptr create(const boost::shared_ptr<CompressedTile>& parent);
+  static Ptr create(const std::shared_ptr<CompressedTile>& parent);
 
   Scroom::Utils::Stuff getCacheResult();
-  void                 setViewData(const boost::shared_ptr<TiledBitmapViewData>& tbvd);
+  void                 setViewData(const std::shared_ptr<TiledBitmapViewData>& tbvd);
   void                 setZoom(LayerOperations::Ptr lo, int zoom);
 
   // TileLoadingObserver /////////////////////////////////////////////////
   void tileLoaded(ConstTile::Ptr tile) override;
 
 private:
-  explicit TileViewState(boost::shared_ptr<CompressedTile> parent);
+  explicit TileViewState(std::shared_ptr<CompressedTile> parent);
 
   /**
    * Kick the internal state machine into making some progress

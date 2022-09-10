@@ -12,6 +12,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <list>
+#include <memory>
 #include <string>
 #include <utility>
 #include <vector>
@@ -38,12 +39,12 @@ namespace
   class ThreadList
   {
   public:
-    using Ptr = boost::shared_ptr<ThreadList>;
+    using Ptr = std::shared_ptr<ThreadList>;
 
   private:
-    boost::mutex                                             mut;
-    std::list<ThreadPool::ThreadPtr>                         threads;
-    std::list<std::pair<boost::weak_ptr<void>, std::string>> pointers;
+    boost::mutex                                           mut;
+    std::list<ThreadPool::ThreadPtr>                       threads;
+    std::list<std::pair<std::weak_ptr<void>, std::string>> pointers;
 
   private:
     void dumpPointers();
@@ -52,7 +53,7 @@ namespace
     static Ptr instance();
     void       wait();
     void       add(const ThreadPool::ThreadPtr& t);
-    void       add(const boost::shared_ptr<void>& t, const std::string& s);
+    void       add(const std::shared_ptr<void>& t, const std::string& s);
   };
 
   /**
@@ -77,7 +78,7 @@ namespace
   ThreadWaiter waiter;
 
   template <typename T>
-  boost::shared_ptr<T> NotifyThreadList(boost::shared_ptr<T> t, const std::string& s)
+  std::shared_ptr<T> NotifyThreadList(std::shared_ptr<T> t, const std::string& s)
   {
     ThreadList::instance()->add(t, s);
     return t;
@@ -87,7 +88,7 @@ namespace
 
   ThreadList::Ptr ThreadList::instance()
   {
-    static Ptr const threadList = Ptr(new ThreadList());
+    static Ptr const threadList = std::make_shared<ThreadList>();
     return threadList;
   }
 
@@ -171,10 +172,10 @@ namespace
     threads.push_back(t);
   }
 
-  void ThreadList::add(const boost::shared_ptr<void>& t, const std::string& s)
+  void ThreadList::add(const std::shared_ptr<void>& t, const std::string& s)
   {
     boost::mutex::scoped_lock const lock(mut);
-    pointers.push_back(std::make_pair<boost::weak_ptr<void>, std::string>(t, std::string(s)));
+    pointers.push_back(std::make_pair<std::weak_ptr<void>, std::string>(t, std::string(s)));
   }
 
   ThreadWaiter::ThreadWaiter()
@@ -227,17 +228,17 @@ ThreadPool::ThreadPool(int count, bool completeAllJobsBeforeDestruction)
 
 ThreadPool::Ptr ThreadPool::create(bool completeAllJobsBeforeDestruction)
 {
-  return ThreadPool::Ptr(new ThreadPool(completeAllJobsBeforeDestruction));
+  return std::make_shared<ThreadPool>(completeAllJobsBeforeDestruction);
 }
 
 ThreadPool::Ptr ThreadPool::create(int count, bool completeAllJobsBeforeDestruction)
 {
-  return ThreadPool::Ptr(new ThreadPool(count, completeAllJobsBeforeDestruction));
+  return std::make_shared<ThreadPool>(count, completeAllJobsBeforeDestruction);
 }
 
 ThreadPool::ThreadPtr ThreadPool::add()
 {
-  ThreadPool::ThreadPtr t = ThreadPool::ThreadPtr(new boost::thread(boost::bind(&ThreadPool::work, priv)));
+  ThreadPool::ThreadPtr t = std::make_shared<boost::thread>(boost::bind(&ThreadPool::work, priv));
   threads.push_back(t);
   ThreadList::instance()->add(t);
   return t;
@@ -451,7 +452,7 @@ void QueueJumper::operator()()
 
 ThreadPool::Ptr CpuBound()
 {
-  static ThreadPool::Ptr const cpuBound = NotifyThreadList<ThreadPool>(ThreadPool::Ptr(new ThreadPool()), "CpuBound threadpool");
+  static ThreadPool::Ptr const cpuBound = NotifyThreadList<ThreadPool>(std::make_shared<ThreadPool>(), "CpuBound threadpool");
 
   return cpuBound;
 }
@@ -459,7 +460,7 @@ ThreadPool::Ptr CpuBound()
 ThreadPool::Ptr Sequentially()
 {
   static ThreadPool::Ptr const sequentially =
-    NotifyThreadList<ThreadPool>(ThreadPool::Ptr(new ThreadPool(1)), "Sequential threadpool");
+    NotifyThreadList<ThreadPool>(std::make_shared<ThreadPool>(1), "Sequential threadpool");
 
   return sequentially;
 }

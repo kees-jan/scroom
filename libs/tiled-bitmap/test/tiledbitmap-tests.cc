@@ -6,7 +6,6 @@
  */
 
 #include <boost/test/unit_test.hpp>
-#include <boost/weak_ptr.hpp>
 
 #include <scroom/rectangle.hh>
 #include <scroom/tiledbitmapinterface.hh>
@@ -42,7 +41,7 @@ BOOST_AUTO_TEST_CASE(tiledbitmap_can_be_deleted)
   ls.push_back(DummyLayerOperations::create());
   TiledBitmapInterface::Ptr bitmap = createTiledBitmap(300000, 300000, ls);
   BOOST_CHECK(bitmap);
-  boost::weak_ptr<TiledBitmapInterface> const weak = bitmap;
+  std::weak_ptr<TiledBitmapInterface> const weak = bitmap;
   BOOST_CHECK(weak.lock());
   bitmap.reset();
   BOOST_CHECK(!bitmap);

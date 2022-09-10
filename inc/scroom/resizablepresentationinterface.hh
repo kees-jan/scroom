@@ -7,10 +7,8 @@
 
 #pragma once
 
+#include <memory>
 #include <set>
-
-#include <boost/shared_ptr.hpp>
-#include <boost/weak_ptr.hpp>
 
 #include <gdk/gdk.h>
 
@@ -26,8 +24,8 @@
 class ResizablePresentationInterface : private Interface
 {
 public:
-  using Ptr     = boost::shared_ptr<ResizablePresentationInterface>;
-  using WeakPtr = boost::weak_ptr<ResizablePresentationInterface>;
+  using Ptr     = std::shared_ptr<ResizablePresentationInterface>;
+  using WeakPtr = std::weak_ptr<ResizablePresentationInterface>;
 
   virtual void setRect(ViewInterface::WeakPtr const& vi, Scroom::Utils::Rectangle<double> const& rect) = 0;
 };

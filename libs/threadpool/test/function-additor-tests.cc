@@ -47,8 +47,8 @@ BOOST_AUTO_TEST_CASE(pass_passes)
 
 BOOST_AUTO_TEST_CASE(destroy_destroys)
 {
-  boost::shared_ptr<int>     p(new int(4));
-  boost::weak_ptr<int> const w(p);
+  std::shared_ptr<int>     p(new int(4));
+  std::weak_ptr<int> const w(p);
   BOOST_REQUIRE(w.lock());
 
   boost::function<void()> const f(destroy(p));

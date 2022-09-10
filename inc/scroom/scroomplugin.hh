@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 class PluginInformationInterface;
 
-boost::shared_ptr<PluginInformationInterface> getPluginInformation();
+std::shared_ptr<PluginInformationInterface> getPluginInformation();

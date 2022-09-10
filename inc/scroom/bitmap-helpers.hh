@@ -7,10 +7,10 @@
 
 #pragma once
 
+#include <memory>
 #include <type_traits>
 
 #include <boost/operators.hpp>
-#include <boost/shared_ptr.hpp>
 #include <boost/utility.hpp>
 
 #include <cairo.h>
@@ -22,15 +22,15 @@ namespace Scroom::Bitmap
   class BitmapSurface
   {
   public:
-    using Ptr = boost::shared_ptr<BitmapSurface>;
+    using Ptr = std::shared_ptr<BitmapSurface>;
 
   private:
-    cairo_surface_t* const                 surface;
-    boost::shared_ptr<unsigned char> const data;
+    cairo_surface_t* const               surface;
+    std::shared_ptr<unsigned char> const data;
 
   public:
     static Ptr create(int width, int height, cairo_format_t format);
-    static Ptr create(int width, int height, cairo_format_t format, int stride, boost::shared_ptr<unsigned char> const& data);
+    static Ptr create(int width, int height, cairo_format_t format, int stride, std::shared_ptr<unsigned char> const& data);
 
     ~BitmapSurface();
     BitmapSurface(const BitmapSurface&)            = delete;
@@ -42,7 +42,7 @@ namespace Scroom::Bitmap
 
   private:
     BitmapSurface(int width, int height, cairo_format_t format);
-    BitmapSurface(int width, int height, cairo_format_t format, int stride, boost::shared_ptr<unsigned char> const& data);
+    BitmapSurface(int width, int height, cairo_format_t format, int stride, std::shared_ptr<unsigned char> const& data);
   };
 
   ////////////////////////////////////////////////////////////////////////

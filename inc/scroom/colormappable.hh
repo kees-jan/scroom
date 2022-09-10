@@ -7,11 +7,9 @@
 
 #pragma once
 
+#include <memory>
 #include <string>
 #include <vector>
-
-#include <boost/shared_ptr.hpp>
-#include <boost/weak_ptr.hpp>
 
 #include <scroom/assertions.hh>
 #include <scroom/color.hh>
@@ -28,9 +26,9 @@ const std::string TRANSPARENT_BACKGROUND_PROPERTY_NAME   = "Transparent Backgrou
 class Colormap
 {
 public:
-  using Ptr      = boost::shared_ptr<Colormap>;
-  using ConstPtr = boost::shared_ptr<const Colormap>;
-  using WeakPtr  = boost::weak_ptr<Colormap>;
+  using Ptr      = std::shared_ptr<Colormap>;
+  using ConstPtr = std::shared_ptr<const Colormap>;
+  using WeakPtr  = std::weak_ptr<Colormap>;
 
 public:
   std::string        name;   /**< Name of this colormap */
@@ -79,7 +77,7 @@ public:
     return result;
   }
 
-  [[nodiscard]] Ptr clone() const { return Ptr(new Colormap(*this)); }
+  [[nodiscard]] Ptr clone() const { return std::make_shared<Colormap>(*this); }
 
   void setAlpha(double alpha)
   {
@@ -113,8 +111,8 @@ public:
 class Colormappable : private Interface
 {
 public:
-  using Ptr     = boost::shared_ptr<Colormappable>;
-  using WeakPtr = boost::weak_ptr<Colormappable>;
+  using Ptr     = std::shared_ptr<Colormappable>;
+  using WeakPtr = std::weak_ptr<Colormappable>;
 
   /** Request that the presentation use the given colormap */
   virtual void setColormap(Colormap::Ptr colormap) = 0;
@@ -146,7 +144,7 @@ public:
 class ColormapProvider : private Interface
 {
 public:
-  using Ptr = boost::shared_ptr<ColormapProvider>;
+  using Ptr = std::shared_ptr<ColormapProvider>;
 
 public:
   virtual Colormap::Ptr getColormap() = 0;
@@ -157,7 +155,7 @@ class ColormapHelperBase
   , public Colormappable
 {
 public:
-  using Ptr = boost::shared_ptr<ColormapHelperBase>;
+  using Ptr = std::shared_ptr<ColormapHelperBase>;
 
 public:
   Colormap::Ptr colormap;

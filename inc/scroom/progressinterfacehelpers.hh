@@ -23,8 +23,8 @@ namespace Scroom::Utils
   class ProgressStateInterface : private Interface
   {
   public:
-    using Ptr     = boost::shared_ptr<ProgressStateInterface>;
-    using WeakPtr = boost::weak_ptr<ProgressStateInterface>;
+    using Ptr     = std::shared_ptr<ProgressStateInterface>;
+    using WeakPtr = std::weak_ptr<ProgressStateInterface>;
 
     enum State
     {
@@ -53,7 +53,7 @@ namespace Scroom::Utils
   class ProgressInterfaceFromProgressStateInterfaceForwarder : public ProgressInterfaceFromProgressStateInterface
   {
   public:
-    using Ptr = boost::shared_ptr<ProgressInterfaceFromProgressStateInterfaceForwarder>;
+    using Ptr = std::shared_ptr<ProgressInterfaceFromProgressStateInterfaceForwarder>;
 
   private:
     ProgressStateInterface::Ptr child;
@@ -80,7 +80,7 @@ namespace Scroom::Utils
   class ProgressStateInterfaceFromProgressInterfaceForwarder : public ProgressStateInterfaceFromProgressInterface
   {
   public:
-    using Ptr = boost::shared_ptr<ProgressStateInterfaceFromProgressInterfaceForwarder>;
+    using Ptr = std::shared_ptr<ProgressStateInterfaceFromProgressInterfaceForwarder>;
 
   private:
     ProgressInterface::Ptr child;
@@ -103,7 +103,7 @@ namespace Scroom::Utils
     class ProgressStore : public ProgressInterfaceFromProgressStateInterface
     {
     public:
-      using Ptr = boost::shared_ptr<ProgressStore>;
+      using Ptr = std::shared_ptr<ProgressStore>;
 
     private:
       State  state{IDLE};
@@ -128,13 +128,13 @@ namespace Scroom::Utils
     , public ProgressInterface
   {
   public:
-    using Ptr = boost::shared_ptr<ProgressInterfaceBroadcaster>;
+    using Ptr = std::shared_ptr<ProgressInterfaceBroadcaster>;
 
   private:
     class Unsubscriber
     {
     public:
-      using Ptr = boost::shared_ptr<Unsubscriber>;
+      using Ptr = std::shared_ptr<Unsubscriber>;
 
     private:
       ProgressInterfaceBroadcaster::Ptr parent;
@@ -181,13 +181,13 @@ namespace Scroom::Utils
   class ProgressInterfaceMultiplexer : public virtual Base
   {
   public:
-    using Ptr = boost::shared_ptr<ProgressInterfaceMultiplexer>;
+    using Ptr = std::shared_ptr<ProgressInterfaceMultiplexer>;
 
   private:
     class ChildData : public ProgressStateInterface
     {
     public:
-      using Ptr = boost::shared_ptr<ChildData>;
+      using Ptr = std::shared_ptr<ChildData>;
 
     public:
       boost::mutex                  mut;
@@ -209,7 +209,7 @@ namespace Scroom::Utils
     class Child : public ProgressInterfaceFromProgressStateInterface
     {
     public:
-      using Ptr = boost::shared_ptr<Child>;
+      using Ptr = std::shared_ptr<Child>;
 
     private:
       ProgressInterfaceMultiplexer::Ptr parent;

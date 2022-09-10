@@ -97,7 +97,7 @@ class View
   , virtual public Scroom::Utils::Base
 {
 public:
-  using Ptr = boost::shared_ptr<View>;
+  using Ptr = std::shared_ptr<View>;
 
 private:
   GtkBuilder*                      scroomXml;
@@ -117,36 +117,36 @@ private:
   Ruler::Ptr                       vruler;
   Ruler::Ptr                       hruler;
 
-  GtkComboBox*                                              zoomBox;
-  GtkListStore*                                             zoomItems;
-  GtkProgressBar*                                           progressBar;
-  GtkStatusbar*                                             statusBar;
-  GtkToolbar*                                               toolBar;
-  GtkToolItem*                                              toolBarSeparator;
-  GtkEntry*                                                 xTextBox;
-  GtkEntry*                                                 yTextBox;
-  GtkWidget*                                                statusArea;
-  GtkWidget*                                                toolbarArea;
-  unsigned                                                  toolBarCount;
-  int                                                       statusBarContextId;
-  int                                                       zoom{0};
-  Freezable<Scroom::Utils::Point<double>>                   position; /**< of the top left visible pixel */
-  std::optional<Selection>                                  selection;
-  std::vector<SelectionListener::Ptr>                       selectionListeners;
-  std::vector<PostRenderer::Ptr>                            postRenderers;
-  std::map<GtkToggleButton*, ToolStateListener::Ptr>        tools;
-  Scroom::Utils::Point<double>                              aspectRatio;
-  boost::shared_ptr<TweakPresentationPosition>              tweakPresentationPosition;
-  boost::shared_ptr<TweakPositionTextBox>                   tweakPositionTextBox;
-  boost::shared_ptr<TweakRulers>                            tweakRulers;
-  std::map<std::string, boost::shared_ptr<ITweakSelection>> tweakSelection;
+  GtkComboBox*                                            zoomBox;
+  GtkListStore*                                           zoomItems;
+  GtkProgressBar*                                         progressBar;
+  GtkStatusbar*                                           statusBar;
+  GtkToolbar*                                             toolBar;
+  GtkToolItem*                                            toolBarSeparator;
+  GtkEntry*                                               xTextBox;
+  GtkEntry*                                               yTextBox;
+  GtkWidget*                                              statusArea;
+  GtkWidget*                                              toolbarArea;
+  unsigned                                                toolBarCount;
+  int                                                     statusBarContextId;
+  int                                                     zoom{0};
+  Freezable<Scroom::Utils::Point<double>>                 position; /**< of the top left visible pixel */
+  std::optional<Selection>                                selection;
+  std::vector<SelectionListener::Ptr>                     selectionListeners;
+  std::vector<PostRenderer::Ptr>                          postRenderers;
+  std::map<GtkToggleButton*, ToolStateListener::Ptr>      tools;
+  Scroom::Utils::Point<double>                            aspectRatio;
+  std::shared_ptr<TweakPresentationPosition>              tweakPresentationPosition;
+  std::shared_ptr<TweakPositionTextBox>                   tweakPositionTextBox;
+  std::shared_ptr<TweakRulers>                            tweakRulers;
+  std::map<std::string, std::shared_ptr<ITweakSelection>> tweakSelection;
 
   gint                         modifiermove{0};
   Scroom::Utils::Point<double> cachedPoint;
 
   ProgressBarManager::Ptr progressBarManager;
 
-  std::map<PresentationInterface::WeakPtr, GtkWidget*> presentations;
+  Scroom::Utils::WeakKeyMap<PresentationInterface::WeakPtr, GtkWidget*> presentations;
 
 private:
   enum LocationChangeCause

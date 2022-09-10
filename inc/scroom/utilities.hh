@@ -7,27 +7,27 @@
 
 #pragma once
 
-#include <boost/enable_shared_from_this.hpp>
+
 #include <boost/thread.hpp>
 
 namespace Scroom::Utils
 {
   /**
-   * Base class that inherits from boost::enable_shared_from_this.
+   * Base class that inherits from std::enable_shared_from_this.
    *
-   * In an inheritance hierarchy, you can inherit from boost::enable_shared_from_this
+   * In an inheritance hierarchy, you can inherit from std::enable_shared_from_this
    * only once. Otherwise, you'll get two copies of the internal weak
    * pointer, and only one gets initialized.
    *
    * To work with this restriction, this class inherits from
-   * boost::enable_shared_from_this, and provides methods to dynamic_cast
+   * std::enable_shared_from_this, and provides methods to dynamic_cast
    * to whatever subtype you like.
    *
    * You should always inherit virtually from this class, to ensure that even
    * in the face of multiple inheritance, there always is only one copy of
    * Base.
    */
-  class Base : public boost::enable_shared_from_this<Base>
+  class Base : public std::enable_shared_from_this<Base>
   {
   public:
     Base()                       = default;
@@ -42,14 +42,20 @@ namespace Scroom::Utils
      * make it usable in subclasses.
      */
     template <typename R>
-    boost::shared_ptr<R> shared_from_this();
+    std::shared_ptr<R> shared_from_this()
+    {
+      return std::dynamic_pointer_cast<R, Base>(std::enable_shared_from_this<Base>::shared_from_this());
+    }
 
     /**
      * Calls shared_from_this() with a built-in dynamic cast, to
      * make it usable in subclasses.
      */
     template <typename R>
-    boost::shared_ptr<R const> shared_from_this() const;
+    std::shared_ptr<R const> shared_from_this() const
+    {
+      return std::dynamic_pointer_cast<R const, Base const>(std::enable_shared_from_this<Base>::shared_from_this());
+    }
   };
 
   template <typename F>
@@ -72,9 +78,9 @@ namespace Scroom::Utils
   };
 
   template <typename F>
-  boost::shared_ptr<void> on_destruction(F f)
+  std::shared_ptr<void> on_destruction(F f)
   {
-    return boost::make_shared<on_scope_exit<F>>(std::move(f));
+    return std::make_shared<on_scope_exit<F>>(std::move(f));
   }
 
   template <typename F>
@@ -105,17 +111,13 @@ namespace Scroom::Utils
     F    f;
   };
 
-  template <typename R>
-  boost::shared_ptr<R> Base::shared_from_this()
-  {
-    return boost::dynamic_pointer_cast<R, Base>(boost::enable_shared_from_this<Base>::shared_from_this());
-  }
+  template <typename K, typename V>
+  using WeakKeyMap = std::map<K, V, std::owner_less<K>>;
 
-  template <typename R>
-  boost::shared_ptr<R const> Base::shared_from_this() const
-  {
-    return boost::dynamic_pointer_cast<R const, Base const>(boost::enable_shared_from_this<Base>::shared_from_this());
-  }
+  template <typename K>
+  using WeakKeySet = std::set<K, std::owner_less<K>>;
+
+  inline std::shared_ptr<unsigned char> shared_malloc(size_t size) { return {static_cast<unsigned char*>(malloc(size)), free}; }
 
   ////////////////////////////////////////////////////////////////////////
 
@@ -126,7 +128,7 @@ namespace Scroom::Utils
   class Count
   {
   public:
-    using Ptr = boost::shared_ptr<Count>;
+    using Ptr = std::shared_ptr<Count>;
 
   public:
     const std::string name;

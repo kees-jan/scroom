@@ -65,7 +65,7 @@ namespace Scroom::TiledBitmap
   class LayerSpecForBitmapper
   {
   public:
-    using Ptr = boost::shared_ptr<LayerSpecForBitmapper>;
+    using Ptr = std::shared_ptr<LayerSpecForBitmapper>;
 
     static Ptr instance()
     {

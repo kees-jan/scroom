@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 #include <gtk/gtk.h>
 
@@ -22,7 +22,7 @@ class TiledBitmapViewData
   , public ProgressInterface
 {
 public:
-  using Ptr = boost::shared_ptr<TiledBitmapViewData>;
+  using Ptr = std::shared_ptr<TiledBitmapViewData>;
 
 public:
   ViewInterface::WeakPtr     viewInterface;

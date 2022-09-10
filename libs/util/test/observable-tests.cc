@@ -5,9 +5,9 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
+#include <memory>
 #include <utility>
 
-#include <boost/shared_ptr.hpp>
 #include <boost/test/unit_test.hpp>
 
 #include <scroom/observable.hh>
@@ -19,20 +19,20 @@ using namespace Scroom::Utils;
 class TestObserver
 {
 public:
-  using Ptr     = boost::shared_ptr<TestObserver>;
-  using WeakPtr = boost::weak_ptr<TestObserver>;
+  using Ptr     = std::shared_ptr<TestObserver>;
+  using WeakPtr = std::weak_ptr<TestObserver>;
 
   static Ptr create();
 };
 
-TestObserver::Ptr TestObserver::create() { return TestObserver::Ptr(new TestObserver()); }
+TestObserver::Ptr TestObserver::create() { return std::make_shared<TestObserver>(); }
 
 //////////////////////////////////////////////////////////////
 
 class TestObservable : public Observable<TestObserver>
 {
 public:
-  using Ptr = boost::shared_ptr<TestObservable>;
+  using Ptr = std::shared_ptr<TestObservable>;
 
   std::list<Observer> getObservers();
 
@@ -41,7 +41,7 @@ public:
 
 std::list<TestObservable::Observer> TestObservable::getObservers() { return Observable<TestObserver>::getObservers(); }
 
-TestObservable::Ptr TestObservable::create() { return TestObservable::Ptr(new TestObservable()); }
+TestObservable::Ptr TestObservable::create() { return std::make_shared<TestObservable>(); }
 
 //////////////////////////////////////////////////////////////
 
@@ -53,7 +53,7 @@ private:
   explicit TestRecursiveObservable(TestObservable::Ptr child);
 
 public:
-  using Ptr = boost::shared_ptr<TestRecursiveObservable>;
+  using Ptr = std::shared_ptr<TestRecursiveObservable>;
 
   std::list<Observer> getObservers();
 
@@ -297,10 +297,10 @@ BOOST_AUTO_TEST_CASE(register_observer_recursively)
 
 BOOST_AUTO_TEST_CASE(shared_from_this)
 {
-  TestObservable::Ptr const                     original = TestObservable::create();
-  TestObservable::Ptr const                     copy1    = original->shared_from_this<TestObservable>();
-  boost::shared_ptr<TestObservable const> const copy2    = original;
-  boost::shared_ptr<TestObservable const> const copy3    = copy2->shared_from_this<TestObservable>();
+  TestObservable::Ptr const                   original = TestObservable::create();
+  TestObservable::Ptr const                   copy1    = original->shared_from_this<TestObservable>();
+  std::shared_ptr<TestObservable const> const copy2    = original;
+  std::shared_ptr<TestObservable const> const copy3    = copy2->shared_from_this<TestObservable>();
 
   BOOST_CHECK_EQUAL(original, copy1);
   BOOST_CHECK_EQUAL(copy2, copy3);

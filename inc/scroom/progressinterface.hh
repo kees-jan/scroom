@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 #include <scroom/interface.hh>
 
@@ -17,8 +17,8 @@
 class ProgressInterface : private Interface
 {
 public:
-  using Ptr     = boost::shared_ptr<ProgressInterface>;
-  using WeakPtr = boost::weak_ptr<ProgressInterface>;
+  using Ptr     = std::shared_ptr<ProgressInterface>;
+  using WeakPtr = std::weak_ptr<ProgressInterface>;
 
   virtual void setIdle()                         = 0;
   virtual void setWaiting(double progress = 0.0) = 0;

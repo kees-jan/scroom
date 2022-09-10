@@ -153,7 +153,7 @@ bool filterMatchesInfo(GtkFileFilterInfo const& info, std::list<GtkFileFilter*> 
 class ScroomInterfaceImpl : public ScroomInterface
 {
 public:
-  using Ptr = boost::shared_ptr<ScroomInterfaceImpl>;
+  using Ptr = std::shared_ptr<ScroomInterfaceImpl>;
 
 private:
   ScroomInterfaceImpl() = default;
@@ -315,7 +315,7 @@ Aggregate::Ptr ScroomInterfaceImpl::newAggregate(const std::string& name)
     Aggregate::Ptr aggregate = i->second->createNew();
     if(aggregate)
     {
-      PresentationInterface::Ptr const aggregatePresentation = boost::dynamic_pointer_cast<PresentationInterface>(aggregate);
+      PresentationInterface::Ptr const aggregatePresentation = std::dynamic_pointer_cast<PresentationInterface>(aggregate);
 
       if(aggregatePresentation)
       {

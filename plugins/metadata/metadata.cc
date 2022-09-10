@@ -23,7 +23,7 @@
 void on_image_properties_activate(GtkButton* self, gpointer user_data)
 {
   auto* view                  = static_cast<ViewInterface*>(user_data);
-  auto  showMetaDataInterface = boost::dynamic_pointer_cast<ShowMetadataInterface>(view->getCurrentPresentation());
+  auto  showMetaDataInterface = std::dynamic_pointer_cast<ShowMetadataInterface>(view->getCurrentPresentation());
   require(showMetaDataInterface);
 
   showMetaDataInterface->showMetadata(Scroom::GtkHelpers::get_parent_window(GTK_WIDGET(self)));
@@ -83,7 +83,7 @@ void Metadata::registerCapabilities(ScroomPluginInterface::Ptr host)
 Scroom::Bookkeeping::Token Metadata::viewAdded(ViewInterface::Ptr view)
 {
   auto presentation          = view->getCurrentPresentation();
-  auto showMetaDataInterface = boost::dynamic_pointer_cast<ShowMetadataInterface>(presentation);
+  auto showMetaDataInterface = std::dynamic_pointer_cast<ShowMetadataInterface>(presentation);
   if(presentation->isPropertyDefined(METADATA_PROPERTY_NAME))
   {
     require(showMetaDataInterface);

@@ -50,7 +50,7 @@ namespace Scroom::Bookkeeping
     class TokenImpl
     {
     public:
-      using Ptr = boost::shared_ptr<TokenImpl>;
+      using Ptr = std::shared_ptr<TokenImpl>;
 
     public:
       void add(const Stuff& s) { l.push_back(s); }
@@ -75,15 +75,15 @@ namespace Scroom::Bookkeeping
     class MapTokenImpl : public TokenImpl
     {
     public:
-      using Ptr = boost::shared_ptr<MapTokenImpl<K, V>>;
+      using Ptr = std::shared_ptr<MapTokenImpl<K, V>>;
 
     private:
-      boost::weak_ptr<Scroom::Bookkeeping::MapBase<K, V>> map;
-      WeakToken                                           t;
-      K                                                   k;
+      std::weak_ptr<Scroom::Bookkeeping::MapBase<K, V>> map;
+      WeakToken                                         t;
+      K                                                 k;
 
     protected:
-      MapTokenImpl(boost::shared_ptr<Scroom::Bookkeeping::MapBase<K, V>> map_, K k_)
+      MapTokenImpl(std::shared_ptr<Scroom::Bookkeeping::MapBase<K, V>> map_, K k_)
         : map(map_)
         , k(std::move(k_))
       {
@@ -97,7 +97,7 @@ namespace Scroom::Bookkeeping
     public:
       ~MapTokenImpl()
       {
-        boost::shared_ptr<Scroom::Bookkeeping::MapBase<K, V>> const m = map.lock();
+        std::shared_ptr<Scroom::Bookkeeping::MapBase<K, V>> const m = map.lock();
         if(m)
         {
           m->remove(k, t);
@@ -105,7 +105,7 @@ namespace Scroom::Bookkeeping
       }
 
     public:
-      static Scroom::Bookkeeping::Token create(boost::shared_ptr<Scroom::Bookkeeping::MapBase<K, V>> map, const K& k)
+      static Scroom::Bookkeeping::Token create(std::shared_ptr<Scroom::Bookkeeping::MapBase<K, V>> map, const K& k)
       {
         Ptr const t = Ptr(new MapTokenImpl<K, V>(map, k));
         t->t        = t;
@@ -117,8 +117,8 @@ namespace Scroom::Bookkeeping
     class ValueType
     {
     public:
-      using Ptr     = boost::shared_ptr<ValueType<V>>;
-      using WeakPtr = boost::weak_ptr<ValueType<V>>;
+      using Ptr     = std::shared_ptr<ValueType<V>>;
+      using WeakPtr = std::weak_ptr<ValueType<V>>;
 
     public:
       V         value;
@@ -161,29 +161,29 @@ namespace Scroom::Bookkeeping
 
   ////////////////////////////////////////////////////////////////////////
 
-  inline Token::Token(const boost::shared_ptr<Detail::TokenImpl>& t)
-    : boost::shared_ptr<Detail::TokenImpl>(t)
+  inline Token::Token(const std::shared_ptr<Detail::TokenImpl>& t)
+    : std::shared_ptr<Detail::TokenImpl>(t)
   {
   }
 
-  inline Token::Token(const boost::weak_ptr<Detail::TokenImpl>& t)
-    : boost::shared_ptr<Detail::TokenImpl>(t)
+  inline Token::Token(const std::weak_ptr<Detail::TokenImpl>& t)
+    : std::shared_ptr<Detail::TokenImpl>(t)
   {
   }
 
   inline Token::Token()
-    : boost::shared_ptr<Detail::TokenImpl>(Detail::TokenImpl::create())
+    : std::shared_ptr<Detail::TokenImpl>(Detail::TokenImpl::create())
   {
   }
 
   inline Token::Token(const Stuff& s)
-    : boost::shared_ptr<Detail::TokenImpl>(Detail::TokenImpl::create())
+    : std::shared_ptr<Detail::TokenImpl>(Detail::TokenImpl::create())
   {
     get()->add(s);
   }
 
   inline Token::Token(const StuffList& l)
-    : boost::shared_ptr<Detail::TokenImpl>(Detail::TokenImpl::create())
+    : std::shared_ptr<Detail::TokenImpl>(Detail::TokenImpl::create())
   {
     get()->add(l);
   }
@@ -389,7 +389,7 @@ namespace Scroom::Bookkeeping
   //      if(K)
   //        K->add(add(k,v));
   //      else
-  //        throw std::invalid_argument("boost::weak_ptr can't be locked");
+  //        throw std::invalid_argument("std::weak_ptr can't be locked");
   //    }
   //
   //    template<typename V>

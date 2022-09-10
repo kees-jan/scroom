@@ -68,9 +68,9 @@ void TiledBitmapViewData::resetNeededTiles()
 
   // If we just cleared out oldStuff, old tiles would be unloaded, and
   // we might still need them. So create a backup to throw away later
-  std::list<boost::shared_ptr<void>> oldStuff;
+  std::list<std::shared_ptr<void>> oldStuff;
   oldStuff.swap(stuff);
-  std::list<boost::shared_ptr<void>> oldVolatileStuff;
+  std::list<std::shared_ptr<void>> oldVolatileStuff;
   oldVolatileStuff.swap(volatileStuff);
 
   lock.unlock();
@@ -79,7 +79,7 @@ void TiledBitmapViewData::resetNeededTiles()
   // if the tile was already loaded. Hence, we cannot hold the lock while registering
   // observers.
 
-  std::list<boost::shared_ptr<void>> newStuff;
+  std::list<std::shared_ptr<void>> newStuff;
   // If we don't hold the lock, we cannot add to the stuff list directly. Hence,
   // temporarily add registrations to the newStuff list, and add the newStuff to
   // stuff later.
@@ -127,7 +127,7 @@ void TiledBitmapViewData::storeVolatileStuff(const Scroom::Utils::Stuff& stuff_)
 
 void TiledBitmapViewData::clearVolatileStuff()
 {
-  std::list<boost::shared_ptr<void>> oldVolatileStuff;
+  std::list<std::shared_ptr<void>> oldVolatileStuff;
   {
     boost::unique_lock<boost::mutex> const lock(mut);
     oldVolatileStuff.swap(volatileStuff);

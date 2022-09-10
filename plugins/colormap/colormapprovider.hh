@@ -8,9 +8,7 @@
 #pragma once
 
 #include <map>
-
-#include <boost/enable_shared_from_this.hpp>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 #include <gtk/gtk.h>
 
@@ -27,17 +25,17 @@ namespace Scroom::ColormapImpl
    */
   class ColormapProvider
     : public Viewable
-    , public boost::enable_shared_from_this<ColormapProvider>
+    , public std::enable_shared_from_this<ColormapProvider>
   {
   public:
-    using Ptr = boost::shared_ptr<ColormapProvider>;
+    using Ptr = std::shared_ptr<ColormapProvider>;
 
   private:
     /** The Colormappable interface of the presentation to which we're associated */
     Colormappable::WeakPtr colormappable;
 
     /** The views to which we're associated */
-    std::map<ViewInterface::WeakPtr, GtkTreeView*> views;
+    Scroom::Utils::WeakKeyMap<ViewInterface::WeakPtr, GtkTreeView*> views;
 
     /** The colormaps we're offering to our views */
     GtkListStore* colormaps{nullptr};

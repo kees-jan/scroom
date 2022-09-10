@@ -41,7 +41,7 @@ class PluginManager
   , virtual public Scroom::Utils::Base
 {
 public:
-  using Ptr = boost::shared_ptr<PluginManager>;
+  using Ptr = std::shared_ptr<PluginManager>;
 
 private:
   enum PluginManagerState
@@ -86,8 +86,8 @@ public:
   void registerOpenPresentationInterface(const std::string&             extension,
                                          OpenPresentationInterface::Ptr openPresentationInterface) override;
   void registerOpenTiledBitmapInterface(
-    const std::string&                                               identifier,
-    boost::shared_ptr<Scroom::TiledBitmap::OpenTiledBitmapInterface> openTiledBitmapInterface) override;
+    const std::string&                                             identifier,
+    std::shared_ptr<Scroom::TiledBitmap::OpenTiledBitmapInterface> openTiledBitmapInterface) override;
   void registerOpenInterface(const std::string& extension, OpenInterface::Ptr openInterface) override;
   void registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer) override;
   void registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer) override;

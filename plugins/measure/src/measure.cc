@@ -7,6 +7,8 @@
 
 #include "measure.hh"
 
+#include <memory>
+
 #include <fmt/format.h>
 
 #include <gtk/gtk.h>
@@ -58,7 +60,7 @@ Scroom::Bookkeeping::Token Measure::viewAdded(ViewInterface::Ptr view)
 // MeasureHandler
 ////////////////////////////////////////////////////////////////////////
 
-MeasureHandler::Ptr MeasureHandler::create() { return Ptr(new MeasureHandler()); }
+MeasureHandler::Ptr MeasureHandler::create() { return std::make_shared<MeasureHandler>(); }
 
 void MeasureHandler::displayMeasurement(const ViewInterface::Ptr& view)
 {

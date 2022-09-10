@@ -15,7 +15,7 @@ class Metadata
   , virtual public Scroom::Utils::Base
 {
 public:
-  using Ptr = boost::shared_ptr<Metadata>;
+  using Ptr = std::shared_ptr<Metadata>;
 
 private:
   Metadata() = default;

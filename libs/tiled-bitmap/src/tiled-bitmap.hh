@@ -9,9 +9,8 @@
 
 #include <list>
 #include <map>
+#include <memory>
 
-#include <boost/enable_shared_from_this.hpp>
-#include <boost/shared_ptr.hpp>
 #include <boost/thread/mutex.hpp>
 
 #include <scroom/interface.hh>
@@ -31,9 +30,9 @@ class TiledBitmap
   , public virtual Scroom::Utils::Base
 {
 public:
-  using Ptr         = boost::shared_ptr<TiledBitmap>;
-  using WeakPtr     = boost::weak_ptr<TiledBitmap>;
-  using ViewDataMap = std::map<ViewInterface::WeakPtr, TiledBitmapViewData::Ptr>;
+  using Ptr         = std::shared_ptr<TiledBitmap>;
+  using WeakPtr     = std::weak_ptr<TiledBitmap>;
+  using ViewDataMap = Scroom::Utils::WeakKeyMap<ViewInterface::WeakPtr, TiledBitmapViewData::Ptr>;
 
 private:
   int                                              bitmapWidth;

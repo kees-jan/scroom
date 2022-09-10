@@ -18,7 +18,7 @@ class PipetteViewInterface
   , private Interface
 {
 public:
-  using Ptr = boost::shared_ptr<PipetteViewInterface>;
+  using Ptr = std::shared_ptr<PipetteViewInterface>;
 
 public:
   /**

@@ -25,7 +25,7 @@
 
 namespace Scroom::Tiff
 {
-  using TIFFPtr = boost::shared_ptr<TIFF>;
+  using TIFFPtr = std::shared_ptr<TIFF>;
 
   using namespace Scroom::TiledBitmap;
 
@@ -40,7 +40,7 @@ namespace Scroom::Tiff
     BitmapMetaData bmd;
 
   public:
-    using Ptr = boost::shared_ptr<Source>;
+    using Ptr = std::shared_ptr<Source>;
 
     static Ptr create(std::string fileName, TIFFPtr tif, BitmapMetaData bmd);
 

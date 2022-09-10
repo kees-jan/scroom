@@ -8,11 +8,10 @@
 #include "measure-framerate-tests.hh"
 
 #include <ctime>
+#include <memory>
 #include <string>
 
 #include <spdlog/spdlog.h>
-
-#include <boost/shared_ptr.hpp>
 
 #include <scroom/unused.hh>
 

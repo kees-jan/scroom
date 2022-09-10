@@ -46,7 +46,7 @@ namespace Scroom::ColormapImpl
 
   ColormapProvider::Ptr ColormapProvider::create(const PresentationInterface::Ptr& p)
   {
-    Colormappable::Ptr const c = boost::dynamic_pointer_cast<Colormappable, PresentationInterface>(p);
+    Colormappable::Ptr const c = std::dynamic_pointer_cast<Colormappable, PresentationInterface>(p);
     ColormapProvider::Ptr    result;
     if(c)
     {

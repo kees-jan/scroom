@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 #include <scroom/bitmap-helpers.hh>
 #include <scroom/colormappable.hh>
@@ -23,7 +23,7 @@ private:
   Scroom::Utils::Point<double> aspectRatio;
 
 public:
-  using Ptr = boost::shared_ptr<TransformationData>;
+  using Ptr = std::shared_ptr<TransformationData>;
 
   static Ptr create(Scroom::Utils::Point<double> aspectRatio_);
   static Ptr create();
@@ -42,7 +42,7 @@ namespace Detail
   class ViewData : public ViewInterface
   {
   public:
-    using Ptr = boost::shared_ptr<ViewData>;
+    using Ptr = std::shared_ptr<ViewData>;
 
   public:
     Scroom::Utils::Rectangle<double>   presentationArea;
@@ -55,17 +55,17 @@ namespace Detail
     static ViewData::Ptr             create(const ViewInterface::WeakPtr& parent);
 
     // ViewInterface
-    void                                     invalidate() override;
-    ProgressInterface::Ptr                   getProgressInterface() override;
-    void                                     addSideWidget(std::string title, GtkWidget* w) override;
-    void                                     removeSideWidget(GtkWidget* w) override;
-    void                                     addToToolbar(GtkToolItem* ti) override;
-    void                                     removeFromToolbar(GtkToolItem* ti) override;
-    void                                     registerSelectionListener(SelectionListener::Ptr ptr) override;
-    void                                     registerPostRenderer(PostRenderer::Ptr ptr) override;
-    void                                     setStatusMessage(const std::string& string) override;
-    boost::shared_ptr<PresentationInterface> getCurrentPresentation() override;
-    void                                     addToolButton(GtkToggleButton* button, ToolStateListener::Ptr ptr) override;
+    void                                   invalidate() override;
+    ProgressInterface::Ptr                 getProgressInterface() override;
+    void                                   addSideWidget(std::string title, GtkWidget* w) override;
+    void                                   removeSideWidget(GtkWidget* w) override;
+    void                                   addToToolbar(GtkToolItem* ti) override;
+    void                                   removeFromToolbar(GtkToolItem* ti) override;
+    void                                   registerSelectionListener(SelectionListener::Ptr ptr) override;
+    void                                   registerPostRenderer(PostRenderer::Ptr ptr) override;
+    void                                   setStatusMessage(const std::string& string) override;
+    std::shared_ptr<PresentationInterface> getCurrentPresentation() override;
+    void                                   addToolButton(GtkToggleButton* button, ToolStateListener::Ptr ptr) override;
 
   private:
     explicit ViewData(ViewInterface::WeakPtr parent_);
@@ -80,14 +80,14 @@ class TransformPresentation
   , public ShowMetadataInterface
 {
 public:
-  using Ptr = boost::shared_ptr<TransformPresentation>;
+  using Ptr = std::shared_ptr<TransformPresentation>;
 
 private:
-  TransformationData::Ptr                                 transformationData;
-  PresentationInterface::Ptr                              presentation;
-  Colormappable::Ptr                                      colormappable;
-  ShowMetadataInterface::Ptr                              showMetaDataInterface;
-  std::map<ViewInterface::WeakPtr, Detail::ViewData::Ptr> viewData;
+  TransformationData::Ptr                                                  transformationData;
+  PresentationInterface::Ptr                                               presentation;
+  Colormappable::Ptr                                                       colormappable;
+  ShowMetadataInterface::Ptr                                               showMetaDataInterface;
+  Scroom::Utils::WeakKeyMap<ViewInterface::WeakPtr, Detail::ViewData::Ptr> viewData;
 
 private:
   TransformPresentation(PresentationInterface::Ptr const& presentation, TransformationData::Ptr transformationData);

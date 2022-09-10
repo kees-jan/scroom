@@ -320,7 +320,7 @@ void on_done_loading_plugins()
         try
         {
           Aggregate::Ptr const             aggregate             = i->second->createNew();
-          PresentationInterface::Ptr const aggregatePresentation = boost::dynamic_pointer_cast<PresentationInterface>(aggregate);
+          PresentationInterface::Ptr const aggregatePresentation = std::dynamic_pointer_cast<PresentationInterface>(aggregate);
 
           if(aggregatePresentation)
           {

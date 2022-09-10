@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 #include <gtk/gtk.h>
 
@@ -55,7 +55,7 @@ namespace Scroom::TiledBitmap
   class OpenTiledBitmapInterface : private Interface
   {
   public:
-    using Ptr = boost::shared_ptr<OpenTiledBitmapInterface>;
+    using Ptr = std::shared_ptr<OpenTiledBitmapInterface>;
 
   public:
     virtual std::list<GtkFileFilter*> getFilters() = 0;

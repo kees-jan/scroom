@@ -26,10 +26,10 @@ class TransparentOverlayPresentation
   , public Aggregate
 {
 public:
-  using Ptr = boost::shared_ptr<TransparentOverlayPresentation>;
+  using Ptr = std::shared_ptr<TransparentOverlayPresentation>;
 
 private:
-  using ViewDataMap = std::map<ViewInterface::WeakPtr, TransparentOverlayViewInfo::Ptr>;
+  using ViewDataMap = Scroom::Utils::WeakKeyMap<ViewInterface::WeakPtr, TransparentOverlayViewInfo::Ptr>;
 
 private:
   std::list<PresentationInterface::Ptr> children;
@@ -47,10 +47,10 @@ public:
   void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom) override;
   bool getProperty(const std::string& name, std::string& value) override;
   bool isPropertyDefined(const std::string& name) override;
-  std::string                      getTitle() override;
-  void                             viewAdded(ViewInterface::WeakPtr vi) override;
-  void                             viewRemoved(ViewInterface::WeakPtr vi) override;
-  std::set<ViewInterface::WeakPtr> getViews() override;
+  std::string                                       getTitle() override;
+  void                                              viewAdded(ViewInterface::WeakPtr vi) override;
+  void                                              viewRemoved(ViewInterface::WeakPtr vi) override;
+  Scroom::Utils::WeakKeySet<ViewInterface::WeakPtr> getViews() override;
 
   // Aggregate ///////////////////////////////////////////////////////////
 

@@ -34,7 +34,7 @@ Scroom::Utils::Stuff Scroom::TiledBitmap::scheduleLoadingBitmap(const SourcePres
                                                                 const Layer::Ptr&              layer,
                                                                 const ProgressInterface::Ptr&  progress)
 {
-  auto wait_until_done = boost::make_shared<Scroom::Semaphore>();
+  auto wait_until_done = std::make_shared<Scroom::Semaphore>();
   auto queue           = ThreadPool::Queue::createAsync();
   auto weakQueue       = queue->getWeak();
   auto abort           = [wait_until_done, queue]() mutable

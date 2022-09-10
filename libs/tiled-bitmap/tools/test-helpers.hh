@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 #include <gtk/gtk.h>
 
@@ -24,7 +24,7 @@ extern int drawingAreaHeight;
 class DummyColormapProvider : public ColormapProvider
 {
 public:
-  using Ptr = boost::shared_ptr<DummyColormapProvider>;
+  using Ptr = std::shared_ptr<DummyColormapProvider>;
 
 private:
   Colormap::Ptr colormap;
@@ -42,7 +42,7 @@ public:
 class TestData
 {
 public:
-  using Ptr = boost::shared_ptr<TestData>;
+  using Ptr = std::shared_ptr<TestData>;
 
 private:
   ProgressInterfaceStub::Ptr pi;

@@ -7,10 +7,8 @@
 
 #pragma once
 
+#include <memory>
 #include <utility>
-
-#include <boost/shared_ptr.hpp>
-#include <boost/weak_ptr.hpp>
 
 #include <scroom/global.hh>
 #include <scroom/memoryblobs.hh>
@@ -18,8 +16,8 @@
 class Tile
 {
 public:
-  using Ptr     = boost::shared_ptr<Tile>;
-  using WeakPtr = boost::weak_ptr<Tile>;
+  using Ptr     = std::shared_ptr<Tile>;
+  using WeakPtr = std::weak_ptr<Tile>;
 
   int                                   width;
   int                                   height;
@@ -37,15 +35,15 @@ public:
 
   static Tile::Ptr create(int width, int height, int bpp, Scroom::MemoryBlobs::RawPageData::Ptr data)
   {
-    return Ptr(new Tile(width, height, bpp, std::move(data)));
+    return std::make_shared<Tile>(width, height, bpp, std::move(data));
   }
 };
 
 class ConstTile
 {
 public:
-  using Ptr     = boost::shared_ptr<ConstTile>;
-  using WeakPtr = boost::weak_ptr<ConstTile>;
+  using Ptr     = std::shared_ptr<ConstTile>;
+  using WeakPtr = std::weak_ptr<ConstTile>;
 
   int                                        width;
   int                                        height;
@@ -63,6 +61,6 @@ public:
 
   static ConstTile::Ptr create(int width, int height, int bpp, Scroom::MemoryBlobs::RawPageData::ConstPtr data)
   {
-    return Ptr(new ConstTile(width, height, bpp, std::move(data)));
+    return std::make_shared<ConstTile>(width, height, bpp, std::move(data));
   }
 };

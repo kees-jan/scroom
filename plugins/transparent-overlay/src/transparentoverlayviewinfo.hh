@@ -9,9 +9,8 @@
 
 #include <list>
 #include <map>
+#include <memory>
 #include <vector>
-
-#include <boost/shared_ptr.hpp>
 
 #include <gtk/gtk.h>
 
@@ -31,17 +30,17 @@ class ChildView
   , virtual public Scroom::Utils::Base
 {
 public:
-  using Ptr = boost::shared_ptr<ChildView>;
+  using Ptr = std::shared_ptr<ChildView>;
 
 private:
-  boost::shared_ptr<TransparentOverlayViewInfo> parent;
-  ProgressInterface::Ptr                        progressInterface;
+  std::shared_ptr<TransparentOverlayViewInfo> parent;
+  ProgressInterface::Ptr                      progressInterface;
 
 private:
-  explicit ChildView(boost::shared_ptr<TransparentOverlayViewInfo> parent);
+  explicit ChildView(std::shared_ptr<TransparentOverlayViewInfo> parent);
 
 public:
-  static Ptr create(boost::shared_ptr<TransparentOverlayViewInfo> const& parent);
+  static Ptr create(std::shared_ptr<TransparentOverlayViewInfo> const& parent);
 
   // ViewInterface ///////////////////////////////////////////////////////
   void                       invalidate() override;
@@ -60,7 +59,7 @@ public:
 class TransparentOverlayViewInfo : virtual public Scroom::Utils::Base
 {
 public:
-  using Ptr = boost::shared_ptr<TransparentOverlayViewInfo>;
+  using Ptr = std::shared_ptr<TransparentOverlayViewInfo>;
 
 private:
   using ChildMap = std::map<PresentationInterface::Ptr, ChildView::Ptr>;

@@ -5,6 +5,8 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
+#include <memory>
+
 #include <scroom/threadpool.hh>
 
 #ifdef HAVE_CONFIG_H
@@ -12,9 +14,9 @@
 #endif
 
 #include <iostream>
+#include <memory>
 
 #include <boost/date_time/posix_time/posix_time.hpp>
-#include <boost/shared_ptr.hpp>
 #include <boost/test/unit_test.hpp>
 #include <boost/thread.hpp>
 
@@ -37,7 +39,7 @@ private:
   Semaphore* s;
 
 public:
-  using Ptr = boost::shared_ptr<A>;
+  using Ptr = std::shared_ptr<A>;
 
   explicit A(Semaphore* s_)
     : s(s_)
@@ -46,7 +48,7 @@ public:
 
   void operator()() { s->V(); }
 
-  static Ptr create(Semaphore* s) { return Ptr(new A(s)); }
+  static Ptr create(Semaphore* s) { return std::make_shared<A>(s); }
 };
 
 template <typename R>
@@ -57,7 +59,7 @@ private:
   R          result;
 
 public:
-  using Ptr = boost::shared_ptr<B<R>>;
+  using Ptr = std::shared_ptr<B<R>>;
 
   B(Semaphore* s_, R result_)
     : s(s_)

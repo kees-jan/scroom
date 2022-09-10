@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include <memory>
+
 #include <gmock/gmock.h>
 
 #include <scroom/gmock/colormappable.hh>
@@ -15,9 +17,9 @@
 class PresentationMock : public PresentationInterface
 {
 public:
-  using Ptr = boost::shared_ptr<PresentationMock>;
+  using Ptr = std::shared_ptr<PresentationMock>;
 
-  static Ptr create() { return Ptr(new PresentationMock()); }
+  static Ptr create() { return std::make_shared<PresentationMock>(); }
 
   MOCK_METHOD1(open, void(ViewInterface::WeakPtr));
   MOCK_METHOD1(close, void(ViewInterface::WeakPtr));
@@ -34,7 +36,7 @@ class ColormappablePresentationMock
   , public ColormappableMock
 {
 public:
-  using Ptr = boost::shared_ptr<ColormappablePresentationMock>;
+  using Ptr = std::shared_ptr<ColormappablePresentationMock>;
 
-  static Ptr create() { return Ptr(new ColormappablePresentationMock()); }
+  static Ptr create() { return std::make_shared<ColormappablePresentationMock>(); }
 };

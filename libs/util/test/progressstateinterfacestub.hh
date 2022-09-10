@@ -12,7 +12,7 @@
 class ProgressStateInterfaceStub : public Scroom::Utils::ProgressStateInterface
 {
 public:
-  using Ptr = boost::shared_ptr<ProgressStateInterfaceStub>;
+  using Ptr = std::shared_ptr<ProgressStateInterfaceStub>;
 
 public:
   State  state{IDLE};

@@ -21,7 +21,7 @@ class MeasureHandler
   , virtual public Scroom::Utils::Base
 {
 public:
-  using Ptr = boost::shared_ptr<MeasureHandler>;
+  using Ptr = std::shared_ptr<MeasureHandler>;
 
 private:
   std::optional<Selection> selection;
@@ -61,7 +61,7 @@ class Measure
   , virtual public Scroom::Utils::Base
 {
 public:
-  using Ptr = boost::shared_ptr<Measure>;
+  using Ptr = std::shared_ptr<Measure>;
 
 private:
   Measure() = default;

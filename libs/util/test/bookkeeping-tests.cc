@@ -67,48 +67,4 @@ BOOST_AUTO_TEST_CASE(basic_usage)
   BOOST_CHECK(a);
 }
 
-// BOOST_AUTO_TEST_CASE(weak_ptr)
-// {
-//   Map<WeakToken, int>::Ptr map = Map<WeakToken, int>::create();
-//   BOOST_REQUIRE(map);
-//
-//   Token a = map->add(1);
-//   BOOST_CHECK(a);
-//   BOOST_CHECK_THROW(map->add(a,3), std::invalid_argument);
-//   BOOST_CHECK_THROW(map->addMe(a,3), std::invalid_argument);
-//   BOOST_CHECK_EQUAL(1, map->get(a));
-//
-//   Token b;
-//   BOOST_CHECK(b);
-//   BOOST_CHECK_THROW(map->get(b), std::invalid_argument);
-//   Token c = map->add(b, 3);
-//   BOOST_CHECK_EQUAL(3, map->get(b));
-//   BOOST_CHECK_THROW(map->get(c), std::invalid_argument);
-//   c.reset();
-//   BOOST_CHECK_THROW(map->get(b), std::invalid_argument);
-//
-//   map->addMe(b, 5);
-//   BOOST_CHECK_EQUAL(5, map->get(b));
-//   BOOST_CHECK_EQUAL(2, map->keys().size());
-//   b.reset();
-//   BOOST_CHECK_EQUAL(1, map->keys().size());
-// }
-//
-// BOOST_AUTO_TEST_CASE(shared_ptr)
-// {
-//   Map<Token, int>::Ptr map = Map<Token, int>::create();
-//   BOOST_REQUIRE(map);
-//
-//   Token a = map->add(1);
-//   BOOST_CHECK(a);
-//   BOOST_CHECK_THROW(map->add(a,3), std::invalid_argument);
-//   BOOST_CHECK_THROW(map->addMe(a,3), std::invalid_argument);
-//   BOOST_CHECK_EQUAL(1, map->get(a));
-//   BOOST_CHECK_EQUAL(1, map->keys().size());
-//   WeakToken aa = a;
-//   a.reset();
-//   BOOST_CHECK_EQUAL(1, map->keys().size());
-//   BOOST_CHECK_EQUAL(aa.lock(), map->keys().front());
-// }
-
 BOOST_AUTO_TEST_SUITE_END()

@@ -9,10 +9,9 @@
 
 #include <list>
 #include <map>
+#include <memory>
 
 #include <boost/noncopyable.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/weak_ptr.hpp>
 
 #include <scroom/stuff.hh>
 #include <scroom/utilities.hh>
@@ -32,13 +31,26 @@ namespace Scroom::Bookkeeping
 
     template <typename V>
     class LValue;
+
+    template <typename K, typename V>
+    struct MapType
+    {
+      using Type = typename std::map<K, std::weak_ptr<Detail::ValueType<V>>>;
+    };
+
+    template <typename K, typename V>
+    struct MapType<std::weak_ptr<K>, V>
+    {
+      using Type = typename Scroom::Utils::WeakKeyMap<std::weak_ptr<K>, std::weak_ptr<Detail::ValueType<V>>>;
+    };
+
   } // namespace Detail
 
-  class Token : public boost::shared_ptr<Detail::TokenImpl>
+  class Token : public std::shared_ptr<Detail::TokenImpl>
   {
   public:
-    explicit Token(const boost::shared_ptr<Detail::TokenImpl>& t);
-    explicit Token(const boost::weak_ptr<Detail::TokenImpl>& t);
+    explicit Token(const std::shared_ptr<Detail::TokenImpl>& t);
+    explicit Token(const std::weak_ptr<Detail::TokenImpl>& t);
     Token();
     explicit Token(const Stuff& s);
     explicit Token(const StuffList& l);
@@ -53,7 +65,7 @@ namespace Scroom::Bookkeeping
     Token const&          operator+=(const Stuff& rhs) const;
   };
 
-  using WeakToken = boost::weak_ptr<Detail::TokenImpl>;
+  using WeakToken = std::weak_ptr<Detail::TokenImpl>;
 
   template <typename K, typename V>
   class MapBase
@@ -61,7 +73,7 @@ namespace Scroom::Bookkeeping
     , public boost::noncopyable
   {
   private:
-    using MapType = typename std::map<K, boost::weak_ptr<Detail::ValueType<V>>>;
+    using MapType = typename Detail::MapType<K, V>::Type;
 
     MapType              map;
     mutable boost::mutex mut;
@@ -82,41 +94,11 @@ namespace Scroom::Bookkeeping
   class Map : public MapBase<K, V>
   {
   public:
-    using Ptr = boost::shared_ptr<Map<K, V>>;
+    using Ptr = std::shared_ptr<Map<K, V>>;
 
   public:
     static Ptr create();
   };
-
-  //    template<typename V>
-  //    class Map<Token, V> : public MapBase<Token,V>
-  //    {
-  //    public:
-  //      typedef boost::shared_ptr<Map<Token, V> > Ptr;
-  //
-  //    public:
-  //      static Ptr create();
-  //
-  //    public:
-  //      void addMe(const Token& k, const V& v);
-  //      Token add(const V& v);
-  //      Token add(const Token& k, const V& v);
-  //    };
-  //
-  //    template<typename V>
-  //    class Map<WeakToken, V> : public MapBase<WeakToken,V>
-  //    {
-  //    public:
-  //      typedef boost::shared_ptr<Map<WeakToken, V> > Ptr;
-  //
-  //    public:
-  //      static Ptr create();
-  //
-  //    public:
-  //      void addMe(const WeakToken& k, const V& v);
-  //      Token add(const V& v);
-  //      Token add(const WeakToken& k, const V& v);
-  //    };
 
 } // namespace Scroom::Bookkeeping
 

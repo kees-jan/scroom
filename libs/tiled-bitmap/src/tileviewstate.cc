@@ -24,7 +24,7 @@
 
 TileViewState::~TileViewState() { r.reset(); }
 
-TileViewState::Ptr TileViewState::create(const boost::shared_ptr<CompressedTile>& parent)
+TileViewState::Ptr TileViewState::create(const std::shared_ptr<CompressedTile>& parent)
 {
   TileViewState::Ptr result(new TileViewState(parent));
 
@@ -33,7 +33,7 @@ TileViewState::Ptr TileViewState::create(const boost::shared_ptr<CompressedTile>
   return result;
 }
 
-TileViewState::TileViewState(boost::shared_ptr<CompressedTile> parent_)
+TileViewState::TileViewState(std::shared_ptr<CompressedTile> parent_)
   : parent(std::move(parent_))
   , cpuBound(CpuBound())
 {
@@ -71,8 +71,8 @@ void TileViewState::setViewData(const TiledBitmapViewData::Ptr& tbvd_)
   Scroom::Utils::Stuff lifeTimeManager_ = lifeTimeManager.lock();
   if(!lifeTimeManager_)
   {
-    lifeTimeManager_ = boost::shared_ptr<void>(reinterpret_cast<void*>(0xDEAD),
-                                               boost::bind(&TileViewState::clear, shared_from_this<TileViewState>()));
+    lifeTimeManager_ = std::shared_ptr<void>(reinterpret_cast<void*>(0xDEAD),
+                                             boost::bind(&TileViewState::clear, shared_from_this<TileViewState>()));
     lifeTimeManager  = lifeTimeManager_;
   }
   tbvd_->storeVolatileStuff(lifeTimeManager_);

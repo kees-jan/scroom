@@ -38,7 +38,7 @@ protected:
   int bps;
 
 public:
-  using Ptr = boost::shared_ptr<PipetteCommonOperationsCMYK>;
+  using Ptr = std::shared_ptr<PipetteCommonOperationsCMYK>;
 
 public:
   explicit PipetteCommonOperationsCMYK(int bps_)
@@ -55,7 +55,7 @@ protected:
   int bps;
 
 public:
-  using Ptr = boost::shared_ptr<PipetteCommonOperationsRGB>;
+  using Ptr = std::shared_ptr<PipetteCommonOperationsRGB>;
 
 public:
   explicit PipetteCommonOperationsRGB(int bps_)

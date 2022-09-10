@@ -24,7 +24,7 @@ namespace
 {
   void setToggleButtonColor(GtkWidget* w, PresentationInterface::Ptr const& p)
   {
-    Colormappable::Ptr const c = boost::dynamic_pointer_cast<Colormappable>(p);
+    Colormappable::Ptr const c = std::dynamic_pointer_cast<Colormappable>(p);
     if(c && p->isPropertyDefined(MONOCHROME_COLORMAPPABLE_PROPERTY_NAME))
     {
       Color const       col           = c->getMonochromeColor();
@@ -211,7 +211,7 @@ void TransparentOverlayViewInfo::redraw(cairo_t* cr, Scroom::Utils::Rectangle<do
     {
       PresentationInterface::Ptr const& p = children[i];
 
-      Colormappable::Ptr const c                        = boost::dynamic_pointer_cast<Colormappable>(p);
+      Colormappable::Ptr const c                        = std::dynamic_pointer_cast<Colormappable>(p);
       bool                     hasTransparentBackground = false;
       if(c && p->isPropertyDefined(TRANSPARENT_BACKGROUND_PROPERTY_NAME))
       {

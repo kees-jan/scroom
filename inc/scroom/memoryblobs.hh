@@ -9,11 +9,10 @@
 
 #include <cstdint>
 #include <list>
+#include <memory>
 #include <utility>
 
-#include <boost/shared_ptr.hpp>
 #include <boost/thread.hpp>
-#include <boost/weak_ptr.hpp>
 
 #include <scroom/blockallocator.hh>
 #include <scroom/utilities.hh>
@@ -24,21 +23,21 @@ namespace Scroom::MemoryBlobs
 {
   namespace RawPageData
   {
-    using Ptr      = boost::shared_ptr<uint8_t>;
-    using ConstPtr = boost::shared_ptr<const uint8_t>;
-    using WeakPtr  = boost::weak_ptr<uint8_t>;
+    using Ptr      = std::shared_ptr<uint8_t>;
+    using ConstPtr = std::shared_ptr<const uint8_t>;
+    using WeakPtr  = std::weak_ptr<uint8_t>;
   } // namespace RawPageData
 
   namespace Page
   {
-    using Ptr = boost::shared_ptr<Scroom::MemoryBlocks::Page>;
+    using Ptr = std::shared_ptr<Scroom::MemoryBlocks::Page>;
   }
   using PageList = std::list<Page::Ptr>;
 
   class PageProvider : virtual public Scroom::Utils::Base
   {
   public:
-    using Ptr = boost::shared_ptr<PageProvider>;
+    using Ptr = std::shared_ptr<PageProvider>;
 
   private:
     size_t                                           blockCount;
@@ -75,7 +74,7 @@ namespace Scroom::MemoryBlobs
   class Blob : virtual public Scroom::Utils::Base
   {
   public:
-    using Ptr = boost::shared_ptr<Blob>;
+    using Ptr = std::shared_ptr<Blob>;
 
   private:
     enum State
@@ -99,15 +98,15 @@ namespace Scroom::MemoryBlobs
     friend class UnloadData;
 
   private:
-    PageProvider::Ptr             provider;
-    size_t                        size;
-    uint8_t*                      data{nullptr};
-    State                         state{UNINITIALIZED};
-    boost::mutex                  mut;
-    RawPageData::WeakPtr          weakData;
-    PageList                      pages;
-    boost::shared_ptr<ThreadPool> cpuBound;
-    int                           refcount{0}; // Yuk
+    PageProvider::Ptr           provider;
+    size_t                      size;
+    uint8_t*                    data{nullptr};
+    State                       state{UNINITIALIZED};
+    boost::mutex                mut;
+    RawPageData::WeakPtr        weakData;
+    PageList                    pages;
+    std::shared_ptr<ThreadPool> cpuBound;
+    int                         refcount{0}; // Yuk
 
   private:
     Blob(PageProvider::Ptr provider, size_t size);
