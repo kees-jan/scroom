@@ -7,7 +7,6 @@
 
 #include <memory>
 
-#include <boost/bind/bind.hpp>
 #include <boost/test/unit_test.hpp>
 
 #include <gtk/gtk.h>
@@ -42,7 +41,7 @@ BOOST_AUTO_TEST_CASE(function_returning_bool)
   {
     B::Ptr const sb                          = B::create();
     wb                                       = sb;
-    std::pair<GSourceFunc, gpointer> const w = wrap(boost::bind(b, sb));
+    std::pair<GSourceFunc, gpointer> const w = wrap([sb] { return b(sb); });
     f                                        = w.first;
     data                                     = w.second;
   }

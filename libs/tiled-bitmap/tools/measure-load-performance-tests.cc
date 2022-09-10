@@ -22,8 +22,6 @@
 
 ////////////////////////////////////////////////////////////////////////
 
-static void clear(Scroom::Semaphore& s) { s.V(); }
-
 class WaitForAsyncOp
 {
 private:
@@ -68,7 +66,7 @@ bool WaitForAsyncOp::operator()()
   {
     started = true;
 
-    Sequentially()->schedule(boost::bind(clear, boost::ref(s)));
+    Sequentially()->schedule([&s = this->s] { s.V(); });
 
     std::cout << "Waiting for " << name << std::endl;
     return true;
@@ -96,23 +94,23 @@ void init_tests()
 
   functions.emplace_back(Sleeper(sleepDuration));
 
-  functions.emplace_back(boost::bind(setupTest1bpp, -2, width, height));
+  functions.emplace_back([] { return setupTest1bpp(-2, width, height); });
   functions.emplace_back(WaitForAsyncOp("File load 1bpp"));
 
   // First run may fill the cache
-  functions.emplace_back(boost::bind(setupTest1bpp, -2, width, height));
+  functions.emplace_back([] { return setupTest1bpp(-2, width, height); });
   functions.emplace_back(WaitForAsyncOp("File load 1bpp"));
 
-  functions.emplace_back(boost::bind(setupTest2bpp, -2, width, height));
+  functions.emplace_back([] { return setupTest2bpp(-2, width, height); });
   functions.emplace_back(WaitForAsyncOp("File load 2bpp"));
 
-  functions.emplace_back(boost::bind(setupTest4bpp, -2, width, height));
+  functions.emplace_back([] { return setupTest4bpp(-2, width, height); });
   functions.emplace_back(WaitForAsyncOp("File load 4bpp"));
 
-  functions.emplace_back(boost::bind(setupTest8bpp, -2, width, height));
+  functions.emplace_back([] { return setupTest8bpp(-2, width, height); });
   functions.emplace_back(WaitForAsyncOp("File load 8bpp greyscale"));
 
-  functions.emplace_back(boost::bind(setupTest8bppColormapped, -2, width, height));
+  functions.emplace_back([] { return setupTest8bppColormapped(-2, width, height); });
   functions.emplace_back(WaitForAsyncOp("File load 8bpp colormapped"));
 
   functions.emplace_back(reset);

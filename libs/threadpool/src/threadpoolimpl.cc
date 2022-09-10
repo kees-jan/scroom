@@ -238,7 +238,7 @@ ThreadPool::Ptr ThreadPool::create(int count, bool completeAllJobsBeforeDestruct
 
 ThreadPool::ThreadPtr ThreadPool::add()
 {
-  ThreadPool::ThreadPtr t = std::make_shared<boost::thread>(boost::bind(&ThreadPool::work, priv));
+  auto t = std::make_shared<boost::thread>([data = priv] { ThreadPool::work(data); });
   threads.push_back(t);
   ThreadList::instance()->add(t);
   return t;

@@ -240,7 +240,7 @@ void CompressedTile::observerAdded(TileLoadingObserver::Ptr const& observer, Scr
         queue_ = ThreadPool::Queue::create();
         queue  = queue_;
       }
-      CpuBound()->schedule(boost::bind(&CompressedTile::do_load, this), LOAD_PRIO, queue_);
+      CpuBound()->schedule([this] { do_load(); }, LOAD_PRIO, queue_);
       state = TSI_LOADING_ASYNCHRONOUSLY;
 
       break;

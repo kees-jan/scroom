@@ -13,9 +13,6 @@
 #  include <config.h>
 #endif
 
-#include <iostream>
-#include <memory>
-
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/test/unit_test.hpp>
 #include <boost/thread.hpp>
@@ -205,7 +202,7 @@ BOOST_AUTO_TEST_CASE(schedule_future)
   ThreadPool pool(0);
   Semaphore  a(0);
 
-  boost::unique_future<int> result(pool.schedule<int>(boost::bind(no_op<int>, &a, 42)));
+  boost::unique_future<int> result(pool.schedule<int>([pa = &a] { return no_op(pa, 42); }));
 
   BOOST_CHECK(!a.P(short_timeout));
   BOOST_CHECK(!result.is_ready());

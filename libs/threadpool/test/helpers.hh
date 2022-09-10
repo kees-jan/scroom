@@ -18,4 +18,11 @@ using namespace Scroom;
 
 boost::function<void()> pass(Semaphore* s);
 boost::function<void()> clear(Semaphore* s);
-boost::function<void()> destroy(std::shared_ptr<void> p);
+boost::function<void()> destroy(std::shared_ptr<void>& p);
+
+template <typename T>
+boost::function<void()> destroy(std::shared_ptr<T>& p)
+{
+  std::shared_ptr<void> pv = std::move(p);
+  return destroy(pv);
+}

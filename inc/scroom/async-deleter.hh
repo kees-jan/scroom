@@ -49,5 +49,8 @@ public:
   {
   }
 
-  void operator()(T* p) { deleter->schedule(boost::bind(&Detail::call_delete<T>, p)); }
+  void operator()(T* p)
+  {
+    deleter->schedule([p] { Detail::call_delete(p); });
+  }
 };

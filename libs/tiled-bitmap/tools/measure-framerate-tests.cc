@@ -162,42 +162,42 @@ void init_tests()
   functions.emplace_back(Invalidator(sleepDuration));
   functions.emplace_back(InvalidatingCounter("Baseline (no redraw)", testDuration));
 
-  functions.emplace_back(boost::bind(setupTest1bpp, -2, width, height));
+  functions.emplace_back([] { return setupTest1bpp(-2, width, height); });
   functions.emplace_back(wait);
   functions.emplace_back(Invalidator(sleepDuration));
   functions.emplace_back(InvalidatingCounter("1bpp, 1:4 zoom", testDuration));
 
-  functions.emplace_back(boost::bind(setupTest1bpp, 4, width, height));
+  functions.emplace_back([] { return setupTest1bpp(4, width, height); });
   functions.emplace_back(wait);
   functions.emplace_back(Invalidator(sleepDuration));
   functions.emplace_back(InvalidatingCounter("1bpp, 16:1 zoom", testDuration));
 
-  functions.emplace_back(boost::bind(setupTest4bpp, -2, width, height));
+  functions.emplace_back([] { return setupTest4bpp(-2, width, height); });
   functions.emplace_back(wait);
   functions.emplace_back(Invalidator(sleepDuration));
   functions.emplace_back(InvalidatingCounter("4bpp, 1:4 zoom, colormapped", testDuration));
 
-  functions.emplace_back(boost::bind(setupTest4bpp, 4, width, height));
+  functions.emplace_back([] { return setupTest4bpp(4, width, height); });
   functions.emplace_back(wait);
   functions.emplace_back(Invalidator(sleepDuration));
   functions.emplace_back(InvalidatingCounter("4bpp, 16:1 zoom, colormapped", testDuration));
 
-  functions.emplace_back(boost::bind(setupTest8bpp, -2, width, height));
+  functions.emplace_back([] { return setupTest8bpp(-2, width, height); });
   functions.emplace_back(wait);
   functions.emplace_back(Invalidator(sleepDuration));
   functions.emplace_back(InvalidatingCounter("8bpp, 1:4 zoom", testDuration));
 
-  functions.emplace_back(boost::bind(setupTest8bpp, 4, width, height));
+  functions.emplace_back([] { return setupTest8bpp(4, width, height); });
   functions.emplace_back(wait);
   functions.emplace_back(Invalidator(sleepDuration));
   functions.emplace_back(InvalidatingCounter("8bpp, 16:1 zoom", testDuration));
 
-  functions.emplace_back(boost::bind(setupTest8bppColormapped, -2, width, height));
+  functions.emplace_back([] { return setupTest8bppColormapped(-2, width, height); });
   functions.emplace_back(wait);
   functions.emplace_back(Invalidator(sleepDuration));
   functions.emplace_back(InvalidatingCounter("8bpp, 1:4 zoom, colormapped", testDuration));
 
-  functions.emplace_back(boost::bind(setupTest8bppColormapped, 4, width, height));
+  functions.emplace_back([] { return setupTest8bppColormapped(4, width, height); });
   functions.emplace_back(wait);
   functions.emplace_back(Invalidator(sleepDuration));
   functions.emplace_back(InvalidatingCounter("8bpp, 16:1 zoom, colormapped", testDuration));

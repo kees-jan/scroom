@@ -15,17 +15,22 @@
 
 namespace
 {
-  void passImpl(Semaphore* s) { s->P(); }
 
-  void clearImpl(Semaphore* s) { s->V(); }
-
-  void destroyImpl(std::shared_ptr<void>& p) { p.reset(); }
 } // namespace
 
 //////////////////////////////////////////////////////////////
 
-boost::function<void()> pass(Semaphore* s) { return boost::bind(passImpl, s); }
+boost::function<void()> pass(Semaphore* s)
+{
+  return [s] { s->P(); };
+}
 
-boost::function<void()> clear(Semaphore* s) { return boost::bind(clearImpl, s); }
+boost::function<void()> clear(Semaphore* s)
+{
+  return [s] { s->V(); };
+}
 
-boost::function<void()> destroy(std::shared_ptr<void> p) { return boost::bind(destroyImpl, std::move(p)); }
+boost::function<void()> destroy(std::shared_ptr<void>& p)
+{
+  return [p = std::move(p)]() mutable { p.reset(); };
+}

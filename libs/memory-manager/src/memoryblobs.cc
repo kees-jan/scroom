@@ -123,7 +123,7 @@ namespace Scroom::MemoryBlobs
       if(state == DIRTY)
       {
         state = COMPRESSING;
-        cpuBound->schedule(boost::bind(&Blob::compress, shared_from_this<Blob>()), COMPRESS_PRIO);
+        cpuBound->schedule([me = shared_from_this<Blob>()] { me->compress(); }, COMPRESS_PRIO);
       }
       else
       {

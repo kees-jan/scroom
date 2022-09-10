@@ -72,7 +72,7 @@ void TileViewState::setViewData(const TiledBitmapViewData::Ptr& tbvd_)
   if(!lifeTimeManager_)
   {
     lifeTimeManager_ = std::shared_ptr<void>(reinterpret_cast<void*>(0xDEAD),
-                                             boost::bind(&TileViewState::clear, shared_from_this<TileViewState>()));
+                                             [me = shared_from_this<TileViewState>()](auto p [[maybe_unused]]) { me->clear(); });
     lifeTimeManager  = lifeTimeManager_;
   }
   tbvd_->storeVolatileStuff(lifeTimeManager_);
@@ -119,10 +119,10 @@ void TileViewState::kick()
 
   if(state >= LOADED && desiredState >= state && !queue && tbvd_)
   {
-    queue     = ThreadPool::Queue::createAsync();
-    weakQueue = queue->getWeak();
+    queue = ThreadPool::Queue::createAsync();
 
-    cpuBound->schedule(boost::bind(&TileViewState::process, shared_from_this<TileViewState>(), weakQueue), LOAD_PRIO, queue);
+    cpuBound->schedule(
+      [me = shared_from_this<TileViewState>(), weakQueue = queue->getWeak()] { me->process(weakQueue); }, LOAD_PRIO, queue);
   }
 }
 
@@ -139,18 +139,19 @@ void TileViewState::process(const ThreadPool::WeakQueue::Ptr& wq)
       switch(state)
       {
       case LOADED:
-        fn    = boost::bind(&TileViewState::computeBase, shared_from_this<TileViewState>(), wq, tile, lo);
+        fn    = [me = shared_from_this<TileViewState>(), wq, tile = tile, lo = lo] { me->computeBase(wq, tile, lo); };
         state = COMPUTING_BASE;
         break;
 
       case BASE_COMPUTED:
-        fn    = boost::bind(&TileViewState::computeZoom, shared_from_this<TileViewState>(), wq, tile, lo, baseCache, zoom);
+        fn = [me = shared_from_this<TileViewState>(), wq, tile = tile, lo = lo, baseCache = baseCache, zoom = zoom]
+        { me->computeZoom(wq, tile, lo, baseCache, zoom); };
         state = COMPUTING_ZOOM;
         break;
 
       case ZOOM_COMPUTED:
         state = DONE;
-        fn    = boost::bind(&TileViewState::reportDone, shared_from_this<TileViewState>(), wq, tile);
+        fn    = [me = shared_from_this<TileViewState>(), wq, tile = tile] { me->reportDone(wq, tile); };
         break;
 
       case INIT:
