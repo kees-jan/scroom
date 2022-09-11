@@ -13,8 +13,6 @@
 
 #include <spdlog/spdlog.h>
 
-#include <scroom/unused.hh>
-
 #include "measure-framerate-callbacks.hh"
 #include "measure-framerate-stubs.hh"
 #include "test-helpers.hh"

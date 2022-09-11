@@ -26,18 +26,18 @@ target_link_libraries(
           project_warnings
           spdlog
           fmt
-  PUBLIC PkgConfig::gtk
-         PkgConfig::cairo
-         PkgConfig::gthread
-         PkgConfig::gmodule
-         Boost::system
-         Boost::filesystem
-         Boost::program_options
-         scroom_lib
-         util
-         tiledbitmap
-         m
-         ruler_lib)
+          PkgConfig::gtk
+          PkgConfig::cairo
+          PkgConfig::gthread
+          PkgConfig::gmodule
+          Boost::system
+          Boost::filesystem
+          Boost::program_options
+          scroom_lib
+          util
+          tiledbitmap
+          m
+          ruler)
 target_compile_definitions(scroom PRIVATE PLUGIN_DIR="${PLUGIN_INSTALL_LOCATION_ABSOLUTE}"
                                           TOP_SRCDIR="${Scroom_SOURCE_DIR}" PACKAGE_DATA_DIR="${PKG_DIR_ABSOLUTE}")
 

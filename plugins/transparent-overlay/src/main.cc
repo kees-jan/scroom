@@ -8,7 +8,6 @@
 #include <cstdio>
 
 #include <scroom/scroomplugin.hh>
-#include <scroom/unused.hh>
 
 #include "transparentoverlay.hh"
 

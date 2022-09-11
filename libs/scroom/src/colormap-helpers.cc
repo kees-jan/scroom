@@ -10,7 +10,7 @@
 
 #include <scroom/color.hh>
 #include <scroom/colormappable.hh>
-#include <scroom/unused.hh>
+
 
 ////////////////////////////////////////////////////////////////////////
 // ColormapHelperBase
@@ -31,11 +31,7 @@ int ColormapHelperBase::getNumberOfColors() { return originalColormap->colors.si
 
 Color ColormapHelperBase::getMonochromeColor() { OperationNotSupported(); }
 
-void ColormapHelperBase::setMonochromeColor(const Color& c)
-{
-  UNUSED(c);
-  OperationNotSupported();
-}
+void ColormapHelperBase::setMonochromeColor(const Color& /*c*/) { OperationNotSupported(); }
 
 void ColormapHelperBase::setTransparentBackground() { OperationNotSupported(); }
 

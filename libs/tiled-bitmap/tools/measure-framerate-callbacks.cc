@@ -7,8 +7,6 @@
 
 #include "measure-framerate-callbacks.hh"
 
-#include <scroom/unused.hh>
-
 #include "test-helpers.hh"
 
 ////////////////////////////////////////////////////////////////////////

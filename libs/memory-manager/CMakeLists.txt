@@ -1,18 +1,22 @@
 add_library(memory_manager)
+set(HEADER_FILES inc/scroom/blockallocator.hh inc/scroom/memoryblobs.hh)
 target_sources(
   memory_manager
   PRIVATE src/blob-compression.cc
           src/blob-compression.hh
           src/memoryblobs.cc
-          src/swapbasedblockallocator.cc)
+          src/swapbasedblockallocator.cc
+          ${HEADER_FILES})
 target_link_libraries(
   memory_manager
   PRIVATE project_options
           project_warnings
-          util
           threadpool
           ZLIB::ZLIB
-          fmt)
+          fmt
+  PUBLIC util)
+target_include_directories(memory_manager PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/inc>
+                                                 $<INSTALL_INTERFACE:include>)
 
 install(
   TARGETS memory_manager
@@ -23,6 +27,7 @@ install(
   EXPORT memory_manager
   DESTINATION lib/cmake
   NAMESPACE scroom)
+install(FILES ${HEADER_FILES} DESTINATION include/scroom)
 
 if(ENABLE_BOOST_TEST)
   add_executable(memory_manager_tests)

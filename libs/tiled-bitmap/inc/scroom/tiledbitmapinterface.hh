@@ -21,7 +21,6 @@
 #include <scroom/scroominterface.hh>
 #include <scroom/stuff.hh>
 #include <scroom/tile.hh>
-#include <scroom/unused.hh>
 #include <scroom/viewinterface.hh>
 
 /**
@@ -122,11 +121,7 @@ public:
    *
    * @param tile the Tile for which caching is requested
    */
-  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr& tile)
-  {
-    UNUSED(tile);
-    return {};
-  }
+  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr& /*tile*/) { return {}; }
 
   /**
    * Cache data for use during later draw() calls.
@@ -146,11 +141,8 @@ public:
    * @param zoom the requested zoom level
    * @param cache the output of cache(const ConstTile::Ptr)
    */
-  virtual Scroom::Utils::Stuff cacheZoom(const ConstTile::Ptr& tile, int zoom, Scroom::Utils::Stuff& cache)
+  virtual Scroom::Utils::Stuff cacheZoom(const ConstTile::Ptr& /*tile*/, int /*zoom*/, Scroom::Utils::Stuff& /*cache*/)
   {
-    UNUSED(tile);
-    UNUSED(zoom);
-    UNUSED(cache);
     return {};
   }
 

@@ -17,8 +17,6 @@
 #include <boost/test/results_reporter.hpp>
 #include <boost/test/unit_test.hpp>
 
-#include <scroom/unused.hh>
-
 bool init_unit_test() { return true; }
 
 std::string extract_path(const std::string& cmd)

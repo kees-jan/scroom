@@ -14,7 +14,7 @@
 #include <boost/tuple/tuple_comparison.hpp>
 
 #include <scroom/colormappable.hh>
-#include <scroom/unused.hh>
+
 
 namespace
 {
@@ -141,19 +141,9 @@ void TransparentOverlayPresentation::redraw(ViewInterface::Ptr const&        vi,
   }
 }
 
-bool TransparentOverlayPresentation::getProperty(const std::string& name, std::string& value)
-{
-  UNUSED(name);
-  UNUSED(value);
+bool TransparentOverlayPresentation::getProperty(const std::string& /*name*/, std::string& /*value*/) { return false; }
 
-  return false;
-}
-bool TransparentOverlayPresentation::isPropertyDefined(const std::string& name)
-{
-  UNUSED(name);
-
-  return false;
-}
+bool TransparentOverlayPresentation::isPropertyDefined(const std::string& /*name*/) { return false; }
 
 std::string TransparentOverlayPresentation::getTitle()
 {

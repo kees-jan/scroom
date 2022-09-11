@@ -35,7 +35,7 @@ set(PKG_DIR_ABSOLUTE "${CMAKE_INSTALL_PREFIX}/${PKG_DIR_RELATIVE}")
 # Link this 'library' to set the c++ standard / compile-time options requested
 add_library(project_options INTERFACE)
 target_compile_features(project_options INTERFACE cxx_std_17)
-target_include_directories(project_options INTERFACE inc ${PROJECT_BINARY_DIR})
+target_include_directories(project_options INTERFACE ${PROJECT_BINARY_DIR})
 target_compile_definitions(project_options INTERFACE HAVE_CONFIG_H HAVE_VERSION_H)
 
 if(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
@@ -122,7 +122,6 @@ endfunction()
 
 configure_file(cmake-config.h.in config.h)
 add_subdirectory(External)
-add_subdirectory(inc)
 add_subdirectory(libs)
 add_subdirectory(plugins)
 add_subdirectory(gui)

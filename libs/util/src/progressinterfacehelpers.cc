@@ -9,7 +9,7 @@
 
 #include <scroom/assertions.hh>
 #include <scroom/progressinterfacehelpers.hh>
-#include <scroom/unused.hh>
+
 
 namespace Scroom::Utils
 {

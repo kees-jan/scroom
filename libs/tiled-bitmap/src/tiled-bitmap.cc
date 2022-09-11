@@ -21,7 +21,6 @@
 
 #include <scroom/cairo-helpers.hh>
 #include <scroom/semaphore.hh>
-#include <scroom/unused.hh>
 
 #include "tileviewstate.hh"
 
@@ -314,15 +313,10 @@ void TiledBitmap::close(ViewInterface::WeakPtr vi)
 ////////////////////////////////////////////////////////////////////////
 // TileInitialisationObserver
 
-void TiledBitmap::tileCreated(const CompressedTile::Ptr& tile)
-{
-  UNUSED(tile);
-  tileCount++;
-}
+void TiledBitmap::tileCreated(const CompressedTile::Ptr& /*tile*/) { tileCount++; }
 
-void TiledBitmap::tileFinished(const CompressedTile::Ptr& tile)
+void TiledBitmap::tileFinished(const CompressedTile::Ptr& /*tile*/)
 {
-  UNUSED(tile);
   boost::mutex::scoped_lock const lock(tileFinishedMutex);
   tileFinishedCount++;
   if(tileFinishedCount > tileCount)

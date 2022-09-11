@@ -8,5 +8,8 @@ target_sources(
           examplepresentation.hh)
 target_link_libraries(
   spexample
-  PRIVATE project_options project_warnings scroom_lib
-  PUBLIC PkgConfig::gtk)
+  PRIVATE project_options
+          project_warnings
+          scroom_lib
+          plugin_interfaces
+          PkgConfig::gtk)

@@ -9,7 +9,7 @@ target_link_libraries(
   PUBLIC PkgConfig::gtk
          threadpool
          PkgConfig::cairo
-         util)
+         plugin_interfaces)
 
 install(TARGETS sppipette DESTINATION ${PLUGIN_INSTALL_LOCATION_RELATIVE})
 install_plugin_dependencies(sppipette)

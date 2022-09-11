@@ -12,7 +12,7 @@
 
 #include <scroom/bitmap-helpers.hh>
 #include <scroom/colormappable.hh>
-#include <scroom/unused.hh>
+
 
 #ifdef HAVE_CONFIG_H
 #  include <config.h>

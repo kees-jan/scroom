@@ -8,13 +8,14 @@ target_sources(
           src/tiffsource.cc)
 target_link_libraries(
   sptiff
-  PRIVATE project_options project_warnings spdlog
-  PUBLIC PkgConfig::gtk
-         scroom_lib
-         util
-         TIFF::TIFF
-         tiledbitmap
-         PkgConfig::cairo)
+  PRIVATE project_options
+          project_warnings
+          spdlog
+          PkgConfig::gtk
+          scroom_lib
+          TIFF::TIFF
+          tiledbitmap
+          PkgConfig::cairo)
 
 install(TARGETS sptiff DESTINATION ${PLUGIN_INSTALL_LOCATION_RELATIVE})
 install_plugin_dependencies(sptiff)

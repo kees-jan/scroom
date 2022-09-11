@@ -6,7 +6,9 @@ target_link_libraries(
           project_warnings
           scroom_lib
           fmt
-  PUBLIC PkgConfig::gtk PkgConfig::cairo)
+          plugin_interfaces
+          PkgConfig::gtk
+          PkgConfig::cairo)
 
 install(TARGETS spmeasure DESTINATION ${PLUGIN_INSTALL_LOCATION_RELATIVE})
 install_plugin_dependencies(spmeasure)

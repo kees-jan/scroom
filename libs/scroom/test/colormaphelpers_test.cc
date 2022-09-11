@@ -17,7 +17,7 @@
 #include <boost/test/unit_test_suite.hpp>
 
 #include <scroom/colormappable.hh>
-#include <scroom/unused.hh>
+
 
 namespace
 {

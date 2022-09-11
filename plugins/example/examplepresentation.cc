@@ -12,7 +12,7 @@
 #include <gdk/gdk.h>
 
 #include <scroom/cairo-helpers.hh>
-#include <scroom/unused.hh>
+
 
 ExamplePresentation::ExamplePresentation() { fillPattern(); }
 
@@ -48,16 +48,15 @@ void ExamplePresentation::fillPattern()
 
 Scroom::Utils::Rectangle<double> ExamplePresentation::getRect() { return {-500, -500, 1000, 1000}; }
 
-void ExamplePresentation::open(ViewInterface::WeakPtr viewInterface) { UNUSED(viewInterface); }
+void ExamplePresentation::open(ViewInterface::WeakPtr /*viewInterface*/) {}
 
-void ExamplePresentation::close(ViewInterface::WeakPtr vi) { UNUSED(vi); }
+void ExamplePresentation::close(ViewInterface::WeakPtr /*vi*/) {}
 
-void ExamplePresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> pa, int zoom)
+void ExamplePresentation::redraw(ViewInterface::Ptr const& /*vi*/, cairo_t* cr, Scroom::Utils::Rectangle<double> pa, int zoom)
 {
   cairo_rectangle_int_t const presentationArea = pa.toGdkRectangle();
-  UNUSED(vi);
-  const double pp    = pixelSizeFromZoom(zoom);
-  const double scale = pow(2, -zoom);
+  const double                pp               = pixelSizeFromZoom(zoom);
+  const double                scale            = pow(2, -zoom);
 
   Scroom::Utils::Rectangle<double> const actualPresentationArea = getRect();
   drawOutOfBoundsWithBackground(cr, pa, actualPresentationArea, pp);
@@ -76,18 +75,8 @@ void ExamplePresentation::redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scro
   // cairo_paint(cr);
 }
 
-bool ExamplePresentation::getProperty(const std::string& name, std::string& value)
-{
-  UNUSED(name);
-  UNUSED(value);
+bool ExamplePresentation::getProperty(const std::string& /*name*/, std::string& /*value*/) { return false; }
 
-  return false;
-}
-bool ExamplePresentation::isPropertyDefined(const std::string& name)
-{
-  UNUSED(name);
-
-  return false;
-}
+bool ExamplePresentation::isPropertyDefined(const std::string& /*name*/) { return false; }
 
 std::string ExamplePresentation::getTitle() { return ""; }

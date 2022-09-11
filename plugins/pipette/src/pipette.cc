@@ -15,7 +15,6 @@
 
 #include <scroom/cairo-helpers.hh>
 #include <scroom/format_stuff.hh>
-#include <scroom/unused.hh>
 
 #include "version.h"
 
@@ -123,9 +122,8 @@ std::string PipetteHandler::getSelectionType() { return SelectionType::PIXEL; }
 
 void PipetteHandler::onSelectionStart(Selection /*selection*/, ViewInterface::Ptr /*view*/) {}
 
-void PipetteHandler::onSelectionUpdate(Selection s, ViewInterface::Ptr view)
+void PipetteHandler::onSelectionUpdate(Selection s, ViewInterface::Ptr /*view*/)
 {
-  UNUSED(view);
   if(enabled && jobMutex.try_lock())
   {
     selection = s;

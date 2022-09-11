@@ -7,11 +7,14 @@
 
 #pragma once
 
+#include <memory>
 #include <string>
 
 #include <scroom/interface.hh>
 #include <scroom/rectangle.hh>
-#include <scroom/tile.hh>
+#include <scroom/utilities.hh>
+
+class ConstTile;
 
 class PipetteLayerOperations
   : public virtual Scroom::Utils::Base
@@ -28,5 +31,5 @@ public:
    * @param area The rectangular area in which pixels are summed up.
    * @param tile The tile in which the pixels are located in.
    */
-  virtual PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr& tile) = 0;
+  virtual PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const std::shared_ptr<ConstTile>& tile) = 0;
 };

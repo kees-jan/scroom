@@ -16,7 +16,7 @@
 #include <scroom/bitmap-helpers.hh>
 #include <scroom/cairo-helpers.hh>
 #include <scroom/layeroperations.hh>
-#include <scroom/unused.hh>
+
 
 using Scroom::Utils::Stuff;
 using namespace Scroom::Bitmap;
@@ -158,8 +158,8 @@ Scroom::Utils::Stuff CommonOperations::cacheZoom(const ConstTile::Ptr& tile, int
   return result;
 }
 
-void CommonOperations::draw(cairo_t*                         cr,
-                            const ConstTile::Ptr&            tile,
+void CommonOperations::draw(cairo_t* cr,
+                            const ConstTile::Ptr& /*tile*/,
                             Scroom::Utils::Rectangle<double> tileArea,
                             Scroom::Utils::Rectangle<double> viewArea,
                             int                              zoom,
@@ -167,8 +167,6 @@ void CommonOperations::draw(cairo_t*                         cr,
 {
   // In: Cairo surface at requested zoom level
   // Out: given surface rendered to the canvas
-  UNUSED(tile);
-
   setClip(cr, viewArea);
 
   if(!cache)
@@ -837,10 +835,8 @@ Operations1bppClipped::Operations1bppClipped(ColormapProvider::Ptr colormapProvi
 
 int Operations1bppClipped::getBpp() { return 1; }
 
-Scroom::Utils::Stuff Operations1bppClipped::cacheZoom(const ConstTile::Ptr& tile, int zoom, Stuff& cache)
+Scroom::Utils::Stuff Operations1bppClipped::cacheZoom(const ConstTile::Ptr& tile, int zoom, Stuff& /*cache*/)
 {
-  UNUSED(cache);
-
   if(zoom >= 0)
   {
     zoom = 0;

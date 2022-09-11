@@ -12,7 +12,6 @@
 
 #include <scroom/threadpool.hh>
 #include <scroom/tiledbitmaplayer.hh>
-#include <scroom/unused.hh>
 
 #include "local.hh"
 
@@ -58,15 +57,13 @@ void LayerCoordinator::tileFinished(const CompressedTile::Ptr& tile)
 ////////////////////////////////////////////////////////////////////////
 /// Helpers
 
-void LayerCoordinator::reduceSourceTile(const CompressedTile::Ptr& tile, ConstTile::Ptr const& tileData)
+void LayerCoordinator::reduceSourceTile(const CompressedTile::Ptr& tile, ConstTile::Ptr const& /*tileData*/)
 {
   // If tileData contains a valid pointer, then fetching
   // sourcetiledata, below, will be instananeous. Otherwise, it will
   // need to unzip the compressed tile.
   //
   // Other than that side-effect, we have no use for tileData
-  UNUSED(tileData);
-
   Scroom::Utils::Stuff const s        = targetTile->initialize();
   const std::pair<int, int>  location = sourceTiles[tile];
   const int                  x        = location.first;

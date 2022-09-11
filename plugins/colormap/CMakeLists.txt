@@ -13,7 +13,8 @@ target_link_libraries(
   PRIVATE project_options
           project_warnings
           spdlog
-          util
-  PUBLIC PkgConfig::gtk PkgConfig::cairo)
+          plugin_interfaces
+          PkgConfig::gtk
+          PkgConfig::cairo)
 install(TARGETS spcolormap DESTINATION ${PLUGIN_INSTALL_LOCATION_RELATIVE})
 install_plugin_dependencies(spcolormap)

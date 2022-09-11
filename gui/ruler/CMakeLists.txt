@@ -1,15 +1,21 @@
-add_library(ruler_lib SHARED)
-target_sources(
-  ruler_lib
-  PRIVATE src/ruler.cc
-          inc/ruler.hh
-          src/rulerstrategies.cc
-          inc/rulerstrategies.hh)
+add_library(ruler SHARED)
+set(HEADER_FILES inc/ruler.hh inc/rulerstrategies.hh)
+target_sources(ruler PRIVATE src/ruler.cc src/rulerstrategies.cc ${HEADER_FILES})
 target_link_libraries(
-  ruler_lib
+  ruler
   PRIVATE project_options project_warnings
-  PUBLIC util PkgConfig::gtk Boost::system)
-target_include_directories(ruler_lib PUBLIC inc)
+  PUBLIC PkgConfig::gtk util)
+target_include_directories(ruler PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/inc> $<INSTALL_INTERFACE:include>)
+install(
+  TARGETS ruler
+  EXPORT ruler
+  INCLUDES
+  DESTINATION include)
+install(
+  EXPORT ruler
+  DESTINATION lib/cmake
+  NAMESPACE scroom)
+install(FILES ${HEADER_FILES} DESTINATION include)
 
 if(ENABLE_BOOST_TEST)
   add_executable(ruler_tests)
@@ -20,7 +26,7 @@ if(ENABLE_BOOST_TEST)
     PRIVATE boosttesthelper
             project_options
             project_warnings
-            ruler_lib)
+            ruler)
 
   add_test(NAME ruler_tests COMMAND ruler_tests)
 endif()

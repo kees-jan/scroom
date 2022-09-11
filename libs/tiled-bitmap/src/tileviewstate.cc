@@ -17,7 +17,6 @@
 #include <scroom/threadpool.hh>
 #include <scroom/tiledbitmapinterface.hh>
 #include <scroom/tiledbitmaplayer.hh>
-#include <scroom/unused.hh>
 
 #include "local.hh"
 #include "tiledbitmapviewdata.hh"
@@ -216,10 +215,8 @@ void TileViewState::computeZoom(const ThreadPool::WeakQueue::Ptr& wq,
   }
 }
 
-void TileViewState::reportDone(const ThreadPool::WeakQueue::Ptr& wq, const ConstTile::Ptr& tile_)
+void TileViewState::reportDone(const ThreadPool::WeakQueue::Ptr& /*wq*/, const ConstTile::Ptr& tile_)
 {
-  UNUSED(wq);
-
   for(const TileLoadingObserver::Ptr& observer: Scroom::Utils::Observable<TileLoadingObserver>::getObservers())
   {
     observer->tileLoaded(tile_);

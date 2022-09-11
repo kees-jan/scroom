@@ -14,8 +14,6 @@
 
 #include <gtk/gtk.h>
 
-#include <scroom/unused.hh>
-
 #include "measure-framerate-callbacks.hh"
 #include "measure-framerate-tests.hh"
 
@@ -67,8 +65,7 @@ int main(int argc, char* argv[])
   setlocale(LC_ALL, ""); // NOLINT(concurrency-mt-unsafe)
   gtk_init(&argc, &argv);
 
-  GtkWidget* window = create_window();
-  UNUSED(window);
+  [[maybe_unused]] GtkWidget* window = create_window();
 
   init_tests();
   init();

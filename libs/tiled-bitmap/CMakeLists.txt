@@ -1,4 +1,9 @@
 add_library(tiledbitmap src/tiledbitmappresentation.cc)
+set(HEADER_FILES
+    inc/scroom/layeroperations.hh
+    inc/scroom/tile.hh
+    inc/scroom/tiledbitmapinterface.hh
+    inc/scroom/tiledbitmaplayer.hh)
 target_sources(
   tiledbitmap
   PRIVATE src/cmyklayeroperations.cc
@@ -14,18 +19,24 @@ target_sources(
           src/tiledbitmapviewdata.cc
           src/tiledbitmapviewdata.hh
           src/tileviewstate.cc
-          src/tileviewstate.hh)
+          src/tileviewstate.hh
+          ${HEADER_FILES})
 target_link_libraries(
   tiledbitmap
   PRIVATE project_options
           project_warnings
-          util
           threadpool
           memory_manager
           scroom_lib
           spdlog
           fmt
-  PUBLIC PkgConfig::gtk PkgConfig::cairo)
+  PUBLIC PkgConfig::gtk
+         PkgConfig::cairo
+         memory_manager
+         threadpool
+         plugin_interfaces)
+target_include_directories(tiledbitmap PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/inc>
+                                              $<INSTALL_INTERFACE:include>)
 
 install(
   TARGETS tiledbitmap
@@ -36,6 +47,7 @@ install(
   EXPORT tiledbitmap
   DESTINATION lib/cmake
   NAMESPACE scroom)
+install(FILES ${HEADER_FILES} DESTINATION include/scroom)
 
 add_library(measure_tools OBJECT)
 target_sources(
@@ -87,7 +99,8 @@ if(ENABLE_BOOST_TEST)
             project_options
             project_warnings
             tiledbitmap
-            Boost::system)
+            Boost::system
+            scroom_lib)
 
   add_test(NAME tiledbitmap_tests COMMAND tiledbitmap_tests)
 endif()

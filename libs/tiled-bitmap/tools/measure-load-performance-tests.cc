@@ -14,7 +14,6 @@
 
 #include <scroom/semaphore.hh>
 #include <scroom/threadpool.hh>
-#include <scroom/unused.hh>
 
 #include "measure-framerate-callbacks.hh"
 #include "measure-framerate-stubs.hh"
