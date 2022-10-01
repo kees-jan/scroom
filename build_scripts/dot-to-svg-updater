@@ -1,0 +1,11 @@
+#!/bin/bash -eu
+
+FILE=$(basename "$1")
+DIRECTORY=$(dirname "$1")
+
+inotifywait -e close_write,moved_to,create -m "$DIRECTORY" |
+while read -r directory events filename; do
+  if [ "$filename" = "${FILE}" ]; then
+     grep -v legendNode "${DIRECTORY}/${FILE}" | dot -Tsvg > "${DIRECTORY}/${FILE}.svg"
+  fi
+done
