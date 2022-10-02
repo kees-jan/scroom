@@ -7,7 +7,8 @@ target_sources(
           colormapprovider.cc
           colormapprovider.hh
           colormaps.cc
-          colormaps.hh)
+          colormaps.hh
+)
 target_link_libraries(
   spcolormap
   PRIVATE project_options
@@ -15,6 +16,7 @@ target_link_libraries(
           spdlog
           plugin_interfaces
           PkgConfig::gtk
-          PkgConfig::cairo)
+          PkgConfig::cairo
+)
 install(TARGETS spcolormap DESTINATION ${PLUGIN_INSTALL_LOCATION_RELATIVE})
 install_plugin_dependencies(spcolormap)

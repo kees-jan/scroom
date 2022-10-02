@@ -5,11 +5,13 @@ target_sources(
           example.cc
           example.hh
           examplepresentation.cc
-          examplepresentation.hh)
+          examplepresentation.hh
+)
 target_link_libraries(
   spexample
   PRIVATE project_options
           project_warnings
           scroom_lib
           plugin_interfaces
-          PkgConfig::gtk)
+          PkgConfig::gtk
+)

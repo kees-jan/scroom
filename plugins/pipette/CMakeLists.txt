@@ -9,7 +9,8 @@ target_link_libraries(
   PUBLIC PkgConfig::gtk
          threadpool
          PkgConfig::cairo
-         plugin_interfaces)
+         plugin_interfaces
+)
 
 install(TARGETS sppipette DESTINATION ${PLUGIN_INSTALL_LOCATION_RELATIVE})
 install_plugin_dependencies(sppipette)
@@ -25,7 +26,8 @@ if(ENABLE_BOOST_TEST)
             project_options
             project_warnings
             sppipette
-            util)
+            util
+  )
   target_include_directories(sppipette_tests PRIVATE src)
 
   add_test(NAME sppipette_tests COMMAND sppipette_tests)

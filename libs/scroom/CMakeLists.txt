@@ -4,7 +4,8 @@ set(HEADER_FILES
     inc/scroom/cairo-helpers.hh
     inc/scroom/global.hh
     inc/scroom/showmetadata.hh
-    inc/scroom/transformpresentation.hh)
+    inc/scroom/transformpresentation.hh
+)
 target_sources(
   scroom_lib
   PRIVATE src/bitmap-helpers.cc
@@ -13,7 +14,8 @@ target_sources(
           src/showmetadata.cc
           src/presentationinterface.cc
           src/transformpresentation.cc
-          ${HEADER_FILES})
+          ${HEADER_FILES}
+)
 target_link_libraries(
   scroom_lib
   PRIVATE project_options
@@ -21,20 +23,24 @@ target_link_libraries(
           fmt
           plugin_interfaces
           PkgConfig::gtk
-          PkgConfig::cairo)
+          PkgConfig::cairo
+)
 
-target_include_directories(scroom_lib PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/inc>
-                                             $<INSTALL_INTERFACE:include>)
+target_include_directories(
+  scroom_lib PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/inc> $<INSTALL_INTERFACE:include>
+)
 
 install(
   TARGETS scroom_lib
   EXPORT scroom_lib
   INCLUDES
-  DESTINATION include)
+  DESTINATION include
+)
 install(
   EXPORT scroom_lib
   DESTINATION lib/cmake
-  NAMESPACE scroom)
+  NAMESPACE scroom
+)
 install(FILES ${HEADER_FILES} DESTINATION include/scroom)
 
 if(ENABLE_BOOST_TEST)
@@ -47,7 +53,8 @@ if(ENABLE_BOOST_TEST)
             project_warnings
             scroom_lib
             Boost::system
-            plugin_interfaces)
+            plugin_interfaces
+  )
 
   add_test(NAME scroom_lib_tests COMMAND scroom_lib_tests)
 endif()
@@ -62,7 +69,8 @@ if(ENABLE_GOOGLE_TEST)
             scroom_lib
             Boost::system
             gmock_main
-            plugin_interfaces)
+            plugin_interfaces
+  )
 
   add_test(NAME scroom_lib_gtests COMMAND scroom_lib_gtests)
 endif()

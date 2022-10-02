@@ -4,17 +4,20 @@ target_sources(ruler PRIVATE src/ruler.cc src/rulerstrategies.cc ${HEADER_FILES}
 target_link_libraries(
   ruler
   PRIVATE project_options project_warnings
-  PUBLIC PkgConfig::gtk util)
+  PUBLIC PkgConfig::gtk util
+)
 target_include_directories(ruler PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/inc> $<INSTALL_INTERFACE:include>)
 install(
   TARGETS ruler
   EXPORT ruler
   INCLUDES
-  DESTINATION include)
+  DESTINATION include
+)
 install(
   EXPORT ruler
   DESTINATION lib/cmake
-  NAMESPACE scroom)
+  NAMESPACE scroom
+)
 install(FILES ${HEADER_FILES} DESTINATION include)
 
 if(ENABLE_BOOST_TEST)
@@ -26,7 +29,8 @@ if(ENABLE_BOOST_TEST)
     PRIVATE boosttesthelper
             project_options
             project_warnings
-            ruler)
+            ruler
+  )
 
   add_test(NAME ruler_tests COMMAND ruler_tests)
 endif()

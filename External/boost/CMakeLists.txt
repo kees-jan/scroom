@@ -5,7 +5,8 @@ find_package(
              unit_test_framework
              filesystem
              chrono
-             program_options)
+             program_options
+)
 
 if(Boost_FOUND)
   set_target_properties(
@@ -16,5 +17,6 @@ if(Boost_FOUND)
     Boost::filesystem
     Boost::chrono
     Boost::program_options
-    PROPERTIES IMPORTED_GLOBAL TRUE)
+    PROPERTIES IMPORTED_GLOBAL TRUE
+  )
 endif()

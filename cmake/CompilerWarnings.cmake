@@ -66,7 +66,8 @@ function(set_project_warnings project_name)
       -Wno-vla-extension
       -Wno-float-conversion
       -Wno-sign-conversion
-      -Wno-incompatible-ms-struct)
+      -Wno-incompatible-ms-struct
+  )
 
   set(GCC_WARNINGS
       ${COMMON_WARNINGS}
@@ -78,7 +79,8 @@ function(set_project_warnings project_name)
       # Haven't fixed these (yet)
       -Wno-vla
       -Wno-float-conversion
-      -Wno-sign-conversion)
+      -Wno-sign-conversion
+  )
 
   if(MSVC)
     set(PROJECT_WARNINGS ${MSVC_WARNINGS})

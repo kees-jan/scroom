@@ -14,7 +14,8 @@ include(cmake/PreventInSourceBuilds.cmake)
 
 set(SCROOM_BUILD_OUTPUT_DIR
     ${PROJECT_BINARY_DIR}
-    CACHE FILEPATH "Directory where the build output is to be stored")
+    CACHE FILEPATH "Directory where the build output is to be stored"
+)
 include(cmake/TargetLocations.cmake)
 scroom_output_dirs_setup()
 
@@ -25,7 +26,8 @@ if(hasParent)
   # of the base scroom directory
   set(PLUGIN_INSTALL_LOCATION_RELATIVE
       ${PLUGIN_INSTALL_LOCATION_RELATIVE}
-      PARENT_SCOPE)
+      PARENT_SCOPE
+  )
 endif()
 set(PLUGIN_INSTALL_LOCATION_ABSOLUTE "${CMAKE_INSTALL_PREFIX}/${PLUGIN_INSTALL_LOCATION_RELATIVE}")
 
@@ -90,7 +92,8 @@ if(ENABLE_PCH)
     <vector>
     <string>
     <map>
-    <utility>)
+    <utility>
+  )
 endif()
 
 if(ENABLE_BOOST_TEST OR ENABLE_GOOGLE_TEST)
@@ -112,12 +115,14 @@ endif()
 
 set(PLUGINS
     ""
-    CACHE INTERNAL "List of all plugins")
+    CACHE INTERNAL "List of all plugins"
+)
 function(install_plugin_dependencies plugin-name)
   list(APPEND PLUGINS "bin/lib${plugin-name}.dll")
   set(PLUGINS
       "${PLUGINS}"
-      CACHE INTERNAL "List of all plugins")
+      CACHE INTERNAL "List of all plugins"
+  )
 endfunction()
 
 configure_file(cmake-config.h.in config.h)
@@ -148,7 +153,8 @@ if(WIN32)
       endif()
       file(INSTALL ${resolved}
         DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
-  ]])
+  ]]
+  )
 else()
   message(NOTICE "Not on Windows. Not gathering dependencies")
 endif()

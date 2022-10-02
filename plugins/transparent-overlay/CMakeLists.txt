@@ -9,14 +9,16 @@ target_sources(
           src/transparentoverlaypresentation.cc
           src/transparentoverlaypresentation.hh
           src/transparentoverlayviewinfo.cc
-          src/transparentoverlayviewinfo.hh)
+          src/transparentoverlayviewinfo.hh
+)
 target_link_libraries(
   sptransparentoverlay
   PRIVATE project_options
           project_warnings
           plugin_interfaces
           scroom_lib
-          PkgConfig::gtk)
+          PkgConfig::gtk
+)
 
 install(TARGETS sptransparentoverlay DESTINATION ${PLUGIN_INSTALL_LOCATION_RELATIVE})
 install_plugin_dependencies(sptransparentoverlay)
@@ -32,7 +34,8 @@ if(ENABLE_BOOST_TEST)
             project_warnings
             sptransparentoverlay
             Boost::system
-            plugin_interfaces)
+            plugin_interfaces
+  )
 
   add_test(NAME transparentoverlay_tests COMMAND transparentoverlay_tests)
 endif()

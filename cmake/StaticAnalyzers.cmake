@@ -12,7 +12,8 @@ if(ENABLE_CPPCHECK)
         --inline-suppr
         --inconclusive
         -i
-        ${CMAKE_SOURCE_DIR}/imgui/lib)
+        ${CMAKE_SOURCE_DIR}/imgui/lib
+    )
     if(WARNINGS_AS_ERRORS)
       list(APPEND CMAKE_CXX_CPPCHECK --error-exitcode=2)
     endif()

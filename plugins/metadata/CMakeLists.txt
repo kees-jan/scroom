@@ -8,6 +8,7 @@ target_link_libraries(
           plugin_interfaces
           PkgConfig::gtk
           threadpool
-          PkgConfig::cairo)
+          PkgConfig::cairo
+)
 install(TARGETS spmetadata DESTINATION ${PLUGIN_INSTALL_LOCATION_RELATIVE})
 install_plugin_dependencies(spmetadata)

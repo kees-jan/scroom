@@ -9,7 +9,8 @@ if(ENABLE_GOOGLE_TEST)
   # For Windows: Prevent overriding the parent project's compiler/linker settings
   set(gtest_force_shared_crt
       ON
-      CACHE BOOL "" FORCE)
+      CACHE BOOL "" FORCE
+  )
   set(BUILD_SHARED_LIBS ON)
   FetchContent_MakeAvailable(googletest)
 endif()

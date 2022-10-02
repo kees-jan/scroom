@@ -15,7 +15,8 @@ set(HEADER_FILES
     inc/scroom/rectangle.hh
     inc/scroom/rounding.hh
     inc/scroom/stuff.hh
-    inc/scroom/utilities.hh)
+    inc/scroom/utilities.hh
+)
 set(HEADER_FILES_IMPL inc/scroom/impl/bookkeepingimpl.hh)
 target_sources(
   util
@@ -25,26 +26,29 @@ target_sources(
           src/gtk-test-helpers.cc
           src/progressinterfacehelpers.cc
           ${HEADER_FILES}
-          ${HEADER_FILES_IMPL})
+          ${HEADER_FILES_IMPL}
+)
 target_link_libraries(
   util
   PRIVATE project_options
           project_warnings
           spdlog
           PkgConfig::gtk
-  PUBLIC PkgConfig::gtk
-        Boost::system)
+  PUBLIC PkgConfig::gtk Boost::system
+)
 target_include_directories(util PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/inc> $<INSTALL_INTERFACE:include>)
 
 install(
   TARGETS util
   EXPORT util
   INCLUDES
-  DESTINATION include)
+  DESTINATION include
+)
 install(
   EXPORT util
   DESTINATION lib/cmake
-  NAMESPACE scroom)
+  NAMESPACE scroom
+)
 install(FILES ${HEADER_FILES} DESTINATION include/scroom)
 install(FILES ${HEADER_FILES_IMPL} DESTINATION include/scroom/impl)
 
@@ -63,13 +67,15 @@ if(ENABLE_BOOST_TEST)
             test/progressstateinterfacestub.cc
             test/progressstateinterfacestub.hh
             test/scope-exit-tests.cpp
-            test/rectangletests.cc)
+            test/rectangletests.cc
+  )
   target_link_libraries(
     util_tests
     PRIVATE boosttesthelper
             project_options
             project_warnings
-            plugin_interfaces)
+            plugin_interfaces
+  )
 
   add_test(NAME util_tests COMMAND util_tests)
 endif()

@@ -4,14 +4,16 @@ include(CheckCXXCompilerFlag)
 
 set(USER_LINKER_OPTION
     "lld"
-    CACHE STRING "Linker to be used")
+    CACHE STRING "Linker to be used"
+)
 set(USER_LINKER_OPTION_VALUES "lld" "gold" "bfd")
 set_property(CACHE USER_LINKER_OPTION PROPERTY STRINGS ${USER_LINKER_OPTION_VALUES})
 list(
   FIND
   USER_LINKER_OPTION_VALUES
   ${USER_LINKER_OPTION}
-  USER_LINKER_OPTION_INDEX)
+  USER_LINKER_OPTION_INDEX
+)
 
 if(${USER_LINKER_OPTION_INDEX} EQUAL -1)
   message(

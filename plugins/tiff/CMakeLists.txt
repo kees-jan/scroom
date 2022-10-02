@@ -5,7 +5,8 @@ target_sources(
           src/tiff.cc
           src/tiff.hh
           src/tiffsource.hh
-          src/tiffsource.cc)
+          src/tiffsource.cc
+)
 target_link_libraries(
   sptiff
   PRIVATE project_options
@@ -15,7 +16,8 @@ target_link_libraries(
           scroom_lib
           TIFF::TIFF
           tiledbitmap
-          PkgConfig::cairo)
+          PkgConfig::cairo
+)
 
 install(TARGETS sptiff DESTINATION ${PLUGIN_INSTALL_LOCATION_RELATIVE})
 install_plugin_dependencies(sptiff)

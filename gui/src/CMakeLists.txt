@@ -14,7 +14,8 @@ target_sources(
           sidebarmanager.hh
           view.cc
           view.hh
-          workinterface.hh)
+          workinterface.hh
+)
 
 if(WIN32)
   target_sources(scroom PRIVATE ../icon/icon.rc)
@@ -37,8 +38,11 @@ target_link_libraries(
           util
           tiledbitmap
           m
-          ruler)
-target_compile_definitions(scroom PRIVATE PLUGIN_DIR="${PLUGIN_INSTALL_LOCATION_ABSOLUTE}"
-                                          TOP_SRCDIR="${Scroom_SOURCE_DIR}" PACKAGE_DATA_DIR="${PKG_DIR_ABSOLUTE}")
+          ruler
+)
+target_compile_definitions(
+  scroom PRIVATE PLUGIN_DIR="${PLUGIN_INSTALL_LOCATION_ABSOLUTE}" TOP_SRCDIR="${Scroom_SOURCE_DIR}"
+                 PACKAGE_DATA_DIR="${PKG_DIR_ABSOLUTE}"
+)
 
 install(TARGETS scroom)
