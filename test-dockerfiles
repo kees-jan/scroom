@@ -13,7 +13,7 @@ then
     do
         echo $d
         if docker run -v "$SCROOM_ABSOLUTE":/home/build/scroom --rm test-scroom-dockerfiles:$d sh -x -c \
-              "D=\$(mktemp -d) && cmake -S /home/build/scroom -B \$D -GNinja && cmake --build \$D && cd \$D && xvfb-run ctest -j \$(nproc)" > $d.log 2>&1
+              "D=\$(mktemp -d) && cmake -S /home/build/scroom -B \$D -GNinja && cmake --build \$D -- -k0 && cd \$D && xvfb-run ctest -j \$(nproc)" > $d.log 2>&1
         then
             echo "$d - succeeded"
         else
