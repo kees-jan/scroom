@@ -5,10 +5,6 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
-#endif
-
 #include <boost/test/unit_test.hpp>
 
 //////////////////////////////////////////////////////////////

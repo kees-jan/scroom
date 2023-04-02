@@ -78,7 +78,6 @@ option(ENABLE_GOOGLE_TEST "Enable Google Test builds" ON)
 option(ENABLE_SLOW_TESTS "Enable tests that take a lot of time" ON)
 option(MULTITHREADING "Use as many threads as needed" ON)
 option(DEBUG_TILES "Visualize internally used tiles" OFF)
-option(XML_TEST_OUTPUT "Have all Boost unittests report in xml format" OFF)
 
 # Very basic PCH example
 option(ENABLE_PCH "Enable Precompiled Headers" OFF)
