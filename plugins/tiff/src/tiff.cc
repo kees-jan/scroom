@@ -7,10 +7,6 @@
 
 #include "tiff.hh"
 
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
-#endif
-
 #include <tiffio.h>
 
 #include <scroom/opentiledbitmapinterface.hh>

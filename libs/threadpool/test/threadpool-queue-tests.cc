@@ -5,12 +5,6 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include <scroom/threadpool.hh>
-
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
-#endif
-
 #include <iostream>
 #include <memory>
 

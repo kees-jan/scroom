@@ -7,10 +7,6 @@
 
 #include "callbacks.hh"
 
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
-#endif
-
 #ifdef HAVE_VERSION_H
 #  include <version.h>
 #endif
