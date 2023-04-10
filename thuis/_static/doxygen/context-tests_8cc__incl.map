@@ -1,12 +1,14 @@
 <map id="libs/util/test/context&#45;tests.cc" name="libs/util/test/context&#45;tests.cc">
-<area shape="rect" id="node1" title=" " alt="" coords="107,5,259,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,95,181,121"/>
-<area shape="rect" id="node3" href="$single-context_8hh.html" title=" " alt="" coords="206,95,341,121"/>
-<area shape="rect" id="node4" title=" " alt="" coords="188,169,239,196"/>
-<area shape="rect" id="node5" href="$context_8hh.html" title=" " alt="" coords="263,169,406,196"/>
-<area shape="rect" id="node6" title=" " alt="" coords="114,244,161,271"/>
-<area shape="rect" id="node7" title=" " alt="" coords="185,244,271,271"/>
-<area shape="rect" id="node8" title=" " alt="" coords="296,244,373,271"/>
-<area shape="rect" id="node9" title=" " alt="" coords="397,244,456,271"/>
-<area shape="rect" id="node10" href="$interface_8hh.html" title=" " alt="" coords="480,244,632,271"/>
+<area shape="rect" id="node1" title=" " alt="" coords="109,5,261,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="7,95,183,121"/>
+<area shape="rect" id="node3" href="$single-context_8hh.html" title=" " alt="" coords="208,95,343,121"/>
+<area shape="rect" id="node4" title=" " alt="" coords="190,169,241,196"/>
+<area shape="rect" id="node5" href="$context_8hh.html" title=" " alt="" coords="265,169,408,196"/>
+<area shape="rect" id="node6" title=" " alt="" coords="5,244,52,271"/>
+<area shape="rect" id="node7" title=" " alt="" coords="76,244,163,271"/>
+<area shape="rect" id="node8" title=" " alt="" coords="187,244,273,271"/>
+<area shape="rect" id="node9" title=" " alt="" coords="298,244,375,271"/>
+<area shape="rect" id="node10" title=" " alt="" coords="399,244,458,271"/>
+<area shape="rect" id="node11" title=" " alt="" coords="483,244,543,271"/>
+<area shape="rect" id="node12" href="$interface_8hh.html" title=" " alt="" coords="567,244,719,271"/>
 </map>

@@ -31,6 +31,7 @@ var annotated_dup =
     [ "ContextFixture", "structContextFixture.html", "structContextFixture" ],
     [ "DataFetcher", "classDataFetcher.html", "classDataFetcher" ],
     [ "DontDelete", "classDontDelete.html", "classDontDelete" ],
+    [ "Dummy", "structDummy.html", "structDummy" ],
     [ "DummyColormapProvider", "classDummyColormapProvider.html", "classDummyColormapProvider" ],
     [ "DummyLayerOperations", "classDummyLayerOperations.html", "classDummyLayerOperations" ],
     [ "DummyPluginInterface", "classDummyPluginInterface.html", "classDummyPluginInterface" ],

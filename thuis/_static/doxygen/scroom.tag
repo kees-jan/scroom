@@ -5099,11 +5099,74 @@
     <namespace>Scroom</namespace>
     <namespace>Scroom::Utils</namespace>
     <member kind="function">
+      <type>T</type>
+      <name>get</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a1df110b1fef13cbeaf6122b1ca752a97</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, std::string name)</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>get</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>aa10961452286915568f65c2f026c0916</anchor>
+      <arglist>(const Context::ConstPtr &amp;context)</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>get_or</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a1004770a78b193747cf42b3f0e37dd8e</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, std::string name, Callable default_value)</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>get_or</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>ab3dd264cabc827d1654aaa47ac18a280</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, Callable default_value)</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>get_or</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>aad66314d2065b5b9ef9d58e2a97238f4</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, std::string name, T default_value)</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>get_or</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a84846154a19182ab43c20f2d79ff54dd</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, T default_value)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>set</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a729f4d0d2c14a19b769897751e91acbe</anchor>
+      <arglist>(const Context::Ptr &amp;context, std::string name, T value)</arglist>
+    </member>
+    <member kind="function">
       <type>void</type>
       <name>set</name>
       <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
       <anchor>a91be522682d558972fdd182573c9fd6e</anchor>
       <arglist>(const Context::Ptr &amp;context, T value)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setFactory</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>aeb91576875b1be9c7f4edcc8cfe5da20</anchor>
+      <arglist>(const Context::Ptr &amp;context, std::string name, Callable value)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setFactory</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a3b9d64ee0deb4bfdfa03a1884bf7126c</anchor>
+      <arglist>(const Context::Ptr &amp;context, Callable value)</arglist>
     </member>
   </compound>
   <compound kind="file">
@@ -5910,12 +5973,34 @@
     <filename>context-tests_8cc.html</filename>
     <includes id="single-context_8hh" name="single-context.hh" local="yes" imported="no">single-context.hh</includes>
     <class kind="struct">ContextFixture</class>
+    <class kind="struct">Dummy</class>
     <member kind="function">
       <type></type>
       <name>BOOST_AUTO_TEST_CASE</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>a6837b96c466fa6c8ef55ab424610595e</anchor>
-      <arglist>(store_and_retrieve_anonymous_values)</arglist>
+      <anchor>adf92e26d4e441a204eb7756c10ae9e6d</anchor>
+      <arglist>(store_and_retrieve_values)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>BOOST_AUTO_TEST_CASE</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>ab501633a7efe5e389b03742f9ef1db5c</anchor>
+      <arglist>(store_and_retrieve_shared_pointers)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>BOOST_AUTO_TEST_CASE</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>a5004d97bd367f802c254a9ccb4144368</anchor>
+      <arglist>(store_and_retrieve_shared_pointers_from_labdas)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>BOOST_AUTO_TEST_CASE</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>a595d756ce10b58998df3042a3b6ac045</anchor>
+      <arglist>(use_defaults_when_values_are_not_available)</arglist>
     </member>
   </compound>
   <compound kind="file">
@@ -9671,6 +9756,24 @@
       <anchorfile>classScroom_1_1MemoryBlocks_1_1Detail_1_1anonymous__namespace_02swapbasedblockallocator_8cc_03_1_1DontDelete.html</anchorfile>
       <anchor>a9c80210aaa07ef6bf5246efca5502bb2</anchor>
       <arglist>(T *)</arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>Dummy</name>
+    <filename>structDummy.html</filename>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; Dummy &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>structDummy.html</anchorfile>
+      <anchor>a8e29ab0a6ae746731e7827e8ada49c39</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static Ptr</type>
+      <name>Create</name>
+      <anchorfile>structDummy.html</anchorfile>
+      <anchor>a87eb41dd7213c972bba7404e6e06b428</anchor>
+      <arglist>()</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -25325,11 +25428,74 @@
       <arglist></arglist>
     </member>
     <member kind="function">
+      <type>T</type>
+      <name>get</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a1df110b1fef13cbeaf6122b1ca752a97</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, std::string name)</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>get</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>aa10961452286915568f65c2f026c0916</anchor>
+      <arglist>(const Context::ConstPtr &amp;context)</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>get_or</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a1004770a78b193747cf42b3f0e37dd8e</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, std::string name, Callable default_value)</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>get_or</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>ab3dd264cabc827d1654aaa47ac18a280</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, Callable default_value)</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>get_or</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>aad66314d2065b5b9ef9d58e2a97238f4</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, std::string name, T default_value)</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>get_or</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a84846154a19182ab43c20f2d79ff54dd</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, T default_value)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>set</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a729f4d0d2c14a19b769897751e91acbe</anchor>
+      <arglist>(const Context::Ptr &amp;context, std::string name, T value)</arglist>
+    </member>
+    <member kind="function">
       <type>void</type>
       <name>set</name>
       <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
       <anchor>a91be522682d558972fdd182573c9fd6e</anchor>
       <arglist>(const Context::Ptr &amp;context, T value)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setFactory</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>aeb91576875b1be9c7f4edcc8cfe5da20</anchor>
+      <arglist>(const Context::Ptr &amp;context, std::string name, Callable value)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setFactory</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a3b9d64ee0deb4bfdfa03a1884bf7126c</anchor>
+      <arglist>(const Context::Ptr &amp;context, Callable value)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>

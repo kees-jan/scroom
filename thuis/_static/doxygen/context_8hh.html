@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Scroom
-   &#160;<span id="projectnumber">0.14-15-g9c40d1186</span>
+   &#160;<span id="projectnumber">0.14-21-g22ac9c29</span>
    </div>
   </td>
  </tr>
@@ -92,20 +92,24 @@ $(document).ready(function(){initNavTree('context_8hh.html',''); initResizable()
 <div class="contents">
 <div class="textblock"><code>#include &lt;any&gt;</code><br />
 <code>#include &lt;exception&gt;</code><br />
+<code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
+<code>#include &lt;utility&gt;</code><br />
 <code>#include &lt;<a class="el" href="interface_8hh_source.html">scroom/interface.hh</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for context.hh:</div>
 <div class="dyncontent">
 <div class="center"><img src="context_8hh__incl.png" border="0" usemap="#libs_2util_2inc_2scroom_2context_8hh" alt=""/></div>
 <map name="libs_2util_2inc_2scroom_2context_8hh" id="libs_2util_2inc_2scroom_2context_8hh">
-<area shape="rect" title=" " alt="" coords="153,5,299,47"/>
+<area shape="rect" title=" " alt="" coords="264,5,409,47"/>
 <area shape="rect" title=" " alt="" coords="5,95,52,121"/>
 <area shape="rect" title=" " alt="" coords="76,95,163,121"/>
-<area shape="rect" title=" " alt="" coords="187,95,265,121"/>
-<area shape="rect" title=" " alt="" coords="289,95,347,121"/>
-<area shape="rect" href="interface_8hh.html" title=" " alt="" coords="371,95,523,121"/>
+<area shape="rect" title=" " alt="" coords="187,95,273,121"/>
+<area shape="rect" title=" " alt="" coords="298,95,375,121"/>
+<area shape="rect" title=" " alt="" coords="399,95,458,121"/>
+<area shape="rect" title=" " alt="" coords="483,95,543,121"/>
+<area shape="rect" href="interface_8hh.html" title=" " alt="" coords="567,95,719,121"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -145,9 +149,36 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a1df110b1fef13cbeaf6122b1ca752a97"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a1df110b1fef13cbeaf6122b1ca752a97"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#a1df110b1fef13cbeaf6122b1ca752a97">Scroom::Utils::get</a> (const Context::ConstPtr &amp;context, std::string name)</td></tr>
+<tr class="separator:a1df110b1fef13cbeaf6122b1ca752a97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa10961452286915568f65c2f026c0916"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aa10961452286915568f65c2f026c0916"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#aa10961452286915568f65c2f026c0916">Scroom::Utils::get</a> (const Context::ConstPtr &amp;context)</td></tr>
+<tr class="separator:aa10961452286915568f65c2f026c0916"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1004770a78b193747cf42b3f0e37dd8e"><td class="memTemplParams" colspan="2">template&lt;typename T , typename Callable &gt; </td></tr>
+<tr class="memitem:a1004770a78b193747cf42b3f0e37dd8e"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#a1004770a78b193747cf42b3f0e37dd8e">Scroom::Utils::get_or</a> (const Context::ConstPtr &amp;context, std::string name, Callable default_value)</td></tr>
+<tr class="separator:a1004770a78b193747cf42b3f0e37dd8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3dd264cabc827d1654aaa47ac18a280"><td class="memTemplParams" colspan="2">template&lt;typename T , typename Callable &gt; </td></tr>
+<tr class="memitem:ab3dd264cabc827d1654aaa47ac18a280"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#ab3dd264cabc827d1654aaa47ac18a280">Scroom::Utils::get_or</a> (const Context::ConstPtr &amp;context, Callable default_value)</td></tr>
+<tr class="separator:ab3dd264cabc827d1654aaa47ac18a280"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad66314d2065b5b9ef9d58e2a97238f4"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aad66314d2065b5b9ef9d58e2a97238f4"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#aad66314d2065b5b9ef9d58e2a97238f4">Scroom::Utils::get_or</a> (const Context::ConstPtr &amp;context, std::string name, T default_value)</td></tr>
+<tr class="separator:aad66314d2065b5b9ef9d58e2a97238f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84846154a19182ab43c20f2d79ff54dd"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a84846154a19182ab43c20f2d79ff54dd"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#a84846154a19182ab43c20f2d79ff54dd">Scroom::Utils::get_or</a> (const Context::ConstPtr &amp;context, T default_value)</td></tr>
+<tr class="separator:a84846154a19182ab43c20f2d79ff54dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a729f4d0d2c14a19b769897751e91acbe"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a729f4d0d2c14a19b769897751e91acbe"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe">Scroom::Utils::set</a> (const Context::Ptr &amp;context, std::string name, T value)</td></tr>
+<tr class="separator:a729f4d0d2c14a19b769897751e91acbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91be522682d558972fdd182573c9fd6e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a91be522682d558972fdd182573c9fd6e"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#a91be522682d558972fdd182573c9fd6e">Scroom::Utils::set</a> (const Context::Ptr &amp;context, T value)</td></tr>
 <tr class="separator:a91be522682d558972fdd182573c9fd6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb91576875b1be9c7f4edcc8cfe5da20"><td class="memTemplParams" colspan="2">template&lt;typename Callable &gt; </td></tr>
+<tr class="memitem:aeb91576875b1be9c7f4edcc8cfe5da20"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#aeb91576875b1be9c7f4edcc8cfe5da20">Scroom::Utils::setFactory</a> (const Context::Ptr &amp;context, std::string name, Callable value)</td></tr>
+<tr class="separator:aeb91576875b1be9c7f4edcc8cfe5da20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b9d64ee0deb4bfdfa03a1884bf7126c"><td class="memTemplParams" colspan="2">template&lt;typename Callable &gt; </td></tr>
+<tr class="memitem:a3b9d64ee0deb4bfdfa03a1884bf7126c"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#a3b9d64ee0deb4bfdfa03a1884bf7126c">Scroom::Utils::setFactory</a> (const Context::Ptr &amp;context, Callable value)</td></tr>
+<tr class="separator:a3b9d64ee0deb4bfdfa03a1884bf7126c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -59,6 +59,7 @@ var hierarchy =
     ] ],
     [ "DontDelete< T >", "classDontDelete.html", null ],
     [ "Scroom::MemoryBlocks::Detail::anonymous_namespace{swapbasedblockallocator.cc}::DontDelete< T >", "classScroom_1_1MemoryBlocks_1_1Detail_1_1anonymous__namespace_02swapbasedblockallocator_8cc_03_1_1DontDelete.html", null ],
+    [ "Dummy", "structDummy.html", null ],
     [ "enable_shared_from_this", null, [
       [ "Scroom::ColormapImpl::ColormapProvider", "classScroom_1_1ColormapImpl_1_1ColormapProvider.html", null ],
       [ "Scroom::Utils::Base", "classScroom_1_1Utils_1_1Base.html", [
