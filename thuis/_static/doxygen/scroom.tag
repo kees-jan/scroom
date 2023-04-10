@@ -5113,18 +5113,18 @@
       <arglist>(const Context::ConstPtr &amp;context)</arglist>
     </member>
     <member kind="function">
-      <type>T</type>
+      <type>auto</type>
       <name>get_or</name>
       <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
-      <anchor>a1004770a78b193747cf42b3f0e37dd8e</anchor>
-      <arglist>(const Context::ConstPtr &amp;context, std::string name, Callable default_value)</arglist>
+      <anchor>a0815b937d5d5e37d4b7895452a5b4604</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, std::string name, Callable default_value) -&gt; std::enable_if_t&lt; std::is_same_v&lt; T, std::remove_reference_t&lt; decltype(default_value())&gt;&gt;, T &gt;</arglist>
     </member>
     <member kind="function">
-      <type>T</type>
+      <type>auto</type>
       <name>get_or</name>
       <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
-      <anchor>ab3dd264cabc827d1654aaa47ac18a280</anchor>
-      <arglist>(const Context::ConstPtr &amp;context, Callable default_value)</arglist>
+      <anchor>a1f2f759ebe64953b7cc85c9716d0afea</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, Callable default_value) -&gt; std::enable_if_t&lt; std::is_same_v&lt; T, std::remove_reference_t&lt; decltype(default_value())&gt;&gt;, T &gt;</arglist>
     </member>
     <member kind="function">
       <type>T</type>
@@ -25442,18 +25442,18 @@
       <arglist>(const Context::ConstPtr &amp;context)</arglist>
     </member>
     <member kind="function">
-      <type>T</type>
+      <type>auto</type>
       <name>get_or</name>
       <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
-      <anchor>a1004770a78b193747cf42b3f0e37dd8e</anchor>
-      <arglist>(const Context::ConstPtr &amp;context, std::string name, Callable default_value)</arglist>
+      <anchor>a0815b937d5d5e37d4b7895452a5b4604</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, std::string name, Callable default_value) -&gt; std::enable_if_t&lt; std::is_same_v&lt; T, std::remove_reference_t&lt; decltype(default_value())&gt;&gt;, T &gt;</arglist>
     </member>
     <member kind="function">
-      <type>T</type>
+      <type>auto</type>
       <name>get_or</name>
       <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
-      <anchor>ab3dd264cabc827d1654aaa47ac18a280</anchor>
-      <arglist>(const Context::ConstPtr &amp;context, Callable default_value)</arglist>
+      <anchor>a1f2f759ebe64953b7cc85c9716d0afea</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, Callable default_value) -&gt; std::enable_if_t&lt; std::is_same_v&lt; T, std::remove_reference_t&lt; decltype(default_value())&gt;&gt;, T &gt;</arglist>
     </member>
     <member kind="function">
       <type>T</type>

@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Scroom
-   &#160;<span id="projectnumber">0.14-21-g22ac9c29</span>
+   &#160;<span id="projectnumber">0.14-22-gfe7f5b1b</span>
    </div>
   </td>
  </tr>
@@ -164,12 +164,12 @@ Functions</h2></td></tr>
 <tr class="memitem:aa10961452286915568f65c2f026c0916"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:aa10961452286915568f65c2f026c0916"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#aa10961452286915568f65c2f026c0916">get</a> (const <a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a> &amp;context)</td></tr>
 <tr class="separator:aa10961452286915568f65c2f026c0916"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1004770a78b193747cf42b3f0e37dd8e"><td class="memTemplParams" colspan="2">template&lt;typename T , typename Callable &gt; </td></tr>
-<tr class="memitem:a1004770a78b193747cf42b3f0e37dd8e"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#a1004770a78b193747cf42b3f0e37dd8e">get_or</a> (const <a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a> &amp;context, std::string name, Callable default_value)</td></tr>
-<tr class="separator:a1004770a78b193747cf42b3f0e37dd8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3dd264cabc827d1654aaa47ac18a280"><td class="memTemplParams" colspan="2">template&lt;typename T , typename Callable &gt; </td></tr>
-<tr class="memitem:ab3dd264cabc827d1654aaa47ac18a280"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#ab3dd264cabc827d1654aaa47ac18a280">get_or</a> (const <a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a> &amp;context, Callable default_value)</td></tr>
-<tr class="separator:ab3dd264cabc827d1654aaa47ac18a280"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0815b937d5d5e37d4b7895452a5b4604"><td class="memTemplParams" colspan="2">template&lt;typename T , typename Callable &gt; </td></tr>
+<tr class="memitem:a0815b937d5d5e37d4b7895452a5b4604"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#a0815b937d5d5e37d4b7895452a5b4604">get_or</a> (const <a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a> &amp;context, std::string name, Callable default_value) -&gt; std::enable_if_t&lt; std::is_same_v&lt; T, std::remove_reference_t&lt; decltype(default_value())&gt;&gt;, T &gt;</td></tr>
+<tr class="separator:a0815b937d5d5e37d4b7895452a5b4604"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f2f759ebe64953b7cc85c9716d0afea"><td class="memTemplParams" colspan="2">template&lt;typename T , typename Callable &gt; </td></tr>
+<tr class="memitem:a1f2f759ebe64953b7cc85c9716d0afea"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#a1f2f759ebe64953b7cc85c9716d0afea">get_or</a> (const <a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a> &amp;context, Callable default_value) -&gt; std::enable_if_t&lt; std::is_same_v&lt; T, std::remove_reference_t&lt; decltype(default_value())&gt;&gt;, T &gt;</td></tr>
+<tr class="separator:a1f2f759ebe64953b7cc85c9716d0afea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad66314d2065b5b9ef9d58e2a97238f4"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:aad66314d2065b5b9ef9d58e2a97238f4"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#aad66314d2065b5b9ef9d58e2a97238f4">get_or</a> (const <a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a> &amp;context, std::string name, T default_value)</td></tr>
 <tr class="separator:aad66314d2065b5b9ef9d58e2a97238f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -955,8 +955,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ab3dd264cabc827d1654aaa47ac18a280"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab3dd264cabc827d1654aaa47ac18a280">&#9670;&nbsp;</a></span>get_or() <span class="overload">[1/4]</span></h2>
+<a id="a1f2f759ebe64953b7cc85c9716d0afea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f2f759ebe64953b7cc85c9716d0afea">&#9670;&nbsp;</a></span>get_or() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -964,7 +964,7 @@ Here is the caller graph for this function:</div>
 template&lt;typename T , typename Callable &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T Scroom::Utils::get_or </td>
+          <td class="memname">auto Scroom::Utils::get_or </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a> &amp;&#160;</td>
           <td class="paramname"><em>context</em>, </td>
@@ -978,7 +978,8 @@ template&lt;typename T , typename Callable &gt; </div>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
+          <td></td><td> -&gt; std::enable_if_t&lt;std::is_same_v&lt;T, std::remove_reference_t&lt;decltype(default_value())&gt;&gt;, T&gt;
+  </td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -989,8 +990,8 @@ template&lt;typename T , typename Callable &gt; </div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a1004770a78b193747cf42b3f0e37dd8e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1004770a78b193747cf42b3f0e37dd8e">&#9670;&nbsp;</a></span>get_or() <span class="overload">[2/4]</span></h2>
+<a id="a0815b937d5d5e37d4b7895452a5b4604"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0815b937d5d5e37d4b7895452a5b4604">&#9670;&nbsp;</a></span>get_or() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -998,7 +999,7 @@ template&lt;typename T , typename Callable &gt; </div>
 template&lt;typename T , typename Callable &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T Scroom::Utils::get_or </td>
+          <td class="memname">auto Scroom::Utils::get_or </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a> &amp;&#160;</td>
           <td class="paramname"><em>context</em>, </td>
@@ -1018,22 +1019,21 @@ template&lt;typename T , typename Callable &gt; </div>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
+          <td></td><td> -&gt; std::enable_if_t&lt;std::is_same_v&lt;T, std::remove_reference_t&lt;decltype(default_value())&gt;&gt;, T&gt;
+  </td>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    static_assert(std::is_same_v&lt;T, std::remove_reference_t&lt;decltype(default_value())&gt;&gt;);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">try</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      <span class="keywordflow">return</span> get&lt;T&gt;(context, std::move(name));</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">catch</span>(...)</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <span class="keywordflow">return</span> default_value();</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  }</div>
+<div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      <span class="keywordflow">return</span> get&lt;T&gt;(context, std::move(name));</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">catch</span>(...)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <span class="keywordflow">return</span> default_value();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  }</div>
 </div><!-- fragment -->
 </div>
 </div>
