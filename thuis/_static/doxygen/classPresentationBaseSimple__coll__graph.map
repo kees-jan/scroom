@@ -1,7 +1,7 @@
 <map id="PresentationBaseSimple" name="PresentationBaseSimple">
-<area shape="rect" id="node1" title=" " alt="" coords="78,1447,259,1553"/>
-<area shape="rect" id="node2" href="$classPresentationBase.html" title=" " alt="" coords="96,1247,241,1397"/>
-<area shape="rect" id="node3" href="$classPresentationInterface.html" title=" " alt="" coords="87,1047,250,1197"/>
+<area shape="rect" id="node1" title=" " alt="" coords="78,1461,259,1568"/>
+<area shape="rect" id="node2" href="$classPresentationBase.html" title=" " alt="" coords="96,1261,241,1412"/>
+<area shape="rect" id="node3" href="$classPresentationInterface.html" title=" " alt="" coords="87,1047,250,1212"/>
 <area shape="rect" id="node4" href="$classViewable.html" title=" " alt="" coords="54,854,137,946"/>
 <area shape="rect" id="node5" href="$classInterface.html" title=" " alt="" coords="28,589,144,740"/>
 <area shape="rect" id="node6" href="$classScroom_1_1Utils_1_1Observable.html" title=" " alt="" coords="167,803,333,997"/>

@@ -1,5 +1,10 @@
 var NAVTREEINDEX2 =
 {
+"classFreezable.html#a20df0a6c13d95fe5028c999d2954e4cc":[2,0,40,6],
+"classFreezable.html#a2ad0ae99f7ab7bdf64ae8c745c692105":[2,0,40,16],
+"classFreezable.html#a3844d5b812c04148ced1ff84bd068282":[2,0,40,8],
+"classFreezable.html#a49f2e02263d58a44ba5456b8d509bf85":[2,0,40,5],
+"classFreezable.html#a4cf0db2285653d5c21b97bcd6a73926e":[2,0,40,10],
 "classFreezable.html#a4df627a9ffc2d52d4c15dc846c006ae1":[2,0,40,3],
 "classFreezable.html#a5ce3259c932d8d2a5cf4cbae89de1ab8":[2,0,40,14],
 "classFreezable.html#a6410fa6c522e2cbf5132a95c5ccf666d":[2,0,40,15],
@@ -237,17 +242,12 @@ var NAVTREEINDEX2 =
 "classOperationsColormapped.html#a2618c2fdccb2457de6866ad6507bd994":[2,0,72,1],
 "classOperationsColormapped.html#ad28f529ff07160827c9f9b40d6a6a272":[2,0,72,0],
 "classOperationsColormapped.html#aea7260f788d6a42d86f5bda4ebe793ed":[2,0,72,4],
-"classPipette.html":[2,0,73],
-"classPipette.html#a0cfa52e2c954e0b02a50166bf9950f90":[2,0,73,0],
-"classPipette.html#a4889b0d68ebe699eef590609c66c94ec":[2,0,73,4],
-"classPipette.html#a4d680cdd2ba8c71e5294400799c7248b":[2,0,73,3],
-"classPipette.html#a575ca1a1f36e9cb7029461964b3c460b":[2,0,73,2],
-"classPipette.html#a917df908eb6f66cfee5e46ce9b786b07":[2,0,73,5],
-"classPipette.html#a95fcccb9ce30c8a42011d2a445f4a29a":[2,0,73,6],
-"classPipette.html#ae5195e52e89159e96a620c2522003f13":[2,0,73,1],
-"classPipetteCommonOperationsCMYK.html":[2,0,74],
-"classPipetteCommonOperationsCMYK.html#a3fdc4e0f0a9f0a47e2e6522aa710f331":[2,0,74,3],
-"classPipetteCommonOperationsCMYK.html#a6fceda38e8fb49e2ea9038c9c44380a0":[2,0,74,0],
-"classPipetteCommonOperationsCMYK.html#a7cbc1f263cbfd217852f892716eb4f42":[2,0,74,1],
-"classPipetteCommonOperationsCMYK.html#a8d1f4d3f571c58e5933510a4ac3d6f83":[2,0,74,2]
+"classPipette.html":[2,0,74],
+"classPipette.html#a0cfa52e2c954e0b02a50166bf9950f90":[2,0,74,0],
+"classPipette.html#a4889b0d68ebe699eef590609c66c94ec":[2,0,74,4],
+"classPipette.html#a4d680cdd2ba8c71e5294400799c7248b":[2,0,74,3],
+"classPipette.html#a575ca1a1f36e9cb7029461964b3c460b":[2,0,74,2],
+"classPipette.html#a917df908eb6f66cfee5e46ce9b786b07":[2,0,74,5],
+"classPipette.html#a95fcccb9ce30c8a42011d2a445f4a29a":[2,0,74,6],
+"classPipette.html#ae5195e52e89159e96a620c2522003f13":[2,0,74,1]
 };

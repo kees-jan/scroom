@@ -1,14 +1,15 @@
 <map id="DummyPresentation" name="DummyPresentation">
-<area shape="rect" id="node1" title=" " alt="" coords="435,1247,597,1412"/>
-<area shape="rect" id="node2" href="$classPresentationInterface.html" title=" " alt="" coords="363,1047,525,1197"/>
-<area shape="rect" id="node3" href="$classViewable.html" title=" " alt="" coords="403,854,485,946"/>
-<area shape="rect" id="node4" href="$classInterface.html" title=" " alt="" coords="431,589,547,740"/>
-<area shape="rect" id="node12" href="$classPipetteViewInterface.html" title=" " alt="" coords="510,861,669,939"/>
-<area shape="rect" id="node5" href="$classScroom_1_1Utils_1_1Observable.html" title=" " alt="" coords="211,803,378,997"/>
-<area shape="rect" id="node6" href="$classScroom_1_1Bookkeeping_1_1Map.html" title=" " alt="" coords="229,604,403,725"/>
-<area shape="rect" id="node7" href="$classScroom_1_1Bookkeeping_1_1MapBase.html" title=" " alt="" coords="243,360,459,540"/>
-<area shape="rect" id="node8" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="504,147,653,297"/>
-<area shape="rect" id="node9" title=" " alt="" coords="502,5,655,97"/>
+<area shape="rect" id="node1" title=" " alt="" coords="453,1275,635,1440"/>
+<area shape="rect" id="node2" href="$classPresentationInterface.html" title=" " alt="" coords="331,1047,493,1212"/>
+<area shape="rect" id="node3" href="$classViewable.html" title=" " alt="" coords="371,854,453,946"/>
+<area shape="rect" id="node4" href="$classInterface.html" title=" " alt="" coords="398,589,514,740"/>
+<area shape="rect" id="node12" href="$classPipetteViewInterface.html" title=" " alt="" coords="478,861,637,939"/>
+<area shape="rect" id="node5" href="$classScroom_1_1Utils_1_1Observable.html" title=" " alt="" coords="179,803,346,997"/>
+<area shape="rect" id="node6" href="$classScroom_1_1Bookkeeping_1_1Map.html" title=" " alt="" coords="194,604,369,725"/>
+<area shape="rect" id="node7" href="$classScroom_1_1Bookkeeping_1_1MapBase.html" title=" " alt="" coords="241,360,457,540"/>
+<area shape="rect" id="node8" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="471,147,620,297"/>
+<area shape="rect" id="node9" title=" " alt="" coords="469,5,622,97"/>
 <area shape="rect" id="node10" title=" " alt="" coords="285,183,435,261"/>
 <area shape="rect" id="node11" href="$structScroom_1_1Bookkeeping_1_1Detail_1_1MapType.html" title=" " alt="" coords="5,169,261,275"/>
+<area shape="rect" id="node13" title=" " alt="" coords="581,1091,781,1168"/>
 </map>

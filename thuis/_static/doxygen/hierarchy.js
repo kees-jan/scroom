@@ -229,7 +229,9 @@ var hierarchy =
         [ "Tiff", "classTiff.html", null ]
       ] ],
       [ "Scroom::Utils::Context", "classScroom_1_1Utils_1_1Context.html", [
-        [ "Scroom::Utils::RecursiveContext", "classScroom_1_1Utils_1_1RecursiveContext.html", null ],
+        [ "Scroom::Utils::RecursiveContext", "classScroom_1_1Utils_1_1RecursiveContext.html", [
+          [ "Scroom::Utils::ParentContext", "classScroom_1_1Utils_1_1ParentContext.html", null ]
+        ] ],
         [ "Scroom::Utils::SingleContext", "classScroom_1_1Utils_1_1SingleContext.html", null ]
       ] ],
       [ "Scroom::Utils::ProgressStateInterface", "classScroom_1_1Utils_1_1ProgressStateInterface.html", [
@@ -361,6 +363,7 @@ var hierarchy =
     [ "Scroom::Utils::on_scope_exit< F >", "classScroom_1_1Utils_1_1on__scope__exit.html", null ],
     [ "Scroom::Utils::optional_cleanup< F >", "classScroom_1_1Utils_1_1optional__cleanup.html", null ],
     [ "Scroom::MemoryBlocks::Page", "classScroom_1_1MemoryBlocks_1_1Page.html", null ],
+    [ "ParentContextFixture", "structParentContextFixture.html", null ],
     [ "PluginInformation", "structPluginInformation.html", null ],
     [ "SizeDeterminer::PresentationData", "classSizeDeterminer_1_1PresentationData.html", null ],
     [ "ThreadPool::PrivateData", "classThreadPool_1_1PrivateData.html", null ],
@@ -369,7 +372,6 @@ var hierarchy =
     [ "Scroom::Detail::ThreadPool::QueueImpl", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html", null ],
     [ "QueueJumper", "classQueueJumper.html", null ],
     [ "Scroom::Detail::ThreadPool::QueueLock", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueLock.html", null ],
-    [ "RecursiveContextFixture", "structRecursiveContextFixture.html", null ],
     [ "Scroom::Utils::Detail::Registration< T >", "classScroom_1_1Utils_1_1Detail_1_1Registration.html", null ],
     [ "Ruler", "classRuler.html", null ],
     [ "RulerCalculations", "classRulerCalculations.html", null ],

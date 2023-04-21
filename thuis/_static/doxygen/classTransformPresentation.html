@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Scroom
-   &#160;<span id="projectnumber">0.14-13-g68bbccdb</span>
+   &#160;<span id="projectnumber">0.14-18-g25bd7344</span>
    </div>
   </td>
  </tr>
@@ -103,7 +103,7 @@ Inheritance diagram for TransformPresentation:</div>
 <area shape="rect" title=" " alt="" coords="351,1241,539,1480"/>
 <area shape="rect" href="classPresentationBaseSimple.html" title=" " alt="" coords="136,1087,317,1193"/>
 <area shape="rect" href="classPresentationBase.html" title=" " alt="" coords="93,888,238,1039"/>
-<area shape="rect" href="classPresentationInterface.html" title=" " alt="" coords="84,638,247,789"/>
+<area shape="rect" href="classPresentationInterface.html" title=" " alt="" coords="84,631,247,796"/>
 <area shape="rect" href="classViewable.html" title=" " alt="" coords="5,395,88,487"/>
 <area shape="rect" href="classInterface.html" title=" " alt="" coords="342,145,458,296"/>
 <area shape="rect" href="classColormappable.html" title=" " alt="" coords="354,587,601,840"/>
@@ -122,7 +122,7 @@ Collaboration diagram for TransformPresentation:</div>
 <area shape="rect" title=" " alt="" coords="447,1852,635,2032"/>
 <area shape="rect" href="classPresentationBaseSimple.html" title=" " alt="" coords="812,1683,993,1789"/>
 <area shape="rect" href="classPresentationBase.html" title=" " alt="" coords="810,1341,955,1491"/>
-<area shape="rect" href="classPresentationInterface.html" title=" " alt="" coords="668,1061,831,1212"/>
+<area shape="rect" href="classPresentationInterface.html" title=" " alt="" coords="668,1054,831,1219"/>
 <area shape="rect" title=" " alt="" coords="655,1567,871,1659"/>
 <area shape="rect" href="classViewable.html" title=" " alt="" coords="529,854,612,946"/>
 <area shape="rect" href="classInterface.html" title=" " alt="" coords="391,589,507,740"/>
@@ -217,6 +217,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a30829d965c1917a27fe95501a6e094df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a840aef2c9255e4da089567f73d8a6c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTransformPresentation.html#a9a840aef2c9255e4da089567f73d8a6c">showMetadata</a> (GtkWindow *parent) override</td></tr>
 <tr class="separator:a9a840aef2c9255e4da089567f73d8a6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44c201d6cc210f06a61be9f1afe3e984"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Scroom::Utils::Context::ConstPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTransformPresentation.html#a44c201d6cc210f06a61be9f1afe3e984">getContext</a> () const override</td></tr>
+<tr class="separator:a44c201d6cc210f06a61be9f1afe3e984"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classScroom_1_1Utils_1_1Observable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classScroom_1_1Utils_1_1Observable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classScroom_1_1Utils_1_1Observable.html">Scroom::Utils::Observable&lt; T &gt;</a></td></tr>
 <tr class="memitem:a0985c831266bda7104445a9f0babee03 inherit pub_methods_classScroom_1_1Utils_1_1Observable"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScroom_1_1Utils_1_1Observable.html#a0985c831266bda7104445a9f0babee03">Observable</a> ()</td></tr>
 <tr class="separator:a0985c831266bda7104445a9f0babee03 inherit pub_methods_classScroom_1_1Utils_1_1Observable"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -535,6 +537,34 @@ Here is the caller graph for this function:</div>
 </map>
 </div>
 
+</div>
+</div>
+<a id="a44c201d6cc210f06a61be9f1afe3e984"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44c201d6cc210f06a61be9f1afe3e984">&#9670;&nbsp;</a></span>getContext()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Scroom::Utils::Context::ConstPtr</a> TransformPresentation::getContext </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="classPresentationInterface.html#a246215775d5c465dd62e5607943a111c">PresentationInterface</a>.</p>
+<div class="fragment"><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee">presentation</a>-&gt;getContext(); }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a1d508b386f74549c2fff13c04f5b970e"></a>
@@ -1167,7 +1197,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="classTransformPresentation.html#aa8a233e2cf3d2b78088f64321ec0cc6e">close()</a>, <a class="el" href="classTransformPresentation.html#a0bb3a42de4a22b82be66bffff34c4e7d">create()</a>, <a class="el" href="classTransformPresentation.html#a8f343d98a4f1247e0a18f338e2fa74ad">getPixelAverages()</a>, <a class="el" href="classTransformPresentation.html#a8202e9c8f864e64bf5071a1297401d05">getProperty()</a>, <a class="el" href="classTransformPresentation.html#ae8896ce9e1b7bc669f6c4febc8823dd1">getRect()</a>, <a class="el" href="classTransformPresentation.html#a40750146eb0946054dd322371dfdf6da">getTitle()</a>, <a class="el" href="classTransformPresentation.html#a5638f266baa20a20901f9ae3225a2944">isPropertyDefined()</a>, <a class="el" href="classTransformPresentation.html#a8aac4359f5f251bf4c89882857d1b0f9">open()</a>, and <a class="el" href="classTransformPresentation.html#aae93c031e922657598b8a3047e699267">redraw()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classTransformPresentation.html#aa8a233e2cf3d2b78088f64321ec0cc6e">close()</a>, <a class="el" href="classTransformPresentation.html#a0bb3a42de4a22b82be66bffff34c4e7d">create()</a>, <a class="el" href="classTransformPresentation.html#a44c201d6cc210f06a61be9f1afe3e984">getContext()</a>, <a class="el" href="classTransformPresentation.html#a8f343d98a4f1247e0a18f338e2fa74ad">getPixelAverages()</a>, <a class="el" href="classTransformPresentation.html#a8202e9c8f864e64bf5071a1297401d05">getProperty()</a>, <a class="el" href="classTransformPresentation.html#ae8896ce9e1b7bc669f6c4febc8823dd1">getRect()</a>, <a class="el" href="classTransformPresentation.html#a40750146eb0946054dd322371dfdf6da">getTitle()</a>, <a class="el" href="classTransformPresentation.html#a5638f266baa20a20901f9ae3225a2944">isPropertyDefined()</a>, <a class="el" href="classTransformPresentation.html#a8aac4359f5f251bf4c89882857d1b0f9">open()</a>, and <a class="el" href="classTransformPresentation.html#aae93c031e922657598b8a3047e699267">redraw()</a>.</p>
 
 </div>
 </div>
@@ -1263,7 +1293,7 @@ Here is the call graph for this function:</div>
 <div class="ttc" id="aclassPresentationBase_html_a81cfe78e3adf5a1fecc307e2284578fc"><div class="ttname"><a href="classPresentationBase.html#a81cfe78e3adf5a1fecc307e2284578fc">PresentationBase::close</a></div><div class="ttdeci">void close(ViewInterface::WeakPtr vi) override</div><div class="ttdef"><b>Definition:</b> presentationinterface.cc:23</div></div>
 <div class="ttc" id="acairo-helpers_8hh_html_ac7a152a4cc864e9c67acbc6686a9d3a4"><div class="ttname"><a href="cairo-helpers_8hh.html#ac7a152a4cc864e9c67acbc6686a9d3a4">pixelSizeFromZoom</a></div><div class="ttdeci">double pixelSizeFromZoom(int zoom)</div><div class="ttdef"><b>Definition:</b> cairo-helpers.cc:112</div></div>
 <div class="ttc" id="aclassTransformPresentation_html_ad383e05a9aa2cbd83a077bd83ced7abd"><div class="ttname"><a href="classTransformPresentation.html#ad383e05a9aa2cbd83a077bd83ced7abd">TransformPresentation::colormappable</a></div><div class="ttdeci">Colormappable::Ptr colormappable</div><div class="ttdef"><b>Definition:</b> transformpresentation.hh:88</div></div>
-<div class="ttc" id="aclassDetail_1_1ViewData_html_a12f82ade396e0a166996c9c7bd9b9a83"><div class="ttname"><a href="classDetail_1_1ViewData.html#a12f82ade396e0a166996c9c7bd9b9a83">Detail::ViewData::create</a></div><div class="ttdeci">static ViewData::Ptr create(const ViewInterface::WeakPtr &amp;parent)</div><div class="ttdef"><b>Definition:</b> transformpresentation.cc:176</div></div>
+<div class="ttc" id="aclassDetail_1_1ViewData_html_a12f82ade396e0a166996c9c7bd9b9a83"><div class="ttname"><a href="classDetail_1_1ViewData.html#a12f82ade396e0a166996c9c7bd9b9a83">Detail::ViewData::create</a></div><div class="ttdeci">static ViewData::Ptr create(const ViewInterface::WeakPtr &amp;parent)</div><div class="ttdef"><b>Definition:</b> transformpresentation.cc:177</div></div>
 <div class="ttc" id="aclassTransformPresentation_html_a25d8a9a14f9732ce239aae3b788a0f1f"><div class="ttname"><a href="classTransformPresentation.html#a25d8a9a14f9732ce239aae3b788a0f1f">TransformPresentation::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; TransformPresentation &gt; Ptr</div><div class="ttdef"><b>Definition:</b> transformpresentation.hh:83</div></div>
 <div class="ttc" id="aclassTransformPresentation_html_afe7cc32972b9a7ee3326fb1ce7ec8d0d"><div class="ttname"><a href="classTransformPresentation.html#afe7cc32972b9a7ee3326fb1ce7ec8d0d">TransformPresentation::TransformPresentation</a></div><div class="ttdeci">TransformPresentation(PresentationInterface::Ptr const &amp;presentation, TransformationData::Ptr transformationData)</div><div class="ttdef"><b>Definition:</b> transformpresentation.cc:42</div></div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1Point_html_a8f69c38e2593833b1901ef73e935d820"><div class="ttname"><a href="classScroom_1_1Utils_1_1Point.html#a8f69c38e2593833b1901ef73e935d820">Scroom::Utils::Point::y</a></div><div class="ttdeci">value_type y</div><div class="ttdef"><b>Definition:</b> point.hh:112</div></div>

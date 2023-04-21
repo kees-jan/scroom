@@ -9,6 +9,7 @@ var namespaceScroom_1_1Utils =
     [ "Observable", "classScroom_1_1Utils_1_1Observable.html", "classScroom_1_1Utils_1_1Observable" ],
     [ "on_scope_exit", "classScroom_1_1Utils_1_1on__scope__exit.html", "classScroom_1_1Utils_1_1on__scope__exit" ],
     [ "optional_cleanup", "classScroom_1_1Utils_1_1optional__cleanup.html", "classScroom_1_1Utils_1_1optional__cleanup" ],
+    [ "ParentContext", "classScroom_1_1Utils_1_1ParentContext.html", "classScroom_1_1Utils_1_1ParentContext" ],
     [ "Point", "classScroom_1_1Utils_1_1Point.html", "classScroom_1_1Utils_1_1Point" ],
     [ "ProgressInterfaceBroadcaster", "classScroom_1_1Utils_1_1ProgressInterfaceBroadcaster.html", "classScroom_1_1Utils_1_1ProgressInterfaceBroadcaster" ],
     [ "ProgressInterfaceFromProgressStateInterface", "classScroom_1_1Utils_1_1ProgressInterfaceFromProgressStateInterface.html", "classScroom_1_1Utils_1_1ProgressInterfaceFromProgressStateInterface" ],

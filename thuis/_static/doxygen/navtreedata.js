@@ -73,19 +73,19 @@ var NAVTREEINDEX =
 [
 "BoostTestTargetsDynamic_8h.html",
 "classColor.html#a3f482a964b709fc87adfcff9adfa2c35",
-"classFreezable.html#a4df627a9ffc2d52d4c15dc846c006ae1",
-"classPipetteCommonOperationsRGB.html",
-"classRulerCalculations.html#a4157b201d3bd2dafa693a3065b66e8ec",
-"classScroom_1_1MemoryBlobs_1_1PageProvider.html#a165710ceb377679e7e681efd32341526",
-"classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer_1_1ChildData.html#a4483488f88566ef7cce7a8c0827a32ed",
-"classThreadPool.html#a1dbb23beee5a7a9133ee2e4cf5d6ac07",
-"classTransparentOverlay.html#a209bad4d38024b77eee10b75d71e6a76",
-"classanonymous__namespace_02determine-size-test_8cc_03_1_1PresentationInterfaceStub.html#a938caa365061d89464e6669695e11a19",
-"dir_ba88159d6d86abe3ddf1c85416fbcc19.html",
-"index.html",
-"pipette-tests_8cc.html#ab05b97cd69085931fd3b3bb7331b5269",
-"showmetadata_8hh.html#a0e30bfa9bfb8d9471c0b6b7a9445b81a",
-"transparentoverlayviewinfo_8cc.html#a706649399a1cf1938cfbfed014fd3917"
+"classFreezable.html#a20df0a6c13d95fe5028c999d2954e4cc",
+"classPipetteCommonOperationsCMYK.html",
+"classRuler.html#ae6817ada8b5be672f2239dfd190d65d7",
+"classScroom_1_1MemoryBlobs_1_1Blob.html#aea1474e9fb8b35484a056d57244b0c68",
+"classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer_1_1Child.html#a04906beb12a296654a1189dcfa5d7474",
+"classTestRecursiveObservable.html#af453fcb8ad172886a1dbec7465726349",
+"classTransformationData.html#a859957abfa310a6a9f07946a458f5749",
+"classWaitForAsyncOp.html#af828640570dd3bf9ea2452718685b090",
+"dir_95c42426c1c5462eace02f34978c69b5.html",
+"hash__map_8h.html",
+"opentiledbitmapinterface_8hh.html#abcdc6501ad25d0c72901a0ef53452506",
+"semaphore_8hh.html",
+"transparentoverlay_8cc.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

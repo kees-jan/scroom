@@ -2507,6 +2507,7 @@
     <name>presentationinterface.hh</name>
     <path>/home/runner/work/scroom/scroom/libs/plugin-interfaces/inc/scroom/</path>
     <filename>presentationinterface_8hh.html</filename>
+    <includes id="context_8hh" name="context.hh" local="no" imported="no">scroom/context.hh</includes>
     <includes id="interface_8hh" name="interface.hh" local="no" imported="no">scroom/interface.hh</includes>
     <includes id="observable_8hh" name="observable.hh" local="no" imported="no">scroom/observable.hh</includes>
     <includes id="rectangle_8hh" name="rectangle.hh" local="no" imported="no">scroom/rectangle.hh</includes>
@@ -5096,6 +5097,7 @@
     <class kind="class">Scroom::Utils::Context</class>
     <class kind="class">Scroom::Utils::Context::name_exists</class>
     <class kind="class">Scroom::Utils::Context::name_not_found</class>
+    <class kind="class">Scroom::Utils::RecursiveContext</class>
     <namespace>Scroom</namespace>
     <namespace>Scroom::Utils</namespace>
     <member kind="function">
@@ -5842,6 +5844,10 @@
     <path>/home/runner/work/scroom/scroom/libs/util/src/</path>
     <filename>context_8cc.html</filename>
     <includes id="context_8hh" name="context.hh" local="no" imported="no">scroom/context.hh</includes>
+    <includes id="parent-context_8hh" name="parent-context.hh" local="yes" imported="no">parent-context.hh</includes>
+    <includes id="single-context_8hh" name="single-context.hh" local="yes" imported="no">single-context.hh</includes>
+    <namespace>Scroom</namespace>
+    <namespace>Scroom::Utils</namespace>
   </compound>
   <compound kind="file">
     <name>counter.cc</name>
@@ -5903,6 +5909,24 @@
     <namespace>Scroom::GtkTestHelpers</namespace>
   </compound>
   <compound kind="file">
+    <name>parent-context.cc</name>
+    <path>/home/runner/work/scroom/scroom/libs/util/src/</path>
+    <filename>parent-context_8cc.html</filename>
+    <includes id="parent-context_8hh" name="parent-context.hh" local="yes" imported="no">parent-context.hh</includes>
+    <includes id="assertions_8hh" name="assertions.hh" local="no" imported="no">scroom/assertions.hh</includes>
+    <namespace>Scroom</namespace>
+    <namespace>Scroom::Utils</namespace>
+  </compound>
+  <compound kind="file">
+    <name>parent-context.hh</name>
+    <path>/home/runner/work/scroom/scroom/libs/util/src/</path>
+    <filename>parent-context_8hh.html</filename>
+    <includes id="context_8hh" name="context.hh" local="no" imported="no">scroom/context.hh</includes>
+    <class kind="class">Scroom::Utils::ParentContext</class>
+    <namespace>Scroom</namespace>
+    <namespace>Scroom::Utils</namespace>
+  </compound>
+  <compound kind="file">
     <name>progressinterfacehelpers.cc</name>
     <path>/home/runner/work/scroom/scroom/libs/util/src/</path>
     <filename>progressinterfacehelpers_8cc.html</filename>
@@ -5911,24 +5935,6 @@
     <namespace>Scroom</namespace>
     <namespace>Scroom::Utils</namespace>
     <namespace>Scroom::Utils::Detail</namespace>
-  </compound>
-  <compound kind="file">
-    <name>recursive-context.cc</name>
-    <path>/home/runner/work/scroom/scroom/libs/util/src/</path>
-    <filename>recursive-context_8cc.html</filename>
-    <includes id="recursive-context_8hh" name="recursive-context.hh" local="yes" imported="no">recursive-context.hh</includes>
-    <includes id="assertions_8hh" name="assertions.hh" local="no" imported="no">scroom/assertions.hh</includes>
-    <namespace>Scroom</namespace>
-    <namespace>Scroom::Utils</namespace>
-  </compound>
-  <compound kind="file">
-    <name>recursive-context.hh</name>
-    <path>/home/runner/work/scroom/scroom/libs/util/src/</path>
-    <filename>recursive-context_8hh.html</filename>
-    <includes id="context_8hh" name="context.hh" local="no" imported="no">scroom/context.hh</includes>
-    <class kind="class">Scroom::Utils::RecursiveContext</class>
-    <namespace>Scroom</namespace>
-    <namespace>Scroom::Utils</namespace>
   </compound>
   <compound kind="file">
     <name>single-context.cc</name>
@@ -6117,6 +6123,28 @@
       <anchorfile>observable-tests_8cc.html</anchorfile>
       <anchor>a05022d5a2a9347aa8b6133f0d267b9e5</anchor>
       <arglist>(deleting_observable_deletes_observer)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>parent-context-tests.cc</name>
+    <path>/home/runner/work/scroom/scroom/libs/util/test/</path>
+    <filename>parent-context-tests_8cc.html</filename>
+    <includes id="parent-context_8hh" name="parent-context.hh" local="yes" imported="no">parent-context.hh</includes>
+    <includes id="single-context_8hh" name="single-context.hh" local="yes" imported="no">single-context.hh</includes>
+    <class kind="struct">ParentContextFixture</class>
+    <member kind="function">
+      <type></type>
+      <name>BOOST_AUTO_TEST_CASE</name>
+      <anchorfile>parent-context-tests_8cc.html</anchorfile>
+      <anchor>aad3c64ffc2d64a1fbbcb99d55efaf9e4</anchor>
+      <arglist>(store_and_retrieve)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>BOOST_AUTO_TEST_CASE</name>
+      <anchorfile>parent-context-tests_8cc.html</anchorfile>
+      <anchor>ac1240a5b3ac6405abf343adaa4b501e4</anchor>
+      <arglist>(no_duplicate_stores)</arglist>
     </member>
   </compound>
   <compound kind="file">
@@ -6407,35 +6435,6 @@
     </member>
   </compound>
   <compound kind="file">
-    <name>recursive-context-tests.cc</name>
-    <path>/home/runner/work/scroom/scroom/libs/util/test/</path>
-    <filename>recursive-context-tests_8cc.html</filename>
-    <includes id="recursive-context_8hh" name="recursive-context.hh" local="yes" imported="no">recursive-context.hh</includes>
-    <includes id="single-context_8hh" name="single-context.hh" local="yes" imported="no">single-context.hh</includes>
-    <class kind="struct">RecursiveContextFixture</class>
-    <member kind="function">
-      <type></type>
-      <name>BOOST_AUTO_TEST_CASE</name>
-      <anchorfile>recursive-context-tests_8cc.html</anchorfile>
-      <anchor>a82dc92747551ae93f2ac0f4c13944286</anchor>
-      <arglist>(has_a_name)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>BOOST_AUTO_TEST_CASE</name>
-      <anchorfile>recursive-context-tests_8cc.html</anchorfile>
-      <anchor>aad3c64ffc2d64a1fbbcb99d55efaf9e4</anchor>
-      <arglist>(store_and_retrieve)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>BOOST_AUTO_TEST_CASE</name>
-      <anchorfile>recursive-context-tests_8cc.html</anchorfile>
-      <anchor>ac1240a5b3ac6405abf343adaa4b501e4</anchor>
-      <arglist>(no_duplicate_stores)</arglist>
-    </member>
-  </compound>
-  <compound kind="file">
     <name>scope-exit-tests.cpp</name>
     <path>/home/runner/work/scroom/scroom/libs/util/test/</path>
     <filename>scope-exit-tests_8cpp.html</filename>
@@ -6475,13 +6474,6 @@
     <filename>single-context-tests_8cc.html</filename>
     <includes id="single-context_8hh" name="single-context.hh" local="yes" imported="no">single-context.hh</includes>
     <class kind="struct">SingleContextFixture</class>
-    <member kind="function">
-      <type></type>
-      <name>BOOST_AUTO_TEST_CASE</name>
-      <anchorfile>single-context-tests_8cc.html</anchorfile>
-      <anchor>a82dc92747551ae93f2ac0f4c13944286</anchor>
-      <arglist>(has_a_name)</arglist>
-    </member>
     <member kind="function">
       <type></type>
       <name>BOOST_AUTO_TEST_CASE</name>
@@ -9320,13 +9312,6 @@
       <arglist></arglist>
     </member>
     <member kind="function" virtualness="pure">
-      <type>virtual std::string</type>
-      <name>name</name>
-      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
-      <anchor>a56b0ae9011591169af614faef53a34fd</anchor>
-      <arglist>() const =0</arglist>
-    </member>
-    <member kind="function" virtualness="pure">
       <type>virtual void</type>
       <name>set</name>
       <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
@@ -9346,6 +9331,13 @@
       <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
       <anchor>a0e31a6cc6dab924ff33e148d545c9565</anchor>
       <arglist>(std::string name) const =0</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static Ptr</type>
+      <name>Create</name>
+      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
+      <anchor>aa29c706854ef4dcbff88d3430ec45e24</anchor>
+      <arglist>()</arglist>
     </member>
   </compound>
   <compound kind="struct">
@@ -9944,6 +9936,13 @@
     <base>PresentationInterface</base>
     <base>PipetteViewInterface</base>
     <member kind="function">
+      <type></type>
+      <name>DummyPresentation</name>
+      <anchorfile>classDummyPresentation.html</anchorfile>
+      <anchor>ad309c379cbf46c4a3d8ea77f4d17eff8</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
       <type>Scroom::Utils::Rectangle&lt; double &gt;</type>
       <name>getRect</name>
       <anchorfile>classDummyPresentation.html</anchorfile>
@@ -9999,12 +9998,26 @@
       <anchor>a0852a1facf0d3a5a496772b46eec3b92</anchor>
       <arglist>(Scroom::Utils::Rectangle&lt; double &gt;) override</arglist>
     </member>
+    <member kind="function">
+      <type>Scroom::Utils::Context::ConstPtr</type>
+      <name>getContext</name>
+      <anchorfile>classDummyPresentation.html</anchorfile>
+      <anchor>a317cb2c71dfe5520c212c5b6562ccc25</anchor>
+      <arglist>() const override</arglist>
+    </member>
     <member kind="function" static="yes">
       <type>static PresentationInterface::Ptr</type>
       <name>create</name>
       <anchorfile>classDummyPresentation.html</anchorfile>
       <anchor>ab367b2e1bf10f4711da69c013b04330c</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>Scroom::Utils::Context::Ptr</type>
+      <name>context</name>
+      <anchorfile>classDummyPresentation.html</anchorfile>
+      <anchor>a05524e72e15723ae41c7dfa7be392523</anchor>
+      <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -10306,18 +10319,25 @@
       <arglist>(ExamplePresentation &amp;&amp;)=delete</arglist>
     </member>
     <member kind="function">
-      <type>ExamplePresentation</type>
+      <type>ExamplePresentation &amp;</type>
       <name>operator=</name>
       <anchorfile>classExamplePresentation.html</anchorfile>
-      <anchor>a105ebf2026f59dc65c6dcea20aed20ce</anchor>
+      <anchor>a739598c947a1069300aab90338291a5b</anchor>
       <arglist>(const ExamplePresentation &amp;)=delete</arglist>
     </member>
     <member kind="function">
-      <type>ExamplePresentation</type>
+      <type>ExamplePresentation &amp;</type>
       <name>operator=</name>
       <anchorfile>classExamplePresentation.html</anchorfile>
-      <anchor>a818c924dbbdac6646330105f1c1e9742</anchor>
+      <anchor>a3466ac9cb1d29f6f4b7ebd2d1ba39f4c</anchor>
       <arglist>(ExamplePresentation &amp;&amp;)=delete</arglist>
+    </member>
+    <member kind="function">
+      <type>Scroom::Utils::Context::ConstPtr</type>
+      <name>getContext</name>
+      <anchorfile>classExamplePresentation.html</anchorfile>
+      <anchor>ac01042776127b49bf0c95aac85c4bb5b</anchor>
+      <arglist>() const override</arglist>
     </member>
     <member kind="function">
       <type>Scroom::Utils::Rectangle&lt; double &gt;</type>
@@ -10374,6 +10394,13 @@
       <anchorfile>classExamplePresentation.html</anchorfile>
       <anchor>a814f6109cfd268b115c24ae46fa6b2b6</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>Scroom::Utils::Context::Ptr</type>
+      <name>context</name>
+      <anchorfile>classExamplePresentation.html</anchorfile>
+      <anchor>a4a2ecf21419687340f97bea31f220209</anchor>
+      <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
       <type>cairo_pattern_t *</type>
@@ -13676,6 +13703,92 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>Scroom::Utils::ParentContext</name>
+    <filename>classScroom_1_1Utils_1_1ParentContext.html</filename>
+    <base>Scroom::Utils::RecursiveContext</base>
+    <member kind="function">
+      <type></type>
+      <name>ParentContext</name>
+      <anchorfile>classScroom_1_1Utils_1_1ParentContext.html</anchorfile>
+      <anchor>af1fa449f3013f7efad14e902127b438a</anchor>
+      <arglist>(Context::Ptr first_)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>set</name>
+      <anchorfile>classScroom_1_1Utils_1_1ParentContext.html</anchorfile>
+      <anchor>a37f47e5cf3cd533b8d9cd9fcfb61865f</anchor>
+      <arglist>(std::string name, std::any value) override</arglist>
+    </member>
+    <member kind="function">
+      <type>const std::any &amp;</type>
+      <name>get</name>
+      <anchorfile>classScroom_1_1Utils_1_1ParentContext.html</anchorfile>
+      <anchor>a704badc07cc7a4c7f9047bdc8a18863f</anchor>
+      <arglist>(std::string name) const override</arglist>
+    </member>
+    <member kind="function">
+      <type>std::any</type>
+      <name>try_get</name>
+      <anchorfile>classScroom_1_1Utils_1_1ParentContext.html</anchorfile>
+      <anchor>a2ed9c7f2fed04a9baf867f45b05e5a12</anchor>
+      <arglist>(std::string name) const override</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>add</name>
+      <anchorfile>classScroom_1_1Utils_1_1ParentContext.html</anchorfile>
+      <anchor>a070fbf62063443d6a41824c0f805d65e</anchor>
+      <arglist>(const Context::ConstPtr &amp;child) override</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>Context::Ptr</type>
+      <name>first</name>
+      <anchorfile>classScroom_1_1Utils_1_1ParentContext.html</anchorfile>
+      <anchor>a6489d3be553251180a4938b32b762fa8</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>std::vector&lt; Context::ConstPtr &gt;</type>
+      <name>contexts</name>
+      <anchorfile>classScroom_1_1Utils_1_1ParentContext.html</anchorfile>
+      <anchor>ab51ac55e0eb265249cb38de9a3e6e220</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>ParentContextFixture</name>
+    <filename>structParentContextFixture.html</filename>
+    <member kind="function">
+      <type></type>
+      <name>ParentContextFixture</name>
+      <anchorfile>structParentContextFixture.html</anchorfile>
+      <anchor>a3276737a43797122109d41067fc9479a</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="variable">
+      <type>Context::Ptr</type>
+      <name>first</name>
+      <anchorfile>structParentContextFixture.html</anchorfile>
+      <anchor>af61280aa4ae1fd8d2379314ac6d159c7</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>Context::Ptr</type>
+      <name>second</name>
+      <anchorfile>structParentContextFixture.html</anchorfile>
+      <anchor>a3c3e40df4d1c8c125d44c09f5e32c9fa</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>ParentContext</type>
+      <name>context</name>
+      <anchorfile>structParentContextFixture.html</anchorfile>
+      <anchor>ac8bc62107b526e43bade40ff86eb8dfd</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>Pipette</name>
     <filename>classPipette.html</filename>
     <base>PluginInformationInterface</base>
@@ -14984,6 +15097,13 @@
       <anchor>a29ca008cd80d5a7ea8683dafe8ba4114</anchor>
       <arglist>() const</arglist>
     </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual Scroom::Utils::Context::ConstPtr</type>
+      <name>getContext</name>
+      <anchorfile>classPresentationInterface.html</anchorfile>
+      <anchor>a246215775d5c465dd62e5607943a111c</anchor>
+      <arglist>() const =0</arglist>
+    </member>
   </compound>
   <compound kind="class">
     <name>anonymous_namespace{determine-size-test.cc}::PresentationInterfaceStub</name>
@@ -14995,6 +15115,13 @@
       <anchorfile>classanonymous__namespace_02determine-size-test_8cc_03_1_1PresentationInterfaceStub.html</anchorfile>
       <anchor>aaf5b95fb759a671489a58b7658ae0760</anchor>
       <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>Scroom::Utils::Context::ConstPtr</type>
+      <name>getContext</name>
+      <anchorfile>classanonymous__namespace_02determine-size-test_8cc_03_1_1PresentationInterfaceStub.html</anchorfile>
+      <anchor>a5cf6841e2e99f0b4edabf163d1c6b3a3</anchor>
+      <arglist>() const override</arglist>
     </member>
     <member kind="function">
       <type>Scroom::Utils::Rectangle&lt; double &gt;</type>
@@ -15066,6 +15193,13 @@
       <anchor>a07d0e676dbf84be7a9385d8014ece4b3</anchor>
       <arglist></arglist>
     </member>
+    <member kind="variable" protection="private">
+      <type>Scroom::Utils::Context::ConstPtr</type>
+      <name>context</name>
+      <anchorfile>classanonymous__namespace_02determine-size-test_8cc_03_1_1PresentationInterfaceStub.html</anchorfile>
+      <anchor>aa0be3960e60fb3124b147e16ecbd080b</anchor>
+      <arglist></arglist>
+    </member>
   </compound>
   <compound kind="class">
     <name>PresentationMock</name>
@@ -15126,6 +15260,13 @@
       <anchorfile>classPresentationMock.html</anchorfile>
       <anchor>a8c7a23ff5fb6b9f3e9cfdeb47270844f</anchor>
       <arglist>(getTitle, std::string())</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>MOCK_CONST_METHOD0</name>
+      <anchorfile>classPresentationMock.html</anchorfile>
+      <anchor>abc9e24792a6d04f3d584a0e086c06291</anchor>
+      <arglist>(getContext, Scroom::Utils::Context::ConstPtr())</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
@@ -17816,107 +17957,26 @@
     <name>Scroom::Utils::RecursiveContext</name>
     <filename>classScroom_1_1Utils_1_1RecursiveContext.html</filename>
     <base>Scroom::Utils::Context</base>
-    <member kind="function">
-      <type></type>
-      <name>RecursiveContext</name>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; RecursiveContext &gt;</type>
+      <name>Ptr</name>
       <anchorfile>classScroom_1_1Utils_1_1RecursiveContext.html</anchorfile>
-      <anchor>af55c42bc1e3f5753fa21a0f30f1e602b</anchor>
-      <arglist>(std::string name, Context::Ptr first_)</arglist>
+      <anchor>a5bd5c08ff83d22559ca707dcda4b7680</anchor>
+      <arglist></arglist>
     </member>
-    <member kind="function">
-      <type>std::string</type>
-      <name>name</name>
-      <anchorfile>classScroom_1_1Utils_1_1RecursiveContext.html</anchorfile>
-      <anchor>ae56d31774ebe4d977e4f4d322e3c7fb9</anchor>
-      <arglist>() const override</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>set</name>
-      <anchorfile>classScroom_1_1Utils_1_1RecursiveContext.html</anchorfile>
-      <anchor>a6919ac8ac2009f45d05cf7bae3dc913c</anchor>
-      <arglist>(std::string name, std::any value) override</arglist>
-    </member>
-    <member kind="function">
-      <type>const std::any &amp;</type>
-      <name>get</name>
-      <anchorfile>classScroom_1_1Utils_1_1RecursiveContext.html</anchorfile>
-      <anchor>aaff2f3987c5360a13207eecf0e6d3c20</anchor>
-      <arglist>(std::string name) const override</arglist>
-    </member>
-    <member kind="function">
-      <type>std::any</type>
-      <name>try_get</name>
-      <anchorfile>classScroom_1_1Utils_1_1RecursiveContext.html</anchorfile>
-      <anchor>ad47898f61ad06834a7a4661389df60f7</anchor>
-      <arglist>(std::string name) const override</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
+    <member kind="function" virtualness="pure">
+      <type>virtual void</type>
       <name>add</name>
       <anchorfile>classScroom_1_1Utils_1_1RecursiveContext.html</anchorfile>
-      <anchor>aed1399966b33c2df6a14dfcadcd2d52a</anchor>
-      <arglist>(Context::ConstPtr child)</arglist>
+      <anchor>a46b11d903c078af2628b6bd657499e63</anchor>
+      <arglist>(const Context::ConstPtr &amp;child)=0</arglist>
     </member>
-    <member kind="variable" protection="private">
-      <type>std::string</type>
-      <name>contextName</name>
+    <member kind="function" static="yes">
+      <type>static Ptr</type>
+      <name>Create</name>
       <anchorfile>classScroom_1_1Utils_1_1RecursiveContext.html</anchorfile>
-      <anchor>abfe6276d3859712194625cd1fa487d6f</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>Context::Ptr</type>
-      <name>first</name>
-      <anchorfile>classScroom_1_1Utils_1_1RecursiveContext.html</anchorfile>
-      <anchor>aa31368f673a304f294b0a46b0cd1585d</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>std::vector&lt; Context::ConstPtr &gt;</type>
-      <name>contexts</name>
-      <anchorfile>classScroom_1_1Utils_1_1RecursiveContext.html</anchorfile>
-      <anchor>a9c8db0f8d3a29af7d5eba2e8771aeb4e</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="struct">
-    <name>RecursiveContextFixture</name>
-    <filename>structRecursiveContextFixture.html</filename>
-    <member kind="function">
-      <type></type>
-      <name>RecursiveContextFixture</name>
-      <anchorfile>structRecursiveContextFixture.html</anchorfile>
-      <anchor>a2772bb4f9b04a11ae677a5a48b8cc4f2</anchor>
+      <anchor>a6f1a58e960de3e4ae5962c3d64b706f0</anchor>
       <arglist>()</arglist>
-    </member>
-    <member kind="variable">
-      <type>const std::string</type>
-      <name>contextName</name>
-      <anchorfile>structRecursiveContextFixture.html</anchorfile>
-      <anchor>ad0e814f40aee73160a5310d5831beecf</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>Context::Ptr</type>
-      <name>first</name>
-      <anchorfile>structRecursiveContextFixture.html</anchorfile>
-      <anchor>a73e247574529f3e64c47c818dea3dcb7</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>Context::Ptr</type>
-      <name>second</name>
-      <anchorfile>structRecursiveContextFixture.html</anchorfile>
-      <anchor>ac6b704ce30e1e8494922d9570b70a65c</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>RecursiveContext</type>
-      <name>context</name>
-      <anchorfile>structRecursiveContextFixture.html</anchorfile>
-      <anchor>ac495e59e9156f4ff8bec9b84e6741710</anchor>
-      <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -19505,20 +19565,6 @@
     <filename>classScroom_1_1Utils_1_1SingleContext.html</filename>
     <base>Scroom::Utils::Context</base>
     <member kind="function">
-      <type></type>
-      <name>SingleContext</name>
-      <anchorfile>classScroom_1_1Utils_1_1SingleContext.html</anchorfile>
-      <anchor>ae77955a5beb1eb1d361374960910d431</anchor>
-      <arglist>(std::string name)</arglist>
-    </member>
-    <member kind="function">
-      <type>std::string</type>
-      <name>name</name>
-      <anchorfile>classScroom_1_1Utils_1_1SingleContext.html</anchorfile>
-      <anchor>a904646a2323116757ddcc435da117151</anchor>
-      <arglist>() const override</arglist>
-    </member>
-    <member kind="function">
       <type>void</type>
       <name>set</name>
       <anchorfile>classScroom_1_1Utils_1_1SingleContext.html</anchorfile>
@@ -19540,13 +19586,6 @@
       <arglist>(std::string name) const override</arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>std::string</type>
-      <name>contextName</name>
-      <anchorfile>classScroom_1_1Utils_1_1SingleContext.html</anchorfile>
-      <anchor>a211a3319c29d7a4b3a4ea8a47290b76b</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
       <type>std::map&lt; std::string, std::any &gt;</type>
       <name>content</name>
       <anchorfile>classScroom_1_1Utils_1_1SingleContext.html</anchorfile>
@@ -19557,20 +19596,6 @@
   <compound kind="struct">
     <name>SingleContextFixture</name>
     <filename>structSingleContextFixture.html</filename>
-    <member kind="function">
-      <type></type>
-      <name>SingleContextFixture</name>
-      <anchorfile>structSingleContextFixture.html</anchorfile>
-      <anchor>acf614dea10c8e47060611e9c730df54a</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="variable">
-      <type>const std::string</type>
-      <name>contextName</name>
-      <anchorfile>structSingleContextFixture.html</anchorfile>
-      <anchor>a58632b59cef98b0cf5e397289dfe6622</anchor>
-      <arglist></arglist>
-    </member>
     <member kind="variable">
       <type>SingleContext</type>
       <name>context</name>
@@ -21140,6 +21165,13 @@
       <anchor>a77a67abc662be4945f512ebf34ab7518</anchor>
       <arglist>(Scroom::Utils::Stuff s)</arglist>
     </member>
+    <member kind="function">
+      <type>Scroom::Utils::Context::ConstPtr</type>
+      <name>getContext</name>
+      <anchorfile>classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html</anchorfile>
+      <anchor>a4abffd48485acbf085e2cb945b70f25b</anchor>
+      <arglist>() const override</arglist>
+    </member>
     <member kind="function" static="yes">
       <type>static TiledBitmapPresentation::Ptr</type>
       <name>create</name>
@@ -21236,6 +21268,13 @@
       <name>pipetteLayerOperation</name>
       <anchorfile>classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html</anchorfile>
       <anchor>ad36fe40b3793407726915be296cf3af8</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>Scroom::Utils::Context::Ptr</type>
+      <name>context</name>
+      <anchorfile>classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html</anchorfile>
+      <anchor>a35cf0dc881c55a893888a139039f6108</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
@@ -22243,6 +22282,13 @@
       <anchor>a9a840aef2c9255e4da089567f73d8a6c</anchor>
       <arglist>(GtkWindow *parent) override</arglist>
     </member>
+    <member kind="function">
+      <type>Scroom::Utils::Context::ConstPtr</type>
+      <name>getContext</name>
+      <anchorfile>classTransformPresentation.html</anchorfile>
+      <anchor>a44c201d6cc210f06a61be9f1afe3e984</anchor>
+      <arglist>() const override</arglist>
+    </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
       <name>create</name>
@@ -22424,6 +22470,13 @@
       <anchor>a49dc1a6a20e1af36c4b4f1b01e6f9d41</anchor>
       <arglist>(PresentationInterface::Ptr const &amp;p) override</arglist>
     </member>
+    <member kind="function">
+      <type>Scroom::Utils::Context::ConstPtr</type>
+      <name>getContext</name>
+      <anchorfile>classTransparentOverlayPresentation.html</anchorfile>
+      <anchor>a3a37fca573b2485fd450d99d738bd0f2</anchor>
+      <arglist>() const override</arglist>
+    </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
       <name>create</name>
@@ -22471,6 +22524,13 @@
       <name>viewData</name>
       <anchorfile>classTransparentOverlayPresentation.html</anchorfile>
       <anchor>ae63daebb37c7a16d847fad3c16482d50</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>Scroom::Utils::Context::Ptr</type>
+      <name>context</name>
+      <anchorfile>classTransparentOverlayPresentation.html</anchorfile>
+      <anchor>a6051382d6415e1859efd781ee66b6563</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -25380,6 +25440,7 @@
     <class kind="class">Scroom::Utils::Observable</class>
     <class kind="class">Scroom::Utils::on_scope_exit</class>
     <class kind="class">Scroom::Utils::optional_cleanup</class>
+    <class kind="class">Scroom::Utils::ParentContext</class>
     <class kind="class">Scroom::Utils::Point</class>
     <class kind="class">Scroom::Utils::ProgressInterfaceBroadcaster</class>
     <class kind="class">Scroom::Utils::ProgressInterfaceFromProgressStateInterface</class>

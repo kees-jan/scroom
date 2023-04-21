@@ -1,11 +1,5 @@
 <map id="Scroom::Utils::RecursiveContext" name="Scroom::Utils::RecursiveContext">
-<area shape="rect" id="node1" title=" " alt="" coords="160,557,341,723"/>
-<area shape="rect" id="node2" href="$classScroom_1_1Utils_1_1Context.html" title=" " alt="" coords="5,219,173,340"/>
-<area shape="rect" id="node4" title=" " alt="" coords="75,410,275,487"/>
-<area shape="rect" id="node3" href="$classInterface.html" title=" " alt="" coords="31,5,147,156"/>
-<area shape="rect" id="node5" title="STL class." alt="" coords="298,410,385,487"/>
-<area shape="rect" id="node6" title="STL class." alt="" coords="260,233,399,325"/>
-<area shape="rect" id="node7" title=" " alt="" coords="416,403,573,495"/>
-<area shape="rect" id="node8" title="STL class." alt="" coords="423,241,580,318"/>
-<area shape="rect" id="node9" title=" " alt="" coords="482,42,521,119"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,373,187,480"/>
+<area shape="rect" id="node2" href="$classScroom_1_1Utils_1_1Context.html" title=" " alt="" coords="12,204,180,325"/>
+<area shape="rect" id="node3" href="$classInterface.html" title=" " alt="" coords="38,5,154,156"/>
 </map>

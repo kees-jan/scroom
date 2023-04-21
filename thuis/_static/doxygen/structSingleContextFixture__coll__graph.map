@@ -1,9 +1,9 @@
 <map id="SingleContextFixture" name="SingleContextFixture">
-<area shape="rect" id="node1" title=" " alt="" coords="381,743,563,820"/>
-<area shape="rect" id="node2" href="$classScroom_1_1Utils_1_1SingleContext.html" title=" " alt="" coords="208,544,416,680"/>
+<area shape="rect" id="node1" title=" " alt="" coords="103,713,262,791"/>
+<area shape="rect" id="node2" href="$classScroom_1_1Utils_1_1SingleContext.html" title=" " alt="" coords="79,544,287,651"/>
 <area shape="rect" id="node3" href="$classScroom_1_1Utils_1_1Context.html" title=" " alt="" coords="5,360,173,481"/>
 <area shape="rect" id="node4" href="$classInterface.html" title=" " alt="" coords="31,147,147,297"/>
-<area shape="rect" id="node5" title=" " alt="" coords="343,375,505,467"/>
-<area shape="rect" id="node6" title="STL class." alt="" coords="381,183,467,261"/>
-<area shape="rect" id="node7" title="STL class." alt="" coords="355,5,493,97"/>
+<area shape="rect" id="node5" title=" " alt="" coords="197,375,360,467"/>
+<area shape="rect" id="node6" title="STL class." alt="" coords="235,183,322,261"/>
+<area shape="rect" id="node7" title="STL class." alt="" coords="209,5,348,97"/>
 </map>

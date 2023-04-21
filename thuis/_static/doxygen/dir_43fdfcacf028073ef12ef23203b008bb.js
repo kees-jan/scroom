@@ -6,6 +6,7 @@ var dir_43fdfcacf028073ef12ef23203b008bb =
     [ "gtkhelper-tests.cc", "gtkhelper-tests_8cc.html", "gtkhelper-tests_8cc" ],
     [ "main.cc", "libs_2util_2test_2main_8cc.html", "libs_2util_2test_2main_8cc" ],
     [ "observable-tests.cc", "observable-tests_8cc.html", "observable-tests_8cc" ],
+    [ "parent-context-tests.cc", "parent-context-tests_8cc.html", "parent-context-tests_8cc" ],
     [ "progressinterfacebroadcaster-tests.cc", "progressinterfacebroadcaster-tests_8cc.html", "progressinterfacebroadcaster-tests_8cc" ],
     [ "progressinterfaceconversion-tests.cc", "progressinterfaceconversion-tests_8cc.html", "progressinterfaceconversion-tests_8cc" ],
     [ "progressinterfacemultiplexer-tests.cc", "progressinterfacemultiplexer-tests_8cc.html", "progressinterfacemultiplexer-tests_8cc" ],
@@ -14,7 +15,6 @@ var dir_43fdfcacf028073ef12ef23203b008bb =
       [ "ProgressStateInterfaceStub", "classProgressStateInterfaceStub.html", "classProgressStateInterfaceStub" ]
     ] ],
     [ "rectangletests.cc", "rectangletests_8cc.html", "rectangletests_8cc" ],
-    [ "recursive-context-tests.cc", "recursive-context-tests_8cc.html", "recursive-context-tests_8cc" ],
     [ "scope-exit-tests.cpp", "scope-exit-tests_8cpp.html", "scope-exit-tests_8cpp" ],
     [ "single-context-tests.cc", "single-context-tests_8cc.html", "single-context-tests_8cc" ]
 ];

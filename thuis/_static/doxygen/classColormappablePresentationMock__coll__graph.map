@@ -1,7 +1,7 @@
 <map id="ColormappablePresentationMock" name="ColormappablePresentationMock">
 <area shape="rect" id="node1" title=" " alt="" coords="85,1684,324,1761"/>
-<area shape="rect" id="node2" href="$classPresentationMock.html" title=" " alt="" coords="218,1455,378,1635"/>
-<area shape="rect" id="node3" href="$classPresentationInterface.html" title=" " alt="" coords="235,1105,398,1256"/>
+<area shape="rect" id="node2" href="$classPresentationMock.html" title=" " alt="" coords="218,1469,378,1635"/>
+<area shape="rect" id="node3" href="$classPresentationInterface.html" title=" " alt="" coords="235,1105,398,1271"/>
 <area shape="rect" id="node4" href="$classViewable.html" title=" " alt="" coords="275,883,358,975"/>
 <area shape="rect" id="node5" href="$classInterface.html" title=" " alt="" coords="228,589,344,740"/>
 <area shape="rect" id="node14" href="$classColormappable.html" title=" " alt="" coords="5,803,252,1056"/>
@@ -12,5 +12,5 @@
 <area shape="rect" id="node10" title=" " alt="" coords="216,5,369,97"/>
 <area shape="rect" id="node11" title=" " alt="" coords="391,183,541,261"/>
 <area shape="rect" id="node12" href="$structScroom_1_1Bookkeeping_1_1Detail_1_1MapType.html" title=" " alt="" coords="565,169,821,275"/>
-<area shape="rect" id="node13" href="$classColormappableMock.html" title=" " alt="" coords="85,1280,241,1431"/>
+<area shape="rect" id="node13" href="$classColormappableMock.html" title=" " alt="" coords="85,1295,241,1445"/>
 </map>

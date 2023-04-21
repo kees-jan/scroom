@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Scroom
-   &#160;<span id="projectnumber">0.14-13-g68bbccdb</span>
+   &#160;<span id="projectnumber">0.14-18-g25bd7344</span>
    </div>
   </td>
  </tr>
@@ -185,9 +185,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;      : <a class="code" href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html#a7fd965cfdb8b2ab9cd659c925adf8429">openTiledBitmapInterface</a>(std::move(openTiledBitmapInterface_))</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    {</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;      : <a class="code" href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html#a7fd965cfdb8b2ab9cd659c925adf8429">openTiledBitmapInterface</a>(std::move(openTiledBitmapInterface_))</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    {</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -215,9 +215,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    {</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html#a43c61cae9c0f9cb6f11954e631acf2cb">Ptr</a>(<span class="keyword">new</span> <a class="code" href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html#ad28ed7bbdbc7671672e6a0c3a71e566c">OpenTiledBitmapAsPresentation</a>(std::move(openTiledBitmapInterface_)));</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    {</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html#a43c61cae9c0f9cb6f11954e631acf2cb">Ptr</a>(<span class="keyword">new</span> <a class="code" href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html#ad28ed7bbdbc7671672e6a0c3a71e566c">OpenTiledBitmapAsPresentation</a>(std::move(openTiledBitmapInterface_)));</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -245,7 +245,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classOpenPresentationInterface.html#a5ff9689dbf1828a0b4b9b5ce44ab5cc4">OpenPresentationInterface</a>.</p>
-<div class="fragment"><div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html#a7fd965cfdb8b2ab9cd659c925adf8429">openTiledBitmapInterface</a>-&gt;getFilters(); }</div>
+<div class="fragment"><div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html#a7fd965cfdb8b2ab9cd659c925adf8429">openTiledBitmapInterface</a>-&gt;getFilters(); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -274,48 +274,48 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classOpenPresentationInterface.html#a872e39b66965a75b19e0a62f1f1268b1">OpenPresentationInterface</a>.</p>
-<div class="fragment"><div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;  {</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    <span class="keyword">auto</span>                 t           = <a class="code" href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html#a7fd965cfdb8b2ab9cd659c925adf8429">openTiledBitmapInterface</a>-&gt;open(fileName);</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    <a class="code" href="structScroom_1_1TiledBitmap_1_1BitmapMetaData.html">BitmapMetaData</a>       bmd         = std::move(std::get&lt;0&gt;(t));</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    <a class="code" href="classLayer.html#a4f07f871f3d1e7b153553a4ffa435656">Layer::Ptr</a> <span class="keyword">const</span>     bottomLayer = std::move(std::get&lt;1&gt;(t));</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    <a class="code" href="namespaceScroom_1_1TiledBitmap.html#abcdc6501ad25d0c72901a0ef53452506">ReloadFunction</a> <span class="keyword">const</span> <a class="code" href="loader_8cc.html#a6caa967df34751dfd7c06745d1df4a1e">load</a>        = std::move(std::get&lt;2&gt;(t));</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160; </div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    <span class="keyword">auto</span>                          lsr            = <a class="code" href="namespaceScroom_1_1TiledBitmap.html#a22a1bb4f862ef52ed08042515ffca9da">LayerSpecForBitmap</a>(bmd);</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    <a class="code" href="tiledbitmapinterface_8hh.html#a00279dcefa7f911f75fec39af1d48e87">LayerSpec</a>                     layerSpec      = std::move(std::get&lt;0&gt;(lsr));</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <a class="code" href="classColormapHelperBase.html#a8087304640c2f7b25f843c8612e7aa17">ColormapHelperBase::Ptr</a> <span class="keyword">const</span> colormapHelper = std::move(std::get&lt;1&gt;(lsr));</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160; </div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <a class="code" href="classPresentationInterface.html#a86fed59a32467f97507308d9b67bfa5c">PresentationInterface::Ptr</a> result;</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    <span class="keywordflow">if</span>(bottomLayer &amp;&amp; !layerSpec.empty())</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    {</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;      <span class="keyword">auto</span>                              tiledBitmap           = <a class="code" href="classTiledBitmap.html#aac0fd55f26ab59b362f0c64d27a9e139">TiledBitmap::create</a>(bottomLayer, layerSpec);</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;      <a class="code" href="classPipetteLayerOperations.html#ac7104a41229264a0427f09343390e465">PipetteLayerOperations::Ptr</a> <span class="keyword">const</span> pipetteLayerOperation = std::dynamic_pointer_cast&lt;PipetteLayerOperations&gt;(layerSpec[0]);</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;      std::map&lt;std::string, std::string&gt; properties;</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;      <span class="keywordflow">if</span>(bmd.<a class="code" href="structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#a305fcbe326cb847c10dce31d453ea73a">colormapHelper</a>)</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;      {</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;        properties = bmd.<a class="code" href="structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#a305fcbe326cb847c10dce31d453ea73a">colormapHelper</a>-&gt;getProperties();</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;      }</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;      <span class="keywordflow">if</span>(pipetteLayerOperation)</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;      {</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        properties[<a class="code" href="pipetteviewinterface_8hh.html#a8024b3c17cdcd8b401d96bf7ef32bf2a">PIPETTE_PROPERTY_NAME</a>] = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;      }</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;      properties[<a class="code" href="showmetadatainterface_8hh.html#afa30d0559ca625b8a3ef5e5fd42ab65b">METADATA_PROPERTY_NAME</a>] = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160; </div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;      <span class="keyword">auto</span> tiledBitmapPresentation =</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;        <a class="code" href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a20c38e97f488672179ad159a2b3221af">TiledBitmapPresentation::create</a>(fileName, bmd, tiledBitmap, properties, colormapHelper, pipetteLayerOperation);</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;      tiledBitmapPresentation-&gt;add(<a class="code" href="loader_8cc.html#a6caa967df34751dfd7c06745d1df4a1e">load</a>(tiledBitmap-&gt;progressInterface()));</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160; </div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;      <span class="keywordflow">if</span>(bmd.<a class="code" href="structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#acf26ff10a150a0f048bc38621a150a92">aspectRatio</a>)</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;      {</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        result = <a class="code" href="classTransformPresentation.html#a0bb3a42de4a22b82be66bffff34c4e7d">TransformPresentation::create</a>(tiledBitmapPresentation, <a class="code" href="classTransformationData.html#a859957abfa310a6a9f07946a458f5749">TransformationData::create</a>(*bmd.<a class="code" href="structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#acf26ff10a150a0f048bc38621a150a92">aspectRatio</a>));</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;      }</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;      <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;      {</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;        result = tiledBitmapPresentation;</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;      }</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    }</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;  }</div>
+<div class="fragment"><div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;  {</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="keyword">auto</span>                 t           = <a class="code" href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html#a7fd965cfdb8b2ab9cd659c925adf8429">openTiledBitmapInterface</a>-&gt;open(fileName);</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <a class="code" href="structScroom_1_1TiledBitmap_1_1BitmapMetaData.html">BitmapMetaData</a>       bmd         = std::move(std::get&lt;0&gt;(t));</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    <a class="code" href="classLayer.html#a4f07f871f3d1e7b153553a4ffa435656">Layer::Ptr</a> <span class="keyword">const</span>     bottomLayer = std::move(std::get&lt;1&gt;(t));</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <a class="code" href="namespaceScroom_1_1TiledBitmap.html#abcdc6501ad25d0c72901a0ef53452506">ReloadFunction</a> <span class="keyword">const</span> <a class="code" href="loader_8cc.html#a6caa967df34751dfd7c06745d1df4a1e">load</a>        = std::move(std::get&lt;2&gt;(t));</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160; </div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    <span class="keyword">auto</span>                          lsr            = <a class="code" href="namespaceScroom_1_1TiledBitmap.html#a22a1bb4f862ef52ed08042515ffca9da">LayerSpecForBitmap</a>(bmd);</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    <a class="code" href="tiledbitmapinterface_8hh.html#a00279dcefa7f911f75fec39af1d48e87">LayerSpec</a>                     layerSpec      = std::move(std::get&lt;0&gt;(lsr));</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <a class="code" href="classColormapHelperBase.html#a8087304640c2f7b25f843c8612e7aa17">ColormapHelperBase::Ptr</a> <span class="keyword">const</span> colormapHelper = std::move(std::get&lt;1&gt;(lsr));</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160; </div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    <a class="code" href="classPresentationInterface.html#a86fed59a32467f97507308d9b67bfa5c">PresentationInterface::Ptr</a> result;</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    <span class="keywordflow">if</span>(bottomLayer &amp;&amp; !layerSpec.empty())</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    {</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;      <span class="keyword">auto</span>                              tiledBitmap           = <a class="code" href="classTiledBitmap.html#aac0fd55f26ab59b362f0c64d27a9e139">TiledBitmap::create</a>(bottomLayer, layerSpec);</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;      <a class="code" href="classPipetteLayerOperations.html#ac7104a41229264a0427f09343390e465">PipetteLayerOperations::Ptr</a> <span class="keyword">const</span> pipetteLayerOperation = std::dynamic_pointer_cast&lt;PipetteLayerOperations&gt;(layerSpec[0]);</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160; </div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;      std::map&lt;std::string, std::string&gt; properties;</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;      <span class="keywordflow">if</span>(bmd.<a class="code" href="structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#a305fcbe326cb847c10dce31d453ea73a">colormapHelper</a>)</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;      {</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        properties = bmd.<a class="code" href="structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#a305fcbe326cb847c10dce31d453ea73a">colormapHelper</a>-&gt;getProperties();</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;      }</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;      <span class="keywordflow">if</span>(pipetteLayerOperation)</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;      {</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;        properties[<a class="code" href="pipetteviewinterface_8hh.html#a8024b3c17cdcd8b401d96bf7ef32bf2a">PIPETTE_PROPERTY_NAME</a>] = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;      }</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;      properties[<a class="code" href="showmetadatainterface_8hh.html#afa30d0559ca625b8a3ef5e5fd42ab65b">METADATA_PROPERTY_NAME</a>] = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160; </div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;      <span class="keyword">auto</span> tiledBitmapPresentation =</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;        <a class="code" href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a20c38e97f488672179ad159a2b3221af">TiledBitmapPresentation::create</a>(fileName, bmd, tiledBitmap, properties, colormapHelper, pipetteLayerOperation);</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;      tiledBitmapPresentation-&gt;add(<a class="code" href="loader_8cc.html#a6caa967df34751dfd7c06745d1df4a1e">load</a>(tiledBitmap-&gt;progressInterface()));</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160; </div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;      <span class="keywordflow">if</span>(bmd.<a class="code" href="structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#acf26ff10a150a0f048bc38621a150a92">aspectRatio</a>)</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;      {</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        result = <a class="code" href="classTransformPresentation.html#a0bb3a42de4a22b82be66bffff34c4e7d">TransformPresentation::create</a>(tiledBitmapPresentation, <a class="code" href="classTransformationData.html#a859957abfa310a6a9f07946a458f5749">TransformationData::create</a>(*bmd.<a class="code" href="structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#acf26ff10a150a0f048bc38621a150a92">aspectRatio</a>));</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;      }</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;      <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;      {</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;        result = tiledBitmapPresentation;</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;      }</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    }</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;  }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -409,21 +409,21 @@ Here is the call graph for this function:</div>
 <div class="ttc" id="anamespaceScroom_1_1TiledBitmap_html_a22a1bb4f862ef52ed08042515ffca9da"><div class="ttname"><a href="namespaceScroom_1_1TiledBitmap.html#a22a1bb4f862ef52ed08042515ffca9da">Scroom::TiledBitmap::LayerSpecForBitmap</a></div><div class="ttdeci">LayerSpecResult LayerSpecForBitmap(const BitmapMetaData &amp;bitmapMetaData)</div><div class="ttdef"><b>Definition:</b> layerspecforbitmap.cc:228</div></div>
 <div class="ttc" id="aclassColormapHelperBase_html_a8087304640c2f7b25f843c8612e7aa17"><div class="ttname"><a href="classColormapHelperBase.html#a8087304640c2f7b25f843c8612e7aa17">ColormapHelperBase::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; ColormapHelperBase &gt; Ptr</div><div class="ttdef"><b>Definition:</b> colormappable.hh:158</div></div>
 <div class="ttc" id="atiledbitmapinterface_8hh_html_a00279dcefa7f911f75fec39af1d48e87"><div class="ttname"><a href="tiledbitmapinterface_8hh.html#a00279dcefa7f911f75fec39af1d48e87">LayerSpec</a></div><div class="ttdeci">std::vector&lt; LayerOperations::Ptr &gt; LayerSpec</div><div class="ttdef"><b>Definition:</b> tiledbitmapinterface.hh:181</div></div>
-<div class="ttc" id="aclassPresentationInterface_html_a86fed59a32467f97507308d9b67bfa5c"><div class="ttname"><a href="classPresentationInterface.html#a86fed59a32467f97507308d9b67bfa5c">PresentationInterface::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; PresentationInterface &gt; Ptr</div><div class="ttdef"><b>Definition:</b> presentationinterface.hh:72</div></div>
+<div class="ttc" id="aclassPresentationInterface_html_a86fed59a32467f97507308d9b67bfa5c"><div class="ttname"><a href="classPresentationInterface.html#a86fed59a32467f97507308d9b67bfa5c">PresentationInterface::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; PresentationInterface &gt; Ptr</div><div class="ttdef"><b>Definition:</b> presentationinterface.hh:73</div></div>
 <div class="ttc" id="astructScroom_1_1TiledBitmap_1_1BitmapMetaData_html"><div class="ttname"><a href="structScroom_1_1TiledBitmap_1_1BitmapMetaData.html">Scroom::TiledBitmap::BitmapMetaData</a></div><div class="ttdef"><b>Definition:</b> opentiledbitmapinterface.hh:41</div></div>
 <div class="ttc" id="apipetteviewinterface_8hh_html_a8024b3c17cdcd8b401d96bf7ef32bf2a"><div class="ttname"><a href="pipetteviewinterface_8hh.html#a8024b3c17cdcd8b401d96bf7ef32bf2a">PIPETTE_PROPERTY_NAME</a></div><div class="ttdeci">const std::string PIPETTE_PROPERTY_NAME</div><div class="ttdef"><b>Definition:</b> pipetteviewinterface.hh:14</div></div>
-<div class="ttc" id="aclassanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation_html_a43c61cae9c0f9cb6f11954e631acf2cb"><div class="ttname"><a href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html#a43c61cae9c0f9cb6f11954e631acf2cb">anonymous_namespace{tiledbitmappresentation.cc}::OpenTiledBitmapAsPresentation::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; OpenTiledBitmapAsPresentation &gt; Ptr</div><div class="ttdef"><b>Definition:</b> tiledbitmappresentation.cc:354</div></div>
+<div class="ttc" id="aclassanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation_html_a43c61cae9c0f9cb6f11954e631acf2cb"><div class="ttname"><a href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html#a43c61cae9c0f9cb6f11954e631acf2cb">anonymous_namespace{tiledbitmappresentation.cc}::OpenTiledBitmapAsPresentation::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; OpenTiledBitmapAsPresentation &gt; Ptr</div><div class="ttdef"><b>Definition:</b> tiledbitmappresentation.cc:362</div></div>
 <div class="ttc" id="anamespaceScroom_1_1TiledBitmap_html_abcdc6501ad25d0c72901a0ef53452506"><div class="ttname"><a href="namespaceScroom_1_1TiledBitmap.html#abcdc6501ad25d0c72901a0ef53452506">Scroom::TiledBitmap::ReloadFunction</a></div><div class="ttdeci">std::function&lt; Scroom::Utils::Stuff(const ProgressInterface::Ptr &amp;)&gt; ReloadFunction</div><div class="ttdef"><b>Definition:</b> opentiledbitmapinterface.hh:39</div></div>
 <div class="ttc" id="aclassTransformationData_html_a859957abfa310a6a9f07946a458f5749"><div class="ttname"><a href="classTransformationData.html#a859957abfa310a6a9f07946a458f5749">TransformationData::create</a></div><div class="ttdeci">static Ptr create()</div><div class="ttdef"><b>Definition:</b> transformpresentation.cc:28</div></div>
 <div class="ttc" id="astructScroom_1_1TiledBitmap_1_1BitmapMetaData_html_acf26ff10a150a0f048bc38621a150a92"><div class="ttname"><a href="structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#acf26ff10a150a0f048bc38621a150a92">Scroom::TiledBitmap::BitmapMetaData::aspectRatio</a></div><div class="ttdeci">boost::optional&lt; Scroom::Utils::Point&lt; double &gt; &gt; aspectRatio</div><div class="ttdef"><b>Definition:</b> opentiledbitmapinterface.hh:47</div></div>
 <div class="ttc" id="ashowmetadatainterface_8hh_html_afa30d0559ca625b8a3ef5e5fd42ab65b"><div class="ttname"><a href="showmetadatainterface_8hh.html#afa30d0559ca625b8a3ef5e5fd42ab65b">METADATA_PROPERTY_NAME</a></div><div class="ttdeci">const std::string METADATA_PROPERTY_NAME</div><div class="ttdef"><b>Definition:</b> showmetadatainterface.hh:15</div></div>
-<div class="ttc" id="aclassanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation_html_a7fd965cfdb8b2ab9cd659c925adf8429"><div class="ttname"><a href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html#a7fd965cfdb8b2ab9cd659c925adf8429">anonymous_namespace{tiledbitmappresentation.cc}::OpenTiledBitmapAsPresentation::openTiledBitmapInterface</a></div><div class="ttdeci">OpenTiledBitmapInterface::Ptr openTiledBitmapInterface</div><div class="ttdef"><b>Definition:</b> tiledbitmappresentation.cc:357</div></div>
-<div class="ttc" id="aclassanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation_html_ad28ed7bbdbc7671672e6a0c3a71e566c"><div class="ttname"><a href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html#ad28ed7bbdbc7671672e6a0c3a71e566c">anonymous_namespace{tiledbitmappresentation.cc}::OpenTiledBitmapAsPresentation::OpenTiledBitmapAsPresentation</a></div><div class="ttdeci">OpenTiledBitmapAsPresentation(OpenTiledBitmapInterface::Ptr openTiledBitmapInterface_)</div><div class="ttdef"><b>Definition:</b> tiledbitmappresentation.cc:371</div></div>
+<div class="ttc" id="aclassanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation_html_a7fd965cfdb8b2ab9cd659c925adf8429"><div class="ttname"><a href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html#a7fd965cfdb8b2ab9cd659c925adf8429">anonymous_namespace{tiledbitmappresentation.cc}::OpenTiledBitmapAsPresentation::openTiledBitmapInterface</a></div><div class="ttdeci">OpenTiledBitmapInterface::Ptr openTiledBitmapInterface</div><div class="ttdef"><b>Definition:</b> tiledbitmappresentation.cc:365</div></div>
+<div class="ttc" id="aclassanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation_html_ad28ed7bbdbc7671672e6a0c3a71e566c"><div class="ttname"><a href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html#ad28ed7bbdbc7671672e6a0c3a71e566c">anonymous_namespace{tiledbitmappresentation.cc}::OpenTiledBitmapAsPresentation::OpenTiledBitmapAsPresentation</a></div><div class="ttdeci">OpenTiledBitmapAsPresentation(OpenTiledBitmapInterface::Ptr openTiledBitmapInterface_)</div><div class="ttdef"><b>Definition:</b> tiledbitmappresentation.cc:379</div></div>
 <div class="ttc" id="aclassTransformPresentation_html_a0bb3a42de4a22b82be66bffff34c4e7d"><div class="ttname"><a href="classTransformPresentation.html#a0bb3a42de4a22b82be66bffff34c4e7d">TransformPresentation::create</a></div><div class="ttdeci">static Ptr create(PresentationInterface::Ptr const &amp;presentation, TransformationData::Ptr const &amp;transformationData)</div><div class="ttdef"><b>Definition:</b> transformpresentation.cc:51</div></div>
 <div class="ttc" id="aclassPipetteLayerOperations_html_ac7104a41229264a0427f09343390e465"><div class="ttname"><a href="classPipetteLayerOperations.html#ac7104a41229264a0427f09343390e465">PipetteLayerOperations::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; PipetteLayerOperations &gt; Ptr</div><div class="ttdef"><b>Definition:</b> pipettelayeroperations.hh:24</div></div>
 <div class="ttc" id="astructScroom_1_1TiledBitmap_1_1BitmapMetaData_html_a305fcbe326cb847c10dce31d453ea73a"><div class="ttname"><a href="structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#a305fcbe326cb847c10dce31d453ea73a">Scroom::TiledBitmap::BitmapMetaData::colormapHelper</a></div><div class="ttdeci">ColormapHelperBase::Ptr colormapHelper</div><div class="ttdef"><b>Definition:</b> opentiledbitmapinterface.hh:48</div></div>
 <div class="ttc" id="aclassLayer_html_a4f07f871f3d1e7b153553a4ffa435656"><div class="ttname"><a href="classLayer.html#a4f07f871f3d1e7b153553a4ffa435656">Layer::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; Layer &gt; Ptr</div><div class="ttdef"><b>Definition:</b> tiledbitmaplayer.hh:245</div></div>
-<div class="ttc" id="aclassanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation_html_a20c38e97f488672179ad159a2b3221af"><div class="ttname"><a href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a20c38e97f488672179ad159a2b3221af">anonymous_namespace{tiledbitmappresentation.cc}::TiledBitmapPresentation::create</a></div><div class="ttdeci">static TiledBitmapPresentation::Ptr create(std::string name_, BitmapMetaData bmd_, TiledBitmapInterface::Ptr tbi_, std::map&lt; std::string, std::string &gt; properties_, ColormapHelperBase::Ptr colormapHelper_, PipetteLayerOperations::Ptr pipetteLayerOperation_)</div><div class="ttdef"><b>Definition:</b> tiledbitmappresentation.cc:78</div></div>
+<div class="ttc" id="aclassanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation_html_a20c38e97f488672179ad159a2b3221af"><div class="ttname"><a href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a20c38e97f488672179ad159a2b3221af">anonymous_namespace{tiledbitmappresentation.cc}::TiledBitmapPresentation::create</a></div><div class="ttdeci">static TiledBitmapPresentation::Ptr create(std::string name_, BitmapMetaData bmd_, TiledBitmapInterface::Ptr tbi_, std::map&lt; std::string, std::string &gt; properties_, ColormapHelperBase::Ptr colormapHelper_, PipetteLayerOperations::Ptr pipetteLayerOperation_)</div><div class="ttdef"><b>Definition:</b> tiledbitmappresentation.cc:79</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

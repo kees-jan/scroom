@@ -1,6 +1,6 @@
 <map id="ExamplePresentation" name="ExamplePresentation">
-<area shape="rect" id="node1" title=" " alt="" coords="70,1247,267,1412"/>
-<area shape="rect" id="node2" href="$classPresentationInterface.html" title=" " alt="" coords="87,1047,250,1197"/>
+<area shape="rect" id="node1" title=" " alt="" coords="173,1275,370,1440"/>
+<area shape="rect" id="node2" href="$classPresentationInterface.html" title=" " alt="" coords="87,1047,250,1212"/>
 <area shape="rect" id="node3" href="$classViewable.html" title=" " alt="" coords="54,854,137,946"/>
 <area shape="rect" id="node4" href="$classInterface.html" title=" " alt="" coords="28,589,144,740"/>
 <area shape="rect" id="node5" href="$classScroom_1_1Utils_1_1Observable.html" title=" " alt="" coords="167,803,333,997"/>
@@ -10,4 +10,5 @@
 <area shape="rect" id="node9" title=" " alt="" coords="5,5,159,97"/>
 <area shape="rect" id="node10" title=" " alt="" coords="181,183,330,261"/>
 <area shape="rect" id="node11" href="$structScroom_1_1Bookkeeping_1_1Detail_1_1MapType.html" title=" " alt="" coords="354,169,610,275"/>
+<area shape="rect" id="node12" title=" " alt="" coords="274,1091,474,1168"/>
 </map>
