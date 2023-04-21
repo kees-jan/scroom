@@ -16,7 +16,7 @@ var classTransparentOverlayPresentation =
     [ "viewAdded", "classTransparentOverlayPresentation.html#a202b5ad17a9deacf342245ff0d3c3c22", null ],
     [ "viewRemoved", "classTransparentOverlayPresentation.html#a8002c16f49f9a2144264d7bb780b0307", null ],
     [ "children", "classTransparentOverlayPresentation.html#afddaec86f822f73a9a8e7a8167fcf823", null ],
-    [ "context", "classTransparentOverlayPresentation.html#a6051382d6415e1859efd781ee66b6563", null ],
+    [ "context", "classTransparentOverlayPresentation.html#a07c4806fcd930f79d76b7678524647f0", null ],
     [ "sizeDeterminer", "classTransparentOverlayPresentation.html#ace97a40b2d2d8b89cccc648ac66886f4", null ],
     [ "viewData", "classTransparentOverlayPresentation.html#ae63daebb37c7a16d847fad3c16482d50", null ]
 ];

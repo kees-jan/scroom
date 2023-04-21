@@ -22527,10 +22527,10 @@
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>Scroom::Utils::Context::Ptr</type>
+      <type>Scroom::Utils::RecursiveContext::Ptr</type>
       <name>context</name>
       <anchorfile>classTransparentOverlayPresentation.html</anchorfile>
-      <anchor>a6051382d6415e1859efd781ee66b6563</anchor>
+      <anchor>a07c4806fcd930f79d76b7678524647f0</anchor>
       <arglist></arglist>
     </member>
   </compound>
