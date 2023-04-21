@@ -111,13 +111,14 @@ public:
   PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<double> area) override;
 
   // Colormappable
-  void          setColormap(Colormap::Ptr colormap) override;
-  Colormap::Ptr getOriginalColormap() override;
-  int           getNumberOfColors() override;
-  Color         getMonochromeColor() override;
-  void          setMonochromeColor(const Color& c) override;
-  void          setTransparentBackground() override;
-  void          disableTransparentBackground() override;
-  bool          getTransparentBackground() override;
-  void          showMetadata(GtkWindow* parent) override;
+  void                             setColormap(Colormap::Ptr colormap) override;
+  Colormap::Ptr                    getOriginalColormap() override;
+  int                              getNumberOfColors() override;
+  Color                            getMonochromeColor() override;
+  void                             setMonochromeColor(const Color& c) override;
+  void                             setTransparentBackground() override;
+  void                             disableTransparentBackground() override;
+  bool                             getTransparentBackground() override;
+  void                             showMetadata(GtkWindow* parent) override;
+  Scroom::Utils::Context::ConstPtr getContext() const override;
 };

@@ -22,8 +22,15 @@ class DummyPresentation
   : public PresentationInterface
   , public PipetteViewInterface
 {
+private:
+  Scroom::Utils::Context::Ptr context;
+
 public:
   static PresentationInterface::Ptr create() { return PresentationInterface::Ptr(new DummyPresentation()); }
+  DummyPresentation()
+    : context(Scroom::Utils::Context::Create())
+  {
+  }
 
   Scroom::Utils::Rectangle<double> getRect() override { return {0, 0, 100, 100}; }
   void                             redraw(ViewInterface::Ptr const& /*vi*/,
@@ -41,6 +48,7 @@ public:
   {
     return {{"C", 1.0}};
   }
+  Scroom::Utils::Context::ConstPtr getContext() const override { return context; }
 };
 
 class DummyView : public ViewInterface

@@ -14,6 +14,7 @@
 
 #include <cairo.h>
 
+#include <scroom/context.hh>
 #include <scroom/interface.hh>
 #include <scroom/observable.hh>
 #include <scroom/rectangle.hh>
@@ -105,7 +106,8 @@ public:
   /** Return the title of the presentation */
   virtual std::string getTitle() = 0;
 
-  virtual Scroom::Utils::Point<double> getAspectRatio() const { return Scroom::Utils::make_point(1.0, 1.0); }
+  virtual Scroom::Utils::Point<double>     getAspectRatio() const { return Scroom::Utils::make_point(1.0, 1.0); }
+  virtual Scroom::Utils::Context::ConstPtr getContext() const = 0;
 };
 
 class PresentationBase : public PresentationInterface

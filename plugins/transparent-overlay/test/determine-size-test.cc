@@ -61,12 +61,17 @@ namespace
 
   private:
     Scroom::Utils::Rectangle<double> rect;
+    Scroom::Utils::Context::ConstPtr context;
 
   protected:
     explicit PresentationInterfaceStub(Scroom::Utils::Rectangle<double> const& rect_)
       : rect(rect_)
+      , context(Scroom::Utils::Context::Create())
     {
     }
+
+  public:
+    Scroom::Utils::Context::ConstPtr getContext() const override { return context; }
 
   public:
     static Ptr create(Scroom::Utils::Rectangle<double> const& rect) { return Ptr(new PresentationInterfaceStub(rect)); }
