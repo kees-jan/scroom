@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Scroom
-   &#160;<span id="projectnumber">0.14-22-gfe7f5b1b</span>
+   &#160;<span id="projectnumber">0.14-13-g68bbccdb</span>
    </div>
   </td>
  </tr>
@@ -165,24 +165,24 @@ $(document).ready(function(){initNavTree('context_8hh_source.html',''); initResi
 <div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="namespaceScroom_1_1Utils.html#a1f2f759ebe64953b7cc85c9716d0afea">   77</a></span>&#160;  [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="namespaceScroom_1_1Utils.html#a0815b937d5d5e37d4b7895452a5b4604">get_or</a>(<span class="keyword">const</span> <a class="code" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a>&amp; context, Callable default_value)</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    -&gt; std::enable_if_t&lt;std::is_same_v&lt;T, std::remove_reference_t&lt;decltype(default_value())&gt;&gt;, T&gt;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    static_assert(std::is_same_v&lt;T, std::remove_reference_t&lt;decltype(default_value())&gt;&gt;);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">return</span> get_or&lt;T&gt;(context, <span class="keyword">typeid</span>(T).name(), default_value);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  }</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="namespaceScroom_1_1Utils.html#aad66314d2065b5b9ef9d58e2a97238f4">   85</a></span>&#160;  [[nodiscard]] T <a class="code" href="namespaceScroom_1_1Utils.html#a0815b937d5d5e37d4b7895452a5b4604">get_or</a>(<span class="keyword">const</span> <a class="code" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a>&amp; context, std::string name, T default_value)</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">return</span> get_or&lt;T&gt;(context, std::move(name), [default_value] { <span class="keywordflow">return</span> default_value; });</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  }</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="namespaceScroom_1_1Utils.html#a84846154a19182ab43c20f2d79ff54dd">   91</a></span>&#160;  [[nodiscard]] T <a class="code" href="namespaceScroom_1_1Utils.html#a0815b937d5d5e37d4b7895452a5b4604">get_or</a>(<span class="keyword">const</span> <a class="code" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a>&amp; context, T default_value)</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">return</span> get_or&lt;T&gt;(context, <span class="keyword">typeid</span>(T).name(), [default_value] { <span class="keywordflow">return</span> default_value; });</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  }</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe">   97</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe">set</a>(<span class="keyword">const</span> <a class="code" href="classScroom_1_1Utils_1_1Context.html#abc2f687326929a940ae88aed227e14ae">Context::Ptr</a>&amp; context, std::string name, T value)</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">return</span> get_or&lt;T&gt;(context, <span class="keyword">typeid</span>(T).name(), default_value);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="namespaceScroom_1_1Utils.html#aad66314d2065b5b9ef9d58e2a97238f4">   84</a></span>&#160;  [[nodiscard]] T <a class="code" href="namespaceScroom_1_1Utils.html#a0815b937d5d5e37d4b7895452a5b4604">get_or</a>(<span class="keyword">const</span> <a class="code" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a>&amp; context, std::string name, T default_value)</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">return</span> get_or&lt;T&gt;(context, std::move(name), [default_value] { <span class="keywordflow">return</span> default_value; });</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="namespaceScroom_1_1Utils.html#a84846154a19182ab43c20f2d79ff54dd">   90</a></span>&#160;  [[nodiscard]] T <a class="code" href="namespaceScroom_1_1Utils.html#a0815b937d5d5e37d4b7895452a5b4604">get_or</a>(<span class="keyword">const</span> <a class="code" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a>&amp; context, T default_value)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">return</span> get_or&lt;T&gt;(context, <span class="keyword">typeid</span>(T).name(), [default_value] { <span class="keywordflow">return</span> default_value; });</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe">   97</a></span>&#160;    <a class="code" href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe">set</a>(<span class="keyword">const</span> <a class="code" href="classScroom_1_1Utils_1_1Context.html#abc2f687326929a940ae88aed227e14ae">Context::Ptr</a>&amp; context, std::string name, T value) <span class="comment">// NOLINT(performance-unnecessary-value-param) // False positive?</span></div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  {</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    context-&gt;set(std::move(name), value);</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  }</div>
