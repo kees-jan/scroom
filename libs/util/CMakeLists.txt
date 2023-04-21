@@ -2,6 +2,7 @@ add_library(util)
 set(HEADER_FILES
     inc/scroom/assertions.hh
     inc/scroom/bookkeeping.hh
+    inc/scroom/context.hh
     inc/scroom/dont-delete.hh
     inc/scroom/format_stuff.hh
     inc/scroom/gtk-helpers.hh
@@ -21,10 +22,15 @@ set(HEADER_FILES_IMPL inc/scroom/impl/bookkeepingimpl.hh)
 target_sources(
   util
   PRIVATE src/assertions.cc
+          src/context.cc
           src/counter.cc
           src/gtk-helpers.cc
           src/gtk-test-helpers.cc
           src/progressinterfacehelpers.cc
+          src/parent-context.cc
+          src/parent-context.hh
+          src/single-context.cc
+          src/single-context.hh
           ${HEADER_FILES}
           ${HEADER_FILES_IMPL}
 )
@@ -57,6 +63,7 @@ if(ENABLE_BOOST_TEST)
   target_sources(
     util_tests
     PRIVATE test/bookkeeping-tests.cc
+            test/context-tests.cc
             test/counter-tests.cc
             test/gtkhelper-tests.cc
             test/main.cc
@@ -66,9 +73,12 @@ if(ENABLE_BOOST_TEST)
             test/progressinterfacemultiplexer-tests.cc
             test/progressstateinterfacestub.cc
             test/progressstateinterfacestub.hh
-            test/scope-exit-tests.cpp
             test/rectangletests.cc
+            test/parent-context-tests.cc
+            test/scope-exit-tests.cpp
+            test/single-context-tests.cc
   )
+  target_include_directories(util_tests PRIVATE src)
   target_link_libraries(
     util_tests
     PRIVATE boosttesthelper

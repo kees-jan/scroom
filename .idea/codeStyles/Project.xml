@@ -16,6 +16,14 @@
     <clangFormatSettings>
       <option name="ENABLED" value="true" />
     </clangFormatSettings>
+    <files>
+      <extensions>
+        <pair source="cc" header="hh" fileNamingConvention="LISP_CASE" />
+        <pair source="cpp" header="h" fileNamingConvention="NONE" />
+        <pair source="c" header="h" fileNamingConvention="NONE" />
+        <pair source="cu" header="cuh" fileNamingConvention="NONE" />
+      </extensions>
+    </files>
     <codeStyleSettings language="ObjectiveC">
       <indentOptions>
         <option name="INDENT_SIZE" value="2" />
