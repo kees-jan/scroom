@@ -5,8 +5,6 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include <scroom/threadpool.hh>
-
 #include <iostream>
 #include <memory>
 
@@ -16,6 +14,7 @@
 #include <gtest/gtest.h>
 
 #include <scroom/semaphore.hh>
+#include <scroom/threadpool.hh>
 
 #include "helpers.hh"
 

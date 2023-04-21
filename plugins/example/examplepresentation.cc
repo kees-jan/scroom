@@ -14,7 +14,11 @@
 #include <scroom/cairo-helpers.hh>
 
 
-ExamplePresentation::ExamplePresentation() { fillPattern(); }
+ExamplePresentation::ExamplePresentation()
+  : context(Scroom::Utils::Context::create())
+{
+  fillPattern();
+}
 
 ExamplePresentation::~ExamplePresentation() { cairo_pattern_destroy(pattern); }
 
@@ -80,3 +84,4 @@ bool ExamplePresentation::getProperty(const std::string& /*name*/, std::string& 
 bool ExamplePresentation::isPropertyDefined(const std::string& /*name*/) { return false; }
 
 std::string ExamplePresentation::getTitle() { return ""; }
+Scroom::Utils::Context::ConstPtr ExamplePresentation::getContext() const { return context; }

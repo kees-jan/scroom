@@ -12,6 +12,7 @@ Checks: >
   -hicpp-uppercase-literal-suffix,
   -llvm-*,
   -llvmlibc-*,
+  -misc-include-cleaner,
   -misc-non-private-member-variables-in-classes,
   -modernize-use-trailing-return-type,
   -portability-avoid-pragma-once,

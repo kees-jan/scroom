@@ -18,6 +18,9 @@
 class ExamplePresentation : public PresentationInterface
 {
 private:
+  Scroom::Utils::Context::Ptr context;
+
+private:
   cairo_pattern_t* pattern{nullptr};
 
   void fillPattern();
@@ -27,8 +30,9 @@ public:
   ~ExamplePresentation() override;
   ExamplePresentation(const ExamplePresentation&) = delete;
   ExamplePresentation(ExamplePresentation&&) = delete;
-  ExamplePresentation operator=(const ExamplePresentation&) = delete;
+  ExamplePresentation& operator=(const ExamplePresentation&) = delete;
   ExamplePresentation operator=(ExamplePresentation&&) = delete;
+  Scroom::Utils::Context::ConstPtr getContext() const override;
 
   Scroom::Utils::Rectangle<double> getRect() override;
   void open(ViewInterface::WeakPtr viewInterface) override;

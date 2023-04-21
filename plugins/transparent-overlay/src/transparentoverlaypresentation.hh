@@ -36,6 +36,7 @@ private:
   SizeDeterminer::Ptr sizeDeterminer;
 
   ViewDataMap viewData;
+  Scroom::Utils::RecursiveContext::Ptr context;
 
   TransparentOverlayPresentation();
 
@@ -55,6 +56,7 @@ public:
   // Aggregate ///////////////////////////////////////////////////////////
 
   void addPresentation(PresentationInterface::Ptr const& p) override;
+  Scroom::Utils::Context::ConstPtr getContext() const override;
 
 private:
   void setOptimalColor(PresentationInterface::Ptr const& p);

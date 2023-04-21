@@ -120,4 +120,5 @@ public:
   void disableTransparentBackground() override;
   bool getTransparentBackground() override;
   void showMetadata(GtkWindow* parent) override;
+  Scroom::Utils::Context::ConstPtr getContext() const override;
 };

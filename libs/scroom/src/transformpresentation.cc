@@ -151,6 +151,7 @@ PipetteLayerOperations::PipetteColor TransformPresentation::getPixelAverages(Scr
 }
 
 Scroom::Utils::Point<double> TransformPresentation::getAspectRatio() const { return transformationData->getAspectRatio(); }
+Scroom::Utils::Context::ConstPtr TransformPresentation::getContext() const { return presentation->getContext(); }
 
 namespace Detail
 {

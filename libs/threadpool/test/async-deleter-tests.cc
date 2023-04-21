@@ -15,6 +15,7 @@
 
 #include <scroom/function-additor.hh>
 #include <scroom/semaphore.hh>
+#include <scroom/async-deleter.hh>
 
 #include "helpers.hh"
 

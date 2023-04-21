@@ -39,6 +39,7 @@ TransparentOverlayPresentation::Ptr TransparentOverlayPresentation::create() { r
 
 TransparentOverlayPresentation::TransparentOverlayPresentation()
   : sizeDeterminer(SizeDeterminer::create())
+  , context(Scroom::Utils::RecursiveContext::create())
 {
 }
 
@@ -46,6 +47,8 @@ void TransparentOverlayPresentation::addPresentation(PresentationInterface::Ptr 
 {
   if(p)
   {
+    context->add(p->getContext());
+
     if(p->isPropertyDefined(MONOCHROME_COLORMAPPABLE_PROPERTY_NAME))
     {
       setOptimalColor(p);
@@ -162,3 +165,4 @@ std::string TransparentOverlayPresentation::getTitle()
 
   return s.str();
 }
+Scroom::Utils::Context::ConstPtr TransparentOverlayPresentation::getContext() const { return context; }
