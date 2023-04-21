@@ -7,7 +7,7 @@
     <property name="border_width">5</property>
     <property name="destroy_with_parent">True</property>
     <property name="type_hint">normal</property>
-    <property name="copyright" translatable="yes">(C)2009-2022 Kees-Jan Dijkzeul</property>
+    <property name="copyright" translatable="yes">(C)2009-2023 Kees-Jan Dijkzeul</property>
     <property name="comments" translatable="yes">Utility to scroll &amp; zoom (large) data sets</property>
     <property name="website">https://github.com/kees-jan/scroom/wiki</property>
     <property name="website_label" translatable="yes">Visit the Scroom website</property>

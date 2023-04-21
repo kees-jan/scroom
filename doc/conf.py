@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Scroom'
-copyright = '2022, Kees-Jan Dijkzeul'
+copyright = '2023, Kees-Jan Dijkzeul'
 author = 'Kees-Jan Dijkzeul'
 
 # -- General configuration ---------------------------------------------------
