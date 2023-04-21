@@ -5,16 +5,13 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include <scroom/threadpool.hh>
-
-#include <iostream>
 #include <memory>
 
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/test/unit_test.hpp>
-#include <boost/thread.hpp>
 
 #include <scroom/semaphore.hh>
+#include <scroom/threadpool.hh>
 
 #include "helpers.hh"
 

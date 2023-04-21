@@ -14,6 +14,7 @@
 
 #include <scroom/function-additor.hh>
 #include <scroom/semaphore.hh>
+#include <scroom/threadpool.hh>
 
 #include "helpers.hh"
 #include "queue.hh"

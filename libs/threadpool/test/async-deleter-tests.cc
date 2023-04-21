@@ -12,6 +12,7 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/thread.hpp>
 
+#include <scroom/async-deleter.hh>
 #include <scroom/function-additor.hh>
 #include <scroom/semaphore.hh>
 

@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include <map>
+#include <memory>
 #include <set>
 
 #include <boost/thread.hpp>

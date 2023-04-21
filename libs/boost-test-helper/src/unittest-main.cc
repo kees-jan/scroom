@@ -4,7 +4,7 @@
  *
  * SPDX-License-Identifier: LGPL-2.1
  */
-
+#define BOOST_TEST_ALTERNATIVE_INIT_API
 #include <boost/test/unit_test.hpp>
 
 bool init_unit_test() { return true; }
