@@ -22,6 +22,7 @@
 #include <scroom/cairo-helpers.hh>
 #include <scroom/semaphore.hh>
 
+#include "scroom/tweak-view.hh"
 #include "tileviewstate.hh"
 
 TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec const& ls)
@@ -88,7 +89,18 @@ TiledBitmap::TiledBitmap(int bitmapWidth_, int bitmapHeight_, LayerSpec ls_)
   , bitmapHeight(bitmapHeight_)
   , ls(std::move(ls_))
   , progressBroadcaster(Scroom::Utils::ProgressInterfaceBroadcaster::create())
+  , context(Scroom::Utils::Context::create())
 {
+  set(context, Scroom::Utils::TweakPresentationPosition::create());
+  set(context, Scroom::Utils::TweakPositionTextBox::create());
+  set(context, Scroom::Utils::TweakRulers::create());
+  set(
+    context,
+    Scroom::Utils::ITweakSelection::Map{
+      {SelectionType::GRID, Scroom::Utils::TweakGridSelection::create()},
+      {SelectionType::PIXEL, Scroom::Utils::TweakPixelSelection::create()}
+    }
+  );
 }
 
 void TiledBitmap::initialize(const Layer::Ptr& bottom)
@@ -286,6 +298,8 @@ void TiledBitmap::clearCaches(ViewInterface::Ptr viewInterface)
     tbvd->clearVolatileStuff();
   }
 }
+
+Scroom::Utils::Context::ConstPtr TiledBitmap::getContext() const { return context; }
 
 void TiledBitmap::open(ViewInterface::WeakPtr viewInterface)
 {

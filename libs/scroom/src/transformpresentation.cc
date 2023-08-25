@@ -14,6 +14,7 @@
 #include <scroom/viewinterface.hh>
 
 #include "scroom/cairo-helpers.hh"
+#include "scroom/tweak-view.hh"
 
 TransformationData::TransformationData()
   : aspectRatio(1, 1)
@@ -47,7 +48,22 @@ TransformPresentation::TransformPresentation(
   , presentation(presentation_)
   , colormappable(std::dynamic_pointer_cast<Colormappable>(presentation_))
   , showMetaDataInterface(std::dynamic_pointer_cast<ShowMetadataInterface>(presentation_))
+  , context(Scroom::Utils::RecursiveContext::create())
 {
+  context->add(presentation->getContext());
+  auto aspectRatio = transformationData->getAspectRatio();
+
+  set(context, Scroom::Utils::TweakPresentationPosition::create(aspectRatio));
+  set(context, Scroom::Utils::TweakPositionTextBox::create(aspectRatio));
+  set(context, Scroom::Utils::TweakRulers::create(aspectRatio));
+  set(
+    context,
+    Scroom::Utils::ITweakSelection::Map{
+      {SelectionType::GRID, Scroom::Utils::TweakGridSelection::create(aspectRatio)},
+      {SelectionType::PIXEL, Scroom::Utils::TweakPixelSelection::create(aspectRatio)}
+    }
+  );
+  set(context, transformationData);
 }
 
 TransformPresentation::Ptr
@@ -143,15 +159,21 @@ bool TransformPresentation::getTransparentBackground() { return colormappable->g
 
 void TransformPresentation::showMetadata(GtkWindow* parent) { showMetaDataInterface->showMetadata(parent); }
 
+Scroom::Utils::Point<double> getAspectRatio(const PresentationInterface::Ptr& presentation)
+{
+  return try_get<TransformationData::Ptr>(presentation->getContext())
+    .transform([](const auto& td) { return td->getAspectRatio(); })
+    .value_or(Scroom::Utils::make_point(1.0, 1.0));
+}
+
 PipetteLayerOperations::PipetteColor TransformPresentation::getPixelAverages(Scroom::Utils::Rectangle<double> area)
 {
   PipetteViewInterface::Ptr const pipettePresentation = std::dynamic_pointer_cast<PipetteViewInterface>(presentation);
   require(pipettePresentation);
-  return pipettePresentation->getPixelAverages(area / getAspectRatio());
+  return pipettePresentation->getPixelAverages(area / transformationData->getAspectRatio());
 }
 
-Scroom::Utils::Point<double> TransformPresentation::getAspectRatio() const { return transformationData->getAspectRatio(); }
-Scroom::Utils::Context::ConstPtr TransformPresentation::getContext() const { return presentation->getContext(); }
+Scroom::Utils::Context::ConstPtr TransformPresentation::getContext() const { return context; }
 
 namespace Detail
 {

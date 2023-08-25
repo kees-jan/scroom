@@ -5,6 +5,7 @@ set(HEADER_FILES
     inc/scroom/global.hh
     inc/scroom/showmetadata.hh
     inc/scroom/transformpresentation.hh
+    inc/scroom/tweak-view.hh
 )
 target_sources(
   scroom_lib
@@ -14,6 +15,7 @@ target_sources(
           src/showmetadata.cc
           src/presentationinterface.cc
           src/transformpresentation.cc
+          src/tweak-view.cc
           ${HEADER_FILES}
 )
 target_link_libraries(

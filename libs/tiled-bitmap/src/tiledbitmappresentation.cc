@@ -73,7 +73,6 @@ namespace
     Views views;
     ColormapHelperBase::Ptr colormapHelper;
     PipetteLayerOperations::Ptr pipetteLayerOperation;
-    Scroom::Utils::Context::Ptr context;
     Scroom::Utils::StuffList stuff;
     Scroom::Logger logger;
 
@@ -167,7 +166,6 @@ namespace
       , properties(properties_)
       , colormapHelper(colormapHelper_)
       , pipetteLayerOperation(pipetteLayerOperation_)
-      , context(Scroom::Utils::Context::create())
     {
     }
   };
@@ -363,7 +361,7 @@ namespace
   }
 
   bool TiledBitmapPresentation::getTransparentBackground() { return colormapHelper->getTransparentBackground(); }
-  Scroom::Utils::Context::ConstPtr TiledBitmapPresentation::getContext() const { return context; }
+  Scroom::Utils::Context::ConstPtr TiledBitmapPresentation::getContext() const { return tbi->getContext(); }
 
   // OpenTiledBitmapAsPresentation ////////////////////////////////////
   class OpenTiledBitmapAsPresentation : public OpenPresentationInterface

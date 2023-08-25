@@ -49,6 +49,7 @@ private:
   Scroom::Utils::ProgressInterfaceBroadcaster::Ptr progressBroadcaster;
   Scroom::Utils::StuffList registrations;
   Scroom::Logger logger;
+  Scroom::Utils::Context::Ptr context;
 
 public:
   static Ptr create(int bitmapWidth, int bitmapHeight, LayerSpec const& ls);
@@ -87,6 +88,8 @@ public:
     int zoom
   ) override;
   void clearCaches(ViewInterface::Ptr vi) override;
+
+  [[nodiscard]] Scroom::Utils::Context::ConstPtr getContext() const override;
 
   ////////////////////////////////////////////////////////////////////////
   // TileInitialisationObserver

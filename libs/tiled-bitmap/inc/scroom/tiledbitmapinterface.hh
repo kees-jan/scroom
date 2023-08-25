@@ -15,6 +15,7 @@
 
 #include <cairo.h>
 
+#include <scroom/context.hh>
 #include <scroom/interface.hh>
 #include <scroom/presentationinterface.hh>
 #include <scroom/rectangle.hh>
@@ -269,6 +270,8 @@ public:
    * @param vi The ViewInterface for which to clear the caches
    */
   virtual void clearCaches(ViewInterface::Ptr vi) = 0;
+
+  [[nodiscard]] virtual Scroom::Utils::Context::ConstPtr getContext() const = 0;
 };
 
 /**

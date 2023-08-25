@@ -88,6 +88,7 @@ private:
   Colormappable::Ptr colormappable;
   ShowMetadataInterface::Ptr showMetaDataInterface;
   Scroom::Utils::WeakKeyMap<ViewInterface::WeakPtr, Detail::ViewData::Ptr> viewData;
+  Scroom::Utils::RecursiveContext::Ptr context;
 
 private:
   TransformPresentation(PresentationInterface::Ptr const& presentation, TransformationData::Ptr transformationData);
@@ -105,7 +106,7 @@ public:
   bool getProperty(const std::string& name, std::string& value) override;
   bool isPropertyDefined(const std::string& name) override;
   std::string getTitle() override;
-  Scroom::Utils::Point<double> getAspectRatio() const override;
+  Scroom::Utils::Context::ConstPtr getContext() const override;
 
   // PipetteViewInterface
   PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<double> area) override;
@@ -120,5 +121,6 @@ public:
   void disableTransparentBackground() override;
   bool getTransparentBackground() override;
   void showMetadata(GtkWindow* parent) override;
-  Scroom::Utils::Context::ConstPtr getContext() const override;
 };
+
+Scroom::Utils::Point<double> getAspectRatio(const PresentationInterface::Ptr& presentation);

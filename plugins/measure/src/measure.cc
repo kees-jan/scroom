@@ -20,6 +20,7 @@
 #include <scroom/presentationinterface.hh>
 #include <scroom/viewinterface.hh>
 
+#include "scroom/transformpresentation.hh"
 #include "version.h"
 
 ////////////////////////////////////////////////////////////////////////
@@ -64,7 +65,7 @@ MeasureHandler::Ptr MeasureHandler::create() { return std::make_shared<MeasureHa
 
 void MeasureHandler::displayMeasurement(const ViewInterface::Ptr& view)
 {
-  const auto aspectRatio = view->getCurrentPresentation()->getAspectRatio();
+  const auto aspectRatio = getAspectRatio(view->getCurrentPresentation());
   const Selection tweaked(selection->start / aspectRatio, selection->end / aspectRatio);
 
   view->setStatusMessage(

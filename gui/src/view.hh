@@ -23,17 +23,13 @@
 #include <scroom/presentationinterface.hh>
 #include <scroom/scroominterface.hh>
 #include <scroom/stuff.hh>
+#include <scroom/tweak-view.hh>
 #include <scroom/utilities.hh>
 #include <scroom/viewinterface.hh>
 
 #include "progressbarmanager.hh"
 #include "ruler.hh"
 #include "sidebarmanager.hh"
-
-class TweakPresentationPosition;
-class TweakPositionTextBox;
-class TweakRulers;
-class ITweakSelection;
 
 /**
  * Protect a value from being assigned.
@@ -137,11 +133,10 @@ private:
   std::vector<SelectionListener::Ptr> selectionListeners;
   std::vector<PostRenderer::Ptr> postRenderers;
   std::map<GtkToggleButton*, ToolStateListener::Ptr> tools;
-  Scroom::Utils::Point<double> aspectRatio;
-  std::shared_ptr<TweakPresentationPosition> tweakPresentationPosition;
-  std::shared_ptr<TweakPositionTextBox> tweakPositionTextBox;
-  std::shared_ptr<TweakRulers> tweakRulers;
-  std::map<std::string, std::shared_ptr<ITweakSelection>> tweakSelection;
+  std::shared_ptr<Scroom::Utils::ITweakPresentationPosition> tweakPresentationPosition;
+  std::shared_ptr<Scroom::Utils::ITweakPositionTextBox> tweakPositionTextBox;
+  std::shared_ptr<Scroom::Utils::ITweakRulers> tweakRulers;
+  Scroom::Utils::ITweakSelection::Map tweakSelection;
 
   gint modifiermove{0};
   Scroom::Utils::Point<double> cachedPoint;
@@ -230,6 +225,7 @@ public:
   // Helpers
 
 private:
+  void updateTweaks();
   Scroom::Utils::Point<double> windowPointToPresentationPoint(Scroom::Utils::Point<double> wp) const;
   Scroom::Utils::Point<double> presentationPointToWindowPoint(Scroom::Utils::Point<double> presentationpoint) const;
   Scroom::Utils::Point<double> tweakedPosition() const;

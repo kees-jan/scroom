@@ -45,6 +45,7 @@ TEST(TransformPresentation_Tests, TransformationData_supports_aspect_ratio) // N
   EXPECT_PRED2(points_are_close, Scroom::Utils::Point<double>(2, 3), td->getAspectRatio());
 
   ColormappablePresentationMock::Ptr const cpm = ColormappablePresentationMock::create();
+  EXPECT_CALL(*cpm, getContext()).WillOnce(Return(Scroom::Utils::Context::create()));
 
   TransformPresentation::Ptr const tp = TransformPresentation::create(cpm, td);
 

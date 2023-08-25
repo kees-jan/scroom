@@ -15,6 +15,7 @@
 
 #include <scroom/cairo-helpers.hh>
 #include <scroom/format_stuff.hh>
+#include <scroom/transformpresentation.hh>
 
 #include "version.h"
 
@@ -78,7 +79,7 @@ void PipetteHandler::computeValues(const ViewInterface::Ptr& view, Scroom::Utils
   auto rect = sel_rect.intersection(image);
   auto colors = pipette->getPixelAverages(rect);
 
-  const auto display_rect = roundOutward(rect / presentation->getAspectRatio());
+  const auto display_rect = roundOutward(rect / getAspectRatio(presentation));
 
   // If the plugin was switched off ignore the result
   if(!wasDisabled.test_and_set())

@@ -19,7 +19,7 @@
 #include <scroom/assertions.hh>
 #include <scroom/cairo-helpers.hh>
 #include <scroom/format_stuff.hh>
-#include <scroom/rounding.hh>
+#include <scroom/tweak-view.hh>
 
 #include "callbacks.hh"
 #include "pluginmanager.hh"
@@ -47,253 +47,34 @@ enum
 };
 
 ////////////////////////////////////////////////////////////////////////
-/// Tweakers
-
-class TweakPresentationPosition
-{
-public:
-  using Ptr = std::shared_ptr<TweakPresentationPosition>;
-  using Point = Scroom::Utils::Point<double>;
-
-  static Ptr create(Point aspectRatio_) { return Ptr(new TweakPresentationPosition(aspectRatio_)); }
-
-  [[nodiscard]] Point tweakPosition(Point currentPosition, Scroom::Utils::Point<int> /*drawingAreaSize*/, int zoom) const
-  {
-    return round_to_multiple_of(currentPosition, aspectRatio / pixelSizeFromZoom(zoom));
-  }
-
-  void setAspectRatio(Point aspectRatio_) { aspectRatio = aspectRatio_; }
-
-private:
-  explicit TweakPresentationPosition(Point aspectRatio_)
-    : aspectRatio(aspectRatio_)
-  {
-  }
-
-private:
-  Point aspectRatio;
-};
-
-class TweakRulers
-{
-public:
-  using Ptr = std::shared_ptr<TweakRulers>;
-  using Point = Scroom::Utils::Point<double>;
-
-  static Ptr create(Point aspectRatio_) { return Ptr(new TweakRulers(aspectRatio_)); }
-
-  [[nodiscard]] Scroom::Utils::Rectangle<double>
-    tweakRulers(Point currentPosition, Scroom::Utils::Point<int> drawingAreaSize, int zoom) const
-  {
-    return Scroom::Utils::make_rect(currentPosition, drawingAreaSize.to<double>() / pixelSizeFromZoom(zoom)) / aspectRatio;
-  }
-
-  void setAspectRatio(Point aspectRatio_) { aspectRatio = aspectRatio_; }
-
-private:
-  explicit TweakRulers(Point aspectRatio_)
-    : aspectRatio(aspectRatio_)
-  {
-  }
-
-private:
-  Point aspectRatio;
-};
-
-enum class Corner
-{
-  TOP_LEFT,
-  TOP_RIGHT,
-  BOTTOM_LEFT,
-  BOTTOM_RIGHT
-};
-
-
-std::function<Scroom::Utils::Point<double>(Scroom::Utils::Rectangle<double>)> corner_getter(Corner c)
-{
-  switch(c)
-  {
-  case Corner::TOP_LEFT:
-    return [](Scroom::Utils::Rectangle<double> r) { return r.getTopLeft(); };
-  case Corner::TOP_RIGHT:
-    return [](Scroom::Utils::Rectangle<double> r) { return r.getTopRight(); };
-  case Corner::BOTTOM_LEFT:
-    return [](Scroom::Utils::Rectangle<double> r) { return r.getBottomLeft(); };
-  case Corner::BOTTOM_RIGHT:
-    return [](Scroom::Utils::Rectangle<double> r) { return r.getBottomRight(); };
-  }
-  defect();
-}
-
-Corner find_closest_corner(Scroom::Utils::Point<double> p, Scroom::Utils::Rectangle<double> r)
-{
-  const std::array<std::array<Corner, 2>, 2> corners = {{
-    {Corner::TOP_LEFT, Corner::BOTTOM_LEFT},
-    {Corner::TOP_RIGHT, Corner::BOTTOM_RIGHT},
-  }};
-
-  const auto c = center(r);
-
-  return corners.at(c.x < p.x).at(c.y < p.y);
-}
-
-Corner find_opposed_corner(Corner c)
-{
-  switch(c)
-  {
-  case Corner::TOP_LEFT:
-    return Corner::BOTTOM_RIGHT;
-  case Corner::TOP_RIGHT:
-    return Corner::BOTTOM_LEFT;
-  case Corner::BOTTOM_LEFT:
-    return Corner::TOP_RIGHT;
-  case Corner::BOTTOM_RIGHT:
-    return Corner::TOP_LEFT;
-  }
-  defect();
-}
-
-Scroom::Utils::Rectangle<double> toRectangle(Selection s) { return Scroom::Utils::make_rect_from_start_end(s.start, s.end); }
-
-class ITweakSelection : public Interface
-{
-public:
-  using Ptr = std::shared_ptr<ITweakSelection>;
-  using Point = Scroom::Utils::Point<double>;
-
-  [[nodiscard]] virtual Selection tweakSelection(Selection selection) const = 0;
-  virtual void setAspectRatio(Point aspectRatio_) = 0;
-};
-
-class TweakSelection : public ITweakSelection
-{
-public:
-  using Rectangle = Scroom::Utils::Rectangle<double>;
-
-  [[nodiscard]] virtual Rectangle tweakSelection(Rectangle selection) const = 0;
-
-  [[nodiscard]] Selection tweakSelection(Selection selection) const override
-  {
-    const auto original = toRectangle(selection);
-    const auto tweaked = tweakSelection(original);
-
-    const auto startCorner = find_closest_corner(selection.start, original);
-    const auto endCorner = find_opposed_corner(startCorner);
-
-    const auto start = corner_getter(startCorner)(tweaked);
-    const auto end = corner_getter(endCorner)(tweaked);
-
-    return {start, end};
-  }
-
-  void setAspectRatio(Point aspectRatio_) override { aspectRatio = aspectRatio_; }
-
-protected:
-  explicit TweakSelection(Point aspectRatio_)
-    : aspectRatio(aspectRatio_)
-  {
-  }
-
-protected:
-  Point aspectRatio;
-};
-
-class TweakGridSelection : public TweakSelection
-{
-public:
-  static Ptr create(Point aspectRatio_) { return Ptr(new TweakGridSelection(aspectRatio_)); }
-
-  [[nodiscard]] Rectangle tweakSelection(Rectangle selection) const override
-  {
-    return roundCorners(selection / aspectRatio) * aspectRatio;
-  }
-  using TweakSelection::tweakSelection;
-
-  using TweakSelection::TweakSelection;
-};
-
-class TweakPixelSelection : public TweakSelection
-{
-public:
-  static Ptr create(Point aspectRatio_) { return Ptr(new TweakPixelSelection(aspectRatio_)); }
-
-  [[nodiscard]] Rectangle tweakSelection(Rectangle selection) const override
-  {
-    return roundOutward(selection / aspectRatio) * aspectRatio;
-  }
-
-  using TweakSelection::tweakSelection;
-
-  using TweakSelection::TweakSelection;
-};
-
-
-class TweakPositionTextBox
-{
-public:
-  using Ptr = std::shared_ptr<TweakPositionTextBox>;
-  using Point = Scroom::Utils::Point<double>;
-
-  static Ptr create(Point aspectRatio_) { return Ptr(new TweakPositionTextBox(aspectRatio_)); }
-
-  [[nodiscard]] Point parse(std::string_view x, std::string_view y, Scroom::Utils::Point<int> drawingAreaSize, int zoom) const
-  {
-    const Point entered_position(boost::lexical_cast<double>(x), boost::lexical_cast<double>(y));
-
-    return entered_position * aspectRatio - drawingAreaSize.to<double>() / pixelSizeFromZoom(zoom) / 2;
-  }
-
-  [[nodiscard]] std::pair<std::string, std::string>
-    display(Point position, Scroom::Utils::Point<int> drawingAreaSize, int zoom) const
-  {
-    const Point center = (position + drawingAreaSize.to<double>() / pixelSizeFromZoom(zoom) / 2) / aspectRatio;
-
-    return std::make_pair(fmt::format("{:.0f}", center.x), fmt::format("{:.0f}", center.y));
-  }
-
-  void setAspectRatio(Point aspectRatio_) { aspectRatio = aspectRatio_; }
-
-private:
-  explicit TweakPositionTextBox(Point aspectRatio_)
-    : aspectRatio(aspectRatio_)
-  {
-  }
-
-private:
-  Point aspectRatio;
-};
-
-////////////////////////////////////////////////////////////////////////
 /// Helpers
 
-static Scroom::Utils::Point<double> eventToPoint(GdkEventButton* event) { return {event->x, event->y}; }
-
-static Scroom::Utils::Point<double> eventToPoint(GdkEventMotion* event) { return {event->x, event->y}; }
-
-// This one has too much View-internal knowledge to hide in callbacks.cc
-static void on_newWindow_activate(GtkMenuItem* /*unused*/, gpointer user_data)
+namespace
 {
-  PresentationInterface::WeakPtr const& wp = *static_cast<PresentationInterface::WeakPtr*>(user_data); // Yuk!
-  PresentationInterface::Ptr const p = wp.lock();
-  if(p)
+  Scroom::Utils::Point<double> eventToPoint(GdkEventButton* event) { return {event->x, event->y}; }
+
+  Scroom::Utils::Point<double> eventToPoint(GdkEventMotion* event) { return {event->x, event->y}; }
+
+  // This one has too much View-internal knowledge to hide in callbacks.cc
+  void on_newWindow_activate(GtkMenuItem* /*unused*/, gpointer user_data)
   {
-    find_or_create_scroom(p);
+    PresentationInterface::WeakPtr const& wp = *static_cast<PresentationInterface::WeakPtr*>(user_data); // Yuk!
+    PresentationInterface::Ptr const p = wp.lock();
+    if(p)
+    {
+      find_or_create_scroom(p);
+    }
   }
-}
+} // namespace
 
 ////////////////////////////////////////////////////////////////////////
 
 View::View(GtkBuilder* scroomXml_)
   : scroomXml(scroomXml_)
-  , aspectRatio(Scroom::Utils::make_point(1.0, 1.0))
-  , tweakPresentationPosition(TweakPresentationPosition::create(aspectRatio))
-  , tweakPositionTextBox(TweakPositionTextBox::create(aspectRatio))
-  , tweakRulers(TweakRulers::create(aspectRatio))
-  , tweakSelection{
-      {SelectionType::GRID, TweakGridSelection::create(aspectRatio)},
-      {SelectionType::PIXEL, TweakPixelSelection::create(aspectRatio)}
-    }
-
+  , tweakPresentationPosition(Scroom::Utils::getDefaultTweakPresentationPosition())
+  , tweakPositionTextBox(Scroom::Utils::getDefaultTweakPositionTextBox())
+  , tweakRulers(Scroom::Utils::getDefaultTweakRulers())
+  , tweakSelection(Scroom::Utils::getDefaultTweakSelectionMap())
 {
   PluginManager::Ptr const pluginManager = PluginManager::getInstance();
   window = GTK_WINDOW(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "scroom")));
@@ -394,6 +175,18 @@ void View::clearPresentation()
   setPresentation(PresentationInterface::Ptr()); // null
 }
 
+void View::updateTweaks()
+{
+  using namespace Scroom::Utils;
+
+  auto context = presentation->getContext();
+
+  tweakPresentationPosition = get_or<ITweakPresentationPosition::Ptr>(context, getDefaultTweakPresentationPosition());
+  tweakRulers = get_or<ITweakRulers::Ptr>(context, getDefaultTweakRulers());
+  tweakPositionTextBox = get_or<ITweakPositionTextBox::Ptr>(context, getDefaultTweakPositionTextBox());
+  tweakSelection = get_or<ITweakSelection::Map>(context, getDefaultTweakSelectionMap());
+}
+
 void View::setPresentation(PresentationInterface::Ptr presentation_)
 {
   View::Ptr const me = shared_from_this<View>();
@@ -410,16 +203,9 @@ void View::setPresentation(PresentationInterface::Ptr presentation_)
   {
     presentation->open(me);
     presentationRect = presentation->getRect();
-    aspectRatio = presentation->getAspectRatio();
     std::string s = presentation->getTitle();
 
-    tweakPresentationPosition->setAspectRatio(aspectRatio);
-    tweakPositionTextBox->setAspectRatio(aspectRatio);
-    tweakRulers->setAspectRatio(aspectRatio);
-    for(auto& [name, tweak]: tweakSelection)
-    {
-      tweak->setAspectRatio(aspectRatio);
-    }
+    updateTweaks();
 
     if(!s.empty())
     {
