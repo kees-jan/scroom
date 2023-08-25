@@ -151,12 +151,6 @@ var hierarchy =
         [ "ColormapHelperBase", "classColormapHelperBase.html", null ],
         [ "DummyColormapProvider", "classDummyColormapProvider.html", null ]
       ] ],
-      [ "ITweakSelection", "classITweakSelection.html", [
-        [ "TweakSelection", "classTweakSelection.html", [
-          [ "TweakGridSelection", "classTweakGridSelection.html", null ],
-          [ "TweakPixelSelection", "classTweakPixelSelection.html", null ]
-        ] ]
-      ] ],
       [ "LayerOperations", "classLayerOperations.html", [
         [ "CommonOperations", "classCommonOperations.html", [
           [ "Operations", "classOperations.html", [
@@ -233,6 +227,26 @@ var hierarchy =
           [ "Scroom::Utils::ParentContext", "classScroom_1_1Utils_1_1ParentContext.html", null ]
         ] ],
         [ "Scroom::Utils::SingleContext", "classScroom_1_1Utils_1_1SingleContext.html", null ]
+      ] ],
+      [ "Scroom::Utils::ITweakPositionTextBox", "classScroom_1_1Utils_1_1ITweakPositionTextBox.html", [
+        [ "TweakPositionTextBox", "classTweakPositionTextBox.html", null ]
+      ] ],
+      [ "Scroom::Utils::ITweakPresentationPosition", "classScroom_1_1Utils_1_1ITweakPresentationPosition.html", [
+        [ "Scroom::Utils::DefaultTweakPresentationPosition", "classScroom_1_1Utils_1_1DefaultTweakPresentationPosition.html", null ],
+        [ "TweakPresentationPosition", "classTweakPresentationPosition.html", null ]
+      ] ],
+      [ "Scroom::Utils::ITweakRulers", "classScroom_1_1Utils_1_1ITweakRulers.html", [
+        [ "Scroom::Utils::TweakRulers", "classScroom_1_1Utils_1_1TweakRulers.html", null ],
+        [ "TweakRulers", "classTweakRulers.html", null ]
+      ] ],
+      [ "Scroom::Utils::ITweakSelection", "classScroom_1_1Utils_1_1ITweakSelection.html", [
+        [ "ITweakSelection", "classITweakSelection.html", [
+          [ "TweakSelection", "classTweakSelection.html", [
+            [ "TweakGridSelection", "classTweakGridSelection.html", null ],
+            [ "TweakPixelSelection", "classTweakPixelSelection.html", null ]
+          ] ]
+        ] ],
+        [ "Scroom::Utils::DefaultTweakSelection", "classScroom_1_1Utils_1_1DefaultTweakSelection.html", null ]
       ] ],
       [ "Scroom::Utils::ProgressStateInterface", "classScroom_1_1Utils_1_1ProgressStateInterface.html", [
         [ "ProgressStateInterfaceStub", "classProgressStateInterfaceStub.html", null ],
@@ -408,9 +422,7 @@ var hierarchy =
       [ "Scroom::Bookkeeping::Detail::MapTokenImpl< K, V >", "classScroom_1_1Bookkeeping_1_1Detail_1_1MapTokenImpl.html", null ]
     ] ],
     [ "TransformationData", "classTransformationData.html", null ],
-    [ "TweakPositionTextBox", "classTweakPositionTextBox.html", null ],
-    [ "TweakPresentationPosition", "classTweakPresentationPosition.html", null ],
-    [ "TweakRulers", "classTweakRulers.html", null ],
+    [ "Scroom::Utils::TweakPositionTextBox", "classScroom_1_1Utils_1_1TweakPositionTextBox.html", null ],
     [ "Scroom::MemoryBlobs::Blob::UnloadData", "classScroom_1_1MemoryBlobs_1_1Blob_1_1UnloadData.html", null ],
     [ "Scroom::Utils::ProgressInterfaceBroadcaster::Unsubscriber", "classScroom_1_1Utils_1_1ProgressInterfaceBroadcaster_1_1Unsubscriber.html", null ],
     [ "Scroom::Bookkeeping::Detail::ValueType< V >", "classScroom_1_1Bookkeeping_1_1Detail_1_1ValueType.html", null ],

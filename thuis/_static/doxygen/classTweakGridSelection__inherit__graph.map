@@ -1,6 +1,7 @@
 <map id="TweakGridSelection" name="TweakGridSelection">
-<area shape="rect" id="node1" title=" " alt="" coords="5,513,156,649"/>
-<area shape="rect" id="node2" href="$classTweakSelection.html" title=" " alt="" coords="7,344,155,465"/>
-<area shape="rect" id="node3" href="$classITweakSelection.html" title=" " alt="" coords="7,204,154,296"/>
-<area shape="rect" id="node4" href="$classInterface.html" title=" " alt="" coords="23,5,139,156"/>
+<area shape="rect" id="node1" title=" " alt="" coords="41,639,192,775"/>
+<area shape="rect" id="node2" href="$classTweakSelection.html" title=" " alt="" coords="43,469,191,591"/>
+<area shape="rect" id="node3" href="$classITweakSelection.html" title=" " alt="" coords="43,329,190,421"/>
+<area shape="rect" id="node4" href="$classScroom_1_1Utils_1_1ITweakSelection.html" title=" " alt="" coords="5,204,228,281"/>
+<area shape="rect" id="node5" href="$classInterface.html" title=" " alt="" coords="59,5,175,156"/>
 </map>

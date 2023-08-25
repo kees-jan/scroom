@@ -6,6 +6,12 @@ var namespaceScroom_1_1Utils =
     [ "Count", "classScroom_1_1Utils_1_1Count.html", "classScroom_1_1Utils_1_1Count" ],
     [ "Counted", "classScroom_1_1Utils_1_1Counted.html", "classScroom_1_1Utils_1_1Counted" ],
     [ "Counter", "classScroom_1_1Utils_1_1Counter.html", "classScroom_1_1Utils_1_1Counter" ],
+    [ "DefaultTweakPresentationPosition", "classScroom_1_1Utils_1_1DefaultTweakPresentationPosition.html", "classScroom_1_1Utils_1_1DefaultTweakPresentationPosition" ],
+    [ "DefaultTweakSelection", "classScroom_1_1Utils_1_1DefaultTweakSelection.html", "classScroom_1_1Utils_1_1DefaultTweakSelection" ],
+    [ "ITweakPositionTextBox", "classScroom_1_1Utils_1_1ITweakPositionTextBox.html", "classScroom_1_1Utils_1_1ITweakPositionTextBox" ],
+    [ "ITweakPresentationPosition", "classScroom_1_1Utils_1_1ITweakPresentationPosition.html", "classScroom_1_1Utils_1_1ITweakPresentationPosition" ],
+    [ "ITweakRulers", "classScroom_1_1Utils_1_1ITweakRulers.html", "classScroom_1_1Utils_1_1ITweakRulers" ],
+    [ "ITweakSelection", "classScroom_1_1Utils_1_1ITweakSelection.html", "classScroom_1_1Utils_1_1ITweakSelection" ],
     [ "Observable", "classScroom_1_1Utils_1_1Observable.html", "classScroom_1_1Utils_1_1Observable" ],
     [ "on_scope_exit", "classScroom_1_1Utils_1_1on__scope__exit.html", "classScroom_1_1Utils_1_1on__scope__exit" ],
     [ "optional_cleanup", "classScroom_1_1Utils_1_1optional__cleanup.html", "classScroom_1_1Utils_1_1optional__cleanup" ],
@@ -21,5 +27,7 @@ var namespaceScroom_1_1Utils =
     [ "Rectangle", "classScroom_1_1Utils_1_1Rectangle.html", "classScroom_1_1Utils_1_1Rectangle" ],
     [ "RecursiveContext", "classScroom_1_1Utils_1_1RecursiveContext.html", "classScroom_1_1Utils_1_1RecursiveContext" ],
     [ "Segment", "classScroom_1_1Utils_1_1Segment.html", "classScroom_1_1Utils_1_1Segment" ],
-    [ "SingleContext", "classScroom_1_1Utils_1_1SingleContext.html", "classScroom_1_1Utils_1_1SingleContext" ]
+    [ "SingleContext", "classScroom_1_1Utils_1_1SingleContext.html", "classScroom_1_1Utils_1_1SingleContext" ],
+    [ "TweakPositionTextBox", "classScroom_1_1Utils_1_1TweakPositionTextBox.html", "classScroom_1_1Utils_1_1TweakPositionTextBox" ],
+    [ "TweakRulers", "classScroom_1_1Utils_1_1TweakRulers.html", "classScroom_1_1Utils_1_1TweakRulers" ]
 ];

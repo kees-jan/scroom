@@ -11,5 +11,6 @@ var dir_b07397adb0ba772398d0371ed0d7d338 =
       [ "TransformationData", "classTransformationData.html", "classTransformationData" ],
       [ "ViewData", "classDetail_1_1ViewData.html", "classDetail_1_1ViewData" ],
       [ "TransformPresentation", "classTransformPresentation.html", "classTransformPresentation" ]
-    ] ]
+    ] ],
+    [ "tweak-view.hh", "tweak-view_8hh.html", "tweak-view_8hh" ]
 ];

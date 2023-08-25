@@ -1,8 +1,10 @@
 <map id="TweakPositionTextBox" name="TweakPositionTextBox">
-<area shape="rect" id="node1" title=" " alt="" coords="286,389,473,525"/>
-<area shape="rect" id="node2" href="$classScroom_1_1Utils_1_1Point.html" title=" " alt="" coords="304,147,455,327"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,5,172,97"/>
-<area shape="rect" id="node4" title=" " alt="" coords="196,5,355,97"/>
-<area shape="rect" id="node5" title=" " alt="" coords="379,5,590,97"/>
-<area shape="rect" id="node6" title=" " alt="" coords="614,5,814,97"/>
+<area shape="rect" id="node1" title=" " alt="" coords="146,448,333,584"/>
+<area shape="rect" id="node2" href="$classScroom_1_1Utils_1_1ITweakPositionTextBox.html" title=" " alt="" coords="29,242,244,349"/>
+<area shape="rect" id="node3" href="$classInterface.html" title=" " alt="" coords="5,5,121,156"/>
+<area shape="rect" id="node4" href="$classScroom_1_1Utils_1_1Point.html" title=" " alt="" coords="340,205,491,385"/>
+<area shape="rect" id="node5" title=" " alt="" coords="145,35,312,127"/>
+<area shape="rect" id="node6" title=" " alt="" coords="336,35,495,127"/>
+<area shape="rect" id="node7" title=" " alt="" coords="519,35,730,127"/>
+<area shape="rect" id="node8" title=" " alt="" coords="754,35,954,127"/>
 </map>

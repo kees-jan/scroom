@@ -1,9 +1,10 @@
 <map id="Scroom::Utils::make_rect" name="Scroom::Utils::make_rect">
-<area shape="rect" id="node1" title=" " alt="" coords="1708,851,1893,878"/>
-<area shape="rect" id="node2" href="$rectangletests_8cc.html#a8db307fdddadfda0f7f86caf46cfbb98" title=" " alt="" coords="1468,775,1659,802"/>
-<area shape="rect" id="node3" href="$classView.html#a7a4cd04a39fff643d73565bfeaa058c2" title=" " alt="" coords="1510,826,1617,853"/>
+<area shape="rect" id="node1" title=" " alt="" coords="1713,877,1899,903"/>
+<area shape="rect" id="node2" href="$rectangletests_8cc.html#a8db307fdddadfda0f7f86caf46cfbb98" title=" " alt="" coords="1471,775,1661,802"/>
+<area shape="rect" id="node3" href="$classView.html#a7a4cd04a39fff643d73565bfeaa058c2" title=" " alt="" coords="1513,826,1619,853"/>
 <area shape="rect" id="node22" href="$transformpresentation__test_8cc.html#a0e2a0fb63e2a776c9c8034080e623ca1" title=" " alt="" coords="392,1034,447,1061"/>
-<area shape="rect" id="node39" href="$classTweakRulers.html#aca55e4ce52df6266becd817b3acfa95a" title=" " alt="" coords="1467,927,1660,954"/>
+<area shape="rect" id="node39" href="$classScroom_1_1Utils_1_1TweakRulers.html#a0b498b404311f74ac4c91ffb3cbf6e41" title=" " alt="" coords="1467,928,1665,969"/>
+<area shape="rect" id="node40" href="$classTweakRulers.html#adf7b25c21e0d397da42d68b8b47476a0" title=" " alt="" coords="1469,994,1663,1021"/>
 <area shape="rect" id="node4" href="$callbacks_8hh.html#a5d47004add906eff5a82c199ae8c8223" title=" " alt="" coords="1239,551,1419,592"/>
 <area shape="rect" id="node5" href="$callbacks_8hh.html#a19dc44b0b71d02dc59a3c16fdf3fe48b" title=" " alt="" coords="1072,299,1191,326"/>
 <area shape="rect" id="node6" href="$callbacks_8hh.html#a6a123442252e099c84849ff0ad12d41a" title=" " alt="" coords="855,219,1024,246"/>

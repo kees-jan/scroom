@@ -1,8 +1,10 @@
 <map id="TweakPresentationPosition" name="TweakPresentationPosition">
-<area shape="rect" id="node1" title="Tweakers." alt="" coords="271,389,487,511"/>
-<area shape="rect" id="node2" href="$classScroom_1_1Utils_1_1Point.html" title=" " alt="" coords="304,147,455,327"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,5,172,97"/>
-<area shape="rect" id="node4" title=" " alt="" coords="196,5,355,97"/>
-<area shape="rect" id="node5" title=" " alt="" coords="379,5,590,97"/>
-<area shape="rect" id="node6" title=" " alt="" coords="614,5,814,97"/>
+<area shape="rect" id="node1" title="Tweakers." alt="" coords="130,448,346,569"/>
+<area shape="rect" id="node2" href="$classScroom_1_1Utils_1_1ITweakPresentationPosition.html" title=" " alt="" coords="7,249,251,341"/>
+<area shape="rect" id="node3" href="$classInterface.html" title=" " alt="" coords="5,5,121,156"/>
+<area shape="rect" id="node4" href="$classScroom_1_1Utils_1_1Point.html" title=" " alt="" coords="340,205,491,385"/>
+<area shape="rect" id="node5" title=" " alt="" coords="145,35,312,127"/>
+<area shape="rect" id="node6" title=" " alt="" coords="336,35,495,127"/>
+<area shape="rect" id="node7" title=" " alt="" coords="519,35,730,127"/>
+<area shape="rect" id="node8" title=" " alt="" coords="754,35,954,127"/>
 </map>

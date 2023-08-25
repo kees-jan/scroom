@@ -77,15 +77,15 @@ var NAVTREEINDEX =
 "classPipetteCommonOperationsCMYK.html",
 "classRuler.html#ae6817ada8b5be672f2239dfd190d65d7",
 "classScroom_1_1MemoryBlobs_1_1Blob.html#aea1474e9fb8b35484a056d57244b0c68",
-"classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer_1_1Child.html#a04906beb12a296654a1189dcfa5d7474",
-"classTestRecursiveObservable.html#af453fcb8ad172886a1dbec7465726349",
-"classTransformationData.html#a859957abfa310a6a9f07946a458f5749",
-"classWaitForAsyncOp.html#af828640570dd3bf9ea2452718685b090",
-"dir_95c42426c1c5462eace02f34978c69b5.html",
-"hash__map_8h.html",
-"opentiledbitmapinterface_8hh.html#abcdc6501ad25d0c72901a0ef53452506",
-"semaphore_8hh.html",
-"transparentoverlay_8cc.html"
+"classScroom_1_1Utils_1_1ProgressInterfaceFromProgressStateInterfaceForwarder.html#a43308c2f7bccf17e1411de9640ab6d7b",
+"classTestData.html#a1be773d4b9094ade00dd4baa145c1e6b",
+"classTransformPresentation.html#a0bb3a42de4a22b82be66bffff34c4e7d",
+"classViewInterfaceStub.html#a1da471fb3e89384c2461ee36683e413d",
+"dir_18d617efee16a81bd711d5141962eab4.html",
+"gtk-helpers_8cc.html",
+"namespacefmt.html",
+"sampleiterator-tests_8cc.html#a7761b437139a1903b3fb12eb94ad1b60",
+"tiledbitmapinterface_8hh_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
