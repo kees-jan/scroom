@@ -20,6 +20,7 @@
 #include <scroom/cairo-helpers.hh>
 #include <scroom/format_stuff.hh>
 #include <scroom/rounding.hh>
+#include <scroom/tweak-view.hh>
 
 #include "callbacks.hh"
 #include "pluginmanager.hh"
@@ -55,7 +56,7 @@ enum
 ////////////////////////////////////////////////////////////////////////
 /// Tweakers
 
-class TweakPresentationPosition
+class TweakPresentationPosition : public Scroom::Utils::ITweakPresentationPosition
 {
 public:
   using Ptr   = std::shared_ptr<TweakPresentationPosition>;
@@ -63,7 +64,7 @@ public:
 
   static Ptr create(Point aspectRatio_) { return Ptr(new TweakPresentationPosition(aspectRatio_)); }
 
-  [[nodiscard]] Point tweakPosition(Point currentPosition, Scroom::Utils::Point<int> /*drawingAreaSize*/, int zoom) const
+  [[nodiscard]] Point tweakPosition(Point currentPosition, Scroom::Utils::Point<int> /*drawingAreaSize*/, int zoom) const override
   {
     return round_to_multiple_of(currentPosition, aspectRatio / pixelSizeFromZoom(zoom));
   }
@@ -80,7 +81,7 @@ private:
   Point aspectRatio;
 };
 
-class TweakRulers
+class TweakRulers : public Scroom::Utils::ITweakRulers
 {
 public:
   using Ptr   = std::shared_ptr<TweakRulers>;
@@ -89,7 +90,7 @@ public:
   static Ptr create(Point aspectRatio_) { return Ptr(new TweakRulers(aspectRatio_)); }
 
   [[nodiscard]] Scroom::Utils::Rectangle<double>
-    tweakRulers(Point currentPosition, Scroom::Utils::Point<int> drawingAreaSize, int zoom) const
+    tweakRulers(Point currentPosition, Scroom::Utils::Point<int> drawingAreaSize, int zoom) const override
   {
     return Scroom::Utils::make_rect(currentPosition, drawingAreaSize.to<double>() / pixelSizeFromZoom(zoom)) / aspectRatio;
   }
@@ -161,14 +162,14 @@ Corner find_opposed_corner(Corner c)
 
 Scroom::Utils::Rectangle<double> toRectangle(Selection s) { return Scroom::Utils::make_rect_from_start_end(s.start, s.end); }
 
-class ITweakSelection : public Interface
+class ITweakSelection : public Scroom::Utils::ITweakSelection
 {
 public:
   using Ptr   = std::shared_ptr<ITweakSelection>;
   using Point = Scroom::Utils::Point<double>;
 
-  [[nodiscard]] virtual Selection tweakSelection(Selection selection) const = 0;
-  virtual void                    setAspectRatio(Point aspectRatio_)        = 0;
+  [[nodiscard]] Selection tweakSelection(Selection selection) const override = 0;
+  virtual void            setAspectRatio(Point aspectRatio_)                 = 0;
 };
 
 class TweakSelection : public ITweakSelection
@@ -234,7 +235,7 @@ public:
 };
 
 
-class TweakPositionTextBox
+class TweakPositionTextBox : public Scroom::Utils::ITweakPositionTextBox
 {
 public:
   using Ptr   = std::shared_ptr<TweakPositionTextBox>;
@@ -242,7 +243,8 @@ public:
 
   static Ptr create(Point aspectRatio_) { return Ptr(new TweakPositionTextBox(aspectRatio_)); }
 
-  [[nodiscard]] Point parse(std::string_view x, std::string_view y, Scroom::Utils::Point<int> drawingAreaSize, int zoom) const
+  [[nodiscard]] Point
+    parse(std::string_view x, std::string_view y, Scroom::Utils::Point<int> drawingAreaSize, int zoom) const override
   {
     const Point entered_position(boost::lexical_cast<double>(x), boost::lexical_cast<double>(y));
 
@@ -250,7 +252,7 @@ public:
   }
 
   [[nodiscard]] std::pair<std::string, std::string>
-    display(Point position, Scroom::Utils::Point<int> drawingAreaSize, int zoom) const
+    display(Point position, Scroom::Utils::Point<int> drawingAreaSize, int zoom) const override
   {
     const Point center = (position + drawingAreaSize.to<double>() / pixelSizeFromZoom(zoom) / 2) / aspectRatio;
 
@@ -272,20 +274,23 @@ private:
 ////////////////////////////////////////////////////////////////////////
 /// Helpers
 
-static Scroom::Utils::Point<double> eventToPoint(GdkEventButton* event) { return {event->x, event->y}; }
-
-static Scroom::Utils::Point<double> eventToPoint(GdkEventMotion* event) { return {event->x, event->y}; }
-
-// This one has too much View-internal knowledge to hide in callbacks.cc
-static void on_newWindow_activate(GtkMenuItem* /*unused*/, gpointer user_data)
+namespace
 {
-  PresentationInterface::WeakPtr const& wp = *static_cast<PresentationInterface::WeakPtr*>(user_data); // Yuk!
-  PresentationInterface::Ptr const      p  = wp.lock();
-  if(p)
+  Scroom::Utils::Point<double> eventToPoint(GdkEventButton* event) { return {event->x, event->y}; }
+
+  Scroom::Utils::Point<double> eventToPoint(GdkEventMotion* event) { return {event->x, event->y}; }
+
+  // This one has too much View-internal knowledge to hide in callbacks.cc
+  void on_newWindow_activate(GtkMenuItem* /*unused*/, gpointer user_data)
   {
-    find_or_create_scroom(p);
+    PresentationInterface::WeakPtr const& wp = *static_cast<PresentationInterface::WeakPtr*>(user_data); // Yuk!
+    PresentationInterface::Ptr const      p  = wp.lock();
+    if(p)
+    {
+      find_or_create_scroom(p);
+    }
   }
-}
+} // namespace
 
 ////////////////////////////////////////////////////////////////////////
 
