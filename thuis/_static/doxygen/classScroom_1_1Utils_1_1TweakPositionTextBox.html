@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Scroom
-   &#160;<span id="projectnumber">0.14-18-g56fa8f1b</span>
+   &#160;<span id="projectnumber">0.14-19-gc99d576c</span>
    </div>
   </td>
  </tr>
@@ -191,9 +191,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      : <a class="code" href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#a28adbe70ee1f195fc88e3173e2513f6a">aspectRatio</a>(aspectRatio_)</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      : <a class="code" href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#a28adbe70ee1f195fc88e3173e2513f6a">aspectRatio</a>(aspectRatio_)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#ab65e0675546d7bfc857a584e0e61fe8f">create()</a>.</p>
 <div class="dynheader">
@@ -232,7 +232,7 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#aba1707c4556685e1846886b46517c07b">Ptr</a>(<span class="keyword">new</span> <a class="code" href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#a166bd7e02fd45ef04be948d731fe1672">TweakPositionTextBox</a>(aspectRatio_)); }</div>
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#aba1707c4556685e1846886b46517c07b">Ptr</a>(<span class="keyword">new</span> <a class="code" href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#a166bd7e02fd45ef04be948d731fe1672">TweakPositionTextBox</a>(aspectRatio_)); }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -284,11 +284,11 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      <span class="keyword">const</span> <a class="code" href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#a6d018cf9b8d9e65cf9343c0931988060">Point</a> <a class="code" href="namespaceScroom_1_1Utils.html#a6af7d77e767482d135292f17d5dcce30">center</a> = (position + drawingAreaSize.<a class="code" href="classScroom_1_1Utils_1_1Point.html#a725de6d557d3a949ed737080514c9526">to</a>&lt;<span class="keywordtype">double</span>&gt;() / <a class="code" href="cairo-helpers_8hh.html#ac7a152a4cc864e9c67acbc6686a9d3a4">pixelSizeFromZoom</a>(zoom) / 2) / <a class="code" href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#a28adbe70ee1f195fc88e3173e2513f6a">aspectRatio</a>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <span class="keywordflow">return</span> std::make_pair(fmt::format(<span class="stringliteral">&quot;{:.0f}&quot;</span>, <a class="code" href="namespaceScroom_1_1Utils.html#a6af7d77e767482d135292f17d5dcce30">center</a>.x), fmt::format(<span class="stringliteral">&quot;{:.0f}&quot;</span>, <a class="code" href="namespaceScroom_1_1Utils.html#a6af7d77e767482d135292f17d5dcce30">center</a>.y));</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      <span class="keyword">const</span> <a class="code" href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#a6d018cf9b8d9e65cf9343c0931988060">Point</a> <a class="code" href="namespaceScroom_1_1Utils.html#a6af7d77e767482d135292f17d5dcce30">center</a> = (position + drawingAreaSize.<a class="code" href="classScroom_1_1Utils_1_1Point.html#a725de6d557d3a949ed737080514c9526">to</a>&lt;<span class="keywordtype">double</span>&gt;() / <a class="code" href="cairo-helpers_8hh.html#ac7a152a4cc864e9c67acbc6686a9d3a4">pixelSizeFromZoom</a>(zoom) / 2) / <a class="code" href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#a28adbe70ee1f195fc88e3173e2513f6a">aspectRatio</a>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      <span class="keywordflow">return</span> std::make_pair(fmt::format(<span class="stringliteral">&quot;{:.0f}&quot;</span>, <a class="code" href="namespaceScroom_1_1Utils.html#a6af7d77e767482d135292f17d5dcce30">center</a>.x), fmt::format(<span class="stringliteral">&quot;{:.0f}&quot;</span>, <a class="code" href="namespaceScroom_1_1Utils.html#a6af7d77e767482d135292f17d5dcce30">center</a>.y));</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -350,11 +350,11 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <span class="keyword">const</span> <a class="code" href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#a6d018cf9b8d9e65cf9343c0931988060">Point</a> entered_position(boost::lexical_cast&lt;double&gt;(x), boost::lexical_cast&lt;double&gt;(y));</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      <span class="keywordflow">return</span> entered_position * <a class="code" href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#a28adbe70ee1f195fc88e3173e2513f6a">aspectRatio</a> - drawingAreaSize.<a class="code" href="classScroom_1_1Utils_1_1Point.html#a725de6d557d3a949ed737080514c9526">to</a>&lt;<span class="keywordtype">double</span>&gt;() / <a class="code" href="cairo-helpers_8hh.html#ac7a152a4cc864e9c67acbc6686a9d3a4">pixelSizeFromZoom</a>(zoom) / 2;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      <span class="keyword">const</span> <a class="code" href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#a6d018cf9b8d9e65cf9343c0931988060">Point</a> entered_position(boost::lexical_cast&lt;double&gt;(x), boost::lexical_cast&lt;double&gt;(y));</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      <span class="keywordflow">return</span> entered_position * <a class="code" href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#a28adbe70ee1f195fc88e3173e2513f6a">aspectRatio</a> - drawingAreaSize.<a class="code" href="classScroom_1_1Utils_1_1Point.html#a725de6d557d3a949ed737080514c9526">to</a>&lt;<span class="keywordtype">double</span>&gt;() / <a class="code" href="cairo-helpers_8hh.html#ac7a152a4cc864e9c67acbc6686a9d3a4">pixelSizeFromZoom</a>(zoom) / 2;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -391,7 +391,7 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;{ <a class="code" href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#a28adbe70ee1f195fc88e3173e2513f6a">aspectRatio</a> = aspectRatio_; }</div>
+<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;{ <a class="code" href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#a28adbe70ee1f195fc88e3173e2513f6a">aspectRatio</a> = aspectRatio_; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -425,13 +425,13 @@ Here is the call graph for this function:</div>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassScroom_1_1Utils_1_1TweakPositionTextBox_html_a6d018cf9b8d9e65cf9343c0931988060"><div class="ttname"><a href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#a6d018cf9b8d9e65cf9343c0931988060">Scroom::Utils::TweakPositionTextBox::Point</a></div><div class="ttdeci">Scroom::Utils::Point&lt; double &gt; Point</div><div class="ttdef"><b>Definition:</b> tweak-view.cc:56</div></div>
-<div class="ttc" id="aclassScroom_1_1Utils_1_1TweakPositionTextBox_html_a166bd7e02fd45ef04be948d731fe1672"><div class="ttname"><a href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#a166bd7e02fd45ef04be948d731fe1672">Scroom::Utils::TweakPositionTextBox::TweakPositionTextBox</a></div><div class="ttdeci">TweakPositionTextBox(Point aspectRatio_)</div><div class="ttdef"><b>Definition:</b> tweak-view.cc:78</div></div>
+<div class="ttc" id="aclassScroom_1_1Utils_1_1TweakPositionTextBox_html_a6d018cf9b8d9e65cf9343c0931988060"><div class="ttname"><a href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#a6d018cf9b8d9e65cf9343c0931988060">Scroom::Utils::TweakPositionTextBox::Point</a></div><div class="ttdeci">Scroom::Utils::Point&lt; double &gt; Point</div><div class="ttdef"><b>Definition:</b> tweak-view.cc:60</div></div>
+<div class="ttc" id="aclassScroom_1_1Utils_1_1TweakPositionTextBox_html_a166bd7e02fd45ef04be948d731fe1672"><div class="ttname"><a href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#a166bd7e02fd45ef04be948d731fe1672">Scroom::Utils::TweakPositionTextBox::TweakPositionTextBox</a></div><div class="ttdeci">TweakPositionTextBox(Point aspectRatio_)</div><div class="ttdef"><b>Definition:</b> tweak-view.cc:82</div></div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1Point_html_a725de6d557d3a949ed737080514c9526"><div class="ttname"><a href="classScroom_1_1Utils_1_1Point.html#a725de6d557d3a949ed737080514c9526">Scroom::Utils::Point::to</a></div><div class="ttdeci">Point&lt; U &gt; to() const</div><div class="ttdef"><b>Definition:</b> point.hh:103</div></div>
 <div class="ttc" id="acairo-helpers_8hh_html_ac7a152a4cc864e9c67acbc6686a9d3a4"><div class="ttname"><a href="cairo-helpers_8hh.html#ac7a152a4cc864e9c67acbc6686a9d3a4">pixelSizeFromZoom</a></div><div class="ttdeci">double pixelSizeFromZoom(int zoom)</div><div class="ttdef"><b>Definition:</b> cairo-helpers.cc:112</div></div>
 <div class="ttc" id="anamespaceScroom_1_1Utils_html_a6af7d77e767482d135292f17d5dcce30"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#a6af7d77e767482d135292f17d5dcce30">Scroom::Utils::center</a></div><div class="ttdeci">T center(Segment&lt; T &gt; s)</div><div class="ttdef"><b>Definition:</b> linearsegment.hh:246</div></div>
-<div class="ttc" id="aclassScroom_1_1Utils_1_1TweakPositionTextBox_html_a28adbe70ee1f195fc88e3173e2513f6a"><div class="ttname"><a href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#a28adbe70ee1f195fc88e3173e2513f6a">Scroom::Utils::TweakPositionTextBox::aspectRatio</a></div><div class="ttdeci">Point aspectRatio</div><div class="ttdef"><b>Definition:</b> tweak-view.cc:84</div></div>
-<div class="ttc" id="aclassScroom_1_1Utils_1_1TweakPositionTextBox_html_aba1707c4556685e1846886b46517c07b"><div class="ttname"><a href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#aba1707c4556685e1846886b46517c07b">Scroom::Utils::TweakPositionTextBox::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; TweakPositionTextBox &gt; Ptr</div><div class="ttdef"><b>Definition:</b> tweak-view.cc:55</div></div>
+<div class="ttc" id="aclassScroom_1_1Utils_1_1TweakPositionTextBox_html_a28adbe70ee1f195fc88e3173e2513f6a"><div class="ttname"><a href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#a28adbe70ee1f195fc88e3173e2513f6a">Scroom::Utils::TweakPositionTextBox::aspectRatio</a></div><div class="ttdeci">Point aspectRatio</div><div class="ttdef"><b>Definition:</b> tweak-view.cc:88</div></div>
+<div class="ttc" id="aclassScroom_1_1Utils_1_1TweakPositionTextBox_html_aba1707c4556685e1846886b46517c07b"><div class="ttname"><a href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#aba1707c4556685e1846886b46517c07b">Scroom::Utils::TweakPositionTextBox::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; TweakPositionTextBox &gt; Ptr</div><div class="ttdef"><b>Definition:</b> tweak-view.cc:59</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
