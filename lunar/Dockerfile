@@ -38,7 +38,7 @@ RUN \
     gpg --dearmor - > /etc/apt/trusted.gpg.d/kitware-archive-keyring.gpg
 
 RUN \
-  if [ "lunar" = "focal" -o  "lunar" = "bionic" ] ; then \
+  if [ "lunar" = "focal" ] ; then \
     echo 'deb https://apt.kitware.com/ubuntu/ lunar main' > /etc/apt/sources.list.d/kitware.list ; \
   fi
 
@@ -72,14 +72,14 @@ RUN \
     gpg --dearmor - > /etc/apt/trusted.gpg.d/llvm-snapshot.gpg
   
 RUN \
-  if [ "lunar" = "bionic" ] || [ "lunar" = "focal" ] ; then \
+  if [ "lunar" = "focal" ] ; then \
     echo 'deb http://apt.llvm.org/lunar/ llvm-toolchain-lunar-11 main' > /etc/apt/sources.list.d/llvm.list ; \
   fi
   
 RUN \
   export DEBIAN_FRONTEND=noninteractive && \
   apt-get update -y && \
-  if [ "lunar" = "bionic" ] || [ "lunar" = "focal" ] ; then \
+  if [ "lunar" = "focal" ] ; then \
     apt-get install -y \
       clang++-11 \
       clang-11 && \

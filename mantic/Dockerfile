@@ -2,7 +2,7 @@
 # This file is generated from Dockerfile.in. Do not edit!
 #
 
-FROM ubuntu:kinetic
+FROM ubuntu:mantic
 
 MAINTAINER kees-jan@dijkzeul.eu
 
@@ -38,8 +38,8 @@ RUN \
     gpg --dearmor - > /etc/apt/trusted.gpg.d/kitware-archive-keyring.gpg
 
 RUN \
-  if [ "kinetic" = "focal" -o  "kinetic" = "bionic" ] ; then \
-    echo 'deb https://apt.kitware.com/ubuntu/ kinetic main' > /etc/apt/sources.list.d/kitware.list ; \
+  if [ "mantic" = "focal" ] ; then \
+    echo 'deb https://apt.kitware.com/ubuntu/ mantic main' > /etc/apt/sources.list.d/kitware.list ; \
   fi
 
 RUN \
@@ -72,14 +72,14 @@ RUN \
     gpg --dearmor - > /etc/apt/trusted.gpg.d/llvm-snapshot.gpg
   
 RUN \
-  if [ "kinetic" = "bionic" ] || [ "kinetic" = "focal" ] ; then \
-    echo 'deb http://apt.llvm.org/kinetic/ llvm-toolchain-kinetic-11 main' > /etc/apt/sources.list.d/llvm.list ; \
+  if [ "mantic" = "focal" ] ; then \
+    echo 'deb http://apt.llvm.org/mantic/ llvm-toolchain-mantic-11 main' > /etc/apt/sources.list.d/llvm.list ; \
   fi
   
 RUN \
   export DEBIAN_FRONTEND=noninteractive && \
   apt-get update -y && \
-  if [ "kinetic" = "bionic" ] || [ "kinetic" = "focal" ] ; then \
+  if [ "mantic" = "focal" ] ; then \
     apt-get install -y \
       clang++-11 \
       clang-11 && \

@@ -34,7 +34,7 @@ RUN \
     gpg --dearmor - > /etc/apt/trusted.gpg.d/kitware-archive-keyring.gpg
 
 RUN \
-  if [ "@DISTRIB_CODENAME@" = "focal" -o  "@DISTRIB_CODENAME@" = "bionic" ] ; then \
+  if [ "@DISTRIB_CODENAME@" = "focal" ] ; then \
     echo 'deb https://apt.kitware.com/ubuntu/ @DISTRIB_CODENAME@ main' > /etc/apt/sources.list.d/kitware.list ; \
   fi
 
@@ -68,14 +68,14 @@ RUN \
     gpg --dearmor - > /etc/apt/trusted.gpg.d/llvm-snapshot.gpg
   
 RUN \
-  if [ "@DISTRIB_CODENAME@" = "bionic" ] || [ "@DISTRIB_CODENAME@" = "focal" ] ; then \
+  if [ "@DISTRIB_CODENAME@" = "focal" ] ; then \
     echo 'deb http://apt.llvm.org/@DISTRIB_CODENAME@/ llvm-toolchain-@DISTRIB_CODENAME@-11 main' > /etc/apt/sources.list.d/llvm.list ; \
   fi
   
 RUN \
   export DEBIAN_FRONTEND=noninteractive && \
   apt-get update -y && \
-  if [ "@DISTRIB_CODENAME@" = "bionic" ] || [ "@DISTRIB_CODENAME@" = "focal" ] ; then \
+  if [ "@DISTRIB_CODENAME@" = "focal" ] ; then \
     apt-get install -y \
       clang++-11 \
       clang-11 && \

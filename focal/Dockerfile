@@ -38,7 +38,7 @@ RUN \
     gpg --dearmor - > /etc/apt/trusted.gpg.d/kitware-archive-keyring.gpg
 
 RUN \
-  if [ "focal" = "focal" -o  "focal" = "bionic" ] ; then \
+  if [ "focal" = "focal" ] ; then \
     echo 'deb https://apt.kitware.com/ubuntu/ focal main' > /etc/apt/sources.list.d/kitware.list ; \
   fi
 
@@ -72,14 +72,14 @@ RUN \
     gpg --dearmor - > /etc/apt/trusted.gpg.d/llvm-snapshot.gpg
   
 RUN \
-  if [ "focal" = "bionic" ] || [ "focal" = "focal" ] ; then \
+  if [ "focal" = "focal" ] ; then \
     echo 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-11 main' > /etc/apt/sources.list.d/llvm.list ; \
   fi
   
 RUN \
   export DEBIAN_FRONTEND=noninteractive && \
   apt-get update -y && \
-  if [ "focal" = "bionic" ] || [ "focal" = "focal" ] ; then \
+  if [ "focal" = "focal" ] ; then \
     apt-get install -y \
       clang++-11 \
       clang-11 && \
