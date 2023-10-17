@@ -70,7 +70,3 @@ The user may have requested 20 (or more) bitmaps to be loaded.
 If he did, loading will be done sequentially, in the background.
 If you were to show a (blocking) popup, the user would not know to which Scroom windows the popup belongs, and you would delay the loading of the other bitmaps.
 
-
-
-
-

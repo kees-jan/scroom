@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Scroom
-   &#160;<span id="projectnumber">0.14-7-g66f4bde74</span>
+   &#160;<span id="projectnumber">0.14-9-g78d5b109</span>
    </div>
   </td>
  </tr>
@@ -586,7 +586,7 @@ Here is the call graph for this function:</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <a class="code" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a8eade4f3c6520d1240989f07c1bf9311">state</a> = <a class="code" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a50973e173ac55206712bce2ecfe361cea012fa49753d5787b58e4eb3454a1bf56">DIRTY</a>;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;      <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <a class="code" href="assertions_8hh.html#a2679784148a3d02d3f8ffd6ec2ae80f4">defect_message</a>(fmt::format(<span class="stringliteral">&quot;Illegal state {}&quot;</span>, <a class="code" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a8eade4f3c6520d1240989f07c1bf9311">state</a>));</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <a class="code" href="assertions_8hh.html#a2679784148a3d02d3f8ffd6ec2ae80f4">defect_message</a>(fmt::format(<span class="stringliteral">&quot;Illegal state {}&quot;</span>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a8eade4f3c6520d1240989f07c1bf9311">state</a>)));</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      }</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
