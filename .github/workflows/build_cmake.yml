@@ -22,23 +22,16 @@ jobs:
     env:
       BUILD_TYPE: ${{ matrix.type }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: recursive
 
-      - name: Prepare ccache timestamp
-        id: ccache_cache_timestamp
-        shell: cmake -P {0}
-        run: |
-          string(TIMESTAMP current_date "%Y-%m-%d-%H;%M;%S" UTC)
-          message("::set-output name=timestamp::${current_date}")
-
       - name: ccache cache files
-        uses: actions/cache@v1.1.0
+        uses: actions/cache@v3
         with:
           path: .ccache
-          key: ${{ matrix.os }}-${{ env.BUILD_TYPE }}-ccache-${{ steps.ccache_cache_timestamp.outputs.timestamp }}
+          key: ${{ matrix.os }}-${{ env.BUILD_TYPE }}-ccache-${{ github.run_id }}
           restore-keys: |
             ${{ matrix.os }}-${{ env.BUILD_TYPE }}-ccache-
 
@@ -91,7 +84,7 @@ jobs:
   build-windows:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: recursive
@@ -120,23 +113,23 @@ jobs:
           build_scripts\github\mingwdo
           build_scripts/github/build-cmake-mingw
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           path: Scroom-*Source.tar.gz
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           path: scroom-win-*.zip
 
   build-many-ubuntus:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
           path: 'scroom-src'
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           ref: 'docker-build-containers'
           path: 'scroom-build-containers'

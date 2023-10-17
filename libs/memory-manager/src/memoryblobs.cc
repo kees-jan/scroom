@@ -101,7 +101,7 @@ namespace Scroom::MemoryBlobs
         state = DIRTY;
         break;
       default:
-        defect_message(fmt::format("Illegal state {}", state));
+        defect_message(fmt::format("Illegal state {}", static_cast<int>(state)));
         break;
       }
 

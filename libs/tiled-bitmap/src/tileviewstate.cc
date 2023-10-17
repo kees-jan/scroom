@@ -158,7 +158,7 @@ void TileViewState::process(const ThreadPool::WeakQueue::Ptr& wq)
       case COMPUTING_ZOOM:
       case DONE:
       default:
-        defect_message(fmt::format("PANIC: Don't know what to do in state {}", state));
+        defect_message(fmt::format("PANIC: Don't know what to do in state {}", static_cast<int>(state)));
         return;
       }
 
