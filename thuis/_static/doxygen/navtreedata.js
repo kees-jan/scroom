@@ -82,7 +82,7 @@ var NAVTREEINDEX =
 "classTransformPresentation.html#a0bb3a42de4a22b82be66bffff34c4e7d",
 "classViewInterfaceStub.html#a1da471fb3e89384c2461ee36683e413d",
 "dir_18d617efee16a81bd711d5141962eab4.html",
-"gtk-helpers_8cc.html",
+"gtk-helpers_8cc.html#a23764a07c608b18aa216c15eb981a18b",
 "namespacefmt.html",
 "sampleiterator-tests_8cc.html#a7761b437139a1903b3fb12eb94ad1b60",
 "tiledbitmapinterface_8hh_source.html"

@@ -14,6 +14,7 @@ var namespaces_dup =
     [ "anonymous_namespace{tiledbitmappresentation.cc}", "namespaceanonymous__namespace_02tiledbitmappresentation_8cc_03.html", null ],
     [ "anonymous_namespace{transparentoverlaypresentation.cc}", "namespaceanonymous__namespace_02transparentoverlaypresentation_8cc_03.html", null ],
     [ "anonymous_namespace{transparentoverlayviewinfo.cc}", "namespaceanonymous__namespace_02transparentoverlayviewinfo_8cc_03.html", null ],
+    [ "anonymous_namespace{view.cc}", "namespaceanonymous__namespace_02view_8cc_03.html", null ],
     [ "Colors", "namespaceColors.html", null ],
     [ "conf", "namespaceconf.html", null ],
     [ "Detail", "namespaceDetail.html", null ],

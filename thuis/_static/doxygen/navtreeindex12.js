@@ -1,7 +1,7 @@
 var NAVTREEINDEX12 =
 {
-"namespacefmt.html":[1,0,17],
 "namespacefmt.html":[2,0,8],
+"namespacefmt.html":[1,0,18],
 "namespacemembers.html":[1,1,0],
 "namespacemembers_eval.html":[1,1,4],
 "namespacemembers_func.html":[1,1,1],

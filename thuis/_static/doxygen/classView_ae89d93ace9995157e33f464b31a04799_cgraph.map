@@ -1,19 +1,19 @@
 <map id="View::on_motion_notify" name="View::on_motion_notify">
-<area shape="rect" id="node1" title=" " alt="" coords="5,132,180,159"/>
-<area shape="rect" id="node2" href="$namespaceSelectionType.html#aebc501deb9a30b47b6b63f09abcb98bc" title=" " alt="" coords="228,5,405,32"/>
-<area shape="rect" id="node3" href="$view_8cc.html#aa0365e14a1ae376e77bc105fad8be98f" title="Helpers." alt="" coords="263,56,370,83"/>
-<area shape="rect" id="node4" href="$classView.html#a95faa753386b674958c19010de91adac" title=" " alt="" coords="475,31,602,57"/>
-<area shape="rect" id="node5" href="$cairo-helpers_8hh.html#ac7a152a4cc864e9c67acbc6686a9d3a4" title=" " alt="" coords="969,409,1119,436"/>
-<area shape="rect" id="node6" href="$classView.html#acd6ecf221aa9f481ce878435f07a1fc4" title=" " alt="" coords="255,157,378,184"/>
-<area shape="rect" id="node17" href="$classView.html#ab01e5d6f612fdebbcc349ab3733233d8" title=" " alt="" coords="672,402,912,443"/>
-<area shape="rect" id="node7" href="$classFreezable.html#ab8af0d7957ffe3a39c4296603439ad4b" title=" " alt="" coords="481,132,596,159"/>
-<area shape="rect" id="node8" href="$classView.html#ad01af006c74438002516f9697fffc7e3" title=" " alt="" coords="719,65,865,92"/>
-<area shape="rect" id="node10" href="$classView.html#a1c6bafe5c25990c0733f6d2b28df717f" title=" " alt="" coords="453,233,624,260"/>
-<area shape="rect" id="node16" href="$classView.html#a53280aa4b3288d4f81d4a840f98e5eb9" title=" " alt="" coords="460,81,617,108"/>
-<area shape="rect" id="node9" href="$classView.html#a7c6bc955a9ea12b76b49c2c47d508329" title=" " alt="" coords="960,212,1128,239"/>
-<area shape="rect" id="node11" href="$classScroom_1_1Utils_1_1Rectangle.html#a1262f445c07c33e16069e2497aed581f" title=" " alt="" coords="701,285,883,326"/>
-<area shape="rect" id="node12" href="$classView.html#a95a1bbd56174466f67f67c6d4c39551b" title=" " alt="" coords="711,351,873,377"/>
-<area shape="rect" id="node13" href="$classScroom_1_1Utils_1_1Rectangle.html#aac53b13b110251e6666a6e8499c19f27" title=" " alt="" coords="701,117,883,158"/>
-<area shape="rect" id="node14" href="$classScroom_1_1Utils_1_1Rectangle.html#a72976ed3a84a5c482d396038aa67f077" title=" " alt="" coords="693,183,891,209"/>
-<area shape="rect" id="node15" href="$classScroom_1_1Utils_1_1Rectangle.html#a405cfffb11cdb9f2fa5600e2bf15231c" title=" " alt="" coords="693,233,891,260"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,148,180,175"/>
+<area shape="rect" id="node2" href="$namespaceSelectionType.html#aebc501deb9a30b47b6b63f09abcb98bc" title=" " alt="" coords="231,5,408,32"/>
+<area shape="rect" id="node3" href="$namespaceanonymous__namespace_02view_8cc_03.html#a8e55c5b12c3a2068d5c9a163650eef31" title=" " alt="" coords="228,57,411,98"/>
+<area shape="rect" id="node4" href="$classView.html#a95faa753386b674958c19010de91adac" title=" " alt="" coords="481,47,607,73"/>
+<area shape="rect" id="node5" href="$cairo-helpers_8hh.html#ac7a152a4cc864e9c67acbc6686a9d3a4" title=" " alt="" coords="974,425,1125,452"/>
+<area shape="rect" id="node6" href="$classView.html#acd6ecf221aa9f481ce878435f07a1fc4" title=" " alt="" coords="258,173,381,200"/>
+<area shape="rect" id="node17" href="$classView.html#ab01e5d6f612fdebbcc349ab3733233d8" title=" " alt="" coords="677,418,917,459"/>
+<area shape="rect" id="node7" href="$classFreezable.html#ab8af0d7957ffe3a39c4296603439ad4b" title=" " alt="" coords="487,148,601,175"/>
+<area shape="rect" id="node8" href="$classView.html#ad01af006c74438002516f9697fffc7e3" title=" " alt="" coords="724,81,871,108"/>
+<area shape="rect" id="node10" href="$classView.html#a1c6bafe5c25990c0733f6d2b28df717f" title=" " alt="" coords="459,249,629,276"/>
+<area shape="rect" id="node16" href="$classView.html#a53280aa4b3288d4f81d4a840f98e5eb9" title=" " alt="" coords="465,97,623,124"/>
+<area shape="rect" id="node9" href="$classView.html#a7c6bc955a9ea12b76b49c2c47d508329" title=" " alt="" coords="965,228,1133,255"/>
+<area shape="rect" id="node11" href="$classScroom_1_1Utils_1_1Rectangle.html#a1262f445c07c33e16069e2497aed581f" title=" " alt="" coords="706,301,889,342"/>
+<area shape="rect" id="node12" href="$classView.html#a95a1bbd56174466f67f67c6d4c39551b" title=" " alt="" coords="716,367,879,393"/>
+<area shape="rect" id="node13" href="$classScroom_1_1Utils_1_1Rectangle.html#aac53b13b110251e6666a6e8499c19f27" title=" " alt="" coords="706,133,889,174"/>
+<area shape="rect" id="node14" href="$classScroom_1_1Utils_1_1Rectangle.html#a72976ed3a84a5c482d396038aa67f077" title=" " alt="" coords="698,199,897,225"/>
+<area shape="rect" id="node15" href="$classScroom_1_1Utils_1_1Rectangle.html#a405cfffb11cdb9f2fa5600e2bf15231c" title=" " alt="" coords="698,249,897,276"/>
 </map>

@@ -1,13 +1,13 @@
 <map id="on_close_activate" name="on_close_activate">
-<area shape="rect" id="node1" title=" " alt="" coords="1239,949,1377,976"/>
-<area shape="rect" id="node2" href="$callbacks_8hh.html#a19dc44b0b71d02dc59a3c16fdf3fe48b" title=" " alt="" coords="1072,949,1191,976"/>
-<area shape="rect" id="node3" href="$callbacks_8hh.html#a6a123442252e099c84849ff0ad12d41a" title=" " alt="" coords="855,781,1024,808"/>
-<area shape="rect" id="node34" href="$callbacks_8hh.html#ad1e18a647c5ecc3a2235b4e14f08bd74" title=" " alt="" coords="858,924,1021,951"/>
-<area shape="rect" id="node4" href="$loader_8hh.html#aa16c64386dde90b66ae796ec3183dcef" title=" " alt="" coords="683,332,746,359"/>
-<area shape="rect" id="node22" href="$loader_8hh.html#a6b10f1e940c5aed1e9cdfa35396c46c2" title=" " alt="" coords="689,756,740,783"/>
+<area shape="rect" id="node1" title=" " alt="" coords="1255,979,1393,1005"/>
+<area shape="rect" id="node2" href="$callbacks_8hh.html#a19dc44b0b71d02dc59a3c16fdf3fe48b" title=" " alt="" coords="1088,979,1207,1005"/>
+<area shape="rect" id="node3" href="$callbacks_8hh.html#a6a123442252e099c84849ff0ad12d41a" title=" " alt="" coords="871,789,1040,816"/>
+<area shape="rect" id="node34" href="$callbacks_8hh.html#ad1e18a647c5ecc3a2235b4e14f08bd74" title=" " alt="" coords="874,953,1037,980"/>
+<area shape="rect" id="node4" href="$loader_8hh.html#aa16c64386dde90b66ae796ec3183dcef" title=" " alt="" coords="691,332,754,359"/>
+<area shape="rect" id="node22" href="$loader_8hh.html#a6b10f1e940c5aed1e9cdfa35396c46c2" title=" " alt="" coords="697,756,748,783"/>
 <area shape="rect" id="node24" href="$callbacks_8hh.html#afd41e159402c4fc0b8c3341a372d7ce9" title=" " alt="" coords="326,705,513,732"/>
-<area shape="rect" id="node29" href="$view_8cc.html#a3c28481536cbc8ae93fb2827dc0308e6" title=" " alt="" coords="623,807,807,833"/>
-<area shape="rect" id="node33" href="$classScroomInterfaceImpl.html#a0619433d662056ef32b8f99d77cb17ee" title=" " alt="" coords="635,858,794,899"/>
+<area shape="rect" id="node29" href="$namespaceanonymous__namespace_02view_8cc_03.html#aca14a2deaa3262e3245a3968fd70f01d" title=" " alt="" coords="623,807,823,863"/>
+<area shape="rect" id="node33" href="$classScroomInterfaceImpl.html#a0619433d662056ef32b8f99d77cb17ee" title=" " alt="" coords="643,887,802,929"/>
 <area shape="rect" id="node5" href="$threadpool-queue-tests_8cc.html#a13c62a1444abcfa534b3eb6d40ffa6ee" title=" " alt="" coords="324,5,515,32"/>
 <area shape="rect" id="node6" href="$classOperations1bpp.html#ae0382af873f87b3d6ef0fe118086ff8c" title=" " alt="" coords="334,56,505,83"/>
 <area shape="rect" id="node8" href="$classOperations8bpp.html#a93fc14c28a67cc03900d517f5f510d19" title=" " alt="" coords="334,107,505,133"/>
@@ -33,5 +33,5 @@
 <area shape="rect" id="node30" href="$classView.html#ad8081ad7f68e284ce29961be7a6126d3" title=" " alt="" coords="308,959,531,985"/>
 <area shape="rect" id="node31" href="$classView.html#ac4a77aaf7f803c7ddf77adba6e28a387" title=" " alt="" coords="27,918,194,959"/>
 <area shape="rect" id="node32" href="$classView.html#a10bfd0a564e56de855d3f5e5aa634eb0" title=" " alt="" coords="27,983,194,1025"/>
-<area shape="rect" id="node35" href="$gui_2src_2main_8cc.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="687,924,742,951"/>
+<area shape="rect" id="node35" href="$gui_2src_2main_8cc.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="695,953,750,980"/>
 </map>

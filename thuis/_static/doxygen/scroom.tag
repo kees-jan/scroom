@@ -1985,6 +1985,7 @@
     <class kind="class">TweakGridSelection</class>
     <class kind="class">TweakPixelSelection</class>
     <class kind="class">TweakPositionTextBox</class>
+    <namespace>anonymous_namespace{view.cc}</namespace>
     <member kind="define">
       <type>#define</type>
       <name>G_VALUE_INIT</name>
@@ -2049,25 +2050,25 @@
       <anchor>a4180268163d4a0eed52e0f42a1850271</anchor>
       <arglist>(Selection s)</arglist>
     </member>
-    <member kind="function" static="yes">
-      <type>static Scroom::Utils::Point&lt; double &gt;</type>
+    <member kind="function">
+      <type>Scroom::Utils::Point&lt; double &gt;</type>
       <name>eventToPoint</name>
-      <anchorfile>view_8cc.html</anchorfile>
-      <anchor>aa0365e14a1ae376e77bc105fad8be98f</anchor>
+      <anchorfile>namespaceanonymous__namespace_02view_8cc_03.html</anchorfile>
+      <anchor>ac416ce00f2ac0e8e75a697701b66f056</anchor>
       <arglist>(GdkEventButton *event)</arglist>
     </member>
-    <member kind="function" static="yes">
-      <type>static Scroom::Utils::Point&lt; double &gt;</type>
+    <member kind="function">
+      <type>Scroom::Utils::Point&lt; double &gt;</type>
       <name>eventToPoint</name>
-      <anchorfile>view_8cc.html</anchorfile>
-      <anchor>a3ec5fcdfe1eb5d0cec0451d66cadb99e</anchor>
+      <anchorfile>namespaceanonymous__namespace_02view_8cc_03.html</anchorfile>
+      <anchor>a8e55c5b12c3a2068d5c9a163650eef31</anchor>
       <arglist>(GdkEventMotion *event)</arglist>
     </member>
-    <member kind="function" static="yes">
-      <type>static void</type>
+    <member kind="function">
+      <type>void</type>
       <name>on_newWindow_activate</name>
-      <anchorfile>view_8cc.html</anchorfile>
-      <anchor>a3c28481536cbc8ae93fb2827dc0308e6</anchor>
+      <anchorfile>namespaceanonymous__namespace_02view_8cc_03.html</anchorfile>
+      <anchor>aca14a2deaa3262e3245a3968fd70f01d</anchor>
       <arglist>(GtkMenuItem *, gpointer user_data)</arglist>
     </member>
     <member kind="function" static="yes">
@@ -22966,15 +22967,15 @@
       <type>Point</type>
       <name>parse</name>
       <anchorfile>classTweakPositionTextBox.html</anchorfile>
-      <anchor>a2ceab334ed94eef703340ea84bca028b</anchor>
-      <arglist>(std::string_view x, std::string_view y, Scroom::Utils::Point&lt; int &gt; drawingAreaSize, int zoom) const</arglist>
+      <anchor>a0bbc8378d5b13a41bff39edc3fae7a6f</anchor>
+      <arglist>(std::string_view x, std::string_view y, Scroom::Utils::Point&lt; int &gt; drawingAreaSize, int zoom) const override</arglist>
     </member>
     <member kind="function">
       <type>std::pair&lt; std::string, std::string &gt;</type>
       <name>display</name>
       <anchorfile>classTweakPositionTextBox.html</anchorfile>
-      <anchor>afdd8293d90c2e2966483be8313208cb2</anchor>
-      <arglist>(Point position, Scroom::Utils::Point&lt; int &gt; drawingAreaSize, int zoom) const</arglist>
+      <anchor>ab6d2214df7eea20e26ed28f962659277</anchor>
+      <arglist>(Point position, Scroom::Utils::Point&lt; int &gt; drawingAreaSize, int zoom) const override</arglist>
     </member>
     <member kind="function">
       <type>void</type>
@@ -25045,6 +25046,31 @@
       <anchorfile>namespaceanonymous__namespace_02transparentoverlayviewinfo_8cc_03.html</anchorfile>
       <anchor>a706649399a1cf1938cfbfed014fd3917</anchor>
       <arglist>(GtkWidget *w, PresentationInterface::Ptr const &amp;p)</arglist>
+    </member>
+  </compound>
+  <compound kind="namespace">
+    <name>anonymous_namespace{view.cc}</name>
+    <filename>namespaceanonymous__namespace_02view_8cc_03.html</filename>
+    <member kind="function">
+      <type>Scroom::Utils::Point&lt; double &gt;</type>
+      <name>eventToPoint</name>
+      <anchorfile>namespaceanonymous__namespace_02view_8cc_03.html</anchorfile>
+      <anchor>ac416ce00f2ac0e8e75a697701b66f056</anchor>
+      <arglist>(GdkEventButton *event)</arglist>
+    </member>
+    <member kind="function">
+      <type>Scroom::Utils::Point&lt; double &gt;</type>
+      <name>eventToPoint</name>
+      <anchorfile>namespaceanonymous__namespace_02view_8cc_03.html</anchorfile>
+      <anchor>a8e55c5b12c3a2068d5c9a163650eef31</anchor>
+      <arglist>(GdkEventMotion *event)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>on_newWindow_activate</name>
+      <anchorfile>namespaceanonymous__namespace_02view_8cc_03.html</anchorfile>
+      <anchor>aca14a2deaa3262e3245a3968fd70f01d</anchor>
+      <arglist>(GtkMenuItem *, gpointer user_data)</arglist>
     </member>
   </compound>
   <compound kind="namespace">
