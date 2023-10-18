@@ -1,0 +1,52 @@
+<map id="create_scroom" name="create_scroom">
+<area shape="rect" id="node1" title=" " alt="" coords="5,778,124,805"/>
+<area shape="rect" id="node2" href="$classView.html#a1e1cc4861ca8e2919be4990c0a8fc8a1" title=" " alt="" coords="221,213,323,239"/>
+<area shape="rect" id="node8" href="$callbacks_8cc.html#aa368b65b001e2f9e44a1e69b3098881a" title=" " alt="" coords="201,341,343,367"/>
+<area shape="rect" id="node9" href="$callbacks_8cc.html#a30b2ed4bb389a1225baaa7ab3c8d9d88" title=" " alt="" coords="185,509,359,535"/>
+<area shape="rect" id="node15" href="$callbacks_8cc.html#a8052e42ad29aca43964bb04ea379f794" title=" " alt="" coords="179,458,365,485"/>
+<area shape="rect" id="node18" href="$callbacks_8cc.html#ab6e722c4fcdd409e30c2d81343ed771e" title=" " alt="" coords="203,677,341,703"/>
+<area shape="rect" id="node20" href="$callbacks_8cc.html#a9c37395ebdd4c59a37b6dc38d574a4d7" title=" " alt="" coords="175,392,369,433"/>
+<area shape="rect" id="node23" href="$callbacks_8cc.html#ae774492ed1bbe65c2041bf593ef6bb8f" title=" " alt="" coords="182,611,362,652"/>
+<area shape="rect" id="node26" href="$callbacks_8cc.html#a42fddb88db6e7c73e37aa07d1cf0de57" title=" " alt="" coords="187,727,357,754"/>
+<area shape="rect" id="node29" href="$callbacks_8cc.html#a0f6e53b3f2476af215a5c9c87e71e0b8" title=" " alt="" coords="183,559,361,586"/>
+<area shape="rect" id="node31" href="$callbacks_8cc.html#a6cd157f2cb298e0a89ab2916c618f9fe" title=" " alt="" coords="441,785,578,811"/>
+<area shape="rect" id="node36" href="$callbacks_8cc.html#aeba2cf448752ce6617c03f7dd34ffc7b" title=" " alt="" coords="679,996,854,1037"/>
+<area shape="rect" id="node37" href="$callbacks_8cc.html#a7980d0f43d68809786209209bde2fe19" title=" " alt="" coords="207,981,337,1007"/>
+<area shape="rect" id="node38" href="$callbacks_8cc.html#a23f3558fd7063da6c4f453eecfd85c70" title=" " alt="" coords="210,1082,334,1109"/>
+<area shape="rect" id="node41" href="$callbacks_8cc.html#a2490f653137e0dcddb138fae16974e07" title=" " alt="" coords="200,1133,344,1175"/>
+<area shape="rect" id="node43" href="$callbacks_8cc.html#a65f18cf64a4bafed7b32ded3cc902668" title=" " alt="" coords="208,829,336,855"/>
+<area shape="rect" id="node45" href="$callbacks_8cc.html#aef7e97ad6ad51b450eb4c3424bb94ce8" title=" " alt="" coords="172,1199,372,1226"/>
+<area shape="rect" id="node47" href="$callbacks_8cc.html#ab216dda22af978bbc755a31acf60f302" title=" " alt="" coords="206,1250,338,1277"/>
+<area shape="rect" id="node48" href="$callbacks_8cc.html#adfed951a3aff6a5b114ac21d07119be1" title=" " alt="" coords="426,1031,593,1058"/>
+<area shape="rect" id="node49" href="$callbacks_8cc.html#a70acaa5f0cfece779fc5241e113e95d3" title=" " alt="" coords="429,886,589,913"/>
+<area shape="rect" id="node3" href="$classView.html#aa2614af92e98a9841f3cc666a7fc3fd8" title=" " alt="" coords="463,137,556,163"/>
+<area shape="rect" id="node4" href="$classTweakGridSelection.html#a64bd6f2b5e49b54c3b0661f71df0dd69" title=" " alt="" coords="691,5,842,47"/>
+<area shape="rect" id="node5" href="$classTweakPixelSelection.html#a35a1a260e43e6ef70c7437c7bb53b0f9" title=" " alt="" coords="689,71,844,112"/>
+<area shape="rect" id="node6" href="$namespaceSelectionType.html#a9f0e8fd7cec2332d694d5a898cff9dc9" title=" " alt="" coords="690,137,843,163"/>
+<area shape="rect" id="node7" href="$namespaceSelectionType.html#aa8763b7e1473f7e5d1e2c8d5b86fe49f" title=" " alt="" coords="689,187,845,214"/>
+<area shape="rect" id="node10" href="$classView.html#a2418b690f9ce26fe94d8398b2f409d51" title=" " alt="" coords="429,461,590,487"/>
+<area shape="rect" id="node11" href="$namespaceSelectionType.html#aebc501deb9a30b47b6b63f09abcb98bc" title=" " alt="" coords="678,355,855,382"/>
+<area shape="rect" id="node12" href="$view_8cc.html#aa0365e14a1ae376e77bc105fad8be98f" title="Helpers." alt="" coords="713,406,820,433"/>
+<area shape="rect" id="node13" href="$classView.html#ab01e5d6f612fdebbcc349ab3733233d8" title=" " alt="" coords="647,457,887,499"/>
+<area shape="rect" id="node14" href="$cairo-helpers_8hh.html#ac7a152a4cc864e9c67acbc6686a9d3a4" title=" " alt="" coords="961,519,1111,546"/>
+<area shape="rect" id="node16" href="$classView.html#a058c1d7efe7c7d68cbe9cefeb0601bfa" title=" " alt="" coords="420,406,599,433"/>
+<area shape="rect" id="node17" href="$classView.html#a95faa753386b674958c19010de91adac" title=" " alt="" coords="973,305,1099,331"/>
+<area shape="rect" id="node19" href="$classView.html#adcf1d13f04a74c014c0779fcbeedd751" title=" " alt="" coords="465,633,554,659"/>
+<area shape="rect" id="node21" href="$classView.html#a577e40ee81a286eb3297ee8f42594440" title=" " alt="" coords="437,301,581,327"/>
+<area shape="rect" id="node22" href="$classView.html#a9dd1ccdb3c0eeaa495fe11594839081c" title=" " alt="" coords="683,239,850,280"/>
+<area shape="rect" id="node24" href="$classView.html#a7a4cd04a39fff643d73565bfeaa058c2" title=" " alt="" coords="456,582,563,609"/>
+<area shape="rect" id="node25" href="$namespaceScroom_1_1Utils.html#ab180ef35718c488735a883d3798c6c8b" title=" " alt="" coords="674,675,859,702"/>
+<area shape="rect" id="node27" href="$classView.html#a0c5a8a1687c24f152d6966c9cf8eb7f8" title=" " alt="" coords="435,734,583,761"/>
+<area shape="rect" id="node28" href="$classView.html#a5cb2ee2c3a800872fdeeac11b835db94" title=" " alt="" coords="427,683,591,710"/>
+<area shape="rect" id="node30" href="$classView.html#ae89d93ace9995157e33f464b31a04799" title=" " alt="" coords="422,518,597,545"/>
+<area shape="rect" id="node32" href="$callbacks_8cc.html#a99df60712480e944e75989deb600d63e" title=" " alt="" coords="695,726,838,753"/>
+<area shape="rect" id="node33" href="$classPluginManager.html#a724cc4d4d92c9273606c91909b508ebd" title=" " alt="" coords="935,865,1137,891"/>
+<area shape="rect" id="node34" href="$loader_8cc.html#a6caa967df34751dfd7c06745d1df4a1e" title=" " alt="" coords="741,894,792,921"/>
+<area shape="rect" id="node35" href="$callbacks_8cc.html#a30a5e3f46a0ebcab2405634486aee4fa" title=" " alt="" coords="673,828,861,869"/>
+<area shape="rect" id="node39" href="$classView.html#a6bcc1a3b04dc24ad14be19e19fd1ff7e" title=" " alt="" coords="430,1082,589,1109"/>
+<area shape="rect" id="node40" href="$classView.html#aa0987727d135b9f133c51bf2f45d7ab2" title=" " alt="" coords="663,1069,870,1095"/>
+<area shape="rect" id="node42" href="$classView.html#adb5274f859519e6baa9b759005170509" title=" " alt="" coords="439,1133,579,1175"/>
+<area shape="rect" id="node44" href="$callbacks_8cc.html#a43402c91fa59e2da7639ad8b3e51973c" title=" " alt="" coords="435,835,583,862"/>
+<area shape="rect" id="node46" href="$classView.html#ac89d07654772c2f745eb07bb4702cbd0" title=" " alt="" coords="421,1199,598,1240"/>
+<area shape="rect" id="node50" href="$callbacks_8cc.html#a3aab2a4d00901924d72b5a72a3711069" title=" " alt="" coords="697,945,836,971"/>
+</map>

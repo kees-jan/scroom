@@ -1,0 +1,11 @@
+<map id="libs/tiled&#45;bitmap/inc/scroom/layeroperations.hh" name="libs/tiled&#45;bitmap/inc/scroom/layeroperations.hh">
+<area shape="rect" id="node1" title=" " alt="" coords="374,5,574,47"/>
+<area shape="rect" id="node2" href="$cmyklayeroperations_8cc.html" title=" " alt="" coords="5,95,188,136"/>
+<area shape="rect" id="node3" href="$layeroperations_8cc.html" title=" " alt="" coords="213,95,365,136"/>
+<area shape="rect" id="node4" href="$layerspecforbitmap_8cc.html" title=" " alt="" coords="389,95,559,136"/>
+<area shape="rect" id="node5" href="$test-helpers_8hh.html" title=" " alt="" coords="583,95,749,136"/>
+<area shape="rect" id="node9" href="$test-helpers_8cc.html" title=" " alt="" coords="793,191,958,233"/>
+<area shape="rect" id="node6" href="$measure-framerate-callbacks_8cc.html" title=" " alt="" coords="70,191,307,233"/>
+<area shape="rect" id="node7" href="$measure-framerate-tests_8cc.html" title=" " alt="" coords="331,191,539,233"/>
+<area shape="rect" id="node8" href="$measure-load-performance-tests_8cc.html" title=" " alt="" coords="564,184,768,240"/>
+</map>

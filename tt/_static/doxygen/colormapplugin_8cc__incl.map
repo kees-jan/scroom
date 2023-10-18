@@ -1,0 +1,52 @@
+<map id="plugins/colormap/colormapplugin.cc" name="plugins/colormap/colormapplugin.cc">
+<area shape="rect" id="node1" title=" " alt="" coords="2378,5,2635,32"/>
+<area shape="rect" id="node2" href="$colormapplugin_8hh.html" title=" " alt="" coords="405,80,547,107"/>
+<area shape="rect" id="node41" title=" " alt="" coords="2511,80,2572,107"/>
+<area shape="rect" id="node42" title=" " alt="" coords="2597,80,2721,107"/>
+<area shape="rect" id="node43" href="$colormappable_8hh.html" title=" " alt="" coords="1841,229,2031,256"/>
+<area shape="rect" id="node49" href="$colormapprovider_8hh.html" title=" " alt="" coords="1653,155,1809,181"/>
+<area shape="rect" id="node50" title=" " alt="" coords="2745,80,2828,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="805,603,848,629"/>
+<area shape="rect" id="node4" title=" " alt="" coords="296,453,355,480"/>
+<area shape="rect" id="node5" href="$plugininformationinterface_8hh.html" title=" " alt="" coords="342,155,610,181"/>
+<area shape="rect" id="node8" href="$scroominterface_8hh.html" title=" " alt="" coords="204,229,404,256"/>
+<area shape="rect" id="node14" href="$utilities_8hh.html" title=" " alt="" coords="2762,528,2905,555"/>
+<area shape="rect" id="node20" href="$presentationinterface_8hh.html" title=" " alt="" coords="1613,304,1848,331"/>
+<area shape="rect" id="node6" title=" " alt="" coords="1237,603,1315,629"/>
+<area shape="rect" id="node7" href="$interface_8hh.html" title=" " alt="" coords="531,528,683,555"/>
+<area shape="rect" id="node9" title=" " alt="" coords="92,603,172,629"/>
+<area shape="rect" id="node10" href="$bookkeeping_8hh.html" title=" " alt="" coords="1259,453,1437,480"/>
+<area shape="rect" id="node38" href="$viewinterface_8hh.html" title=" " alt="" coords="686,379,869,405"/>
+<area shape="rect" id="node11" title=" " alt="" coords="2636,528,2687,555"/>
+<area shape="rect" id="node12" title=" " alt="" coords="1213,528,1387,555"/>
+<area shape="rect" id="node13" href="$stuff_8hh.html" title=" " alt="" coords="1067,528,1189,555"/>
+<area shape="rect" id="node17" href="$bookkeepingimpl_8hh.html" title=" " alt="" coords="1665,528,1903,555"/>
+<area shape="rect" id="node15" title=" " alt="" coords="2875,603,2917,629"/>
+<area shape="rect" id="node16" title=" " alt="" coords="2718,603,2850,629"/>
+<area shape="rect" id="node18" title=" " alt="" coords="1599,603,1686,629"/>
+<area shape="rect" id="node19" title=" " alt="" coords="1710,603,1770,629"/>
+<area shape="rect" id="node21" title=" " alt="" coords="2942,603,3029,629"/>
+<area shape="rect" id="node22" title=" " alt="" coords="3053,603,3120,629"/>
+<area shape="rect" id="node23" href="$observable_8hh.html" title=" " alt="" coords="1793,379,1959,405"/>
+<area shape="rect" id="node24" href="$rectangle_8hh.html" title=" " alt="" coords="2107,453,2261,480"/>
+<area shape="rect" id="node25" title=" " alt="" coords="2047,603,2123,629"/>
+<area shape="rect" id="node26" title=" " alt="" coords="2541,603,2693,629"/>
+<area shape="rect" id="node27" href="$gtk-helpers_8hh.html" title=" " alt="" coords="1979,528,2147,555"/>
+<area shape="rect" id="node33" href="$linearsegment_8hh.html" title=" " alt="" coords="2222,528,2410,555"/>
+<area shape="rect" id="node37" href="$point_8hh.html" title=" " alt="" coords="2434,528,2561,555"/>
+<area shape="rect" id="node28" title=" " alt="" coords="1795,603,1856,629"/>
+<area shape="rect" id="node29" title=" " alt="" coords="1881,603,2023,629"/>
+<area shape="rect" id="node30" href="$assertions_8hh.html" title=" " alt="" coords="3293,603,3403,629"/>
+<area shape="rect" id="node31" title=" " alt="" coords="3359,677,3457,704"/>
+<area shape="rect" id="node32" title=" " alt="" coords="3241,677,3335,704"/>
+<area shape="rect" id="node34" title=" " alt="" coords="2359,677,2422,704"/>
+<area shape="rect" id="node35" title=" " alt="" coords="2147,603,2239,629"/>
+<area shape="rect" id="node36" href="$rounding_8hh.html" title=" " alt="" coords="2315,603,2466,629"/>
+<area shape="rect" id="node39" title=" " alt="" coords="582,453,647,480"/>
+<area shape="rect" id="node40" href="$progressinterface_8hh.html" title=" " alt="" coords="672,453,880,480"/>
+<area shape="rect" id="node44" title=" " alt="" coords="2798,304,2861,331"/>
+<area shape="rect" id="node45" href="$color_8hh.html" title=" " alt="" coords="3081,528,3207,555"/>
+<area shape="rect" id="node46" title=" " alt="" coords="3427,603,3493,629"/>
+<area shape="rect" id="node47" title=" " alt="" coords="3517,603,3592,629"/>
+<area shape="rect" id="node48" title=" " alt="" coords="3195,603,3269,629"/>
+</map>

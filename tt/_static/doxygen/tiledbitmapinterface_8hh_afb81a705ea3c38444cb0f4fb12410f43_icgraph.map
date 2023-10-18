@@ -1,0 +1,12 @@
+<map id="createTiledBitmap" name="createTiledBitmap">
+<area shape="rect" id="node1" title=" " alt="" coords="489,132,632,159"/>
+<area shape="rect" id="node2" href="$tiledbitmap-tests_8cc.html#a2f9e0fe03c4d2fe6664ab387b42e585e" title=" " alt="" coords="245,5,435,32"/>
+<area shape="rect" id="node3" href="$test-helpers_8hh.html#a510b01f28a69aa5aef9be5c774994d46" title=" " alt="" coords="282,56,398,83"/>
+<area shape="rect" id="node6" href="$test-helpers_8hh.html#a335d41148bd6cbbc8d10a896689608a2" title=" " alt="" coords="282,259,398,285"/>
+<area shape="rect" id="node8" href="$test-helpers_8hh.html#a882cf8e832bb4cd71ae3e259d172c37e" title=" " alt="" coords="282,107,398,133"/>
+<area shape="rect" id="node9" href="$test-helpers_8hh.html#a9c754881425f808e78c88bc70892083f" title=" " alt="" coords="282,157,398,184"/>
+<area shape="rect" id="node10" href="$test-helpers_8hh.html#a49f7223b9ce970949245d09bbe15d32a" title=" " alt="" coords="239,208,441,235"/>
+<area shape="rect" id="node4" href="$measure-load-performance-tests_8hh.html#a0c38ed457f90e06f41a3238692c70397" title=" " alt="" coords="108,132,191,159"/>
+<area shape="rect" id="node5" href="$measure-framerate_8cc.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,132,60,159"/>
+<area shape="rect" id="node7" href="$measure-load-performance-tests_8cc.html#a0c38ed457f90e06f41a3238692c70397" title=" " alt="" coords="108,259,191,285"/>
+</map>
