@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Scroom
-   &#160;<span id="projectnumber">0.14-9-g78d5b109</span>
+   &#160;<span id="projectnumber">0.14-9-gc0294e86</span>
    </div>
   </td>
  </tr>
@@ -355,9 +355,9 @@ template&lt;typename R &gt; </div>
 </table>
 </div><div class="memdoc">
 <p>Calls <a class="el" href="classScroom_1_1Utils_1_1Base.html#ac257b173d59a12c2fecbaaadb8cc3f49">shared_from_this()</a> with a built-in dynamic cast, to make it usable in subclasses. </p>
-<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      <span class="keywordflow">return</span> std::dynamic_pointer_cast&lt;R, Base&gt;(std::enable_shared_from_this&lt;Base&gt;::shared_from_this());</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      <span class="keywordflow">return</span> std::dynamic_pointer_cast&lt;R, Base&gt;(std::enable_shared_from_this&lt;Base&gt;::shared_from_this());</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="callbacks_8hh.html#a43402c91fa59e2da7639ad8b3e51973c">on_view_destroyed()</a>.</p>
 <div class="dynheader">
@@ -432,9 +432,9 @@ template&lt;typename R &gt; </div>
 </table>
 </div><div class="memdoc">
 <p>Calls <a class="el" href="classScroom_1_1Utils_1_1Base.html#ac257b173d59a12c2fecbaaadb8cc3f49">shared_from_this()</a> with a built-in dynamic cast, to make it usable in subclasses. </p>
-<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      <span class="keywordflow">return</span> std::dynamic_pointer_cast&lt;R const, Base const&gt;(std::enable_shared_from_this&lt;Base&gt;::shared_from_this());</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      <span class="keywordflow">return</span> std::dynamic_pointer_cast&lt;R const, Base const&gt;(std::enable_shared_from_this&lt;Base&gt;::shared_from_this());</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
