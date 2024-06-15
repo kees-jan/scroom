@@ -41,7 +41,7 @@ namespace Scroom::GtkHelpers
   template <typename T>
   void async_on_ui_thread(T f)
   {
-    const auto& [function, data] = wrap(std::move(f));
+    const auto [function, data] = wrap(std::move(f));
     gdk_threads_add_idle(function, data);
   }
 

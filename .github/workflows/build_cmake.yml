@@ -16,7 +16,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-22.04, ubuntu-20.04 ]
+        os: [ ubuntu-24.04, ubuntu-22.04 ]
         type: [ RelWithDebInfo, Debug ]
       fail-fast: false
     env:
@@ -28,7 +28,7 @@ jobs:
           submodules: recursive
 
       - name: ccache cache files
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: .ccache
           key: ${{ matrix.os }}-${{ env.BUILD_TYPE }}-ccache-${{ github.run_id }}
@@ -68,7 +68,7 @@ jobs:
         # and build directories, but this is only available with CMake 3.13 and higher.
         # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
         run: |
-          cmake $GITHUB_WORKSPACE -GNinja -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_CXX_COMPILER=g++-10 -DCMAKE_C_COMPILER=gcc-10
+          cmake $GITHUB_WORKSPACE -GNinja -DCMAKE_BUILD_TYPE=$BUILD_TYPE
 
       - name: Build
         working-directory: ${{runner.workspace}}/build
@@ -113,12 +113,14 @@ jobs:
           build_scripts\github\mingwdo
           build_scripts/github/build-cmake-mingw
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
+          name: Sources
           path: Scroom-*Source.tar.gz
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
+          name: Windows-portable-executable
           path: scroom-win-*.zip
 
   build-many-ubuntus:
