@@ -51,12 +51,14 @@ RUN \
 # GCC repo
 
 RUN \
-  add-apt-repository ppa:ubuntu-toolchain-r/test
+  if [ "mantic" = "focal" ] ; then \
+    add-apt-repository ppa:ubuntu-toolchain-r/test ; \
+  fi
 
 RUN \
   export DEBIAN_FRONTEND=noninteractive && \
   apt-get update -y && \
-  if grep -q LTS /etc/lsb-release ; then \
+  if [ "mantic" = "focal" ] ; then \
     apt-get install -y gcc-11 g++-11 && \
     update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 110 \
       --slave /usr/bin/g++ g++ /usr/bin/g++-11 \

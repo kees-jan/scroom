@@ -1,4 +1,8 @@
-FROM ubuntu:@DISTRIB_CODENAME@
+#
+# This file is generated from Dockerfile.in. Do not edit!
+#
+
+FROM ubuntu:oracular
 
 MAINTAINER kees-jan@dijkzeul.eu
 
@@ -34,8 +38,8 @@ RUN \
     gpg --dearmor - > /etc/apt/trusted.gpg.d/kitware-archive-keyring.gpg
 
 RUN \
-  if [ "@DISTRIB_CODENAME@" = "focal" ] ; then \
-    echo 'deb https://apt.kitware.com/ubuntu/ @DISTRIB_CODENAME@ main' > /etc/apt/sources.list.d/kitware.list ; \
+  if [ "oracular" = "focal" ] ; then \
+    echo 'deb https://apt.kitware.com/ubuntu/ oracular main' > /etc/apt/sources.list.d/kitware.list ; \
   fi
 
 RUN \
@@ -47,14 +51,14 @@ RUN \
 # GCC repo
 
 RUN \
-  if [ "@DISTRIB_CODENAME@" = "focal" ] ; then \
+  if [ "oracular" = "focal" ] ; then \
     add-apt-repository ppa:ubuntu-toolchain-r/test ; \
   fi
 
 RUN \
   export DEBIAN_FRONTEND=noninteractive && \
   apt-get update -y && \
-  if [ "@DISTRIB_CODENAME@" = "focal" ] ; then \
+  if [ "oracular" = "focal" ] ; then \
     apt-get install -y gcc-11 g++-11 && \
     update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 110 \
       --slave /usr/bin/g++ g++ /usr/bin/g++-11 \
@@ -70,14 +74,14 @@ RUN \
     gpg --dearmor - > /etc/apt/trusted.gpg.d/llvm-snapshot.gpg
   
 RUN \
-  if [ "@DISTRIB_CODENAME@" = "focal" ] ; then \
-    echo 'deb http://apt.llvm.org/@DISTRIB_CODENAME@/ llvm-toolchain-@DISTRIB_CODENAME@-11 main' > /etc/apt/sources.list.d/llvm.list ; \
+  if [ "oracular" = "focal" ] ; then \
+    echo 'deb http://apt.llvm.org/oracular/ llvm-toolchain-oracular-11 main' > /etc/apt/sources.list.d/llvm.list ; \
   fi
   
 RUN \
   export DEBIAN_FRONTEND=noninteractive && \
   apt-get update -y && \
-  if [ "@DISTRIB_CODENAME@" = "focal" ] ; then \
+  if [ "oracular" = "focal" ] ; then \
     apt-get install -y \
       clang++-11 \
       clang-11 && \
