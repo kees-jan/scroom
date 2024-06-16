@@ -49,7 +49,7 @@ namespace Scroom::Tiff
 
     bool reset();
 
-    // SourcePresenentation
+    // SourcePresentation
     void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles) override;
     void done() override;
     std::string getName() override { return fileName; }

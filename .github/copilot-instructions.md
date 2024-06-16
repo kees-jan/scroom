@@ -1,5 +1,25 @@
 # Copilot instructions
 
+## Coding guidelines
+
+The full coding guidelines are in `doc/coding-guidelines.rst`. Read that file
+before working on C++ code in this repository.
+
+## Formatting
+
+After every code change, run the formatting scripts from the **root of the
+repository** (not from a build directory, and without arguments — they find
+files themselves):
+
+```sh
+build_scripts/clang-format   # formats all .cc/.hh files
+build_scripts/cmake-format   # formats all CMakeLists.txt/.cmake files
+```
+
+Run `cmake-format` only when you have changed a `CMakeLists.txt` or `.cmake`
+file. Do not make commits that consist solely of formatting changes; format as
+you go.
+
 ## C++ style
 
 - Do not specify template parameters that the compiler can deduce. For example,

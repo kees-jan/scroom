@@ -1,6 +1,8 @@
 ---
 Checks: >
   *,
+  -*-enum-size,
+  -*-multiple-inheritance,
   -abseil-*,
   -altera-*,
   -bugprone-easily-swappable-parameters,

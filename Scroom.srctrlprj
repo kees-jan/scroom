@@ -3,28 +3,40 @@
     <source_groups>
         <source_group_840fa752-3ef8-4496-a253-62e5ee7d5453>
             <build_file_path>
-                <compilation_db_path>cmake-build-relwithdebinfo-clang-10/compile_commands.json</compilation_db_path>
+                <compilation_db_path>cmake-build-debug/compile_commands.json</compilation_db_path>
             </build_file_path>
             <indexed_header_paths>
-                <indexed_header_path>cmake-build-relwithdebinfo-clang-10</indexed_header_path>
+                <indexed_header_path>cmake-build-debug</indexed_header_path>
+                <indexed_header_path>gui/ruler/inc</indexed_header_path>
+                <indexed_header_path>gui/ruler/src</indexed_header_path>
+                <indexed_header_path>gui/ruler/test</indexed_header_path>
                 <indexed_header_path>gui/src</indexed_header_path>
-                <indexed_header_path>inc</indexed_header_path>
                 <indexed_header_path>libs/boost-test-helper/src</indexed_header_path>
                 <indexed_header_path>libs/boost-test-helper/test</indexed_header_path>
+                <indexed_header_path>libs/memory-manager/inc</indexed_header_path>
                 <indexed_header_path>libs/memory-manager/src</indexed_header_path>
                 <indexed_header_path>libs/memory-manager/test</indexed_header_path>
-                <indexed_header_path>libs/sanity-tests</indexed_header_path>
+                <indexed_header_path>libs/plugin-interfaces/inc</indexed_header_path>
+                <indexed_header_path>libs/scroom/inc</indexed_header_path>
                 <indexed_header_path>libs/scroom/src</indexed_header_path>
                 <indexed_header_path>libs/scroom/test</indexed_header_path>
+                <indexed_header_path>libs/threadpool/inc</indexed_header_path>
                 <indexed_header_path>libs/threadpool/src</indexed_header_path>
                 <indexed_header_path>libs/threadpool/test</indexed_header_path>
+                <indexed_header_path>libs/tiled-bitmap/inc</indexed_header_path>
                 <indexed_header_path>libs/tiled-bitmap/src</indexed_header_path>
                 <indexed_header_path>libs/tiled-bitmap/test</indexed_header_path>
                 <indexed_header_path>libs/tiled-bitmap/tools</indexed_header_path>
+                <indexed_header_path>libs/util/inc</indexed_header_path>
                 <indexed_header_path>libs/util/src</indexed_header_path>
                 <indexed_header_path>libs/util/test</indexed_header_path>
                 <indexed_header_path>plugins/colormap</indexed_header_path>
                 <indexed_header_path>plugins/example</indexed_header_path>
+                <indexed_header_path>plugins/measure/src</indexed_header_path>
+                <indexed_header_path>plugins/metadata</indexed_header_path>
+                <indexed_header_path>plugins/pipette/src</indexed_header_path>
+                <indexed_header_path>plugins/pipette/test</indexed_header_path>
+                <indexed_header_path>plugins/pnm/src</indexed_header_path>
                 <indexed_header_path>plugins/tiff/src</indexed_header_path>
                 <indexed_header_path>plugins/transparent-overlay/src</indexed_header_path>
                 <indexed_header_path>plugins/transparent-overlay/test</indexed_header_path>
