@@ -1,5 +1,5 @@
 find_package(
-  Boost REQUIRED
+  Boost CONFIG REQUIRED
   COMPONENTS thread
              system
              unit_test_framework
