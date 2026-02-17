@@ -4,12 +4,15 @@
 
 FROM ubuntu:jammy
 
-MAINTAINER kees-jan@dijkzeul.eu
+LABEL org.opencontainers.image.authors="kees-jan@dijkzeul.eu"
 
 RUN \
   export DEBIAN_FRONTEND=noninteractive && \
   apt-get update -y && \
   apt-get install -y \
+    clang \
+    cmake \
+    gcc g++ \
     git \
     gpg \
     libboost-dev \
@@ -30,67 +33,6 @@ RUN \
     time \
     wget \
     xvfb
-
-# CMake repo
-
-RUN \
-  wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | \
-    gpg --dearmor - > /etc/apt/trusted.gpg.d/kitware-archive-keyring.gpg
-
-RUN \
-  if [ "jammy" = "focal" ] ; then \
-    echo 'deb https://apt.kitware.com/ubuntu/ jammy main' > /etc/apt/sources.list.d/kitware.list ; \
-  fi
-
-RUN \
-  export DEBIAN_FRONTEND=noninteractive && \
-  apt-get update -y && \
-  apt-get install -y \
-    cmake
-
-# GCC repo
-
-RUN \
-  if [ "jammy" = "focal" ] ; then \
-    add-apt-repository ppa:ubuntu-toolchain-r/test ; \
-  fi
-
-RUN \
-  export DEBIAN_FRONTEND=noninteractive && \
-  apt-get update -y && \
-  if [ "jammy" = "focal" ] ; then \
-    apt-get install -y gcc-11 g++-11 && \
-    update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 110 \
-      --slave /usr/bin/g++ g++ /usr/bin/g++-11 \
-      --slave /usr/bin/gcov gcov /usr/bin/gcov-11 ; \
-  else \
-    apt-get install -y gcc g++ ; \
-  fi
-  
-# LLVM repo
-
-RUN \
-  wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key 2>/dev/null | \
-    gpg --dearmor - > /etc/apt/trusted.gpg.d/llvm-snapshot.gpg
-  
-RUN \
-  if [ "jammy" = "focal" ] ; then \
-    echo 'deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-11 main' > /etc/apt/sources.list.d/llvm.list ; \
-  fi
-  
-RUN \
-  export DEBIAN_FRONTEND=noninteractive && \
-  apt-get update -y && \
-  if [ "jammy" = "focal" ] ; then \
-    apt-get install -y \
-      clang++-11 \
-      clang-11 && \
-    update-alternatives --install /usr/bin/clang clang /usr/bin/clang-11 110 \
-      --slave /usr/bin/clang++ clang++ /usr/bin/clang++-11 ; \
-  else \
-    apt-get install -y \
-      clang ; \
-  fi
 
 RUN \
   update-alternatives --install /usr/bin/python python /usr/bin/python3 30 \
