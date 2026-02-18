@@ -1,4 +1,3 @@
-#define BOOST_TEST_DYN_LINK
 #include <cmath>
 
 #include <boost/test/unit_test.hpp>
