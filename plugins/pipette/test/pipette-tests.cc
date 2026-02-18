@@ -103,17 +103,17 @@ public:
   static Ptr create() { return std::make_shared<DummyPluginInterface>(); }
 
   void registerNewPresentationInterface(const std::string& /*identifier*/,
-                                        NewPresentationInterface::Ptr /*newPresentationInterface*/) override{};
+                                        NewPresentationInterface::Ptr /*newPresentationInterface*/) override {};
   void registerNewAggregateInterface(const std::string& /*identifier*/,
-                                     NewAggregateInterface::Ptr /*newAggregateInterface*/) override{};
+                                     NewAggregateInterface::Ptr /*newAggregateInterface*/) override {};
   void registerOpenPresentationInterface(const std::string& /*identifier*/,
-                                         OpenPresentationInterface::Ptr /*openPresentationInterface*/) override{};
+                                         OpenPresentationInterface::Ptr /*openPresentationInterface*/) override {};
   void registerOpenTiledBitmapInterface(
     const std::string& /*identifier*/,
-    std::shared_ptr<Scroom::TiledBitmap::OpenTiledBitmapInterface> /*openTiledBitmapInterface*/) override{};
-  void registerOpenInterface(const std::string& /*identifier*/, OpenInterface::Ptr /*openInterface*/) override{};
+    std::shared_ptr<Scroom::TiledBitmap::OpenTiledBitmapInterface> /*openTiledBitmapInterface*/) override {};
+  void registerOpenInterface(const std::string& /*identifier*/, OpenInterface::Ptr /*openInterface*/) override {};
   void registerViewObserver(const std::string& /*identifier*/, ViewObserver::Ptr /*observer*/) override { view_observers++; };
-  void registerPresentationObserver(const std::string& /*identifier*/, PresentationObserver::Ptr /*observer*/) override{};
+  void registerPresentationObserver(const std::string& /*identifier*/, PresentationObserver::Ptr /*observer*/) override {};
 
   int view_observers = 0;
 };

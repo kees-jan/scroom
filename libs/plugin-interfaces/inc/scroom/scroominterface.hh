@@ -107,9 +107,9 @@ public:
   virtual void registerOpenPresentationInterface(const std::string&             identifier,
                                                  OpenPresentationInterface::Ptr openPresentationInterface)                    = 0;
   virtual void
-               registerOpenTiledBitmapInterface(const std::string&                                             identifier,
-                                                std::shared_ptr<Scroom::TiledBitmap::OpenTiledBitmapInterface> openTiledBitmapInterface) = 0;
-  virtual void registerOpenInterface(const std::string& identifier, OpenInterface::Ptr openInterface)          = 0;
-  virtual void registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer)                 = 0;
-  virtual void registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer) = 0;
+    registerOpenTiledBitmapInterface(const std::string&                                             identifier,
+                                     std::shared_ptr<Scroom::TiledBitmap::OpenTiledBitmapInterface> openTiledBitmapInterface) = 0;
+  virtual void registerOpenInterface(const std::string& identifier, OpenInterface::Ptr openInterface)                         = 0;
+  virtual void registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer)                                = 0;
+  virtual void registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer)                = 0;
 };

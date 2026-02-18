@@ -138,10 +138,8 @@ namespace Scroom::Utils
 
   public:
     static Ptr create(const std::string& name);
-    void       ping()
-    { /* dumpCounts(); */
-    }
-    void inc()
+    void       ping() { /* dumpCounts(); */ }
+    void       inc()
     {
       boost::unique_lock<boost::mutex> const lock(mut);
       ++count;

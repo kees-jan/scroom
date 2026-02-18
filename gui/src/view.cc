@@ -27,13 +27,7 @@
 #ifndef G_VALUE_INIT
 #  define G_VALUE_INIT \
     {                  \
-      0,               \
-      {                \
-        {              \
-          0            \
-        }              \
-      }                \
-    }
+      0, {{0} } }
 #endif
 
 static const std::array<const char*, 36> zoomfactor = {

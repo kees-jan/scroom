@@ -63,16 +63,16 @@ public:
   void                                   removeFromToolbar(GtkToolItem* /*ti*/) override {}
   void                                   registerSelectionListener(SelectionListener::Ptr /*unused*/) override{};
   void                                   registerPostRenderer(PostRenderer::Ptr /*unused*/) override{};
-  void                                   setStatusMessage(const std::string& /*unused*/) override{};
+  void                                   setStatusMessage(const std::string& /*unused*/) override {};
   std::shared_ptr<PresentationInterface> getCurrentPresentation() override { return {}; };
-  void                                   addToolButton(GtkToggleButton* /*unused*/, ToolStateListener::Ptr /*unused*/) override{};
+  void addToolButton(GtkToggleButton* /*unused*/, ToolStateListener::Ptr /*unused*/) override {};
 };
 
 class Source1Bpp : public SourcePresentation
 {
 public:
   void        fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles) override;
-  void        done() override{};
+  void        done() override {};
   std::string getName() override { return "Source1Bpp"; }
 };
 
@@ -80,7 +80,7 @@ class Source2Bpp : public SourcePresentation
 {
 public:
   void        fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles) override;
-  void        done() override{};
+  void        done() override {};
   std::string getName() override { return "Source2Bpp"; }
 };
 
@@ -88,7 +88,7 @@ class Source4Bpp : public SourcePresentation
 {
 public:
   void        fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles) override;
-  void        done() override{};
+  void        done() override {};
   std::string getName() override { return "Source4Bpp"; }
 };
 
@@ -96,6 +96,6 @@ class Source8Bpp : public SourcePresentation
 {
 public:
   void        fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles) override;
-  void        done() override{};
+  void        done() override {};
   std::string getName() override { return "Source8Bpp"; }
 };

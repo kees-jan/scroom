@@ -152,9 +152,9 @@ namespace
     void                                   removeFromToolbar(GtkToolItem* /*ti*/) override {}
     void                                   registerSelectionListener(SelectionListener::Ptr /*unused*/) override{};
     void                                   registerPostRenderer(PostRenderer::Ptr /*unused*/) override{};
-    void                                   setStatusMessage(const std::string& /*unused*/) override{};
+    void                                   setStatusMessage(const std::string& /*unused*/) override {};
     std::shared_ptr<PresentationInterface> getCurrentPresentation() override { return {}; };
-    void addToolButton(GtkToggleButton* /*unused*/, ToolStateListener::Ptr /*unused*/) override{};
+    void addToolButton(GtkToggleButton* /*unused*/, ToolStateListener::Ptr /*unused*/) override {};
   };
 
 } // namespace

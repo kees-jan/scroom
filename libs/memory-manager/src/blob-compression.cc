@@ -16,14 +16,14 @@
 #include <scroom/assertions.hh>
 #include <scroom/memoryblobs.hh>
 
-#define zlib_verify(condition, function_name, r, stream)                                                    \
-  ((condition) ? ((void)0)                                                                                  \
-               : Scroom::Utils::Detail::assertionFailed(                                                    \
-                 "assertion",                                                                               \
-                 fmt::format("{} said: {} ({})", (function_name), (r), ((stream).msg ? (stream).msg : "")), \
-                 static_cast<const char*>(__PRETTY_FUNCTION__),                                             \
-                 __FILE__,                                                                                  \
-                 __LINE__))
+#define zlib_verify(condition, function_name, r, stream)                                                      \
+  ((condition) ? ((void)0)                                                                                    \
+               : Scroom::Utils::Detail::assertionFailed(                                                      \
+                   "assertion",                                                                               \
+                   fmt::format("{} said: {} ({})", (function_name), (r), ((stream).msg ? (stream).msg : "")), \
+                   static_cast<const char*>(__PRETTY_FUNCTION__),                                             \
+                   __FILE__,                                                                                  \
+                   __LINE__))
 
 namespace Scroom::MemoryBlobs::Detail
 {
