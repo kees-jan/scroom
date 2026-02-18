@@ -8,9 +8,9 @@ env:
 
 jobs:
   clang-tidy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           submodules: recursive
@@ -19,6 +19,17 @@ jobs:
         # Some projects don't allow in-source building, so create a separate build directory
         # We'll use this as our working directory for all subsequent commands
         run: cmake -E make_directory ${{runner.workspace}}/build
+
+      - name: Obtain LLVM repo key
+        run: >
+          wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key 2>/dev/null |
+          gpg --dearmor - |
+          sudo dd of=/etc/apt/trusted.gpg.d/llvm-snapshot.gpg
+
+      - name: Add LLVM repo
+        run: >
+          . /etc/lsb-release &&
+          echo "deb http://apt.llvm.org/${DISTRIB_CODENAME}/ llvm-toolchain-${DISTRIB_CODENAME}-22 main" | sudo dd of=/etc/apt/sources.list.d/llvm.list
 
       - name: Update apt package repos
         run: >
@@ -39,7 +50,7 @@ jobs:
           libgtk-3-dev
           libtiff5-dev
           pkg-config
-          clang-tidy
+          clang-tidy-22
 
       - name: Get Codacy Clang-tidy
         env:
@@ -64,7 +75,7 @@ jobs:
         # Execute the build.  You can specify a specific target with "--target <NAME>"
         run: |
           set -o pipefail
-          find . -name \*.cc -print0 | parallel -0 clang-tidy-10 --quiet -p="${{runner.workspace}}/build" \{\} | tee ct.log
+          find . -name \*.cc -print0 | parallel -0 clang-tidy-22 --quiet -p="${{runner.workspace}}/build" \{\} | tee ct.log
 
       - name: Upload to Codacy
         env:

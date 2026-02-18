@@ -4,7 +4,7 @@ Patterns
 Formatting
 ----------
 
-C++ Formatting is done by ``clang-format-10``. 
+C++ Formatting is done by ``clang-format-22``.
 Formatting for ``CMakeLists.txt`` is done using ``cmake-format`` (``pip install cmake-format``). 
 Formatting is checked during the CI build.
 

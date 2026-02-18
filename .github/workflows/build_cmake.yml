@@ -22,13 +22,13 @@ jobs:
     env:
       BUILD_TYPE: ${{ matrix.type }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           submodules: recursive
 
       - name: ccache cache files
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: .ccache
           key: ${{ matrix.os }}-${{ env.BUILD_TYPE }}-ccache-${{ github.run_id }}
@@ -84,7 +84,7 @@ jobs:
   build-windows:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           submodules: recursive
@@ -113,12 +113,12 @@ jobs:
           build_scripts\github\mingwdo
           build_scripts/github/build-cmake-mingw
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: Sources
           path: Scroom-*Source.tar.gz
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: Windows-portable-executable
           path: scroom-win-*.zip
@@ -126,12 +126,12 @@ jobs:
   build-many-ubuntus:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           submodules: recursive
           path: 'scroom-src'
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           ref: 'docker-build-containers'
           path: 'scroom-build-containers'

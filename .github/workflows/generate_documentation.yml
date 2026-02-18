@@ -4,10 +4,10 @@ on: [ push, pull_request ]
 
 jobs:
   generate-documentation:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     concurrency: generate-gh-pages
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           submodules: recursive

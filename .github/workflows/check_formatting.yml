@@ -8,23 +8,23 @@ env:
 
 jobs:
   check-clang-format:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           submodules: recursive
 
       - name: Obtain LLVM repo key
         run: >
-          wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key 2>/dev/null | 
-          gpg --dearmor - | 
+          wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key 2>/dev/null |
+          gpg --dearmor - |
           sudo dd of=/etc/apt/trusted.gpg.d/llvm-snapshot.gpg
 
       - name: Add LLVM repo
         run: >
           . /etc/lsb-release &&
-          echo "deb http://apt.llvm.org/${DISTRIB_CODENAME}/ llvm-toolchain-${DISTRIB_CODENAME}-14 main" | sudo dd of=/etc/apt/sources.list.d/llvm.list
+          echo "deb http://apt.llvm.org/${DISTRIB_CODENAME}/ llvm-toolchain-${DISTRIB_CODENAME}-22 main" | sudo dd of=/etc/apt/sources.list.d/llvm.list
 
       - name: Update apt package repos
         run: >
@@ -33,7 +33,7 @@ jobs:
       - name: Install packages
         run: >
           sudo apt-get -yq --no-install-suggests --no-install-recommends install
-          clang-format-14
+          clang-format-22
 
       - name: Run clang-format
         run: |
@@ -44,9 +44,9 @@ jobs:
           git diff --exit-code
 
   check-cmake-format:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           submodules: recursive
