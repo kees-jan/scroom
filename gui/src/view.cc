@@ -419,7 +419,7 @@ void View::setPresentation(PresentationInterface::Ptr presentation_)
       tweak->setAspectRatio(aspectRatio);
     }
 
-    if(s.length())
+    if(!s.empty())
     {
       s = "Scroom - " + s;
     }
@@ -928,7 +928,7 @@ void View::updateNewWindowMenu()
     {
       // Add a menu item
       std::string s = p->getTitle();
-      if(!s.length())
+      if(s.empty())
       {
         s = "Default";
       }

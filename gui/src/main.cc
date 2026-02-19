@@ -32,7 +32,7 @@ namespace po = boost::program_options;
 
 void usage(const std::string& me, const po::options_description& desc, const std::string& message = std::string())
 {
-  if(message.length() != 0)
+  if(!message.empty())
   {
     spdlog::error("{}", message);
   }
