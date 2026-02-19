@@ -83,7 +83,7 @@ namespace Scroom::Bookkeeping
       K                                                 k;
 
     protected:
-      MapTokenImpl(std::shared_ptr<Scroom::Bookkeeping::MapBase<K, V>> map_, K k_)
+      MapTokenImpl(const std::shared_ptr<Scroom::Bookkeeping::MapBase<K, V>>& map_, K k_)
         : map(map_)
         , k(std::move(k_))
       {
@@ -105,7 +105,7 @@ namespace Scroom::Bookkeeping
       }
 
     public:
-      static Scroom::Bookkeeping::Token create(std::shared_ptr<Scroom::Bookkeeping::MapBase<K, V>> map, const K& k)
+      static Scroom::Bookkeeping::Token create(const std::shared_ptr<Scroom::Bookkeeping::MapBase<K, V>>& map, const K& k)
       {
         Ptr const t = Ptr(new MapTokenImpl<K, V>(map, k));
         t->t        = t;
@@ -131,7 +131,7 @@ namespace Scroom::Bookkeeping
       }
 
     public:
-      static Ptr create(V value) { return Ptr(new ValueType<V>(value)); }
+      static Ptr create(V value) { return Ptr(new ValueType<V>(std::move(value))); }
     };
 
     template <typename V>

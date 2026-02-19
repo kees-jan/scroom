@@ -122,8 +122,8 @@ namespace Scroom::Utils
   template <typename T>
   Detail::Registration<T>::Registration(std::weak_ptr<Observable<T>> observable_, std::shared_ptr<T> observer_)
     : observable(std::move(observable_))
-    , o(observer_)
-    , observer(observer_)
+    , o(std::move(observer_))
+    , observer(o)
   {
   }
 
@@ -139,8 +139,8 @@ namespace Scroom::Utils
   template <typename T>
   void Detail::Registration<T>::set(std::shared_ptr<T> observer_)
   {
-    o        = observer_;
-    observer = observer_;
+    o        = std::move(observer_);
+    observer = o;
   }
 
   template <typename T>
@@ -148,21 +148,21 @@ namespace Scroom::Utils
   {
     // We don't want to store a "hard" reference, so field o is intentionally empty.
     o.reset();
-    observer = observer_;
+    observer = std::move(observer_);
   }
 
   template <typename T>
   typename Detail::Registration<T>::Ptr Detail::Registration<T>::create(std::weak_ptr<Observable<T>> observable,
                                                                         std::shared_ptr<T>           observer)
   {
-    return typename Detail::Registration<T>::Ptr(new Detail::Registration<T>(observable, observer));
+    return typename Detail::Registration<T>::Ptr(new Detail::Registration<T>(std::move(observable), std::move(observer)));
   }
 
   template <typename T>
   typename Detail::Registration<T>::Ptr Detail::Registration<T>::create(std::weak_ptr<Observable<T>> observable,
                                                                         std::weak_ptr<T>             observer)
   {
-    return typename Detail::Registration<T>::Ptr(new Detail::Registration<T>(observable, observer));
+    return typename Detail::Registration<T>::Ptr(new Detail::Registration<T>(std::move(observable), std::move(observer)));
   }
 
   ////////////////////////////////////////////////////////////////////////

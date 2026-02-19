@@ -329,7 +329,7 @@ public:
    * @pre T::operator()() must be defined
    */
   template <typename T>
-  void schedule(std::shared_ptr<T> fn, int priority, WeakQueue::Ptr queue);
+  void schedule(std::shared_ptr<T> fn, int priority, const WeakQueue::Ptr& queue);
 
   /**
    * Schedule the given job at the given priority
@@ -348,19 +348,19 @@ public:
 
   template <typename R, typename T>
   boost::unique_future<R>
-    schedule(std::shared_ptr<T> fn, int priority = defaultPriority, const Queue::Ptr& queue = defaultQueue());
+    schedule(const std::shared_ptr<T>& fn, int priority = defaultPriority, const Queue::Ptr& queue = defaultQueue());
 
   template <typename R, typename T>
   boost::unique_future<R> schedule(std::shared_ptr<T> fn, const Queue::Ptr& queue);
 
   template <typename R>
-  boost::unique_future<R> schedule(boost::function<R()> const& fn, int priority, WeakQueue::Ptr queue);
+  boost::unique_future<R> schedule(boost::function<R()> const& fn, int priority, const WeakQueue::Ptr& queue);
 
   template <typename R>
   boost::unique_future<R> schedule(boost::function<R()> const& fn, WeakQueue::Ptr queue);
 
   template <typename R, typename T>
-  boost::unique_future<R> schedule(std::shared_ptr<T> fn, int priority, WeakQueue::Ptr queue);
+  boost::unique_future<R> schedule(const std::shared_ptr<T>& fn, int priority, const WeakQueue::Ptr& queue);
 
   template <typename R, typename T>
   boost::unique_future<R> schedule(std::shared_ptr<T> fn, WeakQueue::Ptr queue);

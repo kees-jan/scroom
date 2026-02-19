@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include <utility>
+
 #include <scroom/threadpool.hh>
 
 ////////////////////////////////////////////////////////////////////////
@@ -15,7 +17,7 @@
 namespace Detail
 {
   template <typename R, typename T>
-  R threadPoolExecute(std::shared_ptr<T> fn)
+  R threadPoolExecute(const std::shared_ptr<T>& fn)
   {
     return (*fn)();
   }
@@ -24,7 +26,7 @@ namespace Detail
 template <typename T>
 void ThreadPool::schedule(std::shared_ptr<T> fn, int priority, const ThreadPool::Queue::Ptr& queue)
 {
-  schedule(fn, priority, queue->getWeak());
+  schedule(std::move(fn), priority, queue->getWeak());
 }
 
 template <typename T>
@@ -34,9 +36,9 @@ void ThreadPool::schedule(std::shared_ptr<T> fn, const ThreadPool::Queue::Ptr& q
 }
 
 template <typename T>
-void ThreadPool::schedule(std::shared_ptr<T> fn, int priority, ThreadPool::WeakQueue::Ptr queue)
+void ThreadPool::schedule(std::shared_ptr<T> fn, int priority, const ThreadPool::WeakQueue::Ptr& queue)
 {
-  schedule([fn] { Detail::threadPoolExecute<void>(fn); }, priority, queue);
+  schedule([fn = std::move(fn)] { Detail::threadPoolExecute<void>(fn); }, priority, std::move(queue));
 }
 
 template <typename T>
@@ -58,7 +60,7 @@ boost::unique_future<R> ThreadPool::schedule(boost::function<R()> const& fn, con
 }
 
 template <typename R, typename T>
-boost::unique_future<R> ThreadPool::schedule(std::shared_ptr<T> fn, int priority, const ThreadPool::Queue::Ptr& queue)
+boost::unique_future<R> ThreadPool::schedule(const std::shared_ptr<T>& fn, int priority, const ThreadPool::Queue::Ptr& queue)
 {
   return schedule<R, T>(fn, priority, queue->getWeak());
 }
@@ -70,7 +72,8 @@ boost::unique_future<R> ThreadPool::schedule(std::shared_ptr<T> fn, const Thread
 }
 
 template <typename R>
-boost::unique_future<R> ThreadPool::schedule(boost::function<R()> const& fn, int priority, ThreadPool::WeakQueue::Ptr queue)
+boost::unique_future<R>
+  ThreadPool::schedule(boost::function<R()> const& fn, int priority, const ThreadPool::WeakQueue::Ptr& queue)
 {
   // Todo: If boost::function supported move semantics, we could do without
   // the shared pointer.
@@ -93,7 +96,7 @@ boost::unique_future<R> ThreadPool::schedule(boost::function<R()> const& fn, Thr
 }
 
 template <typename R, typename T>
-boost::unique_future<R> ThreadPool::schedule(std::shared_ptr<T> fn, int priority, ThreadPool::WeakQueue::Ptr queue)
+boost::unique_future<R> ThreadPool::schedule(const std::shared_ptr<T>& fn, int priority, const ThreadPool::WeakQueue::Ptr& queue)
 {
   // Todo: If boost::function supported move semantics, we could do without
   // the shared pointer.

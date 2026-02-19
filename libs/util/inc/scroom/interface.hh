@@ -10,10 +10,10 @@
 class Interface
 {
 public:
-  Interface()                             = default;
-  Interface(const Interface&)             = delete;
-  Interface& operator=(const Interface&)  = delete;
-  Interface(const Interface&&)            = delete;
-  Interface& operator=(const Interface&&) = delete;
-  virtual ~Interface()                    = default;
+  Interface()                            = default;
+  Interface(const Interface&)            = delete;
+  Interface& operator=(const Interface&) = delete;
+  Interface(Interface&&)                 = delete;
+  Interface& operator=(Interface&&)      = delete;
+  virtual ~Interface()                   = default;
 };

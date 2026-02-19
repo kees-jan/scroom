@@ -49,7 +49,7 @@ namespace Scroom::GtkHelpers
   void async_on_ui_thread_and_wait(T f)
   {
     require(!on_ui_thread());
-    std::packaged_task<void(void)> t(f);
+    std::packaged_task<void(void)> t(std::move(f));
     std::future<void> const        future = t.get_future();
     async_on_ui_thread(std::move(t));
     future.wait();
