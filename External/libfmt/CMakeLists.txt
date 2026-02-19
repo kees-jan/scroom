@@ -2,7 +2,7 @@ FetchContent_Declare(
   libfmt
   GIT_REPOSITORY https://github.com/fmtlib/fmt.git
   GIT_SHALLOW TRUE
-  GIT_TAG f5e54359df4c26b6230fc61d38aa294581393084 # release v10.1.1
+  GIT_TAG 407c905e45ad75fc29bf0f9bb7c5c2fd3475976f # release v12.1.0
 )
 set(FMT_INSTALL ON)
 set(BUILD_SHARED_LIBS ON)

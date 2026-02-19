@@ -26,6 +26,7 @@
 using namespace boost::posix_time;
 using namespace Scroom;
 
+[[maybe_unused]]
 const millisec short_timeout(250);
 const millisec long_timeout(2000);
 

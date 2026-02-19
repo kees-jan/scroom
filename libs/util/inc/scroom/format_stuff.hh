@@ -16,7 +16,7 @@ template <typename T>
 struct fmt::formatter<Scroom::Utils::Rectangle<T>> : formatter<T>
 {
   template <typename FormatContext>
-  auto format(const Scroom::Utils::Rectangle<T>& r, FormatContext& ctx) -> decltype(ctx.out())
+  auto format(const Scroom::Utils::Rectangle<T>& r, FormatContext& ctx) const -> decltype(ctx.out())
   {
     format_to(ctx.out(), "<");
     formatter<T>::format(r.getLeft(), ctx);
@@ -36,7 +36,7 @@ template <typename T>
 struct fmt::formatter<Scroom::Utils::Point<T>> : formatter<T>
 {
   template <typename FormatContext>
-  auto format(const Scroom::Utils::Point<T>& p, FormatContext& ctx) -> decltype(ctx.out())
+  auto format(const Scroom::Utils::Point<T>& p, FormatContext& ctx) const -> decltype(ctx.out())
   {
     format_to(ctx.out(), "(");
     formatter<T>::format(p.x, ctx);
