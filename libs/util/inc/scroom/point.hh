@@ -131,9 +131,9 @@ namespace Scroom::Utils
   }
 
   template <typename T, typename U>
-  Point<typename std::common_type<T, U>::type> operator-(Point<T> left, Point<U> right)
+  Point<std::common_type_t<T, U>> operator-(Point<T> left, Point<U> right)
   {
-    using R = typename std::common_type<T, U>::type;
+    using R = std::common_type_t<T, U>;
 
     Point<R> result(left);
     result -= Point<R>(right);
@@ -141,9 +141,9 @@ namespace Scroom::Utils
   }
 
   template <typename T, typename U>
-  Point<typename std::common_type<T, U>::type> operator+(Point<T> left, Point<U> right)
+  Point<std::common_type_t<T, U>> operator+(Point<T> left, Point<U> right)
   {
-    using R = typename std::common_type<T, U>::type;
+    using R = std::common_type_t<T, U>;
 
     Point<R> result(left);
     result += Point<R>(right);
@@ -151,9 +151,9 @@ namespace Scroom::Utils
   }
 
   template <typename T, typename U>
-  Point<typename std::common_type<T, U>::type> operator*(Point<T> left, Point<U> right)
+  Point<std::common_type_t<T, U>> operator*(Point<T> left, Point<U> right)
   {
-    using R = typename std::common_type<T, U>::type;
+    using R = std::common_type_t<T, U>;
 
     Point<R> result(left);
     result *= Point<R>(right);
@@ -161,9 +161,9 @@ namespace Scroom::Utils
   }
 
   template <typename T, typename U>
-  Point<typename std::common_type<T, U>::type> operator/(Point<T> left, Point<U> right)
+  Point<std::common_type_t<T, U>> operator/(Point<T> left, Point<U> right)
   {
-    using R = typename std::common_type<T, U>::type;
+    using R = std::common_type_t<T, U>;
 
     Point<R> result(left);
     result /= Point<R>(right);
@@ -171,13 +171,13 @@ namespace Scroom::Utils
   }
 
   template <typename T, typename U>
-  Point<typename std::common_type<T, U>::type> operator/(T left, Point<U> right)
+  Point<std::common_type_t<T, U>> operator/(T left, Point<U> right)
   {
     return make_point(left, left) / right;
   }
 
   template <typename T, typename U>
-  Point<typename std::common_type<T, U>::type> operator/(Point<T> left, U right)
+  Point<std::common_type_t<T, U>> operator/(Point<T> left, U right)
   {
     return left / make_point(right, right);
   }

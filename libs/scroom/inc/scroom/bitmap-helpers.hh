@@ -61,7 +61,7 @@ namespace Scroom::Bitmap
   class SampleIterator : public boost::addable2<SampleIterator<ConstBase>, unsigned int>
   {
   public:
-    using Base = typename std::remove_const<ConstBase>::type;
+    using Base = std::remove_const_t<ConstBase>;
 
     static const int bitsPerBase{8 * sizeof(ConstBase) / sizeof(byte)};
 

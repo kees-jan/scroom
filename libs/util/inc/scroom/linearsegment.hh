@@ -65,8 +65,8 @@ namespace Scroom::Utils
     }
 
     /** Implicit conversion from Segment<int> to Segment<T>. If T!=int */
-    template <bool T_is_int = std::is_same<int, typename std::remove_cv<T>::type>::value>
-    explicit Segment(typename std::enable_if<!T_is_int, Segment<int> const&>::type other)
+    template <bool T_is_int = std::is_same_v<int, std::remove_cv_t<T>>>
+    explicit Segment(std::enable_if_t<!T_is_int, Segment<int> const&> other)
       : start(other.getStart())
       , size(other.getSize())
     {

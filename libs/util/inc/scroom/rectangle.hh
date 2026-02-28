@@ -52,8 +52,8 @@ namespace Scroom::Utils
     }
 
     /** Implicit conversion from Rectangle<int> to Rectangle<T>. If T!=int */
-    template <bool T_is_int = std::is_same<int, typename std::remove_cv<T>::type>::value>
-    explicit Rectangle(typename std::enable_if<!T_is_int, Rectangle<int> const&>::type rect)
+    template <bool T_is_int = std::is_same_v<int, std::remove_cv_t<T>>>
+    explicit Rectangle(std::enable_if_t<!T_is_int, Rectangle<int> const&> rect)
       : horizontally(rect.getHorizontally())
       , vertically(rect.getVertically())
     {
@@ -98,9 +98,9 @@ namespace Scroom::Utils
     }
 
     template <typename U>
-    [[nodiscard]] Rectangle<typename std::common_type<T, U>::type> intersection(const Rectangle<U>& other) const
+    [[nodiscard]] Rectangle<std::common_type_t<T, U>> intersection(const Rectangle<U>& other) const
     {
-      using R = typename std::common_type<T, U>::type;
+      using R = std::common_type_t<T, U>;
 
       return Rectangle<R>(*this).intersection(Rectangle<R>(other));
     }
@@ -309,15 +309,15 @@ namespace Scroom::Utils
   inline std::ostream& operator<<(std::ostream& os, const cairo_rectangle_int_t& r) { return os << Rectangle<double>(r); }
 
   template <typename T, typename U>
-  Rectangle<typename std::common_type<T, U>::type> operator*(Rectangle<T> left, U right)
+  Rectangle<std::common_type_t<T, U>> operator*(Rectangle<T> left, U right)
   {
-    Rectangle<typename std::common_type<T, U>::type> result(left);
-    result *= static_cast<typename std::common_type<T, U>::type>(right);
+    Rectangle<std::common_type_t<T, U>> result(left);
+    result *= static_cast<std::common_type_t<T, U>>(right);
     return result;
   }
 
   template <typename T, typename U>
-  Rectangle<typename std::common_type<T, U>::type> operator*(T left, Rectangle<U> right)
+  Rectangle<std::common_type_t<T, U>> operator*(T left, Rectangle<U> right)
   {
     return right * left;
   }
@@ -327,9 +327,9 @@ namespace Scroom::Utils
   inline Rectangle<double> operator*(Point<double> const& p, cairo_rectangle_int_t const& r) { return Rectangle<double>(r) * p; }
 
   template <typename T, typename U>
-  Rectangle<typename std::common_type<T, U>::type> operator-(Rectangle<T> left, Point<U> right)
+  Rectangle<std::common_type_t<T, U>> operator-(Rectangle<T> left, Point<U> right)
   {
-    using R = typename std::common_type<T, U>::type;
+    using R = std::common_type_t<T, U>;
 
     return Rectangle<R>(left) - Point<R>(right);
   }
