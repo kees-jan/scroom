@@ -945,7 +945,7 @@ void View::updateNewWindowMenu()
     else if(!p && m)
     {
       // Remove menu item, then remove this element from the map
-      cur->second = NULL;
+      cur->second = nullptr;
       gtk_widget_destroy(m);
       presentations.erase(cur);
     }

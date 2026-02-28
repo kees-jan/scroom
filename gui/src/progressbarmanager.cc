@@ -80,7 +80,7 @@ namespace
   {
     boost::mutex::scoped_lock const lock(mut);
 
-    while(current == progressbars.end() || *current == NULL)
+    while(current == progressbars.end() || *current == nullptr)
     {
       if(progressbars.empty())
       {
@@ -91,7 +91,7 @@ namespace
       {
         current = progressbars.begin();
       }
-      else if(*current == NULL)
+      else if(*current == nullptr)
       {
         current = progressbars.erase(current);
       }
