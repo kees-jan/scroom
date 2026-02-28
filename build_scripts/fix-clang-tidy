@@ -1,0 +1,19 @@
+#!/bin/bash -eux
+set -o pipefail
+
+FIXES=$(mktemp -d)
+MY_LOCATION=$(dirname "${BASH_SOURCE[0]}")
+source "${MY_LOCATION}/clang-tidy-inc.sh"
+
+for w in $WARNINGS
+do
+  rm -f "$FIXES"/*
+  find_sources_print0 | \
+    parallel -0 -v clang-tidy-${CLANG_VERSION} --quiet -p="$BUILD" --checks='-*,'"$w" --warnings-as-errors='-*' --export-fixes="$FIXES"/\{\#\}.yaml \{\} > "$FIXES"/ct.log
+  (cd "$BUILD" && clang-apply-replacements-${CLANG_VERSION} "$FIXES" )
+  "${MY_LOCATION}"/clang-format
+  git commit -a -m "clang-tidy: $w"
+  cmake --build "$BUILD"
+  (cd "$BUILD" && ctest -j "$(nproc)" )
+done
+

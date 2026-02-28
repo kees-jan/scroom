@@ -73,9 +73,17 @@ jobs:
 
       - name: Clang-Tidy
         # Execute the build.  You can specify a specific target with "--target <NAME>"
+        env:
+          BUILD: ${{runner.workspace}}/build
+        run: build_scripts/run-clang-tidy
+
+      - name: Show Clang-Tidy errors
+        if: failure()
         run: |
-          set -o pipefail
-          find . -name \*.cc -print0 | parallel -0 clang-tidy-22 --quiet -p="${{runner.workspace}}/build" \{\} | tee ct.log
+          grep ': error:' ct.log || true
+
+      - name: Summarize Clang-Tidy results
+        run: build_scripts/summarize-clang-tidy ct.log | head -20
 
       - name: Upload to Codacy
         env:

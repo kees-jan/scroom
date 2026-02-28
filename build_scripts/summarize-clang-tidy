@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+"""Summarize clang-tidy output by warning/error kind."""
+
+import re
+import sys
+from collections import Counter
+
+# Match only diagnostic lines (warning: or error:), not note: or code fragments.
+# The kind is captured from the [...] at the end of the line.
+DIAG_RE = re.compile(
+    r'^[^:]+:\d+:\d+: (?:warning|error): .+\[([^\]]+)\]\s*$'
+)
+
+
+def main():
+    if len(sys.argv) != 2:
+        print(f"Usage: {sys.argv[0]} <ct.log>", file=sys.stderr)
+        sys.exit(1)
+
+    counts: Counter = Counter()
+    with open(sys.argv[1], encoding="utf-8", errors="replace") as fh:
+        for line in fh:
+            m = DIAG_RE.match(line)
+            if m:
+                counts[m.group(1)] += 1
+
+    if not counts:
+        print("No warnings or errors found.")
+        return
+
+    for kind, count in counts.most_common():
+        print(f"{count:6d}  {kind}")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,21 +1,7 @@
 #!/bin/bash -eux
+set -o pipefail
 
-FIXES=$(mktemp -d)
-if [ -z "${BUILD+x}" ]; then
-  BUILD=cmake-build-debug-clang
-fi
-CLANG_VERSION=22
-MY_LOCATION=$(dirname "$0")
+MY_LOCATION=$(dirname "${BASH_SOURCE[0]}")
+source "${MY_LOCATION}/clang-tidy-inc.sh"
 
-for w in $WARNINGS
-do
-  rm -f "$FIXES"/*
-  find libs plugins gui -name \*.cc -print0 | \
-    parallel -0 -v clang-tidy-${CLANG_VERSION} --quiet -p="$BUILD" --checks='-*,'"$w" --warnings-as-errors='-*' --export-fixes="$FIXES"/\{\#\}.yaml \{\} > "$FIXES"/ct.log
-  (cd "$BUILD" && clang-apply-replacements-${CLANG_VERSION} "$FIXES" )
-  "${MY_LOCATION}"/clang-format
-  git commit -a -m "clang-tidy: $w"
-  cmake --build "$BUILD"
-  (cd "$BUILD" && ctest -j "$(nproc)" )
-done
-
+find_sources_print0 | parallel -0 clang-tidy-${CLANG_VERSION} --quiet -p="$BUILD" \{\} | tee ct.log
