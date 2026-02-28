@@ -9,3 +9,4 @@
 /doc/_build
 /doc/_static/doxygen
 /build
+/.vscode
