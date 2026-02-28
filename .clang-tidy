@@ -12,6 +12,7 @@ Checks: >
   -llvmlibc-*,
   -misc-non-private-member-variables-in-classes,
   -modernize-use-trailing-return-type,
+  -portability-avoid-pragma-once,
   -readability-identifier-length,
   -readability-implicit-bool-conversion,
   -readability-redundant-access-specifiers,
