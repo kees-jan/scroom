@@ -8,9 +8,12 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
+      - name: Read version
+        run: echo "VERSION=$(cat dockerfile-version)" >> "$GITHUB_ENV"
+
       - name: Build images
         run: |
-          parallel docker build -t ghcr.io/kees-jan/scroom-build-container:\{\} \{\} < supported-ubuntu-releases
+          parallel docker build -t ghcr.io/kees-jan/scroom-build-container:\{\}-${VERSION} \{\} < supported-ubuntu-releases
 
       - uses: actions/checkout@v6
         with:
@@ -24,7 +27,7 @@ jobs:
           for d in $(cat supported-ubuntu-releases)
           do
             docker run -v "$SCROOM_ABSOLUTE":/home/build/scroom --rm \
-              ghcr.io/kees-jan/scroom-build-container:$d sh -x -c \
+              ghcr.io/kees-jan/scroom-build-container:$d-${VERSION} sh -x -c \
                 "D=\$(mktemp -d) && cmake -S /home/build/scroom -B \$D -GNinja && cmake --build \$D && cd \$D && xvfb-run ctest -j \$(nproc)"
           done    
 
@@ -38,4 +41,4 @@ jobs:
 
       - name: Upload to Packages Container registry
         if: github.ref == 'refs/heads/docker-build-containers'
-        run: parallel docker push ghcr.io/kees-jan/scroom-build-container:\{\} < supported-ubuntu-releases
+        run: parallel docker push ghcr.io/kees-jan/scroom-build-container:\{\}-${VERSION} < supported-ubuntu-releases

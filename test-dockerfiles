@@ -1,6 +1,8 @@
 #!/bin/sh -uex
 
-parallel --tag docker build -t test-scroom-dockerfiles:\{\} \{\} < supported-ubuntu-releases
+VERSION=$(cat dockerfile-version)
+
+parallel --tag docker build -t test-scroom-dockerfiles:\{\}-${VERSION} \{\} < supported-ubuntu-releases
 
 echo Docker images built succesfully
 
@@ -12,7 +14,7 @@ then
     for d in $(cat supported-ubuntu-releases)
     do
         echo $d
-        if docker run -v "$SCROOM_ABSOLUTE":/home/build/scroom --rm test-scroom-dockerfiles:$d sh -x -c \
+        if docker run -v "$SCROOM_ABSOLUTE":/home/build/scroom --rm test-scroom-dockerfiles:$d-${VERSION} sh -x -c \
               "D=\$(mktemp -d) && cmake -S /home/build/scroom -B \$D -GNinja && cmake --build \$D -- -k0 && cd \$D && xvfb-run ctest -j \$(nproc)" > $d.log 2>&1
         then
             echo "$d - succeeded"
