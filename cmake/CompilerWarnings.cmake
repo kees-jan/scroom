@@ -67,6 +67,7 @@ function(set_project_warnings project_name)
       -Wno-float-conversion
       -Wno-sign-conversion
       -Wno-incompatible-ms-struct
+      -Wno-c2y-extensions
   )
 
   set(GCC_WARNINGS
