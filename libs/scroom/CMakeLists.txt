@@ -67,7 +67,6 @@ if(ENABLE_GOOGLE_TEST)
     PRIVATE project_options
             project_warnings
             scroom_lib
-            Boost::system
             gmock_main
             plugin_interfaces
   )
