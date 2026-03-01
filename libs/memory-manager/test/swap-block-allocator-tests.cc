@@ -7,7 +7,7 @@
 
 #include <cstring>
 
-#include <boost/test/unit_test.hpp>
+#include <gtest/gtest.h>
 
 #include <scroom/blockallocator.hh>
 
@@ -15,9 +15,7 @@
 
 using namespace Scroom::MemoryBlocks;
 
-BOOST_AUTO_TEST_SUITE(Swap_based_Block_Allocator_Tests)
-
-BOOST_AUTO_TEST_CASE(allocator_provides_a_number_of_independent_blocks_of_a_given_size)
+TEST(Swap_based_Block_Allocator_Tests, allocator_provides_a_number_of_independent_blocks_of_a_given_size) // NOLINT
 {
   const size_t size  = 16 * 1024;
   const size_t count = 16;
@@ -26,7 +24,7 @@ BOOST_AUTO_TEST_CASE(allocator_provides_a_number_of_independent_blocks_of_a_give
   BlockInterface::Ptr              bi  = bfi->create(count, size);
 
   PageList pages = bi->getPages();
-  BOOST_CHECK_EQUAL(count, pages.size());
+  EXPECT_EQ(count, pages.size());
 
   bi.reset();
 
@@ -34,7 +32,7 @@ BOOST_AUTO_TEST_CASE(allocator_provides_a_number_of_independent_blocks_of_a_give
   for(Page& p: pages)
   {
     RawPageData::Ptr const raw = p.get();
-    BOOST_REQUIRE(raw.get());
+    ASSERT_TRUE(raw.get());
 
     memset(raw.get(), data, size);
     data++;
@@ -45,12 +43,10 @@ BOOST_AUTO_TEST_CASE(allocator_provides_a_number_of_independent_blocks_of_a_give
   for(Page& p: pages)
   {
     RawPageData::Ptr const raw = p.get();
-    BOOST_REQUIRE(raw.get());
+    ASSERT_TRUE(raw.get());
 
     memset(expected, data, size);
-    BOOST_CHECK(!memcmp(expected, raw.get(), size));
+    EXPECT_TRUE(!memcmp(expected, raw.get(), size));
     data++;
   }
 }
-
-BOOST_AUTO_TEST_SUITE_END()

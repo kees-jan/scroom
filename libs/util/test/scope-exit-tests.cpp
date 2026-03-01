@@ -5,52 +5,48 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include <boost/test/unit_test.hpp>
+#include <gtest/gtest.h>
 
 #include <scroom/utilities.hh>
 
 using namespace Scroom::Utils;
 
-BOOST_AUTO_TEST_SUITE(scope_exit_tests)
-
-BOOST_AUTO_TEST_CASE(test_on_scope_exit)
+TEST(scope_exit_tests, test_on_scope_exit) // NOLINT
 {
   bool result = false;
   {
     on_scope_exit set_result_to_true([&] { result = true; });
-    BOOST_TEST(!result);
+    EXPECT_FALSE(result);
   }
-  BOOST_TEST(result);
+  EXPECT_TRUE(result);
 }
 
-BOOST_AUTO_TEST_CASE(test_on_destruction)
+TEST(scope_exit_tests, test_on_destruction) // NOLINT
 {
   bool result = false;
   auto s      = on_destruction([&] { result = true; });
-  BOOST_TEST(!result);
+  EXPECT_FALSE(result);
   s.reset();
-  BOOST_TEST(result);
+  EXPECT_TRUE(result);
 }
 
-BOOST_AUTO_TEST_CASE(test_desired_optional_cleanup)
+TEST(scope_exit_tests, test_desired_optional_cleanup) // NOLINT
 {
   bool result = false;
   {
     optional_cleanup set_result_to_true([&] { result = true; });
-    BOOST_TEST(!result);
+    EXPECT_FALSE(result);
   }
-  BOOST_TEST(result);
+  EXPECT_TRUE(result);
 }
 
-BOOST_AUTO_TEST_CASE(test_undesired_optional_cleanup)
+TEST(scope_exit_tests, test_undesired_optional_cleanup) // NOLINT
 {
   bool result = false;
   {
     optional_cleanup set_result_to_true([&] { result = true; });
-    BOOST_TEST(!result);
+    EXPECT_FALSE(result);
     set_result_to_true.cancel();
   }
-  BOOST_TEST(!result);
+  EXPECT_FALSE(result);
 }
-
-BOOST_AUTO_TEST_SUITE_END()

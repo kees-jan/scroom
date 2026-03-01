@@ -5,18 +5,24 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
+#include <chrono>
+#include <condition_variable>
 #include <memory>
+#include <mutex>
 #include <stack>
 #include <thread>
 
-#include <boost/dll.hpp>
-#include <boost/test/unit_test.hpp>
+#include <gtest/gtest.h>
 
 #include <scroom/gtk-test-helpers.hh>
 
 #include "pipette.hh"
 
-BOOST_FIXTURE_TEST_SUITE(Pipette_Tests, Scroom::GtkTestHelpers::GtkMainLoop)
+class Pipette_Tests
+  : public Scroom::GtkTestHelpers::GtkMainLoop
+  , public ::testing::Test
+{
+};
 
 class DummyPresentation
   : public PresentationInterface
@@ -67,7 +73,7 @@ public:
   void                   registerPostRenderer(PostRenderer::Ptr /*unused*/) override { reg_post++; }
   void                   setStatusMessage(const std::string& msg) override
   {
-    boost::mutex::scoped_lock const l(mut);
+    std::unique_lock<std::mutex> const l(mut);
     statusMessages.push_back(msg);
     cond.notify_all();
   }
@@ -76,10 +82,12 @@ public:
 
   std::string nextStatusMessage()
   {
-    boost::mutex::scoped_lock l(mut);
-
-    BOOST_REQUIRE(cond.wait_for(l, boost::chrono::milliseconds(500), [&] { return !statusMessages.empty(); }));
-
+    std::unique_lock<std::mutex> l(mut);
+    if(!cond.wait_for(l, std::chrono::milliseconds(500), [&] { return !statusMessages.empty(); }))
+    {
+      ADD_FAILURE() << "Timeout waiting for status message";
+      return {};
+    }
     auto result = statusMessages.front();
     statusMessages.pop_front();
     return result;
@@ -90,9 +98,9 @@ public:
   int                        tool_btn = 0;
   PresentationInterface::Ptr presentation;
 
-  boost::mutex              mut;
-  boost::condition_variable cond;
-  std::list<std::string>    statusMessages;
+  std::mutex              mut;
+  std::condition_variable cond;
+  std::list<std::string>  statusMessages;
 };
 
 class DummyPluginInterface : public ScroomPluginInterface
@@ -118,28 +126,28 @@ public:
   int view_observers = 0;
 };
 
-BOOST_AUTO_TEST_CASE(pipette_selection_end)
+TEST_F(Pipette_Tests, pipette_selection_end) // NOLINT
 {
   PipetteHandler::Ptr const handler = PipetteHandler::create();
 
   Selection const sel(10, 11);
 
   handler->onSelectionEnd(sel, nullptr);
-  BOOST_CHECK(!handler->getSelection());
+  EXPECT_FALSE(handler->getSelection());
 
   handler->onEnable();
   handler->onSelectionEnd(sel, DummyView::createWithPresentation());
   auto selection = handler->getSelection();
-  BOOST_REQUIRE(selection);
+  ASSERT_TRUE(selection);
   Scroom::Utils::Point<double> const expected{10, 11};
-  BOOST_CHECK_EQUAL(selection->start, expected);
+  EXPECT_EQ(selection->start, expected);
 
   handler->onDisable();
   handler->onSelectionEnd(sel, nullptr);
-  BOOST_CHECK(!handler->getSelection());
+  EXPECT_FALSE(handler->getSelection());
 }
 
-BOOST_AUTO_TEST_CASE(pipette_selection_update)
+TEST_F(Pipette_Tests, pipette_selection_update) // NOLINT
 {
   PipetteHandler::Ptr const handler = PipetteHandler::create();
 
@@ -149,14 +157,14 @@ BOOST_AUTO_TEST_CASE(pipette_selection_update)
   handler->onSelectionStart(sel, nullptr);
 
   handler->onSelectionUpdate(sel, nullptr);
-  BOOST_CHECK(!handler->getSelection());
+  EXPECT_FALSE(handler->getSelection());
 
   handler->onEnable();
   handler->onSelectionUpdate(sel, nullptr);
   auto selection = handler->getSelection();
-  BOOST_REQUIRE(selection);
+  ASSERT_TRUE(selection);
   Scroom::Utils::Point<double> const expected{10, 11};
-  BOOST_CHECK_EQUAL(selection->start, expected);
+  EXPECT_EQ(selection->start, expected);
 
   ViewInterface::Ptr const vi = DummyView::createWithPresentation();
   cairo_t*                 cr = cairo_create(cairo_image_surface_create(CAIRO_FORMAT_ARGB32, 1, 1));
@@ -165,22 +173,22 @@ BOOST_AUTO_TEST_CASE(pipette_selection_update)
 
   handler->onDisable();
   handler->onSelectionUpdate(sel, nullptr);
-  BOOST_CHECK(!handler->getSelection());
+  EXPECT_FALSE(handler->getSelection());
   handler->render(vi, cr, {0, 0, 0, 0}, 1);
 }
 
-BOOST_AUTO_TEST_CASE(pipette_enable_disable)
+TEST_F(Pipette_Tests, pipette_enable_disable) // NOLINT
 {
   PipetteHandler::Ptr const handler = PipetteHandler::create();
 
   // questionably useful
   handler->onEnable();
-  BOOST_CHECK(handler->isEnabled());
+  EXPECT_TRUE(handler->isEnabled());
   handler->onDisable();
-  BOOST_CHECK(!handler->isEnabled());
+  EXPECT_FALSE(handler->isEnabled());
 }
 
-BOOST_AUTO_TEST_CASE(pipette_metadata)
+TEST_F(Pipette_Tests, pipette_metadata) // NOLINT
 {
   const auto pluginInterface = DummyPluginInterface::create();
 
@@ -191,12 +199,12 @@ BOOST_AUTO_TEST_CASE(pipette_metadata)
   pipette->registerCapabilities(pluginInterface);
 
   // maybe not worth testing
-  BOOST_CHECK_EQUAL(pipette->getPluginName(), "Pipette");
-  BOOST_CHECK(!pipette->getPluginVersion().empty());
-  BOOST_CHECK_EQUAL(pre_view_observers + 1, pluginInterface->view_observers);
+  EXPECT_EQ(pipette->getPluginName(), "Pipette");
+  EXPECT_FALSE(pipette->getPluginVersion().empty());
+  EXPECT_EQ(pre_view_observers + 1, pluginInterface->view_observers);
 }
 
-BOOST_AUTO_TEST_CASE(pipette_value_display_presentation)
+TEST_F(Pipette_Tests, pipette_value_display_presentation) // NOLINT
 {
   PipetteHandler::Ptr const handler = PipetteHandler::create();
   const auto                view    = DummyView::createWithPresentation();
@@ -204,19 +212,19 @@ BOOST_AUTO_TEST_CASE(pipette_value_display_presentation)
   handler->onEnable();
 
   handler->computeValues(view, Scroom::Utils::Rectangle<double>(10, 11, 12, 13));
-  BOOST_CHECK_EQUAL(view->nextStatusMessage(), "Computing color values...");
-  BOOST_CHECK_EQUAL(view->nextStatusMessage(),
-                    "Top-left: (10,11), Bottom-right: (22,24), Height: 13, Width: 12, "
-                    "Colors: C: 1.00");
+  EXPECT_EQ(view->nextStatusMessage(), "Computing color values...");
+  EXPECT_EQ(view->nextStatusMessage(),
+            "Top-left: (10,11), Bottom-right: (22,24), Height: 13, Width: 12, "
+            "Colors: C: 1.00");
 
   handler->computeValues(view, Scroom::Utils::Rectangle<double>(-10, -11, 20, 22));
-  BOOST_CHECK_EQUAL(view->nextStatusMessage(), "Computing color values...");
-  BOOST_CHECK_EQUAL(view->nextStatusMessage(),
-                    "Top-left: (0,0), Bottom-right: (10,11), Height: 11, Width: 10, "
-                    "Colors: C: 1.00");
+  EXPECT_EQ(view->nextStatusMessage(), "Computing color values...");
+  EXPECT_EQ(view->nextStatusMessage(),
+            "Top-left: (0,0), Bottom-right: (10,11), Height: 11, Width: 10, "
+            "Colors: C: 1.00");
 }
 
-BOOST_AUTO_TEST_CASE(pipette_value_display_no_presentation)
+TEST_F(Pipette_Tests, pipette_value_display_no_presentation) // NOLINT
 {
   PipetteHandler::Ptr const handler = PipetteHandler::create();
   const auto                view    = DummyView::createWithoutPresentation();
@@ -224,11 +232,11 @@ BOOST_AUTO_TEST_CASE(pipette_value_display_no_presentation)
   handler->onEnable();
 
   handler->computeValues(view, Scroom::Utils::Rectangle<double>(10, 11, 12, 13));
-  BOOST_CHECK_EQUAL(view->nextStatusMessage(), "Computing color values...");
-  BOOST_CHECK_EQUAL(view->nextStatusMessage(), "Pipette is not supported for this presentation.");
+  EXPECT_EQ(view->nextStatusMessage(), "Computing color values...");
+  EXPECT_EQ(view->nextStatusMessage(), "Pipette is not supported for this presentation.");
 }
 
-BOOST_AUTO_TEST_CASE(pipette_view_add)
+TEST_F(Pipette_Tests, pipette_view_add) // NOLINT
 {
   Pipette::Ptr const pipette = Pipette::create();
   const auto         view    = DummyView::createWithPresentation();
@@ -239,10 +247,8 @@ BOOST_AUTO_TEST_CASE(pipette_view_add)
 
   Scroom::Bookkeeping::Token const token = pipette->viewAdded(view);
 
-  BOOST_CHECK_EQUAL(pre_reg_sel + 1, view->reg_sel);
-  BOOST_CHECK_EQUAL(pre_reg_post + 1, view->reg_post);
-  BOOST_CHECK_EQUAL(pre_tool_btn + 1, view->tool_btn);
-  BOOST_CHECK(token != nullptr);
+  EXPECT_EQ(pre_reg_sel + 1, view->reg_sel);
+  EXPECT_EQ(pre_reg_post + 1, view->reg_post);
+  EXPECT_EQ(pre_tool_btn + 1, view->tool_btn);
+  EXPECT_TRUE(token != nullptr);
 }
-
-BOOST_AUTO_TEST_SUITE_END()

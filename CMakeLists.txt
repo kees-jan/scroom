@@ -73,12 +73,10 @@ enable_doxygen()
 include(cmake/StaticAnalyzers.cmake)
 
 option(BUILD_SHARED_LIBS "Enable compilation of shared libraries" ON)
-option(ENABLE_BOOST_TEST "Enable Boost Test builds" ON)
 option(ENABLE_GOOGLE_TEST "Enable Google Test builds" ON)
 option(ENABLE_SLOW_TESTS "Enable tests that take a lot of time" ON)
 option(MULTITHREADING "Use as many threads as needed" ON)
 option(DEBUG_TILES "Visualize internally used tiles" OFF)
-option(XML_TEST_OUTPUT "Have all Boost unittests report in xml format" OFF)
 
 # Very basic PCH example
 option(ENABLE_PCH "Enable Precompiled Headers" OFF)
@@ -96,12 +94,8 @@ if(ENABLE_PCH)
   )
 endif()
 
-if(ENABLE_BOOST_TEST OR ENABLE_GOOGLE_TEST)
+if(ENABLE_GOOGLE_TEST)
   enable_testing()
-endif()
-
-if(ENABLE_BOOST_TEST)
-  message("Building Boost Tests.")
 endif()
 
 if(ENABLE_GOOGLE_TEST)

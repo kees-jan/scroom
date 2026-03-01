@@ -7,7 +7,7 @@
 
 #include <cstring>
 
-#include <boost/test/unit_test.hpp>
+#include <gtest/gtest.h>
 
 #include "blob-compression.hh"
 
@@ -16,9 +16,7 @@
 using namespace Scroom::MemoryBlobs;
 using namespace Scroom::MemoryBlobs::Detail;
 
-BOOST_AUTO_TEST_SUITE(Blob_Compression_Tests)
-
-BOOST_AUTO_TEST_CASE(compression_decompression_retains_data)
+TEST(Blob_Compression_Tests, compression_decompression_retains_data) // NOLINT
 {
   const size_t blobSize   = 16 * 1024;
   const size_t blockCount = 16;
@@ -37,10 +35,10 @@ BOOST_AUTO_TEST_CASE(compression_decompression_retains_data)
   uint8_t out[blobSize];
   decompressBlob(out, blobSize, l, provider);
 
-  BOOST_CHECK(!memcmp(in, out, blobSize));
+  EXPECT_TRUE(!memcmp(in, out, blobSize));
 }
 
-BOOST_AUTO_TEST_CASE(compression_decompression_retains_data_with_large_blocks)
+TEST(Blob_Compression_Tests, compression_decompression_retains_data_with_large_blocks) // NOLINT
 {
   const size_t blobSize   = 16;
   const size_t blockCount = 16;
@@ -59,7 +57,5 @@ BOOST_AUTO_TEST_CASE(compression_decompression_retains_data_with_large_blocks)
   uint8_t out[blobSize];
   decompressBlob(out, blobSize, l, provider);
 
-  BOOST_CHECK(!memcmp(in, out, blobSize));
+  EXPECT_TRUE(!memcmp(in, out, blobSize));
 }
-
-BOOST_AUTO_TEST_SUITE_END()

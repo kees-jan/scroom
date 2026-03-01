@@ -5,13 +5,12 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include <boost/test/unit_test.hpp>
+#include <gtest/gtest.h>
 
 #include <scroom/plugininformationinterface.hh>
 #include <scroom/scroomplugin.hh>
 
-BOOST_AUTO_TEST_SUITE(Plugin_tests)
-
-BOOST_AUTO_TEST_CASE(get_plugin_information) { PluginInformationInterface::Ptr const pi = getPluginInformation(); }
-
-BOOST_AUTO_TEST_SUITE_END()
+TEST(Plugin_tests, get_plugin_information) // NOLINT
+{
+  PluginInformationInterface::Ptr const pi = getPluginInformation();
+}

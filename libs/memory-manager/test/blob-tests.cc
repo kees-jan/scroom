@@ -8,7 +8,7 @@
 #include <cstring>
 #include <list>
 
-#include <boost/test/unit_test.hpp>
+#include <gtest/gtest.h>
 
 #include <scroom/memoryblobs.hh>
 
@@ -16,9 +16,7 @@
 
 using namespace Scroom::MemoryBlobs;
 
-BOOST_AUTO_TEST_SUITE(Blob_Tests)
-
-BOOST_AUTO_TEST_CASE(blobs_retain_their_data)
+TEST(Blob_Tests, blobs_retain_their_data) // NOLINT
 {
   const size_t blobSize   = 16 * 1024;
   const size_t blobCount  = 16;
@@ -39,7 +37,7 @@ BOOST_AUTO_TEST_CASE(blobs_retain_their_data)
   for(const Blob::Ptr& b: blobList)
   {
     RawPageData::Ptr const raw = b->get();
-    BOOST_REQUIRE(raw.get());
+    ASSERT_TRUE(raw.get());
 
     memset(raw.get(), data, blobSize);
     data++;
@@ -50,15 +48,15 @@ BOOST_AUTO_TEST_CASE(blobs_retain_their_data)
   for(const Blob::Ptr& b: blobList)
   {
     RawPageData::ConstPtr const raw = b->getConst();
-    BOOST_REQUIRE(raw.get());
+    ASSERT_TRUE(raw.get());
 
     memset(expected, data, blobSize);
-    BOOST_CHECK(!memcmp(expected, raw.get(), blobSize));
+    EXPECT_TRUE(!memcmp(expected, raw.get(), blobSize));
     data++;
   }
 }
 
-BOOST_AUTO_TEST_CASE(blobs_can_be_updated)
+TEST(Blob_Tests, blobs_can_be_updated) // NOLINT
 {
   const size_t blobSize   = 16 * 1024;
   const size_t blobCount  = 16;
@@ -79,7 +77,7 @@ BOOST_AUTO_TEST_CASE(blobs_can_be_updated)
   for(const Blob::Ptr& b: blobList)
   {
     RawPageData::Ptr const raw = b->get();
-    BOOST_REQUIRE(raw.get());
+    ASSERT_TRUE(raw.get());
 
     memset(raw.get(), data, blobSize);
     data++;
@@ -89,7 +87,7 @@ BOOST_AUTO_TEST_CASE(blobs_can_be_updated)
   for(const Blob::Ptr& b: blobList)
   {
     RawPageData::Ptr const raw = b->get();
-    BOOST_REQUIRE(raw.get());
+    ASSERT_TRUE(raw.get());
 
     memset(raw.get(), 255 - data, blobSize);
     data++;
@@ -100,15 +98,15 @@ BOOST_AUTO_TEST_CASE(blobs_can_be_updated)
   for(const Blob::Ptr& b: blobList)
   {
     RawPageData::ConstPtr const raw = b->getConst();
-    BOOST_REQUIRE(raw.get());
+    ASSERT_TRUE(raw.get());
 
     memset(expected, 255 - data, blobSize);
-    BOOST_CHECK(!memcmp(expected, raw.get(), blobSize));
+    EXPECT_TRUE(!memcmp(expected, raw.get(), blobSize));
     data++;
   }
 }
 
-BOOST_AUTO_TEST_CASE(blobs_can_be_initialized)
+TEST(Blob_Tests, blobs_can_be_initialized) // NOLINT
 {
   const size_t  blobSize   = 4096;
   const size_t  blockCount = 16;
@@ -125,7 +123,5 @@ BOOST_AUTO_TEST_CASE(blobs_can_be_initialized)
   uint8_t expected[blobSize];
   memset(expected, value, blobSize);
 
-  BOOST_CHECK(!memcmp(expected, raw.get(), blobSize));
+  EXPECT_TRUE(!memcmp(expected, raw.get(), blobSize));
 }
-
-BOOST_AUTO_TEST_SUITE_END()

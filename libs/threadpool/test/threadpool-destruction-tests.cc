@@ -15,8 +15,9 @@
 #include <memory>
 
 #include <boost/date_time/posix_time/posix_time.hpp>
-#include <boost/test/unit_test.hpp>
 #include <boost/thread.hpp>
+
+#include <gtest/gtest.h>
 
 #include <scroom/function-additor.hh>
 #include <scroom/semaphore.hh>
@@ -32,9 +33,7 @@ const millisec long_timeout(2000);
 
 //////////////////////////////////////////////////////////////
 
-BOOST_AUTO_TEST_SUITE(ThreadPool_destruction_Tests)
-
-BOOST_AUTO_TEST_CASE(destroy_threadpool_with_nonempty_queue)
+TEST(ThreadPool_destruction_Tests, destroy_threadpool_with_nonempty_queue) // NOLINT
 {
   ThreadPool::Ptr pool = ThreadPool::create(1);
   Semaphore       guard(0);
@@ -55,13 +54,13 @@ BOOST_AUTO_TEST_CASE(destroy_threadpool_with_nonempty_queue)
   // Thread t destroys the threadpool without waiting for ThreadPool
   // jobs to finish. Hence, it should terminate immediately, even
   // though the threadpool is blocked on pass(&b)
-  BOOST_CHECK(t.timed_join(long_timeout));
-  BOOST_REQUIRE(boost::thread::id() == t.get_id());
+  EXPECT_TRUE(t.timed_join(long_timeout));
+  ASSERT_TRUE(boost::thread::id() == t.get_id());
   b.V();
-  BOOST_CHECK(!c.P(long_timeout));
+  EXPECT_FALSE(c.P(long_timeout));
 }
 
-BOOST_AUTO_TEST_CASE(destroy_threadpool_with_nonempty_queue_with_completeAllJobsBeforeDestruction_true)
+TEST(ThreadPool_destruction_Tests, destroy_threadpool_with_nonempty_queue_with_completeAllJobsBeforeDestruction_true) // NOLINT
 {
   ThreadPool::Ptr pool = ThreadPool::create(1, true);
   Semaphore       guard(0);
@@ -82,10 +81,8 @@ BOOST_AUTO_TEST_CASE(destroy_threadpool_with_nonempty_queue_with_completeAllJobs
   // Thread t destroys the threadpool without waiting for ThreadPool
   // jobs to finish. Hence, it should terminate immediately, even
   // though the threadpool is blocked on pass(&b)
-  BOOST_CHECK(t.timed_join(long_timeout));
-  BOOST_REQUIRE(boost::thread::id() == t.get_id());
+  EXPECT_TRUE(t.timed_join(long_timeout));
+  ASSERT_TRUE(boost::thread::id() == t.get_id());
   b.V();
-  BOOST_CHECK(c.P(long_timeout));
+  EXPECT_TRUE(c.P(long_timeout));
 }
-
-BOOST_AUTO_TEST_SUITE_END()

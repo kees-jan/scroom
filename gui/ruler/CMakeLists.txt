@@ -20,13 +20,13 @@ install(
 )
 install(FILES ${HEADER_FILES} DESTINATION include)
 
-if(ENABLE_BOOST_TEST)
+if(ENABLE_GOOGLE_TEST)
   add_executable(ruler_tests)
-  target_sources(ruler_tests PRIVATE test/main.cc test/ruler-tests.cc)
+  target_sources(ruler_tests PRIVATE test/ruler-tests.cc)
   target_include_directories(ruler_tests PRIVATE src)
   target_link_libraries(
     ruler_tests
-    PRIVATE boosttesthelper
+    PRIVATE gmock_main
             project_options
             project_warnings
             ruler

@@ -34,23 +34,21 @@ install(
 )
 install(FILES ${HEADER_FILES} DESTINATION include/scroom)
 
-if(ENABLE_BOOST_TEST)
+if(ENABLE_GOOGLE_TEST)
   add_executable(memory_manager_tests)
   target_sources(
     memory_manager_tests
     PRIVATE test/blob-tests.cc
             test/compression-tests.cc
-            test/main.cc
             test/pageprovider-tests.cc
             test/swap-block-allocator-tests.cc
   )
   target_link_libraries(
     memory_manager_tests
-    PRIVATE boosttesthelper
+    PRIVATE gmock_main
             project_options
             project_warnings
             memory_manager
-            Boost::system
   )
   target_include_directories(memory_manager_tests PRIVATE src)
 

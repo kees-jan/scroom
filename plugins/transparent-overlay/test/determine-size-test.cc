@@ -7,7 +7,7 @@
 
 #include <algorithm>
 
-#include <boost/test/unit_test.hpp>
+#include <gtest/gtest.h>
 
 #include <scroom/gtk-helpers.hh>
 #include <scroom/presentationinterface.hh>
@@ -115,7 +115,7 @@ namespace
 
     void CheckAllEqual(Scroom::Utils::Rectangle<double> const& rect_) const
     {
-      BOOST_CHECK_EQUAL(std::list<Scroom::Utils::Rectangle<double>>(receivedRect.size(), rect_), receivedRect);
+      EXPECT_EQ(std::list<Scroom::Utils::Rectangle<double>>(receivedRect.size(), rect_), receivedRect);
     }
 
     bool Contains(ViewInterface::WeakPtr const& vi)
@@ -125,8 +125,8 @@ namespace
 
     void CheckEmpty() const
     {
-      BOOST_CHECK(receivedVi.empty());
-      BOOST_CHECK(receivedRect.empty());
+      EXPECT_TRUE(receivedVi.empty());
+      EXPECT_TRUE(receivedRect.empty());
     }
 
     void Clear()
@@ -159,19 +159,17 @@ namespace
 
 } // namespace
 
-BOOST_AUTO_TEST_SUITE(Determine_size_tests)
-
-BOOST_AUTO_TEST_CASE(determine_size_of_one_regular)
+TEST(Determine_size_tests, determine_size_of_one_regular) // NOLINT
 {
   Scroom::Utils::Rectangle<double> const expected(1, 2, 3, 4);
   PresentationInterfaceStub::Ptr const   p  = PresentationInterfaceStub::create(expected);
   SizeDeterminer::Ptr const              sd = SizeDeterminer::create();
   sd->add(p);
 
-  BOOST_CHECK_EQUAL(expected, sd->getRect());
+  EXPECT_EQ(expected, sd->getRect());
 }
 
-BOOST_AUTO_TEST_CASE(determine_size_of_two_regular)
+TEST(Determine_size_tests, determine_size_of_two_regular) // NOLINT
 {
   Scroom::Utils::Rectangle<double> const expected(1, 1, 5, 5);
   PresentationInterfaceStub::Ptr const   p1 = PresentationInterfaceStub::create({1, 2, 3, 4});
@@ -180,10 +178,10 @@ BOOST_AUTO_TEST_CASE(determine_size_of_two_regular)
   sd->add(p1);
   sd->add(p2);
 
-  BOOST_CHECK_EQUAL(expected, sd->getRect());
+  EXPECT_EQ(expected, sd->getRect());
 }
 
-BOOST_AUTO_TEST_CASE(determine_size_of_one_regular_one_resizable)
+TEST(Determine_size_tests, determine_size_of_one_regular_one_resizable) // NOLINT
 {
   Scroom::Utils::Rectangle<double> const        expected(2, 1, 4, 3);
   ResizablePresentationInterfaceStub::Ptr const p1 = ResizablePresentationInterfaceStub::create({1, 2, 3, 4});
@@ -192,13 +190,13 @@ BOOST_AUTO_TEST_CASE(determine_size_of_one_regular_one_resizable)
   sd->add(p1);
   sd->add(p2);
 
-  BOOST_CHECK_EQUAL(expected, sd->getRect());
-  BOOST_CHECK(p1->receivedVi.empty());
-  BOOST_CHECK(p1->receivedRect.empty());
+  EXPECT_EQ(expected, sd->getRect());
+  EXPECT_TRUE(p1->receivedVi.empty());
+  EXPECT_TRUE(p1->receivedRect.empty());
   ViewInterface::Ptr const v1 = ViewInterfaceDummy::create();
   sd->open(p1, v1);
   p1->CheckAllEqual(expected);
-  BOOST_CHECK(p1->Contains(v1));
+  EXPECT_TRUE(p1->Contains(v1));
 
   p1->Clear();
   ViewInterface::Ptr const v2 = ViewInterfaceDummy::create();
@@ -206,7 +204,7 @@ BOOST_AUTO_TEST_CASE(determine_size_of_one_regular_one_resizable)
   p1->CheckEmpty();
 }
 
-BOOST_AUTO_TEST_CASE(determine_size_of_two_resizable)
+TEST(Determine_size_tests, determine_size_of_two_resizable) // NOLINT
 {
   Scroom::Utils::Rectangle<double> const        expected(1, 1, 5, 5);
   ResizablePresentationInterfaceStub::Ptr const p1 = ResizablePresentationInterfaceStub::create({1, 2, 3, 4});
@@ -215,24 +213,24 @@ BOOST_AUTO_TEST_CASE(determine_size_of_two_resizable)
   sd->add(p1);
   sd->add(p2);
 
-  BOOST_CHECK_EQUAL(expected, sd->getRect());
+  EXPECT_EQ(expected, sd->getRect());
 
   p1->CheckEmpty();
   ViewInterface::Ptr const v1 = ViewInterfaceDummy::create();
   sd->open(p1, v1);
   p1->CheckAllEqual(expected);
-  BOOST_CHECK(p1->Contains(v1));
+  EXPECT_TRUE(p1->Contains(v1));
   p2->CheckEmpty();
 
   p1->Clear();
   ViewInterface::Ptr const v2 = ViewInterfaceDummy::create();
   sd->open(p2, v2);
   p2->CheckAllEqual(expected);
-  BOOST_CHECK(p2->Contains(v2));
+  EXPECT_TRUE(p2->Contains(v2));
   p1->CheckEmpty();
 }
 
-BOOST_AUTO_TEST_CASE(open_a_view_then_add_presentations_one_regular_one_resizable)
+TEST(Determine_size_tests, open_a_view_then_add_presentations_one_regular_one_resizable) // NOLINT
 {
   SizeDeterminer::Ptr const sd = SizeDeterminer::create();
 
@@ -241,24 +239,24 @@ BOOST_AUTO_TEST_CASE(open_a_view_then_add_presentations_one_regular_one_resizabl
   sd->add(p1);
   ViewInterface::Ptr const v1 = ViewInterfaceDummy::create();
   sd->open(p1, v1);
-  BOOST_CHECK_EQUAL(r1, sd->getRect());
+  EXPECT_EQ(r1, sd->getRect());
   p1->CheckAllEqual(r1);
-  BOOST_CHECK(p1->Contains(v1));
+  EXPECT_TRUE(p1->Contains(v1));
   p1->Clear();
 
   Scroom::Utils::Rectangle<double> const r2(2, 1, 4, 3);
   PresentationInterfaceStub::Ptr const   p2 = PresentationInterfaceStub::create(r2);
   sd->add(p2);
-  BOOST_CHECK_EQUAL(r2, sd->getRect());
+  EXPECT_EQ(r2, sd->getRect());
   p1->CheckAllEqual(r2);
-  BOOST_CHECK(p1->Contains(v1));
+  EXPECT_TRUE(p1->Contains(v1));
   p1->Clear();
   ViewInterface::Ptr const v2 = ViewInterfaceDummy::create();
   sd->open(p2, v2);
   p1->CheckEmpty();
 }
 
-BOOST_AUTO_TEST_CASE(updates_are_sent_to_multiple_views)
+TEST(Determine_size_tests, updates_are_sent_to_multiple_views) // NOLINT
 {
   SizeDeterminer::Ptr const sd = SizeDeterminer::create();
 
@@ -272,22 +270,20 @@ BOOST_AUTO_TEST_CASE(updates_are_sent_to_multiple_views)
   ViewInterface::Ptr const vi3 = ViewInterfaceDummy::create();
   sd->open(p1, vi3);
 
-  BOOST_CHECK_EQUAL(r1, sd->getRect());
+  EXPECT_EQ(r1, sd->getRect());
   p1->CheckAllEqual(r1);
-  BOOST_CHECK(p1->Contains(vi1));
-  BOOST_CHECK(p1->Contains(vi2));
-  BOOST_CHECK(p1->Contains(vi3));
+  EXPECT_TRUE(p1->Contains(vi1));
+  EXPECT_TRUE(p1->Contains(vi2));
+  EXPECT_TRUE(p1->Contains(vi3));
   p1->Clear();
 
   sd->close(p1, vi3);
   Scroom::Utils::Rectangle<double> const r2(2, 1, 4, 3);
   PresentationInterfaceStub::Ptr const   p2 = PresentationInterfaceStub::create(r2);
   sd->add(p2);
-  BOOST_CHECK_EQUAL(r2, sd->getRect());
+  EXPECT_EQ(r2, sd->getRect());
   p1->CheckAllEqual(r2);
-  BOOST_CHECK(p1->Contains(vi1));
-  BOOST_CHECK(p1->Contains(vi2));
-  BOOST_CHECK(!p1->Contains(vi3));
+  EXPECT_TRUE(p1->Contains(vi1));
+  EXPECT_TRUE(p1->Contains(vi2));
+  EXPECT_FALSE(p1->Contains(vi3));
 }
-
-BOOST_AUTO_TEST_SUITE_END()

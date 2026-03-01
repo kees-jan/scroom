@@ -10,8 +10,9 @@
 #endif
 
 #include <boost/date_time/posix_time/posix_time.hpp>
-#include <boost/test/unit_test.hpp>
 #include <boost/thread.hpp>
+
+#include <gtest/gtest.h>
 
 #include <scroom/function-additor.hh>
 #include <scroom/semaphore.hh>
@@ -26,118 +27,102 @@ static const millisec long_timeout(2000);
 
 //////////////////////////////////////////////////////////////
 
-BOOST_AUTO_TEST_SUITE(Function_Additor_Tests)
-
-BOOST_AUTO_TEST_SUITE(Helper_Tests)
-
-BOOST_AUTO_TEST_CASE(clear_clears)
+TEST(Function_Additor_Helper_Tests, clear_clears) // NOLINT
 {
   Semaphore s(0);
-  BOOST_REQUIRE(!s.try_P());
+  ASSERT_FALSE(s.try_P());
   clear (&s)();
-  BOOST_REQUIRE(s.try_P());
+  ASSERT_TRUE(s.try_P());
 }
 
-BOOST_AUTO_TEST_CASE(pass_passes)
+TEST(Function_Additor_Helper_Tests, pass_passes) // NOLINT
 {
   Semaphore s(1);
   pass (&s)();
-  BOOST_REQUIRE(!s.try_P());
+  ASSERT_FALSE(s.try_P());
 }
 
-BOOST_AUTO_TEST_CASE(destroy_destroys)
+TEST(Function_Additor_Helper_Tests, destroy_destroys) // NOLINT
 {
   std::shared_ptr<int>     p(new int(4));
   std::weak_ptr<int> const w(p);
-  BOOST_REQUIRE(w.lock());
+  ASSERT_TRUE(w.lock());
 
   boost::function<void()> const f(destroy(p));
   p.reset();
-  BOOST_REQUIRE(w.lock());
+  ASSERT_TRUE(w.lock());
 
   f();
-  BOOST_REQUIRE(!w.lock());
+  ASSERT_FALSE(w.lock());
 }
 
-BOOST_AUTO_TEST_SUITE_END()
-
-BOOST_AUTO_TEST_SUITE(Additor_Tests)
-
-BOOST_AUTO_TEST_CASE(additor_adds)
+TEST(Function_Additor_Additor_Tests, additor_adds) // NOLINT
 {
   Semaphore s1(0);
   Semaphore s2(0);
-  BOOST_REQUIRE(!s1.try_P());
-  BOOST_REQUIRE(!s2.try_P());
+  ASSERT_FALSE(s1.try_P());
+  ASSERT_FALSE(s2.try_P());
   (clear(&s1) + clear(&s2))();
-  BOOST_REQUIRE(s1.try_P());
-  BOOST_REQUIRE(s2.try_P());
+  ASSERT_TRUE(s1.try_P());
+  ASSERT_TRUE(s2.try_P());
 }
 
-BOOST_AUTO_TEST_CASE(order_is_preserved)
+TEST(Function_Additor_Additor_Tests, order_is_preserved) // NOLINT
 {
   Semaphore s1(0);
   Semaphore s2(0);
-  BOOST_CHECK(!s1.try_P());
-  BOOST_CHECK(!s2.try_P());
+  EXPECT_FALSE(s1.try_P());
+  EXPECT_FALSE(s2.try_P());
   boost::thread t(pass(&s1) + clear(&s2));
-  BOOST_CHECK(!s2.P(short_timeout));
+  EXPECT_FALSE(s2.P(short_timeout));
   s1.V();
-  BOOST_CHECK(s2.P(long_timeout));
-  BOOST_CHECK(t.timed_join(long_timeout));
+  EXPECT_TRUE(s2.P(long_timeout));
+  EXPECT_TRUE(t.timed_join(long_timeout));
 }
 
-BOOST_AUTO_TEST_CASE(left_association)
+TEST(Function_Additor_Additor_Tests, left_association) // NOLINT
 {
   Scroom::Detail::ThreadPool::FunctionAdditor a;
   Semaphore                                   s1(0);
   Semaphore                                   s2(0);
   a += pass(&s1);
-  BOOST_CHECK_EQUAL(&a, &(a + clear(&s2)));
+  EXPECT_EQ(&a, &(a + clear(&s2)));
 
   boost::thread t(a);
-  BOOST_CHECK(!s2.P(short_timeout));
+  EXPECT_FALSE(s2.P(short_timeout));
   s1.V();
-  BOOST_CHECK(s2.P(long_timeout));
-  BOOST_CHECK(t.timed_join(long_timeout));
+  EXPECT_TRUE(s2.P(long_timeout));
+  EXPECT_TRUE(t.timed_join(long_timeout));
 }
 
-BOOST_AUTO_TEST_CASE(right_association)
+TEST(Function_Additor_Additor_Tests, right_association) // NOLINT
 {
   Scroom::Detail::ThreadPool::FunctionAdditor a;
   Semaphore                                   s1(0);
   Semaphore                                   s2(0);
   a += clear(&s2);
 
-  BOOST_CHECK_EQUAL(&a, &(pass(&s1) + a));
+  EXPECT_EQ(&a, &(pass(&s1) + a));
   boost::thread t(a);
-  BOOST_CHECK(!s2.P(short_timeout));
+  EXPECT_FALSE(s2.P(short_timeout));
   s1.V();
-  BOOST_CHECK(s2.P(long_timeout));
-  BOOST_CHECK(t.timed_join(long_timeout));
+  EXPECT_TRUE(s2.P(long_timeout));
+  EXPECT_TRUE(t.timed_join(long_timeout));
 }
 
-BOOST_AUTO_TEST_SUITE_END()
-
-BOOST_AUTO_TEST_SUITE(Multiplier_Tests)
-
-BOOST_AUTO_TEST_CASE(Multiplier_multiplies)
+TEST(Function_Additor_Multiplier_Tests, Multiplier_multiplies) // NOLINT
 {
   Semaphore s(5);
 
   (5 * pass(&s))();
-  BOOST_REQUIRE(!s.try_P());
+  ASSERT_FALSE(s.try_P());
 
   Semaphore s2(25);
   ((5 * pass(&s2)) * 5)();
-  BOOST_REQUIRE(!s2.try_P());
+  ASSERT_FALSE(s2.try_P());
 }
 
-BOOST_AUTO_TEST_SUITE_END()
-
-BOOST_AUTO_TEST_SUITE(Combined_Tests)
-
-BOOST_AUTO_TEST_CASE(Test_If_Expressions_Compile)
+TEST(Function_Additor_Combined_Tests, Test_If_Expressions_Compile) // NOLINT
 {
   (void)(clear(nullptr) + 5 * clear(nullptr));
   (void)(clear(nullptr) + (5 * clear(nullptr)) * 5);
@@ -145,7 +130,3 @@ BOOST_AUTO_TEST_CASE(Test_If_Expressions_Compile)
   (void)(4 * (clear(nullptr) + clear(nullptr)));
   (void)((clear(nullptr) + clear(nullptr)) * 4);
 }
-
-BOOST_AUTO_TEST_SUITE_END()
-
-BOOST_AUTO_TEST_SUITE_END()

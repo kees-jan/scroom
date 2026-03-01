@@ -2,7 +2,7 @@ all:
 .PHONY: all
 
 ########################################################################
-CONTAINER_VERSION ?= 0
+CONTAINER_VERSION ?= 1
 Q=@
 
 echo-build-step = +@printf "[%-5s] %s\n" $1 $2

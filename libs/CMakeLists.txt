@@ -1,4 +1,3 @@
-add_subdirectory(boost-test-helper)
 add_subdirectory(util)
 add_subdirectory(plugin-interfaces)
 add_subdirectory(threadpool)

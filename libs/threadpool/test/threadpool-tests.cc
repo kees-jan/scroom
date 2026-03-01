@@ -5,17 +5,19 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include <memory>
-
 #include <scroom/threadpool.hh>
 
 #ifdef HAVE_CONFIG_H
 #  include <config.h>
 #endif
 
+#include <memory>
+
 #include <boost/date_time/posix_time/posix_time.hpp>
-#include <boost/test/unit_test.hpp>
 #include <boost/thread.hpp>
+#include <boost/thread/future.hpp>
+
+#include <gtest/gtest.h>
 
 #include <scroom/function-additor.hh>
 #include <scroom/semaphore.hh>
@@ -129,25 +131,21 @@ bool has_exactly_n_threads(ThreadPool* pool, int count)
 
 //////////////////////////////////////////////////////////////
 
-BOOST_AUTO_TEST_SUITE(ThreadPool_Tests)
-
-BOOST_AUTO_TEST_SUITE(ThreadPool_class_Tests)
-
-BOOST_AUTO_TEST_CASE(work_gets_done)
+TEST(ThreadPool_class_Tests, work_gets_done) // NOLINT
 {
   Semaphore  s(0);
   ThreadPool pool(0);
   pool.schedule(clear(&s));
 
   // Work doesn't get done with no threads
-  BOOST_CHECK(!s.P(long_timeout));
+  EXPECT_FALSE(s.P(long_timeout));
   pool.add();
 
   // With a thread, work gets done
-  BOOST_CHECK(s.P(long_timeout));
+  EXPECT_TRUE(s.P(long_timeout));
 }
 
-BOOST_AUTO_TEST_CASE(work_gets_done_by_prio)
+TEST(ThreadPool_class_Tests, work_gets_done_by_prio) // NOLINT
 {
   Semaphore  high(0);
   Semaphore  low(0);
@@ -158,103 +156,91 @@ BOOST_AUTO_TEST_CASE(work_gets_done_by_prio)
   pool.add();
   // Thread is doing the high-prio tasks first, which is blocked on
   // the low semaphore, hence, no work gets done.
-  BOOST_CHECK(!high.P(short_timeout));
+  EXPECT_FALSE(high.P(short_timeout));
 
   pool.add();
   // Second thread does the low-prio task, which unblocks the
   // high-prio one. How's that for priority inversion :-)
-  BOOST_CHECK(high.P(long_timeout));
+  EXPECT_TRUE(high.P(long_timeout));
 }
 
-BOOST_AUTO_TEST_CASE(construct_0_threads)
+TEST(ThreadPool_class_Tests, construct_0_threads) // NOLINT
 {
   ThreadPool pool(0);
-  BOOST_CHECK(has_exactly_n_threads(&pool, 0));
+  EXPECT_TRUE(has_exactly_n_threads(&pool, 0));
 }
 
-BOOST_AUTO_TEST_CASE(construct_1_threads)
+TEST(ThreadPool_class_Tests, construct_1_threads) // NOLINT
 {
   ThreadPool pool(1);
-  BOOST_CHECK(has_exactly_n_threads(&pool, 1));
+  EXPECT_TRUE(has_exactly_n_threads(&pool, 1));
 }
 
-BOOST_AUTO_TEST_CASE(construct_2_threads)
+TEST(ThreadPool_class_Tests, construct_2_threads) // NOLINT
 {
   ThreadPool pool(2);
   const int  expected = 2;
 #ifndef MULTITHREADING
   expected = 1;
 #endif
-  BOOST_CHECK(has_exactly_n_threads(&pool, expected));
+  EXPECT_TRUE(has_exactly_n_threads(&pool, expected));
 }
 
-BOOST_AUTO_TEST_CASE(schedule_shared_pointer)
+TEST(ThreadPool_class_Tests, schedule_shared_pointer) // NOLINT
 {
   ThreadPool pool(1);
   Semaphore  a(0);
 
   pool.schedule(A::create(&a));
-  BOOST_CHECK(a.P(long_timeout));
+  EXPECT_TRUE(a.P(long_timeout));
 }
 
-BOOST_AUTO_TEST_CASE(schedule_future)
+TEST(ThreadPool_class_Tests, schedule_future) // NOLINT
 {
   ThreadPool pool(0);
   Semaphore  a(0);
 
   boost::unique_future<int> result(pool.schedule<int>([pa = &a] { return no_op(pa, 42); }));
 
-  BOOST_CHECK(!a.P(short_timeout));
-  BOOST_CHECK(!result.is_ready());
+  EXPECT_FALSE(a.P(short_timeout));
+  EXPECT_FALSE(result.is_ready());
   pool.add();
 
-  BOOST_CHECK(a.P(long_timeout));
-  BOOST_CHECK_EQUAL(42, result.get());
+  EXPECT_TRUE(a.P(long_timeout));
+  EXPECT_EQ(42, result.get());
 }
 
-BOOST_AUTO_TEST_CASE(schedule_shared_pointer_with_future)
+TEST(ThreadPool_class_Tests, schedule_shared_pointer_with_future) // NOLINT
 {
   ThreadPool pool(0);
   Semaphore  a(0);
 
   boost::unique_future<bool> result(pool.schedule<bool, B<bool>>(B<bool>::create(&a, false)));
 
-  BOOST_CHECK(!a.P(short_timeout));
-  BOOST_CHECK(!result.is_ready());
+  EXPECT_FALSE(a.P(short_timeout));
+  EXPECT_FALSE(result.is_ready());
   pool.add();
 
-  BOOST_CHECK(a.P(long_timeout));
-  BOOST_CHECK_EQUAL(false, result.get());
+  EXPECT_TRUE(a.P(long_timeout));
+  EXPECT_EQ(false, result.get());
 }
-
-BOOST_AUTO_TEST_SUITE_END()
 
 //////////////////////////////////////////////////////////////
 
-BOOST_AUTO_TEST_SUITE(CpuBound_Tests)
-
-BOOST_AUTO_TEST_CASE(verify_threadcount)
+TEST(CpuBound_Tests, verify_threadcount) // NOLINT
 {
   ThreadPool::Ptr const t        = CpuBound();
   const int             expected = boost::thread::hardware_concurrency();
 #ifndef MULTITHREADING
   expected = 1;
 #endif
-  BOOST_CHECK(has_exactly_n_threads(t.get(), expected));
+  EXPECT_TRUE(has_exactly_n_threads(t.get(), expected));
 }
-
-BOOST_AUTO_TEST_SUITE_END()
 
 //////////////////////////////////////////////////////////////
 
-BOOST_AUTO_TEST_SUITE(Sequentially_Tests)
-
-BOOST_AUTO_TEST_CASE(verify_threadcount)
+TEST(Sequentially_Tests, verify_threadcount) // NOLINT
 {
   ThreadPool::Ptr const t = Sequentially();
-  BOOST_CHECK(has_exactly_n_threads(t.get(), 1));
+  EXPECT_TRUE(has_exactly_n_threads(t.get(), 1));
 }
-
-BOOST_AUTO_TEST_SUITE_END()
-
-BOOST_AUTO_TEST_SUITE_END()

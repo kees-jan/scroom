@@ -23,17 +23,16 @@ target_link_libraries(
 install(TARGETS sptransparentoverlay DESTINATION ${PLUGIN_INSTALL_LOCATION_RELATIVE})
 install_plugin_dependencies(sptransparentoverlay)
 
-if(ENABLE_BOOST_TEST)
+if(ENABLE_GOOGLE_TEST)
   add_executable(transparentoverlay_tests)
-  target_sources(transparentoverlay_tests PRIVATE test/main.cc test/determine-size-test.cc test/plugin-test.cc)
+  target_sources(transparentoverlay_tests PRIVATE test/determine-size-test.cc test/plugin-test.cc)
   target_include_directories(transparentoverlay_tests PRIVATE src)
   target_link_libraries(
     transparentoverlay_tests
-    PRIVATE boosttesthelper
+    PRIVATE gmock_main
             project_options
             project_warnings
             sptransparentoverlay
-            Boost::system
             plugin_interfaces
   )
 

@@ -3,7 +3,6 @@ find_package(
   Boost CONFIG REQUIRED
   COMPONENTS thread
              system
-             unit_test_framework
              filesystem
              chrono
              program_options
@@ -14,7 +13,6 @@ if(Boost_FOUND)
     Boost::boost
     Boost::system
     Boost::thread
-    Boost::unit_test_framework
     Boost::filesystem
     Boost::chrono
     Boost::program_options

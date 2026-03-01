@@ -8,7 +8,7 @@
 #include <memory>
 #include <utility>
 
-#include <boost/test/unit_test.hpp>
+#include <gtest/gtest.h>
 
 #include <scroom/observable.hh>
 
@@ -85,9 +85,7 @@ void TestRecursiveObservable::observerAdded(Observer const& observer, Scroom::Bo
 
 //////////////////////////////////////////////////////////////
 
-BOOST_AUTO_TEST_SUITE(Observable_Tests)
-
-BOOST_AUTO_TEST_CASE(register_observer)
+TEST(Observable_Tests, register_observer) // NOLINT
 {
   TestObservable::Ptr const           observable   = TestObservable::create();
   TestObserver::Ptr                   observer     = TestObserver::create();
@@ -96,26 +94,26 @@ BOOST_AUTO_TEST_CASE(register_observer)
 
   // Registration succeeds
   Stuff registration = observable->registerStrongObserver(observer);
-  BOOST_CHECK(registration);
+  EXPECT_TRUE(registration);
   observers = observable->getObservers();
-  BOOST_REQUIRE(1 == observers.size());
-  BOOST_CHECK_EQUAL(observer, observers.front());
+  ASSERT_TRUE(1 == observers.size());
+  EXPECT_EQ(observer, observers.front());
 
   // Observable has a reference to observer, so it doesn't go away
   observer.reset();
-  BOOST_CHECK(!observer);
+  EXPECT_FALSE(observer);
   observers = observable->getObservers();
-  BOOST_REQUIRE(1 == observers.size());
+  ASSERT_TRUE(1 == observers.size());
   observer = weakObserver.lock();
-  BOOST_CHECK_EQUAL(observer, observers.front());
+  EXPECT_EQ(observer, observers.front());
 
   // Unregistering succeeds
   registration.reset();
   observers = observable->getObservers();
-  BOOST_REQUIRE(observers.empty());
+  ASSERT_TRUE(observers.empty());
 }
 
-BOOST_AUTO_TEST_CASE(register_weak_observer)
+TEST(Observable_Tests, register_weak_observer) // NOLINT
 {
   TestObservable::Ptr const           observable   = TestObservable::create();
   TestObserver::Ptr                   observer     = TestObserver::create();
@@ -124,21 +122,21 @@ BOOST_AUTO_TEST_CASE(register_weak_observer)
 
   // Registration succeeds
   Stuff registration = observable->registerObserver(weakObserver);
-  BOOST_CHECK(registration);
+  EXPECT_TRUE(registration);
   observers = observable->getObservers();
-  BOOST_REQUIRE(1 == observers.size());
-  BOOST_CHECK_EQUAL(observer, observers.front());
+  ASSERT_TRUE(1 == observers.size());
+  EXPECT_EQ(observer, observers.front());
 
   // Unregistering succeeds
   registration.reset();
-  BOOST_CHECK(!weakObserver.expired());
+  EXPECT_FALSE(weakObserver.expired());
   observers = observable->getObservers();
-  BOOST_REQUIRE(observers.empty());
+  ASSERT_TRUE(observers.empty());
   observer.reset();
-  BOOST_CHECK(weakObserver.expired());
+  EXPECT_TRUE(weakObserver.expired());
 }
 
-BOOST_AUTO_TEST_CASE(registered_weak_observer_goes_away)
+TEST(Observable_Tests, registered_weak_observer_goes_away) // NOLINT
 {
   TestObservable::Ptr const           observable   = TestObservable::create();
   TestObserver::Ptr                   observer     = TestObserver::create();
@@ -147,27 +145,27 @@ BOOST_AUTO_TEST_CASE(registered_weak_observer_goes_away)
 
   // Registration succeeds
   Stuff registration = observable->registerObserver(observer);
-  BOOST_CHECK(registration);
+  EXPECT_TRUE(registration);
   observers = observable->getObservers();
-  BOOST_REQUIRE(1 == observers.size());
-  BOOST_CHECK_EQUAL(observer, observers.front());
+  ASSERT_TRUE(1 == observers.size());
+  EXPECT_EQ(observer, observers.front());
 
   // Observable does not have a reference to observer, so it goes away
   observers.clear(); // don't forget this reference :-)
   observer.reset();
-  BOOST_CHECK(!observer);
+  EXPECT_FALSE(observer);
   observers = observable->getObservers();
-  BOOST_REQUIRE(observers.empty());
-  BOOST_CHECK(weakObserver.expired());
-  BOOST_CHECK(registration);
+  ASSERT_TRUE(observers.empty());
+  EXPECT_TRUE(weakObserver.expired());
+  EXPECT_TRUE(registration);
 
   // Unregistering succeeds
   registration.reset();
   observers = observable->getObservers();
-  BOOST_REQUIRE(observers.empty());
+  ASSERT_TRUE(observers.empty());
 }
 
-BOOST_AUTO_TEST_CASE(register_multiple_observers)
+TEST(Observable_Tests, register_multiple_observers) // NOLINT
 {
   TestObservable::Ptr const           observable   = TestObservable::create();
   TestObserver::Ptr const             o1           = TestObserver::create();
@@ -180,45 +178,45 @@ BOOST_AUTO_TEST_CASE(register_multiple_observers)
   Stuff r1 = observable->registerObserver(weakObserver);
   Stuff r2 = observable->registerObserver(o2);
   Stuff r3 = observable->registerStrongObserver(o3);
-  BOOST_CHECK(r1);
-  BOOST_CHECK(r2);
-  BOOST_CHECK(r3);
+  EXPECT_TRUE(r1);
+  EXPECT_TRUE(r2);
+  EXPECT_TRUE(r3);
   observers = observable->getObservers();
-  BOOST_CHECK_EQUAL(3, observers.size());
+  EXPECT_EQ(3, observers.size());
   observers.remove(o1);
-  BOOST_CHECK_EQUAL(2, observers.size());
+  EXPECT_EQ(2, observers.size());
   observers.remove(o2);
-  BOOST_CHECK_EQUAL(1, observers.size());
+  EXPECT_EQ(1, observers.size());
   observers.remove(o3);
-  BOOST_CHECK_EQUAL(0, observers.size());
+  EXPECT_EQ(0, observers.size());
 
   // Unregistering succeeds
   r1.reset();
   observers = observable->getObservers();
-  BOOST_CHECK_EQUAL(2, observers.size());
+  EXPECT_EQ(2, observers.size());
   observers.remove(o1);
-  BOOST_CHECK_EQUAL(2, observers.size());
+  EXPECT_EQ(2, observers.size());
   observers.remove(o2);
-  BOOST_CHECK_EQUAL(1, observers.size());
+  EXPECT_EQ(1, observers.size());
   observers.remove(o3);
-  BOOST_CHECK_EQUAL(0, observers.size());
+  EXPECT_EQ(0, observers.size());
 
   r2.reset();
   observers = observable->getObservers();
-  BOOST_CHECK_EQUAL(1, observers.size());
+  EXPECT_EQ(1, observers.size());
   observers.remove(o1);
-  BOOST_CHECK_EQUAL(1, observers.size());
+  EXPECT_EQ(1, observers.size());
   observers.remove(o2);
-  BOOST_CHECK_EQUAL(1, observers.size());
+  EXPECT_EQ(1, observers.size());
   observers.remove(o3);
-  BOOST_CHECK_EQUAL(0, observers.size());
+  EXPECT_EQ(0, observers.size());
 
   r3.reset();
   observers = observable->getObservers();
-  BOOST_CHECK_EQUAL(0, observers.size());
+  EXPECT_EQ(0, observers.size());
 }
 
-BOOST_AUTO_TEST_CASE(register_observer_multiple_times)
+TEST(Observable_Tests, register_observer_multiple_times) // NOLINT
 {
   TestObservable::Ptr const           observable = TestObservable::create();
   TestObserver::Ptr const             observer   = TestObserver::create();
@@ -227,24 +225,24 @@ BOOST_AUTO_TEST_CASE(register_observer_multiple_times)
   // Registration succeeds
   Stuff r1 = observable->registerStrongObserver(observer);
   Stuff r2 = observable->registerStrongObserver(observer);
-  BOOST_CHECK(r1);
-  BOOST_CHECK(r2);
-  BOOST_CHECK_EQUAL(r1, r2);
+  EXPECT_TRUE(r1);
+  EXPECT_TRUE(r2);
+  EXPECT_EQ(r1, r2);
   observers = observable->getObservers();
-  BOOST_REQUIRE(1 == observers.size());
-  BOOST_CHECK_EQUAL(observer, observers.front());
+  ASSERT_TRUE(1 == observers.size());
+  EXPECT_EQ(observer, observers.front());
 
   // Unregistering succeeds
   r1.reset();
   observers = observable->getObservers();
-  BOOST_REQUIRE(1 == observers.size());
-  BOOST_CHECK_EQUAL(observer, observers.front());
+  ASSERT_TRUE(1 == observers.size());
+  EXPECT_EQ(observer, observers.front());
   r2.reset();
   observers = observable->getObservers();
-  BOOST_REQUIRE(observers.empty());
+  ASSERT_TRUE(observers.empty());
 }
 
-BOOST_AUTO_TEST_CASE(register_weak_observer_multiple_times)
+TEST(Observable_Tests, register_weak_observer_multiple_times) // NOLINT
 {
   TestObservable::Ptr const           observable = TestObservable::create();
   TestObserver::Ptr const             observer   = TestObserver::create();
@@ -253,24 +251,24 @@ BOOST_AUTO_TEST_CASE(register_weak_observer_multiple_times)
   // Registration succeeds
   Stuff r1 = observable->registerObserver(observer);
   Stuff r2 = observable->registerObserver(observer);
-  BOOST_CHECK(r1);
-  BOOST_CHECK(r2);
-  BOOST_CHECK_EQUAL(r1, r2);
+  EXPECT_TRUE(r1);
+  EXPECT_TRUE(r2);
+  EXPECT_EQ(r1, r2);
   observers = observable->getObservers();
-  BOOST_REQUIRE(1 == observers.size());
-  BOOST_CHECK_EQUAL(observer, observers.front());
+  ASSERT_TRUE(1 == observers.size());
+  EXPECT_EQ(observer, observers.front());
 
   // Unregistering succeeds
   r1.reset();
   observers = observable->getObservers();
-  BOOST_REQUIRE(1 == observers.size());
-  BOOST_CHECK_EQUAL(observer, observers.front());
+  ASSERT_TRUE(1 == observers.size());
+  EXPECT_EQ(observer, observers.front());
   r2.reset();
   observers = observable->getObservers();
-  BOOST_REQUIRE(observers.empty());
+  ASSERT_TRUE(observers.empty());
 }
 
-BOOST_AUTO_TEST_CASE(register_observer_recursively)
+TEST(Observable_Tests, register_observer_recursively) // NOLINT
 {
   TestObservable::Ptr const           observable          = TestObservable::create();
   TestRecursiveObservable::Ptr const  recursiveObservable = TestRecursiveObservable::create(observable);
@@ -279,35 +277,35 @@ BOOST_AUTO_TEST_CASE(register_observer_recursively)
 
   // Registration succeeds
   Stuff registration = recursiveObservable->registerObserver(observer);
-  BOOST_CHECK(registration);
+  EXPECT_TRUE(registration);
   observers = observable->getObservers();
-  BOOST_REQUIRE(1 == observers.size());
-  BOOST_CHECK_EQUAL(observer, observers.front());
+  ASSERT_TRUE(1 == observers.size());
+  EXPECT_EQ(observer, observers.front());
   observers = recursiveObservable->getObservers();
-  BOOST_REQUIRE(1 == observers.size());
-  BOOST_CHECK_EQUAL(observer, observers.front());
+  ASSERT_TRUE(1 == observers.size());
+  EXPECT_EQ(observer, observers.front());
 
   // Unregistering succeeds
   registration.reset();
   observers = observable->getObservers();
-  BOOST_REQUIRE(observers.empty());
+  ASSERT_TRUE(observers.empty());
   observers = recursiveObservable->getObservers();
-  BOOST_REQUIRE(observers.empty());
+  ASSERT_TRUE(observers.empty());
 }
 
-BOOST_AUTO_TEST_CASE(shared_from_this)
+TEST(Observable_Tests, shared_from_this) // NOLINT
 {
   TestObservable::Ptr const                   original = TestObservable::create();
   TestObservable::Ptr const                   copy1    = original->shared_from_this<TestObservable>();
   std::shared_ptr<TestObservable const> const copy2    = original;
   std::shared_ptr<TestObservable const> const copy3    = copy2->shared_from_this<TestObservable>();
 
-  BOOST_CHECK_EQUAL(original, copy1);
-  BOOST_CHECK_EQUAL(copy2, copy3);
-  BOOST_CHECK_EQUAL(original, copy2);
+  EXPECT_EQ(original, copy1);
+  EXPECT_EQ(copy2, copy3);
+  EXPECT_EQ(original, copy2);
 }
 
-BOOST_AUTO_TEST_CASE(deleting_observable_deletes_observer)
+TEST(Observable_Tests, deleting_observable_deletes_observer) // NOLINT
 {
   TestObservable::Ptr                 observable   = TestObservable::create();
   TestObserver::Ptr                   observer     = TestObserver::create();
@@ -316,23 +314,21 @@ BOOST_AUTO_TEST_CASE(deleting_observable_deletes_observer)
 
   // Registration succeeds
   Stuff const registration = observable->registerStrongObserver(observer);
-  BOOST_CHECK(registration);
+  EXPECT_TRUE(registration);
 
   // Observable has a reference to observer, so it doesn't go away
   observer.reset();
-  BOOST_CHECK(!observer);
+  EXPECT_FALSE(observer);
   observers = observable->getObservers();
-  BOOST_REQUIRE(1 == observers.size());
+  ASSERT_TRUE(1 == observers.size());
   observer = weakObserver.lock();
-  BOOST_CHECK_EQUAL(observer, observers.front());
+  EXPECT_EQ(observer, observers.front());
   observers.clear();
 
   // Destroying observable destroys observer
   observer.reset();
-  BOOST_CHECK(!observer);
+  EXPECT_FALSE(observer);
   observable.reset();
-  BOOST_CHECK(!observable);
-  BOOST_CHECK(!weakObserver.lock());
+  EXPECT_FALSE(observable);
+  EXPECT_FALSE(weakObserver.lock());
 }
-
-BOOST_AUTO_TEST_SUITE_END()

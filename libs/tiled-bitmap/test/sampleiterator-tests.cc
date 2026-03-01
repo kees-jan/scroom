@@ -5,23 +5,14 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include <list>
+#include <cstring>
+#include <tuple>
 
-#include <boost/test/data/test_case.hpp>
-#include <boost/test/unit_test.hpp>
+#include <gtest/gtest.h>
 
 #include <scroom/bitmap-helpers.hh>
 
-namespace data = boost::unit_test::data;
 using Scroom::Bitmap::SampleIterator;
-
-namespace
-{
-  const uint8_t testData[]        = {0x65, 0xC7};
-  const int     bit_depths[]      = {1, 2, 4, 8};
-  const int     initial_offsets[] = {0, 1};
-  const int     deltas[]          = {0, 1, 5};
-} // namespace
 
 namespace Scroom::Bitmap
 {
@@ -32,11 +23,23 @@ namespace Scroom::Bitmap
   }
 } // namespace Scroom::Bitmap
 
-
-BOOST_AUTO_TEST_SUITE(SampleIterator_Tests)
-
-BOOST_DATA_TEST_CASE(SampleIterator_iterates, data::make(bit_depths), bps)
+namespace
 {
+  const uint8_t testData[]        = {0x65, 0xC7};
+  const int     bit_depths[]      = {1, 2, 4, 8};
+  const int     initial_offsets[] = {0, 1};
+  const int     deltas[]          = {0, 1, 5};
+} // namespace
+
+class SampleIterator_iterates : public ::testing::TestWithParam<int>
+{
+};
+
+INSTANTIATE_TEST_SUITE_P(SampleIterator_Tests, SampleIterator_iterates, ::testing::ValuesIn(bit_depths));
+
+TEST_P(SampleIterator_iterates, Test) // NOLINT
+{
+  const int                     bps = GetParam();
   SampleIterator<const uint8_t> it(testData, 0, bps);
   uint8_t                       output[] = {0, 0};
   SampleIterator<uint8_t>       out(output, 0, bps);
@@ -44,34 +47,44 @@ BOOST_DATA_TEST_CASE(SampleIterator_iterates, data::make(bit_depths), bps)
 
   for(auto i = 0; i < it.samplesPerBase; i++, it++, out++)
   {
-    BOOST_CHECK_EQUAL((testData[0] >> (8 - bps * (i + 1))) & mask, *it);
-    BOOST_CHECK_EQUAL((testData[0] >> (8 - bps * (i + 1))) & mask, it.get());
+    EXPECT_EQ((testData[0] >> (8 - bps * (i + 1))) & mask, *it);
+    EXPECT_EQ((testData[0] >> (8 - bps * (i + 1))) & mask, it.get());
     out.set(*it);
   }
   for(auto i = 0; i < it.samplesPerBase; i++, it++, out++)
   {
-    BOOST_CHECK_EQUAL((testData[1] >> (8 - bps * (i + 1))) & mask, *it);
-    BOOST_CHECK_EQUAL((testData[1] >> (8 - bps * (i + 1))) & mask, it.get());
+    EXPECT_EQ((testData[1] >> (8 - bps * (i + 1))) & mask, *it);
+    EXPECT_EQ((testData[1] >> (8 - bps * (i + 1))) & mask, it.get());
     out.set(*it);
   }
 
-  BOOST_CHECK_EQUAL(0, memcmp(testData, output, 2));
+  EXPECT_EQ(0, memcmp(testData, output, 2));
 }
 
-BOOST_AUTO_TEST_CASE(equality)
+TEST(SampleIterator_Tests, equality) // NOLINT
 {
-  BOOST_CHECK_EQUAL(SampleIterator<uint8_t>(nullptr, 0, 1), SampleIterator<uint8_t>(nullptr, 0, 1));
-  BOOST_CHECK_NE(SampleIterator<const uint8_t>(nullptr, 0, 1), SampleIterator<const uint8_t>(testData, 0, 1));
-  BOOST_CHECK_NE(SampleIterator<uint8_t>(nullptr, 0, 1), SampleIterator<uint8_t>(nullptr, 1, 1));
-  BOOST_CHECK_NE(SampleIterator<uint8_t>(nullptr, 0, 1), SampleIterator<uint8_t>(nullptr, 0, 2));
+  EXPECT_EQ(SampleIterator<uint8_t>(nullptr, 0, 1), SampleIterator<uint8_t>(nullptr, 0, 1));
+  EXPECT_NE(SampleIterator<const uint8_t>(nullptr, 0, 1), SampleIterator<const uint8_t>(testData, 0, 1));
+  EXPECT_NE(SampleIterator<uint8_t>(nullptr, 0, 1), SampleIterator<uint8_t>(nullptr, 1, 1));
+  EXPECT_NE(SampleIterator<uint8_t>(nullptr, 0, 1), SampleIterator<uint8_t>(nullptr, 0, 2));
 }
 
-BOOST_DATA_TEST_CASE(arithmetic,
-                     data::make(bit_depths) * data::make(initial_offsets) * data::make(deltas),
-                     bps,
-                     initial_offset,
-                     delta)
+using ArithmeticParam = std::tuple<int, int, int>;
+
+class SampleIterator_arithmetic : public ::testing::TestWithParam<ArithmeticParam>
 {
+};
+
+INSTANTIATE_TEST_SUITE_P(SampleIterator_Tests,
+                         SampleIterator_arithmetic,
+                         ::testing::Combine(::testing::ValuesIn(bit_depths),
+                                            ::testing::ValuesIn(initial_offsets),
+                                            ::testing::ValuesIn(deltas)));
+
+TEST_P(SampleIterator_arithmetic, Test) // NOLINT
+{
+  auto [bps, initial_offset, delta] = GetParam();
+
   const SampleIterator<const uint8_t> start(nullptr, initial_offset, bps);
   SampleIterator<const uint8_t>       expected = start;
   for(auto i = 0; i < delta; i++, expected++)
@@ -81,10 +94,7 @@ BOOST_DATA_TEST_CASE(arithmetic,
   SampleIterator<const uint8_t> result = start;
   result += delta;
 
-  BOOST_CHECK_EQUAL(result, expected);
-  BOOST_CHECK_EQUAL(start + delta, expected);
-  BOOST_CHECK_EQUAL(delta + start, expected);
+  EXPECT_EQ(result, expected);
+  EXPECT_EQ(start + delta, expected);
+  EXPECT_EQ(delta + start, expected);
 }
-
-
-BOOST_AUTO_TEST_SUITE_END()

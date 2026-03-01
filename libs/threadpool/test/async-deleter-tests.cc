@@ -15,8 +15,9 @@
 #include <memory>
 
 #include <boost/date_time/posix_time/posix_time.hpp>
-#include <boost/test/unit_test.hpp>
 #include <boost/thread.hpp>
+
+#include <gtest/gtest.h>
 
 #include <scroom/function-additor.hh>
 #include <scroom/semaphore.hh>
@@ -57,24 +58,20 @@ public:
 
 //////////////////////////////////////////////////////////////
 
-BOOST_AUTO_TEST_SUITE(Async_Deleter_Tests)
-
-BOOST_AUTO_TEST_CASE(deleter_deletes_asynchronously)
+TEST(Async_Deleter_Tests, deleter_deletes_asynchronously) // NOLINT
 {
   Semaphore          barrier1;
   Semaphore          destroyed;
   std::shared_ptr<A> a = std::shared_ptr<A>(new A(&barrier1, &destroyed), AsyncDeleter<A>());
-  BOOST_CHECK(!destroyed.P(short_timeout));
+  EXPECT_FALSE(destroyed.P(short_timeout));
 
   Semaphore barrier2;
   Semaphore signal;
   CpuBound()->schedule(pass(&barrier2) + destroy(a) + clear(&signal));
   a.reset();
   barrier2.V();
-  BOOST_CHECK(signal.P(long_timeout));
-  BOOST_CHECK(!destroyed.P(short_timeout));
+  EXPECT_TRUE(signal.P(long_timeout));
+  EXPECT_FALSE(destroyed.P(short_timeout));
   barrier1.V();
-  BOOST_CHECK(destroyed.P(long_timeout));
+  EXPECT_TRUE(destroyed.P(long_timeout));
 }
-
-BOOST_AUTO_TEST_SUITE_END()

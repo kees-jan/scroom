@@ -5,29 +5,22 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include <list>
-#include <type_traits>
 #include <utility>
+#include <vector>
 
-#include <boost/assign/list_of.hpp>
-#include <boost/test/data/monomorphic.hpp>
-#include <boost/test/data/test_case.hpp>
-#include <boost/test/parameterized_test.hpp>
-#include <boost/test/unit_test.hpp>
-#include <boost/test/unit_test_suite.hpp>
+#include <gtest/gtest.h>
 
 #include <scroom/colormappable.hh>
-
 
 namespace
 {
   const Color  Blue(0, 0, 1);
-  const double accuracy = 1e-4;
+  const double accuracy = 1e-6;
 
   struct Data
   {
     ColormapHelper::Ptr helper;
-    int                 expectedColors;
+    size_t              expectedColors;
 
     Data(int expectedColors_, ColormapHelper::Ptr helper_)
       : helper(std::move(helper_))
@@ -36,77 +29,83 @@ namespace
     }
   };
 
-  std::ostream& operator<<(std::ostream& os, const Data& /*unused*/) { return os; }
+  const std::vector<Data> helpers = {
+    Data(4, ColormapHelper::create(4)),
+    Data(2, ColormapHelper::create(Colormap::createDefault(2))),
+    Data(4, ColormapHelper::createInverted(4)),
+    Data(256, MonochromeColormapHelper::create(256)),
+  };
 
-  std::list<Data> helpers =
-    boost::assign::list_of(Data(4, ColormapHelper::create(4)))(Data(2, ColormapHelper::create(Colormap::createDefault(2))))(
-      Data(4, ColormapHelper::createInverted(4)))(Data(256, MonochromeColormapHelper::create(256)));
+  class ColormapHelper_Data_Tests : public ::testing::TestWithParam<Data>
+  {
+  };
+
 } // namespace
 
-BOOST_AUTO_TEST_SUITE(ColormapHelper_Tests)
+INSTANTIATE_TEST_SUITE_P(ColormapHelper_Tests, ColormapHelper_Data_Tests, ::testing::ValuesIn(helpers));
 
-BOOST_DATA_TEST_CASE(colormaps_equal_and_correct_count, boost::unit_test::data::make(helpers))
+TEST_P(ColormapHelper_Data_Tests, colormaps_equal_and_correct_count) // NOLINT
 {
+  const Data& sample = GetParam();
+
   Colormap::Ptr const originalColormap = sample.helper->getOriginalColormap();
-  BOOST_REQUIRE(originalColormap);
-  BOOST_CHECK_EQUAL(sample.expectedColors, originalColormap->colors.size());
+  ASSERT_TRUE(originalColormap != nullptr);
+  EXPECT_EQ(sample.expectedColors, originalColormap->colors.size());
 
   Colormap::Ptr const colormap = sample.helper->getColormap();
-  BOOST_REQUIRE(colormap);
-  BOOST_CHECK_EQUAL(sample.expectedColors, colormap->colors.size());
-  BOOST_CHECK_EQUAL(originalColormap, colormap);
+  ASSERT_TRUE(colormap != nullptr);
+  EXPECT_EQ(sample.expectedColors, colormap->colors.size());
+  EXPECT_EQ(originalColormap, colormap);
 }
 
-BOOST_AUTO_TEST_CASE(regular_colormaps_cant_have_their_colors_set)
+TEST(ColormapHelper_Tests, regular_colormaps_cant_have_their_colors_set) // NOLINT
 {
   ColormapHelper::Ptr const helper = ColormapHelper::create(256);
-  BOOST_CHECK_THROW(helper->setMonochromeColor(Color(0, 0, 1)), std::runtime_error);
+  EXPECT_THROW(helper->setMonochromeColor(Color(0, 0, 1)), std::runtime_error);
 }
 
-BOOST_AUTO_TEST_CASE(monochrome_colormap_can_have_its_color_set)
+TEST(ColormapHelper_Tests, monochrome_colormap_can_have_its_color_set) // NOLINT
 {
   ColormapHelper::Ptr const helper                   = MonochromeColormapHelper::create(256);
   Colormap::Ptr const       originalOriginalColormap = helper->getOriginalColormap();
 
   // At least one color in the current colormap doesn't have a blue component
-  BOOST_CHECK_NE(1, helper->getColormap()->colors[0].blue);
+  EXPECT_NE(1, helper->getColormap()->colors[0].blue);
 
   helper->setMonochromeColor(Blue);
-  BOOST_CHECK_EQUAL(originalOriginalColormap, helper->getOriginalColormap());
+  EXPECT_EQ(originalOriginalColormap, helper->getOriginalColormap());
 
   Colormap::Ptr const newColorMap = helper->getColormap();
   for(Color const& c: newColorMap->colors)
   {
-    BOOST_CHECK_CLOSE(1, c.blue, accuracy);
+    EXPECT_NEAR(1, c.blue, accuracy);
   }
 
   Color const currentColor = helper->getMonochromeColor();
-  BOOST_CHECK_CLOSE(Blue.red, currentColor.red, accuracy);
-  BOOST_CHECK_CLOSE(Blue.green, currentColor.green, accuracy);
-  BOOST_CHECK_CLOSE(Blue.blue, currentColor.blue, accuracy);
+  EXPECT_NEAR(Blue.red, currentColor.red, accuracy);
+  EXPECT_NEAR(Blue.green, currentColor.green, accuracy);
+  EXPECT_NEAR(Blue.blue, currentColor.blue, accuracy);
 }
 
-BOOST_AUTO_TEST_CASE(inverted_monochrome_colormap_can_have_its_color_set)
+TEST(ColormapHelper_Tests, inverted_monochrome_colormap_can_have_its_color_set) // NOLINT
 {
   ColormapHelper::Ptr const helper                   = MonochromeColormapHelper::createInverted(256);
   Colormap::Ptr const       originalOriginalColormap = helper->getOriginalColormap();
 
   // At least one color in the current colormap doesn't have a blue component
-  BOOST_CHECK_NE(1, helper->getColormap()->colors.back().blue);
+  EXPECT_NE(1, helper->getColormap()->colors.back().blue);
 
   helper->setMonochromeColor(Blue);
-  BOOST_CHECK_EQUAL(originalOriginalColormap, helper->getOriginalColormap());
+  EXPECT_EQ(originalOriginalColormap, helper->getOriginalColormap());
 
   Colormap::Ptr const newColorMap = helper->getColormap();
   for(Color const& c: newColorMap->colors)
   {
-    BOOST_CHECK_CLOSE(1, c.blue, accuracy);
+    EXPECT_NEAR(1, c.blue, accuracy);
   }
 
   Color const currentColor = helper->getMonochromeColor();
-  BOOST_CHECK_CLOSE(Blue.red, currentColor.red, accuracy);
-  BOOST_CHECK_CLOSE(Blue.green, currentColor.green, accuracy);
-  BOOST_CHECK_CLOSE(Blue.blue, currentColor.blue, accuracy);
+  EXPECT_NEAR(Blue.red, currentColor.red, accuracy);
+  EXPECT_NEAR(Blue.green, currentColor.green, accuracy);
+  EXPECT_NEAR(Blue.blue, currentColor.blue, accuracy);
 }
-
-BOOST_AUTO_TEST_SUITE_END()

@@ -43,27 +43,11 @@ install(
 )
 install(FILES ${HEADER_FILES} DESTINATION include/scroom)
 
-if(ENABLE_BOOST_TEST)
+if(ENABLE_GOOGLE_TEST)
   add_executable(scroom_lib_tests)
-  target_sources(scroom_lib_tests PRIVATE test/main.cc test/colormaphelpers_test.cc)
+  target_sources(scroom_lib_tests PRIVATE test/transformpresentation_test.cc test/colormaphelpers_test.cc)
   target_link_libraries(
     scroom_lib_tests
-    PRIVATE boosttesthelper
-            project_options
-            project_warnings
-            scroom_lib
-            Boost::system
-            plugin_interfaces
-  )
-
-  add_test(NAME scroom_lib_tests COMMAND scroom_lib_tests)
-endif()
-
-if(ENABLE_GOOGLE_TEST)
-  add_executable(scroom_lib_gtests)
-  target_sources(scroom_lib_gtests PRIVATE test/transformpresentation_test.cc)
-  target_link_libraries(
-    scroom_lib_gtests
     PRIVATE project_options
             project_warnings
             scroom_lib
@@ -71,5 +55,5 @@ if(ENABLE_GOOGLE_TEST)
             plugin_interfaces
   )
 
-  add_test(NAME scroom_lib_gtests COMMAND scroom_lib_gtests)
+  add_test(NAME scroom_lib_tests COMMAND scroom_lib_tests)
 endif()

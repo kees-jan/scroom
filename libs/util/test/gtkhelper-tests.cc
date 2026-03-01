@@ -7,7 +7,7 @@
 
 #include <memory>
 
-#include <boost/test/unit_test.hpp>
+#include <gtest/gtest.h>
 
 #include <gtk/gtk.h>
 
@@ -30,9 +30,7 @@ namespace
 
 static void b(const B::Ptr& /*unused*/) {}
 
-BOOST_AUTO_TEST_SUITE(Gtk_Helpers_Tests)
-
-BOOST_AUTO_TEST_CASE(function_returning_bool)
+TEST(Gtk_Helpers_Tests, function_returning_bool) // NOLINT
 {
   GSourceFunc f    = nullptr;
   gpointer    data = nullptr;
@@ -45,19 +43,17 @@ BOOST_AUTO_TEST_CASE(function_returning_bool)
     f                                        = w.first;
     data                                     = w.second;
   }
-  BOOST_CHECK(wb.lock());
+  EXPECT_TRUE(wb.lock());
 
   bool const result = (*f)(data);
-  BOOST_CHECK_EQUAL(false, result);
-  BOOST_CHECK(!wb.lock());
+  EXPECT_EQ(false, result);
+  EXPECT_FALSE(wb.lock());
 }
 
-BOOST_AUTO_TEST_CASE(on_ui_thread_test)
+TEST(Gtk_Helpers_Tests, on_ui_thread_test) // NOLINT
 {
   Scroom::GtkTestHelpers::GtkMainLoop const mainLoop;
 
-  BOOST_REQUIRE(!on_ui_thread());
-  sync_on_ui_thread([] { BOOST_CHECK(on_ui_thread()); });
+  ASSERT_FALSE(on_ui_thread());
+  sync_on_ui_thread([] { EXPECT_TRUE(on_ui_thread()); });
 }
-
-BOOST_AUTO_TEST_SUITE_END()

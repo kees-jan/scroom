@@ -52,14 +52,13 @@ install(
 install(FILES ${HEADER_FILES} DESTINATION include/scroom)
 install(FILES ${HEADER_FILES_IMPL} DESTINATION include/scroom/impl)
 
-if(ENABLE_BOOST_TEST)
+if(ENABLE_GOOGLE_TEST)
   add_executable(util_tests)
   target_sources(
     util_tests
     PRIVATE test/bookkeeping-tests.cc
             test/counter-tests.cc
             test/gtkhelper-tests.cc
-            test/main.cc
             test/observable-tests.cc
             test/progressinterfacebroadcaster-tests.cc
             test/progressinterfaceconversion-tests.cc
@@ -71,7 +70,7 @@ if(ENABLE_BOOST_TEST)
   )
   target_link_libraries(
     util_tests
-    PRIVATE boosttesthelper
+    PRIVATE gmock_main
             project_options
             project_warnings
             plugin_interfaces

@@ -156,6 +156,8 @@ namespace Scroom::Bitmap
     {
       return currentBase == other.currentBase && currentOffset == other.currentOffset && bps == other.bps;
     }
+
+    bool operator!=(const SampleIterator<ConstBase>& other) const { return !(*this == other); }
   };
 
 } // namespace Scroom::Bitmap

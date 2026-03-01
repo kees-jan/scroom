@@ -15,8 +15,9 @@
 #include <memory>
 
 #include <boost/date_time/posix_time/posix_time.hpp>
-#include <boost/test/unit_test.hpp>
 #include <boost/thread.hpp>
+
+#include <gtest/gtest.h>
 
 #include <scroom/semaphore.hh>
 
@@ -31,9 +32,7 @@ const millisec long_timeout(2000);
 
 //////////////////////////////////////////////////////////////
 
-BOOST_AUTO_TEST_SUITE(ThreadPool_QueueImpl_Tests)
-
-BOOST_AUTO_TEST_CASE(queueimpl_jobs_get_executed)
+TEST(ThreadPool_QueueImpl_Tests, queueimpl_jobs_get_executed) // NOLINT
 {
   ThreadPool::Queue::Ptr const     queue = ThreadPool::Queue::create();
   ThreadPool::WeakQueue::Ptr const weak  = queue->getWeak();
@@ -41,10 +40,10 @@ BOOST_AUTO_TEST_CASE(queueimpl_jobs_get_executed)
   ThreadPool                       t(0);
   t.schedule(clear(&s), weak);
   t.add();
-  BOOST_CHECK(s.P(long_timeout));
+  EXPECT_TRUE(s.P(long_timeout));
 }
 
-BOOST_AUTO_TEST_CASE(queueimpl_jobs_with_deleted_queue_can_be_scheduled_and_dont_get_executed)
+TEST(ThreadPool_QueueImpl_Tests, queueimpl_jobs_with_deleted_queue_can_be_scheduled_and_dont_get_executed) // NOLINT
 {
   ThreadPool::Queue::Ptr           queue = ThreadPool::Queue::create();
   ThreadPool::WeakQueue::Ptr const weak  = queue->getWeak();
@@ -55,8 +54,6 @@ BOOST_AUTO_TEST_CASE(queueimpl_jobs_with_deleted_queue_can_be_scheduled_and_dont
   t.schedule(clear(&s1), weak);
   t.schedule(clear(&s2));
   t.add();
-  BOOST_CHECK(s2.P(long_timeout));
-  BOOST_CHECK(!s1.try_P());
+  EXPECT_TRUE(s2.P(long_timeout));
+  EXPECT_FALSE(s1.try_P());
 }
-
-BOOST_AUTO_TEST_SUITE_END()

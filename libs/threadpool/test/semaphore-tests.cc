@@ -8,8 +8,9 @@
 #include <iostream>
 
 #include <boost/date_time/posix_time/posix_time.hpp>
-#include <boost/test/unit_test.hpp>
 #include <boost/thread.hpp>
+
+#include <gtest/gtest.h>
 
 #include <scroom/function-additor.hh>
 #include <scroom/semaphore.hh>
@@ -25,50 +26,48 @@ void test_count_equals(Semaphore* s, int i)
 {
   for(int actual = 0; actual < i; actual++)
   {
-    BOOST_REQUIRE_MESSAGE(s->try_P(), "Could only decrement " << actual << " times, instead of " << i);
+    ASSERT_TRUE(s->try_P()) << "Could only decrement " << actual << " times, instead of " << i;
   }
-  BOOST_REQUIRE_MESSAGE(!s->try_P(), "Can decrement " << (i + 1) << " times, instead of " << i);
+  ASSERT_FALSE(s->try_P()) << "Can decrement " << (i + 1) << " times, instead of " << i;
 }
 
 //////////////////////////////////////////////////////////////
 
-BOOST_AUTO_TEST_SUITE(Semaphore_Tests)
-
-BOOST_AUTO_TEST_CASE(try_P)
+TEST(Semaphore_Tests, try_P) // NOLINT
 {
   Semaphore s1(0);
-  BOOST_REQUIRE(!s1.try_P());
+  ASSERT_FALSE(s1.try_P());
   Semaphore s2(1);
-  BOOST_REQUIRE(s2.try_P());
-  BOOST_REQUIRE(!s2.try_P());
+  ASSERT_TRUE(s2.try_P());
+  ASSERT_FALSE(s2.try_P());
 }
 
-BOOST_AUTO_TEST_CASE(count_equals_0)
+TEST(Semaphore_Tests, count_equals_0) // NOLINT
 {
   Semaphore s(0);
   test_count_equals(&s, 0);
 }
 
-BOOST_AUTO_TEST_CASE(count_equals_1)
+TEST(Semaphore_Tests, count_equals_1) // NOLINT
 {
   Semaphore s(1);
   test_count_equals(&s, 1);
 }
 
-BOOST_AUTO_TEST_CASE(count_equals_2)
+TEST(Semaphore_Tests, count_equals_2) // NOLINT
 {
   Semaphore s(2);
   test_count_equals(&s, 2);
 }
 
-BOOST_AUTO_TEST_CASE(inc_count_1)
+TEST(Semaphore_Tests, inc_count_1) // NOLINT
 {
   Semaphore s(0);
   s.V();
   test_count_equals(&s, 1);
 }
 
-BOOST_AUTO_TEST_CASE(inc_count_2)
+TEST(Semaphore_Tests, inc_count_2) // NOLINT
 {
   Semaphore s(0);
   s.V();
@@ -76,7 +75,7 @@ BOOST_AUTO_TEST_CASE(inc_count_2)
   test_count_equals(&s, 2);
 }
 
-BOOST_AUTO_TEST_CASE(inc_count_3)
+TEST(Semaphore_Tests, inc_count_3) // NOLINT
 {
   Semaphore s(0);
   s.V();
@@ -85,7 +84,7 @@ BOOST_AUTO_TEST_CASE(inc_count_3)
   test_count_equals(&s, 3);
 }
 
-BOOST_AUTO_TEST_CASE(pass_many)
+TEST(Semaphore_Tests, pass_many) // NOLINT
 {
   Semaphore     s(0);
   boost::thread t(5 * pass(&s));
@@ -101,28 +100,26 @@ BOOST_AUTO_TEST_CASE(pass_many)
   s.V();
   t.timed_join(millisec(250));
   bool const success = boost::thread::id() == t.get_id();
-  BOOST_REQUIRE(success);
+  ASSERT_TRUE(success);
   if(!success)
   {
     t.interrupt();
     t.timed_join(millisec(250));
-    BOOST_REQUIRE(boost::thread::id() == t.get_id());
+    ASSERT_TRUE(boost::thread::id() == t.get_id());
   }
 }
 
-BOOST_AUTO_TEST_CASE(p_with_timeout)
+TEST(Semaphore_Tests, p_with_timeout) // NOLINT
 {
   Semaphore s(0);
-  BOOST_REQUIRE(!s.P(millisec(250)));
+  ASSERT_FALSE(s.P(millisec(250)));
   test_count_equals(&s, 0);
 }
 
-BOOST_AUTO_TEST_CASE(p_without_timeout)
+TEST(Semaphore_Tests, p_without_timeout) // NOLINT
 {
   Semaphore s(1);
-  BOOST_REQUIRE(s.P(millisec(250)));
-  BOOST_REQUIRE(!s.P(millisec(250)));
+  ASSERT_TRUE(s.P(millisec(250)));
+  ASSERT_FALSE(s.P(millisec(250)));
   test_count_equals(&s, 0);
 }
-
-BOOST_AUTO_TEST_SUITE_END()

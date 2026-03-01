@@ -42,7 +42,7 @@ install(
 install(FILES ${HEADER_FILES} DESTINATION include/scroom)
 install(FILES ${HEADER_FILES_IMPL} DESTINATION include/scroom/impl)
 
-if(ENABLE_BOOST_TEST)
+if(ENABLE_GOOGLE_TEST)
   add_executable(threadpool_tests)
   target_sources(
     threadpool_tests
@@ -50,7 +50,6 @@ if(ENABLE_BOOST_TEST)
             test/function-additor-tests.cc
             test/helpers.cc
             test/helpers.hh
-            test/main.cc
             test/semaphore-tests.cc
             test/threadpool-destruction-tests.cc
             test/threadpool-queue-tests.cc
@@ -59,7 +58,7 @@ if(ENABLE_BOOST_TEST)
   )
   target_link_libraries(
     threadpool_tests
-    PRIVATE boosttesthelper
+    PRIVATE gmock_main
             project_options
             project_warnings
             threadpool

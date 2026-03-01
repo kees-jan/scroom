@@ -15,8 +15,9 @@
 #include <memory>
 
 #include <boost/date_time/posix_time/posix_time.hpp>
-#include <boost/test/unit_test.hpp>
 #include <boost/thread.hpp>
+
+#include <gtest/gtest.h>
 
 #include <scroom/function-additor.hh>
 #include <scroom/semaphore.hh>
@@ -27,69 +28,64 @@
 using namespace boost::posix_time;
 using namespace Scroom::Detail::ThreadPool;
 
-const millisec short_timeout(250);
-const millisec long_timeout(2000);
+static const millisec short_timeout(250);
+static const millisec long_timeout(2000);
 
 //////////////////////////////////////////////////////////////
 
-BOOST_AUTO_TEST_SUITE(ThreadPool_Queue_Tests)
-
-BOOST_AUTO_TEST_SUITE(Queue_Tests)
-
-BOOST_AUTO_TEST_CASE(basic_jobcounting)
+TEST(ThreadPool_Queue_QueueImpl, basic_jobcounting) // NOLINT
 {
   QueueImpl::Ptr const queue = QueueImpl::create();
-  BOOST_CHECK(queue);
-  BOOST_CHECK_EQUAL(0, queue->getCount());
+  EXPECT_TRUE(queue != nullptr);
+  EXPECT_EQ(0, queue->getCount());
   queue->jobStarted();
-  BOOST_CHECK_EQUAL(1, queue->getCount());
+  EXPECT_EQ(1, queue->getCount());
   queue->jobStarted();
-  BOOST_CHECK_EQUAL(2, queue->getCount());
+  EXPECT_EQ(2, queue->getCount());
   queue->jobFinished();
-  BOOST_CHECK_EQUAL(1, queue->getCount());
+  EXPECT_EQ(1, queue->getCount());
   queue->jobFinished();
-  BOOST_CHECK_EQUAL(0, queue->getCount());
+  EXPECT_EQ(0, queue->getCount());
 }
 
-BOOST_AUTO_TEST_CASE(destroy_waits_for_jobs_to_finish)
+TEST(ThreadPool_Queue_QueueImpl, destroy_waits_for_jobs_to_finish) // NOLINT
 {
   ThreadPool::Queue::Ptr           queue     = ThreadPool::Queue::create();
   ThreadPool::Queue::WeakPtr const weakQueue = queue;
   QueueImpl::Ptr const             qi        = queue->get();
-  BOOST_CHECK(queue);
-  BOOST_CHECK(qi);
-  BOOST_CHECK_EQUAL(0, qi->getCount());
+  EXPECT_TRUE(queue != nullptr);
+  EXPECT_TRUE(qi != nullptr);
+  EXPECT_EQ(0, qi->getCount());
   qi->jobStarted();
-  BOOST_CHECK_EQUAL(1, qi->getCount());
+  EXPECT_EQ(1, qi->getCount());
   qi->jobStarted();
-  BOOST_CHECK_EQUAL(2, qi->getCount());
+  EXPECT_EQ(2, qi->getCount());
 
-  Semaphore const     s0(0);
   Semaphore           s1(0);
   Semaphore           s2(0);
   boost::thread const t(pass(&s1) + destroy(queue) + clear(&s2));
   queue.reset();
-  BOOST_CHECK(weakQueue.lock());
+  EXPECT_TRUE(weakQueue.lock() != nullptr);
   s1.V();
-  BOOST_REQUIRE(!s2.P(long_timeout));
-  BOOST_CHECK(!weakQueue.lock());
+  EXPECT_FALSE(s2.P(long_timeout));
+  EXPECT_FALSE(weakQueue.lock() != nullptr);
 
   // At this point, all references to ThreadPool::Queue are gone, but the thread
   // trying to destroy it is blocked because
   // not all jobs have finished yet. So we should report the jobs complete,
   // and then the thread will unblock and the object will actually be deleted.
   qi->jobFinished();
-  BOOST_REQUIRE(!s2.P(short_timeout));
-  BOOST_CHECK_EQUAL(1, qi->getCount());
+  EXPECT_FALSE(s2.P(short_timeout));
+  EXPECT_EQ(1, qi->getCount());
   qi->jobFinished();
-  BOOST_REQUIRE(s2.P(long_timeout));
+  EXPECT_TRUE(s2.P(long_timeout));
 }
 
-BOOST_AUTO_TEST_CASE(destroy_using_QueueLock)
+TEST(ThreadPool_Queue_QueueImpl, destroy_using_QueueLock) // NOLINT
 {
   ThreadPool::Queue::Ptr           queue     = ThreadPool::Queue::create();
   ThreadPool::Queue::WeakPtr const weakQueue = queue;
-  BOOST_CHECK(queue);
+  EXPECT_TRUE(queue != nullptr);
   auto* l = new QueueLock(queue->get());
 
   Semaphore           s0(0);
@@ -97,36 +93,32 @@ BOOST_AUTO_TEST_CASE(destroy_using_QueueLock)
   Semaphore           s2(0);
   boost::thread const t(clear(&s0) + pass(&s1) + destroy(queue) + clear(&s2));
   s0.P();
-  BOOST_REQUIRE(!s2.P(short_timeout));
+  EXPECT_FALSE(s2.P(short_timeout));
   queue.reset();
-  BOOST_CHECK(weakQueue.lock());
+  EXPECT_TRUE(weakQueue.lock() != nullptr);
   s1.V();
-  BOOST_REQUIRE(!s2.P(long_timeout));
-  BOOST_CHECK(!weakQueue.lock());
+  EXPECT_FALSE(s2.P(long_timeout));
+  EXPECT_FALSE(weakQueue.lock() != nullptr);
 
   // At this point, all references to ThreadPool::Queue are gone, but the thread
   // trying to destroy it is blocked because
   // not all jobs have finished yet. So we should report the jobs complete,
   // and then the thread will unblock and the object will actually be deleted.
   delete l;
-  BOOST_REQUIRE(s2.P(long_timeout));
+  EXPECT_TRUE(s2.P(long_timeout));
 }
 
-BOOST_AUTO_TEST_SUITE_END()
-
-BOOST_AUTO_TEST_SUITE(Queue_Tests)
-
-BOOST_AUTO_TEST_CASE(jobs_on_custom_queue_get_executed)
+TEST(ThreadPool_Queue_Queue, jobs_on_custom_queue_get_executed) // NOLINT
 {
   ThreadPool::Queue::Ptr const queue = ThreadPool::Queue::create();
   Semaphore                    s(0);
   ThreadPool                   t(0);
   t.schedule(clear(&s), queue);
   t.add();
-  BOOST_CHECK(s.P(long_timeout));
+  EXPECT_TRUE(s.P(long_timeout));
 }
 
-BOOST_AUTO_TEST_CASE(jobs_on_deleted_queue_dont_get_executed)
+TEST(ThreadPool_Queue_Queue, jobs_on_deleted_queue_dont_get_executed) // NOLINT
 {
   ThreadPool::Queue::Ptr queue = ThreadPool::Queue::create();
   Semaphore              s1(0);
@@ -136,15 +128,14 @@ BOOST_AUTO_TEST_CASE(jobs_on_deleted_queue_dont_get_executed)
   t.schedule(clear(&s2));
   queue.reset();
   t.add();
-  BOOST_CHECK(s2.P(long_timeout));
-  BOOST_CHECK(!s1.try_P());
+  EXPECT_TRUE(s2.P(long_timeout));
+  EXPECT_FALSE(s1.try_P());
 }
 
-BOOST_AUTO_TEST_CASE(queue_deletion_waits_for_jobs_to_finish)
+TEST(ThreadPool_Queue_Queue, queue_deletion_waits_for_jobs_to_finish) // NOLINT
 {
   ThreadPool::Queue::Ptr           queue     = ThreadPool::Queue::create();
   ThreadPool::Queue::WeakPtr const weakQueue = queue;
-  Semaphore const                  s0(0);
   Semaphore                        s1(0);
   Semaphore                        s2(0);
   Semaphore                        s3(0);
@@ -153,7 +144,7 @@ BOOST_AUTO_TEST_CASE(queue_deletion_waits_for_jobs_to_finish)
   ThreadPool pool(0);
   pool.schedule(clear(&s1) + pass(&s2), queue);
   pool.add();
-  BOOST_REQUIRE(s1.P(long_timeout));
+  EXPECT_TRUE(s1.P(long_timeout));
   // Job is now being executed, hence it should not be possible to delete the queue
 
   // Setup: Create a thread that will delete the queue. Then delete our
@@ -165,14 +156,10 @@ BOOST_AUTO_TEST_CASE(queue_deletion_waits_for_jobs_to_finish)
   // Tell the thread to start deleting the Queue
   s3.V();
   // Thread does not finish
-  BOOST_CHECK(!s4.P(long_timeout));
+  EXPECT_FALSE(s4.P(long_timeout));
 
   // Complete the job
   s2.V();
   // Thread now finishes throwing away the Queue
-  BOOST_CHECK(s4.P(long_timeout));
+  EXPECT_TRUE(s4.P(long_timeout));
 }
-
-BOOST_AUTO_TEST_SUITE_END()
-
-BOOST_AUTO_TEST_SUITE_END()

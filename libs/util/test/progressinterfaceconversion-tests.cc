@@ -5,7 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include <boost/test/unit_test.hpp>
+#include <gtest/gtest.h>
 
 #include <scroom/assertions.hh>
 #include <scroom/progressinterfacehelpers.hh>
@@ -14,80 +14,76 @@
 
 using namespace Scroom::Utils;
 
-BOOST_AUTO_TEST_SUITE(test_converters)
-
-BOOST_AUTO_TEST_CASE(test_ProgressInterfaceFromProgressStateInterface)
+TEST(test_converters, test_ProgressInterfaceFromProgressStateInterface) // NOLINT
 {
   ProgressStateInterfaceStub::Ptr const stub = ProgressStateInterfaceStub::create();
-  BOOST_REQUIRE(stub);
-  BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
+  ASSERT_TRUE(stub);
+  EXPECT_EQ(ProgressStateInterface::IDLE, stub->state);
 
   ProgressInterface::Ptr const pi = ProgressInterfaceFromProgressStateInterfaceForwarder::create(stub);
-  BOOST_REQUIRE(pi);
-  BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
+  ASSERT_TRUE(pi);
+  EXPECT_EQ(ProgressStateInterface::IDLE, stub->state);
 
   pi->setWaiting();
-  BOOST_CHECK_EQUAL(ProgressStateInterface::WAITING, stub->state);
-  BOOST_CHECK_EQUAL(0.0, stub->progress);
+  EXPECT_EQ(ProgressStateInterface::WAITING, stub->state);
+  EXPECT_EQ(0.0, stub->progress);
 
   pi->setWorking(0.33);
-  BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub->state);
-  BOOST_CHECK_EQUAL(0.33, stub->progress);
+  EXPECT_EQ(ProgressStateInterface::WORKING, stub->state);
+  EXPECT_EQ(0.33, stub->progress);
 
   pi->setWaiting(0.25);
-  BOOST_CHECK_EQUAL(ProgressStateInterface::WAITING, stub->state);
-  BOOST_CHECK_EQUAL(0.25, stub->progress);
+  EXPECT_EQ(ProgressStateInterface::WAITING, stub->state);
+  EXPECT_EQ(0.25, stub->progress);
 
   pi->setFinished();
-  BOOST_CHECK_EQUAL(ProgressStateInterface::FINISHED, stub->state);
-  BOOST_CHECK_EQUAL(1.0, stub->progress);
+  EXPECT_EQ(ProgressStateInterface::FINISHED, stub->state);
+  EXPECT_EQ(1.0, stub->progress);
 
   pi->setWorking(0.75);
-  BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub->state);
-  BOOST_CHECK_EQUAL(0.75, stub->progress);
+  EXPECT_EQ(ProgressStateInterface::WORKING, stub->state);
+  EXPECT_EQ(0.75, stub->progress);
 
   pi->setIdle();
-  BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
+  EXPECT_EQ(ProgressStateInterface::IDLE, stub->state);
 }
 
-BOOST_AUTO_TEST_CASE(test_ProgressStateInterfaceFromProgressInterface)
+TEST(test_converters, test_ProgressStateInterfaceFromProgressInterface) // NOLINT
 {
   ProgressStateInterfaceStub::Ptr const stub = ProgressStateInterfaceStub::create();
-  BOOST_REQUIRE(stub);
-  BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
+  ASSERT_TRUE(stub);
+  EXPECT_EQ(ProgressStateInterface::IDLE, stub->state);
 
   ProgressInterface::Ptr const pi = ProgressInterfaceFromProgressStateInterfaceForwarder::create(stub);
-  BOOST_REQUIRE(pi);
-  BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
+  ASSERT_TRUE(pi);
+  EXPECT_EQ(ProgressStateInterface::IDLE, stub->state);
 
   ProgressStateInterface::Ptr const ps = ProgressStateInterfaceFromProgressInterfaceForwarder::create(pi);
-  BOOST_REQUIRE(ps);
-  BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
+  ASSERT_TRUE(ps);
+  EXPECT_EQ(ProgressStateInterface::IDLE, stub->state);
 
   stub->progress = 0.33;
 
   ps->setProgress(ProgressStateInterface::WAITING);
-  BOOST_CHECK_EQUAL(ProgressStateInterface::WAITING, stub->state);
-  BOOST_CHECK_EQUAL(0.0, stub->progress);
+  EXPECT_EQ(ProgressStateInterface::WAITING, stub->state);
+  EXPECT_EQ(0.0, stub->progress);
 
   ps->setProgress(ProgressStateInterface::WORKING, 0.27);
-  BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub->state);
-  BOOST_CHECK_EQUAL(0.27, stub->progress);
+  EXPECT_EQ(ProgressStateInterface::WORKING, stub->state);
+  EXPECT_EQ(0.27, stub->progress);
 
   ps->setProgress(ProgressStateInterface::WAITING, 0.27);
-  BOOST_CHECK_EQUAL(ProgressStateInterface::WAITING, stub->state);
-  BOOST_CHECK_EQUAL(0.27, stub->progress);
+  EXPECT_EQ(ProgressStateInterface::WAITING, stub->state);
+  EXPECT_EQ(0.27, stub->progress);
 
   ps->setProgress(ProgressStateInterface::FINISHED);
-  BOOST_CHECK_EQUAL(ProgressStateInterface::FINISHED, stub->state);
-  BOOST_CHECK_EQUAL(1.0, stub->progress);
+  EXPECT_EQ(ProgressStateInterface::FINISHED, stub->state);
+  EXPECT_EQ(1.0, stub->progress);
 
   ps->setProgress(ProgressStateInterface::WORKING, 0.75);
-  BOOST_CHECK_EQUAL(ProgressStateInterface::WORKING, stub->state);
-  BOOST_CHECK_EQUAL(0.75, stub->progress);
+  EXPECT_EQ(ProgressStateInterface::WORKING, stub->state);
+  EXPECT_EQ(0.75, stub->progress);
 
   ps->setProgress(ProgressStateInterface::IDLE);
-  BOOST_CHECK_EQUAL(ProgressStateInterface::IDLE, stub->state);
+  EXPECT_EQ(ProgressStateInterface::IDLE, stub->state);
 }
-
-BOOST_AUTO_TEST_SUITE_END()
