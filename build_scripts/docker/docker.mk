@@ -2,6 +2,7 @@ all:
 .PHONY: all
 
 ########################################################################
+CONTAINER_VERSION ?= 0
 Q=@
 
 echo-build-step = +@printf "[%-5s] %s\n" $1 $2
@@ -18,15 +19,15 @@ endif
 
 define pull-one
 $(1)-docker:
-	$(call echo-build-step,PULL,$(1))
-	$(call docker-pull,$(1))
+	$(call echo-build-step,PULL,$(1)-$(CONTAINER_VERSION))
+	$(call docker-pull,$(1)-$(CONTAINER_VERSION))
 .PHONY: $(1)-docker
 endef
 
 define build-one
 $(1)-build: | $(1)-docker
-	$(call echo-build-step,BUILD,$(1))
-	$(call docker-build,$(1))
+	$(call echo-build-step,BUILD,$(1)-$(CONTAINER_VERSION))
+	$(call docker-build,$(1)-$(CONTAINER_VERSION))
 .PHONY: $(1)-build
 all: $(1)-build
 endef

@@ -125,6 +125,8 @@ jobs:
 
   build-many-ubuntus:
     runs-on: ubuntu-latest
+    env:
+      CONTAINER_VERSION: 0
     steps:
       - uses: actions/checkout@v6
         with:
