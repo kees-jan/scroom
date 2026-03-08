@@ -19,7 +19,6 @@ RUN \
     libboost-filesystem-dev \
     libboost-program-options-dev \
     libboost-system-dev \
-    libboost-test-dev \
     libboost-thread-dev \
     libcairo2-dev \
     libglib2.0-dev \
