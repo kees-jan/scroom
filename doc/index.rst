@@ -13,6 +13,7 @@ At this point, this is a (very) incomplete amalgam of requirements, design, and 
    architecture.rst
    patterns.rst
    problems-and-solutions.rst
+   coding-guidelines.rst
 
 
 Indices and tables

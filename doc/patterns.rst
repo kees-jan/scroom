@@ -1,35 +1,6 @@
 Patterns
 ========
 
-Formatting
-----------
-
-C++ Formatting is done by ``clang-format-22``.
-Formatting for ``CMakeLists.txt`` is done using ``cmake-format`` (``pip install cmake-format``). 
-Formatting is checked during the CI build.
-
-Be sure to format your code before committing. 
-Commits that only change formatting are not likely to be accepted. 
-Most IDEs show the commit message next to the code, and a message that reads "Updated formatting" does not really help the develpers after you.
-
-Hence, I recommend you configure your IDE to format on every save. 
-Or maybe use a ``pre-commit`` hook. 
-Scroom doesn't currently have one,though, so patches are very welcome 😉
-
-
-Clang-tidy
-----------
-
-We use ``clang-tidy-10`` to enforce a consistent style and find common bugs. 
-This, too, is checked during the CI build.
-
-``clang-tidy`` currently reports a fair amount of warnings. 
-The idea is to reduce this number over time.
-
-Note that ``clang-tidy`` is a relative new development within Scroom. 
-If a warning turns out to not make sense, turning it off project-wide is certainly an option.
-
-
 RAII
 ----
 
