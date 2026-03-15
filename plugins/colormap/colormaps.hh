@@ -12,6 +12,7 @@
 #include <gtk/gtk.h>
 
 #include <scroom/colormappable.hh>
+#include <scroom/logger.hh>
 
 namespace Scroom::ColormapImpl
 {
@@ -26,6 +27,7 @@ namespace Scroom::ColormapImpl
   {
   private:
     std::list<Colormap::ConstPtr> colormaps;
+    Scroom::Logger                logger;
 
   private:
     /** Constructor */
@@ -48,7 +50,7 @@ namespace Scroom::ColormapImpl
     /**
      * Load a colormap by name
      */
-    static Colormap::Ptr load(const char* name);
+    Colormap::Ptr load(const char* name);
   };
 
 } // namespace Scroom::ColormapImpl

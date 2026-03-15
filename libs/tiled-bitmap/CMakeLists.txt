@@ -32,6 +32,7 @@ target_link_libraries(
           scroom_lib
           spdlog
           fmt
+          util
   PUBLIC PkgConfig::gtk
          PkgConfig::cairo
          memory_manager
@@ -86,6 +87,7 @@ target_link_libraries(
           Boost::system
           PkgConfig::gthread
           spdlog
+          util
 )
 
 add_executable(measure_load_performance)
@@ -101,6 +103,7 @@ target_link_libraries(
           threadpool
           PkgConfig::gthread
           spdlog
+          util
 )
 
 if(ENABLE_GOOGLE_TEST)

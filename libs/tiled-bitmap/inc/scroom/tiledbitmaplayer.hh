@@ -14,6 +14,7 @@
 #include <boost/thread.hpp>
 
 #include <scroom/interface.hh>
+#include <scroom/logger.hh>
 #include <scroom/memoryblobs.hh>
 #include <scroom/observable.hh>
 #include <scroom/presentationinterface.hh>
@@ -254,6 +255,7 @@ private:
   CompressedTile::Ptr                    outOfBounds;
   CompressedTileLine                     lineOutOfBounds;
   Scroom::MemoryBlobs::PageProvider::Ptr pageProvider;
+  Scroom::Logger                         logger;
 
 private:
   Layer(int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider);

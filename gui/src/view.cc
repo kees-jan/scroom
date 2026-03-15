@@ -341,7 +341,7 @@ View::View(GtkBuilder* scroomXml_)
 View::Ptr View::create(GtkBuilder* scroomXml, const PresentationInterface::Ptr& presentation)
 {
   Ptr view(new View(scroomXml));
-  spdlog::debug("Creating a new view");
+  view->logger->debug("Creating a new view");
 
   if(presentation)
   {
@@ -353,7 +353,7 @@ View::Ptr View::create(GtkBuilder* scroomXml, const PresentationInterface::Ptr& 
 
 View::~View()
 {
-  spdlog::debug("Destroying view...");
+  logger->debug("Destroying view...");
   gtk_widget_destroy(GTK_WIDGET(window));
 }
 

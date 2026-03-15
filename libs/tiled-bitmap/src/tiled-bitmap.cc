@@ -131,7 +131,7 @@ void TiledBitmap::initialize() { initialize(Layer::create(bitmapWidth, bitmapHei
 
 TiledBitmap::~TiledBitmap()
 {
-  spdlog::debug("TiledBitmap: Destructing...");
+  logger->debug("TiledBitmap: Destructing...");
 
   coordinators.clear();
   layers.clear();
@@ -332,7 +332,7 @@ void TiledBitmap::tileFinished(const CompressedTile::Ptr& /*tile*/)
         if(tileFinishedCount == tileCount)
         {
           progressBroadcaster->setFinished();
-          spdlog::info("Finished loading file");
+          logger->info("Finished loading file");
         }
       });
   }

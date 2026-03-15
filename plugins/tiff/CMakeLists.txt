@@ -14,6 +14,7 @@ target_link_libraries(
           spdlog
           PkgConfig::gtk
           scroom_lib
+          util
           TIFF::TIFF
           tiledbitmap
           PkgConfig::cairo

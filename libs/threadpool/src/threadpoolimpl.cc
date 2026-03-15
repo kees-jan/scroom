@@ -21,6 +21,7 @@
 
 #include <scroom/assertions.hh>
 #include <scroom/async-deleter.hh>
+#include <scroom/logger.hh>
 #include <scroom/threadpool.hh>
 
 #include "queue.hh"
@@ -45,6 +46,7 @@ namespace
     boost::mutex                                           mut;
     std::list<ThreadPool::ThreadPtr>                       threads;
     std::list<std::pair<std::weak_ptr<void>, std::string>> pointers;
+    Scroom::Logger                                         logger;
 
   private:
     void dumpPointers();
@@ -101,7 +103,7 @@ namespace
 
       if(count)
       {
-        spdlog::info("{} references to {} remaining", count, cur->second);
+        logger->info("{} references to {} remaining", count, cur->second);
         cur++;
       }
       else
@@ -141,7 +143,7 @@ namespace
     {
       boost::mutex::scoped_lock const lock(mut);
       dumpPointers();
-      spdlog::info("Waiting for {} threads to terminate", count);
+      logger->info("Waiting for {} threads to terminate", count);
 
       auto cur = threads.begin();
       while(cur != threads.end())

@@ -10,6 +10,7 @@
 #include <list>
 #include <string>
 
+#include <scroom/logger.hh>
 #include <scroom/plugininformationinterface.hh>
 #include <scroom/presentationinterface.hh>
 #include <scroom/scroominterface.hh>
@@ -29,6 +30,7 @@ namespace Scroom::ColormapImpl
 
   private:
     std::list<PresentationInterface::WeakPtr> presentations;
+    Scroom::Logger                            logger;
 
   private:
     ColormapPlugin() = default;

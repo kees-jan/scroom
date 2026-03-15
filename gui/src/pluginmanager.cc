@@ -57,7 +57,7 @@ bool PluginManager::doWork()
 
     if(path != nullptr)
     {
-      spdlog::debug("{} = {}", SCROOM_PLUGIN_DIRS, path);
+      logger->debug("{} = {}", SCROOM_PLUGIN_DIRS, path);
 
       for(char* i = path; *i != '\0'; i++)
       {
@@ -97,14 +97,14 @@ bool PluginManager::doWork()
       break;
     }
 
-    spdlog::debug("Scanning directory: {}", *currentDir);
+    logger->debug("Scanning directory: {}", *currentDir);
     const char* folder = currentDir->c_str();
     namespace fs       = boost::filesystem;
     boost::system::error_code ec;
 
     if(!fs::is_directory(folder, ec))
     {
-      spdlog::error("Can't open directory: {}", folder);
+      logger->error("Can't open directory: {}", folder);
       currentDir++;
       break;
     }
@@ -139,7 +139,7 @@ bool PluginManager::doWork()
     if(currentFile->compare(currentFile->size() - 3, 3, ".so") == 0)
     {
 #endif
-      spdlog::debug("Reading file: {}", *currentFile);
+      logger->debug("Reading file: {}", *currentFile);
       GModule* plugin = g_module_open(currentFile->c_str(), static_cast<GModuleFlags>(0));
       if(plugin)
       {
@@ -153,7 +153,7 @@ bool PluginManager::doWork()
         else if(g_module_symbol(plugin, "getPluginInformation", &pgpi))
         {
           symbol_found = true;
-          spdlog::warn("Plugin {} uses C-style GetPluginInformation - You need to recompile it", *currentFile);
+          logger->warn("Plugin {} uses C-style GetPluginInformation - You need to recompile it", *currentFile);
         }
 
         if(symbol_found)
@@ -176,7 +176,7 @@ bool PluginManager::doWork()
               }
               else
               {
-                spdlog::error("Plugin {} has incorrect API version {}, instead of {}",
+                logger->error("Plugin {} has incorrect API version {}, instead of {}",
                               *currentFile,
                               pi->pluginApiVersion,
                               PLUGIN_API_VERSION);
@@ -184,17 +184,17 @@ bool PluginManager::doWork()
             }
             else
             {
-              spdlog::error("GetPluginInformation returned NULL for file {}", *currentFile);
+              logger->error("GetPluginInformation returned NULL for file {}", *currentFile);
             }
           }
           else
           {
-            spdlog::error("Can't find the getPluginInterface function in file {}: {}", *currentFile, g_module_error());
+            logger->error("Can't find the getPluginInterface function in file {}: {}", *currentFile, g_module_error());
           }
         }
         else
         {
-          spdlog::warn("Can't lookup symbols in file {}: {}", *currentFile, g_module_error());
+          logger->warn("Can't lookup symbols in file {}: {}", *currentFile, g_module_error());
         }
 
         if(plugin)
@@ -204,7 +204,7 @@ bool PluginManager::doWork()
       }
       else
       {
-        spdlog::error("Something went wrong for file {}: {}", *currentFile, g_module_error());
+        logger->error("Something went wrong for file {}: {}", *currentFile, g_module_error());
       }
     }
     currentFile++;
@@ -223,10 +223,10 @@ bool PluginManager::doWork()
       maxPluginNameLength = std::max(maxPluginNameLength, plugin.pluginInformation->getPluginName().size());
     }
     std::sort(pluginInfo.begin(), pluginInfo.end());
-    spdlog::info("Loaded plugins:");
+    logger->info("Loaded plugins:");
     for(const auto& [name, version]: pluginInfo)
     {
-      spdlog::info("  {:{}} : {}", name, maxPluginNameLength, version);
+      logger->info("  {:{}} : {}", name, maxPluginNameLength, version);
     }
 
     on_done_loading_plugins();

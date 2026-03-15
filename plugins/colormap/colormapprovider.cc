@@ -102,7 +102,7 @@ namespace Scroom::ColormapImpl
   ColormapProvider::~ColormapProvider()
   {
     // Clear out all the smart pointers
-    spdlog::debug("ColormapProvider: Destructing...");
+    logger->debug("ColormapProvider: Destructing...");
     if(colormaps)
     {
       GtkTreeIter iter;
@@ -122,7 +122,7 @@ namespace Scroom::ColormapImpl
   void ColormapProvider::open(ViewInterface::WeakPtr vi)
   {
     ViewInterface::Ptr const vil(vi);
-    spdlog::debug("ColormapProvider: Adding a view.");
+    logger->debug("ColormapProvider: Adding a view.");
     GtkTreeView*     tv  = GTK_TREE_VIEW(gtk_tree_view_new_with_model(GTK_TREE_MODEL(colormaps)));
     GtkCellRenderer* txt = GTK_CELL_RENDERER(gtk_cell_renderer_text_new());
     gtk_tree_view_insert_column_with_attributes(tv, -1, "Name", txt, "text", COLUMN_NAME, NULL);
@@ -134,11 +134,11 @@ namespace Scroom::ColormapImpl
 
   void ColormapProvider::close(ViewInterface::WeakPtr vi)
   {
-    spdlog::debug("ColormapProvider: Removing a view.");
+    logger->debug("ColormapProvider: Removing a view.");
     views.erase(vi);
     if(views.empty())
     {
-      spdlog::debug("ColormapProvider: Last view has gone.");
+      logger->debug("ColormapProvider: Last view has gone.");
     }
   }
 

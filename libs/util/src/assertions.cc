@@ -17,8 +17,11 @@
 
 #include <spdlog/spdlog.h>
 
+#include <scroom/logger.hh>
+
 namespace Scroom::Utils::Detail
 {
+  Scroom::Logger logger;
 
   std::string stackTrace([[maybe_unused]] size_t cutoff)
   {
@@ -51,8 +54,8 @@ namespace Scroom::Utils::Detail
                        const std::string_view filename,
                        unsigned int           line)
   {
-    spdlog::critical("PROGRAM DEFECTIVE: {}:{}: {} {} violated in {}", filename, line, type, expr, function);
-    spdlog::critical("Stack trace: {}", stackTrace(1));
+    logger->critical("PROGRAM DEFECTIVE: {}:{}: {} {} violated in {}", filename, line, type, expr, function);
+    logger->critical("Stack trace: {}", stackTrace(1));
 
     abort();
   }

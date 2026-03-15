@@ -11,6 +11,7 @@
 #include <spdlog/spdlog.h>
 
 #include <scroom/cairo-helpers.hh>
+#include <scroom/logger.hh>
 #include <scroom/opentiledbitmapinterface.hh>
 #include <scroom/pipetteviewinterface.hh>
 #include <scroom/showmetadata.hh>
@@ -73,6 +74,7 @@ namespace
     ColormapHelperBase::Ptr             colormapHelper;
     PipetteLayerOperations::Ptr         pipetteLayerOperation;
     Scroom::Utils::StuffList            stuff;
+    Scroom::Logger                      logger;
 
   public:
     static TiledBitmapPresentation::Ptr create(std::string                        name_,
@@ -293,7 +295,7 @@ namespace
     }
     else
     {
-      spdlog::error("TiffPresentation::open(): No TiledBitmapInterface available!");
+      logger->error("TiffPresentation::open(): No TiledBitmapInterface available!");
     }
   }
 
@@ -307,7 +309,7 @@ namespace
     }
     else
     {
-      spdlog::error("TiffPresentation::close(): No TiledBitmapInterface available!");
+      logger->error("TiffPresentation::close(): No TiledBitmapInterface available!");
     }
   }
 

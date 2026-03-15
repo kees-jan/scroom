@@ -14,6 +14,7 @@
 
 #include <gtk/gtk.h>
 
+#include <scroom/logger.hh>
 #include <scroom/opentiledbitmapinterface.hh>
 #include <scroom/plugininformationinterface.hh>
 #include <scroom/scroominterface.hh>
@@ -67,6 +68,7 @@ private:
   std::map<OpenInterface::Ptr, std::string>                                 openInterfaces;
   std::map<ViewObserver::Ptr, std::string>                                  viewObservers;
   std::map<PresentationObserver::Ptr, std::string>                          presentationObservers;
+  Scroom::Logger                                                            logger;
 
 private:
   void setStatusBarMessage(const char* message);

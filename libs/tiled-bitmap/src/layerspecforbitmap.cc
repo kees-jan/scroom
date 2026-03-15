@@ -5,8 +5,6 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include <spdlog/spdlog.h>
-
 #include <boost/range/adaptor/reversed.hpp>
 
 #include <scroom/layeroperations.hh>
@@ -55,10 +53,10 @@ namespace Scroom::TiledBitmap
   const std::string Greyscale   = "Greyscale";
   const std::string Colormapped = "Colormapped";
 
-  LayerSpecResult RGBBitmap(const BitmapMetaData& bmd);
-  LayerSpecResult CMYKBitmap(const BitmapMetaData& bmd);
-  LayerSpecResult GreyscaleBitmap(const BitmapMetaData& bmd);
-  LayerSpecResult ColormappedBitmap(const BitmapMetaData& bmd);
+  LayerSpecResult RGBBitmap(const Scroom::Logger& logger, const BitmapMetaData& bmd);
+  LayerSpecResult CMYKBitmap(const Scroom::Logger& logger, const BitmapMetaData& bmd);
+  LayerSpecResult GreyscaleBitmap(const Scroom::Logger& logger, const BitmapMetaData& bmd);
+  LayerSpecResult ColormappedBitmap(const Scroom::Logger& logger, const BitmapMetaData& bmd);
 
   ///////////////////////////////////////////////////////////////////
 
@@ -87,7 +85,7 @@ namespace Scroom::TiledBitmap
           break;
         }
 
-        ls = f(bmd);
+        ls = f(logger, bmd);
       }
 
       return ls;
@@ -99,12 +97,13 @@ namespace Scroom::TiledBitmap
     {
     }
 
+    Scroom::Logger                      logger;
     std::vector<LayerSpecForBitmapFunc> functions;
   };
 
   ///////////////////////////////////////////////////////////////////
 
-  LayerSpecResult RGBBitmap(const BitmapMetaData& bmd)
+  LayerSpecResult RGBBitmap(const Scroom::Logger& logger, const BitmapMetaData& bmd)
   {
     if(bmd.type != RGB)
     {
@@ -116,14 +115,14 @@ namespace Scroom::TiledBitmap
 
     if(bmd.bitsPerSample != 8)
     {
-      spdlog::error("RGB bitmaps with {} bits per sample are not supported", bmd.bitsPerSample);
+      logger->error("RGB bitmaps with {} bits per sample are not supported", bmd.bitsPerSample);
       return {};
     }
 
     return LayerSpecResult({Operations24bpp::create()}, nullptr);
   }
 
-  LayerSpecResult CMYKBitmap(const BitmapMetaData& bmd)
+  LayerSpecResult CMYKBitmap(const Scroom::Logger& logger, const BitmapMetaData& bmd)
   {
     if(bmd.type != CMYK)
     {
@@ -156,14 +155,14 @@ namespace Scroom::TiledBitmap
     }
     else
     {
-      spdlog::error("CMYK bitmaps with {} bits per sample are not supported", bmd.bitsPerSample);
+      logger->error("CMYK bitmaps with {} bits per sample are not supported", bmd.bitsPerSample);
       return {};
     }
 
     return LayerSpecResult(ls, nullptr);
   }
 
-  LayerSpecResult GreyscaleBitmap(const BitmapMetaData& bmd)
+  LayerSpecResult GreyscaleBitmap(const Scroom::Logger& logger, const BitmapMetaData& bmd)
   {
     if(bmd.type != Greyscale)
     {
@@ -174,7 +173,7 @@ namespace Scroom::TiledBitmap
 
     if(bmd.bitsPerSample != 1 && bmd.bitsPerSample != 2 && bmd.bitsPerSample != 4 && bmd.bitsPerSample != 8)
     {
-      spdlog::error("Greyscale bitmaps with {} bits per pixel are not supported (yet)", bmd.bitsPerSample);
+      logger->error("Greyscale bitmaps with {} bits per pixel are not supported (yet)", bmd.bitsPerSample);
       return {};
     }
 
@@ -202,7 +201,7 @@ namespace Scroom::TiledBitmap
     return LayerSpecResult(ls, colormapHelper);
   }
 
-  LayerSpecResult ColormappedBitmap(const BitmapMetaData& bmd)
+  LayerSpecResult ColormappedBitmap(const Scroom::Logger& logger, const BitmapMetaData& bmd)
   {
     if(bmd.type != Colormapped)
     {
@@ -213,7 +212,7 @@ namespace Scroom::TiledBitmap
 
     if(bmd.bitsPerSample != 1 && bmd.bitsPerSample != 2 && bmd.bitsPerSample != 4 && bmd.bitsPerSample != 8)
     {
-      spdlog::error("Colormapped bitmaps with {} bits per pixel are not supported (yet)", bmd.bitsPerSample);
+      logger->error("Colormapped bitmaps with {} bits per pixel are not supported (yet)", bmd.bitsPerSample);
       return {};
     }
 

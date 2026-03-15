@@ -21,7 +21,7 @@ void usage(const std::string& me, const std::string& message = std::string())
 {
   if(!message.empty())
   {
-    spdlog::error("{}", message);
+    fmt::print(stderr, "Error: {}\n\n", message);
   }
 
   fmt::print("Usage: {} [options] [input files]\n\n", me);

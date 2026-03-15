@@ -13,6 +13,7 @@
 
 #include <scroom/colormappable.hh>
 #include <scroom/interface.hh>
+#include <scroom/logger.hh>
 #include <scroom/point.hh>
 #include <scroom/rectangle.hh>
 #include <scroom/showmetadata.hh>
@@ -72,8 +73,9 @@ namespace Scroom::TiledBitmap
   extern const std::string Greyscale;
   extern const std::string Colormapped;
 
-  using LayerSpecResult        = std::tuple<LayerSpec, ColormapHelperBase::Ptr>;
-  using LayerSpecForBitmapFunc = std::function<LayerSpecResult(const BitmapMetaData& bitmapMetaData)>;
+  using LayerSpecResult = std::tuple<LayerSpec, ColormapHelperBase::Ptr>;
+  using LayerSpecForBitmapFunc =
+    std::function<LayerSpecResult(const Scroom::Logger& logger, const BitmapMetaData& bitmapMetaData)>;
 
   LayerSpecResult LayerSpecForBitmap(const BitmapMetaData& bitmapMetaData);
 

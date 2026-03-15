@@ -69,7 +69,7 @@ void PipetteHandler::computeValues(const ViewInterface::Ptr& view, Scroom::Utils
   auto                             pipette      = std::dynamic_pointer_cast<PipetteViewInterface>(presentation);
   if(pipette == nullptr || !presentation->isPropertyDefined(PIPETTE_PROPERTY_NAME))
   {
-    spdlog::error("Presentation does not implement PipetteViewInterface!");
+    logger->error("Presentation does not implement PipetteViewInterface!");
     Scroom::GtkHelpers::sync_on_ui_thread([=] { view->setStatusMessage("Pipette is not supported for this presentation."); });
     jobMutex.unlock();
     return;

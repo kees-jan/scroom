@@ -33,14 +33,14 @@ namespace Scroom::ColormapImpl
 
   void ColormapPlugin::presentationAdded(PresentationInterface::Ptr p)
   {
-    spdlog::debug("ColormapPlugin: A presentation was created");
+    logger->debug("ColormapPlugin: A presentation was created");
     if(p->isPropertyDefined(COLORMAPPABLE_PROPERTY_NAME))
     {
-      spdlog::debug("ColormapPlugin: It is colormappable!");
+      logger->debug("ColormapPlugin: It is colormappable!");
       ColormapProvider::Ptr const cmp = ColormapProvider::create(p);
     }
   }
 
-  void ColormapPlugin::presentationDeleted() { spdlog::debug("ColormapPlugin: A presentation may have been deleted"); }
+  void ColormapPlugin::presentationDeleted() { logger->debug("ColormapPlugin: A presentation may have been deleted"); }
 
 } // namespace Scroom::ColormapImpl

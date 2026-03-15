@@ -11,6 +11,8 @@
 
 #include <boost/thread.hpp>
 
+#include <scroom/logger.hh>
+
 namespace Scroom::Utils
 {
   /**
@@ -164,6 +166,7 @@ namespace Scroom::Utils
   private:
     std::list<Count::Ptr> counts;
     boost::mutex          mut;
+    Scroom::Logger        logger;
 
   private:
     Counter();

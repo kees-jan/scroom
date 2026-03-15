@@ -18,6 +18,8 @@
 
 #include <gtk/gtk.h>
 
+#include <scroom/logger.hh>
+
 #ifdef _WIN32
 #  include <spdlog/sinks/basic_file_sink.h>
 #  include <unistd.h>
@@ -30,16 +32,19 @@
 
 namespace po = boost::program_options;
 
-void usage(const std::string& me, const po::options_description& desc, const std::string& message = std::string())
+void usage(const Scroom::Logger&          logger,
+           const std::string&             me,
+           const po::options_description& desc,
+           const std::string&             message = std::string())
 {
   if(!message.empty())
   {
-    spdlog::error("{}", message);
+    logger->error("{}", message);
   }
 
-  spdlog::info("Usage: {}  [options] [input files]", me);
+  logger->info("Usage: {}  [options] [input files]", me);
 
-  spdlog::info("{}", boost::lexical_cast<std::string>(desc));
+  logger->info("{}", boost::lexical_cast<std::string>(desc));
 
   exit(-1); // NOLINT(concurrency-mt-unsafe)
 }
@@ -48,6 +53,9 @@ int main(int argc, char* argv[])
 {
   const std::string                             me = argv[0]; // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   std::map<std::string, std::list<std::string>> filenames;
+
+  auto           loggerContainer = Scroom::LoggerContainer::instance();
+  Scroom::Logger logger(loggerContainer);
 
 #ifdef _WIN32
   // In windows, redirect all logging to file.
@@ -61,12 +69,14 @@ int main(int argc, char* argv[])
   auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
   auto file_sink    = std::make_shared<spdlog::sinks::basic_file_sink_mt>(logFile.string(), true);
 
-  std::shared_ptr<spdlog::logger> logger(new spdlog::logger("scroom", {console_sink, file_sink}));
-  spdlog::set_default_logger(logger);
+  auto spdlogger = std::make_shared<spdlog::logger>("scroom", spdlog::sinks_init_list{console_sink, file_sink});
+  loggerContainer->set(spdlogger);
+#else
+  auto spdlogger = loggerContainer->get();
 #endif
 
-  spdlog::set_level(spdlog::level::trace);
-  spdlog::set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%t] [%^%-5l%$] %v");
+  spdlogger->set_level(spdlog::level::trace);
+  spdlogger->set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%t] [%^%-5l%$] %v");
 
   po::options_description desc("Available options");
   desc.add_options()("help,h", "Show this help message")("load,l", po::value<std::vector<std::string>>(), "Load given filenames")(
@@ -84,7 +94,7 @@ int main(int argc, char* argv[])
 
     if(vm.count("help"))
     {
-      usage(me, desc);
+      usage(logger, me, desc);
     }
 
     if(vm.count("load"))
@@ -101,7 +111,7 @@ int main(int argc, char* argv[])
   }
   catch(std::exception& ex)
   {
-    usage(me, desc, ex.what());
+    usage(logger, me, desc, ex.what());
   }
 
   setlocale(LC_ALL, ""); // NOLINT(concurrency-mt-unsafe)
@@ -112,6 +122,6 @@ int main(int argc, char* argv[])
   gtk_main();
 
   on_scroom_terminating();
-  spdlog::debug("Scroom terminating...");
+  logger->debug("Scroom terminating...");
   return 0;
 }

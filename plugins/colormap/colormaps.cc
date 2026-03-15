@@ -63,7 +63,7 @@ namespace Scroom::ColormapImpl
     }
     else
     {
-      spdlog::info("Failed to open dir {}: ({}, {})", colormapDirPath, errno, strerror(errno));
+      logger->info("Failed to open dir {}: ({}, {})", colormapDirPath, errno, strerror(errno));
     }
     g_free(colormapDirPath);
   }
@@ -159,7 +159,7 @@ namespace Scroom::ColormapImpl
       }
       catch(std::exception& e)
       {
-        spdlog::error("Couldn't parse file");
+        logger->error("Couldn't parse file");
         colormap.reset();
       }
       fclose(f);

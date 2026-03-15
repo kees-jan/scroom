@@ -15,6 +15,7 @@ target_link_libraries(
           project_warnings
           spdlog
           plugin_interfaces
+          util
           PkgConfig::gtk
           PkgConfig::cairo
 )

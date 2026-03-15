@@ -34,7 +34,8 @@ static Scroom::MemoryBlobs::PageProvider::Ptr createProvider(double width, doubl
   const int blockSize  = pagesPerBlock * pagesize;
   const int blockCount = std::max(int(ceil(tileCount / 10)), 64);
 
-  spdlog::debug("Creating a PageProvider providing {} blocks of {} bytes", blockCount, blockSize);
+  Scroom::Logger logger;
+  logger->debug("Creating a PageProvider providing {} blocks of {} bytes", blockCount, blockSize);
   return Scroom::MemoryBlobs::PageProvider::create(blockCount, blockSize);
 }
 
@@ -92,7 +93,7 @@ Layer::Layer(int depth_, int layerWidth, int layerHeight, int bpp, Scroom::Memor
     lineOutOfBounds.push_back(outOfBounds);
   }
 
-  spdlog::debug("Layer {} ({} bpp), {}*{}, TileCount {}*{}", depth_, bpp, width, height, horTileCount, verTileCount);
+  logger->debug("Layer {} ({} bpp), {}*{}, TileCount {}*{}", depth_, bpp, width, height, horTileCount, verTileCount);
 }
 
 Layer::Ptr Layer::create(int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider)

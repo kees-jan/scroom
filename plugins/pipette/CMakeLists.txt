@@ -6,6 +6,7 @@ target_link_libraries(
           project_warnings
           scroom_lib
           spdlog
+          util
   PUBLIC PkgConfig::gtk
          threadpool
          PkgConfig::cairo

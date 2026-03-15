@@ -55,7 +55,7 @@ std::list<GtkFileFilter*> Tiff::getFilters()
 
 std::tuple<BitmapMetaData, Layer::Ptr, ReloadFunction> Tiff::open(const std::string& fileName)
 {
-  auto r = Scroom::Tiff::open(fileName);
+  auto r = Scroom::Tiff::open(logger, fileName);
   if(r)
   {
     auto bmd = std::get<0>(*r);

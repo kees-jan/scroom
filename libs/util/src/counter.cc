@@ -14,6 +14,7 @@
 
 #include <glib.h>
 
+#include <scroom/logger.hh>
 #include <scroom/utilities.hh>
 
 using namespace Scroom::Utils;
@@ -75,7 +76,7 @@ void Counter::dump()
   {
     out << ", " << count->name << ", " << count->count;
   }
-  spdlog::trace("{}", out.str());
+  logger->trace("{}", out.str());
 }
 
 std::list<Count::Ptr> Counter::getCounts()

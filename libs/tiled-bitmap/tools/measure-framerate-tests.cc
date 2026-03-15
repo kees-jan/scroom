@@ -13,9 +13,16 @@
 
 #include <spdlog/spdlog.h>
 
+#include <scroom/logger.hh>
+
 #include "measure-framerate-callbacks.hh"
 #include "measure-framerate-stubs.hh"
 #include "test-helpers.hh"
+
+namespace
+{
+  Scroom::Logger logger;
+}
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -60,7 +67,7 @@ public:
 
 static bool logSizes()
 {
-  spdlog::info("Canvas size: {}x{}", drawingAreaWidth, drawingAreaHeight);
+  logger->info("Canvas size: {}x{}", drawingAreaWidth, drawingAreaHeight);
   return false;
 }
 
@@ -122,7 +129,7 @@ bool BaseCounter::operator()()
       // We're done. Compute frequency.
       double elapsed = now.tv_nsec - t.tv_nsec * 1e-9;
       elapsed += now.tv_sec - t.tv_sec;
-      spdlog::info("{:{}}: {:10.2} Hz", name, columnWidth, count / elapsed);
+      logger->info("{:{}}: {:10.2} Hz", name, columnWidth, count / elapsed);
 
       return false;
     }

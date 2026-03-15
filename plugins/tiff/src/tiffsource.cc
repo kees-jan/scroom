@@ -9,8 +9,6 @@
 
 #include <utility>
 
-#include <spdlog/spdlog.h>
-
 namespace
 {
   using TagInfo = std::pair<ttag_t, std::string>;
@@ -116,7 +114,8 @@ namespace Scroom::Tiff
     return colorMap ? ColormapHelper::create(colorMap) : nullptr;
   }
 
-  boost::optional<std::tuple<Scroom::TiledBitmap::BitmapMetaData, TIFFPtr>> open(const std::string& fileName)
+  boost::optional<std::tuple<Scroom::TiledBitmap::BitmapMetaData, TIFFPtr>> open(const Scroom::Logger& logger,
+                                                                                 const std::string&    fileName)
   {
     try
     {
@@ -124,7 +123,7 @@ namespace Scroom::Tiff
       if(!tif)
       {
         // Todo: report error
-        spdlog::error("Failed to open file {}", fileName);
+        logger->error("Failed to open file {}", fileName);
         return {};
       }
 
@@ -138,7 +137,7 @@ namespace Scroom::Tiff
 
       if(photometric != PHOTOMETRIC_PALETTE && colormapHelper)
       {
-        spdlog::warn("Tiff contains a colormap, but photometric isn't palette");
+        logger->warn("Tiff contains a colormap, but photometric isn't palette");
         colormapHelper.reset();
       }
 
@@ -156,7 +155,7 @@ namespace Scroom::Tiff
       case PHOTOMETRIC_PALETTE:
         if(!colormapHelper)
         {
-          spdlog::warn("Photometric is palette, but tiff doesn't contain a colormap");
+          logger->warn("Photometric is palette, but tiff doesn't contain a colormap");
           colormapHelper = ColormapHelper::create(1 << bps);
         }
         break;
@@ -166,25 +165,25 @@ namespace Scroom::Tiff
         break;
 
       default:
-        spdlog::error("Unrecognized value {} for photometric", photometric);
+        logger->error("Unrecognized value {} for photometric", photometric);
         return {};
       }
 
       auto aspectRatio = getAspectRatio(tif);
       if(aspectRatio)
       {
-        spdlog::debug("This bitmap has size {}*{}, aspect ratio {:.2}*{:.2}", width, height, aspectRatio->x, aspectRatio->y);
+        logger->debug("This bitmap has size {}*{}, aspect ratio {:.2}*{:.2}", width, height, aspectRatio->x, aspectRatio->y);
       }
       else
       {
-        spdlog::debug("This bitmap has size {}*{}", width, height);
+        logger->debug("This bitmap has size {}*{}", width, height);
       }
 
       BitmapMetaData bmd{{}, bps, spp, Scroom::Utils::make_rect<int>(0, 0, width, height), aspectRatio, colormapHelper};
 
       if(bps != 1 && bps != 2 && bps != 4 && bps != 8)
       {
-        spdlog::error("{} bits per sample not supported (yet)", bps);
+        logger->error("{} bits per sample not supported (yet)", bps);
         return {};
       }
 
@@ -198,7 +197,7 @@ namespace Scroom::Tiff
 
         if(bps != 8)
         {
-          spdlog::error("A RGB bitmap with {} samples per pixel isn't supported (yet)", bps);
+          logger->error("A RGB bitmap with {} samples per pixel isn't supported (yet)", bps);
           return {};
         }
       }
@@ -208,7 +207,7 @@ namespace Scroom::Tiff
       }
       else
       {
-        spdlog::error("{} samples per pixel not supported (yet)", spp);
+        logger->error("{} samples per pixel not supported (yet)", spp);
         return {};
       }
 
@@ -216,7 +215,7 @@ namespace Scroom::Tiff
     }
     catch(const std::exception& ex)
     {
-      spdlog::error("{}", ex.what());
+      logger->error("{}", ex.what());
       return {};
     }
   }
@@ -240,7 +239,7 @@ namespace Scroom::Tiff
 
     if(!tif)
     {
-      auto r = Scroom::Tiff::open(fileName);
+      auto r = Scroom::Tiff::open(logger, fileName);
       if(r && approx(std::get<0>(*r), bmd))
       {
         tif = std::get<1>(*r);
@@ -249,9 +248,9 @@ namespace Scroom::Tiff
       {
         if(r)
         {
-          spdlog::error("Can't reload. Bitmap changed too much");
-          spdlog::info("Previously: {}", to_string(bmd));
-          spdlog::info("Now:        {}", to_string(std::get<0>(*r)));
+          logger->error("Can't reload. Bitmap changed too much");
+          logger->info("Previously: {}", to_string(bmd));
+          logger->info("Now:        {}", to_string(std::get<0>(*r)));
         }
         // if (!r) then the error has already been reported by open()
         return false;

@@ -19,6 +19,7 @@
 
 #include <cairo.h>
 
+#include <scroom/logger.hh>
 #include <scroom/presentationinterface.hh>
 #include <scroom/scroominterface.hh>
 #include <scroom/stuff.hh>
@@ -147,6 +148,9 @@ private:
   ProgressBarManager::Ptr progressBarManager;
 
   Scroom::Utils::WeakKeyMap<PresentationInterface::WeakPtr, GtkWidget*> presentations;
+
+private:
+  Scroom::Logger logger;
 
 private:
   enum LocationChangeCause

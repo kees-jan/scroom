@@ -12,6 +12,7 @@
 
 #include <gtk/gtk.h>
 
+#include <scroom/logger.hh>
 #include <scroom/opentiledbitmapinterface.hh>
 #include <scroom/plugininformationinterface.hh>
 #include <scroom/presentationinterface.hh>
@@ -28,6 +29,7 @@ public:
 
 private:
   Tiff() = default;
+  Scroom::Logger logger;
 
 public:
   static Ptr create();

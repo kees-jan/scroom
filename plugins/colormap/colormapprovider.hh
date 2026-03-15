@@ -13,6 +13,7 @@
 #include <gtk/gtk.h>
 
 #include <scroom/colormappable.hh>
+#include <scroom/logger.hh>
 #include <scroom/observable.hh>
 #include <scroom/presentationinterface.hh>
 
@@ -42,6 +43,7 @@ namespace Scroom::ColormapImpl
 
     /** Our registration with the Colormappable */
     Scroom::Utils::Stuff registration;
+    Scroom::Logger       logger;
 
     /** Constructor */
     explicit ColormapProvider(const Colormappable::Ptr& c);

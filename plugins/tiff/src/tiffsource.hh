@@ -15,6 +15,7 @@
 #include <tiffio.h>
 
 #include <scroom/colormappable.hh>
+#include <scroom/logger.hh>
 #include <scroom/observable.hh>
 #include <scroom/opentiledbitmapinterface.hh>
 #include <scroom/pipetteviewinterface.hh>
@@ -29,7 +30,8 @@ namespace Scroom::Tiff
 
   using namespace Scroom::TiledBitmap;
 
-  boost::optional<std::tuple<Scroom::TiledBitmap::BitmapMetaData, TIFFPtr>> open(const std::string& fileName);
+  boost::optional<std::tuple<Scroom::TiledBitmap::BitmapMetaData, TIFFPtr>> open(const Scroom::Logger& logger,
+                                                                                 const std::string&    fileName);
 
   class Source : public SourcePresentation
   {
@@ -38,6 +40,7 @@ namespace Scroom::Tiff
     TIFFPtr        preOpenedTif;
     TIFFPtr        tif;
     BitmapMetaData bmd;
+    Scroom::Logger logger;
 
   public:
     using Ptr = std::shared_ptr<Source>;

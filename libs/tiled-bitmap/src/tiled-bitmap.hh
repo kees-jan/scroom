@@ -14,6 +14,7 @@
 #include <boost/thread/mutex.hpp>
 
 #include <scroom/interface.hh>
+#include <scroom/logger.hh>
 #include <scroom/opentiledbitmapinterface.hh>
 #include <scroom/progressinterfacehelpers.hh>
 #include <scroom/scroominterface.hh>
@@ -47,6 +48,7 @@ private:
   int                                              tileFinishedCount{0};
   Scroom::Utils::ProgressInterfaceBroadcaster::Ptr progressBroadcaster;
   Scroom::Utils::StuffList                         registrations;
+  Scroom::Logger                                   logger;
 
 public:
   static Ptr create(int bitmapWidth, int bitmapHeight, LayerSpec const& ls);

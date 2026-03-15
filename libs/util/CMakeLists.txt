@@ -8,6 +8,7 @@ set(HEADER_FILES
     inc/scroom/gtk-test-helpers.hh
     inc/scroom/interface.hh
     inc/scroom/linearsegment.hh
+    inc/scroom/logger.hh
     inc/scroom/observable.hh
     inc/scroom/point.hh
     inc/scroom/progressinterface.hh
@@ -24,17 +25,15 @@ target_sources(
           src/counter.cc
           src/gtk-helpers.cc
           src/gtk-test-helpers.cc
+          src/logger.cc
           src/progressinterfacehelpers.cc
           ${HEADER_FILES}
           ${HEADER_FILES_IMPL}
 )
 target_link_libraries(
   util
-  PRIVATE project_options
-          project_warnings
-          spdlog
-          PkgConfig::gtk
-  PUBLIC PkgConfig::gtk Boost::system
+  PRIVATE project_options project_warnings PkgConfig::gtk
+  PUBLIC PkgConfig::gtk Boost::system spdlog
 )
 target_include_directories(util PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/inc> $<INSTALL_INTERFACE:include>)
 
@@ -59,6 +58,7 @@ if(ENABLE_GOOGLE_TEST)
     PRIVATE test/bookkeeping-tests.cc
             test/counter-tests.cc
             test/gtkhelper-tests.cc
+            test/logger-tests.cc
             test/observable-tests.cc
             test/progressinterfacebroadcaster-tests.cc
             test/progressinterfaceconversion-tests.cc

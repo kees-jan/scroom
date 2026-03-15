@@ -14,6 +14,8 @@
 
 #include <gtk/gtk.h>
 
+#include <scroom/logger.hh>
+
 #include "measure-framerate-callbacks.hh"
 #include "measure-framerate-tests.hh"
 
@@ -21,7 +23,8 @@ void usage(const std::string& me, const std::string& message = std::string())
 {
   if(!message.empty())
   {
-    spdlog::error("{}", message);
+    Scroom::Logger logger;
+    logger->error("{}", message);
   }
 
   fmt::print("Usage: {} [options] [input files]\n\n", me);

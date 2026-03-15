@@ -11,6 +11,7 @@
 #include <mutex>
 #include <optional>
 
+#include <scroom/logger.hh>
 #include <scroom/pipetteviewinterface.hh>
 #include <scroom/plugininformationinterface.hh>
 #include <scroom/threadpool.hh>
@@ -32,6 +33,7 @@ private:
   std::atomic_flag         wasDisabled = ATOMIC_FLAG_INIT;
   std::mutex               jobMutex;
   ThreadPool::Queue::Ptr   currentJob{ThreadPool::Queue::createAsync()};
+  Scroom::Logger           logger;
 
 public:
   static Ptr create();

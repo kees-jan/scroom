@@ -32,6 +32,7 @@
 
 #include <scroom/assertions.hh>
 #include <scroom/bookkeeping.hh>
+#include <scroom/logger.hh>
 
 #include "loader.hh"
 #include "pluginmanager.hh"
@@ -52,6 +53,11 @@ static std::string xmlFileName;
 static GtkBuilder* aboutDialogXml = nullptr;
 static GtkWidget*  aboutDialog    = nullptr;
 
+namespace
+{
+  Scroom::Logger logger;
+}
+
 using Views = std::map<View::Ptr, Scroom::Bookkeeping::Token>;
 static Views                                     views;
 static std::list<PresentationInterface::WeakPtr> presentations;
@@ -60,7 +66,7 @@ static std::string                               currentFolder;
 
 void ShowModalDialog(const std::string& message)
 {
-  spdlog::error(message);
+  logger->error(message);
   if(gdk_display_get_default())
   {
     // We're not running headless, don't open the popup
@@ -114,7 +120,7 @@ void on_open_activate(GtkMenuItem* /*unused*/, gpointer user_data)
   GtkWidget* dialog;
   auto*      scroom = static_cast<GtkWidget*>(user_data);
 
-  spdlog::debug("Creating the open dialog");
+  logger->debug("Creating the open dialog");
   dialog = gtk_file_chooser_dialog_new("Open File",
                                        GTK_WINDOW(scroom),
                                        GTK_FILE_CHOOSER_ACTION_OPEN,
@@ -168,7 +174,7 @@ void on_open_activate(GtkMenuItem* /*unused*/, gpointer user_data)
     filterInfo.display_name = g_file_info_get_display_name(fileInfo);
     filterInfo.contains =
       static_cast<GtkFileFilterFlags>(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_MIME_TYPE);
-    spdlog::debug("Opening file {}", filterInfo.filename);
+    logger->debug("Opening file {}", filterInfo.filename);
 
     try
     {
@@ -176,7 +182,7 @@ void on_open_activate(GtkMenuItem* /*unused*/, gpointer user_data)
     }
     catch(std::exception& ex)
     {
-      spdlog::error(ex.what());
+      logger->error(ex.what());
       on_presentation_possibly_destroyed();
     }
   }
@@ -295,7 +301,7 @@ void on_done_loading_plugins()
         }
         catch(std::exception& ex)
         {
-          spdlog::error(ex.what());
+          logger->error(ex.what());
           on_presentation_possibly_destroyed();
         }
         gchar* dir    = g_path_get_dirname(file.c_str());
@@ -335,18 +341,18 @@ void on_done_loading_plugins()
           }
           else
           {
-            spdlog::error("Don't know how to display a {}", aggregateName);
+            logger->error("Don't know how to display a {}", aggregateName);
           }
         }
         catch(std::exception& ex)
         {
-          spdlog::error("While creating {}: {}", aggregateName, ex.what());
+          logger->error("While creating {}: {}", aggregateName, ex.what());
           on_presentation_possibly_destroyed();
         }
       }
       else
       {
-        spdlog::error("Don't know how to create {}", aggregateName);
+        logger->error("Don't know how to create {}", aggregateName);
       }
     }
 
@@ -417,19 +423,19 @@ bool in_devmode() { return nullptr != getenv(SCROOM_DEV_MODE.c_str()); }
 
 void on_scroom_bootstrap(const FileNameMap& newFilenames)
 {
-  spdlog::info("Bootstrapping Scroom...");
+  logger->info("Bootstrapping Scroom...");
   filenames     = newFilenames;
   currentFolder = ".";
 
   const bool devMode = in_devmode();
   if(devMode)
   {
-    spdlog::info("+----------------------------------------------------------------------+");
-    spdlog::info("| ENTERING DEVELOPMENT MODE                                            |");
-    spdlog::info("| All the default directories are not searched                         |");
-    spdlog::info("| Instead, only environment variables and the local source tree        |");
-    spdlog::info("| are consulted.                                                       |");
-    spdlog::info("+----------------------------------------------------------------------+");
+    logger->info("+----------------------------------------------------------------------+");
+    logger->info("| ENTERING DEVELOPMENT MODE                                            |");
+    logger->info("| All the default directories are not searched                         |");
+    logger->info("| Instead, only environment variables and the local source tree        |");
+    logger->info("| are consulted.                                                       |");
+    logger->info("+----------------------------------------------------------------------+");
   }
 
   startPluginManager(devMode);
@@ -466,7 +472,7 @@ void on_scroom_bootstrap(const FileNameMap& newFilenames)
   }
   else
   {
-    spdlog::error("Opening xml failed");
+    logger->error("Opening xml failed");
     exit(-1); // NOLINT(concurrency-mt-unsafe)
   }
 
@@ -507,7 +513,7 @@ void onDragDataReceived(GtkWidget* /*unused*/,
   gchar** uris = g_uri_list_extract_uris(reinterpret_cast<const gchar*>(gtk_selection_data_get_data(seldata)));
   for(gchar** uri = uris; *uri != nullptr; uri++)
   {
-    spdlog::info("Dropping file onto Scroom: {}", *uri);
+    logger->info("Dropping file onto Scroom: {}", *uri);
 
     GError* error    = nullptr;
     gchar*  filename = g_filename_from_uri(*uri, nullptr, &error);
@@ -545,7 +551,7 @@ void create_scroom(const PresentationInterface::Ptr& presentation)
 
   if(xml == nullptr)
   {
-    spdlog::error("Opening xml failed");
+    logger->error("Opening xml failed");
     exit(-1); // NOLINT(concurrency-mt-unsafe)
   }
 
