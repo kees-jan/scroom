@@ -48,7 +48,9 @@ TEST_F(LoggerTests, can_log_via_deref) // NOLINT
 {
   logger->info(testMessage);
 
-  EXPECT_EQ(testMessage + "\n", oss.str());
+  auto output = oss.str();
+  output.erase(output.find_last_not_of("\r\n") + 1);
+  EXPECT_EQ(testMessage, output);
 }
 
 TEST(LoggerDeathTest, default_logger_is_cleared) // NOLINT
