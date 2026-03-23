@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include <memory>
+
 #include <fmt/format.h>
 
 #include <scroom/point.hh>
@@ -45,5 +47,31 @@ struct fmt::formatter<Scroom::Utils::Point<T>> : formatter<T>
     format_to(ctx.out(), ")");
 
     return ctx.out();
+  }
+};
+
+template <typename T>
+struct fmt::formatter<std::shared_ptr<T>> : formatter<const void*>
+{
+  template <typename FormatContext>
+  auto format(const std::shared_ptr<T>& p, FormatContext& ctx) const -> decltype(ctx.out())
+  {
+    return formatter<const void*>::format(fmt::ptr(p.get()), ctx);
+  }
+};
+
+template <typename T>
+struct fmt::formatter<std::weak_ptr<T>> : formatter<const void*>
+{
+  template <typename FormatContext>
+  auto format(const std::weak_ptr<T>& p, FormatContext& ctx) const -> decltype(ctx.out())
+  {
+    auto locked = p.lock();
+    if(locked)
+    {
+      return formatter<const void*>::format(fmt::ptr(locked.get()), ctx);
+    }
+
+    return format_to(ctx.out(), "[expired]");
   }
 };
