@@ -30,7 +30,7 @@
 class Viewable : private Interface
 {
 public:
-  using Ptr     = std::shared_ptr<Viewable>;
+  using Ptr = std::shared_ptr<Viewable>;
   using WeakPtr = std::weak_ptr<Viewable>;
 
 public:
@@ -69,7 +69,7 @@ class PresentationInterface
   , public ViewObservable
 {
 public:
-  using Ptr     = std::shared_ptr<PresentationInterface>;
+  using Ptr = std::shared_ptr<PresentationInterface>;
   using WeakPtr = std::weak_ptr<PresentationInterface>;
 
   /** Return the dimensions of your presentation */
@@ -120,9 +120,9 @@ protected:
   void observerAdded(Viewable::Ptr const& viewable, Scroom::Bookkeeping::Token const& t) override;
 
 protected:
-  virtual void                                              viewAdded(ViewInterface::WeakPtr vi)   = 0;
-  virtual void                                              viewRemoved(ViewInterface::WeakPtr vi) = 0;
-  virtual Scroom::Utils::WeakKeySet<ViewInterface::WeakPtr> getViews()                             = 0;
+  virtual void viewAdded(ViewInterface::WeakPtr vi) = 0;
+  virtual void viewRemoved(ViewInterface::WeakPtr vi) = 0;
+  virtual Scroom::Utils::WeakKeySet<ViewInterface::WeakPtr> getViews() = 0;
 };
 
 class PresentationBaseSimple : public PresentationBase
@@ -131,8 +131,8 @@ private:
   Scroom::Utils::WeakKeySet<ViewInterface::WeakPtr> views;
 
 private:
-  void                                              viewAdded(ViewInterface::WeakPtr vi) final { views.insert(vi); }
-  void                                              viewRemoved(ViewInterface::WeakPtr vi) final { views.erase(vi); }
+  void viewAdded(ViewInterface::WeakPtr vi) final { views.insert(vi); }
+  void viewRemoved(ViewInterface::WeakPtr vi) final { views.erase(vi); }
   Scroom::Utils::WeakKeySet<ViewInterface::WeakPtr> getViews() final { return views; }
 };
 

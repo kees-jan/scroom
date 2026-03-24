@@ -46,32 +46,36 @@ public:
 
 private:
   ProgressInterfaceStub::Ptr pi;
-  ViewInterface::Ptr         vi;
+  ViewInterface::Ptr vi;
   DummyColormapProvider::Ptr colormapProvider;
-  LayerSpec                  ls;
-  TiledBitmapInterface::Ptr  tbi;
-  SourcePresentation::Ptr    sp;
-  int                        zoom;
+  LayerSpec ls;
+  TiledBitmapInterface::Ptr tbi;
+  SourcePresentation::Ptr sp;
+  int zoom;
 
 private:
-  TestData(DummyColormapProvider::Ptr       colormapProvider,
-           LayerSpec                        ls,
-           const TiledBitmapInterface::Ptr& tbi,
-           SourcePresentation::Ptr          sp,
-           int                              zoom);
+  TestData(
+    DummyColormapProvider::Ptr colormapProvider,
+    LayerSpec ls,
+    const TiledBitmapInterface::Ptr& tbi,
+    SourcePresentation::Ptr sp,
+    int zoom
+  );
 
 public:
-  static Ptr create(DummyColormapProvider::Ptr       colormapProvider,
-                    const LayerSpec&                 ls,
-                    const TiledBitmapInterface::Ptr& tbi,
-                    SourcePresentation::Ptr          sp,
-                    int                              zoom);
+  static Ptr create(
+    DummyColormapProvider::Ptr colormapProvider,
+    const LayerSpec& ls,
+    const TiledBitmapInterface::Ptr& tbi,
+    SourcePresentation::Ptr sp,
+    int zoom
+  );
 
   ~TestData();
-  TestData(const TestData&)           = delete;
-  TestData(TestData&&)                = delete;
+  TestData(const TestData&) = delete;
+  TestData(TestData&&) = delete;
   TestData operator=(const TestData&) = delete;
-  TestData operator=(TestData&&)      = delete;
+  TestData operator=(TestData&&) = delete;
 
 
   void redraw(cairo_t* cr);
@@ -85,8 +89,8 @@ extern TestData::Ptr testData;
 class Sleeper
 {
 private:
-  unsigned int    secs;
-  bool            started{false};
+  unsigned int secs;
+  bool started{false};
   struct timespec t = {0, 0};
 
 public:

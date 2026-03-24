@@ -18,7 +18,7 @@ namespace Scroom::MemoryBlocks
 {
   namespace RawPageData
   {
-    using Ptr     = std::shared_ptr<uint8_t>;
+    using Ptr = std::shared_ptr<uint8_t>;
     using WeakPtr = std::weak_ptr<uint8_t>;
   } // namespace RawPageData
 
@@ -28,7 +28,7 @@ namespace Scroom::MemoryBlocks
   {
   private:
     std::shared_ptr<BlockInterface> bi;
-    size_t                          id;
+    size_t id;
 
   public:
     Page(std::shared_ptr<BlockInterface> bi, size_t id);
@@ -41,7 +41,7 @@ namespace Scroom::MemoryBlocks
   class BlockInterface : private Interface
   {
   public:
-    using Ptr     = std::shared_ptr<BlockInterface>;
+    using Ptr = std::shared_ptr<BlockInterface>;
     using WeakPtr = std::weak_ptr<BlockInterface>;
 
   protected:

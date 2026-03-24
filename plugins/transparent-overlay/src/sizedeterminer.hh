@@ -24,7 +24,7 @@ private:
   class PresentationData
   {
   public:
-    ResizablePresentationInterface::Ptr const         resizablePresentationInterface;
+    ResizablePresentationInterface::Ptr const resizablePresentationInterface;
     Scroom::Utils::WeakKeySet<ViewInterface::WeakPtr> views;
 
   public:
@@ -33,7 +33,7 @@ private:
   };
 
 private:
-  std::list<PresentationInterface::Ptr>                  presentations;
+  std::list<PresentationInterface::Ptr> presentations;
   std::map<PresentationInterface::Ptr, PresentationData> resizablePresentationData;
 
 private:
@@ -41,8 +41,8 @@ private:
   void sendUpdates();
 
 public:
-  static Ptr                                     create();
-  void                                           add(PresentationInterface::Ptr const& p);
+  static Ptr create();
+  void add(PresentationInterface::Ptr const& p);
   [[nodiscard]] Scroom::Utils::Rectangle<double> getRect() const;
 
   void open(PresentationInterface::Ptr const& p, ViewInterface::WeakPtr const& vi);

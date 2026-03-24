@@ -22,15 +22,15 @@ using Scroom::LoggerContainer;
 class LoggerTests : public ::testing::Test
 {
 public:
-  std::ostringstream   oss;
+  std::ostringstream oss;
   LoggerContainer::Ptr loggerContainer;
-  Logger               logger;
+  Logger logger;
 
   LoggerTests()
     : loggerContainer(std::make_shared<LoggerContainer>())
     , logger(loggerContainer)
   {
-    auto sink      = std::make_shared<spdlog::sinks::ostream_sink_mt>(oss);
+    auto sink = std::make_shared<spdlog::sinks::ostream_sink_mt>(oss);
     auto spdlogger = std::make_shared<spdlog::logger>("test", sink);
     spdlogger->set_pattern("%v");
     loggerContainer->set(spdlogger);

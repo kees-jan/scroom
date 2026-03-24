@@ -25,10 +25,10 @@ namespace Scroom::Bitmap
 
 namespace
 {
-  const uint8_t testData[]        = {0x65, 0xC7};
-  const int     bit_depths[]      = {1, 2, 4, 8};
-  const int     initial_offsets[] = {0, 1};
-  const int     deltas[]          = {0, 1, 5};
+  const uint8_t testData[] = {0x65, 0xC7};
+  const int bit_depths[] = {1, 2, 4, 8};
+  const int initial_offsets[] = {0, 1};
+  const int deltas[] = {0, 1, 5};
 } // namespace
 
 class SampleIterator_iterates : public ::testing::TestWithParam<int>
@@ -39,11 +39,11 @@ INSTANTIATE_TEST_SUITE_P(SampleIterator_Tests, SampleIterator_iterates, ::testin
 
 TEST_P(SampleIterator_iterates, Test) // NOLINT
 {
-  const int                     bps = GetParam();
+  const int bps = GetParam();
   SampleIterator<const uint8_t> it(testData, 0, bps);
-  uint8_t                       output[] = {0, 0};
-  SampleIterator<uint8_t>       out(output, 0, bps);
-  const unsigned int            mask = (1 << bps) - 1;
+  uint8_t output[] = {0, 0};
+  SampleIterator<uint8_t> out(output, 0, bps);
+  const unsigned int mask = (1 << bps) - 1;
 
   for(auto i = 0; i < it.samplesPerBase; i++, it++, out++)
   {
@@ -75,18 +75,18 @@ class SampleIterator_arithmetic : public ::testing::TestWithParam<ArithmeticPara
 {
 };
 
-INSTANTIATE_TEST_SUITE_P(SampleIterator_Tests,
-                         SampleIterator_arithmetic,
-                         ::testing::Combine(::testing::ValuesIn(bit_depths),
-                                            ::testing::ValuesIn(initial_offsets),
-                                            ::testing::ValuesIn(deltas)));
+INSTANTIATE_TEST_SUITE_P(
+  SampleIterator_Tests,
+  SampleIterator_arithmetic,
+  ::testing::Combine(::testing::ValuesIn(bit_depths), ::testing::ValuesIn(initial_offsets), ::testing::ValuesIn(deltas))
+);
 
 TEST_P(SampleIterator_arithmetic, Test) // NOLINT
 {
   auto [bps, initial_offset, delta] = GetParam();
 
   const SampleIterator<const uint8_t> start(nullptr, initial_offset, bps);
-  SampleIterator<const uint8_t>       expected = start;
+  SampleIterator<const uint8_t> expected = start;
   for(auto i = 0; i < delta; i++, expected++)
   {
   }

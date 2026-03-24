@@ -62,7 +62,7 @@ namespace Scroom::Bookkeeping
 
   public:
     Detail::TokenAddition operator+(const Stuff& rhs) const;
-    Token const&          operator+=(const Stuff& rhs) const;
+    Token const& operator+=(const Stuff& rhs) const;
   };
 
   using WeakToken = std::weak_ptr<Detail::TokenImpl>;
@@ -75,19 +75,19 @@ namespace Scroom::Bookkeeping
   private:
     using MapType = typename Detail::MapType<K, V>::Type;
 
-    MapType              map;
+    MapType map;
     mutable boost::mutex mut;
 
   public:
-    Token             reserve(const K& k);
-    Token             reReserve(const K& k);
-    void              remove(const K& k);
-    void              remove(const K& k, const WeakToken& t);
+    Token reserve(const K& k);
+    Token reReserve(const K& k);
+    void remove(const K& k);
+    void remove(const K& k, const WeakToken& t);
     Detail::LValue<V> at(const K& k);
-    void              set(const K& k, const V& v);
-    V                 get(const K& k);
-    std::list<K>      keys() const;
-    std::list<V>      values() const;
+    void set(const K& k, const V& v);
+    V get(const K& k);
+    std::list<K> keys() const;
+    std::list<V> values() const;
   };
 
   template <typename K, typename V>

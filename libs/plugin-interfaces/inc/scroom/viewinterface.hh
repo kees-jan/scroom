@@ -62,7 +62,7 @@ public:
   Selection& operator=(const Point& p)
   {
     start = p;
-    end   = p;
+    end = p;
     return *this;
   }
 
@@ -94,10 +94,12 @@ public:
    * @param zoom The requested zoom level. One pixel should have
    *    size 2**@c zoom when drawn. @c zoom may be negative.
    */
-  virtual void render(std::shared_ptr<ViewInterface> const& vi,
-                      cairo_t*                              cr,
-                      Scroom::Utils::Rectangle<double>      presentationArea,
-                      int                                   zoom) = 0;
+  virtual void render(
+    std::shared_ptr<ViewInterface> const& vi,
+    cairo_t* cr,
+    Scroom::Utils::Rectangle<double> presentationArea,
+    int zoom
+  ) = 0;
 };
 
 /**
@@ -188,7 +190,7 @@ public:
 class ViewInterface : private Interface
 {
 public:
-  using Ptr     = std::shared_ptr<ViewInterface>;
+  using Ptr = std::shared_ptr<ViewInterface>;
   using WeakPtr = std::weak_ptr<ViewInterface>;
 
 public:

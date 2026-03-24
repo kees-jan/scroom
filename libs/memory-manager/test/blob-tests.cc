@@ -18,10 +18,10 @@ using namespace Scroom::MemoryBlobs;
 
 TEST(Blob_Tests, blobs_retain_their_data) // NOLINT
 {
-  const size_t blobSize   = 16 * 1024;
-  const size_t blobCount  = 16;
+  const size_t blobSize = 16 * 1024;
+  const size_t blobCount = 16;
   const size_t blockCount = 16;
-  const size_t blockSize  = 64;
+  const size_t blockSize = 64;
 
   PageProvider::Ptr provider = PageProvider::create(blockCount, blockSize);
 
@@ -58,10 +58,10 @@ TEST(Blob_Tests, blobs_retain_their_data) // NOLINT
 
 TEST(Blob_Tests, blobs_can_be_updated) // NOLINT
 {
-  const size_t blobSize   = 16 * 1024;
-  const size_t blobCount  = 16;
+  const size_t blobSize = 16 * 1024;
+  const size_t blobCount = 16;
   const size_t blockCount = 16;
-  const size_t blockSize  = 64;
+  const size_t blockSize = 64;
 
   PageProvider::Ptr provider = PageProvider::create(blockCount, blockSize);
 
@@ -108,10 +108,10 @@ TEST(Blob_Tests, blobs_can_be_updated) // NOLINT
 
 TEST(Blob_Tests, blobs_can_be_initialized) // NOLINT
 {
-  const size_t  blobSize   = 4096;
-  const size_t  blockCount = 16;
-  const size_t  blockSize  = 64;
-  const uint8_t value      = 25;
+  const size_t blobSize = 4096;
+  const size_t blockCount = 16;
+  const size_t blockSize = 64;
+  const uint8_t value = 25;
 
   PageProvider::Ptr provider = PageProvider::create(blockCount, blockSize);
 

@@ -69,7 +69,7 @@ void Counter::unregisterCount(const Count::Ptr& count)
 void Counter::dump()
 {
   boost::unique_lock<boost::mutex> const lock(mut);
-  std::stringstream                      out;
+  std::stringstream out;
 
   out << counts.size();
   for(Count::Ptr const& count: counts)

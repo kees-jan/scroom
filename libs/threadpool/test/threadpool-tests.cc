@@ -55,7 +55,7 @@ class B
 {
 private:
   Semaphore* s;
-  R          result;
+  R result;
 
 public:
   using Ptr = std::shared_ptr<B<R>>;
@@ -133,7 +133,7 @@ bool has_exactly_n_threads(ThreadPool* pool, int count)
 
 TEST(ThreadPool_class_Tests, work_gets_done) // NOLINT
 {
-  Semaphore  s(0);
+  Semaphore s(0);
   ThreadPool pool(0);
   pool.schedule(clear(&s));
 
@@ -147,8 +147,8 @@ TEST(ThreadPool_class_Tests, work_gets_done) // NOLINT
 
 TEST(ThreadPool_class_Tests, work_gets_done_by_prio) // NOLINT
 {
-  Semaphore  high(0);
-  Semaphore  low(0);
+  Semaphore high(0);
+  Semaphore low(0);
   ThreadPool pool(0);
   pool.schedule(clear(&low), PRIO_NORMAL);
   pool.schedule(pass(&low) + clear(&high), PRIO_HIGH);
@@ -179,7 +179,7 @@ TEST(ThreadPool_class_Tests, construct_1_threads) // NOLINT
 TEST(ThreadPool_class_Tests, construct_2_threads) // NOLINT
 {
   ThreadPool pool(2);
-  const int  expected = 2;
+  const int expected = 2;
 #ifndef MULTITHREADING
   expected = 1;
 #endif
@@ -189,7 +189,7 @@ TEST(ThreadPool_class_Tests, construct_2_threads) // NOLINT
 TEST(ThreadPool_class_Tests, schedule_shared_pointer) // NOLINT
 {
   ThreadPool pool(1);
-  Semaphore  a(0);
+  Semaphore a(0);
 
   pool.schedule(A::create(&a));
   EXPECT_TRUE(a.P(long_timeout));
@@ -198,7 +198,7 @@ TEST(ThreadPool_class_Tests, schedule_shared_pointer) // NOLINT
 TEST(ThreadPool_class_Tests, schedule_future) // NOLINT
 {
   ThreadPool pool(0);
-  Semaphore  a(0);
+  Semaphore a(0);
 
   boost::unique_future<int> result(pool.schedule<int>([pa = &a] { return no_op(pa, 42); }));
 
@@ -213,7 +213,7 @@ TEST(ThreadPool_class_Tests, schedule_future) // NOLINT
 TEST(ThreadPool_class_Tests, schedule_shared_pointer_with_future) // NOLINT
 {
   ThreadPool pool(0);
-  Semaphore  a(0);
+  Semaphore a(0);
 
   boost::unique_future<bool> result(pool.schedule<bool, B<bool>>(B<bool>::create(&a, false)));
 
@@ -229,8 +229,8 @@ TEST(ThreadPool_class_Tests, schedule_shared_pointer_with_future) // NOLINT
 
 TEST(CpuBound_Tests, verify_threadcount) // NOLINT
 {
-  ThreadPool::Ptr const t        = CpuBound();
-  const int             expected = boost::thread::hardware_concurrency();
+  ThreadPool::Ptr const t = CpuBound();
+  const int expected = boost::thread::hardware_concurrency();
 #ifndef MULTITHREADING
   expected = 1;
 #endif

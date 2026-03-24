@@ -27,7 +27,7 @@ namespace Scroom::ColormapImpl
   {
   private:
     std::list<Colormap::ConstPtr> colormaps;
-    Scroom::Logger                logger;
+    Scroom::Logger logger;
 
   private:
     /** Constructor */

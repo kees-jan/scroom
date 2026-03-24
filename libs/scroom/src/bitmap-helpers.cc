@@ -30,11 +30,13 @@ namespace Scroom::Bitmap
   {
   }
 
-  BitmapSurface::BitmapSurface(int                                   width,
-                               int                                   height,
-                               cairo_format_t                        format,
-                               int                                   stride,
-                               std::shared_ptr<unsigned char> const& data_)
+  BitmapSurface::BitmapSurface(
+    int width,
+    int height,
+    cairo_format_t format,
+    int stride,
+    std::shared_ptr<unsigned char> const& data_
+  )
     : surface(cairo_image_surface_create_for_data(data_.get(), format, width, height, stride))
     , data(data_)
   {

@@ -29,13 +29,15 @@ TiledBitmapViewData::TiledBitmapViewData(const ViewInterface::WeakPtr& viewInter
 {
 }
 
-void TiledBitmapViewData::setNeededTiles(Layer::Ptr const&    l,
-                                         int                  imin_,
-                                         int                  imax_,
-                                         int                  jmin_,
-                                         int                  jmax_,
-                                         int                  zoom_,
-                                         LayerOperations::Ptr layerOperations_)
+void TiledBitmapViewData::setNeededTiles(
+  Layer::Ptr const& l,
+  int imin_,
+  int imax_,
+  int jmin_,
+  int jmax_,
+  int zoom_,
+  LayerOperations::Ptr layerOperations_
+)
 {
   boost::unique_lock<boost::mutex> lock(mut);
 
@@ -45,12 +47,12 @@ void TiledBitmapViewData::setNeededTiles(Layer::Ptr const&    l,
   }
   else
   {
-    layer           = l;
-    imin            = imin_;
-    imax            = imax_;
-    jmin            = jmin_;
-    jmax            = jmax_;
-    zoom            = zoom_;
+    layer = l;
+    imin = imin_;
+    imax = imax_;
+    jmin = jmin_;
+    jmax = jmax_;
+    zoom = zoom_;
     layerOperations = std::move(layerOperations_);
 
     // Get data for new tiles

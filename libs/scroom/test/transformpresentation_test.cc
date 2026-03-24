@@ -52,12 +52,12 @@ TEST(TransformPresentation_Tests, TransformationData_supports_aspect_ratio) // N
   EXPECT_CALL(*cpm, getRect()).WillRepeatedly(Return(make_rect(1.0, 2.0, 3.0, 4.0)));
 
   ViewInterface::WeakPtr viw;
-  Sequence const         seq;
+  Sequence const seq;
   EXPECT_CALL(*cpm, open(_)).InSequence(seq).WillOnce(SaveArg<0>(&viw));
   const Scroom::Utils::Rectangle<double> to_be_drawn = make_rect(1.0, 4.5, 4.0, 9.0);
-  const int                              zoom_to_use = 3;
-  Scroom::Utils::Rectangle<double>       requested_to_be_drawn;
-  int                                    used_zoom;
+  const int zoom_to_use = 3;
+  Scroom::Utils::Rectangle<double> requested_to_be_drawn;
+  int used_zoom;
   EXPECT_CALL(*cpm, redraw(Eq(ByRef(viw)), _, _, _)).WillOnce(DoAll(SaveArg<2>(&requested_to_be_drawn), SaveArg<3>(&used_zoom)));
   EXPECT_CALL(*cpm, close(Eq(ByRef(viw))));
 
@@ -66,9 +66,9 @@ TEST(TransformPresentation_Tests, TransformationData_supports_aspect_ratio) // N
 
   tp->open(vi);
 
-  BitmapSurface::Ptr const s       = BitmapSurface::create(10, 10, CAIRO_FORMAT_ARGB32);
-  cairo_surface_t*         surface = s->get();
-  cairo_t*                 cr      = cairo_create(surface);
+  BitmapSurface::Ptr const s = BitmapSurface::create(10, 10, CAIRO_FORMAT_ARGB32);
+  cairo_surface_t* surface = s->get();
+  cairo_t* cr = cairo_create(surface);
 
   tp->redraw(vi, cr, to_be_drawn, zoom_to_use);
 

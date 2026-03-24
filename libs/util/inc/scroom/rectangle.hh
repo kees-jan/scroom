@@ -29,7 +29,7 @@ namespace Scroom::Utils
   {
   public:
     using value_type = T;
-    using xy_type    = Point<T>;
+    using xy_type = Point<T>;
 
     Rectangle() = default;
 
@@ -344,8 +344,9 @@ namespace Scroom::Utils
 
   inline Rectangle<double> roundCorners(Rectangle<double> r)
   {
-    return make_rect_from_start_end(round_to_multiple_of(r.getTopLeft(), make_point(1.0)),
-                                    round_to_multiple_of(r.getBottomRight(), make_point(1.0)));
+    return make_rect_from_start_end(
+      round_to_multiple_of(r.getTopLeft(), make_point(1.0)), round_to_multiple_of(r.getBottomRight(), make_point(1.0))
+    );
   }
 
   template <typename T>

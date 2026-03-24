@@ -35,7 +35,7 @@ namespace Scroom::TiledBitmap
   Metadata::Metadata to_metadata(const BitmapMetaData& bmd)
   {
     Scroom::Utils::Point<double> const aspectRatio = bmd.aspectRatio ? *bmd.aspectRatio : Scroom::Utils::Point<double>{1, 1};
-    std::string                        aspect_ratio_text = fmt::format("{:.2f} : {:.2f}", aspectRatio.x, aspectRatio.y);
+    std::string aspect_ratio_text = fmt::format("{:.2f} : {:.2f}", aspectRatio.x, aspectRatio.y);
 
     return {
       {"Color representation", bmd.type},
@@ -48,9 +48,9 @@ namespace Scroom::TiledBitmap
   }
 
 
-  const std::string RGB         = "RGB";
-  const std::string CMYK        = "CMYK";
-  const std::string Greyscale   = "Greyscale";
+  const std::string RGB = "RGB";
+  const std::string CMYK = "CMYK";
+  const std::string Greyscale = "Greyscale";
   const std::string Colormapped = "Colormapped";
 
   LayerSpecResult RGBBitmap(const Scroom::Logger& logger, const BitmapMetaData& bmd);
@@ -97,7 +97,7 @@ namespace Scroom::TiledBitmap
     {
     }
 
-    Scroom::Logger                      logger;
+    Scroom::Logger logger;
     std::vector<LayerSpecForBitmapFunc> functions;
   };
 
@@ -177,7 +177,7 @@ namespace Scroom::TiledBitmap
       return {};
     }
 
-    LayerSpec               ls;
+    LayerSpec ls;
     ColormapHelperBase::Ptr colormapHelper = bmd.colormapHelper;
     if(!colormapHelper)
     {

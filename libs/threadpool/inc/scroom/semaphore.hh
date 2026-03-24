@@ -15,9 +15,9 @@ namespace Scroom
   class Semaphore
   {
   private:
-    unsigned int              count;
+    unsigned int count;
     boost::condition_variable cond;
-    boost::mutex              mut;
+    boost::mutex mut;
 
   public:
     explicit Semaphore(unsigned int count = 0);

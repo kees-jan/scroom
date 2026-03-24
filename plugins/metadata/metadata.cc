@@ -22,8 +22,8 @@
  */
 void on_image_properties_activate(GtkButton* self, gpointer user_data)
 {
-  auto* view                  = static_cast<ViewInterface*>(user_data);
-  auto  showMetaDataInterface = std::dynamic_pointer_cast<ShowMetadataInterface>(view->getCurrentPresentation());
+  auto* view = static_cast<ViewInterface*>(user_data);
+  auto showMetaDataInterface = std::dynamic_pointer_cast<ShowMetadataInterface>(view->getCurrentPresentation());
   require(showMetaDataInterface);
 
   showMetaDataInterface->showMetadata(Scroom::GtkHelpers::get_parent_window(GTK_WIDGET(self)));
@@ -82,15 +82,15 @@ void Metadata::registerCapabilities(ScroomPluginInterface::Ptr host)
  */
 Scroom::Bookkeeping::Token Metadata::viewAdded(ViewInterface::Ptr view)
 {
-  auto presentation          = view->getCurrentPresentation();
+  auto presentation = view->getCurrentPresentation();
   auto showMetaDataInterface = std::dynamic_pointer_cast<ShowMetadataInterface>(presentation);
   if(presentation->isPropertyDefined(METADATA_PROPERTY_NAME))
   {
     require(showMetaDataInterface);
 
     // create button for metadata and add it to the toolbar
-    GtkToolItem* button         = gtk_tool_item_new();
-    GtkWidget*   buttonMetadata = gtk_button_new_with_label("Metadata");
+    GtkToolItem* button = gtk_tool_item_new();
+    GtkWidget* buttonMetadata = gtk_button_new_with_label("Metadata");
     gtk_widget_set_visible(buttonMetadata, true);
     gtk_container_add(GTK_CONTAINER(button), buttonMetadata);
     // connect signal to the button for when it is being pressed
@@ -100,7 +100,8 @@ Scroom::Bookkeeping::Token Metadata::viewAdded(ViewInterface::Ptr view)
       [&]
       {
         view->addToToolbar(button); // adds metadata button next to other tools in toolbar
-      });
+      }
+    );
   }
   return {};
 }

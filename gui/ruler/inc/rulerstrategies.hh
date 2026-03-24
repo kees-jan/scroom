@@ -65,12 +65,14 @@ public:
    * @param width Allocated width for the ruler in pixels.
    * @param height Allocated height for the ruler in pixels.
    */
-  virtual void drawTickText(cairo_t*           cr,
-                            const std::string& label,
-                            double             linePosition,
-                            double             labelOffset,
-                            double             labelAlign,
-                            double             lineLength) = 0;
+  virtual void drawTickText(
+    cairo_t* cr,
+    const std::string& label,
+    double linePosition,
+    double labelOffset,
+    double labelAlign,
+    double lineLength
+  ) = 0;
 
   /**
    * Sets the allocated newWidth and height for the ruler.
@@ -119,12 +121,14 @@ public:
 
   void drawOutline(cairo_t* cr, double lineWidth) override;
   void drawTickLine(cairo_t* cr, double linePosition, double lineWidth, double lineLength) override;
-  void drawTickText(cairo_t*           cr,
-                    const std::string& label,
-                    double             linePosition,
-                    double             labelOffset,
-                    double             labelAlign,
-                    double             lineLength) override;
+  void drawTickText(
+    cairo_t* cr,
+    const std::string& label,
+    double linePosition,
+    double labelOffset,
+    double labelAlign,
+    double lineLength
+  ) override;
 };
 
 /**
@@ -144,10 +148,12 @@ public:
 
   void drawOutline(cairo_t* cr, double lineWidth) override;
   void drawTickLine(cairo_t* cr, double linePosition, double lineWidth, double lineLength) override;
-  void drawTickText(cairo_t*           cr,
-                    const std::string& label,
-                    double             linePosition,
-                    double             labelOffset,
-                    double             labelAlign,
-                    double             lineLength) override;
+  void drawTickText(
+    cairo_t* cr,
+    const std::string& label,
+    double linePosition,
+    double labelOffset,
+    double labelAlign,
+    double lineLength
+  ) override;
 };

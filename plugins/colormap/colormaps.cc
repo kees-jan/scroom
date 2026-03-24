@@ -39,7 +39,7 @@ namespace Scroom::ColormapImpl
   Colormaps::Colormaps()
   {
     char* colormapDirPath = getColormapDirPath();
-    DIR*  colormapDir     = opendir(colormapDirPath);
+    DIR* colormapDir = opendir(colormapDirPath);
     if(colormapDir)
     {
       for(struct dirent* d = readdir(colormapDir); d; d = readdir(colormapDir))
@@ -48,8 +48,8 @@ namespace Scroom::ColormapImpl
         // directory or whatever. However, we can safely assume that in
         // all bad cases, the load() will fail :-)
 
-        char*     name = d->d_name;
-        const int len  = strlen(name);
+        char* name = d->d_name;
+        const int len = strlen(name);
         if(!strcmp(name + len - strlen(COLORMAPEXT), COLORMAPEXT))
         {
           Colormap::Ptr const c = load(name);
@@ -81,7 +81,7 @@ namespace Scroom::ColormapImpl
     char buffer[2048];
     GetModuleFileName(NULL, buffer, 2047);
     std::string modulePath(buffer);
-    auto        pos = modulePath.rfind("\\");
+    auto pos = modulePath.rfind("\\");
     return g_build_filename(modulePath.substr(0, pos).c_str(), "\\", COLORMAPDIR, NULL);
 #else
     const char* homedir = g_getenv("HOME");
@@ -101,7 +101,7 @@ namespace Scroom::ColormapImpl
     Colormap::Ptr colormap;
 
     char* fullName = g_build_filename(getColormapDirPath(), name, NULL);
-    FILE* f        = fopen(fullName, "re");
+    FILE* f = fopen(fullName, "re");
     if(f)
     {
       try
@@ -142,12 +142,12 @@ namespace Scroom::ColormapImpl
           throw std::exception();
         }
 
-        colormap                   = Colormap::create();
-        colormap->name             = name;
+        colormap = Colormap::create();
+        colormap->name = name;
         std::vector<Color>& colors = colormap->colors;
-        int                 red    = 0;
-        int                 green  = 0;
-        int                 blue   = 0;
+        int red = 0;
+        int green = 0;
+        int blue = 0;
         while(colors.size() < count && fgets(buffer, BUFFERSIZE, f) && 3 == sscanf(buffer, "%d %d %d", &red, &green, &blue))
         {
           colors.emplace_back(red / 255.0, green / 255.0, blue / 255.0);

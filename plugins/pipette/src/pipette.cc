@@ -66,7 +66,7 @@ void PipetteHandler::computeValues(const ViewInterface::Ptr& view, Scroom::Utils
 
   // Get the average color within the rectangle
   PresentationInterface::Ptr const presentation = view->getCurrentPresentation();
-  auto                             pipette      = std::dynamic_pointer_cast<PipetteViewInterface>(presentation);
+  auto pipette = std::dynamic_pointer_cast<PipetteViewInterface>(presentation);
   if(pipette == nullptr || !presentation->isPropertyDefined(PIPETTE_PROPERTY_NAME))
   {
     logger->error("Presentation does not implement PipetteViewInterface!");
@@ -74,8 +74,8 @@ void PipetteHandler::computeValues(const ViewInterface::Ptr& view, Scroom::Utils
     jobMutex.unlock();
     return;
   }
-  auto image  = presentation->getRect();
-  auto rect   = sel_rect.intersection(image);
+  auto image = presentation->getRect();
+  auto rect = sel_rect.intersection(image);
   auto colors = pipette->getPixelAverages(rect);
 
   const auto display_rect = roundOutward(rect / presentation->getAspectRatio());
@@ -90,17 +90,21 @@ void PipetteHandler::computeValues(const ViewInterface::Ptr& view, Scroom::Utils
   jobMutex.unlock();
 }
 
-void PipetteHandler::displayValues(const ViewInterface::Ptr&                   view,
-                                   Scroom::Utils::Rectangle<double>            rect,
-                                   const PipetteLayerOperations::PipetteColor& colors)
+void PipetteHandler::displayValues(
+  const ViewInterface::Ptr& view,
+  Scroom::Utils::Rectangle<double> rect,
+  const PipetteLayerOperations::PipetteColor& colors
+)
 {
   std::stringstream info;
 
-  info << fmt::format("Top-left: {}, Bottom-right: {}, Height: {}, Width: {}",
-                      rect.getTopLeft(),
-                      rect.getBottomRight(),
-                      rect.getHeight(),
-                      rect.getWidth());
+  info << fmt::format(
+    "Top-left: {}, Bottom-right: {}, Height: {}, Width: {}",
+    rect.getTopLeft(),
+    rect.getBottomRight(),
+    rect.getHeight(),
+    rect.getWidth()
+  );
 
   if(!colors.empty())
   {
@@ -139,8 +143,9 @@ void PipetteHandler::onSelectionEnd(Selection s, ViewInterface::Ptr view)
 
     // Get the selection rectangle
     const auto sel_rect = Scroom::Utils::make_rect_from_start_end(selection->start, selection->end);
-    Sequentially()->schedule([me = shared_from_this<PipetteHandler>(), view, sel_rect] { me->computeValues(view, sel_rect); },
-                             currentJob);
+    Sequentially()->schedule(
+      [me = shared_from_this<PipetteHandler>(), view, sel_rect] { me->computeValues(view, sel_rect); }, currentJob
+    );
     jobMutex.unlock();
   }
 }
@@ -149,16 +154,18 @@ void PipetteHandler::onSelectionEnd(Selection s, ViewInterface::Ptr view)
 // PostRenderer
 ////////////////////////////////////////////////////////////////////////
 
-void PipetteHandler::render(ViewInterface::Ptr const& /*vi*/,
-                            cairo_t*                         cr,
-                            Scroom::Utils::Rectangle<double> presentationArea,
-                            int                              zoom)
+void PipetteHandler::render(
+  ViewInterface::Ptr const& /*vi*/,
+  cairo_t* cr,
+  Scroom::Utils::Rectangle<double> presentationArea,
+  int zoom
+)
 {
   if(selection)
   {
     const auto pixelSize = pixelSizeFromZoom(zoom);
-    const auto start     = (selection->start - presentationArea.getTopLeft()) * pixelSize;
-    const auto end       = (selection->end - presentationArea.getTopLeft()) * pixelSize;
+    const auto start = (selection->start - presentationArea.getTopLeft()) * pixelSize;
+    const auto end = (selection->end - presentationArea.getTopLeft()) * pixelSize;
 
     cairo_set_line_width(cr, 1);
     cairo_set_source_rgb(cr, 0, 0, 1); // Blue

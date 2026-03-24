@@ -106,7 +106,7 @@ namespace Scroom::MemoryBlobs
       }
 
       // data should point to something valid here...
-      result   = RawPageData::Ptr(data, UnloadData(shared_from_this<Blob>()));
+      result = RawPageData::Ptr(data, UnloadData(shared_from_this<Blob>()));
       weakData = result;
       refcount++;
     }
@@ -151,16 +151,16 @@ namespace Scroom::MemoryBlobs
   RawPageData::Ptr Blob::get()
   {
     boost::mutex::scoped_lock const lock(mut);
-    RawPageData::Ptr                result = load();
-    state                                  = DIRTY;
+    RawPageData::Ptr result = load();
+    state = DIRTY;
     return result;
   }
 
   RawPageData::Ptr Blob::initialize(uint8_t value)
   {
     boost::mutex::scoped_lock const lock(mut);
-    RawPageData::Ptr                result = load();
-    state                                  = DIRTY;
+    RawPageData::Ptr result = load();
+    state = DIRTY;
     memset(result.get(), value, size);
     return result;
   }

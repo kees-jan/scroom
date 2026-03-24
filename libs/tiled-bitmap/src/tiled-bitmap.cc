@@ -29,14 +29,16 @@ TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight, L
   return TiledBitmap::create(bitmapWidth, bitmapHeight, ls);
 }
 
-Scroom::Utils::Stuff Scroom::TiledBitmap::scheduleLoadingBitmap(const SourcePresentation::Ptr& sp,
-                                                                const Layer::Ptr&              layer,
-                                                                const ProgressInterface::Ptr&  progress)
+Scroom::Utils::Stuff Scroom::TiledBitmap::scheduleLoadingBitmap(
+  const SourcePresentation::Ptr& sp,
+  const Layer::Ptr& layer,
+  const ProgressInterface::Ptr& progress
+)
 {
   auto wait_until_done = std::make_shared<Scroom::Semaphore>();
-  auto queue           = ThreadPool::Queue::createAsync();
-  auto weakQueue       = queue->getWeak();
-  auto abort           = [wait_until_done, queue]() mutable
+  auto queue = ThreadPool::Queue::createAsync();
+  auto weakQueue = queue->getWeak();
+  auto abort = [wait_until_done, queue]() mutable
   {
     queue.reset();
     wait_until_done->V();
@@ -51,7 +53,8 @@ Scroom::Utils::Stuff Scroom::TiledBitmap::scheduleLoadingBitmap(const SourcePres
       Scroom::GtkHelpers::sync_on_ui_thread([=] { progress->setWorking(0); });
       layer->fetchData(sp, weakQueue, on_finished);
       wait_until_done->P();
-    });
+    }
+  );
 
   return Scroom::Utils::on_destruction(abort);
 }
@@ -90,19 +93,19 @@ TiledBitmap::TiledBitmap(int bitmapWidth_, int bitmapHeight_, LayerSpec ls_)
 
 void TiledBitmap::initialize(const Layer::Ptr& bottom)
 {
-  int                                          width    = bitmapWidth;
-  int                                          height   = bitmapHeight;
-  unsigned int                                 i        = 0;
-  LayerOperations::Ptr                         lo       = ls[i];
+  int width = bitmapWidth;
+  int height = bitmapHeight;
+  unsigned int i = 0;
+  LayerOperations::Ptr lo = ls[i];
   Scroom::MemoryBlobs::PageProvider::Ptr const provider = bottom->getPageProvider();
 
   registrations.emplace_back(bottom->registerObserver(shared_from_this<TileInitialisationObserver>()));
   layers.push_back(bottom);
 
-  Layer::Ptr           prevLayer = bottom;
-  LayerOperations::Ptr prevLo    = lo;
+  Layer::Ptr prevLayer = bottom;
+  LayerOperations::Ptr prevLo = lo;
 
-  width  = (width + 7) / 8; // Round up
+  width = (width + 7) / 8; // Round up
   height = (height + 7) / 8;
   i++;
 
@@ -120,9 +123,9 @@ void TiledBitmap::initialize(const Layer::Ptr& bottom)
     connect(layer, prevLayer, prevLo);
 
     prevLayer = layer;
-    prevLo    = lo;
-    width     = (width + 7) / 8; // Round up
-    height    = (height + 7) / 8;
+    prevLo = lo;
+    width = (width + 7) / 8; // Round up
+    height = (height + 7) / 8;
     i++;
   }
 }
@@ -162,8 +165,8 @@ void TiledBitmap::connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, 
 
     for(int i = 0; i < horTileCount; i++)
     {
-      const int                   hoffset = i % 8;
-      LayerCoordinator::Ptr const lc      = coordinators_[i / 8];
+      const int hoffset = i % 8;
+      LayerCoordinator::Ptr const lc = coordinators_[i / 8];
       lc->addSourceTile(hoffset, voffset, prevLayer->getTile(i, j));
     }
   }
@@ -186,7 +189,8 @@ void TiledBitmap::drawTile(cairo_t* cr, const CompressedTile::Ptr& tile, const S
   if(viewArea.width() > 2 * margin && viewArea.height() > 2 * margin)
   {
     Scroom::Utils::Rectangle<double> const rect(
-      viewArea.x() + margin, viewArea.y() + margin, viewArea.width() - 2 * margin, viewArea.height() - 2 * margin);
+      viewArea.x() + margin, viewArea.y() + margin, viewArea.width() - 2 * margin, viewArea.height() - 2 * margin
+    );
 
     cairo_set_source_rgb(cr, 0, 0, 0); // Black
     drawRectangleContour(cr, rect);
@@ -197,13 +201,15 @@ void TiledBitmap::drawTile(cairo_t* cr, const CompressedTile::Ptr& tile, const S
   }
 }
 
-void TiledBitmap::redraw(ViewInterface::Ptr const&               vi,
-                         cairo_t*                                cr,
-                         Scroom::Utils::Rectangle<double> const& presentationArea,
-                         int                                     zoom)
+void TiledBitmap::redraw(
+  ViewInterface::Ptr const& vi,
+  cairo_t* cr,
+  Scroom::Utils::Rectangle<double> const& presentationArea,
+  int zoom
+)
 {
-  TiledBitmapViewData::Ptr const viewData_                       = viewData[vi];
-  auto                           scaledRequestedPresentationArea = presentationArea;
+  TiledBitmapViewData::Ptr const viewData_ = viewData[vi];
+  auto scaledRequestedPresentationArea = presentationArea;
 
   unsigned int layerNr = 0;
   while(zoom <= -3 && layerNr < layers.size() - 1)
@@ -212,15 +218,15 @@ void TiledBitmap::redraw(ViewInterface::Ptr const&               vi,
     zoom += 3;
     scaledRequestedPresentationArea /= 8;
   }
-  Layer::Ptr const           layer           = layers[layerNr];
+  Layer::Ptr const layer = layers[layerNr];
   LayerOperations::Ptr const layerOperations = ls[std::min(ls.size() - 1, static_cast<size_t>(layerNr))];
 
   const Scroom::Utils::Rectangle<int> actualPresentationArea = layer->getRect();
   const auto validPresentationArea = scaledRequestedPresentationArea.intersection(actualPresentationArea);
 
-  const int left   = scaledRequestedPresentationArea.getLeft();
-  const int top    = scaledRequestedPresentationArea.getTop();
-  const int right  = scaledRequestedPresentationArea.getRight();
+  const int left = scaledRequestedPresentationArea.getLeft();
+  const int top = scaledRequestedPresentationArea.getTop();
+  const int right = scaledRequestedPresentationArea.getRight();
   const int bottom = scaledRequestedPresentationArea.getBottom();
 
   const int imin = std::max(0, left / TILESIZE);
@@ -243,16 +249,16 @@ void TiledBitmap::redraw(ViewInterface::Ptr const&               vi,
     {
       Scroom::Utils::Point<int> const tileIndex(i, j);
 
-      const auto tileArea        = TileAreaForIndex(tileIndex);
+      const auto tileArea = TileAreaForIndex(tileIndex);
       const auto visibleTileArea = tileArea.intersection(clippedRequestedPresentationArea);
 
       const auto tileAreaRect = visibleTileArea - tileArea.getTopLeft();
       const auto viewAreaRect = (visibleTileArea - clippedRequestedPresentationArea.getTopLeft()) * pixelSize;
 
-      CompressedTile::Ptr const  tile          = layer->getTile(i, j);
-      TileViewState::Ptr const   tileViewState = tile->getViewState(vi);
-      Scroom::Utils::Stuff const cacheResult   = tileViewState->getCacheResult();
-      ConstTile::Ptr const       t             = tile->getConstTileAsync();
+      CompressedTile::Ptr const tile = layer->getTile(i, j);
+      TileViewState::Ptr const tileViewState = tile->getViewState(vi);
+      Scroom::Utils::Stuff const cacheResult = tileViewState->getCacheResult();
+      ConstTile::Ptr const t = tile->getConstTileAsync();
 
       if(t)
       {
@@ -274,7 +280,7 @@ void TiledBitmap::redraw(ViewInterface::Ptr const&               vi,
 void TiledBitmap::clearCaches(ViewInterface::Ptr viewInterface)
 {
   boost::mutex::scoped_lock const lock(viewDataMutex);
-  TiledBitmapViewData::Ptr const  tbvd = viewData[viewInterface];
+  TiledBitmapViewData::Ptr const tbvd = viewData[viewInterface];
   if(tbvd)
   {
     tbvd->clearVolatileStuff();
@@ -283,9 +289,9 @@ void TiledBitmap::clearCaches(ViewInterface::Ptr viewInterface)
 
 void TiledBitmap::open(ViewInterface::WeakPtr viewInterface)
 {
-  boost::mutex::scoped_lock      lock(viewDataMutex);
+  boost::mutex::scoped_lock lock(viewDataMutex);
   TiledBitmapViewData::Ptr const vd = TiledBitmapViewData::create(viewInterface);
-  viewData[viewInterface]           = vd;
+  viewData[viewInterface] = vd;
   vd->token.add(progressBroadcaster->subscribe(vd));
   lock.unlock();
 
@@ -303,7 +309,7 @@ void TiledBitmap::close(ViewInterface::WeakPtr vi)
   }
 
   boost::mutex::scoped_lock const lock(viewDataMutex);
-  TiledBitmapViewData::Ptr const  vd = viewData[vi];
+  TiledBitmapViewData::Ptr const vd = viewData[vi];
   // Yuk. ProgressBroadcaster has a reference to viewData, so erasing it
   // from the map isn't enough.
   vd->token.reset();
@@ -334,6 +340,7 @@ void TiledBitmap::tileFinished(const CompressedTile::Ptr& /*tile*/)
           progressBroadcaster->setFinished();
           logger->info("Finished loading file");
         }
-      });
+      }
+    );
   }
 }

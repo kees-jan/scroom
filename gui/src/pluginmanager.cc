@@ -92,14 +92,14 @@ bool PluginManager::doWork()
     setStatusBarMessage("Scanning plugin directories");
     if(currentDir == dirs.end())
     {
-      state       = LOADING_FILES;
+      state = LOADING_FILES;
       currentFile = files.begin();
       break;
     }
 
     logger->debug("Scanning directory: {}", *currentDir);
     const char* folder = currentDir->c_str();
-    namespace fs       = boost::filesystem;
+    namespace fs = boost::filesystem;
     boost::system::error_code ec;
 
     if(!fs::is_directory(folder, ec))
@@ -143,8 +143,8 @@ bool PluginManager::doWork()
       GModule* plugin = g_module_open(currentFile->c_str(), static_cast<GModuleFlags>(0));
       if(plugin)
       {
-        gpointer pgpi         = nullptr;
-        bool     symbol_found = false;
+        gpointer pgpi = nullptr;
+        bool symbol_found = false;
 
         if(g_module_symbol(plugin, "_Z20getPluginInformationv", &pgpi))
         {
@@ -171,15 +171,14 @@ bool PluginManager::doWork()
                 pluginInformationList.emplace_back(plugin, pi);
                 pi->registerCapabilities(shared_from_this<PluginManager>());
                 plugin = nullptr;
-                gpi    = nullptr;
+                gpi = nullptr;
                 pi.reset();
               }
               else
               {
-                logger->error("Plugin {} has incorrect API version {}, instead of {}",
-                              *currentFile,
-                              pi->pluginApiVersion,
-                              PLUGIN_API_VERSION);
+                logger->error(
+                  "Plugin {} has incorrect API version {}, instead of {}", *currentFile, pi->pluginApiVersion, PLUGIN_API_VERSION
+                );
               }
             }
             else
@@ -254,8 +253,10 @@ void PluginManager::addHook(bool devMode_)
   state = FINDING_DIRECTORIES;
 }
 
-void PluginManager::registerNewPresentationInterface(const std::string&            identifier,
-                                                     NewPresentationInterface::Ptr newPresentationInterface)
+void PluginManager::registerNewPresentationInterface(
+  const std::string& identifier,
+  NewPresentationInterface::Ptr newPresentationInterface
+)
 {
   newPresentationInterfaces[newPresentationInterface] = identifier;
 
@@ -267,17 +268,20 @@ void PluginManager::registerNewAggregateInterface(const std::string& identifier,
   newAggregateInterfaces[identifier] = newAggregateInterface;
 }
 
-void PluginManager::registerOpenPresentationInterface(const std::string&             extension,
-                                                      OpenPresentationInterface::Ptr openPresentationInterface)
+void PluginManager::registerOpenPresentationInterface(
+  const std::string& extension,
+  OpenPresentationInterface::Ptr openPresentationInterface
+)
 {
   openPresentationInterfaces[openPresentationInterface] = extension;
 }
 
 void PluginManager::registerOpenTiledBitmapInterface(
-  const std::string&                                             extension,
-  std::shared_ptr<Scroom::TiledBitmap::OpenTiledBitmapInterface> openTiledBitmapInterface)
+  const std::string& extension,
+  std::shared_ptr<Scroom::TiledBitmap::OpenTiledBitmapInterface> openTiledBitmapInterface
+)
 {
-  openTiledBitmapInterfaces[openTiledBitmapInterface]                               = extension;
+  openTiledBitmapInterfaces[openTiledBitmapInterface] = extension;
   openPresentationInterfaces[ToOpenPresentationInterface(openTiledBitmapInterface)] = extension;
 }
 

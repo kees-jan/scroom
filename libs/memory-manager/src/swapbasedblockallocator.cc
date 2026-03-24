@@ -34,8 +34,8 @@ namespace Scroom::MemoryBlocks
       , public virtual Scroom::Utils::Base
     {
     private:
-      size_t                                count;
-      size_t                                size;
+      size_t count;
+      size_t size;
       boost::movelib::unique_ptr<uint8_t[]> data;
 
     private:
@@ -46,7 +46,7 @@ namespace Scroom::MemoryBlocks
 
     public:
       static BlockInterface::Ptr create(size_t count, size_t size);
-      PageList                   getPages() override;
+      PageList getPages() override;
     };
 
     SwapBasedBlockAllocator::SwapBasedBlockAllocator(size_t count_, size_t size_)
@@ -92,7 +92,7 @@ namespace Scroom::MemoryBlocks
       SwapBasedBlockAllocatorFactory() = default;
 
     public:
-      static Ptr          create();
+      static Ptr create();
       BlockInterface::Ptr create(size_t count, size_t size) override;
     };
 

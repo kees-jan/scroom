@@ -32,17 +32,19 @@ public:
   static PresentationInterface::Ptr create() { return PresentationInterface::Ptr(new DummyPresentation()); }
 
   Scroom::Utils::Rectangle<double> getRect() override { return {0, 0, 100, 100}; }
-  void                             redraw(ViewInterface::Ptr const& /*vi*/,
-                                          cairo_t* /*cr*/,
-                                          Scroom::Utils::Rectangle<double> /*presentationArea*/,
-                                          int /*zoom*/) override
+  void redraw(
+    ViewInterface::Ptr const& /*vi*/,
+    cairo_t* /*cr*/,
+    Scroom::Utils::Rectangle<double> /*presentationArea*/,
+    int /*zoom*/
+  ) override
   {
   }
-  bool        getProperty(const std::string& /*name*/, std::string& /*value*/) override { return false; }
-  bool        isPropertyDefined(const std::string& name) override { return PIPETTE_PROPERTY_NAME == name; }
+  bool getProperty(const std::string& /*name*/, std::string& /*value*/) override { return false; }
+  bool isPropertyDefined(const std::string& name) override { return PIPETTE_PROPERTY_NAME == name; }
   std::string getTitle() override { return {}; }
-  void        open(ViewInterface::WeakPtr /*vi*/) override{};
-  void        close(ViewInterface::WeakPtr /*vi*/) override{};
+  void open(ViewInterface::WeakPtr /*vi*/) override{};
+  void close(ViewInterface::WeakPtr /*vi*/) override{};
   PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<double> /*area*/) override
   {
     return {{"C", 1.0}};
@@ -63,15 +65,15 @@ public:
   {
   }
 
-  void                   invalidate() override {}
+  void invalidate() override {}
   ProgressInterface::Ptr getProgressInterface() override { return nullptr; }
-  void                   addSideWidget(std::string /*title*/, GtkWidget* /*w*/) override {}
-  void                   removeSideWidget(GtkWidget* /*w*/) override {}
-  void                   addToToolbar(GtkToolItem* /*ti*/) override {}
-  void                   removeFromToolbar(GtkToolItem* /*ti*/) override {}
-  void                   registerSelectionListener(SelectionListener::Ptr /*unused*/) override { reg_sel++; }
-  void                   registerPostRenderer(PostRenderer::Ptr /*unused*/) override { reg_post++; }
-  void                   setStatusMessage(const std::string& msg) override
+  void addSideWidget(std::string /*title*/, GtkWidget* /*w*/) override {}
+  void removeSideWidget(GtkWidget* /*w*/) override {}
+  void addToToolbar(GtkToolItem* /*ti*/) override {}
+  void removeFromToolbar(GtkToolItem* /*ti*/) override {}
+  void registerSelectionListener(SelectionListener::Ptr /*unused*/) override { reg_sel++; }
+  void registerPostRenderer(PostRenderer::Ptr /*unused*/) override { reg_post++; }
+  void setStatusMessage(const std::string& msg) override
   {
     std::unique_lock<std::mutex> const l(mut);
     statusMessages.push_back(msg);
@@ -93,14 +95,14 @@ public:
     return result;
   }
 
-  int                        reg_sel  = 0;
-  int                        reg_post = 0;
-  int                        tool_btn = 0;
+  int reg_sel = 0;
+  int reg_post = 0;
+  int tool_btn = 0;
   PresentationInterface::Ptr presentation;
 
-  std::mutex              mut;
+  std::mutex mut;
   std::condition_variable cond;
-  std::list<std::string>  statusMessages;
+  std::list<std::string> statusMessages;
 };
 
 class DummyPluginInterface : public ScroomPluginInterface
@@ -110,15 +112,22 @@ public:
 
   static Ptr create() { return std::make_shared<DummyPluginInterface>(); }
 
-  void registerNewPresentationInterface(const std::string& /*identifier*/,
-                                        NewPresentationInterface::Ptr /*newPresentationInterface*/) override {};
-  void registerNewAggregateInterface(const std::string& /*identifier*/,
-                                     NewAggregateInterface::Ptr /*newAggregateInterface*/) override {};
-  void registerOpenPresentationInterface(const std::string& /*identifier*/,
-                                         OpenPresentationInterface::Ptr /*openPresentationInterface*/) override {};
+  void registerNewPresentationInterface(
+    const std::string& /*identifier*/,
+    NewPresentationInterface::Ptr /*newPresentationInterface*/
+  ) override {};
+  void registerNewAggregateInterface(
+    const std::string& /*identifier*/,
+    NewAggregateInterface::Ptr /*newAggregateInterface*/
+  ) override {};
+  void registerOpenPresentationInterface(
+    const std::string& /*identifier*/,
+    OpenPresentationInterface::Ptr /*openPresentationInterface*/
+  ) override {};
   void registerOpenTiledBitmapInterface(
     const std::string& /*identifier*/,
-    std::shared_ptr<Scroom::TiledBitmap::OpenTiledBitmapInterface> /*openTiledBitmapInterface*/) override {};
+    std::shared_ptr<Scroom::TiledBitmap::OpenTiledBitmapInterface> /*openTiledBitmapInterface*/
+  ) override {};
   void registerOpenInterface(const std::string& /*identifier*/, OpenInterface::Ptr /*openInterface*/) override {};
   void registerViewObserver(const std::string& /*identifier*/, ViewObserver::Ptr /*observer*/) override { view_observers++; };
   void registerPresentationObserver(const std::string& /*identifier*/, PresentationObserver::Ptr /*observer*/) override {};
@@ -167,7 +176,7 @@ TEST_F(Pipette_Tests, pipette_selection_update) // NOLINT
   EXPECT_EQ(selection->start, expected);
 
   ViewInterface::Ptr const vi = DummyView::createWithPresentation();
-  cairo_t*                 cr = cairo_create(cairo_image_surface_create(CAIRO_FORMAT_ARGB32, 1, 1));
+  cairo_t* cr = cairo_create(cairo_image_surface_create(CAIRO_FORMAT_ARGB32, 1, 1));
   handler->render(vi, cr, {0, 0, 0, 0}, 1);
   handler->render(vi, cr, {0, 0, 0, 0}, -2);
 
@@ -207,27 +216,31 @@ TEST_F(Pipette_Tests, pipette_metadata) // NOLINT
 TEST_F(Pipette_Tests, pipette_value_display_presentation) // NOLINT
 {
   PipetteHandler::Ptr const handler = PipetteHandler::create();
-  const auto                view    = DummyView::createWithPresentation();
+  const auto view = DummyView::createWithPresentation();
 
   handler->onEnable();
 
   handler->computeValues(view, Scroom::Utils::Rectangle<double>(10, 11, 12, 13));
   EXPECT_EQ(view->nextStatusMessage(), "Computing color values...");
-  EXPECT_EQ(view->nextStatusMessage(),
-            "Top-left: (10,11), Bottom-right: (22,24), Height: 13, Width: 12, "
-            "Colors: C: 1.00");
+  EXPECT_EQ(
+    view->nextStatusMessage(),
+    "Top-left: (10,11), Bottom-right: (22,24), Height: 13, Width: 12, "
+    "Colors: C: 1.00"
+  );
 
   handler->computeValues(view, Scroom::Utils::Rectangle<double>(-10, -11, 20, 22));
   EXPECT_EQ(view->nextStatusMessage(), "Computing color values...");
-  EXPECT_EQ(view->nextStatusMessage(),
-            "Top-left: (0,0), Bottom-right: (10,11), Height: 11, Width: 10, "
-            "Colors: C: 1.00");
+  EXPECT_EQ(
+    view->nextStatusMessage(),
+    "Top-left: (0,0), Bottom-right: (10,11), Height: 11, Width: 10, "
+    "Colors: C: 1.00"
+  );
 }
 
 TEST_F(Pipette_Tests, pipette_value_display_no_presentation) // NOLINT
 {
   PipetteHandler::Ptr const handler = PipetteHandler::create();
-  const auto                view    = DummyView::createWithoutPresentation();
+  const auto view = DummyView::createWithoutPresentation();
 
   handler->onEnable();
 
@@ -239,9 +252,9 @@ TEST_F(Pipette_Tests, pipette_value_display_no_presentation) // NOLINT
 TEST_F(Pipette_Tests, pipette_view_add) // NOLINT
 {
   Pipette::Ptr const pipette = Pipette::create();
-  const auto         view    = DummyView::createWithPresentation();
+  const auto view = DummyView::createWithPresentation();
 
-  const int pre_reg_sel  = view->reg_sel;
+  const int pre_reg_sel = view->reg_sel;
   const int pre_reg_post = view->reg_post;
   const int pre_tool_btn = view->tool_btn;
 

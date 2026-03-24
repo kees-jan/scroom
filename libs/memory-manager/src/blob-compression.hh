@@ -15,5 +15,5 @@
 namespace Scroom::MemoryBlobs::Detail
 {
   PageList compressBlob(const uint8_t* in, size_t size, const PageProvider::Ptr& provider);
-  void     decompressBlob(uint8_t* out, size_t size, PageList list, const PageProvider::Ptr& provider);
+  void decompressBlob(uint8_t* out, size_t size, PageList list, const PageProvider::Ptr& provider);
 } // namespace Scroom::MemoryBlobs::Detail

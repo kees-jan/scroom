@@ -66,7 +66,7 @@ void Ruler::setRange(double lower, double upper)
 
 void Ruler::updateAllocatedSize(int newWidth, int newHeight)
 {
-  this->width  = newWidth;
+  this->width = newWidth;
   this->height = newHeight;
   drawStrategy->setAllocatedSize(newWidth, newHeight);
 
@@ -77,7 +77,7 @@ void Ruler::sizeAllocateCallback(GtkWidget* widget, GdkRectangle* /*allocation*/
 {
   auto* ruler = static_cast<Ruler*>(data);
 
-  const int width  = gtk_widget_get_allocated_width(widget);
+  const int width = gtk_widget_get_allocated_width(widget);
   const int height = gtk_widget_get_allocated_height(widget);
 
   ruler->updateAllocatedSize(width, height);
@@ -98,7 +98,7 @@ void Ruler::updateMajorTickInterval()
   else
   {
     // Arbitrary numbers
-    majorInterval    = 10;
+    majorInterval = 10;
     majorTickSpacing = 10;
   }
 }
@@ -198,8 +198,8 @@ void Ruler::drawSubTicks(cairo_t* cr, double lower, double upper, int depth, dou
     return;
   }
 
-  const int    numSegments = SUBTICK_SEGMENTS.at(depth);
-  const double interval    = abs(upper - lower) / numSegments;
+  const int numSegments = SUBTICK_SEGMENTS.at(depth);
+  const double interval = abs(upper - lower) / numSegments;
 
   if(interval < MIN_SPACE_SUBTICKS)
   {
@@ -209,11 +209,11 @@ void Ruler::drawSubTicks(cairo_t* cr, double lower, double upper, int depth, dou
   // We draw from lower->upper / upper->lower, but in the process, we might be exceeding
   // the ruler area, so we also check that we're still inside the drawing area
   const double DRAW_AREA_SIZE = drawStrategy->getDrawAreaSize();
-  const double limit          = DRAW_AREA_SIZE;
+  const double limit = DRAW_AREA_SIZE;
 
   // Position along the ruler to draw tick at
   double tick = 0;
-  double pos  = lower;
+  double pos = lower;
 
   // Draw at most (numSegments - 1) ticks, while not exceeding the limit
   while(tick < numSegments && pos < limit)
@@ -234,9 +234,9 @@ void Ruler::drawSubTicks(cairo_t* cr, double lower, double upper, int depth, dou
 
 double RulerCalculations::scaleToRange(double x, double src_lower, double src_upper, double dest_lower, double dest_upper)
 {
-  const double src_size  = src_upper - src_lower;
+  const double src_size = src_upper - src_lower;
   const double dest_size = dest_upper - dest_lower;
-  const double scale     = dest_size / src_size;
+  const double scale = dest_size / src_size;
 
   return dest_lower + round(scale * (x - src_lower));
 }
@@ -256,7 +256,7 @@ int RulerCalculations::calculateInterval(double lower, double upper, double allo
   int intervalIndex = 0;
   // Each interval is multiplied by 10 raised to a power n
   const int INTERVAL_BASE = 10;
-  int       intervalN     = 0;
+  int intervalN = 0;
 
   // The interval to be returned
   int interval = 1;

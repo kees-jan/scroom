@@ -20,13 +20,13 @@ class LayerCoordinator
   , public virtual Scroom::Utils::Base
 {
 private:
-  CompressedTile::Ptr                                targetTile;
-  Tile::Ptr                                          targetTileData;
+  CompressedTile::Ptr targetTile;
+  Tile::Ptr targetTileData;
   std::map<CompressedTile::Ptr, std::pair<int, int>> sourceTiles;
-  Scroom::Utils::StuffList                           registrations;
-  LayerOperations::Ptr                               lo;
-  boost::mutex                                       mut;
-  int                                                unfinishedSourceTiles{0};
+  Scroom::Utils::StuffList registrations;
+  LayerOperations::Ptr lo;
+  boost::mutex mut;
+  int unfinishedSourceTiles{0};
 
 public:
   using Ptr = std::shared_ptr<LayerCoordinator>;
@@ -34,10 +34,10 @@ public:
   static Ptr create(CompressedTile::Ptr targetTile, LayerOperations::Ptr lo);
 
   ~LayerCoordinator() override;
-  LayerCoordinator(const LayerCoordinator&)           = delete;
-  LayerCoordinator(LayerCoordinator&&)                = delete;
+  LayerCoordinator(const LayerCoordinator&) = delete;
+  LayerCoordinator(LayerCoordinator&&) = delete;
   LayerCoordinator operator=(const LayerCoordinator&) = delete;
-  LayerCoordinator operator=(LayerCoordinator&&)      = delete;
+  LayerCoordinator operator=(LayerCoordinator&&) = delete;
 
   void addSourceTile(int x, int y, const CompressedTile::Ptr& tile);
 

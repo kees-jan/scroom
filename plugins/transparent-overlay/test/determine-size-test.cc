@@ -73,14 +73,16 @@ namespace
 
     Scroom::Utils::Rectangle<double> getRect() override { return rect; }
 
-    void redraw(ViewInterface::Ptr const& /*vi*/,
-                cairo_t* /*cr*/,
-                Scroom::Utils::Rectangle<double> /*presentationArea*/,
-                int /*zoom*/) override
+    void redraw(
+      ViewInterface::Ptr const& /*vi*/,
+      cairo_t* /*cr*/,
+      Scroom::Utils::Rectangle<double> /*presentationArea*/,
+      int /*zoom*/
+    ) override
     {
     }
-    bool        getProperty(const std::string& /*name*/, std::string& /*value*/) override { return false; }
-    bool        isPropertyDefined(const std::string& /*name*/) override { return false; }
+    bool getProperty(const std::string& /*name*/, std::string& /*value*/) override { return false; }
+    bool isPropertyDefined(const std::string& /*name*/) override { return false; }
     std::string getTitle() override { return ""; }
 
     void open(ViewInterface::WeakPtr /*vi*/) override {}
@@ -95,7 +97,7 @@ namespace
     using Ptr = std::shared_ptr<ResizablePresentationInterfaceStub>;
 
   public:
-    std::list<ViewInterface::WeakPtr>           receivedVi;
+    std::list<ViewInterface::WeakPtr> receivedVi;
     std::list<Scroom::Utils::Rectangle<double>> receivedRect;
 
   private:
@@ -144,15 +146,15 @@ namespace
   public:
     static Ptr create() { return Ptr(new ViewInterfaceDummy()); }
 
-    void                                   invalidate() override {}
-    ProgressInterface::Ptr                 getProgressInterface() override { return {}; }
-    void                                   addSideWidget(std::string /*title*/, GtkWidget* /*w*/) override {}
-    void                                   removeSideWidget(GtkWidget* /*w*/) override {}
-    void                                   addToToolbar(GtkToolItem* /*ti*/) override {}
-    void                                   removeFromToolbar(GtkToolItem* /*ti*/) override {}
-    void                                   registerSelectionListener(SelectionListener::Ptr /*unused*/) override{};
-    void                                   registerPostRenderer(PostRenderer::Ptr /*unused*/) override{};
-    void                                   setStatusMessage(const std::string& /*unused*/) override {};
+    void invalidate() override {}
+    ProgressInterface::Ptr getProgressInterface() override { return {}; }
+    void addSideWidget(std::string /*title*/, GtkWidget* /*w*/) override {}
+    void removeSideWidget(GtkWidget* /*w*/) override {}
+    void addToToolbar(GtkToolItem* /*ti*/) override {}
+    void removeFromToolbar(GtkToolItem* /*ti*/) override {}
+    void registerSelectionListener(SelectionListener::Ptr /*unused*/) override{};
+    void registerPostRenderer(PostRenderer::Ptr /*unused*/) override{};
+    void setStatusMessage(const std::string& /*unused*/) override {};
     std::shared_ptr<PresentationInterface> getCurrentPresentation() override { return {}; };
     void addToolButton(GtkToggleButton* /*unused*/, ToolStateListener::Ptr /*unused*/) override {};
   };
@@ -162,8 +164,8 @@ namespace
 TEST(Determine_size_tests, determine_size_of_one_regular) // NOLINT
 {
   Scroom::Utils::Rectangle<double> const expected(1, 2, 3, 4);
-  PresentationInterfaceStub::Ptr const   p  = PresentationInterfaceStub::create(expected);
-  SizeDeterminer::Ptr const              sd = SizeDeterminer::create();
+  PresentationInterfaceStub::Ptr const p = PresentationInterfaceStub::create(expected);
+  SizeDeterminer::Ptr const sd = SizeDeterminer::create();
   sd->add(p);
 
   EXPECT_EQ(expected, sd->getRect());
@@ -172,9 +174,9 @@ TEST(Determine_size_tests, determine_size_of_one_regular) // NOLINT
 TEST(Determine_size_tests, determine_size_of_two_regular) // NOLINT
 {
   Scroom::Utils::Rectangle<double> const expected(1, 1, 5, 5);
-  PresentationInterfaceStub::Ptr const   p1 = PresentationInterfaceStub::create({1, 2, 3, 4});
-  PresentationInterfaceStub::Ptr const   p2 = PresentationInterfaceStub::create({2, 1, 4, 3});
-  SizeDeterminer::Ptr const              sd = SizeDeterminer::create();
+  PresentationInterfaceStub::Ptr const p1 = PresentationInterfaceStub::create({1, 2, 3, 4});
+  PresentationInterfaceStub::Ptr const p2 = PresentationInterfaceStub::create({2, 1, 4, 3});
+  SizeDeterminer::Ptr const sd = SizeDeterminer::create();
   sd->add(p1);
   sd->add(p2);
 
@@ -183,10 +185,10 @@ TEST(Determine_size_tests, determine_size_of_two_regular) // NOLINT
 
 TEST(Determine_size_tests, determine_size_of_one_regular_one_resizable) // NOLINT
 {
-  Scroom::Utils::Rectangle<double> const        expected(2, 1, 4, 3);
+  Scroom::Utils::Rectangle<double> const expected(2, 1, 4, 3);
   ResizablePresentationInterfaceStub::Ptr const p1 = ResizablePresentationInterfaceStub::create({1, 2, 3, 4});
-  PresentationInterfaceStub::Ptr const          p2 = PresentationInterfaceStub::create({2, 1, 4, 3});
-  SizeDeterminer::Ptr const                     sd = SizeDeterminer::create();
+  PresentationInterfaceStub::Ptr const p2 = PresentationInterfaceStub::create({2, 1, 4, 3});
+  SizeDeterminer::Ptr const sd = SizeDeterminer::create();
   sd->add(p1);
   sd->add(p2);
 
@@ -206,10 +208,10 @@ TEST(Determine_size_tests, determine_size_of_one_regular_one_resizable) // NOLIN
 
 TEST(Determine_size_tests, determine_size_of_two_resizable) // NOLINT
 {
-  Scroom::Utils::Rectangle<double> const        expected(1, 1, 5, 5);
+  Scroom::Utils::Rectangle<double> const expected(1, 1, 5, 5);
   ResizablePresentationInterfaceStub::Ptr const p1 = ResizablePresentationInterfaceStub::create({1, 2, 3, 4});
   ResizablePresentationInterfaceStub::Ptr const p2 = ResizablePresentationInterfaceStub::create({2, 1, 4, 3});
-  SizeDeterminer::Ptr const                     sd = SizeDeterminer::create();
+  SizeDeterminer::Ptr const sd = SizeDeterminer::create();
   sd->add(p1);
   sd->add(p2);
 
@@ -234,7 +236,7 @@ TEST(Determine_size_tests, open_a_view_then_add_presentations_one_regular_one_re
 {
   SizeDeterminer::Ptr const sd = SizeDeterminer::create();
 
-  Scroom::Utils::Rectangle<double> const        r1(1, 2, 3, 4);
+  Scroom::Utils::Rectangle<double> const r1(1, 2, 3, 4);
   ResizablePresentationInterfaceStub::Ptr const p1 = ResizablePresentationInterfaceStub::create(r1);
   sd->add(p1);
   ViewInterface::Ptr const v1 = ViewInterfaceDummy::create();
@@ -245,7 +247,7 @@ TEST(Determine_size_tests, open_a_view_then_add_presentations_one_regular_one_re
   p1->Clear();
 
   Scroom::Utils::Rectangle<double> const r2(2, 1, 4, 3);
-  PresentationInterfaceStub::Ptr const   p2 = PresentationInterfaceStub::create(r2);
+  PresentationInterfaceStub::Ptr const p2 = PresentationInterfaceStub::create(r2);
   sd->add(p2);
   EXPECT_EQ(r2, sd->getRect());
   p1->CheckAllEqual(r2);
@@ -260,7 +262,7 @@ TEST(Determine_size_tests, updates_are_sent_to_multiple_views) // NOLINT
 {
   SizeDeterminer::Ptr const sd = SizeDeterminer::create();
 
-  Scroom::Utils::Rectangle<double> const        r1(1, 2, 3, 4);
+  Scroom::Utils::Rectangle<double> const r1(1, 2, 3, 4);
   ResizablePresentationInterfaceStub::Ptr const p1 = ResizablePresentationInterfaceStub::create(r1);
   sd->add(p1);
   ViewInterface::Ptr const vi1 = ViewInterfaceDummy::create();
@@ -279,7 +281,7 @@ TEST(Determine_size_tests, updates_are_sent_to_multiple_views) // NOLINT
 
   sd->close(p1, vi3);
   Scroom::Utils::Rectangle<double> const r2(2, 1, 4, 3);
-  PresentationInterfaceStub::Ptr const   p2 = PresentationInterfaceStub::create(r2);
+  PresentationInterfaceStub::Ptr const p2 = PresentationInterfaceStub::create(r2);
   sd->add(p2);
   EXPECT_EQ(r2, sd->getRect());
   p1->CheckAllEqual(r2);

@@ -33,7 +33,7 @@ void usage(const std::string& me, const std::string& message = std::string())
 int main(int argc, char* argv[])
 {
   const std::string me = argv[0];
-  char              result;
+  char result;
 
   while((result = getopt(argc, argv, ":h")) != -1)
   {

@@ -44,7 +44,7 @@ TEST(Function_Additor_Helper_Tests, pass_passes) // NOLINT
 
 TEST(Function_Additor_Helper_Tests, destroy_destroys) // NOLINT
 {
-  std::shared_ptr<int>     p(new int(4));
+  std::shared_ptr<int> p(new int(4));
   std::weak_ptr<int> const w(p);
   ASSERT_TRUE(w.lock());
 
@@ -83,8 +83,8 @@ TEST(Function_Additor_Additor_Tests, order_is_preserved) // NOLINT
 TEST(Function_Additor_Additor_Tests, left_association) // NOLINT
 {
   Scroom::Detail::ThreadPool::FunctionAdditor a;
-  Semaphore                                   s1(0);
-  Semaphore                                   s2(0);
+  Semaphore s1(0);
+  Semaphore s2(0);
   a += pass(&s1);
   EXPECT_EQ(&a, &(a + clear(&s2)));
 
@@ -98,8 +98,8 @@ TEST(Function_Additor_Additor_Tests, left_association) // NOLINT
 TEST(Function_Additor_Additor_Tests, right_association) // NOLINT
 {
   Scroom::Detail::ThreadPool::FunctionAdditor a;
-  Semaphore                                   s1(0);
-  Semaphore                                   s2(0);
+  Semaphore s1(0);
+  Semaphore s2(0);
   a += clear(&s2);
 
   EXPECT_EQ(&a, &(pass(&s1) + a));

@@ -18,9 +18,9 @@ using namespace Scroom::MemoryBlobs::Detail;
 
 TEST(Blob_Compression_Tests, compression_decompression_retains_data) // NOLINT
 {
-  const size_t blobSize   = 16 * 1024;
+  const size_t blobSize = 16 * 1024;
   const size_t blockCount = 16;
-  const size_t blockSize  = 64;
+  const size_t blockSize = 64;
 
   uint8_t in[blobSize];
   for(size_t i = 0; i < blobSize; i++)
@@ -40,9 +40,9 @@ TEST(Blob_Compression_Tests, compression_decompression_retains_data) // NOLINT
 
 TEST(Blob_Compression_Tests, compression_decompression_retains_data_with_large_blocks) // NOLINT
 {
-  const size_t blobSize   = 16;
+  const size_t blobSize = 16;
   const size_t blockCount = 16;
-  const size_t blockSize  = 256;
+  const size_t blockSize = 256;
 
   uint8_t in[blobSize];
   for(size_t i = 0; i < blobSize; i++)

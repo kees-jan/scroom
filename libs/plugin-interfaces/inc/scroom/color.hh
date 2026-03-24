@@ -18,8 +18,8 @@
 
 #include <cairo.h>
 
-inline uint8_t  byteFromDouble(double d) { return uint8_t(255 * d); }
-inline double   doubleFromByte(uint8_t b) { return b / 255.0; }
+inline uint8_t byteFromDouble(double d) { return uint8_t(255 * d); }
+inline double doubleFromByte(uint8_t b) { return b / 255.0; }
 inline uint16_t shortFromDouble(double d) { return uint16_t(0xFFFF * d); }
 
 namespace Detail
@@ -37,9 +37,9 @@ class Color
 {
 public:
   double alpha{1.0}; /**< Alpha value */
-  double red{0.0};   /**< R value */
+  double red{0.0}; /**< R value */
   double green{0.0}; /**< G value */
-  double blue{0.0};  /**< B value */
+  double blue{0.0}; /**< B value */
 
 public:
   /** Default constructor. Create black */

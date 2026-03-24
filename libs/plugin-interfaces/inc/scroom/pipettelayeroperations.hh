@@ -21,7 +21,7 @@ class PipetteLayerOperations
   , private Interface
 {
 public:
-  using Ptr          = std::shared_ptr<PipetteLayerOperations>;
+  using Ptr = std::shared_ptr<PipetteLayerOperations>;
   using PipetteColor = std::vector<std::pair<std::string, double>>;
 
 public:

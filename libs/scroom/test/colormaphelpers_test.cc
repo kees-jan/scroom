@@ -14,13 +14,13 @@
 
 namespace
 {
-  const Color  Blue(0, 0, 1);
+  const Color Blue(0, 0, 1);
   const double accuracy = 1e-6;
 
   struct Data
   {
     ColormapHelper::Ptr helper;
-    size_t              expectedColors;
+    size_t expectedColors;
 
     Data(int expectedColors_, ColormapHelper::Ptr helper_)
       : helper(std::move(helper_))
@@ -66,8 +66,8 @@ TEST(ColormapHelper_Tests, regular_colormaps_cant_have_their_colors_set) // NOLI
 
 TEST(ColormapHelper_Tests, monochrome_colormap_can_have_its_color_set) // NOLINT
 {
-  ColormapHelper::Ptr const helper                   = MonochromeColormapHelper::create(256);
-  Colormap::Ptr const       originalOriginalColormap = helper->getOriginalColormap();
+  ColormapHelper::Ptr const helper = MonochromeColormapHelper::create(256);
+  Colormap::Ptr const originalOriginalColormap = helper->getOriginalColormap();
 
   // At least one color in the current colormap doesn't have a blue component
   EXPECT_NE(1, helper->getColormap()->colors[0].blue);
@@ -89,8 +89,8 @@ TEST(ColormapHelper_Tests, monochrome_colormap_can_have_its_color_set) // NOLINT
 
 TEST(ColormapHelper_Tests, inverted_monochrome_colormap_can_have_its_color_set) // NOLINT
 {
-  ColormapHelper::Ptr const helper                   = MonochromeColormapHelper::createInverted(256);
-  Colormap::Ptr const       originalOriginalColormap = helper->getOriginalColormap();
+  ColormapHelper::Ptr const helper = MonochromeColormapHelper::createInverted(256);
+  Colormap::Ptr const originalOriginalColormap = helper->getOriginalColormap();
 
   // At least one color in the current colormap doesn't have a blue component
   EXPECT_NE(1, helper->getColormap()->colors.back().blue);

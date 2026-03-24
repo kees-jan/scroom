@@ -24,18 +24,18 @@
 class WaitForAsyncOp
 {
 private:
-  std::string       name;
+  std::string name;
   Scroom::Semaphore s;
-  bool              started{false};
-  struct timespec   t = {0, 0};
+  bool started{false};
+  struct timespec t = {0, 0};
 
 public:
   explicit WaitForAsyncOp(std::string name);
   WaitForAsyncOp(const WaitForAsyncOp& other);
   WaitForAsyncOp(WaitForAsyncOp&& /*other*/);
   WaitForAsyncOp operator=(const WaitForAsyncOp&) = delete;
-  WaitForAsyncOp operator=(WaitForAsyncOp&&)      = delete;
-  ~WaitForAsyncOp()                               = default;
+  WaitForAsyncOp operator=(WaitForAsyncOp&&) = delete;
+  ~WaitForAsyncOp() = default;
 
   bool operator()();
 };
@@ -86,7 +86,7 @@ bool WaitForAsyncOp::operator()()
 
 void init_tests()
 {
-  const int width  = 240000;
+  const int width = 240000;
   const int height = 240000;
   // const unsigned int testDuration = 15;
   const unsigned int sleepDuration = 2;

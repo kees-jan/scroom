@@ -25,8 +25,8 @@ namespace
     using Ptr = std::shared_ptr<ProgressBarPulser>;
 
   private:
-    boost::mutex                         mut;
-    std::list<GtkProgressBar*>           progressbars;
+    boost::mutex mut;
+    std::list<GtkProgressBar*> progressbars;
     std::list<GtkProgressBar*>::iterator current;
 
   public:

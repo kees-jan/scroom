@@ -15,7 +15,7 @@ public:
   using Ptr = std::shared_ptr<ProgressStateInterfaceStub>;
 
 public:
-  State  state{IDLE};
+  State state{IDLE};
   double progress{0.0};
 
 public:

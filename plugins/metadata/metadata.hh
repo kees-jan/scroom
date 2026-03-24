@@ -29,7 +29,7 @@ public:
 
   std::string getPluginName() override;
   std::string getPluginVersion() override;
-  void        registerCapabilities(ScroomPluginInterface::Ptr host) override;
+  void registerCapabilities(ScroomPluginInterface::Ptr host) override;
 
   ////////////////////////////////////////////////////////////////////////
   // ViewObserver

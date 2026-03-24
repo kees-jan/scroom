@@ -47,13 +47,13 @@ namespace Scroom::ColormapImpl
   ColormapProvider::Ptr ColormapProvider::create(const PresentationInterface::Ptr& p)
   {
     Colormappable::Ptr const c = std::dynamic_pointer_cast<Colormappable, PresentationInterface>(p);
-    ColormapProvider::Ptr    result;
+    ColormapProvider::Ptr result;
     if(c)
     {
       result = ColormapProvider::Ptr(new ColormapProvider(c));
 
       Scroom::Utils::Stuff const r = p->registerStrongObserver(result);
-      result->registration         = r;
+      result->registration = r;
     }
     else
     {
@@ -67,8 +67,8 @@ namespace Scroom::ColormapImpl
     : colormappable(c)
 
   {
-    unsigned const int            numColors = c->getNumberOfColors();
-    std::list<Colormap::ConstPtr> maps      = Colormaps::getInstance().getColormaps();
+    unsigned const int numColors = c->getNumberOfColors();
+    std::list<Colormap::ConstPtr> maps = Colormaps::getInstance().getColormaps();
 
     colormaps = gtk_list_store_new(N_COLUMNS, G_TYPE_STRING, G_TYPE_POINTER);
 
@@ -77,7 +77,7 @@ namespace Scroom::ColormapImpl
       Colormap::Ptr const orig = c->getOriginalColormap();
       if(orig)
       {
-        auto*       cc = new Colormap::ConstPtr(orig);
+        auto* cc = new Colormap::ConstPtr(orig);
         GtkTreeIter iter;
         gtk_list_store_append(colormaps, &iter);
         gtk_list_store_set(colormaps, &iter, COLUMN_NAME, (*cc)->name.c_str(), COLUMN_POINTER, cc, -1);
@@ -123,7 +123,7 @@ namespace Scroom::ColormapImpl
   {
     ViewInterface::Ptr const vil(vi);
     logger->debug("ColormapProvider: Adding a view.");
-    GtkTreeView*     tv  = GTK_TREE_VIEW(gtk_tree_view_new_with_model(GTK_TREE_MODEL(colormaps)));
+    GtkTreeView* tv = GTK_TREE_VIEW(gtk_tree_view_new_with_model(GTK_TREE_MODEL(colormaps)));
     GtkCellRenderer* txt = GTK_CELL_RENDERER(gtk_cell_renderer_text_new());
     gtk_tree_view_insert_column_with_attributes(tv, -1, "Name", txt, "text", COLUMN_NAME, NULL);
     g_signal_connect(static_cast<gpointer>(tv), "cursor_changed", G_CALLBACK(::on_colormap_selected), this);
@@ -148,9 +148,9 @@ namespace Scroom::ColormapImpl
     if(c)
     {
       GtkTreeSelection* ts = gtk_tree_view_get_selection(tv);
-      GtkTreeIter       iter;
-      GtkTreeModel*     model    = nullptr;
-      bool const        selected = gtk_tree_selection_get_selected(ts, &model, &iter);
+      GtkTreeIter iter;
+      GtkTreeModel* model = nullptr;
+      bool const selected = gtk_tree_selection_get_selected(ts, &model, &iter);
       if(selected)
       {
         if(gtk_list_store_iter_is_valid(colormaps, &iter))

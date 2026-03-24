@@ -6,6 +6,6 @@ ProgressStateInterfaceStub::Ptr ProgressStateInterfaceStub::create() { return Pt
 
 void ProgressStateInterfaceStub::setProgress(State s, double d)
 {
-  state    = s;
+  state = s;
   progress = d;
 }

@@ -17,18 +17,18 @@ namespace
 {
   Scroom::Utils::Rectangle<double> DetermineSize(const std::list<PresentationInterface::Ptr>& presentations)
   {
-    double left   = std::numeric_limits<double>::max();
-    double top    = std::numeric_limits<double>::max();
-    double right  = std::numeric_limits<double>::min();
+    double left = std::numeric_limits<double>::max();
+    double top = std::numeric_limits<double>::max();
+    double right = std::numeric_limits<double>::min();
     double bottom = std::numeric_limits<double>::min();
 
     for(PresentationInterface::Ptr const& p: presentations)
     {
       Scroom::Utils::Rectangle<double> const rect = p->getRect();
-      left                                        = std::min(left, rect.getLeft());
-      top                                         = std::min(top, rect.getTop());
-      right                                       = std::max(right, rect.getRight());
-      bottom                                      = std::max(bottom, rect.getBottom());
+      left = std::min(left, rect.getLeft());
+      top = std::min(top, rect.getTop());
+      right = std::max(right, rect.getRight());
+      bottom = std::max(bottom, rect.getBottom());
     }
     return {left, top, right - left, bottom - top};
   }

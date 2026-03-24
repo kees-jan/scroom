@@ -30,15 +30,15 @@ namespace Scroom::Tiff
 
   using namespace Scroom::TiledBitmap;
 
-  boost::optional<std::tuple<Scroom::TiledBitmap::BitmapMetaData, TIFFPtr>> open(const Scroom::Logger& logger,
-                                                                                 const std::string&    fileName);
+  boost::optional<std::tuple<Scroom::TiledBitmap::BitmapMetaData, TIFFPtr>>
+    open(const Scroom::Logger& logger, const std::string& fileName);
 
   class Source : public SourcePresentation
   {
   private:
-    std::string    fileName;
-    TIFFPtr        preOpenedTif;
-    TIFFPtr        tif;
+    std::string fileName;
+    TIFFPtr preOpenedTif;
+    TIFFPtr tif;
     BitmapMetaData bmd;
     Scroom::Logger logger;
 
@@ -50,8 +50,8 @@ namespace Scroom::Tiff
     bool reset();
 
     // SourcePresenentation
-    void        fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles) override;
-    void        done() override;
+    void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles) override;
+    void done() override;
     std::string getName() override { return fileName; }
 
   private:

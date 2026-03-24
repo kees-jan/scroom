@@ -91,8 +91,8 @@ namespace Scroom::Utils
     [[nodiscard]] Segment<value_type> intersection(const Segment<value_type>& other) const
     {
       const value_type newStart = std::max(getStart(), other.getStart());
-      const value_type newEnd   = std::min(getEnd(), other.getEnd());
-      const value_type newSize  = newEnd - newStart;
+      const value_type newEnd = std::min(getEnd(), other.getEnd());
+      const value_type newSize = newEnd - newStart;
 
       if(newSize >= 0)
       {
@@ -185,7 +185,7 @@ namespace Scroom::Utils
     void setStart(value_type n)
     {
       const auto end = getEnd();
-      start          = n;
+      start = n;
       setEnd(end);
     }
     void setSize(value_type n) { size = n; }

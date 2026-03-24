@@ -14,7 +14,7 @@
 namespace Scroom::Utils
 {
   /** Stuff is a pointer to some private data. */
-  using Stuff     = std::shared_ptr<void>;
+  using Stuff = std::shared_ptr<void>;
   using StuffWeak = std::weak_ptr<void>;
   using StuffList = std::list<Stuff>;
 

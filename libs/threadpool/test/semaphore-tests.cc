@@ -86,7 +86,7 @@ TEST(Semaphore_Tests, inc_count_3) // NOLINT
 
 TEST(Semaphore_Tests, pass_many) // NOLINT
 {
-  Semaphore     s(0);
+  Semaphore s(0);
   boost::thread t(5 * pass(&s));
   boost::this_thread::sleep(millisec(50));
   s.V();

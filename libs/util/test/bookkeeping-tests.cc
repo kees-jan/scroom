@@ -15,9 +15,9 @@ using namespace Scroom::Bookkeeping;
 
 TEST(Bookkeeping_Tests, token_arithmatic) // NOLINT
 {
-  Token           a;
-  Token           b;
-  Token           c = a + b;
+  Token a;
+  Token b;
+  Token c = a + b;
   WeakToken const wa(a);
   a.reset();
   EXPECT_TRUE(wa.lock());
@@ -35,9 +35,9 @@ TEST(Bookkeeping_Tests, basic_usage) // NOLINT
   ASSERT_TRUE(map);
 
   Token const a = map->reserve(1);
-  map->at(1)    = 1;
-  Token b       = map->reserve(2);
-  map->at(2)    = 2;
+  map->at(1) = 1;
+  Token b = map->reserve(2);
+  map->at(2) = 2;
 
   EXPECT_TRUE(a);
   EXPECT_TRUE(b);

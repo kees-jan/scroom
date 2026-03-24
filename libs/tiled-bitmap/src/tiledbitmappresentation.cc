@@ -27,8 +27,8 @@ namespace
   /**
    * Add two pipette color map values of the same key.
    */
-  PipetteLayerOperations::PipetteColor sumPipetteColors(const PipetteLayerOperations::PipetteColor& lhs,
-                                                        const PipetteLayerOperations::PipetteColor& rhs)
+  PipetteLayerOperations::PipetteColor
+    sumPipetteColors(const PipetteLayerOperations::PipetteColor& lhs, const PipetteLayerOperations::PipetteColor& rhs)
   {
     PipetteLayerOperations::PipetteColor result;
     if(lhs.empty())
@@ -66,30 +66,34 @@ namespace
   private:
     using Views = Scroom::Utils::WeakKeySet<ViewInterface::WeakPtr>;
 
-    std::string                         name;
+    std::string name;
     Scroom::TiledBitmap::BitmapMetaData bmd;
-    TiledBitmapInterface::Ptr           tbi;
-    std::map<std::string, std::string>  properties;
-    Views                               views;
-    ColormapHelperBase::Ptr             colormapHelper;
-    PipetteLayerOperations::Ptr         pipetteLayerOperation;
-    Scroom::Utils::StuffList            stuff;
-    Scroom::Logger                      logger;
+    TiledBitmapInterface::Ptr tbi;
+    std::map<std::string, std::string> properties;
+    Views views;
+    ColormapHelperBase::Ptr colormapHelper;
+    PipetteLayerOperations::Ptr pipetteLayerOperation;
+    Scroom::Utils::StuffList stuff;
+    Scroom::Logger logger;
 
   public:
-    static TiledBitmapPresentation::Ptr create(std::string                        name_,
-                                               BitmapMetaData                     bmd_,
-                                               TiledBitmapInterface::Ptr          tbi_,
-                                               std::map<std::string, std::string> properties_,
-                                               ColormapHelperBase::Ptr            colormapHelper_,
-                                               PipetteLayerOperations::Ptr        pipetteLayerOperation_)
+    static TiledBitmapPresentation::Ptr create(
+      std::string name_,
+      BitmapMetaData bmd_,
+      TiledBitmapInterface::Ptr tbi_,
+      std::map<std::string, std::string> properties_,
+      ColormapHelperBase::Ptr colormapHelper_,
+      PipetteLayerOperations::Ptr pipetteLayerOperation_
+    )
     {
-      return Ptr(new TiledBitmapPresentation(std::move(name_),
-                                             std::move(bmd_),
-                                             std::move(tbi_),
-                                             std::move(properties_),
-                                             std::move(colormapHelper_),
-                                             std::move(pipetteLayerOperation_)));
+      return Ptr(new TiledBitmapPresentation(
+        std::move(name_),
+        std::move(bmd_),
+        std::move(tbi_),
+        std::move(properties_),
+        std::move(colormapHelper_),
+        std::move(pipetteLayerOperation_)
+      ));
     }
 
     ////////////////////////////////////////////////////////////////////////
@@ -118,14 +122,14 @@ namespace
     // Colormappable
     ////////////////////////////////////////////////////////////////////////
 
-    void          setColormap(Colormap::Ptr colormap) override;
+    void setColormap(Colormap::Ptr colormap) override;
     Colormap::Ptr getOriginalColormap() override;
-    int           getNumberOfColors() override;
-    Color         getMonochromeColor() override;
-    void          setMonochromeColor(const Color& c) override;
-    void          setTransparentBackground() override;
-    void          disableTransparentBackground() override;
-    bool          getTransparentBackground() override;
+    int getNumberOfColors() override;
+    Color getMonochromeColor() override;
+    void setMonochromeColor(const Color& c) override;
+    void setTransparentBackground() override;
+    void disableTransparentBackground() override;
+    bool getTransparentBackground() override;
 
     ////////////////////////////////////////////////////////////////////////
     // Helpers
@@ -137,18 +141,20 @@ namespace
     ////////////////////////////////////////////////////////////////////////
     // PresentationBase
     ////////////////////////////////////////////////////////////////////////
-    void                                              viewAdded(ViewInterface::WeakPtr vi) override;
-    void                                              viewRemoved(ViewInterface::WeakPtr vi) override;
+    void viewAdded(ViewInterface::WeakPtr vi) override;
+    void viewRemoved(ViewInterface::WeakPtr vi) override;
     Scroom::Utils::WeakKeySet<ViewInterface::WeakPtr> getViews() override;
 
   private:
     void clearCaches();
-    TiledBitmapPresentation(std::string&&                        name_,
-                            BitmapMetaData&&                     bmd_,
-                            TiledBitmapInterface::Ptr&&          tbi_,
-                            std::map<std::string, std::string>&& properties_,
-                            ColormapHelperBase::Ptr&&            colormapHelper_,
-                            PipetteLayerOperations::Ptr&&        pipetteLayerOperation_)
+    TiledBitmapPresentation(
+      std::string&& name_,
+      BitmapMetaData&& bmd_,
+      TiledBitmapInterface::Ptr&& tbi_,
+      std::map<std::string, std::string>&& properties_,
+      ColormapHelperBase::Ptr&& colormapHelper_,
+      PipetteLayerOperations::Ptr&& pipetteLayerOperation_
+    )
       : name(name_)
       , bmd(bmd_)
       , tbi(tbi_)
@@ -181,10 +187,12 @@ namespace
 
   Scroom::Utils::Rectangle<double> TiledBitmapPresentation::getRect() { return Scroom::Utils::Rectangle<double>(bmd.rect); }
 
-  void TiledBitmapPresentation::redraw(const ViewInterface::Ptr&        vi,
-                                       cairo_t*                         cr,
-                                       Scroom::Utils::Rectangle<double> presentationArea,
-                                       int                              zoom)
+  void TiledBitmapPresentation::redraw(
+    const ViewInterface::Ptr& vi,
+    cairo_t* cr,
+    Scroom::Utils::Rectangle<double> presentationArea,
+    int zoom
+  )
   {
     drawOutOfBoundsWithoutBackground(cr, presentationArea, getRect(), pixelSizeFromZoom(zoom));
 
@@ -196,7 +204,7 @@ namespace
 
   bool TiledBitmapPresentation::getProperty(const std::string& propertyName, std::string& value)
   {
-    auto p     = properties.find(propertyName);
+    auto p = properties.find(propertyName);
     bool found = false;
     if(p == properties.end())
     {
@@ -229,7 +237,7 @@ namespace
 
     auto intArea = roundOutward(area.intersection(getRect())).to<int>();
 
-    Layer::Ptr const                     bottomLayer = tbi->getBottomLayer();
+    Layer::Ptr const bottomLayer = tbi->getBottomLayer();
     PipetteLayerOperations::PipetteColor pipetteColors;
 
     const int totalPixels = intArea.getWidth() * intArea.getHeight();
@@ -251,10 +259,10 @@ namespace
     {
       for(int y = tile_pos_y_start; y <= tile_pos_y_end; y++)
       {
-        ConstTile::Ptr const                tile = bottomLayer->getTile(x, y)->getConstTileSync();
+        ConstTile::Ptr const tile = bottomLayer->getTile(x, y)->getConstTileSync();
         Scroom::Utils::Rectangle<int> const tile_rectangle(x * TILESIZE, y * TILESIZE, tile->width, tile->height);
 
-        Scroom::Utils::Rectangle<int>   inter_rect = tile_rectangle.intersection(intArea);
+        Scroom::Utils::Rectangle<int> inter_rect = tile_rectangle.intersection(intArea);
         Scroom::Utils::Point<int> const base(x * TILESIZE, y * TILESIZE);
 
         inter_rect -= base; // rectangle coordinates relative to constTile with topleft corner (0,0)
@@ -276,7 +284,7 @@ namespace
   void TiledBitmapPresentation::showMetadata(GtkWindow* parent)
   {
     const std::string filepath = getTitle();
-    const std::string title    = "Properties: " + filepath.substr(filepath.find_last_of("/\\") + 1);
+    const std::string title = "Properties: " + filepath.substr(filepath.find_last_of("/\\") + 1);
 
     Scroom::Metadata::showMetaData(parent, title, to_metadata(bmd));
   }
@@ -326,8 +334,8 @@ namespace
   }
 
   Colormap::Ptr TiledBitmapPresentation::getOriginalColormap() { return colormapHelper->getOriginalColormap(); }
-  int           TiledBitmapPresentation::getNumberOfColors() { return colormapHelper->getNumberOfColors(); }
-  Color         TiledBitmapPresentation::getMonochromeColor() { return colormapHelper->getMonochromeColor(); }
+  int TiledBitmapPresentation::getNumberOfColors() { return colormapHelper->getNumberOfColors(); }
+  Color TiledBitmapPresentation::getMonochromeColor() { return colormapHelper->getMonochromeColor(); }
 
   void TiledBitmapPresentation::setMonochromeColor(const Color& c)
   {
@@ -378,19 +386,19 @@ namespace
 
   PresentationInterface::Ptr OpenTiledBitmapAsPresentation::open(const std::string& fileName)
   {
-    auto                 t           = openTiledBitmapInterface->open(fileName);
-    BitmapMetaData       bmd         = std::move(std::get<0>(t));
-    Layer::Ptr const     bottomLayer = std::move(std::get<1>(t));
-    ReloadFunction const load        = std::move(std::get<2>(t));
+    auto t = openTiledBitmapInterface->open(fileName);
+    BitmapMetaData bmd = std::move(std::get<0>(t));
+    Layer::Ptr const bottomLayer = std::move(std::get<1>(t));
+    ReloadFunction const load = std::move(std::get<2>(t));
 
-    auto                          lsr            = LayerSpecForBitmap(bmd);
-    LayerSpec                     layerSpec      = std::move(std::get<0>(lsr));
+    auto lsr = LayerSpecForBitmap(bmd);
+    LayerSpec layerSpec = std::move(std::get<0>(lsr));
     ColormapHelperBase::Ptr const colormapHelper = std::move(std::get<1>(lsr));
 
     PresentationInterface::Ptr result;
     if(bottomLayer && !layerSpec.empty())
     {
-      auto                              tiledBitmap           = TiledBitmap::create(bottomLayer, layerSpec);
+      auto tiledBitmap = TiledBitmap::create(bottomLayer, layerSpec);
       PipetteLayerOperations::Ptr const pipetteLayerOperation = std::dynamic_pointer_cast<PipetteLayerOperations>(layerSpec[0]);
 
       std::map<std::string, std::string> properties;

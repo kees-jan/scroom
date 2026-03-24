@@ -24,10 +24,10 @@ using Scroom::Utils::Segment;
 class RectangleHorizontalTestScaffold : public Rectangle<int>
 {
 private:
-  static const int verticalStart          = -1;
+  static const int verticalStart = -1;
   static const int verticalContainedStart = 0;
   static const int verticalContainedWidth = 1;
-  static const int verticalSize           = 5;
+  static const int verticalSize = 5;
 
 public:
   RectangleHorizontalTestScaffold(int horizontalStart, int horizontalSize)
@@ -44,8 +44,8 @@ public:
 
   [[nodiscard]] int getSize() const { return getWidth(); }
 
-  [[nodiscard]] int  getStart() const { return getLeft(); }
-  [[nodiscard]] int  getEnd() const { return getLeft() + getWidth(); }
+  [[nodiscard]] int getStart() const { return getLeft(); }
+  [[nodiscard]] int getEnd() const { return getLeft() + getWidth(); }
   [[nodiscard]] bool contains(int x) const { return Rectangle::contains(make_point(x, verticalContainedStart)); }
 
   [[nodiscard]] bool contains(const RectangleHorizontalTestScaffold& other) const { return Rectangle<int>::contains(other); }
@@ -64,10 +64,10 @@ public:
 class RectangleVerticalTestScaffold : public Rectangle<int>
 {
 private:
-  static const int horizontalStart          = -1;
+  static const int horizontalStart = -1;
   static const int horizontalContainedStart = 0;
   static const int horizontalContainedWidth = 1;
-  static const int horizontalSize           = 5;
+  static const int horizontalSize = 5;
 
 public:
   RectangleVerticalTestScaffold(int verticalStart, int verticalSize)
@@ -82,9 +82,9 @@ public:
   {
   }
 
-  [[nodiscard]] int  getSize() const { return getHeight(); }
-  [[nodiscard]] int  getStart() const { return getTop(); }
-  [[nodiscard]] int  getEnd() const { return getTop() + getHeight(); }
+  [[nodiscard]] int getSize() const { return getHeight(); }
+  [[nodiscard]] int getStart() const { return getTop(); }
+  [[nodiscard]] int getEnd() const { return getTop() + getHeight(); }
   [[nodiscard]] bool contains(int y) const { return Rectangle::contains(make_point(horizontalContainedStart, y)); }
 
   [[nodiscard]] bool contains(const RectangleVerticalTestScaffold& other) const { return Rectangle<int>::contains(other); }
@@ -332,7 +332,7 @@ TEST(Rectangle_and_Segment_Tests, testRetrievingHorizontallyAndVertically) // NO
 TEST(Rectangle_and_Segment_Tests, testConversionToAndFromGdkRectangle) // NOLINT
 {
   const cairo_rectangle_int_t original = Scroom::GtkHelpers::createCairoIntRectangle(1, 2, 3, 4);
-  const auto                  rect     = Rectangle<int>(original);
+  const auto rect = Rectangle<int>(original);
   EXPECT_EQ(make_rect(1, 2, 3, 4), rect);
 
   const GdkRectangle grect = rect.toGdkRectangle();

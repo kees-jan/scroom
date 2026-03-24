@@ -8,8 +8,8 @@ TEST(Ruler_Tests, Ruler_creation_horizontal_signal_handlers) // NOLINT
 {
   gtk_init(nullptr, nullptr);
   // Register a new ruler with a dummy drawing area
-  GtkWidget*       drawingArea = gtk_drawing_area_new();
-  Ruler::Ptr const ruler       = Ruler::create(Ruler::HORIZONTAL, drawingArea);
+  GtkWidget* drawingArea = gtk_drawing_area_new();
+  Ruler::Ptr const ruler = Ruler::create(Ruler::HORIZONTAL, drawingArea);
   // Check that the appropriate signals are connected
 
   // Currently, this test case only checks that *a* signal handler is connected
@@ -18,8 +18,8 @@ TEST(Ruler_Tests, Ruler_creation_horizontal_signal_handlers) // NOLINT
   // It does not check whether drawCallback is connected to "draw" and
   // sizeAllocateCallback to "size-allocate". It probably should, but I can't figure
   // out these weird types.
-  auto        mask           = static_cast<GSignalMatchType>(G_SIGNAL_MATCH_ID | G_SIGNAL_MATCH_DATA);
-  const guint drawID         = g_signal_lookup("draw", GTK_TYPE_DRAWING_AREA);
+  auto mask = static_cast<GSignalMatchType>(G_SIGNAL_MATCH_ID | G_SIGNAL_MATCH_DATA);
+  const guint drawID = g_signal_lookup("draw", GTK_TYPE_DRAWING_AREA);
   const guint sizeAllocateID = g_signal_lookup("size-allocate", GTK_TYPE_DRAWING_AREA);
   // Check that a signal handler is connected for the "draw" signal, with a pointer to ruler as data
   EXPECT_TRUE(g_signal_handler_find(drawingArea, mask, drawID, 0, nullptr, nullptr, ruler.get()) != 0);
@@ -31,11 +31,11 @@ TEST(Ruler_Tests, Ruler_creation_vertical_signal_handlers) // NOLINT
 {
   gtk_init(nullptr, nullptr);
   // Register a new ruler with a dummy drawing area
-  GtkWidget*       drawingArea = gtk_drawing_area_new();
-  Ruler::Ptr const ruler       = Ruler::create(Ruler::VERTICAL, drawingArea);
+  GtkWidget* drawingArea = gtk_drawing_area_new();
+  Ruler::Ptr const ruler = Ruler::create(Ruler::VERTICAL, drawingArea);
   // Check that the appropriate signals are connected
-  auto        mask           = static_cast<GSignalMatchType>(G_SIGNAL_MATCH_ID | G_SIGNAL_MATCH_DATA);
-  const guint drawID         = g_signal_lookup("draw", GTK_TYPE_DRAWING_AREA);
+  auto mask = static_cast<GSignalMatchType>(G_SIGNAL_MATCH_ID | G_SIGNAL_MATCH_DATA);
+  const guint drawID = g_signal_lookup("draw", GTK_TYPE_DRAWING_AREA);
   const guint sizeAllocateID = g_signal_lookup("size-allocate", GTK_TYPE_DRAWING_AREA);
   // Check that a signal handler is connected for the "draw" signal, with a pointer to ruler as data
   EXPECT_TRUE(g_signal_handler_find(drawingArea, mask, drawID, 0, nullptr, nullptr, ruler.get()) != 0);

@@ -80,17 +80,17 @@ public:
     }
   }
 
-  GtkFileFilterListDestroyer(const GtkFileFilterListDestroyer&)           = delete;
-  GtkFileFilterListDestroyer(GtkFileFilterListDestroyer&&)                = delete;
+  GtkFileFilterListDestroyer(const GtkFileFilterListDestroyer&) = delete;
+  GtkFileFilterListDestroyer(GtkFileFilterListDestroyer&&) = delete;
   GtkFileFilterListDestroyer operator=(const GtkFileFilterListDestroyer&) = delete;
-  GtkFileFilterListDestroyer operator=(GtkFileFilterListDestroyer&&)      = delete;
+  GtkFileFilterListDestroyer operator=(GtkFileFilterListDestroyer&&) = delete;
 };
 
 ////////////////////////////////////////////////////////////////////////
 
 char* charpFromString(const std::string& s)
 {
-  const size_t            n = s.size();
+  const size_t n = s.size();
   std::unique_ptr<char[]> result(new char[n + 1]);
   if(!result)
   {
@@ -110,9 +110,10 @@ GtkFileFilterInfoPtr filterInfoFromPath(const std::string& filename)
 {
   GtkFileFilterInfoPtr filterInfo;
 
-  std::unique_ptr<GFile, GObjectUnref<GFile>> const         file(g_file_new_for_path(filename.c_str()));
+  std::unique_ptr<GFile, GObjectUnref<GFile>> const file(g_file_new_for_path(filename.c_str()));
   std::unique_ptr<GFileInfo, GObjectUnref<GFileInfo>> const fileInfo(
-    g_file_query_info(file.get(), "standard::*", G_FILE_QUERY_INFO_NONE, nullptr, nullptr));
+    g_file_query_info(file.get(), "standard::*", G_FILE_QUERY_INFO_NONE, nullptr, nullptr)
+  );
   if(fileInfo)
   {
     // g_file_info_get_name(fileInfo) doesn't provide path info.
@@ -123,8 +124,8 @@ GtkFileFilterInfoPtr filterInfoFromPath(const std::string& filename)
 
     filterInfo.reset(new GtkFileFilterInfo()); // filterInfo->filename uninitialized, so a delete is dangerous
 
-    filterInfo->filename     = filenameCopy.release();
-    filterInfo->mime_type    = mime_type.release();
+    filterInfo->filename = filenameCopy.release();
+    filterInfo->mime_type = mime_type.release();
     filterInfo->display_name = display_name.release();
     filterInfo->contains =
       static_cast<GtkFileFilterFlags>(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_MIME_TYPE);
@@ -164,7 +165,7 @@ public:
   // ScroomInterface //////////////////////////////////////////////////////
 
   PresentationInterface::Ptr newPresentation(const std::string& name) override;
-  Aggregate::Ptr             newAggregate(const std::string& name) override;
+  Aggregate::Ptr newAggregate(const std::string& name) override;
   PresentationInterface::Ptr loadPresentation(const std::string& name, const std::string& relativeTo = std::string()) override;
 
   void showPresentation(PresentationInterface::Ptr const& presentation) override;
@@ -237,13 +238,13 @@ PresentationInterface::Ptr loadPresentation(GtkFileFilterInfoPtr const& info) { 
 
 void load(GtkFileFilterInfo const& info)
 {
-  const auto  pm                         = PluginManager::getInstance();
+  const auto pm = PluginManager::getInstance();
   const auto& openPresentationInterfaces = pm->getOpenPresentationInterfaces();
-  const auto& openInterfaces             = pm->getOpenInterfaces();
+  const auto& openInterfaces = pm->getOpenInterfaces();
 
   for(auto const& cur: openPresentationInterfaces)
   {
-    std::list<GtkFileFilter*>        filters = cur.first->getFilters();
+    std::list<GtkFileFilter*> filters = cur.first->getFilters();
     GtkFileFilterListDestroyer const destroyer(filters);
     if(filterMatchesInfo(info, filters))
     {
@@ -258,7 +259,7 @@ void load(GtkFileFilterInfo const& info)
   }
   for(auto const& cur: openInterfaces)
   {
-    std::list<GtkFileFilter*>        filters = cur.first->getFilters();
+    std::list<GtkFileFilter*> filters = cur.first->getFilters();
     GtkFileFilterListDestroyer const destroyer(filters);
     if(filterMatchesInfo(info, filters))
     {
@@ -332,7 +333,7 @@ Aggregate::Ptr ScroomInterfaceImpl::newAggregate(const std::string& name)
 
 PresentationInterface::Ptr ScroomInterfaceImpl::loadPresentation(const std::string& n, const std::string& rt)
 {
-  boost::filesystem::path       name(n);
+  boost::filesystem::path name(n);
   boost::filesystem::path const relativeTo(rt);
 
   if(!name.is_absolute() && relativeTo.has_parent_path())

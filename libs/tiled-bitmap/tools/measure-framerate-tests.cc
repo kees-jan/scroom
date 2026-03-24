@@ -29,8 +29,8 @@ namespace
 class Invalidator
 {
 private:
-  unsigned int    secs;
-  bool            started{false};
+  unsigned int secs;
+  bool started{false};
   struct timespec t = {0, 0};
 
 public:
@@ -42,10 +42,10 @@ public:
 class BaseCounter
 {
 private:
-  std::string     name;
-  unsigned int    secs;
-  bool            started{false};
-  unsigned int    count{0};
+  std::string name;
+  unsigned int secs;
+  bool started{false};
+  unsigned int count{0};
   struct timespec t = {0, 0};
 
   static unsigned int columnWidth;
@@ -155,9 +155,9 @@ bool InvalidatingCounter::operator()()
 
 void init_tests()
 {
-  const int          width         = 2 * 4096;
-  const int          height        = 2 * 4096;
-  const unsigned int testDuration  = 15;
+  const int width = 2 * 4096;
+  const int height = 2 * 4096;
+  const unsigned int testDuration = 15;
   const unsigned int sleepDuration = 2;
 
   functions.emplace_back(Sleeper(sleepDuration));

@@ -64,15 +64,19 @@ MeasureHandler::Ptr MeasureHandler::create() { return std::make_shared<MeasureHa
 
 void MeasureHandler::displayMeasurement(const ViewInterface::Ptr& view)
 {
-  const auto      aspectRatio = view->getCurrentPresentation()->getAspectRatio();
+  const auto aspectRatio = view->getCurrentPresentation()->getAspectRatio();
   const Selection tweaked(selection->start / aspectRatio, selection->end / aspectRatio);
 
-  view->setStatusMessage(fmt::format("l: {:.1f}, dx: {}, dy: {}, from: {}, to: {}",
-                                     tweaked.length(),
-                                     tweaked.width(),
-                                     tweaked.height(),
-                                     tweaked.start,
-                                     tweaked.end));
+  view->setStatusMessage(
+    fmt::format(
+      "l: {:.1f}, dx: {}, dy: {}, from: {}, to: {}",
+      tweaked.length(),
+      tweaked.width(),
+      tweaked.height(),
+      tweaked.start,
+      tweaked.end
+    )
+  );
 }
 
 void MeasureHandler::drawCross(cairo_t* cr, Scroom::Utils::Point<double> p)
@@ -112,16 +116,18 @@ void MeasureHandler::onSelectionEnd(Selection s, ViewInterface::Ptr view)
 // PostRenderer
 ////////////////////////////////////////////////////////////////////////
 
-void MeasureHandler::render(ViewInterface::Ptr const& /*vi*/,
-                            cairo_t*                         cr,
-                            Scroom::Utils::Rectangle<double> presentationArea,
-                            int                              zoom)
+void MeasureHandler::render(
+  ViewInterface::Ptr const& /*vi*/,
+  cairo_t* cr,
+  Scroom::Utils::Rectangle<double> presentationArea,
+  int zoom
+)
 {
   if(selection)
   {
     const auto pixelSize = pixelSizeFromZoom(zoom);
-    const auto start     = (selection->start - presentationArea.getTopLeft()) * pixelSize;
-    const auto end       = (selection->end - presentationArea.getTopLeft()) * pixelSize;
+    const auto start = (selection->start - presentationArea.getTopLeft()) * pixelSize;
+    const auto end = (selection->end - presentationArea.getTopLeft()) * pixelSize;
 
     cairo_set_line_width(cr, 1);
     cairo_set_source_rgb(cr, 0.75, 0, 0); // Dark Red

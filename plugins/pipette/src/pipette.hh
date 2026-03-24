@@ -29,11 +29,11 @@ public:
 
 private:
   std::optional<Selection> selection;
-  bool                     enabled{false};
-  std::atomic_flag         wasDisabled = ATOMIC_FLAG_INIT;
-  std::mutex               jobMutex;
-  ThreadPool::Queue::Ptr   currentJob{ThreadPool::Queue::createAsync()};
-  Scroom::Logger           logger;
+  bool enabled{false};
+  std::atomic_flag wasDisabled = ATOMIC_FLAG_INIT;
+  std::mutex jobMutex;
+  ThreadPool::Queue::Ptr currentJob{ThreadPool::Queue::createAsync()};
+  Scroom::Logger logger;
 
 public:
   static Ptr create();
@@ -48,9 +48,9 @@ public:
   // SelectionListener
 
   std::string getSelectionType() override;
-  void        onSelectionStart(Selection p, ViewInterface::Ptr view) override;
-  void        onSelectionUpdate(Selection s, ViewInterface::Ptr view) override;
-  void        onSelectionEnd(Selection s, ViewInterface::Ptr view) override;
+  void onSelectionStart(Selection p, ViewInterface::Ptr view) override;
+  void onSelectionUpdate(Selection s, ViewInterface::Ptr view) override;
+  void onSelectionEnd(Selection s, ViewInterface::Ptr view) override;
 
   ////////////////////////////////////////////////////////////////////////
   // ToolStateListener
@@ -61,15 +61,17 @@ public:
   ////////////////////////////////////////////////////////////////////////
 
   virtual void computeValues(const ViewInterface::Ptr& view, Scroom::Utils::Rectangle<double> sel_rect);
-  virtual void displayValues(const ViewInterface::Ptr&                   view,
-                             Scroom::Utils::Rectangle<double>            rect,
-                             const PipetteLayerOperations::PipetteColor& colors);
+  virtual void displayValues(
+    const ViewInterface::Ptr& view,
+    Scroom::Utils::Rectangle<double> rect,
+    const PipetteLayerOperations::PipetteColor& colors
+  );
 
   ////////////////////////////////////////////////////////////////////////
   // Testing
 
   std::optional<Selection> getSelection() const { return selection; }
-  bool                     isEnabled() const { return enabled; }
+  bool isEnabled() const { return enabled; }
 };
 
 class Pipette
@@ -92,7 +94,7 @@ public:
 
   std::string getPluginName() override;
   std::string getPluginVersion() override;
-  void        registerCapabilities(ScroomPluginInterface::Ptr host) override;
+  void registerCapabilities(ScroomPluginInterface::Ptr host) override;
 
   ////////////////////////////////////////////////////////////////////////
   // ViewObserver

@@ -19,7 +19,7 @@ using namespace Scroom::Utils;
 class TestObserver
 {
 public:
-  using Ptr     = std::shared_ptr<TestObserver>;
+  using Ptr = std::shared_ptr<TestObserver>;
   using WeakPtr = std::weak_ptr<TestObserver>;
 
   static Ptr create();
@@ -87,9 +87,9 @@ void TestRecursiveObservable::observerAdded(Observer const& observer, Scroom::Bo
 
 TEST(Observable_Tests, register_observer) // NOLINT
 {
-  TestObservable::Ptr const           observable   = TestObservable::create();
-  TestObserver::Ptr                   observer     = TestObserver::create();
-  TestObserver::WeakPtr const         weakObserver = observer;
+  TestObservable::Ptr const observable = TestObservable::create();
+  TestObserver::Ptr observer = TestObserver::create();
+  TestObserver::WeakPtr const weakObserver = observer;
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
@@ -115,9 +115,9 @@ TEST(Observable_Tests, register_observer) // NOLINT
 
 TEST(Observable_Tests, register_weak_observer) // NOLINT
 {
-  TestObservable::Ptr const           observable   = TestObservable::create();
-  TestObserver::Ptr                   observer     = TestObserver::create();
-  TestObserver::WeakPtr const         weakObserver = observer;
+  TestObservable::Ptr const observable = TestObservable::create();
+  TestObserver::Ptr observer = TestObserver::create();
+  TestObserver::WeakPtr const weakObserver = observer;
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
@@ -138,9 +138,9 @@ TEST(Observable_Tests, register_weak_observer) // NOLINT
 
 TEST(Observable_Tests, registered_weak_observer_goes_away) // NOLINT
 {
-  TestObservable::Ptr const           observable   = TestObservable::create();
-  TestObserver::Ptr                   observer     = TestObserver::create();
-  TestObserver::WeakPtr const         weakObserver = observer;
+  TestObservable::Ptr const observable = TestObservable::create();
+  TestObserver::Ptr observer = TestObserver::create();
+  TestObserver::WeakPtr const weakObserver = observer;
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
@@ -167,11 +167,11 @@ TEST(Observable_Tests, registered_weak_observer_goes_away) // NOLINT
 
 TEST(Observable_Tests, register_multiple_observers) // NOLINT
 {
-  TestObservable::Ptr const           observable   = TestObservable::create();
-  TestObserver::Ptr const             o1           = TestObserver::create();
-  TestObserver::Ptr const             o2           = TestObserver::create();
-  TestObserver::Ptr const             o3           = TestObserver::create();
-  TestObserver::WeakPtr const         weakObserver = o1;
+  TestObservable::Ptr const observable = TestObservable::create();
+  TestObserver::Ptr const o1 = TestObserver::create();
+  TestObserver::Ptr const o2 = TestObserver::create();
+  TestObserver::Ptr const o3 = TestObserver::create();
+  TestObserver::WeakPtr const weakObserver = o1;
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
@@ -218,8 +218,8 @@ TEST(Observable_Tests, register_multiple_observers) // NOLINT
 
 TEST(Observable_Tests, register_observer_multiple_times) // NOLINT
 {
-  TestObservable::Ptr const           observable = TestObservable::create();
-  TestObserver::Ptr const             observer   = TestObserver::create();
+  TestObservable::Ptr const observable = TestObservable::create();
+  TestObserver::Ptr const observer = TestObserver::create();
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
@@ -244,8 +244,8 @@ TEST(Observable_Tests, register_observer_multiple_times) // NOLINT
 
 TEST(Observable_Tests, register_weak_observer_multiple_times) // NOLINT
 {
-  TestObservable::Ptr const           observable = TestObservable::create();
-  TestObserver::Ptr const             observer   = TestObserver::create();
+  TestObservable::Ptr const observable = TestObservable::create();
+  TestObserver::Ptr const observer = TestObserver::create();
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
@@ -270,9 +270,9 @@ TEST(Observable_Tests, register_weak_observer_multiple_times) // NOLINT
 
 TEST(Observable_Tests, register_observer_recursively) // NOLINT
 {
-  TestObservable::Ptr const           observable          = TestObservable::create();
-  TestRecursiveObservable::Ptr const  recursiveObservable = TestRecursiveObservable::create(observable);
-  TestObserver::Ptr const             observer            = TestObserver::create();
+  TestObservable::Ptr const observable = TestObservable::create();
+  TestRecursiveObservable::Ptr const recursiveObservable = TestRecursiveObservable::create(observable);
+  TestObserver::Ptr const observer = TestObserver::create();
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds
@@ -295,10 +295,10 @@ TEST(Observable_Tests, register_observer_recursively) // NOLINT
 
 TEST(Observable_Tests, shared_from_this) // NOLINT
 {
-  TestObservable::Ptr const                   original = TestObservable::create();
-  TestObservable::Ptr const                   copy1    = original->shared_from_this<TestObservable>();
-  std::shared_ptr<TestObservable const> const copy2    = original;
-  std::shared_ptr<TestObservable const> const copy3    = copy2->shared_from_this<TestObservable>();
+  TestObservable::Ptr const original = TestObservable::create();
+  TestObservable::Ptr const copy1 = original->shared_from_this<TestObservable>();
+  std::shared_ptr<TestObservable const> const copy2 = original;
+  std::shared_ptr<TestObservable const> const copy3 = copy2->shared_from_this<TestObservable>();
 
   EXPECT_EQ(original, copy1);
   EXPECT_EQ(copy2, copy3);
@@ -307,9 +307,9 @@ TEST(Observable_Tests, shared_from_this) // NOLINT
 
 TEST(Observable_Tests, deleting_observable_deletes_observer) // NOLINT
 {
-  TestObservable::Ptr                 observable   = TestObservable::create();
-  TestObserver::Ptr                   observer     = TestObserver::create();
-  TestObserver::WeakPtr const         weakObserver = observer;
+  TestObservable::Ptr observable = TestObservable::create();
+  TestObserver::Ptr observer = TestObserver::create();
+  TestObserver::WeakPtr const weakObserver = observer;
   std::list<TestObservable::Observer> observers;
 
   // Registration succeeds

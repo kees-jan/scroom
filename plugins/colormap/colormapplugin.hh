@@ -30,7 +30,7 @@ namespace Scroom::ColormapImpl
 
   private:
     std::list<PresentationInterface::WeakPtr> presentations;
-    Scroom::Logger                            logger;
+    Scroom::Logger logger;
 
   private:
     ColormapPlugin() = default;
@@ -41,7 +41,7 @@ namespace Scroom::ColormapImpl
   public:
     std::string getPluginName() override;
     std::string getPluginVersion() override;
-    void        registerCapabilities(ScroomPluginInterface::Ptr host) override;
+    void registerCapabilities(ScroomPluginInterface::Ptr host) override;
 
     void presentationAdded(PresentationInterface::Ptr p) override;
     void presentationDeleted() override;

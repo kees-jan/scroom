@@ -50,7 +50,7 @@ namespace Scroom::GtkHelpers
   {
     require(!on_ui_thread());
     std::packaged_task<void(void)> t(std::move(f));
-    std::future<void> const        future = t.get_future();
+    std::future<void> const future = t.get_future();
     async_on_ui_thread(std::move(t));
     future.wait();
   }
@@ -71,9 +71,9 @@ namespace Scroom::GtkHelpers
   inline cairo_rectangle_int_t createCairoIntRectangle(int x, int y, int width, int height)
   {
     cairo_rectangle_int_t rect;
-    rect.x      = x;
-    rect.y      = y;
-    rect.width  = width;
+    rect.x = x;
+    rect.y = y;
+    rect.width = width;
     rect.height = height;
     return rect;
   }

@@ -47,11 +47,11 @@
 #endif
 
 static const std::string SCROOM_DEV_MODE = "SCROOM_DEV_MODE";
-const std::string        REGULAR_FILES   = "Regular files";
+const std::string REGULAR_FILES = "Regular files";
 
 static std::string xmlFileName;
 static GtkBuilder* aboutDialogXml = nullptr;
-static GtkWidget*  aboutDialog    = nullptr;
+static GtkWidget* aboutDialog = nullptr;
 
 namespace
 {
@@ -59,10 +59,10 @@ namespace
 }
 
 using Views = std::map<View::Ptr, Scroom::Bookkeeping::Token>;
-static Views                                     views;
+static Views views;
 static std::list<PresentationInterface::WeakPtr> presentations;
-static FileNameMap                               filenames;
-static std::string                               currentFolder;
+static FileNameMap filenames;
+static std::string currentFolder;
 
 void ShowModalDialog(const std::string& message)
 {
@@ -73,7 +73,8 @@ void ShowModalDialog(const std::string& message)
     // We don't have a pointer to the parent window, so nullptr should
     // suffice
     GtkWidget* dialog = gtk_message_dialog_new(
-      nullptr, GTK_DIALOG_DESTROY_WITH_PARENT, GTK_MESSAGE_WARNING, GTK_BUTTONS_CLOSE, "%s", message.c_str());
+      nullptr, GTK_DIALOG_DESTROY_WITH_PARENT, GTK_MESSAGE_WARNING, GTK_BUTTONS_CLOSE, "%s", message.c_str()
+    );
 
     gtk_dialog_run(GTK_DIALOG(dialog));
     gtk_widget_destroy(dialog);
@@ -118,31 +119,34 @@ gboolean combinedFileFilter(const GtkFileFilterInfo* filter_info, gpointer data)
 void on_open_activate(GtkMenuItem* /*unused*/, gpointer user_data)
 {
   GtkWidget* dialog;
-  auto*      scroom = static_cast<GtkWidget*>(user_data);
+  auto* scroom = static_cast<GtkWidget*>(user_data);
 
   logger->debug("Creating the open dialog");
-  dialog = gtk_file_chooser_dialog_new("Open File",
-                                       GTK_WINDOW(scroom),
-                                       GTK_FILE_CHOOSER_ACTION_OPEN,
-                                       ("_Cancel"),
-                                       GTK_RESPONSE_CANCEL,
-                                       ("_Open"),
-                                       GTK_RESPONSE_ACCEPT,
-                                       NULL);
+  dialog = gtk_file_chooser_dialog_new(
+    "Open File",
+    GTK_WINDOW(scroom),
+    GTK_FILE_CHOOSER_ACTION_OPEN,
+    ("_Cancel"),
+    GTK_RESPONSE_CANCEL,
+    ("_Open"),
+    GTK_RESPONSE_ACCEPT,
+    NULL
+  );
   gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(dialog), currentFolder.c_str());
 
-  const auto  pm                         = PluginManager::getInstance();
-  const auto& openInterfaces             = pm->getOpenInterfaces();
+  const auto pm = PluginManager::getInstance();
+  const auto& openInterfaces = pm->getOpenInterfaces();
   const auto& openPresentationInterfaces = pm->getOpenPresentationInterfaces();
 
   // Store all the file filters so that we can create a custom file filter that allows any supported type (by default)
   std::vector<GtkFileFilter*> filters;
-  GtkFileFilter*              allSupportedFileTypesFilter = gtk_file_filter_new();
+  GtkFileFilter* allSupportedFileTypesFilter = gtk_file_filter_new();
   gtk_file_filter_set_name(allSupportedFileTypesFilter, "Any supported file type");
 
   // Cannot beforehand determine which data might be needed for the plugins, so we ask GTK to load everything!
-  auto filterFlags = static_cast<GtkFileFilterFlags>(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_MIME_TYPE
-                                                     | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_URI);
+  auto filterFlags = static_cast<GtkFileFilterFlags>(
+    GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_MIME_TYPE | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_URI
+  );
 
   gtk_file_filter_add_custom(allSupportedFileTypesFilter, filterFlags, &combinedFileFilter, &filters, nullptr);
   gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dialog), allSupportedFileTypesFilter);
@@ -166,11 +170,11 @@ void on_open_activate(GtkMenuItem* /*unused*/, gpointer user_data)
 
   if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT)
   {
-    GFile*            file     = g_file_new_for_path(gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog)));
-    GFileInfo*        fileInfo = g_file_query_info(file, "standard::*", G_FILE_QUERY_INFO_NONE, nullptr, nullptr);
+    GFile* file = g_file_new_for_path(gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog)));
+    GFileInfo* fileInfo = g_file_query_info(file, "standard::*", G_FILE_QUERY_INFO_NONE, nullptr, nullptr);
     GtkFileFilterInfo filterInfo;
-    filterInfo.filename     = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog));
-    filterInfo.mime_type    = g_content_type_get_mime_type(g_file_info_get_content_type(fileInfo));
+    filterInfo.filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog));
+    filterInfo.mime_type = g_content_type_get_mime_type(g_file_info_get_content_type(fileInfo));
     filterInfo.display_name = g_file_info_get_display_name(fileInfo);
     filterInfo.contains =
       static_cast<GtkFileFilterFlags>(GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME | GTK_FILE_FILTER_MIME_TYPE);
@@ -219,9 +223,9 @@ void on_delete_activate(GtkMenuItem* /*unused*/, gpointer /*unused*/) {}
 
 void on_fullscreen_activate(GtkMenuItem* item, gpointer user_data)
 {
-  View*             view   = static_cast<View*>(user_data);
-  GtkCheckMenuItem* cmi    = GTK_CHECK_MENU_ITEM(item);
-  const gboolean    active = gtk_check_menu_item_get_active(cmi);
+  View* view = static_cast<View*>(user_data);
+  GtkCheckMenuItem* cmi = GTK_CHECK_MENU_ITEM(item);
+  const gboolean active = gtk_check_menu_item_get_active(cmi);
 
   if(active)
   {
@@ -304,7 +308,7 @@ void on_done_loading_plugins()
           logger->error(ex.what());
           on_presentation_possibly_destroyed();
         }
-        gchar* dir    = g_path_get_dirname(file.c_str());
+        gchar* dir = g_path_get_dirname(file.c_str());
         currentFolder = dir;
         g_free(dir);
         fn.pop_front();
@@ -312,20 +316,20 @@ void on_done_loading_plugins()
     }
     filenames.erase(REGULAR_FILES);
 
-    PluginManager::Ptr const                                 instance               = PluginManager::getInstance();
+    PluginManager::Ptr const instance = PluginManager::getInstance();
     std::map<std::string, NewAggregateInterface::Ptr> const& newAggregateInterfaces = instance->getNewAggregateInterfaces();
 
     for(FileNameMap::value_type const& v: filenames)
     {
-      const std::string&            aggregateName = v.first;
-      std::list<std::string> const& files         = v.second;
+      const std::string& aggregateName = v.first;
+      std::list<std::string> const& files = v.second;
 
       auto i = newAggregateInterfaces.find(aggregateName);
       if(i != newAggregateInterfaces.end())
       {
         try
         {
-          Aggregate::Ptr const             aggregate             = i->second->createNew();
+          Aggregate::Ptr const aggregate = i->second->createNew();
           PresentationInterface::Ptr const aggregatePresentation = std::dynamic_pointer_cast<PresentationInterface>(aggregate);
 
           if(aggregatePresentation)
@@ -424,7 +428,7 @@ bool in_devmode() { return nullptr != getenv(SCROOM_DEV_MODE.c_str()); }
 void on_scroom_bootstrap(const FileNameMap& newFilenames)
 {
   logger->info("Bootstrapping Scroom...");
-  filenames     = newFilenames;
+  filenames = newFilenames;
   currentFolder = ".";
 
   const bool devMode = in_devmode();
@@ -456,9 +460,9 @@ void on_scroom_bootstrap(const FileNameMap& newFilenames)
 
   aboutDialogXml = gtk_builder_new();
   boost::scoped_array<gchar*> const obj{new gchar*[2]};
-  const std::string                 str = "aboutDialog";
-  obj[0]                                = const_cast<char*>(str.c_str());
-  obj[1]                                = nullptr;
+  const std::string str = "aboutDialog";
+  obj[0] = const_cast<char*>(str.c_str());
+  obj[1] = nullptr;
   gtk_builder_add_objects_from_file(aboutDialogXml, xmlFileName.c_str(), obj.get(), nullptr);
 
   if(aboutDialogXml != nullptr)
@@ -501,22 +505,24 @@ void find_or_create_scroom(const PresentationInterface::Ptr& presentation)
   create_scroom(presentation);
 }
 
-void onDragDataReceived(GtkWidget* /*unused*/,
-                        GdkDragContext* /*unused*/,
-                        int /*unused*/,
-                        int /*unused*/,
-                        GtkSelectionData* seldata,
-                        guint /*unused*/,
-                        guint /*unused*/,
-                        gpointer /*unused*/)
+void onDragDataReceived(
+  GtkWidget* /*unused*/,
+  GdkDragContext* /*unused*/,
+  int /*unused*/,
+  int /*unused*/,
+  GtkSelectionData* seldata,
+  guint /*unused*/,
+  guint /*unused*/,
+  gpointer /*unused*/
+)
 {
   gchar** uris = g_uri_list_extract_uris(reinterpret_cast<const gchar*>(gtk_selection_data_get_data(seldata)));
   for(gchar** uri = uris; *uri != nullptr; uri++)
   {
     logger->info("Dropping file onto Scroom: {}", *uri);
 
-    GError* error    = nullptr;
-    gchar*  filename = g_filename_from_uri(*uri, nullptr, &error);
+    GError* error = nullptr;
+    gchar* filename = g_filename_from_uri(*uri, nullptr, &error);
     if(error != nullptr)
     {
       ShowModalDialog(error->message);
@@ -542,11 +548,11 @@ void onDragDataReceived(GtkWidget* /*unused*/,
 
 void create_scroom(const PresentationInterface::Ptr& presentation)
 {
-  GtkBuilder*                      xml = gtk_builder_new();
+  GtkBuilder* xml = gtk_builder_new();
   boost::scoped_array<char*> const obj{new gchar*[2]};
-  const std::string                str = "scroom";
-  obj[0]                               = const_cast<char*>(str.c_str());
-  obj[1]                               = nullptr;
+  const std::string str = "scroom";
+  obj[0] = const_cast<char*>(str.c_str());
+  obj[1] = nullptr;
   gtk_builder_add_objects_from_file(xml, xmlFileName.c_str(), obj.get(), nullptr);
 
   if(xml == nullptr)
@@ -562,20 +568,20 @@ void create_scroom(const PresentationInterface::Ptr& presentation)
     on_presentation_added_to_view(view);
   }
 
-  GtkWidget*     scroom               = GTK_WIDGET(gtk_builder_get_object(xml, "scroom"));
-  GtkWidget*     openMenuItem         = GTK_WIDGET(gtk_builder_get_object(xml, "open"));
-  GtkWidget*     closeMenuItem        = GTK_WIDGET(gtk_builder_get_object(xml, "close"));
-  GtkWidget*     quitMenuItem         = GTK_WIDGET(gtk_builder_get_object(xml, "quit"));
-  GtkWidget*     fullScreenMenuItem   = GTK_WIDGET(gtk_builder_get_object(xml, "fullscreen_menu_item"));
-  GtkWidget*     aboutMenuItem        = GTK_WIDGET(gtk_builder_get_object(xml, "about"));
-  GtkWidget*     drawingArea          = GTK_WIDGET(gtk_builder_get_object(xml, "drawingarea"));
-  GtkWidget*     zoomBox              = GTK_WIDGET(gtk_builder_get_object(xml, "zoomboxcombo"));
-  GtkWidget*     vscrollbar           = GTK_WIDGET(gtk_builder_get_object(xml, "vscrollbar"));
-  GtkWidget*     hscrollbar           = GTK_WIDGET(gtk_builder_get_object(xml, "hscrollbar"));
+  GtkWidget* scroom = GTK_WIDGET(gtk_builder_get_object(xml, "scroom"));
+  GtkWidget* openMenuItem = GTK_WIDGET(gtk_builder_get_object(xml, "open"));
+  GtkWidget* closeMenuItem = GTK_WIDGET(gtk_builder_get_object(xml, "close"));
+  GtkWidget* quitMenuItem = GTK_WIDGET(gtk_builder_get_object(xml, "quit"));
+  GtkWidget* fullScreenMenuItem = GTK_WIDGET(gtk_builder_get_object(xml, "fullscreen_menu_item"));
+  GtkWidget* aboutMenuItem = GTK_WIDGET(gtk_builder_get_object(xml, "about"));
+  GtkWidget* drawingArea = GTK_WIDGET(gtk_builder_get_object(xml, "drawingarea"));
+  GtkWidget* zoomBox = GTK_WIDGET(gtk_builder_get_object(xml, "zoomboxcombo"));
+  GtkWidget* vscrollbar = GTK_WIDGET(gtk_builder_get_object(xml, "vscrollbar"));
+  GtkWidget* hscrollbar = GTK_WIDGET(gtk_builder_get_object(xml, "hscrollbar"));
   GtkAdjustment* vscrollbaradjustment = gtk_range_get_adjustment(GTK_RANGE(vscrollbar));
   GtkAdjustment* hscrollbaradjustment = gtk_range_get_adjustment(GTK_RANGE(hscrollbar));
-  GtkEditable*   xTextBox             = GTK_EDITABLE(GTK_WIDGET(gtk_builder_get_object(xml, "x_textbox")));
-  GtkEditable*   yTextBox             = GTK_EDITABLE(GTK_WIDGET(gtk_builder_get_object(xml, "y_textbox")));
+  GtkEditable* xTextBox = GTK_EDITABLE(GTK_WIDGET(gtk_builder_get_object(xml, "x_textbox")));
+  GtkEditable* yTextBox = GTK_EDITABLE(GTK_WIDGET(gtk_builder_get_object(xml, "y_textbox")));
 
   g_signal_connect(static_cast<gpointer>(scroom), "hide", G_CALLBACK(on_scroom_hide), view.get());
   g_signal_connect(static_cast<gpointer>(closeMenuItem), "activate", G_CALLBACK(on_close_activate), view.get());
@@ -584,9 +590,11 @@ void create_scroom(const PresentationInterface::Ptr& presentation)
   g_signal_connect(static_cast<gpointer>(fullScreenMenuItem), "activate", G_CALLBACK(on_fullscreen_activate), view.get());
   g_signal_connect(static_cast<gpointer>(zoomBox), "changed", G_CALLBACK(on_zoombox_changed), view.get());
   g_signal_connect(
-    static_cast<gpointer>(vscrollbaradjustment), "value-changed", G_CALLBACK(on_scrollbar_value_changed), view.get());
+    static_cast<gpointer>(vscrollbaradjustment), "value-changed", G_CALLBACK(on_scrollbar_value_changed), view.get()
+  );
   g_signal_connect(
-    static_cast<gpointer>(hscrollbaradjustment), "value-changed", G_CALLBACK(on_scrollbar_value_changed), view.get());
+    static_cast<gpointer>(hscrollbaradjustment), "value-changed", G_CALLBACK(on_scrollbar_value_changed), view.get()
+  );
   g_signal_connect(static_cast<gpointer>(xTextBox), "changed", G_CALLBACK(on_textbox_value_changed), view.get());
   g_signal_connect(static_cast<gpointer>(yTextBox), "changed", G_CALLBACK(on_textbox_value_changed), view.get());
   // g_signal_connect ((gpointer) cut, "activate",
@@ -609,10 +617,11 @@ void create_scroom(const PresentationInterface::Ptr& presentation)
   g_signal_connect(static_cast<gpointer>(drawingArea), "scroll-event", G_CALLBACK(on_scroll_event), view.get());
   g_signal_connect(static_cast<gpointer>(drawingArea), "motion-notify-event", G_CALLBACK(on_motion_notify_event), view.get());
 
-  char           uriList[] = "text/uri-list";
+  char uriList[] = "text/uri-list";
   GtkTargetEntry targets[] = {{uriList, 0, 0}};
   gtk_drag_dest_set(
-    scroom, GTK_DEST_DEFAULT_ALL, targets, 1, static_cast<GdkDragAction>(GDK_ACTION_COPY | GDK_ACTION_MOVE | GDK_ACTION_LINK));
+    scroom, GTK_DEST_DEFAULT_ALL, targets, 1, static_cast<GdkDragAction>(GDK_ACTION_COPY | GDK_ACTION_MOVE | GDK_ACTION_LINK)
+  );
 
   g_signal_connect(static_cast<gpointer>(scroom), "drag_data_received", G_CALLBACK(onDragDataReceived), NULL);
   // delete xml; //Breaks code for some reason. It seems that this xml is freed somewhere else...
@@ -683,7 +692,7 @@ void on_presentation_possibly_destroyed()
     if(!p)
     {
       presentationDestroyed = true;
-      auto temp             = cur;
+      auto temp = cur;
       temp--;
       presentations.erase(cur);
       cur = temp;

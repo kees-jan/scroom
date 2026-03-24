@@ -64,16 +64,16 @@ namespace Scroom::Tiff
 
   Colormap::Ptr getColorMap(const TIFFPtr& tif, uint16_t bps)
   {
-    uint16_t*     r{};
-    uint16_t*     g{};
-    uint16_t*     b{};
+    uint16_t* r{};
+    uint16_t* g{};
+    uint16_t* b{};
     Colormap::Ptr colormap;
 
     const int result = TIFFGetField(tif.get(), TIFFTAG_COLORMAP, &r, &g, &b);
     if(result == 1)
     {
-      colormap           = Colormap::create();
-      colormap->name     = "Original";
+      colormap = Colormap::create();
+      colormap->name = "Original";
       const size_t count = 1UL << bps;
       colormap->colors.resize(count);
 
@@ -88,19 +88,21 @@ namespace Scroom::Tiff
 
   boost::optional<Scroom::Utils::Point<double>> getAspectRatio(const TIFFPtr& tif)
   {
-    float    resolutionX{};
-    float    resolutionY{};
+    float resolutionX{};
+    float resolutionY{};
     uint16_t resolutionUnit{};
 
-    if(TIFFGetField(tif.get(), TIFFTAG_XRESOLUTION, &resolutionX) && TIFFGetField(tif.get(), TIFFTAG_YRESOLUTION, &resolutionY)
-       && TIFFGetField(tif.get(), TIFFTAG_RESOLUTIONUNIT, &resolutionUnit))
+    if(
+      TIFFGetField(tif.get(), TIFFTAG_XRESOLUTION, &resolutionX) && TIFFGetField(tif.get(), TIFFTAG_YRESOLUTION, &resolutionY)
+      && TIFFGetField(tif.get(), TIFFTAG_RESOLUTIONUNIT, &resolutionUnit)
+    )
     {
       if(resolutionUnit != RESUNIT_NONE)
       {
         // Fix aspect ratio only
         float const base = std::max(resolutionX, resolutionY);
-        resolutionX      = base / resolutionX;
-        resolutionY      = base / resolutionY;
+        resolutionX = base / resolutionX;
+        resolutionY = base / resolutionY;
       }
       return Scroom::Utils::make_point<double>(resolutionX, resolutionY);
     }
@@ -114,8 +116,8 @@ namespace Scroom::Tiff
     return colorMap ? ColormapHelper::create(colorMap) : nullptr;
   }
 
-  boost::optional<std::tuple<Scroom::TiledBitmap::BitmapMetaData, TIFFPtr>> open(const Scroom::Logger& logger,
-                                                                                 const std::string&    fileName)
+  boost::optional<std::tuple<Scroom::TiledBitmap::BitmapMetaData, TIFFPtr>>
+    open(const Scroom::Logger& logger, const std::string& fileName)
   {
     try
     {
@@ -127,9 +129,9 @@ namespace Scroom::Tiff
         return {};
       }
 
-      auto spp    = TIFFGetFieldCheckedOr<uint16_t>(tif, TT(TIFFTAG_SAMPLESPERPIXEL), 1); // Default value, according to tiff spec
-      auto bps    = TIFFGetFieldCheckedOr<uint16_t>(tif, TT(TIFFTAG_BITSPERSAMPLE), (spp == 1) ? 1 : 8);
-      auto width  = TIFFGetFieldChecked<uint32_t>(tif, TT(TIFFTAG_IMAGEWIDTH));
+      auto spp = TIFFGetFieldCheckedOr<uint16_t>(tif, TT(TIFFTAG_SAMPLESPERPIXEL), 1); // Default value, according to tiff spec
+      auto bps = TIFFGetFieldCheckedOr<uint16_t>(tif, TT(TIFFTAG_BITSPERSAMPLE), (spp == 1) ? 1 : 8);
+      auto width = TIFFGetFieldChecked<uint32_t>(tif, TT(TIFFTAG_IMAGEWIDTH));
       auto height = TIFFGetFieldChecked<uint32_t>(tif, TT(TIFFTAG_IMAGELENGTH));
       auto photometric = TIFFGetFieldChecked<uint16_t>(tif, TT(TIFFTAG_PHOTOMETRIC));
 
@@ -234,7 +236,7 @@ namespace Scroom::Tiff
 
   bool Source::reset()
   {
-    tif          = preOpenedTif;
+    tif = preOpenedTif;
     preOpenedTif = nullptr;
 
     if(!tif)
@@ -266,14 +268,14 @@ namespace Scroom::Tiff
     auto spp = bmd.samplesPerPixel;
     auto bps = bmd.bitsPerSample;
 
-    const auto        startLine_   = static_cast<uint32_t>(startLine);
-    const auto        firstTile_   = static_cast<size_t>(firstTile);
-    const auto        scanLineSize = static_cast<size_t>(TIFFScanlineSize(tif.get()));
-    const auto        tileStride   = static_cast<size_t>(tileWidth * spp * bps / 8);
+    const auto startLine_ = static_cast<uint32_t>(startLine);
+    const auto firstTile_ = static_cast<size_t>(firstTile);
+    const auto scanLineSize = static_cast<size_t>(TIFFScanlineSize(tif.get()));
+    const auto tileStride = static_cast<size_t>(tileWidth * spp * bps / 8);
     std::vector<byte> row(scanLineSize);
 
     const size_t tileCount = tiles.size();
-    auto         dataPtr   = std::vector<byte*>(tileCount);
+    auto dataPtr = std::vector<byte*>(tileCount);
     for(size_t tile = 0; tile < tileCount; tile++)
     {
       dataPtr[tile] = tiles[tile]->data.get();
@@ -288,9 +290,11 @@ namespace Scroom::Tiff
         memcpy(dataPtr[tile], row.data() + (firstTile_ + tile) * tileStride, tileStride);
         dataPtr[tile] += tileStride;
       }
-      memcpy(dataPtr[tileCount - 1],
-             row.data() + (firstTile_ + tileCount - 1) * tileStride,
-             scanLineSize - (firstTile_ + tileCount - 1) * tileStride);
+      memcpy(
+        dataPtr[tileCount - 1],
+        row.data() + (firstTile_ + tileCount - 1) * tileStride,
+        scanLineSize - (firstTile_ + tileCount - 1) * tileStride
+      );
       dataPtr[tileCount - 1] += tileStride;
     }
   }

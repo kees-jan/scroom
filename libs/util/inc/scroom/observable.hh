@@ -34,8 +34,8 @@ namespace Scroom::Utils
     {
     public:
       std::weak_ptr<Observable<T>> observable;
-      std::shared_ptr<T>           o;        /**< Reference to the observer (for non-weak registrations) */
-      std::weak_ptr<T>             observer; /**< Reference to the observer */
+      std::shared_ptr<T> o; /**< Reference to the observer (for non-weak registrations) */
+      std::weak_ptr<T> observer; /**< Reference to the observer */
 
       using Ptr = std::shared_ptr<Registration<T>>;
 
@@ -71,7 +71,7 @@ namespace Scroom::Utils
   {
   public:
     using Observer = std::shared_ptr<T>;
-    using Ptr      = std::shared_ptr<Observable<T>>;
+    using Ptr = std::shared_ptr<Observable<T>>;
 
   private:
     using ObserverWeak = std::weak_ptr<T>;
@@ -94,10 +94,10 @@ namespace Scroom::Utils
   public:
     Observable();
     ~Observable() override;
-    Observable(const Observable&)           = delete;
-    Observable(Observable&&)                = delete;
+    Observable(const Observable&) = delete;
+    Observable(Observable&&) = delete;
     Observable operator=(const Observable&) = delete;
-    Observable operator=(Observable&&)      = delete;
+    Observable operator=(Observable&&) = delete;
 
   protected:
     /**
@@ -139,7 +139,7 @@ namespace Scroom::Utils
   template <typename T>
   void Detail::Registration<T>::set(std::shared_ptr<T> observer_)
   {
-    o        = std::move(observer_);
+    o = std::move(observer_);
     observer = o;
   }
 
@@ -152,15 +152,15 @@ namespace Scroom::Utils
   }
 
   template <typename T>
-  typename Detail::Registration<T>::Ptr Detail::Registration<T>::create(std::weak_ptr<Observable<T>> observable,
-                                                                        std::shared_ptr<T>           observer)
+  typename Detail::Registration<T>::Ptr
+    Detail::Registration<T>::create(std::weak_ptr<Observable<T>> observable, std::shared_ptr<T> observer)
   {
     return typename Detail::Registration<T>::Ptr(new Detail::Registration<T>(std::move(observable), std::move(observer)));
   }
 
   template <typename T>
-  typename Detail::Registration<T>::Ptr Detail::Registration<T>::create(std::weak_ptr<Observable<T>> observable,
-                                                                        std::weak_ptr<T>             observer)
+  typename Detail::Registration<T>::Ptr
+    Detail::Registration<T>::create(std::weak_ptr<Observable<T>> observable, std::weak_ptr<T> observer)
   {
     return typename Detail::Registration<T>::Ptr(new Detail::Registration<T>(std::move(observable), std::move(observer)));
   }
@@ -211,7 +211,7 @@ namespace Scroom::Utils
   template <typename T>
   Scroom::Bookkeeping::Token Observable<T>::registerStrongObserver(Observable<T>::Observer const& observer)
   {
-    Scroom::Bookkeeping::Token            t = registrationMap->reReserve(observer);
+    Scroom::Bookkeeping::Token t = registrationMap->reReserve(observer);
     typename Detail::Registration<T>::Ptr r = registrationMap->get(observer);
     if(r)
     {
@@ -231,7 +231,7 @@ namespace Scroom::Utils
   template <typename T>
   Scroom::Bookkeeping::Token Observable<T>::registerObserver(Observable<T>::ObserverWeak const& observer)
   {
-    Scroom::Bookkeeping::Token            t = registrationMap->reReserve(observer);
+    Scroom::Bookkeeping::Token t = registrationMap->reReserve(observer);
     typename Detail::Registration<T>::Ptr r = registrationMap->get(observer);
     if(r)
     {

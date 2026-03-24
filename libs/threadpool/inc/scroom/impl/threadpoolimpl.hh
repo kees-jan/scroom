@@ -84,7 +84,7 @@ boost::unique_future<R>
   //
   // See https://svn.boost.org/trac/boost/ticket/8596
   std::shared_ptr<boost::packaged_task<R>> const t(new boost::packaged_task<R>(static_cast<boost::function<R()>>(fn)));
-  boost::unique_future<R>                        f = t->get_future();
+  boost::unique_future<R> f = t->get_future();
   schedule([t] { Detail::threadPoolExecute<void>(t); }, priority, queue);
   return f;
 }
@@ -100,7 +100,7 @@ boost::unique_future<R> ThreadPool::schedule(const std::shared_ptr<T>& fn, int p
 {
   // Todo: If boost::function supported move semantics, we could do without
   // the shared pointer.
-  const auto              t = std::make_shared<boost::packaged_task<R>>([fn] { return Detail::threadPoolExecute<R>(fn); });
+  const auto t = std::make_shared<boost::packaged_task<R>>([fn] { return Detail::threadPoolExecute<R>(fn); });
   boost::unique_future<R> f = t->get_future();
   schedule([t] { Detail::threadPoolExecute<void>(t); }, priority, queue);
   return f;

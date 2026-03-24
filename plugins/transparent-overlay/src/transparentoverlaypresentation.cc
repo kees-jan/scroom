@@ -18,15 +18,12 @@
 
 namespace
 {
-  const std::list<Color> colors =
-    boost::assign::list_of<Color>(Color(doubleFromByte(2), doubleFromByte(63), doubleFromByte(165)))(
-      Color(doubleFromByte(142), doubleFromByte(6), doubleFromByte(59)))(
-      Color(doubleFromByte(74), doubleFromByte(111), doubleFromByte(227)))(
-      Color(doubleFromByte(211), doubleFromByte(63), doubleFromByte(106)))(
-      Color(doubleFromByte(17), doubleFromByte(198), doubleFromByte(56)))(
-      Color(doubleFromByte(239), doubleFromByte(151), doubleFromByte(8)))(
-      Color(doubleFromByte(15), doubleFromByte(207), doubleFromByte(192)))(
-      Color(doubleFromByte(247), doubleFromByte(156), doubleFromByte(212)));
+  const std::list<Color>
+    colors =
+      boost::
+        assign::list_of<Color>(Color(doubleFromByte(2), doubleFromByte(63), doubleFromByte(165)))(Color(doubleFromByte(142), doubleFromByte(6), doubleFromByte(59)))(Color(doubleFromByte(74), doubleFromByte(111), doubleFromByte(227)))(Color(doubleFromByte(211), doubleFromByte(63), doubleFromByte(106)))(Color(doubleFromByte(17), doubleFromByte(198), doubleFromByte(56)))(Color(doubleFromByte(239), doubleFromByte(151), doubleFromByte(8)))(Color(doubleFromByte(15), doubleFromByte(207), doubleFromByte(192)))(
+          Color(doubleFromByte(247), doubleFromByte(156), doubleFromByte(212))
+        );
 
   struct ColorComparer
   {
@@ -83,14 +80,14 @@ void TransparentOverlayPresentation::setOptimalColor(PresentationInterface::Ptr 
       }
     }
 
-    Color minimumColor      = c->getMonochromeColor();
-    int   minimumColorValue = currentColors[minimumColor];
+    Color minimumColor = c->getMonochromeColor();
+    int minimumColorValue = currentColors[minimumColor];
 
     for(Color const& color: colors)
     {
       if(currentColors[color] < minimumColorValue)
       {
-        minimumColor      = color;
+        minimumColor = color;
         minimumColorValue = currentColors[color];
       }
     }
@@ -129,10 +126,12 @@ Scroom::Utils::WeakKeySet<ViewInterface::WeakPtr> TransparentOverlayPresentation
   return result;
 }
 
-void TransparentOverlayPresentation::redraw(ViewInterface::Ptr const&        vi,
-                                            cairo_t*                         cr,
-                                            Scroom::Utils::Rectangle<double> presentationArea,
-                                            int                              zoom)
+void TransparentOverlayPresentation::redraw(
+  ViewInterface::Ptr const& vi,
+  cairo_t* cr,
+  Scroom::Utils::Rectangle<double> presentationArea,
+  int zoom
+)
 {
   auto e = viewData.find(vi);
   if(e != viewData.end())

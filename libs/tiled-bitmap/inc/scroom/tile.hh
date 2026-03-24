@@ -16,12 +16,12 @@
 class Tile
 {
 public:
-  using Ptr     = std::shared_ptr<Tile>;
+  using Ptr = std::shared_ptr<Tile>;
   using WeakPtr = std::weak_ptr<Tile>;
 
-  int                                   width;
-  int                                   height;
-  int                                   bpp;
+  int width;
+  int height;
+  int bpp;
   Scroom::MemoryBlobs::RawPageData::Ptr data;
 
 public:
@@ -42,12 +42,12 @@ public:
 class ConstTile
 {
 public:
-  using Ptr     = std::shared_ptr<ConstTile>;
+  using Ptr = std::shared_ptr<ConstTile>;
   using WeakPtr = std::weak_ptr<ConstTile>;
 
-  int                                        width;
-  int                                        height;
-  int                                        bpp;
+  int width;
+  int height;
+  int bpp;
   Scroom::MemoryBlobs::RawPageData::ConstPtr data;
 
 public:

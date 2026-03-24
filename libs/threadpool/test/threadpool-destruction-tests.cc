@@ -36,10 +36,10 @@ const millisec long_timeout(2000);
 TEST(ThreadPool_destruction_Tests, destroy_threadpool_with_nonempty_queue) // NOLINT
 {
   ThreadPool::Ptr pool = ThreadPool::create(1);
-  Semaphore       guard(0);
-  Semaphore       a(0);
-  Semaphore       b(0);
-  Semaphore       c(0);
+  Semaphore guard(0);
+  Semaphore a(0);
+  Semaphore b(0);
+  Semaphore c(0);
 
   pool->schedule(clear(&a) + pass(&b));
   pool->schedule(clear(&c));
@@ -63,10 +63,10 @@ TEST(ThreadPool_destruction_Tests, destroy_threadpool_with_nonempty_queue) // NO
 TEST(ThreadPool_destruction_Tests, destroy_threadpool_with_nonempty_queue_with_completeAllJobsBeforeDestruction_true) // NOLINT
 {
   ThreadPool::Ptr pool = ThreadPool::create(1, true);
-  Semaphore       guard(0);
-  Semaphore       a(0);
-  Semaphore       b(0);
-  Semaphore       c(0);
+  Semaphore guard(0);
+  Semaphore a(0);
+  Semaphore b(0);
+  Semaphore c(0);
 
   pool->schedule(clear(&a) + pass(&b));
   pool->schedule(clear(&c));

@@ -20,13 +20,13 @@ namespace Scroom
 
   LoggerContainer::Ptr LoggerContainer::instance()
   {
-    static std::mutex                     mut;
+    static std::mutex mut;
     static std::weak_ptr<LoggerContainer> instance;
-    std::lock_guard const                 lock(mut);
-    Ptr                                   result = instance.lock();
+    std::lock_guard const lock(mut);
+    Ptr result = instance.lock();
     if(!result)
     {
-      result   = Ptr(new LoggerContainer());
+      result = Ptr(new LoggerContainer());
       instance = result;
     }
     return result;

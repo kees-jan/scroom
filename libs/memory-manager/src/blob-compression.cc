@@ -23,22 +23,23 @@
                    fmt::format("{} said: {} ({})", (function_name), (r), ((stream).msg ? (stream).msg : "")), \
                    static_cast<const char*>(__PRETTY_FUNCTION__),                                             \
                    __FILE__,                                                                                  \
-                   __LINE__))
+                   __LINE__                                                                                   \
+                 ))
 
 namespace Scroom::MemoryBlobs::Detail
 {
   PageList compressBlob(const uint8_t* in, size_t size, const PageProvider::Ptr& provider)
   {
-    PageList     result;
-    z_stream     stream;
+    PageList result;
+    z_stream stream;
     const size_t pageSize = provider->getPageSize();
 
-    stream.next_in   = const_cast<uint8_t*>(in); // NOLINT(cppcoreguidelines-pro-type-const-cast)
-    stream.avail_in  = size;
+    stream.next_in = const_cast<uint8_t*>(in); // NOLINT(cppcoreguidelines-pro-type-const-cast)
+    stream.avail_in = size;
     stream.avail_out = 0;
-    stream.zalloc    = Z_NULL;
-    stream.zfree     = Z_NULL;
-    stream.opaque    = Z_NULL;
+    stream.zalloc = Z_NULL;
+    stream.zfree = Z_NULL;
+    stream.opaque = Z_NULL;
 
     int r = deflateInit(&stream, Z_BEST_SPEED);
     zlib_verify(r == Z_OK, "deflateInit", r, stream);
@@ -52,7 +53,7 @@ namespace Scroom::MemoryBlobs::Detail
 
       RawPageData::Ptr const currentPageRaw = currentPage->get();
 
-      stream.next_out  = currentPageRaw.get();
+      stream.next_out = currentPageRaw.get();
       stream.avail_out = pageSize;
 
       r = deflate(&stream, Z_FINISH);
@@ -69,15 +70,15 @@ namespace Scroom::MemoryBlobs::Detail
 
   void decompressBlob(uint8_t* out, size_t size, PageList list, const PageProvider::Ptr& provider)
   {
-    z_stream     stream;
+    z_stream stream;
     const size_t pageSize = provider->getPageSize();
 
-    stream.next_out  = out;
+    stream.next_out = out;
     stream.avail_out = size;
-    stream.avail_in  = 0;
-    stream.zalloc    = Z_NULL;
-    stream.zfree     = Z_NULL;
-    stream.opaque    = Z_NULL;
+    stream.avail_in = 0;
+    stream.zalloc = Z_NULL;
+    stream.zfree = Z_NULL;
+    stream.opaque = Z_NULL;
 
     int r = inflateInit(&stream);
     zlib_verify(r == Z_OK, "inflateInit", r, stream);
@@ -91,7 +92,7 @@ namespace Scroom::MemoryBlobs::Detail
 
       RawPageData::Ptr const currentPageRaw = currentPage->get();
 
-      stream.next_in  = currentPageRaw.get();
+      stream.next_in = currentPageRaw.get();
       stream.avail_in = pageSize;
 
       const int flush = (list.empty() ? Z_FINISH : Z_NO_FLUSH);

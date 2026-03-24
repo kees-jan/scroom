@@ -21,7 +21,7 @@ ExamplePresentation::~ExamplePresentation() { cairo_pattern_destroy(pattern); }
 void ExamplePresentation::fillPattern()
 {
   cairo_surface_t* surface = cairo_image_surface_create(CAIRO_FORMAT_A1, 1010, 1010);
-  cairo_t*         cr      = cairo_create(surface);
+  cairo_t* cr = cairo_create(surface);
 
   const int xorig = 505;
   const int yorig = 505;
@@ -55,8 +55,8 @@ void ExamplePresentation::close(ViewInterface::WeakPtr /*vi*/) {}
 void ExamplePresentation::redraw(ViewInterface::Ptr const& /*vi*/, cairo_t* cr, Scroom::Utils::Rectangle<double> pa, int zoom)
 {
   cairo_rectangle_int_t const presentationArea = pa.toGdkRectangle();
-  const double                pp               = pixelSizeFromZoom(zoom);
-  const double                scale            = pow(2, -zoom);
+  const double pp = pixelSizeFromZoom(zoom);
+  const double scale = pow(2, -zoom);
 
   Scroom::Utils::Rectangle<double> const actualPresentationArea = getRect();
   drawOutOfBoundsWithBackground(cr, pa, actualPresentationArea, pp);

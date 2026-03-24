@@ -31,34 +31,34 @@ class TiledBitmap
   , public virtual Scroom::Utils::Base
 {
 public:
-  using Ptr         = std::shared_ptr<TiledBitmap>;
-  using WeakPtr     = std::weak_ptr<TiledBitmap>;
+  using Ptr = std::shared_ptr<TiledBitmap>;
+  using WeakPtr = std::weak_ptr<TiledBitmap>;
   using ViewDataMap = Scroom::Utils::WeakKeyMap<ViewInterface::WeakPtr, TiledBitmapViewData::Ptr>;
 
 private:
-  int                                              bitmapWidth;
-  int                                              bitmapHeight;
-  LayerSpec                                        ls;
-  std::vector<Layer::Ptr>                          layers;
-  std::list<LayerCoordinator::Ptr>                 coordinators;
-  boost::mutex                                     viewDataMutex;
-  ViewDataMap                                      viewData;
-  int                                              tileCount{0};
-  boost::mutex                                     tileFinishedMutex;
-  int                                              tileFinishedCount{0};
+  int bitmapWidth;
+  int bitmapHeight;
+  LayerSpec ls;
+  std::vector<Layer::Ptr> layers;
+  std::list<LayerCoordinator::Ptr> coordinators;
+  boost::mutex viewDataMutex;
+  ViewDataMap viewData;
+  int tileCount{0};
+  boost::mutex tileFinishedMutex;
+  int tileFinishedCount{0};
   Scroom::Utils::ProgressInterfaceBroadcaster::Ptr progressBroadcaster;
-  Scroom::Utils::StuffList                         registrations;
-  Scroom::Logger                                   logger;
+  Scroom::Utils::StuffList registrations;
+  Scroom::Logger logger;
 
 public:
   static Ptr create(int bitmapWidth, int bitmapHeight, LayerSpec const& ls);
   static Ptr create(const Layer::Ptr& bottom, const LayerSpec& ls);
 
   ~TiledBitmap() override;
-  TiledBitmap(const TiledBitmap&)           = delete;
-  TiledBitmap(TiledBitmap&&)                = delete;
+  TiledBitmap(const TiledBitmap&) = delete;
+  TiledBitmap(TiledBitmap&&) = delete;
   TiledBitmap operator=(const TiledBitmap&) = delete;
-  TiledBitmap operator=(TiledBitmap&&)      = delete;
+  TiledBitmap operator=(TiledBitmap&&) = delete;
 
 private:
   TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec ls);
@@ -68,22 +68,24 @@ private:
 
 private:
   static void drawTile(cairo_t* cr, const CompressedTile::Ptr& tile, const Scroom::Utils::Rectangle<double>& viewArea);
-  void        connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, const LayerOperations::Ptr& prevLo);
+  void connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, const LayerOperations::Ptr& prevLo);
 
 public:
   ////////////////////////////////////////////////////////////////////////
   // TiledBitmapInterface
 
 public:
-  void       setSource(SourcePresentation::Ptr sp) override;
+  void setSource(SourcePresentation::Ptr sp) override;
   Layer::Ptr getBottomLayer() override;
 
   void open(ViewInterface::WeakPtr viewInterface) override;
   void close(ViewInterface::WeakPtr vi) override;
-  void redraw(ViewInterface::Ptr const&               vi,
-              cairo_t*                                cr,
-              Scroom::Utils::Rectangle<double> const& presentationArea,
-              int                                     zoom) override;
+  void redraw(
+    ViewInterface::Ptr const& vi,
+    cairo_t* cr,
+    Scroom::Utils::Rectangle<double> const& presentationArea,
+    int zoom
+  ) override;
   void clearCaches(ViewInterface::Ptr vi) override;
 
   ////////////////////////////////////////////////////////////////////////

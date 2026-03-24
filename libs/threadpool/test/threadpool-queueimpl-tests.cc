@@ -34,10 +34,10 @@ const millisec long_timeout(2000);
 
 TEST(ThreadPool_QueueImpl_Tests, queueimpl_jobs_get_executed) // NOLINT
 {
-  ThreadPool::Queue::Ptr const     queue = ThreadPool::Queue::create();
-  ThreadPool::WeakQueue::Ptr const weak  = queue->getWeak();
-  Semaphore                        s(0);
-  ThreadPool                       t(0);
+  ThreadPool::Queue::Ptr const queue = ThreadPool::Queue::create();
+  ThreadPool::WeakQueue::Ptr const weak = queue->getWeak();
+  Semaphore s(0);
+  ThreadPool t(0);
   t.schedule(clear(&s), weak);
   t.add();
   EXPECT_TRUE(s.P(long_timeout));
@@ -45,11 +45,11 @@ TEST(ThreadPool_QueueImpl_Tests, queueimpl_jobs_get_executed) // NOLINT
 
 TEST(ThreadPool_QueueImpl_Tests, queueimpl_jobs_with_deleted_queue_can_be_scheduled_and_dont_get_executed) // NOLINT
 {
-  ThreadPool::Queue::Ptr           queue = ThreadPool::Queue::create();
-  ThreadPool::WeakQueue::Ptr const weak  = queue->getWeak();
-  Semaphore                        s1(0);
-  Semaphore                        s2(0);
-  ThreadPool                       t(0);
+  ThreadPool::Queue::Ptr queue = ThreadPool::Queue::create();
+  ThreadPool::WeakQueue::Ptr const weak = queue->getWeak();
+  Semaphore s1(0);
+  Semaphore s2(0);
+  ThreadPool t(0);
   queue.reset();
   t.schedule(clear(&s1), weak);
   t.schedule(clear(&s2));

@@ -17,11 +17,11 @@ using namespace Scroom::MemoryBlocks;
 
 TEST(Swap_based_Block_Allocator_Tests, allocator_provides_a_number_of_independent_blocks_of_a_given_size) // NOLINT
 {
-  const size_t size  = 16 * 1024;
+  const size_t size = 16 * 1024;
   const size_t count = 16;
 
   BlockFactoryInterface::Ptr const bfi = getBlockFactoryInterface();
-  BlockInterface::Ptr              bi  = bfi->create(count, size);
+  BlockInterface::Ptr bi = bfi->create(count, size);
 
   PageList pages = bi->getPages();
   EXPECT_EQ(count, pages.size());

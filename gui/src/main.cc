@@ -32,10 +32,12 @@
 
 namespace po = boost::program_options;
 
-void usage(const Scroom::Logger&          logger,
-           const std::string&             me,
-           const po::options_description& desc,
-           const std::string&             message = std::string())
+void usage(
+  const Scroom::Logger& logger,
+  const std::string& me,
+  const po::options_description& desc,
+  const std::string& message = std::string()
+)
 {
   if(!message.empty())
   {
@@ -51,23 +53,23 @@ void usage(const Scroom::Logger&          logger,
 
 int main(int argc, char* argv[])
 {
-  const std::string                             me = argv[0]; // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
+  const std::string me = argv[0]; // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   std::map<std::string, std::list<std::string>> filenames;
 
-  auto           loggerContainer = Scroom::LoggerContainer::instance();
+  auto loggerContainer = Scroom::LoggerContainer::instance();
   Scroom::Logger logger(loggerContainer);
 
 #ifdef _WIN32
   // In windows, redirect all logging to file.
   // On the off-chance that we're running in a debugger that does capture console logging, redirect to console as well.
   const auto logDirParent = in_devmode() ? boost::filesystem::path(TOP_SRCDIR) : boost::dll::program_location().parent_path();
-  const auto logDir       = logDirParent / "logs";
-  const auto logFile      = logDir / fmt::format("scroom-log-{}.txt", getpid());
+  const auto logDir = logDirParent / "logs";
+  const auto logFile = logDir / fmt::format("scroom-log-{}.txt", getpid());
 
   boost::filesystem::create_directory(logDir);
 
   auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
-  auto file_sink    = std::make_shared<spdlog::sinks::basic_file_sink_mt>(logFile.string(), true);
+  auto file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(logFile.string(), true);
 
   auto spdlogger = std::make_shared<spdlog::logger>("scroom", spdlog::sinks_init_list{console_sink, file_sink});
   loggerContainer->set(spdlogger);
@@ -80,7 +82,8 @@ int main(int argc, char* argv[])
 
   po::options_description desc("Available options");
   desc.add_options()("help,h", "Show this help message")("load,l", po::value<std::vector<std::string>>(), "Load given filenames")(
-    "transparent-overlay", po::value<std::vector<std::string>>()->multitoken(), "Show given files in transparent overlay");
+    "transparent-overlay", po::value<std::vector<std::string>>()->multitoken(), "Show given files in transparent overlay"
+  );
 
   po::positional_options_description p;
   p.add("load", -1);

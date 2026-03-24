@@ -19,7 +19,7 @@
 
 ////////////////////////////////////////////////////////////////////////
 
-int drawingAreaWidth  = 0;
+int drawingAreaWidth = 0;
 int drawingAreaHeight = 0;
 
 TestData::Ptr testData;
@@ -40,11 +40,13 @@ Colormap::Ptr DummyColormapProvider::getColormap() { return colormap; }
 
 ////////////////////////////////////////////////////////////////////////
 
-TestData::TestData(DummyColormapProvider::Ptr       colormapProvider_,
-                   LayerSpec                        ls_,
-                   const TiledBitmapInterface::Ptr& tbi_,
-                   SourcePresentation::Ptr          sp_,
-                   int                              zoom_)
+TestData::TestData(
+  DummyColormapProvider::Ptr colormapProvider_,
+  LayerSpec ls_,
+  const TiledBitmapInterface::Ptr& tbi_,
+  SourcePresentation::Ptr sp_,
+  int zoom_
+)
   : pi(ProgressInterfaceStub::create())
   , vi(ViewInterfaceStub::create(pi))
   , colormapProvider(std::move(colormapProvider_))
@@ -56,11 +58,13 @@ TestData::TestData(DummyColormapProvider::Ptr       colormapProvider_,
   tbi_->open(vi);
 }
 
-TestData::Ptr TestData::create(DummyColormapProvider::Ptr       colormapProvider,
-                               const LayerSpec&                 ls,
-                               const TiledBitmapInterface::Ptr& tbi,
-                               SourcePresentation::Ptr          sp,
-                               int                              zoom)
+TestData::Ptr TestData::create(
+  DummyColormapProvider::Ptr colormapProvider,
+  const LayerSpec& ls,
+  const TiledBitmapInterface::Ptr& tbi,
+  SourcePresentation::Ptr sp,
+  int zoom
+)
 {
   return TestData::Ptr(new TestData(std::move(colormapProvider), ls, std::move(tbi), std::move(sp), zoom));
 }
@@ -81,7 +85,7 @@ void TestData::redraw(cairo_t* cr)
 {
   if(tbi)
   {
-    const auto                          pixelSize = pixelSizeFromZoom(zoom);
+    const auto pixelSize = pixelSizeFromZoom(zoom);
     const Scroom::Utils::Rectangle<int> rect{0, 0, drawingAreaWidth, drawingAreaHeight};
 
     tbi->redraw(vi, cr, rect.to<double>() / pixelSize, zoom);
@@ -145,7 +149,7 @@ bool wait()
 
 bool setupTest1bpp(int zoom, int width, int height)
 {
-  Colormap::Ptr const              colormap         = Colormap::createDefault(2);
+  Colormap::Ptr const colormap = Colormap::createDefault(2);
   DummyColormapProvider::Ptr const colormapProvider = DummyColormapProvider::create(colormap);
 
   LayerSpec ls;
@@ -153,7 +157,7 @@ bool setupTest1bpp(int zoom, int width, int height)
   ls.push_back(Operations8bpp::create(colormapProvider));
 
   TiledBitmapInterface::Ptr const tbi = createTiledBitmap(width, height, ls);
-  SourcePresentation::Ptr const   sp(new Source1Bpp());
+  SourcePresentation::Ptr const sp(new Source1Bpp());
   tbi->setSource(sp);
 
   testData = TestData::create(colormapProvider, ls, tbi, sp, zoom);
@@ -163,7 +167,7 @@ bool setupTest1bpp(int zoom, int width, int height)
 
 bool setupTest2bpp(int zoom, int width, int height)
 {
-  Colormap::Ptr const              colormap         = Colormap::createDefault(16);
+  Colormap::Ptr const colormap = Colormap::createDefault(16);
   DummyColormapProvider::Ptr const colormapProvider = DummyColormapProvider::create(colormap);
 
   LayerSpec ls;
@@ -171,7 +175,7 @@ bool setupTest2bpp(int zoom, int width, int height)
   ls.push_back(OperationsColormapped::create(colormapProvider, 2));
 
   TiledBitmapInterface::Ptr const tbi = createTiledBitmap(width, height, ls);
-  SourcePresentation::Ptr const   sp(new Source2Bpp());
+  SourcePresentation::Ptr const sp(new Source2Bpp());
   tbi->setSource(sp);
 
   testData = TestData::create(colormapProvider, ls, tbi, sp, zoom);
@@ -181,7 +185,7 @@ bool setupTest2bpp(int zoom, int width, int height)
 
 bool setupTest4bpp(int zoom, int width, int height)
 {
-  Colormap::Ptr const              colormap         = Colormap::createDefault(16);
+  Colormap::Ptr const colormap = Colormap::createDefault(16);
   DummyColormapProvider::Ptr const colormapProvider = DummyColormapProvider::create(colormap);
 
   LayerSpec ls;
@@ -189,7 +193,7 @@ bool setupTest4bpp(int zoom, int width, int height)
   ls.push_back(OperationsColormapped::create(colormapProvider, 4));
 
   TiledBitmapInterface::Ptr const tbi = createTiledBitmap(width, height, ls);
-  SourcePresentation::Ptr const   sp(new Source4Bpp());
+  SourcePresentation::Ptr const sp(new Source4Bpp());
   tbi->setSource(sp);
 
   testData = TestData::create(colormapProvider, ls, tbi, sp, zoom);
@@ -199,14 +203,14 @@ bool setupTest4bpp(int zoom, int width, int height)
 
 bool setupTest8bpp(int zoom, int width, int height)
 {
-  Colormap::Ptr const              colormap         = Colormap::createDefault(2);
+  Colormap::Ptr const colormap = Colormap::createDefault(2);
   DummyColormapProvider::Ptr const colormapProvider = DummyColormapProvider::create(colormap);
 
   LayerSpec ls;
   ls.push_back(Operations8bpp::create(colormapProvider));
 
   TiledBitmapInterface::Ptr const tbi = createTiledBitmap(width, height, ls);
-  SourcePresentation::Ptr const   sp(new Source8Bpp());
+  SourcePresentation::Ptr const sp(new Source8Bpp());
   tbi->setSource(sp);
 
   testData = TestData::create(colormapProvider, ls, tbi, sp, zoom);
@@ -216,7 +220,7 @@ bool setupTest8bpp(int zoom, int width, int height)
 
 bool setupTest8bppColormapped(int zoom, int width, int height)
 {
-  Colormap::Ptr const              colormap         = Colormap::createDefault(256);
+  Colormap::Ptr const colormap = Colormap::createDefault(256);
   DummyColormapProvider::Ptr const colormapProvider = DummyColormapProvider::create(colormap);
 
   LayerSpec ls;
@@ -224,7 +228,7 @@ bool setupTest8bppColormapped(int zoom, int width, int height)
   ls.push_back(OperationsColormapped::create(colormapProvider, 8));
 
   TiledBitmapInterface::Ptr const tbi = createTiledBitmap(width, height, ls);
-  SourcePresentation::Ptr const   sp(new Source8Bpp());
+  SourcePresentation::Ptr const sp(new Source8Bpp());
   tbi->setSource(sp);
 
   testData = TestData::create(colormapProvider, ls, tbi, sp, zoom);

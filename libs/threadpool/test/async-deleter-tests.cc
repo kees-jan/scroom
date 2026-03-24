@@ -50,18 +50,18 @@ public:
     s2->V();
   }
 
-  A(const A&)            = delete;
-  A(A&&)                 = delete;
+  A(const A&) = delete;
+  A(A&&) = delete;
   A& operator=(const A&) = delete;
-  A& operator=(A&&)      = delete;
+  A& operator=(A&&) = delete;
 };
 
 //////////////////////////////////////////////////////////////
 
 TEST(Async_Deleter_Tests, deleter_deletes_asynchronously) // NOLINT
 {
-  Semaphore          barrier1;
-  Semaphore          destroyed;
+  Semaphore barrier1;
+  Semaphore destroyed;
   std::shared_ptr<A> a = std::shared_ptr<A>(new A(&barrier1, &destroyed), AsyncDeleter<A>());
   EXPECT_FALSE(destroyed.P(short_timeout));
 

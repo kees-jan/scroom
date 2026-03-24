@@ -54,16 +54,16 @@ private:
   explicit ViewInterfaceStub(ProgressInterface::Ptr pi);
 
 public:
-  static Ptr                             create(ProgressInterface::Ptr pi);
-  void                                   invalidate() override {}
-  ProgressInterface::Ptr                 getProgressInterface() override;
-  void                                   addSideWidget(std::string /*title*/, GtkWidget* /*w*/) override {}
-  void                                   removeSideWidget(GtkWidget* /*w*/) override {}
-  void                                   addToToolbar(GtkToolItem* /*ti*/) override {}
-  void                                   removeFromToolbar(GtkToolItem* /*ti*/) override {}
-  void                                   registerSelectionListener(SelectionListener::Ptr /*unused*/) override{};
-  void                                   registerPostRenderer(PostRenderer::Ptr /*unused*/) override{};
-  void                                   setStatusMessage(const std::string& /*unused*/) override {};
+  static Ptr create(ProgressInterface::Ptr pi);
+  void invalidate() override {}
+  ProgressInterface::Ptr getProgressInterface() override;
+  void addSideWidget(std::string /*title*/, GtkWidget* /*w*/) override {}
+  void removeSideWidget(GtkWidget* /*w*/) override {}
+  void addToToolbar(GtkToolItem* /*ti*/) override {}
+  void removeFromToolbar(GtkToolItem* /*ti*/) override {}
+  void registerSelectionListener(SelectionListener::Ptr /*unused*/) override{};
+  void registerPostRenderer(PostRenderer::Ptr /*unused*/) override{};
+  void setStatusMessage(const std::string& /*unused*/) override {};
   std::shared_ptr<PresentationInterface> getCurrentPresentation() override { return {}; };
   void addToolButton(GtkToggleButton* /*unused*/, ToolStateListener::Ptr /*unused*/) override {};
 };
@@ -71,31 +71,31 @@ public:
 class Source1Bpp : public SourcePresentation
 {
 public:
-  void        fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles) override;
-  void        done() override {};
+  void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles) override;
+  void done() override {};
   std::string getName() override { return "Source1Bpp"; }
 };
 
 class Source2Bpp : public SourcePresentation
 {
 public:
-  void        fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles) override;
-  void        done() override {};
+  void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles) override;
+  void done() override {};
   std::string getName() override { return "Source2Bpp"; }
 };
 
 class Source4Bpp : public SourcePresentation
 {
 public:
-  void        fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles) override;
-  void        done() override {};
+  void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles) override;
+  void done() override {};
   std::string getName() override { return "Source4Bpp"; }
 };
 
 class Source8Bpp : public SourcePresentation
 {
 public:
-  void        fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles) override;
-  void        done() override {};
+  void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles) override;
+  void done() override {};
   std::string getName() override { return "Source8Bpp"; }
 };

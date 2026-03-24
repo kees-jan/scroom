@@ -14,7 +14,7 @@
 namespace Colors
 {
   const Color OUT_OF_BOUNDS(0.75, 0.75, 1); // Blue
-  const Color IN_BOUNDS(1, 1, 1);           // White
+  const Color IN_BOUNDS(1, 1, 1); // White
 } // namespace Colors
 
 using Scroom::Utils::Rectangle;
@@ -71,34 +71,45 @@ void drawRectangle(cairo_t* cr, Color const& c, Rectangle<double> const& viewAre
   cairo_restore(cr);
 }
 
-void drawOutOfBoundsWithBackground(cairo_t*                 cr,
-                                   Rectangle<double> const& requestedPresentationArea,
-                                   Rectangle<double> const& actualPresentationArea,
-                                   double                   pixelSize)
+void drawOutOfBoundsWithBackground(
+  cairo_t* cr,
+  Rectangle<double> const& requestedPresentationArea,
+  Rectangle<double> const& actualPresentationArea,
+  double pixelSize
+)
 {
   drawRectangle(cr, Colors::OUT_OF_BOUNDS, pixelSize * (requestedPresentationArea.moveTo(0, 0)));
   drawRectangle(cr, Colors::IN_BOUNDS, pixelSize * (actualPresentationArea - requestedPresentationArea.getTopLeft()));
 }
 
-void drawOutOfBoundsWithBackgroundColor(cairo_t*                 cr,
-                                        const Color&             background,
-                                        Rectangle<double> const& requestedPresentationArea,
-                                        Rectangle<double> const& actualPresentationArea,
-                                        double                   pixelSize)
+void drawOutOfBoundsWithBackgroundColor(
+  cairo_t* cr,
+  const Color& background,
+  Rectangle<double> const& requestedPresentationArea,
+  Rectangle<double> const& actualPresentationArea,
+  double pixelSize
+)
 {
   drawOutOfBoundsWithoutBackground(cr, requestedPresentationArea, actualPresentationArea, pixelSize);
   drawRectangle(cr, background, pixelSize * (actualPresentationArea - requestedPresentationArea.getTopLeft()));
 }
 
-void drawOutOfBoundsWithoutBackground(cairo_t*                 cr,
-                                      Rectangle<double> const& requestedPresentationArea,
-                                      Rectangle<double> const& actualPresentationArea,
-                                      double                   pixelSize)
+void drawOutOfBoundsWithoutBackground(
+  cairo_t* cr,
+  Rectangle<double> const& requestedPresentationArea,
+  Rectangle<double> const& actualPresentationArea,
+  double pixelSize
+)
 {
   std::list<Rectangle<double>> const border =
-    boost::assign::list_of(requestedPresentationArea.leftOf(actualPresentationArea.getLeft()))(requestedPresentationArea.rightOf(
-      actualPresentationArea.getRight()))(requestedPresentationArea.above(actualPresentationArea.getTop()))(
-      requestedPresentationArea.below(actualPresentationArea.getBottom()));
+    boost::assign::list_of(requestedPresentationArea
+                             .leftOf(actualPresentationArea.getLeft()))(requestedPresentationArea
+                                                                          .rightOf(actualPresentationArea
+                                                                                     .getRight()))(requestedPresentationArea
+                                                                                                     .above(actualPresentationArea
+                                                                                                              .getTop()))(
+      requestedPresentationArea.below(actualPresentationArea.getBottom())
+    );
 
   for(const Rectangle<double>& r: border)
   {

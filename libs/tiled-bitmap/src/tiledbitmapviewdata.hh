@@ -25,17 +25,17 @@ public:
   using Ptr = std::shared_ptr<TiledBitmapViewData>;
 
 public:
-  ViewInterface::WeakPtr     viewInterface;
-  ProgressInterface::Ptr     progressInterface;
+  ViewInterface::WeakPtr viewInterface;
+  ProgressInterface::Ptr progressInterface;
   Scroom::Bookkeeping::Token token;
 
 private:
-  Layer::Ptr           layer;
-  int                  imin{0};
-  int                  imax{0};
-  int                  jmin{0};
-  int                  jmax{0};
-  int                  zoom{0};
+  Layer::Ptr layer;
+  int imin{0};
+  int imax{0};
+  int jmin{0};
+  int jmax{0};
+  int zoom{0};
   LayerOperations::Ptr layerOperations;
 
   /**

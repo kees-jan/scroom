@@ -20,8 +20,8 @@ class ProgressInterfaceMultiplexer_Tests : public ::testing::Test
 {
 public:
   ProgressStateInterfaceStub::Ptr stub;
-  ProgressInterface::Ptr          p1;
-  ProgressInterface::Ptr          p2;
+  ProgressInterface::Ptr p1;
+  ProgressInterface::Ptr p2;
 
 public:
   ProgressInterfaceMultiplexer_Tests()

@@ -34,9 +34,9 @@ namespace Scroom::Utils::Detail
 #else
     os << "stack trace (innermost first):" << std::endl;
     static const size_t maxTraces = 100;
-    void*               array[maxTraces];
-    const size_t        nTraces = backtrace(array, maxTraces);
-    char**              strings = backtrace_symbols(array, static_cast<int>(nTraces));
+    void* array[maxTraces];
+    const size_t nTraces = backtrace(array, maxTraces);
+    char** strings = backtrace_symbols(array, static_cast<int>(nTraces));
     for(size_t i = cutoff + 1; i < nTraces; i++)
     {
       os << '#' << i << "  " << strings[i] << std::endl;
@@ -48,11 +48,13 @@ namespace Scroom::Utils::Detail
 
   void abort() __attribute__((noreturn));
 
-  void assertionFailed(const std::string_view type,
-                       const std::string_view expr,
-                       const std::string_view function,
-                       const std::string_view filename,
-                       unsigned int           line)
+  void assertionFailed(
+    const std::string_view type,
+    const std::string_view expr,
+    const std::string_view function,
+    const std::string_view filename,
+    unsigned int line
+  )
   {
     logger->critical("PROGRAM DEFECTIVE: {}:{}: {} {} violated in {}", filename, line, type, expr, function);
     logger->critical("Stack trace: {}", stackTrace(1));
@@ -65,7 +67,7 @@ namespace Scroom::Utils::Detail
     friend void abort();
 
     static volatile sig_atomic_t isHandlerActive; // NOLINT(cppcoreguidelines-avoid-non-const-global-variables)
-    static void                  handler(int /*sig*/);
+    static void handler(int /*sig*/);
 
   public:
     ErrorSignalHandler() noexcept;

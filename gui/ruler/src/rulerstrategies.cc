@@ -5,7 +5,7 @@
 
 void RulerDrawStrategy::setAllocatedSize(int newWidth, int newHeight)
 {
-  this->width  = newWidth;
+  this->width = newWidth;
   this->height = newHeight;
 }
 
@@ -27,7 +27,7 @@ double VerticalDrawStrategy::getDrawAreaSize() { return getHeight(); }
 
 void HorizontalDrawStrategy::drawOutline(cairo_t* cr, double lineWidth)
 {
-  const int width_  = getWidth();
+  const int width_ = getWidth();
   const int height_ = getHeight();
 
   cairo_set_line_width(cr, lineWidth);
@@ -51,7 +51,7 @@ void HorizontalDrawStrategy::drawOutline(cairo_t* cr, double lineWidth)
 
 void VerticalDrawStrategy::drawOutline(cairo_t* cr, double lineWidth)
 {
-  const int width_  = getWidth();
+  const int width_ = getWidth();
   const int height_ = getHeight();
 
   cairo_set_line_width(cr, lineWidth);
@@ -99,12 +99,14 @@ void VerticalDrawStrategy::drawTickLine(cairo_t* cr, double linePosition, double
   cairo_stroke(cr);
 }
 
-void HorizontalDrawStrategy::drawTickText(cairo_t*           cr,
-                                          const std::string& label,
-                                          double             linePosition,
-                                          double             labelOffset,
-                                          double             labelAlign,
-                                          double             lineLength)
+void HorizontalDrawStrategy::drawTickText(
+  cairo_t* cr,
+  const std::string& label,
+  double linePosition,
+  double labelOffset,
+  double labelAlign,
+  double lineLength
+)
 {
   const int height_ = getHeight();
 
@@ -116,12 +118,14 @@ void HorizontalDrawStrategy::drawTickText(cairo_t*           cr,
   cairo_show_text(cr, label.c_str());
 }
 
-void VerticalDrawStrategy::drawTickText(cairo_t*           cr,
-                                        const std::string& label,
-                                        double             linePosition,
-                                        double             labelOffset,
-                                        double             labelAlign,
-                                        double             lineLength)
+void VerticalDrawStrategy::drawTickText(
+  cairo_t* cr,
+  const std::string& label,
+  double linePosition,
+  double labelOffset,
+  double labelAlign,
+  double lineLength
+)
 {
   const int width_ = getWidth();
 

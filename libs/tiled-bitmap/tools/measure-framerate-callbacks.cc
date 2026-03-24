@@ -12,8 +12,8 @@
 ////////////////////////////////////////////////////////////////////////
 
 std::vector<boost::function<bool()>> functions;
-static unsigned int                  current     = 0;
-static GtkWidget*                    drawingArea = nullptr;
+static unsigned int current = 0;
+static GtkWidget* drawingArea = nullptr;
 
 ////////////////////////////////////////////////////////////////////////
 // Internals
@@ -21,11 +21,11 @@ static GtkWidget*                    drawingArea = nullptr;
 static gboolean on_configure(GtkWidget* /*unused*/, GdkEventConfigure* /*unused*/, gpointer /*unused*/)
 {
   // There should be a simpler way to do this...
-  cairo_region_t*       r = gdk_window_get_visible_region(gtk_widget_get_window(drawingArea));
+  cairo_region_t* r = gdk_window_get_visible_region(gtk_widget_get_window(drawingArea));
   cairo_rectangle_int_t rect;
   cairo_region_get_extents(r, &rect);
 
-  drawingAreaWidth  = rect.width;
+  drawingAreaWidth = rect.width;
   drawingAreaHeight = rect.height;
 
   cairo_region_destroy(r);

@@ -39,8 +39,10 @@ Scroom::Utils::Point<double> TransformationData::getAspectRatio() const { return
 
 ////////////////////////////////////////////////////////////////////////
 
-TransformPresentation::TransformPresentation(PresentationInterface::Ptr const& presentation_,
-                                             TransformationData::Ptr           transformationData_)
+TransformPresentation::TransformPresentation(
+  PresentationInterface::Ptr const& presentation_,
+  TransformationData::Ptr transformationData_
+)
   : transformationData(std::move(transformationData_))
   , presentation(presentation_)
   , colormappable(std::dynamic_pointer_cast<Colormappable>(presentation_))
@@ -48,8 +50,8 @@ TransformPresentation::TransformPresentation(PresentationInterface::Ptr const& p
 {
 }
 
-TransformPresentation::Ptr TransformPresentation::create(PresentationInterface::Ptr const& presentation,
-                                                         TransformationData::Ptr const&    transformationData)
+TransformPresentation::Ptr
+  TransformPresentation::create(PresentationInterface::Ptr const& presentation, TransformationData::Ptr const& transformationData)
 {
   return Ptr(new TransformPresentation(presentation, transformationData));
 }
@@ -78,13 +80,15 @@ void TransformPresentation::close(ViewInterface::WeakPtr viewInterface)
   presentation->close(data);
 }
 
-void TransformPresentation::redraw(ViewInterface::Ptr const&        vi,
-                                   cairo_t*                         cr,
-                                   Scroom::Utils::Rectangle<double> presentationArea,
-                                   int                              zoom)
+void TransformPresentation::redraw(
+  ViewInterface::Ptr const& vi,
+  cairo_t* cr,
+  Scroom::Utils::Rectangle<double> presentationArea,
+  int zoom
+)
 {
   Scroom::Utils::Point<double> const aspectRatio = transformationData->getAspectRatio();
-  const auto                         data        = viewData.at(vi);
+  const auto data = viewData.at(vi);
 
   if(data->presentationArea != presentationArea || data->zoom != zoom)
   {
@@ -93,12 +97,12 @@ void TransformPresentation::redraw(ViewInterface::Ptr const&        vi,
   if(!data->image)
   {
     auto pixelSize = pixelSizeFromZoom(zoom);
-    auto viewArea  = ceil((presentationArea * pixelSize / aspectRatio).getSize()).to<int>();
+    auto viewArea = ceil((presentationArea * pixelSize / aspectRatio).getSize()).to<int>();
 
     data->image = Scroom::Bitmap::BitmapSurface::create(viewArea.x, viewArea.y, CAIRO_FORMAT_ARGB32);
 
-    cairo_surface_t* surface  = data->image->get();
-    cairo_t*         image_cr = cairo_create(surface);
+    cairo_surface_t* surface = data->image->get();
+    cairo_t* image_cr = cairo_create(surface);
 
     presentation->redraw(data, image_cr, presentationArea / aspectRatio, zoom);
 
@@ -164,10 +168,10 @@ namespace Detail
   }
 
   ProgressInterface::Ptr ViewData::getProgressInterface() { return parent()->getProgressInterface(); }
-  void                   ViewData::addSideWidget(std::string title, GtkWidget* w) { parent()->addSideWidget(title, w); }
-  void                   ViewData::removeSideWidget(GtkWidget* w) { parent()->removeSideWidget(w); }
-  void                   ViewData::addToToolbar(GtkToolItem* ti) { parent()->addToToolbar(ti); }
-  void                   ViewData::removeFromToolbar(GtkToolItem* ti) { parent()->removeFromToolbar(ti); }
+  void ViewData::addSideWidget(std::string title, GtkWidget* w) { parent()->addSideWidget(title, w); }
+  void ViewData::removeSideWidget(GtkWidget* w) { parent()->removeSideWidget(w); }
+  void ViewData::addToToolbar(GtkToolItem* ti) { parent()->addToToolbar(ti); }
+  void ViewData::removeFromToolbar(GtkToolItem* ti) { parent()->removeFromToolbar(ti); }
   void ViewData::registerSelectionListener(SelectionListener::Ptr ptr) { parent()->registerSelectionListener(ptr); }
   void ViewData::registerPostRenderer(PostRenderer::Ptr ptr) { parent()->registerPostRenderer(ptr); }
   void ViewData::setStatusMessage(const std::string& string) { parent()->setStatusMessage(string); }

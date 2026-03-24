@@ -43,19 +43,19 @@ namespace
     using Ptr = std::shared_ptr<ThreadList>;
 
   private:
-    boost::mutex                                           mut;
-    std::list<ThreadPool::ThreadPtr>                       threads;
+    boost::mutex mut;
+    std::list<ThreadPool::ThreadPtr> threads;
     std::list<std::pair<std::weak_ptr<void>, std::string>> pointers;
-    Scroom::Logger                                         logger;
+    Scroom::Logger logger;
 
   private:
     void dumpPointers();
 
   public:
     static Ptr instance();
-    void       wait();
-    void       add(const ThreadPool::ThreadPtr& t);
-    void       add(const std::shared_ptr<void>& t, const std::string& s);
+    void wait();
+    void add(const ThreadPool::ThreadPtr& t);
+    void add(const std::shared_ptr<void>& t, const std::string& s);
   };
 
   /**
@@ -71,10 +71,10 @@ namespace
   public:
     ThreadWaiter();
     ~ThreadWaiter();
-    ThreadWaiter(const ThreadWaiter&)           = delete;
-    ThreadWaiter(ThreadWaiter&&)                = delete;
+    ThreadWaiter(const ThreadWaiter&) = delete;
+    ThreadWaiter(ThreadWaiter&&) = delete;
     ThreadWaiter operator=(const ThreadWaiter&) = delete;
-    ThreadWaiter operator=(ThreadWaiter&&)      = delete;
+    ThreadWaiter operator=(ThreadWaiter&&) = delete;
   };
 
   ThreadWaiter waiter;
@@ -117,7 +117,7 @@ namespace
   {
     const boost::posix_time::millisec short_timeout(1);
     const boost::posix_time::millisec timeout(250);
-    decltype(threads.size())          count = 0;
+    decltype(threads.size()) count = 0;
 
     {
       boost::mutex::scoped_lock const lock(mut);
@@ -427,7 +427,7 @@ bool QueueJumper::setWork(boost::function<void()> const& fn_)
   if(inQueue)
   {
     // Our turn hasn't passed yet. Accept work.
-    fn    = fn_;
+    fn = fn_;
     isSet = true;
   }
   else

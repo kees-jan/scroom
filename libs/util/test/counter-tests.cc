@@ -23,9 +23,9 @@ class TestCounted : public Counted<TestCounted>
 
 TEST(Counter_Tests, count) // NOLINT
 {
-  Counter*              counter         = Counter::instance();
-  const std::string     testCountedName = typeid(TestCounted).name();
-  std::list<Count::Ptr> counts          = counter->getCounts();
+  Counter* counter = Counter::instance();
+  const std::string testCountedName = typeid(TestCounted).name();
+  std::list<Count::Ptr> counts = counter->getCounts();
   EXPECT_EQ(0, counts.size());
   Count::Ptr c;
 

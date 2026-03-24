@@ -33,7 +33,7 @@ private:
 
 private:
   std::list<PresentationInterface::Ptr> children;
-  SizeDeterminer::Ptr                   sizeDeterminer;
+  SizeDeterminer::Ptr sizeDeterminer;
 
   ViewDataMap viewData;
 
@@ -47,9 +47,9 @@ public:
   void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom) override;
   bool getProperty(const std::string& name, std::string& value) override;
   bool isPropertyDefined(const std::string& name) override;
-  std::string                                       getTitle() override;
-  void                                              viewAdded(ViewInterface::WeakPtr vi) override;
-  void                                              viewRemoved(ViewInterface::WeakPtr vi) override;
+  std::string getTitle() override;
+  void viewAdded(ViewInterface::WeakPtr vi) override;
+  void viewRemoved(ViewInterface::WeakPtr vi) override;
   Scroom::Utils::WeakKeySet<ViewInterface::WeakPtr> getViews() override;
 
   // Aggregate ///////////////////////////////////////////////////////////

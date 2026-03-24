@@ -48,11 +48,11 @@ class Freezable
 {
 public:
   using value_type = T;
-  using Me         = Freezable<T>;
+  using Me = Freezable<T>;
 
 private:
   value_type value;
-  unsigned   locked{0};
+  unsigned locked{0};
 
 public:
   Freezable() = default;
@@ -82,7 +82,7 @@ public:
   }
   [[nodiscard]] bool is_locked() const { return locked; }
 
-      operator const value_type&() const { return value; } // NOLINT(hicpp-explicit-conversions)
+  operator const value_type&() const { return value; } // NOLINT(hicpp-explicit-conversions)
   Me& operator=(value_type v)
   {
     set(std::move(v));
@@ -90,8 +90,8 @@ public:
   }
   const value_type* operator*() const { return &value; }
   const value_type* operator->() const { return &value; }
-  Me&               operator+=(value_type v) { return operator=(value + v); }
-  Me&               operator-=(value_type v) { return operator=(value - v); }
+  Me& operator+=(value_type v) { return operator=(value + v); }
+  Me& operator-=(value_type v) { return operator=(value - v); }
 };
 
 class View
@@ -102,48 +102,48 @@ public:
   using Ptr = std::shared_ptr<View>;
 
 private:
-  GtkBuilder*                      scroomXml;
-  PresentationInterface::Ptr       presentation;
-  SidebarManager                   sidebarManager;
-  GtkWindow*                       window;
-  GtkWidget*                       menubar;
-  GtkWidget*                       drawingArea;
-  Scroom::Utils::Point<int>        drawingAreaSize;
+  GtkBuilder* scroomXml;
+  PresentationInterface::Ptr presentation;
+  SidebarManager sidebarManager;
+  GtkWindow* window;
+  GtkWidget* menubar;
+  GtkWidget* drawingArea;
+  Scroom::Utils::Point<int> drawingAreaSize;
   Scroom::Utils::Rectangle<double> presentationRect;
-  GtkScrollbar*                    vscrollbar;
-  GtkScrollbar*                    hscrollbar;
-  GtkAdjustment*                   vscrollbaradjustment;
-  GtkAdjustment*                   hscrollbaradjustment;
-  GtkDrawingArea*                  hruler_area;
-  GtkDrawingArea*                  vruler_area;
-  Ruler::Ptr                       vruler;
-  Ruler::Ptr                       hruler;
+  GtkScrollbar* vscrollbar;
+  GtkScrollbar* hscrollbar;
+  GtkAdjustment* vscrollbaradjustment;
+  GtkAdjustment* hscrollbaradjustment;
+  GtkDrawingArea* hruler_area;
+  GtkDrawingArea* vruler_area;
+  Ruler::Ptr vruler;
+  Ruler::Ptr hruler;
 
-  GtkComboBox*                                            zoomBox;
-  GtkListStore*                                           zoomItems;
-  GtkProgressBar*                                         progressBar;
-  GtkStatusbar*                                           statusBar;
-  GtkToolbar*                                             toolBar;
-  GtkToolItem*                                            toolBarSeparator;
-  GtkEntry*                                               xTextBox;
-  GtkEntry*                                               yTextBox;
-  GtkWidget*                                              statusArea;
-  GtkWidget*                                              toolbarArea;
-  unsigned                                                toolBarCount;
-  int                                                     statusBarContextId;
-  int                                                     zoom{0};
-  Freezable<Scroom::Utils::Point<double>>                 position; /**< of the top left visible pixel */
-  std::optional<Selection>                                selection;
-  std::vector<SelectionListener::Ptr>                     selectionListeners;
-  std::vector<PostRenderer::Ptr>                          postRenderers;
-  std::map<GtkToggleButton*, ToolStateListener::Ptr>      tools;
-  Scroom::Utils::Point<double>                            aspectRatio;
-  std::shared_ptr<TweakPresentationPosition>              tweakPresentationPosition;
-  std::shared_ptr<TweakPositionTextBox>                   tweakPositionTextBox;
-  std::shared_ptr<TweakRulers>                            tweakRulers;
+  GtkComboBox* zoomBox;
+  GtkListStore* zoomItems;
+  GtkProgressBar* progressBar;
+  GtkStatusbar* statusBar;
+  GtkToolbar* toolBar;
+  GtkToolItem* toolBarSeparator;
+  GtkEntry* xTextBox;
+  GtkEntry* yTextBox;
+  GtkWidget* statusArea;
+  GtkWidget* toolbarArea;
+  unsigned toolBarCount;
+  int statusBarContextId;
+  int zoom{0};
+  Freezable<Scroom::Utils::Point<double>> position; /**< of the top left visible pixel */
+  std::optional<Selection> selection;
+  std::vector<SelectionListener::Ptr> selectionListeners;
+  std::vector<PostRenderer::Ptr> postRenderers;
+  std::map<GtkToggleButton*, ToolStateListener::Ptr> tools;
+  Scroom::Utils::Point<double> aspectRatio;
+  std::shared_ptr<TweakPresentationPosition> tweakPresentationPosition;
+  std::shared_ptr<TweakPositionTextBox> tweakPositionTextBox;
+  std::shared_ptr<TweakRulers> tweakRulers;
   std::map<std::string, std::shared_ptr<ITweakSelection>> tweakSelection;
 
-  gint                         modifiermove{0};
+  gint modifiermove{0};
   Scroom::Utils::Point<double> cachedPoint;
 
   ProgressBarManager::Ptr progressBarManager;
@@ -168,10 +168,10 @@ public:
   static Ptr create(GtkBuilder* scroomXml, const PresentationInterface::Ptr& presentation);
 
   ~View() override;
-  View(const View&)           = delete;
-  View(View&&)                = delete;
+  View(const View&) = delete;
+  View(View&&) = delete;
   View operator=(const View&) = delete;
-  View operator=(View&&)      = delete;
+  View operator=(View&&) = delete;
 
   void redraw(cairo_t* cr);
   void hide();
@@ -179,17 +179,19 @@ public:
   void setPresentation(PresentationInterface::Ptr presentation);
   void clearPresentation();
 
-  static void updateScrollbar(GtkAdjustment* adj,
-                              int            zoom,
-                              double         value,
-                              double         presentationStart,
-                              double         presentationSize,
-                              double         windowSize);
-  void        updateScrollbars();
-  void        updateZoom();
-  void        updateRulers();
-  void        updateTextbox();
-  void        toolButtonToggled(GtkToggleButton* button);
+  static void updateScrollbar(
+    GtkAdjustment* adj,
+    int zoom,
+    double value,
+    double presentationStart,
+    double presentationSize,
+    double windowSize
+  );
+  void updateScrollbars();
+  void updateZoom();
+  void updateRulers();
+  void updateTextbox();
+  void toolButtonToggled(GtkToggleButton* button);
 
   ////////////////////////////////////////////////////////////////////////
   // Scroom events
@@ -212,17 +214,17 @@ public:
   ////////////////////////////////////////////////////////////////////////
   // ViewInterface
 
-  void                       invalidate() override;
-  ProgressInterface::Ptr     getProgressInterface() override;
-  void                       addSideWidget(std::string title, GtkWidget* w) override;
-  void                       removeSideWidget(GtkWidget* w) override;
-  void                       addToToolbar(GtkToolItem* ti) override;
-  void                       removeFromToolbar(GtkToolItem* ti) override;
-  void                       registerSelectionListener(SelectionListener::Ptr listener) override;
-  void                       registerPostRenderer(PostRenderer::Ptr renderer) override;
-  void                       setStatusMessage(const std::string& message) override;
+  void invalidate() override;
+  ProgressInterface::Ptr getProgressInterface() override;
+  void addSideWidget(std::string title, GtkWidget* w) override;
+  void removeSideWidget(GtkWidget* w) override;
+  void addToToolbar(GtkToolItem* ti) override;
+  void removeFromToolbar(GtkToolItem* ti) override;
+  void registerSelectionListener(SelectionListener::Ptr listener) override;
+  void registerPostRenderer(PostRenderer::Ptr renderer) override;
+  void setStatusMessage(const std::string& message) override;
   PresentationInterface::Ptr getCurrentPresentation() override;
-  void                       addToolButton(GtkToggleButton* /*button*/, ToolStateListener::Ptr /*callback*/) override;
+  void addToolButton(GtkToggleButton* /*button*/, ToolStateListener::Ptr /*callback*/) override;
 
   ////////////////////////////////////////////////////////////////////////
   // Helpers
@@ -231,7 +233,7 @@ private:
   Scroom::Utils::Point<double> windowPointToPresentationPoint(Scroom::Utils::Point<double> wp) const;
   Scroom::Utils::Point<double> presentationPointToWindowPoint(Scroom::Utils::Point<double> presentationpoint) const;
   Scroom::Utils::Point<double> tweakedPosition() const;
-  void                         updateNewWindowMenu();
-  void                         on_zoombox_changed(int newzoom, const Scroom::Utils::Point<double>& mousePos);
-  void                         updateXY(const Scroom::Utils::Point<double>& newPos, const LocationChangeCause& source);
+  void updateNewWindowMenu();
+  void on_zoombox_changed(int newzoom, const Scroom::Utils::Point<double>& mousePos);
+  void updateXY(const Scroom::Utils::Point<double>& newPos, const LocationChangeCause& source);
 };

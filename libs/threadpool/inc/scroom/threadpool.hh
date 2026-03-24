@@ -79,7 +79,7 @@ public:
   class Queue
   {
   public:
-    using Ptr     = std::shared_ptr<Queue>;
+    using Ptr = std::shared_ptr<Queue>;
     using WeakPtr = std::weak_ptr<Queue>;
 
   public:
@@ -99,14 +99,14 @@ public:
 
     ~Queue();
     std::shared_ptr<Scroom::Detail::ThreadPool::QueueImpl> get();
-    std::shared_ptr<WeakQueue>                             getWeak();
+    std::shared_ptr<WeakQueue> getWeak();
 
   private:
     Queue();
-    Queue(const Queue&)            = delete;
-    Queue(Queue&&)                 = delete;
+    Queue(const Queue&) = delete;
+    Queue(Queue&&) = delete;
     Queue& operator=(const Queue&) = delete;
-    Queue& operator=(Queue&&)      = delete;
+    Queue& operator=(Queue&&) = delete;
 
   private:
     std::shared_ptr<WeakQueue> weak;
@@ -134,18 +134,18 @@ public:
   class WeakQueue
   {
   public:
-    using Ptr     = std::shared_ptr<WeakQueue>;
+    using Ptr = std::shared_ptr<WeakQueue>;
     using WeakPtr = std::weak_ptr<WeakQueue>;
 
   public:
     ~WeakQueue() = default;
 
-    WeakQueue(const WeakQueue&)            = delete;
-    WeakQueue(WeakQueue&&)                 = delete;
+    WeakQueue(const WeakQueue&) = delete;
+    WeakQueue(WeakQueue&&) = delete;
     WeakQueue& operator=(const WeakQueue&) = delete;
-    WeakQueue& operator=(WeakQueue&&)      = delete;
+    WeakQueue& operator=(WeakQueue&&) = delete;
 
-    static Ptr                                             create();
+    static Ptr create();
     std::shared_ptr<Scroom::Detail::ThreadPool::QueueImpl> get();
 
   private:
@@ -159,14 +159,14 @@ private:
   struct Job
   {
     std::shared_ptr<Scroom::Detail::ThreadPool::QueueImpl> queue;
-    boost::function<void()>                                fn;
+    boost::function<void()> fn;
 
     Job() = default;
     Job(boost::function<void()> fn, const WeakQueue::Ptr& queue);
   };
 
 public:
-  using Ptr       = std::shared_ptr<ThreadPool>;
+  using Ptr = std::shared_ptr<ThreadPool>;
   using ThreadPtr = std::shared_ptr<boost::thread>;
 
 private:
@@ -196,10 +196,10 @@ private:
     using Ptr = std::shared_ptr<PrivateData>;
 
   public:
-    unsigned int              jobcount{0}; /**< current number of tasks in ThreadPool::jobs */
-    boost::mutex              mut;         /**< For protecting ThreadPool::jobs */
-    bool                      alive{true}; /**< @c true if this ThreadPool is not in the process of being destroyed */
-    boost::condition_variable cond;        /**< For signalling newly queued jobs */
+    unsigned int jobcount{0}; /**< current number of tasks in ThreadPool::jobs */
+    boost::mutex mut; /**< For protecting ThreadPool::jobs */
+    bool alive{true}; /**< @c true if this ThreadPool is not in the process of being destroyed */
+    boost::condition_variable cond; /**< For signalling newly queued jobs */
 
     /**
      * Jobs that remain to be executed
@@ -244,7 +244,7 @@ private:
   };
 
   std::list<ThreadPtr> threads; /**< Threads in this ThreadPool */
-  PrivateData::Ptr     priv;
+  PrivateData::Ptr priv;
 
 private:
   /**
@@ -267,7 +267,7 @@ private:
   static void do_one(const PrivateData::Ptr& priv);
 
   static Queue::Ptr defaultQueue();
-  static const int  defaultPriority;
+  static const int defaultPriority;
 
 public:
   /** Create a ThreadPool with one thread for each core in the system */
@@ -282,10 +282,10 @@ public:
   /** Create a ThreadPool with the given number of threads */
   static ThreadPool::Ptr create(int count, bool completeAllJobsBeforeDestruction = false);
 
-  ThreadPool(const ThreadPool&)           = delete;
-  ThreadPool(ThreadPool&&)                = delete;
+  ThreadPool(const ThreadPool&) = delete;
+  ThreadPool(ThreadPool&&) = delete;
   ThreadPool operator=(const ThreadPool&) = delete;
-  ThreadPool operator=(ThreadPool&&)      = delete;
+  ThreadPool operator=(ThreadPool&&) = delete;
 
   /**
    * Destructor
@@ -538,8 +538,8 @@ public:
 
 private:
   boost::mutex mut;
-  bool         inQueue{true};
-  bool         isSet{false};
+  bool inQueue{true};
+  bool isSet{false};
 
   boost::function<void()> fn;
 

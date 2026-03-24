@@ -24,26 +24,26 @@ namespace Scroom::Detail::ThreadPool
 
     FunctionAdditor& operator+(boost::function<void()> const& fn);
     FunctionAdditor& operator+=(boost::function<void()> const& fn);
-    void             operator()();
+    void operator()();
   };
 
   class FunctionMultiplier
   {
   private:
     boost::function<void()> f;
-    unsigned int            i;
+    unsigned int i;
 
   public:
     FunctionMultiplier(boost::function<void()> f_, unsigned int i_);
 
     FunctionMultiplier& operator*(unsigned int i);
-    void                operator()();
+    void operator()();
   };
 } // namespace Scroom::Detail::ThreadPool
 
-Scroom::Detail::ThreadPool::FunctionAdditor     operator+(boost::function<void()> const& f1, boost::function<void()> const& f2);
-Scroom::Detail::ThreadPool::FunctionAdditor&    operator+(boost::function<void()> const&               f1,
-                                                          Scroom::Detail::ThreadPool::FunctionAdditor& f2);
+Scroom::Detail::ThreadPool::FunctionAdditor operator+(boost::function<void()> const& f1, boost::function<void()> const& f2);
+Scroom::Detail::ThreadPool::FunctionAdditor&
+  operator+(boost::function<void()> const& f1, Scroom::Detail::ThreadPool::FunctionAdditor& f2);
 Scroom::Detail::ThreadPool::FunctionMultiplier& operator*(unsigned int i, Scroom::Detail::ThreadPool::FunctionMultiplier& m);
-Scroom::Detail::ThreadPool::FunctionMultiplier  operator*(unsigned int i, boost::function<void()> const& f);
-Scroom::Detail::ThreadPool::FunctionMultiplier  operator*(boost::function<void()> const& f, unsigned int i);
+Scroom::Detail::ThreadPool::FunctionMultiplier operator*(unsigned int i, boost::function<void()> const& f);
+Scroom::Detail::ThreadPool::FunctionMultiplier operator*(boost::function<void()> const& f, unsigned int i);

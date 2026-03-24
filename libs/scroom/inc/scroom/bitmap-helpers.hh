@@ -25,7 +25,7 @@ namespace Scroom::Bitmap
     using Ptr = std::shared_ptr<BitmapSurface>;
 
   private:
-    cairo_surface_t* const               surface;
+    cairo_surface_t* const surface;
     std::shared_ptr<unsigned char> const data;
 
   public:
@@ -33,10 +33,10 @@ namespace Scroom::Bitmap
     static Ptr create(int width, int height, cairo_format_t format, int stride, std::shared_ptr<unsigned char> const& data);
 
     ~BitmapSurface();
-    BitmapSurface(const BitmapSurface&)            = delete;
-    BitmapSurface(BitmapSurface&&)                 = delete;
+    BitmapSurface(const BitmapSurface&) = delete;
+    BitmapSurface(BitmapSurface&&) = delete;
     BitmapSurface& operator=(const BitmapSurface&) = delete;
-    BitmapSurface& operator=(BitmapSurface&&)      = delete;
+    BitmapSurface& operator=(BitmapSurface&&) = delete;
 
     cairo_surface_t* get();
 
@@ -65,13 +65,13 @@ namespace Scroom::Bitmap
 
     static const int bitsPerBase{8 * sizeof(ConstBase) / sizeof(byte)};
 
-    const int       bps;
-    const int       samplesPerBase;
-    const int       pixelOffset;
+    const int bps;
+    const int samplesPerBase;
+    const int pixelOffset;
     const ConstBase pixelMask;
 
     ConstBase* currentBase;
-    int        currentOffset;
+    int currentOffset;
 
   private:
     static Base mask(int bps) { return (((ConstBase(1) << (bps - 1)) - 1) << 1) | 1; }
@@ -141,8 +141,8 @@ namespace Scroom::Bitmap
     /** Move @c x samples further */
     SampleIterator& operator+=(unsigned int x)
     {
-      const int   offset = samplesPerBase - 1 - currentOffset + x;
-      const div_t d      = div(offset, samplesPerBase);
+      const int offset = samplesPerBase - 1 - currentOffset + x;
+      const div_t d = div(offset, samplesPerBase);
       currentBase += d.quot;
       currentOffset = samplesPerBase - 1 - d.rem;
 

@@ -14,32 +14,39 @@
 namespace Scroom::Utils::Detail
 {
   /** Gets called when an assertion failed */
-  [[noreturn]] void assertionFailed(std::string_view type,
-                                    std::string_view expr,
-                                    std::string_view function,
-                                    std::string_view filename,
-                                    unsigned int     line) __attribute__((noreturn));
+  [[noreturn]] void assertionFailed(
+    std::string_view type,
+    std::string_view expr,
+    std::string_view function,
+    std::string_view filename,
+    unsigned int line
+  ) __attribute__((noreturn));
 } // namespace Scroom::Utils::Detail
 
 #ifdef _WIN32
 #  define __STRING(x) #x
 #endif
 
-#define require(expr)                               \
-  ((expr) ? ((void)0)                               \
-          : Scroom::Utils::Detail::assertionFailed( \
-              "precondition", __STRING(expr), static_cast<const char*>(__PRETTY_FUNCTION__), __FILE__, __LINE__))
-#define ensure(expr)                                \
-  ((expr) ? ((void)0)                               \
-          : Scroom::Utils::Detail::assertionFailed( \
-              "postcondition", __STRING(expr), static_cast<const char*>(__PRETTY_FUNCTION__), __FILE__, __LINE__))
-#define verify(expr)                                \
-  ((expr) ? ((void)0)                               \
-          : Scroom::Utils::Detail::assertionFailed( \
-              "assertion", __STRING(expr), static_cast<const char*>(__PRETTY_FUNCTION__), __FILE__, __LINE__))
-#define defect()                          \
-  Scroom::Utils::Detail::assertionFailed( \
-    "control flow assertion", "", static_cast<const char*>(__PRETTY_FUNCTION__), __FILE__, __LINE__)
-#define defect_message(m)                 \
-  Scroom::Utils::Detail::assertionFailed( \
-    "control flow assertion", (m), static_cast<const char*>(__PRETTY_FUNCTION__), __FILE__, __LINE__)
+#define require(expr)                                                                                           \
+  ((expr) ? ((void)0)                                                                                           \
+          : Scroom::Utils::Detail::assertionFailed(                                                             \
+              "precondition", __STRING(expr), static_cast<const char*>(__PRETTY_FUNCTION__), __FILE__, __LINE__ \
+            ))
+#define ensure(expr)                                                                                             \
+  ((expr) ? ((void)0)                                                                                            \
+          : Scroom::Utils::Detail::assertionFailed(                                                              \
+              "postcondition", __STRING(expr), static_cast<const char*>(__PRETTY_FUNCTION__), __FILE__, __LINE__ \
+            ))
+#define verify(expr)                                                                                         \
+  ((expr) ? ((void)0)                                                                                        \
+          : Scroom::Utils::Detail::assertionFailed(                                                          \
+              "assertion", __STRING(expr), static_cast<const char*>(__PRETTY_FUNCTION__), __FILE__, __LINE__ \
+            ))
+#define defect()                                                                                    \
+  Scroom::Utils::Detail::assertionFailed(                                                           \
+    "control flow assertion", "", static_cast<const char*>(__PRETTY_FUNCTION__), __FILE__, __LINE__ \
+  )
+#define defect_message(m)                                                                            \
+  Scroom::Utils::Detail::assertionFailed(                                                            \
+    "control flow assertion", (m), static_cast<const char*>(__PRETTY_FUNCTION__), __FILE__, __LINE__ \
+  )

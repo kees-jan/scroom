@@ -24,7 +24,7 @@
 class ResizablePresentationInterface : private Interface
 {
 public:
-  using Ptr     = std::shared_ptr<ResizablePresentationInterface>;
+  using Ptr = std::shared_ptr<ResizablePresentationInterface>;
   using WeakPtr = std::weak_ptr<ResizablePresentationInterface>;
 
   virtual void setRect(ViewInterface::WeakPtr const& vi, Scroom::Utils::Rectangle<double> const& rect) = 0;

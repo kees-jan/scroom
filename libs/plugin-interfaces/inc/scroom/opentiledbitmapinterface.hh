@@ -41,16 +41,16 @@ namespace Scroom::TiledBitmap
 
   struct BitmapMetaData
   {
-    std::string                   type;
-    unsigned int                  bitsPerSample;
-    unsigned int                  samplesPerPixel;
+    std::string type;
+    unsigned int bitsPerSample;
+    unsigned int samplesPerPixel;
     Scroom::Utils::Rectangle<int> rect; /**< size & offset, in pixels, excluding any deformation by @c aspectRatio */
     boost::optional<Scroom::Utils::Point<double>> aspectRatio;
-    ColormapHelperBase::Ptr                       colormapHelper;
+    ColormapHelperBase::Ptr colormapHelper;
   };
 
-  std::ostream&      to_stream(std::ostream& os, const BitmapMetaData& bmd);
-  std::string        to_string(const BitmapMetaData& bmd);
+  std::ostream& to_stream(std::ostream& os, const BitmapMetaData& bmd);
+  std::string to_string(const BitmapMetaData& bmd);
   Metadata::Metadata to_metadata(const BitmapMetaData& bmd);
 
   class OpenTiledBitmapInterface : private Interface

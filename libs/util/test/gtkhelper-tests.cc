@@ -21,7 +21,7 @@ namespace
   class B
   {
   public:
-    using Ptr     = std::shared_ptr<B>;
+    using Ptr = std::shared_ptr<B>;
     using WeakPtr = std::weak_ptr<B>;
 
     static Ptr create() { return std::make_shared<B>(); }
@@ -32,16 +32,16 @@ static void b(const B::Ptr& /*unused*/) {}
 
 TEST(Gtk_Helpers_Tests, function_returning_bool) // NOLINT
 {
-  GSourceFunc f    = nullptr;
-  gpointer    data = nullptr;
-  B::WeakPtr  wb;
+  GSourceFunc f = nullptr;
+  gpointer data = nullptr;
+  B::WeakPtr wb;
 
   {
-    B::Ptr const sb                          = B::create();
-    wb                                       = sb;
+    B::Ptr const sb = B::create();
+    wb = sb;
     std::pair<GSourceFunc, gpointer> const w = wrap([sb] { return b(sb); });
-    f                                        = w.first;
-    data                                     = w.second;
+    f = w.first;
+    data = w.second;
   }
   EXPECT_TRUE(wb.lock());
 

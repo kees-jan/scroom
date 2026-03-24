@@ -20,7 +20,7 @@ namespace Scroom::Metadata
     struct MetaDataWindowData
     {
       std::string title;
-      Metadata    data;
+      Metadata data;
     };
 
     GtkWidget* gtk_label_with_markup(const char* text)
@@ -75,10 +75,12 @@ namespace Scroom::Metadata
 
     // Create properties window
     auto* window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    g_signal_connect(static_cast<gpointer>(window),
-                     "destroy",
-                     G_CALLBACK(on_metadata_destroyed),
-                     const_cast<MetaDataWindowData*>(windowData)); // NOLINT(cppcoreguidelines-pro-type-const-cast)
+    g_signal_connect(
+      static_cast<gpointer>(window),
+      "destroy",
+      G_CALLBACK(on_metadata_destroyed),
+      const_cast<MetaDataWindowData*>(windowData)
+    ); // NOLINT(cppcoreguidelines-pro-type-const-cast)
 
     gtk_window_set_title(GTK_WINDOW(window), windowData->title.c_str());
     auto* grid = gtk_grid_new();
@@ -87,7 +89,7 @@ namespace Scroom::Metadata
     GtkWidget* previousKey = nullptr;
     for(const auto& [keyText, valueText]: windowData->data)
     {
-      GtkWidget* key   = addNewKeyToGrid(grid, previousKey, keyText);
+      GtkWidget* key = addNewKeyToGrid(grid, previousKey, keyText);
       GtkWidget* value = addNewValueToGrid(grid, valueText, key);
       addKeyAndValueToSizeGroup(key, value);
 

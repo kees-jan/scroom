@@ -23,9 +23,9 @@ namespace Scroom::MemoryBlobs
 {
   namespace RawPageData
   {
-    using Ptr      = std::shared_ptr<uint8_t>;
+    using Ptr = std::shared_ptr<uint8_t>;
     using ConstPtr = std::shared_ptr<const uint8_t>;
-    using WeakPtr  = std::weak_ptr<uint8_t>;
+    using WeakPtr = std::weak_ptr<uint8_t>;
   } // namespace RawPageData
 
   namespace Page
@@ -40,12 +40,12 @@ namespace Scroom::MemoryBlobs
     using Ptr = std::shared_ptr<PageProvider>;
 
   private:
-    size_t                                           blockCount;
-    size_t                                           blockSize;
+    size_t blockCount;
+    size_t blockSize;
     Scroom::MemoryBlocks::BlockFactoryInterface::Ptr blockFactoryInterface;
-    Scroom::MemoryBlocks::PageList                   allPages;
-    std::list<Scroom::MemoryBlocks::Page*>           freePages;
-    boost::mutex                                     mut;
+    Scroom::MemoryBlocks::PageList allPages;
+    std::list<Scroom::MemoryBlocks::Page*> freePages;
+    boost::mutex mut;
 
   private:
     class MarkPageFree
@@ -67,8 +67,8 @@ namespace Scroom::MemoryBlobs
 
   public:
     static Ptr create(size_t blockCount, size_t blockSize);
-    Page::Ptr  getFreePage();
-    size_t     getPageSize() const;
+    Page::Ptr getFreePage();
+    size_t getPageSize() const;
   };
 
   class Blob : virtual public Scroom::Utils::Base
@@ -98,27 +98,27 @@ namespace Scroom::MemoryBlobs
     friend class UnloadData;
 
   private:
-    PageProvider::Ptr           provider;
-    size_t                      size;
-    uint8_t*                    data{nullptr};
-    State                       state{UNINITIALIZED};
-    boost::mutex                mut;
-    RawPageData::WeakPtr        weakData;
-    PageList                    pages;
+    PageProvider::Ptr provider;
+    size_t size;
+    uint8_t* data{nullptr};
+    State state{UNINITIALIZED};
+    boost::mutex mut;
+    RawPageData::WeakPtr weakData;
+    PageList pages;
     std::shared_ptr<ThreadPool> cpuBound;
-    int                         refcount{0}; // Yuk
+    int refcount{0}; // Yuk
 
   private:
     Blob(PageProvider::Ptr provider, size_t size);
-    void             unload();
+    void unload();
     RawPageData::Ptr load();
-    void             compress();
+    void compress();
 
   public:
-    static Ptr            create(PageProvider::Ptr provider, size_t size);
-    RawPageData::Ptr      get();
+    static Ptr create(PageProvider::Ptr provider, size_t size);
+    RawPageData::Ptr get();
     RawPageData::ConstPtr getConst();
-    RawPageData::Ptr      initialize(uint8_t value);
+    RawPageData::Ptr initialize(uint8_t value);
   };
 
   ////////////////////////////////////////////////////////////////////////

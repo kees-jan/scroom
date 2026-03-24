@@ -28,8 +28,8 @@ public:
   static Ptr create(Scroom::Utils::Point<double> aspectRatio_);
   static Ptr create();
 
-  void                                       setAspectRatio(double x, double y);
-  void                                       setAspectRatio(Scroom::Utils::Point<double> aspectRatio_);
+  void setAspectRatio(double x, double y);
+  void setAspectRatio(Scroom::Utils::Point<double> aspectRatio_);
   [[nodiscard]] Scroom::Utils::Point<double> getAspectRatio() const;
 
 private:
@@ -45,27 +45,27 @@ namespace Detail
     using Ptr = std::shared_ptr<ViewData>;
 
   public:
-    Scroom::Utils::Rectangle<double>   presentationArea;
-    int                                zoom{0};
+    Scroom::Utils::Rectangle<double> presentationArea;
+    int zoom{0};
     Scroom::Bitmap::BitmapSurface::Ptr image;
-    ViewInterface::WeakPtr             weakParent;
+    ViewInterface::WeakPtr weakParent;
 
   public:
     [[nodiscard]] ViewInterface::Ptr parent() const;
-    static ViewData::Ptr             create(const ViewInterface::WeakPtr& parent);
+    static ViewData::Ptr create(const ViewInterface::WeakPtr& parent);
 
     // ViewInterface
-    void                                   invalidate() override;
-    ProgressInterface::Ptr                 getProgressInterface() override;
-    void                                   addSideWidget(std::string title, GtkWidget* w) override;
-    void                                   removeSideWidget(GtkWidget* w) override;
-    void                                   addToToolbar(GtkToolItem* ti) override;
-    void                                   removeFromToolbar(GtkToolItem* ti) override;
-    void                                   registerSelectionListener(SelectionListener::Ptr ptr) override;
-    void                                   registerPostRenderer(PostRenderer::Ptr ptr) override;
-    void                                   setStatusMessage(const std::string& string) override;
+    void invalidate() override;
+    ProgressInterface::Ptr getProgressInterface() override;
+    void addSideWidget(std::string title, GtkWidget* w) override;
+    void removeSideWidget(GtkWidget* w) override;
+    void addToToolbar(GtkToolItem* ti) override;
+    void removeFromToolbar(GtkToolItem* ti) override;
+    void registerSelectionListener(SelectionListener::Ptr ptr) override;
+    void registerPostRenderer(PostRenderer::Ptr ptr) override;
+    void setStatusMessage(const std::string& string) override;
     std::shared_ptr<PresentationInterface> getCurrentPresentation() override;
-    void                                   addToolButton(GtkToggleButton* button, ToolStateListener::Ptr ptr) override;
+    void addToolButton(GtkToggleButton* button, ToolStateListener::Ptr ptr) override;
 
   private:
     explicit ViewData(ViewInterface::WeakPtr parent_);
@@ -83,10 +83,10 @@ public:
   using Ptr = std::shared_ptr<TransformPresentation>;
 
 private:
-  TransformationData::Ptr                                                  transformationData;
-  PresentationInterface::Ptr                                               presentation;
-  Colormappable::Ptr                                                       colormappable;
-  ShowMetadataInterface::Ptr                                               showMetaDataInterface;
+  TransformationData::Ptr transformationData;
+  PresentationInterface::Ptr presentation;
+  Colormappable::Ptr colormappable;
+  ShowMetadataInterface::Ptr showMetaDataInterface;
   Scroom::Utils::WeakKeyMap<ViewInterface::WeakPtr, Detail::ViewData::Ptr> viewData;
 
 private:
@@ -104,20 +104,20 @@ public:
   void redraw(ViewInterface::Ptr const& vi, cairo_t* cr, Scroom::Utils::Rectangle<double> presentationArea, int zoom) override;
   bool getProperty(const std::string& name, std::string& value) override;
   bool isPropertyDefined(const std::string& name) override;
-  std::string                  getTitle() override;
+  std::string getTitle() override;
   Scroom::Utils::Point<double> getAspectRatio() const override;
 
   // PipetteViewInterface
   PipetteLayerOperations::PipetteColor getPixelAverages(Scroom::Utils::Rectangle<double> area) override;
 
   // Colormappable
-  void          setColormap(Colormap::Ptr colormap) override;
+  void setColormap(Colormap::Ptr colormap) override;
   Colormap::Ptr getOriginalColormap() override;
-  int           getNumberOfColors() override;
-  Color         getMonochromeColor() override;
-  void          setMonochromeColor(const Color& c) override;
-  void          setTransparentBackground() override;
-  void          disableTransparentBackground() override;
-  bool          getTransparentBackground() override;
-  void          showMetadata(GtkWindow* parent) override;
+  int getNumberOfColors() override;
+  Color getMonochromeColor() override;
+  void setMonochromeColor(const Color& c) override;
+  void setTransparentBackground() override;
+  void disableTransparentBackground() override;
+  bool getTransparentBackground() override;
+  void showMetadata(GtkWindow* parent) override;
 };

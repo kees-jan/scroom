@@ -25,13 +25,13 @@
 static Scroom::MemoryBlobs::PageProvider::Ptr createProvider(double width, double height, int bpp)
 {
   const double tileCount = (width * height) / (TILESIZE * TILESIZE);
-  const double tileSize  = (bpp / 8.0) * TILESIZE * TILESIZE;
+  const double tileSize = (bpp / 8.0) * TILESIZE * TILESIZE;
 
   const double guessedTileSizeAfterCompression = tileSize / 100;
-  const int    pagesize                        = 4096;
-  const int    pagesPerBlock                   = std::max(int(ceil(guessedTileSizeAfterCompression / 10 / pagesize)), 1);
+  const int pagesize = 4096;
+  const int pagesPerBlock = std::max(int(ceil(guessedTileSizeAfterCompression / 10 / pagesize)), 1);
 
-  const int blockSize  = pagesPerBlock * pagesize;
+  const int blockSize = pagesPerBlock * pagesize;
   const int blockCount = std::max(int(ceil(tileCount / 10)), 64);
 
   Scroom::Logger logger;
@@ -43,24 +43,26 @@ static Scroom::MemoryBlobs::PageProvider::Ptr createProvider(double width, doubl
 class DataFetcher
 {
 private:
-  Layer::Ptr                 layer;
-  int                        height;
-  int                        horTileCount;
-  int                        verTileCount;
-  int                        currentRow{0};
-  SourcePresentation::Ptr    sp;
-  ThreadPool::Ptr            threadPool;
+  Layer::Ptr layer;
+  int height;
+  int horTileCount;
+  int verTileCount;
+  int currentRow{0};
+  SourcePresentation::Ptr sp;
+  ThreadPool::Ptr threadPool;
   ThreadPool::WeakQueue::Ptr queue;
-  std::function<void()>      on_finished;
+  std::function<void()> on_finished;
 
 public:
-  DataFetcher(Layer::Ptr                 layer,
-              int                        height,
-              int                        horTileCount,
-              int                        verTileCount,
-              SourcePresentation::Ptr    sp,
-              ThreadPool::WeakQueue::Ptr queue,
-              std::function<void()>      on_finished);
+  DataFetcher(
+    Layer::Ptr layer,
+    int height,
+    int horTileCount,
+    int verTileCount,
+    SourcePresentation::Ptr sp,
+    ThreadPool::WeakQueue::Ptr queue,
+    std::function<void()> on_finished
+  );
 
   void operator()();
 };
@@ -149,7 +151,8 @@ CompressedTileLine& Layer::getTileLine(int j)
 void Layer::fetchData(SourcePresentation::Ptr sp, const ThreadPool::WeakQueue::Ptr& queue, std::function<void()> on_finished)
 {
   DataFetcher const df(
-    shared_from_this<Layer>(), height, horTileCount, verTileCount, std::move(sp), queue, std::move(on_finished));
+    shared_from_this<Layer>(), height, horTileCount, verTileCount, std::move(sp), queue, std::move(on_finished)
+  );
   CpuBound()->schedule(df, DATAFETCH_PRIO, queue);
 }
 
@@ -190,13 +193,15 @@ void Layer::close(ViewInterface::WeakPtr vi)
 ////////////////////////////////////////////////////////////////////////
 /// DataFetcher
 
-DataFetcher::DataFetcher(Layer::Ptr                 layer_,
-                         int                        height_,
-                         int                        horTileCount_,
-                         int                        verTileCount_,
-                         SourcePresentation::Ptr    sp_,
-                         ThreadPool::WeakQueue::Ptr queue_,
-                         std::function<void()>      on_finished_)
+DataFetcher::DataFetcher(
+  Layer::Ptr layer_,
+  int height_,
+  int horTileCount_,
+  int verTileCount_,
+  SourcePresentation::Ptr sp_,
+  ThreadPool::WeakQueue::Ptr queue_,
+  std::function<void()> on_finished_
+)
   : layer(std::move(layer_))
   , height(height_)
   , horTileCount(horTileCount_)
@@ -214,12 +219,12 @@ void DataFetcher::operator()()
 
   threadPool->schedule(qj, REDUCE_PRIO, queue);
 
-  CompressedTileLine&    tileLine = layer->getTileLine(currentRow);
+  CompressedTileLine& tileLine = layer->getTileLine(currentRow);
   std::vector<Tile::Ptr> tiles;
   for(int x = 0; x < horTileCount; x++)
   {
-    CompressedTile::Ptr const  ti = tileLine[x];
-    Scroom::Utils::Stuff const s  = ti->initialize();
+    CompressedTile::Ptr const ti = tileLine[x];
+    Scroom::Utils::Stuff const s = ti->initialize();
     tiles.push_back(ti->getTileSync());
   }
   const int lineCount = std::min(TILESIZE, height - currentRow * TILESIZE);

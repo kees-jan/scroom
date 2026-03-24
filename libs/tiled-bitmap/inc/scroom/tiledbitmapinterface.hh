@@ -30,9 +30,9 @@
 enum TileState
 {
   TILE_UNINITIALIZED, /**< Tile does not yet contain any data */
-  TILE_UNLOADED,      /**< Tile does contain data, but has been swapped out */
-  TILE_LOADED,        /**< Tile does contain data, and data is in memory */
-  TILE_OUT_OF_BOUNDS  /**< Tile is located outside the bitmap area */
+  TILE_UNLOADED, /**< Tile does contain data, but has been swapped out */
+  TILE_LOADED, /**< Tile does contain data, and data is in memory */
+  TILE_OUT_OF_BOUNDS /**< Tile is located outside the bitmap area */
 };
 
 /**
@@ -86,12 +86,14 @@ public:
    *    already, this may either be an empty reference, or a reference
    *    to the value returned by cacheZoom()
    */
-  virtual void draw(cairo_t*                         cr,
-                    const ConstTile::Ptr&            tile,
-                    Scroom::Utils::Rectangle<double> tileArea,
-                    Scroom::Utils::Rectangle<double> viewArea,
-                    int                              zoom,
-                    Scroom::Utils::Stuff             cache) = 0;
+  virtual void draw(
+    cairo_t* cr,
+    const ConstTile::Ptr& tile,
+    Scroom::Utils::Rectangle<double> tileArea,
+    Scroom::Utils::Rectangle<double> viewArea,
+    int zoom,
+    Scroom::Utils::Stuff cache
+  ) = 0;
 
   /**
    * Draw the given state into the given viewArea

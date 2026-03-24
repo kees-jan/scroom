@@ -33,12 +33,12 @@ namespace Scroom::Utils
   class Base : public std::enable_shared_from_this<Base>
   {
   public:
-    Base()                       = default;
-    Base(const Base&)            = delete;
-    Base(Base&&)                 = delete;
+    Base() = default;
+    Base(const Base&) = delete;
+    Base(Base&&) = delete;
     Base& operator=(const Base&) = delete;
-    Base& operator=(Base&&)      = delete;
-    virtual ~Base()              = default;
+    Base& operator=(Base&&) = delete;
+    virtual ~Base() = default;
 
     /**
      * Calls shared_from_this() with a built-in dynamic cast, to
@@ -69,10 +69,10 @@ namespace Scroom::Utils
       : f(std::move(f_))
     {
     }
-    on_scope_exit(const on_scope_exit&)            = delete;
-    on_scope_exit(on_scope_exit&&)                 = delete;
+    on_scope_exit(const on_scope_exit&) = delete;
+    on_scope_exit(on_scope_exit&&) = delete;
     on_scope_exit& operator=(const on_scope_exit&) = delete;
-    on_scope_exit& operator=(on_scope_exit&&)      = delete;
+    on_scope_exit& operator=(on_scope_exit&&) = delete;
 
     ~on_scope_exit() { f(); }
 
@@ -94,10 +94,10 @@ namespace Scroom::Utils
       : f(std::move(f_))
     {
     }
-    optional_cleanup(const optional_cleanup&)            = delete;
-    optional_cleanup(optional_cleanup&&)                 = delete;
+    optional_cleanup(const optional_cleanup&) = delete;
+    optional_cleanup(optional_cleanup&&) = delete;
     optional_cleanup& operator=(const optional_cleanup&) = delete;
-    optional_cleanup& operator=(optional_cleanup&&)      = delete;
+    optional_cleanup& operator=(optional_cleanup&&) = delete;
 
     ~optional_cleanup()
     {
@@ -111,7 +111,7 @@ namespace Scroom::Utils
 
   private:
     bool cleanup{true};
-    F    f;
+    F f;
   };
 
   template <typename K, typename V>
@@ -135,13 +135,13 @@ namespace Scroom::Utils
 
   public:
     const std::string name;
-    boost::mutex      mut;
-    long              count{0};
+    boost::mutex mut;
+    long count{0};
 
   public:
     static Ptr create(const std::string& name);
-    void       ping() { /* dumpCounts(); */ }
-    void       inc()
+    void ping() { /* dumpCounts(); */ }
+    void inc()
     {
       boost::unique_lock<boost::mutex> const lock(mut);
       ++count;
@@ -165,17 +165,17 @@ namespace Scroom::Utils
   public:
   private:
     std::list<Count::Ptr> counts;
-    boost::mutex          mut;
-    Scroom::Logger        logger;
+    boost::mutex mut;
+    Scroom::Logger logger;
 
   private:
     Counter();
 
   public:
-    static Counter*       instance();
-    void                  registerCount(const Count::Ptr& count);
-    void                  unregisterCount(const Count::Ptr& count);
-    void                  dump();
+    static Counter* instance();
+    void registerCount(const Count::Ptr& count);
+    void unregisterCount(const Count::Ptr& count);
+    void dump();
     std::list<Count::Ptr> getCounts();
   };
 
@@ -213,7 +213,7 @@ namespace Scroom::Utils
     }
 
     Counted& operator=(const Counted&) = default;
-    Counted& operator=(Counted&&)      = default;
+    Counted& operator=(Counted&&) = default;
 
     virtual ~Counted() { data->dec(); }
   };

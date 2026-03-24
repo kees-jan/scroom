@@ -16,9 +16,9 @@
 #include <scroom/observable.hh>
 #include <scroom/presentationinterface.hh>
 
-const std::string COLORMAPPABLE_PROPERTY_NAME            = "Colormappable";
+const std::string COLORMAPPABLE_PROPERTY_NAME = "Colormappable";
 const std::string MONOCHROME_COLORMAPPABLE_PROPERTY_NAME = "Monochrome Colormappable";
-const std::string TRANSPARENT_BACKGROUND_PROPERTY_NAME   = "Transparent Background";
+const std::string TRANSPARENT_BACKGROUND_PROPERTY_NAME = "Transparent Background";
 
 /**
  * Represent a colormap
@@ -26,12 +26,12 @@ const std::string TRANSPARENT_BACKGROUND_PROPERTY_NAME   = "Transparent Backgrou
 class Colormap
 {
 public:
-  using Ptr      = std::shared_ptr<Colormap>;
+  using Ptr = std::shared_ptr<Colormap>;
   using ConstPtr = std::shared_ptr<const Colormap>;
-  using WeakPtr  = std::weak_ptr<Colormap>;
+  using WeakPtr = std::weak_ptr<Colormap>;
 
 public:
-  std::string        name;   /**< Name of this colormap */
+  std::string name; /**< Name of this colormap */
   std::vector<Color> colors; /**< Colors in this colormap */
 
 private:
@@ -49,7 +49,7 @@ public:
   static Colormap::Ptr createDefault(int n)
   {
     Colormap::Ptr result = create();
-    result->name         = "Default";
+    result->name = "Default";
     result->colors.reserve(n);
     result->colors.clear();
     const double max = n - 1;
@@ -65,7 +65,7 @@ public:
   static Colormap::Ptr createDefaultInverted(int n)
   {
     Colormap::Ptr result = create();
-    result->name         = "0 is white";
+    result->name = "0 is white";
     result->colors.reserve(n);
     result->colors.clear();
     const double max = n - 1;
@@ -111,7 +111,7 @@ public:
 class Colormappable : private Interface
 {
 public:
-  using Ptr     = std::shared_ptr<Colormappable>;
+  using Ptr = std::shared_ptr<Colormappable>;
   using WeakPtr = std::weak_ptr<Colormappable>;
 
   /** Request that the presentation use the given colormap */
@@ -127,17 +127,17 @@ public:
    * @name For monochrome presentations: Set/Get the current color
    * @{
    */
-  virtual Color getMonochromeColor()               = 0;
-  virtual void  setMonochromeColor(const Color& c) = 0;
+  virtual Color getMonochromeColor() = 0;
+  virtual void setMonochromeColor(const Color& c) = 0;
   /** @} */
 
   /**
    * @name Manipulate the "Transparent Background" setting of the presentation
    * @{
    */
-  virtual void setTransparentBackground()     = 0;
+  virtual void setTransparentBackground() = 0;
   virtual void disableTransparentBackground() = 0;
-  virtual bool getTransparentBackground()     = 0;
+  virtual bool getTransparentBackground() = 0;
   /** @} */
 };
 
@@ -168,14 +168,14 @@ public:
   ////////////////////////////////////////////////////////////////////////
   // Colormappable
   ////////////////////////////////////////////////////////////////////////
-  void          setColormap(Colormap::Ptr colormap) override;
+  void setColormap(Colormap::Ptr colormap) override;
   Colormap::Ptr getOriginalColormap() override;
-  int           getNumberOfColors() override;
-  Color         getMonochromeColor() override;
-  void          setMonochromeColor(const Color& c) override;
-  void          setTransparentBackground() override;
-  void          disableTransparentBackground() override;
-  bool          getTransparentBackground() override;
+  int getNumberOfColors() override;
+  Color getMonochromeColor() override;
+  void setMonochromeColor(const Color& c) override;
+  void setTransparentBackground() override;
+  void disableTransparentBackground() override;
+  bool getTransparentBackground() override;
 
   ////////////////////////////////////////////////////////////////////////
   // ColormapProvider
@@ -217,20 +217,20 @@ public:
   ////////////////////////////////////////////////////////////////////////
 
   Color getMonochromeColor() override;
-  void  setMonochromeColor(const Color& c) override;
-  void  setTransparentBackground() override;
-  void  disableTransparentBackground() override;
-  bool  getTransparentBackground() override;
+  void setMonochromeColor(const Color& c) override;
+  void setTransparentBackground() override;
+  void disableTransparentBackground() override;
+  bool getTransparentBackground() override;
 
 private:
   MonochromeColormapHelper(int numberOfColors, bool inverted);
-  void                 regenerateColormap();
+  void regenerateColormap();
   static Colormap::Ptr generateInitialColormap(int numberOfColors, bool inverted);
 
 private:
-  int   numberOfColors;
-  bool  inverted;
+  int numberOfColors;
+  bool inverted;
   Color blackish;
   Color whitish;
-  bool  transparentBackground{false};
+  bool transparentBackground{false};
 };

@@ -52,7 +52,7 @@ enum
 class TweakPresentationPosition
 {
 public:
-  using Ptr   = std::shared_ptr<TweakPresentationPosition>;
+  using Ptr = std::shared_ptr<TweakPresentationPosition>;
   using Point = Scroom::Utils::Point<double>;
 
   static Ptr create(Point aspectRatio_) { return Ptr(new TweakPresentationPosition(aspectRatio_)); }
@@ -77,7 +77,7 @@ private:
 class TweakRulers
 {
 public:
-  using Ptr   = std::shared_ptr<TweakRulers>;
+  using Ptr = std::shared_ptr<TweakRulers>;
   using Point = Scroom::Utils::Point<double>;
 
   static Ptr create(Point aspectRatio_) { return Ptr(new TweakRulers(aspectRatio_)); }
@@ -158,11 +158,11 @@ Scroom::Utils::Rectangle<double> toRectangle(Selection s) { return Scroom::Utils
 class ITweakSelection : public Interface
 {
 public:
-  using Ptr   = std::shared_ptr<ITweakSelection>;
+  using Ptr = std::shared_ptr<ITweakSelection>;
   using Point = Scroom::Utils::Point<double>;
 
   [[nodiscard]] virtual Selection tweakSelection(Selection selection) const = 0;
-  virtual void                    setAspectRatio(Point aspectRatio_)        = 0;
+  virtual void setAspectRatio(Point aspectRatio_) = 0;
 };
 
 class TweakSelection : public ITweakSelection
@@ -175,13 +175,13 @@ public:
   [[nodiscard]] Selection tweakSelection(Selection selection) const override
   {
     const auto original = toRectangle(selection);
-    const auto tweaked  = tweakSelection(original);
+    const auto tweaked = tweakSelection(original);
 
     const auto startCorner = find_closest_corner(selection.start, original);
-    const auto endCorner   = find_opposed_corner(startCorner);
+    const auto endCorner = find_opposed_corner(startCorner);
 
     const auto start = corner_getter(startCorner)(tweaked);
-    const auto end   = corner_getter(endCorner)(tweaked);
+    const auto end = corner_getter(endCorner)(tweaked);
 
     return {start, end};
   }
@@ -231,7 +231,7 @@ public:
 class TweakPositionTextBox
 {
 public:
-  using Ptr   = std::shared_ptr<TweakPositionTextBox>;
+  using Ptr = std::shared_ptr<TweakPositionTextBox>;
   using Point = Scroom::Utils::Point<double>;
 
   static Ptr create(Point aspectRatio_) { return Ptr(new TweakPositionTextBox(aspectRatio_)); }
@@ -274,7 +274,7 @@ static Scroom::Utils::Point<double> eventToPoint(GdkEventMotion* event) { return
 static void on_newWindow_activate(GtkMenuItem* /*unused*/, gpointer user_data)
 {
   PresentationInterface::WeakPtr const& wp = *static_cast<PresentationInterface::WeakPtr*>(user_data); // Yuk!
-  PresentationInterface::Ptr const      p  = wp.lock();
+  PresentationInterface::Ptr const p = wp.lock();
   if(p)
   {
     find_or_create_scroom(p);
@@ -289,31 +289,33 @@ View::View(GtkBuilder* scroomXml_)
   , tweakPresentationPosition(TweakPresentationPosition::create(aspectRatio))
   , tweakPositionTextBox(TweakPositionTextBox::create(aspectRatio))
   , tweakRulers(TweakRulers::create(aspectRatio))
-  , tweakSelection{{SelectionType::GRID, TweakGridSelection::create(aspectRatio)},
-                   {SelectionType::PIXEL, TweakPixelSelection::create(aspectRatio)}}
+  , tweakSelection{
+      {SelectionType::GRID, TweakGridSelection::create(aspectRatio)},
+      {SelectionType::PIXEL, TweakPixelSelection::create(aspectRatio)}
+    }
 
 {
   PluginManager::Ptr const pluginManager = PluginManager::getInstance();
-  window                                 = GTK_WINDOW(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "scroom")));
-  drawingArea                            = GTK_WIDGET(gtk_builder_get_object(scroomXml_, "drawingarea"));
-  vscrollbar                             = GTK_SCROLLBAR(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "vscrollbar")));
-  hscrollbar                             = GTK_SCROLLBAR(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "hscrollbar")));
-  vscrollbaradjustment                   = gtk_range_get_adjustment(GTK_RANGE(vscrollbar));
-  hscrollbaradjustment                   = gtk_range_get_adjustment(GTK_RANGE(hscrollbar));
-  vruler_area                            = GTK_DRAWING_AREA(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "vruler_area")));
-  hruler_area                            = GTK_DRAWING_AREA(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "hruler_area")));
-  xTextBox                               = GTK_ENTRY(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "x_textbox")));
-  yTextBox                               = GTK_ENTRY(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "y_textbox")));
+  window = GTK_WINDOW(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "scroom")));
+  drawingArea = GTK_WIDGET(gtk_builder_get_object(scroomXml_, "drawingarea"));
+  vscrollbar = GTK_SCROLLBAR(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "vscrollbar")));
+  hscrollbar = GTK_SCROLLBAR(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "hscrollbar")));
+  vscrollbaradjustment = gtk_range_get_adjustment(GTK_RANGE(vscrollbar));
+  hscrollbaradjustment = gtk_range_get_adjustment(GTK_RANGE(hscrollbar));
+  vruler_area = GTK_DRAWING_AREA(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "vruler_area")));
+  hruler_area = GTK_DRAWING_AREA(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "hruler_area")));
+  xTextBox = GTK_ENTRY(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "x_textbox")));
+  yTextBox = GTK_ENTRY(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "y_textbox")));
 
   // Create rulers and attach ruler areas to them
   vruler = Ruler::create(Ruler::VERTICAL, GTK_WIDGET(vruler_area));
   hruler = Ruler::create(Ruler::HORIZONTAL, GTK_WIDGET(hruler_area));
 
-  menubar     = GTK_WIDGET(gtk_builder_get_object(scroomXml_, "menubar"));
-  statusArea  = GTK_WIDGET(gtk_builder_get_object(scroomXml_, "status_area"));
+  menubar = GTK_WIDGET(gtk_builder_get_object(scroomXml_, "menubar"));
+  statusArea = GTK_WIDGET(gtk_builder_get_object(scroomXml_, "status_area"));
   toolbarArea = GTK_WIDGET(gtk_builder_get_object(scroomXml_, "toolbar_area"));
 
-  zoomBox   = GTK_COMBO_BOX(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "zoomboxcombo")));
+  zoomBox = GTK_COMBO_BOX(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "zoomboxcombo")));
   zoomItems = gtk_list_store_new(N_COLUMNS, G_TYPE_STRING, G_TYPE_INT);
 
   gtk_combo_box_set_model(zoomBox, GTK_TREE_MODEL(zoomItems));
@@ -321,17 +323,17 @@ View::View(GtkBuilder* scroomXml_)
   gtk_cell_layout_pack_end(GTK_CELL_LAYOUT(zoomBox), txt, true);
   gtk_cell_layout_set_attributes(GTK_CELL_LAYOUT(zoomBox), txt, "text", COLUMN_TEXT, NULL);
 
-  progressBar        = GTK_PROGRESS_BAR(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "progressbar")));
+  progressBar = GTK_PROGRESS_BAR(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "progressbar")));
   progressBarManager = ProgressBarManager::create(progressBar);
-  statusBar          = GTK_STATUSBAR(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "statusbar")));
+  statusBar = GTK_STATUSBAR(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "statusbar")));
   statusBarContextId = gtk_statusbar_get_context_id(statusBar, "View");
 
   GtkWidget* panelWindow = GTK_WIDGET(gtk_builder_get_object(scroomXml_, "panelWindow"));
-  GtkBox*    panel       = GTK_BOX(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "panel")));
+  GtkBox* panel = GTK_BOX(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "panel")));
   sidebarManager.setWidgets(panelWindow, panel);
-  toolBar          = GTK_TOOLBAR(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "toolbar")));
+  toolBar = GTK_TOOLBAR(GTK_WIDGET(gtk_builder_get_object(scroomXml_, "toolbar")));
   toolBarSeparator = nullptr;
-  toolBarCount     = 0;
+  toolBarCount = 0;
 
   on_newPresentationInterfaces_update(pluginManager->getNewPresentationInterfaces());
   updateNewWindowMenu();
@@ -361,7 +363,7 @@ void View::redraw(cairo_t* cr)
 {
   if(presentation)
   {
-    const double                       pixelSize         = pixelSizeFromZoom(zoom);
+    const double pixelSize = pixelSizeFromZoom(zoom);
     Scroom::Utils::Point<double> const visibleRegionSize = drawingAreaSize.to<double>() / pixelSize;
 
     auto rect = Scroom::Utils::make_rect(tweakedPosition(), visibleRegionSize);
@@ -408,8 +410,8 @@ void View::setPresentation(PresentationInterface::Ptr presentation_)
   {
     presentation->open(me);
     presentationRect = presentation->getRect();
-    aspectRatio      = presentation->getAspectRatio();
-    std::string s    = presentation->getTitle();
+    aspectRatio = presentation->getAspectRatio();
+    std::string s = presentation->getTitle();
 
     tweakPresentationPosition->setAspectRatio(aspectRatio);
     tweakPositionTextBox->setAspectRatio(aspectRatio);
@@ -430,9 +432,9 @@ void View::setPresentation(PresentationInterface::Ptr presentation_)
     gtk_window_set_title(window, s.c_str());
   }
 
-  zoom                   = 0;
+  zoom = 0;
   const double pixelSize = pixelSizeFromZoom(zoom);
-  position               = -drawingAreaSize.to<double>() / pixelSize / 2;
+  position = -drawingAreaSize.to<double>() / pixelSize / 2;
 
   updateZoom();
   updateScrollbars();
@@ -440,25 +442,29 @@ void View::setPresentation(PresentationInterface::Ptr presentation_)
   invalidate();
 }
 
-void View::updateScrollbar(GtkAdjustment* adj,
-                           int            zoom_,
-                           double         value,
-                           double         presentationStart,
-                           double         presentationSize,
-                           double         windowSize)
+void View::updateScrollbar(
+  GtkAdjustment* adj,
+  int zoom_,
+  double value,
+  double presentationStart,
+  double presentationSize,
+  double windowSize
+)
 {
   const double pixelSize = pixelSizeFromZoom(zoom_);
 
   presentationStart -= windowSize / pixelSize / 2;
   presentationSize += windowSize / pixelSize;
 
-  gtk_adjustment_configure(adj,
-                           value,
-                           presentationStart,
-                           presentationStart + presentationSize,
-                           1 / pixelSize / 2,
-                           3 * windowSize / pixelSize / 4,
-                           windowSize / pixelSize);
+  gtk_adjustment_configure(
+    adj,
+    value,
+    presentationStart,
+    presentationStart + presentationSize,
+    1 / pixelSize / 2,
+    3 * windowSize / pixelSize / 4,
+    windowSize / pixelSize
+  );
 }
 
 void View::updateScrollbars()
@@ -503,8 +509,8 @@ void View::updateZoom()
   if(presentation)
   {
     int presentationHeight = presentationRect.height();
-    int presentationWidth  = presentationRect.width();
-    int minZoom            = 0;
+    int presentationWidth = presentationRect.width();
+    int minZoom = 0;
 
     while(presentationHeight > drawingAreaSize.y / 2 || presentationWidth > drawingAreaSize.x / 2)
     {
@@ -516,8 +522,8 @@ void View::updateZoom()
     gtk_widget_set_sensitive(GTK_WIDGET(zoomBox), true);
 
     int zMax = MaxZoom - minZoom;
-    zMax     = std::max(zMax, 1 + MaxZoom - zoom);
-    zMax     = std::min<size_t>(zMax, sizeof(zoomfactor) / sizeof(zoomfactor[0]));
+    zMax = std::max(zMax, 1 + MaxZoom - zoom);
+    zMax = std::min<size_t>(zMax, sizeof(zoomfactor) / sizeof(zoomfactor[0]));
 
     gtk_list_store_clear(zoomItems);
     for(int z = 0; z < zMax; z++)
@@ -544,7 +550,7 @@ void View::updateRulers()
 {
   auto visible = tweakRulers->tweakRulers(tweakedPosition(), drawingAreaSize, zoom);
 
-  const auto topLeft     = visible.getTopLeft();
+  const auto topLeft = visible.getTopLeft();
   const auto bottomRight = visible.getBottomRight();
 
   hruler->setRange(topLeft.x, bottomRight.x);
@@ -573,7 +579,8 @@ void View::toolButtonToggled(GtkToggleButton* button)
 // Scroom events
 
 void View::on_newPresentationInterfaces_update(
-  const std::map<NewPresentationInterface::Ptr, std::string>& newPresentationInterfaces)
+  const std::map<NewPresentationInterface::Ptr, std::string>& newPresentationInterfaces
+)
 {
   GtkWidget* new_menu_item = GTK_WIDGET(gtk_builder_get_object(scroomXml, "new"));
 
@@ -611,7 +618,7 @@ void View::on_presentation_destroyed() { updateNewWindowMenu(); }
 void View::on_configure()
 {
   // There should be a simpler way to do this...
-  cairo_region_t*       r = gdk_window_get_visible_region(gtk_widget_get_window(drawingArea));
+  cairo_region_t* r = gdk_window_get_visible_region(gtk_widget_get_window(drawingArea));
   cairo_rectangle_int_t rect;
   cairo_region_get_extents(r, &rect);
 
@@ -642,11 +649,13 @@ void View::on_scrollwheel(GdkEventScroll* event)
   if(event->direction == GDK_SCROLL_UP || event->direction == GDK_SCROLL_DOWN)
   {
     int newZoom = zoom + ((event->direction == GDK_SCROLL_UP) ? 1 : -1);
-    newZoom     = std::min(MaxZoom, newZoom);
+    newZoom = std::min(MaxZoom, newZoom);
 
     GtkTreeIter iter;
-    for(bool valid = gtk_tree_model_get_iter_first(GTK_TREE_MODEL(zoomItems), &iter); valid;
-        valid      = gtk_tree_model_iter_next(GTK_TREE_MODEL(zoomItems), &iter))
+    for(
+      bool valid = gtk_tree_model_get_iter_first(GTK_TREE_MODEL(zoomItems), &iter); valid;
+      valid = gtk_tree_model_iter_next(GTK_TREE_MODEL(zoomItems), &iter)
+    )
     {
       GValue value = G_VALUE_INIT;
       gtk_tree_model_get_value(GTK_TREE_MODEL(zoomItems), &iter, COLUMN_ZOOM, &value);
@@ -665,7 +674,7 @@ void View::on_scrollwheel(GdkEventScroll* event)
 void View::on_zoombox_changed()
 {
   GtkTreeIter iter;
-  GValue      value = G_VALUE_INIT;
+  GValue value = G_VALUE_INIT;
   gtk_combo_box_get_active_iter(zoomBox, &iter);
 
   if(gtk_list_store_iter_is_valid(zoomItems, &iter))
@@ -727,16 +736,16 @@ void View::on_buttonPress(GdkEventButton* event)
   {
     // Begin left-dragging
     modifiermove = GDK_BUTTON1_MASK;
-    cachedPoint  = eventToPoint(event);
+    cachedPoint = eventToPoint(event);
   }
   else if(event->button == 3)
   {
     auto point = windowPointToPresentationPoint(eventToPoint(event));
-    selection  = point;
+    selection = point;
     for(const auto& listener: selectionListeners)
     {
-      auto       f                = tweakSelection.find(listener->getSelectionType());
-      auto       tweaker          = f == tweakSelection.end() ? tweakSelection.at(SelectionType::DEFAULT) : f->second;
+      auto f = tweakSelection.find(listener->getSelectionType());
+      auto tweaker = f == tweakSelection.end() ? tweakSelection.at(SelectionType::DEFAULT) : f->second;
       const auto tweakedSelection = tweaker->tweakSelection(*selection);
       listener->onSelectionStart(tweakedSelection, shared_from_this<ViewInterface>());
     }
@@ -748,7 +757,7 @@ void View::on_buttonRelease(GdkEventButton* event)
   if(event->button == 1 && modifiermove == GDK_BUTTON1_MASK)
   {
     // End left-dragging
-    modifiermove  = 0;
+    modifiermove = 0;
     cachedPoint.x = 0;
     cachedPoint.y = 0;
   }
@@ -757,8 +766,8 @@ void View::on_buttonRelease(GdkEventButton* event)
     selection->end = windowPointToPresentationPoint(eventToPoint(event));
     for(const auto& listener: selectionListeners)
     {
-      auto       f                = tweakSelection.find(listener->getSelectionType());
-      auto       tweaker          = f == tweakSelection.end() ? tweakSelection.at(SelectionType::DEFAULT) : f->second;
+      auto f = tweakSelection.find(listener->getSelectionType());
+      auto tweaker = f == tweakSelection.end() ? tweakSelection.at(SelectionType::DEFAULT) : f->second;
       const auto tweakedSelection = tweaker->tweakSelection(*selection);
       listener->onSelectionEnd(tweakedSelection, shared_from_this<ViewInterface>());
     }
@@ -773,8 +782,8 @@ void View::on_motion_notify(GdkEventMotion* event)
     auto mousePos = eventToPoint(event);
 
     const auto pixelSize = pixelSizeFromZoom(zoom);
-    const auto newPos    = position - (mousePos - cachedPoint) / pixelSize;
-    cachedPoint          = mousePos;
+    const auto newPos = position - (mousePos - cachedPoint) / pixelSize;
+    cachedPoint = mousePos;
 
     updateXY(newPos, OTHER);
   }
@@ -783,8 +792,8 @@ void View::on_motion_notify(GdkEventMotion* event)
     selection->end = windowPointToPresentationPoint(eventToPoint(event));
     for(const auto& listener: selectionListeners)
     {
-      auto       f                = tweakSelection.find(listener->getSelectionType());
-      auto       tweaker          = f == tweakSelection.end() ? tweakSelection.at(SelectionType::DEFAULT) : f->second;
+      auto f = tweakSelection.find(listener->getSelectionType());
+      auto tweaker = f == tweakSelection.end() ? tweakSelection.at(SelectionType::DEFAULT) : f->second;
       const auto tweakedSelection = tweaker->tweakSelection(*selection);
       listener->onSelectionUpdate(tweakedSelection, shared_from_this<ViewInterface>());
     }
@@ -882,7 +891,8 @@ void View::addToolButton(GtkToggleButton* button, ToolStateListener::Ptr callbac
         gtk_toggle_button_set_active(button, false);
         gtk_widget_set_sensitive(GTK_WIDGET(button), true);
       }
-    });
+    }
+  );
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -919,7 +929,7 @@ void View::updateNewWindowMenu()
 
     //// Update menu
     PresentationInterface::Ptr const p = cur->first.lock();
-    GtkWidget*                       m = cur->second;
+    GtkWidget* m = cur->second;
     if(p && m)
     {
       // Do nothing
@@ -937,10 +947,12 @@ void View::updateNewWindowMenu()
       cur->second = m;
       gtk_container_add(GTK_CONTAINER(newWindow_menu), m);
 
-      g_signal_connect(static_cast<gpointer>(m),
-                       "activate",
-                       G_CALLBACK(on_newWindow_activate),
-                       const_cast<PresentationInterface::WeakPtr*>(&cur->first));
+      g_signal_connect(
+        static_cast<gpointer>(m),
+        "activate",
+        G_CALLBACK(on_newWindow_activate),
+        const_cast<PresentationInterface::WeakPtr*>(&cur->first)
+      );
     }
     else if(!p && m)
     {

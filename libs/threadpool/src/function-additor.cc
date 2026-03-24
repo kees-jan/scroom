@@ -64,8 +64,8 @@ Scroom::Detail::ThreadPool::FunctionAdditor operator+(boost::function<void()> co
   return Scroom::Detail::ThreadPool::FunctionAdditor() + f1 + f2;
 }
 
-Scroom::Detail::ThreadPool::FunctionAdditor& operator+(boost::function<void()> const&               f1,
-                                                       Scroom::Detail::ThreadPool::FunctionAdditor& f2)
+Scroom::Detail::ThreadPool::FunctionAdditor&
+  operator+(boost::function<void()> const& f1, Scroom::Detail::ThreadPool::FunctionAdditor& f2)
 {
   f2.addBefore(f1);
 

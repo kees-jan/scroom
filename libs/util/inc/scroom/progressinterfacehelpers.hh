@@ -23,7 +23,7 @@ namespace Scroom::Utils
   class ProgressStateInterface : private Interface
   {
   public:
-    using Ptr     = std::shared_ptr<ProgressStateInterface>;
+    using Ptr = std::shared_ptr<ProgressStateInterface>;
     using WeakPtr = std::weak_ptr<ProgressStateInterface>;
 
     enum State
@@ -106,7 +106,7 @@ namespace Scroom::Utils
       using Ptr = std::shared_ptr<ProgressStore>;
 
     private:
-      State  state{IDLE};
+      State state{IDLE};
       double progress{0.0};
 
     private:
@@ -138,14 +138,14 @@ namespace Scroom::Utils
 
     private:
       ProgressInterfaceBroadcaster::Ptr parent;
-      ProgressInterface::Ptr            child;
+      ProgressInterface::Ptr child;
 
     private:
       Unsubscriber(ProgressInterfaceBroadcaster::Ptr parent, ProgressInterface::Ptr child);
-      Unsubscriber(const Unsubscriber&)            = delete;
-      Unsubscriber(Unsubscriber&&)                 = delete;
+      Unsubscriber(const Unsubscriber&) = delete;
+      Unsubscriber(Unsubscriber&&) = delete;
       Unsubscriber& operator=(const Unsubscriber&) = delete;
-      Unsubscriber& operator=(Unsubscriber&&)      = delete;
+      Unsubscriber& operator=(Unsubscriber&&) = delete;
 
     public:
       static Ptr create(ProgressInterfaceBroadcaster::Ptr const& parent, ProgressInterface::Ptr const& child);
@@ -155,9 +155,9 @@ namespace Scroom::Utils
     friend class Unsubscriber;
 
   private:
-    boost::mutex                     mut;
+    boost::mutex mut;
     std::set<ProgressInterface::Ptr> children;
-    Detail::ProgressStore::Ptr       store;
+    Detail::ProgressStore::Ptr store;
 
   public:
     static Ptr create();
@@ -190,9 +190,9 @@ namespace Scroom::Utils
       using Ptr = std::shared_ptr<ChildData>;
 
     public:
-      boost::mutex                  mut;
+      boost::mutex mut;
       ProgressStateInterface::State state{ProgressStateInterface::IDLE};
-      double                        progress{0.0};
+      double progress{0.0};
 
     private:
       ChildData() = default;
@@ -213,7 +213,7 @@ namespace Scroom::Utils
 
     private:
       ProgressInterfaceMultiplexer::Ptr parent;
-      ChildData::Ptr                    data;
+      ChildData::Ptr data;
 
     private:
       Child(ProgressInterfaceMultiplexer::Ptr parent, ChildData::Ptr data);
@@ -221,10 +221,10 @@ namespace Scroom::Utils
     public:
       static Ptr create(ProgressInterfaceMultiplexer::Ptr parent, ChildData::Ptr data);
 
-      Child(const Child&)            = delete;
-      Child(Child&&)                 = delete;
+      Child(const Child&) = delete;
+      Child(Child&&) = delete;
       Child& operator=(const Child&) = delete;
-      Child& operator=(Child&&)      = delete;
+      Child& operator=(Child&&) = delete;
       ~Child() override;
 
       // ProgressStateInterface ///////////////////////////////////////////////////
@@ -234,9 +234,9 @@ namespace Scroom::Utils
     friend class Child;
 
   private:
-    boost::mutex                mut;
+    boost::mutex mut;
     ProgressStateInterface::Ptr parent;
-    std::set<ChildData::Ptr>    children;
+    std::set<ChildData::Ptr> children;
 
   private:
     explicit ProgressInterfaceMultiplexer(ProgressInterface::Ptr parent);

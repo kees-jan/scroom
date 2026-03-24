@@ -50,8 +50,9 @@ void LayerCoordinator::tileFinished(const CompressedTile::Ptr& tile)
   ConstTile::Ptr const tileData = tile->getConstTileAsync();
   require(tileData);
 
-  CpuBound()->schedule([me = shared_from_this<LayerCoordinator>(), tile, tileData] { me->reduceSourceTile(tile, tileData); },
-                       REDUCE_PRIO);
+  CpuBound()->schedule(
+    [me = shared_from_this<LayerCoordinator>(), tile, tileData] { me->reduceSourceTile(tile, tileData); }, REDUCE_PRIO
+  );
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -64,10 +65,10 @@ void LayerCoordinator::reduceSourceTile(const CompressedTile::Ptr& tile, ConstTi
   // need to unzip the compressed tile.
   //
   // Other than that side-effect, we have no use for tileData
-  Scroom::Utils::Stuff const s        = targetTile->initialize();
-  const std::pair<int, int>  location = sourceTiles[tile];
-  const int                  x        = location.first;
-  const int                  y        = location.second;
+  Scroom::Utils::Stuff const s = targetTile->initialize();
+  const std::pair<int, int> location = sourceTiles[tile];
+  const int x = location.first;
+  const int y = location.second;
 
   if(!targetTileData)
   {

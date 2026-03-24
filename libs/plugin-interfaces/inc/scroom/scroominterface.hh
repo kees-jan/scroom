@@ -24,8 +24,8 @@ public:
   using Ptr = std::shared_ptr<ScroomInterface>;
 
 public:
-  virtual PresentationInterface::Ptr newPresentation(const std::string& name)                                                 = 0;
-  virtual Aggregate::Ptr             newAggregate(const std::string& name)                                                    = 0;
+  virtual PresentationInterface::Ptr newPresentation(const std::string& name) = 0;
+  virtual Aggregate::Ptr newAggregate(const std::string& name) = 0;
   virtual PresentationInterface::Ptr loadPresentation(const std::string& name, const std::string& relativeTo = std::string()) = 0;
 
   virtual void showPresentation(PresentationInterface::Ptr const& presentation) = 0;
@@ -83,7 +83,7 @@ public:
 
 public:
   virtual void presentationAdded(PresentationInterface::Ptr p) = 0;
-  virtual void presentationDeleted()                           = 0;
+  virtual void presentationDeleted() = 0;
 };
 
 class ViewObserver : private Interface
@@ -101,15 +101,18 @@ public:
   using Ptr = std::shared_ptr<ScroomPluginInterface>;
 
 public:
-  virtual void registerNewPresentationInterface(const std::string&            identifier,
-                                                NewPresentationInterface::Ptr newPresentationInterface)                       = 0;
-  virtual void registerNewAggregateInterface(const std::string& identifier, NewAggregateInterface::Ptr newAggregateInterface) = 0;
-  virtual void registerOpenPresentationInterface(const std::string&             identifier,
-                                                 OpenPresentationInterface::Ptr openPresentationInterface)                    = 0;
   virtual void
-    registerOpenTiledBitmapInterface(const std::string&                                             identifier,
-                                     std::shared_ptr<Scroom::TiledBitmap::OpenTiledBitmapInterface> openTiledBitmapInterface) = 0;
-  virtual void registerOpenInterface(const std::string& identifier, OpenInterface::Ptr openInterface)                         = 0;
-  virtual void registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer)                                = 0;
-  virtual void registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer)                = 0;
+    registerNewPresentationInterface(const std::string& identifier, NewPresentationInterface::Ptr newPresentationInterface) = 0;
+  virtual void registerNewAggregateInterface(const std::string& identifier, NewAggregateInterface::Ptr newAggregateInterface) = 0;
+  virtual void registerOpenPresentationInterface(
+    const std::string& identifier,
+    OpenPresentationInterface::Ptr openPresentationInterface
+  ) = 0;
+  virtual void registerOpenTiledBitmapInterface(
+    const std::string& identifier,
+    std::shared_ptr<Scroom::TiledBitmap::OpenTiledBitmapInterface> openTiledBitmapInterface
+  ) = 0;
+  virtual void registerOpenInterface(const std::string& identifier, OpenInterface::Ptr openInterface) = 0;
+  virtual void registerViewObserver(const std::string& identifier, ViewObserver::Ptr observer) = 0;
+  virtual void registerPresentationObserver(const std::string& identifier, PresentationObserver::Ptr observer) = 0;
 };

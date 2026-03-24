@@ -17,12 +17,12 @@ using namespace Scroom::MemoryBlobs;
 
 TEST(PageProvider_Tests, Provider_provides_any_number_of_independent_blocks_of_a_given_size) // NOLINT
 {
-  const size_t size      = 256;
-  const size_t count     = 16;
+  const size_t size = 256;
+  const size_t count = 16;
   const size_t testCount = 48;
 
   PageProvider::Ptr provider = PageProvider::create(count, size);
-  PageList          pages;
+  PageList pages;
 
   uint8_t data = 0;
   for(size_t i = 0; i < testCount; i++)

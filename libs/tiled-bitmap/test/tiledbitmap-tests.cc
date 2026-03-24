@@ -17,14 +17,16 @@ class DummyLayerOperations : public LayerOperations
 public:
   static Ptr create() { return Ptr(new DummyLayerOperations()); }
 
-  int  getBpp() override { return 8; }
+  int getBpp() override { return 8; }
   void initializeCairo(cairo_t* /*cr*/) override {}
-  void draw(cairo_t* /*cr*/,
-            const ConstTile::Ptr& /*tile*/,
-            Scroom::Utils::Rectangle<double> /*tileArea*/,
-            Scroom::Utils::Rectangle<double> /*viewArea*/,
-            int /*zoom*/,
-            Scroom::Utils::Stuff /*cache*/) override
+  void draw(
+    cairo_t* /*cr*/,
+    const ConstTile::Ptr& /*tile*/,
+    Scroom::Utils::Rectangle<double> /*tileArea*/,
+    Scroom::Utils::Rectangle<double> /*viewArea*/,
+    int /*zoom*/,
+    Scroom::Utils::Stuff /*cache*/
+  ) override
   {
   }
   void drawState(cairo_t* /*cr*/, TileState /*s*/, Scroom::Utils::Rectangle<double> /*viewArea*/) override {}

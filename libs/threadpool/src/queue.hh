@@ -48,10 +48,10 @@ namespace Scroom::Detail::ThreadPool
     int getCount();
 
   private:
-    boost::mutex              mut;              /**< Guard internal data */
-    boost::condition_variable cond;             /**< Gets signaled when a job completes */
-    unsigned int              count{0};         /**< Number of jobs currently running */
-    bool                      isDeleted{false}; /**< @c true if the last reference to ThreadPool::Queue goes away */
+    boost::mutex mut; /**< Guard internal data */
+    boost::condition_variable cond; /**< Gets signaled when a job completes */
+    unsigned int count{0}; /**< Number of jobs currently running */
+    bool isDeleted{false}; /**< @c true if the last reference to ThreadPool::Queue goes away */
 
   private:
     QueueImpl() = default;
@@ -62,15 +62,15 @@ namespace Scroom::Detail::ThreadPool
    */
   class QueueLock
   {
-    QueueImpl::Ptr q;       /**< Reference to our QueueImpl */
-    bool           isValid; /**< @c true if there are still references to the ThreadPool::Queue associated with @c q */
+    QueueImpl::Ptr q; /**< Reference to our QueueImpl */
+    bool isValid; /**< @c true if there are still references to the ThreadPool::Queue associated with @c q */
 
   public:
     explicit QueueLock(QueueImpl::Ptr queue);
-    QueueLock(const QueueLock&)            = delete;
-    QueueLock(QueueLock&&)                 = delete;
+    QueueLock(const QueueLock&) = delete;
+    QueueLock(QueueLock&&) = delete;
     QueueLock& operator=(const QueueLock&) = delete;
-    QueueLock& operator=(QueueLock&&)      = delete;
+    QueueLock& operator=(QueueLock&&) = delete;
     ~QueueLock();
 
     /** Return @c true if there are still references to the ThreadPool::Queue associated with @c q */

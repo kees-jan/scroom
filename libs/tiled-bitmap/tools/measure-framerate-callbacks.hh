@@ -16,5 +16,5 @@
 extern std::vector<boost::function<bool()>> functions;
 
 GtkWidget* create_window();
-void       init();
-void       invalidate();
+void init();
+void invalidate();
