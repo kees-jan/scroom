@@ -32,28 +32,29 @@ namespace Scroom
   public:
     using Ptr = std::shared_ptr<LoggerContainer>;
 
+  private:
+    mutable std::mutex              mut;
+    std::shared_ptr<spdlog::logger> logger;
+
+  public:
     static Ptr instance();
 
     LoggerContainer();
 
     std::shared_ptr<spdlog::logger> get() const;
     void                            set(std::shared_ptr<spdlog::logger> logger_);
-
-  private:
-    mutable std::mutex              mut;
-    std::shared_ptr<spdlog::logger> logger;
   };
 
   class Logger
   {
+  private:
+    LoggerContainer::Ptr container;
+
   public:
     Logger();
     explicit Logger(LoggerContainer::Ptr container_);
 
     std::shared_ptr<spdlog::logger> operator->() const;
-
-  private:
-    LoggerContainer::Ptr container;
   };
 
 } // namespace Scroom

@@ -50,6 +50,11 @@ public:
   using value_type = T;
   using Me         = Freezable<T>;
 
+private:
+  value_type value;
+  unsigned   locked{0};
+
+public:
   Freezable() = default;
 
   explicit Freezable(value_type v)
@@ -87,10 +92,6 @@ public:
   const value_type* operator->() const { return &value; }
   Me&               operator+=(value_type v) { return operator=(value + v); }
   Me&               operator-=(value_type v) { return operator=(value - v); }
-
-private:
-  value_type value;
-  unsigned   locked{0};
 };
 
 class View

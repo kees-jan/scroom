@@ -33,11 +33,21 @@ Naming conventions
 
 *Variables*
   Use ``camelCase`` for both member variables and local variables.
-  No prefix or suffix — in particular, do not use an ``m_`` prefix
-  for member variables.
+
+  New code uses an ``m_`` prefix for member variables in classes (but
+  not structs), and an ``s_`` prefix for static member variables. Old code
+  uses no prefix.
 
   .. code-block:: cpp
 
+    // New convention (class member variables)
+    int m_blockCount;
+    std::shared_ptr<spdlog::logger> m_logger;
+
+    // New convention (static variables)
+    static int s_instanceCount;
+
+    // Old convention (still found throughout the codebase)
     int blockCount;
     std::shared_ptr<spdlog::logger> logger;
 
@@ -65,30 +75,28 @@ Class layout
 
 Members are ordered as follows within a class:
 
-1. ``public:`` — type aliases (``Ptr``, ``WeakPtr``, etc.)
-2. ``public:`` — member functions
-3. ``private:`` — member functions
-4. ``private:`` — member variables
+1. ``public:`` or ``private:`` — type definitions
+2. ``private:`` — member variables
+3. ``public:`` or ``private:`` — member functions
 
-A separate ``private:`` section is used to separate the private
-methods from the private variables, even though the ``private:``
-specifier is technically redundant after the first one.
+Each section starts with an access specifier, even if it is redundant.
 
 .. code-block:: cpp
 
-  class Logger
+  class LoggerContainer
   {
   public:
-    using Ptr = std::shared_ptr<Logger>;
-
-    static Ptr instance();
-    void setLogger(std::shared_ptr<spdlog::logger> logger_);
+    using Ptr = std::shared_ptr<LoggerContainer>;
 
   private:
-    Logger();
-
-  private:
+    mutable std::mutex              mut;
     std::shared_ptr<spdlog::logger> logger;
+
+  public:
+    static Ptr instance();
+    LoggerContainer();
+    std::shared_ptr<spdlog::logger> get() const;
+    void                            set(std::shared_ptr<spdlog::logger> logger_);
   };
 
 File names
