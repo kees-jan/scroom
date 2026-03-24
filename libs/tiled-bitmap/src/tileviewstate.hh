@@ -9,6 +9,8 @@
 
 #include <memory>
 
+#include <fmt/format.h>
+
 #include <boost/thread.hpp>
 
 #include <scroom/observable.hh>
@@ -92,4 +94,33 @@ private:
                    int                               zoom);
   void reportDone(const ThreadPool::WeakQueue::Ptr& wq, const ConstTile::Ptr& tile);
   void clear();
+};
+
+template <>
+struct fmt::formatter<TileViewState::State>
+{
+  static constexpr auto parse(format_parse_context& ctx) { return ctx.begin(); }
+  template <typename Context>
+  constexpr auto format(TileViewState::State const& state, Context& ctx) const
+  {
+    switch(state)
+    {
+    case TileViewState::INIT:
+      return format_to(ctx.out(), "INIT");
+    case TileViewState::LOADED:
+      return format_to(ctx.out(), "LOADED");
+    case TileViewState::COMPUTING_BASE:
+      return format_to(ctx.out(), "COMPUTING_BASE");
+    case TileViewState::BASE_COMPUTED:
+      return format_to(ctx.out(), "BASE_COMPUTED");
+    case TileViewState::COMPUTING_ZOOM:
+      return format_to(ctx.out(), "COMPUTING_ZOOM");
+    case TileViewState::ZOOM_COMPUTED:
+      return format_to(ctx.out(), "ZOOM_COMPUTED");
+    case TileViewState::DONE:
+      return format_to(ctx.out(), "DONE");
+    }
+
+    return format_to(ctx.out(), "UNKNOWN");
+  }
 };

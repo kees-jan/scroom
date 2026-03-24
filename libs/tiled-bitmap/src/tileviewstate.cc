@@ -118,10 +118,11 @@ void TileViewState::kick()
 
   if(state >= LOADED && desiredState >= state && !queue && tbvd_)
   {
-    queue = ThreadPool::Queue::createAsync();
+    queue     = ThreadPool::Queue::createAsync();
+    weakQueue = queue->getWeak();
 
     cpuBound->schedule(
-      [me = shared_from_this<TileViewState>(), weakQueue = queue->getWeak()] { me->process(weakQueue); }, LOAD_PRIO, queue);
+      [me = shared_from_this<TileViewState>(), weakQueue = weakQueue] { me->process(weakQueue); }, LOAD_PRIO, queue);
   }
 }
 
@@ -158,7 +159,7 @@ void TileViewState::process(const ThreadPool::WeakQueue::Ptr& wq)
       case COMPUTING_ZOOM:
       case DONE:
       default:
-        defect_message(fmt::format("PANIC: Don't know what to do in state {}", static_cast<int>(state)));
+        defect_message(fmt::format("PANIC: Don't know what to do in state {}", state));
         return;
       }
 
