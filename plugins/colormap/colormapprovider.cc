@@ -162,9 +162,5 @@ namespace Scroom::ColormapImpl
         }
       }
     }
-    else
-    {
-      defect_message("PANIC: Colormappable Presentation is gone??\n");
-    }
   }
 } // namespace Scroom::ColormapImpl
