@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-47-g3fd5f8e09</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-46-gdafd17a9</span>
    </div>
   </td>
  </tr>
@@ -225,9 +225,9 @@ $(document).ready(function(){initNavTree('context_8hh_source.html',''); initResi
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  <span class="keywordtype">void</span></div>
 <div class="foldopen" id="foldopen00108" data-start="{" data-end="}">
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe">  108</a></span>    <a class="code hl_function" href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe">set</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Utils_1_1Context.html#abc2f687326929a940ae88aed227e14ae">Context::Ptr</a>&amp; context, std::string name, T <a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>) <span class="comment">// NOLINT(performance-unnecessary-value-param) // False positive?</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe">  108</a></span>    <a class="code hl_function" href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe">set</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Utils_1_1Context.html#abc2f687326929a940ae88aed227e14ae">Context::Ptr</a>&amp; context, std::string name, T <a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>)</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  {</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    context-&gt;set(std::move(name), <a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    context-&gt;set(std::move(name), std::move(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>));</div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  }</div>
 </div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>

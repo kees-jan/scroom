@@ -1825,6 +1825,37 @@
     <class kind="class">ColormappableMock</class>
   </compound>
   <compound kind="file">
+    <name>presentationinterface.hh</name>
+    <path>libs/plugin-interfaces/inc/scroom/gmock/</path>
+    <filename>gmock_2presentationinterface_8hh.html</filename>
+    <includes id="gmock_2colormappable_8hh" name="colormappable.hh" local="no" import="no" module="no" objc="no">scroom/gmock/colormappable.hh</includes>
+    <includes id="presentationinterface_8hh" name="presentationinterface.hh" local="no" import="no" module="no" objc="no">scroom/presentationinterface.hh</includes>
+    <class kind="class">PresentationMock</class>
+    <class kind="class">ColormappablePresentationMock</class>
+  </compound>
+  <compound kind="file">
+    <name>presentationinterface.hh</name>
+    <path>libs/plugin-interfaces/inc/scroom/</path>
+    <filename>presentationinterface_8hh.html</filename>
+    <includes id="context_8hh" name="context.hh" local="no" import="no" module="no" objc="no">scroom/context.hh</includes>
+    <includes id="interface_8hh" name="interface.hh" local="no" import="no" module="no" objc="no">scroom/interface.hh</includes>
+    <includes id="observable_8hh" name="observable.hh" local="no" import="no" module="no" objc="no">scroom/observable.hh</includes>
+    <includes id="rectangle_8hh" name="rectangle.hh" local="no" import="no" module="no" objc="no">scroom/rectangle.hh</includes>
+    <includes id="viewinterface_8hh" name="viewinterface.hh" local="no" import="no" module="no" objc="no">scroom/viewinterface.hh</includes>
+    <class kind="class">Viewable</class>
+    <class kind="class">PresentationInterface</class>
+    <class kind="class">PresentationBase</class>
+    <class kind="class">PresentationBaseSimple</class>
+    <class kind="class">Aggregate</class>
+    <member kind="typedef">
+      <type>Scroom::Utils::Observable&lt; Viewable &gt;</type>
+      <name>ViewObservable</name>
+      <anchorfile>presentationinterface_8hh.html</anchorfile>
+      <anchor>ae36d25542bd5d3ebd49c3cefe9e7fc5b</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="file">
     <name>opentiledbitmapinterface.hh</name>
     <path>libs/plugin-interfaces/inc/scroom/</path>
     <filename>opentiledbitmapinterface_8hh.html</filename>
@@ -1877,37 +1908,6 @@
       <name>PLUGIN_API_VERSION</name>
       <anchorfile>plugininformationinterface_8hh.html</anchorfile>
       <anchor>ac3bcb9217a74830c51b6c46c9b5f997f</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="file">
-    <name>presentationinterface.hh</name>
-    <path>libs/plugin-interfaces/inc/scroom/gmock/</path>
-    <filename>gmock_2presentationinterface_8hh.html</filename>
-    <includes id="gmock_2colormappable_8hh" name="colormappable.hh" local="no" import="no" module="no" objc="no">scroom/gmock/colormappable.hh</includes>
-    <includes id="presentationinterface_8hh" name="presentationinterface.hh" local="no" import="no" module="no" objc="no">scroom/presentationinterface.hh</includes>
-    <class kind="class">PresentationMock</class>
-    <class kind="class">ColormappablePresentationMock</class>
-  </compound>
-  <compound kind="file">
-    <name>presentationinterface.hh</name>
-    <path>libs/plugin-interfaces/inc/scroom/</path>
-    <filename>presentationinterface_8hh.html</filename>
-    <includes id="context_8hh" name="context.hh" local="no" import="no" module="no" objc="no">scroom/context.hh</includes>
-    <includes id="interface_8hh" name="interface.hh" local="no" import="no" module="no" objc="no">scroom/interface.hh</includes>
-    <includes id="observable_8hh" name="observable.hh" local="no" import="no" module="no" objc="no">scroom/observable.hh</includes>
-    <includes id="rectangle_8hh" name="rectangle.hh" local="no" import="no" module="no" objc="no">scroom/rectangle.hh</includes>
-    <includes id="viewinterface_8hh" name="viewinterface.hh" local="no" import="no" module="no" objc="no">scroom/viewinterface.hh</includes>
-    <class kind="class">Viewable</class>
-    <class kind="class">PresentationInterface</class>
-    <class kind="class">PresentationBase</class>
-    <class kind="class">PresentationBaseSimple</class>
-    <class kind="class">Aggregate</class>
-    <member kind="typedef">
-      <type>Scroom::Utils::Observable&lt; Viewable &gt;</type>
-      <name>ViewObservable</name>
-      <anchorfile>presentationinterface_8hh.html</anchorfile>
-      <anchor>ae36d25542bd5d3ebd49c3cefe9e7fc5b</anchor>
       <arglist></arglist>
     </member>
   </compound>
