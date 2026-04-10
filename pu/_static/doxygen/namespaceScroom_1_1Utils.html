@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-46-gdafd17a9</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-47-g0e948ee4</span>
    </div>
   </td>
  </tr>
@@ -2687,9 +2687,9 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  109</span>  {</div>
-<div class="line"><span class="lineno">  110</span>    context-&gt;set(std::move(name), std::move(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>));</div>
-<div class="line"><span class="lineno">  111</span>  }</div>
+<div class="fragment"><div class="line"><span class="lineno">  108</span>  {</div>
+<div class="line"><span class="lineno">  109</span>    context-&gt;set(std::move(name), std::move(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>));</div>
+<div class="line"><span class="lineno">  110</span>  }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="namespaceScroom_1_1Utils.html#a91be522682d558972fdd182573c9fd6e">set()</a>, and <a class="el" href="namespaceScroom_1_1Utils.html#aeb91576875b1be9c7f4edcc8cfe5da20">setFactory()</a>.</p>
 <div class="dynheader">
@@ -2736,9 +2736,9 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  115</span>  {</div>
-<div class="line"><span class="lineno">  116</span>    <a class="code hl_function" href="bookkeeping-tests_8cc.html#a51a52c8daaa2b1a32aadb0c8a40d9684">set</a>(context, <span class="keyword">typeid</span>(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>).name(), std::move(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>));</div>
-<div class="line"><span class="lineno">  117</span>  }</div>
+<div class="fragment"><div class="line"><span class="lineno">  114</span>  {</div>
+<div class="line"><span class="lineno">  115</span>    <a class="code hl_function" href="bookkeeping-tests_8cc.html#a51a52c8daaa2b1a32aadb0c8a40d9684">set</a>(context, <span class="keyword">typeid</span>(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>).name(), std::move(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>));</div>
+<div class="line"><span class="lineno">  116</span>  }</div>
 <div class="ttc" id="abookkeeping-tests_8cc_html_a51a52c8daaa2b1a32aadb0c8a40d9684"><div class="ttname"><a href="bookkeeping-tests_8cc.html#a51a52c8daaa2b1a32aadb0c8a40d9684">set</a></div><div class="ttdeci">map set(2, 5)</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -2780,10 +2780,10 @@ template&lt;typename Callable &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  128</span>  {</div>
-<div class="line"><span class="lineno">  129</span>    <span class="keyword">using </span>T = std::remove_reference_t&lt;<span class="keyword">decltype</span>(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>())&gt;;</div>
-<div class="line"><span class="lineno">  130</span>    <a class="code hl_function" href="context-tests_8cc.html#a1b3d559d80dcb51cd1be7e61b11f4243">setFactory</a>(context, <span class="keyword">typeid</span>(T).name(), std::move(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>));</div>
-<div class="line"><span class="lineno">  131</span>  }</div>
+<div class="fragment"><div class="line"><span class="lineno">  127</span>  {</div>
+<div class="line"><span class="lineno">  128</span>    <span class="keyword">using </span>T = std::remove_reference_t&lt;<span class="keyword">decltype</span>(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>())&gt;;</div>
+<div class="line"><span class="lineno">  129</span>    <a class="code hl_function" href="context-tests_8cc.html#a1b3d559d80dcb51cd1be7e61b11f4243">setFactory</a>(context, <span class="keyword">typeid</span>(T).name(), std::move(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>));</div>
+<div class="line"><span class="lineno">  130</span>  }</div>
 <div class="ttc" id="acontext-tests_8cc_html_a1b3d559d80dcb51cd1be7e61b11f4243"><div class="ttname"><a href="context-tests_8cc.html#a1b3d559d80dcb51cd1be7e61b11f4243">setFactory</a></div><div class="ttdeci">setFactory(context, [p1] { return p1;})</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -2833,10 +2833,10 @@ template&lt;typename Callable &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  121</span>  {</div>
-<div class="line"><span class="lineno">  122</span>    <span class="keyword">using </span>T = std::remove_reference_t&lt;<span class="keyword">decltype</span>(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>())&gt;;</div>
-<div class="line"><span class="lineno">  123</span>    <a class="code hl_function" href="bookkeeping-tests_8cc.html#a51a52c8daaa2b1a32aadb0c8a40d9684">set</a>(context, std::move(name), std::function&lt;T()&gt;(std::move(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>)));</div>
-<div class="line"><span class="lineno">  124</span>  }</div>
+<div class="fragment"><div class="line"><span class="lineno">  120</span>  {</div>
+<div class="line"><span class="lineno">  121</span>    <span class="keyword">using </span>T = std::remove_reference_t&lt;<span class="keyword">decltype</span>(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>())&gt;;</div>
+<div class="line"><span class="lineno">  122</span>    <a class="code hl_function" href="bookkeeping-tests_8cc.html#a51a52c8daaa2b1a32aadb0c8a40d9684">set</a>(context, std::move(name), std::function&lt;T()&gt;(std::move(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>)));</div>
+<div class="line"><span class="lineno">  123</span>  }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="namespaceScroom_1_1Utils.html#a3b9d64ee0deb4bfdfa03a1884bf7126c">setFactory()</a>.</p>
 <div class="dynheader">

@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-46-gdafd17a9</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-47-g0e948ee4</span>
    </div>
   </td>
  </tr>
@@ -223,41 +223,40 @@ $(document).ready(function(){initNavTree('context_8hh_source.html',''); initResi
 </div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  <span class="keywordtype">void</span></div>
-<div class="foldopen" id="foldopen00108" data-start="{" data-end="}">
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe">  108</a></span>    <a class="code hl_function" href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe">set</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Utils_1_1Context.html#abc2f687326929a940ae88aed227e14ae">Context::Ptr</a>&amp; context, std::string name, T <a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>)</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  {</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    context-&gt;set(std::move(name), std::move(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>));</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  }</div>
+<div class="foldopen" id="foldopen00107" data-start="{" data-end="}">
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe">  107</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe">set</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Utils_1_1Context.html#abc2f687326929a940ae88aed227e14ae">Context::Ptr</a>&amp; context, std::string name, T <a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>)</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  {</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    context-&gt;set(std::move(name), std::move(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>));</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>  }</div>
 </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00114" data-start="{" data-end="}">
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="namespaceScroom_1_1Utils.html#a91be522682d558972fdd182573c9fd6e">  114</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe">set</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Utils_1_1Context.html#abc2f687326929a940ae88aed227e14ae">Context::Ptr</a>&amp; context, T <a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>)</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>  {</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <a class="code hl_function" href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe">set</a>(context, <span class="keyword">typeid</span>(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>).name(), std::move(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>));</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>  }</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00113" data-start="{" data-end="}">
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="namespaceScroom_1_1Utils.html#a91be522682d558972fdd182573c9fd6e">  113</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe">set</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Utils_1_1Context.html#abc2f687326929a940ae88aed227e14ae">Context::Ptr</a>&amp; context, T <a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>)</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>  {</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <a class="code hl_function" href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe">set</a>(context, <span class="keyword">typeid</span>(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>).name(), std::move(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>));</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>  }</div>
 </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Callable&gt;</div>
-<div class="foldopen" id="foldopen00120" data-start="{" data-end="}">
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="namespaceScroom_1_1Utils.html#aeb91576875b1be9c7f4edcc8cfe5da20">  120</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceScroom_1_1Utils.html#aeb91576875b1be9c7f4edcc8cfe5da20">setFactory</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Utils_1_1Context.html#abc2f687326929a940ae88aed227e14ae">Context::Ptr</a>&amp; context, std::string name, Callable <a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>)</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>  {</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keyword">using </span>T = std::remove_reference_t&lt;<span class="keyword">decltype</span>(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>())&gt;;</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <a class="code hl_function" href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe">set</a>(context, std::move(name), std::function&lt;T()&gt;(std::move(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>)));</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  }</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Callable&gt;</div>
+<div class="foldopen" id="foldopen00119" data-start="{" data-end="}">
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="namespaceScroom_1_1Utils.html#aeb91576875b1be9c7f4edcc8cfe5da20">  119</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceScroom_1_1Utils.html#aeb91576875b1be9c7f4edcc8cfe5da20">setFactory</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Utils_1_1Context.html#abc2f687326929a940ae88aed227e14ae">Context::Ptr</a>&amp; context, std::string name, Callable <a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>)</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>  {</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keyword">using </span>T = std::remove_reference_t&lt;<span class="keyword">decltype</span>(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>())&gt;;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <a class="code hl_function" href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe">set</a>(context, std::move(name), std::function&lt;T()&gt;(std::move(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>)));</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>  }</div>
 </div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Callable&gt;</div>
-<div class="foldopen" id="foldopen00127" data-start="{" data-end="}">
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="namespaceScroom_1_1Utils.html#a3b9d64ee0deb4bfdfa03a1884bf7126c">  127</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceScroom_1_1Utils.html#aeb91576875b1be9c7f4edcc8cfe5da20">setFactory</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Utils_1_1Context.html#abc2f687326929a940ae88aed227e14ae">Context::Ptr</a>&amp; context, Callable <a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>)</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>  {</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keyword">using </span>T = std::remove_reference_t&lt;<span class="keyword">decltype</span>(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>())&gt;;</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <a class="code hl_function" href="namespaceScroom_1_1Utils.html#aeb91576875b1be9c7f4edcc8cfe5da20">setFactory</a>(context, <span class="keyword">typeid</span>(T).name(), std::move(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>));</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>  }</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Callable&gt;</div>
+<div class="foldopen" id="foldopen00126" data-start="{" data-end="}">
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="namespaceScroom_1_1Utils.html#a3b9d64ee0deb4bfdfa03a1884bf7126c">  126</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceScroom_1_1Utils.html#aeb91576875b1be9c7f4edcc8cfe5da20">setFactory</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Utils_1_1Context.html#abc2f687326929a940ae88aed227e14ae">Context::Ptr</a>&amp; context, Callable <a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>)</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>  {</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keyword">using </span>T = std::remove_reference_t&lt;<span class="keyword">decltype</span>(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>())&gt;;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <a class="code hl_function" href="namespaceScroom_1_1Utils.html#aeb91576875b1be9c7f4edcc8cfe5da20">setFactory</a>(context, <span class="keyword">typeid</span>(T).name(), std::move(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>));</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  }</div>
 </div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>} <span class="comment">// namespace Scroom::Utils</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>} <span class="comment">// namespace Scroom::Utils</span></div>
 <div class="ttc" id="ablob-tests_8cc_html_abf9157cab7a60c93387a03e18e2c560a"><div class="ttname"><a href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a></div><div class="ttdeci">const uint8_t value</div><div class="ttdef"><b>Definition</b> blob-tests.cc:114</div></div>
 <div class="ttc" id="aclassInterface_html"><div class="ttname"><a href="classInterface.html">Interface</a></div><div class="ttdef"><b>Definition</b> interface.hh:11</div></div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1Context_1_1name__exists_html"><div class="ttname"><a href="classScroom_1_1Utils_1_1Context_1_1name__exists.html">Scroom::Utils::Context::name_exists</a></div><div class="ttdef"><b>Definition</b> context.hh:28</div></div>
@@ -276,9 +275,9 @@ $(document).ready(function(){initNavTree('context_8hh_source.html',''); initResi
 <div class="ttc" id="ainterface_8hh_html"><div class="ttname"><a href="interface_8hh.html">interface.hh</a></div></div>
 <div class="ttc" id="anamespaceScroom_1_1Utils_html"><div class="ttname"><a href="namespaceScroom_1_1Utils.html">Scroom::Utils</a></div><div class="ttdef"><b>Definition</b> tweak-view.hh:18</div></div>
 <div class="ttc" id="anamespaceScroom_1_1Utils_html_a1df110b1fef13cbeaf6122b1ca752a97"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#a1df110b1fef13cbeaf6122b1ca752a97">Scroom::Utils::get</a></div><div class="ttdeci">T get(const Context::ConstPtr &amp;context, std::string name)</div><div class="ttdef"><b>Definition</b> context.hh:53</div></div>
-<div class="ttc" id="anamespaceScroom_1_1Utils_html_a729f4d0d2c14a19b769897751e91acbe"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe">Scroom::Utils::set</a></div><div class="ttdeci">void set(const Context::Ptr &amp;context, std::string name, T value)</div><div class="ttdef"><b>Definition</b> context.hh:108</div></div>
+<div class="ttc" id="anamespaceScroom_1_1Utils_html_a729f4d0d2c14a19b769897751e91acbe"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe">Scroom::Utils::set</a></div><div class="ttdeci">void set(const Context::Ptr &amp;context, std::string name, T value)</div><div class="ttdef"><b>Definition</b> context.hh:107</div></div>
 <div class="ttc" id="anamespaceScroom_1_1Utils_html_a958e9a62ee2b943aa9cb5b23f2aa8f02"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#a958e9a62ee2b943aa9cb5b23f2aa8f02">Scroom::Utils::get_or</a></div><div class="ttdeci">auto get_or(const Context::ConstPtr &amp;context, std::string name, const Callable &amp;default_value) -&gt; std::enable_if_t&lt; std::is_same_v&lt; T, std::remove_reference_t&lt; decltype(default_value())&gt; &gt;, T &gt;</div><div class="ttdef"><b>Definition</b> context.hh:74</div></div>
-<div class="ttc" id="anamespaceScroom_1_1Utils_html_aeb91576875b1be9c7f4edcc8cfe5da20"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#aeb91576875b1be9c7f4edcc8cfe5da20">Scroom::Utils::setFactory</a></div><div class="ttdeci">void setFactory(const Context::Ptr &amp;context, std::string name, Callable value)</div><div class="ttdef"><b>Definition</b> context.hh:120</div></div>
+<div class="ttc" id="anamespaceScroom_1_1Utils_html_aeb91576875b1be9c7f4edcc8cfe5da20"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#aeb91576875b1be9c7f4edcc8cfe5da20">Scroom::Utils::setFactory</a></div><div class="ttdeci">void setFactory(const Context::Ptr &amp;context, std::string name, Callable value)</div><div class="ttdef"><b>Definition</b> context.hh:119</div></div>
 <div class="ttc" id="asampleiterator-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">SampleIterator&lt; const uint8_t &gt; result</div><div class="ttdef"><b>Definition</b> sampleiterator-tests.cc:94</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
