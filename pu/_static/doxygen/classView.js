@@ -52,6 +52,7 @@ var classView =
     [ "updateScrollbar", "classView.html#a95a1bbd56174466f67f67c6d4c39551b", null ],
     [ "updateScrollbars", "classView.html#a1c6bafe5c25990c0733f6d2b28df717f", null ],
     [ "updateTextbox", "classView.html#a53280aa4b3288d4f81d4a840f98e5eb9", null ],
+    [ "updateTweaks", "classView.html#a38f98bc514762e3774357ab9ee3b9af7", null ],
     [ "updateXY", "classView.html#acd6ecf221aa9f481ce878435f07a1fc4", null ],
     [ "updateZoom", "classView.html#a54f60e30804881dcfec8bdbff457a4eb", null ],
     [ "windowPointToPresentationPoint", "classView.html#ab01e5d6f612fdebbcc349ab3733233d8", null ],

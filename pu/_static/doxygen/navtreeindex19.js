@@ -1,5 +1,6 @@
 var NAVTREEINDEX19 =
 {
+"sidebarmanager_8hh_source.html":[3,0,2,1,10],
 "single-context-tests_8cc.html":[3,0,3,5,2,14],
 "single-context-tests_8cc.html#a0943f701105a14a35f6ca095b806b95c":[3,0,3,5,2,14,4],
 "single-context-tests_8cc.html#a0ce5aaad6d6f46f46225f529c4766b0b":[3,0,3,5,2,14,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX19 =
 "threadpool_8hh.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b":[3,0,3,3,0,0,4,6],
 "threadpool_8hh.html#af979353165a7a214dda8f7f289de81ea":[3,0,3,3,0,0,4,7],
 "threadpool_8hh_source.html":[3,0,3,3,0,0,4],
-"threadpoolimpl_8cc.html":[3,0,3,3,1,4],
-"threadpoolimpl_8cc.html#a32b816d0a8f58ae1cd2d35e52e0b93ee":[3,0,3,3,1,4,5]
+"threadpoolimpl_8cc.html":[3,0,3,3,1,4]
 };

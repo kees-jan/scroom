@@ -23919,6 +23919,13 @@
       <arglist>(GtkBuilder *scroomXml)</arglist>
     </member>
     <member kind="function" protection="private">
+      <type>void</type>
+      <name>updateTweaks</name>
+      <anchorfile>classView.html</anchorfile>
+      <anchor>a38f98bc514762e3774357ab9ee3b9af7</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" protection="private">
       <type>Scroom::Utils::Point&lt; double &gt;</type>
       <name>windowPointToPresentationPoint</name>
       <anchorfile>classView.html</anchorfile>

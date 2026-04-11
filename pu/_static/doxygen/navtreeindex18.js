@@ -1,5 +1,6 @@
 var NAVTREEINDEX18 =
 {
+"rectangle_8hh.html#af3fc4fedbb737dc931759dbac4c6474a":[3,0,3,5,0,0,15,11],
 "rectangle_8hh_source.html":[3,0,3,5,0,0,15],
 "rectangletests_8cc.html":[3,0,3,5,2,12],
 "rectangletests_8cc.html#a049dc4e8da0752714bbd7c24a6074cb5":[3,0,3,5,2,12,144],
@@ -248,6 +249,5 @@ var NAVTREEINDEX18 =
 "showmetadatainterface_8hh.html#afa30d0559ca625b8a3ef5e5fd42ab65b":[3,0,3,1,0,0,11,1],
 "showmetadatainterface_8hh_source.html":[3,0,3,1,0,0,11],
 "sidebarmanager_8cc.html":[3,0,2,1,9],
-"sidebarmanager_8hh.html":[3,0,2,1,10],
-"sidebarmanager_8hh_source.html":[3,0,2,1,10]
+"sidebarmanager_8hh.html":[3,0,2,1,10]
 };

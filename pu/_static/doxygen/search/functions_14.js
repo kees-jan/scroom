@@ -16,7 +16,8 @@ var searchData=
   ['updatescrollbar_13',['updateScrollbar',['../classView.html#a95a1bbd56174466f67f67c6d4c39551b',1,'View']]],
   ['updatescrollbars_14',['updateScrollbars',['../classView.html#a1c6bafe5c25990c0733f6d2b28df717f',1,'View']]],
   ['updatetextbox_15',['updateTextbox',['../classView.html#a53280aa4b3288d4f81d4a840f98e5eb9',1,'View']]],
-  ['updatexy_16',['updateXY',['../classView.html#acd6ecf221aa9f481ce878435f07a1fc4',1,'View']]],
-  ['updatezoom_17',['updateZoom',['../classView.html#a54f60e30804881dcfec8bdbff457a4eb',1,'View']]],
-  ['usage_18',['usage',['../gui_2src_2main_8cc.html#a7a706f62a62fd6c210230a2faed42f33',1,'usage(const Scroom::Logger &amp;logger, const std::string &amp;me, const po::options_description &amp;desc, const std::string &amp;message=std::string()):&#160;main.cc'],['../measure-framerate_8cc.html#a0a789fa690aac00f8c6ceb083f77ec68',1,'usage(const std::string &amp;me, const std::string &amp;message=std::string()):&#160;measure-framerate.cc'],['../measure-load-performance_8cc.html#a0a789fa690aac00f8c6ceb083f77ec68',1,'usage(const std::string &amp;me, const std::string &amp;message=std::string()):&#160;measure-load-performance.cc']]]
+  ['updatetweaks_16',['updateTweaks',['../classView.html#a38f98bc514762e3774357ab9ee3b9af7',1,'View']]],
+  ['updatexy_17',['updateXY',['../classView.html#acd6ecf221aa9f481ce878435f07a1fc4',1,'View']]],
+  ['updatezoom_18',['updateZoom',['../classView.html#a54f60e30804881dcfec8bdbff457a4eb',1,'View']]],
+  ['usage_19',['usage',['../gui_2src_2main_8cc.html#a7a706f62a62fd6c210230a2faed42f33',1,'usage(const Scroom::Logger &amp;logger, const std::string &amp;me, const po::options_description &amp;desc, const std::string &amp;message=std::string()):&#160;main.cc'],['../measure-framerate_8cc.html#a0a789fa690aac00f8c6ceb083f77ec68',1,'usage(const std::string &amp;me, const std::string &amp;message=std::string()):&#160;measure-framerate.cc'],['../measure-load-performance_8cc.html#a0a789fa690aac00f8c6ceb083f77ec68',1,'usage(const std::string &amp;me, const std::string &amp;message=std::string()):&#160;measure-load-performance.cc']]]
 ];

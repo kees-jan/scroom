@@ -87,14 +87,14 @@ var NAVTREEINDEX =
 "classScroom_1_1Utils_1_1TweakPositionTextBox.html#a6199c78ca7167337581dbb3bebb52f00",
 "classThreadPool_1_1WeakQueue.html#a976cc5dcd2e4f092f630e62960278a22",
 "classView.html#a10bfd0a564e56de855d3f5e5aa634eb0",
-"classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html#a21055cc122e9988e7af28e8ca27ff16d",
-"determine-size-test_8cc.html#a3e5352bbcbfda56723e1f9044a55071d",
-"globals_e.html",
-"namespaceScroom_1_1Bookkeeping.html",
-"observable-tests_8cc.html#acbcf937852aa48ba642e5d2cb08227bf",
-"rectangle_8hh_source.html",
-"single-context-tests_8cc.html",
-"threadpoolimpl_8cc.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b"
+"classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html",
+"determine-size-test_8cc.html#a34caf438ffeb127bdc7414d8e79d60be",
+"globals_defs.html",
+"namespaceScroom_1_1Bitmap.html#a76cf9cd4c10e26cab43bf82fb8ec8b53",
+"observable-tests_8cc.html#ab8f7fe51572092fd9bd0a45bbefa5d69",
+"rectangle_8hh.html#af3fc4fedbb737dc931759dbac4c6474a",
+"sidebarmanager_8hh_source.html",
+"threadpoolimpl_8cc.html#a32b816d0a8f58ae1cd2d35e52e0b93ee"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

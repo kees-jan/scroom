@@ -1,5 +1,6 @@
 var NAVTREEINDEX16 =
 {
+"namespaceScroom_1_1Bitmap.html#a76cf9cd4c10e26cab43bf82fb8ec8b53":[1,0,21,0,2],
 "namespaceScroom_1_1Bookkeeping.html":[1,0,21,1],
 "namespaceScroom_1_1Bookkeeping.html#aa859536c2894d3c9e1163bc1e2048bab":[1,0,21,1,4],
 "namespaceScroom_1_1Bookkeeping_1_1Detail.html":[1,0,21,1,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX16 =
 "observable-tests_8cc.html#aa5e038250293bf7d265e67cd5d53264d":[3,0,3,5,2,5,36],
 "observable-tests_8cc.html#aa8a1cb2626a96dddc430e8fc9f88ba1e":[3,0,3,5,2,5,20],
 "observable-tests_8cc.html#ab50bea8d81b24f03d0b01308c3816385":[3,0,3,5,2,5,8],
-"observable-tests_8cc.html#ab58c21c9f4112a159a8fc5aa70ccf4a8":[3,0,3,5,2,5,35],
-"observable-tests_8cc.html#ab8f7fe51572092fd9bd0a45bbefa5d69":[3,0,3,5,2,5,30]
+"observable-tests_8cc.html#ab58c21c9f4112a159a8fc5aa70ccf4a8":[3,0,3,5,2,5,35]
 };
