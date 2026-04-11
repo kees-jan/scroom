@@ -6,5 +6,5 @@ var searchData=
   ['itweakpositiontextbox_3',['ITweakPositionTextBox',['../classScroom_1_1Utils_1_1ITweakPositionTextBox.html',1,'Scroom::Utils']]],
   ['itweakpresentationposition_4',['ITweakPresentationPosition',['../classScroom_1_1Utils_1_1ITweakPresentationPosition.html',1,'Scroom::Utils']]],
   ['itweakrulers_5',['ITweakRulers',['../classScroom_1_1Utils_1_1ITweakRulers.html',1,'Scroom::Utils']]],
-  ['itweakselection_6',['itweakselection',['../classITweakSelection.html',1,'ITweakSelection'],['../classScroom_1_1Utils_1_1ITweakSelection.html',1,'Scroom::Utils::ITweakSelection']]]
+  ['itweakselection_6',['ITweakSelection',['../classScroom_1_1Utils_1_1ITweakSelection.html',1,'Scroom::Utils']]]
 ];

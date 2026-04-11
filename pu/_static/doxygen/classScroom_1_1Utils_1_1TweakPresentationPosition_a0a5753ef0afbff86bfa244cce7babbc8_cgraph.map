@@ -1,0 +1,9 @@
+<map id="Scroom::Utils::TweakPresentationPosition::tweakPosition" name="Scroom::Utils::TweakPresentationPosition::tweakPosition">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,23,245,63"/>
+<area shape="rect" id="Node000002" href="$cairo-helpers_8cc.html#ac7a152a4cc864e9c67acbc6686a9d3a4" title=" " alt="" coords="298,5,449,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="245,28,284,24,285,30,246,34"/>
+<area shape="rect" id="Node000003" href="$rounding_8hh.html#a8ef4d93107153397a73e4a13f5f86a3d" title=" " alt="" coords="293,55,453,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="246,52,280,56,280,61,245,58"/>
+<area shape="rect" id="Node000004" href="$rounding_8hh.html#aedaf778f8b35fe2d25e2e06832bee1ca" title=" " alt="" coords="501,55,647,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="453,65,488,65,488,70,453,70"/>
+</map>

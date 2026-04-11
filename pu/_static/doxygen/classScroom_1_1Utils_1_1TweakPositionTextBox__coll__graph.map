@@ -1,13 +1,17 @@
 <map id="Scroom::Utils::TweakPositionTextBox" name="Scroom::Utils::TweakPositionTextBox">
-<area shape="rect" id="Node000001" title=" " alt="" coords="267,397,470,557"/>
-<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Point.html" title=" " alt="" coords="297,135,440,335"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="371,335,371,381,366,381,366,335"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,164,85"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="156,91,299,184,296,189,153,95"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="189,5,343,85"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="296,96,317,133,312,136,291,98"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="367,5,578,85"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="447,98,426,136,421,133,442,96"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="602,5,802,85"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="622,94,442,195,439,191,620,90"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="127,483,330,643"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1ITweakPositionTextBox.html" title=" " alt="" coords="27,270,233,370"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,382,199,481,194,484,153,384"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="5,5,113,171"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="91,183,117,269,112,271,86,185"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Point.html" title=" " alt="" coords="327,220,469,420"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="330,422,296,471,292,468,326,419"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="137,48,296,128"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="258,137,328,226,324,230,254,141"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="321,48,475,128"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="401,142,401,220,395,220,395,142"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="499,48,710,128"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="563,140,472,241,468,237,559,136"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="734,48,934,128"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="775,139,723,173,591,241,471,293,468,288,589,236,721,168,772,134"/>
 </map>

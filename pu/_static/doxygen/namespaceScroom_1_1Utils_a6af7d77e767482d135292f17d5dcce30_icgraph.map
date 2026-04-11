@@ -1,7 +1,8 @@
 <map id="Scroom::Utils::center" name="Scroom::Utils::center">
-<area shape="rect" id="Node000001" title=" " alt="" coords="264,35,423,60"/>
-<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a5efce18a40cfbf24e98a7484097b32e1" title=" " alt="" coords="31,5,190,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="250,38,190,31,190,25,250,33"/>
-<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1TweakPositionTextBox.html#af7d8856f9459fc1c7cce59c9e88a4075" title=" " alt="" coords="5,55,216,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="250,61,217,65,216,60,250,56"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="248,49,407,75"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a5efce18a40cfbf24e98a7484097b32e1" title=" " alt="" coords="23,5,182,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="248,49,168,33,169,28,249,44"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#ab67255b453112cd0431cabc7d058475b" title=" " alt="" coords="5,79,200,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="249,80,201,90,200,84,248,75"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="140,68,126,60,103,57,83,59,70,64,64,70,64,79,59,79,59,68,67,60,82,54,103,52,128,55,143,63"/>
 </map>

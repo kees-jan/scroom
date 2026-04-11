@@ -1,11 +1,10 @@
 var classScroom_1_1Utils_1_1TweakPositionTextBox =
 [
-    [ "Point", "classScroom_1_1Utils_1_1TweakPositionTextBox.html#a6d018cf9b8d9e65cf9343c0931988060", null ],
     [ "Ptr", "classScroom_1_1Utils_1_1TweakPositionTextBox.html#aba1707c4556685e1846886b46517c07b", null ],
-    [ "TweakPositionTextBox", "classScroom_1_1Utils_1_1TweakPositionTextBox.html#a166bd7e02fd45ef04be948d731fe1672", null ],
-    [ "create", "classScroom_1_1Utils_1_1TweakPositionTextBox.html#ab65e0675546d7bfc857a584e0e61fe8f", null ],
-    [ "display", "classScroom_1_1Utils_1_1TweakPositionTextBox.html#af7d8856f9459fc1c7cce59c9e88a4075", null ],
-    [ "parse", "classScroom_1_1Utils_1_1TweakPositionTextBox.html#a0c12dd1feb678cda5688115b2b5e7594", null ],
-    [ "setAspectRatio", "classScroom_1_1Utils_1_1TweakPositionTextBox.html#aaa6f37de615b860d8bfef01dfb760e6b", null ],
-    [ "aspectRatio", "classScroom_1_1Utils_1_1TweakPositionTextBox.html#a28adbe70ee1f195fc88e3173e2513f6a", null ]
+    [ "TweakPositionTextBox", "classScroom_1_1Utils_1_1TweakPositionTextBox.html#aaf722875b92d762c08f8547f6f292aff", null ],
+    [ "create", "classScroom_1_1Utils_1_1TweakPositionTextBox.html#a6aeec9ec0cba18d7fb81f8ec73584589", null ],
+    [ "display", "classScroom_1_1Utils_1_1TweakPositionTextBox.html#a756162b93d3d53f4c2529e86a3d6bf2e", null ],
+    [ "parse", "classScroom_1_1Utils_1_1TweakPositionTextBox.html#a7ce1771561a0a29ffff0ecd12bd30e0c", null ],
+    [ "setAspectRatio", "classScroom_1_1Utils_1_1TweakPositionTextBox.html#a32c92c7326bef0a3283536fa70da1256", null ],
+    [ "aspectRatio", "classScroom_1_1Utils_1_1TweakPositionTextBox.html#a8f099b04305d03101779ef7e455f8158", null ]
 ];

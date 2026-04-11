@@ -1220,17 +1220,9 @@
     <includes id="assertions_8hh" name="assertions.hh" local="no" import="no" module="no" objc="no">scroom/assertions.hh</includes>
     <includes id="cairo-helpers_8hh" name="cairo-helpers.hh" local="no" import="no" module="no" objc="no">scroom/cairo-helpers.hh</includes>
     <includes id="format__stuff_8hh" name="format_stuff.hh" local="no" import="no" module="no" objc="no">scroom/format_stuff.hh</includes>
-    <includes id="rounding_8hh" name="rounding.hh" local="no" import="no" module="no" objc="no">scroom/rounding.hh</includes>
     <includes id="tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
     <includes id="callbacks_8hh" name="callbacks.hh" local="yes" import="no" module="no" objc="no">callbacks.hh</includes>
     <includes id="pluginmanager_8hh" name="pluginmanager.hh" local="yes" import="no" module="no" objc="no">pluginmanager.hh</includes>
-    <class kind="class">TweakPresentationPosition</class>
-    <class kind="class">TweakRulers</class>
-    <class kind="class">ITweakSelection</class>
-    <class kind="class">TweakSelection</class>
-    <class kind="class">TweakGridSelection</class>
-    <class kind="class">TweakPixelSelection</class>
-    <class kind="class">TweakPositionTextBox</class>
     <namespace>anonymous_namespace{view.cc}</namespace>
     <member kind="define">
       <type>#define</type>
@@ -1256,45 +1248,6 @@
       <anchorfile>view_8cc.html</anchorfile>
       <anchor>a06fc87d81c62e9abb8790b6e5713c55bac70d28409ca79aa291cc0e58244f1fe4</anchor>
       <arglist></arglist>
-    </member>
-    <member kind="enumeration">
-      <type></type>
-      <name>Corner</name>
-      <anchorfile>view_8cc.html</anchorfile>
-      <anchor>aa292af1848104b3be6cc0c966b5317b6</anchor>
-      <arglist></arglist>
-      <enumvalue file="view_8cc.html" anchor="aa292af1848104b3be6cc0c966b5317b6a747385047b85ae751f83adb36435a3c1">TOP_LEFT</enumvalue>
-      <enumvalue file="view_8cc.html" anchor="aa292af1848104b3be6cc0c966b5317b6a901d87dedda8db733f5e6d34c4eb5fe0">TOP_RIGHT</enumvalue>
-      <enumvalue file="view_8cc.html" anchor="aa292af1848104b3be6cc0c966b5317b6a8d81ac82421d1b03da58fccb9174892e">BOTTOM_LEFT</enumvalue>
-      <enumvalue file="view_8cc.html" anchor="aa292af1848104b3be6cc0c966b5317b6a341b72aaab1308a3e6667af1e52f5def">BOTTOM_RIGHT</enumvalue>
-    </member>
-    <member kind="function">
-      <type>std::function&lt; Scroom::Utils::Point&lt; double &gt;(Scroom::Utils::Rectangle&lt; double &gt;)&gt;</type>
-      <name>corner_getter</name>
-      <anchorfile>view_8cc.html</anchorfile>
-      <anchor>aa8cab6bcc78f2ade190564c5b9c36c00</anchor>
-      <arglist>(Corner c)</arglist>
-    </member>
-    <member kind="function">
-      <type>Corner</type>
-      <name>find_closest_corner</name>
-      <anchorfile>view_8cc.html</anchorfile>
-      <anchor>a0a0c0368f16f55cccde4028cdacd8e81</anchor>
-      <arglist>(Scroom::Utils::Point&lt; double &gt; p, Scroom::Utils::Rectangle&lt; double &gt; r)</arglist>
-    </member>
-    <member kind="function">
-      <type>Corner</type>
-      <name>find_opposed_corner</name>
-      <anchorfile>view_8cc.html</anchorfile>
-      <anchor>ad4e132ee6695c5790e6ecf9607cf18d1</anchor>
-      <arglist>(Corner c)</arglist>
-    </member>
-    <member kind="function">
-      <type>Scroom::Utils::Rectangle&lt; double &gt;</type>
-      <name>toRectangle</name>
-      <anchorfile>view_8cc.html</anchorfile>
-      <anchor>aa4c0e07b612d51cad5beab8f04bec275</anchor>
-      <arglist>(Selection s)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static void</type>
@@ -1326,6 +1279,7 @@
     <includes id="presentationinterface_8hh" name="presentationinterface.hh" local="no" import="no" module="no" objc="no">scroom/presentationinterface.hh</includes>
     <includes id="scroominterface_8hh" name="scroominterface.hh" local="no" import="no" module="no" objc="no">scroom/scroominterface.hh</includes>
     <includes id="stuff_8hh" name="stuff.hh" local="no" import="no" module="no" objc="no">scroom/stuff.hh</includes>
+    <includes id="tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
     <includes id="utilities_8hh" name="utilities.hh" local="no" import="no" module="no" objc="no">scroom/utilities.hh</includes>
     <includes id="viewinterface_8hh" name="viewinterface.hh" local="no" import="no" module="no" objc="no">scroom/viewinterface.hh</includes>
     <includes id="progressbarmanager_8hh" name="progressbarmanager.hh" local="yes" import="no" module="no" objc="no">progressbarmanager.hh</includes>
@@ -2115,6 +2069,12 @@
     <class kind="class">Scroom::Utils::ITweakRulers</class>
     <class kind="class">Scroom::Utils::ITweakSelection</class>
     <class kind="class">Scroom::Utils::ITweakPositionTextBox</class>
+    <class kind="class">Scroom::Utils::TweakPresentationPosition</class>
+    <class kind="class">Scroom::Utils::TweakRulers</class>
+    <class kind="class">Scroom::Utils::TweakSelection</class>
+    <class kind="class">Scroom::Utils::TweakGridSelection</class>
+    <class kind="class">Scroom::Utils::TweakPixelSelection</class>
+    <class kind="class">Scroom::Utils::TweakPositionTextBox</class>
     <namespace>Scroom</namespace>
     <namespace>Scroom::Utils</namespace>
   </compound>
@@ -2241,20 +2201,21 @@
     <includes id="transformpresentation_8hh" name="transformpresentation.hh" local="no" import="no" module="no" objc="no">scroom/transformpresentation.hh</includes>
     <includes id="viewinterface_8hh" name="viewinterface.hh" local="no" import="no" module="no" objc="no">scroom/viewinterface.hh</includes>
     <includes id="cairo-helpers_8hh" name="cairo-helpers.hh" local="yes" import="no" module="no" objc="no">scroom/cairo-helpers.hh</includes>
+    <includes id="tweak-view_8hh" name="tweak-view.hh" local="yes" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
     <namespace>Detail</namespace>
   </compound>
   <compound kind="file">
     <name>tweak-view.cc</name>
     <path>libs/scroom/src/</path>
     <filename>tweak-view_8cc.html</filename>
+    <includes id="assertions_8hh" name="assertions.hh" local="no" import="no" module="no" objc="no">scroom/assertions.hh</includes>
     <includes id="cairo-helpers_8hh" name="cairo-helpers.hh" local="no" import="no" module="no" objc="no">scroom/cairo-helpers.hh</includes>
     <includes id="tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
     <class kind="class">Scroom::Utils::DefaultTweakPresentationPosition</class>
     <class kind="class">Scroom::Utils::DefaultTweakSelection</class>
-    <class kind="class">Scroom::Utils::TweakRulers</class>
-    <class kind="class">Scroom::Utils::TweakPositionTextBox</class>
     <namespace>Scroom</namespace>
     <namespace>Scroom::Utils</namespace>
+    <namespace>Scroom::Utils::anonymous_namespace{tweak-view.cc}</namespace>
   </compound>
   <compound kind="file">
     <name>colormaphelpers_test.cc</name>
@@ -11258,9 +11219,9 @@
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
-      <name>Create</name>
+      <name>create</name>
       <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
-      <anchor>aa29c706854ef4dcbff88d3430ec45e24</anchor>
+      <anchor>a4db6fa5ca71b2c41ee2ffd0c275edd07</anchor>
       <arglist>()</arglist>
     </member>
   </compound>
@@ -12952,39 +12913,6 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>ITweakSelection</name>
-    <filename>classITweakSelection.html</filename>
-    <base>Scroom::Utils::ITweakSelection</base>
-    <member kind="typedef">
-      <type>std::shared_ptr&lt; ITweakSelection &gt;</type>
-      <name>Ptr</name>
-      <anchorfile>classITweakSelection.html</anchorfile>
-      <anchor>ad1632853981c27a9fe5bd385ea652aa9</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="typedef">
-      <type>Scroom::Utils::Point&lt; double &gt;</type>
-      <name>Point</name>
-      <anchorfile>classITweakSelection.html</anchorfile>
-      <anchor>a71dc24033cd4f01f9b681d6378e2c447</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="function" virtualness="pure">
-      <type>Selection</type>
-      <name>tweakSelection</name>
-      <anchorfile>classITweakSelection.html</anchorfile>
-      <anchor>af1dfe1cbe56c86cb79be8ba035efa6bf</anchor>
-      <arglist>(Selection selection) const override=0</arglist>
-    </member>
-    <member kind="function" virtualness="pure">
-      <type>virtual void</type>
-      <name>setAspectRatio</name>
-      <anchorfile>classITweakSelection.html</anchorfile>
-      <anchor>a854971a73838978bd02044dcfad729cb</anchor>
-      <arglist>(Point aspectRatio_)=0</arglist>
-    </member>
-  </compound>
-  <compound kind="class">
     <name>Scroom::Utils::ITweakSelection</name>
     <filename>classScroom_1_1Utils_1_1ITweakSelection.html</filename>
     <base>Interface</base>
@@ -12993,6 +12921,13 @@
       <name>Ptr</name>
       <anchorfile>classScroom_1_1Utils_1_1ITweakSelection.html</anchorfile>
       <anchor>aa4bcdde0ecea6a699c7008fa50545ace</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>std::map&lt; std::string, ITweakSelection::Ptr &gt;</type>
+      <name>Map</name>
+      <anchorfile>classScroom_1_1Utils_1_1ITweakSelection.html</anchorfile>
+      <anchor>aa938963ea5343fabb1d7b6f5e04614c5</anchor>
       <arglist></arglist>
     </member>
     <member kind="function" virtualness="pure">
@@ -18500,9 +18435,9 @@
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
-      <name>Create</name>
+      <name>create</name>
       <anchorfile>classScroom_1_1Utils_1_1RecursiveContext.html</anchorfile>
-      <anchor>a6f1a58e960de3e4ae5962c3d64b706f0</anchor>
+      <anchor>a1fecd5bbb7004b66fdffaa87c798cd5b</anchor>
       <arglist>()</arglist>
     </member>
   </compound>
@@ -22644,6 +22579,13 @@
       <arglist>() const override</arglist>
     </member>
     <member kind="function">
+      <type>Scroom::Utils::Context::ConstPtr</type>
+      <name>getContext</name>
+      <anchorfile>classTransformPresentation.html</anchorfile>
+      <anchor>a44c201d6cc210f06a61be9f1afe3e984</anchor>
+      <arglist>() const override</arglist>
+    </member>
+    <member kind="function">
       <type>PipetteLayerOperations::PipetteColor</type>
       <name>getPixelAverages</name>
       <anchorfile>classTransformPresentation.html</anchorfile>
@@ -22713,13 +22655,6 @@
       <anchor>a9a840aef2c9255e4da089567f73d8a6c</anchor>
       <arglist>(GtkWindow *parent) override</arglist>
     </member>
-    <member kind="function">
-      <type>Scroom::Utils::Context::ConstPtr</type>
-      <name>getContext</name>
-      <anchorfile>classTransformPresentation.html</anchorfile>
-      <anchor>a44c201d6cc210f06a61be9f1afe3e984</anchor>
-      <arglist>() const override</arglist>
-    </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
       <name>create</name>
@@ -22767,6 +22702,13 @@
       <name>viewData</name>
       <anchorfile>classTransformPresentation.html</anchorfile>
       <anchor>acd316f1a3a90a0fe59749363f82304d9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>Scroom::Utils::RecursiveContext::Ptr</type>
+      <name>context</name>
+      <anchorfile>classTransformPresentation.html</anchorfile>
+      <anchor>ab9ec8f8532594b77dbbf41d4f268d78a</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -23104,88 +23046,89 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>TweakGridSelection</name>
-    <filename>classTweakGridSelection.html</filename>
-    <base>TweakSelection</base>
+    <name>Scroom::Utils::TweakGridSelection</name>
+    <filename>classScroom_1_1Utils_1_1TweakGridSelection.html</filename>
+    <base>Scroom::Utils::TweakSelection</base>
     <member kind="function">
-      <type>Rectangle</type>
+      <type>Rectangle&lt; double &gt;</type>
       <name>tweakSelection</name>
-      <anchorfile>classTweakGridSelection.html</anchorfile>
-      <anchor>ae0bd56fdd79d1b55155400158ad1f876</anchor>
-      <arglist>(Rectangle selection) const override</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakGridSelection.html</anchorfile>
+      <anchor>aa8c6fe8915a001464a76a4b524531de9</anchor>
+      <arglist>(Rectangle&lt; double &gt; selection) const override</arglist>
     </member>
     <member kind="function">
-      <type>virtual Rectangle</type>
+      <type>virtual Rectangle&lt; double &gt;</type>
       <name>tweakSelection</name>
-      <anchorfile>classTweakGridSelection.html</anchorfile>
-      <anchor>aba15993b0d7720cf231d4fbd95980725</anchor>
-      <arglist>(Rectangle selection) const=0</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakGridSelection.html</anchorfile>
+      <anchor>ab136095c417a4d3ee92947281db7399b</anchor>
+      <arglist>(Rectangle&lt; double &gt; selection) const=0</arglist>
     </member>
     <member kind="function">
       <type>Selection</type>
       <name>tweakSelection</name>
-      <anchorfile>classTweakGridSelection.html</anchorfile>
-      <anchor>a8b280667496e3bd9fe0fa8a87a85a1b4</anchor>
+      <anchorfile>classScroom_1_1Utils_1_1TweakGridSelection.html</anchorfile>
+      <anchor>ab59d8018f7296e500c323c1ee3938ba4</anchor>
       <arglist>(Selection selection) const override</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>TweakSelection</name>
-      <anchorfile>classTweakGridSelection.html</anchorfile>
-      <anchor>a89db2a9f0403173a2780701a185bd408</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakGridSelection.html</anchorfile>
+      <anchor>a71f8542d72447b52363fa4dad59067ab</anchor>
+      <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
       <name>create</name>
-      <anchorfile>classTweakGridSelection.html</anchorfile>
-      <anchor>a64bd6f2b5e49b54c3b0661f71df0dd69</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakGridSelection.html</anchorfile>
+      <anchor>a63a1f1b1f24daf1e6a23120849585309</anchor>
+      <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
     </member>
   </compound>
   <compound kind="class">
-    <name>TweakPixelSelection</name>
-    <filename>classTweakPixelSelection.html</filename>
-    <base>TweakSelection</base>
+    <name>Scroom::Utils::TweakPixelSelection</name>
+    <filename>classScroom_1_1Utils_1_1TweakPixelSelection.html</filename>
+    <base>Scroom::Utils::TweakSelection</base>
     <member kind="function">
-      <type>Rectangle</type>
+      <type>Rectangle&lt; double &gt;</type>
       <name>tweakSelection</name>
-      <anchorfile>classTweakPixelSelection.html</anchorfile>
-      <anchor>ab8590c4031b7c85c5374f12ca61b2d58</anchor>
-      <arglist>(Rectangle selection) const override</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPixelSelection.html</anchorfile>
+      <anchor>aaae5d0b08e078d1ef850b0cea6182d20</anchor>
+      <arglist>(Rectangle&lt; double &gt; selection) const override</arglist>
     </member>
     <member kind="function">
-      <type>virtual Rectangle</type>
+      <type>virtual Rectangle&lt; double &gt;</type>
       <name>tweakSelection</name>
-      <anchorfile>classTweakPixelSelection.html</anchorfile>
-      <anchor>aba15993b0d7720cf231d4fbd95980725</anchor>
-      <arglist>(Rectangle selection) const=0</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPixelSelection.html</anchorfile>
+      <anchor>ab136095c417a4d3ee92947281db7399b</anchor>
+      <arglist>(Rectangle&lt; double &gt; selection) const=0</arglist>
     </member>
     <member kind="function">
       <type>Selection</type>
       <name>tweakSelection</name>
-      <anchorfile>classTweakPixelSelection.html</anchorfile>
-      <anchor>a8b280667496e3bd9fe0fa8a87a85a1b4</anchor>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPixelSelection.html</anchorfile>
+      <anchor>ab59d8018f7296e500c323c1ee3938ba4</anchor>
       <arglist>(Selection selection) const override</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>TweakSelection</name>
-      <anchorfile>classTweakPixelSelection.html</anchorfile>
-      <anchor>a89db2a9f0403173a2780701a185bd408</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPixelSelection.html</anchorfile>
+      <anchor>a71f8542d72447b52363fa4dad59067ab</anchor>
+      <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
       <name>create</name>
-      <anchorfile>classTweakPixelSelection.html</anchorfile>
-      <anchor>a35a1a260e43e6ef70c7437c7bb53b0f9</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPixelSelection.html</anchorfile>
+      <anchor>a96deee05d98551076bcb867634784a1f</anchor>
+      <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
     </member>
   </compound>
   <compound kind="class">
     <name>Scroom::Utils::TweakPositionTextBox</name>
     <filename>classScroom_1_1Utils_1_1TweakPositionTextBox.html</filename>
+    <base>Scroom::Utils::ITweakPositionTextBox</base>
     <member kind="typedef">
       <type>std::shared_ptr&lt; TweakPositionTextBox &gt;</type>
       <name>Ptr</name>
@@ -23193,168 +23136,93 @@
       <anchor>aba1707c4556685e1846886b46517c07b</anchor>
       <arglist></arglist>
     </member>
-    <member kind="typedef">
-      <type>Scroom::Utils::Point&lt; double &gt;</type>
-      <name>Point</name>
-      <anchorfile>classScroom_1_1Utils_1_1TweakPositionTextBox.html</anchorfile>
-      <anchor>a6d018cf9b8d9e65cf9343c0931988060</anchor>
-      <arglist></arglist>
-    </member>
     <member kind="function">
-      <type>Point</type>
+      <type>Point&lt; double &gt;</type>
       <name>parse</name>
       <anchorfile>classScroom_1_1Utils_1_1TweakPositionTextBox.html</anchorfile>
-      <anchor>a0c12dd1feb678cda5688115b2b5e7594</anchor>
-      <arglist>(std::string_view x, std::string_view y, Scroom::Utils::Point&lt; int &gt; drawingAreaSize, int zoom) const</arglist>
+      <anchor>a7ce1771561a0a29ffff0ecd12bd30e0c</anchor>
+      <arglist>(std::string_view x, std::string_view y, Point&lt; int &gt; drawingAreaSize, int zoom) const override</arglist>
     </member>
     <member kind="function">
       <type>std::pair&lt; std::string, std::string &gt;</type>
       <name>display</name>
       <anchorfile>classScroom_1_1Utils_1_1TweakPositionTextBox.html</anchorfile>
-      <anchor>af7d8856f9459fc1c7cce59c9e88a4075</anchor>
-      <arglist>(Point position, Scroom::Utils::Point&lt; int &gt; drawingAreaSize, int zoom) const</arglist>
+      <anchor>a756162b93d3d53f4c2529e86a3d6bf2e</anchor>
+      <arglist>(Point&lt; double &gt; position, Point&lt; int &gt; drawingAreaSize, int zoom) const override</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>setAspectRatio</name>
       <anchorfile>classScroom_1_1Utils_1_1TweakPositionTextBox.html</anchorfile>
-      <anchor>aaa6f37de615b860d8bfef01dfb760e6b</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchor>a32c92c7326bef0a3283536fa70da1256</anchor>
+      <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
       <name>create</name>
       <anchorfile>classScroom_1_1Utils_1_1TweakPositionTextBox.html</anchorfile>
-      <anchor>ab65e0675546d7bfc857a584e0e61fe8f</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchor>a6aeec9ec0cba18d7fb81f8ec73584589</anchor>
+      <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
     </member>
     <member kind="function" protection="private">
       <type></type>
       <name>TweakPositionTextBox</name>
       <anchorfile>classScroom_1_1Utils_1_1TweakPositionTextBox.html</anchorfile>
-      <anchor>a166bd7e02fd45ef04be948d731fe1672</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchor>aaf722875b92d762c08f8547f6f292aff</anchor>
+      <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>Point</type>
+      <type>Point&lt; double &gt;</type>
       <name>aspectRatio</name>
       <anchorfile>classScroom_1_1Utils_1_1TweakPositionTextBox.html</anchorfile>
-      <anchor>a28adbe70ee1f195fc88e3173e2513f6a</anchor>
+      <anchor>a8f099b04305d03101779ef7e455f8158</anchor>
       <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
-    <name>TweakPositionTextBox</name>
-    <filename>classTweakPositionTextBox.html</filename>
-    <base>Scroom::Utils::ITweakPositionTextBox</base>
-    <member kind="typedef">
-      <type>std::shared_ptr&lt; TweakPositionTextBox &gt;</type>
-      <name>Ptr</name>
-      <anchorfile>classTweakPositionTextBox.html</anchorfile>
-      <anchor>a62b3e8b6f032ea9473b4407aaee83216</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="typedef">
-      <type>Scroom::Utils::Point&lt; double &gt;</type>
-      <name>Point</name>
-      <anchorfile>classTweakPositionTextBox.html</anchorfile>
-      <anchor>a6aa45dd92d97a0832e598e2d1c34d7b1</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="function">
-      <type>Point</type>
-      <name>parse</name>
-      <anchorfile>classTweakPositionTextBox.html</anchorfile>
-      <anchor>a0bbc8378d5b13a41bff39edc3fae7a6f</anchor>
-      <arglist>(std::string_view x, std::string_view y, Scroom::Utils::Point&lt; int &gt; drawingAreaSize, int zoom) const override</arglist>
-    </member>
-    <member kind="function">
-      <type>std::pair&lt; std::string, std::string &gt;</type>
-      <name>display</name>
-      <anchorfile>classTweakPositionTextBox.html</anchorfile>
-      <anchor>a6b1af8e24a85a078ab0214a2794d5d50</anchor>
-      <arglist>(Point position, Scroom::Utils::Point&lt; int &gt; drawingAreaSize, int zoom) const override</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>setAspectRatio</name>
-      <anchorfile>classTweakPositionTextBox.html</anchorfile>
-      <anchor>abe450446237ce055041d4fa289363857</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static Ptr</type>
-      <name>create</name>
-      <anchorfile>classTweakPositionTextBox.html</anchorfile>
-      <anchor>a01051591e2fe103b2aeeec04dfa1ed19</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
-    </member>
-    <member kind="function" protection="private">
-      <type></type>
-      <name>TweakPositionTextBox</name>
-      <anchorfile>classTweakPositionTextBox.html</anchorfile>
-      <anchor>a456b90dc041b5897ec8f18e8a74fadea</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>Point</type>
-      <name>aspectRatio</name>
-      <anchorfile>classTweakPositionTextBox.html</anchorfile>
-      <anchor>a8d2812036bd7038e2b8f23a763bb5ec4</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>TweakPresentationPosition</name>
-    <filename>classTweakPresentationPosition.html</filename>
+    <name>Scroom::Utils::TweakPresentationPosition</name>
+    <filename>classScroom_1_1Utils_1_1TweakPresentationPosition.html</filename>
     <base>Scroom::Utils::ITweakPresentationPosition</base>
     <member kind="typedef">
       <type>std::shared_ptr&lt; TweakPresentationPosition &gt;</type>
       <name>Ptr</name>
-      <anchorfile>classTweakPresentationPosition.html</anchorfile>
-      <anchor>a815f26bd0503a2fffb2e160b56060241</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="typedef">
-      <type>Scroom::Utils::Point&lt; double &gt;</type>
-      <name>Point</name>
-      <anchorfile>classTweakPresentationPosition.html</anchorfile>
-      <anchor>ae8a9f8845e52f3de5bfc758a1275f22c</anchor>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPresentationPosition.html</anchorfile>
+      <anchor>a80acefbc72c6435aa481f2e9f6b7a72b</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
-      <type>Point</type>
+      <type>Point&lt; double &gt;</type>
       <name>tweakPosition</name>
-      <anchorfile>classTweakPresentationPosition.html</anchorfile>
-      <anchor>aae174280b635837f42624c744009f996</anchor>
-      <arglist>(Point currentPosition, Scroom::Utils::Point&lt; int &gt;, int zoom) const override</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPresentationPosition.html</anchorfile>
+      <anchor>a0a5753ef0afbff86bfa244cce7babbc8</anchor>
+      <arglist>(Point&lt; double &gt; currentPosition, Point&lt; int &gt; drawingAreaSize, int zoom) const override</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>setAspectRatio</name>
-      <anchorfile>classTweakPresentationPosition.html</anchorfile>
-      <anchor>ae1dad0a01eb103729be6f627d7ac0897</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPresentationPosition.html</anchorfile>
+      <anchor>a67689ef9bec0e9360a59705631996001</anchor>
+      <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
       <name>create</name>
-      <anchorfile>classTweakPresentationPosition.html</anchorfile>
-      <anchor>a9eb63117ba7be7c7e61bcaa939a21023</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPresentationPosition.html</anchorfile>
+      <anchor>a30fb39783ae6eae24a51dbc0cd209343</anchor>
+      <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
     </member>
     <member kind="function" protection="private">
       <type></type>
       <name>TweakPresentationPosition</name>
-      <anchorfile>classTweakPresentationPosition.html</anchorfile>
-      <anchor>a01f80b4df75712bbe982c569a491e3cf</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPresentationPosition.html</anchorfile>
+      <anchor>ab16b301a888fcfc7b903376d566eb917</anchor>
+      <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>Point</type>
+      <type>Point&lt; double &gt;</type>
       <name>aspectRatio</name>
-      <anchorfile>classTweakPresentationPosition.html</anchorfile>
-      <anchor>a3aff9a977920a2b836c58706e5a9be47</anchor>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPresentationPosition.html</anchorfile>
+      <anchor>aa72a79f1815efc983f1d341d982afe84</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -23362,26 +23230,47 @@
     <name>Scroom::Utils::TweakRulers</name>
     <filename>classScroom_1_1Utils_1_1TweakRulers.html</filename>
     <base>Scroom::Utils::ITweakRulers</base>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; TweakRulers &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>classScroom_1_1Utils_1_1TweakRulers.html</anchorfile>
+      <anchor>a3829fbd4a03a11a8c341636cf6d3efd7</anchor>
+      <arglist></arglist>
+    </member>
     <member kind="function">
+      <type>Rectangle&lt; double &gt;</type>
+      <name>tweakRulers</name>
+      <anchorfile>classScroom_1_1Utils_1_1TweakRulers.html</anchorfile>
+      <anchor>a1df5ae5b56725d612fd9d1310c557e4b</anchor>
+      <arglist>(Point&lt; double &gt; currentPosition, Point&lt; int &gt; drawingAreaSize, int zoom) const override</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setAspectRatio</name>
+      <anchorfile>classScroom_1_1Utils_1_1TweakRulers.html</anchorfile>
+      <anchor>ad9209624a98dd973f200a713e7fd4f48</anchor>
+      <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static Ptr</type>
+      <name>create</name>
+      <anchorfile>classScroom_1_1Utils_1_1TweakRulers.html</anchorfile>
+      <anchor>a3ec58abcc4ea436971abab8ca87e7acf</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static Ptr</type>
+      <name>create</name>
+      <anchorfile>classScroom_1_1Utils_1_1TweakRulers.html</anchorfile>
+      <anchor>a86ab6d6d0fd8ef83eba5127b20decc22</anchor>
+      <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
+    </member>
+    <member kind="function" protection="private">
       <type></type>
       <name>TweakRulers</name>
       <anchorfile>classScroom_1_1Utils_1_1TweakRulers.html</anchorfile>
       <anchor>a179353599ddd4f57c5819ab00ba31991</anchor>
       <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TweakRulers</name>
-      <anchorfile>classScroom_1_1Utils_1_1TweakRulers.html</anchorfile>
-      <anchor>af210b921adf12d0389eae1452a808336</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>Scroom::Utils::Rectangle&lt; double &gt;</type>
-      <name>tweakRulers</name>
-      <anchorfile>classScroom_1_1Utils_1_1TweakRulers.html</anchorfile>
-      <anchor>aed7b326e06810d8e32b23df625553a28</anchor>
-      <arglist>(Point&lt; double &gt; currentPosition, Point&lt; int &gt; drawingAreaSize, int zoom) const override</arglist>
     </member>
     <member kind="variable" protection="private">
       <type>Point&lt; double &gt;</type>
@@ -23392,103 +23281,49 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>TweakRulers</name>
-    <filename>classTweakRulers.html</filename>
-    <base>Scroom::Utils::ITweakRulers</base>
+    <name>Scroom::Utils::TweakSelection</name>
+    <filename>classScroom_1_1Utils_1_1TweakSelection.html</filename>
+    <base>Scroom::Utils::ITweakSelection</base>
     <member kind="typedef">
-      <type>std::shared_ptr&lt; TweakRulers &gt;</type>
+      <type>std::shared_ptr&lt; TweakSelection &gt;</type>
       <name>Ptr</name>
-      <anchorfile>classTweakRulers.html</anchorfile>
-      <anchor>aed8f94596f49f0bf70ac2c903276cc58</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="typedef">
-      <type>Scroom::Utils::Point&lt; double &gt;</type>
-      <name>Point</name>
-      <anchorfile>classTweakRulers.html</anchorfile>
-      <anchor>a027377b6bb9b72b8c7667b7646fc590e</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="function">
-      <type>Scroom::Utils::Rectangle&lt; double &gt;</type>
-      <name>tweakRulers</name>
-      <anchorfile>classTweakRulers.html</anchorfile>
-      <anchor>aa40086ed938aaf0d933c41f5d0d46d6a</anchor>
-      <arglist>(Point currentPosition, Scroom::Utils::Point&lt; int &gt; drawingAreaSize, int zoom) const override</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>setAspectRatio</name>
-      <anchorfile>classTweakRulers.html</anchorfile>
-      <anchor>a25df7aa6ca074bfefa7cb17ba0bb8760</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static Ptr</type>
-      <name>create</name>
-      <anchorfile>classTweakRulers.html</anchorfile>
-      <anchor>a97536e4b1c329b0757880b9128ce0575</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
-    </member>
-    <member kind="function" protection="private">
-      <type></type>
-      <name>TweakRulers</name>
-      <anchorfile>classTweakRulers.html</anchorfile>
-      <anchor>a59024044cb56b26cba869def848d8302</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>Point</type>
-      <name>aspectRatio</name>
-      <anchorfile>classTweakRulers.html</anchorfile>
-      <anchor>ae3775037f6aa9e4929d36732b7ba4e38</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>TweakSelection</name>
-    <filename>classTweakSelection.html</filename>
-    <base>ITweakSelection</base>
-    <member kind="typedef">
-      <type>Scroom::Utils::Rectangle&lt; double &gt;</type>
-      <name>Rectangle</name>
-      <anchorfile>classTweakSelection.html</anchorfile>
-      <anchor>ab884b6cbfd0d7ef5d24779b238d58f20</anchor>
+      <anchorfile>classScroom_1_1Utils_1_1TweakSelection.html</anchorfile>
+      <anchor>a542519c8e04bc6103abc201c42b0ec2a</anchor>
       <arglist></arglist>
     </member>
     <member kind="function" virtualness="pure">
-      <type>virtual Rectangle</type>
+      <type>virtual Rectangle&lt; double &gt;</type>
       <name>tweakSelection</name>
-      <anchorfile>classTweakSelection.html</anchorfile>
-      <anchor>a12e9c0186b039a10ac416c1b7a595049</anchor>
-      <arglist>(Rectangle selection) const =0</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakSelection.html</anchorfile>
+      <anchor>aca96ba1d9601e6bd888f9c2cb39c328a</anchor>
+      <arglist>(Rectangle&lt; double &gt; selection) const =0</arglist>
     </member>
     <member kind="function">
       <type>Selection</type>
       <name>tweakSelection</name>
-      <anchorfile>classTweakSelection.html</anchorfile>
-      <anchor>a8b280667496e3bd9fe0fa8a87a85a1b4</anchor>
+      <anchorfile>classScroom_1_1Utils_1_1TweakSelection.html</anchorfile>
+      <anchor>ab59d8018f7296e500c323c1ee3938ba4</anchor>
       <arglist>(Selection selection) const override</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>setAspectRatio</name>
-      <anchorfile>classTweakSelection.html</anchorfile>
-      <anchor>a569158860931e97ddac18f418db6cfe3</anchor>
-      <arglist>(Point aspectRatio_) override</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakSelection.html</anchorfile>
+      <anchor>a658270ae1edc63bea791b7f1d078b4c9</anchor>
+      <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
     </member>
     <member kind="function" protection="protected">
       <type></type>
       <name>TweakSelection</name>
-      <anchorfile>classTweakSelection.html</anchorfile>
-      <anchor>a89db2a9f0403173a2780701a185bd408</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakSelection.html</anchorfile>
+      <anchor>a71f8542d72447b52363fa4dad59067ab</anchor>
+      <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>Point</type>
+      <type>Point&lt; double &gt;</type>
       <name>aspectRatio</name>
-      <anchorfile>classTweakSelection.html</anchorfile>
-      <anchor>adaea304ddfaf25d12a5dd441e3ea5334</anchor>
+      <anchorfile>classScroom_1_1Utils_1_1TweakSelection.html</anchorfile>
+      <anchor>ac5d09c56e96995eb95743d1556ad9b63</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -24329,31 +24164,31 @@
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>std::shared_ptr&lt; TweakPresentationPosition &gt;</type>
+      <type>std::shared_ptr&lt; Scroom::Utils::TweakPresentationPosition &gt;</type>
       <name>tweakPresentationPosition</name>
       <anchorfile>classView.html</anchorfile>
-      <anchor>a5520d4697172b00423b7dfc8562be43a</anchor>
+      <anchor>a11b9145e83c2b1f280a4fe7b87394838</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>std::shared_ptr&lt; TweakPositionTextBox &gt;</type>
+      <type>std::shared_ptr&lt; Scroom::Utils::TweakPositionTextBox &gt;</type>
       <name>tweakPositionTextBox</name>
       <anchorfile>classView.html</anchorfile>
-      <anchor>ac1502705428141a89903b054fa002c7e</anchor>
+      <anchor>af8800ec7bf09c4d81e4186e036867040</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>std::shared_ptr&lt; TweakRulers &gt;</type>
+      <type>std::shared_ptr&lt; Scroom::Utils::TweakRulers &gt;</type>
       <name>tweakRulers</name>
       <anchorfile>classView.html</anchorfile>
-      <anchor>a4d9f207f3443cd9c9c07458d2131726d</anchor>
+      <anchor>a1e33c6dbfd6b1820c0f506ec34c74e7e</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>std::map&lt; std::string, std::shared_ptr&lt; ITweakSelection &gt; &gt;</type>
+      <type>std::map&lt; std::string, Scroom::Utils::TweakSelection::Ptr &gt;</type>
       <name>tweakSelection</name>
       <anchorfile>classView.html</anchorfile>
-      <anchor>a074b15cf61b0b77505af7174f28aa316</anchor>
+      <anchor>a12653a493d2aa2086ac351f860603ea8</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
@@ -25337,21 +25172,21 @@
   <compound kind="namespace">
     <name>anonymous_namespace{view.cc}</name>
     <filename>namespaceanonymous__namespace_02view_8cc_03.html</filename>
-    <member kind="function" protection="private">
+    <member kind="function">
       <type>Scroom::Utils::Point&lt; double &gt;</type>
       <name>eventToPoint</name>
       <anchorfile>namespaceanonymous__namespace_02view_8cc_03.html</anchorfile>
       <anchor>ac2ade1a4095158be9e06ab085168e2ad</anchor>
       <arglist>(GdkEventButton *event)</arglist>
     </member>
-    <member kind="function" protection="private">
+    <member kind="function">
       <type>Scroom::Utils::Point&lt; double &gt;</type>
       <name>eventToPoint</name>
       <anchorfile>namespaceanonymous__namespace_02view_8cc_03.html</anchorfile>
       <anchor>a1ab23fe43b4b1aaecbd16e2d087776ae</anchor>
       <arglist>(GdkEventMotion *event)</arglist>
     </member>
-    <member kind="function" protection="private">
+    <member kind="function">
       <type>void</type>
       <name>on_newWindow_activate</name>
       <anchorfile>namespaceanonymous__namespace_02view_8cc_03.html</anchorfile>
@@ -26061,6 +25896,7 @@
   <compound kind="namespace">
     <name>Scroom::Utils</name>
     <filename>namespaceScroom_1_1Utils.html</filename>
+    <namespace>Scroom::Utils::anonymous_namespace{tweak-view.cc}</namespace>
     <namespace>Scroom::Utils::Detail</namespace>
     <class kind="class">Scroom::Utils::Base</class>
     <class kind="class">Scroom::Utils::Context</class>
@@ -26089,8 +25925,12 @@
     <class kind="class">Scroom::Utils::RecursiveContext</class>
     <class kind="class">Scroom::Utils::Segment</class>
     <class kind="class">Scroom::Utils::SingleContext</class>
+    <class kind="class">Scroom::Utils::TweakGridSelection</class>
+    <class kind="class">Scroom::Utils::TweakPixelSelection</class>
     <class kind="class">Scroom::Utils::TweakPositionTextBox</class>
+    <class kind="class">Scroom::Utils::TweakPresentationPosition</class>
     <class kind="class">Scroom::Utils::TweakRulers</class>
+    <class kind="class">Scroom::Utils::TweakSelection</class>
     <member kind="typedef">
       <type>std::shared_ptr&lt; void &gt;</type>
       <name>Stuff</name>
@@ -26524,6 +26364,49 @@
       <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
       <anchor>a00a4f91d4115659e531a6542307e270b</anchor>
       <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="namespace">
+    <name>Scroom::Utils::anonymous_namespace{tweak-view.cc}</name>
+    <filename>namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html</filename>
+    <member kind="enumeration">
+      <type></type>
+      <name>Corner</name>
+      <anchorfile>namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html</anchorfile>
+      <anchor>add5ac7ed3f67a149282397b67c164559</anchor>
+      <arglist></arglist>
+      <enumvalue file="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html" anchor="add5ac7ed3f67a149282397b67c164559a747385047b85ae751f83adb36435a3c1">TOP_LEFT</enumvalue>
+      <enumvalue file="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html" anchor="add5ac7ed3f67a149282397b67c164559a901d87dedda8db733f5e6d34c4eb5fe0">TOP_RIGHT</enumvalue>
+      <enumvalue file="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html" anchor="add5ac7ed3f67a149282397b67c164559a8d81ac82421d1b03da58fccb9174892e">BOTTOM_LEFT</enumvalue>
+      <enumvalue file="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html" anchor="add5ac7ed3f67a149282397b67c164559a341b72aaab1308a3e6667af1e52f5def">BOTTOM_RIGHT</enumvalue>
+    </member>
+    <member kind="function">
+      <type>std::function&lt; Point&lt; double &gt;(Rectangle&lt; double &gt;)&gt;</type>
+      <name>corner_getter</name>
+      <anchorfile>namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html</anchorfile>
+      <anchor>a24a000b9a03e52556f4d864a2c1c0f23</anchor>
+      <arglist>(Corner c)</arglist>
+    </member>
+    <member kind="function">
+      <type>Corner</type>
+      <name>find_closest_corner</name>
+      <anchorfile>namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html</anchorfile>
+      <anchor>ab67255b453112cd0431cabc7d058475b</anchor>
+      <arglist>(Point&lt; double &gt; p, Rectangle&lt; double &gt; r)</arglist>
+    </member>
+    <member kind="function">
+      <type>Corner</type>
+      <name>find_opposed_corner</name>
+      <anchorfile>namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html</anchorfile>
+      <anchor>a6a9984486641cc1142db4a86b1a1410a</anchor>
+      <arglist>(Corner c)</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle&lt; double &gt;</type>
+      <name>toRectangle</name>
+      <anchorfile>namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html</anchorfile>
+      <anchor>af0425fd1837e4946d3c9dda63659031f</anchor>
+      <arglist>(Selection s)</arglist>
     </member>
   </compound>
   <compound kind="namespace">

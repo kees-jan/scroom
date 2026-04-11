@@ -23,6 +23,7 @@ var classTransformPresentation =
     [ "setTransparentBackground", "classTransformPresentation.html#a7e5ba7edfebb16456fefec941e4f3eb3", null ],
     [ "showMetadata", "classTransformPresentation.html#a9a840aef2c9255e4da089567f73d8a6c", null ],
     [ "colormappable", "classTransformPresentation.html#ad383e05a9aa2cbd83a077bd83ced7abd", null ],
+    [ "context", "classTransformPresentation.html#ab9ec8f8532594b77dbbf41d4f268d78a", null ],
     [ "presentation", "classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee", null ],
     [ "showMetaDataInterface", "classTransformPresentation.html#a29fd4e7f86ebe745c74a833cc1daba25", null ],
     [ "transformationData", "classTransformPresentation.html#ad5804a0827bf975f5dd39061f7a5060a", null ],

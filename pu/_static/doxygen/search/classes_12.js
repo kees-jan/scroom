@@ -26,10 +26,10 @@ var searchData=
   ['transparentoverlay_23',['TransparentOverlay',['../classTransparentOverlay.html',1,'']]],
   ['transparentoverlaypresentation_24',['TransparentOverlayPresentation',['../classTransparentOverlayPresentation.html',1,'']]],
   ['transparentoverlayviewinfo_25',['TransparentOverlayViewInfo',['../classTransparentOverlayViewInfo.html',1,'']]],
-  ['tweakgridselection_26',['TweakGridSelection',['../classTweakGridSelection.html',1,'']]],
-  ['tweakpixelselection_27',['TweakPixelSelection',['../classTweakPixelSelection.html',1,'']]],
-  ['tweakpositiontextbox_28',['tweakpositiontextbox',['../classScroom_1_1Utils_1_1TweakPositionTextBox.html',1,'Scroom::Utils::TweakPositionTextBox'],['../classTweakPositionTextBox.html',1,'TweakPositionTextBox']]],
-  ['tweakpresentationposition_29',['TweakPresentationPosition',['../classTweakPresentationPosition.html',1,'']]],
-  ['tweakrulers_30',['tweakrulers',['../classScroom_1_1Utils_1_1TweakRulers.html',1,'Scroom::Utils::TweakRulers'],['../classTweakRulers.html',1,'TweakRulers']]],
-  ['tweakselection_31',['TweakSelection',['../classTweakSelection.html',1,'']]]
+  ['tweakgridselection_26',['TweakGridSelection',['../classScroom_1_1Utils_1_1TweakGridSelection.html',1,'Scroom::Utils']]],
+  ['tweakpixelselection_27',['TweakPixelSelection',['../classScroom_1_1Utils_1_1TweakPixelSelection.html',1,'Scroom::Utils']]],
+  ['tweakpositiontextbox_28',['TweakPositionTextBox',['../classScroom_1_1Utils_1_1TweakPositionTextBox.html',1,'Scroom::Utils']]],
+  ['tweakpresentationposition_29',['TweakPresentationPosition',['../classScroom_1_1Utils_1_1TweakPresentationPosition.html',1,'Scroom::Utils']]],
+  ['tweakrulers_30',['TweakRulers',['../classScroom_1_1Utils_1_1TweakRulers.html',1,'Scroom::Utils']]],
+  ['tweakselection_31',['TweakSelection',['../classScroom_1_1Utils_1_1TweakSelection.html',1,'Scroom::Utils']]]
 ];

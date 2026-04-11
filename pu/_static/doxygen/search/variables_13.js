@@ -34,9 +34,9 @@ var searchData=
   ['transformationdata_31',['transformationData',['../classTransformPresentation.html#ad5804a0827bf975f5dd39061f7a5060a',1,'TransformPresentation']]],
   ['transparent_5fbackground_5fproperty_5fname_32',['TRANSPARENT_BACKGROUND_PROPERTY_NAME',['../colormappable_8hh.html#aa9ccccaacd6a2d008759fcaac53b9bf2',1,'colormappable.hh']]],
   ['transparentbackground_33',['transparentBackground',['../classMonochromeColormapHelper.html#aa54b09eb5b74f13bb333f5211893240e',1,'MonochromeColormapHelper']]],
-  ['tweakpositiontextbox_34',['tweakPositionTextBox',['../classView.html#ac1502705428141a89903b054fa002c7e',1,'View']]],
-  ['tweakpresentationposition_35',['tweakPresentationPosition',['../classView.html#a5520d4697172b00423b7dfc8562be43a',1,'View']]],
-  ['tweakrulers_36',['tweakRulers',['../classView.html#a4d9f207f3443cd9c9c07458d2131726d',1,'View']]],
-  ['tweakselection_37',['tweakSelection',['../classView.html#a074b15cf61b0b77505af7174f28aa316',1,'View']]],
+  ['tweakpositiontextbox_34',['tweakPositionTextBox',['../classView.html#af8800ec7bf09c4d81e4186e036867040',1,'View']]],
+  ['tweakpresentationposition_35',['tweakPresentationPosition',['../classView.html#a11b9145e83c2b1f280a4fe7b87394838',1,'View']]],
+  ['tweakrulers_36',['tweakRulers',['../classView.html#a1e33c6dbfd6b1820c0f506ec34c74e7e',1,'View']]],
+  ['tweakselection_37',['tweakSelection',['../classView.html#a12653a493d2aa2086ac351f860603ea8',1,'View']]],
   ['type_38',['type',['../structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#a253565042c3ccff0767b1a71f168158e',1,'Scroom::TiledBitmap::BitmapMetaData']]]
 ];

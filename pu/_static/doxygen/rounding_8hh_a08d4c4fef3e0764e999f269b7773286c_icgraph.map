@@ -6,6 +6,8 @@
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="757,55,723,59,722,54,757,50"/>
 <area shape="rect" id="Node000004" href="$namespaceScroom_1_1Utils.html#aafbf8baa587d11858954f89021f9037b" title=" " alt="" coords="263,55,472,80"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="507,70,472,70,472,65,507,65"/>
-<area shape="rect" id="Node000005" href="$namespaceScroom_1_1Utils.html#a72ac5080c6ef925d23e9d737f118ba2d" title=" " alt="" coords="5,55,215,80"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="249,70,215,70,215,65,249,65"/>
+<area shape="rect" id="Node000005" href="$namespaceScroom_1_1Utils.html#a72ac5080c6ef925d23e9d737f118ba2d" title=" " alt="" coords="5,25,215,51"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="249,57,215,53,215,47,249,51"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1TweakPixelSelection.html#aaae5d0b08e078d1ef850b0cea6182d20" title=" " alt="" coords="15,75,205,115"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="249,83,206,88,205,82,249,78"/>
 </map>

@@ -1,9 +1,10 @@
 <map id="Scroom::Utils::Rectangle::getBottomRight" name="Scroom::Utils::Rectangle::getBottomRight">
-<area shape="rect" id="Node000001" title=" " alt="" coords="536,23,719,63"/>
-<area shape="rect" id="Node000002" href="$view_8cc.html#aa8cab6bcc78f2ade190564c5b9c36c00" title=" " alt="" coords="331,5,441,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="522,35,441,26,441,21,522,30"/>
-<area shape="rect" id="Node000004" href="$namespaceScroom_1_1Utils.html#a336b08377145525ad7740b47d618b161" title=" " alt="" coords="284,55,488,80"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="523,56,488,60,488,55,522,51"/>
-<area shape="rect" id="Node000003" href="$classTweakSelection.html#a8b280667496e3bd9fe0fa8a87a85a1b4" title=" " alt="" coords="5,5,236,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="317,21,236,21,236,15,317,15"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="496,69,679,109"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#a24a000b9a03e52556f4d864a2c1c0f23" title=" " alt="" coords="249,29,443,84"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="482,77,443,72,444,67,483,72"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1Utils.html#a336b08377145525ad7740b47d618b161" title=" " alt="" coords="244,108,448,133"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="483,105,442,111,442,105,482,100"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="386,18,372,11,346,8,325,10,311,15,304,21,305,29,299,29,299,19,308,10,323,5,346,3,373,6,389,14"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1TweakGridSelection.html#aa8c6fe8915a001464a76a4b524531de9" title=" " alt="" coords="5,101,196,141"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="230,123,196,123,196,118,230,118"/>
 </map>
