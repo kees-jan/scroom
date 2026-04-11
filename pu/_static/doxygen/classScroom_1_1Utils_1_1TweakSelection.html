@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-48-gfed354b7</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-48-g88dcc34e</span>
    </div>
   </td>
  </tr>
@@ -223,7 +223,7 @@ Protected Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  135</span>    : <a class="code hl_variable" href="classScroom_1_1Utils_1_1TweakSelection.html#ac5d09c56e96995eb95743d1556ad9b63">aspectRatio</a>(aspectRatio_)</div>
 <div class="line"><span class="lineno">  136</span>  {</div>
 <div class="line"><span class="lineno">  137</span>  }</div>
-<div class="ttc" id="aclassScroom_1_1Utils_1_1TweakSelection_html_ac5d09c56e96995eb95743d1556ad9b63"><div class="ttname"><a href="classScroom_1_1Utils_1_1TweakSelection.html#ac5d09c56e96995eb95743d1556ad9b63">Scroom::Utils::TweakSelection::aspectRatio</a></div><div class="ttdeci">Point&lt; double &gt; aspectRatio</div><div class="ttdef"><b>Definition</b> tweak-view.hh:124</div></div>
+<div class="ttc" id="aclassScroom_1_1Utils_1_1TweakSelection_html_ac5d09c56e96995eb95743d1556ad9b63"><div class="ttname"><a href="classScroom_1_1Utils_1_1TweakSelection.html#ac5d09c56e96995eb95743d1556ad9b63">Scroom::Utils::TweakSelection::aspectRatio</a></div><div class="ttdeci">Point&lt; double &gt; aspectRatio</div><div class="ttdef"><b>Definition</b> tweak-view.hh:123</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -314,13 +314,13 @@ Here is the caller graph for this function:</div>
 <p>Implements <a class="el" href="classScroom_1_1Utils_1_1ITweakSelection.html#a15f060c2d6d249d472f2568caab03c0c">Scroom::Utils::ITweakSelection</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  140</span>  {</div>
 <div class="line"><span class="lineno">  141</span>    <span class="keyword">const</span> <span class="keyword">auto</span> original = <a class="code hl_function" href="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#af0425fd1837e4946d3c9dda63659031f">toRectangle</a>(<a class="code hl_variable" href="pipette-tests_8cc.html#a253a9998ea77422057632a35f2b241ec">selection</a>);</div>
-<div class="line"><span class="lineno">  142</span>    <span class="keyword">const</span> <span class="keyword">auto</span> tweaked  = <a class="code hl_function" href="classScroom_1_1Utils_1_1TweakSelection.html#aca96ba1d9601e6bd888f9c2cb39c328a">tweakSelection</a>(original);</div>
+<div class="line"><span class="lineno">  142</span>    <span class="keyword">const</span> <span class="keyword">auto</span> tweaked = <a class="code hl_function" href="classScroom_1_1Utils_1_1TweakSelection.html#aca96ba1d9601e6bd888f9c2cb39c328a">tweakSelection</a>(original);</div>
 <div class="line"><span class="lineno">  143</span> </div>
 <div class="line"><span class="lineno">  144</span>    <span class="keyword">const</span> <span class="keyword">auto</span> startCorner = <a class="code hl_function" href="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#ab67255b453112cd0431cabc7d058475b">find_closest_corner</a>(<a class="code hl_variable" href="pipette-tests_8cc.html#a253a9998ea77422057632a35f2b241ec">selection</a>.start, original);</div>
-<div class="line"><span class="lineno">  145</span>    <span class="keyword">const</span> <span class="keyword">auto</span> endCorner   = <a class="code hl_function" href="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#a6a9984486641cc1142db4a86b1a1410a">find_opposed_corner</a>(startCorner);</div>
+<div class="line"><span class="lineno">  145</span>    <span class="keyword">const</span> <span class="keyword">auto</span> endCorner = <a class="code hl_function" href="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#a6a9984486641cc1142db4a86b1a1410a">find_opposed_corner</a>(startCorner);</div>
 <div class="line"><span class="lineno">  146</span> </div>
 <div class="line"><span class="lineno">  147</span>    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a> = <a class="code hl_function" href="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#a24a000b9a03e52556f4d864a2c1c0f23">corner_getter</a>(startCorner)(tweaked);</div>
-<div class="line"><span class="lineno">  148</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end   = <a class="code hl_function" href="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#a24a000b9a03e52556f4d864a2c1c0f23">corner_getter</a>(endCorner)(tweaked);</div>
+<div class="line"><span class="lineno">  148</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end = <a class="code hl_function" href="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#a24a000b9a03e52556f4d864a2c1c0f23">corner_getter</a>(endCorner)(tweaked);</div>
 <div class="line"><span class="lineno">  149</span> </div>
 <div class="line"><span class="lineno">  150</span>    <span class="keywordflow">return</span> {<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a>, end};</div>
 <div class="line"><span class="lineno">  151</span>  }</div>
