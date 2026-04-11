@@ -82,19 +82,19 @@ var NAVTREEINDEX =
 "classScroom_1_1Bookkeeping_1_1Detail_1_1TokenAddition.html#a115cbcf8737a5ddbe20bfc0ceae8d06f",
 "classScroom_1_1GtkTestHelpers_1_1GtkMainLoop.html#a8ef76b54ba2c63f4e0ce6564f00974ef",
 "classScroom_1_1Semaphore.html#a9bbaee0b470d62b78a68af579b6b0a86",
-"classScroom_1_1Utils_1_1Observable.html#a9a64dcee35b761f9096c802c9fc2139b",
-"classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterfaceForwarder.html#ad08ee75b4c3bcaafdab3ac37052849ec",
-"classScroom_1_1Utils_1_1TweakPresentationPosition.html#a67689ef9bec0e9360a59705631996001",
-"classTiff.html#afde57e3be0da1f31832c2ab624ed266f",
-"classView.html#a3945d440d66e6550213cbf6f5530501d",
-"classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html#ad97651e0256cc8db36501d834fff73c3",
-"determine-size-test_8cc.html#a4410b3e0fe1ff879fba5de9cbd5fe4cd",
-"globals_eval.html",
-"namespaceScroom_1_1Bookkeeping_1_1Detail.html",
-"observable-tests_8cc.html#a80d3ec676e99d30643345432b3105871",
-"rectangle_8hh.html#a8a866a6439fc60dfe259e168059aa65e",
-"showmetadata_8hh_source.html",
-"threadpool-tests_8cc.html#afed1d9f0b7b77d5594eefec825c3104f"
+"classScroom_1_1Utils_1_1ITweakSelection.html#aa4bcdde0ecea6a699c7008fa50545ace",
+"classScroom_1_1Utils_1_1ProgressStateInterface.html#af17b9367dd613c97f7a56479638aff55a86e7ecba927eb4cb9ecc2ed920a95a8d",
+"classScroom_1_1Utils_1_1TweakPositionTextBox.html#a6199c78ca7167337581dbb3bebb52f00",
+"classThreadPool_1_1WeakQueue.html#a976cc5dcd2e4f092f630e62960278a22",
+"classView.html#a10bfd0a564e56de855d3f5e5aa634eb0",
+"classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html#a21055cc122e9988e7af28e8ca27ff16d",
+"determine-size-test_8cc.html#a3e5352bbcbfda56723e1f9044a55071d",
+"globals_e.html",
+"namespaceScroom_1_1Bookkeeping.html",
+"observable-tests_8cc.html#acbcf937852aa48ba642e5d2cb08227bf",
+"rectangle_8hh_source.html",
+"single-context-tests_8cc.html",
+"threadpoolimpl_8cc.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

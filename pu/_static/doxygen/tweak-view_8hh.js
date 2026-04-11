@@ -13,5 +13,6 @@ var tweak_view_8hh =
     [ "getDefaultTweakPositionTextBox", "tweak-view_8hh.html#aa6527a49e093bcb36e606fe5bfcaadad", null ],
     [ "getDefaultTweakPresentationPosition", "tweak-view_8hh.html#ab07f1d99c0131675c8302ee42e6174d7", null ],
     [ "getDefaultTweakRulers", "tweak-view_8hh.html#a6502ef22e3313382c1898a5ea4132c6c", null ],
-    [ "getDefaultTweakSelection", "tweak-view_8hh.html#ada1d3d468d4513455890bbc625e3efcc", null ]
+    [ "getDefaultTweakSelection", "tweak-view_8hh.html#ada1d3d468d4513455890bbc625e3efcc", null ],
+    [ "getDefaultTweakSelectionMap", "tweak-view_8hh.html#a7ad0b64d4ebc732833fd249f733f4c8d", null ]
 ];

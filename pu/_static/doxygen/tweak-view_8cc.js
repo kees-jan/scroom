@@ -15,5 +15,6 @@ var tweak_view_8cc =
     [ "getDefaultTweakPresentationPosition", "tweak-view_8cc.html#ab07f1d99c0131675c8302ee42e6174d7", null ],
     [ "getDefaultTweakRulers", "tweak-view_8cc.html#a6502ef22e3313382c1898a5ea4132c6c", null ],
     [ "getDefaultTweakSelection", "tweak-view_8cc.html#ada1d3d468d4513455890bbc625e3efcc", null ],
+    [ "getDefaultTweakSelectionMap", "tweak-view_8cc.html#a7ad0b64d4ebc732833fd249f733f4c8d", null ],
     [ "toRectangle", "tweak-view_8cc.html#af0425fd1837e4946d3c9dda63659031f", null ]
 ];

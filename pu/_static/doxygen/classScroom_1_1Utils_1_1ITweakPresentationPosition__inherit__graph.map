@@ -1,9 +1,9 @@
 <map id="Scroom::Utils::ITweakPresentationPosition" name="Scroom::Utils::ITweakPresentationPosition">
 <area shape="rect" id="Node000001" title=" " alt="" coords="107,219,343,299"/>
-<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1DefaultTweakPresentationPosition.html" title=" " alt="" coords="5,377,204,457"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="188,311,137,378,133,375,184,308"/>
-<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1TweakPresentationPosition.html" title=" " alt="" coords="229,347,461,487"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="265,308,293,345,289,348,261,311"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1DefaultTweakPresentationPosition.html" title=" " alt="" coords="5,367,204,447"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="186,311,139,368,135,365,182,308"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1TweakPresentationPosition.html" title=" " alt="" coords="229,347,461,467"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="268,308,298,345,294,348,264,311"/>
 <area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="171,5,279,171"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="227,184,227,218,222,218,222,184"/>
 </map>

@@ -5693,32 +5693,32 @@
     <class kind="struct">Dummy</class>
     <class kind="class">ContextTests</class>
     <member kind="function">
-      <type></type>
+      <type>context</type>
       <name>set</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>abed80bb12dee15f3936ee76dc75356dd</anchor>
-      <arglist>(context, an_int)</arglist>
+      <anchor>a9be3b313ae2db31b3ca539cd6dcef2ec</anchor>
+      <arglist>(an_int)</arglist>
     </member>
     <member kind="function">
-      <type></type>
+      <type>context</type>
       <name>set</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>a8eff1e3d5b6bbec6085e64e1cde78c15</anchor>
-      <arglist>(context, name, another_int)</arglist>
+      <anchor>abb51ed89b606c438f067cafd7749ebe0</anchor>
+      <arglist>(name, another_int)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>a411d11156bcbdc277a567b1c3a15e578</anchor>
-      <arglist>(get&lt; int &gt;(context), an_int)</arglist>
+      <anchor>a474f08f2c4a7f1127e0a3ddb63a9c8b4</anchor>
+      <arglist>(context-&gt;get&lt; int &gt;(), an_int)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>ad890a38ff331d1955ff2b42f0c372b9f</anchor>
-      <arglist>(get&lt; int &gt;(context, name), another_int)</arglist>
+      <anchor>a8a75336dd41a5373a1fae9be0418ce2b</anchor>
+      <arglist>(context-&gt;get&lt; int &gt;(name), another_int)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -5728,74 +5728,74 @@
       <arglist>(p1, p2)</arglist>
     </member>
     <member kind="function">
-      <type></type>
+      <type>context</type>
       <name>set</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>a91c301eaef1f0179e8fa1ee12e869b91</anchor>
-      <arglist>(context, p1)</arglist>
+      <anchor>ae43aea93a4ab9fedcce63fdbd97e7d3a</anchor>
+      <arglist>(p1)</arglist>
     </member>
     <member kind="function">
-      <type></type>
+      <type>context</type>
       <name>set</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>a83d9b95156373101e675c9521515157a</anchor>
-      <arglist>(context, name, p2)</arglist>
+      <anchor>ac5c4c86b364c39746914ea1d63334baa</anchor>
+      <arglist>(name, p2)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>a99f59ae74dae2e9bd518f138ce4f231d</anchor>
-      <arglist>(get&lt; Dummy::Ptr &gt;(context), p1)</arglist>
+      <anchor>ab162d4bff23a00224005dfbb556c0d9c</anchor>
+      <arglist>(context-&gt;get&lt; Dummy::Ptr &gt;(), p1)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>a423adbd2af72109027d858a42a7d21b4</anchor>
-      <arglist>(get&lt; Dummy::Ptr &gt;(context, name), p2)</arglist>
+      <anchor>aa74cfac5be83aeb89566daa6a578a9b6</anchor>
+      <arglist>(context-&gt;get&lt; Dummy::Ptr &gt;(name), p2)</arglist>
     </member>
     <member kind="function">
-      <type></type>
+      <type>context</type>
       <name>setFactory</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>a1b3d559d80dcb51cd1be7e61b11f4243</anchor>
-      <arglist>(context, [p1] { return p1;})</arglist>
+      <anchor>a5d76c056da47e39a855ddfc30e7b4516</anchor>
+      <arglist>([p1] { return p1;})</arglist>
     </member>
     <member kind="function">
-      <type></type>
+      <type>context</type>
       <name>setFactory</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>af0076df5bfb2ece793c437cf451b1265</anchor>
-      <arglist>(context, name, [p2] { return p2;})</arglist>
+      <anchor>a60c8d6b346b143d7ad11904bff3bd696</anchor>
+      <arglist>(name, [p2] { return p2;})</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>af32b694266c16bd2531a44bcbe651917</anchor>
-      <arglist>(get_or&lt; Dummy::Ptr &gt;(context, [p1] { return p1;}), p1)</arglist>
+      <anchor>a89426c66df20b71ceff2265be3ccdc28</anchor>
+      <arglist>(context-&gt;get_or&lt; Dummy::Ptr &gt;([p1] { return p1;}), p1)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>a486a6b2d45f801d21102b6b7966d6ceb</anchor>
-      <arglist>(get_or&lt; Dummy::Ptr &gt;(context, name, [p2] { return p2;}), p2)</arglist>
+      <anchor>aa17203ab60bec28b36a824ad6832ab10</anchor>
+      <arglist>(context-&gt;get_or&lt; Dummy::Ptr &gt;(name, [p2] { return p2;}), p2)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>a07df4d6a54b75a61012344f3cbfe7cf9</anchor>
-      <arglist>(get_or&lt; Dummy::Ptr &gt;(context, p1), p1)</arglist>
+      <anchor>acb5f141986382ba1949460511e07c441</anchor>
+      <arglist>(context-&gt;get_or&lt; Dummy::Ptr &gt;(p1), p1)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>a2acd03ca3501b2c29abfb484096c647e</anchor>
-      <arglist>(get_or&lt; Dummy::Ptr &gt;(context, name, p2), p2)</arglist>
+      <anchor>a39441f118eb9fbb63c8bc5ab7aba41fd</anchor>
+      <arglist>(context-&gt;get_or&lt; Dummy::Ptr &gt;(name, p2), p2)</arglist>
     </member>
     <member kind="variable">
       <type>const int</type>
@@ -11216,6 +11216,76 @@
       <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
       <anchor>a0e31a6cc6dab924ff33e148d545c9565</anchor>
       <arglist>(std::string name) const =0</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>get</name>
+      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
+      <anchor>a988fbb640689b77e335c141ae57eb201</anchor>
+      <arglist>(std::string name) const</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>get</name>
+      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
+      <anchor>a991eba33c6a061f1d086d9884a4cafd9</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>auto</type>
+      <name>get_or</name>
+      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
+      <anchor>ac8d353b9e65425065cfcce86daf48632</anchor>
+      <arglist>(std::string name, const Callable &amp;default_value) const -&gt; std::enable_if_t&lt; std::is_same_v&lt; T, std::remove_reference_t&lt; decltype(default_value())&gt; &gt;, T &gt;</arglist>
+    </member>
+    <member kind="function">
+      <type>auto</type>
+      <name>get_or</name>
+      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
+      <anchor>a02fcfa7f2754b4c5e77dde621eb9de0b</anchor>
+      <arglist>(const Callable &amp;default_value) const -&gt; std::enable_if_t&lt; std::is_same_v&lt; T, std::remove_reference_t&lt; decltype(default_value())&gt; &gt;, T &gt;</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>get_or</name>
+      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
+      <anchor>a5dcf4b68037b32e1eacda4653d233af7</anchor>
+      <arglist>(std::string name, T default_value) const</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>get_or</name>
+      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
+      <anchor>ac02a8a088f4175475c6b8096daae16f5</anchor>
+      <arglist>(T default_value) const</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>set</name>
+      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
+      <anchor>a287aa56042266ab8975a8ccab2e0d92f</anchor>
+      <arglist>(std::string name, T value)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>set</name>
+      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
+      <anchor>a0f653e33bb9270b3b3a06150624a616e</anchor>
+      <arglist>(T value)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setFactory</name>
+      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
+      <anchor>a29583a502e68c650970a0824e6a49f7e</anchor>
+      <arglist>(std::string name, Callable value)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setFactory</name>
+      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
+      <anchor>ae416035c9cc231ac606532e207c7b4d8</anchor>
+      <arglist>(Callable value)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
@@ -23078,10 +23148,10 @@
       <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static Ptr</type>
+      <type>static ITweakSelection::Ptr</type>
       <name>create</name>
       <anchorfile>classScroom_1_1Utils_1_1TweakGridSelection.html</anchorfile>
-      <anchor>a63a1f1b1f24daf1e6a23120849585309</anchor>
+      <anchor>a97b9167c9405319c088303c34303b859</anchor>
       <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
     </member>
   </compound>
@@ -23118,10 +23188,10 @@
       <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static Ptr</type>
+      <type>static ITweakSelection::Ptr</type>
       <name>create</name>
       <anchorfile>classScroom_1_1Utils_1_1TweakPixelSelection.html</anchorfile>
-      <anchor>a96deee05d98551076bcb867634784a1f</anchor>
+      <anchor>a59fa155b603221f8fef4027c239adc77</anchor>
       <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
     </member>
   </compound>
@@ -23150,18 +23220,11 @@
       <anchor>a756162b93d3d53f4c2529e86a3d6bf2e</anchor>
       <arglist>(Point&lt; double &gt; position, Point&lt; int &gt; drawingAreaSize, int zoom) const override</arglist>
     </member>
-    <member kind="function">
-      <type>void</type>
-      <name>setAspectRatio</name>
-      <anchorfile>classScroom_1_1Utils_1_1TweakPositionTextBox.html</anchorfile>
-      <anchor>a32c92c7326bef0a3283536fa70da1256</anchor>
-      <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
-    </member>
     <member kind="function" static="yes">
-      <type>static Ptr</type>
+      <type>static ITweakPositionTextBox::Ptr</type>
       <name>create</name>
       <anchorfile>classScroom_1_1Utils_1_1TweakPositionTextBox.html</anchorfile>
-      <anchor>a6aeec9ec0cba18d7fb81f8ec73584589</anchor>
+      <anchor>a6199c78ca7167337581dbb3bebb52f00</anchor>
       <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
     </member>
     <member kind="function" protection="private">
@@ -23197,18 +23260,11 @@
       <anchor>a0a5753ef0afbff86bfa244cce7babbc8</anchor>
       <arglist>(Point&lt; double &gt; currentPosition, Point&lt; int &gt; drawingAreaSize, int zoom) const override</arglist>
     </member>
-    <member kind="function">
-      <type>void</type>
-      <name>setAspectRatio</name>
-      <anchorfile>classScroom_1_1Utils_1_1TweakPresentationPosition.html</anchorfile>
-      <anchor>a67689ef9bec0e9360a59705631996001</anchor>
-      <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
-    </member>
     <member kind="function" static="yes">
-      <type>static Ptr</type>
+      <type>static ITweakPresentationPosition::Ptr</type>
       <name>create</name>
       <anchorfile>classScroom_1_1Utils_1_1TweakPresentationPosition.html</anchorfile>
-      <anchor>a30fb39783ae6eae24a51dbc0cd209343</anchor>
+      <anchor>a5f984ebe4c012fde5166c3d320319897</anchor>
       <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
     </member>
     <member kind="function" protection="private">
@@ -23244,25 +23300,18 @@
       <anchor>a1df5ae5b56725d612fd9d1310c557e4b</anchor>
       <arglist>(Point&lt; double &gt; currentPosition, Point&lt; int &gt; drawingAreaSize, int zoom) const override</arglist>
     </member>
-    <member kind="function">
-      <type>void</type>
-      <name>setAspectRatio</name>
-      <anchorfile>classScroom_1_1Utils_1_1TweakRulers.html</anchorfile>
-      <anchor>ad9209624a98dd973f200a713e7fd4f48</anchor>
-      <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
-    </member>
     <member kind="function" static="yes">
-      <type>static Ptr</type>
+      <type>static ITweakRulers::Ptr</type>
       <name>create</name>
       <anchorfile>classScroom_1_1Utils_1_1TweakRulers.html</anchorfile>
-      <anchor>a3ec58abcc4ea436971abab8ca87e7acf</anchor>
+      <anchor>ac95ef2666d39356b70780b44b8230830</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static Ptr</type>
+      <type>static ITweakRulers::Ptr</type>
       <name>create</name>
       <anchorfile>classScroom_1_1Utils_1_1TweakRulers.html</anchorfile>
-      <anchor>a86ab6d6d0fd8ef83eba5127b20decc22</anchor>
+      <anchor>ae289672e9ade073138b7a99fcebc7fd0</anchor>
       <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
     </member>
     <member kind="function" protection="private">
@@ -23304,13 +23353,6 @@
       <anchorfile>classScroom_1_1Utils_1_1TweakSelection.html</anchorfile>
       <anchor>ab59d8018f7296e500c323c1ee3938ba4</anchor>
       <arglist>(Selection selection) const override</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>setAspectRatio</name>
-      <anchorfile>classScroom_1_1Utils_1_1TweakSelection.html</anchorfile>
-      <anchor>a658270ae1edc63bea791b7f1d078b4c9</anchor>
-      <arglist>(Point&lt; double &gt; aspectRatio_)</arglist>
     </member>
     <member kind="function" protection="protected">
       <type></type>
@@ -24164,31 +24206,31 @@
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>std::shared_ptr&lt; Scroom::Utils::TweakPresentationPosition &gt;</type>
+      <type>std::shared_ptr&lt; Scroom::Utils::ITweakPresentationPosition &gt;</type>
       <name>tweakPresentationPosition</name>
       <anchorfile>classView.html</anchorfile>
-      <anchor>a11b9145e83c2b1f280a4fe7b87394838</anchor>
+      <anchor>a98757b38449273471bc0e2e463bdec94</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>std::shared_ptr&lt; Scroom::Utils::TweakPositionTextBox &gt;</type>
+      <type>std::shared_ptr&lt; Scroom::Utils::ITweakPositionTextBox &gt;</type>
       <name>tweakPositionTextBox</name>
       <anchorfile>classView.html</anchorfile>
-      <anchor>af8800ec7bf09c4d81e4186e036867040</anchor>
+      <anchor>aaa4d04fadd0fbdd1923f326c69da4c3e</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>std::shared_ptr&lt; Scroom::Utils::TweakRulers &gt;</type>
+      <type>std::shared_ptr&lt; Scroom::Utils::ITweakRulers &gt;</type>
       <name>tweakRulers</name>
       <anchorfile>classView.html</anchorfile>
-      <anchor>a1e33c6dbfd6b1820c0f506ec34c74e7e</anchor>
+      <anchor>a886641ec63f4bebc0173c8819775097b</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>std::map&lt; std::string, Scroom::Utils::TweakSelection::Ptr &gt;</type>
+      <type>Scroom::Utils::ITweakSelection::Map</type>
       <name>tweakSelection</name>
       <anchorfile>classView.html</anchorfile>
-      <anchor>a12653a493d2aa2086ac351f860603ea8</anchor>
+      <anchor>a33bff91fe144203a1b5218b3289eddfc</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
@@ -25988,81 +26030,18 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
+      <type>ITweakSelection::Map</type>
+      <name>getDefaultTweakSelectionMap</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a7ad0b64d4ebc732833fd249f733f4c8d</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
       <type>ITweakPositionTextBox::Ptr</type>
       <name>getDefaultTweakPositionTextBox</name>
       <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
       <anchor>aa6527a49e093bcb36e606fe5bfcaadad</anchor>
       <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>T</type>
-      <name>get</name>
-      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
-      <anchor>a1df110b1fef13cbeaf6122b1ca752a97</anchor>
-      <arglist>(const Context::ConstPtr &amp;context, std::string name)</arglist>
-    </member>
-    <member kind="function">
-      <type>T</type>
-      <name>get</name>
-      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
-      <anchor>aa10961452286915568f65c2f026c0916</anchor>
-      <arglist>(const Context::ConstPtr &amp;context)</arglist>
-    </member>
-    <member kind="function">
-      <type>auto</type>
-      <name>get_or</name>
-      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
-      <anchor>a958e9a62ee2b943aa9cb5b23f2aa8f02</anchor>
-      <arglist>(const Context::ConstPtr &amp;context, std::string name, const Callable &amp;default_value) -&gt; std::enable_if_t&lt; std::is_same_v&lt; T, std::remove_reference_t&lt; decltype(default_value())&gt; &gt;, T &gt;</arglist>
-    </member>
-    <member kind="function">
-      <type>auto</type>
-      <name>get_or</name>
-      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
-      <anchor>a8567b6c139d46286259d3176be21ba96</anchor>
-      <arglist>(const Context::ConstPtr &amp;context, const Callable &amp;default_value) -&gt; std::enable_if_t&lt; std::is_same_v&lt; T, std::remove_reference_t&lt; decltype(default_value())&gt; &gt;, T &gt;</arglist>
-    </member>
-    <member kind="function">
-      <type>T</type>
-      <name>get_or</name>
-      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
-      <anchor>aad66314d2065b5b9ef9d58e2a97238f4</anchor>
-      <arglist>(const Context::ConstPtr &amp;context, std::string name, T default_value)</arglist>
-    </member>
-    <member kind="function">
-      <type>T</type>
-      <name>get_or</name>
-      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
-      <anchor>a84846154a19182ab43c20f2d79ff54dd</anchor>
-      <arglist>(const Context::ConstPtr &amp;context, T default_value)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>set</name>
-      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
-      <anchor>a729f4d0d2c14a19b769897751e91acbe</anchor>
-      <arglist>(const Context::Ptr &amp;context, std::string name, T value)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>set</name>
-      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
-      <anchor>a91be522682d558972fdd182573c9fd6e</anchor>
-      <arglist>(const Context::Ptr &amp;context, T value)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>setFactory</name>
-      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
-      <anchor>aeb91576875b1be9c7f4edcc8cfe5da20</anchor>
-      <arglist>(const Context::Ptr &amp;context, std::string name, Callable value)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>setFactory</name>
-      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
-      <anchor>a3b9d64ee0deb4bfdfa03a1884bf7126c</anchor>
-      <arglist>(const Context::Ptr &amp;context, Callable value)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>

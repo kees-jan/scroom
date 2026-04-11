@@ -1,5 +1,7 @@
 var NAVTREEINDEX15 =
 {
+"globals_e.html":[3,1,0,5],
+"globals_enum.html":[3,1,4],
 "globals_eval.html":[3,1,5],
 "globals_f.html":[3,1,0,6],
 "globals_func.html":[3,1,1,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX15 =
 "namespaceDetail.html#ade7e310c6f49be3b6e0ded45bd574f9b":[1,0,20,1],
 "namespaceScroom.html":[1,0,21],
 "namespaceScroom_1_1Bitmap.html":[1,0,21,0],
-"namespaceScroom_1_1Bitmap.html#a76cf9cd4c10e26cab43bf82fb8ec8b53":[1,0,21,0,2],
-"namespaceScroom_1_1Bookkeeping.html":[1,0,21,1],
-"namespaceScroom_1_1Bookkeeping.html#aa859536c2894d3c9e1163bc1e2048bab":[1,0,21,1,4]
+"namespaceScroom_1_1Bitmap.html#a76cf9cd4c10e26cab43bf82fb8ec8b53":[1,0,21,0,2]
 };

@@ -1,7 +1,7 @@
 <map id="Scroom::Utils::TweakGridSelection" name="Scroom::Utils::TweakGridSelection">
-<area shape="rect" id="Node000001" title=" " alt="" coords="24,505,201,665"/>
-<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1TweakSelection.html" title=" " alt="" coords="7,332,218,457"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,471,115,505,110,505,110,471"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="24,485,201,645"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1TweakSelection.html" title=" " alt="" coords="7,332,218,437"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,451,115,485,110,485,110,451"/>
 <area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1ITweakSelection.html" title=" " alt="" coords="5,219,220,284"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="115,298,115,332,110,332,110,298"/>
 <area shape="rect" id="Node000004" href="$classInterface.html" title=" " alt="" coords="59,5,167,171"/>
