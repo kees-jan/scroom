@@ -56,7 +56,6 @@ var classView =
     [ "updateXY", "classView.html#acd6ecf221aa9f481ce878435f07a1fc4", null ],
     [ "updateZoom", "classView.html#a54f60e30804881dcfec8bdbff457a4eb", null ],
     [ "windowPointToPresentationPoint", "classView.html#ab01e5d6f612fdebbcc349ab3733233d8", null ],
-    [ "aspectRatio", "classView.html#ae5ab81cdeaef480357dd3bdef7ca13d2", null ],
     [ "cachedPoint", "classView.html#a445c889fe2f02766881327266a582be2", null ],
     [ "drawingArea", "classView.html#accd8ae17f10cca1c351ac03a33963b70", null ],
     [ "drawingAreaSize", "classView.html#a9a9821e21475adadbc82273131d7006b", null ],

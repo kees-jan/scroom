@@ -82,19 +82,19 @@ var NAVTREEINDEX =
 "classScroom_1_1Bookkeeping_1_1Detail_1_1TokenAddition.html#a115cbcf8737a5ddbe20bfc0ceae8d06f",
 "classScroom_1_1GtkTestHelpers_1_1GtkMainLoop.html#a8ef76b54ba2c63f4e0ce6564f00974ef",
 "classScroom_1_1Semaphore.html#a9bbaee0b470d62b78a68af579b6b0a86",
-"classScroom_1_1Utils_1_1ITweakSelection.html#aa4bcdde0ecea6a699c7008fa50545ace",
-"classScroom_1_1Utils_1_1ProgressStateInterface.html#af17b9367dd613c97f7a56479638aff55a86e7ecba927eb4cb9ecc2ed920a95a8d",
-"classScroom_1_1Utils_1_1TweakPositionTextBox.html#a6199c78ca7167337581dbb3bebb52f00",
-"classThreadPool_1_1WeakQueue.html#a976cc5dcd2e4f092f630e62960278a22",
-"classView.html#a10bfd0a564e56de855d3f5e5aa634eb0",
-"classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html",
-"determine-size-test_8cc.html#a34caf438ffeb127bdc7414d8e79d60be",
-"globals_defs.html",
-"namespaceScroom_1_1Bitmap.html#a76cf9cd4c10e26cab43bf82fb8ec8b53",
-"observable-tests_8cc.html#ab8f7fe51572092fd9bd0a45bbefa5d69",
-"rectangle_8hh.html#af3fc4fedbb737dc931759dbac4c6474a",
-"sidebarmanager_8hh_source.html",
-"threadpoolimpl_8cc.html#a32b816d0a8f58ae1cd2d35e52e0b93ee"
+"classScroom_1_1Utils_1_1Observable.html#a18d957956960766feef1a4ab10ecda1a",
+"classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterfaceForwarder.html#a228001de22752ec2787c3cf53ba27243",
+"classScroom_1_1Utils_1_1TweakPositionTextBox.html#aba1707c4556685e1846886b46517c07b",
+"classThreadPool_1_1WeakQueue.html#afd862f68942894e320a73b9335bbbd1a",
+"classView.html#a1c6bafe5c25990c0733f6d2b28df717f",
+"classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html#a3b3efa8982899d0fa6641a868e8cf230",
+"determine-size-test_8cc.html#a4410b3e0fe1ff879fba5de9cbd5fe4cd",
+"globals_eval.html",
+"namespaceScroom_1_1Bookkeeping_1_1Detail.html",
+"observable-tests_8cc.html#add4c207213d2eae23a084f4573ffd164",
+"rectangletests_8cc.html#a049dc4e8da0752714bbd7c24a6074cb5",
+"single-context-tests_8cc.html#a0ce5aaad6d6f46f46225f529c4766b0b",
+"threadpoolimpl_8cc.html#af979353165a7a214dda8f7f289de81ea"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

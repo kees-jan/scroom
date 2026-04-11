@@ -269,18 +269,18 @@ var hierarchy =
         [ "Scroom::Utils::TweakPositionTextBox", "classScroom_1_1Utils_1_1TweakPositionTextBox.html", null ]
       ] ],
       [ "Scroom::Utils::ITweakPresentationPosition", "classScroom_1_1Utils_1_1ITweakPresentationPosition.html", [
-        [ "Scroom::Utils::DefaultTweakPresentationPosition", "classScroom_1_1Utils_1_1DefaultTweakPresentationPosition.html", null ],
-        [ "Scroom::Utils::TweakPresentationPosition", "classScroom_1_1Utils_1_1TweakPresentationPosition.html", null ]
+        [ "Scroom::Utils::TweakPresentationPosition", "classScroom_1_1Utils_1_1TweakPresentationPosition.html", null ],
+        [ "Scroom::Utils::anonymous_namespace{tweak-view.cc}::DefaultTweakPresentationPosition", "classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakPresentationPosition.html", null ]
       ] ],
       [ "Scroom::Utils::ITweakRulers", "classScroom_1_1Utils_1_1ITweakRulers.html", [
         [ "Scroom::Utils::TweakRulers", "classScroom_1_1Utils_1_1TweakRulers.html", null ]
       ] ],
       [ "Scroom::Utils::ITweakSelection", "classScroom_1_1Utils_1_1ITweakSelection.html", [
-        [ "Scroom::Utils::DefaultTweakSelection", "classScroom_1_1Utils_1_1DefaultTweakSelection.html", null ],
         [ "Scroom::Utils::TweakSelection", "classScroom_1_1Utils_1_1TweakSelection.html", [
           [ "Scroom::Utils::TweakGridSelection", "classScroom_1_1Utils_1_1TweakGridSelection.html", null ],
           [ "Scroom::Utils::TweakPixelSelection", "classScroom_1_1Utils_1_1TweakPixelSelection.html", null ]
-        ] ]
+        ] ],
+        [ "Scroom::Utils::anonymous_namespace{tweak-view.cc}::DefaultTweakSelection", "classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakSelection.html", null ]
       ] ],
       [ "Scroom::Utils::ProgressStateInterface", "classScroom_1_1Utils_1_1ProgressStateInterface.html", [
         [ "ProgressStateInterfaceStub", "classProgressStateInterfaceStub.html", null ],

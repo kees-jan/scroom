@@ -1,9 +1,9 @@
 <map id="round_to_multiple_of" name="round_to_multiple_of">
-<area shape="rect" id="Node000001" title=" " alt="" coords="532,42,692,67"/>
-<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a336b08377145525ad7740b47d618b161" title=" " alt="" coords="262,13,466,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="518,46,466,40,466,35,519,41"/>
-<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1TweakPresentationPosition.html#a0a5753ef0afbff86bfa244cce7babbc8" title=" " alt="" coords="244,63,484,103"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="519,68,485,72,484,66,518,63"/>
-<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1TweakGridSelection.html#aa8c6fe8915a001464a76a4b524531de9" title=" " alt="" coords="5,5,196,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="248,28,196,28,196,23,248,23"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="496,42,656,67"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a336b08377145525ad7740b47d618b161" title=" " alt="" coords="244,13,448,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="482,45,445,41,446,35,483,40"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1TweakGridSelection.html#a3333f4567538a2dfade6ec075f3fe280" title=" " alt="" coords="251,63,441,103"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="483,69,442,74,441,68,482,63"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1TweakGridSelection.html#a82841dcda1813e3d987199ec5789fc8b" title=" " alt="" coords="5,5,196,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="230,28,196,28,196,23,230,23"/>
 </map>

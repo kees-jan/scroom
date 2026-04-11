@@ -11,7 +11,7 @@ var searchData=
   ['filterinfofrompath_8',['filterInfoFromPath',['../loader_8cc.html#a60ebf2e9b89d9dc012bae8cd75eb45c7',1,'loader.cc']]],
   ['filtermatchesinfo_9',['filterMatchesInfo',['../loader_8cc.html#a19de4cc7f4540f821a9018ee9b51cbd7',1,'loader.cc']]],
   ['filters_10',['filters',['../classGtkFileFilterListDestroyer.html#a443ad79b3a30f4f95d4ef5cb536c9ec5',1,'GtkFileFilterListDestroyer']]],
-  ['find_5fclosest_5fcorner_11',['find_closest_corner',['../namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#ab67255b453112cd0431cabc7d058475b',1,'Scroom::Utils::anonymous_namespace{tweak-view.cc}']]],
+  ['find_5fclosest_5fcorner_11',['find_closest_corner',['../namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#a18edb612c2f1bf15720b610652bc06dc',1,'Scroom::Utils::anonymous_namespace{tweak-view.cc}']]],
   ['find_5fopposed_5fcorner_12',['find_opposed_corner',['../namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#a6a9984486641cc1142db4a86b1a1410a',1,'Scroom::Utils::anonymous_namespace{tweak-view.cc}']]],
   ['find_5for_5fcreate_5fscroom_13',['find_or_create_scroom',['../callbacks_8cc.html#a6a123442252e099c84849ff0ad12d41a',1,'find_or_create_scroom(const PresentationInterface::Ptr &amp;presentation):&#160;callbacks.cc'],['../callbacks_8hh.html#a6a123442252e099c84849ff0ad12d41a',1,'find_or_create_scroom(const PresentationInterface::Ptr &amp;presentation):&#160;callbacks.cc']]],
   ['findcppcheck_2ecpp_14',['Findcppcheck.cpp',['../Findcppcheck_8cpp.html',1,'']]],

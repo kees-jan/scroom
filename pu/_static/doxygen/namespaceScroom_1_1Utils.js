@@ -1,25 +1,12 @@
 var namespaceScroom_1_1Utils =
 [
-    [ "anonymous_namespace{tweak-view.cc}", "namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html", [
-      [ "Corner", "namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#add5ac7ed3f67a149282397b67c164559", [
-        [ "TOP_LEFT", "namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#add5ac7ed3f67a149282397b67c164559a747385047b85ae751f83adb36435a3c1", null ],
-        [ "TOP_RIGHT", "namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#add5ac7ed3f67a149282397b67c164559a901d87dedda8db733f5e6d34c4eb5fe0", null ],
-        [ "BOTTOM_LEFT", "namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#add5ac7ed3f67a149282397b67c164559a8d81ac82421d1b03da58fccb9174892e", null ],
-        [ "BOTTOM_RIGHT", "namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#add5ac7ed3f67a149282397b67c164559a341b72aaab1308a3e6667af1e52f5def", null ]
-      ] ],
-      [ "corner_getter", "namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#a24a000b9a03e52556f4d864a2c1c0f23", null ],
-      [ "find_closest_corner", "namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#ab67255b453112cd0431cabc7d058475b", null ],
-      [ "find_opposed_corner", "namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#a6a9984486641cc1142db4a86b1a1410a", null ],
-      [ "toRectangle", "namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#af0425fd1837e4946d3c9dda63659031f", null ]
-    ] ],
+    [ "anonymous_namespace{tweak-view.cc}", "namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html", "namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03" ],
     [ "Detail", "namespaceScroom_1_1Utils_1_1Detail.html", "namespaceScroom_1_1Utils_1_1Detail" ],
     [ "Base", "classScroom_1_1Utils_1_1Base.html", "classScroom_1_1Utils_1_1Base" ],
     [ "Context", "classScroom_1_1Utils_1_1Context.html", "classScroom_1_1Utils_1_1Context" ],
     [ "Count", "classScroom_1_1Utils_1_1Count.html", "classScroom_1_1Utils_1_1Count" ],
     [ "Counted", "classScroom_1_1Utils_1_1Counted.html", "classScroom_1_1Utils_1_1Counted" ],
     [ "Counter", "classScroom_1_1Utils_1_1Counter.html", "classScroom_1_1Utils_1_1Counter" ],
-    [ "DefaultTweakPresentationPosition", "classScroom_1_1Utils_1_1DefaultTweakPresentationPosition.html", "classScroom_1_1Utils_1_1DefaultTweakPresentationPosition" ],
-    [ "DefaultTweakSelection", "classScroom_1_1Utils_1_1DefaultTweakSelection.html", "classScroom_1_1Utils_1_1DefaultTweakSelection" ],
     [ "ITweakPositionTextBox", "classScroom_1_1Utils_1_1ITweakPositionTextBox.html", "classScroom_1_1Utils_1_1ITweakPositionTextBox" ],
     [ "ITweakPresentationPosition", "classScroom_1_1Utils_1_1ITweakPresentationPosition.html", "classScroom_1_1Utils_1_1ITweakPresentationPosition" ],
     [ "ITweakRulers", "classScroom_1_1Utils_1_1ITweakRulers.html", "classScroom_1_1Utils_1_1ITweakRulers" ],

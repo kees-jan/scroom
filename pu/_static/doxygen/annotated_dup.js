@@ -108,6 +108,10 @@ var annotated_dup =
         [ "OpenTiledBitmapInterface", "classScroom_1_1TiledBitmap_1_1OpenTiledBitmapInterface.html", "classScroom_1_1TiledBitmap_1_1OpenTiledBitmapInterface" ]
       ] ],
       [ "Utils", "namespaceScroom_1_1Utils.html", [
+        [ "anonymous_namespace{tweak-view.cc}", "namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html", [
+          [ "DefaultTweakPresentationPosition", "classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakPresentationPosition.html", "classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakPresentationPosition" ],
+          [ "DefaultTweakSelection", "classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakSelection.html", "classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakSelection" ]
+        ] ],
         [ "Detail", "namespaceScroom_1_1Utils_1_1Detail.html", [
           [ "ErrorSignalHandler", "classScroom_1_1Utils_1_1Detail_1_1ErrorSignalHandler.html", "classScroom_1_1Utils_1_1Detail_1_1ErrorSignalHandler" ],
           [ "ProgressStore", "classScroom_1_1Utils_1_1Detail_1_1ProgressStore.html", "classScroom_1_1Utils_1_1Detail_1_1ProgressStore" ],
@@ -118,8 +122,6 @@ var annotated_dup =
         [ "Count", "classScroom_1_1Utils_1_1Count.html", "classScroom_1_1Utils_1_1Count" ],
         [ "Counted", "classScroom_1_1Utils_1_1Counted.html", "classScroom_1_1Utils_1_1Counted" ],
         [ "Counter", "classScroom_1_1Utils_1_1Counter.html", "classScroom_1_1Utils_1_1Counter" ],
-        [ "DefaultTweakPresentationPosition", "classScroom_1_1Utils_1_1DefaultTweakPresentationPosition.html", "classScroom_1_1Utils_1_1DefaultTweakPresentationPosition" ],
-        [ "DefaultTweakSelection", "classScroom_1_1Utils_1_1DefaultTweakSelection.html", "classScroom_1_1Utils_1_1DefaultTweakSelection" ],
         [ "ITweakPositionTextBox", "classScroom_1_1Utils_1_1ITweakPositionTextBox.html", "classScroom_1_1Utils_1_1ITweakPositionTextBox" ],
         [ "ITweakPresentationPosition", "classScroom_1_1Utils_1_1ITweakPresentationPosition.html", "classScroom_1_1Utils_1_1ITweakPresentationPosition" ],
         [ "ITweakRulers", "classScroom_1_1Utils_1_1ITweakRulers.html", "classScroom_1_1Utils_1_1ITweakRulers" ],

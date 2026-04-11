@@ -1,18 +1,17 @@
 <map id="TransformPresentation::TransformPresentation" name="TransformPresentation::TransformPresentation">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,221,183,261"/>
-<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1TweakRulers.html#ac95ef2666d39356b70780b44b8230830" title=" " alt="" coords="251,29,450,69"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,220,153,151,188,112,229,79,240,73,243,77,232,84,192,116,157,154,109,223"/>
-<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1TweakPresentationPosition.html#a5f984ebe4c012fde5166c3d320319897" title=" " alt="" coords="231,93,471,133"/>
-<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="117,219,166,181,229,143,247,136,249,141,232,148,169,185,120,223"/>
-<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1TweakGridSelection.html#a97b9167c9405319c088303c34303b859" title=" " alt="" coords="258,157,443,197"/>
-<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="174,219,256,198,258,203,176,224"/>
-<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1TweakPixelSelection.html#a59fa155b603221f8fef4027c239adc77" title=" " alt="" coords="256,221,445,261"/>
-<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="183,239,242,239,242,244,183,244"/>
-<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1TweakPositionTextBox.html#a6199c78ca7167337581dbb3bebb52f00" title=" " alt="" coords="245,285,456,325"/>
-<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="176,259,258,279,256,285,174,264"/>
-<area shape="rect" id="Node000007" href="$namespaceSelectionType.html#a9f0e8fd7cec2332d694d5a898cff9dc9" title=" " alt="" coords="274,350,427,375"/>
-<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="119,259,169,298,199,318,232,335,262,345,260,350,230,340,197,323,166,303,116,264"/>
-<area shape="rect" id="Node000008" href="$namespaceSelectionType.html#aa8763b7e1473f7e5d1e2c8d5b86fe49f" title=" " alt="" coords="273,399,429,425"/>
-<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="110,260,158,322,193,356,232,384,260,396,258,401,229,389,189,360,154,326,106,263"/>
-<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="303,30,300,20,308,10,325,5,351,3,380,6,397,13,394,18,379,11,351,8,326,10,311,15,305,21,308,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,197,183,237"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1TweakPresentationPosition.html#a8c81cc0588c7979a76fb76f3ce344690" title=" " alt="" coords="231,5,471,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,196,153,127,188,88,229,55,240,49,243,53,232,60,192,92,157,130,109,199"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1TweakGridSelection.html#a44701030e6dbaa2db85d531886df22da" title=" " alt="" coords="258,69,443,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="117,195,166,157,229,119,247,112,249,117,232,124,169,161,120,199"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1TweakPixelSelection.html#a9755bf9dd8a03f66c12cc9e5a1de4b01" title=" " alt="" coords="256,133,445,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="174,195,256,174,258,179,176,200"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1TweakRulers.html#aa3372456f136f40492d6d64c6fbefdf6" title=" " alt="" coords="251,197,450,237"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="183,215,238,215,238,220,183,220"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1TweakPositionTextBox.html#aff8fc77c17823f8d3a04fa1f363b24db" title=" " alt="" coords="245,261,456,301"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="176,235,258,255,256,261,174,240"/>
+<area shape="rect" id="Node000007" href="$namespaceSelectionType.html#a9f0e8fd7cec2332d694d5a898cff9dc9" title=" " alt="" coords="274,326,427,351"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="119,235,169,274,199,294,232,311,262,321,260,326,230,316,197,299,166,279,116,240"/>
+<area shape="rect" id="Node000008" href="$namespaceSelectionType.html#aa8763b7e1473f7e5d1e2c8d5b86fe49f" title=" " alt="" coords="273,375,429,401"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="110,236,158,298,193,332,232,360,260,372,258,377,229,365,189,336,154,302,106,239"/>
 </map>
