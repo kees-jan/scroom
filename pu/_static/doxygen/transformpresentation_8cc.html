@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-49-g36e68308</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-52-gccfe85f7</span>
    </div>
   </td>
  </tr>
@@ -323,12 +323,12 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  163</span>{</div>
 <div class="line"><span class="lineno">  164</span>  <span class="keywordflow">return</span> try_get&lt;TransformationData::Ptr&gt;(presentation-&gt;getContext())</div>
-<div class="line"><span class="lineno">  165</span>    .transform([](<span class="keyword">auto</span> td) { <span class="keywordflow">return</span> td-&gt;getAspectRatio(); })</div>
+<div class="line"><span class="lineno">  165</span>    .transform([](<span class="keyword">const</span> <span class="keyword">auto</span>&amp; td) { <span class="keywordflow">return</span> td-&gt;getAspectRatio(); })</div>
 <div class="line"><span class="lineno">  166</span>    .value_or(<a class="code hl_function" href="namespaceScroom_1_1Utils.html#af6796373cc462aef8e6979a40acef5d3">Scroom::Utils::make_point</a>(1.0, 1.0));</div>
 <div class="line"><span class="lineno">  167</span>}</div>
 <div class="ttc" id="anamespaceScroom_1_1Utils_html_af6796373cc462aef8e6979a40acef5d3"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#af6796373cc462aef8e6979a40acef5d3">Scroom::Utils::make_point</a></div><div class="ttdeci">Point&lt; T &gt; make_point(T x, T y)</div><div class="ttdef"><b>Definition</b> point.hh:116</div></div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="classMeasureHandler.html#aa30dd1737fe173472b6aca30692eab84">MeasureHandler::displayMeasurement()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classPipetteHandler.html#ac4ac7ffa0a4d50b2da677b623cd2f479">PipetteHandler::computeValues()</a>, and <a class="el" href="classMeasureHandler.html#aa30dd1737fe173472b6aca30692eab84">MeasureHandler::displayMeasurement()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -345,13 +345,15 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="transformpresentation_8cc_a3c364253c15ca463285b38252c438f8f_icgraph.png" border="0" usemap="#atransformpresentation_8cc_a3c364253c15ca463285b38252c438f8f_icgraph" alt=""/></div>
 <map name="atransformpresentation_8cc_a3c364253c15ca463285b38252c438f8f_icgraph" id="atransformpresentation_8cc_a3c364253c15ca463285b38252c438f8f_icgraph">
-<area shape="rect" title=" " alt="" coords="613,35,735,60"/>
-<area shape="rect" href="classMeasureHandler.html#aa30dd1737fe173472b6aca30692eab84" title=" " alt="" coords="291,35,565,60"/>
-<area shape="poly" title=" " alt="" coords="600,50,566,50,566,45,600,45"/>
-<area shape="rect" href="classMeasureHandler.html#a2b7304f7764588c6b3c85d93bb6e2c9a" title=" " alt="" coords="5,5,243,31"/>
-<area shape="poly" title=" " alt="" coords="283,36,242,32,243,27,283,31"/>
-<area shape="rect" href="classMeasureHandler.html#a05c308179492e7d55ecf641ab30893b3" title=" " alt="" coords="17,55,231,95"/>
-<area shape="poly" title=" " alt="" coords="277,64,231,68,231,63,277,59"/>
+<area shape="rect" title=" " alt="" coords="613,31,735,56"/>
+<area shape="rect" href="classPipetteHandler.html#ac4ac7ffa0a4d50b2da677b623cd2f479" title=" " alt="" coords="315,5,541,31"/>
+<area shape="poly" title=" " alt="" coords="599,38,541,32,542,27,600,33"/>
+<area shape="rect" href="classMeasureHandler.html#aa30dd1737fe173472b6aca30692eab84" title=" " alt="" coords="291,55,565,80"/>
+<area shape="poly" title=" " alt="" coords="600,53,558,57,558,52,599,48"/>
+<area shape="rect" href="classMeasureHandler.html#a2b7304f7764588c6b3c85d93bb6e2c9a" title=" " alt="" coords="5,25,243,51"/>
+<area shape="poly" title=" " alt="" coords="283,56,242,52,243,47,283,51"/>
+<area shape="rect" href="classMeasureHandler.html#a05c308179492e7d55ecf641ab30893b3" title=" " alt="" coords="17,75,231,115"/>
+<area shape="poly" title=" " alt="" coords="277,84,231,88,231,83,277,79"/>
 </map>
 </div>
 

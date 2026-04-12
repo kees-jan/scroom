@@ -1,7 +1,5 @@
 var NAVTREEINDEX15 =
 {
-"globals_func_b.html":[3,1,1,1],
-"globals_func_c.html":[3,1,1,2],
 "globals_func_d.html":[3,1,1,3],
 "globals_func_e.html":[3,1,1,4],
 "globals_func_f.html":[3,1,1,5],
@@ -249,5 +247,7 @@ var NAVTREEINDEX15 =
 "namespaceScroom_1_1Bookkeeping_1_1Detail.html":[1,0,21,1,0],
 "namespaceScroom_1_1ColormapImpl.html":[1,0,21,2],
 "namespaceScroom_1_1Detail.html":[1,0,21,3],
-"namespaceScroom_1_1Detail.html#a158ec4cbb40a66cc79524164ef26b836":[1,0,21,3,2]
+"namespaceScroom_1_1Detail.html#a158ec4cbb40a66cc79524164ef26b836":[1,0,21,3,2],
+"namespaceScroom_1_1Detail_1_1ThreadPool.html":[1,0,21,3,0],
+"namespaceScroom_1_1Detail_1_1ThreadPool.html#adbdff2f494948417786589c465d0644a":[1,0,21,3,0,4]
 };

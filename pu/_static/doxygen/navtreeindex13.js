@@ -1,7 +1,5 @@
 var NAVTREEINDEX13 =
 {
-"classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html#a0b01f8545139812908055c33497d8cb1":[2,0,4,1,6],
-"classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html#a0b01f8545139812908055c33497d8cb1":[1,0,12,1,6],
 "classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html#a14a147147c551446e6e747eb92ca2ba0":[1,0,12,1,0],
 "classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html#a14a147147c551446e6e747eb92ca2ba0":[2,0,4,1,0],
 "classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html#a2dc6e8cf64a431b2ba35d3bcfc10c750":[1,0,12,1,5],
@@ -249,5 +247,7 @@ var NAVTREEINDEX13 =
 "determine-size-test_8cc.html#a4410b3e0fe1ff879fba5de9cbd5fe4cd":[3,0,4,7,1,0,24],
 "determine-size-test_8cc.html#a4af7ceaebf565a3f82242053f3e61c0b":[3,0,4,7,1,0,14],
 "determine-size-test_8cc.html#a4d6d091c2b068e1da6ecddb7c4768626":[3,0,4,7,1,0,25],
-"determine-size-test_8cc.html#a5c95c71233d3a65e95a82999a6b312a5":[3,0,4,7,1,0,28]
+"determine-size-test_8cc.html#a5c95c71233d3a65e95a82999a6b312a5":[3,0,4,7,1,0,28],
+"determine-size-test_8cc.html#a5f42efe6f8bd07dcf9a97c3aad5bc552":[3,0,4,7,1,0,38],
+"determine-size-test_8cc.html#a647feab9aa2cd7fab2763594e221173d":[3,0,4,7,1,0,20]
 };

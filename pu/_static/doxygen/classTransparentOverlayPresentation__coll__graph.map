@@ -2,16 +2,16 @@
 <area shape="rect" id="Node000001" title=" " alt="" coords="221,1668,469,1893"/>
 <area shape="rect" id="Node000002" href="$classPresentationBase.html" title=" " alt="" coords="165,1440,303,1605"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="277,1617,299,1667,294,1669,272,1619"/>
-<area shape="rect" id="Node000003" href="$classPresentationInterface.html" title=" " alt="" coords="153,1192,307,1377"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="234,1391,235,1440,230,1440,229,1391"/>
+<area shape="rect" id="Node000003" href="$classPresentationInterface.html" title=" " alt="" coords="153,1202,307,1367"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="234,1381,235,1440,230,1440,229,1381"/>
 <area shape="rect" id="Node000004" href="$classViewable.html" title=" " alt="" coords="85,923,159,1009"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="143,1022,201,1191,196,1193,138,1023"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="143,1021,205,1201,200,1202,138,1023"/>
 <area shape="rect" id="Node000005" href="$classInterface.html" title=" " alt="" coords="12,625,120,791"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="89,803,116,923,110,924,84,805"/>
 <area shape="rect" id="Node000012" href="$classAggregate.html" title=" " alt="" coords="5,1103,151,1168"/>
 <area shape="poly" id="edge13_Node000012_Node000005" title=" " alt="" coords="68,804,70,935,75,1079,77,1102,72,1103,70,1079,65,935,63,804"/>
 <area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Observable.html" title=" " alt="" coords="184,853,348,1079"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="254,1093,243,1192,238,1191,249,1092"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="254,1092,242,1202,237,1201,249,1092"/>
 <area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="158,135,299,300"/>
 <area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="235,313,257,791,261,853,255,853,251,791,229,314"/>
 <area shape="rect" id="Node000010" href="$classScroom_1_1Bookkeeping_1_1MapBase.html" title=" " alt="" coords="271,363,426,563"/>

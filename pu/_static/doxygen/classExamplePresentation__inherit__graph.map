@@ -1,13 +1,13 @@
 <map id="ExamplePresentation" name="ExamplePresentation">
-<area shape="rect" id="Node000001" title=" " alt="" coords="39,853,229,1059"/>
-<area shape="rect" id="Node000002" href="$classPresentationInterface.html" title=" " alt="" coords="57,620,211,805"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,819,137,853,131,853,131,819"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="39,833,229,1039"/>
+<area shape="rect" id="Node000002" href="$classPresentationInterface.html" title=" " alt="" coords="57,620,211,785"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,799,137,833,131,833,131,799"/>
 <area shape="rect" id="Node000003" href="$classViewable.html" title=" " alt="" coords="25,417,99,502"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="80,514,110,619,105,621,75,516"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="81,514,112,619,107,620,76,516"/>
 <area shape="rect" id="Node000004" href="$classInterface.html" title=" " alt="" coords="5,133,113,299"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="63,312,64,416,59,417,58,312"/>
 <area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Observable.html" title=" " alt="" coords="125,347,289,572"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="173,586,163,621,158,619,168,584"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="172,586,161,621,156,619,167,584"/>
 <area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="138,133,279,299"/>
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="211,312,211,346,205,346,205,312"/>
 <area shape="rect" id="Node000007" title=" " alt="" coords="136,5,281,85"/>

@@ -1,13 +1,13 @@
 <map id="PresentationMock" name="PresentationMock">
-<area shape="rect" id="Node000001" title=" " alt="" coords="59,1336,211,1521"/>
-<area shape="rect" id="Node000002" href="$classPresentationInterface.html" title=" " alt="" coords="58,1101,213,1287"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,1301,138,1336,133,1336,133,1301"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="59,1316,211,1501"/>
+<area shape="rect" id="Node000002" href="$classPresentationInterface.html" title=" " alt="" coords="58,1101,213,1267"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,1280,138,1316,133,1316,133,1280"/>
 <area shape="rect" id="Node000003" href="$classViewable.html" title=" " alt="" coords="27,897,102,982"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="83,995,112,1101,107,1102,77,996"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="83,994,114,1100,109,1102,78,996"/>
 <area shape="rect" id="Node000004" href="$classInterface.html" title=" " alt="" coords="5,599,113,764"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="64,778,66,896,61,897,59,778"/>
 <area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Observable.html" title=" " alt="" coords="131,827,295,1052"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="177,1066,166,1102,161,1100,172,1065"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="176,1066,164,1102,159,1100,170,1064"/>
 <area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="275,135,417,300"/>
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="364,313,374,417,376,542,372,608,364,675,350,740,330,804,316,833,297,860,293,857,311,830,325,802,345,739,359,674,367,608,371,542,369,417,359,314"/>
 <area shape="rect" id="Node000009" href="$classScroom_1_1Bookkeeping_1_1MapBase.html" title=" " alt="" coords="142,349,297,549"/>

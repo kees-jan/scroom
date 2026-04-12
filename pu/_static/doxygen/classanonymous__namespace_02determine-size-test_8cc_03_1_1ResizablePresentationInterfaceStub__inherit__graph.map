@@ -1,20 +1,20 @@
 <map id="anonymous_namespace{determine&#45;size&#45;test.cc}::ResizablePresentationInterfaceStub" name="anonymous_namespace{determine&#45;size&#45;test.cc}::ResizablePresentationInterfaceStub">
-<area shape="rect" id="Node000001" title=" " alt="" coords="100,1156,355,1405"/>
-<area shape="rect" id="Node000002" href="$classanonymous__namespace_02determine-size-test_8cc_03_1_1PresentationInterfaceStub.html" title=" " alt="" coords="203,853,411,1108"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="272,1122,263,1157,258,1155,267,1120"/>
-<area shape="rect" id="Node000003" href="$classPresentationInterface.html" title=" " alt="" coords="247,620,402,805"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="320,819,318,853,313,853,315,819"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="100,1136,355,1385"/>
+<area shape="rect" id="Node000002" href="$classanonymous__namespace_02determine-size-test_8cc_03_1_1PresentationInterfaceStub.html" title=" " alt="" coords="203,833,411,1088"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="272,1102,263,1137,258,1135,267,1100"/>
+<area shape="rect" id="Node000003" href="$classPresentationInterface.html" title=" " alt="" coords="247,620,402,785"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="321,799,319,833,313,833,316,799"/>
 <area shape="rect" id="Node000004" href="$classViewable.html" title=" " alt="" coords="151,417,226,502"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="213,513,240,571,268,619,263,621,236,573,208,516"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="213,513,240,571,269,618,265,621,236,573,208,516"/>
 <area shape="rect" id="Node000005" href="$classInterface.html" title=" " alt="" coords="95,133,203,299"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="167,312,184,416,179,417,162,312"/>
-<area shape="rect" id="Node000009" href="$classResizablePresentationInterface.html" title=" " alt="" coords="5,680,223,745"/>
-<area shape="poly" id="edge9_Node000009_Node000005" title=" " alt="" coords="144,312,142,347,119,680,114,679,137,346,139,312"/>
+<area shape="rect" id="Node000009" href="$classResizablePresentationInterface.html" title=" " alt="" coords="5,670,223,735"/>
+<area shape="poly" id="edge9_Node000009_Node000005" title=" " alt="" coords="144,312,142,347,119,670,114,669,137,346,139,312"/>
 <area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Observable.html" title=" " alt="" coords="251,347,415,572"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="331,586,330,620,325,620,326,585"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="331,586,330,620,325,620,326,586"/>
 <area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="262,133,403,299"/>
 <area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="335,312,335,346,330,346,330,312"/>
 <area shape="rect" id="Node000008" title=" " alt="" coords="260,5,405,85"/>
 <area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="335,99,335,133,330,133,330,99"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="125,758,194,1107,204,1155,199,1156,189,1109,120,759"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="125,748,194,1087,204,1135,199,1136,189,1089,120,749"/>
 </map>

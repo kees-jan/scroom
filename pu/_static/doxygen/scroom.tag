@@ -8138,6 +8138,7 @@
     <includes id="pipette_8hh" name="pipette.hh" local="yes" import="no" module="no" objc="no">pipette.hh</includes>
     <includes id="cairo-helpers_8hh" name="cairo-helpers.hh" local="no" import="no" module="no" objc="no">scroom/cairo-helpers.hh</includes>
     <includes id="format__stuff_8hh" name="format_stuff.hh" local="no" import="no" module="no" objc="no">scroom/format_stuff.hh</includes>
+    <includes id="transformpresentation_8hh" name="transformpresentation.hh" local="no" import="no" module="no" objc="no">scroom/transformpresentation.hh</includes>
   </compound>
   <compound kind="file">
     <name>pipette.hh</name>
@@ -16410,13 +16411,6 @@
       <anchor>a91974d576458480d37d40c1dbc006d82</anchor>
       <arglist>()=0</arglist>
     </member>
-    <member kind="function" virtualness="virtual">
-      <type>virtual Scroom::Utils::Point&lt; double &gt;</type>
-      <name>getAspectRatio</name>
-      <anchorfile>classPresentationInterface.html</anchorfile>
-      <anchor>a2a3e416a124e253bec8fb97c510836fe</anchor>
-      <arglist>() const</arglist>
-    </member>
     <member kind="function" virtualness="pure">
       <type>virtual Scroom::Utils::Context::ConstPtr</type>
       <name>getContext</name>
@@ -22613,13 +22607,6 @@
       <anchorfile>classTransformPresentation.html</anchorfile>
       <anchor>a40750146eb0946054dd322371dfdf6da</anchor>
       <arglist>() override</arglist>
-    </member>
-    <member kind="function">
-      <type>Scroom::Utils::Point&lt; double &gt;</type>
-      <name>getAspectRatio</name>
-      <anchorfile>classTransformPresentation.html</anchorfile>
-      <anchor>a969c44d9131e0318d039ff509f8dbed9</anchor>
-      <arglist>() const override</arglist>
     </member>
     <member kind="function">
       <type>Scroom::Utils::Context::ConstPtr</type>

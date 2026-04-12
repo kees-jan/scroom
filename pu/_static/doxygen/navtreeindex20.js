@@ -1,7 +1,5 @@
 var NAVTREEINDEX20 =
 {
-"threadpool_8hh.html":[3,0,3,3,0,0,4],
-"threadpool_8hh.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b":[3,0,3,3,0,0,4,6],
 "threadpool_8hh.html#af979353165a7a214dda8f7f289de81ea":[3,0,3,3,0,0,4,7],
 "threadpool_8hh_source.html":[3,0,3,3,0,0,4],
 "threadpoolimpl_8cc.html":[3,0,3,3,1,4],

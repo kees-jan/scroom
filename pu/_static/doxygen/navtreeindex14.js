@@ -1,7 +1,5 @@
 var NAVTREEINDEX14 =
 {
-"determine-size-test_8cc.html#a5f42efe6f8bd07dcf9a97c3aad5bc552":[3,0,4,7,1,0,38],
-"determine-size-test_8cc.html#a647feab9aa2cd7fab2763594e221173d":[3,0,4,7,1,0,20],
 "determine-size-test_8cc.html#a6485238a3884a896a9cb099e0b0e5804":[3,0,4,7,1,0,12],
 "determine-size-test_8cc.html#a6a5a83003c0897cdce101e4abeae420d":[3,0,4,7,1,0,32],
 "determine-size-test_8cc.html#a6d553598c1c93441107f885ea534b77a":[3,0,4,7,1,0,22],
@@ -249,5 +247,7 @@ var NAVTREEINDEX14 =
 "globals_eval.html":[3,1,5],
 "globals_f.html":[3,1,0,6],
 "globals_func.html":[3,1,1],
-"globals_func.html":[3,1,1,0]
+"globals_func.html":[3,1,1,0],
+"globals_func_b.html":[3,1,1,1],
+"globals_func_c.html":[3,1,1,2]
 };

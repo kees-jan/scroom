@@ -4,12 +4,12 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="161,1909,209,1939,299,1978,392,2009,482,2032,559,2049,558,2054,480,2037,391,2014,297,1983,207,1944,159,1913"/>
 <area shape="rect" id="Node000003" href="$classPresentationBase.html" title=" " alt="" coords="41,1434,178,1599"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="107,1613,97,1797,92,1797,102,1613"/>
-<area shape="rect" id="Node000004" href="$classPresentationInterface.html" title=" " alt="" coords="149,1109,304,1294"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="190,1308,142,1435,137,1433,185,1306"/>
+<area shape="rect" id="Node000004" href="$classPresentationInterface.html" title=" " alt="" coords="149,1119,304,1284"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="194,1298,143,1434,138,1433,189,1296"/>
 <area shape="rect" id="Node000023" title=" " alt="" coords="123,1693,331,1773"/>
-<area shape="poly" id="edge28_Node000023_Node000004" title=" " alt="" coords="229,1294,229,1676,224,1676,224,1294"/>
+<area shape="poly" id="edge28_Node000023_Node000004" title=" " alt="" coords="229,1284,229,1677,224,1677,224,1284"/>
 <area shape="rect" id="Node000005" href="$classViewable.html" title=" " alt="" coords="333,897,408,982"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="350,996,322,1053,289,1110,285,1107,318,1051,346,993"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="350,996,322,1053,283,1120,278,1117,318,1051,346,993"/>
 <area shape="rect" id="Node000006" href="$classInterface.html" title=" " alt="" coords="435,599,543,764"/>
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="435,777,429,789,405,845,386,897,381,896,400,843,424,787,430,775"/>
 <area shape="rect" id="Node000013" href="$classColormappable.html" title=" " alt="" coords="543,1364,782,1669"/>
@@ -19,7 +19,7 @@
 <area shape="rect" id="Node000015" href="$classShowMetadataInterface.html" title=" " alt="" coords="350,1484,519,1549"/>
 <area shape="poly" id="edge19_Node000015_Node000006" title=" " alt="" coords="481,778,480,788,452,1199,439,1484,433,1484,447,1199,475,788,476,778"/>
 <area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Observable.html" title=" " alt="" coords="145,827,309,1052"/>
-<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="229,1066,229,1109,224,1109,224,1066"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="229,1066,229,1118,224,1118,224,1066"/>
 <area shape="rect" id="Node000008" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="315,135,456,300"/>
 <area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="401,314,408,418,406,544,400,610,389,676,371,742,348,804,337,818,323,829,311,842,307,839,319,825,333,814,343,801,366,740,383,675,395,609,401,543,403,418,396,314"/>
 <area shape="rect" id="Node000011" href="$classScroom_1_1Bookkeeping_1_1MapBase.html" title=" " alt="" coords="149,349,304,549"/>

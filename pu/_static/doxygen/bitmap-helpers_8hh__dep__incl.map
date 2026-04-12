@@ -1,38 +1,40 @@
 <map id="libs/scroom/inc/scroom/bitmap&#45;helpers.hh" name="libs/scroom/inc/scroom/bitmap&#45;helpers.hh">
-<area shape="rect" id="Node000001" title=" " alt="" coords="1241,5,1413,45"/>
-<area shape="rect" id="Node000002" href="$transformpresentation_8hh.html" title=" " alt="" coords="825,93,1017,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1228,50,1010,96,1009,91,1227,45"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="1327,5,1499,45"/>
+<area shape="rect" id="Node000002" href="$transformpresentation_8hh.html" title=" " alt="" coords="910,93,1102,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1314,50,1096,96,1095,91,1312,45"/>
 <area shape="rect" id="Node000004" href="$transformpresentation__test_8cc.html" title=" " alt="" coords="5,181,281,221"/>
-<area shape="poly" id="edge15_Node000001_Node000004" title=" " alt="" coords="1228,41,813,96,255,184,254,179,812,91,1227,36"/>
-<area shape="rect" id="Node000013" href="$bitmap-helpers_8cc.html" title=" " alt="" coords="1041,93,1211,133"/>
-<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="1271,53,1171,96,1169,91,1269,48"/>
-<area shape="rect" id="Node000014" href="$cmyklayeroperations_8cc.html" title=" " alt="" coords="1236,93,1419,133"/>
-<area shape="poly" id="edge16_Node000001_Node000014" title=" " alt="" coords="1330,59,1330,93,1325,93,1325,59"/>
-<area shape="rect" id="Node000015" href="$layeroperations_8cc.html" title=" " alt="" coords="1443,93,1595,133"/>
-<area shape="poly" id="edge17_Node000001_Node000015" title=" " alt="" coords="1383,49,1478,91,1476,96,1381,53"/>
-<area shape="rect" id="Node000016" href="$sampleiterator-tests_8cc.html" title=" " alt="" coords="1620,93,1797,133"/>
-<area shape="poly" id="edge18_Node000001_Node000016" title=" " alt="" coords="1425,46,1626,91,1625,96,1424,51"/>
-<area shape="rect" id="Node000017" href="$transparentoverlayviewinfo_8cc.html" title=" " alt="" coords="1822,93,2123,133"/>
-<area shape="poly" id="edge19_Node000001_Node000017" title=" " alt="" coords="1427,37,1831,91,1831,96,1427,42"/>
+<area shape="poly" id="edge16_Node000001_Node000004" title=" " alt="" coords="1313,42,898,96,273,184,272,179,898,91,1313,37"/>
+<area shape="rect" id="Node000014" href="$bitmap-helpers_8cc.html" title=" " alt="" coords="1126,93,1297,133"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="1357,53,1256,96,1254,91,1355,48"/>
+<area shape="rect" id="Node000015" href="$cmyklayeroperations_8cc.html" title=" " alt="" coords="1321,93,1504,133"/>
+<area shape="poly" id="edge17_Node000001_Node000015" title=" " alt="" coords="1415,59,1415,93,1410,93,1410,59"/>
+<area shape="rect" id="Node000016" href="$layeroperations_8cc.html" title=" " alt="" coords="1529,93,1681,133"/>
+<area shape="poly" id="edge18_Node000001_Node000016" title=" " alt="" coords="1468,49,1564,91,1562,96,1466,53"/>
+<area shape="rect" id="Node000017" href="$sampleiterator-tests_8cc.html" title=" " alt="" coords="1705,93,1883,133"/>
+<area shape="poly" id="edge19_Node000001_Node000017" title=" " alt="" coords="1510,46,1711,91,1710,96,1509,51"/>
+<area shape="rect" id="Node000018" href="$transparentoverlayviewinfo_8cc.html" title=" " alt="" coords="1907,93,2209,133"/>
+<area shape="poly" id="edge20_Node000001_Node000018" title=" " alt="" coords="1513,37,1917,91,1916,96,1512,42"/>
 <area shape="rect" id="Node000003" href="$transformpresentation_8cc.html" title=" " alt="" coords="306,189,594,214"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="811,137,513,191,512,186,810,132"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="811,128,294,184,282,185,281,180,294,179,811,123"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="897,134,525,191,524,186,896,129"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="896,127,623,151,294,184,282,185,281,180,294,179,622,146,896,121"/>
 <area shape="rect" id="Node000005" href="$tiledbitmappresentation_8cc.html" title=" " alt="" coords="619,181,820,221"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="865,141,764,184,762,179,863,136"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="931,140,783,184,781,179,929,135"/>
 <area shape="rect" id="Node000006" href="$measure_8cc.html" title=" " alt="" coords="844,181,997,221"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="923,147,923,181,918,181,918,147"/>
-<area shape="rect" id="Node000007" href="$pnm_8cc.html" title=" " alt="" coords="910,269,1086,295"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="973,139,994,157,1011,180,1018,204,1017,229,1006,270,1001,268,1012,228,1012,205,1006,182,990,161,969,143"/>
-<area shape="rect" id="Node000008" href="$pnmsource_8hh.html" title=" " alt="" coords="1073,189,1294,214"/>
-<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="992,135,1149,186,1148,191,991,140"/>
-<area shape="rect" id="Node000010" href="$tiff_8cc.html" title=" " alt="" coords="1353,269,1507,295"/>
-<area shape="poly" id="edge10_Node000002_Node000010" title=" " alt="" coords="1031,131,1307,179,1417,267,1414,271,1305,184,1030,136"/>
-<area shape="rect" id="Node000011" href="$tiffsource_8hh.html" title=" " alt="" coords="1368,189,1567,214"/>
-<area shape="poly" id="edge11_Node000002_Node000011" title=" " alt="" coords="1031,131,1350,179,1397,186,1396,191,1350,184,1030,136"/>
-<area shape="poly" id="edge8_Node000008_Node000007" title=" " alt="" coords="1145,222,1026,272,1024,267,1143,217"/>
-<area shape="rect" id="Node000009" href="$pnmsource_8cc.html" title=" " alt="" coords="1110,269,1329,295"/>
-<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="1197,225,1216,268,1212,270,1192,228"/>
-<area shape="poly" id="edge12_Node000011_Node000010" title=" " alt="" coords="1458,228,1438,270,1433,268,1454,225"/>
-<area shape="rect" id="Node000012" href="$tiffsource_8cc.html" title=" " alt="" coords="1531,269,1729,295"/>
-<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="1504,217,1607,267,1605,272,1502,222"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="979,145,941,183,938,179,976,141"/>
+<area shape="rect" id="Node000007" href="$pipette_8cc.html" title=" " alt="" coords="1021,181,1164,221"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="1037,141,1075,179,1072,183,1033,145"/>
+<area shape="rect" id="Node000008" href="$pnm_8cc.html" title=" " alt="" coords="1077,269,1253,295"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="1116,133,1150,152,1178,180,1186,203,1186,228,1173,270,1168,268,1180,227,1181,204,1173,183,1147,156,1113,138"/>
+<area shape="rect" id="Node000009" href="$pnmsource_8hh.html" title=" " alt="" coords="1239,189,1461,214"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="1095,134,1305,186,1304,191,1094,139"/>
+<area shape="rect" id="Node000011" href="$tiff_8cc.html" title=" " alt="" coords="1519,269,1674,295"/>
+<area shape="poly" id="edge11_Node000002_Node000011" title=" " alt="" coords="1116,131,1219,139,1300,140,1339,142,1379,148,1423,160,1474,179,1584,267,1581,271,1471,184,1422,165,1378,154,1338,148,1300,145,1219,144,1116,136"/>
+<area shape="rect" id="Node000012" href="$tiffsource_8hh.html" title=" " alt="" coords="1535,189,1733,214"/>
+<area shape="poly" id="edge12_Node000002_Node000012" title=" " alt="" coords="1116,131,1318,155,1517,179,1566,186,1565,191,1516,184,1318,161,1116,136"/>
+<area shape="poly" id="edge9_Node000009_Node000008" title=" " alt="" coords="1312,222,1193,272,1191,267,1310,217"/>
+<area shape="rect" id="Node000010" href="$pnmsource_8cc.html" title=" " alt="" coords="1277,269,1495,295"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="1363,225,1383,268,1378,270,1359,228"/>
+<area shape="poly" id="edge13_Node000012_Node000011" title=" " alt="" coords="1625,228,1605,270,1600,268,1620,225"/>
+<area shape="rect" id="Node000013" href="$tiffsource_8cc.html" title=" " alt="" coords="1698,269,1895,295"/>
+<area shape="poly" id="edge14_Node000012_Node000013" title=" " alt="" coords="1671,217,1774,267,1772,272,1669,222"/>
 </map>

@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-49-g36e68308</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-52-gccfe85f7</span>
    </div>
   </td>
  </tr>
@@ -285,38 +285,38 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   62</span>{</div>
-<div class="line"><span class="lineno">   63</span>  <a class="code hl_variable" href="classPipetteHandler.html#a35d850d0a6c9e5030c754c561f6208c3">jobMutex</a>.lock();</div>
-<div class="line"><span class="lineno">   64</span> </div>
-<div class="line"><span class="lineno">   65</span>  <a class="code hl_function" href="namespaceScroom_1_1GtkHelpers.html#a41d93c131774cfff3137ec807ead3e94">Scroom::GtkHelpers::sync_on_ui_thread</a>([=] { <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;setStatusMessage(<span class="stringliteral">&quot;Computing color values...&quot;</span>); });</div>
-<div class="line"><span class="lineno">   66</span> </div>
-<div class="line"><span class="lineno">   67</span>  <span class="comment">// Get the average color within the rectangle</span></div>
-<div class="line"><span class="lineno">   68</span>  <a class="code hl_typedef" href="classPresentationInterface.html#a86fed59a32467f97507308d9b67bfa5c">PresentationInterface::Ptr</a> <span class="keyword">const</span> presentation = <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;getCurrentPresentation();</div>
-<div class="line"><span class="lineno">   69</span>  <span class="keyword">auto</span> <a class="code hl_variable" href="pipette-tests_8cc.html#aa4c4f16610cf6d0e7a8506f7b8ac8153">pipette</a> = std::dynamic_pointer_cast&lt;PipetteViewInterface&gt;(presentation);</div>
-<div class="line"><span class="lineno">   70</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="pipette-tests_8cc.html#aa4c4f16610cf6d0e7a8506f7b8ac8153">pipette</a> == <span class="keyword">nullptr</span> || !presentation-&gt;isPropertyDefined(<a class="code hl_variable" href="pipetteviewinterface_8hh.html#a8024b3c17cdcd8b401d96bf7ef32bf2a">PIPETTE_PROPERTY_NAME</a>))</div>
-<div class="line"><span class="lineno">   71</span>  {</div>
-<div class="line"><span class="lineno">   72</span>    <a class="code hl_variable" href="classPipetteHandler.html#aff4527943717314193a16ecc13710f3c">logger</a>-&gt;error(<span class="stringliteral">&quot;Presentation does not implement PipetteViewInterface!&quot;</span>);</div>
-<div class="line"><span class="lineno">   73</span>    <a class="code hl_function" href="namespaceScroom_1_1GtkHelpers.html#a41d93c131774cfff3137ec807ead3e94">Scroom::GtkHelpers::sync_on_ui_thread</a>([=] { <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;setStatusMessage(<span class="stringliteral">&quot;Pipette is not supported for this presentation.&quot;</span>); });</div>
-<div class="line"><span class="lineno">   74</span>    <a class="code hl_variable" href="classPipetteHandler.html#a35d850d0a6c9e5030c754c561f6208c3">jobMutex</a>.unlock();</div>
-<div class="line"><span class="lineno">   75</span>    <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   76</span>  }</div>
-<div class="line"><span class="lineno">   77</span>  <span class="keyword">auto</span> image = presentation-&gt;getRect();</div>
-<div class="line"><span class="lineno">   78</span>  <span class="keyword">auto</span> <a class="code hl_variable" href="rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b">rect</a> = sel_rect.<a class="code hl_function" href="classScroom_1_1Utils_1_1Rectangle.html#aa93bcd537f48183edeb70a668f7352cf">intersection</a>(image);</div>
-<div class="line"><span class="lineno">   79</span>  <span class="keyword">auto</span> <a class="code hl_variable" href="namespaceanonymous__namespace_02transparentoverlaypresentation_8cc_03.html#a5d2074d7840f9d66c2b18260065ef697">colors</a> = <a class="code hl_variable" href="pipette-tests_8cc.html#aa4c4f16610cf6d0e7a8506f7b8ac8153">pipette</a>-&gt;getPixelAverages(<a class="code hl_variable" href="rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b">rect</a>);</div>
-<div class="line"><span class="lineno">   80</span> </div>
-<div class="line"><span class="lineno">   81</span>  <span class="keyword">const</span> <span class="keyword">auto</span> display_rect = <a class="code hl_function" href="namespaceScroom_1_1Utils.html#aafbf8baa587d11858954f89021f9037b">roundOutward</a>(<a class="code hl_variable" href="rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b">rect</a> / presentation-&gt;getAspectRatio());</div>
-<div class="line"><span class="lineno">   82</span> </div>
-<div class="line"><span class="lineno">   83</span>  <span class="comment">// If the plugin was switched off ignore the result</span></div>
-<div class="line"><span class="lineno">   84</span>  <span class="keywordflow">if</span>(!<a class="code hl_variable" href="classPipetteHandler.html#aea8c9cbc3fb7450069b71411a092a91f">wasDisabled</a>.test_and_set())</div>
-<div class="line"><span class="lineno">   85</span>  {</div>
-<div class="line"><span class="lineno">   86</span>    <a class="code hl_function" href="classPipetteHandler.html#a42c4ca305b76971d68cc5dc8301472ff">displayValues</a>(<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>, display_rect, colors);</div>
-<div class="line"><span class="lineno">   87</span>  }</div>
-<div class="line"><span class="lineno">   88</span> </div>
-<div class="line"><span class="lineno">   89</span>  <a class="code hl_variable" href="classPipetteHandler.html#aea8c9cbc3fb7450069b71411a092a91f">wasDisabled</a>.clear();</div>
-<div class="line"><span class="lineno">   90</span>  <a class="code hl_variable" href="classPipetteHandler.html#a35d850d0a6c9e5030c754c561f6208c3">jobMutex</a>.unlock();</div>
-<div class="line"><span class="lineno">   91</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   63</span>{</div>
+<div class="line"><span class="lineno">   64</span>  <a class="code hl_variable" href="classPipetteHandler.html#a35d850d0a6c9e5030c754c561f6208c3">jobMutex</a>.lock();</div>
+<div class="line"><span class="lineno">   65</span> </div>
+<div class="line"><span class="lineno">   66</span>  <a class="code hl_function" href="namespaceScroom_1_1GtkHelpers.html#a41d93c131774cfff3137ec807ead3e94">Scroom::GtkHelpers::sync_on_ui_thread</a>([=] { <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;setStatusMessage(<span class="stringliteral">&quot;Computing color values...&quot;</span>); });</div>
+<div class="line"><span class="lineno">   67</span> </div>
+<div class="line"><span class="lineno">   68</span>  <span class="comment">// Get the average color within the rectangle</span></div>
+<div class="line"><span class="lineno">   69</span>  <a class="code hl_typedef" href="classPresentationInterface.html#a86fed59a32467f97507308d9b67bfa5c">PresentationInterface::Ptr</a> <span class="keyword">const</span> presentation = <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;getCurrentPresentation();</div>
+<div class="line"><span class="lineno">   70</span>  <span class="keyword">auto</span> <a class="code hl_variable" href="pipette-tests_8cc.html#aa4c4f16610cf6d0e7a8506f7b8ac8153">pipette</a> = std::dynamic_pointer_cast&lt;PipetteViewInterface&gt;(presentation);</div>
+<div class="line"><span class="lineno">   71</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="pipette-tests_8cc.html#aa4c4f16610cf6d0e7a8506f7b8ac8153">pipette</a> == <span class="keyword">nullptr</span> || !presentation-&gt;isPropertyDefined(<a class="code hl_variable" href="pipetteviewinterface_8hh.html#a8024b3c17cdcd8b401d96bf7ef32bf2a">PIPETTE_PROPERTY_NAME</a>))</div>
+<div class="line"><span class="lineno">   72</span>  {</div>
+<div class="line"><span class="lineno">   73</span>    <a class="code hl_variable" href="classPipetteHandler.html#aff4527943717314193a16ecc13710f3c">logger</a>-&gt;error(<span class="stringliteral">&quot;Presentation does not implement PipetteViewInterface!&quot;</span>);</div>
+<div class="line"><span class="lineno">   74</span>    <a class="code hl_function" href="namespaceScroom_1_1GtkHelpers.html#a41d93c131774cfff3137ec807ead3e94">Scroom::GtkHelpers::sync_on_ui_thread</a>([=] { <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;setStatusMessage(<span class="stringliteral">&quot;Pipette is not supported for this presentation.&quot;</span>); });</div>
+<div class="line"><span class="lineno">   75</span>    <a class="code hl_variable" href="classPipetteHandler.html#a35d850d0a6c9e5030c754c561f6208c3">jobMutex</a>.unlock();</div>
+<div class="line"><span class="lineno">   76</span>    <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   77</span>  }</div>
+<div class="line"><span class="lineno">   78</span>  <span class="keyword">auto</span> image = presentation-&gt;getRect();</div>
+<div class="line"><span class="lineno">   79</span>  <span class="keyword">auto</span> <a class="code hl_variable" href="rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b">rect</a> = sel_rect.<a class="code hl_function" href="classScroom_1_1Utils_1_1Rectangle.html#aa93bcd537f48183edeb70a668f7352cf">intersection</a>(image);</div>
+<div class="line"><span class="lineno">   80</span>  <span class="keyword">auto</span> <a class="code hl_variable" href="namespaceanonymous__namespace_02transparentoverlaypresentation_8cc_03.html#a5d2074d7840f9d66c2b18260065ef697">colors</a> = <a class="code hl_variable" href="pipette-tests_8cc.html#aa4c4f16610cf6d0e7a8506f7b8ac8153">pipette</a>-&gt;getPixelAverages(<a class="code hl_variable" href="rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b">rect</a>);</div>
+<div class="line"><span class="lineno">   81</span> </div>
+<div class="line"><span class="lineno">   82</span>  <span class="keyword">const</span> <span class="keyword">auto</span> display_rect = <a class="code hl_function" href="namespaceScroom_1_1Utils.html#aafbf8baa587d11858954f89021f9037b">roundOutward</a>(<a class="code hl_variable" href="rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b">rect</a> / <a class="code hl_function" href="transformpresentation_8hh.html#a3c364253c15ca463285b38252c438f8f">getAspectRatio</a>(presentation));</div>
+<div class="line"><span class="lineno">   83</span> </div>
+<div class="line"><span class="lineno">   84</span>  <span class="comment">// If the plugin was switched off ignore the result</span></div>
+<div class="line"><span class="lineno">   85</span>  <span class="keywordflow">if</span>(!<a class="code hl_variable" href="classPipetteHandler.html#aea8c9cbc3fb7450069b71411a092a91f">wasDisabled</a>.test_and_set())</div>
+<div class="line"><span class="lineno">   86</span>  {</div>
+<div class="line"><span class="lineno">   87</span>    <a class="code hl_function" href="classPipetteHandler.html#a42c4ca305b76971d68cc5dc8301472ff">displayValues</a>(<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>, display_rect, colors);</div>
+<div class="line"><span class="lineno">   88</span>  }</div>
+<div class="line"><span class="lineno">   89</span> </div>
+<div class="line"><span class="lineno">   90</span>  <a class="code hl_variable" href="classPipetteHandler.html#aea8c9cbc3fb7450069b71411a092a91f">wasDisabled</a>.clear();</div>
+<div class="line"><span class="lineno">   91</span>  <a class="code hl_variable" href="classPipetteHandler.html#a35d850d0a6c9e5030c754c561f6208c3">jobMutex</a>.unlock();</div>
+<div class="line"><span class="lineno">   92</span>}</div>
 <div class="ttc" id="aclassPipetteHandler_html_a35d850d0a6c9e5030c754c561f6208c3"><div class="ttname"><a href="classPipetteHandler.html#a35d850d0a6c9e5030c754c561f6208c3">PipetteHandler::jobMutex</a></div><div class="ttdeci">std::mutex jobMutex</div><div class="ttdef"><b>Definition</b> pipette.hh:34</div></div>
-<div class="ttc" id="aclassPipetteHandler_html_a42c4ca305b76971d68cc5dc8301472ff"><div class="ttname"><a href="classPipetteHandler.html#a42c4ca305b76971d68cc5dc8301472ff">PipetteHandler::displayValues</a></div><div class="ttdeci">virtual void displayValues(const ViewInterface::Ptr &amp;view, Scroom::Utils::Rectangle&lt; double &gt; rect, const PipetteLayerOperations::PipetteColor &amp;colors)</div><div class="ttdef"><b>Definition</b> pipette.cc:93</div></div>
+<div class="ttc" id="aclassPipetteHandler_html_a42c4ca305b76971d68cc5dc8301472ff"><div class="ttname"><a href="classPipetteHandler.html#a42c4ca305b76971d68cc5dc8301472ff">PipetteHandler::displayValues</a></div><div class="ttdeci">virtual void displayValues(const ViewInterface::Ptr &amp;view, Scroom::Utils::Rectangle&lt; double &gt; rect, const PipetteLayerOperations::PipetteColor &amp;colors)</div><div class="ttdef"><b>Definition</b> pipette.cc:94</div></div>
 <div class="ttc" id="aclassPipetteHandler_html_aea8c9cbc3fb7450069b71411a092a91f"><div class="ttname"><a href="classPipetteHandler.html#aea8c9cbc3fb7450069b71411a092a91f">PipetteHandler::wasDisabled</a></div><div class="ttdeci">std::atomic_flag wasDisabled</div><div class="ttdef"><b>Definition</b> pipette.hh:33</div></div>
 <div class="ttc" id="aclassPipetteHandler_html_aff4527943717314193a16ecc13710f3c"><div class="ttname"><a href="classPipetteHandler.html#aff4527943717314193a16ecc13710f3c">PipetteHandler::logger</a></div><div class="ttdeci">Scroom::Logger logger</div><div class="ttdef"><b>Definition</b> pipette.hh:36</div></div>
 <div class="ttc" id="aclassPresentationInterface_html_a86fed59a32467f97507308d9b67bfa5c"><div class="ttname"><a href="classPresentationInterface.html#a86fed59a32467f97507308d9b67bfa5c">PresentationInterface::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; PresentationInterface &gt; Ptr</div><div class="ttdef"><b>Definition</b> presentationinterface.hh:73</div></div>
@@ -328,23 +328,26 @@ Private Attributes</h2></td></tr>
 <div class="ttc" id="apipette-tests_8cc_html_aa4c4f16610cf6d0e7a8506f7b8ac8153"><div class="ttname"><a href="pipette-tests_8cc.html#aa4c4f16610cf6d0e7a8506f7b8ac8153">pipette</a></div><div class="ttdeci">Pipette::Ptr const pipette</div><div class="ttdef"><b>Definition</b> pipette-tests.cc:212</div></div>
 <div class="ttc" id="apipetteviewinterface_8hh_html_a8024b3c17cdcd8b401d96bf7ef32bf2a"><div class="ttname"><a href="pipetteviewinterface_8hh.html#a8024b3c17cdcd8b401d96bf7ef32bf2a">PIPETTE_PROPERTY_NAME</a></div><div class="ttdeci">const std::string PIPETTE_PROPERTY_NAME</div><div class="ttdef"><b>Definition</b> pipetteviewinterface.hh:14</div></div>
 <div class="ttc" id="arectangletests_8cc_html_aaa71382a621129a81a9a410576802d0b"><div class="ttname"><a href="rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b">rect</a></div><div class="ttdeci">const auto rect</div><div class="ttdef"><b>Definition</b> rectangletests.cc:335</div></div>
+<div class="ttc" id="atransformpresentation_8hh_html_a3c364253c15ca463285b38252c438f8f"><div class="ttname"><a href="transformpresentation_8hh.html#a3c364253c15ca463285b38252c438f8f">getAspectRatio</a></div><div class="ttdeci">Scroom::Utils::Point&lt; double &gt; getAspectRatio(const PresentationInterface::Ptr &amp;presentation)</div><div class="ttdef"><b>Definition</b> transformpresentation.cc:162</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classPipetteHandler_ac4ac7ffa0a4d50b2da677b623cd2f479_cgraph.png" border="0" usemap="#aclassPipetteHandler_ac4ac7ffa0a4d50b2da677b623cd2f479_cgraph" alt=""/></div>
 <map name="aclassPipetteHandler_ac4ac7ffa0a4d50b2da677b623cd2f479_cgraph" id="aclassPipetteHandler_ac4ac7ffa0a4d50b2da677b623cd2f479_cgraph">
-<area shape="rect" title=" " alt="" coords="5,174,232,199"/>
-<area shape="rect" href="classPipetteHandler.html#a42c4ca305b76971d68cc5dc8301472ff" title=" " alt="" coords="280,123,497,149"/>
-<area shape="poly" title=" " alt="" coords="187,171,306,149,307,154,188,177"/>
-<area shape="rect" href="namespaceScroom_1_1GtkHelpers.html#a41d93c131774cfff3137ec807ead3e94" title=" " alt="" coords="561,123,713,163"/>
-<area shape="poly" title=" " alt="" coords="232,178,497,157,547,152,547,157,498,163,233,183"/>
-<area shape="rect" href="classScroom_1_1Utils_1_1Rectangle.html#aa93bcd537f48183edeb70a668f7352cf" title=" " alt="" coords="297,224,480,264"/>
-<area shape="poly" title=" " alt="" coords="180,197,284,219,283,224,179,202"/>
-<area shape="poly" title=" " alt="" coords="498,136,547,138,547,143,498,142"/>
+<area shape="rect" title=" " alt="" coords="5,166,232,191"/>
+<area shape="rect" href="classPipetteHandler.html#a42c4ca305b76971d68cc5dc8301472ff" title=" " alt="" coords="280,90,497,115"/>
+<area shape="poly" title=" " alt="" coords="164,163,328,117,330,122,165,169"/>
+<area shape="rect" href="namespaceScroom_1_1GtkHelpers.html#a41d93c131774cfff3137ec807ead3e94" title=" " alt="" coords="561,87,713,127"/>
+<area shape="poly" title=" " alt="" coords="213,163,497,124,546,117,547,122,498,129,214,169"/>
+<area shape="rect" href="transformpresentation_8cc.html#a3c364253c15ca463285b38252c438f8f" title=" " alt="" coords="328,191,449,217"/>
+<area shape="poly" title=" " alt="" coords="232,187,315,194,314,200,232,192"/>
+<area shape="rect" href="classScroom_1_1Utils_1_1Rectangle.html#aa93bcd537f48183edeb70a668f7352cf" title=" " alt="" coords="297,244,480,284"/>
+<area shape="poly" title=" " alt="" coords="161,189,313,237,311,242,159,194"/>
+<area shape="poly" title=" " alt="" coords="498,102,547,103,547,108,498,107"/>
 <area shape="rect" href="namespaceScroom_1_1GtkHelpers.html#a37a36328ffc6b0e7468a02d64724c21d" title=" " alt="" coords="784,53,943,107"/>
-<area shape="poly" title=" " alt="" coords="709,120,770,103,771,108,710,125"/>
+<area shape="poly" title=" " alt="" coords="713,95,770,88,771,94,714,100"/>
 <area shape="rect" href="namespaceScroom_1_1GtkHelpers.html#a2ade52a9fdfe46700036def64d00f9da" title=" " alt="" coords="1002,121,1154,161"/>
-<area shape="poly" title=" " alt="" coords="713,140,988,139,988,144,713,145"/>
+<area shape="poly" title=" " alt="" coords="713,111,776,116,988,132,988,138,776,121,713,116"/>
 <area shape="rect" href="namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1" title=" " alt="" coords="999,5,1157,45"/>
 <area shape="poly" title=" " alt="" coords="942,57,985,46,987,51,944,62"/>
 <area shape="poly" title=" " alt="" coords="944,100,995,115,993,120,942,105"/>
@@ -352,14 +355,17 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="943,78,1039,80,1039,85,943,84"/>
 <area shape="rect" href="namespaceScroom_1_1GtkHelpers.html#ad5dcc56a509902bf106dbd6eb6a28964" title=" " alt="" coords="1205,5,1357,45"/>
 <area shape="poly" title=" " alt="" coords="1157,23,1191,23,1191,28,1157,28"/>
-<area shape="rect" href="classScroom_1_1Utils_1_1Segment.html#ac38f7461d5b5fe7fecbb051957259b5e" title=" " alt="" coords="549,212,724,252"/>
-<area shape="poly" title=" " alt="" coords="480,237,535,234,536,240,480,242"/>
-<area shape="rect" href="classScroom_1_1Utils_1_1Rectangle.html#a8bafbe715dcf9dc732ea2f197b9ecba1" title=" " alt="" coords="545,276,728,316"/>
-<area shape="poly" title=" " alt="" coords="481,261,533,272,532,277,480,266"/>
-<area shape="rect" href="classScroom_1_1Utils_1_1Segment.html#a671e0c8614114bf5eb99afd36a2dddc4" title=" " alt="" coords="776,208,951,248"/>
-<area shape="poly" title=" " alt="" coords="725,228,762,227,762,232,725,233"/>
-<area shape="rect" href="classScroom_1_1Utils_1_1Segment.html#a934a0a56d270e8d4fc4ceddb4dc7fb82" title=" " alt="" coords="776,272,951,312"/>
-<area shape="poly" title=" " alt="" coords="714,250,775,266,773,271,713,255"/>
+<area shape="rect" href="namespaceScroom_1_1Utils.html#af6796373cc462aef8e6979a40acef5d3" title=" " alt="" coords="560,180,713,220"/>
+<area shape="poly" title=" " alt="" coords="449,200,546,199,546,204,449,206"/>
+<area shape="poly" title=" " alt="" coords="594,180,592,170,599,161,614,155,637,153,663,156,678,163,675,168,662,161,637,159,615,161,602,165,597,171,599,179"/>
+<area shape="rect" href="classScroom_1_1Utils_1_1Segment.html#ac38f7461d5b5fe7fecbb051957259b5e" title=" " alt="" coords="549,244,724,284"/>
+<area shape="poly" title=" " alt="" coords="480,261,535,261,535,267,480,267"/>
+<area shape="rect" href="classScroom_1_1Utils_1_1Rectangle.html#a8bafbe715dcf9dc732ea2f197b9ecba1" title=" " alt="" coords="545,308,728,348"/>
+<area shape="poly" title=" " alt="" coords="468,281,546,302,545,307,466,287"/>
+<area shape="rect" href="classScroom_1_1Utils_1_1Segment.html#a671e0c8614114bf5eb99afd36a2dddc4" title=" " alt="" coords="776,201,951,241"/>
+<area shape="poly" title=" " alt="" coords="724,245,762,238,763,243,725,250"/>
+<area shape="rect" href="classScroom_1_1Utils_1_1Segment.html#a934a0a56d270e8d4fc4ceddb4dc7fb82" title=" " alt="" coords="776,265,951,305"/>
+<area shape="poly" title=" " alt="" coords="725,270,763,273,762,279,724,275"/>
 </map>
 </div>
 
@@ -387,7 +393,7 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   59</span>{ <span class="keywordflow">return</span> std::make_shared&lt;PipetteHandler&gt;(); }</div>
+<div class="fragment"><div class="line"><span class="lineno">   60</span>{ <span class="keywordflow">return</span> std::make_shared&lt;PipetteHandler&gt;(); }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classPipette.html#a95fcccb9ce30c8a42011d2a445f4a29a">Pipette::viewAdded()</a>.</p>
 <div class="dynheader">
@@ -442,28 +448,28 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   98</span>{</div>
-<div class="line"><span class="lineno">   99</span>  std::stringstream info;</div>
-<div class="line"><span class="lineno">  100</span> </div>
-<div class="line"><span class="lineno">  101</span>  info &lt;&lt; fmt::format(</div>
-<div class="line"><span class="lineno">  102</span>    <span class="stringliteral">&quot;Top-left: {}, Bottom-right: {}, Height: {}, Width: {}&quot;</span>,</div>
-<div class="line"><span class="lineno">  103</span>    <a class="code hl_variable" href="rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b">rect</a>.getTopLeft(),</div>
-<div class="line"><span class="lineno">  104</span>    <a class="code hl_variable" href="rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b">rect</a>.getBottomRight(),</div>
-<div class="line"><span class="lineno">  105</span>    <a class="code hl_variable" href="rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b">rect</a>.getHeight(),</div>
-<div class="line"><span class="lineno">  106</span>    <a class="code hl_variable" href="rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b">rect</a>.getWidth()</div>
-<div class="line"><span class="lineno">  107</span>  );</div>
-<div class="line"><span class="lineno">  108</span> </div>
-<div class="line"><span class="lineno">  109</span>  <span class="keywordflow">if</span>(!<a class="code hl_variable" href="namespaceanonymous__namespace_02transparentoverlaypresentation_8cc_03.html#a5d2074d7840f9d66c2b18260065ef697">colors</a>.empty())</div>
-<div class="line"><span class="lineno">  110</span>  {</div>
-<div class="line"><span class="lineno">  111</span>    info &lt;&lt; <span class="stringliteral">&quot;, Colors:&quot;</span>;</div>
-<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [name, <a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>]: <a class="code hl_variable" href="namespaceanonymous__namespace_02transparentoverlaypresentation_8cc_03.html#a5d2074d7840f9d66c2b18260065ef697">colors</a>)</div>
-<div class="line"><span class="lineno">  113</span>    {</div>
-<div class="line"><span class="lineno">  114</span>      info &lt;&lt; fmt::format(<span class="stringliteral">&quot; {}: {:.2f}&quot;</span>, name, <a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>);</div>
-<div class="line"><span class="lineno">  115</span>    }</div>
-<div class="line"><span class="lineno">  116</span>  }</div>
-<div class="line"><span class="lineno">  117</span> </div>
-<div class="line"><span class="lineno">  118</span>  <a class="code hl_function" href="namespaceScroom_1_1GtkHelpers.html#a41d93c131774cfff3137ec807ead3e94">Scroom::GtkHelpers::sync_on_ui_thread</a>([<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>, status = info.str()] { view-&gt;setStatusMessage(status); });</div>
-<div class="line"><span class="lineno">  119</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   99</span>{</div>
+<div class="line"><span class="lineno">  100</span>  std::stringstream info;</div>
+<div class="line"><span class="lineno">  101</span> </div>
+<div class="line"><span class="lineno">  102</span>  info &lt;&lt; fmt::format(</div>
+<div class="line"><span class="lineno">  103</span>    <span class="stringliteral">&quot;Top-left: {}, Bottom-right: {}, Height: {}, Width: {}&quot;</span>,</div>
+<div class="line"><span class="lineno">  104</span>    <a class="code hl_variable" href="rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b">rect</a>.getTopLeft(),</div>
+<div class="line"><span class="lineno">  105</span>    <a class="code hl_variable" href="rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b">rect</a>.getBottomRight(),</div>
+<div class="line"><span class="lineno">  106</span>    <a class="code hl_variable" href="rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b">rect</a>.getHeight(),</div>
+<div class="line"><span class="lineno">  107</span>    <a class="code hl_variable" href="rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b">rect</a>.getWidth()</div>
+<div class="line"><span class="lineno">  108</span>  );</div>
+<div class="line"><span class="lineno">  109</span> </div>
+<div class="line"><span class="lineno">  110</span>  <span class="keywordflow">if</span>(!<a class="code hl_variable" href="namespaceanonymous__namespace_02transparentoverlaypresentation_8cc_03.html#a5d2074d7840f9d66c2b18260065ef697">colors</a>.empty())</div>
+<div class="line"><span class="lineno">  111</span>  {</div>
+<div class="line"><span class="lineno">  112</span>    info &lt;&lt; <span class="stringliteral">&quot;, Colors:&quot;</span>;</div>
+<div class="line"><span class="lineno">  113</span>    <span class="keywordflow">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [name, <a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>]: <a class="code hl_variable" href="namespaceanonymous__namespace_02transparentoverlaypresentation_8cc_03.html#a5d2074d7840f9d66c2b18260065ef697">colors</a>)</div>
+<div class="line"><span class="lineno">  114</span>    {</div>
+<div class="line"><span class="lineno">  115</span>      info &lt;&lt; fmt::format(<span class="stringliteral">&quot; {}: {:.2f}&quot;</span>, name, <a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>);</div>
+<div class="line"><span class="lineno">  116</span>    }</div>
+<div class="line"><span class="lineno">  117</span>  }</div>
+<div class="line"><span class="lineno">  118</span> </div>
+<div class="line"><span class="lineno">  119</span>  <a class="code hl_function" href="namespaceScroom_1_1GtkHelpers.html#a41d93c131774cfff3137ec807ead3e94">Scroom::GtkHelpers::sync_on_ui_thread</a>([<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>, status = info.str()] { view-&gt;setStatusMessage(status); });</div>
+<div class="line"><span class="lineno">  120</span>}</div>
 <div class="ttc" id="ablob-tests_8cc_html_abf9157cab7a60c93387a03e18e2c560a"><div class="ttname"><a href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a></div><div class="ttdeci">const uint8_t value</div><div class="ttdef"><b>Definition</b> blob-tests.cc:114</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classPipetteHandler.html#ac4ac7ffa0a4d50b2da677b623cd2f479">computeValues()</a>.</p>
@@ -552,7 +558,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="classSelectionListener.html#a75202e0537d8ffff57fbbc4a10d3de1e">SelectionListener</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  125</span>{ <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceSelectionType.html#aa8763b7e1473f7e5d1e2c8d5b86fe49f">SelectionType::PIXEL</a>; }</div>
+<div class="fragment"><div class="line"><span class="lineno">  126</span>{ <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceSelectionType.html#aa8763b7e1473f7e5d1e2c8d5b86fe49f">SelectionType::PIXEL</a>; }</div>
 <div class="ttc" id="anamespaceSelectionType_html_aa8763b7e1473f7e5d1e2c8d5b86fe49f"><div class="ttname"><a href="namespaceSelectionType.html#aa8763b7e1473f7e5d1e2c8d5b86fe49f">SelectionType::PIXEL</a></div><div class="ttdeci">const std::string PIXEL(&quot;PixelSelection&quot;)</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -619,11 +625,11 @@ Here is the call graph for this function:</div>
 <p>Then function is called whenever the tool button is deselected. </p>
 
 <p>Implements <a class="el" href="classToolStateListener.html#a5c5428be3cedeaa27b0e45be9cd782d0">ToolStateListener</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  186</span>{</div>
-<div class="line"><span class="lineno">  187</span>  <a class="code hl_variable" href="classPipetteHandler.html#a8b98c2f7e4bfd37c719a8e66950a8caf">selection</a>.reset();</div>
-<div class="line"><span class="lineno">  188</span>  <a class="code hl_variable" href="classPipetteHandler.html#a2ce9973151e38a38fe910c230028c12d">enabled</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  189</span>  <a class="code hl_variable" href="classPipetteHandler.html#aea8c9cbc3fb7450069b71411a092a91f">wasDisabled</a>.test_and_set();</div>
-<div class="line"><span class="lineno">  190</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  187</span>{</div>
+<div class="line"><span class="lineno">  188</span>  <a class="code hl_variable" href="classPipetteHandler.html#a8b98c2f7e4bfd37c719a8e66950a8caf">selection</a>.reset();</div>
+<div class="line"><span class="lineno">  189</span>  <a class="code hl_variable" href="classPipetteHandler.html#a2ce9973151e38a38fe910c230028c12d">enabled</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  190</span>  <a class="code hl_variable" href="classPipetteHandler.html#aea8c9cbc3fb7450069b71411a092a91f">wasDisabled</a>.test_and_set();</div>
+<div class="line"><span class="lineno">  191</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -652,14 +658,14 @@ Here is the call graph for this function:</div>
 <p>This function is called whenever the tool button is selected. </p>
 
 <p>Implements <a class="el" href="classToolStateListener.html#a97add007438e18b5aba94e99d623e68e">ToolStateListener</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  193</span>{</div>
-<div class="line"><span class="lineno">  194</span>  <a class="code hl_variable" href="classPipetteHandler.html#a2ce9973151e38a38fe910c230028c12d">enabled</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  195</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="classPipetteHandler.html#a35d850d0a6c9e5030c754c561f6208c3">jobMutex</a>.try_lock())</div>
-<div class="line"><span class="lineno">  196</span>  {</div>
-<div class="line"><span class="lineno">  197</span>    <a class="code hl_variable" href="classPipetteHandler.html#aea8c9cbc3fb7450069b71411a092a91f">wasDisabled</a>.clear();</div>
-<div class="line"><span class="lineno">  198</span>    <a class="code hl_variable" href="classPipetteHandler.html#a35d850d0a6c9e5030c754c561f6208c3">jobMutex</a>.unlock();</div>
-<div class="line"><span class="lineno">  199</span>  }</div>
-<div class="line"><span class="lineno">  200</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  194</span>{</div>
+<div class="line"><span class="lineno">  195</span>  <a class="code hl_variable" href="classPipetteHandler.html#a2ce9973151e38a38fe910c230028c12d">enabled</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  196</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="classPipetteHandler.html#a35d850d0a6c9e5030c754c561f6208c3">jobMutex</a>.try_lock())</div>
+<div class="line"><span class="lineno">  197</span>  {</div>
+<div class="line"><span class="lineno">  198</span>    <a class="code hl_variable" href="classPipetteHandler.html#aea8c9cbc3fb7450069b71411a092a91f">wasDisabled</a>.clear();</div>
+<div class="line"><span class="lineno">  199</span>    <a class="code hl_variable" href="classPipetteHandler.html#a35d850d0a6c9e5030c754c561f6208c3">jobMutex</a>.unlock();</div>
+<div class="line"><span class="lineno">  200</span>  }</div>
+<div class="line"><span class="lineno">  201</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -701,19 +707,19 @@ Here is the call graph for this function:</div>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="structSelection.html">Selection</a> </dd></dl>
 
 <p>Implements <a class="el" href="classSelectionListener.html#a31ad704ffc7cfa203639295f6d942308">SelectionListener</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  139</span>{</div>
-<div class="line"><span class="lineno">  140</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="classPipetteHandler.html#a2ce9973151e38a38fe910c230028c12d">enabled</a> &amp;&amp; <a class="code hl_variable" href="classPipetteHandler.html#a35d850d0a6c9e5030c754c561f6208c3">jobMutex</a>.try_lock())</div>
-<div class="line"><span class="lineno">  141</span>  {</div>
-<div class="line"><span class="lineno">  142</span>    <a class="code hl_variable" href="classPipetteHandler.html#a8b98c2f7e4bfd37c719a8e66950a8caf">selection</a> = <a class="code hl_variable" href="transformpresentation__test_8cc.html#aab0e3ec116bb87f30039fc772656b8ef">s</a>;</div>
-<div class="line"><span class="lineno">  143</span> </div>
-<div class="line"><span class="lineno">  144</span>    <span class="comment">// Get the selection rectangle</span></div>
-<div class="line"><span class="lineno">  145</span>    <span class="keyword">const</span> <span class="keyword">auto</span> sel_rect = <a class="code hl_function" href="namespaceScroom_1_1Utils.html#a945b370ac1041bc053565f150668e803">Scroom::Utils::make_rect_from_start_end</a>(<a class="code hl_variable" href="classPipetteHandler.html#a8b98c2f7e4bfd37c719a8e66950a8caf">selection</a>-&gt;start, <a class="code hl_variable" href="classPipetteHandler.html#a8b98c2f7e4bfd37c719a8e66950a8caf">selection</a>-&gt;end);</div>
-<div class="line"><span class="lineno">  146</span>    <a class="code hl_function" href="threadpool_8hh.html#af979353165a7a214dda8f7f289de81ea">Sequentially</a>()-&gt;schedule(</div>
-<div class="line"><span class="lineno">  147</span>      [me = shared_from_this&lt;PipetteHandler&gt;(), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>, sel_rect] { me-&gt;computeValues(<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>, sel_rect); }, <a class="code hl_variable" href="classPipetteHandler.html#a3a17e4d4570e25c39b84967a38085576">currentJob</a></div>
-<div class="line"><span class="lineno">  148</span>    );</div>
-<div class="line"><span class="lineno">  149</span>    <a class="code hl_variable" href="classPipetteHandler.html#a35d850d0a6c9e5030c754c561f6208c3">jobMutex</a>.unlock();</div>
-<div class="line"><span class="lineno">  150</span>  }</div>
-<div class="line"><span class="lineno">  151</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  140</span>{</div>
+<div class="line"><span class="lineno">  141</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="classPipetteHandler.html#a2ce9973151e38a38fe910c230028c12d">enabled</a> &amp;&amp; <a class="code hl_variable" href="classPipetteHandler.html#a35d850d0a6c9e5030c754c561f6208c3">jobMutex</a>.try_lock())</div>
+<div class="line"><span class="lineno">  142</span>  {</div>
+<div class="line"><span class="lineno">  143</span>    <a class="code hl_variable" href="classPipetteHandler.html#a8b98c2f7e4bfd37c719a8e66950a8caf">selection</a> = <a class="code hl_variable" href="transformpresentation__test_8cc.html#aab0e3ec116bb87f30039fc772656b8ef">s</a>;</div>
+<div class="line"><span class="lineno">  144</span> </div>
+<div class="line"><span class="lineno">  145</span>    <span class="comment">// Get the selection rectangle</span></div>
+<div class="line"><span class="lineno">  146</span>    <span class="keyword">const</span> <span class="keyword">auto</span> sel_rect = <a class="code hl_function" href="namespaceScroom_1_1Utils.html#a945b370ac1041bc053565f150668e803">Scroom::Utils::make_rect_from_start_end</a>(<a class="code hl_variable" href="classPipetteHandler.html#a8b98c2f7e4bfd37c719a8e66950a8caf">selection</a>-&gt;start, <a class="code hl_variable" href="classPipetteHandler.html#a8b98c2f7e4bfd37c719a8e66950a8caf">selection</a>-&gt;end);</div>
+<div class="line"><span class="lineno">  147</span>    <a class="code hl_function" href="threadpool_8hh.html#af979353165a7a214dda8f7f289de81ea">Sequentially</a>()-&gt;schedule(</div>
+<div class="line"><span class="lineno">  148</span>      [me = shared_from_this&lt;PipetteHandler&gt;(), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>, sel_rect] { me-&gt;computeValues(<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>, sel_rect); }, <a class="code hl_variable" href="classPipetteHandler.html#a3a17e4d4570e25c39b84967a38085576">currentJob</a></div>
+<div class="line"><span class="lineno">  149</span>    );</div>
+<div class="line"><span class="lineno">  150</span>    <a class="code hl_variable" href="classPipetteHandler.html#a35d850d0a6c9e5030c754c561f6208c3">jobMutex</a>.unlock();</div>
+<div class="line"><span class="lineno">  151</span>  }</div>
+<div class="line"><span class="lineno">  152</span>}</div>
 <div class="ttc" id="aclassPipetteHandler_html_a3a17e4d4570e25c39b84967a38085576"><div class="ttname"><a href="classPipetteHandler.html#a3a17e4d4570e25c39b84967a38085576">PipetteHandler::currentJob</a></div><div class="ttdeci">ThreadPool::Queue::Ptr currentJob</div><div class="ttdef"><b>Definition</b> pipette.hh:35</div></div>
 <div class="ttc" id="anamespaceScroom_1_1Utils_html_a945b370ac1041bc053565f150668e803"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#a945b370ac1041bc053565f150668e803">Scroom::Utils::make_rect_from_start_end</a></div><div class="ttdeci">Rectangle&lt; T &gt; make_rect_from_start_end(Point&lt; T &gt; start, Point&lt; T &gt; end)</div><div class="ttdef"><b>Definition</b> rectangle.hh:296</div></div>
 <div class="ttc" id="athreadpool_8hh_html_af979353165a7a214dda8f7f289de81ea"><div class="ttname"><a href="threadpool_8hh.html#af979353165a7a214dda8f7f289de81ea">Sequentially</a></div><div class="ttdeci">ThreadPool::Ptr Sequentially()</div><div class="ttdef"><b>Definition</b> threadpoolimpl.cc:462</div></div>
@@ -772,7 +778,7 @@ Here is the call graph for this function:</div>
 <p>The passed point is a point in the presentation coordinate space. </p>
 
 <p>Implements <a class="el" href="classSelectionListener.html#a9d469a2d0fe0fc4801701b62c12e96bf">SelectionListener</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  127</span>{}</div>
+<div class="fragment"><div class="line"><span class="lineno">  128</span>{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -814,13 +820,13 @@ Here is the call graph for this function:</div>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="structSelection.html">Selection</a> </dd></dl>
 
 <p>Implements <a class="el" href="classSelectionListener.html#a9dc66c67dd0a8ecbb889dd61bf094ec4">SelectionListener</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  130</span>{</div>
-<div class="line"><span class="lineno">  131</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="classPipetteHandler.html#a2ce9973151e38a38fe910c230028c12d">enabled</a> &amp;&amp; <a class="code hl_variable" href="classPipetteHandler.html#a35d850d0a6c9e5030c754c561f6208c3">jobMutex</a>.try_lock())</div>
-<div class="line"><span class="lineno">  132</span>  {</div>
-<div class="line"><span class="lineno">  133</span>    <a class="code hl_variable" href="classPipetteHandler.html#a8b98c2f7e4bfd37c719a8e66950a8caf">selection</a> = <a class="code hl_variable" href="transformpresentation__test_8cc.html#aab0e3ec116bb87f30039fc772656b8ef">s</a>;</div>
-<div class="line"><span class="lineno">  134</span>    <a class="code hl_variable" href="classPipetteHandler.html#a35d850d0a6c9e5030c754c561f6208c3">jobMutex</a>.unlock();</div>
-<div class="line"><span class="lineno">  135</span>  }</div>
-<div class="line"><span class="lineno">  136</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  131</span>{</div>
+<div class="line"><span class="lineno">  132</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="classPipetteHandler.html#a2ce9973151e38a38fe910c230028c12d">enabled</a> &amp;&amp; <a class="code hl_variable" href="classPipetteHandler.html#a35d850d0a6c9e5030c754c561f6208c3">jobMutex</a>.try_lock())</div>
+<div class="line"><span class="lineno">  133</span>  {</div>
+<div class="line"><span class="lineno">  134</span>    <a class="code hl_variable" href="classPipetteHandler.html#a8b98c2f7e4bfd37c719a8e66950a8caf">selection</a> = <a class="code hl_variable" href="transformpresentation__test_8cc.html#aab0e3ec116bb87f30039fc772656b8ef">s</a>;</div>
+<div class="line"><span class="lineno">  135</span>    <a class="code hl_variable" href="classPipetteHandler.html#a35d850d0a6c9e5030c754c561f6208c3">jobMutex</a>.unlock();</div>
+<div class="line"><span class="lineno">  136</span>  }</div>
+<div class="line"><span class="lineno">  137</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -881,23 +887,23 @@ Here is the call graph for this function:</div>
 </dl>
 
 <p>Implements <a class="el" href="classPostRenderer.html#a3915bf497e6d8438c86cb9fedeb65e5e">PostRenderer</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  163</span>{</div>
-<div class="line"><span class="lineno">  164</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="classPipetteHandler.html#a8b98c2f7e4bfd37c719a8e66950a8caf">selection</a>)</div>
-<div class="line"><span class="lineno">  165</span>  {</div>
-<div class="line"><span class="lineno">  166</span>    <span class="keyword">const</span> <span class="keyword">auto</span> pixelSize = <a class="code hl_function" href="cairo-helpers_8hh.html#ac7a152a4cc864e9c67acbc6686a9d3a4">pixelSizeFromZoom</a>(zoom);</div>
-<div class="line"><span class="lineno">  167</span>    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a> = (<a class="code hl_variable" href="classPipetteHandler.html#a8b98c2f7e4bfd37c719a8e66950a8caf">selection</a>-&gt;start - presentationArea.<a class="code hl_function" href="classScroom_1_1Utils_1_1Rectangle.html#aa0205a1477a20bd1888f9dd480069bf2">getTopLeft</a>()) * pixelSize;</div>
-<div class="line"><span class="lineno">  168</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end = (<a class="code hl_variable" href="classPipetteHandler.html#a8b98c2f7e4bfd37c719a8e66950a8caf">selection</a>-&gt;end - presentationArea.<a class="code hl_function" href="classScroom_1_1Utils_1_1Rectangle.html#aa0205a1477a20bd1888f9dd480069bf2">getTopLeft</a>()) * pixelSize;</div>
-<div class="line"><span class="lineno">  169</span> </div>
-<div class="line"><span class="lineno">  170</span>    cairo_set_line_width(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, 1);</div>
-<div class="line"><span class="lineno">  171</span>    cairo_set_source_rgb(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, 0, 0, 1); <span class="comment">// Blue</span></div>
-<div class="line"><span class="lineno">  172</span>    cairo_move_to(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, end.x, <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a>.y);</div>
-<div class="line"><span class="lineno">  173</span>    cairo_line_to(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a>.x, <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a>.y);</div>
-<div class="line"><span class="lineno">  174</span>    cairo_line_to(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a>.x, end.y);</div>
-<div class="line"><span class="lineno">  175</span>    cairo_line_to(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, end.x, end.y);</div>
-<div class="line"><span class="lineno">  176</span>    cairo_line_to(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, end.x, <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a>.y);</div>
-<div class="line"><span class="lineno">  177</span>    cairo_stroke(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>);</div>
-<div class="line"><span class="lineno">  178</span>  }</div>
-<div class="line"><span class="lineno">  179</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  164</span>{</div>
+<div class="line"><span class="lineno">  165</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="classPipetteHandler.html#a8b98c2f7e4bfd37c719a8e66950a8caf">selection</a>)</div>
+<div class="line"><span class="lineno">  166</span>  {</div>
+<div class="line"><span class="lineno">  167</span>    <span class="keyword">const</span> <span class="keyword">auto</span> pixelSize = <a class="code hl_function" href="cairo-helpers_8hh.html#ac7a152a4cc864e9c67acbc6686a9d3a4">pixelSizeFromZoom</a>(zoom);</div>
+<div class="line"><span class="lineno">  168</span>    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a> = (<a class="code hl_variable" href="classPipetteHandler.html#a8b98c2f7e4bfd37c719a8e66950a8caf">selection</a>-&gt;start - presentationArea.<a class="code hl_function" href="classScroom_1_1Utils_1_1Rectangle.html#aa0205a1477a20bd1888f9dd480069bf2">getTopLeft</a>()) * pixelSize;</div>
+<div class="line"><span class="lineno">  169</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end = (<a class="code hl_variable" href="classPipetteHandler.html#a8b98c2f7e4bfd37c719a8e66950a8caf">selection</a>-&gt;end - presentationArea.<a class="code hl_function" href="classScroom_1_1Utils_1_1Rectangle.html#aa0205a1477a20bd1888f9dd480069bf2">getTopLeft</a>()) * pixelSize;</div>
+<div class="line"><span class="lineno">  170</span> </div>
+<div class="line"><span class="lineno">  171</span>    cairo_set_line_width(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, 1);</div>
+<div class="line"><span class="lineno">  172</span>    cairo_set_source_rgb(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, 0, 0, 1); <span class="comment">// Blue</span></div>
+<div class="line"><span class="lineno">  173</span>    cairo_move_to(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, end.x, <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a>.y);</div>
+<div class="line"><span class="lineno">  174</span>    cairo_line_to(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a>.x, <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a>.y);</div>
+<div class="line"><span class="lineno">  175</span>    cairo_line_to(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a>.x, end.y);</div>
+<div class="line"><span class="lineno">  176</span>    cairo_line_to(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, end.x, end.y);</div>
+<div class="line"><span class="lineno">  177</span>    cairo_line_to(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, end.x, <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a>.y);</div>
+<div class="line"><span class="lineno">  178</span>    cairo_stroke(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>);</div>
+<div class="line"><span class="lineno">  179</span>  }</div>
+<div class="line"><span class="lineno">  180</span>}</div>
 <div class="ttc" id="acairo-helpers_8hh_html_ac7a152a4cc864e9c67acbc6686a9d3a4"><div class="ttname"><a href="cairo-helpers_8hh.html#ac7a152a4cc864e9c67acbc6686a9d3a4">pixelSizeFromZoom</a></div><div class="ttdeci">double pixelSizeFromZoom(int zoom)</div><div class="ttdef"><b>Definition</b> cairo-helpers.cc:123</div></div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1Rectangle_html_aa0205a1477a20bd1888f9dd480069bf2"><div class="ttname"><a href="classScroom_1_1Utils_1_1Rectangle.html#aa0205a1477a20bd1888f9dd480069bf2">Scroom::Utils::Rectangle::getTopLeft</a></div><div class="ttdeci">xy_type getTopLeft() const</div><div class="ttdef"><b>Definition</b> rectangle.hh:133</div></div>
 <div class="ttc" id="asampleiterator-tests_8cc_html_a7a3cea2e816e69389742543574d72526"><div class="ttname"><a href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a></div><div class="ttdeci">const SampleIterator&lt; const uint8_t &gt; start(nullptr, initial_offset, bps)</div></div>

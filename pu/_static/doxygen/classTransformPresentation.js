@@ -5,7 +5,6 @@ var classTransformPresentation =
     [ "close", "classTransformPresentation.html#aa8a233e2cf3d2b78088f64321ec0cc6e", null ],
     [ "create", "classTransformPresentation.html#a0bb3a42de4a22b82be66bffff34c4e7d", null ],
     [ "disableTransparentBackground", "classTransformPresentation.html#a7471c9df007b7595fd1177adcef2abfa", null ],
-    [ "getAspectRatio", "classTransformPresentation.html#a969c44d9131e0318d039ff509f8dbed9", null ],
     [ "getContext", "classTransformPresentation.html#a44c201d6cc210f06a61be9f1afe3e984", null ],
     [ "getMonochromeColor", "classTransformPresentation.html#a1d508b386f74549c2fff13c04f5b970e", null ],
     [ "getNumberOfColors", "classTransformPresentation.html#a7fc20cee82ebc28404c074b10e44add9", null ],
