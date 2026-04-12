@@ -332,7 +332,7 @@ void TiledBitmap::tileFinished(const CompressedTile::Ptr& /*tile*/)
   else
   {
     Scroom::GtkHelpers::sync_on_ui_thread(
-      [=]
+      [this]
       {
         progressBroadcaster->setWorking(1.0 * tileFinishedCount / tileCount);
         if(tileFinishedCount == tileCount)
