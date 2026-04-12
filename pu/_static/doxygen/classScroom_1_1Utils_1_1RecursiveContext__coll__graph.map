@@ -1,7 +1,7 @@
 <map id="Scroom::Utils::RecursiveContext" name="Scroom::Utils::RecursiveContext">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,452,179,552"/>
-<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Context.html" title=" " alt="" coords="12,219,172,404"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,418,95,452,89,452,89,418"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,392,179,492"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Context.html" title=" " alt="" coords="12,219,172,344"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,358,95,392,89,392,89,358"/>
 <area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="38,5,146,171"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="95,184,95,218,89,218,89,184"/>
 </map>

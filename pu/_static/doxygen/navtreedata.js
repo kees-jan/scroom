@@ -82,19 +82,19 @@ var NAVTREEINDEX =
 "classScroom_1_1Bookkeeping_1_1Detail_1_1TokenAddition.html#a115cbcf8737a5ddbe20bfc0ceae8d06f",
 "classScroom_1_1GtkTestHelpers_1_1GtkMainLoop.html#a8ef76b54ba2c63f4e0ce6564f00974ef",
 "classScroom_1_1Semaphore.html#a9bbaee0b470d62b78a68af579b6b0a86",
-"classScroom_1_1Utils_1_1Observable.html#a18d957956960766feef1a4ab10ecda1a",
-"classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterfaceForwarder.html#a228001de22752ec2787c3cf53ba27243",
-"classScroom_1_1Utils_1_1TweakPositionTextBox.html#aba1707c4556685e1846886b46517c07b",
-"classThreadPool_1_1WeakQueue.html#afd862f68942894e320a73b9335bbbd1a",
-"classView.html#a1c6bafe5c25990c0733f6d2b28df717f",
-"classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html#a3b3efa8982899d0fa6641a868e8cf230",
-"determine-size-test_8cc.html#a4410b3e0fe1ff879fba5de9cbd5fe4cd",
-"globals_eval.html",
-"namespaceScroom_1_1Bookkeeping_1_1Detail.html",
-"observable-tests_8cc.html#add4c207213d2eae23a084f4573ffd164",
-"rectangletests_8cc.html#a049dc4e8da0752714bbd7c24a6074cb5",
-"single-context-tests_8cc.html#a0ce5aaad6d6f46f46225f529c4766b0b",
-"threadpoolimpl_8cc.html#af979353165a7a214dda8f7f289de81ea"
+"classScroom_1_1Utils_1_1Observable.html#ae215a3f722f5894dd8fdc1cb9b190c0e",
+"classScroom_1_1Utils_1_1Rectangle.html#a1262f445c07c33e16069e2497aed581f",
+"classScroom_1_1Utils_1_1TweakRulers.html#a3829fbd4a03a11a8c341636cf6d3efd7",
+"classTileInitialisationObserver.html",
+"classView.html#a53280aa4b3288d4f81d4a840f98e5eb9",
+"classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html#a0b01f8545139812908055c33497d8cb1",
+"determine-size-test_8cc.html#a5f42efe6f8bd07dcf9a97c3aad5bc552",
+"globals_func_b.html",
+"namespaceScroom_1_1Detail_1_1ThreadPool.html",
+"observable-tests_8cc.html#aa084e973eaacd48f2ad4ba802d9160b1",
+"rectangle_8hh.html#a902552464d1543016a1dcb8e9efcb443",
+"showmetadatainterface_8hh.html",
+"threadpool_8hh.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

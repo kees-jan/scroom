@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-47-g282c032e</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-46-g9f092a34</span>
    </div>
   </td>
  </tr>
@@ -198,6 +198,42 @@ Functions</h2></td></tr>
 <tr class="separator:a7ad0b64d4ebc732833fd249f733f4c8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6527a49e093bcb36e606fe5bfcaadad" id="r_aa6527a49e093bcb36e606fe5bfcaadad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classScroom_1_1Utils_1_1ITweakPositionTextBox.html#a9ef1a6418763fc62a50478fcc52a6888">ITweakPositionTextBox::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#aa6527a49e093bcb36e606fe5bfcaadad">getDefaultTweakPositionTextBox</a> ()</td></tr>
 <tr class="separator:aa6527a49e093bcb36e606fe5bfcaadad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1df110b1fef13cbeaf6122b1ca752a97" id="r_a1df110b1fef13cbeaf6122b1ca752a97"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a1df110b1fef13cbeaf6122b1ca752a97"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#a1df110b1fef13cbeaf6122b1ca752a97">get</a> (const <a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a> &amp;context, std::string name)</td></tr>
+<tr class="separator:a1df110b1fef13cbeaf6122b1ca752a97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa10961452286915568f65c2f026c0916" id="r_aa10961452286915568f65c2f026c0916"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aa10961452286915568f65c2f026c0916"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#aa10961452286915568f65c2f026c0916">get</a> (const <a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a> &amp;context)</td></tr>
+<tr class="separator:aa10961452286915568f65c2f026c0916"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a069a23ac9bf5bb1ac6a546c1b7cbaf8e" id="r_a069a23ac9bf5bb1ac6a546c1b7cbaf8e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a069a23ac9bf5bb1ac6a546c1b7cbaf8e"><td class="memTemplItemLeft" align="right" valign="top">std::optional&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#a069a23ac9bf5bb1ac6a546c1b7cbaf8e">try_get</a> (const <a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a> &amp;context, std::string name)</td></tr>
+<tr class="separator:a069a23ac9bf5bb1ac6a546c1b7cbaf8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae45ec22cc729566b3f0880e5c7fe225c" id="r_ae45ec22cc729566b3f0880e5c7fe225c"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ae45ec22cc729566b3f0880e5c7fe225c"><td class="memTemplItemLeft" align="right" valign="top">std::optional&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#ae45ec22cc729566b3f0880e5c7fe225c">try_get</a> (const <a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a> &amp;context)</td></tr>
+<tr class="separator:ae45ec22cc729566b3f0880e5c7fe225c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a958e9a62ee2b943aa9cb5b23f2aa8f02" id="r_a958e9a62ee2b943aa9cb5b23f2aa8f02"><td class="memTemplParams" colspan="2">template&lt;typename T , typename Callable &gt; </td></tr>
+<tr class="memitem:a958e9a62ee2b943aa9cb5b23f2aa8f02"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#a958e9a62ee2b943aa9cb5b23f2aa8f02">get_or</a> (const <a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a> &amp;context, std::string name, const Callable &amp;default_value) -&gt; std::enable_if_t&lt; std::is_same_v&lt; T, std::remove_reference_t&lt; decltype(default_value())&gt; &gt;, T &gt;</td></tr>
+<tr class="separator:a958e9a62ee2b943aa9cb5b23f2aa8f02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8567b6c139d46286259d3176be21ba96" id="r_a8567b6c139d46286259d3176be21ba96"><td class="memTemplParams" colspan="2">template&lt;typename T , typename Callable &gt; </td></tr>
+<tr class="memitem:a8567b6c139d46286259d3176be21ba96"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#a8567b6c139d46286259d3176be21ba96">get_or</a> (const <a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a> &amp;context, const Callable &amp;default_value) -&gt; std::enable_if_t&lt; std::is_same_v&lt; T, std::remove_reference_t&lt; decltype(default_value())&gt; &gt;, T &gt;</td></tr>
+<tr class="separator:a8567b6c139d46286259d3176be21ba96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad66314d2065b5b9ef9d58e2a97238f4" id="r_aad66314d2065b5b9ef9d58e2a97238f4"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aad66314d2065b5b9ef9d58e2a97238f4"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#aad66314d2065b5b9ef9d58e2a97238f4">get_or</a> (const <a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a> &amp;context, std::string name, T default_value)</td></tr>
+<tr class="separator:aad66314d2065b5b9ef9d58e2a97238f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84846154a19182ab43c20f2d79ff54dd" id="r_a84846154a19182ab43c20f2d79ff54dd"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a84846154a19182ab43c20f2d79ff54dd"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#a84846154a19182ab43c20f2d79ff54dd">get_or</a> (const <a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a> &amp;context, T default_value)</td></tr>
+<tr class="separator:a84846154a19182ab43c20f2d79ff54dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a729f4d0d2c14a19b769897751e91acbe" id="r_a729f4d0d2c14a19b769897751e91acbe"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a729f4d0d2c14a19b769897751e91acbe"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="function-additor-tests_8cc.html#a171d6ee6f5e4a249111a7ca7c7108209">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe">set</a> (const <a class="el" href="classScroom_1_1Utils_1_1Context.html#abc2f687326929a940ae88aed227e14ae">Context::Ptr</a> &amp;context, std::string name, T <a class="el" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>)</td></tr>
+<tr class="separator:a729f4d0d2c14a19b769897751e91acbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91be522682d558972fdd182573c9fd6e" id="r_a91be522682d558972fdd182573c9fd6e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a91be522682d558972fdd182573c9fd6e"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="function-additor-tests_8cc.html#a171d6ee6f5e4a249111a7ca7c7108209">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#a91be522682d558972fdd182573c9fd6e">set</a> (const <a class="el" href="classScroom_1_1Utils_1_1Context.html#abc2f687326929a940ae88aed227e14ae">Context::Ptr</a> &amp;context, T <a class="el" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>)</td></tr>
+<tr class="separator:a91be522682d558972fdd182573c9fd6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb91576875b1be9c7f4edcc8cfe5da20" id="r_aeb91576875b1be9c7f4edcc8cfe5da20"><td class="memTemplParams" colspan="2">template&lt;typename Callable &gt; </td></tr>
+<tr class="memitem:aeb91576875b1be9c7f4edcc8cfe5da20"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="function-additor-tests_8cc.html#a171d6ee6f5e4a249111a7ca7c7108209">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#aeb91576875b1be9c7f4edcc8cfe5da20">setFactory</a> (const <a class="el" href="classScroom_1_1Utils_1_1Context.html#abc2f687326929a940ae88aed227e14ae">Context::Ptr</a> &amp;context, std::string name, Callable <a class="el" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>)</td></tr>
+<tr class="separator:aeb91576875b1be9c7f4edcc8cfe5da20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b9d64ee0deb4bfdfa03a1884bf7126c" id="r_a3b9d64ee0deb4bfdfa03a1884bf7126c"><td class="memTemplParams" colspan="2">template&lt;typename Callable &gt; </td></tr>
+<tr class="memitem:a3b9d64ee0deb4bfdfa03a1884bf7126c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="function-additor-tests_8cc.html#a171d6ee6f5e4a249111a7ca7c7108209">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#a3b9d64ee0deb4bfdfa03a1884bf7126c">setFactory</a> (const <a class="el" href="classScroom_1_1Utils_1_1Context.html#abc2f687326929a940ae88aed227e14ae">Context::Ptr</a> &amp;context, Callable <a class="el" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>)</td></tr>
+<tr class="separator:a3b9d64ee0deb4bfdfa03a1884bf7126c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee1ec40078d98263c9d8e298f864ae35" id="r_aee1ec40078d98263c9d8e298f864ae35"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:aee1ec40078d98263c9d8e298f864ae35"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Utils.html#aee1ec40078d98263c9d8e298f864ae35">isZero</a> (T v)</td></tr>
 <tr class="separator:aee1ec40078d98263c9d8e298f864ae35"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -875,6 +911,225 @@ Here is the caller graph for this function:</div>
 </map>
 </div>
 
+</div>
+</div>
+<a id="aa10961452286915568f65c2f026c0916" name="aa10961452286915568f65c2f026c0916"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa10961452286915568f65c2f026c0916">&#9670;&#160;</a></span>get() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T Scroom::Utils::get </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a> &amp;&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   71</span>  {</div>
+<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">return</span> get&lt;T&gt;(context, <span class="keyword">typeid</span>(T).name());</div>
+<div class="line"><span class="lineno">   73</span>  }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1df110b1fef13cbeaf6122b1ca752a97" name="a1df110b1fef13cbeaf6122b1ca752a97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1df110b1fef13cbeaf6122b1ca752a97">&#9670;&#160;</a></span>get() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T Scroom::Utils::get </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a> &amp;&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   56</span>  {</div>
+<div class="line"><span class="lineno">   57</span>    <span class="keyword">const</span> std::any&amp; <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = context-&gt;get(std::move(name));</div>
+<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">   59</span>    {</div>
+<div class="line"><span class="lineno">   60</span>      <span class="keywordflow">return</span> std::any_cast&lt;T&gt;(<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>);</div>
+<div class="line"><span class="lineno">   61</span>    }</div>
+<div class="line"><span class="lineno">   62</span>    <span class="keywordflow">catch</span>(std::bad_any_cast&amp;)</div>
+<div class="line"><span class="lineno">   63</span>    {</div>
+<div class="line"><span class="lineno">   64</span>      <span class="keyword">using </span>F = std::function&lt;T()&gt;;</div>
+<div class="line"><span class="lineno">   65</span>      <span class="keywordflow">return</span> std::any_cast&lt;F&gt;(<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)();</div>
+<div class="line"><span class="lineno">   66</span>    }</div>
+<div class="line"><span class="lineno">   67</span>  }</div>
+<div class="ttc" id="asampleiterator-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">SampleIterator&lt; const uint8_t &gt; result</div><div class="ttdef"><b>Definition</b> sampleiterator-tests.cc:94</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a8567b6c139d46286259d3176be21ba96" name="a8567b6c139d46286259d3176be21ba96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8567b6c139d46286259d3176be21ba96">&#9670;&#160;</a></span>get_or() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename Callable &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">auto Scroom::Utils::get_or </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a> &amp;&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Callable &amp;&#160;</td>
+          <td class="paramname"><em>default_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> -&gt; std::enable_if_t&lt;std::is_same_v&lt;T, std::remove_reference_t&lt;decltype(default_value())&gt;&gt;, T&gt;
+  </td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  111</span>  {</div>
+<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">return</span> get_or&lt;T&gt;(context, <span class="keyword">typeid</span>(T).name(), default_value);</div>
+<div class="line"><span class="lineno">  113</span>  }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a958e9a62ee2b943aa9cb5b23f2aa8f02" name="a958e9a62ee2b943aa9cb5b23f2aa8f02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a958e9a62ee2b943aa9cb5b23f2aa8f02">&#9670;&#160;</a></span>get_or() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename Callable &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">auto Scroom::Utils::get_or </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a> &amp;&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Callable &amp;&#160;</td>
+          <td class="paramname"><em>default_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> -&gt; std::enable_if_t&lt;std::is_same_v&lt;T, std::remove_reference_t&lt;decltype(default_value())&gt;&gt;, T&gt;
+  </td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   97</span>  {</div>
+<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">   99</span>    {</div>
+<div class="line"><span class="lineno">  100</span>      <span class="keywordflow">return</span> get&lt;T&gt;(context, std::move(name));</div>
+<div class="line"><span class="lineno">  101</span>    }</div>
+<div class="line"><span class="lineno">  102</span>    <span class="keywordflow">catch</span>(Context::name_not_found&amp;)</div>
+<div class="line"><span class="lineno">  103</span>    {</div>
+<div class="line"><span class="lineno">  104</span>      <span class="keywordflow">return</span> default_value();</div>
+<div class="line"><span class="lineno">  105</span>    }</div>
+<div class="line"><span class="lineno">  106</span>  }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aad66314d2065b5b9ef9d58e2a97238f4" name="aad66314d2065b5b9ef9d58e2a97238f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad66314d2065b5b9ef9d58e2a97238f4">&#9670;&#160;</a></span>get_or() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T Scroom::Utils::get_or </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a> &amp;&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>default_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  117</span>  {</div>
+<div class="line"><span class="lineno">  118</span>    <span class="keywordflow">return</span> get_or&lt;T&gt;(context, std::move(name), [&amp;default_value] { <span class="keywordflow">return</span> std::move(default_value); });</div>
+<div class="line"><span class="lineno">  119</span>  }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a84846154a19182ab43c20f2d79ff54dd" name="a84846154a19182ab43c20f2d79ff54dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84846154a19182ab43c20f2d79ff54dd">&#9670;&#160;</a></span>get_or() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T Scroom::Utils::get_or </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a> &amp;&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>default_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  123</span>  {</div>
+<div class="line"><span class="lineno">  124</span>    <span class="keywordflow">return</span> get_or&lt;T&gt;(context, <span class="keyword">typeid</span>(T).name(), [&amp;default_value] { <span class="keywordflow">return</span> std::move(default_value); });</div>
+<div class="line"><span class="lineno">  125</span>  }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aa6527a49e093bcb36e606fe5bfcaadad" name="aa6527a49e093bcb36e606fe5bfcaadad"></a>
@@ -1735,7 +1990,6 @@ template&lt;typename T , typename U &gt; </div>
 <div class="line"><span class="lineno">  160</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">  161</span>  }</div>
 <div class="ttc" id="arectangletests_8cc_html_a458c55c43ab7599992ae776b6c8f7b58"><div class="ttname"><a href="rectangletests_8cc.html#a458c55c43ab7599992ae776b6c8f7b58">right</a></div><div class="ttdeci">Segment&lt; int &gt; const right(3, 7)</div></div>
-<div class="ttc" id="asampleiterator-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">SampleIterator&lt; const uint8_t &gt; result</div><div class="ttdef"><b>Definition</b> sampleiterator-tests.cc:94</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2501,6 +2755,214 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a729f4d0d2c14a19b769897751e91acbe" name="a729f4d0d2c14a19b769897751e91acbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a729f4d0d2c14a19b769897751e91acbe">&#9670;&#160;</a></span>set() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="function-additor-tests_8cc.html#a171d6ee6f5e4a249111a7ca7c7108209">void</a> Scroom::Utils::set </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classScroom_1_1Utils_1_1Context.html#abc2f687326929a940ae88aed227e14ae">Context::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  129</span>  {</div>
+<div class="line"><span class="lineno">  130</span>    context-&gt;set(std::move(name), std::any(std::move(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>)));</div>
+<div class="line"><span class="lineno">  131</span>  }</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="namespaceScroom_1_1Utils.html#a91be522682d558972fdd182573c9fd6e">set()</a>, and <a class="el" href="namespaceScroom_1_1Utils.html#aeb91576875b1be9c7f4edcc8cfe5da20">setFactory()</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceScroom_1_1Utils_a729f4d0d2c14a19b769897751e91acbe_icgraph.png" border="0" usemap="#anamespaceScroom_1_1Utils_a729f4d0d2c14a19b769897751e91acbe_icgraph" alt=""/></div>
+<map name="anamespaceScroom_1_1Utils_a729f4d0d2c14a19b769897751e91acbe_icgraph" id="anamespaceScroom_1_1Utils_a729f4d0d2c14a19b769897751e91acbe_icgraph">
+<area shape="rect" title=" " alt="" coords="469,31,607,56"/>
+<area shape="rect" href="namespaceScroom_1_1Utils.html#a91be522682d558972fdd182573c9fd6e" title=" " alt="" coords="261,5,398,31"/>
+<area shape="poly" title=" " alt="" coords="455,36,398,29,399,24,456,31"/>
+<area shape="rect" href="namespaceScroom_1_1Utils.html#aeb91576875b1be9c7f4edcc8cfe5da20" title=" " alt="" coords="237,55,421,80"/>
+<area shape="poly" title=" " alt="" coords="456,55,422,59,421,54,455,50"/>
+<area shape="rect" href="namespaceScroom_1_1Utils.html#a3b9d64ee0deb4bfdfa03a1884bf7126c" title=" " alt="" coords="5,55,189,80"/>
+<area shape="poly" title=" " alt="" coords="223,70,190,70,190,65,223,65"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a91be522682d558972fdd182573c9fd6e" name="a91be522682d558972fdd182573c9fd6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91be522682d558972fdd182573c9fd6e">&#9670;&#160;</a></span>set() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="function-additor-tests_8cc.html#a171d6ee6f5e4a249111a7ca7c7108209">void</a> Scroom::Utils::set </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classScroom_1_1Utils_1_1Context.html#abc2f687326929a940ae88aed227e14ae">Context::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  135</span>  {</div>
+<div class="line"><span class="lineno">  136</span>    <a class="code hl_function" href="bookkeeping-tests_8cc.html#a51a52c8daaa2b1a32aadb0c8a40d9684">set</a>(context, <span class="keyword">typeid</span>(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>).name(), std::move(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>));</div>
+<div class="line"><span class="lineno">  137</span>  }</div>
+<div class="ttc" id="abookkeeping-tests_8cc_html_a51a52c8daaa2b1a32aadb0c8a40d9684"><div class="ttname"><a href="bookkeeping-tests_8cc.html#a51a52c8daaa2b1a32aadb0c8a40d9684">set</a></div><div class="ttdeci">map set(2, 5)</div></div>
+</div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceScroom_1_1Utils_a91be522682d558972fdd182573c9fd6e_cgraph.png" border="0" usemap="#anamespaceScroom_1_1Utils_a91be522682d558972fdd182573c9fd6e_cgraph" alt=""/></div>
+<map name="anamespaceScroom_1_1Utils_a91be522682d558972fdd182573c9fd6e_cgraph" id="anamespaceScroom_1_1Utils_a91be522682d558972fdd182573c9fd6e_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,143,31"/>
+<area shape="rect" href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe" title=" " alt="" coords="191,5,328,31"/>
+<area shape="poly" title=" " alt="" coords="143,15,177,15,177,21,143,21"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3b9d64ee0deb4bfdfa03a1884bf7126c" name="a3b9d64ee0deb4bfdfa03a1884bf7126c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b9d64ee0deb4bfdfa03a1884bf7126c">&#9670;&#160;</a></span>setFactory() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Callable &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="function-additor-tests_8cc.html#a171d6ee6f5e4a249111a7ca7c7108209">void</a> Scroom::Utils::setFactory </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classScroom_1_1Utils_1_1Context.html#abc2f687326929a940ae88aed227e14ae">Context::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Callable&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  148</span>  {</div>
+<div class="line"><span class="lineno">  149</span>    <span class="keyword">using </span>T = std::remove_reference_t&lt;<span class="keyword">decltype</span>(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>())&gt;;</div>
+<div class="line"><span class="lineno">  150</span>    <a class="code hl_function" href="context-tests_8cc.html#a1b3d559d80dcb51cd1be7e61b11f4243">setFactory</a>(context, <span class="keyword">typeid</span>(T).name(), std::move(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>));</div>
+<div class="line"><span class="lineno">  151</span>  }</div>
+<div class="ttc" id="acontext-tests_8cc_html_a1b3d559d80dcb51cd1be7e61b11f4243"><div class="ttname"><a href="context-tests_8cc.html#a1b3d559d80dcb51cd1be7e61b11f4243">setFactory</a></div><div class="ttdeci">setFactory(context, [p1] { return p1;})</div></div>
+</div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceScroom_1_1Utils_a3b9d64ee0deb4bfdfa03a1884bf7126c_cgraph.png" border="0" usemap="#anamespaceScroom_1_1Utils_a3b9d64ee0deb4bfdfa03a1884bf7126c_cgraph" alt=""/></div>
+<map name="anamespaceScroom_1_1Utils_a3b9d64ee0deb4bfdfa03a1884bf7126c_cgraph" id="anamespaceScroom_1_1Utils_a3b9d64ee0deb4bfdfa03a1884bf7126c_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,189,31"/>
+<area shape="rect" href="namespaceScroom_1_1Utils.html#aeb91576875b1be9c7f4edcc8cfe5da20" title=" " alt="" coords="237,5,421,31"/>
+<area shape="poly" title=" " alt="" coords="190,15,223,15,223,21,190,21"/>
+<area shape="rect" href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe" title=" " alt="" coords="469,5,607,31"/>
+<area shape="poly" title=" " alt="" coords="422,15,456,15,456,21,422,21"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aeb91576875b1be9c7f4edcc8cfe5da20" name="aeb91576875b1be9c7f4edcc8cfe5da20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb91576875b1be9c7f4edcc8cfe5da20">&#9670;&#160;</a></span>setFactory() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Callable &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="function-additor-tests_8cc.html#a171d6ee6f5e4a249111a7ca7c7108209">void</a> Scroom::Utils::setFactory </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classScroom_1_1Utils_1_1Context.html#abc2f687326929a940ae88aed227e14ae">Context::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Callable&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  141</span>  {</div>
+<div class="line"><span class="lineno">  142</span>    <span class="keyword">using </span>T = std::remove_reference_t&lt;<span class="keyword">decltype</span>(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>())&gt;;</div>
+<div class="line"><span class="lineno">  143</span>    <a class="code hl_function" href="bookkeeping-tests_8cc.html#a51a52c8daaa2b1a32aadb0c8a40d9684">set</a>(context, std::move(name), std::function&lt;T()&gt;(std::move(<a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>)));</div>
+<div class="line"><span class="lineno">  144</span>  }</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="namespaceScroom_1_1Utils.html#a3b9d64ee0deb4bfdfa03a1884bf7126c">setFactory()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceScroom_1_1Utils_aeb91576875b1be9c7f4edcc8cfe5da20_cgraph.png" border="0" usemap="#anamespaceScroom_1_1Utils_aeb91576875b1be9c7f4edcc8cfe5da20_cgraph" alt=""/></div>
+<map name="anamespaceScroom_1_1Utils_aeb91576875b1be9c7f4edcc8cfe5da20_cgraph" id="anamespaceScroom_1_1Utils_aeb91576875b1be9c7f4edcc8cfe5da20_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,189,31"/>
+<area shape="rect" href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe" title=" " alt="" coords="237,5,375,31"/>
+<area shape="poly" title=" " alt="" coords="190,15,224,15,224,21,190,21"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceScroom_1_1Utils_aeb91576875b1be9c7f4edcc8cfe5da20_icgraph.png" border="0" usemap="#anamespaceScroom_1_1Utils_aeb91576875b1be9c7f4edcc8cfe5da20_icgraph" alt=""/></div>
+<map name="anamespaceScroom_1_1Utils_aeb91576875b1be9c7f4edcc8cfe5da20_icgraph" id="anamespaceScroom_1_1Utils_aeb91576875b1be9c7f4edcc8cfe5da20_icgraph">
+<area shape="rect" title=" " alt="" coords="237,5,421,31"/>
+<area shape="rect" href="namespaceScroom_1_1Utils.html#a3b9d64ee0deb4bfdfa03a1884bf7126c" title=" " alt="" coords="5,5,189,31"/>
+<area shape="poly" title=" " alt="" coords="223,21,190,21,190,15,223,15"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="ae993dff329fe71d3a12da2981b172fbf" name="ae993dff329fe71d3a12da2981b172fbf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae993dff329fe71d3a12da2981b172fbf">&#9670;&#160;</a></span>shared_malloc()</h2>
 
@@ -2544,6 +3006,69 @@ Here is the caller graph for this function:</div>
 </map>
 </div>
 
+</div>
+</div>
+<a id="ae45ec22cc729566b3f0880e5c7fe225c" name="ae45ec22cc729566b3f0880e5c7fe225c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae45ec22cc729566b3f0880e5c7fe225c">&#9670;&#160;</a></span>try_get() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; T &gt; Scroom::Utils::try_get </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a> &amp;&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   90</span>  {</div>
+<div class="line"><span class="lineno">   91</span>    <span class="keywordflow">return</span> try_get&lt;T&gt;(context, <span class="keyword">typeid</span>(T).name());</div>
+<div class="line"><span class="lineno">   92</span>  }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a069a23ac9bf5bb1ac6a546c1b7cbaf8e" name="a069a23ac9bf5bb1ac6a546c1b7cbaf8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a069a23ac9bf5bb1ac6a546c1b7cbaf8e">&#9670;&#160;</a></span>try_get() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; T &gt; Scroom::Utils::try_get </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a> &amp;&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   77</span>  {</div>
+<div class="line"><span class="lineno">   78</span>    <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">   79</span>    {</div>
+<div class="line"><span class="lineno">   80</span>      <span class="keywordflow">return</span> get&lt;T&gt;(context, std::move(name));</div>
+<div class="line"><span class="lineno">   81</span>    }</div>
+<div class="line"><span class="lineno">   82</span>    <span class="keywordflow">catch</span>(Context::name_not_found&amp;)</div>
+<div class="line"><span class="lineno">   83</span>    {</div>
+<div class="line"><span class="lineno">   84</span>      <span class="keywordflow">return</span> std::nullopt;</div>
+<div class="line"><span class="lineno">   85</span>    }</div>
+<div class="line"><span class="lineno">   86</span>  }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>

@@ -5693,32 +5693,32 @@
     <class kind="struct">Dummy</class>
     <class kind="class">ContextTests</class>
     <member kind="function">
-      <type>context</type>
+      <type></type>
       <name>set</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>a9be3b313ae2db31b3ca539cd6dcef2ec</anchor>
-      <arglist>(an_int)</arglist>
+      <anchor>abed80bb12dee15f3936ee76dc75356dd</anchor>
+      <arglist>(context, an_int)</arglist>
     </member>
     <member kind="function">
-      <type>context</type>
+      <type></type>
       <name>set</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>abb51ed89b606c438f067cafd7749ebe0</anchor>
-      <arglist>(name, another_int)</arglist>
+      <anchor>a8eff1e3d5b6bbec6085e64e1cde78c15</anchor>
+      <arglist>(context, name, another_int)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>a474f08f2c4a7f1127e0a3ddb63a9c8b4</anchor>
-      <arglist>(context-&gt;get&lt; int &gt;(), an_int)</arglist>
+      <anchor>a411d11156bcbdc277a567b1c3a15e578</anchor>
+      <arglist>(get&lt; int &gt;(context), an_int)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>a8a75336dd41a5373a1fae9be0418ce2b</anchor>
-      <arglist>(context-&gt;get&lt; int &gt;(name), another_int)</arglist>
+      <anchor>ad890a38ff331d1955ff2b42f0c372b9f</anchor>
+      <arglist>(get&lt; int &gt;(context, name), another_int)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -5728,74 +5728,102 @@
       <arglist>(p1, p2)</arglist>
     </member>
     <member kind="function">
-      <type>context</type>
+      <type></type>
       <name>set</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>ae43aea93a4ab9fedcce63fdbd97e7d3a</anchor>
-      <arglist>(p1)</arglist>
+      <anchor>a91c301eaef1f0179e8fa1ee12e869b91</anchor>
+      <arglist>(context, p1)</arglist>
     </member>
     <member kind="function">
-      <type>context</type>
+      <type></type>
       <name>set</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>ac5c4c86b364c39746914ea1d63334baa</anchor>
-      <arglist>(name, p2)</arglist>
+      <anchor>a83d9b95156373101e675c9521515157a</anchor>
+      <arglist>(context, name, p2)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>ab162d4bff23a00224005dfbb556c0d9c</anchor>
-      <arglist>(context-&gt;get&lt; Dummy::Ptr &gt;(), p1)</arglist>
+      <anchor>a99f59ae74dae2e9bd518f138ce4f231d</anchor>
+      <arglist>(get&lt; Dummy::Ptr &gt;(context), p1)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>aa74cfac5be83aeb89566daa6a578a9b6</anchor>
-      <arglist>(context-&gt;get&lt; Dummy::Ptr &gt;(name), p2)</arglist>
+      <anchor>a423adbd2af72109027d858a42a7d21b4</anchor>
+      <arglist>(get&lt; Dummy::Ptr &gt;(context, name), p2)</arglist>
     </member>
     <member kind="function">
-      <type>context</type>
+      <type></type>
       <name>setFactory</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>a5d76c056da47e39a855ddfc30e7b4516</anchor>
-      <arglist>([p1] { return p1;})</arglist>
+      <anchor>a1b3d559d80dcb51cd1be7e61b11f4243</anchor>
+      <arglist>(context, [p1] { return p1;})</arglist>
     </member>
     <member kind="function">
-      <type>context</type>
+      <type></type>
       <name>setFactory</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>a60c8d6b346b143d7ad11904bff3bd696</anchor>
-      <arglist>(name, [p2] { return p2;})</arglist>
+      <anchor>af0076df5bfb2ece793c437cf451b1265</anchor>
+      <arglist>(context, name, [p2] { return p2;})</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>a89426c66df20b71ceff2265be3ccdc28</anchor>
-      <arglist>(context-&gt;get_or&lt; Dummy::Ptr &gt;([p1] { return p1;}), p1)</arglist>
+      <anchor>af32b694266c16bd2531a44bcbe651917</anchor>
+      <arglist>(get_or&lt; Dummy::Ptr &gt;(context, [p1] { return p1;}), p1)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>aa17203ab60bec28b36a824ad6832ab10</anchor>
-      <arglist>(context-&gt;get_or&lt; Dummy::Ptr &gt;(name, [p2] { return p2;}), p2)</arglist>
+      <anchor>a486a6b2d45f801d21102b6b7966d6ceb</anchor>
+      <arglist>(get_or&lt; Dummy::Ptr &gt;(context, name, [p2] { return p2;}), p2)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>acb5f141986382ba1949460511e07c441</anchor>
-      <arglist>(context-&gt;get_or&lt; Dummy::Ptr &gt;(p1), p1)</arglist>
+      <anchor>a07df4d6a54b75a61012344f3cbfe7cf9</anchor>
+      <arglist>(get_or&lt; Dummy::Ptr &gt;(context, p1), p1)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>context-tests_8cc.html</anchorfile>
-      <anchor>a39441f118eb9fbb63c8bc5ab7aba41fd</anchor>
-      <arglist>(context-&gt;get_or&lt; Dummy::Ptr &gt;(name, p2), p2)</arglist>
+      <anchor>a2acd03ca3501b2c29abfb484096c647e</anchor>
+      <arglist>(get_or&lt; Dummy::Ptr &gt;(context, name, p2), p2)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>afd6708b9983eb29cc86f2bb2844f35fb</anchor>
+      <arglist>(try_get&lt; Dummy::Ptr &gt;(context), std::nullopt)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>a5c27fe7c253792e24d81306317d22686</anchor>
+      <arglist>(try_get&lt; Dummy::Ptr &gt;(context, name), std::nullopt)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>a3fca327d84ca97d61ef75b3b5f8eef0c</anchor>
+      <arglist>(try_get&lt; Dummy::Ptr &gt;(context), p1)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>adbef35da885c9cf34a2b9b039192ec87</anchor>
+      <arglist>(try_get&lt; Dummy::Ptr &gt;(context, name), p2)</arglist>
     </member>
     <member kind="variable">
       <type>const int</type>
@@ -11216,76 +11244,6 @@
       <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
       <anchor>a0e31a6cc6dab924ff33e148d545c9565</anchor>
       <arglist>(std::string name) const =0</arglist>
-    </member>
-    <member kind="function">
-      <type>T</type>
-      <name>get</name>
-      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
-      <anchor>a988fbb640689b77e335c141ae57eb201</anchor>
-      <arglist>(std::string name) const</arglist>
-    </member>
-    <member kind="function">
-      <type>T</type>
-      <name>get</name>
-      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
-      <anchor>a991eba33c6a061f1d086d9884a4cafd9</anchor>
-      <arglist>() const</arglist>
-    </member>
-    <member kind="function">
-      <type>auto</type>
-      <name>get_or</name>
-      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
-      <anchor>ac8d353b9e65425065cfcce86daf48632</anchor>
-      <arglist>(std::string name, const Callable &amp;default_value) const -&gt; std::enable_if_t&lt; std::is_same_v&lt; T, std::remove_reference_t&lt; decltype(default_value())&gt; &gt;, T &gt;</arglist>
-    </member>
-    <member kind="function">
-      <type>auto</type>
-      <name>get_or</name>
-      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
-      <anchor>a02fcfa7f2754b4c5e77dde621eb9de0b</anchor>
-      <arglist>(const Callable &amp;default_value) const -&gt; std::enable_if_t&lt; std::is_same_v&lt; T, std::remove_reference_t&lt; decltype(default_value())&gt; &gt;, T &gt;</arglist>
-    </member>
-    <member kind="function">
-      <type>T</type>
-      <name>get_or</name>
-      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
-      <anchor>a5dcf4b68037b32e1eacda4653d233af7</anchor>
-      <arglist>(std::string name, T default_value) const</arglist>
-    </member>
-    <member kind="function">
-      <type>T</type>
-      <name>get_or</name>
-      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
-      <anchor>ac02a8a088f4175475c6b8096daae16f5</anchor>
-      <arglist>(T default_value) const</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>set</name>
-      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
-      <anchor>a287aa56042266ab8975a8ccab2e0d92f</anchor>
-      <arglist>(std::string name, T value)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>set</name>
-      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
-      <anchor>a0f653e33bb9270b3b3a06150624a616e</anchor>
-      <arglist>(T value)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>setFactory</name>
-      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
-      <anchor>a29583a502e68c650970a0824e6a49f7e</anchor>
-      <arglist>(std::string name, Callable value)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>setFactory</name>
-      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
-      <anchor>ae416035c9cc231ac606532e207c7b4d8</anchor>
-      <arglist>(Callable value)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
@@ -26033,6 +25991,90 @@
       <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
       <anchor>aa6527a49e093bcb36e606fe5bfcaadad</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>get</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a1df110b1fef13cbeaf6122b1ca752a97</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, std::string name)</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>get</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>aa10961452286915568f65c2f026c0916</anchor>
+      <arglist>(const Context::ConstPtr &amp;context)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::optional&lt; T &gt;</type>
+      <name>try_get</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a069a23ac9bf5bb1ac6a546c1b7cbaf8e</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, std::string name)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::optional&lt; T &gt;</type>
+      <name>try_get</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>ae45ec22cc729566b3f0880e5c7fe225c</anchor>
+      <arglist>(const Context::ConstPtr &amp;context)</arglist>
+    </member>
+    <member kind="function">
+      <type>auto</type>
+      <name>get_or</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a958e9a62ee2b943aa9cb5b23f2aa8f02</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, std::string name, const Callable &amp;default_value) -&gt; std::enable_if_t&lt; std::is_same_v&lt; T, std::remove_reference_t&lt; decltype(default_value())&gt; &gt;, T &gt;</arglist>
+    </member>
+    <member kind="function">
+      <type>auto</type>
+      <name>get_or</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a8567b6c139d46286259d3176be21ba96</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, const Callable &amp;default_value) -&gt; std::enable_if_t&lt; std::is_same_v&lt; T, std::remove_reference_t&lt; decltype(default_value())&gt; &gt;, T &gt;</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>get_or</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>aad66314d2065b5b9ef9d58e2a97238f4</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, std::string name, T default_value)</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>get_or</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a84846154a19182ab43c20f2d79ff54dd</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, T default_value)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>set</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a729f4d0d2c14a19b769897751e91acbe</anchor>
+      <arglist>(const Context::Ptr &amp;context, std::string name, T value)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>set</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a91be522682d558972fdd182573c9fd6e</anchor>
+      <arglist>(const Context::Ptr &amp;context, T value)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setFactory</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>aeb91576875b1be9c7f4edcc8cfe5da20</anchor>
+      <arglist>(const Context::Ptr &amp;context, std::string name, Callable value)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setFactory</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a3b9d64ee0deb4bfdfa03a1884bf7126c</anchor>
+      <arglist>(const Context::Ptr &amp;context, Callable value)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>

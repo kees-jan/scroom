@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-47-g282c032e</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-46-g9f092a34</span>
    </div>
   </td>
  </tr>
@@ -406,16 +406,19 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   53</span>  <a class="code hl_variable" href="classTransformPresentation.html#ab9ec8f8532594b77dbbf41d4f268d78a">context</a>-&gt;add(<a class="code hl_variable" href="classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee">presentation</a>-&gt;getContext());</div>
 <div class="line"><span class="lineno">   54</span>  <span class="keyword">auto</span> aspectRatio = <a class="code hl_variable" href="classTransformPresentation.html#ad5804a0827bf975f5dd39061f7a5060a">transformationData</a>-&gt;getAspectRatio();</div>
 <div class="line"><span class="lineno">   55</span> </div>
-<div class="line"><span class="lineno">   56</span>  <a class="code hl_variable" href="classTransformPresentation.html#ab9ec8f8532594b77dbbf41d4f268d78a">context</a>-&gt;set(<a class="code hl_function" href="classScroom_1_1Utils_1_1TweakPresentationPosition.html#a8c81cc0588c7979a76fb76f3ce344690">Scroom::Utils::TweakPresentationPosition::create</a>(aspectRatio));</div>
-<div class="line"><span class="lineno">   57</span>  <a class="code hl_variable" href="classTransformPresentation.html#ab9ec8f8532594b77dbbf41d4f268d78a">context</a>-&gt;set(<a class="code hl_function" href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#aff8fc77c17823f8d3a04fa1f363b24db">Scroom::Utils::TweakPositionTextBox::create</a>(aspectRatio));</div>
-<div class="line"><span class="lineno">   58</span>  <a class="code hl_variable" href="classTransformPresentation.html#ab9ec8f8532594b77dbbf41d4f268d78a">context</a>-&gt;set(<a class="code hl_function" href="classScroom_1_1Utils_1_1TweakRulers.html#aa3372456f136f40492d6d64c6fbefdf6">Scroom::Utils::TweakRulers::create</a>(aspectRatio));</div>
-<div class="line"><span class="lineno">   59</span>  <a class="code hl_variable" href="classTransformPresentation.html#ab9ec8f8532594b77dbbf41d4f268d78a">context</a>-&gt;set(</div>
-<div class="line"><span class="lineno">   60</span>    <a class="code hl_typedef" href="classScroom_1_1Utils_1_1ITweakSelection.html#aa938963ea5343fabb1d7b6f5e04614c5">Scroom::Utils::ITweakSelection::Map</a>{</div>
-<div class="line"><span class="lineno">   61</span>      {<a class="code hl_function" href="namespaceSelectionType.html#a9f0e8fd7cec2332d694d5a898cff9dc9">SelectionType::GRID</a>, <a class="code hl_function" href="classScroom_1_1Utils_1_1TweakGridSelection.html#a44701030e6dbaa2db85d531886df22da">Scroom::Utils::TweakGridSelection::create</a>(aspectRatio)},</div>
-<div class="line"><span class="lineno">   62</span>      {<a class="code hl_function" href="namespaceSelectionType.html#aa8763b7e1473f7e5d1e2c8d5b86fe49f">SelectionType::PIXEL</a>, <a class="code hl_function" href="classScroom_1_1Utils_1_1TweakPixelSelection.html#a9755bf9dd8a03f66c12cc9e5a1de4b01">Scroom::Utils::TweakPixelSelection::create</a>(aspectRatio)}</div>
-<div class="line"><span class="lineno">   63</span>    }</div>
-<div class="line"><span class="lineno">   64</span>  );</div>
-<div class="line"><span class="lineno">   65</span>}</div>
+<div class="line"><span class="lineno">   56</span>  <a class="code hl_function" href="bookkeeping-tests_8cc.html#a51a52c8daaa2b1a32aadb0c8a40d9684">set</a>(<a class="code hl_variable" href="classTransformPresentation.html#ab9ec8f8532594b77dbbf41d4f268d78a">context</a>, <a class="code hl_function" href="classScroom_1_1Utils_1_1TweakPresentationPosition.html#a8c81cc0588c7979a76fb76f3ce344690">Scroom::Utils::TweakPresentationPosition::create</a>(aspectRatio));</div>
+<div class="line"><span class="lineno">   57</span>  <a class="code hl_function" href="bookkeeping-tests_8cc.html#a51a52c8daaa2b1a32aadb0c8a40d9684">set</a>(<a class="code hl_variable" href="classTransformPresentation.html#ab9ec8f8532594b77dbbf41d4f268d78a">context</a>, <a class="code hl_function" href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#aff8fc77c17823f8d3a04fa1f363b24db">Scroom::Utils::TweakPositionTextBox::create</a>(aspectRatio));</div>
+<div class="line"><span class="lineno">   58</span>  <a class="code hl_function" href="bookkeeping-tests_8cc.html#a51a52c8daaa2b1a32aadb0c8a40d9684">set</a>(<a class="code hl_variable" href="classTransformPresentation.html#ab9ec8f8532594b77dbbf41d4f268d78a">context</a>, <a class="code hl_function" href="classScroom_1_1Utils_1_1TweakRulers.html#aa3372456f136f40492d6d64c6fbefdf6">Scroom::Utils::TweakRulers::create</a>(aspectRatio));</div>
+<div class="line"><span class="lineno">   59</span>  <a class="code hl_function" href="bookkeeping-tests_8cc.html#a51a52c8daaa2b1a32aadb0c8a40d9684">set</a>(</div>
+<div class="line"><span class="lineno">   60</span>    <a class="code hl_variable" href="classTransformPresentation.html#ab9ec8f8532594b77dbbf41d4f268d78a">context</a>,</div>
+<div class="line"><span class="lineno">   61</span>    <a class="code hl_typedef" href="classScroom_1_1Utils_1_1ITweakSelection.html#aa938963ea5343fabb1d7b6f5e04614c5">Scroom::Utils::ITweakSelection::Map</a>{</div>
+<div class="line"><span class="lineno">   62</span>      {<a class="code hl_function" href="namespaceSelectionType.html#a9f0e8fd7cec2332d694d5a898cff9dc9">SelectionType::GRID</a>, <a class="code hl_function" href="classScroom_1_1Utils_1_1TweakGridSelection.html#a44701030e6dbaa2db85d531886df22da">Scroom::Utils::TweakGridSelection::create</a>(aspectRatio)},</div>
+<div class="line"><span class="lineno">   63</span>      {<a class="code hl_function" href="namespaceSelectionType.html#aa8763b7e1473f7e5d1e2c8d5b86fe49f">SelectionType::PIXEL</a>, <a class="code hl_function" href="classScroom_1_1Utils_1_1TweakPixelSelection.html#a9755bf9dd8a03f66c12cc9e5a1de4b01">Scroom::Utils::TweakPixelSelection::create</a>(aspectRatio)}</div>
+<div class="line"><span class="lineno">   64</span>    }</div>
+<div class="line"><span class="lineno">   65</span>  );</div>
+<div class="line"><span class="lineno">   66</span>  <a class="code hl_function" href="bookkeeping-tests_8cc.html#a51a52c8daaa2b1a32aadb0c8a40d9684">set</a>(<a class="code hl_variable" href="classTransformPresentation.html#ab9ec8f8532594b77dbbf41d4f268d78a">context</a>, <a class="code hl_variable" href="classTransformPresentation.html#ad5804a0827bf975f5dd39061f7a5060a">transformationData</a>);</div>
+<div class="line"><span class="lineno">   67</span>}</div>
+<div class="ttc" id="abookkeeping-tests_8cc_html_a51a52c8daaa2b1a32aadb0c8a40d9684"><div class="ttname"><a href="bookkeeping-tests_8cc.html#a51a52c8daaa2b1a32aadb0c8a40d9684">set</a></div><div class="ttdeci">map set(2, 5)</div></div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1ITweakSelection_html_aa938963ea5343fabb1d7b6f5e04614c5"><div class="ttname"><a href="classScroom_1_1Utils_1_1ITweakSelection.html#aa938963ea5343fabb1d7b6f5e04614c5">Scroom::Utils::ITweakSelection::Map</a></div><div class="ttdeci">std::map&lt; std::string, ITweakSelection::Ptr &gt; Map</div><div class="ttdef"><b>Definition</b> tweak-view.hh:45</div></div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1RecursiveContext_html_a1fecd5bbb7004b66fdffaa87c798cd5b"><div class="ttname"><a href="classScroom_1_1Utils_1_1RecursiveContext.html#a1fecd5bbb7004b66fdffaa87c798cd5b">Scroom::Utils::RecursiveContext::create</a></div><div class="ttdeci">static Ptr create()</div><div class="ttdef"><b>Definition</b> context.cc:16</div></div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1TweakGridSelection_html_a44701030e6dbaa2db85d531886df22da"><div class="ttname"><a href="classScroom_1_1Utils_1_1TweakGridSelection.html#a44701030e6dbaa2db85d531886df22da">Scroom::Utils::TweakGridSelection::create</a></div><div class="ttdeci">static ITweakSelection::Ptr create(const Point&lt; double &gt; &amp;aspectRatio_)</div><div class="ttdef"><b>Definition</b> tweak-view.cc:153</div></div>
@@ -435,21 +438,23 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classTransformPresentation_afe7cc32972b9a7ee3326fb1ce7ec8d0d_cgraph.png" border="0" usemap="#aclassTransformPresentation_afe7cc32972b9a7ee3326fb1ce7ec8d0d_cgraph" alt=""/></div>
 <map name="aclassTransformPresentation_afe7cc32972b9a7ee3326fb1ce7ec8d0d_cgraph" id="aclassTransformPresentation_afe7cc32972b9a7ee3326fb1ce7ec8d0d_cgraph">
-<area shape="rect" title=" " alt="" coords="5,197,183,237"/>
+<area shape="rect" title=" " alt="" coords="5,229,183,269"/>
 <area shape="rect" href="classScroom_1_1Utils_1_1TweakPresentationPosition.html#a8c81cc0588c7979a76fb76f3ce344690" title=" " alt="" coords="231,5,471,45"/>
-<area shape="poly" title=" " alt="" coords="104,196,153,127,188,88,229,55,240,49,243,53,232,60,192,92,157,130,109,199"/>
+<area shape="poly" title=" " alt="" coords="101,228,120,191,147,144,184,96,229,55,238,50,241,54,232,59,188,100,152,147,124,193,106,230"/>
 <area shape="rect" href="classScroom_1_1Utils_1_1TweakGridSelection.html#a44701030e6dbaa2db85d531886df22da" title=" " alt="" coords="258,69,443,109"/>
-<area shape="poly" title=" " alt="" coords="117,195,166,157,229,119,247,112,249,117,232,124,169,161,120,199"/>
+<area shape="poly" title=" " alt="" coords="109,227,159,173,192,144,229,119,244,112,246,117,232,124,196,148,162,177,113,231"/>
 <area shape="rect" href="classScroom_1_1Utils_1_1TweakPixelSelection.html#a9755bf9dd8a03f66c12cc9e5a1de4b01" title=" " alt="" coords="256,133,445,173"/>
-<area shape="poly" title=" " alt="" coords="174,195,256,174,258,179,176,200"/>
+<area shape="poly" title=" " alt="" coords="132,227,230,183,253,175,255,180,232,188,134,232"/>
 <area shape="rect" href="classScroom_1_1Utils_1_1TweakRulers.html#aa3372456f136f40492d6d64c6fbefdf6" title=" " alt="" coords="251,197,450,237"/>
-<area shape="poly" title=" " alt="" coords="183,215,238,215,238,220,183,220"/>
+<area shape="poly" title=" " alt="" coords="182,236,238,229,238,234,183,241"/>
 <area shape="rect" href="classScroom_1_1Utils_1_1TweakPositionTextBox.html#aff8fc77c17823f8d3a04fa1f363b24db" title=" " alt="" coords="245,261,456,301"/>
-<area shape="poly" title=" " alt="" coords="176,235,258,255,256,261,174,240"/>
+<area shape="poly" title=" " alt="" coords="183,258,232,264,231,269,182,263"/>
 <area shape="rect" href="namespaceSelectionType.html#a9f0e8fd7cec2332d694d5a898cff9dc9" title=" " alt="" coords="274,326,427,351"/>
-<area shape="poly" title=" " alt="" coords="119,235,169,274,199,294,232,311,262,321,260,326,230,316,197,299,166,279,116,240"/>
+<area shape="poly" title=" " alt="" coords="133,267,179,290,232,311,264,320,263,325,230,316,177,295,131,272"/>
 <area shape="rect" href="namespaceSelectionType.html#aa8763b7e1473f7e5d1e2c8d5b86fe49f" title=" " alt="" coords="273,375,429,401"/>
-<area shape="poly" title=" " alt="" coords="110,236,158,298,193,332,232,360,260,372,258,377,229,365,189,336,154,302,106,239"/>
+<area shape="poly" title=" " alt="" coords="115,268,165,315,197,340,232,360,260,371,258,376,230,365,194,344,161,319,112,272"/>
+<area shape="rect" href="bookkeeping-tests_8cc.html#a51a52c8daaa2b1a32aadb0c8a40d9684" title=" " alt="" coords="329,425,372,450"/>
+<area shape="poly" title=" " alt="" coords="108,268,128,300,156,339,191,378,232,410,274,426,316,433,315,439,273,432,229,414,187,381,151,342,123,303,104,271"/>
 </map>
 </div>
 
@@ -483,13 +488,13 @@ Here is the call graph for this function:</div>
 <dl class="section pre"><dt>Precondition</dt><dd>Should be called from within a Gdk critical section (i.e. between gdk_threads_enter() and gdk_threads_leave() calls) </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classPresentationBase.html#a81cfe78e3adf5a1fecc307e2284578fc">PresentationBase</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   89</span>{</div>
-<div class="line"><span class="lineno">   90</span>  <span class="keyword">auto</span> <a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a> = <a class="code hl_variable" href="classTransformPresentation.html#acd316f1a3a90a0fe59749363f82304d9">viewData</a>.at(viewInterface);</div>
-<div class="line"><span class="lineno">   91</span>  <a class="code hl_variable" href="classTransformPresentation.html#acd316f1a3a90a0fe59749363f82304d9">viewData</a>.erase(viewInterface);</div>
-<div class="line"><span class="lineno">   92</span> </div>
-<div class="line"><span class="lineno">   93</span>  <a class="code hl_function" href="classPresentationBase.html#a81cfe78e3adf5a1fecc307e2284578fc">PresentationBase::close</a>(viewInterface);</div>
-<div class="line"><span class="lineno">   94</span>  <a class="code hl_variable" href="classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee">presentation</a>-&gt;close(<a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a>);</div>
-<div class="line"><span class="lineno">   95</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   91</span>{</div>
+<div class="line"><span class="lineno">   92</span>  <span class="keyword">auto</span> <a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a> = <a class="code hl_variable" href="classTransformPresentation.html#acd316f1a3a90a0fe59749363f82304d9">viewData</a>.at(viewInterface);</div>
+<div class="line"><span class="lineno">   93</span>  <a class="code hl_variable" href="classTransformPresentation.html#acd316f1a3a90a0fe59749363f82304d9">viewData</a>.erase(viewInterface);</div>
+<div class="line"><span class="lineno">   94</span> </div>
+<div class="line"><span class="lineno">   95</span>  <a class="code hl_function" href="classPresentationBase.html#a81cfe78e3adf5a1fecc307e2284578fc">PresentationBase::close</a>(viewInterface);</div>
+<div class="line"><span class="lineno">   96</span>  <a class="code hl_variable" href="classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee">presentation</a>-&gt;close(<a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a>);</div>
+<div class="line"><span class="lineno">   97</span>}</div>
 <div class="ttc" id="ablob-tests_8cc_html_a325819a8e492ac69542e8b31705af6e9"><div class="ttname"><a href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a></div><div class="ttdeci">uint8_t data</div><div class="ttdef"><b>Definition</b> blob-tests.cc:36</div></div>
 <div class="ttc" id="aclassPresentationBase_html_a81cfe78e3adf5a1fecc307e2284578fc"><div class="ttname"><a href="classPresentationBase.html#a81cfe78e3adf5a1fecc307e2284578fc">PresentationBase::close</a></div><div class="ttdeci">void close(ViewInterface::WeakPtr vi) override</div><div class="ttdef"><b>Definition</b> presentationinterface.cc:23</div></div>
 <div class="ttc" id="aclassTransformPresentation_html_acd316f1a3a90a0fe59749363f82304d9"><div class="ttname"><a href="classTransformPresentation.html#acd316f1a3a90a0fe59749363f82304d9">TransformPresentation::viewData</a></div><div class="ttdeci">Scroom::Utils::WeakKeyMap&lt; ViewInterface::WeakPtr, Detail::ViewData::Ptr &gt; viewData</div><div class="ttdef"><b>Definition</b> transformpresentation.hh:90</div></div>
@@ -543,9 +548,9 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   69</span>{</div>
-<div class="line"><span class="lineno">   70</span>  <span class="keywordflow">return</span> <a class="code hl_typedef" href="classTransformPresentation.html#a25d8a9a14f9732ce239aae3b788a0f1f">Ptr</a>(<span class="keyword">new</span> <a class="code hl_class" href="classTransformPresentation.html">TransformPresentation</a>(<a class="code hl_variable" href="classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee">presentation</a>, <a class="code hl_variable" href="classTransformPresentation.html#ad5804a0827bf975f5dd39061f7a5060a">transformationData</a>));</div>
-<div class="line"><span class="lineno">   71</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   71</span>{</div>
+<div class="line"><span class="lineno">   72</span>  <span class="keywordflow">return</span> <a class="code hl_typedef" href="classTransformPresentation.html#a25d8a9a14f9732ce239aae3b788a0f1f">Ptr</a>(<span class="keyword">new</span> <a class="code hl_class" href="classTransformPresentation.html">TransformPresentation</a>(<a class="code hl_variable" href="classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee">presentation</a>, <a class="code hl_variable" href="classTransformPresentation.html#ad5804a0827bf975f5dd39061f7a5060a">transformationData</a>));</div>
+<div class="line"><span class="lineno">   73</span>}</div>
 <div class="ttc" id="aclassTransformPresentation_html"><div class="ttname"><a href="classTransformPresentation.html">TransformPresentation</a></div><div class="ttdef"><b>Definition</b> transformpresentation.hh:81</div></div>
 <div class="ttc" id="aclassTransformPresentation_html_a25d8a9a14f9732ce239aae3b788a0f1f"><div class="ttname"><a href="classTransformPresentation.html#a25d8a9a14f9732ce239aae3b788a0f1f">TransformPresentation::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; TransformPresentation &gt; Ptr</div><div class="ttdef"><b>Definition</b> transformpresentation.hh:83</div></div>
 </div><!-- fragment -->
@@ -587,7 +592,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classColormappable.html#a65f7747cb8c21704aed2bcbb05401f8b">Colormappable</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  154</span>{ <a class="code hl_variable" href="classTransformPresentation.html#ad383e05a9aa2cbd83a077bd83ced7abd">colormappable</a>-&gt;disableTransparentBackground(); }</div>
+<div class="fragment"><div class="line"><span class="lineno">  156</span>{ <a class="code hl_variable" href="classTransformPresentation.html#ad383e05a9aa2cbd83a077bd83ced7abd">colormappable</a>-&gt;disableTransparentBackground(); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -615,7 +620,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="classPresentationInterface.html#a2a3e416a124e253bec8fb97c510836fe">PresentationInterface</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  167</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classTransformPresentation.html#ad5804a0827bf975f5dd39061f7a5060a">transformationData</a>-&gt;getAspectRatio(); }</div>
+<div class="fragment"><div class="line"><span class="lineno">  169</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classTransformPresentation.html#ad5804a0827bf975f5dd39061f7a5060a">transformationData</a>-&gt;getAspectRatio(); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -643,7 +648,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classPresentationInterface.html#a246215775d5c465dd62e5607943a111c">PresentationInterface</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  168</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classTransformPresentation.html#ab9ec8f8532594b77dbbf41d4f268d78a">context</a>; }</div>
+<div class="fragment"><div class="line"><span class="lineno">  170</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classTransformPresentation.html#ab9ec8f8532594b77dbbf41d4f268d78a">context</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -671,7 +676,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classColormappable.html#a64ff1a16f7e036ab0e212d8e51716059">Colormappable</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  148</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classTransformPresentation.html#ad383e05a9aa2cbd83a077bd83ced7abd">colormappable</a>-&gt;getMonochromeColor(); }</div>
+<div class="fragment"><div class="line"><span class="lineno">  150</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classTransformPresentation.html#ad383e05a9aa2cbd83a077bd83ced7abd">colormappable</a>-&gt;getMonochromeColor(); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -700,7 +705,7 @@ Here is the caller graph for this function:</div>
 <p>Retrieve the number of colors in use by the presentation </p>
 
 <p>Implements <a class="el" href="classColormappable.html#a16b7176e5ad12c8754b51e583270cea4">Colormappable</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  146</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classTransformPresentation.html#ad383e05a9aa2cbd83a077bd83ced7abd">colormappable</a>-&gt;getNumberOfColors(); }</div>
+<div class="fragment"><div class="line"><span class="lineno">  148</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classTransformPresentation.html#ad383e05a9aa2cbd83a077bd83ced7abd">colormappable</a>-&gt;getNumberOfColors(); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -729,7 +734,7 @@ Here is the caller graph for this function:</div>
 <p>Retrieve the images colormap (if any) </p>
 
 <p>Implements <a class="el" href="classColormappable.html#a16128d0a4c8afa05f8720352bea2a3de">Colormappable</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  144</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classTransformPresentation.html#ad383e05a9aa2cbd83a077bd83ced7abd">colormappable</a>-&gt;getOriginalColormap(); }</div>
+<div class="fragment"><div class="line"><span class="lineno">  146</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classTransformPresentation.html#ad383e05a9aa2cbd83a077bd83ced7abd">colormappable</a>-&gt;getOriginalColormap(); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -765,11 +770,11 @@ Here is the caller graph for this function:</div>
 </dl>
 
 <p>Implements <a class="el" href="classPipetteViewInterface.html#a9576c32986111d0352816cf4ea08bf5f">PipetteViewInterface</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  161</span>{</div>
-<div class="line"><span class="lineno">  162</span>  <a class="code hl_typedef" href="classPipetteViewInterface.html#a3c16a32beb8d86af534df376e7eed620">PipetteViewInterface::Ptr</a> <span class="keyword">const</span> pipettePresentation = std::dynamic_pointer_cast&lt;PipetteViewInterface&gt;(<a class="code hl_variable" href="classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee">presentation</a>);</div>
-<div class="line"><span class="lineno">  163</span>  <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(pipettePresentation);</div>
-<div class="line"><span class="lineno">  164</span>  <span class="keywordflow">return</span> pipettePresentation-&gt;getPixelAverages(area / <a class="code hl_variable" href="classTransformPresentation.html#ad5804a0827bf975f5dd39061f7a5060a">transformationData</a>-&gt;getAspectRatio());</div>
-<div class="line"><span class="lineno">  165</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  163</span>{</div>
+<div class="line"><span class="lineno">  164</span>  <a class="code hl_typedef" href="classPipetteViewInterface.html#a3c16a32beb8d86af534df376e7eed620">PipetteViewInterface::Ptr</a> <span class="keyword">const</span> pipettePresentation = std::dynamic_pointer_cast&lt;PipetteViewInterface&gt;(<a class="code hl_variable" href="classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee">presentation</a>);</div>
+<div class="line"><span class="lineno">  165</span>  <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(pipettePresentation);</div>
+<div class="line"><span class="lineno">  166</span>  <span class="keywordflow">return</span> pipettePresentation-&gt;getPixelAverages(area / <a class="code hl_variable" href="classTransformPresentation.html#ad5804a0827bf975f5dd39061f7a5060a">transformationData</a>-&gt;getAspectRatio());</div>
+<div class="line"><span class="lineno">  167</span>}</div>
 <div class="ttc" id="aassertions_8hh_html_ae925d7587e34145cd52f674b2012539a"><div class="ttname"><a href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a></div><div class="ttdeci">#define require(expr)</div><div class="ttdef"><b>Definition</b> assertions.hh:30</div></div>
 <div class="ttc" id="aclassPipetteViewInterface_html_a3c16a32beb8d86af534df376e7eed620"><div class="ttname"><a href="classPipetteViewInterface.html#a3c16a32beb8d86af534df376e7eed620">PipetteViewInterface::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; PipetteViewInterface &gt; Ptr</div><div class="ttdef"><b>Definition</b> pipetteviewinterface.hh:21</div></div>
 </div><!-- fragment -->
@@ -825,9 +830,9 @@ Here is the caller graph for this function:</div>
 </dl>
 
 <p>Implements <a class="el" href="classPresentationInterface.html#ae454b7a8f8886fe4001700b2fbb83b19">PresentationInterface</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  134</span>{</div>
-<div class="line"><span class="lineno">  135</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee">presentation</a>-&gt;getProperty(name, <a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>);</div>
-<div class="line"><span class="lineno">  136</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  136</span>{</div>
+<div class="line"><span class="lineno">  137</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee">presentation</a>-&gt;getProperty(name, <a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>);</div>
+<div class="line"><span class="lineno">  138</span>}</div>
 <div class="ttc" id="ablob-tests_8cc_html_abf9157cab7a60c93387a03e18e2c560a"><div class="ttname"><a href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a></div><div class="ttdeci">const uint8_t value</div><div class="ttdef"><b>Definition</b> blob-tests.cc:114</div></div>
 </div><!-- fragment -->
 </div>
@@ -857,9 +862,9 @@ Here is the caller graph for this function:</div>
 <p>Return the dimensions of your presentation </p>
 
 <p>Implements <a class="el" href="classPresentationInterface.html#a0592df70bb53b92934942a3ad463b49b">PresentationInterface</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   74</span>{</div>
-<div class="line"><span class="lineno">   75</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee">presentation</a>-&gt;getRect() * <a class="code hl_variable" href="classTransformPresentation.html#ad5804a0827bf975f5dd39061f7a5060a">transformationData</a>-&gt;getAspectRatio();</div>
-<div class="line"><span class="lineno">   76</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   76</span>{</div>
+<div class="line"><span class="lineno">   77</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee">presentation</a>-&gt;getRect() * <a class="code hl_variable" href="classTransformPresentation.html#ad5804a0827bf975f5dd39061f7a5060a">transformationData</a>-&gt;getAspectRatio();</div>
+<div class="line"><span class="lineno">   78</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -888,7 +893,7 @@ Here is the caller graph for this function:</div>
 <p>Return the title of the presentation </p>
 
 <p>Implements <a class="el" href="classPresentationInterface.html#a91974d576458480d37d40c1dbc006d82">PresentationInterface</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  140</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee">presentation</a>-&gt;getTitle(); }</div>
+<div class="fragment"><div class="line"><span class="lineno">  142</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee">presentation</a>-&gt;getTitle(); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -916,7 +921,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classColormappable.html#ae43e2fc3d049bbeebac2a64128ea0fc3">Colormappable</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  156</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classTransformPresentation.html#ad383e05a9aa2cbd83a077bd83ced7abd">colormappable</a>-&gt;getTransparentBackground(); }</div>
+<div class="fragment"><div class="line"><span class="lineno">  158</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classTransformPresentation.html#ad383e05a9aa2cbd83a077bd83ced7abd">colormappable</a>-&gt;getTransparentBackground(); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -946,7 +951,7 @@ Here is the caller graph for this function:</div>
 <p>Return true if the named property exists </p>
 
 <p>Implements <a class="el" href="classPresentationInterface.html#afe9df45f557e0c770b93904152ab38f3">PresentationInterface</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  138</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee">presentation</a>-&gt;isPropertyDefined(name); }</div>
+<div class="fragment"><div class="line"><span class="lineno">  140</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee">presentation</a>-&gt;isPropertyDefined(name); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -977,15 +982,15 @@ Here is the caller graph for this function:</div>
 <dl class="section pre"><dt>Precondition</dt><dd>Should be called from within a Gdk critical section (i.e. between gdk_threads_enter() and gdk_threads_leave() calls) </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classPresentationBase.html#ae964144f0e8da9e7d7067f3d8183a8e4">PresentationBase</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   79</span>{</div>
-<div class="line"><span class="lineno">   80</span>  <span class="keyword">auto</span> [<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a53894e91bcfe1e36f402333502cbcfc2">it</a>, inserted] = <a class="code hl_variable" href="classTransformPresentation.html#acd316f1a3a90a0fe59749363f82304d9">viewData</a>.insert({viewInterface, <a class="code hl_function" href="classDetail_1_1ViewData.html#a12f82ade396e0a166996c9c7bd9b9a83">Detail::ViewData::create</a>(viewInterface)});</div>
-<div class="line"><span class="lineno">   81</span>  <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(inserted);</div>
-<div class="line"><span class="lineno">   82</span>  <span class="keyword">auto</span>&amp; [_, <a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a>] = *<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a53894e91bcfe1e36f402333502cbcfc2">it</a>;</div>
-<div class="line"><span class="lineno">   83</span> </div>
-<div class="line"><span class="lineno">   84</span>  <a class="code hl_variable" href="classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee">presentation</a>-&gt;open(<a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a>);</div>
-<div class="line"><span class="lineno">   85</span>  <a class="code hl_function" href="classPresentationBase.html#ae964144f0e8da9e7d7067f3d8183a8e4">PresentationBase::open</a>(viewInterface);</div>
-<div class="line"><span class="lineno">   86</span>}</div>
-<div class="ttc" id="aclassDetail_1_1ViewData_html_a12f82ade396e0a166996c9c7bd9b9a83"><div class="ttname"><a href="classDetail_1_1ViewData.html#a12f82ade396e0a166996c9c7bd9b9a83">Detail::ViewData::create</a></div><div class="ttdeci">static ViewData::Ptr create(const ViewInterface::WeakPtr &amp;parent)</div><div class="ttdef"><b>Definition</b> transformpresentation.cc:195</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   81</span>{</div>
+<div class="line"><span class="lineno">   82</span>  <span class="keyword">auto</span> [<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a53894e91bcfe1e36f402333502cbcfc2">it</a>, inserted] = <a class="code hl_variable" href="classTransformPresentation.html#acd316f1a3a90a0fe59749363f82304d9">viewData</a>.insert({viewInterface, <a class="code hl_function" href="classDetail_1_1ViewData.html#a12f82ade396e0a166996c9c7bd9b9a83">Detail::ViewData::create</a>(viewInterface)});</div>
+<div class="line"><span class="lineno">   83</span>  <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(inserted);</div>
+<div class="line"><span class="lineno">   84</span>  <span class="keyword">auto</span>&amp; [_, <a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a>] = *<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a53894e91bcfe1e36f402333502cbcfc2">it</a>;</div>
+<div class="line"><span class="lineno">   85</span> </div>
+<div class="line"><span class="lineno">   86</span>  <a class="code hl_variable" href="classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee">presentation</a>-&gt;open(<a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a>);</div>
+<div class="line"><span class="lineno">   87</span>  <a class="code hl_function" href="classPresentationBase.html#ae964144f0e8da9e7d7067f3d8183a8e4">PresentationBase::open</a>(viewInterface);</div>
+<div class="line"><span class="lineno">   88</span>}</div>
+<div class="ttc" id="aclassDetail_1_1ViewData_html_a12f82ade396e0a166996c9c7bd9b9a83"><div class="ttname"><a href="classDetail_1_1ViewData.html#a12f82ade396e0a166996c9c7bd9b9a83">Detail::ViewData::create</a></div><div class="ttdeci">static ViewData::Ptr create(const ViewInterface::WeakPtr &amp;parent)</div><div class="ttdef"><b>Definition</b> transformpresentation.cc:197</div></div>
 <div class="ttc" id="aclassPresentationBase_html_ae964144f0e8da9e7d7067f3d8183a8e4"><div class="ttname"><a href="classPresentationBase.html#ae964144f0e8da9e7d7067f3d8183a8e4">PresentationBase::open</a></div><div class="ttdeci">void open(ViewInterface::WeakPtr vi) override</div><div class="ttdef"><b>Definition</b> presentationinterface.cc:11</div></div>
 <div class="ttc" id="asampleiterator-tests_8cc_html_a53894e91bcfe1e36f402333502cbcfc2"><div class="ttname"><a href="sampleiterator-tests_8cc.html#a53894e91bcfe1e36f402333502cbcfc2">it</a></div><div class="ttdeci">SampleIterator&lt; const uint8_t &gt; it(testData, 0, bps)</div></div>
 </div><!-- fragment --><div class="dynheader">
@@ -1066,35 +1071,35 @@ Here is the call graph for this function:</div>
 </dl>
 
 <p>Implements <a class="el" href="classPresentationInterface.html#a60bc0b48811cb281c9e8da99805b6b66">PresentationInterface</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  103</span>{</div>
-<div class="line"><span class="lineno">  104</span>  <a class="code hl_class" href="classScroom_1_1Utils_1_1Point.html">Scroom::Utils::Point&lt;double&gt;</a> <span class="keyword">const</span> aspectRatio = <a class="code hl_variable" href="classTransformPresentation.html#ad5804a0827bf975f5dd39061f7a5060a">transformationData</a>-&gt;getAspectRatio();</div>
-<div class="line"><span class="lineno">  105</span>  <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a> = <a class="code hl_variable" href="classTransformPresentation.html#acd316f1a3a90a0fe59749363f82304d9">viewData</a>.at(<a class="code hl_variable" href="pipette-tests_8cc.html#a42c717015bd9a889714e98016e92c595">vi</a>);</div>
-<div class="line"><span class="lineno">  106</span> </div>
-<div class="line"><span class="lineno">  107</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a>-&gt;presentationArea != presentationArea || <a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a>-&gt;zoom != zoom)</div>
-<div class="line"><span class="lineno">  108</span>  {</div>
-<div class="line"><span class="lineno">  109</span>    <a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a>-&gt;image.reset();</div>
-<div class="line"><span class="lineno">  110</span>  }</div>
-<div class="line"><span class="lineno">  111</span>  <span class="keywordflow">if</span>(!<a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a>-&gt;image)</div>
-<div class="line"><span class="lineno">  112</span>  {</div>
-<div class="line"><span class="lineno">  113</span>    <span class="keyword">auto</span> pixelSize = <a class="code hl_function" href="cairo-helpers_8hh.html#ac7a152a4cc864e9c67acbc6686a9d3a4">pixelSizeFromZoom</a>(zoom);</div>
-<div class="line"><span class="lineno">  114</span>    <span class="keyword">auto</span> viewArea = <a class="code hl_function" href="namespaceScroom_1_1Utils.html#a691343f4fe808dc3cf83f22e8079448e">ceil</a>((presentationArea * pixelSize / aspectRatio).getSize()).to&lt;<span class="keywordtype">int</span>&gt;();</div>
-<div class="line"><span class="lineno">  115</span> </div>
-<div class="line"><span class="lineno">  116</span>    <a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a>-&gt;image = <a class="code hl_function" href="classScroom_1_1Bitmap_1_1BitmapSurface.html#a697961480f8888e1a149d4be54adb9e7">Scroom::Bitmap::BitmapSurface::create</a>(viewArea.x, viewArea.y, CAIRO_FORMAT_ARGB32);</div>
+<div class="fragment"><div class="line"><span class="lineno">  105</span>{</div>
+<div class="line"><span class="lineno">  106</span>  <a class="code hl_class" href="classScroom_1_1Utils_1_1Point.html">Scroom::Utils::Point&lt;double&gt;</a> <span class="keyword">const</span> aspectRatio = <a class="code hl_variable" href="classTransformPresentation.html#ad5804a0827bf975f5dd39061f7a5060a">transformationData</a>-&gt;getAspectRatio();</div>
+<div class="line"><span class="lineno">  107</span>  <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a> = <a class="code hl_variable" href="classTransformPresentation.html#acd316f1a3a90a0fe59749363f82304d9">viewData</a>.at(<a class="code hl_variable" href="pipette-tests_8cc.html#a42c717015bd9a889714e98016e92c595">vi</a>);</div>
+<div class="line"><span class="lineno">  108</span> </div>
+<div class="line"><span class="lineno">  109</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a>-&gt;presentationArea != presentationArea || <a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a>-&gt;zoom != zoom)</div>
+<div class="line"><span class="lineno">  110</span>  {</div>
+<div class="line"><span class="lineno">  111</span>    <a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a>-&gt;image.reset();</div>
+<div class="line"><span class="lineno">  112</span>  }</div>
+<div class="line"><span class="lineno">  113</span>  <span class="keywordflow">if</span>(!<a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a>-&gt;image)</div>
+<div class="line"><span class="lineno">  114</span>  {</div>
+<div class="line"><span class="lineno">  115</span>    <span class="keyword">auto</span> pixelSize = <a class="code hl_function" href="cairo-helpers_8hh.html#ac7a152a4cc864e9c67acbc6686a9d3a4">pixelSizeFromZoom</a>(zoom);</div>
+<div class="line"><span class="lineno">  116</span>    <span class="keyword">auto</span> viewArea = <a class="code hl_function" href="namespaceScroom_1_1Utils.html#a691343f4fe808dc3cf83f22e8079448e">ceil</a>((presentationArea * pixelSize / aspectRatio).getSize()).to&lt;<span class="keywordtype">int</span>&gt;();</div>
 <div class="line"><span class="lineno">  117</span> </div>
-<div class="line"><span class="lineno">  118</span>    cairo_surface_t* <a class="code hl_variable" href="transformpresentation__test_8cc.html#a76e6dbb8b33b4373ca91aab3cab86245">surface</a> = <a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a>-&gt;image-&gt;get();</div>
-<div class="line"><span class="lineno">  119</span>    cairo_t* image_cr = cairo_create(<a class="code hl_variable" href="transformpresentation__test_8cc.html#a76e6dbb8b33b4373ca91aab3cab86245">surface</a>);</div>
-<div class="line"><span class="lineno">  120</span> </div>
-<div class="line"><span class="lineno">  121</span>    <a class="code hl_variable" href="classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee">presentation</a>-&gt;redraw(<a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a>, image_cr, presentationArea / aspectRatio, zoom);</div>
+<div class="line"><span class="lineno">  118</span>    <a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a>-&gt;image = <a class="code hl_function" href="classScroom_1_1Bitmap_1_1BitmapSurface.html#a697961480f8888e1a149d4be54adb9e7">Scroom::Bitmap::BitmapSurface::create</a>(viewArea.x, viewArea.y, CAIRO_FORMAT_ARGB32);</div>
+<div class="line"><span class="lineno">  119</span> </div>
+<div class="line"><span class="lineno">  120</span>    cairo_surface_t* <a class="code hl_variable" href="transformpresentation__test_8cc.html#a76e6dbb8b33b4373ca91aab3cab86245">surface</a> = <a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a>-&gt;image-&gt;get();</div>
+<div class="line"><span class="lineno">  121</span>    cairo_t* image_cr = cairo_create(<a class="code hl_variable" href="transformpresentation__test_8cc.html#a76e6dbb8b33b4373ca91aab3cab86245">surface</a>);</div>
 <div class="line"><span class="lineno">  122</span> </div>
-<div class="line"><span class="lineno">  123</span>    <a class="code hl_function" href="transformpresentation__test_8cc.html#a608745f30637ee1f30157b0294297580">cairo_destroy</a>(image_cr);</div>
-<div class="line"><span class="lineno">  124</span>  }</div>
-<div class="line"><span class="lineno">  125</span> </div>
-<div class="line"><span class="lineno">  126</span>  cairo_save(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>);</div>
-<div class="line"><span class="lineno">  127</span>  cairo_scale(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, aspectRatio.<a class="code hl_variable" href="classScroom_1_1Utils_1_1Point.html#aef05138a3536382db393d698c80a48ca">x</a>, aspectRatio.<a class="code hl_variable" href="classScroom_1_1Utils_1_1Point.html#a8f69c38e2593833b1901ef73e935d820">y</a>);</div>
-<div class="line"><span class="lineno">  128</span>  cairo_set_source_surface(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, <a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a>-&gt;image-&gt;get(), 0, 0);</div>
-<div class="line"><span class="lineno">  129</span>  cairo_paint(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>);</div>
-<div class="line"><span class="lineno">  130</span>  cairo_restore(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>);</div>
-<div class="line"><span class="lineno">  131</span>}</div>
+<div class="line"><span class="lineno">  123</span>    <a class="code hl_variable" href="classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee">presentation</a>-&gt;redraw(<a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a>, image_cr, presentationArea / aspectRatio, zoom);</div>
+<div class="line"><span class="lineno">  124</span> </div>
+<div class="line"><span class="lineno">  125</span>    <a class="code hl_function" href="transformpresentation__test_8cc.html#a608745f30637ee1f30157b0294297580">cairo_destroy</a>(image_cr);</div>
+<div class="line"><span class="lineno">  126</span>  }</div>
+<div class="line"><span class="lineno">  127</span> </div>
+<div class="line"><span class="lineno">  128</span>  cairo_save(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>);</div>
+<div class="line"><span class="lineno">  129</span>  cairo_scale(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, aspectRatio.<a class="code hl_variable" href="classScroom_1_1Utils_1_1Point.html#aef05138a3536382db393d698c80a48ca">x</a>, aspectRatio.<a class="code hl_variable" href="classScroom_1_1Utils_1_1Point.html#a8f69c38e2593833b1901ef73e935d820">y</a>);</div>
+<div class="line"><span class="lineno">  130</span>  cairo_set_source_surface(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, <a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a>-&gt;image-&gt;get(), 0, 0);</div>
+<div class="line"><span class="lineno">  131</span>  cairo_paint(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>);</div>
+<div class="line"><span class="lineno">  132</span>  cairo_restore(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>);</div>
+<div class="line"><span class="lineno">  133</span>}</div>
 <div class="ttc" id="acairo-helpers_8hh_html_ac7a152a4cc864e9c67acbc6686a9d3a4"><div class="ttname"><a href="cairo-helpers_8hh.html#ac7a152a4cc864e9c67acbc6686a9d3a4">pixelSizeFromZoom</a></div><div class="ttdeci">double pixelSizeFromZoom(int zoom)</div><div class="ttdef"><b>Definition</b> cairo-helpers.cc:123</div></div>
 <div class="ttc" id="aclassScroom_1_1Bitmap_1_1BitmapSurface_html_a697961480f8888e1a149d4be54adb9e7"><div class="ttname"><a href="classScroom_1_1Bitmap_1_1BitmapSurface.html#a697961480f8888e1a149d4be54adb9e7">Scroom::Bitmap::BitmapSurface::create</a></div><div class="ttdeci">static Ptr create(int width, int height, cairo_format_t format)</div><div class="ttdef"><b>Definition</b> bitmap-helpers.cc:13</div></div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1Point_html"><div class="ttname"><a href="classScroom_1_1Utils_1_1Point.html">Scroom::Utils::Point</a></div><div class="ttdef"><b>Definition</b> point.hh:28</div></div>
@@ -1148,7 +1153,7 @@ Here is the call graph for this function:</div>
 <p>Request that the presentation use the given colormap </p>
 
 <p>Implements <a class="el" href="classColormappable.html#aa6e4b4bd6dbd16f0da2ba9177a12712a">Colormappable</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  142</span>{ <a class="code hl_variable" href="classTransformPresentation.html#ad383e05a9aa2cbd83a077bd83ced7abd">colormappable</a>-&gt;setColormap(<a class="code hl_variable" href="colormaphelpers__test_8cc.html#ad852f3ac8f6dfa5b9331cfe16d55d059">colormap</a>); }</div>
+<div class="fragment"><div class="line"><span class="lineno">  144</span>{ <a class="code hl_variable" href="classTransformPresentation.html#ad383e05a9aa2cbd83a077bd83ced7abd">colormappable</a>-&gt;setColormap(<a class="code hl_variable" href="colormaphelpers__test_8cc.html#ad852f3ac8f6dfa5b9331cfe16d55d059">colormap</a>); }</div>
 <div class="ttc" id="acolormaphelpers__test_8cc_html_ad852f3ac8f6dfa5b9331cfe16d55d059"><div class="ttname"><a href="colormaphelpers__test_8cc.html#ad852f3ac8f6dfa5b9331cfe16d55d059">colormap</a></div><div class="ttdeci">Colormap::Ptr const colormap</div><div class="ttdef"><b>Definition</b> colormaphelpers_test.cc:55</div></div>
 </div><!-- fragment -->
 </div>
@@ -1178,7 +1183,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classColormappable.html#ace95792d04b6d08fc50021a3c737998c">Colormappable</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  150</span>{ <a class="code hl_variable" href="classTransformPresentation.html#ad383e05a9aa2cbd83a077bd83ced7abd">colormappable</a>-&gt;setMonochromeColor(<a class="code hl_variable" href="threadpool-destruction-tests_8cc.html#a2a95d18e7f38634394c4104d0e759989">c</a>); }</div>
+<div class="fragment"><div class="line"><span class="lineno">  152</span>{ <a class="code hl_variable" href="classTransformPresentation.html#ad383e05a9aa2cbd83a077bd83ced7abd">colormappable</a>-&gt;setMonochromeColor(<a class="code hl_variable" href="threadpool-destruction-tests_8cc.html#a2a95d18e7f38634394c4104d0e759989">c</a>); }</div>
 <div class="ttc" id="athreadpool-destruction-tests_8cc_html_a2a95d18e7f38634394c4104d0e759989"><div class="ttname"><a href="threadpool-destruction-tests_8cc.html#a2a95d18e7f38634394c4104d0e759989">c</a></div><div class="ttdeci">Semaphore c(0)</div></div>
 </div><!-- fragment -->
 </div>
@@ -1207,7 +1212,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classColormappable.html#a2bf36ff8421d54ca709ef671b10bd4b6">Colormappable</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  152</span>{ <a class="code hl_variable" href="classTransformPresentation.html#ad383e05a9aa2cbd83a077bd83ced7abd">colormappable</a>-&gt;setTransparentBackground(); }</div>
+<div class="fragment"><div class="line"><span class="lineno">  154</span>{ <a class="code hl_variable" href="classTransformPresentation.html#ad383e05a9aa2cbd83a077bd83ced7abd">colormappable</a>-&gt;setTransparentBackground(); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1243,7 +1248,7 @@ Here is the call graph for this function:</div>
 </dl>
 
 <p>Implements <a class="el" href="classShowMetadataInterface.html#a0cfca83af258e923b84ac898fee150f0">ShowMetadataInterface</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  158</span>{ <a class="code hl_variable" href="classTransformPresentation.html#a29fd4e7f86ebe745c74a833cc1daba25">showMetaDataInterface</a>-&gt;showMetadata(parent); }</div>
+<div class="fragment"><div class="line"><span class="lineno">  160</span>{ <a class="code hl_variable" href="classTransformPresentation.html#a29fd4e7f86ebe745c74a833cc1daba25">showMetaDataInterface</a>-&gt;showMetadata(parent); }</div>
 </div><!-- fragment -->
 </div>
 </div>
