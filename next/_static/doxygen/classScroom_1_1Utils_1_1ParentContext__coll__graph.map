@@ -1,0 +1,17 @@
+<map id="Scroom::Utils::ParentContext" name="Scroom::Utils::ParentContext">
+<area shape="rect" id="Node000001" title=" " alt="" coords="198,584,399,729"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1RecursiveContext.html" title=" " alt="" coords="5,421,179,521"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,529,220,582,216,586,156,533"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Context.html" title=" " alt="" coords="12,233,172,359"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="95,372,95,421,89,421,89,372"/>
+<area shape="rect" id="Node000004" href="$classInterface.html" title=" " alt="" coords="38,5,146,171"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="95,185,95,233,89,233,89,185"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="203,439,395,504"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="301,504,301,567,296,567,296,504"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="419,431,568,511"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="454,513,389,575,385,571,450,509"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="419,263,568,329"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="496,329,496,415,491,415,491,329"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="482,55,505,121"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="496,121,496,247,491,247,491,121"/>
+</map>

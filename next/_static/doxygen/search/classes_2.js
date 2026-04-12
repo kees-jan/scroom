@@ -19,8 +19,10 @@ var searchData=
   ['commonoperations_16',['CommonOperations',['../classCommonOperations.html',1,'']]],
   ['compressedtile_17',['CompressedTile',['../classCompressedTile.html',1,'']]],
   ['consttile_18',['ConstTile',['../classConstTile.html',1,'']]],
-  ['count_19',['Count',['../classScroom_1_1Utils_1_1Count.html',1,'Scroom::Utils']]],
-  ['counted_20',['Counted',['../classScroom_1_1Utils_1_1Counted.html',1,'Scroom::Utils']]],
-  ['counted_3c_20testcounted_20_3e_21',['Counted&lt; TestCounted &gt;',['../classScroom_1_1Utils_1_1Counted.html',1,'Scroom::Utils']]],
-  ['counter_22',['Counter',['../classScroom_1_1Utils_1_1Counter.html',1,'Scroom::Utils']]]
+  ['context_19',['Context',['../classScroom_1_1Utils_1_1Context.html',1,'Scroom::Utils']]],
+  ['contexttests_20',['ContextTests',['../classContextTests.html',1,'']]],
+  ['count_21',['Count',['../classScroom_1_1Utils_1_1Count.html',1,'Scroom::Utils']]],
+  ['counted_22',['Counted',['../classScroom_1_1Utils_1_1Counted.html',1,'Scroom::Utils']]],
+  ['counted_3c_20testcounted_20_3e_23',['Counted&lt; TestCounted &gt;',['../classScroom_1_1Utils_1_1Counted.html',1,'Scroom::Utils']]],
+  ['counter_24',['Counter',['../classScroom_1_1Utils_1_1Counter.html',1,'Scroom::Utils']]]
 ];

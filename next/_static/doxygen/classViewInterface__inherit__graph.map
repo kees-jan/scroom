@@ -1,17 +1,17 @@
 <map id="ViewInterface" name="ViewInterface">
 <area shape="rect" id="Node000001" title=" " alt="" coords="537,219,711,384"/>
-<area shape="rect" id="Node000003" href="$classChildView.html" title=" " alt="" coords="5,557,179,782"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="524,311,445,323,357,346,312,362,269,381,229,405,192,434,168,461,148,491,119,558,114,555,143,489,164,457,189,430,226,401,267,377,310,357,355,340,443,318,523,306"/>
-<area shape="rect" id="Node000004" href="$classDetail_1_1ViewData.html" title=" " alt="" coords="203,537,376,802"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="526,341,454,380,420,405,390,434,355,483,329,538,324,535,350,480,386,430,417,401,451,376,524,337"/>
-<area shape="rect" id="Node000005" href="$classDummyView.html" title=" " alt="" coords="400,497,613,842"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="596,398,564,497,559,496,591,396"/>
-<area shape="rect" id="Node000006" href="$classView.html" title=" " alt="" coords="638,432,847,907"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="657,396,669,431,663,433,652,398"/>
-<area shape="rect" id="Node000007" href="$classViewInterfaceStub.html" title=" " alt="" coords="872,567,1045,772"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="724,337,797,376,831,401,862,430,886,461,906,495,935,566,930,568,901,498,881,464,858,434,828,405,794,380,722,341"/>
-<area shape="rect" id="Node000008" href="$classanonymous__namespace_02determine-size-test_8cc_03_1_1ViewInterfaceDummy.html" title=" " alt="" coords="1069,552,1251,787"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="725,306,805,318,893,341,938,357,981,377,1022,401,1059,430,1084,456,1104,486,1134,551,1129,553,1100,489,1080,460,1056,434,1019,406,978,382,936,362,891,346,804,324,724,311"/>
+<area shape="rect" id="Node000003" href="$classChildView.html" title=" " alt="" coords="5,547,179,772"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="524,311,444,324,357,346,312,362,270,382,229,406,192,434,169,458,150,486,122,548,117,545,146,484,165,455,189,430,226,401,267,377,310,357,355,341,443,318,523,306"/>
+<area shape="rect" id="Node000004" href="$classDetail_1_1ViewData.html" title=" " alt="" coords="203,527,376,792"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="526,342,454,381,420,405,390,434,357,478,332,527,327,525,353,475,386,430,417,401,451,376,523,337"/>
+<area shape="rect" id="Node000005" href="$classDummyView.html" title=" " alt="" coords="400,487,613,832"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="595,398,566,487,561,486,590,396"/>
+<area shape="rect" id="Node000006" href="$classView.html" title=" " alt="" coords="638,432,847,887"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="658,396,670,431,665,433,653,398"/>
+<area shape="rect" id="Node000007" href="$classViewInterfaceStub.html" title=" " alt="" coords="872,557,1045,762"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="725,337,797,376,831,401,862,430,885,459,904,490,933,555,928,557,899,493,880,462,858,434,828,405,794,381,722,342"/>
+<area shape="rect" id="Node000008" href="$classanonymous__namespace_02determine-size-test_8cc_03_1_1ViewInterfaceDummy.html" title=" " alt="" coords="1069,542,1251,777"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="725,307,805,319,893,342,937,358,981,378,1022,402,1059,430,1082,454,1102,481,1131,541,1127,543,1097,484,1078,457,1056,434,1019,406,978,382,935,363,891,347,804,324,724,312"/>
 <area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="570,5,678,171"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="627,184,627,218,621,218,621,184"/>
 </map>

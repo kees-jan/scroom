@@ -9,8 +9,9 @@ var searchData=
   ['weakobserver_6',['weakObserver',['../observable-tests_8cc.html#ae5d5c23565b35085a52ec88eba31c893',1,'observable-tests.cc']]],
   ['weakparent_7',['weakParent',['../classDetail_1_1ViewData.html#a6fc56db570e1b05b46f5b20ab3cd4526',1,'Detail::ViewData']]],
   ['weakqueue_8',['weakqueue',['../threadpool-queue-tests_8cc.html#a71462b1826becaa24dd7c3e3bae38a58',1,'weakQueue:&#160;threadpool-queue-tests.cc'],['../classTileViewState.html#a2043a48ef98f6873352250eb31a8b43d',1,'TileViewState::weakQueue']]],
-  ['whitish_9',['whitish',['../classMonochromeColormapHelper.html#ae1561b1293e79049b7d0f83119bccaf4',1,'MonochromeColormapHelper']]],
-  ['widgets_10',['widgets',['../classSidebarManager.html#af0dbdadde464305fa2234da905494438',1,'SidebarManager']]],
-  ['width_11',['width',['../classLayer.html#a724d3020ddbe5f9280caa325541e70a3',1,'Layer::width'],['../classConstTile.html#a1c76a49105f44d4091d359f16bf9bf84',1,'ConstTile::width'],['../classTile.html#adbb086e3041864b3079bd5088dc571fb',1,'Tile::width'],['../classRulerDrawStrategy.html#a92e347908c7bbbd10db4eb57137e4848',1,'RulerDrawStrategy::width'],['../classRuler.html#a071b935fde8dd27f35af1b26f3517908',1,'Ruler::width']]],
-  ['window_12',['window',['../classView.html#a6842509e655b042cbd7af3fe10ded06f',1,'View']]]
+  ['weakvalue_9',['weakValue',['../classContextTests.html#a3a5569c93276f71a3627b6e6a843d899',1,'ContextTests']]],
+  ['whitish_10',['whitish',['../classMonochromeColormapHelper.html#ae1561b1293e79049b7d0f83119bccaf4',1,'MonochromeColormapHelper']]],
+  ['widgets_11',['widgets',['../classSidebarManager.html#af0dbdadde464305fa2234da905494438',1,'SidebarManager']]],
+  ['width_12',['width',['../classConstTile.html#a1c76a49105f44d4091d359f16bf9bf84',1,'ConstTile::width'],['../classLayer.html#a724d3020ddbe5f9280caa325541e70a3',1,'Layer::width'],['../classTile.html#adbb086e3041864b3079bd5088dc571fb',1,'Tile::width'],['../classRulerDrawStrategy.html#a92e347908c7bbbd10db4eb57137e4848',1,'RulerDrawStrategy::width'],['../classRuler.html#a071b935fde8dd27f35af1b26f3517908',1,'Ruler::width']]],
+  ['window_13',['window',['../classView.html#a6842509e655b042cbd7af3fe10ded06f',1,'View']]]
 ];

@@ -3,6 +3,7 @@ var dir_1e0deb8a8128fbba6118fa632bba72b1 =
     [ "impl", "dir_99e6e21b8057f12df25a8e7b31464103.html", "dir_99e6e21b8057f12df25a8e7b31464103" ],
     [ "assertions.hh", "assertions_8hh.html", "assertions_8hh" ],
     [ "bookkeeping.hh", "bookkeeping_8hh.html", "bookkeeping_8hh" ],
+    [ "context.hh", "context_8hh.html", "context_8hh" ],
     [ "dont-delete.hh", "dont-delete_8hh.html", "dont-delete_8hh" ],
     [ "format_stuff.hh", "format__stuff_8hh.html", "format__stuff_8hh" ],
     [ "gtk-helpers.hh", "gtk-helpers_8hh.html", "gtk-helpers_8hh" ],

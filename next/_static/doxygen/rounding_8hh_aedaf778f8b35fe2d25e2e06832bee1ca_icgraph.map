@@ -1,11 +1,13 @@
 <map id="rounded_divide_by" name="rounded_divide_by">
-<area shape="rect" id="Node000001" title=" " alt="" coords="465,60,611,85"/>
-<area shape="rect" id="Node000002" href="$rounding_8hh.html#a8ef4d93107153397a73e4a13f5f86a3d" title=" " alt="" coords="257,35,417,60"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="452,64,417,60,418,55,452,59"/>
-<area shape="rect" id="Node000005" href="$rounding_8hh.html#a3b4ffa72156d0a5508a39100e1e854c0" title=" " alt="" coords="265,84,410,109"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="452,86,410,91,410,85,451,80"/>
-<area shape="rect" id="Node000003" href="$namespaceScroom_1_1Utils.html#a336b08377145525ad7740b47d618b161" title=" " alt="" coords="5,5,209,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="243,38,207,33,207,28,244,33"/>
-<area shape="rect" id="Node000004" href="$classTweakPresentationPosition.html#a3a4e55a399fe13abbcd2d783a264d63e" title=" " alt="" coords="9,55,206,95"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="244,61,207,66,206,61,244,56"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="704,66,849,91"/>
+<area shape="rect" id="Node000002" href="$rounding_8hh.html#a8ef4d93107153397a73e4a13f5f86a3d" title=" " alt="" coords="496,41,656,66"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="690,70,656,66,656,61,691,65"/>
+<area shape="rect" id="Node000006" href="$rounding_8hh.html#a3b4ffa72156d0a5508a39100e1e854c0" title=" " alt="" coords="503,90,649,115"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="691,92,649,97,648,91,690,86"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1Utils.html#a336b08377145525ad7740b47d618b161" title=" " alt="" coords="244,13,448,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="482,45,448,40,448,35,483,39"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1TweakGridSelection.html#a3333f4567538a2dfade6ec075f3fe280" title=" " alt="" coords="251,63,441,103"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="483,68,442,73,441,68,482,63"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1TweakGridSelection.html#a82841dcda1813e3d987199ec5789fc8b" title=" " alt="" coords="5,5,196,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="230,28,196,28,196,23,230,23"/>
 </map>

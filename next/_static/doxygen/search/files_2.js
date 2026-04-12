@@ -19,6 +19,9 @@ var searchData=
   ['compressedtile_2ecc_16',['compressedtile.cc',['../compressedtile_8cc.html',1,'']]],
   ['compression_2dtests_2ecc_17',['compression-tests.cc',['../compression-tests_8cc.html',1,'']]],
   ['conf_2epy_18',['conf.py',['../conf_8py.html',1,'']]],
-  ['counter_2dtests_2ecc_19',['counter-tests.cc',['../counter-tests_8cc.html',1,'']]],
-  ['counter_2ecc_20',['counter.cc',['../counter_8cc.html',1,'']]]
+  ['context_2dtests_2ecc_19',['context-tests.cc',['../context-tests_8cc.html',1,'']]],
+  ['context_2ecc_20',['context.cc',['../context_8cc.html',1,'']]],
+  ['context_2ehh_21',['context.hh',['../context_8hh.html',1,'']]],
+  ['counter_2dtests_2ecc_22',['counter-tests.cc',['../counter-tests_8cc.html',1,'']]],
+  ['counter_2ecc_23',['counter.cc',['../counter_8cc.html',1,'']]]
 ];

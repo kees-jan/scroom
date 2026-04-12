@@ -12,26 +12,26 @@
 <area shape="poly" id="edge17_Node000001_Node000018" title=" " alt="" coords="684,267,735,277,795,294,857,317,914,350,962,390,1005,437,1040,486,1068,530,1064,533,1036,489,1000,441,959,394,911,354,854,322,793,299,734,282,683,272"/>
 <area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="579,5,687,171"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="635,184,635,218,630,218,630,184"/>
-<area shape="rect" id="Node000006" href="$classDummyPresentation.html" title=" " alt="" coords="122,995,277,1181"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="622,692,611,731,595,771,573,808,544,839,511,860,478,869,447,869,416,865,385,861,354,861,323,868,290,887,267,910,249,937,222,996,217,994,244,934,263,907,287,883,321,863,353,856,385,856,416,860,447,864,478,863,509,855,540,835,569,805,590,768,606,729,617,690"/>
-<area shape="rect" id="Node000007" href="$classExamplePresentation.html" title=" " alt="" coords="301,995,490,1181"/>
-<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="608,691,580,765,544,839,525,863,504,887,471,941,441,996,436,994,466,939,500,884,521,860,540,836,575,763,603,690"/>
+<area shape="rect" id="Node000006" href="$classDummyPresentation.html" title=" " alt="" coords="103,995,277,1181"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="622,692,611,731,595,771,573,808,544,839,511,860,479,869,447,869,416,866,386,862,355,862,323,869,290,887,266,910,246,937,217,996,212,994,242,934,262,907,287,883,321,864,354,856,386,856,417,860,447,864,478,864,509,855,540,835,569,805,590,768,606,729,617,690"/>
+<area shape="rect" id="Node000007" href="$classExamplePresentation.html" title=" " alt="" coords="301,985,490,1191"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="608,691,580,765,544,839,525,863,504,887,446,986,442,984,500,884,521,860,540,836,575,763,603,690"/>
 <area shape="rect" id="Node000008" href="$classPresentationBase.html" title=" " alt="" coords="515,1005,652,1171"/>
 <area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="626,692,594,1006,589,1005,620,691"/>
-<area shape="rect" id="Node000013" href="$classPresentationMock.html" title=" " alt="" coords="677,985,829,1191"/>
-<area shape="poly" id="edge12_Node000005_Node000013" title=" " alt="" coords="658,690,730,985,725,986,653,691"/>
+<area shape="rect" id="Node000013" href="$classPresentationMock.html" title=" " alt="" coords="677,995,829,1181"/>
+<area shape="poly" id="edge12_Node000005_Node000013" title=" " alt="" coords="658,690,733,995,728,996,653,691"/>
 <area shape="rect" id="Node000015" href="$classanonymous__namespace_02determine-size-test_8cc_03_1_1PresentationInterfaceStub.html" title=" " alt="" coords="853,961,1061,1215"/>
 <area shape="poly" id="edge14_Node000005_Node000015" title=" " alt="" coords="651,691,663,728,678,767,698,803,724,835,738,847,752,854,781,860,810,865,826,872,842,883,876,919,903,959,899,962,872,922,839,887,824,877,809,870,780,865,750,859,735,852,720,839,694,806,673,769,658,730,646,692"/>
 <area shape="rect" id="Node000009" href="$classPresentationBaseSimple.html" title=" " alt="" coords="11,1493,185,1599"/>
 <area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="569,1185,545,1243,526,1270,504,1293,464,1316,425,1325,387,1324,350,1319,313,1313,276,1311,238,1319,198,1341,166,1373,141,1413,123,1455,111,1494,106,1492,118,1453,136,1411,161,1370,195,1337,236,1314,276,1306,314,1307,351,1313,387,1319,424,1320,462,1311,500,1289,522,1267,540,1241,564,1183"/>
-<area shape="rect" id="Node000011" href="$classTransparentOverlayPresentation.html" title=" " alt="" coords="209,1413,457,1679"/>
-<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="553,1185,530,1238,504,1292,488,1317,471,1340,421,1415,417,1412,466,1337,484,1314,500,1289,526,1236,548,1183"/>
+<area shape="rect" id="Node000011" href="$classTransparentOverlayPresentation.html" title=" " alt="" coords="209,1403,457,1689"/>
+<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="553,1185,530,1238,504,1292,488,1317,471,1340,428,1405,423,1402,466,1337,484,1314,500,1289,526,1236,548,1183"/>
 <area shape="rect" id="Node000012" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html" title=" " alt="" coords="481,1339,686,1753"/>
 <area shape="poly" id="edge11_Node000008_Node000012" title=" " alt="" coords="586,1184,586,1338,581,1338,581,1184"/>
-<area shape="rect" id="Node000010" href="$classTransformPresentation.html" title=" " alt="" coords="5,1801,191,2087"/>
-<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="101,1613,101,1801,95,1801,95,1613"/>
+<area shape="rect" id="Node000010" href="$classTransformPresentation.html" title=" " alt="" coords="5,1801,191,2107"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="101,1612,101,1801,95,1801,95,1612"/>
 <area shape="rect" id="Node000014" href="$classColormappablePresentationMock.html" title=" " alt="" coords="711,1513,941,1579"/>
-<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="774,1204,824,1512,818,1513,769,1205"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="772,1194,824,1513,818,1513,767,1195"/>
 <area shape="rect" id="Node000016" href="$classanonymous__namespace_02determine-size-test_8cc_03_1_1ResizablePresentationInterfaceStub.html" title=" " alt="" coords="965,1421,1220,1671"/>
 <area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="1001,1228,1058,1420,1053,1422,996,1229"/>
 <area shape="rect" id="Node000019" href="$classTiledBitmap.html" title=" " alt="" coords="1085,885,1215,1291"/>

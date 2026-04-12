@@ -1,5 +1,5 @@
 <map id="ExamplePresentation" name="ExamplePresentation">
-<area shape="rect" id="Node000001" title=" " alt="" coords="39,833,229,1019"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="39,833,229,1039"/>
 <area shape="rect" id="Node000002" href="$classPresentationInterface.html" title=" " alt="" coords="57,620,211,785"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,799,137,833,131,833,131,799"/>
 <area shape="rect" id="Node000003" href="$classViewable.html" title=" " alt="" coords="25,417,99,502"/>

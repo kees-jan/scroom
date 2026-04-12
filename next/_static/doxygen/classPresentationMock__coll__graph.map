@@ -1,7 +1,7 @@
 <map id="PresentationMock" name="PresentationMock">
-<area shape="rect" id="Node000001" title=" " alt="" coords="59,1316,211,1521"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="59,1316,211,1501"/>
 <area shape="rect" id="Node000002" href="$classPresentationInterface.html" title=" " alt="" coords="58,1101,213,1267"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,1281,138,1316,133,1316,133,1281"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,1280,138,1316,133,1316,133,1280"/>
 <area shape="rect" id="Node000003" href="$classViewable.html" title=" " alt="" coords="27,897,102,982"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="83,994,114,1100,109,1102,78,996"/>
 <area shape="rect" id="Node000004" href="$classInterface.html" title=" " alt="" coords="5,599,113,764"/>

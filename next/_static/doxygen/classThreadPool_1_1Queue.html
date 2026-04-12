@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-42-g18d8b813</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-48-ga0fee447</span>
    </div>
   </td>
  </tr>
@@ -211,7 +211,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  389</span>{ <a class="code hl_variable" href="classThreadPool_1_1Queue.html#a78c61eff732a77a1ca300bb560a86d4f">weak</a>-&gt;get()-&gt;deletingQueue(); }</div>
-<div class="ttc" id="aclassThreadPool_1_1Queue_html_a78c61eff732a77a1ca300bb560a86d4f"><div class="ttname"><a href="classThreadPool_1_1Queue.html#a78c61eff732a77a1ca300bb560a86d4f">ThreadPool::Queue::weak</a></div><div class="ttdeci">std::shared_ptr&lt; WeakQueue &gt; weak</div><div class="ttdef"><b>Definition</b> threadpool.hh:112</div></div>
+<div class="ttc" id="aclassThreadPool_1_1Queue_html_a78c61eff732a77a1ca300bb560a86d4f"><div class="ttname"><a href="classThreadPool_1_1Queue.html#a78c61eff732a77a1ca300bb560a86d4f">ThreadPool::Queue::weak</a></div><div class="ttdeci">std::shared_ptr&lt; WeakQueue &gt; weak</div><div class="ttdef"><b>Definition</b> threadpool.hh:108</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -323,8 +323,8 @@ Private Attributes</h2></td></tr>
 <p><a class="el" href="classThreadPool_1_1Queue.html">ThreadPool::Queue</a>. </p>
 <p>When the last reference goes out of scope, synchronously destroy the <a class="el" href="classThreadPool_1_1Queue.html">Queue</a>, blocking until any currently running jobs are finished. </p>
 <div class="fragment"><div class="line"><span class="lineno">  380</span>{ <span class="keywordflow">return</span> <a class="code hl_typedef" href="classThreadPool_1_1Queue.html#a3096b6f6bf4aab440b938d7c5632a402">ThreadPool::Queue::Ptr</a>(<span class="keyword">new</span> <a class="code hl_class" href="classThreadPool_1_1Queue.html">ThreadPool::Queue</a>()); }</div>
-<div class="ttc" id="aclassThreadPool_1_1Queue_html"><div class="ttname"><a href="classThreadPool_1_1Queue.html">ThreadPool::Queue</a></div><div class="ttdef"><b>Definition</b> threadpool.hh:80</div></div>
-<div class="ttc" id="aclassThreadPool_1_1Queue_html_a3096b6f6bf4aab440b938d7c5632a402"><div class="ttname"><a href="classThreadPool_1_1Queue.html#a3096b6f6bf4aab440b938d7c5632a402">ThreadPool::Queue::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; Queue &gt; Ptr</div><div class="ttdef"><b>Definition</b> threadpool.hh:82</div></div>
+<div class="ttc" id="aclassThreadPool_1_1Queue_html"><div class="ttname"><a href="classThreadPool_1_1Queue.html">ThreadPool::Queue</a></div><div class="ttdef"><b>Definition</b> threadpool.hh:76</div></div>
+<div class="ttc" id="aclassThreadPool_1_1Queue_html_a3096b6f6bf4aab440b938d7c5632a402"><div class="ttname"><a href="classThreadPool_1_1Queue.html#a3096b6f6bf4aab440b938d7c5632a402">ThreadPool::Queue::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; Queue &gt; Ptr</div><div class="ttdef"><b>Definition</b> threadpool.hh:78</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classThreadPool.html#a7d435b8c6eff3ffcf5b9043bd50048c2">ThreadPool::defaultQueue()</a>, and <a class="el" href="classCompressedTile.html#a097a41844c75d21396fb64db3c039c8a">CompressedTile::observerAdded()</a>.</p>
 <div class="dynheader">

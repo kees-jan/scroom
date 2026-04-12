@@ -1,7 +1,7 @@
 <map id="ShowMetadataInterface" name="ShowMetadataInterface">
 <area shape="rect" id="Node000001" title=" " alt="" coords="123,219,292,284"/>
-<area shape="rect" id="Node000003" href="$classTransformPresentation.html" title=" " alt="" coords="5,397,191,682"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="193,298,155,398,150,396,188,296"/>
+<area shape="rect" id="Node000003" href="$classTransformPresentation.html" title=" " alt="" coords="5,387,191,692"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="193,298,158,388,154,386,188,296"/>
 <area shape="rect" id="Node000004" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html" title=" " alt="" coords="215,332,421,747"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="227,296,240,331,235,333,222,298"/>
 <area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="153,5,261,171"/>

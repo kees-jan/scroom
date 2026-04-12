@@ -1,7 +1,9 @@
 <map id="View::updateNewWindowMenu" name="View::updateNewWindowMenu">
-<area shape="rect" id="Node000001" title=" " alt="" coords="220,45,443,70"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="220,77,443,102"/>
 <area shape="rect" id="Node000002" href="$classView.html#ac4a77aaf7f803c7ddf77adba6e28a387" title=" " alt="" coords="5,5,172,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="221,45,172,39,173,34,221,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="268,76,165,48,166,43,270,70"/>
 <area shape="rect" id="Node000003" href="$classView.html#a10bfd0a564e56de855d3f5e5aa634eb0" title=" " alt="" coords="5,69,172,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="221,74,173,81,172,76,221,69"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="206,92,172,92,172,87,206,87"/>
+<area shape="rect" id="Node000004" href="$classView.html#aa2614af92e98a9841f3cc666a7fc3fd8" title=" " alt="" coords="42,134,135,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="264,108,136,138,135,133,263,103"/>
 </map>

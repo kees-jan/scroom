@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-42-g18d8b813</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-48-ga0fee447</span>
    </div>
   </td>
  </tr>
@@ -582,7 +582,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  317</span>}</div>
 <div class="ttc" id="aclassLayer_html_a4f07f871f3d1e7b153553a4ffa435656"><div class="ttname"><a href="classLayer.html#a4f07f871f3d1e7b153553a4ffa435656">Layer::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; Layer &gt; Ptr</div><div class="ttdef"><b>Definition</b> tiledbitmaplayer.hh:250</div></div>
 <div class="ttc" id="acompression-tests_8cc_html_a3057df7a0035a1af3bf57cda7cf76d09"><div class="ttname"><a href="compression-tests_8cc.html#a3057df7a0035a1af3bf57cda7cf76d09">l</a></div><div class="ttdeci">PageList const l</div><div class="ttdef"><b>Definition</b> compression-tests.cc:33</div></div>
-<div class="ttc" id="apipette-tests_8cc_html_a42c717015bd9a889714e98016e92c595"><div class="ttname"><a href="pipette-tests_8cc.html#a42c717015bd9a889714e98016e92c595">vi</a></div><div class="ttdeci">ViewInterface::Ptr const vi</div><div class="ttdef"><b>Definition</b> pipette-tests.cc:178</div></div>
+<div class="ttc" id="apipette-tests_8cc_html_a42c717015bd9a889714e98016e92c595"><div class="ttname"><a href="pipette-tests_8cc.html#a42c717015bd9a889714e98016e92c595">vi</a></div><div class="ttdeci">ViewInterface::Ptr const vi</div><div class="ttdef"><b>Definition</b> pipette-tests.cc:186</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -870,7 +870,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1Rectangle_html_a72976ed3a84a5c482d396038aa67f077"><div class="ttname"><a href="classScroom_1_1Utils_1_1Rectangle.html#a72976ed3a84a5c482d396038aa67f077">Scroom::Utils::Rectangle::x</a></div><div class="ttdeci">value_type x() const</div><div class="ttdef"><b>Definition</b> rectangle.hh:125</div></div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1Rectangle_html_aac53b13b110251e6666a6e8499c19f27"><div class="ttname"><a href="classScroom_1_1Utils_1_1Rectangle.html#aac53b13b110251e6666a6e8499c19f27">Scroom::Utils::Rectangle::width</a></div><div class="ttdeci">value_type width() const</div><div class="ttdef"><b>Definition</b> rectangle.hh:129</div></div>
 <div class="ttc" id="arectangletests_8cc_html_aaa71382a621129a81a9a410576802d0b"><div class="ttname"><a href="rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b">rect</a></div><div class="ttdeci">const auto rect</div><div class="ttdef"><b>Definition</b> rectangletests.cc:335</div></div>
-<div class="ttc" id="atransformpresentation__test_8cc_html_ac2efa4a51d11834112524e53b3dc0f62"><div class="ttname"><a href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a></div><div class="ttdeci">cairo_t * cr</div><div class="ttdef"><b>Definition</b> transformpresentation_test.cc:71</div></div>
+<div class="ttc" id="atransformpresentation__test_8cc_html_ac2efa4a51d11834112524e53b3dc0f62"><div class="ttname"><a href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a></div><div class="ttdeci">cairo_t * cr</div><div class="ttdef"><b>Definition</b> transformpresentation_test.cc:72</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classTiledBitmap.html#a98c2d60fc0736a77ab18aeeb461a1da8">redraw()</a>.</p>
 <div class="dynheader">
@@ -1548,7 +1548,7 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="lineno">  332</span>  <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  333</span>  {</div>
 <div class="line"><span class="lineno">  334</span>    <a class="code hl_function" href="namespaceScroom_1_1GtkHelpers.html#a41d93c131774cfff3137ec807ead3e94">Scroom::GtkHelpers::sync_on_ui_thread</a>(</div>
-<div class="line"><span class="lineno">  335</span>      [=]</div>
+<div class="line"><span class="lineno">  335</span>      [<span class="keyword">this</span>]</div>
 <div class="line"><span class="lineno">  336</span>      {</div>
 <div class="line"><span class="lineno">  337</span>        <a class="code hl_variable" href="classTiledBitmap.html#a47e74444f93f451d08c45cdb12a6fbe1">progressBroadcaster</a>-&gt;setWorking(1.0 * <a class="code hl_variable" href="classTiledBitmap.html#af7acdd49ff8f58b11473eed60733d60e">tileFinishedCount</a> / <a class="code hl_variable" href="classTiledBitmap.html#abec813ddb2f08f62dbacd234b21ae83f">tileCount</a>);</div>
 <div class="line"><span class="lineno">  338</span>        <span class="keywordflow">if</span>(<a class="code hl_variable" href="classTiledBitmap.html#af7acdd49ff8f58b11473eed60733d60e">tileFinishedCount</a> == <a class="code hl_variable" href="classTiledBitmap.html#abec813ddb2f08f62dbacd234b21ae83f">tileCount</a>)</div>

@@ -1,7 +1,7 @@
 <map id="ColormappablePresentationMock" name="ColormappablePresentationMock">
-<area shape="rect" id="Node000001" title=" " alt="" coords="101,1167,332,1232"/>
-<area shape="rect" id="Node000002" href="$classPresentationMock.html" title=" " alt="" coords="229,913,381,1119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="252,1132,234,1168,230,1165,247,1130"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="101,1147,332,1212"/>
+<area shape="rect" id="Node000002" href="$classPresentationMock.html" title=" " alt="" coords="229,913,381,1099"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="254,1112,235,1148,231,1145,249,1110"/>
 <area shape="rect" id="Node000003" href="$classPresentationInterface.html" title=" " alt="" coords="229,700,383,865"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="308,879,308,913,303,913,303,879"/>
 <area shape="rect" id="Node000004" href="$classViewable.html" title=" " alt="" coords="269,457,343,542"/>
@@ -16,7 +16,7 @@
 <area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="453,313,453,386,447,386,447,313"/>
 <area shape="rect" id="Node000008" title=" " alt="" coords="377,5,523,85"/>
 <area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="453,99,453,133,447,133,447,99"/>
-<area shape="rect" id="Node000009" href="$classColormappableMock.html" title=" " alt="" coords="55,933,203,1099"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="177,1110,204,1165,199,1167,172,1112"/>
-<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="129,666,131,933,125,933,123,666"/>
+<area shape="rect" id="Node000009" href="$classColormappableMock.html" title=" " alt="" coords="55,923,203,1089"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="179,1100,203,1145,198,1148,174,1102"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="129,666,131,923,125,923,123,666"/>
 </map>

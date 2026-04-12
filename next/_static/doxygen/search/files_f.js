@@ -12,9 +12,12 @@ var searchData=
   ['showmetadatainterface_2ehh_9',['showmetadatainterface.hh',['../showmetadatainterface_8hh.html',1,'']]],
   ['sidebarmanager_2ecc_10',['sidebarmanager.cc',['../sidebarmanager_8cc.html',1,'']]],
   ['sidebarmanager_2ehh_11',['sidebarmanager.hh',['../sidebarmanager_8hh.html',1,'']]],
-  ['sizedeterminer_2ecc_12',['sizedeterminer.cc',['../sizedeterminer_8cc.html',1,'']]],
-  ['sizedeterminer_2ehh_13',['sizedeterminer.hh',['../sizedeterminer_8hh.html',1,'']]],
-  ['stuff_2ehh_14',['stuff.hh',['../stuff_8hh.html',1,'']]],
-  ['swap_2dblock_2dallocator_2dtests_2ecc_15',['swap-block-allocator-tests.cc',['../swap-block-allocator-tests_8cc.html',1,'']]],
-  ['swapbasedblockallocator_2ecc_16',['swapbasedblockallocator.cc',['../swapbasedblockallocator_8cc.html',1,'']]]
+  ['single_2dcontext_2dtests_2ecc_12',['single-context-tests.cc',['../single-context-tests_8cc.html',1,'']]],
+  ['single_2dcontext_2ecc_13',['single-context.cc',['../single-context_8cc.html',1,'']]],
+  ['single_2dcontext_2ehh_14',['single-context.hh',['../single-context_8hh.html',1,'']]],
+  ['sizedeterminer_2ecc_15',['sizedeterminer.cc',['../sizedeterminer_8cc.html',1,'']]],
+  ['sizedeterminer_2ehh_16',['sizedeterminer.hh',['../sizedeterminer_8hh.html',1,'']]],
+  ['stuff_2ehh_17',['stuff.hh',['../stuff_8hh.html',1,'']]],
+  ['swap_2dblock_2dallocator_2dtests_2ecc_18',['swap-block-allocator-tests.cc',['../swap-block-allocator-tests_8cc.html',1,'']]],
+  ['swapbasedblockallocator_2ecc_19',['swapbasedblockallocator.cc',['../swapbasedblockallocator_8cc.html',1,'']]]
 ];

@@ -33,5 +33,7 @@ var searchData=
   ['transparentoverlaypresentation_2ecc_30',['transparentoverlaypresentation.cc',['../transparentoverlaypresentation_8cc.html',1,'']]],
   ['transparentoverlaypresentation_2ehh_31',['transparentoverlaypresentation.hh',['../transparentoverlaypresentation_8hh.html',1,'']]],
   ['transparentoverlayviewinfo_2ecc_32',['transparentoverlayviewinfo.cc',['../transparentoverlayviewinfo_8cc.html',1,'']]],
-  ['transparentoverlayviewinfo_2ehh_33',['transparentoverlayviewinfo.hh',['../transparentoverlayviewinfo_8hh.html',1,'']]]
+  ['transparentoverlayviewinfo_2ehh_33',['transparentoverlayviewinfo.hh',['../transparentoverlayviewinfo_8hh.html',1,'']]],
+  ['tweak_2dview_2ecc_34',['tweak-view.cc',['../tweak-view_8cc.html',1,'']]],
+  ['tweak_2dview_2ehh_35',['tweak-view.hh',['../tweak-view_8hh.html',1,'']]]
 ];

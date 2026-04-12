@@ -1,23 +1,27 @@
 <map id="libs/scroom/inc/scroom/transformpresentation.hh" name="libs/scroom/inc/scroom/transformpresentation.hh">
-<area shape="rect" id="Node000001" title=" " alt="" coords="761,5,953,45"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="996,5,1188,45"/>
 <area shape="rect" id="Node000002" href="$transformpresentation_8cc.html" title=" " alt="" coords="5,101,293,126"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="748,43,244,103,243,98,747,37"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="982,37,677,62,306,96,240,103,239,98,305,91,677,56,982,32"/>
 <area shape="rect" id="Node000003" href="$transformpresentation__test_8cc.html" title=" " alt="" coords="318,93,594,133"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="757,51,544,96,543,91,755,46"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="983,44,595,96,594,91,982,39"/>
 <area shape="rect" id="Node000004" href="$tiledbitmappresentation_8cc.html" title=" " alt="" coords="618,93,819,133"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="817,55,750,96,748,91,814,50"/>
-<area shape="rect" id="Node000005" href="$pnm_8cc.html" title=" " alt="" coords="732,181,908,207"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="853,59,825,182,820,181,847,58"/>
-<area shape="rect" id="Node000006" href="$pnmsource_8hh.html" title=" " alt="" coords="895,101,1116,126"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="903,50,987,98,984,103,900,55"/>
-<area shape="rect" id="Node000008" href="$tiff_8cc.html" title=" " alt="" coords="1175,181,1329,207"/>
-<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="968,40,1048,60,1129,91,1239,179,1236,183,1127,96,1047,65,966,45"/>
-<area shape="rect" id="Node000009" href="$tiffsource_8hh.html" title=" " alt="" coords="1190,101,1389,126"/>
-<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="966,45,1232,98,1231,103,965,51"/>
-<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="967,134,848,184,846,179,965,129"/>
-<area shape="rect" id="Node000007" href="$pnmsource_8cc.html" title=" " alt="" coords="932,181,1151,207"/>
-<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="1019,137,1038,180,1034,182,1014,140"/>
-<area shape="poly" id="edge10_Node000009_Node000008" title=" " alt="" coords="1280,140,1260,182,1255,180,1276,137"/>
-<area shape="rect" id="Node000010" href="$tiffsource_8cc.html" title=" " alt="" coords="1353,181,1551,207"/>
-<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="1326,129,1429,179,1427,184,1324,134"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="998,51,801,96,800,91,996,46"/>
+<area shape="rect" id="Node000005" href="$measure_8cc.html" title=" " alt="" coords="843,93,997,133"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="1043,54,959,96,956,91,1041,49"/>
+<area shape="rect" id="Node000006" href="$pipette_8cc.html" title=" " alt="" coords="1021,93,1163,133"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="1095,59,1095,93,1089,93,1089,59"/>
+<area shape="rect" id="Node000007" href="$pnm_8cc.html" title=" " alt="" coords="1076,181,1252,207"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1141,51,1161,69,1177,92,1183,116,1183,141,1172,182,1167,180,1177,140,1178,117,1172,94,1157,73,1137,55"/>
+<area shape="rect" id="Node000008" href="$pnmsource_8hh.html" title=" " alt="" coords="1239,101,1460,126"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1162,47,1316,98,1314,103,1161,52"/>
+<area shape="rect" id="Node000010" href="$tiff_8cc.html" title=" " alt="" coords="1519,181,1673,207"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="1202,29,1265,36,1334,48,1405,66,1473,91,1583,179,1580,183,1471,96,1404,71,1333,53,1264,41,1201,34"/>
+<area shape="rect" id="Node000011" href="$tiffsource_8hh.html" title=" " alt="" coords="1534,101,1733,126"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="1202,41,1516,91,1562,98,1562,103,1516,96,1201,47"/>
+<area shape="poly" id="edge8_Node000008_Node000007" title=" " alt="" coords="1311,134,1192,184,1190,179,1309,129"/>
+<area shape="rect" id="Node000009" href="$pnmsource_8cc.html" title=" " alt="" coords="1276,181,1495,207"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="1363,137,1382,180,1378,182,1358,140"/>
+<area shape="poly" id="edge12_Node000011_Node000010" title=" " alt="" coords="1624,140,1604,182,1599,180,1620,137"/>
+<area shape="rect" id="Node000012" href="$tiffsource_8cc.html" title=" " alt="" coords="1697,181,1895,207"/>
+<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="1670,129,1773,179,1771,184,1668,134"/>
 </map>

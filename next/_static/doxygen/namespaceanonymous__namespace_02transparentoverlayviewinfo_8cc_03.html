@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-42-g18d8b813</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-48-ga0fee447</span>
    </div>
   </td>
  </tr>
@@ -126,44 +126,44 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   26</span>  {</div>
-<div class="line"><span class="lineno">   27</span>    <a class="code hl_typedef" href="classColormappable.html#a5a0a12959d518d3f36185b07dc420383">Colormappable::Ptr</a> <span class="keyword">const</span> <a class="code hl_variable" href="threadpool-destruction-tests_8cc.html#a2a95d18e7f38634394c4104d0e759989">c</a> = std::dynamic_pointer_cast&lt;Colormappable&gt;(<a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>);</div>
-<div class="line"><span class="lineno">   28</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="threadpool-destruction-tests_8cc.html#a2a95d18e7f38634394c4104d0e759989">c</a> &amp;&amp; <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>-&gt;isPropertyDefined(<a class="code hl_variable" href="colormappable_8hh.html#ad2d2917d25ae2de5baa91f92dafb3cae">MONOCHROME_COLORMAPPABLE_PROPERTY_NAME</a>))</div>
-<div class="line"><span class="lineno">   29</span>    {</div>
-<div class="line"><span class="lineno">   30</span>      <a class="code hl_class" href="classColor.html">Color</a> <span class="keyword">const</span> col = <a class="code hl_variable" href="threadpool-destruction-tests_8cc.html#a2a95d18e7f38634394c4104d0e759989">c</a>-&gt;getMonochromeColor();</div>
-<div class="line"><span class="lineno">   31</span>      GtkCssProvider* bgCssProvider = gtk_css_provider_new();</div>
-<div class="line"><span class="lineno">   32</span>      <span class="keyword">const</span> std::string bgCss = <span class="stringliteral">&quot;* { background-image:none; background-color: #&quot;</span> + col.<a class="code hl_function" href="classColor.html#a09b8ac4c9ffab88e55186ebc0b25345a">getHex</a>() + <span class="stringliteral">&quot;;}&quot;</span>;</div>
-<div class="line"><span class="lineno">   33</span> </div>
-<div class="line"><span class="lineno">   34</span>      <span class="comment">// Fill the provider with the correct data bgCss string</span></div>
-<div class="line"><span class="lineno">   35</span>      gtk_css_provider_load_from_data(bgCssProvider, bgCss.c_str(), -1, <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">   36</span> </div>
-<div class="line"><span class="lineno">   37</span>      <span class="comment">// Get the style context</span></div>
-<div class="line"><span class="lineno">   38</span>      GtkStyleContext* bgContext = gtk_widget_get_style_context(<a class="code hl_variable" href="gtkhelper-tests_8cc.html#a73773458b84bba0a29131adbc88d1b79">w</a>);</div>
+<div class="fragment"><div class="line"><span class="lineno">   22</span>  {</div>
+<div class="line"><span class="lineno">   23</span>    <a class="code hl_typedef" href="classColormappable.html#a5a0a12959d518d3f36185b07dc420383">Colormappable::Ptr</a> <span class="keyword">const</span> <a class="code hl_variable" href="threadpool-destruction-tests_8cc.html#a2a95d18e7f38634394c4104d0e759989">c</a> = std::dynamic_pointer_cast&lt;Colormappable&gt;(<a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>);</div>
+<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="threadpool-destruction-tests_8cc.html#a2a95d18e7f38634394c4104d0e759989">c</a> &amp;&amp; <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>-&gt;isPropertyDefined(<a class="code hl_variable" href="colormappable_8hh.html#ad2d2917d25ae2de5baa91f92dafb3cae">MONOCHROME_COLORMAPPABLE_PROPERTY_NAME</a>))</div>
+<div class="line"><span class="lineno">   25</span>    {</div>
+<div class="line"><span class="lineno">   26</span>      <a class="code hl_class" href="classColor.html">Color</a> <span class="keyword">const</span> col = <a class="code hl_variable" href="threadpool-destruction-tests_8cc.html#a2a95d18e7f38634394c4104d0e759989">c</a>-&gt;getMonochromeColor();</div>
+<div class="line"><span class="lineno">   27</span>      GtkCssProvider* bgCssProvider = gtk_css_provider_new();</div>
+<div class="line"><span class="lineno">   28</span>      <span class="keyword">const</span> std::string bgCss = <span class="stringliteral">&quot;* { background-image:none; background-color: #&quot;</span> + col.<a class="code hl_function" href="classColor.html#a09b8ac4c9ffab88e55186ebc0b25345a">getHex</a>() + <span class="stringliteral">&quot;;}&quot;</span>;</div>
+<div class="line"><span class="lineno">   29</span> </div>
+<div class="line"><span class="lineno">   30</span>      <span class="comment">// Fill the provider with the correct data bgCss string</span></div>
+<div class="line"><span class="lineno">   31</span>      gtk_css_provider_load_from_data(bgCssProvider, bgCss.c_str(), -1, <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">   32</span> </div>
+<div class="line"><span class="lineno">   33</span>      <span class="comment">// Get the style context</span></div>
+<div class="line"><span class="lineno">   34</span>      GtkStyleContext* bgContext = gtk_widget_get_style_context(<a class="code hl_variable" href="gtkhelper-tests_8cc.html#a73773458b84bba0a29131adbc88d1b79">w</a>);</div>
+<div class="line"><span class="lineno">   35</span> </div>
+<div class="line"><span class="lineno">   36</span>      <span class="comment">// Add the provider</span></div>
+<div class="line"><span class="lineno">   37</span>      gtk_style_context_add_provider(bgContext, GTK_STYLE_PROVIDER(bgCssProvider), GTK_STYLE_PROVIDER_PRIORITY_USER);</div>
+<div class="line"><span class="lineno">   38</span> </div>
 <div class="line"><span class="lineno">   39</span> </div>
-<div class="line"><span class="lineno">   40</span>      <span class="comment">// Add the provider</span></div>
-<div class="line"><span class="lineno">   41</span>      gtk_style_context_add_provider(bgContext, GTK_STYLE_PROVIDER(bgCssProvider), GTK_STYLE_PROVIDER_PRIORITY_USER);</div>
-<div class="line"><span class="lineno">   42</span> </div>
+<div class="line"><span class="lineno">   40</span>      <span class="keyword">const</span> std::string fgCss = <span class="stringliteral">&quot;* { color: #&quot;</span> + col.<a class="code hl_function" href="classColor.html#a49dddd32e110bbfc3c96e159a70eb0f5">getContrastingBlackOrWhite</a>().<a class="code hl_function" href="classColor.html#a09b8ac4c9ffab88e55186ebc0b25345a">getHex</a>() + <span class="stringliteral">&quot;;}&quot;</span>;</div>
+<div class="line"><span class="lineno">   41</span>      GtkWidget* label = gtk_bin_get_child(GTK_BIN(<a class="code hl_variable" href="gtkhelper-tests_8cc.html#a73773458b84bba0a29131adbc88d1b79">w</a>));</div>
+<div class="line"><span class="lineno">   42</span>      GtkCssProvider* fgCssProvider = gtk_css_provider_new();</div>
 <div class="line"><span class="lineno">   43</span> </div>
-<div class="line"><span class="lineno">   44</span>      <span class="keyword">const</span> std::string fgCss = <span class="stringliteral">&quot;* { color: #&quot;</span> + col.<a class="code hl_function" href="classColor.html#a49dddd32e110bbfc3c96e159a70eb0f5">getContrastingBlackOrWhite</a>().<a class="code hl_function" href="classColor.html#a09b8ac4c9ffab88e55186ebc0b25345a">getHex</a>() + <span class="stringliteral">&quot;;}&quot;</span>;</div>
-<div class="line"><span class="lineno">   45</span>      GtkWidget* label = gtk_bin_get_child(GTK_BIN(<a class="code hl_variable" href="gtkhelper-tests_8cc.html#a73773458b84bba0a29131adbc88d1b79">w</a>));</div>
-<div class="line"><span class="lineno">   46</span>      GtkCssProvider* fgCssProvider = gtk_css_provider_new();</div>
-<div class="line"><span class="lineno">   47</span> </div>
-<div class="line"><span class="lineno">   48</span>      <span class="comment">// Fill the provider with the correct data fgCss string</span></div>
-<div class="line"><span class="lineno">   49</span>      gtk_css_provider_load_from_data(fgCssProvider, fgCss.c_str(), -1, <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">   50</span> </div>
-<div class="line"><span class="lineno">   51</span>      <span class="comment">// Get the style context</span></div>
-<div class="line"><span class="lineno">   52</span>      GtkStyleContext* fgContext = gtk_widget_get_style_context(label);</div>
-<div class="line"><span class="lineno">   53</span> </div>
-<div class="line"><span class="lineno">   54</span>      <span class="comment">// Add the provider</span></div>
-<div class="line"><span class="lineno">   55</span>      gtk_style_context_add_provider(fgContext, GTK_STYLE_PROVIDER(fgCssProvider), GTK_STYLE_PROVIDER_PRIORITY_USER);</div>
-<div class="line"><span class="lineno">   56</span>    }</div>
-<div class="line"><span class="lineno">   57</span>  }</div>
+<div class="line"><span class="lineno">   44</span>      <span class="comment">// Fill the provider with the correct data fgCss string</span></div>
+<div class="line"><span class="lineno">   45</span>      gtk_css_provider_load_from_data(fgCssProvider, fgCss.c_str(), -1, <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>      <span class="comment">// Get the style context</span></div>
+<div class="line"><span class="lineno">   48</span>      GtkStyleContext* fgContext = gtk_widget_get_style_context(label);</div>
+<div class="line"><span class="lineno">   49</span> </div>
+<div class="line"><span class="lineno">   50</span>      <span class="comment">// Add the provider</span></div>
+<div class="line"><span class="lineno">   51</span>      gtk_style_context_add_provider(fgContext, GTK_STYLE_PROVIDER(fgCssProvider), GTK_STYLE_PROVIDER_PRIORITY_USER);</div>
+<div class="line"><span class="lineno">   52</span>    }</div>
+<div class="line"><span class="lineno">   53</span>  }</div>
 <div class="ttc" id="aclassColor_html"><div class="ttname"><a href="classColor.html">Color</a></div><div class="ttdef"><b>Definition</b> color.hh:37</div></div>
 <div class="ttc" id="aclassColor_html_a09b8ac4c9ffab88e55186ebc0b25345a"><div class="ttname"><a href="classColor.html#a09b8ac4c9ffab88e55186ebc0b25345a">Color::getHex</a></div><div class="ttdeci">std::string getHex() const</div><div class="ttdef"><b>Definition</b> color.hh:93</div></div>
 <div class="ttc" id="aclassColor_html_a49dddd32e110bbfc3c96e159a70eb0f5"><div class="ttname"><a href="classColor.html#a49dddd32e110bbfc3c96e159a70eb0f5">Color::getContrastingBlackOrWhite</a></div><div class="ttdeci">Color getContrastingBlackOrWhite() const</div><div class="ttdef"><b>Definition</b> color.hh:121</div></div>
 <div class="ttc" id="aclassColormappable_html_a5a0a12959d518d3f36185b07dc420383"><div class="ttname"><a href="classColormappable.html#a5a0a12959d518d3f36185b07dc420383">Colormappable::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; Colormappable &gt; Ptr</div><div class="ttdef"><b>Definition</b> colormappable.hh:114</div></div>
 <div class="ttc" id="acolormappable_8hh_html_ad2d2917d25ae2de5baa91f92dafb3cae"><div class="ttname"><a href="colormappable_8hh.html#ad2d2917d25ae2de5baa91f92dafb3cae">MONOCHROME_COLORMAPPABLE_PROPERTY_NAME</a></div><div class="ttdeci">const std::string MONOCHROME_COLORMAPPABLE_PROPERTY_NAME</div><div class="ttdef"><b>Definition</b> colormappable.hh:20</div></div>
-<div class="ttc" id="adetermine-size-test_8cc_html_abf000ba68ab71a4284d8a6b1ed241f79"><div class="ttname"><a href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a></div><div class="ttdeci">PresentationInterfaceStub::Ptr const p</div><div class="ttdef"><b>Definition</b> determine-size-test.cc:167</div></div>
+<div class="ttc" id="adetermine-size-test_8cc_html_abf000ba68ab71a4284d8a6b1ed241f79"><div class="ttname"><a href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a></div><div class="ttdeci">PresentationInterfaceStub::Ptr const p</div><div class="ttdef"><b>Definition</b> determine-size-test.cc:172</div></div>
 <div class="ttc" id="agtkhelper-tests_8cc_html_a73773458b84bba0a29131adbc88d1b79"><div class="ttname"><a href="gtkhelper-tests_8cc.html#a73773458b84bba0a29131adbc88d1b79">w</a></div><div class="ttdeci">std::pair&lt; GSourceFunc, gpointer &gt; const w</div><div class="ttdef"><b>Definition</b> gtkhelper-tests.cc:42</div></div>
 <div class="ttc" id="athreadpool-destruction-tests_8cc_html_a2a95d18e7f38634394c4104d0e759989"><div class="ttname"><a href="threadpool-destruction-tests_8cc.html#a2a95d18e7f38634394c4104d0e759989">c</a></div><div class="ttdeci">Semaphore c(0)</div></div>
 </div><!-- fragment --><div class="dynheader">

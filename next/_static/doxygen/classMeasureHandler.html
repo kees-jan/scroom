@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-42-g18d8b813</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-48-ga0fee447</span>
    </div>
   </td>
  </tr>
@@ -254,7 +254,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   63</span>{ <span class="keywordflow">return</span> std::make_shared&lt;MeasureHandler&gt;(); }</div>
+<div class="fragment"><div class="line"><span class="lineno">   64</span>{ <span class="keywordflow">return</span> std::make_shared&lt;MeasureHandler&gt;(); }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classMeasure.html#a76f201de0da18b6b2727a96e07252196">Measure::viewAdded()</a>.</p>
 <div class="dynheader">
@@ -293,24 +293,25 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   66</span>{</div>
-<div class="line"><span class="lineno">   67</span>  <span class="keyword">const</span> <span class="keyword">auto</span> aspectRatio = <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;getCurrentPresentation()-&gt;getAspectRatio();</div>
-<div class="line"><span class="lineno">   68</span>  <span class="keyword">const</span> <a class="code hl_struct" href="structSelection.html">Selection</a> tweaked(<a class="code hl_variable" href="classMeasureHandler.html#a048b8f2085ffc7f409140ad5289f1df1">selection</a>-&gt;start / aspectRatio, <a class="code hl_variable" href="classMeasureHandler.html#a048b8f2085ffc7f409140ad5289f1df1">selection</a>-&gt;end / aspectRatio);</div>
-<div class="line"><span class="lineno">   69</span> </div>
-<div class="line"><span class="lineno">   70</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;setStatusMessage(</div>
-<div class="line"><span class="lineno">   71</span>    fmt::format(</div>
-<div class="line"><span class="lineno">   72</span>      <span class="stringliteral">&quot;l: {:.1f}, dx: {}, dy: {}, from: {}, to: {}&quot;</span>,</div>
-<div class="line"><span class="lineno">   73</span>      tweaked.length(),</div>
-<div class="line"><span class="lineno">   74</span>      tweaked.width(),</div>
-<div class="line"><span class="lineno">   75</span>      tweaked.height(),</div>
-<div class="line"><span class="lineno">   76</span>      tweaked.start,</div>
-<div class="line"><span class="lineno">   77</span>      tweaked.end</div>
-<div class="line"><span class="lineno">   78</span>    )</div>
-<div class="line"><span class="lineno">   79</span>  );</div>
-<div class="line"><span class="lineno">   80</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   67</span>{</div>
+<div class="line"><span class="lineno">   68</span>  <span class="keyword">const</span> <span class="keyword">auto</span> aspectRatio = <a class="code hl_function" href="transformpresentation_8hh.html#a3c364253c15ca463285b38252c438f8f">getAspectRatio</a>(<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;getCurrentPresentation());</div>
+<div class="line"><span class="lineno">   69</span>  <span class="keyword">const</span> <a class="code hl_struct" href="structSelection.html">Selection</a> tweaked(<a class="code hl_variable" href="classMeasureHandler.html#a048b8f2085ffc7f409140ad5289f1df1">selection</a>-&gt;start / aspectRatio, <a class="code hl_variable" href="classMeasureHandler.html#a048b8f2085ffc7f409140ad5289f1df1">selection</a>-&gt;end / aspectRatio);</div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;setStatusMessage(</div>
+<div class="line"><span class="lineno">   72</span>    fmt::format(</div>
+<div class="line"><span class="lineno">   73</span>      <span class="stringliteral">&quot;l: {:.1f}, dx: {}, dy: {}, from: {}, to: {}&quot;</span>,</div>
+<div class="line"><span class="lineno">   74</span>      tweaked.length(),</div>
+<div class="line"><span class="lineno">   75</span>      tweaked.width(),</div>
+<div class="line"><span class="lineno">   76</span>      tweaked.height(),</div>
+<div class="line"><span class="lineno">   77</span>      tweaked.start,</div>
+<div class="line"><span class="lineno">   78</span>      tweaked.end</div>
+<div class="line"><span class="lineno">   79</span>    )</div>
+<div class="line"><span class="lineno">   80</span>  );</div>
+<div class="line"><span class="lineno">   81</span>}</div>
 <div class="ttc" id="aclassMeasureHandler_html_a048b8f2085ffc7f409140ad5289f1df1"><div class="ttname"><a href="classMeasureHandler.html#a048b8f2085ffc7f409140ad5289f1df1">MeasureHandler::selection</a></div><div class="ttdeci">std::optional&lt; Selection &gt; selection</div><div class="ttdef"><b>Definition</b> measure.hh:27</div></div>
-<div class="ttc" id="apipette-tests_8cc_html_a451de4c4fbfbb1e66ca17e7cee7f8761"><div class="ttname"><a href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a></div><div class="ttdeci">const auto view</div><div class="ttdef"><b>Definition</b> pipette-tests.cc:219</div></div>
+<div class="ttc" id="apipette-tests_8cc_html_a451de4c4fbfbb1e66ca17e7cee7f8761"><div class="ttname"><a href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a></div><div class="ttdeci">const auto view</div><div class="ttdef"><b>Definition</b> pipette-tests.cc:227</div></div>
 <div class="ttc" id="astructSelection_html"><div class="ttname"><a href="structSelection.html">Selection</a></div><div class="ttdef"><b>Definition</b> viewinterface.hh:37</div></div>
+<div class="ttc" id="atransformpresentation_8hh_html_a3c364253c15ca463285b38252c438f8f"><div class="ttname"><a href="transformpresentation_8hh.html#a3c364253c15ca463285b38252c438f8f">getAspectRatio</a></div><div class="ttdeci">Scroom::Utils::Point&lt; double &gt; getAspectRatio(const PresentationInterface::Ptr &amp;presentation)</div><div class="ttdef"><b>Definition</b> transformpresentation.cc:162</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classMeasureHandler.html#a2b7304f7764588c6b3c85d93bb6e2c9a">onSelectionEnd()</a>, and <a class="el" href="classMeasureHandler.html#a05c308179492e7d55ecf641ab30893b3">onSelectionUpdate()</a>.</p>
 <div class="dynheader">
@@ -318,15 +319,20 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMeasureHandler_aa30dd1737fe173472b6aca30692eab84_cgraph.png" border="0" usemap="#aclassMeasureHandler_aa30dd1737fe173472b6aca30692eab84_cgraph" alt=""/></div>
 <map name="aclassMeasureHandler_aa30dd1737fe173472b6aca30692eab84_cgraph" id="aclassMeasureHandler_aa30dd1737fe173472b6aca30692eab84_cgraph">
-<area shape="rect" title=" " alt="" coords="5,29,280,55"/>
-<area shape="rect" href="structSelection.html#a7d704930f3054ec384530cfbcb54c31d" title=" " alt="" coords="507,5,637,31"/>
-<area shape="poly" title=" " alt="" coords="219,27,328,14,393,12,459,14,492,14,492,20,459,19,393,18,328,19,219,32"/>
-<area shape="rect" href="structSelection.html#a400e9fb58887a04db35e354741aa96ec" title=" " alt="" coords="328,29,459,55"/>
-<area shape="poly" title=" " alt="" coords="280,39,314,39,314,45,280,45"/>
-<area shape="rect" href="structSelection.html#a9c9dec2ae8c7eb3bedd9b6379ada05d1" title=" " alt="" coords="509,55,635,80"/>
-<area shape="poly" title=" " alt="" coords="219,52,328,65,414,68,495,67,495,73,414,73,328,70,219,57"/>
-<area shape="poly" title=" " alt="" coords="458,31,493,26,493,31,459,36"/>
-<area shape="poly" title=" " alt="" coords="459,49,495,54,494,59,458,54"/>
+<area shape="rect" title=" " alt="" coords="5,113,280,138"/>
+<area shape="rect" href="transformpresentation_8cc.html#a3c364253c15ca463285b38252c438f8f" title=" " alt="" coords="333,37,454,62"/>
+<area shape="poly" title=" " alt="" coords="185,110,337,64,338,69,186,115"/>
+<area shape="rect" href="structSelection.html#a7d704930f3054ec384530cfbcb54c31d" title=" " alt="" coords="518,117,649,142"/>
+<area shape="poly" title=" " alt="" coords="280,122,459,123,504,124,504,129,459,128,280,127"/>
+<area shape="rect" href="structSelection.html#a400e9fb58887a04db35e354741aa96ec" title=" " alt="" coords="328,138,459,163"/>
+<area shape="poly" title=" " alt="" coords="269,135,314,140,314,145,268,141"/>
+<area shape="rect" href="structSelection.html#a9c9dec2ae8c7eb3bedd9b6379ada05d1" title=" " alt="" coords="520,166,647,191"/>
+<area shape="poly" title=" " alt="" coords="180,135,248,156,328,173,420,181,506,180,506,186,420,186,328,179,247,161,179,141"/>
+<area shape="rect" href="namespaceScroom_1_1Utils.html#af6796373cc462aef8e6979a40acef5d3" title=" " alt="" coords="507,29,660,69"/>
+<area shape="poly" title=" " alt="" coords="454,47,493,47,493,52,454,52"/>
+<area shape="poly" title=" " alt="" coords="547,30,545,20,551,11,564,5,583,3,606,6,618,13,615,17,604,11,583,8,565,10,555,15,551,21,553,28"/>
+<area shape="poly" title=" " alt="" coords="459,141,504,136,504,141,459,146"/>
+<area shape="poly" title=" " alt="" coords="460,158,507,165,506,170,459,163"/>
 </map>
 </div>
 <div class="dynheader">
@@ -377,15 +383,15 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   83</span>{</div>
-<div class="line"><span class="lineno">   84</span>  <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> size = 10;</div>
-<div class="line"><span class="lineno">   85</span>  cairo_move_to(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.x - size, <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.y);</div>
-<div class="line"><span class="lineno">   86</span>  cairo_line_to(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.x + size, <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.y);</div>
-<div class="line"><span class="lineno">   87</span>  cairo_move_to(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.x, <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.y - size);</div>
-<div class="line"><span class="lineno">   88</span>  cairo_line_to(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.x, <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.y + size);</div>
-<div class="line"><span class="lineno">   89</span>}</div>
-<div class="ttc" id="adetermine-size-test_8cc_html_abf000ba68ab71a4284d8a6b1ed241f79"><div class="ttname"><a href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a></div><div class="ttdeci">PresentationInterfaceStub::Ptr const p</div><div class="ttdef"><b>Definition</b> determine-size-test.cc:167</div></div>
-<div class="ttc" id="atransformpresentation__test_8cc_html_ac2efa4a51d11834112524e53b3dc0f62"><div class="ttname"><a href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a></div><div class="ttdeci">cairo_t * cr</div><div class="ttdef"><b>Definition</b> transformpresentation_test.cc:71</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   84</span>{</div>
+<div class="line"><span class="lineno">   85</span>  <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> size = 10;</div>
+<div class="line"><span class="lineno">   86</span>  cairo_move_to(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.x - size, <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.y);</div>
+<div class="line"><span class="lineno">   87</span>  cairo_line_to(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.x + size, <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.y);</div>
+<div class="line"><span class="lineno">   88</span>  cairo_move_to(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.x, <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.y - size);</div>
+<div class="line"><span class="lineno">   89</span>  cairo_line_to(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.x, <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.y + size);</div>
+<div class="line"><span class="lineno">   90</span>}</div>
+<div class="ttc" id="adetermine-size-test_8cc_html_abf000ba68ab71a4284d8a6b1ed241f79"><div class="ttname"><a href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a></div><div class="ttdeci">PresentationInterfaceStub::Ptr const p</div><div class="ttdef"><b>Definition</b> determine-size-test.cc:172</div></div>
+<div class="ttc" id="atransformpresentation__test_8cc_html_ac2efa4a51d11834112524e53b3dc0f62"><div class="ttname"><a href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a></div><div class="ttdeci">cairo_t * cr</div><div class="ttdef"><b>Definition</b> transformpresentation_test.cc:72</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classMeasureHandler.html#aa5da72693cd934cc1a4e2d6aa6991df8">render()</a>.</p>
 <div class="dynheader">
@@ -426,10 +432,10 @@ Here is the caller graph for this function:</div>
 <p>Then function is called whenever the tool button is deselected. </p>
 
 <p>Implements <a class="el" href="classToolStateListener.html#a5c5428be3cedeaa27b0e45be9cd782d0">ToolStateListener</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  149</span>{</div>
-<div class="line"><span class="lineno">  150</span>  <a class="code hl_variable" href="classMeasureHandler.html#a048b8f2085ffc7f409140ad5289f1df1">selection</a>.reset();</div>
-<div class="line"><span class="lineno">  151</span>  <a class="code hl_variable" href="classMeasureHandler.html#ad1f0ab100e7270bb54688bb8e071cfc6">enabled</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  152</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  150</span>{</div>
+<div class="line"><span class="lineno">  151</span>  <a class="code hl_variable" href="classMeasureHandler.html#a048b8f2085ffc7f409140ad5289f1df1">selection</a>.reset();</div>
+<div class="line"><span class="lineno">  152</span>  <a class="code hl_variable" href="classMeasureHandler.html#ad1f0ab100e7270bb54688bb8e071cfc6">enabled</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  153</span>}</div>
 <div class="ttc" id="aclassMeasureHandler_html_ad1f0ab100e7270bb54688bb8e071cfc6"><div class="ttname"><a href="classMeasureHandler.html#ad1f0ab100e7270bb54688bb8e071cfc6">MeasureHandler::enabled</a></div><div class="ttdeci">bool enabled</div><div class="ttdef"><b>Definition</b> measure.hh:28</div></div>
 </div><!-- fragment -->
 </div>
@@ -459,7 +465,7 @@ Here is the caller graph for this function:</div>
 <p>This function is called whenever the tool button is selected. </p>
 
 <p>Implements <a class="el" href="classToolStateListener.html#a97add007438e18b5aba94e99d623e68e">ToolStateListener</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  154</span>{ <a class="code hl_variable" href="classMeasureHandler.html#ad1f0ab100e7270bb54688bb8e071cfc6">enabled</a> = <span class="keyword">true</span>; }</div>
+<div class="fragment"><div class="line"><span class="lineno">  155</span>{ <a class="code hl_variable" href="classMeasureHandler.html#ad1f0ab100e7270bb54688bb8e071cfc6">enabled</a> = <span class="keyword">true</span>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -501,31 +507,36 @@ Here is the caller graph for this function:</div>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="structSelection.html">Selection</a> </dd></dl>
 
 <p>Implements <a class="el" href="classSelectionListener.html#a31ad704ffc7cfa203639295f6d942308">SelectionListener</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  107</span>{</div>
-<div class="line"><span class="lineno">  108</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="classMeasureHandler.html#ad1f0ab100e7270bb54688bb8e071cfc6">enabled</a>)</div>
-<div class="line"><span class="lineno">  109</span>  {</div>
-<div class="line"><span class="lineno">  110</span>    <a class="code hl_variable" href="classMeasureHandler.html#a048b8f2085ffc7f409140ad5289f1df1">selection</a> = <a class="code hl_variable" href="transformpresentation__test_8cc.html#aab0e3ec116bb87f30039fc772656b8ef">s</a>;</div>
-<div class="line"><span class="lineno">  111</span>    <a class="code hl_function" href="classMeasureHandler.html#aa30dd1737fe173472b6aca30692eab84">displayMeasurement</a>(<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>);</div>
-<div class="line"><span class="lineno">  112</span>  }</div>
-<div class="line"><span class="lineno">  113</span>}</div>
-<div class="ttc" id="aclassMeasureHandler_html_aa30dd1737fe173472b6aca30692eab84"><div class="ttname"><a href="classMeasureHandler.html#aa30dd1737fe173472b6aca30692eab84">MeasureHandler::displayMeasurement</a></div><div class="ttdeci">virtual void displayMeasurement(const ViewInterface::Ptr &amp;view)</div><div class="ttdef"><b>Definition</b> measure.cc:65</div></div>
-<div class="ttc" id="atransformpresentation__test_8cc_html_aab0e3ec116bb87f30039fc772656b8ef"><div class="ttname"><a href="transformpresentation__test_8cc.html#aab0e3ec116bb87f30039fc772656b8ef">s</a></div><div class="ttdeci">BitmapSurface::Ptr const s</div><div class="ttdef"><b>Definition</b> transformpresentation_test.cc:69</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  108</span>{</div>
+<div class="line"><span class="lineno">  109</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="classMeasureHandler.html#ad1f0ab100e7270bb54688bb8e071cfc6">enabled</a>)</div>
+<div class="line"><span class="lineno">  110</span>  {</div>
+<div class="line"><span class="lineno">  111</span>    <a class="code hl_variable" href="classMeasureHandler.html#a048b8f2085ffc7f409140ad5289f1df1">selection</a> = <a class="code hl_variable" href="transformpresentation__test_8cc.html#aab0e3ec116bb87f30039fc772656b8ef">s</a>;</div>
+<div class="line"><span class="lineno">  112</span>    <a class="code hl_function" href="classMeasureHandler.html#aa30dd1737fe173472b6aca30692eab84">displayMeasurement</a>(<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>);</div>
+<div class="line"><span class="lineno">  113</span>  }</div>
+<div class="line"><span class="lineno">  114</span>}</div>
+<div class="ttc" id="aclassMeasureHandler_html_aa30dd1737fe173472b6aca30692eab84"><div class="ttname"><a href="classMeasureHandler.html#aa30dd1737fe173472b6aca30692eab84">MeasureHandler::displayMeasurement</a></div><div class="ttdeci">virtual void displayMeasurement(const ViewInterface::Ptr &amp;view)</div><div class="ttdef"><b>Definition</b> measure.cc:66</div></div>
+<div class="ttc" id="atransformpresentation__test_8cc_html_aab0e3ec116bb87f30039fc772656b8ef"><div class="ttname"><a href="transformpresentation__test_8cc.html#aab0e3ec116bb87f30039fc772656b8ef">s</a></div><div class="ttdeci">BitmapSurface::Ptr const s</div><div class="ttdef"><b>Definition</b> transformpresentation_test.cc:70</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMeasureHandler_a2b7304f7764588c6b3c85d93bb6e2c9a_cgraph.png" border="0" usemap="#aclassMeasureHandler_a2b7304f7764588c6b3c85d93bb6e2c9a_cgraph" alt=""/></div>
 <map name="aclassMeasureHandler_a2b7304f7764588c6b3c85d93bb6e2c9a_cgraph" id="aclassMeasureHandler_a2b7304f7764588c6b3c85d93bb6e2c9a_cgraph">
-<area shape="rect" title=" " alt="" coords="5,29,243,55"/>
-<area shape="rect" href="classMeasureHandler.html#aa30dd1737fe173472b6aca30692eab84" title=" " alt="" coords="291,29,565,55"/>
-<area shape="poly" title=" " alt="" coords="243,39,277,39,277,45,243,45"/>
-<area shape="rect" href="structSelection.html#a7d704930f3054ec384530cfbcb54c31d" title=" " alt="" coords="792,5,923,31"/>
-<area shape="poly" title=" " alt="" coords="504,27,613,14,679,12,744,14,778,14,778,20,744,19,679,18,614,19,505,32"/>
-<area shape="rect" href="structSelection.html#a400e9fb58887a04db35e354741aa96ec" title=" " alt="" coords="613,29,744,55"/>
-<area shape="poly" title=" " alt="" coords="566,39,599,39,599,45,566,45"/>
-<area shape="rect" href="structSelection.html#a9c9dec2ae8c7eb3bedd9b6379ada05d1" title=" " alt="" coords="794,55,921,80"/>
-<area shape="poly" title=" " alt="" coords="505,52,614,65,700,68,780,67,780,73,699,73,613,70,504,57"/>
-<area shape="poly" title=" " alt="" coords="744,31,778,26,779,31,744,36"/>
-<area shape="poly" title=" " alt="" coords="744,49,780,54,780,59,744,54"/>
+<area shape="rect" title=" " alt="" coords="5,113,243,138"/>
+<area shape="rect" href="classMeasureHandler.html#aa30dd1737fe173472b6aca30692eab84" title=" " alt="" coords="291,113,565,138"/>
+<area shape="poly" title=" " alt="" coords="243,123,277,123,277,128,243,128"/>
+<area shape="rect" href="transformpresentation_8cc.html#a3c364253c15ca463285b38252c438f8f" title=" " alt="" coords="618,37,739,62"/>
+<area shape="poly" title=" " alt="" coords="470,110,622,64,623,69,472,115"/>
+<area shape="rect" href="structSelection.html#a7d704930f3054ec384530cfbcb54c31d" title=" " alt="" coords="803,117,934,142"/>
+<area shape="poly" title=" " alt="" coords="566,122,744,123,790,124,790,129,744,128,566,127"/>
+<area shape="rect" href="structSelection.html#a400e9fb58887a04db35e354741aa96ec" title=" " alt="" coords="613,138,744,163"/>
+<area shape="poly" title=" " alt="" coords="554,135,600,140,599,145,553,141"/>
+<area shape="rect" href="structSelection.html#a9c9dec2ae8c7eb3bedd9b6379ada05d1" title=" " alt="" coords="805,166,932,191"/>
+<area shape="poly" title=" " alt="" coords="465,135,534,156,614,173,706,181,791,180,791,186,705,186,613,179,532,161,464,141"/>
+<area shape="rect" href="namespaceScroom_1_1Utils.html#af6796373cc462aef8e6979a40acef5d3" title=" " alt="" coords="792,29,945,69"/>
+<area shape="poly" title=" " alt="" coords="740,47,778,47,778,52,740,52"/>
+<area shape="poly" title=" " alt="" coords="833,30,831,20,836,11,849,5,869,3,891,6,903,13,900,17,889,11,869,8,851,10,840,15,836,21,838,28"/>
+<area shape="poly" title=" " alt="" coords="744,141,789,136,790,141,745,146"/>
+<area shape="poly" title=" " alt="" coords="745,158,792,165,791,170,744,163"/>
 </map>
 </div>
 
@@ -568,7 +579,7 @@ Here is the call graph for this function:</div>
 <p>The passed point is a point in the presentation coordinate space. </p>
 
 <p>Implements <a class="el" href="classSelectionListener.html#a9d469a2d0fe0fc4801701b62c12e96bf">SelectionListener</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   95</span>{}</div>
+<div class="fragment"><div class="line"><span class="lineno">   96</span>{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -610,29 +621,34 @@ Here is the call graph for this function:</div>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="structSelection.html">Selection</a> </dd></dl>
 
 <p>Implements <a class="el" href="classSelectionListener.html#a9dc66c67dd0a8ecbb889dd61bf094ec4">SelectionListener</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   98</span>{</div>
-<div class="line"><span class="lineno">   99</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="classMeasureHandler.html#ad1f0ab100e7270bb54688bb8e071cfc6">enabled</a>)</div>
-<div class="line"><span class="lineno">  100</span>  {</div>
-<div class="line"><span class="lineno">  101</span>    <a class="code hl_variable" href="classMeasureHandler.html#a048b8f2085ffc7f409140ad5289f1df1">selection</a> = <a class="code hl_variable" href="transformpresentation__test_8cc.html#aab0e3ec116bb87f30039fc772656b8ef">s</a>;</div>
-<div class="line"><span class="lineno">  102</span>    <a class="code hl_function" href="classMeasureHandler.html#aa30dd1737fe173472b6aca30692eab84">displayMeasurement</a>(<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>);</div>
-<div class="line"><span class="lineno">  103</span>  }</div>
-<div class="line"><span class="lineno">  104</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   99</span>{</div>
+<div class="line"><span class="lineno">  100</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="classMeasureHandler.html#ad1f0ab100e7270bb54688bb8e071cfc6">enabled</a>)</div>
+<div class="line"><span class="lineno">  101</span>  {</div>
+<div class="line"><span class="lineno">  102</span>    <a class="code hl_variable" href="classMeasureHandler.html#a048b8f2085ffc7f409140ad5289f1df1">selection</a> = <a class="code hl_variable" href="transformpresentation__test_8cc.html#aab0e3ec116bb87f30039fc772656b8ef">s</a>;</div>
+<div class="line"><span class="lineno">  103</span>    <a class="code hl_function" href="classMeasureHandler.html#aa30dd1737fe173472b6aca30692eab84">displayMeasurement</a>(<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>);</div>
+<div class="line"><span class="lineno">  104</span>  }</div>
+<div class="line"><span class="lineno">  105</span>}</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMeasureHandler_a05c308179492e7d55ecf641ab30893b3_cgraph.png" border="0" usemap="#aclassMeasureHandler_a05c308179492e7d55ecf641ab30893b3_cgraph" alt=""/></div>
 <map name="aclassMeasureHandler_a05c308179492e7d55ecf641ab30893b3_cgraph" id="aclassMeasureHandler_a05c308179492e7d55ecf641ab30893b3_cgraph">
-<area shape="rect" title=" " alt="" coords="5,22,219,62"/>
-<area shape="rect" href="classMeasureHandler.html#aa30dd1737fe173472b6aca30692eab84" title=" " alt="" coords="267,29,541,55"/>
-<area shape="poly" title=" " alt="" coords="219,39,253,39,253,45,219,45"/>
-<area shape="rect" href="structSelection.html#a7d704930f3054ec384530cfbcb54c31d" title=" " alt="" coords="768,5,899,31"/>
-<area shape="poly" title=" " alt="" coords="480,27,589,14,655,12,720,14,754,14,754,20,720,19,655,18,590,19,481,32"/>
-<area shape="rect" href="structSelection.html#a400e9fb58887a04db35e354741aa96ec" title=" " alt="" coords="589,29,720,55"/>
-<area shape="poly" title=" " alt="" coords="542,39,575,39,575,45,542,45"/>
-<area shape="rect" href="structSelection.html#a9c9dec2ae8c7eb3bedd9b6379ada05d1" title=" " alt="" coords="770,55,897,80"/>
-<area shape="poly" title=" " alt="" coords="481,52,590,65,676,68,756,67,756,73,675,73,589,70,480,57"/>
-<area shape="poly" title=" " alt="" coords="720,31,754,26,755,31,720,36"/>
-<area shape="poly" title=" " alt="" coords="720,49,756,54,756,59,720,54"/>
+<area shape="rect" title=" " alt="" coords="5,105,219,145"/>
+<area shape="rect" href="classMeasureHandler.html#aa30dd1737fe173472b6aca30692eab84" title=" " alt="" coords="267,113,541,138"/>
+<area shape="poly" title=" " alt="" coords="219,123,253,123,253,128,219,128"/>
+<area shape="rect" href="transformpresentation_8cc.html#a3c364253c15ca463285b38252c438f8f" title=" " alt="" coords="594,37,715,62"/>
+<area shape="poly" title=" " alt="" coords="446,110,598,64,599,69,448,115"/>
+<area shape="rect" href="structSelection.html#a7d704930f3054ec384530cfbcb54c31d" title=" " alt="" coords="779,117,910,142"/>
+<area shape="poly" title=" " alt="" coords="542,122,720,123,766,124,766,129,720,128,542,127"/>
+<area shape="rect" href="structSelection.html#a400e9fb58887a04db35e354741aa96ec" title=" " alt="" coords="589,138,720,163"/>
+<area shape="poly" title=" " alt="" coords="530,135,576,140,575,145,529,141"/>
+<area shape="rect" href="structSelection.html#a9c9dec2ae8c7eb3bedd9b6379ada05d1" title=" " alt="" coords="781,166,908,191"/>
+<area shape="poly" title=" " alt="" coords="441,135,510,156,590,173,682,181,767,180,767,186,681,186,589,179,508,161,440,141"/>
+<area shape="rect" href="namespaceScroom_1_1Utils.html#af6796373cc462aef8e6979a40acef5d3" title=" " alt="" coords="768,29,921,69"/>
+<area shape="poly" title=" " alt="" coords="716,47,754,47,754,52,716,52"/>
+<area shape="poly" title=" " alt="" coords="809,30,807,20,812,11,825,5,845,3,867,6,879,13,876,17,865,11,845,8,827,10,816,15,812,21,814,28"/>
+<area shape="poly" title=" " alt="" coords="720,141,765,136,766,141,721,146"/>
+<area shape="poly" title=" " alt="" coords="721,158,768,165,767,170,720,163"/>
 </map>
 </div>
 
@@ -695,26 +711,26 @@ Here is the call graph for this function:</div>
 </dl>
 
 <p>Implements <a class="el" href="classPostRenderer.html#a3915bf497e6d8438c86cb9fedeb65e5e">PostRenderer</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  125</span>{</div>
-<div class="line"><span class="lineno">  126</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="classMeasureHandler.html#a048b8f2085ffc7f409140ad5289f1df1">selection</a>)</div>
-<div class="line"><span class="lineno">  127</span>  {</div>
-<div class="line"><span class="lineno">  128</span>    <span class="keyword">const</span> <span class="keyword">auto</span> pixelSize = <a class="code hl_function" href="cairo-helpers_8hh.html#ac7a152a4cc864e9c67acbc6686a9d3a4">pixelSizeFromZoom</a>(zoom);</div>
-<div class="line"><span class="lineno">  129</span>    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a> = (<a class="code hl_variable" href="classMeasureHandler.html#a048b8f2085ffc7f409140ad5289f1df1">selection</a>-&gt;start - presentationArea.<a class="code hl_function" href="classScroom_1_1Utils_1_1Rectangle.html#aa0205a1477a20bd1888f9dd480069bf2">getTopLeft</a>()) * pixelSize;</div>
-<div class="line"><span class="lineno">  130</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end = (<a class="code hl_variable" href="classMeasureHandler.html#a048b8f2085ffc7f409140ad5289f1df1">selection</a>-&gt;end - presentationArea.<a class="code hl_function" href="classScroom_1_1Utils_1_1Rectangle.html#aa0205a1477a20bd1888f9dd480069bf2">getTopLeft</a>()) * pixelSize;</div>
-<div class="line"><span class="lineno">  131</span> </div>
-<div class="line"><span class="lineno">  132</span>    cairo_set_line_width(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, 1);</div>
-<div class="line"><span class="lineno">  133</span>    cairo_set_source_rgb(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, 0.75, 0, 0); <span class="comment">// Dark Red</span></div>
-<div class="line"><span class="lineno">  134</span>    <a class="code hl_function" href="classMeasureHandler.html#aa15c75da849a11f21e03d8af8a608e2f">drawCross</a>(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a>);</div>
-<div class="line"><span class="lineno">  135</span>    <a class="code hl_function" href="classMeasureHandler.html#aa15c75da849a11f21e03d8af8a608e2f">drawCross</a>(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, end);</div>
-<div class="line"><span class="lineno">  136</span>    cairo_stroke(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>);</div>
-<div class="line"><span class="lineno">  137</span>    cairo_set_source_rgb(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, 1, 0, 0); <span class="comment">// Red</span></div>
-<div class="line"><span class="lineno">  138</span>    cairo_move_to(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a>.x, <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a>.y);</div>
-<div class="line"><span class="lineno">  139</span>    cairo_line_to(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, end.x, end.y);</div>
-<div class="line"><span class="lineno">  140</span>    cairo_stroke(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>);</div>
-<div class="line"><span class="lineno">  141</span>  }</div>
-<div class="line"><span class="lineno">  142</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  126</span>{</div>
+<div class="line"><span class="lineno">  127</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="classMeasureHandler.html#a048b8f2085ffc7f409140ad5289f1df1">selection</a>)</div>
+<div class="line"><span class="lineno">  128</span>  {</div>
+<div class="line"><span class="lineno">  129</span>    <span class="keyword">const</span> <span class="keyword">auto</span> pixelSize = <a class="code hl_function" href="cairo-helpers_8hh.html#ac7a152a4cc864e9c67acbc6686a9d3a4">pixelSizeFromZoom</a>(zoom);</div>
+<div class="line"><span class="lineno">  130</span>    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a> = (<a class="code hl_variable" href="classMeasureHandler.html#a048b8f2085ffc7f409140ad5289f1df1">selection</a>-&gt;start - presentationArea.<a class="code hl_function" href="classScroom_1_1Utils_1_1Rectangle.html#aa0205a1477a20bd1888f9dd480069bf2">getTopLeft</a>()) * pixelSize;</div>
+<div class="line"><span class="lineno">  131</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end = (<a class="code hl_variable" href="classMeasureHandler.html#a048b8f2085ffc7f409140ad5289f1df1">selection</a>-&gt;end - presentationArea.<a class="code hl_function" href="classScroom_1_1Utils_1_1Rectangle.html#aa0205a1477a20bd1888f9dd480069bf2">getTopLeft</a>()) * pixelSize;</div>
+<div class="line"><span class="lineno">  132</span> </div>
+<div class="line"><span class="lineno">  133</span>    cairo_set_line_width(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, 1);</div>
+<div class="line"><span class="lineno">  134</span>    cairo_set_source_rgb(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, 0.75, 0, 0); <span class="comment">// Dark Red</span></div>
+<div class="line"><span class="lineno">  135</span>    <a class="code hl_function" href="classMeasureHandler.html#aa15c75da849a11f21e03d8af8a608e2f">drawCross</a>(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a>);</div>
+<div class="line"><span class="lineno">  136</span>    <a class="code hl_function" href="classMeasureHandler.html#aa15c75da849a11f21e03d8af8a608e2f">drawCross</a>(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, end);</div>
+<div class="line"><span class="lineno">  137</span>    cairo_stroke(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>);</div>
+<div class="line"><span class="lineno">  138</span>    cairo_set_source_rgb(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, 1, 0, 0); <span class="comment">// Red</span></div>
+<div class="line"><span class="lineno">  139</span>    cairo_move_to(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a>.x, <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a>.y);</div>
+<div class="line"><span class="lineno">  140</span>    cairo_line_to(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, end.x, end.y);</div>
+<div class="line"><span class="lineno">  141</span>    cairo_stroke(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>);</div>
+<div class="line"><span class="lineno">  142</span>  }</div>
+<div class="line"><span class="lineno">  143</span>}</div>
 <div class="ttc" id="acairo-helpers_8hh_html_ac7a152a4cc864e9c67acbc6686a9d3a4"><div class="ttname"><a href="cairo-helpers_8hh.html#ac7a152a4cc864e9c67acbc6686a9d3a4">pixelSizeFromZoom</a></div><div class="ttdeci">double pixelSizeFromZoom(int zoom)</div><div class="ttdef"><b>Definition</b> cairo-helpers.cc:123</div></div>
-<div class="ttc" id="aclassMeasureHandler_html_aa15c75da849a11f21e03d8af8a608e2f"><div class="ttname"><a href="classMeasureHandler.html#aa15c75da849a11f21e03d8af8a608e2f">MeasureHandler::drawCross</a></div><div class="ttdeci">virtual void drawCross(cairo_t *cr, Scroom::Utils::Point&lt; double &gt; p)</div><div class="ttdef"><b>Definition</b> measure.cc:82</div></div>
+<div class="ttc" id="aclassMeasureHandler_html_aa15c75da849a11f21e03d8af8a608e2f"><div class="ttname"><a href="classMeasureHandler.html#aa15c75da849a11f21e03d8af8a608e2f">MeasureHandler::drawCross</a></div><div class="ttdeci">virtual void drawCross(cairo_t *cr, Scroom::Utils::Point&lt; double &gt; p)</div><div class="ttdef"><b>Definition</b> measure.cc:83</div></div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1Rectangle_html_aa0205a1477a20bd1888f9dd480069bf2"><div class="ttname"><a href="classScroom_1_1Utils_1_1Rectangle.html#aa0205a1477a20bd1888f9dd480069bf2">Scroom::Utils::Rectangle::getTopLeft</a></div><div class="ttdeci">xy_type getTopLeft() const</div><div class="ttdef"><b>Definition</b> rectangle.hh:133</div></div>
 <div class="ttc" id="asampleiterator-tests_8cc_html_a7a3cea2e816e69389742543574d72526"><div class="ttname"><a href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a></div><div class="ttdeci">const SampleIterator&lt; const uint8_t &gt; start(nullptr, initial_offset, bps)</div></div>
 </div><!-- fragment --><div class="dynheader">

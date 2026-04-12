@@ -45,6 +45,11 @@ var namespaces_dup =
     [ "anonymous_namespace{transparentoverlayviewinfo.cc}", "namespaceanonymous__namespace_02transparentoverlayviewinfo_8cc_03.html", [
       [ "setToggleButtonColor", "namespaceanonymous__namespace_02transparentoverlayviewinfo_8cc_03.html#a706649399a1cf1938cfbfed014fd3917", null ]
     ] ],
+    [ "anonymous_namespace{view.cc}", "namespaceanonymous__namespace_02view_8cc_03.html", [
+      [ "eventToPoint", "namespaceanonymous__namespace_02view_8cc_03.html#ac2ade1a4095158be9e06ab085168e2ad", null ],
+      [ "eventToPoint", "namespaceanonymous__namespace_02view_8cc_03.html#a1ab23fe43b4b1aaecbd16e2d087776ae", null ],
+      [ "on_newWindow_activate", "namespaceanonymous__namespace_02view_8cc_03.html#aca14a2deaa3262e3245a3968fd70f01d", null ]
+    ] ],
     [ "Colors", "namespaceColors.html", [
       [ "OUT_OF_BOUNDS", "namespaceColors.html#a610c48d1b47f4fe0d23399eb2a4f9b7f", null ],
       [ "IN_BOUNDS", "namespaceColors.html#ac76689c847014b9df2670be51d618b00", null ],

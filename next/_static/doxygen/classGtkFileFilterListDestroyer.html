@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-42-g18d8b813</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-48-ga0fee447</span>
    </div>
   </td>
  </tr>
@@ -151,14 +151,14 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   64</span>    : <a class="code hl_variable" href="classGtkFileFilterListDestroyer.html#a443ad79b3a30f4f95d4ef5cb536c9ec5">filters</a>(<a class="code hl_variable" href="gtkhelper-tests_8cc.html#a633de4b0c14ca52ea2432a3c8a5c4c31">f</a>)</div>
-<div class="line"><span class="lineno">   65</span>  {</div>
-<div class="line"><span class="lineno">   66</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span> <span class="keyword">const</span> filter: <a class="code hl_variable" href="classGtkFileFilterListDestroyer.html#a443ad79b3a30f4f95d4ef5cb536c9ec5">filters</a>)</div>
-<div class="line"><span class="lineno">   67</span>    {</div>
-<div class="line"><span class="lineno">   68</span>      g_object_ref_sink(filter);</div>
-<div class="line"><span class="lineno">   69</span>    }</div>
-<div class="line"><span class="lineno">   70</span>  }</div>
-<div class="ttc" id="aclassGtkFileFilterListDestroyer_html_a443ad79b3a30f4f95d4ef5cb536c9ec5"><div class="ttname"><a href="classGtkFileFilterListDestroyer.html#a443ad79b3a30f4f95d4ef5cb536c9ec5">GtkFileFilterListDestroyer::filters</a></div><div class="ttdeci">std::list&lt; GtkFileFilter * &gt; &amp; filters</div><div class="ttdef"><b>Definition</b> loader.cc:60</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   60</span>    : <a class="code hl_variable" href="classGtkFileFilterListDestroyer.html#a443ad79b3a30f4f95d4ef5cb536c9ec5">filters</a>(<a class="code hl_variable" href="gtkhelper-tests_8cc.html#a633de4b0c14ca52ea2432a3c8a5c4c31">f</a>)</div>
+<div class="line"><span class="lineno">   61</span>  {</div>
+<div class="line"><span class="lineno">   62</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span> <span class="keyword">const</span> filter: <a class="code hl_variable" href="classGtkFileFilterListDestroyer.html#a443ad79b3a30f4f95d4ef5cb536c9ec5">filters</a>)</div>
+<div class="line"><span class="lineno">   63</span>    {</div>
+<div class="line"><span class="lineno">   64</span>      g_object_ref_sink(filter);</div>
+<div class="line"><span class="lineno">   65</span>    }</div>
+<div class="line"><span class="lineno">   66</span>  }</div>
+<div class="ttc" id="aclassGtkFileFilterListDestroyer_html_a443ad79b3a30f4f95d4ef5cb536c9ec5"><div class="ttname"><a href="classGtkFileFilterListDestroyer.html#a443ad79b3a30f4f95d4ef5cb536c9ec5">GtkFileFilterListDestroyer::filters</a></div><div class="ttdeci">std::list&lt; GtkFileFilter * &gt; &amp; filters</div><div class="ttdef"><b>Definition</b> loader.cc:56</div></div>
 <div class="ttc" id="agtkhelper-tests_8cc_html_a633de4b0c14ca52ea2432a3c8a5c4c31"><div class="ttname"><a href="gtkhelper-tests_8cc.html#a633de4b0c14ca52ea2432a3c8a5c4c31">f</a></div><div class="ttdeci">f</div><div class="ttdef"><b>Definition</b> gtkhelper-tests.cc:43</div></div>
 </div><!-- fragment -->
 </div>
@@ -185,15 +185,15 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   73</span>  {</div>
-<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">while</span>(!<a class="code hl_variable" href="classGtkFileFilterListDestroyer.html#a443ad79b3a30f4f95d4ef5cb536c9ec5">filters</a>.empty())</div>
-<div class="line"><span class="lineno">   75</span>    {</div>
-<div class="line"><span class="lineno">   76</span>      GtkFileFilter* <a class="code hl_variable" href="gtkhelper-tests_8cc.html#a633de4b0c14ca52ea2432a3c8a5c4c31">f</a> = <a class="code hl_variable" href="classGtkFileFilterListDestroyer.html#a443ad79b3a30f4f95d4ef5cb536c9ec5">filters</a>.front();</div>
-<div class="line"><span class="lineno">   77</span>      g_object_ref_sink(<a class="code hl_variable" href="gtkhelper-tests_8cc.html#a633de4b0c14ca52ea2432a3c8a5c4c31">f</a>);</div>
-<div class="line"><span class="lineno">   78</span>      g_object_unref(<a class="code hl_variable" href="gtkhelper-tests_8cc.html#a633de4b0c14ca52ea2432a3c8a5c4c31">f</a>);</div>
-<div class="line"><span class="lineno">   79</span>      <a class="code hl_variable" href="classGtkFileFilterListDestroyer.html#a443ad79b3a30f4f95d4ef5cb536c9ec5">filters</a>.pop_front();</div>
-<div class="line"><span class="lineno">   80</span>    }</div>
-<div class="line"><span class="lineno">   81</span>  }</div>
+<div class="fragment"><div class="line"><span class="lineno">   69</span>  {</div>
+<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">while</span>(!<a class="code hl_variable" href="classGtkFileFilterListDestroyer.html#a443ad79b3a30f4f95d4ef5cb536c9ec5">filters</a>.empty())</div>
+<div class="line"><span class="lineno">   71</span>    {</div>
+<div class="line"><span class="lineno">   72</span>      GtkFileFilter* <a class="code hl_variable" href="gtkhelper-tests_8cc.html#a633de4b0c14ca52ea2432a3c8a5c4c31">f</a> = <a class="code hl_variable" href="classGtkFileFilterListDestroyer.html#a443ad79b3a30f4f95d4ef5cb536c9ec5">filters</a>.front();</div>
+<div class="line"><span class="lineno">   73</span>      g_object_ref_sink(<a class="code hl_variable" href="gtkhelper-tests_8cc.html#a633de4b0c14ca52ea2432a3c8a5c4c31">f</a>);</div>
+<div class="line"><span class="lineno">   74</span>      g_object_unref(<a class="code hl_variable" href="gtkhelper-tests_8cc.html#a633de4b0c14ca52ea2432a3c8a5c4c31">f</a>);</div>
+<div class="line"><span class="lineno">   75</span>      <a class="code hl_variable" href="classGtkFileFilterListDestroyer.html#a443ad79b3a30f4f95d4ef5cb536c9ec5">filters</a>.pop_front();</div>
+<div class="line"><span class="lineno">   76</span>    }</div>
+<div class="line"><span class="lineno">   77</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>

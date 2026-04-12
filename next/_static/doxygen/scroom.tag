@@ -1220,16 +1220,10 @@
     <includes id="assertions_8hh" name="assertions.hh" local="no" import="no" module="no" objc="no">scroom/assertions.hh</includes>
     <includes id="cairo-helpers_8hh" name="cairo-helpers.hh" local="no" import="no" module="no" objc="no">scroom/cairo-helpers.hh</includes>
     <includes id="format__stuff_8hh" name="format_stuff.hh" local="no" import="no" module="no" objc="no">scroom/format_stuff.hh</includes>
-    <includes id="rounding_8hh" name="rounding.hh" local="no" import="no" module="no" objc="no">scroom/rounding.hh</includes>
+    <includes id="tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
     <includes id="callbacks_8hh" name="callbacks.hh" local="yes" import="no" module="no" objc="no">callbacks.hh</includes>
     <includes id="pluginmanager_8hh" name="pluginmanager.hh" local="yes" import="no" module="no" objc="no">pluginmanager.hh</includes>
-    <class kind="class">TweakPresentationPosition</class>
-    <class kind="class">TweakRulers</class>
-    <class kind="class">ITweakSelection</class>
-    <class kind="class">TweakSelection</class>
-    <class kind="class">TweakGridSelection</class>
-    <class kind="class">TweakPixelSelection</class>
-    <class kind="class">TweakPositionTextBox</class>
+    <namespace>anonymous_namespace{view.cc}</namespace>
     <member kind="define">
       <type>#define</type>
       <name>G_VALUE_INIT</name>
@@ -1254,66 +1248,6 @@
       <anchorfile>view_8cc.html</anchorfile>
       <anchor>a06fc87d81c62e9abb8790b6e5713c55bac70d28409ca79aa291cc0e58244f1fe4</anchor>
       <arglist></arglist>
-    </member>
-    <member kind="enumeration">
-      <type></type>
-      <name>Corner</name>
-      <anchorfile>view_8cc.html</anchorfile>
-      <anchor>aa292af1848104b3be6cc0c966b5317b6</anchor>
-      <arglist></arglist>
-      <enumvalue file="view_8cc.html" anchor="aa292af1848104b3be6cc0c966b5317b6a747385047b85ae751f83adb36435a3c1">TOP_LEFT</enumvalue>
-      <enumvalue file="view_8cc.html" anchor="aa292af1848104b3be6cc0c966b5317b6a901d87dedda8db733f5e6d34c4eb5fe0">TOP_RIGHT</enumvalue>
-      <enumvalue file="view_8cc.html" anchor="aa292af1848104b3be6cc0c966b5317b6a8d81ac82421d1b03da58fccb9174892e">BOTTOM_LEFT</enumvalue>
-      <enumvalue file="view_8cc.html" anchor="aa292af1848104b3be6cc0c966b5317b6a341b72aaab1308a3e6667af1e52f5def">BOTTOM_RIGHT</enumvalue>
-    </member>
-    <member kind="function">
-      <type>std::function&lt; Scroom::Utils::Point&lt; double &gt;(Scroom::Utils::Rectangle&lt; double &gt;)&gt;</type>
-      <name>corner_getter</name>
-      <anchorfile>view_8cc.html</anchorfile>
-      <anchor>aa8cab6bcc78f2ade190564c5b9c36c00</anchor>
-      <arglist>(Corner c)</arglist>
-    </member>
-    <member kind="function">
-      <type>Corner</type>
-      <name>find_closest_corner</name>
-      <anchorfile>view_8cc.html</anchorfile>
-      <anchor>a0a0c0368f16f55cccde4028cdacd8e81</anchor>
-      <arglist>(Scroom::Utils::Point&lt; double &gt; p, Scroom::Utils::Rectangle&lt; double &gt; r)</arglist>
-    </member>
-    <member kind="function">
-      <type>Corner</type>
-      <name>find_opposed_corner</name>
-      <anchorfile>view_8cc.html</anchorfile>
-      <anchor>ad4e132ee6695c5790e6ecf9607cf18d1</anchor>
-      <arglist>(Corner c)</arglist>
-    </member>
-    <member kind="function">
-      <type>Scroom::Utils::Rectangle&lt; double &gt;</type>
-      <name>toRectangle</name>
-      <anchorfile>view_8cc.html</anchorfile>
-      <anchor>aa4c0e07b612d51cad5beab8f04bec275</anchor>
-      <arglist>(Selection s)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static Scroom::Utils::Point&lt; double &gt;</type>
-      <name>eventToPoint</name>
-      <anchorfile>view_8cc.html</anchorfile>
-      <anchor>abf903e66ce22a82c32363b9a833fb4b4</anchor>
-      <arglist>(GdkEventButton *event)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static Scroom::Utils::Point&lt; double &gt;</type>
-      <name>eventToPoint</name>
-      <anchorfile>view_8cc.html</anchorfile>
-      <anchor>a601c8a6dda057db3e97e82ac81b748be</anchor>
-      <arglist>(GdkEventMotion *event)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static void</type>
-      <name>on_newWindow_activate</name>
-      <anchorfile>view_8cc.html</anchorfile>
-      <anchor>a3c28481536cbc8ae93fb2827dc0308e6</anchor>
-      <arglist>(GtkMenuItem *, gpointer user_data)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static void</type>
@@ -1345,6 +1279,7 @@
     <includes id="presentationinterface_8hh" name="presentationinterface.hh" local="no" import="no" module="no" objc="no">scroom/presentationinterface.hh</includes>
     <includes id="scroominterface_8hh" name="scroominterface.hh" local="no" import="no" module="no" objc="no">scroom/scroominterface.hh</includes>
     <includes id="stuff_8hh" name="stuff.hh" local="no" import="no" module="no" objc="no">scroom/stuff.hh</includes>
+    <includes id="tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
     <includes id="utilities_8hh" name="utilities.hh" local="no" import="no" module="no" objc="no">scroom/utilities.hh</includes>
     <includes id="viewinterface_8hh" name="viewinterface.hh" local="no" import="no" module="no" objc="no">scroom/viewinterface.hh</includes>
     <includes id="progressbarmanager_8hh" name="progressbarmanager.hh" local="yes" import="no" module="no" objc="no">progressbarmanager.hh</includes>
@@ -1856,6 +1791,7 @@
     <name>presentationinterface.hh</name>
     <path>libs/plugin-interfaces/inc/scroom/</path>
     <filename>presentationinterface_8hh.html</filename>
+    <includes id="context_8hh" name="context.hh" local="no" import="no" module="no" objc="no">scroom/context.hh</includes>
     <includes id="interface_8hh" name="interface.hh" local="no" import="no" module="no" objc="no">scroom/interface.hh</includes>
     <includes id="observable_8hh" name="observable.hh" local="no" import="no" module="no" objc="no">scroom/observable.hh</includes>
     <includes id="rectangle_8hh" name="rectangle.hh" local="no" import="no" module="no" objc="no">scroom/rectangle.hh</includes>
@@ -2120,6 +2056,34 @@
     <class kind="class">Detail::ViewData</class>
     <class kind="class">TransformPresentation</class>
     <namespace>Detail</namespace>
+    <member kind="function">
+      <type>Scroom::Utils::Point&lt; double &gt;</type>
+      <name>getAspectRatio</name>
+      <anchorfile>transformpresentation_8hh.html</anchorfile>
+      <anchor>a3c364253c15ca463285b38252c438f8f</anchor>
+      <arglist>(const PresentationInterface::Ptr &amp;presentation)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>tweak-view.hh</name>
+    <path>libs/scroom/inc/scroom/</path>
+    <filename>tweak-view_8hh.html</filename>
+    <includes id="interface_8hh" name="interface.hh" local="no" import="no" module="no" objc="no">scroom/interface.hh</includes>
+    <includes id="point_8hh" name="point.hh" local="no" import="no" module="no" objc="no">scroom/point.hh</includes>
+    <includes id="rectangle_8hh" name="rectangle.hh" local="no" import="no" module="no" objc="no">scroom/rectangle.hh</includes>
+    <includes id="viewinterface_8hh" name="viewinterface.hh" local="no" import="no" module="no" objc="no">scroom/viewinterface.hh</includes>
+    <class kind="class">Scroom::Utils::ITweakPresentationPosition</class>
+    <class kind="class">Scroom::Utils::ITweakRulers</class>
+    <class kind="class">Scroom::Utils::ITweakSelection</class>
+    <class kind="class">Scroom::Utils::ITweakPositionTextBox</class>
+    <class kind="class">Scroom::Utils::TweakPresentationPosition</class>
+    <class kind="class">Scroom::Utils::TweakRulers</class>
+    <class kind="class">Scroom::Utils::TweakSelection</class>
+    <class kind="class">Scroom::Utils::TweakGridSelection</class>
+    <class kind="class">Scroom::Utils::TweakPixelSelection</class>
+    <class kind="class">Scroom::Utils::TweakPositionTextBox</class>
+    <namespace>Scroom</namespace>
+    <namespace>Scroom::Utils</namespace>
   </compound>
   <compound kind="file">
     <name>bitmap-helpers.cc</name>
@@ -2244,7 +2208,28 @@
     <includes id="transformpresentation_8hh" name="transformpresentation.hh" local="no" import="no" module="no" objc="no">scroom/transformpresentation.hh</includes>
     <includes id="viewinterface_8hh" name="viewinterface.hh" local="no" import="no" module="no" objc="no">scroom/viewinterface.hh</includes>
     <includes id="cairo-helpers_8hh" name="cairo-helpers.hh" local="yes" import="no" module="no" objc="no">scroom/cairo-helpers.hh</includes>
+    <includes id="tweak-view_8hh" name="tweak-view.hh" local="yes" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
     <namespace>Detail</namespace>
+    <member kind="function">
+      <type>Scroom::Utils::Point&lt; double &gt;</type>
+      <name>getAspectRatio</name>
+      <anchorfile>transformpresentation_8cc.html</anchorfile>
+      <anchor>a3c364253c15ca463285b38252c438f8f</anchor>
+      <arglist>(const PresentationInterface::Ptr &amp;presentation)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>tweak-view.cc</name>
+    <path>libs/scroom/src/</path>
+    <filename>tweak-view_8cc.html</filename>
+    <includes id="assertions_8hh" name="assertions.hh" local="no" import="no" module="no" objc="no">scroom/assertions.hh</includes>
+    <includes id="cairo-helpers_8hh" name="cairo-helpers.hh" local="no" import="no" module="no" objc="no">scroom/cairo-helpers.hh</includes>
+    <includes id="tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
+    <class kind="class">Scroom::Utils::anonymous_namespace{tweak-view.cc}::DefaultTweakPresentationPosition</class>
+    <class kind="class">Scroom::Utils::anonymous_namespace{tweak-view.cc}::DefaultTweakSelection</class>
+    <namespace>Scroom</namespace>
+    <namespace>Scroom::Utils</namespace>
+    <namespace>Scroom::Utils::anonymous_namespace{tweak-view.cc}</namespace>
   </compound>
   <compound kind="file">
     <name>colormaphelpers_test.cc</name>
@@ -3338,7 +3323,6 @@
     <name>threadpool-destruction-tests.cc</name>
     <path>libs/threadpool/test/</path>
     <filename>threadpool-destruction-tests_8cc.html</filename>
-    <includes id="threadpool_8hh" name="threadpool.hh" local="no" import="no" module="no" objc="no">scroom/threadpool.hh</includes>
     <includes id="function-additor_8hh" name="function-additor.hh" local="no" import="no" module="no" objc="no">scroom/function-additor.hh</includes>
     <includes id="semaphore_8hh" name="semaphore.hh" local="no" import="no" module="no" objc="no">scroom/semaphore.hh</includes>
     <includes id="helpers_8hh" name="helpers.hh" local="yes" import="no" module="no" objc="no">helpers.hh</includes>
@@ -3459,7 +3443,6 @@
     <name>threadpool-queue-tests.cc</name>
     <path>libs/threadpool/test/</path>
     <filename>threadpool-queue-tests_8cc.html</filename>
-    <includes id="threadpool_8hh" name="threadpool.hh" local="no" import="no" module="no" objc="no">scroom/threadpool.hh</includes>
     <includes id="function-additor_8hh" name="function-additor.hh" local="no" import="no" module="no" objc="no">scroom/function-additor.hh</includes>
     <includes id="semaphore_8hh" name="semaphore.hh" local="no" import="no" module="no" objc="no">scroom/semaphore.hh</includes>
     <includes id="helpers_8hh" name="helpers.hh" local="yes" import="no" module="no" objc="no">helpers.hh</includes>
@@ -3770,8 +3753,8 @@
     <name>threadpool-queueimpl-tests.cc</name>
     <path>libs/threadpool/test/</path>
     <filename>threadpool-queueimpl-tests_8cc.html</filename>
-    <includes id="threadpool_8hh" name="threadpool.hh" local="no" import="no" module="no" objc="no">scroom/threadpool.hh</includes>
     <includes id="semaphore_8hh" name="semaphore.hh" local="no" import="no" module="no" objc="no">scroom/semaphore.hh</includes>
+    <includes id="threadpool_8hh" name="threadpool.hh" local="no" import="no" module="no" objc="no">scroom/threadpool.hh</includes>
     <includes id="helpers_8hh" name="helpers.hh" local="yes" import="no" module="no" objc="no">helpers.hh</includes>
     <member kind="function">
       <type>const millisec</type>
@@ -5148,6 +5131,18 @@
     <namespace>Scroom::Bookkeeping::Detail</namespace>
   </compound>
   <compound kind="file">
+    <name>context.hh</name>
+    <path>libs/util/inc/scroom/</path>
+    <filename>context_8hh.html</filename>
+    <includes id="interface_8hh" name="interface.hh" local="no" import="no" module="no" objc="no">scroom/interface.hh</includes>
+    <class kind="class">Scroom::Utils::Context</class>
+    <class kind="class">Scroom::Utils::Context::name_exists</class>
+    <class kind="class">Scroom::Utils::Context::name_not_found</class>
+    <class kind="class">Scroom::Utils::RecursiveContext</class>
+    <namespace>Scroom</namespace>
+    <namespace>Scroom::Utils</namespace>
+  </compound>
+  <compound kind="file">
     <name>dont-delete.hh</name>
     <path>libs/util/inc/scroom/</path>
     <filename>dont-delete_8hh.html</filename>
@@ -5409,6 +5404,16 @@
     <namespace>Scroom::Utils::Detail</namespace>
   </compound>
   <compound kind="file">
+    <name>context.cc</name>
+    <path>libs/util/src/</path>
+    <filename>context_8cc.html</filename>
+    <includes id="context_8hh" name="context.hh" local="no" import="no" module="no" objc="no">scroom/context.hh</includes>
+    <includes id="parent-context_8hh" name="parent-context.hh" local="yes" import="no" module="no" objc="no">parent-context.hh</includes>
+    <includes id="single-context_8hh" name="single-context.hh" local="yes" import="no" module="no" objc="no">single-context.hh</includes>
+    <namespace>Scroom</namespace>
+    <namespace>Scroom::Utils</namespace>
+  </compound>
+  <compound kind="file">
     <name>counter.cc</name>
     <path>libs/util/src/</path>
     <filename>counter_8cc.html</filename>
@@ -5462,6 +5467,24 @@
     <namespace>Scroom</namespace>
   </compound>
   <compound kind="file">
+    <name>parent-context.cc</name>
+    <path>libs/util/src/</path>
+    <filename>parent-context_8cc.html</filename>
+    <includes id="parent-context_8hh" name="parent-context.hh" local="yes" import="no" module="no" objc="no">parent-context.hh</includes>
+    <includes id="assertions_8hh" name="assertions.hh" local="no" import="no" module="no" objc="no">scroom/assertions.hh</includes>
+    <namespace>Scroom</namespace>
+    <namespace>Scroom::Utils</namespace>
+  </compound>
+  <compound kind="file">
+    <name>parent-context.hh</name>
+    <path>libs/util/src/</path>
+    <filename>parent-context_8hh.html</filename>
+    <includes id="context_8hh" name="context.hh" local="no" import="no" module="no" objc="no">scroom/context.hh</includes>
+    <class kind="class">Scroom::Utils::ParentContext</class>
+    <namespace>Scroom</namespace>
+    <namespace>Scroom::Utils</namespace>
+  </compound>
+  <compound kind="file">
     <name>progressinterfacehelpers.cc</name>
     <path>libs/util/src/</path>
     <filename>progressinterfacehelpers_8cc.html</filename>
@@ -5470,6 +5493,23 @@
     <namespace>Scroom</namespace>
     <namespace>Scroom::Utils</namespace>
     <namespace>Scroom::Utils::Detail</namespace>
+  </compound>
+  <compound kind="file">
+    <name>single-context.cc</name>
+    <path>libs/util/src/</path>
+    <filename>single-context_8cc.html</filename>
+    <includes id="single-context_8hh" name="single-context.hh" local="yes" import="no" module="no" objc="no">single-context.hh</includes>
+    <namespace>Scroom</namespace>
+    <namespace>Scroom::Utils</namespace>
+  </compound>
+  <compound kind="file">
+    <name>single-context.hh</name>
+    <path>libs/util/src/</path>
+    <filename>single-context_8hh.html</filename>
+    <includes id="context_8hh" name="context.hh" local="no" import="no" module="no" objc="no">scroom/context.hh</includes>
+    <class kind="class">Scroom::Utils::SingleContext</class>
+    <namespace>Scroom</namespace>
+    <namespace>Scroom::Utils</namespace>
   </compound>
   <compound kind="file">
     <name>bookkeeping-tests.cc</name>
@@ -5656,6 +5696,175 @@
       <name>a</name>
       <anchorfile>bookkeeping-tests_8cc.html</anchorfile>
       <anchor>a15474d4b5cac1b864961464173cba912</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>context-tests.cc</name>
+    <path>libs/util/test/</path>
+    <filename>context-tests_8cc.html</filename>
+    <includes id="single-context_8hh" name="single-context.hh" local="yes" import="no" module="no" objc="no">single-context.hh</includes>
+    <class kind="struct">Dummy</class>
+    <class kind="class">ContextTests</class>
+    <member kind="function">
+      <type></type>
+      <name>set</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>abed80bb12dee15f3936ee76dc75356dd</anchor>
+      <arglist>(context, an_int)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>set</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>a8eff1e3d5b6bbec6085e64e1cde78c15</anchor>
+      <arglist>(context, name, another_int)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>a411d11156bcbdc277a567b1c3a15e578</anchor>
+      <arglist>(get&lt; int &gt;(context), an_int)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>ad890a38ff331d1955ff2b42f0c372b9f</anchor>
+      <arglist>(get&lt; int &gt;(context, name), another_int)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_NE</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>acfcf5e2c262c134283e0ba9a5f27f625</anchor>
+      <arglist>(p1, p2)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>set</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>a91c301eaef1f0179e8fa1ee12e869b91</anchor>
+      <arglist>(context, p1)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>set</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>a83d9b95156373101e675c9521515157a</anchor>
+      <arglist>(context, name, p2)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>a99f59ae74dae2e9bd518f138ce4f231d</anchor>
+      <arglist>(get&lt; Dummy::Ptr &gt;(context), p1)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>a423adbd2af72109027d858a42a7d21b4</anchor>
+      <arglist>(get&lt; Dummy::Ptr &gt;(context, name), p2)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>setFactory</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>a1b3d559d80dcb51cd1be7e61b11f4243</anchor>
+      <arglist>(context, [p1] { return p1;})</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>setFactory</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>af0076df5bfb2ece793c437cf451b1265</anchor>
+      <arglist>(context, name, [p2] { return p2;})</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>af32b694266c16bd2531a44bcbe651917</anchor>
+      <arglist>(get_or&lt; Dummy::Ptr &gt;(context, [p1] { return p1;}), p1)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>a486a6b2d45f801d21102b6b7966d6ceb</anchor>
+      <arglist>(get_or&lt; Dummy::Ptr &gt;(context, name, [p2] { return p2;}), p2)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>a07df4d6a54b75a61012344f3cbfe7cf9</anchor>
+      <arglist>(get_or&lt; Dummy::Ptr &gt;(context, p1), p1)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>a2acd03ca3501b2c29abfb484096c647e</anchor>
+      <arglist>(get_or&lt; Dummy::Ptr &gt;(context, name, p2), p2)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>afd6708b9983eb29cc86f2bb2844f35fb</anchor>
+      <arglist>(try_get&lt; Dummy::Ptr &gt;(context), std::nullopt)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>a5c27fe7c253792e24d81306317d22686</anchor>
+      <arglist>(try_get&lt; Dummy::Ptr &gt;(context, name), std::nullopt)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>a3fca327d84ca97d61ef75b3b5f8eef0c</anchor>
+      <arglist>(try_get&lt; Dummy::Ptr &gt;(context), p1)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>adbef35da885c9cf34a2b9b039192ec87</anchor>
+      <arglist>(try_get&lt; Dummy::Ptr &gt;(context, name), p2)</arglist>
+    </member>
+    <member kind="variable">
+      <type>const int</type>
+      <name>an_int</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>a2cacb0f308d7bc96b8a069796fb55be3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>const int</type>
+      <name>another_int</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>af123ab5b81dcca4967ac82f625b72230</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>auto</type>
+      <name>p1</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>a6a5a83003c0897cdce101e4abeae420d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>auto</type>
+      <name>p2</name>
+      <anchorfile>context-tests_8cc.html</anchorfile>
+      <anchor>a08273973aa062a231adc2f5fd2b683ba</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -6123,6 +6332,70 @@
       <anchorfile>observable-tests_8cc.html</anchorfile>
       <anchor>a33134d921616abb7833daa48428d38ba</anchor>
       <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>parent-context-tests.cc</name>
+    <path>libs/util/test/</path>
+    <filename>parent-context-tests_8cc.html</filename>
+    <includes id="parent-context_8hh" name="parent-context.hh" local="yes" import="no" module="no" objc="no">parent-context.hh</includes>
+    <includes id="single-context_8hh" name="single-context.hh" local="yes" import="no" module="no" objc="no">single-context.hh</includes>
+    <class kind="class">ParentContextTests</class>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_FALSE</name>
+      <anchorfile>parent-context-tests_8cc.html</anchorfile>
+      <anchor>a68ed86a6181e253bf0bba4b36d730c3a</anchor>
+      <arglist>(context.try_get(&quot;absent&quot;).has_value())</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>parent-context-tests_8cc.html</anchorfile>
+      <anchor>a0f0cb0b7829386d552179db44cf40e32</anchor>
+      <arglist>(std::any_cast&lt; int &gt;(context.get(&quot;int&quot;)), 3)</arglist>
+    </member>
+    <member kind="function">
+      <type>context</type>
+      <name>set</name>
+      <anchorfile>parent-context-tests_8cc.html</anchorfile>
+      <anchor>ae97fa6ec52516c36276cdcd0e8ae5536</anchor>
+      <arglist>(&quot;int&quot;, 4)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>parent-context-tests_8cc.html</anchorfile>
+      <anchor>a81cb9f4471b68941d167a91209f7e1e8</anchor>
+      <arglist>(std::any_cast&lt; int &gt;(context.get(&quot;int&quot;)), 4)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>parent-context-tests_8cc.html</anchorfile>
+      <anchor>a41666026bcd60c5da79e664177185546</anchor>
+      <arglist>(std::any_cast&lt; int &gt;(context.try_get(&quot;int&quot;)), 4)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>parent-context-tests_8cc.html</anchorfile>
+      <anchor>aa95c7a252e58e76f3f16e55671e76a6b</anchor>
+      <arglist>(std::any_cast&lt; int &gt;(first-&gt;get(&quot;int&quot;)), 4)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>parent-context-tests_8cc.html</anchorfile>
+      <anchor>a7c8f748b72b9dd99a0d4e3e930247834</anchor>
+      <arglist>(std::any_cast&lt; int &gt;(second-&gt;get(&quot;int&quot;)), 3)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_THROW</name>
+      <anchorfile>parent-context-tests_8cc.html</anchorfile>
+      <anchor>a0943f701105a14a35f6ca095b806b95c</anchor>
+      <arglist>(context.set(&quot;int&quot;, 3), Context::name_exists)</arglist>
     </member>
   </compound>
   <compound kind="file">
@@ -7631,6 +7904,48 @@
     </member>
   </compound>
   <compound kind="file">
+    <name>single-context-tests.cc</name>
+    <path>libs/util/test/</path>
+    <filename>single-context-tests_8cc.html</filename>
+    <includes id="single-context_8hh" name="single-context.hh" local="yes" import="no" module="no" objc="no">single-context.hh</includes>
+    <class kind="class">SingleContextTests</class>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_FALSE</name>
+      <anchorfile>single-context-tests_8cc.html</anchorfile>
+      <anchor>aa3e88a570ef036a9a049318b96ac92db</anchor>
+      <arglist>(context.try_get(&quot;int&quot;).has_value())</arglist>
+    </member>
+    <member kind="function">
+      <type>context</type>
+      <name>set</name>
+      <anchorfile>single-context-tests_8cc.html</anchorfile>
+      <anchor>a2d5fd267c60354af1ed9fc19a926d6ab</anchor>
+      <arglist>(&quot;int&quot;, 3)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>single-context-tests_8cc.html</anchorfile>
+      <anchor>a0f0cb0b7829386d552179db44cf40e32</anchor>
+      <arglist>(std::any_cast&lt; int &gt;(context.get(&quot;int&quot;)), 3)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>single-context-tests_8cc.html</anchorfile>
+      <anchor>a0ce5aaad6d6f46f46225f529c4766b0b</anchor>
+      <arglist>(std::any_cast&lt; int &gt;(context.try_get(&quot;int&quot;)), 3)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_THROW</name>
+      <anchorfile>single-context-tests_8cc.html</anchorfile>
+      <anchor>a0943f701105a14a35f6ca095b806b95c</anchor>
+      <arglist>(context.set(&quot;int&quot;, 3), Context::name_exists)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
     <name>colormapplugin.cc</name>
     <path>plugins/colormap/</path>
     <filename>colormapplugin_8cc.html</filename>
@@ -7782,6 +8097,7 @@
     <includes id="point_8hh" name="point.hh" local="no" import="no" module="no" objc="no">scroom/point.hh</includes>
     <includes id="presentationinterface_8hh" name="presentationinterface.hh" local="no" import="no" module="no" objc="no">scroom/presentationinterface.hh</includes>
     <includes id="viewinterface_8hh" name="viewinterface.hh" local="no" import="no" module="no" objc="no">scroom/viewinterface.hh</includes>
+    <includes id="transformpresentation_8hh" name="transformpresentation.hh" local="yes" import="no" module="no" objc="no">scroom/transformpresentation.hh</includes>
   </compound>
   <compound kind="file">
     <name>measure.hh</name>
@@ -7822,6 +8138,7 @@
     <includes id="pipette_8hh" name="pipette.hh" local="yes" import="no" module="no" objc="no">pipette.hh</includes>
     <includes id="cairo-helpers_8hh" name="cairo-helpers.hh" local="no" import="no" module="no" objc="no">scroom/cairo-helpers.hh</includes>
     <includes id="format__stuff_8hh" name="format_stuff.hh" local="no" import="no" module="no" objc="no">scroom/format_stuff.hh</includes>
+    <includes id="transformpresentation_8hh" name="transformpresentation.hh" local="no" import="no" module="no" objc="no">scroom/transformpresentation.hh</includes>
   </compound>
   <compound kind="file">
     <name>pipette.hh</name>
@@ -10904,6 +11221,87 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>Scroom::Utils::Context</name>
+    <filename>classScroom_1_1Utils_1_1Context.html</filename>
+    <base>Interface</base>
+    <class kind="class">Scroom::Utils::Context::name_exists</class>
+    <class kind="class">Scroom::Utils::Context::name_not_found</class>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; Context &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
+      <anchor>abc2f687326929a940ae88aed227e14ae</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; const Context &gt;</type>
+      <name>ConstPtr</name>
+      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
+      <anchor>a2cdae38874f874bb02c2caa75e80f53c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual void</type>
+      <name>set</name>
+      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
+      <anchor>a4e8eaedb2a5f9c26e758e6ddad47396f</anchor>
+      <arglist>(std::string name, std::any value)=0</arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual const std::any &amp;</type>
+      <name>get</name>
+      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
+      <anchor>aa411d28e6b2dd90b062039070a381907</anchor>
+      <arglist>(std::string name) const =0</arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual std::any</type>
+      <name>try_get</name>
+      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
+      <anchor>a0e31a6cc6dab924ff33e148d545c9565</anchor>
+      <arglist>(std::string name) const =0</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static Ptr</type>
+      <name>create</name>
+      <anchorfile>classScroom_1_1Utils_1_1Context.html</anchorfile>
+      <anchor>a4db6fa5ca71b2c41ee2ffd0c275edd07</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>ContextTests</name>
+    <filename>classContextTests.html</filename>
+    <member kind="function">
+      <type></type>
+      <name>ContextTests</name>
+      <anchorfile>classContextTests.html</anchorfile>
+      <anchor>a542f126da79c4b1fa1cf546920207edf</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="variable">
+      <type>Context::Ptr</type>
+      <name>context</name>
+      <anchorfile>classContextTests.html</anchorfile>
+      <anchor>a57d0d701f2578c7770c0530a1b7371f5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>std::shared_ptr&lt; int &gt;</type>
+      <name>value</name>
+      <anchorfile>classContextTests.html</anchorfile>
+      <anchor>a8875749719a78df25d2084a086090250</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>std::weak_ptr&lt; int &gt;</type>
+      <name>weakValue</name>
+      <anchorfile>classContextTests.html</anchorfile>
+      <anchor>a3a5569c93276f71a3627b6e6a843d899</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>Scroom::Utils::Count</name>
     <filename>classScroom_1_1Utils_1_1Count.html</filename>
     <member kind="typedef">
@@ -11205,6 +11603,30 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>Scroom::Utils::anonymous_namespace{tweak-view.cc}::DefaultTweakPresentationPosition</name>
+    <filename>classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakPresentationPosition.html</filename>
+    <base>Scroom::Utils::ITweakPresentationPosition</base>
+    <member kind="function">
+      <type>Point&lt; double &gt;</type>
+      <name>tweakPosition</name>
+      <anchorfile>classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakPresentationPosition.html</anchorfile>
+      <anchor>ab96ef75605f83c73c5f9d61f6553be6c</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;currentPosition, const Point&lt; int &gt; &amp;, int) const override</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>Scroom::Utils::anonymous_namespace{tweak-view.cc}::DefaultTweakSelection</name>
+    <filename>classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakSelection.html</filename>
+    <base>Scroom::Utils::ITweakSelection</base>
+    <member kind="function">
+      <type>Selection</type>
+      <name>tweakSelection</name>
+      <anchorfile>classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakSelection.html</anchorfile>
+      <anchor>a69bfee814c9f4e5e85a5d5f83bc4c3b6</anchor>
+      <arglist>(const Selection &amp;selection) const override</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>DontDelete</name>
     <filename>classDontDelete.html</filename>
     <templarg>typename T</templarg>
@@ -11226,6 +11648,24 @@
       <anchorfile>classScroom_1_1MemoryBlocks_1_1Detail_1_1anonymous__namespace_02swapbasedblockallocator_8cc_03_1_1DontDelete.html</anchorfile>
       <anchor>a9c80210aaa07ef6bf5246efca5502bb2</anchor>
       <arglist>(T *)</arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>Dummy</name>
+    <filename>structDummy.html</filename>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; Dummy &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>structDummy.html</anchorfile>
+      <anchor>a8e29ab0a6ae746731e7827e8ada49c39</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static Ptr</type>
+      <name>Create</name>
+      <anchorfile>structDummy.html</anchorfile>
+      <anchor>a87eb41dd7213c972bba7404e6e06b428</anchor>
+      <arglist>()</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -11396,6 +11836,13 @@
     <base>PresentationInterface</base>
     <base>PipetteViewInterface</base>
     <member kind="function">
+      <type></type>
+      <name>DummyPresentation</name>
+      <anchorfile>classDummyPresentation.html</anchorfile>
+      <anchor>ad309c379cbf46c4a3d8ea77f4d17eff8</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
       <type>Scroom::Utils::Rectangle&lt; double &gt;</type>
       <name>getRect</name>
       <anchorfile>classDummyPresentation.html</anchorfile>
@@ -11451,12 +11898,26 @@
       <anchor>a0852a1facf0d3a5a496772b46eec3b92</anchor>
       <arglist>(Scroom::Utils::Rectangle&lt; double &gt;) override</arglist>
     </member>
+    <member kind="function">
+      <type>Scroom::Utils::Context::ConstPtr</type>
+      <name>getContext</name>
+      <anchorfile>classDummyPresentation.html</anchorfile>
+      <anchor>a317cb2c71dfe5520c212c5b6562ccc25</anchor>
+      <arglist>() const override</arglist>
+    </member>
     <member kind="function" static="yes">
       <type>static PresentationInterface::Ptr</type>
       <name>create</name>
       <anchorfile>classDummyPresentation.html</anchorfile>
       <anchor>ab367b2e1bf10f4711da69c013b04330c</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>Scroom::Utils::Context::Ptr</type>
+      <name>context</name>
+      <anchorfile>classDummyPresentation.html</anchorfile>
+      <anchor>a05524e72e15723ae41c7dfa7be392523</anchor>
+      <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -11758,10 +12219,10 @@
       <arglist>(ExamplePresentation &amp;&amp;)=delete</arglist>
     </member>
     <member kind="function">
-      <type>ExamplePresentation</type>
+      <type>ExamplePresentation &amp;</type>
       <name>operator=</name>
       <anchorfile>classExamplePresentation.html</anchorfile>
-      <anchor>a105ebf2026f59dc65c6dcea20aed20ce</anchor>
+      <anchor>a449a0745ee373aca691cc3301fe886c2</anchor>
       <arglist>(const ExamplePresentation &amp;)=delete</arglist>
     </member>
     <member kind="function">
@@ -11770,6 +12231,13 @@
       <anchorfile>classExamplePresentation.html</anchorfile>
       <anchor>a818c924dbbdac6646330105f1c1e9742</anchor>
       <arglist>(ExamplePresentation &amp;&amp;)=delete</arglist>
+    </member>
+    <member kind="function">
+      <type>Scroom::Utils::Context::ConstPtr</type>
+      <name>getContext</name>
+      <anchorfile>classExamplePresentation.html</anchorfile>
+      <anchor>ac01042776127b49bf0c95aac85c4bb5b</anchor>
+      <arglist>() const override</arglist>
     </member>
     <member kind="function">
       <type>Scroom::Utils::Rectangle&lt; double &gt;</type>
@@ -11826,6 +12294,13 @@
       <anchorfile>classExamplePresentation.html</anchorfile>
       <anchor>a814f6109cfd268b115c24ae46fa6b2b6</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>Scroom::Utils::Context::Ptr</type>
+      <name>context</name>
+      <anchorfile>classExamplePresentation.html</anchorfile>
+      <anchor>a4a2ecf21419687340f97bea31f220209</anchor>
+      <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
       <type>cairo_pattern_t *</type>
@@ -12418,36 +12893,93 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>ITweakSelection</name>
-    <filename>classITweakSelection.html</filename>
+    <name>Scroom::Utils::ITweakPositionTextBox</name>
+    <filename>classScroom_1_1Utils_1_1ITweakPositionTextBox.html</filename>
+    <base>Interface</base>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; ITweakPositionTextBox &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>classScroom_1_1Utils_1_1ITweakPositionTextBox.html</anchorfile>
+      <anchor>a9ef1a6418763fc62a50478fcc52a6888</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual Point&lt; double &gt;</type>
+      <name>parse</name>
+      <anchorfile>classScroom_1_1Utils_1_1ITweakPositionTextBox.html</anchorfile>
+      <anchor>abdeb37909afd21d9eff6982a809ca64b</anchor>
+      <arglist>(std::string_view x, std::string_view y, const Point&lt; int &gt; &amp;drawingAreaSize, int zoom) const =0</arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual std::pair&lt; std::string, std::string &gt;</type>
+      <name>display</name>
+      <anchorfile>classScroom_1_1Utils_1_1ITweakPositionTextBox.html</anchorfile>
+      <anchor>a1bd122b4244214f7e107e09c9e4b7b5f</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;position, const Point&lt; int &gt; &amp;drawingAreaSize, int zoom) const =0</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>Scroom::Utils::ITweakPresentationPosition</name>
+    <filename>classScroom_1_1Utils_1_1ITweakPresentationPosition.html</filename>
+    <base>Interface</base>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; ITweakPresentationPosition &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>classScroom_1_1Utils_1_1ITweakPresentationPosition.html</anchorfile>
+      <anchor>a0d34e443ea3bc1520ce38640b7863695</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual Point&lt; double &gt;</type>
+      <name>tweakPosition</name>
+      <anchorfile>classScroom_1_1Utils_1_1ITweakPresentationPosition.html</anchorfile>
+      <anchor>af9f10643479ad5b8451571464ccd1b4a</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;currentPosition, const Point&lt; int &gt; &amp;drawingAreaSize, int zoom) const =0</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>Scroom::Utils::ITweakRulers</name>
+    <filename>classScroom_1_1Utils_1_1ITweakRulers.html</filename>
+    <base>Interface</base>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; ITweakRulers &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>classScroom_1_1Utils_1_1ITweakRulers.html</anchorfile>
+      <anchor>a25c71c6ecd15adfe9d6015f32f68a6bb</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual Rectangle&lt; double &gt;</type>
+      <name>tweakRulers</name>
+      <anchorfile>classScroom_1_1Utils_1_1ITweakRulers.html</anchorfile>
+      <anchor>a778f5993d471621e119d5631580a56d2</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;currentPosition, const Point&lt; int &gt; &amp;drawingAreaSize, int zoom) const =0</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>Scroom::Utils::ITweakSelection</name>
+    <filename>classScroom_1_1Utils_1_1ITweakSelection.html</filename>
     <base>Interface</base>
     <member kind="typedef">
       <type>std::shared_ptr&lt; ITweakSelection &gt;</type>
       <name>Ptr</name>
-      <anchorfile>classITweakSelection.html</anchorfile>
-      <anchor>ad1632853981c27a9fe5bd385ea652aa9</anchor>
+      <anchorfile>classScroom_1_1Utils_1_1ITweakSelection.html</anchorfile>
+      <anchor>aa4bcdde0ecea6a699c7008fa50545ace</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
-      <type>Scroom::Utils::Point&lt; double &gt;</type>
-      <name>Point</name>
-      <anchorfile>classITweakSelection.html</anchorfile>
-      <anchor>a71dc24033cd4f01f9b681d6378e2c447</anchor>
+      <type>std::map&lt; std::string, ITweakSelection::Ptr &gt;</type>
+      <name>Map</name>
+      <anchorfile>classScroom_1_1Utils_1_1ITweakSelection.html</anchorfile>
+      <anchor>aa938963ea5343fabb1d7b6f5e04614c5</anchor>
       <arglist></arglist>
     </member>
     <member kind="function" virtualness="pure">
       <type>virtual Selection</type>
       <name>tweakSelection</name>
-      <anchorfile>classITweakSelection.html</anchorfile>
-      <anchor>a66526e93a452f5f02cad88d486d3869a</anchor>
-      <arglist>(Selection selection) const =0</arglist>
-    </member>
-    <member kind="function" virtualness="pure">
-      <type>virtual void</type>
-      <name>setAspectRatio</name>
-      <anchorfile>classITweakSelection.html</anchorfile>
-      <anchor>a854971a73838978bd02044dcfad729cb</anchor>
-      <arglist>(Point aspectRatio_)=0</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1ITweakSelection.html</anchorfile>
+      <anchor>aa34c0a4afd0e2453d2eb28226b7a2a1b</anchor>
+      <arglist>(const Selection &amp;selection) const =0</arglist>
     </member>
   </compound>
   <compound kind="struct">
@@ -13667,6 +14199,14 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>Scroom::Utils::Context::name_exists</name>
+    <filename>classScroom_1_1Utils_1_1Context_1_1name__exists.html</filename>
+  </compound>
+  <compound kind="class">
+    <name>Scroom::Utils::Context::name_not_found</name>
+    <filename>classScroom_1_1Utils_1_1Context_1_1name__not__found.html</filename>
+  </compound>
+  <compound kind="class">
     <name>NewAggregateInterface</name>
     <filename>classNewAggregateInterface.html</filename>
     <base protection="private">Interface</base>
@@ -14679,6 +15219,92 @@
       <name>MarkPageFree</name>
       <anchorfile>classScroom_1_1MemoryBlobs_1_1PageProvider.html</anchorfile>
       <anchor>ab1000bd633c88866959e36760b5b0f0f</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>Scroom::Utils::ParentContext</name>
+    <filename>classScroom_1_1Utils_1_1ParentContext.html</filename>
+    <base>Scroom::Utils::RecursiveContext</base>
+    <member kind="function">
+      <type></type>
+      <name>ParentContext</name>
+      <anchorfile>classScroom_1_1Utils_1_1ParentContext.html</anchorfile>
+      <anchor>af1fa449f3013f7efad14e902127b438a</anchor>
+      <arglist>(Context::Ptr first_)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>set</name>
+      <anchorfile>classScroom_1_1Utils_1_1ParentContext.html</anchorfile>
+      <anchor>a37f47e5cf3cd533b8d9cd9fcfb61865f</anchor>
+      <arglist>(std::string name, std::any value) override</arglist>
+    </member>
+    <member kind="function">
+      <type>const std::any &amp;</type>
+      <name>get</name>
+      <anchorfile>classScroom_1_1Utils_1_1ParentContext.html</anchorfile>
+      <anchor>a704badc07cc7a4c7f9047bdc8a18863f</anchor>
+      <arglist>(std::string name) const override</arglist>
+    </member>
+    <member kind="function">
+      <type>std::any</type>
+      <name>try_get</name>
+      <anchorfile>classScroom_1_1Utils_1_1ParentContext.html</anchorfile>
+      <anchor>a2ed9c7f2fed04a9baf867f45b05e5a12</anchor>
+      <arglist>(std::string name) const override</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>add</name>
+      <anchorfile>classScroom_1_1Utils_1_1ParentContext.html</anchorfile>
+      <anchor>a070fbf62063443d6a41824c0f805d65e</anchor>
+      <arglist>(const Context::ConstPtr &amp;child) override</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>Context::Ptr</type>
+      <name>first</name>
+      <anchorfile>classScroom_1_1Utils_1_1ParentContext.html</anchorfile>
+      <anchor>a6489d3be553251180a4938b32b762fa8</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>std::vector&lt; Context::ConstPtr &gt;</type>
+      <name>contexts</name>
+      <anchorfile>classScroom_1_1Utils_1_1ParentContext.html</anchorfile>
+      <anchor>ab51ac55e0eb265249cb38de9a3e6e220</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>ParentContextTests</name>
+    <filename>classParentContextTests.html</filename>
+    <member kind="function">
+      <type></type>
+      <name>ParentContextTests</name>
+      <anchorfile>classParentContextTests.html</anchorfile>
+      <anchor>a5001996fce96043f938a2c6ff0e2ce9a</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="variable">
+      <type>Context::Ptr</type>
+      <name>first</name>
+      <anchorfile>classParentContextTests.html</anchorfile>
+      <anchor>ae5e6eab083253186b75bd4f9cc73f755</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>Context::Ptr</type>
+      <name>second</name>
+      <anchorfile>classParentContextTests.html</anchorfile>
+      <anchor>a3537c02a8a8f5c4e2a335b445d56ea33</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>ParentContext</type>
+      <name>context</name>
+      <anchorfile>classParentContextTests.html</anchorfile>
+      <anchor>a636b622b40fa6aa06c6d5fff2c7eefa0</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -15785,12 +16411,12 @@
       <anchor>a91974d576458480d37d40c1dbc006d82</anchor>
       <arglist>()=0</arglist>
     </member>
-    <member kind="function" virtualness="virtual">
-      <type>virtual Scroom::Utils::Point&lt; double &gt;</type>
-      <name>getAspectRatio</name>
+    <member kind="function" virtualness="pure">
+      <type>virtual Scroom::Utils::Context::ConstPtr</type>
+      <name>getContext</name>
       <anchorfile>classPresentationInterface.html</anchorfile>
-      <anchor>a2a3e416a124e253bec8fb97c510836fe</anchor>
-      <arglist>() const</arglist>
+      <anchor>a246215775d5c465dd62e5607943a111c</anchor>
+      <arglist>() const =0</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -15803,6 +16429,13 @@
       <anchorfile>classanonymous__namespace_02determine-size-test_8cc_03_1_1PresentationInterfaceStub.html</anchorfile>
       <anchor>aaf5b95fb759a671489a58b7658ae0760</anchor>
       <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>Scroom::Utils::Context::ConstPtr</type>
+      <name>getContext</name>
+      <anchorfile>classanonymous__namespace_02determine-size-test_8cc_03_1_1PresentationInterfaceStub.html</anchorfile>
+      <anchor>a5cf6841e2e99f0b4edabf163d1c6b3a3</anchor>
+      <arglist>() const override</arglist>
     </member>
     <member kind="function">
       <type>Scroom::Utils::Rectangle&lt; double &gt;</type>
@@ -15874,6 +16507,13 @@
       <anchor>a07d0e676dbf84be7a9385d8014ece4b3</anchor>
       <arglist></arglist>
     </member>
+    <member kind="variable" protection="private">
+      <type>Scroom::Utils::Context::ConstPtr</type>
+      <name>context</name>
+      <anchorfile>classanonymous__namespace_02determine-size-test_8cc_03_1_1PresentationInterfaceStub.html</anchorfile>
+      <anchor>aa0be3960e60fb3124b147e16ecbd080b</anchor>
+      <arglist></arglist>
+    </member>
   </compound>
   <compound kind="class">
     <name>PresentationMock</name>
@@ -15934,6 +16574,13 @@
       <anchorfile>classPresentationMock.html</anchorfile>
       <anchor>a8c7a23ff5fb6b9f3e9cfdeb47270844f</anchor>
       <arglist>(getTitle, std::string())</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>MOCK_CONST_METHOD0</name>
+      <anchorfile>classPresentationMock.html</anchorfile>
+      <anchor>abc9e24792a6d04f3d584a0e086c06291</anchor>
+      <arglist>(getContext, Scroom::Utils::Context::ConstPtr())</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
@@ -17806,6 +18453,32 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>Scroom::Utils::RecursiveContext</name>
+    <filename>classScroom_1_1Utils_1_1RecursiveContext.html</filename>
+    <base>Scroom::Utils::Context</base>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; RecursiveContext &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>classScroom_1_1Utils_1_1RecursiveContext.html</anchorfile>
+      <anchor>a5bd5c08ff83d22559ca707dcda4b7680</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual void</type>
+      <name>add</name>
+      <anchorfile>classScroom_1_1Utils_1_1RecursiveContext.html</anchorfile>
+      <anchor>a46b11d903c078af2628b6bd657499e63</anchor>
+      <arglist>(const Context::ConstPtr &amp;child)=0</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static Ptr</type>
+      <name>create</name>
+      <anchorfile>classScroom_1_1Utils_1_1RecursiveContext.html</anchorfile>
+      <anchor>a1fecd5bbb7004b66fdffaa87c798cd5b</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>Scroom::Utils::Detail::Registration</name>
     <filename>classScroom_1_1Utils_1_1Detail_1_1Registration.html</filename>
     <templarg>typename T</templarg>
@@ -19177,6 +19850,50 @@
       <name>widgets</name>
       <anchorfile>classSidebarManager.html</anchorfile>
       <anchor>af0dbdadde464305fa2234da905494438</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>Scroom::Utils::SingleContext</name>
+    <filename>classScroom_1_1Utils_1_1SingleContext.html</filename>
+    <base>Scroom::Utils::Context</base>
+    <member kind="function">
+      <type>void</type>
+      <name>set</name>
+      <anchorfile>classScroom_1_1Utils_1_1SingleContext.html</anchorfile>
+      <anchor>a6eb142eeb4c6add30a44dc670e0e1c54</anchor>
+      <arglist>(std::string name, std::any value) override</arglist>
+    </member>
+    <member kind="function">
+      <type>const std::any &amp;</type>
+      <name>get</name>
+      <anchorfile>classScroom_1_1Utils_1_1SingleContext.html</anchorfile>
+      <anchor>a279a7f2983a3f9059d7082964ff342e9</anchor>
+      <arglist>(std::string name) const override</arglist>
+    </member>
+    <member kind="function">
+      <type>std::any</type>
+      <name>try_get</name>
+      <anchorfile>classScroom_1_1Utils_1_1SingleContext.html</anchorfile>
+      <anchor>a6c84b53b7556038b28502516b73d3939</anchor>
+      <arglist>(std::string name) const override</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>std::map&lt; std::string, std::any &gt;</type>
+      <name>content</name>
+      <anchorfile>classScroom_1_1Utils_1_1SingleContext.html</anchorfile>
+      <anchor>af73def4e9303a83824a5adac148044e2</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>SingleContextTests</name>
+    <filename>classSingleContextTests.html</filename>
+    <member kind="variable">
+      <type>SingleContext</type>
+      <name>context</name>
+      <anchorfile>classSingleContextTests.html</anchorfile>
+      <anchor>a5189591c300fc4a7c54bfb82a47eb45a</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -20844,6 +21561,13 @@
       <anchor>a77a67abc662be4945f512ebf34ab7518</anchor>
       <arglist>(Scroom::Utils::Stuff s)</arglist>
     </member>
+    <member kind="function">
+      <type>Scroom::Utils::Context::ConstPtr</type>
+      <name>getContext</name>
+      <anchorfile>classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html</anchorfile>
+      <anchor>a4abffd48485acbf085e2cb945b70f25b</anchor>
+      <arglist>() const override</arglist>
+    </member>
     <member kind="function" static="yes">
       <type>static TiledBitmapPresentation::Ptr</type>
       <name>create</name>
@@ -20940,6 +21664,13 @@
       <name>pipetteLayerOperation</name>
       <anchorfile>classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html</anchorfile>
       <anchor>ad36fe40b3793407726915be296cf3af8</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>Scroom::Utils::Context::Ptr</type>
+      <name>context</name>
+      <anchorfile>classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html</anchorfile>
+      <anchor>a35cf0dc881c55a893888a139039f6108</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
@@ -21878,10 +22609,10 @@
       <arglist>() override</arglist>
     </member>
     <member kind="function">
-      <type>Scroom::Utils::Point&lt; double &gt;</type>
-      <name>getAspectRatio</name>
+      <type>Scroom::Utils::Context::ConstPtr</type>
+      <name>getContext</name>
       <anchorfile>classTransformPresentation.html</anchorfile>
-      <anchor>a969c44d9131e0318d039ff509f8dbed9</anchor>
+      <anchor>a44c201d6cc210f06a61be9f1afe3e984</anchor>
       <arglist>() const override</arglist>
     </member>
     <member kind="function">
@@ -22001,6 +22732,13 @@
       <name>viewData</name>
       <anchorfile>classTransformPresentation.html</anchorfile>
       <anchor>acd316f1a3a90a0fe59749363f82304d9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>Scroom::Utils::RecursiveContext::Ptr</type>
+      <name>context</name>
+      <anchorfile>classTransformPresentation.html</anchorfile>
+      <anchor>ab9ec8f8532594b77dbbf41d4f268d78a</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -22135,6 +22873,13 @@
       <anchor>a49dc1a6a20e1af36c4b4f1b01e6f9d41</anchor>
       <arglist>(PresentationInterface::Ptr const &amp;p) override</arglist>
     </member>
+    <member kind="function">
+      <type>Scroom::Utils::Context::ConstPtr</type>
+      <name>getContext</name>
+      <anchorfile>classTransparentOverlayPresentation.html</anchorfile>
+      <anchor>a3a37fca573b2485fd450d99d738bd0f2</anchor>
+      <arglist>() const override</arglist>
+    </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
       <name>create</name>
@@ -22182,6 +22927,13 @@
       <name>viewData</name>
       <anchorfile>classTransparentOverlayPresentation.html</anchorfile>
       <anchor>ae63daebb37c7a16d847fad3c16482d50</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>Scroom::Utils::RecursiveContext::Ptr</type>
+      <name>context</name>
+      <anchorfile>classTransparentOverlayPresentation.html</anchorfile>
+      <anchor>a07c4806fcd930f79d76b7678524647f0</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -22324,295 +23076,249 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>TweakGridSelection</name>
-    <filename>classTweakGridSelection.html</filename>
-    <base>TweakSelection</base>
+    <name>Scroom::Utils::TweakGridSelection</name>
+    <filename>classScroom_1_1Utils_1_1TweakGridSelection.html</filename>
+    <base>Scroom::Utils::TweakSelection</base>
     <member kind="function">
-      <type>Rectangle</type>
+      <type>Rectangle&lt; double &gt;</type>
       <name>tweakSelection</name>
-      <anchorfile>classTweakGridSelection.html</anchorfile>
-      <anchor>ae0bd56fdd79d1b55155400158ad1f876</anchor>
-      <arglist>(Rectangle selection) const override</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakGridSelection.html</anchorfile>
+      <anchor>a82841dcda1813e3d987199ec5789fc8b</anchor>
+      <arglist>(const Rectangle&lt; double &gt; &amp;selection) const override</arglist>
     </member>
     <member kind="function">
-      <type>virtual Rectangle</type>
+      <type>virtual Rectangle&lt; double &gt;</type>
       <name>tweakSelection</name>
-      <anchorfile>classTweakGridSelection.html</anchorfile>
-      <anchor>aba15993b0d7720cf231d4fbd95980725</anchor>
-      <arglist>(Rectangle selection) const=0</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakGridSelection.html</anchorfile>
+      <anchor>a40845f0a33e98b20ad0ef2a439d6bf01</anchor>
+      <arglist>(const Rectangle&lt; double &gt; &amp;selection) const=0</arglist>
     </member>
     <member kind="function">
       <type>Selection</type>
       <name>tweakSelection</name>
-      <anchorfile>classTweakGridSelection.html</anchorfile>
-      <anchor>a8b280667496e3bd9fe0fa8a87a85a1b4</anchor>
-      <arglist>(Selection selection) const override</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakGridSelection.html</anchorfile>
+      <anchor>a3333f4567538a2dfade6ec075f3fe280</anchor>
+      <arglist>(const Selection &amp;selection) const override</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>TweakSelection</name>
-      <anchorfile>classTweakGridSelection.html</anchorfile>
-      <anchor>a89db2a9f0403173a2780701a185bd408</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakGridSelection.html</anchorfile>
+      <anchor>aa87919f6df4aad19cca9738794947bc7</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;aspectRatio_)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static Ptr</type>
+      <type>static ITweakSelection::Ptr</type>
       <name>create</name>
-      <anchorfile>classTweakGridSelection.html</anchorfile>
-      <anchor>a64bd6f2b5e49b54c3b0661f71df0dd69</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakGridSelection.html</anchorfile>
+      <anchor>a44701030e6dbaa2db85d531886df22da</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;aspectRatio_)</arglist>
     </member>
   </compound>
   <compound kind="class">
-    <name>TweakPixelSelection</name>
-    <filename>classTweakPixelSelection.html</filename>
-    <base>TweakSelection</base>
+    <name>Scroom::Utils::TweakPixelSelection</name>
+    <filename>classScroom_1_1Utils_1_1TweakPixelSelection.html</filename>
+    <base>Scroom::Utils::TweakSelection</base>
     <member kind="function">
-      <type>Rectangle</type>
+      <type>Rectangle&lt; double &gt;</type>
       <name>tweakSelection</name>
-      <anchorfile>classTweakPixelSelection.html</anchorfile>
-      <anchor>ab8590c4031b7c85c5374f12ca61b2d58</anchor>
-      <arglist>(Rectangle selection) const override</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPixelSelection.html</anchorfile>
+      <anchor>a592fd83aa7848be1ab0e421eae5500eb</anchor>
+      <arglist>(const Rectangle&lt; double &gt; &amp;selection) const override</arglist>
     </member>
     <member kind="function">
-      <type>virtual Rectangle</type>
+      <type>virtual Rectangle&lt; double &gt;</type>
       <name>tweakSelection</name>
-      <anchorfile>classTweakPixelSelection.html</anchorfile>
-      <anchor>aba15993b0d7720cf231d4fbd95980725</anchor>
-      <arglist>(Rectangle selection) const=0</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPixelSelection.html</anchorfile>
+      <anchor>a40845f0a33e98b20ad0ef2a439d6bf01</anchor>
+      <arglist>(const Rectangle&lt; double &gt; &amp;selection) const=0</arglist>
     </member>
     <member kind="function">
       <type>Selection</type>
       <name>tweakSelection</name>
-      <anchorfile>classTweakPixelSelection.html</anchorfile>
-      <anchor>a8b280667496e3bd9fe0fa8a87a85a1b4</anchor>
-      <arglist>(Selection selection) const override</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPixelSelection.html</anchorfile>
+      <anchor>a3333f4567538a2dfade6ec075f3fe280</anchor>
+      <arglist>(const Selection &amp;selection) const override</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>TweakSelection</name>
-      <anchorfile>classTweakPixelSelection.html</anchorfile>
-      <anchor>a89db2a9f0403173a2780701a185bd408</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPixelSelection.html</anchorfile>
+      <anchor>aa87919f6df4aad19cca9738794947bc7</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;aspectRatio_)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static Ptr</type>
+      <type>static ITweakSelection::Ptr</type>
       <name>create</name>
-      <anchorfile>classTweakPixelSelection.html</anchorfile>
-      <anchor>a35a1a260e43e6ef70c7437c7bb53b0f9</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPixelSelection.html</anchorfile>
+      <anchor>a9755bf9dd8a03f66c12cc9e5a1de4b01</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;aspectRatio_)</arglist>
     </member>
   </compound>
   <compound kind="class">
-    <name>TweakPositionTextBox</name>
-    <filename>classTweakPositionTextBox.html</filename>
+    <name>Scroom::Utils::TweakPositionTextBox</name>
+    <filename>classScroom_1_1Utils_1_1TweakPositionTextBox.html</filename>
+    <base>Scroom::Utils::ITweakPositionTextBox</base>
     <member kind="typedef">
       <type>std::shared_ptr&lt; TweakPositionTextBox &gt;</type>
       <name>Ptr</name>
-      <anchorfile>classTweakPositionTextBox.html</anchorfile>
-      <anchor>a62b3e8b6f032ea9473b4407aaee83216</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="typedef">
-      <type>Scroom::Utils::Point&lt; double &gt;</type>
-      <name>Point</name>
-      <anchorfile>classTweakPositionTextBox.html</anchorfile>
-      <anchor>a6aa45dd92d97a0832e598e2d1c34d7b1</anchor>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPositionTextBox.html</anchorfile>
+      <anchor>aba1707c4556685e1846886b46517c07b</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
-      <type>Point</type>
+      <type>Point&lt; double &gt;</type>
       <name>parse</name>
-      <anchorfile>classTweakPositionTextBox.html</anchorfile>
-      <anchor>a2ceab334ed94eef703340ea84bca028b</anchor>
-      <arglist>(std::string_view x, std::string_view y, Scroom::Utils::Point&lt; int &gt; drawingAreaSize, int zoom) const</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPositionTextBox.html</anchorfile>
+      <anchor>a5cc508de13936225cd493d0814e9a5ab</anchor>
+      <arglist>(std::string_view x, std::string_view y, const Point&lt; int &gt; &amp;drawingAreaSize, int zoom) const override</arglist>
     </member>
     <member kind="function">
       <type>std::pair&lt; std::string, std::string &gt;</type>
       <name>display</name>
-      <anchorfile>classTweakPositionTextBox.html</anchorfile>
-      <anchor>af047ea26ae71f9039daa8ddefad3648b</anchor>
-      <arglist>(Point position, Scroom::Utils::Point&lt; int &gt; drawingAreaSize, int zoom) const</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>setAspectRatio</name>
-      <anchorfile>classTweakPositionTextBox.html</anchorfile>
-      <anchor>abe450446237ce055041d4fa289363857</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPositionTextBox.html</anchorfile>
+      <anchor>ab4bc2cb26ec1079049374d922acfb762</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;position, const Point&lt; int &gt; &amp;drawingAreaSize, int zoom) const override</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static Ptr</type>
+      <type>static ITweakPositionTextBox::Ptr</type>
       <name>create</name>
-      <anchorfile>classTweakPositionTextBox.html</anchorfile>
-      <anchor>a01051591e2fe103b2aeeec04dfa1ed19</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPositionTextBox.html</anchorfile>
+      <anchor>aff8fc77c17823f8d3a04fa1f363b24db</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;aspectRatio_={1.0, 1.0})</arglist>
     </member>
     <member kind="function" protection="private">
       <type></type>
       <name>TweakPositionTextBox</name>
-      <anchorfile>classTweakPositionTextBox.html</anchorfile>
-      <anchor>a456b90dc041b5897ec8f18e8a74fadea</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPositionTextBox.html</anchorfile>
+      <anchor>a6928e1c4d71a29d91b8cd0b4ab9dbb4f</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;aspectRatio_)</arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>Point</type>
+      <type>Point&lt; double &gt;</type>
       <name>aspectRatio</name>
-      <anchorfile>classTweakPositionTextBox.html</anchorfile>
-      <anchor>a8d2812036bd7038e2b8f23a763bb5ec4</anchor>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPositionTextBox.html</anchorfile>
+      <anchor>a8f099b04305d03101779ef7e455f8158</anchor>
       <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
-    <name>TweakPresentationPosition</name>
-    <filename>classTweakPresentationPosition.html</filename>
+    <name>Scroom::Utils::TweakPresentationPosition</name>
+    <filename>classScroom_1_1Utils_1_1TweakPresentationPosition.html</filename>
+    <base>Scroom::Utils::ITweakPresentationPosition</base>
     <member kind="typedef">
       <type>std::shared_ptr&lt; TweakPresentationPosition &gt;</type>
       <name>Ptr</name>
-      <anchorfile>classTweakPresentationPosition.html</anchorfile>
-      <anchor>a815f26bd0503a2fffb2e160b56060241</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="typedef">
-      <type>Scroom::Utils::Point&lt; double &gt;</type>
-      <name>Point</name>
-      <anchorfile>classTweakPresentationPosition.html</anchorfile>
-      <anchor>ae8a9f8845e52f3de5bfc758a1275f22c</anchor>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPresentationPosition.html</anchorfile>
+      <anchor>a80acefbc72c6435aa481f2e9f6b7a72b</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
-      <type>Point</type>
+      <type>Point&lt; double &gt;</type>
       <name>tweakPosition</name>
-      <anchorfile>classTweakPresentationPosition.html</anchorfile>
-      <anchor>a3a4e55a399fe13abbcd2d783a264d63e</anchor>
-      <arglist>(Point currentPosition, Scroom::Utils::Point&lt; int &gt;, int zoom) const</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>setAspectRatio</name>
-      <anchorfile>classTweakPresentationPosition.html</anchorfile>
-      <anchor>ae1dad0a01eb103729be6f627d7ac0897</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPresentationPosition.html</anchorfile>
+      <anchor>a496a6bc8a7fdb897470c79b3205c0581</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;currentPosition, const Point&lt; int &gt; &amp;drawingAreaSize, int zoom) const override</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static Ptr</type>
+      <type>static ITweakPresentationPosition::Ptr</type>
       <name>create</name>
-      <anchorfile>classTweakPresentationPosition.html</anchorfile>
-      <anchor>a9eb63117ba7be7c7e61bcaa939a21023</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPresentationPosition.html</anchorfile>
+      <anchor>a8c81cc0588c7979a76fb76f3ce344690</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;aspectRatio_)</arglist>
     </member>
     <member kind="function" protection="private">
       <type></type>
       <name>TweakPresentationPosition</name>
-      <anchorfile>classTweakPresentationPosition.html</anchorfile>
-      <anchor>a01f80b4df75712bbe982c569a491e3cf</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPresentationPosition.html</anchorfile>
+      <anchor>ab5b07c9191cb4a80900bc980cb612fb6</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;aspectRatio_)</arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>Point</type>
+      <type>Point&lt; double &gt;</type>
       <name>aspectRatio</name>
-      <anchorfile>classTweakPresentationPosition.html</anchorfile>
-      <anchor>a3aff9a977920a2b836c58706e5a9be47</anchor>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPresentationPosition.html</anchorfile>
+      <anchor>aa72a79f1815efc983f1d341d982afe84</anchor>
       <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
-    <name>TweakRulers</name>
-    <filename>classTweakRulers.html</filename>
+    <name>Scroom::Utils::TweakRulers</name>
+    <filename>classScroom_1_1Utils_1_1TweakRulers.html</filename>
+    <base>Scroom::Utils::ITweakRulers</base>
     <member kind="typedef">
       <type>std::shared_ptr&lt; TweakRulers &gt;</type>
       <name>Ptr</name>
-      <anchorfile>classTweakRulers.html</anchorfile>
-      <anchor>aed8f94596f49f0bf70ac2c903276cc58</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="typedef">
-      <type>Scroom::Utils::Point&lt; double &gt;</type>
-      <name>Point</name>
-      <anchorfile>classTweakRulers.html</anchorfile>
-      <anchor>a027377b6bb9b72b8c7667b7646fc590e</anchor>
+      <anchorfile>classScroom_1_1Utils_1_1TweakRulers.html</anchorfile>
+      <anchor>a3829fbd4a03a11a8c341636cf6d3efd7</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
-      <type>Scroom::Utils::Rectangle&lt; double &gt;</type>
+      <type>Rectangle&lt; double &gt;</type>
       <name>tweakRulers</name>
-      <anchorfile>classTweakRulers.html</anchorfile>
-      <anchor>a9fd1a6ef630de660f6550e63b1157768</anchor>
-      <arglist>(Point currentPosition, Scroom::Utils::Point&lt; int &gt; drawingAreaSize, int zoom) const</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>setAspectRatio</name>
-      <anchorfile>classTweakRulers.html</anchorfile>
-      <anchor>a25df7aa6ca074bfefa7cb17ba0bb8760</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakRulers.html</anchorfile>
+      <anchor>a0c63bfec07dbb4c5aa9f80d80ada5c92</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;currentPosition, const Point&lt; int &gt; &amp;drawingAreaSize, int zoom) const override</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static Ptr</type>
+      <type>static ITweakRulers::Ptr</type>
       <name>create</name>
-      <anchorfile>classTweakRulers.html</anchorfile>
-      <anchor>a97536e4b1c329b0757880b9128ce0575</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakRulers.html</anchorfile>
+      <anchor>aa3372456f136f40492d6d64c6fbefdf6</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;aspectRatio_={1.0, 1.0})</arglist>
     </member>
     <member kind="function" protection="private">
       <type></type>
       <name>TweakRulers</name>
-      <anchorfile>classTweakRulers.html</anchorfile>
-      <anchor>a59024044cb56b26cba869def848d8302</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakRulers.html</anchorfile>
+      <anchor>a8fd84d97eea7f6f74bcb06ca48b9afdc</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;aspectRatio_)</arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>Point</type>
+      <type>Point&lt; double &gt;</type>
       <name>aspectRatio</name>
-      <anchorfile>classTweakRulers.html</anchorfile>
-      <anchor>ae3775037f6aa9e4929d36732b7ba4e38</anchor>
+      <anchorfile>classScroom_1_1Utils_1_1TweakRulers.html</anchorfile>
+      <anchor>a8dd0495ce1c7ca79673b6405890621f2</anchor>
       <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
-    <name>TweakSelection</name>
-    <filename>classTweakSelection.html</filename>
-    <base>ITweakSelection</base>
+    <name>Scroom::Utils::TweakSelection</name>
+    <filename>classScroom_1_1Utils_1_1TweakSelection.html</filename>
+    <base>Scroom::Utils::ITweakSelection</base>
     <member kind="typedef">
-      <type>Scroom::Utils::Rectangle&lt; double &gt;</type>
-      <name>Rectangle</name>
-      <anchorfile>classTweakSelection.html</anchorfile>
-      <anchor>ab884b6cbfd0d7ef5d24779b238d58f20</anchor>
+      <type>std::shared_ptr&lt; TweakSelection &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>classScroom_1_1Utils_1_1TweakSelection.html</anchorfile>
+      <anchor>a542519c8e04bc6103abc201c42b0ec2a</anchor>
       <arglist></arglist>
     </member>
     <member kind="function" virtualness="pure">
-      <type>virtual Rectangle</type>
+      <type>virtual Rectangle&lt; double &gt;</type>
       <name>tweakSelection</name>
-      <anchorfile>classTweakSelection.html</anchorfile>
-      <anchor>a12e9c0186b039a10ac416c1b7a595049</anchor>
-      <arglist>(Rectangle selection) const =0</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakSelection.html</anchorfile>
+      <anchor>a89e267d4371ba1fbfff97efe3ea1ec05</anchor>
+      <arglist>(const Rectangle&lt; double &gt; &amp;selection) const =0</arglist>
     </member>
     <member kind="function">
       <type>Selection</type>
       <name>tweakSelection</name>
-      <anchorfile>classTweakSelection.html</anchorfile>
-      <anchor>a8b280667496e3bd9fe0fa8a87a85a1b4</anchor>
-      <arglist>(Selection selection) const override</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>setAspectRatio</name>
-      <anchorfile>classTweakSelection.html</anchorfile>
-      <anchor>a569158860931e97ddac18f418db6cfe3</anchor>
-      <arglist>(Point aspectRatio_) override</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakSelection.html</anchorfile>
+      <anchor>a3333f4567538a2dfade6ec075f3fe280</anchor>
+      <arglist>(const Selection &amp;selection) const override</arglist>
     </member>
     <member kind="function" protection="protected">
       <type></type>
       <name>TweakSelection</name>
-      <anchorfile>classTweakSelection.html</anchorfile>
-      <anchor>a89db2a9f0403173a2780701a185bd408</anchor>
-      <arglist>(Point aspectRatio_)</arglist>
+      <anchorfile>classScroom_1_1Utils_1_1TweakSelection.html</anchorfile>
+      <anchor>aa87919f6df4aad19cca9738794947bc7</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;aspectRatio_)</arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>Point</type>
+      <type>Point&lt; double &gt;</type>
       <name>aspectRatio</name>
-      <anchorfile>classTweakSelection.html</anchorfile>
-      <anchor>adaea304ddfaf25d12a5dd441e3ea5334</anchor>
+      <anchorfile>classScroom_1_1Utils_1_1TweakSelection.html</anchorfile>
+      <anchor>ac5d09c56e96995eb95743d1556ad9b63</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -23166,6 +23872,13 @@
       <arglist>(GtkBuilder *scroomXml)</arglist>
     </member>
     <member kind="function" protection="private">
+      <type>void</type>
+      <name>updateTweaks</name>
+      <anchorfile>classView.html</anchorfile>
+      <anchor>a38f98bc514762e3774357ab9ee3b9af7</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" protection="private">
       <type>Scroom::Utils::Point&lt; double &gt;</type>
       <name>windowPointToPresentationPoint</name>
       <anchorfile>classView.html</anchorfile>
@@ -23446,38 +24159,31 @@
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>Scroom::Utils::Point&lt; double &gt;</type>
-      <name>aspectRatio</name>
-      <anchorfile>classView.html</anchorfile>
-      <anchor>ae5ab81cdeaef480357dd3bdef7ca13d2</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>std::shared_ptr&lt; TweakPresentationPosition &gt;</type>
+      <type>std::shared_ptr&lt; Scroom::Utils::ITweakPresentationPosition &gt;</type>
       <name>tweakPresentationPosition</name>
       <anchorfile>classView.html</anchorfile>
-      <anchor>a5520d4697172b00423b7dfc8562be43a</anchor>
+      <anchor>a98757b38449273471bc0e2e463bdec94</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>std::shared_ptr&lt; TweakPositionTextBox &gt;</type>
+      <type>std::shared_ptr&lt; Scroom::Utils::ITweakPositionTextBox &gt;</type>
       <name>tweakPositionTextBox</name>
       <anchorfile>classView.html</anchorfile>
-      <anchor>ac1502705428141a89903b054fa002c7e</anchor>
+      <anchor>aaa4d04fadd0fbdd1923f326c69da4c3e</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>std::shared_ptr&lt; TweakRulers &gt;</type>
+      <type>std::shared_ptr&lt; Scroom::Utils::ITweakRulers &gt;</type>
       <name>tweakRulers</name>
       <anchorfile>classView.html</anchorfile>
-      <anchor>a4d9f207f3443cd9c9c07458d2131726d</anchor>
+      <anchor>a886641ec63f4bebc0173c8819775097b</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>std::map&lt; std::string, std::shared_ptr&lt; ITweakSelection &gt; &gt;</type>
+      <type>Scroom::Utils::ITweakSelection::Map</type>
       <name>tweakSelection</name>
       <anchorfile>classView.html</anchorfile>
-      <anchor>a074b15cf61b0b77505af7174f28aa316</anchor>
+      <anchor>a33bff91fe144203a1b5218b3289eddfc</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
@@ -24459,6 +25165,31 @@
     </member>
   </compound>
   <compound kind="namespace">
+    <name>anonymous_namespace{view.cc}</name>
+    <filename>namespaceanonymous__namespace_02view_8cc_03.html</filename>
+    <member kind="function">
+      <type>Scroom::Utils::Point&lt; double &gt;</type>
+      <name>eventToPoint</name>
+      <anchorfile>namespaceanonymous__namespace_02view_8cc_03.html</anchorfile>
+      <anchor>ac2ade1a4095158be9e06ab085168e2ad</anchor>
+      <arglist>(GdkEventButton *event)</arglist>
+    </member>
+    <member kind="function">
+      <type>Scroom::Utils::Point&lt; double &gt;</type>
+      <name>eventToPoint</name>
+      <anchorfile>namespaceanonymous__namespace_02view_8cc_03.html</anchorfile>
+      <anchor>a1ab23fe43b4b1aaecbd16e2d087776ae</anchor>
+      <arglist>(GdkEventMotion *event)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>on_newWindow_activate</name>
+      <anchorfile>namespaceanonymous__namespace_02view_8cc_03.html</anchorfile>
+      <anchor>aca14a2deaa3262e3245a3968fd70f01d</anchor>
+      <arglist>(GtkMenuItem *, gpointer user_data)</arglist>
+    </member>
+  </compound>
+  <compound kind="namespace">
     <name>Colors</name>
     <filename>namespaceColors.html</filename>
     <member kind="function">
@@ -25160,14 +25891,21 @@
   <compound kind="namespace">
     <name>Scroom::Utils</name>
     <filename>namespaceScroom_1_1Utils.html</filename>
+    <namespace>Scroom::Utils::anonymous_namespace{tweak-view.cc}</namespace>
     <namespace>Scroom::Utils::Detail</namespace>
     <class kind="class">Scroom::Utils::Base</class>
+    <class kind="class">Scroom::Utils::Context</class>
     <class kind="class">Scroom::Utils::Count</class>
     <class kind="class">Scroom::Utils::Counted</class>
     <class kind="class">Scroom::Utils::Counter</class>
+    <class kind="class">Scroom::Utils::ITweakPositionTextBox</class>
+    <class kind="class">Scroom::Utils::ITweakPresentationPosition</class>
+    <class kind="class">Scroom::Utils::ITweakRulers</class>
+    <class kind="class">Scroom::Utils::ITweakSelection</class>
     <class kind="class">Scroom::Utils::Observable</class>
     <class kind="class">Scroom::Utils::on_scope_exit</class>
     <class kind="class">Scroom::Utils::optional_cleanup</class>
+    <class kind="class">Scroom::Utils::ParentContext</class>
     <class kind="class">Scroom::Utils::Point</class>
     <class kind="class">Scroom::Utils::ProgressInterfaceBroadcaster</class>
     <class kind="class">Scroom::Utils::ProgressInterfaceFromProgressStateInterface</class>
@@ -25177,7 +25915,15 @@
     <class kind="class">Scroom::Utils::ProgressStateInterfaceFromProgressInterface</class>
     <class kind="class">Scroom::Utils::ProgressStateInterfaceFromProgressInterfaceForwarder</class>
     <class kind="class">Scroom::Utils::Rectangle</class>
+    <class kind="class">Scroom::Utils::RecursiveContext</class>
     <class kind="class">Scroom::Utils::Segment</class>
+    <class kind="class">Scroom::Utils::SingleContext</class>
+    <class kind="class">Scroom::Utils::TweakGridSelection</class>
+    <class kind="class">Scroom::Utils::TweakPixelSelection</class>
+    <class kind="class">Scroom::Utils::TweakPositionTextBox</class>
+    <class kind="class">Scroom::Utils::TweakPresentationPosition</class>
+    <class kind="class">Scroom::Utils::TweakRulers</class>
+    <class kind="class">Scroom::Utils::TweakSelection</class>
     <member kind="typedef">
       <type>std::shared_ptr&lt; void &gt;</type>
       <name>Stuff</name>
@@ -25212,6 +25958,125 @@
       <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
       <anchor>a2f0b01cb3ac958356ac99bc37fbf7168</anchor>
       <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>ITweakPresentationPosition::Ptr</type>
+      <name>getDefaultTweakPresentationPosition</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>ab07f1d99c0131675c8302ee42e6174d7</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>ITweakRulers::Ptr</type>
+      <name>getDefaultTweakRulers</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a6502ef22e3313382c1898a5ea4132c6c</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>ITweakSelection::Ptr</type>
+      <name>getDefaultTweakSelection</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>ada1d3d468d4513455890bbc625e3efcc</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>ITweakSelection::Map</type>
+      <name>getDefaultTweakSelectionMap</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a7ad0b64d4ebc732833fd249f733f4c8d</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>ITweakPositionTextBox::Ptr</type>
+      <name>getDefaultTweakPositionTextBox</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>aa6527a49e093bcb36e606fe5bfcaadad</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>get</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a1df110b1fef13cbeaf6122b1ca752a97</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, std::string name)</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>get</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>aa10961452286915568f65c2f026c0916</anchor>
+      <arglist>(const Context::ConstPtr &amp;context)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::optional&lt; T &gt;</type>
+      <name>try_get</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a069a23ac9bf5bb1ac6a546c1b7cbaf8e</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, std::string name)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::optional&lt; T &gt;</type>
+      <name>try_get</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>ae45ec22cc729566b3f0880e5c7fe225c</anchor>
+      <arglist>(const Context::ConstPtr &amp;context)</arglist>
+    </member>
+    <member kind="function">
+      <type>auto</type>
+      <name>get_or</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a958e9a62ee2b943aa9cb5b23f2aa8f02</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, std::string name, const Callable &amp;default_value) -&gt; std::enable_if_t&lt; std::is_same_v&lt; T, std::remove_reference_t&lt; decltype(default_value())&gt; &gt;, T &gt;</arglist>
+    </member>
+    <member kind="function">
+      <type>auto</type>
+      <name>get_or</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a8567b6c139d46286259d3176be21ba96</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, const Callable &amp;default_value) -&gt; std::enable_if_t&lt; std::is_same_v&lt; T, std::remove_reference_t&lt; decltype(default_value())&gt; &gt;, T &gt;</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>get_or</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>aad66314d2065b5b9ef9d58e2a97238f4</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, std::string name, T default_value)</arglist>
+    </member>
+    <member kind="function">
+      <type>T</type>
+      <name>get_or</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a84846154a19182ab43c20f2d79ff54dd</anchor>
+      <arglist>(const Context::ConstPtr &amp;context, T default_value)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>set</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a729f4d0d2c14a19b769897751e91acbe</anchor>
+      <arglist>(const Context::Ptr &amp;context, std::string name, T value)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>set</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a91be522682d558972fdd182573c9fd6e</anchor>
+      <arglist>(const Context::Ptr &amp;context, T value)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setFactory</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>aeb91576875b1be9c7f4edcc8cfe5da20</anchor>
+      <arglist>(const Context::Ptr &amp;context, std::string name, Callable value)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setFactory</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a3b9d64ee0deb4bfdfa03a1884bf7126c</anchor>
+      <arglist>(const Context::Ptr &amp;context, Callable value)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
@@ -25513,6 +26378,51 @@
       <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
       <anchor>a00a4f91d4115659e531a6542307e270b</anchor>
       <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="namespace">
+    <name>Scroom::Utils::anonymous_namespace{tweak-view.cc}</name>
+    <filename>namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html</filename>
+    <class kind="class">Scroom::Utils::anonymous_namespace{tweak-view.cc}::DefaultTweakPresentationPosition</class>
+    <class kind="class">Scroom::Utils::anonymous_namespace{tweak-view.cc}::DefaultTweakSelection</class>
+    <member kind="enumeration">
+      <type></type>
+      <name>Corner</name>
+      <anchorfile>namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html</anchorfile>
+      <anchor>add5ac7ed3f67a149282397b67c164559</anchor>
+      <arglist></arglist>
+      <enumvalue file="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html" anchor="add5ac7ed3f67a149282397b67c164559a747385047b85ae751f83adb36435a3c1">TOP_LEFT</enumvalue>
+      <enumvalue file="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html" anchor="add5ac7ed3f67a149282397b67c164559a901d87dedda8db733f5e6d34c4eb5fe0">TOP_RIGHT</enumvalue>
+      <enumvalue file="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html" anchor="add5ac7ed3f67a149282397b67c164559a8d81ac82421d1b03da58fccb9174892e">BOTTOM_LEFT</enumvalue>
+      <enumvalue file="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html" anchor="add5ac7ed3f67a149282397b67c164559a341b72aaab1308a3e6667af1e52f5def">BOTTOM_RIGHT</enumvalue>
+    </member>
+    <member kind="function">
+      <type>std::function&lt; Point&lt; double &gt;(const Rectangle&lt; double &gt; &amp;)&gt;</type>
+      <name>corner_getter</name>
+      <anchorfile>namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html</anchorfile>
+      <anchor>abd05feecca1f5d015d9e4e84c42099c5</anchor>
+      <arglist>(Corner c)</arglist>
+    </member>
+    <member kind="function">
+      <type>Corner</type>
+      <name>find_closest_corner</name>
+      <anchorfile>namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html</anchorfile>
+      <anchor>a18edb612c2f1bf15720b610652bc06dc</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;p, const Rectangle&lt; double &gt; &amp;r)</arglist>
+    </member>
+    <member kind="function">
+      <type>Corner</type>
+      <name>find_opposed_corner</name>
+      <anchorfile>namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html</anchorfile>
+      <anchor>a6a9984486641cc1142db4a86b1a1410a</anchor>
+      <arglist>(Corner c)</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle&lt; double &gt;</type>
+      <name>toRectangle</name>
+      <anchorfile>namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html</anchorfile>
+      <anchor>a62ffcd00fc744f0023164975ad9adf39</anchor>
+      <arglist>(const Selection &amp;s)</arglist>
     </member>
   </compound>
   <compound kind="namespace">

@@ -2,6 +2,7 @@ var classPresentationMock =
 [
     [ "Ptr", "classPresentationMock.html#abd1ae5f81c417ecc3e1ac555f5ea7730", null ],
     [ "create", "classPresentationMock.html#a6dc71447b992d1c06a045ae2e9515d46", null ],
+    [ "MOCK_CONST_METHOD0", "classPresentationMock.html#abc9e24792a6d04f3d584a0e086c06291", null ],
     [ "MOCK_METHOD0", "classPresentationMock.html#a8fbededd840a0bbc96b9e7619d25aa73", null ],
     [ "MOCK_METHOD0", "classPresentationMock.html#a8c7a23ff5fb6b9f3e9cfdeb47270844f", null ],
     [ "MOCK_METHOD1", "classPresentationMock.html#a4b8591caafc32620f58f7088854a46e9", null ],

@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-42-g18d8b813</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-48-ga0fee447</span>
    </div>
   </td>
  </tr>
@@ -277,7 +277,7 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   25</span>{ <span class="keywordflow">return</span> <a class="code hl_typedef" href="classPipette.html#a0cfa52e2c954e0b02a50166bf9950f90">Ptr</a>(<span class="keyword">new</span> <a class="code hl_function" href="classPipette.html#ae5195e52e89159e96a620c2522003f13">Pipette</a>()); }</div>
+<div class="fragment"><div class="line"><span class="lineno">   26</span>{ <span class="keywordflow">return</span> <a class="code hl_typedef" href="classPipette.html#a0cfa52e2c954e0b02a50166bf9950f90">Ptr</a>(<span class="keyword">new</span> <a class="code hl_function" href="classPipette.html#ae5195e52e89159e96a620c2522003f13">Pipette</a>()); }</div>
 <div class="ttc" id="aclassPipette_html_a0cfa52e2c954e0b02a50166bf9950f90"><div class="ttname"><a href="classPipette.html#a0cfa52e2c954e0b02a50166bf9950f90">Pipette::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; Pipette &gt; Ptr</div><div class="ttdef"><b>Definition</b> pipette.hh:83</div></div>
 <div class="ttc" id="aclassPipette_html_ae5195e52e89159e96a620c2522003f13"><div class="ttname"><a href="classPipette.html#ae5195e52e89159e96a620c2522003f13">Pipette::Pipette</a></div><div class="ttdeci">Pipette()=default</div></div>
 </div><!-- fragment -->
@@ -329,7 +329,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classPluginInformationInterface.html#a1ab5cb80b6411a8ed84e81bac21c89a8">PluginInformationInterface</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   31</span>{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;Pipette&quot;</span>; }</div>
+<div class="fragment"><div class="line"><span class="lineno">   32</span>{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;Pipette&quot;</span>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -357,7 +357,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classPluginInformationInterface.html#a7abb4ce14ed37b3363a9748b6780d7c9">PluginInformationInterface</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   33</span>{ <span class="keywordflow">return</span> PACKAGE_VERSION; }</div>
+<div class="fragment"><div class="line"><span class="lineno">   34</span>{ <span class="keywordflow">return</span> PACKAGE_VERSION; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -386,9 +386,9 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classPluginInformationInterface.html#a18663b4d0919580d5502bb4a682a9eae">PluginInformationInterface</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   36</span>{</div>
-<div class="line"><span class="lineno">   37</span>  host-&gt;registerViewObserver(<span class="stringliteral">&quot;Pipette&quot;</span>, shared_from_this&lt;Pipette&gt;());</div>
-<div class="line"><span class="lineno">   38</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   37</span>{</div>
+<div class="line"><span class="lineno">   38</span>  host-&gt;registerViewObserver(<span class="stringliteral">&quot;Pipette&quot;</span>, shared_from_this&lt;Pipette&gt;());</div>
+<div class="line"><span class="lineno">   39</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -417,18 +417,18 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classViewObserver.html#ac38ff67332a06737375cd04d83532e9d">ViewObserver</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   45</span>{</div>
-<div class="line"><span class="lineno">   46</span>  <a class="code hl_typedef" href="classPipetteHandler.html#a0c50ae44e602765e74ce057865f3db4e">PipetteHandler::Ptr</a> <span class="keyword">const</span> handler = <a class="code hl_function" href="classPipetteHandler.html#ad47cebd908f64cc79b6e7834e22a3a58">PipetteHandler::create</a>();</div>
-<div class="line"><span class="lineno">   47</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;registerSelectionListener(handler);</div>
-<div class="line"><span class="lineno">   48</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;registerPostRenderer(handler);</div>
-<div class="line"><span class="lineno">   49</span> </div>
-<div class="line"><span class="lineno">   50</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;addToolButton(GTK_TOGGLE_BUTTON(gtk_toggle_button_new_with_label(<span class="stringliteral">&quot;Pipette&quot;</span>)), handler);</div>
-<div class="line"><span class="lineno">   51</span> </div>
-<div class="line"><span class="lineno">   52</span>  <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">   53</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   46</span>{</div>
+<div class="line"><span class="lineno">   47</span>  <a class="code hl_typedef" href="classPipetteHandler.html#a0c50ae44e602765e74ce057865f3db4e">PipetteHandler::Ptr</a> <span class="keyword">const</span> handler = <a class="code hl_function" href="classPipetteHandler.html#ad47cebd908f64cc79b6e7834e22a3a58">PipetteHandler::create</a>();</div>
+<div class="line"><span class="lineno">   48</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;registerSelectionListener(handler);</div>
+<div class="line"><span class="lineno">   49</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;registerPostRenderer(handler);</div>
+<div class="line"><span class="lineno">   50</span> </div>
+<div class="line"><span class="lineno">   51</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;addToolButton(GTK_TOGGLE_BUTTON(gtk_toggle_button_new_with_label(<span class="stringliteral">&quot;Pipette&quot;</span>)), handler);</div>
+<div class="line"><span class="lineno">   52</span> </div>
+<div class="line"><span class="lineno">   53</span>  <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">   54</span>}</div>
 <div class="ttc" id="aclassPipetteHandler_html_a0c50ae44e602765e74ce057865f3db4e"><div class="ttname"><a href="classPipetteHandler.html#a0c50ae44e602765e74ce057865f3db4e">PipetteHandler::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; PipetteHandler &gt; Ptr</div><div class="ttdef"><b>Definition</b> pipette.hh:28</div></div>
-<div class="ttc" id="aclassPipetteHandler_html_ad47cebd908f64cc79b6e7834e22a3a58"><div class="ttname"><a href="classPipetteHandler.html#ad47cebd908f64cc79b6e7834e22a3a58">PipetteHandler::create</a></div><div class="ttdeci">static Ptr create()</div><div class="ttdef"><b>Definition</b> pipette.cc:59</div></div>
-<div class="ttc" id="apipette-tests_8cc_html_a451de4c4fbfbb1e66ca17e7cee7f8761"><div class="ttname"><a href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a></div><div class="ttdeci">const auto view</div><div class="ttdef"><b>Definition</b> pipette-tests.cc:219</div></div>
+<div class="ttc" id="aclassPipetteHandler_html_ad47cebd908f64cc79b6e7834e22a3a58"><div class="ttname"><a href="classPipetteHandler.html#ad47cebd908f64cc79b6e7834e22a3a58">PipetteHandler::create</a></div><div class="ttdeci">static Ptr create()</div><div class="ttdef"><b>Definition</b> pipette.cc:60</div></div>
+<div class="ttc" id="apipette-tests_8cc_html_a451de4c4fbfbb1e66ca17e7cee7f8761"><div class="ttname"><a href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a></div><div class="ttdeci">const auto view</div><div class="ttdef"><b>Definition</b> pipette-tests.cc:227</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

@@ -2,6 +2,8 @@
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,42,272,67"/>
 <area shape="rect" id="Node000002" href="$classDummyPresentation.html#ab367b2e1bf10f4711da69c013b04330c" title=" " alt="" coords="320,5,484,45"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="253,39,306,33,307,39,253,45"/>
-<area shape="rect" id="Node000003" href="$classDummyView.html#a43f67248ad5757877dad05cf9851fcd2" title=" " alt="" coords="325,70,479,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="258,65,311,70,311,76,258,70"/>
+<area shape="rect" id="Node000004" href="$classDummyView.html#a43f67248ad5757877dad05cf9851fcd2" title=" " alt="" coords="325,70,479,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="258,65,311,70,311,76,258,70"/>
+<area shape="rect" id="Node000003" href="$classDummyPresentation.html#ad309c379cbf46c4a3d8ea77f4d17eff8" title=" " alt="" coords="532,5,696,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="484,23,519,23,519,28,484,28"/>
 </map>

@@ -1,7 +1,6 @@
 <map id="Scroom::Utils::Rectangle::getTopRight" name="Scroom::Utils::Rectangle::getTopRight">
-<area shape="rect" id="Node000001" title=" " alt="" coords="441,5,624,45"/>
-<area shape="rect" id="Node000002" href="$view_8cc.html#aa8cab6bcc78f2ade190564c5b9c36c00" title=" " alt="" coords="284,13,393,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="428,28,394,28,394,23,428,23"/>
-<area shape="rect" id="Node000003" href="$classTweakSelection.html#a8b280667496e3bd9fe0fa8a87a85a1b4" title=" " alt="" coords="5,13,236,38"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="270,28,236,28,236,23,270,23"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="248,37,431,77"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#abd05feecca1f5d015d9e4e84c42099c5" title=" " alt="" coords="5,29,200,84"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="234,59,200,59,200,54,234,54"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="142,18,128,11,103,8,82,10,68,15,62,21,62,29,57,29,57,19,65,10,81,5,103,3,129,6,144,14"/>
 </map>

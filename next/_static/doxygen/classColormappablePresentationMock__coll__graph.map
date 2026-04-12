@@ -1,9 +1,9 @@
 <map id="ColormappablePresentationMock" name="ColormappablePresentationMock">
-<area shape="rect" id="Node000001" title=" " alt="" coords="83,1815,313,1880"/>
-<area shape="rect" id="Node000002" href="$classPresentationMock.html" title=" " alt="" coords="213,1560,365,1765"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="234,1779,216,1816,211,1813,230,1776"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="83,1795,313,1860"/>
+<area shape="rect" id="Node000002" href="$classPresentationMock.html" title=" " alt="" coords="213,1560,365,1745"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="236,1759,217,1796,212,1793,232,1756"/>
 <area shape="rect" id="Node000003" href="$classPresentationInterface.html" title=" " alt="" coords="229,1181,383,1347"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="305,1360,296,1560,290,1560,299,1360"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="304,1360,295,1560,290,1560,299,1360"/>
 <area shape="rect" id="Node000004" href="$classViewable.html" title=" " alt="" coords="269,937,343,1022"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="309,1036,309,1181,303,1181,303,1036"/>
 <area shape="rect" id="Node000005" href="$classInterface.html" title=" " alt="" coords="137,599,245,764"/>
@@ -24,6 +24,6 @@
 <area shape="rect" id="Node000011" title=" " alt="" coords="257,185,398,250"/>
 <area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="336,263,348,349,343,349,331,264"/>
 <area shape="rect" id="Node000012" href="$classColormappableMock.html" title=" " alt="" coords="84,1371,232,1536"/>
-<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="170,1549,197,1814,192,1815,165,1550"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="171,1550,197,1794,192,1795,166,1550"/>
 <area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="139,1146,155,1370,150,1371,134,1146"/>
 </map>
