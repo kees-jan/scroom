@@ -2,7 +2,7 @@
 # This file is generated from Dockerfile.in. Do not edit!
 #
 
-FROM ubuntu:jammy
+FROM ubuntu:resolute
 
 LABEL org.opencontainers.image.authors="kees-jan@dijkzeul.eu"
 
