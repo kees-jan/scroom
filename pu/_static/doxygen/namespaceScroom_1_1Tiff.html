@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-47-g8d859be0</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-48-g6870b453</span>
    </div>
   </td>
  </tr>
@@ -426,7 +426,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  171</span>        <span class="keywordflow">return</span> {};</div>
 <div class="line"><span class="lineno">  172</span>      }</div>
 <div class="line"><span class="lineno">  173</span> </div>
-<div class="line"><span class="lineno">  174</span>      <span class="keyword">auto</span> aspectRatio = <a class="code hl_function" href="namespaceScroom_1_1Tiff.html#a6d0115e39d8da94fd4203ee9fdcb6640">getAspectRatio</a>(tif);</div>
+<div class="line"><span class="lineno">  174</span>      <span class="keyword">auto</span> aspectRatio = <a class="code hl_function" href="transformpresentation_8hh.html#a3c364253c15ca463285b38252c438f8f">getAspectRatio</a>(tif);</div>
 <div class="line"><span class="lineno">  175</span>      <span class="keywordflow">if</span>(aspectRatio)</div>
 <div class="line"><span class="lineno">  176</span>      {</div>
 <div class="line"><span class="lineno">  177</span>        <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;debug(<span class="stringliteral">&quot;This bitmap has size {}*{}, aspect ratio {:.2}*{:.2}&quot;</span>, width, height, aspectRatio-&gt;x, aspectRatio-&gt;y);</div>
@@ -480,13 +480,13 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="aclassMonochromeColormapHelper_html_a3d60bf2ef52a480ef936f98ad5f84a3b"><div class="ttname"><a href="classMonochromeColormapHelper.html#a3d60bf2ef52a480ef936f98ad5f84a3b">MonochromeColormapHelper::create</a></div><div class="ttdeci">static Ptr create(int numberOfColors)</div><div class="ttdef"><b>Definition</b> colormap-helpers.cc:68</div></div>
 <div class="ttc" id="aclassMonochromeColormapHelper_html_ace01cfb15ef9889abb675f74e51a0db1"><div class="ttname"><a href="classMonochromeColormapHelper.html#ace01cfb15ef9889abb675f74e51a0db1">MonochromeColormapHelper::createInverted</a></div><div class="ttdeci">static Ptr createInverted(int numberOfColors)</div><div class="ttdef"><b>Definition</b> colormap-helpers.cc:73</div></div>
 <div class="ttc" id="anamespaceScroom_1_1Tiff_html_a0a251765fe27458966a781ecd875a374"><div class="ttname"><a href="namespaceScroom_1_1Tiff.html#a0a251765fe27458966a781ecd875a374">Scroom::Tiff::TIFFPtr</a></div><div class="ttdeci">std::shared_ptr&lt; TIFF &gt; TIFFPtr</div><div class="ttdef"><b>Definition</b> tiffsource.hh:29</div></div>
-<div class="ttc" id="anamespaceScroom_1_1Tiff_html_a6d0115e39d8da94fd4203ee9fdcb6640"><div class="ttname"><a href="namespaceScroom_1_1Tiff.html#a6d0115e39d8da94fd4203ee9fdcb6640">Scroom::Tiff::getAspectRatio</a></div><div class="ttdeci">boost::optional&lt; Scroom::Utils::Point&lt; double &gt; &gt; getAspectRatio(const TIFFPtr &amp;tif)</div><div class="ttdef"><b>Definition</b> tiffsource.cc:89</div></div>
 <div class="ttc" id="anamespaceScroom_1_1TiledBitmap_html_a0451c92ea02ad814ffc4a83ebf51d475"><div class="ttname"><a href="namespaceScroom_1_1TiledBitmap.html#a0451c92ea02ad814ffc4a83ebf51d475">Scroom::TiledBitmap::Greyscale</a></div><div class="ttdeci">const std::string Greyscale</div><div class="ttdef"><b>Definition</b> layerspecforbitmap.cc:53</div></div>
 <div class="ttc" id="anamespaceScroom_1_1TiledBitmap_html_a26f688fe4903818d5c7d117139a6bbed"><div class="ttname"><a href="namespaceScroom_1_1TiledBitmap.html#a26f688fe4903818d5c7d117139a6bbed">Scroom::TiledBitmap::CMYK</a></div><div class="ttdeci">const std::string CMYK</div><div class="ttdef"><b>Definition</b> layerspecforbitmap.cc:52</div></div>
 <div class="ttc" id="anamespaceScroom_1_1TiledBitmap_html_a68ed4ea621e837ae62809626d1f7bba4"><div class="ttname"><a href="namespaceScroom_1_1TiledBitmap.html#a68ed4ea621e837ae62809626d1f7bba4">Scroom::TiledBitmap::RGB</a></div><div class="ttdeci">const std::string RGB</div><div class="ttdef"><b>Definition</b> layerspecforbitmap.cc:51</div></div>
 <div class="ttc" id="anamespaceanonymous__namespace_02callbacks_8cc_03_html_a88770d5c02f4b606f5b61d49cdb76df6"><div class="ttname"><a href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">anonymous_namespace{callbacks.cc}::logger</a></div><div class="ttdeci">Scroom::Logger logger</div><div class="ttdef"><b>Definition</b> callbacks.cc:54</div></div>
 <div class="ttc" id="anamespaceanonymous__namespace_02tiffsource_8cc_03_html_a7f913135a0ac4c36686a040acd700495"><div class="ttname"><a href="namespaceanonymous__namespace_02tiffsource_8cc_03.html#a7f913135a0ac4c36686a040acd700495">anonymous_namespace{tiffsource.cc}::TIFFCloseUnlessNull</a></div><div class="ttdeci">void TIFFCloseUnlessNull(TIFF *tif)</div><div class="ttdef"><b>Definition</b> tiffsource.cc:50</div></div>
 <div class="ttc" id="atiffsource_8cc_html_a1d5aaac4db170d73797e019c2e2f78ae"><div class="ttname"><a href="tiffsource_8cc.html#a1d5aaac4db170d73797e019c2e2f78ae">TT</a></div><div class="ttdeci">#define TT(x)</div><div class="ttdef"><b>Definition</b> tiffsource.cc:59</div></div>
+<div class="ttc" id="atransformpresentation_8hh_html_a3c364253c15ca463285b38252c438f8f"><div class="ttname"><a href="transformpresentation_8hh.html#a3c364253c15ca463285b38252c438f8f">getAspectRatio</a></div><div class="ttdeci">Scroom::Utils::Point&lt; double &gt; getAspectRatio(const PresentationInterface::Ptr &amp;presentation)</div><div class="ttdef"><b>Definition</b> transformpresentation.cc:162</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classTiff.html#a858a1b813e95709369796e88876049dc">Tiff::open()</a>, and <a class="el" href="classScroom_1_1Tiff_1_1Source.html#a84c9977f6b72b09e3432f7e41638b968">Scroom::Tiff::Source::reset()</a>.</p>
 <div class="dynheader">

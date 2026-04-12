@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-47-g8d859be0</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-48-g6870b453</span>
    </div>
   </td>
  </tr>
@@ -620,7 +620,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="classPresentationInterface.html#a2a3e416a124e253bec8fb97c510836fe">PresentationInterface</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  169</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classTransformPresentation.html#ad5804a0827bf975f5dd39061f7a5060a">transformationData</a>-&gt;getAspectRatio(); }</div>
+<div class="fragment"><div class="line"><span class="lineno">  176</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classTransformPresentation.html#ad5804a0827bf975f5dd39061f7a5060a">transformationData</a>-&gt;getAspectRatio(); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -648,7 +648,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classPresentationInterface.html#a246215775d5c465dd62e5607943a111c">PresentationInterface</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  170</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classTransformPresentation.html#ab9ec8f8532594b77dbbf41d4f268d78a">context</a>; }</div>
+<div class="fragment"><div class="line"><span class="lineno">  177</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classTransformPresentation.html#ab9ec8f8532594b77dbbf41d4f268d78a">context</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -770,11 +770,11 @@ Here is the caller graph for this function:</div>
 </dl>
 
 <p>Implements <a class="el" href="classPipetteViewInterface.html#a9576c32986111d0352816cf4ea08bf5f">PipetteViewInterface</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  163</span>{</div>
-<div class="line"><span class="lineno">  164</span>  <a class="code hl_typedef" href="classPipetteViewInterface.html#a3c16a32beb8d86af534df376e7eed620">PipetteViewInterface::Ptr</a> <span class="keyword">const</span> pipettePresentation = std::dynamic_pointer_cast&lt;PipetteViewInterface&gt;(<a class="code hl_variable" href="classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee">presentation</a>);</div>
-<div class="line"><span class="lineno">  165</span>  <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(pipettePresentation);</div>
-<div class="line"><span class="lineno">  166</span>  <span class="keywordflow">return</span> pipettePresentation-&gt;getPixelAverages(area / <a class="code hl_variable" href="classTransformPresentation.html#ad5804a0827bf975f5dd39061f7a5060a">transformationData</a>-&gt;getAspectRatio());</div>
-<div class="line"><span class="lineno">  167</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  170</span>{</div>
+<div class="line"><span class="lineno">  171</span>  <a class="code hl_typedef" href="classPipetteViewInterface.html#a3c16a32beb8d86af534df376e7eed620">PipetteViewInterface::Ptr</a> <span class="keyword">const</span> pipettePresentation = std::dynamic_pointer_cast&lt;PipetteViewInterface&gt;(<a class="code hl_variable" href="classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee">presentation</a>);</div>
+<div class="line"><span class="lineno">  172</span>  <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(pipettePresentation);</div>
+<div class="line"><span class="lineno">  173</span>  <span class="keywordflow">return</span> pipettePresentation-&gt;getPixelAverages(area / <a class="code hl_variable" href="classTransformPresentation.html#ad5804a0827bf975f5dd39061f7a5060a">transformationData</a>-&gt;getAspectRatio());</div>
+<div class="line"><span class="lineno">  174</span>}</div>
 <div class="ttc" id="aassertions_8hh_html_ae925d7587e34145cd52f674b2012539a"><div class="ttname"><a href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a></div><div class="ttdeci">#define require(expr)</div><div class="ttdef"><b>Definition</b> assertions.hh:30</div></div>
 <div class="ttc" id="aclassPipetteViewInterface_html_a3c16a32beb8d86af534df376e7eed620"><div class="ttname"><a href="classPipetteViewInterface.html#a3c16a32beb8d86af534df376e7eed620">PipetteViewInterface::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; PipetteViewInterface &gt; Ptr</div><div class="ttdef"><b>Definition</b> pipetteviewinterface.hh:21</div></div>
 </div><!-- fragment -->
@@ -990,7 +990,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   86</span>  <a class="code hl_variable" href="classTransformPresentation.html#a5aac13bb64cc63cb76adbb42a0770cee">presentation</a>-&gt;open(<a class="code hl_variable" href="blob-tests_8cc.html#a325819a8e492ac69542e8b31705af6e9">data</a>);</div>
 <div class="line"><span class="lineno">   87</span>  <a class="code hl_function" href="classPresentationBase.html#ae964144f0e8da9e7d7067f3d8183a8e4">PresentationBase::open</a>(viewInterface);</div>
 <div class="line"><span class="lineno">   88</span>}</div>
-<div class="ttc" id="aclassDetail_1_1ViewData_html_a12f82ade396e0a166996c9c7bd9b9a83"><div class="ttname"><a href="classDetail_1_1ViewData.html#a12f82ade396e0a166996c9c7bd9b9a83">Detail::ViewData::create</a></div><div class="ttdeci">static ViewData::Ptr create(const ViewInterface::WeakPtr &amp;parent)</div><div class="ttdef"><b>Definition</b> transformpresentation.cc:197</div></div>
+<div class="ttc" id="aclassDetail_1_1ViewData_html_a12f82ade396e0a166996c9c7bd9b9a83"><div class="ttname"><a href="classDetail_1_1ViewData.html#a12f82ade396e0a166996c9c7bd9b9a83">Detail::ViewData::create</a></div><div class="ttdeci">static ViewData::Ptr create(const ViewInterface::WeakPtr &amp;parent)</div><div class="ttdef"><b>Definition</b> transformpresentation.cc:204</div></div>
 <div class="ttc" id="aclassPresentationBase_html_ae964144f0e8da9e7d7067f3d8183a8e4"><div class="ttname"><a href="classPresentationBase.html#ae964144f0e8da9e7d7067f3d8183a8e4">PresentationBase::open</a></div><div class="ttdeci">void open(ViewInterface::WeakPtr vi) override</div><div class="ttdef"><b>Definition</b> presentationinterface.cc:11</div></div>
 <div class="ttc" id="asampleiterator-tests_8cc_html_a53894e91bcfe1e36f402333502cbcfc2"><div class="ttname"><a href="sampleiterator-tests_8cc.html#a53894e91bcfe1e36f402333502cbcfc2">it</a></div><div class="ttdeci">SampleIterator&lt; const uint8_t &gt; it(testData, 0, bps)</div></div>
 </div><!-- fragment --><div class="dynheader">

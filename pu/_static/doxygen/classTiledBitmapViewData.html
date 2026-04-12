@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-47-g8d859be0</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-48-g6870b453</span>
    </div>
   </td>
  </tr>
@@ -818,7 +818,7 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="lineno">  151</span>    <span class="comment">// We&#39;re not sure about whether gdk_threads_enter() has been</span></div>
 <div class="line"><span class="lineno">  152</span>    <span class="comment">// called or not, so we have no choice but to invalidate on</span></div>
 <div class="line"><span class="lineno">  153</span>    <span class="comment">// another thread.</span></div>
-<div class="line"><span class="lineno">  154</span>    <a class="code hl_function" href="namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1">Scroom::GtkHelpers::async_on_ui_thread</a>([=] { <a class="code hl_function" href="tiledbitmapviewdata_8cc.html#a428ca3cfbaecfbe7aed16ea3ad4a61e5">invalidate_view</a>(<a class="code hl_variable" href="classTiledBitmapViewData.html#a664ac60117059d72da12a5931df4890a">viewInterface</a>); });</div>
+<div class="line"><span class="lineno">  154</span>    <a class="code hl_function" href="namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1">Scroom::GtkHelpers::async_on_ui_thread</a>([<a class="code hl_variable" href="classTiledBitmapViewData.html#a664ac60117059d72da12a5931df4890a">viewInterface</a> = <a class="code hl_variable" href="classTiledBitmapViewData.html#a664ac60117059d72da12a5931df4890a">viewInterface</a>] { <a class="code hl_function" href="tiledbitmapviewdata_8cc.html#a428ca3cfbaecfbe7aed16ea3ad4a61e5">invalidate_view</a>(<a class="code hl_variable" href="classTiledBitmapViewData.html#a664ac60117059d72da12a5931df4890a">viewInterface</a>); });</div>
 <div class="line"><span class="lineno">  155</span>    <a class="code hl_variable" href="classTiledBitmapViewData.html#a3304b2a780bd0a23d4cdd974e842f5d5">redrawPending</a> = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  156</span>  }</div>
 <div class="line"><span class="lineno">  157</span>}</div>

@@ -1,13 +1,18 @@
 <map id="MeasureHandler::onSelectionUpdate" name="MeasureHandler::onSelectionUpdate">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,22,219,62"/>
-<area shape="rect" id="Node000002" href="$classMeasureHandler.html#aa30dd1737fe173472b6aca30692eab84" title=" " alt="" coords="267,29,541,55"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="219,39,253,39,253,45,219,45"/>
-<area shape="rect" id="Node000003" href="$structSelection.html#a7d704930f3054ec384530cfbcb54c31d" title=" " alt="" coords="768,5,899,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="480,27,589,14,655,12,720,14,754,14,754,20,720,19,655,18,590,19,481,32"/>
-<area shape="rect" id="Node000004" href="$structSelection.html#a400e9fb58887a04db35e354741aa96ec" title=" " alt="" coords="589,29,720,55"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="542,39,575,39,575,45,542,45"/>
-<area shape="rect" id="Node000005" href="$structSelection.html#a9c9dec2ae8c7eb3bedd9b6379ada05d1" title=" " alt="" coords="770,55,897,80"/>
-<area shape="poly" id="edge6_Node000002_Node000005" title=" " alt="" coords="481,52,590,65,676,68,756,67,756,73,675,73,589,70,480,57"/>
-<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="720,31,754,26,755,31,720,36"/>
-<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="720,49,756,54,756,59,720,54"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,105,219,145"/>
+<area shape="rect" id="Node000002" href="$classMeasureHandler.html#aa30dd1737fe173472b6aca30692eab84" title=" " alt="" coords="267,113,541,138"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="219,123,253,123,253,128,219,128"/>
+<area shape="rect" id="Node000003" href="$transformpresentation_8cc.html#a3c364253c15ca463285b38252c438f8f" title=" " alt="" coords="594,37,715,62"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="446,110,598,64,599,69,448,115"/>
+<area shape="rect" id="Node000005" href="$structSelection.html#a7d704930f3054ec384530cfbcb54c31d" title=" " alt="" coords="779,117,910,142"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="542,122,720,123,766,124,766,129,720,128,542,127"/>
+<area shape="rect" id="Node000006" href="$structSelection.html#a400e9fb58887a04db35e354741aa96ec" title=" " alt="" coords="589,138,720,163"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="530,135,576,140,575,145,529,141"/>
+<area shape="rect" id="Node000007" href="$structSelection.html#a9c9dec2ae8c7eb3bedd9b6379ada05d1" title=" " alt="" coords="781,166,908,191"/>
+<area shape="poly" id="edge9_Node000002_Node000007" title=" " alt="" coords="441,135,510,156,590,173,682,181,767,180,767,186,681,186,589,179,508,161,440,141"/>
+<area shape="rect" id="Node000004" href="$namespaceScroom_1_1Utils.html#af6796373cc462aef8e6979a40acef5d3" title=" " alt="" coords="768,29,921,69"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="716,47,754,47,754,52,716,52"/>
+<area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="809,30,807,20,812,11,825,5,845,3,867,6,879,13,876,17,865,11,845,8,827,10,816,15,812,21,814,28"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="720,141,765,136,766,141,721,146"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="721,158,768,165,767,170,720,163"/>
 </map>

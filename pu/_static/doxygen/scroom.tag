@@ -2056,6 +2056,13 @@
     <class kind="class">Detail::ViewData</class>
     <class kind="class">TransformPresentation</class>
     <namespace>Detail</namespace>
+    <member kind="function">
+      <type>Scroom::Utils::Point&lt; double &gt;</type>
+      <name>getAspectRatio</name>
+      <anchorfile>transformpresentation_8hh.html</anchorfile>
+      <anchor>a3c364253c15ca463285b38252c438f8f</anchor>
+      <arglist>(const PresentationInterface::Ptr &amp;presentation)</arglist>
+    </member>
   </compound>
   <compound kind="file">
     <name>tweak-view.hh</name>
@@ -2203,6 +2210,13 @@
     <includes id="cairo-helpers_8hh" name="cairo-helpers.hh" local="yes" import="no" module="no" objc="no">scroom/cairo-helpers.hh</includes>
     <includes id="tweak-view_8hh" name="tweak-view.hh" local="yes" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
     <namespace>Detail</namespace>
+    <member kind="function">
+      <type>Scroom::Utils::Point&lt; double &gt;</type>
+      <name>getAspectRatio</name>
+      <anchorfile>transformpresentation_8cc.html</anchorfile>
+      <anchor>a3c364253c15ca463285b38252c438f8f</anchor>
+      <arglist>(const PresentationInterface::Ptr &amp;presentation)</arglist>
+    </member>
   </compound>
   <compound kind="file">
     <name>tweak-view.cc</name>
@@ -8083,6 +8097,7 @@
     <includes id="point_8hh" name="point.hh" local="no" import="no" module="no" objc="no">scroom/point.hh</includes>
     <includes id="presentationinterface_8hh" name="presentationinterface.hh" local="no" import="no" module="no" objc="no">scroom/presentationinterface.hh</includes>
     <includes id="viewinterface_8hh" name="viewinterface.hh" local="no" import="no" module="no" objc="no">scroom/viewinterface.hh</includes>
+    <includes id="transformpresentation_8hh" name="transformpresentation.hh" local="yes" import="no" module="no" objc="no">scroom/transformpresentation.hh</includes>
   </compound>
   <compound kind="file">
     <name>measure.hh</name>

@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-47-g8d859be0</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-48-g6870b453</span>
    </div>
   </td>
  </tr>
@@ -277,7 +277,7 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   29</span>{ <span class="keywordflow">return</span> <a class="code hl_typedef" href="classMeasure.html#a3903e731055021db9622584e319fa8f8">Ptr</a>(<span class="keyword">new</span> <a class="code hl_function" href="classMeasure.html#a9736b4daffc3bac4581c322adbebfe1f">Measure</a>()); }</div>
+<div class="fragment"><div class="line"><span class="lineno">   30</span>{ <span class="keywordflow">return</span> <a class="code hl_typedef" href="classMeasure.html#a3903e731055021db9622584e319fa8f8">Ptr</a>(<span class="keyword">new</span> <a class="code hl_function" href="classMeasure.html#a9736b4daffc3bac4581c322adbebfe1f">Measure</a>()); }</div>
 <div class="ttc" id="aclassMeasure_html_a3903e731055021db9622584e319fa8f8"><div class="ttname"><a href="classMeasure.html#a3903e731055021db9622584e319fa8f8">Measure::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; Measure &gt; Ptr</div><div class="ttdef"><b>Definition</b> measure.hh:64</div></div>
 <div class="ttc" id="aclassMeasure_html_a9736b4daffc3bac4581c322adbebfe1f"><div class="ttname"><a href="classMeasure.html#a9736b4daffc3bac4581c322adbebfe1f">Measure::Measure</a></div><div class="ttdeci">Measure()=default</div></div>
 </div><!-- fragment -->
@@ -329,7 +329,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classPluginInformationInterface.html#a1ab5cb80b6411a8ed84e81bac21c89a8">PluginInformationInterface</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   35</span>{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;Measure&quot;</span>; }</div>
+<div class="fragment"><div class="line"><span class="lineno">   36</span>{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;Measure&quot;</span>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -357,7 +357,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classPluginInformationInterface.html#a7abb4ce14ed37b3363a9748b6780d7c9">PluginInformationInterface</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   37</span>{ <span class="keywordflow">return</span> PACKAGE_VERSION; }</div>
+<div class="fragment"><div class="line"><span class="lineno">   38</span>{ <span class="keywordflow">return</span> PACKAGE_VERSION; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -386,9 +386,9 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classPluginInformationInterface.html#a18663b4d0919580d5502bb4a682a9eae">PluginInformationInterface</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   40</span>{</div>
-<div class="line"><span class="lineno">   41</span>  host-&gt;registerViewObserver(<span class="stringliteral">&quot;Measure tool&quot;</span>, shared_from_this&lt;Measure&gt;());</div>
-<div class="line"><span class="lineno">   42</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   41</span>{</div>
+<div class="line"><span class="lineno">   42</span>  host-&gt;registerViewObserver(<span class="stringliteral">&quot;Measure tool&quot;</span>, shared_from_this&lt;Measure&gt;());</div>
+<div class="line"><span class="lineno">   43</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -417,16 +417,16 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classViewObserver.html#ac38ff67332a06737375cd04d83532e9d">ViewObserver</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>{</div>
-<div class="line"><span class="lineno">   50</span>  <a class="code hl_typedef" href="classMeasureHandler.html#aeeae68327c4b2a564dd31ccd7d96c4c7">MeasureHandler::Ptr</a> <span class="keyword">const</span> handler = <a class="code hl_function" href="classMeasureHandler.html#a8b0eece69453b6b02885a7975c9c08f2">MeasureHandler::create</a>();</div>
-<div class="line"><span class="lineno">   51</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;registerSelectionListener(handler);</div>
-<div class="line"><span class="lineno">   52</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;registerPostRenderer(handler);</div>
-<div class="line"><span class="lineno">   53</span> </div>
-<div class="line"><span class="lineno">   54</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;addToolButton(GTK_TOGGLE_BUTTON(gtk_toggle_button_new_with_label(<span class="stringliteral">&quot;Measure&quot;</span>)), handler);</div>
-<div class="line"><span class="lineno">   55</span> </div>
-<div class="line"><span class="lineno">   56</span>  <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">   57</span>}</div>
-<div class="ttc" id="aclassMeasureHandler_html_a8b0eece69453b6b02885a7975c9c08f2"><div class="ttname"><a href="classMeasureHandler.html#a8b0eece69453b6b02885a7975c9c08f2">MeasureHandler::create</a></div><div class="ttdeci">static Ptr create()</div><div class="ttdef"><b>Definition</b> measure.cc:63</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   50</span>{</div>
+<div class="line"><span class="lineno">   51</span>  <a class="code hl_typedef" href="classMeasureHandler.html#aeeae68327c4b2a564dd31ccd7d96c4c7">MeasureHandler::Ptr</a> <span class="keyword">const</span> handler = <a class="code hl_function" href="classMeasureHandler.html#a8b0eece69453b6b02885a7975c9c08f2">MeasureHandler::create</a>();</div>
+<div class="line"><span class="lineno">   52</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;registerSelectionListener(handler);</div>
+<div class="line"><span class="lineno">   53</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;registerPostRenderer(handler);</div>
+<div class="line"><span class="lineno">   54</span> </div>
+<div class="line"><span class="lineno">   55</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;addToolButton(GTK_TOGGLE_BUTTON(gtk_toggle_button_new_with_label(<span class="stringliteral">&quot;Measure&quot;</span>)), handler);</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>  <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">   58</span>}</div>
+<div class="ttc" id="aclassMeasureHandler_html_a8b0eece69453b6b02885a7975c9c08f2"><div class="ttname"><a href="classMeasureHandler.html#a8b0eece69453b6b02885a7975c9c08f2">MeasureHandler::create</a></div><div class="ttdeci">static Ptr create()</div><div class="ttdef"><b>Definition</b> measure.cc:64</div></div>
 <div class="ttc" id="aclassMeasureHandler_html_aeeae68327c4b2a564dd31ccd7d96c4c7"><div class="ttname"><a href="classMeasureHandler.html#aeeae68327c4b2a564dd31ccd7d96c4c7">MeasureHandler::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; MeasureHandler &gt; Ptr</div><div class="ttdef"><b>Definition</b> measure.hh:24</div></div>
 <div class="ttc" id="apipette-tests_8cc_html_a451de4c4fbfbb1e66ca17e7cee7f8761"><div class="ttname"><a href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a></div><div class="ttdeci">const auto view</div><div class="ttdef"><b>Definition</b> pipette-tests.cc:227</div></div>
 </div><!-- fragment --><div class="dynheader">
