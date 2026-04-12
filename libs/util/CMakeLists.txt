@@ -33,7 +33,7 @@ target_sources(
 target_link_libraries(
   util
   PRIVATE project_options project_warnings PkgConfig::gtk
-  PUBLIC PkgConfig::gtk Boost::system spdlog
+  PUBLIC PkgConfig::gtk Boost::headers spdlog
 )
 target_include_directories(util PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/inc> $<INSTALL_INTERFACE:include>)
 

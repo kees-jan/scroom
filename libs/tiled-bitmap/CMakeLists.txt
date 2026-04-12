@@ -84,7 +84,7 @@ target_link_libraries(
   PRIVATE project_options
           project_warnings
           measure_tools
-          Boost::system
+          Boost::headers
           PkgConfig::gthread
           spdlog
           util

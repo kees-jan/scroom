@@ -31,7 +31,7 @@ target_link_libraries(
           PkgConfig::cairo
           PkgConfig::gthread
           PkgConfig::gmodule
-          Boost::system
+          Boost::headers
           Boost::filesystem
           Boost::program_options
           scroom_lib
