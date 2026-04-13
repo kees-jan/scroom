@@ -1,13 +1,15 @@
 <map id="libs/scroom/inc/scroom/tweak&#45;view.hh" name="libs/scroom/inc/scroom/tweak&#45;view.hh">
-<area shape="rect" id="Node000001" title=" " alt="" coords="935,5,1107,45"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="1025,5,1197,45"/>
 <area shape="rect" id="Node000002" href="$view_8cc.html" title=" " alt="" coords="927,255,1045,280"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="986,56,970,74,958,94,952,116,950,139,956,184,969,225,982,254,977,256,964,227,951,186,945,139,946,115,953,92,965,71,982,53"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1014,51,982,69,958,95,948,115,945,136,950,182,965,223,981,253,976,256,960,225,945,183,939,136,943,113,953,92,979,65,1011,47"/>
 <area shape="rect" id="Node000003" href="$view_8hh.html" title=" " alt="" coords="539,101,657,126"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="922,49,655,103,654,98,921,44"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1012,46,658,105,657,99,1011,41"/>
 <area shape="rect" id="Node000011" href="$transformpresentation_8cc.html" title=" " alt="" coords="967,101,1255,126"/>
-<area shape="poly" id="edge17_Node000001_Node000011" title=" " alt="" coords="1052,53,1101,98,1097,102,1049,57"/>
+<area shape="poly" id="edge17_Node000001_Node000011" title=" " alt="" coords="1114,59,1114,100,1109,100,1109,59"/>
 <area shape="rect" id="Node000012" href="$tweak-view_8cc.html" title=" " alt="" coords="1280,93,1444,133"/>
-<area shape="poly" id="edge18_Node000001_Node000012" title=" " alt="" coords="1109,46,1288,91,1287,96,1108,51"/>
+<area shape="poly" id="edge18_Node000001_Node000012" title=" " alt="" coords="1180,47,1308,91,1306,96,1178,52"/>
+<area shape="rect" id="Node000013" href="$tiled-bitmap_8cc.html" title=" " alt="" coords="1469,93,1621,133"/>
+<area shape="poly" id="edge19_Node000001_Node000013" title=" " alt="" coords="1212,43,1457,91,1469,93,1468,98,1456,96,1211,48"/>
 <area shape="poly" id="edge16_Node000003_Node000002" title=" " alt="" coords="641,129,957,252,956,257,639,134"/>
 <area shape="rect" id="Node000004" href="$callbacks_8cc.html" title=" " alt="" coords="5,255,153,280"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="526,130,418,153,300,184,192,222,106,257,104,252,190,217,299,179,417,148,525,125"/>

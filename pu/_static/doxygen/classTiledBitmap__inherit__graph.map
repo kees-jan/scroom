@@ -1,9 +1,9 @@
 <map id="TiledBitmap" name="TiledBitmap">
 <area shape="rect" id="Node000001" title=" " alt="" coords="205,565,335,971"/>
-<area shape="rect" id="Node000002" href="$classTiledBitmapInterface.html" title=" " alt="" coords="5,372,156,497"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,508,208,652,203,655,120,510"/>
+<area shape="rect" id="Node000002" href="$classTiledBitmapInterface.html" title=" " alt="" coords="5,362,156,507"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,518,207,652,203,655,126,520"/>
 <area shape="rect" id="Node000003" href="$classViewable.html" title=" " alt="" coords="73,219,147,304"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="103,318,94,372,89,371,98,317"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="103,318,96,362,90,361,98,317"/>
 <area shape="rect" id="Node000004" href="$classInterface.html" title=" " alt="" coords="93,5,201,171"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="129,184,122,219,117,218,124,183"/>
 <area shape="rect" id="Node000005" href="$classTileInitialisationObserver.html" title=" " alt="" coords="181,392,359,477"/>

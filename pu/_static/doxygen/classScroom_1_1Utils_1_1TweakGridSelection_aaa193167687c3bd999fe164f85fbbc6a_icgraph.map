@@ -1,0 +1,7 @@
+<map id="Scroom::Utils::TweakGridSelection::create" name="Scroom::Utils::TweakGridSelection::create">
+<area shape="rect" id="Node000001" title=" " alt="" coords="241,27,427,67"/>
+<area shape="rect" id="Node000002" href="$classTiledBitmap.html#a79dfef04e48f7a06ed70ac8b08295018" title=" " alt="" coords="5,5,193,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="227,37,193,32,194,27,228,31"/>
+<area shape="rect" id="Node000003" href="$classTransformPresentation.html#afe7cc32972b9a7ee3326fb1ce7ec8d0d" title=" " alt="" coords="11,55,188,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="228,63,189,67,188,62,227,57"/>
+</map>

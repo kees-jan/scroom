@@ -1,5 +1,6 @@
 var NAVTREEINDEX16 =
 {
+"namespaceScroom_1_1Detail_1_1ThreadPool.html#adbdff2f494948417786589c465d0644a":[1,0,21,3,0,4],
 "namespaceScroom_1_1GtkHelpers.html":[1,0,21,4],
 "namespaceScroom_1_1GtkHelpers.html#a2ade52a9fdfe46700036def64d00f9da":[1,0,21,4,5],
 "namespaceScroom_1_1GtkHelpers.html#a37a36328ffc6b0e7468a02d64724c21d":[1,0,21,4,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX16 =
 "observable-tests_8cc.html#a7ff070e22b0a93be7b1c1f6890f84629":[3,0,3,5,2,5,37],
 "observable-tests_8cc.html#a807bd543b4ff91779401163cc0b58515":[3,0,3,5,2,5,13],
 "observable-tests_8cc.html#a80d3ec676e99d30643345432b3105871":[3,0,3,5,2,5,23],
-"observable-tests_8cc.html#aa084e973eaacd48f2ad4ba802d9160b1":[3,0,3,5,2,5,25],
-"observable-tests_8cc.html#aa5e038250293bf7d265e67cd5d53264d":[3,0,3,5,2,5,36]
+"observable-tests_8cc.html#aa084e973eaacd48f2ad4ba802d9160b1":[3,0,3,5,2,5,25]
 };

@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-48-ga0fee447</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-49-gb7ae7a6d</span>
    </div>
   </td>
  </tr>
@@ -290,7 +290,7 @@ Variables</h2></td></tr>
 <div class="ttc" id="astructScroom_1_1TiledBitmap_1_1BitmapMetaData_html_a305fcbe326cb847c10dce31d453ea73a"><div class="ttname"><a href="structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#a305fcbe326cb847c10dce31d453ea73a">Scroom::TiledBitmap::BitmapMetaData::colormapHelper</a></div><div class="ttdeci">ColormapHelperBase::Ptr colormapHelper</div><div class="ttdef"><b>Definition</b> opentiledbitmapinterface.hh:49</div></div>
 <div class="ttc" id="astructScroom_1_1TiledBitmap_1_1BitmapMetaData_html_a86250b9ade69c4581854e533283e582a"><div class="ttname"><a href="structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#a86250b9ade69c4581854e533283e582a">Scroom::TiledBitmap::BitmapMetaData::bitsPerSample</a></div><div class="ttdeci">unsigned int bitsPerSample</div><div class="ttdef"><b>Definition</b> opentiledbitmapinterface.hh:45</div></div>
 <div class="ttc" id="astructScroom_1_1TiledBitmap_1_1BitmapMetaData_html_aad1d5e2334e32d7e9fad7e5cc31f0c45"><div class="ttname"><a href="structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#aad1d5e2334e32d7e9fad7e5cc31f0c45">Scroom::TiledBitmap::BitmapMetaData::samplesPerPixel</a></div><div class="ttdeci">unsigned int samplesPerPixel</div><div class="ttdef"><b>Definition</b> opentiledbitmapinterface.hh:46</div></div>
-<div class="ttc" id="atiledbitmapinterface_8hh_html_a00279dcefa7f911f75fec39af1d48e87"><div class="ttname"><a href="tiledbitmapinterface_8hh.html#a00279dcefa7f911f75fec39af1d48e87">LayerSpec</a></div><div class="ttdeci">std::vector&lt; LayerOperations::Ptr &gt; LayerSpec</div><div class="ttdef"><b>Definition</b> tiledbitmapinterface.hh:183</div></div>
+<div class="ttc" id="atiledbitmapinterface_8hh_html_a00279dcefa7f911f75fec39af1d48e87"><div class="ttname"><a href="tiledbitmapinterface_8hh.html#a00279dcefa7f911f75fec39af1d48e87">LayerSpec</a></div><div class="ttdeci">std::vector&lt; LayerOperations::Ptr &gt; LayerSpec</div><div class="ttdef"><b>Definition</b> tiledbitmapinterface.hh:184</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classScroom_1_1TiledBitmap_1_1LayerSpecForBitmapper.html#a57fe04d709876ca9546f0ab8daafad13">Scroom::TiledBitmap::LayerSpecForBitmapper::LayerSpecForBitmapper()</a>.</p>
 <div class="dynheader">
@@ -647,30 +647,30 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   37</span>{</div>
-<div class="line"><span class="lineno">   38</span>  <span class="keyword">auto</span> wait_until_done = std::make_shared&lt;Scroom::Semaphore&gt;();</div>
-<div class="line"><span class="lineno">   39</span>  <span class="keyword">auto</span> queue = <a class="code hl_function" href="classThreadPool_1_1Queue.html#a60a5cfe128cc80c5d5fbbd6494fb62e2">ThreadPool::Queue::createAsync</a>();</div>
-<div class="line"><span class="lineno">   40</span>  <span class="keyword">auto</span> <a class="code hl_variable" href="threadpool-queue-tests_8cc.html#a71462b1826becaa24dd7c3e3bae38a58">weakQueue</a> = queue-&gt;getWeak();</div>
-<div class="line"><span class="lineno">   41</span>  <span class="keyword">auto</span> abort = [wait_until_done, queue]() <span class="keyword">mutable</span></div>
-<div class="line"><span class="lineno">   42</span>  {</div>
-<div class="line"><span class="lineno">   43</span>    queue.reset();</div>
-<div class="line"><span class="lineno">   44</span>    wait_until_done-&gt;V();</div>
-<div class="line"><span class="lineno">   45</span>  };</div>
-<div class="line"><span class="lineno">   46</span> </div>
-<div class="line"><span class="lineno">   47</span>  <span class="keyword">auto</span> on_finished = [wait_until_done] { wait_until_done-&gt;V(); };</div>
-<div class="line"><span class="lineno">   48</span>  <a class="code hl_variable" href="progressinterfaceconversion-tests_8cc.html#afb6fe9a313a5197e6958d6f99188d26a">progress</a>-&gt;setWaiting();</div>
-<div class="line"><span class="lineno">   49</span> </div>
-<div class="line"><span class="lineno">   50</span>  <a class="code hl_function" href="threadpool_8hh.html#af979353165a7a214dda8f7f289de81ea">Sequentially</a>()-&gt;schedule(</div>
-<div class="line"><span class="lineno">   51</span>    [<a class="code hl_variable" href="progressinterfaceconversion-tests_8cc.html#afb6fe9a313a5197e6958d6f99188d26a">progress</a>, layer, sp, <a class="code hl_variable" href="threadpool-queue-tests_8cc.html#a71462b1826becaa24dd7c3e3bae38a58">weakQueue</a>, on_finished, wait_until_done]</div>
-<div class="line"><span class="lineno">   52</span>    {</div>
-<div class="line"><span class="lineno">   53</span>      <a class="code hl_function" href="namespaceScroom_1_1GtkHelpers.html#a41d93c131774cfff3137ec807ead3e94">Scroom::GtkHelpers::sync_on_ui_thread</a>([=] { <a class="code hl_variable" href="progressinterfaceconversion-tests_8cc.html#afb6fe9a313a5197e6958d6f99188d26a">progress</a>-&gt;setWorking(0); });</div>
-<div class="line"><span class="lineno">   54</span>      layer-&gt;fetchData(sp, <a class="code hl_variable" href="threadpool-queue-tests_8cc.html#a71462b1826becaa24dd7c3e3bae38a58">weakQueue</a>, on_finished);</div>
-<div class="line"><span class="lineno">   55</span>      wait_until_done-&gt;P();</div>
-<div class="line"><span class="lineno">   56</span>    }</div>
-<div class="line"><span class="lineno">   57</span>  );</div>
-<div class="line"><span class="lineno">   58</span> </div>
-<div class="line"><span class="lineno">   59</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceScroom_1_1Utils.html#a60bd9ea8b957f03f5fbf90abe3ee6759">Scroom::Utils::on_destruction</a>(abort);</div>
-<div class="line"><span class="lineno">   60</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   38</span>{</div>
+<div class="line"><span class="lineno">   39</span>  <span class="keyword">auto</span> wait_until_done = std::make_shared&lt;Scroom::Semaphore&gt;();</div>
+<div class="line"><span class="lineno">   40</span>  <span class="keyword">auto</span> queue = <a class="code hl_function" href="classThreadPool_1_1Queue.html#a60a5cfe128cc80c5d5fbbd6494fb62e2">ThreadPool::Queue::createAsync</a>();</div>
+<div class="line"><span class="lineno">   41</span>  <span class="keyword">auto</span> <a class="code hl_variable" href="threadpool-queue-tests_8cc.html#a71462b1826becaa24dd7c3e3bae38a58">weakQueue</a> = queue-&gt;getWeak();</div>
+<div class="line"><span class="lineno">   42</span>  <span class="keyword">auto</span> abort = [wait_until_done, queue]() <span class="keyword">mutable</span></div>
+<div class="line"><span class="lineno">   43</span>  {</div>
+<div class="line"><span class="lineno">   44</span>    queue.reset();</div>
+<div class="line"><span class="lineno">   45</span>    wait_until_done-&gt;V();</div>
+<div class="line"><span class="lineno">   46</span>  };</div>
+<div class="line"><span class="lineno">   47</span> </div>
+<div class="line"><span class="lineno">   48</span>  <span class="keyword">auto</span> on_finished = [wait_until_done] { wait_until_done-&gt;V(); };</div>
+<div class="line"><span class="lineno">   49</span>  <a class="code hl_variable" href="progressinterfaceconversion-tests_8cc.html#afb6fe9a313a5197e6958d6f99188d26a">progress</a>-&gt;setWaiting();</div>
+<div class="line"><span class="lineno">   50</span> </div>
+<div class="line"><span class="lineno">   51</span>  <a class="code hl_function" href="threadpool_8hh.html#af979353165a7a214dda8f7f289de81ea">Sequentially</a>()-&gt;schedule(</div>
+<div class="line"><span class="lineno">   52</span>    [<a class="code hl_variable" href="progressinterfaceconversion-tests_8cc.html#afb6fe9a313a5197e6958d6f99188d26a">progress</a>, layer, sp, <a class="code hl_variable" href="threadpool-queue-tests_8cc.html#a71462b1826becaa24dd7c3e3bae38a58">weakQueue</a>, on_finished, wait_until_done]</div>
+<div class="line"><span class="lineno">   53</span>    {</div>
+<div class="line"><span class="lineno">   54</span>      <a class="code hl_function" href="namespaceScroom_1_1GtkHelpers.html#a41d93c131774cfff3137ec807ead3e94">Scroom::GtkHelpers::sync_on_ui_thread</a>([=] { <a class="code hl_variable" href="progressinterfaceconversion-tests_8cc.html#afb6fe9a313a5197e6958d6f99188d26a">progress</a>-&gt;setWorking(0); });</div>
+<div class="line"><span class="lineno">   55</span>      layer-&gt;fetchData(sp, <a class="code hl_variable" href="threadpool-queue-tests_8cc.html#a71462b1826becaa24dd7c3e3bae38a58">weakQueue</a>, on_finished);</div>
+<div class="line"><span class="lineno">   56</span>      wait_until_done-&gt;P();</div>
+<div class="line"><span class="lineno">   57</span>    }</div>
+<div class="line"><span class="lineno">   58</span>  );</div>
+<div class="line"><span class="lineno">   59</span> </div>
+<div class="line"><span class="lineno">   60</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceScroom_1_1Utils.html#a60bd9ea8b957f03f5fbf90abe3ee6759">Scroom::Utils::on_destruction</a>(abort);</div>
+<div class="line"><span class="lineno">   61</span>}</div>
 <div class="ttc" id="aclassThreadPool_1_1Queue_html_a60a5cfe128cc80c5d5fbbd6494fb62e2"><div class="ttname"><a href="classThreadPool_1_1Queue.html#a60a5cfe128cc80c5d5fbbd6494fb62e2">ThreadPool::Queue::createAsync</a></div><div class="ttdeci">static Ptr createAsync()</div><div class="ttdef"><b>Definition</b> threadpoolimpl.cc:382</div></div>
 <div class="ttc" id="anamespaceScroom_1_1GtkHelpers_html_a41d93c131774cfff3137ec807ead3e94"><div class="ttname"><a href="namespaceScroom_1_1GtkHelpers.html#a41d93c131774cfff3137ec807ead3e94">Scroom::GtkHelpers::sync_on_ui_thread</a></div><div class="ttdeci">void sync_on_ui_thread(T f)</div><div class="ttdef"><b>Definition</b> gtk-helpers.hh:59</div></div>
 <div class="ttc" id="anamespaceScroom_1_1Utils_html_a60bd9ea8b957f03f5fbf90abe3ee6759"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#a60bd9ea8b957f03f5fbf90abe3ee6759">Scroom::Utils::on_destruction</a></div><div class="ttdeci">std::shared_ptr&lt; void &gt; on_destruction(F f)</div><div class="ttdef"><b>Definition</b> utilities.hh:84</div></div>
@@ -918,10 +918,10 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  443</span>  {</div>
-<div class="line"><span class="lineno">  444</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html#ae96a9f48a94916bfcaa5d5fd33d42903">OpenTiledBitmapAsPresentation::create</a>(std::move(openTiledBitmapInterface));</div>
-<div class="line"><span class="lineno">  445</span>  }</div>
-<div class="ttc" id="aclassanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation_html_ae96a9f48a94916bfcaa5d5fd33d42903"><div class="ttname"><a href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html#ae96a9f48a94916bfcaa5d5fd33d42903">anonymous_namespace{tiledbitmappresentation.cc}::OpenTiledBitmapAsPresentation::create</a></div><div class="ttdeci">static Ptr create(OpenTiledBitmapInterface::Ptr openTiledBitmapInterface_)</div><div class="ttdef"><b>Definition</b> tiledbitmappresentation.cc:378</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  441</span>  {</div>
+<div class="line"><span class="lineno">  442</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html#ae96a9f48a94916bfcaa5d5fd33d42903">OpenTiledBitmapAsPresentation::create</a>(std::move(openTiledBitmapInterface));</div>
+<div class="line"><span class="lineno">  443</span>  }</div>
+<div class="ttc" id="aclassanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation_html_ae96a9f48a94916bfcaa5d5fd33d42903"><div class="ttname"><a href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html#ae96a9f48a94916bfcaa5d5fd33d42903">anonymous_namespace{tiledbitmappresentation.cc}::OpenTiledBitmapAsPresentation::create</a></div><div class="ttdeci">static Ptr create(OpenTiledBitmapInterface::Ptr openTiledBitmapInterface_)</div><div class="ttdef"><b>Definition</b> tiledbitmappresentation.cc:376</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

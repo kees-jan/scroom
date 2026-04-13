@@ -1,5 +1,7 @@
 <map id="SelectionType::GRID" name="SelectionType::GRID">
-<area shape="rect" id="Node000001" title=" " alt="" coords="231,13,384,38"/>
-<area shape="rect" id="Node000002" href="$classTransformPresentation.html#afe7cc32972b9a7ee3326fb1ce7ec8d0d" title=" " alt="" coords="5,5,183,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="217,28,183,28,183,23,217,23"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="241,35,395,60"/>
+<area shape="rect" id="Node000002" href="$classTiledBitmap.html#a79dfef04e48f7a06ed70ac8b08295018" title=" " alt="" coords="5,5,193,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="227,38,193,33,194,28,228,33"/>
+<area shape="rect" id="Node000003" href="$classTransformPresentation.html#afe7cc32972b9a7ee3326fb1ce7ec8d0d" title=" " alt="" coords="11,55,188,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="228,62,188,67,188,61,227,56"/>
 </map>

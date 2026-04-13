@@ -1,9 +1,9 @@
 <map id="TiledBitmapInterface" name="TiledBitmapInterface">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,352,156,477"/>
-<area shape="rect" id="Node000004" href="$classTiledBitmap.html" title=" " alt="" coords="16,525,145,931"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="83,491,83,525,78,525,78,491"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,352,156,497"/>
+<area shape="rect" id="Node000004" href="$classTiledBitmap.html" title=" " alt="" coords="16,545,145,951"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="83,511,83,545,78,545,78,511"/>
 <area shape="rect" id="Node000002" href="$classViewable.html" title=" " alt="" coords="43,219,118,304"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="83,318,83,352,78,352,78,318"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="83,317,83,352,78,352,78,317"/>
 <area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="27,5,135,171"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="83,184,83,218,78,218,78,184"/>
 </map>

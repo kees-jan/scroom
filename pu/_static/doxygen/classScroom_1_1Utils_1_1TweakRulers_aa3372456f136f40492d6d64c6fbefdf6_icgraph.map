@@ -1,7 +1,9 @@
 <map id="Scroom::Utils::TweakRulers::create" name="Scroom::Utils::TweakRulers::create">
-<area shape="rect" id="Node000001" title=" " alt="" coords="240,37,439,77"/>
-<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a6502ef22e3313382c1898a5ea4132c6c" title=" " alt="" coords="5,5,192,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="226,45,192,40,193,35,227,40"/>
-<area shape="rect" id="Node000003" href="$classTransformPresentation.html#afe7cc32972b9a7ee3326fb1ce7ec8d0d" title=" " alt="" coords="10,69,187,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="227,75,188,80,187,75,226,70"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="241,63,440,103"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a6502ef22e3313382c1898a5ea4132c6c" title=" " alt="" coords="6,5,193,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="242,62,183,48,185,43,243,57"/>
+<area shape="rect" id="Node000003" href="$classTiledBitmap.html#a79dfef04e48f7a06ed70ac8b08295018" title=" " alt="" coords="5,70,193,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="228,85,193,85,193,80,228,80"/>
+<area shape="rect" id="Node000004" href="$classTransformPresentation.html#afe7cc32972b9a7ee3326fb1ce7ec8d0d" title=" " alt="" coords="11,120,188,160"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="243,108,185,123,183,117,242,103"/>
 </map>

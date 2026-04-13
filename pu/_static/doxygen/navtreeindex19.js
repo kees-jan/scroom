@@ -1,5 +1,6 @@
 var NAVTREEINDEX19 =
 {
+"showmetadatainterface_8hh.html#afa30d0559ca625b8a3ef5e5fd42ab65b":[3,0,3,1,0,0,11,1],
 "showmetadatainterface_8hh_source.html":[3,0,3,1,0,0,11],
 "sidebarmanager_8cc.html":[3,0,2,1,9],
 "sidebarmanager_8hh.html":[3,0,2,1,10],
@@ -248,6 +249,5 @@ var NAVTREEINDEX19 =
 "threadpool-tests_8cc.html#af6efe4ef6b335b567d755939135bd49e":[3,0,3,3,2,8,23],
 "threadpool-tests_8cc.html#af777d4775e97e4a9eaf9a67f0a652a12":[3,0,3,3,2,8,22],
 "threadpool-tests_8cc.html#afed1d9f0b7b77d5594eefec825c3104f":[3,0,3,3,2,8,16],
-"threadpool_8hh.html":[3,0,3,3,0,0,4],
-"threadpool_8hh.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b":[3,0,3,3,0,0,4,6]
+"threadpool_8hh.html":[3,0,3,3,0,0,4]
 };
