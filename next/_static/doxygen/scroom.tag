@@ -4097,6 +4097,7 @@
     <name>tiledbitmapinterface.hh</name>
     <path>libs/tiled-bitmap/inc/scroom/</path>
     <filename>tiledbitmapinterface_8hh.html</filename>
+    <includes id="context_8hh" name="context.hh" local="no" import="no" module="no" objc="no">scroom/context.hh</includes>
     <includes id="interface_8hh" name="interface.hh" local="no" import="no" module="no" objc="no">scroom/interface.hh</includes>
     <includes id="presentationinterface_8hh" name="presentationinterface.hh" local="no" import="no" module="no" objc="no">scroom/presentationinterface.hh</includes>
     <includes id="rectangle_8hh" name="rectangle.hh" local="no" import="no" module="no" objc="no">scroom/rectangle.hh</includes>
@@ -4348,6 +4349,7 @@
     <includes id="tiled-bitmap_8hh" name="tiled-bitmap.hh" local="yes" import="no" module="no" objc="no">tiled-bitmap.hh</includes>
     <includes id="cairo-helpers_8hh" name="cairo-helpers.hh" local="no" import="no" module="no" objc="no">scroom/cairo-helpers.hh</includes>
     <includes id="semaphore_8hh" name="semaphore.hh" local="no" import="no" module="no" objc="no">scroom/semaphore.hh</includes>
+    <includes id="tweak-view_8hh" name="tweak-view.hh" local="yes" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
     <includes id="tileviewstate_8hh" name="tileviewstate.hh" local="yes" import="no" module="no" objc="no">tileviewstate.hh</includes>
     <member kind="function">
       <type>TiledBitmapInterface::Ptr</type>
@@ -21234,6 +21236,13 @@
       <arglist>(ViewInterface::Ptr vi) override</arglist>
     </member>
     <member kind="function">
+      <type>Scroom::Utils::Context::ConstPtr</type>
+      <name>getContext</name>
+      <anchorfile>classTiledBitmap.html</anchorfile>
+      <anchor>a1ead3f8bc2e744cec2cdebd1fe58a049</anchor>
+      <arglist>() const override</arglist>
+    </member>
+    <member kind="function">
       <type>void</type>
       <name>tileCreated</name>
       <anchorfile>classTiledBitmap.html</anchorfile>
@@ -21394,6 +21403,13 @@
       <anchor>a6acc05cbfbe257c67d28afebed2de5a4</anchor>
       <arglist></arglist>
     </member>
+    <member kind="variable" protection="private">
+      <type>Scroom::Utils::Context::Ptr</type>
+      <name>context</name>
+      <anchorfile>classTiledBitmap.html</anchorfile>
+      <anchor>a886ffa6837fea8c657e3d86a57120649</anchor>
+      <arglist></arglist>
+    </member>
   </compound>
   <compound kind="class">
     <name>TiledBitmapInterface</name>
@@ -21433,6 +21449,13 @@
       <anchorfile>classTiledBitmapInterface.html</anchorfile>
       <anchor>a4e53a7165efc43a94e2a407d583c8b13</anchor>
       <arglist>(ViewInterface::Ptr vi)=0</arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual Scroom::Utils::Context::ConstPtr</type>
+      <name>getContext</name>
+      <anchorfile>classTiledBitmapInterface.html</anchorfile>
+      <anchor>a87fe3e77a7a2101895cad4ec6eb88025</anchor>
+      <arglist>() const =0</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -21664,13 +21687,6 @@
       <name>pipetteLayerOperation</name>
       <anchorfile>classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html</anchorfile>
       <anchor>ad36fe40b3793407726915be296cf3af8</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>Scroom::Utils::Context::Ptr</type>
-      <name>context</name>
-      <anchorfile>classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html</anchorfile>
-      <anchor>a35cf0dc881c55a893888a139039f6108</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
@@ -23111,8 +23127,8 @@
       <type>static ITweakSelection::Ptr</type>
       <name>create</name>
       <anchorfile>classScroom_1_1Utils_1_1TweakGridSelection.html</anchorfile>
-      <anchor>a44701030e6dbaa2db85d531886df22da</anchor>
-      <arglist>(const Point&lt; double &gt; &amp;aspectRatio_)</arglist>
+      <anchor>aaa193167687c3bd999fe164f85fbbc6a</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;aspectRatio_={1.0, 1.0})</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -23151,8 +23167,8 @@
       <type>static ITweakSelection::Ptr</type>
       <name>create</name>
       <anchorfile>classScroom_1_1Utils_1_1TweakPixelSelection.html</anchorfile>
-      <anchor>a9755bf9dd8a03f66c12cc9e5a1de4b01</anchor>
-      <arglist>(const Point&lt; double &gt; &amp;aspectRatio_)</arglist>
+      <anchor>a016a16606c37613512306c5aba2de367</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;aspectRatio_={1.0, 1.0})</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -23224,8 +23240,8 @@
       <type>static ITweakPresentationPosition::Ptr</type>
       <name>create</name>
       <anchorfile>classScroom_1_1Utils_1_1TweakPresentationPosition.html</anchorfile>
-      <anchor>a8c81cc0588c7979a76fb76f3ce344690</anchor>
-      <arglist>(const Point&lt; double &gt; &amp;aspectRatio_)</arglist>
+      <anchor>aacde7b5621252cae2c17efc1fe313b5c</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;aspectRatio_={1.0, 1.0})</arglist>
     </member>
     <member kind="function" protection="private">
       <type></type>

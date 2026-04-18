@@ -27,7 +27,6 @@ var classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPre
     [ "viewRemoved", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#ae212e34133282a532f5b811e3939d81f", null ],
     [ "bmd", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a3c78f4e5c6b1ed9a2e91bd94042dae0c", null ],
     [ "colormapHelper", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a742cdfa5193adbe3a7fa65dedbd75ac2", null ],
-    [ "context", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a35cf0dc881c55a893888a139039f6108", null ],
     [ "logger", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#aa9344e2e5e69c04ac6a8772bc1cc230f", null ],
     [ "name", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a690d27bc6f9fc1fec4400f0944917771", null ],
     [ "pipetteLayerOperation", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#ad36fe40b3793407726915be296cf3af8", null ],
