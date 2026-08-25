@@ -51,31 +51,6 @@ public:
 };
 
 template <typename R>
-class B
-{
-private:
-  Semaphore* s;
-  R result;
-
-public:
-  using Ptr = std::shared_ptr<B<R>>;
-
-  B(Semaphore* s_, R result_)
-    : s(s_)
-    , result(result_)
-  {
-  }
-
-  R operator()()
-  {
-    s->V();
-    return result;
-  }
-
-  static Ptr create(Semaphore* s, R result) { return Ptr(new B(s, result)); }
-};
-
-template <typename R>
 R no_op(Semaphore* s, R result)
 {
   s->V();
@@ -186,21 +161,12 @@ TEST(ThreadPool_class_Tests, construct_2_threads) // NOLINT
   EXPECT_TRUE(has_exactly_n_threads(&pool, expected));
 }
 
-TEST(ThreadPool_class_Tests, schedule_shared_pointer) // NOLINT
-{
-  ThreadPool pool(1);
-  Semaphore a(0);
-
-  pool.schedule(A::create(&a));
-  EXPECT_TRUE(a.P(long_timeout));
-}
-
 TEST(ThreadPool_class_Tests, schedule_future) // NOLINT
 {
   ThreadPool pool(0);
   Semaphore a(0);
 
-  boost::unique_future<int> result(pool.schedule<int>([pa = &a] { return no_op(pa, 42); }));
+  boost::unique_future<int> result(pool.schedule([pa = &a] { return no_op(pa, 42); }));
 
   EXPECT_FALSE(a.P(short_timeout));
   EXPECT_FALSE(result.is_ready());
@@ -208,21 +174,6 @@ TEST(ThreadPool_class_Tests, schedule_future) // NOLINT
 
   EXPECT_TRUE(a.P(long_timeout));
   EXPECT_EQ(42, result.get());
-}
-
-TEST(ThreadPool_class_Tests, schedule_shared_pointer_with_future) // NOLINT
-{
-  ThreadPool pool(0);
-  Semaphore a(0);
-
-  boost::unique_future<bool> result(pool.schedule<bool, B<bool>>(B<bool>::create(&a, false)));
-
-  EXPECT_FALSE(a.P(short_timeout));
-  EXPECT_FALSE(result.is_ready());
-  pool.add();
-
-  EXPECT_TRUE(a.P(long_timeout));
-  EXPECT_EQ(false, result.get());
 }
 
 //////////////////////////////////////////////////////////////

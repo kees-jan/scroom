@@ -1,5 +1,5 @@
 if [ -z "${BUILD+x}" ]; then
-  BUILD=cmake-build-debug-clang
+  BUILD=cmake-build-debug-clang22
 fi
 CLANG_VERSION=22
 

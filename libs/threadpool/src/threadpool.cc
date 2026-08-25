@@ -322,7 +322,7 @@ void ThreadPool::do_one(const ThreadPool::PrivateData::Ptr& priv)
 
     if(!priv->jobs.empty() && !priv->jobs.begin()->second.empty())
     {
-      job = priv->jobs.begin()->second.front();
+      job = std::move(priv->jobs.begin()->second.front());
       priv->jobs.begin()->second.pop();
     }
     else
@@ -342,74 +342,60 @@ void ThreadPool::do_one(const ThreadPool::PrivateData::Ptr& priv)
   }
 }
 
-void ThreadPool::schedule(boost::function<void()> const& fn, int priority, const ThreadPool::Queue::Ptr& queue)
-{
-  schedule(fn, priority, queue->getWeak());
-}
 
-void ThreadPool::schedule(boost::function<void()> const& fn, const ThreadPool::Queue::Ptr& queue)
-{
-  schedule(fn, defaultPriority, std::move(queue));
-}
-
-void ThreadPool::schedule(boost::function<void()> const& fn, int priority, const ThreadPool::WeakQueue::Ptr& queue)
+void ThreadPool::schedule_impl(std::move_only_function<void()> fn, int priority, const WeakQueue::Ptr& queue)
 {
   boost::mutex::scoped_lock const lock(priv->mut);
-  priv->jobs[priority].emplace(fn, queue);
+  priv->jobs[priority].emplace(std::move(fn), queue);
   priv->jobcount++;
   priv->cond.notify_one();
 }
 
-void ThreadPool::schedule(boost::function<void()> const& fn, const ThreadPool::WeakQueue::Ptr& queue)
+Queue::Ptr ThreadPool::defaultQueue()
 {
-  schedule(fn, defaultPriority, std::move(queue));
-}
-
-ThreadPool::Queue::Ptr ThreadPool::defaultQueue()
-{
-  static ThreadPool::Queue::Ptr const queue = ThreadPool::Queue::create();
+  static Queue::Ptr const queue = Queue::create();
   return queue;
 }
 
 const int ThreadPool::defaultPriority = PRIO_NORMAL;
 
 ////////////////////////////////////////////////////////////////////////
-/// ThreadPool::Queue
+/// Queue
 ////////////////////////////////////////////////////////////////////////
 
-ThreadPool::Queue::Ptr ThreadPool::Queue::create() { return ThreadPool::Queue::Ptr(new ThreadPool::Queue()); }
+Queue::Ptr Queue::create() { return Queue::Ptr(new Queue()); }
 
-ThreadPool::Queue::Ptr ThreadPool::Queue::createAsync() { return {new ThreadPool::Queue(), AsyncDeleter<ThreadPool::Queue>()}; }
+Queue::Ptr Queue::createAsync() { return {new Queue(), AsyncDeleter<Queue>()}; }
 
-ThreadPool::Queue::Queue()
+Queue::Queue()
   : weak(WeakQueue::create())
 {
 }
 
-ThreadPool::Queue::~Queue() { weak->get()->deletingQueue(); }
+Queue::~Queue() { weak->get()->deletingQueue(); }
 
-QueueImpl::Ptr ThreadPool::Queue::get() { return weak->get(); }
+QueueImpl::Ptr Queue::get() { return weak->get(); }
 
-ThreadPool::WeakQueue::Ptr ThreadPool::Queue::getWeak() { return weak; }
+WeakQueue::Ptr Queue::getWeak() { return weak; }
 
 ////////////////////////////////////////////////////////////////////////
-/// ThreadPool::WeakQueue
+/// WeakQueue
 ////////////////////////////////////////////////////////////////////////
 
-ThreadPool::WeakQueue::Ptr ThreadPool::WeakQueue::create() { return ThreadPool::WeakQueue::Ptr(new ThreadPool::WeakQueue()); }
+WeakQueue::Ptr WeakQueue::create() { return WeakQueue::Ptr(new WeakQueue()); }
 
-ThreadPool::WeakQueue::WeakQueue()
+WeakQueue::WeakQueue()
   : qi(QueueImpl::create())
 {
 }
 
-QueueImpl::Ptr ThreadPool::WeakQueue::get() { return qi; }
+QueueImpl::Ptr WeakQueue::get() { return qi; }
 
 ////////////////////////////////////////////////////////////////////////
 /// ThreadPool::Job
 ////////////////////////////////////////////////////////////////////////
 
-ThreadPool::Job::Job(boost::function<void()> fn_, const WeakQueue::Ptr& queue_)
+ThreadPool::Job::Job(std::move_only_function<void()> fn_, const WeakQueue::Ptr& queue_)
   : queue(queue_->get())
   , fn(std::move(fn_))
 {

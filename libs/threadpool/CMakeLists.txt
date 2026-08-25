@@ -5,16 +5,14 @@ set(HEADER_FILES
     inc/scroom/semaphore.hh
     inc/scroom/threadpool.hh
 )
-set(HEADER_FILES_IMPL inc/scroom/impl/threadpoolimpl.hh)
 target_sources(
   threadpool
   PRIVATE src/async-deleter.cc
           src/function-additor.cc
           src/queue.cc
           src/queue.hh
-          src/threadpoolimpl.cc
+          src/threadpool.cc
           ${HEADER_FILES}
-          ${HEADER_FILES_IMPL}
 )
 target_link_libraries(
   threadpool
@@ -40,7 +38,6 @@ install(
   NAMESPACE scroom
 )
 install(FILES ${HEADER_FILES} DESTINATION include/scroom)
-install(FILES ${HEADER_FILES_IMPL} DESTINATION include/scroom/impl)
 
 if(ENABLE_GOOGLE_TEST)
   add_executable(threadpool_tests)

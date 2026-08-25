@@ -31,17 +31,6 @@ enum
 namespace Scroom::Detail::ThreadPool
 {
   class QueueImpl;
-} // namespace Scroom::Detail::ThreadPool
-
-/**
- * Generic threadpool
- *
- * A ThreadPool is basically a collection of threads you can
- * schedule() work on.
- */
-class ThreadPool
-{
-public:
   class WeakQueue;
 
   /**
@@ -78,7 +67,12 @@ public:
     using Ptr = std::shared_ptr<Queue>;
     using WeakPtr = std::weak_ptr<Queue>;
 
-  public:
+    Queue();
+    Queue(const Queue&) = delete;
+    Queue(Queue&&) = delete;
+    Queue& operator=(const Queue&) = delete;
+    Queue& operator=(Queue&&) = delete;
+
     /**
      * When the last reference goes out of scope, synchronously
      * destroy the Queue, blocking until any currently running jobs
@@ -96,13 +90,6 @@ public:
     ~Queue();
     std::shared_ptr<Scroom::Detail::ThreadPool::QueueImpl> get();
     std::shared_ptr<WeakQueue> getWeak();
-
-  private:
-    Queue();
-    Queue(const Queue&) = delete;
-    Queue(Queue&&) = delete;
-    Queue& operator=(const Queue&) = delete;
-    Queue& operator=(Queue&&) = delete;
 
   private:
     std::shared_ptr<WeakQueue> weak;
@@ -133,9 +120,8 @@ public:
     using Ptr = std::shared_ptr<WeakQueue>;
     using WeakPtr = std::weak_ptr<WeakQueue>;
 
-  public:
+    WeakQueue();
     ~WeakQueue() = default;
-
     WeakQueue(const WeakQueue&) = delete;
     WeakQueue(WeakQueue&&) = delete;
     WeakQueue& operator=(const WeakQueue&) = delete;
@@ -145,20 +131,100 @@ public:
     std::shared_ptr<Scroom::Detail::ThreadPool::QueueImpl> get();
 
   private:
-    WeakQueue();
-
-  private:
     std::shared_ptr<Scroom::Detail::ThreadPool::QueueImpl> qi;
   };
+
+  template <typename F>
+  concept CallableT = std::invocable<F&>;
+
+  template <bool hasCallable, bool hasPriority, bool hasQueue, typename R>
+  class Builder;
+
+  template <bool hasPriority, bool hasQueue, typename R>
+  constexpr auto addCallable(Builder<false, hasPriority, hasQueue, R> b, CallableT auto&& c)
+  {
+    using RR = std::invoke_result_t<decltype(c)&>;
+    return Builder<true, hasPriority, hasQueue, RR>{std::forward<decltype(c)>(c), b.priority, std::move(b.queue)};
+  }
+
+  template <bool hasCallable, bool hasQueue, typename R>
+  constexpr auto addPriority(Builder<hasCallable, false, hasQueue, R> b, int priority)
+  {
+    return Builder<hasCallable, true, hasQueue, R>{std::move(b.fn), priority, std::move(b.queue)};
+  }
+
+  template <bool hasCallable, bool hasPriority, typename R>
+  constexpr auto addQueue(Builder<hasCallable, hasPriority, false, R> b, const Queue::Ptr& queue)
+  {
+    return Builder<hasCallable, hasPriority, true, R>{std::move(b.fn), b.priority, queue->getWeak()};
+  }
+
+  template <bool hasCallable, bool hasPriority, typename R>
+  constexpr auto addQueue(Builder<hasCallable, hasPriority, false, R> b, WeakQueue::Ptr queue)
+  {
+    return Builder<hasCallable, hasPriority, true, R>{std::move(b.fn), b.priority, std::move(queue)};
+  }
+
+  template <bool hasCallable_, bool hasPriority_, bool hasQueue_, typename R>
+  class Builder
+  {
+  public:
+    using ResultType = R;
+    using FunctionType = std::move_only_function<R()>;
+    constexpr static bool hasCallable = hasCallable_;
+    constexpr static bool hasPriority = hasPriority_;
+    constexpr static bool hasQueue = hasQueue_;
+
+    constexpr explicit Builder(int defaultPriority)
+      : priority{defaultPriority}
+    {
+    }
+
+    constexpr Builder(FunctionType fn_, int priority_, WeakQueue::Ptr queue_)
+      : fn{std::move(fn_)}
+      , priority{priority_}
+      , queue{std::move(queue_)}
+    {
+    }
+
+    constexpr auto add(CallableT auto&& c) { return addCallable(std::move(*this), std::forward<decltype(c)>(c)); }
+    constexpr auto add(int priority_) { return addPriority(std::move(*this), priority_); }
+    constexpr auto add(WeakQueue::Ptr queue_) { return addQueue(std::move(*this), std::move(queue_)); }
+    constexpr auto add(const Queue::Ptr& queue_) { return addQueue(std::move(*this), queue_); }
+
+    constexpr auto addMany(auto&& first, auto&&... rest)
+    {
+      return add(std::forward<decltype(first)>(first)).addMany(std::forward<decltype(rest)>(rest)...);
+    }
+
+    constexpr auto addMany() { return std::move(*this); }
+
+    FunctionType fn;
+    int priority;
+    WeakQueue::Ptr queue;
+  };
+} // namespace Scroom::Detail::ThreadPool
+
+/**
+ * Generic threadpool
+ *
+ * A ThreadPool is basically a collection of threads you can
+ * schedule() work on.
+ */
+class ThreadPool
+{
+public:
+  using Queue = Scroom::Detail::ThreadPool::Queue;
+  using WeakQueue = Scroom::Detail::ThreadPool::WeakQueue;
 
 private:
   struct Job
   {
     std::shared_ptr<Scroom::Detail::ThreadPool::QueueImpl> queue;
-    boost::function<void()> fn;
+    std::move_only_function<void()> fn;
 
     Job() = default;
-    Job(boost::function<void()> fn, const WeakQueue::Ptr& queue);
+    Job(std::move_only_function<void()> fn, const WeakQueue::Ptr& queue);
   };
 
 public:
@@ -265,6 +331,8 @@ private:
   static Queue::Ptr defaultQueue();
   static const int defaultPriority;
 
+  void schedule_impl(std::move_only_function<void()> fn, int priority, const WeakQueue::Ptr& queue);
+
 public:
   /** Create a ThreadPool with one thread for each core in the system */
   explicit ThreadPool(bool completeAllJobsBeforeDestruction = false);
@@ -291,75 +359,42 @@ public:
    */
   ~ThreadPool();
 
-  /** Schedule the given job at the given priority */
-  void schedule(boost::function<void()> const& fn, int priority = defaultPriority, const Queue::Ptr& queue = defaultQueue());
-
-  /** Schedule the given job at the given queue */
-  void schedule(boost::function<void()> const& fn, const Queue::Ptr& queue);
-
   /**
-   * Schedule the given job at the given priority
+   * Schedule a task
    *
-   * @pre T::operator()() must be defined
+   * @param params A parameter pack containing
+   *   @li a callable
+   *   @li a priority (optional)
+   *   @li a queue (optional, either a Queue::Ptr or a WeakQueue::Ptr
+   * @return a future, if the callable return non-void, otherwise void
    */
-  template <typename T>
-  void schedule(std::shared_ptr<T> fn, int priority = defaultPriority, const Queue::Ptr& queue = defaultQueue());
+  auto schedule(auto&&... params)
+  {
+    using Builder = Scroom::Detail::ThreadPool::Builder<false, false, false, void>;
 
-  /**
-   * Schedule the given job at the given priority
-   *
-   * @pre T::operator()() must be defined
-   */
-  template <typename T>
-  void schedule(std::shared_ptr<T> fn, const Queue::Ptr& queue);
+    auto r = Builder(defaultPriority).addMany(std::forward<decltype(params)>(params)...);
 
-  /** Schedule the given job at the given priority */
-  void schedule(boost::function<void()> const& fn, int priority, const WeakQueue::Ptr& queue);
+    static_assert(r.hasCallable);
 
-  /** Schedule the given job at the given queue */
-  void schedule(boost::function<void()> const& fn, const WeakQueue::Ptr& queue);
+    if constexpr(!r.hasQueue)
+    {
+      r.queue = defaultQueue()->getWeak();
+    }
 
-  /**
-   * Schedule the given job at the given priority
-   *
-   * @pre T::operator()() must be defined
-   */
-  template <typename T>
-  void schedule(std::shared_ptr<T> fn, int priority, const WeakQueue::Ptr& queue);
+    using R = decltype(r)::ResultType;
 
-  /**
-   * Schedule the given job at the given priority
-   *
-   * @pre T::operator()() must be defined
-   */
-  template <typename T>
-  void schedule(std::shared_ptr<T> fn, WeakQueue::Ptr queue);
-
-  template <typename R>
-  boost::unique_future<R>
-    schedule(boost::function<R()> const& fn, int priority = defaultPriority, const Queue::Ptr& queue = defaultQueue());
-
-  template <typename R>
-  boost::unique_future<R> schedule(boost::function<R()> const& fn, const Queue::Ptr& queue);
-
-  template <typename R, typename T>
-  boost::unique_future<R>
-    schedule(const std::shared_ptr<T>& fn, int priority = defaultPriority, const Queue::Ptr& queue = defaultQueue());
-
-  template <typename R, typename T>
-  boost::unique_future<R> schedule(std::shared_ptr<T> fn, const Queue::Ptr& queue);
-
-  template <typename R>
-  boost::unique_future<R> schedule(boost::function<R()> const& fn, int priority, const WeakQueue::Ptr& queue);
-
-  template <typename R>
-  boost::unique_future<R> schedule(boost::function<R()> const& fn, WeakQueue::Ptr queue);
-
-  template <typename R, typename T>
-  boost::unique_future<R> schedule(const std::shared_ptr<T>& fn, int priority, const WeakQueue::Ptr& queue);
-
-  template <typename R, typename T>
-  boost::unique_future<R> schedule(std::shared_ptr<T> fn, WeakQueue::Ptr queue);
+    if constexpr(std::is_void_v<R>)
+    {
+      schedule_impl(std::move(r.fn), r.priority, std::move(r.queue));
+    }
+    else
+    {
+      boost::packaged_task<R> t(std::move(r.fn));
+      boost::unique_future<R> f = t.get_future();
+      schedule_impl(std::move(t), r.priority, std::move(r.queue));
+      return f;
+    }
+  }
 
   /**
    * Add an additional thread to the pool.
@@ -599,5 +634,3 @@ ThreadPool::Ptr CpuBound();
  * @see https://github.com/kees-jan/scroom/wiki/StaticInitializationOrderFiasco
  */
 ThreadPool::Ptr Sequentially();
-
-#include <scroom/impl/threadpoolimpl.hh>

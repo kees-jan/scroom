@@ -11,7 +11,6 @@
 
 #include <spdlog/spdlog.h>
 
-#include <scroom/impl/threadpoolimpl.hh>
 #include <scroom/memoryblobs.hh>
 #include <scroom/stuff.hh>
 #include <scroom/threadpool.hh>
@@ -150,9 +149,7 @@ CompressedTileLine& Layer::getTileLine(int j)
 
 void Layer::fetchData(SourcePresentation::Ptr sp, const ThreadPool::WeakQueue::Ptr& queue, std::function<void()> on_finished)
 {
-  DataFetcher const df(
-    shared_from_this<Layer>(), height, horTileCount, verTileCount, std::move(sp), queue, std::move(on_finished)
-  );
+  DataFetcher df(shared_from_this<Layer>(), height, horTileCount, verTileCount, std::move(sp), queue, std::move(on_finished));
   CpuBound()->schedule(df, DATAFETCH_PRIO, queue);
 }
 
@@ -217,7 +214,7 @@ void DataFetcher::operator()()
 {
   QueueJumper::Ptr const qj = QueueJumper::create();
 
-  threadPool->schedule(qj, REDUCE_PRIO, queue);
+  threadPool->schedule([qj] { std::invoke(*qj); }, REDUCE_PRIO, queue);
 
   CompressedTileLine& tileLine = layer->getTileLine(currentRow);
   std::vector<Tile::Ptr> tiles;
@@ -239,7 +236,7 @@ void DataFetcher::operator()()
   currentRow++;
   if(currentRow < verTileCount)
   {
-    DataFetcher const successor(*this);
+    DataFetcher successor(*this);
     if(!qj->setWork(successor))
     {
       threadPool->schedule(successor, DATAFETCH_PRIO, queue);
