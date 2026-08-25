@@ -9897,8 +9897,8 @@
       <type>constexpr auto</type>
       <name>add</name>
       <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
-      <anchor>a9e61aef9ddb398d9af914185935ba6a8</anchor>
-      <arglist>(auto &amp;&amp;first, auto &amp;&amp;...rest)</arglist>
+      <anchor>a66b45bd20ced8458f493693b685c0413</anchor>
+      <arglist>(auto &amp;&amp;first, auto &amp;&amp;... rest)</arglist>
     </member>
     <member kind="variable">
       <type>std::move_only_function&lt; void()&gt;</type>

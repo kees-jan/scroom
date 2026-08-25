@@ -8,7 +8,7 @@ var classScroom_1_1Detail_1_1ThreadPool_1_1Builder =
     [ "AddQueue< hasCallable_, hasPriority_, false >", "structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddQueue_3_01hasCallable___00_01hasPriority___00_01false_01_4.html", "structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddQueue_3_01hasCallable___00_01hasPriority___00_01false_01_4" ],
     [ "Builder", "classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#aabe112da23e1276a24a8b2dd77c3f4d8", null ],
     [ "Builder", "classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#aec351ab756b2a9a87aa7f38f6039c9ad", null ],
-    [ "add", "classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a9e61aef9ddb398d9af914185935ba6a8", null ],
+    [ "add", "classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a66b45bd20ced8458f493693b685c0413", null ],
     [ "add", "classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#abc34e4a85eba0d70358edd6d45ee2cc8", null ],
     [ "add", "classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#ad4f3c888114e1b7714c2fe9e1ff361f9", null ],
     [ "add", "classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a15484386ffb0bf10bed3f0b6a7e27558", null ],

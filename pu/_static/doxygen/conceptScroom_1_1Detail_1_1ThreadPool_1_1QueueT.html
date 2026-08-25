@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-53-g249921b6</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-gbb26a777</span>
    </div>
   </td>
  </tr>
@@ -96,9 +96,7 @@ $(document).ready(function(){initNavTree('conceptScroom_1_1Detail_1_1ThreadPool_
 <p><code>#include &lt;<a class="el" href="threadpool_8hh_source.html">threadpool.hh</a>&gt;</code></p>
 <h2 class="groupheader">Concept definition</h2>
 <div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="conceptScroom_1_1Detail_1_1ThreadPool_1_1QueueT.html">Scroom::Detail::ThreadPool::QueueT</a> = </div>
-<div class="line">    std::same_as&lt;std::remove_cvref_t&lt;T&gt;, <a class="code hl_typedef" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae44696440c2b9dd5dbef5c4eda0baec9">Queue::Ptr</a>&gt; ||</div>
-<div class="line">    std::same_as&lt;std::remove_cvref_t&lt;T&gt;, <a class="code hl_typedef" href="classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#a90652659d120bb282fc7656588ef7cf6">WeakQueue::Ptr</a>&gt;</div>
+<div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="conceptScroom_1_1Detail_1_1ThreadPool_1_1QueueT.html">Scroom::Detail::ThreadPool::QueueT</a> =  std::same_as&lt;std::remove_cvref_t&lt;T&gt;, <a class="code hl_typedef" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae44696440c2b9dd5dbef5c4eda0baec9">Queue::Ptr</a>&gt; || std::same_as&lt;std::remove_cvref_t&lt;T&gt;, <a class="code hl_typedef" href="classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#a90652659d120bb282fc7656588ef7cf6">WeakQueue::Ptr</a>&gt;</div>
 <div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Queue_html_ae44696440c2b9dd5dbef5c4eda0baec9"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae44696440c2b9dd5dbef5c4eda0baec9">Scroom::Detail::ThreadPool::Queue::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; Queue &gt; Ptr</div><div class="ttdef"><b>Definition</b> threadpool.hh:76</div></div>
 <div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue_html_a90652659d120bb282fc7656588ef7cf6"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#a90652659d120bb282fc7656588ef7cf6">Scroom::Detail::ThreadPool::WeakQueue::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; WeakQueue &gt; Ptr</div><div class="ttdef"><b>Definition</b> threadpool.hh:129</div></div>
 <div class="ttc" id="aconceptScroom_1_1Detail_1_1ThreadPool_1_1QueueT_html"><div class="ttname"><a href="conceptScroom_1_1Detail_1_1ThreadPool_1_1QueueT.html">Scroom::Detail::ThreadPool::QueueT</a></div><div class="ttdef"><b>Definition</b> threadpool.hh:147</div></div>

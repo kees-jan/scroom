@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-53-g249921b6</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-gbb26a777</span>
    </div>
   </td>
  </tr>
@@ -253,8 +253,8 @@ Private Attributes</h2></td></tr>
 <li>one held by the original submitter, such that it can call <a class="el" href="classQueueJumper.html#a5dbf1296ec716e239f34b7eed4343ca2">setWork()</a></li>
 </ul>
 <p>The <a class="el" href="classQueueJumper.html">QueueJumper</a> will be destroyed when both parties have released their reference. </p>
-<div class="fragment"><div class="line"><span class="lineno">  430</span>{ <span class="keywordflow">return</span> <a class="code hl_typedef" href="classQueueJumper.html#a5d08c9e804fa1c203893435a7e053d45">QueueJumper::Ptr</a>(<span class="keyword">new</span> <a class="code hl_function" href="classQueueJumper.html#a81c278d92787fd90e1690a6f0dea7ef9">QueueJumper</a>()); }</div>
-<div class="ttc" id="aclassQueueJumper_html_a5d08c9e804fa1c203893435a7e053d45"><div class="ttname"><a href="classQueueJumper.html#a5d08c9e804fa1c203893435a7e053d45">QueueJumper::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; QueueJumper &gt; Ptr</div><div class="ttdef"><b>Definition</b> threadpool.hh:656</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  431</span>{ <span class="keywordflow">return</span> <a class="code hl_typedef" href="classQueueJumper.html#a5d08c9e804fa1c203893435a7e053d45">QueueJumper::Ptr</a>(<span class="keyword">new</span> <a class="code hl_function" href="classQueueJumper.html#a81c278d92787fd90e1690a6f0dea7ef9">QueueJumper</a>()); }</div>
+<div class="ttc" id="aclassQueueJumper_html_a5d08c9e804fa1c203893435a7e053d45"><div class="ttname"><a href="classQueueJumper.html#a5d08c9e804fa1c203893435a7e053d45">QueueJumper::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; QueueJumper &gt; Ptr</div><div class="ttdef"><b>Definition</b> threadpool.hh:659</div></div>
 <div class="ttc" id="aclassQueueJumper_html_a81c278d92787fd90e1690a6f0dea7ef9"><div class="ttname"><a href="classQueueJumper.html#a81c278d92787fd90e1690a6f0dea7ef9">QueueJumper::QueueJumper</a></div><div class="ttdeci">QueueJumper()=default</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classDataFetcher.html#aa47b487725b70a8a16000ed9e83ad927">DataFetcher::operator()()</a>.</p>
@@ -285,18 +285,18 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  450</span>{</div>
-<div class="line"><span class="lineno">  451</span>  boost::mutex::scoped_lock <span class="keyword">const</span> lock(<a class="code hl_variable" href="classQueueJumper.html#aac5382e9016830f9eee55b9f32215782">mut</a>);</div>
-<div class="line"><span class="lineno">  452</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="classQueueJumper.html#a26605a27165f871fd14e586fa3c80b6e">isSet</a>)</div>
-<div class="line"><span class="lineno">  453</span>  {</div>
-<div class="line"><span class="lineno">  454</span>    <a class="code hl_variable" href="classQueueJumper.html#af34fdb126ea4078e80dde8038a95c564">fn</a>();</div>
-<div class="line"><span class="lineno">  455</span>  }</div>
-<div class="line"><span class="lineno">  456</span>  <a class="code hl_variable" href="classQueueJumper.html#a9e5a773c17b4649f07c61b22751f6ba8">inQueue</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  457</span>}</div>
-<div class="ttc" id="aclassQueueJumper_html_a26605a27165f871fd14e586fa3c80b6e"><div class="ttname"><a href="classQueueJumper.html#a26605a27165f871fd14e586fa3c80b6e">QueueJumper::isSet</a></div><div class="ttdeci">bool isSet</div><div class="ttdef"><b>Definition</b> threadpool.hh:661</div></div>
-<div class="ttc" id="aclassQueueJumper_html_a9e5a773c17b4649f07c61b22751f6ba8"><div class="ttname"><a href="classQueueJumper.html#a9e5a773c17b4649f07c61b22751f6ba8">QueueJumper::inQueue</a></div><div class="ttdeci">bool inQueue</div><div class="ttdef"><b>Definition</b> threadpool.hh:660</div></div>
-<div class="ttc" id="aclassQueueJumper_html_aac5382e9016830f9eee55b9f32215782"><div class="ttname"><a href="classQueueJumper.html#aac5382e9016830f9eee55b9f32215782">QueueJumper::mut</a></div><div class="ttdeci">boost::mutex mut</div><div class="ttdef"><b>Definition</b> threadpool.hh:659</div></div>
-<div class="ttc" id="aclassQueueJumper_html_af34fdb126ea4078e80dde8038a95c564"><div class="ttname"><a href="classQueueJumper.html#af34fdb126ea4078e80dde8038a95c564">QueueJumper::fn</a></div><div class="ttdeci">boost::function&lt; void()&gt; fn</div><div class="ttdef"><b>Definition</b> threadpool.hh:663</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  451</span>{</div>
+<div class="line"><span class="lineno">  452</span>  boost::mutex::scoped_lock <span class="keyword">const</span> lock(<a class="code hl_variable" href="classQueueJumper.html#aac5382e9016830f9eee55b9f32215782">mut</a>);</div>
+<div class="line"><span class="lineno">  453</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="classQueueJumper.html#a26605a27165f871fd14e586fa3c80b6e">isSet</a>)</div>
+<div class="line"><span class="lineno">  454</span>  {</div>
+<div class="line"><span class="lineno">  455</span>    <a class="code hl_variable" href="classQueueJumper.html#af34fdb126ea4078e80dde8038a95c564">fn</a>();</div>
+<div class="line"><span class="lineno">  456</span>  }</div>
+<div class="line"><span class="lineno">  457</span>  <a class="code hl_variable" href="classQueueJumper.html#a9e5a773c17b4649f07c61b22751f6ba8">inQueue</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  458</span>}</div>
+<div class="ttc" id="aclassQueueJumper_html_a26605a27165f871fd14e586fa3c80b6e"><div class="ttname"><a href="classQueueJumper.html#a26605a27165f871fd14e586fa3c80b6e">QueueJumper::isSet</a></div><div class="ttdeci">bool isSet</div><div class="ttdef"><b>Definition</b> threadpool.hh:664</div></div>
+<div class="ttc" id="aclassQueueJumper_html_a9e5a773c17b4649f07c61b22751f6ba8"><div class="ttname"><a href="classQueueJumper.html#a9e5a773c17b4649f07c61b22751f6ba8">QueueJumper::inQueue</a></div><div class="ttdeci">bool inQueue</div><div class="ttdef"><b>Definition</b> threadpool.hh:663</div></div>
+<div class="ttc" id="aclassQueueJumper_html_aac5382e9016830f9eee55b9f32215782"><div class="ttname"><a href="classQueueJumper.html#aac5382e9016830f9eee55b9f32215782">QueueJumper::mut</a></div><div class="ttdeci">boost::mutex mut</div><div class="ttdef"><b>Definition</b> threadpool.hh:662</div></div>
+<div class="ttc" id="aclassQueueJumper_html_af34fdb126ea4078e80dde8038a95c564"><div class="ttname"><a href="classQueueJumper.html#af34fdb126ea4078e80dde8038a95c564">QueueJumper::fn</a></div><div class="ttdeci">boost::function&lt; void()&gt; fn</div><div class="ttdef"><b>Definition</b> threadpool.hh:666</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -329,21 +329,21 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">  433</span>{</div>
-<div class="line"><span class="lineno">  434</span>  boost::mutex::scoped_lock <span class="keyword">const</span> lock(<a class="code hl_variable" href="classQueueJumper.html#aac5382e9016830f9eee55b9f32215782">mut</a>);</div>
-<div class="line"><span class="lineno">  435</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="classQueueJumper.html#a9e5a773c17b4649f07c61b22751f6ba8">inQueue</a>)</div>
-<div class="line"><span class="lineno">  436</span>  {</div>
-<div class="line"><span class="lineno">  437</span>    <span class="comment">// Our turn hasn&#39;t passed yet. Accept work.</span></div>
-<div class="line"><span class="lineno">  438</span>    <a class="code hl_variable" href="classQueueJumper.html#af34fdb126ea4078e80dde8038a95c564">fn</a> = fn_;</div>
-<div class="line"><span class="lineno">  439</span>    <a class="code hl_variable" href="classQueueJumper.html#a26605a27165f871fd14e586fa3c80b6e">isSet</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  440</span>  }</div>
-<div class="line"><span class="lineno">  441</span>  <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  442</span>  {</div>
-<div class="line"><span class="lineno">  443</span>    <span class="comment">// Our turn has passed. We cannot do the work</span></div>
-<div class="line"><span class="lineno">  444</span>  }</div>
-<div class="line"><span class="lineno">  445</span> </div>
-<div class="line"><span class="lineno">  446</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classQueueJumper.html#a9e5a773c17b4649f07c61b22751f6ba8">inQueue</a>;</div>
-<div class="line"><span class="lineno">  447</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  434</span>{</div>
+<div class="line"><span class="lineno">  435</span>  boost::mutex::scoped_lock <span class="keyword">const</span> lock(<a class="code hl_variable" href="classQueueJumper.html#aac5382e9016830f9eee55b9f32215782">mut</a>);</div>
+<div class="line"><span class="lineno">  436</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="classQueueJumper.html#a9e5a773c17b4649f07c61b22751f6ba8">inQueue</a>)</div>
+<div class="line"><span class="lineno">  437</span>  {</div>
+<div class="line"><span class="lineno">  438</span>    <span class="comment">// Our turn hasn&#39;t passed yet. Accept work.</span></div>
+<div class="line"><span class="lineno">  439</span>    <a class="code hl_variable" href="classQueueJumper.html#af34fdb126ea4078e80dde8038a95c564">fn</a> = fn_;</div>
+<div class="line"><span class="lineno">  440</span>    <a class="code hl_variable" href="classQueueJumper.html#a26605a27165f871fd14e586fa3c80b6e">isSet</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  441</span>  }</div>
+<div class="line"><span class="lineno">  442</span>  <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  443</span>  {</div>
+<div class="line"><span class="lineno">  444</span>    <span class="comment">// Our turn has passed. We cannot do the work</span></div>
+<div class="line"><span class="lineno">  445</span>  }</div>
+<div class="line"><span class="lineno">  446</span> </div>
+<div class="line"><span class="lineno">  447</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classQueueJumper.html#a9e5a773c17b4649f07c61b22751f6ba8">inQueue</a>;</div>
+<div class="line"><span class="lineno">  448</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -389,7 +389,7 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  660</span>{<span class="keyword">true</span>};</div>
+<div class="fragment"><div class="line"><span class="lineno">  663</span>{<span class="keyword">true</span>};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -412,7 +412,7 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  661</span>{<span class="keyword">false</span>};</div>
+<div class="fragment"><div class="line"><span class="lineno">  664</span>{<span class="keyword">false</span>};</div>
 </div><!-- fragment -->
 </div>
 </div>

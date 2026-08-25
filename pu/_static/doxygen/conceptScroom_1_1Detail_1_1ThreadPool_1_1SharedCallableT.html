@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-53-g249921b6</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-gbb26a777</span>
    </div>
   </td>
  </tr>
@@ -96,12 +96,8 @@ $(document).ready(function(){initNavTree('conceptScroom_1_1Detail_1_1ThreadPool_
 <p><code>#include &lt;<a class="el" href="threadpool_8hh_source.html">threadpool.hh</a>&gt;</code></p>
 <h2 class="groupheader">Concept definition</h2>
 <div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="conceptScroom_1_1Detail_1_1ThreadPool_1_1SharedCallableT.html">Scroom::Detail::ThreadPool::SharedCallableT</a> = </div>
-<div class="line">    <span class="keyword">requires</span> (T <span class="keyword">const</span>&amp; <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>)</div>
-<div class="line">  {</div>
-<div class="line">    <span class="keyword">requires</span> std::invocable&lt;<span class="keyword">decltype</span>(*p)&amp;&gt;;</div>
-<div class="line">  }</div>
-<div class="ttc" id="aconceptScroom_1_1Detail_1_1ThreadPool_1_1SharedCallableT_html"><div class="ttname"><a href="conceptScroom_1_1Detail_1_1ThreadPool_1_1SharedCallableT.html">Scroom::Detail::ThreadPool::SharedCallableT</a></div><div class="ttdef"><b>Definition</b> threadpool.hh:163</div></div>
+<div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="conceptScroom_1_1Detail_1_1ThreadPool_1_1SharedCallableT.html">Scroom::Detail::ThreadPool::SharedCallableT</a> =  <span class="keyword">requires</span>(T <span class="keyword">const</span>&amp; <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>) { <span class="keyword">requires</span> std::invocable&lt;<span class="keyword">decltype</span>(*p)&amp;&gt;; }</div>
+<div class="ttc" id="aconceptScroom_1_1Detail_1_1ThreadPool_1_1SharedCallableT_html"><div class="ttname"><a href="conceptScroom_1_1Detail_1_1ThreadPool_1_1SharedCallableT.html">Scroom::Detail::ThreadPool::SharedCallableT</a></div><div class="ttdef"><b>Definition</b> threadpool.hh:159</div></div>
 <div class="ttc" id="adetermine-size-test_8cc_html_abf000ba68ab71a4284d8a6b1ed241f79"><div class="ttname"><a href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a></div><div class="ttdeci">PresentationInterfaceStub::Ptr const p</div><div class="ttdef"><b>Definition</b> determine-size-test.cc:172</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

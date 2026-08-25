@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-53-g249921b6</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-gbb26a777</span>
    </div>
   </td>
  </tr>
@@ -118,77 +118,77 @@ $(document).ready(function(){initNavTree('threadpoolimpl_8hh_source.html',''); i
 <div class="foldopen" id="foldopen00020" data-start="{" data-end="}">
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classThreadPool.html#aca73885005f3a58ad686961895816ee0">   20</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">ThreadPool::schedule</a>(std::shared_ptr&lt;T&gt; fn, <span class="keywordtype">int</span> priority, <span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae44696440c2b9dd5dbef5c4eda0baec9">ThreadPool::Queue::Ptr</a>&amp; queue)</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  [[maybe_unused]] <span class="keyword">auto</span> <a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a> = <a class="code hl_class" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Scroom::Detail::ThreadPool::Builder&lt;false, false, false&gt;</a>(<a class="code hl_variable" href="classThreadPool.html#ab7660f5cc0d859c25ab4b7f1038eedd1">defaultPriority</a>, <a class="code hl_function" href="classThreadPool.html#a7d435b8c6eff3ffcf5b9043bd50048c2">defaultQueue</a>()-&gt;getWeak()).<a class="code hl_function" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#abc34e4a85eba0d70358edd6d45ee2cc8">add</a>(fn, priority, queue);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>  <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">schedule</a>(std::move(fn), priority, queue-&gt;getWeak());</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>}</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  [[maybe_unused]] <span class="keyword">auto</span> <a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a> =</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_class" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Scroom::Detail::ThreadPool::Builder&lt;false, false, false&gt;</a>(<a class="code hl_variable" href="classThreadPool.html#ab7660f5cc0d859c25ab4b7f1038eedd1">defaultPriority</a>, <a class="code hl_function" href="classThreadPool.html#a7d435b8c6eff3ffcf5b9043bd50048c2">defaultQueue</a>()-&gt;getWeak()).<a class="code hl_function" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#abc34e4a85eba0d70358edd6d45ee2cc8">add</a>(fn, priority, queue);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">schedule</a>(std::move(fn), priority, queue-&gt;getWeak());</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
 </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">// UNCHECKED</span></div>
-<div class="foldopen" id="foldopen00029" data-start="{" data-end="}">
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classThreadPool.html#a8552ac4cfbe38e71e1bf7a731f8f8fa3">   29</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">ThreadPool::schedule</a>(std::shared_ptr&lt;T&gt; fn, <span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae44696440c2b9dd5dbef5c4eda0baec9">ThreadPool::Queue::Ptr</a>&amp; queue)</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">schedule</a>(fn, <a class="code hl_variable" href="classThreadPool.html#ab7660f5cc0d859c25ab4b7f1038eedd1">defaultPriority</a>, queue);</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">// UNCHECKED</span></div>
+<div class="foldopen" id="foldopen00030" data-start="{" data-end="}">
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classThreadPool.html#a8552ac4cfbe38e71e1bf7a731f8f8fa3">   30</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">ThreadPool::schedule</a>(std::shared_ptr&lt;T&gt; fn, <span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae44696440c2b9dd5dbef5c4eda0baec9">ThreadPool::Queue::Ptr</a>&amp; queue)</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">schedule</a>(fn, <a class="code hl_variable" href="classThreadPool.html#ab7660f5cc0d859c25ab4b7f1038eedd1">defaultPriority</a>, queue);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>}</div>
 </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00035" data-start="{" data-end="}">
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classThreadPool.html#a57a6a7b628d11de3079188fbf1d23fb7">   35</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">ThreadPool::schedule</a>(std::shared_ptr&lt;T&gt; fn, <span class="keywordtype">int</span> priority, <span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#a90652659d120bb282fc7656588ef7cf6">ThreadPool::WeakQueue::Ptr</a>&amp; queue)</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>{</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">schedule</a>([fn = std::move(fn)] { Detail::threadPoolExecute&lt;void&gt;(fn); }, priority, std::move(queue));</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>}</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00036" data-start="{" data-end="}">
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classThreadPool.html#a57a6a7b628d11de3079188fbf1d23fb7">   36</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">ThreadPool::schedule</a>(std::shared_ptr&lt;T&gt; fn, <span class="keywordtype">int</span> priority, <span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#a90652659d120bb282fc7656588ef7cf6">ThreadPool::WeakQueue::Ptr</a>&amp; queue)</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>{</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">schedule</a>([fn = std::move(fn)] { Detail::threadPoolExecute&lt;void&gt;(fn); }, priority, std::move(queue));</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>}</div>
 </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00041" data-start="{" data-end="}">
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classThreadPool.html#aaabc4c91f09f727b451968a9d6eeadcd">   41</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">ThreadPool::schedule</a>(std::shared_ptr&lt;T&gt; fn, <a class="code hl_typedef" href="classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#a90652659d120bb282fc7656588ef7cf6">ThreadPool::WeakQueue::Ptr</a> queue)</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>{</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">schedule</a>(fn, <a class="code hl_variable" href="classThreadPool.html#ab7660f5cc0d859c25ab4b7f1038eedd1">defaultPriority</a>, queue);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>}</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00042" data-start="{" data-end="}">
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classThreadPool.html#aaabc4c91f09f727b451968a9d6eeadcd">   42</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">ThreadPool::schedule</a>(std::shared_ptr&lt;T&gt; fn, <a class="code hl_typedef" href="classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#a90652659d120bb282fc7656588ef7cf6">ThreadPool::WeakQueue::Ptr</a> queue)</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>{</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">schedule</a>(fn, <a class="code hl_variable" href="classThreadPool.html#ab7660f5cc0d859c25ab4b7f1038eedd1">defaultPriority</a>, queue);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
 </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> R&gt;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">// UNCHECKED</span></div>
-<div class="foldopen" id="foldopen00048" data-start="{" data-end="}">
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classThreadPool.html#a095515aca079f8fe2946260f13834cf0">   48</a></span>boost::unique_future&lt;R&gt; <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">ThreadPool::schedule</a>(boost::function&lt;R()&gt; <span class="keyword">const</span>&amp; fn, <span class="keywordtype">int</span> priority, <span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae44696440c2b9dd5dbef5c4eda0baec9">ThreadPool::Queue::Ptr</a>&amp; queue)</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>{</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">schedule</a>(fn, priority, queue-&gt;getWeak());</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>}</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> R&gt;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">// UNCHECKED</span></div>
+<div class="foldopen" id="foldopen00049" data-start="{" data-end="}">
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="classThreadPool.html#a095515aca079f8fe2946260f13834cf0">   49</a></span>boost::unique_future&lt;R&gt; <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">ThreadPool::schedule</a>(boost::function&lt;R()&gt; <span class="keyword">const</span>&amp; fn, <span class="keywordtype">int</span> priority, <span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae44696440c2b9dd5dbef5c4eda0baec9">ThreadPool::Queue::Ptr</a>&amp; queue)</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>{</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">schedule</a>(fn, priority, queue-&gt;getWeak());</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>}</div>
 </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> R&gt;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">// UNCHECKED</span></div>
-<div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classThreadPool.html#a4b1ce593bf0a40324f134775853bc599">   55</a></span>boost::unique_future&lt;R&gt; <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">ThreadPool::schedule</a>(boost::function&lt;R()&gt; <span class="keyword">const</span>&amp; fn, <span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae44696440c2b9dd5dbef5c4eda0baec9">ThreadPool::Queue::Ptr</a>&amp; queue)</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>{</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">schedule</a>(fn, <a class="code hl_variable" href="classThreadPool.html#ab7660f5cc0d859c25ab4b7f1038eedd1">defaultPriority</a>, queue);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>}</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> R&gt;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">// UNCHECKED</span></div>
+<div class="foldopen" id="foldopen00056" data-start="{" data-end="}">
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classThreadPool.html#a4b1ce593bf0a40324f134775853bc599">   56</a></span>boost::unique_future&lt;R&gt; <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">ThreadPool::schedule</a>(boost::function&lt;R()&gt; <span class="keyword">const</span>&amp; fn, <span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae44696440c2b9dd5dbef5c4eda0baec9">ThreadPool::Queue::Ptr</a>&amp; queue)</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>{</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">schedule</a>(fn, <a class="code hl_variable" href="classThreadPool.html#ab7660f5cc0d859c25ab4b7f1038eedd1">defaultPriority</a>, queue);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>}</div>
 </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> R, <span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">// UNCHECKED</span></div>
-<div class="foldopen" id="foldopen00062" data-start="{" data-end="}">
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classThreadPool.html#aaa0ff03b24f96a70a0d80264e72619a4">   62</a></span>boost::unique_future&lt;R&gt; <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">ThreadPool::schedule</a>(<span class="keyword">const</span> std::shared_ptr&lt;T&gt;&amp; fn, <span class="keywordtype">int</span> priority, <span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae44696440c2b9dd5dbef5c4eda0baec9">ThreadPool::Queue::Ptr</a>&amp; queue)</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>{</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  <span class="keywordflow">return</span> schedule&lt;R, T&gt;(fn, priority, queue-&gt;getWeak());</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>}</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> R, <span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">// UNCHECKED</span></div>
+<div class="foldopen" id="foldopen00063" data-start="{" data-end="}">
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classThreadPool.html#aaa0ff03b24f96a70a0d80264e72619a4">   63</a></span>boost::unique_future&lt;R&gt; <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">ThreadPool::schedule</a>(<span class="keyword">const</span> std::shared_ptr&lt;T&gt;&amp; fn, <span class="keywordtype">int</span> priority, <span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae44696440c2b9dd5dbef5c4eda0baec9">ThreadPool::Queue::Ptr</a>&amp; queue)</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>{</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  <span class="keywordflow">return</span> schedule&lt;R, T&gt;(fn, priority, queue-&gt;getWeak());</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>}</div>
 </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> R, <span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">// UNCHECKED</span></div>
-<div class="foldopen" id="foldopen00069" data-start="{" data-end="}">
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classThreadPool.html#a909a1964094e2db0e24d856690f40357">   69</a></span>boost::unique_future&lt;R&gt; <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">ThreadPool::schedule</a>(std::shared_ptr&lt;T&gt; fn, <span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae44696440c2b9dd5dbef5c4eda0baec9">ThreadPool::Queue::Ptr</a>&amp; queue)</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>{</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  <span class="keywordflow">return</span> schedule&lt;R, T&gt;(fn, <a class="code hl_variable" href="classThreadPool.html#ab7660f5cc0d859c25ab4b7f1038eedd1">defaultPriority</a>, queue);</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> R, <span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">// UNCHECKED</span></div>
+<div class="foldopen" id="foldopen00070" data-start="{" data-end="}">
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classThreadPool.html#a909a1964094e2db0e24d856690f40357">   70</a></span>boost::unique_future&lt;R&gt; <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">ThreadPool::schedule</a>(std::shared_ptr&lt;T&gt; fn, <span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae44696440c2b9dd5dbef5c4eda0baec9">ThreadPool::Queue::Ptr</a>&amp; queue)</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>{</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  <span class="keywordflow">return</span> schedule&lt;R, T&gt;(fn, <a class="code hl_variable" href="classThreadPool.html#ab7660f5cc0d859c25ab4b7f1038eedd1">defaultPriority</a>, queue);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>}</div>
 </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> R&gt;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>boost::unique_future&lt;R&gt;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> R&gt;</div>
 <div class="foldopen" id="foldopen00076" data-start="{" data-end="}">
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classThreadPool.html#ad92c0a7a2762a81960a3b32fad375309">   76</a></span>  <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">ThreadPool::schedule</a>(boost::function&lt;R()&gt;fn, <span class="keywordtype">int</span> priority, <span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#a90652659d120bb282fc7656588ef7cf6">ThreadPool::WeakQueue::Ptr</a>&amp; queue)</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classThreadPool.html#ad92c0a7a2762a81960a3b32fad375309">   76</a></span>boost::unique_future&lt;R&gt; <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">ThreadPool::schedule</a>(boost::function&lt;R()&gt; fn, <span class="keywordtype">int</span> priority, <span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#a90652659d120bb282fc7656588ef7cf6">ThreadPool::WeakQueue::Ptr</a>&amp; queue)</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>{</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  boost::packaged_task&lt;R&gt; <a class="code hl_variable" href="threadpool-queue-tests_8cc.html#a2c9addcc3f33120c718dfd607595b174">t</a>(std::move(fn));</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>  boost::unique_future&lt;R&gt; <a class="code hl_variable" href="gtkhelper-tests_8cc.html#a633de4b0c14ca52ea2432a3c8a5c4c31">f</a> = <a class="code hl_variable" href="threadpool-queue-tests_8cc.html#a2c9addcc3f33120c718dfd607595b174">t</a>.get_future();</div>
@@ -222,14 +222,14 @@ $(document).ready(function(){initNavTree('threadpoolimpl_8hh_source.html',''); i
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">schedule</a>(fn, <a class="code hl_variable" href="classThreadPool.html#ab7660f5cc0d859c25ab4b7f1038eedd1">defaultPriority</a>, queue);</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>}</div>
 </div>
-<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Builder_html"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Scroom::Detail::ThreadPool::Builder</a></div><div class="ttdef"><b>Definition</b> threadpool.hh:171</div></div>
-<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Builder_html_abc34e4a85eba0d70358edd6d45ee2cc8"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#abc34e4a85eba0d70358edd6d45ee2cc8">Scroom::Detail::ThreadPool::Builder::add</a></div><div class="ttdeci">constexpr auto add(CallableT auto &amp;&amp;c)</div><div class="ttdef"><b>Definition</b> threadpool.hh:227</div></div>
+<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Builder_html"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Scroom::Detail::ThreadPool::Builder</a></div><div class="ttdef"><b>Definition</b> threadpool.hh:163</div></div>
+<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Builder_html_abc34e4a85eba0d70358edd6d45ee2cc8"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#abc34e4a85eba0d70358edd6d45ee2cc8">Scroom::Detail::ThreadPool::Builder::add</a></div><div class="ttdeci">constexpr auto add(CallableT auto &amp;&amp;c)</div><div class="ttdef"><b>Definition</b> threadpool.hh:228</div></div>
 <div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Queue_html_ae44696440c2b9dd5dbef5c4eda0baec9"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae44696440c2b9dd5dbef5c4eda0baec9">Scroom::Detail::ThreadPool::Queue::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; Queue &gt; Ptr</div><div class="ttdef"><b>Definition</b> threadpool.hh:76</div></div>
 <div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue_html_a90652659d120bb282fc7656588ef7cf6"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#a90652659d120bb282fc7656588ef7cf6">Scroom::Detail::ThreadPool::WeakQueue::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; WeakQueue &gt; Ptr</div><div class="ttdef"><b>Definition</b> threadpool.hh:129</div></div>
 <div class="ttc" id="aclassThreadPool_html_a0ec11b057f02d8b5eb0004dcee856a7e"><div class="ttname"><a href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">ThreadPool::schedule</a></div><div class="ttdeci">void schedule(boost::function&lt; void()&gt; fn, int priority=defaultPriority, const Queue::Ptr &amp;queue=defaultQueue())</div><div class="ttdef"><b>Definition</b> threadpoolimpl.cc:345</div></div>
-<div class="ttc" id="aclassThreadPool_html_a17a52db60287eb770f1e0d546cbbbe01"><div class="ttname"><a href="classThreadPool.html#a17a52db60287eb770f1e0d546cbbbe01">ThreadPool::schedule_impl</a></div><div class="ttdeci">void schedule_impl(std::move_only_function&lt; void()&gt; fn, int priority, const WeakQueue::Ptr &amp;queue)</div><div class="ttdef"><b>Definition</b> threadpoolimpl.cc:363</div></div>
-<div class="ttc" id="aclassThreadPool_html_a7d435b8c6eff3ffcf5b9043bd50048c2"><div class="ttname"><a href="classThreadPool.html#a7d435b8c6eff3ffcf5b9043bd50048c2">ThreadPool::defaultQueue</a></div><div class="ttdeci">static Queue::Ptr defaultQueue()</div><div class="ttdef"><b>Definition</b> threadpoolimpl.cc:376</div></div>
-<div class="ttc" id="aclassThreadPool_html_ab7660f5cc0d859c25ab4b7f1038eedd1"><div class="ttname"><a href="classThreadPool.html#ab7660f5cc0d859c25ab4b7f1038eedd1">ThreadPool::defaultPriority</a></div><div class="ttdeci">static const int defaultPriority</div><div class="ttdef"><b>Definition</b> threadpool.hh:387</div></div>
+<div class="ttc" id="aclassThreadPool_html_a17a52db60287eb770f1e0d546cbbbe01"><div class="ttname"><a href="classThreadPool.html#a17a52db60287eb770f1e0d546cbbbe01">ThreadPool::schedule_impl</a></div><div class="ttdeci">void schedule_impl(std::move_only_function&lt; void()&gt; fn, int priority, const WeakQueue::Ptr &amp;queue)</div><div class="ttdef"><b>Definition</b> threadpoolimpl.cc:364</div></div>
+<div class="ttc" id="aclassThreadPool_html_a7d435b8c6eff3ffcf5b9043bd50048c2"><div class="ttname"><a href="classThreadPool.html#a7d435b8c6eff3ffcf5b9043bd50048c2">ThreadPool::defaultQueue</a></div><div class="ttdeci">static Queue::Ptr defaultQueue()</div><div class="ttdef"><b>Definition</b> threadpoolimpl.cc:377</div></div>
+<div class="ttc" id="aclassThreadPool_html_ab7660f5cc0d859c25ab4b7f1038eedd1"><div class="ttname"><a href="classThreadPool.html#ab7660f5cc0d859c25ab4b7f1038eedd1">ThreadPool::defaultPriority</a></div><div class="ttdeci">static const int defaultPriority</div><div class="ttdef"><b>Definition</b> threadpool.hh:389</div></div>
 <div class="ttc" id="agtkhelper-tests_8cc_html_a633de4b0c14ca52ea2432a3c8a5c4c31"><div class="ttname"><a href="gtkhelper-tests_8cc.html#a633de4b0c14ca52ea2432a3c8a5c4c31">f</a></div><div class="ttdeci">f</div><div class="ttdef"><b>Definition</b> gtkhelper-tests.cc:43</div></div>
 <div class="ttc" id="athreadpool-queue-tests_8cc_html_a2c9addcc3f33120c718dfd607595b174"><div class="ttname"><a href="threadpool-queue-tests_8cc.html#a2c9addcc3f33120c718dfd607595b174">t</a></div><div class="ttdeci">ThreadPool t(0)</div></div>
 <div class="ttc" id="athreadpool_8hh_html"><div class="ttname"><a href="threadpool_8hh.html">threadpool.hh</a></div></div>
