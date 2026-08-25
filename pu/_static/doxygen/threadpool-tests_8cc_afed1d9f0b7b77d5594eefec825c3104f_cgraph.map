@@ -8,7 +8,12 @@
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="399,80,459,73,460,78,399,85"/>
 <area shape="rect" id="Node000005" href="$helpers_8cc.html#a02c3a626f5b89019248f87c0c2f6331b" title=" " alt="" coords="501,104,553,129"/>
 <area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="399,100,488,110,487,115,399,105"/>
-<area shape="rect" id="Node000006" href="$classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e" title=" " alt="" coords="447,177,608,203"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="342,103,487,169,485,174,339,108"/>
-<area shape="poly" id="edge6_Node000006_Node000006" title=" " alt="" coords="492,179,484,169,488,159,503,153,527,151,557,154,569,163,566,168,555,159,527,156,504,158,492,163,490,168,496,176"/>
+<area shape="rect" id="Node000006" href="$classThreadPool.html#a75b74859fed39f21cb3bb09b78137fa2" title=" " alt="" coords="447,153,608,179"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="348,103,448,138,473,147,471,152,446,143,346,108"/>
+<area shape="rect" id="Node000007" href="$classThreadPool.html#a7d435b8c6eff3ffcf5b9043bd50048c2" title=" " alt="" coords="659,128,850,153"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="608,154,645,150,646,155,609,160"/>
+<area shape="rect" id="Node000009" href="$classThreadPool.html#a17a52db60287eb770f1e0d546cbbbe01" title=" " alt="" coords="656,177,853,203"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="609,172,643,175,642,181,608,177"/>
+<area shape="rect" id="Node000008" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae48cfe05b7bb72f1990557d64ef57acf" title="ThreadPool::Queue." alt="" coords="901,121,1100,161"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="850,138,888,138,888,143,850,143"/>
 </map>

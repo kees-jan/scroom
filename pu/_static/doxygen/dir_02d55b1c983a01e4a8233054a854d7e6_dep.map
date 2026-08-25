@@ -1,13 +1,13 @@
 <map id="libs/tiled&#45;bitmap/test" name="libs/tiled&#45;bitmap/test">
 <area shape="rect" id="node1" href="dir_a60f0f46b632d4f70e76a2911645ae8c.html" title="inc" alt="" coords="63,125,105,151"/>
 <area shape="rect" id="node2" href="dir_02d55b1c983a01e4a8233054a854d7e6.html" title="test" alt="" coords="61,52,107,77"/>
-<area shape="poly" id="edge3" href="dir_000055_000017.html" alt="" coords="87,78,87,112,81,112,81,78"/>
-<area shape="rect" id="edge3-headlabel" href="dir_000055_000017.html" title="1" alt="" coords="88,100,97,114"/>
+<area shape="poly" id="edge3" href="dir_000054_000016.html" alt="" coords="87,78,87,112,81,112,81,78"/>
+<area shape="rect" id="edge3-headlabel" href="dir_000054_000016.html" title="1" alt="" coords="88,100,97,114"/>
 <area shape="rect" id="node3" href="dir_2e00818103ec5a81d1323fe189fd7611.html" title="scroom" alt="" coords="130,125,201,151"/>
-<area shape="poly" id="edge1" href="dir_000055_000033.html" alt="" coords="99,75,144,114,140,118,95,79"/>
-<area shape="rect" id="edge1-headlabel" href="dir_000055_000033.html" title="1" alt="" coords="139,100,149,114"/>
+<area shape="poly" id="edge1" href="dir_000054_000032.html" alt="" coords="99,75,144,114,140,118,95,79"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000054_000032.html" title="1" alt="" coords="139,100,149,114"/>
 <area shape="rect" id="node4" href="dir_2e5bde0e768e1c9a7f40cd5999af9f90.html" title="util" alt="" coords="225,125,268,151"/>
-<area shape="poly" id="edge2" href="dir_000055_000064.html" alt="" coords="109,74,214,119,212,124,107,79"/>
-<area shape="rect" id="edge2-headlabel" href="dir_000055_000064.html" title="1" alt="" coords="207,105,216,120"/>
+<area shape="poly" id="edge2" href="dir_000054_000063.html" alt="" coords="109,74,214,119,212,124,107,79"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000054_000063.html" title="1" alt="" coords="207,105,216,120"/>
 <area shape="rect" id="clust1" href="dir_34499b84b85e584e38a8425c472b2a40.html" title="tiled&#45;bitmap" alt="" coords="16,16,119,161"/>
 </map>

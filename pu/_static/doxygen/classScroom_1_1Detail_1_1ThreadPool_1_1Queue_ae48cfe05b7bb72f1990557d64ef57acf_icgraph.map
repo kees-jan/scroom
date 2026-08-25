@@ -1,13 +1,15 @@
 <map id="Scroom::Detail::ThreadPool::Queue::create" name="Scroom::Detail::ThreadPool::Queue::create">
-<area shape="rect" id="Node000001" title="ThreadPool::Queue." alt="" coords="455,77,653,117"/>
-<area shape="rect" id="Node000002" href="$classThreadPool.html#a7d435b8c6eff3ffcf5b9043bd50048c2" title=" " alt="" coords="215,55,406,80"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="441,86,406,81,406,76,441,80"/>
-<area shape="rect" id="Node000006" href="$classCompressedTile.html#a097a41844c75d21396fb64db3c039c8a" title=" " alt="" coords="215,105,407,145"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="441,112,407,116,407,111,441,107"/>
-<area shape="rect" id="Node000003" href="$classThreadPool.html#a81a78372f675b2c2f025d377b083d7b2" title=" " alt="" coords="5,5,167,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="238,54,144,33,145,28,240,49"/>
-<area shape="rect" id="Node000004" href="$classThreadPool.html#a09312528837d0cb81facc9f38b484294" title=" " alt="" coords="5,55,167,80"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="202,70,167,70,167,65,202,65"/>
-<area shape="rect" id="Node000005" href="$classThreadPool.html#aca73885005f3a58ad686961895816ee0" title=" " alt="" coords="5,104,167,129"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="240,86,145,107,144,101,238,80"/>
+<area shape="rect" id="Node000001" title="ThreadPool::Queue." alt="" coords="923,53,1121,93"/>
+<area shape="rect" id="Node000002" href="$classThreadPool.html#a7d435b8c6eff3ffcf5b9043bd50048c2" title=" " alt="" coords="683,31,874,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="909,62,874,57,874,52,909,56"/>
+<area shape="rect" id="Node000007" href="$classCompressedTile.html#a097a41844c75d21396fb64db3c039c8a" title=" " alt="" coords="683,81,875,121"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="909,88,875,92,875,87,909,83"/>
+<area shape="rect" id="Node000003" href="$classThreadPool.html#a75b74859fed39f21cb3bb09b78137fa2" title=" " alt="" coords="473,31,635,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="670,46,635,46,635,41,670,41"/>
+<area shape="rect" id="Node000004" href="$threadpool-tests_8cc.html#a0b21271f8e664b28e1ebb8638ec13d75" title=" " alt="" coords="237,5,412,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="459,36,412,30,412,25,460,30"/>
+<area shape="rect" id="Node000006" href="$classWaitForAsyncOp.html#a01dcf09800aaba90cc168f4beac3e8c7" title=" " alt="" coords="224,55,425,80"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="460,56,426,59,425,54,459,51"/>
+<area shape="rect" id="Node000005" href="$threadpool-tests_8cc.html#afed1d9f0b7b77d5594eefec825c3104f" title=" " alt="" coords="5,5,176,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="223,21,176,21,176,15,223,15"/>
 </map>

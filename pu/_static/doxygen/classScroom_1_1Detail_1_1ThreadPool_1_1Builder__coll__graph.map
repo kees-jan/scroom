@@ -1,5 +1,5 @@
-<map id="Scroom::Detail::ThreadPool::Builder&lt; hasCallable, hasPriority, hasQueue &gt;" name="Scroom::Detail::ThreadPool::Builder&lt; hasCallable, hasPriority, hasQueue &gt;">
-<area shape="rect" id="Node000001" title=" " alt="" coords="19,876,210,1091"/>
+<map id="Scroom::Detail::ThreadPool::Builder&lt; hasCallable, hasPriority, hasQueue, R &gt;" name="Scroom::Detail::ThreadPool::Builder&lt; hasCallable, hasPriority, hasQueue, R &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="18,876,211,1091"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,748,224,813"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,814,117,860,112,860,112,814"/>
 <area shape="rect" id="Node000003" href="$classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html" title=" " alt="" coords="19,465,210,685"/>

@@ -1,0 +1,7 @@
+var structScroom_1_1Detail_1_1ThreadPool_1_1BuilderTraits_3_01Builder_3_01hasCallable___00_01hasPrioa9caf6fb0736a5481410554298d9c299 =
+[
+    [ "ResultType", "structScroom_1_1Detail_1_1ThreadPool_1_1BuilderTraits_3_01Builder_3_01hasCallable___00_01hasPrioa9caf6fb0736a5481410554298d9c299.html#a92670bff9229ee916352984d2f0878ac", null ],
+    [ "hasCallable", "structScroom_1_1Detail_1_1ThreadPool_1_1BuilderTraits_3_01Builder_3_01hasCallable___00_01hasPrioa9caf6fb0736a5481410554298d9c299.html#acae345687cda65bd2667a4eaf32b1fa3", null ],
+    [ "hasPriority", "structScroom_1_1Detail_1_1ThreadPool_1_1BuilderTraits_3_01Builder_3_01hasCallable___00_01hasPrioa9caf6fb0736a5481410554298d9c299.html#a3f595671fb535f2b0c688a9dd0b31a06", null ],
+    [ "hasQueue", "structScroom_1_1Detail_1_1ThreadPool_1_1BuilderTraits_3_01Builder_3_01hasCallable___00_01hasPrioa9caf6fb0736a5481410554298d9c299.html#af2e44d50e8540d755f062d880ae50ccd", null ]
+];

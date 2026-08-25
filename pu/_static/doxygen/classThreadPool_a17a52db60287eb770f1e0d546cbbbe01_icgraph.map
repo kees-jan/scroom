@@ -1,7 +1,11 @@
 <map id="ThreadPool::schedule_impl" name="ThreadPool::schedule_impl">
-<area shape="rect" id="Node000001" title=" " alt="" coords="215,31,412,56"/>
-<area shape="rect" id="Node000002" href="$classThreadPool.html#ad92c0a7a2762a81960a3b32fad375309" title=" " alt="" coords="5,5,167,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="200,33,166,30,167,24,201,28"/>
-<area shape="rect" id="Node000003" href="$classThreadPool.html#a09312528837d0cb81facc9f38b484294" title=" " alt="" coords="5,55,167,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="201,58,167,62,166,56,200,53"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="683,31,880,56"/>
+<area shape="rect" id="Node000002" href="$classThreadPool.html#a75b74859fed39f21cb3bb09b78137fa2" title=" " alt="" coords="473,31,635,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="669,46,635,46,635,41,669,41"/>
+<area shape="rect" id="Node000003" href="$threadpool-tests_8cc.html#a0b21271f8e664b28e1ebb8638ec13d75" title=" " alt="" coords="237,5,412,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="459,36,412,30,412,25,460,30"/>
+<area shape="rect" id="Node000005" href="$classWaitForAsyncOp.html#a01dcf09800aaba90cc168f4beac3e8c7" title=" " alt="" coords="224,55,425,80"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="460,56,426,59,425,54,459,51"/>
+<area shape="rect" id="Node000004" href="$threadpool-tests_8cc.html#afed1d9f0b7b77d5594eefec825c3104f" title=" " alt="" coords="5,5,176,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="223,21,176,21,176,15,223,15"/>
 </map>
