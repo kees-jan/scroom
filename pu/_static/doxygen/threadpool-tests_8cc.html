@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-48-g70093e59</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-53-g249921b6</span>
    </div>
   </td>
  </tr>
@@ -406,7 +406,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code hl_class" href="classThreadPool.html">ThreadPool</a> <a class="code hl_variable" href="threadpool-tests_8cc.html#aa7e9210410c7d7285e42ddf5af3ea3fd">pool</a>(1)</div>
-<div class="ttc" id="aclassThreadPool_html"><div class="ttname"><a href="classThreadPool.html">ThreadPool</a></div><div class="ttdef"><b>Definition</b> threadpool.hh:43</div></div>
+<div class="ttc" id="aclassThreadPool_html"><div class="ttname"><a href="classThreadPool.html">ThreadPool</a></div><div class="ttdef"><b>Definition</b> threadpool.hh:271</div></div>
 <div class="ttc" id="athreadpool-tests_8cc_html_aa7e9210410c7d7285e42ddf5af3ea3fd"><div class="ttname"><a href="threadpool-tests_8cc.html#aa7e9210410c7d7285e42ddf5af3ea3fd">pool</a></div><div class="ttdeci">ThreadPool pool(0)</div></div>
 </div><!-- fragment -->
 </div>
@@ -522,12 +522,12 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   99</span> </div>
 <div class="line"><span class="lineno">  100</span>  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; count_ - 1; i++)</div>
 <div class="line"><span class="lineno">  101</span>  {</div>
-<div class="line"><span class="lineno">  102</span>    <a class="code hl_variable" href="threadpool-tests_8cc.html#aa7e9210410c7d7285e42ddf5af3ea3fd">pool</a>-&gt;<a class="code hl_function" href="classThreadPool.html#a5ceb75ca278331440e9adce284089863">schedule</a>(<a class="code hl_function" href="helpers_8cc.html#a02c3a626f5b89019248f87c0c2f6331b">pass</a>(semaphores[i + 1]) + <a class="code hl_function" href="observable-tests_8cc.html#a01578cce62d2519c7b76b1c70daef5e5">clear</a>(semaphores[i]));</div>
+<div class="line"><span class="lineno">  102</span>    <a class="code hl_variable" href="threadpool-tests_8cc.html#aa7e9210410c7d7285e42ddf5af3ea3fd">pool</a>-&gt;<a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">schedule</a>(<a class="code hl_function" href="helpers_8cc.html#a02c3a626f5b89019248f87c0c2f6331b">pass</a>(semaphores[i + 1]) + <a class="code hl_function" href="observable-tests_8cc.html#a01578cce62d2519c7b76b1c70daef5e5">clear</a>(semaphores[i]));</div>
 <div class="line"><span class="lineno">  103</span>  }</div>
 <div class="line"><span class="lineno">  104</span> </div>
 <div class="line"><span class="lineno">  105</span>  <span class="comment">// All tasks are blocked on semaphores[count-1]</span></div>
 <div class="line"><span class="lineno">  106</span> </div>
-<div class="line"><span class="lineno">  107</span>  <a class="code hl_variable" href="threadpool-tests_8cc.html#aa7e9210410c7d7285e42ddf5af3ea3fd">pool</a>-&gt;<a class="code hl_function" href="classThreadPool.html#a5ceb75ca278331440e9adce284089863">schedule</a>(<a class="code hl_function" href="observable-tests_8cc.html#a01578cce62d2519c7b76b1c70daef5e5">clear</a>(semaphores[count_ - 1]));</div>
+<div class="line"><span class="lineno">  107</span>  <a class="code hl_variable" href="threadpool-tests_8cc.html#aa7e9210410c7d7285e42ddf5af3ea3fd">pool</a>-&gt;<a class="code hl_function" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">schedule</a>(<a class="code hl_function" href="observable-tests_8cc.html#a01578cce62d2519c7b76b1c70daef5e5">clear</a>(semaphores[count_ - 1]));</div>
 <div class="line"><span class="lineno">  108</span>  <span class="comment">// If jobs of the same priority are scheduled in order, and if</span></div>
 <div class="line"><span class="lineno">  109</span>  <span class="comment">// there are at least count_ threads, then this final job will get</span></div>
 <div class="line"><span class="lineno">  110</span>  <span class="comment">// scheduled on the last available thread, thus freeing all</span></div>
@@ -547,7 +547,7 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">  124</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">  125</span>}</div>
 <div class="ttc" id="aclassScroom_1_1Semaphore_html"><div class="ttname"><a href="classScroom_1_1Semaphore.html">Scroom::Semaphore</a></div><div class="ttdef"><b>Definition</b> semaphore.hh:16</div></div>
-<div class="ttc" id="aclassThreadPool_html_a5ceb75ca278331440e9adce284089863"><div class="ttname"><a href="classThreadPool.html#a5ceb75ca278331440e9adce284089863">ThreadPool::schedule</a></div><div class="ttdeci">void schedule(boost::function&lt; void()&gt; const &amp;fn, int priority=defaultPriority, const Queue::Ptr &amp;queue=defaultQueue())</div><div class="ttdef"><b>Definition</b> threadpoolimpl.cc:345</div></div>
+<div class="ttc" id="aclassThreadPool_html_a0ec11b057f02d8b5eb0004dcee856a7e"><div class="ttname"><a href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e">ThreadPool::schedule</a></div><div class="ttdeci">void schedule(boost::function&lt; void()&gt; fn, int priority=defaultPriority, const Queue::Ptr &amp;queue=defaultQueue())</div><div class="ttdef"><b>Definition</b> threadpoolimpl.cc:345</div></div>
 <div class="ttc" id="ahelpers_8cc_html_a02c3a626f5b89019248f87c0c2f6331b"><div class="ttname"><a href="helpers_8cc.html#a02c3a626f5b89019248f87c0c2f6331b">pass</a></div><div class="ttdeci">boost::function&lt; void()&gt; pass(Semaphore *s)</div><div class="ttdef"><b>Definition</b> helpers.cc:23</div></div>
 <div class="ttc" id="aobservable-tests_8cc_html_a01578cce62d2519c7b76b1c70daef5e5"><div class="ttname"><a href="observable-tests_8cc.html#a01578cce62d2519c7b76b1c70daef5e5">clear</a></div><div class="ttdeci">observers clear()</div></div>
 <div class="ttc" id="asampleiterator-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">SampleIterator&lt; const uint8_t &gt; result</div><div class="ttdef"><b>Definition</b> sampleiterator-tests.cc:94</div></div>
@@ -566,7 +566,7 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="180,80,241,73,241,78,180,85"/>
 <area shape="rect" href="helpers_8cc.html#a02c3a626f5b89019248f87c0c2f6331b" title=" " alt="" coords="283,104,335,129"/>
 <area shape="poly" title=" " alt="" coords="180,100,269,110,268,115,180,105"/>
-<area shape="rect" href="classThreadPool.html#a5ceb75ca278331440e9adce284089863" title=" " alt="" coords="228,177,389,203"/>
+<area shape="rect" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e" title=" " alt="" coords="228,177,389,203"/>
 <area shape="poly" title=" " alt="" coords="123,103,268,169,266,174,121,108"/>
 <area shape="poly" title=" " alt="" coords="273,179,266,169,270,159,284,153,309,151,339,154,351,163,347,168,337,159,309,156,286,158,273,163,271,168,277,176"/>
 </map>
@@ -628,7 +628,7 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="399,80,459,73,460,78,399,85"/>
 <area shape="rect" href="helpers_8cc.html#a02c3a626f5b89019248f87c0c2f6331b" title=" " alt="" coords="501,104,553,129"/>
 <area shape="poly" title=" " alt="" coords="399,100,488,110,487,115,399,105"/>
-<area shape="rect" href="classThreadPool.html#a5ceb75ca278331440e9adce284089863" title=" " alt="" coords="447,177,608,203"/>
+<area shape="rect" href="classThreadPool.html#a0ec11b057f02d8b5eb0004dcee856a7e" title=" " alt="" coords="447,177,608,203"/>
 <area shape="poly" title=" " alt="" coords="342,103,487,169,485,174,339,108"/>
 <area shape="poly" title=" " alt="" coords="492,179,484,169,488,159,503,153,527,151,557,154,569,163,566,168,555,159,527,156,504,158,492,163,490,168,496,176"/>
 </map>

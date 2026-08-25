@@ -1,0 +1,9 @@
+<map id="ThreadPool::defaultQueue" name="ThreadPool::defaultQueue">
+<area shape="rect" id="Node000001" title=" " alt="" coords="215,55,405,80"/>
+<area shape="rect" id="Node000002" href="$classThreadPool.html#a81a78372f675b2c2f025d377b083d7b2" title=" " alt="" coords="5,5,167,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="238,54,144,33,145,28,239,49"/>
+<area shape="rect" id="Node000003" href="$classThreadPool.html#a09312528837d0cb81facc9f38b484294" title=" " alt="" coords="5,55,167,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="201,70,167,70,167,65,201,65"/>
+<area shape="rect" id="Node000004" href="$classThreadPool.html#aca73885005f3a58ad686961895816ee0" title=" " alt="" coords="5,104,167,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="239,86,145,107,144,101,238,80"/>
+</map>

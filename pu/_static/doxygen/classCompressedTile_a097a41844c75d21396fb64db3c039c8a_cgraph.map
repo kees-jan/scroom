@@ -1,18 +1,18 @@
 <map id="CompressedTile::observerAdded" name="CompressedTile::observerAdded">
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,113,197,153"/>
-<area shape="rect" id="Node000002" href="$classScroom_1_1Bookkeeping_1_1Token.html#ac619f80091875f045710df020bbc5c11" title=" " alt="" coords="257,5,420,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="141,111,244,62,274,48,276,53,246,66,144,116"/>
-<area shape="rect" id="Node000003" href="$classCompressedTile.html#abc632784fd3ff47fee0a75393be60772" title=" " alt="" coords="489,129,709,154"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="197,111,245,105,339,100,432,105,536,123,535,128,432,111,339,105,246,111,198,117"/>
-<area shape="rect" id="Node000004" href="$threadpoolimpl_8cc.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b" title=" " alt="" coords="295,121,383,146"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="197,131,281,131,281,136,197,136"/>
-<area shape="rect" id="Node000005" href="$classThreadPool_1_1Queue.html#ae48cfe05b7bb72f1990557d64ef57acf" title="ThreadPool::Queue." alt="" coords="262,171,415,211"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="185,151,249,166,248,172,184,156"/>
-<area shape="rect" id="Node000006" href="$classCompressedTile.html#a5c520928c3e8faafa0493d77fa7c16d8" title=" " alt="" coords="245,235,432,261"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="131,151,183,186,246,220,269,229,267,234,244,225,181,191,128,156"/>
-<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="392,233,431,220,502,189,562,158,565,163,504,194,433,225,394,238"/>
-<area shape="rect" id="Node000007" href="$classCompressedTile.html#a56111eeb0baeaf0b8f2d93e4a81ea99d" title=" " alt="" coords="480,235,719,261"/>
-<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="432,245,466,245,466,251,432,251"/>
-<area shape="rect" id="Node000008" href="$classScroom_1_1Utils_1_1Observable.html#ae215a3f722f5894dd8fdc1cb9b190c0e" title=" " alt="" coords="767,228,957,268"/>
-<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="719,245,753,245,753,251,719,251"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Bookkeeping_1_1Token.html#ac619f80091875f045710df020bbc5c11" title=" " alt="" coords="263,5,426,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="141,111,244,62,277,48,279,53,246,66,143,115"/>
+<area shape="rect" id="Node000003" href="$classCompressedTile.html#abc632784fd3ff47fee0a75393be60772" title=" " alt="" coords="501,129,721,154"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="197,111,245,105,345,99,444,105,548,123,547,128,444,111,345,104,246,111,198,117"/>
+<area shape="rect" id="Node000004" href="$threadpoolimpl_8cc.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b" title=" " alt="" coords="301,121,389,146"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="197,131,287,131,287,136,197,136"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae48cfe05b7bb72f1990557d64ef57acf" title="ThreadPool::Queue." alt="" coords="245,171,444,211"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="187,151,246,165,245,170,186,156"/>
+<area shape="rect" id="Node000006" href="$classCompressedTile.html#a5c520928c3e8faafa0493d77fa7c16d8" title=" " alt="" coords="251,235,438,261"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="131,151,183,186,246,220,270,229,268,234,244,225,180,191,128,156"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="402,233,443,220,514,190,574,158,577,163,516,194,445,225,404,238"/>
+<area shape="rect" id="Node000007" href="$classCompressedTile.html#a56111eeb0baeaf0b8f2d93e4a81ea99d" title=" " alt="" coords="492,235,731,261"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="438,245,478,245,478,251,438,251"/>
+<area shape="rect" id="Node000008" href="$classScroom_1_1Utils_1_1Observable.html#ae215a3f722f5894dd8fdc1cb9b190c0e" title=" " alt="" coords="779,228,969,268"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="731,245,765,245,765,251,731,251"/>
 </map>

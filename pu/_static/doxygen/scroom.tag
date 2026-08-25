@@ -2500,7 +2500,6 @@
     <path>libs/threadpool/inc/scroom/impl/</path>
     <filename>threadpoolimpl_8hh.html</filename>
     <includes id="threadpool_8hh" name="threadpool.hh" local="no" import="no" module="no" objc="no">scroom/threadpool.hh</includes>
-    <namespace>Detail</namespace>
   </compound>
   <compound kind="file">
     <name>semaphore.hh</name>
@@ -2515,15 +2514,24 @@
     <filename>threadpool_8hh.html</filename>
     <includes id="semaphore_8hh" name="semaphore.hh" local="no" import="no" module="no" objc="no">scroom/semaphore.hh</includes>
     <includes id="threadpoolimpl_8hh" name="threadpoolimpl.hh" local="no" import="no" module="no" objc="no">scroom/impl/threadpoolimpl.hh</includes>
+    <class kind="class">Scroom::Detail::ThreadPool::Queue</class>
+    <class kind="class">Scroom::Detail::ThreadPool::WeakQueue</class>
+    <class kind="class">Scroom::Detail::ThreadPool::Builder</class>
+    <class kind="struct">Scroom::Detail::ThreadPool::Builder::AddCallable&lt; false, hasPriority_, hasQueue_ &gt;</class>
+    <class kind="struct">Scroom::Detail::ThreadPool::Builder::AddPriority&lt; hasCallable_, false, hasQueue_ &gt;</class>
+    <class kind="struct">Scroom::Detail::ThreadPool::Builder::AddQueue&lt; hasCallable_, hasPriority_, false &gt;</class>
     <class kind="class">ThreadPool</class>
-    <class kind="class">ThreadPool::Queue</class>
-    <class kind="class">ThreadPool::WeakQueue</class>
     <class kind="struct">ThreadPool::Job</class>
     <class kind="class">ThreadPool::PrivateData</class>
     <class kind="class">QueueJumper</class>
+    <namespace>Detail</namespace>
     <namespace>Scroom</namespace>
     <namespace>Scroom::Detail</namespace>
     <namespace>Scroom::Detail::ThreadPool</namespace>
+    <concept>Scroom::Detail::ThreadPool::QueueT</concept>
+    <concept>Scroom::Detail::ThreadPool::PriorityT</concept>
+    <concept>Scroom::Detail::ThreadPool::CallableT</concept>
+    <concept>Scroom::Detail::ThreadPool::SharedCallableT</concept>
     <member kind="enumvalue">
       <name>PRIO_HIGHEST</name>
       <anchorfile>threadpool_8hh.html</anchorfile>
@@ -8995,6 +9003,80 @@
       <arglist></arglist>
     </member>
   </compound>
+  <compound kind="struct">
+    <name>Scroom::Detail::ThreadPool::Builder::AddCallable</name>
+    <filename>structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddCallable.html</filename>
+    <templarg>bool hasCallable_</templarg>
+    <templarg>bool hasPriority_</templarg>
+    <templarg>bool hasQueue_</templarg>
+  </compound>
+  <compound kind="struct">
+    <name>Scroom::Detail::ThreadPool::Builder::AddCallable&lt; false, hasPriority_, hasQueue_ &gt;</name>
+    <filename>structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddCallable_3_01false_00_01hasPriority___00_01hasQueue___01_4.html</filename>
+    <templarg>bool hasPriority_</templarg>
+    <templarg>bool hasQueue_</templarg>
+    <member kind="function" static="yes">
+      <type>static constexpr Builder&lt; true, hasPriority_, hasQueue_ &gt;</type>
+      <name>add</name>
+      <anchorfile>structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddCallable_3_01false_00_01hasPriority___00_01hasQueue___01_4.html</anchorfile>
+      <anchor>a79a05b7b1b24f9c4d92367c262f7b7a9</anchor>
+      <arglist>(Builder&lt; false, hasPriority_, hasQueue_ &gt; b, CallableT auto &amp;&amp;c)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static constexpr Builder&lt; true, hasPriority_, hasQueue_ &gt;</type>
+      <name>add</name>
+      <anchorfile>structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddCallable_3_01false_00_01hasPriority___00_01hasQueue___01_4.html</anchorfile>
+      <anchor>afa15a73c329830e4e85b75babb21299d</anchor>
+      <arglist>(Builder&lt; false, hasPriority_, hasQueue_ &gt; b, SharedCallableT auto &amp;&amp;c)</arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>Scroom::Detail::ThreadPool::Builder::AddPriority</name>
+    <filename>structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddPriority.html</filename>
+    <templarg>bool hasCallable_</templarg>
+    <templarg>bool hasPriority_</templarg>
+    <templarg>bool hasQueue_</templarg>
+  </compound>
+  <compound kind="struct">
+    <name>Scroom::Detail::ThreadPool::Builder::AddPriority&lt; hasCallable_, false, hasQueue_ &gt;</name>
+    <filename>structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddPriority_3_01hasCallable___00_01false_00_01hasQueue___01_4.html</filename>
+    <templarg>bool hasCallable_</templarg>
+    <templarg>bool hasQueue_</templarg>
+    <member kind="function" static="yes">
+      <type>static constexpr Builder&lt; hasCallable_, true, hasQueue_ &gt;</type>
+      <name>add</name>
+      <anchorfile>structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddPriority_3_01hasCallable___00_01false_00_01hasQueue___01_4.html</anchorfile>
+      <anchor>aa2ea190a6fa3623f2ca5937bb2833f15</anchor>
+      <arglist>(Builder&lt; hasCallable_, false, hasQueue_ &gt; b, int priority)</arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>Scroom::Detail::ThreadPool::Builder::AddQueue</name>
+    <filename>structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddQueue.html</filename>
+    <templarg>bool hasCallable_</templarg>
+    <templarg>bool hasPriority_</templarg>
+    <templarg>bool hasQueue_</templarg>
+  </compound>
+  <compound kind="struct">
+    <name>Scroom::Detail::ThreadPool::Builder::AddQueue&lt; hasCallable_, hasPriority_, false &gt;</name>
+    <filename>structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddQueue_3_01hasCallable___00_01hasPriority___00_01false_01_4.html</filename>
+    <templarg>bool hasCallable_</templarg>
+    <templarg>bool hasPriority_</templarg>
+    <member kind="function" static="yes">
+      <type>static constexpr Builder&lt; hasCallable_, hasPriority_, true &gt;</type>
+      <name>add</name>
+      <anchorfile>structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddQueue_3_01hasCallable___00_01hasPriority___00_01false_01_4.html</anchorfile>
+      <anchor>ab9766f2ee18277ab45c2ee818bde0f9a</anchor>
+      <arglist>(Builder&lt; hasCallable_, hasPriority_, false &gt; b, const Queue::Ptr &amp;queue)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static constexpr Builder&lt; hasCallable_, hasPriority_, true &gt;</type>
+      <name>add</name>
+      <anchorfile>structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddQueue_3_01hasCallable___00_01hasPriority___00_01false_01_4.html</anchorfile>
+      <anchor>ab5ccfb0a6639bb8d18f70d1336759f84</anchor>
+      <arglist>(Builder&lt; hasCallable_, hasPriority_, false &gt; b, const WeakQueue::Ptr queue)</arglist>
+    </member>
+  </compound>
   <compound kind="class">
     <name>Aggregate</name>
     <filename>classAggregate.html</filename>
@@ -9747,6 +9829,96 @@
       <name>Page</name>
       <anchorfile>classScroom_1_1MemoryBlocks_1_1BlockInterface.html</anchorfile>
       <anchor>a66d145c56e1747e0aecb5309042ab183</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>Scroom::Detail::ThreadPool::Builder</name>
+    <filename>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</filename>
+    <templarg>bool hasCallable</templarg>
+    <templarg>bool hasPriority</templarg>
+    <templarg>bool hasQueue</templarg>
+    <class kind="struct">Scroom::Detail::ThreadPool::Builder::AddCallable</class>
+    <class kind="struct">Scroom::Detail::ThreadPool::Builder::AddCallable&lt; false, hasPriority_, hasQueue_ &gt;</class>
+    <class kind="struct">Scroom::Detail::ThreadPool::Builder::AddPriority</class>
+    <class kind="struct">Scroom::Detail::ThreadPool::Builder::AddPriority&lt; hasCallable_, false, hasQueue_ &gt;</class>
+    <class kind="struct">Scroom::Detail::ThreadPool::Builder::AddQueue</class>
+    <class kind="struct">Scroom::Detail::ThreadPool::Builder::AddQueue&lt; hasCallable_, hasPriority_, false &gt;</class>
+    <member kind="function">
+      <type>constexpr</type>
+      <name>Builder</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>aabe112da23e1276a24a8b2dd77c3f4d8</anchor>
+      <arglist>(int defaultPriority, WeakQueue::Ptr defaultQueue)</arglist>
+    </member>
+    <member kind="function">
+      <type>constexpr</type>
+      <name>Builder</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>aec351ab756b2a9a87aa7f38f6039c9ad</anchor>
+      <arglist>(std::move_only_function&lt; void()&gt; fn_, int priority_, WeakQueue::Ptr queue_)</arglist>
+    </member>
+    <member kind="function">
+      <type>constexpr auto</type>
+      <name>add</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>abc34e4a85eba0d70358edd6d45ee2cc8</anchor>
+      <arglist>(CallableT auto &amp;&amp;c)</arglist>
+    </member>
+    <member kind="function">
+      <type>constexpr auto</type>
+      <name>add</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>aff8832f8a665221391c58fbebf524b47</anchor>
+      <arglist>(SharedCallableT auto &amp;&amp;c)</arglist>
+    </member>
+    <member kind="function">
+      <type>constexpr auto</type>
+      <name>add</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>a15484386ffb0bf10bed3f0b6a7e27558</anchor>
+      <arglist>(int priority_)</arglist>
+    </member>
+    <member kind="function">
+      <type>constexpr auto</type>
+      <name>add</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>a04a30cae553160c411be1547b1f9616c</anchor>
+      <arglist>(WeakQueue::Ptr queue_)</arglist>
+    </member>
+    <member kind="function">
+      <type>constexpr auto</type>
+      <name>add</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>ad4f3c888114e1b7714c2fe9e1ff361f9</anchor>
+      <arglist>(const Queue::Ptr &amp;queue_)</arglist>
+    </member>
+    <member kind="function">
+      <type>constexpr auto</type>
+      <name>add</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>a9e61aef9ddb398d9af914185935ba6a8</anchor>
+      <arglist>(auto &amp;&amp;first, auto &amp;&amp;...rest)</arglist>
+    </member>
+    <member kind="variable">
+      <type>std::move_only_function&lt; void()&gt;</type>
+      <name>fn</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>ac11f17d05a87fdc64b783c3298f4a59c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>priority</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>aa94a6342c8dfae5a7af0c7cd3681c3ba</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>WeakQueue::Ptr</type>
+      <name>queue</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>a04863af653e8a71bbc2692a4f2ec4b30</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -12998,8 +13170,8 @@
       <type></type>
       <name>Job</name>
       <anchorfile>structThreadPool_1_1Job.html</anchorfile>
-      <anchor>a8d34176468a7051b195dce4fad19e04f</anchor>
-      <arglist>(boost::function&lt; void()&gt; fn, const WeakQueue::Ptr &amp;queue)</arglist>
+      <anchor>aa6248ab4d3bb1c05d143ff6e4b481221</anchor>
+      <arglist>(std::move_only_function&lt; void()&gt; fn, const WeakQueue::Ptr &amp;queue)</arglist>
     </member>
     <member kind="variable">
       <type>std::shared_ptr&lt; Scroom::Detail::ThreadPool::QueueImpl &gt;</type>
@@ -13009,10 +13181,10 @@
       <arglist></arglist>
     </member>
     <member kind="variable">
-      <type>boost::function&lt; void()&gt;</type>
+      <type>std::move_only_function&lt; void()&gt;</type>
       <name>fn</name>
       <anchorfile>structThreadPool_1_1Job.html</anchorfile>
-      <anchor>a658aeaa8ac34c28832cdb8f0c080e75f</anchor>
+      <anchor>a147218f86e45cae9c2f7382fe20c8183</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -17523,97 +17695,97 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>ThreadPool::Queue</name>
-    <filename>classThreadPool_1_1Queue.html</filename>
+    <name>Scroom::Detail::ThreadPool::Queue</name>
+    <filename>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</filename>
     <member kind="typedef">
       <type>std::shared_ptr&lt; Queue &gt;</type>
       <name>Ptr</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
-      <anchor>a3096b6f6bf4aab440b938d7c5632a402</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
+      <anchor>ae44696440c2b9dd5dbef5c4eda0baec9</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>std::weak_ptr&lt; Queue &gt;</type>
       <name>WeakPtr</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
-      <anchor>ad426620d1b761c124a4aca7175cde034</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
+      <anchor>a076e55773e2b1380be46917bf84d47e5</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
       <type></type>
+      <name>Queue</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
+      <anchor>a0ea02c66235d2f8bd6da128248d8b55f</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Queue</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
+      <anchor>a9bbbf72923dddcc1d072981cd32bac8a</anchor>
+      <arglist>(const Queue &amp;)=delete</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Queue</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
+      <anchor>a4a9c0a5e876c2a3f42200e02fb9e429c</anchor>
+      <arglist>(Queue &amp;&amp;)=delete</arglist>
+    </member>
+    <member kind="function">
+      <type>Queue &amp;</type>
+      <name>operator=</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
+      <anchor>a66fc0da89a414563d618a079e1a18b72</anchor>
+      <arglist>(const Queue &amp;)=delete</arglist>
+    </member>
+    <member kind="function">
+      <type>Queue &amp;</type>
+      <name>operator=</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
+      <anchor>acd56f9f5a30c84511e240b61fa0107b1</anchor>
+      <arglist>(Queue &amp;&amp;)=delete</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
       <name>~Queue</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
       <anchor>a2c6be4f191a8b6390e39583b0f085149</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>std::shared_ptr&lt; Scroom::Detail::ThreadPool::QueueImpl &gt;</type>
       <name>get</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
       <anchor>a507f0fcc6f3edf7565652eea7a925430</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>std::shared_ptr&lt; WeakQueue &gt;</type>
       <name>getWeak</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
       <anchor>a475a6a4ef37c8aa9ff22cb2cecc59d80</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
       <name>create</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
       <anchor>ae48cfe05b7bb72f1990557d64ef57acf</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
       <name>createAsync</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
       <anchor>a60a5cfe128cc80c5d5fbbd6494fb62e2</anchor>
       <arglist>()</arglist>
-    </member>
-    <member kind="function" protection="private">
-      <type></type>
-      <name>Queue</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
-      <anchor>a0ea02c66235d2f8bd6da128248d8b55f</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function" protection="private">
-      <type></type>
-      <name>Queue</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
-      <anchor>ab4b8dee0d10fe3f6f58d4ee4775903fc</anchor>
-      <arglist>(const Queue &amp;)=delete</arglist>
-    </member>
-    <member kind="function" protection="private">
-      <type></type>
-      <name>Queue</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
-      <anchor>aea78a048117e0a301bbb43f98e1fba73</anchor>
-      <arglist>(Queue &amp;&amp;)=delete</arglist>
-    </member>
-    <member kind="function" protection="private">
-      <type>Queue &amp;</type>
-      <name>operator=</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
-      <anchor>a54de9c41d072639d0be97291d9d7af02</anchor>
-      <arglist>(const Queue &amp;)=delete</arglist>
-    </member>
-    <member kind="function" protection="private">
-      <type>Queue &amp;</type>
-      <name>operator=</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
-      <anchor>af872bb82d082f2e5e44c7d31451c94bd</anchor>
-      <arglist>(Queue &amp;&amp;)=delete</arglist>
     </member>
     <member kind="variable" protection="private">
       <type>std::shared_ptr&lt; WeakQueue &gt;</type>
       <name>weak</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
-      <anchor>a78c61eff732a77a1ca300bb560a86d4f</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
+      <anchor>a9677856e3fdd424bbc4206ffb5804086</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -20700,8 +20872,20 @@
     <filename>classThreadPool.html</filename>
     <class kind="struct">ThreadPool::Job</class>
     <class kind="class">ThreadPool::PrivateData</class>
-    <class kind="class">ThreadPool::Queue</class>
-    <class kind="class">ThreadPool::WeakQueue</class>
+    <member kind="typedef">
+      <type>Scroom::Detail::ThreadPool::Queue</type>
+      <name>Queue</name>
+      <anchorfile>classThreadPool.html</anchorfile>
+      <anchor>a29448666b91c5fd9d2b03791bd6b6e7c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>Scroom::Detail::ThreadPool::WeakQueue</type>
+      <name>WeakQueue</name>
+      <anchorfile>classThreadPool.html</anchorfile>
+      <anchor>abb813e409dcb392ebe68b17e36b936dc</anchor>
+      <arglist></arglist>
+    </member>
     <member kind="typedef">
       <type>std::shared_ptr&lt; ThreadPool &gt;</type>
       <name>Ptr</name>
@@ -20769,15 +20953,15 @@
       <type>void</type>
       <name>schedule</name>
       <anchorfile>classThreadPool.html</anchorfile>
-      <anchor>a5ceb75ca278331440e9adce284089863</anchor>
-      <arglist>(boost::function&lt; void()&gt; const &amp;fn, int priority=defaultPriority, const Queue::Ptr &amp;queue=defaultQueue())</arglist>
+      <anchor>a0ec11b057f02d8b5eb0004dcee856a7e</anchor>
+      <arglist>(boost::function&lt; void()&gt; fn, int priority=defaultPriority, const Queue::Ptr &amp;queue=defaultQueue())</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>schedule</name>
       <anchorfile>classThreadPool.html</anchorfile>
-      <anchor>a1dbb23beee5a7a9133ee2e4cf5d6ac07</anchor>
-      <arglist>(boost::function&lt; void()&gt; const &amp;fn, const Queue::Ptr &amp;queue)</arglist>
+      <anchor>a81a78372f675b2c2f025d377b083d7b2</anchor>
+      <arglist>(boost::function&lt; void()&gt; fn, const Queue::Ptr &amp;queue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
@@ -20797,15 +20981,15 @@
       <type>void</type>
       <name>schedule</name>
       <anchorfile>classThreadPool.html</anchorfile>
-      <anchor>a1de8df4ea4e68c8ef852dc7fdf663954</anchor>
-      <arglist>(boost::function&lt; void()&gt; const &amp;fn, int priority, const WeakQueue::Ptr &amp;queue)</arglist>
+      <anchor>a09312528837d0cb81facc9f38b484294</anchor>
+      <arglist>(boost::function&lt; void()&gt; fn, int priority, const WeakQueue::Ptr &amp;queue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>schedule</name>
       <anchorfile>classThreadPool.html</anchorfile>
-      <anchor>a1fa231418839d0e3f183fecf1a5f3fcb</anchor>
-      <arglist>(boost::function&lt; void()&gt; const &amp;fn, const WeakQueue::Ptr &amp;queue)</arglist>
+      <anchor>ab778a5977caa99b320ad1a883c023028</anchor>
+      <arglist>(boost::function&lt; void()&gt; fn, const WeakQueue::Ptr &amp;queue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
@@ -20853,8 +21037,8 @@
       <type>boost::unique_future&lt; R &gt;</type>
       <name>schedule</name>
       <anchorfile>classThreadPool.html</anchorfile>
-      <anchor>a74b439ee2bc7d263c9c58a1436861cbd</anchor>
-      <arglist>(boost::function&lt; R()&gt; const &amp;fn, int priority, const WeakQueue::Ptr &amp;queue)</arglist>
+      <anchor>ad92c0a7a2762a81960a3b32fad375309</anchor>
+      <arglist>(boost::function&lt; R()&gt; fn, int priority, const WeakQueue::Ptr &amp;queue)</arglist>
     </member>
     <member kind="function">
       <type>boost::unique_future&lt; R &gt;</type>
@@ -20904,6 +21088,13 @@
       <anchorfile>classThreadPool.html</anchorfile>
       <anchor>a01a9a8ed66255d64f64b5140d9ed1884</anchor>
       <arglist>(int count, bool completeAllJobsBeforeDestruction=false)</arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type>void</type>
+      <name>schedule_impl</name>
+      <anchorfile>classThreadPool.html</anchorfile>
+      <anchor>a17a52db60287eb770f1e0d546cbbbe01</anchor>
+      <arglist>(std::move_only_function&lt; void()&gt; fn, int priority, const WeakQueue::Ptr &amp;queue)</arglist>
     </member>
     <member kind="function" protection="private" static="yes">
       <type>static void</type>
@@ -24812,83 +25003,83 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>ThreadPool::WeakQueue</name>
-    <filename>classThreadPool_1_1WeakQueue.html</filename>
+    <name>Scroom::Detail::ThreadPool::WeakQueue</name>
+    <filename>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</filename>
     <member kind="typedef">
       <type>std::shared_ptr&lt; WeakQueue &gt;</type>
       <name>Ptr</name>
-      <anchorfile>classThreadPool_1_1WeakQueue.html</anchorfile>
-      <anchor>a8cf12332c4d158290d23075252e6c359</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
+      <anchor>a90652659d120bb282fc7656588ef7cf6</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>std::weak_ptr&lt; WeakQueue &gt;</type>
       <name>WeakPtr</name>
-      <anchorfile>classThreadPool_1_1WeakQueue.html</anchorfile>
-      <anchor>a976cc5dcd2e4f092f630e62960278a22</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
+      <anchor>ad70196effcb0aec73699198529857e01</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
       <type></type>
+      <name>WeakQueue</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
+      <anchor>a49c6500371382f9615655df771efbac0</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
       <name>~WeakQueue</name>
-      <anchorfile>classThreadPool_1_1WeakQueue.html</anchorfile>
-      <anchor>a57fb885957b226322315678fb6602697</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
+      <anchor>af183260eac98db220a1e98d808a770f6</anchor>
       <arglist>()=default</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>WeakQueue</name>
-      <anchorfile>classThreadPool_1_1WeakQueue.html</anchorfile>
-      <anchor>a2418ea09f16eb53150ebb594df3ca315</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
+      <anchor>a4db047a9d1c259137a52961074325f71</anchor>
       <arglist>(const WeakQueue &amp;)=delete</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>WeakQueue</name>
-      <anchorfile>classThreadPool_1_1WeakQueue.html</anchorfile>
-      <anchor>a5f6a2803545db98255cd837f4ab0ae93</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
+      <anchor>a7e28f87d329bb886faf5b955c7f3dc5b</anchor>
       <arglist>(WeakQueue &amp;&amp;)=delete</arglist>
     </member>
     <member kind="function">
       <type>WeakQueue &amp;</type>
       <name>operator=</name>
-      <anchorfile>classThreadPool_1_1WeakQueue.html</anchorfile>
-      <anchor>afd862f68942894e320a73b9335bbbd1a</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
+      <anchor>a0f710afb89229b24f633028c8ed6581d</anchor>
       <arglist>(const WeakQueue &amp;)=delete</arglist>
     </member>
     <member kind="function">
       <type>WeakQueue &amp;</type>
       <name>operator=</name>
-      <anchorfile>classThreadPool_1_1WeakQueue.html</anchorfile>
-      <anchor>a7c9c8982c389e2e34fb129216acb594c</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
+      <anchor>ae3521fe929ecd2be73c7a10d5f6b9170</anchor>
       <arglist>(WeakQueue &amp;&amp;)=delete</arglist>
     </member>
     <member kind="function">
       <type>std::shared_ptr&lt; Scroom::Detail::ThreadPool::QueueImpl &gt;</type>
       <name>get</name>
-      <anchorfile>classThreadPool_1_1WeakQueue.html</anchorfile>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
       <anchor>a1faec7781376e793e0a71688ef66105b</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
       <name>create</name>
-      <anchorfile>classThreadPool_1_1WeakQueue.html</anchorfile>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
       <anchor>a505621d98fa3f01d828eb90e8ec23bbd</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function" protection="private">
-      <type></type>
-      <name>WeakQueue</name>
-      <anchorfile>classThreadPool_1_1WeakQueue.html</anchorfile>
-      <anchor>a49c6500371382f9615655df771efbac0</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="variable" protection="private">
       <type>std::shared_ptr&lt; Scroom::Detail::ThreadPool::QueueImpl &gt;</type>
       <name>qi</name>
-      <anchorfile>classThreadPool_1_1WeakQueue.html</anchorfile>
-      <anchor>ac562024addfe4c868fbe0d3237a9fc16</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
+      <anchor>a5dca286671626cf60853706e472186ea</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -24903,6 +25094,22 @@
       <anchor>ada2f2ff83bef1a63cd7285adfbc41f61</anchor>
       <arglist>()=0</arglist>
     </member>
+  </compound>
+  <compound kind="concept">
+    <name>Scroom::Detail::ThreadPool::CallableT</name>
+    <filename>conceptScroom_1_1Detail_1_1ThreadPool_1_1CallableT.html</filename>
+  </compound>
+  <compound kind="concept">
+    <name>Scroom::Detail::ThreadPool::PriorityT</name>
+    <filename>conceptScroom_1_1Detail_1_1ThreadPool_1_1PriorityT.html</filename>
+  </compound>
+  <compound kind="concept">
+    <name>Scroom::Detail::ThreadPool::QueueT</name>
+    <filename>conceptScroom_1_1Detail_1_1ThreadPool_1_1QueueT.html</filename>
+  </compound>
+  <compound kind="concept">
+    <name>Scroom::Detail::ThreadPool::SharedCallableT</name>
+    <filename>conceptScroom_1_1Detail_1_1ThreadPool_1_1SharedCallableT.html</filename>
   </compound>
   <compound kind="namespace">
     <name>anonymous_namespace{callbacks.cc}</name>
@@ -25437,16 +25644,37 @@
   <compound kind="namespace">
     <name>Scroom::Detail::ThreadPool</name>
     <filename>namespaceScroom_1_1Detail_1_1ThreadPool.html</filename>
+    <class kind="class">Scroom::Detail::ThreadPool::Builder</class>
     <class kind="class">Scroom::Detail::ThreadPool::FunctionAdditor</class>
     <class kind="class">Scroom::Detail::ThreadPool::FunctionMultiplier</class>
+    <class kind="class">Scroom::Detail::ThreadPool::Queue</class>
     <class kind="class">Scroom::Detail::ThreadPool::QueueImpl</class>
     <class kind="class">Scroom::Detail::ThreadPool::QueueLock</class>
+    <class kind="class">Scroom::Detail::ThreadPool::WeakQueue</class>
+    <concept>Scroom::Detail::ThreadPool::QueueT</concept>
+    <concept>Scroom::Detail::ThreadPool::PriorityT</concept>
+    <concept>Scroom::Detail::ThreadPool::CallableT</concept>
+    <concept>Scroom::Detail::ThreadPool::SharedCallableT</concept>
     <member kind="function">
       <type>::ThreadPool::Ptr</type>
       <name>getDeleter</name>
       <anchorfile>namespaceScroom_1_1Detail_1_1ThreadPool.html</anchorfile>
       <anchor>adbdff2f494948417786589c465d0644a</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>constexpr WeakQueue::Ptr</type>
+      <name>normalize</name>
+      <anchorfile>namespaceScroom_1_1Detail_1_1ThreadPool.html</anchorfile>
+      <anchor>a705e58af3a090ae4b4136144fba335fb</anchor>
+      <arglist>(const Queue::Ptr &amp;queue)</arglist>
+    </member>
+    <member kind="function">
+      <type>constexpr WeakQueue::Ptr</type>
+      <name>normalize</name>
+      <anchorfile>namespaceScroom_1_1Detail_1_1ThreadPool.html</anchorfile>
+      <anchor>a4bdae0033ddbd23506ad3e6b11dc2457</anchor>
+      <arglist>(WeakQueue::Ptr queue)</arglist>
     </member>
   </compound>
   <compound kind="namespace">

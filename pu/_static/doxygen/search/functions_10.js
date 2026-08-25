@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['queue_0',['queue',['../classThreadPool_1_1Queue.html#a0ea02c66235d2f8bd6da128248d8b55f',1,'ThreadPool::Queue::Queue()'],['../classThreadPool_1_1Queue.html#ab4b8dee0d10fe3f6f58d4ee4775903fc',1,'ThreadPool::Queue::Queue(const Queue &amp;)=delete'],['../classThreadPool_1_1Queue.html#aea78a048117e0a301bbb43f98e1fba73',1,'ThreadPool::Queue::Queue(Queue &amp;&amp;)=delete']]],
+  ['queue_0',['queue',['../classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a0ea02c66235d2f8bd6da128248d8b55f',1,'Scroom::Detail::ThreadPool::Queue::Queue()'],['../classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a9bbbf72923dddcc1d072981cd32bac8a',1,'Scroom::Detail::ThreadPool::Queue::Queue(const Queue &amp;)=delete'],['../classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a4a9c0a5e876c2a3f42200e02fb9e429c',1,'Scroom::Detail::ThreadPool::Queue::Queue(Queue &amp;&amp;)=delete']]],
   ['queueexists_1',['queueExists',['../classScroom_1_1Detail_1_1ThreadPool_1_1QueueLock.html#af7ab49efcadabf4dfdf12cba89039e65',1,'Scroom::Detail::ThreadPool::QueueLock']]],
   ['queueimpl_2',['QueueImpl',['../classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html#a7a5b44d88afe52565c4b1760ab0792b6',1,'Scroom::Detail::ThreadPool::QueueImpl']]],
   ['queuejumper_3',['QueueJumper',['../classQueueJumper.html#a81c278d92787fd90e1690a6f0dea7ef9',1,'QueueJumper']]],

@@ -9,5 +9,6 @@ var searchData=
   ['bitmapsurface_6',['BitmapSurface',['../classScroom_1_1Bitmap_1_1BitmapSurface.html',1,'Scroom::Bitmap']]],
   ['blob_7',['Blob',['../classScroom_1_1MemoryBlobs_1_1Blob.html',1,'Scroom::MemoryBlobs']]],
   ['blockfactoryinterface_8',['BlockFactoryInterface',['../classScroom_1_1MemoryBlocks_1_1BlockFactoryInterface.html',1,'Scroom::MemoryBlocks']]],
-  ['blockinterface_9',['BlockInterface',['../classScroom_1_1MemoryBlocks_1_1BlockInterface.html',1,'Scroom::MemoryBlocks']]]
+  ['blockinterface_9',['BlockInterface',['../classScroom_1_1MemoryBlocks_1_1BlockInterface.html',1,'Scroom::MemoryBlocks']]],
+  ['builder_10',['Builder',['../classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html',1,'Scroom::Detail::ThreadPool']]]
 ];

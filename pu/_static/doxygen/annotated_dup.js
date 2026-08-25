@@ -62,10 +62,13 @@ var annotated_dup =
       ] ],
       [ "Detail", "namespaceScroom_1_1Detail.html", [
         [ "ThreadPool", "namespaceScroom_1_1Detail_1_1ThreadPool.html", [
+          [ "Builder", "classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html", "classScroom_1_1Detail_1_1ThreadPool_1_1Builder" ],
           [ "FunctionAdditor", "classScroom_1_1Detail_1_1ThreadPool_1_1FunctionAdditor.html", "classScroom_1_1Detail_1_1ThreadPool_1_1FunctionAdditor" ],
           [ "FunctionMultiplier", "classScroom_1_1Detail_1_1ThreadPool_1_1FunctionMultiplier.html", "classScroom_1_1Detail_1_1ThreadPool_1_1FunctionMultiplier" ],
+          [ "Queue", "classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html", "classScroom_1_1Detail_1_1ThreadPool_1_1Queue" ],
           [ "QueueImpl", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl" ],
-          [ "QueueLock", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueLock.html", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueLock" ]
+          [ "QueueLock", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueLock.html", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueLock" ],
+          [ "WeakQueue", "classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html", "classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue" ]
         ] ],
         [ "ClearDefaultLogger", "structScroom_1_1Detail_1_1ClearDefaultLogger.html", "structScroom_1_1Detail_1_1ClearDefaultLogger" ]
       ] ],

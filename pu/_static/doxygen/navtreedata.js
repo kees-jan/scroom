@@ -43,6 +43,7 @@ var NAVTREE =
         [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
     ] ],
+    [ "Concepts", "concepts.html", "concepts" ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -80,21 +81,22 @@ var NAVTREEINDEX =
 "classOperations.html#a4dfbdbd5254e8ee2ddcc984a3d46c3c2",
 "classProgressInterfaceStub.html#ab8e8094aca5f6609f8375ebe03975a48",
 "classScroom_1_1Bookkeeping_1_1Detail_1_1TokenAddition.html#a1b5b0605d0baa2e318837d7d3cf716a6",
-"classScroom_1_1GtkTestHelpers_1_1GtkMainLoop.html#ac832e6d4a60f092e9a50d2f44f7e3854",
-"classScroom_1_1Semaphore.html#abe1710f776442562cb3a7ead40be9d26",
-"classScroom_1_1Utils_1_1Observable.html#aebd85f42cb1237848725431cf4363562",
-"classScroom_1_1Utils_1_1Rectangle.html#a193a42cdd207109ce301d307246feb62",
-"classScroom_1_1Utils_1_1TweakRulers.html#a8dd0495ce1c7ca79673b6405890621f2",
-"classTileInitialisationObserver.html#a1469a567cc8b3a84f895dc28a06d471d",
-"classView.html#a51a2691c469396780b3cdd884eb2c01e",
-"classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html",
-"determine-size-test_8cc.html#a647feab9aa2cd7fab2763594e221173d",
-"globals_func_c.html",
-"namespaceScroom_1_1Detail_1_1ThreadPool.html#adbdff2f494948417786589c465d0644a",
-"observable-tests_8cc.html#aa5e038250293bf7d265e67cd5d53264d",
-"rectangle_8hh.html#a92a4e558bc042d79aa5bdd50770f699b",
-"showmetadatainterface_8hh.html#afa30d0559ca625b8a3ef5e5fd42ab65b",
-"threadpool_8hh.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b"
+"classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html#a0ba3013ca14c6fbf310043ca25257be0",
+"classScroom_1_1MemoryBlocks_1_1Page.html#a0bcb4f3885e803b421c7be3ae7235099",
+"classScroom_1_1Utils_1_1Detail_1_1Registration.html#a0bc6b88c23a6dd26782db02886dfcccc",
+"classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer_1_1Child.html#a6f07e6a0bae6c8520c174eecf7f94be5",
+"classScroom_1_1Utils_1_1Segment.html#ac38f7461d5b5fe7fecbb051957259b5e",
+"classThreadPool.html#a72b7ee59b6fd4d2266233334f9e0011b",
+"classTransparentOverlayViewInfo.html#a10cd3619220caa76bf20c6865651b085",
+"classanonymous__namespace_02determine-size-test_8cc_03_1_1ViewInterfaceDummy.html#aa9fa1e1dbda3263d1acb6320cdbababb",
+"context-tests_8cc.html#a486a6b2d45f801d21102b6b7966d6ceb",
+"functions_n.html",
+"measure-framerate-callbacks_8cc.html#af71bb5d6a6f45d722a45b29224475f69",
+"namespaceanonymous__namespace_02sizedeterminer_8cc_03.html#aec3970e572bcc6e1975f38686a3669cf",
+"progressinterfacebroadcaster-tests_8cc.html#a75c0eb3ba1355d3dcb29c04578cea360",
+"sampleiterator-tests_8cc.html#a2cbaf8dfcd8cee722fce16efb966c727",
+"threadpool-queue-tests_8cc.html#a118eec45f71a34f50d9d8a5a42c98e56",
+"view_8hh_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

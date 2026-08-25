@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-48-g70093e59</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-53-g249921b6</span>
    </div>
   </td>
  </tr>
@@ -149,8 +149,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:ab0f47c9ecd94519e775b5c556c054a06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="classThreadPool_1_1Queue.html">ThreadPool::Queue</a> implementation class.</p>
-<p>Keeps track of whether the actual <a class="el" href="classThreadPool_1_1Queue.html">ThreadPool::Queue</a> still exists, and whether jobs are currently being executed. When the last reference to the <a class="el" href="classThreadPool_1_1Queue.html">ThreadPool::Queue</a> is being deleted, it calls <a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html#a0ba3013ca14c6fbf310043ca25257be0">deletingQueue()</a>, which blocks until all jobs finish executing. </p>
+<div class="textblock"><p><a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html">ThreadPool::Queue</a> implementation class.</p>
+<p>Keeps track of whether the actual <a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html">ThreadPool::Queue</a> still exists, and whether jobs are currently being executed. When the last reference to the <a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html">ThreadPool::Queue</a> is being deleted, it calls <a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html#a0ba3013ca14c6fbf310043ca25257be0">deletingQueue()</a>, which blocks until all jobs finish executing. </p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="ae661fe0412325b7bf8b472615249f30a" name="ae661fe0412325b7bf8b472615249f30a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae661fe0412325b7bf8b472615249f30a">&#9670;&#160;</a></span>Ptr</h2>
@@ -259,7 +259,7 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Indicate that the <a class="el" href="classThreadPool_1_1Queue.html">ThreadPool::Queue</a> is being deleted</p>
+<p>Indicate that the <a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html">ThreadPool::Queue</a> is being deleted</p>
 <p>This sets <code>isDeleted</code> to <code>true</code> and blocks until all jobs have finished executing. </p>
 <div class="fragment"><div class="line"><span class="lineno">   21</span>{</div>
 <div class="line"><span class="lineno">   22</span>  boost::mutex::scoped_lock lock(<a class="code hl_variable" href="classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html#a15aaebdf361598615f8de607a39ec95e">mut</a>);</div>
@@ -338,8 +338,8 @@ Here is the call graph for this function:</div>
 <p>Indicate that a job is being started</p>
 <dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
-    <tr><td class="paramname">true</td><td>if the <a class="el" href="classThreadPool_1_1Queue.html">ThreadPool::Queue</a> still exists </td></tr>
-    <tr><td class="paramname">false</td><td>if the <a class="el" href="classThreadPool_1_1Queue.html">ThreadPool::Queue</a> has been deleted </td></tr>
+    <tr><td class="paramname">true</td><td>if the <a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html">ThreadPool::Queue</a> still exists </td></tr>
+    <tr><td class="paramname">false</td><td>if the <a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html">ThreadPool::Queue</a> has been deleted </td></tr>
   </table>
   </dd>
 </dl>
@@ -423,7 +423,7 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p><code>true</code> if the last reference to <a class="el" href="classThreadPool_1_1Queue.html">ThreadPool::Queue</a> goes away </p>
+<p><code>true</code> if the last reference to <a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html">ThreadPool::Queue</a> goes away </p>
 <div class="fragment"><div class="line"><span class="lineno">   54</span>{<span class="keyword">false</span>}; </div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html#a0ba3013ca14c6fbf310043ca25257be0">deletingQueue()</a>, and <a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html#a7a137b16279026734113bc682a60f158">jobStarted()</a>.</p>

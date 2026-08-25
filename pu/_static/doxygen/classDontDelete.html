@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-48-g70093e59</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-53-g249921b6</span>
    </div>
   </td>
  </tr>
@@ -115,7 +115,7 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
 class DontDelete&lt; T &gt;</div><p>Allow boost shared pointers to asynchronously delete their targets.</p>
 <p>When some objects last shared pointer goes out of scope, the object is deleted. Usually, this is done on the thread that destroys the last pointer. This class allows destruction to be done on a separate thread.</p>
-<p>This is especially advantageous if deleting the object takes a long time and there is no immediate hurry. Deleting <a class="el" href="classThreadPool_1_1Queue.html">ThreadPool::Queue</a> objects, for example, blocks as long as a thread is currently executing a job on the queue. This might take some time you do not wish to wait. </p>
+<p>This is especially advantageous if deleting the object takes a long time and there is no immediate hurry. Deleting <a class="el" href="classThreadPool.html#a29448666b91c5fd9d2b03791bd6b6e7c">ThreadPool::Queue</a> objects, for example, blocks as long as a thread is currently executing a job on the queue. This might take some time you do not wish to wait. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a545608d98d7114db056c7540f6c06925" name="a545608d98d7114db056c7540f6c06925"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a545608d98d7114db056c7540f6c06925">&#9670;&#160;</a></span>operator()()</h2>

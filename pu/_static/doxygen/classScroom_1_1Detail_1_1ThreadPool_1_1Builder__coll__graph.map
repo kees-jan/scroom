@@ -1,0 +1,11 @@
+<map id="Scroom::Detail::ThreadPool::Builder&lt; hasCallable, hasPriority, hasQueue &gt;" name="Scroom::Detail::ThreadPool::Builder&lt; hasCallable, hasPriority, hasQueue &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="19,876,210,1091"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,748,224,813"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,814,117,860,112,860,112,814"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html" title=" " alt="" coords="19,465,210,685"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="117,686,117,731,112,731,112,686"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="27,308,202,403"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="117,403,117,449,112,449,112,403"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html" title=" " alt="" coords="19,5,210,245"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="117,246,117,292,112,292,112,246"/>
+</map>

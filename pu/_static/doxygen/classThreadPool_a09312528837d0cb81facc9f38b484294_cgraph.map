@@ -1,0 +1,11 @@
+<map id="ThreadPool::schedule" name="ThreadPool::schedule">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,70,167,95"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#abc34e4a85eba0d70358edd6d45ee2cc8" title=" " alt="" coords="215,5,413,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,67,220,46,222,51,138,73"/>
+<area shape="rect" id="Node000003" href="$classThreadPool.html#a7d435b8c6eff3ffcf5b9043bd50048c2" title=" " alt="" coords="219,70,409,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="167,80,205,80,205,85,167,85"/>
+<area shape="rect" id="Node000005" href="$classThreadPool.html#a17a52db60287eb770f1e0d546cbbbe01" title=" " alt="" coords="215,119,413,145"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="146,93,242,114,241,119,145,98"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae48cfe05b7bb72f1990557d64ef57acf" title="ThreadPool::Queue." alt="" coords="461,63,660,103"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="410,80,448,80,448,85,410,85"/>
+</map>

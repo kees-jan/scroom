@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-48-g70093e59</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-53-g249921b6</span>
    </div>
   </td>
  </tr>
@@ -167,8 +167,10 @@ Collaboration diagram for CompressedTile:</div>
 <area shape="poly" title=" " alt="" coords="1076,995,871,1240,867,1236,1072,991"/>
 <area shape="rect" title=" " alt="" coords="1237,927,1408,993"/>
 <area shape="poly" title=" " alt="" coords="1303,995,1270,1038,1227,1082,1140,1151,1047,1214,956,1268,875,1312,872,1308,953,1263,1044,1209,1137,1147,1224,1078,1266,1035,1299,991"/>
-<area shape="rect" title=" " alt="" coords="1433,927,1607,993"/>
-<area shape="poly" title=" " alt="" coords="1502,995,1467,1039,1422,1082,1354,1128,1283,1170,1210,1208,1136,1241,995,1297,875,1336,874,1331,993,1292,1134,1236,1207,1203,1281,1165,1352,1123,1418,1078,1463,1036,1497,991"/>
+<area shape="rect" title=" " alt="" coords="1433,927,1573,993"/>
+<area shape="poly" title=" " alt="" coords="1489,994,1461,1039,1443,1062,1422,1082,1356,1131,1286,1174,1212,1213,1138,1247,996,1301,876,1339,874,1334,994,1296,1136,1242,1210,1208,1283,1169,1353,1126,1418,1078,1439,1058,1457,1036,1485,991"/>
+<area shape="rect" title=" " alt="" coords="1491,662,1514,727"/>
+<area shape="poly" title=" " alt="" coords="1505,728,1505,911,1500,911,1500,728"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -335,7 +337,7 @@ Private Attributes</h2></td></tr>
 <tr class="separator:abdcc515dd9b62b94ca90a7672e91d9d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9f3cfcf96b745f1421b4c87737bdf2b" id="r_ab9f3cfcf96b745f1421b4c87737bdf2b"><td class="memItemLeft" align="right" valign="top">boost::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompressedTile.html#ab9f3cfcf96b745f1421b4c87737bdf2b">tileData</a></td></tr>
 <tr class="separator:ab9f3cfcf96b745f1421b4c87737bdf2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98aab628263791d6330cd6ccfa012d58" id="r_a98aab628263791d6330cd6ccfa012d58"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classThreadPool_1_1Queue.html#ad426620d1b761c124a4aca7175cde034">ThreadPool::Queue::WeakPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompressedTile.html#a98aab628263791d6330cd6ccfa012d58">queue</a></td></tr>
+<tr class="memitem:a98aab628263791d6330cd6ccfa012d58" id="r_a98aab628263791d6330cd6ccfa012d58"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a076e55773e2b1380be46917bf84d47e5">ThreadPool::Queue::WeakPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompressedTile.html#a98aab628263791d6330cd6ccfa012d58">queue</a></td></tr>
 <tr class="separator:a98aab628263791d6330cd6ccfa012d58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e31e3871482ff2d9bffb5be8b44a2de" id="r_a6e31e3871482ff2d9bffb5be8b44a2de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceScroom_1_1Utils.html#a4eff4a800754d2391c7ac5e04d1048d4">Scroom::Utils::WeakKeyMap</a>&lt; <a class="el" href="classViewInterface.html#a3727a3c9912ea31b57d62a8ecfa854bd">ViewInterface::WeakPtr</a>, std::weak_ptr&lt; <a class="el" href="classTileViewState.html">TileViewState</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompressedTile.html#a6e31e3871482ff2d9bffb5be8b44a2de">viewStates</a></td></tr>
 <tr class="separator:a6e31e3871482ff2d9bffb5be8b44a2de"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1182,7 +1184,7 @@ Here is the caller graph for this function:</div>
 <p>Keep track of new <a class="el" href="classTileLoadingObserver.html">TileLoadingObserver</a> registrations. </p>
 <div class="fragment"><div class="line"><span class="lineno">  217</span>{</div>
 <div class="line"><span class="lineno">  218</span>  <a class="code hl_typedef" href="classConstTile.html#a851f2f356430d0fff4c703c23a6e07d9">ConstTile::Ptr</a> <span class="keyword">const</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_variable" href="classCompressedTile.html#af148374ed057295f9e719ee5e7caf105">constTile</a>.lock();</div>
-<div class="line"><span class="lineno">  219</span>  <a class="code hl_typedef" href="classThreadPool_1_1Queue.html#a3096b6f6bf4aab440b938d7c5632a402">ThreadPool::Queue::Ptr</a> queue_ = <a class="code hl_variable" href="classCompressedTile.html#a98aab628263791d6330cd6ccfa012d58">queue</a>.lock();</div>
+<div class="line"><span class="lineno">  219</span>  <a class="code hl_typedef" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae44696440c2b9dd5dbef5c4eda0baec9">ThreadPool::Queue::Ptr</a> queue_ = <a class="code hl_variable" href="classCompressedTile.html#a98aab628263791d6330cd6ccfa012d58">queue</a>.lock();</div>
 <div class="line"><span class="lineno">  220</span> </div>
 <div class="line"><span class="lineno">  221</span>  <span class="keywordflow">if</span>(!<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
 <div class="line"><span class="lineno">  222</span>  {</div>
@@ -1205,7 +1207,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  239</span>      <span class="comment">// Start an asynchronous load</span></div>
 <div class="line"><span class="lineno">  240</span>      <span class="keywordflow">if</span>(!queue_)</div>
 <div class="line"><span class="lineno">  241</span>      {</div>
-<div class="line"><span class="lineno">  242</span>        queue_ = <a class="code hl_function" href="classThreadPool_1_1Queue.html#ae48cfe05b7bb72f1990557d64ef57acf">ThreadPool::Queue::create</a>();</div>
+<div class="line"><span class="lineno">  242</span>        queue_ = <a class="code hl_function" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae48cfe05b7bb72f1990557d64ef57acf">ThreadPool::Queue::create</a>();</div>
 <div class="line"><span class="lineno">  243</span>        <a class="code hl_variable" href="classCompressedTile.html#a98aab628263791d6330cd6ccfa012d58">queue</a> = queue_;</div>
 <div class="line"><span class="lineno">  244</span>      }</div>
 <div class="line"><span class="lineno">  245</span>      <a class="code hl_function" href="threadpool_8hh.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b">CpuBound</a>()-&gt;schedule([<span class="keyword">this</span>] { <a class="code hl_function" href="classCompressedTile.html#a5c520928c3e8faafa0493d77fa7c16d8">do_load</a>(); }, <a class="code hl_define" href="local_8hh.html#aaa596031f81e74e8c57c9af7778907b7">LOAD_PRIO</a>, queue_);</div>
@@ -1227,32 +1229,32 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  261</span>  }</div>
 <div class="line"><span class="lineno">  262</span>}</div>
 <div class="ttc" id="aclassScroom_1_1Bookkeeping_1_1Token_html_ac619f80091875f045710df020bbc5c11"><div class="ttname"><a href="classScroom_1_1Bookkeeping_1_1Token.html#ac619f80091875f045710df020bbc5c11">Scroom::Bookkeeping::Token::add</a></div><div class="ttdeci">void add(const Stuff &amp;s) const</div><div class="ttdef"><b>Definition</b> bookkeepingimpl.hh:191</div></div>
-<div class="ttc" id="aclassThreadPool_1_1Queue_html_a3096b6f6bf4aab440b938d7c5632a402"><div class="ttname"><a href="classThreadPool_1_1Queue.html#a3096b6f6bf4aab440b938d7c5632a402">ThreadPool::Queue::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; Queue &gt; Ptr</div><div class="ttdef"><b>Definition</b> threadpool.hh:78</div></div>
-<div class="ttc" id="aclassThreadPool_1_1Queue_html_ae48cfe05b7bb72f1990557d64ef57acf"><div class="ttname"><a href="classThreadPool_1_1Queue.html#ae48cfe05b7bb72f1990557d64ef57acf">ThreadPool::Queue::create</a></div><div class="ttdeci">static Ptr create()</div><div class="ttdoc">ThreadPool::Queue.</div><div class="ttdef"><b>Definition</b> threadpoolimpl.cc:380</div></div>
+<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Queue_html_ae44696440c2b9dd5dbef5c4eda0baec9"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae44696440c2b9dd5dbef5c4eda0baec9">Scroom::Detail::ThreadPool::Queue::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; Queue &gt; Ptr</div><div class="ttdef"><b>Definition</b> threadpool.hh:76</div></div>
+<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Queue_html_ae48cfe05b7bb72f1990557d64ef57acf"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae48cfe05b7bb72f1990557d64ef57acf">Scroom::Detail::ThreadPool::Queue::create</a></div><div class="ttdeci">static Ptr create()</div><div class="ttdoc">ThreadPool::Queue.</div><div class="ttdef"><b>Definition</b> threadpoolimpl.cc:388</div></div>
 <div class="ttc" id="alocal_8hh_html_aaa596031f81e74e8c57c9af7778907b7"><div class="ttname"><a href="local_8hh.html#aaa596031f81e74e8c57c9af7778907b7">LOAD_PRIO</a></div><div class="ttdeci">#define LOAD_PRIO</div><div class="ttdef"><b>Definition</b> local.hh:10</div></div>
 <div class="ttc" id="apipette-tests_8cc_html_a5437a4a8681ee4e938e2ac034634ce35"><div class="ttname"><a href="pipette-tests_8cc.html#a5437a4a8681ee4e938e2ac034634ce35">token</a></div><div class="ttdeci">Scroom::Bookkeeping::Token const token</div><div class="ttdef"><b>Definition</b> pipette-tests.cc:269</div></div>
-<div class="ttc" id="athreadpool_8hh_html_a4a99c6a6be48be73a9ecf92e6e3f6e9b"><div class="ttname"><a href="threadpool_8hh.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b">CpuBound</a></div><div class="ttdeci">ThreadPool::Ptr CpuBound()</div><div class="ttdef"><b>Definition</b> threadpoolimpl.cc:455</div></div>
+<div class="ttc" id="athreadpool_8hh_html_a4a99c6a6be48be73a9ecf92e6e3f6e9b"><div class="ttname"><a href="threadpool_8hh.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b">CpuBound</a></div><div class="ttdeci">ThreadPool::Ptr CpuBound()</div><div class="ttdef"><b>Definition</b> threadpoolimpl.cc:463</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCompressedTile_a097a41844c75d21396fb64db3c039c8a_cgraph.png" border="0" usemap="#aclassCompressedTile_a097a41844c75d21396fb64db3c039c8a_cgraph" alt=""/></div>
 <map name="aclassCompressedTile_a097a41844c75d21396fb64db3c039c8a_cgraph" id="aclassCompressedTile_a097a41844c75d21396fb64db3c039c8a_cgraph">
 <area shape="rect" title=" " alt="" coords="5,113,197,153"/>
-<area shape="rect" href="classScroom_1_1Bookkeeping_1_1Token.html#ac619f80091875f045710df020bbc5c11" title=" " alt="" coords="257,5,420,45"/>
-<area shape="poly" title=" " alt="" coords="141,111,244,62,274,48,276,53,246,66,144,116"/>
-<area shape="rect" href="classCompressedTile.html#abc632784fd3ff47fee0a75393be60772" title=" " alt="" coords="489,129,709,154"/>
-<area shape="poly" title=" " alt="" coords="197,111,245,105,339,100,432,105,536,123,535,128,432,111,339,105,246,111,198,117"/>
-<area shape="rect" href="threadpoolimpl_8cc.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b" title=" " alt="" coords="295,121,383,146"/>
-<area shape="poly" title=" " alt="" coords="197,131,281,131,281,136,197,136"/>
-<area shape="rect" href="classThreadPool_1_1Queue.html#ae48cfe05b7bb72f1990557d64ef57acf" title="ThreadPool::Queue." alt="" coords="262,171,415,211"/>
-<area shape="poly" title=" " alt="" coords="185,151,249,166,248,172,184,156"/>
-<area shape="rect" href="classCompressedTile.html#a5c520928c3e8faafa0493d77fa7c16d8" title=" " alt="" coords="245,235,432,261"/>
-<area shape="poly" title=" " alt="" coords="131,151,183,186,246,220,269,229,267,234,244,225,181,191,128,156"/>
-<area shape="poly" title=" " alt="" coords="392,233,431,220,502,189,562,158,565,163,504,194,433,225,394,238"/>
-<area shape="rect" href="classCompressedTile.html#a56111eeb0baeaf0b8f2d93e4a81ea99d" title=" " alt="" coords="480,235,719,261"/>
-<area shape="poly" title=" " alt="" coords="432,245,466,245,466,251,432,251"/>
-<area shape="rect" href="classScroom_1_1Utils_1_1Observable.html#ae215a3f722f5894dd8fdc1cb9b190c0e" title=" " alt="" coords="767,228,957,268"/>
-<area shape="poly" title=" " alt="" coords="719,245,753,245,753,251,719,251"/>
+<area shape="rect" href="classScroom_1_1Bookkeeping_1_1Token.html#ac619f80091875f045710df020bbc5c11" title=" " alt="" coords="263,5,426,45"/>
+<area shape="poly" title=" " alt="" coords="141,111,244,62,277,48,279,53,246,66,143,115"/>
+<area shape="rect" href="classCompressedTile.html#abc632784fd3ff47fee0a75393be60772" title=" " alt="" coords="501,129,721,154"/>
+<area shape="poly" title=" " alt="" coords="197,111,245,105,345,99,444,105,548,123,547,128,444,111,345,104,246,111,198,117"/>
+<area shape="rect" href="threadpoolimpl_8cc.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b" title=" " alt="" coords="301,121,389,146"/>
+<area shape="poly" title=" " alt="" coords="197,131,287,131,287,136,197,136"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae48cfe05b7bb72f1990557d64ef57acf" title="ThreadPool::Queue." alt="" coords="245,171,444,211"/>
+<area shape="poly" title=" " alt="" coords="187,151,246,165,245,170,186,156"/>
+<area shape="rect" href="classCompressedTile.html#a5c520928c3e8faafa0493d77fa7c16d8" title=" " alt="" coords="251,235,438,261"/>
+<area shape="poly" title=" " alt="" coords="131,151,183,186,246,220,270,229,268,234,244,225,180,191,128,156"/>
+<area shape="poly" title=" " alt="" coords="402,233,443,220,514,190,574,158,577,163,516,194,445,225,404,238"/>
+<area shape="rect" href="classCompressedTile.html#a56111eeb0baeaf0b8f2d93e4a81ea99d" title=" " alt="" coords="492,235,731,261"/>
+<area shape="poly" title=" " alt="" coords="438,245,478,245,478,251,438,251"/>
+<area shape="rect" href="classScroom_1_1Utils_1_1Observable.html#ae215a3f722f5894dd8fdc1cb9b190c0e" title=" " alt="" coords="779,228,969,268"/>
+<area shape="poly" title=" " alt="" coords="731,245,765,245,765,251,731,251"/>
 </map>
 </div>
 
@@ -1627,7 +1629,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classThreadPool_1_1Queue.html#ad426620d1b761c124a4aca7175cde034">ThreadPool::Queue::WeakPtr</a> CompressedTile::queue</td>
+          <td class="memname"><a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a076e55773e2b1380be46917bf84d47e5">ThreadPool::Queue::WeakPtr</a> CompressedTile::queue</td>
         </tr>
       </table>
   </td>

@@ -18,6 +18,12 @@ var hierarchy =
       [ "Scroom::Utils::Rectangle< T >", "classScroom_1_1Utils_1_1Rectangle.html", null ],
       [ "Scroom::Utils::Segment< T >", "classScroom_1_1Utils_1_1Segment.html", null ]
     ] ],
+    [ "Scroom::Detail::ThreadPool::Builder< hasCallable, hasPriority, hasQueue >::AddCallable< hasCallable_, hasPriority_, hasQueue_ >", "structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddCallable.html", null ],
+    [ "Scroom::Detail::ThreadPool::Builder< hasCallable, hasPriority, hasQueue >::AddCallable< false, hasPriority_, hasQueue_ >", "structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddCallable_3_01false_00_01hasPriority___00_01hasQueue___01_4.html", null ],
+    [ "Scroom::Detail::ThreadPool::Builder< hasCallable, hasPriority, hasQueue >::AddPriority< hasCallable_, hasPriority_, hasQueue_ >", "structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddPriority.html", null ],
+    [ "Scroom::Detail::ThreadPool::Builder< hasCallable, hasPriority, hasQueue >::AddPriority< hasCallable_, false, hasQueue_ >", "structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddPriority_3_01hasCallable___00_01false_00_01hasQueue___01_4.html", null ],
+    [ "Scroom::Detail::ThreadPool::Builder< hasCallable, hasPriority, hasQueue >::AddQueue< hasCallable_, hasPriority_, hasQueue_ >", "structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddQueue.html", null ],
+    [ "Scroom::Detail::ThreadPool::Builder< hasCallable, hasPriority, hasQueue >::AddQueue< hasCallable_, hasPriority_, false >", "structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddQueue_3_01hasCallable___00_01hasPriority___00_01false_01_4.html", null ],
     [ "boost::andable", null, [
       [ "Scroom::Utils::Segment< value_type >", "classScroom_1_1Utils_1_1Segment.html", null ],
       [ "Scroom::Utils::Segment< T >", "classScroom_1_1Utils_1_1Segment.html", null ]
@@ -31,6 +37,7 @@ var hierarchy =
     [ "BitCountLut", "classBitCountLut.html", null ],
     [ "Scroom::TiledBitmap::BitmapMetaData", "structScroom_1_1TiledBitmap_1_1BitmapMetaData.html", null ],
     [ "Scroom::Bitmap::BitmapSurface", "classScroom_1_1Bitmap_1_1BitmapSurface.html", null ],
+    [ "Scroom::Detail::ThreadPool::Builder< hasCallable, hasPriority, hasQueue >", "classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html", null ],
     [ "Scroom::Detail::ClearDefaultLogger", "structScroom_1_1Detail_1_1ClearDefaultLogger.html", null ],
     [ "anonymous_namespace{transparentoverlaypresentation.cc}::ColorComparer", "structanonymous__namespace_02transparentoverlaypresentation_8cc_03_1_1ColorComparer.html", null ],
     [ "Colormap", "classColormap.html", null ],
@@ -391,7 +398,7 @@ var hierarchy =
     [ "PluginInformation", "structPluginInformation.html", null ],
     [ "SizeDeterminer::PresentationData", "classSizeDeterminer_1_1PresentationData.html", null ],
     [ "ThreadPool::PrivateData", "classThreadPool_1_1PrivateData.html", null ],
-    [ "ThreadPool::Queue", "classThreadPool_1_1Queue.html", null ],
+    [ "Scroom::Detail::ThreadPool::Queue", "classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html", null ],
     [ "Scroom::Detail::ThreadPool::QueueImpl", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html", null ],
     [ "QueueJumper", "classQueueJumper.html", null ],
     [ "Scroom::Detail::ThreadPool::QueueLock", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueLock.html", null ],
@@ -448,5 +455,5 @@ var hierarchy =
     [ "Scroom::Utils::ProgressInterfaceBroadcaster::Unsubscriber", "classScroom_1_1Utils_1_1ProgressInterfaceBroadcaster_1_1Unsubscriber.html", null ],
     [ "Scroom::Bookkeeping::Detail::ValueType< V >", "classScroom_1_1Bookkeeping_1_1Detail_1_1ValueType.html", null ],
     [ "WaitForAsyncOp", "classWaitForAsyncOp.html", null ],
-    [ "ThreadPool::WeakQueue", "classThreadPool_1_1WeakQueue.html", null ]
+    [ "Scroom::Detail::ThreadPool::WeakQueue", "classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html", null ]
 ];

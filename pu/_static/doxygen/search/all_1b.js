@@ -16,7 +16,7 @@ var searchData=
   ['_7eon_5fscope_5fexit_13',['~on_scope_exit',['../classScroom_1_1Utils_1_1on__scope__exit.html#af6c3417f141eeaff9fdd7ae17ce64f65',1,'Scroom::Utils::on_scope_exit']]],
   ['_7eoptional_5fcleanup_14',['~optional_cleanup',['../classScroom_1_1Utils_1_1optional__cleanup.html#aa76d3f80e9d77391f66a49a797357d4e',1,'Scroom::Utils::optional_cleanup']]],
   ['_7eprogressbarmanager_15',['~ProgressBarManager',['../classProgressBarManager.html#a322fe1dd1c888ea54ca8624a9dc8eebd',1,'ProgressBarManager']]],
-  ['_7equeue_16',['~Queue',['../classThreadPool_1_1Queue.html#a2c6be4f191a8b6390e39583b0f085149',1,'ThreadPool::Queue']]],
+  ['_7equeue_16',['~Queue',['../classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a2c6be4f191a8b6390e39583b0f085149',1,'Scroom::Detail::ThreadPool::Queue']]],
   ['_7equeuelock_17',['~QueueLock',['../classScroom_1_1Detail_1_1ThreadPool_1_1QueueLock.html#a168151543f6766a8ce874377f3d4408e',1,'Scroom::Detail::ThreadPool::QueueLock']]],
   ['_7eruler_18',['~Ruler',['../classRuler.html#adfd931f9040a611cdc8f7bc75c819c60',1,'Ruler']]],
   ['_7etestdata_19',['~TestData',['../classTestData.html#af4ed2af760afe9e61fcf5333b008b2b9',1,'TestData']]],
@@ -27,5 +27,5 @@ var searchData=
   ['_7eunsubscriber_24',['~Unsubscriber',['../classScroom_1_1Utils_1_1ProgressInterfaceBroadcaster_1_1Unsubscriber.html#a5f466a78ab7fb22d16a16dac5452e8c3',1,'Scroom::Utils::ProgressInterfaceBroadcaster::Unsubscriber']]],
   ['_7eview_25',['~View',['../classView.html#a03c7de75b3d338c79b0fd0100153ca1d',1,'View']]],
   ['_7ewaitforasyncop_26',['~WaitForAsyncOp',['../classWaitForAsyncOp.html#afe80bab9f0e30d034b12cb5a22432d5d',1,'WaitForAsyncOp']]],
-  ['_7eweakqueue_27',['~WeakQueue',['../classThreadPool_1_1WeakQueue.html#a57fb885957b226322315678fb6602697',1,'ThreadPool::WeakQueue']]]
+  ['_7eweakqueue_27',['~WeakQueue',['../classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#af183260eac98db220a1e98d808a770f6',1,'Scroom::Detail::ThreadPool::WeakQueue']]]
 ];

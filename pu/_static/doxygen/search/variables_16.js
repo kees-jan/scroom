@@ -4,7 +4,7 @@ var searchData=
   ['waiter_1',['waiter',['../namespaceanonymous__namespace_02threadpoolimpl_8cc_03.html#a32b816d0a8f58ae1cd2d35e52e0b93ee',1,'anonymous_namespace{threadpoolimpl.cc}']]],
   ['wasdisabled_2',['wasDisabled',['../classPipetteHandler.html#aea8c9cbc3fb7450069b71411a092a91f',1,'PipetteHandler']]],
   ['wb_3',['wb',['../gtkhelper-tests_8cc.html#ad9aaea5ea641523aae2aadd70ea8bc24',1,'gtkhelper-tests.cc']]],
-  ['weak_4',['weak',['../classThreadPool_1_1Queue.html#a78c61eff732a77a1ca300bb560a86d4f',1,'ThreadPool::Queue::weak'],['../tiledbitmap-tests_8cc.html#a3861185c0e344b8370e68ec10cbc097a',1,'weak:&#160;tiledbitmap-tests.cc'],['../threadpool-queueimpl-tests_8cc.html#a8d6ba8c2a43586ca55b3255a0de132e2',1,'weak:&#160;threadpool-queueimpl-tests.cc']]],
+  ['weak_4',['weak',['../classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a9677856e3fdd424bbc4206ffb5804086',1,'Scroom::Detail::ThreadPool::Queue::weak'],['../tiledbitmap-tests_8cc.html#a3861185c0e344b8370e68ec10cbc097a',1,'weak:&#160;tiledbitmap-tests.cc'],['../threadpool-queueimpl-tests_8cc.html#a8d6ba8c2a43586ca55b3255a0de132e2',1,'weak:&#160;threadpool-queueimpl-tests.cc']]],
   ['weakdata_5',['weakData',['../classScroom_1_1MemoryBlobs_1_1Blob.html#ae30591679a07ec57c3d8b6a55fecec01',1,'Scroom::MemoryBlobs::Blob']]],
   ['weakobserver_6',['weakObserver',['../observable-tests_8cc.html#ae5d5c23565b35085a52ec88eba31c893',1,'observable-tests.cc']]],
   ['weakparent_7',['weakParent',['../classDetail_1_1ViewData.html#a6fc56db570e1b05b46f5b20ab3cd4526',1,'Detail::ViewData']]],

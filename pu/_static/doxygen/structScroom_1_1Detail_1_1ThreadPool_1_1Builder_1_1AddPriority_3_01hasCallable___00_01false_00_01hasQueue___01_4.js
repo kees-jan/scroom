@@ -1,0 +1,4 @@
+var structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddPriority_3_01hasCallable___00_01false_00_01hasQueue___01_4 =
+[
+    [ "add", "structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddPriority_3_01hasCallable___00_01false_00_01hasQueue___01_4.html#aa2ea190a6fa3623f2ca5937bb2833f15", null ]
+];
