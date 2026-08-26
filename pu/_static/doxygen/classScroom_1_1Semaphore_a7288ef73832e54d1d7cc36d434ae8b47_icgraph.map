@@ -1,11 +1,9 @@
 <map id="Scroom::Semaphore::V" name="Scroom::Semaphore::V">
-<area shape="rect" id="Node000001" title=" " alt="" coords="255,80,425,105"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="255,55,425,80"/>
 <area shape="rect" id="Node000002" href="$classA.html#a877313daff9be760af89610ab9d3d04f" title=" " alt="" coords="54,5,158,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="295,77,206,45,158,32,159,26,207,39,297,72"/>
-<area shape="rect" id="Node000003" href="$classB.html#a3f8f3a1552ba8c37a8fcc253f9cb8f57" title=" " alt="" coords="54,55,158,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="241,85,158,76,158,70,241,79"/>
-<area shape="rect" id="Node000004" href="$classWaitForAsyncOp.html#a01dcf09800aaba90cc168f4beac3e8c7" title=" " alt="" coords="5,104,207,129"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="241,105,207,109,206,104,241,100"/>
-<area shape="rect" id="Node000005" href="$classA.html#a8d74412b1ff05d7493b4c546795bf405" title=" " alt="" coords="77,153,135,179"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="295,113,207,143,136,162,135,157,206,138,293,108"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="265,54,158,31,159,26,267,49"/>
+<area shape="rect" id="Node000003" href="$classWaitForAsyncOp.html#a01dcf09800aaba90cc168f4beac3e8c7" title=" " alt="" coords="5,55,207,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="241,70,207,70,207,65,241,65"/>
+<area shape="rect" id="Node000004" href="$classA.html#a8d74412b1ff05d7493b4c546795bf405" title=" " alt="" coords="77,104,135,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="266,85,136,113,135,108,265,80"/>
 </map>

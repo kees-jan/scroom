@@ -1,10 +1,8 @@
 var threadpool_tests_8cc =
 [
     [ "A", "classA.html", "classA" ],
-    [ "B< R >", "classB.html", "classB" ],
     [ "add", "threadpool-tests_8cc.html#ae28512d7a9b9132257981ed5ecbce069", null ],
     [ "EXPECT_EQ", "threadpool-tests_8cc.html#a4961d5dff6ba48f1370f2f75956a70e4", null ],
-    [ "EXPECT_EQ", "threadpool-tests_8cc.html#a28c7cb30e09714668c9e01ce34250da8", null ],
     [ "EXPECT_FALSE", "threadpool-tests_8cc.html#a3419fa470aef5cf26bafe366ac0528d1", null ],
     [ "EXPECT_FALSE", "threadpool-tests_8cc.html#aead228cf2bf8e21f06223115ed987bbf", null ],
     [ "EXPECT_FALSE", "threadpool-tests_8cc.html#ab8e061faa43d857b953b9665efe2b951", null ],
@@ -20,8 +18,6 @@ var threadpool_tests_8cc =
     [ "long_timeout", "threadpool-tests_8cc.html#acf1a301c89fe656d5f69f8f61b90536f", null ],
     [ "no_op", "threadpool-tests_8cc.html#abc8d36c4d1d17b772ee624f93cb52ce7", null ],
     [ "result", "threadpool-tests_8cc.html#a8b8fa7f94c527d10308419be8e984152", null ],
-    [ "result", "threadpool-tests_8cc.html#ae7b87610809868b699d1fbbbd9256ed6", null ],
-    [ "schedule", "threadpool-tests_8cc.html#a1f95f4c0bf42f8d78aa84af0af4a8551", null ],
     [ "schedule", "threadpool-tests_8cc.html#af777d4775e97e4a9eaf9a67f0a652a12", null ],
     [ "schedule", "threadpool-tests_8cc.html#af6efe4ef6b335b567d755939135bd49e", null ],
     [ "schedule", "threadpool-tests_8cc.html#a37220d27324b8f0eef50b2b244a1c257", null ],

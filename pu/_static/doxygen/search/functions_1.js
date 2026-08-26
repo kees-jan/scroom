@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['b_0',['b',['../classB.html#a943fe7aa6b9eea42c83db59b84c7d080',1,'B::B()'],['../gtkhelper-tests_8cc.html#a76b40d65a91db0d36333b5b1e627d199',1,'b():&#160;gtkhelper-tests.cc']]],
-  ['base_1',['base',['../classScroom_1_1Utils_1_1Base.html#ab5cfb041b339d8cdd32b01f346ac4a33',1,'Scroom::Utils::Base::Base()=default'],['../classScroom_1_1Utils_1_1Base.html#a0905ca89614ba5543bec1668ced1f2bf',1,'Scroom::Utils::Base::Base(const Base &amp;)=delete'],['../classScroom_1_1Utils_1_1Base.html#af745d1e7c7e25e4de67ef69ad92819d3',1,'Scroom::Utils::Base::Base(Base &amp;&amp;)=delete']]],
+  ['b_0',['b',['../gtkhelper-tests_8cc.html#a76b40d65a91db0d36333b5b1e627d199',1,'gtkhelper-tests.cc']]],
+  ['base_1',['base',['../classScroom_1_1Utils_1_1Base.html#a0905ca89614ba5543bec1668ced1f2bf',1,'Scroom::Utils::Base::Base(const Base &amp;)=delete'],['../classScroom_1_1Utils_1_1Base.html#af745d1e7c7e25e4de67ef69ad92819d3',1,'Scroom::Utils::Base::Base(Base &amp;&amp;)=delete'],['../classScroom_1_1Utils_1_1Base.html#ab5cfb041b339d8cdd32b01f346ac4a33',1,'Scroom::Utils::Base::Base()=default']]],
   ['basecounter_2',['BaseCounter',['../classBaseCounter.html#a9bdc0bca3cda11680cb9ade96584637b',1,'BaseCounter']]],
   ['before_3',['before',['../classScroom_1_1Utils_1_1Segment.html#a2a0611fccf06b9f533660e6071512056',1,'Scroom::Utils::Segment']]],
   ['below_4',['below',['../classScroom_1_1Utils_1_1Rectangle.html#a404f0a593691285d4597c354575468f2',1,'Scroom::Utils::Rectangle::below(value_type v) const'],['../classScroom_1_1Utils_1_1Rectangle.html#a770dc77284af75f2bb9eb41e2016cdd2',1,'Scroom::Utils::Rectangle::below(Rectangle&lt; value_type &gt; const &amp;r) const']]],

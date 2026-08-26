@@ -24,7 +24,6 @@ var hierarchy =
     ] ],
     [ "AsyncDeleter< T >", "classAsyncDeleter.html", null ],
     [ "anonymous_namespace{gtkhelper-tests.cc}::B", "classanonymous__namespace_02gtkhelper-tests_8cc_03_1_1B.html", null ],
-    [ "B< R >", "classB.html", null ],
     [ "BaseCounter", "classBaseCounter.html", [
       [ "InvalidatingCounter", "classInvalidatingCounter.html", null ]
     ] ],

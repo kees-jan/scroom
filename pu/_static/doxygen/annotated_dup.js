@@ -159,7 +159,6 @@ var annotated_dup =
     [ "A", "classA.html", "classA" ],
     [ "Aggregate", "classAggregate.html", "classAggregate" ],
     [ "AsyncDeleter", "classAsyncDeleter.html", "classAsyncDeleter" ],
-    [ "B", "classB.html", "classB" ],
     [ "BaseCounter", "classBaseCounter.html", "classBaseCounter" ],
     [ "BitCountLut", "classBitCountLut.html", "classBitCountLut" ],
     [ "ChildView", "classChildView.html", "classChildView" ],

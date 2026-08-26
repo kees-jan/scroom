@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['b_0',['b',['../classanonymous__namespace_02gtkhelper-tests_8cc_03_1_1B.html',1,'anonymous_namespace{gtkhelper-tests.cc}::B'],['../classB.html',1,'B&lt; R &gt;']]],
+  ['b_0',['B',['../classanonymous__namespace_02gtkhelper-tests_8cc_03_1_1B.html',1,'anonymous_namespace{gtkhelper-tests.cc}']]],
   ['base_1',['Base',['../classScroom_1_1Utils_1_1Base.html',1,'Scroom::Utils']]],
   ['basecounter_2',['BaseCounter',['../classBaseCounter.html',1,'']]],
   ['binarysource_3',['BinarySource',['../classScroom_1_1Pnm_1_1BinarySource.html',1,'Scroom::Pnm']]],

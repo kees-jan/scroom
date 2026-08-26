@@ -2518,10 +2518,7 @@
     <namespace>Scroom</namespace>
     <namespace>Scroom::Detail</namespace>
     <namespace>Scroom::Detail::ThreadPool</namespace>
-    <concept>Scroom::Detail::ThreadPool::QueueT</concept>
-    <concept>Scroom::Detail::ThreadPool::PriorityT</concept>
     <concept>Scroom::Detail::ThreadPool::CallableT</concept>
-    <concept>Scroom::Detail::ThreadPool::SharedCallableT</concept>
     <member kind="enumvalue">
       <name>PRIO_HIGHEST</name>
       <anchorfile>threadpool_8hh.html</anchorfile>
@@ -3729,7 +3726,6 @@
     <includes id="semaphore_8hh" name="semaphore.hh" local="no" import="no" module="no" objc="no">scroom/semaphore.hh</includes>
     <includes id="helpers_8hh" name="helpers.hh" local="yes" import="no" module="no" objc="no">helpers.hh</includes>
     <class kind="class">A</class>
-    <class kind="class">B</class>
     <member kind="function">
       <type>const millisec</type>
       <name>short_timeout</name>
@@ -3829,20 +3825,6 @@
       <arglist>(has_exactly_n_threads(&amp;pool, 0))</arglist>
     </member>
     <member kind="function">
-      <type>pool</type>
-      <name>schedule</name>
-      <anchorfile>threadpool-tests_8cc.html</anchorfile>
-      <anchor>a1f95f4c0bf42f8d78aa84af0af4a8551</anchor>
-      <arglist>(A::create(&amp;a))</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>EXPECT_TRUE</name>
-      <anchorfile>threadpool-tests_8cc.html</anchorfile>
-      <anchor>aa68c957be69556000a200bb8b4d19737</anchor>
-      <arglist>(a.P(long_timeout))</arglist>
-    </member>
-    <member kind="function">
       <type>boost::unique_future&lt; int &gt;</type>
       <name>result</name>
       <anchorfile>threadpool-tests_8cc.html</anchorfile>
@@ -3865,24 +3847,17 @@
     </member>
     <member kind="function">
       <type></type>
-      <name>EXPECT_EQ</name>
+      <name>EXPECT_TRUE</name>
       <anchorfile>threadpool-tests_8cc.html</anchorfile>
-      <anchor>a4961d5dff6ba48f1370f2f75956a70e4</anchor>
-      <arglist>(42, result.get())</arglist>
-    </member>
-    <member kind="function">
-      <type>boost::unique_future&lt; bool &gt;</type>
-      <name>result</name>
-      <anchorfile>threadpool-tests_8cc.html</anchorfile>
-      <anchor>ae7b87610809868b699d1fbbbd9256ed6</anchor>
-      <arglist>(pool.schedule(B&lt; bool &gt;::create(&amp;a, false)))</arglist>
+      <anchor>aa68c957be69556000a200bb8b4d19737</anchor>
+      <arglist>(a.P(long_timeout))</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>threadpool-tests_8cc.html</anchorfile>
-      <anchor>a28c7cb30e09714668c9e01ce34250da8</anchor>
-      <arglist>(false, result.get())</arglist>
+      <anchor>a4961d5dff6ba48f1370f2f75956a70e4</anchor>
+      <arglist>(42, result.get())</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -9129,53 +9104,6 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>B</name>
-    <filename>classB.html</filename>
-    <templarg>typename R</templarg>
-    <member kind="typedef">
-      <type>std::shared_ptr&lt; B&lt; R &gt; &gt;</type>
-      <name>Ptr</name>
-      <anchorfile>classB.html</anchorfile>
-      <anchor>a5574f1c0e8652aab70c042f59bec7158</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>B</name>
-      <anchorfile>classB.html</anchorfile>
-      <anchor>a943fe7aa6b9eea42c83db59b84c7d080</anchor>
-      <arglist>(Semaphore *s_, R result_)</arglist>
-    </member>
-    <member kind="function">
-      <type>R</type>
-      <name>operator()</name>
-      <anchorfile>classB.html</anchorfile>
-      <anchor>a3f8f3a1552ba8c37a8fcc253f9cb8f57</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static Ptr</type>
-      <name>create</name>
-      <anchorfile>classB.html</anchorfile>
-      <anchor>a8d4a36f9d7c0a0e432b65d285ffa413f</anchor>
-      <arglist>(Semaphore *s, R result)</arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>Semaphore *</type>
-      <name>s</name>
-      <anchorfile>classB.html</anchorfile>
-      <anchor>a63e36b4d0ec2fe67ef2b093414e5712d</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>R</type>
-      <name>result</name>
-      <anchorfile>classB.html</anchorfile>
-      <anchor>a51926ecf60905720aa1b6067497625cd</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
     <name>Scroom::Utils::Base</name>
     <filename>classScroom_1_1Utils_1_1Base.html</filename>
     <member kind="function">
@@ -9788,13 +9716,6 @@
       <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
       <anchor>a99707f22dd5c5b26496b8a144c133a1e</anchor>
       <arglist>(CallableT auto &amp;&amp;c)</arglist>
-    </member>
-    <member kind="function">
-      <type>constexpr auto</type>
-      <name>add</name>
-      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
-      <anchor>ab56d3ffe1863d77d7480621d2bcff8cf</anchor>
-      <arglist>(SharedCallableT auto &amp;&amp;c)</arglist>
     </member>
     <member kind="function">
       <type>constexpr auto</type>
@@ -24946,18 +24867,6 @@
     <name>Scroom::Detail::ThreadPool::CallableT</name>
     <filename>conceptScroom_1_1Detail_1_1ThreadPool_1_1CallableT.html</filename>
   </compound>
-  <compound kind="concept">
-    <name>Scroom::Detail::ThreadPool::PriorityT</name>
-    <filename>conceptScroom_1_1Detail_1_1ThreadPool_1_1PriorityT.html</filename>
-  </compound>
-  <compound kind="concept">
-    <name>Scroom::Detail::ThreadPool::QueueT</name>
-    <filename>conceptScroom_1_1Detail_1_1ThreadPool_1_1QueueT.html</filename>
-  </compound>
-  <compound kind="concept">
-    <name>Scroom::Detail::ThreadPool::SharedCallableT</name>
-    <filename>conceptScroom_1_1Detail_1_1ThreadPool_1_1SharedCallableT.html</filename>
-  </compound>
   <compound kind="namespace">
     <name>anonymous_namespace{callbacks.cc}</name>
     <filename>namespaceanonymous__namespace_02callbacks_8cc_03.html</filename>
@@ -25498,10 +25407,7 @@
     <class kind="class">Scroom::Detail::ThreadPool::QueueImpl</class>
     <class kind="class">Scroom::Detail::ThreadPool::QueueLock</class>
     <class kind="class">Scroom::Detail::ThreadPool::WeakQueue</class>
-    <concept>Scroom::Detail::ThreadPool::QueueT</concept>
-    <concept>Scroom::Detail::ThreadPool::PriorityT</concept>
     <concept>Scroom::Detail::ThreadPool::CallableT</concept>
-    <concept>Scroom::Detail::ThreadPool::SharedCallableT</concept>
     <member kind="function">
       <type>::ThreadPool::Ptr</type>
       <name>getDeleter</name>
@@ -25510,32 +25416,11 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>constexpr WeakQueue::Ptr</type>
-      <name>normalize</name>
-      <anchorfile>namespaceScroom_1_1Detail_1_1ThreadPool.html</anchorfile>
-      <anchor>a705e58af3a090ae4b4136144fba335fb</anchor>
-      <arglist>(const Queue::Ptr &amp;queue)</arglist>
-    </member>
-    <member kind="function">
-      <type>constexpr WeakQueue::Ptr</type>
-      <name>normalize</name>
-      <anchorfile>namespaceScroom_1_1Detail_1_1ThreadPool.html</anchorfile>
-      <anchor>a4bdae0033ddbd23506ad3e6b11dc2457</anchor>
-      <arglist>(WeakQueue::Ptr queue)</arglist>
-    </member>
-    <member kind="function">
       <type>constexpr auto</type>
       <name>addCallable</name>
       <anchorfile>namespaceScroom_1_1Detail_1_1ThreadPool.html</anchorfile>
       <anchor>a6db7976aeeb6a5507b6c460287309454</anchor>
       <arglist>(Builder&lt; false, hasPriority, hasQueue, R &gt; b, CallableT auto &amp;&amp;c)</arglist>
-    </member>
-    <member kind="function">
-      <type>constexpr auto</type>
-      <name>addCallable</name>
-      <anchorfile>namespaceScroom_1_1Detail_1_1ThreadPool.html</anchorfile>
-      <anchor>ae5e8fad3624e39fb69eb24cd9e11967e</anchor>
-      <arglist>(Builder&lt; false, hasPriority, hasQueue, R &gt; b, SharedCallableT auto &amp;&amp;c)</arglist>
     </member>
     <member kind="function">
       <type>constexpr auto</type>
