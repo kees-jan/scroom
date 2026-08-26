@@ -12,7 +12,7 @@ var searchData=
   ['anonymous_5fnamespace_7bprogressbarmanager_2ecc_7d_9',['anonymous_namespace{progressbarmanager.cc}',['../namespaceanonymous__namespace_02progressbarmanager_8cc_03.html',1,'']]],
   ['anonymous_5fnamespace_7bsampleiterator_2dtests_2ecc_7d_10',['anonymous_namespace{sampleiterator-tests.cc}',['../namespaceanonymous__namespace_02sampleiterator-tests_8cc_03.html',1,'']]],
   ['anonymous_5fnamespace_7bsizedeterminer_2ecc_7d_11',['anonymous_namespace{sizedeterminer.cc}',['../namespaceanonymous__namespace_02sizedeterminer_8cc_03.html',1,'']]],
-  ['anonymous_5fnamespace_7bthreadpoolimpl_2ecc_7d_12',['anonymous_namespace{threadpoolimpl.cc}',['../namespaceanonymous__namespace_02threadpoolimpl_8cc_03.html',1,'']]],
+  ['anonymous_5fnamespace_7bthreadpool_2ecc_7d_12',['anonymous_namespace{threadpool.cc}',['../namespaceanonymous__namespace_02threadpool_8cc_03.html',1,'']]],
   ['anonymous_5fnamespace_7btiffsource_2ecc_7d_13',['anonymous_namespace{tiffsource.cc}',['../namespaceanonymous__namespace_02tiffsource_8cc_03.html',1,'']]],
   ['anonymous_5fnamespace_7btiledbitmappresentation_2ecc_7d_14',['anonymous_namespace{tiledbitmappresentation.cc}',['../namespaceanonymous__namespace_02tiledbitmappresentation_8cc_03.html',1,'']]],
   ['anonymous_5fnamespace_7btransparentoverlaypresentation_2ecc_7d_15',['anonymous_namespace{transparentoverlaypresentation.cc}',['../namespaceanonymous__namespace_02transparentoverlaypresentation_8cc_03.html',1,'']]],

@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-50-g4166b1bf</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-51-gfe95d8654</span>
    </div>
   </td>
  </tr>
@@ -575,7 +575,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   39</span>}</div>
 <div class="ttc" id="aclassTileViewState_html_a47af900d05c60870942f3c852c59f88d"><div class="ttname"><a href="classTileViewState.html#a47af900d05c60870942f3c852c59f88d">TileViewState::cpuBound</a></div><div class="ttdeci">ThreadPool::Ptr cpuBound</div><div class="ttdef"><b>Definition</b> tileviewstate.hh:58</div></div>
 <div class="ttc" id="aclassTileViewState_html_aba757e6de54fcd9c0f0958f08660d4ee"><div class="ttname"><a href="classTileViewState.html#aba757e6de54fcd9c0f0958f08660d4ee">TileViewState::parent</a></div><div class="ttdeci">std::shared_ptr&lt; CompressedTile &gt; parent</div><div class="ttdef"><b>Definition</b> tileviewstate.hh:44</div></div>
-<div class="ttc" id="athreadpool_8hh_html_a4a99c6a6be48be73a9ecf92e6e3f6e9b"><div class="ttname"><a href="threadpool_8hh.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b">CpuBound</a></div><div class="ttdeci">ThreadPool::Ptr CpuBound()</div><div class="ttdef"><b>Definition</b> threadpoolimpl.cc:441</div></div>
+<div class="ttc" id="athreadpool_8hh_html_a4a99c6a6be48be73a9ecf92e6e3f6e9b"><div class="ttname"><a href="threadpool_8hh.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b">CpuBound</a></div><div class="ttdeci">ThreadPool::Ptr CpuBound()</div><div class="ttdef"><b>Definition</b> threadpool.cc:441</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -635,8 +635,10 @@ Here is the call graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="5,13,157,38"/>
 <area shape="rect" href="classTileViewState.html#ad24f5d685c8474a955e26aeb1f3c4cb1" title=" " alt="" coords="205,13,352,38"/>
 <area shape="poly" title=" " alt="" coords="157,23,191,23,191,28,157,28"/>
-<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a60a5cfe128cc80c5d5fbbd6494fb62e2" title=" " alt="" coords="400,5,599,45"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ac3d3ac1d5d45d2795778a63a45470be5" title=" " alt="" coords="400,5,599,45"/>
 <area shape="poly" title=" " alt="" coords="353,23,386,23,386,28,353,28"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a7cfca3637d57c4a9e37351b3426ffd40" title=" " alt="" coords="647,5,845,45"/>
+<area shape="poly" title=" " alt="" coords="599,23,633,23,633,28,599,28"/>
 </map>
 </div>
 
@@ -868,7 +870,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  119</span> </div>
 <div class="line"><span class="lineno">  120</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="classTileViewState.html#a0705c5be8659166ede2b591bf1c4c3c2">state</a> &gt;= <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842facb0e11734f1bbe827dfb4f08117485e8">LOADED</a> &amp;&amp; <a class="code hl_variable" href="classTileViewState.html#a29b0becb1c1c438a908679ce9258db48">desiredState</a> &gt;= <a class="code hl_variable" href="classTileViewState.html#a0705c5be8659166ede2b591bf1c4c3c2">state</a> &amp;&amp; !<a class="code hl_variable" href="classTileViewState.html#a16f233f55d9d36d5e28311eca59c7455">queue</a> &amp;&amp; tbvd_)</div>
 <div class="line"><span class="lineno">  121</span>  {</div>
-<div class="line"><span class="lineno">  122</span>    <a class="code hl_variable" href="classTileViewState.html#a16f233f55d9d36d5e28311eca59c7455">queue</a> = <a class="code hl_function" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a60a5cfe128cc80c5d5fbbd6494fb62e2">ThreadPool::Queue::createAsync</a>();</div>
+<div class="line"><span class="lineno">  122</span>    <a class="code hl_variable" href="classTileViewState.html#a16f233f55d9d36d5e28311eca59c7455">queue</a> = <a class="code hl_function" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ac3d3ac1d5d45d2795778a63a45470be5">ThreadPool::Queue::createAsync</a>();</div>
 <div class="line"><span class="lineno">  123</span>    <a class="code hl_variable" href="classTileViewState.html#a2043a48ef98f6873352250eb31a8b43d">weakQueue</a> = <a class="code hl_variable" href="classTileViewState.html#a16f233f55d9d36d5e28311eca59c7455">queue</a>-&gt;getWeak();</div>
 <div class="line"><span class="lineno">  124</span> </div>
 <div class="line"><span class="lineno">  125</span>    <a class="code hl_variable" href="classTileViewState.html#a47af900d05c60870942f3c852c59f88d">cpuBound</a>-&gt;schedule(</div>
@@ -877,7 +879,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  128</span>  }</div>
 <div class="line"><span class="lineno">  129</span>}</div>
 <div class="ttc" id="aassertions_8hh_html_a2679784148a3d02d3f8ffd6ec2ae80f4"><div class="ttname"><a href="assertions_8hh.html#a2679784148a3d02d3f8ffd6ec2ae80f4">defect_message</a></div><div class="ttdeci">#define defect_message(m)</div><div class="ttdef"><b>Definition</b> assertions.hh:49</div></div>
-<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Queue_html_a60a5cfe128cc80c5d5fbbd6494fb62e2"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a60a5cfe128cc80c5d5fbbd6494fb62e2">Scroom::Detail::ThreadPool::Queue::createAsync</a></div><div class="ttdeci">static Ptr createAsync()</div><div class="ttdef"><b>Definition</b> threadpoolimpl.cc:368</div></div>
+<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Queue_html_ac3d3ac1d5d45d2795778a63a45470be5"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ac3d3ac1d5d45d2795778a63a45470be5">Scroom::Detail::ThreadPool::Queue::createAsync</a></div><div class="ttdeci">static Ptr createAsync()</div><div class="ttdef"><b>Definition</b> threadpool.cc:368</div></div>
 <div class="ttc" id="aclassTileViewState_html_a6ed489ad4c3346c14fd15d3ff46924a4"><div class="ttname"><a href="classTileViewState.html#a6ed489ad4c3346c14fd15d3ff46924a4">TileViewState::tile</a></div><div class="ttdeci">ConstTile::Ptr tile</div><div class="ttdef"><b>Definition</b> tileviewstate.hh:51</div></div>
 <div class="ttc" id="alocal_8hh_html_aaa596031f81e74e8c57c9af7778907b7"><div class="ttname"><a href="local_8hh.html#aaa596031f81e74e8c57c9af7778907b7">LOAD_PRIO</a></div><div class="ttdeci">#define LOAD_PRIO</div><div class="ttdef"><b>Definition</b> local.hh:10</div></div>
 </div><!-- fragment -->
@@ -888,8 +890,10 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classTileViewState_ad24f5d685c8474a955e26aeb1f3c4cb1_cgraph.png" border="0" usemap="#aclassTileViewState_ad24f5d685c8474a955e26aeb1f3c4cb1_cgraph" alt=""/></div>
 <map name="aclassTileViewState_ad24f5d685c8474a955e26aeb1f3c4cb1_cgraph" id="aclassTileViewState_ad24f5d685c8474a955e26aeb1f3c4cb1_cgraph">
 <area shape="rect" title=" " alt="" coords="5,13,152,38"/>
-<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a60a5cfe128cc80c5d5fbbd6494fb62e2" title=" " alt="" coords="200,5,399,45"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ac3d3ac1d5d45d2795778a63a45470be5" title=" " alt="" coords="200,5,399,45"/>
 <area shape="poly" title=" " alt="" coords="153,23,186,23,186,28,153,28"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a7cfca3637d57c4a9e37351b3426ffd40" title=" " alt="" coords="447,5,645,45"/>
+<area shape="poly" title=" " alt="" coords="399,23,433,23,433,28,399,28"/>
 </map>
 </div>
 <div class="dynheader">
@@ -1155,8 +1159,10 @@ Here is the call graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="5,13,208,38"/>
 <area shape="rect" href="classTileViewState.html#ad24f5d685c8474a955e26aeb1f3c4cb1" title=" " alt="" coords="256,13,403,38"/>
 <area shape="poly" title=" " alt="" coords="208,23,242,23,242,28,208,28"/>
-<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a60a5cfe128cc80c5d5fbbd6494fb62e2" title=" " alt="" coords="451,5,649,45"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ac3d3ac1d5d45d2795778a63a45470be5" title=" " alt="" coords="451,5,649,45"/>
 <area shape="poly" title=" " alt="" coords="403,23,437,23,437,28,403,28"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a7cfca3637d57c4a9e37351b3426ffd40" title=" " alt="" coords="697,5,896,45"/>
+<area shape="poly" title=" " alt="" coords="650,23,683,23,683,28,650,28"/>
 </map>
 </div>
 
@@ -1221,8 +1227,10 @@ Here is the call graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="5,13,184,38"/>
 <area shape="rect" href="classTileViewState.html#ad24f5d685c8474a955e26aeb1f3c4cb1" title=" " alt="" coords="232,13,379,38"/>
 <area shape="poly" title=" " alt="" coords="184,23,218,23,218,28,184,28"/>
-<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a60a5cfe128cc80c5d5fbbd6494fb62e2" title=" " alt="" coords="427,5,625,45"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ac3d3ac1d5d45d2795778a63a45470be5" title=" " alt="" coords="427,5,625,45"/>
 <area shape="poly" title=" " alt="" coords="379,23,413,23,413,28,379,28"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a7cfca3637d57c4a9e37351b3426ffd40" title=" " alt="" coords="673,5,872,45"/>
+<area shape="poly" title=" " alt="" coords="626,23,659,23,659,28,626,28"/>
 </map>
 </div>
 
@@ -1278,8 +1286,10 @@ Here is the call graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="5,13,193,38"/>
 <area shape="rect" href="classTileViewState.html#ad24f5d685c8474a955e26aeb1f3c4cb1" title=" " alt="" coords="241,13,388,38"/>
 <area shape="poly" title=" " alt="" coords="194,23,228,23,228,28,194,28"/>
-<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a60a5cfe128cc80c5d5fbbd6494fb62e2" title=" " alt="" coords="436,5,635,45"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ac3d3ac1d5d45d2795778a63a45470be5" title=" " alt="" coords="436,5,635,45"/>
 <area shape="poly" title=" " alt="" coords="389,23,422,23,422,28,389,28"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a7cfca3637d57c4a9e37351b3426ffd40" title=" " alt="" coords="683,5,881,45"/>
+<area shape="poly" title=" " alt="" coords="635,23,669,23,669,28,635,28"/>
 </map>
 </div>
 

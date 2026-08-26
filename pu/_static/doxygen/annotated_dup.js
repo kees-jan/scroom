@@ -15,9 +15,9 @@ var annotated_dup =
     [ "anonymous_namespace{progressbarmanager.cc}", "namespaceanonymous__namespace_02progressbarmanager_8cc_03.html", [
       [ "ProgressBarPulser", "classanonymous__namespace_02progressbarmanager_8cc_03_1_1ProgressBarPulser.html", "classanonymous__namespace_02progressbarmanager_8cc_03_1_1ProgressBarPulser" ]
     ] ],
-    [ "anonymous_namespace{threadpoolimpl.cc}", "namespaceanonymous__namespace_02threadpoolimpl_8cc_03.html", [
-      [ "ThreadList", "classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html", "classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList" ],
-      [ "ThreadWaiter", "classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html", "classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter" ]
+    [ "anonymous_namespace{threadpool.cc}", "namespaceanonymous__namespace_02threadpool_8cc_03.html", [
+      [ "ThreadList", "classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html", "classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList" ],
+      [ "ThreadWaiter", "classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter.html", "classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter" ]
     ] ],
     [ "anonymous_namespace{tiledbitmappresentation.cc}", "namespaceanonymous__namespace_02tiledbitmappresentation_8cc_03.html", [
       [ "OpenTiledBitmapAsPresentation", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation" ],

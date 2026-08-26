@@ -445,9 +445,9 @@ var hierarchy =
       [ "SampleIterator_iterates", "classSampleIterator__iterates.html", null ],
       [ "anonymous_namespace{colormaphelpers_test.cc}::ColormapHelper_Data_Tests", "classanonymous__namespace_02colormaphelpers__test_8cc_03_1_1ColormapHelper__Data__Tests.html", null ]
     ] ],
-    [ "anonymous_namespace{threadpoolimpl.cc}::ThreadList", "classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html", null ],
+    [ "anonymous_namespace{threadpool.cc}::ThreadList", "classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html", null ],
     [ "ThreadPool", "classThreadPool.html", null ],
-    [ "anonymous_namespace{threadpoolimpl.cc}::ThreadWaiter", "classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html", null ],
+    [ "anonymous_namespace{threadpool.cc}::ThreadWaiter", "classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter.html", null ],
     [ "Tile", "classTile.html", null ],
     [ "Scroom::Bookkeeping::Detail::TokenImpl", "classScroom_1_1Bookkeeping_1_1Detail_1_1TokenImpl.html", [
       [ "Scroom::Bookkeeping::Detail::MapTokenImpl< K, V >", "classScroom_1_1Bookkeeping_1_1Detail_1_1MapTokenImpl.html", null ]

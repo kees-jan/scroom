@@ -2652,28 +2652,28 @@
     <namespace>Scroom::Detail::ThreadPool</namespace>
   </compound>
   <compound kind="file">
-    <name>threadpoolimpl.cc</name>
+    <name>threadpool.cc</name>
     <path>libs/threadpool/src/</path>
-    <filename>threadpoolimpl_8cc.html</filename>
+    <filename>threadpool_8cc.html</filename>
     <includes id="assertions_8hh" name="assertions.hh" local="no" import="no" module="no" objc="no">scroom/assertions.hh</includes>
     <includes id="async-deleter_8hh" name="async-deleter.hh" local="no" import="no" module="no" objc="no">scroom/async-deleter.hh</includes>
     <includes id="logger_8hh" name="logger.hh" local="no" import="no" module="no" objc="no">scroom/logger.hh</includes>
     <includes id="threadpool_8hh" name="threadpool.hh" local="no" import="no" module="no" objc="no">scroom/threadpool.hh</includes>
     <includes id="queue_8hh" name="queue.hh" local="yes" import="no" module="no" objc="no">queue.hh</includes>
-    <class kind="class">anonymous_namespace{threadpoolimpl.cc}::ThreadList</class>
-    <class kind="class">anonymous_namespace{threadpoolimpl.cc}::ThreadWaiter</class>
-    <namespace>anonymous_namespace{threadpoolimpl.cc}</namespace>
+    <class kind="class">anonymous_namespace{threadpool.cc}::ThreadList</class>
+    <class kind="class">anonymous_namespace{threadpool.cc}::ThreadWaiter</class>
+    <namespace>anonymous_namespace{threadpool.cc}</namespace>
     <member kind="function">
       <type>ThreadPool::Ptr</type>
       <name>CpuBound</name>
-      <anchorfile>threadpoolimpl_8cc.html</anchorfile>
+      <anchorfile>threadpool_8cc.html</anchorfile>
       <anchor>a4a99c6a6be48be73a9ecf92e6e3f6e9b</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>ThreadPool::Ptr</type>
       <name>Sequentially</name>
-      <anchorfile>threadpoolimpl_8cc.html</anchorfile>
+      <anchorfile>threadpool_8cc.html</anchorfile>
       <anchor>af979353165a7a214dda8f7f289de81ea</anchor>
       <arglist>()</arglist>
     </member>
@@ -9072,8 +9072,8 @@
       <type>static constexpr Builder&lt; hasCallable_, hasPriority_, true, R_ &gt;</type>
       <name>add</name>
       <anchorfile>structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddQueue_3_01hasCallable___00_01hasPriority___00_01false_00_01R___01_4.html</anchorfile>
-      <anchor>a4d2ce49e059d3fcd5acde4d0d58e75e3</anchor>
-      <arglist>(Builder&lt; hasCallable_, hasPriority_, false, R_ &gt; b, const WeakQueue::Ptr queue)</arglist>
+      <anchor>aadc3159f645c39ab51f0f7621e349f9f</anchor>
+      <arglist>(Builder&lt; hasCallable_, hasPriority_, false, R_ &gt; b, WeakQueue::Ptr queue)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -17777,7 +17777,7 @@
       <type></type>
       <name>Queue</name>
       <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
-      <anchor>a0ea02c66235d2f8bd6da128248d8b55f</anchor>
+      <anchor>a7cfca3637d57c4a9e37351b3426ffd40</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
@@ -17812,35 +17812,35 @@
       <type></type>
       <name>~Queue</name>
       <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
-      <anchor>a2c6be4f191a8b6390e39583b0f085149</anchor>
+      <anchor>a00d119db8fa3050da37746e82cbcf94f</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>std::shared_ptr&lt; Scroom::Detail::ThreadPool::QueueImpl &gt;</type>
       <name>get</name>
       <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
-      <anchor>a507f0fcc6f3edf7565652eea7a925430</anchor>
+      <anchor>a0b7f55ed88ee2ca8d51475908c30eb3d</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>std::shared_ptr&lt; WeakQueue &gt;</type>
       <name>getWeak</name>
       <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
-      <anchor>a475a6a4ef37c8aa9ff22cb2cecc59d80</anchor>
+      <anchor>a2119dca72a374f622eade1fc8f472878</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
       <name>create</name>
       <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
-      <anchor>ae48cfe05b7bb72f1990557d64ef57acf</anchor>
+      <anchor>af8f6918d92f8388674bd7bdc1b75b2ec</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
       <name>createAsync</name>
       <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
-      <anchor>a60a5cfe128cc80c5d5fbbd6494fb62e2</anchor>
+      <anchor>ac3d3ac1d5d45d2795778a63a45470be5</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="variable" protection="private">
@@ -20856,76 +20856,76 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>anonymous_namespace{threadpoolimpl.cc}::ThreadList</name>
-    <filename>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html</filename>
+    <name>anonymous_namespace{threadpool.cc}::ThreadList</name>
+    <filename>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html</filename>
     <member kind="typedef">
       <type>std::shared_ptr&lt; ThreadList &gt;</type>
       <name>Ptr</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html</anchorfile>
-      <anchor>add71f75d927b25e10920b33e216b808d</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html</anchorfile>
+      <anchor>a00901cf68d001ec856b18a93d5e63994</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>wait</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html</anchorfile>
-      <anchor>abf93f2d0fa75c03620dd3ef3763728ca</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html</anchorfile>
+      <anchor>aba819ee7e207fe6d7b7281684e46b777</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>add</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html</anchorfile>
-      <anchor>a21055cc122e9988e7af28e8ca27ff16d</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html</anchorfile>
+      <anchor>ae80300f183a0f9a51cc4fd21d0412f6e</anchor>
       <arglist>(const ThreadPool::ThreadPtr &amp;t)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>add</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html</anchorfile>
-      <anchor>a52e7912f076d142faaa8128ac028359d</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html</anchorfile>
+      <anchor>aad0a0148770b1a4cf39fcab72857832e</anchor>
       <arglist>(const std::shared_ptr&lt; void &gt; &amp;t, const std::string &amp;s)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
       <name>instance</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html</anchorfile>
-      <anchor>a3b3efa8982899d0fa6641a868e8cf230</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html</anchorfile>
+      <anchor>a96eb0bd66579e263fd0d04a9b16d1a7a</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" protection="private">
       <type>void</type>
       <name>dumpPointers</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html</anchorfile>
-      <anchor>aaafff3ce0a3650cd001e223613893b89</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html</anchorfile>
+      <anchor>a8994a1f8ac1dd6b12a2070efb60ed8e3</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="variable" protection="private">
       <type>boost::mutex</type>
       <name>mut</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html</anchorfile>
-      <anchor>afd08b401ad5aca09e8e1cc8d9578aee2</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html</anchorfile>
+      <anchor>ae78632edeb482d8b8c43d0856c84d8d6</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
       <type>std::list&lt; ThreadPool::ThreadPtr &gt;</type>
       <name>threads</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html</anchorfile>
-      <anchor>ad97651e0256cc8db36501d834fff73c3</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html</anchorfile>
+      <anchor>a629f4e2d1c3ff4d4ed2d70ac6848dc6f</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
       <type>std::list&lt; std::pair&lt; std::weak_ptr&lt; void &gt;, std::string &gt; &gt;</type>
       <name>pointers</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html</anchorfile>
-      <anchor>ad6be3b38d9b6337e7e927c00804baf51</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html</anchorfile>
+      <anchor>a1a29406cdf092f8c37f1dea595886e96</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
       <type>Scroom::Logger</type>
       <name>logger</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html</anchorfile>
-      <anchor>af0b0d4927fc3744ccb6e5e3968dfbef4</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html</anchorfile>
+      <anchor>a69c55c3714bff6d5c4bba1544b7666c2</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -21071,7 +21071,7 @@
       <type>static Queue::Ptr</type>
       <name>defaultQueue</name>
       <anchorfile>classThreadPool.html</anchorfile>
-      <anchor>a7d435b8c6eff3ffcf5b9043bd50048c2</anchor>
+      <anchor>af5ac6649a5a7711037747ef03c542f18</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="variable" protection="private">
@@ -21097,55 +21097,55 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>anonymous_namespace{threadpoolimpl.cc}::ThreadWaiter</name>
-    <filename>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html</filename>
+    <name>anonymous_namespace{threadpool.cc}::ThreadWaiter</name>
+    <filename>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter.html</filename>
     <member kind="function">
       <type></type>
       <name>ThreadWaiter</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html</anchorfile>
-      <anchor>a14a147147c551446e6e747eb92ca2ba0</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter.html</anchorfile>
+      <anchor>a626c7008f07710560e3a322c9798106d</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>~ThreadWaiter</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html</anchorfile>
-      <anchor>a64c1e6037f2c205c3f80aae7608fe74e</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter.html</anchorfile>
+      <anchor>a56de2cab0cbbcf6fdff9176d1512265f</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ThreadWaiter</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html</anchorfile>
-      <anchor>a99f2f465e3a5030a3de634bde57bb5c9</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter.html</anchorfile>
+      <anchor>a250e02efa74f78a07f236dce0f834574</anchor>
       <arglist>(const ThreadWaiter &amp;)=delete</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ThreadWaiter</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html</anchorfile>
-      <anchor>ad6be116745e1e9712da6576af15141f1</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter.html</anchorfile>
+      <anchor>ae7a9d49b7b968665a059506a5aa53799</anchor>
       <arglist>(ThreadWaiter &amp;&amp;)=delete</arglist>
     </member>
     <member kind="function">
       <type>ThreadWaiter</type>
       <name>operator=</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html</anchorfile>
-      <anchor>a99ce5886c0f33708ca0d75bae56d3d3c</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter.html</anchorfile>
+      <anchor>a46f77d2c17f4200086bfb8456737b081</anchor>
       <arglist>(const ThreadWaiter &amp;)=delete</arglist>
     </member>
     <member kind="function">
       <type>ThreadWaiter</type>
       <name>operator=</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html</anchorfile>
-      <anchor>a2dc6e8cf64a431b2ba35d3bcfc10c750</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter.html</anchorfile>
+      <anchor>a45e3508ee622e0000be4025330f092ab</anchor>
       <arglist>(ThreadWaiter &amp;&amp;)=delete</arglist>
     </member>
     <member kind="variable" protection="private">
       <type>ThreadList::Ptr</type>
       <name>threadList</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html</anchorfile>
-      <anchor>a0b01f8545139812908055c33497d8cb1</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter.html</anchorfile>
+      <anchor>abb0f1734b3cbb05808fec73bc1b809e2</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -24980,7 +24980,7 @@
       <type></type>
       <name>WeakQueue</name>
       <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
-      <anchor>a49c6500371382f9615655df771efbac0</anchor>
+      <anchor>aeb7201763d182b9dd1d8ff5938f1f486</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
@@ -25022,14 +25022,14 @@
       <type>std::shared_ptr&lt; Scroom::Detail::ThreadPool::QueueImpl &gt;</type>
       <name>get</name>
       <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
-      <anchor>a1faec7781376e793e0a71688ef66105b</anchor>
+      <anchor>af1beae1b260b67473fc087774d1124fe</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
       <name>create</name>
       <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
-      <anchor>a505621d98fa3f01d828eb90e8ec23bbd</anchor>
+      <anchor>a68659e2a375ce2929295fdf3d8bccf4c</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="variable" protection="private">
@@ -25243,22 +25243,22 @@
     </member>
   </compound>
   <compound kind="namespace">
-    <name>anonymous_namespace{threadpoolimpl.cc}</name>
-    <filename>namespaceanonymous__namespace_02threadpoolimpl_8cc_03.html</filename>
-    <class kind="class">anonymous_namespace{threadpoolimpl.cc}::ThreadList</class>
-    <class kind="class">anonymous_namespace{threadpoolimpl.cc}::ThreadWaiter</class>
+    <name>anonymous_namespace{threadpool.cc}</name>
+    <filename>namespaceanonymous__namespace_02threadpool_8cc_03.html</filename>
+    <class kind="class">anonymous_namespace{threadpool.cc}::ThreadList</class>
+    <class kind="class">anonymous_namespace{threadpool.cc}::ThreadWaiter</class>
     <member kind="function">
       <type>std::shared_ptr&lt; T &gt;</type>
       <name>NotifyThreadList</name>
-      <anchorfile>namespaceanonymous__namespace_02threadpoolimpl_8cc_03.html</anchorfile>
-      <anchor>abdfe0da4acdb4d80ca166d9cd7ae2e6e</anchor>
+      <anchorfile>namespaceanonymous__namespace_02threadpool_8cc_03.html</anchorfile>
+      <anchor>ab3b5c2a45b9d57ca5f1d8c6c553f85f8</anchor>
       <arglist>(std::shared_ptr&lt; T &gt; t, const std::string &amp;s)</arglist>
     </member>
     <member kind="variable">
       <type>ThreadWaiter</type>
       <name>waiter</name>
-      <anchorfile>namespaceanonymous__namespace_02threadpoolimpl_8cc_03.html</anchorfile>
-      <anchor>a32b816d0a8f58ae1cd2d35e52e0b93ee</anchor>
+      <anchorfile>namespaceanonymous__namespace_02threadpool_8cc_03.html</anchorfile>
+      <anchor>ad222244f8046ece77153d055dfb11705</anchor>
       <arglist></arglist>
     </member>
   </compound>

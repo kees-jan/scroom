@@ -1,5 +1,7 @@
 <map id="TileViewState::kick" name="TileViewState::kick">
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,13,152,38"/>
-<area shape="rect" id="Node000002" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a60a5cfe128cc80c5d5fbbd6494fb62e2" title=" " alt="" coords="200,5,399,45"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ac3d3ac1d5d45d2795778a63a45470be5" title=" " alt="" coords="200,5,399,45"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="153,23,186,23,186,28,153,28"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a7cfca3637d57c4a9e37351b3426ffd40" title=" " alt="" coords="447,5,645,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="399,23,433,23,433,28,399,28"/>
 </map>

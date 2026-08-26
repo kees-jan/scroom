@@ -5,7 +5,7 @@ var searchData=
   ['dec_2',['dec',['../classScroom_1_1Utils_1_1Count.html#a4a079db4ca94588183b9ed1f3ed930ff',1,'Scroom::Utils::Count']]],
   ['decompressblob_3',['decompressblob',['../compression-tests_8cc.html#a0a0ee6d8736caca8b6056f8ee1d89b78',1,'decompressBlob():&#160;compression-tests.cc'],['../namespaceScroom_1_1MemoryBlobs_1_1Detail.html#ad9ecb35eccaa1e782bf2a383f66d5998',1,'Scroom::MemoryBlobs::Detail::decompressBlob()']]],
   ['default_4',['DEFAULT',['../namespaceSelectionType.html#aebc501deb9a30b47b6b63f09abcb98bc',1,'SelectionType']]],
-  ['defaultqueue_5',['defaultQueue',['../classThreadPool.html#a7d435b8c6eff3ffcf5b9043bd50048c2',1,'ThreadPool']]],
+  ['defaultqueue_5',['defaultQueue',['../classThreadPool.html#af5ac6649a5a7711037747ef03c542f18',1,'ThreadPool']]],
   ['deletingqueue_6',['deletingQueue',['../classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html#a0ba3013ca14c6fbf310043ca25257be0',1,'Scroom::Detail::ThreadPool::QueueImpl']]],
   ['destroy_7',['destroy',['../helpers_8hh.html#a29054188777e73951bf35c554f39373f',1,'destroy(std::shared_ptr&lt; T &gt; &amp;p):&#160;helpers.hh'],['../helpers_8hh.html#a0083d3605829a4dc8ac88aaeeffcf15d',1,'destroy(std::shared_ptr&lt; void &gt; &amp;p):&#160;helpers.cc'],['../helpers_8cc.html#a0083d3605829a4dc8ac88aaeeffcf15d',1,'destroy(std::shared_ptr&lt; void &gt; &amp;p):&#160;helpers.cc']]],
   ['destroygtkfilefilterlist_8',['destroygtkfilefilterlist',['../loader_8cc.html#a47dec8cb3f03de25ed596fb0defa91f6',1,'destroyGtkFileFilterList(std::list&lt; GtkFileFilter * &gt; &amp;l):&#160;loader.cc'],['../loader_8hh.html#a47dec8cb3f03de25ed596fb0defa91f6',1,'destroyGtkFileFilterList(std::list&lt; GtkFileFilter * &gt; &amp;l):&#160;loader.cc']]],
@@ -43,5 +43,5 @@ var searchData=
   ['dump_40',['dump',['../classScroom_1_1Utils_1_1Counter.html#ad93a85275e69f55081907952db49a61d',1,'Scroom::Utils::Counter']]],
   ['dumpcontainer_41',['dumpContainer',['../determine-size-test_8cc.html#a6485238a3884a896a9cb099e0b0e5804',1,'determine-size-test.cc']]],
   ['dumpcounts_42',['dumpCounts',['../namespaceScroom_1_1Utils.html#a0688885798e7f3f3c0c4d510577119f4',1,'Scroom::Utils']]],
-  ['dumppointers_43',['dumpPointers',['../classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html#aaafff3ce0a3650cd001e223613893b89',1,'anonymous_namespace{threadpoolimpl.cc}::ThreadList']]]
+  ['dumppointers_43',['dumpPointers',['../classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html#a8994a1f8ac1dd6b12a2070efb60ed8e3',1,'anonymous_namespace{threadpool.cc}::ThreadList']]]
 ];

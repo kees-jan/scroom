@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-50-g4166b1bf</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-51-gfe95d8654</span>
    </div>
   </td>
  </tr>
@@ -1207,7 +1207,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  239</span>      <span class="comment">// Start an asynchronous load</span></div>
 <div class="line"><span class="lineno">  240</span>      <span class="keywordflow">if</span>(!queue_)</div>
 <div class="line"><span class="lineno">  241</span>      {</div>
-<div class="line"><span class="lineno">  242</span>        queue_ = <a class="code hl_function" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae48cfe05b7bb72f1990557d64ef57acf">ThreadPool::Queue::create</a>();</div>
+<div class="line"><span class="lineno">  242</span>        queue_ = <a class="code hl_function" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#af8f6918d92f8388674bd7bdc1b75b2ec">ThreadPool::Queue::create</a>();</div>
 <div class="line"><span class="lineno">  243</span>        <a class="code hl_variable" href="classCompressedTile.html#a98aab628263791d6330cd6ccfa012d58">queue</a> = queue_;</div>
 <div class="line"><span class="lineno">  244</span>      }</div>
 <div class="line"><span class="lineno">  245</span>      <a class="code hl_function" href="threadpool_8hh.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b">CpuBound</a>()-&gt;schedule([<span class="keyword">this</span>] { <a class="code hl_function" href="classCompressedTile.html#a5c520928c3e8faafa0493d77fa7c16d8">do_load</a>(); }, <a class="code hl_define" href="local_8hh.html#aaa596031f81e74e8c57c9af7778907b7">LOAD_PRIO</a>, queue_);</div>
@@ -1230,10 +1230,10 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  262</span>}</div>
 <div class="ttc" id="aclassScroom_1_1Bookkeeping_1_1Token_html_ac619f80091875f045710df020bbc5c11"><div class="ttname"><a href="classScroom_1_1Bookkeeping_1_1Token.html#ac619f80091875f045710df020bbc5c11">Scroom::Bookkeeping::Token::add</a></div><div class="ttdeci">void add(const Stuff &amp;s) const</div><div class="ttdef"><b>Definition</b> bookkeepingimpl.hh:191</div></div>
 <div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Queue_html_ae44696440c2b9dd5dbef5c4eda0baec9"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae44696440c2b9dd5dbef5c4eda0baec9">Scroom::Detail::ThreadPool::Queue::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; Queue &gt; Ptr</div><div class="ttdef"><b>Definition</b> threadpool.hh:76</div></div>
-<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Queue_html_ae48cfe05b7bb72f1990557d64ef57acf"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae48cfe05b7bb72f1990557d64ef57acf">Scroom::Detail::ThreadPool::Queue::create</a></div><div class="ttdeci">static Ptr create()</div><div class="ttdoc">ThreadPool::Queue.</div><div class="ttdef"><b>Definition</b> threadpoolimpl.cc:366</div></div>
+<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Queue_html_af8f6918d92f8388674bd7bdc1b75b2ec"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#af8f6918d92f8388674bd7bdc1b75b2ec">Scroom::Detail::ThreadPool::Queue::create</a></div><div class="ttdeci">static Ptr create()</div><div class="ttdoc">Queue.</div><div class="ttdef"><b>Definition</b> threadpool.cc:366</div></div>
 <div class="ttc" id="alocal_8hh_html_aaa596031f81e74e8c57c9af7778907b7"><div class="ttname"><a href="local_8hh.html#aaa596031f81e74e8c57c9af7778907b7">LOAD_PRIO</a></div><div class="ttdeci">#define LOAD_PRIO</div><div class="ttdef"><b>Definition</b> local.hh:10</div></div>
 <div class="ttc" id="apipette-tests_8cc_html_a5437a4a8681ee4e938e2ac034634ce35"><div class="ttname"><a href="pipette-tests_8cc.html#a5437a4a8681ee4e938e2ac034634ce35">token</a></div><div class="ttdeci">Scroom::Bookkeeping::Token const token</div><div class="ttdef"><b>Definition</b> pipette-tests.cc:269</div></div>
-<div class="ttc" id="athreadpool_8hh_html_a4a99c6a6be48be73a9ecf92e6e3f6e9b"><div class="ttname"><a href="threadpool_8hh.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b">CpuBound</a></div><div class="ttdeci">ThreadPool::Ptr CpuBound()</div><div class="ttdef"><b>Definition</b> threadpoolimpl.cc:441</div></div>
+<div class="ttc" id="athreadpool_8hh_html_a4a99c6a6be48be73a9ecf92e6e3f6e9b"><div class="ttname"><a href="threadpool_8hh.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b">CpuBound</a></div><div class="ttdeci">ThreadPool::Ptr CpuBound()</div><div class="ttdef"><b>Definition</b> threadpool.cc:441</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1242,19 +1242,21 @@ Here is the call graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="5,113,197,153"/>
 <area shape="rect" href="classScroom_1_1Bookkeeping_1_1Token.html#ac619f80091875f045710df020bbc5c11" title=" " alt="" coords="263,5,426,45"/>
 <area shape="poly" title=" " alt="" coords="141,111,244,62,277,48,279,53,246,66,143,115"/>
-<area shape="rect" href="classCompressedTile.html#abc632784fd3ff47fee0a75393be60772" title=" " alt="" coords="501,129,721,154"/>
-<area shape="poly" title=" " alt="" coords="197,111,245,105,345,99,444,105,548,123,547,128,444,111,345,104,246,111,198,117"/>
-<area shape="rect" href="threadpoolimpl_8cc.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b" title=" " alt="" coords="301,121,389,146"/>
+<area shape="rect" href="classCompressedTile.html#abc632784fd3ff47fee0a75393be60772" title=" " alt="" coords="501,95,721,121"/>
+<area shape="poly" title=" " alt="" coords="197,111,245,105,370,99,488,100,488,105,370,105,246,111,198,117"/>
+<area shape="rect" href="threadpool_8cc.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b" title=" " alt="" coords="301,121,389,146"/>
 <area shape="poly" title=" " alt="" coords="197,131,287,131,287,136,197,136"/>
-<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae48cfe05b7bb72f1990557d64ef57acf" title="ThreadPool::Queue." alt="" coords="245,171,444,211"/>
-<area shape="poly" title=" " alt="" coords="187,151,246,165,245,170,186,156"/>
-<area shape="rect" href="classCompressedTile.html#a5c520928c3e8faafa0493d77fa7c16d8" title=" " alt="" coords="251,235,438,261"/>
-<area shape="poly" title=" " alt="" coords="131,151,183,186,246,220,270,229,268,234,244,225,180,191,128,156"/>
-<area shape="poly" title=" " alt="" coords="402,233,443,220,514,190,574,158,577,163,516,194,445,225,404,238"/>
-<area shape="rect" href="classCompressedTile.html#a56111eeb0baeaf0b8f2d93e4a81ea99d" title=" " alt="" coords="492,235,731,261"/>
-<area shape="poly" title=" " alt="" coords="438,245,478,245,478,251,438,251"/>
-<area shape="rect" href="classScroom_1_1Utils_1_1Observable.html#ae215a3f722f5894dd8fdc1cb9b190c0e" title=" " alt="" coords="779,228,969,268"/>
-<area shape="poly" title=" " alt="" coords="731,245,765,245,765,251,731,251"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#af8f6918d92f8388674bd7bdc1b75b2ec" title="Queue." alt="" coords="245,220,444,260"/>
+<area shape="poly" title=" " alt="" coords="138,151,189,178,246,206,265,213,263,218,244,210,186,183,136,156"/>
+<area shape="rect" href="classCompressedTile.html#a5c520928c3e8faafa0493d77fa7c16d8" title=" " alt="" coords="251,170,438,195"/>
+<area shape="poly" title=" " alt="" coords="198,150,268,165,267,170,197,155"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a7cfca3637d57c4a9e37351b3426ffd40" title=" " alt="" coords="512,220,711,260"/>
+<area shape="poly" title=" " alt="" coords="444,237,498,237,498,243,444,243"/>
+<area shape="poly" title=" " alt="" coords="396,167,443,155,555,122,557,127,445,160,397,173"/>
+<area shape="rect" href="classCompressedTile.html#a56111eeb0baeaf0b8f2d93e4a81ea99d" title=" " alt="" coords="492,170,731,195"/>
+<area shape="poly" title=" " alt="" coords="438,180,478,180,478,185,438,185"/>
+<area shape="rect" href="classScroom_1_1Utils_1_1Observable.html#ae215a3f722f5894dd8fdc1cb9b190c0e" title=" " alt="" coords="779,163,969,203"/>
+<area shape="poly" title=" " alt="" coords="731,180,765,180,765,185,731,185"/>
 </map>
 </div>
 

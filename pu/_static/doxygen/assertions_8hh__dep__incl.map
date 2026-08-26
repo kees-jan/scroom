@@ -18,7 +18,7 @@
 <area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="3746,31,3461,38,3088,51,2745,70,2621,82,2549,96,2532,105,2521,115,2509,126,2492,136,2425,153,2338,168,2123,189,1896,202,1707,208,1707,203,1896,197,2123,184,2337,163,2424,148,2490,131,2506,122,2517,111,2529,100,2547,91,2620,77,2744,65,3088,46,3460,33,3746,26"/>
 <area shape="rect" id="Node000052" href="$tweak-view_8cc.html" title=" " alt="" coords="4138,93,4302,133"/>
 <area shape="poly" id="edge48_Node000001_Node000052" title=" " alt="" coords="3919,43,4139,91,4137,97,3918,48"/>
-<area shape="rect" id="Node000053" href="$threadpoolimpl_8cc.html" title=" " alt="" coords="4326,93,4469,133"/>
+<area shape="rect" id="Node000053" href="$threadpool_8cc.html" title=" " alt="" coords="4326,93,4469,133"/>
 <area shape="poly" id="edge49_Node000001_Node000053" title=" " alt="" coords="3919,34,4102,57,4315,91,4326,93,4325,98,4314,96,4101,62,3918,39"/>
 <area shape="rect" id="Node000054" href="$gtk-helpers_8hh.html" title=" " alt="" coords="3253,93,3398,133"/>
 <area shape="poly" id="edge50_Node000001_Node000054" title=" " alt="" coords="3746,42,3418,96,3399,100,3398,94,3417,91,3745,37"/>

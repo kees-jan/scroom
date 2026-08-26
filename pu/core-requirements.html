@@ -58,7 +58,7 @@ That allows us to quickly show the data the user requests later.</p>
 <section id="high-throughput">
 <h3>High throughput<a class="headerlink" href="#high-throughput" title="Link to this heading">¶</a></h3>
 <p>High throughput is achieved by using all available cores wherever possible/required.
-This is done by splitting any task into smaller chunks, and submitting them on the <a class="reference external" href="./_static/doxygen/threadpool_8hh.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b">CpuBound()</a> threadpool by calling its <a class="reference external" href="./_static/doxygen/classThreadPool.html#a75b74859fed39f21cb3bb09b78137fa2">ThreadPool::schedule()</a> method.
+This is done by splitting any task into smaller chunks, and submitting them on the <a class="reference external" href="./_static/doxygen/threadpool_8cc.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b">CpuBound()</a> threadpool by calling its <a class="reference external" href="./_static/doxygen/classThreadPool.html#a75b74859fed39f21cb3bb09b78137fa2">ThreadPool::schedule()</a> method.
 Be sure to supply a <a class="reference external" href="./_static/doxygen/classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html">queue</a> object when you call <a class="reference external" href="./_static/doxygen/classThreadPool.html#a75b74859fed39f21cb3bb09b78137fa2">ThreadPool::schedule()</a>.
 If you later delete the <a class="reference external" href="./_static/doxygen/classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html">queue</a> object, the work you scheduled will be canceled.</p>
 </section>

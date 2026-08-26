@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-50-g4166b1bf</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-51-gfe95d8654</span>
    </div>
   </td>
  </tr>
@@ -201,12 +201,12 @@ Private Member Functions</h2></td></tr>
 
 <p><a class="el" href="classThreadPool_1_1PrivateData.html">ThreadPool::PrivateData</a>. </p>
 <div class="fragment"><div class="line"><span class="lineno">  196</span>  : <a class="code hl_variable" href="classThreadPool_1_1PrivateData.html#ad582c5ec33d97e087f5a0fd1f9b7b26b">completeAllJobsBeforeDestruction</a>(completeAllJobsBeforeDestruction_)</div>
-<div class="line"><span class="lineno">  197</span>  , <a class="code hl_variable" href="classThreadPool_1_1PrivateData.html#a68e087d3440145b266445230d0d3246a">defaultQueue</a>(<a class="code hl_function" href="classThreadPool.html#a7d435b8c6eff3ffcf5b9043bd50048c2">ThreadPool::defaultQueue</a>())</div>
+<div class="line"><span class="lineno">  197</span>  , <a class="code hl_variable" href="classThreadPool_1_1PrivateData.html#a68e087d3440145b266445230d0d3246a">defaultQueue</a>(<a class="code hl_function" href="classThreadPool.html#af5ac6649a5a7711037747ef03c542f18">ThreadPool::defaultQueue</a>())</div>
 <div class="line"><span class="lineno">  198</span>{</div>
 <div class="line"><span class="lineno">  199</span>}</div>
 <div class="ttc" id="aclassThreadPool_1_1PrivateData_html_a68e087d3440145b266445230d0d3246a"><div class="ttname"><a href="classThreadPool_1_1PrivateData.html#a68e087d3440145b266445230d0d3246a">ThreadPool::PrivateData::defaultQueue</a></div><div class="ttdeci">Queue::Ptr defaultQueue</div><div class="ttdef"><b>Definition</b> threadpool.hh:374</div></div>
 <div class="ttc" id="aclassThreadPool_1_1PrivateData_html_ad582c5ec33d97e087f5a0fd1f9b7b26b"><div class="ttname"><a href="classThreadPool_1_1PrivateData.html#ad582c5ec33d97e087f5a0fd1f9b7b26b">ThreadPool::PrivateData::completeAllJobsBeforeDestruction</a></div><div class="ttdeci">bool completeAllJobsBeforeDestruction</div><div class="ttdef"><b>Definition</b> threadpool.hh:357</div></div>
-<div class="ttc" id="aclassThreadPool_html_a7d435b8c6eff3ffcf5b9043bd50048c2"><div class="ttname"><a href="classThreadPool.html#a7d435b8c6eff3ffcf5b9043bd50048c2">ThreadPool::defaultQueue</a></div><div class="ttdeci">static Queue::Ptr defaultQueue()</div><div class="ttdef"><b>Definition</b> threadpoolimpl.cc:354</div></div>
+<div class="ttc" id="aclassThreadPool_html_af5ac6649a5a7711037747ef03c542f18"><div class="ttname"><a href="classThreadPool.html#af5ac6649a5a7711037747ef03c542f18">ThreadPool::defaultQueue</a></div><div class="ttdeci">static Queue::Ptr defaultQueue()</div><div class="ttdef"><b>Definition</b> threadpool.cc:354</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -237,7 +237,7 @@ Private Member Functions</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  202</span>{</div>
 <div class="line"><span class="lineno">  203</span>  <span class="keywordflow">return</span> <a class="code hl_typedef" href="classThreadPool_1_1PrivateData.html#a7dff617a17772376bbaaf77319d51af2">Ptr</a>(<span class="keyword">new</span> <a class="code hl_function" href="classThreadPool_1_1PrivateData.html#a4b6dd0e750c2115b87ec80585ad5620e">PrivateData</a>(<a class="code hl_variable" href="classThreadPool_1_1PrivateData.html#ad582c5ec33d97e087f5a0fd1f9b7b26b">completeAllJobsBeforeDestruction</a>));</div>
 <div class="line"><span class="lineno">  204</span>}</div>
-<div class="ttc" id="aclassThreadPool_1_1PrivateData_html_a4b6dd0e750c2115b87ec80585ad5620e"><div class="ttname"><a href="classThreadPool_1_1PrivateData.html#a4b6dd0e750c2115b87ec80585ad5620e">ThreadPool::PrivateData::PrivateData</a></div><div class="ttdeci">PrivateData(bool completeAllJobsBeforeDestruction)</div><div class="ttdoc">ThreadPool::PrivateData.</div><div class="ttdef"><b>Definition</b> threadpoolimpl.cc:195</div></div>
+<div class="ttc" id="aclassThreadPool_1_1PrivateData_html_a4b6dd0e750c2115b87ec80585ad5620e"><div class="ttname"><a href="classThreadPool_1_1PrivateData.html#a4b6dd0e750c2115b87ec80585ad5620e">ThreadPool::PrivateData::PrivateData</a></div><div class="ttdeci">PrivateData(bool completeAllJobsBeforeDestruction)</div><div class="ttdoc">ThreadPool::PrivateData.</div><div class="ttdef"><b>Definition</b> threadpool.cc:195</div></div>
 <div class="ttc" id="aclassThreadPool_1_1PrivateData_html_a7dff617a17772376bbaaf77319d51af2"><div class="ttname"><a href="classThreadPool_1_1PrivateData.html#a7dff617a17772376bbaaf77319d51af2">ThreadPool::PrivateData::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; PrivateData &gt; Ptr</div><div class="ttdef"><b>Definition</b> threadpool.hh:333</div></div>
 </div><!-- fragment -->
 </div>
@@ -302,7 +302,7 @@ Private Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Reference to the default Queue.</p>
-<p>If we don't store a reference to the default Queue here, then objects calling <a class="el" href="classThreadPool.html#a75b74859fed39f21cb3bb09b78137fa2">schedule()</a> without a Queue argument (hence using the default Queue), may find that they are themselves holding the last reference to the <a class="el" href="classThreadPool.html#a7d435b8c6eff3ffcf5b9043bd50048c2">ThreadPool::defaultQueue()</a> object. That could result in deadlock, if the thread doing the scheduling is itself a <a class="el" href="classThreadPool.html">ThreadPool</a> thread. Recall that destroying a Queue blocks until any currently running tasks are finished, and hence a task would be infinitely waiting for itself to finish.</p>
+<p>If we don't store a reference to the default Queue here, then objects calling <a class="el" href="classThreadPool.html#a75b74859fed39f21cb3bb09b78137fa2">schedule()</a> without a Queue argument (hence using the default Queue), may find that they are themselves holding the last reference to the <a class="el" href="classThreadPool.html#af5ac6649a5a7711037747ef03c542f18">ThreadPool::defaultQueue()</a> object. That could result in deadlock, if the thread doing the scheduling is itself a <a class="el" href="classThreadPool.html">ThreadPool</a> thread. Recall that destroying a Queue blocks until any currently running tasks are finished, and hence a task would be infinitely waiting for itself to finish.</p>
 <dl class="section see"><dt>See also</dt><dd><a href="https://github.com/kees-jan/scroom/issues/2">https://github.com/kees-jan/scroom/issues/2</a> </dd></dl>
 
 </div>
@@ -356,7 +356,7 @@ Private Member Functions</h2></td></tr>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>libs/threadpool/inc/scroom/<a class="el" href="threadpool_8hh_source.html">threadpool.hh</a></li>
-<li>libs/threadpool/src/<a class="el" href="threadpoolimpl_8cc.html">threadpoolimpl.cc</a></li>
+<li>libs/threadpool/src/<a class="el" href="threadpool_8cc.html">threadpool.cc</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -32,7 +32,7 @@ var namespaces_dup =
       [ "DetermineSize", "namespaceanonymous__namespace_02sizedeterminer_8cc_03.html#a5ecae3b4e82104b5a7bcb7ba3d1648e0", null ],
       [ "keys", "namespaceanonymous__namespace_02sizedeterminer_8cc_03.html#aec3970e572bcc6e1975f38686a3669cf", null ]
     ] ],
-    [ "anonymous_namespace{threadpoolimpl.cc}", "namespaceanonymous__namespace_02threadpoolimpl_8cc_03.html", "namespaceanonymous__namespace_02threadpoolimpl_8cc_03" ],
+    [ "anonymous_namespace{threadpool.cc}", "namespaceanonymous__namespace_02threadpool_8cc_03.html", "namespaceanonymous__namespace_02threadpool_8cc_03" ],
     [ "anonymous_namespace{tiffsource.cc}", "namespaceanonymous__namespace_02tiffsource_8cc_03.html", [
       [ "TagInfo", "namespaceanonymous__namespace_02tiffsource_8cc_03.html#a96015f6d1cd3f99d868d00b658fc6702", null ],
       [ "approx", "namespaceanonymous__namespace_02tiffsource_8cc_03.html#a21d7b2d4f86f5c8ebfd822f27f5f9417", null ],

@@ -2,17 +2,19 @@
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,113,197,153"/>
 <area shape="rect" id="Node000002" href="$classScroom_1_1Bookkeeping_1_1Token.html#ac619f80091875f045710df020bbc5c11" title=" " alt="" coords="263,5,426,45"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="141,111,244,62,277,48,279,53,246,66,143,115"/>
-<area shape="rect" id="Node000003" href="$classCompressedTile.html#abc632784fd3ff47fee0a75393be60772" title=" " alt="" coords="501,129,721,154"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="197,111,245,105,345,99,444,105,548,123,547,128,444,111,345,104,246,111,198,117"/>
-<area shape="rect" id="Node000004" href="$threadpoolimpl_8cc.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b" title=" " alt="" coords="301,121,389,146"/>
+<area shape="rect" id="Node000003" href="$classCompressedTile.html#abc632784fd3ff47fee0a75393be60772" title=" " alt="" coords="501,95,721,121"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="197,111,245,105,370,99,488,100,488,105,370,105,246,111,198,117"/>
+<area shape="rect" id="Node000004" href="$threadpool_8cc.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b" title=" " alt="" coords="301,121,389,146"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="197,131,287,131,287,136,197,136"/>
-<area shape="rect" id="Node000005" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae48cfe05b7bb72f1990557d64ef57acf" title="ThreadPool::Queue." alt="" coords="245,171,444,211"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="187,151,246,165,245,170,186,156"/>
-<area shape="rect" id="Node000006" href="$classCompressedTile.html#a5c520928c3e8faafa0493d77fa7c16d8" title=" " alt="" coords="251,235,438,261"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="131,151,183,186,246,220,270,229,268,234,244,225,180,191,128,156"/>
-<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="402,233,443,220,514,190,574,158,577,163,516,194,445,225,404,238"/>
-<area shape="rect" id="Node000007" href="$classCompressedTile.html#a56111eeb0baeaf0b8f2d93e4a81ea99d" title=" " alt="" coords="492,235,731,261"/>
-<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="438,245,478,245,478,251,438,251"/>
-<area shape="rect" id="Node000008" href="$classScroom_1_1Utils_1_1Observable.html#ae215a3f722f5894dd8fdc1cb9b190c0e" title=" " alt="" coords="779,228,969,268"/>
-<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="731,245,765,245,765,251,731,251"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#af8f6918d92f8388674bd7bdc1b75b2ec" title="Queue." alt="" coords="245,220,444,260"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="138,151,189,178,246,206,265,213,263,218,244,210,186,183,136,156"/>
+<area shape="rect" id="Node000007" href="$classCompressedTile.html#a5c520928c3e8faafa0493d77fa7c16d8" title=" " alt="" coords="251,170,438,195"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="198,150,268,165,267,170,197,155"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a7cfca3637d57c4a9e37351b3426ffd40" title=" " alt="" coords="512,220,711,260"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="444,237,498,237,498,243,444,243"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="396,167,443,155,555,122,557,127,445,160,397,173"/>
+<area shape="rect" id="Node000008" href="$classCompressedTile.html#a56111eeb0baeaf0b8f2d93e4a81ea99d" title=" " alt="" coords="492,170,731,195"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="438,180,478,180,478,185,438,185"/>
+<area shape="rect" id="Node000009" href="$classScroom_1_1Utils_1_1Observable.html#ae215a3f722f5894dd8fdc1cb9b190c0e" title=" " alt="" coords="779,163,969,203"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="731,180,765,180,765,185,731,185"/>
 </map>

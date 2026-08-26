@@ -15,7 +15,7 @@ var classThreadPool =
     [ "add", "classThreadPool.html#a54b4280366447b498a1d08e46e305ef8", null ],
     [ "create", "classThreadPool.html#aa4c7f373ae1c02455e2c7f4d2096270e", null ],
     [ "create", "classThreadPool.html#a01a9a8ed66255d64f64b5140d9ed1884", null ],
-    [ "defaultQueue", "classThreadPool.html#a7d435b8c6eff3ffcf5b9043bd50048c2", null ],
+    [ "defaultQueue", "classThreadPool.html#af5ac6649a5a7711037747ef03c542f18", null ],
     [ "do_one", "classThreadPool.html#a8f42dc3ccb85aab2590d246490df0d9a", null ],
     [ "operator=", "classThreadPool.html#a207a98b50bc64d3c35a3d784855b8ecf", null ],
     [ "operator=", "classThreadPool.html#ae7dd86f29b236ee9367ea682cf33a367", null ],

@@ -10,10 +10,12 @@
 <area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="399,100,488,110,487,115,399,105"/>
 <area shape="rect" id="Node000006" href="$classThreadPool.html#a75b74859fed39f21cb3bb09b78137fa2" title=" " alt="" coords="447,153,608,179"/>
 <area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="348,103,448,138,473,147,471,152,446,143,346,108"/>
-<area shape="rect" id="Node000007" href="$classThreadPool.html#a7d435b8c6eff3ffcf5b9043bd50048c2" title=" " alt="" coords="659,128,850,153"/>
+<area shape="rect" id="Node000007" href="$classThreadPool.html#af5ac6649a5a7711037747ef03c542f18" title=" " alt="" coords="659,128,850,153"/>
 <area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="608,154,645,150,646,155,609,160"/>
-<area shape="rect" id="Node000009" href="$classThreadPool.html#a17a52db60287eb770f1e0d546cbbbe01" title=" " alt="" coords="656,177,853,203"/>
-<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="609,172,643,175,642,181,608,177"/>
-<area shape="rect" id="Node000008" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae48cfe05b7bb72f1990557d64ef57acf" title="ThreadPool::Queue." alt="" coords="901,121,1100,161"/>
+<area shape="rect" id="Node000010" href="$classThreadPool.html#a17a52db60287eb770f1e0d546cbbbe01" title=" " alt="" coords="656,177,853,203"/>
+<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="609,172,643,175,642,181,608,177"/>
+<area shape="rect" id="Node000008" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#af8f6918d92f8388674bd7bdc1b75b2ec" title="Queue." alt="" coords="901,121,1100,161"/>
 <area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="850,138,888,138,888,143,850,143"/>
+<area shape="rect" id="Node000009" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a7cfca3637d57c4a9e37351b3426ffd40" title=" " alt="" coords="1148,121,1347,161"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="1100,138,1134,138,1134,143,1100,143"/>
 </map>

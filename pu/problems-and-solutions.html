@@ -51,7 +51,7 @@ wrap them in a function. This is called the “construct on first use” idiom.
 The language guarantees that the static variable will be initialized thread safely
 the first time the function is called, and that it will be destroyed when the program
 exits. This way, you can ensure that the variable is initialized before it is used.</p>
-<p>Take this example from the <a class="reference external" href="./_static/doxygen/classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html#a3b3efa8982899d0fa6641a868e8cf230">ThreadList::instance()</a> method:</p>
+<p>Take this example from the <a class="reference external" href="./_static/doxygen/classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html#a96eb0bd66579e263fd0d04a9b16d1a7a">ThreadList::instance()</a> method:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ThreadList</span><span class="o">::</span><span class="n">Ptr</span><span class="w"> </span><span class="nf">ThreadList::instance</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="n">Ptr</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">threadList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">ThreadList</span><span class="o">&gt;</span><span class="p">();</span>
