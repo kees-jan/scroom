@@ -10,7 +10,5 @@ var searchData=
   ['blob_7',['Blob',['../classScroom_1_1MemoryBlobs_1_1Blob.html',1,'Scroom::MemoryBlobs']]],
   ['blockfactoryinterface_8',['BlockFactoryInterface',['../classScroom_1_1MemoryBlocks_1_1BlockFactoryInterface.html',1,'Scroom::MemoryBlocks']]],
   ['blockinterface_9',['BlockInterface',['../classScroom_1_1MemoryBlocks_1_1BlockInterface.html',1,'Scroom::MemoryBlocks']]],
-  ['builder_10',['Builder',['../classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html',1,'Scroom::Detail::ThreadPool']]],
-  ['buildertraits_11',['BuilderTraits',['../structScroom_1_1Detail_1_1ThreadPool_1_1BuilderTraits.html',1,'Scroom::Detail::ThreadPool']]],
-  ['buildertraits_3c_20builder_3c_20hascallable_5f_2c_20haspriority_5f_2c_20hasqueue_5f_2c_20r_20_3e_20_3e_12',['BuilderTraits&lt; Builder&lt; hasCallable_, hasPriority_, hasQueue_, R &gt; &gt;',['../structScroom_1_1Detail_1_1ThreadPool_1_1BuilderTraits_3_01Builder_3_01hasCallable___00_01hasPrioa9caf6fb0736a5481410554298d9c299.html',1,'Scroom::Detail::ThreadPool']]]
+  ['builder_10',['Builder',['../classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html',1,'Scroom::Detail::ThreadPool']]]
 ];

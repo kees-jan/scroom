@@ -1,7 +1,7 @@
 <map id="f" name="f">
 <area shape="rect" id="Node000001" title=" " alt="" coords="1683,987,1721,1012"/>
-<area shape="rect" id="Node000002" href="$structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddCallable_3_01false_00_01hasPriority___00_01hasQueue___00_01R___01_4.html#a7217fd2154f17deef78ef6f2f921df60" title=" " alt="" coords="1417,146,1633,215"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1697,973,1691,813,1679,579,1660,358,1647,279,1632,235,1615,218,1619,214,1637,233,1652,278,1665,357,1684,579,1697,812,1703,973"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Detail_1_1ThreadPool.html#ae5e8fad3624e39fb69eb24cd9e11967e" title=" " alt="" coords="1425,175,1624,215"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1697,973,1692,813,1681,578,1661,357,1648,278,1640,252,1633,236,1611,217,1615,213,1637,232,1645,250,1653,277,1667,356,1686,578,1698,812,1703,973"/>
 <area shape="rect" id="Node000003" href="$namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1" title=" " alt="" coords="1187,363,1345,403"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1697,973,1691,844,1678,665,1659,499,1647,441,1633,410,1602,387,1568,371,1530,360,1491,355,1413,356,1344,366,1343,361,1413,350,1492,349,1531,355,1569,366,1605,383,1637,407,1652,439,1664,498,1684,664,1696,844,1702,973"/>
 <area shape="rect" id="Node000004" href="$namespaceScroom_1_1GtkHelpers.html#a37a36328ffc6b0e7468a02d64724c21d" title=" " alt="" coords="883,291,1041,345"/>

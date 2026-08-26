@@ -1,5 +1,0 @@
-var structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddCallable_3_01false_00_01hasPriority___00_01hasQueue___00_01R___01_4 =
-[
-    [ "add", "structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddCallable_3_01false_00_01hasPriority___00_01hasQueue___00_01R___01_4.html#a623b5a8452fbd26fff38c53347ad7b5d", null ],
-    [ "add", "structScroom_1_1Detail_1_1ThreadPool_1_1Builder_1_1AddCallable_3_01false_00_01hasPriority___00_01hasQueue___00_01R___01_4.html#a7217fd2154f17deef78ef6f2f921df60", null ]
-];

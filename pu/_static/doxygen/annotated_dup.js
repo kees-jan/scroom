@@ -63,8 +63,6 @@ var annotated_dup =
       [ "Detail", "namespaceScroom_1_1Detail.html", [
         [ "ThreadPool", "namespaceScroom_1_1Detail_1_1ThreadPool.html", [
           [ "Builder", "classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html", "classScroom_1_1Detail_1_1ThreadPool_1_1Builder" ],
-          [ "BuilderTraits", "structScroom_1_1Detail_1_1ThreadPool_1_1BuilderTraits.html", null ],
-          [ "BuilderTraits< Builder< hasCallable_, hasPriority_, hasQueue_, R > >", "structScroom_1_1Detail_1_1ThreadPool_1_1BuilderTraits_3_01Builder_3_01hasCallable___00_01hasPrioa9caf6fb0736a5481410554298d9c299.html", "structScroom_1_1Detail_1_1ThreadPool_1_1BuilderTraits_3_01Builder_3_01hasCallable___00_01hasPrioa9caf6fb0736a5481410554298d9c299" ],
           [ "FunctionAdditor", "classScroom_1_1Detail_1_1ThreadPool_1_1FunctionAdditor.html", "classScroom_1_1Detail_1_1ThreadPool_1_1FunctionAdditor" ],
           [ "FunctionMultiplier", "classScroom_1_1Detail_1_1ThreadPool_1_1FunctionMultiplier.html", "classScroom_1_1Detail_1_1ThreadPool_1_1FunctionMultiplier" ],
           [ "Queue", "classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html", "classScroom_1_1Detail_1_1ThreadPool_1_1Queue" ],
