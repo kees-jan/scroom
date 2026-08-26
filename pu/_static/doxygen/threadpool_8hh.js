@@ -13,6 +13,5 @@ var threadpool_8hh =
     [ "addQueue", "threadpool_8hh.html#a43cf587770443118a3c6e147a7f43bed", null ],
     [ "addQueue", "threadpool_8hh.html#a606704825778b41b26f4cd99c535bf04", null ],
     [ "CpuBound", "threadpool_8hh.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b", null ],
-    [ "Sequentially", "threadpool_8hh.html#af979353165a7a214dda8f7f289de81ea", null ],
-    [ "threadPoolExecute", "threadpool_8hh.html#a12353261cad3848c819ef115f16df143", null ]
+    [ "Sequentially", "threadpool_8hh.html#af979353165a7a214dda8f7f289de81ea", null ]
 ];

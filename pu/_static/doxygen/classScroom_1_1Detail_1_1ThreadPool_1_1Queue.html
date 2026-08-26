@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-50-gfe59ac820</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-50-g8181794d9</span>
    </div>
   </td>
  </tr>
@@ -209,7 +209,7 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  371</span>  : <a class="code hl_variable" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a9677856e3fdd424bbc4206ffb5804086">weak</a>(<a class="code hl_function" href="classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#a68659e2a375ce2929295fdf3d8bccf4c">WeakQueue::create</a>())</div>
 <div class="line"><span class="lineno">  372</span>{</div>
 <div class="line"><span class="lineno">  373</span>}</div>
-<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Queue_html_a9677856e3fdd424bbc4206ffb5804086"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a9677856e3fdd424bbc4206ffb5804086">Scroom::Detail::ThreadPool::Queue::weak</a></div><div class="ttdeci">std::shared_ptr&lt; WeakQueue &gt; weak</div><div class="ttdef"><b>Definition</b> threadpool.hh:104</div></div>
+<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Queue_html_a9677856e3fdd424bbc4206ffb5804086"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a9677856e3fdd424bbc4206ffb5804086">Scroom::Detail::ThreadPool::Queue::weak</a></div><div class="ttdeci">std::shared_ptr&lt; WeakQueue &gt; weak</div><div class="ttdef"><b>Definition</b> threadpool.hh:95</div></div>
 <div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue_html_a68659e2a375ce2929295fdf3d8bccf4c"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#a68659e2a375ce2929295fdf3d8bccf4c">Scroom::Detail::ThreadPool::WeakQueue::create</a></div><div class="ttdeci">static Ptr create()</div><div class="ttdoc">WeakQueue.</div><div class="ttdef"><b>Definition</b> threadpool.cc:385</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#af8f6918d92f8388674bd7bdc1b75b2ec">create()</a>, and <a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ac3d3ac1d5d45d2795778a63a45470be5">createAsync()</a>.</p>
@@ -356,7 +356,7 @@ Here is the caller graph for this function:</div>
 <p>When the last reference goes out of scope, synchronously destroy the <a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html">Queue</a>, blocking until any currently running jobs are finished. </p>
 <div class="fragment"><div class="line"><span class="lineno">  366</span>{ <span class="keywordflow">return</span> <a class="code hl_typedef" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae44696440c2b9dd5dbef5c4eda0baec9">Queue::Ptr</a>(<span class="keyword">new</span> <a class="code hl_function" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a7cfca3637d57c4a9e37351b3426ffd40">Queue</a>()); }</div>
 <div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Queue_html_a7cfca3637d57c4a9e37351b3426ffd40"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a7cfca3637d57c4a9e37351b3426ffd40">Scroom::Detail::ThreadPool::Queue::Queue</a></div><div class="ttdeci">Queue()</div><div class="ttdef"><b>Definition</b> threadpool.cc:370</div></div>
-<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Queue_html_ae44696440c2b9dd5dbef5c4eda0baec9"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae44696440c2b9dd5dbef5c4eda0baec9">Scroom::Detail::ThreadPool::Queue::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; Queue &gt; Ptr</div><div class="ttdef"><b>Definition</b> threadpool.hh:76</div></div>
+<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Queue_html_ae44696440c2b9dd5dbef5c4eda0baec9"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae44696440c2b9dd5dbef5c4eda0baec9">Scroom::Detail::ThreadPool::Queue::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; Queue &gt; Ptr</div><div class="ttdef"><b>Definition</b> threadpool.hh:67</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classThreadPool.html#af5ac6649a5a7711037747ef03c542f18">ThreadPool::defaultQueue()</a>, and <a class="el" href="classCompressedTile.html#a097a41844c75d21396fb64db3c039c8a">CompressedTile::observerAdded()</a>.</p>
 <div class="dynheader">

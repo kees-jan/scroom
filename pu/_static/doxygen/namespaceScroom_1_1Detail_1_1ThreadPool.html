@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-50-gfe59ac820</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-50-g8181794d9</span>
    </div>
   </td>
  </tr>
@@ -172,13 +172,13 @@ template&lt;bool hasPriority, bool hasQueue, typename R &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  154</span>  {</div>
-<div class="line"><span class="lineno">  155</span>    <span class="keyword">using </span>RR = std::invoke_result_t&lt;<span class="keyword">decltype</span>(<a class="code hl_variable" href="threadpool-destruction-tests_8cc.html#a2a95d18e7f38634394c4104d0e759989">c</a>)&amp;&gt;;</div>
-<div class="line"><span class="lineno">  156</span>    <span class="keywordflow">return</span> <a class="code hl_class" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Builder&lt;true, hasPriority, hasQueue, RR&gt;</a>{std::forward&lt;decltype(c)&gt;(<a class="code hl_variable" href="threadpool-destruction-tests_8cc.html#a2a95d18e7f38634394c4104d0e759989">c</a>), <a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.<a class="code hl_variable" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a575311979412b59585480d617fde3a7a">priority</a>, std::move(<a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.queue)};</div>
-<div class="line"><span class="lineno">  157</span>  }</div>
+<div class="fragment"><div class="line"><span class="lineno">  145</span>  {</div>
+<div class="line"><span class="lineno">  146</span>    <span class="keyword">using </span>RR = std::invoke_result_t&lt;<span class="keyword">decltype</span>(<a class="code hl_variable" href="threadpool-destruction-tests_8cc.html#a2a95d18e7f38634394c4104d0e759989">c</a>)&amp;&gt;;</div>
+<div class="line"><span class="lineno">  147</span>    <span class="keywordflow">return</span> <a class="code hl_class" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Builder&lt;true, hasPriority, hasQueue, RR&gt;</a>{std::forward&lt;decltype(c)&gt;(<a class="code hl_variable" href="threadpool-destruction-tests_8cc.html#a2a95d18e7f38634394c4104d0e759989">c</a>), <a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.<a class="code hl_variable" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a575311979412b59585480d617fde3a7a">priority</a>, std::move(<a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.queue)};</div>
+<div class="line"><span class="lineno">  148</span>  }</div>
 <div class="ttc" id="ablob-tests_8cc_html_a9741bf9c6acf513df5628442c549563e"><div class="ttname"><a href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a></div><div class="ttdeci">Blob::Ptr const b</div><div class="ttdef"><b>Definition</b> blob-tests.cc:118</div></div>
-<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Builder_html"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Scroom::Detail::ThreadPool::Builder</a></div><div class="ttdef"><b>Definition</b> threadpool.hh:179</div></div>
-<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Builder_html_a575311979412b59585480d617fde3a7a"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a575311979412b59585480d617fde3a7a">Scroom::Detail::ThreadPool::Builder::priority</a></div><div class="ttdeci">int priority</div><div class="ttdef"><b>Definition</b> threadpool.hh:212</div></div>
+<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Builder_html"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Scroom::Detail::ThreadPool::Builder</a></div><div class="ttdef"><b>Definition</b> threadpool.hh:170</div></div>
+<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Builder_html_a575311979412b59585480d617fde3a7a"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a575311979412b59585480d617fde3a7a">Scroom::Detail::ThreadPool::Builder::priority</a></div><div class="ttdeci">int priority</div><div class="ttdef"><b>Definition</b> threadpool.hh:203</div></div>
 <div class="ttc" id="athreadpool-destruction-tests_8cc_html_a2a95d18e7f38634394c4104d0e759989"><div class="ttname"><a href="threadpool-destruction-tests_8cc.html#a2a95d18e7f38634394c4104d0e759989">c</a></div><div class="ttdeci">Semaphore c(0)</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a99707f22dd5c5b26496b8a144c133a1e">Scroom::Detail::ThreadPool::Builder&lt; hasCallable_, hasPriority_, hasQueue_, R &gt;::add()</a>.</p>
@@ -230,9 +230,9 @@ template&lt;bool hasCallable, bool hasQueue, typename R &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  161</span>  {</div>
-<div class="line"><span class="lineno">  162</span>    <span class="keywordflow">return</span> <a class="code hl_class" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Builder&lt;hasCallable, true, hasQueue, R&gt;</a>{std::move(<a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.fn), priority, std::move(<a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.queue)};</div>
-<div class="line"><span class="lineno">  163</span>  }</div>
+<div class="fragment"><div class="line"><span class="lineno">  152</span>  {</div>
+<div class="line"><span class="lineno">  153</span>    <span class="keywordflow">return</span> <a class="code hl_class" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Builder&lt;hasCallable, true, hasQueue, R&gt;</a>{std::move(<a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.fn), priority, std::move(<a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.queue)};</div>
+<div class="line"><span class="lineno">  154</span>  }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a490a71b112314b454d20718590eea8c0">Scroom::Detail::ThreadPool::Builder&lt; hasCallable_, hasPriority_, hasQueue_, R &gt;::add()</a>.</p>
 <div class="dynheader">
@@ -283,9 +283,9 @@ template&lt;bool hasCallable, bool hasPriority, typename R &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  167</span>  {</div>
-<div class="line"><span class="lineno">  168</span>    <span class="keywordflow">return</span> <a class="code hl_class" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Builder&lt;hasCallable, hasPriority, true, R&gt;</a>{std::move(<a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.fn), <a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.<a class="code hl_variable" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a575311979412b59585480d617fde3a7a">priority</a>, queue-&gt;getWeak()};</div>
-<div class="line"><span class="lineno">  169</span>  }</div>
+<div class="fragment"><div class="line"><span class="lineno">  158</span>  {</div>
+<div class="line"><span class="lineno">  159</span>    <span class="keywordflow">return</span> <a class="code hl_class" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Builder&lt;hasCallable, hasPriority, true, R&gt;</a>{std::move(<a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.fn), <a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.<a class="code hl_variable" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a575311979412b59585480d617fde3a7a">priority</a>, queue-&gt;getWeak()};</div>
+<div class="line"><span class="lineno">  160</span>  }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#affd9ff3c1ea9504cef63eed600fe6bda">Scroom::Detail::ThreadPool::Builder&lt; hasCallable_, hasPriority_, hasQueue_, R &gt;::add()</a>, and <a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a1c0de7a61d7b96779d031d3cef0ec99c">Scroom::Detail::ThreadPool::Builder&lt; hasCallable_, hasPriority_, hasQueue_, R &gt;::add()</a>.</p>
 <div class="dynheader">
@@ -338,9 +338,9 @@ template&lt;bool hasCallable, bool hasPriority, typename R &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  173</span>  {</div>
-<div class="line"><span class="lineno">  174</span>    <span class="keywordflow">return</span> <a class="code hl_class" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Builder&lt;hasCallable, hasPriority, true, R&gt;</a>{std::move(<a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.fn), <a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.<a class="code hl_variable" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a575311979412b59585480d617fde3a7a">priority</a>, std::move(queue)};</div>
-<div class="line"><span class="lineno">  175</span>  }</div>
+<div class="fragment"><div class="line"><span class="lineno">  164</span>  {</div>
+<div class="line"><span class="lineno">  165</span>    <span class="keywordflow">return</span> <a class="code hl_class" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Builder&lt;hasCallable, hasPriority, true, R&gt;</a>{std::move(<a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.fn), <a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.<a class="code hl_variable" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a575311979412b59585480d617fde3a7a">priority</a>, std::move(queue)};</div>
+<div class="line"><span class="lineno">  166</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>

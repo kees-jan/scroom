@@ -2514,7 +2514,6 @@
     <class kind="struct">ThreadPool::Job</class>
     <class kind="class">ThreadPool::PrivateData</class>
     <class kind="class">QueueJumper</class>
-    <namespace>Detail</namespace>
     <namespace>Scroom</namespace>
     <namespace>Scroom::Detail</namespace>
     <namespace>Scroom::Detail::ThreadPool</namespace>
@@ -25291,13 +25290,6 @@
       <anchorfile>namespaceDetail.html</anchorfile>
       <anchor>ade7e310c6f49be3b6e0ded45bd574f9b</anchor>
       <arglist>(T *p)</arglist>
-    </member>
-    <member kind="function">
-      <type>R</type>
-      <name>threadPoolExecute</name>
-      <anchorfile>namespaceDetail.html</anchorfile>
-      <anchor>a12353261cad3848c819ef115f16df143</anchor>
-      <arglist>(const std::shared_ptr&lt; T &gt; &amp;fn)</arglist>
     </member>
   </compound>
   <compound kind="namespace">
