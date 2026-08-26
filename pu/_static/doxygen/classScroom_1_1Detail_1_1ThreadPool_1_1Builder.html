@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-55-g4edb02891</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-56-g5a3f1f70a</span>
    </div>
   </td>
  </tr>
@@ -225,7 +225,7 @@ template&lt;bool hasCallable_, bool hasPriority_, bool hasQueue_, typename R &gt
 <div class="fragment"><div class="line"><span class="lineno">  208</span>      : <a class="code hl_variable" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a575311979412b59585480d617fde3a7a">priority</a>{defaultPriority}</div>
 <div class="line"><span class="lineno">  209</span>    {</div>
 <div class="line"><span class="lineno">  210</span>    }</div>
-<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Builder_html_a575311979412b59585480d617fde3a7a"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a575311979412b59585480d617fde3a7a">Scroom::Detail::ThreadPool::Builder::priority</a></div><div class="ttdeci">int priority</div><div class="ttdef"><b>Definition</b> threadpool.hh:234</div></div>
+<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Builder_html_a575311979412b59585480d617fde3a7a"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a575311979412b59585480d617fde3a7a">Scroom::Detail::ThreadPool::Builder::priority</a></div><div class="ttdeci">int priority</div><div class="ttdef"><b>Definition</b> threadpool.hh:233</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -275,8 +275,8 @@ template&lt;bool hasCallable_, bool hasPriority_, bool hasQueue_, typename R &gt
 <div class="line"><span class="lineno">  215</span>      , <a class="code hl_variable" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#ae6070047b8a60394526f709dbfcba8d8">queue</a>{std::move(queue_)}</div>
 <div class="line"><span class="lineno">  216</span>    {</div>
 <div class="line"><span class="lineno">  217</span>    }</div>
-<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Builder_html_a68a3b539f5712a02b718a1e0742a4f0d"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a68a3b539f5712a02b718a1e0742a4f0d">Scroom::Detail::ThreadPool::Builder::fn</a></div><div class="ttdeci">FunctionType fn</div><div class="ttdef"><b>Definition</b> threadpool.hh:233</div></div>
-<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Builder_html_ae6070047b8a60394526f709dbfcba8d8"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#ae6070047b8a60394526f709dbfcba8d8">Scroom::Detail::ThreadPool::Builder::queue</a></div><div class="ttdeci">WeakQueue::Ptr queue</div><div class="ttdef"><b>Definition</b> threadpool.hh:235</div></div>
+<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Builder_html_a68a3b539f5712a02b718a1e0742a4f0d"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a68a3b539f5712a02b718a1e0742a4f0d">Scroom::Detail::ThreadPool::Builder::fn</a></div><div class="ttdeci">FunctionType fn</div><div class="ttdef"><b>Definition</b> threadpool.hh:232</div></div>
+<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Builder_html_ae6070047b8a60394526f709dbfcba8d8"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#ae6070047b8a60394526f709dbfcba8d8">Scroom::Detail::ThreadPool::Builder::queue</a></div><div class="ttdeci">WeakQueue::Ptr queue</div><div class="ttdef"><b>Definition</b> threadpool.hh:234</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -504,7 +504,7 @@ template&lt;bool hasCallable_, bool hasPriority_, bool hasQueue_, typename R &gt
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  231</span>{ <span class="keywordflow">return</span> std::move(*<span class="keyword">this</span>); }</div>
+<div class="fragment"><div class="line"><span class="lineno">  230</span>{ <span class="keywordflow">return</span> std::move(*<span class="keyword">this</span>); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -544,9 +544,8 @@ template&lt;bool hasCallable_, bool hasPriority_, bool hasQueue_, typename R &gt
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  226</span>    {</div>
-<div class="line"><span class="lineno">  227</span>      <span class="keywordflow">return</span> <a class="code hl_function" href="threadpool-queue-tests_8cc.html#ae28512d7a9b9132257981ed5ecbce069">add</a>(std::forward&lt;<span class="keyword">decltype</span>(first)&gt;(first))</div>
-<div class="line"><span class="lineno">  228</span>        .addMany(std::forward&lt;<span class="keyword">decltype</span>(rest)&gt;(rest)...);</div>
-<div class="line"><span class="lineno">  229</span>    }</div>
+<div class="line"><span class="lineno">  227</span>      <span class="keywordflow">return</span> <a class="code hl_function" href="threadpool-queue-tests_8cc.html#ae28512d7a9b9132257981ed5ecbce069">add</a>(std::forward&lt;<span class="keyword">decltype</span>(first)&gt;(first)).addMany(std::forward&lt;<span class="keyword">decltype</span>(rest)&gt;(rest)...);</div>
+<div class="line"><span class="lineno">  228</span>    }</div>
 <div class="ttc" id="athreadpool-queue-tests_8cc_html_ae28512d7a9b9132257981ed5ecbce069"><div class="ttname"><a href="threadpool-queue-tests_8cc.html#ae28512d7a9b9132257981ed5ecbce069">add</a></div><div class="ttdeci">t add()</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
