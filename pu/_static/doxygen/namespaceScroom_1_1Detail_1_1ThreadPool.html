@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-58-g04310d73d</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-50-gfe59ac820</span>
    </div>
   </td>
  </tr>
@@ -173,7 +173,7 @@ template&lt;bool hasPriority, bool hasQueue, typename R &gt; </div>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  154</span>  {</div>
-<div class="line"><span class="lineno">  155</span>    <span class="keyword">using </span>RR = std::invoke_result_t&lt;<span class="keyword">decltype</span>(<a class="code hl_variable" href="threadpool-destruction-tests_8cc.html#a2a95d18e7f38634394c4104d0e759989">c</a>)&gt;;</div>
+<div class="line"><span class="lineno">  155</span>    <span class="keyword">using </span>RR = std::invoke_result_t&lt;<span class="keyword">decltype</span>(<a class="code hl_variable" href="threadpool-destruction-tests_8cc.html#a2a95d18e7f38634394c4104d0e759989">c</a>)&amp;&gt;;</div>
 <div class="line"><span class="lineno">  156</span>    <span class="keywordflow">return</span> <a class="code hl_class" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Builder&lt;true, hasPriority, hasQueue, RR&gt;</a>{std::forward&lt;decltype(c)&gt;(<a class="code hl_variable" href="threadpool-destruction-tests_8cc.html#a2a95d18e7f38634394c4104d0e759989">c</a>), <a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.<a class="code hl_variable" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a575311979412b59585480d617fde3a7a">priority</a>, std::move(<a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.queue)};</div>
 <div class="line"><span class="lineno">  157</span>  }</div>
 <div class="ttc" id="ablob-tests_8cc_html_a9741bf9c6acf513df5628442c549563e"><div class="ttname"><a href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a></div><div class="ttdeci">Blob::Ptr const b</div><div class="ttdef"><b>Definition</b> blob-tests.cc:118</div></div>
