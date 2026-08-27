@@ -14,7 +14,7 @@ fi
 set -e
 
 mv $1/bin/* $1;
-mv $1/share/scroom/scroom.glade $1/scroom.glade;
+mv $1/share/scroom/scroom.ui $1/scroom.ui;
 mkdir -p $1/plugins;
 mv $1/lib/scroom/*.dll $1/plugins;
 mkdir -p $1/colormaps;

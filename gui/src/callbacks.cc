@@ -442,15 +442,15 @@ void on_scroom_bootstrap(const FileNameMap& newFilenames)
 
   if(devMode)
   {
-    xmlFileName = TOP_SRCDIR "/gui/scroom.glade";
+    xmlFileName = TOP_SRCDIR "/gui/scroom.ui";
   }
   else
   {
 #ifdef _WIN32
     // We want to keep everything portable on windows so we look for the .glade file in the same directory as the .exe
-    xmlFileName = (boost::dll::program_location().parent_path() / "scroom.glade").generic_string();
+    xmlFileName = (boost::dll::program_location().parent_path() / "scroom.ui").generic_string();
 #else
-    xmlFileName = PACKAGE_DATA_DIR "/scroom.glade";
+    xmlFileName = PACKAGE_DATA_DIR "/scroom.ui";
 #endif
   }
 
