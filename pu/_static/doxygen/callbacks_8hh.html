@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-50-g8181794d9</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-51-g058ffe8ea</span>
    </div>
   </td>
  </tr>
@@ -3144,15 +3144,15 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  442</span> </div>
 <div class="line"><span class="lineno">  443</span>  <span class="keywordflow">if</span>(devMode)</div>
 <div class="line"><span class="lineno">  444</span>  {</div>
-<div class="line"><span class="lineno">  445</span>    <a class="code hl_variable" href="callbacks_8cc.html#ac29c7cff7372a795638c0c6f1d0314d8">xmlFileName</a> = TOP_SRCDIR <span class="stringliteral">&quot;/gui/scroom.glade&quot;</span>;</div>
+<div class="line"><span class="lineno">  445</span>    <a class="code hl_variable" href="callbacks_8cc.html#ac29c7cff7372a795638c0c6f1d0314d8">xmlFileName</a> = TOP_SRCDIR <span class="stringliteral">&quot;/gui/scroom.ui&quot;</span>;</div>
 <div class="line"><span class="lineno">  446</span>  }</div>
 <div class="line"><span class="lineno">  447</span>  <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  448</span>  {</div>
 <div class="line"><span class="lineno">  449</span><span class="preprocessor">#ifdef _WIN32</span></div>
 <div class="line"><span class="lineno">  450</span>    <span class="comment">// We want to keep everything portable on windows so we look for the .glade file in the same directory as the .exe</span></div>
-<div class="line"><span class="lineno">  451</span>    <a class="code hl_variable" href="callbacks_8cc.html#ac29c7cff7372a795638c0c6f1d0314d8">xmlFileName</a> = (boost::dll::program_location().parent_path() / <span class="stringliteral">&quot;scroom.glade&quot;</span>).generic_string();</div>
+<div class="line"><span class="lineno">  451</span>    <a class="code hl_variable" href="callbacks_8cc.html#ac29c7cff7372a795638c0c6f1d0314d8">xmlFileName</a> = (boost::dll::program_location().parent_path() / <span class="stringliteral">&quot;scroom.ui&quot;</span>).generic_string();</div>
 <div class="line"><span class="lineno">  452</span><span class="preprocessor">#else</span></div>
-<div class="line"><span class="lineno">  453</span>    <a class="code hl_variable" href="callbacks_8cc.html#ac29c7cff7372a795638c0c6f1d0314d8">xmlFileName</a> = PACKAGE_DATA_DIR <span class="stringliteral">&quot;/scroom.glade&quot;</span>;</div>
+<div class="line"><span class="lineno">  453</span>    <a class="code hl_variable" href="callbacks_8cc.html#ac29c7cff7372a795638c0c6f1d0314d8">xmlFileName</a> = PACKAGE_DATA_DIR <span class="stringliteral">&quot;/scroom.ui&quot;</span>;</div>
 <div class="line"><span class="lineno">  454</span><span class="preprocessor">#endif</span></div>
 <div class="line"><span class="lineno">  455</span>  }</div>
 <div class="line"><span class="lineno">  456</span> </div>
