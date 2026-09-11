@@ -389,7 +389,6 @@ var hierarchy =
     ] ],
     [ "boost::noncopyable", null, [
       [ "Scroom::Bookkeeping::MapBase< ObserverWeak, typenameRegistration::Ptr >", "classScroom_1_1Bookkeeping_1_1MapBase.html", null ],
-      [ "LoggingWindow", "classLoggingWindow.html", null ],
       [ "Scroom::Bookkeeping::MapBase< K, V >", "classScroom_1_1Bookkeeping_1_1MapBase.html", null ]
     ] ],
     [ "Scroom::Utils::on_scope_exit< F >", "classScroom_1_1Utils_1_1on__scope__exit.html", null ],

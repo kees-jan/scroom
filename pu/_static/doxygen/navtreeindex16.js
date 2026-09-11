@@ -1,5 +1,9 @@
 var NAVTREEINDEX16 =
 {
+"layerspecforbitmap_8cc.html#a22a1bb4f862ef52ed08042515ffca9da":[4,0,3,4,1,6,4],
+"layerspecforbitmap_8cc.html#a35eb5d0dba0fa7d585cf7d77b10947b3":[4,0,3,4,1,6,3],
+"layerspecforbitmap_8cc.html#a57ca2a55cf5fd640d3e3e3e2d59c4a62":[4,0,3,4,1,6,6],
+"layerspecforbitmap_8cc.html#a90b98df77076cf30312ea6e57d3e75d2":[4,0,3,4,1,6,9],
 "layerspecforbitmap_8cc.html#aa10fdd400c02f8ec3d8723f56fbc8b58":[4,0,3,4,1,6,1],
 "layerspecforbitmap_8cc.html#ad48ffa08ebee955f5039811162e0df4a":[4,0,3,4,1,6,7],
 "layerspecforbitmap_8cc.html#ae37bb5eadee0a9dc461de0b0880c51b1":[4,0,3,4,1,6,5],
@@ -53,9 +57,13 @@ var NAVTREEINDEX16 =
 "logger_8hh.html#a158ec4cbb40a66cc79524164ef26b836":[4,0,3,5,0,0,10,3],
 "logger_8hh_source.html":[4,0,3,5,0,0,10],
 "logging-window_8cc.html":[4,0,2,2,4],
-"logging-window_8cc.html#a46e822c4970dbaf521ee7f58b474e1eb":[4,0,2,2,4,2],
-"logging-window_8cc.html#a5cac5a6cd0ffd68318dc5d730d0e8688":[4,0,2,2,4,1],
-"logging-window_8cc.html#acfe9f6b8c3f44f97c2b73a8d46524957":[4,0,2,2,4,0],
+"logging-window_8cc.html#a16cb6b08f644efca83f5cde66fee9878":[4,0,2,2,4,5],
+"logging-window_8cc.html#a46e822c4970dbaf521ee7f58b474e1eb":[4,0,2,2,4,6],
+"logging-window_8cc.html#a5cac5a6cd0ffd68318dc5d730d0e8688":[4,0,2,2,4,2],
+"logging-window_8cc.html#a7fd3b1ca2766f109ba52232e61a2c209":[4,0,2,2,4,4],
+"logging-window_8cc.html#aa3eca009c7fcfed84b9de47d1e12c68a":[4,0,2,2,4,3],
+"logging-window_8cc.html#ab27f8e1e654bd763f730f37365ca105e":[4,0,2,2,4,0],
+"logging-window_8cc.html#acfe9f6b8c3f44f97c2b73a8d46524957":[4,0,2,2,4,1],
 "logging-window_8hh.html":[4,0,2,2,5],
 "logging-window_8hh_source.html":[4,0,2,2,5],
 "md_cmake-modules_2README.html":[0],
@@ -241,13 +249,5 @@ var NAVTREEINDEX16 =
 "namespaceScroom_1_1Utils.html#a7b8702657fc50c282c77b5f82251fa6a":[1,0,23,12,70],
 "namespaceScroom_1_1Utils.html#a84846154a19182ab43c20f2d79ff54dd":[1,0,23,12,53],
 "namespaceScroom_1_1Utils.html#a8567b6c139d46286259d3176be21ba96":[1,0,23,12,50],
-"namespaceScroom_1_1Utils.html#a88b4b5193ea6b4854d3043b80de6c7a4":[1,0,23,12,64],
-"namespaceScroom_1_1Utils.html#a8a866a6439fc60dfe259e168059aa65e":[1,0,23,12,65],
-"namespaceScroom_1_1Utils.html#a8ac2cae323eb38f0996245c0a925d4ac":[1,0,23,12,78],
-"namespaceScroom_1_1Utils.html#a902552464d1543016a1dcb8e9efcb443":[1,0,23,12,81],
-"namespaceScroom_1_1Utils.html#a91be522682d558972fdd182573c9fd6e":[1,0,23,12,91],
-"namespaceScroom_1_1Utils.html#a92a4e558bc042d79aa5bdd50770f699b":[1,0,23,12,77],
-"namespaceScroom_1_1Utils.html#a937a83f676c3385e311df6831ab2588e":[1,0,23,12,80],
-"namespaceScroom_1_1Utils.html#a945b370ac1041bc053565f150668e803":[1,0,23,12,66],
-"namespaceScroom_1_1Utils.html#a95153f4ab44349a7a3190c2184f92e97":[1,0,23,12,47]
+"namespaceScroom_1_1Utils.html#a88b4b5193ea6b4854d3043b80de6c7a4":[1,0,23,12,64]
 };

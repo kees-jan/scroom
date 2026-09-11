@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-58-g292ed6e68</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-59-g7b1ebebbb</span>
    </div>
   </td>
  </tr>
@@ -2739,7 +2739,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  423</span>  <span class="keyword">auto</span> pixelSize = <a class="code hl_function" href="cairo-helpers_8hh.html#ac7a152a4cc864e9c67acbc6686a9d3a4">pixelSizeFromZoom</a>(<a class="code hl_variable" href="classView.html#a802f478c8446ce100a5b2bb748258934">zoom</a>);</div>
 <div class="line"><span class="lineno">  424</span>  <a class="code hl_variable" href="classView.html#a5cf9626f4b686c6f6835d4cfded426ee">position</a> += (<a class="code hl_variable" href="classView.html#a9a9821e21475adadbc82273131d7006b">drawingAreaSize</a> - newSize) / pixelSize / 2;</div>
 <div class="line"><span class="lineno">  425</span> </div>
-<div class="line"><span class="lineno">  426</span>  std::scoped_lock <span class="keyword">const</span> protect_position(<a class="code hl_variable" href="classView.html#a5cf9626f4b686c6f6835d4cfded426ee">position</a>);</div>
+<div class="line"><span class="lineno">  426</span>  std::lock_guard <span class="keyword">const</span> protect_position(<a class="code hl_variable" href="classView.html#a5cf9626f4b686c6f6835d4cfded426ee">position</a>);</div>
 <div class="line"><span class="lineno">  427</span>  <a class="code hl_variable" href="classView.html#a9a9821e21475adadbc82273131d7006b">drawingAreaSize</a> = newSize;</div>
 <div class="line"><span class="lineno">  428</span>  <a class="code hl_function" href="classView.html#a54f60e30804881dcfec8bdbff457a4eb">updateZoom</a>();</div>
 <div class="line"><span class="lineno">  429</span>  <a class="code hl_function" href="classView.html#a1c6bafe5c25990c0733f6d2b28df717f">updateScrollbars</a>();</div>
@@ -2996,7 +2996,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  478</span>    <a class="code hl_variable" href="classView.html#a5cf9626f4b686c6f6835d4cfded426ee">position</a> += mousePos / <a class="code hl_function" href="cairo-helpers_8hh.html#ac7a152a4cc864e9c67acbc6686a9d3a4">pixelSizeFromZoom</a>(<a class="code hl_variable" href="classView.html#a802f478c8446ce100a5b2bb748258934">zoom</a>);</div>
 <div class="line"><span class="lineno">  479</span>    <a class="code hl_variable" href="classView.html#a5cf9626f4b686c6f6835d4cfded426ee">position</a> -= mousePos / <a class="code hl_function" href="cairo-helpers_8hh.html#ac7a152a4cc864e9c67acbc6686a9d3a4">pixelSizeFromZoom</a>(newzoom);</div>
 <div class="line"><span class="lineno">  480</span> </div>
-<div class="line"><span class="lineno">  481</span>    std::scoped_lock <span class="keyword">const</span> protect_position(<a class="code hl_variable" href="classView.html#a5cf9626f4b686c6f6835d4cfded426ee">position</a>);</div>
+<div class="line"><span class="lineno">  481</span>    std::lock_guard <span class="keyword">const</span> protect_position(<a class="code hl_variable" href="classView.html#a5cf9626f4b686c6f6835d4cfded426ee">position</a>);</div>
 <div class="line"><span class="lineno">  482</span>    <a class="code hl_variable" href="classView.html#a802f478c8446ce100a5b2bb748258934">zoom</a> = newzoom;</div>
 <div class="line"><span class="lineno">  483</span>    <a class="code hl_function" href="classView.html#a1c6bafe5c25990c0733f6d2b28df717f">updateScrollbars</a>();</div>
 <div class="line"><span class="lineno">  484</span>    <a class="code hl_function" href="classView.html#a53280aa4b3288d4f81d4a840f98e5eb9">updateTextbox</a>();</div>
@@ -4670,7 +4670,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  782</span>  {</div>
 <div class="line"><span class="lineno">  783</span>    <a class="code hl_variable" href="classView.html#a5cf9626f4b686c6f6835d4cfded426ee">position</a> = newPos;</div>
 <div class="line"><span class="lineno">  784</span> </div>
-<div class="line"><span class="lineno">  785</span>    std::scoped_lock <span class="keyword">const</span> protect_position(<a class="code hl_variable" href="classView.html#a5cf9626f4b686c6f6835d4cfded426ee">position</a>);</div>
+<div class="line"><span class="lineno">  785</span>    std::lock_guard <span class="keyword">const</span> protect_position(<a class="code hl_variable" href="classView.html#a5cf9626f4b686c6f6835d4cfded426ee">position</a>);</div>
 <div class="line"><span class="lineno">  786</span>    <span class="keywordflow">if</span>(source != <a class="code hl_enumvalue" href="classView.html#ae2d38f95cdcab0ebab25ea670f4ebdfba07354fb9b0f0817f5f8d066c09b45a3f">SCROLLBAR</a>)</div>
 <div class="line"><span class="lineno">  787</span>    {</div>
 <div class="line"><span class="lineno">  788</span>      <a class="code hl_function" href="classView.html#a1c6bafe5c25990c0733f6d2b28df717f">updateScrollbars</a>();</div>

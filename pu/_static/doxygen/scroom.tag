@@ -14045,6 +14045,34 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
+      <type></type>
+      <name>LoggingWindow</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a44e215587b820220f807ed1f3c4ae6df</anchor>
+      <arglist>(const LoggingWindow &amp;)=delete</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>LoggingWindow</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>add35509944e448f1fe4bde29b1039924</anchor>
+      <arglist>(LoggingWindow &amp;&amp;)=delete</arglist>
+    </member>
+    <member kind="function">
+      <type>LoggingWindow &amp;</type>
+      <name>operator=</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a93024e711cca04723e08d5f6187cfe4c</anchor>
+      <arglist>(const LoggingWindow &amp;)=delete</arglist>
+    </member>
+    <member kind="function">
+      <type>LoggingWindow &amp;</type>
+      <name>operator=</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a6ded2f0c6fd50bbce45c9e664a5bd017</anchor>
+      <arglist>(LoggingWindow &amp;&amp;)=delete</arglist>
+    </member>
+    <member kind="function">
       <type>void</type>
       <name>consume</name>
       <anchorfile>classLoggingWindow.html</anchorfile>
@@ -14125,15 +14153,15 @@
       <type>static gboolean</type>
       <name>onDeleteEvent</name>
       <anchorfile>classLoggingWindow.html</anchorfile>
-      <anchor>a3853611c2598a1a119e9c45b45e55b67</anchor>
-      <arglist>(GtkWidget *widget, GdkEvent *, gpointer)</arglist>
+      <anchor>ac5776b8055d42056ab173cc40f3744e3</anchor>
+      <arglist>(GtkWidget *widget, GdkEvent *deleteEvent, gpointer callbackData)</arglist>
     </member>
     <member kind="function" protection="private" static="yes">
       <type>static gboolean</type>
       <name>onFocusInEvent</name>
       <anchorfile>classLoggingWindow.html</anchorfile>
-      <anchor>a377d9cdfff173f95c8bbdecf1d0591fd</anchor>
-      <arglist>(GtkWidget *, GdkEvent *, gpointer userData)</arglist>
+      <anchor>a39fb161bce94a17643607f9c700bcefe</anchor>
+      <arglist>(GtkWidget *widget, GdkEvent *focusEvent, gpointer userData)</arglist>
     </member>
     <member kind="variable" protection="private">
       <type>Scroom::RingBufferSink::Ptr</type>
@@ -25623,6 +25651,34 @@
   <compound kind="namespace">
     <name>anonymous_namespace{logging-window.cc}</name>
     <filename>namespaceanonymous__namespace_02logging-window_8cc_03.html</filename>
+    <member kind="function">
+      <type>void</type>
+      <name>setTextTagStringProperty</name>
+      <anchorfile>namespaceanonymous__namespace_02logging-window_8cc_03.html</anchorfile>
+      <anchor>a16cb6b08f644efca83f5cde66fee9878</anchor>
+      <arglist>(GtkTextTag *textTag, const char *propertyName, const char *value)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setTextTagBooleanProperty</name>
+      <anchorfile>namespaceanonymous__namespace_02logging-window_8cc_03.html</anchorfile>
+      <anchor>aa3eca009c7fcfed84b9de47d1e12c68a</anchor>
+      <arglist>(GtkTextTag *textTag, const char *propertyName, gboolean value)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setTextTagIntProperty</name>
+      <anchorfile>namespaceanonymous__namespace_02logging-window_8cc_03.html</anchorfile>
+      <anchor>a7fd3b1ca2766f109ba52232e61a2c209</anchor>
+      <arglist>(GtkTextTag *textTag, const char *propertyName, gint value)</arglist>
+    </member>
+    <member kind="function">
+      <type>GtkTextTag *</type>
+      <name>addTextTag</name>
+      <anchorfile>namespaceanonymous__namespace_02logging-window_8cc_03.html</anchorfile>
+      <anchor>ab27f8e1e654bd763f730f37365ca105e</anchor>
+      <arglist>(GtkTextBuffer *textBuffer, const char *tagName)</arglist>
+    </member>
     <member kind="function">
       <type>void</type>
       <name>scrollTextViewToBottom</name>

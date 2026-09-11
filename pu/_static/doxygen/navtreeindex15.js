@@ -1,10 +1,14 @@
 var NAVTREEINDEX15 =
 {
+"function-additor_8hh.html":[4,0,3,3,0,0,1],
+"function-additor_8hh.html#a3debba59e582e93cd976cf683f203596":[4,0,3,3,0,0,1,6],
+"function-additor_8hh.html#a54543a0f312bd6204c781d225ba2f936":[4,0,3,3,0,0,1,5],
+"function-additor_8hh.html#a7a5ae2e0b320fe1c0cc39f8c57eeb0eb":[4,0,3,3,0,0,1,2],
 "function-additor_8hh.html#abd38ef9a9eb0cd8cc030d645e58cad2b":[4,0,3,3,0,0,1,4],
 "function-additor_8hh.html#af8f5a0d33cea536712458f4e2cace540":[4,0,3,3,0,0,1,3],
 "function-additor_8hh_source.html":[4,0,3,3,0,0,1],
-"functions.html":[3,3,0],
 "functions.html":[3,3,0,0],
+"functions.html":[3,3,0],
 "functions_b.html":[3,3,0,1],
 "functions_c.html":[3,3,0,2],
 "functions_d.html":[3,3,0,3],
@@ -12,8 +16,8 @@ var NAVTREEINDEX15 =
 "functions_enum.html":[3,3,4],
 "functions_eval.html":[3,3,5],
 "functions_f.html":[3,3,0,5],
-"functions_func.html":[3,3,1,0],
 "functions_func.html":[3,3,1],
+"functions_func.html":[3,3,1,0],
 "functions_func_b.html":[3,3,1,1],
 "functions_func_c.html":[3,3,1,2],
 "functions_func_d.html":[3,3,1,3],
@@ -245,9 +249,5 @@ var NAVTREEINDEX15 =
 "layeroperations_8hh_source.html":[4,0,3,4,0,0,0],
 "layerspecforbitmap_8cc.html":[4,0,3,4,1,6],
 "layerspecforbitmap_8cc.html#a05ababa66d7e8f138de17620da755ae3":[4,0,3,4,1,6,2],
-"layerspecforbitmap_8cc.html#a168ea3c61b0d622ee3854eb09a4db0f0":[4,0,3,4,1,6,8],
-"layerspecforbitmap_8cc.html#a22a1bb4f862ef52ed08042515ffca9da":[4,0,3,4,1,6,4],
-"layerspecforbitmap_8cc.html#a35eb5d0dba0fa7d585cf7d77b10947b3":[4,0,3,4,1,6,3],
-"layerspecforbitmap_8cc.html#a57ca2a55cf5fd640d3e3e3e2d59c4a62":[4,0,3,4,1,6,6],
-"layerspecforbitmap_8cc.html#a90b98df77076cf30312ea6e57d3e75d2":[4,0,3,4,1,6,9]
+"layerspecforbitmap_8cc.html#a168ea3c61b0d622ee3854eb09a4db0f0":[4,0,3,4,1,6,8]
 };

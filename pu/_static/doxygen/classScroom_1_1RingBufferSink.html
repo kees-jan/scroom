@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-58-g292ed6e68</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-59-g7b1ebebbb</span>
    </div>
   </td>
  </tr>
@@ -347,7 +347,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   59</span>    spdlog::memory_buf_t formatted;</div>
 <div class="line"><span class="lineno">   60</span>    formatter_-&gt;format(msg, formatted);</div>
 <div class="line"><span class="lineno">   61</span> </div>
-<div class="line"><span class="lineno">   62</span>    <a class="code hl_variable" href="classScroom_1_1RingBufferSink.html#a81ee453dab3a56c6e0c1ebe57c5bdd67">m_entries</a>.push_back(Entry{<a class="code hl_variable" href="classScroom_1_1RingBufferSink.html#a6cdfd2757165413a4fd00fa8b90ee606">m_nextSeq</a>++, msg.level, fmt::to_string(formatted)});</div>
+<div class="line"><span class="lineno">   62</span>    <a class="code hl_variable" href="classScroom_1_1RingBufferSink.html#a81ee453dab3a56c6e0c1ebe57c5bdd67">m_entries</a>.push_back(Entry{.seq = <a class="code hl_variable" href="classScroom_1_1RingBufferSink.html#a6cdfd2757165413a4fd00fa8b90ee606">m_nextSeq</a>++, .level = msg.level, .text = fmt::to_string(formatted)});</div>
 <div class="line"><span class="lineno">   63</span> </div>
 <div class="line"><span class="lineno">   64</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="classScroom_1_1RingBufferSink.html#ae40ca9cb45990e7ed0e7f1cee7304c5e">m_pendingWakeup</a>)</div>
 <div class="line"><span class="lineno">   65</span>    {</div>

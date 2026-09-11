@@ -1,9 +1,7 @@
 <map id="LoggingWindow" name="LoggingWindow">
-<area shape="rect" id="Node000001" title=" " alt="" coords="209,148,423,553"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="121,148,335,633"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,5,221,85"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="149,96,211,188,207,191,145,98"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="245,13,387,78"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="319,92,319,148,313,148,313,92"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="411,5,605,85"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="486,87,434,169,429,166,481,84"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="133,98,150,147,145,149,128,100"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="245,5,440,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="332,87,317,133,312,131,327,85"/>
 </map>

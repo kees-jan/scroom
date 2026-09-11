@@ -1,5 +1,9 @@
 var NAVTREEINDEX3 =
 {
+"classMonochromeColormapHelper.html#a81ae81cca702b13aca63d07013f37ab1":[3,0,58,9],
+"classMonochromeColormapHelper.html#a8ca9ddcea676c30f085ae9aa94dc1299":[3,0,58,3],
+"classMonochromeColormapHelper.html#a8fa1230073c5c69150346be374976bb0":[3,0,58,11],
+"classMonochromeColormapHelper.html#a9a984da597fe959f697633a592b4530b":[3,0,58,8],
 "classMonochromeColormapHelper.html#aa54b09eb5b74f13bb333f5211893240e":[3,0,58,14],
 "classMonochromeColormapHelper.html#aa877583213c557c5c0c54a8da6700ec6":[3,0,58,4],
 "classMonochromeColormapHelper.html#ace01cfb15ef9889abb675f74e51a0db1":[3,0,58,2],
@@ -245,9 +249,5 @@ var NAVTREEINDEX3 =
 "classProgressBarManager.html#a3551f251d08142bfab6d6ec5dec375b4":[3,0,91,12],
 "classProgressBarManager.html#a5260ed3ce8fc472ec01aacc2a91de868":[3,0,91,3],
 "classProgressBarManager.html#a62ef3bb495090cd50b31d9ca8484a730":[3,0,91,1],
-"classProgressBarManager.html#a66baf2da99859dd40170d16aacc3bd45":[3,0,91,10],
-"classProgressBarManager.html#a6ad7bf9ab3543a36e19847a76709e72a":[3,0,91,7],
-"classProgressBarManager.html#a6ea99e5fd8b5d5a277cea203795a76b1":[3,0,91,14],
-"classProgressBarManager.html#aa5d7f1aa8a62957e244a007e07b83ed3":[3,0,91,5],
-"classProgressBarManager.html#aa65b8a41c27e522c591eb23e7cfbee07":[3,0,91,4]
+"classProgressBarManager.html#a66baf2da99859dd40170d16aacc3bd45":[3,0,91,10]
 };
