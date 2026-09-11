@@ -8610,6 +8610,7 @@
     <path>gui/src/</path>
     <filename>gui_2src_2main_8cc.html</filename>
     <includes id="logger_8hh" name="logger.hh" local="no" import="no" module="no" objc="no">scroom/logger.hh</includes>
+    <includes id="ringbuffer-sink_8hh" name="ringbuffer-sink.hh" local="no" import="no" module="no" objc="no">scroom/ringbuffer-sink.hh</includes>
     <includes id="callbacks_8hh" name="callbacks.hh" local="yes" import="no" module="no" objc="no">callbacks.hh</includes>
     <member kind="function">
       <type>void</type>
