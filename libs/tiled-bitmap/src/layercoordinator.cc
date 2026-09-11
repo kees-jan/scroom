@@ -50,7 +50,7 @@ void LayerCoordinator::tileFinished(const CompressedTile::Ptr& tile)
   ConstTile::Ptr const tileData = tile->getConstTileAsync();
   require(tileData);
 
-  CpuBound()->schedule(
+  CpuBound()->post(
     [me = shared_from_this<LayerCoordinator>(), tile, tileData] { me->reduceSourceTile(tile, tileData); }, REDUCE_PRIO
   );
 }

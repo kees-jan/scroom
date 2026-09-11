@@ -35,8 +35,8 @@ TEST(ThreadPool_destruction_Tests, destroy_threadpool_with_nonempty_queue) // NO
   Semaphore b(0);
   Semaphore c(0);
 
-  pool->schedule(clear(&a) + pass(&b));
-  pool->schedule(clear(&c));
+  pool->post(clear(&a) + pass(&b));
+  pool->post(clear(&c));
 
   // Give the thread some time to start the job
   a.P();
@@ -62,8 +62,8 @@ TEST(ThreadPool_destruction_Tests, destroy_threadpool_with_nonempty_queue_with_c
   Semaphore b(0);
   Semaphore c(0);
 
-  pool->schedule(clear(&a) + pass(&b));
-  pool->schedule(clear(&c));
+  pool->post(clear(&a) + pass(&b));
+  pool->post(clear(&c));
 
   // Give the thread some time to start the job
   a.P();

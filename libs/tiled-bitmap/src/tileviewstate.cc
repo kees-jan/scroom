@@ -122,9 +122,7 @@ void TileViewState::kick()
     queue = ThreadPool::Queue::createAsync();
     weakQueue = queue->getWeak();
 
-    cpuBound->schedule(
-      [me = shared_from_this<TileViewState>(), weakQueue = weakQueue] { me->process(weakQueue); }, LOAD_PRIO, queue
-    );
+    cpuBound->post([me = shared_from_this<TileViewState>(), weakQueue = weakQueue] { me->process(weakQueue); }, LOAD_PRIO, queue);
   }
 }
 

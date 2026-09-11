@@ -144,7 +144,7 @@ void PipetteHandler::onSelectionEnd(Selection s, ViewInterface::Ptr view)
 
     // Get the selection rectangle
     const auto sel_rect = Scroom::Utils::make_rect_from_start_end(selection->start, selection->end);
-    Sequentially()->schedule(
+    Sequentially()->post(
       [me = shared_from_this<PipetteHandler>(), view, sel_rect] { me->computeValues(view, sel_rect); }, currentJob
     );
     jobMutex.unlock();

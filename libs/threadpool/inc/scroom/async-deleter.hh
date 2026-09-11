@@ -51,6 +51,6 @@ public:
 
   void operator()(T* p)
   {
-    deleter->schedule([p] { Detail::call_delete(p); });
+    deleter->post([p] { Detail::call_delete(p); });
   }
 };

@@ -48,7 +48,7 @@ Scroom::Utils::Stuff Scroom::TiledBitmap::scheduleLoadingBitmap(
   auto on_finished = [wait_until_done] { wait_until_done->V(); };
   progress->setWaiting();
 
-  Sequentially()->schedule(
+  Sequentially()->post(
     [progress, layer, sp, weakQueue, on_finished, wait_until_done]
     {
       Scroom::GtkHelpers::sync_on_ui_thread([=] { progress->setWorking(0); });

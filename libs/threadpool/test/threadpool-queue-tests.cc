@@ -107,7 +107,7 @@ TEST(ThreadPool_Queue_Queue, jobs_on_custom_queue_get_executed) // NOLINT
   ThreadPool::Queue::Ptr const queue = ThreadPool::Queue::create();
   Semaphore s(0);
   ThreadPool t(0);
-  t.schedule(clear(&s), queue);
+  t.post(clear(&s), queue);
   t.add();
   EXPECT_TRUE(s.P(long_timeout));
 }
@@ -118,8 +118,8 @@ TEST(ThreadPool_Queue_Queue, jobs_on_deleted_queue_dont_get_executed) // NOLINT
   Semaphore s1(0);
   Semaphore s2(0);
   ThreadPool t(0);
-  t.schedule(clear(&s1), queue);
-  t.schedule(clear(&s2));
+  t.post(clear(&s1), queue);
+  t.post(clear(&s2));
   queue.reset();
   t.add();
   EXPECT_TRUE(s2.P(long_timeout));
@@ -136,7 +136,7 @@ TEST(ThreadPool_Queue_Queue, queue_deletion_waits_for_jobs_to_finish) // NOLINT
   Semaphore s4(0);
 
   ThreadPool pool(0);
-  pool.schedule(clear(&s1) + pass(&s2), queue);
+  pool.post(clear(&s1) + pass(&s2), queue);
   pool.add();
   EXPECT_TRUE(s1.P(long_timeout));
   // Job is now being executed, hence it should not be possible to delete the queue

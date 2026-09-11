@@ -360,15 +360,47 @@ public:
   ~ThreadPool();
 
   /**
-   * Schedule a task
+   * Post a task
+   *
+   * The task will run on the threadpool (unless you delete the queue before it starts)
+   *
+   * @param params A parameter pack containing
+   *   @li a callable (must return void)
+   *   @li a priority (optional)
+   *   @li a queue (optional, either a Queue::Ptr or a WeakQueue::Ptr
+   */
+  void post(auto&&... params)
+  {
+    using Builder = Scroom::Detail::ThreadPool::Builder<false, false, false, void>;
+
+    auto r = Builder(defaultPriority).addMany(std::forward<decltype(params)>(params)...);
+
+    static_assert(r.hasCallable);
+
+    if constexpr(!r.hasQueue)
+    {
+      r.queue = defaultQueue()->getWeak();
+    }
+
+    using R = decltype(r)::ResultType;
+    static_assert(std::is_void_v<R>, "post() only supports callables that return void");
+
+    schedule_impl(std::move(r.fn), r.priority, std::move(r.queue));
+  }
+
+  /**
+   * Submit a task
+   *
+   * The task will run on the threadpool (unless you delete the queue before it starts).
+   * When finished, the returned future will hold the result.
    *
    * @param params A parameter pack containing
    *   @li a callable
    *   @li a priority (optional)
    *   @li a queue (optional, either a Queue::Ptr or a WeakQueue::Ptr
-   * @return a future, if the callable return non-void, otherwise void
+   * @return a future to the result
    */
-  auto schedule(auto&&... params)
+  auto submit(auto&&... params)
   {
     using Builder = Scroom::Detail::ThreadPool::Builder<false, false, false, void>;
 
@@ -383,18 +415,12 @@ public:
 
     using R = decltype(r)::ResultType;
 
-    if constexpr(std::is_void_v<R>)
-    {
-      schedule_impl(std::move(r.fn), r.priority, std::move(r.queue));
-    }
-    else
-    {
-      boost::packaged_task<R> t(std::move(r.fn));
-      boost::unique_future<R> f = t.get_future();
-      schedule_impl(std::move(t), r.priority, std::move(r.queue));
-      return f;
-    }
+    boost::packaged_task<R> t(std::move(r.fn));
+    boost::unique_future<R> f = t.get_future();
+    schedule_impl(std::move(t), r.priority, std::move(r.queue));
+    return f;
   }
+
 
   /**
    * Add an additional thread to the pool.

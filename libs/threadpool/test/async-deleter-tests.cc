@@ -62,7 +62,7 @@ TEST(Async_Deleter_Tests, deleter_deletes_asynchronously) // NOLINT
 
   Semaphore barrier2;
   Semaphore signal;
-  CpuBound()->schedule(pass(&barrier2) + destroy(a) + clear(&signal));
+  CpuBound()->post(pass(&barrier2) + destroy(a) + clear(&signal));
   a.reset();
   barrier2.V();
   EXPECT_TRUE(signal.P(long_timeout));

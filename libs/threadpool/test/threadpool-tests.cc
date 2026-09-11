@@ -74,12 +74,12 @@ bool has_at_least_n_threads(ThreadPool* pool, int count_)
 
   for(int i = 0; i < count_ - 1; i++)
   {
-    pool->schedule(pass(semaphores[i + 1]) + clear(semaphores[i]));
+    pool->post(pass(semaphores[i + 1]) + clear(semaphores[i]));
   }
 
   // All tasks are blocked on semaphores[count-1]
 
-  pool->schedule(clear(semaphores[count_ - 1]));
+  pool->post(clear(semaphores[count_ - 1]));
   // If jobs of the same priority are scheduled in order, and if
   // there are at least count_ threads, then this final job will get
   // scheduled on the last available thread, thus freeing all
@@ -110,7 +110,7 @@ TEST(ThreadPool_class_Tests, work_gets_done) // NOLINT
 {
   Semaphore s(0);
   ThreadPool pool(0);
-  pool.schedule(clear(&s));
+  pool.post(clear(&s));
 
   // Work doesn't get done with no threads
   EXPECT_FALSE(s.P(long_timeout));
@@ -125,8 +125,8 @@ TEST(ThreadPool_class_Tests, work_gets_done_by_prio) // NOLINT
   Semaphore high(0);
   Semaphore low(0);
   ThreadPool pool(0);
-  pool.schedule(clear(&low), PRIO_NORMAL);
-  pool.schedule(pass(&low) + clear(&high), PRIO_HIGH);
+  pool.post(clear(&low), PRIO_NORMAL);
+  pool.post(pass(&low) + clear(&high), PRIO_HIGH);
 
   pool.add();
   // Thread is doing the high-prio tasks first, which is blocked on
@@ -166,7 +166,7 @@ TEST(ThreadPool_class_Tests, schedule_future) // NOLINT
   ThreadPool pool(0);
   Semaphore a(0);
 
-  boost::unique_future<int> result(pool.schedule([pa = &a] { return no_op(pa, 42); }));
+  boost::unique_future<int> result(pool.submit([pa = &a] { return no_op(pa, 42); }));
 
   EXPECT_FALSE(a.P(short_timeout));
   EXPECT_FALSE(result.is_ready());

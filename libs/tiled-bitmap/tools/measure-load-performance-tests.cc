@@ -65,7 +65,7 @@ bool WaitForAsyncOp::operator()()
   {
     started = true;
 
-    Sequentially()->schedule([&s = this->s] { s.V(); });
+    Sequentially()->post([&s = this->s] { s.V(); });
 
     std::cout << "Waiting for " << name << std::endl;
     return true;
