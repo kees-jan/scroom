@@ -19,6 +19,7 @@
 #include <gtk/gtk.h>
 
 #include <scroom/logger.hh>
+#include <scroom/ringbuffer-sink.hh>
 
 #ifdef _WIN32
 #  include <spdlog/sinks/basic_file_sink.h>
@@ -76,6 +77,10 @@ int main(int argc, char* argv[])
 #else
   auto spdlogger = loggerContainer->get();
 #endif
+
+  auto ringBufferSink = std::make_shared<Scroom::RingBufferSink>(createLoggingWakeupCallback());
+  spdlogger->sinks().push_back(ringBufferSink);
+  setRingBufferSink(ringBufferSink);
 
   spdlogger->set_level(spdlog::level::trace);
   spdlogger->set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%t] [%^%-5l%$] %v");

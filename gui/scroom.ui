@@ -2,6 +2,177 @@
 <!-- Generated with glade 3.22.2 -->
 <interface>
   <requires lib="gtk+" version="3.0"/>
+  <object class="GtkMenuBar" id="menubar_prototype">
+    <property name="visible">1</property>
+    <child>
+      <object class="GtkMenuItem" id="file_menu_item">
+        <property name="visible">1</property>
+        <property name="label" translatable="yes">_File</property>
+        <property name="use-underline">1</property>
+        <child type="submenu">
+          <object class="GtkMenu" id="file_menu">
+            <child>
+              <object class="GtkImageMenuItem" id="new">
+                <property name="label">_New</property>
+                <property name="visible">1</property>
+                <property name="sensitive">0</property>
+                <property name="use-underline">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkImageMenuItem" id="open">
+                <property name="label">gtk-open</property>
+                <property name="visible">1</property>
+                <property name="use-underline">1</property>
+                <property name="use-stock">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkImageMenuItem" id="newWindow">
+                <property name="label" translatable="yes">New Window</property>
+                <property name="visible">1</property>
+                <property name="use-underline">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkImageMenuItem" id="open_with">
+                <property name="label" translatable="yes">Open with</property>
+                <property name="visible">1</property>
+                <property name="sensitive">0</property>
+                <property name="use-underline">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkImageMenuItem" id="save">
+                <property name="label">gtk-save</property>
+                <property name="visible">1</property>
+                <property name="sensitive">0</property>
+                <property name="use-underline">1</property>
+                <property name="use-stock">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkImageMenuItem" id="save_as">
+                <property name="label">gtk-save-as</property>
+                <property name="visible">1</property>
+                <property name="sensitive">0</property>
+                <property name="use-underline">1</property>
+                <property name="use-stock">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkImageMenuItem" id="close">
+                <property name="label">gtk-close</property>
+                <property name="visible">1</property>
+                <property name="use-underline">1</property>
+                <property name="use-stock">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkSeparatorMenuItem" id="separator_1">
+                <property name="visible">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkImageMenuItem" id="quit">
+                <property name="label">gtk-quit</property>
+                <property name="visible">1</property>
+                <property name="use-underline">1</property>
+                <property name="use-stock">1</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="edit_menu_item">
+        <property name="visible">1</property>
+        <property name="sensitive">0</property>
+        <property name="label" translatable="yes">_Edit</property>
+        <property name="use-underline">1</property>
+        <child type="submenu">
+          <object class="GtkMenu" id="edit_menu">
+            <child>
+              <object class="GtkImageMenuItem" id="cut">
+                <property name="label">gtk-cut</property>
+                <property name="visible">1</property>
+                <property name="use-underline">1</property>
+                <property name="use-stock">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkImageMenuItem" id="copy">
+                <property name="label">gtk-copy</property>
+                <property name="visible">1</property>
+                <property name="use-underline">1</property>
+                <property name="use-stock">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkImageMenuItem" id="paste">
+                <property name="label">gtk-paste</property>
+                <property name="visible">1</property>
+                <property name="use-underline">1</property>
+                <property name="use-stock">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkImageMenuItem" id="delete">
+                <property name="label">gtk-delete</property>
+                <property name="visible">1</property>
+                <property name="use-underline">1</property>
+                <property name="use-stock">1</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="view_menu_item">
+        <property name="visible">1</property>
+        <property name="label" translatable="yes">_View</property>
+        <property name="use-underline">1</property>
+        <child type="submenu">
+          <object class="GtkMenu" id="view_menu">
+            <child>
+              <object class="GtkCheckMenuItem" id="fullscreen_menu_item">
+                <property name="visible">1</property>
+                <property name="label" translatable="yes">_Full Screen</property>
+                <property name="use-underline">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkMenuItem" id="logs_menu_item">
+                <property name="visible">1</property>
+                <property name="label" translatable="yes">_Logs</property>
+                <property name="use-underline">1</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="help_menu_item">
+        <property name="visible">1</property>
+        <property name="label" translatable="yes">_Help</property>
+        <property name="use-underline">1</property>
+        <child type="submenu">
+          <object class="GtkMenu" id="help_menu">
+            <child>
+              <object class="GtkMenuItem" id="about">
+                <property name="visible">1</property>
+                <property name="label" translatable="yes">_About</property>
+                <property name="use-underline">1</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
   <object class="GtkAboutDialog" id="aboutDialog">
     <property name="border-width">5</property>
     <property name="destroy-with-parent">1</property>
@@ -36,6 +207,49 @@ Clker-Free-Vector-Images from Pixabay</property>
       </object>
     </child>
   </object>
+  <object class="GtkWindow" id="logging_window">
+    <property name="can-focus">0</property>
+    <property name="title" translatable="yes">Scroom - Logs</property>
+    <property name="default-width">900</property>
+    <property name="default-height">500</property>
+    <child>
+      <object class="GtkBox" id="logging_root_box">
+        <property name="visible">1</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkBox" id="logging_menubar_container">
+            <property name="visible">1</property>
+            <property name="orientation">vertical</property>
+          </object>
+          <packing>
+            <property name="fill">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow" id="logging_scrolledwindow">
+            <property name="visible">1</property>
+            <property name="can-focus">1</property>
+            <property name="hscrollbar-policy">automatic</property>
+            <property name="vscrollbar-policy">automatic</property>
+            <child>
+              <object class="GtkTextView" id="logging_textview">
+                <property name="visible">1</property>
+                <property name="can-focus">1</property>
+                <property name="editable">0</property>
+                <property name="cursor-visible">0</property>
+                <property name="monospace">1</property>
+                <property name="wrap-mode">none</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">1</property>
+            <property name="fill">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
   <object class="GtkWindow" id="scroom">
     <property name="visible">1</property>
     <property name="events">GDK_VISIBILITY_NOTIFY_MASK</property>
@@ -51,174 +265,9 @@ Clker-Free-Vector-Images from Pixabay</property>
         <property name="visible">1</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkMenuBar" id="menubar">
+          <object class="GtkBox" id="menubar_container">
             <property name="visible">1</property>
-            <child>
-              <object class="GtkMenuItem" id="file_menu_item">
-                <property name="visible">1</property>
-                <property name="label" translatable="yes">_File</property>
-                <property name="use-underline">1</property>
-                <child type="submenu">
-                  <object class="GtkMenu" id="file_menu">
-                    <child>
-                      <object class="GtkImageMenuItem" id="new">
-                        <property name="label">_New</property>
-                        <property name="visible">1</property>
-                        <property name="sensitive">0</property>
-                        <property name="use-underline">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem" id="open">
-                        <property name="label">gtk-open</property>
-                        <property name="visible">1</property>
-                        <property name="use-underline">1</property>
-                        <property name="use-stock">1</property>
-                        <accelerator key="O" signal="activate" modifiers="GDK_CONTROL_MASK"/>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem" id="newWindow">
-                        <property name="label" translatable="yes">New Window</property>
-                        <property name="visible">1</property>
-                        <property name="use-underline">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem" id="open-with">
-                        <property name="label" translatable="yes">Open with</property>
-                        <property name="visible">1</property>
-                        <property name="sensitive">0</property>
-                        <property name="use-underline">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem" id="save">
-                        <property name="label">gtk-save</property>
-                        <property name="visible">1</property>
-                        <property name="sensitive">0</property>
-                        <property name="use-underline">1</property>
-                        <property name="use-stock">1</property>
-                        <accelerator key="S" signal="activate" modifiers="GDK_CONTROL_MASK"/>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem" id="save_as">
-                        <property name="label">gtk-save-as</property>
-                        <property name="visible">1</property>
-                        <property name="sensitive">0</property>
-                        <property name="use-underline">1</property>
-                        <property name="use-stock">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem" id="close">
-                        <property name="label">gtk-close</property>
-                        <property name="visible">1</property>
-                        <property name="use-underline">1</property>
-                        <property name="use-stock">1</property>
-                        <accelerator key="W" signal="activate" modifiers="GDK_CONTROL_MASK"/>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkSeparatorMenuItem" id="separatormenuitem1">
-                        <property name="visible">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem" id="quit">
-                        <property name="label">gtk-quit</property>
-                        <property name="visible">1</property>
-                        <property name="use-underline">1</property>
-                        <property name="use-stock">1</property>
-                        <accelerator key="Q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkMenuItem" id="edit_menu_item">
-                <property name="visible">1</property>
-                <property name="sensitive">0</property>
-                <property name="label" translatable="yes">_Edit</property>
-                <property name="use-underline">1</property>
-                <child type="submenu">
-                  <object class="GtkMenu" id="edit_menu">
-                    <child>
-                      <object class="GtkImageMenuItem" id="cut">
-                        <property name="label">gtk-cut</property>
-                        <property name="visible">1</property>
-                        <property name="use-underline">1</property>
-                        <property name="use-stock">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem" id="copy">
-                        <property name="label">gtk-copy</property>
-                        <property name="visible">1</property>
-                        <property name="use-underline">1</property>
-                        <property name="use-stock">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem" id="paste">
-                        <property name="label">gtk-paste</property>
-                        <property name="visible">1</property>
-                        <property name="use-underline">1</property>
-                        <property name="use-stock">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem" id="delete">
-                        <property name="label">gtk-delete</property>
-                        <property name="visible">1</property>
-                        <property name="use-underline">1</property>
-                        <property name="use-stock">1</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkMenuItem" id="view_menu_item">
-                <property name="visible">1</property>
-                <property name="label" translatable="yes">_View</property>
-                <property name="use-underline">1</property>
-                <child type="submenu">
-                  <object class="GtkMenu" id="view_menu">
-                    <child>
-                      <object class="GtkCheckMenuItem" id="fullscreen_menu_item">
-                        <property name="visible">1</property>
-                        <property name="label" translatable="yes">_Full Screen</property>
-                        <property name="use-underline">1</property>
-                        <accelerator key="F11" signal="activate"/>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkMenuItem" id="help_menu_item">
-                <property name="visible">1</property>
-                <property name="label" translatable="yes">_Help</property>
-                <property name="use-underline">1</property>
-                <child type="submenu">
-                  <object class="GtkMenu" id="help_menu">
-                    <child>
-                      <object class="GtkMenuItem" id="about">
-                        <property name="visible">1</property>
-                        <property name="label" translatable="yes">_About</property>
-                        <property name="use-underline">1</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
+            <property name="orientation">vertical</property>
           </object>
           <packing>
             <property name="fill">0</property>

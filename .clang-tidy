@@ -54,5 +54,8 @@ WarningsAsErrors: >
   readability-named-parameter,
   readability-redundant-member-init,
   readability-static-definition-in-anonymous-namespace,
+CheckOptions:
+  - key: modernize-use-scoped-lock.WarnOnSingleLocks
+    value: false
 HeaderFilterRegex: 'inc/scroom|libs|gui|plugins'
 FormatStyle: file

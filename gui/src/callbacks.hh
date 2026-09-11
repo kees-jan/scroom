@@ -5,8 +5,10 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
+#include <functional>
 #include <list>
 #include <map>
+#include <memory>
 #include <string>
 
 #include <gdk/gdk.h>
@@ -14,12 +16,28 @@
 #include <gtk/gtk.h>
 
 #include <scroom/presentationinterface.hh>
+#include <scroom/ringbuffer-sink.hh>
 #include <scroom/scroominterface.hh>
 
 #include "view.hh"
 
 using FileNameMap = std::map<std::string, std::list<std::string>>;
 extern const std::string REGULAR_FILES;
+
+namespace MenuIds
+{
+  inline constexpr const char* MENUBAR_PROTOTYPE = "menubar_prototype";
+  inline constexpr const char* OPEN = "open";
+  inline constexpr const char* SAVE = "save";
+  inline constexpr const char* CLOSE = "close";
+  inline constexpr const char* QUIT = "quit";
+  inline constexpr const char* VIEW_MENU_ITEM = "view_menu_item";
+  inline constexpr const char* FULLSCREEN_MENU_ITEM = "fullscreen_menu_item";
+  inline constexpr const char* LOGS_MENU_ITEM = "logs_menu_item";
+  inline constexpr const char* ABOUT = "about";
+  inline constexpr const char* NEW = "new";
+  inline constexpr const char* NEW_WINDOW = "newWindow";
+} // namespace MenuIds
 
 void on_scroom_hide(GtkWidget* widget, gpointer user_data);
 
@@ -46,6 +64,7 @@ void on_fullscreen_activate(GtkMenuItem* menuitem, gpointer user_data);
 void on_close_activate(GtkMenuItem* menuitem, gpointer user_data);
 
 void on_about_activate(GtkMenuItem* menuitem, gpointer user_data);
+void on_logs_activate(GtkMenuItem* menuitem, gpointer user_data);
 
 gboolean on_drawingarea_expose_event(GtkWidget* widget, GdkEventExpose* event, gpointer user_data);
 
@@ -86,3 +105,8 @@ void on_new_viewobserver(const ViewObserver::Ptr& viewObserver);
 void on_presentation_possibly_destroyed();
 
 bool in_devmode();
+
+std::function<void()> createLoggingWakeupCallback();
+void setRingBufferSink(const Scroom::RingBufferSink::Ptr& ringBufferSink);
+
+void connect_logging_window_menu_callbacks(GtkBuilder* builder, GtkWidget* loggingWindow);

@@ -11,6 +11,7 @@
 #  include <version.h>
 #endif
 
+#include <array>
 #include <cstdlib>
 #include <list>
 #include <map>
@@ -28,9 +29,12 @@
 
 #include <scroom/assertions.hh>
 #include <scroom/bookkeeping.hh>
+#include <scroom/gtk-helpers.hh>
 #include <scroom/logger.hh>
+#include <scroom/ringbuffer-sink.hh>
 
 #include "loader.hh"
+#include "logging-window.hh"
 #include "pluginmanager.hh"
 #include "view.hh"
 #include "workinterface.hh"
@@ -48,11 +52,9 @@ const std::string REGULAR_FILES = "Regular files";
 static std::string xmlFileName;
 static GtkBuilder* aboutDialogXml = nullptr;
 static GtkWidget* aboutDialog = nullptr;
-
-namespace
-{
-  Scroom::Logger logger;
-}
+static Scroom::RingBufferSink::Ptr ringBufferSink;
+static LoggingWindow::Ptr loggingWindow;
+static GtkBuilder* loggingWindowMenuBuilder = nullptr;
 
 using Views = std::map<View::Ptr, Scroom::Bookkeeping::Token>;
 static Views views;
@@ -60,21 +62,238 @@ static std::list<PresentationInterface::WeakPtr> presentations;
 static FileNameMap filenames;
 static std::string currentFolder;
 
-void ShowModalDialog(const std::string& message)
+namespace
 {
-  logger->error(message);
-  if(gdk_display_get_default())
-  {
-    // We're not running headless, don't open the popup
-    // We don't have a pointer to the parent window, so nullptr should
-    // suffice
-    GtkWidget* dialog = gtk_message_dialog_new(
-      nullptr, GTK_DIALOG_DESTROY_WITH_PARENT, GTK_MESSAGE_WARNING, GTK_BUTTONS_CLOSE, "%s", message.c_str()
-    );
+  Scroom::Logger logger;
 
-    gtk_dialog_run(GTK_DIALOG(dialog));
-    gtk_widget_destroy(dialog);
+
+  GtkWidget* getRequiredWidgetObject(GtkBuilder* builder, const char* id)
+  {
+    GtkWidget* widget = GTK_WIDGET(gtk_builder_get_object(builder, id));
+    require(widget != nullptr);
+    return widget;
   }
+
+  GtkAccelGroup* getOrCreateMainWindowAccelGroup(GtkWidget* window)
+  {
+    constexpr const char* accelGroupKey = "scroom.main_window_accel_group";
+
+    auto* accelGroup = static_cast<GtkAccelGroup*>(g_object_get_data(G_OBJECT(window), accelGroupKey));
+    if(accelGroup == nullptr)
+    {
+      accelGroup = gtk_accel_group_new();
+      gtk_window_add_accel_group(GTK_WINDOW(window), accelGroup);
+      g_object_set_data_full(
+        G_OBJECT(window), accelGroupKey, accelGroup, +[](gpointer data) { g_object_unref(static_cast<GObject*>(data)); }
+      );
+    }
+
+    return accelGroup;
+  }
+
+  void bindCommonMenuAccelerators(GtkBuilder* builder, GtkWidget* window)
+  {
+    GtkWidget* openMenuItem = getRequiredWidgetObject(builder, MenuIds::OPEN);
+    GtkWidget* saveMenuItem = getRequiredWidgetObject(builder, MenuIds::SAVE);
+    GtkWidget* closeMenuItem = getRequiredWidgetObject(builder, MenuIds::CLOSE);
+    GtkWidget* quitMenuItem = getRequiredWidgetObject(builder, MenuIds::QUIT);
+
+    auto* accelGroup = getOrCreateMainWindowAccelGroup(window);
+    gtk_widget_add_accelerator(openMenuItem, "activate", accelGroup, GDK_KEY_O, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+    gtk_widget_add_accelerator(saveMenuItem, "activate", accelGroup, GDK_KEY_S, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+    gtk_widget_add_accelerator(closeMenuItem, "activate", accelGroup, GDK_KEY_W, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+    gtk_widget_add_accelerator(quitMenuItem, "activate", accelGroup, GDK_KEY_Q, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+  }
+
+  void bindMainWindowMenuAccelerators(GtkBuilder* builder, GtkWidget* window)
+  {
+    bindCommonMenuAccelerators(builder, window);
+
+    GtkWidget* fullscreenMenuItem = getRequiredWidgetObject(builder, MenuIds::FULLSCREEN_MENU_ITEM);
+    auto* accelGroup = getOrCreateMainWindowAccelGroup(window);
+    gtk_widget_add_accelerator(fullscreenMenuItem, "activate", accelGroup, GDK_KEY_F11, GdkModifierType(0), GTK_ACCEL_VISIBLE);
+  }
+
+  void bindLoggingWindowMenuAccelerators(GtkBuilder* builder, GtkWidget* window) { bindCommonMenuAccelerators(builder, window); }
+
+  void on_close_window_activate(GtkMenuItem* /*unused*/, gpointer user_data)
+  {
+    auto* window = GTK_WIDGET(user_data);
+    require(window != nullptr);
+    gtk_widget_hide(window);
+  }
+
+  void connectCommonMenuCallbacks(GtkBuilder* builder, GtkWidget* parentWindow, gpointer aboutUserData)
+  {
+    GtkWidget* openMenuItem = getRequiredWidgetObject(builder, MenuIds::OPEN);
+    GtkWidget* quitMenuItem = getRequiredWidgetObject(builder, MenuIds::QUIT);
+    GtkWidget* aboutMenuItem = getRequiredWidgetObject(builder, MenuIds::ABOUT);
+
+    g_signal_connect(static_cast<gpointer>(openMenuItem), "activate", G_CALLBACK(on_open_activate), parentWindow);
+    g_signal_connect(static_cast<gpointer>(quitMenuItem), "activate", G_CALLBACK(on_quit_activate), nullptr);
+    g_signal_connect(static_cast<gpointer>(aboutMenuItem), "activate", G_CALLBACK(on_about_activate), aboutUserData);
+  }
+
+  void connectMainWindowMenuCallbacks(GtkBuilder* builder, GtkWidget* scroom, View* view)
+  {
+    connectCommonMenuCallbacks(builder, scroom, view);
+
+    GtkWidget* closeMenuItem = getRequiredWidgetObject(builder, MenuIds::CLOSE);
+    GtkWidget* fullScreenMenuItem = getRequiredWidgetObject(builder, MenuIds::FULLSCREEN_MENU_ITEM);
+    GtkWidget* logsMenuItem = getRequiredWidgetObject(builder, MenuIds::LOGS_MENU_ITEM);
+
+    bindMainWindowMenuAccelerators(builder, scroom);
+
+    g_signal_connect(static_cast<gpointer>(closeMenuItem), "activate", G_CALLBACK(on_close_activate), view);
+    g_signal_connect(static_cast<gpointer>(fullScreenMenuItem), "activate", G_CALLBACK(on_fullscreen_activate), view);
+    g_signal_connect(static_cast<gpointer>(logsMenuItem), "activate", G_CALLBACK(on_logs_activate), nullptr);
+  }
+
+  void connectLoggingWindowMenuCallbacks(GtkBuilder* builder, GtkWidget* loggingWindow)
+  {
+    connectCommonMenuCallbacks(builder, loggingWindow, nullptr);
+
+    GtkWidget* closeMenuItem = getRequiredWidgetObject(builder, MenuIds::CLOSE);
+    GtkWidget* viewMenuItem = getRequiredWidgetObject(builder, MenuIds::VIEW_MENU_ITEM);
+    GtkWidget* fullScreenMenuItem = getRequiredWidgetObject(builder, MenuIds::FULLSCREEN_MENU_ITEM);
+    GtkWidget* logsMenuItem = getRequiredWidgetObject(builder, MenuIds::LOGS_MENU_ITEM);
+
+    bindLoggingWindowMenuAccelerators(builder, loggingWindow);
+
+    g_signal_connect(static_cast<gpointer>(closeMenuItem), "activate", G_CALLBACK(on_close_window_activate), loggingWindow);
+    gtk_widget_set_sensitive(viewMenuItem, FALSE);
+    gtk_widget_set_sensitive(fullScreenMenuItem, FALSE);
+    gtk_widget_set_sensitive(logsMenuItem, FALSE);
+  }
+
+  void consumeLogMessages()
+  {
+    if(loggingWindow)
+    {
+      loggingWindow->consume();
+    }
+  }
+} // namespace
+
+void on_new_window_activate(GtkMenuItem* /*unused*/, gpointer user_data)
+{
+  auto* weakPresentation = static_cast<PresentationInterface::WeakPtr*>(user_data);
+  require(weakPresentation != nullptr);
+
+  auto presentation = weakPresentation->lock();
+  if(presentation)
+  {
+    find_or_create_scroom(presentation);
+  }
+}
+
+void update_logging_window_new_menu(const std::map<NewPresentationInterface::Ptr, std::string>& newPresentationInterfaces)
+{
+  if(loggingWindowMenuBuilder == nullptr)
+  {
+    return;
+  }
+
+  GtkWidget* newMenuItem = GTK_WIDGET(gtk_builder_get_object(loggingWindowMenuBuilder, MenuIds::NEW));
+  require(newMenuItem != nullptr);
+
+  if(newPresentationInterfaces.empty())
+  {
+    gtk_widget_set_sensitive(newMenuItem, false);
+    gtk_menu_item_set_submenu(GTK_MENU_ITEM(newMenuItem), nullptr);
+    return;
+  }
+
+  gtk_widget_set_sensitive(newMenuItem, true);
+
+  GtkWidget* oldSubmenu = gtk_menu_item_get_submenu(GTK_MENU_ITEM(newMenuItem));
+  if(oldSubmenu != nullptr)
+  {
+    gtk_widget_destroy(oldSubmenu);
+  }
+
+  GtkWidget* submenu = gtk_menu_new();
+  gtk_menu_item_set_submenu(GTK_MENU_ITEM(newMenuItem), submenu);
+
+  for(const auto& [newPresentationInterface, label]: newPresentationInterfaces)
+  {
+    GtkWidget* menuItem = gtk_menu_item_new_with_label(label.c_str());
+    gtk_widget_show(menuItem);
+    gtk_container_add(GTK_CONTAINER(submenu), menuItem);
+
+    g_signal_connect(static_cast<gpointer>(menuItem), "activate", G_CALLBACK(on_new_activate), newPresentationInterface.get());
+  }
+}
+
+void update_logging_window_new_window_menu()
+{
+  if(loggingWindowMenuBuilder == nullptr)
+  {
+    return;
+  }
+
+  GtkWidget* newWindowMenuItem = GTK_WIDGET(gtk_builder_get_object(loggingWindowMenuBuilder, MenuIds::NEW_WINDOW));
+  require(newWindowMenuItem != nullptr);
+
+  GtkWidget* oldSubmenu = gtk_menu_item_get_submenu(GTK_MENU_ITEM(newWindowMenuItem));
+  if(oldSubmenu != nullptr)
+  {
+    gtk_widget_destroy(oldSubmenu);
+  }
+
+  GtkWidget* submenu = gtk_menu_new();
+  bool hasPresentation = false;
+
+  for(const auto& weakPresentation: presentations)
+  {
+    auto presentation = weakPresentation.lock();
+    if(!presentation)
+    {
+      continue;
+    }
+
+    hasPresentation = true;
+    auto label = presentation->getTitle();
+    if(label.empty())
+    {
+      label = "Default";
+    }
+
+    GtkWidget* menuItem = gtk_menu_item_new_with_label(label.c_str());
+    gtk_widget_show(menuItem);
+    gtk_container_add(GTK_CONTAINER(submenu), menuItem);
+
+    auto* weakPresentationCopy = new PresentationInterface::WeakPtr(weakPresentation);
+    g_signal_connect_data(
+      static_cast<gpointer>(menuItem),
+      "activate",
+      G_CALLBACK(on_new_window_activate),
+      weakPresentationCopy,
+      +[](gpointer data, GClosure*) { delete static_cast<PresentationInterface::WeakPtr*>(data); },
+      GConnectFlags(0)
+    );
+  }
+
+  if(hasPresentation)
+  {
+    gtk_widget_set_sensitive(newWindowMenuItem, true);
+    gtk_menu_item_set_submenu(GTK_MENU_ITEM(newWindowMenuItem), submenu);
+  }
+  else
+  {
+    gtk_widget_set_sensitive(newWindowMenuItem, false);
+    gtk_widget_destroy(submenu);
+    gtk_menu_item_set_submenu(GTK_MENU_ITEM(newWindowMenuItem), nullptr);
+  }
+}
+
+void connect_logging_window_menu_callbacks(GtkBuilder* builder, GtkWidget* loggingWindowWidget)
+{
+  loggingWindowMenuBuilder = builder;
+  connectLoggingWindowMenuCallbacks(builder, loggingWindowWidget);
+
+  update_logging_window_new_menu(PluginManager::getInstance()->getNewPresentationInterfaces());
+  update_logging_window_new_window_menu();
 }
 
 void on_scroom_hide(GtkWidget* /*unused*/, gpointer user_data)
@@ -249,6 +468,14 @@ void on_about_activate(GtkMenuItem* /*unused*/, gpointer /*unused*/)
   // gtk_widget_destroy (aboutdialog);
 }
 
+void on_logs_activate(GtkMenuItem* /*unused*/, gpointer /*unused*/)
+{
+  if(loggingWindow)
+  {
+    loggingWindow->show();
+  }
+}
+
 gboolean on_drawingarea_expose_event(GtkWidget* widget, GdkEventExpose* /*unused*/, gpointer user_data)
 {
   cairo_region_t* re = cairo_region_create();
@@ -358,9 +585,10 @@ void on_done_loading_plugins()
 
     if(presentations.empty())
     {
-      // Apparently, we couldn't load any of our presentations. Terminate...
+      // Apparently, we couldn't load any of our presentations. Show logs.
       ensure(views.empty());
-      gtk_main_quit();
+      require(loggingWindow != nullptr);
+      loggingWindow->show();
     }
   }
 }
@@ -421,6 +649,13 @@ gboolean on_open_scroom_website(GtkAboutDialog*, gchar* uri, gpointer)
 
 bool in_devmode() { return nullptr != getenv(SCROOM_DEV_MODE.c_str()); }
 
+std::function<void()> createLoggingWakeupCallback()
+{
+  return [] { Scroom::GtkHelpers::async_on_ui_thread([] { consumeLogMessages(); }); };
+}
+
+void setRingBufferSink(const Scroom::RingBufferSink::Ptr& ringBufferSink_) { ringBufferSink = ringBufferSink_; }
+
 void on_scroom_bootstrap(const FileNameMap& newFilenames)
 {
   logger->info("Bootstrapping Scroom...");
@@ -476,13 +711,22 @@ void on_scroom_bootstrap(const FileNameMap& newFilenames)
     exit(-1); // NOLINT(concurrency-mt-unsafe)
   }
 
+  require(ringBufferSink != nullptr);
+  loggingWindow = LoggingWindow::create(ringBufferSink, xmlFileName);
+
   if(filenames.empty())
   {
     create_scroom(PresentationInterface::Ptr());
   }
 }
 
-void on_scroom_terminating() { ensure(views.empty()); }
+void on_scroom_terminating()
+{
+  loggingWindow.reset();
+  loggingWindowMenuBuilder = nullptr;
+  ringBufferSink.reset();
+  ensure(views.empty());
+}
 
 void find_or_create_scroom(const PresentationInterface::Ptr& presentation)
 {
@@ -521,7 +765,7 @@ void onDragDataReceived(
     gchar* filename = g_filename_from_uri(*uri, nullptr, &error);
     if(error != nullptr)
     {
-      ShowModalDialog(error->message);
+      logger->error(error->message);
       g_error_free(error);
     }
     else
@@ -532,7 +776,7 @@ void onDragDataReceived(
       }
       catch(std::invalid_argument& ex)
       {
-        ShowModalDialog(fmt::format("Warning: unable to load file {}", filename));
+        logger->error("Warning: unable to load file {}", filename);
       }
     }
 
@@ -545,10 +789,11 @@ void onDragDataReceived(
 void create_scroom(const PresentationInterface::Ptr& presentation)
 {
   GtkBuilder* xml = gtk_builder_new();
-  boost::scoped_array<char*> const obj{new gchar*[2]};
-  const std::string str = "scroom";
-  obj[0] = const_cast<char*>(str.c_str());
-  obj[1] = nullptr;
+  boost::scoped_array<char*> const obj{new gchar*[3]};
+  const std::string scroomObjectName = "scroom";
+  obj[0] = const_cast<char*>(scroomObjectName.c_str());
+  obj[1] = const_cast<char*>(MenuIds::MENUBAR_PROTOTYPE);
+  obj[2] = nullptr;
   gtk_builder_add_objects_from_file(xml, xmlFileName.c_str(), obj.get(), nullptr);
 
   if(xml == nullptr)
@@ -565,11 +810,13 @@ void create_scroom(const PresentationInterface::Ptr& presentation)
   }
 
   GtkWidget* scroom = GTK_WIDGET(gtk_builder_get_object(xml, "scroom"));
-  GtkWidget* openMenuItem = GTK_WIDGET(gtk_builder_get_object(xml, "open"));
-  GtkWidget* closeMenuItem = GTK_WIDGET(gtk_builder_get_object(xml, "close"));
-  GtkWidget* quitMenuItem = GTK_WIDGET(gtk_builder_get_object(xml, "quit"));
-  GtkWidget* fullScreenMenuItem = GTK_WIDGET(gtk_builder_get_object(xml, "fullscreen_menu_item"));
-  GtkWidget* aboutMenuItem = GTK_WIDGET(gtk_builder_get_object(xml, "about"));
+  require(scroom != nullptr);
+
+  GtkWidget* menubarContainer = getRequiredWidgetObject(xml, "menubar_container");
+  GtkWidget* menubar = getRequiredWidgetObject(xml, MenuIds::MENUBAR_PROTOTYPE);
+  gtk_container_add(GTK_CONTAINER(menubarContainer), menubar);
+  gtk_widget_show(menubar);
+
   GtkWidget* drawingArea = GTK_WIDGET(gtk_builder_get_object(xml, "drawingarea"));
   GtkWidget* zoomBox = GTK_WIDGET(gtk_builder_get_object(xml, "zoomboxcombo"));
   GtkWidget* vscrollbar = GTK_WIDGET(gtk_builder_get_object(xml, "vscrollbar"));
@@ -580,10 +827,7 @@ void create_scroom(const PresentationInterface::Ptr& presentation)
   GtkEditable* yTextBox = GTK_EDITABLE(GTK_WIDGET(gtk_builder_get_object(xml, "y_textbox")));
 
   g_signal_connect(static_cast<gpointer>(scroom), "hide", G_CALLBACK(on_scroom_hide), view.get());
-  g_signal_connect(static_cast<gpointer>(closeMenuItem), "activate", G_CALLBACK(on_close_activate), view.get());
-  g_signal_connect(static_cast<gpointer>(quitMenuItem), "activate", G_CALLBACK(on_quit_activate), view.get());
-  g_signal_connect(static_cast<gpointer>(openMenuItem), "activate", G_CALLBACK(on_open_activate), scroom);
-  g_signal_connect(static_cast<gpointer>(fullScreenMenuItem), "activate", G_CALLBACK(on_fullscreen_activate), view.get());
+  connectMainWindowMenuCallbacks(xml, scroom, view.get());
   g_signal_connect(static_cast<gpointer>(zoomBox), "changed", G_CALLBACK(on_zoombox_changed), view.get());
   g_signal_connect(
     static_cast<gpointer>(vscrollbaradjustment), "value-changed", G_CALLBACK(on_scrollbar_value_changed), view.get()
@@ -593,19 +837,6 @@ void create_scroom(const PresentationInterface::Ptr& presentation)
   );
   g_signal_connect(static_cast<gpointer>(xTextBox), "changed", G_CALLBACK(on_textbox_value_changed), view.get());
   g_signal_connect(static_cast<gpointer>(yTextBox), "changed", G_CALLBACK(on_textbox_value_changed), view.get());
-  // g_signal_connect ((gpointer) cut, "activate",
-  //                   G_CALLBACK (on_cut_activate),
-  //                   view.get());
-  // g_signal_connect ((gpointer) copy, "activate",
-  //                   G_CALLBACK (on_copy_activate),
-  //                   view.get());
-  // g_signal_connect ((gpointer) paste, "activate",
-  //                   G_CALLBACK (on_paste_activate),
-  //                   view.get());
-  // g_signal_connect ((gpointer) delete, "activate",
-  //                   G_CALLBACK (on_delete_activate),
-  //                   view.get());
-  g_signal_connect(static_cast<gpointer>(aboutMenuItem), "activate", G_CALLBACK(on_about_activate), view.get());
   g_signal_connect(static_cast<gpointer>(drawingArea), "draw", G_CALLBACK(on_drawingarea_expose_event), view.get());
   g_signal_connect(static_cast<gpointer>(drawingArea), "configure_event", G_CALLBACK(on_drawingarea_configure_event), view.get());
   g_signal_connect(static_cast<gpointer>(drawingArea), "button-press-event", G_CALLBACK(on_button_press_event), view.get());
@@ -629,6 +860,8 @@ void on_newPresentationInterfaces_update(const std::map<NewPresentationInterface
   {
     p.first->on_newPresentationInterfaces_update(newPresentationInterfaces);
   }
+
+  update_logging_window_new_menu(newPresentationInterfaces);
 }
 
 void on_presentation_created(const PresentationInterface::Ptr& presentation)
@@ -639,6 +872,8 @@ void on_presentation_created(const PresentationInterface::Ptr& presentation)
   {
     p.first->on_presentation_created(presentation);
   }
+
+  update_logging_window_new_window_menu();
 
   const std::map<PresentationObserver::Ptr, std::string>& presentationObservers =
     PluginManager::getInstance()->getPresentationObservers();
@@ -700,6 +935,8 @@ void on_presentation_possibly_destroyed()
     {
       p.first->on_presentation_destroyed();
     }
+
+    update_logging_window_new_window_menu();
 
     const std::map<PresentationObserver::Ptr, std::string>& presentationObservers =
       PluginManager::getInstance()->getPresentationObservers();

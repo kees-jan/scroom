@@ -1,3 +1,4 @@
+add_subdirectory(loggingbuffer)
 add_subdirectory(ruler)
 add_subdirectory(src)
 

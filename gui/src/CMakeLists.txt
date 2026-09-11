@@ -6,6 +6,8 @@ target_sources(
           callbacks.hh
           loader.cc
           loader.hh
+          logging-window.cc
+          logging-window.hh
           pluginmanager.cc
           pluginmanager.hh
           progressbarmanager.cc
@@ -37,6 +39,7 @@ target_link_libraries(
           scroom_lib
           util
           tiledbitmap
+          loggingbuffer
           m
           ruler
 )

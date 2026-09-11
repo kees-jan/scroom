@@ -92,7 +92,7 @@ View::View(GtkBuilder* scroomXml_)
   vruler = Ruler::create(Ruler::VERTICAL, GTK_WIDGET(vruler_area));
   hruler = Ruler::create(Ruler::HORIZONTAL, GTK_WIDGET(hruler_area));
 
-  menubar = GTK_WIDGET(gtk_builder_get_object(scroomXml_, "menubar"));
+  menubar = GTK_WIDGET(gtk_builder_get_object(scroomXml_, "menubar_container"));
   statusArea = GTK_WIDGET(gtk_builder_get_object(scroomXml_, "status_area"));
   toolbarArea = GTK_WIDGET(gtk_builder_get_object(scroomXml_, "toolbar_area"));
 
@@ -368,7 +368,8 @@ void View::on_newPresentationInterfaces_update(
   const std::map<NewPresentationInterface::Ptr, std::string>& newPresentationInterfaces
 )
 {
-  GtkWidget* new_menu_item = GTK_WIDGET(gtk_builder_get_object(scroomXml, "new"));
+  GtkWidget* new_menu_item = GTK_WIDGET(gtk_builder_get_object(scroomXml, MenuIds::NEW));
+  require(new_menu_item != nullptr);
 
   if(newPresentationInterfaces.empty())
   {
@@ -423,7 +424,7 @@ void View::on_window_size_changed(const Scroom::Utils::Point<int>& newSize)
   auto pixelSize = pixelSizeFromZoom(zoom);
   position += (drawingAreaSize - newSize) / pixelSize / 2;
 
-  std::scoped_lock const protect_position(position);
+  std::lock_guard const protect_position(position);
   drawingAreaSize = newSize;
   updateZoom();
   updateScrollbars();
@@ -478,7 +479,7 @@ void View::on_zoombox_changed(int newzoom, const Scroom::Utils::Point<double>& m
     position += mousePos / pixelSizeFromZoom(zoom);
     position -= mousePos / pixelSizeFromZoom(newzoom);
 
-    std::scoped_lock const protect_position(position);
+    std::lock_guard const protect_position(position);
     zoom = newzoom;
     updateScrollbars();
     updateTextbox();
@@ -696,7 +697,8 @@ Scroom::Utils::Point<double> View::presentationPointToWindowPoint(Scroom::Utils:
 
 void View::updateNewWindowMenu()
 {
-  GtkWidget* newWindow_menu_item = GTK_WIDGET(gtk_builder_get_object(scroomXml, "newWindow"));
+  GtkWidget* newWindow_menu_item = GTK_WIDGET(gtk_builder_get_object(scroomXml, MenuIds::NEW_WINDOW));
+  require(newWindow_menu_item != nullptr);
 
   GtkWidget* newWindow_menu = gtk_menu_item_get_submenu(GTK_MENU_ITEM(newWindow_menu_item));
   if(!newWindow_menu)
@@ -782,7 +784,7 @@ void View::updateXY(const Scroom::Utils::Point<double>& newPos, const View::Loca
   {
     position = newPos;
 
-    std::scoped_lock const protect_position(position);
+    std::lock_guard const protect_position(position);
     if(source != SCROLLBAR)
     {
       updateScrollbars();
