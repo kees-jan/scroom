@@ -31,6 +31,7 @@ var NAVTREEINDEX17 =
 "namespaceanonymous__namespace_02progressbarmanager_8cc_03.html#a1cd7ce2821db8912b252ffaa3ec97af9":[1,0,9,1],
 "namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html":[1,0,10],
 "namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html#a15a91985361401f76bc8ee0186a5470c":[1,0,10,0],
+"namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html#a5dc2e0d0086621619ef7e65f2231c50e":[1,0,10,1],
 "namespaceanonymous__namespace_02sampleiterator-tests_8cc_03.html":[1,0,11],
 "namespaceanonymous__namespace_02sampleiterator-tests_8cc_03.html#a437d26ece966bc7a8ba58cdaf7674e67":[1,0,11,1],
 "namespaceanonymous__namespace_02sampleiterator-tests_8cc_03.html#a8f9ecb9b9edcd3f6d2b5865d6c1b8ab6":[1,0,11,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX17 =
 "pnmsource_8hh.html#a41ba24eb91707242423bd02a4f478a27a0710c908fcda662b858042c8aff50246":[4,0,4,5,0,4,4,2],
 "pnmsource_8hh.html#a41ba24eb91707242423bd02a4f478a27a6ce976e8f061b2b5cfe4d0c50c3405dd":[4,0,4,5,0,4,4,0],
 "pnmsource_8hh.html#a41ba24eb91707242423bd02a4f478a27a76b8d0dcd02ccaf203c167ced6d7ef31":[4,0,4,5,0,4,4,1],
-"pnmsource_8hh.html#afb404d82507eabea3723d854f97b1ae4":[4,0,4,5,0,4,5],
-"pnmsource_8hh_source.html":[4,0,4,5,0,4]
+"pnmsource_8hh.html#afb404d82507eabea3723d854f97b1ae4":[4,0,4,5,0,4,5]
 };

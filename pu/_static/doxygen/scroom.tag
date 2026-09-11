@@ -204,22 +204,22 @@
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
-      <anchor>a8aa98594df42bf6a4b13bd4d4b831ebd</anchor>
-      <arglist>(&quot;line-2\n&quot;, entries[0].text)</arglist>
+      <anchor>a7b934ee9250ba6a9298d13e8a7487169</anchor>
+      <arglist>(&quot;line-2&quot;, withoutTrailingNewline(entries[0].text))</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
-      <anchor>a7f9a2b1097b03a97f3226e5918da3277</anchor>
-      <arglist>(&quot;line-3\n&quot;, entries[1].text)</arglist>
+      <anchor>a776cd484059faecfd60582cbdc500e91</anchor>
+      <arglist>(&quot;line-3&quot;, withoutTrailingNewline(entries[1].text))</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
-      <anchor>ac1e90760d7cf377bec97027c26fd0be8</anchor>
-      <arglist>(&quot;line-4\n&quot;, entries[2].text)</arglist>
+      <anchor>af6b7a0b1758e7c7f9fef062bafa69a3f</anchor>
+      <arglist>(&quot;line-4&quot;, withoutTrailingNewline(entries[2].text))</arglist>
     </member>
     <member kind="function">
       <type>logger</type>
@@ -267,22 +267,22 @@
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
-      <anchor>a0da2e250f3e8df06b9f9802a9de1c88d</anchor>
-      <arglist>(&quot;line-3\n&quot;, entries[0].text)</arglist>
+      <anchor>aac8ed7760f4e115f31ea5ecf24982694</anchor>
+      <arglist>(&quot;line-3&quot;, withoutTrailingNewline(entries[0].text))</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
-      <anchor>a5a51b3e781c950e9da2812a927cf95b9</anchor>
-      <arglist>(&quot;line-4\n&quot;, entries[1].text)</arglist>
+      <anchor>ab3cefe8bb2017d1ebeabcede6a3f8b9c</anchor>
+      <arglist>(&quot;line-4&quot;, withoutTrailingNewline(entries[1].text))</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
-      <anchor>aa1aec7d77b97690ea83c14a8e7d36fe4</anchor>
-      <arglist>(&quot;line-5\n&quot;, entries[2].text)</arglist>
+      <anchor>aee9d5eeb4263aabc9ac9b9cb5c68ee1e</anchor>
+      <arglist>(&quot;line-5&quot;, withoutTrailingNewline(entries[2].text))</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -25424,6 +25424,13 @@
   <compound kind="namespace">
     <name>anonymous_namespace{ringbuffer-sink-tests.cc}</name>
     <filename>namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html</filename>
+    <member kind="function">
+      <type>std::string</type>
+      <name>withoutTrailingNewline</name>
+      <anchorfile>namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html</anchorfile>
+      <anchor>a5dc2e0d0086621619ef7e65f2231c50e</anchor>
+      <arglist>(std::string text)</arglist>
+    </member>
     <member kind="function">
       <type>std::shared_ptr&lt; spdlog::logger &gt;</type>
       <name>createLogger</name>

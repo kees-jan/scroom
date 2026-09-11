@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-56-gb82ed90a1</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-57-g9f756c084</span>
    </div>
   </td>
  </tr>
@@ -97,6 +97,8 @@ $(document).ready(function(){initNavTree('namespaceanonymous__namespace_02ringbu
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a5dc2e0d0086621619ef7e65f2231c50e" id="r_a5dc2e0d0086621619ef7e65f2231c50e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html#a5dc2e0d0086621619ef7e65f2231c50e">withoutTrailingNewline</a> (std::string text)</td></tr>
+<tr class="separator:a5dc2e0d0086621619ef7e65f2231c50e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15a91985361401f76bc8ee0186a5470c" id="r_a15a91985361401f76bc8ee0186a5470c"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; spdlog::logger &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html#a15a91985361401f76bc8ee0186a5470c">createLogger</a> (const <a class="el" href="classScroom_1_1RingBufferSink.html#a181c596238444cbac5f5a1e86762f7ce">Scroom::RingBufferSink::Ptr</a> &amp;<a class="el" href="ringbuffer-sink-tests_8cc.html#a757ac11cad97288b51ea35a1287a6ee1">sink</a>, const std::string &amp;name)</td></tr>
 <tr class="separator:a15a91985361401f76bc8ee0186a5470c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -126,14 +128,44 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   22</span>  {</div>
-<div class="line"><span class="lineno">   23</span>    <span class="keyword">auto</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a288e5002e7c3705ad5bae108a122bd34">logger</a> = std::make_shared&lt;spdlog::logger&gt;(name, <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a757ac11cad97288b51ea35a1287a6ee1">sink</a>);</div>
-<div class="line"><span class="lineno">   24</span>    <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a288e5002e7c3705ad5bae108a122bd34">logger</a>-&gt;set_level(spdlog::level::trace);</div>
-<div class="line"><span class="lineno">   25</span>    <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a288e5002e7c3705ad5bae108a122bd34">logger</a>-&gt;set_pattern(<span class="stringliteral">&quot;%v&quot;</span>);</div>
-<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a288e5002e7c3705ad5bae108a122bd34">logger</a>;</div>
-<div class="line"><span class="lineno">   27</span>  }</div>
-<div class="ttc" id="aringbuffer-sink-tests_8cc_html_a288e5002e7c3705ad5bae108a122bd34"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a288e5002e7c3705ad5bae108a122bd34">logger</a></div><div class="ttdeci">auto logger</div><div class="ttdef"><b>Definition</b> ringbuffer-sink-tests.cc:33</div></div>
-<div class="ttc" id="aringbuffer-sink-tests_8cc_html_a757ac11cad97288b51ea35a1287a6ee1"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a757ac11cad97288b51ea35a1287a6ee1">sink</a></div><div class="ttdeci">auto sink</div><div class="ttdef"><b>Definition</b> ringbuffer-sink-tests.cc:90</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   37</span>  {</div>
+<div class="line"><span class="lineno">   38</span>    <span class="keyword">auto</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a288e5002e7c3705ad5bae108a122bd34">logger</a> = std::make_shared&lt;spdlog::logger&gt;(name, <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a757ac11cad97288b51ea35a1287a6ee1">sink</a>);</div>
+<div class="line"><span class="lineno">   39</span>    <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a288e5002e7c3705ad5bae108a122bd34">logger</a>-&gt;set_level(spdlog::level::trace);</div>
+<div class="line"><span class="lineno">   40</span>    <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a288e5002e7c3705ad5bae108a122bd34">logger</a>-&gt;set_pattern(<span class="stringliteral">&quot;%v&quot;</span>);</div>
+<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a288e5002e7c3705ad5bae108a122bd34">logger</a>;</div>
+<div class="line"><span class="lineno">   42</span>  }</div>
+<div class="ttc" id="aringbuffer-sink-tests_8cc_html_a288e5002e7c3705ad5bae108a122bd34"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a288e5002e7c3705ad5bae108a122bd34">logger</a></div><div class="ttdeci">auto logger</div><div class="ttdef"><b>Definition</b> ringbuffer-sink-tests.cc:48</div></div>
+<div class="ttc" id="aringbuffer-sink-tests_8cc_html_a757ac11cad97288b51ea35a1287a6ee1"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a757ac11cad97288b51ea35a1287a6ee1">sink</a></div><div class="ttdeci">auto sink</div><div class="ttdef"><b>Definition</b> ringbuffer-sink-tests.cc:105</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5dc2e0d0086621619ef7e65f2231c50e" name="a5dc2e0d0086621619ef7e65f2231c50e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5dc2e0d0086621619ef7e65f2231c50e">&#9670;&#160;</a></span>withoutTrailingNewline()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string anonymous_namespace{ringbuffer-<a class="el" href="ringbuffer-sink-tests_8cc.html#a757ac11cad97288b51ea35a1287a6ee1">sink</a>-tests.cc}::withoutTrailingNewline </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>text</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   23</span>  {</div>
+<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">if</span>(!text.empty() &amp;&amp; text.back() == <span class="charliteral">&#39;\n&#39;</span>)</div>
+<div class="line"><span class="lineno">   25</span>    {</div>
+<div class="line"><span class="lineno">   26</span>      text.pop_back();</div>
+<div class="line"><span class="lineno">   27</span>      <span class="keywordflow">if</span>(!text.empty() &amp;&amp; text.back() == <span class="charliteral">&#39;\r&#39;</span>)</div>
+<div class="line"><span class="lineno">   28</span>      {</div>
+<div class="line"><span class="lineno">   29</span>        text.pop_back();</div>
+<div class="line"><span class="lineno">   30</span>      }</div>
+<div class="line"><span class="lineno">   31</span>    }</div>
+<div class="line"><span class="lineno">   32</span> </div>
+<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">return</span> text;</div>
+<div class="line"><span class="lineno">   34</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>

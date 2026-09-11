@@ -24,9 +24,10 @@ var searchData=
   ['width_21',['width',['../classRulerDrawStrategy.html#a92e347908c7bbbd10db4eb57137e4848',1,'RulerDrawStrategy::width'],['../classRuler.html#a071b935fde8dd27f35af1b26f3517908',1,'Ruler::width'],['../classTile.html#adbb086e3041864b3079bd5088dc571fb',1,'Tile::width'],['../classConstTile.html#a1c76a49105f44d4091d359f16bf9bf84',1,'ConstTile::width'],['../classLayer.html#a724d3020ddbe5f9280caa325541e70a3',1,'Layer::width'],['../structSelection.html#a9c9dec2ae8c7eb3bedd9b6379ada05d1',1,'Selection::width()'],['../classScroom_1_1Utils_1_1Rectangle.html#aac53b13b110251e6666a6e8499c19f27',1,'Scroom::Utils::Rectangle::width()']]],
   ['window_22',['window',['../classView.html#a6842509e655b042cbd7af3fe10ded06f',1,'View']]],
   ['windowpointtopresentationpoint_23',['windowPointToPresentationPoint',['../classView.html#ab01e5d6f612fdebbcc349ab3733233d8',1,'View']]],
-  ['work_24',['work',['../classThreadPool.html#a9d3f75e5674e5b4b3a1afdc8a50982e4',1,'ThreadPool']]],
-  ['working_25',['WORKING',['../classScroom_1_1Utils_1_1ProgressStateInterface.html#af17b9367dd613c97f7a56479638aff55a6bf9ea9a6fc8476222da7bd57e772ae3',1,'Scroom::Utils::ProgressStateInterface']]],
-  ['workinterface_26',['WorkInterface',['../classWorkInterface.html',1,'']]],
-  ['workinterface_2ehh_27',['workinterface.hh',['../workinterface_8hh.html',1,'']]],
-  ['wrap_28',['wrap',['../namespaceScroom_1_1GtkHelpers.html#ad5dcc56a509902bf106dbd6eb6a28964',1,'Scroom::GtkHelpers']]]
+  ['withouttrailingnewline_24',['withoutTrailingNewline',['../namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html#a5dc2e0d0086621619ef7e65f2231c50e',1,'anonymous_namespace{ringbuffer-sink-tests.cc}']]],
+  ['work_25',['work',['../classThreadPool.html#a9d3f75e5674e5b4b3a1afdc8a50982e4',1,'ThreadPool']]],
+  ['working_26',['WORKING',['../classScroom_1_1Utils_1_1ProgressStateInterface.html#af17b9367dd613c97f7a56479638aff55a6bf9ea9a6fc8476222da7bd57e772ae3',1,'Scroom::Utils::ProgressStateInterface']]],
+  ['workinterface_27',['WorkInterface',['../classWorkInterface.html',1,'']]],
+  ['workinterface_2ehh_28',['workinterface.hh',['../workinterface_8hh.html',1,'']]],
+  ['wrap_29',['wrap',['../namespaceScroom_1_1GtkHelpers.html#ad5dcc56a509902bf106dbd6eb6a28964',1,'Scroom::GtkHelpers']]]
 ];

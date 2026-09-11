@@ -8,6 +8,7 @@ var searchData=
   ['weakqueue_5',['weakqueue',['../classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#aeb7201763d182b9dd1d8ff5938f1f486',1,'Scroom::Detail::ThreadPool::WeakQueue::WeakQueue()'],['../classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#a4db047a9d1c259137a52961074325f71',1,'Scroom::Detail::ThreadPool::WeakQueue::WeakQueue(const WeakQueue &amp;)=delete'],['../classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#a7e28f87d329bb886faf5b955c7f3dc5b',1,'Scroom::Detail::ThreadPool::WeakQueue::WeakQueue(WeakQueue &amp;&amp;)=delete']]],
   ['width_6',['width',['../classScroom_1_1Utils_1_1Rectangle.html#aac53b13b110251e6666a6e8499c19f27',1,'Scroom::Utils::Rectangle::width()'],['../structSelection.html#a9c9dec2ae8c7eb3bedd9b6379ada05d1',1,'Selection::width()']]],
   ['windowpointtopresentationpoint_7',['windowPointToPresentationPoint',['../classView.html#ab01e5d6f612fdebbcc349ab3733233d8',1,'View']]],
-  ['work_8',['work',['../classThreadPool.html#a9d3f75e5674e5b4b3a1afdc8a50982e4',1,'ThreadPool']]],
-  ['wrap_9',['wrap',['../namespaceScroom_1_1GtkHelpers.html#ad5dcc56a509902bf106dbd6eb6a28964',1,'Scroom::GtkHelpers']]]
+  ['withouttrailingnewline_8',['withoutTrailingNewline',['../namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html#a5dc2e0d0086621619ef7e65f2231c50e',1,'anonymous_namespace{ringbuffer-sink-tests.cc}']]],
+  ['work_9',['work',['../classThreadPool.html#a9d3f75e5674e5b4b3a1afdc8a50982e4',1,'ThreadPool']]],
+  ['wrap_10',['wrap',['../namespaceScroom_1_1GtkHelpers.html#ad5dcc56a509902bf106dbd6eb6a28964',1,'Scroom::GtkHelpers']]]
 ];

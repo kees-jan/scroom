@@ -93,10 +93,10 @@ var NAVTREEINDEX =
 "functions_func_u.html",
 "loader_8hh.html#a6c21edd9d285c925527e3209fca54b01",
 "namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#add5ac7ed3f67a149282397b67c164559a341b72aaab1308a3e6667af1e52f5def",
-"point_8hh.html",
-"rectangletests_8cc.html#aeafae13a40603f6e1cea3460ab289365",
-"structfmt_1_1formatter_3_01TileViewState_1_1State_01_4.html#a02f3c5d9f1c4ce1fce00a75f37e01fdb",
-"transformpresentation__test_8cc.html#a608745f30637ee1f30157b0294297580"
+"pnmsource_8hh_source.html",
+"rectangletests_8cc.html#aea68c4a84b4b4368cd018640582ac155",
+"structfmt_1_1formatter_3_01Scroom_1_1Utils_1_1Rectangle_3_01T_01_4_01_4.html#a87b780f4b710b67f025c69c5c988d5fb",
+"transformpresentation__test_8cc.html#a5ee0f9f41a5eec084d0ddb6cbb09ac05"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

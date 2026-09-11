@@ -23,7 +23,8 @@ var namespaces_dup =
     ] ],
     [ "anonymous_namespace{progressbarmanager.cc}", "namespaceanonymous__namespace_02progressbarmanager_8cc_03.html", "namespaceanonymous__namespace_02progressbarmanager_8cc_03" ],
     [ "anonymous_namespace{ringbuffer-sink-tests.cc}", "namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html", [
-      [ "createLogger", "namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html#a15a91985361401f76bc8ee0186a5470c", null ]
+      [ "createLogger", "namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html#a15a91985361401f76bc8ee0186a5470c", null ],
+      [ "withoutTrailingNewline", "namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html#a5dc2e0d0086621619ef7e65f2231c50e", null ]
     ] ],
     [ "anonymous_namespace{sampleiterator-tests.cc}", "namespaceanonymous__namespace_02sampleiterator-tests_8cc_03.html", [
       [ "bit_depths", "namespaceanonymous__namespace_02sampleiterator-tests_8cc_03.html#aa69fb4a20df5ff7d8dd3b9bd3b5dd1c1", null ],

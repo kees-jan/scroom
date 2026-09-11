@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-56-gb82ed90a1</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-57-g9f756c084</span>
    </div>
   </td>
  </tr>
@@ -243,12 +243,12 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   55</span>  <span class="keyword">const</span> <span class="keywordtype">double</span> rangeSize = <a class="code hl_function" href="namespaceScroom_1_1Utils.html#a691343f4fe808dc3cf83f22e8079448e">ceil</a>(upperLimit - lowerLimit);</div>
 <div class="line"><span class="lineno">   56</span>  <span class="comment">// The minimum pixel width of the ruler such the interval can be expectedInterval</span></div>
 <div class="line"><span class="lineno">   57</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> minRulerWidth = floor(rangeSize / <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(expectedInterval) * <a class="code hl_variable" href="classRulerCalculations.html#a6343b83f16dafe9084e9bf680d92014c">RulerCalculations::MIN_SPACE_MAJORTICKS</a>);</div>
-<div class="line"><span class="lineno">   58</span>  <a class="code hl_function" href="ringbuffer-sink-tests_8cc.html#a8aa98594df42bf6a4b13bd4d4b831ebd">EXPECT_EQ</a>(expectedInterval, <a class="code hl_function" href="classRulerCalculations.html#a4157b201d3bd2dafa693a3065b66e8ec">RulerCalculations::calculateInterval</a>(lowerLimit, upperLimit, minRulerWidth));</div>
+<div class="line"><span class="lineno">   58</span>  <a class="code hl_function" href="ringbuffer-sink-tests_8cc.html#a7b934ee9250ba6a9298d13e8a7487169">EXPECT_EQ</a>(expectedInterval, <a class="code hl_function" href="classRulerCalculations.html#a4157b201d3bd2dafa693a3065b66e8ec">RulerCalculations::calculateInterval</a>(lowerLimit, upperLimit, minRulerWidth));</div>
 <div class="line"><span class="lineno">   59</span>}</div>
 <div class="ttc" id="aclassRulerCalculations_html_a4157b201d3bd2dafa693a3065b66e8ec"><div class="ttname"><a href="classRulerCalculations.html#a4157b201d3bd2dafa693a3065b66e8ec">RulerCalculations::calculateInterval</a></div><div class="ttdeci">static int calculateInterval(double lower, double upper, double allocatedSize)</div><div class="ttdef"><b>Definition</b> ruler.cc:244</div></div>
 <div class="ttc" id="aclassRulerCalculations_html_a6343b83f16dafe9084e9bf680d92014c"><div class="ttname"><a href="classRulerCalculations.html#a6343b83f16dafe9084e9bf680d92014c">RulerCalculations::MIN_SPACE_MAJORTICKS</a></div><div class="ttdeci">static constexpr int MIN_SPACE_MAJORTICKS</div><div class="ttdef"><b>Definition</b> ruler.hh:185</div></div>
 <div class="ttc" id="anamespaceScroom_1_1Utils_html_a691343f4fe808dc3cf83f22e8079448e"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#a691343f4fe808dc3cf83f22e8079448e">Scroom::Utils::ceil</a></div><div class="ttdeci">Point&lt; T &gt; ceil(Point&lt; T &gt; p)</div><div class="ttdef"><b>Definition</b> point.hh:228</div></div>
-<div class="ttc" id="aringbuffer-sink-tests_8cc_html_a8aa98594df42bf6a4b13bd4d4b831ebd"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a8aa98594df42bf6a4b13bd4d4b831ebd">EXPECT_EQ</a></div><div class="ttdeci">EXPECT_EQ(&quot;line-2\n&quot;, entries[0].text)</div></div>
+<div class="ttc" id="aringbuffer-sink-tests_8cc_html_a7b934ee9250ba6a9298d13e8a7487169"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a7b934ee9250ba6a9298d13e8a7487169">EXPECT_EQ</a></div><div class="ttdeci">EXPECT_EQ(&quot;line-2&quot;, withoutTrailingNewline(entries[0].text))</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -257,7 +257,7 @@ Here is the call graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="5,35,193,75"/>
 <area shape="rect" href="classRulerCalculations.html#a4157b201d3bd2dafa693a3065b66e8ec" title=" " alt="" coords="241,5,385,45"/>
 <area shape="poly" title=" " alt="" coords="193,39,227,34,228,40,194,44"/>
-<area shape="rect" href="ringbuffer-sink-tests_8cc.html#a8aa98594df42bf6a4b13bd4d4b831ebd" title=" " alt="" coords="265,70,362,95"/>
+<area shape="rect" href="ringbuffer-sink-tests_8cc.html#a7b934ee9250ba6a9298d13e8a7487169" title=" " alt="" coords="265,70,362,95"/>
 <area shape="poly" title=" " alt="" coords="194,64,252,72,251,77,193,70"/>
 <area shape="rect" href="classRulerCalculations.html#a85716bd2a71013c497de7491a386ffb8" title=" " alt="" coords="433,5,588,45"/>
 <area shape="poly" title=" " alt="" coords="385,23,420,23,420,28,385,28"/>
