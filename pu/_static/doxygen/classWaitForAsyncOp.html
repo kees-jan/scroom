@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-51-g058ffe8ea</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-g4002e422d</span>
    </div>
   </td>
  </tr>
@@ -263,7 +263,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   65</span>  {</div>
 <div class="line"><span class="lineno">   66</span>    <a class="code hl_variable" href="classWaitForAsyncOp.html#ab72f599197e44866f20bbdecfcc61bcb">started</a> = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">   67</span> </div>
-<div class="line"><span class="lineno">   68</span>    <a class="code hl_function" href="threadpool_8hh.html#af979353165a7a214dda8f7f289de81ea">Sequentially</a>()-&gt;schedule([&amp;<a class="code hl_variable" href="classWaitForAsyncOp.html#af9583d7eadb6333e88c3592109c691c1">s</a> = this-&gt;<a class="code hl_variable" href="classWaitForAsyncOp.html#af9583d7eadb6333e88c3592109c691c1">s</a>] { <a class="code hl_variable" href="classWaitForAsyncOp.html#af9583d7eadb6333e88c3592109c691c1">s</a>.<a class="code hl_function" href="classScroom_1_1Semaphore.html#a7288ef73832e54d1d7cc36d434ae8b47">V</a>(); });</div>
+<div class="line"><span class="lineno">   68</span>    <a class="code hl_function" href="threadpool_8hh.html#af979353165a7a214dda8f7f289de81ea">Sequentially</a>()-&gt;post([&amp;<a class="code hl_variable" href="classWaitForAsyncOp.html#af9583d7eadb6333e88c3592109c691c1">s</a> = this-&gt;<a class="code hl_variable" href="classWaitForAsyncOp.html#af9583d7eadb6333e88c3592109c691c1">s</a>] { <a class="code hl_variable" href="classWaitForAsyncOp.html#af9583d7eadb6333e88c3592109c691c1">s</a>.<a class="code hl_function" href="classScroom_1_1Semaphore.html#a7288ef73832e54d1d7cc36d434ae8b47">V</a>(); });</div>
 <div class="line"><span class="lineno">   69</span> </div>
 <div class="line"><span class="lineno">   70</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;Waiting for &quot;</span> &lt;&lt; <a class="code hl_variable" href="classWaitForAsyncOp.html#ac603ab85a8db323a7c22740e4505a9f0">name</a> &lt;&lt; std::endl;</div>
 <div class="line"><span class="lineno">   71</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
@@ -291,16 +291,16 @@ Here is the call graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="5,80,207,105"/>
 <area shape="rect" href="classScroom_1_1Semaphore.html#a43987b367117fad4b96cebf66d6b4eae" title=" " alt="" coords="255,5,425,31"/>
 <area shape="poly" title=" " alt="" coords="142,77,254,39,279,32,280,37,255,45,144,82"/>
-<area shape="rect" href="classThreadPool.html#a75b74859fed39f21cb3bb09b78137fa2" title=" " alt="" coords="259,55,421,80"/>
-<area shape="poly" title=" " alt="" coords="206,79,245,75,246,80,207,84"/>
+<area shape="rect" href="classThreadPool.html#a3b6be78dc258ee937775128c101aa5fc" title=" " alt="" coords="275,55,405,80"/>
+<area shape="poly" title=" " alt="" coords="206,79,261,73,261,79,207,84"/>
 <area shape="rect" href="threadpool_8cc.html#af979353165a7a214dda8f7f289de81ea" title=" " alt="" coords="289,104,391,129"/>
 <area shape="poly" title=" " alt="" coords="207,100,275,107,275,113,207,106"/>
 <area shape="rect" href="classScroom_1_1Semaphore.html#a7288ef73832e54d1d7cc36d434ae8b47" title=" " alt="" coords="255,153,425,179"/>
 <area shape="poly" title=" " alt="" coords="145,103,255,139,280,147,279,152,254,145,143,108"/>
 <area shape="rect" href="classThreadPool.html#af5ac6649a5a7711037747ef03c542f18" title=" " alt="" coords="477,31,667,56"/>
-<area shape="poly" title=" " alt="" coords="421,56,463,52,463,57,421,62"/>
+<area shape="poly" title=" " alt="" coords="406,58,463,52,463,57,406,63"/>
 <area shape="rect" href="classThreadPool.html#a17a52db60287eb770f1e0d546cbbbe01" title=" " alt="" coords="473,80,671,105"/>
-<area shape="poly" title=" " alt="" coords="421,73,460,78,459,83,421,79"/>
+<area shape="poly" title=" " alt="" coords="406,72,460,78,460,83,406,77"/>
 <area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#af8f6918d92f8388674bd7bdc1b75b2ec" title="Queue." alt="" coords="719,23,917,63"/>
 <area shape="poly" title=" " alt="" coords="667,41,705,41,705,46,667,46"/>
 <area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a7cfca3637d57c4a9e37351b3426ffd40" title=" " alt="" coords="965,23,1164,63"/>

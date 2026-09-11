@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-51-g058ffe8ea</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-g4002e422d</span>
    </div>
   </td>
  </tr>
@@ -353,10 +353,10 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   52</span>      <a class="code hl_variable" href="classScroom_1_1MemoryBlobs_1_1PageProvider.html#aa289e790e99b7129d997d9e88e865149">allPages</a>.splice(<a class="code hl_variable" href="classScroom_1_1MemoryBlobs_1_1PageProvider.html#aa289e790e99b7129d997d9e88e865149">allPages</a>.end(), <a class="code hl_variable" href="pageprovider-tests_8cc.html#ab4c12d50275e35a3e3de51be2ce617b1">pages</a>);</div>
 <div class="line"><span class="lineno">   53</span>    }</div>
 <div class="line"><span class="lineno">   54</span> </div>
-<div class="line"><span class="lineno">   55</span>    <a class="code hl_typedef" href="namespaceScroom_1_1MemoryBlobs_1_1Page.html#aef1d8c508f1e7142bf747836e906a738">Page::Ptr</a> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>(<a class="code hl_variable" href="classScroom_1_1MemoryBlobs_1_1PageProvider.html#aca46cb9c8e2f791083a3c950cfd8e837">freePages</a>.front(), <a class="code hl_friend" href="classScroom_1_1MemoryBlobs_1_1PageProvider.html#ab1000bd633c88866959e36760b5b0f0f">MarkPageFree</a>(shared_from_this&lt;PageProvider&gt;()));</div>
+<div class="line"><span class="lineno">   55</span>    <a class="code hl_typedef" href="namespaceScroom_1_1MemoryBlobs_1_1Page.html#aef1d8c508f1e7142bf747836e906a738">Page::Ptr</a> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>(<a class="code hl_variable" href="classScroom_1_1MemoryBlobs_1_1PageProvider.html#aca46cb9c8e2f791083a3c950cfd8e837">freePages</a>.front(), <a class="code hl_friend" href="classScroom_1_1MemoryBlobs_1_1PageProvider.html#ab1000bd633c88866959e36760b5b0f0f">MarkPageFree</a>(shared_from_this&lt;PageProvider&gt;()));</div>
 <div class="line"><span class="lineno">   56</span>    <a class="code hl_variable" href="classScroom_1_1MemoryBlobs_1_1PageProvider.html#aca46cb9c8e2f791083a3c950cfd8e837">freePages</a>.pop_front();</div>
 <div class="line"><span class="lineno">   57</span> </div>
-<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">   59</span>  }</div>
 <div class="ttc" id="aclassScroom_1_1MemoryBlobs_1_1PageProvider_html_aa289e790e99b7129d997d9e88e865149"><div class="ttname"><a href="classScroom_1_1MemoryBlobs_1_1PageProvider.html#aa289e790e99b7129d997d9e88e865149">Scroom::MemoryBlobs::PageProvider::allPages</a></div><div class="ttdeci">Scroom::MemoryBlocks::PageList allPages</div><div class="ttdef"><b>Definition</b> memoryblobs.hh:46</div></div>
 <div class="ttc" id="aclassScroom_1_1MemoryBlobs_1_1PageProvider_html_ab1000bd633c88866959e36760b5b0f0f"><div class="ttname"><a href="classScroom_1_1MemoryBlobs_1_1PageProvider.html#ab1000bd633c88866959e36760b5b0f0f">Scroom::MemoryBlobs::PageProvider::MarkPageFree</a></div><div class="ttdeci">friend class MarkPageFree</div><div class="ttdef"><b>Definition</b> memoryblobs.hh:61</div></div>
@@ -367,7 +367,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="anamespaceScroom_1_1MemoryBlobs_1_1Page_html_aef1d8c508f1e7142bf747836e906a738"><div class="ttname"><a href="namespaceScroom_1_1MemoryBlobs_1_1Page.html#aef1d8c508f1e7142bf747836e906a738">Scroom::MemoryBlobs::Page::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; Scroom::MemoryBlocks::Page &gt; Ptr</div><div class="ttdef"><b>Definition</b> memoryblobs.hh:33</div></div>
 <div class="ttc" id="anamespaceScroom_1_1MemoryBlocks_html_a1e99f7c5b462e84d8d2e4abdb4c0a2c4"><div class="ttname"><a href="namespaceScroom_1_1MemoryBlocks.html#a1e99f7c5b462e84d8d2e4abdb4c0a2c4">Scroom::MemoryBlocks::PageList</a></div><div class="ttdeci">std::list&lt; Page &gt; PageList</div><div class="ttdef"><b>Definition</b> blockallocator.hh:39</div></div>
 <div class="ttc" id="apageprovider-tests_8cc_html_ab4c12d50275e35a3e3de51be2ce617b1"><div class="ttname"><a href="pageprovider-tests_8cc.html#ab4c12d50275e35a3e3de51be2ce617b1">pages</a></div><div class="ttdeci">PageList pages</div><div class="ttdef"><b>Definition</b> pageprovider-tests.cc:25</div></div>
-<div class="ttc" id="asampleiterator-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">SampleIterator&lt; const uint8_t &gt; result</div><div class="ttdef"><b>Definition</b> sampleiterator-tests.cc:94</div></div>
+<div class="ttc" id="aringbuffer-sink-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">auto result</div><div class="ttdef"><b>Definition</b> ringbuffer-sink-tests.cc:76</div></div>
 </div><!-- fragment -->
 </div>
 </div>

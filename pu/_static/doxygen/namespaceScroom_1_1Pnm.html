@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-51-g058ffe8ea</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-g4002e422d</span>
    </div>
   </td>
  </tr>
@@ -118,7 +118,7 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:afb404d82507eabea3723d854f97b1ae4" id="r_afb404d82507eabea3723d854f97b1ae4"><td class="memItemLeft" align="right" valign="top">boost::optional&lt; std::tuple&lt; <a class="el" href="structScroom_1_1TiledBitmap_1_1BitmapMetaData.html">Scroom::TiledBitmap::BitmapMetaData</a>, std::ifstream, <a class="el" href="namespaceScroom_1_1Pnm.html#a41ba24eb91707242423bd02a4f478a27">SourceType</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Pnm.html#afb404d82507eabea3723d854f97b1ae4">open</a> (const <a class="el" href="classScroom_1_1Logger.html">Scroom::Logger</a> &amp;logger, const std::string &amp;fileName)</td></tr>
+<tr class="memitem:afb404d82507eabea3723d854f97b1ae4" id="r_afb404d82507eabea3723d854f97b1ae4"><td class="memItemLeft" align="right" valign="top">boost::optional&lt; std::tuple&lt; <a class="el" href="structScroom_1_1TiledBitmap_1_1BitmapMetaData.html">Scroom::TiledBitmap::BitmapMetaData</a>, std::ifstream, <a class="el" href="namespaceScroom_1_1Pnm.html#a41ba24eb91707242423bd02a4f478a27">SourceType</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Pnm.html#afb404d82507eabea3723d854f97b1ae4">open</a> (const <a class="el" href="classScroom_1_1Logger.html">Scroom::Logger</a> &amp;<a class="el" href="ringbuffer-sink-tests_8cc.html#a288e5002e7c3705ad5bae108a122bd34">logger</a>, const std::string &amp;fileName)</td></tr>
 <tr class="separator:afb404d82507eabea3723d854f97b1ae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
@@ -205,7 +205,7 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   75</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Height cannot be negative&quot;</span>);</div>
 <div class="line"><span class="lineno">   76</span>      }</div>
 <div class="line"><span class="lineno">   77</span> </div>
-<div class="line"><span class="lineno">   78</span>      logger-&gt;debug(<span class="stringliteral">&quot;This bitmap has size {}*{}&quot;</span>, width, height);</div>
+<div class="line"><span class="lineno">   78</span>      <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a288e5002e7c3705ad5bae108a122bd34">logger</a>-&gt;debug(<span class="stringliteral">&quot;This bitmap has size {}*{}&quot;</span>, width, height);</div>
 <div class="line"><span class="lineno">   79</span> </div>
 <div class="line"><span class="lineno">   80</span>      <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_variable" href="rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b">rect</a> = Scroom::Utils::make_rect&lt;int&gt;(0, 0, width, height);</div>
 <div class="line"><span class="lineno">   81</span>      BitmapMetaData bmd{};</div>
@@ -268,7 +268,7 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">  138</span>    }</div>
 <div class="line"><span class="lineno">  139</span>    <span class="keywordflow">catch</span>(<span class="keyword">const</span> std::exception&amp; ex)</div>
 <div class="line"><span class="lineno">  140</span>    {</div>
-<div class="line"><span class="lineno">  141</span>      <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;error(<span class="stringliteral">&quot;While processing file {}: {}&quot;</span>, fileName, ex.what());</div>
+<div class="line"><span class="lineno">  141</span>      <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a288e5002e7c3705ad5bae108a122bd34">logger</a>-&gt;error(<span class="stringliteral">&quot;While processing file {}: {}&quot;</span>, fileName, ex.what());</div>
 <div class="line"><span class="lineno">  142</span>      <span class="keywordflow">return</span> {};</div>
 <div class="line"><span class="lineno">  143</span>    }</div>
 <div class="line"><span class="lineno">  144</span>  }</div>
@@ -281,10 +281,10 @@ Functions</h2></td></tr>
 <div class="ttc" id="anamespaceScroom_1_1TiledBitmap_html_a0451c92ea02ad814ffc4a83ebf51d475"><div class="ttname"><a href="namespaceScroom_1_1TiledBitmap.html#a0451c92ea02ad814ffc4a83ebf51d475">Scroom::TiledBitmap::Greyscale</a></div><div class="ttdeci">const std::string Greyscale</div><div class="ttdef"><b>Definition</b> layerspecforbitmap.cc:53</div></div>
 <div class="ttc" id="anamespaceScroom_1_1TiledBitmap_html_a50226c5783a13b33eee2fa92e99280f0"><div class="ttname"><a href="namespaceScroom_1_1TiledBitmap.html#a50226c5783a13b33eee2fa92e99280f0">Scroom::TiledBitmap::Colormapped</a></div><div class="ttdeci">const std::string Colormapped</div><div class="ttdef"><b>Definition</b> layerspecforbitmap.cc:54</div></div>
 <div class="ttc" id="anamespaceScroom_1_1TiledBitmap_html_a68ed4ea621e837ae62809626d1f7bba4"><div class="ttname"><a href="namespaceScroom_1_1TiledBitmap.html#a68ed4ea621e837ae62809626d1f7bba4">Scroom::TiledBitmap::RGB</a></div><div class="ttdeci">const std::string RGB</div><div class="ttdef"><b>Definition</b> layerspecforbitmap.cc:51</div></div>
-<div class="ttc" id="anamespaceanonymous__namespace_02callbacks_8cc_03_html_a88770d5c02f4b606f5b61d49cdb76df6"><div class="ttname"><a href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">anonymous_namespace{callbacks.cc}::logger</a></div><div class="ttdeci">Scroom::Logger logger</div><div class="ttdef"><b>Definition</b> callbacks.cc:54</div></div>
 <div class="ttc" id="anamespaceanonymous__namespace_02pnmsource_8cc_03_html_a0a5b6183200bcda12272059baa79c129"><div class="ttname"><a href="namespaceanonymous__namespace_02pnmsource_8cc_03.html#a0a5b6183200bcda12272059baa79c129">anonymous_namespace{pnmsource.cc}::consumeDataBoundary</a></div><div class="ttdeci">void consumeDataBoundary(std::istream &amp;s)</div><div class="ttdef"><b>Definition</b> pnmsource.cc:35</div></div>
 <div class="ttc" id="anamespaceanonymous__namespace_02pnmsource_8cc_03_html_afb616996f3eb9765077b0fcc8747c544"><div class="ttname"><a href="namespaceanonymous__namespace_02pnmsource_8cc_03.html#afb616996f3eb9765077b0fcc8747c544">anonymous_namespace{pnmsource.cc}::skipComments</a></div><div class="ttdeci">void skipComments(std::istream &amp;s)</div><div class="ttdef"><b>Definition</b> pnmsource.cc:27</div></div>
 <div class="ttc" id="arectangletests_8cc_html_aaa71382a621129a81a9a410576802d0b"><div class="ttname"><a href="rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b">rect</a></div><div class="ttdeci">const auto rect</div><div class="ttdef"><b>Definition</b> rectangletests.cc:335</div></div>
+<div class="ttc" id="aringbuffer-sink-tests_8cc_html_a288e5002e7c3705ad5bae108a122bd34"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a288e5002e7c3705ad5bae108a122bd34">logger</a></div><div class="ttdeci">auto logger</div><div class="ttdef"><b>Definition</b> ringbuffer-sink-tests.cc:33</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classPnm.html#a512fa4ba81d11455c33b34b28588e629">Pnm::open()</a>, and <a class="el" href="classScroom_1_1Pnm_1_1Source.html#a09326329b765bb43be4bfa264a8468ed">Scroom::Pnm::Source::resetPresentation()</a>.</p>
 <div class="dynheader">

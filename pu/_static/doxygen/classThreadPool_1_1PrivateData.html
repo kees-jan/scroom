@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-51-g058ffe8ea</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-g4002e422d</span>
    </div>
   </td>
  </tr>
@@ -302,7 +302,7 @@ Private Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Reference to the default Queue.</p>
-<p>If we don't store a reference to the default Queue here, then objects calling <a class="el" href="classThreadPool.html#a75b74859fed39f21cb3bb09b78137fa2">schedule()</a> without a Queue argument (hence using the default Queue), may find that they are themselves holding the last reference to the <a class="el" href="classThreadPool.html#af5ac6649a5a7711037747ef03c542f18">ThreadPool::defaultQueue()</a> object. That could result in deadlock, if the thread doing the scheduling is itself a <a class="el" href="classThreadPool.html">ThreadPool</a> thread. Recall that destroying a Queue blocks until any currently running tasks are finished, and hence a task would be infinitely waiting for itself to finish.</p>
+<p>If we don't store a reference to the default Queue here, then objects calling schedule() without a Queue argument (hence using the default Queue), may find that they are themselves holding the last reference to the <a class="el" href="classThreadPool.html#af5ac6649a5a7711037747ef03c542f18">ThreadPool::defaultQueue()</a> object. That could result in deadlock, if the thread doing the scheduling is itself a <a class="el" href="classThreadPool.html">ThreadPool</a> thread. Recall that destroying a Queue blocks until any currently running tasks are finished, and hence a task would be infinitely waiting for itself to finish.</p>
 <dl class="section see"><dt>See also</dt><dd><a href="https://github.com/kees-jan/scroom/issues/2">https://github.com/kees-jan/scroom/issues/2</a> </dd></dl>
 
 </div>

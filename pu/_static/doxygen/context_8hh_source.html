@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-51-g058ffe8ea</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-g4002e422d</span>
    </div>
   </td>
  </tr>
@@ -162,15 +162,15 @@ $(document).ready(function(){initNavTree('context_8hh_source.html',''); initResi
 <div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="namespaceScroom_1_1Utils.html#a1df110b1fef13cbeaf6122b1ca752a97">   55</a></span>  [[nodiscard]] T <a class="code hl_function" href="namespaceScroom_1_1Utils.html#a1df110b1fef13cbeaf6122b1ca752a97">get</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Utils_1_1Context.html#a2cdae38874f874bb02c2caa75e80f53c">Context::ConstPtr</a>&amp; context, std::string name)</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keyword">const</span> std::any&amp; <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = context-&gt;get(std::move(name));</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keyword">const</span> std::any&amp; <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = context-&gt;get(std::move(name));</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordflow">try</span></div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>      <span class="keywordflow">return</span> std::any_cast&lt;T&gt;(<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>      <span class="keywordflow">return</span> std::any_cast&lt;T&gt;(<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>);</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    }</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordflow">catch</span>(std::bad_any_cast&amp;)</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    {</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>      <span class="keyword">using </span>F = std::function&lt;T()&gt;;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>      <span class="keywordflow">return</span> std::any_cast&lt;F&gt;(<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)();</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>      <span class="keywordflow">return</span> std::any_cast&lt;F&gt;(<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)();</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    }</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  }</div>
 </div>
@@ -304,7 +304,7 @@ $(document).ready(function(){initNavTree('context_8hh_source.html',''); initResi
 <div class="ttc" id="anamespaceScroom_1_1Utils_html_a729f4d0d2c14a19b769897751e91acbe"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#a729f4d0d2c14a19b769897751e91acbe">Scroom::Utils::set</a></div><div class="ttdeci">void set(const Context::Ptr &amp;context, std::string name, T value)</div><div class="ttdef"><b>Definition</b> context.hh:128</div></div>
 <div class="ttc" id="anamespaceScroom_1_1Utils_html_a958e9a62ee2b943aa9cb5b23f2aa8f02"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#a958e9a62ee2b943aa9cb5b23f2aa8f02">Scroom::Utils::get_or</a></div><div class="ttdeci">auto get_or(const Context::ConstPtr &amp;context, std::string name, const Callable &amp;default_value) -&gt; std::enable_if_t&lt; std::is_same_v&lt; T, std::remove_reference_t&lt; decltype(default_value())&gt; &gt;, T &gt;</div><div class="ttdef"><b>Definition</b> context.hh:95</div></div>
 <div class="ttc" id="anamespaceScroom_1_1Utils_html_aeb91576875b1be9c7f4edcc8cfe5da20"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#aeb91576875b1be9c7f4edcc8cfe5da20">Scroom::Utils::setFactory</a></div><div class="ttdeci">void setFactory(const Context::Ptr &amp;context, std::string name, Callable value)</div><div class="ttdef"><b>Definition</b> context.hh:140</div></div>
-<div class="ttc" id="asampleiterator-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">SampleIterator&lt; const uint8_t &gt; result</div><div class="ttdef"><b>Definition</b> sampleiterator-tests.cc:94</div></div>
+<div class="ttc" id="aringbuffer-sink-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">auto result</div><div class="ttdef"><b>Definition</b> ringbuffer-sink-tests.cc:76</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

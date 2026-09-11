@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-51-g058ffe8ea</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-g4002e422d</span>
    </div>
   </td>
  </tr>
@@ -401,8 +401,8 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  109</span>        <span class="keywordtype">char</span> buffer[<a class="code hl_define" href="colormaps_8cc.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>];</div>
 <div class="line"><span class="lineno">  110</span> </div>
 <div class="line"><span class="lineno">  111</span>        <span class="comment">// Read header</span></div>
-<div class="line"><span class="lineno">  112</span>        <span class="keywordtype">char</span>* <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = fgets(buffer, <a class="code hl_define" href="colormaps_8cc.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>, <a class="code hl_variable" href="gtkhelper-tests_8cc.html#a633de4b0c14ca52ea2432a3c8a5c4c31">f</a>);</div>
-<div class="line"><span class="lineno">  113</span>        <span class="keywordflow">if</span>(!<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
+<div class="line"><span class="lineno">  112</span>        <span class="keywordtype">char</span>* <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = fgets(buffer, <a class="code hl_define" href="colormaps_8cc.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>, <a class="code hl_variable" href="gtkhelper-tests_8cc.html#a633de4b0c14ca52ea2432a3c8a5c4c31">f</a>);</div>
+<div class="line"><span class="lineno">  113</span>        <span class="keywordflow">if</span>(!<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
 <div class="line"><span class="lineno">  114</span>        {</div>
 <div class="line"><span class="lineno">  115</span>          <span class="keywordflow">throw</span> std::exception();</div>
 <div class="line"><span class="lineno">  116</span>        }</div>
@@ -412,8 +412,8 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  120</span>        }</div>
 <div class="line"><span class="lineno">  121</span> </div>
 <div class="line"><span class="lineno">  122</span>        <span class="comment">// Read version</span></div>
-<div class="line"><span class="lineno">  123</span>        <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = fgets(buffer, <a class="code hl_define" href="colormaps_8cc.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>, <a class="code hl_variable" href="gtkhelper-tests_8cc.html#a633de4b0c14ca52ea2432a3c8a5c4c31">f</a>);</div>
-<div class="line"><span class="lineno">  124</span>        <span class="keywordflow">if</span>(!<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
+<div class="line"><span class="lineno">  123</span>        <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = fgets(buffer, <a class="code hl_define" href="colormaps_8cc.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>, <a class="code hl_variable" href="gtkhelper-tests_8cc.html#a633de4b0c14ca52ea2432a3c8a5c4c31">f</a>);</div>
+<div class="line"><span class="lineno">  124</span>        <span class="keywordflow">if</span>(!<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
 <div class="line"><span class="lineno">  125</span>        {</div>
 <div class="line"><span class="lineno">  126</span>          <span class="keywordflow">throw</span> std::exception();</div>
 <div class="line"><span class="lineno">  127</span>        }</div>
@@ -423,12 +423,12 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  131</span>        }</div>
 <div class="line"><span class="lineno">  132</span> </div>
 <div class="line"><span class="lineno">  133</span>        <span class="comment">// Read ColorCount</span></div>
-<div class="line"><span class="lineno">  134</span>        <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = fgets(buffer, <a class="code hl_define" href="colormaps_8cc.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>, <a class="code hl_variable" href="gtkhelper-tests_8cc.html#a633de4b0c14ca52ea2432a3c8a5c4c31">f</a>);</div>
-<div class="line"><span class="lineno">  135</span>        <span class="keywordflow">if</span>(!<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
+<div class="line"><span class="lineno">  134</span>        <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = fgets(buffer, <a class="code hl_define" href="colormaps_8cc.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>, <a class="code hl_variable" href="gtkhelper-tests_8cc.html#a633de4b0c14ca52ea2432a3c8a5c4c31">f</a>);</div>
+<div class="line"><span class="lineno">  135</span>        <span class="keywordflow">if</span>(!<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
 <div class="line"><span class="lineno">  136</span>        {</div>
 <div class="line"><span class="lineno">  137</span>          <span class="keywordflow">throw</span> std::exception();</div>
 <div class="line"><span class="lineno">  138</span>        }</div>
-<div class="line"><span class="lineno">  139</span>        <span class="keywordtype">unsigned</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="pageprovider-tests_8cc.html#a951345011b75d2e8d9bfc18ca63510d2">count</a> = atoi(<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>);</div>
+<div class="line"><span class="lineno">  139</span>        <span class="keywordtype">unsigned</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="pageprovider-tests_8cc.html#a951345011b75d2e8d9bfc18ca63510d2">count</a> = atoi(<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>);</div>
 <div class="line"><span class="lineno">  140</span>        <span class="keywordflow">if</span>(<a class="code hl_variable" href="pageprovider-tests_8cc.html#a951345011b75d2e8d9bfc18ca63510d2">count</a> == 0)</div>
 <div class="line"><span class="lineno">  141</span>        {</div>
 <div class="line"><span class="lineno">  142</span>          <span class="keywordflow">throw</span> std::exception();</div>
@@ -467,7 +467,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="agtkhelper-tests_8cc_html_a633de4b0c14ca52ea2432a3c8a5c4c31"><div class="ttname"><a href="gtkhelper-tests_8cc.html#a633de4b0c14ca52ea2432a3c8a5c4c31">f</a></div><div class="ttdeci">f</div><div class="ttdef"><b>Definition</b> gtkhelper-tests.cc:43</div></div>
 <div class="ttc" id="anamespaceanonymous__namespace_02transparentoverlaypresentation_8cc_03_html_a5d2074d7840f9d66c2b18260065ef697"><div class="ttname"><a href="namespaceanonymous__namespace_02transparentoverlaypresentation_8cc_03.html#a5d2074d7840f9d66c2b18260065ef697">anonymous_namespace{transparentoverlaypresentation.cc}::colors</a></div><div class="ttdeci">const std::list&lt; Color &gt; colors</div><div class="ttdef"><b>Definition</b> transparentoverlaypresentation.cc:22</div></div>
 <div class="ttc" id="apageprovider-tests_8cc_html_a951345011b75d2e8d9bfc18ca63510d2"><div class="ttname"><a href="pageprovider-tests_8cc.html#a951345011b75d2e8d9bfc18ca63510d2">count</a></div><div class="ttdeci">const size_t count</div><div class="ttdef"><b>Definition</b> pageprovider-tests.cc:21</div></div>
-<div class="ttc" id="asampleiterator-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">SampleIterator&lt; const uint8_t &gt; result</div><div class="ttdef"><b>Definition</b> sampleiterator-tests.cc:94</div></div>
+<div class="ttc" id="aringbuffer-sink-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">auto result</div><div class="ttdef"><b>Definition</b> ringbuffer-sink-tests.cc:76</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classScroom_1_1ColormapImpl_1_1Colormaps.html#a5e9de78dce336208aa48febb82ec3fc2">Colormaps()</a>.</p>
 <div class="dynheader">

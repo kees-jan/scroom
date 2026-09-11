@@ -10,7 +10,8 @@ var searchData=
   ['registration_7',['Registration',['../classScroom_1_1Utils_1_1Detail_1_1Registration.html',1,'Scroom::Utils::Detail']]],
   ['resizablepresentationinterface_8',['ResizablePresentationInterface',['../classResizablePresentationInterface.html',1,'']]],
   ['resizablepresentationinterfacestub_9',['ResizablePresentationInterfaceStub',['../classanonymous__namespace_02determine-size-test_8cc_03_1_1ResizablePresentationInterfaceStub.html',1,'anonymous_namespace{determine-size-test.cc}']]],
-  ['ruler_10',['Ruler',['../classRuler.html',1,'']]],
-  ['rulercalculations_11',['RulerCalculations',['../classRulerCalculations.html',1,'']]],
-  ['rulerdrawstrategy_12',['RulerDrawStrategy',['../classRulerDrawStrategy.html',1,'']]]
+  ['ringbuffersink_10',['RingBufferSink',['../classScroom_1_1RingBufferSink.html',1,'Scroom']]],
+  ['ruler_11',['Ruler',['../classRuler.html',1,'']]],
+  ['rulercalculations_12',['RulerCalculations',['../classRulerCalculations.html',1,'']]],
+  ['rulerdrawstrategy_13',['RulerDrawStrategy',['../classRulerDrawStrategy.html',1,'']]]
 ];

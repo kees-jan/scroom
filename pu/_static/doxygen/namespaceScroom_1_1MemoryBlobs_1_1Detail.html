@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-51-g058ffe8ea</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-g4002e422d</span>
    </div>
   </td>
  </tr>
@@ -135,7 +135,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   32</span>  {</div>
-<div class="line"><span class="lineno">   33</span>    <a class="code hl_typedef" href="namespaceScroom_1_1MemoryBlobs.html#aa30db602fa289e14a9db8bfd0f36d5ab">PageList</a> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">   33</span>    <a class="code hl_typedef" href="namespaceScroom_1_1MemoryBlobs.html#aa30db602fa289e14a9db8bfd0f36d5ab">PageList</a> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">   34</span>    z_stream stream;</div>
 <div class="line"><span class="lineno">   35</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> pageSize = <a class="code hl_variable" href="blob-tests_8cc.html#ad5fcf3cc8f2e73451c72965cb516b16f">provider</a>-&gt;getPageSize();</div>
 <div class="line"><span class="lineno">   36</span> </div>
@@ -154,7 +154,7 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   49</span>      <a class="code hl_define" href="assertions_8hh.html#aecaddce56c58fa07fb91249ea5de89ae">verify</a>(stream.avail_out == 0);</div>
 <div class="line"><span class="lineno">   50</span> </div>
 <div class="line"><span class="lineno">   51</span>      <a class="code hl_typedef" href="namespaceScroom_1_1MemoryBlobs_1_1Page.html#aef1d8c508f1e7142bf747836e906a738">Page::Ptr</a> <span class="keyword">const</span> currentPage = <a class="code hl_variable" href="blob-tests_8cc.html#ad5fcf3cc8f2e73451c72965cb516b16f">provider</a>-&gt;getFreePage();</div>
-<div class="line"><span class="lineno">   52</span>      <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>.push_back(currentPage);</div>
+<div class="line"><span class="lineno">   52</span>      <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>.push_back(currentPage);</div>
 <div class="line"><span class="lineno">   53</span> </div>
 <div class="line"><span class="lineno">   54</span>      <a class="code hl_typedef" href="namespaceScroom_1_1MemoryBlobs_1_1RawPageData.html#a3e66bb65e19725417b4ab427ad4338b6">RawPageData::Ptr</a> <span class="keyword">const</span> currentPageRaw = currentPage-&gt;get();</div>
 <div class="line"><span class="lineno">   55</span> </div>
@@ -170,7 +170,7 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   65</span>    <a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a> = deflateEnd(&amp;stream);</div>
 <div class="line"><span class="lineno">   66</span>    <a class="code hl_define" href="blob-compression_8cc.html#a67bff46d3c0317ef11f97f0ccdc442a0">zlib_verify</a>(<a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a> == Z_OK, <span class="stringliteral">&quot;deflateEnd&quot;</span>, <a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>, stream);</div>
 <div class="line"><span class="lineno">   67</span> </div>
-<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">   69</span>  }</div>
 <div class="ttc" id="aassertions_8hh_html_aecaddce56c58fa07fb91249ea5de89ae"><div class="ttname"><a href="assertions_8hh.html#aecaddce56c58fa07fb91249ea5de89ae">verify</a></div><div class="ttdeci">#define verify(expr)</div><div class="ttdef"><b>Definition</b> assertions.hh:40</div></div>
 <div class="ttc" id="ablob-compression_8cc_html_a67bff46d3c0317ef11f97f0ccdc442a0"><div class="ttname"><a href="blob-compression_8cc.html#a67bff46d3c0317ef11f97f0ccdc442a0">zlib_verify</a></div><div class="ttdeci">#define zlib_verify(condition, function_name, r, stream)</div><div class="ttdef"><b>Definition</b> blob-compression.cc:19</div></div>
@@ -179,7 +179,7 @@ Functions</h2></td></tr>
 <div class="ttc" id="anamespaceScroom_1_1MemoryBlobs_1_1Page_html_aef1d8c508f1e7142bf747836e906a738"><div class="ttname"><a href="namespaceScroom_1_1MemoryBlobs_1_1Page.html#aef1d8c508f1e7142bf747836e906a738">Scroom::MemoryBlobs::Page::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; Scroom::MemoryBlocks::Page &gt; Ptr</div><div class="ttdef"><b>Definition</b> memoryblobs.hh:33</div></div>
 <div class="ttc" id="anamespaceScroom_1_1MemoryBlobs_1_1RawPageData_html_a3e66bb65e19725417b4ab427ad4338b6"><div class="ttname"><a href="namespaceScroom_1_1MemoryBlobs_1_1RawPageData.html#a3e66bb65e19725417b4ab427ad4338b6">Scroom::MemoryBlobs::RawPageData::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; uint8_t &gt; Ptr</div><div class="ttdef"><b>Definition</b> memoryblobs.hh:26</div></div>
 <div class="ttc" id="anamespaceScroom_1_1MemoryBlobs_html_aa30db602fa289e14a9db8bfd0f36d5ab"><div class="ttname"><a href="namespaceScroom_1_1MemoryBlobs.html#aa30db602fa289e14a9db8bfd0f36d5ab">Scroom::MemoryBlobs::PageList</a></div><div class="ttdeci">std::list&lt; Page::Ptr &gt; PageList</div><div class="ttdef"><b>Definition</b> memoryblobs.hh:35</div></div>
-<div class="ttc" id="asampleiterator-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">SampleIterator&lt; const uint8_t &gt; result</div><div class="ttdef"><b>Definition</b> sampleiterator-tests.cc:94</div></div>
+<div class="ttc" id="aringbuffer-sink-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">auto result</div><div class="ttdef"><b>Definition</b> ringbuffer-sink-tests.cc:76</div></div>
 <div class="ttc" id="atransformpresentation__test_8cc_html_a0e8a17dea24fd000a1eabbea951fb099"><div class="ttname"><a href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a></div><div class="ttdeci">Scroom::Utils::Rectangle&lt; double &gt; const r</div><div class="ttdef"><b>Definition</b> transformpresentation_test.cc:65</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a2f3d263c27f8084dbd467aab9f175b35">Scroom::MemoryBlobs::Blob::compress()</a>.</p>

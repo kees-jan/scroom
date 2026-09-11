@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-51-g058ffe8ea</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-g4002e422d</span>
    </div>
   </td>
  </tr>
@@ -642,7 +642,7 @@ Here is the caller graph for this function:</div>
 <div class="fragment"><div class="line"><span class="lineno">  134</span>{</div>
 <div class="line"><span class="lineno">  135</span>  <span class="keywordtype">bool</span> didLoad = <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  136</span> </div>
-<div class="line"><span class="lineno">  137</span>  <a class="code hl_typedef" href="classConstTile.html#a851f2f356430d0fff4c703c23a6e07d9">ConstTile::Ptr</a> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">  137</span>  <a class="code hl_typedef" href="classConstTile.html#a851f2f356430d0fff4c703c23a6e07d9">ConstTile::Ptr</a> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">  138</span>  {</div>
 <div class="line"><span class="lineno">  139</span>    boost::mutex::scoped_lock <span class="keyword">const</span> lock(<a class="code hl_variable" href="classCompressedTile.html#abdcc515dd9b62b94ca90a7672e91d9d2">stateData</a>);</div>
 <div class="line"><span class="lineno">  140</span>    <a class="code hl_function" href="classCompressedTile.html#abc632784fd3ff47fee0a75393be60772">cleanupState</a>();</div>
@@ -650,11 +650,11 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  142</span>  }</div>
 <div class="line"><span class="lineno">  143</span>  {</div>
 <div class="line"><span class="lineno">  144</span>    boost::mutex::scoped_lock <span class="keyword">const</span> lock(<a class="code hl_variable" href="classCompressedTile.html#ab9f3cfcf96b745f1421b4c87737bdf2b">tileData</a>);</div>
-<div class="line"><span class="lineno">  145</span>    <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_variable" href="classCompressedTile.html#af148374ed057295f9e719ee5e7caf105">constTile</a>.lock(); <span class="comment">// This ought to fail</span></div>
-<div class="line"><span class="lineno">  146</span>    <span class="keywordflow">if</span>(!<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
+<div class="line"><span class="lineno">  145</span>    <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_variable" href="classCompressedTile.html#af148374ed057295f9e719ee5e7caf105">constTile</a>.lock(); <span class="comment">// This ought to fail</span></div>
+<div class="line"><span class="lineno">  146</span>    <span class="keywordflow">if</span>(!<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
 <div class="line"><span class="lineno">  147</span>    {</div>
-<div class="line"><span class="lineno">  148</span>      <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = std::make_shared&lt;ConstTile&gt;(<a class="code hl_define" href="tiledbitmaplayer_8hh.html#a07ae61ed7dc31e9cddbdf9da244567c7">TILESIZE</a>, <a class="code hl_define" href="tiledbitmaplayer_8hh.html#a07ae61ed7dc31e9cddbdf9da244567c7">TILESIZE</a>, <a class="code hl_variable" href="classCompressedTile.html#ae0acac9bbd3f7a6b402ba59ab5a2cd05">bpp</a>, <a class="code hl_variable" href="classCompressedTile.html#aa57cd0c280ebe754da3c7649489db99b">data</a>-&gt;getConst());</div>
-<div class="line"><span class="lineno">  149</span>      <a class="code hl_variable" href="classCompressedTile.html#af148374ed057295f9e719ee5e7caf105">constTile</a> = <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">  148</span>      <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = std::make_shared&lt;ConstTile&gt;(<a class="code hl_define" href="tiledbitmaplayer_8hh.html#a07ae61ed7dc31e9cddbdf9da244567c7">TILESIZE</a>, <a class="code hl_define" href="tiledbitmaplayer_8hh.html#a07ae61ed7dc31e9cddbdf9da244567c7">TILESIZE</a>, <a class="code hl_variable" href="classCompressedTile.html#ae0acac9bbd3f7a6b402ba59ab5a2cd05">bpp</a>, <a class="code hl_variable" href="classCompressedTile.html#aa57cd0c280ebe754da3c7649489db99b">data</a>-&gt;getConst());</div>
+<div class="line"><span class="lineno">  149</span>      <a class="code hl_variable" href="classCompressedTile.html#af148374ed057295f9e719ee5e7caf105">constTile</a> = <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">  150</span>      didLoad = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  151</span>    }</div>
 <div class="line"><span class="lineno">  152</span>  }</div>
@@ -664,11 +664,11 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  156</span>    <a class="code hl_variable" href="classCompressedTile.html#a1f5ee2004174ee91290fd429895e8352">state</a> = <a class="code hl_enumvalue" href="tiledbitmaplayer_8hh.html#a4f52bb8f2d5da2afbcf302a471a7aa22a4b56dcafb8b31b416ac0a8ceaa7708a7">TSI_NORMAL</a>;</div>
 <div class="line"><span class="lineno">  157</span>    <span class="keywordflow">if</span>(didLoad)</div>
 <div class="line"><span class="lineno">  158</span>    {</div>
-<div class="line"><span class="lineno">  159</span>      <a class="code hl_function" href="classCompressedTile.html#a56111eeb0baeaf0b8f2d93e4a81ea99d">notifyObservers</a>(<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>);</div>
+<div class="line"><span class="lineno">  159</span>      <a class="code hl_function" href="classCompressedTile.html#a56111eeb0baeaf0b8f2d93e4a81ea99d">notifyObservers</a>(<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>);</div>
 <div class="line"><span class="lineno">  160</span>    }</div>
 <div class="line"><span class="lineno">  161</span>  }</div>
 <div class="line"><span class="lineno">  162</span> </div>
-<div class="line"><span class="lineno">  163</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">  163</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">  164</span>}</div>
 <div class="ttc" id="aclassCompressedTile_html_a56111eeb0baeaf0b8f2d93e4a81ea99d"><div class="ttname"><a href="classCompressedTile.html#a56111eeb0baeaf0b8f2d93e4a81ea99d">CompressedTile::notifyObservers</a></div><div class="ttdeci">void notifyObservers(const ConstTile::Ptr &amp;tile)</div><div class="ttdef"><b>Definition</b> compressedtile.cc:274</div></div>
 <div class="ttc" id="aclassCompressedTile_html_ab9f3cfcf96b745f1421b4c87737bdf2b"><div class="ttname"><a href="classCompressedTile.html#ab9f3cfcf96b745f1421b4c87737bdf2b">CompressedTile::tileData</a></div><div class="ttdeci">boost::mutex tileData</div><div class="ttdef"><b>Definition</b> tiledbitmaplayer.hh:122</div></div>
@@ -676,7 +676,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="aclassCompressedTile_html_abdcc515dd9b62b94ca90a7672e91d9d2"><div class="ttname"><a href="classCompressedTile.html#abdcc515dd9b62b94ca90a7672e91d9d2">CompressedTile::stateData</a></div><div class="ttdeci">boost::mutex stateData</div><div class="ttdef"><b>Definition</b> tiledbitmaplayer.hh:121</div></div>
 <div class="ttc" id="aclassCompressedTile_html_af148374ed057295f9e719ee5e7caf105"><div class="ttname"><a href="classCompressedTile.html#af148374ed057295f9e719ee5e7caf105">CompressedTile::constTile</a></div><div class="ttdeci">ConstTile::WeakPtr constTile</div><div class="ttdef"><b>Definition</b> tiledbitmaplayer.hh:118</div></div>
 <div class="ttc" id="aclassConstTile_html_a851f2f356430d0fff4c703c23a6e07d9"><div class="ttname"><a href="classConstTile.html#a851f2f356430d0fff4c703c23a6e07d9">ConstTile::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; ConstTile &gt; Ptr</div><div class="ttdef"><b>Definition</b> tile.hh:45</div></div>
-<div class="ttc" id="asampleiterator-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">SampleIterator&lt; const uint8_t &gt; result</div><div class="ttdef"><b>Definition</b> sampleiterator-tests.cc:94</div></div>
+<div class="ttc" id="aringbuffer-sink-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">auto result</div><div class="ttdef"><b>Definition</b> ringbuffer-sink-tests.cc:76</div></div>
 <div class="ttc" id="atiledbitmaplayer_8hh_html_a4f52bb8f2d5da2afbcf302a471a7aa22acc1ed62bf86ee908bdf3b3d087e9287c"><div class="ttname"><a href="tiledbitmaplayer_8hh.html#a4f52bb8f2d5da2afbcf302a471a7aa22acc1ed62bf86ee908bdf3b3d087e9287c">TSI_LOADING_SYNCHRONOUSLY</a></div><div class="ttdeci">@ TSI_LOADING_SYNCHRONOUSLY</div><div class="ttdef"><b>Definition</b> tiledbitmaplayer.hh:38</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classCompressedTile.html#a0678ca6eecadd7783482c591fc11fe2b">getConstTileSync()</a>, <a class="el" href="classCompressedTile.html#a097a41844c75d21396fb64db3c039c8a">observerAdded()</a>, and <a class="el" href="classCompressedTile.html#abb93373d26a2155d4fe3f8b235ea8d45">reportFinished()</a>.</p>
@@ -732,8 +732,8 @@ Here is the caller graph for this function:</div>
 <p>Get a reference to the <a class="el" href="classConstTile.html">ConstTile</a>.</p>
 <p>If the tile is currently TSI_LOADED, you'll get a reference, otherwise, you'll receive an empty reference. </p>
 <div class="fragment"><div class="line"><span class="lineno">   88</span>{</div>
-<div class="line"><span class="lineno">   89</span>  <a class="code hl_typedef" href="classConstTile.html#a851f2f356430d0fff4c703c23a6e07d9">ConstTile::Ptr</a> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_variable" href="classCompressedTile.html#af148374ed057295f9e719ee5e7caf105">constTile</a>.lock();</div>
-<div class="line"><span class="lineno">   90</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">   89</span>  <a class="code hl_typedef" href="classConstTile.html#a851f2f356430d0fff4c703c23a6e07d9">ConstTile::Ptr</a> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_variable" href="classCompressedTile.html#af148374ed057295f9e719ee5e7caf105">constTile</a>.lock();</div>
+<div class="line"><span class="lineno">   90</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">   91</span>}</div>
 </div><!-- fragment -->
 </div>
@@ -755,13 +755,13 @@ Here is the caller graph for this function:</div>
 <p>Get a reference to the Const <a class="el" href="classTile.html">Tile</a>.</p>
 <p>If the tile is currently TSI_NORMAL, it will be loaded, if necessary. If the tile is TSI_UNINITIALIZED, you'll receive an empty reference. </p>
 <div class="fragment"><div class="line"><span class="lineno">   48</span>{</div>
-<div class="line"><span class="lineno">   49</span>  <a class="code hl_typedef" href="classConstTile.html#a851f2f356430d0fff4c703c23a6e07d9">ConstTile::Ptr</a> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_variable" href="classCompressedTile.html#af148374ed057295f9e719ee5e7caf105">constTile</a>.lock();</div>
-<div class="line"><span class="lineno">   50</span>  <span class="keywordflow">if</span>(!<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
+<div class="line"><span class="lineno">   49</span>  <a class="code hl_typedef" href="classConstTile.html#a851f2f356430d0fff4c703c23a6e07d9">ConstTile::Ptr</a> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_variable" href="classCompressedTile.html#af148374ed057295f9e719ee5e7caf105">constTile</a>.lock();</div>
+<div class="line"><span class="lineno">   50</span>  <span class="keywordflow">if</span>(!<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
 <div class="line"><span class="lineno">   51</span>  {</div>
-<div class="line"><span class="lineno">   52</span>    <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_function" href="classCompressedTile.html#a5c520928c3e8faafa0493d77fa7c16d8">do_load</a>();</div>
+<div class="line"><span class="lineno">   52</span>    <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_function" href="classCompressedTile.html#a5c520928c3e8faafa0493d77fa7c16d8">do_load</a>();</div>
 <div class="line"><span class="lineno">   53</span>  }</div>
 <div class="line"><span class="lineno">   54</span> </div>
-<div class="line"><span class="lineno">   55</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">   55</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">   56</span>}</div>
 <div class="ttc" id="aclassCompressedTile_html_a5c520928c3e8faafa0493d77fa7c16d8"><div class="ttname"><a href="classCompressedTile.html#a5c520928c3e8faafa0493d77fa7c16d8">CompressedTile::do_load</a></div><div class="ttdeci">ConstTile::Ptr do_load()</div><div class="ttdef"><b>Definition</b> compressedtile.cc:133</div></div>
 </div><!-- fragment -->
@@ -812,7 +812,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  180</span>{</div>
-<div class="line"><span class="lineno">  181</span>  <a class="code hl_enumeration" href="tiledbitmapinterface_8hh.html#ac84d9b534c1947f639684269d09f7921">TileState</a> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_enumvalue" href="tiledbitmapinterface_8hh.html#ac84d9b534c1947f639684269d09f7921af2a7a5d5623523d6e2039ec00fec0239">TILE_UNINITIALIZED</a>;</div>
+<div class="line"><span class="lineno">  181</span>  <a class="code hl_enumeration" href="tiledbitmapinterface_8hh.html#ac84d9b534c1947f639684269d09f7921">TileState</a> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_enumvalue" href="tiledbitmapinterface_8hh.html#ac84d9b534c1947f639684269d09f7921af2a7a5d5623523d6e2039ec00fec0239">TILE_UNINITIALIZED</a>;</div>
 <div class="line"><span class="lineno">  182</span>  <span class="keywordflow">switch</span>(<a class="code hl_variable" href="classCompressedTile.html#a1f5ee2004174ee91290fd429895e8352">state</a>)</div>
 <div class="line"><span class="lineno">  183</span>  {</div>
 <div class="line"><span class="lineno">  184</span>  <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="tiledbitmaplayer_8hh.html#a4f52bb8f2d5da2afbcf302a471a7aa22a4b56dcafb8b31b416ac0a8ceaa7708a7">TSI_NORMAL</a>:</div>
@@ -820,26 +820,26 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  186</span>    <a class="code hl_typedef" href="classTile.html#a6a7815279a6f348183c06ed6428363e0">Tile::Ptr</a> <span class="keyword">const</span> <a class="code hl_variable" href="threadpool-queue-tests_8cc.html#a2c9addcc3f33120c718dfd607595b174">t</a> = <a class="code hl_variable" href="classCompressedTile.html#a690dea215c3d52f42c35c7a7d242fc52">tile</a>.lock();</div>
 <div class="line"><span class="lineno">  187</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="threadpool-queue-tests_8cc.html#a2c9addcc3f33120c718dfd607595b174">t</a>)</div>
 <div class="line"><span class="lineno">  188</span>    {</div>
-<div class="line"><span class="lineno">  189</span>      <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_enumvalue" href="tiledbitmapinterface_8hh.html#ac84d9b534c1947f639684269d09f7921a50319f02eabe9ac914a3183d86555e69">TILE_LOADED</a>;</div>
+<div class="line"><span class="lineno">  189</span>      <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_enumvalue" href="tiledbitmapinterface_8hh.html#ac84d9b534c1947f639684269d09f7921a50319f02eabe9ac914a3183d86555e69">TILE_LOADED</a>;</div>
 <div class="line"><span class="lineno">  190</span>    }</div>
 <div class="line"><span class="lineno">  191</span>    <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  192</span>    {</div>
-<div class="line"><span class="lineno">  193</span>      <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_enumvalue" href="tiledbitmapinterface_8hh.html#ac84d9b534c1947f639684269d09f7921a2b0ca8c75e0afe97b00e5180a0db7898">TILE_UNLOADED</a>;</div>
+<div class="line"><span class="lineno">  193</span>      <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_enumvalue" href="tiledbitmapinterface_8hh.html#ac84d9b534c1947f639684269d09f7921a2b0ca8c75e0afe97b00e5180a0db7898">TILE_UNLOADED</a>;</div>
 <div class="line"><span class="lineno">  194</span>    }</div>
 <div class="line"><span class="lineno">  195</span>  }</div>
 <div class="line"><span class="lineno">  196</span>  <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  197</span>  <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="tiledbitmaplayer_8hh.html#a4f52bb8f2d5da2afbcf302a471a7aa22a5a84d269a576456f9a8a1771672325a6">TSI_OUT_OF_BOUNDS</a>:</div>
-<div class="line"><span class="lineno">  198</span>    <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_enumvalue" href="tiledbitmapinterface_8hh.html#ac84d9b534c1947f639684269d09f7921af9af66a665a3524fc0d049fc669b2d76">TILE_OUT_OF_BOUNDS</a>;</div>
+<div class="line"><span class="lineno">  198</span>    <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_enumvalue" href="tiledbitmapinterface_8hh.html#ac84d9b534c1947f639684269d09f7921af9af66a665a3524fc0d049fc669b2d76">TILE_OUT_OF_BOUNDS</a>;</div>
 <div class="line"><span class="lineno">  199</span>    <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  200</span>  <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="tiledbitmaplayer_8hh.html#a4f52bb8f2d5da2afbcf302a471a7aa22acc1ed62bf86ee908bdf3b3d087e9287c">TSI_LOADING_SYNCHRONOUSLY</a>:</div>
 <div class="line"><span class="lineno">  201</span>  <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="tiledbitmaplayer_8hh.html#a4f52bb8f2d5da2afbcf302a471a7aa22a8257ad7491d95b6798756ab4058d7e1c">TSI_LOADING_ASYNCHRONOUSLY</a>:</div>
-<div class="line"><span class="lineno">  202</span>    <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_enumvalue" href="tiledbitmapinterface_8hh.html#ac84d9b534c1947f639684269d09f7921a2b0ca8c75e0afe97b00e5180a0db7898">TILE_UNLOADED</a>;</div>
+<div class="line"><span class="lineno">  202</span>    <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_enumvalue" href="tiledbitmapinterface_8hh.html#ac84d9b534c1947f639684269d09f7921a2b0ca8c75e0afe97b00e5180a0db7898">TILE_UNLOADED</a>;</div>
 <div class="line"><span class="lineno">  203</span>    <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  204</span>  <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="tiledbitmaplayer_8hh.html#a4f52bb8f2d5da2afbcf302a471a7aa22ae99ee9bf993a2c1567b467958e9eeb6c">TSI_UNINITIALIZED</a>:</div>
-<div class="line"><span class="lineno">  205</span>    <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_enumvalue" href="tiledbitmapinterface_8hh.html#ac84d9b534c1947f639684269d09f7921af2a7a5d5623523d6e2039ec00fec0239">TILE_UNINITIALIZED</a>;</div>
+<div class="line"><span class="lineno">  205</span>    <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_enumvalue" href="tiledbitmapinterface_8hh.html#ac84d9b534c1947f639684269d09f7921af2a7a5d5623523d6e2039ec00fec0239">TILE_UNINITIALIZED</a>;</div>
 <div class="line"><span class="lineno">  206</span>    <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  207</span>  }</div>
-<div class="line"><span class="lineno">  208</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">  208</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">  209</span>}</div>
 <div class="ttc" id="aclassTile_html_a6a7815279a6f348183c06ed6428363e0"><div class="ttname"><a href="classTile.html#a6a7815279a6f348183c06ed6428363e0">Tile::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; Tile &gt; Ptr</div><div class="ttdef"><b>Definition</b> tile.hh:19</div></div>
 <div class="ttc" id="athreadpool-queue-tests_8cc_html_a2c9addcc3f33120c718dfd607595b174"><div class="ttname"><a href="threadpool-queue-tests_8cc.html#a2c9addcc3f33120c718dfd607595b174">t</a></div><div class="ttdeci">ThreadPool t(0)</div></div>
@@ -870,12 +870,12 @@ Here is the caller graph for this function:</div>
 <p>Get a reference to the <a class="el" href="classTile.html">Tile</a>.</p>
 <p>If the tile is currently TSI_NORMAL, it will be loaded, if necessary. If the tile is TSI_UNINITIALIZED, you'll receive an empty reference. </p>
 <div class="fragment"><div class="line"><span class="lineno">   59</span>{</div>
-<div class="line"><span class="lineno">   60</span>  <a class="code hl_typedef" href="classTile.html#a6a7815279a6f348183c06ed6428363e0">Tile::Ptr</a> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">   60</span>  <a class="code hl_typedef" href="classTile.html#a6a7815279a6f348183c06ed6428363e0">Tile::Ptr</a> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">   61</span>  {</div>
 <div class="line"><span class="lineno">   62</span>    boost::mutex::scoped_lock <span class="keyword">const</span> lock(<a class="code hl_variable" href="classCompressedTile.html#ab9f3cfcf96b745f1421b4c87737bdf2b">tileData</a>);</div>
-<div class="line"><span class="lineno">   63</span>    <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_variable" href="classCompressedTile.html#a690dea215c3d52f42c35c7a7d242fc52">tile</a>.lock();</div>
+<div class="line"><span class="lineno">   63</span>    <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_variable" href="classCompressedTile.html#a690dea215c3d52f42c35c7a7d242fc52">tile</a>.lock();</div>
 <div class="line"><span class="lineno">   64</span>  }</div>
-<div class="line"><span class="lineno">   65</span>  <span class="keywordflow">if</span>(!<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
+<div class="line"><span class="lineno">   65</span>  <span class="keywordflow">if</span>(!<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
 <div class="line"><span class="lineno">   66</span>  {</div>
 <div class="line"><span class="lineno">   67</span>    <span class="comment">// Retrieve the const tile, such that all observers are properly</span></div>
 <div class="line"><span class="lineno">   68</span>    <span class="comment">// notified of the loading</span></div>
@@ -884,17 +884,17 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   71</span>    {</div>
 <div class="line"><span class="lineno">   72</span>      <span class="comment">// Check again. Maybe someone else has beaten us to it...</span></div>
 <div class="line"><span class="lineno">   73</span>      boost::mutex::scoped_lock <span class="keyword">const</span> lock(<a class="code hl_variable" href="classCompressedTile.html#ab9f3cfcf96b745f1421b4c87737bdf2b">tileData</a>);</div>
-<div class="line"><span class="lineno">   74</span>      <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_variable" href="classCompressedTile.html#a690dea215c3d52f42c35c7a7d242fc52">tile</a>.lock();</div>
+<div class="line"><span class="lineno">   74</span>      <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_variable" href="classCompressedTile.html#a690dea215c3d52f42c35c7a7d242fc52">tile</a>.lock();</div>
 <div class="line"><span class="lineno">   75</span>    }</div>
-<div class="line"><span class="lineno">   76</span>    <span class="keywordflow">if</span>(!<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
+<div class="line"><span class="lineno">   76</span>    <span class="keywordflow">if</span>(!<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
 <div class="line"><span class="lineno">   77</span>    {</div>
 <div class="line"><span class="lineno">   78</span>      boost::mutex::scoped_lock <span class="keyword">const</span> lock(<a class="code hl_variable" href="classCompressedTile.html#ab9f3cfcf96b745f1421b4c87737bdf2b">tileData</a>);</div>
-<div class="line"><span class="lineno">   79</span>      <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = std::make_shared&lt;Tile&gt;(<a class="code hl_define" href="tiledbitmaplayer_8hh.html#a07ae61ed7dc31e9cddbdf9da244567c7">TILESIZE</a>, <a class="code hl_define" href="tiledbitmaplayer_8hh.html#a07ae61ed7dc31e9cddbdf9da244567c7">TILESIZE</a>, <a class="code hl_variable" href="classCompressedTile.html#ae0acac9bbd3f7a6b402ba59ab5a2cd05">bpp</a>, <a class="code hl_variable" href="classCompressedTile.html#aa57cd0c280ebe754da3c7649489db99b">data</a>-&gt;get());</div>
-<div class="line"><span class="lineno">   80</span>      <a class="code hl_variable" href="classCompressedTile.html#a690dea215c3d52f42c35c7a7d242fc52">tile</a> = <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">   79</span>      <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = std::make_shared&lt;Tile&gt;(<a class="code hl_define" href="tiledbitmaplayer_8hh.html#a07ae61ed7dc31e9cddbdf9da244567c7">TILESIZE</a>, <a class="code hl_define" href="tiledbitmaplayer_8hh.html#a07ae61ed7dc31e9cddbdf9da244567c7">TILESIZE</a>, <a class="code hl_variable" href="classCompressedTile.html#ae0acac9bbd3f7a6b402ba59ab5a2cd05">bpp</a>, <a class="code hl_variable" href="classCompressedTile.html#aa57cd0c280ebe754da3c7649489db99b">data</a>-&gt;get());</div>
+<div class="line"><span class="lineno">   80</span>      <a class="code hl_variable" href="classCompressedTile.html#a690dea215c3d52f42c35c7a7d242fc52">tile</a> = <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">   81</span>    }</div>
 <div class="line"><span class="lineno">   82</span>  }</div>
 <div class="line"><span class="lineno">   83</span> </div>
-<div class="line"><span class="lineno">   84</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">   84</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">   85</span>}</div>
 <div class="ttc" id="aassertions_8hh_html_ae925d7587e34145cd52f674b2012539a"><div class="ttname"><a href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a></div><div class="ttdeci">#define require(expr)</div><div class="ttdef"><b>Definition</b> assertions.hh:30</div></div>
 <div class="ttc" id="aclassCompressedTile_html_a0678ca6eecadd7783482c591fc11fe2b"><div class="ttname"><a href="classCompressedTile.html#a0678ca6eecadd7783482c591fc11fe2b">CompressedTile::getConstTileSync</a></div><div class="ttdeci">ConstTile::Ptr getConstTileSync()</div><div class="ttdef"><b>Definition</b> compressedtile.cc:47</div></div>
@@ -947,15 +947,15 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  167</span>{</div>
-<div class="line"><span class="lineno">  168</span>  <a class="code hl_typedef" href="classTileViewState.html#a96e10104027d59ed19c7371779a0150e">TileViewState::Ptr</a> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_variable" href="classCompressedTile.html#a6e31e3871482ff2d9bffb5be8b44a2de">viewStates</a>[<a class="code hl_variable" href="pipette-tests_8cc.html#a42c717015bd9a889714e98016e92c595">vi</a>].lock();</div>
+<div class="line"><span class="lineno">  168</span>  <a class="code hl_typedef" href="classTileViewState.html#a96e10104027d59ed19c7371779a0150e">TileViewState::Ptr</a> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_variable" href="classCompressedTile.html#a6e31e3871482ff2d9bffb5be8b44a2de">viewStates</a>[<a class="code hl_variable" href="pipette-tests_8cc.html#a42c717015bd9a889714e98016e92c595">vi</a>].lock();</div>
 <div class="line"><span class="lineno">  169</span> </div>
-<div class="line"><span class="lineno">  170</span>  <span class="keywordflow">if</span>(!<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
+<div class="line"><span class="lineno">  170</span>  <span class="keywordflow">if</span>(!<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
 <div class="line"><span class="lineno">  171</span>  {</div>
-<div class="line"><span class="lineno">  172</span>    <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_function" href="classTileViewState.html#a7085eae554e8f9bab328c0a4ddfb557b">TileViewState::create</a>(shared_from_this&lt;CompressedTile&gt;());</div>
-<div class="line"><span class="lineno">  173</span>    <a class="code hl_variable" href="classCompressedTile.html#a6e31e3871482ff2d9bffb5be8b44a2de">viewStates</a>[<a class="code hl_variable" href="pipette-tests_8cc.html#a42c717015bd9a889714e98016e92c595">vi</a>] = <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">  172</span>    <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_function" href="classTileViewState.html#a7085eae554e8f9bab328c0a4ddfb557b">TileViewState::create</a>(shared_from_this&lt;CompressedTile&gt;());</div>
+<div class="line"><span class="lineno">  173</span>    <a class="code hl_variable" href="classCompressedTile.html#a6e31e3871482ff2d9bffb5be8b44a2de">viewStates</a>[<a class="code hl_variable" href="pipette-tests_8cc.html#a42c717015bd9a889714e98016e92c595">vi</a>] = <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">  174</span>  }</div>
 <div class="line"><span class="lineno">  175</span> </div>
-<div class="line"><span class="lineno">  176</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">  176</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">  177</span>}</div>
 <div class="ttc" id="aclassTileViewState_html_a7085eae554e8f9bab328c0a4ddfb557b"><div class="ttname"><a href="classTileViewState.html#a7085eae554e8f9bab328c0a4ddfb557b">TileViewState::create</a></div><div class="ttdeci">static Ptr create(const std::shared_ptr&lt; CompressedTile &gt; &amp;parent)</div><div class="ttdef"><b>Definition</b> tileviewstate.cc:26</div></div>
 <div class="ttc" id="aclassTileViewState_html_a96e10104027d59ed19c7371779a0150e"><div class="ttname"><a href="classTileViewState.html#a96e10104027d59ed19c7371779a0150e">TileViewState::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; TileViewState &gt; Ptr</div><div class="ttdef"><b>Definition</b> tileviewstate.hh:29</div></div>
@@ -1183,10 +1183,10 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Keep track of new <a class="el" href="classTileLoadingObserver.html">TileLoadingObserver</a> registrations. </p>
 <div class="fragment"><div class="line"><span class="lineno">  217</span>{</div>
-<div class="line"><span class="lineno">  218</span>  <a class="code hl_typedef" href="classConstTile.html#a851f2f356430d0fff4c703c23a6e07d9">ConstTile::Ptr</a> <span class="keyword">const</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_variable" href="classCompressedTile.html#af148374ed057295f9e719ee5e7caf105">constTile</a>.lock();</div>
+<div class="line"><span class="lineno">  218</span>  <a class="code hl_typedef" href="classConstTile.html#a851f2f356430d0fff4c703c23a6e07d9">ConstTile::Ptr</a> <span class="keyword">const</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_variable" href="classCompressedTile.html#af148374ed057295f9e719ee5e7caf105">constTile</a>.lock();</div>
 <div class="line"><span class="lineno">  219</span>  <a class="code hl_typedef" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae44696440c2b9dd5dbef5c4eda0baec9">ThreadPool::Queue::Ptr</a> queue_ = <a class="code hl_variable" href="classCompressedTile.html#a98aab628263791d6330cd6ccfa012d58">queue</a>.lock();</div>
 <div class="line"><span class="lineno">  220</span> </div>
-<div class="line"><span class="lineno">  221</span>  <span class="keywordflow">if</span>(!<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
+<div class="line"><span class="lineno">  221</span>  <span class="keywordflow">if</span>(!<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
 <div class="line"><span class="lineno">  222</span>  {</div>
 <div class="line"><span class="lineno">  223</span>    boost::mutex::scoped_lock <span class="keyword">const</span> lock(<a class="code hl_variable" href="classCompressedTile.html#abdcc515dd9b62b94ca90a7672e91d9d2">stateData</a>);</div>
 <div class="line"><span class="lineno">  224</span>    <a class="code hl_function" href="classCompressedTile.html#abc632784fd3ff47fee0a75393be60772">cleanupState</a>();</div>
@@ -1210,7 +1210,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  242</span>        queue_ = <a class="code hl_function" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#af8f6918d92f8388674bd7bdc1b75b2ec">ThreadPool::Queue::create</a>();</div>
 <div class="line"><span class="lineno">  243</span>        <a class="code hl_variable" href="classCompressedTile.html#a98aab628263791d6330cd6ccfa012d58">queue</a> = queue_;</div>
 <div class="line"><span class="lineno">  244</span>      }</div>
-<div class="line"><span class="lineno">  245</span>      <a class="code hl_function" href="threadpool_8hh.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b">CpuBound</a>()-&gt;schedule([<span class="keyword">this</span>] { <a class="code hl_function" href="classCompressedTile.html#a5c520928c3e8faafa0493d77fa7c16d8">do_load</a>(); }, <a class="code hl_define" href="local_8hh.html#aaa596031f81e74e8c57c9af7778907b7">LOAD_PRIO</a>, queue_);</div>
+<div class="line"><span class="lineno">  245</span>      <a class="code hl_function" href="threadpool_8hh.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b">CpuBound</a>()-&gt;post([<span class="keyword">this</span>] { <a class="code hl_function" href="classCompressedTile.html#a5c520928c3e8faafa0493d77fa7c16d8">do_load</a>(); }, <a class="code hl_define" href="local_8hh.html#aaa596031f81e74e8c57c9af7778907b7">LOAD_PRIO</a>, queue_);</div>
 <div class="line"><span class="lineno">  246</span>      <a class="code hl_variable" href="classCompressedTile.html#a1f5ee2004174ee91290fd429895e8352">state</a> = <a class="code hl_enumvalue" href="tiledbitmaplayer_8hh.html#a4f52bb8f2d5da2afbcf302a471a7aa22a8257ad7491d95b6798756ab4058d7e1c">TSI_LOADING_ASYNCHRONOUSLY</a>;</div>
 <div class="line"><span class="lineno">  247</span> </div>
 <div class="line"><span class="lineno">  248</span>      <span class="keywordflow">break</span>;</div>
@@ -1223,9 +1223,9 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  255</span>    <a class="code hl_variable" href="pipette-tests_8cc.html#a5437a4a8681ee4e938e2ac034634ce35">token</a>.<a class="code hl_function" href="classScroom_1_1Bookkeeping_1_1Token.html#ac619f80091875f045710df020bbc5c11">add</a>(queue_);</div>
 <div class="line"><span class="lineno">  256</span>  }</div>
 <div class="line"><span class="lineno">  257</span> </div>
-<div class="line"><span class="lineno">  258</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
+<div class="line"><span class="lineno">  258</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
 <div class="line"><span class="lineno">  259</span>  {</div>
-<div class="line"><span class="lineno">  260</span>    <a class="code hl_variable" href="observable-tests_8cc.html#ae2e3562a094e3fab188a3f99dc2ed902">observer</a>-&gt;tileLoaded(<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>);</div>
+<div class="line"><span class="lineno">  260</span>    <a class="code hl_variable" href="observable-tests_8cc.html#ae2e3562a094e3fab188a3f99dc2ed902">observer</a>-&gt;tileLoaded(<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>);</div>
 <div class="line"><span class="lineno">  261</span>  }</div>
 <div class="line"><span class="lineno">  262</span>}</div>
 <div class="ttc" id="aclassScroom_1_1Bookkeeping_1_1Token_html_ac619f80091875f045710df020bbc5c11"><div class="ttname"><a href="classScroom_1_1Bookkeeping_1_1Token.html#ac619f80091875f045710df020bbc5c11">Scroom::Bookkeeping::Token::add</a></div><div class="ttdeci">void add(const Stuff &amp;s) const</div><div class="ttdef"><b>Definition</b> bookkeepingimpl.hh:191</div></div>

@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-51-g058ffe8ea</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-g4002e422d</span>
    </div>
   </td>
  </tr>
@@ -602,22 +602,22 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  234</span>{</div>
-<div class="line"><span class="lineno">  235</span>  boost::mutex::scoped_lock <span class="keyword">const</span> <a class="code hl_variable" href="compression-tests_8cc.html#a3057df7a0035a1af3bf57cda7cf76d09">l</a>(<a class="code hl_variable" href="classTileViewState.html#a014ff1109dbf338052bec8179512bfcc">mut</a>);</div>
-<div class="line"><span class="lineno">  236</span> </div>
-<div class="line"><span class="lineno">  237</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="classTileViewState.html#a0705c5be8659166ede2b591bf1c4c3c2">state</a> &gt;= <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842facb0e11734f1bbe827dfb4f08117485e8">LOADED</a>)</div>
-<div class="line"><span class="lineno">  238</span>  {</div>
-<div class="line"><span class="lineno">  239</span>    <a class="code hl_variable" href="classTileViewState.html#a0705c5be8659166ede2b591bf1c4c3c2">state</a> = <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842facb0e11734f1bbe827dfb4f08117485e8">LOADED</a>;</div>
-<div class="line"><span class="lineno">  240</span>  }</div>
-<div class="line"><span class="lineno">  241</span> </div>
-<div class="line"><span class="lineno">  242</span>  <a class="code hl_variable" href="classTileViewState.html#a16f233f55d9d36d5e28311eca59c7455">queue</a>.reset();</div>
-<div class="line"><span class="lineno">  243</span>  <a class="code hl_variable" href="classTileViewState.html#a2043a48ef98f6873352250eb31a8b43d">weakQueue</a>.reset();</div>
-<div class="line"><span class="lineno">  244</span>  <a class="code hl_variable" href="classTileViewState.html#a4c83ba16f6f5a0b3df38a39ecb95e449">lifeTimeManager</a>.reset();</div>
-<div class="line"><span class="lineno">  245</span>  <a class="code hl_variable" href="classTileViewState.html#a701f3a8c289eed9861b45e612a7151b8">baseCache</a>.reset();</div>
-<div class="line"><span class="lineno">  246</span>  <a class="code hl_variable" href="classTileViewState.html#adf6cc97b7f1eb08245bcf8e748d2c84f">zoomCache</a>.reset();</div>
-<div class="line"><span class="lineno">  247</span> </div>
-<div class="line"><span class="lineno">  248</span>  <a class="code hl_function" href="classTileViewState.html#ad24f5d685c8474a955e26aeb1f3c4cb1">kick</a>();</div>
-<div class="line"><span class="lineno">  249</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  232</span>{</div>
+<div class="line"><span class="lineno">  233</span>  boost::mutex::scoped_lock <span class="keyword">const</span> <a class="code hl_variable" href="compression-tests_8cc.html#a3057df7a0035a1af3bf57cda7cf76d09">l</a>(<a class="code hl_variable" href="classTileViewState.html#a014ff1109dbf338052bec8179512bfcc">mut</a>);</div>
+<div class="line"><span class="lineno">  234</span> </div>
+<div class="line"><span class="lineno">  235</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="classTileViewState.html#a0705c5be8659166ede2b591bf1c4c3c2">state</a> &gt;= <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842facb0e11734f1bbe827dfb4f08117485e8">LOADED</a>)</div>
+<div class="line"><span class="lineno">  236</span>  {</div>
+<div class="line"><span class="lineno">  237</span>    <a class="code hl_variable" href="classTileViewState.html#a0705c5be8659166ede2b591bf1c4c3c2">state</a> = <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842facb0e11734f1bbe827dfb4f08117485e8">LOADED</a>;</div>
+<div class="line"><span class="lineno">  238</span>  }</div>
+<div class="line"><span class="lineno">  239</span> </div>
+<div class="line"><span class="lineno">  240</span>  <a class="code hl_variable" href="classTileViewState.html#a16f233f55d9d36d5e28311eca59c7455">queue</a>.reset();</div>
+<div class="line"><span class="lineno">  241</span>  <a class="code hl_variable" href="classTileViewState.html#a2043a48ef98f6873352250eb31a8b43d">weakQueue</a>.reset();</div>
+<div class="line"><span class="lineno">  242</span>  <a class="code hl_variable" href="classTileViewState.html#a4c83ba16f6f5a0b3df38a39ecb95e449">lifeTimeManager</a>.reset();</div>
+<div class="line"><span class="lineno">  243</span>  <a class="code hl_variable" href="classTileViewState.html#a701f3a8c289eed9861b45e612a7151b8">baseCache</a>.reset();</div>
+<div class="line"><span class="lineno">  244</span>  <a class="code hl_variable" href="classTileViewState.html#adf6cc97b7f1eb08245bcf8e748d2c84f">zoomCache</a>.reset();</div>
+<div class="line"><span class="lineno">  245</span> </div>
+<div class="line"><span class="lineno">  246</span>  <a class="code hl_function" href="classTileViewState.html#ad24f5d685c8474a955e26aeb1f3c4cb1">kick</a>();</div>
+<div class="line"><span class="lineno">  247</span>}</div>
 <div class="ttc" id="aclassTileViewState_html_a014ff1109dbf338052bec8179512bfcc"><div class="ttname"><a href="classTileViewState.html#a014ff1109dbf338052bec8179512bfcc">TileViewState::mut</a></div><div class="ttdeci">boost::mutex mut</div><div class="ttdef"><b>Definition</b> tileviewstate.hh:45</div></div>
 <div class="ttc" id="aclassTileViewState_html_a0705c5be8659166ede2b591bf1c4c3c2"><div class="ttname"><a href="classTileViewState.html#a0705c5be8659166ede2b591bf1c4c3c2">TileViewState::state</a></div><div class="ttdeci">State state</div><div class="ttdef"><b>Definition</b> tileviewstate.hh:46</div></div>
 <div class="ttc" id="aclassTileViewState_html_a16f233f55d9d36d5e28311eca59c7455"><div class="ttname"><a href="classTileViewState.html#a16f233f55d9d36d5e28311eca59c7455">TileViewState::queue</a></div><div class="ttdeci">ThreadPool::Queue::Ptr queue</div><div class="ttdef"><b>Definition</b> tileviewstate.hh:48</div></div>
@@ -683,18 +683,18 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  193</span>{</div>
-<div class="line"><span class="lineno">  194</span>  <a class="code hl_typedef" href="namespaceScroom_1_1Utils.html#a7831a6b14da4ae303170e6607f29e6b9">Scroom::Utils::Stuff</a> <span class="keyword">const</span> baseCache_ = lo_-&gt;cache(tile_);</div>
-<div class="line"><span class="lineno">  195</span> </div>
-<div class="line"><span class="lineno">  196</span>  boost::mutex::scoped_lock <span class="keyword">const</span> <a class="code hl_variable" href="compression-tests_8cc.html#a3057df7a0035a1af3bf57cda7cf76d09">l</a>(<a class="code hl_variable" href="classTileViewState.html#a014ff1109dbf338052bec8179512bfcc">mut</a>);</div>
-<div class="line"><span class="lineno">  197</span>  <a class="code hl_typedef" href="classTiledBitmapViewData.html#a9c5e86186b7042c70f208f33dab517d0">TiledBitmapViewData::Ptr</a> <span class="keyword">const</span> tbvd_ = <a class="code hl_variable" href="classTileViewState.html#a10756136e2f2f2e4621885012cb09c96">tbvd</a>.lock();</div>
-<div class="line"><span class="lineno">  198</span> </div>
-<div class="line"><span class="lineno">  199</span>  <span class="keywordflow">if</span>(tbvd_ &amp;&amp; <a class="code hl_variable" href="classTileViewState.html#a29b0becb1c1c438a908679ce9258db48">desiredState</a> &gt;= <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842fa588c8eeac5b132c802b90d7639398b9e">BASE_COMPUTED</a> &amp;&amp; <a class="code hl_variable" href="classTileViewState.html#a2043a48ef98f6873352250eb31a8b43d">weakQueue</a> == wq)</div>
-<div class="line"><span class="lineno">  200</span>  {</div>
-<div class="line"><span class="lineno">  201</span>    <a class="code hl_variable" href="classTileViewState.html#a701f3a8c289eed9861b45e612a7151b8">baseCache</a> = baseCache_;</div>
-<div class="line"><span class="lineno">  202</span>    <a class="code hl_variable" href="classTileViewState.html#a0705c5be8659166ede2b591bf1c4c3c2">state</a> = <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842fa588c8eeac5b132c802b90d7639398b9e">BASE_COMPUTED</a>;</div>
-<div class="line"><span class="lineno">  203</span>  }</div>
-<div class="line"><span class="lineno">  204</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  191</span>{</div>
+<div class="line"><span class="lineno">  192</span>  <a class="code hl_typedef" href="namespaceScroom_1_1Utils.html#a7831a6b14da4ae303170e6607f29e6b9">Scroom::Utils::Stuff</a> <span class="keyword">const</span> baseCache_ = lo_-&gt;cache(tile_);</div>
+<div class="line"><span class="lineno">  193</span> </div>
+<div class="line"><span class="lineno">  194</span>  boost::mutex::scoped_lock <span class="keyword">const</span> <a class="code hl_variable" href="compression-tests_8cc.html#a3057df7a0035a1af3bf57cda7cf76d09">l</a>(<a class="code hl_variable" href="classTileViewState.html#a014ff1109dbf338052bec8179512bfcc">mut</a>);</div>
+<div class="line"><span class="lineno">  195</span>  <a class="code hl_typedef" href="classTiledBitmapViewData.html#a9c5e86186b7042c70f208f33dab517d0">TiledBitmapViewData::Ptr</a> <span class="keyword">const</span> tbvd_ = <a class="code hl_variable" href="classTileViewState.html#a10756136e2f2f2e4621885012cb09c96">tbvd</a>.lock();</div>
+<div class="line"><span class="lineno">  196</span> </div>
+<div class="line"><span class="lineno">  197</span>  <span class="keywordflow">if</span>(tbvd_ &amp;&amp; <a class="code hl_variable" href="classTileViewState.html#a29b0becb1c1c438a908679ce9258db48">desiredState</a> &gt;= <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842fa588c8eeac5b132c802b90d7639398b9e">BASE_COMPUTED</a> &amp;&amp; <a class="code hl_variable" href="classTileViewState.html#a2043a48ef98f6873352250eb31a8b43d">weakQueue</a> == wq)</div>
+<div class="line"><span class="lineno">  198</span>  {</div>
+<div class="line"><span class="lineno">  199</span>    <a class="code hl_variable" href="classTileViewState.html#a701f3a8c289eed9861b45e612a7151b8">baseCache</a> = baseCache_;</div>
+<div class="line"><span class="lineno">  200</span>    <a class="code hl_variable" href="classTileViewState.html#a0705c5be8659166ede2b591bf1c4c3c2">state</a> = <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842fa588c8eeac5b132c802b90d7639398b9e">BASE_COMPUTED</a>;</div>
+<div class="line"><span class="lineno">  201</span>  }</div>
+<div class="line"><span class="lineno">  202</span>}</div>
 <div class="ttc" id="aclassTileViewState_html_a10756136e2f2f2e4621885012cb09c96"><div class="ttname"><a href="classTileViewState.html#a10756136e2f2f2e4621885012cb09c96">TileViewState::tbvd</a></div><div class="ttdeci">std::weak_ptr&lt; TiledBitmapViewData &gt; tbvd</div><div class="ttdef"><b>Definition</b> tileviewstate.hh:52</div></div>
 <div class="ttc" id="aclassTileViewState_html_a29b0becb1c1c438a908679ce9258db48"><div class="ttname"><a href="classTileViewState.html#a29b0becb1c1c438a908679ce9258db48">TileViewState::desiredState</a></div><div class="ttdeci">State desiredState</div><div class="ttdef"><b>Definition</b> tileviewstate.hh:47</div></div>
 <div class="ttc" id="aclassTiledBitmapViewData_html_a9c5e86186b7042c70f208f33dab517d0"><div class="ttname"><a href="classTiledBitmapViewData.html#a9c5e86186b7042c70f208f33dab517d0">TiledBitmapViewData::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; TiledBitmapViewData &gt; Ptr</div><div class="ttdef"><b>Definition</b> tiledbitmapviewdata.hh:25</div></div>
@@ -753,17 +753,17 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  213</span>{</div>
-<div class="line"><span class="lineno">  214</span>  <a class="code hl_typedef" href="namespaceScroom_1_1Utils.html#a7831a6b14da4ae303170e6607f29e6b9">Scroom::Utils::Stuff</a> <span class="keyword">const</span> zoomCache_ = lo_-&gt;cacheZoom(tile_, zoom_, baseCache_);</div>
-<div class="line"><span class="lineno">  215</span> </div>
-<div class="line"><span class="lineno">  216</span>  boost::mutex::scoped_lock <span class="keyword">const</span> <a class="code hl_variable" href="compression-tests_8cc.html#a3057df7a0035a1af3bf57cda7cf76d09">l</a>(<a class="code hl_variable" href="classTileViewState.html#a014ff1109dbf338052bec8179512bfcc">mut</a>);</div>
-<div class="line"><span class="lineno">  217</span>  <a class="code hl_typedef" href="classTiledBitmapViewData.html#a9c5e86186b7042c70f208f33dab517d0">TiledBitmapViewData::Ptr</a> <span class="keyword">const</span> tbvd_ = <a class="code hl_variable" href="classTileViewState.html#a10756136e2f2f2e4621885012cb09c96">tbvd</a>.lock();</div>
-<div class="line"><span class="lineno">  218</span>  <span class="keywordflow">if</span>(tbvd_ &amp;&amp; <a class="code hl_variable" href="classTileViewState.html#a29b0becb1c1c438a908679ce9258db48">desiredState</a> &gt;= <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842fa55fe6567e4b3808995b5ab4746607ee1">ZOOM_COMPUTED</a> &amp;&amp; <a class="code hl_variable" href="classTileViewState.html#aedfe78a642c6485c33a0211bb47d9aeb">zoom</a> == zoom_ &amp;&amp; <a class="code hl_variable" href="classTileViewState.html#a2043a48ef98f6873352250eb31a8b43d">weakQueue</a> == wq)</div>
-<div class="line"><span class="lineno">  219</span>  {</div>
-<div class="line"><span class="lineno">  220</span>    <a class="code hl_variable" href="classTileViewState.html#adf6cc97b7f1eb08245bcf8e748d2c84f">zoomCache</a> = zoomCache_;</div>
-<div class="line"><span class="lineno">  221</span>    <a class="code hl_variable" href="classTileViewState.html#a0705c5be8659166ede2b591bf1c4c3c2">state</a> = <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842fa55fe6567e4b3808995b5ab4746607ee1">ZOOM_COMPUTED</a>;</div>
-<div class="line"><span class="lineno">  222</span>  }</div>
-<div class="line"><span class="lineno">  223</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  211</span>{</div>
+<div class="line"><span class="lineno">  212</span>  <a class="code hl_typedef" href="namespaceScroom_1_1Utils.html#a7831a6b14da4ae303170e6607f29e6b9">Scroom::Utils::Stuff</a> <span class="keyword">const</span> zoomCache_ = lo_-&gt;cacheZoom(tile_, zoom_, baseCache_);</div>
+<div class="line"><span class="lineno">  213</span> </div>
+<div class="line"><span class="lineno">  214</span>  boost::mutex::scoped_lock <span class="keyword">const</span> <a class="code hl_variable" href="compression-tests_8cc.html#a3057df7a0035a1af3bf57cda7cf76d09">l</a>(<a class="code hl_variable" href="classTileViewState.html#a014ff1109dbf338052bec8179512bfcc">mut</a>);</div>
+<div class="line"><span class="lineno">  215</span>  <a class="code hl_typedef" href="classTiledBitmapViewData.html#a9c5e86186b7042c70f208f33dab517d0">TiledBitmapViewData::Ptr</a> <span class="keyword">const</span> tbvd_ = <a class="code hl_variable" href="classTileViewState.html#a10756136e2f2f2e4621885012cb09c96">tbvd</a>.lock();</div>
+<div class="line"><span class="lineno">  216</span>  <span class="keywordflow">if</span>(tbvd_ &amp;&amp; <a class="code hl_variable" href="classTileViewState.html#a29b0becb1c1c438a908679ce9258db48">desiredState</a> &gt;= <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842fa55fe6567e4b3808995b5ab4746607ee1">ZOOM_COMPUTED</a> &amp;&amp; <a class="code hl_variable" href="classTileViewState.html#aedfe78a642c6485c33a0211bb47d9aeb">zoom</a> == zoom_ &amp;&amp; <a class="code hl_variable" href="classTileViewState.html#a2043a48ef98f6873352250eb31a8b43d">weakQueue</a> == wq)</div>
+<div class="line"><span class="lineno">  217</span>  {</div>
+<div class="line"><span class="lineno">  218</span>    <a class="code hl_variable" href="classTileViewState.html#adf6cc97b7f1eb08245bcf8e748d2c84f">zoomCache</a> = zoomCache_;</div>
+<div class="line"><span class="lineno">  219</span>    <a class="code hl_variable" href="classTileViewState.html#a0705c5be8659166ede2b591bf1c4c3c2">state</a> = <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842fa55fe6567e4b3808995b5ab4746607ee1">ZOOM_COMPUTED</a>;</div>
+<div class="line"><span class="lineno">  220</span>  }</div>
+<div class="line"><span class="lineno">  221</span>}</div>
 <div class="ttc" id="aclassTileViewState_html_aedfe78a642c6485c33a0211bb47d9aeb"><div class="ttname"><a href="classTileViewState.html#aedfe78a642c6485c33a0211bb47d9aeb">TileViewState::zoom</a></div><div class="ttdeci">int zoom</div><div class="ttdef"><b>Definition</b> tileviewstate.hh:54</div></div>
 </div><!-- fragment -->
 </div>
@@ -792,15 +792,15 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   27</span>{</div>
-<div class="line"><span class="lineno">   28</span>  <a class="code hl_typedef" href="classTileViewState.html#a96e10104027d59ed19c7371779a0150e">TileViewState::Ptr</a> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>(<span class="keyword">new</span> <a class="code hl_class" href="classTileViewState.html">TileViewState</a>(<a class="code hl_variable" href="classTileViewState.html#aba757e6de54fcd9c0f0958f08660d4ee">parent</a>));</div>
+<div class="line"><span class="lineno">   28</span>  <a class="code hl_typedef" href="classTileViewState.html#a96e10104027d59ed19c7371779a0150e">TileViewState::Ptr</a> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>(<span class="keyword">new</span> <a class="code hl_class" href="classTileViewState.html">TileViewState</a>(<a class="code hl_variable" href="classTileViewState.html#aba757e6de54fcd9c0f0958f08660d4ee">parent</a>));</div>
 <div class="line"><span class="lineno">   29</span> </div>
-<div class="line"><span class="lineno">   30</span>  <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>-&gt;r = <a class="code hl_variable" href="classTileViewState.html#aba757e6de54fcd9c0f0958f08660d4ee">parent</a>-&gt;registerObserver(<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>);</div>
+<div class="line"><span class="lineno">   30</span>  <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>-&gt;r = <a class="code hl_variable" href="classTileViewState.html#aba757e6de54fcd9c0f0958f08660d4ee">parent</a>-&gt;registerObserver(<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>);</div>
 <div class="line"><span class="lineno">   31</span> </div>
-<div class="line"><span class="lineno">   32</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">   32</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">   33</span>}</div>
 <div class="ttc" id="aclassTileViewState_html"><div class="ttname"><a href="classTileViewState.html">TileViewState</a></div><div class="ttdef"><b>Definition</b> tileviewstate.hh:27</div></div>
 <div class="ttc" id="aclassTileViewState_html_a96e10104027d59ed19c7371779a0150e"><div class="ttname"><a href="classTileViewState.html#a96e10104027d59ed19c7371779a0150e">TileViewState::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; TileViewState &gt; Ptr</div><div class="ttdef"><b>Definition</b> tileviewstate.hh:29</div></div>
-<div class="ttc" id="asampleiterator-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">SampleIterator&lt; const uint8_t &gt; result</div><div class="ttdef"><b>Definition</b> sampleiterator-tests.cc:94</div></div>
+<div class="ttc" id="aringbuffer-sink-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">auto result</div><div class="ttdef"><b>Definition</b> ringbuffer-sink-tests.cc:76</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classCompressedTile.html#a9a3305cbab3738c644239cc4ff2f040b">CompressedTile::getViewState()</a>.</p>
 <div class="dynheader">
@@ -873,11 +873,9 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  122</span>    <a class="code hl_variable" href="classTileViewState.html#a16f233f55d9d36d5e28311eca59c7455">queue</a> = <a class="code hl_function" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ac3d3ac1d5d45d2795778a63a45470be5">ThreadPool::Queue::createAsync</a>();</div>
 <div class="line"><span class="lineno">  123</span>    <a class="code hl_variable" href="classTileViewState.html#a2043a48ef98f6873352250eb31a8b43d">weakQueue</a> = <a class="code hl_variable" href="classTileViewState.html#a16f233f55d9d36d5e28311eca59c7455">queue</a>-&gt;getWeak();</div>
 <div class="line"><span class="lineno">  124</span> </div>
-<div class="line"><span class="lineno">  125</span>    <a class="code hl_variable" href="classTileViewState.html#a47af900d05c60870942f3c852c59f88d">cpuBound</a>-&gt;schedule(</div>
-<div class="line"><span class="lineno">  126</span>      [me = shared_from_this&lt;TileViewState&gt;(), <a class="code hl_variable" href="classTileViewState.html#a2043a48ef98f6873352250eb31a8b43d">weakQueue</a> = <a class="code hl_variable" href="classTileViewState.html#a2043a48ef98f6873352250eb31a8b43d">weakQueue</a>] { me-&gt;process(<a class="code hl_variable" href="classTileViewState.html#a2043a48ef98f6873352250eb31a8b43d">weakQueue</a>); }, <a class="code hl_define" href="local_8hh.html#aaa596031f81e74e8c57c9af7778907b7">LOAD_PRIO</a>, <a class="code hl_variable" href="classTileViewState.html#a16f233f55d9d36d5e28311eca59c7455">queue</a></div>
-<div class="line"><span class="lineno">  127</span>    );</div>
-<div class="line"><span class="lineno">  128</span>  }</div>
-<div class="line"><span class="lineno">  129</span>}</div>
+<div class="line"><span class="lineno">  125</span>    <a class="code hl_variable" href="classTileViewState.html#a47af900d05c60870942f3c852c59f88d">cpuBound</a>-&gt;post([me = shared_from_this&lt;TileViewState&gt;(), <a class="code hl_variable" href="classTileViewState.html#a2043a48ef98f6873352250eb31a8b43d">weakQueue</a> = <a class="code hl_variable" href="classTileViewState.html#a2043a48ef98f6873352250eb31a8b43d">weakQueue</a>] { me-&gt;process(<a class="code hl_variable" href="classTileViewState.html#a2043a48ef98f6873352250eb31a8b43d">weakQueue</a>); }, <a class="code hl_define" href="local_8hh.html#aaa596031f81e74e8c57c9af7778907b7">LOAD_PRIO</a>, <a class="code hl_variable" href="classTileViewState.html#a16f233f55d9d36d5e28311eca59c7455">queue</a>);</div>
+<div class="line"><span class="lineno">  126</span>  }</div>
+<div class="line"><span class="lineno">  127</span>}</div>
 <div class="ttc" id="aassertions_8hh_html_a2679784148a3d02d3f8ffd6ec2ae80f4"><div class="ttname"><a href="assertions_8hh.html#a2679784148a3d02d3f8ffd6ec2ae80f4">defect_message</a></div><div class="ttdeci">#define defect_message(m)</div><div class="ttdef"><b>Definition</b> assertions.hh:49</div></div>
 <div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Queue_html_ac3d3ac1d5d45d2795778a63a45470be5"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ac3d3ac1d5d45d2795778a63a45470be5">Scroom::Detail::ThreadPool::Queue::createAsync</a></div><div class="ttdeci">static Ptr createAsync()</div><div class="ttdef"><b>Definition</b> threadpool.cc:368</div></div>
 <div class="ttc" id="aclassTileViewState_html_a6ed489ad4c3346c14fd15d3ff46924a4"><div class="ttname"><a href="classTileViewState.html#a6ed489ad4c3346c14fd15d3ff46924a4">TileViewState::tile</a></div><div class="ttdeci">ConstTile::Ptr tile</div><div class="ttdef"><b>Definition</b> tileviewstate.hh:51</div></div>
@@ -991,61 +989,61 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 <p>Asynchronously do work to make the state machine progress </p>
-<div class="fragment"><div class="line"><span class="lineno">  132</span>{</div>
-<div class="line"><span class="lineno">  133</span>  <span class="keywordflow">for</span>(;;)</div>
-<div class="line"><span class="lineno">  134</span>  {</div>
-<div class="line"><span class="lineno">  135</span>    boost::mutex::scoped_lock <a class="code hl_variable" href="compression-tests_8cc.html#a3057df7a0035a1af3bf57cda7cf76d09">l</a>(<a class="code hl_variable" href="classTileViewState.html#a014ff1109dbf338052bec8179512bfcc">mut</a>);</div>
-<div class="line"><span class="lineno">  136</span> </div>
-<div class="line"><span class="lineno">  137</span>    <span class="keywordflow">if</span>(wq == <a class="code hl_variable" href="classTileViewState.html#a2043a48ef98f6873352250eb31a8b43d">weakQueue</a> &amp;&amp; <a class="code hl_variable" href="classTileViewState.html#a0705c5be8659166ede2b591bf1c4c3c2">state</a> &lt; <a class="code hl_variable" href="classTileViewState.html#a29b0becb1c1c438a908679ce9258db48">desiredState</a>)</div>
-<div class="line"><span class="lineno">  138</span>    {</div>
-<div class="line"><span class="lineno">  139</span>      boost::function&lt;<a class="code hl_function" href="function-additor-tests_8cc.html#a171d6ee6f5e4a249111a7ca7c7108209">void</a>()&gt; fn;</div>
-<div class="line"><span class="lineno">  140</span> </div>
-<div class="line"><span class="lineno">  141</span>      <span class="keywordflow">switch</span>(<a class="code hl_variable" href="classTileViewState.html#a0705c5be8659166ede2b591bf1c4c3c2">state</a>)</div>
-<div class="line"><span class="lineno">  142</span>      {</div>
-<div class="line"><span class="lineno">  143</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842facb0e11734f1bbe827dfb4f08117485e8">LOADED</a>:</div>
-<div class="line"><span class="lineno">  144</span>        fn = [me = shared_from_this&lt;TileViewState&gt;(), wq, <a class="code hl_variable" href="classTileViewState.html#a6ed489ad4c3346c14fd15d3ff46924a4">tile</a> = <a class="code hl_variable" href="classTileViewState.html#a6ed489ad4c3346c14fd15d3ff46924a4">tile</a>, <a class="code hl_variable" href="classTileViewState.html#aebe3c10c40e343a2df076a126626a464">lo</a> = <a class="code hl_variable" href="classTileViewState.html#aebe3c10c40e343a2df076a126626a464">lo</a>] { me-&gt;computeBase(wq, <a class="code hl_variable" href="classTileViewState.html#a6ed489ad4c3346c14fd15d3ff46924a4">tile</a>, <a class="code hl_variable" href="classTileViewState.html#aebe3c10c40e343a2df076a126626a464">lo</a>); };</div>
-<div class="line"><span class="lineno">  145</span>        <a class="code hl_variable" href="classTileViewState.html#a0705c5be8659166ede2b591bf1c4c3c2">state</a> = <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842fae3bba76a5fdeb7f7704d3fba5d4200b3">COMPUTING_BASE</a>;</div>
-<div class="line"><span class="lineno">  146</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  147</span> </div>
-<div class="line"><span class="lineno">  148</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842fa588c8eeac5b132c802b90d7639398b9e">BASE_COMPUTED</a>:</div>
-<div class="line"><span class="lineno">  149</span>        fn = [me = shared_from_this&lt;TileViewState&gt;(), wq, <a class="code hl_variable" href="classTileViewState.html#a6ed489ad4c3346c14fd15d3ff46924a4">tile</a> = <a class="code hl_variable" href="classTileViewState.html#a6ed489ad4c3346c14fd15d3ff46924a4">tile</a>, <a class="code hl_variable" href="classTileViewState.html#aebe3c10c40e343a2df076a126626a464">lo</a> = <a class="code hl_variable" href="classTileViewState.html#aebe3c10c40e343a2df076a126626a464">lo</a>, <a class="code hl_variable" href="classTileViewState.html#a701f3a8c289eed9861b45e612a7151b8">baseCache</a> = <a class="code hl_variable" href="classTileViewState.html#a701f3a8c289eed9861b45e612a7151b8">baseCache</a>, <a class="code hl_variable" href="classTileViewState.html#aedfe78a642c6485c33a0211bb47d9aeb">zoom</a> = <a class="code hl_variable" href="classTileViewState.html#aedfe78a642c6485c33a0211bb47d9aeb">zoom</a>]</div>
-<div class="line"><span class="lineno">  150</span>        { me-&gt;computeZoom(wq, <a class="code hl_variable" href="classTileViewState.html#a6ed489ad4c3346c14fd15d3ff46924a4">tile</a>, <a class="code hl_variable" href="classTileViewState.html#aebe3c10c40e343a2df076a126626a464">lo</a>, <a class="code hl_variable" href="classTileViewState.html#a701f3a8c289eed9861b45e612a7151b8">baseCache</a>, <a class="code hl_variable" href="classTileViewState.html#aedfe78a642c6485c33a0211bb47d9aeb">zoom</a>); };</div>
-<div class="line"><span class="lineno">  151</span>        <a class="code hl_variable" href="classTileViewState.html#a0705c5be8659166ede2b591bf1c4c3c2">state</a> = <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842faf523ee5470d5a478616fae0a915b8083">COMPUTING_ZOOM</a>;</div>
-<div class="line"><span class="lineno">  152</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  153</span> </div>
-<div class="line"><span class="lineno">  154</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842fa55fe6567e4b3808995b5ab4746607ee1">ZOOM_COMPUTED</a>:</div>
-<div class="line"><span class="lineno">  155</span>        <a class="code hl_variable" href="classTileViewState.html#a0705c5be8659166ede2b591bf1c4c3c2">state</a> = <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842fa8825562a5c2536d9bbfec985af74bc1d">DONE</a>;</div>
-<div class="line"><span class="lineno">  156</span>        fn = [me = shared_from_this&lt;TileViewState&gt;(), wq, <a class="code hl_variable" href="classTileViewState.html#a6ed489ad4c3346c14fd15d3ff46924a4">tile</a> = <a class="code hl_variable" href="classTileViewState.html#a6ed489ad4c3346c14fd15d3ff46924a4">tile</a>] { me-&gt;reportDone(wq, <a class="code hl_variable" href="classTileViewState.html#a6ed489ad4c3346c14fd15d3ff46924a4">tile</a>); };</div>
-<div class="line"><span class="lineno">  157</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  158</span> </div>
-<div class="line"><span class="lineno">  159</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842fa1d647ad9c158d585079470a6bc769b66">INIT</a>:</div>
-<div class="line"><span class="lineno">  160</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842fae3bba76a5fdeb7f7704d3fba5d4200b3">COMPUTING_BASE</a>:</div>
-<div class="line"><span class="lineno">  161</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842faf523ee5470d5a478616fae0a915b8083">COMPUTING_ZOOM</a>:</div>
-<div class="line"><span class="lineno">  162</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842fa8825562a5c2536d9bbfec985af74bc1d">DONE</a>:</div>
-<div class="line"><span class="lineno">  163</span>      <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">  164</span>        <a class="code hl_define" href="assertions_8hh.html#a2679784148a3d02d3f8ffd6ec2ae80f4">defect_message</a>(fmt::format(<span class="stringliteral">&quot;PANIC: Don&#39;t know what to do in state {}&quot;</span>, <a class="code hl_variable" href="classTileViewState.html#a0705c5be8659166ede2b591bf1c4c3c2">state</a>));</div>
-<div class="line"><span class="lineno">  165</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  166</span>      }</div>
-<div class="line"><span class="lineno">  167</span> </div>
-<div class="line"><span class="lineno">  168</span>      <a class="code hl_variable" href="compression-tests_8cc.html#a3057df7a0035a1af3bf57cda7cf76d09">l</a>.unlock();</div>
-<div class="line"><span class="lineno">  169</span>      fn();</div>
-<div class="line"><span class="lineno">  170</span>    }</div>
-<div class="line"><span class="lineno">  171</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  172</span>    {</div>
-<div class="line"><span class="lineno">  173</span>      <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  174</span>    }</div>
-<div class="line"><span class="lineno">  175</span>  }</div>
-<div class="line"><span class="lineno">  176</span> </div>
-<div class="line"><span class="lineno">  177</span>  {</div>
-<div class="line"><span class="lineno">  178</span>    boost::mutex::scoped_lock <span class="keyword">const</span> <a class="code hl_variable" href="compression-tests_8cc.html#a3057df7a0035a1af3bf57cda7cf76d09">l</a>(<a class="code hl_variable" href="classTileViewState.html#a014ff1109dbf338052bec8179512bfcc">mut</a>);</div>
-<div class="line"><span class="lineno">  179</span> </div>
-<div class="line"><span class="lineno">  180</span>    <span class="keywordflow">if</span>(wq == <a class="code hl_variable" href="classTileViewState.html#a2043a48ef98f6873352250eb31a8b43d">weakQueue</a>)</div>
-<div class="line"><span class="lineno">  181</span>    {</div>
-<div class="line"><span class="lineno">  182</span>      <a class="code hl_variable" href="classTileViewState.html#a16f233f55d9d36d5e28311eca59c7455">queue</a>.reset();</div>
-<div class="line"><span class="lineno">  183</span>      <a class="code hl_variable" href="classTileViewState.html#a2043a48ef98f6873352250eb31a8b43d">weakQueue</a>.reset();</div>
-<div class="line"><span class="lineno">  184</span>    }</div>
-<div class="line"><span class="lineno">  185</span>  }</div>
-<div class="line"><span class="lineno">  186</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  130</span>{</div>
+<div class="line"><span class="lineno">  131</span>  <span class="keywordflow">for</span>(;;)</div>
+<div class="line"><span class="lineno">  132</span>  {</div>
+<div class="line"><span class="lineno">  133</span>    boost::mutex::scoped_lock <a class="code hl_variable" href="compression-tests_8cc.html#a3057df7a0035a1af3bf57cda7cf76d09">l</a>(<a class="code hl_variable" href="classTileViewState.html#a014ff1109dbf338052bec8179512bfcc">mut</a>);</div>
+<div class="line"><span class="lineno">  134</span> </div>
+<div class="line"><span class="lineno">  135</span>    <span class="keywordflow">if</span>(wq == <a class="code hl_variable" href="classTileViewState.html#a2043a48ef98f6873352250eb31a8b43d">weakQueue</a> &amp;&amp; <a class="code hl_variable" href="classTileViewState.html#a0705c5be8659166ede2b591bf1c4c3c2">state</a> &lt; <a class="code hl_variable" href="classTileViewState.html#a29b0becb1c1c438a908679ce9258db48">desiredState</a>)</div>
+<div class="line"><span class="lineno">  136</span>    {</div>
+<div class="line"><span class="lineno">  137</span>      boost::function&lt;<a class="code hl_function" href="function-additor-tests_8cc.html#a171d6ee6f5e4a249111a7ca7c7108209">void</a>()&gt; fn;</div>
+<div class="line"><span class="lineno">  138</span> </div>
+<div class="line"><span class="lineno">  139</span>      <span class="keywordflow">switch</span>(<a class="code hl_variable" href="classTileViewState.html#a0705c5be8659166ede2b591bf1c4c3c2">state</a>)</div>
+<div class="line"><span class="lineno">  140</span>      {</div>
+<div class="line"><span class="lineno">  141</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842facb0e11734f1bbe827dfb4f08117485e8">LOADED</a>:</div>
+<div class="line"><span class="lineno">  142</span>        fn = [me = shared_from_this&lt;TileViewState&gt;(), wq, <a class="code hl_variable" href="classTileViewState.html#a6ed489ad4c3346c14fd15d3ff46924a4">tile</a> = <a class="code hl_variable" href="classTileViewState.html#a6ed489ad4c3346c14fd15d3ff46924a4">tile</a>, <a class="code hl_variable" href="classTileViewState.html#aebe3c10c40e343a2df076a126626a464">lo</a> = <a class="code hl_variable" href="classTileViewState.html#aebe3c10c40e343a2df076a126626a464">lo</a>] { me-&gt;computeBase(wq, <a class="code hl_variable" href="classTileViewState.html#a6ed489ad4c3346c14fd15d3ff46924a4">tile</a>, <a class="code hl_variable" href="classTileViewState.html#aebe3c10c40e343a2df076a126626a464">lo</a>); };</div>
+<div class="line"><span class="lineno">  143</span>        <a class="code hl_variable" href="classTileViewState.html#a0705c5be8659166ede2b591bf1c4c3c2">state</a> = <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842fae3bba76a5fdeb7f7704d3fba5d4200b3">COMPUTING_BASE</a>;</div>
+<div class="line"><span class="lineno">  144</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  145</span> </div>
+<div class="line"><span class="lineno">  146</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842fa588c8eeac5b132c802b90d7639398b9e">BASE_COMPUTED</a>:</div>
+<div class="line"><span class="lineno">  147</span>        fn = [me = shared_from_this&lt;TileViewState&gt;(), wq, <a class="code hl_variable" href="classTileViewState.html#a6ed489ad4c3346c14fd15d3ff46924a4">tile</a> = <a class="code hl_variable" href="classTileViewState.html#a6ed489ad4c3346c14fd15d3ff46924a4">tile</a>, <a class="code hl_variable" href="classTileViewState.html#aebe3c10c40e343a2df076a126626a464">lo</a> = <a class="code hl_variable" href="classTileViewState.html#aebe3c10c40e343a2df076a126626a464">lo</a>, <a class="code hl_variable" href="classTileViewState.html#a701f3a8c289eed9861b45e612a7151b8">baseCache</a> = <a class="code hl_variable" href="classTileViewState.html#a701f3a8c289eed9861b45e612a7151b8">baseCache</a>, <a class="code hl_variable" href="classTileViewState.html#aedfe78a642c6485c33a0211bb47d9aeb">zoom</a> = <a class="code hl_variable" href="classTileViewState.html#aedfe78a642c6485c33a0211bb47d9aeb">zoom</a>]</div>
+<div class="line"><span class="lineno">  148</span>        { me-&gt;computeZoom(wq, <a class="code hl_variable" href="classTileViewState.html#a6ed489ad4c3346c14fd15d3ff46924a4">tile</a>, <a class="code hl_variable" href="classTileViewState.html#aebe3c10c40e343a2df076a126626a464">lo</a>, <a class="code hl_variable" href="classTileViewState.html#a701f3a8c289eed9861b45e612a7151b8">baseCache</a>, <a class="code hl_variable" href="classTileViewState.html#aedfe78a642c6485c33a0211bb47d9aeb">zoom</a>); };</div>
+<div class="line"><span class="lineno">  149</span>        <a class="code hl_variable" href="classTileViewState.html#a0705c5be8659166ede2b591bf1c4c3c2">state</a> = <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842faf523ee5470d5a478616fae0a915b8083">COMPUTING_ZOOM</a>;</div>
+<div class="line"><span class="lineno">  150</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  151</span> </div>
+<div class="line"><span class="lineno">  152</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842fa55fe6567e4b3808995b5ab4746607ee1">ZOOM_COMPUTED</a>:</div>
+<div class="line"><span class="lineno">  153</span>        <a class="code hl_variable" href="classTileViewState.html#a0705c5be8659166ede2b591bf1c4c3c2">state</a> = <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842fa8825562a5c2536d9bbfec985af74bc1d">DONE</a>;</div>
+<div class="line"><span class="lineno">  154</span>        fn = [me = shared_from_this&lt;TileViewState&gt;(), wq, <a class="code hl_variable" href="classTileViewState.html#a6ed489ad4c3346c14fd15d3ff46924a4">tile</a> = <a class="code hl_variable" href="classTileViewState.html#a6ed489ad4c3346c14fd15d3ff46924a4">tile</a>] { me-&gt;reportDone(wq, <a class="code hl_variable" href="classTileViewState.html#a6ed489ad4c3346c14fd15d3ff46924a4">tile</a>); };</div>
+<div class="line"><span class="lineno">  155</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  156</span> </div>
+<div class="line"><span class="lineno">  157</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842fa1d647ad9c158d585079470a6bc769b66">INIT</a>:</div>
+<div class="line"><span class="lineno">  158</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842fae3bba76a5fdeb7f7704d3fba5d4200b3">COMPUTING_BASE</a>:</div>
+<div class="line"><span class="lineno">  159</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842faf523ee5470d5a478616fae0a915b8083">COMPUTING_ZOOM</a>:</div>
+<div class="line"><span class="lineno">  160</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classTileViewState.html#a0a229ff2bb85654a101ca1842211842fa8825562a5c2536d9bbfec985af74bc1d">DONE</a>:</div>
+<div class="line"><span class="lineno">  161</span>      <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">  162</span>        <a class="code hl_define" href="assertions_8hh.html#a2679784148a3d02d3f8ffd6ec2ae80f4">defect_message</a>(fmt::format(<span class="stringliteral">&quot;PANIC: Don&#39;t know what to do in state {}&quot;</span>, <a class="code hl_variable" href="classTileViewState.html#a0705c5be8659166ede2b591bf1c4c3c2">state</a>));</div>
+<div class="line"><span class="lineno">  163</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  164</span>      }</div>
+<div class="line"><span class="lineno">  165</span> </div>
+<div class="line"><span class="lineno">  166</span>      <a class="code hl_variable" href="compression-tests_8cc.html#a3057df7a0035a1af3bf57cda7cf76d09">l</a>.unlock();</div>
+<div class="line"><span class="lineno">  167</span>      fn();</div>
+<div class="line"><span class="lineno">  168</span>    }</div>
+<div class="line"><span class="lineno">  169</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  170</span>    {</div>
+<div class="line"><span class="lineno">  171</span>      <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  172</span>    }</div>
+<div class="line"><span class="lineno">  173</span>  }</div>
+<div class="line"><span class="lineno">  174</span> </div>
+<div class="line"><span class="lineno">  175</span>  {</div>
+<div class="line"><span class="lineno">  176</span>    boost::mutex::scoped_lock <span class="keyword">const</span> <a class="code hl_variable" href="compression-tests_8cc.html#a3057df7a0035a1af3bf57cda7cf76d09">l</a>(<a class="code hl_variable" href="classTileViewState.html#a014ff1109dbf338052bec8179512bfcc">mut</a>);</div>
+<div class="line"><span class="lineno">  177</span> </div>
+<div class="line"><span class="lineno">  178</span>    <span class="keywordflow">if</span>(wq == <a class="code hl_variable" href="classTileViewState.html#a2043a48ef98f6873352250eb31a8b43d">weakQueue</a>)</div>
+<div class="line"><span class="lineno">  179</span>    {</div>
+<div class="line"><span class="lineno">  180</span>      <a class="code hl_variable" href="classTileViewState.html#a16f233f55d9d36d5e28311eca59c7455">queue</a>.reset();</div>
+<div class="line"><span class="lineno">  181</span>      <a class="code hl_variable" href="classTileViewState.html#a2043a48ef98f6873352250eb31a8b43d">weakQueue</a>.reset();</div>
+<div class="line"><span class="lineno">  182</span>    }</div>
+<div class="line"><span class="lineno">  183</span>  }</div>
+<div class="line"><span class="lineno">  184</span>}</div>
 <div class="ttc" id="aclassTileViewState_html_aebe3c10c40e343a2df076a126626a464"><div class="ttname"><a href="classTileViewState.html#aebe3c10c40e343a2df076a126626a464">TileViewState::lo</a></div><div class="ttdeci">LayerOperations::Ptr lo</div><div class="ttdef"><b>Definition</b> tileviewstate.hh:53</div></div>
 <div class="ttc" id="afunction-additor-tests_8cc_html_a171d6ee6f5e4a249111a7ca7c7108209"><div class="ttname"><a href="function-additor-tests_8cc.html#a171d6ee6f5e4a249111a7ca7c7108209">void</a></div><div class="ttdeci">() void(clear(nullptr)+(5 *clear(nullptr)) *5)</div></div>
 </div><!-- fragment --><div class="dynheader">
@@ -1094,17 +1092,17 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  226</span>{</div>
-<div class="line"><span class="lineno">  227</span>  <span class="keywordflow">for</span>(<span class="keyword">const</span> <a class="code hl_typedef" href="classTileLoadingObserver.html#a1d5060d81a57e00328bb1afa7540fda8">TileLoadingObserver::Ptr</a>&amp; <a class="code hl_variable" href="observable-tests_8cc.html#ae2e3562a094e3fab188a3f99dc2ed902">observer</a>: <a class="code hl_namespace" href="namespaceScroom.html">Scroom</a>::Utils::<a class="code hl_function" href="classScroom_1_1Utils_1_1Observable.html#a0985c831266bda7104445a9f0babee03">Observable</a>&lt;<a class="code hl_class" href="classTileLoadingObserver.html">TileLoadingObserver</a>&gt;::<a class="code hl_function" href="classScroom_1_1Utils_1_1Observable.html#ae215a3f722f5894dd8fdc1cb9b190c0e">getObservers</a>())</div>
-<div class="line"><span class="lineno">  228</span>  {</div>
-<div class="line"><span class="lineno">  229</span>    <a class="code hl_variable" href="observable-tests_8cc.html#ae2e3562a094e3fab188a3f99dc2ed902">observer</a>-&gt;tileLoaded(tile_);</div>
-<div class="line"><span class="lineno">  230</span>  }</div>
-<div class="line"><span class="lineno">  231</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  224</span>{</div>
+<div class="line"><span class="lineno">  225</span>  <span class="keywordflow">for</span>(<span class="keyword">const</span> <a class="code hl_typedef" href="classTileLoadingObserver.html#a1d5060d81a57e00328bb1afa7540fda8">TileLoadingObserver::Ptr</a>&amp; <a class="code hl_variable" href="observable-tests_8cc.html#ae2e3562a094e3fab188a3f99dc2ed902">observer</a>: <a class="code hl_namespace" href="namespaceScroom.html">Scroom</a>::Utils::<a class="code hl_function" href="classScroom_1_1Utils_1_1Observable.html#a0985c831266bda7104445a9f0babee03">Observable</a>&lt;<a class="code hl_class" href="classTileLoadingObserver.html">TileLoadingObserver</a>&gt;::<a class="code hl_function" href="classScroom_1_1Utils_1_1Observable.html#ae215a3f722f5894dd8fdc1cb9b190c0e">getObservers</a>())</div>
+<div class="line"><span class="lineno">  226</span>  {</div>
+<div class="line"><span class="lineno">  227</span>    <a class="code hl_variable" href="observable-tests_8cc.html#ae2e3562a094e3fab188a3f99dc2ed902">observer</a>-&gt;tileLoaded(tile_);</div>
+<div class="line"><span class="lineno">  228</span>  }</div>
+<div class="line"><span class="lineno">  229</span>}</div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1Observable_html_a0985c831266bda7104445a9f0babee03"><div class="ttname"><a href="classScroom_1_1Utils_1_1Observable.html#a0985c831266bda7104445a9f0babee03">Scroom::Utils::Observable&lt; TileLoadingObserver &gt;::Observable</a></div><div class="ttdeci">Observable()</div><div class="ttdef"><b>Definition</b> observable.hh:171</div></div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1Observable_html_ae215a3f722f5894dd8fdc1cb9b190c0e"><div class="ttname"><a href="classScroom_1_1Utils_1_1Observable.html#ae215a3f722f5894dd8fdc1cb9b190c0e">Scroom::Utils::Observable&lt; TileLoadingObserver &gt;::getObservers</a></div><div class="ttdeci">std::list&lt; Observer &gt; getObservers()</div><div class="ttdef"><b>Definition</b> observable.hh:196</div></div>
 <div class="ttc" id="aclassTileLoadingObserver_html"><div class="ttname"><a href="classTileLoadingObserver.html">TileLoadingObserver</a></div><div class="ttdef"><b>Definition</b> tiledbitmaplayer.hh:80</div></div>
 <div class="ttc" id="aclassTileLoadingObserver_html_a1d5060d81a57e00328bb1afa7540fda8"><div class="ttname"><a href="classTileLoadingObserver.html#a1d5060d81a57e00328bb1afa7540fda8">TileLoadingObserver::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; TileLoadingObserver &gt; Ptr</div><div class="ttdef"><b>Definition</b> tiledbitmaplayer.hh:82</div></div>
-<div class="ttc" id="anamespaceScroom_html"><div class="ttname"><a href="namespaceScroom.html">Scroom</a></div><div class="ttdef"><b>Definition</b> blockallocator.hh:18</div></div>
+<div class="ttc" id="anamespaceScroom_html"><div class="ttname"><a href="namespaceScroom.html">Scroom</a></div><div class="ttdef"><b>Definition</b> ringbuffer-sink.hh:22</div></div>
 <div class="ttc" id="aobservable-tests_8cc_html_ae2e3562a094e3fab188a3f99dc2ed902"><div class="ttname"><a href="observable-tests_8cc.html#ae2e3562a094e3fab188a3f99dc2ed902">observer</a></div><div class="ttdeci">TestObserver::Ptr observer</div><div class="ttdef"><b>Definition</b> observable-tests.cc:91</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>

@@ -25,7 +25,7 @@ var searchData=
   ['bitsperbase_22',['bitsPerBase',['../classScroom_1_1Bitmap_1_1SampleIterator.html#a206a33fab2247db4ec53460938b8287f',1,'Scroom::Bitmap::SampleIterator']]],
   ['bitspersample_23',['bitsPerSample',['../structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#a86250b9ade69c4581854e533283e582a',1,'Scroom::TiledBitmap::BitmapMetaData']]],
   ['blackish_24',['blackish',['../classMonochromeColormapHelper.html#a8fa1230073c5c69150346be374976bb0',1,'MonochromeColormapHelper']]],
-  ['blob_25',['blob',['../classScroom_1_1MemoryBlobs_1_1Blob.html#a8f8dc363aea3e891bf0812467e4fd165',1,'Scroom::MemoryBlobs::Blob::Blob()'],['../classScroom_1_1MemoryBlobs_1_1Blob_1_1UnloadData.html#a5e72b7a4ac8edbcd1fd52f8781880f7e',1,'Scroom::MemoryBlobs::Blob::UnloadData::blob'],['../classScroom_1_1MemoryBlobs_1_1Blob.html',1,'Scroom::MemoryBlobs::Blob']]],
+  ['blob_25',['blob',['../classScroom_1_1MemoryBlobs_1_1Blob_1_1UnloadData.html#a5e72b7a4ac8edbcd1fd52f8781880f7e',1,'Scroom::MemoryBlobs::Blob::UnloadData::blob'],['../classScroom_1_1MemoryBlobs_1_1Blob.html#a8f8dc363aea3e891bf0812467e4fd165',1,'Scroom::MemoryBlobs::Blob::Blob()'],['../classScroom_1_1MemoryBlobs_1_1Blob.html',1,'Scroom::MemoryBlobs::Blob']]],
   ['blob_2dcompression_2ecc_26',['blob-compression.cc',['../blob-compression_8cc.html',1,'']]],
   ['blob_2dcompression_2ehh_27',['blob-compression.hh',['../blob-compression_8hh.html',1,'']]],
   ['blob_2dtests_2ecc_28',['blob-tests.cc',['../blob-tests_8cc.html',1,'']]],

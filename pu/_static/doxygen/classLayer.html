@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-51-g058ffe8ea</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-g4002e422d</span>
    </div>
   </td>
  </tr>
@@ -635,7 +635,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  151</span>{</div>
 <div class="line"><span class="lineno">  152</span>  <a class="code hl_class" href="classDataFetcher.html">DataFetcher</a> df(shared_from_this&lt;Layer&gt;(), <a class="code hl_variable" href="classLayer.html#a6a0bc24033339368a0ca9747485f0053">height</a>, <a class="code hl_variable" href="classLayer.html#a09a8f2e20d2c509376948e9e8be89a5c">horTileCount</a>, <a class="code hl_variable" href="classLayer.html#a8f270463756cb7dc9897564b3bff23d4">verTileCount</a>, std::move(sp), queue, std::move(on_finished));</div>
-<div class="line"><span class="lineno">  153</span>  <a class="code hl_function" href="threadpool_8hh.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b">CpuBound</a>()-&gt;schedule(df, <a class="code hl_define" href="local_8hh.html#ae2de07f0f9ff468e76d12f302807d3d8">DATAFETCH_PRIO</a>, queue);</div>
+<div class="line"><span class="lineno">  153</span>  <a class="code hl_function" href="threadpool_8hh.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b">CpuBound</a>()-&gt;post(df, <a class="code hl_define" href="local_8hh.html#ae2de07f0f9ff468e76d12f302807d3d8">DATAFETCH_PRIO</a>, queue);</div>
 <div class="line"><span class="lineno">  154</span>}</div>
 <div class="ttc" id="aclassDataFetcher_html"><div class="ttname"><a href="classDataFetcher.html">DataFetcher</a></div><div class="ttdef"><b>Definition</b> layer.cc:43</div></div>
 <div class="ttc" id="alocal_8hh_html_ae2de07f0f9ff468e76d12f302807d3d8"><div class="ttname"><a href="local_8hh.html#ae2de07f0f9ff468e76d12f302807d3d8">DATAFETCH_PRIO</a></div><div class="ttdeci">#define DATAFETCH_PRIO</div><div class="ttdef"><b>Definition</b> local.hh:11</div></div>

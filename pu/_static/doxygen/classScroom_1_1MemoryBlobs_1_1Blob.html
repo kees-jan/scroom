@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-51-g058ffe8ea</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-g4002e422d</span>
    </div>
   </td>
  </tr>
@@ -474,13 +474,13 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  152</span>  {</div>
 <div class="line"><span class="lineno">  153</span>    boost::mutex::scoped_lock <span class="keyword">const</span> lock(<a class="code hl_variable" href="classScroom_1_1MemoryBlobs_1_1Blob.html#ae06666aefeb402daafce8dc6ecf571b2">mut</a>);</div>
-<div class="line"><span class="lineno">  154</span>    <a class="code hl_typedef" href="namespaceScroom_1_1MemoryBlocks_1_1RawPageData.html#adea1c47b8e23abbfd3a1ac8f9648ae70">RawPageData::Ptr</a> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_function" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a775037c70c28e8e06cd2731a6968a410">load</a>();</div>
+<div class="line"><span class="lineno">  154</span>    <a class="code hl_typedef" href="namespaceScroom_1_1MemoryBlocks_1_1RawPageData.html#adea1c47b8e23abbfd3a1ac8f9648ae70">RawPageData::Ptr</a> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_function" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a775037c70c28e8e06cd2731a6968a410">load</a>();</div>
 <div class="line"><span class="lineno">  155</span>    <a class="code hl_variable" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a8eade4f3c6520d1240989f07c1bf9311">state</a> = <a class="code hl_enumvalue" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a50973e173ac55206712bce2ecfe361cea012fa49753d5787b58e4eb3454a1bf56">DIRTY</a>;</div>
-<div class="line"><span class="lineno">  156</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">  156</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">  157</span>  }</div>
 <div class="ttc" id="aclassScroom_1_1MemoryBlobs_1_1Blob_html_a775037c70c28e8e06cd2731a6968a410"><div class="ttname"><a href="classScroom_1_1MemoryBlobs_1_1Blob.html#a775037c70c28e8e06cd2731a6968a410">Scroom::MemoryBlobs::Blob::load</a></div><div class="ttdeci">RawPageData::Ptr load()</div><div class="ttdef"><b>Definition</b> memoryblobs.cc:81</div></div>
 <div class="ttc" id="anamespaceScroom_1_1MemoryBlocks_1_1RawPageData_html_adea1c47b8e23abbfd3a1ac8f9648ae70"><div class="ttname"><a href="namespaceScroom_1_1MemoryBlocks_1_1RawPageData.html#adea1c47b8e23abbfd3a1ac8f9648ae70">Scroom::MemoryBlocks::RawPageData::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; uint8_t &gt; Ptr</div><div class="ttdef"><b>Definition</b> blockallocator.hh:21</div></div>
-<div class="ttc" id="asampleiterator-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">SampleIterator&lt; const uint8_t &gt; result</div><div class="ttdef"><b>Definition</b> sampleiterator-tests.cc:94</div></div>
+<div class="ttc" id="aringbuffer-sink-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">auto result</div><div class="ttdef"><b>Definition</b> ringbuffer-sink-tests.cc:76</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -546,10 +546,10 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  160</span>  {</div>
 <div class="line"><span class="lineno">  161</span>    boost::mutex::scoped_lock <span class="keyword">const</span> lock(<a class="code hl_variable" href="classScroom_1_1MemoryBlobs_1_1Blob.html#ae06666aefeb402daafce8dc6ecf571b2">mut</a>);</div>
-<div class="line"><span class="lineno">  162</span>    <a class="code hl_typedef" href="namespaceScroom_1_1MemoryBlocks_1_1RawPageData.html#adea1c47b8e23abbfd3a1ac8f9648ae70">RawPageData::Ptr</a> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_function" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a775037c70c28e8e06cd2731a6968a410">load</a>();</div>
+<div class="line"><span class="lineno">  162</span>    <a class="code hl_typedef" href="namespaceScroom_1_1MemoryBlocks_1_1RawPageData.html#adea1c47b8e23abbfd3a1ac8f9648ae70">RawPageData::Ptr</a> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_function" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a775037c70c28e8e06cd2731a6968a410">load</a>();</div>
 <div class="line"><span class="lineno">  163</span>    <a class="code hl_variable" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a8eade4f3c6520d1240989f07c1bf9311">state</a> = <a class="code hl_enumvalue" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a50973e173ac55206712bce2ecfe361cea012fa49753d5787b58e4eb3454a1bf56">DIRTY</a>;</div>
-<div class="line"><span class="lineno">  164</span>    <a class="code hl_function" href="blob-tests_8cc.html#a437575caa19eb3da5759ce54a05bfe32">memset</a>(<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>.get(), <a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>, <a class="code hl_variable" href="classScroom_1_1MemoryBlobs_1_1Blob.html#af187e73ce1bad805c9dd36c53d884472">size</a>);</div>
-<div class="line"><span class="lineno">  165</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">  164</span>    <a class="code hl_function" href="blob-tests_8cc.html#a437575caa19eb3da5759ce54a05bfe32">memset</a>(<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>.get(), <a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a>, <a class="code hl_variable" href="classScroom_1_1MemoryBlobs_1_1Blob.html#af187e73ce1bad805c9dd36c53d884472">size</a>);</div>
+<div class="line"><span class="lineno">  165</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">  166</span>  }</div>
 <div class="ttc" id="ablob-tests_8cc_html_a437575caa19eb3da5759ce54a05bfe32"><div class="ttname"><a href="blob-tests_8cc.html#a437575caa19eb3da5759ce54a05bfe32">memset</a></div><div class="ttdeci">memset(expected, value, blobSize)</div></div>
 <div class="ttc" id="ablob-tests_8cc_html_abf9157cab7a60c93387a03e18e2c560a"><div class="ttname"><a href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a></div><div class="ttdeci">const uint8_t value</div><div class="ttdef"><b>Definition</b> blob-tests.cc:114</div></div>
@@ -593,8 +593,8 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   82</span>  {</div>
-<div class="line"><span class="lineno">   83</span>    <a class="code hl_typedef" href="namespaceScroom_1_1MemoryBlocks_1_1RawPageData.html#adea1c47b8e23abbfd3a1ac8f9648ae70">RawPageData::Ptr</a> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_variable" href="classScroom_1_1MemoryBlobs_1_1Blob.html#ae30591679a07ec57c3d8b6a55fecec01">weakData</a>.lock();</div>
-<div class="line"><span class="lineno">   84</span>    <span class="keywordflow">if</span>(!<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
+<div class="line"><span class="lineno">   83</span>    <a class="code hl_typedef" href="namespaceScroom_1_1MemoryBlocks_1_1RawPageData.html#adea1c47b8e23abbfd3a1ac8f9648ae70">RawPageData::Ptr</a> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_variable" href="classScroom_1_1MemoryBlobs_1_1Blob.html#ae30591679a07ec57c3d8b6a55fecec01">weakData</a>.lock();</div>
+<div class="line"><span class="lineno">   84</span>    <span class="keywordflow">if</span>(!<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
 <div class="line"><span class="lineno">   85</span>    {</div>
 <div class="line"><span class="lineno">   86</span>      <span class="keywordflow">switch</span>(<a class="code hl_variable" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a8eade4f3c6520d1240989f07c1bf9311">state</a>)</div>
 <div class="line"><span class="lineno">   87</span>      {</div>
@@ -619,12 +619,12 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="lineno">  106</span>      }</div>
 <div class="line"><span class="lineno">  107</span> </div>
 <div class="line"><span class="lineno">  108</span>      <span class="comment">// data should point to something valid here...</span></div>
-<div class="line"><span class="lineno">  109</span>      <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_typedef" href="namespaceScroom_1_1MemoryBlobs_1_1RawPageData.html#a3e66bb65e19725417b4ab427ad4338b6">RawPageData::Ptr</a>(<a class="code hl_variable" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a24cf060940ca750d2ca7233998d913e5">data</a>, <a class="code hl_friend" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a963a93080579819dfa40758263afe7e0">UnloadData</a>(shared_from_this&lt;Blob&gt;()));</div>
-<div class="line"><span class="lineno">  110</span>      <a class="code hl_variable" href="classScroom_1_1MemoryBlobs_1_1Blob.html#ae30591679a07ec57c3d8b6a55fecec01">weakData</a> = <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">  109</span>      <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_typedef" href="namespaceScroom_1_1MemoryBlobs_1_1RawPageData.html#a3e66bb65e19725417b4ab427ad4338b6">RawPageData::Ptr</a>(<a class="code hl_variable" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a24cf060940ca750d2ca7233998d913e5">data</a>, <a class="code hl_friend" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a963a93080579819dfa40758263afe7e0">UnloadData</a>(shared_from_this&lt;Blob&gt;()));</div>
+<div class="line"><span class="lineno">  110</span>      <a class="code hl_variable" href="classScroom_1_1MemoryBlobs_1_1Blob.html#ae30591679a07ec57c3d8b6a55fecec01">weakData</a> = <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">  111</span>      <a class="code hl_variable" href="classScroom_1_1MemoryBlobs_1_1Blob.html#ab924d3a347477150af5227609c84e7fe">refcount</a>++;</div>
 <div class="line"><span class="lineno">  112</span>    }</div>
 <div class="line"><span class="lineno">  113</span> </div>
-<div class="line"><span class="lineno">  114</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">  114</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">  115</span>  }</div>
 <div class="ttc" id="aassertions_8hh_html_a2679784148a3d02d3f8ffd6ec2ae80f4"><div class="ttname"><a href="assertions_8hh.html#a2679784148a3d02d3f8ffd6ec2ae80f4">defect_message</a></div><div class="ttdeci">#define defect_message(m)</div><div class="ttdef"><b>Definition</b> assertions.hh:49</div></div>
 <div class="ttc" id="aclassScroom_1_1MemoryBlobs_1_1Blob_html_a963a93080579819dfa40758263afe7e0"><div class="ttname"><a href="classScroom_1_1MemoryBlobs_1_1Blob.html#a963a93080579819dfa40758263afe7e0">Scroom::MemoryBlobs::Blob::UnloadData</a></div><div class="ttdeci">friend class UnloadData</div><div class="ttdef"><b>Definition</b> memoryblobs.hh:98</div></div>
@@ -690,7 +690,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  123</span>      <span class="keywordflow">if</span>(<a class="code hl_variable" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a8eade4f3c6520d1240989f07c1bf9311">state</a> == <a class="code hl_enumvalue" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a50973e173ac55206712bce2ecfe361cea012fa49753d5787b58e4eb3454a1bf56">DIRTY</a>)</div>
 <div class="line"><span class="lineno">  124</span>      {</div>
 <div class="line"><span class="lineno">  125</span>        <a class="code hl_variable" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a8eade4f3c6520d1240989f07c1bf9311">state</a> = <a class="code hl_enumvalue" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a50973e173ac55206712bce2ecfe361cea79f7443f9062063b8cac1e41d3fa1fff">COMPRESSING</a>;</div>
-<div class="line"><span class="lineno">  126</span>        <a class="code hl_variable" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a1b0b84014dcdd6bab86cfe9a57f20067">cpuBound</a>-&gt;schedule([me = shared_from_this&lt;Blob&gt;()] { me-&gt;compress(); }, <a class="code hl_define" href="memoryblobs_8cc.html#a9f1b6c9f67956f08621bb659a79f6535">COMPRESS_PRIO</a>);</div>
+<div class="line"><span class="lineno">  126</span>        <a class="code hl_variable" href="classScroom_1_1MemoryBlobs_1_1Blob.html#a1b0b84014dcdd6bab86cfe9a57f20067">cpuBound</a>-&gt;post([me = shared_from_this&lt;Blob&gt;()] { me-&gt;compress(); }, <a class="code hl_define" href="memoryblobs_8cc.html#a9f1b6c9f67956f08621bb659a79f6535">COMPRESS_PRIO</a>);</div>
 <div class="line"><span class="lineno">  127</span>      }</div>
 <div class="line"><span class="lineno">  128</span>      <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  129</span>      {</div>

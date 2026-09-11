@@ -18,11 +18,12 @@ var searchData=
   ['registrationmap_15',['registrationMap',['../classScroom_1_1Utils_1_1Observable.html#a5ced727e0fa44744732383e11e4caf73',1,'Scroom::Utils::Observable']]],
   ['registrations_16',['registrations',['../classLayerCoordinator.html#a7d1b586609c84e7de24885ffb9219399',1,'LayerCoordinator::registrations'],['../classTiledBitmap.html#a1c983590d74d88002c6f216d646d19c4',1,'TiledBitmap::registrations']]],
   ['regular_5ffiles_17',['regular_files',['../callbacks_8cc.html#a88a43ec881bd1f752d469b9747767544',1,'REGULAR_FILES:&#160;callbacks.cc'],['../callbacks_8hh.html#a88a43ec881bd1f752d469b9747767544',1,'REGULAR_FILES:&#160;callbacks.cc']]],
-  ['requested_5fto_5fbe_5fdrawn_18',['requested_to_be_drawn',['../transformpresentation__test_8cc.html#a5f8ac48e481a27e270c6632c3881a15a',1,'transformpresentation_test.cc']]],
-  ['resizablepresentationdata_19',['resizablePresentationData',['../classSizeDeterminer.html#a4c2fe9912d7195cb42b139942d8eccf6',1,'SizeDeterminer']]],
-  ['resizablepresentationinterface_20',['resizablePresentationInterface',['../classSizeDeterminer_1_1PresentationData.html#a05d12baf7a49b822d09352b35b0e6390',1,'SizeDeterminer::PresentationData']]],
-  ['result_21',['result',['../sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065',1,'result:&#160;sampleiterator-tests.cc'],['../gtkhelper-tests_8cc.html#af0936f55376b1257ca7b16ca0f4a76ee',1,'result:&#160;gtkhelper-tests.cc'],['../rectangletests_8cc.html#a1d2c64cb7d675c2907d6637afffe5300',1,'result:&#160;rectangletests.cc']]],
-  ['rgb_22',['RGB',['../namespaceScroom_1_1TiledBitmap.html#a68ed4ea621e837ae62809626d1f7bba4',1,'Scroom::TiledBitmap']]],
-  ['right_23',['right',['../rectangletests_8cc.html#a458c55c43ab7599992ae776b6c8f7b58',1,'rectangletests.cc']]],
-  ['ruler_24',['ruler',['../ruler-tests_8cc.html#a7263a3d2025da3416831d700504b77ce',1,'ruler-tests.cc']]]
+  ['remaining_18',['remaining',['../ringbuffer-sink-tests_8cc.html#a2207f348d3e14220cbc330617c306537',1,'ringbuffer-sink-tests.cc']]],
+  ['requested_5fto_5fbe_5fdrawn_19',['requested_to_be_drawn',['../transformpresentation__test_8cc.html#a5f8ac48e481a27e270c6632c3881a15a',1,'transformpresentation_test.cc']]],
+  ['resizablepresentationdata_20',['resizablePresentationData',['../classSizeDeterminer.html#a4c2fe9912d7195cb42b139942d8eccf6',1,'SizeDeterminer']]],
+  ['resizablepresentationinterface_21',['resizablePresentationInterface',['../classSizeDeterminer_1_1PresentationData.html#a05d12baf7a49b822d09352b35b0e6390',1,'SizeDeterminer::PresentationData']]],
+  ['result_22',['result',['../ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065',1,'result:&#160;ringbuffer-sink-tests.cc'],['../sampleiterator-tests_8cc.html#a937d4dd628a8858b443a399410d2600b',1,'result:&#160;sampleiterator-tests.cc'],['../gtkhelper-tests_8cc.html#af0936f55376b1257ca7b16ca0f4a76ee',1,'result:&#160;gtkhelper-tests.cc'],['../rectangletests_8cc.html#a1d2c64cb7d675c2907d6637afffe5300',1,'result:&#160;rectangletests.cc']]],
+  ['rgb_23',['RGB',['../namespaceScroom_1_1TiledBitmap.html#a68ed4ea621e837ae62809626d1f7bba4',1,'Scroom::TiledBitmap']]],
+  ['right_24',['right',['../rectangletests_8cc.html#a458c55c43ab7599992ae776b6c8f7b58',1,'rectangletests.cc']]],
+  ['ruler_25',['ruler',['../ruler-tests_8cc.html#a7263a3d2025da3416831d700504b77ce',1,'ruler-tests.cc']]]
 ];

@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-51-g058ffe8ea</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-g4002e422d</span>
    </div>
   </td>
  </tr>
@@ -484,20 +484,20 @@ template&lt;typename T &gt; </div>
 <p>Retrieve a list of current observers.</p>
 <p>Always, a list of <code>shared_ptr</code> objects is returned, regardless of whether the Observer registered a <code>shared_ptr</code> or a <code>weak_ptr</code>. </p>
 <div class="fragment"><div class="line"><span class="lineno">  197</span>  {</div>
-<div class="line"><span class="lineno">  198</span>    std::list&lt;typename Observable&lt;T&gt;::Observer&gt; <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">  198</span>    std::list&lt;typename Observable&lt;T&gt;::Observer&gt; <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">  199</span>    <span class="keywordflow">for</span>(<span class="keyword">const</span> <span class="keyword">typename</span> <a class="code hl_typedef" href="classScroom_1_1Utils_1_1Detail_1_1Registration.html#a0bc6b88c23a6dd26782db02886dfcccc">Registration::Ptr</a>&amp; <a class="code hl_variable" href="observable-tests_8cc.html#a6be90ef385d7acbcbba0523b2d6bbc94">registration</a>: <a class="code hl_variable" href="classScroom_1_1Utils_1_1Observable.html#a5ced727e0fa44744732383e11e4caf73">registrationMap</a>-&gt;values())</div>
 <div class="line"><span class="lineno">  200</span>    {</div>
 <div class="line"><span class="lineno">  201</span>      <a class="code hl_typedef" href="classScroom_1_1Utils_1_1Observable.html#af3e1005371eb41f254a9e330e1c20a4b">Observer</a> <span class="keyword">const</span> o = <a class="code hl_variable" href="observable-tests_8cc.html#a6be90ef385d7acbcbba0523b2d6bbc94">registration</a>-&gt;observer.lock();</div>
 <div class="line"><span class="lineno">  202</span>      <span class="keywordflow">if</span>(o)</div>
 <div class="line"><span class="lineno">  203</span>      {</div>
-<div class="line"><span class="lineno">  204</span>        <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>.push_back(o);</div>
+<div class="line"><span class="lineno">  204</span>        <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>.push_back(o);</div>
 <div class="line"><span class="lineno">  205</span>      }</div>
 <div class="line"><span class="lineno">  206</span>    }</div>
 <div class="line"><span class="lineno">  207</span> </div>
-<div class="line"><span class="lineno">  208</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">  208</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">  209</span>  }</div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1Observable_html_af3e1005371eb41f254a9e330e1c20a4b"><div class="ttname"><a href="classScroom_1_1Utils_1_1Observable.html#af3e1005371eb41f254a9e330e1c20a4b">Scroom::Utils::Observable::Observer</a></div><div class="ttdeci">std::shared_ptr&lt; T &gt; Observer</div><div class="ttdef"><b>Definition</b> observable.hh:73</div></div>
-<div class="ttc" id="asampleiterator-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">SampleIterator&lt; const uint8_t &gt; result</div><div class="ttdef"><b>Definition</b> sampleiterator-tests.cc:94</div></div>
+<div class="ttc" id="aringbuffer-sink-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">auto result</div><div class="ttdef"><b>Definition</b> ringbuffer-sink-tests.cc:76</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classPresentationBase.html#a81cfe78e3adf5a1fecc307e2284578fc">PresentationBase::close()</a>, <a class="el" href="classTestObservable.html#adc23514797077983792a985752dd907a">TestObservable::getObservers()</a>, <a class="el" href="classTestRecursiveObservable.html#a4b8c5beeeadfd7837c857b283ed16502">TestRecursiveObservable::getObservers()</a>, <a class="el" href="classCompressedTile.html#a56111eeb0baeaf0b8f2d93e4a81ea99d">CompressedTile::notifyObservers()</a>, <a class="el" href="classPresentationBase.html#ae964144f0e8da9e7d7067f3d8183a8e4">PresentationBase::open()</a>, <a class="el" href="classTileViewState.html#a0f0b147b0ad17790338ee2b130809682">TileViewState::reportDone()</a>, and <a class="el" href="classCompressedTile.html#abb93373d26a2155d4fe3f8b235ea8d45">CompressedTile::reportFinished()</a>.</p>
 <div class="dynheader">

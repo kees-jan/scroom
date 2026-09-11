@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-51-g058ffe8ea</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-g4002e422d</span>
    </div>
   </td>
  </tr>
@@ -186,19 +186,19 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Add two pipette color map values of the same key. </p>
 <div class="fragment"><div class="line"><span class="lineno">   32</span>  {</div>
-<div class="line"><span class="lineno">   33</span>    <a class="code hl_typedef" href="classPipetteLayerOperations.html#ac2e1230385d4439b30668e66df245485">PipetteLayerOperations::PipetteColor</a> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">   33</span>    <a class="code hl_typedef" href="classPipetteLayerOperations.html#ac2e1230385d4439b30668e66df245485">PipetteLayerOperations::PipetteColor</a> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">   34</span>    <span class="keywordflow">if</span>(lhs.empty())</div>
 <div class="line"><span class="lineno">   35</span>    {</div>
 <div class="line"><span class="lineno">   36</span>      <span class="keywordflow">return</span> rhs;</div>
 <div class="line"><span class="lineno">   37</span>    }</div>
 <div class="line"><span class="lineno">   38</span>    <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; rhs.size(); i++)</div>
 <div class="line"><span class="lineno">   39</span>    {</div>
-<div class="line"><span class="lineno">   40</span>      <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>.emplace_back(rhs[i].first, rhs[i].second + lhs[i].second);</div>
+<div class="line"><span class="lineno">   40</span>      <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>.emplace_back(rhs[i].first, rhs[i].second + lhs[i].second);</div>
 <div class="line"><span class="lineno">   41</span>    }</div>
-<div class="line"><span class="lineno">   42</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">   42</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">   43</span>  }</div>
 <div class="ttc" id="aclassPipetteLayerOperations_html_ac2e1230385d4439b30668e66df245485"><div class="ttname"><a href="classPipetteLayerOperations.html#ac2e1230385d4439b30668e66df245485">PipetteLayerOperations::PipetteColor</a></div><div class="ttdeci">std::vector&lt; std::pair&lt; std::string, double &gt; &gt; PipetteColor</div><div class="ttdef"><b>Definition</b> pipettelayeroperations.hh:25</div></div>
-<div class="ttc" id="asampleiterator-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">SampleIterator&lt; const uint8_t &gt; result</div><div class="ttdef"><b>Definition</b> sampleiterator-tests.cc:94</div></div>
+<div class="ttc" id="aringbuffer-sink-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">auto result</div><div class="ttdef"><b>Definition</b> ringbuffer-sink-tests.cc:76</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a142fbdb6f783a07b6a90b3da46cc17f4">anonymous_namespace{tiledbitmappresentation.cc}::TiledBitmapPresentation::getPixelAverages()</a>.</p>
 <div class="dynheader">

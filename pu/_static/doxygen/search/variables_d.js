@@ -4,5 +4,6 @@ var searchData=
   ['newaggregateinterfaces_1',['newAggregateInterfaces',['../classPluginManager.html#a8d8901a66366343aaebf664cbacc0082',1,'PluginManager']]],
   ['newcolormap_2',['newColorMap',['../colormaphelpers__test_8cc.html#a6ed13517d4275644149c51418bf65722',1,'colormaphelpers_test.cc']]],
   ['newpresentationinterfaces_3',['newPresentationInterfaces',['../classPluginManager.html#a224c510adcb84b33159057136434bb01',1,'PluginManager']]],
-  ['numberofcolors_4',['numberOfColors',['../classMonochromeColormapHelper.html#a22800a9f435551e61e8fc20cf889997a',1,'MonochromeColormapHelper']]]
+  ['nextseq_4',['nextSeq',['../structScroom_1_1RingBufferSink_1_1ConsumeResult.html#a797e8567413054e00191f7fc6c427515',1,'Scroom::RingBufferSink::ConsumeResult']]],
+  ['numberofcolors_5',['numberOfColors',['../classMonochromeColormapHelper.html#a22800a9f435551e61e8fc20cf889997a',1,'MonochromeColormapHelper']]]
 ];

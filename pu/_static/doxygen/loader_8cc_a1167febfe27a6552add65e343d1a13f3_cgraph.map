@@ -1,10 +1,12 @@
 <map id="loadPresentation" name="loadPresentation">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,137,55"/>
-<area shape="rect" id="Node000002" href="$loader_8cc.html#aa14f4a1f2017c66c53c38768a622c0bf" title=" " alt="" coords="185,29,317,55"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,39,171,39,171,45,138,45"/>
-<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="222,31,215,21,219,11,231,5,251,3,276,6,286,15,283,19,274,11,251,8,232,10,223,15,221,20,226,28"/>
-<area shape="rect" id="Node000003" href="$loader_8cc.html#a60ebf2e9b89d9dc012bae8cd75eb45c7" title=" " alt="" coords="365,29,504,55"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="317,39,351,39,351,45,317,45"/>
-<area shape="rect" id="Node000004" href="$loader_8cc.html#a88f61627a82cfe52c3d960363791ccb0" title=" " alt="" coords="552,29,681,55"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="504,39,538,39,538,45,504,45"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,43,137,68"/>
+<area shape="rect" id="Node000002" href="$ringbuffer-sink-tests_8cc.html#a8d320a25a024f00913fe55a273a4a31d" title=" " alt="" coords="228,5,275,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="133,40,214,23,215,28,134,45"/>
+<area shape="rect" id="Node000003" href="$loader_8cc.html#aa14f4a1f2017c66c53c38768a622c0bf" title=" " alt="" coords="185,79,317,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="136,65,175,73,174,79,135,71"/>
+<area shape="poly" id="edge5_Node000003_Node000003" title=" " alt="" coords="222,80,215,70,219,61,231,54,251,52,276,56,286,64,283,68,274,60,251,57,232,59,223,64,221,70,226,77"/>
+<area shape="rect" id="Node000004" href="$loader_8cc.html#a60ebf2e9b89d9dc012bae8cd75eb45c7" title=" " alt="" coords="365,79,504,104"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="317,89,351,89,351,94,317,94"/>
+<area shape="rect" id="Node000005" href="$loader_8cc.html#a88f61627a82cfe52c3d960363791ccb0" title=" " alt="" coords="552,79,681,104"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="504,89,538,89,538,94,504,94"/>
 </map>

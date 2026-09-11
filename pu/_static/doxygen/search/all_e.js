@@ -8,14 +8,15 @@ var searchData=
   ['newaggregateinterface_5',['NewAggregateInterface',['../classNewAggregateInterface.html',1,'']]],
   ['newaggregateinterfaces_6',['newAggregateInterfaces',['../classPluginManager.html#a8d8901a66366343aaebf664cbacc0082',1,'PluginManager']]],
   ['newcolormap_7',['newColorMap',['../colormaphelpers__test_8cc.html#a6ed13517d4275644149c51418bf65722',1,'colormaphelpers_test.cc']]],
-  ['newpresentation_8',['newpresentation',['../classScroomInterfaceImpl.html#a47ad218fdfeccd1cc02d5a367002eb66',1,'ScroomInterfaceImpl::newPresentation()'],['../classScroomInterface.html#aed7caaa94ec238cf7d352cb718235a39',1,'ScroomInterface::newPresentation()']]],
+  ['newpresentation_8',['newpresentation',['../classScroomInterface.html#aed7caaa94ec238cf7d352cb718235a39',1,'ScroomInterface::newPresentation()'],['../classScroomInterfaceImpl.html#a47ad218fdfeccd1cc02d5a367002eb66',1,'ScroomInterfaceImpl::newPresentation()']]],
   ['newpresentationinterface_9',['NewPresentationInterface',['../classNewPresentationInterface.html',1,'']]],
   ['newpresentationinterfaces_10',['newPresentationInterfaces',['../classPluginManager.html#a224c510adcb84b33159057136434bb01',1,'PluginManager']]],
-  ['nextstatusmessage_11',['nextStatusMessage',['../classDummyView.html#a355e6404319e9e280d42bc22f3a56b68',1,'DummyView']]],
-  ['no_5fop_12',['no_op',['../threadpool-tests_8cc.html#abc8d36c4d1d17b772ee624f93cb52ce7',1,'threadpool-tests.cc']]],
-  ['normalize_13',['normalize',['../classScroom_1_1Utils_1_1Segment.html#aa3415b3b3cc8f607a25b3aad79221441',1,'Scroom::Utils::Segment']]],
-  ['note_14',['Important License Note!',['../md_cmake-modules_2README.html#autotoc_md4',1,'']]],
-  ['notifyobservers_15',['notifyObservers',['../classCompressedTile.html#a56111eeb0baeaf0b8f2d93e4a81ea99d',1,'CompressedTile']]],
-  ['notifythreadlist_16',['NotifyThreadList',['../namespaceanonymous__namespace_02threadpool_8cc_03.html#ab3b5c2a45b9d57ca5f1d8c6c553f85f8',1,'anonymous_namespace{threadpool.cc}']]],
-  ['numberofcolors_17',['numberOfColors',['../classMonochromeColormapHelper.html#a22800a9f435551e61e8fc20cf889997a',1,'MonochromeColormapHelper']]]
+  ['nextseq_11',['nextSeq',['../structScroom_1_1RingBufferSink_1_1ConsumeResult.html#a797e8567413054e00191f7fc6c427515',1,'Scroom::RingBufferSink::ConsumeResult']]],
+  ['nextstatusmessage_12',['nextStatusMessage',['../classDummyView.html#a355e6404319e9e280d42bc22f3a56b68',1,'DummyView']]],
+  ['no_5fop_13',['no_op',['../threadpool-tests_8cc.html#abc8d36c4d1d17b772ee624f93cb52ce7',1,'threadpool-tests.cc']]],
+  ['normalize_14',['normalize',['../classScroom_1_1Utils_1_1Segment.html#aa3415b3b3cc8f607a25b3aad79221441',1,'Scroom::Utils::Segment']]],
+  ['note_15',['Important License Note!',['../md_cmake-modules_2README.html#autotoc_md4',1,'']]],
+  ['notifyobservers_16',['notifyObservers',['../classCompressedTile.html#a56111eeb0baeaf0b8f2d93e4a81ea99d',1,'CompressedTile']]],
+  ['notifythreadlist_17',['NotifyThreadList',['../namespaceanonymous__namespace_02threadpool_8cc_03.html#ab3b5c2a45b9d57ca5f1d8c6c553f85f8',1,'anonymous_namespace{threadpool.cc}']]],
+  ['numberofcolors_18',['numberOfColors',['../classMonochromeColormapHelper.html#a22800a9f435551e61e8fc20cf889997a',1,'MonochromeColormapHelper']]]
 ];

@@ -63,7 +63,7 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", "globals_dup" ],
         [ "Functions", "globals_func.html", "globals_func" ],
-        [ "Variables", "globals_vars.html", null ],
+        [ "Variables", "globals_vars.html", "globals_vars" ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
         [ "Enumerator", "globals_eval.html", null ],
@@ -83,19 +83,20 @@ var NAVTREEINDEX =
 "classScroom_1_1Bookkeeping_1_1Detail_1_1TokenAddition.html#a81093f6665f51f277623386fcece68ea",
 "classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html",
 "classScroom_1_1MemoryBlocks_1_1Detail_1_1anonymous__namespace_02swapbasedblockallocator_8cc_03_1_1DontDelete.html#a9c80210aaa07ef6bf5246efca5502bb2",
-"classScroom_1_1Utils_1_1Detail_1_1ProgressStore.html#ad64f01bbb18a7b887d33584e5f1ac94e",
-"classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer_1_1Child.html#a22ad2b2559a4627f21682e22bf57e23e",
-"classScroom_1_1Utils_1_1Segment.html#ab097dcc93ec2c2db9681750092dcbc32",
-"classThreadPool.html#a9d3f75e5674e5b4b3a1afdc8a50982e4",
-"classTransparentOverlayViewInfo.html#ac68f53e66aa850baa7dfd3b9ed938581",
-"classanonymous__namespace_02gtkhelper-tests_8cc_03_1_1B.html#af93d9b0f377d88561db0b878b20a5030",
-"context_8hh.html#a1df110b1fef13cbeaf6122b1ca752a97",
-"functions_vars_h.html",
-"measure-framerate_8cc.html#a0ddf1224851353fc92bfbff6f499fa97",
-"namespaceanonymous__namespace_02view_8cc_03.html#a1ab23fe43b4b1aaecbd16e2d087776ae",
-"progressinterfaceconversion-tests_8cc.html#a28a7b2c17280fdde5dec4796a4d40881",
-"sampleiterator-tests_8cc.html#ac96fad5f67f5c291ac830dea7a8732a8",
-"threadpool-queue-tests_8cc.html#afe093a4ff1684e6eccef40d05293fc37"
+"classScroom_1_1Utils_1_1Counter.html#aff741dd8d34219c5c946587f1828a25d",
+"classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer.html#a36ef552823d604df0ddd3c4b47b401ef",
+"classScroom_1_1Utils_1_1Segment.html#a6192ab81f7c31fa85fe3f87074d6e7a2",
+"classTestObservable.html#adc23514797077983792a985752dd907a",
+"classTransparentOverlayPresentation.html#a69a7c85d3b030fe299a1542b3a3f1bed",
+"classanonymous__namespace_02determine-size-test_8cc_03_1_1ViewInterfaceDummy.html#a4dc2df87da9833ce252f8f24c2fe3ef7",
+"context-tests_8cc.html",
+"functions_func_u.html",
+"loader_8hh.html#a6c21edd9d285c925527e3209fca54b01",
+"namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#add5ac7ed3f67a149282397b67c164559a341b72aaab1308a3e6667af1e52f5def",
+"point_8hh.html",
+"rectangletests_8cc.html#aeafae13a40603f6e1cea3460ab289365",
+"structfmt_1_1formatter_3_01TileViewState_1_1State_01_4.html#a02f3c5d9f1c4ce1fce00a75f37e01fdb",
+"transformpresentation__test_8cc.html#a608745f30637ee1f30157b0294297580"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

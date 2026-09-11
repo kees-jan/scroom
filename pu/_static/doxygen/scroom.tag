@@ -143,6 +143,296 @@
     <namespace>conf</namespace>
   </compound>
   <compound kind="file">
+    <name>ringbuffer-sink.hh</name>
+    <path>gui/loggingbuffer/inc/scroom/</path>
+    <filename>ringbuffer-sink_8hh.html</filename>
+    <class kind="class">Scroom::RingBufferSink</class>
+    <class kind="struct">Scroom::RingBufferSink::Entry</class>
+    <class kind="struct">Scroom::RingBufferSink::ConsumeResult</class>
+    <namespace>Scroom</namespace>
+  </compound>
+  <compound kind="file">
+    <name>ringbuffer-sink.cc</name>
+    <path>gui/loggingbuffer/src/</path>
+    <filename>ringbuffer-sink_8cc.html</filename>
+    <includes id="ringbuffer-sink_8hh" name="ringbuffer-sink.hh" local="no" import="no" module="no" objc="no">scroom/ringbuffer-sink.hh</includes>
+    <namespace>Scroom</namespace>
+  </compound>
+  <compound kind="file">
+    <name>ringbuffer-sink-tests.cc</name>
+    <path>gui/loggingbuffer/test/</path>
+    <filename>ringbuffer-sink-tests_8cc.html</filename>
+    <includes id="ringbuffer-sink_8hh" name="ringbuffer-sink.hh" local="no" import="no" module="no" objc="no">scroom/ringbuffer-sink.hh</includes>
+    <includes id="threadpool_8hh" name="threadpool.hh" local="no" import="no" module="no" objc="no">scroom/threadpool.hh</includes>
+    <namespace>anonymous_namespace{ringbuffer-sink-tests.cc}</namespace>
+    <member kind="function">
+      <type>logger</type>
+      <name>info</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a8d320a25a024f00913fe55a273a4a31d</anchor>
+      <arglist>(&quot;line-1&quot;)</arglist>
+    </member>
+    <member kind="function">
+      <type>logger</type>
+      <name>info</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a06f46695ef67a0167753e1079037eba2</anchor>
+      <arglist>(&quot;line-2&quot;)</arglist>
+    </member>
+    <member kind="function">
+      <type>logger</type>
+      <name>info</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a902e896539c92f12f5a0dd0257684069</anchor>
+      <arglist>(&quot;line-3&quot;)</arglist>
+    </member>
+    <member kind="function">
+      <type>logger</type>
+      <name>info</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a491cdb40489dd18ff7b865cb0c98b6b1</anchor>
+      <arglist>(&quot;line-4&quot;)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>ASSERT_EQ</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>aac7a6a67ddb1fadb8c58adffcb3536f3</anchor>
+      <arglist>(3, entries.size())</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a8aa98594df42bf6a4b13bd4d4b831ebd</anchor>
+      <arglist>(&quot;line-2\n&quot;, entries[0].text)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a7f9a2b1097b03a97f3226e5918da3277</anchor>
+      <arglist>(&quot;line-3\n&quot;, entries[1].text)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>ac1e90760d7cf377bec97027c26fd0be8</anchor>
+      <arglist>(&quot;line-4\n&quot;, entries[2].text)</arglist>
+    </member>
+    <member kind="function">
+      <type>logger</type>
+      <name>debug</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>ad95b233d5e21909b673611add77a8fdb</anchor>
+      <arglist>(&quot;a&quot;)</arglist>
+    </member>
+    <member kind="function">
+      <type>logger</type>
+      <name>debug</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a1a6e70b8b814ae2612c2da4ae1b7f196</anchor>
+      <arglist>(&quot;b&quot;)</arglist>
+    </member>
+    <member kind="function">
+      <type>logger</type>
+      <name>debug</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a11151ff946c61d20b558e544d493738a</anchor>
+      <arglist>(&quot;c&quot;)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_LT</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>ad428313e68463f1df1ea1225a7e5ae4d</anchor>
+      <arglist>(entries[0].seq, entries[1].seq)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_LT</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>af182ac3e121bdcc4f512aa03e234a54c</anchor>
+      <arglist>(entries[1].seq, entries[2].seq)</arglist>
+    </member>
+    <member kind="function">
+      <type>logger</type>
+      <name>info</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a92eeaabc01fd2e9d2b5b44190f4a38ee</anchor>
+      <arglist>(&quot;line-5&quot;)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a0da2e250f3e8df06b9f9802a9de1c88d</anchor>
+      <arglist>(&quot;line-3\n&quot;, entries[0].text)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a5a51b3e781c950e9da2812a927cf95b9</anchor>
+      <arglist>(&quot;line-4\n&quot;, entries[1].text)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>aa1aec7d77b97690ea83c14a8e7d36fe4</anchor>
+      <arglist>(&quot;line-5\n&quot;, entries[2].text)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a3f08d74bc6b61b1b405888e056c3ed76</anchor>
+      <arglist>(entries.back().seq, result.nextSeq)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>for</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>ad4cca210e195792984f5f0171f3445be</anchor>
+      <arglist>(int i=0;i&lt; burstSize;++i)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>ab325afaae623ad4df1248b487a390eb9</anchor>
+      <arglist>(1, wakeupCalls.load())</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a524705432e4c40f72f90207bac89566f</anchor>
+      <arglist>(2, wakeupCalls.load())</arglist>
+    </member>
+    <member kind="function">
+      <type>producers</type>
+      <name>reserve</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a1540e407cbcf419eee9293d70c9cdb6e</anchor>
+      <arglist>(threadCount)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>for</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>af7c50c9b61091fea01ecfd3d01dd9e54</anchor>
+      <arglist>(auto &amp;producer:producers)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a0c8c1eb13cb9f117d487142a6da21f35</anchor>
+      <arglist>(totalLines, static_cast&lt; int &gt;(consumedCount))</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a46a650d01ee3f1139fbf8ca72226ca41</anchor>
+      <arglist>(totalLines, static_cast&lt; int &gt;(lastSeq))</arglist>
+    </member>
+    <member kind="variable">
+      <type>auto</type>
+      <name>logger</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a288e5002e7c3705ad5bae108a122bd34</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>auto</type>
+      <name>entries</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a1ccbac9cd1dc7547eeae5cc5ffb3a271</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>std::uint64_t</type>
+      <name>lastSeq</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>aa74c34aed57c1942232f9fb50741a092</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>auto</type>
+      <name>result</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a77d2a177c03f06c9224e4aeecb918065</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>std::atomic&lt; int &gt;</type>
+      <name>wakeupCalls</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a5d0b2813f96764e9e35b3ee7e969c1b0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>auto</type>
+      <name>sink</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a757ac11cad97288b51ea35a1287a6ee1</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>auto</type>
+      <name>firstResult</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a37365e0b301c092d58cb07b0c6b44c3e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr int</type>
+      <name>linesPerThread</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>ad8023a6ff5c83c2220ae444e8611289d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr int</type>
+      <name>totalLines</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a144d841b02ab87b4e113d298d3bb4e3c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>auto</type>
+      <name>pool</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a222ffe48a28df70eb444b70e375905d5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>std::vector&lt; boost::unique_future&lt; void &gt; &gt;</type>
+      <name>producers</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a2c9641ed66c3853ede0240063018d97d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>std::size_t</type>
+      <name>consumedCount</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>abc26a6a251c9d6f8515f7dc1110cddc9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>auto</type>
+      <name>remaining</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a2207f348d3e14220cbc330617c306537</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="file">
     <name>ruler.hh</name>
     <path>gui/ruler/inc/</path>
     <filename>ruler_8hh.html</filename>
@@ -1646,37 +1936,6 @@
     <class kind="class">ColormappableMock</class>
   </compound>
   <compound kind="file">
-    <name>presentationinterface.hh</name>
-    <path>libs/plugin-interfaces/inc/scroom/gmock/</path>
-    <filename>gmock_2presentationinterface_8hh.html</filename>
-    <includes id="gmock_2colormappable_8hh" name="colormappable.hh" local="no" import="no" module="no" objc="no">scroom/gmock/colormappable.hh</includes>
-    <includes id="presentationinterface_8hh" name="presentationinterface.hh" local="no" import="no" module="no" objc="no">scroom/presentationinterface.hh</includes>
-    <class kind="class">PresentationMock</class>
-    <class kind="class">ColormappablePresentationMock</class>
-  </compound>
-  <compound kind="file">
-    <name>presentationinterface.hh</name>
-    <path>libs/plugin-interfaces/inc/scroom/</path>
-    <filename>presentationinterface_8hh.html</filename>
-    <includes id="context_8hh" name="context.hh" local="no" import="no" module="no" objc="no">scroom/context.hh</includes>
-    <includes id="interface_8hh" name="interface.hh" local="no" import="no" module="no" objc="no">scroom/interface.hh</includes>
-    <includes id="observable_8hh" name="observable.hh" local="no" import="no" module="no" objc="no">scroom/observable.hh</includes>
-    <includes id="rectangle_8hh" name="rectangle.hh" local="no" import="no" module="no" objc="no">scroom/rectangle.hh</includes>
-    <includes id="viewinterface_8hh" name="viewinterface.hh" local="no" import="no" module="no" objc="no">scroom/viewinterface.hh</includes>
-    <class kind="class">Viewable</class>
-    <class kind="class">PresentationInterface</class>
-    <class kind="class">PresentationBase</class>
-    <class kind="class">PresentationBaseSimple</class>
-    <class kind="class">Aggregate</class>
-    <member kind="typedef">
-      <type>Scroom::Utils::Observable&lt; Viewable &gt;</type>
-      <name>ViewObservable</name>
-      <anchorfile>presentationinterface_8hh.html</anchorfile>
-      <anchor>ae36d25542bd5d3ebd49c3cefe9e7fc5b</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="file">
     <name>opentiledbitmapinterface.hh</name>
     <path>libs/plugin-interfaces/inc/scroom/</path>
     <filename>opentiledbitmapinterface_8hh.html</filename>
@@ -1729,6 +1988,37 @@
       <name>PLUGIN_API_VERSION</name>
       <anchorfile>plugininformationinterface_8hh.html</anchorfile>
       <anchor>ac3bcb9217a74830c51b6c46c9b5f997f</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>presentationinterface.hh</name>
+    <path>libs/plugin-interfaces/inc/scroom/gmock/</path>
+    <filename>gmock_2presentationinterface_8hh.html</filename>
+    <includes id="gmock_2colormappable_8hh" name="colormappable.hh" local="no" import="no" module="no" objc="no">scroom/gmock/colormappable.hh</includes>
+    <includes id="presentationinterface_8hh" name="presentationinterface.hh" local="no" import="no" module="no" objc="no">scroom/presentationinterface.hh</includes>
+    <class kind="class">PresentationMock</class>
+    <class kind="class">ColormappablePresentationMock</class>
+  </compound>
+  <compound kind="file">
+    <name>presentationinterface.hh</name>
+    <path>libs/plugin-interfaces/inc/scroom/</path>
+    <filename>presentationinterface_8hh.html</filename>
+    <includes id="context_8hh" name="context.hh" local="no" import="no" module="no" objc="no">scroom/context.hh</includes>
+    <includes id="interface_8hh" name="interface.hh" local="no" import="no" module="no" objc="no">scroom/interface.hh</includes>
+    <includes id="observable_8hh" name="observable.hh" local="no" import="no" module="no" objc="no">scroom/observable.hh</includes>
+    <includes id="rectangle_8hh" name="rectangle.hh" local="no" import="no" module="no" objc="no">scroom/rectangle.hh</includes>
+    <includes id="viewinterface_8hh" name="viewinterface.hh" local="no" import="no" module="no" objc="no">scroom/viewinterface.hh</includes>
+    <class kind="class">Viewable</class>
+    <class kind="class">PresentationInterface</class>
+    <class kind="class">PresentationBase</class>
+    <class kind="class">PresentationBaseSimple</class>
+    <class kind="class">Aggregate</class>
+    <member kind="typedef">
+      <type>Scroom::Utils::Observable&lt; Viewable &gt;</type>
+      <name>ViewObservable</name>
+      <anchorfile>presentationinterface_8hh.html</anchorfile>
+      <anchor>ae36d25542bd5d3ebd49c3cefe9e7fc5b</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -2704,8 +2994,8 @@
       <type></type>
       <name>CpuBound</name>
       <anchorfile>async-deleter-tests_8cc.html</anchorfile>
-      <anchor>a7ebe9976c3b1cf5bf57d8a759f664c0b</anchor>
-      <arglist>() -&gt; schedule(pass(&amp;barrier2)+destroy(a)+clear(&amp;signal))</arglist>
+      <anchor>ade06412733edab0ac2763d30c92d434e</anchor>
+      <arglist>() -&gt; post(pass(&amp;barrier2)+destroy(a)+clear(&amp;signal))</arglist>
     </member>
     <member kind="function">
       <type>a</type>
@@ -3203,16 +3493,16 @@
     </member>
     <member kind="function">
       <type>pool</type>
-      <name>schedule</name>
+      <name>post</name>
       <anchorfile>threadpool-destruction-tests_8cc.html</anchorfile>
-      <anchor>ac0a0cf9a8a69ddd75a63b6c1297bdfe6</anchor>
+      <anchor>a4744a63ab6621a7665fcb81fdabd1dfa</anchor>
       <arglist>(clear(&amp;a)+pass(&amp;b))</arglist>
     </member>
     <member kind="function">
       <type>pool</type>
-      <name>schedule</name>
+      <name>post</name>
       <anchorfile>threadpool-destruction-tests_8cc.html</anchorfile>
-      <anchor>a9ab3886149c6bf8840592692b153c62a</anchor>
+      <anchor>ab0e503f0e0c47e49f579c97b46262316</anchor>
       <arglist>(clear(&amp;c))</arglist>
     </member>
     <member kind="function">
@@ -3464,9 +3754,9 @@
     </member>
     <member kind="function">
       <type>t</type>
-      <name>schedule</name>
+      <name>post</name>
       <anchorfile>threadpool-queue-tests_8cc.html</anchorfile>
-      <anchor>adeaa383b78d99f60ed90e771d11c3537</anchor>
+      <anchor>a6dda82cd737769e74c26f2e2d5757261</anchor>
       <arglist>(clear(&amp;s), queue)</arglist>
     </member>
     <member kind="function">
@@ -3485,9 +3775,9 @@
     </member>
     <member kind="function">
       <type>t</type>
-      <name>schedule</name>
+      <name>post</name>
       <anchorfile>threadpool-queue-tests_8cc.html</anchorfile>
-      <anchor>a21ea188df31d0270547987421bd359cc</anchor>
+      <anchor>a55aa0d1e0bcffab7cae785bb46ef9744</anchor>
       <arglist>(clear(&amp;s2))</arglist>
     </member>
     <member kind="function">
@@ -3499,9 +3789,9 @@
     </member>
     <member kind="function">
       <type>pool</type>
-      <name>schedule</name>
+      <name>post</name>
       <anchorfile>threadpool-queue-tests_8cc.html</anchorfile>
-      <anchor>acb18ee9535bf9c6d7991c9bdf020ec76</anchor>
+      <anchor>a28d2a82e9a9fc0dacd831e639180d152</anchor>
       <arglist>(clear(&amp;s1)+pass(&amp;s2), queue)</arglist>
     </member>
     <member kind="function">
@@ -3606,7 +3896,7 @@
       <type>ThreadPool</type>
       <name>pool</name>
       <anchorfile>threadpool-queue-tests_8cc.html</anchorfile>
-      <anchor>a56f23c7420d0f8b3d483794ca774faec</anchor>
+      <anchor>aa7e9210410c7d7285e42ddf5af3ea3fd</anchor>
       <arglist>(0)</arglist>
     </member>
   </compound>
@@ -3633,9 +3923,9 @@
     </member>
     <member kind="function">
       <type>t</type>
-      <name>schedule</name>
+      <name>post</name>
       <anchorfile>threadpool-queueimpl-tests_8cc.html</anchorfile>
-      <anchor>a3b5f25948600fcc0a77d1b00203fbc7a</anchor>
+      <anchor>adb8b91c109ca9e9de860b46a0e667431</anchor>
       <arglist>(clear(&amp;s), weak)</arglist>
     </member>
     <member kind="function">
@@ -3661,9 +3951,9 @@
     </member>
     <member kind="function">
       <type>t</type>
-      <name>schedule</name>
+      <name>post</name>
       <anchorfile>threadpool-queueimpl-tests_8cc.html</anchorfile>
-      <anchor>a21ea188df31d0270547987421bd359cc</anchor>
+      <anchor>a55aa0d1e0bcffab7cae785bb46ef9744</anchor>
       <arglist>(clear(&amp;s2))</arglist>
     </member>
     <member kind="function">
@@ -3762,9 +4052,9 @@
     </member>
     <member kind="function">
       <type>pool</type>
-      <name>schedule</name>
+      <name>post</name>
       <anchorfile>threadpool-tests_8cc.html</anchorfile>
-      <anchor>af6efe4ef6b335b567d755939135bd49e</anchor>
+      <anchor>ac4864e24bb058ffe6f378b63f71d8a41</anchor>
       <arglist>(clear(&amp;s))</arglist>
     </member>
     <member kind="function">
@@ -3790,16 +4080,16 @@
     </member>
     <member kind="function">
       <type>pool</type>
-      <name>schedule</name>
+      <name>post</name>
       <anchorfile>threadpool-tests_8cc.html</anchorfile>
-      <anchor>af777d4775e97e4a9eaf9a67f0a652a12</anchor>
+      <anchor>ac4394239886f77e6125d6b862f8da5df</anchor>
       <arglist>(clear(&amp;low), PRIO_NORMAL)</arglist>
     </member>
     <member kind="function">
       <type>pool</type>
-      <name>schedule</name>
+      <name>post</name>
       <anchorfile>threadpool-tests_8cc.html</anchorfile>
-      <anchor>a37220d27324b8f0eef50b2b244a1c257</anchor>
+      <anchor>aab6dc5b23c715d1ec75e5a159fe53088</anchor>
       <arglist>(pass(&amp;low)+clear(&amp;high), PRIO_HIGH)</arglist>
     </member>
     <member kind="function">
@@ -3827,8 +4117,8 @@
       <type>boost::unique_future&lt; int &gt;</type>
       <name>result</name>
       <anchorfile>threadpool-tests_8cc.html</anchorfile>
-      <anchor>a8b8fa7f94c527d10308419be8e984152</anchor>
-      <arglist>(pool.schedule([pa=&amp;a] { return no_op(pa, 42);}))</arglist>
+      <anchor>a59599316415ef45251f9e2dfa34ea750</anchor>
+      <arglist>(pool.submit([pa=&amp;a] { return no_op(pa, 42);}))</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -4422,7 +4712,7 @@
       <type>SampleIterator&lt; const uint8_t &gt;</type>
       <name>result</name>
       <anchorfile>sampleiterator-tests_8cc.html</anchorfile>
-      <anchor>a77d2a177c03f06c9224e4aeecb918065</anchor>
+      <anchor>a937d4dd628a8858b443a399410d2600b</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -7951,139 +8241,6 @@
     <class kind="class">Measure</class>
   </compound>
   <compound kind="file">
-    <name>main.cc</name>
-    <path>gui/src/</path>
-    <filename>gui_2src_2main_8cc.html</filename>
-    <includes id="logger_8hh" name="logger.hh" local="no" import="no" module="no" objc="no">scroom/logger.hh</includes>
-    <includes id="callbacks_8hh" name="callbacks.hh" local="yes" import="no" module="no" objc="no">callbacks.hh</includes>
-    <member kind="function">
-      <type>void</type>
-      <name>usage</name>
-      <anchorfile>gui_2src_2main_8cc.html</anchorfile>
-      <anchor>a7a706f62a62fd6c210230a2faed42f33</anchor>
-      <arglist>(const Scroom::Logger &amp;logger, const std::string &amp;me, const po::options_description &amp;desc, const std::string &amp;message=std::string())</arglist>
-    </member>
-    <member kind="function">
-      <type>int</type>
-      <name>main</name>
-      <anchorfile>gui_2src_2main_8cc.html</anchorfile>
-      <anchor>a0ddf1224851353fc92bfbff6f499fa97</anchor>
-      <arglist>(int argc, char *argv[])</arglist>
-    </member>
-  </compound>
-  <compound kind="file">
-    <name>main.cc</name>
-    <path>plugins/colormap/</path>
-    <filename>plugins_2colormap_2main_8cc.html</filename>
-    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
-    <includes id="colormapplugin_8hh" name="colormapplugin.hh" local="yes" import="no" module="no" objc="no">colormapplugin.hh</includes>
-    <member kind="function">
-      <type>PluginInformationInterface::Ptr</type>
-      <name>getPluginInformation</name>
-      <anchorfile>plugins_2colormap_2main_8cc.html</anchorfile>
-      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
-      <arglist>()</arglist>
-    </member>
-  </compound>
-  <compound kind="file">
-    <name>main.cc</name>
-    <path>plugins/example/</path>
-    <filename>plugins_2example_2main_8cc.html</filename>
-    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
-    <includes id="example_8hh" name="example.hh" local="yes" import="no" module="no" objc="no">example.hh</includes>
-    <member kind="function">
-      <type>PluginInformationInterface::Ptr</type>
-      <name>getPluginInformation</name>
-      <anchorfile>plugins_2example_2main_8cc.html</anchorfile>
-      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
-      <arglist>()</arglist>
-    </member>
-  </compound>
-  <compound kind="file">
-    <name>main.cc</name>
-    <path>plugins/measure/src/</path>
-    <filename>plugins_2measure_2src_2main_8cc.html</filename>
-    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
-    <includes id="measure_8hh" name="measure.hh" local="yes" import="no" module="no" objc="no">measure.hh</includes>
-    <member kind="function">
-      <type>PluginInformationInterface::Ptr</type>
-      <name>getPluginInformation</name>
-      <anchorfile>plugins_2measure_2src_2main_8cc.html</anchorfile>
-      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
-      <arglist>()</arglist>
-    </member>
-  </compound>
-  <compound kind="file">
-    <name>main.cc</name>
-    <path>plugins/metadata/</path>
-    <filename>plugins_2metadata_2main_8cc.html</filename>
-    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
-    <includes id="metadata_8hh" name="metadata.hh" local="yes" import="no" module="no" objc="no">metadata.hh</includes>
-    <member kind="function">
-      <type>PluginInformationInterface::Ptr</type>
-      <name>getPluginInformation</name>
-      <anchorfile>plugins_2metadata_2main_8cc.html</anchorfile>
-      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
-      <arglist>()</arglist>
-    </member>
-  </compound>
-  <compound kind="file">
-    <name>main.cc</name>
-    <path>plugins/pipette/src/</path>
-    <filename>plugins_2pipette_2src_2main_8cc.html</filename>
-    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
-    <includes id="pipette_8hh" name="pipette.hh" local="yes" import="no" module="no" objc="no">pipette.hh</includes>
-    <member kind="function">
-      <type>PluginInformationInterface::Ptr</type>
-      <name>getPluginInformation</name>
-      <anchorfile>plugins_2pipette_2src_2main_8cc.html</anchorfile>
-      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
-      <arglist>()</arglist>
-    </member>
-  </compound>
-  <compound kind="file">
-    <name>main.cc</name>
-    <path>plugins/pnm/src/</path>
-    <filename>plugins_2pnm_2src_2main_8cc.html</filename>
-    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
-    <includes id="pnm_8hh" name="pnm.hh" local="yes" import="no" module="no" objc="no">pnm.hh</includes>
-    <member kind="function">
-      <type>PluginInformationInterface::Ptr</type>
-      <name>getPluginInformation</name>
-      <anchorfile>plugins_2pnm_2src_2main_8cc.html</anchorfile>
-      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
-      <arglist>()</arglist>
-    </member>
-  </compound>
-  <compound kind="file">
-    <name>main.cc</name>
-    <path>plugins/tiff/src/</path>
-    <filename>plugins_2tiff_2src_2main_8cc.html</filename>
-    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
-    <includes id="tiff_8hh" name="tiff.hh" local="yes" import="no" module="no" objc="no">tiff.hh</includes>
-    <member kind="function">
-      <type>PluginInformationInterface::Ptr</type>
-      <name>getPluginInformation</name>
-      <anchorfile>plugins_2tiff_2src_2main_8cc.html</anchorfile>
-      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
-      <arglist>()</arglist>
-    </member>
-  </compound>
-  <compound kind="file">
-    <name>main.cc</name>
-    <path>plugins/transparent-overlay/src/</path>
-    <filename>plugins_2transparent-overlay_2src_2main_8cc.html</filename>
-    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
-    <includes id="transparentoverlay_8hh" name="transparentoverlay.hh" local="yes" import="no" module="no" objc="no">transparentoverlay.hh</includes>
-    <member kind="function">
-      <type>PluginInformationInterface::Ptr</type>
-      <name>getPluginInformation</name>
-      <anchorfile>plugins_2transparent-overlay_2src_2main_8cc.html</anchorfile>
-      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
-      <arglist>()</arglist>
-    </member>
-  </compound>
-  <compound kind="file">
     <name>metadata.cc</name>
     <path>plugins/metadata/</path>
     <filename>metadata_8cc.html</filename>
@@ -8447,6 +8604,139 @@
     <class kind="class">Scroom::Pnm::AsciiSource1bpp</class>
     <namespace>Scroom</namespace>
     <namespace>Scroom::Pnm</namespace>
+  </compound>
+  <compound kind="file">
+    <name>main.cc</name>
+    <path>gui/src/</path>
+    <filename>gui_2src_2main_8cc.html</filename>
+    <includes id="logger_8hh" name="logger.hh" local="no" import="no" module="no" objc="no">scroom/logger.hh</includes>
+    <includes id="callbacks_8hh" name="callbacks.hh" local="yes" import="no" module="no" objc="no">callbacks.hh</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>usage</name>
+      <anchorfile>gui_2src_2main_8cc.html</anchorfile>
+      <anchor>a7a706f62a62fd6c210230a2faed42f33</anchor>
+      <arglist>(const Scroom::Logger &amp;logger, const std::string &amp;me, const po::options_description &amp;desc, const std::string &amp;message=std::string())</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>main</name>
+      <anchorfile>gui_2src_2main_8cc.html</anchorfile>
+      <anchor>a0ddf1224851353fc92bfbff6f499fa97</anchor>
+      <arglist>(int argc, char *argv[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>main.cc</name>
+    <path>plugins/colormap/</path>
+    <filename>plugins_2colormap_2main_8cc.html</filename>
+    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
+    <includes id="colormapplugin_8hh" name="colormapplugin.hh" local="yes" import="no" module="no" objc="no">colormapplugin.hh</includes>
+    <member kind="function">
+      <type>PluginInformationInterface::Ptr</type>
+      <name>getPluginInformation</name>
+      <anchorfile>plugins_2colormap_2main_8cc.html</anchorfile>
+      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>main.cc</name>
+    <path>plugins/example/</path>
+    <filename>plugins_2example_2main_8cc.html</filename>
+    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
+    <includes id="example_8hh" name="example.hh" local="yes" import="no" module="no" objc="no">example.hh</includes>
+    <member kind="function">
+      <type>PluginInformationInterface::Ptr</type>
+      <name>getPluginInformation</name>
+      <anchorfile>plugins_2example_2main_8cc.html</anchorfile>
+      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>main.cc</name>
+    <path>plugins/measure/src/</path>
+    <filename>plugins_2measure_2src_2main_8cc.html</filename>
+    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
+    <includes id="measure_8hh" name="measure.hh" local="yes" import="no" module="no" objc="no">measure.hh</includes>
+    <member kind="function">
+      <type>PluginInformationInterface::Ptr</type>
+      <name>getPluginInformation</name>
+      <anchorfile>plugins_2measure_2src_2main_8cc.html</anchorfile>
+      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>main.cc</name>
+    <path>plugins/metadata/</path>
+    <filename>plugins_2metadata_2main_8cc.html</filename>
+    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
+    <includes id="metadata_8hh" name="metadata.hh" local="yes" import="no" module="no" objc="no">metadata.hh</includes>
+    <member kind="function">
+      <type>PluginInformationInterface::Ptr</type>
+      <name>getPluginInformation</name>
+      <anchorfile>plugins_2metadata_2main_8cc.html</anchorfile>
+      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>main.cc</name>
+    <path>plugins/pipette/src/</path>
+    <filename>plugins_2pipette_2src_2main_8cc.html</filename>
+    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
+    <includes id="pipette_8hh" name="pipette.hh" local="yes" import="no" module="no" objc="no">pipette.hh</includes>
+    <member kind="function">
+      <type>PluginInformationInterface::Ptr</type>
+      <name>getPluginInformation</name>
+      <anchorfile>plugins_2pipette_2src_2main_8cc.html</anchorfile>
+      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>main.cc</name>
+    <path>plugins/pnm/src/</path>
+    <filename>plugins_2pnm_2src_2main_8cc.html</filename>
+    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
+    <includes id="pnm_8hh" name="pnm.hh" local="yes" import="no" module="no" objc="no">pnm.hh</includes>
+    <member kind="function">
+      <type>PluginInformationInterface::Ptr</type>
+      <name>getPluginInformation</name>
+      <anchorfile>plugins_2pnm_2src_2main_8cc.html</anchorfile>
+      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>main.cc</name>
+    <path>plugins/tiff/src/</path>
+    <filename>plugins_2tiff_2src_2main_8cc.html</filename>
+    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
+    <includes id="tiff_8hh" name="tiff.hh" local="yes" import="no" module="no" objc="no">tiff.hh</includes>
+    <member kind="function">
+      <type>PluginInformationInterface::Ptr</type>
+      <name>getPluginInformation</name>
+      <anchorfile>plugins_2tiff_2src_2main_8cc.html</anchorfile>
+      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>main.cc</name>
+    <path>plugins/transparent-overlay/src/</path>
+    <filename>plugins_2transparent-overlay_2src_2main_8cc.html</filename>
+    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
+    <includes id="transparentoverlay_8hh" name="transparentoverlay.hh" local="yes" import="no" module="no" objc="no">transparentoverlay.hh</includes>
+    <member kind="function">
+      <type>PluginInformationInterface::Ptr</type>
+      <name>getPluginInformation</name>
+      <anchorfile>plugins_2transparent-overlay_2src_2main_8cc.html</anchorfile>
+      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
+      <arglist>()</arglist>
+    </member>
   </compound>
   <compound kind="file">
     <name>tiff.cc</name>
@@ -11266,6 +11556,24 @@
       <arglist></arglist>
     </member>
   </compound>
+  <compound kind="struct">
+    <name>Scroom::RingBufferSink::ConsumeResult</name>
+    <filename>structScroom_1_1RingBufferSink_1_1ConsumeResult.html</filename>
+    <member kind="variable">
+      <type>std::vector&lt; Entry &gt;</type>
+      <name>entries</name>
+      <anchorfile>structScroom_1_1RingBufferSink_1_1ConsumeResult.html</anchorfile>
+      <anchor>a462704f442d374dff9e1aecc53f20025</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>std::uint64_t</type>
+      <name>nextSeq</name>
+      <anchorfile>structScroom_1_1RingBufferSink_1_1ConsumeResult.html</anchorfile>
+      <anchor>a797e8567413054e00191f7fc6c427515</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
   <compound kind="class">
     <name>Scroom::Utils::Context</name>
     <filename>classScroom_1_1Utils_1_1Context.html</filename>
@@ -12136,6 +12444,31 @@
       <name>statusMessages</name>
       <anchorfile>classDummyView.html</anchorfile>
       <anchor>afb91ded345798c089a755e4c6163c1e3</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>Scroom::RingBufferSink::Entry</name>
+    <filename>structScroom_1_1RingBufferSink_1_1Entry.html</filename>
+    <member kind="variable">
+      <type>std::uint64_t</type>
+      <name>seq</name>
+      <anchorfile>structScroom_1_1RingBufferSink_1_1Entry.html</anchorfile>
+      <anchor>acd6f050f47d73dc304bb3a3973afa784</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>spdlog::level::level_enum</type>
+      <name>level</name>
+      <anchorfile>structScroom_1_1RingBufferSink_1_1Entry.html</anchorfile>
+      <anchor>abe1cb691ef656399f61c29cc1cc7da01</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>std::string</type>
+      <name>text</name>
+      <anchorfile>structScroom_1_1RingBufferSink_1_1Entry.html</anchorfile>
+      <anchor>a276aa654facba621c9fbe0e5838c533a</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -18709,6 +19042,96 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>Scroom::RingBufferSink</name>
+    <filename>classScroom_1_1RingBufferSink.html</filename>
+    <class kind="struct">Scroom::RingBufferSink::ConsumeResult</class>
+    <class kind="struct">Scroom::RingBufferSink::Entry</class>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; RingBufferSink &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>classScroom_1_1RingBufferSink.html</anchorfile>
+      <anchor>a181c596238444cbac5f5a1e86762f7ce</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>RingBufferSink</name>
+      <anchorfile>classScroom_1_1RingBufferSink.html</anchorfile>
+      <anchor>abfb802f058df9063669ace67ada63a4b</anchor>
+      <arglist>(std::function&lt; void()&gt; wakeupCallback, std::size_t capacity=DEFAULT_CAPACITY)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::vector&lt; Entry &gt;</type>
+      <name>snapshot</name>
+      <anchorfile>classScroom_1_1RingBufferSink.html</anchorfile>
+      <anchor>a21a09bc3992f6cab7fbfaad4f587bdd0</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>ConsumeResult</type>
+      <name>consumeSince</name>
+      <anchorfile>classScroom_1_1RingBufferSink.html</anchorfile>
+      <anchor>af083f8202fafbe1b29317391e46da3be</anchor>
+      <arglist>(std::uint64_t lastSeq)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::size_t</type>
+      <name>capacity</name>
+      <anchorfile>classScroom_1_1RingBufferSink.html</anchorfile>
+      <anchor>a91a9c112acbe352ae972ab8b91195208</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="variable" static="yes">
+      <type>static constexpr std::size_t</type>
+      <name>DEFAULT_CAPACITY</name>
+      <anchorfile>classScroom_1_1RingBufferSink.html</anchorfile>
+      <anchor>a623d685d19cb59c4282eba87bc22a1ab</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function" protection="protected">
+      <type>void</type>
+      <name>sink_it_</name>
+      <anchorfile>classScroom_1_1RingBufferSink.html</anchorfile>
+      <anchor>a87365f32de6e9bec210409a9022f5ae7</anchor>
+      <arglist>(const spdlog::details::log_msg &amp;msg) override</arglist>
+    </member>
+    <member kind="function" protection="protected">
+      <type>void</type>
+      <name>flush_</name>
+      <anchorfile>classScroom_1_1RingBufferSink.html</anchorfile>
+      <anchor>a78c50adde25dc59818dab04772f93d05</anchor>
+      <arglist>() override</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>boost::circular_buffer&lt; Entry &gt;</type>
+      <name>m_entries</name>
+      <anchorfile>classScroom_1_1RingBufferSink.html</anchorfile>
+      <anchor>a81ee453dab3a56c6e0c1ebe57c5bdd67</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>std::uint64_t</type>
+      <name>m_nextSeq</name>
+      <anchorfile>classScroom_1_1RingBufferSink.html</anchorfile>
+      <anchor>a6cdfd2757165413a4fd00fa8b90ee606</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>bool</type>
+      <name>m_pendingWakeup</name>
+      <anchorfile>classScroom_1_1RingBufferSink.html</anchorfile>
+      <anchor>ae40ca9cb45990e7ed0e7f1cee7304c5e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>std::function&lt; void()&gt;</type>
+      <name>m_wakeupCallback</name>
+      <anchorfile>classScroom_1_1RingBufferSink.html</anchorfile>
+      <anchor>a6b01d6c16e830a36ef1a6ba8bc6f3237</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>Ruler</name>
     <filename>classRuler.html</filename>
     <member kind="enumeration">
@@ -20822,10 +21245,17 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>auto</type>
-      <name>schedule</name>
+      <type>void</type>
+      <name>post</name>
       <anchorfile>classThreadPool.html</anchorfile>
-      <anchor>a75b74859fed39f21cb3bb09b78137fa2</anchor>
+      <anchor>a3b6be78dc258ee937775128c101aa5fc</anchor>
+      <arglist>(auto &amp;&amp;... params)</arglist>
+    </member>
+    <member kind="function">
+      <type>auto</type>
+      <name>submit</name>
+      <anchorfile>classThreadPool.html</anchorfile>
+      <anchor>a6179ee6b010f0462037be5378afc2339</anchor>
       <arglist>(auto &amp;&amp;... params)</arglist>
     </member>
     <member kind="function">
@@ -24991,6 +25421,17 @@
     </member>
   </compound>
   <compound kind="namespace">
+    <name>anonymous_namespace{ringbuffer-sink-tests.cc}</name>
+    <filename>namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html</filename>
+    <member kind="function">
+      <type>std::shared_ptr&lt; spdlog::logger &gt;</type>
+      <name>createLogger</name>
+      <anchorfile>namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html</anchorfile>
+      <anchor>a15a91985361401f76bc8ee0186a5470c</anchor>
+      <arglist>(const Scroom::RingBufferSink::Ptr &amp;sink, const std::string &amp;name)</arglist>
+    </member>
+  </compound>
+  <compound kind="namespace">
     <name>anonymous_namespace{sampleiterator-tests.cc}</name>
     <filename>namespaceanonymous__namespace_02sampleiterator-tests_8cc_03.html</filename>
     <member kind="variable">
@@ -25310,6 +25751,7 @@
     <namespace>Scroom::Utils</namespace>
     <class kind="class">Scroom::Logger</class>
     <class kind="class">Scroom::LoggerContainer</class>
+    <class kind="class">Scroom::RingBufferSink</class>
     <class kind="class">Scroom::Semaphore</class>
   </compound>
   <compound kind="namespace">

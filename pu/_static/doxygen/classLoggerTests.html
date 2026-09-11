@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-51-g058ffe8ea</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-g4002e422d</span>
    </div>
   </td>
  </tr>
@@ -177,8 +177,8 @@ Public Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   30</span>    : <a class="code hl_variable" href="classLoggerTests.html#a311040e45d1df5664902c566053b1e95">loggerContainer</a>(std::make_shared&lt;LoggerContainer&gt;())</div>
 <div class="line"><span class="lineno">   31</span>    , <a class="code hl_variable" href="classLoggerTests.html#acdf5633e1a13ce089c27388d0eae42e8">logger</a>(<a class="code hl_variable" href="classLoggerTests.html#a311040e45d1df5664902c566053b1e95">loggerContainer</a>)</div>
 <div class="line"><span class="lineno">   32</span>  {</div>
-<div class="line"><span class="lineno">   33</span>    <span class="keyword">auto</span> sink = std::make_shared&lt;spdlog::sinks::ostream_sink_mt&gt;(<a class="code hl_variable" href="classLoggerTests.html#a337251d7117da12c355c1d0e0f43c2c0">oss</a>);</div>
-<div class="line"><span class="lineno">   34</span>    <span class="keyword">auto</span> spdlogger = std::make_shared&lt;spdlog::logger&gt;(<span class="stringliteral">&quot;test&quot;</span>, sink);</div>
+<div class="line"><span class="lineno">   33</span>    <span class="keyword">auto</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a757ac11cad97288b51ea35a1287a6ee1">sink</a> = std::make_shared&lt;spdlog::sinks::ostream_sink_mt&gt;(<a class="code hl_variable" href="classLoggerTests.html#a337251d7117da12c355c1d0e0f43c2c0">oss</a>);</div>
+<div class="line"><span class="lineno">   34</span>    <span class="keyword">auto</span> spdlogger = std::make_shared&lt;spdlog::logger&gt;(<span class="stringliteral">&quot;test&quot;</span>, <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a757ac11cad97288b51ea35a1287a6ee1">sink</a>);</div>
 <div class="line"><span class="lineno">   35</span>    spdlogger-&gt;set_pattern(<span class="stringliteral">&quot;%v&quot;</span>);</div>
 <div class="line"><span class="lineno">   36</span>    <a class="code hl_variable" href="classLoggerTests.html#a311040e45d1df5664902c566053b1e95">loggerContainer</a>-&gt;set(spdlogger);</div>
 <div class="line"><span class="lineno">   37</span>    <a class="code hl_variable" href="classLoggerTests.html#acdf5633e1a13ce089c27388d0eae42e8">logger</a>-&gt;set_level(spdlog::level::debug);</div>
@@ -186,6 +186,7 @@ Public Attributes</h2></td></tr>
 <div class="ttc" id="aclassLoggerTests_html_a311040e45d1df5664902c566053b1e95"><div class="ttname"><a href="classLoggerTests.html#a311040e45d1df5664902c566053b1e95">LoggerTests::loggerContainer</a></div><div class="ttdeci">LoggerContainer::Ptr loggerContainer</div><div class="ttdef"><b>Definition</b> logger-tests.cc:26</div></div>
 <div class="ttc" id="aclassLoggerTests_html_a337251d7117da12c355c1d0e0f43c2c0"><div class="ttname"><a href="classLoggerTests.html#a337251d7117da12c355c1d0e0f43c2c0">LoggerTests::oss</a></div><div class="ttdeci">std::ostringstream oss</div><div class="ttdef"><b>Definition</b> logger-tests.cc:25</div></div>
 <div class="ttc" id="aclassLoggerTests_html_acdf5633e1a13ce089c27388d0eae42e8"><div class="ttname"><a href="classLoggerTests.html#acdf5633e1a13ce089c27388d0eae42e8">LoggerTests::logger</a></div><div class="ttdeci">Logger logger</div><div class="ttdef"><b>Definition</b> logger-tests.cc:27</div></div>
+<div class="ttc" id="aringbuffer-sink-tests_8cc_html_a757ac11cad97288b51ea35a1287a6ee1"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a757ac11cad97288b51ea35a1287a6ee1">sink</a></div><div class="ttdeci">auto sink</div><div class="ttdef"><b>Definition</b> ringbuffer-sink-tests.cc:90</div></div>
 </div><!-- fragment -->
 </div>
 </div>

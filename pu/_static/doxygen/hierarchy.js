@@ -24,6 +24,9 @@ var hierarchy =
     ] ],
     [ "AsyncDeleter< T >", "classAsyncDeleter.html", null ],
     [ "anonymous_namespace{gtkhelper-tests.cc}::B", "classanonymous__namespace_02gtkhelper-tests_8cc_03_1_1B.html", null ],
+    [ "spdlog::sinks::base_sink", null, [
+      [ "Scroom::RingBufferSink", "classScroom_1_1RingBufferSink.html", null ]
+    ] ],
     [ "BaseCounter", "classBaseCounter.html", [
       [ "InvalidatingCounter", "classInvalidatingCounter.html", null ]
     ] ],
@@ -36,6 +39,7 @@ var hierarchy =
     [ "Colormap", "classColormap.html", null ],
     [ "Scroom::ColormapImpl::Colormaps", "classScroom_1_1ColormapImpl_1_1Colormaps.html", null ],
     [ "ConstTile", "classConstTile.html", null ],
+    [ "Scroom::RingBufferSink::ConsumeResult", "structScroom_1_1RingBufferSink_1_1ConsumeResult.html", null ],
     [ "Scroom::Utils::Count", "classScroom_1_1Utils_1_1Count.html", null ],
     [ "Scroom::Utils::Counted< C >", "classScroom_1_1Utils_1_1Counted.html", null ],
     [ "Scroom::Utils::Counted< TestCounted >", "classScroom_1_1Utils_1_1Counted.html", [
@@ -139,6 +143,7 @@ var hierarchy =
         [ "View", "classView.html", null ]
       ] ]
     ] ],
+    [ "Scroom::RingBufferSink::Entry", "structScroom_1_1RingBufferSink_1_1Entry.html", null ],
     [ "equal_to< Key >", "classequal__to.html", null ],
     [ "Scroom::Utils::Detail::ErrorSignalHandler", "classScroom_1_1Utils_1_1Detail_1_1ErrorSignalHandler.html", null ],
     [ "std::exception", null, [

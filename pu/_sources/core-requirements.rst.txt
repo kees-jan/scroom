@@ -29,9 +29,9 @@ High throughput
 ^^^^^^^^^^^^^^^
 
 High throughput is achieved by using all available cores wherever possible/required.
-This is done by splitting any task into smaller chunks, and submitting them on the :scroom:`CpuBound` threadpool by calling its :scroom:`ThreadPool::schedule` method.
-Be sure to supply a :scroom:`queue <Queue>` object when you call :scroom:`ThreadPool::schedule`.
-If you later delete the :scroom:`queue <Queue>` object, the work you scheduled will be canceled.
+This is done by splitting any task into smaller chunks, and submitting them on the :scroom:`CpuBound` threadpool by calling
+its :scroom:`ThreadPool::post` or :scroom:`ThreadPool::submit` methods. When you do, be sure to supply a :scroom:`queue <Queue>`
+object. If you later delete the :scroom:`queue <Queue>` object, the work you scheduled will be canceled.
 
 80/20 rule
 ----------

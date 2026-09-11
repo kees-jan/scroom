@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-51-g058ffe8ea</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-g4002e422d</span>
    </div>
   </td>
  </tr>
@@ -240,18 +240,18 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   23</span>    <span class="keyword">static</span> std::mutex <a class="code hl_variable" href="classScroom_1_1LoggerContainer.html#a2768475599dfc5dbe996b7ebb0c2e56f">mut</a>;</div>
 <div class="line"><span class="lineno">   24</span>    <span class="keyword">static</span> std::weak_ptr&lt;LoggerContainer&gt; <a class="code hl_function" href="classScroom_1_1LoggerContainer.html#a0c0ee7a8e8d70f93e094510c6f3fcdf4">instance</a>;</div>
 <div class="line"><span class="lineno">   25</span>    std::lock_guard <span class="keyword">const</span> lock(<a class="code hl_variable" href="classScroom_1_1LoggerContainer.html#a2768475599dfc5dbe996b7ebb0c2e56f">mut</a>);</div>
-<div class="line"><span class="lineno">   26</span>    <a class="code hl_typedef" href="classScroom_1_1LoggerContainer.html#a755bcf87687363ccc03e6c32ff71a115">Ptr</a> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_function" href="classScroom_1_1LoggerContainer.html#a0c0ee7a8e8d70f93e094510c6f3fcdf4">instance</a>.lock();</div>
-<div class="line"><span class="lineno">   27</span>    <span class="keywordflow">if</span>(!<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
+<div class="line"><span class="lineno">   26</span>    <a class="code hl_typedef" href="classScroom_1_1LoggerContainer.html#a755bcf87687363ccc03e6c32ff71a115">Ptr</a> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_function" href="classScroom_1_1LoggerContainer.html#a0c0ee7a8e8d70f93e094510c6f3fcdf4">instance</a>.lock();</div>
+<div class="line"><span class="lineno">   27</span>    <span class="keywordflow">if</span>(!<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>)</div>
 <div class="line"><span class="lineno">   28</span>    {</div>
-<div class="line"><span class="lineno">   29</span>      <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_typedef" href="classScroom_1_1LoggerContainer.html#a755bcf87687363ccc03e6c32ff71a115">Ptr</a>(<span class="keyword">new</span> <a class="code hl_function" href="classScroom_1_1LoggerContainer.html#a90f3502174de8d73fb8812f50210139a">LoggerContainer</a>());</div>
-<div class="line"><span class="lineno">   30</span>      <a class="code hl_function" href="classScroom_1_1LoggerContainer.html#a0c0ee7a8e8d70f93e094510c6f3fcdf4">instance</a> = <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">   29</span>      <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_typedef" href="classScroom_1_1LoggerContainer.html#a755bcf87687363ccc03e6c32ff71a115">Ptr</a>(<span class="keyword">new</span> <a class="code hl_function" href="classScroom_1_1LoggerContainer.html#a90f3502174de8d73fb8812f50210139a">LoggerContainer</a>());</div>
+<div class="line"><span class="lineno">   30</span>      <a class="code hl_function" href="classScroom_1_1LoggerContainer.html#a0c0ee7a8e8d70f93e094510c6f3fcdf4">instance</a> = <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">   31</span>    }</div>
-<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">   33</span>  }</div>
 <div class="ttc" id="aclassScroom_1_1LoggerContainer_html_a0c0ee7a8e8d70f93e094510c6f3fcdf4"><div class="ttname"><a href="classScroom_1_1LoggerContainer.html#a0c0ee7a8e8d70f93e094510c6f3fcdf4">Scroom::LoggerContainer::instance</a></div><div class="ttdeci">static Ptr instance()</div><div class="ttdef"><b>Definition</b> logger.cc:21</div></div>
 <div class="ttc" id="aclassScroom_1_1LoggerContainer_html_a755bcf87687363ccc03e6c32ff71a115"><div class="ttname"><a href="classScroom_1_1LoggerContainer.html#a755bcf87687363ccc03e6c32ff71a115">Scroom::LoggerContainer::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; LoggerContainer &gt; Ptr</div><div class="ttdef"><b>Definition</b> logger.hh:33</div></div>
 <div class="ttc" id="aclassScroom_1_1LoggerContainer_html_a90f3502174de8d73fb8812f50210139a"><div class="ttname"><a href="classScroom_1_1LoggerContainer.html#a90f3502174de8d73fb8812f50210139a">Scroom::LoggerContainer::LoggerContainer</a></div><div class="ttdeci">LoggerContainer()</div><div class="ttdef"><b>Definition</b> logger.cc:16</div></div>
-<div class="ttc" id="asampleiterator-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">SampleIterator&lt; const uint8_t &gt; result</div><div class="ttdef"><b>Definition</b> sampleiterator-tests.cc:94</div></div>
+<div class="ttc" id="aringbuffer-sink-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">auto result</div><div class="ttdef"><b>Definition</b> ringbuffer-sink-tests.cc:76</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classScroom_1_1LoggerContainer.html#a0c0ee7a8e8d70f93e094510c6f3fcdf4">instance()</a>, and <a class="el" href="gui_2src_2main_8cc.html#a0ddf1224851353fc92bfbff6f499fa97">main()</a>.</p>
 <div class="dynheader">

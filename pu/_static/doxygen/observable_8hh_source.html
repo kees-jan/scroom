@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-51-g058ffe8ea</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-g4002e422d</span>
    </div>
   </td>
  </tr>
@@ -285,17 +285,17 @@ $(document).ready(function(){initNavTree('observable_8hh_source.html',''); initR
 <div class="foldopen" id="foldopen00196" data-start="{" data-end="}">
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno"><a class="line" href="classScroom_1_1Utils_1_1Observable.html#ae215a3f722f5894dd8fdc1cb9b190c0e">  196</a></span>  std::list&lt;typename Observable&lt;T&gt;::Observer&gt; <a class="code hl_function" href="classScroom_1_1Utils_1_1Observable.html#ae215a3f722f5894dd8fdc1cb9b190c0e">Observable&lt;T&gt;::getObservers</a>()</div>
 <div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>  {</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    std::list&lt;typename Observable&lt;T&gt;::Observer&gt; <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    std::list&lt;typename Observable&lt;T&gt;::Observer&gt; <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    <span class="keywordflow">for</span>(<span class="keyword">const</span> <span class="keyword">typename</span> <a class="code hl_typedef" href="classScroom_1_1Utils_1_1Detail_1_1Registration.html#a0bc6b88c23a6dd26782db02886dfcccc">Registration::Ptr</a>&amp; <a class="code hl_variable" href="observable-tests_8cc.html#a6be90ef385d7acbcbba0523b2d6bbc94">registration</a>: registrationMap-&gt;values())</div>
 <div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    {</div>
 <div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>      <a class="code hl_typedef" href="classScroom_1_1Utils_1_1Observable.html#af3e1005371eb41f254a9e330e1c20a4b">Observer</a> <span class="keyword">const</span> o = <a class="code hl_variable" href="observable-tests_8cc.html#a6be90ef385d7acbcbba0523b2d6bbc94">registration</a>-&gt;observer.lock();</div>
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>      <span class="keywordflow">if</span>(o)</div>
 <div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>      {</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>.push_back(o);</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>.push_back(o);</div>
 <div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>      }</div>
 <div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    }</div>
 <div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span> </div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>  }</div>
 </div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
@@ -401,7 +401,7 @@ $(document).ready(function(){initNavTree('observable_8hh_source.html',''); initR
 <div class="ttc" id="aobservable-tests_8cc_html_a6be90ef385d7acbcbba0523b2d6bbc94"><div class="ttname"><a href="observable-tests_8cc.html#a6be90ef385d7acbcbba0523b2d6bbc94">registration</a></div><div class="ttdeci">Stuff registration</div><div class="ttdef"><b>Definition</b> observable-tests.cc:96</div></div>
 <div class="ttc" id="aobservable-tests_8cc_html_ae2e3562a094e3fab188a3f99dc2ed902"><div class="ttname"><a href="observable-tests_8cc.html#ae2e3562a094e3fab188a3f99dc2ed902">observer</a></div><div class="ttdeci">TestObserver::Ptr observer</div><div class="ttdef"><b>Definition</b> observable-tests.cc:91</div></div>
 <div class="ttc" id="apipette-tests_8cc_html_a5437a4a8681ee4e938e2ac034634ce35"><div class="ttname"><a href="pipette-tests_8cc.html#a5437a4a8681ee4e938e2ac034634ce35">token</a></div><div class="ttdeci">Scroom::Bookkeeping::Token const token</div><div class="ttdef"><b>Definition</b> pipette-tests.cc:269</div></div>
-<div class="ttc" id="asampleiterator-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">SampleIterator&lt; const uint8_t &gt; result</div><div class="ttdef"><b>Definition</b> sampleiterator-tests.cc:94</div></div>
+<div class="ttc" id="aringbuffer-sink-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">auto result</div><div class="ttdef"><b>Definition</b> ringbuffer-sink-tests.cc:76</div></div>
 <div class="ttc" id="athreadpool-queue-tests_8cc_html_a2c9addcc3f33120c718dfd607595b174"><div class="ttname"><a href="threadpool-queue-tests_8cc.html#a2c9addcc3f33120c718dfd607595b174">t</a></div><div class="ttdeci">ThreadPool t(0)</div></div>
 <div class="ttc" id="atransformpresentation__test_8cc_html_a0e8a17dea24fd000a1eabbea951fb099"><div class="ttname"><a href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a></div><div class="ttdeci">Scroom::Utils::Rectangle&lt; double &gt; const r</div><div class="ttdef"><b>Definition</b> transformpresentation_test.cc:65</div></div>
 <div class="ttc" id="autilities_8hh_html"><div class="ttname"><a href="utilities_8hh.html">utilities.hh</a></div></div>

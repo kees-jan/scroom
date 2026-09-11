@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-51-g058ffe8ea</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-g4002e422d</span>
    </div>
   </td>
  </tr>
@@ -348,7 +348,7 @@ Here is the caller graph for this function:</div>
 
 <p>Implements <a class="el" href="classScroom_1_1TiledBitmap_1_1OpenTiledBitmapInterface.html#a30fb80da122c9616727d0e50e7816517">Scroom::TiledBitmap::OpenTiledBitmapInterface</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   39</span>{</div>
-<div class="line"><span class="lineno">   40</span>  std::list&lt;GtkFileFilter*&gt; <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">   40</span>  std::list&lt;GtkFileFilter*&gt; <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">   41</span> </div>
 <div class="line"><span class="lineno">   42</span>  GtkFileFilter* filter = gtk_file_filter_new();</div>
 <div class="line"><span class="lineno">   43</span>  gtk_file_filter_set_name(filter, <span class="stringliteral">&quot;Pnm files&quot;</span>);</div>
@@ -356,11 +356,11 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   45</span>  gtk_file_filter_add_pattern(filter, <span class="stringliteral">&quot;*.pgm&quot;</span>);</div>
 <div class="line"><span class="lineno">   46</span>  gtk_file_filter_add_pattern(filter, <span class="stringliteral">&quot;*.ppm&quot;</span>);</div>
 <div class="line"><span class="lineno">   47</span>  gtk_file_filter_add_pattern(filter, <span class="stringliteral">&quot;*.pbm&quot;</span>);</div>
-<div class="line"><span class="lineno">   48</span>  <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>.push_back(filter);</div>
+<div class="line"><span class="lineno">   48</span>  <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>.push_back(filter);</div>
 <div class="line"><span class="lineno">   49</span> </div>
-<div class="line"><span class="lineno">   50</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">   50</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">   51</span>}</div>
-<div class="ttc" id="asampleiterator-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">SampleIterator&lt; const uint8_t &gt; result</div><div class="ttdef"><b>Definition</b> sampleiterator-tests.cc:94</div></div>
+<div class="ttc" id="aringbuffer-sink-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">auto result</div><div class="ttdef"><b>Definition</b> ringbuffer-sink-tests.cc:76</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -500,115 +500,116 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classPnm_a512fa4ba81d11455c33b34b28588e629_cgraph.png" border="0" usemap="#aclassPnm_a512fa4ba81d11455c33b34b28588e629_cgraph" alt=""/></div>
 <map name="aclassPnm_a512fa4ba81d11455c33b34b28588e629_cgraph" id="aclassPnm_a512fa4ba81d11455c33b34b28588e629_cgraph">
-<area shape="rect" title=" " alt="" coords="5,929,96,954"/>
-<area shape="rect" href="classLayer.html#a8f3623d32725dbc8537779fb7f682e46" title=" " alt="" coords="202,714,309,739"/>
-<area shape="poly" title=" " alt="" coords="52,928,60,892,77,844,104,793,121,770,142,750,164,737,188,729,189,734,166,742,146,754,125,773,108,796,82,846,65,894,57,929"/>
-<area shape="rect" href="classScroom_1_1Pnm_1_1BinarySource.html#ab40b0ba1f7a0795c02cc00bc20d12778" title=" " alt="" coords="154,764,357,804"/>
-<area shape="poly" title=" " alt="" coords="56,927,87,873,112,841,142,814,151,808,154,813,146,818,116,845,92,876,60,930"/>
-<area shape="rect" href="classScroom_1_1Pnm_1_1AsciiSource.html#afd6f9a8d54585548dc31abddea0c3a07" title=" " alt="" coords="160,828,351,868"/>
-<area shape="poly" title=" " alt="" coords="66,926,101,902,143,878,161,870,163,875,145,882,103,906,70,931"/>
-<area shape="rect" href="classScroom_1_1Pnm_1_1AsciiSource1bpp.html#a870c5cadb8d9a956299f7b21ad028c15" title=" " alt="" coords="144,892,367,932"/>
-<area shape="poly" title=" " alt="" coords="96,932,130,927,131,933,97,938"/>
-<area shape="rect" href="namespaceScroom_1_1Utils.html#a053ab918264fd8b7dca49cacf95060d9" title=" " alt="" coords="176,957,335,982"/>
-<area shape="poly" title=" " alt="" coords="97,945,163,954,162,959,96,950"/>
-<area shape="rect" href="loader_8cc.html#a6caa967df34751dfd7c06745d1df4a1e" title=" " alt="" coords="230,1006,281,1031"/>
-<area shape="poly" title=" " alt="" coords="72,952,106,972,145,991,182,1002,217,1010,216,1015,180,1008,143,996,103,977,70,956"/>
-<area shape="rect" href="namespaceScroom_1_1Pnm.html#afb404d82507eabea3723d854f97b1ae4" title=" " alt="" coords="181,1209,329,1234"/>
-<area shape="poly" title=" " alt="" coords="63,953,239,1196,235,1199,59,956"/>
-<area shape="rect" href="namespaceScroom_1_1TiledBitmap.html#a55c09152eec48a7f0b8b0819cd243e4d" title=" " alt="" coords="162,1411,349,1451"/>
-<area shape="poly" title=" " alt="" coords="57,954,88,1075,114,1159,146,1244,191,1329,234,1398,230,1401,186,1332,142,1246,109,1161,82,1076,52,955"/>
-<area shape="rect" href="loader_8cc.html#a19de4cc7f4540f821a9018ee9b51cbd7" title=" " alt="" coords="455,803,587,829"/>
-<area shape="poly" title=" " alt="" coords="281,1017,324,1012,346,1004,365,991,379,973,386,955,388,917,390,877,397,857,413,838,441,822,444,826,416,842,402,860,395,878,393,917,392,956,384,976,368,995,348,1009,325,1017,281,1022"/>
-<area shape="rect" href="callbacks_8cc.html#a6a123442252e099c84849ff0ad12d41a" title=" " alt="" coords="437,853,606,878"/>
-<area shape="poly" title=" " alt="" coords="281,1016,323,1010,345,1003,365,991,376,981,382,970,389,946,395,921,402,909,413,897,438,881,441,886,416,901,406,912,400,923,394,947,387,972,380,984,368,995,347,1008,324,1016,281,1021"/>
-<area shape="rect" href="classPluginManager.html#a724cc4d4d92c9273606c91909b508ebd" title=" " alt="" coords="1171,981,1373,1006"/>
-<area shape="poly" title=" " alt="" coords="281,1018,446,1029,676,1040,775,1043,875,1040,999,1030,1122,1013,1178,1005,1179,1011,1123,1019,999,1035,875,1045,775,1048,676,1045,446,1034,281,1023"/>
-<area shape="rect" href="classScroomInterfaceImpl.html#a3e8a5e572e1df0329737e382521166f9" title=" " alt="" coords="442,1107,601,1147"/>
-<area shape="poly" title=" " alt="" coords="282,1028,416,1086,452,1099,450,1104,414,1090,280,1032"/>
-<area shape="rect" href="callbacks_8cc.html#a1477024fd79f6507c4fa01a5b8e85d31" title=" " alt="" coords="684,1006,867,1031"/>
-<area shape="poly" title=" " alt="" coords="281,1016,670,1016,670,1021,281,1021"/>
-<area shape="rect" href="callbacks_8cc.html#a19dc44b0b71d02dc59a3c16fdf3fe48b" title=" " alt="" coords="716,521,835,546"/>
-<area shape="poly" title=" " alt="" coords="605,850,626,838,658,807,685,772,708,733,726,693,753,617,767,559,772,560,758,619,731,695,712,735,689,775,662,811,630,842,608,855"/>
-<area shape="rect" href="callbacks_8cc.html#aeba2cf448752ce6617c03f7dd34ffc7b" title=" " alt="" coords="935,841,1110,881"/>
-<area shape="poly" title=" " alt="" coords="606,862,921,859,921,865,606,867"/>
-<area shape="rect" href="classView.html#a1e1cc4861ca8e2919be4990c0a8fc8a1" title=" " alt="" coords="971,594,1074,619"/>
-<area shape="poly" title=" " alt="" coords="814,544,923,579,959,588,957,594,922,584,812,549"/>
-<area shape="rect" href="callbacks_8cc.html#aa368b65b001e2f9e44a1e69b3098881a" title=" " alt="" coords="951,643,1094,669"/>
-<area shape="poly" title=" " alt="" coords="793,544,849,585,885,608,924,628,946,637,945,642,922,633,883,613,846,590,790,548"/>
-<area shape="rect" href="callbacks_8cc.html#a30b2ed4bb389a1225baaa7ab3c8d9d88" title=" " alt="" coords="936,693,1109,718"/>
-<area shape="poly" title=" " alt="" coords="788,545,840,609,880,646,924,678,940,686,938,690,921,682,876,650,837,612,784,548"/>
-<area shape="rect" href="callbacks_8cc.html#a8052e42ad29aca43964bb04ea379f794" title=" " alt="" coords="929,742,1116,767"/>
-<area shape="poly" title=" " alt="" coords="785,545,803,582,833,631,874,683,898,707,924,727,937,734,934,739,921,732,895,711,870,687,829,634,799,584,780,547"/>
-<area shape="rect" href="callbacks_8cc.html#ab6e722c4fcdd409e30c2d81343ed771e" title=" " alt="" coords="953,791,1092,817"/>
-<area shape="poly" title=" " alt="" coords="783,546,799,590,827,653,869,720,895,750,924,777,942,787,939,791,921,781,891,754,864,723,822,656,794,592,778,547"/>
-<area shape="rect" href="callbacks_8cc.html#a9c37395ebdd4c59a37b6dc38d574a4d7" title=" " alt="" coords="926,5,1119,45"/>
-<area shape="poly" title=" " alt="" coords="774,520,778,442,784,384,796,318,814,248,840,179,875,113,921,56,925,51,929,55,925,59,879,116,845,181,819,250,801,319,789,384,783,442,779,521"/>
-<area shape="rect" href="callbacks_8cc.html#ae774492ed1bbe65c2041bf593ef6bb8f" title=" " alt="" coords="933,69,1113,109"/>
-<area shape="poly" title=" " alt="" coords="775,520,782,451,803,343,822,284,847,224,880,169,921,119,925,115,929,119,925,123,884,172,852,227,827,286,808,345,787,451,780,521"/>
-<area shape="rect" href="callbacks_8cc.html#a42fddb88db6e7c73e37aa07d1cf0de57" title=" " alt="" coords="938,134,1107,159"/>
-<area shape="poly" title=" " alt="" coords="775,520,784,457,807,362,826,310,851,258,882,210,921,169,927,164,930,168,924,173,886,213,855,261,831,312,812,363,789,458,780,521"/>
-<area shape="rect" href="callbacks_8cc.html#a0f6e53b3f2476af215a5c9c87e71e0b8" title=" " alt="" coords="933,183,1112,209"/>
-<area shape="poly" title=" " alt="" coords="776,520,788,464,813,382,832,338,856,294,886,253,921,218,928,213,931,217,924,222,890,256,861,297,837,340,818,384,793,465,781,521"/>
-<area shape="rect" href="callbacks_8cc.html#a6cd157f2cb298e0a89ab2916c618f9fe" title=" " alt="" coords="954,955,1091,981"/>
-<area shape="poly" title=" " alt="" coords="780,546,786,616,807,722,825,781,850,840,883,894,924,941,943,953,940,957,921,945,879,897,846,842,820,783,802,724,781,617,774,547"/>
-<area shape="poly" title=" " alt="" coords="782,545,795,597,822,672,841,714,865,754,892,793,924,826,932,832,929,836,921,830,888,796,860,757,837,716,817,674,790,599,777,547"/>
-<area shape="rect" href="callbacks_8cc.html#a7980d0f43d68809786209209bde2fe19" title=" " alt="" coords="957,233,1088,258"/>
-<area shape="poly" title=" " alt="" coords="777,520,792,472,819,403,839,366,862,330,889,296,921,267,943,255,945,260,924,271,893,300,866,333,843,369,824,406,797,474,782,521"/>
-<area shape="rect" href="callbacks_8cc.html#a23f3558fd7063da6c4f453eecfd85c70" title=" " alt="" coords="961,282,1085,307"/>
-<area shape="poly" title=" " alt="" coords="779,519,797,480,827,425,868,367,893,341,921,318,946,305,949,310,924,322,897,345,872,371,831,428,802,482,784,521"/>
-<area shape="rect" href="callbacks_8cc.html#a2490f653137e0dcddb138fae16974e07" title=" " alt="" coords="951,332,1095,372"/>
-<area shape="poly" title=" " alt="" coords="784,519,837,454,876,415,921,382,937,373,939,378,924,386,880,419,841,458,788,522"/>
-<area shape="rect" href="callbacks_8cc.html#a65f18cf64a4bafed7b32ded3cc902668" title=" " alt="" coords="959,397,1087,422"/>
-<area shape="poly" title=" " alt="" coords="790,518,845,476,882,452,922,431,944,422,946,427,924,436,885,456,848,480,793,523"/>
-<area shape="rect" href="callbacks_8cc.html#aef7e97ad6ad51b450eb4c3424bb94ce8" title=" " alt="" coords="923,446,1123,471"/>
-<area shape="poly" title=" " alt="" coords="810,518,922,480,951,472,952,477,923,485,811,523"/>
-<area shape="rect" href="callbacks_8cc.html#ab216dda22af978bbc755a31acf60f302" title=" " alt="" coords="957,495,1089,521"/>
-<area shape="poly" title=" " alt="" coords="835,525,942,513,943,519,836,530"/>
-<area shape="rect" href="callbacks_8cc.html#adfed951a3aff6a5b114ac21d07119be1" title=" " alt="" coords="939,545,1106,570"/>
-<area shape="poly" title=" " alt="" coords="836,536,926,545,926,551,835,542"/>
-<area shape="rect" href="callbacks_8cc.html#a70acaa5f0cfece779fc5241e113e95d3" title=" " alt="" coords="943,906,1103,931"/>
-<area shape="poly" title=" " alt="" coords="780,546,790,608,813,702,831,753,856,804,887,851,924,891,932,897,929,901,921,895,882,854,851,806,826,755,808,703,784,609,775,547"/>
-<area shape="poly" title=" " alt="" coords="954,973,716,983,415,1003,295,1016,294,1011,414,997,715,978,954,967"/>
-<area shape="poly" title=" " alt="" coords="1092,972,1157,979,1156,984,1091,978"/>
-<area shape="poly" title=" " alt="" coords="1096,879,1124,891,1191,931,1246,970,1243,974,1189,935,1121,896,1093,884"/>
-<area shape="rect" href="classThreadPool.html#a72b7ee59b6fd4d2266233334f9e0011b" title=" " alt="" coords="1209,849,1335,874"/>
-<area shape="poly" title=" " alt="" coords="1110,859,1195,859,1195,864,1110,864"/>
-<area shape="poly" title=" " alt="" coords="1232,850,1223,840,1228,830,1244,824,1272,822,1307,826,1317,831,1321,836,1316,839,1313,835,1306,831,1272,827,1245,829,1231,834,1228,840,1236,847"/>
-<area shape="poly" title=" " alt="" coords="943,922,837,925,705,934,560,950,415,977,391,986,368,996,295,1014,293,1009,366,991,390,981,414,972,559,945,704,928,837,920,943,916"/>
-<area shape="rect" href="classScroomInterfaceImpl.html#a776cc57e01b5fb3c3b1b3499c227b85a" title=" " alt="" coords="692,1107,859,1147"/>
-<area shape="poly" title=" " alt="" coords="601,1124,678,1124,678,1129,601,1129"/>
-<area shape="poly" title=" " alt="" coords="867,1011,1157,996,1157,1002,867,1017"/>
-<area shape="rect" href="classColormap.html#a9966b8a719d851b5e28b6b99ec6d2245" title=" " alt="" coords="955,1202,1090,1227"/>
-<area shape="poly" title=" " alt="" coords="329,1212,415,1207,706,1204,942,1209,942,1214,706,1209,415,1212,330,1217"/>
-<area shape="rect" href="classColormapHelper.html#a98be23aa876b37cc9cd8e7050a50266b" title=" " alt="" coords="433,1246,610,1271"/>
-<area shape="poly" title=" " alt="" coords="330,1229,419,1242,418,1247,329,1234"/>
-<area shape="rect" href="classMonochromeColormapHelper.html#a3d60bf2ef52a480ef936f98ad5f84a3b" title=" " alt="" coords="415,1296,628,1336"/>
-<area shape="poly" title=" " alt="" coords="289,1232,416,1280,442,1289,440,1294,414,1285,287,1237"/>
-<area shape="rect" href="classColormap.html#afbda2916eb43f89f99512e951ca2c7de" title=" " alt="" coords="1194,1202,1350,1227"/>
-<area shape="poly" title=" " alt="" coords="1090,1212,1180,1212,1180,1217,1090,1217"/>
-<area shape="poly" title=" " alt="" coords="480,1248,471,1238,476,1228,493,1222,521,1219,557,1223,567,1228,571,1234,567,1237,564,1232,556,1228,521,1225,494,1227,480,1232,477,1237,484,1244"/>
-<area shape="rect" href="classColormap.html#afe589913d62741a00d269c5e72c3641b" title=" " alt="" coords="684,1234,867,1259"/>
-<area shape="poly" title=" " alt="" coords="610,1252,670,1249,670,1254,610,1257"/>
-<area shape="poly" title=" " alt="" coords="866,1232,941,1222,942,1228,867,1238"/>
-<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ac3d3ac1d5d45d2795778a63a45470be5" title=" " alt="" coords="422,1475,621,1515"/>
-<area shape="poly" title=" " alt="" coords="340,1448,425,1469,424,1474,339,1453"/>
-<area shape="rect" href="namespaceScroom_1_1Utils.html#a60bd9ea8b957f03f5fbf90abe3ee6759" title=" " alt="" coords="415,1539,628,1565"/>
-<area shape="poly" title=" " alt="" coords="285,1449,344,1487,416,1524,441,1533,439,1538,414,1529,341,1492,282,1453"/>
-<area shape="rect" href="threadpool_8cc.html#af979353165a7a214dda8f7f289de81ea" title=" " alt="" coords="470,1361,573,1386"/>
-<area shape="poly" title=" " alt="" coords="348,1408,456,1385,457,1390,349,1413"/>
-<area shape="rect" href="namespaceScroom_1_1GtkHelpers.html#a41d93c131774cfff3137ec807ead3e94" title=" " alt="" coords="445,1411,597,1451"/>
-<area shape="poly" title=" " alt="" coords="349,1428,431,1428,431,1433,349,1433"/>
-<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a7cfca3637d57c4a9e37351b3426ffd40" title=" " alt="" coords="676,1483,875,1523"/>
-<area shape="poly" title=" " alt="" coords="621,1495,662,1496,662,1502,621,1500"/>
-<area shape="rect" href="namespaceScroom_1_1GtkHelpers.html#a37a36328ffc6b0e7468a02d64724c21d" title=" " alt="" coords="696,1403,855,1458"/>
-<area shape="poly" title=" " alt="" coords="597,1428,682,1428,682,1433,597,1433"/>
-<area shape="rect" href="namespaceScroom_1_1GtkHelpers.html#a2ade52a9fdfe46700036def64d00f9da" title=" " alt="" coords="947,1345,1099,1385"/>
-<area shape="poly" title=" " alt="" coords="588,1408,676,1388,810,1372,933,1365,933,1370,811,1377,676,1393,589,1413"/>
-<area shape="rect" href="namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1" title=" " alt="" coords="943,1411,1102,1451"/>
-<area shape="poly" title=" " alt="" coords="855,1428,930,1428,930,1433,855,1433"/>
-<area shape="poly" title=" " alt="" coords="854,1407,933,1386,934,1391,855,1412"/>
-<area shape="rect" href="function-additor-tests_8cc.html#a171d6ee6f5e4a249111a7ca7c7108209" title=" " alt="" coords="997,1475,1048,1501"/>
-<area shape="poly" title=" " alt="" coords="855,1446,985,1477,983,1482,854,1452"/>
+<area shape="rect" title=" " alt="" coords="5,220,96,245"/>
+<area shape="rect" href="classLayer.html#a8f3623d32725dbc8537779fb7f682e46" title=" " alt="" coords="202,5,309,31"/>
+<area shape="poly" title=" " alt="" coords="52,219,60,183,77,135,104,84,121,61,142,41,164,28,188,21,189,26,166,33,146,45,125,65,108,87,82,137,65,185,57,220"/>
+<area shape="rect" href="classScroom_1_1Pnm_1_1BinarySource.html#ab40b0ba1f7a0795c02cc00bc20d12778" title=" " alt="" coords="154,55,357,95"/>
+<area shape="poly" title=" " alt="" coords="56,219,87,164,112,132,142,105,151,99,154,104,146,109,116,136,92,167,60,221"/>
+<area shape="rect" href="classScroom_1_1Pnm_1_1AsciiSource.html#afd6f9a8d54585548dc31abddea0c3a07" title=" " alt="" coords="160,119,351,159"/>
+<area shape="poly" title=" " alt="" coords="66,218,101,193,143,169,161,161,163,166,145,174,103,198,70,222"/>
+<area shape="rect" href="classScroom_1_1Pnm_1_1AsciiSource1bpp.html#a870c5cadb8d9a956299f7b21ad028c15" title=" " alt="" coords="144,183,367,223"/>
+<area shape="poly" title=" " alt="" coords="96,224,130,219,131,224,97,229"/>
+<area shape="rect" href="namespaceScroom_1_1Utils.html#a053ab918264fd8b7dca49cacf95060d9" title=" " alt="" coords="176,248,335,273"/>
+<area shape="poly" title=" " alt="" coords="97,236,163,245,162,251,96,241"/>
+<area shape="rect" href="loader_8cc.html#a6caa967df34751dfd7c06745d1df4a1e" title=" " alt="" coords="230,297,281,323"/>
+<area shape="poly" title=" " alt="" coords="72,243,106,263,145,282,182,294,217,302,216,307,180,299,143,287,103,268,70,248"/>
+<area shape="rect" href="namespaceScroom_1_1Pnm.html#afb404d82507eabea3723d854f97b1ae4" title=" " alt="" coords="181,1243,329,1268"/>
+<area shape="poly" title=" " alt="" coords="57,245,251,1229,246,1230,52,246"/>
+<area shape="rect" href="namespaceScroom_1_1TiledBitmap.html#a55c09152eec48a7f0b8b0819cd243e4d" title=" " alt="" coords="162,1446,349,1486"/>
+<area shape="poly" title=" " alt="" coords="55,246,61,423,77,725,89,890,105,1046,124,1180,147,1279,164,1322,186,1365,232,1433,227,1436,182,1367,159,1325,141,1280,119,1181,100,1046,84,890,72,725,56,423,50,246"/>
+<area shape="rect" href="loader_8cc.html#a19de4cc7f4540f821a9018ee9b51cbd7" title=" " alt="" coords="455,116,587,141"/>
+<area shape="poly" title=" " alt="" coords="281,308,323,303,346,295,365,283,378,268,384,254,389,223,393,191,400,175,413,159,441,141,444,145,416,163,404,177,398,192,394,224,389,255,382,271,368,287,348,300,325,308,281,313"/>
+<area shape="rect" href="ringbuffer-sink-tests_8cc.html#a8d320a25a024f00913fe55a273a4a31d" title=" " alt="" coords="752,141,799,167"/>
+<area shape="poly" title=" " alt="" coords="281,307,323,301,345,293,365,283,381,265,388,247,396,227,413,209,440,197,476,186,566,170,738,153,738,159,567,175,477,191,441,202,416,214,400,230,393,249,385,268,368,287,347,298,324,306,281,312"/>
+<area shape="rect" href="callbacks_8cc.html#a6a123442252e099c84849ff0ad12d41a" title=" " alt="" coords="437,720,606,745"/>
+<area shape="poly" title=" " alt="" coords="267,322,507,707,502,710,263,325"/>
+<area shape="rect" href="classPluginManager.html#a724cc4d4d92c9273606c91909b508ebd" title=" " alt="" coords="1171,243,1373,268"/>
+<area shape="poly" title=" " alt="" coords="281,302,414,279,619,262,823,253,1008,250,1157,250,1157,256,1008,255,823,258,619,267,415,285,282,307"/>
+<area shape="rect" href="classScroomInterfaceImpl.html#a3e8a5e572e1df0329737e382521166f9" title=" " alt="" coords="442,318,601,358"/>
+<area shape="poly" title=" " alt="" coords="281,310,428,326,428,331,281,315"/>
+<area shape="rect" href="callbacks_8cc.html#a1477024fd79f6507c4fa01a5b8e85d31" title=" " alt="" coords="684,79,867,104"/>
+<area shape="poly" title=" " alt="" coords="281,309,324,304,346,296,365,283,381,261,388,239,388,216,386,192,384,168,385,145,394,122,413,101,449,79,488,64,529,56,571,53,653,59,721,73,720,78,652,64,571,58,530,61,489,69,451,84,416,105,399,125,391,146,389,168,391,191,394,215,393,240,386,264,369,287,348,300,325,309,281,314"/>
+<area shape="poly" title=" " alt="" coords="588,133,738,148,738,153,587,138"/>
+<area shape="rect" href="callbacks_8cc.html#a19dc44b0b71d02dc59a3c16fdf3fe48b" title=" " alt="" coords="716,720,835,745"/>
+<area shape="poly" title=" " alt="" coords="606,730,702,730,702,735,606,735"/>
+<area shape="rect" href="callbacks_8cc.html#aeba2cf448752ce6617c03f7dd34ffc7b" title=" " alt="" coords="935,1203,1110,1243"/>
+<area shape="poly" title=" " alt="" coords="532,744,581,820,668,939,723,1005,785,1071,852,1133,924,1188,937,1195,934,1200,921,1192,849,1138,781,1075,719,1009,664,942,577,823,528,747"/>
+<area shape="rect" href="classView.html#a1e1cc4861ca8e2919be4990c0a8fc8a1" title=" " alt="" coords="971,465,1074,491"/>
+<area shape="poly" title=" " alt="" coords="778,719,795,676,824,617,866,554,892,525,921,500,957,483,959,488,924,504,896,528,870,557,829,619,800,678,783,721"/>
+<area shape="rect" href="callbacks_8cc.html#aa368b65b001e2f9e44a1e69b3098881a" title=" " alt="" coords="951,515,1094,540"/>
+<area shape="poly" title=" " alt="" coords="781,718,800,684,831,638,872,590,921,549,937,541,939,546,924,554,876,594,835,641,805,687,785,721"/>
+<area shape="rect" href="callbacks_8cc.html#a30b2ed4bb389a1225baaa7ab3c8d9d88" title=" " alt="" coords="936,564,1109,589"/>
+<area shape="poly" title=" " alt="" coords="785,718,839,660,878,627,921,598,936,592,938,596,924,603,881,631,843,664,789,722"/>
+<area shape="rect" href="callbacks_8cc.html#a8052e42ad29aca43964bb04ea379f794" title=" " alt="" coords="929,613,1116,639"/>
+<area shape="poly" title=" " alt="" coords="794,718,850,683,922,648,944,640,946,645,924,652,852,688,797,722"/>
+<area shape="rect" href="callbacks_8cc.html#ab6e722c4fcdd409e30c2d81343ed771e" title=" " alt="" coords="953,663,1092,688"/>
+<area shape="poly" title=" " alt="" coords="830,717,953,689,955,694,832,723"/>
+<area shape="rect" href="callbacks_8cc.html#a9c37395ebdd4c59a37b6dc38d574a4d7" title=" " alt="" coords="926,713,1119,753"/>
+<area shape="poly" title=" " alt="" coords="835,730,913,730,913,735,835,735"/>
+<area shape="rect" href="callbacks_8cc.html#ae774492ed1bbe65c2041bf593ef6bb8f" title=" " alt="" coords="933,777,1113,817"/>
+<area shape="poly" title=" " alt="" coords="826,743,932,771,931,776,825,748"/>
+<area shape="rect" href="callbacks_8cc.html#a42fddb88db6e7c73e37aa07d1cf0de57" title=" " alt="" coords="938,841,1107,867"/>
+<area shape="poly" title=" " alt="" coords="794,743,849,784,886,807,924,826,946,835,945,840,922,831,883,811,846,788,791,748"/>
+<area shape="rect" href="callbacks_8cc.html#a0f6e53b3f2476af215a5c9c87e71e0b8" title=" " alt="" coords="933,891,1112,916"/>
+<area shape="poly" title=" " alt="" coords="788,744,841,807,880,844,924,876,940,884,938,888,921,880,876,848,837,811,784,747"/>
+<area shape="rect" href="callbacks_8cc.html#a6cd157f2cb298e0a89ab2916c618f9fe" title=" " alt="" coords="954,268,1091,293"/>
+<area shape="poly" title=" " alt="" coords="777,719,796,635,829,510,872,385,896,336,921,303,940,290,943,295,924,307,900,338,877,387,834,511,801,637,782,720"/>
+<area shape="poly" title=" " alt="" coords="786,745,828,834,854,896,877,961,885,997,888,1028,887,1084,888,1110,893,1135,904,1161,925,1188,930,1193,926,1197,921,1192,900,1163,888,1136,883,1110,882,1084,883,1028,880,997,872,963,849,898,823,836,781,747"/>
+<area shape="rect" href="callbacks_8cc.html#a7980d0f43d68809786209209bde2fe19" title=" " alt="" coords="957,940,1088,965"/>
+<area shape="poly" title=" " alt="" coords="785,744,803,780,834,830,874,881,898,905,924,925,945,936,943,941,921,930,895,909,870,885,829,833,799,783,780,747"/>
+<area shape="rect" href="callbacks_8cc.html#a23f3558fd7063da6c4f453eecfd85c70" title=" " alt="" coords="961,989,1085,1015"/>
+<area shape="poly" title=" " alt="" coords="783,745,799,789,827,852,869,918,895,948,924,974,949,988,946,992,921,979,891,952,865,921,822,854,794,791,778,747"/>
+<area shape="rect" href="callbacks_8cc.html#a2490f653137e0dcddb138fae16974e07" title=" " alt="" coords="951,1039,1095,1079"/>
+<area shape="poly" title=" " alt="" coords="784,745,844,888,886,971,906,1003,924,1024,939,1035,936,1039,921,1028,902,1006,881,973,839,891,779,747"/>
+<area shape="rect" href="callbacks_8cc.html#a65f18cf64a4bafed7b32ded3cc902668" title=" " alt="" coords="959,1104,1087,1129"/>
+<area shape="poly" title=" " alt="" coords="785,744,877,961,888,1000,893,1032,902,1061,924,1089,947,1103,944,1108,921,1093,897,1063,888,1033,883,1001,872,963,780,747"/>
+<area shape="rect" href="callbacks_8cc.html#aef7e97ad6ad51b450eb4c3424bb94ce8" title=" " alt="" coords="923,1153,1123,1179"/>
+<area shape="poly" title=" " alt="" coords="785,744,826,834,877,961,885,989,888,1014,889,1059,897,1098,907,1118,925,1139,931,1144,927,1148,921,1143,903,1121,892,1100,884,1059,883,1015,879,990,872,963,822,836,780,746"/>
+<area shape="rect" href="callbacks_8cc.html#ab216dda22af978bbc755a31acf60f302" title=" " alt="" coords="957,367,1089,392"/>
+<area shape="poly" title=" " alt="" coords="776,719,786,661,811,575,830,528,854,482,884,438,921,401,942,389,945,393,924,405,889,442,859,484,835,530,816,577,792,663,781,720"/>
+<area shape="rect" href="callbacks_8cc.html#adfed951a3aff6a5b114ac21d07119be1" title=" " alt="" coords="939,416,1106,441"/>
+<area shape="poly" title=" " alt="" coords="777,719,790,668,817,596,837,556,860,517,888,481,921,451,929,445,932,450,924,455,892,485,865,520,841,559,822,598,796,670,782,720"/>
+<area shape="rect" href="callbacks_8cc.html#a70acaa5f0cfece779fc5241e113e95d3" title=" " alt="" coords="943,317,1103,343"/>
+<area shape="poly" title=" " alt="" coords="777,719,798,644,832,533,875,424,898,381,921,352,929,346,932,350,925,356,902,384,880,426,837,535,803,645,783,720"/>
+<area shape="poly" title=" " alt="" coords="954,286,294,311,294,306,954,281"/>
+<area shape="poly" title=" " alt="" coords="1091,271,1156,264,1157,270,1092,276"/>
+<area shape="poly" title=" " alt="" coords="1106,1201,1121,1188,1142,1156,1161,1115,1178,1064,1193,1006,1219,876,1238,733,1251,591,1260,461,1267,282,1273,282,1265,462,1256,592,1243,734,1224,876,1199,1008,1183,1066,1166,1117,1146,1159,1125,1192,1109,1205"/>
+<area shape="rect" href="classThreadPool.html#a72b7ee59b6fd4d2266233334f9e0011b" title=" " alt="" coords="1209,1211,1335,1236"/>
+<area shape="poly" title=" " alt="" coords="1110,1221,1195,1221,1195,1226,1110,1226"/>
+<area shape="poly" title=" " alt="" coords="1232,1212,1223,1202,1228,1192,1244,1186,1272,1184,1307,1188,1317,1193,1321,1198,1316,1201,1313,1197,1306,1193,1272,1189,1245,1191,1231,1196,1228,1202,1236,1209"/>
+<area shape="poly" title=" " alt="" coords="966,345,923,357,900,366,875,373,746,392,644,399,543,393,414,373,349,354,292,331,294,326,351,349,415,367,543,388,644,393,746,386,874,367,898,360,922,351,965,340"/>
+<area shape="rect" href="classScroomInterfaceImpl.html#a776cc57e01b5fb3c3b1b3499c227b85a" title=" " alt="" coords="692,318,859,358"/>
+<area shape="poly" title=" " alt="" coords="601,335,678,335,678,341,601,341"/>
+<area shape="poly" title=" " alt="" coords="816,102,1220,236,1218,241,814,107"/>
+<area shape="rect" href="classColormap.html#a9966b8a719d851b5e28b6b99ec6d2245" title=" " alt="" coords="955,1268,1090,1293"/>
+<area shape="poly" title=" " alt="" coords="330,1255,942,1275,942,1281,330,1260"/>
+<area shape="rect" href="classColormapHelper.html#a98be23aa876b37cc9cd8e7050a50266b" title=" " alt="" coords="433,1217,610,1243"/>
+<area shape="poly" title=" " alt="" coords="329,1246,419,1237,419,1242,330,1251"/>
+<area shape="rect" href="classMonochromeColormapHelper.html#a3d60bf2ef52a480ef936f98ad5f84a3b" title=" " alt="" coords="415,1318,628,1358"/>
+<area shape="poly" title=" " alt="" coords="298,1266,443,1311,442,1316,296,1271"/>
+<area shape="rect" href="classColormap.html#afbda2916eb43f89f99512e951ca2c7de" title=" " alt="" coords="1194,1268,1350,1293"/>
+<area shape="poly" title=" " alt="" coords="1090,1278,1180,1278,1180,1283,1090,1283"/>
+<area shape="poly" title=" " alt="" coords="480,1219,471,1209,476,1199,493,1193,521,1191,557,1195,567,1199,571,1205,567,1208,564,1203,556,1200,521,1196,494,1198,480,1203,477,1208,484,1215"/>
+<area shape="rect" href="classColormap.html#afe589913d62741a00d269c5e72c3641b" title=" " alt="" coords="684,1217,867,1243"/>
+<area shape="poly" title=" " alt="" coords="610,1227,670,1227,670,1233,610,1233"/>
+<area shape="poly" title=" " alt="" coords="839,1240,947,1263,946,1268,838,1245"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ac3d3ac1d5d45d2795778a63a45470be5" title=" " alt="" coords="422,1446,621,1486"/>
+<area shape="poly" title=" " alt="" coords="349,1463,408,1463,408,1469,349,1469"/>
+<area shape="rect" href="namespaceScroom_1_1Utils.html#a60bd9ea8b957f03f5fbf90abe3ee6759" title=" " alt="" coords="415,1511,628,1536"/>
+<area shape="poly" title=" " alt="" coords="349,1483,449,1505,448,1510,348,1489"/>
+<area shape="rect" href="threadpool_8cc.html#af979353165a7a214dda8f7f289de81ea" title=" " alt="" coords="470,1560,573,1585"/>
+<area shape="poly" title=" " alt="" coords="291,1484,348,1516,416,1546,457,1558,456,1564,414,1551,346,1521,288,1489"/>
+<area shape="rect" href="namespaceScroom_1_1GtkHelpers.html#a41d93c131774cfff3137ec807ead3e94" title=" " alt="" coords="445,1382,597,1422"/>
+<area shape="poly" title=" " alt="" coords="339,1443,432,1421,433,1426,340,1449"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a7cfca3637d57c4a9e37351b3426ffd40" title=" " alt="" coords="676,1454,875,1494"/>
+<area shape="poly" title=" " alt="" coords="621,1466,662,1468,662,1473,621,1472"/>
+<area shape="rect" href="namespaceScroom_1_1GtkHelpers.html#a37a36328ffc6b0e7468a02d64724c21d" title=" " alt="" coords="696,1375,855,1429"/>
+<area shape="poly" title=" " alt="" coords="597,1399,682,1399,682,1405,597,1405"/>
+<area shape="rect" href="namespaceScroom_1_1GtkHelpers.html#a2ade52a9fdfe46700036def64d00f9da" title=" " alt="" coords="947,1318,1099,1358"/>
+<area shape="poly" title=" " alt="" coords="591,1379,676,1361,810,1345,933,1338,933,1343,811,1350,676,1366,592,1385"/>
+<area shape="rect" href="namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1" title=" " alt="" coords="943,1382,1102,1422"/>
+<area shape="poly" title=" " alt="" coords="855,1399,930,1399,930,1405,855,1405"/>
+<area shape="poly" title=" " alt="" coords="854,1379,933,1358,934,1364,855,1384"/>
 </map>
 </div>
 

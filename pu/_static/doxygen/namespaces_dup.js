@@ -22,6 +22,9 @@ var namespaces_dup =
       [ "skipComments", "namespaceanonymous__namespace_02pnmsource_8cc_03.html#afb616996f3eb9765077b0fcc8747c544", null ]
     ] ],
     [ "anonymous_namespace{progressbarmanager.cc}", "namespaceanonymous__namespace_02progressbarmanager_8cc_03.html", "namespaceanonymous__namespace_02progressbarmanager_8cc_03" ],
+    [ "anonymous_namespace{ringbuffer-sink-tests.cc}", "namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html", [
+      [ "createLogger", "namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html#a15a91985361401f76bc8ee0186a5470c", null ]
+    ] ],
     [ "anonymous_namespace{sampleiterator-tests.cc}", "namespaceanonymous__namespace_02sampleiterator-tests_8cc_03.html", [
       [ "bit_depths", "namespaceanonymous__namespace_02sampleiterator-tests_8cc_03.html#aa69fb4a20df5ff7d8dd3b9bd3b5dd1c1", null ],
       [ "deltas", "namespaceanonymous__namespace_02sampleiterator-tests_8cc_03.html#a437d26ece966bc7a8ba58cdaf7674e67", null ],

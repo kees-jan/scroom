@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-51-g058ffe8ea</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-g4002e422d</span>
    </div>
   </td>
  </tr>
@@ -236,11 +236,11 @@ Additional Inherited Members</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  128</span>{</div>
 <div class="line"><span class="lineno">  129</span>  <span class="comment">// In: Cairo surface at zoom level 0</span></div>
 <div class="line"><span class="lineno">  130</span>  <span class="comment">// Out: Cairo surface at requested zoom level</span></div>
-<div class="line"><span class="lineno">  131</span>  <a class="code hl_typedef" href="namespaceScroom_1_1Utils.html#a7831a6b14da4ae303170e6607f29e6b9">Scroom::Utils::Stuff</a> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">  131</span>  <a class="code hl_typedef" href="namespaceScroom_1_1Utils.html#a7831a6b14da4ae303170e6607f29e6b9">Scroom::Utils::Stuff</a> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">  132</span>  <span class="keywordflow">if</span>(zoom &gt;= 0)</div>
 <div class="line"><span class="lineno">  133</span>  {</div>
 <div class="line"><span class="lineno">  134</span>    <span class="comment">// Don&#39;t zoom in. It is a waste of space</span></div>
-<div class="line"><span class="lineno">  135</span>    <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_function" href="classLayerOperations.html#aa1f918f99b5e282a6614f252c18696e5">cache</a>;</div>
+<div class="line"><span class="lineno">  135</span>    <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_function" href="classLayerOperations.html#aa1f918f99b5e282a6614f252c18696e5">cache</a>;</div>
 <div class="line"><span class="lineno">  136</span>  }</div>
 <div class="line"><span class="lineno">  137</span>  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(!<a class="code hl_function" href="classLayerOperations.html#aa1f918f99b5e282a6614f252c18696e5">cache</a>)</div>
 <div class="line"><span class="lineno">  138</span>  {</div>
@@ -251,7 +251,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  143</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> divider = 1 &lt;&lt; -zoom;</div>
 <div class="line"><span class="lineno">  144</span>    <a class="code hl_typedef" href="classScroom_1_1Bitmap_1_1BitmapSurface.html#a2c5f307f8fb27e77610b97bbcd6e282c">BitmapSurface::Ptr</a> <span class="keyword">const</span> source = std::static_pointer_cast&lt;BitmapSurface&gt;(<a class="code hl_function" href="classLayerOperations.html#aa1f918f99b5e282a6614f252c18696e5">cache</a>);</div>
 <div class="line"><span class="lineno">  145</span>    <a class="code hl_typedef" href="classScroom_1_1Bitmap_1_1BitmapSurface.html#a2c5f307f8fb27e77610b97bbcd6e282c">BitmapSurface::Ptr</a> <span class="keyword">const</span> target = <a class="code hl_function" href="classScroom_1_1Bitmap_1_1BitmapSurface.html#a697961480f8888e1a149d4be54adb9e7">BitmapSurface::create</a>(tile-&gt;width / divider, tile-&gt;height / divider, CAIRO_FORMAT_ARGB32);</div>
-<div class="line"><span class="lineno">  146</span>    <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = target;</div>
+<div class="line"><span class="lineno">  146</span>    <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = target;</div>
 <div class="line"><span class="lineno">  147</span> </div>
 <div class="line"><span class="lineno">  148</span>    cairo_surface_t* <a class="code hl_variable" href="transformpresentation__test_8cc.html#a76e6dbb8b33b4373ca91aab3cab86245">surface</a> = target-&gt;get();</div>
 <div class="line"><span class="lineno">  149</span>    cairo_t* <a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a> = cairo_create(<a class="code hl_variable" href="transformpresentation__test_8cc.html#a76e6dbb8b33b4373ca91aab3cab86245">surface</a>);</div>
@@ -263,7 +263,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  155</span>    <a class="code hl_function" href="transformpresentation__test_8cc.html#a608745f30637ee1f30157b0294297580">cairo_destroy</a>(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>);</div>
 <div class="line"><span class="lineno">  156</span>  }</div>
 <div class="line"><span class="lineno">  157</span> </div>
-<div class="line"><span class="lineno">  158</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
+<div class="line"><span class="lineno">  158</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>;</div>
 <div class="line"><span class="lineno">  159</span>}</div>
 <div class="ttc" id="aassertions_8hh_html_a2679784148a3d02d3f8ffd6ec2ae80f4"><div class="ttname"><a href="assertions_8hh.html#a2679784148a3d02d3f8ffd6ec2ae80f4">defect_message</a></div><div class="ttdeci">#define defect_message(m)</div><div class="ttdef"><b>Definition</b> assertions.hh:49</div></div>
 <div class="ttc" id="aclassCommonOperations_html_a0d94da894eb942470e241fa7d2dc6830"><div class="ttname"><a href="classCommonOperations.html#a0d94da894eb942470e241fa7d2dc6830">CommonOperations::initializeCairo</a></div><div class="ttdeci">void initializeCairo(cairo_t *cr) override</div><div class="ttdef"><b>Definition</b> layeroperations.cc:66</div></div>
@@ -271,7 +271,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="ttc" id="aclassScroom_1_1Bitmap_1_1BitmapSurface_html_a2c5f307f8fb27e77610b97bbcd6e282c"><div class="ttname"><a href="classScroom_1_1Bitmap_1_1BitmapSurface.html#a2c5f307f8fb27e77610b97bbcd6e282c">Scroom::Bitmap::BitmapSurface::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; BitmapSurface &gt; Ptr</div><div class="ttdef"><b>Definition</b> bitmap-helpers.hh:25</div></div>
 <div class="ttc" id="aclassScroom_1_1Bitmap_1_1BitmapSurface_html_a697961480f8888e1a149d4be54adb9e7"><div class="ttname"><a href="classScroom_1_1Bitmap_1_1BitmapSurface.html#a697961480f8888e1a149d4be54adb9e7">Scroom::Bitmap::BitmapSurface::create</a></div><div class="ttdeci">static Ptr create(int width, int height, cairo_format_t format)</div><div class="ttdef"><b>Definition</b> bitmap-helpers.cc:13</div></div>
 <div class="ttc" id="anamespaceScroom_1_1Utils_html_a7831a6b14da4ae303170e6607f29e6b9"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#a7831a6b14da4ae303170e6607f29e6b9">Scroom::Utils::Stuff</a></div><div class="ttdeci">std::shared_ptr&lt; void &gt; Stuff</div><div class="ttdef"><b>Definition</b> stuff.hh:17</div></div>
-<div class="ttc" id="asampleiterator-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="sampleiterator-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">SampleIterator&lt; const uint8_t &gt; result</div><div class="ttdef"><b>Definition</b> sampleiterator-tests.cc:94</div></div>
+<div class="ttc" id="aringbuffer-sink-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">auto result</div><div class="ttdef"><b>Definition</b> ringbuffer-sink-tests.cc:76</div></div>
 <div class="ttc" id="atransformpresentation__test_8cc_html_a608745f30637ee1f30157b0294297580"><div class="ttname"><a href="transformpresentation__test_8cc.html#a608745f30637ee1f30157b0294297580">cairo_destroy</a></div><div class="ttdeci">cairo_destroy(cr)</div></div>
 <div class="ttc" id="atransformpresentation__test_8cc_html_a76e6dbb8b33b4373ca91aab3cab86245"><div class="ttname"><a href="transformpresentation__test_8cc.html#a76e6dbb8b33b4373ca91aab3cab86245">surface</a></div><div class="ttdeci">cairo_surface_t * surface</div><div class="ttdef"><b>Definition</b> transformpresentation_test.cc:71</div></div>
 <div class="ttc" id="atransformpresentation__test_8cc_html_ac2efa4a51d11834112524e53b3dc0f62"><div class="ttname"><a href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a></div><div class="ttdeci">cairo_t * cr</div><div class="ttdef"><b>Definition</b> transformpresentation_test.cc:72</div></div>

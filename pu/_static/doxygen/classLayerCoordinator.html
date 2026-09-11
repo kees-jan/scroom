@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-51-g058ffe8ea</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-g4002e422d</span>
    </div>
   </td>
  </tr>
@@ -665,7 +665,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   50</span>  <a class="code hl_typedef" href="classConstTile.html#a851f2f356430d0fff4c703c23a6e07d9">ConstTile::Ptr</a> <span class="keyword">const</span> tileData = tile-&gt;getConstTileAsync();</div>
 <div class="line"><span class="lineno">   51</span>  <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(tileData);</div>
 <div class="line"><span class="lineno">   52</span> </div>
-<div class="line"><span class="lineno">   53</span>  <a class="code hl_function" href="threadpool_8hh.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b">CpuBound</a>()-&gt;schedule(</div>
+<div class="line"><span class="lineno">   53</span>  <a class="code hl_function" href="threadpool_8hh.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b">CpuBound</a>()-&gt;post(</div>
 <div class="line"><span class="lineno">   54</span>    [me = shared_from_this&lt;LayerCoordinator&gt;(), tile, tileData] { me-&gt;reduceSourceTile(tile, tileData); }, <a class="code hl_define" href="local_8hh.html#a0a865049f169efddb5dcb94b4b6f2e6b">REDUCE_PRIO</a></div>
 <div class="line"><span class="lineno">   55</span>  );</div>
 <div class="line"><span class="lineno">   56</span>}</div>
