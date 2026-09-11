@@ -65,6 +65,7 @@ var hierarchy =
     [ "Scroom::MemoryBlocks::Detail::anonymous_namespace{swapbasedblockallocator.cc}::DontDelete< T >", "classScroom_1_1MemoryBlocks_1_1Detail_1_1anonymous__namespace_02swapbasedblockallocator_8cc_03_1_1DontDelete.html", null ],
     [ "Dummy", "structDummy.html", null ],
     [ "std::enable_shared_from_this", null, [
+      [ "LoggingWindow", "classLoggingWindow.html", null ],
       [ "Scroom::ColormapImpl::ColormapProvider", "classScroom_1_1ColormapImpl_1_1ColormapProvider.html", null ],
       [ "Scroom::Utils::Base", "classScroom_1_1Utils_1_1Base.html", [
         [ "Scroom::Bookkeeping::MapBase< ObserverWeak, typenameRegistration::Ptr >", "classScroom_1_1Bookkeeping_1_1MapBase.html", null ],
@@ -388,6 +389,7 @@ var hierarchy =
     ] ],
     [ "boost::noncopyable", null, [
       [ "Scroom::Bookkeeping::MapBase< ObserverWeak, typenameRegistration::Ptr >", "classScroom_1_1Bookkeeping_1_1MapBase.html", null ],
+      [ "LoggingWindow", "classLoggingWindow.html", null ],
       [ "Scroom::Bookkeeping::MapBase< K, V >", "classScroom_1_1Bookkeeping_1_1MapBase.html", null ]
     ] ],
     [ "Scroom::Utils::on_scope_exit< F >", "classScroom_1_1Utils_1_1on__scope__exit.html", null ],

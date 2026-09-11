@@ -531,8 +531,11 @@
     <includes id="callbacks_8hh" name="callbacks.hh" local="yes" import="no" module="no" objc="no">callbacks.hh</includes>
     <includes id="assertions_8hh" name="assertions.hh" local="no" import="no" module="no" objc="no">scroom/assertions.hh</includes>
     <includes id="bookkeeping_8hh" name="bookkeeping.hh" local="no" import="no" module="no" objc="no">scroom/bookkeeping.hh</includes>
+    <includes id="gtk-helpers_8hh" name="gtk-helpers.hh" local="no" import="no" module="no" objc="no">scroom/gtk-helpers.hh</includes>
     <includes id="logger_8hh" name="logger.hh" local="no" import="no" module="no" objc="no">scroom/logger.hh</includes>
+    <includes id="ringbuffer-sink_8hh" name="ringbuffer-sink.hh" local="no" import="no" module="no" objc="no">scroom/ringbuffer-sink.hh</includes>
     <includes id="loader_8hh" name="loader.hh" local="yes" import="no" module="no" objc="no">loader.hh</includes>
+    <includes id="logging-window_8hh" name="logging-window.hh" local="yes" import="no" module="no" objc="no">logging-window.hh</includes>
     <includes id="pluginmanager_8hh" name="pluginmanager.hh" local="yes" import="no" module="no" objc="no">pluginmanager.hh</includes>
     <includes id="view_8hh" name="view.hh" local="yes" import="no" module="no" objc="no">view.hh</includes>
     <includes id="workinterface_8hh" name="workinterface.hh" local="yes" import="no" module="no" objc="no">workinterface.hh</includes>
@@ -650,6 +653,13 @@
       <arglist>(GtkMenuItem *, gpointer)</arglist>
     </member>
     <member kind="function">
+      <type>void</type>
+      <name>on_logs_activate</name>
+      <anchorfile>callbacks_8cc.html</anchorfile>
+      <anchor>a2816934867b0a52c3d52cde08e344519</anchor>
+      <arglist>(GtkMenuItem *, gpointer)</arglist>
+    </member>
+    <member kind="function">
       <type>gboolean</type>
       <name>on_drawingarea_expose_event</name>
       <anchorfile>callbacks_8cc.html</anchorfile>
@@ -732,6 +742,20 @@
       <anchorfile>callbacks_8cc.html</anchorfile>
       <anchor>a301e3ea806e687d48f817b7ed7bf8aa7</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>std::function&lt; void()&gt;</type>
+      <name>createLoggingWakeupCallback</name>
+      <anchorfile>callbacks_8cc.html</anchorfile>
+      <anchor>a55b1d94aaf77c5102c85f185b205a1cf</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setRingBufferSink</name>
+      <anchorfile>callbacks_8cc.html</anchorfile>
+      <anchor>a422210910c7e2516b1836f98005f7340</anchor>
+      <arglist>(const Scroom::RingBufferSink::Ptr &amp;ringBufferSink_)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
@@ -860,6 +884,20 @@
       <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
+      <type>static Scroom::RingBufferSink::Ptr</type>
+      <name>ringBufferSink</name>
+      <anchorfile>callbacks_8cc.html</anchorfile>
+      <anchor>ab11b79003b26c0ddb967acd578f605fb</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" static="yes">
+      <type>static LoggingWindow::Ptr</type>
+      <name>loggingWindow</name>
+      <anchorfile>callbacks_8cc.html</anchorfile>
+      <anchor>a6ba114d8f032bdeddf49af4cb7998fea</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" static="yes">
       <type>static Views</type>
       <name>views</name>
       <anchorfile>callbacks_8cc.html</anchorfile>
@@ -893,6 +931,7 @@
     <path>gui/src/</path>
     <filename>callbacks_8hh.html</filename>
     <includes id="presentationinterface_8hh" name="presentationinterface.hh" local="no" import="no" module="no" objc="no">scroom/presentationinterface.hh</includes>
+    <includes id="ringbuffer-sink_8hh" name="ringbuffer-sink.hh" local="no" import="no" module="no" objc="no">scroom/ringbuffer-sink.hh</includes>
     <includes id="scroominterface_8hh" name="scroominterface.hh" local="no" import="no" module="no" objc="no">scroom/scroominterface.hh</includes>
     <includes id="view_8hh" name="view.hh" local="yes" import="no" module="no" objc="no">view.hh</includes>
     <member kind="typedef">
@@ -991,6 +1030,13 @@
       <name>on_about_activate</name>
       <anchorfile>callbacks_8hh.html</anchorfile>
       <anchor>a345d70d19f377b327d03d3b26121ab8c</anchor>
+      <arglist>(GtkMenuItem *menuitem, gpointer user_data)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>on_logs_activate</name>
+      <anchorfile>callbacks_8hh.html</anchorfile>
+      <anchor>ad2abe0dcd688e4954b0b1c75ad5f8195</anchor>
       <arglist>(GtkMenuItem *menuitem, gpointer user_data)</arglist>
     </member>
     <member kind="function">
@@ -1132,6 +1178,20 @@
       <anchorfile>callbacks_8hh.html</anchorfile>
       <anchor>a301e3ea806e687d48f817b7ed7bf8aa7</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>std::function&lt; void()&gt;</type>
+      <name>createLoggingWakeupCallback</name>
+      <anchorfile>callbacks_8hh.html</anchorfile>
+      <anchor>a55b1d94aaf77c5102c85f185b205a1cf</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setRingBufferSink</name>
+      <anchorfile>callbacks_8hh.html</anchorfile>
+      <anchor>afef5247cfa0b68e9f61994d57f44638a</anchor>
+      <arglist>(const Scroom::RingBufferSink::Ptr &amp;ringBufferSink)</arglist>
     </member>
     <member kind="variable">
       <type>const std::string</type>
@@ -1285,6 +1345,21 @@
       <anchor>a47dec8cb3f03de25ed596fb0defa91f6</anchor>
       <arglist>(std::list&lt; GtkFileFilter * &gt; &amp;l)</arglist>
     </member>
+  </compound>
+  <compound kind="file">
+    <name>logging-window.cc</name>
+    <path>gui/src/</path>
+    <filename>logging-window_8cc.html</filename>
+    <includes id="logging-window_8hh" name="logging-window.hh" local="yes" import="no" module="no" objc="no">logging-window.hh</includes>
+    <includes id="assertions_8hh" name="assertions.hh" local="no" import="no" module="no" objc="no">scroom/assertions.hh</includes>
+    <namespace>anonymous_namespace{logging-window.cc}</namespace>
+  </compound>
+  <compound kind="file">
+    <name>logging-window.hh</name>
+    <path>gui/src/</path>
+    <filename>logging-window_8hh.html</filename>
+    <includes id="ringbuffer-sink_8hh" name="ringbuffer-sink.hh" local="no" import="no" module="no" objc="no">scroom/ringbuffer-sink.hh</includes>
+    <class kind="class">LoggingWindow</class>
   </compound>
   <compound kind="file">
     <name>pluginmanager.cc</name>
@@ -13953,6 +14028,171 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>LoggingWindow</name>
+    <filename>classLoggingWindow.html</filename>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; LoggingWindow &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a3ebe8b19ffdd540f581ba59075211734</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>~LoggingWindow</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>add5d9efb7691a40643c69cbe9cb28c52</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>consume</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a725f64c52ad151baa4baf211a36859c0</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>show</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>ad4d8733a2ce6b152122dfa6b908c8708</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static Ptr</type>
+      <name>create</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a3ed8f3af6ab36370ba5e35f7959d7b95</anchor>
+      <arglist>(Scroom::RingBufferSink::Ptr sink, const std::string &amp;uiFileName)</arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type></type>
+      <name>LoggingWindow</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a3cca22ba1a4c759c70bcff1cb410501b</anchor>
+      <arglist>(Scroom::RingBufferSink::Ptr sink)</arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type>void</type>
+      <name>loadFromUiFile</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a772f8688e0e1b46a9cf746f2dd7e9f37</anchor>
+      <arglist>(const std::string &amp;uiFileName)</arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type>void</type>
+      <name>initializeTags</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>af0166e2cf77f13f760f69925d830cc08</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type>void</type>
+      <name>appendEntry</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a74f28762a1b0de7b510a8e1ce0388c99</anchor>
+      <arglist>(const Scroom::RingBufferSink::Entry &amp;entry)</arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type>void</type>
+      <name>trimToMaxLines</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a7cc2f57d209b7c6f31da7586f221ce8d</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type>bool</type>
+      <name>isScrolledToBottom</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>af86d59c04fac1ded9d4e606fd87f5779</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type>void</type>
+      <name>scrollToBottom</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a80c0ef89bb4023813bcf00a2fc5ebf66</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type>void</type>
+      <name>requestAttentionForWarningBatch</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>aa5f23e4cc87eee36b0b106e073fec9d9</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" protection="private" static="yes">
+      <type>static gboolean</type>
+      <name>onDeleteEvent</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a3853611c2598a1a119e9c45b45e55b67</anchor>
+      <arglist>(GtkWidget *widget, GdkEvent *, gpointer)</arglist>
+    </member>
+    <member kind="function" protection="private" static="yes">
+      <type>static gboolean</type>
+      <name>onFocusInEvent</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a377d9cdfff173f95c8bbdecf1d0591fd</anchor>
+      <arglist>(GtkWidget *, GdkEvent *, gpointer userData)</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>Scroom::RingBufferSink::Ptr</type>
+      <name>m_sink</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>afbb2ac648c48505d0f2bfc93bd1b4d45</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>GtkBuilder *</type>
+      <name>m_xml</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a80c2fda982fddd9eb6b68c91970afadc</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>GtkWidget *</type>
+      <name>m_window</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a47edb503b84f651c1a7892ecce58bd2c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>GtkTextView *</type>
+      <name>m_textView</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>abcbf763d47ad2e9d24342c68aebba2ca</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>GtkTextBuffer *</type>
+      <name>m_textBuffer</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>ac18ee5f3760c63601e23d7f64f0e61f0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>std::uint64_t</type>
+      <name>m_lastSeq</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>aca8a06121fa60f51514a4c48e64126a4</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>std::size_t</type>
+      <name>m_maxDisplayedLines</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>aa3bdc7f4fcc0166d41687703dde0ea47</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>gint64</type>
+      <name>m_lastPresentTimestampUs</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a54b08a80daa501425ca44365f0b87326</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>Scroom::Bookkeeping::Detail::LValue</name>
     <filename>classScroom_1_1Bookkeeping_1_1Detail_1_1LValue.html</filename>
     <templarg>typename V</templarg>
@@ -25300,6 +25540,13 @@
   <compound kind="namespace">
     <name>anonymous_namespace{callbacks.cc}</name>
     <filename>namespaceanonymous__namespace_02callbacks_8cc_03.html</filename>
+    <member kind="function">
+      <type>void</type>
+      <name>consumeLogMessages</name>
+      <anchorfile>namespaceanonymous__namespace_02callbacks_8cc_03.html</anchorfile>
+      <anchor>abbb5e2fc132607ca35de96c2fd00be6a</anchor>
+      <arglist>()</arglist>
+    </member>
     <member kind="variable">
       <type>Scroom::Logger</type>
       <name>logger</name>
@@ -25371,6 +25618,31 @@
       <anchorfile>namespaceanonymous__namespace_02layeroperations_8cc_03.html</anchorfile>
       <anchor>ae9b12e306e2dc44f64260dd98b2ee56e</anchor>
       <arglist>(size_t size)</arglist>
+    </member>
+  </compound>
+  <compound kind="namespace">
+    <name>anonymous_namespace{logging-window.cc}</name>
+    <filename>namespaceanonymous__namespace_02logging-window_8cc_03.html</filename>
+    <member kind="function">
+      <type>void</type>
+      <name>scrollTextViewToBottom</name>
+      <anchorfile>namespaceanonymous__namespace_02logging-window_8cc_03.html</anchorfile>
+      <anchor>a5cac5a6cd0ffd68318dc5d730d0e8688</anchor>
+      <arglist>(GtkTextView *textView)</arglist>
+    </member>
+    <member kind="function">
+      <type>const char *</type>
+      <name>levelTagName</name>
+      <anchorfile>namespaceanonymous__namespace_02logging-window_8cc_03.html</anchorfile>
+      <anchor>acfe9f6b8c3f44f97c2b73a8d46524957</anchor>
+      <arglist>(spdlog::level::level_enum level)</arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr gint64</type>
+      <name>PRESENT_COOLDOWN_US</name>
+      <anchorfile>namespaceanonymous__namespace_02logging-window_8cc_03.html</anchorfile>
+      <anchor>a46e822c4970dbaf521ee7f58b474e1eb</anchor>
+      <arglist></arglist>
     </member>
   </compound>
   <compound kind="namespace">

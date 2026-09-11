@@ -1,6 +1,7 @@
 var namespaces_dup =
 [
     [ "anonymous_namespace{callbacks.cc}", "namespaceanonymous__namespace_02callbacks_8cc_03.html", [
+      [ "consumeLogMessages", "namespaceanonymous__namespace_02callbacks_8cc_03.html#abbb5e2fc132607ca35de96c2fd00be6a", null ],
       [ "logger", "namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6", null ]
     ] ],
     [ "anonymous_namespace{colormaphelpers_test.cc}", "namespaceanonymous__namespace_02colormaphelpers__test_8cc_03.html", "namespaceanonymous__namespace_02colormaphelpers__test_8cc_03" ],
@@ -12,6 +13,11 @@ var namespaces_dup =
     [ "anonymous_namespace{helpers.cc}", "namespaceanonymous__namespace_02helpers_8cc_03.html", null ],
     [ "anonymous_namespace{layeroperations.cc}", "namespaceanonymous__namespace_02layeroperations_8cc_03.html", [
       [ "shared_malloc", "namespaceanonymous__namespace_02layeroperations_8cc_03.html#ae9b12e306e2dc44f64260dd98b2ee56e", null ]
+    ] ],
+    [ "anonymous_namespace{logging-window.cc}", "namespaceanonymous__namespace_02logging-window_8cc_03.html", [
+      [ "levelTagName", "namespaceanonymous__namespace_02logging-window_8cc_03.html#acfe9f6b8c3f44f97c2b73a8d46524957", null ],
+      [ "scrollTextViewToBottom", "namespaceanonymous__namespace_02logging-window_8cc_03.html#a5cac5a6cd0ffd68318dc5d730d0e8688", null ],
+      [ "PRESENT_COOLDOWN_US", "namespaceanonymous__namespace_02logging-window_8cc_03.html#a46e822c4970dbaf521ee7f58b474e1eb", null ]
     ] ],
     [ "anonymous_namespace{measure-framerate-tests.cc}", "namespaceanonymous__namespace_02measure-framerate-tests_8cc_03.html", [
       [ "logger", "namespaceanonymous__namespace_02measure-framerate-tests_8cc_03.html#a714dc8cbe8793eff2bad2272775f4c9e", null ]

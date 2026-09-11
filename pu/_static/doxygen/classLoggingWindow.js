@@ -1,0 +1,26 @@
+var classLoggingWindow =
+[
+    [ "Ptr", "classLoggingWindow.html#a3ebe8b19ffdd540f581ba59075211734", null ],
+    [ "LoggingWindow", "classLoggingWindow.html#a3cca22ba1a4c759c70bcff1cb410501b", null ],
+    [ "~LoggingWindow", "classLoggingWindow.html#add5d9efb7691a40643c69cbe9cb28c52", null ],
+    [ "appendEntry", "classLoggingWindow.html#a74f28762a1b0de7b510a8e1ce0388c99", null ],
+    [ "consume", "classLoggingWindow.html#a725f64c52ad151baa4baf211a36859c0", null ],
+    [ "create", "classLoggingWindow.html#a3ed8f3af6ab36370ba5e35f7959d7b95", null ],
+    [ "initializeTags", "classLoggingWindow.html#af0166e2cf77f13f760f69925d830cc08", null ],
+    [ "isScrolledToBottom", "classLoggingWindow.html#af86d59c04fac1ded9d4e606fd87f5779", null ],
+    [ "loadFromUiFile", "classLoggingWindow.html#a772f8688e0e1b46a9cf746f2dd7e9f37", null ],
+    [ "onDeleteEvent", "classLoggingWindow.html#a3853611c2598a1a119e9c45b45e55b67", null ],
+    [ "onFocusInEvent", "classLoggingWindow.html#a377d9cdfff173f95c8bbdecf1d0591fd", null ],
+    [ "requestAttentionForWarningBatch", "classLoggingWindow.html#aa5f23e4cc87eee36b0b106e073fec9d9", null ],
+    [ "scrollToBottom", "classLoggingWindow.html#a80c0ef89bb4023813bcf00a2fc5ebf66", null ],
+    [ "show", "classLoggingWindow.html#ad4d8733a2ce6b152122dfa6b908c8708", null ],
+    [ "trimToMaxLines", "classLoggingWindow.html#a7cc2f57d209b7c6f31da7586f221ce8d", null ],
+    [ "m_lastPresentTimestampUs", "classLoggingWindow.html#a54b08a80daa501425ca44365f0b87326", null ],
+    [ "m_lastSeq", "classLoggingWindow.html#aca8a06121fa60f51514a4c48e64126a4", null ],
+    [ "m_maxDisplayedLines", "classLoggingWindow.html#aa3bdc7f4fcc0166d41687703dde0ea47", null ],
+    [ "m_sink", "classLoggingWindow.html#afbb2ac648c48505d0f2bfc93bd1b4d45", null ],
+    [ "m_textBuffer", "classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0", null ],
+    [ "m_textView", "classLoggingWindow.html#abcbf763d47ad2e9d24342c68aebba2ca", null ],
+    [ "m_window", "classLoggingWindow.html#a47edb503b84f651c1a7892ecce58bd2c", null ],
+    [ "m_xml", "classLoggingWindow.html#a80c2fda982fddd9eb6b68c91970afadc", null ]
+];

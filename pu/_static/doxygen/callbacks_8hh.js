@@ -2,6 +2,7 @@ var callbacks_8hh =
 [
     [ "FileNameMap", "callbacks_8hh.html#ae888da5a09e1e63d73a703afd3b0801d", null ],
     [ "create_scroom", "callbacks_8hh.html#a19dc44b0b71d02dc59a3c16fdf3fe48b", null ],
+    [ "createLoggingWakeupCallback", "callbacks_8hh.html#a55b1d94aaf77c5102c85f185b205a1cf", null ],
     [ "find_or_create_scroom", "callbacks_8hh.html#a6a123442252e099c84849ff0ad12d41a", null ],
     [ "in_devmode", "callbacks_8hh.html#a301e3ea806e687d48f817b7ed7bf8aa7", null ],
     [ "on_about_activate", "callbacks_8hh.html#a345d70d19f377b327d03d3b26121ab8c", null ],
@@ -14,6 +15,7 @@ var callbacks_8hh =
     [ "on_drawingarea_expose_event", "callbacks_8hh.html#a5d47004add906eff5a82c199ae8c8223", null ],
     [ "on_fullscreen_activate", "callbacks_8hh.html#a925bf0ea0d88af738ae9e4f231aea307", null ],
     [ "on_idle", "callbacks_8hh.html#a165cb06d629eff2b6c6e025342d229a5", null ],
+    [ "on_logs_activate", "callbacks_8hh.html#ad2abe0dcd688e4954b0b1c75ad5f8195", null ],
     [ "on_new_activate", "callbacks_8hh.html#a1f53cfcfd10d0aac2f77962b7758706d", null ],
     [ "on_new_presentationobserver", "callbacks_8hh.html#a8b8bdd3ed5344eb5a8a43387fa56f509", null ],
     [ "on_new_viewobserver", "callbacks_8hh.html#a141c8f40e927346d042b46c7ecc7a6fd", null ],
@@ -34,5 +36,6 @@ var callbacks_8hh =
     [ "on_view_created", "callbacks_8hh.html#ab216dda22af978bbc755a31acf60f302", null ],
     [ "on_view_destroyed", "callbacks_8hh.html#a43402c91fa59e2da7639ad8b3e51973c", null ],
     [ "on_zoombox_changed", "callbacks_8hh.html#a5f8f863fcf5d9a80c489bbe4466e329f", null ],
+    [ "setRingBufferSink", "callbacks_8hh.html#afef5247cfa0b68e9f61994d57f44638a", null ],
     [ "REGULAR_FILES", "callbacks_8hh.html#a88a43ec881bd1f752d469b9747767544", null ]
 ];

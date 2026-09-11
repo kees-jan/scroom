@@ -13,5 +13,7 @@ var searchData=
   ['local_2ehh_10',['local.hh',['../local_8hh.html',1,'']]],
   ['logger_2dtests_2ecc_11',['logger-tests.cc',['../logger-tests_8cc.html',1,'']]],
   ['logger_2ecc_12',['logger.cc',['../logger_8cc.html',1,'']]],
-  ['logger_2ehh_13',['logger.hh',['../logger_8hh.html',1,'']]]
+  ['logger_2ehh_13',['logger.hh',['../logger_8hh.html',1,'']]],
+  ['logging_2dwindow_2ecc_14',['logging-window.cc',['../logging-window_8cc.html',1,'']]],
+  ['logging_2dwindow_2ehh_15',['logging-window.hh',['../logging-window_8hh.html',1,'']]]
 ];

@@ -201,6 +201,7 @@ var annotated_dup =
     [ "LayerCoordinator", "classLayerCoordinator.html", "classLayerCoordinator" ],
     [ "LayerOperations", "classLayerOperations.html", "classLayerOperations" ],
     [ "LoggerTests", "classLoggerTests.html", "classLoggerTests" ],
+    [ "LoggingWindow", "classLoggingWindow.html", "classLoggingWindow" ],
     [ "Measure", "classMeasure.html", "classMeasure" ],
     [ "MeasureHandler", "classMeasureHandler.html", "classMeasureHandler" ],
     [ "Metadata", "classMetadata.html", "classMetadata" ],

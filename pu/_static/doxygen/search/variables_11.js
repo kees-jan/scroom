@@ -25,5 +25,6 @@ var searchData=
   ['result_22',['result',['../ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065',1,'result:&#160;ringbuffer-sink-tests.cc'],['../sampleiterator-tests_8cc.html#a937d4dd628a8858b443a399410d2600b',1,'result:&#160;sampleiterator-tests.cc'],['../gtkhelper-tests_8cc.html#af0936f55376b1257ca7b16ca0f4a76ee',1,'result:&#160;gtkhelper-tests.cc'],['../rectangletests_8cc.html#a1d2c64cb7d675c2907d6637afffe5300',1,'result:&#160;rectangletests.cc']]],
   ['rgb_23',['RGB',['../namespaceScroom_1_1TiledBitmap.html#a68ed4ea621e837ae62809626d1f7bba4',1,'Scroom::TiledBitmap']]],
   ['right_24',['right',['../rectangletests_8cc.html#a458c55c43ab7599992ae776b6c8f7b58',1,'rectangletests.cc']]],
-  ['ruler_25',['ruler',['../ruler-tests_8cc.html#a7263a3d2025da3416831d700504b77ce',1,'ruler-tests.cc']]]
+  ['ringbuffersink_25',['ringBufferSink',['../callbacks_8cc.html#ab11b79003b26c0ddb967acd578f605fb',1,'callbacks.cc']]],
+  ['ruler_26',['ruler',['../ruler-tests_8cc.html#a7263a3d2025da3416831d700504b77ce',1,'ruler-tests.cc']]]
 ];
