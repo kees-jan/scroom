@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-59-g7b1ebebbb</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-gf0a843008</span>
    </div>
   </td>
  </tr>
@@ -236,10 +236,10 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  102</span>  : <a class="code hl_variable" href="classLoggingWindow.html#afbb2ac648c48505d0f2bfc93bd1b4d45">m_sink</a>(std::move(<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a757ac11cad97288b51ea35a1287a6ee1">sink</a>))</div>
-<div class="line"><span class="lineno">  103</span>  , <a class="code hl_variable" href="classLoggingWindow.html#aa3bdc7f4fcc0166d41687703dde0ea47">m_maxDisplayedLines</a>(<a class="code hl_variable" href="classLoggingWindow.html#afbb2ac648c48505d0f2bfc93bd1b4d45">m_sink</a>-&gt;capacity())</div>
-<div class="line"><span class="lineno">  104</span>{</div>
-<div class="line"><span class="lineno">  105</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  103</span>  : <a class="code hl_variable" href="classLoggingWindow.html#afbb2ac648c48505d0f2bfc93bd1b4d45">m_sink</a>(std::move(<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a757ac11cad97288b51ea35a1287a6ee1">sink</a>))</div>
+<div class="line"><span class="lineno">  104</span>  , <a class="code hl_variable" href="classLoggingWindow.html#aa3bdc7f4fcc0166d41687703dde0ea47">m_maxDisplayedLines</a>(<a class="code hl_variable" href="classLoggingWindow.html#afbb2ac648c48505d0f2bfc93bd1b4d45">m_sink</a>-&gt;capacity())</div>
+<div class="line"><span class="lineno">  105</span>{</div>
+<div class="line"><span class="lineno">  106</span>}</div>
 <div class="ttc" id="aclassLoggingWindow_html_aa3bdc7f4fcc0166d41687703dde0ea47"><div class="ttname"><a href="classLoggingWindow.html#aa3bdc7f4fcc0166d41687703dde0ea47">LoggingWindow::m_maxDisplayedLines</a></div><div class="ttdeci">std::size_t m_maxDisplayedLines</div><div class="ttdef"><b>Definition</b> logging-window.hh:30</div></div>
 <div class="ttc" id="aclassLoggingWindow_html_afbb2ac648c48505d0f2bfc93bd1b4d45"><div class="ttname"><a href="classLoggingWindow.html#afbb2ac648c48505d0f2bfc93bd1b4d45">LoggingWindow::m_sink</a></div><div class="ttdeci">Scroom::RingBufferSink::Ptr m_sink</div><div class="ttdef"><b>Definition</b> logging-window.hh:24</div></div>
 <div class="ttc" id="aringbuffer-sink-tests_8cc_html_a757ac11cad97288b51ea35a1287a6ee1"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a757ac11cad97288b51ea35a1287a6ee1">sink</a></div><div class="ttdeci">auto sink</div><div class="ttdef"><b>Definition</b> ringbuffer-sink-tests.cc:105</div></div>
@@ -260,13 +260,13 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  136</span>{</div>
-<div class="line"><span class="lineno">  137</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="classLoggingWindow.html#a80c2fda982fddd9eb6b68c91970afadc">m_xml</a> != <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  138</span>  {</div>
-<div class="line"><span class="lineno">  139</span>    g_object_unref(<a class="code hl_variable" href="classLoggingWindow.html#a80c2fda982fddd9eb6b68c91970afadc">m_xml</a>);</div>
-<div class="line"><span class="lineno">  140</span>    <a class="code hl_variable" href="classLoggingWindow.html#a80c2fda982fddd9eb6b68c91970afadc">m_xml</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  141</span>  }</div>
-<div class="line"><span class="lineno">  142</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  137</span>{</div>
+<div class="line"><span class="lineno">  138</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="classLoggingWindow.html#a80c2fda982fddd9eb6b68c91970afadc">m_xml</a> != <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  139</span>  {</div>
+<div class="line"><span class="lineno">  140</span>    g_object_unref(<a class="code hl_variable" href="classLoggingWindow.html#a80c2fda982fddd9eb6b68c91970afadc">m_xml</a>);</div>
+<div class="line"><span class="lineno">  141</span>    <a class="code hl_variable" href="classLoggingWindow.html#a80c2fda982fddd9eb6b68c91970afadc">m_xml</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  142</span>  }</div>
+<div class="line"><span class="lineno">  143</span>}</div>
 <div class="ttc" id="aclassLoggingWindow_html_a80c2fda982fddd9eb6b68c91970afadc"><div class="ttname"><a href="classLoggingWindow.html#a80c2fda982fddd9eb6b68c91970afadc">LoggingWindow::m_xml</a></div><div class="ttdeci">GtkBuilder * m_xml</div><div class="ttdef"><b>Definition</b> logging-window.hh:25</div></div>
 </div><!-- fragment -->
 </div>
@@ -347,18 +347,23 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  195</span>{</div>
-<div class="line"><span class="lineno">  196</span>  GtkTextIter begin;</div>
-<div class="line"><span class="lineno">  197</span>  GtkTextIter end;</div>
-<div class="line"><span class="lineno">  198</span> </div>
-<div class="line"><span class="lineno">  199</span>  gtk_text_buffer_get_end_iter(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, &amp;begin);</div>
-<div class="line"><span class="lineno">  200</span>  end = begin;</div>
-<div class="line"><span class="lineno">  201</span>  gtk_text_buffer_get_end_iter(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, &amp;end);</div>
-<div class="line"><span class="lineno">  202</span>  gtk_text_buffer_insert(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, &amp;end, entry.<a class="code hl_variable" href="structScroom_1_1RingBufferSink_1_1Entry.html#a276aa654facba621c9fbe0e5838c533a">text</a>.c_str(), -1);</div>
-<div class="line"><span class="lineno">  203</span>  gtk_text_buffer_apply_tag_by_name(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#acfe9f6b8c3f44f97c2b73a8d46524957">levelTagName</a>(entry.<a class="code hl_variable" href="structScroom_1_1RingBufferSink_1_1Entry.html#abe1cb691ef656399f61c29cc1cc7da01">level</a>), &amp;begin, &amp;end);</div>
-<div class="line"><span class="lineno">  204</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  201</span>{</div>
+<div class="line"><span class="lineno">  202</span>  GtkTextIter insertEnd;</div>
+<div class="line"><span class="lineno">  203</span>  gtk_text_buffer_get_end_iter(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, &amp;insertEnd);</div>
+<div class="line"><span class="lineno">  204</span> </div>
+<div class="line"><span class="lineno">  205</span>  <span class="comment">// Preserve the insertion start across buffer mutation.</span></div>
+<div class="line"><span class="lineno">  206</span>  GtkTextMark* startMark = gtk_text_buffer_create_mark(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, <span class="keyword">nullptr</span>, &amp;insertEnd, TRUE);</div>
+<div class="line"><span class="lineno">  207</span>  gtk_text_buffer_insert(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, &amp;insertEnd, entry.<a class="code hl_variable" href="structScroom_1_1RingBufferSink_1_1Entry.html#a276aa654facba621c9fbe0e5838c533a">text</a>.c_str(), -1);</div>
+<div class="line"><span class="lineno">  208</span> </div>
+<div class="line"><span class="lineno">  209</span>  GtkTextIter begin;</div>
+<div class="line"><span class="lineno">  210</span>  GtkTextIter end;</div>
+<div class="line"><span class="lineno">  211</span>  gtk_text_buffer_get_iter_at_mark(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, &amp;begin, startMark);</div>
+<div class="line"><span class="lineno">  212</span>  gtk_text_buffer_get_end_iter(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, &amp;end);</div>
+<div class="line"><span class="lineno">  213</span>  gtk_text_buffer_apply_tag_by_name(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#acfe9f6b8c3f44f97c2b73a8d46524957">levelTagName</a>(entry.<a class="code hl_variable" href="structScroom_1_1RingBufferSink_1_1Entry.html#abe1cb691ef656399f61c29cc1cc7da01">level</a>), &amp;begin, &amp;end);</div>
+<div class="line"><span class="lineno">  214</span>  gtk_text_buffer_delete_mark(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, startMark);</div>
+<div class="line"><span class="lineno">  215</span>}</div>
 <div class="ttc" id="aclassLoggingWindow_html_ac18ee5f3760c63601e23d7f64f0e61f0"><div class="ttname"><a href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">LoggingWindow::m_textBuffer</a></div><div class="ttdeci">GtkTextBuffer * m_textBuffer</div><div class="ttdef"><b>Definition</b> logging-window.hh:28</div></div>
-<div class="ttc" id="anamespaceanonymous__namespace_02logging-window_8cc_03_html_acfe9f6b8c3f44f97c2b73a8d46524957"><div class="ttname"><a href="namespaceanonymous__namespace_02logging-window_8cc_03.html#acfe9f6b8c3f44f97c2b73a8d46524957">anonymous_namespace{logging-window.cc}::levelTagName</a></div><div class="ttdeci">const char * levelTagName(spdlog::level::level_enum level)</div><div class="ttdef"><b>Definition</b> logging-window.cc:79</div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02logging-window_8cc_03_html_acfe9f6b8c3f44f97c2b73a8d46524957"><div class="ttname"><a href="namespaceanonymous__namespace_02logging-window_8cc_03.html#acfe9f6b8c3f44f97c2b73a8d46524957">anonymous_namespace{logging-window.cc}::levelTagName</a></div><div class="ttdeci">const char * levelTagName(spdlog::level::level_enum level)</div><div class="ttdef"><b>Definition</b> logging-window.cc:80</div></div>
 <div class="ttc" id="astructScroom_1_1RingBufferSink_1_1Entry_html_a276aa654facba621c9fbe0e5838c533a"><div class="ttname"><a href="structScroom_1_1RingBufferSink_1_1Entry.html#a276aa654facba621c9fbe0e5838c533a">Scroom::RingBufferSink::Entry::text</a></div><div class="ttdeci">std::string text</div><div class="ttdef"><b>Definition</b> ringbuffer-sink.hh:33</div></div>
 <div class="ttc" id="astructScroom_1_1RingBufferSink_1_1Entry_html_abe1cb691ef656399f61c29cc1cc7da01"><div class="ttname"><a href="structScroom_1_1RingBufferSink_1_1Entry.html#abe1cb691ef656399f61c29cc1cc7da01">Scroom::RingBufferSink::Entry::level</a></div><div class="ttdeci">spdlog::level::level_enum level</div><div class="ttdef"><b>Definition</b> ringbuffer-sink.hh:32</div></div>
 </div><!-- fragment -->
@@ -390,36 +395,36 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  289</span>{</div>
-<div class="line"><span class="lineno">  290</span>  <span class="keyword">const</span> <span class="keywordtype">bool</span> stickToBottom = <a class="code hl_function" href="classLoggingWindow.html#af86d59c04fac1ded9d4e606fd87f5779">isScrolledToBottom</a>();</div>
-<div class="line"><span class="lineno">  291</span>  <span class="keyword">auto</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_variable" href="classLoggingWindow.html#afbb2ac648c48505d0f2bfc93bd1b4d45">m_sink</a>-&gt;consumeSince(<a class="code hl_variable" href="classLoggingWindow.html#aca8a06121fa60f51514a4c48e64126a4">m_lastSeq</a>);</div>
-<div class="line"><span class="lineno">  292</span>  <a class="code hl_variable" href="classLoggingWindow.html#aca8a06121fa60f51514a4c48e64126a4">m_lastSeq</a> = <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>.nextSeq;</div>
-<div class="line"><span class="lineno">  293</span> </div>
-<div class="line"><span class="lineno">  294</span>  <span class="keywordtype">bool</span> hasWarningOrHigher = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  295</span>  <span class="keywordflow">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span>&amp; entry: <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>.<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a1ccbac9cd1dc7547eeae5cc5ffb3a271">entries</a>)</div>
-<div class="line"><span class="lineno">  296</span>  {</div>
-<div class="line"><span class="lineno">  297</span>    <a class="code hl_function" href="classLoggingWindow.html#a74f28762a1b0de7b510a8e1ce0388c99">appendEntry</a>(entry);</div>
-<div class="line"><span class="lineno">  298</span>    hasWarningOrHigher = hasWarningOrHigher || entry.level &gt;= spdlog::level::warn;</div>
-<div class="line"><span class="lineno">  299</span>  }</div>
-<div class="line"><span class="lineno">  300</span> </div>
-<div class="line"><span class="lineno">  301</span>  <a class="code hl_function" href="classLoggingWindow.html#a7cc2f57d209b7c6f31da7586f221ce8d">trimToMaxLines</a>();</div>
-<div class="line"><span class="lineno">  302</span> </div>
-<div class="line"><span class="lineno">  303</span>  <span class="keywordflow">if</span>(stickToBottom)</div>
-<div class="line"><span class="lineno">  304</span>  {</div>
-<div class="line"><span class="lineno">  305</span>    <a class="code hl_function" href="classLoggingWindow.html#a80c0ef89bb4023813bcf00a2fc5ebf66">scrollToBottom</a>();</div>
-<div class="line"><span class="lineno">  306</span>  }</div>
-<div class="line"><span class="lineno">  307</span> </div>
-<div class="line"><span class="lineno">  308</span>  <span class="keywordflow">if</span>(hasWarningOrHigher)</div>
-<div class="line"><span class="lineno">  309</span>  {</div>
-<div class="line"><span class="lineno">  310</span>    <a class="code hl_function" href="classLoggingWindow.html#aa5f23e4cc87eee36b0b106e073fec9d9">requestAttentionForWarningBatch</a>();</div>
-<div class="line"><span class="lineno">  311</span>  }</div>
-<div class="line"><span class="lineno">  312</span>}</div>
-<div class="ttc" id="aclassLoggingWindow_html_a74f28762a1b0de7b510a8e1ce0388c99"><div class="ttname"><a href="classLoggingWindow.html#a74f28762a1b0de7b510a8e1ce0388c99">LoggingWindow::appendEntry</a></div><div class="ttdeci">void appendEntry(const Scroom::RingBufferSink::Entry &amp;entry)</div><div class="ttdef"><b>Definition</b> logging-window.cc:194</div></div>
-<div class="ttc" id="aclassLoggingWindow_html_a7cc2f57d209b7c6f31da7586f221ce8d"><div class="ttname"><a href="classLoggingWindow.html#a7cc2f57d209b7c6f31da7586f221ce8d">LoggingWindow::trimToMaxLines</a></div><div class="ttdeci">void trimToMaxLines()</div><div class="ttdef"><b>Definition</b> logging-window.cc:206</div></div>
-<div class="ttc" id="aclassLoggingWindow_html_a80c0ef89bb4023813bcf00a2fc5ebf66"><div class="ttname"><a href="classLoggingWindow.html#a80c0ef89bb4023813bcf00a2fc5ebf66">LoggingWindow::scrollToBottom</a></div><div class="ttdeci">void scrollToBottom()</div><div class="ttdef"><b>Definition</b> logging-window.cc:238</div></div>
-<div class="ttc" id="aclassLoggingWindow_html_aa5f23e4cc87eee36b0b106e073fec9d9"><div class="ttname"><a href="classLoggingWindow.html#aa5f23e4cc87eee36b0b106e073fec9d9">LoggingWindow::requestAttentionForWarningBatch</a></div><div class="ttdeci">void requestAttentionForWarningBatch()</div><div class="ttdef"><b>Definition</b> logging-window.cc:257</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  300</span>{</div>
+<div class="line"><span class="lineno">  301</span>  <span class="keyword">const</span> <span class="keywordtype">bool</span> stickToBottom = <a class="code hl_function" href="classLoggingWindow.html#af86d59c04fac1ded9d4e606fd87f5779">isScrolledToBottom</a>();</div>
+<div class="line"><span class="lineno">  302</span>  <span class="keyword">auto</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_variable" href="classLoggingWindow.html#afbb2ac648c48505d0f2bfc93bd1b4d45">m_sink</a>-&gt;consumeSince(<a class="code hl_variable" href="classLoggingWindow.html#aca8a06121fa60f51514a4c48e64126a4">m_lastSeq</a>);</div>
+<div class="line"><span class="lineno">  303</span>  <a class="code hl_variable" href="classLoggingWindow.html#aca8a06121fa60f51514a4c48e64126a4">m_lastSeq</a> = <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>.nextSeq;</div>
+<div class="line"><span class="lineno">  304</span> </div>
+<div class="line"><span class="lineno">  305</span>  <span class="keywordtype">bool</span> hasWarningOrHigher = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  306</span>  <span class="keywordflow">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span>&amp; entry: <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>.<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a1ccbac9cd1dc7547eeae5cc5ffb3a271">entries</a>)</div>
+<div class="line"><span class="lineno">  307</span>  {</div>
+<div class="line"><span class="lineno">  308</span>    <a class="code hl_function" href="classLoggingWindow.html#a74f28762a1b0de7b510a8e1ce0388c99">appendEntry</a>(entry);</div>
+<div class="line"><span class="lineno">  309</span>    hasWarningOrHigher = hasWarningOrHigher || entry.level &gt;= spdlog::level::warn;</div>
+<div class="line"><span class="lineno">  310</span>  }</div>
+<div class="line"><span class="lineno">  311</span> </div>
+<div class="line"><span class="lineno">  312</span>  <a class="code hl_function" href="classLoggingWindow.html#a7cc2f57d209b7c6f31da7586f221ce8d">trimToMaxLines</a>();</div>
+<div class="line"><span class="lineno">  313</span> </div>
+<div class="line"><span class="lineno">  314</span>  <span class="keywordflow">if</span>(stickToBottom)</div>
+<div class="line"><span class="lineno">  315</span>  {</div>
+<div class="line"><span class="lineno">  316</span>    <a class="code hl_function" href="classLoggingWindow.html#a80c0ef89bb4023813bcf00a2fc5ebf66">scrollToBottom</a>();</div>
+<div class="line"><span class="lineno">  317</span>  }</div>
+<div class="line"><span class="lineno">  318</span> </div>
+<div class="line"><span class="lineno">  319</span>  <span class="keywordflow">if</span>(hasWarningOrHigher)</div>
+<div class="line"><span class="lineno">  320</span>  {</div>
+<div class="line"><span class="lineno">  321</span>    <a class="code hl_function" href="classLoggingWindow.html#aa5f23e4cc87eee36b0b106e073fec9d9">requestAttentionForWarningBatch</a>();</div>
+<div class="line"><span class="lineno">  322</span>  }</div>
+<div class="line"><span class="lineno">  323</span>}</div>
+<div class="ttc" id="aclassLoggingWindow_html_a74f28762a1b0de7b510a8e1ce0388c99"><div class="ttname"><a href="classLoggingWindow.html#a74f28762a1b0de7b510a8e1ce0388c99">LoggingWindow::appendEntry</a></div><div class="ttdeci">void appendEntry(const Scroom::RingBufferSink::Entry &amp;entry)</div><div class="ttdef"><b>Definition</b> logging-window.cc:200</div></div>
+<div class="ttc" id="aclassLoggingWindow_html_a7cc2f57d209b7c6f31da7586f221ce8d"><div class="ttname"><a href="classLoggingWindow.html#a7cc2f57d209b7c6f31da7586f221ce8d">LoggingWindow::trimToMaxLines</a></div><div class="ttdeci">void trimToMaxLines()</div><div class="ttdef"><b>Definition</b> logging-window.cc:217</div></div>
+<div class="ttc" id="aclassLoggingWindow_html_a80c0ef89bb4023813bcf00a2fc5ebf66"><div class="ttname"><a href="classLoggingWindow.html#a80c0ef89bb4023813bcf00a2fc5ebf66">LoggingWindow::scrollToBottom</a></div><div class="ttdeci">void scrollToBottom()</div><div class="ttdef"><b>Definition</b> logging-window.cc:249</div></div>
+<div class="ttc" id="aclassLoggingWindow_html_aa5f23e4cc87eee36b0b106e073fec9d9"><div class="ttname"><a href="classLoggingWindow.html#aa5f23e4cc87eee36b0b106e073fec9d9">LoggingWindow::requestAttentionForWarningBatch</a></div><div class="ttdeci">void requestAttentionForWarningBatch()</div><div class="ttdef"><b>Definition</b> logging-window.cc:268</div></div>
 <div class="ttc" id="aclassLoggingWindow_html_aca8a06121fa60f51514a4c48e64126a4"><div class="ttname"><a href="classLoggingWindow.html#aca8a06121fa60f51514a4c48e64126a4">LoggingWindow::m_lastSeq</a></div><div class="ttdeci">std::uint64_t m_lastSeq</div><div class="ttdef"><b>Definition</b> logging-window.hh:29</div></div>
-<div class="ttc" id="aclassLoggingWindow_html_af86d59c04fac1ded9d4e606fd87f5779"><div class="ttname"><a href="classLoggingWindow.html#af86d59c04fac1ded9d4e606fd87f5779">LoggingWindow::isScrolledToBottom</a></div><div class="ttdeci">bool isScrolledToBottom() const</div><div class="ttdef"><b>Definition</b> logging-window.cc:223</div></div>
+<div class="ttc" id="aclassLoggingWindow_html_af86d59c04fac1ded9d4e606fd87f5779"><div class="ttname"><a href="classLoggingWindow.html#af86d59c04fac1ded9d4e606fd87f5779">LoggingWindow::isScrolledToBottom</a></div><div class="ttdeci">bool isScrolledToBottom() const</div><div class="ttdef"><b>Definition</b> logging-window.cc:234</div></div>
 <div class="ttc" id="aringbuffer-sink-tests_8cc_html_a1ccbac9cd1dc7547eeae5cc5ffb3a271"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a1ccbac9cd1dc7547eeae5cc5ffb3a271">entries</a></div><div class="ttdeci">auto entries</div><div class="ttdef"><b>Definition</b> ringbuffer-sink-tests.cc:55</div></div>
 <div class="ttc" id="aringbuffer-sink-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">auto result</div><div class="ttdef"><b>Definition</b> ringbuffer-sink-tests.cc:91</div></div>
 </div><!-- fragment --><div class="dynheader">
@@ -479,32 +484,32 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  108</span>{</div>
-<div class="line"><span class="lineno">  109</span>  <span class="keyword">auto</span> window = <a class="code hl_typedef" href="classLoggingWindow.html#a3ebe8b19ffdd540f581ba59075211734">Ptr</a>(<span class="keyword">new</span> <a class="code hl_class" href="classLoggingWindow.html">LoggingWindow</a>(std::move(<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a757ac11cad97288b51ea35a1287a6ee1">sink</a>)));</div>
-<div class="line"><span class="lineno">  110</span>  window-&gt;loadFromUiFile(uiFileName);</div>
-<div class="line"><span class="lineno">  111</span>  window-&gt;initializeTags();</div>
-<div class="line"><span class="lineno">  112</span> </div>
-<div class="line"><span class="lineno">  113</span>  <span class="keyword">auto</span> snapshot = window-&gt;m_sink-&gt;snapshot();</div>
-<div class="line"><span class="lineno">  114</span>  <span class="keywordtype">bool</span> hasWarningOrHigher = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  115</span>  <span class="keywordflow">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span>&amp; entry: snapshot)</div>
-<div class="line"><span class="lineno">  116</span>  {</div>
-<div class="line"><span class="lineno">  117</span>    window-&gt;appendEntry(entry);</div>
-<div class="line"><span class="lineno">  118</span>    hasWarningOrHigher = hasWarningOrHigher || entry.level &gt;= spdlog::level::warn;</div>
-<div class="line"><span class="lineno">  119</span>  }</div>
-<div class="line"><span class="lineno">  120</span>  <span class="keywordflow">if</span>(!snapshot.empty())</div>
-<div class="line"><span class="lineno">  121</span>  {</div>
-<div class="line"><span class="lineno">  122</span>    window-&gt;m_lastSeq = snapshot.back().seq;</div>
-<div class="line"><span class="lineno">  123</span>  }</div>
-<div class="line"><span class="lineno">  124</span>  window-&gt;trimToMaxLines();</div>
-<div class="line"><span class="lineno">  125</span>  window-&gt;scrollToBottom();</div>
-<div class="line"><span class="lineno">  126</span> </div>
-<div class="line"><span class="lineno">  127</span>  <span class="keywordflow">if</span>(hasWarningOrHigher)</div>
-<div class="line"><span class="lineno">  128</span>  {</div>
-<div class="line"><span class="lineno">  129</span>    window-&gt;requestAttentionForWarningBatch();</div>
-<div class="line"><span class="lineno">  130</span>  }</div>
-<div class="line"><span class="lineno">  131</span> </div>
-<div class="line"><span class="lineno">  132</span>  <span class="keywordflow">return</span> window;</div>
-<div class="line"><span class="lineno">  133</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  109</span>{</div>
+<div class="line"><span class="lineno">  110</span>  <span class="keyword">auto</span> window = <a class="code hl_typedef" href="classLoggingWindow.html#a3ebe8b19ffdd540f581ba59075211734">Ptr</a>(<span class="keyword">new</span> <a class="code hl_class" href="classLoggingWindow.html">LoggingWindow</a>(std::move(<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a757ac11cad97288b51ea35a1287a6ee1">sink</a>)));</div>
+<div class="line"><span class="lineno">  111</span>  window-&gt;loadFromUiFile(uiFileName);</div>
+<div class="line"><span class="lineno">  112</span>  window-&gt;initializeTags();</div>
+<div class="line"><span class="lineno">  113</span> </div>
+<div class="line"><span class="lineno">  114</span>  <span class="keyword">auto</span> snapshot = window-&gt;m_sink-&gt;snapshot();</div>
+<div class="line"><span class="lineno">  115</span>  <span class="keywordtype">bool</span> hasWarningOrHigher = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  116</span>  <span class="keywordflow">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span>&amp; entry: snapshot)</div>
+<div class="line"><span class="lineno">  117</span>  {</div>
+<div class="line"><span class="lineno">  118</span>    window-&gt;appendEntry(entry);</div>
+<div class="line"><span class="lineno">  119</span>    hasWarningOrHigher = hasWarningOrHigher || entry.level &gt;= spdlog::level::warn;</div>
+<div class="line"><span class="lineno">  120</span>  }</div>
+<div class="line"><span class="lineno">  121</span>  <span class="keywordflow">if</span>(!snapshot.empty())</div>
+<div class="line"><span class="lineno">  122</span>  {</div>
+<div class="line"><span class="lineno">  123</span>    window-&gt;m_lastSeq = snapshot.back().seq;</div>
+<div class="line"><span class="lineno">  124</span>  }</div>
+<div class="line"><span class="lineno">  125</span>  window-&gt;trimToMaxLines();</div>
+<div class="line"><span class="lineno">  126</span>  window-&gt;scrollToBottom();</div>
+<div class="line"><span class="lineno">  127</span> </div>
+<div class="line"><span class="lineno">  128</span>  <span class="keywordflow">if</span>(hasWarningOrHigher)</div>
+<div class="line"><span class="lineno">  129</span>  {</div>
+<div class="line"><span class="lineno">  130</span>    window-&gt;requestAttentionForWarningBatch();</div>
+<div class="line"><span class="lineno">  131</span>  }</div>
+<div class="line"><span class="lineno">  132</span> </div>
+<div class="line"><span class="lineno">  133</span>  <span class="keywordflow">return</span> window;</div>
+<div class="line"><span class="lineno">  134</span>}</div>
 <div class="ttc" id="aclassLoggingWindow_html"><div class="ttname"><a href="classLoggingWindow.html">LoggingWindow</a></div><div class="ttdef"><b>Definition</b> logging-window.hh:19</div></div>
 <div class="ttc" id="aclassLoggingWindow_html_a3ebe8b19ffdd540f581ba59075211734"><div class="ttname"><a href="classLoggingWindow.html#a3ebe8b19ffdd540f581ba59075211734">LoggingWindow::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; LoggingWindow &gt; Ptr</div><div class="ttdef"><b>Definition</b> logging-window.hh:21</div></div>
 </div><!-- fragment -->
@@ -546,38 +551,38 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  165</span>{</div>
-<div class="line"><span class="lineno">  166</span>  <span class="keyword">auto</span>* traceTag = <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#ab27f8e1e654bd763f730f37365ca105e">addTextTag</a>(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, <span class="stringliteral">&quot;log-trace&quot;</span>);</div>
-<div class="line"><span class="lineno">  167</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a16cb6b08f644efca83f5cde66fee9878">setTextTagStringProperty</a>(traceTag, <span class="stringliteral">&quot;foreground&quot;</span>, <span class="stringliteral">&quot;#7f7f7f&quot;</span>);</div>
-<div class="line"><span class="lineno">  168</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#aa3eca009c7fcfed84b9de47d1e12c68a">setTextTagBooleanProperty</a>(traceTag, <span class="stringliteral">&quot;foreground-set&quot;</span>, TRUE);</div>
-<div class="line"><span class="lineno">  169</span> </div>
-<div class="line"><span class="lineno">  170</span>  <span class="keyword">auto</span>* debugTag = <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#ab27f8e1e654bd763f730f37365ca105e">addTextTag</a>(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, <span class="stringliteral">&quot;log-debug&quot;</span>);</div>
-<div class="line"><span class="lineno">  171</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a16cb6b08f644efca83f5cde66fee9878">setTextTagStringProperty</a>(debugTag, <span class="stringliteral">&quot;foreground&quot;</span>, <span class="stringliteral">&quot;#3b82f6&quot;</span>);</div>
-<div class="line"><span class="lineno">  172</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#aa3eca009c7fcfed84b9de47d1e12c68a">setTextTagBooleanProperty</a>(debugTag, <span class="stringliteral">&quot;foreground-set&quot;</span>, TRUE);</div>
-<div class="line"><span class="lineno">  173</span> </div>
-<div class="line"><span class="lineno">  174</span>  <span class="keyword">auto</span>* infoTag = <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#ab27f8e1e654bd763f730f37365ca105e">addTextTag</a>(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, <span class="stringliteral">&quot;log-info&quot;</span>);</div>
-<div class="line"><span class="lineno">  175</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#aa3eca009c7fcfed84b9de47d1e12c68a">setTextTagBooleanProperty</a>(infoTag, <span class="stringliteral">&quot;foreground-set&quot;</span>, FALSE);</div>
-<div class="line"><span class="lineno">  176</span> </div>
-<div class="line"><span class="lineno">  177</span>  <span class="keyword">auto</span>* warnTag = <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#ab27f8e1e654bd763f730f37365ca105e">addTextTag</a>(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, <span class="stringliteral">&quot;log-warn&quot;</span>);</div>
-<div class="line"><span class="lineno">  178</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a16cb6b08f644efca83f5cde66fee9878">setTextTagStringProperty</a>(warnTag, <span class="stringliteral">&quot;foreground&quot;</span>, <span class="stringliteral">&quot;#b8860b&quot;</span>);</div>
-<div class="line"><span class="lineno">  179</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#aa3eca009c7fcfed84b9de47d1e12c68a">setTextTagBooleanProperty</a>(warnTag, <span class="stringliteral">&quot;foreground-set&quot;</span>, TRUE);</div>
-<div class="line"><span class="lineno">  180</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a7fd3b1ca2766f109ba52232e61a2c209">setTextTagIntProperty</a>(warnTag, <span class="stringliteral">&quot;weight&quot;</span>, PANGO_WEIGHT_BOLD);</div>
-<div class="line"><span class="lineno">  181</span> </div>
-<div class="line"><span class="lineno">  182</span>  <span class="keyword">auto</span>* errorTag = <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#ab27f8e1e654bd763f730f37365ca105e">addTextTag</a>(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, <span class="stringliteral">&quot;log-error&quot;</span>);</div>
-<div class="line"><span class="lineno">  183</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a16cb6b08f644efca83f5cde66fee9878">setTextTagStringProperty</a>(errorTag, <span class="stringliteral">&quot;foreground&quot;</span>, <span class="stringliteral">&quot;#b91c1c&quot;</span>);</div>
-<div class="line"><span class="lineno">  184</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#aa3eca009c7fcfed84b9de47d1e12c68a">setTextTagBooleanProperty</a>(errorTag, <span class="stringliteral">&quot;foreground-set&quot;</span>, TRUE);</div>
-<div class="line"><span class="lineno">  185</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a7fd3b1ca2766f109ba52232e61a2c209">setTextTagIntProperty</a>(errorTag, <span class="stringliteral">&quot;weight&quot;</span>, PANGO_WEIGHT_BOLD);</div>
-<div class="line"><span class="lineno">  186</span> </div>
-<div class="line"><span class="lineno">  187</span>  <span class="keyword">auto</span>* criticalTag = <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#ab27f8e1e654bd763f730f37365ca105e">addTextTag</a>(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, <span class="stringliteral">&quot;log-critical&quot;</span>);</div>
-<div class="line"><span class="lineno">  188</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a16cb6b08f644efca83f5cde66fee9878">setTextTagStringProperty</a>(criticalTag, <span class="stringliteral">&quot;foreground&quot;</span>, <span class="stringliteral">&quot;#ffffff&quot;</span>);</div>
-<div class="line"><span class="lineno">  189</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#aa3eca009c7fcfed84b9de47d1e12c68a">setTextTagBooleanProperty</a>(criticalTag, <span class="stringliteral">&quot;foreground-set&quot;</span>, TRUE);</div>
-<div class="line"><span class="lineno">  190</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a16cb6b08f644efca83f5cde66fee9878">setTextTagStringProperty</a>(criticalTag, <span class="stringliteral">&quot;background&quot;</span>, <span class="stringliteral">&quot;#7f1d1d&quot;</span>);</div>
-<div class="line"><span class="lineno">  191</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a7fd3b1ca2766f109ba52232e61a2c209">setTextTagIntProperty</a>(criticalTag, <span class="stringliteral">&quot;weight&quot;</span>, PANGO_WEIGHT_BOLD);</div>
-<div class="line"><span class="lineno">  192</span>}</div>
-<div class="ttc" id="anamespaceanonymous__namespace_02logging-window_8cc_03_html_a16cb6b08f644efca83f5cde66fee9878"><div class="ttname"><a href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a16cb6b08f644efca83f5cde66fee9878">anonymous_namespace{logging-window.cc}::setTextTagStringProperty</a></div><div class="ttdeci">void setTextTagStringProperty(GtkTextTag *textTag, const char *propertyName, const char *value)</div><div class="ttdef"><b>Definition</b> logging-window.cc:18</div></div>
-<div class="ttc" id="anamespaceanonymous__namespace_02logging-window_8cc_03_html_a7fd3b1ca2766f109ba52232e61a2c209"><div class="ttname"><a href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a7fd3b1ca2766f109ba52232e61a2c209">anonymous_namespace{logging-window.cc}::setTextTagIntProperty</a></div><div class="ttdeci">void setTextTagIntProperty(GtkTextTag *textTag, const char *propertyName, gint value)</div><div class="ttdef"><b>Definition</b> logging-window.cc:36</div></div>
-<div class="ttc" id="anamespaceanonymous__namespace_02logging-window_8cc_03_html_aa3eca009c7fcfed84b9de47d1e12c68a"><div class="ttname"><a href="namespaceanonymous__namespace_02logging-window_8cc_03.html#aa3eca009c7fcfed84b9de47d1e12c68a">anonymous_namespace{logging-window.cc}::setTextTagBooleanProperty</a></div><div class="ttdeci">void setTextTagBooleanProperty(GtkTextTag *textTag, const char *propertyName, gboolean value)</div><div class="ttdef"><b>Definition</b> logging-window.cc:27</div></div>
-<div class="ttc" id="anamespaceanonymous__namespace_02logging-window_8cc_03_html_ab27f8e1e654bd763f730f37365ca105e"><div class="ttname"><a href="namespaceanonymous__namespace_02logging-window_8cc_03.html#ab27f8e1e654bd763f730f37365ca105e">anonymous_namespace{logging-window.cc}::addTextTag</a></div><div class="ttdeci">GtkTextTag * addTextTag(GtkTextBuffer *textBuffer, const char *tagName)</div><div class="ttdef"><b>Definition</b> logging-window.cc:45</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  171</span>{</div>
+<div class="line"><span class="lineno">  172</span>  <span class="keyword">auto</span>* traceTag = <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#ab27f8e1e654bd763f730f37365ca105e">addTextTag</a>(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, <span class="stringliteral">&quot;log-trace&quot;</span>);</div>
+<div class="line"><span class="lineno">  173</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a16cb6b08f644efca83f5cde66fee9878">setTextTagStringProperty</a>(traceTag, <span class="stringliteral">&quot;foreground&quot;</span>, <span class="stringliteral">&quot;#7f7f7f&quot;</span>);</div>
+<div class="line"><span class="lineno">  174</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#aa3eca009c7fcfed84b9de47d1e12c68a">setTextTagBooleanProperty</a>(traceTag, <span class="stringliteral">&quot;foreground-set&quot;</span>, TRUE);</div>
+<div class="line"><span class="lineno">  175</span> </div>
+<div class="line"><span class="lineno">  176</span>  <span class="keyword">auto</span>* debugTag = <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#ab27f8e1e654bd763f730f37365ca105e">addTextTag</a>(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, <span class="stringliteral">&quot;log-debug&quot;</span>);</div>
+<div class="line"><span class="lineno">  177</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a16cb6b08f644efca83f5cde66fee9878">setTextTagStringProperty</a>(debugTag, <span class="stringliteral">&quot;foreground&quot;</span>, <span class="stringliteral">&quot;#3b82f6&quot;</span>);</div>
+<div class="line"><span class="lineno">  178</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#aa3eca009c7fcfed84b9de47d1e12c68a">setTextTagBooleanProperty</a>(debugTag, <span class="stringliteral">&quot;foreground-set&quot;</span>, TRUE);</div>
+<div class="line"><span class="lineno">  179</span> </div>
+<div class="line"><span class="lineno">  180</span>  <span class="keyword">auto</span>* infoTag = <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#ab27f8e1e654bd763f730f37365ca105e">addTextTag</a>(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, <span class="stringliteral">&quot;log-info&quot;</span>);</div>
+<div class="line"><span class="lineno">  181</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#aa3eca009c7fcfed84b9de47d1e12c68a">setTextTagBooleanProperty</a>(infoTag, <span class="stringliteral">&quot;foreground-set&quot;</span>, FALSE);</div>
+<div class="line"><span class="lineno">  182</span> </div>
+<div class="line"><span class="lineno">  183</span>  <span class="keyword">auto</span>* warnTag = <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#ab27f8e1e654bd763f730f37365ca105e">addTextTag</a>(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, <span class="stringliteral">&quot;log-warn&quot;</span>);</div>
+<div class="line"><span class="lineno">  184</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a16cb6b08f644efca83f5cde66fee9878">setTextTagStringProperty</a>(warnTag, <span class="stringliteral">&quot;foreground&quot;</span>, <span class="stringliteral">&quot;#b8860b&quot;</span>);</div>
+<div class="line"><span class="lineno">  185</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#aa3eca009c7fcfed84b9de47d1e12c68a">setTextTagBooleanProperty</a>(warnTag, <span class="stringliteral">&quot;foreground-set&quot;</span>, TRUE);</div>
+<div class="line"><span class="lineno">  186</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a7fd3b1ca2766f109ba52232e61a2c209">setTextTagIntProperty</a>(warnTag, <span class="stringliteral">&quot;weight&quot;</span>, PANGO_WEIGHT_BOLD);</div>
+<div class="line"><span class="lineno">  187</span> </div>
+<div class="line"><span class="lineno">  188</span>  <span class="keyword">auto</span>* errorTag = <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#ab27f8e1e654bd763f730f37365ca105e">addTextTag</a>(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, <span class="stringliteral">&quot;log-error&quot;</span>);</div>
+<div class="line"><span class="lineno">  189</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a16cb6b08f644efca83f5cde66fee9878">setTextTagStringProperty</a>(errorTag, <span class="stringliteral">&quot;foreground&quot;</span>, <span class="stringliteral">&quot;#b91c1c&quot;</span>);</div>
+<div class="line"><span class="lineno">  190</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#aa3eca009c7fcfed84b9de47d1e12c68a">setTextTagBooleanProperty</a>(errorTag, <span class="stringliteral">&quot;foreground-set&quot;</span>, TRUE);</div>
+<div class="line"><span class="lineno">  191</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a7fd3b1ca2766f109ba52232e61a2c209">setTextTagIntProperty</a>(errorTag, <span class="stringliteral">&quot;weight&quot;</span>, PANGO_WEIGHT_BOLD);</div>
+<div class="line"><span class="lineno">  192</span> </div>
+<div class="line"><span class="lineno">  193</span>  <span class="keyword">auto</span>* criticalTag = <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#ab27f8e1e654bd763f730f37365ca105e">addTextTag</a>(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, <span class="stringliteral">&quot;log-critical&quot;</span>);</div>
+<div class="line"><span class="lineno">  194</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a16cb6b08f644efca83f5cde66fee9878">setTextTagStringProperty</a>(criticalTag, <span class="stringliteral">&quot;foreground&quot;</span>, <span class="stringliteral">&quot;#ffffff&quot;</span>);</div>
+<div class="line"><span class="lineno">  195</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#aa3eca009c7fcfed84b9de47d1e12c68a">setTextTagBooleanProperty</a>(criticalTag, <span class="stringliteral">&quot;foreground-set&quot;</span>, TRUE);</div>
+<div class="line"><span class="lineno">  196</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a16cb6b08f644efca83f5cde66fee9878">setTextTagStringProperty</a>(criticalTag, <span class="stringliteral">&quot;background&quot;</span>, <span class="stringliteral">&quot;#7f1d1d&quot;</span>);</div>
+<div class="line"><span class="lineno">  197</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a7fd3b1ca2766f109ba52232e61a2c209">setTextTagIntProperty</a>(criticalTag, <span class="stringliteral">&quot;weight&quot;</span>, PANGO_WEIGHT_BOLD);</div>
+<div class="line"><span class="lineno">  198</span>}</div>
+<div class="ttc" id="anamespaceanonymous__namespace_02logging-window_8cc_03_html_a16cb6b08f644efca83f5cde66fee9878"><div class="ttname"><a href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a16cb6b08f644efca83f5cde66fee9878">anonymous_namespace{logging-window.cc}::setTextTagStringProperty</a></div><div class="ttdeci">void setTextTagStringProperty(GtkTextTag *textTag, const char *propertyName, const char *value)</div><div class="ttdef"><b>Definition</b> logging-window.cc:19</div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02logging-window_8cc_03_html_a7fd3b1ca2766f109ba52232e61a2c209"><div class="ttname"><a href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a7fd3b1ca2766f109ba52232e61a2c209">anonymous_namespace{logging-window.cc}::setTextTagIntProperty</a></div><div class="ttdeci">void setTextTagIntProperty(GtkTextTag *textTag, const char *propertyName, gint value)</div><div class="ttdef"><b>Definition</b> logging-window.cc:37</div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02logging-window_8cc_03_html_aa3eca009c7fcfed84b9de47d1e12c68a"><div class="ttname"><a href="namespaceanonymous__namespace_02logging-window_8cc_03.html#aa3eca009c7fcfed84b9de47d1e12c68a">anonymous_namespace{logging-window.cc}::setTextTagBooleanProperty</a></div><div class="ttdeci">void setTextTagBooleanProperty(GtkTextTag *textTag, const char *propertyName, gboolean value)</div><div class="ttdef"><b>Definition</b> logging-window.cc:28</div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02logging-window_8cc_03_html_ab27f8e1e654bd763f730f37365ca105e"><div class="ttname"><a href="namespaceanonymous__namespace_02logging-window_8cc_03.html#ab27f8e1e654bd763f730f37365ca105e">anonymous_namespace{logging-window.cc}::addTextTag</a></div><div class="ttdeci">GtkTextTag * addTextTag(GtkTextBuffer *textBuffer, const char *tagName)</div><div class="ttdef"><b>Definition</b> logging-window.cc:46</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -603,19 +608,19 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  224</span>{</div>
-<div class="line"><span class="lineno">  225</span>  <span class="keyword">auto</span>* adjustment = gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(<a class="code hl_variable" href="classLoggingWindow.html#abcbf763d47ad2e9d24342c68aebba2ca">m_textView</a>));</div>
-<div class="line"><span class="lineno">  226</span>  <span class="keywordflow">if</span>(adjustment == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  227</span>  {</div>
-<div class="line"><span class="lineno">  228</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  229</span>  }</div>
-<div class="line"><span class="lineno">  230</span> </div>
-<div class="line"><span class="lineno">  231</span>  <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a> = gtk_adjustment_get_value(adjustment);</div>
-<div class="line"><span class="lineno">  232</span>  <span class="keyword">const</span> <span class="keywordtype">double</span> pageSize = gtk_adjustment_get_page_size(adjustment);</div>
-<div class="line"><span class="lineno">  233</span>  <span class="keyword">const</span> <span class="keywordtype">double</span> upper = gtk_adjustment_get_upper(adjustment);</div>
-<div class="line"><span class="lineno">  234</span>  <span class="keyword">constexpr</span> <span class="keywordtype">double</span> bottomSlackPixels = 16.0;</div>
-<div class="line"><span class="lineno">  235</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a> + pageSize &gt;= upper - bottomSlackPixels;</div>
-<div class="line"><span class="lineno">  236</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  235</span>{</div>
+<div class="line"><span class="lineno">  236</span>  <span class="keyword">auto</span>* adjustment = gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(<a class="code hl_variable" href="classLoggingWindow.html#abcbf763d47ad2e9d24342c68aebba2ca">m_textView</a>));</div>
+<div class="line"><span class="lineno">  237</span>  <span class="keywordflow">if</span>(adjustment == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  238</span>  {</div>
+<div class="line"><span class="lineno">  239</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  240</span>  }</div>
+<div class="line"><span class="lineno">  241</span> </div>
+<div class="line"><span class="lineno">  242</span>  <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a> = gtk_adjustment_get_value(adjustment);</div>
+<div class="line"><span class="lineno">  243</span>  <span class="keyword">const</span> <span class="keywordtype">double</span> pageSize = gtk_adjustment_get_page_size(adjustment);</div>
+<div class="line"><span class="lineno">  244</span>  <span class="keyword">const</span> <span class="keywordtype">double</span> upper = gtk_adjustment_get_upper(adjustment);</div>
+<div class="line"><span class="lineno">  245</span>  <span class="keyword">constexpr</span> <span class="keywordtype">double</span> bottomSlackPixels = 16.0;</div>
+<div class="line"><span class="lineno">  246</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a> + pageSize &gt;= upper - bottomSlackPixels;</div>
+<div class="line"><span class="lineno">  247</span>}</div>
 <div class="ttc" id="ablob-tests_8cc_html_abf9157cab7a60c93387a03e18e2c560a"><div class="ttname"><a href="blob-tests_8cc.html#abf9157cab7a60c93387a03e18e2c560a">value</a></div><div class="ttdeci">const uint8_t value</div><div class="ttdef"><b>Definition</b> blob-tests.cc:114</div></div>
 <div class="ttc" id="aclassLoggingWindow_html_abcbf763d47ad2e9d24342c68aebba2ca"><div class="ttname"><a href="classLoggingWindow.html#abcbf763d47ad2e9d24342c68aebba2ca">LoggingWindow::m_textView</a></div><div class="ttdeci">GtkTextView * m_textView</div><div class="ttdef"><b>Definition</b> logging-window.hh:27</div></div>
 </div><!-- fragment -->
@@ -656,28 +661,33 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  145</span>{</div>
-<div class="line"><span class="lineno">  146</span>  <a class="code hl_variable" href="classLoggingWindow.html#a80c2fda982fddd9eb6b68c91970afadc">m_xml</a> = gtk_builder_new();</div>
-<div class="line"><span class="lineno">  147</span>  gtk_builder_add_from_file(<a class="code hl_variable" href="classLoggingWindow.html#a80c2fda982fddd9eb6b68c91970afadc">m_xml</a>, uiFileName.c_str(), <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">  148</span> </div>
-<div class="line"><span class="lineno">  149</span>  <a class="code hl_variable" href="classLoggingWindow.html#a47edb503b84f651c1a7892ecce58bd2c">m_window</a> = GTK_WIDGET(gtk_builder_get_object(<a class="code hl_variable" href="classLoggingWindow.html#a80c2fda982fddd9eb6b68c91970afadc">m_xml</a>, <span class="stringliteral">&quot;logging_window&quot;</span>));</div>
-<div class="line"><span class="lineno">  150</span>  <a class="code hl_variable" href="classLoggingWindow.html#abcbf763d47ad2e9d24342c68aebba2ca">m_textView</a> = GTK_TEXT_VIEW(gtk_builder_get_object(<a class="code hl_variable" href="classLoggingWindow.html#a80c2fda982fddd9eb6b68c91970afadc">m_xml</a>, <span class="stringliteral">&quot;logging_textview&quot;</span>));</div>
+<div class="fragment"><div class="line"><span class="lineno">  146</span>{</div>
+<div class="line"><span class="lineno">  147</span>  <a class="code hl_variable" href="classLoggingWindow.html#a80c2fda982fddd9eb6b68c91970afadc">m_xml</a> = gtk_builder_new();</div>
+<div class="line"><span class="lineno">  148</span>  std::array&lt;gchar*, 2&gt; objectNames{};</div>
+<div class="line"><span class="lineno">  149</span>  objectNames[0] = g_strdup(<span class="stringliteral">&quot;logging_window&quot;</span>);</div>
+<div class="line"><span class="lineno">  150</span>  objectNames[1] = <span class="keyword">nullptr</span>;</div>
 <div class="line"><span class="lineno">  151</span> </div>
-<div class="line"><span class="lineno">  152</span>  <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(<a class="code hl_variable" href="classLoggingWindow.html#a47edb503b84f651c1a7892ecce58bd2c">m_window</a> != <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">  153</span>  <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(<a class="code hl_variable" href="classLoggingWindow.html#abcbf763d47ad2e9d24342c68aebba2ca">m_textView</a> != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  152</span>  gtk_builder_add_objects_from_file(<a class="code hl_variable" href="classLoggingWindow.html#a80c2fda982fddd9eb6b68c91970afadc">m_xml</a>, uiFileName.c_str(), objectNames.data(), <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  153</span>  g_free(objectNames[0]);</div>
 <div class="line"><span class="lineno">  154</span> </div>
-<div class="line"><span class="lineno">  155</span>  <a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a> = gtk_text_view_get_buffer(<a class="code hl_variable" href="classLoggingWindow.html#abcbf763d47ad2e9d24342c68aebba2ca">m_textView</a>);</div>
-<div class="line"><span class="lineno">  156</span>  <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a> != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  155</span>  <a class="code hl_variable" href="classLoggingWindow.html#a47edb503b84f651c1a7892ecce58bd2c">m_window</a> = GTK_WIDGET(gtk_builder_get_object(<a class="code hl_variable" href="classLoggingWindow.html#a80c2fda982fddd9eb6b68c91970afadc">m_xml</a>, <span class="stringliteral">&quot;logging_window&quot;</span>));</div>
+<div class="line"><span class="lineno">  156</span>  <a class="code hl_variable" href="classLoggingWindow.html#abcbf763d47ad2e9d24342c68aebba2ca">m_textView</a> = GTK_TEXT_VIEW(gtk_builder_get_object(<a class="code hl_variable" href="classLoggingWindow.html#a80c2fda982fddd9eb6b68c91970afadc">m_xml</a>, <span class="stringliteral">&quot;logging_textview&quot;</span>));</div>
 <div class="line"><span class="lineno">  157</span> </div>
-<div class="line"><span class="lineno">  158</span>  gtk_window_set_title(GTK_WINDOW(<a class="code hl_variable" href="classLoggingWindow.html#a47edb503b84f651c1a7892ecce58bd2c">m_window</a>), <span class="stringliteral">&quot;Scroom - Logs&quot;</span>);</div>
-<div class="line"><span class="lineno">  159</span> </div>
-<div class="line"><span class="lineno">  160</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classLoggingWindow.html#a47edb503b84f651c1a7892ecce58bd2c">m_window</a>), <span class="stringliteral">&quot;delete-event&quot;</span>, G_CALLBACK(<a class="code hl_function" href="classLoggingWindow.html#ac5776b8055d42056ab173cc40f3744e3">onDeleteEvent</a>), <span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">  161</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classLoggingWindow.html#a47edb503b84f651c1a7892ecce58bd2c">m_window</a>), <span class="stringliteral">&quot;focus-in-event&quot;</span>, G_CALLBACK(<a class="code hl_function" href="classLoggingWindow.html#a39fb161bce94a17643607f9c700bcefe">onFocusInEvent</a>), <span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">  162</span>}</div>
+<div class="line"><span class="lineno">  158</span>  <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(<a class="code hl_variable" href="classLoggingWindow.html#a47edb503b84f651c1a7892ecce58bd2c">m_window</a> != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  159</span>  <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(<a class="code hl_variable" href="classLoggingWindow.html#abcbf763d47ad2e9d24342c68aebba2ca">m_textView</a> != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  160</span> </div>
+<div class="line"><span class="lineno">  161</span>  <a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a> = gtk_text_view_get_buffer(<a class="code hl_variable" href="classLoggingWindow.html#abcbf763d47ad2e9d24342c68aebba2ca">m_textView</a>);</div>
+<div class="line"><span class="lineno">  162</span>  <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a> != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  163</span> </div>
+<div class="line"><span class="lineno">  164</span>  gtk_window_set_title(GTK_WINDOW(<a class="code hl_variable" href="classLoggingWindow.html#a47edb503b84f651c1a7892ecce58bd2c">m_window</a>), <span class="stringliteral">&quot;Scroom - Logs&quot;</span>);</div>
+<div class="line"><span class="lineno">  165</span> </div>
+<div class="line"><span class="lineno">  166</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classLoggingWindow.html#a47edb503b84f651c1a7892ecce58bd2c">m_window</a>), <span class="stringliteral">&quot;delete-event&quot;</span>, G_CALLBACK(<a class="code hl_function" href="classLoggingWindow.html#ac5776b8055d42056ab173cc40f3744e3">onDeleteEvent</a>), <span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  167</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classLoggingWindow.html#a47edb503b84f651c1a7892ecce58bd2c">m_window</a>), <span class="stringliteral">&quot;focus-in-event&quot;</span>, G_CALLBACK(<a class="code hl_function" href="classLoggingWindow.html#a39fb161bce94a17643607f9c700bcefe">onFocusInEvent</a>), <span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  168</span>}</div>
 <div class="ttc" id="aassertions_8hh_html_ae925d7587e34145cd52f674b2012539a"><div class="ttname"><a href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a></div><div class="ttdeci">#define require(expr)</div><div class="ttdef"><b>Definition</b> assertions.hh:30</div></div>
-<div class="ttc" id="aclassLoggingWindow_html_a39fb161bce94a17643607f9c700bcefe"><div class="ttname"><a href="classLoggingWindow.html#a39fb161bce94a17643607f9c700bcefe">LoggingWindow::onFocusInEvent</a></div><div class="ttdeci">static gboolean onFocusInEvent(GtkWidget *widget, GdkEvent *focusEvent, gpointer userData)</div><div class="ttdef"><b>Definition</b> logging-window.cc:281</div></div>
+<div class="ttc" id="aclassLoggingWindow_html_a39fb161bce94a17643607f9c700bcefe"><div class="ttname"><a href="classLoggingWindow.html#a39fb161bce94a17643607f9c700bcefe">LoggingWindow::onFocusInEvent</a></div><div class="ttdeci">static gboolean onFocusInEvent(GtkWidget *widget, GdkEvent *focusEvent, gpointer userData)</div><div class="ttdef"><b>Definition</b> logging-window.cc:292</div></div>
 <div class="ttc" id="aclassLoggingWindow_html_a47edb503b84f651c1a7892ecce58bd2c"><div class="ttname"><a href="classLoggingWindow.html#a47edb503b84f651c1a7892ecce58bd2c">LoggingWindow::m_window</a></div><div class="ttdeci">GtkWidget * m_window</div><div class="ttdef"><b>Definition</b> logging-window.hh:26</div></div>
-<div class="ttc" id="aclassLoggingWindow_html_ac5776b8055d42056ab173cc40f3744e3"><div class="ttname"><a href="classLoggingWindow.html#ac5776b8055d42056ab173cc40f3744e3">LoggingWindow::onDeleteEvent</a></div><div class="ttdeci">static gboolean onDeleteEvent(GtkWidget *widget, GdkEvent *deleteEvent, gpointer callbackData)</div><div class="ttdef"><b>Definition</b> logging-window.cc:275</div></div>
+<div class="ttc" id="aclassLoggingWindow_html_ac5776b8055d42056ab173cc40f3744e3"><div class="ttname"><a href="classLoggingWindow.html#ac5776b8055d42056ab173cc40f3744e3">LoggingWindow::onDeleteEvent</a></div><div class="ttdeci">static gboolean onDeleteEvent(GtkWidget *widget, GdkEvent *deleteEvent, gpointer callbackData)</div><div class="ttdef"><b>Definition</b> logging-window.cc:286</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -732,10 +742,10 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  276</span>{</div>
-<div class="line"><span class="lineno">  277</span>  gtk_widget_hide(widget);</div>
-<div class="line"><span class="lineno">  278</span>  <span class="keywordflow">return</span> TRUE;</div>
-<div class="line"><span class="lineno">  279</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  287</span>{</div>
+<div class="line"><span class="lineno">  288</span>  gtk_widget_hide(widget);</div>
+<div class="line"><span class="lineno">  289</span>  <span class="keywordflow">return</span> TRUE;</div>
+<div class="line"><span class="lineno">  290</span>}</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classLoggingWindow.html#a772f8688e0e1b46a9cf746f2dd7e9f37">loadFromUiFile()</a>.</p>
 <div class="dynheader">
@@ -790,11 +800,11 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  282</span>{</div>
-<div class="line"><span class="lineno">  283</span>  <span class="keyword">auto</span>* <a class="code hl_variable" href="callbacks_8cc.html#a6ba114d8f032bdeddf49af4cb7998fea">loggingWindow</a> = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classLoggingWindow.html">LoggingWindow</a>*<span class="keyword">&gt;</span>(userData);</div>
-<div class="line"><span class="lineno">  284</span>  gtk_window_set_urgency_hint(GTK_WINDOW(<a class="code hl_variable" href="callbacks_8cc.html#a6ba114d8f032bdeddf49af4cb7998fea">loggingWindow</a>-&gt;m_window), FALSE);</div>
-<div class="line"><span class="lineno">  285</span>  <span class="keywordflow">return</span> FALSE;</div>
-<div class="line"><span class="lineno">  286</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  293</span>{</div>
+<div class="line"><span class="lineno">  294</span>  <span class="keyword">auto</span>* <a class="code hl_variable" href="callbacks_8cc.html#a6ba114d8f032bdeddf49af4cb7998fea">loggingWindow</a> = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classLoggingWindow.html">LoggingWindow</a>*<span class="keyword">&gt;</span>(userData);</div>
+<div class="line"><span class="lineno">  295</span>  gtk_window_set_urgency_hint(GTK_WINDOW(<a class="code hl_variable" href="callbacks_8cc.html#a6ba114d8f032bdeddf49af4cb7998fea">loggingWindow</a>-&gt;m_window), FALSE);</div>
+<div class="line"><span class="lineno">  296</span>  <span class="keywordflow">return</span> FALSE;</div>
+<div class="line"><span class="lineno">  297</span>}</div>
 <div class="ttc" id="acallbacks_8cc_html_a6ba114d8f032bdeddf49af4cb7998fea"><div class="ttname"><a href="callbacks_8cc.html#a6ba114d8f032bdeddf49af4cb7998fea">loggingWindow</a></div><div class="ttdeci">static LoggingWindow::Ptr loggingWindow</div><div class="ttdef"><b>Definition</b> callbacks.cc:55</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classLoggingWindow.html#a772f8688e0e1b46a9cf746f2dd7e9f37">loadFromUiFile()</a>.</p>
@@ -885,24 +895,24 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  258</span>{</div>
-<div class="line"><span class="lineno">  259</span>  <span class="keywordflow">if</span>(!gtk_widget_get_visible(<a class="code hl_variable" href="classLoggingWindow.html#a47edb503b84f651c1a7892ecce58bd2c">m_window</a>))</div>
-<div class="line"><span class="lineno">  260</span>  {</div>
-<div class="line"><span class="lineno">  261</span>    <a class="code hl_function" href="classLoggingWindow.html#ad4d8733a2ce6b152122dfa6b908c8708">show</a>();</div>
-<div class="line"><span class="lineno">  262</span>    <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  263</span>  }</div>
-<div class="line"><span class="lineno">  264</span> </div>
-<div class="line"><span class="lineno">  265</span>  gtk_window_set_urgency_hint(GTK_WINDOW(<a class="code hl_variable" href="classLoggingWindow.html#a47edb503b84f651c1a7892ecce58bd2c">m_window</a>), TRUE);</div>
-<div class="line"><span class="lineno">  266</span> </div>
-<div class="line"><span class="lineno">  267</span>  <span class="keyword">const</span> gint64 now = g_get_monotonic_time();</div>
-<div class="line"><span class="lineno">  268</span>  <span class="keywordflow">if</span>(now - <a class="code hl_variable" href="classLoggingWindow.html#a54b08a80daa501425ca44365f0b87326">m_lastPresentTimestampUs</a> &gt;= PRESENT_COOLDOWN_US)</div>
-<div class="line"><span class="lineno">  269</span>  {</div>
-<div class="line"><span class="lineno">  270</span>    gtk_window_present(GTK_WINDOW(<a class="code hl_variable" href="classLoggingWindow.html#a47edb503b84f651c1a7892ecce58bd2c">m_window</a>));</div>
-<div class="line"><span class="lineno">  271</span>    <a class="code hl_variable" href="classLoggingWindow.html#a54b08a80daa501425ca44365f0b87326">m_lastPresentTimestampUs</a> = now;</div>
-<div class="line"><span class="lineno">  272</span>  }</div>
-<div class="line"><span class="lineno">  273</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  269</span>{</div>
+<div class="line"><span class="lineno">  270</span>  <span class="keywordflow">if</span>(!gtk_widget_get_visible(<a class="code hl_variable" href="classLoggingWindow.html#a47edb503b84f651c1a7892ecce58bd2c">m_window</a>))</div>
+<div class="line"><span class="lineno">  271</span>  {</div>
+<div class="line"><span class="lineno">  272</span>    <a class="code hl_function" href="classLoggingWindow.html#ad4d8733a2ce6b152122dfa6b908c8708">show</a>();</div>
+<div class="line"><span class="lineno">  273</span>    <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  274</span>  }</div>
+<div class="line"><span class="lineno">  275</span> </div>
+<div class="line"><span class="lineno">  276</span>  gtk_window_set_urgency_hint(GTK_WINDOW(<a class="code hl_variable" href="classLoggingWindow.html#a47edb503b84f651c1a7892ecce58bd2c">m_window</a>), TRUE);</div>
+<div class="line"><span class="lineno">  277</span> </div>
+<div class="line"><span class="lineno">  278</span>  <span class="keyword">const</span> gint64 now = g_get_monotonic_time();</div>
+<div class="line"><span class="lineno">  279</span>  <span class="keywordflow">if</span>(now - <a class="code hl_variable" href="classLoggingWindow.html#a54b08a80daa501425ca44365f0b87326">m_lastPresentTimestampUs</a> &gt;= PRESENT_COOLDOWN_US)</div>
+<div class="line"><span class="lineno">  280</span>  {</div>
+<div class="line"><span class="lineno">  281</span>    gtk_window_present(GTK_WINDOW(<a class="code hl_variable" href="classLoggingWindow.html#a47edb503b84f651c1a7892ecce58bd2c">m_window</a>));</div>
+<div class="line"><span class="lineno">  282</span>    <a class="code hl_variable" href="classLoggingWindow.html#a54b08a80daa501425ca44365f0b87326">m_lastPresentTimestampUs</a> = now;</div>
+<div class="line"><span class="lineno">  283</span>  }</div>
+<div class="line"><span class="lineno">  284</span>}</div>
 <div class="ttc" id="aclassLoggingWindow_html_a54b08a80daa501425ca44365f0b87326"><div class="ttname"><a href="classLoggingWindow.html#a54b08a80daa501425ca44365f0b87326">LoggingWindow::m_lastPresentTimestampUs</a></div><div class="ttdeci">gint64 m_lastPresentTimestampUs</div><div class="ttdef"><b>Definition</b> logging-window.hh:31</div></div>
-<div class="ttc" id="aclassLoggingWindow_html_ad4d8733a2ce6b152122dfa6b908c8708"><div class="ttname"><a href="classLoggingWindow.html#ad4d8733a2ce6b152122dfa6b908c8708">LoggingWindow::show</a></div><div class="ttdeci">void show()</div><div class="ttdef"><b>Definition</b> logging-window.cc:314</div></div>
+<div class="ttc" id="aclassLoggingWindow_html_ad4d8733a2ce6b152122dfa6b908c8708"><div class="ttname"><a href="classLoggingWindow.html#ad4d8733a2ce6b152122dfa6b908c8708">LoggingWindow::show</a></div><div class="ttdeci">void show()</div><div class="ttdef"><b>Definition</b> logging-window.cc:325</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classLoggingWindow.html#a725f64c52ad151baa4baf211a36859c0">consume()</a>.</p>
 <div class="dynheader">
@@ -952,24 +962,24 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  239</span>{</div>
-<div class="line"><span class="lineno">  240</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a5cac5a6cd0ffd68318dc5d730d0e8688">scrollTextViewToBottom</a>(<a class="code hl_variable" href="classLoggingWindow.html#abcbf763d47ad2e9d24342c68aebba2ca">m_textView</a>);</div>
-<div class="line"><span class="lineno">  241</span> </div>
-<div class="line"><span class="lineno">  242</span>  <span class="comment">// Ensure we scroll after GTK has performed size allocation/layout updates.</span></div>
-<div class="line"><span class="lineno">  243</span>  g_idle_add_full(</div>
-<div class="line"><span class="lineno">  244</span>    G_PRIORITY_DEFAULT_IDLE,</div>
-<div class="line"><span class="lineno">  245</span>    +[](gpointer userData) -&gt; gboolean</div>
-<div class="line"><span class="lineno">  246</span>    {</div>
-<div class="line"><span class="lineno">  247</span>      <span class="keyword">auto</span>* textView = GTK_TEXT_VIEW(userData);</div>
-<div class="line"><span class="lineno">  248</span>      <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a5cac5a6cd0ffd68318dc5d730d0e8688">scrollTextViewToBottom</a>(textView);</div>
-<div class="line"><span class="lineno">  249</span> </div>
-<div class="line"><span class="lineno">  250</span>      <span class="keywordflow">return</span> G_SOURCE_REMOVE;</div>
-<div class="line"><span class="lineno">  251</span>    },</div>
-<div class="line"><span class="lineno">  252</span>    g_object_ref(<a class="code hl_variable" href="classLoggingWindow.html#abcbf763d47ad2e9d24342c68aebba2ca">m_textView</a>),</div>
-<div class="line"><span class="lineno">  253</span>    +[](gpointer userData) { g_object_unref(userData); }</div>
-<div class="line"><span class="lineno">  254</span>  );</div>
-<div class="line"><span class="lineno">  255</span>}</div>
-<div class="ttc" id="anamespaceanonymous__namespace_02logging-window_8cc_03_html_a5cac5a6cd0ffd68318dc5d730d0e8688"><div class="ttname"><a href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a5cac5a6cd0ffd68318dc5d730d0e8688">anonymous_namespace{logging-window.cc}::scrollTextViewToBottom</a></div><div class="ttdeci">void scrollTextViewToBottom(GtkTextView *textView)</div><div class="ttdef"><b>Definition</b> logging-window.cc:57</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  250</span>{</div>
+<div class="line"><span class="lineno">  251</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a5cac5a6cd0ffd68318dc5d730d0e8688">scrollTextViewToBottom</a>(<a class="code hl_variable" href="classLoggingWindow.html#abcbf763d47ad2e9d24342c68aebba2ca">m_textView</a>);</div>
+<div class="line"><span class="lineno">  252</span> </div>
+<div class="line"><span class="lineno">  253</span>  <span class="comment">// Ensure we scroll after GTK has performed size allocation/layout updates.</span></div>
+<div class="line"><span class="lineno">  254</span>  g_idle_add_full(</div>
+<div class="line"><span class="lineno">  255</span>    G_PRIORITY_DEFAULT_IDLE,</div>
+<div class="line"><span class="lineno">  256</span>    +[](gpointer userData) -&gt; gboolean</div>
+<div class="line"><span class="lineno">  257</span>    {</div>
+<div class="line"><span class="lineno">  258</span>      <span class="keyword">auto</span>* textView = GTK_TEXT_VIEW(userData);</div>
+<div class="line"><span class="lineno">  259</span>      <a class="code hl_function" href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a5cac5a6cd0ffd68318dc5d730d0e8688">scrollTextViewToBottom</a>(textView);</div>
+<div class="line"><span class="lineno">  260</span> </div>
+<div class="line"><span class="lineno">  261</span>      <span class="keywordflow">return</span> G_SOURCE_REMOVE;</div>
+<div class="line"><span class="lineno">  262</span>    },</div>
+<div class="line"><span class="lineno">  263</span>    g_object_ref(<a class="code hl_variable" href="classLoggingWindow.html#abcbf763d47ad2e9d24342c68aebba2ca">m_textView</a>),</div>
+<div class="line"><span class="lineno">  264</span>    +[](gpointer userData) { g_object_unref(userData); }</div>
+<div class="line"><span class="lineno">  265</span>  );</div>
+<div class="line"><span class="lineno">  266</span>}</div>
+<div class="ttc" id="anamespaceanonymous__namespace_02logging-window_8cc_03_html_a5cac5a6cd0ffd68318dc5d730d0e8688"><div class="ttname"><a href="namespaceanonymous__namespace_02logging-window_8cc_03.html#a5cac5a6cd0ffd68318dc5d730d0e8688">anonymous_namespace{logging-window.cc}::scrollTextViewToBottom</a></div><div class="ttdeci">void scrollTextViewToBottom(GtkTextView *textView)</div><div class="ttdef"><b>Definition</b> logging-window.cc:58</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classLoggingWindow.html#a725f64c52ad151baa4baf211a36859c0">consume()</a>, and <a class="el" href="classLoggingWindow.html#ad4d8733a2ce6b152122dfa6b908c8708">show()</a>.</p>
 <div class="dynheader">
@@ -1004,11 +1014,11 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  315</span>{</div>
-<div class="line"><span class="lineno">  316</span>  gtk_window_present(GTK_WINDOW(<a class="code hl_variable" href="classLoggingWindow.html#a47edb503b84f651c1a7892ecce58bd2c">m_window</a>));</div>
-<div class="line"><span class="lineno">  317</span>  <a class="code hl_function" href="classLoggingWindow.html#a80c0ef89bb4023813bcf00a2fc5ebf66">scrollToBottom</a>();</div>
-<div class="line"><span class="lineno">  318</span>  <a class="code hl_variable" href="classLoggingWindow.html#a54b08a80daa501425ca44365f0b87326">m_lastPresentTimestampUs</a> = g_get_monotonic_time();</div>
-<div class="line"><span class="lineno">  319</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  326</span>{</div>
+<div class="line"><span class="lineno">  327</span>  gtk_window_present(GTK_WINDOW(<a class="code hl_variable" href="classLoggingWindow.html#a47edb503b84f651c1a7892ecce58bd2c">m_window</a>));</div>
+<div class="line"><span class="lineno">  328</span>  <a class="code hl_function" href="classLoggingWindow.html#a80c0ef89bb4023813bcf00a2fc5ebf66">scrollToBottom</a>();</div>
+<div class="line"><span class="lineno">  329</span>  <a class="code hl_variable" href="classLoggingWindow.html#a54b08a80daa501425ca44365f0b87326">m_lastPresentTimestampUs</a> = g_get_monotonic_time();</div>
+<div class="line"><span class="lineno">  330</span>}</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classLoggingWindow.html#aa5f23e4cc87eee36b0b106e073fec9d9">requestAttentionForWarningBatch()</a>.</p>
 <div class="dynheader">
@@ -1058,21 +1068,21 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  207</span>{</div>
-<div class="line"><span class="lineno">  208</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> lineCount = gtk_text_buffer_get_line_count(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>);</div>
-<div class="line"><span class="lineno">  209</span>  <span class="keyword">const</span> <span class="keyword">auto</span> maxLines = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="classLoggingWindow.html#aa3bdc7f4fcc0166d41687703dde0ea47">m_maxDisplayedLines</a>);</div>
-<div class="line"><span class="lineno">  210</span> </div>
-<div class="line"><span class="lineno">  211</span>  <span class="keywordflow">if</span>(lineCount &lt;= maxLines)</div>
-<div class="line"><span class="lineno">  212</span>  {</div>
-<div class="line"><span class="lineno">  213</span>    <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  214</span>  }</div>
-<div class="line"><span class="lineno">  215</span> </div>
-<div class="line"><span class="lineno">  216</span>  GtkTextIter begin;</div>
-<div class="line"><span class="lineno">  217</span>  GtkTextIter trimEnd;</div>
-<div class="line"><span class="lineno">  218</span>  gtk_text_buffer_get_start_iter(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, &amp;begin);</div>
-<div class="line"><span class="lineno">  219</span>  gtk_text_buffer_get_iter_at_line(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, &amp;trimEnd, lineCount - maxLines);</div>
-<div class="line"><span class="lineno">  220</span>  gtk_text_buffer_delete(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, &amp;begin, &amp;trimEnd);</div>
-<div class="line"><span class="lineno">  221</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  218</span>{</div>
+<div class="line"><span class="lineno">  219</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> lineCount = gtk_text_buffer_get_line_count(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>);</div>
+<div class="line"><span class="lineno">  220</span>  <span class="keyword">const</span> <span class="keyword">auto</span> maxLines = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="classLoggingWindow.html#aa3bdc7f4fcc0166d41687703dde0ea47">m_maxDisplayedLines</a>);</div>
+<div class="line"><span class="lineno">  221</span> </div>
+<div class="line"><span class="lineno">  222</span>  <span class="keywordflow">if</span>(lineCount &lt;= maxLines)</div>
+<div class="line"><span class="lineno">  223</span>  {</div>
+<div class="line"><span class="lineno">  224</span>    <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  225</span>  }</div>
+<div class="line"><span class="lineno">  226</span> </div>
+<div class="line"><span class="lineno">  227</span>  GtkTextIter begin;</div>
+<div class="line"><span class="lineno">  228</span>  GtkTextIter trimEnd;</div>
+<div class="line"><span class="lineno">  229</span>  gtk_text_buffer_get_start_iter(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, &amp;begin);</div>
+<div class="line"><span class="lineno">  230</span>  gtk_text_buffer_get_iter_at_line(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, &amp;trimEnd, lineCount - maxLines);</div>
+<div class="line"><span class="lineno">  231</span>  gtk_text_buffer_delete(<a class="code hl_variable" href="classLoggingWindow.html#ac18ee5f3760c63601e23d7f64f0e61f0">m_textBuffer</a>, &amp;begin, &amp;trimEnd);</div>
+<div class="line"><span class="lineno">  232</span>}</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classLoggingWindow.html#a725f64c52ad151baa4baf211a36859c0">consume()</a>.</p>
 <div class="dynheader">

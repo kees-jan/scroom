@@ -1,6 +1,5 @@
 var NAVTREEINDEX21 =
 {
-"tiled-bitmap_8hh_source.html":[4,0,3,4,1,9],
 "tiledbitmap-tests_8cc.html":[4,0,3,4,2,1],
 "tiledbitmap-tests_8cc.html#a0aae54e844410a10a247d428858de14a":[4,0,3,4,2,1,3],
 "tiledbitmap-tests_8cc.html#a3861185c0e344b8370e68ec10cbc097a":[4,0,3,4,2,1,8],

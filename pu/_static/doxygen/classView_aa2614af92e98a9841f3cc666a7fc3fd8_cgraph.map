@@ -10,10 +10,10 @@
 <area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="61,427,120,358,166,312,221,264,284,218,353,180,427,154,466,147,505,144,1086,144,1194,148,1302,158,1484,184,1483,189,1302,163,1194,153,1086,149,505,149,467,152,429,159,355,185,287,223,224,268,169,316,124,362,65,430"/>
 <area shape="rect" id="Node000026" href="$classView.html#a969a3d0ea16650328da552f9c105d15a" title=" " alt="" coords="161,421,355,461"/>
 <area shape="poly" id="edge30_Node000001_Node000026" title=" " alt="" coords="99,439,148,439,148,444,99,444"/>
-<area shape="rect" id="Node000086" href="$classSidebarManager.html#ab6f09410682d37810e9f8d8476a50485" title=" " alt="" coords="153,1138,363,1163"/>
-<area shape="poly" id="edge58_Node000001_Node000086" title=" " alt="" coords="56,454,58,579,69,779,80,884,97,982,119,1063,133,1094,149,1117,163,1129,159,1133,145,1120,128,1096,114,1064,91,983,75,885,63,779,52,579,51,454"/>
-<area shape="rect" id="Node000087" href="$classView.html#ad8081ad7f68e284ce29961be7a6126d3" title=" " alt="" coords="147,1187,369,1213"/>
-<area shape="poly" id="edge59_Node000001_Node000087" title=" " alt="" coords="56,454,55,589,64,807,75,922,92,1028,116,1116,131,1149,149,1174,152,1177,148,1181,145,1178,127,1152,111,1118,86,1029,69,923,58,807,50,589,50,454"/>
+<area shape="rect" id="Node000085" href="$classSidebarManager.html#ab6f09410682d37810e9f8d8476a50485" title=" " alt="" coords="153,1138,363,1163"/>
+<area shape="poly" id="edge58_Node000001_Node000085" title=" " alt="" coords="56,454,58,579,69,779,80,884,97,982,119,1063,133,1094,149,1117,163,1129,159,1133,145,1120,128,1096,114,1064,91,983,75,885,63,779,52,579,51,454"/>
+<area shape="rect" id="Node000086" href="$classView.html#ad8081ad7f68e284ce29961be7a6126d3" title=" " alt="" coords="147,1187,369,1213"/>
+<area shape="poly" id="edge59_Node000001_Node000086" title=" " alt="" coords="56,454,55,589,64,807,75,922,92,1028,116,1116,131,1149,149,1174,152,1177,148,1181,145,1178,127,1152,111,1118,86,1029,69,923,58,807,50,589,50,454"/>
 <area shape="rect" id="Node000004" href="$classHorizontalDrawStrategy.html#a72d3b0cbcee1d7997cfc22173f7c43c3" title=" " alt="" coords="417,69,596,109"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="311,89,403,88,404,93,311,94"/>
 <area shape="rect" id="Node000005" href="$classVerticalDrawStrategy.html#a69f32cdf0e0e4fe57b755474e05283bc" title=" " alt="" coords="427,5,587,45"/>

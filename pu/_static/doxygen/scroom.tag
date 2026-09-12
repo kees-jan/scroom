@@ -549,13 +549,6 @@
     </member>
     <member kind="function">
       <type>void</type>
-      <name>ShowModalDialog</name>
-      <anchorfile>callbacks_8cc.html</anchorfile>
-      <anchor>a3aab2a4d00901924d72b5a72a3711069</anchor>
-      <arglist>(const std::string &amp;message)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
       <name>on_scroom_hide</name>
       <anchorfile>callbacks_8cc.html</anchorfile>
       <anchor>a65f18cf64a4bafed7b32ded3cc902668</anchor>

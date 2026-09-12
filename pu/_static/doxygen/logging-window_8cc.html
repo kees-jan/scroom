@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-59-g7b1ebebbb</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-gf0a843008</span>
    </div>
   </td>
  </tr>
@@ -97,6 +97,7 @@ $(document).ready(function(){initNavTree('logging-window_8cc.html',''); initResi
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="logging-window_8hh_source.html">logging-window.hh</a>&quot;</code><br />
+<code>#include &lt;array&gt;</code><br />
 <code>#include &lt;utility&gt;</code><br />
 <code>#include &lt;<a class="el" href="assertions_8hh_source.html">scroom/assertions.hh</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -104,23 +105,25 @@ Include dependency graph for logging-window.cc:</div>
 <div class="dyncontent">
 <div class="center"><img src="logging-window_8cc__incl.png" border="0" usemap="#agui_2src_2logging-window_8cc" alt=""/></div>
 <map name="agui_2src_2logging-window_8cc" id="agui_2src_2logging-window_8cc">
-<area shape="rect" title=" " alt="" coords="447,5,636,31"/>
-<area shape="rect" href="logging-window_8hh.html" title=" " alt="" coords="313,79,457,104"/>
-<area shape="poly" title=" " alt="" coords="517,33,424,75,422,70,515,28"/>
-<area shape="rect" title=" " alt="" coords="511,79,571,104"/>
-<area shape="poly" title=" " alt="" coords="544,31,544,65,539,65,539,31"/>
-<area shape="rect" href="assertions_8hh.html" title=" " alt="" coords="610,79,771,104"/>
-<area shape="poly" title=" " alt="" coords="566,28,655,70,653,75,564,33"/>
+<area shape="rect" title=" " alt="" coords="440,5,629,31"/>
+<area shape="rect" href="logging-window_8hh.html" title=" " alt="" coords="297,79,441,104"/>
+<area shape="poly" title=" " alt="" coords="509,33,410,76,408,71,507,28"/>
+<area shape="rect" title=" " alt="" coords="465,79,521,104"/>
+<area shape="poly" title=" " alt="" coords="530,32,509,68,505,65,526,30"/>
+<area shape="rect" title=" " alt="" coords="546,79,606,104"/>
+<area shape="poly" title=" " alt="" coords="544,30,565,65,560,68,539,32"/>
+<area shape="rect" href="assertions_8hh.html" title=" " alt="" coords="630,79,791,104"/>
+<area shape="poly" title=" " alt="" coords="564,28,670,71,668,76,562,33"/>
 <area shape="rect" title=" " alt="" coords="952,225,1019,251"/>
-<area shape="poly" title=" " alt="" coords="431,101,502,122,581,150,606,163,632,175,714,196,782,204,851,210,939,223,938,228,850,215,781,209,713,201,630,180,604,168,579,154,500,127,429,107"/>
+<area shape="poly" title=" " alt="" coords="415,101,581,149,613,163,646,175,725,193,790,202,855,209,939,223,938,228,854,214,789,207,725,198,645,180,612,168,579,155,414,107"/>
 <area shape="rect" title=" " alt="" coords="5,225,83,251"/>
-<area shape="poly" title=" " alt="" coords="351,107,220,154,79,221,77,216,218,150,349,102"/>
+<area shape="poly" title=" " alt="" coords="339,107,220,154,80,221,78,216,218,150,337,102"/>
 <area shape="rect" title=" " alt="" coords="107,225,165,251"/>
-<area shape="poly" title=" " alt="" coords="360,107,264,154,164,219,161,215,261,150,358,102"/>
+<area shape="poly" title=" " alt="" coords="349,107,264,154,165,220,162,215,261,150,346,102"/>
 <area shape="rect" title=" " alt="" coords="488,152,568,177"/>
-<area shape="poly" title=" " alt="" coords="409,102,494,143,491,148,407,106"/>
+<area shape="poly" title=" " alt="" coords="396,102,491,144,489,149,394,106"/>
 <area shape="rect" href="ringbuffer-sink_8hh.html" title=" " alt="" coords="275,152,464,177"/>
-<area shape="poly" title=" " alt="" coords="385,105,377,139,372,138,380,104"/>
+<area shape="poly" title=" " alt="" coords="372,104,372,138,367,138,367,104"/>
 <area shape="poly" title=" " alt="" coords="464,173,476,175,706,193,808,203,938,223,938,228,808,208,706,199,476,180,464,179"/>
 <area shape="poly" title=" " alt="" coords="317,180,97,228,96,222,316,175"/>
 <area shape="poly" title=" " alt="" coords="333,180,179,226,178,221,331,175"/>
@@ -134,10 +137,10 @@ Include dependency graph for logging-window.cc:</div>
 <area shape="poly" title=" " alt="" coords="399,175,507,218,505,223,397,180"/>
 <area shape="rect" title=" " alt="" coords="634,225,817,251"/>
 <area shape="poly" title=" " alt="" coords="427,175,655,220,654,225,426,180"/>
-<area shape="rect" title=" " alt="" coords="762,152,859,177"/>
-<area shape="poly" title=" " alt="" coords="711,102,780,142,778,147,709,106"/>
-<area shape="rect" title=" " alt="" coords="643,152,738,177"/>
-<area shape="poly" title=" " alt="" coords="693,104,693,138,688,138,688,104"/>
+<area shape="rect" title=" " alt="" coords="777,152,874,177"/>
+<area shape="poly" title=" " alt="" coords="730,102,796,142,794,147,728,106"/>
+<area shape="rect" title=" " alt="" coords="658,152,753,177"/>
+<area shape="poly" title=" " alt="" coords="712,105,710,139,705,138,707,104"/>
 </map>
 </div>
 </div><table class="memberdecls">

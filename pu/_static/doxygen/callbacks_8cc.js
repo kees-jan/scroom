@@ -44,7 +44,6 @@ var callbacks_8cc =
     [ "on_zoombox_changed", "callbacks_8cc.html#adfed951a3aff6a5b114ac21d07119be1", null ],
     [ "onDragDataReceived", "callbacks_8cc.html#a70acaa5f0cfece779fc5241e113e95d3", null ],
     [ "setRingBufferSink", "callbacks_8cc.html#a422210910c7e2516b1836f98005f7340", null ],
-    [ "ShowModalDialog", "callbacks_8cc.html#a3aab2a4d00901924d72b5a72a3711069", null ],
     [ "aboutDialog", "callbacks_8cc.html#a9180546c6d9070b28e52a0b62b6f15cf", null ],
     [ "aboutDialogXml", "callbacks_8cc.html#af1ea25f0666c6494af4b0411dec29ca2", null ],
     [ "currentFolder", "callbacks_8cc.html#a88fd8bb6d81270fb4692717f792a401c", null ],

@@ -1,6 +1,5 @@
 var NAVTREEINDEX16 =
 {
-"layerspecforbitmap_8cc.html#a22a1bb4f862ef52ed08042515ffca9da":[4,0,3,4,1,6,4],
 "layerspecforbitmap_8cc.html#a35eb5d0dba0fa7d585cf7d77b10947b3":[4,0,3,4,1,6,3],
 "layerspecforbitmap_8cc.html#a57ca2a55cf5fd640d3e3e3e2d59c4a62":[4,0,3,4,1,6,6],
 "layerspecforbitmap_8cc.html#a90b98df77076cf30312ea6e57d3e75d2":[4,0,3,4,1,6,9],
@@ -249,5 +248,6 @@ var NAVTREEINDEX16 =
 "namespaceScroom_1_1Utils.html#a7b8702657fc50c282c77b5f82251fa6a":[1,0,23,12,70],
 "namespaceScroom_1_1Utils.html#a84846154a19182ab43c20f2d79ff54dd":[1,0,23,12,53],
 "namespaceScroom_1_1Utils.html#a8567b6c139d46286259d3176be21ba96":[1,0,23,12,50],
-"namespaceScroom_1_1Utils.html#a88b4b5193ea6b4854d3043b80de6c7a4":[1,0,23,12,64]
+"namespaceScroom_1_1Utils.html#a88b4b5193ea6b4854d3043b80de6c7a4":[1,0,23,12,64],
+"namespaceScroom_1_1Utils.html#a8a866a6439fc60dfe259e168059aa65e":[1,0,23,12,65]
 };

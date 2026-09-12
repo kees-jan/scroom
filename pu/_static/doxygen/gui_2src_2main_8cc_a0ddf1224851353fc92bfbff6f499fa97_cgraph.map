@@ -8,12 +8,12 @@
 <area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="43,341,70,312,107,284,133,270,135,275,109,288,74,316,47,344"/>
 <area shape="rect" id="Node000009" href="$callbacks_8cc.html#ad1e18a647c5ecc3a2235b4e14f08bd74" title=" " alt="" coords="137,343,300,368"/>
 <area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="60,353,123,353,123,358,60,358"/>
-<area shape="rect" id="Node000088" href="$callbacks_8cc.html#a8aaa627c06109f99958936ba0e3888ad" title=" " alt="" coords="131,392,307,417"/>
-<area shape="poly" id="edge55_Node000001_Node000088" title=" " alt="" coords="61,362,109,377,146,386,144,391,107,382,59,367"/>
-<area shape="rect" id="Node000089" href="$callbacks_8cc.html#a422210910c7e2516b1836f98005f7340" title=" " alt="" coords="149,441,288,467"/>
-<area shape="poly" id="edge56_Node000001_Node000089" title=" " alt="" coords="45,366,71,398,109,428,137,439,135,444,107,432,68,402,41,370"/>
-<area shape="rect" id="Node000090" href="$gui_2src_2main_8cc.html#a7a706f62a62fd6c210230a2faed42f33" title=" " alt="" coords="188,491,249,516"/>
-<area shape="poly" id="edge57_Node000001_Node000090" title=" " alt="" coords="40,367,64,421,84,452,110,477,141,492,175,499,174,504,139,497,106,482,79,455,59,424,35,369"/>
+<area shape="rect" id="Node000087" href="$callbacks_8cc.html#a8aaa627c06109f99958936ba0e3888ad" title=" " alt="" coords="131,392,307,417"/>
+<area shape="poly" id="edge55_Node000001_Node000087" title=" " alt="" coords="61,362,109,377,146,386,144,391,107,382,59,367"/>
+<area shape="rect" id="Node000088" href="$callbacks_8cc.html#a422210910c7e2516b1836f98005f7340" title=" " alt="" coords="149,441,288,467"/>
+<area shape="poly" id="edge56_Node000001_Node000088" title=" " alt="" coords="45,366,71,398,109,428,137,439,135,444,107,432,68,402,41,370"/>
+<area shape="rect" id="Node000089" href="$gui_2src_2main_8cc.html#a7a706f62a62fd6c210230a2faed42f33" title=" " alt="" coords="188,491,249,516"/>
+<area shape="poly" id="edge57_Node000001_Node000089" title=" " alt="" coords="40,367,64,421,84,452,110,477,141,492,175,499,174,504,139,497,106,482,79,455,59,424,35,369"/>
 <area shape="rect" id="Node000003" href="$namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1" title=" " alt="" coords="403,85,562,125"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="330,102,389,102,389,107,330,107"/>
 <area shape="rect" id="Node000005" href="$namespaceanonymous__namespace_02callbacks_8cc_03.html#abbb5e2fc132607ca35de96c2fd00be6a" title=" " alt="" coords="377,5,588,60"/>
@@ -28,8 +28,8 @@
 <area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="288,365,401,387,400,392,287,371"/>
 <area shape="rect" id="Node000011" href="$callbacks_8cc.html#a19dc44b0b71d02dc59a3c16fdf3fe48b" title=" " alt="" coords="423,563,542,588"/>
 <area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="301,364,331,377,355,402,392,449,466,549,462,553,388,452,351,406,328,382,299,369"/>
-<area shape="rect" id="Node000087" href="$pluginmanager_8cc.html#a1eaba27ac5042cfaf3fc25381677d3d9" title=" " alt="" coords="408,343,557,368"/>
-<area shape="poly" id="edge54_Node000009_Node000087" title=" " alt="" coords="300,353,394,353,394,358,300,358"/>
+<area shape="rect" id="Node000086" href="$pluginmanager_8cc.html#a1eaba27ac5042cfaf3fc25381677d3d9" title=" " alt="" coords="408,343,557,368"/>
+<area shape="poly" id="edge54_Node000009_Node000086" title=" " alt="" coords="300,353,394,353,394,358,300,358"/>
 <area shape="rect" id="Node000012" href="$classView.html#a1e1cc4861ca8e2919be4990c0a8fc8a1" title=" " alt="" coords="685,137,787,163"/>
 <area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="494,561,540,506,565,469,586,429,597,391,601,357,597,294,595,264,599,234,611,203,634,172,651,160,670,152,672,157,653,164,638,176,615,206,604,235,600,264,602,293,606,357,602,392,590,431,569,472,544,509,498,564"/>
 <area shape="rect" id="Node000013" href="$callbacks_8cc.html#aa368b65b001e2f9e44a1e69b3098881a" title=" " alt="" coords="665,187,807,212"/>

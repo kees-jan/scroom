@@ -1,6 +1,5 @@
 var NAVTREEINDEX2 =
 {
-"classDummyPluginInterface.html#a38e02b9ad6146de47569d8fb7c56de1c":[3,0,33,0],
 "classDummyPluginInterface.html#a5111e34315cddb47537fe91577885f55":[3,0,33,5],
 "classDummyPluginInterface.html#a97d6f51787cd9cdb068e4f1ec841ebb3":[3,0,33,2],
 "classDummyPluginInterface.html#aaf5541ef8d644372cf607b710a3a289c":[3,0,33,4],
@@ -249,5 +248,6 @@ var NAVTREEINDEX2 =
 "classMonochromeColormapHelper.html#a22800a9f435551e61e8fc20cf889997a":[3,0,58,13],
 "classMonochromeColormapHelper.html#a3d60bf2ef52a480ef936f98ad5f84a3b":[3,0,58,1],
 "classMonochromeColormapHelper.html#a5e9b44b1984a9d5e4cf028900c4d975a":[3,0,58,5],
-"classMonochromeColormapHelper.html#a5ed464af7f8f5dadc9d2cd7989dd626f":[3,0,58,10]
+"classMonochromeColormapHelper.html#a5ed464af7f8f5dadc9d2cd7989dd626f":[3,0,58,10],
+"classMonochromeColormapHelper.html#a81ae81cca702b13aca63d07013f37ab1":[3,0,58,9]
 };
