@@ -35,11 +35,12 @@ var searchData=
   ['freepages_32',['freePages',['../classScroom_1_1MemoryBlobs_1_1PageProvider.html#aca46cb9c8e2f791083a3c950cfd8e837',1,'Scroom::MemoryBlobs::PageProvider']]],
   ['freezable_33',['freezable',['../classFreezable.html#a4df627a9ffc2d52d4c15dc846c006ae1',1,'Freezable::Freezable(value_type v)'],['../classFreezable.html#ad7885398b1e23a3c3cee458e9d408153',1,'Freezable::Freezable()=default'],['../classFreezable.html',1,'Freezable&lt; T &gt;']]],
   ['freezable_3c_20scroom_3a_3autils_3a_3apoint_3c_20double_20_3e_20_3e_34',['Freezable&lt; Scroom::Utils::Point&lt; double &gt; &gt;',['../classFreezable.html',1,'']]],
-  ['function_2dadditor_2dtests_2ecc_35',['function-additor-tests.cc',['../function-additor-tests_8cc.html',1,'']]],
-  ['function_2dadditor_2ecc_36',['function-additor.cc',['../function-additor_8cc.html',1,'']]],
-  ['function_2dadditor_2ehh_37',['function-additor.hh',['../function-additor_8hh.html',1,'']]],
-  ['functionadditor_38',['FunctionAdditor',['../classScroom_1_1Detail_1_1ThreadPool_1_1FunctionAdditor.html',1,'Scroom::Detail::ThreadPool']]],
-  ['functionmultiplier_39',['functionmultiplier',['../classScroom_1_1Detail_1_1ThreadPool_1_1FunctionMultiplier.html#aeaf1a941a351b3e7be35a988a7cf60a4',1,'Scroom::Detail::ThreadPool::FunctionMultiplier::FunctionMultiplier()'],['../classScroom_1_1Detail_1_1ThreadPool_1_1FunctionMultiplier.html',1,'Scroom::Detail::ThreadPool::FunctionMultiplier']]],
-  ['functions_40',['functions',['../measure-framerate-callbacks_8hh.html#a05753da6e97a1ef39125024fc989a6fa',1,'functions:&#160;measure-framerate-callbacks.cc'],['../measure-framerate-callbacks_8cc.html#a05753da6e97a1ef39125024fc989a6fa',1,'functions:&#160;measure-framerate-callbacks.cc'],['../classScroom_1_1Detail_1_1ThreadPool_1_1FunctionAdditor.html#a7b0d7fe9ff38d853146d5392b4a83d34',1,'Scroom::Detail::ThreadPool::FunctionAdditor::functions'],['../classScroom_1_1TiledBitmap_1_1LayerSpecForBitmapper.html#a2c08615ff21468fc4af3444b933f2dcc',1,'Scroom::TiledBitmap::LayerSpecForBitmapper::functions']]],
-  ['functiontype_41',['FunctionType',['../classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a0bf7198fd45c72a5695cfb6c96f47684',1,'Scroom::Detail::ThreadPool::Builder']]]
+  ['fullscreen_5fmenu_5fitem_35',['FULLSCREEN_MENU_ITEM',['../namespaceMenuIds.html#a392e504910f9b170badbb1064a52012e',1,'MenuIds']]],
+  ['function_2dadditor_2dtests_2ecc_36',['function-additor-tests.cc',['../function-additor-tests_8cc.html',1,'']]],
+  ['function_2dadditor_2ecc_37',['function-additor.cc',['../function-additor_8cc.html',1,'']]],
+  ['function_2dadditor_2ehh_38',['function-additor.hh',['../function-additor_8hh.html',1,'']]],
+  ['functionadditor_39',['FunctionAdditor',['../classScroom_1_1Detail_1_1ThreadPool_1_1FunctionAdditor.html',1,'Scroom::Detail::ThreadPool']]],
+  ['functionmultiplier_40',['functionmultiplier',['../classScroom_1_1Detail_1_1ThreadPool_1_1FunctionMultiplier.html',1,'Scroom::Detail::ThreadPool::FunctionMultiplier'],['../classScroom_1_1Detail_1_1ThreadPool_1_1FunctionMultiplier.html#aeaf1a941a351b3e7be35a988a7cf60a4',1,'Scroom::Detail::ThreadPool::FunctionMultiplier::FunctionMultiplier()']]],
+  ['functions_41',['functions',['../measure-framerate-callbacks_8hh.html#a05753da6e97a1ef39125024fc989a6fa',1,'functions:&#160;measure-framerate-callbacks.cc'],['../measure-framerate-callbacks_8cc.html#a05753da6e97a1ef39125024fc989a6fa',1,'functions:&#160;measure-framerate-callbacks.cc'],['../classScroom_1_1Detail_1_1ThreadPool_1_1FunctionAdditor.html#a7b0d7fe9ff38d853146d5392b4a83d34',1,'Scroom::Detail::ThreadPool::FunctionAdditor::functions'],['../classScroom_1_1TiledBitmap_1_1LayerSpecForBitmapper.html#a2c08615ff21468fc4af3444b933f2dcc',1,'Scroom::TiledBitmap::LayerSpecForBitmapper::functions']]],
+  ['functiontype_42',['FunctionType',['../classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a0bf7198fd45c72a5695cfb6c96f47684',1,'Scroom::Detail::ThreadPool::Builder']]]
 ];

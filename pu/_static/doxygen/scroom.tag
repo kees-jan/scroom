@@ -549,6 +549,34 @@
     </member>
     <member kind="function">
       <type>void</type>
+      <name>on_new_window_activate</name>
+      <anchorfile>callbacks_8cc.html</anchorfile>
+      <anchor>ac2650096cdbcfbe9cfc604dda16d4c4a</anchor>
+      <arglist>(GtkMenuItem *, gpointer user_data)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>update_logging_window_new_menu</name>
+      <anchorfile>callbacks_8cc.html</anchorfile>
+      <anchor>af51f740add7f9505f208aca674f19419</anchor>
+      <arglist>(const std::map&lt; NewPresentationInterface::Ptr, std::string &gt; &amp;newPresentationInterfaces)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>update_logging_window_new_window_menu</name>
+      <anchorfile>callbacks_8cc.html</anchorfile>
+      <anchor>a9f63c845f4d67c33bd1ae395ae973044</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>connect_logging_window_menu_callbacks</name>
+      <anchorfile>callbacks_8cc.html</anchorfile>
+      <anchor>a0c7e6f83db1f0c9f9c080602240ece2f</anchor>
+      <arglist>(GtkBuilder *builder, GtkWidget *loggingWindowWidget)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
       <name>on_scroom_hide</name>
       <anchorfile>callbacks_8cc.html</anchorfile>
       <anchor>a65f18cf64a4bafed7b32ded3cc902668</anchor>
@@ -891,6 +919,13 @@
       <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
+      <type>static GtkBuilder *</type>
+      <name>loggingWindowMenuBuilder</name>
+      <anchorfile>callbacks_8cc.html</anchorfile>
+      <anchor>a11b875f2cbebd099ba5ddcf1335e00a3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" static="yes">
       <type>static Views</type>
       <name>views</name>
       <anchorfile>callbacks_8cc.html</anchorfile>
@@ -927,6 +962,7 @@
     <includes id="ringbuffer-sink_8hh" name="ringbuffer-sink.hh" local="no" import="no" module="no" objc="no">scroom/ringbuffer-sink.hh</includes>
     <includes id="scroominterface_8hh" name="scroominterface.hh" local="no" import="no" module="no" objc="no">scroom/scroominterface.hh</includes>
     <includes id="view_8hh" name="view.hh" local="yes" import="no" module="no" objc="no">view.hh</includes>
+    <namespace>MenuIds</namespace>
     <member kind="typedef">
       <type>std::map&lt; std::string, std::list&lt; std::string &gt; &gt;</type>
       <name>FileNameMap</name>
@@ -1186,6 +1222,13 @@
       <anchor>afef5247cfa0b68e9f61994d57f44638a</anchor>
       <arglist>(const Scroom::RingBufferSink::Ptr &amp;ringBufferSink)</arglist>
     </member>
+    <member kind="function">
+      <type>void</type>
+      <name>connect_logging_window_menu_callbacks</name>
+      <anchorfile>callbacks_8hh.html</anchorfile>
+      <anchor>a6cdeb6ab4ba47cb4109b1fad501caa7b</anchor>
+      <arglist>(GtkBuilder *builder, GtkWidget *loggingWindow)</arglist>
+    </member>
     <member kind="variable">
       <type>const std::string</type>
       <name>REGULAR_FILES</name>
@@ -1345,6 +1388,7 @@
     <filename>logging-window_8cc.html</filename>
     <includes id="logging-window_8hh" name="logging-window.hh" local="yes" import="no" module="no" objc="no">logging-window.hh</includes>
     <includes id="assertions_8hh" name="assertions.hh" local="no" import="no" module="no" objc="no">scroom/assertions.hh</includes>
+    <includes id="callbacks_8hh" name="callbacks.hh" local="yes" import="no" module="no" objc="no">callbacks.hh</includes>
     <namespace>anonymous_namespace{logging-window.cc}</namespace>
   </compound>
   <compound kind="file">
@@ -25562,6 +25606,69 @@
     <name>anonymous_namespace{callbacks.cc}</name>
     <filename>namespaceanonymous__namespace_02callbacks_8cc_03.html</filename>
     <member kind="function">
+      <type>GtkWidget *</type>
+      <name>getRequiredWidgetObject</name>
+      <anchorfile>namespaceanonymous__namespace_02callbacks_8cc_03.html</anchorfile>
+      <anchor>a379efe75d262f550ed11f0acf9c41bb1</anchor>
+      <arglist>(GtkBuilder *builder, const char *id)</arglist>
+    </member>
+    <member kind="function">
+      <type>GtkAccelGroup *</type>
+      <name>getOrCreateMainWindowAccelGroup</name>
+      <anchorfile>namespaceanonymous__namespace_02callbacks_8cc_03.html</anchorfile>
+      <anchor>aba8ed3e5ee5efaffa9aed05d3ab5656f</anchor>
+      <arglist>(GtkWidget *window)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>bindCommonMenuAccelerators</name>
+      <anchorfile>namespaceanonymous__namespace_02callbacks_8cc_03.html</anchorfile>
+      <anchor>a87966405ec6d57668a8bb3930a9d33d4</anchor>
+      <arglist>(GtkBuilder *builder, GtkWidget *window)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>bindMainWindowMenuAccelerators</name>
+      <anchorfile>namespaceanonymous__namespace_02callbacks_8cc_03.html</anchorfile>
+      <anchor>a71a268a8e5d915d35d1a86a04bae0077</anchor>
+      <arglist>(GtkBuilder *builder, GtkWidget *window)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>bindLoggingWindowMenuAccelerators</name>
+      <anchorfile>namespaceanonymous__namespace_02callbacks_8cc_03.html</anchorfile>
+      <anchor>aefda63afb34fe39a94f25a40a72240dd</anchor>
+      <arglist>(GtkBuilder *builder, GtkWidget *window)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>on_close_window_activate</name>
+      <anchorfile>namespaceanonymous__namespace_02callbacks_8cc_03.html</anchorfile>
+      <anchor>a15081aee2d0b7db4a29b5d03d1e4f885</anchor>
+      <arglist>(GtkMenuItem *, gpointer user_data)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>connectCommonMenuCallbacks</name>
+      <anchorfile>namespaceanonymous__namespace_02callbacks_8cc_03.html</anchorfile>
+      <anchor>ab3f3b6e97aa03ff053e20c96be2e3b66</anchor>
+      <arglist>(GtkBuilder *builder, GtkWidget *parentWindow, gpointer aboutUserData)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>connectMainWindowMenuCallbacks</name>
+      <anchorfile>namespaceanonymous__namespace_02callbacks_8cc_03.html</anchorfile>
+      <anchor>a83be12000030c87174ee0389d7c11d3c</anchor>
+      <arglist>(GtkBuilder *builder, GtkWidget *scroom, View *view)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>connectLoggingWindowMenuCallbacks</name>
+      <anchorfile>namespaceanonymous__namespace_02callbacks_8cc_03.html</anchorfile>
+      <anchor>a3db6bf1d0f4891570e5a5fe8351c2f58</anchor>
+      <arglist>(GtkBuilder *builder, GtkWidget *loggingWindow)</arglist>
+    </member>
+    <member kind="function">
       <type>void</type>
       <name>consumeLogMessages</name>
       <anchorfile>namespaceanonymous__namespace_02callbacks_8cc_03.html</anchorfile>
@@ -26060,6 +26167,87 @@
       <anchorfile>namespaceDetail.html</anchorfile>
       <anchor>ade7e310c6f49be3b6e0ded45bd574f9b</anchor>
       <arglist>(T *p)</arglist>
+    </member>
+  </compound>
+  <compound kind="namespace">
+    <name>MenuIds</name>
+    <filename>namespaceMenuIds.html</filename>
+    <member kind="variable">
+      <type>constexpr const char *</type>
+      <name>MENUBAR_PROTOTYPE</name>
+      <anchorfile>namespaceMenuIds.html</anchorfile>
+      <anchor>afaf0926d50c524002bc4f696aacdd7b9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr const char *</type>
+      <name>OPEN</name>
+      <anchorfile>namespaceMenuIds.html</anchorfile>
+      <anchor>af514a513c0d22eefcefdcc63ae7d9f2e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr const char *</type>
+      <name>SAVE</name>
+      <anchorfile>namespaceMenuIds.html</anchorfile>
+      <anchor>a69b92ab91213c73b47693dde531a219d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr const char *</type>
+      <name>CLOSE</name>
+      <anchorfile>namespaceMenuIds.html</anchorfile>
+      <anchor>ab5766cce90a1696ec4dd7209474b6106</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr const char *</type>
+      <name>QUIT</name>
+      <anchorfile>namespaceMenuIds.html</anchorfile>
+      <anchor>a25ee5710b772e95e0c77b8a598e57cce</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr const char *</type>
+      <name>VIEW_MENU_ITEM</name>
+      <anchorfile>namespaceMenuIds.html</anchorfile>
+      <anchor>ac709c0e573d8029eeef30747bea787d5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr const char *</type>
+      <name>FULLSCREEN_MENU_ITEM</name>
+      <anchorfile>namespaceMenuIds.html</anchorfile>
+      <anchor>a392e504910f9b170badbb1064a52012e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr const char *</type>
+      <name>LOGS_MENU_ITEM</name>
+      <anchorfile>namespaceMenuIds.html</anchorfile>
+      <anchor>a7c7d1c3e901cba981b9ff3ecb8e12419</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr const char *</type>
+      <name>ABOUT</name>
+      <anchorfile>namespaceMenuIds.html</anchorfile>
+      <anchor>a8aa63e2f964b202c950cc6ec06821918</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr const char *</type>
+      <name>NEW</name>
+      <anchorfile>namespaceMenuIds.html</anchorfile>
+      <anchor>a01120702498897e819f1a1148d22d938</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr const char *</type>
+      <name>NEW_WINDOW</name>
+      <anchorfile>namespaceMenuIds.html</anchorfile>
+      <anchor>abdf38c44f69dfcd6be5013dff543c9ed</anchor>
+      <arglist></arglist>
     </member>
   </compound>
   <compound kind="namespace">

@@ -1,7 +1,16 @@
 var namespaces_dup =
 [
     [ "anonymous_namespace{callbacks.cc}", "namespaceanonymous__namespace_02callbacks_8cc_03.html", [
+      [ "bindCommonMenuAccelerators", "namespaceanonymous__namespace_02callbacks_8cc_03.html#a87966405ec6d57668a8bb3930a9d33d4", null ],
+      [ "bindLoggingWindowMenuAccelerators", "namespaceanonymous__namespace_02callbacks_8cc_03.html#aefda63afb34fe39a94f25a40a72240dd", null ],
+      [ "bindMainWindowMenuAccelerators", "namespaceanonymous__namespace_02callbacks_8cc_03.html#a71a268a8e5d915d35d1a86a04bae0077", null ],
+      [ "connectCommonMenuCallbacks", "namespaceanonymous__namespace_02callbacks_8cc_03.html#ab3f3b6e97aa03ff053e20c96be2e3b66", null ],
+      [ "connectLoggingWindowMenuCallbacks", "namespaceanonymous__namespace_02callbacks_8cc_03.html#a3db6bf1d0f4891570e5a5fe8351c2f58", null ],
+      [ "connectMainWindowMenuCallbacks", "namespaceanonymous__namespace_02callbacks_8cc_03.html#a83be12000030c87174ee0389d7c11d3c", null ],
       [ "consumeLogMessages", "namespaceanonymous__namespace_02callbacks_8cc_03.html#abbb5e2fc132607ca35de96c2fd00be6a", null ],
+      [ "getOrCreateMainWindowAccelGroup", "namespaceanonymous__namespace_02callbacks_8cc_03.html#aba8ed3e5ee5efaffa9aed05d3ab5656f", null ],
+      [ "getRequiredWidgetObject", "namespaceanonymous__namespace_02callbacks_8cc_03.html#a379efe75d262f550ed11f0acf9c41bb1", null ],
+      [ "on_close_window_activate", "namespaceanonymous__namespace_02callbacks_8cc_03.html#a15081aee2d0b7db4a29b5d03d1e4f885", null ],
       [ "logger", "namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6", null ]
     ] ],
     [ "anonymous_namespace{colormaphelpers_test.cc}", "namespaceanonymous__namespace_02colormaphelpers__test_8cc_03.html", "namespaceanonymous__namespace_02colormaphelpers__test_8cc_03" ],
@@ -83,6 +92,19 @@ var namespaces_dup =
       [ "templates_path", "namespaceconf.html#ae850ae634911b713e036b43894fdd525", null ]
     ] ],
     [ "Detail", "namespaceDetail.html", "namespaceDetail" ],
+    [ "MenuIds", "namespaceMenuIds.html", [
+      [ "ABOUT", "namespaceMenuIds.html#a8aa63e2f964b202c950cc6ec06821918", null ],
+      [ "CLOSE", "namespaceMenuIds.html#ab5766cce90a1696ec4dd7209474b6106", null ],
+      [ "FULLSCREEN_MENU_ITEM", "namespaceMenuIds.html#a392e504910f9b170badbb1064a52012e", null ],
+      [ "LOGS_MENU_ITEM", "namespaceMenuIds.html#a7c7d1c3e901cba981b9ff3ecb8e12419", null ],
+      [ "MENUBAR_PROTOTYPE", "namespaceMenuIds.html#afaf0926d50c524002bc4f696aacdd7b9", null ],
+      [ "NEW", "namespaceMenuIds.html#a01120702498897e819f1a1148d22d938", null ],
+      [ "NEW_WINDOW", "namespaceMenuIds.html#abdf38c44f69dfcd6be5013dff543c9ed", null ],
+      [ "OPEN", "namespaceMenuIds.html#af514a513c0d22eefcefdcc63ae7d9f2e", null ],
+      [ "QUIT", "namespaceMenuIds.html#a25ee5710b772e95e0c77b8a598e57cce", null ],
+      [ "SAVE", "namespaceMenuIds.html#a69b92ab91213c73b47693dde531a219d", null ],
+      [ "VIEW_MENU_ITEM", "namespaceMenuIds.html#ac709c0e573d8029eeef30747bea787d5", null ]
+    ] ],
     [ "Scroom", "namespaceScroom.html", "namespaceScroom" ],
     [ "SelectionType", "namespaceSelectionType.html", [
       [ "DEFAULT", "namespaceSelectionType.html#aebc501deb9a30b47b6b63f09abcb98bc", null ],

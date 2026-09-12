@@ -35,7 +35,7 @@ var NAVTREE =
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
-        [ "All", "namespacemembers.html", null ],
+        [ "All", "namespacemembers.html", "namespacemembers_dup" ],
         [ "Functions", "namespacemembers_func.html", null ],
         [ "Variables", "namespacemembers_vars.html", null ],
         [ "Typedefs", "namespacemembers_type.html", null ],
@@ -76,27 +76,27 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "BoostTestTargetsDynamic_8h.html",
-"classA.html#a8d74412b1ff05d7493b4c546795bf405",
-"classDummyPluginInterface.html#a5111e34315cddb47537fe91577885f55",
-"classMonochromeColormapHelper.html#a8ca9ddcea676c30f085ae9aa94dc1299",
-"classProgressBarManager.html#a6ea99e5fd8b5d5a277cea203795a76b1",
-"classScroom_1_1Bookkeeping_1_1Detail_1_1LValue.html#ae5d318295bd6fbb8f0c6088547f60a0a",
-"classScroom_1_1Detail_1_1ThreadPool_1_1FunctionMultiplier.html#aa92aa2d359bb34feb35b91d7fa381ea8",
-"classScroom_1_1MemoryBlocks_1_1BlockInterface.html#a413b6c76fd8de3d57cef5825868e42e4",
-"classScroom_1_1Utils_1_1Counted.html",
-"classScroom_1_1Utils_1_1ProgressInterfaceBroadcaster_1_1Unsubscriber.html#a4dfcee27161adac884bc450541b8c38d",
-"classScroom_1_1Utils_1_1Rectangle.html#afd74d4e01274fdf2b7d2dc1251a76d40",
-"classSource2Bpp.html#ab47da87646b895c232607d1165f2b1df",
-"classTransformPresentation.html#a8f343d98a4f1247e0a18f338e2fa74ad",
-"classanonymous__namespace_02determine-size-test_8cc_03_1_1PresentationInterfaceStub.html#acfa7a753616d43f1d68cfd757dea85f3",
-"colormapprovider_8hh_source.html",
-"function-additor_8hh.html#a3debba59e582e93cd976cf683f203596",
-"layerspecforbitmap_8cc.html#a35eb5d0dba0fa7d585cf7d77b10947b3",
-"namespaceScroom_1_1Utils.html#a8ac2cae323eb38f0996245c0a925d4ac",
-"pipette-tests_8cc.html#ae0a7ab320920155bf3817ba998ea27a3",
-"rectangletests_8cc.html#a8dc5be6368d6dcd135a449092052c59f",
-"structScroom_1_1RingBufferSink_1_1ConsumeResult.html#a797e8567413054e00191f7fc6c427515",
-"tiledbitmap-tests_8cc.html"
+"callbacks_8hh.html#ab5766cce90a1696ec4dd7209474b6106",
+"classDetail_1_1ViewData.html#acbd44fc73a4b20e8d6320b4b1ccd6502",
+"classMeasureHandler.html#a29501e258fc030a770c0b5dbbd3c5174",
+"classPresentationInterface.html#a91974d576458480d37d40c1dbc006d82",
+"classScroom_1_1Bitmap_1_1SampleIterator.html#acf90826e2b9857a2ea9364ea1f7aebe7",
+"classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#ae5738a7c678336413882a6bdea41f9e4",
+"classScroom_1_1MemoryBlobs_1_1PageProvider.html#ab1000bd633c88866959e36760b5b0f0f",
+"classScroom_1_1Utils_1_1Context.html#abc2f687326929a940ae88aed227e14ae",
+"classScroom_1_1Utils_1_1ProgressInterfaceBroadcaster.html#aa36b7d041aee399a8130ee04423489ce",
+"classScroom_1_1Utils_1_1Rectangle.html#aac53b13b110251e6666a6e8499c19f27",
+"classSizeDeterminer.html#a12c08750ab3df3e68032241685a17073",
+"classTiledBitmapViewData.html#ac2a59a87aaf27ba0e2e0e13b45289f11",
+"classWaitForAsyncOp.html#afe80bab9f0e30d034b12cb5a22432d5d",
+"colormaphelpers__test_8cc.html#a408b06f7f000b099bfecde0da2066520",
+"function-additor-tests_8cc.html#a5e086325d431986e5a53541c126dd6ba",
+"helpers_8hh.html",
+"namespaceScroom_1_1TiledBitmap.html#abcdc6501ad25d0c72901a0ef53452506",
+"opentiledbitmapinterface_8hh.html#a55c09152eec48a7f0b8b0819cd243e4d",
+"rectangletests_8cc.html#a20b634577edea3095a24ceef0aea49ee",
+"semaphore-tests_8cc.html#ad0691472c5c576d230c4012d403a4dda",
+"threadpool-queueimpl-tests_8cc.html#ad1f7b61da3c4deb2bf279e2d0a4d20ed"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
