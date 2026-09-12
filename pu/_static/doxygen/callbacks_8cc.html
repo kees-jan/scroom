@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-55-g8bb2f6cac</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-54-g0b53b117d</span>
    </div>
   </td>
  </tr>
@@ -814,87 +814,87 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  791</span>{</div>
-<div class="line"><span class="lineno">  792</span>  GtkBuilder* xml = gtk_builder_new();</div>
-<div class="line"><span class="lineno">  793</span>  boost::scoped_array&lt;char*&gt; <span class="keyword">const</span> obj{<span class="keyword">new</span> gchar*[3]};</div>
-<div class="line"><span class="lineno">  794</span>  <span class="keyword">const</span> std::string scroomObjectName = <span class="stringliteral">&quot;scroom&quot;</span>;</div>
-<div class="line"><span class="lineno">  795</span>  obj[0] = <span class="keyword">const_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(scroomObjectName.c_str());</div>
-<div class="line"><span class="lineno">  796</span>  obj[1] = <span class="keyword">const_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(<a class="code hl_variable" href="namespaceMenuIds.html#afaf0926d50c524002bc4f696aacdd7b9">MenuIds::MENUBAR_PROTOTYPE</a>);</div>
-<div class="line"><span class="lineno">  797</span>  obj[2] = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  798</span>  gtk_builder_add_objects_from_file(xml, <a class="code hl_variable" href="callbacks_8cc.html#ac29c7cff7372a795638c0c6f1d0314d8">xmlFileName</a>.c_str(), obj.get(), <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">  799</span> </div>
-<div class="line"><span class="lineno">  800</span>  <span class="keywordflow">if</span>(xml == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  801</span>  {</div>
-<div class="line"><span class="lineno">  802</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;error(<span class="stringliteral">&quot;Opening xml failed&quot;</span>);</div>
-<div class="line"><span class="lineno">  803</span>    exit(-1); <span class="comment">// NOLINT(concurrency-mt-unsafe)</span></div>
-<div class="line"><span class="lineno">  804</span>  }</div>
-<div class="line"><span class="lineno">  805</span> </div>
-<div class="line"><span class="lineno">  806</span>  <a class="code hl_typedef" href="classView.html#a2dd032af78f555f7f8438b1076e37df4">View::Ptr</a> <span class="keyword">const</span> <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a> = <a class="code hl_function" href="classView.html#a1e1cc4861ca8e2919be4990c0a8fc8a1">View::create</a>(xml, presentation);</div>
-<div class="line"><span class="lineno">  807</span>  <a class="code hl_function" href="callbacks_8cc.html#ab216dda22af978bbc755a31acf60f302">on_view_created</a>(<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>);</div>
-<div class="line"><span class="lineno">  808</span>  <span class="keywordflow">if</span>(presentation)</div>
-<div class="line"><span class="lineno">  809</span>  {</div>
-<div class="line"><span class="lineno">  810</span>    <a class="code hl_function" href="callbacks_8cc.html#aeba2cf448752ce6617c03f7dd34ffc7b">on_presentation_added_to_view</a>(<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>);</div>
-<div class="line"><span class="lineno">  811</span>  }</div>
-<div class="line"><span class="lineno">  812</span> </div>
-<div class="line"><span class="lineno">  813</span>  GtkWidget* scroom = GTK_WIDGET(gtk_builder_get_object(xml, <span class="stringliteral">&quot;scroom&quot;</span>));</div>
-<div class="line"><span class="lineno">  814</span>  <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(scroom != <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">  815</span> </div>
-<div class="line"><span class="lineno">  816</span>  GtkWidget* menubarContainer = <a class="code hl_function" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a379efe75d262f550ed11f0acf9c41bb1">getRequiredWidgetObject</a>(xml, <span class="stringliteral">&quot;menubar_container&quot;</span>);</div>
-<div class="line"><span class="lineno">  817</span>  GtkWidget* menubar = <a class="code hl_function" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a379efe75d262f550ed11f0acf9c41bb1">getRequiredWidgetObject</a>(xml, <a class="code hl_variable" href="namespaceMenuIds.html#afaf0926d50c524002bc4f696aacdd7b9">MenuIds::MENUBAR_PROTOTYPE</a>);</div>
-<div class="line"><span class="lineno">  818</span>  gtk_container_add(GTK_CONTAINER(menubarContainer), menubar);</div>
-<div class="line"><span class="lineno">  819</span>  gtk_widget_show(menubar);</div>
-<div class="line"><span class="lineno">  820</span> </div>
-<div class="line"><span class="lineno">  821</span>  GtkWidget* <a class="code hl_variable" href="ruler-tests_8cc.html#a631c91ed1db010dd2ff3706331fd21bc">drawingArea</a> = GTK_WIDGET(gtk_builder_get_object(xml, <span class="stringliteral">&quot;drawingarea&quot;</span>));</div>
-<div class="line"><span class="lineno">  822</span>  GtkWidget* zoomBox = GTK_WIDGET(gtk_builder_get_object(xml, <span class="stringliteral">&quot;zoomboxcombo&quot;</span>));</div>
-<div class="line"><span class="lineno">  823</span>  GtkWidget* vscrollbar = GTK_WIDGET(gtk_builder_get_object(xml, <span class="stringliteral">&quot;vscrollbar&quot;</span>));</div>
-<div class="line"><span class="lineno">  824</span>  GtkWidget* hscrollbar = GTK_WIDGET(gtk_builder_get_object(xml, <span class="stringliteral">&quot;hscrollbar&quot;</span>));</div>
-<div class="line"><span class="lineno">  825</span>  GtkAdjustment* vscrollbaradjustment = gtk_range_get_adjustment(GTK_RANGE(vscrollbar));</div>
-<div class="line"><span class="lineno">  826</span>  GtkAdjustment* hscrollbaradjustment = gtk_range_get_adjustment(GTK_RANGE(hscrollbar));</div>
-<div class="line"><span class="lineno">  827</span>  GtkEditable* xTextBox = GTK_EDITABLE(GTK_WIDGET(gtk_builder_get_object(xml, <span class="stringliteral">&quot;x_textbox&quot;</span>)));</div>
-<div class="line"><span class="lineno">  828</span>  GtkEditable* yTextBox = GTK_EDITABLE(GTK_WIDGET(gtk_builder_get_object(xml, <span class="stringliteral">&quot;y_textbox&quot;</span>)));</div>
-<div class="line"><span class="lineno">  829</span> </div>
-<div class="line"><span class="lineno">  830</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(scroom), <span class="stringliteral">&quot;hide&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#a65f18cf64a4bafed7b32ded3cc902668">on_scroom_hide</a>), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get());</div>
-<div class="line"><span class="lineno">  831</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a83be12000030c87174ee0389d7c11d3c">connectMainWindowMenuCallbacks</a>(xml, scroom, <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get());</div>
-<div class="line"><span class="lineno">  832</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(zoomBox), <span class="stringliteral">&quot;changed&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#adfed951a3aff6a5b114ac21d07119be1">on_zoombox_changed</a>), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get());</div>
-<div class="line"><span class="lineno">  833</span>  g_signal_connect(</div>
-<div class="line"><span class="lineno">  834</span>    <span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(vscrollbaradjustment), <span class="stringliteral">&quot;value-changed&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#a2490f653137e0dcddb138fae16974e07">on_scrollbar_value_changed</a>), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get()</div>
-<div class="line"><span class="lineno">  835</span>  );</div>
-<div class="line"><span class="lineno">  836</span>  g_signal_connect(</div>
-<div class="line"><span class="lineno">  837</span>    <span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(hscrollbaradjustment), <span class="stringliteral">&quot;value-changed&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#a2490f653137e0dcddb138fae16974e07">on_scrollbar_value_changed</a>), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get()</div>
-<div class="line"><span class="lineno">  838</span>  );</div>
-<div class="line"><span class="lineno">  839</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(xTextBox), <span class="stringliteral">&quot;changed&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#aef7e97ad6ad51b450eb4c3424bb94ce8">on_textbox_value_changed</a>), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get());</div>
-<div class="line"><span class="lineno">  840</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(yTextBox), <span class="stringliteral">&quot;changed&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#aef7e97ad6ad51b450eb4c3424bb94ce8">on_textbox_value_changed</a>), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get());</div>
-<div class="line"><span class="lineno">  841</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(<a class="code hl_variable" href="ruler-tests_8cc.html#a631c91ed1db010dd2ff3706331fd21bc">drawingArea</a>), <span class="stringliteral">&quot;draw&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#ae774492ed1bbe65c2041bf593ef6bb8f">on_drawingarea_expose_event</a>), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get());</div>
-<div class="line"><span class="lineno">  842</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(<a class="code hl_variable" href="ruler-tests_8cc.html#a631c91ed1db010dd2ff3706331fd21bc">drawingArea</a>), <span class="stringliteral">&quot;configure_event&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#a9c37395ebdd4c59a37b6dc38d574a4d7">on_drawingarea_configure_event</a>), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get());</div>
-<div class="line"><span class="lineno">  843</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(<a class="code hl_variable" href="ruler-tests_8cc.html#a631c91ed1db010dd2ff3706331fd21bc">drawingArea</a>), <span class="stringliteral">&quot;button-press-event&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#a30b2ed4bb389a1225baaa7ab3c8d9d88">on_button_press_event</a>), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get());</div>
-<div class="line"><span class="lineno">  844</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(<a class="code hl_variable" href="ruler-tests_8cc.html#a631c91ed1db010dd2ff3706331fd21bc">drawingArea</a>), <span class="stringliteral">&quot;button-release-event&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#a8052e42ad29aca43964bb04ea379f794">on_button_release_event</a>), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get());</div>
-<div class="line"><span class="lineno">  845</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(<a class="code hl_variable" href="ruler-tests_8cc.html#a631c91ed1db010dd2ff3706331fd21bc">drawingArea</a>), <span class="stringliteral">&quot;scroll-event&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#a23f3558fd7063da6c4f453eecfd85c70">on_scroll_event</a>), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get());</div>
-<div class="line"><span class="lineno">  846</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(<a class="code hl_variable" href="ruler-tests_8cc.html#a631c91ed1db010dd2ff3706331fd21bc">drawingArea</a>), <span class="stringliteral">&quot;motion-notify-event&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#a0f6e53b3f2476af215a5c9c87e71e0b8">on_motion_notify_event</a>), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get());</div>
-<div class="line"><span class="lineno">  847</span> </div>
-<div class="line"><span class="lineno">  848</span>  <span class="keywordtype">char</span> uriList[] = <span class="stringliteral">&quot;text/uri-list&quot;</span>;</div>
-<div class="line"><span class="lineno">  849</span>  GtkTargetEntry targets[] = {{uriList, 0, 0}};</div>
-<div class="line"><span class="lineno">  850</span>  gtk_drag_dest_set(</div>
-<div class="line"><span class="lineno">  851</span>    scroom, GTK_DEST_DEFAULT_ALL, targets, 1, <span class="keyword">static_cast&lt;</span>GdkDragAction<span class="keyword">&gt;</span>(GDK_ACTION_COPY | GDK_ACTION_MOVE | GDK_ACTION_LINK)</div>
-<div class="line"><span class="lineno">  852</span>  );</div>
-<div class="line"><span class="lineno">  853</span> </div>
-<div class="line"><span class="lineno">  854</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(scroom), <span class="stringliteral">&quot;drag_data_received&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#a70acaa5f0cfece779fc5241e113e95d3">onDragDataReceived</a>), NULL);</div>
-<div class="line"><span class="lineno">  855</span>  <span class="comment">// delete xml; //Breaks code for some reason. It seems that this xml is freed somewhere else...</span></div>
-<div class="line"><span class="lineno">  856</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  790</span>{</div>
+<div class="line"><span class="lineno">  791</span>  GtkBuilder* xml = gtk_builder_new();</div>
+<div class="line"><span class="lineno">  792</span>  boost::scoped_array&lt;char*&gt; <span class="keyword">const</span> obj{<span class="keyword">new</span> gchar*[3]};</div>
+<div class="line"><span class="lineno">  793</span>  <span class="keyword">const</span> std::string scroomObjectName = <span class="stringliteral">&quot;scroom&quot;</span>;</div>
+<div class="line"><span class="lineno">  794</span>  obj[0] = <span class="keyword">const_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(scroomObjectName.c_str());</div>
+<div class="line"><span class="lineno">  795</span>  obj[1] = <span class="keyword">const_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(<a class="code hl_variable" href="namespaceMenuIds.html#afaf0926d50c524002bc4f696aacdd7b9">MenuIds::MENUBAR_PROTOTYPE</a>);</div>
+<div class="line"><span class="lineno">  796</span>  obj[2] = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  797</span>  gtk_builder_add_objects_from_file(xml, <a class="code hl_variable" href="callbacks_8cc.html#ac29c7cff7372a795638c0c6f1d0314d8">xmlFileName</a>.c_str(), obj.get(), <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  798</span> </div>
+<div class="line"><span class="lineno">  799</span>  <span class="keywordflow">if</span>(xml == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  800</span>  {</div>
+<div class="line"><span class="lineno">  801</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;error(<span class="stringliteral">&quot;Opening xml failed&quot;</span>);</div>
+<div class="line"><span class="lineno">  802</span>    exit(-1); <span class="comment">// NOLINT(concurrency-mt-unsafe)</span></div>
+<div class="line"><span class="lineno">  803</span>  }</div>
+<div class="line"><span class="lineno">  804</span> </div>
+<div class="line"><span class="lineno">  805</span>  <a class="code hl_typedef" href="classView.html#a2dd032af78f555f7f8438b1076e37df4">View::Ptr</a> <span class="keyword">const</span> <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a> = <a class="code hl_function" href="classView.html#a1e1cc4861ca8e2919be4990c0a8fc8a1">View::create</a>(xml, presentation);</div>
+<div class="line"><span class="lineno">  806</span>  <a class="code hl_function" href="callbacks_8cc.html#ab216dda22af978bbc755a31acf60f302">on_view_created</a>(<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>);</div>
+<div class="line"><span class="lineno">  807</span>  <span class="keywordflow">if</span>(presentation)</div>
+<div class="line"><span class="lineno">  808</span>  {</div>
+<div class="line"><span class="lineno">  809</span>    <a class="code hl_function" href="callbacks_8cc.html#aeba2cf448752ce6617c03f7dd34ffc7b">on_presentation_added_to_view</a>(<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>);</div>
+<div class="line"><span class="lineno">  810</span>  }</div>
+<div class="line"><span class="lineno">  811</span> </div>
+<div class="line"><span class="lineno">  812</span>  GtkWidget* scroom = GTK_WIDGET(gtk_builder_get_object(xml, <span class="stringliteral">&quot;scroom&quot;</span>));</div>
+<div class="line"><span class="lineno">  813</span>  <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(scroom != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  814</span> </div>
+<div class="line"><span class="lineno">  815</span>  GtkWidget* menubarContainer = <a class="code hl_function" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a379efe75d262f550ed11f0acf9c41bb1">getRequiredWidgetObject</a>(xml, <span class="stringliteral">&quot;menubar_container&quot;</span>);</div>
+<div class="line"><span class="lineno">  816</span>  GtkWidget* menubar = <a class="code hl_function" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a379efe75d262f550ed11f0acf9c41bb1">getRequiredWidgetObject</a>(xml, <a class="code hl_variable" href="namespaceMenuIds.html#afaf0926d50c524002bc4f696aacdd7b9">MenuIds::MENUBAR_PROTOTYPE</a>);</div>
+<div class="line"><span class="lineno">  817</span>  gtk_container_add(GTK_CONTAINER(menubarContainer), menubar);</div>
+<div class="line"><span class="lineno">  818</span>  gtk_widget_show(menubar);</div>
+<div class="line"><span class="lineno">  819</span> </div>
+<div class="line"><span class="lineno">  820</span>  GtkWidget* <a class="code hl_variable" href="ruler-tests_8cc.html#a631c91ed1db010dd2ff3706331fd21bc">drawingArea</a> = GTK_WIDGET(gtk_builder_get_object(xml, <span class="stringliteral">&quot;drawingarea&quot;</span>));</div>
+<div class="line"><span class="lineno">  821</span>  GtkWidget* zoomBox = GTK_WIDGET(gtk_builder_get_object(xml, <span class="stringliteral">&quot;zoomboxcombo&quot;</span>));</div>
+<div class="line"><span class="lineno">  822</span>  GtkWidget* vscrollbar = GTK_WIDGET(gtk_builder_get_object(xml, <span class="stringliteral">&quot;vscrollbar&quot;</span>));</div>
+<div class="line"><span class="lineno">  823</span>  GtkWidget* hscrollbar = GTK_WIDGET(gtk_builder_get_object(xml, <span class="stringliteral">&quot;hscrollbar&quot;</span>));</div>
+<div class="line"><span class="lineno">  824</span>  GtkAdjustment* vscrollbaradjustment = gtk_range_get_adjustment(GTK_RANGE(vscrollbar));</div>
+<div class="line"><span class="lineno">  825</span>  GtkAdjustment* hscrollbaradjustment = gtk_range_get_adjustment(GTK_RANGE(hscrollbar));</div>
+<div class="line"><span class="lineno">  826</span>  GtkEditable* xTextBox = GTK_EDITABLE(GTK_WIDGET(gtk_builder_get_object(xml, <span class="stringliteral">&quot;x_textbox&quot;</span>)));</div>
+<div class="line"><span class="lineno">  827</span>  GtkEditable* yTextBox = GTK_EDITABLE(GTK_WIDGET(gtk_builder_get_object(xml, <span class="stringliteral">&quot;y_textbox&quot;</span>)));</div>
+<div class="line"><span class="lineno">  828</span> </div>
+<div class="line"><span class="lineno">  829</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(scroom), <span class="stringliteral">&quot;hide&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#a65f18cf64a4bafed7b32ded3cc902668">on_scroom_hide</a>), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get());</div>
+<div class="line"><span class="lineno">  830</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a83be12000030c87174ee0389d7c11d3c">connectMainWindowMenuCallbacks</a>(xml, scroom, <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get());</div>
+<div class="line"><span class="lineno">  831</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(zoomBox), <span class="stringliteral">&quot;changed&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#adfed951a3aff6a5b114ac21d07119be1">on_zoombox_changed</a>), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get());</div>
+<div class="line"><span class="lineno">  832</span>  g_signal_connect(</div>
+<div class="line"><span class="lineno">  833</span>    <span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(vscrollbaradjustment), <span class="stringliteral">&quot;value-changed&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#a2490f653137e0dcddb138fae16974e07">on_scrollbar_value_changed</a>), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get()</div>
+<div class="line"><span class="lineno">  834</span>  );</div>
+<div class="line"><span class="lineno">  835</span>  g_signal_connect(</div>
+<div class="line"><span class="lineno">  836</span>    <span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(hscrollbaradjustment), <span class="stringliteral">&quot;value-changed&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#a2490f653137e0dcddb138fae16974e07">on_scrollbar_value_changed</a>), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get()</div>
+<div class="line"><span class="lineno">  837</span>  );</div>
+<div class="line"><span class="lineno">  838</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(xTextBox), <span class="stringliteral">&quot;changed&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#aef7e97ad6ad51b450eb4c3424bb94ce8">on_textbox_value_changed</a>), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get());</div>
+<div class="line"><span class="lineno">  839</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(yTextBox), <span class="stringliteral">&quot;changed&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#aef7e97ad6ad51b450eb4c3424bb94ce8">on_textbox_value_changed</a>), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get());</div>
+<div class="line"><span class="lineno">  840</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(<a class="code hl_variable" href="ruler-tests_8cc.html#a631c91ed1db010dd2ff3706331fd21bc">drawingArea</a>), <span class="stringliteral">&quot;draw&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#ae774492ed1bbe65c2041bf593ef6bb8f">on_drawingarea_expose_event</a>), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get());</div>
+<div class="line"><span class="lineno">  841</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(<a class="code hl_variable" href="ruler-tests_8cc.html#a631c91ed1db010dd2ff3706331fd21bc">drawingArea</a>), <span class="stringliteral">&quot;configure_event&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#a9c37395ebdd4c59a37b6dc38d574a4d7">on_drawingarea_configure_event</a>), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get());</div>
+<div class="line"><span class="lineno">  842</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(<a class="code hl_variable" href="ruler-tests_8cc.html#a631c91ed1db010dd2ff3706331fd21bc">drawingArea</a>), <span class="stringliteral">&quot;button-press-event&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#a30b2ed4bb389a1225baaa7ab3c8d9d88">on_button_press_event</a>), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get());</div>
+<div class="line"><span class="lineno">  843</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(<a class="code hl_variable" href="ruler-tests_8cc.html#a631c91ed1db010dd2ff3706331fd21bc">drawingArea</a>), <span class="stringliteral">&quot;button-release-event&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#a8052e42ad29aca43964bb04ea379f794">on_button_release_event</a>), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get());</div>
+<div class="line"><span class="lineno">  844</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(<a class="code hl_variable" href="ruler-tests_8cc.html#a631c91ed1db010dd2ff3706331fd21bc">drawingArea</a>), <span class="stringliteral">&quot;scroll-event&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#a23f3558fd7063da6c4f453eecfd85c70">on_scroll_event</a>), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get());</div>
+<div class="line"><span class="lineno">  845</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(<a class="code hl_variable" href="ruler-tests_8cc.html#a631c91ed1db010dd2ff3706331fd21bc">drawingArea</a>), <span class="stringliteral">&quot;motion-notify-event&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#a0f6e53b3f2476af215a5c9c87e71e0b8">on_motion_notify_event</a>), <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.get());</div>
+<div class="line"><span class="lineno">  846</span> </div>
+<div class="line"><span class="lineno">  847</span>  <span class="keywordtype">char</span> uriList[] = <span class="stringliteral">&quot;text/uri-list&quot;</span>;</div>
+<div class="line"><span class="lineno">  848</span>  GtkTargetEntry targets[] = {{uriList, 0, 0}};</div>
+<div class="line"><span class="lineno">  849</span>  gtk_drag_dest_set(</div>
+<div class="line"><span class="lineno">  850</span>    scroom, GTK_DEST_DEFAULT_ALL, targets, 1, <span class="keyword">static_cast&lt;</span>GdkDragAction<span class="keyword">&gt;</span>(GDK_ACTION_COPY | GDK_ACTION_MOVE | GDK_ACTION_LINK)</div>
+<div class="line"><span class="lineno">  851</span>  );</div>
+<div class="line"><span class="lineno">  852</span> </div>
+<div class="line"><span class="lineno">  853</span>  g_signal_connect(<span class="keyword">static_cast&lt;</span>gpointer<span class="keyword">&gt;</span>(scroom), <span class="stringliteral">&quot;drag_data_received&quot;</span>, G_CALLBACK(<a class="code hl_function" href="callbacks_8cc.html#a70acaa5f0cfece779fc5241e113e95d3">onDragDataReceived</a>), NULL);</div>
+<div class="line"><span class="lineno">  854</span>  <span class="comment">// delete xml; //Breaks code for some reason. It seems that this xml is freed somewhere else...</span></div>
+<div class="line"><span class="lineno">  855</span>}</div>
 <div class="ttc" id="aassertions_8hh_html_ae925d7587e34145cd52f674b2012539a"><div class="ttname"><a href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a></div><div class="ttdeci">#define require(expr)</div><div class="ttdef"><b>Definition</b> assertions.hh:30</div></div>
-<div class="ttc" id="acallbacks_8cc_html_a0f6e53b3f2476af215a5c9c87e71e0b8"><div class="ttname"><a href="callbacks_8cc.html#a0f6e53b3f2476af215a5c9c87e71e0b8">on_motion_notify_event</a></div><div class="ttdeci">gboolean on_motion_notify_event(GtkWidget *, GdkEventMotion *event, gpointer user_data)</div><div class="ttdef"><b>Definition</b> callbacks.cc:627</div></div>
-<div class="ttc" id="acallbacks_8cc_html_a23f3558fd7063da6c4f453eecfd85c70"><div class="ttname"><a href="callbacks_8cc.html#a23f3558fd7063da6c4f453eecfd85c70">on_scroll_event</a></div><div class="ttdeci">gboolean on_scroll_event(GtkWidget *, GdkEventScroll *event, gpointer user_data)</div><div class="ttdef"><b>Definition</b> callbacks.cc:634</div></div>
-<div class="ttc" id="acallbacks_8cc_html_a2490f653137e0dcddb138fae16974e07"><div class="ttname"><a href="callbacks_8cc.html#a2490f653137e0dcddb138fae16974e07">on_scrollbar_value_changed</a></div><div class="ttdeci">void on_scrollbar_value_changed(GtkAdjustment *adjustment, gpointer user_data)</div><div class="ttdef"><b>Definition</b> callbacks.cc:607</div></div>
-<div class="ttc" id="acallbacks_8cc_html_a30b2ed4bb389a1225baaa7ab3c8d9d88"><div class="ttname"><a href="callbacks_8cc.html#a30b2ed4bb389a1225baaa7ab3c8d9d88">on_button_press_event</a></div><div class="ttdeci">gboolean on_button_press_event(GtkWidget *, GdkEventButton *event, gpointer user_data)</div><div class="ttdef"><b>Definition</b> callbacks.cc:613</div></div>
+<div class="ttc" id="acallbacks_8cc_html_a0f6e53b3f2476af215a5c9c87e71e0b8"><div class="ttname"><a href="callbacks_8cc.html#a0f6e53b3f2476af215a5c9c87e71e0b8">on_motion_notify_event</a></div><div class="ttdeci">gboolean on_motion_notify_event(GtkWidget *, GdkEventMotion *event, gpointer user_data)</div><div class="ttdef"><b>Definition</b> callbacks.cc:628</div></div>
+<div class="ttc" id="acallbacks_8cc_html_a23f3558fd7063da6c4f453eecfd85c70"><div class="ttname"><a href="callbacks_8cc.html#a23f3558fd7063da6c4f453eecfd85c70">on_scroll_event</a></div><div class="ttdeci">gboolean on_scroll_event(GtkWidget *, GdkEventScroll *event, gpointer user_data)</div><div class="ttdef"><b>Definition</b> callbacks.cc:635</div></div>
+<div class="ttc" id="acallbacks_8cc_html_a2490f653137e0dcddb138fae16974e07"><div class="ttname"><a href="callbacks_8cc.html#a2490f653137e0dcddb138fae16974e07">on_scrollbar_value_changed</a></div><div class="ttdeci">void on_scrollbar_value_changed(GtkAdjustment *adjustment, gpointer user_data)</div><div class="ttdef"><b>Definition</b> callbacks.cc:608</div></div>
+<div class="ttc" id="acallbacks_8cc_html_a30b2ed4bb389a1225baaa7ab3c8d9d88"><div class="ttname"><a href="callbacks_8cc.html#a30b2ed4bb389a1225baaa7ab3c8d9d88">on_button_press_event</a></div><div class="ttdeci">gboolean on_button_press_event(GtkWidget *, GdkEventButton *event, gpointer user_data)</div><div class="ttdef"><b>Definition</b> callbacks.cc:614</div></div>
 <div class="ttc" id="acallbacks_8cc_html_a65f18cf64a4bafed7b32ded3cc902668"><div class="ttname"><a href="callbacks_8cc.html#a65f18cf64a4bafed7b32ded3cc902668">on_scroom_hide</a></div><div class="ttdeci">void on_scroom_hide(GtkWidget *, gpointer user_data)</div><div class="ttdef"><b>Definition</b> callbacks.cc:299</div></div>
-<div class="ttc" id="acallbacks_8cc_html_a70acaa5f0cfece779fc5241e113e95d3"><div class="ttname"><a href="callbacks_8cc.html#a70acaa5f0cfece779fc5241e113e95d3">onDragDataReceived</a></div><div class="ttdeci">void onDragDataReceived(GtkWidget *, GdkDragContext *, int, int, GtkSelectionData *seldata, guint, guint, gpointer)</div><div class="ttdef"><b>Definition</b> callbacks.cc:749</div></div>
-<div class="ttc" id="acallbacks_8cc_html_a8052e42ad29aca43964bb04ea379f794"><div class="ttname"><a href="callbacks_8cc.html#a8052e42ad29aca43964bb04ea379f794">on_button_release_event</a></div><div class="ttdeci">gboolean on_button_release_event(GtkWidget *, GdkEventButton *event, gpointer user_data)</div><div class="ttdef"><b>Definition</b> callbacks.cc:620</div></div>
+<div class="ttc" id="acallbacks_8cc_html_a70acaa5f0cfece779fc5241e113e95d3"><div class="ttname"><a href="callbacks_8cc.html#a70acaa5f0cfece779fc5241e113e95d3">onDragDataReceived</a></div><div class="ttdeci">void onDragDataReceived(GtkWidget *, GdkDragContext *, int, int, GtkSelectionData *seldata, guint, guint, gpointer)</div><div class="ttdef"><b>Definition</b> callbacks.cc:748</div></div>
+<div class="ttc" id="acallbacks_8cc_html_a8052e42ad29aca43964bb04ea379f794"><div class="ttname"><a href="callbacks_8cc.html#a8052e42ad29aca43964bb04ea379f794">on_button_release_event</a></div><div class="ttdeci">gboolean on_button_release_event(GtkWidget *, GdkEventButton *event, gpointer user_data)</div><div class="ttdef"><b>Definition</b> callbacks.cc:621</div></div>
 <div class="ttc" id="acallbacks_8cc_html_a9c37395ebdd4c59a37b6dc38d574a4d7"><div class="ttname"><a href="callbacks_8cc.html#a9c37395ebdd4c59a37b6dc38d574a4d7">on_drawingarea_configure_event</a></div><div class="ttdeci">gboolean on_drawingarea_configure_event(GtkWidget *, GdkEventConfigure *, gpointer user_data)</div><div class="ttdef"><b>Definition</b> callbacks.cc:498</div></div>
-<div class="ttc" id="acallbacks_8cc_html_ab216dda22af978bbc755a31acf60f302"><div class="ttname"><a href="callbacks_8cc.html#ab216dda22af978bbc755a31acf60f302">on_view_created</a></div><div class="ttdeci">void on_view_created(const View::Ptr &amp;v)</div><div class="ttdef"><b>Definition</b> callbacks.cc:890</div></div>
+<div class="ttc" id="acallbacks_8cc_html_ab216dda22af978bbc755a31acf60f302"><div class="ttname"><a href="callbacks_8cc.html#ab216dda22af978bbc755a31acf60f302">on_view_created</a></div><div class="ttdeci">void on_view_created(const View::Ptr &amp;v)</div><div class="ttdef"><b>Definition</b> callbacks.cc:889</div></div>
 <div class="ttc" id="acallbacks_8cc_html_ac29c7cff7372a795638c0c6f1d0314d8"><div class="ttname"><a href="callbacks_8cc.html#ac29c7cff7372a795638c0c6f1d0314d8">xmlFileName</a></div><div class="ttdeci">static std::string xmlFileName</div><div class="ttdef"><b>Definition</b> callbacks.cc:52</div></div>
-<div class="ttc" id="acallbacks_8cc_html_adfed951a3aff6a5b114ac21d07119be1"><div class="ttname"><a href="callbacks_8cc.html#adfed951a3aff6a5b114ac21d07119be1">on_zoombox_changed</a></div><div class="ttdeci">void on_zoombox_changed(GtkComboBox *, gpointer user_data)</div><div class="ttdef"><b>Definition</b> callbacks.cc:595</div></div>
+<div class="ttc" id="acallbacks_8cc_html_adfed951a3aff6a5b114ac21d07119be1"><div class="ttname"><a href="callbacks_8cc.html#adfed951a3aff6a5b114ac21d07119be1">on_zoombox_changed</a></div><div class="ttdeci">void on_zoombox_changed(GtkComboBox *, gpointer user_data)</div><div class="ttdef"><b>Definition</b> callbacks.cc:596</div></div>
 <div class="ttc" id="acallbacks_8cc_html_ae774492ed1bbe65c2041bf593ef6bb8f"><div class="ttname"><a href="callbacks_8cc.html#ae774492ed1bbe65c2041bf593ef6bb8f">on_drawingarea_expose_event</a></div><div class="ttdeci">gboolean on_drawingarea_expose_event(GtkWidget *widget, GdkEventExpose *, gpointer user_data)</div><div class="ttdef"><b>Definition</b> callbacks.cc:479</div></div>
-<div class="ttc" id="acallbacks_8cc_html_aeba2cf448752ce6617c03f7dd34ffc7b"><div class="ttname"><a href="callbacks_8cc.html#aeba2cf448752ce6617c03f7dd34ffc7b">on_presentation_added_to_view</a></div><div class="ttdeci">void on_presentation_added_to_view(const View::Ptr &amp;v)</div><div class="ttdef"><b>Definition</b> callbacks.cc:905</div></div>
-<div class="ttc" id="acallbacks_8cc_html_aef7e97ad6ad51b450eb4c3424bb94ce8"><div class="ttname"><a href="callbacks_8cc.html#aef7e97ad6ad51b450eb4c3424bb94ce8">on_textbox_value_changed</a></div><div class="ttdeci">void on_textbox_value_changed(GtkEditable *editable, gpointer user_data)</div><div class="ttdef"><b>Definition</b> callbacks.cc:601</div></div>
+<div class="ttc" id="acallbacks_8cc_html_aeba2cf448752ce6617c03f7dd34ffc7b"><div class="ttname"><a href="callbacks_8cc.html#aeba2cf448752ce6617c03f7dd34ffc7b">on_presentation_added_to_view</a></div><div class="ttdeci">void on_presentation_added_to_view(const View::Ptr &amp;v)</div><div class="ttdef"><b>Definition</b> callbacks.cc:904</div></div>
+<div class="ttc" id="acallbacks_8cc_html_aef7e97ad6ad51b450eb4c3424bb94ce8"><div class="ttname"><a href="callbacks_8cc.html#aef7e97ad6ad51b450eb4c3424bb94ce8">on_textbox_value_changed</a></div><div class="ttdeci">void on_textbox_value_changed(GtkEditable *editable, gpointer user_data)</div><div class="ttdef"><b>Definition</b> callbacks.cc:602</div></div>
 <div class="ttc" id="aclassView_html_a1e1cc4861ca8e2919be4990c0a8fc8a1"><div class="ttname"><a href="classView.html#a1e1cc4861ca8e2919be4990c0a8fc8a1">View::create</a></div><div class="ttdeci">static Ptr create(GtkBuilder *scroomXml, const PresentationInterface::Ptr &amp;presentation)</div><div class="ttdef"><b>Definition</b> view.cc:124</div></div>
 <div class="ttc" id="aclassView_html_a2dd032af78f555f7f8438b1076e37df4"><div class="ttname"><a href="classView.html#a2dd032af78f555f7f8438b1076e37df4">View::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; View &gt; Ptr</div><div class="ttdef"><b>Definition</b> view.hh:98</div></div>
 <div class="ttc" id="anamespaceMenuIds_html_afaf0926d50c524002bc4f696aacdd7b9"><div class="ttname"><a href="namespaceMenuIds.html#afaf0926d50c524002bc4f696aacdd7b9">MenuIds::MENUBAR_PROTOTYPE</a></div><div class="ttdeci">constexpr const char * MENUBAR_PROTOTYPE</div><div class="ttdef"><b>Definition</b> callbacks.hh:29</div></div>
@@ -1146,9 +1146,9 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  652</span>{</div>
-<div class="line"><span class="lineno">  653</span>  <span class="keywordflow">return</span> [] { <a class="code hl_function" href="namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1">Scroom::GtkHelpers::async_on_ui_thread</a>([] { <a class="code hl_function" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#abbb5e2fc132607ca35de96c2fd00be6a">consumeLogMessages</a>(); }); };</div>
-<div class="line"><span class="lineno">  654</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  653</span>{</div>
+<div class="line"><span class="lineno">  654</span>  <span class="keywordflow">return</span> [] { <a class="code hl_function" href="namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1">Scroom::GtkHelpers::async_on_ui_thread</a>([] { <a class="code hl_function" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#abbb5e2fc132607ca35de96c2fd00be6a">consumeLogMessages</a>(); }); };</div>
+<div class="line"><span class="lineno">  655</span>}</div>
 <div class="ttc" id="anamespaceScroom_1_1GtkHelpers_html_ac2709d76d34bc51f4310e34502d17ed1"><div class="ttname"><a href="namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1">Scroom::GtkHelpers::async_on_ui_thread</a></div><div class="ttdeci">void async_on_ui_thread(T f)</div><div class="ttdef"><b>Definition</b> gtk-helpers.hh:42</div></div>
 <div class="ttc" id="anamespaceanonymous__namespace_02callbacks_8cc_03_html_abbb5e2fc132607ca35de96c2fd00be6a"><div class="ttname"><a href="namespaceanonymous__namespace_02callbacks_8cc_03.html#abbb5e2fc132607ca35de96c2fd00be6a">anonymous_namespace{callbacks.cc}::consumeLogMessages</a></div><div class="ttdeci">void consumeLogMessages()</div><div class="ttdef"><b>Definition</b> callbacks.cc:169</div></div>
 </div><!-- fragment -->
@@ -1195,22 +1195,22 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  733</span>{</div>
-<div class="line"><span class="lineno">  734</span>  <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(presentation);</div>
-<div class="line"><span class="lineno">  735</span> </div>
-<div class="line"><span class="lineno">  736</span>  <span class="keywordflow">for</span>(<span class="keyword">const</span> Views::value_type&amp; <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>: <a class="code hl_variable" href="callbacks_8cc.html#ad49710e0e7bbdfa292b7ac886a56a9fe">views</a>)</div>
-<div class="line"><span class="lineno">  737</span>  {</div>
-<div class="line"><span class="lineno">  738</span>    <a class="code hl_typedef" href="classView.html#a2dd032af78f555f7f8438b1076e37df4">View::Ptr</a> <span class="keyword">const</span> <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a> = <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.first;</div>
-<div class="line"><span class="lineno">  739</span>    <span class="keywordflow">if</span>(!<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;hasPresentation())</div>
-<div class="line"><span class="lineno">  740</span>    {</div>
-<div class="line"><span class="lineno">  741</span>      <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;setPresentation(presentation);</div>
-<div class="line"><span class="lineno">  742</span>      <a class="code hl_function" href="callbacks_8cc.html#aeba2cf448752ce6617c03f7dd34ffc7b">on_presentation_added_to_view</a>(<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>);</div>
-<div class="line"><span class="lineno">  743</span>      <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  744</span>    }</div>
-<div class="line"><span class="lineno">  745</span>  }</div>
-<div class="line"><span class="lineno">  746</span>  <a class="code hl_function" href="callbacks_8cc.html#a19dc44b0b71d02dc59a3c16fdf3fe48b">create_scroom</a>(presentation);</div>
-<div class="line"><span class="lineno">  747</span>}</div>
-<div class="ttc" id="acallbacks_8cc_html_a19dc44b0b71d02dc59a3c16fdf3fe48b"><div class="ttname"><a href="callbacks_8cc.html#a19dc44b0b71d02dc59a3c16fdf3fe48b">create_scroom</a></div><div class="ttdeci">void create_scroom(const PresentationInterface::Ptr &amp;presentation)</div><div class="ttdef"><b>Definition</b> callbacks.cc:790</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  732</span>{</div>
+<div class="line"><span class="lineno">  733</span>  <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(presentation);</div>
+<div class="line"><span class="lineno">  734</span> </div>
+<div class="line"><span class="lineno">  735</span>  <span class="keywordflow">for</span>(<span class="keyword">const</span> Views::value_type&amp; <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>: <a class="code hl_variable" href="callbacks_8cc.html#ad49710e0e7bbdfa292b7ac886a56a9fe">views</a>)</div>
+<div class="line"><span class="lineno">  736</span>  {</div>
+<div class="line"><span class="lineno">  737</span>    <a class="code hl_typedef" href="classView.html#a2dd032af78f555f7f8438b1076e37df4">View::Ptr</a> <span class="keyword">const</span> <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a> = <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.first;</div>
+<div class="line"><span class="lineno">  738</span>    <span class="keywordflow">if</span>(!<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;hasPresentation())</div>
+<div class="line"><span class="lineno">  739</span>    {</div>
+<div class="line"><span class="lineno">  740</span>      <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;setPresentation(presentation);</div>
+<div class="line"><span class="lineno">  741</span>      <a class="code hl_function" href="callbacks_8cc.html#aeba2cf448752ce6617c03f7dd34ffc7b">on_presentation_added_to_view</a>(<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>);</div>
+<div class="line"><span class="lineno">  742</span>      <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  743</span>    }</div>
+<div class="line"><span class="lineno">  744</span>  }</div>
+<div class="line"><span class="lineno">  745</span>  <a class="code hl_function" href="callbacks_8cc.html#a19dc44b0b71d02dc59a3c16fdf3fe48b">create_scroom</a>(presentation);</div>
+<div class="line"><span class="lineno">  746</span>}</div>
+<div class="ttc" id="acallbacks_8cc_html_a19dc44b0b71d02dc59a3c16fdf3fe48b"><div class="ttname"><a href="callbacks_8cc.html#a19dc44b0b71d02dc59a3c16fdf3fe48b">create_scroom</a></div><div class="ttdeci">void create_scroom(const PresentationInterface::Ptr &amp;presentation)</div><div class="ttdef"><b>Definition</b> callbacks.cc:789</div></div>
 <div class="ttc" id="acallbacks_8cc_html_ad49710e0e7bbdfa292b7ac886a56a9fe"><div class="ttname"><a href="callbacks_8cc.html#ad49710e0e7bbdfa292b7ac886a56a9fe">views</a></div><div class="ttdeci">static Views views</div><div class="ttdef"><b>Definition</b> callbacks.cc:60</div></div>
 <div class="ttc" id="adetermine-size-test_8cc_html_abf000ba68ab71a4284d8a6b1ed241f79"><div class="ttname"><a href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a></div><div class="ttdeci">PresentationInterfaceStub::Ptr const p</div><div class="ttdef"><b>Definition</b> determine-size-test.cc:172</div></div>
 </div><!-- fragment -->
@@ -1453,7 +1453,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  649</span>{ <span class="keywordflow">return</span> <span class="keyword">nullptr</span> != getenv(<a class="code hl_variable" href="callbacks_8cc.html#ab203333c81b880914c63291cc0c26bea">SCROOM_DEV_MODE</a>.c_str()); }</div>
+<div class="fragment"><div class="line"><span class="lineno">  650</span>{ <span class="keywordflow">return</span> <span class="keyword">nullptr</span> != getenv(<a class="code hl_variable" href="callbacks_8cc.html#ab203333c81b880914c63291cc0c26bea">SCROOM_DEV_MODE</a>.c_str()); }</div>
 <div class="ttc" id="acallbacks_8cc_html_ab203333c81b880914c63291cc0c26bea"><div class="ttname"><a href="callbacks_8cc.html#ab203333c81b880914c63291cc0c26bea">SCROOM_DEV_MODE</a></div><div class="ttdeci">static const std::string SCROOM_DEV_MODE</div><div class="ttdef"><b>Definition</b> callbacks.cc:49</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="gui_2src_2main_8cc.html#a0ddf1224851353fc92bfbff6f499fa97">main()</a>, and <a class="el" href="callbacks_8cc.html#ad1e18a647c5ecc3a2235b4e14f08bd74">on_scroom_bootstrap()</a>.</p>
@@ -1636,11 +1636,11 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  614</span>{</div>
-<div class="line"><span class="lineno">  615</span>  <a class="code hl_class" href="classView.html">View</a>* <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a> = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classView.html">View</a>*<span class="keyword">&gt;</span>(user_data);</div>
-<div class="line"><span class="lineno">  616</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;<a class="code hl_function" href="classView.html#a2418b690f9ce26fe94d8398b2f409d51">on_buttonPress</a>(event);</div>
-<div class="line"><span class="lineno">  617</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  618</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  615</span>{</div>
+<div class="line"><span class="lineno">  616</span>  <a class="code hl_class" href="classView.html">View</a>* <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a> = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classView.html">View</a>*<span class="keyword">&gt;</span>(user_data);</div>
+<div class="line"><span class="lineno">  617</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;<a class="code hl_function" href="classView.html#a2418b690f9ce26fe94d8398b2f409d51">on_buttonPress</a>(event);</div>
+<div class="line"><span class="lineno">  618</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  619</span>}</div>
 <div class="ttc" id="aclassView_html"><div class="ttname"><a href="classView.html">View</a></div><div class="ttdef"><b>Definition</b> view.hh:96</div></div>
 <div class="ttc" id="aclassView_html_a2418b690f9ce26fe94d8398b2f409d51"><div class="ttname"><a href="classView.html#a2418b690f9ce26fe94d8398b2f409d51">View::on_buttonPress</a></div><div class="ttdeci">void on_buttonPress(GdkEventButton *event)</div><div class="ttdef"><b>Definition</b> view.cc:520</div></div>
 </div><!-- fragment -->
@@ -1791,11 +1791,11 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  621</span>{</div>
-<div class="line"><span class="lineno">  622</span>  <a class="code hl_class" href="classView.html">View</a>* <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a> = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classView.html">View</a>*<span class="keyword">&gt;</span>(user_data);</div>
-<div class="line"><span class="lineno">  623</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;<a class="code hl_function" href="classView.html#a058c1d7efe7c7d68cbe9cefeb0601bfa">on_buttonRelease</a>(event);</div>
-<div class="line"><span class="lineno">  624</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  625</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  622</span>{</div>
+<div class="line"><span class="lineno">  623</span>  <a class="code hl_class" href="classView.html">View</a>* <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a> = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classView.html">View</a>*<span class="keyword">&gt;</span>(user_data);</div>
+<div class="line"><span class="lineno">  624</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;<a class="code hl_function" href="classView.html#a058c1d7efe7c7d68cbe9cefeb0601bfa">on_buttonRelease</a>(event);</div>
+<div class="line"><span class="lineno">  625</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  626</span>}</div>
 <div class="ttc" id="aclassView_html_a058c1d7efe7c7d68cbe9cefeb0601bfa"><div class="ttname"><a href="classView.html#a058c1d7efe7c7d68cbe9cefeb0601bfa">View::on_buttonRelease</a></div><div class="ttdeci">void on_buttonRelease(GdkEventButton *event)</div><div class="ttdef"><b>Definition</b> view.cc:542</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="callbacks_8cc.html#a19dc44b0b71d02dc59a3c16fdf3fe48b">create_scroom()</a>.</p>
@@ -2229,17 +2229,19 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  585</span> </div>
 <div class="line"><span class="lineno">  586</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="callbacks_8cc.html#a01fb0801652fec5df6a66f9173127bdc">presentations</a>.empty())</div>
 <div class="line"><span class="lineno">  587</span>    {</div>
-<div class="line"><span class="lineno">  588</span>      <span class="comment">// Apparently, we couldn&#39;t load any of our presentations. Terminate...</span></div>
+<div class="line"><span class="lineno">  588</span>      <span class="comment">// Apparently, we couldn&#39;t load any of our presentations. Show logs.</span></div>
 <div class="line"><span class="lineno">  589</span>      <a class="code hl_define" href="assertions_8hh.html#a0a6432d768e4a040089ea8b3c8b6b4f0">ensure</a>(<a class="code hl_variable" href="callbacks_8cc.html#ad49710e0e7bbdfa292b7ac886a56a9fe">views</a>.empty());</div>
-<div class="line"><span class="lineno">  590</span>      gtk_main_quit();</div>
-<div class="line"><span class="lineno">  591</span>    }</div>
-<div class="line"><span class="lineno">  592</span>  }</div>
-<div class="line"><span class="lineno">  593</span>}</div>
+<div class="line"><span class="lineno">  590</span>      <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(<a class="code hl_variable" href="callbacks_8cc.html#a6ba114d8f032bdeddf49af4cb7998fea">loggingWindow</a> != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  591</span>      <a class="code hl_variable" href="callbacks_8cc.html#a6ba114d8f032bdeddf49af4cb7998fea">loggingWindow</a>-&gt;show();</div>
+<div class="line"><span class="lineno">  592</span>    }</div>
+<div class="line"><span class="lineno">  593</span>  }</div>
+<div class="line"><span class="lineno">  594</span>}</div>
 <div class="ttc" id="aassertions_8hh_html_a0a6432d768e4a040089ea8b3c8b6b4f0"><div class="ttname"><a href="assertions_8hh.html#a0a6432d768e4a040089ea8b3c8b6b4f0">ensure</a></div><div class="ttdeci">#define ensure(expr)</div><div class="ttdef"><b>Definition</b> assertions.hh:35</div></div>
 <div class="ttc" id="acallbacks_8cc_html_a01fb0801652fec5df6a66f9173127bdc"><div class="ttname"><a href="callbacks_8cc.html#a01fb0801652fec5df6a66f9173127bdc">presentations</a></div><div class="ttdeci">static std::list&lt; PresentationInterface::WeakPtr &gt; presentations</div><div class="ttdef"><b>Definition</b> callbacks.cc:61</div></div>
-<div class="ttc" id="acallbacks_8cc_html_a1477024fd79f6507c4fa01a5b8e85d31"><div class="ttname"><a href="callbacks_8cc.html#a1477024fd79f6507c4fa01a5b8e85d31">on_presentation_created</a></div><div class="ttdeci">void on_presentation_created(const PresentationInterface::Ptr &amp;presentation)</div><div class="ttdef"><b>Definition</b> callbacks.cc:868</div></div>
-<div class="ttc" id="acallbacks_8cc_html_a30a5e3f46a0ebcab2405634486aee4fa"><div class="ttname"><a href="callbacks_8cc.html#a30a5e3f46a0ebcab2405634486aee4fa">on_presentation_possibly_destroyed</a></div><div class="ttdeci">void on_presentation_possibly_destroyed()</div><div class="ttdef"><b>Definition</b> callbacks.cc:917</div></div>
-<div class="ttc" id="acallbacks_8cc_html_a6a123442252e099c84849ff0ad12d41a"><div class="ttname"><a href="callbacks_8cc.html#a6a123442252e099c84849ff0ad12d41a">find_or_create_scroom</a></div><div class="ttdeci">void find_or_create_scroom(const PresentationInterface::Ptr &amp;presentation)</div><div class="ttdef"><b>Definition</b> callbacks.cc:732</div></div>
+<div class="ttc" id="acallbacks_8cc_html_a1477024fd79f6507c4fa01a5b8e85d31"><div class="ttname"><a href="callbacks_8cc.html#a1477024fd79f6507c4fa01a5b8e85d31">on_presentation_created</a></div><div class="ttdeci">void on_presentation_created(const PresentationInterface::Ptr &amp;presentation)</div><div class="ttdef"><b>Definition</b> callbacks.cc:867</div></div>
+<div class="ttc" id="acallbacks_8cc_html_a30a5e3f46a0ebcab2405634486aee4fa"><div class="ttname"><a href="callbacks_8cc.html#a30a5e3f46a0ebcab2405634486aee4fa">on_presentation_possibly_destroyed</a></div><div class="ttdeci">void on_presentation_possibly_destroyed()</div><div class="ttdef"><b>Definition</b> callbacks.cc:916</div></div>
+<div class="ttc" id="acallbacks_8cc_html_a6a123442252e099c84849ff0ad12d41a"><div class="ttname"><a href="callbacks_8cc.html#a6a123442252e099c84849ff0ad12d41a">find_or_create_scroom</a></div><div class="ttdeci">void find_or_create_scroom(const PresentationInterface::Ptr &amp;presentation)</div><div class="ttdef"><b>Definition</b> callbacks.cc:731</div></div>
+<div class="ttc" id="acallbacks_8cc_html_a6ba114d8f032bdeddf49af4cb7998fea"><div class="ttname"><a href="callbacks_8cc.html#a6ba114d8f032bdeddf49af4cb7998fea">loggingWindow</a></div><div class="ttdeci">static LoggingWindow::Ptr loggingWindow</div><div class="ttdef"><b>Definition</b> callbacks.cc:56</div></div>
 <div class="ttc" id="acallbacks_8cc_html_a88a43ec881bd1f752d469b9747767544"><div class="ttname"><a href="callbacks_8cc.html#a88a43ec881bd1f752d469b9747767544">REGULAR_FILES</a></div><div class="ttdeci">const std::string REGULAR_FILES</div><div class="ttdef"><b>Definition</b> callbacks.cc:50</div></div>
 <div class="ttc" id="acallbacks_8cc_html_a88fd8bb6d81270fb4692717f792a401c"><div class="ttname"><a href="callbacks_8cc.html#a88fd8bb6d81270fb4692717f792a401c">currentFolder</a></div><div class="ttdeci">static std::string currentFolder</div><div class="ttdef"><b>Definition</b> callbacks.cc:63</div></div>
 <div class="ttc" id="acallbacks_8cc_html_ab35928a72da8049cfafad38e61c458e0"><div class="ttname"><a href="callbacks_8cc.html#ab35928a72da8049cfafad38e61c458e0">filenames</a></div><div class="ttdeci">static FileNameMap filenames</div><div class="ttdef"><b>Definition</b> callbacks.cc:62</div></div>
@@ -2954,7 +2956,6 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  475</span>    <a class="code hl_variable" href="callbacks_8cc.html#a6ba114d8f032bdeddf49af4cb7998fea">loggingWindow</a>-&gt;show();</div>
 <div class="line"><span class="lineno">  476</span>  }</div>
 <div class="line"><span class="lineno">  477</span>}</div>
-<div class="ttc" id="acallbacks_8cc_html_a6ba114d8f032bdeddf49af4cb7998fea"><div class="ttname"><a href="callbacks_8cc.html#a6ba114d8f032bdeddf49af4cb7998fea">loggingWindow</a></div><div class="ttdeci">static LoggingWindow::Ptr loggingWindow</div><div class="ttdef"><b>Definition</b> callbacks.cc:56</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a83be12000030c87174ee0389d7c11d3c">anonymous_namespace{callbacks.cc}::connectMainWindowMenuCallbacks()</a>.</p>
 <div class="dynheader">
@@ -3085,11 +3086,11 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  628</span>{</div>
-<div class="line"><span class="lineno">  629</span>  <a class="code hl_class" href="classView.html">View</a>* <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a> = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classView.html">View</a>*<span class="keyword">&gt;</span>(user_data);</div>
-<div class="line"><span class="lineno">  630</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;<a class="code hl_function" href="classView.html#ae89d93ace9995157e33f464b31a04799">on_motion_notify</a>(event);</div>
-<div class="line"><span class="lineno">  631</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  632</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  629</span>{</div>
+<div class="line"><span class="lineno">  630</span>  <a class="code hl_class" href="classView.html">View</a>* <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a> = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classView.html">View</a>*<span class="keyword">&gt;</span>(user_data);</div>
+<div class="line"><span class="lineno">  631</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;<a class="code hl_function" href="classView.html#ae89d93ace9995157e33f464b31a04799">on_motion_notify</a>(event);</div>
+<div class="line"><span class="lineno">  632</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  633</span>}</div>
 <div class="ttc" id="aclassView_html_ae89d93ace9995157e33f464b31a04799"><div class="ttname"><a href="classView.html#ae89d93ace9995157e33f464b31a04799">View::on_motion_notify</a></div><div class="ttdeci">void on_motion_notify(GdkEventMotion *event)</div><div class="ttdef"><b>Definition</b> view.cc:565</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="callbacks_8cc.html#a19dc44b0b71d02dc59a3c16fdf3fe48b">create_scroom()</a>.</p>
@@ -3444,16 +3445,16 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  964</span>{</div>
-<div class="line"><span class="lineno">  965</span>  <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; presentation: <a class="code hl_variable" href="callbacks_8cc.html#a01fb0801652fec5df6a66f9173127bdc">presentations</a>)</div>
-<div class="line"><span class="lineno">  966</span>  {</div>
-<div class="line"><span class="lineno">  967</span>    <a class="code hl_typedef" href="classPresentationInterface.html#a86fed59a32467f97507308d9b67bfa5c">PresentationInterface::Ptr</a> <span class="keyword">const</span> <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a> = presentation.lock();</div>
-<div class="line"><span class="lineno">  968</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>)</div>
-<div class="line"><span class="lineno">  969</span>    {</div>
-<div class="line"><span class="lineno">  970</span>      po-&gt;presentationAdded(<a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>);</div>
-<div class="line"><span class="lineno">  971</span>    }</div>
-<div class="line"><span class="lineno">  972</span>  }</div>
-<div class="line"><span class="lineno">  973</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  963</span>{</div>
+<div class="line"><span class="lineno">  964</span>  <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; presentation: <a class="code hl_variable" href="callbacks_8cc.html#a01fb0801652fec5df6a66f9173127bdc">presentations</a>)</div>
+<div class="line"><span class="lineno">  965</span>  {</div>
+<div class="line"><span class="lineno">  966</span>    <a class="code hl_typedef" href="classPresentationInterface.html#a86fed59a32467f97507308d9b67bfa5c">PresentationInterface::Ptr</a> <span class="keyword">const</span> <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a> = presentation.lock();</div>
+<div class="line"><span class="lineno">  967</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>)</div>
+<div class="line"><span class="lineno">  968</span>    {</div>
+<div class="line"><span class="lineno">  969</span>      po-&gt;presentationAdded(<a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>);</div>
+<div class="line"><span class="lineno">  970</span>    }</div>
+<div class="line"><span class="lineno">  971</span>  }</div>
+<div class="line"><span class="lineno">  972</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3472,15 +3473,15 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  976</span>{</div>
-<div class="line"><span class="lineno">  977</span>  <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; [<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>, <a class="code hl_variable" href="pipette-tests_8cc.html#a5437a4a8681ee4e938e2ac034634ce35">token</a>]: <a class="code hl_variable" href="callbacks_8cc.html#ad49710e0e7bbdfa292b7ac886a56a9fe">views</a>)</div>
-<div class="line"><span class="lineno">  978</span>  {</div>
-<div class="line"><span class="lineno">  979</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;hasPresentation())</div>
-<div class="line"><span class="lineno">  980</span>    {</div>
-<div class="line"><span class="lineno">  981</span>      <a class="code hl_variable" href="pipette-tests_8cc.html#a5437a4a8681ee4e938e2ac034634ce35">token</a>.<a class="code hl_function" href="classScroom_1_1Bookkeeping_1_1Token.html#ac619f80091875f045710df020bbc5c11">add</a>(viewObserver-&gt;viewAdded(<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>));</div>
-<div class="line"><span class="lineno">  982</span>    }</div>
-<div class="line"><span class="lineno">  983</span>  }</div>
-<div class="line"><span class="lineno">  984</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  975</span>{</div>
+<div class="line"><span class="lineno">  976</span>  <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; [<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>, <a class="code hl_variable" href="pipette-tests_8cc.html#a5437a4a8681ee4e938e2ac034634ce35">token</a>]: <a class="code hl_variable" href="callbacks_8cc.html#ad49710e0e7bbdfa292b7ac886a56a9fe">views</a>)</div>
+<div class="line"><span class="lineno">  977</span>  {</div>
+<div class="line"><span class="lineno">  978</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;hasPresentation())</div>
+<div class="line"><span class="lineno">  979</span>    {</div>
+<div class="line"><span class="lineno">  980</span>      <a class="code hl_variable" href="pipette-tests_8cc.html#a5437a4a8681ee4e938e2ac034634ce35">token</a>.<a class="code hl_function" href="classScroom_1_1Bookkeeping_1_1Token.html#ac619f80091875f045710df020bbc5c11">add</a>(viewObserver-&gt;viewAdded(<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>));</div>
+<div class="line"><span class="lineno">  981</span>    }</div>
+<div class="line"><span class="lineno">  982</span>  }</div>
+<div class="line"><span class="lineno">  983</span>}</div>
 <div class="ttc" id="aclassScroom_1_1Bookkeeping_1_1Token_html_ac619f80091875f045710df020bbc5c11"><div class="ttname"><a href="classScroom_1_1Bookkeeping_1_1Token.html#ac619f80091875f045710df020bbc5c11">Scroom::Bookkeeping::Token::add</a></div><div class="ttdeci">void add(const Stuff &amp;s) const</div><div class="ttdef"><b>Definition</b> bookkeepingimpl.hh:191</div></div>
 <div class="ttc" id="apipette-tests_8cc_html_a5437a4a8681ee4e938e2ac034634ce35"><div class="ttname"><a href="pipette-tests_8cc.html#a5437a4a8681ee4e938e2ac034634ce35">token</a></div><div class="ttdeci">Scroom::Bookkeeping::Token const token</div><div class="ttdef"><b>Definition</b> pipette-tests.cc:269</div></div>
 </div><!-- fragment -->
@@ -3782,14 +3783,14 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  859</span>{</div>
-<div class="line"><span class="lineno">  860</span>  <span class="keywordflow">for</span>(<span class="keyword">const</span> Views::value_type&amp; <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>: <a class="code hl_variable" href="callbacks_8cc.html#ad49710e0e7bbdfa292b7ac886a56a9fe">views</a>)</div>
-<div class="line"><span class="lineno">  861</span>  {</div>
-<div class="line"><span class="lineno">  862</span>    <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.first-&gt;on_newPresentationInterfaces_update(newPresentationInterfaces);</div>
-<div class="line"><span class="lineno">  863</span>  }</div>
-<div class="line"><span class="lineno">  864</span> </div>
-<div class="line"><span class="lineno">  865</span>  <a class="code hl_function" href="callbacks_8cc.html#af51f740add7f9505f208aca674f19419">update_logging_window_new_menu</a>(newPresentationInterfaces);</div>
-<div class="line"><span class="lineno">  866</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  858</span>{</div>
+<div class="line"><span class="lineno">  859</span>  <span class="keywordflow">for</span>(<span class="keyword">const</span> Views::value_type&amp; <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>: <a class="code hl_variable" href="callbacks_8cc.html#ad49710e0e7bbdfa292b7ac886a56a9fe">views</a>)</div>
+<div class="line"><span class="lineno">  860</span>  {</div>
+<div class="line"><span class="lineno">  861</span>    <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.first-&gt;on_newPresentationInterfaces_update(newPresentationInterfaces);</div>
+<div class="line"><span class="lineno">  862</span>  }</div>
+<div class="line"><span class="lineno">  863</span> </div>
+<div class="line"><span class="lineno">  864</span>  <a class="code hl_function" href="callbacks_8cc.html#af51f740add7f9505f208aca674f19419">update_logging_window_new_menu</a>(newPresentationInterfaces);</div>
+<div class="line"><span class="lineno">  865</span>}</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classPluginManager.html#a554d3e6ccd260dc621cf12197918cfd8">PluginManager::registerNewPresentationInterface()</a>.</p>
 <div class="dynheader">
@@ -4300,16 +4301,16 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  906</span>{</div>
-<div class="line"><span class="lineno">  907</span>  <span class="keyword">const</span> std::map&lt;ViewObserver::Ptr, std::string&gt;&amp; viewObservers = <a class="code hl_function" href="classPluginManager.html#a724cc4d4d92c9273606c91909b508ebd">PluginManager::getInstance</a>()-&gt;getViewObservers();</div>
-<div class="line"><span class="lineno">  908</span> </div>
-<div class="line"><span class="lineno">  909</span>  <span class="keyword">auto</span> cur = viewObservers.begin();</div>
-<div class="line"><span class="lineno">  910</span>  <span class="keyword">auto</span> end = viewObservers.end();</div>
-<div class="line"><span class="lineno">  911</span>  <span class="keywordflow">for</span>(; cur != end; cur++)</div>
-<div class="line"><span class="lineno">  912</span>  {</div>
-<div class="line"><span class="lineno">  913</span>    <a class="code hl_variable" href="callbacks_8cc.html#ad49710e0e7bbdfa292b7ac886a56a9fe">views</a>[v].add(cur-&gt;first-&gt;viewAdded(v));</div>
-<div class="line"><span class="lineno">  914</span>  }</div>
-<div class="line"><span class="lineno">  915</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  905</span>{</div>
+<div class="line"><span class="lineno">  906</span>  <span class="keyword">const</span> std::map&lt;ViewObserver::Ptr, std::string&gt;&amp; viewObservers = <a class="code hl_function" href="classPluginManager.html#a724cc4d4d92c9273606c91909b508ebd">PluginManager::getInstance</a>()-&gt;getViewObservers();</div>
+<div class="line"><span class="lineno">  907</span> </div>
+<div class="line"><span class="lineno">  908</span>  <span class="keyword">auto</span> cur = viewObservers.begin();</div>
+<div class="line"><span class="lineno">  909</span>  <span class="keyword">auto</span> end = viewObservers.end();</div>
+<div class="line"><span class="lineno">  910</span>  <span class="keywordflow">for</span>(; cur != end; cur++)</div>
+<div class="line"><span class="lineno">  911</span>  {</div>
+<div class="line"><span class="lineno">  912</span>    <a class="code hl_variable" href="callbacks_8cc.html#ad49710e0e7bbdfa292b7ac886a56a9fe">views</a>[v].add(cur-&gt;first-&gt;viewAdded(v));</div>
+<div class="line"><span class="lineno">  913</span>  }</div>
+<div class="line"><span class="lineno">  914</span>}</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="callbacks_8cc.html#a19dc44b0b71d02dc59a3c16fdf3fe48b">create_scroom()</a>, and <a class="el" href="callbacks_8cc.html#a6a123442252e099c84849ff0ad12d41a">find_or_create_scroom()</a>.</p>
 <div class="dynheader">
@@ -4444,26 +4445,26 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  869</span>{</div>
-<div class="line"><span class="lineno">  870</span>  <a class="code hl_variable" href="callbacks_8cc.html#a01fb0801652fec5df6a66f9173127bdc">presentations</a>.emplace_back(presentation);</div>
-<div class="line"><span class="lineno">  871</span> </div>
-<div class="line"><span class="lineno">  872</span>  <span class="keywordflow">for</span>(<span class="keyword">const</span> Views::value_type&amp; <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>: <a class="code hl_variable" href="callbacks_8cc.html#ad49710e0e7bbdfa292b7ac886a56a9fe">views</a>)</div>
-<div class="line"><span class="lineno">  873</span>  {</div>
-<div class="line"><span class="lineno">  874</span>    <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.first-&gt;on_presentation_created(presentation);</div>
-<div class="line"><span class="lineno">  875</span>  }</div>
-<div class="line"><span class="lineno">  876</span> </div>
-<div class="line"><span class="lineno">  877</span>  <a class="code hl_function" href="callbacks_8cc.html#a9f63c845f4d67c33bd1ae395ae973044">update_logging_window_new_window_menu</a>();</div>
-<div class="line"><span class="lineno">  878</span> </div>
-<div class="line"><span class="lineno">  879</span>  <span class="keyword">const</span> std::map&lt;PresentationObserver::Ptr, std::string&gt;&amp; presentationObservers =</div>
-<div class="line"><span class="lineno">  880</span>    <a class="code hl_function" href="classPluginManager.html#a724cc4d4d92c9273606c91909b508ebd">PluginManager::getInstance</a>()-&gt;getPresentationObservers();</div>
-<div class="line"><span class="lineno">  881</span> </div>
-<div class="line"><span class="lineno">  882</span>  <span class="keyword">auto</span> cur = presentationObservers.begin();</div>
-<div class="line"><span class="lineno">  883</span>  <span class="keyword">auto</span> end = presentationObservers.end();</div>
-<div class="line"><span class="lineno">  884</span>  <span class="keywordflow">for</span>(; cur != end; cur++)</div>
-<div class="line"><span class="lineno">  885</span>  {</div>
-<div class="line"><span class="lineno">  886</span>    cur-&gt;first-&gt;presentationAdded(presentation);</div>
-<div class="line"><span class="lineno">  887</span>  }</div>
-<div class="line"><span class="lineno">  888</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  868</span>{</div>
+<div class="line"><span class="lineno">  869</span>  <a class="code hl_variable" href="callbacks_8cc.html#a01fb0801652fec5df6a66f9173127bdc">presentations</a>.emplace_back(presentation);</div>
+<div class="line"><span class="lineno">  870</span> </div>
+<div class="line"><span class="lineno">  871</span>  <span class="keywordflow">for</span>(<span class="keyword">const</span> Views::value_type&amp; <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>: <a class="code hl_variable" href="callbacks_8cc.html#ad49710e0e7bbdfa292b7ac886a56a9fe">views</a>)</div>
+<div class="line"><span class="lineno">  872</span>  {</div>
+<div class="line"><span class="lineno">  873</span>    <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.first-&gt;on_presentation_created(presentation);</div>
+<div class="line"><span class="lineno">  874</span>  }</div>
+<div class="line"><span class="lineno">  875</span> </div>
+<div class="line"><span class="lineno">  876</span>  <a class="code hl_function" href="callbacks_8cc.html#a9f63c845f4d67c33bd1ae395ae973044">update_logging_window_new_window_menu</a>();</div>
+<div class="line"><span class="lineno">  877</span> </div>
+<div class="line"><span class="lineno">  878</span>  <span class="keyword">const</span> std::map&lt;PresentationObserver::Ptr, std::string&gt;&amp; presentationObservers =</div>
+<div class="line"><span class="lineno">  879</span>    <a class="code hl_function" href="classPluginManager.html#a724cc4d4d92c9273606c91909b508ebd">PluginManager::getInstance</a>()-&gt;getPresentationObservers();</div>
+<div class="line"><span class="lineno">  880</span> </div>
+<div class="line"><span class="lineno">  881</span>  <span class="keyword">auto</span> cur = presentationObservers.begin();</div>
+<div class="line"><span class="lineno">  882</span>  <span class="keyword">auto</span> end = presentationObservers.end();</div>
+<div class="line"><span class="lineno">  883</span>  <span class="keywordflow">for</span>(; cur != end; cur++)</div>
+<div class="line"><span class="lineno">  884</span>  {</div>
+<div class="line"><span class="lineno">  885</span>    cur-&gt;first-&gt;presentationAdded(presentation);</div>
+<div class="line"><span class="lineno">  886</span>  }</div>
+<div class="line"><span class="lineno">  887</span>}</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="loader_8cc.html#aa16c64386dde90b66ae796ec3183dcef">create()</a>, <a class="el" href="loader_8cc.html#a6caa967df34751dfd7c06745d1df4a1e">load()</a>, <a class="el" href="loader_8cc.html#a6390053187960b1853f827ed6126a7d6">loadPresentation()</a>, <a class="el" href="classScroomInterfaceImpl.html#a03e8960134ad1751d8cdea1887a73568">ScroomInterfaceImpl::newAggregate()</a>, <a class="el" href="classScroomInterfaceImpl.html#a47ad218fdfeccd1cc02d5a367002eb66">ScroomInterfaceImpl::newPresentation()</a>, <a class="el" href="callbacks_8cc.html#afd41e159402c4fc0b8c3341a372d7ce9">on_done_loading_plugins()</a>, and <a class="el" href="classScroomInterfaceImpl.html#a0619433d662056ef32b8f99d77cb17ee">ScroomInterfaceImpl::showPresentation()</a>.</p>
 <div class="dynheader">
@@ -4701,39 +4702,39 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  918</span>{</div>
-<div class="line"><span class="lineno">  919</span>  <span class="keywordtype">bool</span> presentationDestroyed = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  920</span> </div>
-<div class="line"><span class="lineno">  921</span>  <span class="keywordflow">for</span>(<span class="keyword">auto</span> cur = <a class="code hl_variable" href="callbacks_8cc.html#a01fb0801652fec5df6a66f9173127bdc">presentations</a>.begin(); cur != <a class="code hl_variable" href="callbacks_8cc.html#a01fb0801652fec5df6a66f9173127bdc">presentations</a>.end(); cur++)</div>
-<div class="line"><span class="lineno">  922</span>  {</div>
-<div class="line"><span class="lineno">  923</span>    <a class="code hl_typedef" href="classPresentationInterface.html#a86fed59a32467f97507308d9b67bfa5c">PresentationInterface::Ptr</a> <span class="keyword">const</span> <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a> = cur-&gt;lock();</div>
-<div class="line"><span class="lineno">  924</span>    <span class="keywordflow">if</span>(!<a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>)</div>
-<div class="line"><span class="lineno">  925</span>    {</div>
-<div class="line"><span class="lineno">  926</span>      presentationDestroyed = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  927</span>      <span class="keyword">auto</span> temp = cur;</div>
-<div class="line"><span class="lineno">  928</span>      temp--;</div>
-<div class="line"><span class="lineno">  929</span>      <a class="code hl_variable" href="callbacks_8cc.html#a01fb0801652fec5df6a66f9173127bdc">presentations</a>.erase(cur);</div>
-<div class="line"><span class="lineno">  930</span>      cur = temp;</div>
-<div class="line"><span class="lineno">  931</span>    }</div>
-<div class="line"><span class="lineno">  932</span>  }</div>
-<div class="line"><span class="lineno">  933</span>  <span class="keywordflow">if</span>(presentationDestroyed)</div>
-<div class="line"><span class="lineno">  934</span>  {</div>
-<div class="line"><span class="lineno">  935</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span> <span class="keyword">const</span>&amp; <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>: <a class="code hl_variable" href="callbacks_8cc.html#ad49710e0e7bbdfa292b7ac886a56a9fe">views</a>)</div>
-<div class="line"><span class="lineno">  936</span>    {</div>
-<div class="line"><span class="lineno">  937</span>      <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.first-&gt;on_presentation_destroyed();</div>
-<div class="line"><span class="lineno">  938</span>    }</div>
-<div class="line"><span class="lineno">  939</span> </div>
-<div class="line"><span class="lineno">  940</span>    <a class="code hl_function" href="callbacks_8cc.html#a9f63c845f4d67c33bd1ae395ae973044">update_logging_window_new_window_menu</a>();</div>
-<div class="line"><span class="lineno">  941</span> </div>
-<div class="line"><span class="lineno">  942</span>    <span class="keyword">const</span> std::map&lt;PresentationObserver::Ptr, std::string&gt;&amp; presentationObservers =</div>
-<div class="line"><span class="lineno">  943</span>      <a class="code hl_function" href="classPluginManager.html#a724cc4d4d92c9273606c91909b508ebd">PluginManager::getInstance</a>()-&gt;getPresentationObservers();</div>
-<div class="line"><span class="lineno">  944</span> </div>
-<div class="line"><span class="lineno">  945</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span> <span class="keyword">const</span>&amp; <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>: presentationObservers)</div>
-<div class="line"><span class="lineno">  946</span>    {</div>
-<div class="line"><span class="lineno">  947</span>      <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.first-&gt;presentationDeleted();</div>
-<div class="line"><span class="lineno">  948</span>    }</div>
-<div class="line"><span class="lineno">  949</span>  }</div>
-<div class="line"><span class="lineno">  950</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  917</span>{</div>
+<div class="line"><span class="lineno">  918</span>  <span class="keywordtype">bool</span> presentationDestroyed = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  919</span> </div>
+<div class="line"><span class="lineno">  920</span>  <span class="keywordflow">for</span>(<span class="keyword">auto</span> cur = <a class="code hl_variable" href="callbacks_8cc.html#a01fb0801652fec5df6a66f9173127bdc">presentations</a>.begin(); cur != <a class="code hl_variable" href="callbacks_8cc.html#a01fb0801652fec5df6a66f9173127bdc">presentations</a>.end(); cur++)</div>
+<div class="line"><span class="lineno">  921</span>  {</div>
+<div class="line"><span class="lineno">  922</span>    <a class="code hl_typedef" href="classPresentationInterface.html#a86fed59a32467f97507308d9b67bfa5c">PresentationInterface::Ptr</a> <span class="keyword">const</span> <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a> = cur-&gt;lock();</div>
+<div class="line"><span class="lineno">  923</span>    <span class="keywordflow">if</span>(!<a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>)</div>
+<div class="line"><span class="lineno">  924</span>    {</div>
+<div class="line"><span class="lineno">  925</span>      presentationDestroyed = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  926</span>      <span class="keyword">auto</span> temp = cur;</div>
+<div class="line"><span class="lineno">  927</span>      temp--;</div>
+<div class="line"><span class="lineno">  928</span>      <a class="code hl_variable" href="callbacks_8cc.html#a01fb0801652fec5df6a66f9173127bdc">presentations</a>.erase(cur);</div>
+<div class="line"><span class="lineno">  929</span>      cur = temp;</div>
+<div class="line"><span class="lineno">  930</span>    }</div>
+<div class="line"><span class="lineno">  931</span>  }</div>
+<div class="line"><span class="lineno">  932</span>  <span class="keywordflow">if</span>(presentationDestroyed)</div>
+<div class="line"><span class="lineno">  933</span>  {</div>
+<div class="line"><span class="lineno">  934</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span> <span class="keyword">const</span>&amp; <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>: <a class="code hl_variable" href="callbacks_8cc.html#ad49710e0e7bbdfa292b7ac886a56a9fe">views</a>)</div>
+<div class="line"><span class="lineno">  935</span>    {</div>
+<div class="line"><span class="lineno">  936</span>      <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.first-&gt;on_presentation_destroyed();</div>
+<div class="line"><span class="lineno">  937</span>    }</div>
+<div class="line"><span class="lineno">  938</span> </div>
+<div class="line"><span class="lineno">  939</span>    <a class="code hl_function" href="callbacks_8cc.html#a9f63c845f4d67c33bd1ae395ae973044">update_logging_window_new_window_menu</a>();</div>
+<div class="line"><span class="lineno">  940</span> </div>
+<div class="line"><span class="lineno">  941</span>    <span class="keyword">const</span> std::map&lt;PresentationObserver::Ptr, std::string&gt;&amp; presentationObservers =</div>
+<div class="line"><span class="lineno">  942</span>      <a class="code hl_function" href="classPluginManager.html#a724cc4d4d92c9273606c91909b508ebd">PluginManager::getInstance</a>()-&gt;getPresentationObservers();</div>
+<div class="line"><span class="lineno">  943</span> </div>
+<div class="line"><span class="lineno">  944</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span> <span class="keyword">const</span>&amp; <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>: presentationObservers)</div>
+<div class="line"><span class="lineno">  945</span>    {</div>
+<div class="line"><span class="lineno">  946</span>      <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>.first-&gt;presentationDeleted();</div>
+<div class="line"><span class="lineno">  947</span>    }</div>
+<div class="line"><span class="lineno">  948</span>  }</div>
+<div class="line"><span class="lineno">  949</span>}</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="callbacks_8cc.html#afd41e159402c4fc0b8c3341a372d7ce9">on_done_loading_plugins()</a>, <a class="el" href="callbacks_8cc.html#a6cd157f2cb298e0a89ab2916c618f9fe">on_open_activate()</a>, and <a class="el" href="callbacks_8cc.html#a43402c91fa59e2da7639ad8b3e51973c">on_view_destroyed()</a>.</p>
 <div class="dynheader">
@@ -5180,11 +5181,11 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  635</span>{</div>
-<div class="line"><span class="lineno">  636</span>  <a class="code hl_class" href="classView.html">View</a>* <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a> = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classView.html">View</a>*<span class="keyword">&gt;</span>(user_data);</div>
-<div class="line"><span class="lineno">  637</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;<a class="code hl_function" href="classView.html#a6bcc1a3b04dc24ad14be19e19fd1ff7e">on_scrollwheel</a>(event);</div>
-<div class="line"><span class="lineno">  638</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  639</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  636</span>{</div>
+<div class="line"><span class="lineno">  637</span>  <a class="code hl_class" href="classView.html">View</a>* <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a> = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classView.html">View</a>*<span class="keyword">&gt;</span>(user_data);</div>
+<div class="line"><span class="lineno">  638</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;<a class="code hl_function" href="classView.html#a6bcc1a3b04dc24ad14be19e19fd1ff7e">on_scrollwheel</a>(event);</div>
+<div class="line"><span class="lineno">  639</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  640</span>}</div>
 <div class="ttc" id="aclassView_html_a6bcc1a3b04dc24ad14be19e19fd1ff7e"><div class="ttname"><a href="classView.html#a6bcc1a3b04dc24ad14be19e19fd1ff7e">View::on_scrollwheel</a></div><div class="ttdeci">void on_scrollwheel(GdkEventScroll *event)</div><div class="ttdef"><b>Definition</b> view.cc:434</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="callbacks_8cc.html#a19dc44b0b71d02dc59a3c16fdf3fe48b">create_scroom()</a>.</p>
@@ -5325,10 +5326,10 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  608</span>{</div>
-<div class="line"><span class="lineno">  609</span>  <a class="code hl_class" href="classView.html">View</a>* <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a> = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classView.html">View</a>*<span class="keyword">&gt;</span>(user_data);</div>
-<div class="line"><span class="lineno">  610</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;<a class="code hl_function" href="classView.html#adb5274f859519e6baa9b759005170509">on_scrollbar_value_changed</a>(adjustment);</div>
-<div class="line"><span class="lineno">  611</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  609</span>{</div>
+<div class="line"><span class="lineno">  610</span>  <a class="code hl_class" href="classView.html">View</a>* <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a> = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classView.html">View</a>*<span class="keyword">&gt;</span>(user_data);</div>
+<div class="line"><span class="lineno">  611</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;<a class="code hl_function" href="classView.html#adb5274f859519e6baa9b759005170509">on_scrollbar_value_changed</a>(adjustment);</div>
+<div class="line"><span class="lineno">  612</span>}</div>
 <div class="ttc" id="aclassView_html_adb5274f859519e6baa9b759005170509"><div class="ttname"><a href="classView.html#adb5274f859519e6baa9b759005170509">View::on_scrollbar_value_changed</a></div><div class="ttdeci">void on_scrollbar_value_changed(GtkAdjustment *adjustment)</div><div class="ttdef"><b>Definition</b> view.cc:504</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="callbacks_8cc.html#a19dc44b0b71d02dc59a3c16fdf3fe48b">create_scroom()</a>.</p>
@@ -5496,71 +5497,69 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  659</span>{</div>
-<div class="line"><span class="lineno">  660</span>  <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;info(<span class="stringliteral">&quot;Bootstrapping Scroom...&quot;</span>);</div>
-<div class="line"><span class="lineno">  661</span>  <a class="code hl_variable" href="callbacks_8cc.html#ab35928a72da8049cfafad38e61c458e0">filenames</a> = newFilenames;</div>
-<div class="line"><span class="lineno">  662</span>  <a class="code hl_variable" href="callbacks_8cc.html#a88fd8bb6d81270fb4692717f792a401c">currentFolder</a> = <span class="stringliteral">&quot;.&quot;</span>;</div>
-<div class="line"><span class="lineno">  663</span> </div>
-<div class="line"><span class="lineno">  664</span>  <span class="keyword">const</span> <span class="keywordtype">bool</span> devMode = <a class="code hl_function" href="callbacks_8cc.html#a301e3ea806e687d48f817b7ed7bf8aa7">in_devmode</a>();</div>
-<div class="line"><span class="lineno">  665</span>  <span class="keywordflow">if</span>(devMode)</div>
-<div class="line"><span class="lineno">  666</span>  {</div>
-<div class="line"><span class="lineno">  667</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;info(<span class="stringliteral">&quot;+----------------------------------------------------------------------+&quot;</span>);</div>
-<div class="line"><span class="lineno">  668</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;info(<span class="stringliteral">&quot;| ENTERING DEVELOPMENT MODE                                            |&quot;</span>);</div>
-<div class="line"><span class="lineno">  669</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;info(<span class="stringliteral">&quot;| All the default directories are not searched                         |&quot;</span>);</div>
-<div class="line"><span class="lineno">  670</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;info(<span class="stringliteral">&quot;| Instead, only environment variables and the local source tree        |&quot;</span>);</div>
-<div class="line"><span class="lineno">  671</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;info(<span class="stringliteral">&quot;| are consulted.                                                       |&quot;</span>);</div>
-<div class="line"><span class="lineno">  672</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;info(<span class="stringliteral">&quot;+----------------------------------------------------------------------+&quot;</span>);</div>
-<div class="line"><span class="lineno">  673</span>  }</div>
-<div class="line"><span class="lineno">  674</span> </div>
-<div class="line"><span class="lineno">  675</span>  <a class="code hl_function" href="pluginmanager_8cc.html#a1eaba27ac5042cfaf3fc25381677d3d9">startPluginManager</a>(devMode);</div>
-<div class="line"><span class="lineno">  676</span> </div>
-<div class="line"><span class="lineno">  677</span>  <span class="keywordflow">if</span>(devMode)</div>
-<div class="line"><span class="lineno">  678</span>  {</div>
-<div class="line"><span class="lineno">  679</span>    <a class="code hl_variable" href="callbacks_8cc.html#ac29c7cff7372a795638c0c6f1d0314d8">xmlFileName</a> = TOP_SRCDIR <span class="stringliteral">&quot;/gui/scroom.ui&quot;</span>;</div>
-<div class="line"><span class="lineno">  680</span>  }</div>
-<div class="line"><span class="lineno">  681</span>  <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  682</span>  {</div>
-<div class="line"><span class="lineno">  683</span><span class="preprocessor">#ifdef _WIN32</span></div>
-<div class="line"><span class="lineno">  684</span>    <span class="comment">// We want to keep everything portable on windows so we look for the .glade file in the same directory as the .exe</span></div>
-<div class="line"><span class="lineno">  685</span>    <a class="code hl_variable" href="callbacks_8cc.html#ac29c7cff7372a795638c0c6f1d0314d8">xmlFileName</a> = (boost::dll::program_location().parent_path() / <span class="stringliteral">&quot;scroom.ui&quot;</span>).generic_string();</div>
-<div class="line"><span class="lineno">  686</span><span class="preprocessor">#else</span></div>
-<div class="line"><span class="lineno">  687</span>    <a class="code hl_variable" href="callbacks_8cc.html#ac29c7cff7372a795638c0c6f1d0314d8">xmlFileName</a> = PACKAGE_DATA_DIR <span class="stringliteral">&quot;/scroom.ui&quot;</span>;</div>
-<div class="line"><span class="lineno">  688</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">  689</span>  }</div>
-<div class="line"><span class="lineno">  690</span> </div>
-<div class="line"><span class="lineno">  691</span>  <a class="code hl_variable" href="callbacks_8cc.html#af1ea25f0666c6494af4b0411dec29ca2">aboutDialogXml</a> = gtk_builder_new();</div>
-<div class="line"><span class="lineno">  692</span>  boost::scoped_array&lt;gchar*&gt; <span class="keyword">const</span> obj{<span class="keyword">new</span> gchar*[2]};</div>
-<div class="line"><span class="lineno">  693</span>  <span class="keyword">const</span> std::string str = <span class="stringliteral">&quot;aboutDialog&quot;</span>;</div>
-<div class="line"><span class="lineno">  694</span>  obj[0] = <span class="keyword">const_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(str.c_str());</div>
-<div class="line"><span class="lineno">  695</span>  obj[1] = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  696</span>  gtk_builder_add_objects_from_file(<a class="code hl_variable" href="callbacks_8cc.html#af1ea25f0666c6494af4b0411dec29ca2">aboutDialogXml</a>, <a class="code hl_variable" href="callbacks_8cc.html#ac29c7cff7372a795638c0c6f1d0314d8">xmlFileName</a>.c_str(), obj.get(), <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">  697</span> </div>
-<div class="line"><span class="lineno">  698</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="callbacks_8cc.html#af1ea25f0666c6494af4b0411dec29ca2">aboutDialogXml</a> != <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  699</span>  {</div>
-<div class="line"><span class="lineno">  700</span>    <a class="code hl_variable" href="callbacks_8cc.html#a9180546c6d9070b28e52a0b62b6f15cf">aboutDialog</a> = GTK_WIDGET(gtk_builder_get_object(<a class="code hl_variable" href="callbacks_8cc.html#af1ea25f0666c6494af4b0411dec29ca2">aboutDialogXml</a>, <span class="stringliteral">&quot;aboutDialog&quot;</span>));</div>
-<div class="line"><span class="lineno">  701</span>    gtk_about_dialog_set_program_name(GTK_ABOUT_DIALOG(<a class="code hl_variable" href="callbacks_8cc.html#a9180546c6d9070b28e52a0b62b6f15cf">aboutDialog</a>), <span class="stringliteral">&quot;Scroom&quot;</span>);</div>
-<div class="line"><span class="lineno">  702</span>    gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(<a class="code hl_variable" href="callbacks_8cc.html#a9180546c6d9070b28e52a0b62b6f15cf">aboutDialog</a>), PACKAGE_VERSION);</div>
-<div class="line"><span class="lineno">  703</span><span class="preprocessor">#ifdef _WIN32</span></div>
-<div class="line"><span class="lineno">  704</span>    g_signal_connect(G_OBJECT(<a class="code hl_variable" href="callbacks_8cc.html#a9180546c6d9070b28e52a0b62b6f15cf">aboutDialog</a>), <span class="stringliteral">&quot;activate-link&quot;</span>, G_CALLBACK(on_open_scroom_website), NULL);</div>
-<div class="line"><span class="lineno">  705</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">  706</span>  }</div>
-<div class="line"><span class="lineno">  707</span>  <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  708</span>  {</div>
-<div class="line"><span class="lineno">  709</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;error(<span class="stringliteral">&quot;Opening xml failed&quot;</span>);</div>
-<div class="line"><span class="lineno">  710</span>    exit(-1); <span class="comment">// NOLINT(concurrency-mt-unsafe)</span></div>
-<div class="line"><span class="lineno">  711</span>  }</div>
-<div class="line"><span class="lineno">  712</span> </div>
-<div class="line"><span class="lineno">  713</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="callbacks_8cc.html#ab11b79003b26c0ddb967acd578f605fb">ringBufferSink</a>)</div>
-<div class="line"><span class="lineno">  714</span>  {</div>
-<div class="line"><span class="lineno">  715</span>    <a class="code hl_variable" href="callbacks_8cc.html#a6ba114d8f032bdeddf49af4cb7998fea">loggingWindow</a> = <a class="code hl_function" href="classLoggingWindow.html#a3ed8f3af6ab36370ba5e35f7959d7b95">LoggingWindow::create</a>(<a class="code hl_variable" href="callbacks_8cc.html#ab11b79003b26c0ddb967acd578f605fb">ringBufferSink</a>, <a class="code hl_variable" href="callbacks_8cc.html#ac29c7cff7372a795638c0c6f1d0314d8">xmlFileName</a>);</div>
-<div class="line"><span class="lineno">  716</span>  }</div>
-<div class="line"><span class="lineno">  717</span> </div>
-<div class="line"><span class="lineno">  718</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="callbacks_8cc.html#ab35928a72da8049cfafad38e61c458e0">filenames</a>.empty())</div>
-<div class="line"><span class="lineno">  719</span>  {</div>
-<div class="line"><span class="lineno">  720</span>    <a class="code hl_function" href="callbacks_8cc.html#a19dc44b0b71d02dc59a3c16fdf3fe48b">create_scroom</a>(<a class="code hl_typedef" href="classPresentationInterface.html#a86fed59a32467f97507308d9b67bfa5c">PresentationInterface::Ptr</a>());</div>
-<div class="line"><span class="lineno">  721</span>  }</div>
-<div class="line"><span class="lineno">  722</span>}</div>
-<div class="ttc" id="acallbacks_8cc_html_a301e3ea806e687d48f817b7ed7bf8aa7"><div class="ttname"><a href="callbacks_8cc.html#a301e3ea806e687d48f817b7ed7bf8aa7">in_devmode</a></div><div class="ttdeci">bool in_devmode()</div><div class="ttdef"><b>Definition</b> callbacks.cc:649</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  660</span>{</div>
+<div class="line"><span class="lineno">  661</span>  <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;info(<span class="stringliteral">&quot;Bootstrapping Scroom...&quot;</span>);</div>
+<div class="line"><span class="lineno">  662</span>  <a class="code hl_variable" href="callbacks_8cc.html#ab35928a72da8049cfafad38e61c458e0">filenames</a> = newFilenames;</div>
+<div class="line"><span class="lineno">  663</span>  <a class="code hl_variable" href="callbacks_8cc.html#a88fd8bb6d81270fb4692717f792a401c">currentFolder</a> = <span class="stringliteral">&quot;.&quot;</span>;</div>
+<div class="line"><span class="lineno">  664</span> </div>
+<div class="line"><span class="lineno">  665</span>  <span class="keyword">const</span> <span class="keywordtype">bool</span> devMode = <a class="code hl_function" href="callbacks_8cc.html#a301e3ea806e687d48f817b7ed7bf8aa7">in_devmode</a>();</div>
+<div class="line"><span class="lineno">  666</span>  <span class="keywordflow">if</span>(devMode)</div>
+<div class="line"><span class="lineno">  667</span>  {</div>
+<div class="line"><span class="lineno">  668</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;info(<span class="stringliteral">&quot;+----------------------------------------------------------------------+&quot;</span>);</div>
+<div class="line"><span class="lineno">  669</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;info(<span class="stringliteral">&quot;| ENTERING DEVELOPMENT MODE                                            |&quot;</span>);</div>
+<div class="line"><span class="lineno">  670</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;info(<span class="stringliteral">&quot;| All the default directories are not searched                         |&quot;</span>);</div>
+<div class="line"><span class="lineno">  671</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;info(<span class="stringliteral">&quot;| Instead, only environment variables and the local source tree        |&quot;</span>);</div>
+<div class="line"><span class="lineno">  672</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;info(<span class="stringliteral">&quot;| are consulted.                                                       |&quot;</span>);</div>
+<div class="line"><span class="lineno">  673</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;info(<span class="stringliteral">&quot;+----------------------------------------------------------------------+&quot;</span>);</div>
+<div class="line"><span class="lineno">  674</span>  }</div>
+<div class="line"><span class="lineno">  675</span> </div>
+<div class="line"><span class="lineno">  676</span>  <a class="code hl_function" href="pluginmanager_8cc.html#a1eaba27ac5042cfaf3fc25381677d3d9">startPluginManager</a>(devMode);</div>
+<div class="line"><span class="lineno">  677</span> </div>
+<div class="line"><span class="lineno">  678</span>  <span class="keywordflow">if</span>(devMode)</div>
+<div class="line"><span class="lineno">  679</span>  {</div>
+<div class="line"><span class="lineno">  680</span>    <a class="code hl_variable" href="callbacks_8cc.html#ac29c7cff7372a795638c0c6f1d0314d8">xmlFileName</a> = TOP_SRCDIR <span class="stringliteral">&quot;/gui/scroom.ui&quot;</span>;</div>
+<div class="line"><span class="lineno">  681</span>  }</div>
+<div class="line"><span class="lineno">  682</span>  <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  683</span>  {</div>
+<div class="line"><span class="lineno">  684</span><span class="preprocessor">#ifdef _WIN32</span></div>
+<div class="line"><span class="lineno">  685</span>    <span class="comment">// We want to keep everything portable on windows so we look for the .glade file in the same directory as the .exe</span></div>
+<div class="line"><span class="lineno">  686</span>    <a class="code hl_variable" href="callbacks_8cc.html#ac29c7cff7372a795638c0c6f1d0314d8">xmlFileName</a> = (boost::dll::program_location().parent_path() / <span class="stringliteral">&quot;scroom.ui&quot;</span>).generic_string();</div>
+<div class="line"><span class="lineno">  687</span><span class="preprocessor">#else</span></div>
+<div class="line"><span class="lineno">  688</span>    <a class="code hl_variable" href="callbacks_8cc.html#ac29c7cff7372a795638c0c6f1d0314d8">xmlFileName</a> = PACKAGE_DATA_DIR <span class="stringliteral">&quot;/scroom.ui&quot;</span>;</div>
+<div class="line"><span class="lineno">  689</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">  690</span>  }</div>
+<div class="line"><span class="lineno">  691</span> </div>
+<div class="line"><span class="lineno">  692</span>  <a class="code hl_variable" href="callbacks_8cc.html#af1ea25f0666c6494af4b0411dec29ca2">aboutDialogXml</a> = gtk_builder_new();</div>
+<div class="line"><span class="lineno">  693</span>  boost::scoped_array&lt;gchar*&gt; <span class="keyword">const</span> obj{<span class="keyword">new</span> gchar*[2]};</div>
+<div class="line"><span class="lineno">  694</span>  <span class="keyword">const</span> std::string str = <span class="stringliteral">&quot;aboutDialog&quot;</span>;</div>
+<div class="line"><span class="lineno">  695</span>  obj[0] = <span class="keyword">const_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(str.c_str());</div>
+<div class="line"><span class="lineno">  696</span>  obj[1] = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  697</span>  gtk_builder_add_objects_from_file(<a class="code hl_variable" href="callbacks_8cc.html#af1ea25f0666c6494af4b0411dec29ca2">aboutDialogXml</a>, <a class="code hl_variable" href="callbacks_8cc.html#ac29c7cff7372a795638c0c6f1d0314d8">xmlFileName</a>.c_str(), obj.get(), <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  698</span> </div>
+<div class="line"><span class="lineno">  699</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="callbacks_8cc.html#af1ea25f0666c6494af4b0411dec29ca2">aboutDialogXml</a> != <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  700</span>  {</div>
+<div class="line"><span class="lineno">  701</span>    <a class="code hl_variable" href="callbacks_8cc.html#a9180546c6d9070b28e52a0b62b6f15cf">aboutDialog</a> = GTK_WIDGET(gtk_builder_get_object(<a class="code hl_variable" href="callbacks_8cc.html#af1ea25f0666c6494af4b0411dec29ca2">aboutDialogXml</a>, <span class="stringliteral">&quot;aboutDialog&quot;</span>));</div>
+<div class="line"><span class="lineno">  702</span>    gtk_about_dialog_set_program_name(GTK_ABOUT_DIALOG(<a class="code hl_variable" href="callbacks_8cc.html#a9180546c6d9070b28e52a0b62b6f15cf">aboutDialog</a>), <span class="stringliteral">&quot;Scroom&quot;</span>);</div>
+<div class="line"><span class="lineno">  703</span>    gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(<a class="code hl_variable" href="callbacks_8cc.html#a9180546c6d9070b28e52a0b62b6f15cf">aboutDialog</a>), PACKAGE_VERSION);</div>
+<div class="line"><span class="lineno">  704</span><span class="preprocessor">#ifdef _WIN32</span></div>
+<div class="line"><span class="lineno">  705</span>    g_signal_connect(G_OBJECT(<a class="code hl_variable" href="callbacks_8cc.html#a9180546c6d9070b28e52a0b62b6f15cf">aboutDialog</a>), <span class="stringliteral">&quot;activate-link&quot;</span>, G_CALLBACK(on_open_scroom_website), NULL);</div>
+<div class="line"><span class="lineno">  706</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">  707</span>  }</div>
+<div class="line"><span class="lineno">  708</span>  <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  709</span>  {</div>
+<div class="line"><span class="lineno">  710</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;error(<span class="stringliteral">&quot;Opening xml failed&quot;</span>);</div>
+<div class="line"><span class="lineno">  711</span>    exit(-1); <span class="comment">// NOLINT(concurrency-mt-unsafe)</span></div>
+<div class="line"><span class="lineno">  712</span>  }</div>
+<div class="line"><span class="lineno">  713</span> </div>
+<div class="line"><span class="lineno">  714</span>  <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(<a class="code hl_variable" href="callbacks_8cc.html#ab11b79003b26c0ddb967acd578f605fb">ringBufferSink</a> != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  715</span>  <a class="code hl_variable" href="callbacks_8cc.html#a6ba114d8f032bdeddf49af4cb7998fea">loggingWindow</a> = <a class="code hl_function" href="classLoggingWindow.html#a3ed8f3af6ab36370ba5e35f7959d7b95">LoggingWindow::create</a>(<a class="code hl_variable" href="callbacks_8cc.html#ab11b79003b26c0ddb967acd578f605fb">ringBufferSink</a>, <a class="code hl_variable" href="callbacks_8cc.html#ac29c7cff7372a795638c0c6f1d0314d8">xmlFileName</a>);</div>
+<div class="line"><span class="lineno">  716</span> </div>
+<div class="line"><span class="lineno">  717</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="callbacks_8cc.html#ab35928a72da8049cfafad38e61c458e0">filenames</a>.empty())</div>
+<div class="line"><span class="lineno">  718</span>  {</div>
+<div class="line"><span class="lineno">  719</span>    <a class="code hl_function" href="callbacks_8cc.html#a19dc44b0b71d02dc59a3c16fdf3fe48b">create_scroom</a>(<a class="code hl_typedef" href="classPresentationInterface.html#a86fed59a32467f97507308d9b67bfa5c">PresentationInterface::Ptr</a>());</div>
+<div class="line"><span class="lineno">  720</span>  }</div>
+<div class="line"><span class="lineno">  721</span>}</div>
+<div class="ttc" id="acallbacks_8cc_html_a301e3ea806e687d48f817b7ed7bf8aa7"><div class="ttname"><a href="callbacks_8cc.html#a301e3ea806e687d48f817b7ed7bf8aa7">in_devmode</a></div><div class="ttdeci">bool in_devmode()</div><div class="ttdef"><b>Definition</b> callbacks.cc:650</div></div>
 <div class="ttc" id="acallbacks_8cc_html_ab11b79003b26c0ddb967acd578f605fb"><div class="ttname"><a href="callbacks_8cc.html#ab11b79003b26c0ddb967acd578f605fb">ringBufferSink</a></div><div class="ttdeci">static Scroom::RingBufferSink::Ptr ringBufferSink</div><div class="ttdef"><b>Definition</b> callbacks.cc:55</div></div>
 <div class="ttc" id="acallbacks_8cc_html_af1ea25f0666c6494af4b0411dec29ca2"><div class="ttname"><a href="callbacks_8cc.html#af1ea25f0666c6494af4b0411dec29ca2">aboutDialogXml</a></div><div class="ttdeci">static GtkBuilder * aboutDialogXml</div><div class="ttdef"><b>Definition</b> callbacks.cc:53</div></div>
 <div class="ttc" id="aclassLoggingWindow_html_a3ed8f3af6ab36370ba5e35f7959d7b95"><div class="ttname"><a href="classLoggingWindow.html#a3ed8f3af6ab36370ba5e35f7959d7b95">LoggingWindow::create</a></div><div class="ttdeci">static Ptr create(Scroom::RingBufferSink::Ptr sink, const std::string &amp;uiFileName)</div><div class="ttdef"><b>Definition</b> logging-window.cc:110</div></div>
@@ -5738,7 +5737,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  306</span>    gtk_main_quit();</div>
 <div class="line"><span class="lineno">  307</span>  }</div>
 <div class="line"><span class="lineno">  308</span>}</div>
-<div class="ttc" id="acallbacks_8cc_html_a43402c91fa59e2da7639ad8b3e51973c"><div class="ttname"><a href="callbacks_8cc.html#a43402c91fa59e2da7639ad8b3e51973c">on_view_destroyed</a></div><div class="ttdeci">void on_view_destroyed(View *v)</div><div class="ttdef"><b>Definition</b> callbacks.cc:952</div></div>
+<div class="ttc" id="acallbacks_8cc_html_a43402c91fa59e2da7639ad8b3e51973c"><div class="ttname"><a href="callbacks_8cc.html#a43402c91fa59e2da7639ad8b3e51973c">on_view_destroyed</a></div><div class="ttdeci">void on_view_destroyed(View *v)</div><div class="ttdef"><b>Definition</b> callbacks.cc:951</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="callbacks_8cc.html#a19dc44b0b71d02dc59a3c16fdf3fe48b">create_scroom()</a>.</p>
 <div class="dynheader">
@@ -5968,12 +5967,12 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  725</span>{</div>
-<div class="line"><span class="lineno">  726</span>  <a class="code hl_variable" href="callbacks_8cc.html#a6ba114d8f032bdeddf49af4cb7998fea">loggingWindow</a>.reset();</div>
-<div class="line"><span class="lineno">  727</span>  <a class="code hl_variable" href="callbacks_8cc.html#a11b875f2cbebd099ba5ddcf1335e00a3">loggingWindowMenuBuilder</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  728</span>  <a class="code hl_variable" href="callbacks_8cc.html#ab11b79003b26c0ddb967acd578f605fb">ringBufferSink</a>.reset();</div>
-<div class="line"><span class="lineno">  729</span>  <a class="code hl_define" href="assertions_8hh.html#a0a6432d768e4a040089ea8b3c8b6b4f0">ensure</a>(<a class="code hl_variable" href="callbacks_8cc.html#ad49710e0e7bbdfa292b7ac886a56a9fe">views</a>.empty());</div>
-<div class="line"><span class="lineno">  730</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  724</span>{</div>
+<div class="line"><span class="lineno">  725</span>  <a class="code hl_variable" href="callbacks_8cc.html#a6ba114d8f032bdeddf49af4cb7998fea">loggingWindow</a>.reset();</div>
+<div class="line"><span class="lineno">  726</span>  <a class="code hl_variable" href="callbacks_8cc.html#a11b875f2cbebd099ba5ddcf1335e00a3">loggingWindowMenuBuilder</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  727</span>  <a class="code hl_variable" href="callbacks_8cc.html#ab11b79003b26c0ddb967acd578f605fb">ringBufferSink</a>.reset();</div>
+<div class="line"><span class="lineno">  728</span>  <a class="code hl_define" href="assertions_8hh.html#a0a6432d768e4a040089ea8b3c8b6b4f0">ensure</a>(<a class="code hl_variable" href="callbacks_8cc.html#ad49710e0e7bbdfa292b7ac886a56a9fe">views</a>.empty());</div>
+<div class="line"><span class="lineno">  729</span>}</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="gui_2src_2main_8cc.html#a0ddf1224851353fc92bfbff6f499fa97">main()</a>.</p>
 <div class="dynheader">
@@ -6014,10 +6013,10 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  602</span>{</div>
-<div class="line"><span class="lineno">  603</span>  <a class="code hl_class" href="classView.html">View</a>* <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a> = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classView.html">View</a>*<span class="keyword">&gt;</span>(user_data);</div>
-<div class="line"><span class="lineno">  604</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;<a class="code hl_function" href="classView.html#ac89d07654772c2f745eb07bb4702cbd0">on_textbox_value_changed</a>(editable);</div>
-<div class="line"><span class="lineno">  605</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  603</span>{</div>
+<div class="line"><span class="lineno">  604</span>  <a class="code hl_class" href="classView.html">View</a>* <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a> = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classView.html">View</a>*<span class="keyword">&gt;</span>(user_data);</div>
+<div class="line"><span class="lineno">  605</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;<a class="code hl_function" href="classView.html#ac89d07654772c2f745eb07bb4702cbd0">on_textbox_value_changed</a>(editable);</div>
+<div class="line"><span class="lineno">  606</span>}</div>
 <div class="ttc" id="aclassView_html_ac89d07654772c2f745eb07bb4702cbd0"><div class="ttname"><a href="classView.html#ac89d07654772c2f745eb07bb4702cbd0">View::on_textbox_value_changed</a></div><div class="ttdeci">void on_textbox_value_changed(GtkEditable *editable)</div><div class="ttdef"><b>Definition</b> view.cc:490</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="callbacks_8cc.html#a19dc44b0b71d02dc59a3c16fdf3fe48b">create_scroom()</a>.</p>
@@ -6184,19 +6183,19 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  891</span>{</div>
-<div class="line"><span class="lineno">  892</span>  <a class="code hl_class" href="classScroom_1_1Bookkeeping_1_1Token.html">Scroom::Bookkeeping::Token</a> <span class="keyword">const</span> <a class="code hl_variable" href="threadpool-queue-tests_8cc.html#a2c9addcc3f33120c718dfd607595b174">t</a>;</div>
-<div class="line"><span class="lineno">  893</span>  <a class="code hl_variable" href="callbacks_8cc.html#ad49710e0e7bbdfa292b7ac886a56a9fe">views</a>[v] = <a class="code hl_variable" href="threadpool-queue-tests_8cc.html#a2c9addcc3f33120c718dfd607595b174">t</a>;</div>
-<div class="line"><span class="lineno">  894</span> </div>
-<div class="line"><span class="lineno">  895</span>  <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; presentation: <a class="code hl_variable" href="callbacks_8cc.html#a01fb0801652fec5df6a66f9173127bdc">presentations</a>)</div>
-<div class="line"><span class="lineno">  896</span>  {</div>
-<div class="line"><span class="lineno">  897</span>    <a class="code hl_typedef" href="classPresentationInterface.html#a86fed59a32467f97507308d9b67bfa5c">PresentationInterface::Ptr</a> <span class="keyword">const</span> <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a> = presentation.lock();</div>
-<div class="line"><span class="lineno">  898</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>)</div>
-<div class="line"><span class="lineno">  899</span>    {</div>
-<div class="line"><span class="lineno">  900</span>      v-&gt;on_presentation_created(<a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>);</div>
-<div class="line"><span class="lineno">  901</span>    }</div>
-<div class="line"><span class="lineno">  902</span>  }</div>
-<div class="line"><span class="lineno">  903</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  890</span>{</div>
+<div class="line"><span class="lineno">  891</span>  <a class="code hl_class" href="classScroom_1_1Bookkeeping_1_1Token.html">Scroom::Bookkeeping::Token</a> <span class="keyword">const</span> <a class="code hl_variable" href="threadpool-queue-tests_8cc.html#a2c9addcc3f33120c718dfd607595b174">t</a>;</div>
+<div class="line"><span class="lineno">  892</span>  <a class="code hl_variable" href="callbacks_8cc.html#ad49710e0e7bbdfa292b7ac886a56a9fe">views</a>[v] = <a class="code hl_variable" href="threadpool-queue-tests_8cc.html#a2c9addcc3f33120c718dfd607595b174">t</a>;</div>
+<div class="line"><span class="lineno">  893</span> </div>
+<div class="line"><span class="lineno">  894</span>  <span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; presentation: <a class="code hl_variable" href="callbacks_8cc.html#a01fb0801652fec5df6a66f9173127bdc">presentations</a>)</div>
+<div class="line"><span class="lineno">  895</span>  {</div>
+<div class="line"><span class="lineno">  896</span>    <a class="code hl_typedef" href="classPresentationInterface.html#a86fed59a32467f97507308d9b67bfa5c">PresentationInterface::Ptr</a> <span class="keyword">const</span> <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a> = presentation.lock();</div>
+<div class="line"><span class="lineno">  897</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>)</div>
+<div class="line"><span class="lineno">  898</span>    {</div>
+<div class="line"><span class="lineno">  899</span>      v-&gt;on_presentation_created(<a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>);</div>
+<div class="line"><span class="lineno">  900</span>    }</div>
+<div class="line"><span class="lineno">  901</span>  }</div>
+<div class="line"><span class="lineno">  902</span>}</div>
 <div class="ttc" id="aclassScroom_1_1Bookkeeping_1_1Token_html"><div class="ttname"><a href="classScroom_1_1Bookkeeping_1_1Token.html">Scroom::Bookkeeping::Token</a></div><div class="ttdef"><b>Definition</b> bookkeeping.hh:50</div></div>
 <div class="ttc" id="athreadpool-queue-tests_8cc_html_a2c9addcc3f33120c718dfd607595b174"><div class="ttname"><a href="threadpool-queue-tests_8cc.html#a2c9addcc3f33120c718dfd607595b174">t</a></div><div class="ttdeci">ThreadPool t(0)</div></div>
 </div><!-- fragment -->
@@ -6313,15 +6312,15 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  953</span>{</div>
-<div class="line"><span class="lineno">  954</span>  <a class="code hl_typedef" href="classView.html#a2dd032af78f555f7f8438b1076e37df4">View::Ptr</a> <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a> = v-&gt;<a class="code hl_function" href="classScroom_1_1Utils_1_1Base.html#aae9a071db1ff973ca6e844a69d3e10ea">shared_from_this</a>&lt;<a class="code hl_class" href="classView.html">View</a>&gt;();</div>
-<div class="line"><span class="lineno">  955</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;<a class="code hl_function" href="classView.html#a0a70183afc50428b82187b478b48ccf4">clearPresentation</a>();</div>
-<div class="line"><span class="lineno">  956</span> </div>
-<div class="line"><span class="lineno">  957</span>  <a class="code hl_variable" href="callbacks_8cc.html#ad49710e0e7bbdfa292b7ac886a56a9fe">views</a>.erase(<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>);</div>
-<div class="line"><span class="lineno">  958</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.reset();</div>
-<div class="line"><span class="lineno">  959</span> </div>
-<div class="line"><span class="lineno">  960</span>  <a class="code hl_function" href="callbacks_8cc.html#a30a5e3f46a0ebcab2405634486aee4fa">on_presentation_possibly_destroyed</a>();</div>
-<div class="line"><span class="lineno">  961</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  952</span>{</div>
+<div class="line"><span class="lineno">  953</span>  <a class="code hl_typedef" href="classView.html#a2dd032af78f555f7f8438b1076e37df4">View::Ptr</a> <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a> = v-&gt;<a class="code hl_function" href="classScroom_1_1Utils_1_1Base.html#aae9a071db1ff973ca6e844a69d3e10ea">shared_from_this</a>&lt;<a class="code hl_class" href="classView.html">View</a>&gt;();</div>
+<div class="line"><span class="lineno">  954</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;<a class="code hl_function" href="classView.html#a0a70183afc50428b82187b478b48ccf4">clearPresentation</a>();</div>
+<div class="line"><span class="lineno">  955</span> </div>
+<div class="line"><span class="lineno">  956</span>  <a class="code hl_variable" href="callbacks_8cc.html#ad49710e0e7bbdfa292b7ac886a56a9fe">views</a>.erase(<a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>);</div>
+<div class="line"><span class="lineno">  957</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>.reset();</div>
+<div class="line"><span class="lineno">  958</span> </div>
+<div class="line"><span class="lineno">  959</span>  <a class="code hl_function" href="callbacks_8cc.html#a30a5e3f46a0ebcab2405634486aee4fa">on_presentation_possibly_destroyed</a>();</div>
+<div class="line"><span class="lineno">  960</span>}</div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1Base_html_aae9a071db1ff973ca6e844a69d3e10ea"><div class="ttname"><a href="classScroom_1_1Utils_1_1Base.html#aae9a071db1ff973ca6e844a69d3e10ea">Scroom::Utils::Base::shared_from_this</a></div><div class="ttdeci">std::shared_ptr&lt; R &gt; shared_from_this()</div><div class="ttdef"><b>Definition</b> utilities.hh:48</div></div>
 <div class="ttc" id="aclassView_html_a0a70183afc50428b82187b478b48ccf4"><div class="ttname"><a href="classView.html#a0a70183afc50428b82187b478b48ccf4">View::clearPresentation</a></div><div class="ttdeci">void clearPresentation()</div><div class="ttdef"><b>Definition</b> view.cc:173</div></div>
 </div><!-- fragment -->
@@ -6564,10 +6563,10 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  596</span>{</div>
-<div class="line"><span class="lineno">  597</span>  <a class="code hl_class" href="classView.html">View</a>* <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a> = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classView.html">View</a>*<span class="keyword">&gt;</span>(user_data);</div>
-<div class="line"><span class="lineno">  598</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;<a class="code hl_function" href="classView.html#aa0987727d135b9f133c51bf2f45d7ab2">on_zoombox_changed</a>();</div>
-<div class="line"><span class="lineno">  599</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  597</span>{</div>
+<div class="line"><span class="lineno">  598</span>  <a class="code hl_class" href="classView.html">View</a>* <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a> = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classView.html">View</a>*<span class="keyword">&gt;</span>(user_data);</div>
+<div class="line"><span class="lineno">  599</span>  <a class="code hl_variable" href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a>-&gt;<a class="code hl_function" href="classView.html#aa0987727d135b9f133c51bf2f45d7ab2">on_zoombox_changed</a>();</div>
+<div class="line"><span class="lineno">  600</span>}</div>
 <div class="ttc" id="aclassView_html_aa0987727d135b9f133c51bf2f45d7ab2"><div class="ttname"><a href="classView.html#aa0987727d135b9f133c51bf2f45d7ab2">View::on_zoombox_changed</a></div><div class="ttdeci">void on_zoombox_changed()</div><div class="ttdef"><b>Definition</b> view.cc:461</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="callbacks_8cc.html#a19dc44b0b71d02dc59a3c16fdf3fe48b">create_scroom()</a>.</p>
@@ -6742,36 +6741,36 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  759</span>{</div>
-<div class="line"><span class="lineno">  760</span>  gchar** uris = g_uri_list_extract_uris(<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>gchar*<span class="keyword">&gt;</span>(gtk_selection_data_get_data(seldata)));</div>
-<div class="line"><span class="lineno">  761</span>  <span class="keywordflow">for</span>(gchar** uri = uris; *uri != <span class="keyword">nullptr</span>; uri++)</div>
-<div class="line"><span class="lineno">  762</span>  {</div>
-<div class="line"><span class="lineno">  763</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;info(<span class="stringliteral">&quot;Dropping file onto Scroom: {}&quot;</span>, *uri);</div>
-<div class="line"><span class="lineno">  764</span> </div>
-<div class="line"><span class="lineno">  765</span>    GError* error = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  766</span>    gchar* filename = g_filename_from_uri(*uri, <span class="keyword">nullptr</span>, &amp;error);</div>
-<div class="line"><span class="lineno">  767</span>    <span class="keywordflow">if</span>(error != <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  768</span>    {</div>
-<div class="line"><span class="lineno">  769</span>      <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;error(error-&gt;message);</div>
-<div class="line"><span class="lineno">  770</span>      g_error_free(error);</div>
-<div class="line"><span class="lineno">  771</span>    }</div>
-<div class="line"><span class="lineno">  772</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  773</span>    {</div>
-<div class="line"><span class="lineno">  774</span>      <span class="keywordflow">try</span></div>
-<div class="line"><span class="lineno">  775</span>      {</div>
-<div class="line"><span class="lineno">  776</span>        <a class="code hl_function" href="loader_8cc.html#a6caa967df34751dfd7c06745d1df4a1e">load</a>(filename);</div>
-<div class="line"><span class="lineno">  777</span>      }</div>
-<div class="line"><span class="lineno">  778</span>      <span class="keywordflow">catch</span>(std::invalid_argument&amp; ex)</div>
-<div class="line"><span class="lineno">  779</span>      {</div>
-<div class="line"><span class="lineno">  780</span>        <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;error(<span class="stringliteral">&quot;Warning: unable to load file {}&quot;</span>, filename);</div>
-<div class="line"><span class="lineno">  781</span>      }</div>
-<div class="line"><span class="lineno">  782</span>    }</div>
-<div class="line"><span class="lineno">  783</span> </div>
-<div class="line"><span class="lineno">  784</span>    g_free(filename);</div>
-<div class="line"><span class="lineno">  785</span>  }</div>
-<div class="line"><span class="lineno">  786</span> </div>
-<div class="line"><span class="lineno">  787</span>  g_strfreev(uris);</div>
-<div class="line"><span class="lineno">  788</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  758</span>{</div>
+<div class="line"><span class="lineno">  759</span>  gchar** uris = g_uri_list_extract_uris(<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>gchar*<span class="keyword">&gt;</span>(gtk_selection_data_get_data(seldata)));</div>
+<div class="line"><span class="lineno">  760</span>  <span class="keywordflow">for</span>(gchar** uri = uris; *uri != <span class="keyword">nullptr</span>; uri++)</div>
+<div class="line"><span class="lineno">  761</span>  {</div>
+<div class="line"><span class="lineno">  762</span>    <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;info(<span class="stringliteral">&quot;Dropping file onto Scroom: {}&quot;</span>, *uri);</div>
+<div class="line"><span class="lineno">  763</span> </div>
+<div class="line"><span class="lineno">  764</span>    GError* error = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  765</span>    gchar* filename = g_filename_from_uri(*uri, <span class="keyword">nullptr</span>, &amp;error);</div>
+<div class="line"><span class="lineno">  766</span>    <span class="keywordflow">if</span>(error != <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  767</span>    {</div>
+<div class="line"><span class="lineno">  768</span>      <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;error(error-&gt;message);</div>
+<div class="line"><span class="lineno">  769</span>      g_error_free(error);</div>
+<div class="line"><span class="lineno">  770</span>    }</div>
+<div class="line"><span class="lineno">  771</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  772</span>    {</div>
+<div class="line"><span class="lineno">  773</span>      <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">  774</span>      {</div>
+<div class="line"><span class="lineno">  775</span>        <a class="code hl_function" href="loader_8cc.html#a6caa967df34751dfd7c06745d1df4a1e">load</a>(filename);</div>
+<div class="line"><span class="lineno">  776</span>      }</div>
+<div class="line"><span class="lineno">  777</span>      <span class="keywordflow">catch</span>(std::invalid_argument&amp; ex)</div>
+<div class="line"><span class="lineno">  778</span>      {</div>
+<div class="line"><span class="lineno">  779</span>        <a class="code hl_variable" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a88770d5c02f4b606f5b61d49cdb76df6">logger</a>-&gt;error(<span class="stringliteral">&quot;Warning: unable to load file {}&quot;</span>, filename);</div>
+<div class="line"><span class="lineno">  780</span>      }</div>
+<div class="line"><span class="lineno">  781</span>    }</div>
+<div class="line"><span class="lineno">  782</span> </div>
+<div class="line"><span class="lineno">  783</span>    g_free(filename);</div>
+<div class="line"><span class="lineno">  784</span>  }</div>
+<div class="line"><span class="lineno">  785</span> </div>
+<div class="line"><span class="lineno">  786</span>  g_strfreev(uris);</div>
+<div class="line"><span class="lineno">  787</span>}</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="callbacks_8cc.html#a19dc44b0b71d02dc59a3c16fdf3fe48b">create_scroom()</a>.</p>
 <div class="dynheader">
@@ -7006,7 +7005,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  656</span>{ <a class="code hl_variable" href="callbacks_8cc.html#ab11b79003b26c0ddb967acd578f605fb">ringBufferSink</a> = ringBufferSink_; }</div>
+<div class="fragment"><div class="line"><span class="lineno">  657</span>{ <a class="code hl_variable" href="callbacks_8cc.html#ab11b79003b26c0ddb967acd578f605fb">ringBufferSink</a> = ringBufferSink_; }</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="gui_2src_2main_8cc.html#a0ddf1224851353fc92bfbff6f499fa97">main()</a>.</p>
 <div class="dynheader">
@@ -7633,7 +7632,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a3db6bf1d0f4891570e5a5fe8351c2f58">anonymous_namespace{callbacks.cc}::connectLoggingWindowMenuCallbacks()</a>, <a class="el" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#abbb5e2fc132607ca35de96c2fd00be6a">anonymous_namespace{callbacks.cc}::consumeLogMessages()</a>, <a class="el" href="callbacks_8cc.html#a2816934867b0a52c3d52cde08e344519">on_logs_activate()</a>, <a class="el" href="callbacks_8cc.html#ad1e18a647c5ecc3a2235b4e14f08bd74">on_scroom_bootstrap()</a>, <a class="el" href="callbacks_8cc.html#a8aaa627c06109f99958936ba0e3888ad">on_scroom_terminating()</a>, and <a class="el" href="classLoggingWindow.html#a39fb161bce94a17643607f9c700bcefe">LoggingWindow::onFocusInEvent()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#a3db6bf1d0f4891570e5a5fe8351c2f58">anonymous_namespace{callbacks.cc}::connectLoggingWindowMenuCallbacks()</a>, <a class="el" href="namespaceanonymous__namespace_02callbacks_8cc_03.html#abbb5e2fc132607ca35de96c2fd00be6a">anonymous_namespace{callbacks.cc}::consumeLogMessages()</a>, <a class="el" href="callbacks_8cc.html#afd41e159402c4fc0b8c3341a372d7ce9">on_done_loading_plugins()</a>, <a class="el" href="callbacks_8cc.html#a2816934867b0a52c3d52cde08e344519">on_logs_activate()</a>, <a class="el" href="callbacks_8cc.html#ad1e18a647c5ecc3a2235b4e14f08bd74">on_scroom_bootstrap()</a>, <a class="el" href="callbacks_8cc.html#a8aaa627c06109f99958936ba0e3888ad">on_scroom_terminating()</a>, and <a class="el" href="classLoggingWindow.html#a39fb161bce94a17643607f9c700bcefe">LoggingWindow::onFocusInEvent()</a>.</p>
 
 </div>
 </div>
