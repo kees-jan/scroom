@@ -15,6 +15,7 @@
 
 #include <cairo.h>
 
+#include <scroom/assertions.hh>
 #include <scroom/global.hh>
 
 namespace Scroom::Bitmap
@@ -63,6 +64,9 @@ namespace Scroom::Bitmap
   public:
     using Base = std::remove_const_t<ConstBase>;
 
+    static_assert(std::is_integral_v<Base>, "SampleIterator base type must be an integral type");
+    static_assert(std::is_unsigned_v<Base>, "SampleIterator base type must be an unsigned integral type");
+
     static const int bitsPerBase{8 * sizeof(ConstBase) / sizeof(byte)};
 
     const int bps;
@@ -74,11 +78,20 @@ namespace Scroom::Bitmap
     int currentOffset;
 
   private:
+    static int samplesPerBaseFromBps(int bps_)
+    {
+      require(bps_ > 0);
+      require(bps_ <= bitsPerBase);
+      require((bitsPerBase % bps_) == 0);
+
+      return bitsPerBase / bps_;
+    }
+
     static Base mask(int bps) { return (((ConstBase(1) << (bps - 1)) - 1) << 1) | 1; }
 
-    SampleIterator(div_t d, ConstBase* base, int bps_)
+    SampleIterator(div_t d, ConstBase* base, int bps_, int samplesPerBase_)
       : bps(bps_)
-      , samplesPerBase(bitsPerBase / bps)
+      , samplesPerBase(samplesPerBase_)
       , pixelOffset(bps)
       , pixelMask(mask(bps))
       , currentBase(base + d.quot)
@@ -97,7 +110,7 @@ namespace Scroom::Bitmap
     // https://bugs.llvm.org/show_bug.cgi?id=37902
     // NOLINTNEXTLINE (cppcoreguidelines-pro-type-member-init,hicpp-member-init)
     explicit SampleIterator(ConstBase* base, int offset = 0, int bps_ = 1)
-      : SampleIterator(div(offset, /* samplesPerBase */ bitsPerBase / bps_), base, bps_)
+      : SampleIterator(div(offset, /* samplesPerBase */ samplesPerBaseFromBps(bps_)), base, bps_, samplesPerBaseFromBps(bps_))
     {
     }
 

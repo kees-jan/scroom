@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include <cstdint>
+
 #include <scroom/colormappable.hh>
 #include <scroom/interface.hh>
 #include <scroom/pipettelayeroperations.hh>
@@ -15,6 +17,9 @@
 class CommonOperations : public LayerOperations
 {
 public:
+  // 65535 == 255 * 257, so dividing by 257 maps [0, 65535] to [0, 255].
+  static inline uint8_t channel16To8(uint16_t value) { return static_cast<uint8_t>(value / 257); }
+
   static void drawPixelValue(cairo_t* cr, int x, int y, int size, int value);
   static void drawPixelValue(cairo_t* cr, int x, int y, int size, int value, Color const& bgColor);
 
@@ -49,6 +54,17 @@ public:
   PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr& tile) override;
 };
 
+class PipetteCommonOperationsCMYK64bpp
+  : public PipetteLayerOperations
+  , public CommonOperations
+{
+public:
+  using Ptr = std::shared_ptr<PipetteCommonOperationsCMYK64bpp>;
+
+public:
+  PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr& tile) override;
+};
+
 class PipetteCommonOperationsRGB
   : public PipetteLayerOperations
   , public CommonOperations
@@ -63,6 +79,28 @@ public:
   explicit PipetteCommonOperationsRGB(int bps_)
     : bps(bps_) {};
 
+  PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr& tile) override;
+};
+
+class PipetteCommonOperationsRGB48bpp
+  : public PipetteLayerOperations
+  , public CommonOperations
+{
+public:
+  using Ptr = std::shared_ptr<PipetteCommonOperationsRGB48bpp>;
+
+public:
+  PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr& tile) override;
+};
+
+class PipetteCommonOperations16bpp
+  : public PipetteLayerOperations
+  , public CommonOperations
+{
+public:
+  using Ptr = std::shared_ptr<PipetteCommonOperations16bpp>;
+
+public:
   PipetteLayerOperations::PipetteColor sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr& tile) override;
 };
 
@@ -112,11 +150,45 @@ public:
   ) override;
 };
 
-class Operations24bpp : public PipetteCommonOperationsRGB
+class Operations16bpp : public PipetteCommonOperations16bpp
+{
+private:
+  ColormapProvider::Ptr colormapProvider;
+
+public:
+  static LayerOperations::Ptr create(ColormapProvider::Ptr colormapProvider);
+  explicit Operations16bpp(ColormapProvider::Ptr colormapProvider);
+
+  int getBpp() override;
+  Scroom::Utils::Stuff cache(const ConstTile::Ptr& tile) override;
+  void reduce(Tile::Ptr target, ConstTile::Ptr source, int x, int y) override;
+
+  void draw(
+    cairo_t* cr,
+    const ConstTile::Ptr& tile,
+    Scroom::Utils::Rectangle<double> tileArea,
+    Scroom::Utils::Rectangle<double> viewArea,
+    int zoom,
+    Scroom::Utils::Stuff cache
+  ) override;
+};
+
+class OperationsRgb24bpp : public PipetteCommonOperationsRGB
 {
 public:
   static Ptr create();
-  Operations24bpp();
+  OperationsRgb24bpp();
+
+  int getBpp() override;
+  Scroom::Utils::Stuff cache(const ConstTile::Ptr& tile) override;
+  void reduce(Tile::Ptr target, ConstTile::Ptr source, int x, int y) override;
+};
+
+class OperationsRgb48bpp : public PipetteCommonOperationsRGB48bpp
+{
+public:
+  static Ptr create();
+  OperationsRgb48bpp();
 
   int getBpp() override;
   Scroom::Utils::Stuff cache(const ConstTile::Ptr& tile) override;
@@ -184,6 +256,17 @@ class OperationsCMYK32 : public PipetteCommonOperationsCMYK
 public:
   static Ptr create();
   OperationsCMYK32();
+
+  int getBpp() override;
+  Scroom::Utils::Stuff cache(const ConstTile::Ptr& tile) override;
+  void reduce(Tile::Ptr target, ConstTile::Ptr source, int x, int y) override;
+};
+
+class OperationsCMYK64 : public PipetteCommonOperationsCMYK64bpp
+{
+public:
+  static Ptr create();
+  OperationsCMYK64();
 
   int getBpp() override;
   Scroom::Utils::Stuff cache(const ConstTile::Ptr& tile) override;

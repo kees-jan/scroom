@@ -113,13 +113,18 @@ namespace Scroom::TiledBitmap
     require(bmd.samplesPerPixel == 3);
     require(!bmd.colormapHelper);
 
-    if(bmd.bitsPerSample != 8)
+    if(bmd.bitsPerSample == 8)
     {
-      logger->error("RGB bitmaps with {} bits per sample are not supported", bmd.bitsPerSample);
-      return {};
+      return LayerSpecResult({OperationsRgb24bpp::create()}, nullptr);
     }
 
-    return LayerSpecResult({Operations24bpp::create()}, nullptr);
+    if(bmd.bitsPerSample == 16)
+    {
+      return LayerSpecResult({OperationsRgb48bpp::create()}, nullptr);
+    }
+
+    logger->error("RGB bitmaps with {} bits per sample are not supported", bmd.bitsPerSample);
+    return {};
   }
 
   LayerSpecResult CMYKBitmap(const Scroom::Logger& logger, const BitmapMetaData& bmd)
@@ -134,7 +139,11 @@ namespace Scroom::TiledBitmap
 
     LayerSpec ls;
 
-    if(bmd.bitsPerSample == 8)
+    if(bmd.bitsPerSample == 16)
+    {
+      ls.emplace_back(OperationsCMYK64::create());
+    }
+    else if(bmd.bitsPerSample == 8)
     {
       ls.emplace_back(OperationsCMYK32::create());
     }
@@ -171,7 +180,10 @@ namespace Scroom::TiledBitmap
 
     require(bmd.samplesPerPixel == 1);
 
-    if(bmd.bitsPerSample != 1 && bmd.bitsPerSample != 2 && bmd.bitsPerSample != 4 && bmd.bitsPerSample != 8)
+    if(
+      bmd.bitsPerSample != 1 && bmd.bitsPerSample != 2 && bmd.bitsPerSample != 4 && bmd.bitsPerSample != 8
+      && bmd.bitsPerSample != 16
+    )
     {
       logger->error("Greyscale bitmaps with {} bits per pixel are not supported (yet)", bmd.bitsPerSample);
       return {};
@@ -188,6 +200,10 @@ namespace Scroom::TiledBitmap
     {
       ls.push_back(Operations::create(colormapHelper, bmd.bitsPerSample));
       ls.push_back(OperationsColormapped::create(colormapHelper, bmd.bitsPerSample));
+    }
+    else if(bmd.bitsPerSample == 16)
+    {
+      ls.push_back(Operations16bpp::create(colormapHelper));
     }
     else
     {

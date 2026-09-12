@@ -18,6 +18,37 @@
 #include <scroom/tile.hh>
 
 ////////////////////////////////////////////////////////////////////////
+// PipetteCommonOperationsCMYK64bpp
+
+PipetteLayerOperations::PipetteColor
+  PipetteCommonOperationsCMYK64bpp::sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr& tile)
+{
+  const int offset = 4 * (area.getTop() * tile->width + area.getLeft());
+  const int stride = 4 * (tile->width - area.getWidth());
+  auto const* sample = reinterpret_cast<uint16_t const*>(tile->data.get()) + offset;
+
+  size_t sum_c = 0;
+  size_t sum_m = 0;
+  size_t sum_y = 0;
+  size_t sum_k = 0;
+
+  for(int y = area.getTop(); y < area.getBottom(); y++)
+  {
+    for(int x = area.getLeft(); x < area.getRight(); x++)
+    {
+      sum_c += sample[0];
+      sum_m += sample[1];
+      sum_y += sample[2];
+      sum_k += sample[3];
+      sample += 4;
+    }
+    sample += stride;
+  }
+
+  return {{"C", sum_c}, {"M", sum_m}, {"Y", sum_y}, {"K", sum_k}};
+}
+
+////////////////////////////////////////////////////////////////////////
 // OperationsCMYK32
 
 PipetteCommonOperationsCMYK::Ptr OperationsCMYK32::create() { return PipetteCommonOperationsCMYK::Ptr(new OperationsCMYK32()); }
@@ -101,6 +132,90 @@ void OperationsCMYK32::reduce(Tile::Ptr target, const ConstTile::Ptr source, int
       targetPtr[1] = static_cast<byte>(sum_m / 64);
       targetPtr[2] = static_cast<byte>(sum_y / 64);
       targetPtr[3] = static_cast<byte>(sum_k / 64);
+
+      targetPtr += 4;
+    }
+
+    targetBase += targetStride;
+    sourceBase += sourceStride * 8;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+// OperationsCMYK64
+
+PipetteCommonOperationsCMYK64bpp::Ptr OperationsCMYK64::create()
+{
+  return PipetteCommonOperationsCMYK64bpp::Ptr(new OperationsCMYK64());
+}
+
+OperationsCMYK64::OperationsCMYK64() = default;
+
+int OperationsCMYK64::getBpp() { return 64; }
+
+Scroom::Utils::Stuff OperationsCMYK64::cache(const ConstTile::Ptr& tile)
+{
+  const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
+  std::shared_ptr<uint8_t> const data = Scroom::Utils::shared_malloc(static_cast<size_t>(stride * tile->height));
+
+  auto* row = reinterpret_cast<uint32_t*>(data.get());
+  auto const* cur = reinterpret_cast<uint16_t const*>(tile->data.get());
+
+  for(int i = 0; i < tile->height * tile->width; i++)
+  {
+    const uint8_t C_i = channel16To8(65535 - cur[4 * i]);
+    const uint8_t M_i = channel16To8(65535 - cur[4 * i + 1]);
+    const uint8_t Y_i = channel16To8(65535 - cur[4 * i + 2]);
+    const uint8_t K_i = channel16To8(65535 - cur[4 * i + 3]);
+
+    const uint32_t R = static_cast<uint8_t>((C_i * K_i) / 255);
+    const uint32_t G = static_cast<uint8_t>((M_i * K_i) / 255);
+    const uint32_t B = static_cast<uint8_t>((Y_i * K_i) / 255);
+
+    row[i] = 255u << 24 | R << 16 | G << 8 | B;
+  }
+
+  return Scroom::Bitmap::BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
+}
+
+void OperationsCMYK64::reduce(Tile::Ptr target, const ConstTile::Ptr source, int top_left_x, int top_left_y)
+{
+  // Reducing by a factor 8. Source tile is 64bpp. Target tile is 64bpp
+  const int sourceStride = 4 * source->width; // stride in uint16_t samples
+  auto const* sourceBase = reinterpret_cast<uint16_t const*>(source->data.get());
+
+  const int targetStride = 4 * target->width; // stride in uint16_t samples
+  uint16_t* targetBase =
+    reinterpret_cast<uint16_t*>(target->data.get()) + (target->height * top_left_y + top_left_x) * targetStride / 8;
+
+  for(int y = 0; y < source->height / 8; y++)
+  {
+    uint16_t* targetPtr = targetBase;
+
+    for(int x = 0; x < source->width / 8; x++)
+    {
+      const uint16_t* base = sourceBase + 8 * 4 * x;
+      const uint16_t* end = base + 8 * sourceStride;
+
+      int sum_c = 0;
+      int sum_m = 0;
+      int sum_y = 0;
+      int sum_k = 0;
+      for(const uint16_t* row = base; row < end; row += sourceStride)
+      {
+        for(size_t current = 0; current < 8 * 4; current += 4)
+        {
+          sum_c += row[current];
+          sum_m += row[current + 1];
+          sum_y += row[current + 2];
+          sum_k += row[current + 3];
+        }
+      }
+
+      targetPtr[0] = static_cast<uint16_t>(sum_c / 64);
+      targetPtr[1] = static_cast<uint16_t>(sum_m / 64);
+      targetPtr[2] = static_cast<uint16_t>(sum_y / 64);
+      targetPtr[3] = static_cast<uint16_t>(sum_k / 64);
 
       targetPtr += 4;
     }

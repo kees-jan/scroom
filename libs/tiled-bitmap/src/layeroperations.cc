@@ -118,6 +118,28 @@ void CommonOperations::drawPixelValue(cairo_t* cr, int x, int y, int size, int v
   cairo_show_text(cr, cstr);
 }
 
+PipetteLayerOperations::PipetteColor
+  PipetteCommonOperations16bpp::sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr& tile)
+{
+  const int offset = area.getTop() * tile->width + area.getLeft();
+  const int stride = tile->width - area.getWidth();
+  auto const* sample = reinterpret_cast<uint16_t const*>(tile->data.get()) + offset;
+
+  size_t sum = 0;
+
+  for(int y = area.getTop(); y < area.getBottom(); y++)
+  {
+    for(int x = area.getLeft(); x < area.getRight(); x++)
+    {
+      sum += *sample;
+      sample++;
+    }
+    sample += stride;
+  }
+
+  return {{"Value", sum}};
+}
+
 void CommonOperations::drawPixelValue(cairo_t* cr, int x, int y, int size, int value, Color const& bgColor)
 {
   bgColor.getContrastingBlackOrWhite().setColor(cr);
@@ -251,6 +273,32 @@ PipetteLayerOperations::PipetteColor
       sum_b += *si++;
     }
     si += stride;
+  }
+
+  return {{"R", sum_r}, {"G", sum_g}, {"B", sum_b}};
+}
+
+PipetteLayerOperations::PipetteColor
+  PipetteCommonOperationsRGB48bpp::sumPixelValues(Scroom::Utils::Rectangle<int> area, const ConstTile::Ptr& tile)
+{
+  const int offset = 3 * (area.getTop() * tile->width + area.getLeft());
+  const int stride = 3 * (tile->width - area.getWidth());
+  auto const* current = reinterpret_cast<uint16_t const*>(tile->data.get()) + offset;
+
+  size_t sum_r = 0;
+  size_t sum_g = 0;
+  size_t sum_b = 0;
+
+  for(int y = area.getTop(); y < area.getBottom(); y++)
+  {
+    for(int x = area.getLeft(); x < area.getRight(); x++)
+    {
+      sum_r += current[0];
+      sum_g += current[1];
+      sum_b += current[2];
+      current += 3;
+    }
+    current += stride;
   }
 
   return {{"R", sum_r}, {"G", sum_g}, {"B", sum_b}};
@@ -498,18 +546,110 @@ void Operations8bpp::draw(
 }
 
 ////////////////////////////////////////////////////////////////////////
+// Operations16bpp
+
+LayerOperations::Ptr Operations16bpp::create(ColormapProvider::Ptr colormapProvider)
+{
+  return Ptr(new Operations16bpp(std::move(colormapProvider)));
+}
+
+Operations16bpp::Operations16bpp(ColormapProvider::Ptr colormapProvider_)
+  : colormapProvider(std::move(colormapProvider_))
+{
+}
+
+int Operations16bpp::getBpp() { return 16; }
+
+Scroom::Utils::Stuff Operations16bpp::cache(const ConstTile::Ptr& tile)
+{
+  const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
+  std::shared_ptr<unsigned char> const data = shared_malloc(stride * tile->height);
+  Colormap::Ptr const colormap = colormapProvider->getColormap();
+  const Color& c1 = colormap->colors[0];
+  const Color& c2 = colormap->colors[1];
+
+  unsigned char* row = data.get();
+  for(int j = 0; j < tile->height; j++, row += stride)
+  {
+    auto const* cur = reinterpret_cast<uint16_t const*>(tile->data.get() + 2 * j * tile->width);
+
+    auto* pixel = reinterpret_cast<uint32_t*>(row);
+    for(int i = 0; i < tile->width; i++)
+    {
+      *pixel = mix(c2, c1, 1.0 * *cur / 65535).getARGB32();
+
+      pixel++;
+      ++cur;
+    }
+  }
+
+  return BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
+}
+
+void Operations16bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y)
+{
+  // Reducing by a factor 8. Source tile is 16bpp. Target tile is 16bpp
+  const int sourceStride = source->width;
+  auto const* sourceBase = reinterpret_cast<uint16_t const*>(source->data.get());
+
+  const int targetStride = target->width;
+  auto* targetBase =
+    reinterpret_cast<uint16_t*>(target->data.get()) + target->height * y * targetStride / 8 + targetStride * x / 8;
+
+  for(int j = 0; j < source->height / 8; j++, targetBase += targetStride, sourceBase += sourceStride * 8)
+  {
+    // Iterate vertically over target
+    auto const* sourcePtr = sourceBase;
+    auto* targetPtr = targetBase;
+
+    for(int i = 0; i < source->width / 8; i++, sourcePtr += 8, targetPtr++)
+    {
+      // Iterate horizontally over target
+
+      // Goal is to compute a 16-bit grey value from a 8*8 grey image.
+      auto const* base = sourcePtr;
+      int sum = 0;
+      for(int k = 0; k < 8; k++, base += sourceStride)
+      {
+        auto const* current = base;
+        for(int l = 0; l < 8; l++, current++)
+        {
+          sum += *current;
+        }
+      }
+
+      *targetPtr = sum / 64;
+    }
+  }
+}
+
+void Operations16bpp::draw(
+  cairo_t* cr,
+  const ConstTile::Ptr& tile,
+  Scroom::Utils::Rectangle<double> tileArea,
+  Scroom::Utils::Rectangle<double> viewArea,
+  int zoom,
+  Scroom::Utils::Stuff cache
+)
+{
+  cairo_save(cr);
+  CommonOperations::draw(cr, tile, tileArea, viewArea, zoom, cache);
+  cairo_restore(cr);
+}
+
+////////////////////////////////////////////////////////////////////////
 // Operations24bpp
 
-PipetteCommonOperationsRGB::Ptr Operations24bpp::create() { return PipetteCommonOperationsRGB::Ptr(new Operations24bpp()); }
+PipetteCommonOperationsRGB::Ptr OperationsRgb24bpp::create() { return PipetteCommonOperationsRGB::Ptr(new OperationsRgb24bpp()); }
 
-Operations24bpp::Operations24bpp()
+OperationsRgb24bpp::OperationsRgb24bpp()
   : PipetteCommonOperationsRGB(8)
 {
 }
 
-int Operations24bpp::getBpp() { return 24; }
+int OperationsRgb24bpp::getBpp() { return 24; }
 
-Scroom::Utils::Stuff Operations24bpp::cache(const ConstTile::Ptr& tile)
+Scroom::Utils::Stuff OperationsRgb24bpp::cache(const ConstTile::Ptr& tile)
 {
   const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
   std::shared_ptr<unsigned char> const data = shared_malloc(stride * tile->height);
@@ -532,7 +672,7 @@ Scroom::Utils::Stuff Operations24bpp::cache(const ConstTile::Ptr& tile)
   return BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
 }
 
-void Operations24bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y)
+void OperationsRgb24bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y)
 {
   // Reducing by a factor 8. Source tile is 24bpp. Target tile is 24bpp
   const int sourceStride = 3 * source->width; // stride in bytes
@@ -559,6 +699,83 @@ void Operations24bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int 
       for(int k = 0; k < 8; k++, base += sourceStride)
       {
         const byte* current = base;
+        for(int l = 0; l < 8; l++, current += 3)
+        {
+          sum_r += current[0];
+          sum_g += current[1];
+          sum_b += current[2];
+        }
+      }
+      targetPtr[0] = sum_r / 64;
+      targetPtr[1] = sum_g / 64;
+      targetPtr[2] = sum_b / 64;
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+// Operations48bpp
+
+PipetteCommonOperationsRGB48bpp::Ptr OperationsRgb48bpp::create()
+{
+  return PipetteCommonOperationsRGB48bpp::Ptr(new OperationsRgb48bpp());
+}
+
+OperationsRgb48bpp::OperationsRgb48bpp() = default;
+
+int OperationsRgb48bpp::getBpp() { return 48; }
+
+Scroom::Utils::Stuff OperationsRgb48bpp::cache(const ConstTile::Ptr& tile)
+{
+  const int stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, tile->width);
+  std::shared_ptr<unsigned char> const data = shared_malloc(stride * tile->height);
+  unsigned char* row = data.get();
+  for(int j = 0; j < tile->height; j++, row += stride)
+  {
+    auto const* cur = reinterpret_cast<uint16_t const*>(tile->data.get()) + 3 * j * tile->width;
+
+    auto* pixel = reinterpret_cast<uint32_t*>(row);
+    for(int i = 0; i < tile->width; i++)
+    {
+      //         A            R                             G                             B
+      *pixel = 0xFF000000u | (channel16To8(cur[0]) << 16) | (channel16To8(cur[1]) << 8) | channel16To8(cur[2]);
+
+      pixel++;
+      cur += 3;
+    }
+  }
+
+  return BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
+}
+
+void OperationsRgb48bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y)
+{
+  // Reducing by a factor 8. Source tile is 48bpp. Target tile is 48bpp
+  const int sourceStride = 3 * source->width; // stride in uint16_t samples
+  auto const* sourceBase = reinterpret_cast<uint16_t const*>(source->data.get());
+
+  const int targetStride = 3 * target->width; // stride in uint16_t samples
+  auto* targetBase =
+    reinterpret_cast<uint16_t*>(target->data.get()) + target->height * y * targetStride / 8 + targetStride * x / 8;
+
+  for(int j = 0; j < source->height / 8; j++, targetBase += targetStride, sourceBase += sourceStride * 8)
+  {
+    // Iterate vertically over target
+    auto const* sourcePtr = sourceBase;
+    auto* targetPtr = targetBase;
+
+    for(int i = 0; i < source->width / 8; i++, sourcePtr += 8 * 3, targetPtr += 3)
+    {
+      // Iterate horizontally over target
+
+      // Goal is to compute an average RGB value from an 8*8 RGB image.
+      auto const* base = sourcePtr;
+      int sum_r = 0;
+      int sum_g = 0;
+      int sum_b = 0;
+      for(int k = 0; k < 8; k++, base += sourceStride)
+      {
+        auto const* current = base;
         for(int l = 0; l < 8; l++, current += 3)
         {
           sum_r += current[0];

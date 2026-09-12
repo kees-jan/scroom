@@ -134,6 +134,20 @@ namespace Scroom::Tiff
       auto width = TIFFGetFieldChecked<uint32_t>(tif, TT(TIFFTAG_IMAGEWIDTH));
       auto height = TIFFGetFieldChecked<uint32_t>(tif, TT(TIFFTAG_IMAGELENGTH));
       auto photometric = TIFFGetFieldChecked<uint16_t>(tif, TT(TIFFTAG_PHOTOMETRIC));
+      auto planarConfiguration = TIFFGetFieldCheckedOr<uint16_t>(tif, TT(TIFFTAG_PLANARCONFIG), PLANARCONFIG_CONTIG);
+      auto sampleFormat = TIFFGetFieldCheckedOr<uint16_t>(tif, TT(TIFFTAG_SAMPLEFORMAT), SAMPLEFORMAT_UINT);
+
+      if(planarConfiguration != PLANARCONFIG_CONTIG)
+      {
+        logger->error("Tiff planar configuration {} is not supported", planarConfiguration);
+        return {};
+      }
+
+      if(sampleFormat != SAMPLEFORMAT_UINT)
+      {
+        logger->error("Tiff sample format {} is not supported", sampleFormat);
+        return {};
+      }
 
       ColormapHelperBase::Ptr colormapHelper = getColormapHelper(tif, bps);
 
@@ -183,7 +197,7 @@ namespace Scroom::Tiff
 
       BitmapMetaData bmd{{}, bps, spp, Scroom::Utils::make_rect<int>(0, 0, width, height), aspectRatio, colormapHelper};
 
-      if(bps != 1 && bps != 2 && bps != 4 && bps != 8)
+      if(bps != 1 && bps != 2 && bps != 4 && bps != 8 && bps != 16)
       {
         logger->error("{} bits per sample not supported (yet)", bps);
         return {};
@@ -197,14 +211,20 @@ namespace Scroom::Tiff
       {
         bmd.type = RGB;
 
-        if(bps != 8)
+        if(bps != 8 && bps != 16)
         {
-          logger->error("A RGB bitmap with {} samples per pixel isn't supported (yet)", bps);
+          logger->error("A RGB bitmap with {} bits per sample isn't supported (yet)", bps);
           return {};
         }
       }
       else if(spp == 1)
       {
+        if(photometric == PHOTOMETRIC_PALETTE && bps == 16)
+        {
+          logger->error("A colormapped bitmap with {} bits per sample isn't supported (yet)", bps);
+          return {};
+        }
+
         bmd.type = (photometric == PHOTOMETRIC_PALETTE) ? Colormapped : Greyscale;
       }
       else
@@ -268,10 +288,16 @@ namespace Scroom::Tiff
     auto spp = bmd.samplesPerPixel;
     auto bps = bmd.bitsPerSample;
 
+    require(spp == 1 || spp == 3 || spp == 4);
+    require(bps == 1 || bps == 2 || bps == 4 || bps == 8 || bps == 16);
+    require(!tiles.empty());
+
     const auto startLine_ = static_cast<uint32_t>(startLine);
     const auto firstTile_ = static_cast<size_t>(firstTile);
     const auto scanLineSize = static_cast<size_t>(TIFFScanlineSize(tif.get()));
     const auto tileStride = static_cast<size_t>(tileWidth * spp * bps / 8);
+    const auto lastTileOffset = (firstTile_ + tiles.size() - 1) * tileStride;
+    require(scanLineSize >= lastTileOffset);
     std::vector<byte> row(scanLineSize);
 
     const size_t tileCount = tiles.size();
@@ -283,7 +309,7 @@ namespace Scroom::Tiff
 
     for(size_t i = 0; i < static_cast<size_t>(lineCount); i++)
     {
-      TIFFReadScanline(tif.get(), row.data(), static_cast<uint32_t>(i) + startLine_);
+      require(1 == TIFFReadScanline(tif.get(), row.data(), static_cast<uint32_t>(i) + startLine_));
 
       for(size_t tile = 0; tile < tileCount - 1; tile++)
       {
