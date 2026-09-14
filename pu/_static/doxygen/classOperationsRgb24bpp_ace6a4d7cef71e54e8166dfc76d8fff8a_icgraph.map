@@ -1,0 +1,9 @@
+<map id="OperationsRgb24bpp::OperationsRgb24bpp" name="OperationsRgb24bpp::OperationsRgb24bpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="652,13,819,53"/>
+<area shape="rect" id="Node000002" href="$classOperationsRgb24bpp.html#a25b326b314181448325bb82ea5fa54fb" title=" " alt="" coords="445,13,604,53"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="638,35,604,35,604,30,638,30"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1TiledBitmap.html#ae37bb5eadee0a9dc461de0b0880c51b1" title=" " alt="" coords="239,13,397,53"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="431,35,397,35,397,30,431,30"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1TiledBitmap_1_1LayerSpecForBitmapper.html#a57fe04d709876ca9546f0ab8daafad13" title=" " alt="" coords="5,5,191,60"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="225,35,191,35,191,30,225,30"/>
+</map>

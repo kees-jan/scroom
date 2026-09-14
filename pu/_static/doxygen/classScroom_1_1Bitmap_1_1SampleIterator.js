@@ -1,7 +1,7 @@
 var classScroom_1_1Bitmap_1_1SampleIterator =
 [
     [ "Base", "classScroom_1_1Bitmap_1_1SampleIterator.html#afdfccf3a027408d537d3bfa7b9df5d0e", null ],
-    [ "SampleIterator", "classScroom_1_1Bitmap_1_1SampleIterator.html#acf90826e2b9857a2ea9364ea1f7aebe7", null ],
+    [ "SampleIterator", "classScroom_1_1Bitmap_1_1SampleIterator.html#ae2745d64e77a7cebed7d8f6fcf0c781d", null ],
     [ "SampleIterator", "classScroom_1_1Bitmap_1_1SampleIterator.html#adfee8eaeb7b7383396a533b4c4b0f82e", null ],
     [ "get", "classScroom_1_1Bitmap_1_1SampleIterator.html#a0d69ab50c30d838fefeb141a546c1120", null ],
     [ "mask", "classScroom_1_1Bitmap_1_1SampleIterator.html#acef5bd0d8bb2a49b0d944f5220d56afe", null ],
@@ -11,6 +11,7 @@ var classScroom_1_1Bitmap_1_1SampleIterator =
     [ "operator++", "classScroom_1_1Bitmap_1_1SampleIterator.html#aa9f579c5fae140309ebbb7117b7ee212", null ],
     [ "operator+=", "classScroom_1_1Bitmap_1_1SampleIterator.html#ad07af96d3f7f88cd7822c7f6a7be8b8b", null ],
     [ "operator==", "classScroom_1_1Bitmap_1_1SampleIterator.html#afedc31f1aa4db6198eefbe5d9952df73", null ],
+    [ "samplesPerBaseFromBps", "classScroom_1_1Bitmap_1_1SampleIterator.html#a4a07bf60be20c4957be487173927eb37", null ],
     [ "set", "classScroom_1_1Bitmap_1_1SampleIterator.html#a6dddb604ef3669fd04851f91645b8840", null ],
     [ "bitsPerBase", "classScroom_1_1Bitmap_1_1SampleIterator.html#a206a33fab2247db4ec53460938b8287f", null ],
     [ "bps", "classScroom_1_1Bitmap_1_1SampleIterator.html#a4ff8eac9c539fc4d054aee59a67e3e3a", null ],

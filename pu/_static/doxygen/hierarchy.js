@@ -90,14 +90,23 @@ var hierarchy =
         [ "Pipette", "classPipette.html", null ],
         [ "PipetteHandler", "classPipetteHandler.html", null ],
         [ "PipetteLayerOperations", "classPipetteLayerOperations.html", [
+          [ "PipetteCommonOperations16bpp", "classPipetteCommonOperations16bpp.html", [
+            [ "Operations16bpp", "classOperations16bpp.html", null ]
+          ] ],
           [ "PipetteCommonOperationsCMYK", "classPipetteCommonOperationsCMYK.html", [
             [ "OperationsCMYK16", "classOperationsCMYK16.html", null ],
             [ "OperationsCMYK32", "classOperationsCMYK32.html", null ],
             [ "OperationsCMYK4", "classOperationsCMYK4.html", null ],
             [ "OperationsCMYK8", "classOperationsCMYK8.html", null ]
           ] ],
+          [ "PipetteCommonOperationsCMYK64bpp", "classPipetteCommonOperationsCMYK64bpp.html", [
+            [ "OperationsCMYK64", "classOperationsCMYK64.html", null ]
+          ] ],
           [ "PipetteCommonOperationsRGB", "classPipetteCommonOperationsRGB.html", [
-            [ "Operations24bpp", "classOperations24bpp.html", null ]
+            [ "OperationsRgb24bpp", "classOperationsRgb24bpp.html", null ]
+          ] ],
+          [ "PipetteCommonOperationsRGB48bpp", "classPipetteCommonOperationsRGB48bpp.html", [
+            [ "OperationsRgb48bpp", "classOperationsRgb48bpp.html", null ]
           ] ]
         ] ],
         [ "PipetteViewInterface", "classPipetteViewInterface.html", [
@@ -200,8 +209,11 @@ var hierarchy =
           [ "Operations1bpp", "classOperations1bpp.html", null ],
           [ "Operations1bppClipped", "classOperations1bppClipped.html", null ],
           [ "Operations8bpp", "classOperations8bpp.html", null ],
+          [ "PipetteCommonOperations16bpp", "classPipetteCommonOperations16bpp.html", null ],
           [ "PipetteCommonOperationsCMYK", "classPipetteCommonOperationsCMYK.html", null ],
-          [ "PipetteCommonOperationsRGB", "classPipetteCommonOperationsRGB.html", null ]
+          [ "PipetteCommonOperationsCMYK64bpp", "classPipetteCommonOperationsCMYK64bpp.html", null ],
+          [ "PipetteCommonOperationsRGB", "classPipetteCommonOperationsRGB.html", null ],
+          [ "PipetteCommonOperationsRGB48bpp", "classPipetteCommonOperationsRGB48bpp.html", null ]
         ] ],
         [ "DummyLayerOperations", "classDummyLayerOperations.html", null ]
       ] ],

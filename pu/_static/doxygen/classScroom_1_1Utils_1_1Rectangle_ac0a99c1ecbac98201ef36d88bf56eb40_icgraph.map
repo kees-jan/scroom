@@ -1,7 +1,13 @@
 <map id="Scroom::Utils::Rectangle::getRight" name="Scroom::Utils::Rectangle::getRight">
-<area shape="rect" id="Node000001" title=" " alt="" coords="289,37,472,77"/>
-<area shape="rect" id="Node000002" href="$classPipetteCommonOperationsCMYK.html#a8d1f4d3f571c58e5933510a4ac3d6f83" title=" " alt="" coords="5,5,241,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="275,47,241,43,242,37,276,42"/>
-<area shape="rect" id="Node000003" href="$classPipetteCommonOperationsRGB.html#ac82368ae6a784e62a04fd51d6039f5b0" title=" " alt="" coords="10,69,237,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="276,73,237,78,237,73,275,68"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="329,133,512,173"/>
+<area shape="rect" id="Node000002" href="$classPipetteCommonOperationsCMYK.html#a8d1f4d3f571c58e5933510a4ac3d6f83" title=" " alt="" coords="25,5,261,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="384,126,336,91,280,60,248,48,250,43,282,55,339,87,387,122"/>
+<area shape="rect" id="Node000003" href="$classPipetteCommonOperationsCMYK64bpp.html#a84c3e55de3ad80688d402cb7ac7fcdd5" title=" " alt="" coords="5,69,281,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="319,133,230,112,231,107,321,128"/>
+<area shape="rect" id="Node000004" href="$classPipetteCommonOperationsRGB.html#ac82368ae6a784e62a04fd51d6039f5b0" title=" " alt="" coords="30,133,257,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="315,156,257,156,257,151,315,151"/>
+<area shape="rect" id="Node000005" href="$classPipetteCommonOperationsRGB48bpp.html#a8eeaff485265c19b5474ba27d000fe95" title=" " alt="" coords="10,197,277,237"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="321,179,231,200,230,195,319,174"/>
+<area shape="rect" id="Node000006" href="$classPipetteCommonOperations16bpp.html#ab0965595d281dd9485a1becf9333fb30" title=" " alt="" coords="24,261,263,301"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="387,185,339,220,282,252,250,264,248,259,280,247,336,215,384,180"/>
 </map>

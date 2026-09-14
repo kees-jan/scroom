@@ -10,14 +10,17 @@ var searchData=
   ['opentiledbitmapaspresentation_7',['OpenTiledBitmapAsPresentation',['../classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html',1,'anonymous_namespace{tiledbitmappresentation.cc}']]],
   ['opentiledbitmapinterface_8',['OpenTiledBitmapInterface',['../classScroom_1_1TiledBitmap_1_1OpenTiledBitmapInterface.html',1,'Scroom::TiledBitmap']]],
   ['operations_9',['Operations',['../classOperations.html',1,'']]],
-  ['operations1bpp_10',['Operations1bpp',['../classOperations1bpp.html',1,'']]],
-  ['operations1bppclipped_11',['Operations1bppClipped',['../classOperations1bppClipped.html',1,'']]],
-  ['operations24bpp_12',['Operations24bpp',['../classOperations24bpp.html',1,'']]],
+  ['operations16bpp_10',['Operations16bpp',['../classOperations16bpp.html',1,'']]],
+  ['operations1bpp_11',['Operations1bpp',['../classOperations1bpp.html',1,'']]],
+  ['operations1bppclipped_12',['Operations1bppClipped',['../classOperations1bppClipped.html',1,'']]],
   ['operations8bpp_13',['Operations8bpp',['../classOperations8bpp.html',1,'']]],
   ['operationscmyk16_14',['OperationsCMYK16',['../classOperationsCMYK16.html',1,'']]],
   ['operationscmyk32_15',['OperationsCMYK32',['../classOperationsCMYK32.html',1,'']]],
   ['operationscmyk4_16',['OperationsCMYK4',['../classOperationsCMYK4.html',1,'']]],
-  ['operationscmyk8_17',['OperationsCMYK8',['../classOperationsCMYK8.html',1,'']]],
-  ['operationscolormapped_18',['OperationsColormapped',['../classOperationsColormapped.html',1,'']]],
-  ['optional_5fcleanup_19',['optional_cleanup',['../classScroom_1_1Utils_1_1optional__cleanup.html',1,'Scroom::Utils']]]
+  ['operationscmyk64_17',['OperationsCMYK64',['../classOperationsCMYK64.html',1,'']]],
+  ['operationscmyk8_18',['OperationsCMYK8',['../classOperationsCMYK8.html',1,'']]],
+  ['operationscolormapped_19',['OperationsColormapped',['../classOperationsColormapped.html',1,'']]],
+  ['operationsrgb24bpp_20',['OperationsRgb24bpp',['../classOperationsRgb24bpp.html',1,'']]],
+  ['operationsrgb48bpp_21',['OperationsRgb48bpp',['../classOperationsRgb48bpp.html',1,'']]],
+  ['optional_5fcleanup_22',['optional_cleanup',['../classScroom_1_1Utils_1_1optional__cleanup.html',1,'Scroom::Utils']]]
 ];

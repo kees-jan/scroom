@@ -2207,6 +2207,7 @@
     <name>bitmap-helpers.hh</name>
     <path>libs/scroom/inc/scroom/</path>
     <filename>bitmap-helpers_8hh.html</filename>
+    <includes id="assertions_8hh" name="assertions.hh" local="no" import="no" module="no" objc="no">scroom/assertions.hh</includes>
     <includes id="global_8hh" name="global.hh" local="no" import="no" module="no" objc="no">scroom/global.hh</includes>
     <class kind="class">Scroom::Bitmap::BitmapSurface</class>
     <class kind="class">Scroom::Bitmap::SampleIterator</class>
@@ -4313,14 +4314,20 @@
     <includes id="tiledbitmapinterface_8hh" name="tiledbitmapinterface.hh" local="no" import="no" module="no" objc="no">scroom/tiledbitmapinterface.hh</includes>
     <class kind="class">CommonOperations</class>
     <class kind="class">PipetteCommonOperationsCMYK</class>
+    <class kind="class">PipetteCommonOperationsCMYK64bpp</class>
     <class kind="class">PipetteCommonOperationsRGB</class>
+    <class kind="class">PipetteCommonOperationsRGB48bpp</class>
+    <class kind="class">PipetteCommonOperations16bpp</class>
     <class kind="class">Operations1bpp</class>
     <class kind="class">Operations8bpp</class>
-    <class kind="class">Operations24bpp</class>
+    <class kind="class">Operations16bpp</class>
+    <class kind="class">OperationsRgb24bpp</class>
+    <class kind="class">OperationsRgb48bpp</class>
     <class kind="class">Operations</class>
     <class kind="class">OperationsColormapped</class>
     <class kind="class">Operations1bppClipped</class>
     <class kind="class">OperationsCMYK32</class>
+    <class kind="class">OperationsCMYK64</class>
     <class kind="class">OperationsCMYK16</class>
     <class kind="class">OperationsCMYK8</class>
     <class kind="class">OperationsCMYK4</class>
@@ -11350,6 +11357,13 @@
       <arglist>(cairo_t *cr, const ConstTile::Ptr &amp;tile, Scroom::Utils::Rectangle&lt; double &gt; tileArea, Scroom::Utils::Rectangle&lt; double &gt; viewArea, int zoom, Scroom::Utils::Stuff cache) override</arglist>
     </member>
     <member kind="function" static="yes">
+      <type>static uint8_t</type>
+      <name>channel16To8</name>
+      <anchorfile>classCommonOperations.html</anchorfile>
+      <anchor>ad73969df8b5e83b7b9a05e3b257b68d3</anchor>
+      <arglist>(uint16_t value)</arglist>
+    </member>
+    <member kind="function" static="yes">
       <type>static void</type>
       <name>drawPixelValue</name>
       <anchorfile>classCommonOperations.html</anchorfile>
@@ -15316,6 +15330,60 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>Operations16bpp</name>
+    <filename>classOperations16bpp.html</filename>
+    <base>PipetteCommonOperations16bpp</base>
+    <member kind="function">
+      <type></type>
+      <name>Operations16bpp</name>
+      <anchorfile>classOperations16bpp.html</anchorfile>
+      <anchor>a559ea097902db43fa311c73d3f35043f</anchor>
+      <arglist>(ColormapProvider::Ptr colormapProvider)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>getBpp</name>
+      <anchorfile>classOperations16bpp.html</anchorfile>
+      <anchor>a214659a3f53b69b4f13ea6867831781c</anchor>
+      <arglist>() override</arglist>
+    </member>
+    <member kind="function">
+      <type>Scroom::Utils::Stuff</type>
+      <name>cache</name>
+      <anchorfile>classOperations16bpp.html</anchorfile>
+      <anchor>a0cbe5f50ac11b1ba691ec2a26ba3aa58</anchor>
+      <arglist>(const ConstTile::Ptr &amp;tile) override</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>reduce</name>
+      <anchorfile>classOperations16bpp.html</anchorfile>
+      <anchor>a28283173b05f32ffd9125cde3c50645b</anchor>
+      <arglist>(Tile::Ptr target, ConstTile::Ptr source, int x, int y) override</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>draw</name>
+      <anchorfile>classOperations16bpp.html</anchorfile>
+      <anchor>ab65f3d021518d65040d464c758f57926</anchor>
+      <arglist>(cairo_t *cr, const ConstTile::Ptr &amp;tile, Scroom::Utils::Rectangle&lt; double &gt; tileArea, Scroom::Utils::Rectangle&lt; double &gt; viewArea, int zoom, Scroom::Utils::Stuff cache) override</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static LayerOperations::Ptr</type>
+      <name>create</name>
+      <anchorfile>classOperations16bpp.html</anchorfile>
+      <anchor>adc62a3b060c5dd8be9fd4f1ba4de08cf</anchor>
+      <arglist>(ColormapProvider::Ptr colormapProvider)</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>ColormapProvider::Ptr</type>
+      <name>colormapProvider</name>
+      <anchorfile>classOperations16bpp.html</anchorfile>
+      <anchor>a1217b448ee8efa1fdcebfa6c2c04a1ff</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>Operations1bpp</name>
     <filename>classOperations1bpp.html</filename>
     <base>CommonOperations</base>
@@ -15414,46 +15482,6 @@
       <anchorfile>classOperations1bppClipped.html</anchorfile>
       <anchor>a272902f3b9f2fb46ad34f91f535aeea9</anchor>
       <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>Operations24bpp</name>
-    <filename>classOperations24bpp.html</filename>
-    <base>PipetteCommonOperationsRGB</base>
-    <member kind="function">
-      <type></type>
-      <name>Operations24bpp</name>
-      <anchorfile>classOperations24bpp.html</anchorfile>
-      <anchor>a3a16af1f5fc66b2f35f8e7667ccb3a8d</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>int</type>
-      <name>getBpp</name>
-      <anchorfile>classOperations24bpp.html</anchorfile>
-      <anchor>a9cfec7016e2fef4b5423ded4949a93f0</anchor>
-      <arglist>() override</arglist>
-    </member>
-    <member kind="function">
-      <type>Scroom::Utils::Stuff</type>
-      <name>cache</name>
-      <anchorfile>classOperations24bpp.html</anchorfile>
-      <anchor>aa56c1b3c07df175b80167d3f2df7c655</anchor>
-      <arglist>(const ConstTile::Ptr &amp;tile) override</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>reduce</name>
-      <anchorfile>classOperations24bpp.html</anchorfile>
-      <anchor>a5d3e372510b5c3db3d71796d78012233</anchor>
-      <arglist>(Tile::Ptr target, ConstTile::Ptr source, int x, int y) override</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static Ptr</type>
-      <name>create</name>
-      <anchorfile>classOperations24bpp.html</anchorfile>
-      <anchor>a040d7cb9f01db55dd7ba668ff6fdf215</anchor>
-      <arglist>()</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -15631,6 +15659,46 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>OperationsCMYK64</name>
+    <filename>classOperationsCMYK64.html</filename>
+    <base>PipetteCommonOperationsCMYK64bpp</base>
+    <member kind="function">
+      <type></type>
+      <name>OperationsCMYK64</name>
+      <anchorfile>classOperationsCMYK64.html</anchorfile>
+      <anchor>a0e9cbf60ef17dd496f383f021e067f8d</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>getBpp</name>
+      <anchorfile>classOperationsCMYK64.html</anchorfile>
+      <anchor>a32f6a377b9a997a98ace098219b87ab1</anchor>
+      <arglist>() override</arglist>
+    </member>
+    <member kind="function">
+      <type>Scroom::Utils::Stuff</type>
+      <name>cache</name>
+      <anchorfile>classOperationsCMYK64.html</anchorfile>
+      <anchor>a8764613faefd5883ba54f66a2cb0be69</anchor>
+      <arglist>(const ConstTile::Ptr &amp;tile) override</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>reduce</name>
+      <anchorfile>classOperationsCMYK64.html</anchorfile>
+      <anchor>aff12c8d7f357b5538b2920643058e57e</anchor>
+      <arglist>(Tile::Ptr target, ConstTile::Ptr source, int x, int y) override</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static Ptr</type>
+      <name>create</name>
+      <anchorfile>classOperationsCMYK64.html</anchorfile>
+      <anchor>aeacc48497e058d5a8a73b4e2922c378f</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>OperationsCMYK8</name>
     <filename>classOperationsCMYK8.html</filename>
     <base>PipetteCommonOperationsCMYK</base>
@@ -15708,6 +15776,86 @@
       <anchorfile>classOperationsColormapped.html</anchorfile>
       <anchor>a0b0991af5a7714e81ac4ea1845dc3910</anchor>
       <arglist>(ColormapProvider::Ptr colormapProvider, int bpp)</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>OperationsRgb24bpp</name>
+    <filename>classOperationsRgb24bpp.html</filename>
+    <base>PipetteCommonOperationsRGB</base>
+    <member kind="function">
+      <type></type>
+      <name>OperationsRgb24bpp</name>
+      <anchorfile>classOperationsRgb24bpp.html</anchorfile>
+      <anchor>ace6a4d7cef71e54e8166dfc76d8fff8a</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>getBpp</name>
+      <anchorfile>classOperationsRgb24bpp.html</anchorfile>
+      <anchor>a366f2f00d409a59a529fcc64b182ad95</anchor>
+      <arglist>() override</arglist>
+    </member>
+    <member kind="function">
+      <type>Scroom::Utils::Stuff</type>
+      <name>cache</name>
+      <anchorfile>classOperationsRgb24bpp.html</anchorfile>
+      <anchor>a04b0d561aa26893acbf07cd60d3d1361</anchor>
+      <arglist>(const ConstTile::Ptr &amp;tile) override</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>reduce</name>
+      <anchorfile>classOperationsRgb24bpp.html</anchorfile>
+      <anchor>a246d9c225618a95cd2c30b570da1381d</anchor>
+      <arglist>(Tile::Ptr target, ConstTile::Ptr source, int x, int y) override</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static Ptr</type>
+      <name>create</name>
+      <anchorfile>classOperationsRgb24bpp.html</anchorfile>
+      <anchor>a25b326b314181448325bb82ea5fa54fb</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>OperationsRgb48bpp</name>
+    <filename>classOperationsRgb48bpp.html</filename>
+    <base>PipetteCommonOperationsRGB48bpp</base>
+    <member kind="function">
+      <type></type>
+      <name>OperationsRgb48bpp</name>
+      <anchorfile>classOperationsRgb48bpp.html</anchorfile>
+      <anchor>a78d44049a0caae227d0096d02bf53476</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>getBpp</name>
+      <anchorfile>classOperationsRgb48bpp.html</anchorfile>
+      <anchor>aad7199b21e0a6d690c7b5b23791cef6c</anchor>
+      <arglist>() override</arglist>
+    </member>
+    <member kind="function">
+      <type>Scroom::Utils::Stuff</type>
+      <name>cache</name>
+      <anchorfile>classOperationsRgb48bpp.html</anchorfile>
+      <anchor>ac1d16e1547de5bc8c4d187ae5078eab0</anchor>
+      <arglist>(const ConstTile::Ptr &amp;tile) override</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>reduce</name>
+      <anchorfile>classOperationsRgb48bpp.html</anchorfile>
+      <anchor>af96f1d9aaa0fcc561b5cda4231ebb700</anchor>
+      <arglist>(Tile::Ptr target, ConstTile::Ptr source, int x, int y) override</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static Ptr</type>
+      <name>create</name>
+      <anchorfile>classOperationsRgb48bpp.html</anchorfile>
+      <anchor>a2416b0af013eda7807cbfee320ea6042</anchor>
+      <arglist>()</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -16055,6 +16203,26 @@
     <base>Scroom::GtkTestHelpers::GtkMainLoop</base>
   </compound>
   <compound kind="class">
+    <name>PipetteCommonOperations16bpp</name>
+    <filename>classPipetteCommonOperations16bpp.html</filename>
+    <base>PipetteLayerOperations</base>
+    <base>CommonOperations</base>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; PipetteCommonOperations16bpp &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>classPipetteCommonOperations16bpp.html</anchorfile>
+      <anchor>a2e3131197b318f33ec9b57dee354b949</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>PipetteLayerOperations::PipetteColor</type>
+      <name>sumPixelValues</name>
+      <anchorfile>classPipetteCommonOperations16bpp.html</anchorfile>
+      <anchor>ab0965595d281dd9485a1becf9333fb30</anchor>
+      <arglist>(Scroom::Utils::Rectangle&lt; int &gt; area, const ConstTile::Ptr &amp;tile) override</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>PipetteCommonOperationsCMYK</name>
     <filename>classPipetteCommonOperationsCMYK.html</filename>
     <base>PipetteLayerOperations</base>
@@ -16089,6 +16257,26 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>PipetteCommonOperationsCMYK64bpp</name>
+    <filename>classPipetteCommonOperationsCMYK64bpp.html</filename>
+    <base>PipetteLayerOperations</base>
+    <base>CommonOperations</base>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; PipetteCommonOperationsCMYK64bpp &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>classPipetteCommonOperationsCMYK64bpp.html</anchorfile>
+      <anchor>a72010cf4a465b8adbe00e4f286ea9bb8</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>PipetteLayerOperations::PipetteColor</type>
+      <name>sumPixelValues</name>
+      <anchorfile>classPipetteCommonOperationsCMYK64bpp.html</anchorfile>
+      <anchor>a84c3e55de3ad80688d402cb7ac7fcdd5</anchor>
+      <arglist>(Scroom::Utils::Rectangle&lt; int &gt; area, const ConstTile::Ptr &amp;tile) override</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>PipetteCommonOperationsRGB</name>
     <filename>classPipetteCommonOperationsRGB.html</filename>
     <base>PipetteLayerOperations</base>
@@ -16120,6 +16308,26 @@
       <anchorfile>classPipetteCommonOperationsRGB.html</anchorfile>
       <anchor>a55e94b30e388c51824d5c0e6dfb12c27</anchor>
       <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>PipetteCommonOperationsRGB48bpp</name>
+    <filename>classPipetteCommonOperationsRGB48bpp.html</filename>
+    <base>PipetteLayerOperations</base>
+    <base>CommonOperations</base>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; PipetteCommonOperationsRGB48bpp &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>classPipetteCommonOperationsRGB48bpp.html</anchorfile>
+      <anchor>a0027975eea4c211fb49a2b6fca4c5ab4</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>PipetteLayerOperations::PipetteColor</type>
+      <name>sumPixelValues</name>
+      <anchorfile>classPipetteCommonOperationsRGB48bpp.html</anchorfile>
+      <anchor>a8eeaff485265c19b5474ba27d000fe95</anchor>
+      <arglist>(Scroom::Utils::Rectangle&lt; int &gt; area, const ConstTile::Ptr &amp;tile) override</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -19993,8 +20201,15 @@
       <type></type>
       <name>SampleIterator</name>
       <anchorfile>classScroom_1_1Bitmap_1_1SampleIterator.html</anchorfile>
-      <anchor>acf90826e2b9857a2ea9364ea1f7aebe7</anchor>
-      <arglist>(div_t d, ConstBase *base, int bps_)</arglist>
+      <anchor>ae2745d64e77a7cebed7d8f6fcf0c781d</anchor>
+      <arglist>(div_t d, ConstBase *base, int bps_, int samplesPerBase_)</arglist>
+    </member>
+    <member kind="function" protection="private" static="yes">
+      <type>static int</type>
+      <name>samplesPerBaseFromBps</name>
+      <anchorfile>classScroom_1_1Bitmap_1_1SampleIterator.html</anchorfile>
+      <anchor>a4a07bf60be20c4957be487173927eb37</anchor>
+      <arglist>(int bps_)</arglist>
     </member>
     <member kind="function" protection="private" static="yes">
       <type>static Base</type>
