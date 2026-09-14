@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-55-g7bb620336</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-55-g4a0c51108</span>
    </div>
   </td>
  </tr>
@@ -268,7 +268,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   25</span>{</div>
 <div class="line"><span class="lineno">   26</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> offset = 4 * (area.<a class="code hl_function" href="classScroom_1_1Utils_1_1Rectangle.html#a23ed938b3f63186f48c5828024a9d6ab">getTop</a>() * tile-&gt;width + area.<a class="code hl_function" href="classScroom_1_1Utils_1_1Rectangle.html#ad623b0b902d4e2cd1d858300728c78d1">getLeft</a>());</div>
 <div class="line"><span class="lineno">   27</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> stride = 4 * (tile-&gt;width - area.<a class="code hl_function" href="classScroom_1_1Utils_1_1Rectangle.html#a3b8d627a36eb56f6f36eea5004591154">getWidth</a>());</div>
-<div class="line"><span class="lineno">   28</span>  <span class="keyword">const</span> uint16_t* sample = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>uint16_t*<span class="keyword">&gt;</span>(tile-&gt;data.get()) + offset;</div>
+<div class="line"><span class="lineno">   28</span>  <span class="keyword">auto</span> <span class="keyword">const</span>* sample = <span class="keyword">reinterpret_cast&lt;</span>uint16_t const*<span class="keyword">&gt;</span>(tile-&gt;data.get()) + offset;</div>
 <div class="line"><span class="lineno">   29</span> </div>
 <div class="line"><span class="lineno">   30</span>  <span class="keywordtype">size_t</span> sum_c = 0;</div>
 <div class="line"><span class="lineno">   31</span>  <span class="keywordtype">size_t</span> sum_m = 0;</div>
