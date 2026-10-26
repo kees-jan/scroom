@@ -1,0 +1,12 @@
+<map id="WaitForAsyncOp::operator()" name="WaitForAsyncOp::operator()">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,104,207,129"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Semaphore.html#a43987b367117fad4b96cebf66d6b4eae" title=" " alt="" coords="255,5,425,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,102,184,71,254,40,275,32,277,37,256,44,186,76,130,106"/>
+<area shape="rect" id="Node000003" href="$classThreadPool.html#a5ceb75ca278331440e9adce284089863" title=" " alt="" coords="259,79,421,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="206,103,245,99,246,104,207,108"/>
+<area shape="rect" id="Node000004" href="$threadpoolimpl_8cc.html#af979353165a7a214dda8f7f289de81ea" title=" " alt="" coords="289,128,391,153"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="207,124,275,131,275,137,207,130"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Semaphore.html#a7288ef73832e54d1d7cc36d434ae8b47" title=" " alt="" coords="255,177,425,203"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="147,127,255,162,283,171,282,176,254,167,145,132"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="302,80,294,70,298,60,314,54,340,52,373,56,385,65,382,70,371,61,340,57,315,59,302,64,299,70,306,77"/>
+</map>

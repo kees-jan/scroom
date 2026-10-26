@@ -1,0 +1,28 @@
+<map id="ColormapHelper" name="ColormapHelper">
+<area shape="rect" id="Node000001" title=" " alt="" coords="207,1416,353,1561"/>
+<area shape="rect" id="Node000002" href="$classColormapHelperBase.html" title=" " alt="" coords="184,1181,376,1367"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="283,1381,283,1416,277,1416,277,1381"/>
+<area shape="rect" id="Node000003" href="$classColormapProvider.html" title=" " alt="" coords="5,919,136,984"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="93,996,119,1048,150,1103,206,1180,201,1183,146,1105,114,1050,88,998"/>
+<area shape="rect" id="Node000004" href="$classInterface.html" title=" " alt="" coords="122,561,230,726"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="146,740,84,919,79,918,141,738"/>
+<area shape="rect" id="Node000005" href="$classColormappable.html" title=" " alt="" coords="161,799,399,1104"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="211,738,231,798,226,800,206,740"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="283,1118,283,1181,277,1181,277,1118"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="423,919,627,984"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="504,986,413,1106,363,1170,359,1167,409,1102,500,982"/>
+<area shape="rect" id="Node000007" href="$classColormap.html" title=" " alt="" coords="435,551,616,736"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="528,736,528,902,523,902,523,736"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="411,423,490,488"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="466,487,485,534,480,536,461,489"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="380,207,511,287"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="449,301,453,422,447,423,444,301"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="517,423,664,488"/>
+<area shape="poly" id="edge10_Node000007_Node000010" title=" " alt="" coords="582,489,565,536,560,534,577,487"/>
+<area shape="rect" id="Node000011" href="$classColor.html" title=" " alt="" coords="535,135,651,360"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="595,360,594,406,589,406,589,360"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="414,13,589,78"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="524,89,544,134,540,136,519,91"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="613,5,761,85"/>
+<area shape="poly" id="edge13_Node000011_Node000013" title=" " alt="" coords="665,99,648,135,643,133,660,97"/>
+</map>

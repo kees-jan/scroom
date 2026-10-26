@@ -1,0 +1,8 @@
+<map id="ScroomInterfaceImpl::newAggregate" name="ScroomInterfaceImpl::newAggregate">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,164,45"/>
+<area shape="rect" id="Node000002" href="$classPluginManager.html#a724cc4d4d92c9273606c91909b508ebd" title=" " alt="" coords="443,13,645,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,23,429,23,429,28,165,28"/>
+<area shape="rect" id="Node000003" href="$callbacks_8cc.html#a1477024fd79f6507c4fa01a5b8e85d31" title=" " alt="" coords="212,38,395,63"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="165,32,199,36,198,41,164,37"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="395,38,429,35,429,40,395,44"/>
+</map>

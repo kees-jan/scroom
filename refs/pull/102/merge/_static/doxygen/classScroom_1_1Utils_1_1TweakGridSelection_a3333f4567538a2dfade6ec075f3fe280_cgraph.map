@@ -1,0 +1,9 @@
+<map id="Scroom::Utils::TweakGridSelection::tweakSelection" name="Scroom::Utils::TweakGridSelection::tweakSelection">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,23,196,63"/>
+<area shape="rect" id="Node000002" href="$cairo-helpers_8cc.html#ac7a152a4cc864e9c67acbc6686a9d3a4" title=" " alt="" coords="249,5,399,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="196,30,235,25,235,31,197,35"/>
+<area shape="rect" id="Node000003" href="$rounding_8hh.html#a8ef4d93107153397a73e4a13f5f86a3d" title=" " alt="" coords="244,55,404,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="197,51,230,55,230,60,196,56"/>
+<area shape="rect" id="Node000004" href="$rounding_8hh.html#aedaf778f8b35fe2d25e2e06832bee1ca" title=" " alt="" coords="452,55,597,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="404,65,438,65,438,70,404,70"/>
+</map>

@@ -1,0 +1,32 @@
+<map id="Scroom::Utils::Observable::getObservers" name="Scroom::Utils::Observable::getObservers">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1300,169,1491,209"/>
+<area shape="rect" id="Node000002" href="$classPresentationBase.html#a81cfe78e3adf5a1fecc307e2284578fc" title=" " alt="" coords="1043,13,1222,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1369,160,1319,104,1287,75,1251,52,1221,40,1223,35,1253,47,1290,71,1323,100,1373,156"/>
+<area shape="rect" id="Node000004" href="$classTestObservable.html#adc23514797077983792a985752dd907a" title=" " alt="" coords="1024,62,1241,87"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1356,163,1307,131,1251,102,1211,90,1213,85,1253,98,1310,127,1359,159"/>
+<area shape="rect" id="Node000005" href="$classTestRecursiveObservable.html#a4b8c5beeeadfd7837c857b283ed16502" title=" " alt="" coords="1039,112,1226,152"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="1289,169,1224,155,1225,149,1290,164"/>
+<area shape="rect" id="Node000006" href="$classCompressedTile.html#a56111eeb0baeaf0b8f2d93e4a81ea99d" title=" " alt="" coords="1013,177,1252,202"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="1286,192,1252,192,1252,187,1286,187"/>
+<area shape="rect" id="Node000012" href="$classCompressedTile.html#abb93373d26a2155d4fe3f8b235ea8d45" title=" " alt="" coords="503,229,731,254"/>
+<area shape="poly" id="edge15_Node000001_Node000012" title=" " alt="" coords="1287,213,1252,217,1112,230,971,238,731,244,731,238,971,232,1112,224,1252,212,1286,207"/>
+<area shape="rect" id="Node000013" href="$classPresentationBase.html#ae964144f0e8da9e7d7067f3d8183a8e4" title=" " alt="" coords="1045,278,1221,303"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="1347,218,1253,261,1190,281,1189,275,1251,256,1345,213"/>
+<area shape="rect" id="Node000015" href="$classTileViewState.html#a0f0b147b0ad17790338ee2b130809682" title=" " alt="" coords="1036,327,1229,353"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="1371,222,1320,272,1288,297,1253,318,1224,330,1222,325,1251,314,1285,293,1316,268,1367,218"/>
+<area shape="rect" id="Node000003" href="$classTransformPresentation.html#aa8a233e2cf3d2b78088f64321ec0cc6e" title=" " alt="" coords="787,5,957,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1030,28,957,28,957,23,1030,23"/>
+<area shape="rect" id="Node000007" href="$classCompressedTile.html#a5c520928c3e8faafa0493d77fa7c16d8" title=" " alt="" coords="779,174,965,199"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1000,191,965,190,965,185,1000,185"/>
+<area shape="rect" id="Node000008" href="$classCompressedTile.html#a0678ca6eecadd7783482c591fc11fe2b" title=" " alt="" coords="520,100,713,140"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="809,173,694,143,695,138,810,168"/>
+<area shape="rect" id="Node000011" href="$classCompressedTile.html#a097a41844c75d21396fb64db3c039c8a" title=" " alt="" coords="521,164,713,204"/>
+<area shape="poly" id="edge10_Node000007_Node000011" title=" " alt="" coords="765,188,713,188,713,182,765,183"/>
+<area shape="poly" id="edge11_Node000007_Node000012" title=" " alt="" coords="799,205,677,231,676,226,798,200"/>
+<area shape="rect" id="Node000009" href="$classCompressedTile.html#a84c39301c28edb944aa1dcc38a40239b" title=" " alt="" coords="244,107,455,133"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="506,123,455,123,455,117,506,117"/>
+<area shape="rect" id="Node000010" href="$classCompressedTile.html#a9c6389557145d0df0b1996dc203089da" title=" " alt="" coords="5,107,196,133"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="230,123,196,123,196,117,230,117"/>
+<area shape="rect" id="Node000014" href="$classTransformPresentation.html#a8aac4359f5f251bf4c89882857d1b0f9" title=" " alt="" coords="787,277,957,317"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="1031,296,957,298,957,293,1031,291"/>
+</map>

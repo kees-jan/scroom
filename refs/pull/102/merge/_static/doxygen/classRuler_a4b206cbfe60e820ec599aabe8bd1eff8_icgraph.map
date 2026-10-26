@@ -1,0 +1,7 @@
+<map id="Ruler::draw" name="Ruler::draw">
+<area shape="rect" id="Node000001" title=" " alt="" coords="352,5,448,31"/>
+<area shape="rect" id="Node000002" href="$classRuler.html#a24acbbd99042d3584816d95066006405" title=" " alt="" coords="152,5,304,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="338,21,305,21,305,15,338,15"/>
+<area shape="rect" id="Node000003" href="$classRuler.html#a3edb9e827855ce558712d1c594c6cd12" title=" " alt="" coords="5,5,104,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="138,21,104,21,104,15,138,15"/>
+</map>

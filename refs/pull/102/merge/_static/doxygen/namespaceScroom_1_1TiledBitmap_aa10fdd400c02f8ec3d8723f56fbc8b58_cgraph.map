@@ -1,0 +1,19 @@
+<map id="Scroom::TiledBitmap::CMYKBitmap" name="Scroom::TiledBitmap::CMYKBitmap">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,103,164,143"/>
+<area shape="rect" id="Node000002" href="$classOperationsCMYK32.html#af8f9ac296dabdbb18392d623e2be35d5" title=" " alt="" coords="212,22,408,47"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,100,211,66,256,49,257,54,213,70,131,105"/>
+<area shape="rect" id="Node000004" href="$classOperationsCMYK16.html#ae8ef4df2467f4d476e274069a7f3124a" title=" " alt="" coords="212,81,408,106"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="164,110,198,105,199,110,165,115"/>
+<area shape="rect" id="Node000006" href="$classOperationsCMYK8.html#afddb0d2799e315acde82b39e8077dc4f" title=" " alt="" coords="216,134,404,159"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="165,128,202,133,202,138,164,134"/>
+<area shape="rect" id="Node000008" href="$classOperationsCMYK4.html#a5c42cfba9bd5a0b9211c903a606c1c3d" title=" " alt="" coords="216,190,404,215"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="138,140,213,168,257,183,255,188,211,173,136,145"/>
+<area shape="rect" id="Node000003" href="$classOperationsCMYK32.html#afdc3539bd4460a60ca9d2aaa3647b266" title=" " alt="" coords="456,5,683,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="408,28,442,27,442,33,408,34"/>
+<area shape="rect" id="Node000005" href="$classOperationsCMYK16.html#ab0facecd39b0ed9dfcebbca8a6da7811" title=" " alt="" coords="456,69,683,109"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="408,89,442,89,442,94,408,94"/>
+<area shape="rect" id="Node000007" href="$classOperationsCMYK8.html#af4820d4f04719b4a69345fcdd20c3ccd" title=" " alt="" coords="460,133,679,173"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="404,146,446,148,446,153,404,152"/>
+<area shape="rect" id="Node000009" href="$classOperationsCMYK4.html#ade8c4ed1a9a6fc48f8d148fea174a626" title=" " alt="" coords="460,197,679,237"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="405,205,446,208,446,213,404,211"/>
+</map>

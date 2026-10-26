@@ -1,0 +1,18 @@
+<map id="Scroom::Utils::Segment::after" name="Scroom::Utils::Segment::after">
+<area shape="rect" id="Node000001" title=" " alt="" coords="847,101,1021,141"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html#a770dc77284af75f2bb9eb41e2016cdd2" title=" " alt="" coords="616,5,799,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="880,98,798,60,767,48,769,43,800,55,882,93"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Rectangle.html#a404f0a593691285d4597c354575468f2" title=" " alt="" coords="616,69,799,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="832,110,798,105,799,100,833,104"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Rectangle.html#ade8a48db78cec3d62e905d70c2d9b413" title=" " alt="" coords="616,133,799,173"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="833,138,799,143,798,138,832,133"/>
+<area shape="rect" id="Node000008" href="$classScroom_1_1Utils_1_1Rectangle.html#ad390ca831049272af226cd28b57375c4" title=" " alt="" coords="616,197,799,237"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="882,150,800,188,769,200,767,195,798,183,880,145"/>
+<area shape="rect" id="Node000004" href="$cairo-helpers_8cc.html#a72b76dcfe2a11213e72c72dee13488d6" title=" " alt="" coords="300,141,568,166"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="608,115,490,143,489,138,607,110"/>
+<area shape="rect" id="Node000005" href="$cairo-helpers_8cc.html#a27002d3ab3abd3af027354f53c85bec7" title=" " alt="" coords="5,93,252,133"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="323,141,252,132,252,127,323,136"/>
+<area shape="rect" id="Node000006" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a4c4db94fd7f968183ee7ab0aab24e35d" title=" " alt="" coords="18,157,239,227"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="320,170,240,181,239,175,319,165"/>
+<area shape="poly" id="edge8_Node000008_Node000004" title=" " alt="" coords="607,197,489,169,490,163,608,192"/>
+</map>

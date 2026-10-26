@@ -1,0 +1,14 @@
+<map id="PluginManager" name="PluginManager">
+<area shape="rect" id="Node000001" title=" " alt="" coords="136,467,393,827"/>
+<area shape="rect" id="Node000002" href="$classWorkInterface.html" title=" " alt="" coords="5,286,111,351"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,362,153,465,149,468,83,365"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="108,5,216,171"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="122,184,75,287,70,284,117,182"/>
+<area shape="rect" id="Node000004" href="$classScroomPluginInterface.html" title=" " alt="" coords="135,219,395,419"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="207,182,223,217,218,219,202,184"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="267,432,267,466,262,466,262,432"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="418,236,559,401"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="427,415,390,468,386,465,422,412"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="416,48,561,128"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="491,142,491,236,486,236,486,142"/>
+</map>

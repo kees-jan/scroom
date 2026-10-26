@@ -1,0 +1,13 @@
+<map id="RulerCalculations::calculateInterval" name="RulerCalculations::calculateInterval">
+<area shape="rect" id="Node000001" title=" " alt="" coords="521,35,665,75"/>
+<area shape="rect" id="Node000002" href="$ruler-tests_8cc.html#aeb8a967e707e4f39646629225625fff6" title=" " alt="" coords="268,5,456,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="507,46,456,40,457,35,508,41"/>
+<area shape="rect" id="Node000003" href="$classRuler.html#ae35d5489f8ddd9cfb2faf73926d7dd2f" title=" " alt="" coords="251,70,473,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="508,68,467,73,467,67,507,62"/>
+<area shape="rect" id="Node000004" href="$classRuler.html#a3edb9e827855ce558712d1c594c6cd12" title=" " alt="" coords="55,21,153,46"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="281,70,153,45,154,40,282,65"/>
+<area shape="rect" id="Node000005" href="$classRuler.html#afde932485d66440997c6e72822bb79ad" title=" " alt="" coords="41,70,167,95"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="237,85,167,85,167,80,237,80"/>
+<area shape="rect" id="Node000006" href="$classRuler.html#ae7ccb54f39cb2bbe2e8119e5621034be" title=" " alt="" coords="5,119,203,145"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="282,101,172,122,171,117,281,95"/>
+</map>

@@ -1,0 +1,25 @@
+<map id="anonymous_namespace{threadpoolimpl.cc}::ThreadWaiter" name="anonymous_namespace{threadpoolimpl.cc}::ThreadWaiter">
+<area shape="rect" id="Node000001" title=" " alt="" coords="175,997,347,1192"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="156,869,365,935"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="263,935,263,981,258,981,258,935"/>
+<area shape="rect" id="Node000003" href="$classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html" title=" " alt="" coords="175,632,347,807"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="263,807,263,853,258,853,258,807"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,477,156,557"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="118,555,174,618,170,621,114,559"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="6,336,155,401"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="83,402,83,460,78,460,78,402"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="69,178,92,243"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="83,243,83,320,78,320,78,243"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="181,469,341,564"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="263,564,263,615,258,615,258,564"/>
+<area shape="rect" id="Node000008" href="$classScroom_1_1Logger.html" title=" " alt="" coords="365,464,479,569"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="383,571,342,621,338,618,378,568"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="298,336,546,401"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="425,402,425,447,419,447,419,402"/>
+<area shape="rect" id="Node000010" href="$classScroom_1_1LoggerContainer.html" title=" " alt="" coords="333,148,511,273"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="425,273,425,320,419,320,419,273"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="305,13,389,78"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="364,77,389,132,385,134,359,79"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="413,5,583,85"/>
+<area shape="poly" id="edge11_Node000010_Node000012" title=" " alt="" coords="482,87,460,134,455,132,477,85"/>
+</map>

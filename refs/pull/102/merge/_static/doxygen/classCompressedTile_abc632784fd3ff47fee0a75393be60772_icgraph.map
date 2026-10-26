@@ -1,0 +1,16 @@
+<map id="CompressedTile::cleanupState" name="CompressedTile::cleanupState">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1013,99,1233,125"/>
+<area shape="rect" id="Node000002" href="$classCompressedTile.html#a5c520928c3e8faafa0493d77fa7c16d8" title=" " alt="" coords="779,73,965,98"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="999,102,965,98,966,93,1000,96"/>
+<area shape="rect" id="Node000006" href="$classCompressedTile.html#a097a41844c75d21396fb64db3c039c8a" title=" " alt="" coords="521,120,713,160"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="1000,121,713,137,713,132,1000,116"/>
+<area shape="rect" id="Node000003" href="$classCompressedTile.html#a0678ca6eecadd7783482c591fc11fe2b" title=" " alt="" coords="520,5,713,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="803,72,702,48,703,43,804,67"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="800,103,711,123,710,117,798,98"/>
+<area shape="rect" id="Node000007" href="$classCompressedTile.html#abb93373d26a2155d4fe3f8b235ea8d45" title=" " alt="" coords="503,70,731,95"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="765,87,731,87,731,81,765,82"/>
+<area shape="rect" id="Node000004" href="$classCompressedTile.html#a84c39301c28edb944aa1dcc38a40239b" title=" " alt="" coords="244,13,455,38"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="506,28,455,28,455,23,506,23"/>
+<area shape="rect" id="Node000005" href="$classCompressedTile.html#a9c6389557145d0df0b1996dc203089da" title=" " alt="" coords="5,13,196,38"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="230,28,196,28,196,23,230,23"/>
+</map>

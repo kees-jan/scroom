@@ -1,0 +1,10 @@
+<map id="Scroom::GtkHelpers::createCairoIntRectangle" name="Scroom::GtkHelpers::createCairoIntRectangle">
+<area shape="rect" id="Node000001" title=" " alt="" coords="491,37,677,77"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="623,26,610,19,584,16,562,18,548,23,543,29,546,36,541,38,538,28,545,18,560,13,584,11,611,14,626,21"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html#a2b1f95eea80820e7f6434cc7ec1bee52" title=" " alt="" coords="260,37,443,77"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="477,60,443,60,443,55,477,55"/>
+<area shape="rect" id="Node000003" href="$classTransparentOverlayViewInfo.html#add1ffd6ec625dfd9633fd5dad6ad2b3f" title=" " alt="" coords="5,5,212,45"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="246,46,212,42,213,36,247,41"/>
+<area shape="rect" id="Node000004" href="$classExamplePresentation.html#a6070bbfe0dfeb6571cade958362df7bb" title=" " alt="" coords="28,69,189,109"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="247,74,190,81,189,76,246,69"/>
+</map>

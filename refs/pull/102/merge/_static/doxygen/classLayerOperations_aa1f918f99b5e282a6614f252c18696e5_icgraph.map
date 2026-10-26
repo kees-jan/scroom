@@ -1,0 +1,13 @@
+<map id="LayerOperations::cache" name="LayerOperations::cache">
+<area shape="rect" id="Node000001" title=" " alt="" coords="503,31,677,56"/>
+<area shape="rect" id="Node000002" href="$classCommonOperations.html#aa09eae217c1870d175a491010ce3b9f4" title=" " alt="" coords="219,5,455,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="489,36,455,32,455,27,489,31"/>
+<area shape="rect" id="Node000003" href="$classCommonOperations.html#af173ef0acae113c9b1ae8fa658e8f4be" title=" " alt="" coords="241,55,433,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="489,56,433,61,433,56,489,50"/>
+<area shape="rect" id="Node000004" href="$classOperations1bpp.html#a5eb9524566683ba1c7c4465270f79de5" title=" " alt="" coords="5,5,171,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="258,55,152,33,153,28,259,49"/>
+<area shape="rect" id="Node000005" href="$classOperations8bpp.html#a28875a6199ba6136a09fdc58c12a7d1b" title=" " alt="" coords="5,55,171,80"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="227,70,171,70,171,65,227,65"/>
+<area shape="rect" id="Node000006" href="$classOperations.html#ac19af1189a115005d637b95aea38267b" title=" " alt="" coords="21,104,155,129"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="259,85,153,107,152,101,258,80"/>
+</map>

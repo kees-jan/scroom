@@ -1,0 +1,11 @@
+<map id="Scroom::MemoryBlocks::Detail::SwapBasedBlockAllocator" name="Scroom::MemoryBlocks::Detail::SwapBasedBlockAllocator">
+<area shape="rect" id="Node000001" title=" " alt="" coords="59,432,298,612"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1MemoryBlocks_1_1BlockInterface.html" title=" " alt="" coords="5,251,173,351"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,363,145,431,140,433,112,365"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="35,5,143,171"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="92,184,92,251,87,251,87,184"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="197,219,339,384"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="232,398,218,433,213,431,227,396"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="195,48,341,128"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="271,142,271,218,265,218,265,142"/>
+</map>
