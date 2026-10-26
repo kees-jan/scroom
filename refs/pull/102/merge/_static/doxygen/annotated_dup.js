@@ -15,9 +15,9 @@ var annotated_dup =
     [ "anonymous_namespace{progressbarmanager.cc}", "namespaceanonymous__namespace_02progressbarmanager_8cc_03.html", [
       [ "ProgressBarPulser", "classanonymous__namespace_02progressbarmanager_8cc_03_1_1ProgressBarPulser.html", "classanonymous__namespace_02progressbarmanager_8cc_03_1_1ProgressBarPulser" ]
     ] ],
-    [ "anonymous_namespace{threadpoolimpl.cc}", "namespaceanonymous__namespace_02threadpoolimpl_8cc_03.html", [
-      [ "ThreadList", "classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html", "classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList" ],
-      [ "ThreadWaiter", "classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html", "classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter" ]
+    [ "anonymous_namespace{threadpool.cc}", "namespaceanonymous__namespace_02threadpool_8cc_03.html", [
+      [ "ThreadList", "classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html", "classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList" ],
+      [ "ThreadWaiter", "classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter.html", "classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter" ]
     ] ],
     [ "anonymous_namespace{tiledbitmappresentation.cc}", "namespaceanonymous__namespace_02tiledbitmappresentation_8cc_03.html", [
       [ "OpenTiledBitmapAsPresentation", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation" ],
@@ -62,10 +62,13 @@ var annotated_dup =
       ] ],
       [ "Detail", "namespaceScroom_1_1Detail.html", [
         [ "ThreadPool", "namespaceScroom_1_1Detail_1_1ThreadPool.html", [
+          [ "Builder", "classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html", "classScroom_1_1Detail_1_1ThreadPool_1_1Builder" ],
           [ "FunctionAdditor", "classScroom_1_1Detail_1_1ThreadPool_1_1FunctionAdditor.html", "classScroom_1_1Detail_1_1ThreadPool_1_1FunctionAdditor" ],
           [ "FunctionMultiplier", "classScroom_1_1Detail_1_1ThreadPool_1_1FunctionMultiplier.html", "classScroom_1_1Detail_1_1ThreadPool_1_1FunctionMultiplier" ],
+          [ "Queue", "classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html", "classScroom_1_1Detail_1_1ThreadPool_1_1Queue" ],
           [ "QueueImpl", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl" ],
-          [ "QueueLock", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueLock.html", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueLock" ]
+          [ "QueueLock", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueLock.html", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueLock" ],
+          [ "WeakQueue", "classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html", "classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue" ]
         ] ],
         [ "ClearDefaultLogger", "structScroom_1_1Detail_1_1ClearDefaultLogger.html", "structScroom_1_1Detail_1_1ClearDefaultLogger" ]
       ] ],
@@ -151,12 +154,12 @@ var annotated_dup =
       ] ],
       [ "Logger", "classScroom_1_1Logger.html", "classScroom_1_1Logger" ],
       [ "LoggerContainer", "classScroom_1_1LoggerContainer.html", "classScroom_1_1LoggerContainer" ],
+      [ "RingBufferSink", "classScroom_1_1RingBufferSink.html", "classScroom_1_1RingBufferSink" ],
       [ "Semaphore", "classScroom_1_1Semaphore.html", "classScroom_1_1Semaphore" ]
     ] ],
     [ "A", "classA.html", "classA" ],
     [ "Aggregate", "classAggregate.html", "classAggregate" ],
     [ "AsyncDeleter", "classAsyncDeleter.html", "classAsyncDeleter" ],
-    [ "B", "classB.html", "classB" ],
     [ "BaseCounter", "classBaseCounter.html", "classBaseCounter" ],
     [ "BitCountLut", "classBitCountLut.html", "classBitCountLut" ],
     [ "ChildView", "classChildView.html", "classChildView" ],
@@ -198,6 +201,7 @@ var annotated_dup =
     [ "LayerCoordinator", "classLayerCoordinator.html", "classLayerCoordinator" ],
     [ "LayerOperations", "classLayerOperations.html", "classLayerOperations" ],
     [ "LoggerTests", "classLoggerTests.html", "classLoggerTests" ],
+    [ "LoggingWindow", "classLoggingWindow.html", "classLoggingWindow" ],
     [ "Measure", "classMeasure.html", "classMeasure" ],
     [ "MeasureHandler", "classMeasureHandler.html", "classMeasureHandler" ],
     [ "Metadata", "classMetadata.html", "classMetadata" ],
@@ -207,20 +211,26 @@ var annotated_dup =
     [ "OpenInterface", "classOpenInterface.html", "classOpenInterface" ],
     [ "OpenPresentationInterface", "classOpenPresentationInterface.html", "classOpenPresentationInterface" ],
     [ "Operations", "classOperations.html", "classOperations" ],
+    [ "Operations16bpp", "classOperations16bpp.html", "classOperations16bpp" ],
     [ "Operations1bpp", "classOperations1bpp.html", "classOperations1bpp" ],
     [ "Operations1bppClipped", "classOperations1bppClipped.html", "classOperations1bppClipped" ],
-    [ "Operations24bpp", "classOperations24bpp.html", "classOperations24bpp" ],
     [ "Operations8bpp", "classOperations8bpp.html", "classOperations8bpp" ],
     [ "OperationsCMYK16", "classOperationsCMYK16.html", "classOperationsCMYK16" ],
     [ "OperationsCMYK32", "classOperationsCMYK32.html", "classOperationsCMYK32" ],
     [ "OperationsCMYK4", "classOperationsCMYK4.html", "classOperationsCMYK4" ],
+    [ "OperationsCMYK64", "classOperationsCMYK64.html", "classOperationsCMYK64" ],
     [ "OperationsCMYK8", "classOperationsCMYK8.html", "classOperationsCMYK8" ],
     [ "OperationsColormapped", "classOperationsColormapped.html", "classOperationsColormapped" ],
+    [ "OperationsRgb24bpp", "classOperationsRgb24bpp.html", "classOperationsRgb24bpp" ],
+    [ "OperationsRgb48bpp", "classOperationsRgb48bpp.html", "classOperationsRgb48bpp" ],
     [ "ParentContextTests", "classParentContextTests.html", "classParentContextTests" ],
     [ "Pipette", "classPipette.html", "classPipette" ],
     [ "Pipette_Tests", "classPipette__Tests.html", null ],
+    [ "PipetteCommonOperations16bpp", "classPipetteCommonOperations16bpp.html", "classPipetteCommonOperations16bpp" ],
     [ "PipetteCommonOperationsCMYK", "classPipetteCommonOperationsCMYK.html", "classPipetteCommonOperationsCMYK" ],
+    [ "PipetteCommonOperationsCMYK64bpp", "classPipetteCommonOperationsCMYK64bpp.html", "classPipetteCommonOperationsCMYK64bpp" ],
     [ "PipetteCommonOperationsRGB", "classPipetteCommonOperationsRGB.html", "classPipetteCommonOperationsRGB" ],
+    [ "PipetteCommonOperationsRGB48bpp", "classPipetteCommonOperationsRGB48bpp.html", "classPipetteCommonOperationsRGB48bpp" ],
     [ "PipetteHandler", "classPipetteHandler.html", "classPipetteHandler" ],
     [ "PipetteLayerOperations", "classPipetteLayerOperations.html", "classPipetteLayerOperations" ],
     [ "PipetteViewInterface", "classPipetteViewInterface.html", "classPipetteViewInterface" ],

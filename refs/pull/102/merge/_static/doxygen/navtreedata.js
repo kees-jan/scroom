@@ -43,7 +43,7 @@ var NAVTREE =
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
-        [ "All", "namespacemembers.html", null ],
+        [ "All", "namespacemembers.html", "namespacemembers_dup" ],
         [ "Functions", "namespacemembers_func.html", null ],
         [ "Variables", "namespacemembers_vars.html", null ],
         [ "Typedefs", "namespacemembers_type.html", null ],
@@ -51,6 +51,7 @@ var NAVTREE =
         [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
     ] ],
+    [ "Concepts", "concepts.html", "concepts" ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -70,7 +71,7 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", "globals_dup" ],
         [ "Functions", "globals_func.html", "globals_func" ],
-        [ "Variables", "globals_vars.html", null ],
+        [ "Variables", "globals_vars.html", "globals_vars" ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
         [ "Enumerator", "globals_eval.html", null ],
@@ -83,26 +84,27 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "BoostTestTargetsDynamic_8h.html",
-"classAsyncDeleter.html",
-"classDummyPluginInterface.html#a97d6f51787cd9cdb068e4f1ec841ebb3",
-"classOperations.html#a4dfbdbd5254e8ee2ddcc984a3d46c3c2",
-"classProgressInterfaceStub.html#ab8e8094aca5f6609f8375ebe03975a48",
-"classScroom_1_1Bookkeeping_1_1Detail_1_1TokenAddition.html#a1b5b0605d0baa2e318837d7d3cf716a6",
-"classScroom_1_1GtkTestHelpers_1_1GtkMainLoop.html#ac832e6d4a60f092e9a50d2f44f7e3854",
-"classScroom_1_1Semaphore.html#abe1710f776442562cb3a7ead40be9d26",
-"classScroom_1_1Utils_1_1Observable.html#aebd85f42cb1237848725431cf4363562",
-"classScroom_1_1Utils_1_1Rectangle.html#a193a42cdd207109ce301d307246feb62",
-"classScroom_1_1Utils_1_1TweakRulers.html#a8dd0495ce1c7ca79673b6405890621f2",
-"classTileInitialisationObserver.html#a1469a567cc8b3a84f895dc28a06d471d",
-"classView.html#a51a2691c469396780b3cdd884eb2c01e",
-"classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html",
-"determine-size-test_8cc.html#a647feab9aa2cd7fab2763594e221173d",
-"globals_func_c.html",
-"namespaceScroom_1_1Bookkeeping.html",
-"observable-tests_8cc.html#a669f76f2c672052f64a535bfb761bbf5",
-"rectangle_8hh.html#a5efce18a40cfbf24e98a7484097b32e1",
-"showmetadata_8cc.html#acdc118ae13863f794cb97fe0c95aa23f",
-"threadpool-tests_8cc.html#ad3cb2291156f0c9914b15af8f1b5b200"
+"callbacks_8hh.html#ab5766cce90a1696ec4dd7209474b6106",
+"classDetail_1_1ViewData.html#acbd44fc73a4b20e8d6320b4b1ccd6502",
+"classMeasureHandler.html#a05c308179492e7d55ecf641ab30893b3",
+"classPnm.html",
+"classScroom_1_1Bitmap_1_1BitmapSurface.html#aa1ea6b8ee5f264244f2490683c7d2d4e",
+"classScroom_1_1ColormapImpl_1_1Colormaps.html#aa5ceb74db33fc9bc3572d846055acc4d",
+"classScroom_1_1MemoryBlobs_1_1Blob.html#ae30591679a07ec57c3d8b6a55fecec01",
+"classScroom_1_1TiledBitmap_1_1OpenTiledBitmapInterface.html#acd4922a4daed0eb2b4e71c97e3e7d0f6",
+"classScroom_1_1Utils_1_1Point.html#a8f69c38e2593833b1901ef73e935d820",
+"classScroom_1_1Utils_1_1Rectangle.html#a68f564693eb1aeed0363aa312fe620d7",
+"classScroom_1_1Utils_1_1optional__cleanup.html#a981f96f0183cce9f34c95e2edc2afef9",
+"classTiledBitmap.html#acf3ca8aba615305c124a2617192170a0",
+"classViewInterfaceStub.html#a224f1164c2d81d5e0fb207a67a3b376c",
+"classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#ab7fee1d2a92d623e3a28a2f3a59546a6",
+"dir_ecedfa50a3e3801aeb3bc34cfa2fa2dd.html",
+"gtk-helpers_8hh.html#a68ad2ca25cec0ca8c5f9174039ea86fa",
+"namespaceScroom_1_1MemoryBlocks_1_1Detail_1_1anonymous__namespace_02swapbasedblockallocator_8cc_03.html",
+"observable-tests_8cc.html#a33134d921616abb7833daa48428d38ba",
+"progressstateinterfacestub_8cc.html",
+"sampleiterator-tests_8cc.html#a53894e91bcfe1e36f402333502cbcfc2",
+"threadpool-queue-tests_8cc.html#a454f6383a96b0e9fa13a6d2110a7e1d5"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

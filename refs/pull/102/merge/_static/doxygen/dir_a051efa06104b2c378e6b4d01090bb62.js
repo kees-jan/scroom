@@ -4,6 +4,8 @@ var dir_a051efa06104b2c378e6b4d01090bb62 =
     [ "callbacks.hh", "callbacks_8hh.html", "callbacks_8hh" ],
     [ "loader.cc", "loader_8cc.html", "loader_8cc" ],
     [ "loader.hh", "loader_8hh.html", "loader_8hh" ],
+    [ "logging-window.cc", "logging-window_8cc.html", "logging-window_8cc" ],
+    [ "logging-window.hh", "logging-window_8hh.html", "logging-window_8hh" ],
     [ "main.cc", "gui_2src_2main_8cc.html", "gui_2src_2main_8cc" ],
     [ "pluginmanager.cc", "pluginmanager_8cc.html", "pluginmanager_8cc" ],
     [ "pluginmanager.hh", "pluginmanager_8hh.html", "pluginmanager_8hh" ],

@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-50-gadf3f7206</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-58-g0e62cc047</span>
    </div>
   </td>
  </tr>
@@ -91,6 +91,7 @@ $(document).ready(function(){initNavTree('namespaceScroom_1_1Detail_1_1ThreadPoo
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#concepts">Concepts</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">Scroom::Detail::ThreadPool Namespace Reference</div></div>
 </div><!--header-->
@@ -98,21 +99,251 @@ $(document).ready(function(){initNavTree('namespaceScroom_1_1Detail_1_1ThreadPoo
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Builder</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1FunctionAdditor.html">FunctionAdditor</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1FunctionMultiplier.html">FunctionMultiplier</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html">Queue</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html">QueueImpl</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1QueueLock.html">QueueLock</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html">WeakQueue</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="concepts" name="concepts"></a>
+Concepts</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptScroom_1_1Detail_1_1ThreadPool_1_1CallableT.html">CallableT</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:adbdff2f494948417786589c465d0644a" id="r_adbdff2f494948417786589c465d0644a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classThreadPool.html#aecda99f22ede5423ab70df4517a0c4c2">::ThreadPool::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Detail_1_1ThreadPool.html#adbdff2f494948417786589c465d0644a">getDeleter</a> ()</td></tr>
 <tr class="separator:adbdff2f494948417786589c465d0644a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6db7976aeeb6a5507b6c460287309454" id="r_a6db7976aeeb6a5507b6c460287309454"><td class="memTemplParams" colspan="2">template&lt;bool hasPriority, bool hasQueue, typename R &gt; </td></tr>
+<tr class="memitem:a6db7976aeeb6a5507b6c460287309454"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Detail_1_1ThreadPool.html#a6db7976aeeb6a5507b6c460287309454">addCallable</a> (<a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Builder</a>&lt; false, hasPriority, hasQueue, R &gt; <a class="el" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>, CallableT auto &amp;&amp;<a class="el" href="threadpool-destruction-tests_8cc.html#a2a95d18e7f38634394c4104d0e759989">c</a>)</td></tr>
+<tr class="separator:a6db7976aeeb6a5507b6c460287309454"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00281dfa5c10ffb5b89300b332c8ef1f" id="r_a00281dfa5c10ffb5b89300b332c8ef1f"><td class="memTemplParams" colspan="2">template&lt;bool hasCallable, bool hasQueue, typename R &gt; </td></tr>
+<tr class="memitem:a00281dfa5c10ffb5b89300b332c8ef1f"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Detail_1_1ThreadPool.html#a00281dfa5c10ffb5b89300b332c8ef1f">addPriority</a> (<a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Builder</a>&lt; hasCallable, false, hasQueue, R &gt; <a class="el" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>, int priority)</td></tr>
+<tr class="separator:a00281dfa5c10ffb5b89300b332c8ef1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43cf587770443118a3c6e147a7f43bed" id="r_a43cf587770443118a3c6e147a7f43bed"><td class="memTemplParams" colspan="2">template&lt;bool hasCallable, bool hasPriority, typename R &gt; </td></tr>
+<tr class="memitem:a43cf587770443118a3c6e147a7f43bed"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Detail_1_1ThreadPool.html#a43cf587770443118a3c6e147a7f43bed">addQueue</a> (<a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Builder</a>&lt; hasCallable, hasPriority, false, R &gt; <a class="el" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>, const <a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae44696440c2b9dd5dbef5c4eda0baec9">Queue::Ptr</a> &amp;queue)</td></tr>
+<tr class="separator:a43cf587770443118a3c6e147a7f43bed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a606704825778b41b26f4cd99c535bf04" id="r_a606704825778b41b26f4cd99c535bf04"><td class="memTemplParams" colspan="2">template&lt;bool hasCallable, bool hasPriority, typename R &gt; </td></tr>
+<tr class="memitem:a606704825778b41b26f4cd99c535bf04"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1Detail_1_1ThreadPool.html#a606704825778b41b26f4cd99c535bf04">addQueue</a> (<a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Builder</a>&lt; hasCallable, hasPriority, false, R &gt; <a class="el" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>, <a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#a90652659d120bb282fc7656588ef7cf6">WeakQueue::Ptr</a> queue)</td></tr>
+<tr class="separator:a606704825778b41b26f4cd99c535bf04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a6db7976aeeb6a5507b6c460287309454" name="a6db7976aeeb6a5507b6c460287309454"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6db7976aeeb6a5507b6c460287309454">&#9670;&#160;</a></span>addCallable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;bool hasPriority, bool hasQueue, typename R &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto Scroom::Detail::ThreadPool::addCallable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Builder</a>&lt; false, hasPriority, hasQueue, R &gt;&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CallableT auto &amp;&amp;&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  145</span>  {</div>
+<div class="line"><span class="lineno">  146</span>    <span class="keyword">using </span>RR = std::invoke_result_t&lt;<span class="keyword">decltype</span>(<a class="code hl_variable" href="threadpool-destruction-tests_8cc.html#a2a95d18e7f38634394c4104d0e759989">c</a>)&amp;&gt;;</div>
+<div class="line"><span class="lineno">  147</span>    <span class="keywordflow">return</span> <a class="code hl_class" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Builder&lt;true, hasPriority, hasQueue, RR&gt;</a>{std::forward&lt;decltype(c)&gt;(<a class="code hl_variable" href="threadpool-destruction-tests_8cc.html#a2a95d18e7f38634394c4104d0e759989">c</a>), <a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.<a class="code hl_variable" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a575311979412b59585480d617fde3a7a">priority</a>, std::move(<a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.queue)};</div>
+<div class="line"><span class="lineno">  148</span>  }</div>
+<div class="ttc" id="ablob-tests_8cc_html_a9741bf9c6acf513df5628442c549563e"><div class="ttname"><a href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a></div><div class="ttdeci">Blob::Ptr const b</div><div class="ttdef"><b>Definition</b> blob-tests.cc:118</div></div>
+<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Builder_html"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Scroom::Detail::ThreadPool::Builder</a></div><div class="ttdef"><b>Definition</b> threadpool.hh:170</div></div>
+<div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Builder_html_a575311979412b59585480d617fde3a7a"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a575311979412b59585480d617fde3a7a">Scroom::Detail::ThreadPool::Builder::priority</a></div><div class="ttdeci">int priority</div><div class="ttdef"><b>Definition</b> threadpool.hh:203</div></div>
+<div class="ttc" id="athreadpool-destruction-tests_8cc_html_a2a95d18e7f38634394c4104d0e759989"><div class="ttname"><a href="threadpool-destruction-tests_8cc.html#a2a95d18e7f38634394c4104d0e759989">c</a></div><div class="ttdeci">Semaphore c(0)</div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a99707f22dd5c5b26496b8a144c133a1e">Scroom::Detail::ThreadPool::Builder&lt; hasCallable_, hasPriority_, hasQueue_, R &gt;::add()</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceScroom_1_1Detail_1_1ThreadPool_a6db7976aeeb6a5507b6c460287309454_icgraph.png" border="0" usemap="#anamespaceScroom_1_1Detail_1_1ThreadPool_a6db7976aeeb6a5507b6c460287309454_icgraph" alt=""/></div>
+<map name="anamespaceScroom_1_1Detail_1_1ThreadPool_a6db7976aeeb6a5507b6c460287309454_icgraph" id="anamespaceScroom_1_1Detail_1_1ThreadPool_a6db7976aeeb6a5507b6c460287309454_icgraph">
+<area shape="rect" title=" " alt="" coords="252,5,451,45"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a99707f22dd5c5b26496b8a144c133a1e" title=" " alt="" coords="5,5,204,45"/>
+<area shape="poly" title=" " alt="" coords="238,28,204,28,204,23,238,23"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a00281dfa5c10ffb5b89300b332c8ef1f" name="a00281dfa5c10ffb5b89300b332c8ef1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00281dfa5c10ffb5b89300b332c8ef1f">&#9670;&#160;</a></span>addPriority()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;bool hasCallable, bool hasQueue, typename R &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto Scroom::Detail::ThreadPool::addPriority </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Builder</a>&lt; hasCallable, false, hasQueue, R &gt;&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>priority</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  152</span>  {</div>
+<div class="line"><span class="lineno">  153</span>    <span class="keywordflow">return</span> <a class="code hl_class" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Builder&lt;hasCallable, true, hasQueue, R&gt;</a>{std::move(<a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.fn), priority, std::move(<a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.queue)};</div>
+<div class="line"><span class="lineno">  154</span>  }</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a490a71b112314b454d20718590eea8c0">Scroom::Detail::ThreadPool::Builder&lt; hasCallable_, hasPriority_, hasQueue_, R &gt;::add()</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceScroom_1_1Detail_1_1ThreadPool_a00281dfa5c10ffb5b89300b332c8ef1f_icgraph.png" border="0" usemap="#anamespaceScroom_1_1Detail_1_1ThreadPool_a00281dfa5c10ffb5b89300b332c8ef1f_icgraph" alt=""/></div>
+<map name="anamespaceScroom_1_1Detail_1_1ThreadPool_a00281dfa5c10ffb5b89300b332c8ef1f_icgraph" id="anamespaceScroom_1_1Detail_1_1ThreadPool_a00281dfa5c10ffb5b89300b332c8ef1f_icgraph">
+<area shape="rect" title=" " alt="" coords="252,5,451,45"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a490a71b112314b454d20718590eea8c0" title=" " alt="" coords="5,5,204,45"/>
+<area shape="poly" title=" " alt="" coords="238,28,204,28,204,23,238,23"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a43cf587770443118a3c6e147a7f43bed" name="a43cf587770443118a3c6e147a7f43bed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43cf587770443118a3c6e147a7f43bed">&#9670;&#160;</a></span>addQueue() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;bool hasCallable, bool hasPriority, typename R &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto Scroom::Detail::ThreadPool::addQueue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Builder</a>&lt; hasCallable, hasPriority, false, R &gt;&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ae44696440c2b9dd5dbef5c4eda0baec9">Queue::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>queue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  158</span>  {</div>
+<div class="line"><span class="lineno">  159</span>    <span class="keywordflow">return</span> <a class="code hl_class" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Builder&lt;hasCallable, hasPriority, true, R&gt;</a>{std::move(<a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.fn), <a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.<a class="code hl_variable" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a575311979412b59585480d617fde3a7a">priority</a>, queue-&gt;getWeak()};</div>
+<div class="line"><span class="lineno">  160</span>  }</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#affd9ff3c1ea9504cef63eed600fe6bda">Scroom::Detail::ThreadPool::Builder&lt; hasCallable_, hasPriority_, hasQueue_, R &gt;::add()</a>, and <a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a1c0de7a61d7b96779d031d3cef0ec99c">Scroom::Detail::ThreadPool::Builder&lt; hasCallable_, hasPriority_, hasQueue_, R &gt;::add()</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceScroom_1_1Detail_1_1ThreadPool_a43cf587770443118a3c6e147a7f43bed_icgraph.png" border="0" usemap="#anamespaceScroom_1_1Detail_1_1ThreadPool_a43cf587770443118a3c6e147a7f43bed_icgraph" alt=""/></div>
+<map name="anamespaceScroom_1_1Detail_1_1ThreadPool_a43cf587770443118a3c6e147a7f43bed_icgraph" id="anamespaceScroom_1_1Detail_1_1ThreadPool_a43cf587770443118a3c6e147a7f43bed_icgraph">
+<area shape="rect" title=" " alt="" coords="252,37,451,77"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#affd9ff3c1ea9504cef63eed600fe6bda" title=" " alt="" coords="5,5,204,45"/>
+<area shape="poly" title=" " alt="" coords="238,45,204,41,205,36,239,40"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a1c0de7a61d7b96779d031d3cef0ec99c" title=" " alt="" coords="5,69,204,109"/>
+<area shape="poly" title=" " alt="" coords="239,75,205,79,204,74,238,69"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a606704825778b41b26f4cd99c535bf04" name="a606704825778b41b26f4cd99c535bf04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a606704825778b41b26f4cd99c535bf04">&#9670;&#160;</a></span>addQueue() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;bool hasCallable, bool hasPriority, typename R &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto Scroom::Detail::ThreadPool::addQueue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Builder</a>&lt; hasCallable, hasPriority, false, R &gt;&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#a90652659d120bb282fc7656588ef7cf6">WeakQueue::Ptr</a>&#160;</td>
+          <td class="paramname"><em>queue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  164</span>  {</div>
+<div class="line"><span class="lineno">  165</span>    <span class="keywordflow">return</span> <a class="code hl_class" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html">Builder&lt;hasCallable, hasPriority, true, R&gt;</a>{std::move(<a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.fn), <a class="code hl_variable" href="blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e">b</a>.<a class="code hl_variable" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a575311979412b59585480d617fde3a7a">priority</a>, std::move(queue)};</div>
+<div class="line"><span class="lineno">  166</span>  }</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="adbdff2f494948417786589c465d0644a" name="adbdff2f494948417786589c465d0644a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adbdff2f494948417786589c465d0644a">&#9670;&#160;</a></span>getDeleter()</h2>
 

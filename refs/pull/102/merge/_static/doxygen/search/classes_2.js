@@ -19,10 +19,11 @@ var searchData=
   ['commonoperations_16',['CommonOperations',['../classCommonOperations.html',1,'']]],
   ['compressedtile_17',['CompressedTile',['../classCompressedTile.html',1,'']]],
   ['consttile_18',['ConstTile',['../classConstTile.html',1,'']]],
-  ['context_19',['Context',['../classScroom_1_1Utils_1_1Context.html',1,'Scroom::Utils']]],
-  ['contexttests_20',['ContextTests',['../classContextTests.html',1,'']]],
-  ['count_21',['Count',['../classScroom_1_1Utils_1_1Count.html',1,'Scroom::Utils']]],
-  ['counted_22',['Counted',['../classScroom_1_1Utils_1_1Counted.html',1,'Scroom::Utils']]],
-  ['counted_3c_20testcounted_20_3e_23',['Counted&lt; TestCounted &gt;',['../classScroom_1_1Utils_1_1Counted.html',1,'Scroom::Utils']]],
-  ['counter_24',['Counter',['../classScroom_1_1Utils_1_1Counter.html',1,'Scroom::Utils']]]
+  ['consumeresult_19',['ConsumeResult',['../structScroom_1_1RingBufferSink_1_1ConsumeResult.html',1,'Scroom::RingBufferSink']]],
+  ['context_20',['Context',['../classScroom_1_1Utils_1_1Context.html',1,'Scroom::Utils']]],
+  ['contexttests_21',['ContextTests',['../classContextTests.html',1,'']]],
+  ['count_22',['Count',['../classScroom_1_1Utils_1_1Count.html',1,'Scroom::Utils']]],
+  ['counted_23',['Counted',['../classScroom_1_1Utils_1_1Counted.html',1,'Scroom::Utils']]],
+  ['counted_3c_20testcounted_20_3e_24',['Counted&lt; TestCounted &gt;',['../classScroom_1_1Utils_1_1Counted.html',1,'Scroom::Utils']]],
+  ['counter_25',['Counter',['../classScroom_1_1Utils_1_1Counter.html',1,'Scroom::Utils']]]
 ];

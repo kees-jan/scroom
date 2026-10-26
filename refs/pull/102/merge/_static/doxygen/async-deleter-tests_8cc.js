@@ -1,7 +1,7 @@
 var async_deleter_tests_8cc =
 [
     [ "A", "classA.html", "classA" ],
-    [ "CpuBound", "async-deleter-tests_8cc.html#a7ebe9976c3b1cf5bf57d8a759f664c0b", null ],
+    [ "CpuBound", "async-deleter-tests_8cc.html#ade06412733edab0ac2763d30c92d434e", null ],
     [ "EXPECT_FALSE", "async-deleter-tests_8cc.html#a5cf8ca515764d4a5c5099cdfea3189fe", null ],
     [ "EXPECT_TRUE", "async-deleter-tests_8cc.html#a474d08d9adf0ed1c0625e8928335e03f", null ],
     [ "EXPECT_TRUE", "async-deleter-tests_8cc.html#ad3dca421d20a7e0d4d243a9bdaa5ed0c", null ],

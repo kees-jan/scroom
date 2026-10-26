@@ -148,6 +148,296 @@
     <namespace>conf</namespace>
   </compound>
   <compound kind="file">
+    <name>ringbuffer-sink.hh</name>
+    <path>gui/loggingbuffer/inc/scroom/</path>
+    <filename>ringbuffer-sink_8hh.html</filename>
+    <class kind="class">Scroom::RingBufferSink</class>
+    <class kind="struct">Scroom::RingBufferSink::Entry</class>
+    <class kind="struct">Scroom::RingBufferSink::ConsumeResult</class>
+    <namespace>Scroom</namespace>
+  </compound>
+  <compound kind="file">
+    <name>ringbuffer-sink.cc</name>
+    <path>gui/loggingbuffer/src/</path>
+    <filename>ringbuffer-sink_8cc.html</filename>
+    <includes id="ringbuffer-sink_8hh" name="ringbuffer-sink.hh" local="no" import="no" module="no" objc="no">scroom/ringbuffer-sink.hh</includes>
+    <namespace>Scroom</namespace>
+  </compound>
+  <compound kind="file">
+    <name>ringbuffer-sink-tests.cc</name>
+    <path>gui/loggingbuffer/test/</path>
+    <filename>ringbuffer-sink-tests_8cc.html</filename>
+    <includes id="ringbuffer-sink_8hh" name="ringbuffer-sink.hh" local="no" import="no" module="no" objc="no">scroom/ringbuffer-sink.hh</includes>
+    <includes id="threadpool_8hh" name="threadpool.hh" local="no" import="no" module="no" objc="no">scroom/threadpool.hh</includes>
+    <namespace>anonymous_namespace{ringbuffer-sink-tests.cc}</namespace>
+    <member kind="function">
+      <type>logger</type>
+      <name>info</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a8d320a25a024f00913fe55a273a4a31d</anchor>
+      <arglist>(&quot;line-1&quot;)</arglist>
+    </member>
+    <member kind="function">
+      <type>logger</type>
+      <name>info</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a06f46695ef67a0167753e1079037eba2</anchor>
+      <arglist>(&quot;line-2&quot;)</arglist>
+    </member>
+    <member kind="function">
+      <type>logger</type>
+      <name>info</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a902e896539c92f12f5a0dd0257684069</anchor>
+      <arglist>(&quot;line-3&quot;)</arglist>
+    </member>
+    <member kind="function">
+      <type>logger</type>
+      <name>info</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a491cdb40489dd18ff7b865cb0c98b6b1</anchor>
+      <arglist>(&quot;line-4&quot;)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>ASSERT_EQ</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>aac7a6a67ddb1fadb8c58adffcb3536f3</anchor>
+      <arglist>(3, entries.size())</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a7b934ee9250ba6a9298d13e8a7487169</anchor>
+      <arglist>(&quot;line-2&quot;, withoutTrailingNewline(entries[0].text))</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a776cd484059faecfd60582cbdc500e91</anchor>
+      <arglist>(&quot;line-3&quot;, withoutTrailingNewline(entries[1].text))</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>af6b7a0b1758e7c7f9fef062bafa69a3f</anchor>
+      <arglist>(&quot;line-4&quot;, withoutTrailingNewline(entries[2].text))</arglist>
+    </member>
+    <member kind="function">
+      <type>logger</type>
+      <name>debug</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>ad95b233d5e21909b673611add77a8fdb</anchor>
+      <arglist>(&quot;a&quot;)</arglist>
+    </member>
+    <member kind="function">
+      <type>logger</type>
+      <name>debug</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a1a6e70b8b814ae2612c2da4ae1b7f196</anchor>
+      <arglist>(&quot;b&quot;)</arglist>
+    </member>
+    <member kind="function">
+      <type>logger</type>
+      <name>debug</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a11151ff946c61d20b558e544d493738a</anchor>
+      <arglist>(&quot;c&quot;)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_LT</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>ad428313e68463f1df1ea1225a7e5ae4d</anchor>
+      <arglist>(entries[0].seq, entries[1].seq)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_LT</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>af182ac3e121bdcc4f512aa03e234a54c</anchor>
+      <arglist>(entries[1].seq, entries[2].seq)</arglist>
+    </member>
+    <member kind="function">
+      <type>logger</type>
+      <name>info</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a92eeaabc01fd2e9d2b5b44190f4a38ee</anchor>
+      <arglist>(&quot;line-5&quot;)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>aac8ed7760f4e115f31ea5ecf24982694</anchor>
+      <arglist>(&quot;line-3&quot;, withoutTrailingNewline(entries[0].text))</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>ab3cefe8bb2017d1ebeabcede6a3f8b9c</anchor>
+      <arglist>(&quot;line-4&quot;, withoutTrailingNewline(entries[1].text))</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>aee9d5eeb4263aabc9ac9b9cb5c68ee1e</anchor>
+      <arglist>(&quot;line-5&quot;, withoutTrailingNewline(entries[2].text))</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a3f08d74bc6b61b1b405888e056c3ed76</anchor>
+      <arglist>(entries.back().seq, result.nextSeq)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>for</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>ad4cca210e195792984f5f0171f3445be</anchor>
+      <arglist>(int i=0;i&lt; burstSize;++i)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>ab325afaae623ad4df1248b487a390eb9</anchor>
+      <arglist>(1, wakeupCalls.load())</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a524705432e4c40f72f90207bac89566f</anchor>
+      <arglist>(2, wakeupCalls.load())</arglist>
+    </member>
+    <member kind="function">
+      <type>producers</type>
+      <name>reserve</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a1540e407cbcf419eee9293d70c9cdb6e</anchor>
+      <arglist>(threadCount)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>for</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>af7c50c9b61091fea01ecfd3d01dd9e54</anchor>
+      <arglist>(auto &amp;producer:producers)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a0c8c1eb13cb9f117d487142a6da21f35</anchor>
+      <arglist>(totalLines, static_cast&lt; int &gt;(consumedCount))</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EXPECT_EQ</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a46a650d01ee3f1139fbf8ca72226ca41</anchor>
+      <arglist>(totalLines, static_cast&lt; int &gt;(lastSeq))</arglist>
+    </member>
+    <member kind="variable">
+      <type>auto</type>
+      <name>logger</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a288e5002e7c3705ad5bae108a122bd34</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>auto</type>
+      <name>entries</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a1ccbac9cd1dc7547eeae5cc5ffb3a271</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>std::uint64_t</type>
+      <name>lastSeq</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>aa74c34aed57c1942232f9fb50741a092</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>auto</type>
+      <name>result</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a77d2a177c03f06c9224e4aeecb918065</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>std::atomic&lt; int &gt;</type>
+      <name>wakeupCalls</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a5d0b2813f96764e9e35b3ee7e969c1b0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>auto</type>
+      <name>sink</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a757ac11cad97288b51ea35a1287a6ee1</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>auto</type>
+      <name>firstResult</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a37365e0b301c092d58cb07b0c6b44c3e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr int</type>
+      <name>linesPerThread</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>ad8023a6ff5c83c2220ae444e8611289d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr int</type>
+      <name>totalLines</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a144d841b02ab87b4e113d298d3bb4e3c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>auto</type>
+      <name>pool</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a222ffe48a28df70eb444b70e375905d5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>std::vector&lt; boost::unique_future&lt; void &gt; &gt;</type>
+      <name>producers</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a2c9641ed66c3853ede0240063018d97d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>std::size_t</type>
+      <name>consumedCount</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>abc26a6a251c9d6f8515f7dc1110cddc9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>auto</type>
+      <name>remaining</name>
+      <anchorfile>ringbuffer-sink-tests_8cc.html</anchorfile>
+      <anchor>a2207f348d3e14220cbc330617c306537</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="file">
     <name>ruler.hh</name>
     <path>gui/ruler/inc/</path>
     <filename>ruler_8hh.html</filename>
@@ -246,8 +536,11 @@
     <includes id="callbacks_8hh" name="callbacks.hh" local="yes" import="no" module="no" objc="no">callbacks.hh</includes>
     <includes id="assertions_8hh" name="assertions.hh" local="no" import="no" module="no" objc="no">scroom/assertions.hh</includes>
     <includes id="bookkeeping_8hh" name="bookkeeping.hh" local="no" import="no" module="no" objc="no">scroom/bookkeeping.hh</includes>
+    <includes id="gtk-helpers_8hh" name="gtk-helpers.hh" local="no" import="no" module="no" objc="no">scroom/gtk-helpers.hh</includes>
     <includes id="logger_8hh" name="logger.hh" local="no" import="no" module="no" objc="no">scroom/logger.hh</includes>
+    <includes id="ringbuffer-sink_8hh" name="ringbuffer-sink.hh" local="no" import="no" module="no" objc="no">scroom/ringbuffer-sink.hh</includes>
     <includes id="loader_8hh" name="loader.hh" local="yes" import="no" module="no" objc="no">loader.hh</includes>
+    <includes id="logging-window_8hh" name="logging-window.hh" local="yes" import="no" module="no" objc="no">logging-window.hh</includes>
     <includes id="pluginmanager_8hh" name="pluginmanager.hh" local="yes" import="no" module="no" objc="no">pluginmanager.hh</includes>
     <includes id="view_8hh" name="view.hh" local="yes" import="no" module="no" objc="no">view.hh</includes>
     <includes id="workinterface_8hh" name="workinterface.hh" local="yes" import="no" module="no" objc="no">workinterface.hh</includes>
@@ -261,10 +554,31 @@
     </member>
     <member kind="function">
       <type>void</type>
-      <name>ShowModalDialog</name>
+      <name>on_new_window_activate</name>
       <anchorfile>callbacks_8cc.html</anchorfile>
-      <anchor>a3aab2a4d00901924d72b5a72a3711069</anchor>
-      <arglist>(const std::string &amp;message)</arglist>
+      <anchor>ac2650096cdbcfbe9cfc604dda16d4c4a</anchor>
+      <arglist>(GtkMenuItem *, gpointer user_data)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>update_logging_window_new_menu</name>
+      <anchorfile>callbacks_8cc.html</anchorfile>
+      <anchor>af51f740add7f9505f208aca674f19419</anchor>
+      <arglist>(const std::map&lt; NewPresentationInterface::Ptr, std::string &gt; &amp;newPresentationInterfaces)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>update_logging_window_new_window_menu</name>
+      <anchorfile>callbacks_8cc.html</anchorfile>
+      <anchor>a9f63c845f4d67c33bd1ae395ae973044</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>connect_logging_window_menu_callbacks</name>
+      <anchorfile>callbacks_8cc.html</anchorfile>
+      <anchor>a0c7e6f83db1f0c9f9c080602240ece2f</anchor>
+      <arglist>(GtkBuilder *builder, GtkWidget *loggingWindowWidget)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
@@ -365,6 +679,13 @@
       <arglist>(GtkMenuItem *, gpointer)</arglist>
     </member>
     <member kind="function">
+      <type>void</type>
+      <name>on_logs_activate</name>
+      <anchorfile>callbacks_8cc.html</anchorfile>
+      <anchor>a2816934867b0a52c3d52cde08e344519</anchor>
+      <arglist>(GtkMenuItem *, gpointer)</arglist>
+    </member>
+    <member kind="function">
       <type>gboolean</type>
       <name>on_drawingarea_expose_event</name>
       <anchorfile>callbacks_8cc.html</anchorfile>
@@ -447,6 +768,20 @@
       <anchorfile>callbacks_8cc.html</anchorfile>
       <anchor>a301e3ea806e687d48f817b7ed7bf8aa7</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>std::function&lt; void()&gt;</type>
+      <name>createLoggingWakeupCallback</name>
+      <anchorfile>callbacks_8cc.html</anchorfile>
+      <anchor>a55b1d94aaf77c5102c85f185b205a1cf</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setRingBufferSink</name>
+      <anchorfile>callbacks_8cc.html</anchorfile>
+      <anchor>a422210910c7e2516b1836f98005f7340</anchor>
+      <arglist>(const Scroom::RingBufferSink::Ptr &amp;ringBufferSink_)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
@@ -575,6 +910,27 @@
       <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
+      <type>static Scroom::RingBufferSink::Ptr</type>
+      <name>ringBufferSink</name>
+      <anchorfile>callbacks_8cc.html</anchorfile>
+      <anchor>ab11b79003b26c0ddb967acd578f605fb</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" static="yes">
+      <type>static LoggingWindow::Ptr</type>
+      <name>loggingWindow</name>
+      <anchorfile>callbacks_8cc.html</anchorfile>
+      <anchor>a6ba114d8f032bdeddf49af4cb7998fea</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" static="yes">
+      <type>static GtkBuilder *</type>
+      <name>loggingWindowMenuBuilder</name>
+      <anchorfile>callbacks_8cc.html</anchorfile>
+      <anchor>a11b875f2cbebd099ba5ddcf1335e00a3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" static="yes">
       <type>static Views</type>
       <name>views</name>
       <anchorfile>callbacks_8cc.html</anchorfile>
@@ -608,8 +964,10 @@
     <path>gui/src/</path>
     <filename>callbacks_8hh.html</filename>
     <includes id="presentationinterface_8hh" name="presentationinterface.hh" local="no" import="no" module="no" objc="no">scroom/presentationinterface.hh</includes>
+    <includes id="ringbuffer-sink_8hh" name="ringbuffer-sink.hh" local="no" import="no" module="no" objc="no">scroom/ringbuffer-sink.hh</includes>
     <includes id="scroominterface_8hh" name="scroominterface.hh" local="no" import="no" module="no" objc="no">scroom/scroominterface.hh</includes>
     <includes id="view_8hh" name="view.hh" local="yes" import="no" module="no" objc="no">view.hh</includes>
+    <namespace>MenuIds</namespace>
     <member kind="typedef">
       <type>std::map&lt; std::string, std::list&lt; std::string &gt; &gt;</type>
       <name>FileNameMap</name>
@@ -706,6 +1064,13 @@
       <name>on_about_activate</name>
       <anchorfile>callbacks_8hh.html</anchorfile>
       <anchor>a345d70d19f377b327d03d3b26121ab8c</anchor>
+      <arglist>(GtkMenuItem *menuitem, gpointer user_data)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>on_logs_activate</name>
+      <anchorfile>callbacks_8hh.html</anchorfile>
+      <anchor>ad2abe0dcd688e4954b0b1c75ad5f8195</anchor>
       <arglist>(GtkMenuItem *menuitem, gpointer user_data)</arglist>
     </member>
     <member kind="function">
@@ -847,6 +1212,27 @@
       <anchorfile>callbacks_8hh.html</anchorfile>
       <anchor>a301e3ea806e687d48f817b7ed7bf8aa7</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>std::function&lt; void()&gt;</type>
+      <name>createLoggingWakeupCallback</name>
+      <anchorfile>callbacks_8hh.html</anchorfile>
+      <anchor>a55b1d94aaf77c5102c85f185b205a1cf</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setRingBufferSink</name>
+      <anchorfile>callbacks_8hh.html</anchorfile>
+      <anchor>afef5247cfa0b68e9f61994d57f44638a</anchor>
+      <arglist>(const Scroom::RingBufferSink::Ptr &amp;ringBufferSink)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>connect_logging_window_menu_callbacks</name>
+      <anchorfile>callbacks_8hh.html</anchorfile>
+      <anchor>a6cdeb6ab4ba47cb4109b1fad501caa7b</anchor>
+      <arglist>(GtkBuilder *builder, GtkWidget *loggingWindow)</arglist>
     </member>
     <member kind="variable">
       <type>const std::string</type>
@@ -1000,6 +1386,22 @@
       <anchor>a47dec8cb3f03de25ed596fb0defa91f6</anchor>
       <arglist>(std::list&lt; GtkFileFilter * &gt; &amp;l)</arglist>
     </member>
+  </compound>
+  <compound kind="file">
+    <name>logging-window.cc</name>
+    <path>gui/src/</path>
+    <filename>logging-window_8cc.html</filename>
+    <includes id="logging-window_8hh" name="logging-window.hh" local="yes" import="no" module="no" objc="no">logging-window.hh</includes>
+    <includes id="assertions_8hh" name="assertions.hh" local="no" import="no" module="no" objc="no">scroom/assertions.hh</includes>
+    <includes id="callbacks_8hh" name="callbacks.hh" local="yes" import="no" module="no" objc="no">callbacks.hh</includes>
+    <namespace>anonymous_namespace{logging-window.cc}</namespace>
+  </compound>
+  <compound kind="file">
+    <name>logging-window.hh</name>
+    <path>gui/src/</path>
+    <filename>logging-window_8hh.html</filename>
+    <includes id="ringbuffer-sink_8hh" name="ringbuffer-sink.hh" local="no" import="no" module="no" objc="no">scroom/ringbuffer-sink.hh</includes>
+    <class kind="class">LoggingWindow</class>
   </compound>
   <compound kind="file">
     <name>pluginmanager.cc</name>
@@ -1810,6 +2212,7 @@
     <name>bitmap-helpers.hh</name>
     <path>libs/scroom/inc/scroom/</path>
     <filename>bitmap-helpers_8hh.html</filename>
+    <includes id="assertions_8hh" name="assertions.hh" local="no" import="no" module="no" objc="no">scroom/assertions.hh</includes>
     <includes id="global_8hh" name="global.hh" local="no" import="no" module="no" objc="no">scroom/global.hh</includes>
     <class kind="class">Scroom::Bitmap::BitmapSurface</class>
     <class kind="class">Scroom::Bitmap::SampleIterator</class>
@@ -2501,13 +2904,6 @@
     </member>
   </compound>
   <compound kind="file">
-    <name>threadpoolimpl.hh</name>
-    <path>libs/threadpool/inc/scroom/impl/</path>
-    <filename>threadpoolimpl_8hh.html</filename>
-    <includes id="threadpool_8hh" name="threadpool.hh" local="no" import="no" module="no" objc="no">scroom/threadpool.hh</includes>
-    <namespace>Detail</namespace>
-  </compound>
-  <compound kind="file">
     <name>semaphore.hh</name>
     <path>libs/threadpool/inc/scroom/</path>
     <filename>semaphore_8hh.html</filename>
@@ -2519,16 +2915,17 @@
     <path>libs/threadpool/inc/scroom/</path>
     <filename>threadpool_8hh.html</filename>
     <includes id="semaphore_8hh" name="semaphore.hh" local="no" import="no" module="no" objc="no">scroom/semaphore.hh</includes>
-    <includes id="threadpoolimpl_8hh" name="threadpoolimpl.hh" local="no" import="no" module="no" objc="no">scroom/impl/threadpoolimpl.hh</includes>
+    <class kind="class">Scroom::Detail::ThreadPool::Queue</class>
+    <class kind="class">Scroom::Detail::ThreadPool::WeakQueue</class>
+    <class kind="class">Scroom::Detail::ThreadPool::Builder</class>
     <class kind="class">ThreadPool</class>
-    <class kind="class">ThreadPool::Queue</class>
-    <class kind="class">ThreadPool::WeakQueue</class>
     <class kind="struct">ThreadPool::Job</class>
     <class kind="class">ThreadPool::PrivateData</class>
     <class kind="class">QueueJumper</class>
     <namespace>Scroom</namespace>
     <namespace>Scroom::Detail</namespace>
     <namespace>Scroom::Detail::ThreadPool</namespace>
+    <concept>Scroom::Detail::ThreadPool::CallableT</concept>
     <member kind="enumvalue">
       <name>PRIO_HIGHEST</name>
       <anchorfile>threadpool_8hh.html</anchorfile>
@@ -2655,28 +3052,28 @@
     <namespace>Scroom::Detail::ThreadPool</namespace>
   </compound>
   <compound kind="file">
-    <name>threadpoolimpl.cc</name>
+    <name>threadpool.cc</name>
     <path>libs/threadpool/src/</path>
-    <filename>threadpoolimpl_8cc.html</filename>
+    <filename>threadpool_8cc.html</filename>
     <includes id="assertions_8hh" name="assertions.hh" local="no" import="no" module="no" objc="no">scroom/assertions.hh</includes>
     <includes id="async-deleter_8hh" name="async-deleter.hh" local="no" import="no" module="no" objc="no">scroom/async-deleter.hh</includes>
     <includes id="logger_8hh" name="logger.hh" local="no" import="no" module="no" objc="no">scroom/logger.hh</includes>
     <includes id="threadpool_8hh" name="threadpool.hh" local="no" import="no" module="no" objc="no">scroom/threadpool.hh</includes>
     <includes id="queue_8hh" name="queue.hh" local="yes" import="no" module="no" objc="no">queue.hh</includes>
-    <class kind="class">anonymous_namespace{threadpoolimpl.cc}::ThreadList</class>
-    <class kind="class">anonymous_namespace{threadpoolimpl.cc}::ThreadWaiter</class>
-    <namespace>anonymous_namespace{threadpoolimpl.cc}</namespace>
+    <class kind="class">anonymous_namespace{threadpool.cc}::ThreadList</class>
+    <class kind="class">anonymous_namespace{threadpool.cc}::ThreadWaiter</class>
+    <namespace>anonymous_namespace{threadpool.cc}</namespace>
     <member kind="function">
       <type>ThreadPool::Ptr</type>
       <name>CpuBound</name>
-      <anchorfile>threadpoolimpl_8cc.html</anchorfile>
+      <anchorfile>threadpool_8cc.html</anchorfile>
       <anchor>a4a99c6a6be48be73a9ecf92e6e3f6e9b</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>ThreadPool::Ptr</type>
       <name>Sequentially</name>
-      <anchorfile>threadpoolimpl_8cc.html</anchorfile>
+      <anchorfile>threadpool_8cc.html</anchorfile>
       <anchor>af979353165a7a214dda8f7f289de81ea</anchor>
       <arglist>()</arglist>
     </member>
@@ -2715,8 +3112,8 @@
       <type></type>
       <name>CpuBound</name>
       <anchorfile>async-deleter-tests_8cc.html</anchorfile>
-      <anchor>a7ebe9976c3b1cf5bf57d8a759f664c0b</anchor>
-      <arglist>() -&gt; schedule(pass(&amp;barrier2)+destroy(a)+clear(&amp;signal))</arglist>
+      <anchor>ade06412733edab0ac2763d30c92d434e</anchor>
+      <arglist>() -&gt; post(pass(&amp;barrier2)+destroy(a)+clear(&amp;signal))</arglist>
     </member>
     <member kind="function">
       <type>a</type>
@@ -3214,16 +3611,16 @@
     </member>
     <member kind="function">
       <type>pool</type>
-      <name>schedule</name>
+      <name>post</name>
       <anchorfile>threadpool-destruction-tests_8cc.html</anchorfile>
-      <anchor>ac0a0cf9a8a69ddd75a63b6c1297bdfe6</anchor>
+      <anchor>a4744a63ab6621a7665fcb81fdabd1dfa</anchor>
       <arglist>(clear(&amp;a)+pass(&amp;b))</arglist>
     </member>
     <member kind="function">
       <type>pool</type>
-      <name>schedule</name>
+      <name>post</name>
       <anchorfile>threadpool-destruction-tests_8cc.html</anchorfile>
-      <anchor>a9ab3886149c6bf8840592692b153c62a</anchor>
+      <anchor>ab0e503f0e0c47e49f579c97b46262316</anchor>
       <arglist>(clear(&amp;c))</arglist>
     </member>
     <member kind="function">
@@ -3475,9 +3872,9 @@
     </member>
     <member kind="function">
       <type>t</type>
-      <name>schedule</name>
+      <name>post</name>
       <anchorfile>threadpool-queue-tests_8cc.html</anchorfile>
-      <anchor>adeaa383b78d99f60ed90e771d11c3537</anchor>
+      <anchor>a6dda82cd737769e74c26f2e2d5757261</anchor>
       <arglist>(clear(&amp;s), queue)</arglist>
     </member>
     <member kind="function">
@@ -3496,9 +3893,9 @@
     </member>
     <member kind="function">
       <type>t</type>
-      <name>schedule</name>
+      <name>post</name>
       <anchorfile>threadpool-queue-tests_8cc.html</anchorfile>
-      <anchor>a21ea188df31d0270547987421bd359cc</anchor>
+      <anchor>a55aa0d1e0bcffab7cae785bb46ef9744</anchor>
       <arglist>(clear(&amp;s2))</arglist>
     </member>
     <member kind="function">
@@ -3510,9 +3907,9 @@
     </member>
     <member kind="function">
       <type>pool</type>
-      <name>schedule</name>
+      <name>post</name>
       <anchorfile>threadpool-queue-tests_8cc.html</anchorfile>
-      <anchor>acb18ee9535bf9c6d7991c9bdf020ec76</anchor>
+      <anchor>a28d2a82e9a9fc0dacd831e639180d152</anchor>
       <arglist>(clear(&amp;s1)+pass(&amp;s2), queue)</arglist>
     </member>
     <member kind="function">
@@ -3617,7 +4014,7 @@
       <type>ThreadPool</type>
       <name>pool</name>
       <anchorfile>threadpool-queue-tests_8cc.html</anchorfile>
-      <anchor>a56f23c7420d0f8b3d483794ca774faec</anchor>
+      <anchor>aa7e9210410c7d7285e42ddf5af3ea3fd</anchor>
       <arglist>(0)</arglist>
     </member>
   </compound>
@@ -3644,9 +4041,9 @@
     </member>
     <member kind="function">
       <type>t</type>
-      <name>schedule</name>
+      <name>post</name>
       <anchorfile>threadpool-queueimpl-tests_8cc.html</anchorfile>
-      <anchor>a3b5f25948600fcc0a77d1b00203fbc7a</anchor>
+      <anchor>adb8b91c109ca9e9de860b46a0e667431</anchor>
       <arglist>(clear(&amp;s), weak)</arglist>
     </member>
     <member kind="function">
@@ -3672,9 +4069,9 @@
     </member>
     <member kind="function">
       <type>t</type>
-      <name>schedule</name>
+      <name>post</name>
       <anchorfile>threadpool-queueimpl-tests_8cc.html</anchorfile>
-      <anchor>a21ea188df31d0270547987421bd359cc</anchor>
+      <anchor>a55aa0d1e0bcffab7cae785bb46ef9744</anchor>
       <arglist>(clear(&amp;s2))</arglist>
     </member>
     <member kind="function">
@@ -3736,7 +4133,6 @@
     <includes id="semaphore_8hh" name="semaphore.hh" local="no" import="no" module="no" objc="no">scroom/semaphore.hh</includes>
     <includes id="helpers_8hh" name="helpers.hh" local="yes" import="no" module="no" objc="no">helpers.hh</includes>
     <class kind="class">A</class>
-    <class kind="class">B</class>
     <member kind="function">
       <type>const millisec</type>
       <name>short_timeout</name>
@@ -3774,9 +4170,9 @@
     </member>
     <member kind="function">
       <type>pool</type>
-      <name>schedule</name>
+      <name>post</name>
       <anchorfile>threadpool-tests_8cc.html</anchorfile>
-      <anchor>af6efe4ef6b335b567d755939135bd49e</anchor>
+      <anchor>ac4864e24bb058ffe6f378b63f71d8a41</anchor>
       <arglist>(clear(&amp;s))</arglist>
     </member>
     <member kind="function">
@@ -3802,16 +4198,16 @@
     </member>
     <member kind="function">
       <type>pool</type>
-      <name>schedule</name>
+      <name>post</name>
       <anchorfile>threadpool-tests_8cc.html</anchorfile>
-      <anchor>af777d4775e97e4a9eaf9a67f0a652a12</anchor>
+      <anchor>ac4394239886f77e6125d6b862f8da5df</anchor>
       <arglist>(clear(&amp;low), PRIO_NORMAL)</arglist>
     </member>
     <member kind="function">
       <type>pool</type>
-      <name>schedule</name>
+      <name>post</name>
       <anchorfile>threadpool-tests_8cc.html</anchorfile>
-      <anchor>a37220d27324b8f0eef50b2b244a1c257</anchor>
+      <anchor>aab6dc5b23c715d1ec75e5a159fe53088</anchor>
       <arglist>(pass(&amp;low)+clear(&amp;high), PRIO_HIGH)</arglist>
     </member>
     <member kind="function">
@@ -3836,25 +4232,11 @@
       <arglist>(has_exactly_n_threads(&amp;pool, 0))</arglist>
     </member>
     <member kind="function">
-      <type>pool</type>
-      <name>schedule</name>
-      <anchorfile>threadpool-tests_8cc.html</anchorfile>
-      <anchor>a1f95f4c0bf42f8d78aa84af0af4a8551</anchor>
-      <arglist>(A::create(&amp;a))</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>EXPECT_TRUE</name>
-      <anchorfile>threadpool-tests_8cc.html</anchorfile>
-      <anchor>aa68c957be69556000a200bb8b4d19737</anchor>
-      <arglist>(a.P(long_timeout))</arglist>
-    </member>
-    <member kind="function">
       <type>boost::unique_future&lt; int &gt;</type>
       <name>result</name>
       <anchorfile>threadpool-tests_8cc.html</anchorfile>
-      <anchor>a2efa9e11f31ee7b8467073326d39f7e2</anchor>
-      <arglist>(pool.schedule&lt; int &gt;([pa=&amp;a] { return no_op(pa, 42);}))</arglist>
+      <anchor>a59599316415ef45251f9e2dfa34ea750</anchor>
+      <arglist>(pool.submit([pa=&amp;a] { return no_op(pa, 42);}))</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -3872,24 +4254,17 @@
     </member>
     <member kind="function">
       <type></type>
-      <name>EXPECT_EQ</name>
+      <name>EXPECT_TRUE</name>
       <anchorfile>threadpool-tests_8cc.html</anchorfile>
-      <anchor>a4961d5dff6ba48f1370f2f75956a70e4</anchor>
-      <arglist>(42, result.get())</arglist>
-    </member>
-    <member kind="function">
-      <type>boost::unique_future&lt; bool &gt;</type>
-      <name>result</name>
-      <anchorfile>threadpool-tests_8cc.html</anchorfile>
-      <anchor>a76e525e038350982bebc3b6bfdc4c7ce</anchor>
-      <arglist>(pool.schedule&lt; bool, B&lt; bool &gt; &gt;(B&lt; bool &gt;::create(&amp;a, false)))</arglist>
+      <anchor>aa68c957be69556000a200bb8b4d19737</anchor>
+      <arglist>(a.P(long_timeout))</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>threadpool-tests_8cc.html</anchorfile>
-      <anchor>a28c7cb30e09714668c9e01ce34250da8</anchor>
-      <arglist>(false, result.get())</arglist>
+      <anchor>a4961d5dff6ba48f1370f2f75956a70e4</anchor>
+      <arglist>(42, result.get())</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -3944,14 +4319,20 @@
     <includes id="tiledbitmapinterface_8hh" name="tiledbitmapinterface.hh" local="no" import="no" module="no" objc="no">scroom/tiledbitmapinterface.hh</includes>
     <class kind="class">CommonOperations</class>
     <class kind="class">PipetteCommonOperationsCMYK</class>
+    <class kind="class">PipetteCommonOperationsCMYK64bpp</class>
     <class kind="class">PipetteCommonOperationsRGB</class>
+    <class kind="class">PipetteCommonOperationsRGB48bpp</class>
+    <class kind="class">PipetteCommonOperations16bpp</class>
     <class kind="class">Operations1bpp</class>
     <class kind="class">Operations8bpp</class>
-    <class kind="class">Operations24bpp</class>
+    <class kind="class">Operations16bpp</class>
+    <class kind="class">OperationsRgb24bpp</class>
+    <class kind="class">OperationsRgb48bpp</class>
     <class kind="class">Operations</class>
     <class kind="class">OperationsColormapped</class>
     <class kind="class">Operations1bppClipped</class>
     <class kind="class">OperationsCMYK32</class>
+    <class kind="class">OperationsCMYK64</class>
     <class kind="class">OperationsCMYK16</class>
     <class kind="class">OperationsCMYK8</class>
     <class kind="class">OperationsCMYK4</class>
@@ -4126,7 +4507,6 @@
     <name>layer.cc</name>
     <path>libs/tiled-bitmap/src/</path>
     <filename>layer_8cc.html</filename>
-    <includes id="threadpoolimpl_8hh" name="threadpoolimpl.hh" local="no" import="no" module="no" objc="no">scroom/impl/threadpoolimpl.hh</includes>
     <includes id="memoryblobs_8hh" name="memoryblobs.hh" local="no" import="no" module="no" objc="no">scroom/memoryblobs.hh</includes>
     <includes id="stuff_8hh" name="stuff.hh" local="no" import="no" module="no" objc="no">scroom/stuff.hh</includes>
     <includes id="threadpool_8hh" name="threadpool.hh" local="no" import="no" module="no" objc="no">scroom/threadpool.hh</includes>
@@ -4456,7 +4836,7 @@
       <type>SampleIterator&lt; const uint8_t &gt;</type>
       <name>result</name>
       <anchorfile>sampleiterator-tests_8cc.html</anchorfile>
-      <anchor>a77d2a177c03f06c9224e4aeecb918065</anchor>
+      <anchor>a937d4dd628a8858b443a399410d2600b</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -7989,6 +8369,7 @@
     <path>gui/src/</path>
     <filename>gui_2src_2main_8cc.html</filename>
     <includes id="logger_8hh" name="logger.hh" local="no" import="no" module="no" objc="no">scroom/logger.hh</includes>
+    <includes id="ringbuffer-sink_8hh" name="ringbuffer-sink.hh" local="no" import="no" module="no" objc="no">scroom/ringbuffer-sink.hh</includes>
     <includes id="callbacks_8hh" name="callbacks.hh" local="yes" import="no" module="no" objc="no">callbacks.hh</includes>
     <member kind="function">
       <type>void</type>
@@ -9137,53 +9518,6 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>B</name>
-    <filename>classB.html</filename>
-    <templarg>typename R</templarg>
-    <member kind="typedef">
-      <type>std::shared_ptr&lt; B&lt; R &gt; &gt;</type>
-      <name>Ptr</name>
-      <anchorfile>classB.html</anchorfile>
-      <anchor>a5574f1c0e8652aab70c042f59bec7158</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>B</name>
-      <anchorfile>classB.html</anchorfile>
-      <anchor>a943fe7aa6b9eea42c83db59b84c7d080</anchor>
-      <arglist>(Semaphore *s_, R result_)</arglist>
-    </member>
-    <member kind="function">
-      <type>R</type>
-      <name>operator()</name>
-      <anchorfile>classB.html</anchorfile>
-      <anchor>a3f8f3a1552ba8c37a8fcc253f9cb8f57</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static Ptr</type>
-      <name>create</name>
-      <anchorfile>classB.html</anchorfile>
-      <anchor>a8d4a36f9d7c0a0e432b65d285ffa413f</anchor>
-      <arglist>(Semaphore *s, R result)</arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>Semaphore *</type>
-      <name>s</name>
-      <anchorfile>classB.html</anchorfile>
-      <anchor>a63e36b4d0ec2fe67ef2b093414e5712d</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>R</type>
-      <name>result</name>
-      <anchorfile>classB.html</anchorfile>
-      <anchor>a51926ecf60905720aa1b6067497625cd</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
     <name>Scroom::Utils::Base</name>
     <filename>classScroom_1_1Utils_1_1Base.html</filename>
     <member kind="function">
@@ -9752,6 +10086,126 @@
       <name>Page</name>
       <anchorfile>classScroom_1_1MemoryBlocks_1_1BlockInterface.html</anchorfile>
       <anchor>a66d145c56e1747e0aecb5309042ab183</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>Scroom::Detail::ThreadPool::Builder</name>
+    <filename>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</filename>
+    <templarg>bool hasCallable_</templarg>
+    <templarg>bool hasPriority_</templarg>
+    <templarg>bool hasQueue_</templarg>
+    <templarg>typename R</templarg>
+    <member kind="typedef">
+      <type>R</type>
+      <name>ResultType</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>a78462fb24add2e274efe0ffa5992a72c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>std::move_only_function&lt; R()&gt;</type>
+      <name>FunctionType</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>a0bf7198fd45c72a5695cfb6c96f47684</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>constexpr</type>
+      <name>Builder</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>a06a31235ce2005681d800b831906ec4c</anchor>
+      <arglist>(int defaultPriority)</arglist>
+    </member>
+    <member kind="function">
+      <type>constexpr</type>
+      <name>Builder</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>a13fb6c672cc6dfa55f941324a6029aa0</anchor>
+      <arglist>(FunctionType fn_, int priority_, WeakQueue::Ptr queue_)</arglist>
+    </member>
+    <member kind="function">
+      <type>constexpr auto</type>
+      <name>add</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>a99707f22dd5c5b26496b8a144c133a1e</anchor>
+      <arglist>(CallableT auto &amp;&amp;c)</arglist>
+    </member>
+    <member kind="function">
+      <type>constexpr auto</type>
+      <name>add</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>a490a71b112314b454d20718590eea8c0</anchor>
+      <arglist>(int priority_)</arglist>
+    </member>
+    <member kind="function">
+      <type>constexpr auto</type>
+      <name>add</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>a1c0de7a61d7b96779d031d3cef0ec99c</anchor>
+      <arglist>(WeakQueue::Ptr queue_)</arglist>
+    </member>
+    <member kind="function">
+      <type>constexpr auto</type>
+      <name>add</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>affd9ff3c1ea9504cef63eed600fe6bda</anchor>
+      <arglist>(const Queue::Ptr &amp;queue_)</arglist>
+    </member>
+    <member kind="function">
+      <type>constexpr auto</type>
+      <name>addMany</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>a0709550b4e3927212a6c89cf719e5a29</anchor>
+      <arglist>(auto &amp;&amp;first, auto &amp;&amp;... rest)</arglist>
+    </member>
+    <member kind="function">
+      <type>constexpr auto</type>
+      <name>addMany</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>ad59cb9a756745143bf8c98f8fe7adaf3</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="variable">
+      <type>FunctionType</type>
+      <name>fn</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>a68a3b539f5712a02b718a1e0742a4f0d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>priority</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>a575311979412b59585480d617fde3a7a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>WeakQueue::Ptr</type>
+      <name>queue</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>ae6070047b8a60394526f709dbfcba8d8</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" static="yes">
+      <type>static constexpr bool</type>
+      <name>hasCallable</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>ae93d4f651da9193acb76c499f2579745</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" static="yes">
+      <type>static constexpr bool</type>
+      <name>hasPriority</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>ae5738a7c678336413882a6bdea41f9e4</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" static="yes">
+      <type>static constexpr bool</type>
+      <name>hasQueue</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
+      <anchor>abeabbf44c2e8525cde781796944a4d66</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -10908,6 +11362,13 @@
       <arglist>(cairo_t *cr, const ConstTile::Ptr &amp;tile, Scroom::Utils::Rectangle&lt; double &gt; tileArea, Scroom::Utils::Rectangle&lt; double &gt; viewArea, int zoom, Scroom::Utils::Stuff cache) override</arglist>
     </member>
     <member kind="function" static="yes">
+      <type>static uint8_t</type>
+      <name>channel16To8</name>
+      <anchorfile>classCommonOperations.html</anchorfile>
+      <anchor>ad73969df8b5e83b7b9a05e3b257b68d3</anchor>
+      <arglist>(uint16_t value)</arglist>
+    </member>
+    <member kind="function" static="yes">
       <type>static void</type>
       <name>drawPixelValue</name>
       <anchorfile>classCommonOperations.html</anchorfile>
@@ -11224,6 +11685,24 @@
       <name>data</name>
       <anchorfile>classConstTile.html</anchorfile>
       <anchor>a05039cb054fd3cf7d95bd1b0ac326203</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>Scroom::RingBufferSink::ConsumeResult</name>
+    <filename>structScroom_1_1RingBufferSink_1_1ConsumeResult.html</filename>
+    <member kind="variable">
+      <type>std::vector&lt; Entry &gt;</type>
+      <name>entries</name>
+      <anchorfile>structScroom_1_1RingBufferSink_1_1ConsumeResult.html</anchorfile>
+      <anchor>a462704f442d374dff9e1aecc53f20025</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>std::uint64_t</type>
+      <name>nextSeq</name>
+      <anchorfile>structScroom_1_1RingBufferSink_1_1ConsumeResult.html</anchorfile>
+      <anchor>a797e8567413054e00191f7fc6c427515</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -12097,6 +12576,31 @@
       <name>statusMessages</name>
       <anchorfile>classDummyView.html</anchorfile>
       <anchor>afb91ded345798c089a755e4c6163c1e3</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>Scroom::RingBufferSink::Entry</name>
+    <filename>structScroom_1_1RingBufferSink_1_1Entry.html</filename>
+    <member kind="variable">
+      <type>std::uint64_t</type>
+      <name>seq</name>
+      <anchorfile>structScroom_1_1RingBufferSink_1_1Entry.html</anchorfile>
+      <anchor>acd6f050f47d73dc304bb3a3973afa784</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>spdlog::level::level_enum</type>
+      <name>level</name>
+      <anchorfile>structScroom_1_1RingBufferSink_1_1Entry.html</anchorfile>
+      <anchor>abe1cb691ef656399f61c29cc1cc7da01</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>std::string</type>
+      <name>text</name>
+      <anchorfile>structScroom_1_1RingBufferSink_1_1Entry.html</anchorfile>
+      <anchor>a276aa654facba621c9fbe0e5838c533a</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -13003,8 +13507,8 @@
       <type></type>
       <name>Job</name>
       <anchorfile>structThreadPool_1_1Job.html</anchorfile>
-      <anchor>a8d34176468a7051b195dce4fad19e04f</anchor>
-      <arglist>(boost::function&lt; void()&gt; fn, const WeakQueue::Ptr &amp;queue)</arglist>
+      <anchor>aa6248ab4d3bb1c05d143ff6e4b481221</anchor>
+      <arglist>(std::move_only_function&lt; void()&gt; fn, const WeakQueue::Ptr &amp;queue)</arglist>
     </member>
     <member kind="variable">
       <type>std::shared_ptr&lt; Scroom::Detail::ThreadPool::QueueImpl &gt;</type>
@@ -13014,10 +13518,10 @@
       <arglist></arglist>
     </member>
     <member kind="variable">
-      <type>boost::function&lt; void()&gt;</type>
+      <type>std::move_only_function&lt; void()&gt;</type>
       <name>fn</name>
       <anchorfile>structThreadPool_1_1Job.html</anchorfile>
-      <anchor>a658aeaa8ac34c28832cdb8f0c080e75f</anchor>
+      <anchor>a147218f86e45cae9c2f7382fe20c8183</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -13576,6 +14080,199 @@
       <name>logger</name>
       <anchorfile>classLoggerTests.html</anchorfile>
       <anchor>acdf5633e1a13ce089c27388d0eae42e8</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>LoggingWindow</name>
+    <filename>classLoggingWindow.html</filename>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; LoggingWindow &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a3ebe8b19ffdd540f581ba59075211734</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>~LoggingWindow</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>add5d9efb7691a40643c69cbe9cb28c52</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>LoggingWindow</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a44e215587b820220f807ed1f3c4ae6df</anchor>
+      <arglist>(const LoggingWindow &amp;)=delete</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>LoggingWindow</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>add35509944e448f1fe4bde29b1039924</anchor>
+      <arglist>(LoggingWindow &amp;&amp;)=delete</arglist>
+    </member>
+    <member kind="function">
+      <type>LoggingWindow &amp;</type>
+      <name>operator=</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a93024e711cca04723e08d5f6187cfe4c</anchor>
+      <arglist>(const LoggingWindow &amp;)=delete</arglist>
+    </member>
+    <member kind="function">
+      <type>LoggingWindow &amp;</type>
+      <name>operator=</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a6ded2f0c6fd50bbce45c9e664a5bd017</anchor>
+      <arglist>(LoggingWindow &amp;&amp;)=delete</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>consume</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a725f64c52ad151baa4baf211a36859c0</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>show</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>ad4d8733a2ce6b152122dfa6b908c8708</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static Ptr</type>
+      <name>create</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a3ed8f3af6ab36370ba5e35f7959d7b95</anchor>
+      <arglist>(Scroom::RingBufferSink::Ptr sink, const std::string &amp;uiFileName)</arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type></type>
+      <name>LoggingWindow</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a3cca22ba1a4c759c70bcff1cb410501b</anchor>
+      <arglist>(Scroom::RingBufferSink::Ptr sink)</arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type>void</type>
+      <name>loadFromUiFile</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a772f8688e0e1b46a9cf746f2dd7e9f37</anchor>
+      <arglist>(const std::string &amp;uiFileName)</arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type>void</type>
+      <name>initializeTags</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>af0166e2cf77f13f760f69925d830cc08</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type>void</type>
+      <name>appendEntry</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a74f28762a1b0de7b510a8e1ce0388c99</anchor>
+      <arglist>(const Scroom::RingBufferSink::Entry &amp;entry)</arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type>void</type>
+      <name>trimToMaxLines</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a7cc2f57d209b7c6f31da7586f221ce8d</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type>bool</type>
+      <name>isScrolledToBottom</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>af86d59c04fac1ded9d4e606fd87f5779</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type>void</type>
+      <name>scrollToBottom</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a80c0ef89bb4023813bcf00a2fc5ebf66</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type>void</type>
+      <name>requestAttentionForWarningBatch</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>aa5f23e4cc87eee36b0b106e073fec9d9</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" protection="private" static="yes">
+      <type>static gboolean</type>
+      <name>onDeleteEvent</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>ac5776b8055d42056ab173cc40f3744e3</anchor>
+      <arglist>(GtkWidget *widget, GdkEvent *deleteEvent, gpointer callbackData)</arglist>
+    </member>
+    <member kind="function" protection="private" static="yes">
+      <type>static gboolean</type>
+      <name>onFocusInEvent</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a39fb161bce94a17643607f9c700bcefe</anchor>
+      <arglist>(GtkWidget *widget, GdkEvent *focusEvent, gpointer userData)</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>Scroom::RingBufferSink::Ptr</type>
+      <name>m_sink</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>afbb2ac648c48505d0f2bfc93bd1b4d45</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>GtkBuilder *</type>
+      <name>m_xml</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a80c2fda982fddd9eb6b68c91970afadc</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>GtkWidget *</type>
+      <name>m_window</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a47edb503b84f651c1a7892ecce58bd2c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>GtkTextView *</type>
+      <name>m_textView</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>abcbf763d47ad2e9d24342c68aebba2ca</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>GtkTextBuffer *</type>
+      <name>m_textBuffer</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>ac18ee5f3760c63601e23d7f64f0e61f0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>std::uint64_t</type>
+      <name>m_lastSeq</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>aca8a06121fa60f51514a4c48e64126a4</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>std::size_t</type>
+      <name>m_maxDisplayedLines</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>aa3bdc7f4fcc0166d41687703dde0ea47</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>gint64</type>
+      <name>m_lastPresentTimestampUs</name>
+      <anchorfile>classLoggingWindow.html</anchorfile>
+      <anchor>a54b08a80daa501425ca44365f0b87326</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -14638,6 +15335,60 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>Operations16bpp</name>
+    <filename>classOperations16bpp.html</filename>
+    <base>PipetteCommonOperations16bpp</base>
+    <member kind="function">
+      <type></type>
+      <name>Operations16bpp</name>
+      <anchorfile>classOperations16bpp.html</anchorfile>
+      <anchor>a559ea097902db43fa311c73d3f35043f</anchor>
+      <arglist>(ColormapProvider::Ptr colormapProvider)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>getBpp</name>
+      <anchorfile>classOperations16bpp.html</anchorfile>
+      <anchor>a214659a3f53b69b4f13ea6867831781c</anchor>
+      <arglist>() override</arglist>
+    </member>
+    <member kind="function">
+      <type>Scroom::Utils::Stuff</type>
+      <name>cache</name>
+      <anchorfile>classOperations16bpp.html</anchorfile>
+      <anchor>a0cbe5f50ac11b1ba691ec2a26ba3aa58</anchor>
+      <arglist>(const ConstTile::Ptr &amp;tile) override</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>reduce</name>
+      <anchorfile>classOperations16bpp.html</anchorfile>
+      <anchor>a28283173b05f32ffd9125cde3c50645b</anchor>
+      <arglist>(Tile::Ptr target, ConstTile::Ptr source, int x, int y) override</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>draw</name>
+      <anchorfile>classOperations16bpp.html</anchorfile>
+      <anchor>ab65f3d021518d65040d464c758f57926</anchor>
+      <arglist>(cairo_t *cr, const ConstTile::Ptr &amp;tile, Scroom::Utils::Rectangle&lt; double &gt; tileArea, Scroom::Utils::Rectangle&lt; double &gt; viewArea, int zoom, Scroom::Utils::Stuff cache) override</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static LayerOperations::Ptr</type>
+      <name>create</name>
+      <anchorfile>classOperations16bpp.html</anchorfile>
+      <anchor>adc62a3b060c5dd8be9fd4f1ba4de08cf</anchor>
+      <arglist>(ColormapProvider::Ptr colormapProvider)</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>ColormapProvider::Ptr</type>
+      <name>colormapProvider</name>
+      <anchorfile>classOperations16bpp.html</anchorfile>
+      <anchor>a1217b448ee8efa1fdcebfa6c2c04a1ff</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>Operations1bpp</name>
     <filename>classOperations1bpp.html</filename>
     <base>CommonOperations</base>
@@ -14736,46 +15487,6 @@
       <anchorfile>classOperations1bppClipped.html</anchorfile>
       <anchor>a272902f3b9f2fb46ad34f91f535aeea9</anchor>
       <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>Operations24bpp</name>
-    <filename>classOperations24bpp.html</filename>
-    <base>PipetteCommonOperationsRGB</base>
-    <member kind="function">
-      <type></type>
-      <name>Operations24bpp</name>
-      <anchorfile>classOperations24bpp.html</anchorfile>
-      <anchor>a3a16af1f5fc66b2f35f8e7667ccb3a8d</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>int</type>
-      <name>getBpp</name>
-      <anchorfile>classOperations24bpp.html</anchorfile>
-      <anchor>a9cfec7016e2fef4b5423ded4949a93f0</anchor>
-      <arglist>() override</arglist>
-    </member>
-    <member kind="function">
-      <type>Scroom::Utils::Stuff</type>
-      <name>cache</name>
-      <anchorfile>classOperations24bpp.html</anchorfile>
-      <anchor>aa56c1b3c07df175b80167d3f2df7c655</anchor>
-      <arglist>(const ConstTile::Ptr &amp;tile) override</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>reduce</name>
-      <anchorfile>classOperations24bpp.html</anchorfile>
-      <anchor>a5d3e372510b5c3db3d71796d78012233</anchor>
-      <arglist>(Tile::Ptr target, ConstTile::Ptr source, int x, int y) override</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static Ptr</type>
-      <name>create</name>
-      <anchorfile>classOperations24bpp.html</anchorfile>
-      <anchor>a040d7cb9f01db55dd7ba668ff6fdf215</anchor>
-      <arglist>()</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -14953,6 +15664,46 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>OperationsCMYK64</name>
+    <filename>classOperationsCMYK64.html</filename>
+    <base>PipetteCommonOperationsCMYK64bpp</base>
+    <member kind="function">
+      <type></type>
+      <name>OperationsCMYK64</name>
+      <anchorfile>classOperationsCMYK64.html</anchorfile>
+      <anchor>a0e9cbf60ef17dd496f383f021e067f8d</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>getBpp</name>
+      <anchorfile>classOperationsCMYK64.html</anchorfile>
+      <anchor>a32f6a377b9a997a98ace098219b87ab1</anchor>
+      <arglist>() override</arglist>
+    </member>
+    <member kind="function">
+      <type>Scroom::Utils::Stuff</type>
+      <name>cache</name>
+      <anchorfile>classOperationsCMYK64.html</anchorfile>
+      <anchor>a8764613faefd5883ba54f66a2cb0be69</anchor>
+      <arglist>(const ConstTile::Ptr &amp;tile) override</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>reduce</name>
+      <anchorfile>classOperationsCMYK64.html</anchorfile>
+      <anchor>aff12c8d7f357b5538b2920643058e57e</anchor>
+      <arglist>(Tile::Ptr target, ConstTile::Ptr source, int x, int y) override</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static Ptr</type>
+      <name>create</name>
+      <anchorfile>classOperationsCMYK64.html</anchorfile>
+      <anchor>aeacc48497e058d5a8a73b4e2922c378f</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>OperationsCMYK8</name>
     <filename>classOperationsCMYK8.html</filename>
     <base>PipetteCommonOperationsCMYK</base>
@@ -15030,6 +15781,86 @@
       <anchorfile>classOperationsColormapped.html</anchorfile>
       <anchor>a0b0991af5a7714e81ac4ea1845dc3910</anchor>
       <arglist>(ColormapProvider::Ptr colormapProvider, int bpp)</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>OperationsRgb24bpp</name>
+    <filename>classOperationsRgb24bpp.html</filename>
+    <base>PipetteCommonOperationsRGB</base>
+    <member kind="function">
+      <type></type>
+      <name>OperationsRgb24bpp</name>
+      <anchorfile>classOperationsRgb24bpp.html</anchorfile>
+      <anchor>ace6a4d7cef71e54e8166dfc76d8fff8a</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>getBpp</name>
+      <anchorfile>classOperationsRgb24bpp.html</anchorfile>
+      <anchor>a366f2f00d409a59a529fcc64b182ad95</anchor>
+      <arglist>() override</arglist>
+    </member>
+    <member kind="function">
+      <type>Scroom::Utils::Stuff</type>
+      <name>cache</name>
+      <anchorfile>classOperationsRgb24bpp.html</anchorfile>
+      <anchor>a04b0d561aa26893acbf07cd60d3d1361</anchor>
+      <arglist>(const ConstTile::Ptr &amp;tile) override</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>reduce</name>
+      <anchorfile>classOperationsRgb24bpp.html</anchorfile>
+      <anchor>a246d9c225618a95cd2c30b570da1381d</anchor>
+      <arglist>(Tile::Ptr target, ConstTile::Ptr source, int x, int y) override</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static Ptr</type>
+      <name>create</name>
+      <anchorfile>classOperationsRgb24bpp.html</anchorfile>
+      <anchor>a25b326b314181448325bb82ea5fa54fb</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>OperationsRgb48bpp</name>
+    <filename>classOperationsRgb48bpp.html</filename>
+    <base>PipetteCommonOperationsRGB48bpp</base>
+    <member kind="function">
+      <type></type>
+      <name>OperationsRgb48bpp</name>
+      <anchorfile>classOperationsRgb48bpp.html</anchorfile>
+      <anchor>a78d44049a0caae227d0096d02bf53476</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>getBpp</name>
+      <anchorfile>classOperationsRgb48bpp.html</anchorfile>
+      <anchor>aad7199b21e0a6d690c7b5b23791cef6c</anchor>
+      <arglist>() override</arglist>
+    </member>
+    <member kind="function">
+      <type>Scroom::Utils::Stuff</type>
+      <name>cache</name>
+      <anchorfile>classOperationsRgb48bpp.html</anchorfile>
+      <anchor>ac1d16e1547de5bc8c4d187ae5078eab0</anchor>
+      <arglist>(const ConstTile::Ptr &amp;tile) override</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>reduce</name>
+      <anchorfile>classOperationsRgb48bpp.html</anchorfile>
+      <anchor>af96f1d9aaa0fcc561b5cda4231ebb700</anchor>
+      <arglist>(Tile::Ptr target, ConstTile::Ptr source, int x, int y) override</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static Ptr</type>
+      <name>create</name>
+      <anchorfile>classOperationsRgb48bpp.html</anchorfile>
+      <anchor>a2416b0af013eda7807cbfee320ea6042</anchor>
+      <arglist>()</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -15377,6 +16208,26 @@
     <base>Scroom::GtkTestHelpers::GtkMainLoop</base>
   </compound>
   <compound kind="class">
+    <name>PipetteCommonOperations16bpp</name>
+    <filename>classPipetteCommonOperations16bpp.html</filename>
+    <base>PipetteLayerOperations</base>
+    <base>CommonOperations</base>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; PipetteCommonOperations16bpp &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>classPipetteCommonOperations16bpp.html</anchorfile>
+      <anchor>a2e3131197b318f33ec9b57dee354b949</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>PipetteLayerOperations::PipetteColor</type>
+      <name>sumPixelValues</name>
+      <anchorfile>classPipetteCommonOperations16bpp.html</anchorfile>
+      <anchor>ab0965595d281dd9485a1becf9333fb30</anchor>
+      <arglist>(Scroom::Utils::Rectangle&lt; int &gt; area, const ConstTile::Ptr &amp;tile) override</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>PipetteCommonOperationsCMYK</name>
     <filename>classPipetteCommonOperationsCMYK.html</filename>
     <base>PipetteLayerOperations</base>
@@ -15411,6 +16262,26 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>PipetteCommonOperationsCMYK64bpp</name>
+    <filename>classPipetteCommonOperationsCMYK64bpp.html</filename>
+    <base>PipetteLayerOperations</base>
+    <base>CommonOperations</base>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; PipetteCommonOperationsCMYK64bpp &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>classPipetteCommonOperationsCMYK64bpp.html</anchorfile>
+      <anchor>a72010cf4a465b8adbe00e4f286ea9bb8</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>PipetteLayerOperations::PipetteColor</type>
+      <name>sumPixelValues</name>
+      <anchorfile>classPipetteCommonOperationsCMYK64bpp.html</anchorfile>
+      <anchor>a84c3e55de3ad80688d402cb7ac7fcdd5</anchor>
+      <arglist>(Scroom::Utils::Rectangle&lt; int &gt; area, const ConstTile::Ptr &amp;tile) override</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>PipetteCommonOperationsRGB</name>
     <filename>classPipetteCommonOperationsRGB.html</filename>
     <base>PipetteLayerOperations</base>
@@ -15442,6 +16313,26 @@
       <anchorfile>classPipetteCommonOperationsRGB.html</anchorfile>
       <anchor>a55e94b30e388c51824d5c0e6dfb12c27</anchor>
       <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>PipetteCommonOperationsRGB48bpp</name>
+    <filename>classPipetteCommonOperationsRGB48bpp.html</filename>
+    <base>PipetteLayerOperations</base>
+    <base>CommonOperations</base>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; PipetteCommonOperationsRGB48bpp &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>classPipetteCommonOperationsRGB48bpp.html</anchorfile>
+      <anchor>a0027975eea4c211fb49a2b6fca4c5ab4</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>PipetteLayerOperations::PipetteColor</type>
+      <name>sumPixelValues</name>
+      <anchorfile>classPipetteCommonOperationsRGB48bpp.html</anchorfile>
+      <anchor>a8eeaff485265c19b5474ba27d000fe95</anchor>
+      <arglist>(Scroom::Utils::Rectangle&lt; int &gt; area, const ConstTile::Ptr &amp;tile) override</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -17528,97 +18419,97 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>ThreadPool::Queue</name>
-    <filename>classThreadPool_1_1Queue.html</filename>
+    <name>Scroom::Detail::ThreadPool::Queue</name>
+    <filename>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</filename>
     <member kind="typedef">
       <type>std::shared_ptr&lt; Queue &gt;</type>
       <name>Ptr</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
-      <anchor>a3096b6f6bf4aab440b938d7c5632a402</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
+      <anchor>ae44696440c2b9dd5dbef5c4eda0baec9</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>std::weak_ptr&lt; Queue &gt;</type>
       <name>WeakPtr</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
-      <anchor>ad426620d1b761c124a4aca7175cde034</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
+      <anchor>a076e55773e2b1380be46917bf84d47e5</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
       <type></type>
+      <name>Queue</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
+      <anchor>a7cfca3637d57c4a9e37351b3426ffd40</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Queue</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
+      <anchor>a9bbbf72923dddcc1d072981cd32bac8a</anchor>
+      <arglist>(const Queue &amp;)=delete</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Queue</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
+      <anchor>a4a9c0a5e876c2a3f42200e02fb9e429c</anchor>
+      <arglist>(Queue &amp;&amp;)=delete</arglist>
+    </member>
+    <member kind="function">
+      <type>Queue &amp;</type>
+      <name>operator=</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
+      <anchor>a66fc0da89a414563d618a079e1a18b72</anchor>
+      <arglist>(const Queue &amp;)=delete</arglist>
+    </member>
+    <member kind="function">
+      <type>Queue &amp;</type>
+      <name>operator=</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
+      <anchor>acd56f9f5a30c84511e240b61fa0107b1</anchor>
+      <arglist>(Queue &amp;&amp;)=delete</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
       <name>~Queue</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
-      <anchor>a2c6be4f191a8b6390e39583b0f085149</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
+      <anchor>a00d119db8fa3050da37746e82cbcf94f</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>std::shared_ptr&lt; Scroom::Detail::ThreadPool::QueueImpl &gt;</type>
       <name>get</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
-      <anchor>a507f0fcc6f3edf7565652eea7a925430</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
+      <anchor>a0b7f55ed88ee2ca8d51475908c30eb3d</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>std::shared_ptr&lt; WeakQueue &gt;</type>
       <name>getWeak</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
-      <anchor>a475a6a4ef37c8aa9ff22cb2cecc59d80</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
+      <anchor>a2119dca72a374f622eade1fc8f472878</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
       <name>create</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
-      <anchor>ae48cfe05b7bb72f1990557d64ef57acf</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
+      <anchor>af8f6918d92f8388674bd7bdc1b75b2ec</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
       <name>createAsync</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
-      <anchor>a60a5cfe128cc80c5d5fbbd6494fb62e2</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
+      <anchor>ac3d3ac1d5d45d2795778a63a45470be5</anchor>
       <arglist>()</arglist>
-    </member>
-    <member kind="function" protection="private">
-      <type></type>
-      <name>Queue</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
-      <anchor>a0ea02c66235d2f8bd6da128248d8b55f</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function" protection="private">
-      <type></type>
-      <name>Queue</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
-      <anchor>ab4b8dee0d10fe3f6f58d4ee4775903fc</anchor>
-      <arglist>(const Queue &amp;)=delete</arglist>
-    </member>
-    <member kind="function" protection="private">
-      <type></type>
-      <name>Queue</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
-      <anchor>aea78a048117e0a301bbb43f98e1fba73</anchor>
-      <arglist>(Queue &amp;&amp;)=delete</arglist>
-    </member>
-    <member kind="function" protection="private">
-      <type>Queue &amp;</type>
-      <name>operator=</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
-      <anchor>a54de9c41d072639d0be97291d9d7af02</anchor>
-      <arglist>(const Queue &amp;)=delete</arglist>
-    </member>
-    <member kind="function" protection="private">
-      <type>Queue &amp;</type>
-      <name>operator=</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
-      <anchor>af872bb82d082f2e5e44c7d31451c94bd</anchor>
-      <arglist>(Queue &amp;&amp;)=delete</arglist>
     </member>
     <member kind="variable" protection="private">
       <type>std::shared_ptr&lt; WeakQueue &gt;</type>
       <name>weak</name>
-      <anchorfile>classThreadPool_1_1Queue.html</anchorfile>
-      <anchor>a78c61eff732a77a1ca300bb560a86d4f</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html</anchorfile>
+      <anchor>a9677856e3fdd424bbc4206ffb5804086</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -18670,6 +19561,96 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>Scroom::RingBufferSink</name>
+    <filename>classScroom_1_1RingBufferSink.html</filename>
+    <class kind="struct">Scroom::RingBufferSink::ConsumeResult</class>
+    <class kind="struct">Scroom::RingBufferSink::Entry</class>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; RingBufferSink &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>classScroom_1_1RingBufferSink.html</anchorfile>
+      <anchor>a181c596238444cbac5f5a1e86762f7ce</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>RingBufferSink</name>
+      <anchorfile>classScroom_1_1RingBufferSink.html</anchorfile>
+      <anchor>abfb802f058df9063669ace67ada63a4b</anchor>
+      <arglist>(std::function&lt; void()&gt; wakeupCallback, std::size_t capacity=DEFAULT_CAPACITY)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::vector&lt; Entry &gt;</type>
+      <name>snapshot</name>
+      <anchorfile>classScroom_1_1RingBufferSink.html</anchorfile>
+      <anchor>a21a09bc3992f6cab7fbfaad4f587bdd0</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>ConsumeResult</type>
+      <name>consumeSince</name>
+      <anchorfile>classScroom_1_1RingBufferSink.html</anchorfile>
+      <anchor>af083f8202fafbe1b29317391e46da3be</anchor>
+      <arglist>(std::uint64_t lastSeq)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::size_t</type>
+      <name>capacity</name>
+      <anchorfile>classScroom_1_1RingBufferSink.html</anchorfile>
+      <anchor>a91a9c112acbe352ae972ab8b91195208</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="variable" static="yes">
+      <type>static constexpr std::size_t</type>
+      <name>DEFAULT_CAPACITY</name>
+      <anchorfile>classScroom_1_1RingBufferSink.html</anchorfile>
+      <anchor>a623d685d19cb59c4282eba87bc22a1ab</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function" protection="protected">
+      <type>void</type>
+      <name>sink_it_</name>
+      <anchorfile>classScroom_1_1RingBufferSink.html</anchorfile>
+      <anchor>a87365f32de6e9bec210409a9022f5ae7</anchor>
+      <arglist>(const spdlog::details::log_msg &amp;msg) override</arglist>
+    </member>
+    <member kind="function" protection="protected">
+      <type>void</type>
+      <name>flush_</name>
+      <anchorfile>classScroom_1_1RingBufferSink.html</anchorfile>
+      <anchor>a78c50adde25dc59818dab04772f93d05</anchor>
+      <arglist>() override</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>boost::circular_buffer&lt; Entry &gt;</type>
+      <name>m_entries</name>
+      <anchorfile>classScroom_1_1RingBufferSink.html</anchorfile>
+      <anchor>a81ee453dab3a56c6e0c1ebe57c5bdd67</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>std::uint64_t</type>
+      <name>m_nextSeq</name>
+      <anchorfile>classScroom_1_1RingBufferSink.html</anchorfile>
+      <anchor>a6cdfd2757165413a4fd00fa8b90ee606</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>bool</type>
+      <name>m_pendingWakeup</name>
+      <anchorfile>classScroom_1_1RingBufferSink.html</anchorfile>
+      <anchor>ae40ca9cb45990e7ed0e7f1cee7304c5e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>std::function&lt; void()&gt;</type>
+      <name>m_wakeupCallback</name>
+      <anchorfile>classScroom_1_1RingBufferSink.html</anchorfile>
+      <anchor>a6b01d6c16e830a36ef1a6ba8bc6f3237</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>Ruler</name>
     <filename>classRuler.html</filename>
     <member kind="enumeration">
@@ -19225,8 +20206,15 @@
       <type></type>
       <name>SampleIterator</name>
       <anchorfile>classScroom_1_1Bitmap_1_1SampleIterator.html</anchorfile>
-      <anchor>acf90826e2b9857a2ea9364ea1f7aebe7</anchor>
-      <arglist>(div_t d, ConstBase *base, int bps_)</arglist>
+      <anchor>ae2745d64e77a7cebed7d8f6fcf0c781d</anchor>
+      <arglist>(div_t d, ConstBase *base, int bps_, int samplesPerBase_)</arglist>
+    </member>
+    <member kind="function" protection="private" static="yes">
+      <type>static int</type>
+      <name>samplesPerBaseFromBps</name>
+      <anchorfile>classScroom_1_1Bitmap_1_1SampleIterator.html</anchorfile>
+      <anchor>a4a07bf60be20c4957be487173927eb37</anchor>
+      <arglist>(int bps_)</arglist>
     </member>
     <member kind="function" protection="private" static="yes">
       <type>static Base</type>
@@ -20627,76 +21615,76 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>anonymous_namespace{threadpoolimpl.cc}::ThreadList</name>
-    <filename>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html</filename>
+    <name>anonymous_namespace{threadpool.cc}::ThreadList</name>
+    <filename>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html</filename>
     <member kind="typedef">
       <type>std::shared_ptr&lt; ThreadList &gt;</type>
       <name>Ptr</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html</anchorfile>
-      <anchor>add71f75d927b25e10920b33e216b808d</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html</anchorfile>
+      <anchor>a00901cf68d001ec856b18a93d5e63994</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>wait</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html</anchorfile>
-      <anchor>abf93f2d0fa75c03620dd3ef3763728ca</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html</anchorfile>
+      <anchor>aba819ee7e207fe6d7b7281684e46b777</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>add</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html</anchorfile>
-      <anchor>a21055cc122e9988e7af28e8ca27ff16d</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html</anchorfile>
+      <anchor>ae80300f183a0f9a51cc4fd21d0412f6e</anchor>
       <arglist>(const ThreadPool::ThreadPtr &amp;t)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>add</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html</anchorfile>
-      <anchor>a52e7912f076d142faaa8128ac028359d</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html</anchorfile>
+      <anchor>aad0a0148770b1a4cf39fcab72857832e</anchor>
       <arglist>(const std::shared_ptr&lt; void &gt; &amp;t, const std::string &amp;s)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
       <name>instance</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html</anchorfile>
-      <anchor>a3b3efa8982899d0fa6641a868e8cf230</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html</anchorfile>
+      <anchor>a96eb0bd66579e263fd0d04a9b16d1a7a</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" protection="private">
       <type>void</type>
       <name>dumpPointers</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html</anchorfile>
-      <anchor>aaafff3ce0a3650cd001e223613893b89</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html</anchorfile>
+      <anchor>a8994a1f8ac1dd6b12a2070efb60ed8e3</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="variable" protection="private">
       <type>boost::mutex</type>
       <name>mut</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html</anchorfile>
-      <anchor>afd08b401ad5aca09e8e1cc8d9578aee2</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html</anchorfile>
+      <anchor>ae78632edeb482d8b8c43d0856c84d8d6</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
       <type>std::list&lt; ThreadPool::ThreadPtr &gt;</type>
       <name>threads</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html</anchorfile>
-      <anchor>ad97651e0256cc8db36501d834fff73c3</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html</anchorfile>
+      <anchor>a629f4e2d1c3ff4d4ed2d70ac6848dc6f</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
       <type>std::list&lt; std::pair&lt; std::weak_ptr&lt; void &gt;, std::string &gt; &gt;</type>
       <name>pointers</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html</anchorfile>
-      <anchor>ad6be3b38d9b6337e7e927c00804baf51</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html</anchorfile>
+      <anchor>a1a29406cdf092f8c37f1dea595886e96</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
       <type>Scroom::Logger</type>
       <name>logger</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html</anchorfile>
-      <anchor>af0b0d4927fc3744ccb6e5e3968dfbef4</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html</anchorfile>
+      <anchor>a69c55c3714bff6d5c4bba1544b7666c2</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -20705,8 +21693,20 @@
     <filename>classThreadPool.html</filename>
     <class kind="struct">ThreadPool::Job</class>
     <class kind="class">ThreadPool::PrivateData</class>
-    <class kind="class">ThreadPool::Queue</class>
-    <class kind="class">ThreadPool::WeakQueue</class>
+    <member kind="typedef">
+      <type>Scroom::Detail::ThreadPool::Queue</type>
+      <name>Queue</name>
+      <anchorfile>classThreadPool.html</anchorfile>
+      <anchor>a29448666b91c5fd9d2b03791bd6b6e7c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>Scroom::Detail::ThreadPool::WeakQueue</type>
+      <name>WeakQueue</name>
+      <anchorfile>classThreadPool.html</anchorfile>
+      <anchor>abb813e409dcb392ebe68b17e36b936dc</anchor>
+      <arglist></arglist>
+    </member>
     <member kind="typedef">
       <type>std::shared_ptr&lt; ThreadPool &gt;</type>
       <name>Ptr</name>
@@ -20772,115 +21772,17 @@
     </member>
     <member kind="function">
       <type>void</type>
-      <name>schedule</name>
+      <name>post</name>
       <anchorfile>classThreadPool.html</anchorfile>
-      <anchor>a5ceb75ca278331440e9adce284089863</anchor>
-      <arglist>(boost::function&lt; void()&gt; const &amp;fn, int priority=defaultPriority, const Queue::Ptr &amp;queue=defaultQueue())</arglist>
+      <anchor>a3b6be78dc258ee937775128c101aa5fc</anchor>
+      <arglist>(auto &amp;&amp;... params)</arglist>
     </member>
     <member kind="function">
-      <type>void</type>
-      <name>schedule</name>
+      <type>auto</type>
+      <name>submit</name>
       <anchorfile>classThreadPool.html</anchorfile>
-      <anchor>a1dbb23beee5a7a9133ee2e4cf5d6ac07</anchor>
-      <arglist>(boost::function&lt; void()&gt; const &amp;fn, const Queue::Ptr &amp;queue)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>schedule</name>
-      <anchorfile>classThreadPool.html</anchorfile>
-      <anchor>aca73885005f3a58ad686961895816ee0</anchor>
-      <arglist>(std::shared_ptr&lt; T &gt; fn, int priority=defaultPriority, const Queue::Ptr &amp;queue=defaultQueue())</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>schedule</name>
-      <anchorfile>classThreadPool.html</anchorfile>
-      <anchor>a8552ac4cfbe38e71e1bf7a731f8f8fa3</anchor>
-      <arglist>(std::shared_ptr&lt; T &gt; fn, const Queue::Ptr &amp;queue)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>schedule</name>
-      <anchorfile>classThreadPool.html</anchorfile>
-      <anchor>a1de8df4ea4e68c8ef852dc7fdf663954</anchor>
-      <arglist>(boost::function&lt; void()&gt; const &amp;fn, int priority, const WeakQueue::Ptr &amp;queue)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>schedule</name>
-      <anchorfile>classThreadPool.html</anchorfile>
-      <anchor>a1fa231418839d0e3f183fecf1a5f3fcb</anchor>
-      <arglist>(boost::function&lt; void()&gt; const &amp;fn, const WeakQueue::Ptr &amp;queue)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>schedule</name>
-      <anchorfile>classThreadPool.html</anchorfile>
-      <anchor>a57a6a7b628d11de3079188fbf1d23fb7</anchor>
-      <arglist>(std::shared_ptr&lt; T &gt; fn, int priority, const WeakQueue::Ptr &amp;queue)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>schedule</name>
-      <anchorfile>classThreadPool.html</anchorfile>
-      <anchor>aaabc4c91f09f727b451968a9d6eeadcd</anchor>
-      <arglist>(std::shared_ptr&lt; T &gt; fn, WeakQueue::Ptr queue)</arglist>
-    </member>
-    <member kind="function">
-      <type>boost::unique_future&lt; R &gt;</type>
-      <name>schedule</name>
-      <anchorfile>classThreadPool.html</anchorfile>
-      <anchor>a095515aca079f8fe2946260f13834cf0</anchor>
-      <arglist>(boost::function&lt; R()&gt; const &amp;fn, int priority=defaultPriority, const Queue::Ptr &amp;queue=defaultQueue())</arglist>
-    </member>
-    <member kind="function">
-      <type>boost::unique_future&lt; R &gt;</type>
-      <name>schedule</name>
-      <anchorfile>classThreadPool.html</anchorfile>
-      <anchor>a4b1ce593bf0a40324f134775853bc599</anchor>
-      <arglist>(boost::function&lt; R()&gt; const &amp;fn, const Queue::Ptr &amp;queue)</arglist>
-    </member>
-    <member kind="function">
-      <type>boost::unique_future&lt; R &gt;</type>
-      <name>schedule</name>
-      <anchorfile>classThreadPool.html</anchorfile>
-      <anchor>aaa0ff03b24f96a70a0d80264e72619a4</anchor>
-      <arglist>(const std::shared_ptr&lt; T &gt; &amp;fn, int priority=defaultPriority, const Queue::Ptr &amp;queue=defaultQueue())</arglist>
-    </member>
-    <member kind="function">
-      <type>boost::unique_future&lt; R &gt;</type>
-      <name>schedule</name>
-      <anchorfile>classThreadPool.html</anchorfile>
-      <anchor>a909a1964094e2db0e24d856690f40357</anchor>
-      <arglist>(std::shared_ptr&lt; T &gt; fn, const Queue::Ptr &amp;queue)</arglist>
-    </member>
-    <member kind="function">
-      <type>boost::unique_future&lt; R &gt;</type>
-      <name>schedule</name>
-      <anchorfile>classThreadPool.html</anchorfile>
-      <anchor>a74b439ee2bc7d263c9c58a1436861cbd</anchor>
-      <arglist>(boost::function&lt; R()&gt; const &amp;fn, int priority, const WeakQueue::Ptr &amp;queue)</arglist>
-    </member>
-    <member kind="function">
-      <type>boost::unique_future&lt; R &gt;</type>
-      <name>schedule</name>
-      <anchorfile>classThreadPool.html</anchorfile>
-      <anchor>a5400bb2ce9bfb050f027d1b0d5fca1af</anchor>
-      <arglist>(boost::function&lt; R()&gt; const &amp;fn, WeakQueue::Ptr queue)</arglist>
-    </member>
-    <member kind="function">
-      <type>boost::unique_future&lt; R &gt;</type>
-      <name>schedule</name>
-      <anchorfile>classThreadPool.html</anchorfile>
-      <anchor>acb0cd3175745461a4e078d5a9d00029c</anchor>
-      <arglist>(const std::shared_ptr&lt; T &gt; &amp;fn, int priority, const WeakQueue::Ptr &amp;queue)</arglist>
-    </member>
-    <member kind="function">
-      <type>boost::unique_future&lt; R &gt;</type>
-      <name>schedule</name>
-      <anchorfile>classThreadPool.html</anchorfile>
-      <anchor>a51d4a7ff67792861ea0c918757e353f8</anchor>
-      <arglist>(std::shared_ptr&lt; T &gt; fn, WeakQueue::Ptr queue)</arglist>
+      <anchor>a6179ee6b010f0462037be5378afc2339</anchor>
+      <arglist>(auto &amp;&amp;... params)</arglist>
     </member>
     <member kind="function">
       <type>ThreadPtr</type>
@@ -20910,6 +21812,13 @@
       <anchor>a01a9a8ed66255d64f64b5140d9ed1884</anchor>
       <arglist>(int count, bool completeAllJobsBeforeDestruction=false)</arglist>
     </member>
+    <member kind="function" protection="private">
+      <type>void</type>
+      <name>schedule_impl</name>
+      <anchorfile>classThreadPool.html</anchorfile>
+      <anchor>a17a52db60287eb770f1e0d546cbbbe01</anchor>
+      <arglist>(std::move_only_function&lt; void()&gt; fn, int priority, const WeakQueue::Ptr &amp;queue)</arglist>
+    </member>
     <member kind="function" protection="private" static="yes">
       <type>static void</type>
       <name>work</name>
@@ -20928,7 +21837,7 @@
       <type>static Queue::Ptr</type>
       <name>defaultQueue</name>
       <anchorfile>classThreadPool.html</anchorfile>
-      <anchor>a7d435b8c6eff3ffcf5b9043bd50048c2</anchor>
+      <anchor>af5ac6649a5a7711037747ef03c542f18</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="variable" protection="private">
@@ -20954,55 +21863,55 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>anonymous_namespace{threadpoolimpl.cc}::ThreadWaiter</name>
-    <filename>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html</filename>
+    <name>anonymous_namespace{threadpool.cc}::ThreadWaiter</name>
+    <filename>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter.html</filename>
     <member kind="function">
       <type></type>
       <name>ThreadWaiter</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html</anchorfile>
-      <anchor>a14a147147c551446e6e747eb92ca2ba0</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter.html</anchorfile>
+      <anchor>a626c7008f07710560e3a322c9798106d</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>~ThreadWaiter</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html</anchorfile>
-      <anchor>a64c1e6037f2c205c3f80aae7608fe74e</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter.html</anchorfile>
+      <anchor>a56de2cab0cbbcf6fdff9176d1512265f</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ThreadWaiter</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html</anchorfile>
-      <anchor>a99f2f465e3a5030a3de634bde57bb5c9</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter.html</anchorfile>
+      <anchor>a250e02efa74f78a07f236dce0f834574</anchor>
       <arglist>(const ThreadWaiter &amp;)=delete</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ThreadWaiter</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html</anchorfile>
-      <anchor>ad6be116745e1e9712da6576af15141f1</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter.html</anchorfile>
+      <anchor>ae7a9d49b7b968665a059506a5aa53799</anchor>
       <arglist>(ThreadWaiter &amp;&amp;)=delete</arglist>
     </member>
     <member kind="function">
       <type>ThreadWaiter</type>
       <name>operator=</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html</anchorfile>
-      <anchor>a99ce5886c0f33708ca0d75bae56d3d3c</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter.html</anchorfile>
+      <anchor>a46f77d2c17f4200086bfb8456737b081</anchor>
       <arglist>(const ThreadWaiter &amp;)=delete</arglist>
     </member>
     <member kind="function">
       <type>ThreadWaiter</type>
       <name>operator=</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html</anchorfile>
-      <anchor>a2dc6e8cf64a431b2ba35d3bcfc10c750</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter.html</anchorfile>
+      <anchor>a45e3508ee622e0000be4025330f092ab</anchor>
       <arglist>(ThreadWaiter &amp;&amp;)=delete</arglist>
     </member>
     <member kind="variable" protection="private">
       <type>ThreadList::Ptr</type>
       <name>threadList</name>
-      <anchorfile>classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html</anchorfile>
-      <anchor>a0b01f8545139812908055c33497d8cb1</anchor>
+      <anchorfile>classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter.html</anchorfile>
+      <anchor>abb0f1734b3cbb05808fec73bc1b809e2</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -24817,83 +25726,83 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>ThreadPool::WeakQueue</name>
-    <filename>classThreadPool_1_1WeakQueue.html</filename>
+    <name>Scroom::Detail::ThreadPool::WeakQueue</name>
+    <filename>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</filename>
     <member kind="typedef">
       <type>std::shared_ptr&lt; WeakQueue &gt;</type>
       <name>Ptr</name>
-      <anchorfile>classThreadPool_1_1WeakQueue.html</anchorfile>
-      <anchor>a8cf12332c4d158290d23075252e6c359</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
+      <anchor>a90652659d120bb282fc7656588ef7cf6</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>std::weak_ptr&lt; WeakQueue &gt;</type>
       <name>WeakPtr</name>
-      <anchorfile>classThreadPool_1_1WeakQueue.html</anchorfile>
-      <anchor>a976cc5dcd2e4f092f630e62960278a22</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
+      <anchor>ad70196effcb0aec73699198529857e01</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
       <type></type>
+      <name>WeakQueue</name>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
+      <anchor>aeb7201763d182b9dd1d8ff5938f1f486</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
       <name>~WeakQueue</name>
-      <anchorfile>classThreadPool_1_1WeakQueue.html</anchorfile>
-      <anchor>a57fb885957b226322315678fb6602697</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
+      <anchor>af183260eac98db220a1e98d808a770f6</anchor>
       <arglist>()=default</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>WeakQueue</name>
-      <anchorfile>classThreadPool_1_1WeakQueue.html</anchorfile>
-      <anchor>a2418ea09f16eb53150ebb594df3ca315</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
+      <anchor>a4db047a9d1c259137a52961074325f71</anchor>
       <arglist>(const WeakQueue &amp;)=delete</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>WeakQueue</name>
-      <anchorfile>classThreadPool_1_1WeakQueue.html</anchorfile>
-      <anchor>a5f6a2803545db98255cd837f4ab0ae93</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
+      <anchor>a7e28f87d329bb886faf5b955c7f3dc5b</anchor>
       <arglist>(WeakQueue &amp;&amp;)=delete</arglist>
     </member>
     <member kind="function">
       <type>WeakQueue &amp;</type>
       <name>operator=</name>
-      <anchorfile>classThreadPool_1_1WeakQueue.html</anchorfile>
-      <anchor>afd862f68942894e320a73b9335bbbd1a</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
+      <anchor>a0f710afb89229b24f633028c8ed6581d</anchor>
       <arglist>(const WeakQueue &amp;)=delete</arglist>
     </member>
     <member kind="function">
       <type>WeakQueue &amp;</type>
       <name>operator=</name>
-      <anchorfile>classThreadPool_1_1WeakQueue.html</anchorfile>
-      <anchor>a7c9c8982c389e2e34fb129216acb594c</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
+      <anchor>ae3521fe929ecd2be73c7a10d5f6b9170</anchor>
       <arglist>(WeakQueue &amp;&amp;)=delete</arglist>
     </member>
     <member kind="function">
       <type>std::shared_ptr&lt; Scroom::Detail::ThreadPool::QueueImpl &gt;</type>
       <name>get</name>
-      <anchorfile>classThreadPool_1_1WeakQueue.html</anchorfile>
-      <anchor>a1faec7781376e793e0a71688ef66105b</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
+      <anchor>af1beae1b260b67473fc087774d1124fe</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
       <name>create</name>
-      <anchorfile>classThreadPool_1_1WeakQueue.html</anchorfile>
-      <anchor>a505621d98fa3f01d828eb90e8ec23bbd</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function" protection="private">
-      <type></type>
-      <name>WeakQueue</name>
-      <anchorfile>classThreadPool_1_1WeakQueue.html</anchorfile>
-      <anchor>a49c6500371382f9615655df771efbac0</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
+      <anchor>a68659e2a375ce2929295fdf3d8bccf4c</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="variable" protection="private">
       <type>std::shared_ptr&lt; Scroom::Detail::ThreadPool::QueueImpl &gt;</type>
       <name>qi</name>
-      <anchorfile>classThreadPool_1_1WeakQueue.html</anchorfile>
-      <anchor>ac562024addfe4c868fbe0d3237a9fc16</anchor>
+      <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html</anchorfile>
+      <anchor>a5dca286671626cf60853706e472186ea</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -24909,9 +25818,83 @@
       <arglist>()=0</arglist>
     </member>
   </compound>
+  <compound kind="concept">
+    <name>Scroom::Detail::ThreadPool::CallableT</name>
+    <filename>conceptScroom_1_1Detail_1_1ThreadPool_1_1CallableT.html</filename>
+  </compound>
   <compound kind="namespace">
     <name>anonymous_namespace{callbacks.cc}</name>
     <filename>namespaceanonymous__namespace_02callbacks_8cc_03.html</filename>
+    <member kind="function">
+      <type>GtkWidget *</type>
+      <name>getRequiredWidgetObject</name>
+      <anchorfile>namespaceanonymous__namespace_02callbacks_8cc_03.html</anchorfile>
+      <anchor>a379efe75d262f550ed11f0acf9c41bb1</anchor>
+      <arglist>(GtkBuilder *builder, const char *id)</arglist>
+    </member>
+    <member kind="function">
+      <type>GtkAccelGroup *</type>
+      <name>getOrCreateMainWindowAccelGroup</name>
+      <anchorfile>namespaceanonymous__namespace_02callbacks_8cc_03.html</anchorfile>
+      <anchor>aba8ed3e5ee5efaffa9aed05d3ab5656f</anchor>
+      <arglist>(GtkWidget *window)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>bindCommonMenuAccelerators</name>
+      <anchorfile>namespaceanonymous__namespace_02callbacks_8cc_03.html</anchorfile>
+      <anchor>a87966405ec6d57668a8bb3930a9d33d4</anchor>
+      <arglist>(GtkBuilder *builder, GtkWidget *window)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>bindMainWindowMenuAccelerators</name>
+      <anchorfile>namespaceanonymous__namespace_02callbacks_8cc_03.html</anchorfile>
+      <anchor>a71a268a8e5d915d35d1a86a04bae0077</anchor>
+      <arglist>(GtkBuilder *builder, GtkWidget *window)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>bindLoggingWindowMenuAccelerators</name>
+      <anchorfile>namespaceanonymous__namespace_02callbacks_8cc_03.html</anchorfile>
+      <anchor>aefda63afb34fe39a94f25a40a72240dd</anchor>
+      <arglist>(GtkBuilder *builder, GtkWidget *window)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>on_close_window_activate</name>
+      <anchorfile>namespaceanonymous__namespace_02callbacks_8cc_03.html</anchorfile>
+      <anchor>a15081aee2d0b7db4a29b5d03d1e4f885</anchor>
+      <arglist>(GtkMenuItem *, gpointer user_data)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>connectCommonMenuCallbacks</name>
+      <anchorfile>namespaceanonymous__namespace_02callbacks_8cc_03.html</anchorfile>
+      <anchor>ab3f3b6e97aa03ff053e20c96be2e3b66</anchor>
+      <arglist>(GtkBuilder *builder, GtkWidget *parentWindow, gpointer aboutUserData)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>connectMainWindowMenuCallbacks</name>
+      <anchorfile>namespaceanonymous__namespace_02callbacks_8cc_03.html</anchorfile>
+      <anchor>a83be12000030c87174ee0389d7c11d3c</anchor>
+      <arglist>(GtkBuilder *builder, GtkWidget *scroom, View *view)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>connectLoggingWindowMenuCallbacks</name>
+      <anchorfile>namespaceanonymous__namespace_02callbacks_8cc_03.html</anchorfile>
+      <anchor>a3db6bf1d0f4891570e5a5fe8351c2f58</anchor>
+      <arglist>(GtkBuilder *builder, GtkWidget *loggingWindow)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>consumeLogMessages</name>
+      <anchorfile>namespaceanonymous__namespace_02callbacks_8cc_03.html</anchorfile>
+      <anchor>abbb5e2fc132607ca35de96c2fd00be6a</anchor>
+      <arglist>()</arglist>
+    </member>
     <member kind="variable">
       <type>Scroom::Logger</type>
       <name>logger</name>
@@ -24986,6 +25969,59 @@
     </member>
   </compound>
   <compound kind="namespace">
+    <name>anonymous_namespace{logging-window.cc}</name>
+    <filename>namespaceanonymous__namespace_02logging-window_8cc_03.html</filename>
+    <member kind="function">
+      <type>void</type>
+      <name>setTextTagStringProperty</name>
+      <anchorfile>namespaceanonymous__namespace_02logging-window_8cc_03.html</anchorfile>
+      <anchor>a16cb6b08f644efca83f5cde66fee9878</anchor>
+      <arglist>(GtkTextTag *textTag, const char *propertyName, const char *value)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setTextTagBooleanProperty</name>
+      <anchorfile>namespaceanonymous__namespace_02logging-window_8cc_03.html</anchorfile>
+      <anchor>aa3eca009c7fcfed84b9de47d1e12c68a</anchor>
+      <arglist>(GtkTextTag *textTag, const char *propertyName, gboolean value)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setTextTagIntProperty</name>
+      <anchorfile>namespaceanonymous__namespace_02logging-window_8cc_03.html</anchorfile>
+      <anchor>a7fd3b1ca2766f109ba52232e61a2c209</anchor>
+      <arglist>(GtkTextTag *textTag, const char *propertyName, gint value)</arglist>
+    </member>
+    <member kind="function">
+      <type>GtkTextTag *</type>
+      <name>addTextTag</name>
+      <anchorfile>namespaceanonymous__namespace_02logging-window_8cc_03.html</anchorfile>
+      <anchor>ab27f8e1e654bd763f730f37365ca105e</anchor>
+      <arglist>(GtkTextBuffer *textBuffer, const char *tagName)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>scrollTextViewToBottom</name>
+      <anchorfile>namespaceanonymous__namespace_02logging-window_8cc_03.html</anchorfile>
+      <anchor>a5cac5a6cd0ffd68318dc5d730d0e8688</anchor>
+      <arglist>(GtkTextView *textView)</arglist>
+    </member>
+    <member kind="function">
+      <type>const char *</type>
+      <name>levelTagName</name>
+      <anchorfile>namespaceanonymous__namespace_02logging-window_8cc_03.html</anchorfile>
+      <anchor>acfe9f6b8c3f44f97c2b73a8d46524957</anchor>
+      <arglist>(spdlog::level::level_enum level)</arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr gint64</type>
+      <name>PRESENT_COOLDOWN_US</name>
+      <anchorfile>namespaceanonymous__namespace_02logging-window_8cc_03.html</anchorfile>
+      <anchor>a46e822c4970dbaf521ee7f58b474e1eb</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="namespace">
     <name>anonymous_namespace{measure-framerate-tests.cc}</name>
     <filename>namespaceanonymous__namespace_02measure-framerate-tests_8cc_03.html</filename>
     <member kind="variable">
@@ -25031,6 +26067,24 @@
       <anchorfile>namespaceanonymous__namespace_02progressbarmanager_8cc_03.html</anchorfile>
       <anchor>a1cd7ce2821db8912b252ffaa3ec97af9</anchor>
       <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="namespace">
+    <name>anonymous_namespace{ringbuffer-sink-tests.cc}</name>
+    <filename>namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html</filename>
+    <member kind="function">
+      <type>std::string</type>
+      <name>withoutTrailingNewline</name>
+      <anchorfile>namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html</anchorfile>
+      <anchor>a5dc2e0d0086621619ef7e65f2231c50e</anchor>
+      <arglist>(std::string text)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::shared_ptr&lt; spdlog::logger &gt;</type>
+      <name>createLogger</name>
+      <anchorfile>namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html</anchorfile>
+      <anchor>a15a91985361401f76bc8ee0186a5470c</anchor>
+      <arglist>(const Scroom::RingBufferSink::Ptr &amp;sink, const std::string &amp;name)</arglist>
     </member>
   </compound>
   <compound kind="namespace">
@@ -25084,22 +26138,22 @@
     </member>
   </compound>
   <compound kind="namespace">
-    <name>anonymous_namespace{threadpoolimpl.cc}</name>
-    <filename>namespaceanonymous__namespace_02threadpoolimpl_8cc_03.html</filename>
-    <class kind="class">anonymous_namespace{threadpoolimpl.cc}::ThreadList</class>
-    <class kind="class">anonymous_namespace{threadpoolimpl.cc}::ThreadWaiter</class>
+    <name>anonymous_namespace{threadpool.cc}</name>
+    <filename>namespaceanonymous__namespace_02threadpool_8cc_03.html</filename>
+    <class kind="class">anonymous_namespace{threadpool.cc}::ThreadList</class>
+    <class kind="class">anonymous_namespace{threadpool.cc}::ThreadWaiter</class>
     <member kind="function">
       <type>std::shared_ptr&lt; T &gt;</type>
       <name>NotifyThreadList</name>
-      <anchorfile>namespaceanonymous__namespace_02threadpoolimpl_8cc_03.html</anchorfile>
-      <anchor>abdfe0da4acdb4d80ca166d9cd7ae2e6e</anchor>
+      <anchorfile>namespaceanonymous__namespace_02threadpool_8cc_03.html</anchorfile>
+      <anchor>ab3b5c2a45b9d57ca5f1d8c6c553f85f8</anchor>
       <arglist>(std::shared_ptr&lt; T &gt; t, const std::string &amp;s)</arglist>
     </member>
     <member kind="variable">
       <type>ThreadWaiter</type>
       <name>waiter</name>
-      <anchorfile>namespaceanonymous__namespace_02threadpoolimpl_8cc_03.html</anchorfile>
-      <anchor>a32b816d0a8f58ae1cd2d35e52e0b93ee</anchor>
+      <anchorfile>namespaceanonymous__namespace_02threadpool_8cc_03.html</anchorfile>
+      <anchor>ad222244f8046ece77153d055dfb11705</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -25334,12 +26388,86 @@
       <anchor>ade7e310c6f49be3b6e0ded45bd574f9b</anchor>
       <arglist>(T *p)</arglist>
     </member>
-    <member kind="function">
-      <type>R</type>
-      <name>threadPoolExecute</name>
-      <anchorfile>namespaceDetail.html</anchorfile>
-      <anchor>a12353261cad3848c819ef115f16df143</anchor>
-      <arglist>(const std::shared_ptr&lt; T &gt; &amp;fn)</arglist>
+  </compound>
+  <compound kind="namespace">
+    <name>MenuIds</name>
+    <filename>namespaceMenuIds.html</filename>
+    <member kind="variable">
+      <type>constexpr const char *</type>
+      <name>MENUBAR_PROTOTYPE</name>
+      <anchorfile>namespaceMenuIds.html</anchorfile>
+      <anchor>afaf0926d50c524002bc4f696aacdd7b9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr const char *</type>
+      <name>OPEN</name>
+      <anchorfile>namespaceMenuIds.html</anchorfile>
+      <anchor>af514a513c0d22eefcefdcc63ae7d9f2e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr const char *</type>
+      <name>SAVE</name>
+      <anchorfile>namespaceMenuIds.html</anchorfile>
+      <anchor>a69b92ab91213c73b47693dde531a219d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr const char *</type>
+      <name>CLOSE</name>
+      <anchorfile>namespaceMenuIds.html</anchorfile>
+      <anchor>ab5766cce90a1696ec4dd7209474b6106</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr const char *</type>
+      <name>QUIT</name>
+      <anchorfile>namespaceMenuIds.html</anchorfile>
+      <anchor>a25ee5710b772e95e0c77b8a598e57cce</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr const char *</type>
+      <name>VIEW_MENU_ITEM</name>
+      <anchorfile>namespaceMenuIds.html</anchorfile>
+      <anchor>ac709c0e573d8029eeef30747bea787d5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr const char *</type>
+      <name>FULLSCREEN_MENU_ITEM</name>
+      <anchorfile>namespaceMenuIds.html</anchorfile>
+      <anchor>a392e504910f9b170badbb1064a52012e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr const char *</type>
+      <name>LOGS_MENU_ITEM</name>
+      <anchorfile>namespaceMenuIds.html</anchorfile>
+      <anchor>a7c7d1c3e901cba981b9ff3ecb8e12419</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr const char *</type>
+      <name>ABOUT</name>
+      <anchorfile>namespaceMenuIds.html</anchorfile>
+      <anchor>a8aa63e2f964b202c950cc6ec06821918</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr const char *</type>
+      <name>NEW</name>
+      <anchorfile>namespaceMenuIds.html</anchorfile>
+      <anchor>a01120702498897e819f1a1148d22d938</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr const char *</type>
+      <name>NEW_WINDOW</name>
+      <anchorfile>namespaceMenuIds.html</anchorfile>
+      <anchor>abdf38c44f69dfcd6be5013dff543c9ed</anchor>
+      <arglist></arglist>
     </member>
   </compound>
   <compound kind="namespace">
@@ -25360,6 +26488,7 @@
     <namespace>Scroom::Utils</namespace>
     <class kind="class">Scroom::Logger</class>
     <class kind="class">Scroom::LoggerContainer</class>
+    <class kind="class">Scroom::RingBufferSink</class>
     <class kind="class">Scroom::Semaphore</class>
   </compound>
   <compound kind="namespace">
@@ -25442,16 +26571,48 @@
   <compound kind="namespace">
     <name>Scroom::Detail::ThreadPool</name>
     <filename>namespaceScroom_1_1Detail_1_1ThreadPool.html</filename>
+    <class kind="class">Scroom::Detail::ThreadPool::Builder</class>
     <class kind="class">Scroom::Detail::ThreadPool::FunctionAdditor</class>
     <class kind="class">Scroom::Detail::ThreadPool::FunctionMultiplier</class>
+    <class kind="class">Scroom::Detail::ThreadPool::Queue</class>
     <class kind="class">Scroom::Detail::ThreadPool::QueueImpl</class>
     <class kind="class">Scroom::Detail::ThreadPool::QueueLock</class>
+    <class kind="class">Scroom::Detail::ThreadPool::WeakQueue</class>
+    <concept>Scroom::Detail::ThreadPool::CallableT</concept>
     <member kind="function">
       <type>::ThreadPool::Ptr</type>
       <name>getDeleter</name>
       <anchorfile>namespaceScroom_1_1Detail_1_1ThreadPool.html</anchorfile>
       <anchor>adbdff2f494948417786589c465d0644a</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>constexpr auto</type>
+      <name>addCallable</name>
+      <anchorfile>namespaceScroom_1_1Detail_1_1ThreadPool.html</anchorfile>
+      <anchor>a6db7976aeeb6a5507b6c460287309454</anchor>
+      <arglist>(Builder&lt; false, hasPriority, hasQueue, R &gt; b, CallableT auto &amp;&amp;c)</arglist>
+    </member>
+    <member kind="function">
+      <type>constexpr auto</type>
+      <name>addPriority</name>
+      <anchorfile>namespaceScroom_1_1Detail_1_1ThreadPool.html</anchorfile>
+      <anchor>a00281dfa5c10ffb5b89300b332c8ef1f</anchor>
+      <arglist>(Builder&lt; hasCallable, false, hasQueue, R &gt; b, int priority)</arglist>
+    </member>
+    <member kind="function">
+      <type>constexpr auto</type>
+      <name>addQueue</name>
+      <anchorfile>namespaceScroom_1_1Detail_1_1ThreadPool.html</anchorfile>
+      <anchor>a43cf587770443118a3c6e147a7f43bed</anchor>
+      <arglist>(Builder&lt; hasCallable, hasPriority, false, R &gt; b, const Queue::Ptr &amp;queue)</arglist>
+    </member>
+    <member kind="function">
+      <type>constexpr auto</type>
+      <name>addQueue</name>
+      <anchorfile>namespaceScroom_1_1Detail_1_1ThreadPool.html</anchorfile>
+      <anchor>a606704825778b41b26f4cd99c535bf04</anchor>
+      <arglist>(Builder&lt; hasCallable, hasPriority, false, R &gt; b, WeakQueue::Ptr queue)</arglist>
     </member>
   </compound>
   <compound kind="namespace">
