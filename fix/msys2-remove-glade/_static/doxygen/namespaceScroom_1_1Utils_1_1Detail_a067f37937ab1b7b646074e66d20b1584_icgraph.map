@@ -1,0 +1,9 @@
+<map id="Scroom::Utils::Detail::stackTrace" name="Scroom::Utils::Detail::stackTrace">
+<area shape="rect" id="Node000001" title=" " alt="" coords="413,41,569,81"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils_1_1Detail.html#af5d9c2e601f73135116e508920810bd8" title=" " alt="" coords="209,5,365,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="399,48,365,42,366,36,400,43"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Detail_1_1ErrorSignalHandler.html#ae869ccdbf76fd4fcc1439cc4e288630e" title=" " alt="" coords="209,70,365,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="400,80,366,86,365,81,399,75"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Detail_1_1ErrorSignalHandler.html#addb97e3cba7cb31af54d189a261d948a" title=" " alt="" coords="5,70,161,125"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="196,100,161,100,161,95,196,95"/>
+</map>

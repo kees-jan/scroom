@@ -1,0 +1,9 @@
+<map id="Scroom::Pnm::AsciiSource1bpp" name="Scroom::Pnm::AsciiSource1bpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,625,220,731"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Pnm_1_1Source.html" title=" " alt="" coords="36,372,189,577"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,591,115,625,110,625,110,591"/>
+<area shape="rect" id="Node000003" href="$classSourcePresentation.html" title=" " alt="" coords="43,219,183,324"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="115,338,115,372,110,372,110,338"/>
+<area shape="rect" id="Node000004" href="$classInterface.html" title=" " alt="" coords="59,5,167,171"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="115,184,115,219,110,219,110,184"/>
+</map>

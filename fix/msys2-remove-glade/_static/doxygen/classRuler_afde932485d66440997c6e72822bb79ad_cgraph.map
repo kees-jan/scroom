@@ -1,0 +1,10 @@
+<map id="Ruler::setRange" name="Ruler::setRange">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,42,131,67"/>
+<area shape="rect" id="Node000002" href="$classRuler.html#ae35d5489f8ddd9cfb2faf73926d7dd2f" title=" " alt="" coords="179,42,401,67"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,52,165,52,165,57,131,57"/>
+<area shape="rect" id="Node000003" href="$classRulerCalculations.html#a4157b201d3bd2dafa693a3065b66e8ec" title=" " alt="" coords="449,5,593,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="390,39,435,33,436,39,391,45"/>
+<area shape="rect" id="Node000004" href="$classRulerCalculations.html#a85716bd2a71013c497de7491a386ffb8" title=" " alt="" coords="641,35,796,75"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="401,54,449,55,593,55,628,54,628,59,593,60,449,60,401,59"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="594,33,628,39,627,44,593,39"/>
+</map>

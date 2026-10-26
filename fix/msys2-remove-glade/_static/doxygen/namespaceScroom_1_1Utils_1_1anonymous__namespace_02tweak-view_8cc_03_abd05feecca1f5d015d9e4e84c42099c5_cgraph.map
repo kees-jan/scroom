@@ -1,0 +1,20 @@
+<map id="Scroom::Utils::anonymous_namespace{tweak&#45;view::cc}::corner_getter" name="Scroom::Utils::anonymous_namespace{tweak&#45;view::cc}::corner_getter">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,94,200,149"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="57,94,57,84,65,75,81,69,103,67,129,70,144,78,142,83,128,76,103,73,82,75,68,79,62,86,62,94"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html#a6a2d89e24dea1c52daa0a8e6b5521cb7" title=" " alt="" coords="248,69,431,109"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="200,106,234,101,235,106,201,111"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Rectangle.html#a010a83b3edfaf453fefc1dcf36704e40" title=" " alt="" coords="248,5,431,45"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="162,92,247,55,266,48,268,53,249,60,164,96"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Rectangle.html#aa0205a1477a20bd1888f9dd480069bf2" title=" " alt="" coords="248,197,431,237"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="164,146,249,183,268,190,266,195,247,188,162,151"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Rectangle.html#a43b9e2c50da501d42ee265b76d061c1c" title=" " alt="" coords="248,133,431,173"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="201,132,235,137,234,142,200,137"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Segment.html#a671e0c8614114bf5eb99afd36a2dddc4" title=" " alt="" coords="479,69,653,109"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="431,87,465,87,465,92,431,92"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Segment.html#a934a0a56d270e8d4fc4ceddb4dc7fb82" title=" " alt="" coords="479,133,653,173"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="412,107,482,127,481,132,410,112"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="412,43,482,63,481,68,410,48"/>
+<area shape="poly" id="edge8_Node000006_Node000004" title=" " alt="" coords="410,195,481,175,482,180,412,200"/>
+<area shape="poly" id="edge10_Node000007_Node000003" title=" " alt="" coords="410,131,481,111,482,116,412,136"/>
+<area shape="poly" id="edge11_Node000007_Node000004" title=" " alt="" coords="431,151,465,151,465,156,431,156"/>
+</map>

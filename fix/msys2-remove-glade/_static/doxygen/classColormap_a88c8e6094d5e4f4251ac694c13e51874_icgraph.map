@@ -1,0 +1,7 @@
+<map id="Colormap::createDefaultInverted" name="Colormap::createDefaultInverted">
+<area shape="rect" id="Node000001" title=" " alt="" coords="284,35,520,60"/>
+<area shape="rect" id="Node000002" href="$classColormapHelper.html#ab967d893edae45fa5e71809a09076a3b" title=" " alt="" coords="5,5,236,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="270,36,236,33,237,27,271,31"/>
+<area shape="rect" id="Node000003" href="$classMonochromeColormapHelper.html#aa877583213c557c5c0c54a8da6700ec6" title=" " alt="" coords="14,55,227,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="270,63,228,67,227,62,270,58"/>
+</map>

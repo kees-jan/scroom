@@ -1,0 +1,17 @@
+<map id="fmt::formatter&lt; Scroom::Utils::Rectangle&lt; T &gt; &gt;::format" name="fmt::formatter&lt; Scroom::Utils::Rectangle&lt; T &gt; &gt;::format">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,94,184,149"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html#ac3ffb0067f3c0d0686ea2319cd5d5618" title=" " alt="" coords="232,5,415,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="150,92,231,55,249,48,251,53,233,60,152,96"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Rectangle.html#ad623b0b902d4e2cd1d858300728c78d1" title=" " alt="" coords="232,133,415,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="184,131,219,136,218,141,184,136"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Rectangle.html#a23ed938b3f63186f48c5828024a9d6ab" title=" " alt="" coords="232,197,415,237"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="152,146,233,183,251,190,249,195,231,188,150,151"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Rectangle.html#a3b8d627a36eb56f6f36eea5004591154" title=" " alt="" coords="232,69,415,109"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="184,106,218,101,219,107,184,112"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Segment.html#abd475ea75311ffaed7e8175125d2d3b5" title=" " alt="" coords="463,53,637,93"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="416,42,450,49,449,55,415,47"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Segment.html#a934a0a56d270e8d4fc4ceddb4dc7fb82" title=" " alt="" coords="463,149,637,189"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="415,157,449,160,449,165,415,162"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="415,195,449,188,450,193,416,201"/>
+<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="415,80,449,78,449,83,415,86"/>
+</map>

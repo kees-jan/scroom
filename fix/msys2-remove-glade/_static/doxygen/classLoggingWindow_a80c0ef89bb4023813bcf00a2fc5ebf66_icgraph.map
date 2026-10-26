@@ -1,0 +1,10 @@
+<map id="LoggingWindow::scrollToBottom" name="LoggingWindow::scrollToBottom">
+<area shape="rect" id="Node000001" title=" " alt="" coords="748,5,977,31"/>
+<area shape="rect" id="Node000002" href="$classLoggingWindow.html#a725f64c52ad151baa4baf211a36859c0" title=" " alt="" coords="5,7,196,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="734,19,244,18,196,19,196,14,244,13,734,13"/>
+<area shape="rect" id="Node000003" href="$classLoggingWindow.html#ad4d8733a2ce6b152122dfa6b908c8708" title=" " alt="" coords="533,31,700,56"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="735,34,700,37,700,32,734,29"/>
+<area shape="rect" id="Node000004" href="$classLoggingWindow.html#aa5f23e4cc87eee36b0b106e073fec9d9" title=" " alt="" coords="244,27,485,67"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="520,48,486,48,486,43,520,42"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="230,36,196,32,196,27,231,30"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="Scroom::TiledBitmap::to_stream" name="Scroom::TiledBitmap::to_stream">
+<area shape="rect" id="Node000001" title=" " alt="" coords="420,37,579,77"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1TiledBitmap.html#a90b98df77076cf30312ea6e57d3e75d2" title=" " alt="" coords="213,37,372,77"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="406,69,372,69,372,63,406,64"/>
+<area shape="poly" id="edge4_Node000002_Node000001" title=" " alt="" coords="386,46,420,46,420,51,386,51"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Tiff_1_1Source.html#a84c9977f6b72b09e3432f7e41638b968" title=" " alt="" coords="9,5,161,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="199,46,161,40,162,34,200,40"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Pnm_1_1Source.html#a09326329b765bb43be4bfa264a8468ed" title=" " alt="" coords="5,69,165,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="200,74,166,80,165,74,199,69"/>
+</map>

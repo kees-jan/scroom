@@ -1,0 +1,13 @@
+<map id="CommonOperations::drawPixelValue" name="CommonOperations::drawPixelValue">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,69,228,109"/>
+<area shape="rect" id="Node000002" href="$classCommonOperations.html#a2cc20679d9f562a298746ad0715ac494" title=" " alt="" coords="276,5,499,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="201,67,288,46,290,51,203,72"/>
+<area shape="rect" id="Node000003" href="$classColor.html#a49dddd32e110bbfc3c96e159a70eb0f5" title=" " alt="" coords="289,69,485,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="228,87,276,87,276,92,228,92"/>
+<area shape="rect" id="Node000006" href="$classColor.html#a80526917d45f7674d1ffdb1df0aba14a" title=" " alt="" coords="328,134,447,159"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="212,107,315,129,314,134,211,112"/>
+<area shape="rect" id="Node000004" href="$classColor.html#a6fae8aa8b75d27cb134234e75b41caf2" title=" " alt="" coords="565,53,663,78"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="485,76,550,69,551,75,486,82"/>
+<area shape="rect" id="Node000005" href="$namespaceDetail.html#a788802f9f5732db966a27e302696fa53" title=" " alt="" coords="547,102,681,127"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="486,98,534,103,533,108,485,103"/>
+</map>

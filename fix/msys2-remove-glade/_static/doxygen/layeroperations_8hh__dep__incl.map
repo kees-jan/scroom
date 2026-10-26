@@ -1,0 +1,20 @@
+<map id="libs/tiled&#45;bitmap/inc/scroom/layeroperations.hh" name="libs/tiled&#45;bitmap/inc/scroom/layeroperations.hh">
+<area shape="rect" id="Node000001" title=" " alt="" coords="374,5,574,45"/>
+<area shape="rect" id="Node000002" href="$cmyklayeroperations_8cc.html" title=" " alt="" coords="5,93,188,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="379,51,180,96,179,91,377,46"/>
+<area shape="rect" id="Node000003" href="$layeroperations_8cc.html" title=" " alt="" coords="213,93,365,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="422,54,330,96,328,91,420,49"/>
+<area shape="rect" id="Node000004" href="$layerspecforbitmap_8cc.html" title=" " alt="" coords="389,93,559,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="477,59,477,93,471,93,471,59"/>
+<area shape="rect" id="Node000005" href="$test-helpers_8cc.html" title=" " alt="" coords="461,189,626,229"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="532,50,556,68,574,92,580,118,577,144,569,169,558,190,553,187,564,167,572,143,575,118,569,95,552,72,529,55"/>
+<area shape="rect" id="Node000006" href="$test-helpers_8hh.html" title=" " alt="" coords="686,93,851,133"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="552,47,705,91,703,96,551,52"/>
+<area shape="poly" id="edge9_Node000006_Node000005" title=" " alt="" coords="712,141,590,191,588,186,710,136"/>
+<area shape="rect" id="Node000007" href="$measure-framerate-callbacks_8cc.html" title=" " alt="" coords="650,189,887,229"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="771,147,771,189,766,189,766,147"/>
+<area shape="rect" id="Node000008" href="$measure-framerate-tests_8cc.html" title=" " alt="" coords="911,189,1119,229"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="832,136,966,186,965,191,830,141"/>
+<area shape="rect" id="Node000009" href="$measure-load-performance-tests_8cc.html" title=" " alt="" coords="1144,181,1348,236"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="865,129,1132,179,1144,181,1143,186,1131,184,864,134"/>
+</map>

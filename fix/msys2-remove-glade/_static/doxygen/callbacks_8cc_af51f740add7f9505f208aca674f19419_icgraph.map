@@ -1,0 +1,11 @@
+<map id="update_logging_window_new_menu" name="update_logging_window_new_menu">
+<area shape="rect" id="Node000001" title=" " alt="" coords="551,37,729,77"/>
+<area shape="rect" id="Node000002" href="$callbacks_8cc.html#a0c7e6f83db1f0c9f9c080602240ece2f" title=" " alt="" coords="301,5,486,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="537,47,486,40,487,35,538,41"/>
+<area shape="rect" id="Node000004" href="$callbacks_8cc.html#a10bc3a3a311654abdb4d54e93b62049b" title=" " alt="" coords="284,69,503,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="537,73,503,78,503,72,537,68"/>
+<area shape="rect" id="Node000003" href="$classLoggingWindow.html#a772f8688e0e1b46a9cf746f2dd7e9f37" title=" " alt="" coords="5,13,236,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="287,28,236,28,236,23,287,23"/>
+<area shape="rect" id="Node000005" href="$classPluginManager.html#a554d3e6ccd260dc621cf12197918cfd8" title=" " alt="" coords="17,69,224,109"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="270,92,224,92,224,87,270,87"/>
+</map>

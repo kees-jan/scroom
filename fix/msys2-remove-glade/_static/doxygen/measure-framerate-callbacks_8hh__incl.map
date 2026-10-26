@@ -1,0 +1,9 @@
+<map id="libs/tiled&#45;bitmap/tools/measure&#45;framerate&#45;callbacks.hh" name="libs/tiled&#45;bitmap/tools/measure&#45;framerate&#45;callbacks.hh">
+<area shape="rect" id="Node000001" title=" " alt="" coords="44,5,283,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,68,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="134,48,68,88,65,84,131,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="92,93,235,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="166,46,166,79,161,79,161,46"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="259,93,339,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="197,43,269,84,266,89,195,48"/>
+</map>

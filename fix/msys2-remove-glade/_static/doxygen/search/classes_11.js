@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['sampleiterator_0',['SampleIterator',['../classScroom_1_1Bitmap_1_1SampleIterator.html',1,'Scroom::Bitmap']]],
+  ['sampleiterator_5farithmetic_1',['SampleIterator_arithmetic',['../classSampleIterator__arithmetic.html',1,'']]],
+  ['sampleiterator_5fiterates_2',['SampleIterator_iterates',['../classSampleIterator__iterates.html',1,'']]],
+  ['scroominterface_3',['ScroomInterface',['../classScroomInterface.html',1,'']]],
+  ['scroominterfaceimpl_4',['ScroomInterfaceImpl',['../classScroomInterfaceImpl.html',1,'']]],
+  ['scroomplugininterface_5',['ScroomPluginInterface',['../classScroomPluginInterface.html',1,'']]],
+  ['segment_6',['Segment',['../classScroom_1_1Utils_1_1Segment.html',1,'Scroom::Utils']]],
+  ['segment_3c_20value_5ftype_20_3e_7',['Segment&lt; value_type &gt;',['../classScroom_1_1Utils_1_1Segment.html',1,'Scroom::Utils']]],
+  ['selection_8',['Selection',['../structSelection.html',1,'']]],
+  ['selectionlistener_9',['SelectionListener',['../classSelectionListener.html',1,'']]],
+  ['semaphore_10',['Semaphore',['../classScroom_1_1Semaphore.html',1,'Scroom']]],
+  ['showmetadatainterface_11',['ShowMetadataInterface',['../classShowMetadataInterface.html',1,'']]],
+  ['sidebarmanager_12',['SidebarManager',['../classSidebarManager.html',1,'']]],
+  ['singlecontext_13',['SingleContext',['../classScroom_1_1Utils_1_1SingleContext.html',1,'Scroom::Utils']]],
+  ['singlecontexttests_14',['SingleContextTests',['../classSingleContextTests.html',1,'']]],
+  ['sizedeterminer_15',['SizeDeterminer',['../classSizeDeterminer.html',1,'']]],
+  ['sleeper_16',['Sleeper',['../classSleeper.html',1,'']]],
+  ['source_17',['source',['../classScroom_1_1Pnm_1_1Source.html',1,'Scroom::Pnm::Source'],['../classScroom_1_1Tiff_1_1Source.html',1,'Scroom::Tiff::Source']]],
+  ['source1bpp_18',['Source1Bpp',['../classSource1Bpp.html',1,'']]],
+  ['source2bpp_19',['Source2Bpp',['../classSource2Bpp.html',1,'']]],
+  ['source4bpp_20',['Source4Bpp',['../classSource4Bpp.html',1,'']]],
+  ['source8bpp_21',['Source8Bpp',['../classSource8Bpp.html',1,'']]],
+  ['sourcepresentation_22',['SourcePresentation',['../classSourcePresentation.html',1,'']]],
+  ['swapbasedblockallocator_23',['SwapBasedBlockAllocator',['../classScroom_1_1MemoryBlocks_1_1Detail_1_1SwapBasedBlockAllocator.html',1,'Scroom::MemoryBlocks::Detail']]],
+  ['swapbasedblockallocatorfactory_24',['SwapBasedBlockAllocatorFactory',['../classScroom_1_1MemoryBlocks_1_1Detail_1_1SwapBasedBlockAllocatorFactory.html',1,'Scroom::MemoryBlocks::Detail']]]
+];

@@ -1,0 +1,11 @@
+<map id="Ruler" name="Ruler">
+<area shape="rect" id="Node000001" title=" " alt="" coords="67,651,264,1236"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,515,144,581"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,580,85,626,87,634,81,635,80,627,74,581"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="168,508,363,588"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="258,589,246,635,241,634,253,587"/>
+<area shape="rect" id="Node000004" href="$classRulerDrawStrategy.html" title=" " alt="" coords="181,220,350,445"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="268,446,268,491,263,491,263,446"/>
+<area shape="rect" id="Node000005" href="$classInterface.html" title=" " alt="" coords="211,5,319,171"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="268,184,268,220,263,220,263,184"/>
+</map>

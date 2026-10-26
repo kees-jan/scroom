@@ -1,0 +1,9 @@
+<map id="Scroom::MemoryBlocks::Page" name="Scroom::MemoryBlocks::Page">
+<area shape="rect" id="Node000001" title=" " alt="" coords="39,525,207,625"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,383,241,463"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,463,126,508,121,508,121,463"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1MemoryBlocks_1_1BlockInterface.html" title=" " alt="" coords="39,220,207,320"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="126,320,126,366,121,366,121,320"/>
+<area shape="rect" id="Node000004" href="$classInterface.html" title=" " alt="" coords="69,5,177,171"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="126,185,126,220,121,220,121,185"/>
+</map>
