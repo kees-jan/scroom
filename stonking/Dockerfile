@@ -2,7 +2,7 @@
 # This file is generated from Dockerfile.in. Do not edit!
 #
 
-FROM ubuntu:questing
+FROM ubuntu:stonking
 
 LABEL org.opencontainers.image.authors="kees-jan@dijkzeul.eu"
 
@@ -18,7 +18,6 @@ RUN \
     libboost-dev \
     libboost-filesystem-dev \
     libboost-program-options-dev \
-    libboost-system-dev \
     libboost-thread-dev \
     libcairo2-dev \
     libglib2.0-dev \
