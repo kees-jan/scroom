@@ -1,0 +1,20 @@
+<map id="Metadata::viewAdded" name="Metadata::viewAdded">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,53,169,78"/>
+<area shape="rect" id="Node000002" href="$metadata_8cc.html#a05befa08789279605954b2fd767ddeb9" title=" " alt="" coords="217,9,376,49"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="161,50,203,43,204,48,162,55"/>
+<area shape="rect" id="Node000004" href="$namespaceScroom_1_1GtkHelpers.html#a41d93c131774cfff3137ec807ead3e94" title=" " alt="" coords="221,77,373,117"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="170,75,208,81,207,86,169,81"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1GtkHelpers.html#a68ad2ca25cec0ca8c5f9174039ea86fa" title=" " alt="" coords="425,5,582,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="376,25,411,24,411,30,376,30"/>
+<area shape="rect" id="Node000005" href="$namespaceScroom_1_1GtkHelpers.html#a37a36328ffc6b0e7468a02d64724c21d" title=" " alt="" coords="424,70,583,125"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="373,95,410,95,410,100,373,100"/>
+<area shape="rect" id="Node000008" href="$namespaceScroom_1_1GtkHelpers.html#a2ade52a9fdfe46700036def64d00f9da" title=" " alt="" coords="634,139,786,179"/>
+<area shape="poly" id="edge9_Node000004_Node000008" title=" " alt="" coords="353,115,425,135,525,149,620,155,620,160,525,154,423,140,351,120"/>
+<area shape="rect" id="Node000006" href="$namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1" title=" " alt="" coords="631,23,789,63"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="582,74,620,64,622,69,584,79"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="584,118,629,132,628,137,582,123"/>
+<area shape="rect" id="Node000009" href="$function-additor-tests_8cc.html#a171d6ee6f5e4a249111a7ca7c7108209" title=" " alt="" coords="685,87,735,113"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="583,96,671,97,671,102,583,101"/>
+<area shape="rect" id="Node000007" href="$namespaceScroom_1_1GtkHelpers.html#ad5dcc56a509902bf106dbd6eb6a28964" title=" " alt="" coords="837,23,989,63"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="789,40,823,40,823,45,789,45"/>
+</map>

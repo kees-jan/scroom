@@ -1,0 +1,9 @@
+<map id="ToolStateListener" name="ToolStateListener">
+<area shape="rect" id="Node000001" title=" " alt="" coords="126,219,253,304"/>
+<area shape="rect" id="Node000003" href="$classMeasureHandler.html" title=" " alt="" coords="5,372,181,617"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="169,318,146,373,141,371,164,316"/>
+<area shape="rect" id="Node000004" href="$classPipetteHandler.html" title=" " alt="" coords="206,352,367,637"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="215,316,229,351,224,353,210,318"/>
+<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="135,5,243,171"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,184,192,218,187,218,187,184"/>
+</map>

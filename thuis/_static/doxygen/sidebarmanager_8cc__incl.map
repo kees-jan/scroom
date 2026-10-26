@@ -1,0 +1,21 @@
+<map id="gui/src/sidebarmanager.cc" name="gui/src/sidebarmanager.cc">
+<area shape="rect" id="Node000001" title=" " alt="" coords="184,5,376,31"/>
+<area shape="rect" id="Node000002" href="$sidebarmanager_8hh.html" title=" " alt="" coords="36,79,183,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="254,33,151,76,149,71,252,28"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="207,79,268,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="275,32,253,68,249,66,271,30"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="293,79,353,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="289,30,311,66,307,68,285,32"/>
+<area shape="rect" id="Node000008" href="$assertions_8hh.html" title=" " alt="" coords="377,79,538,104"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="309,28,417,71,415,76,308,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,152,56,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="98,106,55,145,52,141,95,102"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="80,152,139,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="112,104,112,138,107,138,107,104"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="163,152,243,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="126,102,178,141,175,146,123,106"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="349,152,446,177"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="449,106,418,143,414,140,445,103"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="470,152,565,177"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="469,103,501,140,497,143,465,106"/>
+</map>

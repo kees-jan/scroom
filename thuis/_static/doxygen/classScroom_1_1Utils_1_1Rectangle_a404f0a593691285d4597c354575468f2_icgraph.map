@@ -1,0 +1,9 @@
+<map id="Scroom::Utils::Rectangle::below" name="Scroom::Utils::Rectangle::below">
+<area shape="rect" id="Node000001" title=" " alt="" coords="616,45,799,85"/>
+<area shape="rect" id="Node000002" href="$cairo-helpers_8cc.html#a72b76dcfe2a11213e72c72dee13488d6" title=" " alt="" coords="300,53,568,78"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="602,68,568,68,568,63,602,63"/>
+<area shape="rect" id="Node000003" href="$cairo-helpers_8cc.html#a27002d3ab3abd3af027354f53c85bec7" title=" " alt="" coords="5,5,252,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="323,53,252,44,252,39,323,48"/>
+<area shape="rect" id="Node000004" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a4c4db94fd7f968183ee7ab0aab24e35d" title=" " alt="" coords="18,69,239,139"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="320,82,240,93,239,87,319,77"/>
+</map>

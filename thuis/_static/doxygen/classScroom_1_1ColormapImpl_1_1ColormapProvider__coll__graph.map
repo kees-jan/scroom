@@ -1,0 +1,26 @@
+<map id="Scroom::ColormapImpl::ColormapProvider" name="Scroom::ColormapImpl::ColormapProvider">
+<area shape="rect" id="Node000001" title=" " alt="" coords="369,983,535,1223"/>
+<area shape="rect" id="Node000002" href="$classViewable.html" title=" " alt="" coords="5,705,80,791"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="41,804,47,863,57,892,72,918,101,952,136,982,174,1007,214,1029,295,1062,369,1083,368,1088,294,1067,212,1034,171,1012,133,986,97,956,67,922,52,894,42,864,36,805"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="35,148,143,313"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="76,328,69,376,54,559,47,705,41,705,49,559,64,376,70,327"/>
+<area shape="rect" id="Node000006" href="$classColormappable.html" title=" " alt="" coords="79,376,318,681"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="127,325,145,375,140,377,122,327"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="337,827,567,907"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="455,921,455,982,449,982,449,921"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="82,835,313,900"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="233,898,358,1012,354,1016,230,902"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="201,682,200,818,195,818,195,682"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="591,835,761,900"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="648,902,549,1004,545,1001,644,898"/>
+<area shape="rect" id="Node000008" href="$classScroom_1_1Logger.html" title=" " alt="" coords="785,815,900,920"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="787,913,773,922,659,992,551,1052,548,1047,656,987,771,918,784,909"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="719,496,967,561"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="845,562,845,799,840,799,840,562"/>
+<area shape="rect" id="Node000010" href="$classScroom_1_1LoggerContainer.html" title=" " alt="" coords="753,168,932,293"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="845,294,845,479,840,479,840,294"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="726,13,810,78"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="783,77,814,152,809,154,778,79"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="834,5,1003,85"/>
+<area shape="poly" id="edge12_Node000010_Node000012" title=" " alt="" coords="905,86,877,154,872,152,900,84"/>
+</map>

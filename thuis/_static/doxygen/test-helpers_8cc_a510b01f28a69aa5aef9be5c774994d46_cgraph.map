@@ -1,0 +1,21 @@
+<map id="setupTest1bpp" name="setupTest1bpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,145,121,170"/>
+<area shape="rect" id="Node000002" href="$classDummyColormapProvider.html#adf88a93181d29006d5772cb1c442dce0" title=" " alt="" coords="169,5,360,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="73,143,112,100,138,76,168,55,180,49,182,53,171,60,142,80,116,104,77,146"/>
+<area shape="rect" id="Node000003" href="$classOperations1bpp.html#afaa1689d2298ae130a8584077380ef77" title=" " alt="" coords="177,70,352,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="87,142,168,104,192,97,193,102,170,109,89,147"/>
+<area shape="rect" id="Node000004" href="$classOperations8bpp.html#af89b28e8f1a6fbe0cf8d0835d4db795a" title=" " alt="" coords="177,119,352,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="121,147,164,142,164,147,122,153"/>
+<area shape="rect" id="Node000005" href="$classTestData.html#ab3a8459e33d0c556814707bbef0ce675" title=" " alt="" coords="201,169,329,194"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="122,162,187,169,187,175,121,167"/>
+<area shape="rect" id="Node000006" href="$classColormap.html#afe589913d62741a00d269c5e72c3641b" title=" " alt="" coords="173,218,356,243"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="91,168,170,203,198,212,196,217,168,208,88,173"/>
+<area shape="rect" id="Node000009" href="$tiled-bitmap_8cc.html#afb81a705ea3c38444cb0f4fb12410f43" title=" " alt="" coords="193,267,336,293"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="76,168,115,211,141,234,171,254,184,260,182,265,168,258,138,238,111,214,72,172"/>
+<area shape="rect" id="Node000007" href="$classColormap.html#a9966b8a719d851b5e28b6b99ec6d2245" title=" " alt="" coords="416,218,551,243"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="356,228,402,228,402,233,356,233"/>
+<area shape="rect" id="Node000008" href="$classColormap.html#afbda2916eb43f89f99512e951ca2c7de" title=" " alt="" coords="607,218,763,243"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="551,228,593,228,593,233,551,233"/>
+<area shape="rect" id="Node000010" href="$classTiledBitmap.html#aac0fd55f26ab59b362f0c64d27a9e139" title=" " alt="" coords="408,267,559,293"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="336,277,394,277,394,283,336,283"/>
+</map>
