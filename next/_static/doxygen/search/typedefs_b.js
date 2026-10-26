@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['taginfo_0',['TagInfo',['../namespaceanonymous__namespace_02tiffsource_8cc_03.html#a96015f6d1cd3f99d868d00b658fc6702',1,'anonymous_namespace{tiffsource.cc}']]],
-  ['threadptr_1',['ThreadPtr',['../classThreadPool.html#a1b5f37ac79dadbd50c717af80f0184bf',1,'ThreadPool']]],
-  ['tiffptr_2',['TIFFPtr',['../namespaceScroom_1_1Tiff.html#a0a251765fe27458966a781ecd875a374',1,'Scroom::Tiff']]],
-  ['type_3',['type',['../structScroom_1_1Bookkeeping_1_1Detail_1_1MapType.html#abecb275bfe803f39e9287b4e41696a09',1,'Scroom::Bookkeeping::Detail::MapType::Type'],['../structScroom_1_1Bookkeeping_1_1Detail_1_1MapType_3_01std_1_1weak__ptr_3_01K_01_4_00_01V_01_4.html#a3d0f863318e27ea3df83024618498eeb',1,'Scroom::Bookkeeping::Detail::MapType&lt; std::weak_ptr&lt; K &gt;, V &gt;::Type']]]
+  ['scaffoldtypes_0',['ScaffoldTypes',['../rectangletests_8cc.html#a7898dbac93e17911cbee7eddf538dcc1',1,'rectangletests.cc']]],
+  ['stuff_1',['Stuff',['../namespaceScroom_1_1Utils.html#a7831a6b14da4ae303170e6607f29e6b9',1,'Scroom::Utils']]],
+  ['stufflist_2',['StuffList',['../namespaceScroom_1_1Utils.html#acf77d2a64982c6e01e5111ebec656515',1,'Scroom::Utils']]],
+  ['stuffweak_3',['StuffWeak',['../namespaceScroom_1_1Utils.html#afea0aa2f53589bdee27bdc6dd4cc418a',1,'Scroom::Utils']]]
 ];

@@ -7,5 +7,6 @@ var searchData=
   ['logger_4',['Logger',['../classScroom_1_1Logger.html',1,'Scroom']]],
   ['loggercontainer_5',['LoggerContainer',['../classScroom_1_1LoggerContainer.html',1,'Scroom']]],
   ['loggertests_6',['LoggerTests',['../classLoggerTests.html',1,'']]],
-  ['lvalue_7',['LValue',['../classScroom_1_1Bookkeeping_1_1Detail_1_1LValue.html',1,'Scroom::Bookkeeping::Detail']]]
+  ['loggingwindow_7',['LoggingWindow',['../classLoggingWindow.html',1,'']]],
+  ['lvalue_8',['LValue',['../classScroom_1_1Bookkeeping_1_1Detail_1_1LValue.html',1,'Scroom::Bookkeeping::Detail']]]
 ];

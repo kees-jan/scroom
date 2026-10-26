@@ -15,5 +15,6 @@ var namespaceScroom =
     [ "Utils", "namespaceScroom_1_1Utils.html", "namespaceScroom_1_1Utils" ],
     [ "Logger", "classScroom_1_1Logger.html", "classScroom_1_1Logger" ],
     [ "LoggerContainer", "classScroom_1_1LoggerContainer.html", "classScroom_1_1LoggerContainer" ],
+    [ "RingBufferSink", "classScroom_1_1RingBufferSink.html", "classScroom_1_1RingBufferSink" ],
     [ "Semaphore", "classScroom_1_1Semaphore.html", "classScroom_1_1Semaphore" ]
 ];

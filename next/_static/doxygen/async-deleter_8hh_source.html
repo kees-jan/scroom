@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-48-g70093e59</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-56-g4171dffc4</span>
    </div>
   </td>
  </tr>
@@ -144,7 +144,7 @@ $(document).ready(function(){initNavTree('async-deleter_8hh_source.html',''); in
 <div class="foldopen" id="foldopen00052" data-start="{" data-end="}">
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classAsyncDeleter.html#a520663653f446a9805acdd77e1d26a0c">   52</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classAsyncDeleter.html#a520663653f446a9805acdd77e1d26a0c">operator()</a>(T* <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>)</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  {</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <a class="code hl_variable" href="classAsyncDeleter.html#af6749fac2a5a1157e422bfe25a4d97f5">deleter</a>-&gt;schedule([<a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>] { <a class="code hl_function" href="namespaceDetail.html#ade7e310c6f49be3b6e0ded45bd574f9b">Detail::call_delete</a>(<a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>); });</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <a class="code hl_variable" href="classAsyncDeleter.html#af6749fac2a5a1157e422bfe25a4d97f5">deleter</a>-&gt;post([<a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>] { <a class="code hl_function" href="namespaceDetail.html#ade7e310c6f49be3b6e0ded45bd574f9b">Detail::call_delete</a>(<a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>); });</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  }</div>
 </div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>};</div>
@@ -153,14 +153,14 @@ $(document).ready(function(){initNavTree('async-deleter_8hh_source.html',''); in
 <div class="ttc" id="aclassAsyncDeleter_html_a520663653f446a9805acdd77e1d26a0c"><div class="ttname"><a href="classAsyncDeleter.html#a520663653f446a9805acdd77e1d26a0c">AsyncDeleter::operator()</a></div><div class="ttdeci">void operator()(T *p)</div><div class="ttdef"><b>Definition</b> async-deleter.hh:52</div></div>
 <div class="ttc" id="aclassAsyncDeleter_html_a78dce23b8bc0fe9ca5be3da6bba596c8"><div class="ttname"><a href="classAsyncDeleter.html#a78dce23b8bc0fe9ca5be3da6bba596c8">AsyncDeleter::AsyncDeleter</a></div><div class="ttdeci">AsyncDeleter()</div><div class="ttdef"><b>Definition</b> async-deleter.hh:47</div></div>
 <div class="ttc" id="aclassAsyncDeleter_html_af6749fac2a5a1157e422bfe25a4d97f5"><div class="ttname"><a href="classAsyncDeleter.html#af6749fac2a5a1157e422bfe25a4d97f5">AsyncDeleter::deleter</a></div><div class="ttdeci">ThreadPool::Ptr deleter</div><div class="ttdef"><b>Definition</b> async-deleter.hh:44</div></div>
-<div class="ttc" id="aclassThreadPool_html"><div class="ttname"><a href="classThreadPool.html">ThreadPool</a></div><div class="ttdef"><b>Definition</b> threadpool.hh:43</div></div>
-<div class="ttc" id="aclassThreadPool_html_aecda99f22ede5423ab70df4517a0c4c2"><div class="ttname"><a href="classThreadPool.html#aecda99f22ede5423ab70df4517a0c4c2">ThreadPool::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; ThreadPool &gt; Ptr</div><div class="ttdef"><b>Definition</b> threadpool.hh:165</div></div>
+<div class="ttc" id="aclassThreadPool_html"><div class="ttname"><a href="classThreadPool.html">ThreadPool</a></div><div class="ttdef"><b>Definition</b> threadpool.hh:215</div></div>
+<div class="ttc" id="aclassThreadPool_html_aecda99f22ede5423ab70df4517a0c4c2"><div class="ttname"><a href="classThreadPool.html#aecda99f22ede5423ab70df4517a0c4c2">ThreadPool::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; ThreadPool &gt; Ptr</div><div class="ttdef"><b>Definition</b> threadpool.hh:231</div></div>
 <div class="ttc" id="adetermine-size-test_8cc_html_abf000ba68ab71a4284d8a6b1ed241f79"><div class="ttname"><a href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a></div><div class="ttdeci">PresentationInterfaceStub::Ptr const p</div><div class="ttdef"><b>Definition</b> determine-size-test.cc:172</div></div>
 <div class="ttc" id="anamespaceDetail_html"><div class="ttname"><a href="namespaceDetail.html">Detail</a></div><div class="ttdef"><b>Definition</b> color.hh:26</div></div>
 <div class="ttc" id="anamespaceDetail_html_ade7e310c6f49be3b6e0ded45bd574f9b"><div class="ttname"><a href="namespaceDetail.html#ade7e310c6f49be3b6e0ded45bd574f9b">Detail::call_delete</a></div><div class="ttdeci">void call_delete(T *p)</div><div class="ttdef"><b>Definition</b> async-deleter.hh:15</div></div>
 <div class="ttc" id="anamespaceScroom_1_1Detail_1_1ThreadPool_html"><div class="ttname"><a href="namespaceScroom_1_1Detail_1_1ThreadPool.html">Scroom::Detail::ThreadPool</a></div><div class="ttdef"><b>Definition</b> async-deleter.hh:22</div></div>
 <div class="ttc" id="anamespaceScroom_1_1Detail_1_1ThreadPool_html_adbdff2f494948417786589c465d0644a"><div class="ttname"><a href="namespaceScroom_1_1Detail_1_1ThreadPool.html#adbdff2f494948417786589c465d0644a">Scroom::Detail::ThreadPool::getDeleter</a></div><div class="ttdeci">::ThreadPool::Ptr getDeleter()</div><div class="ttdef"><b>Definition</b> async-deleter.cc:15</div></div>
-<div class="ttc" id="anamespaceScroom_html"><div class="ttname"><a href="namespaceScroom.html">Scroom</a></div><div class="ttdef"><b>Definition</b> blockallocator.hh:18</div></div>
+<div class="ttc" id="anamespaceScroom_html"><div class="ttname"><a href="namespaceScroom.html">Scroom</a></div><div class="ttdef"><b>Definition</b> ringbuffer-sink.hh:22</div></div>
 <div class="ttc" id="athreadpool_8hh_html"><div class="ttname"><a href="threadpool_8hh.html">threadpool.hh</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

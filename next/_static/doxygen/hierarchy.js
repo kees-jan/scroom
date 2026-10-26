@@ -24,18 +24,22 @@ var hierarchy =
     ] ],
     [ "AsyncDeleter< T >", "classAsyncDeleter.html", null ],
     [ "anonymous_namespace{gtkhelper-tests.cc}::B", "classanonymous__namespace_02gtkhelper-tests_8cc_03_1_1B.html", null ],
-    [ "B< R >", "classB.html", null ],
+    [ "spdlog::sinks::base_sink", null, [
+      [ "Scroom::RingBufferSink", "classScroom_1_1RingBufferSink.html", null ]
+    ] ],
     [ "BaseCounter", "classBaseCounter.html", [
       [ "InvalidatingCounter", "classInvalidatingCounter.html", null ]
     ] ],
     [ "BitCountLut", "classBitCountLut.html", null ],
     [ "Scroom::TiledBitmap::BitmapMetaData", "structScroom_1_1TiledBitmap_1_1BitmapMetaData.html", null ],
     [ "Scroom::Bitmap::BitmapSurface", "classScroom_1_1Bitmap_1_1BitmapSurface.html", null ],
+    [ "Scroom::Detail::ThreadPool::Builder< hasCallable_, hasPriority_, hasQueue_, R >", "classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html", null ],
     [ "Scroom::Detail::ClearDefaultLogger", "structScroom_1_1Detail_1_1ClearDefaultLogger.html", null ],
     [ "anonymous_namespace{transparentoverlaypresentation.cc}::ColorComparer", "structanonymous__namespace_02transparentoverlaypresentation_8cc_03_1_1ColorComparer.html", null ],
     [ "Colormap", "classColormap.html", null ],
     [ "Scroom::ColormapImpl::Colormaps", "classScroom_1_1ColormapImpl_1_1Colormaps.html", null ],
     [ "ConstTile", "classConstTile.html", null ],
+    [ "Scroom::RingBufferSink::ConsumeResult", "structScroom_1_1RingBufferSink_1_1ConsumeResult.html", null ],
     [ "Scroom::Utils::Count", "classScroom_1_1Utils_1_1Count.html", null ],
     [ "Scroom::Utils::Counted< C >", "classScroom_1_1Utils_1_1Counted.html", null ],
     [ "Scroom::Utils::Counted< TestCounted >", "classScroom_1_1Utils_1_1Counted.html", [
@@ -61,6 +65,7 @@ var hierarchy =
     [ "Scroom::MemoryBlocks::Detail::anonymous_namespace{swapbasedblockallocator.cc}::DontDelete< T >", "classScroom_1_1MemoryBlocks_1_1Detail_1_1anonymous__namespace_02swapbasedblockallocator_8cc_03_1_1DontDelete.html", null ],
     [ "Dummy", "structDummy.html", null ],
     [ "std::enable_shared_from_this", null, [
+      [ "LoggingWindow", "classLoggingWindow.html", null ],
       [ "Scroom::ColormapImpl::ColormapProvider", "classScroom_1_1ColormapImpl_1_1ColormapProvider.html", null ],
       [ "Scroom::Utils::Base", "classScroom_1_1Utils_1_1Base.html", [
         [ "Scroom::Bookkeeping::MapBase< ObserverWeak, typenameRegistration::Ptr >", "classScroom_1_1Bookkeeping_1_1MapBase.html", null ],
@@ -85,14 +90,23 @@ var hierarchy =
         [ "Pipette", "classPipette.html", null ],
         [ "PipetteHandler", "classPipetteHandler.html", null ],
         [ "PipetteLayerOperations", "classPipetteLayerOperations.html", [
+          [ "PipetteCommonOperations16bpp", "classPipetteCommonOperations16bpp.html", [
+            [ "Operations16bpp", "classOperations16bpp.html", null ]
+          ] ],
           [ "PipetteCommonOperationsCMYK", "classPipetteCommonOperationsCMYK.html", [
             [ "OperationsCMYK16", "classOperationsCMYK16.html", null ],
             [ "OperationsCMYK32", "classOperationsCMYK32.html", null ],
             [ "OperationsCMYK4", "classOperationsCMYK4.html", null ],
             [ "OperationsCMYK8", "classOperationsCMYK8.html", null ]
           ] ],
+          [ "PipetteCommonOperationsCMYK64bpp", "classPipetteCommonOperationsCMYK64bpp.html", [
+            [ "OperationsCMYK64", "classOperationsCMYK64.html", null ]
+          ] ],
           [ "PipetteCommonOperationsRGB", "classPipetteCommonOperationsRGB.html", [
-            [ "Operations24bpp", "classOperations24bpp.html", null ]
+            [ "OperationsRgb24bpp", "classOperationsRgb24bpp.html", null ]
+          ] ],
+          [ "PipetteCommonOperationsRGB48bpp", "classPipetteCommonOperationsRGB48bpp.html", [
+            [ "OperationsRgb48bpp", "classOperationsRgb48bpp.html", null ]
           ] ]
         ] ],
         [ "PipetteViewInterface", "classPipetteViewInterface.html", [
@@ -139,6 +153,7 @@ var hierarchy =
         [ "View", "classView.html", null ]
       ] ]
     ] ],
+    [ "Scroom::RingBufferSink::Entry", "structScroom_1_1RingBufferSink_1_1Entry.html", null ],
     [ "equal_to< Key >", "classequal__to.html", null ],
     [ "Scroom::Utils::Detail::ErrorSignalHandler", "classScroom_1_1Utils_1_1Detail_1_1ErrorSignalHandler.html", null ],
     [ "std::exception", null, [
@@ -194,8 +209,11 @@ var hierarchy =
           [ "Operations1bpp", "classOperations1bpp.html", null ],
           [ "Operations1bppClipped", "classOperations1bppClipped.html", null ],
           [ "Operations8bpp", "classOperations8bpp.html", null ],
+          [ "PipetteCommonOperations16bpp", "classPipetteCommonOperations16bpp.html", null ],
           [ "PipetteCommonOperationsCMYK", "classPipetteCommonOperationsCMYK.html", null ],
-          [ "PipetteCommonOperationsRGB", "classPipetteCommonOperationsRGB.html", null ]
+          [ "PipetteCommonOperationsCMYK64bpp", "classPipetteCommonOperationsCMYK64bpp.html", null ],
+          [ "PipetteCommonOperationsRGB", "classPipetteCommonOperationsRGB.html", null ],
+          [ "PipetteCommonOperationsRGB48bpp", "classPipetteCommonOperationsRGB48bpp.html", null ]
         ] ],
         [ "DummyLayerOperations", "classDummyLayerOperations.html", null ]
       ] ],
@@ -391,7 +409,7 @@ var hierarchy =
     [ "PluginInformation", "structPluginInformation.html", null ],
     [ "SizeDeterminer::PresentationData", "classSizeDeterminer_1_1PresentationData.html", null ],
     [ "ThreadPool::PrivateData", "classThreadPool_1_1PrivateData.html", null ],
-    [ "ThreadPool::Queue", "classThreadPool_1_1Queue.html", null ],
+    [ "Scroom::Detail::ThreadPool::Queue", "classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html", null ],
     [ "Scroom::Detail::ThreadPool::QueueImpl", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html", null ],
     [ "QueueJumper", "classQueueJumper.html", null ],
     [ "Scroom::Detail::ThreadPool::QueueLock", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueLock.html", null ],
@@ -436,9 +454,9 @@ var hierarchy =
       [ "SampleIterator_iterates", "classSampleIterator__iterates.html", null ],
       [ "anonymous_namespace{colormaphelpers_test.cc}::ColormapHelper_Data_Tests", "classanonymous__namespace_02colormaphelpers__test_8cc_03_1_1ColormapHelper__Data__Tests.html", null ]
     ] ],
-    [ "anonymous_namespace{threadpoolimpl.cc}::ThreadList", "classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadList.html", null ],
+    [ "anonymous_namespace{threadpool.cc}::ThreadList", "classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html", null ],
     [ "ThreadPool", "classThreadPool.html", null ],
-    [ "anonymous_namespace{threadpoolimpl.cc}::ThreadWaiter", "classanonymous__namespace_02threadpoolimpl_8cc_03_1_1ThreadWaiter.html", null ],
+    [ "anonymous_namespace{threadpool.cc}::ThreadWaiter", "classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter.html", null ],
     [ "Tile", "classTile.html", null ],
     [ "Scroom::Bookkeeping::Detail::TokenImpl", "classScroom_1_1Bookkeeping_1_1Detail_1_1TokenImpl.html", [
       [ "Scroom::Bookkeeping::Detail::MapTokenImpl< K, V >", "classScroom_1_1Bookkeeping_1_1Detail_1_1MapTokenImpl.html", null ]
@@ -448,5 +466,5 @@ var hierarchy =
     [ "Scroom::Utils::ProgressInterfaceBroadcaster::Unsubscriber", "classScroom_1_1Utils_1_1ProgressInterfaceBroadcaster_1_1Unsubscriber.html", null ],
     [ "Scroom::Bookkeeping::Detail::ValueType< V >", "classScroom_1_1Bookkeeping_1_1Detail_1_1ValueType.html", null ],
     [ "WaitForAsyncOp", "classWaitForAsyncOp.html", null ],
-    [ "ThreadPool::WeakQueue", "classThreadPool_1_1WeakQueue.html", null ]
+    [ "Scroom::Detail::ThreadPool::WeakQueue", "classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html", null ]
 ];

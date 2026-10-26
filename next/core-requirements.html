@@ -58,9 +58,9 @@ That allows us to quickly show the data the user requests later.</p>
 <section id="high-throughput">
 <h3>High throughput<a class="headerlink" href="#high-throughput" title="Link to this heading">¶</a></h3>
 <p>High throughput is achieved by using all available cores wherever possible/required.
-This is done by splitting any task into smaller chunks, and submitting them on the <a class="reference external" href="./_static/doxygen/threadpool_8hh.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b">CpuBound()</a> threadpool by calling its <a class="reference external" href="./_static/doxygen/classThreadPool.html#a5ceb75ca278331440e9adce284089863">ThreadPool::schedule()</a> method.
-Be sure to supply a <a class="reference external" href="./_static/doxygen/classThreadPool_1_1Queue.html">queue</a> object when you call <a class="reference external" href="./_static/doxygen/classThreadPool.html#a5ceb75ca278331440e9adce284089863">ThreadPool::schedule()</a>.
-If you later delete the <a class="reference external" href="./_static/doxygen/classThreadPool_1_1Queue.html">queue</a> object, the work you scheduled will be canceled.</p>
+This is done by splitting any task into smaller chunks, and submitting them on the <a class="reference external" href="./_static/doxygen/threadpool_8cc.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b">CpuBound()</a> threadpool by calling
+its <a class="reference external" href="./_static/doxygen/classThreadPool.html#a3b6be78dc258ee937775128c101aa5fc">ThreadPool::post()</a> or <a class="reference external" href="./_static/doxygen/classThreadPool.html#a6179ee6b010f0462037be5378afc2339">ThreadPool::submit()</a> methods. When you do, be sure to supply a <a class="reference external" href="./_static/doxygen/classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html">queue</a>
+object. If you later delete the <a class="reference external" href="./_static/doxygen/classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html">queue</a> object, the work you scheduled will be canceled.</p>
 </section>
 </section>
 <section id="rule">
@@ -184,7 +184,7 @@ If you were to show a (blocking) popup, the user would not know to which Scroom 
       &#169;2022, Kees-Jan Dijkzeul.
       
       |
-      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.1</a>
       &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
       |
