@@ -26,19 +26,18 @@ var NAVTREE =
 [
   [ "Scroom", "index.html", [
     [ "Local development guide", "md_AGENTS.html", [
-      [ "Project and prerequisites", "md_AGENTS.html#autotoc_md1", null ],
+      [ "Project", "md_AGENTS.html#autotoc_md1", null ],
       [ "Configure and compile", "md_AGENTS.html#autotoc_md2", null ],
       [ "Tests", "md_AGENTS.html#autotoc_md3", null ],
       [ "Run the application without installing", "md_AGENTS.html#autotoc_md4", null ],
-      [ "Code map and checks", "md_AGENTS.html#autotoc_md5", null ],
-      [ "Cloud findings to retain", "md_AGENTS.html#autotoc_md6", null ]
+      [ "Code map and checks", "md_AGENTS.html#autotoc_md5", null ]
     ] ],
     [ "Ryan's CMake Modules", "md_cmake-modules_2README.html", [
-      [ "Introduction", "md_cmake-modules_2README.html#autotoc_md7", null ],
-      [ "How to Integrate", "md_cmake-modules_2README.html#autotoc_md8", null ],
-      [ "How to Use", "md_cmake-modules_2README.html#autotoc_md9", null ],
-      [ "Licenses", "md_cmake-modules_2README.html#autotoc_md10", null ],
-      [ "Important License Note!", "md_cmake-modules_2README.html#autotoc_md11", null ]
+      [ "Introduction", "md_cmake-modules_2README.html#autotoc_md6", null ],
+      [ "How to Integrate", "md_cmake-modules_2README.html#autotoc_md7", null ],
+      [ "How to Use", "md_cmake-modules_2README.html#autotoc_md8", null ],
+      [ "Licenses", "md_cmake-modules_2README.html#autotoc_md9", null ],
+      [ "Important License Note!", "md_cmake-modules_2README.html#autotoc_md10", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -100,11 +99,11 @@ var NAVTREEINDEX =
 "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#ab7fee1d2a92d623e3a28a2f3a59546a6",
 "dir_ecedfa50a3e3801aeb3bc34cfa2fa2dd.html",
 "gtk-helpers_8hh.html#a68ad2ca25cec0ca8c5f9174039ea86fa",
-"namespaceScroom_1_1MemoryBlocks_1_1Detail_1_1anonymous__namespace_02swapbasedblockallocator_8cc_03.html",
-"observable-tests_8cc.html#a33134d921616abb7833daa48428d38ba",
-"progressstateinterfacestub_8cc.html",
-"sampleiterator-tests_8cc.html#a53894e91bcfe1e36f402333502cbcfc2",
-"threadpool-queue-tests_8cc.html#a454f6383a96b0e9fa13a6d2110a7e1d5"
+"namespaceScroom_1_1MemoryBlocks_1_1RawPageData.html",
+"observable-tests_8cc.html#a369edb6fb28d4a360e67824445419e8c",
+"progressstateinterfacestub_8hh.html",
+"sampleiterator-tests_8cc.html#a5d0785bb2feab5228fc445f0f5bf3719",
+"threadpool-queue-tests_8cc.html#a55aa0d1e0bcffab7cae785bb46ef9744"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

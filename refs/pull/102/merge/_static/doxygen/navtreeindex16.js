@@ -129,13 +129,12 @@ var NAVTREEINDEX16 =
 "md_AGENTS.html#autotoc_md3":[0,2],
 "md_AGENTS.html#autotoc_md4":[0,3],
 "md_AGENTS.html#autotoc_md5":[0,4],
-"md_AGENTS.html#autotoc_md6":[0,5],
 "md_cmake-modules_2README.html":[1],
-"md_cmake-modules_2README.html#autotoc_md10":[1,3],
-"md_cmake-modules_2README.html#autotoc_md11":[1,4],
-"md_cmake-modules_2README.html#autotoc_md7":[1,0],
-"md_cmake-modules_2README.html#autotoc_md8":[1,1],
-"md_cmake-modules_2README.html#autotoc_md9":[1,2],
+"md_cmake-modules_2README.html#autotoc_md10":[1,4],
+"md_cmake-modules_2README.html#autotoc_md6":[1,0],
+"md_cmake-modules_2README.html#autotoc_md7":[1,1],
+"md_cmake-modules_2README.html#autotoc_md8":[1,2],
+"md_cmake-modules_2README.html#autotoc_md9":[1,3],
 "measure-framerate-callbacks_8cc.html":[5,0,3,4,3,0],
 "measure-framerate-callbacks_8cc.html#a02fd73d861ef2e4aabb38c0c9ff82947":[5,0,3,4,3,0,1],
 "measure-framerate-callbacks_8cc.html#a05753da6e97a1ef39125024fc989a6fa":[5,0,3,4,3,0,9],
@@ -249,5 +248,6 @@ var NAVTREEINDEX16 =
 "namespaceScroom_1_1MemoryBlocks.html":[2,0,24,7],
 "namespaceScroom_1_1MemoryBlocks.html#a1e99f7c5b462e84d8d2e4abdb4c0a2c4":[2,0,24,7,5],
 "namespaceScroom_1_1MemoryBlocks.html#a69b514b38d03a4a952d9d7fec8da1ec1":[2,0,24,7,6],
-"namespaceScroom_1_1MemoryBlocks_1_1Detail.html":[2,0,24,7,0]
+"namespaceScroom_1_1MemoryBlocks_1_1Detail.html":[2,0,24,7,0],
+"namespaceScroom_1_1MemoryBlocks_1_1Detail_1_1anonymous__namespace_02swapbasedblockallocator_8cc_03.html":[2,0,24,7,0,0]
 };

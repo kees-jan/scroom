@@ -1,6 +1,5 @@
 var NAVTREEINDEX17 =
 {
-"namespaceScroom_1_1MemoryBlocks_1_1Detail_1_1anonymous__namespace_02swapbasedblockallocator_8cc_03.html":[2,0,24,7,0,0],
 "namespaceScroom_1_1MemoryBlocks_1_1RawPageData.html":[2,0,24,7,1],
 "namespaceScroom_1_1MemoryBlocks_1_1RawPageData.html#a72f7bee76a0a83c657d03b961774733a":[2,0,24,7,1,1],
 "namespaceScroom_1_1MemoryBlocks_1_1RawPageData.html#adea1c47b8e23abbfd3a1ac8f9648ae70":[2,0,24,7,1,0],
@@ -213,8 +212,8 @@ var NAVTREEINDEX17 =
 "namespaceconf.html#ae475e080536acb271a0a0efe56c3ba42":[2,0,21,4],
 "namespaceconf.html#ae850ae634911b713e036b43894fdd525":[2,0,21,10],
 "namespaceconf.html#af4fb5d8851ccaade135c2668dd3ced41":[2,0,21,6],
-"namespacemembers.html":[2,1,0],
 "namespacemembers.html":[2,1,0,0],
+"namespacemembers.html":[2,1,0],
 "namespacemembers_b.html":[2,1,0,1],
 "namespacemembers_c.html":[2,1,0,2],
 "namespacemembers_d.html":[2,1,0,3],
@@ -249,5 +248,6 @@ var NAVTREEINDEX17 =
 "observable-tests_8cc.html#a08c922a4cce58deac6936c7a0b956c7d":[5,0,3,5,2,5,9],
 "observable-tests_8cc.html#a0eb04eb8c2d790aea7a49879c364aa62":[5,0,3,5,2,5,16],
 "observable-tests_8cc.html#a11c15985f427bb595e6f8330d9148ba0":[5,0,3,5,2,5,19],
-"observable-tests_8cc.html#a1d419a2a1300a54322015baddd757ed2":[5,0,3,5,2,5,6]
+"observable-tests_8cc.html#a1d419a2a1300a54322015baddd757ed2":[5,0,3,5,2,5,6],
+"observable-tests_8cc.html#a33134d921616abb7833daa48428d38ba":[5,0,3,5,2,5,29]
 };
