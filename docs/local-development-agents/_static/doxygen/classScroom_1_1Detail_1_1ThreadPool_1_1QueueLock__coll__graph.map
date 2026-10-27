@@ -1,0 +1,7 @@
+<map id="Scroom::Detail::ThreadPool::QueueLock" name="Scroom::Detail::ThreadPool::QueueLock">
+<area shape="rect" id="Node000001" title=" " alt="" coords="16,436,207,636"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,308,217,373"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,373,114,419,109,419,109,373"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html" title=" " alt="" coords="16,5,207,245"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="114,245,114,291,109,291,109,245"/>
+</map>

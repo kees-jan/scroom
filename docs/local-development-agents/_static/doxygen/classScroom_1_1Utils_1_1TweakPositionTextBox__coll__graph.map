@@ -1,0 +1,17 @@
+<map id="Scroom::Utils::TweakPositionTextBox" name="Scroom::Utils::TweakPositionTextBox">
+<area shape="rect" id="Node000001" title=" " alt="" coords="127,483,330,623"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1ITweakPositionTextBox.html" title=" " alt="" coords="27,270,233,370"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="159,381,202,482,197,484,154,383"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="5,5,113,171"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="91,183,117,269,112,271,86,185"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Point.html" title=" " alt="" coords="327,220,469,420"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="328,420,291,471,287,468,324,417"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="137,48,296,128"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="258,137,328,226,324,230,254,141"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="321,48,475,128"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="401,142,401,220,395,220,395,142"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="499,48,710,128"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="563,140,472,241,468,237,559,136"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="734,48,934,128"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="775,139,723,173,591,241,471,293,468,288,589,236,721,168,772,134"/>
+</map>

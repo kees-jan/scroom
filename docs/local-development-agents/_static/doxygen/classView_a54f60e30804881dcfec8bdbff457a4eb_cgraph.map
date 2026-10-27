@@ -1,0 +1,14 @@
+<map id="View::updateZoom" name="View::updateZoom">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,45,149,70"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html#a1262f445c07c33e16069e2497aed581f" title=" " alt="" coords="197,5,380,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="149,44,183,39,184,44,150,49"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Rectangle.html#aac53b13b110251e6666a6e8499c19f27" title=" " alt="" coords="197,69,380,109"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="150,66,184,71,183,76,149,71"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Rectangle.html#ac3ffb0067f3c0d0686ea2319cd5d5618" title=" " alt="" coords="428,5,611,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="380,23,414,23,414,28,380,28"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Segment.html#abd475ea75311ffaed7e8175125d2d3b5" title=" " alt="" coords="659,37,833,77"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="612,36,646,41,645,46,611,41"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Rectangle.html#a3b8d627a36eb56f6f36eea5004591154" title=" " alt="" coords="428,69,611,109"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="380,87,414,87,414,92,380,92"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="611,74,645,69,646,74,612,79"/>
+</map>

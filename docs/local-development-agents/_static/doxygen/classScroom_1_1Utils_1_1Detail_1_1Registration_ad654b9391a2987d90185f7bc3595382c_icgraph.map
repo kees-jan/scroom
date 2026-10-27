@@ -1,0 +1,15 @@
+<map id="Scroom::Utils::Detail::Registration::create" name="Scroom::Utils::Detail::Registration::create">
+<area shape="rect" id="Node000001" title=" " alt="" coords="477,101,636,141"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Observable.html#af513d91b5b1ca025d34f428208512c45" title=" " alt="" coords="239,69,429,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="464,111,429,106,430,100,464,105"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Observable.html#ac8eb66519da1d1f30aaaa8a46b82def4" title=" " alt="" coords="239,133,429,173"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="464,137,430,142,429,137,464,132"/>
+<area shape="rect" id="Node000003" href="$classCompressedTile.html#ad40ea1dd54146b27258bf7f888e3dbc1" title=" " alt="" coords="5,5,191,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="246,68,172,48,173,43,247,63"/>
+<area shape="rect" id="Node000004" href="$classCompressedTile.html#a9444ae88da788c16906ba567ad07c012" title=" " alt="" coords="5,69,191,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="225,92,191,92,191,87,225,87"/>
+<area shape="rect" id="Node000006" href="$classCompressedTile.html#aa5784d47bed64ad72d9c3ae748a356e2" title=" " alt="" coords="5,133,191,173"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="225,156,191,156,191,151,225,151"/>
+<area shape="rect" id="Node000007" href="$classCompressedTile.html#a8fe577eafb7f52066eaa8f03f8438381" title=" " alt="" coords="5,197,191,237"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="247,180,173,200,172,195,246,174"/>
+</map>

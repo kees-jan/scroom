@@ -1,0 +1,6 @@
+<map id="TiledBitmap::initialize" name="TiledBitmap::initialize">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,171,55"/>
+<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="57,31,51,21,54,11,67,5,88,3,113,6,124,15,121,19,111,11,88,8,69,10,58,15,56,20,62,28"/>
+<area shape="rect" id="Node000002" href="$classLayer.html#a8f3623d32725dbc8537779fb7f682e46" title=" " alt="" coords="219,29,325,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="171,39,205,39,205,45,171,45"/>
+</map>

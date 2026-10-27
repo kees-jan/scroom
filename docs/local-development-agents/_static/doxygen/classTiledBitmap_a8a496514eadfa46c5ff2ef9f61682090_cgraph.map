@@ -1,0 +1,16 @@
+<map id="TiledBitmap::tileFinished" name="TiledBitmap::tileFinished">
+<area shape="rect" id="Node000001" title="TileInitialisationObserver." alt="" coords="5,101,189,126"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1GtkHelpers.html#a41d93c131774cfff3137ec807ead3e94" title=" " alt="" coords="237,93,389,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="190,111,224,111,224,116,190,116"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1GtkHelpers.html#a37a36328ffc6b0e7468a02d64724c21d" title=" " alt="" coords="437,53,596,107"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="389,98,423,93,424,98,390,104"/>
+<area shape="rect" id="Node000006" href="$namespaceScroom_1_1GtkHelpers.html#a2ade52a9fdfe46700036def64d00f9da" title=" " alt="" coords="647,121,799,161"/>
+<area shape="poly" id="edge7_Node000002_Node000006" title=" " alt="" coords="390,116,634,133,633,138,389,121"/>
+<area shape="rect" id="Node000004" href="$namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1" title=" " alt="" coords="644,5,803,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="596,56,634,46,635,51,597,62"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="597,101,643,115,641,120,596,106"/>
+<area shape="rect" id="Node000007" href="$function-additor-tests_8cc.html#a171d6ee6f5e4a249111a7ca7c7108209" title=" " alt="" coords="698,70,749,95"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="596,78,684,80,684,85,596,84"/>
+<area shape="rect" id="Node000005" href="$namespaceScroom_1_1GtkHelpers.html#ad5dcc56a509902bf106dbd6eb6a28964" title=" " alt="" coords="851,5,1003,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="803,23,837,23,837,28,803,28"/>
+</map>

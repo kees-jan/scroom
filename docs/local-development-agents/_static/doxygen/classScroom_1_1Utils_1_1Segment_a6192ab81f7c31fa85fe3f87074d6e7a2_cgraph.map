@@ -1,0 +1,9 @@
+<map id="Scroom::Utils::Segment::setStart" name="Scroom::Utils::Segment::setStart">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,37,180,77"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Segment.html#a671e0c8614114bf5eb99afd36a2dddc4" title=" " alt="" coords="228,5,403,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="180,42,214,37,215,42,181,47"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Segment.html#a98fd542639fe9411293029487bbc2ab0" title=" " alt="" coords="228,69,403,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="181,67,215,72,214,78,180,73"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Segment.html#aa3415b3b3cc8f607a25b3aad79221441" title=" " alt="" coords="451,69,625,109"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="403,87,437,87,437,92,403,92"/>
+</map>

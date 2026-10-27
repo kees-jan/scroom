@@ -1,0 +1,14 @@
+<map id="on_drawingarea_expose_event" name="on_drawingarea_expose_event">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,97,185,137"/>
+<area shape="rect" id="Node000002" href="$classView.html#a7a4cd04a39fff643d73565bfeaa058c2" title=" " alt="" coords="233,104,340,129"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="185,114,219,114,219,119,185,119"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1Utils.html#a8a866a6439fc60dfe259e168059aa65e" title=" " alt="" coords="388,29,573,55"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="309,101,387,64,409,56,411,61,389,68,311,106"/>
+<area shape="rect" id="Node000004" href="$cairo-helpers_8cc.html#ac7a152a4cc864e9c67acbc6686a9d3a4" title=" " alt="" coords="405,79,556,104"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="340,107,392,100,392,106,341,112"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Point.html#a45972be2646a1f80a0cdca8cbe68e3a6" title=" " alt="" coords="395,128,566,153"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="341,121,382,126,381,131,340,126"/>
+<area shape="rect" id="Node000006" href="$classView.html#a7c6bc955a9ea12b76b49c2c47d508329" title=" " alt="" coords="397,177,565,203"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="313,127,389,162,415,171,413,176,387,167,311,132"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="449,31,442,21,446,11,459,5,481,3,507,6,518,15,515,19,505,11,481,8,460,10,450,15,447,20,453,28"/>
+</map>

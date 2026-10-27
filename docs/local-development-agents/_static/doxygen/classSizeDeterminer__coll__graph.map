@@ -1,0 +1,15 @@
+<map id="SizeDeterminer" name="SizeDeterminer">
+<area shape="rect" id="Node000001" title=" " alt="" coords="65,617,205,803"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,371,223,451"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,451,130,601,125,601,114,451"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="169,133,318,199"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="174,201,149,224,133,255,123,288,115,354,109,354,117,287,128,253,145,221,170,197"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="237,475,522,555"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="243,199,244,268,249,307,259,346,273,377,291,407,332,460,327,464,287,410,269,380,254,348,244,309,238,268,238,199"/>
+<area shape="rect" id="Node000006" href="$classSizeDeterminer_1_1PresentationData.html" title=" " alt="" coords="313,261,549,347"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="288,197,362,250,359,254,285,201"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="232,5,255,71"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="246,71,246,117,241,117,241,71"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="332,557,220,645,217,641,328,553"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="424,348,396,459,390,458,418,346"/>
+</map>

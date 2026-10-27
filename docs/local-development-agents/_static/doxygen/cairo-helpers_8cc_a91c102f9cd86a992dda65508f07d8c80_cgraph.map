@@ -1,0 +1,14 @@
+<map id="drawOutOfBoundsWithBackground" name="drawOutOfBoundsWithBackground">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,63,252,88"/>
+<area shape="rect" id="Node000002" href="$cairo-helpers_8cc.html#a4f46197f43bbf408ce995b3b0a428c68" title=" " alt="" coords="332,5,451,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="187,60,319,31,320,36,188,65"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Rectangle.html#aa0205a1477a20bd1888f9dd480069bf2" title=" " alt="" coords="300,55,483,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="252,73,286,73,286,78,252,78"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Rectangle.html#aedd0d1a9a795cfa71ba9dc888c2ef92d" title=" " alt="" coords="300,143,483,183"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="169,86,319,136,317,141,167,91"/>
+<area shape="rect" id="Node000003" href="$cairo-helpers_8cc.html#a7eaa96a970e5ff603afbea0a3a0bf761" title=" " alt="" coords="585,5,651,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="451,15,571,15,571,21,451,21"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Segment.html#a934a0a56d270e8d4fc4ceddb4dc7fb82" title=" " alt="" coords="531,55,705,95"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="483,73,517,73,517,78,483,78"/>
+<area shape="poly" id="edge6_Node000006_Node000006" title=" " alt="" coords="349,144,346,134,353,124,368,119,391,117,418,120,432,127,430,132,416,125,391,122,370,124,356,129,352,135,354,142"/>
+</map>
