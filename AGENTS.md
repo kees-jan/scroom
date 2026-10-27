@@ -22,14 +22,21 @@ CMake presets are available in `CMakePresets.json`; `gcc-debug` is the default
 choice. The Debug build directory contains `bin/`,
 `lib/`, and `compile_commands.json`.
 
+Use Ninja's default build parallelism; omit explicit job limits when building.
+
 In-source builds are forbidden. Use a separate build directory when switching
-compilers. The `clang22-libcxx-gcc13-debug` preset uses Clang 22 with **libstdc++**,
-despite its name, and pins `/usr/lib/gcc/x86_64-linux-gnu/13`; use it only if that
-toolchain exists. The GCC preset is the simpler default.
+compilers. The `clang22-debug` preset builds and tests with Clang 22 and its
+default system standard library. Use its build tree for `clang-tidy-22`: Clang
+and GCC handle diagnostics differently, and clang-tidy has worked best with a
+Clang-generated compilation database. Keep this preset building and passing
+tests as well as the GCC preset.
 
 ## Tests
 
 Build before running CTest. For headless sessions, supply a virtual display as in Linux CI.
+
+All test suites may run concurrently. Use the test presets' parallel settings
+without overriding them with an explicit job limit.
 
 GTK-dependent tests require a display even though these are unit tests. Xvfb
 also needs `xauth`. A `cannot open display` failure is an environment problem;
