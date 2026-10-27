@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-58-g9d1bc4e75</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-59-ga3f22225e</span>
    </div>
   </td>
  </tr>
@@ -102,10 +102,12 @@ Project</h1>
 Configure and compile</h1>
 <p>The CMake modules live in the <code>cmake-modules</code> submodule, which must be initialized. Version generation requires full Git history and tags.</p>
 <p>CMake presets are available in <code>CMakePresets.json</code>; <code>gcc-debug</code> is the default choice. The Debug build directory contains <code>bin/</code>, <code>lib/</code>, and <code>compile_commands.json</code>.</p>
-<p>In-source builds are forbidden. Use a separate build directory when switching compilers. The <code>clang22-libcxx-gcc13-debug</code> preset uses Clang 22 with <b>libstdc++</b>, despite its name, and pins <code>/usr/lib/gcc/x86_64-linux-gnu/13</code>; use it only if that toolchain exists. The GCC preset is the simpler default.</p>
+<p>Use Ninja's default build parallelism; omit explicit job limits when building.</p>
+<p>In-source builds are forbidden. Use a separate build directory when switching compilers. The <code>clang22-debug</code> preset builds and tests with Clang 22 and its default system standard library. Use its build tree for <code>clang-tidy-22</code>: Clang and GCC handle diagnostics differently, and clang-tidy has worked best with a Clang-generated compilation database. Keep this preset building and passing tests as well as the GCC preset.</p>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Tests</h1>
 <p>Build before running CTest. For headless sessions, supply a virtual display as in Linux CI.</p>
+<p>All test suites may run concurrently. Use the test presets' parallel settings without overriding them with an explicit job limit.</p>
 <p>GTK-dependent tests require a display even though these are unit tests. Xvfb also needs <code>xauth</code>. <a class="el" href="classA.html">A</a> <code>cannot open display</code> failure is an environment problem; check the display/Xvfb startup before investigating assertions.</p>
 <p><code>ENABLE_GOOGLE_TEST</code> and <code>ENABLE_SLOW_TESTS</code> default to <code>ON</code>. There are currently eight CTest entries: <code>util_tests</code>, <code>threadpool_tests</code>, <code>memory_manager_tests</code>, <code>scroom_lib_tests</code>, <code>tiledbitmap_tests</code>, <code>sppipette_tests</code>, <code>transparentoverlay_tests</code>, and <code>ruler_tests</code>.</p>
 <p>Disabling <code>ENABLE_SLOW_TESTS</code> removes the threadpool suite from CTest registration; it does not merely filter individual slow cases. Reconfigure to change options.</p>
