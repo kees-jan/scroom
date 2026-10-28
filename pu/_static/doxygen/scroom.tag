@@ -1,6 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <tagfile doxygen_version="1.9.8">
   <compound kind="file">
+    <name>AGENTS.md</name>
+    <path></path>
+    <filename>AGENTS_8md.html</filename>
+  </compound>
+  <compound kind="file">
     <name>BoostTestTargetsDynamic.h</name>
     <path>cmake-modules/</path>
     <filename>BoostTestTargetsDynamic_8h.html</filename>
@@ -1399,6 +1404,140 @@
     <class kind="class">LoggingWindow</class>
   </compound>
   <compound kind="file">
+    <name>main.cc</name>
+    <path>gui/src/</path>
+    <filename>gui_2src_2main_8cc.html</filename>
+    <includes id="logger_8hh" name="logger.hh" local="no" import="no" module="no" objc="no">scroom/logger.hh</includes>
+    <includes id="ringbuffer-sink_8hh" name="ringbuffer-sink.hh" local="no" import="no" module="no" objc="no">scroom/ringbuffer-sink.hh</includes>
+    <includes id="callbacks_8hh" name="callbacks.hh" local="yes" import="no" module="no" objc="no">callbacks.hh</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>usage</name>
+      <anchorfile>gui_2src_2main_8cc.html</anchorfile>
+      <anchor>a7a706f62a62fd6c210230a2faed42f33</anchor>
+      <arglist>(const Scroom::Logger &amp;logger, const std::string &amp;me, const po::options_description &amp;desc, const std::string &amp;message=std::string())</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>main</name>
+      <anchorfile>gui_2src_2main_8cc.html</anchorfile>
+      <anchor>a0ddf1224851353fc92bfbff6f499fa97</anchor>
+      <arglist>(int argc, char *argv[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>main.cc</name>
+    <path>plugins/colormap/</path>
+    <filename>plugins_2colormap_2main_8cc.html</filename>
+    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
+    <includes id="colormapplugin_8hh" name="colormapplugin.hh" local="yes" import="no" module="no" objc="no">colormapplugin.hh</includes>
+    <member kind="function">
+      <type>PluginInformationInterface::Ptr</type>
+      <name>getPluginInformation</name>
+      <anchorfile>plugins_2colormap_2main_8cc.html</anchorfile>
+      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>main.cc</name>
+    <path>plugins/example/</path>
+    <filename>plugins_2example_2main_8cc.html</filename>
+    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
+    <includes id="example_8hh" name="example.hh" local="yes" import="no" module="no" objc="no">example.hh</includes>
+    <member kind="function">
+      <type>PluginInformationInterface::Ptr</type>
+      <name>getPluginInformation</name>
+      <anchorfile>plugins_2example_2main_8cc.html</anchorfile>
+      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>main.cc</name>
+    <path>plugins/measure/src/</path>
+    <filename>plugins_2measure_2src_2main_8cc.html</filename>
+    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
+    <includes id="measure_8hh" name="measure.hh" local="yes" import="no" module="no" objc="no">measure.hh</includes>
+    <member kind="function">
+      <type>PluginInformationInterface::Ptr</type>
+      <name>getPluginInformation</name>
+      <anchorfile>plugins_2measure_2src_2main_8cc.html</anchorfile>
+      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>main.cc</name>
+    <path>plugins/metadata/</path>
+    <filename>plugins_2metadata_2main_8cc.html</filename>
+    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
+    <includes id="metadata_8hh" name="metadata.hh" local="yes" import="no" module="no" objc="no">metadata.hh</includes>
+    <member kind="function">
+      <type>PluginInformationInterface::Ptr</type>
+      <name>getPluginInformation</name>
+      <anchorfile>plugins_2metadata_2main_8cc.html</anchorfile>
+      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>main.cc</name>
+    <path>plugins/pipette/src/</path>
+    <filename>plugins_2pipette_2src_2main_8cc.html</filename>
+    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
+    <includes id="pipette_8hh" name="pipette.hh" local="yes" import="no" module="no" objc="no">pipette.hh</includes>
+    <member kind="function">
+      <type>PluginInformationInterface::Ptr</type>
+      <name>getPluginInformation</name>
+      <anchorfile>plugins_2pipette_2src_2main_8cc.html</anchorfile>
+      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>main.cc</name>
+    <path>plugins/pnm/src/</path>
+    <filename>plugins_2pnm_2src_2main_8cc.html</filename>
+    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
+    <includes id="pnm_8hh" name="pnm.hh" local="yes" import="no" module="no" objc="no">pnm.hh</includes>
+    <member kind="function">
+      <type>PluginInformationInterface::Ptr</type>
+      <name>getPluginInformation</name>
+      <anchorfile>plugins_2pnm_2src_2main_8cc.html</anchorfile>
+      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>main.cc</name>
+    <path>plugins/tiff/src/</path>
+    <filename>plugins_2tiff_2src_2main_8cc.html</filename>
+    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
+    <includes id="tiff_8hh" name="tiff.hh" local="yes" import="no" module="no" objc="no">tiff.hh</includes>
+    <member kind="function">
+      <type>PluginInformationInterface::Ptr</type>
+      <name>getPluginInformation</name>
+      <anchorfile>plugins_2tiff_2src_2main_8cc.html</anchorfile>
+      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>main.cc</name>
+    <path>plugins/transparent-overlay/src/</path>
+    <filename>plugins_2transparent-overlay_2src_2main_8cc.html</filename>
+    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
+    <includes id="transparentoverlay_8hh" name="transparentoverlay.hh" local="yes" import="no" module="no" objc="no">transparentoverlay.hh</includes>
+    <member kind="function">
+      <type>PluginInformationInterface::Ptr</type>
+      <name>getPluginInformation</name>
+      <anchorfile>plugins_2transparent-overlay_2src_2main_8cc.html</anchorfile>
+      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
     <name>pluginmanager.cc</name>
     <path>gui/src/</path>
     <filename>pluginmanager_8cc.html</filename>
@@ -2048,6 +2187,37 @@
     <class kind="class">ColormappableMock</class>
   </compound>
   <compound kind="file">
+    <name>presentationinterface.hh</name>
+    <path>libs/plugin-interfaces/inc/scroom/gmock/</path>
+    <filename>gmock_2presentationinterface_8hh.html</filename>
+    <includes id="gmock_2colormappable_8hh" name="colormappable.hh" local="no" import="no" module="no" objc="no">scroom/gmock/colormappable.hh</includes>
+    <includes id="presentationinterface_8hh" name="presentationinterface.hh" local="no" import="no" module="no" objc="no">scroom/presentationinterface.hh</includes>
+    <class kind="class">PresentationMock</class>
+    <class kind="class">ColormappablePresentationMock</class>
+  </compound>
+  <compound kind="file">
+    <name>presentationinterface.hh</name>
+    <path>libs/plugin-interfaces/inc/scroom/</path>
+    <filename>presentationinterface_8hh.html</filename>
+    <includes id="context_8hh" name="context.hh" local="no" import="no" module="no" objc="no">scroom/context.hh</includes>
+    <includes id="interface_8hh" name="interface.hh" local="no" import="no" module="no" objc="no">scroom/interface.hh</includes>
+    <includes id="observable_8hh" name="observable.hh" local="no" import="no" module="no" objc="no">scroom/observable.hh</includes>
+    <includes id="rectangle_8hh" name="rectangle.hh" local="no" import="no" module="no" objc="no">scroom/rectangle.hh</includes>
+    <includes id="viewinterface_8hh" name="viewinterface.hh" local="no" import="no" module="no" objc="no">scroom/viewinterface.hh</includes>
+    <class kind="class">Viewable</class>
+    <class kind="class">PresentationInterface</class>
+    <class kind="class">PresentationBase</class>
+    <class kind="class">PresentationBaseSimple</class>
+    <class kind="class">Aggregate</class>
+    <member kind="typedef">
+      <type>Scroom::Utils::Observable&lt; Viewable &gt;</type>
+      <name>ViewObservable</name>
+      <anchorfile>presentationinterface_8hh.html</anchorfile>
+      <anchor>ae36d25542bd5d3ebd49c3cefe9e7fc5b</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="file">
     <name>opentiledbitmapinterface.hh</name>
     <path>libs/plugin-interfaces/inc/scroom/</path>
     <filename>opentiledbitmapinterface_8hh.html</filename>
@@ -2100,37 +2270,6 @@
       <name>PLUGIN_API_VERSION</name>
       <anchorfile>plugininformationinterface_8hh.html</anchorfile>
       <anchor>ac3bcb9217a74830c51b6c46c9b5f997f</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="file">
-    <name>presentationinterface.hh</name>
-    <path>libs/plugin-interfaces/inc/scroom/gmock/</path>
-    <filename>gmock_2presentationinterface_8hh.html</filename>
-    <includes id="gmock_2colormappable_8hh" name="colormappable.hh" local="no" import="no" module="no" objc="no">scroom/gmock/colormappable.hh</includes>
-    <includes id="presentationinterface_8hh" name="presentationinterface.hh" local="no" import="no" module="no" objc="no">scroom/presentationinterface.hh</includes>
-    <class kind="class">PresentationMock</class>
-    <class kind="class">ColormappablePresentationMock</class>
-  </compound>
-  <compound kind="file">
-    <name>presentationinterface.hh</name>
-    <path>libs/plugin-interfaces/inc/scroom/</path>
-    <filename>presentationinterface_8hh.html</filename>
-    <includes id="context_8hh" name="context.hh" local="no" import="no" module="no" objc="no">scroom/context.hh</includes>
-    <includes id="interface_8hh" name="interface.hh" local="no" import="no" module="no" objc="no">scroom/interface.hh</includes>
-    <includes id="observable_8hh" name="observable.hh" local="no" import="no" module="no" objc="no">scroom/observable.hh</includes>
-    <includes id="rectangle_8hh" name="rectangle.hh" local="no" import="no" module="no" objc="no">scroom/rectangle.hh</includes>
-    <includes id="viewinterface_8hh" name="viewinterface.hh" local="no" import="no" module="no" objc="no">scroom/viewinterface.hh</includes>
-    <class kind="class">Viewable</class>
-    <class kind="class">PresentationInterface</class>
-    <class kind="class">PresentationBase</class>
-    <class kind="class">PresentationBaseSimple</class>
-    <class kind="class">Aggregate</class>
-    <member kind="typedef">
-      <type>Scroom::Utils::Observable&lt; Viewable &gt;</type>
-      <name>ViewObservable</name>
-      <anchorfile>presentationinterface_8hh.html</anchorfile>
-      <anchor>ae36d25542bd5d3ebd49c3cefe9e7fc5b</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -8723,140 +8862,6 @@
     <class kind="class">Scroom::Pnm::AsciiSource1bpp</class>
     <namespace>Scroom</namespace>
     <namespace>Scroom::Pnm</namespace>
-  </compound>
-  <compound kind="file">
-    <name>main.cc</name>
-    <path>gui/src/</path>
-    <filename>gui_2src_2main_8cc.html</filename>
-    <includes id="logger_8hh" name="logger.hh" local="no" import="no" module="no" objc="no">scroom/logger.hh</includes>
-    <includes id="ringbuffer-sink_8hh" name="ringbuffer-sink.hh" local="no" import="no" module="no" objc="no">scroom/ringbuffer-sink.hh</includes>
-    <includes id="callbacks_8hh" name="callbacks.hh" local="yes" import="no" module="no" objc="no">callbacks.hh</includes>
-    <member kind="function">
-      <type>void</type>
-      <name>usage</name>
-      <anchorfile>gui_2src_2main_8cc.html</anchorfile>
-      <anchor>a7a706f62a62fd6c210230a2faed42f33</anchor>
-      <arglist>(const Scroom::Logger &amp;logger, const std::string &amp;me, const po::options_description &amp;desc, const std::string &amp;message=std::string())</arglist>
-    </member>
-    <member kind="function">
-      <type>int</type>
-      <name>main</name>
-      <anchorfile>gui_2src_2main_8cc.html</anchorfile>
-      <anchor>a0ddf1224851353fc92bfbff6f499fa97</anchor>
-      <arglist>(int argc, char *argv[])</arglist>
-    </member>
-  </compound>
-  <compound kind="file">
-    <name>main.cc</name>
-    <path>plugins/colormap/</path>
-    <filename>plugins_2colormap_2main_8cc.html</filename>
-    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
-    <includes id="colormapplugin_8hh" name="colormapplugin.hh" local="yes" import="no" module="no" objc="no">colormapplugin.hh</includes>
-    <member kind="function">
-      <type>PluginInformationInterface::Ptr</type>
-      <name>getPluginInformation</name>
-      <anchorfile>plugins_2colormap_2main_8cc.html</anchorfile>
-      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
-      <arglist>()</arglist>
-    </member>
-  </compound>
-  <compound kind="file">
-    <name>main.cc</name>
-    <path>plugins/example/</path>
-    <filename>plugins_2example_2main_8cc.html</filename>
-    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
-    <includes id="example_8hh" name="example.hh" local="yes" import="no" module="no" objc="no">example.hh</includes>
-    <member kind="function">
-      <type>PluginInformationInterface::Ptr</type>
-      <name>getPluginInformation</name>
-      <anchorfile>plugins_2example_2main_8cc.html</anchorfile>
-      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
-      <arglist>()</arglist>
-    </member>
-  </compound>
-  <compound kind="file">
-    <name>main.cc</name>
-    <path>plugins/measure/src/</path>
-    <filename>plugins_2measure_2src_2main_8cc.html</filename>
-    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
-    <includes id="measure_8hh" name="measure.hh" local="yes" import="no" module="no" objc="no">measure.hh</includes>
-    <member kind="function">
-      <type>PluginInformationInterface::Ptr</type>
-      <name>getPluginInformation</name>
-      <anchorfile>plugins_2measure_2src_2main_8cc.html</anchorfile>
-      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
-      <arglist>()</arglist>
-    </member>
-  </compound>
-  <compound kind="file">
-    <name>main.cc</name>
-    <path>plugins/metadata/</path>
-    <filename>plugins_2metadata_2main_8cc.html</filename>
-    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
-    <includes id="metadata_8hh" name="metadata.hh" local="yes" import="no" module="no" objc="no">metadata.hh</includes>
-    <member kind="function">
-      <type>PluginInformationInterface::Ptr</type>
-      <name>getPluginInformation</name>
-      <anchorfile>plugins_2metadata_2main_8cc.html</anchorfile>
-      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
-      <arglist>()</arglist>
-    </member>
-  </compound>
-  <compound kind="file">
-    <name>main.cc</name>
-    <path>plugins/pipette/src/</path>
-    <filename>plugins_2pipette_2src_2main_8cc.html</filename>
-    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
-    <includes id="pipette_8hh" name="pipette.hh" local="yes" import="no" module="no" objc="no">pipette.hh</includes>
-    <member kind="function">
-      <type>PluginInformationInterface::Ptr</type>
-      <name>getPluginInformation</name>
-      <anchorfile>plugins_2pipette_2src_2main_8cc.html</anchorfile>
-      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
-      <arglist>()</arglist>
-    </member>
-  </compound>
-  <compound kind="file">
-    <name>main.cc</name>
-    <path>plugins/pnm/src/</path>
-    <filename>plugins_2pnm_2src_2main_8cc.html</filename>
-    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
-    <includes id="pnm_8hh" name="pnm.hh" local="yes" import="no" module="no" objc="no">pnm.hh</includes>
-    <member kind="function">
-      <type>PluginInformationInterface::Ptr</type>
-      <name>getPluginInformation</name>
-      <anchorfile>plugins_2pnm_2src_2main_8cc.html</anchorfile>
-      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
-      <arglist>()</arglist>
-    </member>
-  </compound>
-  <compound kind="file">
-    <name>main.cc</name>
-    <path>plugins/tiff/src/</path>
-    <filename>plugins_2tiff_2src_2main_8cc.html</filename>
-    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
-    <includes id="tiff_8hh" name="tiff.hh" local="yes" import="no" module="no" objc="no">tiff.hh</includes>
-    <member kind="function">
-      <type>PluginInformationInterface::Ptr</type>
-      <name>getPluginInformation</name>
-      <anchorfile>plugins_2tiff_2src_2main_8cc.html</anchorfile>
-      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
-      <arglist>()</arglist>
-    </member>
-  </compound>
-  <compound kind="file">
-    <name>main.cc</name>
-    <path>plugins/transparent-overlay/src/</path>
-    <filename>plugins_2transparent-overlay_2src_2main_8cc.html</filename>
-    <includes id="scroomplugin_8hh" name="scroomplugin.hh" local="no" import="no" module="no" objc="no">scroom/scroomplugin.hh</includes>
-    <includes id="transparentoverlay_8hh" name="transparentoverlay.hh" local="yes" import="no" module="no" objc="no">transparentoverlay.hh</includes>
-    <member kind="function">
-      <type>PluginInformationInterface::Ptr</type>
-      <name>getPluginInformation</name>
-      <anchorfile>plugins_2transparent-overlay_2src_2main_8cc.html</anchorfile>
-      <anchor>ac8a61b9775cfad9cf6ac99cb2806accf</anchor>
-      <arglist>()</arglist>
-    </member>
   </compound>
   <compound kind="file">
     <name>tiff.cc</name>
@@ -27679,6 +27684,11 @@
       <anchor>a43a1ca876db6ee78f728e58e96d49f92</anchor>
       <arglist>(std::ostream &amp;os, std::list&lt; T &gt; const &amp;l)</arglist>
     </member>
+  </compound>
+  <compound kind="page">
+    <name>md_AGENTS</name>
+    <title>Local development guide</title>
+    <filename>md_AGENTS.html</filename>
   </compound>
   <compound kind="page">
     <name>md_cmake-modules_2README</name>

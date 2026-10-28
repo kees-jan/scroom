@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['s_20cmake_20modules_0',['Ryan&apos;s CMake Modules',['../md_cmake-modules_2README.html',1,'']]]
+  ['local_20development_20guide_0',['Local development guide',['../md_AGENTS.html',1,'']]]
 ];
