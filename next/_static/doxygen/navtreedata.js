@@ -25,12 +25,19 @@
 var NAVTREE =
 [
   [ "Scroom", "index.html", [
+    [ "Local development guide", "md_AGENTS.html", [
+      [ "Project", "md_AGENTS.html#autotoc_md1", null ],
+      [ "Configure and compile", "md_AGENTS.html#autotoc_md2", null ],
+      [ "Tests", "md_AGENTS.html#autotoc_md3", null ],
+      [ "Run the application without installing", "md_AGENTS.html#autotoc_md4", null ],
+      [ "Code map and checks", "md_AGENTS.html#autotoc_md5", null ]
+    ] ],
     [ "Ryan's CMake Modules", "md_cmake-modules_2README.html", [
-      [ "Introduction", "md_cmake-modules_2README.html#autotoc_md0", null ],
-      [ "How to Integrate", "md_cmake-modules_2README.html#autotoc_md1", null ],
-      [ "How to Use", "md_cmake-modules_2README.html#autotoc_md2", null ],
-      [ "Licenses", "md_cmake-modules_2README.html#autotoc_md3", null ],
-      [ "Important License Note!", "md_cmake-modules_2README.html#autotoc_md4", null ]
+      [ "Introduction", "md_cmake-modules_2README.html#autotoc_md6", null ],
+      [ "How to Integrate", "md_cmake-modules_2README.html#autotoc_md7", null ],
+      [ "How to Use", "md_cmake-modules_2README.html#autotoc_md8", null ],
+      [ "Licenses", "md_cmake-modules_2README.html#autotoc_md9", null ],
+      [ "Important License Note!", "md_cmake-modules_2README.html#autotoc_md10", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -92,11 +99,11 @@ var NAVTREEINDEX =
 "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#ab7fee1d2a92d623e3a28a2f3a59546a6",
 "dir_ecedfa50a3e3801aeb3bc34cfa2fa2dd.html",
 "gtk-helpers_8hh.html#a68ad2ca25cec0ca8c5f9174039ea86fa",
-"namespaceScroom_1_1Metadata_1_1anonymous__namespace_02showmetadata_8cc_03.html",
-"observable-tests_8cc.html#a4f9d18717271e85bde4430e742a511b2",
-"rectangle_8hh.html#a336b08377145525ad7740b47d618b161",
-"sampleiterator-tests_8cc.html#a8af1d9f72e40e20075daf852b35c8aac",
-"threadpool-queue-tests_8cc.html#a80d7b107beeccbfbd3a4a388a40664e8"
+"namespaceScroom_1_1MemoryBlocks_1_1RawPageData.html",
+"observable-tests_8cc.html#a369edb6fb28d4a360e67824445419e8c",
+"progressstateinterfacestub_8hh.html",
+"sampleiterator-tests_8cc.html#a5d0785bb2feab5228fc445f0f5bf3719",
+"threadpool-queue-tests_8cc.html#a55aa0d1e0bcffab7cae785bb46ef9744"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

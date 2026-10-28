@@ -114,5 +114,6 @@ var searchData=
   ['gtkhelper_2dtests_2ecc_111',['gtkhelper-tests.cc',['../gtkhelper-tests_8cc.html',1,'']]],
   ['gtkmainloop_112',['gtkmainloop',['../classScroom_1_1GtkTestHelpers_1_1GtkMainLoop.html#a8ef76b54ba2c63f4e0ce6564f00974ef',1,'Scroom::GtkTestHelpers::GtkMainLoop::GtkMainLoop(GtkMainLoop &amp;&amp;)=delete'],['../classScroom_1_1GtkTestHelpers_1_1GtkMainLoop.html#af3b1a90c0b46e81f21b02351207cdfee',1,'Scroom::GtkTestHelpers::GtkMainLoop::GtkMainLoop(const GtkMainLoop &amp;)=delete'],['../classScroom_1_1GtkTestHelpers_1_1GtkMainLoop.html#a8d5f8419160d3849f1186bbe9e2a26e1',1,'Scroom::GtkTestHelpers::GtkMainLoop::GtkMainLoop()'],['../classScroom_1_1GtkTestHelpers_1_1GtkMainLoop.html',1,'Scroom::GtkTestHelpers::GtkMainLoop']]],
   ['gtkwrapper_113',['gtkWrapper',['../namespaceScroom_1_1GtkHelpers_1_1Detail.html#a49fe9082a2e319cd57551e663b5a8f3e',1,'Scroom::GtkHelpers::Detail']]],
-  ['guard_114',['guard',['../threadpool-destruction-tests_8cc.html#a393b1fc0a85b423c51528efea589c6a0',1,'threadpool-destruction-tests.cc']]]
+  ['guard_114',['guard',['../threadpool-destruction-tests_8cc.html#a393b1fc0a85b423c51528efea589c6a0',1,'threadpool-destruction-tests.cc']]],
+  ['guide_115',['Local development guide',['../md_AGENTS.html',1,'']]]
 ];

@@ -1,6 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <tagfile doxygen_version="1.9.8">
   <compound kind="file">
+    <name>AGENTS.md</name>
+    <path></path>
+    <filename>AGENTS_8md.html</filename>
+  </compound>
+  <compound kind="file">
     <name>BoostTestTargetsDynamic.h</name>
     <path>cmake-modules/</path>
     <filename>BoostTestTargetsDynamic_8h.html</filename>
@@ -27679,6 +27684,11 @@
       <anchor>a43a1ca876db6ee78f728e58e96d49f92</anchor>
       <arglist>(std::ostream &amp;os, std::list&lt; T &gt; const &amp;l)</arglist>
     </member>
+  </compound>
+  <compound kind="page">
+    <name>md_AGENTS</name>
+    <title>Local development guide</title>
+    <filename>md_AGENTS.html</filename>
   </compound>
   <compound kind="page">
     <name>md_cmake-modules_2README</name>
