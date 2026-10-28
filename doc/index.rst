@@ -14,6 +14,7 @@ At this point, this is a (very) incomplete amalgam of requirements, design, and 
    patterns.rst
    problems-and-solutions.rst
    coding-guidelines.rst
+   detailed-requirements-and-design/index.rst
 
 
 Indices and tables
