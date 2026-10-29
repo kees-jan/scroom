@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Memory manager &#8212; Scroom  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tiled bitmap" href="tiled-bitmap.html" />
+    <link rel="prev" title="Threadpool" href="threadpool.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="memory-manager">
+<h1>Memory manager<a class="headerlink" href="#memory-manager" title="Link to this heading">¶</a></h1>
+<p>Bitmaps in scroom are typically very large. Therefore data that is currently not needed is stored
+compressed. This is what a <a class="reference external" href="../_static/doxygen/classScroom_1_1MemoryBlobs_1_1Blob.html">MemoryBlob</a> represents. If you call
+<a class="reference external" href="../_static/doxygen/classScroom_1_1MemoryBlobs_1_1Blob.html#a5f92c1a53bb27aafc2c872b3bd9c55a0">get()</a> or
+<a class="reference external" href="../_static/doxygen/classScroom_1_1MemoryBlobs_1_1Blob.html#aea1474e9fb8b35484a056d57244b0c68">getConst()</a>, the memory is decompressed until you
+release the shared pointer. If you called <a class="reference external" href="../_static/doxygen/classScroom_1_1MemoryBlobs_1_1Blob.html#a5f92c1a53bb27aafc2c872b3bd9c55a0">get()</a>, then after
+release the memory is considered “dirty” and will be recompressed on the <a class="reference external" href="../_static/doxygen/threadpool_8cc.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b">ThreadPool</a>
+at priority <code class="docutils literal notranslate"><span class="pre">COMPRESS_PRIO</span></code>.</p>
+<section id="returning-memory-to-the-os">
+<h2>Returning memory to the OS<a class="headerlink" href="#returning-memory-to-the-os" title="Link to this heading">¶</a></h2>
+<p>We want compressed storage to return to the OS when MemoryBlobs are freed. Small allocations
+can remain in allocator-managed heaps; large allocations can be released separately, using
+anonymous mappings on Linux or virtual memory allocations on Windows.</p>
+<p>See the NOTES section of the <a class="reference external" href="https://man7.org/linux/man-pages/man3/malloc.3.html#NOTES">malloc(3) manpage</a>:
+glibc distinguishes the heap, grown using <code class="docutils literal notranslate"><span class="pre">sbrk()</span></code>, from a “private anonymous mapping” created
+using <code class="docutils literal notranslate"><span class="pre">mmap()</span></code> for allocations above <code class="docutils literal notranslate"><span class="pre">MMAP_THRESHOLD</span></code>. It also describes “memory allocation
+arenas” used to reduce contention between threads.</p>
+<p><a class="reference external" href="../_static/doxygen/classScroom_1_1MemoryBlobs_1_1PageProvider.html">PageProvider</a> therefore groups pages into backing
+allocations large enough to favor this behavior, rather than allocating each compressed fragment
+separately.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/logo.png" alt="Logo" />
+    
+    <h1 class="logo logo-name">Scroom</h1>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">Extensible large image viewer</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=kees-jan&repo=scroom&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../core-requirements.html">Core requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core-requirements.html#derived-requirements">Derived requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ui-tour/index.html">A tour of the Scroom UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../principles.html">Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../patterns.html">Patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../problems-and-solutions.html">Problems and solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../coding-guidelines.html">Coding guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Detailed requirements and design</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="threadpool.html">Threadpool</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Memory manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tiled-bitmap.html">Tiled bitmap</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Detailed requirements and design</a><ul>
+      <li>Previous: <a href="threadpool.html" title="previous chapter">Threadpool</a></li>
+      <li>Next: <a href="tiled-bitmap.html" title="next chapter">Tiled bitmap</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, Kees-Jan Dijkzeul.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.1</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/detailed-requirements-and-design/memory-manager.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

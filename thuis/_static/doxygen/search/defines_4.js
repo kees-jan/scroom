@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ensure_0',['ensure',['../assertions_8hh.html#a0a6432d768e4a040089ea8b3c8b6b4f0',1,'assertions.hh']]]
+  ['g_5fvalue_5finit_0',['G_VALUE_INIT',['../view_8cc.html#a112ee92545ea3e4692d7224646d0db97',1,'view.cc']]]
 ];

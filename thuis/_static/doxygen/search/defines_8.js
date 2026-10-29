@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['reduce_5fprio_0',['REDUCE_PRIO',['../local_8hh.html#a0a865049f169efddb5dcb94b4b6f2e6b',1,'local.hh']]],
-  ['require_1',['require',['../assertions_8hh.html#ae925d7587e34145cd52f674b2012539a',1,'assertions.hh']]]
+  ['scroomdir_0',['SCROOMDIR',['../colormaps_8cc.html#aa6b804f3644a4e3e917e2e67ca0231e0',1,'colormaps.cc']]]
 ];

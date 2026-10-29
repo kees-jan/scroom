@@ -1,4 +1,0 @@
-var searchData=
-[
-  ['ryan_20s_20cmake_20modules_0',['Ryan&apos;s CMake Modules',['../md_cmake-modules_2README.html',1,'']]]
-];

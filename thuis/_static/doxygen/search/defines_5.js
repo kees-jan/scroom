@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['g_5fvalue_5finit_0',['G_VALUE_INIT',['../view_8cc.html#a112ee92545ea3e4692d7224646d0db97',1,'view.cc']]]
+  ['load_5fprio_0',['LOAD_PRIO',['../local_8hh.html#aaa596031f81e74e8c57c9af7778907b7',1,'local.hh']]]
 ];

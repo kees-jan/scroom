@@ -15,9 +15,5 @@ var searchData=
   ['hruler_12',['hruler',['../classView.html#a621dd8944c5ecefc1641c463fcbe0b03',1,'View']]],
   ['hruler_5farea_13',['hruler_area',['../classView.html#a00dd10b767367e29c014e29c16f75482',1,'View']]],
   ['hscrollbar_14',['hscrollbar',['../classView.html#a3945d440d66e6550213cbf6f5530501d',1,'View']]],
-  ['hscrollbaradjustment_15',['hscrollbaradjustment',['../classView.html#a6fa6370911abab261622f09847c67d89',1,'View']]],
-  ['html_5ffavicon_16',['html_favicon',['../namespaceconf.html#a64020138a31dffba408a180d16364b4b',1,'conf']]],
-  ['html_5fstatic_5fpath_17',['html_static_path',['../namespaceconf.html#af4fb5d8851ccaade135c2668dd3ced41',1,'conf']]],
-  ['html_5ftheme_18',['html_theme',['../namespaceconf.html#a012ba9863b958ed7baa933116f2a05b6',1,'conf']]],
-  ['html_5ftheme_5foptions_19',['html_theme_options',['../namespaceconf.html#a920ff115ba22562a3dab4b3f4c9bd634',1,'conf']]]
+  ['hscrollbaradjustment_15',['hscrollbaradjustment',['../classView.html#a6fa6370911abab261622f09847c67d89',1,'View']]]
 ];

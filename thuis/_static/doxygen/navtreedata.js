@@ -25,13 +25,6 @@
 var NAVTREE =
 [
   [ "Scroom", "index.html", [
-    [ "Ryan's CMake Modules", "md_cmake-modules_2README.html", [
-      [ "Introduction", "md_cmake-modules_2README.html#autotoc_md0", null ],
-      [ "How to Integrate", "md_cmake-modules_2README.html#autotoc_md1", null ],
-      [ "How to Use", "md_cmake-modules_2README.html#autotoc_md2", null ],
-      [ "Licenses", "md_cmake-modules_2README.html#autotoc_md3", null ],
-      [ "Important License Note!", "md_cmake-modules_2README.html#autotoc_md4", null ]
-    ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -75,28 +68,28 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"BoostTestTargetsDynamic_8h.html",
-"callbacks_8hh.html#ab5766cce90a1696ec4dd7209474b6106",
-"classDetail_1_1ViewData.html#acbd44fc73a4b20e8d6320b4b1ccd6502",
-"classMeasureHandler.html#a05c308179492e7d55ecf641ab30893b3",
-"classPnm.html",
-"classScroom_1_1Bitmap_1_1BitmapSurface.html#aa1ea6b8ee5f264244f2490683c7d2d4e",
-"classScroom_1_1ColormapImpl_1_1Colormaps.html#aa5ceb74db33fc9bc3572d846055acc4d",
-"classScroom_1_1MemoryBlobs_1_1Blob.html#ae30591679a07ec57c3d8b6a55fecec01",
-"classScroom_1_1TiledBitmap_1_1OpenTiledBitmapInterface.html#acd4922a4daed0eb2b4e71c97e3e7d0f6",
-"classScroom_1_1Utils_1_1Point.html#a8f69c38e2593833b1901ef73e935d820",
-"classScroom_1_1Utils_1_1Rectangle.html#a68f564693eb1aeed0363aa312fe620d7",
-"classScroom_1_1Utils_1_1optional__cleanup.html#a981f96f0183cce9f34c95e2edc2afef9",
-"classTiledBitmap.html#acf3ca8aba615305c124a2617192170a0",
-"classViewInterfaceStub.html#a224f1164c2d81d5e0fb207a67a3b376c",
-"classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#ab7fee1d2a92d623e3a28a2f3a59546a6",
-"dir_ecedfa50a3e3801aeb3bc34cfa2fa2dd.html",
-"gtk-helpers_8hh.html#a68ad2ca25cec0ca8c5f9174039ea86fa",
-"namespaceScroom_1_1Metadata_1_1anonymous__namespace_02showmetadata_8cc_03.html",
-"observable-tests_8cc.html#a4f9d18717271e85bde4430e742a511b2",
-"rectangle_8hh.html#a336b08377145525ad7740b47d618b161",
-"sampleiterator-tests_8cc.html#a8af1d9f72e40e20075daf852b35c8aac",
-"threadpool-queue-tests_8cc.html#a80d7b107beeccbfbd3a4a388a40664e8"
+"annotated.html",
+"classA.html#a1dd1ab86f3eb679680f3ef57f758fd15",
+"classDummyLayerOperations.html#a50c28dd4fa296674b67c0f864ede846c",
+"classMonochromeColormapHelper.html",
+"classPresentationBase.html#ae9ba8f45a97f1a153503e98d91bff99a",
+"classScroom_1_1Bitmap_1_1SampleIterator.html#a992f5f28bafb677070cd9853e77ce638",
+"classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a575311979412b59585480d617fde3a7a",
+"classScroom_1_1MemoryBlobs_1_1PageProvider.html#a1bfc687e8c4b818a6c1ebd2f2dbeb27c",
+"classScroom_1_1Utils_1_1Context.html",
+"classScroom_1_1Utils_1_1ProgressInterfaceBroadcaster.html#a008bf0598859d539e2f58649cc714f79",
+"classScroom_1_1Utils_1_1Rectangle.html#a94801f893685dd3f231a75d94e6a6dd1",
+"classShowMetadataInterface.html#a9ec0e57345be0dfe24e1e48148f6575d",
+"classTiledBitmapViewData.html#a57c5017fa0fe0fd83afeb684bd65ee22",
+"classViewable.html#a8068b9af988bf0eb34fad7f8d0c79722",
+"color_8hh_source.html",
+"function-additor-tests_8cc.html#adac6ac96a35cd2d5c965d5b44870f9c9",
+"layerspecforbitmap_8cc.html#a22a1bb4f862ef52ed08042515ffca9da",
+"namespaceScroom_1_1Utils.html#a7b8702657fc50c282c77b5f82251fa6a",
+"pipette-tests_8cc.html#a399f7a4f2cb163e3f6a2c6459786c5fa",
+"rectangletests_8cc.html#a72575a0b842e596e113bfe4e5db2b1b8",
+"structScroom_1_1Bookkeeping_1_1Detail_1_1MapType.html#abecb275bfe803f39e9287b4e41696a09",
+"tiffsource_8cc.html#a6d0115e39d8da94fd4203ee9fdcb6640"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

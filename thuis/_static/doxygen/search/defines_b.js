@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['verify_0',['verify',['../assertions_8hh.html#aecaddce56c58fa07fb91249ea5de89ae',1,'assertions.hh']]]
+  ['zlib_5fverify_0',['zlib_verify',['../blob-compression_8cc.html#a67bff46d3c0317ef11f97f0ccdc442a0',1,'blob-compression.cc']]]
 ];

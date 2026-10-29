@@ -154,7 +154,6 @@ var hierarchy =
       ] ]
     ] ],
     [ "Scroom::RingBufferSink::Entry", "structScroom_1_1RingBufferSink_1_1Entry.html", null ],
-    [ "equal_to< Key >", "classequal__to.html", null ],
     [ "Scroom::Utils::Detail::ErrorSignalHandler", "classScroom_1_1Utils_1_1Detail_1_1ErrorSignalHandler.html", null ],
     [ "std::exception", null, [
       [ "Scroom::Utils::Context::name_exists", "classScroom_1_1Utils_1_1Context_1_1name__exists.html", null ],
@@ -176,11 +175,6 @@ var hierarchy =
     [ "GtkFileFilterListDestroyer", "classGtkFileFilterListDestroyer.html", null ],
     [ "Scroom::GtkTestHelpers::GtkMainLoop", "classScroom_1_1GtkTestHelpers_1_1GtkMainLoop.html", [
       [ "Pipette_Tests", "classPipette__Tests.html", null ]
-    ] ],
-    [ "hash< Key >", "classhash.html", null ],
-    [ "hash_map< Key, Val, HashFcn, EqualKey, Alloc >", "classhash__map.html", null ],
-    [ "stdext::hash_map", null, [
-      [ "hash_map< Key, Val, hash< Key >, equal_to< Val > >", "classhash__map_3_01Key_00_01Val_00_01hash_3_01Key_01_4_00_01equal__to_3_01Val_01_4_01_4.html", null ]
     ] ],
     [ "Interface", "classInterface.html", [
       [ "Aggregate", "classAggregate.html", [

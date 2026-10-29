@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['boost_5ftest_5fdyn_5flink_0',['BOOST_TEST_DYN_LINK',['../BoostTestTargetsDynamic_8h.html#a139f00d2466d591f60b8d6a73c8273f1',1,'BoostTestTargetsDynamic.h']]],
-  ['buffersize_1',['BUFFERSIZE',['../colormaps_8cc.html#ac3146f1e9227301bb4aa518f4d336cee',1,'colormaps.cc']]]
+  ['colormapdir_0',['COLORMAPDIR',['../colormaps_8cc.html#ac346e99b41ceff73f13ec4918463d7f3',1,'colormaps.cc']]],
+  ['colormapext_1',['COLORMAPEXT',['../colormaps_8cc.html#ace332af3e35ca52847dc1e03c4c4fc86',1,'colormaps.cc']]],
+  ['compress_5fprio_2',['COMPRESS_PRIO',['../memoryblobs_8cc.html#a9f1b6c9f67956f08621bb659a79f6535',1,'memoryblobs.cc']]]
 ];
