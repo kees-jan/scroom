@@ -2,8 +2,8 @@ var hierarchy =
 [
     [ "A", "classA.html", null ],
     [ "boost::addable", null, [
-      [ "Scroom::Utils::Point< double >", "classScroom_1_1Utils_1_1Point.html", null ],
       [ "Scroom::Utils::Point< int >", "classScroom_1_1Utils_1_1Point.html", null ],
+      [ "Scroom::Utils::Point< double >", "classScroom_1_1Utils_1_1Point.html", null ],
       [ "Color", "classColor.html", null ],
       [ "Scroom::Utils::Point< T >", "classScroom_1_1Utils_1_1Point.html", null ]
     ] ],
@@ -49,8 +49,8 @@ var hierarchy =
     [ "anonymous_namespace{colormaphelpers_test.cc}::Data", "structanonymous__namespace_02colormaphelpers__test_8cc_03_1_1Data.html", null ],
     [ "DataFetcher", "classDataFetcher.html", null ],
     [ "boost::dividable2", null, [
-      [ "Scroom::Utils::Point< double >", "classScroom_1_1Utils_1_1Point.html", null ],
       [ "Scroom::Utils::Point< int >", "classScroom_1_1Utils_1_1Point.html", null ],
+      [ "Scroom::Utils::Point< double >", "classScroom_1_1Utils_1_1Point.html", null ],
       [ "Scroom::Utils::Rectangle< int >", "classScroom_1_1Utils_1_1Rectangle.html", null ],
       [ "Scroom::Utils::Rectangle< int >", "classScroom_1_1Utils_1_1Rectangle.html", null ],
       [ "Scroom::Utils::Rectangle< double >", "classScroom_1_1Utils_1_1Rectangle.html", null ],
@@ -368,7 +368,9 @@ var hierarchy =
     ] ],
     [ "Invalidator", "classInvalidator.html", null ],
     [ "ThreadPool::Job", "structThreadPool_1_1Job.html", null ],
+    [ "Scroom::TiledBitmap::Geometry::LayerSelection", "structScroom_1_1TiledBitmap_1_1Geometry_1_1LayerSelection.html", null ],
     [ "Scroom::TiledBitmap::LayerSpecForBitmapper", "classScroom_1_1TiledBitmap_1_1LayerSpecForBitmapper.html", null ],
+    [ "Scroom::TiledBitmap::Geometry::LoadRow", "structScroom_1_1TiledBitmap_1_1Geometry_1_1LoadRow.html", null ],
     [ "Scroom::Logger", "classScroom_1_1Logger.html", null ],
     [ "Scroom::LoggerContainer", "classScroom_1_1LoggerContainer.html", null ],
     [ "Scroom::Bookkeeping::Detail::LValue< V >", "classScroom_1_1Bookkeeping_1_1Detail_1_1LValue.html", null ],
@@ -378,8 +380,8 @@ var hierarchy =
     [ "Scroom::MemoryBlobs::PageProvider::MarkPageFree", "classScroom_1_1MemoryBlobs_1_1PageProvider_1_1MarkPageFree.html", null ],
     [ "Scroom::Metadata::anonymous_namespace{showmetadata.cc}::MetaDataWindowData", "structScroom_1_1Metadata_1_1anonymous__namespace_02showmetadata_8cc_03_1_1MetaDataWindowData.html", null ],
     [ "boost::multipliable2", null, [
-      [ "Scroom::Utils::Point< double >", "classScroom_1_1Utils_1_1Point.html", null ],
       [ "Scroom::Utils::Point< int >", "classScroom_1_1Utils_1_1Point.html", null ],
+      [ "Scroom::Utils::Point< double >", "classScroom_1_1Utils_1_1Point.html", null ],
       [ "Scroom::Utils::Rectangle< int >", "classScroom_1_1Utils_1_1Rectangle.html", null ],
       [ "Scroom::Utils::Rectangle< int >", "classScroom_1_1Utils_1_1Rectangle.html", null ],
       [ "Scroom::Utils::Rectangle< double >", "classScroom_1_1Utils_1_1Rectangle.html", null ],
@@ -407,6 +409,7 @@ var hierarchy =
     [ "Scroom::Detail::ThreadPool::QueueImpl", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html", null ],
     [ "QueueJumper", "classQueueJumper.html", null ],
     [ "Scroom::Detail::ThreadPool::QueueLock", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueLock.html", null ],
+    [ "Scroom::TiledBitmap::Geometry::ReductionMapping", "structScroom_1_1TiledBitmap_1_1Geometry_1_1ReductionMapping.html", null ],
     [ "Scroom::Utils::Detail::Registration< T >", "classScroom_1_1Utils_1_1Detail_1_1Registration.html", null ],
     [ "Ruler", "classRuler.html", null ],
     [ "RulerCalculations", "classRulerCalculations.html", null ],
@@ -421,8 +424,8 @@ var hierarchy =
     [ "SizeDeterminer", "classSizeDeterminer.html", null ],
     [ "Sleeper", "classSleeper.html", null ],
     [ "boost::subtractable", null, [
-      [ "Scroom::Utils::Point< double >", "classScroom_1_1Utils_1_1Point.html", null ],
       [ "Scroom::Utils::Point< int >", "classScroom_1_1Utils_1_1Point.html", null ],
+      [ "Scroom::Utils::Point< double >", "classScroom_1_1Utils_1_1Point.html", null ],
       [ "Scroom::Utils::Point< T >", "classScroom_1_1Utils_1_1Point.html", null ]
     ] ],
     [ "boost::subtractable2", null, [
@@ -452,6 +455,8 @@ var hierarchy =
     [ "ThreadPool", "classThreadPool.html", null ],
     [ "anonymous_namespace{threadpool.cc}::ThreadWaiter", "classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter.html", null ],
     [ "Tile", "classTile.html", null ],
+    [ "Scroom::TiledBitmap::Geometry::TileDrawAreas", "structScroom_1_1TiledBitmap_1_1Geometry_1_1TileDrawAreas.html", null ],
+    [ "Scroom::TiledBitmap::Geometry::TileRange", "structScroom_1_1TiledBitmap_1_1Geometry_1_1TileRange.html", null ],
     [ "Scroom::Bookkeeping::Detail::TokenImpl", "classScroom_1_1Bookkeeping_1_1Detail_1_1TokenImpl.html", [
       [ "Scroom::Bookkeeping::Detail::MapTokenImpl< K, V >", "classScroom_1_1Bookkeeping_1_1Detail_1_1MapTokenImpl.html", null ]
     ] ],

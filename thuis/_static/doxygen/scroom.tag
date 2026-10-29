@@ -4334,6 +4334,20 @@
     <class kind="class">ConstTile</class>
   </compound>
   <compound kind="file">
+    <name>tiled-bitmap-geometry.hh</name>
+    <path>libs/tiled-bitmap/inc/scroom/</path>
+    <filename>tiled-bitmap-geometry_8hh.html</filename>
+    <includes id="rectangle_8hh" name="rectangle.hh" local="no" import="no" module="no" objc="no">scroom/rectangle.hh</includes>
+    <class kind="struct">Scroom::TiledBitmap::Geometry::TileRange</class>
+    <class kind="struct">Scroom::TiledBitmap::Geometry::ReductionMapping</class>
+    <class kind="struct">Scroom::TiledBitmap::Geometry::LayerSelection</class>
+    <class kind="struct">Scroom::TiledBitmap::Geometry::TileDrawAreas</class>
+    <class kind="struct">Scroom::TiledBitmap::Geometry::LoadRow</class>
+    <namespace>Scroom</namespace>
+    <namespace>Scroom::TiledBitmap</namespace>
+    <namespace>Scroom::TiledBitmap::Geometry</namespace>
+  </compound>
+  <compound kind="file">
     <name>tiledbitmapinterface.hh</name>
     <path>libs/tiled-bitmap/inc/scroom/</path>
     <filename>tiledbitmapinterface_8hh.html</filename>
@@ -4498,6 +4512,7 @@
     <includes id="stuff_8hh" name="stuff.hh" local="no" import="no" module="no" objc="no">scroom/stuff.hh</includes>
     <includes id="threadpool_8hh" name="threadpool.hh" local="no" import="no" module="no" objc="no">scroom/threadpool.hh</includes>
     <includes id="tile_8hh" name="tile.hh" local="no" import="no" module="no" objc="no">scroom/tile.hh</includes>
+    <includes id="tiled-bitmap-geometry_8hh" name="tiled-bitmap-geometry.hh" local="no" import="no" module="no" objc="no">scroom/tiled-bitmap-geometry.hh</includes>
     <includes id="tiledbitmapinterface_8hh" name="tiledbitmapinterface.hh" local="no" import="no" module="no" objc="no">scroom/tiledbitmapinterface.hh</includes>
     <includes id="tiledbitmaplayer_8hh" name="tiledbitmaplayer.hh" local="no" import="no" module="no" objc="no">scroom/tiledbitmaplayer.hh</includes>
     <includes id="viewinterface_8hh" name="viewinterface.hh" local="no" import="no" module="no" objc="no">scroom/viewinterface.hh</includes>
@@ -4582,12 +4597,22 @@
     </member>
   </compound>
   <compound kind="file">
+    <name>tiled-bitmap-geometry.cc</name>
+    <path>libs/tiled-bitmap/src/</path>
+    <filename>tiled-bitmap-geometry_8cc.html</filename>
+    <includes id="tiled-bitmap-geometry_8hh" name="tiled-bitmap-geometry.hh" local="no" import="no" module="no" objc="no">scroom/tiled-bitmap-geometry.hh</includes>
+    <namespace>Scroom</namespace>
+    <namespace>Scroom::TiledBitmap</namespace>
+    <namespace>Scroom::TiledBitmap::Geometry</namespace>
+  </compound>
+  <compound kind="file">
     <name>tiled-bitmap.cc</name>
     <path>libs/tiled-bitmap/src/</path>
     <filename>tiled-bitmap_8cc.html</filename>
     <includes id="tiled-bitmap_8hh" name="tiled-bitmap.hh" local="yes" import="no" module="no" objc="no">tiled-bitmap.hh</includes>
     <includes id="cairo-helpers_8hh" name="cairo-helpers.hh" local="no" import="no" module="no" objc="no">scroom/cairo-helpers.hh</includes>
     <includes id="semaphore_8hh" name="semaphore.hh" local="no" import="no" module="no" objc="no">scroom/semaphore.hh</includes>
+    <includes id="tiled-bitmap-geometry_8hh" name="tiled-bitmap-geometry.hh" local="no" import="no" module="no" objc="no">scroom/tiled-bitmap-geometry.hh</includes>
     <includes id="tweak-view_8hh" name="tweak-view.hh" local="yes" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
     <includes id="tileviewstate_8hh" name="tileviewstate.hh" local="yes" import="no" module="no" objc="no">tileviewstate.hh</includes>
     <member kind="function">
@@ -4596,13 +4621,6 @@
       <anchorfile>tiled-bitmap_8cc.html</anchorfile>
       <anchor>afb81a705ea3c38444cb0f4fb12410f43</anchor>
       <arglist>(int bitmapWidth, int bitmapHeight, LayerSpec const &amp;ls)</arglist>
-    </member>
-    <member kind="function">
-      <type>Scroom::Utils::Rectangle&lt; int &gt;</type>
-      <name>TileAreaForIndex</name>
-      <anchorfile>tiled-bitmap_8cc.html</anchorfile>
-      <anchor>a3c3ad5266aa5b25a2b3ddd6fd21a3a8a</anchor>
-      <arglist>(Scroom::Utils::Point&lt; int &gt; tileIndex)</arglist>
     </member>
   </compound>
   <compound kind="file">
@@ -4631,6 +4649,7 @@
     <includes id="pipetteviewinterface_8hh" name="pipetteviewinterface.hh" local="no" import="no" module="no" objc="no">scroom/pipetteviewinterface.hh</includes>
     <includes id="showmetadata_8hh" name="showmetadata.hh" local="no" import="no" module="no" objc="no">scroom/showmetadata.hh</includes>
     <includes id="showmetadatainterface_8hh" name="showmetadatainterface.hh" local="no" import="no" module="no" objc="no">scroom/showmetadatainterface.hh</includes>
+    <includes id="tiled-bitmap-geometry_8hh" name="tiled-bitmap-geometry.hh" local="no" import="no" module="no" objc="no">scroom/tiled-bitmap-geometry.hh</includes>
     <includes id="transformpresentation_8hh" name="transformpresentation.hh" local="no" import="no" module="no" objc="no">scroom/transformpresentation.hh</includes>
     <includes id="tiled-bitmap_8hh" name="tiled-bitmap.hh" local="yes" import="no" module="no" objc="no">tiled-bitmap.hh</includes>
     <class kind="class">anonymous_namespace{tiledbitmappresentation.cc}::TiledBitmapPresentation</class>
@@ -13741,6 +13760,31 @@
       <arglist>(Tile::Ptr target, ConstTile::Ptr source, int x, int y)=0</arglist>
     </member>
   </compound>
+  <compound kind="struct">
+    <name>Scroom::TiledBitmap::Geometry::LayerSelection</name>
+    <filename>structScroom_1_1TiledBitmap_1_1Geometry_1_1LayerSelection.html</filename>
+    <member kind="variable">
+      <type>std::size_t</type>
+      <name>layer</name>
+      <anchorfile>structScroom_1_1TiledBitmap_1_1Geometry_1_1LayerSelection.html</anchorfile>
+      <anchor>afe14691ef1b3d17076fdd636c1f7df7a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>zoom</name>
+      <anchorfile>structScroom_1_1TiledBitmap_1_1Geometry_1_1LayerSelection.html</anchorfile>
+      <anchor>a96e105fe475d362a9110ed485ba06431</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>Rectangle&lt; double &gt;</type>
+      <name>area</name>
+      <anchorfile>structScroom_1_1TiledBitmap_1_1Geometry_1_1LayerSelection.html</anchorfile>
+      <anchor>a35e9cafa9785d0cfe96c2d6d0cd74235</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
   <compound kind="class">
     <name>Scroom::TiledBitmap::LayerSpecForBitmapper</name>
     <filename>classScroom_1_1TiledBitmap_1_1LayerSpecForBitmapper.html</filename>
@@ -13791,6 +13835,24 @@
       <name>functions</name>
       <anchorfile>classScroom_1_1TiledBitmap_1_1LayerSpecForBitmapper.html</anchorfile>
       <anchor>a2c08615ff21468fc4af3444b933f2dcc</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>Scroom::TiledBitmap::Geometry::LoadRow</name>
+    <filename>structScroom_1_1TiledBitmap_1_1Geometry_1_1LoadRow.html</filename>
+    <member kind="variable">
+      <type>int</type>
+      <name>startLine</name>
+      <anchorfile>structScroom_1_1TiledBitmap_1_1Geometry_1_1LoadRow.html</anchorfile>
+      <anchor>ae258d9c52dc8099fce63f532085fb961</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>lineCount</name>
+      <anchorfile>structScroom_1_1TiledBitmap_1_1Geometry_1_1LoadRow.html</anchorfile>
+      <anchor>a36529cc63c2d2db4b647ec8582430a20</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -19204,6 +19266,24 @@
       <arglist>()</arglist>
     </member>
   </compound>
+  <compound kind="struct">
+    <name>Scroom::TiledBitmap::Geometry::ReductionMapping</name>
+    <filename>structScroom_1_1TiledBitmap_1_1Geometry_1_1ReductionMapping.html</filename>
+    <member kind="variable">
+      <type>Point&lt; int &gt;</type>
+      <name>targetTile</name>
+      <anchorfile>structScroom_1_1TiledBitmap_1_1Geometry_1_1ReductionMapping.html</anchorfile>
+      <anchor>acc458e6a591dcaeb7125407ff61ebaf3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>Point&lt; int &gt;</type>
+      <name>offset</name>
+      <anchorfile>structScroom_1_1TiledBitmap_1_1Geometry_1_1ReductionMapping.html</anchorfile>
+      <anchor>ab8cbb578ac353a92c40d466c0619dc57</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
   <compound kind="class">
     <name>Scroom::Utils::Detail::Registration</name>
     <filename>classScroom_1_1Utils_1_1Detail_1_1Registration.html</filename>
@@ -22635,6 +22715,24 @@
       <arglist></arglist>
     </member>
   </compound>
+  <compound kind="struct">
+    <name>Scroom::TiledBitmap::Geometry::TileDrawAreas</name>
+    <filename>structScroom_1_1TiledBitmap_1_1Geometry_1_1TileDrawAreas.html</filename>
+    <member kind="variable">
+      <type>Rectangle&lt; double &gt;</type>
+      <name>source</name>
+      <anchorfile>structScroom_1_1TiledBitmap_1_1Geometry_1_1TileDrawAreas.html</anchorfile>
+      <anchor>aea4ff1c89ccf43695b9ce2e443c7f078</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>Rectangle&lt; double &gt;</type>
+      <name>destination</name>
+      <anchorfile>structScroom_1_1TiledBitmap_1_1Geometry_1_1TileDrawAreas.html</anchorfile>
+      <anchor>abdfb9580739b57849e0af512c6ac79c0</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
   <compound kind="class">
     <name>TileInitialisationObserver</name>
     <filename>classTileInitialisationObserver.html</filename>
@@ -22692,6 +22790,38 @@
       <anchorfile>classTileLoadingObserver.html</anchorfile>
       <anchor>afdd49a1d330076f47e13e494c39dc713</anchor>
       <arglist>(ConstTile::Ptr tile)=0</arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>Scroom::TiledBitmap::Geometry::TileRange</name>
+    <filename>structScroom_1_1TiledBitmap_1_1Geometry_1_1TileRange.html</filename>
+    <member kind="variable">
+      <type>int</type>
+      <name>xBegin</name>
+      <anchorfile>structScroom_1_1TiledBitmap_1_1Geometry_1_1TileRange.html</anchorfile>
+      <anchor>a2d4da7e73155a6e8ee87a34697e087fa</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>xEnd</name>
+      <anchorfile>structScroom_1_1TiledBitmap_1_1Geometry_1_1TileRange.html</anchorfile>
+      <anchor>af2fb8d3a4cfb01b231d24442f3082b51</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>yBegin</name>
+      <anchorfile>structScroom_1_1TiledBitmap_1_1Geometry_1_1TileRange.html</anchorfile>
+      <anchor>a285f014b6e4028114c5a9051d7f6c85d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>yEnd</name>
+      <anchorfile>structScroom_1_1TiledBitmap_1_1Geometry_1_1TileRange.html</anchorfile>
+      <anchor>a1ed000f78c9dc40fa5a1de372578b6a0</anchor>
+      <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -26683,6 +26813,7 @@
     <name>Scroom::TiledBitmap</name>
     <filename>namespaceScroom_1_1TiledBitmap.html</filename>
     <namespace>Scroom::TiledBitmap::anonymous_namespace{layerspecforbitmap.cc}</namespace>
+    <namespace>Scroom::TiledBitmap::Geometry</namespace>
     <class kind="struct">Scroom::TiledBitmap::BitmapMetaData</class>
     <class kind="class">Scroom::TiledBitmap::LayerSpecForBitmapper</class>
     <class kind="class">Scroom::TiledBitmap::OpenTiledBitmapInterface</class>
@@ -26815,6 +26946,99 @@
       <anchorfile>namespaceScroom_1_1TiledBitmap_1_1anonymous__namespace_02layerspecforbitmap_8cc_03.html</anchorfile>
       <anchor>a168ea3c61b0d622ee3854eb09a4db0f0</anchor>
       <arglist>(bool b)</arglist>
+    </member>
+  </compound>
+  <compound kind="namespace">
+    <name>Scroom::TiledBitmap::Geometry</name>
+    <filename>namespaceScroom_1_1TiledBitmap_1_1Geometry.html</filename>
+    <class kind="struct">Scroom::TiledBitmap::Geometry::LayerSelection</class>
+    <class kind="struct">Scroom::TiledBitmap::Geometry::LoadRow</class>
+    <class kind="struct">Scroom::TiledBitmap::Geometry::ReductionMapping</class>
+    <class kind="struct">Scroom::TiledBitmap::Geometry::TileDrawAreas</class>
+    <class kind="struct">Scroom::TiledBitmap::Geometry::TileRange</class>
+    <member kind="function">
+      <type>std::vector&lt; Point&lt; int &gt; &gt;</type>
+      <name>pyramidSizes</name>
+      <anchorfile>namespaceScroom_1_1TiledBitmap_1_1Geometry.html</anchorfile>
+      <anchor>af271f41aee4bf0ed58f3d9dd974f137a</anchor>
+      <arglist>(Point&lt; int &gt; bottomSize, int minimumReducedDimension)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>tileCount</name>
+      <anchorfile>namespaceScroom_1_1TiledBitmap_1_1Geometry.html</anchorfile>
+      <anchor>ad13cbd28bbcbaaa733f01d1203276fa8</anchor>
+      <arglist>(int size, int tileSize)</arglist>
+    </member>
+    <member kind="function">
+      <type>Point&lt; int &gt;</type>
+      <name>tileOrigin</name>
+      <anchorfile>namespaceScroom_1_1TiledBitmap_1_1Geometry.html</anchorfile>
+      <anchor>a966deba1a3a0bb678f79e914bc4c472f</anchor>
+      <arglist>(Point&lt; int &gt; tileIndex, int tileSize)</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle&lt; int &gt;</type>
+      <name>tileRectangle</name>
+      <anchorfile>namespaceScroom_1_1TiledBitmap_1_1Geometry.html</anchorfile>
+      <anchor>a0875d7ca2687f853a12b1f3133bdf181</anchor>
+      <arglist>(Point&lt; int &gt; tileIndex, int tileSize)</arglist>
+    </member>
+    <member kind="function">
+      <type>TileRange</type>
+      <name>redrawTileRange</name>
+      <anchorfile>namespaceScroom_1_1TiledBitmap_1_1Geometry.html</anchorfile>
+      <anchor>a245345bfc91eba04f1f21e02497e099f</anchor>
+      <arglist>(Rectangle&lt; double &gt; layerArea, int tileSize)</arglist>
+    </member>
+    <member kind="function">
+      <type>TileRange</type>
+      <name>samplingTileRange</name>
+      <anchorfile>namespaceScroom_1_1TiledBitmap_1_1Geometry.html</anchorfile>
+      <anchor>a776f611c5485d44eb2c1adc903fe56c0</anchor>
+      <arglist>(Rectangle&lt; int &gt; layerArea, int tileSize)</arglist>
+    </member>
+    <member kind="function">
+      <type>ReductionMapping</type>
+      <name>reductionMapping</name>
+      <anchorfile>namespaceScroom_1_1TiledBitmap_1_1Geometry.html</anchorfile>
+      <anchor>ab00ae45512b99a463ced3522e3c6db1e</anchor>
+      <arglist>(Point&lt; int &gt; sourceTile)</arglist>
+    </member>
+    <member kind="function">
+      <type>LayerSelection</type>
+      <name>selectLayer</name>
+      <anchorfile>namespaceScroom_1_1TiledBitmap_1_1Geometry.html</anchorfile>
+      <anchor>a104f2c73fce6dcc79c2c468c179da6f2</anchor>
+      <arglist>(Rectangle&lt; double &gt; area, int zoom, std::size_t layerCount)</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle&lt; double &gt;</type>
+      <name>clippedDrawArea</name>
+      <anchorfile>namespaceScroom_1_1TiledBitmap_1_1Geometry.html</anchorfile>
+      <anchor>a30ccf4173bcc57fc849325c24624ac3d</anchor>
+      <arglist>(Rectangle&lt; double &gt; requestedArea, Rectangle&lt; int &gt; imageBounds)</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle&lt; T &gt;</type>
+      <name>tileLocalIntersection</name>
+      <anchorfile>namespaceScroom_1_1TiledBitmap_1_1Geometry.html</anchorfile>
+      <anchor>aa715c596516c123c3061939464cb1e03</anchor>
+      <arglist>(Rectangle&lt; T &gt; layerArea, Rectangle&lt; int &gt; tileBounds)</arglist>
+    </member>
+    <member kind="function">
+      <type>TileDrawAreas</type>
+      <name>tileDrawAreas</name>
+      <anchorfile>namespaceScroom_1_1TiledBitmap_1_1Geometry.html</anchorfile>
+      <anchor>a3b5184e61e57e63a4bfff8b9dac609b5</anchor>
+      <arglist>(Rectangle&lt; double &gt; clippedLayerArea, Rectangle&lt; int &gt; tileBounds, double pixelSize)</arglist>
+    </member>
+    <member kind="function">
+      <type>LoadRow</type>
+      <name>computeRowLayout</name>
+      <anchorfile>namespaceScroom_1_1TiledBitmap_1_1Geometry.html</anchorfile>
+      <anchor>aadebf5cd55b6cb5a46b1ac946a48ff02</anchor>
+      <arglist>(int tileRow, int imageHeight, int tileSize)</arglist>
     </member>
   </compound>
   <compound kind="namespace">

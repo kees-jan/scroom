@@ -35,6 +35,14 @@
             
   <section id="tiled-bitmap">
 <h1>Tiled bitmap<a class="headerlink" href="#tiled-bitmap" title="Link to this heading">¶</a></h1>
+<p>Scroom visualizes bitmaps that are so large they do not (or at least they used to) fit comfortably
+in memory. And even if it did fit, scaling down a multi-gigabyte bitmap to a size that fits on your
+screen would take significant amounts of cpu time. To work around this, Scroom stores your image in pre-
+scaled <a class="reference external" href="../_static/doxygen/classLayer.html">layers</a>, each layer a factor 8 smaller than the one below it. Layers are then
+further subdivided into <a class="reference external" href="../_static/doxygen/classTile.html">tiles</a>, such that only the area of the image you are currently
+looking at needs to be in memory.</p>
+<p>When you first open a bitmap, there’s a preprocessing phase, in which all tiles in all layers are
+initialized, scaling down the original bitmap as needed.</p>
 </section>
 
 

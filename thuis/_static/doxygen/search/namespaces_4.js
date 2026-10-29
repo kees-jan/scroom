@@ -24,9 +24,10 @@ var searchData=
   ['scroom_3a_3atiff_21',['Tiff',['../namespaceScroom_1_1Tiff.html',1,'Scroom']]],
   ['scroom_3a_3atiledbitmap_22',['TiledBitmap',['../namespaceScroom_1_1TiledBitmap.html',1,'Scroom']]],
   ['scroom_3a_3atiledbitmap_3a_3aanonymous_5fnamespace_7blayerspecforbitmap_2ecc_7d_23',['anonymous_namespace{layerspecforbitmap.cc}',['../namespaceScroom_1_1TiledBitmap_1_1anonymous__namespace_02layerspecforbitmap_8cc_03.html',1,'Scroom::TiledBitmap']]],
-  ['scroom_3a_3autils_24',['Utils',['../namespaceScroom_1_1Utils.html',1,'Scroom']]],
-  ['scroom_3a_3autils_3a_3aanonymous_5fnamespace_7btweak_2dview_2ecc_7d_25',['anonymous_namespace{tweak-view.cc}',['../namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html',1,'Scroom::Utils']]],
-  ['scroom_3a_3autils_3a_3adetail_26',['Detail',['../namespaceScroom_1_1Utils_1_1Detail.html',1,'Scroom::Utils']]],
-  ['selectiontype_27',['SelectionType',['../namespaceSelectionType.html',1,'']]],
-  ['std_28',['std',['../namespacestd.html',1,'']]]
+  ['scroom_3a_3atiledbitmap_3a_3ageometry_24',['Geometry',['../namespaceScroom_1_1TiledBitmap_1_1Geometry.html',1,'Scroom::TiledBitmap']]],
+  ['scroom_3a_3autils_25',['Utils',['../namespaceScroom_1_1Utils.html',1,'Scroom']]],
+  ['scroom_3a_3autils_3a_3aanonymous_5fnamespace_7btweak_2dview_2ecc_7d_26',['anonymous_namespace{tweak-view.cc}',['../namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html',1,'Scroom::Utils']]],
+  ['scroom_3a_3autils_3a_3adetail_27',['Detail',['../namespaceScroom_1_1Utils_1_1Detail.html',1,'Scroom::Utils']]],
+  ['selectiontype_28',['SelectionType',['../namespaceSelectionType.html',1,'']]],
+  ['std_29',['std',['../namespacestd.html',1,'']]]
 ];

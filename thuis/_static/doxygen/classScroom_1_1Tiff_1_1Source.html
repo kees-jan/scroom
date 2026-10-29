@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-60-gc3770365c</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-65-g27b662f5c</span>
    </div>
   </td>
  </tr>
@@ -475,9 +475,9 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  300</span>    <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(scanLineSize &gt;= lastTileOffset);</div>
 <div class="line"><span class="lineno">  301</span>    std::vector&lt;byte&gt; row(scanLineSize);</div>
 <div class="line"><span class="lineno">  302</span> </div>
-<div class="line"><span class="lineno">  303</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> tileCount = tiles.size();</div>
+<div class="line"><span class="lineno">  303</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> <a class="code hl_function" href="namespaceScroom_1_1TiledBitmap_1_1Geometry.html#ad13cbd28bbcbaaa733f01d1203276fa8">tileCount</a> = tiles.size();</div>
 <div class="line"><span class="lineno">  304</span>    <span class="keyword">auto</span> dataPtr = std::vector&lt;byte*&gt;(tileCount);</div>
-<div class="line"><span class="lineno">  305</span>    <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> tile = 0; tile &lt; tileCount; tile++)</div>
+<div class="line"><span class="lineno">  305</span>    <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> tile = 0; tile &lt; <a class="code hl_function" href="namespaceScroom_1_1TiledBitmap_1_1Geometry.html#ad13cbd28bbcbaaa733f01d1203276fa8">tileCount</a>; tile++)</div>
 <div class="line"><span class="lineno">  306</span>    {</div>
 <div class="line"><span class="lineno">  307</span>      dataPtr[tile] = tiles[tile]-&gt;data.get();</div>
 <div class="line"><span class="lineno">  308</span>    }</div>
@@ -486,7 +486,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  311</span>    {</div>
 <div class="line"><span class="lineno">  312</span>      <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(1 == TIFFReadScanline(<a class="code hl_variable" href="classScroom_1_1Tiff_1_1Source.html#a5666b3e44b95672cf088a7523f76eff5">tif</a>.get(), row.data(), <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(i) + startLine_));</div>
 <div class="line"><span class="lineno">  313</span> </div>
-<div class="line"><span class="lineno">  314</span>      <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> tile = 0; tile &lt; tileCount - 1; tile++)</div>
+<div class="line"><span class="lineno">  314</span>      <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> tile = 0; tile &lt; <a class="code hl_function" href="namespaceScroom_1_1TiledBitmap_1_1Geometry.html#ad13cbd28bbcbaaa733f01d1203276fa8">tileCount</a> - 1; tile++)</div>
 <div class="line"><span class="lineno">  315</span>      {</div>
 <div class="line"><span class="lineno">  316</span>        memcpy(dataPtr[tile], row.data() + (firstTile_ + tile) * tileStride, tileStride);</div>
 <div class="line"><span class="lineno">  317</span>        dataPtr[tile] += tileStride;</div>
@@ -496,10 +496,11 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  321</span>        row.data() + (firstTile_ + tileCount - 1) * tileStride,</div>
 <div class="line"><span class="lineno">  322</span>        scanLineSize - (firstTile_ + tileCount - 1) * tileStride</div>
 <div class="line"><span class="lineno">  323</span>      );</div>
-<div class="line"><span class="lineno">  324</span>      dataPtr[tileCount - 1] += tileStride;</div>
+<div class="line"><span class="lineno">  324</span>      dataPtr[<a class="code hl_function" href="namespaceScroom_1_1TiledBitmap_1_1Geometry.html#ad13cbd28bbcbaaa733f01d1203276fa8">tileCount</a> - 1] += tileStride;</div>
 <div class="line"><span class="lineno">  325</span>    }</div>
 <div class="line"><span class="lineno">  326</span>  }</div>
 <div class="ttc" id="aassertions_8hh_html_ae925d7587e34145cd52f674b2012539a"><div class="ttname"><a href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a></div><div class="ttdeci">#define require(expr)</div><div class="ttdef"><b>Definition</b> assertions.hh:30</div></div>
+<div class="ttc" id="anamespaceScroom_1_1TiledBitmap_1_1Geometry_html_ad13cbd28bbcbaaa733f01d1203276fa8"><div class="ttname"><a href="namespaceScroom_1_1TiledBitmap_1_1Geometry.html#ad13cbd28bbcbaaa733f01d1203276fa8">Scroom::TiledBitmap::Geometry::tileCount</a></div><div class="ttdeci">int tileCount(int size, int tileSize)</div><div class="ttdef"><b>Definition</b> tiled-bitmap-geometry.cc:28</div></div>
 <div class="ttc" id="astructScroom_1_1TiledBitmap_1_1BitmapMetaData_html_a86250b9ade69c4581854e533283e582a"><div class="ttname"><a href="structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#a86250b9ade69c4581854e533283e582a">Scroom::TiledBitmap::BitmapMetaData::bitsPerSample</a></div><div class="ttdeci">unsigned int bitsPerSample</div><div class="ttdef"><b>Definition</b> opentiledbitmapinterface.hh:45</div></div>
 <div class="ttc" id="astructScroom_1_1TiledBitmap_1_1BitmapMetaData_html_aad1d5e2334e32d7e9fad7e5cc31f0c45"><div class="ttname"><a href="structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#aad1d5e2334e32d7e9fad7e5cc31f0c45">Scroom::TiledBitmap::BitmapMetaData::samplesPerPixel</a></div><div class="ttdeci">unsigned int samplesPerPixel</div><div class="ttdef"><b>Definition</b> opentiledbitmapinterface.hh:46</div></div>
 </div><!-- fragment -->

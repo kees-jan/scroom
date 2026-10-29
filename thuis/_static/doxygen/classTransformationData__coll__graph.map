@@ -1,13 +1,13 @@
 <map id="TransformationData" name="TransformationData">
-<area shape="rect" id="Node000001" title=" " alt="" coords="285,397,453,583"/>
-<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Point.html" title=" " alt="" coords="297,135,440,335"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="371,335,371,381,366,381,366,335"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="279,397,447,583"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Point.html" title=" " alt="" coords="292,135,435,335"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="366,335,366,381,361,381,361,335"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="5,5,164,85"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="156,91,299,184,296,189,153,95"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="189,5,343,85"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="296,96,317,133,312,136,291,98"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="367,5,578,85"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="447,98,426,136,421,133,442,96"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="602,5,802,85"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="622,94,442,195,439,191,620,90"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="155,91,293,183,290,188,152,95"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="188,5,339,85"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="293,96,313,133,308,136,288,99"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="363,5,566,85"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="440,98,419,136,415,133,435,96"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="590,5,782,85"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="609,94,436,194,434,189,606,90"/>
 </map>

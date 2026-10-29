@@ -1,5 +1,7 @@
 <map id="TiledBitmap::connect" name="TiledBitmap::connect">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,165,31"/>
-<area shape="rect" id="Node000002" href="$classLayerCoordinator.html#a2ced2ea05b51b8480e4a359156eff623" title=" " alt="" coords="213,5,396,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,15,200,15,200,21,166,21"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,35,165,60"/>
+<area shape="rect" id="Node000002" href="$classLayerCoordinator.html#a2ced2ea05b51b8480e4a359156eff623" title=" " alt="" coords="231,5,414,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,35,217,28,218,34,166,40"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#ab00ae45512b99a463ced3522e3c6db1e" title=" " alt="" coords="213,55,432,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="166,54,200,58,199,63,165,59"/>
 </map>

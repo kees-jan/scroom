@@ -1,0 +1,17 @@
+<map id="Scroom::TiledBitmap::Geometry::redrawTileRange" name="Scroom::TiledBitmap::Geometry::redrawTileRange">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,101,217,141"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html#af497bd1988b10b5e521a82bc05285eed" title=" " alt="" coords="265,5,448,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,99,264,55,284,47,286,52,266,60,160,104"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Rectangle.html#ad623b0b902d4e2cd1d858300728c78d1" title=" " alt="" coords="265,133,448,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="218,132,252,137,251,142,217,138"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Rectangle.html#ac0a99c1ecbac98201ef36d88bf56eb40" title=" " alt="" coords="265,69,448,109"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="217,105,251,100,252,106,218,110"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Rectangle.html#a23ed938b3f63186f48c5828024a9d6ab" title=" " alt="" coords="265,197,448,237"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="160,139,266,183,286,190,284,195,264,188,158,144"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Segment.html#a671e0c8614114bf5eb99afd36a2dddc4" title=" " alt="" coords="496,53,671,93"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="449,42,483,49,482,55,448,47"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Segment.html#a934a0a56d270e8d4fc4ceddb4dc7fb82" title=" " alt="" coords="496,149,671,189"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="449,157,482,160,482,165,448,162"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="448,80,482,78,482,83,449,86"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="448,195,482,188,483,193,449,201"/>
+</map>

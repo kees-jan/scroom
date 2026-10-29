@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-60-gc3770365c</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-65-g27b662f5c</span>
    </div>
   </td>
  </tr>
@@ -404,9 +404,9 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  203</span>    <span class="keyword">const</span> <span class="keyword">auto</span> tileStride = <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(tileWidth * spp * bps / 8);</div>
 <div class="line"><span class="lineno">  204</span>    std::vector&lt;char&gt; row(scanLineSize);</div>
 <div class="line"><span class="lineno">  205</span> </div>
-<div class="line"><span class="lineno">  206</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> tileCount = tiles.size();</div>
+<div class="line"><span class="lineno">  206</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> <a class="code hl_function" href="namespaceScroom_1_1TiledBitmap_1_1Geometry.html#ad13cbd28bbcbaaa733f01d1203276fa8">tileCount</a> = tiles.size();</div>
 <div class="line"><span class="lineno">  207</span>    <span class="keyword">auto</span> dataPtr = std::vector&lt;byte*&gt;(tileCount);</div>
-<div class="line"><span class="lineno">  208</span>    <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> tile = 0; tile &lt; tileCount; tile++)</div>
+<div class="line"><span class="lineno">  208</span>    <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> tile = 0; tile &lt; <a class="code hl_function" href="namespaceScroom_1_1TiledBitmap_1_1Geometry.html#ad13cbd28bbcbaaa733f01d1203276fa8">tileCount</a>; tile++)</div>
 <div class="line"><span class="lineno">  209</span>    {</div>
 <div class="line"><span class="lineno">  210</span>      dataPtr[tile] = tiles[tile]-&gt;data.get();</div>
 <div class="line"><span class="lineno">  211</span>    }</div>
@@ -415,7 +415,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  214</span>    {</div>
 <div class="line"><span class="lineno">  215</span>      <a class="code hl_variable" href="classScroom_1_1Pnm_1_1Source.html#a5bbc1f3dd6f702938fce53d239bce8e7">m_pnm</a>.read(row.data(), scanLineSize);</div>
 <div class="line"><span class="lineno">  216</span> </div>
-<div class="line"><span class="lineno">  217</span>      <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> tile = 0; tile &lt; tileCount - 1; tile++)</div>
+<div class="line"><span class="lineno">  217</span>      <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> tile = 0; tile &lt; <a class="code hl_function" href="namespaceScroom_1_1TiledBitmap_1_1Geometry.html#ad13cbd28bbcbaaa733f01d1203276fa8">tileCount</a> - 1; tile++)</div>
 <div class="line"><span class="lineno">  218</span>      {</div>
 <div class="line"><span class="lineno">  219</span>        memcpy(dataPtr[tile], row.data() + (firstTile + tile) * tileStride, tileStride);</div>
 <div class="line"><span class="lineno">  220</span>        dataPtr[tile] += tileStride;</div>
@@ -425,12 +425,13 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  224</span>        row.data() + (firstTile + tileCount - 1) * tileStride,</div>
 <div class="line"><span class="lineno">  225</span>        scanLineSize - (firstTile + tileCount - 1) * tileStride</div>
 <div class="line"><span class="lineno">  226</span>      );</div>
-<div class="line"><span class="lineno">  227</span>      dataPtr[tileCount - 1] += tileStride;</div>
+<div class="line"><span class="lineno">  227</span>      dataPtr[<a class="code hl_function" href="namespaceScroom_1_1TiledBitmap_1_1Geometry.html#ad13cbd28bbcbaaa733f01d1203276fa8">tileCount</a> - 1] += tileStride;</div>
 <div class="line"><span class="lineno">  228</span>    }</div>
 <div class="line"><span class="lineno">  229</span>  }</div>
 <div class="ttc" id="aclassScroom_1_1Pnm_1_1Source_html_a5bbc1f3dd6f702938fce53d239bce8e7"><div class="ttname"><a href="classScroom_1_1Pnm_1_1Source.html#a5bbc1f3dd6f702938fce53d239bce8e7">Scroom::Pnm::Source::m_pnm</a></div><div class="ttdeci">std::ifstream m_pnm</div><div class="ttdef"><b>Definition</b> pnmsource.hh:41</div></div>
 <div class="ttc" id="aclassScroom_1_1Pnm_1_1Source_html_a74df483c53303f8cf88e4387bb1463cd"><div class="ttname"><a href="classScroom_1_1Pnm_1_1Source.html#a74df483c53303f8cf88e4387bb1463cd">Scroom::Pnm::Source::m_bmd</a></div><div class="ttdeci">BitmapMetaData m_bmd</div><div class="ttdef"><b>Definition</b> pnmsource.hh:42</div></div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1Rectangle_html_aac53b13b110251e6666a6e8499c19f27"><div class="ttname"><a href="classScroom_1_1Utils_1_1Rectangle.html#aac53b13b110251e6666a6e8499c19f27">Scroom::Utils::Rectangle::width</a></div><div class="ttdeci">value_type width() const</div><div class="ttdef"><b>Definition</b> rectangle.hh:129</div></div>
+<div class="ttc" id="anamespaceScroom_1_1TiledBitmap_1_1Geometry_html_ad13cbd28bbcbaaa733f01d1203276fa8"><div class="ttname"><a href="namespaceScroom_1_1TiledBitmap_1_1Geometry.html#ad13cbd28bbcbaaa733f01d1203276fa8">Scroom::TiledBitmap::Geometry::tileCount</a></div><div class="ttdeci">int tileCount(int size, int tileSize)</div><div class="ttdef"><b>Definition</b> tiled-bitmap-geometry.cc:28</div></div>
 <div class="ttc" id="astructScroom_1_1TiledBitmap_1_1BitmapMetaData_html_a86250b9ade69c4581854e533283e582a"><div class="ttname"><a href="structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#a86250b9ade69c4581854e533283e582a">Scroom::TiledBitmap::BitmapMetaData::bitsPerSample</a></div><div class="ttdeci">unsigned int bitsPerSample</div><div class="ttdef"><b>Definition</b> opentiledbitmapinterface.hh:45</div></div>
 <div class="ttc" id="astructScroom_1_1TiledBitmap_1_1BitmapMetaData_html_aad1d5e2334e32d7e9fad7e5cc31f0c45"><div class="ttname"><a href="structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#aad1d5e2334e32d7e9fad7e5cc31f0c45">Scroom::TiledBitmap::BitmapMetaData::samplesPerPixel</a></div><div class="ttdeci">unsigned int samplesPerPixel</div><div class="ttdef"><b>Definition</b> opentiledbitmapinterface.hh:46</div></div>
 <div class="ttc" id="astructScroom_1_1TiledBitmap_1_1BitmapMetaData_html_ad3eaee769ffd723ea5a4d6eda73963b3"><div class="ttname"><a href="structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#ad3eaee769ffd723ea5a4d6eda73963b3">Scroom::TiledBitmap::BitmapMetaData::rect</a></div><div class="ttdeci">Scroom::Utils::Rectangle&lt; int &gt; rect</div><div class="ttdef"><b>Definition</b> opentiledbitmapinterface.hh:47</div></div>

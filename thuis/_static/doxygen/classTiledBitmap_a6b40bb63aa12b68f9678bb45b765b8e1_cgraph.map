@@ -1,9 +1,13 @@
 <map id="TiledBitmap::initialize" name="TiledBitmap::initialize">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,171,56"/>
-<area shape="rect" id="Node000002" href="$classTiledBitmap.html#a7d2051718f5b6f50e2804177d553bce8" title=" " alt="" coords="219,5,379,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="171,31,205,27,205,32,171,36"/>
-<area shape="rect" id="Node000004" href="$classLayer.html#a8f3623d32725dbc8537779fb7f682e46" title=" " alt="" coords="245,55,352,80"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="171,50,232,57,231,62,171,55"/>
-<area shape="rect" id="Node000003" href="$classLayerCoordinator.html#a2ced2ea05b51b8480e4a359156eff623" title=" " alt="" coords="427,5,609,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="379,15,413,15,413,21,379,21"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,83,171,108"/>
+<area shape="rect" id="Node000002" href="$classTiledBitmap.html#a7d2051718f5b6f50e2804177d553bce8" title=" " alt="" coords="234,33,394,59"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="146,80,241,59,242,64,147,85"/>
+<area shape="rect" id="Node000005" href="$classLayer.html#a8f3623d32725dbc8537779fb7f682e46" title=" " alt="" coords="261,83,367,108"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="171,93,247,93,247,98,171,98"/>
+<area shape="rect" id="Node000006" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#af271f41aee4bf0ed58f3d9dd974f137a" title=" " alt="" coords="219,133,409,173"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="140,105,222,127,221,132,138,111"/>
+<area shape="rect" id="Node000003" href="$classLayerCoordinator.html#a2ced2ea05b51b8480e4a359156eff623" title=" " alt="" coords="475,5,658,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="394,35,461,27,462,32,394,40"/>
+<area shape="rect" id="Node000004" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#ab00ae45512b99a463ced3522e3c6db1e" title=" " alt="" coords="457,55,676,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="394,53,444,58,443,64,394,58"/>
 </map>

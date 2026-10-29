@@ -1,7 +1,7 @@
 var searchData=
 [
   ['t_0',['t',['../classBaseCounter.html#a5696c3f3f53d59931833f7ed8fc655f6',1,'BaseCounter::t'],['../threadpool-queue-tests_8cc.html#a2c9addcc3f33120c718dfd607595b174',1,'t:&#160;threadpool-queue-tests.cc'],['../threadpool-queueimpl-tests_8cc.html#ad1f7b61da3c4deb2bf279e2d0a4d20ed',1,'t:&#160;threadpool-queueimpl-tests.cc'],['../classInvalidator.html#a867ce607877ecc72a97c79385c0cc7a6',1,'Invalidator::t'],['../classSleeper.html#ab6a86bb808da7f548da4e7276c2da9f6',1,'Sleeper::t'],['../classWaitForAsyncOp.html#af828640570dd3bf9ea2452718685b090',1,'WaitForAsyncOp::t'],['../classScroom_1_1Bookkeeping_1_1Detail_1_1MapTokenImpl.html#a296eaa4df7c9cbf673734b297da4764b',1,'Scroom::Bookkeeping::Detail::MapTokenImpl::t']]],
-  ['targettile_1',['targetTile',['../classLayerCoordinator.html#a62cf504f112d2bcefde5f28cc8fbea0a',1,'LayerCoordinator']]],
+  ['targettile_1',['targettile',['../structScroom_1_1TiledBitmap_1_1Geometry_1_1ReductionMapping.html#acc458e6a591dcaeb7125407ff61ebaf3',1,'Scroom::TiledBitmap::Geometry::ReductionMapping::targetTile'],['../classLayerCoordinator.html#a62cf504f112d2bcefde5f28cc8fbea0a',1,'LayerCoordinator::targetTile']]],
   ['targettiledata_2',['targetTileData',['../classLayerCoordinator.html#a1999356ab8aa0850573f166cc67dd6e5',1,'LayerCoordinator']]],
   ['tbi_3',['tbi',['../classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a86c5f1a23208e9dcbeee319be0078eef',1,'anonymous_namespace{tiledbitmappresentation.cc}::TiledBitmapPresentation::tbi'],['../classTestData.html#af4d9f62f9bb83646300be32c00c3895a',1,'TestData::tbi']]],
   ['tbvd_4',['tbvd',['../classTileViewState.html#a10756136e2f2f2e4621885012cb09c96',1,'TileViewState']]],

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['zoom_0',['zoom',['../classView.html#a802f478c8446ce100a5b2bb748258934',1,'View::zoom'],['../classDetail_1_1ViewData.html#aa6639bf75b0a9b2196992a2bc07827f4',1,'Detail::ViewData::zoom'],['../classTiledBitmapViewData.html#a6d23881ff25fe4225ffb337bce42a1c6',1,'TiledBitmapViewData::zoom'],['../classTileViewState.html#aedfe78a642c6485c33a0211bb47d9aeb',1,'TileViewState::zoom'],['../classTestData.html#ad6d00b1cc5e113b71446c7a4728e95d2',1,'TestData::zoom']]],
+  ['zoom_0',['zoom',['../classView.html#a802f478c8446ce100a5b2bb748258934',1,'View::zoom'],['../classDetail_1_1ViewData.html#aa6639bf75b0a9b2196992a2bc07827f4',1,'Detail::ViewData::zoom'],['../structScroom_1_1TiledBitmap_1_1Geometry_1_1LayerSelection.html#a96e105fe475d362a9110ed485ba06431',1,'Scroom::TiledBitmap::Geometry::LayerSelection::zoom'],['../classTiledBitmapViewData.html#a6d23881ff25fe4225ffb337bce42a1c6',1,'TiledBitmapViewData::zoom'],['../classTileViewState.html#aedfe78a642c6485c33a0211bb47d9aeb',1,'TileViewState::zoom'],['../classTestData.html#ad6d00b1cc5e113b71446c7a4728e95d2',1,'TestData::zoom']]],
   ['zoom_5fto_5fuse_1',['zoom_to_use',['../transformpresentation__test_8cc.html#a7ee6083a819833302b1c5ce9741b7e13',1,'transformpresentation_test.cc']]],
   ['zoombox_2',['zoomBox',['../classView.html#a5ea640497f7e937c3925a718826af8f8',1,'View']]],
   ['zoomcache_3',['zoomCache',['../classTileViewState.html#adf6cc97b7f1eb08245bcf8e748d2c84f',1,'TileViewState']]],

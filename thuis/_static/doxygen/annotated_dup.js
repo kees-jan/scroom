@@ -106,6 +106,13 @@ var annotated_dup =
         [ "Source", "classScroom_1_1Tiff_1_1Source.html", "classScroom_1_1Tiff_1_1Source" ]
       ] ],
       [ "TiledBitmap", "namespaceScroom_1_1TiledBitmap.html", [
+        [ "Geometry", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html", [
+          [ "LayerSelection", "structScroom_1_1TiledBitmap_1_1Geometry_1_1LayerSelection.html", "structScroom_1_1TiledBitmap_1_1Geometry_1_1LayerSelection" ],
+          [ "LoadRow", "structScroom_1_1TiledBitmap_1_1Geometry_1_1LoadRow.html", "structScroom_1_1TiledBitmap_1_1Geometry_1_1LoadRow" ],
+          [ "ReductionMapping", "structScroom_1_1TiledBitmap_1_1Geometry_1_1ReductionMapping.html", "structScroom_1_1TiledBitmap_1_1Geometry_1_1ReductionMapping" ],
+          [ "TileDrawAreas", "structScroom_1_1TiledBitmap_1_1Geometry_1_1TileDrawAreas.html", "structScroom_1_1TiledBitmap_1_1Geometry_1_1TileDrawAreas" ],
+          [ "TileRange", "structScroom_1_1TiledBitmap_1_1Geometry_1_1TileRange.html", "structScroom_1_1TiledBitmap_1_1Geometry_1_1TileRange" ]
+        ] ],
         [ "BitmapMetaData", "structScroom_1_1TiledBitmap_1_1BitmapMetaData.html", "structScroom_1_1TiledBitmap_1_1BitmapMetaData" ],
         [ "LayerSpecForBitmapper", "classScroom_1_1TiledBitmap_1_1LayerSpecForBitmapper.html", "classScroom_1_1TiledBitmap_1_1LayerSpecForBitmapper" ],
         [ "OpenTiledBitmapInterface", "classScroom_1_1TiledBitmap_1_1OpenTiledBitmapInterface.html", "classScroom_1_1TiledBitmap_1_1OpenTiledBitmapInterface" ]

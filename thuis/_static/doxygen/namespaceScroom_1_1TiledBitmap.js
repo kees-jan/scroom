@@ -3,6 +3,7 @@ var namespaceScroom_1_1TiledBitmap =
     [ "anonymous_namespace{layerspecforbitmap.cc}", "namespaceScroom_1_1TiledBitmap_1_1anonymous__namespace_02layerspecforbitmap_8cc_03.html", [
       [ "to_string", "namespaceScroom_1_1TiledBitmap_1_1anonymous__namespace_02layerspecforbitmap_8cc_03.html#a168ea3c61b0d622ee3854eb09a4db0f0", null ]
     ] ],
+    [ "Geometry", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html", "namespaceScroom_1_1TiledBitmap_1_1Geometry" ],
     [ "BitmapMetaData", "structScroom_1_1TiledBitmap_1_1BitmapMetaData.html", "structScroom_1_1TiledBitmap_1_1BitmapMetaData" ],
     [ "LayerSpecForBitmapper", "classScroom_1_1TiledBitmap_1_1LayerSpecForBitmapper.html", "classScroom_1_1TiledBitmap_1_1LayerSpecForBitmapper" ],
     [ "OpenTiledBitmapInterface", "classScroom_1_1TiledBitmap_1_1OpenTiledBitmapInterface.html", "classScroom_1_1TiledBitmap_1_1OpenTiledBitmapInterface" ],

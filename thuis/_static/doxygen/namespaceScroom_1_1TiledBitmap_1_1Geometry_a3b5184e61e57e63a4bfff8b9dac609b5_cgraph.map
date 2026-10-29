@@ -1,0 +1,20 @@
+<map id="Scroom::TiledBitmap::Geometry::tileDrawAreas" name="Scroom::TiledBitmap::Geometry::tileDrawAreas">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,49,200,89"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html#aa0205a1477a20bd1888f9dd480069bf2" title=" " alt="" coords="531,5,713,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,47,248,35,388,23,517,21,517,26,388,29,248,40,182,52"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Rectangle.html#aa93bcd537f48183edeb70a668f7352cf" title=" " alt="" coords="531,81,713,121"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="180,87,248,99,388,107,517,105,517,110,388,112,248,104,179,92"/>
+<area shape="rect" id="Node000008" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#aa715c596516c123c3061939464cb1e03" title=" " alt="" coords="248,49,483,89"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="200,67,234,67,234,72,200,72"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Segment.html#a934a0a56d270e8d4fc4ceddb4dc7fb82" title=" " alt="" coords="992,5,1167,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="714,23,978,23,978,28,714,28"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Segment.html#ac38f7461d5b5fe7fecbb051957259b5e" title=" " alt="" coords="765,65,940,105"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="713,92,751,90,752,95,714,98"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Rectangle.html#a8bafbe715dcf9dc732ea2f197b9ecba1" title=" " alt="" coords="761,129,944,169"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="714,118,748,125,747,130,713,123"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="929,63,989,46,991,51,930,68"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Segment.html#a671e0c8614114bf5eb99afd36a2dddc4" title=" " alt="" coords="992,69,1167,109"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="941,84,978,85,978,90,941,90"/>
+<area shape="poly" id="edge9_Node000008_Node000002" title=" " alt="" coords="482,47,517,41,518,46,483,52"/>
+<area shape="poly" id="edge10_Node000008_Node000004" title=" " alt="" coords="483,81,517,86,517,91,483,87"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="Scroom::TiledBitmap::Geometry::ReductionMapping" name="Scroom::TiledBitmap::Geometry::ReductionMapping">
+<area shape="rect" id="Node000001" title=" " alt="" coords="236,412,451,492"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Point.html" title=" " alt="" coords="272,135,415,335"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="346,335,346,396,341,396,341,335"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,164,85"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="151,91,273,179,270,184,148,96"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="189,5,327,85"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="284,97,301,134,296,136,279,99"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="351,5,509,85"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="409,99,392,136,387,133,404,96"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="533,5,679,85"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="542,95,417,184,414,180,539,91"/>
+</map>
