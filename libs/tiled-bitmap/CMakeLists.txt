@@ -1,6 +1,7 @@
 add_library(tiledbitmap src/tiledbitmappresentation.cc)
 set(HEADER_FILES
     inc/scroom/layeroperations.hh
+    inc/scroom/tiled-bitmap-geometry.hh
     inc/scroom/tile.hh
     inc/scroom/tiledbitmapinterface.hh
     inc/scroom/tiledbitmaplayer.hh
@@ -15,6 +16,7 @@ target_sources(
           src/layeroperations.cc
           src/layerspecforbitmap.cc
           src/local.hh
+          src/tiled-bitmap-geometry.cc
           src/tiled-bitmap.cc
           src/tiled-bitmap.hh
           src/tiledbitmapviewdata.cc

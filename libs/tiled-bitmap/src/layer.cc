@@ -15,11 +15,14 @@
 #include <scroom/stuff.hh>
 #include <scroom/threadpool.hh>
 #include <scroom/tile.hh>
+#include <scroom/tiled-bitmap-geometry.hh>
 #include <scroom/tiledbitmapinterface.hh>
 #include <scroom/tiledbitmaplayer.hh>
 #include <scroom/viewinterface.hh>
 
 #include "local.hh"
+
+namespace Geometry = Scroom::TiledBitmap::Geometry;
 
 static Scroom::MemoryBlobs::PageProvider::Ptr createProvider(double width, double height, int bpp)
 {
@@ -73,8 +76,8 @@ Layer::Layer(int depth_, int layerWidth, int layerHeight, int bpp, Scroom::Memor
   : depth(depth_)
   , width(layerWidth)
   , height(layerHeight)
-  , horTileCount((width + TILESIZE - 1) / TILESIZE)
-  , verTileCount((height + TILESIZE - 1) / TILESIZE)
+  , horTileCount(Geometry::tileCount(width, TILESIZE))
+  , verTileCount(Geometry::tileCount(height, TILESIZE))
   , pageProvider(std::move(provider))
 {
   for(int j = 0; j < verTileCount; j++)
@@ -224,9 +227,9 @@ void DataFetcher::operator()()
     Scroom::Utils::Stuff const s = ti->initialize();
     tiles.push_back(ti->getTileSync());
   }
-  const int lineCount = std::min(TILESIZE, height - currentRow * TILESIZE);
+  const auto row = Geometry::computeRowLayout(currentRow, height, TILESIZE);
 
-  sp->fillTiles(currentRow * TILESIZE, lineCount, TILESIZE, 0, tiles);
+  sp->fillTiles(row.startLine, row.lineCount, TILESIZE, 0, tiles);
 
   for(int x = 0; x < horTileCount; x++)
   {
