@@ -20,7 +20,12 @@ function(enable_doxygen)
     set(DOXYGEN_LOOKUP_CACHE_SIZE 4)
 
     find_package(Doxygen REQUIRED dot)
-    doxygen_add_docs(doxygen-docs ${PROJECT_SOURCE_DIR})
+    doxygen_add_docs(
+      doxygen-docs
+      "${PROJECT_SOURCE_DIR}/gui"
+      "${PROJECT_SOURCE_DIR}/libs"
+      "${PROJECT_SOURCE_DIR}/plugins"
+    )
 
   endif()
 endfunction()
