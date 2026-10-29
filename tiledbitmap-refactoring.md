@@ -1,6 +1,6 @@
 # Tiled bitmap refactoring plan
 
-Status: draft for review. No implementation steps have been completed.
+Status: step 0 complete and accepted by the user. Step 1 has not started.
 
 ## Goal and boundary
 
@@ -162,32 +162,41 @@ clang-tidy checks apply to touched code. Do not run builds merely for this draft
 
 ## Steps
 
-- [ ] **0. Extract small geometry abstractions before writing class tests.**
+- [x] **0. Extract small geometry abstractions before writing class tests.**
+  Validation: both compiler presets build and pass all nine registered test
+  suites directly on the desktop, without Xvfb. Clang-tidy checked the four
+  changed source files; its blocking member-initialization diagnostic was fixed
+  and the affected geometry source rechecked successfully. Nonfatal warnings
+  remain. Formatting and whitespace checks pass. User review accepted on
+  2026-10-30, including the `tileCount(size, tileSize)` parameter rename and
+  the `computeRowLayout()` function rename.
+
   Move existing computations into functions over rectangles, points, dimensions,
   tile indices, and zoom values, with explicit arguments and value results. Wire
   existing callers to them without changing the arithmetic or behavior. Extract
   incrementally; avoid a general geometry framework or dependencies on `Layer`,
   `CompressedTile`, Cairo contexts, views, thread pools, or memory providers.
-  Proposed seams, grouped by responsibility:
+  Extracted functions in `tiled-bitmap-geometry.hh`, grouped by responsibility:
 
-  - **Pyramid layout:** next reduced dimensions and the sequence of layer sizes,
+  - **Pyramid layout:** `pyramidSizes()` computes the sequence of layer sizes,
     preserving upward division and the current stopping threshold. This is a
     description of topology, not allocation of layers or operation objects.
-  - **Tile-grid geometry:** tile counts for an extent, a tile's rectangle, and
-    the index range covering a requested rectangle. Keep existing redraw and
-    pipette rounding variants explicit until tests establish their differences;
-    do not silently unify their implementations during extraction.
-  - **Reduction mapping:** source tile index to destination tile index and
-    destination subregion/offset. Extract the current division/modulo mapping
-    independently of coordinator creation and observer registration.
-  - **Layer selection and transforms:** select a layer from zoom and available
-    levels, return the residual zoom and coordinate scale. Separate selection
-    from fetching data or drawing it.
-  - **Visible-region mapping:** intersect requested/image/tile rectangles and
-    compute tile-local source and view-local destination rectangles. Pipette
-    sampling should reuse the image/tile intersection part without drawing.
-  - **Load-row layout:** tile-row start, valid line count, and valid image region
-    of edge tiles, independently of fetching buffers or invoking a decoder.
+  - **Tile-grid geometry:** `tileCount(size, tileSize)`, `tileOrigin()`, and
+    `tileRectangle()` compute tile counts and positions. `redrawTileRange()`
+    and `samplingTileRange()` retain their separate rounding implementations
+    until tests establish their differences.
+  - **Reduction mapping:** `reductionMapping()` computes the destination tile
+    index and offset from a source tile index, independently of coordinator
+    creation and observer registration.
+  - **Layer selection and transforms:** `selectLayer()` selects a layer from
+    zoom and available levels, returning residual zoom and the transformed
+    rectangle, independently of fetching data or drawing it.
+  - **Visible-region mapping:** `clippedDrawArea()`, `tileLocalIntersection()`,
+    and `tileDrawAreas()` intersect requested/image/tile rectangles and compute
+    tile-local source and view-local destination rectangles. Pipette sampling
+    reuses `tileLocalIntersection()` without drawing.
+  - **Row layout:** `computeRowLayout()` computes the tile-row start and valid
+    line count, independently of fetching buffers or invoking a decoder.
 
   Keep these responsibilities separate even if related functions share a small
   tile-grid value type. Name coordinate spaces in arguments/results. Review the
@@ -198,8 +207,8 @@ clang-tidy checks apply to touched code. Do not run builds merely for this draft
 - [ ] **1. Test the extracted geometry for image fidelity.** Test the
   functions from step 0 with small value inputs, without constructing stacks,
   views, or pixel buffers. Prioritize parent/subregion mapping, residual zoom,
-  visible source/destination rectangles, pipette intersections, and valid load-row
-  extents. Check that mappings cover valid pixels exactly and preserve their
+  visible source/destination rectangles, pipette intersections, and row layouts
+  from `computeRowLayout()`. Check that mappings cover valid pixels exactly and preserve their
   positions between layers. Include narrow images, partial edges, fractional
   requests, and empty/disjoint intersections. Describe boundary cases relative
   to the supplied tile size and reduction factor, rather than literal production
@@ -219,6 +228,12 @@ clang-tidy checks apply to touched code. Do not run builds merely for this draft
   exact edges, and overflow rejection. Make any behavior corrections explicit
   and reviewable against step 1; do not enable relocated stacks yet. Establish
   the common-origin transform contract for the later relocation step.
+
+  Replace `TileRange` with `Rectangle<int>` after adding tests for requests
+  wholly outside the image, especially to the left or above. Preserve empty
+  iteration ranges by clamping negative sizes to zero rather than allowing
+  rectangle normalization to turn them into nonempty ranges. Keep `TileRange`
+  during step 0 so that extraction does not change this behavior.
 
 - [ ] **3. Separate reduction and pixel-format contracts from drawing.** Introduce
   data-side layer format/reduction descriptions and renderer-side operations.
@@ -282,15 +297,15 @@ clang-tidy checks apply to touched code. Do not run builds merely for this draft
 
 - [ ] **9. Support relocated bitmap rectangles end to end.** Apply the shared
   origin and offset convention through construction, reduction transforms, data access,
-  redraw, and pipette. Separate valid image extent from full tile allocation and
+  redraw, and pipette. Separate valid image bounds from full tile allocation and
   invalid pixels outside the bitmap. Test positive and negative offsets unaligned
   to the reduction factor or configured tile size, with the shared origin both inside and outside the image,
-  multiple reduction levels, odd extents, fractional viewports, and clipping on
+  multiple reduction levels, odd sizes, fractional viewports, and clipping on
   all sides. Verify translated stacks produce equivalent pixels and selections
   after transforming coordinates. Handle valid regions on all four boundaries
   without changing the aligned tile mapping. Test tiles whose intersection with
-  reduced image bounds is empty because caller-selected coverage extends beyond
-  the image. Verify outward rounding of pixel bounds and tile coverage on all
+  reduced image bounds is empty because caller-selected coverage includes areas
+  outside the image. Verify outward rounding of pixel bounds and tile coverage on all
   four sides. Ensure these tiles
   do not contribute invalid pixels or block progress/completion. Keep source-file
   coordinates separate from
