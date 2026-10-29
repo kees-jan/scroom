@@ -16,6 +16,7 @@
 #include <scroom/pipetteviewinterface.hh>
 #include <scroom/showmetadata.hh>
 #include <scroom/showmetadatainterface.hh>
+#include <scroom/tiled-bitmap-geometry.hh>
 #include <scroom/transformpresentation.hh>
 
 #include "tiled-bitmap.hh"
@@ -252,25 +253,16 @@ namespace
       return {};
     }
 
-    // Get start tile (tile_pos_x_start, tile_pos_y_start)
-    const int tile_pos_x_start = intArea.getLeft() / TILESIZE;
-    const int tile_pos_y_start = intArea.getTop() / TILESIZE;
+    const auto tileRange = Geometry::samplingTileRange(intArea, TILESIZE);
 
-    // Get end tile (tile_pos_x_end, tile_pos_y_end)
-    const int tile_pos_x_end = (intArea.getRight() - 1) / TILESIZE;
-    const int tile_pos_y_end = (intArea.getBottom() - 1) / TILESIZE;
-
-    for(int x = tile_pos_x_start; x <= tile_pos_x_end; x++)
+    for(int x = tileRange.xBegin; x < tileRange.xEnd; x++)
     {
-      for(int y = tile_pos_y_start; y <= tile_pos_y_end; y++)
+      for(int y = tileRange.yBegin; y < tileRange.yEnd; y++)
       {
         ConstTile::Ptr const tile = bottomLayer->getTile(x, y)->getConstTileSync();
-        Scroom::Utils::Rectangle<int> const tile_rectangle(x * TILESIZE, y * TILESIZE, tile->width, tile->height);
-
-        Scroom::Utils::Rectangle<int> inter_rect = tile_rectangle.intersection(intArea);
-        Scroom::Utils::Point<int> const base(x * TILESIZE, y * TILESIZE);
-
-        inter_rect -= base; // rectangle coordinates relative to constTile with topleft corner (0,0)
+        const auto origin = Geometry::tileOrigin({x, y}, TILESIZE);
+        Scroom::Utils::Rectangle<int> const tile_rectangle(origin.x, origin.y, tile->width, tile->height);
+        const auto inter_rect = Geometry::tileLocalIntersection(intArea, tile_rectangle);
 
         pipetteColors = sumPipetteColors(pipetteColors, pipetteLayerOperation->sumPixelValues(inter_rect, tile));
       }
