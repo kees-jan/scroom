@@ -1,13 +1,15 @@
 <map id="Scroom::Utils::ITweakPresentationPosition" name="Scroom::Utils::ITweakPresentationPosition">
-<area shape="rect" id="Node000001" title=" " alt="" coords="377,219,613,299"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="482,219,718,299"/>
 <area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1AspectRatioPresentationPosition.html" title=" " alt="" coords="5,347,256,487"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="375,306,269,349,257,354,255,350,267,344,373,301"/>
-<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1PixelAlignedPresentationPosition.html" title=" " alt="" coords="280,367,469,467"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="458,311,415,368,410,365,454,308"/>
-<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakPresentationPosition.html" title=" " alt="" coords="493,369,739,464"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="536,308,582,368,578,371,531,311"/>
-<area shape="rect" id="Node000006" href="$classanonymous__namespace_02transformpresentation__test_8cc_03_1_1PositionTweakMock.html" title=" " alt="" coords="763,369,971,464"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="627,296,690,318,752,344,795,367,792,371,750,349,688,323,625,301"/>
-<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="441,5,549,171"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="497,184,497,218,492,218,492,184"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="469,290,370,316,269,349,257,354,255,349,267,344,369,311,468,285"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1PixelAlignPresentationPositions.html" title=" " alt="" coords="280,367,453,467"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="529,308,467,349,437,369,434,364,464,344,526,304"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakPresentationPosition.html" title=" " alt="" coords="477,369,723,464"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="603,312,603,369,597,369,597,312"/>
+<area shape="rect" id="Node000006" href="$classanonymous__namespace_02transformpresentation__test_8cc_03_1_1PositionTweakMock.html" title=" " alt="" coords="747,369,955,464"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="676,304,778,367,775,372,673,308"/>
+<area shape="rect" id="Node000007" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1PositionChild.html" title=" " alt="" coords="979,369,1151,464"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="732,276,849,303,909,321,968,344,1008,367,1005,371,966,349,908,326,847,308,731,281"/>
+<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="546,5,654,171"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="603,184,603,218,597,218,597,184"/>
 </map>

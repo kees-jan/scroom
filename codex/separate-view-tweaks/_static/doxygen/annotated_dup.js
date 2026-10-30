@@ -32,6 +32,25 @@ var annotated_dup =
     [ "anonymous_namespace{transparentoverlaypresentation.cc}", "namespaceanonymous__namespace_02transparentoverlaypresentation_8cc_03.html", [
       [ "ColorComparer", "structanonymous__namespace_02transparentoverlaypresentation_8cc_03_1_1ColorComparer.html", "structanonymous__namespace_02transparentoverlaypresentation_8cc_03_1_1ColorComparer" ]
     ] ],
+    [ "anonymous_namespace{tweak-view_test.cc}", "namespaceanonymous__namespace_02tweak-view__test_8cc_03.html", [
+      [ "AspectRatioPositionTextBoxTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioPositionTextBoxTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioPositionTextBoxTest" ],
+      [ "AspectRatioPresentationPositionTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioPresentationPositionTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioPresentationPositionTest" ],
+      [ "AspectRatioRulersTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioRulersTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioRulersTest" ],
+      [ "AspectRatioSelectionTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioSelectionTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioSelectionTest" ],
+      [ "DefaultTweakPresentationPositionTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakPresentationPositionTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakPresentationPositionTest" ],
+      [ "DefaultTweakSelectionTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakSelectionTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakSelectionTest" ],
+      [ "ExpandSelectionsToPixelBoundariesTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1ExpandSelectionsToPixelBoundariesTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1ExpandSelectionsToPixelBoundariesTest" ],
+      [ "PixelAlignPresentationPositionsTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1PixelAlignPresentationPositionsTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1PixelAlignPresentationPositionsTest" ],
+      [ "PositionChild", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1PositionChild.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1PositionChild" ],
+      [ "RulersChild", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1RulersChild.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1RulersChild" ],
+      [ "SelectionChild", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1SelectionChild.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1SelectionChild" ],
+      [ "SnapSelectionsToGridTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1SnapSelectionsToGridTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1SnapSelectionsToGridTest" ],
+      [ "TextBoxChild", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TextBoxChild.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TextBoxChild" ],
+      [ "TweakSelectionsAsRectanglesMock", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsAsRectanglesMock.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsAsRectanglesMock" ],
+      [ "TweakSelectionsAsRectanglesTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsAsRectanglesTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsAsRectanglesTest" ],
+      [ "ViewportPositionTextBoxTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1ViewportPositionTextBoxTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1ViewportPositionTextBoxTest" ],
+      [ "ViewportRulersTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1ViewportRulersTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1ViewportRulersTest" ]
+    ] ],
     [ "Detail", "namespaceDetail.html", [
       [ "ViewData", "classDetail_1_1ViewData.html", "classDetail_1_1ViewData" ]
     ] ],
@@ -135,7 +154,7 @@ var annotated_dup =
         [ "Count", "classScroom_1_1Utils_1_1Count.html", "classScroom_1_1Utils_1_1Count" ],
         [ "Counted", "classScroom_1_1Utils_1_1Counted.html", "classScroom_1_1Utils_1_1Counted" ],
         [ "Counter", "classScroom_1_1Utils_1_1Counter.html", "classScroom_1_1Utils_1_1Counter" ],
-        [ "GridSelection", "classScroom_1_1Utils_1_1GridSelection.html", "classScroom_1_1Utils_1_1GridSelection" ],
+        [ "ExpandSelectionsToPixelBoundaries", "classScroom_1_1Utils_1_1ExpandSelectionsToPixelBoundaries.html", "classScroom_1_1Utils_1_1ExpandSelectionsToPixelBoundaries" ],
         [ "ITweakPositionTextBox", "classScroom_1_1Utils_1_1ITweakPositionTextBox.html", "classScroom_1_1Utils_1_1ITweakPositionTextBox" ],
         [ "ITweakPresentationPosition", "classScroom_1_1Utils_1_1ITweakPresentationPosition.html", "classScroom_1_1Utils_1_1ITweakPresentationPosition" ],
         [ "ITweakRulers", "classScroom_1_1Utils_1_1ITweakRulers.html", "classScroom_1_1Utils_1_1ITweakRulers" ],
@@ -144,8 +163,7 @@ var annotated_dup =
         [ "on_scope_exit", "classScroom_1_1Utils_1_1on__scope__exit.html", "classScroom_1_1Utils_1_1on__scope__exit" ],
         [ "optional_cleanup", "classScroom_1_1Utils_1_1optional__cleanup.html", "classScroom_1_1Utils_1_1optional__cleanup" ],
         [ "ParentContext", "classScroom_1_1Utils_1_1ParentContext.html", "classScroom_1_1Utils_1_1ParentContext" ],
-        [ "PixelAlignedPresentationPosition", "classScroom_1_1Utils_1_1PixelAlignedPresentationPosition.html", "classScroom_1_1Utils_1_1PixelAlignedPresentationPosition" ],
-        [ "PixelSelection", "classScroom_1_1Utils_1_1PixelSelection.html", "classScroom_1_1Utils_1_1PixelSelection" ],
+        [ "PixelAlignPresentationPositions", "classScroom_1_1Utils_1_1PixelAlignPresentationPositions.html", "classScroom_1_1Utils_1_1PixelAlignPresentationPositions" ],
         [ "Point", "classScroom_1_1Utils_1_1Point.html", "classScroom_1_1Utils_1_1Point" ],
         [ "ProgressInterfaceBroadcaster", "classScroom_1_1Utils_1_1ProgressInterfaceBroadcaster.html", "classScroom_1_1Utils_1_1ProgressInterfaceBroadcaster" ],
         [ "ProgressInterfaceFromProgressStateInterface", "classScroom_1_1Utils_1_1ProgressInterfaceFromProgressStateInterface.html", "classScroom_1_1Utils_1_1ProgressInterfaceFromProgressStateInterface" ],
@@ -156,9 +174,10 @@ var annotated_dup =
         [ "ProgressStateInterfaceFromProgressInterfaceForwarder", "classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterfaceForwarder.html", "classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterfaceForwarder" ],
         [ "Rectangle", "classScroom_1_1Utils_1_1Rectangle.html", "classScroom_1_1Utils_1_1Rectangle" ],
         [ "RecursiveContext", "classScroom_1_1Utils_1_1RecursiveContext.html", "classScroom_1_1Utils_1_1RecursiveContext" ],
-        [ "RoundedSelection", "classScroom_1_1Utils_1_1RoundedSelection.html", "classScroom_1_1Utils_1_1RoundedSelection" ],
         [ "Segment", "classScroom_1_1Utils_1_1Segment.html", "classScroom_1_1Utils_1_1Segment" ],
         [ "SingleContext", "classScroom_1_1Utils_1_1SingleContext.html", "classScroom_1_1Utils_1_1SingleContext" ],
+        [ "SnapSelectionsToGrid", "classScroom_1_1Utils_1_1SnapSelectionsToGrid.html", "classScroom_1_1Utils_1_1SnapSelectionsToGrid" ],
+        [ "TweakSelectionsAsRectangles", "classScroom_1_1Utils_1_1TweakSelectionsAsRectangles.html", "classScroom_1_1Utils_1_1TweakSelectionsAsRectangles" ],
         [ "ViewportPositionTextBox", "classScroom_1_1Utils_1_1ViewportPositionTextBox.html", "classScroom_1_1Utils_1_1ViewportPositionTextBox" ],
         [ "ViewportRulers", "classScroom_1_1Utils_1_1ViewportRulers.html", "classScroom_1_1Utils_1_1ViewportRulers" ]
       ] ],

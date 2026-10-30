@@ -11,9 +11,9 @@ var searchData=
   ['resizablepresentationinterface_8',['ResizablePresentationInterface',['../classResizablePresentationInterface.html',1,'']]],
   ['resizablepresentationinterfacestub_9',['ResizablePresentationInterfaceStub',['../classanonymous__namespace_02determine-size-test_8cc_03_1_1ResizablePresentationInterfaceStub.html',1,'anonymous_namespace{determine-size-test.cc}']]],
   ['ringbuffersink_10',['RingBufferSink',['../classScroom_1_1RingBufferSink.html',1,'Scroom']]],
-  ['roundedselection_11',['RoundedSelection',['../classScroom_1_1Utils_1_1RoundedSelection.html',1,'Scroom::Utils']]],
-  ['ruler_12',['Ruler',['../classRuler.html',1,'']]],
-  ['rulercalculations_13',['RulerCalculations',['../classRulerCalculations.html',1,'']]],
-  ['rulerdrawstrategy_14',['RulerDrawStrategy',['../classRulerDrawStrategy.html',1,'']]],
+  ['ruler_11',['Ruler',['../classRuler.html',1,'']]],
+  ['rulercalculations_12',['RulerCalculations',['../classRulerCalculations.html',1,'']]],
+  ['rulerdrawstrategy_13',['RulerDrawStrategy',['../classRulerDrawStrategy.html',1,'']]],
+  ['rulerschild_14',['RulersChild',['../classanonymous__namespace_02tweak-view__test_8cc_03_1_1RulersChild.html',1,'anonymous_namespace{tweak-view_test.cc}']]],
   ['rulerstweakmock_15',['RulersTweakMock',['../classanonymous__namespace_02transformpresentation__test_8cc_03_1_1RulersTweakMock.html',1,'anonymous_namespace{transformpresentation_test.cc}']]]
 ];

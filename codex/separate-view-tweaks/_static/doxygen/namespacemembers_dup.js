@@ -20,5 +20,6 @@ var namespacemembers_dup =
     [ "s", "namespacemembers_s.html", null ],
     [ "t", "namespacemembers_t.html", null ],
     [ "v", "namespacemembers_v.html", null ],
-    [ "w", "namespacemembers_w.html", null ]
+    [ "w", "namespacemembers_w.html", null ],
+    [ "z", "namespacemembers_z.html", null ]
 ];

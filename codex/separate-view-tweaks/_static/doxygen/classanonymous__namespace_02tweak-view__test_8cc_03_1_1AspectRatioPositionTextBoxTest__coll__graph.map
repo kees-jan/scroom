@@ -1,0 +1,31 @@
+<map id="anonymous_namespace{tweak&#45;view_test.cc}::AspectRatioPositionTextBoxTest" name="anonymous_namespace{tweak&#45;view_test.cc}::AspectRatioPositionTextBoxTest">
+<area shape="rect" id="Node000001" title=" " alt="" coords="964,411,1195,505"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="398,215,491,281"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="463,292,481,321,505,346,539,364,586,380,706,408,841,429,964,443,963,449,840,434,705,413,585,385,537,369,502,350,476,325,459,295"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Point.html" title=" " alt="" coords="516,148,659,348"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="660,277,956,402,954,407,658,282"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,5,164,85"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="178,82,356,113,450,130,504,146,517,154,514,159,502,150,449,136,355,118,177,87"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="189,5,343,85"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="357,83,436,110,468,123,505,146,517,156,514,160,502,150,466,128,434,115,355,88"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="367,5,578,85"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="504,96,533,147,528,149,500,99"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="602,5,802,85"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="675,99,646,149,642,147,670,96"/>
+<area shape="rect" id="Node000008" href="$classScroom_1_1Utils_1_1Point.html" title=" " alt="" coords="1008,148,1151,348"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1082,348,1082,394,1077,394,1077,348"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="827,5,985,85"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="951,94,1010,163,1006,166,947,98"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="1010,5,1149,85"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="1082,99,1082,148,1077,148,1077,99"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="1173,5,1322,85"/>
+<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="1208,98,1153,163,1149,160,1204,95"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="1346,5,1485,85"/>
+<area shape="poly" id="edge11_Node000008_Node000012" title=" " alt="" coords="1334,88,1241,118,1197,134,1165,150,1152,160,1149,155,1162,146,1194,129,1240,113,1333,83"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="1175,193,1413,303"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="1258,305,1223,347,1184,389,1167,403,1164,399,1180,385,1219,344,1254,302"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="1442,215,1591,281"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="1496,283,1465,318,1426,350,1375,378,1320,402,1212,435,1210,430,1318,397,1372,374,1423,346,1462,314,1492,279"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="1509,13,1532,78"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="1523,78,1520,199,1515,199,1517,78"/>
+</map>

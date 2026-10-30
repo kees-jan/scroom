@@ -7,7 +7,7 @@ var searchData=
   ['raw_4',['raw',['../blob-tests_8cc.html#ae009adec719f1d23425671ff1986e525',1,'blob-tests.cc']]],
   ['receivedrect_5',['receivedRect',['../classanonymous__namespace_02determine-size-test_8cc_03_1_1ResizablePresentationInterfaceStub.html#a71c003c66848b17c4e6ade5753b5c908',1,'anonymous_namespace{determine-size-test.cc}::ResizablePresentationInterfaceStub']]],
   ['receivedvi_6',['receivedVi',['../classanonymous__namespace_02determine-size-test_8cc_03_1_1ResizablePresentationInterfaceStub.html#a465d66b1557f3004e5f89f28f84aec6e',1,'anonymous_namespace{determine-size-test.cc}::ResizablePresentationInterfaceStub']]],
-  ['rect_7',['rect',['../rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b',1,'rect:&#160;rectangletests.cc'],['../classanonymous__namespace_02determine-size-test_8cc_03_1_1PresentationInterfaceStub.html#a07d0e676dbf84be7a9385d8014ece4b3',1,'anonymous_namespace{determine-size-test.cc}::PresentationInterfaceStub::rect'],['../structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#ad3eaee769ffd723ea5a4d6eda73963b3',1,'Scroom::TiledBitmap::BitmapMetaData::rect']]],
+  ['rect_7',['rect',['../rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b',1,'rect:&#160;rectangletests.cc'],['../structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#ad3eaee769ffd723ea5a4d6eda73963b3',1,'Scroom::TiledBitmap::BitmapMetaData::rect'],['../classanonymous__namespace_02determine-size-test_8cc_03_1_1PresentationInterfaceStub.html#a07d0e676dbf84be7a9385d8014ece4b3',1,'anonymous_namespace{determine-size-test.cc}::PresentationInterfaceStub::rect']]],
   ['recursiveobservable_8',['recursiveObservable',['../observable-tests_8cc.html#a369edb6fb28d4a360e67824445419e8c',1,'observable-tests.cc']]],
   ['red_9',['red',['../classColor.html#a2337ea72bc849039f73077d00ab42bbb',1,'Color']]],
   ['redrawpending_10',['redrawPending',['../classTiledBitmapViewData.html#a3304b2a780bd0a23d4cdd974e842f5d5',1,'TiledBitmapViewData']]],
@@ -26,5 +26,6 @@ var searchData=
   ['rgb_23',['RGB',['../namespaceScroom_1_1TiledBitmap.html#a68ed4ea621e837ae62809626d1f7bba4',1,'Scroom::TiledBitmap']]],
   ['right_24',['right',['../rectangletests_8cc.html#a458c55c43ab7599992ae776b6c8f7b58',1,'rectangletests.cc']]],
   ['ringbuffersink_25',['ringBufferSink',['../callbacks_8cc.html#ab11b79003b26c0ddb967acd578f605fb',1,'callbacks.cc']]],
-  ['ruler_26',['ruler',['../ruler-tests_8cc.html#a7263a3d2025da3416831d700504b77ce',1,'ruler-tests.cc']]]
+  ['ruler_26',['ruler',['../ruler-tests_8cc.html#a7263a3d2025da3416831d700504b77ce',1,'ruler-tests.cc']]],
+  ['rulers_27',['rulers',['../classanonymous__namespace_02tweak-view__test_8cc_03_1_1ViewportRulersTest.html#a9d6522e68929d1eb6505b31e535e7263',1,'anonymous_namespace{tweak-view_test.cc}::ViewportRulersTest::rulers'],['../classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioRulersTest.html#a6a27939f63f22f0b95fdc23903acba8c',1,'anonymous_namespace{tweak-view_test.cc}::AspectRatioRulersTest::rulers']]]
 ];

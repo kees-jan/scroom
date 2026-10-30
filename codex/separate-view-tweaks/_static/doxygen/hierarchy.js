@@ -286,27 +286,32 @@ var hierarchy =
       [ "Scroom::Utils::ITweakPositionTextBox", "classScroom_1_1Utils_1_1ITweakPositionTextBox.html", [
         [ "Scroom::Utils::AspectRatioPositionTextBox", "classScroom_1_1Utils_1_1AspectRatioPositionTextBox.html", null ],
         [ "Scroom::Utils::ViewportPositionTextBox", "classScroom_1_1Utils_1_1ViewportPositionTextBox.html", null ],
-        [ "anonymous_namespace{transformpresentation_test.cc}::TextTweakMock", "classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TextTweakMock.html", null ]
+        [ "anonymous_namespace{transformpresentation_test.cc}::TextTweakMock", "classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TextTweakMock.html", null ],
+        [ "anonymous_namespace{tweak-view_test.cc}::TextBoxChild", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TextBoxChild.html", null ]
       ] ],
       [ "Scroom::Utils::ITweakPresentationPosition", "classScroom_1_1Utils_1_1ITweakPresentationPosition.html", [
         [ "Scroom::Utils::AspectRatioPresentationPosition", "classScroom_1_1Utils_1_1AspectRatioPresentationPosition.html", null ],
-        [ "Scroom::Utils::PixelAlignedPresentationPosition", "classScroom_1_1Utils_1_1PixelAlignedPresentationPosition.html", null ],
+        [ "Scroom::Utils::PixelAlignPresentationPositions", "classScroom_1_1Utils_1_1PixelAlignPresentationPositions.html", null ],
         [ "Scroom::Utils::anonymous_namespace{tweak-view.cc}::DefaultTweakPresentationPosition", "classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakPresentationPosition.html", null ],
-        [ "anonymous_namespace{transformpresentation_test.cc}::PositionTweakMock", "classanonymous__namespace_02transformpresentation__test_8cc_03_1_1PositionTweakMock.html", null ]
+        [ "anonymous_namespace{transformpresentation_test.cc}::PositionTweakMock", "classanonymous__namespace_02transformpresentation__test_8cc_03_1_1PositionTweakMock.html", null ],
+        [ "anonymous_namespace{tweak-view_test.cc}::PositionChild", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1PositionChild.html", null ]
       ] ],
       [ "Scroom::Utils::ITweakRulers", "classScroom_1_1Utils_1_1ITweakRulers.html", [
         [ "Scroom::Utils::AspectRatioRulers", "classScroom_1_1Utils_1_1AspectRatioRulers.html", null ],
         [ "Scroom::Utils::ViewportRulers", "classScroom_1_1Utils_1_1ViewportRulers.html", null ],
-        [ "anonymous_namespace{transformpresentation_test.cc}::RulersTweakMock", "classanonymous__namespace_02transformpresentation__test_8cc_03_1_1RulersTweakMock.html", null ]
+        [ "anonymous_namespace{transformpresentation_test.cc}::RulersTweakMock", "classanonymous__namespace_02transformpresentation__test_8cc_03_1_1RulersTweakMock.html", null ],
+        [ "anonymous_namespace{tweak-view_test.cc}::RulersChild", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1RulersChild.html", null ]
       ] ],
       [ "Scroom::Utils::ITweakSelection", "classScroom_1_1Utils_1_1ITweakSelection.html", [
         [ "Scroom::Utils::AspectRatioSelection", "classScroom_1_1Utils_1_1AspectRatioSelection.html", null ],
-        [ "Scroom::Utils::RoundedSelection", "classScroom_1_1Utils_1_1RoundedSelection.html", [
-          [ "Scroom::Utils::GridSelection", "classScroom_1_1Utils_1_1GridSelection.html", null ],
-          [ "Scroom::Utils::PixelSelection", "classScroom_1_1Utils_1_1PixelSelection.html", null ]
+        [ "Scroom::Utils::TweakSelectionsAsRectangles", "classScroom_1_1Utils_1_1TweakSelectionsAsRectangles.html", [
+          [ "Scroom::Utils::ExpandSelectionsToPixelBoundaries", "classScroom_1_1Utils_1_1ExpandSelectionsToPixelBoundaries.html", null ],
+          [ "Scroom::Utils::SnapSelectionsToGrid", "classScroom_1_1Utils_1_1SnapSelectionsToGrid.html", null ],
+          [ "anonymous_namespace{tweak-view_test.cc}::TweakSelectionsAsRectanglesMock", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsAsRectanglesMock.html", null ]
         ] ],
         [ "Scroom::Utils::anonymous_namespace{tweak-view.cc}::DefaultTweakSelection", "classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakSelection.html", null ],
-        [ "anonymous_namespace{transformpresentation_test.cc}::SelectionTweakMock", "classanonymous__namespace_02transformpresentation__test_8cc_03_1_1SelectionTweakMock.html", null ]
+        [ "anonymous_namespace{transformpresentation_test.cc}::SelectionTweakMock", "classanonymous__namespace_02transformpresentation__test_8cc_03_1_1SelectionTweakMock.html", null ],
+        [ "anonymous_namespace{tweak-view_test.cc}::SelectionChild", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1SelectionChild.html", null ]
       ] ],
       [ "Scroom::Utils::ProgressStateInterface", "classScroom_1_1Utils_1_1ProgressStateInterface.html", [
         [ "ProgressStateInterfaceStub", "classProgressStateInterfaceStub.html", null ],
@@ -453,7 +458,19 @@ var hierarchy =
       [ "Pipette_Tests", "classPipette__Tests.html", null ],
       [ "ProgressInterfaceMultiplexer_Tests", "classProgressInterfaceMultiplexer__Tests.html", null ],
       [ "Rectangle_and_Segment_TypedTests< ScaffoldT >", "classRectangle__and__Segment__TypedTests.html", null ],
-      [ "SingleContextTests", "classSingleContextTests.html", null ]
+      [ "SingleContextTests", "classSingleContextTests.html", null ],
+      [ "anonymous_namespace{tweak-view_test.cc}::AspectRatioPositionTextBoxTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioPositionTextBoxTest.html", null ],
+      [ "anonymous_namespace{tweak-view_test.cc}::AspectRatioPresentationPositionTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioPresentationPositionTest.html", null ],
+      [ "anonymous_namespace{tweak-view_test.cc}::AspectRatioRulersTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioRulersTest.html", null ],
+      [ "anonymous_namespace{tweak-view_test.cc}::AspectRatioSelectionTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioSelectionTest.html", null ],
+      [ "anonymous_namespace{tweak-view_test.cc}::DefaultTweakPresentationPositionTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakPresentationPositionTest.html", null ],
+      [ "anonymous_namespace{tweak-view_test.cc}::DefaultTweakSelectionTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakSelectionTest.html", null ],
+      [ "anonymous_namespace{tweak-view_test.cc}::ExpandSelectionsToPixelBoundariesTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1ExpandSelectionsToPixelBoundariesTest.html", null ],
+      [ "anonymous_namespace{tweak-view_test.cc}::PixelAlignPresentationPositionsTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1PixelAlignPresentationPositionsTest.html", null ],
+      [ "anonymous_namespace{tweak-view_test.cc}::SnapSelectionsToGridTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1SnapSelectionsToGridTest.html", null ],
+      [ "anonymous_namespace{tweak-view_test.cc}::TweakSelectionsAsRectanglesTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsAsRectanglesTest.html", null ],
+      [ "anonymous_namespace{tweak-view_test.cc}::ViewportPositionTextBoxTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1ViewportPositionTextBoxTest.html", null ],
+      [ "anonymous_namespace{tweak-view_test.cc}::ViewportRulersTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1ViewportRulersTest.html", null ]
     ] ],
     [ "TestData", "classTestData.html", null ],
     [ "TestObserver", "classTestObserver.html", null ],
