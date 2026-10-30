@@ -1,9 +1,0 @@
-<map id="Scroom::Utils::PixelAlignedPresentationPosition::create" name="Scroom::Utils::PixelAlignedPresentationPosition::create">
-<area shape="rect" id="Node000001" title=" " alt="" coords="241,47,447,87"/>
-<area shape="rect" id="Node000002" href="$tweak-view__test_8cc.html#acff8d067b782ebc8120c1d2077b4dbbb" title=" " alt="" coords="72,5,127,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="231,47,126,26,127,21,232,42"/>
-<area shape="rect" id="Node000003" href="$tweak-view__test_8cc.html#a0aff72b06a85f9b6c87f633e2b6a294d" title=" " alt="" coords="72,55,127,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="227,70,127,70,127,65,227,65"/>
-<area shape="rect" id="Node000004" href="$classTiledBitmap.html#a79dfef04e48f7a06ed70ac8b08295018" title=" " alt="" coords="5,104,193,129"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="231,93,163,107,162,101,230,88"/>
-</map>

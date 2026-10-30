@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-63-gc0eadb702</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-70-g136d57c56</span>
    </div>
   </td>
  </tr>
@@ -490,26 +490,26 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   91</span>  , <a class="code hl_variable" href="classTiledBitmap.html#a47e74444f93f451d08c45cdb12a6fbe1">progressBroadcaster</a>(<a class="code hl_function" href="classScroom_1_1Utils_1_1ProgressInterfaceBroadcaster.html#aaa1d8f4539ec2cd5c188d8083124b7b8">Scroom::Utils::ProgressInterfaceBroadcaster::create</a>())</div>
 <div class="line"><span class="lineno">   92</span>  , <a class="code hl_variable" href="classTiledBitmap.html#a886ffa6837fea8c657e3d86a57120649">context</a>(<a class="code hl_function" href="classScroom_1_1Utils_1_1Context.html#a4db6fa5ca71b2c41ee2ffd0c275edd07">Scroom::Utils::Context::create</a>())</div>
 <div class="line"><span class="lineno">   93</span>{</div>
-<div class="line"><span class="lineno">   94</span>  <a class="code hl_function" href="bookkeeping-tests_8cc.html#a51a52c8daaa2b1a32aadb0c8a40d9684">set</a>(<a class="code hl_variable" href="classTiledBitmap.html#a886ffa6837fea8c657e3d86a57120649">context</a>, <a class="code hl_function" href="classScroom_1_1Utils_1_1PixelAlignedPresentationPosition.html#ab94e2f47235aff8ad364ba7704f51326">Scroom::Utils::PixelAlignedPresentationPosition::create</a>());</div>
+<div class="line"><span class="lineno">   94</span>  <a class="code hl_function" href="bookkeeping-tests_8cc.html#a51a52c8daaa2b1a32aadb0c8a40d9684">set</a>(<a class="code hl_variable" href="classTiledBitmap.html#a886ffa6837fea8c657e3d86a57120649">context</a>, <a class="code hl_function" href="classScroom_1_1Utils_1_1PixelAlignPresentationPositions.html#ae950ba4c2f3af15dcb6e40390885f7b6">Scroom::Utils::PixelAlignPresentationPositions::create</a>());</div>
 <div class="line"><span class="lineno">   95</span>  <a class="code hl_function" href="bookkeeping-tests_8cc.html#a51a52c8daaa2b1a32aadb0c8a40d9684">set</a>(<a class="code hl_variable" href="classTiledBitmap.html#a886ffa6837fea8c657e3d86a57120649">context</a>, <a class="code hl_function" href="classScroom_1_1Utils_1_1ViewportPositionTextBox.html#ad11906232a64da4ad21c207020d28ed1">Scroom::Utils::ViewportPositionTextBox::create</a>());</div>
 <div class="line"><span class="lineno">   96</span>  <a class="code hl_function" href="bookkeeping-tests_8cc.html#a51a52c8daaa2b1a32aadb0c8a40d9684">set</a>(<a class="code hl_variable" href="classTiledBitmap.html#a886ffa6837fea8c657e3d86a57120649">context</a>, <a class="code hl_function" href="classScroom_1_1Utils_1_1ViewportRulers.html#a55f853cdf6a1b5e2c1d01e0f26191164">Scroom::Utils::ViewportRulers::create</a>());</div>
 <div class="line"><span class="lineno">   97</span>  <a class="code hl_function" href="bookkeeping-tests_8cc.html#a51a52c8daaa2b1a32aadb0c8a40d9684">set</a>(</div>
 <div class="line"><span class="lineno">   98</span>    <a class="code hl_variable" href="classTiledBitmap.html#a886ffa6837fea8c657e3d86a57120649">context</a>,</div>
 <div class="line"><span class="lineno">   99</span>    <a class="code hl_typedef" href="classScroom_1_1Utils_1_1ITweakSelection.html#aa938963ea5343fabb1d7b6f5e04614c5">Scroom::Utils::ITweakSelection::Map</a>{</div>
-<div class="line"><span class="lineno">  100</span>      {<a class="code hl_function" href="namespaceSelectionType.html#a9f0e8fd7cec2332d694d5a898cff9dc9">SelectionType::GRID</a>, <a class="code hl_function" href="classScroom_1_1Utils_1_1GridSelection.html#a0673e3ec11537b237e14e2292f8ab464">Scroom::Utils::GridSelection::create</a>()},</div>
-<div class="line"><span class="lineno">  101</span>      {<a class="code hl_function" href="namespaceSelectionType.html#aa8763b7e1473f7e5d1e2c8d5b86fe49f">SelectionType::PIXEL</a>, <a class="code hl_function" href="classScroom_1_1Utils_1_1PixelSelection.html#a2c518335bb29c73b88457006c307c2dd">Scroom::Utils::PixelSelection::create</a>()}</div>
+<div class="line"><span class="lineno">  100</span>      {<a class="code hl_function" href="namespaceSelectionType.html#a9f0e8fd7cec2332d694d5a898cff9dc9">SelectionType::GRID</a>, <a class="code hl_function" href="classScroom_1_1Utils_1_1SnapSelectionsToGrid.html#af655043919b4a717e0758c3e99e6d33a">Scroom::Utils::SnapSelectionsToGrid::create</a>()},</div>
+<div class="line"><span class="lineno">  101</span>      {<a class="code hl_function" href="namespaceSelectionType.html#aa8763b7e1473f7e5d1e2c8d5b86fe49f">SelectionType::PIXEL</a>, <a class="code hl_function" href="classScroom_1_1Utils_1_1ExpandSelectionsToPixelBoundaries.html#afedfe1bcd453d10e969cea0d4ffbfcd9">Scroom::Utils::ExpandSelectionsToPixelBoundaries::create</a>()}</div>
 <div class="line"><span class="lineno">  102</span>    }</div>
 <div class="line"><span class="lineno">  103</span>  );</div>
 <div class="line"><span class="lineno">  104</span>}</div>
 <div class="ttc" id="abookkeeping-tests_8cc_html_a51a52c8daaa2b1a32aadb0c8a40d9684"><div class="ttname"><a href="bookkeeping-tests_8cc.html#a51a52c8daaa2b1a32aadb0c8a40d9684">set</a></div><div class="ttdeci">map set(2, 5)</div></div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1Context_html_a4db6fa5ca71b2c41ee2ffd0c275edd07"><div class="ttname"><a href="classScroom_1_1Utils_1_1Context.html#a4db6fa5ca71b2c41ee2ffd0c275edd07">Scroom::Utils::Context::create</a></div><div class="ttdeci">static Ptr create()</div><div class="ttdef"><b>Definition</b> context.cc:15</div></div>
-<div class="ttc" id="aclassScroom_1_1Utils_1_1GridSelection_html_a0673e3ec11537b237e14e2292f8ab464"><div class="ttname"><a href="classScroom_1_1Utils_1_1GridSelection.html#a0673e3ec11537b237e14e2292f8ab464">Scroom::Utils::GridSelection::create</a></div><div class="ttdeci">static ITweakSelection::Ptr create()</div><div class="ttdef"><b>Definition</b> tweak-view.cc:138</div></div>
-<div class="ttc" id="aclassScroom_1_1Utils_1_1ITweakSelection_html_aa938963ea5343fabb1d7b6f5e04614c5"><div class="ttname"><a href="classScroom_1_1Utils_1_1ITweakSelection.html#aa938963ea5343fabb1d7b6f5e04614c5">Scroom::Utils::ITweakSelection::Map</a></div><div class="ttdeci">std::map&lt; std::string, ITweakSelection::Ptr &gt; Map</div><div class="ttdef"><b>Definition</b> tweak-view.hh:45</div></div>
-<div class="ttc" id="aclassScroom_1_1Utils_1_1PixelAlignedPresentationPosition_html_ab94e2f47235aff8ad364ba7704f51326"><div class="ttname"><a href="classScroom_1_1Utils_1_1PixelAlignedPresentationPosition.html#ab94e2f47235aff8ad364ba7704f51326">Scroom::Utils::PixelAlignedPresentationPosition::create</a></div><div class="ttdeci">static ITweakPresentationPosition::Ptr create()</div><div class="ttdef"><b>Definition</b> tweak-view.cc:96</div></div>
-<div class="ttc" id="aclassScroom_1_1Utils_1_1PixelSelection_html_a2c518335bb29c73b88457006c307c2dd"><div class="ttname"><a href="classScroom_1_1Utils_1_1PixelSelection.html#a2c518335bb29c73b88457006c307c2dd">Scroom::Utils::PixelSelection::create</a></div><div class="ttdeci">static ITweakSelection::Ptr create()</div><div class="ttdef"><b>Definition</b> tweak-view.cc:144</div></div>
+<div class="ttc" id="aclassScroom_1_1Utils_1_1ExpandSelectionsToPixelBoundaries_html_afedfe1bcd453d10e969cea0d4ffbfcd9"><div class="ttname"><a href="classScroom_1_1Utils_1_1ExpandSelectionsToPixelBoundaries.html#afedfe1bcd453d10e969cea0d4ffbfcd9">Scroom::Utils::ExpandSelectionsToPixelBoundaries::create</a></div><div class="ttdeci">static ITweakSelection::Ptr create()</div><div class="ttdef"><b>Definition</b> tweak-view.cc:139</div></div>
+<div class="ttc" id="aclassScroom_1_1Utils_1_1ITweakSelection_html_aa938963ea5343fabb1d7b6f5e04614c5"><div class="ttname"><a href="classScroom_1_1Utils_1_1ITweakSelection.html#aa938963ea5343fabb1d7b6f5e04614c5">Scroom::Utils::ITweakSelection::Map</a></div><div class="ttdeci">std::map&lt; std::string, ITweakSelection::Ptr &gt; Map</div><div class="ttdef"><b>Definition</b> tweak-view.hh:44</div></div>
+<div class="ttc" id="aclassScroom_1_1Utils_1_1PixelAlignPresentationPositions_html_ae950ba4c2f3af15dcb6e40390885f7b6"><div class="ttname"><a href="classScroom_1_1Utils_1_1PixelAlignPresentationPositions.html#ae950ba4c2f3af15dcb6e40390885f7b6">Scroom::Utils::PixelAlignPresentationPositions::create</a></div><div class="ttdeci">static ITweakPresentationPosition::Ptr create()</div><div class="ttdef"><b>Definition</b> tweak-view.cc:95</div></div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1ProgressInterfaceBroadcaster_html_aaa1d8f4539ec2cd5c188d8083124b7b8"><div class="ttname"><a href="classScroom_1_1Utils_1_1ProgressInterfaceBroadcaster.html#aaa1d8f4539ec2cd5c188d8083124b7b8">Scroom::Utils::ProgressInterfaceBroadcaster::create</a></div><div class="ttdeci">static Ptr create()</div><div class="ttdef"><b>Definition</b> progressinterfacehelpers.cc:124</div></div>
-<div class="ttc" id="aclassScroom_1_1Utils_1_1ViewportPositionTextBox_html_ad11906232a64da4ad21c207020d28ed1"><div class="ttname"><a href="classScroom_1_1Utils_1_1ViewportPositionTextBox.html#ad11906232a64da4ad21c207020d28ed1">Scroom::Utils::ViewportPositionTextBox::create</a></div><div class="ttdeci">static ITweakPositionTextBox::Ptr create()</div><div class="ttdef"><b>Definition</b> tweak-view.cc:150</div></div>
-<div class="ttc" id="aclassScroom_1_1Utils_1_1ViewportRulers_html_a55f853cdf6a1b5e2c1d01e0f26191164"><div class="ttname"><a href="classScroom_1_1Utils_1_1ViewportRulers.html#a55f853cdf6a1b5e2c1d01e0f26191164">Scroom::Utils::ViewportRulers::create</a></div><div class="ttdeci">static ITweakRulers::Ptr create()</div><div class="ttdef"><b>Definition</b> tweak-view.cc:112</div></div>
+<div class="ttc" id="aclassScroom_1_1Utils_1_1SnapSelectionsToGrid_html_af655043919b4a717e0758c3e99e6d33a"><div class="ttname"><a href="classScroom_1_1Utils_1_1SnapSelectionsToGrid.html#af655043919b4a717e0758c3e99e6d33a">Scroom::Utils::SnapSelectionsToGrid::create</a></div><div class="ttdeci">static ITweakSelection::Ptr create()</div><div class="ttdef"><b>Definition</b> tweak-view.cc:130</div></div>
+<div class="ttc" id="aclassScroom_1_1Utils_1_1ViewportPositionTextBox_html_ad11906232a64da4ad21c207020d28ed1"><div class="ttname"><a href="classScroom_1_1Utils_1_1ViewportPositionTextBox.html#ad11906232a64da4ad21c207020d28ed1">Scroom::Utils::ViewportPositionTextBox::create</a></div><div class="ttdeci">static ITweakPositionTextBox::Ptr create()</div><div class="ttdef"><b>Definition</b> tweak-view.cc:148</div></div>
+<div class="ttc" id="aclassScroom_1_1Utils_1_1ViewportRulers_html_a55f853cdf6a1b5e2c1d01e0f26191164"><div class="ttname"><a href="classScroom_1_1Utils_1_1ViewportRulers.html#a55f853cdf6a1b5e2c1d01e0f26191164">Scroom::Utils::ViewportRulers::create</a></div><div class="ttdeci">static ITweakRulers::Ptr create()</div><div class="ttdef"><b>Definition</b> tweak-view.cc:104</div></div>
 <div class="ttc" id="aclassTiledBitmap_html_a31a9a9922388d64cdf7e0b726b87837c"><div class="ttname"><a href="classTiledBitmap.html#a31a9a9922388d64cdf7e0b726b87837c">TiledBitmap::bitmapHeight</a></div><div class="ttdeci">int bitmapHeight</div><div class="ttdef"><b>Definition</b> tiled-bitmap.hh:40</div></div>
 <div class="ttc" id="aclassTiledBitmap_html_a47e74444f93f451d08c45cdb12a6fbe1"><div class="ttname"><a href="classTiledBitmap.html#a47e74444f93f451d08c45cdb12a6fbe1">TiledBitmap::progressBroadcaster</a></div><div class="ttdeci">Scroom::Utils::ProgressInterfaceBroadcaster::Ptr progressBroadcaster</div><div class="ttdef"><b>Definition</b> tiled-bitmap.hh:49</div></div>
 <div class="ttc" id="aclassTiledBitmap_html_a79651024b3ff749b0c3166ee717a260f"><div class="ttname"><a href="classTiledBitmap.html#a79651024b3ff749b0c3166ee717a260f">TiledBitmap::bitmapWidth</a></div><div class="ttdeci">int bitmapWidth</div><div class="ttdef"><b>Definition</b> tiled-bitmap.hh:39</div></div>
@@ -523,22 +523,22 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classTiledBitmap_a79dfef04e48f7a06ed70ac8b08295018_cgraph.png" border="0" usemap="#aclassTiledBitmap_a79dfef04e48f7a06ed70ac8b08295018_cgraph" alt=""/></div>
 <map name="aclassTiledBitmap_a79dfef04e48f7a06ed70ac8b08295018_cgraph" id="aclassTiledBitmap_a79dfef04e48f7a06ed70ac8b08295018_cgraph">
 <area shape="rect" title=" " alt="" coords="5,237,193,262"/>
-<area shape="rect" href="classScroom_1_1Utils_1_1PixelAlignedPresentationPosition.html#ab94e2f47235aff8ad364ba7704f51326" title=" " alt="" coords="252,5,457,45"/>
+<area shape="rect" href="classScroom_1_1Utils_1_1PixelAlignPresentationPositions.html#ae950ba4c2f3af15dcb6e40390885f7b6" title=" " alt="" coords="251,5,463,45"/>
 <area shape="poly" title=" " alt="" coords="104,235,122,199,151,151,191,99,214,76,240,55,249,49,252,54,243,60,218,80,195,103,156,154,127,202,109,237"/>
-<area shape="rect" href="classScroom_1_1Utils_1_1ViewportRulers.html#a55f853cdf6a1b5e2c1d01e0f26191164" title=" " alt="" coords="247,69,463,109"/>
-<area shape="poly" title=" " alt="" coords="109,235,161,179,199,147,240,119,254,112,256,117,243,124,202,151,165,183,113,238"/>
-<area shape="rect" href="classScroom_1_1Utils_1_1GridSelection.html#a0673e3ec11537b237e14e2292f8ab464" title=" " alt="" coords="253,133,457,173"/>
-<area shape="poly" title=" " alt="" coords="124,234,177,209,240,183,263,175,265,180,242,188,179,214,127,239"/>
-<area shape="rect" href="classScroom_1_1Utils_1_1PixelSelection.html#a2c518335bb29c73b88457006c307c2dd" title=" " alt="" coords="251,197,459,237"/>
-<area shape="poly" title=" " alt="" coords="193,235,237,229,237,235,194,240"/>
-<area shape="rect" href="classScroom_1_1Utils_1_1ViewportPositionTextBox.html#ad11906232a64da4ad21c207020d28ed1" title=" " alt="" coords="241,261,468,301"/>
-<area shape="poly" title=" " alt="" coords="194,258,228,263,227,268,193,264"/>
-<area shape="rect" href="namespaceSelectionType.html#a9f0e8fd7cec2332d694d5a898cff9dc9" title=" " alt="" coords="278,326,431,351"/>
-<area shape="poly" title=" " alt="" coords="126,260,179,285,242,311,274,320,273,325,240,316,177,290,124,265"/>
-<area shape="rect" href="namespaceSelectionType.html#aa8763b7e1473f7e5d1e2c8d5b86fe49f" title=" " alt="" coords="277,375,433,401"/>
-<area shape="poly" title=" " alt="" coords="114,260,167,309,203,337,243,360,264,369,262,374,240,365,200,341,163,313,111,264"/>
-<area shape="rect" href="bookkeeping-tests_8cc.html#a51a52c8daaa2b1a32aadb0c8a40d9684" title=" " alt="" coords="333,425,376,450"/>
-<area shape="poly" title=" " alt="" coords="110,261,129,292,159,333,197,375,243,410,282,425,320,433,319,438,280,431,240,414,194,379,155,336,125,295,106,264"/>
+<area shape="rect" href="classScroom_1_1Utils_1_1ViewportRulers.html#a55f853cdf6a1b5e2c1d01e0f26191164" title=" " alt="" coords="249,69,465,109"/>
+<area shape="poly" title=" " alt="" coords="109,234,161,179,199,147,240,119,254,112,256,117,243,124,202,151,165,183,113,238"/>
+<area shape="rect" href="classScroom_1_1Utils_1_1SnapSelectionsToGrid.html#af655043919b4a717e0758c3e99e6d33a" title=" " alt="" coords="249,133,465,173"/>
+<area shape="poly" title=" " alt="" coords="124,234,177,209,240,183,264,175,265,180,242,188,179,214,127,239"/>
+<area shape="rect" href="classScroom_1_1Utils_1_1ExpandSelectionsToPixelBoundaries.html#afedfe1bcd453d10e969cea0d4ffbfcd9" title=" " alt="" coords="241,197,473,237"/>
+<area shape="poly" title=" " alt="" coords="193,235,227,231,228,236,194,240"/>
+<area shape="rect" href="classScroom_1_1Utils_1_1ViewportPositionTextBox.html#ad11906232a64da4ad21c207020d28ed1" title=" " alt="" coords="244,261,471,301"/>
+<area shape="poly" title=" " alt="" coords="194,258,231,263,230,268,193,264"/>
+<area shape="rect" href="namespaceSelectionType.html#a9f0e8fd7cec2332d694d5a898cff9dc9" title=" " alt="" coords="281,326,434,351"/>
+<area shape="poly" title=" " alt="" coords="126,260,178,285,242,311,275,320,274,325,240,316,176,290,123,264"/>
+<area shape="rect" href="namespaceSelectionType.html#aa8763b7e1473f7e5d1e2c8d5b86fe49f" title=" " alt="" coords="279,375,435,401"/>
+<area shape="poly" title=" " alt="" coords="114,260,167,309,203,337,242,360,267,370,265,375,240,365,200,342,163,314,111,264"/>
+<area shape="rect" href="bookkeeping-tests_8cc.html#a51a52c8daaa2b1a32aadb0c8a40d9684" title=" " alt="" coords="336,425,379,450"/>
+<area shape="poly" title=" " alt="" coords="110,261,129,292,159,333,197,375,243,410,283,426,323,433,322,438,281,431,240,414,194,379,155,336,125,295,106,264"/>
 </map>
 </div>
 

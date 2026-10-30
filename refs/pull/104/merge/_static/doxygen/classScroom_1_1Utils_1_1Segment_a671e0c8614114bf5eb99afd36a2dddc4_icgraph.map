@@ -44,8 +44,8 @@
 <area shape="poly" id="edge16_Node000015_Node000014" title=" " alt="" coords="610,854,535,850,536,844,610,849"/>
 <area shape="rect" id="Node000016" href="$namespaceScroom_1_1Utils.html#a336b08377145525ad7740b47d618b161" title=" " alt="" coords="336,893,540,918"/>
 <area shape="poly" id="edge17_Node000015_Node000016" title=" " alt="" coords="611,878,512,895,511,890,610,873"/>
-<area shape="rect" id="Node000017" href="$classScroom_1_1Utils_1_1GridSelection.html#ad380ade97f299ddbc72b3e15f780987a" title=" " alt="" coords="27,885,231,925"/>
-<area shape="poly" id="edge18_Node000016_Node000017" title=" " alt="" coords="322,908,231,908,231,903,322,903"/>
+<area shape="rect" id="Node000017" href="$classScroom_1_1Utils_1_1SnapSelectionsToGrid.html#a9b8a542ab9274d1402ec294611b86adc" title=" " alt="" coords="21,885,237,925"/>
+<area shape="poly" id="edge18_Node000016_Node000017" title=" " alt="" coords="322,908,237,908,237,903,322,903"/>
 <area shape="poly" id="edge20_Node000018_Node000008" title=" " alt="" coords="610,650,554,640,555,635,611,645"/>
 <area shape="poly" id="edge21_Node000018_Node000009" title=" " alt="" coords="610,674,577,676,576,671,610,669"/>
 <area shape="poly" id="edge22_Node000018_Node000010" title=" " alt="" coords="646,692,577,716,532,728,530,723,575,711,644,687"/>

@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-63-gc0eadb702</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-70-g136d57c56</span>
    </div>
   </td>
  </tr>
@@ -215,14 +215,14 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  229</span>    : <a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioSelection.html#a7ae7cec4c1cf3926cba743cd85613017">child</a>(std::move(child_))</div>
-<div class="line"><span class="lineno">  230</span>    , <a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioSelection.html#ad9ab6cc2b44e75e5cdec092876a14baf">aspectRatio</a>(aspectRatio_)</div>
-<div class="line"><span class="lineno">  231</span>  {</div>
-<div class="line"><span class="lineno">  232</span>    <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(<a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioSelection.html#a7ae7cec4c1cf3926cba743cd85613017">child</a>);</div>
-<div class="line"><span class="lineno">  233</span>  }</div>
+<div class="fragment"><div class="line"><span class="lineno">  223</span>    : <a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioSelection.html#a7ae7cec4c1cf3926cba743cd85613017">child</a>(std::move(child_))</div>
+<div class="line"><span class="lineno">  224</span>    , <a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioSelection.html#ad9ab6cc2b44e75e5cdec092876a14baf">aspectRatio</a>(aspectRatio_)</div>
+<div class="line"><span class="lineno">  225</span>  {</div>
+<div class="line"><span class="lineno">  226</span>    <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(<a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioSelection.html#a7ae7cec4c1cf3926cba743cd85613017">child</a>);</div>
+<div class="line"><span class="lineno">  227</span>  }</div>
 <div class="ttc" id="aassertions_8hh_html_ae925d7587e34145cd52f674b2012539a"><div class="ttname"><a href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a></div><div class="ttdeci">#define require(expr)</div><div class="ttdef"><b>Definition</b> assertions.hh:30</div></div>
-<div class="ttc" id="aclassScroom_1_1Utils_1_1AspectRatioSelection_html_a7ae7cec4c1cf3926cba743cd85613017"><div class="ttname"><a href="classScroom_1_1Utils_1_1AspectRatioSelection.html#a7ae7cec4c1cf3926cba743cd85613017">Scroom::Utils::AspectRatioSelection::child</a></div><div class="ttdeci">ITweakSelection::Ptr child</div><div class="ttdef"><b>Definition</b> tweak-view.hh:175</div></div>
-<div class="ttc" id="aclassScroom_1_1Utils_1_1AspectRatioSelection_html_ad9ab6cc2b44e75e5cdec092876a14baf"><div class="ttname"><a href="classScroom_1_1Utils_1_1AspectRatioSelection.html#ad9ab6cc2b44e75e5cdec092876a14baf">Scroom::Utils::AspectRatioSelection::aspectRatio</a></div><div class="ttdeci">const Point&lt; double &gt; aspectRatio</div><div class="ttdef"><b>Definition</b> tweak-view.hh:176</div></div>
+<div class="ttc" id="aclassScroom_1_1Utils_1_1AspectRatioSelection_html_a7ae7cec4c1cf3926cba743cd85613017"><div class="ttname"><a href="classScroom_1_1Utils_1_1AspectRatioSelection.html#a7ae7cec4c1cf3926cba743cd85613017">Scroom::Utils::AspectRatioSelection::child</a></div><div class="ttdeci">ITweakSelection::Ptr child</div><div class="ttdef"><b>Definition</b> tweak-view.hh:172</div></div>
+<div class="ttc" id="aclassScroom_1_1Utils_1_1AspectRatioSelection_html_ad9ab6cc2b44e75e5cdec092876a14baf"><div class="ttname"><a href="classScroom_1_1Utils_1_1AspectRatioSelection.html#ad9ab6cc2b44e75e5cdec092876a14baf">Scroom::Utils::AspectRatioSelection::aspectRatio</a></div><div class="ttdeci">const Point&lt; double &gt; aspectRatio</div><div class="ttdef"><b>Definition</b> tweak-view.hh:173</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -260,28 +260,12 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  236</span>  {</div>
-<div class="line"><span class="lineno">  237</span>    <span class="keywordflow">return</span> <a class="code hl_typedef" href="classScroom_1_1Utils_1_1ITweakSelection.html#aa4bcdde0ecea6a699c7008fa50545ace">ITweakSelection::Ptr</a>(<span class="keyword">new</span> <a class="code hl_function" href="classScroom_1_1Utils_1_1AspectRatioSelection.html#a176635bf867a08331c5db1ed2f1c40e2">AspectRatioSelection</a>(std::move(<a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioSelection.html#a7ae7cec4c1cf3926cba743cd85613017">child</a>), <a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioSelection.html#ad9ab6cc2b44e75e5cdec092876a14baf">aspectRatio</a>));</div>
-<div class="line"><span class="lineno">  238</span>  }</div>
-<div class="ttc" id="aclassScroom_1_1Utils_1_1AspectRatioSelection_html_a176635bf867a08331c5db1ed2f1c40e2"><div class="ttname"><a href="classScroom_1_1Utils_1_1AspectRatioSelection.html#a176635bf867a08331c5db1ed2f1c40e2">Scroom::Utils::AspectRatioSelection::AspectRatioSelection</a></div><div class="ttdeci">AspectRatioSelection(ITweakSelection::Ptr child, const Point&lt; double &gt; &amp;aspectRatio)</div><div class="ttdef"><b>Definition</b> tweak-view.cc:228</div></div>
-<div class="ttc" id="aclassScroom_1_1Utils_1_1ITweakSelection_html_aa4bcdde0ecea6a699c7008fa50545ace"><div class="ttname"><a href="classScroom_1_1Utils_1_1ITweakSelection.html#aa4bcdde0ecea6a699c7008fa50545ace">Scroom::Utils::ITweakSelection::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; ITweakSelection &gt; Ptr</div><div class="ttdef"><b>Definition</b> tweak-view.hh:44</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  230</span>  {</div>
+<div class="line"><span class="lineno">  231</span>    <span class="keywordflow">return</span> <a class="code hl_typedef" href="classScroom_1_1Utils_1_1ITweakSelection.html#aa4bcdde0ecea6a699c7008fa50545ace">ITweakSelection::Ptr</a>(<span class="keyword">new</span> <a class="code hl_function" href="classScroom_1_1Utils_1_1AspectRatioSelection.html#a176635bf867a08331c5db1ed2f1c40e2">AspectRatioSelection</a>(std::move(<a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioSelection.html#a7ae7cec4c1cf3926cba743cd85613017">child</a>), <a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioSelection.html#ad9ab6cc2b44e75e5cdec092876a14baf">aspectRatio</a>));</div>
+<div class="line"><span class="lineno">  232</span>  }</div>
+<div class="ttc" id="aclassScroom_1_1Utils_1_1AspectRatioSelection_html_a176635bf867a08331c5db1ed2f1c40e2"><div class="ttname"><a href="classScroom_1_1Utils_1_1AspectRatioSelection.html#a176635bf867a08331c5db1ed2f1c40e2">Scroom::Utils::AspectRatioSelection::AspectRatioSelection</a></div><div class="ttdeci">AspectRatioSelection(ITweakSelection::Ptr child, const Point&lt; double &gt; &amp;aspectRatio)</div><div class="ttdef"><b>Definition</b> tweak-view.cc:222</div></div>
+<div class="ttc" id="aclassScroom_1_1Utils_1_1ITweakSelection_html_aa4bcdde0ecea6a699c7008fa50545ace"><div class="ttname"><a href="classScroom_1_1Utils_1_1ITweakSelection.html#aa4bcdde0ecea6a699c7008fa50545ace">Scroom::Utils::ITweakSelection::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; ITweakSelection &gt; Ptr</div><div class="ttdef"><b>Definition</b> tweak-view.hh:43</div></div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="tweak-view__test_8cc.html#a600e7bf88b3377d744c839a1fc4c2dfe">TEST()</a>, <a class="el" href="tweak-view__test_8cc.html#acff8d067b782ebc8120c1d2077b4dbbb">TEST()</a>, and <a class="el" href="tweak-view__test_8cc.html#ad84b1bd9a7de7f97ea764626c1178e7e">TEST()</a>.</p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classScroom_1_1Utils_1_1AspectRatioSelection_a597a003e2119916d604ccbf28d94ec1c_icgraph.png" border="0" usemap="#aclassScroom_1_1Utils_1_1AspectRatioSelection_a597a003e2119916d604ccbf28d94ec1c_icgraph" alt=""/></div>
-<map name="aclassScroom_1_1Utils_1_1AspectRatioSelection_a597a003e2119916d604ccbf28d94ec1c_icgraph" id="aclassScroom_1_1Utils_1_1AspectRatioSelection_a597a003e2119916d604ccbf28d94ec1c_icgraph">
-<area shape="rect" title=" " alt="" coords="108,47,303,87"/>
-<area shape="rect" href="tweak-view__test_8cc.html#a600e7bf88b3377d744c839a1fc4c2dfe" title=" " alt="" coords="5,5,60,31"/>
-<area shape="poly" title=" " alt="" coords="121,46,59,28,61,23,123,41"/>
-<area shape="rect" href="tweak-view__test_8cc.html#acff8d067b782ebc8120c1d2077b4dbbb" title=" " alt="" coords="5,55,60,80"/>
-<area shape="poly" title=" " alt="" coords="94,70,60,70,60,65,94,65"/>
-<area shape="rect" href="tweak-view__test_8cc.html#ad84b1bd9a7de7f97ea764626c1178e7e" title=" " alt="" coords="5,104,60,129"/>
-<area shape="poly" title=" " alt="" coords="123,94,61,112,59,106,121,89"/>
-</map>
-</div>
-
 </div>
 </div>
 <a id="ad793b10bb5165f95b04942d9021ed2dc" name="ad793b10bb5165f95b04942d9021ed2dc"></a>
@@ -309,10 +293,10 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classScroom_1_1Utils_1_1ITweakSelection.html#aa34c0a4afd0e2453d2eb28226b7a2a1b">Scroom::Utils::ITweakSelection</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  241</span>  {</div>
-<div class="line"><span class="lineno">  242</span>    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioSelection.html#a7ae7cec4c1cf3926cba743cd85613017">child</a>-&gt;tweakSelection(<a class="code hl_struct" href="structSelection.html">Selection</a>{<a class="code hl_variable" href="pipette-tests_8cc.html#a253a9998ea77422057632a35f2b241ec">selection</a>.<a class="code hl_variable" href="structSelection.html#a50bd5df2fa244b0046b233d550703384">start</a> / <a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioSelection.html#ad9ab6cc2b44e75e5cdec092876a14baf">aspectRatio</a>, <a class="code hl_variable" href="pipette-tests_8cc.html#a253a9998ea77422057632a35f2b241ec">selection</a>.end / <a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioSelection.html#ad9ab6cc2b44e75e5cdec092876a14baf">aspectRatio</a>});</div>
-<div class="line"><span class="lineno">  243</span>    <span class="keywordflow">return</span> {<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>.start * <a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioSelection.html#ad9ab6cc2b44e75e5cdec092876a14baf">aspectRatio</a>, <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>.end * <a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioSelection.html#ad9ab6cc2b44e75e5cdec092876a14baf">aspectRatio</a>};</div>
-<div class="line"><span class="lineno">  244</span>  }</div>
+<div class="fragment"><div class="line"><span class="lineno">  235</span>  {</div>
+<div class="line"><span class="lineno">  236</span>    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a> = <a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioSelection.html#a7ae7cec4c1cf3926cba743cd85613017">child</a>-&gt;tweakSelection(<a class="code hl_struct" href="structSelection.html">Selection</a>{<a class="code hl_variable" href="pipette-tests_8cc.html#a253a9998ea77422057632a35f2b241ec">selection</a>.<a class="code hl_variable" href="structSelection.html#a50bd5df2fa244b0046b233d550703384">start</a> / <a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioSelection.html#ad9ab6cc2b44e75e5cdec092876a14baf">aspectRatio</a>, <a class="code hl_variable" href="pipette-tests_8cc.html#a253a9998ea77422057632a35f2b241ec">selection</a>.end / <a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioSelection.html#ad9ab6cc2b44e75e5cdec092876a14baf">aspectRatio</a>});</div>
+<div class="line"><span class="lineno">  237</span>    <span class="keywordflow">return</span> {<a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>.start * <a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioSelection.html#ad9ab6cc2b44e75e5cdec092876a14baf">aspectRatio</a>, <a class="code hl_variable" href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a>.end * <a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioSelection.html#ad9ab6cc2b44e75e5cdec092876a14baf">aspectRatio</a>};</div>
+<div class="line"><span class="lineno">  238</span>  }</div>
 <div class="ttc" id="apipette-tests_8cc_html_a253a9998ea77422057632a35f2b241ec"><div class="ttname"><a href="pipette-tests_8cc.html#a253a9998ea77422057632a35f2b241ec">selection</a></div><div class="ttdeci">auto selection</div><div class="ttdef"><b>Definition</b> pipette-tests.cc:157</div></div>
 <div class="ttc" id="aringbuffer-sink-tests_8cc_html_a77d2a177c03f06c9224e4aeecb918065"><div class="ttname"><a href="ringbuffer-sink-tests_8cc.html#a77d2a177c03f06c9224e4aeecb918065">result</a></div><div class="ttdeci">auto result</div><div class="ttdef"><b>Definition</b> ringbuffer-sink-tests.cc:91</div></div>
 <div class="ttc" id="astructSelection_html"><div class="ttname"><a href="structSelection.html">Selection</a></div><div class="ttdef"><b>Definition</b> viewinterface.hh:37</div></div>

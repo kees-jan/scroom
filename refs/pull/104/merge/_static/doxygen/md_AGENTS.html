@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-63-gc0eadb702</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-70-g136d57c56</span>
    </div>
   </td>
  </tr>
@@ -103,12 +103,14 @@ Configure and compile</h1>
 <p>The CMake modules live in the <code>cmake-modules</code> submodule, which must be initialized. Version generation requires full Git history and tags.</p>
 <p>CMake presets are available in <code>CMakePresets.json</code>; <code>gcc-debug</code> is the default choice. The Debug build directory contains <code>bin/</code>, <code>lib/</code>, and <code>compile_commands.json</code>.</p>
 <p>Use Ninja's default build parallelism; omit explicit job limits when building.</p>
+<p>When a sandboxed build fails because ccache cannot write to its usual location, request elevated sandbox permissions and rerun the normal preset build. Leave ccache enabled and its configuration unchanged; do not disable it or redirect its cache to work around sandbox restrictions.</p>
 <p>In-source builds are forbidden. Use a separate build directory when switching compilers. The <code>clang22-debug</code> preset builds and tests with Clang 22 and its default system standard library. Use its build tree for <code>clang-tidy-22</code>: Clang and GCC handle diagnostics differently, and clang-tidy has worked best with a Clang-generated compilation database. Keep this preset building and passing tests as well as the GCC preset.</p>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Tests</h1>
-<p>Build before running CTest. For headless sessions, supply a virtual display as in Linux CI.</p>
+<p>Build before running CTest. Run tests normally unless the session is known to be headless, such as a CI build; in that case, supply a virtual display as in Linux CI. When display availability is unknown, let the first normal test run establish whether display setup is needed.</p>
 <p>All test suites may run concurrently. Use the test presets' parallel settings without overriding them with an explicit job limit.</p>
-<p>GTK-dependent tests require a display even though these are unit tests. Xvfb also needs <code>xauth</code>. <a class="el" href="classA.html">A</a> <code>cannot open display</code> failure is an environment problem; check the display/Xvfb startup before investigating assertions.</p>
+<p>GTK-dependent tests require a display even though these are unit tests. Xvfb also needs <code>xauth</code>. If a normal test run reports <code>cannot open display</code>, address display availability before investigating assertions. When using Xvfb, check its startup if that error persists.</p>
+<p>If sandboxed tests cannot access an existing display, request elevated sandbox permissions and retry the normal CTest preset before considering Xvfb.</p>
 <p><code>ENABLE_GOOGLE_TEST</code> and <code>ENABLE_SLOW_TESTS</code> default to <code>ON</code>. There are currently eight CTest entries: <code>util_tests</code>, <code>threadpool_tests</code>, <code>memory_manager_tests</code>, <code>scroom_lib_tests</code>, <code>tiledbitmap_tests</code>, <code>sppipette_tests</code>, <code>transparentoverlay_tests</code>, and <code>ruler_tests</code>.</p>
 <p>Disabling <code>ENABLE_SLOW_TESTS</code> removes the threadpool suite from CTest registration; it does not merely filter individual slow cases. Reconfigure to change options.</p>
 <h1><a class="anchor" id="autotoc_md4"></a>
@@ -119,6 +121,7 @@ Run the application without installing</h1>
 <p>Installation resource and plugin paths are compiled in, so choose the installation prefix before building. Clear the development environment variables when testing an installation.</p>
 <h1><a class="anchor" id="autotoc_md5"></a>
 Code map and checks</h1>
+<p>Names must accurately communicate responsibility. Distinguish values from objects that operate on those values. Flag misleading existing names when they affect your work. If the responsibility is unclear, ask before introducing or propagating names. Apply the naming guidance in the <code>code-changes</code> skill when changing code.</p>
 <ul>
 <li><code>gui/src/</code>: startup, plugin loading, GTK callbacks, and views; <code>gui/scroom.glade</code>: UI; <code>gui/ruler/</code>: ruler widget and tests.</li>
 <li><code>libs/</code>: utility/context types, threadpool, memory manager, tiled bitmap, shared viewer logic, and plugin interfaces. Public headers live under the corresponding library's <code>inc/scroom/</code> directory.</li>

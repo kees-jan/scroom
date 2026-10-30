@@ -1,15 +1,7 @@
 <map id="Scroom::Utils::ViewportPositionTextBox::create" name="Scroom::Utils::ViewportPositionTextBox::create">
-<area shape="rect" id="Node000001" title=" " alt="" coords="344,81,571,121"/>
-<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#aa6527a49e093bcb36e606fe5bfcaadad" title=" " alt="" coords="109,51,295,91"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="330,89,295,85,296,79,330,83"/>
-<area shape="rect" id="Node000004" href="$tweak-view__test_8cc.html#acff8d067b782ebc8120c1d2077b4dbbb" title=" " alt="" coords="5,5,60,31"/>
-<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="400,78,350,58,295,42,230,30,164,24,60,20,60,15,164,19,230,25,297,37,352,53,402,73"/>
-<area shape="rect" id="Node000005" href="$tweak-view__test_8cc.html#a85265fffd6265bcf4928597a65a4f256" title=" " alt="" coords="5,112,60,137"/>
-<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="330,111,61,126,60,121,330,105"/>
-<area shape="rect" id="Node000006" href="$classTiledBitmap.html#a79dfef04e48f7a06ed70ac8b08295018" title=" " alt="" coords="108,167,296,192"/>
-<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="380,127,245,169,243,164,378,122"/>
-<area shape="rect" id="Node000003" href="$tweak-view__test_8cc.html#a600e7bf88b3377d744c839a1fc4c2dfe" title=" " alt="" coords="5,59,60,84"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="95,74,60,74,60,69,95,69"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="124,50,59,29,61,24,126,45"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="126,98,61,119,59,114,124,93"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="241,35,468,75"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#aa6527a49e093bcb36e606fe5bfcaadad" title=" " alt="" coords="6,5,193,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="227,43,193,39,193,33,228,37"/>
+<area shape="rect" id="Node000003" href="$classTiledBitmap.html#a79dfef04e48f7a06ed70ac8b08295018" title=" " alt="" coords="5,70,193,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="228,71,194,75,193,70,227,66"/>
 </map>

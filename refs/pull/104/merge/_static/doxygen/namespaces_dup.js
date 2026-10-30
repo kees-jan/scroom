@@ -69,10 +69,7 @@ var namespaces_dup =
     [ "anonymous_namespace{transparentoverlayviewinfo.cc}", "namespaceanonymous__namespace_02transparentoverlayviewinfo_8cc_03.html", [
       [ "setToggleButtonColor", "namespaceanonymous__namespace_02transparentoverlayviewinfo_8cc_03.html#a706649399a1cf1938cfbfed014fd3917", null ]
     ] ],
-    [ "anonymous_namespace{tweak-view_test.cc}", "namespaceanonymous__namespace_02tweak-view__test_8cc_03.html", [
-      [ "expectPoint", "namespaceanonymous__namespace_02tweak-view__test_8cc_03.html#a0c13f3049d5c185ceeedc0c335c28153", null ],
-      [ "expectSelection", "namespaceanonymous__namespace_02tweak-view__test_8cc_03.html#a288ccc900d471d4fadc448a809c6488f", null ]
-    ] ],
+    [ "anonymous_namespace{tweak-view_test.cc}", "namespaceanonymous__namespace_02tweak-view__test_8cc_03.html", "namespaceanonymous__namespace_02tweak-view__test_8cc_03" ],
     [ "anonymous_namespace{view.cc}", "namespaceanonymous__namespace_02view_8cc_03.html", [
       [ "eventToPoint", "namespaceanonymous__namespace_02view_8cc_03.html#ac2ade1a4095158be9e06ab085168e2ad", null ],
       [ "eventToPoint", "namespaceanonymous__namespace_02view_8cc_03.html#a1ab23fe43b4b1aaecbd16e2d087776ae", null ],

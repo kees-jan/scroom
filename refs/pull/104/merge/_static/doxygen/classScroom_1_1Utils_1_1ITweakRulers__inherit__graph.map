@@ -1,11 +1,13 @@
 <map id="Scroom::Utils::ITweakRulers" name="Scroom::Utils::ITweakRulers">
-<area shape="rect" id="Node000001" title=" " alt="" coords="223,219,417,284"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="336,219,531,284"/>
 <area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1AspectRatioRulers.html" title=" " alt="" coords="5,332,192,472"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="263,294,194,340,191,336,260,290"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="324,287,264,309,205,334,193,340,191,336,203,330,262,304,322,282"/>
 <area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1ViewportRulers.html" title=" " alt="" coords="216,359,424,445"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="323,298,323,359,317,359,317,298"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="403,296,354,361,350,358,399,293"/>
 <area shape="rect" id="Node000005" href="$classanonymous__namespace_02transformpresentation__test_8cc_03_1_1RulersTweakMock.html" title=" " alt="" coords="448,355,645,449"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="381,289,477,352,474,357,378,294"/>
-<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="266,5,374,171"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="323,184,323,219,317,219,317,184"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="468,293,513,353,509,356,464,297"/>
+<area shape="rect" id="Node000006" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1RulersChild.html" title=" " alt="" coords="670,355,842,449"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="545,283,602,304,659,330,696,352,694,357,656,334,600,309,543,288"/>
+<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="379,5,487,171"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="436,184,436,219,431,219,431,184"/>
 </map>

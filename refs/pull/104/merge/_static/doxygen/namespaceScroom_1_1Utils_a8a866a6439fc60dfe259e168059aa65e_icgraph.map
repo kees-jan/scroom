@@ -1,14 +1,20 @@
 <map id="Scroom::Utils::make_rect" name="Scroom::Utils::make_rect">
-<area shape="rect" id="Node000001" title=" " alt="" coords="3256,728,3441,753"/>
-<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="3393,719,3390,714,3382,710,3349,707,3322,709,3308,714,3305,719,3312,726,3308,730,3300,720,3304,710,3321,704,3349,701,3384,705,3394,710,3397,716"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="3256,797,3441,823"/>
+<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="3393,788,3390,783,3382,780,3349,776,3322,778,3308,783,3305,788,3312,795,3308,799,3300,789,3304,779,3321,773,3349,771,3384,775,3394,779,3397,785"/>
 <area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a88b4b5193ea6b4854d3043b80de6c7a4" title=" " alt="" coords="3007,649,3193,675"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="3304,725,3207,690,3160,677,3162,672,3209,685,3306,720"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="3326,789,3275,738,3242,712,3207,690,3175,677,3177,672,3209,685,3245,707,3279,734,3330,785"/>
 <area shape="rect" id="Node000003" href="$classView.html#a7a4cd04a39fff643d73565bfeaa058c2" title=" " alt="" coords="3047,699,3153,724"/>
-<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="3242,731,3153,720,3154,715,3243,725"/>
-<area shape="rect" id="Node000042" href="$classScroom_1_1Utils_1_1ViewportRulers.html#a080519010dac465205e1b69c86934ccf" title=" " alt="" coords="2992,749,3208,789"/>
-<area shape="poly" id="edge54_Node000001_Node000042" title=" " alt="" coords="3242,755,3209,759,3208,754,3242,750"/>
-<area shape="rect" id="Node000043" href="$classScroom_1_1Utils_1_1AspectRatioRulers.html#a9ac95cf21f8861adcc9478fd37cb0e90" title=" " alt="" coords="3003,813,3197,853"/>
-<area shape="poly" id="edge55_Node000001_Node000043" title=" " alt="" coords="3309,762,3209,803,3173,815,3171,810,3207,798,3307,757"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="3314,792,3264,765,3207,739,3153,724,3154,718,3209,734,3267,760,3317,788"/>
+<area shape="rect" id="Node000042" href="$tweak-view__test_8cc.html#a521ce5b90f3b6c86a5a9efa70f9d03e1" title=" " alt="" coords="3065,748,3135,773"/>
+<area shape="poly" id="edge54_Node000001_Node000042" title=" " alt="" coords="3270,797,3134,770,3135,765,3271,792"/>
+<area shape="rect" id="Node000043" href="$tweak-view__test_8cc.html#a8fa4fe01ec78fd64e1279335ff367499" title=" " alt="" coords="3065,797,3135,823"/>
+<area shape="poly" id="edge55_Node000001_Node000043" title=" " alt="" coords="3242,813,3135,813,3135,807,3242,807"/>
+<area shape="rect" id="Node000044" href="$tweak-view__test_8cc.html#a561d1f0d8a770b0c5fc55153df7607c6" title=" " alt="" coords="3065,847,3135,872"/>
+<area shape="poly" id="edge56_Node000001_Node000044" title=" " alt="" coords="3271,828,3135,855,3134,850,3270,823"/>
+<area shape="rect" id="Node000045" href="$classScroom_1_1Utils_1_1ViewportRulers.html#a080519010dac465205e1b69c86934ccf" title=" " alt="" coords="2992,897,3208,937"/>
+<area shape="poly" id="edge57_Node000001_Node000045" title=" " alt="" coords="3316,832,3267,860,3209,887,3176,899,3175,894,3207,882,3264,855,3314,827"/>
+<area shape="rect" id="Node000046" href="$classScroom_1_1Utils_1_1AspectRatioRulers.html#a9ac95cf21f8861adcc9478fd37cb0e90" title=" " alt="" coords="3003,961,3197,1001"/>
+<area shape="poly" id="edge58_Node000001_Node000046" title=" " alt="" coords="3332,836,3281,893,3247,924,3209,951,3185,963,3182,958,3207,946,3244,920,3277,889,3328,832"/>
 <area shape="rect" id="Node000004" href="$callbacks_8cc.html#ae774492ed1bbe65c2041bf593ef6bb8f" title=" " alt="" coords="2764,691,2944,731"/>
 <area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="3033,714,2944,714,2944,709,3033,709"/>
 <area shape="rect" id="Node000005" href="$callbacks_8cc.html#a19dc44b0b71d02dc59a3c16fdf3fe48b" title=" " alt="" coords="2597,699,2716,724"/>

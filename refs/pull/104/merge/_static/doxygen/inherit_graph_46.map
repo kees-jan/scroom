@@ -1,19 +1,43 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="Node000000" href="$classScroom_1_1GtkTestHelpers_1_1GtkMainLoop.html" title=" " alt="" coords="5,5,184,45"/>
-<area shape="rect" id="Node000001" href="$classPipette__Tests.html" title=" " alt="" coords="283,13,391,38"/>
-<area shape="poly" id="edge46_Node000000_Node000001" title=" " alt="" coords="198,23,283,23,283,28,198,28"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="44,161,145,186"/>
-<area shape="poly" id="edge50_Node000002_Node000001" title=" " alt="" coords="113,148,162,97,195,70,231,47,256,37,282,30,283,35,258,42,233,52,198,74,166,101,117,152"/>
-<area shape="rect" id="Node000003" href="$classContextTests.html" title=" " alt="" coords="283,62,390,87"/>
-<area shape="poly" id="edge47_Node000002_Node000003" title=" " alt="" coords="125,151,174,123,231,96,282,81,284,86,233,101,176,127,128,156"/>
-<area shape="rect" id="Node000004" href="$classLoggerTests.html" title=" " alt="" coords="287,111,386,137"/>
-<area shape="poly" id="edge48_Node000002_Node000004" title=" " alt="" coords="158,158,286,131,288,137,159,163"/>
-<area shape="rect" id="Node000005" href="$classParentContextTests.html" title=" " alt="" coords="263,161,410,186"/>
-<area shape="poly" id="edge49_Node000002_Node000005" title=" " alt="" coords="159,171,263,171,263,176,159,176"/>
-<area shape="rect" id="Node000006" href="$classProgressInterfaceMultiplexer__Tests.html" title=" " alt="" coords="232,211,441,251"/>
-<area shape="poly" id="edge51_Node000002_Node000006" title=" " alt="" coords="159,186,252,208,251,213,158,191"/>
-<area shape="rect" id="Node000007" href="$classRectangle__and__Segment__TypedTests.html" title=" " alt="" coords="241,275,432,315"/>
-<area shape="poly" id="edge52_Node000002_Node000007" title=" " alt="" coords="124,192,174,227,233,260,263,272,261,277,231,265,171,231,121,197"/>
-<area shape="rect" id="Node000008" href="$classSingleContextTests.html" title=" " alt="" coords="263,339,410,365"/>
-<area shape="poly" id="edge53_Node000002_Node000008" title=" " alt="" coords="113,197,161,261,195,296,233,324,264,338,262,343,231,329,192,300,157,265,109,200"/>
+<area shape="rect" id="Node000001" href="$classPipette__Tests.html" title=" " alt="" coords="323,13,431,38"/>
+<area shape="poly" id="edge46_Node000000_Node000001" title=" " alt="" coords="198,23,322,23,322,28,198,28"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="44,561,145,586"/>
+<area shape="poly" id="edge50_Node000002_Node000001" title=" " alt="" coords="96,547,112,438,139,288,157,211,178,142,203,85,230,47,251,33,274,24,322,18,323,24,276,30,253,38,234,51,207,88,183,144,162,213,144,289,117,439,102,547"/>
+<area shape="rect" id="Node000003" href="$classContextTests.html" title=" " alt="" coords="323,62,430,87"/>
+<area shape="poly" id="edge47_Node000002_Node000003" title=" " alt="" coords="97,546,114,447,143,311,161,243,182,181,205,131,230,97,251,83,275,74,323,68,323,73,276,79,254,87,234,101,209,133,187,183,166,244,148,312,119,448,102,547"/>
+<area shape="rect" id="Node000004" href="$classLoggerTests.html" title=" " alt="" coords="327,111,426,137"/>
+<area shape="poly" id="edge48_Node000002_Node000004" title=" " alt="" coords="93,547,97,468,104,415,115,358,133,300,157,243,189,191,230,146,252,132,277,123,327,117,327,123,278,128,255,137,234,150,193,194,161,246,138,302,121,360,109,416,103,468,98,547"/>
+<area shape="rect" id="Node000005" href="$classParentContextTests.html" title=" " alt="" coords="303,161,450,186"/>
+<area shape="poly" id="edge49_Node000002_Node000005" title=" " alt="" coords="94,547,102,476,123,381,140,330,163,281,193,236,230,197,265,178,303,169,304,174,267,183,234,201,197,239,168,283,145,332,128,382,107,477,100,547"/>
+<area shape="rect" id="Node000006" href="$classProgressInterfaceMultiplexer__Tests.html" title=" " alt="" coords="272,211,481,251"/>
+<area shape="poly" id="edge51_Node000002_Node000006" title=" " alt="" coords="97,546,109,487,133,409,150,369,172,329,198,292,230,261,250,248,271,239,273,244,252,253,234,265,202,296,176,332,155,371,138,411,114,488,102,547"/>
+<area shape="rect" id="Node000007" href="$classRectangle__and__Segment__TypedTests.html" title=" " alt="" coords="281,275,472,315"/>
+<area shape="poly" id="edge52_Node000002_Node000007" title=" " alt="" coords="100,547,116,499,142,438,179,377,203,349,230,325,254,311,280,301,282,306,257,315,234,329,207,352,184,380,146,441,121,501,105,548"/>
+<area shape="rect" id="Node000008" href="$classSingleContextTests.html" title=" " alt="" coords="303,339,450,365"/>
+<area shape="poly" id="edge53_Node000002_Node000008" title=" " alt="" coords="103,547,121,507,149,460,185,413,207,392,231,374,266,358,303,350,304,356,267,363,233,378,210,396,189,416,153,463,126,510,108,549"/>
+<area shape="rect" id="Node000009" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioPositionTextBoxTest.html" title=" " alt="" coords="257,389,496,443"/>
+<area shape="poly" id="edge54_Node000002_Node000009" title=" " alt="" coords="114,549,164,500,196,474,231,452,256,441,258,446,233,457,199,479,167,504,118,552"/>
+<area shape="rect" id="Node000010" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioPresentationPositionTest.html" title=" " alt="" coords="243,467,511,522"/>
+<area shape="poly" id="edge55_Node000002_Node000010" title=" " alt="" coords="150,554,231,531,272,519,273,525,233,536,152,559"/>
+<area shape="rect" id="Node000011" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioRulersTest.html" title=" " alt="" coords="287,546,467,601"/>
+<area shape="poly" id="edge56_Node000002_Node000011" title=" " alt="" coords="160,571,286,571,286,576,160,576"/>
+<area shape="rect" id="Node000012" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioSelectionTest.html" title=" " alt="" coords="279,625,474,679"/>
+<area shape="poly" id="edge57_Node000002_Node000012" title=" " alt="" coords="154,587,233,609,280,623,279,628,231,615,153,592"/>
+<area shape="rect" id="Node000013" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakPresentationPositionTest.html" title=" " alt="" coords="237,703,516,758"/>
+<area shape="poly" id="edge58_Node000002_Node000013" title=" " alt="" coords="118,594,168,642,199,667,233,688,261,701,259,706,231,693,196,671,164,646,115,598"/>
+<area shape="rect" id="Node000014" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakSelectionTest.html" title=" " alt="" coords="274,782,479,837"/>
+<area shape="poly" id="edge59_Node000002_Node000014" title=" " alt="" coords="109,598,128,635,155,681,190,728,234,767,275,788,273,793,230,772,186,731,151,684,123,638,104,600"/>
+<area shape="rect" id="Node000015" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1ExpandSelectionsToPixelBoundariesTest.html" title=" " alt="" coords="232,861,521,915"/>
+<area shape="poly" id="edge60_Node000002_Node000015" title=" " alt="" coords="104,599,118,651,144,718,182,787,206,819,234,846,252,858,249,863,230,850,202,822,177,790,139,721,113,653,99,600"/>
+<area shape="rect" id="Node000016" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1PixelAlignPresentationPositionsTest.html" title=" " alt="" coords="246,939,507,994"/>
+<area shape="poly" id="edge61_Node000002_Node000016" title=" " alt="" coords="101,599,111,665,133,753,150,800,173,845,200,888,234,925,250,937,247,941,230,929,196,891,168,848,145,802,128,755,106,666,96,600"/>
+<area shape="rect" id="Node000017" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1SnapSelectionsToGridTest.html" title=" " alt="" coords="279,1018,475,1073"/>
+<area shape="poly" id="edge62_Node000002_Node000017" title=" " alt="" coords="99,599,104,678,111,730,123,787,140,845,163,903,194,957,234,1003,255,1019,280,1030,277,1035,252,1024,230,1007,190,960,159,905,135,847,118,788,106,731,99,679,93,600"/>
+<area shape="rect" id="Node000018" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsAsRectanglesTest.html" title=" " alt="" coords="251,1097,503,1151"/>
+<area shape="poly" id="edge63_Node000002_Node000018" title=" " alt="" coords="102,599,119,705,147,850,165,924,186,991,209,1045,234,1082,252,1096,249,1100,230,1086,204,1048,181,993,160,925,142,851,113,706,97,600"/>
+<area shape="rect" id="Node000019" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1ViewportPositionTextBoxTest.html" title=" " alt="" coords="267,1175,486,1230"/>
+<area shape="poly" id="edge64_Node000002_Node000019" title=" " alt="" coords="101,599,115,719,142,888,160,975,181,1053,206,1118,220,1142,234,1161,250,1174,268,1184,266,1189,247,1178,230,1165,215,1145,201,1120,176,1055,155,976,137,889,110,720,96,600"/>
+<area shape="rect" id="Node000020" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1ViewportRulersTest.html" title=" " alt="" coords="287,1254,467,1309"/>
+<area shape="poly" id="edge65_Node000002_Node000020" title=" " alt="" coords="100,599,112,734,137,927,155,1026,177,1117,203,1191,218,1219,234,1241,258,1259,287,1271,285,1276,256,1264,230,1245,213,1222,198,1193,171,1118,149,1027,131,928,107,734,95,600"/>
 </map>

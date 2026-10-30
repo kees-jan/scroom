@@ -1,5 +1,5 @@
 <map id="Scroom::Utils::roundCorners" name="Scroom::Utils::roundCorners">
-<area shape="rect" id="Node000001" title=" " alt="" coords="257,13,461,38"/>
-<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1GridSelection.html#ad380ade97f299ddbc72b3e15f780987a" title=" " alt="" coords="5,5,209,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="244,28,210,28,210,23,244,23"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="269,13,473,38"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1SnapSelectionsToGrid.html#a9b8a542ab9274d1402ec294611b86adc" title=" " alt="" coords="5,5,221,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="255,28,222,28,222,23,255,23"/>
 </map>
