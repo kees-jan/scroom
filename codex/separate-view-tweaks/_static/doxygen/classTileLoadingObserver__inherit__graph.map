@@ -1,0 +1,9 @@
+<map id="TileLoadingObserver" name="TileLoadingObserver">
+<area shape="rect" id="Node000001" title=" " alt="" coords="93,219,241,284"/>
+<area shape="rect" id="Node000003" href="$classTileViewState.html" title=" " alt="" coords="5,332,145,757"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="156,298,145,333,140,331,151,296"/>
+<area shape="rect" id="Node000004" href="$classTiledBitmapViewData.html" title=" " alt="" coords="170,362,351,727"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="184,297,205,361,200,363,179,298"/>
+<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="113,5,221,171"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,184,170,219,165,219,165,184"/>
+</map>

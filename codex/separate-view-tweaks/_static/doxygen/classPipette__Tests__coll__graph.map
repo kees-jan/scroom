@@ -1,0 +1,9 @@
+<map id="Pipette_Tests" name="Pipette_Tests">
+<area shape="rect" id="Node000001" title=" " alt="" coords="157,383,257,448"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1GtkTestHelpers_1_1GtkMainLoop.html" title=" " alt="" coords="5,133,176,333"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,344,189,381,184,384,160,347"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="49,5,133,71"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="93,71,93,117,88,117,88,71"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="200,201,293,266"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="239,280,216,383,211,381,234,279"/>
+</map>

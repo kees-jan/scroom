@@ -1,0 +1,11 @@
+<map id="SelectionType::PIXEL" name="SelectionType::PIXEL">
+<area shape="rect" id="Node000001" title=" " alt="" coords="292,80,448,105"/>
+<area shape="rect" id="Node000002" href="$classPipetteHandler.html#a0016d253047c595bb418a1808bed8f50" title=" " alt="" coords="5,5,244,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="328,77,243,45,199,33,200,28,245,39,330,72"/>
+<area shape="rect" id="Node000003" href="$transformpresentation__test_8cc.html#adc07e7658b215487939040cdc3967395" title=" " alt="" coords="97,55,152,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="278,86,152,73,153,67,278,81"/>
+<area shape="rect" id="Node000004" href="$transformpresentation__test_8cc.html#a7c2154669691a7433372a2e941ef5fc6" title=" " alt="" coords="97,104,152,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="278,104,153,117,152,111,278,99"/>
+<area shape="rect" id="Node000005" href="$classTiledBitmap.html#a79dfef04e48f7a06ed70ac8b08295018" title=" " alt="" coords="31,153,219,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="328,113,245,143,195,156,193,151,243,138,326,108"/>
+</map>

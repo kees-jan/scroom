@@ -1,0 +1,20 @@
+<map id="Scroom::Utils::AspectRatioRulers" name="Scroom::Utils::AspectRatioRulers">
+<area shape="rect" id="Node000001" title=" " alt="" coords="160,625,347,745"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1ITweakRulers.html" title=" " alt="" coords="5,227,200,293"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,306,97,360,98,426,108,495,118,529,130,561,151,594,177,623,173,627,147,597,126,564,112,531,103,496,93,426,91,360,94,306"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="140,430,367,495"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="129,291,222,415,218,418,124,295"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="49,5,157,171"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="105,185,105,227,100,227,100,185"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="256,496,256,609,251,609,251,496"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Point.html" title=" " alt="" coords="414,363,557,563"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="416,534,329,616,325,612,412,530"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="225,220,383,300"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="351,309,416,380,412,384,347,312"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="408,220,563,300"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="488,314,488,363,483,363,483,314"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="587,220,797,300"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="644,312,559,394,555,390,640,308"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="821,220,1021,300"/>
+<area shape="poly" id="edge9_Node000005_Node000009" title=" " alt="" coords="826,308,558,431,556,426,823,303"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="Scroom::Utils::Rectangle::intersection" name="Scroom::Utils::Rectangle::intersection">
+<area shape="rect" id="Node000001" title=" " alt="" coords="280,110,463,150"/>
+<area shape="rect" id="Node000002" href="$classPipetteHandler.html#ac4ac7ffa0a4d50b2da677b623cd2f479" title=" " alt="" coords="5,5,232,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="331,104,285,73,231,46,192,33,194,28,233,41,287,69,334,100"/>
+<area shape="rect" id="Node000003" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a142fbdb6f783a07b6a90b3da46cc17f4" title=" " alt="" coords="8,55,229,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="266,116,229,110,230,105,267,111"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Rectangle.html#a6cb8acb8565a301acb295057c8ee0ec3" title=" " alt="" coords="27,149,210,189"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="267,149,211,157,210,152,266,143"/>
+<area shape="rect" id="Node000005" href="$classTiledBitmap.html#a98c2d60fc0736a77ab18aeeb461a1da8" title=" " alt="" coords="41,213,196,239"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="326,159,282,182,233,203,190,216,188,211,231,198,279,178,323,155"/>
+</map>

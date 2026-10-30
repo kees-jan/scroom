@@ -1,0 +1,20 @@
+<map id="Scroom::Utils::AspectRatioPositionTextBox" name="Scroom::Utils::AspectRatioPositionTextBox">
+<area shape="rect" id="Node000001" title=" " alt="" coords="146,645,367,785"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1ITweakPositionTextBox.html" title=" " alt="" coords="5,220,212,320"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,334,102,389,105,452,115,518,135,582,154,614,178,644,173,647,149,617,130,584,110,520,99,453,97,389,99,334"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="145,443,368,523"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="145,319,222,428,218,431,141,322"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="55,5,163,171"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="111,185,111,220,106,220,106,185"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="259,523,259,629,254,629,254,523"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Point.html" title=" " alt="" coords="425,383,568,583"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="427,554,342,636,338,632,423,550"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="236,230,395,310"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="360,319,427,397,423,400,356,322"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="419,230,574,310"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="499,324,499,382,494,382,494,324"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="598,230,809,310"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="657,322,570,410,566,407,653,318"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="833,230,1033,310"/>
+<area shape="poly" id="edge9_Node000005_Node000009" title=" " alt="" coords="841,318,569,449,567,445,839,314"/>
+</map>

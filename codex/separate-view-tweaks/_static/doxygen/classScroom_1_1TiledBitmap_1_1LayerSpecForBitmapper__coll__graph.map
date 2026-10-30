@@ -1,0 +1,15 @@
+<map id="Scroom::TiledBitmap::LayerSpecForBitmapper" name="Scroom::TiledBitmap::LayerSpecForBitmapper">
+<area shape="rect" id="Node000001" title=" " alt="" coords="119,632,313,772"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Logger.html" title=" " alt="" coords="72,464,187,569"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="156,568,179,616,174,618,151,571"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,336,253,401"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="132,402,132,447,127,447,127,402"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1LoggerContainer.html" title=" " alt="" coords="40,148,219,273"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="132,273,132,320,127,320,127,273"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="13,13,97,78"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="71,77,97,132,92,134,67,79"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="121,5,290,85"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="190,87,167,134,163,132,185,85"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="211,477,397,557"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="288,558,259,618,254,616,283,556"/>
+</map>

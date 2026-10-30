@@ -1,0 +1,11 @@
+<map id="TileViewState::kick" name="TileViewState::kick">
+<area shape="rect" id="Node000001" title=" " alt="" coords="256,80,403,105"/>
+<area shape="rect" id="Node000002" href="$classTileViewState.html#a43721fbbadd022ad3a1b2e4c228500f4" title=" " alt="" coords="31,5,183,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="288,77,207,45,167,33,169,28,209,39,290,72"/>
+<area shape="rect" id="Node000003" href="$classTileViewState.html#ab946d1b3c985c010c2b5fe2f6c082019" title=" " alt="" coords="5,55,208,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="242,85,208,82,208,76,243,80"/>
+<area shape="rect" id="Node000004" href="$classTileViewState.html#a01f7da254affbddd50ab7f2d1c5ad4c2" title=" " alt="" coords="17,104,196,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="243,105,197,110,196,104,242,99"/>
+<area shape="rect" id="Node000005" href="$classTileViewState.html#a4a3045d55976207bb1ffb8a0fe890cb2" title=" " alt="" coords="13,153,201,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="288,113,209,143,165,156,163,151,207,138,286,108"/>
+</map>
