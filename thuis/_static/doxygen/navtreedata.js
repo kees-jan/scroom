@@ -80,16 +80,16 @@ var NAVTREEINDEX =
 "classScroom_1_1Utils_1_1ProgressInterfaceBroadcaster.html#a008bf0598859d539e2f58649cc714f79",
 "classScroom_1_1Utils_1_1Rectangle.html#a94801f893685dd3f231a75d94e6a6dd1",
 "classShowMetadataInterface.html#a9ec0e57345be0dfe24e1e48148f6575d",
-"classTiledBitmapViewData.html#a57c5017fa0fe0fd83afeb684bd65ee22",
-"classViewable.html#a8068b9af988bf0eb34fad7f8d0c79722",
-"color_8hh_source.html",
-"function-additor-tests_8cc.html#adac6ac96a35cd2d5c965d5b44870f9c9",
-"layerspecforbitmap_8cc.html#a22a1bb4f862ef52ed08042515ffca9da",
-"namespaceScroom_1_1Utils.html#a5efce18a40cfbf24e98a7484097b32e1",
-"parent-context_8hh_source.html",
-"rectangletests_8cc.html#a594b081649aa115b43644fed0322e07b",
-"sizedeterminer_8cc.html#aec3970e572bcc6e1975f38686a3669cf",
-"threadpool-tests_8cc.html"
+"classTiledBitmapViewData.html#a404733ec9c267e49eefc0ff3875033e3",
+"classViewable.html#a3e17fe21b5e7bdb916b5c7cbfc65ffbd",
+"color_8hh.html#aa1f249efeab2150f54f9455dd2fef207",
+"function-additor-tests_8cc.html#ad0b6d13183752d637def83ada863cd0b",
+"layerspecforbitmap_8cc.html#a05ababa66d7e8f138de17620da755ae3",
+"namespaceScroom_1_1Utils.html#a48fe4875696f302f134946068de62178",
+"parent-context_8cc.html",
+"rectangletests_8cc.html#a56cdfe08bff5a037d619105ccbea5a3b",
+"sizedeterminer_8cc.html",
+"threadpool-queueimpl-tests_8cc.html#add883d39bcbdc25464274c9434307ba3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

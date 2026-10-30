@@ -288,6 +288,7 @@ var annotated_dup =
     [ "TiledBitmap", "classTiledBitmap.html", "classTiledBitmap" ],
     [ "TiledBitmapInterface", "classTiledBitmapInterface.html", "classTiledBitmapInterface" ],
     [ "TiledBitmapViewData", "classTiledBitmapViewData.html", "classTiledBitmapViewData" ],
+    [ "TileGeometry", "classTileGeometry.html", "classTileGeometry" ],
     [ "TileInitialisationObserver", "classTileInitialisationObserver.html", "classTileInitialisationObserver" ],
     [ "TileLoadingObserver", "classTileLoadingObserver.html", "classTileLoadingObserver" ],
     [ "TileViewState", "classTileViewState.html", "classTileViewState" ],

@@ -1,5 +1,7 @@
 var NAVTREEINDEX15 =
 {
+"function-additor-tests_8cc.html#ad0b6d13183752d637def83ada863cd0b":[3,0,1,3,2,1,12],
+"function-additor-tests_8cc.html#ad71a095b7b3047087dba0532f9aee570":[3,0,1,3,2,1,18],
 "function-additor-tests_8cc.html#adac6ac96a35cd2d5c965d5b44870f9c9":[3,0,1,3,2,1,0],
 "function-additor-tests_8cc.html#ae28444654d1c36f6e9243358fdc3eb4f":[3,0,1,3,2,1,19],
 "function-additor-tests_8cc.html#aefbe44078a0a1740ec8d8adfae3e1446":[3,0,1,3,2,1,9],
@@ -247,7 +249,5 @@ var NAVTREEINDEX15 =
 "layeroperations_8cc.html#ae9b12e306e2dc44f64260dd98b2ee56e":[3,0,1,4,1,5,1],
 "layeroperations_8hh.html":[3,0,1,4,0,0,0],
 "layeroperations_8hh_source.html":[3,0,1,4,0,0,0],
-"layerspecforbitmap_8cc.html":[3,0,1,4,1,6],
-"layerspecforbitmap_8cc.html#a05ababa66d7e8f138de17620da755ae3":[3,0,1,4,1,6,2],
-"layerspecforbitmap_8cc.html#a168ea3c61b0d622ee3854eb09a4db0f0":[3,0,1,4,1,6,8]
+"layerspecforbitmap_8cc.html":[3,0,1,4,1,6]
 };

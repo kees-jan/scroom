@@ -1,5 +1,7 @@
 var NAVTREEINDEX16 =
 {
+"layerspecforbitmap_8cc.html#a05ababa66d7e8f138de17620da755ae3":[3,0,1,4,1,6,2],
+"layerspecforbitmap_8cc.html#a168ea3c61b0d622ee3854eb09a4db0f0":[3,0,1,4,1,6,8],
 "layerspecforbitmap_8cc.html#a22a1bb4f862ef52ed08042515ffca9da":[3,0,1,4,1,6,4],
 "layerspecforbitmap_8cc.html#a35eb5d0dba0fa7d585cf7d77b10947b3":[3,0,1,4,1,6,3],
 "layerspecforbitmap_8cc.html#a57ca2a55cf5fd640d3e3e3e2d59c4a62":[3,0,1,4,1,6,6],
@@ -247,7 +249,5 @@ var NAVTREEINDEX16 =
 "namespaceScroom_1_1Utils.html#a2f0b01cb3ac958356ac99bc37fbf7168":[0,0,23,12,37],
 "namespaceScroom_1_1Utils.html#a30f36549b95d51dd6817a6e93e451253":[0,0,23,12,61],
 "namespaceScroom_1_1Utils.html#a336b08377145525ad7740b47d618b161":[0,0,23,12,85],
-"namespaceScroom_1_1Utils.html#a3b9d64ee0deb4bfdfa03a1884bf7126c":[0,0,23,12,92],
-"namespaceScroom_1_1Utils.html#a48fe4875696f302f134946068de62178":[0,0,23,12,79],
-"namespaceScroom_1_1Utils.html#a4eff4a800754d2391c7ac5e04d1048d4":[0,0,23,12,36]
+"namespaceScroom_1_1Utils.html#a3b9d64ee0deb4bfdfa03a1884bf7126c":[0,0,23,12,92]
 };

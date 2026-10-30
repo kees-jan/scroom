@@ -4847,6 +4847,20 @@
     </member>
   </compound>
   <compound kind="file">
+    <name>tiled-bitmap-geometry-tests.cc</name>
+    <path>libs/tiled-bitmap/test/</path>
+    <filename>tiled-bitmap-geometry-tests_8cc.html</filename>
+    <includes id="tiled-bitmap-geometry_8hh" name="tiled-bitmap-geometry.hh" local="no" import="no" module="no" objc="no">scroom/tiled-bitmap-geometry.hh</includes>
+    <class kind="class">TileGeometry</class>
+    <member kind="function">
+      <type></type>
+      <name>INSTANTIATE_TEST_SUITE_P</name>
+      <anchorfile>tiled-bitmap-geometry-tests_8cc.html</anchorfile>
+      <anchor>aa119a4c6df8615bec3f2ef2d510c9292</anchor>
+      <arglist>(TileSizes, TileGeometry, testing::Values(8, 24, 64))</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
     <name>tiledbitmap-tests.cc</name>
     <path>libs/tiled-bitmap/test/</path>
     <filename>tiledbitmap-tests_8cc.html</filename>
@@ -22730,6 +22744,17 @@
       <name>destination</name>
       <anchorfile>structScroom_1_1TiledBitmap_1_1Geometry_1_1TileDrawAreas.html</anchorfile>
       <anchor>abdfb9580739b57849e0af512c6ac79c0</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>TileGeometry</name>
+    <filename>classTileGeometry.html</filename>
+    <member kind="variable" protection="protected">
+      <type>const int</type>
+      <name>tileSize</name>
+      <anchorfile>classTileGeometry.html</anchorfile>
+      <anchor>a7d495bd8bda6e7d97644ee719827535f</anchor>
       <arglist></arglist>
     </member>
   </compound>

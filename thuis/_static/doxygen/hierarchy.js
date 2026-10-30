@@ -449,6 +449,7 @@ var hierarchy =
     [ "testing::TestWithParam", null, [
       [ "SampleIterator_arithmetic", "classSampleIterator__arithmetic.html", null ],
       [ "SampleIterator_iterates", "classSampleIterator__iterates.html", null ],
+      [ "TileGeometry", "classTileGeometry.html", null ],
       [ "anonymous_namespace{colormaphelpers_test.cc}::ColormapHelper_Data_Tests", "classanonymous__namespace_02colormaphelpers__test_8cc_03_1_1ColormapHelper__Data__Tests.html", null ]
     ] ],
     [ "anonymous_namespace{threadpool.cc}::ThreadList", "classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html", null ],
