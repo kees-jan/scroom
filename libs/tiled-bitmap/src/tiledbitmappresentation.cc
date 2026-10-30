@@ -253,16 +253,16 @@ namespace
       return {};
     }
 
-    const auto tileRange = Geometry::samplingTileRange(intArea, TILESIZE);
+    const auto tileRange = Geometry::computeTileRangeForSampling(intArea, TILESIZE);
 
-    for(int x = tileRange.xBegin; x < tileRange.xEnd; x++)
+    for(int x = tileRange.getLeft(); x < tileRange.getRight(); x++)
     {
-      for(int y = tileRange.yBegin; y < tileRange.yEnd; y++)
+      for(int y = tileRange.getTop(); y < tileRange.getBottom(); y++)
       {
         ConstTile::Ptr const tile = bottomLayer->getTile(x, y)->getConstTileSync();
-        const auto origin = Geometry::tileOrigin({x, y}, TILESIZE);
+        const auto origin = Geometry::computeTileOrigin({x, y}, TILESIZE);
         Scroom::Utils::Rectangle<int> const tile_rectangle(origin.x, origin.y, tile->width, tile->height);
-        const auto inter_rect = Geometry::tileLocalIntersection(intArea, tile_rectangle);
+        const auto inter_rect = Geometry::computeTileLocalIntersection(intArea, tile_rectangle);
 
         pipetteColors = sumPipetteColors(pipetteColors, pipetteLayerOperation->sumPixelValues(inter_rect, tile));
       }

@@ -76,8 +76,8 @@ Layer::Layer(int depth_, int layerWidth, int layerHeight, int bpp, Scroom::Memor
   : depth(depth_)
   , width(layerWidth)
   , height(layerHeight)
-  , horTileCount(Geometry::tileCount(width, TILESIZE))
-  , verTileCount(Geometry::tileCount(height, TILESIZE))
+  , horTileCount(Geometry::computeTileCount(width, TILESIZE))
+  , verTileCount(Geometry::computeTileCount(height, TILESIZE))
   , pageProvider(std::move(provider))
 {
   for(int j = 0; j < verTileCount; j++)

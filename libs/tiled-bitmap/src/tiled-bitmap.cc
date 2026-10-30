@@ -104,7 +104,7 @@ TiledBitmap::TiledBitmap(int bitmapWidth_, int bitmapHeight_, LayerSpec ls_)
 
 void TiledBitmap::initialize(const Layer::Ptr& bottom)
 {
-  const auto sizes = Geometry::pyramidSizes({bitmapWidth, bitmapHeight}, TILESIZE / 4);
+  const auto sizes = Geometry::computePyramidSizes({bitmapWidth, bitmapHeight}, TILESIZE / 4);
   LayerOperations::Ptr lo = ls[0];
   Scroom::MemoryBlobs::PageProvider::Ptr const provider = bottom->getPageProvider();
 
@@ -151,7 +151,7 @@ void TiledBitmap::connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, 
 
   for(int j = 0; j < verTileCount; j++)
   {
-    const auto rowMapping = Geometry::reductionMapping({0, j});
+    const auto rowMapping = Geometry::computeReductionMapping({0, j});
     const int voffset = rowMapping.offset.y;
     if(!voffset)
     {
@@ -168,7 +168,7 @@ void TiledBitmap::connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, 
 
     for(int i = 0; i < horTileCount; i++)
     {
-      const auto mapping = Geometry::reductionMapping({i, j});
+      const auto mapping = Geometry::computeReductionMapping({i, j});
       LayerCoordinator::Ptr const lc = coordinators_[mapping.targetTile.x];
       lc->addSourceTile(mapping.offset.x, mapping.offset.y, prevLayer->getTile(i, j));
     }
@@ -212,31 +212,35 @@ void TiledBitmap::redraw(
 )
 {
   TiledBitmapViewData::Ptr const viewData_ = viewData[vi];
-  const auto selection = Geometry::selectLayer(presentationArea, zoom, layers.size());
+  const auto selection = Geometry::computeLayerSelection(presentationArea, zoom, layers.size());
   const auto layerNr = selection.layer;
   zoom = selection.zoom;
   const auto scaledRequestedPresentationArea = selection.area;
   Layer::Ptr const layer = layers[layerNr];
   LayerOperations::Ptr const layerOperations = ls[std::min(ls.size() - 1, layerNr)];
 
-  const auto tileRange = Geometry::redrawTileRange(scaledRequestedPresentationArea, TILESIZE);
+  const auto tileRange = Geometry::computeTileRangeForRedraw(scaledRequestedPresentationArea, TILESIZE);
 
-  viewData_->setNeededTiles(layer, tileRange.xBegin, tileRange.xEnd, tileRange.yBegin, tileRange.yEnd, zoom, layerOperations);
+  viewData_->setNeededTiles(
+    layer, tileRange.getLeft(), tileRange.getRight(), tileRange.getTop(), tileRange.getBottom(), zoom, layerOperations
+  );
 
   const double pixelSize = pixelSizeFromZoom(zoom);
 
   layerOperations->initializeCairo(cr);
 
-  const auto clippedRequestedPresentationArea = Geometry::clippedDrawArea(scaledRequestedPresentationArea, layer->getRect());
+  const auto clippedRequestedPresentationArea =
+    Geometry::computeClippedDrawArea(scaledRequestedPresentationArea, layer->getRect());
 
-  for(int i = tileRange.xBegin; i < tileRange.xEnd; i++)
+  for(int i = tileRange.getLeft(); i < tileRange.getRight(); i++)
   {
-    for(int j = tileRange.yBegin; j < tileRange.yEnd; j++)
+    for(int j = tileRange.getTop(); j < tileRange.getBottom(); j++)
     {
       Scroom::Utils::Point<int> const tileIndex(i, j);
 
-      const auto areas =
-        Geometry::tileDrawAreas(clippedRequestedPresentationArea, Geometry::tileRectangle(tileIndex, TILESIZE), pixelSize);
+      const auto areas = Geometry::computeTileDrawAreas(
+        clippedRequestedPresentationArea, Geometry::computeTileRectangle(tileIndex, TILESIZE), pixelSize
+      );
 
       CompressedTile::Ptr const tile = layer->getTile(i, j);
       TileViewState::Ptr const tileViewState = tile->getViewState(vi);

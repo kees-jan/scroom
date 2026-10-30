@@ -7,61 +7,90 @@
 
 #include <algorithm>
 
+#include <scroom/assertions.hh>
 #include <scroom/tiled-bitmap-geometry.hh>
 
 namespace Scroom::TiledBitmap::Geometry
 {
-  std::vector<Point<int>> pyramidSizes(Point<int> bottomSize, int minimumReducedDimension)
+  Rectangle<int> computeReducedBounds(Rectangle<int> imageBounds)
   {
-    std::vector<Point<int>> sizes{bottomSize};
-    int width = (bottomSize.x + 7) / 8;
-    int height = (bottomSize.y + 7) / 8;
-    while(std::max(width, height) > minimumReducedDimension)
+    if(imageBounds.isEmpty())
     {
-      sizes.emplace_back(width, height);
-      width = (width + 7) / 8;
-      height = (height + 7) / 8;
+      return {};
+    }
+    return roundOutward(Rectangle<double>(imageBounds) / 8).to<int>();
+  }
+
+  std::vector<Point<int>> computePyramidSizes(Point<int> bottomSize, int minimumReducedDimension)
+  {
+    require(bottomSize.x >= 0 && bottomSize.y >= 0);
+    require(minimumReducedDimension > 0);
+    std::vector<Point<int>> sizes{bottomSize};
+    auto bounds = computeReducedBounds(Rectangle<int>(0, 0, bottomSize.x, bottomSize.y));
+    while(std::max(bounds.getWidth(), bounds.getHeight()) > minimumReducedDimension)
+    {
+      sizes.emplace_back(bounds.getWidth(), bounds.getHeight());
+      bounds = computeReducedBounds(bounds);
     }
     return sizes;
   }
 
-  int tileCount(int size, int tileSize) { return (size + tileSize - 1) / tileSize; }
-
-  Point<int> tileOrigin(Point<int> tileIndex, int tileSize) { return tileIndex * tileSize; }
-
-  Rectangle<int> tileRectangle(Point<int> tileIndex, int tileSize) { return (Rectangle<int>(0, 0, 1, 1) + tileIndex) * tileSize; }
-
-  TileRange redrawTileRange(Rectangle<double> layerArea, int tileSize)
+  int computeTileCount(int size, int tileSize)
   {
+    require(size >= 0);
+    require(tileSize > 0);
+    return ceiled_divide_by(size, tileSize);
+  }
+
+  Point<int> computeTileOrigin(Point<int> tileIndex, int tileSize)
+  {
+    require(tileSize > 0);
+    return tileIndex * tileSize;
+  }
+
+  Rectangle<int> computeTileRectangle(Point<int> tileIndex, int tileSize)
+  {
+    require(tileSize > 0);
+    return (Rectangle<int>(0, 0, 1, 1) + tileIndex) * tileSize;
+  }
+
+  Rectangle<int> computeTileRangeForRedraw(Rectangle<double> layerArea, int tileSize)
+  {
+    require(tileSize > 0);
+    if(layerArea.isEmpty())
+    {
+      return {};
+    }
     const int left = layerArea.getLeft();
     const int top = layerArea.getTop();
     const int right = layerArea.getRight();
     const int bottom = layerArea.getBottom();
-    return {
-      std::max(0, left / tileSize),
-      (right + tileSize - 1) / tileSize,
-      std::max(0, top / tileSize),
-      (bottom + tileSize - 1) / tileSize
-    };
+    const int xBegin = std::max(0, floored_divide_by(left, tileSize));
+    const int yBegin = std::max(0, floored_divide_by(top, tileSize));
+    const int xEnd = ceiled_divide_by(right, tileSize);
+    const int yEnd = ceiled_divide_by(bottom, tileSize);
+    return {xBegin, yBegin, std::max(0, xEnd - xBegin), std::max(0, yEnd - yBegin)};
   }
 
-  TileRange samplingTileRange(Rectangle<int> layerArea, int tileSize)
+  Rectangle<int> computeTileRangeForSampling(Rectangle<int> layerArea, int tileSize)
   {
-    return {
-      layerArea.getLeft() / tileSize,
-      (layerArea.getRight() - 1) / tileSize + 1,
-      layerArea.getTop() / tileSize,
-      (layerArea.getBottom() - 1) / tileSize + 1
-    };
+    require(tileSize > 0);
+    if(layerArea.isEmpty())
+    {
+      return {};
+    }
+    return roundOutward(Rectangle<double>(layerArea) / tileSize).to<int>();
   }
 
-  ReductionMapping reductionMapping(Point<int> sourceTile)
+  ReductionMapping computeReductionMapping(Point<int> sourceTile)
   {
-    return {{sourceTile.x / 8, sourceTile.y / 8}, {sourceTile.x % 8, sourceTile.y % 8}};
+    const Point<int> targetTile(floored_divide_by(sourceTile.x, 8), floored_divide_by(sourceTile.y, 8));
+    return {targetTile, sourceTile - targetTile * 8};
   }
 
-  LayerSelection selectLayer(Rectangle<double> area, int zoom, std::size_t layerCount)
+  LayerSelection computeLayerSelection(Rectangle<double> area, int zoom, std::size_t layerCount)
   {
+    require(layerCount > 0);
     std::size_t layer = 0;
     while(zoom <= -3 && layer < layerCount - 1)
     {
@@ -72,20 +101,29 @@ namespace Scroom::TiledBitmap::Geometry
     return {layer, zoom, area};
   }
 
-  Rectangle<double> clippedDrawArea(Rectangle<double> requestedArea, Rectangle<int> imageBounds)
+  Rectangle<double> computeClippedDrawArea(Rectangle<double> requestedArea, Rectangle<int> imageBounds)
   {
     const auto validArea = requestedArea.intersection(imageBounds);
     return requestedArea.above(validArea.getBottom()).leftOf(validArea.getRight());
   }
 
-  TileDrawAreas tileDrawAreas(Rectangle<double> clippedLayerArea, Rectangle<int> tileBounds, double pixelSize)
+  TileDrawAreas computeTileDrawAreas(Rectangle<double> clippedLayerArea, Rectangle<int> tileBounds, double pixelSize)
   {
-    const auto visibleArea = tileBounds.intersection(clippedLayerArea);
-    return {tileLocalIntersection(clippedLayerArea, tileBounds), (visibleArea - clippedLayerArea.getTopLeft()) * pixelSize};
+    require(pixelSize > 0);
+    const auto source = computeTileLocalIntersection(clippedLayerArea, tileBounds);
+    if(source.isEmpty())
+    {
+      return {};
+    }
+    const auto visibleArea = source + Point<double>(tileBounds.getTopLeft());
+    return {source, (visibleArea - clippedLayerArea.getTopLeft()) * pixelSize};
   }
 
   LoadRow computeRowLayout(int tileRow, int imageHeight, int tileSize)
   {
-    return {tileRow * tileSize, std::min(tileSize, imageHeight - tileRow * tileSize)};
+    require(tileRow >= 0 && imageHeight >= 0);
+    require(tileSize > 0);
+    const int startLine = tileRow * tileSize;
+    return {startLine, std::max(0, std::min(tileSize, imageHeight - startLine))};
   }
 } // namespace Scroom::TiledBitmap::Geometry
