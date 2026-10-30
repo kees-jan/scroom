@@ -1,5 +1,18 @@
 # Local development guide
 
+## Maintaining instructions
+
+When updating skills or AGENTS.md, state the desired behavior directly. Add a
+prohibition only when it supplies necessary guidance beyond the positive
+instruction—for example, when overriding an established practice or a recurring
+agent tendency. Prefer a general decision rule over accumulating restrictions
+from individual mistakes.
+
+## Commits and merge requests
+
+When committing changes, pushing to GitHub, or creating or updating merge
+requests, apply [commits-and-merge-requests](.agents/skills/commits-and-merge-requests/SKILL.md).
+
 ## Project
 
 Scroom is a cross-platform C++23 GTK 3 image viewer with dynamically loaded
@@ -24,6 +37,11 @@ choice. The Debug build directory contains `bin/`,
 
 Use Ninja's default build parallelism; omit explicit job limits when building.
 
+When a sandboxed build fails because ccache cannot write to its usual location,
+request elevated sandbox permissions and rerun the normal preset build. Leave
+ccache enabled and its configuration unchanged; do not disable it or redirect
+its cache to work around sandbox restrictions.
+
 In-source builds are forbidden. Use a separate build directory when switching
 compilers. The `clang22-debug` preset builds and tests with Clang 22 and its
 default system standard library. Use its build tree for `clang-tidy-22`: Clang
@@ -33,22 +51,21 @@ tests as well as the GCC preset.
 
 ## Tests
 
-Build before running CTest. For headless sessions, supply a virtual display as in Linux CI.
+Build before running CTest. Run tests normally unless the session is known to
+be headless, such as a CI build; in that case, supply a virtual display as in
+Linux CI. When display availability is unknown, let the first normal test run
+establish whether display setup is needed.
 
 All test suites may run concurrently. Use the test presets' parallel settings
 without overriding them with an explicit job limit.
 
 GTK-dependent tests require a display even though these are unit tests. Xvfb
-also needs `xauth`. A `cannot open display` failure is an environment problem;
-check the display/Xvfb startup before investigating assertions.
+also needs `xauth`. If a normal test run reports `cannot open display`, address
+display availability before investigating assertions. When using Xvfb, check
+its startup if that error persists.
 
-`ENABLE_GOOGLE_TEST` and `ENABLE_SLOW_TESTS` default to `ON`. There are currently
-eight CTest entries: `util_tests`, `threadpool_tests`, `memory_manager_tests`,
-`scroom_lib_tests`, `tiledbitmap_tests`, `sppipette_tests`,
-`transparentoverlay_tests`, and `ruler_tests`.
-
-Disabling `ENABLE_SLOW_TESTS` removes the threadpool suite from CTest registration;
-it does not merely filter individual slow cases. Reconfigure to change options.
+If sandboxed tests cannot access an existing display, request elevated sandbox
+permissions and retry the normal CTest preset before considering Xvfb.
 
 ## Run the application without installing
 
@@ -76,6 +93,12 @@ prefix before building. Clear the development environment variables when testing
 an installation.
 
 ## Code map and checks
+
+Names must accurately communicate responsibility. Distinguish values from
+objects that operate on those values. Flag misleading existing names when they
+affect your work. If the responsibility is unclear, ask before introducing or
+propagating names. Apply the naming guidance in the `code-changes` skill when
+changing code.
 
 - `gui/src/`: startup, plugin loading, GTK callbacks, and views;
   `gui/scroom.glade`: UI; `gui/ruler/`: ruler widget and tests.
