@@ -112,7 +112,10 @@ target_link_libraries(
 
 if(ENABLE_GOOGLE_TEST)
   add_executable(tiledbitmap_tests)
-  target_sources(tiledbitmap_tests PRIVATE test/tiledbitmap-tests.cc test/sampleiterator-tests.cc)
+  target_sources(
+    tiledbitmap_tests PRIVATE test/tiledbitmap-tests.cc test/sampleiterator-tests.cc
+                              test/tiled-bitmap-geometry-tests.cc
+  )
   target_link_libraries(
     tiledbitmap_tests
     PRIVATE gmock_main
