@@ -1,6 +1,7 @@
 # Tiled bitmap refactoring plan
 
-Status: step 0 complete and accepted by the user. Step 1 has not started.
+Status: step 0 complete and accepted by the user. Step 1 implemented and
+validated; awaiting user review.
 
 ## Goal and boundary
 
@@ -133,6 +134,9 @@ must reach the correct location at every layer and zoom, without gaps, overlaps,
 axis swaps, shifts, or invalid pixels being presented as valid. Include pixel
 values and format conversions where geometry-only tests cannot prove fidelity.
 Use asymmetric patterns so incorrect mappings cannot pass through symmetry.
+Derive redraw requests from integer screen rectangles at power-of-two zooms
+and integer offsets. Do not require arbitrary fractional viewport sizes or
+non-power-of-two zoom factors.
 
 Treat tile size and pyramid cutoff as implementation choices. Express tile-edge
 cases relative to the configured tile size or a helper's tile-size argument;
@@ -209,8 +213,8 @@ clang-tidy checks apply to touched code. Do not run builds merely for this draft
   views, or pixel buffers. Prioritize parent/subregion mapping, residual zoom,
   visible source/destination rectangles, pipette intersections, and row layouts
   from `computeRowLayout()`. Check that mappings cover valid pixels exactly and preserve their
-  positions between layers. Include narrow images, partial edges, fractional
-  requests, and empty/disjoint intersections. Describe boundary cases relative
+  positions between layers. Include narrow images, partial edges, screen-derived
+  requests at power-of-two zooms, and empty/disjoint intersections. Describe boundary cases relative
   to the supplied tile size and reduction factor, rather than literal production
   dimensions. Do not lock down the pragmatic pyramid cutoff or default stack
   height. Use independently calculated examples and useful coverage/round-trip
@@ -218,6 +222,18 @@ clang-tidy checks apply to touched code. Do not run builds merely for this draft
   inputs and suspected defects instead of enshrining them as desired behavior.
   Add class-level tests later only for interactions that pure functions cannot
   establish.
+
+  Implementation: `test/tiled-bitmap-geometry-tests.cc` covers tile coverage,
+  sampling at tile edges, tile-local intersections, screen-derived source/view
+  rectangles at power-of-two zooms, image-edge clipping, reduction subregions, row layouts, and
+  layer selection with residual zoom. Tile-dependent cases run with three
+  small supplied tile sizes; no production tile size or pyramid cutoff is
+  asserted. Production geometry is unchanged.
+
+  Validation: both compiler presets build and pass all nine registered suites
+  directly on the desktop. Clang-tidy checked the new test source without
+  errors; nonfatal style warnings remain. Formatting and whitespace checks
+  pass. User review is pending.
 
 - [ ] **2. Establish reusable rounding and coordinate contracts.** Build on the
   extracted functions and their tests. Define half-open bounds, floor/ceiling
