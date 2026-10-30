@@ -1,0 +1,9 @@
+<map id="Scroom::Utils::PixelSelection" name="Scroom::Utils::PixelSelection">
+<area shape="rect" id="Node000001" title=" " alt="" coords="19,465,219,591"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1RoundedSelection.html" title=" " alt="" coords="5,332,232,417"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="121,431,121,465,116,465,116,431"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1ITweakSelection.html" title=" " alt="" coords="11,219,226,284"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="121,298,121,332,116,332,116,298"/>
+<area shape="rect" id="Node000004" href="$classInterface.html" title=" " alt="" coords="65,5,173,171"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="121,184,121,219,116,219,116,184"/>
+</map>

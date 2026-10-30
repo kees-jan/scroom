@@ -1,0 +1,15 @@
+<map id="Scroom::Utils::ViewportRulers::create" name="Scroom::Utils::ViewportRulers::create">
+<area shape="rect" id="Node000001" title=" " alt="" coords="344,81,560,121"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a6502ef22e3313382c1898a5ea4132c6c" title=" " alt="" coords="109,51,295,91"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="330,89,295,85,296,80,331,84"/>
+<area shape="rect" id="Node000004" href="$tweak-view__test_8cc.html#acff8d067b782ebc8120c1d2077b4dbbb" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="396,77,348,58,295,42,230,30,164,24,60,20,60,15,164,18,230,25,297,37,350,53,398,72"/>
+<area shape="rect" id="Node000005" href="$tweak-view__test_8cc.html#a0aff72b06a85f9b6c87f633e2b6a294d" title=" " alt="" coords="5,112,60,137"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="330,110,60,126,60,120,330,105"/>
+<area shape="rect" id="Node000006" href="$classTiledBitmap.html#a79dfef04e48f7a06ed70ac8b08295018" title=" " alt="" coords="108,167,296,192"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="375,127,244,169,243,164,374,122"/>
+<area shape="rect" id="Node000003" href="$tweak-view__test_8cc.html#a600e7bf88b3377d744c839a1fc4c2dfe" title=" " alt="" coords="5,59,60,84"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="95,74,60,74,60,69,95,69"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="124,50,59,29,61,24,126,45"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="126,98,61,119,59,114,124,93"/>
+</map>

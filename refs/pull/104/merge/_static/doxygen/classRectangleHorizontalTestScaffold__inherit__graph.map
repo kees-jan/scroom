@@ -1,0 +1,17 @@
+<map id="RectangleHorizontalTestScaffold" name="RectangleHorizontalTestScaffold">
+<area shape="rect" id="Node000001" title=" " alt="" coords="469,396,719,621"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html" title=" " alt="" coords="507,148,681,348"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="597,362,597,396,591,396,591,362"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,13,204,93"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="211,96,216,98,507,211,506,216,214,102,209,100"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="227,5,377,100"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="385,106,508,187,505,191,382,110"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="401,13,582,93"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="521,104,544,147,539,149,516,106"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="607,5,789,100"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="669,113,650,149,645,147,664,111"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="814,13,985,93"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="828,102,683,194,680,189,825,98"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="1009,5,1179,100"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="997,103,826,169,683,220,681,215,824,164,995,98"/>
+</map>

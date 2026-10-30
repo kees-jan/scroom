@@ -1,0 +1,7 @@
+<map id="Scroom::TiledBitmap::ColormappedBitmap" name="Scroom::TiledBitmap::ColormappedBitmap">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,27,169,67"/>
+<area shape="rect" id="Node000002" href="$classOperations.html#a59ca763acb5f4fc36330ad8add4f55ff" title=" " alt="" coords="236,5,379,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="169,34,222,27,222,32,170,39"/>
+<area shape="rect" id="Node000003" href="$classOperationsColormapped.html#a0b0991af5a7714e81ac4ea1845dc3910" title=" " alt="" coords="217,55,397,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="170,55,204,60,203,65,169,60"/>
+</map>

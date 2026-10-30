@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['b_0',['b',['../bookkeeping-tests_8cc.html#a9741bf9c6acf513df5628442c549563e',1,'b:&#160;bookkeeping-tests.cc'],['../threadpool-destruction-tests_8cc.html#a5b29a1a85baeab6c5df527588f7363c7',1,'b:&#160;threadpool-destruction-tests.cc'],['../blob-tests_8cc.html#a9741bf9c6acf513df5628442c549563e',1,'b:&#160;blob-tests.cc']]],
+  ['barrier2_1',['barrier2',['../async-deleter-tests_8cc.html#a0437b4ff5c5ca57e3e4a7dea9d0f4c68',1,'async-deleter-tests.cc']]],
+  ['basecache_2',['baseCache',['../classTileViewState.html#a701f3a8c289eed9861b45e612a7151b8',1,'TileViewState']]],
+  ['bcl_3',['bcl',['../layeroperations_8cc.html#ab88c659bf4f68d58f4c6f816d2f49f2b',1,'layeroperations.cc']]],
+  ['bfi_4',['bfi',['../swap-block-allocator-tests_8cc.html#ac211891a6662a9203ab8d09eb081a3fa',1,'swap-block-allocator-tests.cc']]],
+  ['bi_5',['bi',['../classScroom_1_1MemoryBlocks_1_1Page.html#a0bcb4f3885e803b421c7be3ae7235099',1,'Scroom::MemoryBlocks::Page::bi'],['../swap-block-allocator-tests_8cc.html#a13e91e875073af435eae0cad57eeb092',1,'bi:&#160;swap-block-allocator-tests.cc']]],
+  ['bit_5fdepths_6',['bit_depths',['../namespaceanonymous__namespace_02sampleiterator-tests_8cc_03.html#aa69fb4a20df5ff7d8dd3b9bd3b5dd1c1',1,'anonymous_namespace{sampleiterator-tests.cc}']]],
+  ['bitmap_7',['bitmap',['../tiledbitmap-tests_8cc.html#ac02f2a5443397984dcbb44f8c83281bf',1,'tiledbitmap-tests.cc']]],
+  ['bitmapheight_8',['bitmapHeight',['../classTiledBitmap.html#a31a9a9922388d64cdf7e0b726b87837c',1,'TiledBitmap']]],
+  ['bitmapwidth_9',['bitmapWidth',['../classTiledBitmap.html#a79651024b3ff749b0c3166ee717a260f',1,'TiledBitmap']]],
+  ['bitsperbase_10',['bitsPerBase',['../classScroom_1_1Bitmap_1_1SampleIterator.html#a206a33fab2247db4ec53460938b8287f',1,'Scroom::Bitmap::SampleIterator']]],
+  ['bitspersample_11',['bitsPerSample',['../structScroom_1_1TiledBitmap_1_1BitmapMetaData.html#a86250b9ade69c4581854e533283e582a',1,'Scroom::TiledBitmap::BitmapMetaData']]],
+  ['blackish_12',['blackish',['../classMonochromeColormapHelper.html#a8fa1230073c5c69150346be374976bb0',1,'MonochromeColormapHelper']]],
+  ['blob_13',['blob',['../classScroom_1_1MemoryBlobs_1_1Blob_1_1UnloadData.html#a5e72b7a4ac8edbcd1fd52f8781880f7e',1,'Scroom::MemoryBlobs::Blob::UnloadData']]],
+  ['blobcount_14',['blobCount',['../blob-tests_8cc.html#aa03742440fdfa0ad05a298ec12e9cf11',1,'blob-tests.cc']]],
+  ['bloblist_15',['blobList',['../blob-tests_8cc.html#a8cdff128f400551e0992668c7a26ea94',1,'blob-tests.cc']]],
+  ['blockcount_16',['blockcount',['../classScroom_1_1MemoryBlobs_1_1PageProvider.html#ab1363e6ae6618dd6ca0bfadd8fbb5648',1,'Scroom::MemoryBlobs::PageProvider::blockCount'],['../compression-tests_8cc.html#a8975c7ed38540966f5db2869677357b8',1,'blockCount:&#160;compression-tests.cc'],['../blob-tests_8cc.html#a8975c7ed38540966f5db2869677357b8',1,'blockCount:&#160;blob-tests.cc']]],
+  ['blockfactoryinterface_17',['blockFactoryInterface',['../classScroom_1_1MemoryBlobs_1_1PageProvider.html#a84a5b200bf3acb067e7560acbb6721d4',1,'Scroom::MemoryBlobs::PageProvider']]],
+  ['blocksize_18',['blocksize',['../classScroom_1_1MemoryBlobs_1_1PageProvider.html#a79ae98b3cf75b8717c890a6db16c3f22',1,'Scroom::MemoryBlobs::PageProvider::blockSize'],['../blob-tests_8cc.html#a1f0cf02a6be3d33424cb85c2f4158b3f',1,'blockSize:&#160;blob-tests.cc'],['../compression-tests_8cc.html#a1f0cf02a6be3d33424cb85c2f4158b3f',1,'blockSize:&#160;compression-tests.cc']]],
+  ['blue_19',['blue',['../namespaceanonymous__namespace_02colormaphelpers__test_8cc_03.html#aa0b842d6fc89cf62b5042ef409096537',1,'anonymous_namespace{colormaphelpers_test.cc}::Blue'],['../classColor.html#a0a35e5de46315db828b5bd56866d9fea',1,'Color::blue']]],
+  ['bmd_20',['bmd',['../classScroom_1_1Tiff_1_1Source.html#a776d232f4f62f2f22663562cf51a51bb',1,'Scroom::Tiff::Source::bmd'],['../classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a3c78f4e5c6b1ed9a2e91bd94042dae0c',1,'anonymous_namespace{tiledbitmappresentation.cc}::TiledBitmapPresentation::bmd']]],
+  ['bpp_21',['bpp',['../classCompressedTile.html#ae0acac9bbd3f7a6b402ba59ab5a2cd05',1,'CompressedTile::bpp'],['../classConstTile.html#a2baa3b6df07d32ff84a0b774def1da03',1,'ConstTile::bpp'],['../classTile.html#ab2d50dfc04db90f483e89dccba17a09d',1,'Tile::bpp'],['../classOperations.html#a18069b958a4e6e23bb9f0784f4ee3f90',1,'Operations::bpp']]],
+  ['bps_22',['bps',['../classPipetteCommonOperationsRGB.html#a55e94b30e388c51824d5c0e6dfb12c27',1,'PipetteCommonOperationsRGB::bps'],['../classPipetteCommonOperationsCMYK.html#a3fdc4e0f0a9f0a47e2e6522aa710f331',1,'PipetteCommonOperationsCMYK::bps'],['../classScroom_1_1Bitmap_1_1SampleIterator.html#a4ff8eac9c539fc4d054aee59a67e3e3a',1,'Scroom::Bitmap::SampleIterator::bps']]],
+  ['buttons_23',['buttons',['../classTransparentOverlayViewInfo.html#ab7afe5e192137e8f3cf1b5bc4243e82e',1,'TransparentOverlayViewInfo']]]
+];

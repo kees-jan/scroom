@@ -1,0 +1,14 @@
+<map id="Scroom::GtkHelpers::sync_on_ui_thread" name="Scroom::GtkHelpers::sync_on_ui_thread">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,93,157,133"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1GtkHelpers.html#a37a36328ffc6b0e7468a02d64724c21d" title=" " alt="" coords="205,53,364,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,98,191,93,192,98,158,104"/>
+<area shape="rect" id="Node000005" href="$namespaceScroom_1_1GtkHelpers.html#a2ade52a9fdfe46700036def64d00f9da" title=" " alt="" coords="415,121,567,161"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="158,116,402,133,401,138,157,121"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1" title=" " alt="" coords="412,5,571,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="364,56,402,46,403,51,365,62"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="365,101,411,115,409,120,364,106"/>
+<area shape="rect" id="Node000006" href="$function-additor-tests_8cc.html#a171d6ee6f5e4a249111a7ca7c7108209" title=" " alt="" coords="466,70,517,95"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="364,78,452,80,452,85,364,84"/>
+<area shape="rect" id="Node000004" href="$namespaceScroom_1_1GtkHelpers.html#ad5dcc56a509902bf106dbd6eb6a28964" title=" " alt="" coords="619,5,771,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="571,23,605,23,605,28,571,28"/>
+</map>

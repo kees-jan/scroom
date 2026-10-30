@@ -1,0 +1,15 @@
+<map id="ColormapHelper::createInverted" name="ColormapHelper::createInverted">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,236,80"/>
+<area shape="rect" id="Node000002" href="$classColormapHelper.html#a98be23aa876b37cc9cd8e7050a50266b" title=" " alt="" coords="284,29,461,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="236,53,270,50,271,55,236,58"/>
+<area shape="rect" id="Node000006" href="$classColormap.html#a88c8e6094d5e4f4251ac694c13e51874" title=" " alt="" coords="509,80,745,105"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="236,70,495,83,495,89,236,76"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="332,31,323,21,328,11,345,5,373,3,408,7,418,11,422,17,417,20,415,15,407,12,373,8,346,10,331,15,329,20,336,27"/>
+<area shape="rect" id="Node000003" href="$classColormap.html#afe589913d62741a00d269c5e72c3641b" title=" " alt="" coords="536,31,719,56"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="461,40,522,40,522,45,461,45"/>
+<area shape="rect" id="Node000004" href="$classColormap.html#a9966b8a719d851b5e28b6b99ec6d2245" title=" " alt="" coords="793,56,928,81"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="719,51,779,57,779,63,719,56"/>
+<area shape="rect" id="Node000005" href="$classColormap.html#afbda2916eb43f89f99512e951ca2c7de" title=" " alt="" coords="976,56,1132,81"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="928,66,962,66,962,71,928,71"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="745,78,779,74,780,80,746,83"/>
+</map>

@@ -1,0 +1,35 @@
+<map id="getPluginInformation" name="getPluginInformation">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,194,164,219"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1ColormapImpl_1_1ColormapPlugin.html#a94d22cfc63715968996cdc76786e4fe2" title=" " alt="" coords="212,5,395,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,192,136,128,171,89,210,55,220,49,222,54,214,59,174,93,140,131,96,195"/>
+<area shape="rect" id="Node000004" href="$classExample.html#a9c24aa1ca9d488eb7ecaa28e5997fa30" title=" " alt="" coords="239,70,367,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="97,192,144,149,176,125,211,104,227,97,229,102,213,109,179,129,147,153,100,196"/>
+<area shape="rect" id="Node000006" href="$classMeasure.html#a11a1285a1dfd1a41545b556e8b57a2b4" title=" " alt="" coords="240,119,367,145"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="114,191,211,153,236,146,238,151,213,159,116,196"/>
+<area shape="rect" id="Node000008" href="$classMetadata.html#a442b2398bb289c6a71a8d5ced8576ba0" title=" " alt="" coords="237,169,370,194"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="164,195,223,188,223,193,165,200"/>
+<area shape="rect" id="Node000010" href="$classPipette.html#a575ca1a1f36e9cb7029461964b3c460b" title=" " alt="" coords="245,218,362,243"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="165,213,231,220,231,225,164,218"/>
+<area shape="rect" id="Node000012" href="$classPnm.html#a9e9ae22f9e1dfde09c96c9bc4b0c47f8" title=" " alt="" coords="253,267,353,293"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="118,217,213,252,241,261,240,266,211,257,116,222"/>
+<area shape="rect" id="Node000014" href="$classTiff.html#aaaca8783a30c4e239227f2440cf07bf4" title=" " alt="" coords="257,317,349,342"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="101,217,148,259,179,282,213,302,245,314,243,319,211,306,177,286,145,263,97,221"/>
+<area shape="rect" id="Node000016" href="$classTransparentOverlay.html#a82b6203fda25eace51a0e3bbe7e31d96" title=" " alt="" coords="229,367,378,407"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="96,218,141,282,175,320,214,353,222,358,220,363,210,357,171,323,137,285,92,221"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1ColormapImpl_1_1ColormapPlugin.html#a8c872cbac26395215205ce23fec1f970" title=" " alt="" coords="443,5,687,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="395,23,429,23,429,28,395,28"/>
+<area shape="rect" id="Node000005" href="$classExample.html#ac225d7f8630ce282247964f3d8406090" title=" " alt="" coords="493,70,637,95"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="368,80,479,80,479,85,368,85"/>
+<area shape="rect" id="Node000007" href="$classMeasure.html#a9736b4daffc3bac4581c322adbebfe1f" title=" " alt="" coords="493,119,636,145"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="367,129,479,129,479,135,367,135"/>
+<area shape="rect" id="Node000009" href="$classMetadata.html#ae849560667461008cb72e83919c20be0" title=" " alt="" coords="487,169,642,194"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="370,179,473,179,473,184,370,184"/>
+<area shape="rect" id="Node000011" href="$classPipette.html#ae5195e52e89159e96a620c2522003f13" title=" " alt="" coords="503,218,626,243"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="362,228,490,228,490,233,362,233"/>
+<area shape="rect" id="Node000013" href="$classPnm.html#a20396c75b1ee0bb8812f951eedcc98b6" title=" " alt="" coords="521,267,609,293"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="354,277,507,277,507,283,354,283"/>
+<area shape="rect" id="Node000015" href="$classTiff.html#a0e8668a3c098fc31dd0ce698a4bdfdfd" title=" " alt="" coords="529,317,601,342"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="350,327,514,327,514,332,350,332"/>
+<area shape="rect" id="Node000017" href="$classTransparentOverlay.html#ade9a566fbf32bd939324a5906f5fe65a" title=" " alt="" coords="486,367,643,407"/>
+<area shape="poly" id="edge16_Node000016_Node000017" title=" " alt="" coords="378,384,472,384,472,389,378,389"/>
+</map>
