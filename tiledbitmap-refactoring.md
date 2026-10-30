@@ -1,7 +1,6 @@
 # Tiled bitmap refactoring plan
 
-Status: step 0 complete and accepted by the user. Step 1 implemented and
-validated; awaiting user review.
+Status: steps 0–2 complete and accepted by the user. Step 3 has not started.
 
 ## Goal and boundary
 
@@ -122,6 +121,10 @@ from deliberately leaving a layer unpopulated.
    there when needed. First extract existing arithmetic unchanged; adopt corrected
    rounding in a separate tested change where semantics differ.
 
+8. Guard programming bugs with `require()`. Report errors the user can act on
+   through exceptions. Invalid arguments to internal geometry helpers are
+   programming bugs.
+
 A stage may be split into smaller reviewable changes, each subject to the same
 completion gate. Resolve the remaining coordinate/data-access design details in
 those reviews; do not introduce cropping, external pixel writers, or source
@@ -164,6 +167,35 @@ retain Ubuntu and Windows support and verify affected platform CI. Use the
 generated development environment for GUI smoke tests. Formatting and relevant
 clang-tidy checks apply to touched code. Do not run builds merely for this draft.
 
+## Handoff after step 2
+
+Continue with step 3 only when requested. Steps 0–2 have been accepted; do not
+reopen their design decisions merely to impose stricter generic contracts.
+Final validation on 2026-11-03 after all step 2 review edits: both compiler
+presets build successfully and pass all nine registered test suites directly on
+the desktop. GCC tests took 17.68 seconds and Clang tests took 17.70 seconds;
+the tiled-bitmap suite took 0.15 seconds in each. Builds and test runs were
+sequential, with at most six cores and normal ccache configuration.
+
+During implementation, use Clang for iteration and check GCC once a step is
+finished. Keep ccache enabled with its normal configuration. Follow the current
+machine's resource limits; the previous machine could sustain only one build at
+a time. Tests ran directly on its desktop without Xvfb.
+
+Apply naming conventions with context and judgement. Prefer result names such
+as `tileRangeForRedraw()` over `compute` prefixes. Avoid redundant type/context
+prefixes, but retain information that identifies the value: in particular,
+`LayerSelection::presentationAreaInLayerCoordinates` identifies both the
+requested region and its coordinate system. Coordinate-agnostic helpers can use
+`requestedArea`, `imageArea`, `tileBounds`, and `pixelSize` where unambiguous.
+Follow the member naming already used in each existing class; test fixtures and
+structs do not use `m_` prefixes.
+
+Keep geometry expressions at point/rectangle level and prefer explicit converting
+constructors to casts where applicable. Do not restore the removed
+`checkedCoordinate()` machinery, redundant checks of normalized rectangle sizes,
+or death tests that merely verify the presence of `require()` guards.
+
 ## Steps
 
 - [x] **0. Extract small geometry abstractions before writing class tests.**
@@ -173,7 +205,7 @@ clang-tidy checks apply to touched code. Do not run builds merely for this draft
   and the affected geometry source rechecked successfully. Nonfatal warnings
   remain. Formatting and whitespace checks pass. User review accepted on
   2026-10-30, including the `tileCount(size, tileSize)` parameter rename and
-  the `computeRowLayout()` function rename.
+  the `rowLayout()` function rename.
 
   Move existing computations into functions over rectangles, points, dimensions,
   tile indices, and zoom values, with explicit arguments and value results. Wire
@@ -185,21 +217,21 @@ clang-tidy checks apply to touched code. Do not run builds merely for this draft
   - **Pyramid layout:** `pyramidSizes()` computes the sequence of layer sizes,
     preserving upward division and the current stopping threshold. This is a
     description of topology, not allocation of layers or operation objects.
-  - **Tile-grid geometry:** `tileCount(size, tileSize)`, `tileOrigin()`, and
-    `tileRectangle()` compute tile counts and positions. `redrawTileRange()`
-    and `samplingTileRange()` retain their separate rounding implementations
+  - **Tile-grid geometry:** `tileCount(size, tileSize)`, `layerCoordinatesFromTileIndex()`, and
+    `tileAreaInLayerCoordinates()` compute tile counts and positions. `tileRangeForRedraw()`
+    and `tileRangeForSampling()` retain their separate rounding implementations
     until tests establish their differences.
   - **Reduction mapping:** `reductionMapping()` computes the destination tile
     index and offset from a source tile index, independently of coordinator
     creation and observer registration.
-  - **Layer selection and transforms:** `selectLayer()` selects a layer from
+  - **Layer selection and transforms:** `layerSelection()` selects a layer from
     zoom and available levels, returning residual zoom and the transformed
     rectangle, independently of fetching data or drawing it.
-  - **Visible-region mapping:** `clippedDrawArea()`, `tileLocalIntersection()`,
+  - **Visible-region mapping:** `clippedArea()`, `intersectionInTileCoordinates()`,
     and `tileDrawAreas()` intersect requested/image/tile rectangles and compute
     tile-local source and view-local destination rectangles. Pipette sampling
-    reuses `tileLocalIntersection()` without drawing.
-  - **Row layout:** `computeRowLayout()` computes the tile-row start and valid
+    reuses `intersectionInTileCoordinates()` without drawing.
+  - **Row layout:** `rowLayout()` computes the tile-row start and valid
     line count, independently of fetching buffers or invoking a decoder.
 
   Keep these responsibilities separate even if related functions share a small
@@ -208,11 +240,11 @@ clang-tidy checks apply to touched code. Do not run builds merely for this draft
   Step 0 is extraction only; retain existing tests and apply the normal build,
   full-test, and user-review gate without first adding large class fixtures.
 
-- [ ] **1. Test the extracted geometry for image fidelity.** Test the
+- [x] **1. Test the extracted geometry for image fidelity.** Test the
   functions from step 0 with small value inputs, without constructing stacks,
   views, or pixel buffers. Prioritize parent/subregion mapping, residual zoom,
   visible source/destination rectangles, pipette intersections, and row layouts
-  from `computeRowLayout()`. Check that mappings cover valid pixels exactly and preserve their
+  from `rowLayout()`. Check that mappings cover valid pixels exactly and preserve their
   positions between layers. Include narrow images, partial edges, screen-derived
   requests at power-of-two zooms, and empty/disjoint intersections. Describe boundary cases relative
   to the supplied tile size and reduction factor, rather than literal production
@@ -233,23 +265,56 @@ clang-tidy checks apply to touched code. Do not run builds merely for this draft
   Validation: both compiler presets build and pass all nine registered suites
   directly on the desktop. Clang-tidy checked the new test source without
   errors; nonfatal style warnings remain. Formatting and whitespace checks
-  pass. User review is pending.
+  pass. User review accepted on 2026-10-30.
 
-- [ ] **2. Establish reusable rounding and coordinate contracts.** Build on the
+- [x] **2. Establish reusable rounding and coordinate contracts.** Build on the
   extracted functions and their tests. Define half-open bounds, floor/ceiling
-  behavior, valid regions, numeric ranges, checked arithmetic, and empty/invalid
+  behavior, valid regions, representation assumptions, and empty/invalid
   input handling. Use `Rectangle`, `roundOutward()`, and `rounding.hh` rather
   than maintaining parallel rounding formulas. Add general rounding helpers to
   those utilities where useful. Test negative coordinates, fractional bounds,
-  exact edges, and overflow rejection. Make any behavior corrections explicit
+  exact edges, and valid coordinates near integer limits. Make behavior corrections explicit
   and reviewable against step 1; do not enable relocated stacks yet. Establish
   the common-origin transform contract for the later relocation step.
 
-  Replace `TileRange` with `Rectangle<int>` after adding tests for requests
-  wholly outside the image, especially to the left or above. Preserve empty
-  iteration ranges by clamping negative sizes to zero rather than allowing
-  rectangle normalization to turn them into nonempty ranges. Keep `TileRange`
-  during step 0 so that extraction does not change this behavior.
+  Implementation: tile ranges now use `Rectangle<int>`, with empty ranges
+  represented without negative sizes. Sampling uses `roundOutward()`; tile
+  counts and signed reduction mapping use the existing rounding helpers.
+  `reducedBounds()` expresses outward rounding around the shared origin and
+  is used by pyramid sizing. Redraw retains its current screen-derived input
+  assumptions and excludes negative tile indices until relocation is enabled.
+
+  Keep concrete function preconditions such as positive divisors, a nonempty
+  set of selectable layers, and a positive stopping threshold. Trust the
+  rectangle/segment dimension invariants. Coordinate representability remains
+  the caller's responsibility; these helpers do not provide general overflow
+  validation. Direct point and rectangle operations express tile placement.
+  Empty requests and rows beyond the image return empty results. Disjoint tile
+  intersections return empty before subtracting potentially distant coordinates.
+
+  Tests cover empty/outside requests, exact edges, negative coordinates,
+  nonnegative parent offsets, repeated outward reduction, and valid coordinates
+  near integer limits. Death tests for precondition guards were removed: they
+  took 15.55 seconds, while the remaining suite took 0.11 seconds. Tests retain
+  power-of-two zoom inputs and do not
+  require arbitrary fractional viewports or a particular pyramid cutoff.
+
+  Names follow the coordinate conventions in
+  `doc/detailed-requirements-and-design/tiled-bitmap.rst`: conversions identify
+  their source/destination systems, and ambiguous values identify their system.
+  Tile indices retain their usual contextual meaning. `TileDrawAreas` contains
+  `tileArea` and `viewArea`; layer selection retains both the presentation area
+  in layer coordinates and the residual zoom. `LayerSelection` uses `index`,
+  `zoom`, and `presentationAreaInLayerCoordinates`; `ReductionMapping` uses
+  `targetIndex` and `sourceOffset`.
+
+  Final validation after all review edits on 2026-11-03: both `gcc-debug` and
+  `clang22-debug` build and pass all nine registered suites directly on the
+  desktop. Full-suite times were 17.68 seconds for GCC and 17.70 seconds for
+  Clang; tiled-bitmap tests took 0.15 seconds in each. Clang-tidy previously
+  rechecked the geometry and test sources without errors; nonfatal warnings
+  remain. Formatting and whitespace checks pass. User review accepted on
+  2026-11-03. The completion gate is satisfied.
 
 - [ ] **3. Separate reduction and pixel-format contracts from drawing.** Introduce
   data-side layer format/reduction descriptions and renderer-side operations.
