@@ -1,7 +1,7 @@
 # Tiled bitmap refactoring plan
 
-Status: step 0 complete and accepted by the user. Step 1 implemented and
-validated; awaiting user review.
+Status: steps 0 and 1 complete and accepted by the user. Step 2 implemented
+and validated; awaiting user review.
 
 ## Goal and boundary
 
@@ -122,6 +122,10 @@ from deliberately leaving a layer unpopulated.
    there when needed. First extract existing arithmetic unchanged; adopt corrected
    rounding in a separate tested change where semantics differ.
 
+8. Guard programming bugs with `require()`. Report errors the user can act on
+   through exceptions. Invalid arguments to internal geometry helpers are
+   programming bugs.
+
 A stage may be split into smaller reviewable changes, each subject to the same
 completion gate. Resolve the remaining coordinate/data-access design details in
 those reviews; do not introduce cropping, external pixel writers, or source
@@ -172,7 +176,7 @@ clang-tidy checks apply to touched code. Do not run builds merely for this draft
   changed source files; its blocking member-initialization diagnostic was fixed
   and the affected geometry source rechecked successfully. Nonfatal warnings
   remain. Formatting and whitespace checks pass. User review accepted on
-  2026-10-30, including the `tileCount(size, tileSize)` parameter rename and
+  2026-10-30, including the `computeTileCount(size, tileSize)` parameter rename and
   the `computeRowLayout()` function rename.
 
   Move existing computations into functions over rectangles, points, dimensions,
@@ -182,23 +186,23 @@ clang-tidy checks apply to touched code. Do not run builds merely for this draft
   `CompressedTile`, Cairo contexts, views, thread pools, or memory providers.
   Extracted functions in `tiled-bitmap-geometry.hh`, grouped by responsibility:
 
-  - **Pyramid layout:** `pyramidSizes()` computes the sequence of layer sizes,
+  - **Pyramid layout:** `computePyramidSizes()` computes the sequence of layer sizes,
     preserving upward division and the current stopping threshold. This is a
     description of topology, not allocation of layers or operation objects.
-  - **Tile-grid geometry:** `tileCount(size, tileSize)`, `tileOrigin()`, and
-    `tileRectangle()` compute tile counts and positions. `redrawTileRange()`
-    and `samplingTileRange()` retain their separate rounding implementations
+  - **Tile-grid geometry:** `computeTileCount(size, tileSize)`, `computeTileOrigin()`, and
+    `computeTileRectangle()` compute tile counts and positions. `computeTileRangeForRedraw()`
+    and `computeTileRangeForSampling()` retain their separate rounding implementations
     until tests establish their differences.
-  - **Reduction mapping:** `reductionMapping()` computes the destination tile
+  - **Reduction mapping:** `computeReductionMapping()` computes the destination tile
     index and offset from a source tile index, independently of coordinator
     creation and observer registration.
-  - **Layer selection and transforms:** `selectLayer()` selects a layer from
+  - **Layer selection and transforms:** `computeLayerSelection()` selects a layer from
     zoom and available levels, returning residual zoom and the transformed
     rectangle, independently of fetching data or drawing it.
-  - **Visible-region mapping:** `clippedDrawArea()`, `tileLocalIntersection()`,
-    and `tileDrawAreas()` intersect requested/image/tile rectangles and compute
+  - **Visible-region mapping:** `computeClippedDrawArea()`, `computeTileLocalIntersection()`,
+    and `computeTileDrawAreas()` intersect requested/image/tile rectangles and compute
     tile-local source and view-local destination rectangles. Pipette sampling
-    reuses `tileLocalIntersection()` without drawing.
+    reuses `computeTileLocalIntersection()` without drawing.
   - **Row layout:** `computeRowLayout()` computes the tile-row start and valid
     line count, independently of fetching buffers or invoking a decoder.
 
@@ -208,7 +212,7 @@ clang-tidy checks apply to touched code. Do not run builds merely for this draft
   Step 0 is extraction only; retain existing tests and apply the normal build,
   full-test, and user-review gate without first adding large class fixtures.
 
-- [ ] **1. Test the extracted geometry for image fidelity.** Test the
+- [x] **1. Test the extracted geometry for image fidelity.** Test the
   functions from step 0 with small value inputs, without constructing stacks,
   views, or pixel buffers. Prioritize parent/subregion mapping, residual zoom,
   visible source/destination rectangles, pipette intersections, and row layouts
@@ -233,23 +237,46 @@ clang-tidy checks apply to touched code. Do not run builds merely for this draft
   Validation: both compiler presets build and pass all nine registered suites
   directly on the desktop. Clang-tidy checked the new test source without
   errors; nonfatal style warnings remain. Formatting and whitespace checks
-  pass. User review is pending.
+  pass. User review accepted on 2026-10-30.
 
 - [ ] **2. Establish reusable rounding and coordinate contracts.** Build on the
   extracted functions and their tests. Define half-open bounds, floor/ceiling
-  behavior, valid regions, numeric ranges, checked arithmetic, and empty/invalid
+  behavior, valid regions, representation assumptions, and empty/invalid
   input handling. Use `Rectangle`, `roundOutward()`, and `rounding.hh` rather
   than maintaining parallel rounding formulas. Add general rounding helpers to
   those utilities where useful. Test negative coordinates, fractional bounds,
-  exact edges, and overflow rejection. Make any behavior corrections explicit
+  exact edges, and valid coordinates near integer limits. Make behavior corrections explicit
   and reviewable against step 1; do not enable relocated stacks yet. Establish
   the common-origin transform contract for the later relocation step.
 
-  Replace `TileRange` with `Rectangle<int>` after adding tests for requests
-  wholly outside the image, especially to the left or above. Preserve empty
-  iteration ranges by clamping negative sizes to zero rather than allowing
-  rectangle normalization to turn them into nonempty ranges. Keep `TileRange`
-  during step 0 so that extraction does not change this behavior.
+  Implementation: tile ranges now use `Rectangle<int>`, with empty ranges
+  represented without negative sizes. Sampling uses `roundOutward()`; tile
+  counts and signed reduction mapping use the existing rounding helpers.
+  `computeReducedBounds()` expresses outward rounding around the shared origin and
+  is used by pyramid sizing. Redraw retains its current screen-derived input
+  assumptions and excludes negative tile indices until relocation is enabled.
+
+  Keep concrete function preconditions such as positive divisors, a nonempty
+  set of selectable layers, and a positive stopping threshold. Trust the
+  rectangle/segment dimension invariants. Coordinate representability remains
+  the caller's responsibility; these helpers do not provide general overflow
+  validation. Direct point and rectangle operations express tile placement.
+  Empty requests and rows beyond the image return empty results. Disjoint tile
+  intersections return empty before subtracting potentially distant coordinates.
+
+  Tests cover empty/outside requests, exact edges, negative coordinates,
+  nonnegative parent offsets, repeated outward reduction, and valid coordinates
+  near integer limits. Death tests for precondition guards were removed: they
+  took 15.55 seconds, while the remaining suite took 0.11 seconds. Tests retain
+  power-of-two zoom inputs and do not
+  require arbitrary fractional viewports or a particular pyramid cutoff.
+
+  Latest validation after simplification: Clang builds and all nine registered
+  suites pass directly on the desktop; tiled-bitmap tests took 0.27 seconds.
+  Clang-tidy rechecked the geometry source without errors; nonfatal warnings
+  remain. Formatting and whitespace checks pass. GCC passed before the review
+  edits and will be checked again when the step is finalized. User review is
+  pending.
 
 - [ ] **3. Separate reduction and pixel-format contracts from drawing.** Introduce
   data-side layer format/reduction descriptions and renderer-side operations.
