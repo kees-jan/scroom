@@ -25,8 +25,7 @@ namespace Scroom::Utils
   public:
     using Ptr = std::shared_ptr<ITweakPresentationPosition>;
 
-    [[nodiscard]] virtual Point<double>
-      tweakPosition(const Point<double>& currentPosition, const Point<int>& drawingAreaSize, int zoom) const = 0;
+    [[nodiscard]] virtual Point<double> tweakPosition(const Point<double>& currentPosition, int zoom) const = 0;
   };
 
   class ITweakRulers : public Interface
@@ -35,7 +34,7 @@ namespace Scroom::Utils
     using Ptr = std::shared_ptr<ITweakRulers>;
 
     [[nodiscard]] virtual Rectangle<double>
-      tweakRulers(const Point<double>& currentPosition, const Point<int>& drawingAreaSize, int zoom) const = 0;
+      tweakRulers(const Point<double>& currentPosition, const Point<int>& viewSize, int zoom) const = 0;
   };
 
   class ITweakSelection : public Interface
@@ -53,10 +52,10 @@ namespace Scroom::Utils
     using Ptr = std::shared_ptr<ITweakPositionTextBox>;
 
     [[nodiscard]] virtual Point<double>
-      parse(std::string_view x, std::string_view y, const Point<int>& drawingAreaSize, int zoom) const = 0;
+      parse(std::string_view x, std::string_view y, const Point<int>& viewSize, int zoom) const = 0;
 
     [[nodiscard]] virtual std::pair<std::string, std::string>
-      display(const Point<double>& position, const Point<int>& drawingAreaSize, int zoom) const = 0;
+      display(const Point<double>& position, const Point<int>& viewSize, int zoom) const = 0;
   };
 
   ITweakPresentationPosition::Ptr getDefaultTweakPresentationPosition();
@@ -67,96 +66,103 @@ namespace Scroom::Utils
 
   ////////////////////////////////////////////////////////////////////////
 
-  class TweakPresentationPosition : public ITweakPresentationPosition
+  class CalculateViewAreaForRulers : public ITweakRulers
   {
   public:
-    using Ptr = std::shared_ptr<TweakPresentationPosition>;
+    using Ptr = std::shared_ptr<CalculateViewAreaForRulers>;
 
-    static ITweakPresentationPosition::Ptr create(const Point<double>& aspectRatio_ = {1.0, 1.0});
-
-    [[nodiscard]] Point<double>
-      tweakPosition(const Point<double>& currentPosition, const Point<int>& drawingAreaSize, int zoom) const override;
-
-  private:
-    explicit TweakPresentationPosition(const Point<double>& aspectRatio_);
-
-  private:
-    Point<double> aspectRatio;
-  };
-
-  class TweakRulers : public ITweakRulers
-  {
-  public:
-    using Ptr = std::shared_ptr<TweakRulers>;
-
-    static ITweakRulers::Ptr create(const Point<double>& aspectRatio_ = {1.0, 1.0});
+    static ITweakRulers::Ptr create();
 
     [[nodiscard]] Rectangle<double>
-      tweakRulers(const Point<double>& currentPosition, const Point<int>& drawingAreaSize, int zoom) const override;
-
-  private:
-    explicit TweakRulers(const Point<double>& aspectRatio_);
-
-  private:
-    Point<double> aspectRatio;
+      tweakRulers(const Point<double>& currentPosition, const Point<int>& viewSize, int zoom) const override;
   };
 
-  class TweakSelection : public ITweakSelection
+  class TweakSelectionsAsRectangles : public ITweakSelection
   {
   public:
-    using Ptr = std::shared_ptr<TweakSelection>;
+    using Ptr = std::shared_ptr<TweakSelectionsAsRectangles>;
 
-    [[nodiscard]] virtual Rectangle<double> tweakSelection(const Rectangle<double>& selection) const = 0;
+    [[nodiscard]] virtual Rectangle<double> tweakSelection(const Rectangle<double>& selectionArea) const = 0;
 
     [[nodiscard]] Selection tweakSelection(const Selection& selection) const override;
-
-  protected:
-    explicit TweakSelection(const Point<double>& aspectRatio_);
-
-  protected:
-    Point<double> aspectRatio;
   };
 
-  class TweakGridSelection : public TweakSelection
+  class ParseAndFormatViewCentre : public ITweakPositionTextBox
   {
   public:
-    static ITweakSelection::Ptr create(const Point<double>& aspectRatio_ = {1.0, 1.0});
+    using Ptr = std::shared_ptr<ParseAndFormatViewCentre>;
 
-    [[nodiscard]] Rectangle<double> tweakSelection(const Rectangle<double>& selection) const override;
-
-    using TweakSelection::tweakSelection;
-    using TweakSelection::TweakSelection;
-  };
-
-  class TweakPixelSelection : public TweakSelection
-  {
-  public:
-    static ITweakSelection::Ptr create(const Point<double>& aspectRatio_ = {1.0, 1.0});
-
-    [[nodiscard]] Rectangle<double> tweakSelection(const Rectangle<double>& selection) const override;
-
-    using TweakSelection::tweakSelection;
-    using TweakSelection::TweakSelection;
-  };
-
-  class TweakPositionTextBox : public ITweakPositionTextBox
-  {
-  public:
-    using Ptr = std::shared_ptr<TweakPositionTextBox>;
-
-    static ITweakPositionTextBox::Ptr create(const Point<double>& aspectRatio_ = {1.0, 1.0});
+    static ITweakPositionTextBox::Ptr create();
 
     [[nodiscard]] Point<double>
-      parse(std::string_view x, std::string_view y, const Point<int>& drawingAreaSize, int zoom) const override;
+      parse(std::string_view x, std::string_view y, const Point<int>& viewSize, int zoom) const override;
 
     [[nodiscard]] std::pair<std::string, std::string>
-      display(const Point<double>& position, const Point<int>& drawingAreaSize, int zoom) const override;
+      display(const Point<double>& position, const Point<int>& viewSize, int zoom) const override;
+  };
+
+  // Decorates the child's coordinate policy; aspect ratios are fixed at construction.
+  class TweakPresentationPositionsWithAspectRatio : public ITweakPresentationPosition
+  {
+  private:
+    ITweakPresentationPosition::Ptr m_child;
+    const Point<double> m_aspectRatio;
+
+  public:
+    static ITweakPresentationPosition::Ptr create(ITweakPresentationPosition::Ptr child, const Point<double>& aspectRatio);
+    [[nodiscard]] Point<double> tweakPosition(const Point<double>& currentPosition, int zoom) const override;
 
   private:
-    explicit TweakPositionTextBox(const Point<double>& aspectRatio_);
+    TweakPresentationPositionsWithAspectRatio(ITweakPresentationPosition::Ptr child, const Point<double>& aspectRatio);
+  };
+
+  // Decorates the child's coordinate policy; aspect ratios are fixed at construction.
+  class TweakRulersWithAspectRatio : public ITweakRulers
+  {
+  private:
+    ITweakRulers::Ptr m_child;
+    const Point<double> m_aspectRatio;
+
+  public:
+    static ITweakRulers::Ptr create(ITweakRulers::Ptr child, const Point<double>& aspectRatio);
+    [[nodiscard]] Rectangle<double>
+      tweakRulers(const Point<double>& currentPosition, const Point<int>& viewSize, int zoom) const override;
 
   private:
-    Point<double> aspectRatio;
+    TweakRulersWithAspectRatio(ITweakRulers::Ptr child, const Point<double>& aspectRatio);
+  };
+
+  // Decorates the child's coordinate policy; aspect ratios are fixed at construction.
+  class TweakSelectionsWithAspectRatio : public ITweakSelection
+  {
+  private:
+    ITweakSelection::Ptr m_child;
+    const Point<double> m_aspectRatio;
+
+  public:
+    static ITweakSelection::Ptr create(ITweakSelection::Ptr child, const Point<double>& aspectRatio);
+    [[nodiscard]] Selection tweakSelection(const Selection& selection) const override;
+
+  private:
+    TweakSelectionsWithAspectRatio(ITweakSelection::Ptr child, const Point<double>& aspectRatio);
+  };
+
+  // Decorates the child's coordinate policy; aspect ratios are fixed at construction.
+  class ParseAndFormatViewCentreWithAspectRatio : public ITweakPositionTextBox
+  {
+  private:
+    ITweakPositionTextBox::Ptr m_child;
+    const Point<double> m_aspectRatio;
+
+  public:
+    static ITweakPositionTextBox::Ptr create(ITweakPositionTextBox::Ptr child, const Point<double>& aspectRatio);
+    [[nodiscard]] Point<double>
+      parse(std::string_view x, std::string_view y, const Point<int>& viewSize, int zoom) const override;
+    [[nodiscard]] std::pair<std::string, std::string>
+      display(const Point<double>& position, const Point<int>& viewSize, int zoom) const override;
+
+  private:
+    ParseAndFormatViewCentreWithAspectRatio(ITweakPositionTextBox::Ptr child, const Point<double>& aspectRatio);
   };
 
 } // namespace Scroom::Utils

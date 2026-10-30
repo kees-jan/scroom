@@ -145,7 +145,7 @@ void View::redraw(cairo_t* cr)
   if(presentation)
   {
     const double pixelSize = pixelSizeFromZoom(zoom);
-    Scroom::Utils::Point<double> const visibleRegionSize = drawingAreaSize.to<double>() / pixelSize;
+    Scroom::Utils::Point<double> const visibleRegionSize = viewSize.to<double>() / pixelSize;
 
     auto rect = Scroom::Utils::make_rect(tweakedPosition(), visibleRegionSize);
 
@@ -220,7 +220,7 @@ void View::setPresentation(PresentationInterface::Ptr presentation_)
 
   zoom = 0;
   const double pixelSize = pixelSizeFromZoom(zoom);
-  position = -drawingAreaSize.to<double>() / pixelSize / 2;
+  position = -viewSize.to<double>() / pixelSize / 2;
 
   updateZoom();
   updateScrollbars();
@@ -260,8 +260,8 @@ void View::updateScrollbars()
     gtk_widget_set_sensitive(GTK_WIDGET(vscrollbar), true);
     gtk_widget_set_sensitive(GTK_WIDGET(hscrollbar), true);
 
-    updateScrollbar(hscrollbaradjustment, zoom, position->x, presentationRect.x(), presentationRect.width(), drawingAreaSize.x);
-    updateScrollbar(vscrollbaradjustment, zoom, position->y, presentationRect.y(), presentationRect.height(), drawingAreaSize.y);
+    updateScrollbar(hscrollbaradjustment, zoom, position->x, presentationRect.x(), presentationRect.width(), viewSize.x);
+    updateScrollbar(vscrollbaradjustment, zoom, position->y, presentationRect.y(), presentationRect.height(), viewSize.y);
     updateRulers();
   }
   else
@@ -278,7 +278,7 @@ void View::updateTextbox()
     gtk_widget_set_sensitive(GTK_WIDGET(xTextBox), true);
     gtk_widget_set_sensitive(GTK_WIDGET(yTextBox), true);
 
-    const auto [xs, ys] = tweakPositionTextBox->display(position, drawingAreaSize, zoom);
+    const auto [xs, ys] = tweakPositionTextBox->display(position, viewSize, zoom);
 
     gtk_entry_set_text(xTextBox, xs.c_str());
     gtk_entry_set_text(yTextBox, ys.c_str());
@@ -298,7 +298,7 @@ void View::updateZoom()
     int presentationWidth = presentationRect.width();
     int minZoom = 0;
 
-    while(presentationHeight > drawingAreaSize.y / 2 || presentationWidth > drawingAreaSize.x / 2)
+    while(presentationHeight > viewSize.y / 2 || presentationWidth > viewSize.x / 2)
     {
       presentationHeight >>= 1;
       presentationWidth >>= 1;
@@ -334,7 +334,7 @@ void View::updateZoom()
 
 void View::updateRulers()
 {
-  auto visible = tweakRulers->tweakRulers(tweakedPosition(), drawingAreaSize, zoom);
+  auto visible = tweakRulers->tweakRulers(tweakedPosition(), viewSize, zoom);
 
   const auto topLeft = visible.getTopLeft();
   const auto bottomRight = visible.getBottomRight();
@@ -411,7 +411,7 @@ void View::on_configure()
 
   Scroom::Utils::Point<int> const newSize(rect.width, rect.height);
 
-  if(drawingAreaSize != newSize)
+  if(viewSize != newSize)
   {
     on_window_size_changed(newSize);
   }
@@ -422,10 +422,10 @@ void View::on_configure()
 void View::on_window_size_changed(const Scroom::Utils::Point<int>& newSize)
 {
   auto pixelSize = pixelSizeFromZoom(zoom);
-  position += (drawingAreaSize - newSize) / pixelSize / 2;
+  position += (viewSize - newSize) / pixelSize / 2;
 
   std::lock_guard const protect_position(position);
-  drawingAreaSize = newSize;
+  viewSize = newSize;
   updateZoom();
   updateScrollbars();
   invalidate();
@@ -468,7 +468,7 @@ void View::on_zoombox_changed()
   {
     gtk_tree_model_get_value(GTK_TREE_MODEL(zoomItems), &iter, COLUMN_ZOOM, &value);
     const int newZoom = g_value_get_int(&value);
-    on_zoombox_changed(newZoom, drawingAreaSize.to<double>() / 2);
+    on_zoombox_changed(newZoom, viewSize.to<double>() / 2);
   }
 }
 
@@ -491,7 +491,7 @@ void View::on_textbox_value_changed(GtkEditable* /*editable*/)
 {
   try
   {
-    auto newPos = tweakPositionTextBox->parse(gtk_entry_get_text(xTextBox), gtk_entry_get_text(yTextBox), drawingAreaSize, zoom);
+    auto newPos = tweakPositionTextBox->parse(gtk_entry_get_text(xTextBox), gtk_entry_get_text(yTextBox), viewSize, zoom);
 
     updateXY(newPos, TEXTBOX);
   }
@@ -803,7 +803,4 @@ void View::updateXY(const Scroom::Utils::Point<double>& newPos, const View::Loca
   }
 }
 
-Scroom::Utils::Point<double> View::tweakedPosition() const
-{
-  return tweakPresentationPosition->tweakPosition(position, drawingAreaSize, zoom);
-}
+Scroom::Utils::Point<double> View::tweakedPosition() const { return tweakPresentationPosition->tweakPosition(position, zoom); }

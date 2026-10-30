@@ -24,6 +24,7 @@
 
 #include "scroom/tweak-view.hh"
 #include "tileviewstate.hh"
+#include "tweak-view.hh"
 
 TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec const& ls)
 {
@@ -91,14 +92,14 @@ TiledBitmap::TiledBitmap(int bitmapWidth_, int bitmapHeight_, LayerSpec ls_)
   , progressBroadcaster(Scroom::Utils::ProgressInterfaceBroadcaster::create())
   , context(Scroom::Utils::Context::create())
 {
-  set(context, Scroom::Utils::TweakPresentationPosition::create());
-  set(context, Scroom::Utils::TweakPositionTextBox::create());
-  set(context, Scroom::Utils::TweakRulers::create());
+  set(context, Scroom::TiledBitmap::PixelAlignPresentationPositions::create());
+  set(context, Scroom::Utils::ParseAndFormatViewCentre::create());
+  set(context, Scroom::Utils::CalculateViewAreaForRulers::create());
   set(
     context,
     Scroom::Utils::ITweakSelection::Map{
-      {SelectionType::GRID, Scroom::Utils::TweakGridSelection::create()},
-      {SelectionType::PIXEL, Scroom::Utils::TweakPixelSelection::create()}
+      {SelectionType::GRID, Scroom::TiledBitmap::SnapSelectionsToGrid::create()},
+      {SelectionType::PIXEL, Scroom::TiledBitmap::ExpandSelectionsToPixelBoundaries::create()}
     }
   );
 }

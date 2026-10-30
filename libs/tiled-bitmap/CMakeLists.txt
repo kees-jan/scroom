@@ -21,6 +21,8 @@ target_sources(
           src/tiledbitmapviewdata.hh
           src/tileviewstate.cc
           src/tileviewstate.hh
+          src/tweak-view.cc
+          src/tweak-view.hh
           ${HEADER_FILES}
 )
 target_link_libraries(

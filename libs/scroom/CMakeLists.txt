@@ -12,8 +12,8 @@ target_sources(
   PRIVATE src/bitmap-helpers.cc
           src/cairo-helpers.cc
           src/colormap-helpers.cc
-          src/showmetadata.cc
           src/presentationinterface.cc
+          src/showmetadata.cc
           src/transformpresentation.cc
           src/tweak-view.cc
           ${HEADER_FILES}
@@ -47,7 +47,13 @@ install(FILES ${HEADER_FILES} DESTINATION include/scroom)
 
 if(ENABLE_GOOGLE_TEST)
   add_executable(scroom_lib_tests)
-  target_sources(scroom_lib_tests PRIVATE test/transformpresentation_test.cc test/colormaphelpers_test.cc)
+  target_sources(
+    scroom_lib_tests
+    PRIVATE inc/scroom/gmock/tweak-view.hh
+            test/colormaphelpers_test.cc
+            test/tweak-view-test-helpers.hh
+            test/tweak-view_test.cc
+  )
   target_link_libraries(
     scroom_lib_tests
     PRIVATE project_options

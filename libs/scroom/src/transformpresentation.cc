@@ -50,19 +50,33 @@ TransformPresentation::TransformPresentation(
   , showMetaDataInterface(std::dynamic_pointer_cast<ShowMetadataInterface>(presentation_))
   , context(Scroom::Utils::RecursiveContext::create())
 {
-  context->add(presentation->getContext());
-  auto aspectRatio = transformationData->getAspectRatio();
+  using namespace Scroom::Utils;
+  const auto childContext = presentation->getContext();
+  context->add(childContext);
+  const auto aspectRatio = transformationData->getAspectRatio();
 
-  set(context, Scroom::Utils::TweakPresentationPosition::create(aspectRatio));
-  set(context, Scroom::Utils::TweakPositionTextBox::create(aspectRatio));
-  set(context, Scroom::Utils::TweakRulers::create(aspectRatio));
   set(
     context,
-    Scroom::Utils::ITweakSelection::Map{
-      {SelectionType::GRID, Scroom::Utils::TweakGridSelection::create(aspectRatio)},
-      {SelectionType::PIXEL, Scroom::Utils::TweakPixelSelection::create(aspectRatio)}
-    }
+    TweakPresentationPositionsWithAspectRatio::create(
+      get_or<ITweakPresentationPosition::Ptr>(childContext, getDefaultTweakPresentationPosition), aspectRatio
+    )
   );
+  set(
+    context,
+    ParseAndFormatViewCentreWithAspectRatio::create(
+      get_or<ITweakPositionTextBox::Ptr>(childContext, getDefaultTweakPositionTextBox), aspectRatio
+    )
+  );
+  set(context, TweakRulersWithAspectRatio::create(get_or<ITweakRulers::Ptr>(childContext, getDefaultTweakRulers), aspectRatio));
+
+  auto selectionTweaks = get_or<ITweakSelection::Map>(childContext, getDefaultTweakSelectionMap);
+  // Callbacks fall back to DEFAULT for any selection type absent from the map.
+  selectionTweaks.try_emplace(SelectionType::DEFAULT, getDefaultTweakSelection());
+  for(auto& [type, tweak]: selectionTweaks)
+  {
+    tweak = TweakSelectionsWithAspectRatio::create(std::move(tweak), aspectRatio);
+  }
+  set(context, std::move(selectionTweaks));
   set(context, transformationData);
 }
 

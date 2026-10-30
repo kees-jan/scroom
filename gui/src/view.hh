@@ -104,7 +104,7 @@ private:
   GtkWindow* window;
   GtkWidget* menubar;
   GtkWidget* drawingArea;
-  Scroom::Utils::Point<int> drawingAreaSize;
+  Scroom::Utils::Point<int> viewSize;
   Scroom::Utils::Rectangle<double> presentationRect;
   GtkScrollbar* vscrollbar;
   GtkScrollbar* hscrollbar;
