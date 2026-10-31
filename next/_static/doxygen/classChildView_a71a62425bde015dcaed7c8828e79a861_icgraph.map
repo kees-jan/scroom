@@ -1,7 +1,9 @@
 <map id="ChildView::create" name="ChildView::create">
-<area shape="rect" id="Node000001" title=" " alt="" coords="515,13,649,38"/>
-<area shape="rect" id="Node000002" href="$classTransparentOverlayViewInfo.html#a0febc5a267ab940b43a8f55f428246f6" title=" " alt="" coords="260,5,467,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="500,28,467,28,467,23,500,23"/>
-<area shape="rect" id="Node000003" href="$classTransparentOverlayViewInfo.html#a2795eac0eedd4072ed84abc8b260a6cd" title=" " alt="" coords="5,5,212,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="247,28,212,28,212,23,247,23"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="790,14,925,42"/>
+<area shape="rect" id="Node000002" href="$classTransparentOverlayViewInfo.html#a0febc5a267ab940b43a8f55f428246f6" title=" " alt="" coords="537,5,742,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="772,28,743,30,743,25,777,28"/>
+<area shape="rect" id="Node000003" href="$classTransparentOverlayViewInfo.html#a2795eac0eedd4072ed84abc8b260a6cd" title=" " alt="" coords="284,5,489,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="518,28,490,30,489,25,524,28"/>
+<area shape="rect" id="Node000004" href="$classTransparentOverlayPresentation.html#a202b5ad17a9deacf342245ff0d3c3c22" title=" " alt="" coords="5,5,236,50"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="266,28,236,30,236,25,271,28"/>
 </map>

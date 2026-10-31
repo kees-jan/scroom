@@ -26,10 +26,12 @@ var searchData=
   ['transparentoverlay_23',['TransparentOverlay',['../classTransparentOverlay.html',1,'']]],
   ['transparentoverlaypresentation_24',['TransparentOverlayPresentation',['../classTransparentOverlayPresentation.html',1,'']]],
   ['transparentoverlayviewinfo_25',['TransparentOverlayViewInfo',['../classTransparentOverlayViewInfo.html',1,'']]],
-  ['tweakgridselection_26',['TweakGridSelection',['../classScroom_1_1Utils_1_1TweakGridSelection.html',1,'Scroom::Utils']]],
-  ['tweakpixelselection_27',['TweakPixelSelection',['../classScroom_1_1Utils_1_1TweakPixelSelection.html',1,'Scroom::Utils']]],
-  ['tweakpositiontextbox_28',['TweakPositionTextBox',['../classScroom_1_1Utils_1_1TweakPositionTextBox.html',1,'Scroom::Utils']]],
-  ['tweakpresentationposition_29',['TweakPresentationPosition',['../classScroom_1_1Utils_1_1TweakPresentationPosition.html',1,'Scroom::Utils']]],
-  ['tweakrulers_30',['TweakRulers',['../classScroom_1_1Utils_1_1TweakRulers.html',1,'Scroom::Utils']]],
-  ['tweakselection_31',['TweakSelection',['../classScroom_1_1Utils_1_1TweakSelection.html',1,'Scroom::Utils']]]
+  ['tweakpresentationpositionswithaspectratio_26',['TweakPresentationPositionsWithAspectRatio',['../classScroom_1_1Utils_1_1TweakPresentationPositionsWithAspectRatio.html',1,'Scroom::Utils']]],
+  ['tweakpresentationpositionswithaspectratiotest_27',['TweakPresentationPositionsWithAspectRatioTest',['../classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakPresentationPositionsWithAspectRatioTest.html',1,'anonymous_namespace{tweak-view_test.cc}']]],
+  ['tweakrulerswithaspectratio_28',['TweakRulersWithAspectRatio',['../classScroom_1_1Utils_1_1TweakRulersWithAspectRatio.html',1,'Scroom::Utils']]],
+  ['tweakrulerswithaspectratiotest_29',['TweakRulersWithAspectRatioTest',['../classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakRulersWithAspectRatioTest.html',1,'anonymous_namespace{tweak-view_test.cc}']]],
+  ['tweakselectionsasrectangles_30',['TweakSelectionsAsRectangles',['../classScroom_1_1Utils_1_1TweakSelectionsAsRectangles.html',1,'Scroom::Utils']]],
+  ['tweakselectionsasrectanglesmock_31',['TweakSelectionsAsRectanglesMock',['../classScroom_1_1Utils_1_1TweakSelectionsAsRectanglesMock.html',1,'Scroom::Utils']]],
+  ['tweakselectionswithaspectratio_32',['TweakSelectionsWithAspectRatio',['../classScroom_1_1Utils_1_1TweakSelectionsWithAspectRatio.html',1,'Scroom::Utils']]],
+  ['tweakselectionswithaspectratiotest_33',['TweakSelectionsWithAspectRatioTest',['../classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsWithAspectRatioTest.html',1,'anonymous_namespace{tweak-view_test.cc}']]]
 ];

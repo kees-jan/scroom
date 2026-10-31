@@ -1,5 +1,15 @@
 <map id="RectangleVerticalTestScaffold::moveTo" name="RectangleVerticalTestScaffold::moveTo">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,220,45"/>
-<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html#a405cfffb11cdb9f2fa5600e2bf15231c" title=" " alt="" coords="268,5,451,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,23,254,23,254,28,220,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,112,219,156"/>
+<area shape="rect" id="Node000002" href="$rectangletests_8cc.html#af6796373cc462aef8e6979a40acef5d3" title=" " alt="" coords="317,5,414,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,109,200,75,266,42,304,31,299,34,268,47,203,79,148,113"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Rectangle.html#aedd0d1a9a795cfa71ba9dc888c2ef92d" title=" " alt="" coords="275,81,456,126"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="219,118,262,115,257,117,220,123"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Rectangle.html#a8bafbe715dcf9dc732ea2f197b9ecba1" title=" " alt="" coords="512,102,693,147"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="219,136,337,138,464,135,499,135,494,136,464,140,337,143,220,141"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Rectangle.html#a405cfffb11cdb9f2fa5600e2bf15231c" title=" " alt="" coords="267,200,464,228"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="186,154,307,194,302,196,185,159"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="320,79,319,71,326,62,342,56,365,54,391,57,408,66,403,66,390,62,365,59,343,61,329,66,324,72,325,81"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="456,109,499,115,494,115,457,114"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Rectangle.html#a23ed938b3f63186f48c5828024a9d6ab" title=" " alt="" coords="512,192,693,236"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="464,211,499,214,494,214,465,216"/>
 </map>

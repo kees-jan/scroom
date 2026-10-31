@@ -1,0 +1,19 @@
+<map id="Rectangle&lt; T &gt;" name="Rectangle&lt; T &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="533,160,654,366"/>
+<area shape="rect" id="Node000008" href="$classRectangleHorizontalTestScaffold.html" title=" " alt="" coords="339,414,586,682"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="542,378,526,416,522,412,538,381"/>
+<area shape="rect" id="Node000009" href="$classRectangleVerticalTestScaffold.html" title=" " alt="" coords="611,414,840,682"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="648,377,666,415,661,413,646,382"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,14,200,103"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="205,107,213,109,387,181,536,238,531,240,385,186,211,114,207,111"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="224,5,394,112"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="395,118,536,218,531,220,394,123"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="419,14,578,103"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="526,114,548,160,543,160,525,119"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="603,5,773,112"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="659,123,643,162,639,158,656,127"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="796,14,945,103"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="801,111,655,220,652,215,797,114"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="969,5,1127,112"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="953,114,790,189,655,242,652,237,788,184,957,111"/>
+</map>

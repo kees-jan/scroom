@@ -1,0 +1,9 @@
+<map id="CompressedTile::registerObserver" name="CompressedTile::registerObserver">
+<area shape="rect" id="Node000001" title=" " alt="" coords="706,5,891,50"/>
+<area shape="rect" id="Node000002" href="$classLayerCoordinator.html#a3eba96fa471fb77c58d984a72417a153" title=" " alt="" coords="425,14,658,42"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="688,28,659,30,659,25,693,28"/>
+<area shape="rect" id="Node000003" href="$classTiledBitmap.html#a7d2051718f5b6f50e2804177d553bce8" title=" " alt="" coords="218,14,377,42"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="407,28,378,30,378,25,412,28"/>
+<area shape="rect" id="Node000004" href="$classTiledBitmap.html#a6b40bb63aa12b68f9678bb45b765b8e1" title=" " alt="" coords="5,14,170,42"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="199,28,170,30,170,25,204,27"/>
+</map>

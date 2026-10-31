@@ -1,7 +1,7 @@
 var ringbuffer_sink_tests_8cc =
 [
     [ "ASSERT_EQ", "ringbuffer-sink-tests_8cc.html#aac7a6a67ddb1fadb8c58adffcb3536f3", null ],
-    [ "createLogger", "ringbuffer-sink-tests_8cc.html#a15a91985361401f76bc8ee0186a5470c", null ],
+    [ "anonymous_namespace{ringbuffer-sink-tests.cc}::createLogger", "namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html#a15a91985361401f76bc8ee0186a5470c", null ],
     [ "debug", "ringbuffer-sink-tests_8cc.html#ad95b233d5e21909b673611add77a8fdb", null ],
     [ "debug", "ringbuffer-sink-tests_8cc.html#a1a6e70b8b814ae2612c2da4ae1b7f196", null ],
     [ "debug", "ringbuffer-sink-tests_8cc.html#a11151ff946c61d20b558e544d493738a", null ],
@@ -26,7 +26,7 @@ var ringbuffer_sink_tests_8cc =
     [ "info", "ringbuffer-sink-tests_8cc.html#a491cdb40489dd18ff7b865cb0c98b6b1", null ],
     [ "info", "ringbuffer-sink-tests_8cc.html#a92eeaabc01fd2e9d2b5b44190f4a38ee", null ],
     [ "reserve", "ringbuffer-sink-tests_8cc.html#a1540e407cbcf419eee9293d70c9cdb6e", null ],
-    [ "withoutTrailingNewline", "ringbuffer-sink-tests_8cc.html#a5dc2e0d0086621619ef7e65f2231c50e", null ],
+    [ "anonymous_namespace{ringbuffer-sink-tests.cc}::withoutTrailingNewline", "namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html#a5dc2e0d0086621619ef7e65f2231c50e", null ],
     [ "consumedCount", "ringbuffer-sink-tests_8cc.html#abc26a6a251c9d6f8515f7dc1110cddc9", null ],
     [ "entries", "ringbuffer-sink-tests_8cc.html#a1ccbac9cd1dc7547eeae5cc5ffb3a271", null ],
     [ "firstResult", "ringbuffer-sink-tests_8cc.html#a37365e0b301c092d58cb07b0c6b44c3e", null ],

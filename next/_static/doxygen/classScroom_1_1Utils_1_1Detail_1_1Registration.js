@@ -1,6 +1,6 @@
 var classScroom_1_1Utils_1_1Detail_1_1Registration =
 [
-    [ "Ptr", "classScroom_1_1Utils_1_1Detail_1_1Registration.html#a0bc6b88c23a6dd26782db02886dfcccc", null ],
+    [ "Ptr", "classScroom_1_1Utils_1_1Detail_1_1Registration.html#a641fa34315db87704e3fdd78064f3cec", null ],
     [ "Registration", "classScroom_1_1Utils_1_1Detail_1_1Registration.html#a35fdbd663d8c2009a6f293e75bffdef3", null ],
     [ "Registration", "classScroom_1_1Utils_1_1Detail_1_1Registration.html#abaa49b412c6eaa521a793861bc92e958", null ],
     [ "Registration", "classScroom_1_1Utils_1_1Detail_1_1Registration.html#a541d37d4171021959c1c61eea99498e0", null ],

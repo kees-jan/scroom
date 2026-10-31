@@ -1,11 +1,13 @@
 <map id="Scroom::Utils::Count::create" name="Scroom::Utils::Count::create">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,37,160,77"/>
-<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Counter.html#a03663eda498c916f4e9011b88c400b9e" title=" " alt="" coords="208,5,376,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,43,194,38,195,43,161,48"/>
-<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Counter.html#aff741dd8d34219c5c946587f1828a25d" title=" " alt="" coords="208,69,376,109"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="161,67,195,72,194,77,160,72"/>
-<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Counter.html#a1e05f69b5240fbab3e7ab351672167f0" title=" " alt="" coords="424,5,592,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="376,23,410,23,410,28,376,28"/>
-<area shape="rect" id="Node000004" href="$counter_8cc.html#a14e997dd0204437df28124758bdf1b96" title=" " alt="" coords="640,13,784,38"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="592,23,626,23,626,28,592,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,75,160,119"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Count.html#a403581e21714915897aadf020ba83a71" title=" " alt="" coords="214,5,368,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,72,209,54,205,57,153,77"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Counter.html#a03663eda498c916f4e9011b88c400b9e" title=" " alt="" coords="208,75,375,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="159,94,195,96,190,98,161,100"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Counter.html#aff741dd8d34219c5c946587f1828a25d" title=" " alt="" coords="208,144,375,189"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="152,117,210,138,205,139,152,123"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Counter.html#a1e05f69b5240fbab3e7ab351672167f0" title=" " alt="" coords="423,75,590,119"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="375,94,410,97,404,97,376,100"/>
+<area shape="rect" id="Node000005" href="$counter_8cc.html#a14e997dd0204437df28124758bdf1b96" title=" " alt="" coords="638,83,782,111"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="591,94,626,97,621,97,591,100"/>
 </map>

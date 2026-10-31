@@ -1,8 +1,10 @@
 var namespaceScroom_1_1Bookkeeping =
 [
     [ "Detail", "namespaceScroom_1_1Bookkeeping_1_1Detail.html", "namespaceScroom_1_1Bookkeeping_1_1Detail" ],
-    [ "Map", "classScroom_1_1Bookkeeping_1_1Map.html", "classScroom_1_1Bookkeeping_1_1Map" ],
-    [ "MapBase", "classScroom_1_1Bookkeeping_1_1MapBase.html", "classScroom_1_1Bookkeeping_1_1MapBase" ],
     [ "Token", "classScroom_1_1Bookkeeping_1_1Token.html", "classScroom_1_1Bookkeeping_1_1Token" ],
-    [ "WeakToken", "namespaceScroom_1_1Bookkeeping.html#aa859536c2894d3c9e1163bc1e2048bab", null ]
+    [ "MapBase", "classScroom_1_1Bookkeeping_1_1MapBase.html", "classScroom_1_1Bookkeeping_1_1MapBase" ],
+    [ "Map", "classScroom_1_1Bookkeeping_1_1Map.html", "classScroom_1_1Bookkeeping_1_1Map" ],
+    [ "Stuff", "namespaceScroom_1_1Bookkeeping.html#a6f32f9c33bd4964e737bfdd8243ba86f", null ],
+    [ "StuffList", "namespaceScroom_1_1Bookkeeping.html#afa0db9538f2219901832fbf6c8c793b6", null ],
+    [ "WeakToken", "namespaceScroom_1_1Bookkeeping.html#ad6687a6f631e7ef584be46631a106683", null ]
 ];

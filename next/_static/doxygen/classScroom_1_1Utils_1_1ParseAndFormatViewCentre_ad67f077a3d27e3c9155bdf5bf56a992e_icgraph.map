@@ -1,0 +1,20 @@
+<map id="Scroom::Utils::ParseAndFormatViewCentre::create" name="Scroom::Utils::ParseAndFormatViewCentre::create">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1040,76,1262,121"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#aa6527a49e093bcb36e606fe5bfcaadad" title=" " alt="" coords="805,46,991,90"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1021,83,991,82,991,77,1027,84"/>
+<area shape="rect" id="Node000009" href="$classTiledBitmap.html#a79dfef04e48f7a06ed70ac8b08295018" title=" " alt="" coords="804,114,992,142"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="1027,113,992,120,992,115,1021,114"/>
+<area shape="rect" id="Node000003" href="$classTransformPresentation.html#afe7cc32972b9a7ee3326fb1ce7ec8d0d" title=" " alt="" coords="580,16,756,61"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="787,54,757,53,757,47,793,54"/>
+<area shape="rect" id="Node000006" href="$classView.html#a38f98bc514762e3774357ab9ee3b9af7" title=" " alt="" coords="592,85,745,113"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="793,82,746,91,745,86,787,83"/>
+<area shape="rect" id="Node000004" href="$classTransformPresentation.html#a0bb3a42de4a22b82be66bffff34c4e7d" title=" " alt="" coords="364,16,532,61"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="562,48,533,50,532,45,567,48"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="548,27,582,30,577,30,548,33"/>
+<area shape="rect" id="Node000005" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html#a9330592b5fabc337ad248f8c73914a6b" title=" " alt="" coords="5,5,316,67"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="345,38,316,40,316,35,351,37"/>
+<area shape="rect" id="Node000007" href="$classView.html#ae5e716a2256458cc1e9ab15008bcd946" title=" " alt="" coords="367,88,529,115"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="573,100,529,103,529,98,579,100"/>
+<area shape="rect" id="Node000008" href="$classView.html#a0a70183afc50428b82187b478b48ccf4" title=" " alt="" coords="73,92,248,119"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="348,103,248,107,248,102,354,102"/>
+</map>

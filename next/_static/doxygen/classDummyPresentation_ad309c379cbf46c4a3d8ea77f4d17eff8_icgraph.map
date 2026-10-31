@@ -1,7 +1,10 @@
 <map id="DummyPresentation::DummyPresentation" name="DummyPresentation::DummyPresentation">
-<area shape="rect" id="Node000001" title=" " alt="" coords="532,5,696,45"/>
-<area shape="rect" id="Node000002" href="$classDummyPresentation.html#ab367b2e1bf10f4711da69c013b04330c" title=" " alt="" coords="320,5,484,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="518,28,484,28,484,23,518,23"/>
-<area shape="rect" id="Node000003" href="$classDummyView.html#a6ee533e18b061fa8de157931b74a5313" title=" " alt="" coords="5,13,272,38"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="307,28,272,28,272,23,307,23"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="699,5,863,50"/>
+<area shape="rect" id="Node000002" href="$classDummyPresentation.html#ab367b2e1bf10f4711da69c013b04330c" title=" " alt="" coords="488,5,651,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="681,37,652,39,652,34,687,37"/>
+<area shape="poly" id="edge4_Node000002_Node000001" title=" " alt="" coords="667,16,702,19,696,19,667,21"/>
+<area shape="rect" id="Node000003" href="$classDummyView.html#a6ee533e18b061fa8de157931b74a5313" title=" " alt="" coords="175,14,440,42"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="470,28,440,30,440,25,475,28"/>
+<area shape="rect" id="Node000004" href="$pipette-tests_8cc.html#af88b76092f051bac2bdc79e6b2f45730" title=" " alt="" coords="5,14,127,42"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="156,28,127,30,127,25,162,27"/>
 </map>

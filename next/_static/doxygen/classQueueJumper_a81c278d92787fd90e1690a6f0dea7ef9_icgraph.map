@@ -1,0 +1,7 @@
+<map id="QueueJumper::QueueJumper" name="QueueJumper::QueueJumper">
+<area shape="rect" id="Node000001" title=" " alt="" coords="433,5,638,33"/>
+<area shape="rect" id="Node000002" href="$classQueueJumper.html#a5b17c2980aa09df97b92423481e24dc1" title="QueueJumper." alt="" coords="227,5,385,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="415,19,386,22,385,17,420,19"/>
+<area shape="rect" id="Node000003" href="$classDataFetcher.html#aa47b487725b70a8a16000ed9e83ad927" title=" " alt="" coords="5,5,179,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="209,19,179,22,179,17,214,19"/>
+</map>

@@ -1,5 +1,7 @@
 <map id="Detail::ViewData::registerPostRenderer" name="Detail::ViewData::registerPostRenderer">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,196,45"/>
-<area shape="rect" id="Node000002" href="$classDetail_1_1ViewData.html#a6e447a860e908d3c38b4fd35b0f4570a" title=" " alt="" coords="244,13,427,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="196,23,231,23,231,28,196,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,28,195,72"/>
+<area shape="rect" id="Node000002" href="$classDetail_1_1ViewData.html#a6e447a860e908d3c38b4fd35b0f4570a" title=" " alt="" coords="251,5,432,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,35,238,32,233,33,196,40"/>
+<area shape="rect" id="Node000003" href="$classViewInterface.html#a1b4f6281ac9222c2c13306521439f465" title=" " alt="" coords="243,57,440,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,59,230,65,225,65,195,64"/>
 </map>

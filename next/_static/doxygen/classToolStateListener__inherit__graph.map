@@ -1,9 +1,9 @@
 <map id="ToolStateListener" name="ToolStateListener">
-<area shape="rect" id="Node000001" title=" " alt="" coords="126,219,253,304"/>
-<area shape="rect" id="Node000003" href="$classMeasureHandler.html" title=" " alt="" coords="5,372,181,617"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="169,318,146,373,141,371,164,316"/>
-<area shape="rect" id="Node000004" href="$classPipetteHandler.html" title=" " alt="" coords="206,352,367,637"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="215,316,229,351,224,353,210,318"/>
-<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="135,5,243,171"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,184,192,218,187,218,187,184"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="126,237,248,332"/>
+<area shape="rect" id="Node000003" href="$classMeasureHandler.html" title=" " alt="" coords="5,402,179,676"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="166,343,146,403,141,401,164,348"/>
+<area shape="rect" id="Node000004" href="$classPipetteHandler.html" title=" " alt="" coords="203,380,363,698"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="210,343,226,380,220,380,209,348"/>
+<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="134,5,240,189"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,201,190,238,184,237,186,206"/>
 </map>

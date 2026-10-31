@@ -1,0 +1,9 @@
+<map id="Layer::getTile" name="Layer::getTile">
+<area shape="rect" id="Node000001" title=" " alt="" coords="425,32,535,60"/>
+<area shape="rect" id="Node000002" href="$classTiledBitmap.html#a7d2051718f5b6f50e2804177d553bce8" title=" " alt="" coords="218,5,377,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="407,36,378,34,378,28,412,36"/>
+<area shape="rect" id="Node000004" href="$classTiledBitmap.html#a98c2d60fc0736a77ab18aeeb461a1da8" title=" " alt="" coords="221,57,374,85"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="413,55,375,63,374,58,407,56"/>
+<area shape="rect" id="Node000003" href="$classTiledBitmap.html#a6b40bb63aa12b68f9678bb45b765b8e1" title=" " alt="" coords="5,5,170,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="199,20,171,22,170,17,204,19"/>
+</map>

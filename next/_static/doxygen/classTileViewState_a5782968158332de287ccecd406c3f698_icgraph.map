@@ -1,0 +1,25 @@
+<map id="TileViewState::TileViewState" name="TileViewState::TileViewState">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1190,84,1399,112"/>
+<area shape="poly" id="edge11_Node000001_Node000001" title=" " alt="" coords="1337,68,1324,65,1295,63,1268,65,1253,69,1249,75,1256,85,1251,82,1244,75,1249,65,1267,59,1295,57,1325,60,1343,69"/>
+<area shape="rect" id="Node000002" href="$classTileViewState.html#a7085eae554e8f9bab328c0a4ddfb557b" title=" " alt="" coords="957,5,1118,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1237,78,1141,48,1098,36,1098,31,1143,43,1243,79"/>
+<area shape="rect" id="Node000009" href="$classTileViewState.html#a369dacfd50a0eeebc070937f0b1f846a" title=" " alt="" coords="945,57,1130,85"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="1171,85,1130,83,1130,78,1177,85"/>
+<area shape="rect" id="Node000010" href="$classTileViewState.html#a2d0ab6d4b65771da7f9f11297ebb8471" title=" " alt="" coords="945,109,1130,137"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="1177,109,1131,117,1130,111,1172,110"/>
+<area shape="rect" id="Node000011" href="$classTileViewState.html#af8abdc5085f1adaefe269049aee929b2" title=" " alt="" coords="933,161,1142,189"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="1241,117,1143,151,1098,163,1097,158,1141,146,1236,118"/>
+<area shape="rect" id="Node000003" href="$classCompressedTile.html#a9a3305cbab3738c644239cc4ff2f040b" title=" " alt="" coords="663,5,885,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="939,19,885,22,885,17,944,19"/>
+<area shape="rect" id="Node000004" href="$classTiledBitmap.html#a98c2d60fc0736a77ab18aeeb461a1da8" title=" " alt="" coords="22,5,176,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="645,15,615,16,428,14,241,16,177,18,175,13,241,11,428,9,615,11,651,14"/>
+<area shape="rect" id="Node000005" href="$classTiledBitmapViewData.html#ac2a59a87aaf27ba0e2e0e13b45289f11" title=" " alt="" coords="452,26,615,71"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="645,35,616,41,615,36,650,34"/>
+<area shape="rect" id="Node000006" href="$classTiledBitmapViewData.html#a8b46ee3f4f6d65987d3301a2e9d45b47" title=" " alt="" coords="241,96,404,140"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="452,75,394,97,392,92,447,77"/>
+<area shape="rect" id="Node000008" href="$classTiledBitmapViewData.html#af648a83e6be4140595929fac4a70d849" title=" " alt="" coords="241,26,404,71"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="434,49,405,51,404,46,439,48"/>
+<area shape="rect" id="Node000007" href="$classTiledBitmap.html#a687cbfcf28714d7e58b80dec9cb73c23" title=" " alt="" coords="5,104,193,132"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="222,118,194,120,193,115,227,117"/>
+<area shape="poly" id="edge8_Node000008_Node000004" title=" " alt="" coords="223,37,177,32,176,27,228,35"/>
+</map>

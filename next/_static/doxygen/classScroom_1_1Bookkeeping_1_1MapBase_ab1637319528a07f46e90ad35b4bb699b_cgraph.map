@@ -1,18 +1,17 @@
 <map id="Scroom::Bookkeeping::MapBase::reserve" name="Scroom::Bookkeeping::MapBase::reserve">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,149,168,189"/>
-<area shape="rect" id="Node000002" href="$classThreadPool.html#a72b7ee59b6fd4d2266233334f9e0011b" title=" " alt="" coords="234,52,361,77"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,146,160,116,215,86,232,79,234,84,217,91,163,121,117,151"/>
-<area shape="rect" id="Node000006" href="$classScroom_1_1Bookkeeping_1_1Detail_1_1TokenImpl.html#ab58c018ca2f8b72212a1bff956bd5aab" title=" " alt="" coords="216,101,379,156"/>
-<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="168,151,202,144,203,149,169,156"/>
-<area shape="rect" id="Node000007" href="$classScroom_1_1Bookkeeping_1_1Detail_1_1ValueType.html#ac0e5be329f8bf1090463b891ea2e7f30" title=" " alt="" coords="216,180,379,235"/>
-<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="169,181,203,187,202,193,168,186"/>
-<area shape="rect" id="Node000008" href="$async-deleter-tests_8cc.html#a7cc3b949fa6d0ae6fe68d6b431bf8795" title=" " alt="" coords="278,259,317,284"/>
-<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="117,186,163,216,217,245,265,261,264,266,215,250,160,221,114,191"/>
-<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="263,54,255,44,259,34,274,28,297,25,327,29,338,38,335,42,325,34,297,31,275,33,263,37,261,43,267,50"/>
-<area shape="rect" id="Node000003" href="$classanonymous__namespace_02threadpool_8cc_03_1_1ThreadList.html#a96eb0bd66579e263fd0d04a9b16d1a7a" title=" " alt="" coords="427,5,633,60"/>
-<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="361,53,412,46,413,51,361,59"/>
-<area shape="rect" id="Node000004" href="$classThreadPool.html#a9d3f75e5674e5b4b3a1afdc8a50982e4" title=" " alt="" coords="463,84,597,109"/>
-<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="361,71,449,83,449,88,361,76"/>
-<area shape="rect" id="Node000005" href="$classThreadPool.html#a8f42dc3ccb85aab2590d246490df0d9a" title=" " alt="" coords="681,84,832,109"/>
-<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="598,94,668,94,668,99,598,99"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,184,168,229"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Bookkeeping_1_1Detail_1_1TokenImpl.html#ab58c018ca2f8b72212a1bff956bd5aab" title=" " alt="" coords="216,31,378,92"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,182,239,99,237,104,122,186"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Bookkeeping_1_1Detail_1_1ValueType.html#ac0e5be329f8bf1090463b891ea2e7f30" title=" " alt="" coords="216,141,378,203"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="167,191,202,187,198,189,169,196"/>
+<area shape="rect" id="Node000005" href="$async-deleter-tests_8cc.html#a7cc3b949fa6d0ae6fe68d6b431bf8795" title=" " alt="" coords="636,158,675,186"/>
+<area shape="poly" id="edge8_Node000001_Node000005" title=" " alt="" coords="168,210,216,212,322,221,405,232,444,234,486,233,533,226,587,212,623,196,628,195,589,217,534,231,487,238,444,239,404,237,321,226,215,217,169,215"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Base.html#aae9a071db1ff973ca6e844a69d3e10ea" title=" " alt="" coords="223,278,371,322"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="139,227,233,270,228,272,138,232"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Bookkeeping_1_1Detail_1_1TokenImpl.html#a94ba01f3e786f751c928d4f6468cc87b" title=" " alt="" coords="426,5,588,67"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="378,49,413,47,408,49,379,54"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="377,139,425,127,508,115,544,117,589,127,629,149,623,149,587,132,543,122,508,120,427,132,379,144"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Bookkeeping_1_1Detail_1_1ValueType.html#a9808ebac4439161c69cab723a9ec5bc9" title=" " alt="" coords="426,141,588,203"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="378,170,413,172,408,173,379,175"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="588,170,623,172,618,173,589,175"/>
 </map>

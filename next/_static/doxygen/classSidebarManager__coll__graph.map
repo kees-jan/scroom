@@ -1,5 +1,5 @@
 <map id="SidebarManager" name="SidebarManager">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,168,168,293"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="9,5,164,105"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,106,89,152,84,152,84,106"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,190,166,329"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="10,5,162,117"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,114,88,173,83,172,85,119"/>
 </map>

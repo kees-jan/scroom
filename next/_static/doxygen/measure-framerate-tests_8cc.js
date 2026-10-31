@@ -5,5 +5,5 @@ var measure_framerate_tests_8cc =
     [ "InvalidatingCounter", "classInvalidatingCounter.html", "classInvalidatingCounter" ],
     [ "init_tests", "measure-framerate-tests_8cc.html#a0c38ed457f90e06f41a3238692c70397", null ],
     [ "logSizes", "measure-framerate-tests_8cc.html#a00343b452b404b39488be0d8b75512b0", null ],
-    [ "logger", "measure-framerate-tests_8cc.html#a714dc8cbe8793eff2bad2272775f4c9e", null ]
+    [ "anonymous_namespace{measure-framerate-tests.cc}::logger", "namespaceanonymous__namespace_02measure-framerate-tests_8cc_03.html#a714dc8cbe8793eff2bad2272775f4c9e", null ]
 ];

@@ -1,7 +1,7 @@
 <map id="plugins/transparent&#45;overlay/src/transparentoverlaypresentation.hh" name="plugins/transparent&#45;overlay/src/transparentoverlaypresentation.hh">
-<area shape="rect" id="Node000001" title=" " alt="" coords="117,5,446,45"/>
-<area shape="rect" id="Node000002" href="$transparentoverlay_8cc.html" title=" " alt="" coords="5,93,248,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,54,162,96,159,91,234,50"/>
-<area shape="rect" id="Node000003" href="$transparentoverlaypresentation_8cc.html" title=" " alt="" coords="273,93,599,133"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="329,50,403,91,401,96,326,54"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="116,5,444,50"/>
+<area shape="rect" id="Node000002" href="$transparentoverlay_8cc.html" title=" " alt="" coords="5,98,248,143"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="233,57,164,100,162,95,227,59"/>
+<area shape="rect" id="Node000003" href="$transparentoverlaypresentation_8cc.html" title=" " alt="" coords="271,98,598,143"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="331,56,400,98,395,98,329,61"/>
 </map>

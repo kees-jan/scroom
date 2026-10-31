@@ -1,26 +1,26 @@
 <map id="gui/src/logging&#45;window.hh" name="gui/src/logging&#45;window.hh">
-<area shape="rect" id="Node000001" title=" " alt="" coords="131,5,322,31"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,152,72,177"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="213,33,66,146,63,142,210,29"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="96,152,173,177"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="221,33,152,142,147,139,217,30"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="197,152,256,177"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="229,31,229,138,224,138,224,31"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="484,79,564,104"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="275,28,471,75,470,80,274,33"/>
-<area shape="rect" id="Node000006" href="$ringbuffer-sink_8hh.html" title=" " alt="" coords="271,79,460,104"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="250,28,332,70,329,75,248,33"/>
-<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="309,107,86,154,85,149,308,101"/>
-<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="329,107,186,151,184,145,327,101"/>
-<area shape="poly" id="edge9_Node000006_Node000004" title=" " alt="" coords="344,106,263,148,260,143,342,102"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="487,152,574,177"/>
-<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="393,102,492,144,490,149,391,106"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="598,152,661,177"/>
-<area shape="poly" id="edge10_Node000006_Node000008" title=" " alt="" coords="408,101,585,149,584,154,407,107"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="685,152,869,177"/>
-<area shape="poly" id="edge11_Node000006_Node000009" title=" " alt="" coords="432,101,698,147,697,152,431,107"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="894,152,1018,177"/>
-<area shape="poly" id="edge12_Node000006_Node000010" title=" " alt="" coords="461,101,880,149,880,155,460,106"/>
-<area shape="rect" id="Node000011" title=" " alt="" coords="281,152,463,177"/>
-<area shape="poly" id="edge13_Node000006_Node000011" title=" " alt="" coords="369,104,372,138,367,139,364,105"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="130,5,320,33"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,157,71,184"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="210,35,68,149,64,145,207,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="94,157,171,184"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="219,33,151,145,147,142,214,34"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="196,157,254,184"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="227,32,227,142,222,140,223,35"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="480,81,559,109"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="278,31,467,79,462,81,277,36"/>
+<area shape="rect" id="Node000006" href="$ringbuffer-sink_8hh.html" title=" " alt="" coords="268,81,456,109"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="250,31,327,73,322,74,249,36"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="296,112,86,158,85,153,295,107"/>
+<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="324,109,187,155,185,150,318,109"/>
+<area shape="poly" id="edge9_Node000006_Node000004" title=" " alt="" coords="340,109,263,152,261,147,335,110"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="483,157,569,184"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="392,107,486,150,480,150,391,112"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="594,157,656,184"/>
+<area shape="poly" id="edge10_Node000006_Node000008" title=" " alt="" coords="410,107,581,156,576,156,409,112"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="680,157,863,184"/>
+<area shape="poly" id="edge11_Node000006_Node000009" title=" " alt="" coords="436,107,685,153,680,154,435,112"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="887,157,1010,184"/>
+<area shape="poly" id="edge12_Node000006_Node000010" title=" " alt="" coords="457,105,468,106,669,128,874,156,869,156,668,133,467,111,457,110"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="278,157,459,184"/>
+<area shape="poly" id="edge13_Node000006_Node000011" title=" " alt="" coords="365,107,368,142,364,139,361,111"/>
 </map>

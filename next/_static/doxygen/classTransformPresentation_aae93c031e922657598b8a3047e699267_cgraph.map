@@ -1,9 +1,13 @@
 <map id="TransformPresentation::redraw" name="TransformPresentation::redraw">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,175,95"/>
-<area shape="rect" id="Node000002" href="$transformpresentation__test_8cc.html#a608745f30637ee1f30157b0294297580" title=" " alt="" coords="283,5,393,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,53,222,41,268,30,270,35,223,46,173,58"/>
-<area shape="rect" id="Node000003" href="$classScroom_1_1Bitmap_1_1BitmapSurface.html#a697961480f8888e1a149d4be54adb9e7" title=" " alt="" coords="223,55,453,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="175,73,209,73,209,78,175,78"/>
-<area shape="rect" id="Node000004" href="$cairo-helpers_8cc.html#ac7a152a4cc864e9c67acbc6686a9d3a4" title=" " alt="" coords="263,120,413,145"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="173,93,223,105,265,114,264,120,222,110,172,98"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,81,174,126"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a691343f4fe808dc3cf83f22e8079448e" title=" " alt="" coords="267,29,406,57"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,78,221,66,256,60,251,62,222,71,175,83"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Bitmap_1_1BitmapSurface.html#a697961480f8888e1a149d4be54adb9e7" title=" " alt="" coords="222,81,451,126"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="174,101,209,103,203,104,175,106"/>
+<area shape="rect" id="Node000005" href="$cairo-helpers_8cc.html#ac7a152a4cc864e9c67acbc6686a9d3a4" title=" " alt="" coords="261,149,412,177"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="174,123,222,135,256,145,251,145,221,140,174,128"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="294,28,287,20,293,11,309,5,336,3,365,5,382,14,377,14,364,10,336,8,311,10,296,15,293,20,299,29"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Bitmap_1_1BitmapSurface.html#a01b392735034681d7dfabc4fc2f71cfa" title=" " alt="" coords="499,81,728,126"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="451,101,486,103,481,103,452,106"/>
+<area shape="poly" id="edge5_Node000004_Node000004" title=" " alt="" coords="562,79,560,71,569,62,587,56,614,54,643,57,663,66,657,65,642,62,614,59,588,61,571,66,565,72,566,82"/>
 </map>

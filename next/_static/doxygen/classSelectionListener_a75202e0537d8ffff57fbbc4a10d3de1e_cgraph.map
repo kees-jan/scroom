@@ -1,5 +1,7 @@
 <map id="SelectionListener::getSelectionType" name="SelectionListener::getSelectionType">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,148,45"/>
-<area shape="rect" id="Node000002" href="$namespaceSelectionType.html#aebc501deb9a30b47b6b63f09abcb98bc" title=" " alt="" coords="196,13,373,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,23,182,23,182,28,148,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,147,50"/>
+<area shape="rect" id="Node000002" href="$namespaceSelectionType.html#aebc501deb9a30b47b6b63f09abcb98bc" title=" " alt="" coords="195,14,371,42"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,25,182,27,176,28,147,30"/>
+<area shape="rect" id="Node000003" href="$namespaceSelectionType.html#a9f0e8fd7cec2332d694d5a898cff9dc9" title=" " alt="" coords="419,14,571,42"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="371,25,406,28,401,28,371,30"/>
 </map>

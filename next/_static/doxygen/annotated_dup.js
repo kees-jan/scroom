@@ -1,8 +1,8 @@
 var annotated_dup =
 [
     [ "anonymous_namespace{colormaphelpers_test.cc}", "namespaceanonymous__namespace_02colormaphelpers__test_8cc_03.html", [
-      [ "ColormapHelper_Data_Tests", "classanonymous__namespace_02colormaphelpers__test_8cc_03_1_1ColormapHelper__Data__Tests.html", null ],
-      [ "Data", "structanonymous__namespace_02colormaphelpers__test_8cc_03_1_1Data.html", "structanonymous__namespace_02colormaphelpers__test_8cc_03_1_1Data" ]
+      [ "Data", "structanonymous__namespace_02colormaphelpers__test_8cc_03_1_1Data.html", "structanonymous__namespace_02colormaphelpers__test_8cc_03_1_1Data" ],
+      [ "ColormapHelper_Data_Tests", "classanonymous__namespace_02colormaphelpers__test_8cc_03_1_1ColormapHelper__Data__Tests.html", null ]
     ] ],
     [ "anonymous_namespace{determine-size-test.cc}", "namespaceanonymous__namespace_02determine-size-test_8cc_03.html", [
       [ "PresentationInterfaceStub", "classanonymous__namespace_02determine-size-test_8cc_03_1_1PresentationInterfaceStub.html", "classanonymous__namespace_02determine-size-test_8cc_03_1_1PresentationInterfaceStub" ],
@@ -12,6 +12,9 @@ var annotated_dup =
     [ "anonymous_namespace{gtkhelper-tests.cc}", "namespaceanonymous__namespace_02gtkhelper-tests_8cc_03.html", [
       [ "B", "classanonymous__namespace_02gtkhelper-tests_8cc_03_1_1B.html", "classanonymous__namespace_02gtkhelper-tests_8cc_03_1_1B" ]
     ] ],
+    [ "anonymous_namespace{pnmsource.cc}", "namespaceanonymous__namespace_02pnmsource_8cc_03.html", [
+      [ "BitmapMetaData", "structanonymous__namespace_02pnmsource_8cc_03_1_1BitmapMetaData.html", "structanonymous__namespace_02pnmsource_8cc_03_1_1BitmapMetaData" ]
+    ] ],
     [ "anonymous_namespace{progressbarmanager.cc}", "namespaceanonymous__namespace_02progressbarmanager_8cc_03.html", [
       [ "ProgressBarPulser", "classanonymous__namespace_02progressbarmanager_8cc_03_1_1ProgressBarPulser.html", "classanonymous__namespace_02progressbarmanager_8cc_03_1_1ProgressBarPulser" ]
     ] ],
@@ -20,65 +23,29 @@ var annotated_dup =
       [ "ThreadWaiter", "classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter.html", "classanonymous__namespace_02threadpool_8cc_03_1_1ThreadWaiter" ]
     ] ],
     [ "anonymous_namespace{tiledbitmappresentation.cc}", "namespaceanonymous__namespace_02tiledbitmappresentation_8cc_03.html", [
-      [ "OpenTiledBitmapAsPresentation", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation" ],
-      [ "TiledBitmapPresentation", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation" ]
+      [ "TiledBitmapPresentation", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation" ],
+      [ "OpenTiledBitmapAsPresentation", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation" ]
     ] ],
     [ "anonymous_namespace{transparentoverlaypresentation.cc}", "namespaceanonymous__namespace_02transparentoverlaypresentation_8cc_03.html", [
       [ "ColorComparer", "structanonymous__namespace_02transparentoverlaypresentation_8cc_03_1_1ColorComparer.html", "structanonymous__namespace_02transparentoverlaypresentation_8cc_03_1_1ColorComparer" ]
+    ] ],
+    [ "anonymous_namespace{tweak-view_test.cc}", "namespaceanonymous__namespace_02tweak-view__test_8cc_03.html", [
+      [ "TweakPresentationPositionsWithAspectRatioTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakPresentationPositionsWithAspectRatioTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakPresentationPositionsWithAspectRatioTest" ],
+      [ "TweakRulersWithAspectRatioTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakRulersWithAspectRatioTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakRulersWithAspectRatioTest" ],
+      [ "TweakSelectionsWithAspectRatioTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsWithAspectRatioTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsWithAspectRatioTest" ],
+      [ "ParseAndFormatViewCentreWithAspectRatioTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1ParseAndFormatViewCentreWithAspectRatioTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1ParseAndFormatViewCentreWithAspectRatioTest" ]
     ] ],
     [ "Detail", "namespaceDetail.html", [
       [ "ViewData", "classDetail_1_1ViewData.html", "classDetail_1_1ViewData" ]
     ] ],
     [ "fmt", null, [
-      [ "formatter< Scroom::Utils::Point< T > >", "structfmt_1_1formatter_3_01Scroom_1_1Utils_1_1Point_3_01T_01_4_01_4.html", "structfmt_1_1formatter_3_01Scroom_1_1Utils_1_1Point_3_01T_01_4_01_4" ],
-      [ "formatter< Scroom::Utils::Rectangle< T > >", "structfmt_1_1formatter_3_01Scroom_1_1Utils_1_1Rectangle_3_01T_01_4_01_4.html", "structfmt_1_1formatter_3_01Scroom_1_1Utils_1_1Rectangle_3_01T_01_4_01_4" ],
-      [ "formatter< std::shared_ptr< T > >", "structfmt_1_1formatter_3_01std_1_1shared__ptr_3_01T_01_4_01_4.html", "structfmt_1_1formatter_3_01std_1_1shared__ptr_3_01T_01_4_01_4" ],
-      [ "formatter< std::weak_ptr< T > >", "structfmt_1_1formatter_3_01std_1_1weak__ptr_3_01T_01_4_01_4.html", "structfmt_1_1formatter_3_01std_1_1weak__ptr_3_01T_01_4_01_4" ],
-      [ "formatter< TileViewState::State >", "structfmt_1_1formatter_3_01TileViewState_1_1State_01_4.html", "structfmt_1_1formatter_3_01TileViewState_1_1State_01_4" ]
+      [ "formatter&lt; TileViewState::State &gt;", "structfmt_1_1formatter_3_01TileViewState_1_1State_01_4.html", "structfmt_1_1formatter_3_01TileViewState_1_1State_01_4" ],
+      [ "formatter&lt; Scroom::Utils::Rectangle&lt; T &gt; &gt;", "structfmt_1_1formatter_3_01Scroom_1_1Utils_1_1Rectangle_3_01T_01_4_01_4.html", "structfmt_1_1formatter_3_01Scroom_1_1Utils_1_1Rectangle_3_01T_01_4_01_4" ],
+      [ "formatter&lt; Scroom::Utils::Point&lt; T &gt; &gt;", "structfmt_1_1formatter_3_01Scroom_1_1Utils_1_1Point_3_01T_01_4_01_4.html", "structfmt_1_1formatter_3_01Scroom_1_1Utils_1_1Point_3_01T_01_4_01_4" ],
+      [ "formatter&lt; std::shared_ptr&lt; T &gt; &gt;", "structfmt_1_1formatter_3_01std_1_1shared__ptr_3_01T_01_4_01_4.html", "structfmt_1_1formatter_3_01std_1_1shared__ptr_3_01T_01_4_01_4" ],
+      [ "formatter&lt; std::weak_ptr&lt; T &gt; &gt;", "structfmt_1_1formatter_3_01std_1_1weak__ptr_3_01T_01_4_01_4.html", "structfmt_1_1formatter_3_01std_1_1weak__ptr_3_01T_01_4_01_4" ]
     ] ],
     [ "Scroom", "namespaceScroom.html", [
-      [ "Bitmap", "namespaceScroom_1_1Bitmap.html", [
-        [ "BitmapSurface", "classScroom_1_1Bitmap_1_1BitmapSurface.html", "classScroom_1_1Bitmap_1_1BitmapSurface" ],
-        [ "SampleIterator", "classScroom_1_1Bitmap_1_1SampleIterator.html", "classScroom_1_1Bitmap_1_1SampleIterator" ]
-      ] ],
-      [ "Bookkeeping", "namespaceScroom_1_1Bookkeeping.html", [
-        [ "Detail", "namespaceScroom_1_1Bookkeeping_1_1Detail.html", [
-          [ "LValue", "classScroom_1_1Bookkeeping_1_1Detail_1_1LValue.html", "classScroom_1_1Bookkeeping_1_1Detail_1_1LValue" ],
-          [ "MapTokenImpl", "classScroom_1_1Bookkeeping_1_1Detail_1_1MapTokenImpl.html", "classScroom_1_1Bookkeeping_1_1Detail_1_1MapTokenImpl" ],
-          [ "MapType", "structScroom_1_1Bookkeeping_1_1Detail_1_1MapType.html", "structScroom_1_1Bookkeeping_1_1Detail_1_1MapType" ],
-          [ "MapType< std::weak_ptr< K >, V >", "structScroom_1_1Bookkeeping_1_1Detail_1_1MapType_3_01std_1_1weak__ptr_3_01K_01_4_00_01V_01_4.html", "structScroom_1_1Bookkeeping_1_1Detail_1_1MapType_3_01std_1_1weak__ptr_3_01K_01_4_00_01V_01_4" ],
-          [ "TokenAddition", "classScroom_1_1Bookkeeping_1_1Detail_1_1TokenAddition.html", "classScroom_1_1Bookkeeping_1_1Detail_1_1TokenAddition" ],
-          [ "TokenImpl", "classScroom_1_1Bookkeeping_1_1Detail_1_1TokenImpl.html", "classScroom_1_1Bookkeeping_1_1Detail_1_1TokenImpl" ],
-          [ "ValueType", "classScroom_1_1Bookkeeping_1_1Detail_1_1ValueType.html", "classScroom_1_1Bookkeeping_1_1Detail_1_1ValueType" ]
-        ] ],
-        [ "Map", "classScroom_1_1Bookkeeping_1_1Map.html", "classScroom_1_1Bookkeeping_1_1Map" ],
-        [ "MapBase", "classScroom_1_1Bookkeeping_1_1MapBase.html", "classScroom_1_1Bookkeeping_1_1MapBase" ],
-        [ "Token", "classScroom_1_1Bookkeeping_1_1Token.html", "classScroom_1_1Bookkeeping_1_1Token" ]
-      ] ],
-      [ "ColormapImpl", "namespaceScroom_1_1ColormapImpl.html", [
-        [ "ColormapPlugin", "classScroom_1_1ColormapImpl_1_1ColormapPlugin.html", "classScroom_1_1ColormapImpl_1_1ColormapPlugin" ],
-        [ "ColormapProvider", "classScroom_1_1ColormapImpl_1_1ColormapProvider.html", "classScroom_1_1ColormapImpl_1_1ColormapProvider" ],
-        [ "Colormaps", "classScroom_1_1ColormapImpl_1_1Colormaps.html", "classScroom_1_1ColormapImpl_1_1Colormaps" ]
-      ] ],
-      [ "Detail", "namespaceScroom_1_1Detail.html", [
-        [ "ThreadPool", "namespaceScroom_1_1Detail_1_1ThreadPool.html", [
-          [ "Builder", "classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html", "classScroom_1_1Detail_1_1ThreadPool_1_1Builder" ],
-          [ "FunctionAdditor", "classScroom_1_1Detail_1_1ThreadPool_1_1FunctionAdditor.html", "classScroom_1_1Detail_1_1ThreadPool_1_1FunctionAdditor" ],
-          [ "FunctionMultiplier", "classScroom_1_1Detail_1_1ThreadPool_1_1FunctionMultiplier.html", "classScroom_1_1Detail_1_1ThreadPool_1_1FunctionMultiplier" ],
-          [ "Queue", "classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html", "classScroom_1_1Detail_1_1ThreadPool_1_1Queue" ],
-          [ "QueueImpl", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl" ],
-          [ "QueueLock", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueLock.html", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueLock" ],
-          [ "WeakQueue", "classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html", "classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue" ]
-        ] ],
-        [ "ClearDefaultLogger", "structScroom_1_1Detail_1_1ClearDefaultLogger.html", "structScroom_1_1Detail_1_1ClearDefaultLogger" ]
-      ] ],
-      [ "GtkTestHelpers", "namespaceScroom_1_1GtkTestHelpers.html", [
-        [ "GtkMainLoop", "classScroom_1_1GtkTestHelpers_1_1GtkMainLoop.html", "classScroom_1_1GtkTestHelpers_1_1GtkMainLoop" ]
-      ] ],
-      [ "MemoryBlobs", "namespaceScroom_1_1MemoryBlobs.html", [
-        [ "Blob", "classScroom_1_1MemoryBlobs_1_1Blob.html", "classScroom_1_1MemoryBlobs_1_1Blob" ],
-        [ "PageProvider", "classScroom_1_1MemoryBlobs_1_1PageProvider.html", "classScroom_1_1MemoryBlobs_1_1PageProvider" ]
-      ] ],
       [ "MemoryBlocks", "namespaceScroom_1_1MemoryBlocks.html", [
         [ "Detail", "namespaceScroom_1_1MemoryBlocks_1_1Detail.html", [
           [ "anonymous_namespace{swapbasedblockallocator.cc}", "namespaceScroom_1_1MemoryBlocks_1_1Detail_1_1anonymous__namespace_02swapbasedblockallocator_8cc_03.html", [
@@ -87,28 +54,25 @@ var annotated_dup =
           [ "SwapBasedBlockAllocator", "classScroom_1_1MemoryBlocks_1_1Detail_1_1SwapBasedBlockAllocator.html", "classScroom_1_1MemoryBlocks_1_1Detail_1_1SwapBasedBlockAllocator" ],
           [ "SwapBasedBlockAllocatorFactory", "classScroom_1_1MemoryBlocks_1_1Detail_1_1SwapBasedBlockAllocatorFactory.html", "classScroom_1_1MemoryBlocks_1_1Detail_1_1SwapBasedBlockAllocatorFactory" ]
         ] ],
-        [ "BlockFactoryInterface", "classScroom_1_1MemoryBlocks_1_1BlockFactoryInterface.html", "classScroom_1_1MemoryBlocks_1_1BlockFactoryInterface" ],
+        [ "Page", "classScroom_1_1MemoryBlocks_1_1Page.html", "classScroom_1_1MemoryBlocks_1_1Page" ],
         [ "BlockInterface", "classScroom_1_1MemoryBlocks_1_1BlockInterface.html", "classScroom_1_1MemoryBlocks_1_1BlockInterface" ],
-        [ "Page", "classScroom_1_1MemoryBlocks_1_1Page.html", "classScroom_1_1MemoryBlocks_1_1Page" ]
+        [ "BlockFactoryInterface", "classScroom_1_1MemoryBlocks_1_1BlockFactoryInterface.html", "classScroom_1_1MemoryBlocks_1_1BlockFactoryInterface" ]
       ] ],
-      [ "Metadata", "namespaceScroom_1_1Metadata.html", [
-        [ "anonymous_namespace{showmetadata.cc}", "namespaceScroom_1_1Metadata_1_1anonymous__namespace_02showmetadata_8cc_03.html", [
-          [ "MetaDataWindowData", "structScroom_1_1Metadata_1_1anonymous__namespace_02showmetadata_8cc_03_1_1MetaDataWindowData.html", "structScroom_1_1Metadata_1_1anonymous__namespace_02showmetadata_8cc_03_1_1MetaDataWindowData" ]
-        ] ]
-      ] ],
-      [ "Pnm", "namespaceScroom_1_1Pnm.html", [
-        [ "AsciiSource", "classScroom_1_1Pnm_1_1AsciiSource.html", "classScroom_1_1Pnm_1_1AsciiSource" ],
-        [ "AsciiSource1bpp", "classScroom_1_1Pnm_1_1AsciiSource1bpp.html", "classScroom_1_1Pnm_1_1AsciiSource1bpp" ],
-        [ "BinarySource", "classScroom_1_1Pnm_1_1BinarySource.html", "classScroom_1_1Pnm_1_1BinarySource" ],
-        [ "Source", "classScroom_1_1Pnm_1_1Source.html", "classScroom_1_1Pnm_1_1Source" ]
-      ] ],
-      [ "Tiff", "namespaceScroom_1_1Tiff.html", [
-        [ "Source", "classScroom_1_1Tiff_1_1Source.html", "classScroom_1_1Tiff_1_1Source" ]
+      [ "MemoryBlobs", "namespaceScroom_1_1MemoryBlobs.html", [
+        [ "PageProvider", "classScroom_1_1MemoryBlobs_1_1PageProvider.html", "classScroom_1_1MemoryBlobs_1_1PageProvider" ],
+        [ "Blob", "classScroom_1_1MemoryBlobs_1_1Blob.html", "classScroom_1_1MemoryBlobs_1_1Blob" ]
       ] ],
       [ "TiledBitmap", "namespaceScroom_1_1TiledBitmap.html", [
         [ "BitmapMetaData", "structScroom_1_1TiledBitmap_1_1BitmapMetaData.html", "structScroom_1_1TiledBitmap_1_1BitmapMetaData" ],
+        [ "OpenTiledBitmapInterface", "classScroom_1_1TiledBitmap_1_1OpenTiledBitmapInterface.html", "classScroom_1_1TiledBitmap_1_1OpenTiledBitmapInterface" ],
         [ "LayerSpecForBitmapper", "classScroom_1_1TiledBitmap_1_1LayerSpecForBitmapper.html", "classScroom_1_1TiledBitmap_1_1LayerSpecForBitmapper" ],
-        [ "OpenTiledBitmapInterface", "classScroom_1_1TiledBitmap_1_1OpenTiledBitmapInterface.html", "classScroom_1_1TiledBitmap_1_1OpenTiledBitmapInterface" ]
+        [ "PixelAlignPresentationPositions", "classScroom_1_1TiledBitmap_1_1PixelAlignPresentationPositions.html", "classScroom_1_1TiledBitmap_1_1PixelAlignPresentationPositions" ],
+        [ "SnapSelectionsToGrid", "classScroom_1_1TiledBitmap_1_1SnapSelectionsToGrid.html", "classScroom_1_1TiledBitmap_1_1SnapSelectionsToGrid" ],
+        [ "ExpandSelectionsToPixelBoundaries", "classScroom_1_1TiledBitmap_1_1ExpandSelectionsToPixelBoundaries.html", "classScroom_1_1TiledBitmap_1_1ExpandSelectionsToPixelBoundaries" ]
+      ] ],
+      [ "Bitmap", "namespaceScroom_1_1Bitmap.html", [
+        [ "BitmapSurface", "classScroom_1_1Bitmap_1_1BitmapSurface.html", "classScroom_1_1Bitmap_1_1BitmapSurface" ],
+        [ "SampleIterator", "classScroom_1_1Bitmap_1_1SampleIterator.html", "classScroom_1_1Bitmap_1_1SampleIterator" ]
       ] ],
       [ "Utils", "namespaceScroom_1_1Utils.html", [
         [ "anonymous_namespace{tweak-view.cc}", "namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html", [
@@ -116,46 +80,100 @@ var annotated_dup =
           [ "DefaultTweakSelection", "classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakSelection.html", "classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakSelection" ]
         ] ],
         [ "Detail", "namespaceScroom_1_1Utils_1_1Detail.html", [
-          [ "ErrorSignalHandler", "classScroom_1_1Utils_1_1Detail_1_1ErrorSignalHandler.html", "classScroom_1_1Utils_1_1Detail_1_1ErrorSignalHandler" ],
+          [ "Registration", "classScroom_1_1Utils_1_1Detail_1_1Registration.html", "classScroom_1_1Utils_1_1Detail_1_1Registration" ],
           [ "ProgressStore", "classScroom_1_1Utils_1_1Detail_1_1ProgressStore.html", "classScroom_1_1Utils_1_1Detail_1_1ProgressStore" ],
-          [ "Registration", "classScroom_1_1Utils_1_1Detail_1_1Registration.html", "classScroom_1_1Utils_1_1Detail_1_1Registration" ]
+          [ "ErrorSignalHandler", "classScroom_1_1Utils_1_1Detail_1_1ErrorSignalHandler.html", "classScroom_1_1Utils_1_1Detail_1_1ErrorSignalHandler" ]
         ] ],
-        [ "Base", "classScroom_1_1Utils_1_1Base.html", "classScroom_1_1Utils_1_1Base" ],
-        [ "Context", "classScroom_1_1Utils_1_1Context.html", "classScroom_1_1Utils_1_1Context" ],
-        [ "Count", "classScroom_1_1Utils_1_1Count.html", "classScroom_1_1Utils_1_1Count" ],
-        [ "Counted", "classScroom_1_1Utils_1_1Counted.html", "classScroom_1_1Utils_1_1Counted" ],
-        [ "Counter", "classScroom_1_1Utils_1_1Counter.html", "classScroom_1_1Utils_1_1Counter" ],
-        [ "ITweakPositionTextBox", "classScroom_1_1Utils_1_1ITweakPositionTextBox.html", "classScroom_1_1Utils_1_1ITweakPositionTextBox" ],
+        [ "PresentationPositionTweakMock", "classScroom_1_1Utils_1_1PresentationPositionTweakMock.html", "classScroom_1_1Utils_1_1PresentationPositionTweakMock" ],
+        [ "RulerAreaTweakMock", "classScroom_1_1Utils_1_1RulerAreaTweakMock.html", "classScroom_1_1Utils_1_1RulerAreaTweakMock" ],
+        [ "SelectionTweakMock", "classScroom_1_1Utils_1_1SelectionTweakMock.html", "classScroom_1_1Utils_1_1SelectionTweakMock" ],
+        [ "ViewCentreTextConversionMock", "classScroom_1_1Utils_1_1ViewCentreTextConversionMock.html", "classScroom_1_1Utils_1_1ViewCentreTextConversionMock" ],
+        [ "TweakSelectionsAsRectanglesMock", "classScroom_1_1Utils_1_1TweakSelectionsAsRectanglesMock.html", "classScroom_1_1Utils_1_1TweakSelectionsAsRectanglesMock" ],
         [ "ITweakPresentationPosition", "classScroom_1_1Utils_1_1ITweakPresentationPosition.html", "classScroom_1_1Utils_1_1ITweakPresentationPosition" ],
         [ "ITweakRulers", "classScroom_1_1Utils_1_1ITweakRulers.html", "classScroom_1_1Utils_1_1ITweakRulers" ],
         [ "ITweakSelection", "classScroom_1_1Utils_1_1ITweakSelection.html", "classScroom_1_1Utils_1_1ITweakSelection" ],
-        [ "Observable", "classScroom_1_1Utils_1_1Observable.html", "classScroom_1_1Utils_1_1Observable" ],
-        [ "on_scope_exit", "classScroom_1_1Utils_1_1on__scope__exit.html", "classScroom_1_1Utils_1_1on__scope__exit" ],
-        [ "optional_cleanup", "classScroom_1_1Utils_1_1optional__cleanup.html", "classScroom_1_1Utils_1_1optional__cleanup" ],
-        [ "ParentContext", "classScroom_1_1Utils_1_1ParentContext.html", "classScroom_1_1Utils_1_1ParentContext" ],
-        [ "Point", "classScroom_1_1Utils_1_1Point.html", "classScroom_1_1Utils_1_1Point" ],
-        [ "ProgressInterfaceBroadcaster", "classScroom_1_1Utils_1_1ProgressInterfaceBroadcaster.html", "classScroom_1_1Utils_1_1ProgressInterfaceBroadcaster" ],
-        [ "ProgressInterfaceFromProgressStateInterface", "classScroom_1_1Utils_1_1ProgressInterfaceFromProgressStateInterface.html", "classScroom_1_1Utils_1_1ProgressInterfaceFromProgressStateInterface" ],
-        [ "ProgressInterfaceFromProgressStateInterfaceForwarder", "classScroom_1_1Utils_1_1ProgressInterfaceFromProgressStateInterfaceForwarder.html", "classScroom_1_1Utils_1_1ProgressInterfaceFromProgressStateInterfaceForwarder" ],
-        [ "ProgressInterfaceMultiplexer", "classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer.html", "classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer" ],
-        [ "ProgressStateInterface", "classScroom_1_1Utils_1_1ProgressStateInterface.html", "classScroom_1_1Utils_1_1ProgressStateInterface" ],
-        [ "ProgressStateInterfaceFromProgressInterface", "classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterface.html", "classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterface" ],
-        [ "ProgressStateInterfaceFromProgressInterfaceForwarder", "classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterfaceForwarder.html", "classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterfaceForwarder" ],
-        [ "Rectangle", "classScroom_1_1Utils_1_1Rectangle.html", "classScroom_1_1Utils_1_1Rectangle" ],
+        [ "ITweakPositionTextBox", "classScroom_1_1Utils_1_1ITweakPositionTextBox.html", "classScroom_1_1Utils_1_1ITweakPositionTextBox" ],
+        [ "CalculateViewAreaForRulers", "classScroom_1_1Utils_1_1CalculateViewAreaForRulers.html", "classScroom_1_1Utils_1_1CalculateViewAreaForRulers" ],
+        [ "TweakSelectionsAsRectangles", "classScroom_1_1Utils_1_1TweakSelectionsAsRectangles.html", "classScroom_1_1Utils_1_1TweakSelectionsAsRectangles" ],
+        [ "ParseAndFormatViewCentre", "classScroom_1_1Utils_1_1ParseAndFormatViewCentre.html", "classScroom_1_1Utils_1_1ParseAndFormatViewCentre" ],
+        [ "TweakPresentationPositionsWithAspectRatio", "classScroom_1_1Utils_1_1TweakPresentationPositionsWithAspectRatio.html", "classScroom_1_1Utils_1_1TweakPresentationPositionsWithAspectRatio" ],
+        [ "TweakRulersWithAspectRatio", "classScroom_1_1Utils_1_1TweakRulersWithAspectRatio.html", "classScroom_1_1Utils_1_1TweakRulersWithAspectRatio" ],
+        [ "TweakSelectionsWithAspectRatio", "classScroom_1_1Utils_1_1TweakSelectionsWithAspectRatio.html", "classScroom_1_1Utils_1_1TweakSelectionsWithAspectRatio" ],
+        [ "ParseAndFormatViewCentreWithAspectRatio", "classScroom_1_1Utils_1_1ParseAndFormatViewCentreWithAspectRatio.html", "classScroom_1_1Utils_1_1ParseAndFormatViewCentreWithAspectRatio" ],
+        [ "Context", "classScroom_1_1Utils_1_1Context.html", "classScroom_1_1Utils_1_1Context" ],
         [ "RecursiveContext", "classScroom_1_1Utils_1_1RecursiveContext.html", "classScroom_1_1Utils_1_1RecursiveContext" ],
         [ "Segment", "classScroom_1_1Utils_1_1Segment.html", "classScroom_1_1Utils_1_1Segment" ],
-        [ "SingleContext", "classScroom_1_1Utils_1_1SingleContext.html", "classScroom_1_1Utils_1_1SingleContext" ],
-        [ "TweakGridSelection", "classScroom_1_1Utils_1_1TweakGridSelection.html", "classScroom_1_1Utils_1_1TweakGridSelection" ],
-        [ "TweakPixelSelection", "classScroom_1_1Utils_1_1TweakPixelSelection.html", "classScroom_1_1Utils_1_1TweakPixelSelection" ],
-        [ "TweakPositionTextBox", "classScroom_1_1Utils_1_1TweakPositionTextBox.html", "classScroom_1_1Utils_1_1TweakPositionTextBox" ],
-        [ "TweakPresentationPosition", "classScroom_1_1Utils_1_1TweakPresentationPosition.html", "classScroom_1_1Utils_1_1TweakPresentationPosition" ],
-        [ "TweakRulers", "classScroom_1_1Utils_1_1TweakRulers.html", "classScroom_1_1Utils_1_1TweakRulers" ],
-        [ "TweakSelection", "classScroom_1_1Utils_1_1TweakSelection.html", "classScroom_1_1Utils_1_1TweakSelection" ]
+        [ "Observable", "classScroom_1_1Utils_1_1Observable.html", "classScroom_1_1Utils_1_1Observable" ],
+        [ "Point", "classScroom_1_1Utils_1_1Point.html", "classScroom_1_1Utils_1_1Point" ],
+        [ "ProgressStateInterface", "classScroom_1_1Utils_1_1ProgressStateInterface.html", "classScroom_1_1Utils_1_1ProgressStateInterface" ],
+        [ "ProgressInterfaceFromProgressStateInterface", "classScroom_1_1Utils_1_1ProgressInterfaceFromProgressStateInterface.html", "classScroom_1_1Utils_1_1ProgressInterfaceFromProgressStateInterface" ],
+        [ "ProgressInterfaceFromProgressStateInterfaceForwarder", "classScroom_1_1Utils_1_1ProgressInterfaceFromProgressStateInterfaceForwarder.html", "classScroom_1_1Utils_1_1ProgressInterfaceFromProgressStateInterfaceForwarder" ],
+        [ "ProgressStateInterfaceFromProgressInterface", "classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterface.html", "classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterface" ],
+        [ "ProgressStateInterfaceFromProgressInterfaceForwarder", "classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterfaceForwarder.html", "classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterfaceForwarder" ],
+        [ "ProgressInterfaceBroadcaster", "classScroom_1_1Utils_1_1ProgressInterfaceBroadcaster.html", "classScroom_1_1Utils_1_1ProgressInterfaceBroadcaster" ],
+        [ "ProgressInterfaceMultiplexer", "classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer.html", "classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer" ],
+        [ "Rectangle", "classScroom_1_1Utils_1_1Rectangle.html", "classScroom_1_1Utils_1_1Rectangle" ],
+        [ "Base", "classScroom_1_1Utils_1_1Base.html", "classScroom_1_1Utils_1_1Base" ],
+        [ "on_scope_exit", "classScroom_1_1Utils_1_1on__scope__exit.html", "classScroom_1_1Utils_1_1on__scope__exit" ],
+        [ "optional_cleanup", "classScroom_1_1Utils_1_1optional__cleanup.html", "classScroom_1_1Utils_1_1optional__cleanup" ],
+        [ "Count", "classScroom_1_1Utils_1_1Count.html", "classScroom_1_1Utils_1_1Count" ],
+        [ "Counter", "classScroom_1_1Utils_1_1Counter.html", "classScroom_1_1Utils_1_1Counter" ],
+        [ "Counted", "classScroom_1_1Utils_1_1Counted.html", "classScroom_1_1Utils_1_1Counted" ],
+        [ "ParentContext", "classScroom_1_1Utils_1_1ParentContext.html", "classScroom_1_1Utils_1_1ParentContext" ],
+        [ "SingleContext", "classScroom_1_1Utils_1_1SingleContext.html", "classScroom_1_1Utils_1_1SingleContext" ]
       ] ],
-      [ "Logger", "classScroom_1_1Logger.html", "classScroom_1_1Logger" ],
-      [ "LoggerContainer", "classScroom_1_1LoggerContainer.html", "classScroom_1_1LoggerContainer" ],
+      [ "Metadata", "namespaceScroom_1_1Metadata.html", [
+        [ "anonymous_namespace{showmetadata.cc}", "namespaceScroom_1_1Metadata_1_1anonymous__namespace_02showmetadata_8cc_03.html", [
+          [ "MetaDataWindowData", "structScroom_1_1Metadata_1_1anonymous__namespace_02showmetadata_8cc_03_1_1MetaDataWindowData.html", "structScroom_1_1Metadata_1_1anonymous__namespace_02showmetadata_8cc_03_1_1MetaDataWindowData" ]
+        ] ]
+      ] ],
+      [ "Detail", "namespaceScroom_1_1Detail.html", [
+        [ "ThreadPool", "namespaceScroom_1_1Detail_1_1ThreadPool.html", [
+          [ "FunctionAdditor", "classScroom_1_1Detail_1_1ThreadPool_1_1FunctionAdditor.html", "classScroom_1_1Detail_1_1ThreadPool_1_1FunctionAdditor" ],
+          [ "FunctionMultiplier", "classScroom_1_1Detail_1_1ThreadPool_1_1FunctionMultiplier.html", "classScroom_1_1Detail_1_1ThreadPool_1_1FunctionMultiplier" ],
+          [ "Queue", "classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html", "classScroom_1_1Detail_1_1ThreadPool_1_1Queue" ],
+          [ "WeakQueue", "classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html", "classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue" ],
+          [ "Builder", "classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html", "classScroom_1_1Detail_1_1ThreadPool_1_1Builder" ],
+          [ "QueueImpl", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl" ],
+          [ "QueueLock", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueLock.html", "classScroom_1_1Detail_1_1ThreadPool_1_1QueueLock" ]
+        ] ],
+        [ "ClearDefaultLogger", "structScroom_1_1Detail_1_1ClearDefaultLogger.html", "structScroom_1_1Detail_1_1ClearDefaultLogger" ]
+      ] ],
+      [ "Bookkeeping", "namespaceScroom_1_1Bookkeeping.html", [
+        [ "Detail", "namespaceScroom_1_1Bookkeeping_1_1Detail.html", [
+          [ "ValueType", "classScroom_1_1Bookkeeping_1_1Detail_1_1ValueType.html", "classScroom_1_1Bookkeeping_1_1Detail_1_1ValueType" ],
+          [ "LValue", "classScroom_1_1Bookkeeping_1_1Detail_1_1LValue.html", "classScroom_1_1Bookkeeping_1_1Detail_1_1LValue" ],
+          [ "MapType", "structScroom_1_1Bookkeeping_1_1Detail_1_1MapType.html", "structScroom_1_1Bookkeeping_1_1Detail_1_1MapType" ],
+          [ "MapType&lt; std::weak_ptr&lt; K &gt;, V &gt;", "structScroom_1_1Bookkeeping_1_1Detail_1_1MapType_3_01std_1_1weak__ptr_3_01K_01_4_00_01V_01_4.html", "structScroom_1_1Bookkeeping_1_1Detail_1_1MapType_3_01std_1_1weak__ptr_3_01K_01_4_00_01V_01_4" ],
+          [ "TokenAddition", "classScroom_1_1Bookkeeping_1_1Detail_1_1TokenAddition.html", "classScroom_1_1Bookkeeping_1_1Detail_1_1TokenAddition" ],
+          [ "TokenImpl", "classScroom_1_1Bookkeeping_1_1Detail_1_1TokenImpl.html", "classScroom_1_1Bookkeeping_1_1Detail_1_1TokenImpl" ],
+          [ "MapTokenImpl", "classScroom_1_1Bookkeeping_1_1Detail_1_1MapTokenImpl.html", "classScroom_1_1Bookkeeping_1_1Detail_1_1MapTokenImpl" ]
+        ] ],
+        [ "Token", "classScroom_1_1Bookkeeping_1_1Token.html", "classScroom_1_1Bookkeeping_1_1Token" ],
+        [ "MapBase", "classScroom_1_1Bookkeeping_1_1MapBase.html", "classScroom_1_1Bookkeeping_1_1MapBase" ],
+        [ "Map", "classScroom_1_1Bookkeeping_1_1Map.html", "classScroom_1_1Bookkeeping_1_1Map" ]
+      ] ],
+      [ "GtkTestHelpers", "namespaceScroom_1_1GtkTestHelpers.html", [
+        [ "GtkMainLoop", "classScroom_1_1GtkTestHelpers_1_1GtkMainLoop.html", "classScroom_1_1GtkTestHelpers_1_1GtkMainLoop" ]
+      ] ],
+      [ "ColormapImpl", "namespaceScroom_1_1ColormapImpl.html", [
+        [ "ColormapPlugin", "classScroom_1_1ColormapImpl_1_1ColormapPlugin.html", "classScroom_1_1ColormapImpl_1_1ColormapPlugin" ],
+        [ "ColormapProvider", "classScroom_1_1ColormapImpl_1_1ColormapProvider.html", "classScroom_1_1ColormapImpl_1_1ColormapProvider" ],
+        [ "Colormaps", "classScroom_1_1ColormapImpl_1_1Colormaps.html", "classScroom_1_1ColormapImpl_1_1Colormaps" ]
+      ] ],
+      [ "Pnm", "namespaceScroom_1_1Pnm.html", [
+        [ "Source", "classScroom_1_1Pnm_1_1Source.html", "classScroom_1_1Pnm_1_1Source" ],
+        [ "BinarySource", "classScroom_1_1Pnm_1_1BinarySource.html", "classScroom_1_1Pnm_1_1BinarySource" ],
+        [ "AsciiSource", "classScroom_1_1Pnm_1_1AsciiSource.html", "classScroom_1_1Pnm_1_1AsciiSource" ],
+        [ "AsciiSource1bpp", "classScroom_1_1Pnm_1_1AsciiSource1bpp.html", "classScroom_1_1Pnm_1_1AsciiSource1bpp" ]
+      ] ],
+      [ "Tiff", "namespaceScroom_1_1Tiff.html", [
+        [ "Source", "classScroom_1_1Tiff_1_1Source.html", "classScroom_1_1Tiff_1_1Source" ]
+      ] ],
       [ "RingBufferSink", "classScroom_1_1RingBufferSink.html", "classScroom_1_1RingBufferSink" ],
-      [ "Semaphore", "classScroom_1_1Semaphore.html", "classScroom_1_1Semaphore" ]
+      [ "Semaphore", "classScroom_1_1Semaphore.html", "classScroom_1_1Semaphore" ],
+      [ "LoggerContainer", "classScroom_1_1LoggerContainer.html", "classScroom_1_1LoggerContainer" ],
+      [ "Logger", "classScroom_1_1Logger.html", "classScroom_1_1Logger" ]
     ] ],
     [ "A", "classA.html", "classA" ],
     [ "Aggregate", "classAggregate.html", "classAggregate" ],
@@ -192,14 +210,18 @@ var annotated_dup =
     [ "GtkFileFilterListDestroyer", "classGtkFileFilterListDestroyer.html", "classGtkFileFilterListDestroyer" ],
     [ "hash", "classhash.html", null ],
     [ "hash_map", "classhash__map.html", null ],
-    [ "hash_map< Key, Val, hash< Key >, equal_to< Val > >", "classhash__map_3_01Key_00_01Val_00_01hash_3_01Key_01_4_00_01equal__to_3_01Val_01_4_01_4.html", null ],
+    [ "hash_map&lt; Key, Val, hash&lt; Key &gt;, equal_to&lt; Val &gt; &gt;", "classhash__map_3_01Key_00_01Val_00_01hash_3_01Key_01_4_00_01equal__to_3_01Val_01_4_01_4.html", null ],
     [ "HorizontalDrawStrategy", "classHorizontalDrawStrategy.html", "classHorizontalDrawStrategy" ],
     [ "Interface", "classInterface.html", "classInterface" ],
     [ "InvalidatingCounter", "classInvalidatingCounter.html", "classInvalidatingCounter" ],
     [ "Invalidator", "classInvalidator.html", "classInvalidator" ],
+    [ "istream", "classistream.html", null ],
     [ "Layer", "classLayer.html", "classLayer" ],
     [ "LayerCoordinator", "classLayerCoordinator.html", "classLayerCoordinator" ],
     [ "LayerOperations", "classLayerOperations.html", "classLayerOperations" ],
+    [ "list", "classlist.html", "classlist" ],
+    [ "Logger", "classLogger.html", "classLogger" ],
+    [ "LoggerContainer", "classLoggerContainer.html", "classLoggerContainer" ],
     [ "LoggerTests", "classLoggerTests.html", "classLoggerTests" ],
     [ "LoggingWindow", "classLoggingWindow.html", "classLoggingWindow" ],
     [ "Measure", "classMeasure.html", "classMeasure" ],
@@ -223,6 +245,8 @@ var annotated_dup =
     [ "OperationsColormapped", "classOperationsColormapped.html", "classOperationsColormapped" ],
     [ "OperationsRgb24bpp", "classOperationsRgb24bpp.html", "classOperationsRgb24bpp" ],
     [ "OperationsRgb48bpp", "classOperationsRgb48bpp.html", "classOperationsRgb48bpp" ],
+    [ "ostream", "classostream.html", null ],
+    [ "pair", "classpair.html", "classpair" ],
     [ "ParentContextTests", "classParentContextTests.html", "classParentContextTests" ],
     [ "Pipette", "classPipette.html", "classPipette" ],
     [ "Pipette_Tests", "classPipette__Tests.html", null ],
@@ -238,6 +262,7 @@ var annotated_dup =
     [ "PluginInformationInterface", "classPluginInformationInterface.html", "classPluginInformationInterface" ],
     [ "PluginManager", "classPluginManager.html", "classPluginManager" ],
     [ "Pnm", "classPnm.html", "classPnm" ],
+    [ "Point", "classPoint.html", "classPoint" ],
     [ "PostRenderer", "classPostRenderer.html", "classPostRenderer" ],
     [ "PresentationBase", "classPresentationBase.html", "classPresentationBase" ],
     [ "PresentationBaseSimple", "classPresentationBaseSimple.html", "classPresentationBaseSimple" ],
@@ -250,6 +275,7 @@ var annotated_dup =
     [ "ProgressInterfaceStub", "classProgressInterfaceStub.html", "classProgressInterfaceStub" ],
     [ "ProgressStateInterfaceStub", "classProgressStateInterfaceStub.html", "classProgressStateInterfaceStub" ],
     [ "QueueJumper", "classQueueJumper.html", "classQueueJumper" ],
+    [ "Rectangle", "classRectangle.html", "classRectangle" ],
     [ "Rectangle_and_Segment_TypedTests", "classRectangle__and__Segment__TypedTests.html", null ],
     [ "RectangleHorizontalTestScaffold", "classRectangleHorizontalTestScaffold.html", "classRectangleHorizontalTestScaffold" ],
     [ "RectangleVerticalTestScaffold", "classRectangleVerticalTestScaffold.html", "classRectangleVerticalTestScaffold" ],
@@ -257,13 +283,16 @@ var annotated_dup =
     [ "Ruler", "classRuler.html", "classRuler" ],
     [ "RulerCalculations", "classRulerCalculations.html", "classRulerCalculations" ],
     [ "RulerDrawStrategy", "classRulerDrawStrategy.html", "classRulerDrawStrategy" ],
+    [ "SampleIterator", "classSampleIterator.html", "classSampleIterator" ],
     [ "SampleIterator_arithmetic", "classSampleIterator__arithmetic.html", null ],
     [ "SampleIterator_iterates", "classSampleIterator__iterates.html", null ],
     [ "ScroomInterface", "classScroomInterface.html", "classScroomInterface" ],
     [ "ScroomInterfaceImpl", "classScroomInterfaceImpl.html", "classScroomInterfaceImpl" ],
     [ "ScroomPluginInterface", "classScroomPluginInterface.html", "classScroomPluginInterface" ],
+    [ "Segment", "classSegment.html", "classSegment" ],
     [ "Selection", "structSelection.html", "structSelection" ],
     [ "SelectionListener", "classSelectionListener.html", "classSelectionListener" ],
+    [ "set", "classset.html", "classset" ],
     [ "ShowMetadataInterface", "classShowMetadataInterface.html", "classShowMetadataInterface" ],
     [ "SidebarManager", "classSidebarManager.html", "classSidebarManager" ],
     [ "SingleContextTests", "classSingleContextTests.html", "classSingleContextTests" ],
@@ -294,6 +323,7 @@ var annotated_dup =
     [ "TransparentOverlay", "classTransparentOverlay.html", "classTransparentOverlay" ],
     [ "TransparentOverlayPresentation", "classTransparentOverlayPresentation.html", "classTransparentOverlayPresentation" ],
     [ "TransparentOverlayViewInfo", "classTransparentOverlayViewInfo.html", "classTransparentOverlayViewInfo" ],
+    [ "vector", "classvector.html", "classvector" ],
     [ "VerticalDrawStrategy", "classVerticalDrawStrategy.html", "classVerticalDrawStrategy" ],
     [ "View", "classView.html", "classView" ],
     [ "Viewable", "classViewable.html", "classViewable" ],

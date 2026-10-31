@@ -1,11 +1,13 @@
 <map id="Scroom::Utils::Point&lt; T &gt;" name="Scroom::Utils::Point&lt; T &gt;">
-<area shape="rect" id="Node000001" title=" " alt="" coords="251,133,431,319"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,164,85"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="154,91,252,160,249,164,151,96"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="189,5,327,85"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="284,97,301,132,296,134,279,99"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="351,5,495,85"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="402,99,386,134,381,132,397,97"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="520,5,657,85"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="525,96,433,162,429,158,522,91"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="326,190,503,374"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,160,95"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,100,329,219,324,221,157,106"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="184,5,320,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="292,104,353,190,348,190,290,109"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="344,5,485,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="416,108,417,191,412,189,413,112"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="509,5,643,95"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="539,105,480,192,476,188,535,108"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="667,14,685,86"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="669,73,657,96,625,131,590,164,518,219,515,215,587,159,621,127,653,93,665,77"/>
 </map>

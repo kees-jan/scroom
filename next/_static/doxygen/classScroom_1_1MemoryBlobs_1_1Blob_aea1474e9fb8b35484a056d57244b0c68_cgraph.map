@@ -1,7 +1,13 @@
 <map id="Scroom::MemoryBlobs::Blob::getConst" name="Scroom::MemoryBlobs::Blob::getConst">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,175,45"/>
-<area shape="rect" id="Node000002" href="$classScroom_1_1MemoryBlobs_1_1Blob.html#a775037c70c28e8e06cd2731a6968a410" title=" " alt="" coords="223,5,392,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="175,23,209,23,209,28,175,28"/>
-<area shape="rect" id="Node000003" href="$namespaceScroom_1_1MemoryBlobs_1_1Detail.html#ad9ecb35eccaa1e782bf2a383f66d5998" title=" " alt="" coords="440,5,625,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="392,23,426,23,426,28,392,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,75,174,119"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1MemoryBlobs_1_1Blob.html#a775037c70c28e8e06cd2731a6968a410" title=" " alt="" coords="222,75,390,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="174,94,209,96,204,98,175,100"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1MemoryBlobs_1_1Detail.html#ad9ecb35eccaa1e782bf2a383f66d5998" title=" " alt="" coords="438,5,622,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="380,72,438,56,443,54,381,77"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Base.html#aae9a071db1ff973ca6e844a69d3e10ea" title=" " alt="" coords="456,75,604,119"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="390,94,443,97,438,97,391,100"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1MemoryBlobs_1_1Blob.html#a963a93080579819dfa40758263afe7e0" title=" " alt="" coords="446,144,614,189"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="381,117,444,139,438,139,380,123"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1MemoryBlocks_1_1Page.html#a38455f2de5f3ef96d5089330db28847f" title=" " alt="" coords="670,5,846,50"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="622,25,657,27,652,28,623,30"/>
 </map>

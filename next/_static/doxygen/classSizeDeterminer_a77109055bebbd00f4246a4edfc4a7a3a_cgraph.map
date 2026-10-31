@@ -1,5 +1,7 @@
 <map id="SizeDeterminer::open" name="SizeDeterminer::open">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,168,31"/>
-<area shape="rect" id="Node000002" href="$classSizeDeterminer.html#ac91840b2bd2dcdc1bb5a6bdcfe412fe1" title=" " alt="" coords="216,5,397,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,15,202,15,202,21,168,21"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,36,168,64"/>
+<area shape="rect" id="Node000002" href="$classSizeDeterminer.html#ac91840b2bd2dcdc1bb5a6bdcfe412fe1" title=" " alt="" coords="238,5,418,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="167,37,225,32,219,33,169,42"/>
+<area shape="rect" id="Node000003" href="$classResizablePresentationInterface.html#adfd0fcdcc45220c30bfcb750d830baeb" title=" " alt="" coords="216,57,440,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="168,57,203,63,198,64,168,62"/>
 </map>

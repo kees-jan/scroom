@@ -1,5 +1,7 @@
 <map id="Detail::ViewData::setStatusMessage" name="Detail::ViewData::setStatusMessage">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,207,45"/>
-<area shape="rect" id="Node000002" href="$classDetail_1_1ViewData.html#a6e447a860e908d3c38b4fd35b0f4570a" title=" " alt="" coords="255,13,437,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="207,23,241,23,241,28,207,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,28,206,72"/>
+<area shape="rect" id="Node000002" href="$classDetail_1_1ViewData.html#a6e447a860e908d3c38b4fd35b0f4570a" title=" " alt="" coords="254,5,435,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="206,34,240,32,235,33,207,40"/>
+<area shape="rect" id="Node000003" href="$classViewInterface.html#ab829d62a1f5ea83ab0e9caf0ac683655" title=" " alt="" coords="254,57,434,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="206,60,241,66,236,66,206,65"/>
 </map>

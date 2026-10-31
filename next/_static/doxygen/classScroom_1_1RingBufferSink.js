@@ -1,7 +1,7 @@
 var classScroom_1_1RingBufferSink =
 [
-    [ "ConsumeResult", "structScroom_1_1RingBufferSink_1_1ConsumeResult.html", "structScroom_1_1RingBufferSink_1_1ConsumeResult" ],
     [ "Entry", "structScroom_1_1RingBufferSink_1_1Entry.html", "structScroom_1_1RingBufferSink_1_1Entry" ],
+    [ "ConsumeResult", "structScroom_1_1RingBufferSink_1_1ConsumeResult.html", "structScroom_1_1RingBufferSink_1_1ConsumeResult" ],
     [ "Ptr", "classScroom_1_1RingBufferSink.html#a181c596238444cbac5f5a1e86762f7ce", null ],
     [ "RingBufferSink", "classScroom_1_1RingBufferSink.html#abfb802f058df9063669ace67ada63a4b", null ],
     [ "capacity", "classScroom_1_1RingBufferSink.html#a91a9c112acbe352ae972ab8b91195208", null ],

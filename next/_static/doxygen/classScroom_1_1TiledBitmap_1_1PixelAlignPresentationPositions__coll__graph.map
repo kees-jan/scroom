@@ -1,0 +1,7 @@
+<map id="Scroom::TiledBitmap::PixelAlignPresentationPositions" name="Scroom::TiledBitmap::PixelAlignPresentationPositions">
+<area shape="rect" id="Node000001" title=" " alt="" coords="10,375,234,486"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1ITweakPresentationPosition.html" title=" " alt="" coords="5,237,238,327"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,339,124,376,119,374,120,344"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="69,5,175,189"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="122,202,124,238,119,237,121,207"/>
+</map>

@@ -1,5 +1,8 @@
 <map id="TransparentOverlayPresentation::create" name="TransparentOverlayPresentation::create">
-<area shape="rect" id="Node000001" title=" " alt="" coords="203,5,433,45"/>
-<area shape="rect" id="Node000002" href="$classTransparentOverlay.html#aae69c589cf992ca7247d0372cde63399" title=" " alt="" coords="5,5,155,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,28,155,28,155,23,189,23"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="292,75,522,119"/>
+<area shape="rect" id="Node000002" href="$classTransparentOverlay.html#aae69c589cf992ca7247d0372cde63399" title=" " alt="" coords="50,5,199,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="296,71,199,49,200,43,301,70"/>
+<area shape="rect" id="Node000003" href="$classTransparentOverlayPresentation.html#a69a7c85d3b030fe299a1542b3a3f1bed" title=" " alt="" coords="5,75,244,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="274,106,244,109,244,103,279,106"/>
+<area shape="poly" id="edge3_Node000003_Node000001" title=" " alt="" coords="259,85,294,88,289,88,259,91"/>
 </map>

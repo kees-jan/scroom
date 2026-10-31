@@ -1,7 +1,12 @@
 <map id="set" name="set">
-<area shape="rect" id="Node000001" title=" " alt="" coords="241,35,284,60"/>
-<area shape="rect" id="Node000002" href="$classTiledBitmap.html#a79dfef04e48f7a06ed70ac8b08295018" title=" " alt="" coords="5,5,193,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="227,44,170,33,171,28,228,39"/>
-<area shape="rect" id="Node000003" href="$classTransformPresentation.html#afe7cc32972b9a7ee3326fb1ce7ec8d0d" title=" " alt="" coords="11,55,188,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="228,56,189,63,188,57,227,51"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="815,36,857,64"/>
+<area shape="rect" id="Node000002" href="$classTiledBitmap.html#a79dfef04e48f7a06ed70ac8b08295018" title=" " alt="" coords="580,5,767,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="798,43,750,36,750,31,803,43"/>
+<area shape="rect" id="Node000003" href="$classTransformPresentation.html#afe7cc32972b9a7ee3326fb1ce7ec8d0d" title=" " alt="" coords="586,57,762,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="803,56,763,66,762,60,797,57"/>
+<area shape="rect" id="Node000004" href="$classTransformPresentation.html#a0bb3a42de4a22b82be66bffff34c4e7d" title=" " alt="" coords="364,57,532,102"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="568,88,533,91,533,85,573,88"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="548,68,588,70,583,70,548,73"/>
+<area shape="rect" id="Node000005" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html#a9330592b5fabc337ad248f8c73914a6b" title=" " alt="" coords="5,48,316,110"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="345,79,316,82,316,77,351,79"/>
 </map>

@@ -1,0 +1,9 @@
+<map id="Scroom::Utils::CalculateViewAreaForRulers::tweakRulers" name="Scroom::Utils::CalculateViewAreaForRulers::tweakRulers">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,49,239,94"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a8a866a6439fc60dfe259e168059aa65e" title=" " alt="" coords="287,5,471,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="235,46,294,36,289,37,236,51"/>
+<area shape="rect" id="Node000003" href="$cairo-helpers_8cc.html#ac7a152a4cc864e9c67acbc6686a9d3a4" title=" " alt="" coords="304,57,454,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="239,69,291,71,286,72,240,74"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Point.html#a45972be2646a1f80a0cdca8cbe68e3a6" title=" " alt="" coords="294,109,464,137"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="236,91,295,106,289,106,235,97"/>
+</map>

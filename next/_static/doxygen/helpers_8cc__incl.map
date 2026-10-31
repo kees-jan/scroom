@@ -1,28 +1,28 @@
 <map id="libs/threadpool/test/helpers.cc" name="libs/threadpool/test/helpers.cc">
-<area shape="rect" id="Node000001" title=" " alt="" coords="498,5,646,45"/>
-<area shape="rect" id="Node000002" href="$helpers_8hh.html" title=" " alt="" coords="293,93,384,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="517,48,387,91,385,86,515,43"/>
-<area shape="rect" id="Node000005" href="$semaphore_8hh.html" title=" " alt="" coords="499,240,666,265"/>
-<area shape="poly" id="edge15_Node000001_Node000005" title=" " alt="" coords="576,45,584,226,579,226,570,46"/>
-<area shape="rect" id="Node000011" title=" " alt="" coords="610,93,670,119"/>
-<area shape="poly" id="edge14_Node000001_Node000011" title=" " alt="" coords="590,44,623,81,619,84,586,47"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="5,240,83,265"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="316,121,80,236,78,232,314,116"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="107,240,250,265"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="317,121,282,141,246,169,217,199,195,230,191,227,213,196,242,165,279,137,314,116"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="360,117,553,231,550,235,357,121"/>
-<area shape="rect" id="Node000008" href="$threadpool_8hh.html" title=" " alt="" coords="257,167,421,192"/>
-<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="341,119,341,153,336,153,336,119"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="499,313,666,353"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="585,266,585,300,580,300,580,266"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="283,321,415,346"/>
-<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="550,268,397,319,395,314,548,263"/>
-<area shape="poly" id="edge8_Node000008_Node000003" title=" " alt="" coords="292,195,96,242,95,236,291,189"/>
-<area shape="poly" id="edge11_Node000008_Node000004" title=" " alt="" coords="314,194,218,237,216,232,312,190"/>
-<area shape="poly" id="edge13_Node000008_Node000005" title=" " alt="" coords="379,189,531,234,529,239,377,195"/>
-<area shape="poly" id="edge12_Node000008_Node000007" title=" " alt="" coords="334,193,320,226,316,245,317,265,325,287,336,308,331,310,320,289,312,266,311,245,315,224,329,191"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="326,240,389,265"/>
-<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="344,192,353,226,348,228,339,193"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="413,240,475,265"/>
-<area shape="poly" id="edge10_Node000008_Node000010" title=" " alt="" coords="357,190,417,230,414,235,354,194"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="492,5,640,50"/>
+<area shape="rect" id="Node000002" href="$helpers_8hh.html" title=" " alt="" coords="290,98,379,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="502,52,387,95,384,90,507,49"/>
+<area shape="rect" id="Node000005" href="$semaphore_8hh.html" title=" " alt="" coords="494,249,660,277"/>
+<area shape="poly" id="edge15_Node000001_Node000005" title=" " alt="" coords="569,49,578,235,573,233,565,52"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="603,98,662,126"/>
+<area shape="poly" id="edge14_Node000001_Node000011" title=" " alt="" coords="584,48,615,86,610,85,583,53"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,249,82,277"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="305,128,213,176,83,244,80,239,210,171,309,124"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="106,249,248,277"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="306,128,276,149,243,176,216,206,194,238,190,234,211,203,239,172,273,145,311,125"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="356,124,546,240,541,242,355,129"/>
+<area shape="rect" id="Node000008" href="$threadpool_8hh.html" title=" " alt="" coords="252,174,416,201"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="336,124,337,159,332,157,333,129"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="494,325,660,370"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="579,276,579,311,575,307,575,280"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="279,334,410,361"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="542,277,397,331,395,325,537,278"/>
+<area shape="poly" id="edge8_Node000008_Node000003" title=" " alt="" coords="281,205,98,251,96,246,282,199"/>
+<area shape="poly" id="edge11_Node000008_Node000004" title=" " alt="" coords="304,203,220,245,217,240,308,201"/>
+<area shape="poly" id="edge13_Node000008_Node000005" title=" " alt="" coords="378,199,521,244,516,245,377,205"/>
+<area shape="poly" id="edge12_Node000008_Node000007" title=" " alt="" coords="328,200,315,237,311,256,313,276,331,321,326,319,308,278,306,256,310,235,324,204"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="322,249,384,277"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="339,200,348,235,343,233,336,204"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="407,249,469,277"/>
+<area shape="poly" id="edge10_Node000008_Node000010" title=" " alt="" coords="353,199,410,240,405,240,352,204"/>
 </map>

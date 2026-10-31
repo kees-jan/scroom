@@ -1,0 +1,9 @@
+<map id="Colormappable::getMonochromeColor" name="Colormappable::getMonochromeColor">
+<area shape="rect" id="Node000001" title=" " alt="" coords="562,40,796,85"/>
+<area shape="rect" id="Node000002" href="$classColormappableMock.html#aeb8727b1464fc8deef5a7079fa899eae" title=" " alt="" coords="317,5,480,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="544,46,481,40,481,35,550,46"/>
+<area shape="rect" id="Node000003" href="$classTransparentOverlayPresentation.html#a6c094814a4441ee33ba7de57bf41f709" title=" " alt="" coords="284,75,514,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="549,78,515,85,514,80,544,79"/>
+<area shape="rect" id="Node000004" href="$classTransparentOverlayPresentation.html#a49dc1a6a20e1af36c4b4f1b01e6f9d41" title=" " alt="" coords="5,75,236,119"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="266,97,236,100,236,94,271,97"/>
+</map>

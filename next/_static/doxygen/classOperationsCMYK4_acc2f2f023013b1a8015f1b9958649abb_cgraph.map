@@ -1,7 +1,10 @@
 <map id="OperationsCMYK4::cache" name="OperationsCMYK4::cache">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,45,191,70"/>
-<area shape="rect" id="Node000002" href="$classScroom_1_1Bitmap_1_1BitmapSurface.html#a697961480f8888e1a149d4be54adb9e7" title=" " alt="" coords="239,5,469,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="190,43,225,39,225,44,191,48"/>
-<area shape="rect" id="Node000003" href="$namespaceScroom_1_1Utils.html#ae993dff329fe71d3a12da2981b172fbf" title=" " alt="" coords="273,69,435,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="191,66,260,75,259,80,190,72"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,72,190,100"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Bitmap_1_1BitmapSurface.html#a697961480f8888e1a149d4be54adb9e7" title=" " alt="" coords="238,29,467,74"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="190,71,225,69,219,70,191,76"/>
+<area shape="rect" id="Node000004" href="$namespaceScroom_1_1Utils.html#ae993dff329fe71d3a12da2981b172fbf" title=" " alt="" coords="272,99,432,143"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="190,96,259,108,254,108,190,102"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Bitmap_1_1BitmapSurface.html#a01b392735034681d7dfabc4fc2f71cfa" title=" " alt="" coords="515,29,744,74"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="467,49,502,51,497,52,468,54"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="578,27,576,19,585,10,603,5,630,3,659,5,679,14,673,14,658,10,630,8,604,10,587,15,581,21,582,30"/>
 </map>
