@@ -26,26 +26,14 @@ var annotated_dup =
       [ "TiledBitmapPresentation", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation" ],
       [ "OpenTiledBitmapAsPresentation", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation.html", "classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1OpenTiledBitmapAsPresentation" ]
     ] ],
-    [ "anonymous_namespace{transformpresentation_test.cc}", "namespaceanonymous__namespace_02transformpresentation__test_8cc_03.html", [
-      [ "TransformPresentationContextTest", "classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TransformPresentationContextTest.html", "classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TransformPresentationContextTest" ]
-    ] ],
     [ "anonymous_namespace{transparentoverlaypresentation.cc}", "namespaceanonymous__namespace_02transparentoverlaypresentation_8cc_03.html", [
       [ "ColorComparer", "structanonymous__namespace_02transparentoverlaypresentation_8cc_03_1_1ColorComparer.html", "structanonymous__namespace_02transparentoverlaypresentation_8cc_03_1_1ColorComparer" ]
     ] ],
     [ "anonymous_namespace{tweak-view_test.cc}", "namespaceanonymous__namespace_02tweak-view__test_8cc_03.html", [
-      [ "PixelAlignPresentationPositionsTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1PixelAlignPresentationPositionsTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1PixelAlignPresentationPositionsTest" ],
-      [ "CalculateViewAreaForRulersTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1CalculateViewAreaForRulersTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1CalculateViewAreaForRulersTest" ],
-      [ "SnapSelectionsToGridTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1SnapSelectionsToGridTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1SnapSelectionsToGridTest" ],
-      [ "ExpandSelectionsToPixelBoundariesTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1ExpandSelectionsToPixelBoundariesTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1ExpandSelectionsToPixelBoundariesTest" ],
-      [ "TweakSelectionsAsRectanglesTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsAsRectanglesTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsAsRectanglesTest" ],
-      [ "ParseAndFormatViewCentreTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1ParseAndFormatViewCentreTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1ParseAndFormatViewCentreTest" ],
       [ "TweakPresentationPositionsWithAspectRatioTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakPresentationPositionsWithAspectRatioTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakPresentationPositionsWithAspectRatioTest" ],
       [ "TweakRulersWithAspectRatioTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakRulersWithAspectRatioTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakRulersWithAspectRatioTest" ],
       [ "TweakSelectionsWithAspectRatioTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsWithAspectRatioTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsWithAspectRatioTest" ],
-      [ "ParseAndFormatViewCentreWithAspectRatioTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1ParseAndFormatViewCentreWithAspectRatioTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1ParseAndFormatViewCentreWithAspectRatioTest" ],
-      [ "DefaultTweakPresentationPositionTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakPresentationPositionTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakPresentationPositionTest" ],
-      [ "DefaultTweakSelectionTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakSelectionTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakSelectionTest" ],
-      [ "DefaultTweakSelectionMapTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakSelectionMapTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakSelectionMapTest" ]
+      [ "ParseAndFormatViewCentreWithAspectRatioTest", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1ParseAndFormatViewCentreWithAspectRatioTest.html", "classanonymous__namespace_02tweak-view__test_8cc_03_1_1ParseAndFormatViewCentreWithAspectRatioTest" ]
     ] ],
     [ "Detail", "namespaceDetail.html", [
       [ "ViewData", "classDetail_1_1ViewData.html", "classDetail_1_1ViewData" ]
@@ -77,7 +65,10 @@ var annotated_dup =
       [ "TiledBitmap", "namespaceScroom_1_1TiledBitmap.html", [
         [ "BitmapMetaData", "structScroom_1_1TiledBitmap_1_1BitmapMetaData.html", "structScroom_1_1TiledBitmap_1_1BitmapMetaData" ],
         [ "OpenTiledBitmapInterface", "classScroom_1_1TiledBitmap_1_1OpenTiledBitmapInterface.html", "classScroom_1_1TiledBitmap_1_1OpenTiledBitmapInterface" ],
-        [ "LayerSpecForBitmapper", "classScroom_1_1TiledBitmap_1_1LayerSpecForBitmapper.html", "classScroom_1_1TiledBitmap_1_1LayerSpecForBitmapper" ]
+        [ "LayerSpecForBitmapper", "classScroom_1_1TiledBitmap_1_1LayerSpecForBitmapper.html", "classScroom_1_1TiledBitmap_1_1LayerSpecForBitmapper" ],
+        [ "PixelAlignPresentationPositions", "classScroom_1_1TiledBitmap_1_1PixelAlignPresentationPositions.html", "classScroom_1_1TiledBitmap_1_1PixelAlignPresentationPositions" ],
+        [ "SnapSelectionsToGrid", "classScroom_1_1TiledBitmap_1_1SnapSelectionsToGrid.html", "classScroom_1_1TiledBitmap_1_1SnapSelectionsToGrid" ],
+        [ "ExpandSelectionsToPixelBoundaries", "classScroom_1_1TiledBitmap_1_1ExpandSelectionsToPixelBoundaries.html", "classScroom_1_1TiledBitmap_1_1ExpandSelectionsToPixelBoundaries" ]
       ] ],
       [ "Bitmap", "namespaceScroom_1_1Bitmap.html", [
         [ "BitmapSurface", "classScroom_1_1Bitmap_1_1BitmapSurface.html", "classScroom_1_1Bitmap_1_1BitmapSurface" ],
@@ -102,11 +93,8 @@ var annotated_dup =
         [ "ITweakRulers", "classScroom_1_1Utils_1_1ITweakRulers.html", "classScroom_1_1Utils_1_1ITweakRulers" ],
         [ "ITweakSelection", "classScroom_1_1Utils_1_1ITweakSelection.html", "classScroom_1_1Utils_1_1ITweakSelection" ],
         [ "ITweakPositionTextBox", "classScroom_1_1Utils_1_1ITweakPositionTextBox.html", "classScroom_1_1Utils_1_1ITweakPositionTextBox" ],
-        [ "PixelAlignPresentationPositions", "classScroom_1_1Utils_1_1PixelAlignPresentationPositions.html", "classScroom_1_1Utils_1_1PixelAlignPresentationPositions" ],
         [ "CalculateViewAreaForRulers", "classScroom_1_1Utils_1_1CalculateViewAreaForRulers.html", "classScroom_1_1Utils_1_1CalculateViewAreaForRulers" ],
         [ "TweakSelectionsAsRectangles", "classScroom_1_1Utils_1_1TweakSelectionsAsRectangles.html", "classScroom_1_1Utils_1_1TweakSelectionsAsRectangles" ],
-        [ "SnapSelectionsToGrid", "classScroom_1_1Utils_1_1SnapSelectionsToGrid.html", "classScroom_1_1Utils_1_1SnapSelectionsToGrid" ],
-        [ "ExpandSelectionsToPixelBoundaries", "classScroom_1_1Utils_1_1ExpandSelectionsToPixelBoundaries.html", "classScroom_1_1Utils_1_1ExpandSelectionsToPixelBoundaries" ],
         [ "ParseAndFormatViewCentre", "classScroom_1_1Utils_1_1ParseAndFormatViewCentre.html", "classScroom_1_1Utils_1_1ParseAndFormatViewCentre" ],
         [ "TweakPresentationPositionsWithAspectRatio", "classScroom_1_1Utils_1_1TweakPresentationPositionsWithAspectRatio.html", "classScroom_1_1Utils_1_1TweakPresentationPositionsWithAspectRatio" ],
         [ "TweakRulersWithAspectRatio", "classScroom_1_1Utils_1_1TweakRulersWithAspectRatio.html", "classScroom_1_1Utils_1_1TweakRulersWithAspectRatio" ],
@@ -192,7 +180,6 @@ var annotated_dup =
     [ "AsyncDeleter", "classAsyncDeleter.html", "classAsyncDeleter" ],
     [ "BaseCounter", "classBaseCounter.html", "classBaseCounter" ],
     [ "BitCountLut", "classBitCountLut.html", "classBitCountLut" ],
-    [ "BitmapSurface", "classBitmapSurface.html", "classBitmapSurface" ],
     [ "ChildView", "classChildView.html", "classChildView" ],
     [ "Color", "classColor.html", "classColor" ],
     [ "Colormap", "classColormap.html", "classColormap" ],

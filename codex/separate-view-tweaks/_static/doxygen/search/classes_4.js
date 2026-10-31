@@ -5,6 +5,5 @@ var searchData=
   ['errorsignalhandler_2',['ErrorSignalHandler',['../classScroom_1_1Utils_1_1Detail_1_1ErrorSignalHandler.html',1,'Scroom::Utils::Detail']]],
   ['example_3',['Example',['../classExample.html',1,'']]],
   ['examplepresentation_4',['ExamplePresentation',['../classExamplePresentation.html',1,'']]],
-  ['expandselectionstopixelboundaries_5',['ExpandSelectionsToPixelBoundaries',['../classScroom_1_1Utils_1_1ExpandSelectionsToPixelBoundaries.html',1,'Scroom::Utils']]],
-  ['expandselectionstopixelboundariestest_6',['ExpandSelectionsToPixelBoundariesTest',['../classanonymous__namespace_02tweak-view__test_8cc_03_1_1ExpandSelectionsToPixelBoundariesTest.html',1,'anonymous_namespace{tweak-view_test.cc}']]]
+  ['expandselectionstopixelboundaries_5',['ExpandSelectionsToPixelBoundaries',['../classScroom_1_1TiledBitmap_1_1ExpandSelectionsToPixelBoundaries.html',1,'Scroom::TiledBitmap']]]
 ];

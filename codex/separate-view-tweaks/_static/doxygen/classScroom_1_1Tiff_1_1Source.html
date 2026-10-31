@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-64-gaf037a1e1</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-67-g4a9473164</span>
    </div>
   </td>
  </tr>
@@ -501,18 +501,18 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  261</span> </div>
 <div class="line"><span class="lineno">  262</span>    <span class="keywordflow">if</span>(!<a class="code hl_variable" href="#a5666b3e44b95672cf088a7523f76eff5">tif</a>)</div>
 <div class="line"><span class="lineno">  263</span>    {</div>
-<div class="line"><span class="lineno">  264</span>      <span class="keyword">auto</span> <a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a> = <a class="code hl_function" href="namespaceScroom_1_1Tiff.html#a2a58e48c5df174a7fc330e5f888b17b4">Scroom::Tiff::open</a>(<a class="code hl_variable" href="#a838c25fa6dff8f5c1a86d9c750749144">logger</a>, <a class="code hl_variable" href="#a5515f82ee6c27aa5a9df1a1d7f647b63">fileName</a>);</div>
-<div class="line"><span class="lineno">  265</span>      <span class="keywordflow">if</span>(<a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a> &amp;&amp; <a class="code hl_function" href="namespaceanonymous__namespace_02pnmsource_8cc_03.html#aee4d3dc24c5fbd680740ed677c030cae">approx</a>(std::get&lt;0&gt;(*<a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>), <a class="code hl_variable" href="#a776d232f4f62f2f22663562cf51a51bb">bmd</a>))</div>
+<div class="line"><span class="lineno">  264</span>      <span class="keyword">auto</span> r = <a class="code hl_function" href="namespaceScroom_1_1Tiff.html#a2a58e48c5df174a7fc330e5f888b17b4">Scroom::Tiff::open</a>(<a class="code hl_variable" href="#a838c25fa6dff8f5c1a86d9c750749144">logger</a>, <a class="code hl_variable" href="#a5515f82ee6c27aa5a9df1a1d7f647b63">fileName</a>);</div>
+<div class="line"><span class="lineno">  265</span>      <span class="keywordflow">if</span>(r &amp;&amp; <a class="code hl_function" href="namespaceanonymous__namespace_02pnmsource_8cc_03.html#aee4d3dc24c5fbd680740ed677c030cae">approx</a>(std::get&lt;0&gt;(*r), <a class="code hl_variable" href="#a776d232f4f62f2f22663562cf51a51bb">bmd</a>))</div>
 <div class="line"><span class="lineno">  266</span>      {</div>
-<div class="line"><span class="lineno">  267</span>        <a class="code hl_variable" href="#a5666b3e44b95672cf088a7523f76eff5">tif</a> = std::get&lt;1&gt;(*<a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>);</div>
+<div class="line"><span class="lineno">  267</span>        <a class="code hl_variable" href="#a5666b3e44b95672cf088a7523f76eff5">tif</a> = std::get&lt;1&gt;(*r);</div>
 <div class="line"><span class="lineno">  268</span>      }</div>
 <div class="line"><span class="lineno">  269</span>      <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  270</span>      {</div>
-<div class="line"><span class="lineno">  271</span>        <span class="keywordflow">if</span>(<a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>)</div>
+<div class="line"><span class="lineno">  271</span>        <span class="keywordflow">if</span>(r)</div>
 <div class="line"><span class="lineno">  272</span>        {</div>
 <div class="line"><span class="lineno">  273</span>          <a class="code hl_variable" href="#a838c25fa6dff8f5c1a86d9c750749144">logger</a>-&gt;error(<span class="stringliteral">&quot;Can&#39;t reload. Bitmap changed too much&quot;</span>);</div>
 <div class="line"><span class="lineno">  274</span>          <a class="code hl_variable" href="#a838c25fa6dff8f5c1a86d9c750749144">logger</a>-&gt;info(<span class="stringliteral">&quot;Previously: {}&quot;</span>, <a class="code hl_function" href="namespaceScroom_1_1TiledBitmap.html#a90b98df77076cf30312ea6e57d3e75d2">to_string</a>(<a class="code hl_variable" href="#a776d232f4f62f2f22663562cf51a51bb">bmd</a>));</div>
-<div class="line"><span class="lineno">  275</span>          <a class="code hl_variable" href="#a838c25fa6dff8f5c1a86d9c750749144">logger</a>-&gt;info(<span class="stringliteral">&quot;Now:        {}&quot;</span>, <a class="code hl_function" href="namespaceScroom_1_1TiledBitmap.html#a90b98df77076cf30312ea6e57d3e75d2">to_string</a>(std::get&lt;0&gt;(*<a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>)));</div>
+<div class="line"><span class="lineno">  275</span>          <a class="code hl_variable" href="#a838c25fa6dff8f5c1a86d9c750749144">logger</a>-&gt;info(<span class="stringliteral">&quot;Now:        {}&quot;</span>, <a class="code hl_function" href="namespaceScroom_1_1TiledBitmap.html#a90b98df77076cf30312ea6e57d3e75d2">to_string</a>(std::get&lt;0&gt;(*r)));</div>
 <div class="line"><span class="lineno">  276</span>        }</div>
 <div class="line"><span class="lineno">  277</span>        <span class="comment">// if (!r) then the error has already been reported by open()</span></div>
 <div class="line"><span class="lineno">  278</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
@@ -527,7 +527,6 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="anamespaceScroom_1_1Tiff_html_a2a58e48c5df174a7fc330e5f888b17b4"><div class="ttname"><a href="namespaceScroom_1_1Tiff.html#a2a58e48c5df174a7fc330e5f888b17b4">Scroom::Tiff::open</a></div><div class="ttdeci">boost::optional&lt; std::tuple&lt; Scroom::TiledBitmap::BitmapMetaData, TIFFPtr &gt; &gt; open(const Scroom::Logger &amp;logger, const std::string &amp;fileName)</div><div class="ttdef"><b>Definition</b> tiffsource.cc:120</div></div>
 <div class="ttc" id="anamespaceScroom_1_1TiledBitmap_html_a90b98df77076cf30312ea6e57d3e75d2"><div class="ttname"><a href="namespaceScroom_1_1TiledBitmap.html#a90b98df77076cf30312ea6e57d3e75d2">Scroom::TiledBitmap::to_string</a></div><div class="ttdeci">std::string to_string(const BitmapMetaData &amp;bmd)</div><div class="ttdef"><b>Definition</b> layerspecforbitmap.cc:28</div></div>
 <div class="ttc" id="anamespaceanonymous__namespace_02pnmsource_8cc_03_html_aee4d3dc24c5fbd680740ed677c030cae"><div class="ttname"><a href="namespaceanonymous__namespace_02pnmsource_8cc_03.html#aee4d3dc24c5fbd680740ed677c030cae">anonymous_namespace{pnmsource.cc}::approx</a></div><div class="ttdeci">bool approx(const BitmapMetaData &amp;left, const BitmapMetaData &amp;right)</div><div class="ttdef"><b>Definition</b> pnmsource.cc:21</div></div>
-<div class="ttc" id="atransformpresentation__test_8cc_html_a0e8a17dea24fd000a1eabbea951fb099"><div class="ttname"><a href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a></div><div class="ttdeci">Scroom::Utils::Rectangle&lt; double &gt; const r</div><div class="ttdef"><b>Definition</b> transformpresentation_test.cc:69</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

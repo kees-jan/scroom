@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-64-gaf037a1e1</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-67-g4a9473164</span>
    </div>
   </td>
  </tr>
@@ -241,7 +241,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  221</span>  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> x = 0; x &lt; <a class="code hl_variable" href="#abd390d35a37ec358d034dd800105ccfb">horTileCount</a>; x++)</div>
 <div class="line"><span class="lineno">  222</span>  {</div>
 <div class="line"><span class="lineno">  223</span>    <a class="code hl_typedef" href="classCompressedTile.html#ac3196cb2700c74cd1cf9fac4b935bf40">CompressedTile::Ptr</a> <span class="keyword">const</span> ti = tileLine[x];</div>
-<div class="line"><span class="lineno">  224</span>    <a class="code hl_typedef" href="namespaceScroom_1_1Utils.html#a6f32f9c33bd4964e737bfdd8243ba86f">Scroom::Utils::Stuff</a> <span class="keyword">const</span> <a class="code hl_variable" href="transformpresentation__test_8cc.html#aab0e3ec116bb87f30039fc772656b8ef">s</a> = ti-&gt;<a class="code hl_function" href="classCompressedTile.html#a9c6389557145d0df0b1996dc203089da">initialize</a>();</div>
+<div class="line"><span class="lineno">  224</span>    <a class="code hl_typedef" href="namespaceScroom_1_1Utils.html#a6f32f9c33bd4964e737bfdd8243ba86f">Scroom::Utils::Stuff</a> <span class="keyword">const</span> <a class="code hl_variable" href="function-additor-tests_8cc.html#aea1eba3cbf0fd144fe09cfcf18b62d6e">s</a> = ti-&gt;<a class="code hl_function" href="classCompressedTile.html#a9c6389557145d0df0b1996dc203089da">initialize</a>();</div>
 <div class="line"><span class="lineno">  225</span>    tiles.push_back(ti-&gt;<a class="code hl_function" href="classCompressedTile.html#a84c39301c28edb944aa1dcc38a40239b">getTileSync</a>());</div>
 <div class="line"><span class="lineno">  226</span>  }</div>
 <div class="line"><span class="lineno">  227</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> lineCount = std::min(<a class="code hl_define" href="tiledbitmaplayer_8hh.html#a07ae61ed7dc31e9cddbdf9da244567c7">TILESIZE</a>, <a class="code hl_variable" href="#ab03ecb5f32aa7727880ea7faf4c82c91">height</a> - <a class="code hl_variable" href="#adf6b12f478232da42096269a6f3f2233">currentRow</a> * <a class="code hl_define" href="tiledbitmaplayer_8hh.html#a07ae61ed7dc31e9cddbdf9da244567c7">TILESIZE</a>);</div>
@@ -276,12 +276,12 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="aclassQueueJumper_html_a5b17c2980aa09df97b92423481e24dc1"><div class="ttname"><a href="classQueueJumper.html#a5b17c2980aa09df97b92423481e24dc1">QueueJumper::create</a></div><div class="ttdeci">static Ptr create()</div><div class="ttdoc">QueueJumper.</div><div class="ttdef"><b>Definition</b> threadpool.cc:408</div></div>
 <div class="ttc" id="aclassQueueJumper_html_a5d08c9e804fa1c203893435a7e053d45"><div class="ttname"><a href="classQueueJumper.html#a5d08c9e804fa1c203893435a7e053d45">QueueJumper::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; QueueJumper &gt; Ptr</div><div class="ttdef"><b>Definition</b> threadpool.hh:594</div></div>
 <div class="ttc" id="aclassQueueJumper_html_a5dbf1296ec716e239f34b7eed4343ca2"><div class="ttname"><a href="classQueueJumper.html#a5dbf1296ec716e239f34b7eed4343ca2">QueueJumper::setWork</a></div><div class="ttdeci">bool setWork(boost::function&lt; void()&gt; const &amp;fn)</div><div class="ttdef"><b>Definition</b> threadpool.cc:410</div></div>
+<div class="ttc" id="afunction-additor-tests_8cc_html_aea1eba3cbf0fd144fe09cfcf18b62d6e"><div class="ttname"><a href="function-additor-tests_8cc.html#aea1eba3cbf0fd144fe09cfcf18b62d6e">s</a></div><div class="ttdeci">clear(&amp; s)()</div><div class="ttdef"><b>Definition</b> function-additor-tests.cc:30</div></div>
 <div class="ttc" id="alocal_8hh_html_a0a865049f169efddb5dcb94b4b6f2e6b"><div class="ttname"><a href="local_8hh.html#a0a865049f169efddb5dcb94b4b6f2e6b">REDUCE_PRIO</a></div><div class="ttdeci">#define REDUCE_PRIO</div><div class="ttdef"><b>Definition</b> local.hh:12</div></div>
 <div class="ttc" id="alocal_8hh_html_ae2de07f0f9ff468e76d12f302807d3d8"><div class="ttname"><a href="local_8hh.html#ae2de07f0f9ff468e76d12f302807d3d8">DATAFETCH_PRIO</a></div><div class="ttdeci">#define DATAFETCH_PRIO</div><div class="ttdef"><b>Definition</b> local.hh:11</div></div>
 <div class="ttc" id="anamespaceScroom_1_1Utils_html_a6f32f9c33bd4964e737bfdd8243ba86f"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#a6f32f9c33bd4964e737bfdd8243ba86f">Scroom::Utils::Stuff</a></div><div class="ttdeci">std::shared_ptr&lt; void &gt; Stuff</div><div class="ttdef"><b>Definition</b> stuff.hh:17</div></div>
 <div class="ttc" id="atiledbitmaplayer_8hh_html_a07ae61ed7dc31e9cddbdf9da244567c7"><div class="ttname"><a href="tiledbitmaplayer_8hh.html#a07ae61ed7dc31e9cddbdf9da244567c7">TILESIZE</a></div><div class="ttdeci">#define TILESIZE</div><div class="ttdef"><b>Definition</b> tiledbitmaplayer.hh:27</div></div>
 <div class="ttc" id="atiledbitmaplayer_8hh_html_a3902e4a779f862590474adb2068255b5"><div class="ttname"><a href="tiledbitmaplayer_8hh.html#a3902e4a779f862590474adb2068255b5">CompressedTileLine</a></div><div class="ttdeci">std::vector&lt; CompressedTile::Ptr &gt; CompressedTileLine</div><div class="ttdef"><b>Definition</b> tiledbitmaplayer.hh:240</div></div>
-<div class="ttc" id="atransformpresentation__test_8cc_html_aab0e3ec116bb87f30039fc772656b8ef"><div class="ttname"><a href="transformpresentation__test_8cc.html#aab0e3ec116bb87f30039fc772656b8ef">s</a></div><div class="ttdeci">BitmapSurface::Ptr const s</div><div class="ttdef"><b>Definition</b> transformpresentation_test.cc:74</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

@@ -1,0 +1,7 @@
+<map id="Scroom::Utils::Rectangle::getBottomRight" name="Scroom::Utils::Rectangle::getBottomRight">
+<area shape="rect" id="Node000001" title=" " alt="" coords="474,14,655,58"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a336b08377145525ad7740b47d618b161" title=" " alt="" coords="223,22,426,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="455,36,426,39,426,34,461,36"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1TiledBitmap_1_1SnapSelectionsToGrid.html#a88ee44a13a20db1cb94dc45d88c2d3f1" title=" " alt="" coords="5,5,175,67"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="204,36,175,39,175,34,210,36"/>
+</map>

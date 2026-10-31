@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-64-gaf037a1e1</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-67-g4a9473164</span>
    </div>
   </td>
  </tr>
@@ -1001,25 +1001,24 @@ Here is the call graph for this function:</div>
 <div class="fragment"><div class="line"><span class="lineno">  373</span>  {</div>
 <div class="line"><span class="lineno">  374</span>    <span class="keyword">using </span>Builder = Scroom::Detail::ThreadPool::Builder&lt;false, false, false, void&gt;;</div>
 <div class="line"><span class="lineno">  375</span> </div>
-<div class="line"><span class="lineno">  376</span>    <span class="keyword">auto</span> <a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a> = Builder(<a class="code hl_variable" href="#ab7660f5cc0d859c25ab4b7f1038eedd1">defaultPriority</a>).addMany(std::forward&lt;<span class="keyword">decltype</span>(params)&gt;(params)...);</div>
+<div class="line"><span class="lineno">  376</span>    <span class="keyword">auto</span> r = Builder(<a class="code hl_variable" href="#ab7660f5cc0d859c25ab4b7f1038eedd1">defaultPriority</a>).addMany(std::forward&lt;<span class="keyword">decltype</span>(params)&gt;(params)...);</div>
 <div class="line"><span class="lineno">  377</span> </div>
-<div class="line"><span class="lineno">  378</span>    <span class="keyword">static_assert</span>(<a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>.hasCallable);</div>
+<div class="line"><span class="lineno">  378</span>    <span class="keyword">static_assert</span>(r.hasCallable);</div>
 <div class="line"><span class="lineno">  379</span> </div>
-<div class="line"><span class="lineno">  380</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(!<a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>.hasQueue)</div>
+<div class="line"><span class="lineno">  380</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(!r.hasQueue)</div>
 <div class="line"><span class="lineno">  381</span>    {</div>
-<div class="line"><span class="lineno">  382</span>      <a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>.queue = <a class="code hl_function" href="#af5ac6649a5a7711037747ef03c542f18">defaultQueue</a>()-&gt;<a class="code hl_function" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a2119dca72a374f622eade1fc8f472878">getWeak</a>();</div>
+<div class="line"><span class="lineno">  382</span>      r.queue = <a class="code hl_function" href="#af5ac6649a5a7711037747ef03c542f18">defaultQueue</a>()-&gt;<a class="code hl_function" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a2119dca72a374f622eade1fc8f472878">getWeak</a>();</div>
 <div class="line"><span class="lineno">  383</span>    }</div>
 <div class="line"><span class="lineno">  384</span> </div>
-<div class="line"><span class="lineno">  385</span>    <span class="keyword">using </span>R = <span class="keyword">decltype</span>(<a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>)::ResultType;</div>
+<div class="line"><span class="lineno">  385</span>    <span class="keyword">using </span>R = <span class="keyword">decltype</span>(r)::ResultType;</div>
 <div class="line"><span class="lineno">  386</span>    <span class="keyword">static_assert</span>(std::is_void_v&lt;R&gt;, <span class="stringliteral">&quot;post() only supports callables that return void&quot;</span>);</div>
 <div class="line"><span class="lineno">  387</span> </div>
-<div class="line"><span class="lineno">  388</span>    <a class="code hl_function" href="#a17a52db60287eb770f1e0d546cbbbe01">schedule_impl</a>(std::move(<a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>.fn), <a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>.priority, std::move(<a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>.queue));</div>
+<div class="line"><span class="lineno">  388</span>    <a class="code hl_function" href="#a17a52db60287eb770f1e0d546cbbbe01">schedule_impl</a>(std::move(r.fn), r.priority, std::move(r.queue));</div>
 <div class="line"><span class="lineno">  389</span>  }</div>
 <div class="ttc" id="aclassScroom_1_1Detail_1_1ThreadPool_1_1Queue_html_a2119dca72a374f622eade1fc8f472878"><div class="ttname"><a href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a2119dca72a374f622eade1fc8f472878">Scroom::Detail::ThreadPool::Queue::getWeak</a></div><div class="ttdeci">std::shared_ptr&lt; WeakQueue &gt; getWeak()</div><div class="ttdef"><b>Definition</b> threadpool.cc:379</div></div>
 <div class="ttc" id="aclassThreadPool_html_a17a52db60287eb770f1e0d546cbbbe01"><div class="ttname"><a href="#a17a52db60287eb770f1e0d546cbbbe01">ThreadPool::schedule_impl</a></div><div class="ttdeci">void schedule_impl(std::move_only_function&lt; void()&gt; fn, int priority, const WeakQueue::Ptr &amp;queue)</div><div class="ttdef"><b>Definition</b> threadpool.cc:346</div></div>
 <div class="ttc" id="aclassThreadPool_html_ab7660f5cc0d859c25ab4b7f1038eedd1"><div class="ttname"><a href="#ab7660f5cc0d859c25ab4b7f1038eedd1">ThreadPool::defaultPriority</a></div><div class="ttdeci">static const int defaultPriority</div><div class="ttdef"><b>Definition</b> threadpool.hh:332</div></div>
 <div class="ttc" id="aclassThreadPool_html_af5ac6649a5a7711037747ef03c542f18"><div class="ttname"><a href="#af5ac6649a5a7711037747ef03c542f18">ThreadPool::defaultQueue</a></div><div class="ttdeci">static Queue::Ptr defaultQueue()</div><div class="ttdef"><b>Definition</b> threadpool.cc:354</div></div>
-<div class="ttc" id="atransformpresentation__test_8cc_html_a0e8a17dea24fd000a1eabbea951fb099"><div class="ttname"><a href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a></div><div class="ttdeci">Scroom::Utils::Rectangle&lt; double &gt; const r</div><div class="ttdef"><b>Definition</b> transformpresentation_test.cc:69</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classLayer.html#a3d2253a27e5b42cde01f15c85959580c">Layer::fetchData()</a>, <a class="el" href="classCompressedTile.html#a097a41844c75d21396fb64db3c039c8a">CompressedTile::observerAdded()</a>, <a class="el" href="classPipetteHandler.html#acd17e052163c801ed556c06d8bb29f59">PipetteHandler::onSelectionEnd()</a>, <a class="el" href="classWaitForAsyncOp.html#a01dcf09800aaba90cc168f4beac3e8c7">WaitForAsyncOp::operator()()</a>, <a class="el" href="namespaceScroom_1_1TiledBitmap.html#a55c09152eec48a7f0b8b0819cd243e4d">Scroom::TiledBitmap::scheduleLoadingBitmap()</a>, and <a class="el" href="classLayerCoordinator.html#aaed9f19d2d0be309e22c373551c27f9b">LayerCoordinator::tileFinished()</a>.</p>
 <div class="dynheader">
@@ -1027,18 +1026,22 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classThreadPool_a3b6be78dc258ee937775128c101aa5fc_cgraph.png" border="0" usemap="#aclassThreadPool_a3b6be78dc258ee937775128c101aa5fc_cgraph" loading="lazy" alt=""/></div>
 <map name="aclassThreadPool_a3b6be78dc258ee937775128c101aa5fc_cgraph" id="aclassThreadPool_a3b6be78dc258ee937775128c101aa5fc_cgraph">
-<area shape="rect" title=" " alt="" coords="5,74,136,102"/>
-<area shape="rect" href="classThreadPool.html#af5ac6649a5a7711037747ef03c542f18" title=" " alt="" coords="188,14,378,42"/>
-<area shape="poly" title=" " alt="" coords="116,71,183,50,212,45,207,47,184,56,118,76"/>
-<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a2119dca72a374f622eade1fc8f472878" title=" " alt="" coords="184,65,382,110"/>
-<area shape="poly" title=" " alt="" coords="135,85,171,87,166,89,136,90"/>
-<area shape="rect" href="classThreadPool.html#a17a52db60287eb770f1e0d546cbbbe01" title=" " alt="" coords="185,134,381,162"/>
-<area shape="poly" title=" " alt="" coords="117,100,184,120,212,129,207,129,183,125,117,105"/>
-<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#af8f6918d92f8388674bd7bdc1b75b2ec" title="Queue." alt="" coords="430,5,628,50"/>
-<area shape="poly" title=" " alt="" coords="378,25,417,27,412,28,379,30"/>
-<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a7cfca3637d57c4a9e37351b3426ffd40" title=" " alt="" coords="676,5,875,50"/>
-<area shape="poly" title=" " alt="" coords="629,34,663,36,658,37,629,39"/>
-<area shape="poly" title=" " alt="" coords="673,19,645,21,644,16,678,19"/>
+<area shape="rect" title=" " alt="" coords="5,104,136,132"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a0709550b4e3927212a6c89cf719e5a29" title=" " alt="" coords="184,5,382,50"/>
+<area shape="poly" title=" " alt="" coords="97,102,183,60,201,55,197,57,185,65,99,106"/>
+<area shape="rect" href="classThreadPool.html#af5ac6649a5a7711037747ef03c542f18" title=" " alt="" coords="188,74,378,102"/>
+<area shape="poly" title=" " alt="" coords="135,106,175,102,170,105,137,111"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a2119dca72a374f622eade1fc8f472878" title=" " alt="" coords="184,125,382,170"/>
+<area shape="poly" title=" " alt="" coords="136,125,171,131,166,133,136,130"/>
+<area shape="rect" href="classThreadPool.html#a17a52db60287eb770f1e0d546cbbbe01" title=" " alt="" coords="185,194,381,222"/>
+<area shape="poly" title=" " alt="" coords="93,130,135,155,185,180,204,189,199,189,183,185,133,160,92,135"/>
+<area shape="rect" href="threadpool-queue-tests_8cc.html#ae28512d7a9b9132257981ed5ecbce069" title=" " alt="" coords="506,14,552,42"/>
+<area shape="poly" title=" " alt="" coords="382,25,493,27,488,28,383,30"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#af8f6918d92f8388674bd7bdc1b75b2ec" title="Queue." alt="" coords="430,65,628,110"/>
+<area shape="poly" title=" " alt="" coords="378,85,417,87,412,88,379,90"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a7cfca3637d57c4a9e37351b3426ffd40" title=" " alt="" coords="676,65,875,110"/>
+<area shape="poly" title=" " alt="" coords="629,94,663,96,658,97,629,99"/>
+<area shape="poly" title=" " alt="" coords="673,79,645,81,644,76,678,79"/>
 </map>
 </div>
 <div class="dynheader">
@@ -1183,20 +1186,20 @@ Here is the caller graph for this function:</div>
 <div class="fragment"><div class="line"><span class="lineno">  404</span>  {</div>
 <div class="line"><span class="lineno">  405</span>    <span class="keyword">using </span>Builder = Scroom::Detail::ThreadPool::Builder&lt;false, false, false, void&gt;;</div>
 <div class="line"><span class="lineno">  406</span> </div>
-<div class="line"><span class="lineno">  407</span>    <span class="keyword">auto</span> <a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a> = Builder(<a class="code hl_variable" href="#ab7660f5cc0d859c25ab4b7f1038eedd1">defaultPriority</a>).addMany(std::forward&lt;<span class="keyword">decltype</span>(params)&gt;(params)...);</div>
+<div class="line"><span class="lineno">  407</span>    <span class="keyword">auto</span> r = Builder(<a class="code hl_variable" href="#ab7660f5cc0d859c25ab4b7f1038eedd1">defaultPriority</a>).addMany(std::forward&lt;<span class="keyword">decltype</span>(params)&gt;(params)...);</div>
 <div class="line"><span class="lineno">  408</span> </div>
-<div class="line"><span class="lineno">  409</span>    <span class="keyword">static_assert</span>(<a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>.hasCallable);</div>
+<div class="line"><span class="lineno">  409</span>    <span class="keyword">static_assert</span>(r.hasCallable);</div>
 <div class="line"><span class="lineno">  410</span> </div>
-<div class="line"><span class="lineno">  411</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(!<a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>.hasQueue)</div>
+<div class="line"><span class="lineno">  411</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(!r.hasQueue)</div>
 <div class="line"><span class="lineno">  412</span>    {</div>
-<div class="line"><span class="lineno">  413</span>      <a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>.queue = <a class="code hl_function" href="#af5ac6649a5a7711037747ef03c542f18">defaultQueue</a>()-&gt;<a class="code hl_function" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a2119dca72a374f622eade1fc8f472878">getWeak</a>();</div>
+<div class="line"><span class="lineno">  413</span>      r.queue = <a class="code hl_function" href="#af5ac6649a5a7711037747ef03c542f18">defaultQueue</a>()-&gt;<a class="code hl_function" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a2119dca72a374f622eade1fc8f472878">getWeak</a>();</div>
 <div class="line"><span class="lineno">  414</span>    }</div>
 <div class="line"><span class="lineno">  415</span> </div>
-<div class="line"><span class="lineno">  416</span>    <span class="keyword">using </span>R = <span class="keyword">decltype</span>(<a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>)::ResultType;</div>
+<div class="line"><span class="lineno">  416</span>    <span class="keyword">using </span>R = <span class="keyword">decltype</span>(r)::ResultType;</div>
 <div class="line"><span class="lineno">  417</span> </div>
-<div class="line"><span class="lineno">  418</span>    boost::packaged_task&lt;R&gt; <a class="code hl_variable" href="threadpool-queue-tests_8cc.html#a2c9addcc3f33120c718dfd607595b174">t</a>(std::move(<a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>.fn));</div>
+<div class="line"><span class="lineno">  418</span>    boost::packaged_task&lt;R&gt; <a class="code hl_variable" href="threadpool-queue-tests_8cc.html#a2c9addcc3f33120c718dfd607595b174">t</a>(std::move(r.fn));</div>
 <div class="line"><span class="lineno">  419</span>    boost::unique_future&lt;R&gt; <a class="code hl_variable" href="gtkhelper-tests_8cc.html#a633de4b0c14ca52ea2432a3c8a5c4c31">f</a> = <a class="code hl_variable" href="threadpool-queue-tests_8cc.html#a2c9addcc3f33120c718dfd607595b174">t</a>.get_future();</div>
-<div class="line"><span class="lineno">  420</span>    <a class="code hl_function" href="#a17a52db60287eb770f1e0d546cbbbe01">schedule_impl</a>(std::move(<a class="code hl_variable" href="threadpool-queue-tests_8cc.html#a2c9addcc3f33120c718dfd607595b174">t</a>), <a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>.priority, std::move(<a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>.queue));</div>
+<div class="line"><span class="lineno">  420</span>    <a class="code hl_function" href="#a17a52db60287eb770f1e0d546cbbbe01">schedule_impl</a>(std::move(<a class="code hl_variable" href="threadpool-queue-tests_8cc.html#a2c9addcc3f33120c718dfd607595b174">t</a>), r.priority, std::move(r.queue));</div>
 <div class="line"><span class="lineno">  421</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="gtkhelper-tests_8cc.html#a633de4b0c14ca52ea2432a3c8a5c4c31">f</a>;</div>
 <div class="line"><span class="lineno">  422</span>  }</div>
 <div class="ttc" id="agtkhelper-tests_8cc_html_a633de4b0c14ca52ea2432a3c8a5c4c31"><div class="ttname"><a href="gtkhelper-tests_8cc.html#a633de4b0c14ca52ea2432a3c8a5c4c31">f</a></div><div class="ttdeci">f</div><div class="ttdef"><b>Definition</b> gtkhelper-tests.cc:43</div></div>
@@ -1205,18 +1208,22 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classThreadPool_a6179ee6b010f0462037be5378afc2339_cgraph.png" border="0" usemap="#aclassThreadPool_a6179ee6b010f0462037be5378afc2339_cgraph" loading="lazy" alt=""/></div>
 <map name="aclassThreadPool_a6179ee6b010f0462037be5378afc2339_cgraph" id="aclassThreadPool_a6179ee6b010f0462037be5378afc2339_cgraph">
-<area shape="rect" title=" " alt="" coords="5,74,153,102"/>
-<area shape="rect" href="classThreadPool.html#af5ac6649a5a7711037747ef03c542f18" title=" " alt="" coords="205,14,395,42"/>
-<area shape="poly" title=" " alt="" coords="128,71,200,50,229,45,224,47,201,56,130,76"/>
-<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a2119dca72a374f622eade1fc8f472878" title=" " alt="" coords="201,65,399,110"/>
-<area shape="poly" title=" " alt="" coords="153,85,187,87,182,88,153,90"/>
-<area shape="rect" href="classThreadPool.html#a17a52db60287eb770f1e0d546cbbbe01" title=" " alt="" coords="202,134,398,162"/>
-<area shape="poly" title=" " alt="" coords="130,99,201,120,229,129,224,129,200,125,129,105"/>
-<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#af8f6918d92f8388674bd7bdc1b75b2ec" title="Queue." alt="" coords="447,5,645,50"/>
-<area shape="poly" title=" " alt="" coords="395,25,434,27,429,28,396,30"/>
-<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a7cfca3637d57c4a9e37351b3426ffd40" title=" " alt="" coords="693,5,892,50"/>
-<area shape="poly" title=" " alt="" coords="646,34,680,36,675,37,646,39"/>
-<area shape="poly" title=" " alt="" coords="690,19,662,21,661,16,695,19"/>
+<area shape="rect" title=" " alt="" coords="5,104,153,132"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a0709550b4e3927212a6c89cf719e5a29" title=" " alt="" coords="201,5,399,50"/>
+<area shape="poly" title=" " alt="" coords="108,102,200,60,220,54,215,57,202,65,110,106"/>
+<area shape="rect" href="classThreadPool.html#af5ac6649a5a7711037747ef03c542f18" title=" " alt="" coords="205,74,395,102"/>
+<area shape="poly" title=" " alt="" coords="152,106,192,102,187,104,154,111"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a2119dca72a374f622eade1fc8f472878" title=" " alt="" coords="201,125,399,170"/>
+<area shape="poly" title=" " alt="" coords="153,125,188,132,183,133,153,131"/>
+<area shape="rect" href="classThreadPool.html#a17a52db60287eb770f1e0d546cbbbe01" title=" " alt="" coords="202,194,398,222"/>
+<area shape="poly" title=" " alt="" coords="104,130,149,155,202,180,222,189,217,189,200,185,147,160,103,135"/>
+<area shape="rect" href="threadpool-queue-tests_8cc.html#ae28512d7a9b9132257981ed5ecbce069" title=" " alt="" coords="524,14,569,42"/>
+<area shape="poly" title=" " alt="" coords="399,25,510,27,505,28,400,30"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#af8f6918d92f8388674bd7bdc1b75b2ec" title="Queue." alt="" coords="447,65,645,110"/>
+<area shape="poly" title=" " alt="" coords="395,85,434,87,429,88,396,90"/>
+<area shape="rect" href="classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a7cfca3637d57c4a9e37351b3426ffd40" title=" " alt="" coords="693,65,892,110"/>
+<area shape="poly" title=" " alt="" coords="646,94,680,96,675,97,646,99"/>
+<area shape="poly" title=" " alt="" coords="690,79,662,81,661,76,695,79"/>
 </map>
 </div>
 

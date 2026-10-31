@@ -19,7 +19,7 @@ var searchData=
   ['verticalsize_16',['verticalSize',['../classRectangleHorizontalTestScaffold.html#adf00f6fd1a23ad1d0cc11454bed06fe6',1,'RectangleHorizontalTestScaffold']]],
   ['verticalstart_17',['verticalStart',['../classRectangleHorizontalTestScaffold.html#a504e3eaac31d21fa27c7ee7656d3dc9e',1,'RectangleHorizontalTestScaffold']]],
   ['vertilecount_18',['verTileCount',['../classLayer.html#a8f270463756cb7dc9897564b3bff23d4',1,'Layer::verTileCount'],['../classDataFetcher.html#aaee3d602d5bfec28badc8c178041105c',1,'DataFetcher::verTileCount']]],
-  ['vi_19',['vi',['../classTestData.html#aa90345181988b15e3f0f970fc27b6d42',1,'TestData::vi'],['../pipette-tests_8cc.html#a42c717015bd9a889714e98016e92c595',1,'vi:&#160;pipette-tests.cc'],['../transformpresentation__test_8cc.html#a29307a602ceb25e5058558fff387a5c2',1,'vi(reinterpret_cast&lt; ViewInterface * &gt;(1), DontDelete&lt; ViewInterface &gt;()):&#160;transformpresentation_test.cc']]],
+  ['vi_19',['vi',['../classTestData.html#aa90345181988b15e3f0f970fc27b6d42',1,'TestData::vi'],['../pipette-tests_8cc.html#a42c717015bd9a889714e98016e92c595',1,'vi:&#160;pipette-tests.cc']]],
   ['vi1_20',['vi1',['../determine-size-test_8cc.html#a34caf438ffeb127bdc7414d8e79d60be',1,'determine-size-test.cc']]],
   ['vi2_21',['vi2',['../determine-size-test_8cc.html#a31ab83fc2f67fec33d2a9ceb2f6247d8',1,'determine-size-test.cc']]],
   ['vi3_22',['vi3',['../determine-size-test_8cc.html#a1db3a1acf893dc306fe051cc682c5d5b',1,'determine-size-test.cc']]],
@@ -49,12 +49,11 @@ var searchData=
   ['views_46',['views',['../classPresentationBaseSimple.html#a606850aed5ddd17fb71fd745cd844a02',1,'PresentationBaseSimple::views'],['../classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#ab03f22e1a73aa438998bba87ad63b4b4',1,'anonymous_namespace{tiledbitmappresentation.cc}::TiledBitmapPresentation::views'],['../classScroom_1_1ColormapImpl_1_1ColormapProvider.html#afbe4c3f44be12beabfe6b8226f4f92c0',1,'Scroom::ColormapImpl::ColormapProvider::views'],['../classSizeDeterminer_1_1PresentationData.html#a79426d22ad20ff0a001cd57335fb6ac3',1,'SizeDeterminer::PresentationData::views'],['../callbacks_8cc.html#ad49710e0e7bbdfa292b7ac886a56a9fe',1,'views:&#160;callbacks.cc']]],
   ['viewsize_47',['viewSize',['../classView.html#a8cbef86ad117ed3d1d0e1df83884a1da',1,'View']]],
   ['viewstates_48',['viewStates',['../classCompressedTile.html#a6e31e3871482ff2d9bffb5be8b44a2de',1,'CompressedTile']]],
-  ['viw_49',['viw',['../transformpresentation__test_8cc.html#a420f999c650cb70340c0104621be0755',1,'transformpresentation_test.cc']]],
-  ['void_50',['void',['../function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54',1,'void(clear(nullptr)+(5 *clear(nullptr)) *5):&#160;function-additor-tests.cc'],['../function-additor-tests_8cc.html#a9cba8100fc7683c321b425d57ff4b887',1,'void(clear(nullptr)+5 *(5 *clear(nullptr))):&#160;function-additor-tests.cc'],['../function-additor-tests_8cc.html#a7833ac6355dca72dc5157629f78bd367',1,'void(4 *(clear(nullptr)+clear(nullptr))):&#160;function-additor-tests.cc'],['../function-additor-tests_8cc.html#a71b77dfa98b53be3ea1d1ef266cf932a',1,'void((clear(nullptr)+clear(nullptr)) *4):&#160;function-additor-tests.cc']]],
-  ['volatilestuff_51',['volatileStuff',['../classTiledBitmapViewData.html#a2853b453228e7924601b29cb42748fce',1,'TiledBitmapViewData']]],
-  ['vruler_52',['vruler',['../classView.html#ab25b996421407a3b1bbd8769539c1b27',1,'View']]],
-  ['vruler_5farea_53',['vruler_area',['../classView.html#a57c1e4035ac712fbb05d491d2975204b',1,'View']]],
-  ['vscrollbar_54',['vscrollbar',['../classView.html#af1697927d1053ca9576b544a3a7e97cd',1,'View']]],
-  ['vscrollbaradjustment_55',['vscrollbaradjustment',['../classView.html#afa1457c9c07dbcb62c2b21970e0370c7',1,'View']]],
-  ['vtptr_56',['VTPtr',['../classScroom_1_1Bookkeeping_1_1Detail_1_1LValue.html#a481b63c7f7c922b184a3ec99b084fa1d',1,'Scroom::Bookkeeping::Detail::LValue']]]
+  ['void_49',['void',['../function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54',1,'void(clear(nullptr)+(5 *clear(nullptr)) *5):&#160;function-additor-tests.cc'],['../function-additor-tests_8cc.html#a9cba8100fc7683c321b425d57ff4b887',1,'void(clear(nullptr)+5 *(5 *clear(nullptr))):&#160;function-additor-tests.cc'],['../function-additor-tests_8cc.html#a7833ac6355dca72dc5157629f78bd367',1,'void(4 *(clear(nullptr)+clear(nullptr))):&#160;function-additor-tests.cc'],['../function-additor-tests_8cc.html#a71b77dfa98b53be3ea1d1ef266cf932a',1,'void((clear(nullptr)+clear(nullptr)) *4):&#160;function-additor-tests.cc']]],
+  ['volatilestuff_50',['volatileStuff',['../classTiledBitmapViewData.html#a2853b453228e7924601b29cb42748fce',1,'TiledBitmapViewData']]],
+  ['vruler_51',['vruler',['../classView.html#ab25b996421407a3b1bbd8769539c1b27',1,'View']]],
+  ['vruler_5farea_52',['vruler_area',['../classView.html#a57c1e4035ac712fbb05d491d2975204b',1,'View']]],
+  ['vscrollbar_53',['vscrollbar',['../classView.html#af1697927d1053ca9576b544a3a7e97cd',1,'View']]],
+  ['vscrollbaradjustment_54',['vscrollbaradjustment',['../classView.html#afa1457c9c07dbcb62c2b21970e0370c7',1,'View']]],
+  ['vtptr_55',['VTPtr',['../classScroom_1_1Bookkeeping_1_1Detail_1_1LValue.html#a481b63c7f7c922b184a3ec99b084fa1d',1,'Scroom::Bookkeeping::Detail::LValue']]]
 ];

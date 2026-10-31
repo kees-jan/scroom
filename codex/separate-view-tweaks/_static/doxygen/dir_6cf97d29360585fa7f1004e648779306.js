@@ -14,5 +14,7 @@ var dir_6cf97d29360585fa7f1004e648779306 =
     [ "tiledbitmapviewdata.cc", "tiledbitmapviewdata_8cc.html", "tiledbitmapviewdata_8cc" ],
     [ "tiledbitmapviewdata.hh", "tiledbitmapviewdata_8hh.html", "tiledbitmapviewdata_8hh" ],
     [ "tileviewstate.cc", "tileviewstate_8cc.html", null ],
-    [ "tileviewstate.hh", "tileviewstate_8hh.html", "tileviewstate_8hh" ]
+    [ "tileviewstate.hh", "tileviewstate_8hh.html", "tileviewstate_8hh" ],
+    [ "tweak-view.cc", "tiled-bitmap_2src_2tweak-view_8cc.html", null ],
+    [ "tweak-view.hh", "tiled-bitmap_2src_2tweak-view_8hh.html", "tiled-bitmap_2src_2tweak-view_8hh" ]
 ];

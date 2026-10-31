@@ -1,13 +1,25 @@
 <map id="anonymous_namespace{tiledbitmappresentation::cc}::TiledBitmapPresentation::getPixelAverages" name="anonymous_namespace{tiledbitmappresentation::cc}::TiledBitmapPresentation::getPixelAverages">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,134,226,213"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,177,226,256"/>
 <area shape="rect" id="Node000002" href="$namespaceanonymous__namespace_02tiledbitmappresentation_8cc_03.html#a35301cfe472c7f8d343c5d6a23d8da30" title=" " alt="" coords="291,5,477,67"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,132,272,76,286,72,282,75,275,81,179,136"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="153,175,207,125,272,77,283,73,279,76,275,81,210,129,156,178"/>
 <area shape="rect" id="Node000003" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a692a34885b8fbb9a6360468bd503fd1f" title=" " alt="" coords="274,92,494,170"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="225,153,261,150,256,152,227,158"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="225,179,261,169,257,172,227,183"/>
 <area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Rectangle.html#aa93bcd537f48183edeb70a668f7352cf" title=" " alt="" coords="293,194,474,238"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="226,188,281,199,275,200,226,194"/>
-<area shape="rect" id="Node000006" href="$namespaceanonymous__namespace_02tiledbitmappresentation_8cc_03.html#abae3a7fd8f52b1b6ce0a5e0252747cf3" title=" " alt="" coords="291,263,477,324"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="195,211,275,248,289,256,284,256,273,253,194,216"/>
-<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Rectangle.html#a8bafbe715dcf9dc732ea2f197b9ecba1" title=" " alt="" coords="542,194,723,238"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="475,214,529,216,524,217,475,219"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="225,214,280,215,275,217,227,219"/>
+<area shape="rect" id="Node000006" href="$namespaceScroom_1_1Utils.html#aafbf8baa587d11858954f89021f9037b" title=" " alt="" coords="280,262,488,290"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="226,238,306,258,301,259,226,243"/>
+<area shape="rect" id="Node000012" href="$namespaceanonymous__namespace_02tiledbitmappresentation_8cc_03.html#abae3a7fd8f52b1b6ce0a5e0252747cf3" title=" " alt="" coords="291,315,477,376"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="187,254,275,299,291,308,285,308,272,304,186,259"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Rectangle.html#a8bafbe715dcf9dc732ea2f197b9ecba1" title=" " alt="" coords="552,154,733,198"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="475,200,539,192,534,193,476,205"/>
+<area shape="rect" id="Node000007" href="$namespaceScroom_1_1Utils.html#ae81b515fbc80d3efdded8c600b5956e6" title=" " alt="" coords="547,223,738,268"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="488,261,534,258,529,259,489,266"/>
+<area shape="rect" id="Node000008" href="$rounding_8hh.html#aa1169552e0a4044595bc67a5b9361694" title=" " alt="" coords="542,292,743,319"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="489,285,529,292,524,292,489,291"/>
+<area shape="rect" id="Node000010" href="$rounding_8hh.html#a1b27314f9dc323dff1e495e265c88eca" title=" " alt="" coords="552,344,734,371"/>
+<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="457,288,495,300,519,314,543,328,565,339,560,338,541,333,517,319,493,305,457,293"/>
+<area shape="rect" id="Node000009" href="$rounding_8hh.html#a08d4c4fef3e0764e999f269b7773286c" title=" " alt="" coords="791,292,928,319"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="743,303,779,305,773,306,744,308"/>
+<area shape="rect" id="Node000011" href="$rounding_8hh.html#a3705c07b90d6f60753b35c4aea0082b5" title=" " alt="" coords="794,344,925,371"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="734,355,782,357,776,358,734,360"/>
 </map>

@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-64-gaf037a1e1</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-67-g4a9473164</span>
    </div>
   </td>
  </tr>
@@ -467,21 +467,20 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   22</span>{</div>
 <div class="line"><span class="lineno">   23</span>  <span class="comment">// There should be a simpler way to do this...</span></div>
-<div class="line"><span class="lineno">   24</span>  cairo_region_t* <a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a> = gdk_window_get_visible_region(gtk_widget_get_window(<a class="code hl_variable" href="ruler-tests_8cc.html#a631c91ed1db010dd2ff3706331fd21bc">drawingArea</a>));</div>
+<div class="line"><span class="lineno">   24</span>  cairo_region_t* r = gdk_window_get_visible_region(gtk_widget_get_window(<a class="code hl_variable" href="ruler-tests_8cc.html#a631c91ed1db010dd2ff3706331fd21bc">drawingArea</a>));</div>
 <div class="line"><span class="lineno">   25</span>  cairo_rectangle_int_t <a class="code hl_variable" href="rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b">rect</a>;</div>
-<div class="line"><span class="lineno">   26</span>  cairo_region_get_extents(<a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>, &amp;<a class="code hl_variable" href="rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b">rect</a>);</div>
+<div class="line"><span class="lineno">   26</span>  cairo_region_get_extents(r, &amp;<a class="code hl_variable" href="rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b">rect</a>);</div>
 <div class="line"><span class="lineno">   27</span> </div>
 <div class="line"><span class="lineno">   28</span>  <a class="code hl_variable" href="test-helpers_8cc.html#a172be8ce7473f0a2ca30107ca4824fd2">drawingAreaWidth</a> = <a class="code hl_variable" href="rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b">rect</a>.width;</div>
 <div class="line"><span class="lineno">   29</span>  <a class="code hl_variable" href="test-helpers_8cc.html#ab0d783febb709ca1ac0cf56716b0ee84">drawingAreaHeight</a> = <a class="code hl_variable" href="rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b">rect</a>.height;</div>
 <div class="line"><span class="lineno">   30</span> </div>
-<div class="line"><span class="lineno">   31</span>  cairo_region_destroy(<a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>);</div>
+<div class="line"><span class="lineno">   31</span>  cairo_region_destroy(r);</div>
 <div class="line"><span class="lineno">   32</span> </div>
 <div class="line"><span class="lineno">   33</span>  <span class="keywordflow">return</span> FALSE;</div>
 <div class="line"><span class="lineno">   34</span>}</div>
 <div class="ttc" id="arectangletests_8cc_html_aaa71382a621129a81a9a410576802d0b"><div class="ttname"><a href="rectangletests_8cc.html#aaa71382a621129a81a9a410576802d0b">rect</a></div><div class="ttdeci">const auto rect</div><div class="ttdef"><b>Definition</b> rectangletests.cc:335</div></div>
 <div class="ttc" id="atest-helpers_8cc_html_a172be8ce7473f0a2ca30107ca4824fd2"><div class="ttname"><a href="test-helpers_8cc.html#a172be8ce7473f0a2ca30107ca4824fd2">drawingAreaWidth</a></div><div class="ttdeci">int drawingAreaWidth</div><div class="ttdef"><b>Definition</b> test-helpers.cc:22</div></div>
 <div class="ttc" id="atest-helpers_8cc_html_ab0d783febb709ca1ac0cf56716b0ee84"><div class="ttname"><a href="test-helpers_8cc.html#ab0d783febb709ca1ac0cf56716b0ee84">drawingAreaHeight</a></div><div class="ttdeci">int drawingAreaHeight</div><div class="ttdef"><b>Definition</b> test-helpers.cc:23</div></div>
-<div class="ttc" id="atransformpresentation__test_8cc_html_a0e8a17dea24fd000a1eabbea951fb099"><div class="ttname"><a href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a></div><div class="ttdeci">Scroom::Utils::Rectangle&lt; double &gt; const r</div><div class="ttdef"><b>Definition</b> transformpresentation_test.cc:69</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="#a0ad0bda3fc3bfebb55ce1469aec76ae8">create_window()</a>.</p>
 <div class="dynheader">
@@ -536,11 +535,11 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   42</span>  GdkDrawingContext* dc;</div>
 <div class="line"><span class="lineno">   43</span>  dc = gdk_window_begin_draw_frame(gtk_widget_get_window(widget), re);</div>
 <div class="line"><span class="lineno">   44</span> </div>
-<div class="line"><span class="lineno">   45</span>  cairo_t* <a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a> = gdk_drawing_context_get_cairo_context(dc);</div>
+<div class="line"><span class="lineno">   45</span>  cairo_t* <a class="code hl_variable" href="pipette-tests_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a> = gdk_drawing_context_get_cairo_context(dc);</div>
 <div class="line"><span class="lineno">   46</span> </div>
 <div class="line"><span class="lineno">   47</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="test-helpers_8cc.html#a6588afec2a5416f3896ea42ee1d8cf0b">testData</a>)</div>
 <div class="line"><span class="lineno">   48</span>  {</div>
-<div class="line"><span class="lineno">   49</span>    <a class="code hl_variable" href="test-helpers_8cc.html#a6588afec2a5416f3896ea42ee1d8cf0b">testData</a>-&gt;redraw(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>);</div>
+<div class="line"><span class="lineno">   49</span>    <a class="code hl_variable" href="test-helpers_8cc.html#a6588afec2a5416f3896ea42ee1d8cf0b">testData</a>-&gt;redraw(<a class="code hl_variable" href="pipette-tests_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>);</div>
 <div class="line"><span class="lineno">   50</span>  }</div>
 <div class="line"><span class="lineno">   51</span> </div>
 <div class="line"><span class="lineno">   52</span>  gdk_window_end_draw_frame(gtk_widget_get_window(widget), dc);</div>
@@ -549,8 +548,8 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   55</span> </div>
 <div class="line"><span class="lineno">   56</span>  <span class="keywordflow">return</span> FALSE;</div>
 <div class="line"><span class="lineno">   57</span>}</div>
+<div class="ttc" id="apipette-tests_8cc_html_ac2efa4a51d11834112524e53b3dc0f62"><div class="ttname"><a href="pipette-tests_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a></div><div class="ttdeci">cairo_t * cr</div><div class="ttdef"><b>Definition</b> pipette-tests.cc:187</div></div>
 <div class="ttc" id="atest-helpers_8cc_html_a6588afec2a5416f3896ea42ee1d8cf0b"><div class="ttname"><a href="test-helpers_8cc.html#a6588afec2a5416f3896ea42ee1d8cf0b">testData</a></div><div class="ttdeci">TestData::Ptr testData</div><div class="ttdef"><b>Definition</b> test-helpers.cc:25</div></div>
-<div class="ttc" id="atransformpresentation__test_8cc_html_ac2efa4a51d11834112524e53b3dc0f62"><div class="ttname"><a href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a></div><div class="ttdeci">cairo_t * cr</div><div class="ttdef"><b>Definition</b> transformpresentation_test.cc:76</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="#a0ad0bda3fc3bfebb55ce1469aec76ae8">create_window()</a>.</p>
 <div class="dynheader">

@@ -1,5 +1,8 @@
 <map id="Operations1bppClipped::cacheZoom" name="Operations1bppClipped::cacheZoom">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,179,50"/>
-<area shape="rect" id="Node000002" href="$classBitmapSurface.html#a697961480f8888e1a149d4be54adb9e7" title=" " alt="" coords="227,14,393,42"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="179,25,214,27,209,28,179,30"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,179,74"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Bitmap_1_1BitmapSurface.html#a697961480f8888e1a149d4be54adb9e7" title=" " alt="" coords="227,29,456,74"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="179,49,214,51,208,52,179,54"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Bitmap_1_1BitmapSurface.html#a01b392735034681d7dfabc4fc2f71cfa" title=" " alt="" coords="504,29,733,74"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="456,49,491,52,486,52,456,54"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="567,27,565,19,574,10,592,5,619,3,648,5,668,14,662,14,647,10,619,8,593,10,576,15,570,21,571,30"/>
 </map>

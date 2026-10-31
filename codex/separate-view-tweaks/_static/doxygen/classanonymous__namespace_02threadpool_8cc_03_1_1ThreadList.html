@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-64-gaf037a1e1</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-67-g4a9473164</span>
    </div>
   </td>
  </tr>
@@ -126,7 +126,7 @@ Public Types</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aba819ee7e207fe6d7b7281684e46b777" id="r_aba819ee7e207fe6d7b7281684e46b777"><td class="memItemLeft" align="right" valign="top"><a class="el" href="function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba819ee7e207fe6d7b7281684e46b777">wait</a> ()</td></tr>
 <tr class="memitem:ae80300f183a0f9a51cc4fd21d0412f6e" id="r_ae80300f183a0f9a51cc4fd21d0412f6e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae80300f183a0f9a51cc4fd21d0412f6e">add</a> (const <a class="el" href="classThreadPool.html#a1b5f37ac79dadbd50c717af80f0184bf">ThreadPool::ThreadPtr</a> &amp;<a class="el" href="threadpool-queue-tests_8cc.html#a2c9addcc3f33120c718dfd607595b174">t</a>)</td></tr>
-<tr class="memitem:aad0a0148770b1a4cf39fcab72857832e" id="r_aad0a0148770b1a4cf39fcab72857832e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad0a0148770b1a4cf39fcab72857832e">add</a> (const std::shared_ptr&lt; <a class="el" href="function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54">void</a> &gt; &amp;<a class="el" href="threadpool-queue-tests_8cc.html#a2c9addcc3f33120c718dfd607595b174">t</a>, const std::string &amp;<a class="el" href="transformpresentation__test_8cc.html#aab0e3ec116bb87f30039fc772656b8ef">s</a>)</td></tr>
+<tr class="memitem:aad0a0148770b1a4cf39fcab72857832e" id="r_aad0a0148770b1a4cf39fcab72857832e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad0a0148770b1a4cf39fcab72857832e">add</a> (const std::shared_ptr&lt; <a class="el" href="function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54">void</a> &gt; &amp;<a class="el" href="threadpool-queue-tests_8cc.html#a2c9addcc3f33120c718dfd607595b174">t</a>, const std::string &amp;<a class="el" href="function-additor-tests_8cc.html#aea1eba3cbf0fd144fe09cfcf18b62d6e">s</a>)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -181,12 +181,12 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  178</span>  {</div>
 <div class="line"><span class="lineno">  179</span>    boost::mutex::scoped_lock <span class="keyword">const</span> lock(<a class="code hl_variable" href="#ae78632edeb482d8b8c43d0856c84d8d6">mut</a>);</div>
-<div class="line"><span class="lineno">  180</span>    <a class="code hl_variable" href="#a1a29406cdf092f8c37f1dea595886e96">pointers</a>.push_back(std::make_pair&lt;std::weak_ptr&lt;void&gt;, std::string&gt;(<a class="code hl_variable" href="threadpool-queue-tests_8cc.html#a2c9addcc3f33120c718dfd607595b174">t</a>, std::string(<a class="code hl_variable" href="transformpresentation__test_8cc.html#aab0e3ec116bb87f30039fc772656b8ef">s</a>)));</div>
+<div class="line"><span class="lineno">  180</span>    <a class="code hl_variable" href="#a1a29406cdf092f8c37f1dea595886e96">pointers</a>.push_back(std::make_pair&lt;std::weak_ptr&lt;void&gt;, std::string&gt;(<a class="code hl_variable" href="threadpool-queue-tests_8cc.html#a2c9addcc3f33120c718dfd607595b174">t</a>, std::string(<a class="code hl_variable" href="function-additor-tests_8cc.html#aea1eba3cbf0fd144fe09cfcf18b62d6e">s</a>)));</div>
 <div class="line"><span class="lineno">  181</span>  }</div>
 <div class="ttc" id="aclassanonymous__namespace_02threadpool_8cc_03_1_1ThreadList_html_a1a29406cdf092f8c37f1dea595886e96"><div class="ttname"><a href="#a1a29406cdf092f8c37f1dea595886e96">anonymous_namespace{threadpool.cc}::ThreadList::pointers</a></div><div class="ttdeci">std::list&lt; std::pair&lt; std::weak_ptr&lt; void &gt;, std::string &gt; &gt; pointers</div><div class="ttdef"><b>Definition</b> threadpool.cc:48</div></div>
 <div class="ttc" id="aclassanonymous__namespace_02threadpool_8cc_03_1_1ThreadList_html_ae78632edeb482d8b8c43d0856c84d8d6"><div class="ttname"><a href="#ae78632edeb482d8b8c43d0856c84d8d6">anonymous_namespace{threadpool.cc}::ThreadList::mut</a></div><div class="ttdeci">boost::mutex mut</div><div class="ttdef"><b>Definition</b> threadpool.cc:46</div></div>
+<div class="ttc" id="afunction-additor-tests_8cc_html_aea1eba3cbf0fd144fe09cfcf18b62d6e"><div class="ttname"><a href="function-additor-tests_8cc.html#aea1eba3cbf0fd144fe09cfcf18b62d6e">s</a></div><div class="ttdeci">clear(&amp; s)()</div><div class="ttdef"><b>Definition</b> function-additor-tests.cc:30</div></div>
 <div class="ttc" id="athreadpool-queue-tests_8cc_html_a2c9addcc3f33120c718dfd607595b174"><div class="ttname"><a href="threadpool-queue-tests_8cc.html#a2c9addcc3f33120c718dfd607595b174">t</a></div><div class="ttdeci">ThreadPool t(0)</div></div>
-<div class="ttc" id="atransformpresentation__test_8cc_html_aab0e3ec116bb87f30039fc772656b8ef"><div class="ttname"><a href="transformpresentation__test_8cc.html#aab0e3ec116bb87f30039fc772656b8ef">s</a></div><div class="ttdeci">BitmapSurface::Ptr const s</div><div class="ttdef"><b>Definition</b> transformpresentation_test.cc:74</div></div>
 </div><!-- fragment -->
 </div>
 </div>

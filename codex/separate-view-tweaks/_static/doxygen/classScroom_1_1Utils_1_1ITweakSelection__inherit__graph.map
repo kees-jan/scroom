@@ -1,19 +1,19 @@
 <map id="Scroom::Utils::ITweakSelection" name="Scroom::Utils::ITweakSelection">
-<area shape="rect" id="Node000001" title=" " alt="" coords="366,237,577,310"/>
-<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1SelectionTweakMock.html" title=" " alt="" coords="57,400,222,489"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="350,308,293,331,236,360,208,380,182,402,178,398,204,375,233,355,291,326,355,304"/>
-<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1TweakSelectionsAsRectangles.html" title=" " alt="" coords="246,388,460,500"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="440,320,393,390,389,387,437,324"/>
-<area shape="rect" id="Node000008" href="$classScroom_1_1Utils_1_1TweakSelectionsWithAspectRatio.html" title=" " alt="" coords="484,358,697,531"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="505,319,533,358,528,358,504,324"/>
-<area shape="rect" id="Node000009" href="$classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakSelection.html" title=" " alt="" coords="721,391,921,498"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="591,306,652,328,710,355,763,392,758,391,708,360,650,333,591,311"/>
-<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="419,5,525,189"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="473,202,474,238,469,237,471,207"/>
-<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1ExpandSelectionsToPixelBoundaries.html" title=" " alt="" coords="5,579,226,713"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="279,508,196,581,192,577,274,511"/>
-<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1SnapSelectionsToGrid.html" title=" " alt="" coords="251,579,455,713"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="355,513,355,580,351,578,351,517"/>
-<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1TweakSelectionsAsRectanglesMock.html" title=" " alt="" coords="480,579,693,713"/>
-<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="429,507,512,579,507,579,428,513"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="374,237,584,310"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1SelectionTweakMock.html" title=" " alt="" coords="64,400,230,489"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="358,308,301,331,243,360,215,380,190,402,186,398,212,375,240,355,299,326,362,305"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1TweakSelectionsAsRectangles.html" title=" " alt="" coords="254,388,467,500"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="448,320,401,390,397,387,444,324"/>
+<area shape="rect" id="Node000008" href="$classScroom_1_1Utils_1_1TweakSelectionsWithAspectRatio.html" title=" " alt="" coords="491,358,705,531"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="513,319,540,358,535,358,512,324"/>
+<area shape="rect" id="Node000009" href="$classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakSelection.html" title=" " alt="" coords="728,391,929,498"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="598,306,659,328,718,355,771,392,765,391,715,360,657,333,599,311"/>
+<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="426,5,532,189"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="480,202,482,238,477,237,478,207"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1TiledBitmap_1_1ExpandSelectionsToPixelBoundaries.html" title=" " alt="" coords="5,579,257,713"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="289,508,208,581,205,577,284,511"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1TiledBitmap_1_1SnapSelectionsToGrid.html" title=" " alt="" coords="281,579,440,713"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="362,513,363,580,358,578,359,517"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1TweakSelectionsAsRectanglesMock.html" title=" " alt="" coords="464,579,678,713"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="429,507,504,579,499,579,428,513"/>
 </map>
