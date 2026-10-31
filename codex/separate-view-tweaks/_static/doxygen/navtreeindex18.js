@@ -1,5 +1,6 @@
 var NAVTREEINDEX18 =
 {
+"namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#add5ac7ed3f67a149282397b67c164559a8d81ac82421d1b03da58fccb9174892e":[2,0,25,4,0,2,2],
 "namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#add5ac7ed3f67a149282397b67c164559a901d87dedda8db733f5e6d34c4eb5fe0":[2,0,25,4,0,2,1],
 "namespaceSelectionType.html":[2,0,26],
 "namespaceSelectionType.html#a9f0e8fd7cec2332d694d5a898cff9dc9":[2,0,26,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX18 =
 "pluginmanager_8cc.html#ac86aff0855ed87e1b3b09b8c5f50528e":[5,0,2,2,7,1],
 "pluginmanager_8hh.html":[5,0,2,2,8],
 "pluginmanager_8hh.html#a1eaba27ac5042cfaf3fc25381677d3d9":[5,0,2,2,8,2],
-"pluginmanager_8hh_source.html":[5,0,2,2,8],
-"plugins_2colormap_2main_8cc.html":[5,0,4,0,6]
+"pluginmanager_8hh_source.html":[5,0,2,2,8]
 };

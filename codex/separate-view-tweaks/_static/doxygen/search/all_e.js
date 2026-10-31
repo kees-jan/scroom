@@ -17,7 +17,7 @@ var searchData=
   ['nextstatusmessage_14',['nextStatusMessage',['../classDummyView.html#a355e6404319e9e280d42bc22f3a56b68',1,'DummyView']]],
   ['no_5fop_15',['no_op',['../threadpool-tests_8cc.html#abc8d36c4d1d17b772ee624f93cb52ce7',1,'threadpool-tests.cc']]],
   ['normalize_16',['normalize',['../classScroom_1_1Utils_1_1Segment.html#aa3415b3b3cc8f607a25b3aad79221441',1,'Scroom::Utils::Segment::normalize()'],['../classSegment.html#aa3415b3b3cc8f607a25b3aad79221441',1,'Segment::normalize()']]],
-  ['note_17',['Important License Note!',['../md_cmake-modules_2README.html#autotoc_md11',1,'']]],
+  ['note_17',['Important License Note!',['../md_cmake-modules_2README.html#autotoc_md12',1,'']]],
   ['notifyobservers_18',['notifyObservers',['../classCompressedTile.html#a56111eeb0baeaf0b8f2d93e4a81ea99d',1,'CompressedTile']]],
   ['notifythreadlist_19',['NotifyThreadList',['../namespaceanonymous__namespace_02threadpool_8cc_03.html#ab3b5c2a45b9d57ca5f1d8c6c553f85f8',1,'anonymous_namespace{threadpool.cc}']]],
   ['numberofcolors_20',['numberOfColors',['../classMonochromeColormapHelper.html#a22800a9f435551e61e8fc20cf889997a',1,'MonochromeColormapHelper']]]

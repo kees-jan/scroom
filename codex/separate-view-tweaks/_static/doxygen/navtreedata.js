@@ -27,18 +27,19 @@ var NAVTREE =
   [ "Scroom", "index.html", [
     [ "Local development guide", "md_AGENTS.html", [
       [ "Maintaining instructions", "md_AGENTS.html#autotoc_md1", null ],
-      [ "Project", "md_AGENTS.html#autotoc_md2", null ],
-      [ "Configure and compile", "md_AGENTS.html#autotoc_md3", null ],
-      [ "Tests", "md_AGENTS.html#autotoc_md4", null ],
-      [ "Run the application without installing", "md_AGENTS.html#autotoc_md5", null ],
-      [ "Code map and checks", "md_AGENTS.html#autotoc_md6", null ]
+      [ "Commits and merge requests", "md_AGENTS.html#autotoc_md2", null ],
+      [ "Project", "md_AGENTS.html#autotoc_md3", null ],
+      [ "Configure and compile", "md_AGENTS.html#autotoc_md4", null ],
+      [ "Tests", "md_AGENTS.html#autotoc_md5", null ],
+      [ "Run the application without installing", "md_AGENTS.html#autotoc_md6", null ],
+      [ "Code map and checks", "md_AGENTS.html#autotoc_md7", null ]
     ] ],
     [ "Ryan's CMake Modules", "md_cmake-modules_2README.html", [
-      [ "Introduction", "md_cmake-modules_2README.html#autotoc_md7", null ],
-      [ "How to Integrate", "md_cmake-modules_2README.html#autotoc_md8", null ],
-      [ "How to Use", "md_cmake-modules_2README.html#autotoc_md9", null ],
-      [ "Licenses", "md_cmake-modules_2README.html#autotoc_md10", null ],
-      [ "Important License Note!", "md_cmake-modules_2README.html#autotoc_md11", null ]
+      [ "Introduction", "md_cmake-modules_2README.html#autotoc_md8", null ],
+      [ "How to Integrate", "md_cmake-modules_2README.html#autotoc_md9", null ],
+      [ "How to Use", "md_cmake-modules_2README.html#autotoc_md10", null ],
+      [ "Licenses", "md_cmake-modules_2README.html#autotoc_md11", null ],
+      [ "Important License Note!", "md_cmake-modules_2README.html#autotoc_md12", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -101,10 +102,10 @@ var NAVTREEINDEX =
 "colormaphelpers__test_8cc.html#a862149079e13be62b729992ff6764f72",
 "functions.html",
 "md_AGENTS.html#autotoc_md1",
-"namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#add5ac7ed3f67a149282397b67c164559a901d87dedda8db733f5e6d34c4eb5fe0",
-"plugins_2colormap_2main_8cc.html#ac8a61b9775cfad9cf6ac99cb2806accf",
-"rectangletests_8cc.html#afb2fd4c7e21e37fa441037629691dbf7",
-"structfmt_1_1formatter_3_01std_1_1shared__ptr_3_01T_01_4_01_4.html#a7708d8ce862f37d3fcee5ee9d57dc64a"
+"namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#add5ac7ed3f67a149282397b67c164559a8d81ac82421d1b03da58fccb9174892e",
+"plugins_2colormap_2main_8cc.html",
+"rectangletests_8cc.html#afaea434cedda5ae65c752010d67e3fc0",
+"structfmt_1_1formatter_3_01std_1_1shared__ptr_3_01T_01_4_01_4.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

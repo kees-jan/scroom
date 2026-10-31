@@ -25,6 +25,6 @@ var searchData=
   ['updatezoom_22',['updateZoom',['../classView.html#a54f60e30804881dcfec8bdbff457a4eb',1,'View']]],
   ['upperlimit_23',['upperLimit',['../classRuler.html#aa02129ddefdebc3cfe88fda349c4d837',1,'Ruler']]],
   ['usage_24',['usage',['../gui_2src_2main_8cc.html#a7a706f62a62fd6c210230a2faed42f33',1,'usage(const Scroom::Logger &amp;logger, const std::string &amp;me, const po::options_description &amp;desc, const std::string &amp;message=std::string()):&#160;main.cc'],['../measure-framerate_8cc.html#a0a789fa690aac00f8c6ceb083f77ec68',1,'usage(const std::string &amp;me, const std::string &amp;message=std::string()):&#160;measure-framerate.cc'],['../measure-load-performance_8cc.html#a0a789fa690aac00f8c6ceb083f77ec68',1,'usage(const std::string &amp;me, const std::string &amp;message=std::string()):&#160;measure-load-performance.cc']]],
-  ['use_25',['How to Use',['../md_cmake-modules_2README.html#autotoc_md9',1,'']]],
+  ['use_25',['How to Use',['../md_cmake-modules_2README.html#autotoc_md10',1,'']]],
   ['utilities_2ehh_26',['utilities.hh',['../utilities_8hh.html',1,'']]]
 ];

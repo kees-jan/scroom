@@ -1,5 +1,6 @@
 var NAVTREEINDEX19 =
 {
+"plugins_2colormap_2main_8cc.html":[5,0,4,0,6],
 "plugins_2colormap_2main_8cc.html#ac8a61b9775cfad9cf6ac99cb2806accf":[5,0,4,0,6,0],
 "plugins_2example_2main_8cc.html":[5,0,4,1,4],
 "plugins_2example_2main_8cc.html#ac8a61b9775cfad9cf6ac99cb2806accf":[5,0,4,1,4,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX19 =
 "rectangletests_8cc.html#af1c701468015a19f43f491b91ff324ac":[5,0,3,5,2,12,59],
 "rectangletests_8cc.html#af3072bbabb28ce93443931ac8b7549a3":[5,0,3,5,2,12,124],
 "rectangletests_8cc.html#af5caf141b224122586ba609e2559bff0":[5,0,3,5,2,12,58],
-"rectangletests_8cc.html#af6796373cc462aef8e6979a40acef5d3":[5,0,3,5,2,12,129],
-"rectangletests_8cc.html#afaea434cedda5ae65c752010d67e3fc0":[5,0,3,5,2,12,131]
+"rectangletests_8cc.html#af6796373cc462aef8e6979a40acef5d3":[5,0,3,5,2,12,129]
 };
