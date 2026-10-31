@@ -1,13 +1,11 @@
 <map id="Scroom::Utils::ITweakPositionTextBox" name="Scroom::Utils::ITweakPositionTextBox">
-<area shape="rect" id="Node000001" title=" " alt="" coords="369,219,575,319"/>
-<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1AspectRatioPositionTextBox.html" title=" " alt="" coords="5,367,227,527"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="357,316,240,369,228,375,226,371,237,364,355,311"/>
-<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1ViewportPositionTextBox.html" title=" " alt="" coords="251,387,469,507"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="436,332,400,388,396,385,431,329"/>
-<area shape="rect" id="Node000005" href="$classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TextTweakMock.html" title=" " alt="" coords="494,389,677,504"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="513,329,551,388,547,391,509,332"/>
-<area shape="rect" id="Node000006" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1TextBoxChild.html" title=" " alt="" coords="701,389,873,504"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="589,312,640,337,691,364,723,387,720,391,688,369,638,341,587,317"/>
-<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="418,5,526,171"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="475,184,475,219,469,219,469,184"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="246,237,448,349"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1ParseAndFormatViewCentre.html" title=" " alt="" coords="5,428,217,562"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="269,360,191,430,187,426,273,357"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1ParseAndFormatViewCentreWithAspectRatio.html" title=" " alt="" coords="241,397,453,593"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="349,362,350,398,345,396,346,366"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1ViewCentreTextConversionMock.html" title=" " alt="" coords="477,439,658,551"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="422,356,466,395,513,439,507,439,463,399,421,361"/>
+<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="294,5,400,189"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="348,202,350,239,345,237,346,207"/>
 </map>

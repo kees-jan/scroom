@@ -1,17 +1,17 @@
 <map id="libs/threadpool/inc/scroom/function&#45;additor.hh" name="libs/threadpool/inc/scroom/function&#45;additor.hh">
-<area shape="rect" id="Node000001" title=" " alt="" coords="558,5,759,45"/>
-<area shape="rect" id="Node000002" href="$function-additor_8cc.html" title=" " alt="" coords="5,101,152,141"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="545,39,365,61,264,77,165,96,136,103,135,98,163,91,263,71,365,56,544,34"/>
-<area shape="rect" id="Node000003" href="$async-deleter-tests_8cc.html" title=" " alt="" coords="176,101,347,141"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="557,51,359,96,330,103,329,98,358,91,556,46"/>
-<area shape="rect" id="Node000004" href="$function-additor-tests_8cc.html" title=" " alt="" coords="371,101,557,141"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="608,54,504,103,502,98,606,49"/>
-<area shape="rect" id="Node000005" href="$semaphore-tests_8cc.html" title=" " alt="" coords="581,101,736,141"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="661,59,661,101,656,101,656,59"/>
-<area shape="rect" id="Node000006" href="$threadpool-destruction-tests_8cc.html" title=" " alt="" coords="761,93,935,148"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="710,49,796,91,794,96,708,54"/>
-<area shape="rect" id="Node000007" href="$threadpool-queue-tests_8cc.html" title=" " alt="" coords="959,101,1155,141"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="754,46,949,91,980,98,979,103,947,96,753,51"/>
-<area shape="rect" id="Node000008" href="$threadpool-tests_8cc.html" title=" " alt="" coords="1179,101,1330,141"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="773,34,960,55,1065,71,1169,91,1197,98,1196,103,1167,96,1064,76,959,60,773,39"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="554,5,755,50"/>
+<area shape="rect" id="Node000002" href="$function-additor_8cc.html" title=" " alt="" coords="5,106,152,151"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="536,39,361,63,261,80,163,101,136,108,134,103,162,95,260,74,360,58,541,38"/>
+<area shape="rect" id="Node000003" href="$async-deleter-tests_8cc.html" title=" " alt="" coords="175,106,344,151"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="542,53,358,101,329,109,328,103,356,95,536,54"/>
+<area shape="rect" id="Node000004" href="$function-additor-tests_8cc.html" title=" " alt="" coords="369,106,553,151"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="601,57,504,108,503,103,596,58"/>
+<area shape="rect" id="Node000005" href="$semaphore-tests_8cc.html" title=" " alt="" coords="578,106,731,151"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="656,64,657,108,652,104,653,67"/>
+<area shape="rect" id="Node000006" href="$threadpool-destruction-tests_8cc.html" title=" " alt="" coords="756,98,929,160"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="710,55,788,98,782,97,709,60"/>
+<area shape="rect" id="Node000007" href="$threadpool-queue-tests_8cc.html" title=" " alt="" coords="953,106,1148,151"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="762,51,942,95,974,106,969,106,941,101,762,57"/>
+<area shape="rect" id="Node000008" href="$threadpool-tests_8cc.html" title=" " alt="" coords="1173,106,1323,151"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="770,36,955,58,1058,74,1160,95,1191,106,1186,106,1159,101,1057,80,954,63,770,41"/>
 </map>

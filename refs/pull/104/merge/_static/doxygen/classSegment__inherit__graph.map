@@ -1,0 +1,13 @@
+<map id="Segment&lt; T &gt;" name="Segment&lt; T &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="411,143,532,371"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,193,95"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,99,413,221,409,224,190,104"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="218,5,370,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="342,103,414,186,408,186,340,108"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="395,5,548,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="473,107,474,144,469,142,470,111"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="571,5,713,95"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="599,104,533,186,530,181,594,107"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="737,5,917,95"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="742,101,533,224,530,219,737,103"/>
+</map>

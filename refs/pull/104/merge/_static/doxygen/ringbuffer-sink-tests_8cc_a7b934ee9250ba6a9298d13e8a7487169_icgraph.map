@@ -1,11 +1,13 @@
 <map id="EXPECT_EQ" name="EXPECT_EQ">
-<area shape="rect" id="Node000001" title=" " alt="" coords="264,125,361,150"/>
-<area shape="rect" id="Node000002" href="$classanonymous__namespace_02determine-size-test_8cc_03_1_1ResizablePresentationInterfaceStub.html#a5cf45f0f87b469b73f97d232a36e60ac" title=" " alt="" coords="5,5,216,75"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="275,120,215,89,190,77,192,72,217,84,277,116"/>
-<area shape="rect" id="Node000003" href="$tweak-view__test_8cc.html#ab4ea7875c33dce503c17222129287bcc" title=" " alt="" coords="76,99,145,125"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="250,132,145,119,146,114,251,127"/>
-<area shape="rect" id="Node000004" href="$tweak-view__test_8cc.html#a48506719713e7ebd04687b8ffe2e201e" title=" " alt="" coords="76,149,145,174"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="251,147,146,160,145,155,250,142"/>
-<area shape="rect" id="Node000005" href="$ruler-tests_8cc.html#aeb8a967e707e4f39646629225625fff6" title=" " alt="" coords="17,199,205,239"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="278,159,217,188,181,201,179,196,215,183,275,154"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="263,160,359,188"/>
+<area shape="rect" id="Node000002" href="$classanonymous__namespace_02determine-size-test_8cc_03_1_1ResizablePresentationInterfaceStub.html#a5cf45f0f87b469b73f97d232a36e60ac" title=" " alt="" coords="5,5,215,84"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="281,151,213,99,195,87,194,82,216,94,286,149"/>
+<area shape="rect" id="Node000003" href="$tweak-view__test_8cc.html#aac2ddf98b321908fc466322545d36d41" title=" " alt="" coords="76,108,144,136"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="245,158,214,151,145,133,144,128,215,146,250,157"/>
+<area shape="rect" id="Node000004" href="$tweak-view__test_8cc.html#ae04c335f81f8cadd518b5f06c3ebca1b" title=" " alt="" coords="76,160,144,188"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="245,176,145,177,144,171,249,172"/>
+<area shape="rect" id="Node000005" href="$tweak-view__test_8cc.html#a5679e1a4bb6b493ff35b598babf174a1" title=" " alt="" coords="76,212,144,240"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="245,192,215,202,145,220,144,215,214,197,250,190"/>
+<area shape="rect" id="Node000006" href="$ruler-tests_8cc.html#aeb8a967e707e4f39646629225625fff6" title=" " alt="" coords="16,264,204,308"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="287,197,254,228,216,254,190,266,188,261,213,249,251,224,282,200"/>
 </map>

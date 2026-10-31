@@ -33,7 +33,8 @@ var searchData=
   ['transparentoverlaypresentation_2ehh_30',['transparentoverlaypresentation.hh',['../transparentoverlaypresentation_8hh.html',1,'']]],
   ['transparentoverlayviewinfo_2ecc_31',['transparentoverlayviewinfo.cc',['../transparentoverlayviewinfo_8cc.html',1,'']]],
   ['transparentoverlayviewinfo_2ehh_32',['transparentoverlayviewinfo.hh',['../transparentoverlayviewinfo_8hh.html',1,'']]],
-  ['tweak_2dview_2ecc_33',['tweak-view.cc',['../tweak-view_8cc.html',1,'']]],
-  ['tweak_2dview_2ehh_34',['tweak-view.hh',['../tweak-view_8hh.html',1,'']]],
-  ['tweak_2dview_5ftest_2ecc_35',['tweak-view_test.cc',['../tweak-view__test_8cc.html',1,'']]]
+  ['tweak_2dview_2dtest_2dhelpers_2ehh_33',['tweak-view-test-helpers.hh',['../tweak-view-test-helpers_8hh.html',1,'']]],
+  ['tweak_2dview_2ecc_34',['tweak-view.cc',['../tweak-view_8cc.html',1,'']]],
+  ['tweak_2dview_2ehh_35',['tweak-view.hh',['../gmock_2tweak-view_8hh.html',1,'(Global Namespace)'],['../tweak-view_8hh.html',1,'(Global Namespace)']]],
+  ['tweak_2dview_5ftest_2ecc_36',['tweak-view_test.cc',['../tweak-view__test_8cc.html',1,'']]]
 ];

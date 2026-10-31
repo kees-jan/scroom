@@ -1,5 +1,7 @@
 <map id="Scroom::Bookkeeping::Token::operator+=" name="Scroom::Bookkeeping::Token::operator+=">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,168,45"/>
-<area shape="rect" id="Node000002" href="$threadpool-queue-tests_8cc.html#ae28512d7a9b9132257981ed5ecbce069" title=" " alt="" coords="216,13,263,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,23,202,23,202,28,168,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,28,168,72"/>
+<area shape="rect" id="Node000002" href="$threadpool-queue-tests_8cc.html#ae28512d7a9b9132257981ed5ecbce069" title=" " alt="" coords="274,5,320,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,35,261,24,256,26,169,41"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Bookkeeping_1_1Token.html#a9f9e71ff0092bf9c0c92f7a1fba23501" title=" " alt="" coords="216,57,378,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="168,59,203,65,197,66,168,64"/>
 </map>

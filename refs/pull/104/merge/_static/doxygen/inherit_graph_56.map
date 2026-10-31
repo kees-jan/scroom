@@ -1,3 +1,47 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classScroom_1_1Semaphore.html" title=" " alt="" coords="5,5,159,31"/>
+<area shape="rect" id="Node000000" href="$classScroom_1_1GtkTestHelpers_1_1GtkMainLoop.html" title=" " alt="" coords="5,5,183,50"/>
+<area shape="rect" id="Node000001" href="$classPipette__Tests.html" title=" " alt="" coords="321,14,428,42"/>
+<area shape="poly" id="edge46_Node000000_Node000001" title=" " alt="" coords="196,26,323,26,319,30,200,30"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="44,702,144,730"/>
+<area shape="poly" id="edge50_Node000002_Node000001" title=" " alt="" coords="94,686,106,551,130,360,147,263,169,174,196,102,212,74,229,52,249,38,272,28,323,22,319,26,274,33,252,42,233,56,216,77,201,104,175,176,153,264,135,361,111,551,100,686"/>
+<area shape="rect" id="Node000003" href="$classContextTests.html" title=" " alt="" coords="322,66,428,94"/>
+<area shape="poly" id="edge47_Node000002_Node000003" title=" " alt="" coords="95,686,108,560,133,385,151,296,173,215,198,149,213,124,229,104,249,90,273,80,323,74,320,78,274,85,252,94,232,108,217,127,203,152,178,217,156,297,138,386,113,561,100,686"/>
+<area shape="rect" id="Node000004" href="$classLoggerTests.html" title=" " alt="" coords="326,118,424,146"/>
+<area shape="poly" id="edge48_Node000002_Node000004" title=" " alt="" coords="96,686,110,570,137,411,155,330,176,257,200,197,214,174,229,156,250,141,275,132,327,126,323,130,276,137,253,146,232,160,219,177,205,199,181,259,160,331,142,412,115,571,101,687"/>
+<area shape="rect" id="Node000005" href="$classParentContextTests.html" title=" " alt="" coords="302,170,448,198"/>
+<area shape="poly" id="edge49_Node000002_Node000005" title=" " alt="" coords="96,686,112,580,140,436,158,363,179,297,202,243,229,207,245,195,263,187,303,179,299,183,264,192,247,200,233,211,207,246,184,299,163,364,145,437,117,581,102,687"/>
+<area shape="rect" id="Node000006" href="$classProgressInterfaceMultiplexer__Tests.html" title=" " alt="" coords="271,221,479,266"/>
+<area shape="poly" id="edge51_Node000002_Node000006" title=" " alt="" coords="92,686,97,605,104,552,116,495,133,435,157,377,188,323,229,276,248,262,272,253,269,257,250,267,232,280,193,327,161,380,138,437,121,496,109,553,103,606,98,687"/>
+<area shape="rect" id="Node000007" href="$classRectangle__and__Segment__TypedTests.html" title=" " alt="" coords="280,291,470,335"/>
+<area shape="poly" id="edge52_Node000002_Node000007" title=" " alt="" coords="94,686,103,617,125,525,142,476,165,428,193,384,229,346,252,330,282,320,278,324,255,335,232,350,198,387,169,431,147,478,130,526,109,618,100,687"/>
+<area shape="rect" id="Node000008" href="$classSingleContextTests.html" title=" " alt="" coords="302,359,448,387"/>
+<area shape="poly" id="edge53_Node000002_Node000008" title=" " alt="" coords="96,686,107,624,130,545,148,504,170,464,197,428,229,396,263,378,304,370,300,374,265,383,232,400,201,431,174,467,153,506,136,547,112,626,101,687"/>
+<area shape="rect" id="Node000009" href="$classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TransformPresentationContextTest.html" title=" " alt="" coords="258,411,492,490"/>
+<area shape="poly" id="edge54_Node000002_Node000009" title=" " alt="" coords="104,687,122,645,149,596,185,545,229,500,259,483,256,487,232,504,189,548,154,598,127,648,109,688"/>
+<area shape="rect" id="Node000010" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1CalculateViewAreaForRulersTest.html" title=" " alt="" coords="255,514,494,576"/>
+<area shape="poly" id="edge55_Node000002_Node000010" title=" " alt="" coords="114,689,163,636,195,609,229,585,256,574,253,578,232,590,198,613,167,640,118,691"/>
+<area shape="rect" id="Node000011" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakPresentationPositionTest.html" title=" " alt="" coords="236,600,514,661"/>
+<area shape="poly" id="edge56_Node000002_Node000011" title=" " alt="" coords="153,695,230,670,270,660,266,664,231,676,157,699"/>
+<area shape="rect" id="Node000012" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakSelectionMapTest.html" title=" " alt="" coords="259,685,491,746"/>
+<area shape="poly" id="edge57_Node000002_Node000012" title=" " alt="" coords="158,713,260,714,257,717,161,718"/>
+<area shape="rect" id="Node000013" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakSelectionTest.html" title=" " alt="" coords="273,770,477,832"/>
+<area shape="poly" id="edge58_Node000002_Node000013" title=" " alt="" coords="154,732,231,756,274,770,270,772,230,761,156,737"/>
+<area shape="rect" id="Node000014" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1ExpandSelectionsToPixelBoundariesTest.html" title=" " alt="" coords="231,856,519,917"/>
+<area shape="poly" id="edge59_Node000002_Node000014" title=" " alt="" coords="115,739,167,791,198,818,232,841,255,854,250,856,229,846,195,822,163,795,117,744"/>
+<area shape="rect" id="Node000015" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1ParseAndFormatViewCentreTest.html" title=" " alt="" coords="257,941,493,1002"/>
+<area shape="poly" id="edge60_Node000002_Node000015" title=" " alt="" coords="105,742,126,785,153,834,188,884,232,927,259,943,254,945,229,931,184,888,149,837,121,787,106,747"/>
+<area shape="rect" id="Node000016" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1ParseAndFormatViewCentreWithAspectRatioTest.html" title=" " alt="" coords="255,1027,495,1106"/>
+<area shape="poly" id="edge61_Node000002_Node000016" title=" " alt="" coords="101,742,117,800,142,872,180,947,204,982,232,1012,257,1031,252,1032,229,1016,200,985,175,950,137,874,112,802,101,747"/>
+<area shape="rect" id="Node000017" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1PixelAlignPresentationPositionsTest.html" title=" " alt="" coords="245,1130,505,1192"/>
+<area shape="poly" id="edge62_Node000002_Node000017" title=" " alt="" coords="97,742,107,819,127,919,145,972,167,1024,196,1072,233,1115,249,1129,244,1130,229,1119,192,1075,162,1026,140,974,122,920,102,820,96,748"/>
+<area shape="rect" id="Node000018" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1SnapSelectionsToGridTest.html" title=" " alt="" coords="277,1216,472,1277"/>
+<area shape="poly" id="edge63_Node000002_Node000018" title=" " alt="" coords="94,742,100,833,106,892,116,956,133,1022,157,1087,190,1148,233,1202,253,1218,279,1231,274,1233,251,1222,229,1206,186,1151,152,1089,128,1024,111,957,100,893,94,834,94,748"/>
+<area shape="rect" id="Node000019" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakPresentationPositionsWithAspectRatioTest.html" title=" " alt="" coords="269,1302,480,1380"/>
+<area shape="poly" id="edge64_Node000002_Node000019" title=" " alt="" coords="99,743,117,862,144,1025,162,1108,183,1183,207,1245,233,1287,250,1303,271,1316,266,1318,247,1307,229,1291,202,1247,178,1185,157,1109,139,1026,111,863,99,748"/>
+<area shape="rect" id="Node000020" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakRulersWithAspectRatioTest.html" title=" " alt="" coords="252,1405,498,1466"/>
+<area shape="poly" id="edge65_Node000002_Node000020" title=" " alt="" coords="97,742,112,881,136,1075,154,1174,176,1265,202,1339,217,1368,233,1390,254,1409,249,1409,229,1393,212,1371,197,1342,171,1266,149,1175,131,1076,107,882,97,747"/>
+<area shape="rect" id="Node000021" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsAsRectanglesTest.html" title=" " alt="" coords="249,1490,500,1552"/>
+<area shape="poly" id="edge66_Node000002_Node000021" title=" " alt="" coords="97,742,109,897,131,1116,149,1230,171,1334,199,1419,215,1452,233,1477,251,1494,246,1494,229,1480,210,1454,194,1421,166,1335,143,1231,126,1117,103,897,96,747"/>
+<area shape="rect" id="Node000022" href="$classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsWithAspectRatioTest.html" title=" " alt="" coords="269,1576,480,1655"/>
+<area shape="poly" id="edge67_Node000002_Node000022" title=" " alt="" coords="96,742,107,911,128,1156,145,1283,168,1399,197,1496,214,1533,233,1562,250,1578,271,1593,266,1592,246,1582,229,1565,209,1536,192,1498,163,1401,140,1284,122,1156,101,911,96,748"/>
 </map>

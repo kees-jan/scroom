@@ -1,5 +1,7 @@
 <map id="Scroom::Utils::ProgressInterfaceMultiplexer::Child::create" name="Scroom::Utils::ProgressInterfaceMultiplexer::Child::create">
-<area shape="rect" id="Node000001" title=" " alt="" coords="312,5,543,45"/>
-<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer.html#abf4d144440d5115f8adbfc297f0f18b7" title=" " alt="" coords="5,5,264,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="298,28,264,28,264,23,298,23"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="655,5,885,50"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer.html#abf4d144440d5115f8adbfc297f0f18b7" title=" " alt="" coords="350,5,607,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="637,28,607,30,607,25,642,28"/>
+<area shape="rect" id="Node000003" href="$classProgressInterfaceMultiplexer__Tests.html#ad73ef64b26f89a7a153deb60a533c66f" title=" " alt="" coords="5,5,302,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="331,28,302,30,302,25,337,28"/>
 </map>

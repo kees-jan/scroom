@@ -1,9 +1,0 @@
-<map id="TEST_F" name="TEST_F">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,60,75,85"/>
-<area shape="rect" id="Node000002" href="$namespaceanonymous__namespace_02tweak-view__test_8cc_03.html#a5c4ec1d82b18b87ca3c82d456b7ccdaf" title=" " alt="" coords="123,5,303,60"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,62,109,54,110,59,76,67"/>
-<area shape="rect" id="Node000003" href="$namespaceanonymous__namespace_02tweak-view__test_8cc_03.html#ac8085e2587394fc08b73989961cc5cce" title=" " alt="" coords="123,84,303,139"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="76,78,110,86,109,91,74,83"/>
-<area shape="rect" id="Node000004" href="$namespaceanonymous__namespace_02tweak-view__test_8cc_03.html#ae6044c3c1a4498d103d0a67ed387ed37" title=" " alt="" coords="351,84,531,139"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="303,109,337,109,337,114,303,114"/>
-</map>

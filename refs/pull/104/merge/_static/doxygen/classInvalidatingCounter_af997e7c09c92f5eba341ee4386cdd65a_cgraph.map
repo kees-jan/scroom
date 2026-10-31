@@ -1,7 +1,7 @@
 <map id="InvalidatingCounter::operator()" name="InvalidatingCounter::operator()">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,23,156,63"/>
-<area shape="rect" id="Node000002" href="$measure-framerate-callbacks_8cc.html#a893f1101c650c08c98612515c2b1a89c" title=" " alt="" coords="250,5,337,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="156,32,236,22,237,27,156,37"/>
-<area shape="rect" id="Node000003" href="$classBaseCounter.html#a91467350a2efdaaa819aa4dbec85291b" title=" " alt="" coords="204,55,383,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="156,49,191,53,190,58,156,54"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,24,155,68"/>
+<area shape="rect" id="Node000002" href="$measure-framerate-callbacks_8cc.html#a893f1101c650c08c98612515c2b1a89c" title=" " alt="" coords="248,5,334,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="154,34,235,26,230,27,155,39"/>
+<area shape="rect" id="Node000003" href="$classBaseCounter.html#a91467350a2efdaaa819aa4dbec85291b" title=" " alt="" coords="203,57,380,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="155,52,190,58,184,59,155,57"/>
 </map>

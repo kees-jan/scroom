@@ -1,13 +1,13 @@
 <map id="rounded_divide_by" name="rounded_divide_by">
-<area shape="rect" id="Node000001" title=" " alt="" coords="729,70,875,95"/>
-<area shape="rect" id="Node000002" href="$rounding_8hh.html#a8ef4d93107153397a73e4a13f5f86a3d" title=" " alt="" coords="521,45,681,70"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="716,74,681,70,682,65,716,69"/>
-<area shape="rect" id="Node000006" href="$rounding_8hh.html#a3b4ffa72156d0a5508a39100e1e854c0" title=" " alt="" coords="529,94,674,119"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="716,96,674,101,674,95,715,90"/>
-<area shape="rect" id="Node000003" href="$namespaceScroom_1_1Utils.html#a336b08377145525ad7740b47d618b161" title=" " alt="" coords="269,13,473,38"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="507,47,462,41,463,35,508,42"/>
-<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1PixelAlignPresentationPositions.html#aa43407a86f6fe202788e0992ec1d5893" title=" " alt="" coords="281,62,462,117"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="508,73,463,79,462,74,507,68"/>
-<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1SnapSelectionsToGrid.html#a9b8a542ab9274d1402ec294611b86adc" title=" " alt="" coords="5,5,221,45"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="255,28,222,28,222,23,255,23"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="727,75,872,103"/>
+<area shape="rect" id="Node000002" href="$rounding_8hh.html#a8ef4d93107153397a73e4a13f5f86a3d" title=" " alt="" coords="520,48,679,76"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="709,77,680,76,680,70,715,77"/>
+<area shape="rect" id="Node000006" href="$rounding_8hh.html#a3b4ffa72156d0a5508a39100e1e854c0" title=" " alt="" coords="528,100,672,128"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="715,100,672,108,672,103,709,100"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1Utils.html#a336b08377145525ad7740b47d618b161" title=" " alt="" coords="269,14,472,42"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="502,48,466,45,466,39,508,48"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1PixelAlignPresentationPositions.html#aa43407a86f6fe202788e0992ec1d5893" title=" " alt="" coords="280,66,460,128"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="507,76,461,86,461,81,502,77"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1SnapSelectionsToGrid.html#a9a119927896132b7dda9446d44cceb82" title=" " alt="" coords="5,5,221,50"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="251,28,221,30,220,25,256,27"/>
 </map>

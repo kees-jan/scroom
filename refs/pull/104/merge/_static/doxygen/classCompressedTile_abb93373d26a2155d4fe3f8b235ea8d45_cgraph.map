@@ -1,12 +1,14 @@
 <map id="CompressedTile::reportFinished" name="CompressedTile::reportFinished">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,233,105"/>
-<area shape="rect" id="Node000002" href="$classCompressedTile.html#a5c520928c3e8faafa0493d77fa7c16d8" title=" " alt="" coords="281,55,468,80"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="233,79,267,75,268,81,234,84"/>
-<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Observable.html#ae215a3f722f5894dd8fdc1cb9b190c0e" title=" " alt="" coords="803,73,993,113"/>
-<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="234,90,789,90,789,95,234,95"/>
-<area shape="rect" id="Node000003" href="$classCompressedTile.html#abc632784fd3ff47fee0a75393be60772" title=" " alt="" coords="525,5,745,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="442,52,553,31,554,36,443,57"/>
-<area shape="rect" id="Node000004" href="$classCompressedTile.html#a56111eeb0baeaf0b8f2d93e4a81ea99d" title=" " alt="" coords="516,55,755,80"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="468,65,502,65,502,70,468,70"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="755,76,789,80,789,85,755,82"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,108,233,136"/>
+<area shape="rect" id="Node000002" href="$classCompressedTile.html#a5c520928c3e8faafa0493d77fa7c16d8" title=" " alt="" coords="281,57,466,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="191,105,287,88,283,90,193,110"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Observable.html#ae215a3f722f5894dd8fdc1cb9b190c0e" title=" " alt="" coords="799,74,990,119"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="233,115,784,97,784,103,233,121"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Base.html#aae9a071db1ff973ca6e844a69d3e10ea" title=" " alt="" coords="299,160,448,204"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="181,134,286,160,281,162,180,139"/>
+<area shape="rect" id="Node000003" href="$classCompressedTile.html#abc632784fd3ff47fee0a75393be60772" title=" " alt="" coords="523,5,742,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="446,54,547,36,542,37,447,59"/>
+<area shape="rect" id="Node000004" href="$classCompressedTile.html#a56111eeb0baeaf0b8f2d93e4a81ea99d" title=" " alt="" coords="514,57,751,85"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="466,69,501,71,496,72,467,74"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="752,80,786,86,781,86,752,85"/>
 </map>

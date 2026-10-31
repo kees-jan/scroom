@@ -1,9 +1,29 @@
 <map id="CpuBound" name="CpuBound">
-<area shape="rect" id="Node000001" title=" " alt="" coords="271,63,359,88"/>
-<area shape="rect" id="Node000002" href="$classLayer.html#a3d2253a27e5b42cde01f15c85959580c" title=" " alt="" coords="49,5,179,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="267,61,222,46,173,33,175,28,223,41,268,56"/>
-<area shape="rect" id="Node000003" href="$classCompressedTile.html#a097a41844c75d21396fb64db3c039c8a" title=" " alt="" coords="18,55,210,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="257,78,210,78,210,73,257,73"/>
-<area shape="rect" id="Node000004" href="$classLayerCoordinator.html#aaed9f19d2d0be309e22c373551c27f9b" title="TileInitialisationObserver." alt="" coords="5,120,223,145"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="268,95,223,110,175,123,173,117,222,105,267,90"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="723,156,811,184"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1MemoryBlobs_1_1Blob.html#a8f8dc363aea3e891bf0812467e4fd165" title=" " alt="" coords="483,5,651,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="747,142,716,103,696,82,674,65,652,52,652,47,677,60,700,78,720,100,752,144"/>
+<area shape="rect" id="Node000005" href="$classDataFetcher.html#a11717e9488dea08735d632ddf98bde6f" title="DataFetcher." alt="" coords="474,74,661,102"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="732,147,674,117,640,105,640,99,676,112,737,148"/>
+<area shape="rect" id="Node000007" href="$classLayer.html#a3d2253a27e5b42cde01f15c85959580c" title=" " alt="" coords="502,126,632,154"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="705,162,632,152,632,147,711,161"/>
+<area shape="rect" id="Node000012" href="$classCompressedTile.html#a097a41844c75d21396fb64db3c039c8a" title=" " alt="" coords="472,177,663,222"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="705,179,664,188,663,183,710,178"/>
+<area shape="rect" id="Node000013" href="$classLayerCoordinator.html#aaed9f19d2d0be309e22c373551c27f9b" title="TileInitialisationObserver." alt="" coords="459,246,675,274"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="740,193,710,218,676,237,646,248,644,243,674,232,707,213,735,195"/>
+<area shape="rect" id="Node000014" href="$classTileViewState.html#afd3faa52db58a205c1304d33602bde01" title=" " alt="" coords="462,298,672,326"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="753,197,722,245,701,268,677,287,651,300,650,295,674,283,697,264,718,242,749,199"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1MemoryBlobs_1_1Blob.html#a4efac4819c3d9d77e9fbf022c61fe4c2" title=" " alt="" coords="234,5,402,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="465,29,404,30,402,25,470,27"/>
+<area shape="rect" id="Node000004" href="$blob-tests_8cc.html#a10dd8d769d338ed2a69d821e99ef6985" title=" " alt="" coords="72,14,111,42"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="216,30,113,30,111,25,220,26"/>
+<area shape="rect" id="Node000006" href="$classDataFetcher.html#aa47b487725b70a8a16000ed9e83ad927" title=" " alt="" coords="232,74,405,102"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="455,88,406,90,405,85,460,87"/>
+<area shape="rect" id="Node000008" href="$namespaceScroom_1_1TiledBitmap.html#a55c09152eec48a7f0b8b0819cd243e4d" title=" " alt="" coords="226,125,411,170"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="485,143,412,147,411,142,490,142"/>
+<area shape="rect" id="Node000009" href="$classPnm.html#a512fa4ba81d11455c33b34b28588e629" title=" " alt="" coords="46,82,137,110"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="208,124,137,109,137,103,213,122"/>
+<area shape="rect" id="Node000010" href="$classTiff.html#a858a1b813e95709369796e88876049dc" title=" " alt="" coords="50,134,133,162"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="208,149,134,150,132,145,212,146"/>
+<area shape="rect" id="Node000011" href="$classTiledBitmap.html#a207620c6b7460ae0e9c7425f3c4c592c" title=" " alt="" coords="5,186,178,214"/>
+<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="208,174,156,188,154,183,213,171"/>
 </map>

@@ -1,23 +1,23 @@
 <map id="SourcePresentation" name="SourcePresentation">
-<area shape="rect" id="Node000001" title=" " alt="" coords="629,219,769,324"/>
-<area shape="rect" id="Node000003" href="$classScroom_1_1Pnm_1_1Source.html" title=" " alt="" coords="243,392,396,597"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="617,290,567,302,513,320,460,344,410,374,388,393,385,389,407,370,457,339,511,315,565,297,615,285"/>
-<area shape="rect" id="Node000007" href="$classScroom_1_1Tiff_1_1Source.html" title=" " alt="" coords="421,372,565,617"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="620,335,579,374,567,387,563,384,575,370,616,331"/>
-<area shape="rect" id="Node000008" href="$classSource1Bpp.html" title=" " alt="" coords="589,442,687,547"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="684,338,655,443,650,441,679,337"/>
-<area shape="rect" id="Node000009" href="$classSource2Bpp.html" title=" " alt="" coords="711,442,810,547"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="720,337,749,441,744,443,715,338"/>
-<area shape="rect" id="Node000010" href="$classSource4Bpp.html" title=" " alt="" coords="834,442,933,547"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="782,328,824,370,847,405,865,440,861,443,843,407,820,374,778,332"/>
-<area shape="rect" id="Node000011" href="$classSource8Bpp.html" title=" " alt="" coords="957,442,1055,547"/>
-<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="784,288,825,301,867,319,909,342,947,370,973,403,992,440,987,443,969,406,943,374,906,346,865,324,823,306,782,293"/>
-<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="645,5,753,171"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="702,184,702,219,697,219,697,184"/>
-<area shape="rect" id="Node000004" href="$classScroom_1_1Pnm_1_1AsciiSource.html" title=" " alt="" coords="5,665,188,771"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="234,584,150,667,147,663,231,580"/>
-<area shape="rect" id="Node000005" href="$classScroom_1_1Pnm_1_1AsciiSource1bpp.html" title=" " alt="" coords="212,665,427,771"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="322,612,322,665,317,665,317,612"/>
-<area shape="rect" id="Node000006" href="$classScroom_1_1Pnm_1_1BinarySource.html" title=" " alt="" coords="451,665,646,771"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="401,606,410,615,468,663,465,667,407,619,397,610"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="620,237,757,354"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Pnm_1_1Source.html" title=" " alt="" coords="239,425,391,653"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="603,314,557,329,505,348,452,373,405,404,382,427,378,423,401,400,450,368,503,343,556,324,608,312"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Tiff_1_1Source.html" title=" " alt="" coords="416,402,556,676"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="611,359,571,404,558,420,554,416,566,401,607,363"/>
+<area shape="rect" id="Node000008" href="$classSource1Bpp.html" title=" " alt="" coords="580,480,677,598"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="672,367,645,482,640,479,669,371"/>
+<area shape="rect" id="Node000009" href="$classSource2Bpp.html" title=" " alt="" coords="701,480,798,598"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="708,367,738,481,733,480,706,371"/>
+<area shape="rect" id="Node000010" href="$classSource4Bpp.html" title=" " alt="" coords="823,480,920,598"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="768,354,812,401,836,440,854,482,849,480,831,442,808,404,767,360"/>
+<area shape="rect" id="Node000011" href="$classSource8Bpp.html" title=" " alt="" coords="944,480,1041,598"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="770,314,812,328,855,347,896,371,933,400,961,438,980,482,975,480,956,441,929,404,893,375,852,351,810,333,771,319"/>
+<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="636,5,742,189"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="690,202,691,238,686,236,687,207"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Pnm_1_1AsciiSource.html" title=" " alt="" coords="5,724,185,841"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="232,633,149,726,146,722,227,636"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Pnm_1_1AsciiSource1bpp.html" title=" " alt="" coords="209,724,421,841"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="317,666,318,725,313,723,313,670"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Pnm_1_1BinarySource.html" title=" " alt="" coords="445,724,636,841"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="394,662,405,674,459,724,454,724,401,678,393,667"/>
 </map>

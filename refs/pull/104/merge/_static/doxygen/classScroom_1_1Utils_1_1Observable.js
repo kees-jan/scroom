@@ -2,7 +2,7 @@ var classScroom_1_1Utils_1_1Observable =
 [
     [ "Observer", "classScroom_1_1Utils_1_1Observable.html#af3e1005371eb41f254a9e330e1c20a4b", null ],
     [ "ObserverWeak", "classScroom_1_1Utils_1_1Observable.html#a3aba7a30e5965d2862e5a07ce5482b29", null ],
-    [ "Ptr", "classScroom_1_1Utils_1_1Observable.html#af3ccb47d74ec555f42cc66a5356b808e", null ],
+    [ "Ptr", "classScroom_1_1Utils_1_1Observable.html#a44103499c0128093f12f5c84644683c8", null ],
     [ "Registration", "classScroom_1_1Utils_1_1Observable.html#aebd85f42cb1237848725431cf4363562", null ],
     [ "Observable", "classScroom_1_1Utils_1_1Observable.html#a0985c831266bda7104445a9f0babee03", null ],
     [ "~Observable", "classScroom_1_1Utils_1_1Observable.html#a4f0d66bf65eaa61b77987c2b47e38ac1", null ],

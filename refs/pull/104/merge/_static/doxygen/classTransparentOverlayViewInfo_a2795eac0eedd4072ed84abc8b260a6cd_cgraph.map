@@ -1,11 +1,19 @@
 <map id="TransparentOverlayViewInfo::addChildren" name="TransparentOverlayViewInfo::addChildren">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,27,212,67"/>
-<area shape="rect" id="Node000002" href="$classTransparentOverlayViewInfo.html#a0febc5a267ab940b43a8f55f428246f6" title=" " alt="" coords="260,27,467,67"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,45,246,45,246,50,212,50"/>
-<area shape="rect" id="Node000003" href="$classChildView.html#a71a62425bde015dcaed7c8828e79a861" title=" " alt="" coords="551,5,685,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="466,33,537,25,537,30,467,38"/>
-<area shape="rect" id="Node000004" href="$classTransparentOverlayViewInfo.html#abbac8c446a049dad72a7d7b98c9b3af3" title=" " alt="" coords="515,55,721,95"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="467,56,501,60,501,65,467,61"/>
-<area shape="rect" id="Node000005" href="$transparentoverlayviewinfo_8cc.html#aafa184efb6eac85ffee43095f44fa12b" title=" " alt="" coords="769,63,864,88"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="721,73,756,73,756,78,721,78"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,88,211,132"/>
+<area shape="rect" id="Node000002" href="$classTransparentOverlayViewInfo.html#a0febc5a267ab940b43a8f55f428246f6" title=" " alt="" coords="259,88,464,132"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="211,107,245,109,240,111,212,112"/>
+<area shape="rect" id="Node000003" href="$classChildView.html#a71a62425bde015dcaed7c8828e79a861" title=" " alt="" coords="548,5,682,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="409,84,511,42,537,37,532,38,513,47,411,89"/>
+<area shape="rect" id="Node000006" href="$classTransparentOverlayViewInfo.html#abbac8c446a049dad72a7d7b98c9b3af3" title=" " alt="" coords="512,57,717,102"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="464,95,499,93,494,94,465,100"/>
+<area shape="rect" id="Node000008" href="$classViewable.html#a3e17fe21b5e7bdb916b5c7cbfc65ffbd" title=" " alt="" coords="554,125,675,153"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="465,119,541,130,536,131,465,124"/>
+<area shape="rect" id="Node000009" href="$classScroom_1_1Utils_1_1Base.html#aae9a071db1ff973ca6e844a69d3e10ea" title=" " alt="" coords="540,177,689,222"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="425,130,513,162,534,172,529,171,511,167,424,135"/>
+<area shape="rect" id="Node000004" href="$classChildView.html#aef80d64ca8d3c657ba1b9aecf901672b" title=" " alt="" coords="765,5,924,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="682,17,753,19,747,20,683,22"/>
+<area shape="rect" id="Node000005" href="$classChildView.html#a1cafa490c4005a996cc35767b23a28b8" title=" " alt="" coords="972,5,1200,33"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="924,17,958,19,953,19,924,22"/>
+<area shape="rect" id="Node000007" href="$transparentoverlayviewinfo_8cc.html#aafa184efb6eac85ffee43095f44fa12b" title=" " alt="" coords="798,65,891,93"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="717,77,785,79,779,79,718,82"/>
 </map>

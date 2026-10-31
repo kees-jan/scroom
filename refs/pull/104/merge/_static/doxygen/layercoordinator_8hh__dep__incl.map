@@ -1,11 +1,11 @@
 <map id="libs/tiled&#45;bitmap/src/layercoordinator.hh" name="libs/tiled&#45;bitmap/src/layercoordinator.hh">
-<area shape="rect" id="Node000001" title=" " alt="" coords="93,5,245,45"/>
-<area shape="rect" id="Node000002" href="$layercoordinator_8cc.html" title=" " alt="" coords="5,93,157,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="142,57,103,95,99,91,138,53"/>
-<area shape="rect" id="Node000003" href="$tiled-bitmap_8hh.html" title=" " alt="" coords="181,93,333,133"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="201,53,240,91,236,95,197,57"/>
-<area shape="rect" id="Node000004" href="$tiled-bitmap_8cc.html" title=" " alt="" coords="80,181,232,221"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="226,144,180,183,177,179,223,140"/>
-<area shape="rect" id="Node000005" href="$tiledbitmappresentation_8cc.html" title=" " alt="" coords="257,181,458,221"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="292,140,337,179,333,183,288,144"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="93,5,245,50"/>
+<area shape="rect" id="Node000002" href="$layercoordinator_8cc.html" title=" " alt="" coords="5,98,157,143"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,63,104,100,100,96,139,59"/>
+<area shape="rect" id="Node000003" href="$tiled-bitmap_8hh.html" title=" " alt="" coords="181,98,333,143"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="201,58,239,98,234,98,200,64"/>
+<area shape="rect" id="Node000004" href="$tiled-bitmap_8cc.html" title=" " alt="" coords="81,191,233,235"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="224,152,182,192,179,188,219,154"/>
+<area shape="rect" id="Node000005" href="$tiledbitmappresentation_8cc.html" title=" " alt="" coords="257,191,457,235"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="293,151,336,191,330,190,291,156"/>
 </map>

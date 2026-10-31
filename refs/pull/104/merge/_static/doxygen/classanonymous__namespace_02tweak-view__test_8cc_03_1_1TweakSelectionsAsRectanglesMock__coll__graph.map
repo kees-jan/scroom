@@ -1,9 +1,0 @@
-<map id="anonymous_namespace{tweak&#45;view_test.cc}::TweakSelectionsAsRectanglesMock" name="anonymous_namespace{tweak&#45;view_test.cc}::TweakSelectionsAsRectanglesMock">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,480,259,575"/>
-<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1TweakSelectionsAsRectangles.html" title=" " alt="" coords="23,332,241,432"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,445,135,480,129,480,129,445"/>
-<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1ITweakSelection.html" title=" " alt="" coords="25,219,239,284"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="135,298,135,332,129,332,129,298"/>
-<area shape="rect" id="Node000004" href="$classInterface.html" title=" " alt="" coords="78,5,186,171"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="135,184,135,219,129,219,129,184"/>
-</map>

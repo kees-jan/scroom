@@ -1,6 +1,6 @@
 var loader_8cc =
 [
-    [ "GObjectUnref< T >", "classGObjectUnref.html", "classGObjectUnref" ],
+    [ "GObjectUnref&lt; T &gt;", "classGObjectUnref.html", "classGObjectUnref" ],
     [ "GtkFileFilterInfoDeleter", "classGtkFileFilterInfoDeleter.html", "classGtkFileFilterInfoDeleter" ],
     [ "GtkFileFilterListDestroyer", "classGtkFileFilterListDestroyer.html", "classGtkFileFilterListDestroyer" ],
     [ "ScroomInterfaceImpl", "classScroomInterfaceImpl.html", "classScroomInterfaceImpl" ],

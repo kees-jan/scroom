@@ -1,7 +1,7 @@
 <map id="ThreadPool::Job" name="ThreadPool::Job">
-<area shape="rect" id="Node000001" title=" " alt="" coords="43,465,158,551"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="13,308,188,403"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,403,103,449,98,449,98,403"/>
-<area shape="rect" id="Node000003" href="$classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html" title=" " alt="" coords="5,5,196,245"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="103,246,103,292,98,292,98,246"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="43,526,155,620"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="13,346,185,453"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,450,102,509,97,508,98,455"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Detail_1_1ThreadPool_1_1QueueImpl.html" title=" " alt="" coords="5,5,193,273"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="100,271,102,330,97,329,99,276"/>
 </map>

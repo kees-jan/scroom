@@ -1,7 +1,0 @@
-<map id="Scroom::Utils::ViewportPositionTextBox::create" name="Scroom::Utils::ViewportPositionTextBox::create">
-<area shape="rect" id="Node000001" title=" " alt="" coords="241,35,468,75"/>
-<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#aa6527a49e093bcb36e606fe5bfcaadad" title=" " alt="" coords="6,5,193,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="227,43,193,39,193,33,228,37"/>
-<area shape="rect" id="Node000003" href="$classTiledBitmap.html#a79dfef04e48f7a06ed70ac8b08295018" title=" " alt="" coords="5,70,193,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="228,71,194,75,193,70,227,66"/>
-</map>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
-<tagfile doxygen_version="1.9.8">
+<tagfile doxygen_version="1.15.0">
   <compound kind="file">
     <name>AGENTS.md</name>
     <path></path>
@@ -66,26 +66,32 @@
     <name>iostream.h</name>
     <path>cmake-modules/ghost-fake-stl/</path>
     <filename>iostream_8h.html</filename>
+    <class kind="class">istream</class>
+    <class kind="class">ostream</class>
   </compound>
   <compound kind="file">
     <name>list.h</name>
     <path>cmake-modules/ghost-fake-stl/</path>
     <filename>list_8h.html</filename>
+    <class kind="class">list</class>
   </compound>
   <compound kind="file">
     <name>pair.h</name>
     <path>cmake-modules/ghost-fake-stl/</path>
     <filename>pair_8h.html</filename>
+    <class kind="class">pair</class>
   </compound>
   <compound kind="file">
     <name>set.h</name>
     <path>cmake-modules/ghost-fake-stl/</path>
     <filename>set_8h.html</filename>
+    <class kind="class">set</class>
   </compound>
   <compound kind="file">
     <name>vector.h</name>
     <path>cmake-modules/ghost-fake-stl/</path>
     <filename>vector_8h.html</filename>
+    <class kind="class">vector</class>
   </compound>
   <compound kind="file">
     <name>README.markdown</name>
@@ -972,7 +978,7 @@
       <type>std::map&lt; std::string, std::list&lt; std::string &gt; &gt;</type>
       <name>FileNameMap</name>
       <anchorfile>callbacks_8hh.html</anchorfile>
-      <anchor>ae888da5a09e1e63d73a703afd3b0801d</anchor>
+      <anchor>a41696defd0adcd547709e64a0d3d16c0</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
@@ -1642,19 +1648,19 @@
     <member kind="enumvalue">
       <name>COLUMN_TEXT</name>
       <anchorfile>view_8cc.html</anchorfile>
-      <anchor>a06fc87d81c62e9abb8790b6e5713c55bad5db438c58c4839d1e9bb25dc55a4130</anchor>
+      <anchor>a6c4d7d2005749685c9a72955f3dcad45ad5db438c58c4839d1e9bb25dc55a4130</anchor>
       <arglist></arglist>
     </member>
     <member kind="enumvalue">
       <name>COLUMN_ZOOM</name>
       <anchorfile>view_8cc.html</anchorfile>
-      <anchor>a06fc87d81c62e9abb8790b6e5713c55bac8558f41e7d91c7bb57659a23f80542c</anchor>
+      <anchor>a6c4d7d2005749685c9a72955f3dcad45ac8558f41e7d91c7bb57659a23f80542c</anchor>
       <arglist></arglist>
     </member>
     <member kind="enumvalue">
       <name>N_COLUMNS</name>
       <anchorfile>view_8cc.html</anchorfile>
-      <anchor>a06fc87d81c62e9abb8790b6e5713c55bac70d28409ca79aa291cc0e58244f1fe4</anchor>
+      <anchor>a6c4d7d2005749685c9a72955f3dcad45ac70d28409ca79aa291cc0e58244f1fe4</anchor>
       <arglist></arglist>
     </member>
     <member kind="function" static="yes">
@@ -2444,6 +2450,44 @@
     </member>
   </compound>
   <compound kind="file">
+    <name>tweak-view.hh</name>
+    <path>libs/scroom/inc/scroom/gmock/</path>
+    <filename>gmock_2tweak-view_8hh.html</filename>
+    <includes id="tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
+    <class kind="class">Scroom::Utils::PresentationPositionTweakMock</class>
+    <class kind="class">Scroom::Utils::RulerAreaTweakMock</class>
+    <class kind="class">Scroom::Utils::SelectionTweakMock</class>
+    <class kind="class">Scroom::Utils::ViewCentreTextConversionMock</class>
+    <class kind="class">Scroom::Utils::TweakSelectionsAsRectanglesMock</class>
+    <namespace>Scroom</namespace>
+    <namespace>Scroom::Utils</namespace>
+  </compound>
+  <compound kind="file">
+    <name>tweak-view.hh</name>
+    <path>libs/scroom/inc/scroom/</path>
+    <filename>tweak-view_8hh.html</filename>
+    <includes id="interface_8hh" name="interface.hh" local="no" import="no" module="no" objc="no">scroom/interface.hh</includes>
+    <includes id="point_8hh" name="point.hh" local="no" import="no" module="no" objc="no">scroom/point.hh</includes>
+    <includes id="rectangle_8hh" name="rectangle.hh" local="no" import="no" module="no" objc="no">scroom/rectangle.hh</includes>
+    <includes id="viewinterface_8hh" name="viewinterface.hh" local="no" import="no" module="no" objc="no">scroom/viewinterface.hh</includes>
+    <class kind="class">Scroom::Utils::ITweakPresentationPosition</class>
+    <class kind="class">Scroom::Utils::ITweakRulers</class>
+    <class kind="class">Scroom::Utils::ITweakSelection</class>
+    <class kind="class">Scroom::Utils::ITweakPositionTextBox</class>
+    <class kind="class">Scroom::Utils::PixelAlignPresentationPositions</class>
+    <class kind="class">Scroom::Utils::CalculateViewAreaForRulers</class>
+    <class kind="class">Scroom::Utils::TweakSelectionsAsRectangles</class>
+    <class kind="class">Scroom::Utils::SnapSelectionsToGrid</class>
+    <class kind="class">Scroom::Utils::ExpandSelectionsToPixelBoundaries</class>
+    <class kind="class">Scroom::Utils::ParseAndFormatViewCentre</class>
+    <class kind="class">Scroom::Utils::TweakPresentationPositionsWithAspectRatio</class>
+    <class kind="class">Scroom::Utils::TweakRulersWithAspectRatio</class>
+    <class kind="class">Scroom::Utils::TweakSelectionsWithAspectRatio</class>
+    <class kind="class">Scroom::Utils::ParseAndFormatViewCentreWithAspectRatio</class>
+    <namespace>Scroom</namespace>
+    <namespace>Scroom::Utils</namespace>
+  </compound>
+  <compound kind="file">
     <name>showmetadata.hh</name>
     <path>libs/scroom/inc/scroom/</path>
     <filename>showmetadata_8hh.html</filename>
@@ -2474,31 +2518,6 @@
     </member>
   </compound>
   <compound kind="file">
-    <name>tweak-view.hh</name>
-    <path>libs/scroom/inc/scroom/</path>
-    <filename>tweak-view_8hh.html</filename>
-    <includes id="interface_8hh" name="interface.hh" local="no" import="no" module="no" objc="no">scroom/interface.hh</includes>
-    <includes id="point_8hh" name="point.hh" local="no" import="no" module="no" objc="no">scroom/point.hh</includes>
-    <includes id="rectangle_8hh" name="rectangle.hh" local="no" import="no" module="no" objc="no">scroom/rectangle.hh</includes>
-    <includes id="viewinterface_8hh" name="viewinterface.hh" local="no" import="no" module="no" objc="no">scroom/viewinterface.hh</includes>
-    <class kind="class">Scroom::Utils::ITweakPresentationPosition</class>
-    <class kind="class">Scroom::Utils::ITweakRulers</class>
-    <class kind="class">Scroom::Utils::ITweakSelection</class>
-    <class kind="class">Scroom::Utils::ITweakPositionTextBox</class>
-    <class kind="class">Scroom::Utils::PixelAlignPresentationPositions</class>
-    <class kind="class">Scroom::Utils::ViewportRulers</class>
-    <class kind="class">Scroom::Utils::TweakSelectionsAsRectangles</class>
-    <class kind="class">Scroom::Utils::SnapSelectionsToGrid</class>
-    <class kind="class">Scroom::Utils::ExpandSelectionsToPixelBoundaries</class>
-    <class kind="class">Scroom::Utils::ViewportPositionTextBox</class>
-    <class kind="class">Scroom::Utils::AspectRatioPresentationPosition</class>
-    <class kind="class">Scroom::Utils::AspectRatioRulers</class>
-    <class kind="class">Scroom::Utils::AspectRatioSelection</class>
-    <class kind="class">Scroom::Utils::AspectRatioPositionTextBox</class>
-    <namespace>Scroom</namespace>
-    <namespace>Scroom::Utils</namespace>
-  </compound>
-  <compound kind="file">
     <name>bitmap-helpers.cc</name>
     <path>libs/scroom/src/</path>
     <filename>bitmap-helpers_8cc.html</filename>
@@ -2511,6 +2530,7 @@
     <path>libs/scroom/src/</path>
     <filename>cairo-helpers_8cc.html</filename>
     <includes id="cairo-helpers_8hh" name="cairo-helpers.hh" local="no" import="no" module="no" objc="no">scroom/cairo-helpers.hh</includes>
+    <class kind="class">Rectangle</class>
     <namespace>Colors</namespace>
     <member kind="function">
       <type>void</type>
@@ -2786,13 +2806,13 @@
     <includes id="bitmap-helpers_8hh" name="bitmap-helpers.hh" local="no" import="no" module="no" objc="no">scroom/bitmap-helpers.hh</includes>
     <includes id="dont-delete_8hh" name="dont-delete.hh" local="no" import="no" module="no" objc="no">scroom/dont-delete.hh</includes>
     <includes id="gmock_2presentationinterface_8hh" name="presentationinterface.hh" local="no" import="no" module="no" objc="no">scroom/gmock/presentationinterface.hh</includes>
+    <includes id="gmock_2tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/gmock/tweak-view.hh</includes>
     <includes id="rectangle_8hh" name="rectangle.hh" local="no" import="no" module="no" objc="no">scroom/rectangle.hh</includes>
     <includes id="transformpresentation_8hh" name="transformpresentation.hh" local="no" import="no" module="no" objc="no">scroom/transformpresentation.hh</includes>
     <includes id="tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
-    <class kind="class">anonymous_namespace{transformpresentation_test.cc}::PositionTweakMock</class>
-    <class kind="class">anonymous_namespace{transformpresentation_test.cc}::RulersTweakMock</class>
-    <class kind="class">anonymous_namespace{transformpresentation_test.cc}::SelectionTweakMock</class>
-    <class kind="class">anonymous_namespace{transformpresentation_test.cc}::TextTweakMock</class>
+    <includes id="tweak-view-test-helpers_8hh" name="tweak-view-test-helpers.hh" local="yes" import="no" module="no" objc="no">tweak-view-test-helpers.hh</includes>
+    <class kind="class">anonymous_namespace{transformpresentation_test.cc}::TransformPresentationContextTest</class>
+    <class kind="class">BitmapSurface</class>
     <namespace>anonymous_namespace{transformpresentation_test.cc}</namespace>
     <member kind="function">
       <type>bool</type>
@@ -2908,17 +2928,94 @@
     </member>
     <member kind="function">
       <type></type>
-      <name>TEST</name>
+      <name>TEST_F</name>
       <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>adc07e7658b215487939040cdc3967395</anchor>
-      <arglist>(TransformPresentation_Tests, DecoratesEveryChildTweakAndPreservesContext)</arglist>
+      <anchor>a1f049b42a68df90bf435a19a11a5a3d2</anchor>
+      <arglist>(TransformPresentationContextTest, PreservesUnrelatedChildContextData)</arglist>
     </member>
     <member kind="function">
       <type></type>
-      <name>TEST</name>
+      <name>TEST_F</name>
       <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a7c2154669691a7433372a2e941ef5fc6</anchor>
-      <arglist>(TransformPresentation_Tests, SuppliesDefaultsForMissingInterfacesAndSelectionEntries)</arglist>
+      <anchor>ad5fb9297e80163e914619f4f2d25cb35</anchor>
+      <arglist>(TransformPresentationContextTest, DecoratesTheChildPresentationPositionTweak)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>TEST_F</name>
+      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
+      <anchor>a1df6d00d4a644b36465073cdebc6a228</anchor>
+      <arglist>(TransformPresentationContextTest, DecoratesTheChildRulerAreaTweak)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>TEST_F</name>
+      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
+      <anchor>a1bc6ff40eeeff37705a7f98c5cb63d27</anchor>
+      <arglist>(TransformPresentationContextTest, DecoratesTheChildViewCentreParser)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>TEST_F</name>
+      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
+      <anchor>a4ecf3abb62a7d04cff67f3dbff9dcb7e</anchor>
+      <arglist>(TransformPresentationContextTest, DecoratesTheChildViewCentreFormatter)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>TEST_F</name>
+      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
+      <anchor>a35b4c8c3807f222b93154351977772d1</anchor>
+      <arglist>(TransformPresentationContextTest, KeepsEachSelectionTypeConnectedToItsOwnChildTweak)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>TEST_F</name>
+      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
+      <anchor>acfec4a97d345a33771fe041e74512af7</anchor>
+      <arglist>(TransformPresentationContextTest, SuppliesADefaultPositionTweakWhenTheChildHasNone)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>TEST_F</name>
+      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
+      <anchor>a038d7d176de1c8f35ade63d602c02208</anchor>
+      <arglist>(TransformPresentationContextTest, SuppliesADefaultRulerAreaTweakWhenTheChildHasNone)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>TEST_F</name>
+      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
+      <anchor>a72610a6b175487dfdd20f3a6ee6286e2</anchor>
+      <arglist>(TransformPresentationContextTest, SuppliesADefaultViewCentreConversionWhenTheChildHasNone)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>TEST_F</name>
+      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
+      <anchor>a1862d4cef500b1a21715a2f6e31f311a</anchor>
+      <arglist>(TransformPresentationContextTest, AnAbsentSelectionMapGetsOnlyTheDefaultEntry)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>TEST_F</name>
+      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
+      <anchor>a5956c8e83c18e39cf098537b96c7e9f9</anchor>
+      <arglist>(TransformPresentationContextTest, AnEmptySelectionMapGetsOnlyTheDefaultEntry)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>TEST_F</name>
+      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
+      <anchor>a353e9f63ca33f2ca4d9cf4d40e0a4d44</anchor>
+      <arglist>(TransformPresentationContextTest, AddsAMissingDefaultWithoutSynthesizingOtherSelectionTypes)</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle&lt; T &gt;</type>
+      <name>make_rect</name>
+      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
+      <anchor>a8a866a6439fc60dfe259e168059aa65e</anchor>
+      <arglist>(T x, T y, T width, T height)</arglist>
     </member>
     <member kind="variable">
       <type>ColormappablePresentationMock::Ptr const</type>
@@ -3006,27 +3103,33 @@
     </member>
   </compound>
   <compound kind="file">
+    <name>tweak-view-test-helpers.hh</name>
+    <path>libs/scroom/test/</path>
+    <filename>tweak-view-test-helpers_8hh.html</filename>
+    <includes id="tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
+    <namespace>Scroom</namespace>
+    <namespace>Scroom::Utils</namespace>
+  </compound>
+  <compound kind="file">
     <name>tweak-view_test.cc</name>
     <path>libs/scroom/test/</path>
     <filename>tweak-view__test_8cc.html</filename>
+    <includes id="gmock_2tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/gmock/tweak-view.hh</includes>
     <includes id="tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
+    <includes id="tweak-view-test-helpers_8hh" name="tweak-view-test-helpers.hh" local="yes" import="no" module="no" objc="no">tweak-view-test-helpers.hh</includes>
     <class kind="class">anonymous_namespace{tweak-view_test.cc}::PixelAlignPresentationPositionsTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::ViewportRulersTest</class>
+    <class kind="class">anonymous_namespace{tweak-view_test.cc}::CalculateViewAreaForRulersTest</class>
     <class kind="class">anonymous_namespace{tweak-view_test.cc}::SnapSelectionsToGridTest</class>
     <class kind="class">anonymous_namespace{tweak-view_test.cc}::ExpandSelectionsToPixelBoundariesTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::TweakSelectionsAsRectanglesMock</class>
     <class kind="class">anonymous_namespace{tweak-view_test.cc}::TweakSelectionsAsRectanglesTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::ViewportPositionTextBoxTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::PositionChild</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::AspectRatioPresentationPositionTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::RulersChild</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::AspectRatioRulersTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::SelectionChild</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::AspectRatioSelectionTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::TextBoxChild</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::AspectRatioPositionTextBoxTest</class>
+    <class kind="class">anonymous_namespace{tweak-view_test.cc}::ParseAndFormatViewCentreTest</class>
+    <class kind="class">anonymous_namespace{tweak-view_test.cc}::TweakPresentationPositionsWithAspectRatioTest</class>
+    <class kind="class">anonymous_namespace{tweak-view_test.cc}::TweakRulersWithAspectRatioTest</class>
+    <class kind="class">anonymous_namespace{tweak-view_test.cc}::TweakSelectionsWithAspectRatioTest</class>
+    <class kind="class">anonymous_namespace{tweak-view_test.cc}::ParseAndFormatViewCentreWithAspectRatioTest</class>
     <class kind="class">anonymous_namespace{tweak-view_test.cc}::DefaultTweakPresentationPositionTest</class>
     <class kind="class">anonymous_namespace{tweak-view_test.cc}::DefaultTweakSelectionTest</class>
+    <class kind="class">anonymous_namespace{tweak-view_test.cc}::DefaultTweakSelectionMapTest</class>
     <namespace>anonymous_namespace{tweak-view_test.cc}</namespace>
     <member kind="function">
       <type></type>
@@ -3060,15 +3163,15 @@
       <type></type>
       <name>TEST_F</name>
       <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>a3772b2f766112c9fce77ebc08a3263ef</anchor>
-      <arglist>(ViewportRulersTest, DescribesTheVisibleViewportAtEachZoom)</arglist>
+      <anchor>a6f7887d8b0786097f55bd239b4baf175</anchor>
+      <arglist>(CalculateViewAreaForRulersTest, DescribesTheVisibleViewAtEachZoom)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>TEST_F</name>
       <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>a7dbcfdfb5f3fbb7067774549c2bb37cf</anchor>
-      <arglist>(ViewportRulersTest, AnEmptyViewportDimensionRemainsEmptyWhenZoomedOut)</arglist>
+      <anchor>af01df2a2d1e9df4978b72be81881b73f</anchor>
+      <arglist>(CalculateViewAreaForRulersTest, AnEmptyViewDimensionRemainsEmptyWhenZoomedOut)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -3083,6 +3186,27 @@
       <anchorfile>tweak-view__test_8cc.html</anchorfile>
       <anchor>a5f2dbc46cb3f9afe4ee7b779458f1a32</anchor>
       <arglist>(SnapSelectionsToGridTest, RoundsHalfwayCoordinatesAwayFromZero)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>TEST_F</name>
+      <anchorfile>tweak-view__test_8cc.html</anchorfile>
+      <anchor>a3d69120dd3269161fbcfac8a0f666103</anchor>
+      <arglist>(SnapSelectionsToGridTest, AClickOnAGridPointRemainsAClick)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>TEST_F</name>
+      <anchorfile>tweak-view__test_8cc.html</anchorfile>
+      <anchor>af313de80e65b5cd9ae42a9e8dd87cd4e</anchor>
+      <arglist>(SnapSelectionsToGridTest, AClickBetweenGridLinesSnapsToTheNearestGridPoint)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>TEST_F</name>
+      <anchorfile>tweak-view__test_8cc.html</anchorfile>
+      <anchor>a7eb47f64c2306104dc3f44bdca413e8b</anchor>
+      <arglist>(SnapSelectionsToGridTest, AVerticalDragDoesNotAcquireWidth)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -3109,6 +3233,13 @@
       <type></type>
       <name>TEST_F</name>
       <anchorfile>tweak-view__test_8cc.html</anchorfile>
+      <anchor>a00675bf2cc146f725881538b638d9d39</anchor>
+      <arglist>(ExpandSelectionsToPixelBoundariesTest, AClickBetweenGridLinesExpandsToTheContainingPixel)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>TEST_F</name>
+      <anchorfile>tweak-view__test_8cc.html</anchorfile>
       <anchor>affcd51599b47e281f5d15c1399ddcde5</anchor>
       <arglist>(TweakSelectionsAsRectanglesTest, RestoresTheDragDirectionAfterTweakingTheRectangle)</arglist>
     </member>
@@ -3123,64 +3254,78 @@
       <type></type>
       <name>TEST_F</name>
       <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>a943b31e0660faad84aa27f9c18fdcf36</anchor>
-      <arglist>(ViewportPositionTextBoxTest, EnteredCoordinatesSpecifyTheViewportCentreAtEachZoom)</arglist>
+      <anchor>ada8723f6a9a02f016d9863cc894a0ea9</anchor>
+      <arglist>(ParseAndFormatViewCentreTest, EnteredCoordinatesSpecifyTheViewCentreAtEachZoom)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>TEST_F</name>
       <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>a48506719713e7ebd04687b8ffe2e201e</anchor>
-      <arglist>(ViewportPositionTextBoxTest, DisplaysTheViewportCentreRoundedToWholeCoordinates)</arglist>
+      <anchor>ae04c335f81f8cadd518b5f06c3ebca1b</anchor>
+      <arglist>(ParseAndFormatViewCentreTest, DisplaysTheViewCentreRoundedToWholeCoordinates)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>TEST_F</name>
       <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>abf0dc6284446e3d19c5073a88c39f7d4</anchor>
-      <arglist>(ViewportPositionTextBoxTest, HandlesAnEmptyViewportDimensionWhenZoomedOut)</arglist>
+      <anchor>ac7ba49feea25b5dfed22393159e02b63</anchor>
+      <arglist>(ParseAndFormatViewCentreTest, HandlesAnEmptyViewDimensionWhenZoomedOut)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>TEST_F</name>
       <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>acb76af620b897b03c9500fda39000dab</anchor>
-      <arglist>(ViewportPositionTextBoxTest, RejectsNonNumericCoordinates)</arglist>
+      <anchor>afd8af520011e9fd2810253f64675d699</anchor>
+      <arglist>(ParseAndFormatViewCentreTest, RejectsNonNumericCoordinates)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>TEST_F</name>
       <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>ad2ab2697467f239a3e04af48f888de9f</anchor>
-      <arglist>(AspectRatioPresentationPositionTest, ConvertsTheInputToChildCoordinatesAndScalesTheChildOutput)</arglist>
+      <anchor>aac2ddf98b321908fc466322545d36d41</anchor>
+      <arglist>(ParseAndFormatViewCentreTest, DisplaysTheSameCentreAtEachZoom)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>TEST_F</name>
       <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>a521ce5b90f3b6c86a5a9efa70f9d03e1</anchor>
-      <arglist>(AspectRatioRulersTest, ConvertsTheInputAndChildExtentButKeepsTheChildOrigin)</arglist>
+      <anchor>add3386b554ed990372726ff81c9328e7</anchor>
+      <arglist>(ParseAndFormatViewCentreTest, RejectsANonNumericYCoordinate)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>TEST_F</name>
       <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>a66540072f1204bb29bfb7fb4540d4c0e</anchor>
-      <arglist>(AspectRatioSelectionTest, ConvertsBothInputEndpointsAndScalesBothChildEndpoints)</arglist>
+      <anchor>a1004b74c205264794baea77e2e30448b</anchor>
+      <arglist>(TweakPresentationPositionsWithAspectRatioTest, ConvertsTheInputToChildCoordinatesAndScalesTheChildOutput)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>TEST_F</name>
       <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>afe2a22f8eaf960cca297f02aefb6c24e</anchor>
-      <arglist>(AspectRatioPositionTextBoxTest, ScalesTheParsedCentreAndReturnsTheViewportOrigin)</arglist>
+      <anchor>a0f1e4f2f31bcde38838c02679673f0ba</anchor>
+      <arglist>(TweakRulersWithAspectRatioTest, PassesThePositionToTheChildAndScalesTheReturnedArea)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>TEST_F</name>
       <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>ab4ea7875c33dce503c17222129287bcc</anchor>
-      <arglist>(AspectRatioPositionTextBoxTest, ConvertsTheCentreBeforeAskingTheChildToDisplayIt)</arglist>
+      <anchor>a29d6de2da58f3fedc89941db0e072e97</anchor>
+      <arglist>(TweakSelectionsWithAspectRatioTest, ConvertsBothInputEndpointsAndScalesBothChildEndpoints)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>TEST_F</name>
+      <anchorfile>tweak-view__test_8cc.html</anchorfile>
+      <anchor>a447c661688b1e5a13aed6a98cb3a0c65</anchor>
+      <arglist>(ParseAndFormatViewCentreWithAspectRatioTest, ScalesTheParsedCentreAndReturnsTheViewOrigin)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>TEST_F</name>
+      <anchorfile>tweak-view__test_8cc.html</anchorfile>
+      <anchor>a5679e1a4bb6b493ff35b598babf174a1</anchor>
+      <arglist>(ParseAndFormatViewCentreWithAspectRatioTest, ConvertsTheCentreBeforeAskingTheChildToDisplayIt)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -3195,6 +3340,13 @@
       <anchorfile>tweak-view__test_8cc.html</anchorfile>
       <anchor>a8e1c0b6658ea891dd52401d7d8f2c0a8</anchor>
       <arglist>(DefaultTweakSelectionTest, LeavesBothEndpointsUnchanged)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>TEST_F</name>
+      <anchorfile>tweak-view__test_8cc.html</anchorfile>
+      <anchor>af9778fa576d646698f7b256f07f19de2</anchor>
+      <arglist>(DefaultTweakSelectionMapTest, ContainsOnlyAnIdentityDefaultTweak)</arglist>
     </member>
   </compound>
   <compound kind="file">
@@ -3279,43 +3431,43 @@
     <member kind="enumvalue">
       <name>PRIO_HIGHEST</name>
       <anchorfile>threadpool_8hh.html</anchorfile>
-      <anchor>adf764cbdea00d65edcd07bb9953ad2b7a9c607c121a82da3abd2b000e0e0d837f</anchor>
+      <anchor>a1ba5c06b46fb185dccab618b349a2a30a9c607c121a82da3abd2b000e0e0d837f</anchor>
       <arglist></arglist>
     </member>
     <member kind="enumvalue">
       <name>PRIO_HIGHER</name>
       <anchorfile>threadpool_8hh.html</anchorfile>
-      <anchor>adf764cbdea00d65edcd07bb9953ad2b7ae794fc830a89160a4e51d90ec59cf494</anchor>
+      <anchor>a1ba5c06b46fb185dccab618b349a2a30ae794fc830a89160a4e51d90ec59cf494</anchor>
       <arglist></arglist>
     </member>
     <member kind="enumvalue">
       <name>PRIO_HIGH</name>
       <anchorfile>threadpool_8hh.html</anchorfile>
-      <anchor>adf764cbdea00d65edcd07bb9953ad2b7ac0989e0aa23aaef4f0dd60b30b407e0d</anchor>
+      <anchor>a1ba5c06b46fb185dccab618b349a2a30ac0989e0aa23aaef4f0dd60b30b407e0d</anchor>
       <arglist></arglist>
     </member>
     <member kind="enumvalue">
       <name>PRIO_NORMAL</name>
       <anchorfile>threadpool_8hh.html</anchorfile>
-      <anchor>adf764cbdea00d65edcd07bb9953ad2b7af88484ad6458c0b4069eefb62dc51c1e</anchor>
+      <anchor>a1ba5c06b46fb185dccab618b349a2a30af88484ad6458c0b4069eefb62dc51c1e</anchor>
       <arglist></arglist>
     </member>
     <member kind="enumvalue">
       <name>PRIO_LOW</name>
       <anchorfile>threadpool_8hh.html</anchorfile>
-      <anchor>adf764cbdea00d65edcd07bb9953ad2b7acaeeec8b8bc1903d3f7cac497584bfa3</anchor>
+      <anchor>a1ba5c06b46fb185dccab618b349a2a30acaeeec8b8bc1903d3f7cac497584bfa3</anchor>
       <arglist></arglist>
     </member>
     <member kind="enumvalue">
       <name>PRIO_LOWER</name>
       <anchorfile>threadpool_8hh.html</anchorfile>
-      <anchor>adf764cbdea00d65edcd07bb9953ad2b7a8b39589f53f22ae32cb72a828429db59</anchor>
+      <anchor>a1ba5c06b46fb185dccab618b349a2a30a8b39589f53f22ae32cb72a828429db59</anchor>
       <arglist></arglist>
     </member>
     <member kind="enumvalue">
       <name>PRIO_LOWEST</name>
       <anchorfile>threadpool_8hh.html</anchorfile>
-      <anchor>adf764cbdea00d65edcd07bb9953ad2b7ae1e7bd17086c6462b6a320e199cbbcf5</anchor>
+      <anchor>a1ba5c06b46fb185dccab618b349a2a30ae1e7bd17086c6462b6a320e199cbbcf5</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
@@ -3712,39 +3864,39 @@
       <arglist>(25)</arglist>
     </member>
     <member kind="function">
-      <type>()</type>
+      <type></type>
       <name>void</name>
       <anchorfile>function-additor-tests_8cc.html</anchorfile>
-      <anchor>a171d6ee6f5e4a249111a7ca7c7108209</anchor>
+      <anchor>a25bc2876569dca30b22bcf572ff66d54</anchor>
       <arglist>(clear(nullptr)+(5 *clear(nullptr)) *5)</arglist>
     </member>
     <member kind="function">
-      <type>()</type>
+      <type></type>
       <name>void</name>
       <anchorfile>function-additor-tests_8cc.html</anchorfile>
-      <anchor>a62b0863979d9f4ae07107ce47cf75bed</anchor>
+      <anchor>a9cba8100fc7683c321b425d57ff4b887</anchor>
       <arglist>(clear(nullptr)+5 *(5 *clear(nullptr)))</arglist>
     </member>
     <member kind="function">
-      <type>()</type>
+      <type></type>
       <name>void</name>
       <anchorfile>function-additor-tests_8cc.html</anchorfile>
-      <anchor>a27807f7160975244da659013238390fb</anchor>
+      <anchor>a7833ac6355dca72dc5157629f78bd367</anchor>
       <arglist>(4 *(clear(nullptr)+clear(nullptr)))</arglist>
     </member>
     <member kind="function">
-      <type>()</type>
+      <type></type>
       <name>void</name>
       <anchorfile>function-additor-tests_8cc.html</anchorfile>
-      <anchor>a0cbfb8564a2dd5f51c93018ed11786ca</anchor>
+      <anchor>a71b77dfa98b53be3ea1d1ef266cf932a</anchor>
       <arglist>((clear(nullptr)+clear(nullptr)) *4)</arglist>
     </member>
     <member kind="variable">
-      <type>clear(&amp;)</type>
+      <type>clear(&amp;</type>
       <name>s</name>
       <anchorfile>function-additor-tests_8cc.html</anchorfile>
-      <anchor>a7a779d6c4dc6576ff4210cfadd326705</anchor>
-      <arglist>()</arglist>
+      <anchor>a67940798aae287d8088e7f718b7b18c1</anchor>
+      <arglist>)()</arglist>
     </member>
     <member kind="variable">
       <type>Semaphore</type>
@@ -4899,6 +5051,13 @@
     <includes id="layeroperations_8hh" name="layeroperations.hh" local="no" import="no" module="no" objc="no">scroom/layeroperations.hh</includes>
     <class kind="class">BitCountLut</class>
     <namespace>anonymous_namespace{layeroperations.cc}</namespace>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; void &gt;</type>
+      <name>Stuff</name>
+      <anchorfile>layeroperations_8cc.html</anchorfile>
+      <anchor>a6f32f9c33bd4964e737bfdd8243ba86f</anchor>
+      <arglist></arglist>
+    </member>
     <member kind="variable">
       <type>BitCountLut</type>
       <name>bcl</name>
@@ -5060,6 +5219,7 @@
     <includes id="bitmap-helpers_8hh" name="bitmap-helpers.hh" local="no" import="no" module="no" objc="no">scroom/bitmap-helpers.hh</includes>
     <class kind="class">SampleIterator_iterates</class>
     <class kind="class">SampleIterator_arithmetic</class>
+    <class kind="class">SampleIterator</class>
     <namespace>Scroom</namespace>
     <namespace>Scroom::Bitmap</namespace>
     <namespace>anonymous_namespace{sampleiterator-tests.cc}</namespace>
@@ -6634,6 +6794,8 @@
     <filename>logger-tests_8cc.html</filename>
     <includes id="logger_8hh" name="logger.hh" local="no" import="no" module="no" objc="no">scroom/logger.hh</includes>
     <class kind="class">LoggerTests</class>
+    <class kind="class">Logger</class>
+    <class kind="class">LoggerContainer</class>
     <member kind="function">
       <type>output</type>
       <name>erase</name>
@@ -7422,6 +7584,8 @@
     <class kind="class">RectangleHorizontalTestScaffold</class>
     <class kind="class">RectangleVerticalTestScaffold</class>
     <class kind="class">Rectangle_and_Segment_TypedTests</class>
+    <class kind="class">Point</class>
+    <class kind="class">Segment</class>
     <member kind="typedef">
       <type>::testing::Types&lt; Segment&lt; int &gt;, RectangleHorizontalTestScaffold, RectangleVerticalTestScaffold &gt;</type>
       <name>ScaffoldTypes</name>
@@ -8409,6 +8573,27 @@
       <anchor>ad86da7a08dae71e31e18237143a35900</anchor>
       <arglist>(3, 2)</arglist>
     </member>
+    <member kind="function">
+      <type>Point&lt; T &gt;</type>
+      <name>make_point</name>
+      <anchorfile>rectangletests_8cc.html</anchorfile>
+      <anchor>af6796373cc462aef8e6979a40acef5d3</anchor>
+      <arglist>(T x, T y)</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle&lt; T &gt;</type>
+      <name>make_rect</name>
+      <anchorfile>rectangletests_8cc.html</anchorfile>
+      <anchor>a8a866a6439fc60dfe259e168059aa65e</anchor>
+      <arglist>(T x, T y, T width, T height)</arglist>
+    </member>
+    <member kind="function">
+      <type>Segment&lt; T &gt;</type>
+      <name>make_segment</name>
+      <anchorfile>rectangletests_8cc.html</anchorfile>
+      <anchor>afaea434cedda5ae65c752010d67e3fc0</anchor>
+      <arglist>(T start, T size)</arglist>
+    </member>
     <member kind="variable">
       <type>Scaffold</type>
       <name>s1</name>
@@ -9060,6 +9245,7 @@
     <path>plugins/pnm/src/</path>
     <filename>pnmsource_8cc.html</filename>
     <includes id="pnmsource_8hh" name="pnmsource.hh" local="yes" import="no" module="no" objc="no">pnmsource.hh</includes>
+    <class kind="struct">anonymous_namespace{pnmsource.cc}::BitmapMetaData</class>
     <namespace>anonymous_namespace{pnmsource.cc}</namespace>
     <namespace>Scroom</namespace>
     <namespace>Scroom::Pnm</namespace>
@@ -9417,6 +9603,13 @@
       <anchor>a16d3dd0e06bb42e140318bd5eef16f15</anchor>
       <arglist>(p1-&gt;Contains(vi3))</arglist>
     </member>
+    <member kind="function">
+      <type>cairo_rectangle_int_t</type>
+      <name>createCairoIntRectangle</name>
+      <anchorfile>determine-size-test_8cc.html</anchorfile>
+      <anchor>a5260b667cc757819028aac849da3304e</anchor>
+      <arglist>(int x, int y, int width, int height)</arglist>
+    </member>
     <member kind="variable">
       <type>PresentationInterfaceStub::Ptr const</type>
       <name>p</name>
@@ -9683,280 +9876,6 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>Scroom::Utils::AspectRatioPositionTextBox</name>
-    <filename>classScroom_1_1Utils_1_1AspectRatioPositionTextBox.html</filename>
-    <base>Scroom::Utils::ITweakPositionTextBox</base>
-    <member kind="function">
-      <type>Point&lt; double &gt;</type>
-      <name>parse</name>
-      <anchorfile>classScroom_1_1Utils_1_1AspectRatioPositionTextBox.html</anchorfile>
-      <anchor>aa8253e3edbe2483c1b7f5fcda939c34b</anchor>
-      <arglist>(std::string_view x, std::string_view y, const Point&lt; int &gt; &amp;drawingAreaSize, int zoom) const override</arglist>
-    </member>
-    <member kind="function">
-      <type>std::pair&lt; std::string, std::string &gt;</type>
-      <name>display</name>
-      <anchorfile>classScroom_1_1Utils_1_1AspectRatioPositionTextBox.html</anchorfile>
-      <anchor>a4fa6c5826dbff8766bb721af692ec7ea</anchor>
-      <arglist>(const Point&lt; double &gt; &amp;position, const Point&lt; int &gt; &amp;drawingAreaSize, int zoom) const override</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static ITweakPositionTextBox::Ptr</type>
-      <name>create</name>
-      <anchorfile>classScroom_1_1Utils_1_1AspectRatioPositionTextBox.html</anchorfile>
-      <anchor>a9bc13d527d0ede3120a0fadb8d1e9556</anchor>
-      <arglist>(ITweakPositionTextBox::Ptr child, const Point&lt; double &gt; &amp;aspectRatio)</arglist>
-    </member>
-    <member kind="function" protection="private">
-      <type></type>
-      <name>AspectRatioPositionTextBox</name>
-      <anchorfile>classScroom_1_1Utils_1_1AspectRatioPositionTextBox.html</anchorfile>
-      <anchor>aacc36fde3ca67b4fd8fbed1d6a3747a2</anchor>
-      <arglist>(ITweakPositionTextBox::Ptr child, const Point&lt; double &gt; &amp;aspectRatio)</arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>ITweakPositionTextBox::Ptr</type>
-      <name>child</name>
-      <anchorfile>classScroom_1_1Utils_1_1AspectRatioPositionTextBox.html</anchorfile>
-      <anchor>a808357c3b5bf54a807460bcc35031123</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>const Point&lt; double &gt;</type>
-      <name>aspectRatio</name>
-      <anchorfile>classScroom_1_1Utils_1_1AspectRatioPositionTextBox.html</anchorfile>
-      <anchor>aeee5fdc198b2972e54953be56671869e</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>anonymous_namespace{tweak-view_test.cc}::AspectRatioPositionTextBoxTest</name>
-    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioPositionTextBoxTest.html</filename>
-    <member kind="variable" protection="protected">
-      <type>const Point&lt; double &gt;</type>
-      <name>aspectRatio</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioPositionTextBoxTest.html</anchorfile>
-      <anchor>a5c19b6fe1693b6ae7baf7d73431b00ea</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="protected">
-      <type>const Point&lt; int &gt;</type>
-      <name>drawingArea</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioPositionTextBoxTest.html</anchorfile>
-      <anchor>abd9d2a925e25d171bd0558b79dcd6687</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="protected">
-      <type>const std::shared_ptr&lt; testing::StrictMock&lt; TextBoxChild &gt; &gt;</type>
-      <name>child</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioPositionTextBoxTest.html</anchorfile>
-      <anchor>ab12629cc2663c82795152cafde193da3</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="protected">
-      <type>const ITweakPositionTextBox::Ptr</type>
-      <name>textBox</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioPositionTextBoxTest.html</anchorfile>
-      <anchor>a23a3205fc234f4299f215d411360199c</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>Scroom::Utils::AspectRatioPresentationPosition</name>
-    <filename>classScroom_1_1Utils_1_1AspectRatioPresentationPosition.html</filename>
-    <base>Scroom::Utils::ITweakPresentationPosition</base>
-    <member kind="function">
-      <type>Point&lt; double &gt;</type>
-      <name>tweakPosition</name>
-      <anchorfile>classScroom_1_1Utils_1_1AspectRatioPresentationPosition.html</anchorfile>
-      <anchor>afd3985ac261b0af1b4bff62883431b6b</anchor>
-      <arglist>(const Point&lt; double &gt; &amp;currentPosition, int zoom) const override</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static ITweakPresentationPosition::Ptr</type>
-      <name>create</name>
-      <anchorfile>classScroom_1_1Utils_1_1AspectRatioPresentationPosition.html</anchorfile>
-      <anchor>a741d37b87a23b0ea5101506e87089530</anchor>
-      <arglist>(ITweakPresentationPosition::Ptr child, const Point&lt; double &gt; &amp;aspectRatio)</arglist>
-    </member>
-    <member kind="function" protection="private">
-      <type></type>
-      <name>AspectRatioPresentationPosition</name>
-      <anchorfile>classScroom_1_1Utils_1_1AspectRatioPresentationPosition.html</anchorfile>
-      <anchor>ab93f92217486b565bd5e74cd1955e30a</anchor>
-      <arglist>(ITweakPresentationPosition::Ptr child, const Point&lt; double &gt; &amp;aspectRatio)</arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>ITweakPresentationPosition::Ptr</type>
-      <name>child</name>
-      <anchorfile>classScroom_1_1Utils_1_1AspectRatioPresentationPosition.html</anchorfile>
-      <anchor>a14a735f62030e9fff8bfff6106f7e321</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>const Point&lt; double &gt;</type>
-      <name>aspectRatio</name>
-      <anchorfile>classScroom_1_1Utils_1_1AspectRatioPresentationPosition.html</anchorfile>
-      <anchor>a0aed756b2ae13c6ce9d81a6242541c91</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>anonymous_namespace{tweak-view_test.cc}::AspectRatioPresentationPositionTest</name>
-    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioPresentationPositionTest.html</filename>
-    <member kind="variable" protection="protected">
-      <type>const Point&lt; double &gt;</type>
-      <name>aspectRatio</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioPresentationPositionTest.html</anchorfile>
-      <anchor>adf20a86e7cfa622e501ee2df8ba7f97a</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="protected">
-      <type>const std::shared_ptr&lt; testing::StrictMock&lt; PositionChild &gt; &gt;</type>
-      <name>child</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioPresentationPositionTest.html</anchorfile>
-      <anchor>a60290a3b9c8eeef7fe3784ba051f4445</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="protected">
-      <type>const ITweakPresentationPosition::Ptr</type>
-      <name>position</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioPresentationPositionTest.html</anchorfile>
-      <anchor>aa5b74616e8dfe9a89ee8c52e1dbfb2d4</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>Scroom::Utils::AspectRatioRulers</name>
-    <filename>classScroom_1_1Utils_1_1AspectRatioRulers.html</filename>
-    <base>Scroom::Utils::ITweakRulers</base>
-    <member kind="function">
-      <type>Rectangle&lt; double &gt;</type>
-      <name>tweakRulers</name>
-      <anchorfile>classScroom_1_1Utils_1_1AspectRatioRulers.html</anchorfile>
-      <anchor>a9ac95cf21f8861adcc9478fd37cb0e90</anchor>
-      <arglist>(const Point&lt; double &gt; &amp;currentPosition, const Point&lt; int &gt; &amp;drawingAreaSize, int zoom) const override</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static ITweakRulers::Ptr</type>
-      <name>create</name>
-      <anchorfile>classScroom_1_1Utils_1_1AspectRatioRulers.html</anchorfile>
-      <anchor>a10a6c87298bafaded3a56075ed158d33</anchor>
-      <arglist>(ITweakRulers::Ptr child, const Point&lt; double &gt; &amp;aspectRatio)</arglist>
-    </member>
-    <member kind="function" protection="private">
-      <type></type>
-      <name>AspectRatioRulers</name>
-      <anchorfile>classScroom_1_1Utils_1_1AspectRatioRulers.html</anchorfile>
-      <anchor>a207f65977b4dfec9e3e66a544afe33cf</anchor>
-      <arglist>(ITweakRulers::Ptr child, const Point&lt; double &gt; &amp;aspectRatio)</arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>ITweakRulers::Ptr</type>
-      <name>child</name>
-      <anchorfile>classScroom_1_1Utils_1_1AspectRatioRulers.html</anchorfile>
-      <anchor>a4f76d91396d34153b76d560366ac3b77</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>const Point&lt; double &gt;</type>
-      <name>aspectRatio</name>
-      <anchorfile>classScroom_1_1Utils_1_1AspectRatioRulers.html</anchorfile>
-      <anchor>a18fdae45d8d956ddb9cce30d16a8f0f3</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>anonymous_namespace{tweak-view_test.cc}::AspectRatioRulersTest</name>
-    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioRulersTest.html</filename>
-    <member kind="variable" protection="protected">
-      <type>const Point&lt; double &gt;</type>
-      <name>aspectRatio</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioRulersTest.html</anchorfile>
-      <anchor>a6e9e8a9cbda232cd12ce6720e5ef0430</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="protected">
-      <type>const std::shared_ptr&lt; testing::StrictMock&lt; RulersChild &gt; &gt;</type>
-      <name>child</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioRulersTest.html</anchorfile>
-      <anchor>ae74dcb694eaac7d0ee11a906f6fd4d3d</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="protected">
-      <type>const ITweakRulers::Ptr</type>
-      <name>rulers</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioRulersTest.html</anchorfile>
-      <anchor>a6a27939f63f22f0b95fdc23903acba8c</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>Scroom::Utils::AspectRatioSelection</name>
-    <filename>classScroom_1_1Utils_1_1AspectRatioSelection.html</filename>
-    <base>Scroom::Utils::ITweakSelection</base>
-    <member kind="function">
-      <type>Selection</type>
-      <name>tweakSelection</name>
-      <anchorfile>classScroom_1_1Utils_1_1AspectRatioSelection.html</anchorfile>
-      <anchor>ad793b10bb5165f95b04942d9021ed2dc</anchor>
-      <arglist>(const Selection &amp;selection) const override</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static ITweakSelection::Ptr</type>
-      <name>create</name>
-      <anchorfile>classScroom_1_1Utils_1_1AspectRatioSelection.html</anchorfile>
-      <anchor>a597a003e2119916d604ccbf28d94ec1c</anchor>
-      <arglist>(ITweakSelection::Ptr child, const Point&lt; double &gt; &amp;aspectRatio)</arglist>
-    </member>
-    <member kind="function" protection="private">
-      <type></type>
-      <name>AspectRatioSelection</name>
-      <anchorfile>classScroom_1_1Utils_1_1AspectRatioSelection.html</anchorfile>
-      <anchor>a176635bf867a08331c5db1ed2f1c40e2</anchor>
-      <arglist>(ITweakSelection::Ptr child, const Point&lt; double &gt; &amp;aspectRatio)</arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>ITweakSelection::Ptr</type>
-      <name>child</name>
-      <anchorfile>classScroom_1_1Utils_1_1AspectRatioSelection.html</anchorfile>
-      <anchor>a7ae7cec4c1cf3926cba743cd85613017</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>const Point&lt; double &gt;</type>
-      <name>aspectRatio</name>
-      <anchorfile>classScroom_1_1Utils_1_1AspectRatioSelection.html</anchorfile>
-      <anchor>ad9ab6cc2b44e75e5cdec092876a14baf</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>anonymous_namespace{tweak-view_test.cc}::AspectRatioSelectionTest</name>
-    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioSelectionTest.html</filename>
-    <member kind="variable" protection="protected">
-      <type>const Point&lt; double &gt;</type>
-      <name>aspectRatio</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioSelectionTest.html</anchorfile>
-      <anchor>af5c6e03ad0fa3a3259b7af1a322db860</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="protected">
-      <type>const std::shared_ptr&lt; testing::StrictMock&lt; SelectionChild &gt; &gt;</type>
-      <name>child</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioSelectionTest.html</anchorfile>
-      <anchor>ace1fe6ca106e7d7e1f21c2f3127a74c5</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="protected">
-      <type>const ITweakSelection::Ptr</type>
-      <name>selection</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1AspectRatioSelectionTest.html</anchorfile>
-      <anchor>aa4821541dd2f843ef2a05862c646cf35</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
     <name>AsyncDeleter</name>
     <filename>classAsyncDeleter.html</filename>
     <templarg>typename T</templarg>
@@ -10186,6 +10105,52 @@
     </member>
   </compound>
   <compound kind="struct">
+    <name>anonymous_namespace{pnmsource.cc}::BitmapMetaData</name>
+    <filename>structanonymous__namespace_02pnmsource_8cc_03_1_1BitmapMetaData.html</filename>
+    <member kind="variable">
+      <type>std::string</type>
+      <name>type</name>
+      <anchorfile>structanonymous__namespace_02pnmsource_8cc_03_1_1BitmapMetaData.html</anchorfile>
+      <anchor>a253565042c3ccff0767b1a71f168158e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned int</type>
+      <name>bitsPerSample</name>
+      <anchorfile>structanonymous__namespace_02pnmsource_8cc_03_1_1BitmapMetaData.html</anchorfile>
+      <anchor>a86250b9ade69c4581854e533283e582a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>unsigned int</type>
+      <name>samplesPerPixel</name>
+      <anchorfile>structanonymous__namespace_02pnmsource_8cc_03_1_1BitmapMetaData.html</anchorfile>
+      <anchor>aad1d5e2334e32d7e9fad7e5cc31f0c45</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>Scroom::Utils::Rectangle&lt; int &gt;</type>
+      <name>rect</name>
+      <anchorfile>structanonymous__namespace_02pnmsource_8cc_03_1_1BitmapMetaData.html</anchorfile>
+      <anchor>ad3eaee769ffd723ea5a4d6eda73963b3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>boost::optional&lt; Scroom::Utils::Point&lt; double &gt; &gt;</type>
+      <name>aspectRatio</name>
+      <anchorfile>structanonymous__namespace_02pnmsource_8cc_03_1_1BitmapMetaData.html</anchorfile>
+      <anchor>acf26ff10a150a0f048bc38621a150a92</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>ColormapHelperBase::Ptr</type>
+      <name>colormapHelper</name>
+      <anchorfile>structanonymous__namespace_02pnmsource_8cc_03_1_1BitmapMetaData.html</anchorfile>
+      <anchor>a305fcbe326cb847c10dce31d453ea73a</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
     <name>Scroom::TiledBitmap::BitmapMetaData</name>
     <filename>structScroom_1_1TiledBitmap_1_1BitmapMetaData.html</filename>
     <member kind="variable">
@@ -10228,6 +10193,101 @@
       <name>colormapHelper</name>
       <anchorfile>structScroom_1_1TiledBitmap_1_1BitmapMetaData.html</anchorfile>
       <anchor>a305fcbe326cb847c10dce31d453ea73a</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>BitmapSurface</name>
+    <filename>classBitmapSurface.html</filename>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; BitmapSurface &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>classBitmapSurface.html</anchorfile>
+      <anchor>a2c5f307f8fb27e77610b97bbcd6e282c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>~BitmapSurface</name>
+      <anchorfile>classBitmapSurface.html</anchorfile>
+      <anchor>a83d3ef3f4aafa31722db153e342a9bd4</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>BitmapSurface</name>
+      <anchorfile>classBitmapSurface.html</anchorfile>
+      <anchor>a01b392735034681d7dfabc4fc2f71cfa</anchor>
+      <arglist>(const BitmapSurface &amp;)=delete</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>BitmapSurface</name>
+      <anchorfile>classBitmapSurface.html</anchorfile>
+      <anchor>a619351678bc0f02602a08ff6e97c9a21</anchor>
+      <arglist>(BitmapSurface &amp;&amp;)=delete</arglist>
+    </member>
+    <member kind="function">
+      <type>BitmapSurface &amp;</type>
+      <name>operator=</name>
+      <anchorfile>classBitmapSurface.html</anchorfile>
+      <anchor>a75f5bb354efcb6950ed27c254fe1d878</anchor>
+      <arglist>(const BitmapSurface &amp;)=delete</arglist>
+    </member>
+    <member kind="function">
+      <type>BitmapSurface &amp;</type>
+      <name>operator=</name>
+      <anchorfile>classBitmapSurface.html</anchorfile>
+      <anchor>aa1ea6b8ee5f264244f2490683c7d2d4e</anchor>
+      <arglist>(BitmapSurface &amp;&amp;)=delete</arglist>
+    </member>
+    <member kind="function">
+      <type>cairo_surface_t *</type>
+      <name>get</name>
+      <anchorfile>classBitmapSurface.html</anchorfile>
+      <anchor>a4e20b367582344b95c31226ba88ae3a1</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static Ptr</type>
+      <name>create</name>
+      <anchorfile>classBitmapSurface.html</anchorfile>
+      <anchor>a697961480f8888e1a149d4be54adb9e7</anchor>
+      <arglist>(int width, int height, cairo_format_t format)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static Ptr</type>
+      <name>create</name>
+      <anchorfile>classBitmapSurface.html</anchorfile>
+      <anchor>abc68ac9074fc5fdfc62dd2a42ed22de2</anchor>
+      <arglist>(int width, int height, cairo_format_t format, int stride, std::shared_ptr&lt; unsigned char &gt; const &amp;data)</arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type></type>
+      <name>BitmapSurface</name>
+      <anchorfile>classBitmapSurface.html</anchorfile>
+      <anchor>ad184ea423900d4ba43742e85ea103ce8</anchor>
+      <arglist>(int width, int height, cairo_format_t format)</arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type></type>
+      <name>BitmapSurface</name>
+      <anchorfile>classBitmapSurface.html</anchorfile>
+      <anchor>a9e2d358a55132f7cfb16c7eed3e2ed06</anchor>
+      <arglist>(int width, int height, cairo_format_t format, int stride, std::shared_ptr&lt; unsigned char &gt; const &amp;data)</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>cairo_surface_t *const</type>
+      <name>surface</name>
+      <anchorfile>classBitmapSurface.html</anchorfile>
+      <anchor>a52d5cf41eb8104774d48618032e21c2b</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>std::shared_ptr&lt; unsigned char &gt; const</type>
+      <name>data</name>
+      <anchorfile>classBitmapSurface.html</anchorfile>
+      <anchor>a2b2881d05a39782805c85b6c83c4c445</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -10696,6 +10756,43 @@
       <name>hasQueue</name>
       <anchorfile>classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html</anchorfile>
       <anchor>abeabbf44c2e8525cde781796944a4d66</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>Scroom::Utils::CalculateViewAreaForRulers</name>
+    <filename>classScroom_1_1Utils_1_1CalculateViewAreaForRulers.html</filename>
+    <base>Scroom::Utils::ITweakRulers</base>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; CalculateViewAreaForRulers &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>classScroom_1_1Utils_1_1CalculateViewAreaForRulers.html</anchorfile>
+      <anchor>a1f3b030596d8c742167ff63646ac9a76</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle&lt; double &gt;</type>
+      <name>tweakRulers</name>
+      <anchorfile>classScroom_1_1Utils_1_1CalculateViewAreaForRulers.html</anchorfile>
+      <anchor>a4224879adc7d6ee153f47fdd8b184d0a</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;currentPosition, const Point&lt; int &gt; &amp;viewSize, int zoom) const override</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static ITweakRulers::Ptr</type>
+      <name>create</name>
+      <anchorfile>classScroom_1_1Utils_1_1CalculateViewAreaForRulers.html</anchorfile>
+      <anchor>a651e4d42cec8c134aadbd200cab5e6c4</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>anonymous_namespace{tweak-view_test.cc}::CalculateViewAreaForRulersTest</name>
+    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1CalculateViewAreaForRulersTest.html</filename>
+    <member kind="variable" protection="protected">
+      <type>const ITweakRulers::Ptr</type>
+      <name>m_calculateViewArea</name>
+      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1CalculateViewAreaForRulersTest.html</anchorfile>
+      <anchor>a42f476aefbda409d82ed6d884bd08d26</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -11876,8 +11973,8 @@
   <compound kind="class">
     <name>CompressedTile</name>
     <filename>classCompressedTile.html</filename>
-    <base>Observable&lt; TileInitialisationObserver &gt;</base>
-    <base>Observable&lt; TileLoadingObserver &gt;</base>
+    <base>Scroom::Utils::Observable&lt; TileInitialisationObserver &gt;</base>
+    <base>Scroom::Utils::Observable&lt; TileLoadingObserver &gt;</base>
     <base>Viewable</base>
     <member kind="typedef">
       <type>std::shared_ptr&lt; CompressedTile &gt;</type>
@@ -12117,6 +12214,30 @@
       <anchor>a6e31e3871482ff2d9bffb5be8b44a2de</anchor>
       <arglist></arglist>
     </member>
+  </compound>
+  <compound kind="class">
+    <name>list::const_iterator</name>
+    <filename>classlist_1_1const__iterator.html</filename>
+  </compound>
+  <compound kind="class">
+    <name>set::const_iterator</name>
+    <filename>classset_1_1const__iterator.html</filename>
+  </compound>
+  <compound kind="class">
+    <name>vector::const_iterator</name>
+    <filename>classvector_1_1const__iterator.html</filename>
+  </compound>
+  <compound kind="class">
+    <name>list::const_reverse_iterator</name>
+    <filename>classlist_1_1const__reverse__iterator.html</filename>
+  </compound>
+  <compound kind="class">
+    <name>set::const_reverse_iterator</name>
+    <filename>classset_1_1const__reverse__iterator.html</filename>
+  </compound>
+  <compound kind="class">
+    <name>vector::const_reverse_iterator</name>
+    <filename>classvector_1_1const__reverse__iterator.html</filename>
   </compound>
   <compound kind="class">
     <name>ConstTile</name>
@@ -12595,9 +12716,9 @@
     <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakPresentationPositionTest.html</filename>
     <member kind="variable" protection="protected">
       <type>const ITweakPresentationPosition::Ptr</type>
-      <name>position</name>
+      <name>m_tweak</name>
       <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakPresentationPositionTest.html</anchorfile>
-      <anchor>a29645262294672a8024e60c3a48df446</anchor>
+      <anchor>a27a627f69bbc3730a7a7b422fb40b006</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -12614,13 +12735,24 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>anonymous_namespace{tweak-view_test.cc}::DefaultTweakSelectionMapTest</name>
+    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakSelectionMapTest.html</filename>
+    <member kind="variable" protection="protected">
+      <type>const ITweakSelection::Map</type>
+      <name>m_tweaks</name>
+      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakSelectionMapTest.html</anchorfile>
+      <anchor>a7e1418c75f86e1c4ee8e636e7c04d01b</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>anonymous_namespace{tweak-view_test.cc}::DefaultTweakSelectionTest</name>
     <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakSelectionTest.html</filename>
     <member kind="variable" protection="protected">
       <type>const ITweakSelection::Ptr</type>
-      <name>selection</name>
+      <name>m_tweak</name>
       <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakSelectionTest.html</anchorfile>
-      <anchor>a14c95f9bb4c0b5e91c7558c40d4dbb05</anchor>
+      <anchor>ae4a5eb1c5301fde89d49303526f230c9</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -13341,15 +13473,8 @@
       <type>Rectangle&lt; double &gt;</type>
       <name>tweakSelection</name>
       <anchorfile>classScroom_1_1Utils_1_1ExpandSelectionsToPixelBoundaries.html</anchorfile>
-      <anchor>a4c400f9c3a82259db75425c9eea33dc5</anchor>
-      <arglist>(const Rectangle&lt; double &gt; &amp;selection) const override</arglist>
-    </member>
-    <member kind="function">
-      <type>virtual Rectangle&lt; double &gt;</type>
-      <name>tweakSelection</name>
-      <anchorfile>classScroom_1_1Utils_1_1ExpandSelectionsToPixelBoundaries.html</anchorfile>
-      <anchor>a2a31d294f651af9bb8287291afef6bca</anchor>
-      <arglist>(const Rectangle&lt; double &gt; &amp;selection) const=0</arglist>
+      <anchor>a452ee0b3c96d9139c9e1b35e9a9b46e9</anchor>
+      <arglist>(const Rectangle&lt; double &gt; &amp;selectionArea) const override</arglist>
     </member>
     <member kind="function">
       <type>Selection</type>
@@ -13371,9 +13496,9 @@
     <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1ExpandSelectionsToPixelBoundariesTest.html</filename>
     <member kind="variable" protection="protected">
       <type>ExpandSelectionsToPixelBoundaries</type>
-      <name>expandToPixelBoundaries</name>
+      <name>m_expandToPixelBoundaries</name>
       <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1ExpandSelectionsToPixelBoundariesTest.html</anchorfile>
-      <anchor>a0d0f9bb1cb6bf958b144cd7d617f09f6</anchor>
+      <anchor>a3d29a6961271762fc970def2bc064a5c</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -13960,6 +14085,22 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>istream</name>
+    <filename>classistream.html</filename>
+  </compound>
+  <compound kind="class">
+    <name>list::iterator</name>
+    <filename>classlist_1_1iterator.html</filename>
+  </compound>
+  <compound kind="class">
+    <name>set::iterator</name>
+    <filename>classset_1_1iterator.html</filename>
+  </compound>
+  <compound kind="class">
+    <name>vector::iterator</name>
+    <filename>classvector_1_1iterator.html</filename>
+  </compound>
+  <compound kind="class">
     <name>Scroom::Utils::ITweakPositionTextBox</name>
     <filename>classScroom_1_1Utils_1_1ITweakPositionTextBox.html</filename>
     <base>Interface</base>
@@ -13974,15 +14115,15 @@
       <type>virtual Point&lt; double &gt;</type>
       <name>parse</name>
       <anchorfile>classScroom_1_1Utils_1_1ITweakPositionTextBox.html</anchorfile>
-      <anchor>abdeb37909afd21d9eff6982a809ca64b</anchor>
-      <arglist>(std::string_view x, std::string_view y, const Point&lt; int &gt; &amp;drawingAreaSize, int zoom) const =0</arglist>
+      <anchor>adc3f90517e507595f6e972b06c271439</anchor>
+      <arglist>(std::string_view x, std::string_view y, const Point&lt; int &gt; &amp;viewSize, int zoom) const =0</arglist>
     </member>
     <member kind="function" virtualness="pure">
       <type>virtual std::pair&lt; std::string, std::string &gt;</type>
       <name>display</name>
       <anchorfile>classScroom_1_1Utils_1_1ITweakPositionTextBox.html</anchorfile>
-      <anchor>a1bd122b4244214f7e107e09c9e4b7b5f</anchor>
-      <arglist>(const Point&lt; double &gt; &amp;position, const Point&lt; int &gt; &amp;drawingAreaSize, int zoom) const =0</arglist>
+      <anchor>a9d9d91fa5d7914ac781d29aa053da377</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;position, const Point&lt; int &gt; &amp;viewSize, int zoom) const =0</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -14019,8 +14160,8 @@
       <type>virtual Rectangle&lt; double &gt;</type>
       <name>tweakRulers</name>
       <anchorfile>classScroom_1_1Utils_1_1ITweakRulers.html</anchorfile>
-      <anchor>a778f5993d471621e119d5631580a56d2</anchor>
-      <arglist>(const Point&lt; double &gt; &amp;currentPosition, const Point&lt; int &gt; &amp;drawingAreaSize, int zoom) const =0</arglist>
+      <anchor>a2db86857d82809ae0e205b56233db199</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;currentPosition, const Point&lt; int &gt; &amp;viewSize, int zoom) const =0</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -14523,6 +14664,54 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>list</name>
+    <filename>classlist.html</filename>
+    <templarg>typename T</templarg>
+    <class kind="class">list::iterator</class>
+    <class kind="class">list::const_iterator</class>
+    <class kind="class">list::reverse_iterator</class>
+    <class kind="class">list::const_reverse_iterator</class>
+    <member kind="variable">
+      <type>T</type>
+      <name>elements</name>
+      <anchorfile>classlist.html</anchorfile>
+      <anchor>a682e5c7c91eb377d0cb4f019b2b81a5d</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>Logger</name>
+    <filename>classLogger.html</filename>
+    <member kind="function">
+      <type></type>
+      <name>Logger</name>
+      <anchorfile>classLogger.html</anchorfile>
+      <anchor>a04a2921b6b328404e6fbcd80b032e2ea</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Logger</name>
+      <anchorfile>classLogger.html</anchorfile>
+      <anchor>a430f4a0fc775b1c46efc5f8c0dcf4b8f</anchor>
+      <arglist>(LoggerContainer::Ptr container_)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::shared_ptr&lt; spdlog::logger &gt;</type>
+      <name>operator-&gt;</name>
+      <anchorfile>classLogger.html</anchorfile>
+      <anchor>acd5832deff17f22c68ed4615a30e0b8b</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>LoggerContainer::Ptr</type>
+      <name>container</name>
+      <anchorfile>classLogger.html</anchorfile>
+      <anchor>ab09cef3ef1ef9754a4db16b436204b30</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>Scroom::Logger</name>
     <filename>classScroom_1_1Logger.html</filename>
     <member kind="function">
@@ -14551,6 +14740,59 @@
       <name>container</name>
       <anchorfile>classScroom_1_1Logger.html</anchorfile>
       <anchor>ab09cef3ef1ef9754a4db16b436204b30</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>LoggerContainer</name>
+    <filename>classLoggerContainer.html</filename>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; LoggerContainer &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>classLoggerContainer.html</anchorfile>
+      <anchor>a755bcf87687363ccc03e6c32ff71a115</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>LoggerContainer</name>
+      <anchorfile>classLoggerContainer.html</anchorfile>
+      <anchor>a90f3502174de8d73fb8812f50210139a</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>std::shared_ptr&lt; spdlog::logger &gt;</type>
+      <name>get</name>
+      <anchorfile>classLoggerContainer.html</anchorfile>
+      <anchor>a7d80c49d1f16a9f54751f2c4d39b615c</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>set</name>
+      <anchorfile>classLoggerContainer.html</anchorfile>
+      <anchor>aa97f0aeb11f41d26cfa43144b2f281b6</anchor>
+      <arglist>(std::shared_ptr&lt; spdlog::logger &gt; logger_)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static Ptr</type>
+      <name>instance</name>
+      <anchorfile>classLoggerContainer.html</anchorfile>
+      <anchor>a0c0ee7a8e8d70f93e094510c6f3fcdf4</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>std::mutex</type>
+      <name>mut</name>
+      <anchorfile>classLoggerContainer.html</anchorfile>
+      <anchor>a2768475599dfc5dbe996b7ebb0c2e56f</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>std::shared_ptr&lt; spdlog::logger &gt;</type>
+      <name>logger</name>
+      <anchorfile>classLoggerContainer.html</anchorfile>
+      <anchor>aeb1d849ee815a9647c456b8069c227a5</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -14877,12 +15119,12 @@
     <filename>classScroom_1_1Bookkeeping_1_1Map.html</filename>
     <templarg>typename K</templarg>
     <templarg>typename V</templarg>
-    <base>Scroom::Bookkeeping::MapBase</base>
+    <base>Scroom::Bookkeeping::MapBase&lt; K, V &gt;</base>
     <member kind="typedef">
       <type>std::shared_ptr&lt; Map&lt; K, V &gt; &gt;</type>
       <name>Ptr</name>
       <anchorfile>classScroom_1_1Bookkeeping_1_1Map.html</anchorfile>
-      <anchor>a3d0544524850dba27a6b52b06e130dc5</anchor>
+      <anchor>a0717fb9ce2795bbae64bc1e06359094e</anchor>
       <arglist></arglist>
     </member>
     <member kind="function" static="yes">
@@ -14994,7 +15236,7 @@
       <type>std::shared_ptr&lt; MapTokenImpl&lt; K, V &gt; &gt;</type>
       <name>Ptr</name>
       <anchorfile>classScroom_1_1Bookkeeping_1_1Detail_1_1MapTokenImpl.html</anchorfile>
-      <anchor>afc0ddb25d4d329c5afbe7cc609eb28e6</anchor>
+      <anchor>aeb508297ec5da712f2c3ed901a582519</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
@@ -15077,7 +15319,7 @@
       <type>typename std::map&lt; K, std::weak_ptr&lt; Detail::ValueType&lt; V &gt; &gt; &gt;</type>
       <name>Type</name>
       <anchorfile>structScroom_1_1Bookkeeping_1_1Detail_1_1MapType.html</anchorfile>
-      <anchor>abecb275bfe803f39e9287b4e41696a09</anchor>
+      <anchor>a09fa919de9cfb4aafbfd87d1b24f68ee</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -15090,7 +15332,7 @@
       <type>typename Scroom::Utils::WeakKeyMap&lt; std::weak_ptr&lt; K &gt;, std::weak_ptr&lt; Detail::ValueType&lt; V &gt; &gt; &gt;</type>
       <name>Type</name>
       <anchorfile>structScroom_1_1Bookkeeping_1_1Detail_1_1MapType_3_01std_1_1weak__ptr_3_01K_01_4_00_01V_01_4.html</anchorfile>
-      <anchor>a3d0f863318e27ea3df83024618498eeb</anchor>
+      <anchor>a6c62f9804833395a8f48d0e81dc1a622</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -15520,7 +15762,7 @@
       <type>std::shared_ptr&lt; Observable&lt; T &gt; &gt;</type>
       <name>Ptr</name>
       <anchorfile>classScroom_1_1Utils_1_1Observable.html</anchorfile>
-      <anchor>af3ccb47d74ec555f42cc66a5356b808e</anchor>
+      <anchor>a44103499c0128093f12f5c84644683c8</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
@@ -16488,6 +16730,10 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>ostream</name>
+    <filename>classostream.html</filename>
+  </compound>
+  <compound kind="class">
     <name>Scroom::MemoryBlocks::Page</name>
     <filename>classScroom_1_1MemoryBlocks_1_1Page.html</filename>
     <member kind="function">
@@ -16617,6 +16863,26 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>pair</name>
+    <filename>classpair.html</filename>
+    <templarg>typename T1</templarg>
+    <templarg>typename T2</templarg>
+    <member kind="variable">
+      <type>T1</type>
+      <name>first_type</name>
+      <anchorfile>classpair.html</anchorfile>
+      <anchor>ad5e974a5f5237c81386793eaed999886</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>T2</type>
+      <name>second_type</name>
+      <anchorfile>classpair.html</anchorfile>
+      <anchor>a09062ed55f8c1988490e205006a4d129</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>Scroom::Utils::ParentContext</name>
     <filename>classScroom_1_1Utils_1_1ParentContext.html</filename>
     <base>Scroom::Utils::RecursiveContext</base>
@@ -16699,6 +16965,136 @@
       <name>context</name>
       <anchorfile>classParentContextTests.html</anchorfile>
       <anchor>a636b622b40fa6aa06c6d5fff2c7eefa0</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>Scroom::Utils::ParseAndFormatViewCentre</name>
+    <filename>classScroom_1_1Utils_1_1ParseAndFormatViewCentre.html</filename>
+    <base>Scroom::Utils::ITweakPositionTextBox</base>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; ParseAndFormatViewCentre &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>classScroom_1_1Utils_1_1ParseAndFormatViewCentre.html</anchorfile>
+      <anchor>a6260b0b60e89b749d65930291ad5f48e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>Point&lt; double &gt;</type>
+      <name>parse</name>
+      <anchorfile>classScroom_1_1Utils_1_1ParseAndFormatViewCentre.html</anchorfile>
+      <anchor>ade948b722f05fdb724024e3f4f1cea44</anchor>
+      <arglist>(std::string_view x, std::string_view y, const Point&lt; int &gt; &amp;viewSize, int zoom) const override</arglist>
+    </member>
+    <member kind="function">
+      <type>std::pair&lt; std::string, std::string &gt;</type>
+      <name>display</name>
+      <anchorfile>classScroom_1_1Utils_1_1ParseAndFormatViewCentre.html</anchorfile>
+      <anchor>a9957e9f37a0880b1bb70a6af0ed44bca</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;position, const Point&lt; int &gt; &amp;viewSize, int zoom) const override</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static ITweakPositionTextBox::Ptr</type>
+      <name>create</name>
+      <anchorfile>classScroom_1_1Utils_1_1ParseAndFormatViewCentre.html</anchorfile>
+      <anchor>ad67f077a3d27e3c9155bdf5bf56a992e</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>anonymous_namespace{tweak-view_test.cc}::ParseAndFormatViewCentreTest</name>
+    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1ParseAndFormatViewCentreTest.html</filename>
+    <member kind="variable" protection="protected">
+      <type>const ITweakPositionTextBox::Ptr</type>
+      <name>m_parseAndFormat</name>
+      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1ParseAndFormatViewCentreTest.html</anchorfile>
+      <anchor>af266d61ddd2b88f471eb0cbe16f7b303</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>const Point&lt; int &gt;</type>
+      <name>m_viewSize</name>
+      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1ParseAndFormatViewCentreTest.html</anchorfile>
+      <anchor>a2037e5a37bdcc1a1b20928ed7ee2bafa</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>Scroom::Utils::ParseAndFormatViewCentreWithAspectRatio</name>
+    <filename>classScroom_1_1Utils_1_1ParseAndFormatViewCentreWithAspectRatio.html</filename>
+    <base>Scroom::Utils::ITweakPositionTextBox</base>
+    <member kind="function">
+      <type>Point&lt; double &gt;</type>
+      <name>parse</name>
+      <anchorfile>classScroom_1_1Utils_1_1ParseAndFormatViewCentreWithAspectRatio.html</anchorfile>
+      <anchor>adfe19214f6bed757b4ee2755df4f0f9e</anchor>
+      <arglist>(std::string_view x, std::string_view y, const Point&lt; int &gt; &amp;viewSize, int zoom) const override</arglist>
+    </member>
+    <member kind="function">
+      <type>std::pair&lt; std::string, std::string &gt;</type>
+      <name>display</name>
+      <anchorfile>classScroom_1_1Utils_1_1ParseAndFormatViewCentreWithAspectRatio.html</anchorfile>
+      <anchor>ab682461dfb3814454e684b5cec9b7184</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;position, const Point&lt; int &gt; &amp;viewSize, int zoom) const override</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static ITweakPositionTextBox::Ptr</type>
+      <name>create</name>
+      <anchorfile>classScroom_1_1Utils_1_1ParseAndFormatViewCentreWithAspectRatio.html</anchorfile>
+      <anchor>a36711f02c9779eb634b35d4daaa6a5f0</anchor>
+      <arglist>(ITweakPositionTextBox::Ptr child, const Point&lt; double &gt; &amp;aspectRatio)</arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type></type>
+      <name>ParseAndFormatViewCentreWithAspectRatio</name>
+      <anchorfile>classScroom_1_1Utils_1_1ParseAndFormatViewCentreWithAspectRatio.html</anchorfile>
+      <anchor>aeb54aed85d7c65cdc22f49e45353dca5</anchor>
+      <arglist>(ITweakPositionTextBox::Ptr child, const Point&lt; double &gt; &amp;aspectRatio)</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>ITweakPositionTextBox::Ptr</type>
+      <name>m_child</name>
+      <anchorfile>classScroom_1_1Utils_1_1ParseAndFormatViewCentreWithAspectRatio.html</anchorfile>
+      <anchor>acf6b3f489c73c92ac2728cc14d46ddc4</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>const Point&lt; double &gt;</type>
+      <name>m_aspectRatio</name>
+      <anchorfile>classScroom_1_1Utils_1_1ParseAndFormatViewCentreWithAspectRatio.html</anchorfile>
+      <anchor>a1b64db725127deb2960e17ffe4542f01</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>anonymous_namespace{tweak-view_test.cc}::ParseAndFormatViewCentreWithAspectRatioTest</name>
+    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1ParseAndFormatViewCentreWithAspectRatioTest.html</filename>
+    <member kind="variable" protection="protected">
+      <type>const Point&lt; double &gt;</type>
+      <name>m_aspectRatio</name>
+      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1ParseAndFormatViewCentreWithAspectRatioTest.html</anchorfile>
+      <anchor>af25d48491a24c46de6d1ad205744eef2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>const Point&lt; int &gt;</type>
+      <name>m_viewSize</name>
+      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1ParseAndFormatViewCentreWithAspectRatioTest.html</anchorfile>
+      <anchor>a537c5584f2e7bfefaa762eb8eb050c78</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>const std::shared_ptr&lt; testing::StrictMock&lt; ViewCentreTextConversionMock &gt; &gt;</type>
+      <name>m_child</name>
+      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1ParseAndFormatViewCentreWithAspectRatioTest.html</anchorfile>
+      <anchor>a03eb00592c35e9c8651c0ef11659ce9a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>const ITweakPositionTextBox::Ptr</type>
+      <name>m_parseAndFormat</name>
+      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1ParseAndFormatViewCentreWithAspectRatioTest.html</anchorfile>
+      <anchor>ae7ba0598c2bef34dcf62d3b57e12e61c</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -17048,7 +17444,7 @@
       <type>std::vector&lt; std::pair&lt; std::string, double &gt; &gt;</type>
       <name>PipetteColor</name>
       <anchorfile>classPipetteLayerOperations.html</anchorfile>
-      <anchor>ac2e1230385d4439b30668e66df245485</anchor>
+      <anchor>a0d1e44e84993dc260968ab949038d0d4</anchor>
       <arglist></arglist>
     </member>
     <member kind="function" virtualness="pure">
@@ -17110,9 +17506,9 @@
     <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1PixelAlignPresentationPositionsTest.html</filename>
     <member kind="variable" protection="protected">
       <type>const ITweakPresentationPosition::Ptr</type>
-      <name>pixelAlign</name>
+      <name>m_pixelAlign</name>
       <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1PixelAlignPresentationPositionsTest.html</anchorfile>
-      <anchor>a9182ce68e3bbb821ea86be35094d9be7</anchor>
+      <anchor>a7c40ee00620f17fa404512121c789306</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -17573,6 +17969,151 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>Point</name>
+    <filename>classPoint.html</filename>
+    <templarg>typename T</templarg>
+    <member kind="typedef">
+      <type>T</type>
+      <name>value_type</name>
+      <anchorfile>classPoint.html</anchorfile>
+      <anchor>abc746dfcb215ff78d5f6574cc9517da7</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Point</name>
+      <anchorfile>classPoint.html</anchorfile>
+      <anchor>ab7ec1167a14f0508e5565116978285d3</anchor>
+      <arglist>()=default</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Point</name>
+      <anchorfile>classPoint.html</anchorfile>
+      <anchor>af13b433f220ac3a094464460f31a54ec</anchor>
+      <arglist>(value_type xy)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Point</name>
+      <anchorfile>classPoint.html</anchorfile>
+      <anchor>a3895bd735a06d13718a39b3d96fcc0d8</anchor>
+      <arglist>(value_type x_, value_type y_)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Point</name>
+      <anchorfile>classPoint.html</anchorfile>
+      <anchor>a2875e9cb8b19a3cf92ec9d76b21c6471</anchor>
+      <arglist>(Point&lt; U &gt; other)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Point</name>
+      <anchorfile>classPoint.html</anchorfile>
+      <anchor>a47ccfe39feb58999b13d8c5cadfe984b</anchor>
+      <arglist>(const GdkPoint &amp;other)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator==</name>
+      <anchorfile>classPoint.html</anchorfile>
+      <anchor>ae7e39f5567d2664b506e6ea0d13e8294</anchor>
+      <arglist>(const Point&lt; value_type &gt; &amp;other) const</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator!=</name>
+      <anchorfile>classPoint.html</anchorfile>
+      <anchor>aef60f080f6aad1266fd2efad4164df4e</anchor>
+      <arglist>(const Point&lt; value_type &gt; &amp;other) const</arglist>
+    </member>
+    <member kind="function">
+      <type>Point&lt; value_type &gt; &amp;</type>
+      <name>operator+=</name>
+      <anchorfile>classPoint.html</anchorfile>
+      <anchor>a0f5e17cdd78dc95c5ccb20374f6fe8c8</anchor>
+      <arglist>(const Point&lt; value_type &gt; &amp;other)</arglist>
+    </member>
+    <member kind="function">
+      <type>Point&lt; value_type &gt; &amp;</type>
+      <name>operator-=</name>
+      <anchorfile>classPoint.html</anchorfile>
+      <anchor>a92a5b536a1c38e89700909d569e1429c</anchor>
+      <arglist>(const Point&lt; value_type &gt; &amp;other)</arglist>
+    </member>
+    <member kind="function">
+      <type>Point&lt; value_type &gt; &amp;</type>
+      <name>operator*=</name>
+      <anchorfile>classPoint.html</anchorfile>
+      <anchor>a05adabc4c623b8d974f2c43570d79514</anchor>
+      <arglist>(value_type other)</arglist>
+    </member>
+    <member kind="function">
+      <type>Point&lt; value_type &gt; &amp;</type>
+      <name>operator*=</name>
+      <anchorfile>classPoint.html</anchorfile>
+      <anchor>a7e49f7f10f29ee6841faf43e2eaea4d1</anchor>
+      <arglist>(const Point&lt; value_type &gt; &amp;other)</arglist>
+    </member>
+    <member kind="function">
+      <type>Point&lt; value_type &gt; &amp;</type>
+      <name>operator/=</name>
+      <anchorfile>classPoint.html</anchorfile>
+      <anchor>a86163f3112129c97a401ea5239b94f92</anchor>
+      <arglist>(value_type other)</arglist>
+    </member>
+    <member kind="function">
+      <type>Point&lt; value_type &gt; &amp;</type>
+      <name>operator/=</name>
+      <anchorfile>classPoint.html</anchorfile>
+      <anchor>a710f7735296073b9d27ae877eb4e68bd</anchor>
+      <arglist>(const Point&lt; value_type &gt; &amp;other)</arglist>
+    </member>
+    <member kind="function">
+      <type>Point&lt; value_type &gt;</type>
+      <name>operator-</name>
+      <anchorfile>classPoint.html</anchorfile>
+      <anchor>a5922097eed9e1abb7ba5ab0fb570b4d4</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>double</type>
+      <name>magnitude</name>
+      <anchorfile>classPoint.html</anchorfile>
+      <anchor>adff07f0c17215b6804a9415fd7118df4</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>Point&lt; U &gt;</type>
+      <name>to</name>
+      <anchorfile>classPoint.html</anchorfile>
+      <anchor>a45972be2646a1f80a0cdca8cbe68e3a6</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>GdkPoint</type>
+      <name>toGdkPoint</name>
+      <anchorfile>classPoint.html</anchorfile>
+      <anchor>a699d121fe6cd8fff7af5cf71835daaca</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="variable">
+      <type>value_type</type>
+      <name>x</name>
+      <anchorfile>classPoint.html</anchorfile>
+      <anchor>aef05138a3536382db393d698c80a48ca</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>value_type</type>
+      <name>y</name>
+      <anchorfile>classPoint.html</anchorfile>
+      <anchor>a8f69c38e2593833b1901ef73e935d820</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>Scroom::Utils::Point</name>
     <filename>classScroom_1_1Utils_1_1Point.html</filename>
     <templarg>typename T</templarg>
@@ -17718,30 +18259,6 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>anonymous_namespace{tweak-view_test.cc}::PositionChild</name>
-    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1PositionChild.html</filename>
-    <base>Scroom::Utils::ITweakPresentationPosition</base>
-    <member kind="function">
-      <type></type>
-      <name>MOCK_METHOD</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1PositionChild.html</anchorfile>
-      <anchor>ad09cca71c96e5c4266ba87b19b1532a4</anchor>
-      <arglist>(Point&lt; double &gt;, tweakPosition,(const Point&lt; double &gt; &amp;, int),(const, override))</arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>anonymous_namespace{transformpresentation_test.cc}::PositionTweakMock</name>
-    <filename>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1PositionTweakMock.html</filename>
-    <base>Scroom::Utils::ITweakPresentationPosition</base>
-    <member kind="function">
-      <type></type>
-      <name>MOCK_METHOD</name>
-      <anchorfile>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1PositionTweakMock.html</anchorfile>
-      <anchor>a494ecbe504f695cf71beb77023144308</anchor>
-      <arglist>((Scroom::Utils::Point&lt; double &gt;), tweakPosition,(const Scroom::Utils::Point&lt; double &gt; &amp;, int),(const, override))</arglist>
-    </member>
-  </compound>
-  <compound kind="class">
     <name>PostRenderer</name>
     <filename>classPostRenderer.html</filename>
     <base protection="private">Interface</base>
@@ -17876,7 +18393,7 @@
     <name>PresentationInterface</name>
     <filename>classPresentationInterface.html</filename>
     <base>Viewable</base>
-    <base>Scroom::Utils::Observable</base>
+    <base>Scroom::Utils::Observable&lt; Viewable &gt;</base>
     <member kind="typedef">
       <type>std::shared_ptr&lt; PresentationInterface &gt;</type>
       <name>Ptr</name>
@@ -18129,6 +18646,18 @@
       <anchorfile>classPresentationObserver.html</anchorfile>
       <anchor>a271bf1d898ed04da85ea0022ec341b2b</anchor>
       <arglist>()=0</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>Scroom::Utils::PresentationPositionTweakMock</name>
+    <filename>classScroom_1_1Utils_1_1PresentationPositionTweakMock.html</filename>
+    <base>Scroom::Utils::ITweakPresentationPosition</base>
+    <member kind="function">
+      <type></type>
+      <name>MOCK_METHOD</name>
+      <anchorfile>classScroom_1_1Utils_1_1PresentationPositionTweakMock.html</anchorfile>
+      <anchor>a89a980f50e703935240a2249a74b289d</anchor>
+      <arglist>(Point&lt; double &gt;, tweakPosition,(const Point&lt; double &gt; &amp;, int),(const, override))</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -18606,8 +19135,8 @@
     <name>Scroom::Utils::ProgressInterfaceMultiplexer</name>
     <filename>classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer.html</filename>
     <base virtualness="virtual">Scroom::Utils::Base</base>
-    <class kind="class">Scroom::Utils::ProgressInterfaceMultiplexer::Child</class>
     <class kind="class">Scroom::Utils::ProgressInterfaceMultiplexer::ChildData</class>
+    <class kind="class">Scroom::Utils::ProgressInterfaceMultiplexer::Child</class>
     <member kind="typedef">
       <type>std::shared_ptr&lt; ProgressInterfaceMultiplexer &gt;</type>
       <name>Ptr</name>
@@ -19346,6 +19875,417 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>Rectangle</name>
+    <filename>classRectangle.html</filename>
+    <templarg>typename T</templarg>
+    <member kind="typedef">
+      <type>T</type>
+      <name>value_type</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>ae9da03b7257324aa5280b1e5ffd54a48</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>Point&lt; T &gt;</type>
+      <name>xy_type</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a26be8e0cb44d4b64c4e74a13f9759b22</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Rectangle</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a8bafbe715dcf9dc732ea2f197b9ecba1</anchor>
+      <arglist>()=default</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Rectangle</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a193a42cdd207109ce301d307246feb62</anchor>
+      <arglist>(value_type x_, value_type y_, value_type width_, value_type height_)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Rectangle</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a606827d1c16c8b8ebe05fc1c0fdf4132</anchor>
+      <arglist>(const Segment&lt; value_type &gt; &amp;horizontally_, const Segment&lt; value_type &gt; &amp;vertically_)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Rectangle</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a19d6c841479a5ab9ac31a55efecda784</anchor>
+      <arglist>(const cairo_rectangle_int_t &amp;rect)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Rectangle</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a532ebeccb9cd16490488c0a3be0d7740</anchor>
+      <arglist>(std::enable_if_t&lt;!T_is_int, Rectangle&lt; int &gt; const &amp; &gt; rect)</arglist>
+    </member>
+    <member kind="function">
+      <type>cairo_rectangle_int_t</type>
+      <name>toGdkRectangle</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a2b1f95eea80820e7f6434cc7ec1bee52</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle</type>
+      <name>moveTo</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>aedd0d1a9a795cfa71ba9dc888c2ef92d</anchor>
+      <arglist>(xy_type const &amp;other) const</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle</type>
+      <name>moveTo</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>aff624171cf321b8f05d4d6989ab361ec</anchor>
+      <arglist>(value_type const &amp;x, value_type const &amp;y) const</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>contains</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a214abe27a155259161e7bb317f5d32e2</anchor>
+      <arglist>(xy_type const &amp;other) const</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>contains</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a2950ca2f61eba8e9b00d02a68ac64a72</anchor>
+      <arglist>(const Rectangle &amp;other) const</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>intersects</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a986e254432e0c921011005312eb9d3c6</anchor>
+      <arglist>(const Rectangle &amp;other) const</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>reduceSizeToMultipleOf</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>af2878f439507d917170ed14d7843405e</anchor>
+      <arglist>(value_type size)</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle</type>
+      <name>intersection</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>aa93bcd537f48183edeb70a668f7352cf</anchor>
+      <arglist>(const Rectangle &amp;other) const</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle&lt; std::common_type_t&lt; T, U &gt; &gt;</type>
+      <name>intersection</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a6cb8acb8565a301acb295057c8ee0ec3</anchor>
+      <arglist>(const Rectangle&lt; U &gt; &amp;other) const</arglist>
+    </member>
+    <member kind="function">
+      <type>value_type</type>
+      <name>getTop</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a23ed938b3f63186f48c5828024a9d6ab</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>value_type</type>
+      <name>getLeft</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>ad623b0b902d4e2cd1d858300728c78d1</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>value_type</type>
+      <name>getBottom</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>af497bd1988b10b5e521a82bc05285eed</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>value_type</type>
+      <name>getRight</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>ac0a99c1ecbac98201ef36d88bf56eb40</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setTop</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>ae7fb0b3818fda25c736079f6352a9dd2</anchor>
+      <arglist>(value_type v)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setLeft</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a486cc67b8e32da2e9981935a468ef547</anchor>
+      <arglist>(value_type v)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setBottom</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a9e1d817f2255c07a95d625911b8bf0dc</anchor>
+      <arglist>(value_type v)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setRight</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a8fe6e50bc71270332b86a414e098e7a1</anchor>
+      <arglist>(value_type v)</arglist>
+    </member>
+    <member kind="function">
+      <type>value_type</type>
+      <name>getWidth</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a3b8d627a36eb56f6f36eea5004591154</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>value_type</type>
+      <name>getHeight</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>ac3ffb0067f3c0d0686ea2319cd5d5618</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>value_type</type>
+      <name>x</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a72976ed3a84a5c482d396038aa67f077</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>value_type</type>
+      <name>y</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a405cfffb11cdb9f2fa5600e2bf15231c</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>value_type</type>
+      <name>width</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>aac53b13b110251e6666a6e8499c19f27</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>value_type</type>
+      <name>height</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a1262f445c07c33e16069e2497aed581f</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>xy_type</type>
+      <name>getTopLeft</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>aa0205a1477a20bd1888f9dd480069bf2</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>xy_type</type>
+      <name>getTopRight</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a43b9e2c50da501d42ee265b76d061c1c</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>xy_type</type>
+      <name>getBottomLeft</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a6a2d89e24dea1c52daa0a8e6b5521cb7</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>xy_type</type>
+      <name>getBottomRight</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a010a83b3edfaf453fefc1dcf36704e40</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>isEmpty</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a63d218d52a6e28b5f3af118feb624019</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle&lt; value_type &gt;</type>
+      <name>leftOf</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a19b07766aef62d318ed693b9e4792dd8</anchor>
+      <arglist>(value_type v) const</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle&lt; value_type &gt;</type>
+      <name>leftOf</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a3bfd9e7186a657fa13e9a034606e4214</anchor>
+      <arglist>(Rectangle&lt; value_type &gt; const &amp;r) const</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle&lt; value_type &gt;</type>
+      <name>rightOf</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>ad390ca831049272af226cd28b57375c4</anchor>
+      <arglist>(value_type v) const</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle&lt; value_type &gt;</type>
+      <name>rightOf</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>ade8a48db78cec3d62e905d70c2d9b413</anchor>
+      <arglist>(Rectangle&lt; value_type &gt; const &amp;r) const</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle&lt; value_type &gt;</type>
+      <name>above</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a85f5cbf9f6e41f147f9ac2da355eeb22</anchor>
+      <arglist>(value_type v) const</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle&lt; value_type &gt;</type>
+      <name>above</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a2cdd80f81dcf15c6d223b7b16f8b3401</anchor>
+      <arglist>(Rectangle&lt; value_type &gt; const &amp;r) const</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle&lt; value_type &gt;</type>
+      <name>below</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a404f0a593691285d4597c354575468f2</anchor>
+      <arglist>(value_type v) const</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle&lt; value_type &gt;</type>
+      <name>below</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a770dc77284af75f2bb9eb41e2016cdd2</anchor>
+      <arglist>(Rectangle&lt; value_type &gt; const &amp;r) const</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator==</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a67601b0eaa9319fe17dfb17392a78b19</anchor>
+      <arglist>(const Rectangle &amp;other) const</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator!=</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>ada05719ee9223596fd5bba4f0542a284</anchor>
+      <arglist>(const Rectangle &amp;other) const</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle&lt; value_type &gt; &amp;</type>
+      <name>operator+=</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>ac54fbf15a3f67c3ae4a5e7b55f88766d</anchor>
+      <arglist>(xy_type const &amp;other)</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle&lt; value_type &gt; &amp;</type>
+      <name>operator-=</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a490ba15278cff4fd2b265e00239eda35</anchor>
+      <arglist>(xy_type const &amp;other)</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle&lt; value_type &gt; &amp;</type>
+      <name>operator*=</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>afd74d4e01274fdf2b7d2dc1251a76d40</anchor>
+      <arglist>(value_type other)</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle&lt; value_type &gt; &amp;</type>
+      <name>operator*=</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a68f564693eb1aeed0363aa312fe620d7</anchor>
+      <arglist>(xy_type const &amp;other)</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle&lt; value_type &gt; &amp;</type>
+      <name>operator/=</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a401cf28994e3b72fd4237e1999288940</anchor>
+      <arglist>(value_type other)</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle&lt; value_type &gt; &amp;</type>
+      <name>operator/=</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>aa3b00a024632482c3993fc4d37f88612</anchor>
+      <arglist>(xy_type const &amp;other)</arglist>
+    </member>
+    <member kind="function">
+      <type>const Segment&lt; value_type &gt; &amp;</type>
+      <name>getHorizontally</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a8653f4482fe6412882b3b9e52ee54b0c</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>const Segment&lt; value_type &gt; &amp;</type>
+      <name>getVertically</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a1ce2513a6ba0084ea4432edd3a9431f2</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setSize</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a2b0656791e956f3c2f29b9a02eedff4d</anchor>
+      <arglist>(xy_type const &amp;s)</arglist>
+    </member>
+    <member kind="function">
+      <type>xy_type</type>
+      <name>getSize</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a94801f893685dd3f231a75d94e6a6dd1</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>Rectangle&lt; U &gt;</type>
+      <name>to</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a925a9d6a8ef993a041f6918902d49967</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>Segment&lt; value_type &gt;</type>
+      <name>horizontally</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a4b1bfd88dfb9f4e74ec2410a62b14ab6</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>Segment&lt; value_type &gt;</type>
+      <name>vertically</name>
+      <anchorfile>classRectangle.html</anchorfile>
+      <anchor>a35c6f8b7d9d5f4ca27de0949da1493d6</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>Scroom::Utils::Rectangle</name>
     <filename>classScroom_1_1Utils_1_1Rectangle.html</filename>
     <templarg>typename T</templarg>
@@ -19764,7 +20704,7 @@
   <compound kind="class">
     <name>RectangleHorizontalTestScaffold</name>
     <filename>classRectangleHorizontalTestScaffold.html</filename>
-    <base>Rectangle&lt; int &gt;</base>
+    <base>Scroom::Utils::Rectangle&lt; T &gt;</base>
     <member kind="function">
       <type></type>
       <name>RectangleHorizontalTestScaffold</name>
@@ -19867,7 +20807,7 @@
   <compound kind="class">
     <name>RectangleVerticalTestScaffold</name>
     <filename>classRectangleVerticalTestScaffold.html</filename>
-    <base>Rectangle&lt; int &gt;</base>
+    <base>Scroom::Utils::Rectangle&lt; T &gt;</base>
     <member kind="function">
       <type></type>
       <name>RectangleVerticalTestScaffold</name>
@@ -20001,7 +20941,7 @@
       <type>std::shared_ptr&lt; Registration&lt; T &gt; &gt;</type>
       <name>Ptr</name>
       <anchorfile>classScroom_1_1Utils_1_1Detail_1_1Registration.html</anchorfile>
-      <anchor>a0bc6b88c23a6dd26782db02886dfcccc</anchor>
+      <anchor>a641fa34315db87704e3fdd78064f3cec</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
@@ -20178,10 +21118,22 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>list::reverse_iterator</name>
+    <filename>classlist_1_1reverse__iterator.html</filename>
+  </compound>
+  <compound kind="class">
+    <name>set::reverse_iterator</name>
+    <filename>classset_1_1reverse__iterator.html</filename>
+  </compound>
+  <compound kind="class">
+    <name>vector::reverse_iterator</name>
+    <filename>classvector_1_1reverse__iterator.html</filename>
+  </compound>
+  <compound kind="class">
     <name>Scroom::RingBufferSink</name>
     <filename>classScroom_1_1RingBufferSink.html</filename>
-    <class kind="struct">Scroom::RingBufferSink::ConsumeResult</class>
     <class kind="struct">Scroom::RingBufferSink::Entry</class>
+    <class kind="struct">Scroom::RingBufferSink::ConsumeResult</class>
     <member kind="typedef">
       <type>std::shared_ptr&lt; RingBufferSink &gt;</type>
       <name>Ptr</name>
@@ -20555,6 +21507,18 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>Scroom::Utils::RulerAreaTweakMock</name>
+    <filename>classScroom_1_1Utils_1_1RulerAreaTweakMock.html</filename>
+    <base>Scroom::Utils::ITweakRulers</base>
+    <member kind="function">
+      <type></type>
+      <name>MOCK_METHOD</name>
+      <anchorfile>classScroom_1_1Utils_1_1RulerAreaTweakMock.html</anchorfile>
+      <anchor>afb2953fe2886b5594c296c9e46ef1d55</anchor>
+      <arglist>(Rectangle&lt; double &gt;, tweakRulers,(const Point&lt; double &gt; &amp;, const Point&lt; int &gt; &amp;, int),(const, override))</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>RulerCalculations</name>
     <filename>classRulerCalculations.html</filename>
     <member kind="function" static="yes">
@@ -20697,27 +21661,148 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>anonymous_namespace{tweak-view_test.cc}::RulersChild</name>
-    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1RulersChild.html</filename>
-    <base>Scroom::Utils::ITweakRulers</base>
-    <member kind="function">
-      <type></type>
-      <name>MOCK_METHOD</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1RulersChild.html</anchorfile>
-      <anchor>af299dec95ac850ee8517a804a1e375a1</anchor>
-      <arglist>(Rectangle&lt; double &gt;, tweakRulers,(const Point&lt; double &gt; &amp;, const Point&lt; int &gt; &amp;, int),(const, override))</arglist>
+    <name>SampleIterator</name>
+    <filename>classSampleIterator.html</filename>
+    <templarg>typename ConstBase</templarg>
+    <member kind="typedef">
+      <type>std::remove_const_t&lt; ConstBase &gt;</type>
+      <name>Base</name>
+      <anchorfile>classSampleIterator.html</anchorfile>
+      <anchor>afdfccf3a027408d537d3bfa7b9df5d0e</anchor>
+      <arglist></arglist>
     </member>
-  </compound>
-  <compound kind="class">
-    <name>anonymous_namespace{transformpresentation_test.cc}::RulersTweakMock</name>
-    <filename>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1RulersTweakMock.html</filename>
-    <base>Scroom::Utils::ITweakRulers</base>
     <member kind="function">
       <type></type>
-      <name>MOCK_METHOD</name>
-      <anchorfile>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1RulersTweakMock.html</anchorfile>
-      <anchor>a8f9d59bb13766a086c5f021719c1fad9</anchor>
-      <arglist>((Scroom::Utils::Rectangle&lt; double &gt;), tweakRulers,(const Scroom::Utils::Point&lt; double &gt; &amp;, const Scroom::Utils::Point&lt; int &gt; &amp;, int),(const, override))</arglist>
+      <name>SampleIterator</name>
+      <anchorfile>classSampleIterator.html</anchorfile>
+      <anchor>adfee8eaeb7b7383396a533b4c4b0f82e</anchor>
+      <arglist>(ConstBase *base, int offset=0, int bps_=1)</arglist>
+    </member>
+    <member kind="function">
+      <type>Base</type>
+      <name>get</name>
+      <anchorfile>classSampleIterator.html</anchorfile>
+      <anchor>a0d69ab50c30d838fefeb141a546c1120</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>set</name>
+      <anchorfile>classSampleIterator.html</anchorfile>
+      <anchor>a6dddb604ef3669fd04851f91645b8840</anchor>
+      <arglist>(ConstBase value)</arglist>
+    </member>
+    <member kind="function">
+      <type>SampleIterator &amp;</type>
+      <name>operator++</name>
+      <anchorfile>classSampleIterator.html</anchorfile>
+      <anchor>ab3ac994aa0936c45e9f4e485edc25e98</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>SampleIterator</type>
+      <name>operator++</name>
+      <anchorfile>classSampleIterator.html</anchorfile>
+      <anchor>aa9f579c5fae140309ebbb7117b7ee212</anchor>
+      <arglist>(int)</arglist>
+    </member>
+    <member kind="function">
+      <type>SampleIterator &amp;</type>
+      <name>operator+=</name>
+      <anchorfile>classSampleIterator.html</anchorfile>
+      <anchor>ad07af96d3f7f88cd7822c7f6a7be8b8b</anchor>
+      <arglist>(unsigned int x)</arglist>
+    </member>
+    <member kind="function">
+      <type>Base</type>
+      <name>operator*</name>
+      <anchorfile>classSampleIterator.html</anchorfile>
+      <anchor>adb32faa5e8438c1905c620f3fadcfa6c</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator==</name>
+      <anchorfile>classSampleIterator.html</anchorfile>
+      <anchor>afedc31f1aa4db6198eefbe5d9952df73</anchor>
+      <arglist>(const SampleIterator&lt; ConstBase &gt; &amp;other) const</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator!=</name>
+      <anchorfile>classSampleIterator.html</anchorfile>
+      <anchor>a1ca0279cce14b05ea2cd02fb2e6477de</anchor>
+      <arglist>(const SampleIterator&lt; ConstBase &gt; &amp;other) const</arglist>
+    </member>
+    <member kind="variable">
+      <type>const int</type>
+      <name>bps</name>
+      <anchorfile>classSampleIterator.html</anchorfile>
+      <anchor>a4ff8eac9c539fc4d054aee59a67e3e3a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>const int</type>
+      <name>samplesPerBase</name>
+      <anchorfile>classSampleIterator.html</anchorfile>
+      <anchor>af92761c58aa8b640e0a8cfc1c324b0b5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>const int</type>
+      <name>pixelOffset</name>
+      <anchorfile>classSampleIterator.html</anchorfile>
+      <anchor>a9bbc5202d0d2ae494a4167c31e49bdd2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>const ConstBase</type>
+      <name>pixelMask</name>
+      <anchorfile>classSampleIterator.html</anchorfile>
+      <anchor>acf324bdbc012551b9ef7d5c9c0e0dbc8</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>ConstBase *</type>
+      <name>currentBase</name>
+      <anchorfile>classSampleIterator.html</anchorfile>
+      <anchor>ae6f07d4ec58d43ef6fb014a105a24d25</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>currentOffset</name>
+      <anchorfile>classSampleIterator.html</anchorfile>
+      <anchor>a992f5f28bafb677070cd9853e77ce638</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" static="yes">
+      <type>static const int</type>
+      <name>bitsPerBase</name>
+      <anchorfile>classSampleIterator.html</anchorfile>
+      <anchor>a206a33fab2247db4ec53460938b8287f</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type></type>
+      <name>SampleIterator</name>
+      <anchorfile>classSampleIterator.html</anchorfile>
+      <anchor>ae2745d64e77a7cebed7d8f6fcf0c781d</anchor>
+      <arglist>(div_t d, ConstBase *base, int bps_, int samplesPerBase_)</arglist>
+    </member>
+    <member kind="function" protection="private" static="yes">
+      <type>static int</type>
+      <name>samplesPerBaseFromBps</name>
+      <anchorfile>classSampleIterator.html</anchorfile>
+      <anchor>a4a07bf60be20c4957be487173927eb37</anchor>
+      <arglist>(int bps_)</arglist>
+    </member>
+    <member kind="function" protection="private" static="yes">
+      <type>static Base</type>
+      <name>mask</name>
+      <anchorfile>classSampleIterator.html</anchorfile>
+      <anchor>acef5bd0d8bb2a49b0d944f5220d56afe</anchor>
+      <arglist>(int bps)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -21250,6 +22335,228 @@
       <arglist></arglist>
     </member>
   </compound>
+  <compound kind="class">
+    <name>Segment</name>
+    <filename>classSegment.html</filename>
+    <templarg>typename T</templarg>
+    <member kind="typedef">
+      <type>T</type>
+      <name>value_type</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>a052060aee22c9a2d881afaa7450370ca</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Segment</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>a72105b3913b1afea17fa50fb7ddaeb3b</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Segment</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>a9c50a43e72c7ecd4ea28afd45db639d4</anchor>
+      <arglist>(value_type start_, value_type size_)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Segment</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>a13eff5c903ef54b9b18869b12f568ad5</anchor>
+      <arglist>(std::enable_if_t&lt;!T_is_int, Segment&lt; int &gt; const &amp; &gt; other)</arglist>
+    </member>
+    <member kind="function">
+      <type>Segment</type>
+      <name>moveTo</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>aee92c34e23b51b652fbff9f926df4365</anchor>
+      <arglist>(value_type p) const</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>contains</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>a812be475d7510f283272c03349002473</anchor>
+      <arglist>(value_type p) const</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>contains</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>aef1bd55a2e114e386583311f2462e495</anchor>
+      <arglist>(const Segment&lt; value_type &gt; &amp;other) const</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>intersects</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>a92f042e643fa44763cce83fdcadc596f</anchor>
+      <arglist>(const Segment&lt; value_type &gt; &amp;other) const</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>reduceSizeToMultipleOf</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>af4df6c3f7b52137f6f46fa9e71f9d738</anchor>
+      <arglist>(value_type m)</arglist>
+    </member>
+    <member kind="function">
+      <type>Segment&lt; value_type &gt;</type>
+      <name>intersection</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>ac38f7461d5b5fe7fecbb051957259b5e</anchor>
+      <arglist>(const Segment&lt; value_type &gt; &amp;other) const</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>intersect</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>a058c64d4c5298325d97e08306372bd7c</anchor>
+      <arglist>(const Segment&lt; value_type &gt; &amp;other)</arglist>
+    </member>
+    <member kind="function">
+      <type>Segment&lt; value_type &gt;</type>
+      <name>before</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>a2a0611fccf06b9f533660e6071512056</anchor>
+      <arglist>(value_type v) const</arglist>
+    </member>
+    <member kind="function">
+      <type>Segment&lt; value_type &gt;</type>
+      <name>after</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>aa82180a395d93bbd9b1deb10c3d5bf1e</anchor>
+      <arglist>(value_type v) const</arglist>
+    </member>
+    <member kind="function">
+      <type>value_type</type>
+      <name>getStart</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>a934a0a56d270e8d4fc4ceddb4dc7fb82</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>value_type</type>
+      <name>getEnd</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>a671e0c8614114bf5eb99afd36a2dddc4</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>value_type</type>
+      <name>getSize</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>abd475ea75311ffaed7e8175125d2d3b5</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>isEmpty</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>a3ccc0b3193fcff305a0bec13424fdc4d</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator==</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>a10aa44ca7701af36d45fc5b1755fe69e</anchor>
+      <arglist>(const Segment&lt; value_type &gt; &amp;other) const</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator!=</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>a2b3149e7915a0d4990b00340a0a8584f</anchor>
+      <arglist>(const Segment&lt; value_type &gt; &amp;other) const</arglist>
+    </member>
+    <member kind="function">
+      <type>Segment&lt; value_type &gt; &amp;</type>
+      <name>operator+=</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>a6801c3650e701388be8811fcb120efa0</anchor>
+      <arglist>(value_type n)</arglist>
+    </member>
+    <member kind="function">
+      <type>Segment&lt; value_type &gt; &amp;</type>
+      <name>operator-=</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>a7bf7e37ef36ec028a27f8c81c12d0b05</anchor>
+      <arglist>(value_type n)</arglist>
+    </member>
+    <member kind="function">
+      <type>Segment&lt; value_type &gt; &amp;</type>
+      <name>operator*=</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>ad1d23ebbdd023986a3627801b312bebe</anchor>
+      <arglist>(value_type n)</arglist>
+    </member>
+    <member kind="function">
+      <type>Segment&lt; value_type &gt; &amp;</type>
+      <name>operator/=</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>a131315564193878ad76552f704d3e7b2</anchor>
+      <arglist>(value_type n)</arglist>
+    </member>
+    <member kind="function">
+      <type>Segment&lt; value_type &gt; &amp;</type>
+      <name>operator&amp;=</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>a577fd7ae834b3040d113a540c3cab730</anchor>
+      <arglist>(const Segment&lt; value_type &gt; &amp;other)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setStart</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>a6192ab81f7c31fa85fe3f87074d6e7a2</anchor>
+      <arglist>(value_type n)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setSize</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>a0ae4e45bebe6e212dd6f4b6d06e8fdb4</anchor>
+      <arglist>(value_type n)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setEnd</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>a98fd542639fe9411293029487bbc2ab0</anchor>
+      <arglist>(value_type n)</arglist>
+    </member>
+    <member kind="function">
+      <type>Segment&lt; U &gt;</type>
+      <name>to</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>ab097dcc93ec2c2db9681750092dcbc32</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type>void</type>
+      <name>normalize</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>aa3415b3b3cc8f607a25b3aad79221441</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>value_type</type>
+      <name>start</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>a990ac5fc3adae34671e1c92a2ed735a6</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>value_type</type>
+      <name>size</name>
+      <anchorfile>classSegment.html</anchorfile>
+      <anchor>a35c0fbb0e74dd156bb14da567a6b3177</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
   <compound kind="struct">
     <name>Selection</name>
     <filename>structSelection.html</filename>
@@ -21325,18 +22632,6 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>anonymous_namespace{tweak-view_test.cc}::SelectionChild</name>
-    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1SelectionChild.html</filename>
-    <base>Scroom::Utils::ITweakSelection</base>
-    <member kind="function">
-      <type></type>
-      <name>MOCK_METHOD</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1SelectionChild.html</anchorfile>
-      <anchor>a38a6f45b480136c98b24681702e19845</anchor>
-      <arglist>(Selection, tweakSelection,(const Selection &amp;),(const, override))</arglist>
-    </member>
-  </compound>
-  <compound kind="class">
     <name>SelectionListener</name>
     <filename>classSelectionListener.html</filename>
     <base protection="private">Interface</base>
@@ -21377,14 +22672,14 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>anonymous_namespace{transformpresentation_test.cc}::SelectionTweakMock</name>
-    <filename>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1SelectionTweakMock.html</filename>
+    <name>Scroom::Utils::SelectionTweakMock</name>
+    <filename>classScroom_1_1Utils_1_1SelectionTweakMock.html</filename>
     <base>Scroom::Utils::ITweakSelection</base>
     <member kind="function">
       <type></type>
       <name>MOCK_METHOD</name>
-      <anchorfile>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1SelectionTweakMock.html</anchorfile>
-      <anchor>ac1cc291486c9a55c44c9fae46345f842</anchor>
+      <anchorfile>classScroom_1_1Utils_1_1SelectionTweakMock.html</anchorfile>
+      <anchor>a329e5b3a8c6653c435f943af4cf55f38</anchor>
       <arglist>(Selection, tweakSelection,(const Selection &amp;),(const, override))</arglist>
     </member>
   </compound>
@@ -21445,6 +22740,22 @@
       <name>mut</name>
       <anchorfile>classScroom_1_1Semaphore.html</anchorfile>
       <anchor>a1cc9aa43ff5f1cffad53d65232263c2b</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>set</name>
+    <filename>classset.html</filename>
+    <templarg>typename K</templarg>
+    <class kind="class">set::iterator</class>
+    <class kind="class">set::const_iterator</class>
+    <class kind="class">set::reverse_iterator</class>
+    <class kind="class">set::const_reverse_iterator</class>
+    <member kind="variable">
+      <type>K</type>
+      <name>keys</name>
+      <anchorfile>classset.html</anchorfile>
+      <anchor>a7f92ca6d6e5216b9c4be631bd87f1df4</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -21679,15 +22990,8 @@
       <type>Rectangle&lt; double &gt;</type>
       <name>tweakSelection</name>
       <anchorfile>classScroom_1_1Utils_1_1SnapSelectionsToGrid.html</anchorfile>
-      <anchor>a9b8a542ab9274d1402ec294611b86adc</anchor>
-      <arglist>(const Rectangle&lt; double &gt; &amp;selection) const override</arglist>
-    </member>
-    <member kind="function">
-      <type>virtual Rectangle&lt; double &gt;</type>
-      <name>tweakSelection</name>
-      <anchorfile>classScroom_1_1Utils_1_1SnapSelectionsToGrid.html</anchorfile>
-      <anchor>a2a31d294f651af9bb8287291afef6bca</anchor>
-      <arglist>(const Rectangle&lt; double &gt; &amp;selection) const=0</arglist>
+      <anchor>a9a119927896132b7dda9446d44cceb82</anchor>
+      <arglist>(const Rectangle&lt; double &gt; &amp;selectionArea) const override</arglist>
     </member>
     <member kind="function">
       <type>Selection</type>
@@ -21709,9 +23013,9 @@
     <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1SnapSelectionsToGridTest.html</filename>
     <member kind="variable" protection="protected">
       <type>SnapSelectionsToGrid</type>
-      <name>snapToGrid</name>
+      <name>m_snapToGrid</name>
       <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1SnapSelectionsToGridTest.html</anchorfile>
-      <anchor>ab1bcc30a437f1329b516080bbeae15a1</anchor>
+      <anchor>afa6d2f565125b92fd228fcfb23e772c8</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -22100,7 +23404,7 @@
   <compound kind="class">
     <name>TestCounted</name>
     <filename>classTestCounted.html</filename>
-    <base>Counted&lt; TestCounted &gt;</base>
+    <base>Scroom::Utils::Counted&lt; TestCounted &gt;</base>
   </compound>
   <compound kind="class">
     <name>TestData</name>
@@ -22228,7 +23532,7 @@
   <compound kind="class">
     <name>TestObservable</name>
     <filename>classTestObservable.html</filename>
-    <base>Observable&lt; TestObserver &gt;</base>
+    <base>Scroom::Utils::Observable&lt; TestObserver &gt;</base>
     <member kind="typedef">
       <type>std::shared_ptr&lt; TestObservable &gt;</type>
       <name>Ptr</name>
@@ -22279,7 +23583,7 @@
   <compound kind="class">
     <name>TestRecursiveObservable</name>
     <filename>classTestRecursiveObservable.html</filename>
-    <base>Observable&lt; TestObserver &gt;</base>
+    <base>Scroom::Utils::Observable&lt; TestObserver &gt;</base>
     <member kind="typedef">
       <type>std::shared_ptr&lt; TestRecursiveObservable &gt;</type>
       <name>Ptr</name>
@@ -22321,44 +23625,6 @@
       <anchorfile>classTestRecursiveObservable.html</anchorfile>
       <anchor>a682b6ab025aae0a258b675afbe36178c</anchor>
       <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>anonymous_namespace{tweak-view_test.cc}::TextBoxChild</name>
-    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1TextBoxChild.html</filename>
-    <base>Scroom::Utils::ITweakPositionTextBox</base>
-    <member kind="function">
-      <type></type>
-      <name>MOCK_METHOD</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1TextBoxChild.html</anchorfile>
-      <anchor>ad1581b66c8b88bb51d976c493250d567</anchor>
-      <arglist>(Point&lt; double &gt;, parse,(std::string_view, std::string_view, const Point&lt; int &gt; &amp;, int),(const, override))</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>MOCK_METHOD</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1TextBoxChild.html</anchorfile>
-      <anchor>a24fb23840dfcb1c696f0029cfa3968b5</anchor>
-      <arglist>((std::pair&lt; std::string, std::string &gt;), display,(const Point&lt; double &gt; &amp;, const Point&lt; int &gt; &amp;, int),(const, override))</arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>anonymous_namespace{transformpresentation_test.cc}::TextTweakMock</name>
-    <filename>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TextTweakMock.html</filename>
-    <base>Scroom::Utils::ITweakPositionTextBox</base>
-    <member kind="function">
-      <type></type>
-      <name>MOCK_METHOD</name>
-      <anchorfile>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TextTweakMock.html</anchorfile>
-      <anchor>a01dbd47c5e213636a478ca5afa626740</anchor>
-      <arglist>((Scroom::Utils::Point&lt; double &gt;), parse,(std::string_view, std::string_view, const Scroom::Utils::Point&lt; int &gt; &amp;, int),(const, override))</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>MOCK_METHOD</name>
-      <anchorfile>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TextTweakMock.html</anchorfile>
-      <anchor>a0afcc2b1e4c36c7d1290033ceb376fb5</anchor>
-      <arglist>((std::pair&lt; std::string, std::string &gt;), display,(const Scroom::Utils::Point&lt; double &gt; &amp;, const Scroom::Utils::Point&lt; int &gt; &amp;, int),(const, override))</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -23616,7 +24882,7 @@
   <compound kind="class">
     <name>TileViewState</name>
     <filename>classTileViewState.html</filename>
-    <base>Observable&lt; TileLoadingObserver &gt;</base>
+    <base>Scroom::Utils::Observable&lt; TileLoadingObserver &gt;</base>
     <base>TileLoadingObserver</base>
     <member kind="enumeration">
       <type></type>
@@ -24420,6 +25686,59 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>anonymous_namespace{transformpresentation_test.cc}::TransformPresentationContextTest</name>
+    <filename>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TransformPresentationContextTest.html</filename>
+    <member kind="function" protection="protected">
+      <type>std::shared_ptr&lt; const Context &gt;</type>
+      <name>createPresentationContext</name>
+      <anchorfile>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TransformPresentationContextTest.html</anchorfile>
+      <anchor>a8240eb1ab0f3f50ca4e3c89d023965f4</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>const Point&lt; double &gt;</type>
+      <name>m_aspectRatio</name>
+      <anchorfile>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TransformPresentationContextTest.html</anchorfile>
+      <anchor>a8abd91580af00ba007bfb261b40ec751</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>const Point&lt; double &gt;</type>
+      <name>m_aPoint</name>
+      <anchorfile>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TransformPresentationContextTest.html</anchorfile>
+      <anchor>ab1f6094ae402a6d351a4a78a92b9d04d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>const Point&lt; int &gt;</type>
+      <name>m_viewSize</name>
+      <anchorfile>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TransformPresentationContextTest.html</anchorfile>
+      <anchor>aaa7d647c98be488264236db81a172178</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>const Context::Ptr</type>
+      <name>m_childContext</name>
+      <anchorfile>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TransformPresentationContextTest.html</anchorfile>
+      <anchor>a94212d2d5acffeb2248022493926a833</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>const ColormappablePresentationMock::Ptr</type>
+      <name>m_child</name>
+      <anchorfile>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TransformPresentationContextTest.html</anchorfile>
+      <anchor>a4d7244d2986a16e0627f1d3a0fff396e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>TransformPresentation::Ptr</type>
+      <name>m_presentation</name>
+      <anchorfile>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TransformPresentationContextTest.html</anchorfile>
+      <anchor>a56316df7cd0eeb556ccb1d7249627019</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>TransparentOverlay</name>
     <filename>classTransparentOverlay.html</filename>
     <base>PluginInformationInterface</base>
@@ -24753,6 +26072,136 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>Scroom::Utils::TweakPresentationPositionsWithAspectRatio</name>
+    <filename>classScroom_1_1Utils_1_1TweakPresentationPositionsWithAspectRatio.html</filename>
+    <base>Scroom::Utils::ITweakPresentationPosition</base>
+    <member kind="function">
+      <type>Point&lt; double &gt;</type>
+      <name>tweakPosition</name>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPresentationPositionsWithAspectRatio.html</anchorfile>
+      <anchor>a6d37d37373ee95a0b9a56c89076e776a</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;currentPosition, int zoom) const override</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static ITweakPresentationPosition::Ptr</type>
+      <name>create</name>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPresentationPositionsWithAspectRatio.html</anchorfile>
+      <anchor>ab4da80bc129d6706f2523ba3a0f5e93b</anchor>
+      <arglist>(ITweakPresentationPosition::Ptr child, const Point&lt; double &gt; &amp;aspectRatio)</arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type></type>
+      <name>TweakPresentationPositionsWithAspectRatio</name>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPresentationPositionsWithAspectRatio.html</anchorfile>
+      <anchor>ad330a84662964f66c92c23fe8659ab53</anchor>
+      <arglist>(ITweakPresentationPosition::Ptr child, const Point&lt; double &gt; &amp;aspectRatio)</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>ITweakPresentationPosition::Ptr</type>
+      <name>m_child</name>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPresentationPositionsWithAspectRatio.html</anchorfile>
+      <anchor>aa626901b0e48194aa5c84f24d03f88c6</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>const Point&lt; double &gt;</type>
+      <name>m_aspectRatio</name>
+      <anchorfile>classScroom_1_1Utils_1_1TweakPresentationPositionsWithAspectRatio.html</anchorfile>
+      <anchor>ab655da7bb2571b1899c9cd8cbdadfac9</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>anonymous_namespace{tweak-view_test.cc}::TweakPresentationPositionsWithAspectRatioTest</name>
+    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakPresentationPositionsWithAspectRatioTest.html</filename>
+    <member kind="variable" protection="protected">
+      <type>const Point&lt; double &gt;</type>
+      <name>m_aspectRatio</name>
+      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakPresentationPositionsWithAspectRatioTest.html</anchorfile>
+      <anchor>a1d04181889313408b218458d7e2432fd</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>const std::shared_ptr&lt; testing::StrictMock&lt; PresentationPositionTweakMock &gt; &gt;</type>
+      <name>m_child</name>
+      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakPresentationPositionsWithAspectRatioTest.html</anchorfile>
+      <anchor>a427d564793897b6c4703b62290eb08ec</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>const ITweakPresentationPosition::Ptr</type>
+      <name>m_tweak</name>
+      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakPresentationPositionsWithAspectRatioTest.html</anchorfile>
+      <anchor>ab8489bb3188dc9304595f21abe83970d</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>Scroom::Utils::TweakRulersWithAspectRatio</name>
+    <filename>classScroom_1_1Utils_1_1TweakRulersWithAspectRatio.html</filename>
+    <base>Scroom::Utils::ITweakRulers</base>
+    <member kind="function">
+      <type>Rectangle&lt; double &gt;</type>
+      <name>tweakRulers</name>
+      <anchorfile>classScroom_1_1Utils_1_1TweakRulersWithAspectRatio.html</anchorfile>
+      <anchor>ac0141cd0ec7431ce3d6e78d5464f7349</anchor>
+      <arglist>(const Point&lt; double &gt; &amp;currentPosition, const Point&lt; int &gt; &amp;viewSize, int zoom) const override</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static ITweakRulers::Ptr</type>
+      <name>create</name>
+      <anchorfile>classScroom_1_1Utils_1_1TweakRulersWithAspectRatio.html</anchorfile>
+      <anchor>ac54c7ce1b5973c75f8f46946257db6ed</anchor>
+      <arglist>(ITweakRulers::Ptr child, const Point&lt; double &gt; &amp;aspectRatio)</arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type></type>
+      <name>TweakRulersWithAspectRatio</name>
+      <anchorfile>classScroom_1_1Utils_1_1TweakRulersWithAspectRatio.html</anchorfile>
+      <anchor>a7b7f7251d7d7ade9bf231d1c4e7a6840</anchor>
+      <arglist>(ITweakRulers::Ptr child, const Point&lt; double &gt; &amp;aspectRatio)</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>ITweakRulers::Ptr</type>
+      <name>m_child</name>
+      <anchorfile>classScroom_1_1Utils_1_1TweakRulersWithAspectRatio.html</anchorfile>
+      <anchor>a48da11993967a03f16911ceb56686690</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>const Point&lt; double &gt;</type>
+      <name>m_aspectRatio</name>
+      <anchorfile>classScroom_1_1Utils_1_1TweakRulersWithAspectRatio.html</anchorfile>
+      <anchor>ade56c376fdc4464a6189d17e4a5a5ff4</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>anonymous_namespace{tweak-view_test.cc}::TweakRulersWithAspectRatioTest</name>
+    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakRulersWithAspectRatioTest.html</filename>
+    <member kind="variable" protection="protected">
+      <type>const Point&lt; double &gt;</type>
+      <name>m_aspectRatio</name>
+      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakRulersWithAspectRatioTest.html</anchorfile>
+      <anchor>a606dfc7d699e408fbc8fe5ccecf63ce2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>const std::shared_ptr&lt; testing::StrictMock&lt; RulerAreaTweakMock &gt; &gt;</type>
+      <name>m_child</name>
+      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakRulersWithAspectRatioTest.html</anchorfile>
+      <anchor>a33c1f9c9d0751cccfe6083764e0490e1</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>const ITweakRulers::Ptr</type>
+      <name>m_tweak</name>
+      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakRulersWithAspectRatioTest.html</anchorfile>
+      <anchor>aa0a44c46d7344e7007647e4504f74e45</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>Scroom::Utils::TweakSelectionsAsRectangles</name>
     <filename>classScroom_1_1Utils_1_1TweakSelectionsAsRectangles.html</filename>
     <base>Scroom::Utils::ITweakSelection</base>
@@ -24767,8 +26216,8 @@
       <type>virtual Rectangle&lt; double &gt;</type>
       <name>tweakSelection</name>
       <anchorfile>classScroom_1_1Utils_1_1TweakSelectionsAsRectangles.html</anchorfile>
-      <anchor>a8a87e71011d2d7eb61a2ddac976ac190</anchor>
-      <arglist>(const Rectangle&lt; double &gt; &amp;selection) const =0</arglist>
+      <anchor>a1cf5d3718ffe42f73d9916694c8dd2e7</anchor>
+      <arglist>(const Rectangle&lt; double &gt; &amp;selectionArea) const =0</arglist>
     </member>
     <member kind="function">
       <type>Selection</type>
@@ -24779,15 +26228,29 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>anonymous_namespace{tweak-view_test.cc}::TweakSelectionsAsRectanglesMock</name>
-    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsAsRectanglesMock.html</filename>
+    <name>Scroom::Utils::TweakSelectionsAsRectanglesMock</name>
+    <filename>classScroom_1_1Utils_1_1TweakSelectionsAsRectanglesMock.html</filename>
     <base>Scroom::Utils::TweakSelectionsAsRectangles</base>
     <member kind="function">
       <type></type>
       <name>MOCK_METHOD</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsAsRectanglesMock.html</anchorfile>
-      <anchor>a71ac20a4fbabb7ce9838355b843712b2</anchor>
+      <anchorfile>classScroom_1_1Utils_1_1TweakSelectionsAsRectanglesMock.html</anchorfile>
+      <anchor>ace8500e11bea958d0e36f00ae61d5dd4</anchor>
       <arglist>(Rectangle&lt; double &gt;, tweakSelection,(const Rectangle&lt; double &gt; &amp;),(const, override))</arglist>
+    </member>
+    <member kind="function">
+      <type>virtual Rectangle&lt; double &gt;</type>
+      <name>tweakSelection</name>
+      <anchorfile>classScroom_1_1Utils_1_1TweakSelectionsAsRectanglesMock.html</anchorfile>
+      <anchor>a920b5aafe58e2fd8a5875a24c7ec4989</anchor>
+      <arglist>(const Rectangle&lt; double &gt; &amp;selectionArea) const=0</arglist>
+    </member>
+    <member kind="function">
+      <type>Selection</type>
+      <name>tweakSelection</name>
+      <anchorfile>classScroom_1_1Utils_1_1TweakSelectionsAsRectanglesMock.html</anchorfile>
+      <anchor>afff8c0400ef09e09474d5602a274ad63</anchor>
+      <arglist>(const Selection &amp;selection) const override</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -24795,9 +26258,74 @@
     <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsAsRectanglesTest.html</filename>
     <member kind="variable" protection="protected">
       <type>testing::StrictMock&lt; TweakSelectionsAsRectanglesMock &gt;</type>
-      <name>tweak</name>
+      <name>m_tweak</name>
       <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsAsRectanglesTest.html</anchorfile>
-      <anchor>a08b4a75c7c2326404b90aab380706f3c</anchor>
+      <anchor>a40ce3987bdf9f1c97689505055827d3a</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>Scroom::Utils::TweakSelectionsWithAspectRatio</name>
+    <filename>classScroom_1_1Utils_1_1TweakSelectionsWithAspectRatio.html</filename>
+    <base>Scroom::Utils::ITweakSelection</base>
+    <member kind="function">
+      <type>Selection</type>
+      <name>tweakSelection</name>
+      <anchorfile>classScroom_1_1Utils_1_1TweakSelectionsWithAspectRatio.html</anchorfile>
+      <anchor>a86afd5b773f9ed8c433b4083a2ba12ad</anchor>
+      <arglist>(const Selection &amp;selection) const override</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static ITweakSelection::Ptr</type>
+      <name>create</name>
+      <anchorfile>classScroom_1_1Utils_1_1TweakSelectionsWithAspectRatio.html</anchorfile>
+      <anchor>affe8510d7356c8295d3a1860f250dfd2</anchor>
+      <arglist>(ITweakSelection::Ptr child, const Point&lt; double &gt; &amp;aspectRatio)</arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type></type>
+      <name>TweakSelectionsWithAspectRatio</name>
+      <anchorfile>classScroom_1_1Utils_1_1TweakSelectionsWithAspectRatio.html</anchorfile>
+      <anchor>a9766fbc866c894dbcc39b01503922048</anchor>
+      <arglist>(ITweakSelection::Ptr child, const Point&lt; double &gt; &amp;aspectRatio)</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>ITweakSelection::Ptr</type>
+      <name>m_child</name>
+      <anchorfile>classScroom_1_1Utils_1_1TweakSelectionsWithAspectRatio.html</anchorfile>
+      <anchor>ab3cf7b56ee275ebd6b197ca21cea6648</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>const Point&lt; double &gt;</type>
+      <name>m_aspectRatio</name>
+      <anchorfile>classScroom_1_1Utils_1_1TweakSelectionsWithAspectRatio.html</anchorfile>
+      <anchor>a469693c8eac0a3b45dabdd0a23ed5c99</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>anonymous_namespace{tweak-view_test.cc}::TweakSelectionsWithAspectRatioTest</name>
+    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsWithAspectRatioTest.html</filename>
+    <member kind="variable" protection="protected">
+      <type>const Point&lt; double &gt;</type>
+      <name>m_aspectRatio</name>
+      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsWithAspectRatioTest.html</anchorfile>
+      <anchor>a16ae94745d8cadc05be9b86eb4b62285</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>const std::shared_ptr&lt; testing::StrictMock&lt; SelectionTweakMock &gt; &gt;</type>
+      <name>m_child</name>
+      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsWithAspectRatioTest.html</anchorfile>
+      <anchor>a31f5a9f9484c21515daee0d23c2f6f38</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>const ITweakSelection::Ptr</type>
+      <name>m_tweak</name>
+      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsWithAspectRatioTest.html</anchorfile>
+      <anchor>a06c7958fa61a86674a8db0c63b0bea79</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -24908,14 +26436,14 @@
       <type>std::shared_ptr&lt; ValueType&lt; V &gt; &gt;</type>
       <name>Ptr</name>
       <anchorfile>classScroom_1_1Bookkeeping_1_1Detail_1_1ValueType.html</anchorfile>
-      <anchor>a9586e3898be4284501b5f79dd5e65b48</anchor>
+      <anchor>a01a9abbe655d8439aa7c81ffc8fa59b2</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>std::weak_ptr&lt; ValueType&lt; V &gt; &gt;</type>
       <name>WeakPtr</name>
       <anchorfile>classScroom_1_1Bookkeeping_1_1Detail_1_1ValueType.html</anchorfile>
-      <anchor>a6e09dd94b98a50326a61bc716bd5ca47</anchor>
+      <anchor>a3f5b711540819fb84becf0f55a519118</anchor>
       <arglist></arglist>
     </member>
     <member kind="function" static="yes">
@@ -24945,6 +26473,22 @@
       <anchorfile>classScroom_1_1Bookkeeping_1_1Detail_1_1ValueType.html</anchorfile>
       <anchor>a9808ebac4439161c69cab723a9ec5bc9</anchor>
       <arglist>(V value_)</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>vector</name>
+    <filename>classvector.html</filename>
+    <templarg>typename T</templarg>
+    <class kind="class">vector::iterator</class>
+    <class kind="class">vector::const_iterator</class>
+    <class kind="class">vector::reverse_iterator</class>
+    <class kind="class">vector::const_reverse_iterator</class>
+    <member kind="variable">
+      <type>T</type>
+      <name>elements</name>
+      <anchorfile>classvector.html</anchorfile>
+      <anchor>a2396209900e8f592db1f0b2467f7d899</anchor>
+      <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -25443,9 +26987,9 @@
     </member>
     <member kind="variable" protection="private">
       <type>Scroom::Utils::Point&lt; int &gt;</type>
-      <name>drawingAreaSize</name>
+      <name>viewSize</name>
       <anchorfile>classView.html</anchorfile>
-      <anchor>a9a9821e21475adadbc82273131d7006b</anchor>
+      <anchor>a8cbef86ad117ed3d1d0e1df83884a1da</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
@@ -25732,6 +27276,25 @@
       <anchorfile>classViewable.html</anchorfile>
       <anchor>a8068b9af988bf0eb34fad7f8d0c79722</anchor>
       <arglist>(ViewInterface::WeakPtr vi)=0</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>Scroom::Utils::ViewCentreTextConversionMock</name>
+    <filename>classScroom_1_1Utils_1_1ViewCentreTextConversionMock.html</filename>
+    <base>Scroom::Utils::ITweakPositionTextBox</base>
+    <member kind="function">
+      <type></type>
+      <name>MOCK_METHOD</name>
+      <anchorfile>classScroom_1_1Utils_1_1ViewCentreTextConversionMock.html</anchorfile>
+      <anchor>a9f26995897d0c7dce05356c38e1a1429</anchor>
+      <arglist>(Point&lt; double &gt;, parse,(std::string_view, std::string_view, const Point&lt; int &gt; &amp;, int),(const, override))</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>MOCK_METHOD</name>
+      <anchorfile>classScroom_1_1Utils_1_1ViewCentreTextConversionMock.html</anchorfile>
+      <anchor>a9631d8e3aade09af65bba0e8aea0159a</anchor>
+      <arglist>((std::pair&lt; std::string, std::string &gt;), display,(const Point&lt; double &gt; &amp;, const Point&lt; int &gt; &amp;, int),(const, override))</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -26194,94 +27757,6 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>Scroom::Utils::ViewportPositionTextBox</name>
-    <filename>classScroom_1_1Utils_1_1ViewportPositionTextBox.html</filename>
-    <base>Scroom::Utils::ITweakPositionTextBox</base>
-    <member kind="typedef">
-      <type>std::shared_ptr&lt; ViewportPositionTextBox &gt;</type>
-      <name>Ptr</name>
-      <anchorfile>classScroom_1_1Utils_1_1ViewportPositionTextBox.html</anchorfile>
-      <anchor>a9c2778500454ce06ed548bb0692ea0ef</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="function">
-      <type>Point&lt; double &gt;</type>
-      <name>parse</name>
-      <anchorfile>classScroom_1_1Utils_1_1ViewportPositionTextBox.html</anchorfile>
-      <anchor>a56fcc3fe210fc56dbd2682b6c10e6737</anchor>
-      <arglist>(std::string_view x, std::string_view y, const Point&lt; int &gt; &amp;drawingAreaSize, int zoom) const override</arglist>
-    </member>
-    <member kind="function">
-      <type>std::pair&lt; std::string, std::string &gt;</type>
-      <name>display</name>
-      <anchorfile>classScroom_1_1Utils_1_1ViewportPositionTextBox.html</anchorfile>
-      <anchor>a7fab12dcc7a11043b524f87b670fd454</anchor>
-      <arglist>(const Point&lt; double &gt; &amp;position, const Point&lt; int &gt; &amp;drawingAreaSize, int zoom) const override</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static ITweakPositionTextBox::Ptr</type>
-      <name>create</name>
-      <anchorfile>classScroom_1_1Utils_1_1ViewportPositionTextBox.html</anchorfile>
-      <anchor>ad11906232a64da4ad21c207020d28ed1</anchor>
-      <arglist>()</arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>anonymous_namespace{tweak-view_test.cc}::ViewportPositionTextBoxTest</name>
-    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1ViewportPositionTextBoxTest.html</filename>
-    <member kind="variable" protection="protected">
-      <type>const ITweakPositionTextBox::Ptr</type>
-      <name>textBox</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1ViewportPositionTextBoxTest.html</anchorfile>
-      <anchor>ade548906a4db157b027a5d8593e89d9e</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="protected">
-      <type>const Point&lt; int &gt;</type>
-      <name>drawingArea</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1ViewportPositionTextBoxTest.html</anchorfile>
-      <anchor>a6c8ccd63dfe58bf1936f8c005cb6d484</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>Scroom::Utils::ViewportRulers</name>
-    <filename>classScroom_1_1Utils_1_1ViewportRulers.html</filename>
-    <base>Scroom::Utils::ITweakRulers</base>
-    <member kind="typedef">
-      <type>std::shared_ptr&lt; ViewportRulers &gt;</type>
-      <name>Ptr</name>
-      <anchorfile>classScroom_1_1Utils_1_1ViewportRulers.html</anchorfile>
-      <anchor>abf30abb2c129c643ca97f738b1ba5dc8</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="function">
-      <type>Rectangle&lt; double &gt;</type>
-      <name>tweakRulers</name>
-      <anchorfile>classScroom_1_1Utils_1_1ViewportRulers.html</anchorfile>
-      <anchor>a080519010dac465205e1b69c86934ccf</anchor>
-      <arglist>(const Point&lt; double &gt; &amp;currentPosition, const Point&lt; int &gt; &amp;drawingAreaSize, int zoom) const override</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static ITweakRulers::Ptr</type>
-      <name>create</name>
-      <anchorfile>classScroom_1_1Utils_1_1ViewportRulers.html</anchorfile>
-      <anchor>a55f853cdf6a1b5e2c1d01e0f26191164</anchor>
-      <arglist>()</arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>anonymous_namespace{tweak-view_test.cc}::ViewportRulersTest</name>
-    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1ViewportRulersTest.html</filename>
-    <member kind="variable" protection="protected">
-      <type>const ITweakRulers::Ptr</type>
-      <name>rulers</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1ViewportRulersTest.html</anchorfile>
-      <anchor>a9d6522e68929d1eb6505b31e535e7263</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
     <name>WaitForAsyncOp</name>
     <filename>classWaitForAsyncOp.html</filename>
     <member kind="function">
@@ -26543,8 +28018,8 @@
   <compound kind="namespace">
     <name>anonymous_namespace{colormaphelpers_test.cc}</name>
     <filename>namespaceanonymous__namespace_02colormaphelpers__test_8cc_03.html</filename>
-    <class kind="class">anonymous_namespace{colormaphelpers_test.cc}::ColormapHelper_Data_Tests</class>
     <class kind="struct">anonymous_namespace{colormaphelpers_test.cc}::Data</class>
+    <class kind="class">anonymous_namespace{colormaphelpers_test.cc}::ColormapHelper_Data_Tests</class>
     <member kind="variable">
       <type>const Color</type>
       <name>Blue</name>
@@ -26672,6 +28147,7 @@
   <compound kind="namespace">
     <name>anonymous_namespace{pnmsource.cc}</name>
     <filename>namespaceanonymous__namespace_02pnmsource_8cc_03.html</filename>
+    <class kind="struct">anonymous_namespace{pnmsource.cc}::BitmapMetaData</class>
     <member kind="function">
       <type>bool</type>
       <name>approx</name>
@@ -26801,7 +28277,14 @@
       <type>std::pair&lt; ttag_t, std::string &gt;</type>
       <name>TagInfo</name>
       <anchorfile>namespaceanonymous__namespace_02tiffsource_8cc_03.html</anchorfile>
-      <anchor>a96015f6d1cd3f99d868d00b658fc6702</anchor>
+      <anchor>aea37e37d6504cd4c74f91742dc590fee</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; TIFF &gt;</type>
+      <name>TIFFPtr</name>
+      <anchorfile>namespaceanonymous__namespace_02tiffsource_8cc_03.html</anchorfile>
+      <anchor>ae66c321d308d5c350f1b3de25b12a580</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
@@ -26836,8 +28319,8 @@
   <compound kind="namespace">
     <name>anonymous_namespace{tiledbitmappresentation.cc}</name>
     <filename>namespaceanonymous__namespace_02tiledbitmappresentation_8cc_03.html</filename>
-    <class kind="class">anonymous_namespace{tiledbitmappresentation.cc}::OpenTiledBitmapAsPresentation</class>
     <class kind="class">anonymous_namespace{tiledbitmappresentation.cc}::TiledBitmapPresentation</class>
+    <class kind="class">anonymous_namespace{tiledbitmappresentation.cc}::OpenTiledBitmapAsPresentation</class>
     <member kind="function">
       <type>PipetteLayerOperations::PipetteColor</type>
       <name>sumPipetteColors</name>
@@ -26856,10 +28339,7 @@
   <compound kind="namespace">
     <name>anonymous_namespace{transformpresentation_test.cc}</name>
     <filename>namespaceanonymous__namespace_02transformpresentation__test_8cc_03.html</filename>
-    <class kind="class">anonymous_namespace{transformpresentation_test.cc}::PositionTweakMock</class>
-    <class kind="class">anonymous_namespace{transformpresentation_test.cc}::RulersTweakMock</class>
-    <class kind="class">anonymous_namespace{transformpresentation_test.cc}::SelectionTweakMock</class>
-    <class kind="class">anonymous_namespace{transformpresentation_test.cc}::TextTweakMock</class>
+    <class kind="class">anonymous_namespace{transformpresentation_test.cc}::TransformPresentationContextTest</class>
   </compound>
   <compound kind="namespace">
     <name>anonymous_namespace{transparentoverlaypresentation.cc}</name>
@@ -26887,23 +28367,19 @@
   <compound kind="namespace">
     <name>anonymous_namespace{tweak-view_test.cc}</name>
     <filename>namespaceanonymous__namespace_02tweak-view__test_8cc_03.html</filename>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::AspectRatioPositionTextBoxTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::AspectRatioPresentationPositionTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::AspectRatioRulersTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::AspectRatioSelectionTest</class>
+    <class kind="class">anonymous_namespace{tweak-view_test.cc}::PixelAlignPresentationPositionsTest</class>
+    <class kind="class">anonymous_namespace{tweak-view_test.cc}::CalculateViewAreaForRulersTest</class>
+    <class kind="class">anonymous_namespace{tweak-view_test.cc}::SnapSelectionsToGridTest</class>
+    <class kind="class">anonymous_namespace{tweak-view_test.cc}::ExpandSelectionsToPixelBoundariesTest</class>
+    <class kind="class">anonymous_namespace{tweak-view_test.cc}::TweakSelectionsAsRectanglesTest</class>
+    <class kind="class">anonymous_namespace{tweak-view_test.cc}::ParseAndFormatViewCentreTest</class>
+    <class kind="class">anonymous_namespace{tweak-view_test.cc}::TweakPresentationPositionsWithAspectRatioTest</class>
+    <class kind="class">anonymous_namespace{tweak-view_test.cc}::TweakRulersWithAspectRatioTest</class>
+    <class kind="class">anonymous_namespace{tweak-view_test.cc}::TweakSelectionsWithAspectRatioTest</class>
+    <class kind="class">anonymous_namespace{tweak-view_test.cc}::ParseAndFormatViewCentreWithAspectRatioTest</class>
     <class kind="class">anonymous_namespace{tweak-view_test.cc}::DefaultTweakPresentationPositionTest</class>
     <class kind="class">anonymous_namespace{tweak-view_test.cc}::DefaultTweakSelectionTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::ExpandSelectionsToPixelBoundariesTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::PixelAlignPresentationPositionsTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::PositionChild</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::RulersChild</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::SelectionChild</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::SnapSelectionsToGridTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::TextBoxChild</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::TweakSelectionsAsRectanglesMock</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::TweakSelectionsAsRectanglesTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::ViewportPositionTextBoxTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::ViewportRulersTest</class>
+    <class kind="class">anonymous_namespace{tweak-view_test.cc}::DefaultTweakSelectionMapTest</class>
     <member kind="function">
       <type>Point&lt; double &gt;</type>
       <name>aBitAboveAndLeftOf</name>
@@ -26924,20 +28400,6 @@
       <anchorfile>namespaceanonymous__namespace_02tweak-view__test_8cc_03.html</anchorfile>
       <anchor>a5c4ec1d82b18b87ca3c82d456b7ccdaf</anchor>
       <arglist>(const Selection &amp;selection, Point&lt; double &gt; scale)</arglist>
-    </member>
-    <member kind="function">
-      <type>testing::Matcher&lt; const Point&lt; double &gt; &amp; &gt;</type>
-      <name>PointEquals</name>
-      <anchorfile>namespaceanonymous__namespace_02tweak-view__test_8cc_03.html</anchorfile>
-      <anchor>ae6044c3c1a4498d103d0a67ed387ed37</anchor>
-      <arglist>(Point&lt; double &gt; expected)</arglist>
-    </member>
-    <member kind="function">
-      <type>testing::Matcher&lt; const Selection &amp; &gt;</type>
-      <name>SelectionEquals</name>
-      <anchorfile>namespaceanonymous__namespace_02tweak-view__test_8cc_03.html</anchorfile>
-      <anchor>ac8085e2587394fc08b73989961cc5cce</anchor>
-      <arglist>(const Selection &amp;expected)</arglist>
     </member>
     <member kind="variable">
       <type>constexpr int</type>
@@ -27195,23 +28657,23 @@
   <compound kind="namespace">
     <name>Scroom</name>
     <filename>namespaceScroom.html</filename>
+    <namespace>Scroom::MemoryBlocks</namespace>
+    <namespace>Scroom::MemoryBlobs</namespace>
+    <namespace>Scroom::TiledBitmap</namespace>
     <namespace>Scroom::Bitmap</namespace>
-    <namespace>Scroom::Bookkeeping</namespace>
-    <namespace>Scroom::ColormapImpl</namespace>
+    <namespace>Scroom::Utils</namespace>
+    <namespace>Scroom::Metadata</namespace>
     <namespace>Scroom::Detail</namespace>
+    <namespace>Scroom::Bookkeeping</namespace>
     <namespace>Scroom::GtkHelpers</namespace>
     <namespace>Scroom::GtkTestHelpers</namespace>
-    <namespace>Scroom::MemoryBlobs</namespace>
-    <namespace>Scroom::MemoryBlocks</namespace>
-    <namespace>Scroom::Metadata</namespace>
+    <namespace>Scroom::ColormapImpl</namespace>
     <namespace>Scroom::Pnm</namespace>
     <namespace>Scroom::Tiff</namespace>
-    <namespace>Scroom::TiledBitmap</namespace>
-    <namespace>Scroom::Utils</namespace>
-    <class kind="class">Scroom::Logger</class>
-    <class kind="class">Scroom::LoggerContainer</class>
     <class kind="class">Scroom::RingBufferSink</class>
     <class kind="class">Scroom::Semaphore</class>
+    <class kind="class">Scroom::LoggerContainer</class>
+    <class kind="class">Scroom::Logger</class>
   </compound>
   <compound kind="namespace">
     <name>Scroom::Bitmap</name>
@@ -27230,27 +28692,41 @@
     <name>Scroom::Bookkeeping</name>
     <filename>namespaceScroom_1_1Bookkeeping.html</filename>
     <namespace>Scroom::Bookkeeping::Detail</namespace>
-    <class kind="class">Scroom::Bookkeeping::Map</class>
-    <class kind="class">Scroom::Bookkeeping::MapBase</class>
     <class kind="class">Scroom::Bookkeeping::Token</class>
+    <class kind="class">Scroom::Bookkeeping::MapBase</class>
+    <class kind="class">Scroom::Bookkeeping::Map</class>
     <member kind="typedef">
       <type>std::weak_ptr&lt; Detail::TokenImpl &gt;</type>
       <name>WeakToken</name>
       <anchorfile>namespaceScroom_1_1Bookkeeping.html</anchorfile>
-      <anchor>aa859536c2894d3c9e1163bc1e2048bab</anchor>
+      <anchor>ad6687a6f631e7ef584be46631a106683</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; void &gt;</type>
+      <name>Stuff</name>
+      <anchorfile>namespaceScroom_1_1Bookkeeping.html</anchorfile>
+      <anchor>a6f32f9c33bd4964e737bfdd8243ba86f</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>std::list&lt; Stuff &gt;</type>
+      <name>StuffList</name>
+      <anchorfile>namespaceScroom_1_1Bookkeeping.html</anchorfile>
+      <anchor>afa0db9538f2219901832fbf6c8c793b6</anchor>
       <arglist></arglist>
     </member>
   </compound>
   <compound kind="namespace">
     <name>Scroom::Bookkeeping::Detail</name>
     <filename>namespaceScroom_1_1Bookkeeping_1_1Detail.html</filename>
+    <class kind="class">Scroom::Bookkeeping::Detail::ValueType</class>
     <class kind="class">Scroom::Bookkeeping::Detail::LValue</class>
-    <class kind="class">Scroom::Bookkeeping::Detail::MapTokenImpl</class>
     <class kind="struct">Scroom::Bookkeeping::Detail::MapType</class>
     <class kind="struct">Scroom::Bookkeeping::Detail::MapType&lt; std::weak_ptr&lt; K &gt;, V &gt;</class>
     <class kind="class">Scroom::Bookkeeping::Detail::TokenAddition</class>
     <class kind="class">Scroom::Bookkeeping::Detail::TokenImpl</class>
-    <class kind="class">Scroom::Bookkeeping::Detail::ValueType</class>
+    <class kind="class">Scroom::Bookkeeping::Detail::MapTokenImpl</class>
   </compound>
   <compound kind="namespace">
     <name>Scroom::ColormapImpl</name>
@@ -27261,19 +28737,19 @@
     <member kind="enumvalue">
       <name>COLUMN_NAME</name>
       <anchorfile>namespaceScroom_1_1ColormapImpl.html</anchorfile>
-      <anchor>a96a49dee46290c75074b156cdd5b6a62a0fb964c09532b084b7ab3c6ab4b15459</anchor>
+      <anchor>a14eaea2830b525ba8b88b8f3fdd8a12fa0fb964c09532b084b7ab3c6ab4b15459</anchor>
       <arglist></arglist>
     </member>
     <member kind="enumvalue">
       <name>COLUMN_POINTER</name>
       <anchorfile>namespaceScroom_1_1ColormapImpl.html</anchorfile>
-      <anchor>a96a49dee46290c75074b156cdd5b6a62a832330cba15b863a66c9c9d6177d551c</anchor>
+      <anchor>a14eaea2830b525ba8b88b8f3fdd8a12fa832330cba15b863a66c9c9d6177d551c</anchor>
       <arglist></arglist>
     </member>
     <member kind="enumvalue">
       <name>N_COLUMNS</name>
       <anchorfile>namespaceScroom_1_1ColormapImpl.html</anchorfile>
-      <anchor>a96a49dee46290c75074b156cdd5b6a62ab6276a6e8897bd5f844a2f9f0970a5bc</anchor>
+      <anchor>a14eaea2830b525ba8b88b8f3fdd8a12fab6276a6e8897bd5f844a2f9f0970a5bc</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -27293,13 +28769,13 @@
   <compound kind="namespace">
     <name>Scroom::Detail::ThreadPool</name>
     <filename>namespaceScroom_1_1Detail_1_1ThreadPool.html</filename>
-    <class kind="class">Scroom::Detail::ThreadPool::Builder</class>
     <class kind="class">Scroom::Detail::ThreadPool::FunctionAdditor</class>
     <class kind="class">Scroom::Detail::ThreadPool::FunctionMultiplier</class>
     <class kind="class">Scroom::Detail::ThreadPool::Queue</class>
+    <class kind="class">Scroom::Detail::ThreadPool::WeakQueue</class>
+    <class kind="class">Scroom::Detail::ThreadPool::Builder</class>
     <class kind="class">Scroom::Detail::ThreadPool::QueueImpl</class>
     <class kind="class">Scroom::Detail::ThreadPool::QueueLock</class>
-    <class kind="class">Scroom::Detail::ThreadPool::WeakQueue</class>
     <concept>Scroom::Detail::ThreadPool::CallableT</concept>
     <member kind="function">
       <type>::ThreadPool::Ptr</type>
@@ -27410,16 +28886,16 @@
   <compound kind="namespace">
     <name>Scroom::MemoryBlobs</name>
     <filename>namespaceScroom_1_1MemoryBlobs.html</filename>
-    <namespace>Scroom::MemoryBlobs::Detail</namespace>
-    <namespace>Scroom::MemoryBlobs::Page</namespace>
     <namespace>Scroom::MemoryBlobs::RawPageData</namespace>
-    <class kind="class">Scroom::MemoryBlobs::Blob</class>
+    <namespace>Scroom::MemoryBlobs::Page</namespace>
+    <namespace>Scroom::MemoryBlobs::Detail</namespace>
     <class kind="class">Scroom::MemoryBlobs::PageProvider</class>
+    <class kind="class">Scroom::MemoryBlobs::Blob</class>
     <member kind="typedef">
       <type>std::list&lt; Page::Ptr &gt;</type>
       <name>PageList</name>
       <anchorfile>namespaceScroom_1_1MemoryBlobs.html</anchorfile>
-      <anchor>aa30db602fa289e14a9db8bfd0f36d5ab</anchor>
+      <anchor>ade4edb1e2e67ece6854e189a4c7b72ef</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -27448,7 +28924,7 @@
       <type>std::shared_ptr&lt; Scroom::MemoryBlocks::Page &gt;</type>
       <name>Ptr</name>
       <anchorfile>namespaceScroom_1_1MemoryBlobs_1_1Page.html</anchorfile>
-      <anchor>aef1d8c508f1e7142bf747836e906a738</anchor>
+      <anchor>a3cefde5a3e63018a5ad807bae2a2de29</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -27459,37 +28935,37 @@
       <type>std::shared_ptr&lt; uint8_t &gt;</type>
       <name>Ptr</name>
       <anchorfile>namespaceScroom_1_1MemoryBlobs_1_1RawPageData.html</anchorfile>
-      <anchor>a3e66bb65e19725417b4ab427ad4338b6</anchor>
+      <anchor>ae547fb413b29989568defcddc7e8e176</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>std::shared_ptr&lt; const uint8_t &gt;</type>
       <name>ConstPtr</name>
       <anchorfile>namespaceScroom_1_1MemoryBlobs_1_1RawPageData.html</anchorfile>
-      <anchor>a2afb846f24b06f62c8564e4dde32dc02</anchor>
+      <anchor>ab2e359b8fafae4e4fb2ae2f1bfd621fe</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>std::weak_ptr&lt; uint8_t &gt;</type>
       <name>WeakPtr</name>
       <anchorfile>namespaceScroom_1_1MemoryBlobs_1_1RawPageData.html</anchorfile>
-      <anchor>a56d77351049430cd88629153e0c8cb3f</anchor>
+      <anchor>ac44226b1683dbd69d011132750ddd193</anchor>
       <arglist></arglist>
     </member>
   </compound>
   <compound kind="namespace">
     <name>Scroom::MemoryBlocks</name>
     <filename>namespaceScroom_1_1MemoryBlocks.html</filename>
-    <namespace>Scroom::MemoryBlocks::Detail</namespace>
     <namespace>Scroom::MemoryBlocks::RawPageData</namespace>
-    <class kind="class">Scroom::MemoryBlocks::BlockFactoryInterface</class>
-    <class kind="class">Scroom::MemoryBlocks::BlockInterface</class>
+    <namespace>Scroom::MemoryBlocks::Detail</namespace>
     <class kind="class">Scroom::MemoryBlocks::Page</class>
+    <class kind="class">Scroom::MemoryBlocks::BlockInterface</class>
+    <class kind="class">Scroom::MemoryBlocks::BlockFactoryInterface</class>
     <member kind="typedef">
       <type>std::list&lt; Page &gt;</type>
       <name>PageList</name>
       <anchorfile>namespaceScroom_1_1MemoryBlocks.html</anchorfile>
-      <anchor>a1e99f7c5b462e84d8d2e4abdb4c0a2c4</anchor>
+      <anchor>ac50f25f16b9e918cd4c34edfd0928911</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
@@ -27519,14 +28995,14 @@
       <type>std::shared_ptr&lt; uint8_t &gt;</type>
       <name>Ptr</name>
       <anchorfile>namespaceScroom_1_1MemoryBlocks_1_1RawPageData.html</anchorfile>
-      <anchor>adea1c47b8e23abbfd3a1ac8f9648ae70</anchor>
+      <anchor>a1745bf4c287f5aaa6db962b15d037c27</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>std::weak_ptr&lt; uint8_t &gt;</type>
       <name>WeakPtr</name>
       <anchorfile>namespaceScroom_1_1MemoryBlocks_1_1RawPageData.html</anchorfile>
-      <anchor>a72f7bee76a0a83c657d03b961774733a</anchor>
+      <anchor>a2370fc6791c02481a980b72e8cea668a</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -27538,7 +29014,7 @@
       <type>std::vector&lt; std::pair&lt; std::string, std::string &gt; &gt;</type>
       <name>Metadata</name>
       <anchorfile>namespaceScroom_1_1Metadata.html</anchorfile>
-      <anchor>a51350b5aec7cb7add0d90fdeb7ead3eb</anchor>
+      <anchor>ae2e7d32db87bb2a0b3b8cc14fd32b736</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
@@ -27592,10 +29068,10 @@
   <compound kind="namespace">
     <name>Scroom::Pnm</name>
     <filename>namespaceScroom_1_1Pnm.html</filename>
+    <class kind="class">Scroom::Pnm::Source</class>
+    <class kind="class">Scroom::Pnm::BinarySource</class>
     <class kind="class">Scroom::Pnm::AsciiSource</class>
     <class kind="class">Scroom::Pnm::AsciiSource1bpp</class>
-    <class kind="class">Scroom::Pnm::BinarySource</class>
-    <class kind="class">Scroom::Pnm::Source</class>
     <member kind="enumeration">
       <type></type>
       <name>SourceType</name>
@@ -27622,7 +29098,7 @@
       <type>std::shared_ptr&lt; TIFF &gt;</type>
       <name>TIFFPtr</name>
       <anchorfile>namespaceScroom_1_1Tiff.html</anchorfile>
-      <anchor>a0a251765fe27458966a781ecd875a374</anchor>
+      <anchor>ae66c321d308d5c350f1b3de25b12a580</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
@@ -27659,27 +29135,27 @@
     <filename>namespaceScroom_1_1TiledBitmap.html</filename>
     <namespace>Scroom::TiledBitmap::anonymous_namespace{layerspecforbitmap.cc}</namespace>
     <class kind="struct">Scroom::TiledBitmap::BitmapMetaData</class>
-    <class kind="class">Scroom::TiledBitmap::LayerSpecForBitmapper</class>
     <class kind="class">Scroom::TiledBitmap::OpenTiledBitmapInterface</class>
+    <class kind="class">Scroom::TiledBitmap::LayerSpecForBitmapper</class>
     <member kind="typedef">
       <type>std::function&lt; Scroom::Utils::Stuff(const ProgressInterface::Ptr &amp;)&gt;</type>
       <name>ReloadFunction</name>
       <anchorfile>namespaceScroom_1_1TiledBitmap.html</anchorfile>
-      <anchor>abcdc6501ad25d0c72901a0ef53452506</anchor>
+      <anchor>aef48e68d52fc8eb816b5e233c2942391</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>std::tuple&lt; LayerSpec, ColormapHelperBase::Ptr &gt;</type>
       <name>LayerSpecResult</name>
       <anchorfile>namespaceScroom_1_1TiledBitmap.html</anchorfile>
-      <anchor>a75aad5c865440565d24e1c54846ed146</anchor>
+      <anchor>ab01a7ceaa4471a33865568d4904175d7</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>std::function&lt; LayerSpecResult(const Scroom::Logger &amp;logger, const BitmapMetaData &amp;bitmapMetaData)&gt;</type>
       <name>LayerSpecForBitmapFunc</name>
       <anchorfile>namespaceScroom_1_1TiledBitmap.html</anchorfile>
-      <anchor>a5adcab183e2214e90459d4e611414432</anchor>
+      <anchor>a9464b28eb489c66726f22f436434a902</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
@@ -27797,74 +29273,79 @@
     <filename>namespaceScroom_1_1Utils.html</filename>
     <namespace>Scroom::Utils::anonymous_namespace{tweak-view.cc}</namespace>
     <namespace>Scroom::Utils::Detail</namespace>
-    <class kind="class">Scroom::Utils::AspectRatioPositionTextBox</class>
-    <class kind="class">Scroom::Utils::AspectRatioPresentationPosition</class>
-    <class kind="class">Scroom::Utils::AspectRatioRulers</class>
-    <class kind="class">Scroom::Utils::AspectRatioSelection</class>
-    <class kind="class">Scroom::Utils::Base</class>
-    <class kind="class">Scroom::Utils::Context</class>
-    <class kind="class">Scroom::Utils::Count</class>
-    <class kind="class">Scroom::Utils::Counted</class>
-    <class kind="class">Scroom::Utils::Counter</class>
-    <class kind="class">Scroom::Utils::ExpandSelectionsToPixelBoundaries</class>
-    <class kind="class">Scroom::Utils::ITweakPositionTextBox</class>
+    <class kind="class">Scroom::Utils::PresentationPositionTweakMock</class>
+    <class kind="class">Scroom::Utils::RulerAreaTweakMock</class>
+    <class kind="class">Scroom::Utils::SelectionTweakMock</class>
+    <class kind="class">Scroom::Utils::ViewCentreTextConversionMock</class>
+    <class kind="class">Scroom::Utils::TweakSelectionsAsRectanglesMock</class>
     <class kind="class">Scroom::Utils::ITweakPresentationPosition</class>
     <class kind="class">Scroom::Utils::ITweakRulers</class>
     <class kind="class">Scroom::Utils::ITweakSelection</class>
-    <class kind="class">Scroom::Utils::Observable</class>
-    <class kind="class">Scroom::Utils::on_scope_exit</class>
-    <class kind="class">Scroom::Utils::optional_cleanup</class>
-    <class kind="class">Scroom::Utils::ParentContext</class>
+    <class kind="class">Scroom::Utils::ITweakPositionTextBox</class>
     <class kind="class">Scroom::Utils::PixelAlignPresentationPositions</class>
-    <class kind="class">Scroom::Utils::Point</class>
-    <class kind="class">Scroom::Utils::ProgressInterfaceBroadcaster</class>
-    <class kind="class">Scroom::Utils::ProgressInterfaceFromProgressStateInterface</class>
-    <class kind="class">Scroom::Utils::ProgressInterfaceFromProgressStateInterfaceForwarder</class>
-    <class kind="class">Scroom::Utils::ProgressInterfaceMultiplexer</class>
-    <class kind="class">Scroom::Utils::ProgressStateInterface</class>
-    <class kind="class">Scroom::Utils::ProgressStateInterfaceFromProgressInterface</class>
-    <class kind="class">Scroom::Utils::ProgressStateInterfaceFromProgressInterfaceForwarder</class>
-    <class kind="class">Scroom::Utils::Rectangle</class>
+    <class kind="class">Scroom::Utils::CalculateViewAreaForRulers</class>
+    <class kind="class">Scroom::Utils::TweakSelectionsAsRectangles</class>
+    <class kind="class">Scroom::Utils::SnapSelectionsToGrid</class>
+    <class kind="class">Scroom::Utils::ExpandSelectionsToPixelBoundaries</class>
+    <class kind="class">Scroom::Utils::ParseAndFormatViewCentre</class>
+    <class kind="class">Scroom::Utils::TweakPresentationPositionsWithAspectRatio</class>
+    <class kind="class">Scroom::Utils::TweakRulersWithAspectRatio</class>
+    <class kind="class">Scroom::Utils::TweakSelectionsWithAspectRatio</class>
+    <class kind="class">Scroom::Utils::ParseAndFormatViewCentreWithAspectRatio</class>
+    <class kind="class">Scroom::Utils::Context</class>
     <class kind="class">Scroom::Utils::RecursiveContext</class>
     <class kind="class">Scroom::Utils::Segment</class>
+    <class kind="class">Scroom::Utils::Observable</class>
+    <class kind="class">Scroom::Utils::Point</class>
+    <class kind="class">Scroom::Utils::ProgressStateInterface</class>
+    <class kind="class">Scroom::Utils::ProgressInterfaceFromProgressStateInterface</class>
+    <class kind="class">Scroom::Utils::ProgressInterfaceFromProgressStateInterfaceForwarder</class>
+    <class kind="class">Scroom::Utils::ProgressStateInterfaceFromProgressInterface</class>
+    <class kind="class">Scroom::Utils::ProgressStateInterfaceFromProgressInterfaceForwarder</class>
+    <class kind="class">Scroom::Utils::ProgressInterfaceBroadcaster</class>
+    <class kind="class">Scroom::Utils::ProgressInterfaceMultiplexer</class>
+    <class kind="class">Scroom::Utils::Rectangle</class>
+    <class kind="class">Scroom::Utils::Base</class>
+    <class kind="class">Scroom::Utils::on_scope_exit</class>
+    <class kind="class">Scroom::Utils::optional_cleanup</class>
+    <class kind="class">Scroom::Utils::Count</class>
+    <class kind="class">Scroom::Utils::Counter</class>
+    <class kind="class">Scroom::Utils::Counted</class>
+    <class kind="class">Scroom::Utils::ParentContext</class>
     <class kind="class">Scroom::Utils::SingleContext</class>
-    <class kind="class">Scroom::Utils::SnapSelectionsToGrid</class>
-    <class kind="class">Scroom::Utils::TweakSelectionsAsRectangles</class>
-    <class kind="class">Scroom::Utils::ViewportPositionTextBox</class>
-    <class kind="class">Scroom::Utils::ViewportRulers</class>
     <member kind="typedef">
       <type>std::shared_ptr&lt; void &gt;</type>
       <name>Stuff</name>
       <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
-      <anchor>a7831a6b14da4ae303170e6607f29e6b9</anchor>
+      <anchor>a6f32f9c33bd4964e737bfdd8243ba86f</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>std::weak_ptr&lt; void &gt;</type>
       <name>StuffWeak</name>
       <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
-      <anchor>afea0aa2f53589bdee27bdc6dd4cc418a</anchor>
+      <anchor>a2a0db8626b43be980ea67876c6aa893c</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>std::list&lt; Stuff &gt;</type>
       <name>StuffList</name>
       <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
-      <anchor>acf77d2a64982c6e01e5111ebec656515</anchor>
+      <anchor>afa0db9538f2219901832fbf6c8c793b6</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>std::map&lt; K, V, std::owner_less&lt; K &gt; &gt;</type>
       <name>WeakKeyMap</name>
       <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
-      <anchor>a4eff4a800754d2391c7ac5e04d1048d4</anchor>
+      <anchor>a4e9ba233a5406c5eb730df556d09478c</anchor>
       <arglist></arglist>
     </member>
     <member kind="typedef">
       <type>std::set&lt; K, std::owner_less&lt; K &gt; &gt;</type>
       <name>WeakKeySet</name>
       <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
-      <anchor>a2f0b01cb3ac958356ac99bc37fbf7168</anchor>
+      <anchor>a04d2e424b043aa4e12d69d706f4f3af9</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
@@ -27901,6 +29382,20 @@
       <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
       <anchor>aa6527a49e093bcb36e606fe5bfcaadad</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>testing::Matcher&lt; const Point&lt; double &gt; &amp; &gt;</type>
+      <name>pointEquals</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>a84096957416b21e1cf4ac3fc4484a330</anchor>
+      <arglist>(Point&lt; double &gt; expected)</arglist>
+    </member>
+    <member kind="function">
+      <type>testing::Matcher&lt; const Selection &amp; &gt;</type>
+      <name>selectionEquals</name>
+      <anchorfile>namespaceScroom_1_1Utils.html</anchorfile>
+      <anchor>aab37ddaa615f000dfcaa8637a3217725</anchor>
+      <arglist>(const Selection &amp;expected)</arglist>
     </member>
     <member kind="function">
       <type>T</type>
@@ -28336,9 +29831,9 @@
   <compound kind="namespace">
     <name>Scroom::Utils::Detail</name>
     <filename>namespaceScroom_1_1Utils_1_1Detail.html</filename>
-    <class kind="class">Scroom::Utils::Detail::ErrorSignalHandler</class>
-    <class kind="class">Scroom::Utils::Detail::ProgressStore</class>
     <class kind="class">Scroom::Utils::Detail::Registration</class>
+    <class kind="class">Scroom::Utils::Detail::ProgressStore</class>
+    <class kind="class">Scroom::Utils::Detail::ErrorSignalHandler</class>
     <member kind="function">
       <type>void</type>
       <name>assertionFailed</name>
@@ -28357,8 +29852,8 @@
       <type>void</type>
       <name>abort</name>
       <anchorfile>namespaceScroom_1_1Utils_1_1Detail.html</anchorfile>
-      <anchor>af6ca1b376461c7e9fa52954959a24652</anchor>
-      <arglist>() __attribute__((noreturn))</arglist>
+      <anchor>ae19403f01ae4af60cf5f66bc7b0a77c4</anchor>
+      <arglist>()</arglist>
     </member>
     <member kind="variable">
       <type>Scroom::Logger</type>
@@ -28420,5 +29915,651 @@
     <name>md_cmake-modules_2README</name>
     <title>Ryan&apos;s CMake Modules</title>
     <filename>md_cmake-modules_2README.html</filename>
+  </compound>
+  <compound kind="dir">
+    <name>cmake-modules/workarounds/mac-alut-framework/AL</name>
+    <path>cmake-modules/workarounds/mac-alut-framework/AL/</path>
+    <filename>dir_89191fea4eb889258ec5b4752b96ae8d.html</filename>
+    <file>alut.h</file>
+  </compound>
+  <compound kind="dir">
+    <name>cmake-modules/workarounds/mac-openal/AL</name>
+    <path>cmake-modules/workarounds/mac-openal/AL/</path>
+    <filename>dir_cd6c6e8b338d7b6d2fa03fa2b278f75d.html</filename>
+    <file>al.h</file>
+    <file>alc.h</file>
+  </compound>
+  <compound kind="dir">
+    <name>cmake-modules</name>
+    <path>cmake-modules/</path>
+    <filename>dir_d1e557ec7642ef6a3c2815be2a14d4fa.html</filename>
+    <dir>cmake-modules/ghost-fake-stl</dir>
+    <dir>cmake-modules/workarounds</dir>
+    <file>BoostTestTargetsDynamic.h</file>
+    <file>BoostTestTargetsIncluded.h</file>
+    <file>BoostTestTargetsStatic.h</file>
+    <file>CheckMacHIDAPI.cpp</file>
+    <file>Findcppcheck.cpp</file>
+  </compound>
+  <compound kind="dir">
+    <name>plugins/colormap</name>
+    <path>plugins/colormap/</path>
+    <filename>dir_8a4bbb6f171f9429a3013233c22eaddc.html</filename>
+    <file>colormapplugin.cc</file>
+    <file>colormapplugin.hh</file>
+    <file>colormapprovider.cc</file>
+    <file>colormapprovider.hh</file>
+    <file>colormaps.cc</file>
+    <file>colormaps.hh</file>
+    <file>main.cc</file>
+  </compound>
+  <compound kind="dir">
+    <name>doc</name>
+    <path>doc/</path>
+    <filename>dir_e68e8157741866f444e17edd764ebbae.html</filename>
+    <file>conf.py</file>
+  </compound>
+  <compound kind="dir">
+    <name>plugins/example</name>
+    <path>plugins/example/</path>
+    <filename>dir_7e3ffd66a816a9130514783c15b615fb.html</filename>
+    <file>example.cc</file>
+    <file>example.hh</file>
+    <file>examplepresentation.cc</file>
+    <file>examplepresentation.hh</file>
+    <file>main.cc</file>
+  </compound>
+  <compound kind="dir">
+    <name>cmake-modules/ghost-fake-stl</name>
+    <path>cmake-modules/ghost-fake-stl/</path>
+    <filename>dir_bf97e5d70d06b84ae737ef6906aecb43.html</filename>
+    <file>alloc.h</file>
+    <file>hash_map.h</file>
+    <file>iostream.h</file>
+    <file>list.h</file>
+    <file>pair.h</file>
+    <file>set.h</file>
+    <file>vector.h</file>
+  </compound>
+  <compound kind="dir">
+    <name>cmake-modules/workarounds/mac-gl/GL</name>
+    <path>cmake-modules/workarounds/mac-gl/GL/</path>
+    <filename>dir_4fb1b2ac5aabe8becbfd9ddaa9efb117.html</filename>
+    <file>gl.h</file>
+    <file>glui.h</file>
+    <file>glut.h</file>
+  </compound>
+  <compound kind="dir">
+    <name>libs/plugin-interfaces/inc/scroom/gmock</name>
+    <path>libs/plugin-interfaces/inc/scroom/gmock/</path>
+    <filename>dir_f9af3a0805468de53378cd36506a3626.html</filename>
+    <file>colormappable.hh</file>
+    <file>presentationinterface.hh</file>
+  </compound>
+  <compound kind="dir">
+    <name>libs/scroom/inc/scroom/gmock</name>
+    <path>libs/scroom/inc/scroom/gmock/</path>
+    <filename>dir_97dc2d89456a6789ad5553bd9e30703a.html</filename>
+    <file>tweak-view.hh</file>
+  </compound>
+  <compound kind="dir">
+    <name>gui</name>
+    <path>gui/</path>
+    <filename>dir_11bc0974ce736ce9a6fadebbeb7a8314.html</filename>
+    <dir>gui/loggingbuffer</dir>
+    <dir>gui/ruler</dir>
+    <dir>gui/src</dir>
+  </compound>
+  <compound kind="dir">
+    <name>libs/util/inc/scroom/impl</name>
+    <path>libs/util/inc/scroom/impl/</path>
+    <filename>dir_99e6e21b8057f12df25a8e7b31464103.html</filename>
+    <file>bookkeepingimpl.hh</file>
+  </compound>
+  <compound kind="dir">
+    <name>gui/loggingbuffer/inc</name>
+    <path>gui/loggingbuffer/inc/</path>
+    <filename>dir_fda09ef95c91cde885f6629ff16174bf.html</filename>
+    <dir>gui/loggingbuffer/inc/scroom</dir>
+  </compound>
+  <compound kind="dir">
+    <name>gui/ruler/inc</name>
+    <path>gui/ruler/inc/</path>
+    <filename>dir_a3a23441f73d04f673b49b5c4d39bf17.html</filename>
+    <file>ruler.hh</file>
+    <file>rulerstrategies.hh</file>
+  </compound>
+  <compound kind="dir">
+    <name>libs/memory-manager/inc</name>
+    <path>libs/memory-manager/inc/</path>
+    <filename>dir_25995838d0038cd5aafe2ccfc1246268.html</filename>
+    <dir>libs/memory-manager/inc/scroom</dir>
+  </compound>
+  <compound kind="dir">
+    <name>libs/plugin-interfaces/inc</name>
+    <path>libs/plugin-interfaces/inc/</path>
+    <filename>dir_602b5d78dd0f174acbf9b9392b7a7ca7.html</filename>
+    <dir>libs/plugin-interfaces/inc/scroom</dir>
+  </compound>
+  <compound kind="dir">
+    <name>libs/scroom/inc</name>
+    <path>libs/scroom/inc/</path>
+    <filename>dir_f09aa2b207e4813da232ea2d8d07cfd4.html</filename>
+    <dir>libs/scroom/inc/scroom</dir>
+  </compound>
+  <compound kind="dir">
+    <name>libs/threadpool/inc</name>
+    <path>libs/threadpool/inc/</path>
+    <filename>dir_2b024000e80c0ef36358145f215dc974.html</filename>
+    <dir>libs/threadpool/inc/scroom</dir>
+  </compound>
+  <compound kind="dir">
+    <name>libs/tiled-bitmap/inc</name>
+    <path>libs/tiled-bitmap/inc/</path>
+    <filename>dir_a60f0f46b632d4f70e76a2911645ae8c.html</filename>
+    <dir>libs/tiled-bitmap/inc/scroom</dir>
+  </compound>
+  <compound kind="dir">
+    <name>libs/util/inc</name>
+    <path>libs/util/inc/</path>
+    <filename>dir_b40eae453aa5ef9263eeba8633f197ea.html</filename>
+    <dir>libs/util/inc/scroom</dir>
+  </compound>
+  <compound kind="dir">
+    <name>libs</name>
+    <path>libs/</path>
+    <filename>dir_6719ab1f1f7655efc2fa43f7eb574fd1.html</filename>
+    <dir>libs/memory-manager</dir>
+    <dir>libs/plugin-interfaces</dir>
+    <dir>libs/scroom</dir>
+    <dir>libs/threadpool</dir>
+    <dir>libs/tiled-bitmap</dir>
+    <dir>libs/util</dir>
+  </compound>
+  <compound kind="dir">
+    <name>gui/loggingbuffer</name>
+    <path>gui/loggingbuffer/</path>
+    <filename>dir_e16644cfb724855f8d0ea976fee0fdb6.html</filename>
+    <dir>gui/loggingbuffer/inc</dir>
+    <dir>gui/loggingbuffer/src</dir>
+    <dir>gui/loggingbuffer/test</dir>
+  </compound>
+  <compound kind="dir">
+    <name>cmake-modules/workarounds/mac-alut-framework</name>
+    <path>cmake-modules/workarounds/mac-alut-framework/</path>
+    <filename>dir_e920dd6074fc7bfd2f7b2603b4576e87.html</filename>
+    <dir>cmake-modules/workarounds/mac-alut-framework/AL</dir>
+  </compound>
+  <compound kind="dir">
+    <name>cmake-modules/workarounds/mac-gl</name>
+    <path>cmake-modules/workarounds/mac-gl/</path>
+    <filename>dir_b56c97595b76b22b091d32219744efa0.html</filename>
+    <dir>cmake-modules/workarounds/mac-gl/GL</dir>
+  </compound>
+  <compound kind="dir">
+    <name>cmake-modules/workarounds/mac-openal</name>
+    <path>cmake-modules/workarounds/mac-openal/</path>
+    <filename>dir_19b23413f24aee838c3dc2b17157009f.html</filename>
+    <dir>cmake-modules/workarounds/mac-openal/AL</dir>
+  </compound>
+  <compound kind="dir">
+    <name>plugins/measure</name>
+    <path>plugins/measure/</path>
+    <filename>dir_95936e19bc2efe81c30aeefbf0826564.html</filename>
+    <dir>plugins/measure/src</dir>
+  </compound>
+  <compound kind="dir">
+    <name>libs/memory-manager</name>
+    <path>libs/memory-manager/</path>
+    <filename>dir_0cf83ed571e51ba69ce6189a18417421.html</filename>
+    <dir>libs/memory-manager/inc</dir>
+    <dir>libs/memory-manager/src</dir>
+    <dir>libs/memory-manager/test</dir>
+  </compound>
+  <compound kind="dir">
+    <name>plugins/metadata</name>
+    <path>plugins/metadata/</path>
+    <filename>dir_8b18f68009fa73a0dc3be50b580752af.html</filename>
+    <file>main.cc</file>
+    <file>metadata.cc</file>
+    <file>metadata.hh</file>
+  </compound>
+  <compound kind="dir">
+    <name>plugins/pipette</name>
+    <path>plugins/pipette/</path>
+    <filename>dir_ba88159d6d86abe3ddf1c85416fbcc19.html</filename>
+    <dir>plugins/pipette/src</dir>
+    <dir>plugins/pipette/test</dir>
+  </compound>
+  <compound kind="dir">
+    <name>libs/plugin-interfaces</name>
+    <path>libs/plugin-interfaces/</path>
+    <filename>dir_d6ff4f72d9192b851857559447308167.html</filename>
+    <dir>libs/plugin-interfaces/inc</dir>
+  </compound>
+  <compound kind="dir">
+    <name>plugins</name>
+    <path>plugins/</path>
+    <filename>dir_38c8d24aef3972a7f87b834274e76e31.html</filename>
+    <dir>plugins/colormap</dir>
+    <dir>plugins/example</dir>
+    <dir>plugins/measure</dir>
+    <dir>plugins/metadata</dir>
+    <dir>plugins/pipette</dir>
+    <dir>plugins/pnm</dir>
+    <dir>plugins/tiff</dir>
+    <dir>plugins/transparent-overlay</dir>
+  </compound>
+  <compound kind="dir">
+    <name>plugins/pnm</name>
+    <path>plugins/pnm/</path>
+    <filename>dir_56c559400bd74de0d067b2afd4230f1d.html</filename>
+    <dir>plugins/pnm/src</dir>
+  </compound>
+  <compound kind="dir">
+    <name>gui/ruler</name>
+    <path>gui/ruler/</path>
+    <filename>dir_ecedfa50a3e3801aeb3bc34cfa2fa2dd.html</filename>
+    <dir>gui/ruler/inc</dir>
+    <dir>gui/ruler/src</dir>
+    <dir>gui/ruler/test</dir>
+  </compound>
+  <compound kind="dir">
+    <name>gui/loggingbuffer/inc/scroom</name>
+    <path>gui/loggingbuffer/inc/scroom/</path>
+    <filename>dir_1335556b26a257bc24d8dd0df9eaa9d0.html</filename>
+    <file>ringbuffer-sink.hh</file>
+  </compound>
+  <compound kind="dir">
+    <name>libs/memory-manager/inc/scroom</name>
+    <path>libs/memory-manager/inc/scroom/</path>
+    <filename>dir_9e4762663743daa9b2d008aec298ffee.html</filename>
+    <file>blockallocator.hh</file>
+    <file>memoryblobs.hh</file>
+  </compound>
+  <compound kind="dir">
+    <name>libs/plugin-interfaces/inc/scroom</name>
+    <path>libs/plugin-interfaces/inc/scroom/</path>
+    <filename>dir_a6aee0b18507001a55f207f1963a7dd6.html</filename>
+    <dir>libs/plugin-interfaces/inc/scroom/gmock</dir>
+    <file>color.hh</file>
+    <file>colormappable.hh</file>
+    <file>opentiledbitmapinterface.hh</file>
+    <file>pipettelayeroperations.hh</file>
+    <file>pipetteviewinterface.hh</file>
+    <file>plugininformationinterface.hh</file>
+    <file>presentationinterface.hh</file>
+    <file>resizablepresentationinterface.hh</file>
+    <file>scroominterface.hh</file>
+    <file>scroomplugin.hh</file>
+    <file>showmetadatainterface.hh</file>
+    <file>viewinterface.hh</file>
+  </compound>
+  <compound kind="dir">
+    <name>libs/scroom</name>
+    <path>libs/scroom/</path>
+    <filename>dir_2e00818103ec5a81d1323fe189fd7611.html</filename>
+    <dir>libs/scroom/inc</dir>
+    <dir>libs/scroom/src</dir>
+    <dir>libs/scroom/test</dir>
+  </compound>
+  <compound kind="dir">
+    <name>libs/scroom/inc/scroom</name>
+    <path>libs/scroom/inc/scroom/</path>
+    <filename>dir_b07397adb0ba772398d0371ed0d7d338.html</filename>
+    <dir>libs/scroom/inc/scroom/gmock</dir>
+    <file>bitmap-helpers.hh</file>
+    <file>cairo-helpers.hh</file>
+    <file>global.hh</file>
+    <file>showmetadata.hh</file>
+    <file>transformpresentation.hh</file>
+    <file>tweak-view.hh</file>
+  </compound>
+  <compound kind="dir">
+    <name>libs/threadpool/inc/scroom</name>
+    <path>libs/threadpool/inc/scroom/</path>
+    <filename>dir_c0838d7bc8b40293fa70c02a4487dffa.html</filename>
+    <file>async-deleter.hh</file>
+    <file>function-additor.hh</file>
+    <file>semaphore.hh</file>
+    <file>threadpool.hh</file>
+  </compound>
+  <compound kind="dir">
+    <name>libs/tiled-bitmap/inc/scroom</name>
+    <path>libs/tiled-bitmap/inc/scroom/</path>
+    <filename>dir_eda2f21fb84a1bf642e27439830dd9d0.html</filename>
+    <file>layeroperations.hh</file>
+    <file>tile.hh</file>
+    <file>tiledbitmapinterface.hh</file>
+    <file>tiledbitmaplayer.hh</file>
+  </compound>
+  <compound kind="dir">
+    <name>libs/util/inc/scroom</name>
+    <path>libs/util/inc/scroom/</path>
+    <filename>dir_1e0deb8a8128fbba6118fa632bba72b1.html</filename>
+    <dir>libs/util/inc/scroom/impl</dir>
+    <file>assertions.hh</file>
+    <file>bookkeeping.hh</file>
+    <file>context.hh</file>
+    <file>dont-delete.hh</file>
+    <file>format_stuff.hh</file>
+    <file>gtk-helpers.hh</file>
+    <file>gtk-test-helpers.hh</file>
+    <file>interface.hh</file>
+    <file>linearsegment.hh</file>
+    <file>logger.hh</file>
+    <file>observable.hh</file>
+    <file>point.hh</file>
+    <file>progressinterface.hh</file>
+    <file>progressinterfacehelpers.hh</file>
+    <file>rectangle.hh</file>
+    <file>rounding.hh</file>
+    <file>stuff.hh</file>
+    <file>utilities.hh</file>
+  </compound>
+  <compound kind="dir">
+    <name>gui/loggingbuffer/src</name>
+    <path>gui/loggingbuffer/src/</path>
+    <filename>dir_290a140479c7ddecd2da75504cd0896a.html</filename>
+    <file>ringbuffer-sink.cc</file>
+  </compound>
+  <compound kind="dir">
+    <name>gui/ruler/src</name>
+    <path>gui/ruler/src/</path>
+    <filename>dir_da552702fa4b45c1d5066ed201600472.html</filename>
+    <file>ruler.cc</file>
+    <file>rulerstrategies.cc</file>
+  </compound>
+  <compound kind="dir">
+    <name>gui/src</name>
+    <path>gui/src/</path>
+    <filename>dir_a051efa06104b2c378e6b4d01090bb62.html</filename>
+    <file>callbacks.cc</file>
+    <file>callbacks.hh</file>
+    <file>loader.cc</file>
+    <file>loader.hh</file>
+    <file>logging-window.cc</file>
+    <file>logging-window.hh</file>
+    <file>main.cc</file>
+    <file>pluginmanager.cc</file>
+    <file>pluginmanager.hh</file>
+    <file>progressbarmanager.cc</file>
+    <file>progressbarmanager.hh</file>
+    <file>sidebarmanager.cc</file>
+    <file>sidebarmanager.hh</file>
+    <file>view.cc</file>
+    <file>view.hh</file>
+    <file>workinterface.hh</file>
+  </compound>
+  <compound kind="dir">
+    <name>libs/memory-manager/src</name>
+    <path>libs/memory-manager/src/</path>
+    <filename>dir_2aa8f129cda290823fdffd1645da2b83.html</filename>
+    <file>blob-compression.cc</file>
+    <file>blob-compression.hh</file>
+    <file>memoryblobs.cc</file>
+    <file>swapbasedblockallocator.cc</file>
+  </compound>
+  <compound kind="dir">
+    <name>libs/scroom/src</name>
+    <path>libs/scroom/src/</path>
+    <filename>dir_645cd335c22b4f13a362737e641e1eba.html</filename>
+    <file>bitmap-helpers.cc</file>
+    <file>cairo-helpers.cc</file>
+    <file>colormap-helpers.cc</file>
+    <file>presentationinterface.cc</file>
+    <file>showmetadata.cc</file>
+    <file>transformpresentation.cc</file>
+    <file>tweak-view.cc</file>
+  </compound>
+  <compound kind="dir">
+    <name>libs/threadpool/src</name>
+    <path>libs/threadpool/src/</path>
+    <filename>dir_b11800563cd26666643af3ac206a4546.html</filename>
+    <file>async-deleter.cc</file>
+    <file>function-additor.cc</file>
+    <file>queue.cc</file>
+    <file>queue.hh</file>
+    <file>threadpool.cc</file>
+  </compound>
+  <compound kind="dir">
+    <name>libs/tiled-bitmap/src</name>
+    <path>libs/tiled-bitmap/src/</path>
+    <filename>dir_6cf97d29360585fa7f1004e648779306.html</filename>
+    <file>cmyklayeroperations.cc</file>
+    <file>compressedtile.cc</file>
+    <file>layer.cc</file>
+    <file>layercoordinator.cc</file>
+    <file>layercoordinator.hh</file>
+    <file>layeroperations.cc</file>
+    <file>layerspecforbitmap.cc</file>
+    <file>local.hh</file>
+    <file>tiled-bitmap.cc</file>
+    <file>tiled-bitmap.hh</file>
+    <file>tiledbitmappresentation.cc</file>
+    <file>tiledbitmapviewdata.cc</file>
+    <file>tiledbitmapviewdata.hh</file>
+    <file>tileviewstate.cc</file>
+    <file>tileviewstate.hh</file>
+  </compound>
+  <compound kind="dir">
+    <name>libs/util/src</name>
+    <path>libs/util/src/</path>
+    <filename>dir_60dad3f368692c5df42cc20a8dc887b1.html</filename>
+    <file>assertions.cc</file>
+    <file>context.cc</file>
+    <file>counter.cc</file>
+    <file>gtk-helpers.cc</file>
+    <file>gtk-test-helpers.cc</file>
+    <file>logger.cc</file>
+    <file>parent-context.cc</file>
+    <file>parent-context.hh</file>
+    <file>progressinterfacehelpers.cc</file>
+    <file>single-context.cc</file>
+    <file>single-context.hh</file>
+  </compound>
+  <compound kind="dir">
+    <name>plugins/measure/src</name>
+    <path>plugins/measure/src/</path>
+    <filename>dir_cd6d98f4bb3464ed99cf7d26c4a96313.html</filename>
+    <file>main.cc</file>
+    <file>measure.cc</file>
+    <file>measure.hh</file>
+  </compound>
+  <compound kind="dir">
+    <name>plugins/pipette/src</name>
+    <path>plugins/pipette/src/</path>
+    <filename>dir_d8744b74259f7076003e26daf9e6a3f7.html</filename>
+    <file>main.cc</file>
+    <file>pipette.cc</file>
+    <file>pipette.hh</file>
+  </compound>
+  <compound kind="dir">
+    <name>plugins/pnm/src</name>
+    <path>plugins/pnm/src/</path>
+    <filename>dir_be95c2a4e1514abe68e6dfb31573a596.html</filename>
+    <file>main.cc</file>
+    <file>pnm.cc</file>
+    <file>pnm.hh</file>
+    <file>pnmsource.cc</file>
+    <file>pnmsource.hh</file>
+  </compound>
+  <compound kind="dir">
+    <name>plugins/tiff/src</name>
+    <path>plugins/tiff/src/</path>
+    <filename>dir_dfef9edec1ab26efb093607c91ba8f61.html</filename>
+    <file>main.cc</file>
+    <file>tiff.cc</file>
+    <file>tiff.hh</file>
+    <file>tiffsource.cc</file>
+    <file>tiffsource.hh</file>
+  </compound>
+  <compound kind="dir">
+    <name>plugins/transparent-overlay/src</name>
+    <path>plugins/transparent-overlay/src/</path>
+    <filename>dir_76b85739ee016cf73803dda9027d9480.html</filename>
+    <file>main.cc</file>
+    <file>sizedeterminer.cc</file>
+    <file>sizedeterminer.hh</file>
+    <file>transparentoverlay.cc</file>
+    <file>transparentoverlay.hh</file>
+    <file>transparentoverlaypresentation.cc</file>
+    <file>transparentoverlaypresentation.hh</file>
+    <file>transparentoverlayviewinfo.cc</file>
+    <file>transparentoverlayviewinfo.hh</file>
+  </compound>
+  <compound kind="dir">
+    <name>cmake-modules/workarounds/tchar</name>
+    <path>cmake-modules/workarounds/tchar/</path>
+    <filename>dir_18d617efee16a81bd711d5141962eab4.html</filename>
+    <file>tchar.h</file>
+  </compound>
+  <compound kind="dir">
+    <name>gui/loggingbuffer/test</name>
+    <path>gui/loggingbuffer/test/</path>
+    <filename>dir_2ddd4c4ebf028fd4e286055c24340bbc.html</filename>
+    <file>ringbuffer-sink-tests.cc</file>
+  </compound>
+  <compound kind="dir">
+    <name>gui/ruler/test</name>
+    <path>gui/ruler/test/</path>
+    <filename>dir_8fd957c9609a3f383182b572d7a82523.html</filename>
+    <file>ruler-tests.cc</file>
+  </compound>
+  <compound kind="dir">
+    <name>libs/memory-manager/test</name>
+    <path>libs/memory-manager/test/</path>
+    <filename>dir_9d77b0f12da0f3ae5046fbd77e9ab1d2.html</filename>
+    <file>blob-tests.cc</file>
+    <file>compression-tests.cc</file>
+    <file>pageprovider-tests.cc</file>
+    <file>swap-block-allocator-tests.cc</file>
+  </compound>
+  <compound kind="dir">
+    <name>libs/scroom/test</name>
+    <path>libs/scroom/test/</path>
+    <filename>dir_7add75a70fc40af6e4afd427e3362646.html</filename>
+    <file>colormaphelpers_test.cc</file>
+    <file>transformpresentation_test.cc</file>
+    <file>tweak-view-test-helpers.hh</file>
+    <file>tweak-view_test.cc</file>
+  </compound>
+  <compound kind="dir">
+    <name>libs/threadpool/test</name>
+    <path>libs/threadpool/test/</path>
+    <filename>dir_7abd90777691de0c25bf322f78acc4d2.html</filename>
+    <file>async-deleter-tests.cc</file>
+    <file>function-additor-tests.cc</file>
+    <file>helpers.cc</file>
+    <file>helpers.hh</file>
+    <file>semaphore-tests.cc</file>
+    <file>threadpool-destruction-tests.cc</file>
+    <file>threadpool-queue-tests.cc</file>
+    <file>threadpool-queueimpl-tests.cc</file>
+    <file>threadpool-tests.cc</file>
+  </compound>
+  <compound kind="dir">
+    <name>libs/tiled-bitmap/test</name>
+    <path>libs/tiled-bitmap/test/</path>
+    <filename>dir_02d55b1c983a01e4a8233054a854d7e6.html</filename>
+    <file>sampleiterator-tests.cc</file>
+    <file>tiledbitmap-tests.cc</file>
+  </compound>
+  <compound kind="dir">
+    <name>libs/util/test</name>
+    <path>libs/util/test/</path>
+    <filename>dir_43fdfcacf028073ef12ef23203b008bb.html</filename>
+    <file>bookkeeping-tests.cc</file>
+    <file>context-tests.cc</file>
+    <file>counter-tests.cc</file>
+    <file>gtkhelper-tests.cc</file>
+    <file>logger-tests.cc</file>
+    <file>observable-tests.cc</file>
+    <file>parent-context-tests.cc</file>
+    <file>progressinterfacebroadcaster-tests.cc</file>
+    <file>progressinterfaceconversion-tests.cc</file>
+    <file>progressinterfacemultiplexer-tests.cc</file>
+    <file>progressstateinterfacestub.cc</file>
+    <file>progressstateinterfacestub.hh</file>
+    <file>rectangletests.cc</file>
+    <file>scope-exit-tests.cpp</file>
+    <file>single-context-tests.cc</file>
+  </compound>
+  <compound kind="dir">
+    <name>plugins/pipette/test</name>
+    <path>plugins/pipette/test/</path>
+    <filename>dir_95c42426c1c5462eace02f34978c69b5.html</filename>
+    <file>pipette-tests.cc</file>
+  </compound>
+  <compound kind="dir">
+    <name>plugins/transparent-overlay/test</name>
+    <path>plugins/transparent-overlay/test/</path>
+    <filename>dir_e988175f626dd113eca05ad1776df4f2.html</filename>
+    <file>determine-size-test.cc</file>
+    <file>plugin-test.cc</file>
+  </compound>
+  <compound kind="dir">
+    <name>libs/threadpool</name>
+    <path>libs/threadpool/</path>
+    <filename>dir_70f7db4f715da503579651624c66c6e8.html</filename>
+    <dir>libs/threadpool/inc</dir>
+    <dir>libs/threadpool/src</dir>
+    <dir>libs/threadpool/test</dir>
+  </compound>
+  <compound kind="dir">
+    <name>plugins/tiff</name>
+    <path>plugins/tiff/</path>
+    <filename>dir_a2ef0f80806243070676b78ca9bce87f.html</filename>
+    <dir>plugins/tiff/src</dir>
+  </compound>
+  <compound kind="dir">
+    <name>libs/tiled-bitmap</name>
+    <path>libs/tiled-bitmap/</path>
+    <filename>dir_34499b84b85e584e38a8425c472b2a40.html</filename>
+    <dir>libs/tiled-bitmap/inc</dir>
+    <dir>libs/tiled-bitmap/src</dir>
+    <dir>libs/tiled-bitmap/test</dir>
+    <dir>libs/tiled-bitmap/tools</dir>
+  </compound>
+  <compound kind="dir">
+    <name>libs/tiled-bitmap/tools</name>
+    <path>libs/tiled-bitmap/tools/</path>
+    <filename>dir_e1de364b8c2386f47d3201bda580e2a6.html</filename>
+    <file>measure-framerate-callbacks.cc</file>
+    <file>measure-framerate-callbacks.hh</file>
+    <file>measure-framerate-stubs.cc</file>
+    <file>measure-framerate-stubs.hh</file>
+    <file>measure-framerate-tests.cc</file>
+    <file>measure-framerate-tests.hh</file>
+    <file>measure-framerate.cc</file>
+    <file>measure-load-performance-tests.cc</file>
+    <file>measure-load-performance-tests.hh</file>
+    <file>measure-load-performance.cc</file>
+    <file>test-helpers.cc</file>
+    <file>test-helpers.hh</file>
+  </compound>
+  <compound kind="dir">
+    <name>plugins/transparent-overlay</name>
+    <path>plugins/transparent-overlay/</path>
+    <filename>dir_d3b049f0cc43ff700254a5d5bebf20e7.html</filename>
+    <dir>plugins/transparent-overlay/src</dir>
+    <dir>plugins/transparent-overlay/test</dir>
+  </compound>
+  <compound kind="dir">
+    <name>libs/util</name>
+    <path>libs/util/</path>
+    <filename>dir_2e5bde0e768e1c9a7f40cd5999af9f90.html</filename>
+    <dir>libs/util/inc</dir>
+    <dir>libs/util/src</dir>
+    <dir>libs/util/test</dir>
+  </compound>
+  <compound kind="dir">
+    <name>cmake-modules/workarounds</name>
+    <path>cmake-modules/workarounds/</path>
+    <filename>dir_5c13c4d2831d045d2735e573dace1439.html</filename>
+    <dir>cmake-modules/workarounds/mac-alut-framework</dir>
+    <dir>cmake-modules/workarounds/mac-gl</dir>
+    <dir>cmake-modules/workarounds/mac-openal</dir>
+    <dir>cmake-modules/workarounds/tchar</dir>
   </compound>
 </tagfile>

@@ -1,9 +1,9 @@
 <map id="ShowMetadataInterface" name="ShowMetadataInterface">
-<area shape="rect" id="Node000001" title=" " alt="" coords="123,219,292,284"/>
-<area shape="rect" id="Node000003" href="$classTransformPresentation.html" title=" " alt="" coords="5,387,191,692"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="193,298,158,388,154,386,188,296"/>
-<area shape="rect" id="Node000004" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html" title=" " alt="" coords="215,332,421,747"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="227,296,240,331,235,333,222,298"/>
-<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="153,5,261,171"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="210,184,210,219,205,219,205,184"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="122,237,288,310"/>
+<area shape="rect" id="Node000003" href="$classTransformPresentation.html" title=" " alt="" coords="5,419,189,760"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="189,321,158,420,153,418,188,326"/>
+<area shape="rect" id="Node000004" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html" title=" " alt="" coords="214,358,416,821"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="223,321,237,358,232,358,222,327"/>
+<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="152,5,258,189"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="206,202,208,238,203,237,205,207"/>
 </map>

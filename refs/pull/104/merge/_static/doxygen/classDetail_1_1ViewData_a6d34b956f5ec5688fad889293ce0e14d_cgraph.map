@@ -1,5 +1,7 @@
 <map id="Detail::ViewData::getProgressInterface" name="Detail::ViewData::getProgressInterface">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,223,45"/>
-<area shape="rect" id="Node000002" href="$classDetail_1_1ViewData.html#a6e447a860e908d3c38b4fd35b0f4570a" title=" " alt="" coords="271,13,453,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="223,23,257,23,257,28,223,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,36,222,81"/>
+<area shape="rect" id="Node000002" href="$classViewInterface.html#a32ec89fa5599b534786d390d171b7287" title=" " alt="" coords="270,5,466,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="222,43,257,41,252,42,223,48"/>
+<area shape="rect" id="Node000003" href="$classDetail_1_1ViewData.html#a6e447a860e908d3c38b4fd35b0f4570a" title=" " alt="" coords="277,74,458,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="222,68,264,75,259,76,222,74"/>
 </map>

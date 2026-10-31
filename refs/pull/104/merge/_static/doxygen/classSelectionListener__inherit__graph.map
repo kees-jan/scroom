@@ -1,9 +1,9 @@
 <map id="SelectionListener" name="SelectionListener">
-<area shape="rect" id="Node000001" title=" " alt="" coords="109,219,270,344"/>
-<area shape="rect" id="Node000003" href="$classMeasureHandler.html" title=" " alt="" coords="5,412,181,657"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="163,358,142,413,137,411,158,356"/>
-<area shape="rect" id="Node000004" href="$classPipetteHandler.html" title=" " alt="" coords="206,392,367,677"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="221,356,234,391,229,393,216,358"/>
-<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="135,5,243,171"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,184,192,218,187,218,187,184"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="107,237,267,377"/>
+<area shape="rect" id="Node000003" href="$classMeasureHandler.html" title=" " alt="" coords="5,447,179,720"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="160,388,142,448,137,446,158,393"/>
+<area shape="rect" id="Node000004" href="$classPipetteHandler.html" title=" " alt="" coords="203,425,363,743"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="216,388,231,425,225,425,215,393"/>
+<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="134,5,240,189"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="187,201,190,238,184,237,187,206"/>
 </map>

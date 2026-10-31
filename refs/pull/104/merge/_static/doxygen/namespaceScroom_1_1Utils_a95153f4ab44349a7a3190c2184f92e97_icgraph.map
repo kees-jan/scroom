@@ -1,6 +1,6 @@
 <map id="Scroom::Utils::floored_divide_by" name="Scroom::Utils::floored_divide_by">
-<area shape="rect" id="Node000001" title=" " alt="" coords="216,29,379,69"/>
-<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="333,18,320,11,297,8,277,10,265,15,261,21,263,28,258,30,255,20,262,10,276,5,297,3,322,6,335,13"/>
-<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a61c6c4659d89099fb82db9e5b90f0462" title=" " alt="" coords="5,29,168,69"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="202,52,168,52,168,47,202,47"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="215,29,376,74"/>
+<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="328,14,317,10,295,8,276,10,264,15,259,21,260,30,255,27,254,19,261,10,275,5,295,3,318,5,333,14"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a61c6c4659d89099fb82db9e5b90f0462" title=" " alt="" coords="5,29,167,74"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="196,52,167,54,167,49,202,51"/>
 </map>

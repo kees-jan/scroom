@@ -1,7 +1,9 @@
 <map id="Scroom::Utils::Detail::ErrorSignalHandler::ErrorSignalHandler" name="Scroom::Utils::Detail::ErrorSignalHandler::ErrorSignalHandler">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,161,60"/>
-<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Detail_1_1ErrorSignalHandler.html#ae869ccdbf76fd4fcc1439cc4e288630e" title=" " alt="" coords="209,5,365,60"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="161,30,196,30,196,35,161,35"/>
-<area shape="rect" id="Node000003" href="$namespaceScroom_1_1Utils_1_1Detail.html#a067f37937ab1b7b646074e66d20b1584" title=" " alt="" coords="413,13,569,53"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="365,30,400,30,400,35,365,35"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,161,91"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Detail_1_1ErrorSignalHandler.html#ae869ccdbf76fd4fcc1439cc4e288630e" title=" " alt="" coords="209,29,364,91"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="161,66,196,69,190,69,161,72"/>
+<area shape="poly" id="edge2_Node000002_Node000001" title=" " alt="" coords="205,52,176,54,176,49,211,51"/>
+<area shape="poly" id="edge3_Node000002_Node000002" title=" " alt="" coords="246,27,247,19,254,10,268,5,286,3,308,5,322,15,317,15,306,11,286,8,269,10,258,15,252,21,251,31"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1Utils_1_1Detail.html#a067f37937ab1b7b646074e66d20b1584" title=" " alt="" coords="412,38,567,82"/>
+<area shape="poly" id="edge4_Node000002_Node000003" title=" " alt="" coords="364,58,399,60,394,60,364,63"/>
 </map>

@@ -1,5 +1,7 @@
 <map id="Scroom::Detail::ThreadPool::Builder::add" name="Scroom::Detail::ThreadPool::Builder::add">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,204,45"/>
-<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Detail_1_1ThreadPool.html#a43cf587770443118a3c6e147a7f43bed" title=" " alt="" coords="252,5,451,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="204,23,238,23,238,28,204,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,204,50"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Detail_1_1ThreadPool.html#a43cf587770443118a3c6e147a7f43bed" title=" " alt="" coords="252,5,450,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="204,25,238,27,233,28,204,30"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a2119dca72a374f622eade1fc8f472878" title=" " alt="" coords="498,5,696,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="451,25,485,28,479,28,451,30"/>
 </map>

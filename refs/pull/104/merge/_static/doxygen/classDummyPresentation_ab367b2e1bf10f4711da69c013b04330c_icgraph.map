@@ -1,5 +1,10 @@
 <map id="DummyPresentation::create" name="DummyPresentation::create">
-<area shape="rect" id="Node000001" title=" " alt="" coords="320,5,484,45"/>
-<area shape="rect" id="Node000002" href="$classDummyView.html#a6ee533e18b061fa8de157931b74a5313" title=" " alt="" coords="5,13,272,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="307,28,272,28,272,23,307,23"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="488,57,651,102"/>
+<area shape="rect" id="Node000002" href="$classDummyView.html#a6ee533e18b061fa8de157931b74a5313" title=" " alt="" coords="175,5,440,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="470,52,439,47,389,36,389,31,441,42,475,53"/>
+<area shape="rect" id="Node000004" href="$classDummyPresentation.html#ad309c379cbf46c4a3d8ea77f4d17eff8" title=" " alt="" coords="226,57,389,102"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="470,88,389,90,389,85,475,88"/>
+<area shape="rect" id="Node000003" href="$pipette-tests_8cc.html#af88b76092f051bac2bdc79e6b2f45730" title=" " alt="" coords="5,5,127,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="156,20,128,22,127,17,161,18"/>
+<area shape="poly" id="edge4_Node000004_Node000001" title=" " alt="" coords="405,68,490,71,485,71,405,73"/>
 </map>

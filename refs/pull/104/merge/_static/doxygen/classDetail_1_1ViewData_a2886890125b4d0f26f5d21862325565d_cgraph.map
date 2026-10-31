@@ -1,5 +1,7 @@
 <map id="Detail::ViewData::addSideWidget" name="Detail::ViewData::addSideWidget">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,197,45"/>
-<area shape="rect" id="Node000002" href="$classDetail_1_1ViewData.html#a6e447a860e908d3c38b4fd35b0f4570a" title=" " alt="" coords="245,13,428,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,23,232,23,232,28,198,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,24,197,68"/>
+<area shape="rect" id="Node000002" href="$classViewInterface.html#aa178b3563e9cea8bc9e4df22499d5717" title=" " alt="" coords="245,5,462,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="197,33,232,32,227,33,198,38"/>
+<area shape="rect" id="Node000003" href="$classDetail_1_1ViewData.html#a6e447a860e908d3c38b4fd35b0f4570a" title=" " alt="" coords="263,57,444,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="197,53,250,60,245,61,197,58"/>
 </map>

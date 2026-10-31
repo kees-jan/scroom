@@ -1,7 +1,7 @@
 <map id="libs/util/inc/scroom/stuff.hh" name="libs/util/inc/scroom/stuff.hh">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,151,45"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="15,93,58,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="70,47,52,82,47,80,66,44"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="82,93,159,119"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="91,44,110,80,106,83,86,47"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,150,50"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="16,98,57,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="69,49,52,85,47,82,65,52"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="81,98,157,126"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="90,48,108,84,103,84,87,53"/>
 </map>

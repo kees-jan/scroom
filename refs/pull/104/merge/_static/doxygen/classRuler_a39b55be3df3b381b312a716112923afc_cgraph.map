@@ -1,7 +1,10 @@
 <map id="Ruler::create" name="Ruler::create">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,45,111,70"/>
-<area shape="rect" id="Node000002" href="$classHorizontalDrawStrategy.html#a72d3b0cbcee1d7997cfc22173f7c43c3" title=" " alt="" coords="159,5,337,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,46,145,40,146,45,111,51"/>
-<area shape="rect" id="Node000003" href="$classVerticalDrawStrategy.html#a69f32cdf0e0e4fe57b755474e05283bc" title=" " alt="" coords="168,69,328,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="111,64,155,71,154,76,111,69"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,83,110,111"/>
+<area shape="rect" id="Node000002" href="$classHorizontalDrawStrategy.html#a72d3b0cbcee1d7997cfc22173f7c43c3" title=" " alt="" coords="158,5,335,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,80,171,54,167,58,99,85"/>
+<area shape="rect" id="Node000003" href="$classVerticalDrawStrategy.html#a69f32cdf0e0e4fe57b755474e05283bc" title=" " alt="" coords="167,75,326,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="110,94,153,96,149,98,111,100"/>
+<area shape="rect" id="Node000004" href="$classRuler.html#a55c84ac3d985f64e16e225cf3f9cda01" title=" " alt="" coords="198,167,295,195"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="91,109,202,159,198,162,90,114"/>
+<area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="213,166,208,158,212,149,225,143,246,141,269,143,282,152,277,151,267,148,246,146,227,148,216,152,214,158,218,168"/>
 </map>
