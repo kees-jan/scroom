@@ -1,6 +1,8 @@
 Core requirements
 =================
 
+.. _be-fast:
+
 Be fast
 -------
 
