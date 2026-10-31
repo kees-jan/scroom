@@ -1,7 +1,7 @@
 <map id="Scroom::LoggerContainer" name="Scroom::LoggerContainer">
-<area shape="rect" id="Node000001" title=" " alt="" coords="33,148,211,273"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,13,89,78"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="64,77,89,132,85,134,59,79"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="113,5,283,85"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="182,87,160,134,155,132,177,85"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="32,168,206,307"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,14,86,86"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,83,88,151,83,152,59,89"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="110,5,275,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="177,92,155,153,150,151,174,97"/>
 </map>

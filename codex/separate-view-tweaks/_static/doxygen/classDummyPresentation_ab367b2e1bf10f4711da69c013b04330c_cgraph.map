@@ -1,5 +1,6 @@
 <map id="DummyPresentation::create" name="DummyPresentation::create">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,169,45"/>
-<area shape="rect" id="Node000002" href="$classDummyPresentation.html#ad309c379cbf46c4a3d8ea77f4d17eff8" title=" " alt="" coords="217,5,381,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,23,204,23,204,28,170,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,169,50"/>
+<area shape="rect" id="Node000002" href="$classDummyPresentation.html#ad309c379cbf46c4a3d8ea77f4d17eff8" title=" " alt="" coords="217,5,380,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="169,34,204,37,198,37,169,39"/>
+<area shape="poly" id="edge2_Node000002_Node000001" title=" " alt="" coords="214,19,184,21,184,16,219,19"/>
 </map>

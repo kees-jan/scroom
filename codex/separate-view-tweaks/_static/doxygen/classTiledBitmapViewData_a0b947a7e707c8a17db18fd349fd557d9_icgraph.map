@@ -1,0 +1,7 @@
+<map id="TiledBitmapViewData::TiledBitmapViewData" name="TiledBitmapViewData::TiledBitmapViewData">
+<area shape="rect" id="Node000001" title=" " alt="" coords="405,5,576,50"/>
+<area shape="rect" id="Node000002" href="$classTiledBitmapViewData.html#ac1670607394b7dda8bce6d680fd766c1" title=" " alt="" coords="194,5,357,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="387,28,358,30,358,25,392,28"/>
+<area shape="rect" id="Node000003" href="$classTiledBitmap.html#ad17bc560de133e417b01d2f34d731038" title=" " alt="" coords="5,14,146,42"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="175,28,146,30,146,25,181,27"/>
+</map>

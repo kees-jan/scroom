@@ -1,23 +1,23 @@
 <map id="PresentationBase" name="PresentationBase">
-<area shape="rect" id="Node000001" title=" " alt="" coords="264,833,401,999"/>
-<area shape="rect" id="Node000008" href="$classPresentationBaseSimple.html" title=" " alt="" coords="11,1201,185,1307"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="256,985,226,1015,199,1048,174,1086,152,1127,119,1202,114,1200,147,1125,169,1084,195,1045,222,1012,252,981"/>
-<area shape="rect" id="Node000010" href="$classTransparentOverlayPresentation.html" title=" " alt="" coords="209,1111,457,1397"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="335,1012,335,1111,330,1111,330,1012"/>
-<area shape="rect" id="Node000011" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html" title=" " alt="" coords="481,1047,686,1461"/>
-<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="413,982,471,1045,483,1061,478,1064,467,1048,409,986"/>
-<area shape="rect" id="Node000002" href="$classPresentationInterface.html" title=" " alt="" coords="255,620,410,785"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="335,799,335,833,330,833,330,799"/>
-<area shape="rect" id="Node000003" href="$classViewable.html" title=" " alt="" coords="223,417,298,502"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="280,514,311,619,306,620,274,516"/>
-<area shape="rect" id="Node000004" href="$classInterface.html" title=" " alt="" coords="204,133,312,299"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="262,312,263,416,258,417,256,312"/>
-<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Observable.html" title=" " alt="" coords="324,347,488,572"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="371,586,360,621,355,619,366,584"/>
-<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="337,133,478,299"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="409,312,409,346,404,346,404,312"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="335,5,480,85"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="410,99,410,133,405,133,405,99"/>
-<area shape="rect" id="Node000009" href="$classTransformPresentation.html" title=" " alt="" coords="5,1509,191,1815"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="101,1320,101,1509,95,1509,95,1320"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="262,906,397,1090"/>
+<area shape="rect" id="Node000008" href="$classPresentationBaseSimple.html" title=" " alt="" coords="12,1311,182,1428"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="250,1071,224,1104,197,1139,172,1182,150,1228,117,1312,112,1310,145,1226,167,1180,192,1136,219,1100,253,1067"/>
+<area shape="rect" id="Node000010" href="$classTransparentOverlayPresentation.html" title=" " alt="" coords="206,1210,452,1528"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="330,1102,332,1211,327,1210,329,1107"/>
+<area shape="rect" id="Node000011" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html" title=" " alt="" coords="476,1138,678,1601"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="407,1068,466,1136,480,1157,474,1157,462,1139,407,1073"/>
+<area shape="rect" id="Node000002" href="$classPresentationInterface.html" title=" " alt="" coords="253,674,406,858"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="330,870,332,906,327,906,329,875"/>
+<area shape="rect" id="Node000003" href="$classViewable.html" title=" " alt="" coords="224,453,296,548"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="276,559,308,674,303,674,276,565"/>
+<area shape="rect" id="Node000004" href="$classInterface.html" title=" " alt="" coords="204,143,310,327"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="259,339,262,453,257,453,258,344"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Observable.html" title=" " alt="" coords="320,375,482,626"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="363,643,357,674,352,673,364,637"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="334,143,472,327"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="402,339,405,375,399,374,402,344"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="332,5,474,95"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="403,107,405,143,400,143,402,112"/>
+<area shape="rect" id="Node000009" href="$classTransformPresentation.html" title=" " alt="" coords="5,1649,189,1990"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="98,1440,100,1650,95,1650,97,1446"/>
 </map>

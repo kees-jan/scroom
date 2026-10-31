@@ -1,13 +1,21 @@
 <map id="cairo_destroy" name="cairo_destroy">
-<area shape="rect" id="Node000001" title=" " alt="" coords="507,95,617,120"/>
-<area shape="rect" id="Node000002" href="$classCommonOperations.html#aa09eae217c1870d175a491010ce3b9f4" title=" " alt="" coords="223,5,459,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="532,89,497,66,458,46,418,33,420,28,460,41,500,61,535,84"/>
-<area shape="rect" id="Node000003" href="$classExamplePresentation.html#a814f6109cfd268b115c24ae46fa6b2b6" title=" " alt="" coords="260,55,421,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="493,100,421,90,422,84,493,95"/>
-<area shape="rect" id="Node000005" href="$classTransparentOverlayViewInfo.html#add1ffd6ec625dfd9633fd5dad6ad2b3f" title=" " alt="" coords="237,119,444,159"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="494,120,444,127,444,122,493,115"/>
-<area shape="rect" id="Node000006" href="$classTransformPresentation.html#aae93c031e922657598b8a3047e699267" title=" " alt="" coords="256,183,425,223"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="534,130,499,153,460,174,427,186,425,181,458,169,497,148,531,126"/>
-<area shape="rect" id="Node000004" href="$classExamplePresentation.html#a4c2139db43d28ba5652668a12b7c7b5f" title=" " alt="" coords="5,55,175,95"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="246,78,175,78,175,73,246,73"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="721,152,831,180"/>
+<area shape="rect" id="Node000002" href="$classCommonOperations.html#aa09eae217c1870d175a491010ce3b9f4" title=" " alt="" coords="438,58,673,86"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="744,142,711,121,672,99,641,89,642,83,674,95,714,116,749,143"/>
+<area shape="rect" id="Node000003" href="$classExamplePresentation.html#a814f6109cfd268b115c24ae46fa6b2b6" title=" " alt="" coords="476,109,636,154"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="703,156,636,147,636,142,709,155"/>
+<area shape="rect" id="Node000009" href="$classTransformPresentation.html#aae93c031e922657598b8a3047e699267" title=" " alt="" coords="472,179,640,223"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="703,178,641,190,640,185,709,177"/>
+<area shape="rect" id="Node000010" href="$classTransparentOverlayViewInfo.html#add1ffd6ec625dfd9633fd5dad6ad2b3f" title=" " alt="" coords="453,248,658,293"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="748,189,713,216,675,238,645,250,644,245,672,233,711,211,743,191"/>
+<area shape="rect" id="Node000004" href="$classExamplePresentation.html#a4c2139db43d28ba5652668a12b7c7b5f" title=" " alt="" coords="222,109,390,154"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="458,132,391,134,390,129,463,131"/>
+<area shape="rect" id="Node000005" href="$classExamplePresentation.html#a6d542569cdae61fd07ee0db51240a991" title=" " alt="" coords="5,5,174,50"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="248,103,173,65,148,53,147,48,175,60,253,101"/>
+<area shape="rect" id="Node000006" href="$classExamplePresentation.html#ae4a92281d1d2971fdaaf47c92b1d0db0" title=" " alt="" coords="5,75,174,119"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="204,117,175,113,174,108,209,115"/>
+<area shape="rect" id="Node000007" href="$classExamplePresentation.html#a449a0745ee373aca691cc3301fe886c2" title=" " alt="" coords="9,144,170,189"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="204,149,171,156,169,151,209,146"/>
+<area shape="rect" id="Node000008" href="$classExamplePresentation.html#a818c924dbbdac6646330105f1c1e9742" title=" " alt="" coords="9,213,170,258"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="248,163,175,203,148,215,146,210,173,199,253,160"/>
 </map>

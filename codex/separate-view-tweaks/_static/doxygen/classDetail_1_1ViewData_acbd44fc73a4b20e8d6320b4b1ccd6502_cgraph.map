@@ -1,5 +1,7 @@
 <map id="Detail::ViewData::getCurrentPresentation" name="Detail::ViewData::getCurrentPresentation">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,215,45"/>
-<area shape="rect" id="Node000002" href="$classDetail_1_1ViewData.html#a6e447a860e908d3c38b4fd35b0f4570a" title=" " alt="" coords="263,13,445,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="215,23,249,23,249,28,215,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,36,214,81"/>
+<area shape="rect" id="Node000002" href="$classViewInterface.html#a25719b367471827eb0dc990017de21a2" title=" " alt="" coords="262,5,450,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="214,43,249,41,244,42,215,48"/>
+<area shape="rect" id="Node000003" href="$classDetail_1_1ViewData.html#a6e447a860e908d3c38b4fd35b0f4570a" title=" " alt="" coords="265,74,446,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="214,68,253,75,247,75,214,73"/>
 </map>

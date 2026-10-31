@@ -1,13 +1,13 @@
 <map id="libs/util/inc/scroom/utilities.hh" name="libs/util/inc/scroom/utilities.hh">
-<area shape="rect" id="Node000001" title=" " alt="" coords="66,5,211,45"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,48,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,48,56,87,53,83,110,43"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="73,93,205,119"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="141,46,141,79,136,79,136,46"/>
-<area shape="rect" id="Node000004" href="$logger_8hh.html" title=" " alt="" coords="229,93,363,119"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="178,43,262,85,259,89,175,48"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="195,167,272,192"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="288,121,255,158,251,154,284,117"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="297,167,421,192"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="308,117,341,154,337,158,304,121"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="64,5,209,50"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,98,47,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,53,58,91,54,87,109,48"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="71,98,202,126"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="138,48,139,83,134,82,135,53"/>
+<area shape="rect" id="Node000004" href="$logger_8hh.html" title=" " alt="" coords="226,98,359,126"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="178,48,257,90,252,91,178,53"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="192,174,268,201"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="284,125,252,164,249,160,279,127"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="292,174,416,201"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="305,124,336,162,331,161,303,129"/>
 </map>

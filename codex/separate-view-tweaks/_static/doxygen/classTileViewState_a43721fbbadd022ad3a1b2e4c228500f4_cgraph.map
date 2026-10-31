@@ -1,9 +1,14 @@
 <map id="TileViewState::clear" name="TileViewState::clear">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,157,38"/>
-<area shape="rect" id="Node000002" href="$classTileViewState.html#ad24f5d685c8474a955e26aeb1f3c4cb1" title=" " alt="" coords="205,13,352,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,23,191,23,191,28,157,28"/>
-<area shape="rect" id="Node000003" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ac3d3ac1d5d45d2795778a63a45470be5" title=" " alt="" coords="400,5,599,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="353,23,386,23,386,28,353,28"/>
-<area shape="rect" id="Node000004" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a7cfca3637d57c4a9e37351b3426ffd40" title=" " alt="" coords="647,5,845,45"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="599,23,633,23,633,28,599,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,48,157,76"/>
+<area shape="rect" id="Node000002" href="$classTileViewState.html#ad24f5d685c8474a955e26aeb1f3c4cb1" title=" " alt="" coords="205,48,351,76"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,60,192,62,187,63,157,65"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ac3d3ac1d5d45d2795778a63a45470be5" title=" " alt="" coords="399,5,597,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="351,48,386,45,381,46,352,53"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Base.html#aae9a071db1ff973ca6e844a69d3e10ea" title=" " alt="" coords="424,75,572,119"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="352,71,411,83,406,83,352,77"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a7cfca3637d57c4a9e37351b3426ffd40" title=" " alt="" coords="645,5,844,50"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="598,25,632,27,627,28,598,30"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#af8f6918d92f8388674bd7bdc1b75b2ec" title="Queue." alt="" coords="892,5,1090,50"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="844,34,878,37,873,37,844,39"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="888,19,860,21,859,16,894,19"/>
 </map>

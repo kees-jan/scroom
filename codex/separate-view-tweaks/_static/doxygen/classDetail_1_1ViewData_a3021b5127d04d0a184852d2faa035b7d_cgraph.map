@@ -1,5 +1,7 @@
 <map id="Detail::ViewData::removeFromToolbar" name="Detail::ViewData::removeFromToolbar">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,196,45"/>
-<area shape="rect" id="Node000002" href="$classDetail_1_1ViewData.html#a6e447a860e908d3c38b4fd35b0f4570a" title=" " alt="" coords="244,13,427,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="196,23,231,23,231,28,196,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,28,195,72"/>
+<area shape="rect" id="Node000002" href="$classDetail_1_1ViewData.html#a6e447a860e908d3c38b4fd35b0f4570a" title=" " alt="" coords="253,5,434,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,35,240,32,235,33,196,41"/>
+<area shape="rect" id="Node000003" href="$classViewInterface.html#a44a3236d0a39912b2eb0d3e9745cbea4" title=" " alt="" coords="243,57,445,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,59,230,65,224,65,195,64"/>
 </map>

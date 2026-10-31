@@ -1,5 +1,7 @@
 <map id="Detail::ViewData::invalidate" name="Detail::ViewData::invalidate">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,211,31"/>
-<area shape="rect" id="Node000002" href="$classDetail_1_1ViewData.html#a6e447a860e908d3c38b4fd35b0f4570a" title=" " alt="" coords="259,5,441,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="211,15,245,15,245,21,211,21"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,32,210,60"/>
+<area shape="rect" id="Node000002" href="$classViewInterface.html#a0c19f67bde7e15534e876edad9e35a31" title=" " alt="" coords="258,5,442,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="210,32,245,31,240,31,211,37"/>
+<area shape="rect" id="Node000003" href="$classDetail_1_1ViewData.html#a6e447a860e908d3c38b4fd35b0f4570a" title=" " alt="" coords="259,57,440,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="210,54,246,60,241,60,210,59"/>
 </map>

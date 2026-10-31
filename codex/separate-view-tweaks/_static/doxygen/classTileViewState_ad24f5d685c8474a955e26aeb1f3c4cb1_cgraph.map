@@ -1,7 +1,12 @@
 <map id="TileViewState::kick" name="TileViewState::kick">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,152,38"/>
-<area shape="rect" id="Node000002" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ac3d3ac1d5d45d2795778a63a45470be5" title=" " alt="" coords="200,5,399,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="153,23,186,23,186,28,153,28"/>
-<area shape="rect" id="Node000003" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a7cfca3637d57c4a9e37351b3426ffd40" title=" " alt="" coords="447,5,645,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="399,23,433,23,433,28,399,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,48,152,76"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#ac3d3ac1d5d45d2795778a63a45470be5" title=" " alt="" coords="200,5,398,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="152,48,187,45,182,47,153,53"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Base.html#aae9a071db1ff973ca6e844a69d3e10ea" title=" " alt="" coords="225,75,373,119"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="152,71,212,82,207,83,152,77"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a7cfca3637d57c4a9e37351b3426ffd40" title=" " alt="" coords="446,5,644,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="398,25,433,27,427,28,399,30"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#af8f6918d92f8388674bd7bdc1b75b2ec" title="Queue." alt="" coords="692,5,891,50"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="645,34,679,36,674,37,645,39"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="689,19,660,21,660,16,694,19"/>
 </map>

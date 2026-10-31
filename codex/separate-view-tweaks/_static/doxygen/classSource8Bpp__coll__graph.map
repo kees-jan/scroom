@@ -1,7 +1,7 @@
 <map id="Source8Bpp" name="Source8Bpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="26,372,125,477"/>
-<area shape="rect" id="Node000002" href="$classSourcePresentation.html" title=" " alt="" coords="5,219,145,324"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="78,338,78,372,73,372,73,338"/>
-<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="21,5,129,171"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="78,184,78,219,73,219,73,184"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="25,402,122,519"/>
+<area shape="rect" id="Node000002" href="$classSourcePresentation.html" title=" " alt="" coords="5,237,142,354"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,366,76,403,71,402,73,372"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="21,5,127,189"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="74,202,76,238,71,237,73,207"/>
 </map>

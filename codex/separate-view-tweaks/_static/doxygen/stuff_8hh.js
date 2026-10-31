@@ -1,7 +1,7 @@
 var stuff_8hh =
 [
-    [ "Stuff", "stuff_8hh.html#a7831a6b14da4ae303170e6607f29e6b9", null ],
-    [ "StuffList", "stuff_8hh.html#acf77d2a64982c6e01e5111ebec656515", null ],
-    [ "StuffWeak", "stuff_8hh.html#afea0aa2f53589bdee27bdc6dd4cc418a", null ],
-    [ "Empty", "stuff_8hh.html#a053ab918264fd8b7dca49cacf95060d9", null ]
+    [ "Scroom::Utils::Stuff", "namespaceScroom_1_1Utils.html#a6f32f9c33bd4964e737bfdd8243ba86f", null ],
+    [ "Scroom::Utils::StuffList", "namespaceScroom_1_1Utils.html#afa0db9538f2219901832fbf6c8c793b6", null ],
+    [ "Scroom::Utils::StuffWeak", "namespaceScroom_1_1Utils.html#a2a0db8626b43be980ea67876c6aa893c", null ],
+    [ "Scroom::Utils::Empty", "namespaceScroom_1_1Utils.html#a053ab918264fd8b7dca49cacf95060d9", null ]
 ];

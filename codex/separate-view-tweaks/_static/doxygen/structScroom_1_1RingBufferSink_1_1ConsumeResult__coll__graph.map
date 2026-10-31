@@ -1,11 +1,11 @@
 <map id="Scroom::RingBufferSink::ConsumeResult" name="Scroom::RingBufferSink::ConsumeResult">
-<area shape="rect" id="Node000001" title=" " alt="" coords="9,568,176,648"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,425,180,505"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,506,95,552,90,552,90,506"/>
-<area shape="rect" id="Node000003" href="$structScroom_1_1RingBufferSink_1_1Entry.html" title=" " alt="" coords="9,263,176,363"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="95,363,95,409,90,409,90,363"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="53,135,132,200"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="95,200,95,246,90,246,90,200"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="27,5,158,85"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="95,99,95,134,90,134,90,99"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="9,636,173,726"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,474,177,563"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,561,94,620,89,619,90,566"/>
+<area shape="rect" id="Node000003" href="$structScroom_1_1RingBufferSink_1_1Entry.html" title=" " alt="" coords="9,289,173,401"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="92,398,94,458,89,457,91,403"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="53,144,129,216"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="91,214,94,273,89,273,91,219"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="27,5,155,95"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="91,107,94,144,89,144,91,112"/>
 </map>

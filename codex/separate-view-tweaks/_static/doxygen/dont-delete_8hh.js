@@ -1,4 +1,4 @@
 var dont_delete_8hh =
 [
-    [ "DontDelete< T >", "classDontDelete.html", "classDontDelete" ]
+    [ "DontDelete&lt; T &gt;", "classDontDelete.html", "classDontDelete" ]
 ];

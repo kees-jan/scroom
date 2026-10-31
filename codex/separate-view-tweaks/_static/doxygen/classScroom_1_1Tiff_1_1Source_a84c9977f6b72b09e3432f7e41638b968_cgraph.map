@@ -1,31 +1,46 @@
 <map id="Scroom::Tiff::Source::reset" name="Scroom::Tiff::Source::reset">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,229,157,269"/>
-<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Tiff.html#a2a58e48c5df174a7fc330e5f888b17b4" title=" " alt="" coords="215,147,355,172"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,226,241,175,243,180,129,231"/>
-<area shape="rect" id="Node000012" href="$namespaceScroom_1_1TiledBitmap.html#a90b98df77076cf30312ea6e57d3e75d2" title=" " alt="" coords="205,289,364,329"/>
-<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="151,266,204,282,202,287,149,271"/>
-<area shape="rect" id="Node000003" href="$classColormapHelper.html#a98be23aa876b37cc9cd8e7050a50266b" title=" " alt="" coords="673,181,851,207"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="292,145,309,119,336,87,371,56,411,32,470,11,519,3,569,10,627,32,669,60,704,96,732,135,751,168,746,170,727,138,700,100,666,64,624,36,567,15,519,8,471,16,413,37,374,60,340,91,314,123,296,148"/>
-<area shape="rect" id="Node000007" href="$classMonochromeColormapHelper.html#a3d60bf2ef52a480ef936f98ad5f84a3b" title=" " alt="" coords="412,46,625,86"/>
-<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="308,144,355,120,411,96,432,88,434,93,413,101,358,125,311,149"/>
-<area shape="rect" id="Node000008" href="$classMonochromeColormapHelper.html#ace01cfb15ef9889abb675f74e51a0db1" title=" " alt="" coords="412,110,625,150"/>
-<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="354,148,398,143,399,148,355,153"/>
-<area shape="rect" id="Node000009" href="$namespaceScroom_1_1Tiff.html#a6d0115e39d8da94fd4203ee9fdcb6640" title=" " alt="" coords="415,175,622,200"/>
-<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="355,165,402,171,401,176,354,170"/>
-<area shape="rect" id="Node000010" href="$namespaceScroom_1_1Tiff.html#af14448da0b14397e25f9736a935e5dd1" title=" " alt="" coords="423,225,615,265"/>
-<area shape="poly" id="edge10_Node000002_Node000010" title=" " alt="" coords="316,170,413,209,439,218,437,223,411,214,314,175"/>
-<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="724,183,716,173,720,163,736,157,762,155,795,159,807,168,804,172,793,164,762,160,737,162,724,167,721,172,728,180"/>
-<area shape="rect" id="Node000004" href="$classColormap.html#afe589913d62741a00d269c5e72c3641b" title=" " alt="" coords="903,183,1085,208"/>
-<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="851,192,889,192,889,197,851,197"/>
-<area shape="rect" id="Node000005" href="$classColormap.html#a9966b8a719d851b5e28b6b99ec6d2245" title=" " alt="" coords="1137,208,1272,233"/>
-<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="1086,204,1124,208,1123,214,1085,209"/>
-<area shape="rect" id="Node000006" href="$classColormap.html#afbda2916eb43f89f99512e951ca2c7de" title=" " alt="" coords="1320,208,1476,233"/>
-<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="1272,218,1306,218,1306,223,1272,223"/>
-<area shape="poly" id="edge11_Node000010_Node000003" title=" " alt="" coords="614,222,687,207,688,212,615,227"/>
-<area shape="rect" id="Node000011" href="$namespaceScroom_1_1Tiff.html#a16a8453816281bdec1cedafadfa7c14d" title=" " alt="" coords="899,232,1089,257"/>
-<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="615,242,885,242,885,247,615,247"/>
-<area shape="poly" id="edge13_Node000011_Node000005" title=" " alt="" coords="1089,231,1123,227,1124,233,1090,237"/>
-<area shape="rect" id="Node000013" href="$namespaceScroom_1_1TiledBitmap.html#ad48ffa08ebee955f5039811162e0df4a" title=" " alt="" coords="439,289,598,329"/>
-<area shape="poly" id="edge15_Node000012_Node000013" title=" " alt="" coords="364,315,425,315,425,320,364,320"/>
-<area shape="poly" id="edge16_Node000013_Node000012" title=" " alt="" coords="439,303,378,303,378,297,439,298"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,277,157,322"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Tiff.html#a2a58e48c5df174a7fc330e5f888b17b4" title=" " alt="" coords="214,195,353,222"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,274,238,227,235,231,134,279"/>
+<area shape="rect" id="Node000018" href="$namespaceScroom_1_1TiledBitmap.html#a90b98df77076cf30312ea6e57d3e75d2" title=" " alt="" coords="205,366,362,411"/>
+<area shape="poly" id="edge23_Node000001_Node000018" title=" " alt="" coords="134,319,219,358,215,360,133,325"/>
+<area shape="rect" id="Node000003" href="$classColormapHelper.html#a98be23aa876b37cc9cd8e7050a50266b" title=" " alt="" coords="692,204,869,232"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="353,207,679,214,675,218,354,212"/>
+<area shape="rect" id="Node000007" href="$classMonochromeColormapHelper.html#a3d60bf2ef52a480ef936f98ad5f84a3b" title=" " alt="" coords="410,126,622,171"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="339,192,415,174,410,176,341,197"/>
+<area shape="rect" id="Node000012" href="$classMonochromeColormapHelper.html#ace01cfb15ef9889abb675f74e51a0db1" title=" " alt="" coords="410,57,622,102"/>
+<area shape="poly" id="edge14_Node000002_Node000012" title=" " alt="" coords="298,192,346,153,409,112,425,106,420,109,411,116,349,157,302,196"/>
+<area shape="rect" id="Node000013" href="$namespaceScroom_1_1Tiff.html#a6d0115e39d8da94fd4203ee9fdcb6640" title=" " alt="" coords="413,315,619,342"/>
+<area shape="poly" id="edge16_Node000002_Node000013" title=" " alt="" coords="300,220,348,261,378,282,411,301,427,309,422,309,409,306,376,287,344,265,299,225"/>
+<area shape="rect" id="Node000015" href="$namespaceScroom_1_1Tiff.html#af14448da0b14397e25f9736a935e5dd1" title=" " alt="" coords="420,246,612,291"/>
+<area shape="poly" id="edge18_Node000002_Node000015" title=" " alt="" coords="340,220,415,241,410,242,340,226"/>
+<area shape="rect" id="Node000017" href="$namespaceScroom_1_1Utils.html#a8a866a6439fc60dfe259e168059aa65e" title=" " alt="" coords="424,5,608,33"/>
+<area shape="poly" id="edge22_Node000002_Node000017" title=" " alt="" coords="289,192,306,161,332,120,366,78,408,42,420,38,416,41,412,47,370,82,336,123,310,164,294,196"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="735,203,728,195,734,185,752,179,781,177,811,180,830,189,824,189,810,185,780,183,753,185,737,190,734,195,740,204"/>
+<area shape="rect" id="Node000004" href="$classColormap.html#afe589913d62741a00d269c5e72c3641b" title=" " alt="" coords="1226,199,1407,226"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="869,214,1213,213,1208,214,870,220"/>
+<area shape="rect" id="Node000005" href="$classColormap.html#a9966b8a719d851b5e28b6b99ec6d2245" title=" " alt="" coords="1482,199,1616,226"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="1407,210,1470,212,1464,213,1408,215"/>
+<area shape="rect" id="Node000006" href="$classColormap.html#afbda2916eb43f89f99512e951ca2c7de" title=" " alt="" coords="1664,199,1819,226"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="1616,210,1651,212,1645,213,1616,215"/>
+<area shape="rect" id="Node000008" href="$classMonochromeColormapHelper.html#a02c5a240a533b6db0f061129d33c3667" title=" " alt="" coords="670,89,891,134"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="622,131,657,128,652,130,624,136"/>
+<area shape="rect" id="Node000009" href="$classColormapHelperBase.html#a63ec49692e50c732fcc4e024b1102fd1" title=" " alt="" coords="961,66,1128,111"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="891,99,948,96,943,98,892,104"/>
+<area shape="rect" id="Node000010" href="$classMonochromeColormapHelper.html#aa877583213c557c5c0c54a8da6700ec6" title=" " alt="" coords="939,136,1151,180"/>
+<area shape="poly" id="edge10_Node000008_Node000010" title=" " alt="" coords="891,128,926,136,921,137,891,133"/>
+<area shape="poly" id="edge11_Node000010_Node000004" title=" " alt="" coords="1151,177,1232,195,1227,195,1151,182"/>
+<area shape="rect" id="Node000011" href="$classColormap.html#a88c8e6094d5e4f4251ac694c13e51874" title=" " alt="" coords="1199,145,1434,173"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="1151,156,1186,158,1181,159,1152,161"/>
+<area shape="poly" id="edge13_Node000011_Node000005" title=" " alt="" coords="1380,171,1474,195,1468,195,1380,176"/>
+<area shape="poly" id="edge15_Node000012_Node000008" title=" " alt="" coords="622,89,657,95,652,96,623,95"/>
+<area shape="rect" id="Node000014" href="$namespaceScroom_1_1Utils.html#af6796373cc462aef8e6979a40acef5d3" title=" " alt="" coords="704,306,857,351"/>
+<area shape="poly" id="edge17_Node000013_Node000014" title=" " alt="" coords="620,326,691,328,686,329,620,331"/>
+<area shape="poly" id="edge19_Node000015_Node000003" title=" " alt="" coords="612,248,692,235,687,236,613,253"/>
+<area shape="rect" id="Node000016" href="$namespaceScroom_1_1Tiff.html#a16a8453816281bdec1cedafadfa7c14d" title=" " alt="" coords="950,255,1140,282"/>
+<area shape="poly" id="edge20_Node000015_Node000016" title=" " alt="" coords="612,266,937,268,932,269,612,271"/>
+<area shape="poly" id="edge21_Node000016_Node000005" title=" " alt="" coords="1140,262,1279,253,1434,235,1473,231,1478,230,1435,240,1280,258,1141,267"/>
+<area shape="rect" id="Node000019" href="$namespaceScroom_1_1TiledBitmap.html#ad48ffa08ebee955f5039811162e0df4a" title=" " alt="" coords="438,366,595,411"/>
+<area shape="poly" id="edge24_Node000018_Node000019" title=" " alt="" coords="363,394,425,397,419,397,363,400"/>
+<area shape="poly" id="edge25_Node000019_Node000018" title=" " alt="" coords="434,380,378,382,377,377,440,380"/>
 </map>

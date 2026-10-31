@@ -1,5 +1,13 @@
 <map id="Scroom::Utils::Observable::registerStrongObserver" name="Scroom::Utils::Observable::registerStrongObserver">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,196,45"/>
-<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Detail_1_1Registration.html#ad654b9391a2987d90185f7bc3595382c" title=" " alt="" coords="244,5,403,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="197,23,230,23,230,28,197,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,109,196,154"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Detail_1_1Registration.html#ad654b9391a2987d90185f7bc3595382c" title=" " alt="" coords="260,5,418,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,107,243,60,261,55,257,57,245,65,147,111"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Observable.html#a0985c831266bda7104445a9f0babee03" title=" " alt="" coords="244,75,434,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,115,231,112,226,114,197,120"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Observable.html#acef811808cd92423e56ca29abd5ef880" title=" " alt="" coords="244,144,434,189"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="196,143,231,150,226,151,197,148"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Base.html#aae9a071db1ff973ca6e844a69d3e10ea" title=" " alt="" coords="265,213,413,258"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="146,152,245,199,262,208,256,207,243,203,145,157"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Bookkeeping_1_1Map.html#ab1c85f32de69734c55e5835bcaa6e419" title=" " alt="" coords="482,75,644,119"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="434,94,469,96,463,98,435,100"/>
 </map>

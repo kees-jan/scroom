@@ -1,0 +1,10 @@
+<map id="Layer::create" name="Layer::create">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,112,33"/>
+<area shape="rect" id="Node000002" href="$classLayer.html#a461f24acc6b9fac1f007516bcd380c25" title="Layer." alt="" coords="160,5,261,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,17,146,19,141,19,112,22"/>
+<area shape="rect" id="Node000003" href="$classCompressedTile.html#a6ebd69edede63de69c82229f16475ce6" title=" " alt="" coords="309,5,484,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="261,17,296,19,291,19,261,22"/>
+<area shape="rect" id="Node000004" href="$classCompressedTile.html#a709f5e689dd41c5fee81f6da28ebea2e" title="CompressedTile." alt="" coords="532,5,772,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="485,25,519,28,514,28,485,30"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="529,10,500,13,500,8,535,10"/>
+</map>

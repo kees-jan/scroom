@@ -2,7 +2,7 @@ var searchData=
 [
   ['_7ea_0',['~A',['../classA.html#a8d74412b1ff05d7493b4c546795bf405',1,'A']]],
   ['_7ebase_1',['~Base',['../classScroom_1_1Utils_1_1Base.html#af4bdad20963b6957da0277e4f1dae600',1,'Scroom::Utils::Base']]],
-  ['_7ebitmapsurface_2',['~BitmapSurface',['../classScroom_1_1Bitmap_1_1BitmapSurface.html#a83d3ef3f4aafa31722db153e342a9bd4',1,'Scroom::Bitmap::BitmapSurface']]],
+  ['_7ebitmapsurface_2',['~BitmapSurface',['../classScroom_1_1Bitmap_1_1BitmapSurface.html#a83d3ef3f4aafa31722db153e342a9bd4',1,'Scroom::Bitmap::BitmapSurface::~BitmapSurface()'],['../classBitmapSurface.html#a83d3ef3f4aafa31722db153e342a9bd4',1,'BitmapSurface::~BitmapSurface()']]],
   ['_7echild_3',['~Child',['../classScroom_1_1Utils_1_1ProgressInterfaceMultiplexer_1_1Child.html#a5461f47ffead60b2c64e601c01a5a553',1,'Scroom::Utils::ProgressInterfaceMultiplexer::Child']]],
   ['_7ecolormapprovider_4',['~ColormapProvider',['../classScroom_1_1ColormapImpl_1_1ColormapProvider.html#a8151612e925a83599593ab6b6ec792fb',1,'Scroom::ColormapImpl::ColormapProvider']]],
   ['_7ecounted_5',['~Counted',['../classScroom_1_1Utils_1_1Counted.html#a31a7135ed33e12cef2b5470b142b5e33',1,'Scroom::Utils::Counted']]],

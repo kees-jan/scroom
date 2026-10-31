@@ -1,5 +1,6 @@
 var dir_b07397adb0ba772398d0371ed0d7d338 =
 [
+    [ "gmock", "dir_97dc2d89456a6789ad5553bd9e30703a.html", "dir_97dc2d89456a6789ad5553bd9e30703a" ],
     [ "bitmap-helpers.hh", "bitmap-helpers_8hh.html", "bitmap-helpers_8hh" ],
     [ "cairo-helpers.hh", "cairo-helpers_8hh.html", "cairo-helpers_8hh" ],
     [ "global.hh", "global_8hh.html", "global_8hh" ],

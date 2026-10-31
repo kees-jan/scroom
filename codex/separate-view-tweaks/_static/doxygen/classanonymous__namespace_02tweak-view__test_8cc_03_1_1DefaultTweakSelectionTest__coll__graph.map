@@ -1,9 +1,7 @@
 <map id="anonymous_namespace{tweak&#45;view_test.cc}::DefaultTweakSelectionTest" name="anonymous_namespace{tweak&#45;view_test.cc}::DefaultTweakSelectionTest">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,261,203,356"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="11,133,104,199"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,211,91,260,86,262,70,212"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="128,133,277,199"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="183,200,148,249,144,246,178,197"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="191,5,214,71"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="205,71,205,117,200,117,200,71"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="48,151,242,257"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,95,78"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,88,117,150,112,151,77,93"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="120,5,362,78"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="222,76,187,138,182,135,218,79"/>
 </map>

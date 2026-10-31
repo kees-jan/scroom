@@ -1,0 +1,18 @@
+<map id="LayerCoordinator::addSourceTile" name="LayerCoordinator::addSourceTile">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,187,239,215"/>
+<area shape="rect" id="Node000002" href="$classCompressedTile.html#ad40ea1dd54146b27258bf7f888e3dbc1" title=" " alt="" coords="287,148,471,193"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="239,184,274,183,268,184,240,190"/>
+<area shape="rect" id="Node000008" href="$classScroom_1_1Utils_1_1Base.html#aae9a071db1ff973ca6e844a69d3e10ea" title=" " alt="" coords="778,213,927,258"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="239,204,763,229,763,234,239,209"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Observable.html#af513d91b5b1ca025d34f428208512c45" title=" " alt="" coords="519,144,709,189"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="471,166,506,168,501,169,472,171"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Detail_1_1Registration.html#ad654b9391a2987d90185f7bc3595382c" title=" " alt="" coords="774,5,931,50"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="641,141,692,101,756,60,766,57,771,56,759,65,695,105,643,146"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Observable.html#a0985c831266bda7104445a9f0babee03" title=" " alt="" coords="757,75,948,119"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="693,141,756,125,761,124,694,146"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Observable.html#acef811808cd92423e56ca29abd5ef880" title=" " alt="" coords="757,144,948,189"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="710,164,745,166,739,167,710,169"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="694,187,766,210,761,210,693,192"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Bookkeeping_1_1Map.html#ab1c85f32de69734c55e5835bcaa6e419" title=" " alt="" coords="996,75,1158,119"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="948,94,982,97,977,97,948,100"/>
+</map>

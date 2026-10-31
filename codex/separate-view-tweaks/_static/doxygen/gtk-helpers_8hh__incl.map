@@ -1,17 +1,17 @@
 <map id="libs/util/inc/scroom/gtk&#45;helpers.hh" name="libs/util/inc/scroom/gtk&#45;helpers.hh">
-<area shape="rect" id="Node000001" title=" " alt="" coords="190,5,335,45"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,67,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="209,48,80,92,79,87,208,43"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="91,93,167,119"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="232,48,162,89,159,84,229,43"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="191,93,334,119"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="265,46,265,79,260,79,260,46"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="359,93,439,119"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="297,43,368,84,365,89,294,48"/>
-<area shape="rect" id="Node000006" href="$assertions_8hh.html" title=" " alt="" coords="463,93,572,119"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="324,43,468,87,466,92,323,48"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="409,167,506,192"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="509,121,478,158,474,154,505,117"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="530,167,625,192"/>
-<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="529,117,561,154,557,158,525,121"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="189,5,333,50"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,98,66,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="200,53,81,97,79,92,202,48"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="90,98,165,126"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="223,52,163,92,160,87,228,49"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="190,98,332,126"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="262,48,263,84,258,81,259,53"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="356,98,435,126"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="297,48,364,90,359,90,296,53"/>
+<area shape="rect" id="Node000006" href="$assertions_8hh.html" title=" " alt="" coords="459,98,567,126"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="328,48,461,92,455,93,327,53"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="405,174,501,201"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="505,125,475,164,472,159,500,127"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="526,174,620,201"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="525,124,555,162,550,161,522,129"/>
 </map>

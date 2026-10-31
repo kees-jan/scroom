@@ -1,7 +1,7 @@
 <map id="libs/util/inc/scroom/assertions.hh" name="libs/util/inc/scroom/assertions.hh">
-<area shape="rect" id="Node000001" title=" " alt="" coords="41,5,187,45"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,103,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,47,73,84,69,81,97,44"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="127,93,221,119"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="131,44,159,81,155,84,126,47"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="41,5,186,50"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,98,102,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,49,74,87,70,84,95,52"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="126,98,221,126"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="130,48,158,85,152,85,128,53"/>
 </map>
