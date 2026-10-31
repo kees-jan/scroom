@@ -61,7 +61,6 @@ var namespaces_dup =
       [ "TIFFGetFieldCheckedOr", "namespaceanonymous__namespace_02tiffsource_8cc_03.html#a371dccebed7623814b28704c8243e7f5", null ]
     ] ],
     [ "anonymous_namespace{tiledbitmappresentation.cc}", "namespaceanonymous__namespace_02tiledbitmappresentation_8cc_03.html", "namespaceanonymous__namespace_02tiledbitmappresentation_8cc_03" ],
-    [ "anonymous_namespace{transformpresentation_test.cc}", "namespaceanonymous__namespace_02transformpresentation__test_8cc_03.html", "namespaceanonymous__namespace_02transformpresentation__test_8cc_03" ],
     [ "anonymous_namespace{transparentoverlaypresentation.cc}", "namespaceanonymous__namespace_02transparentoverlaypresentation_8cc_03.html", "namespaceanonymous__namespace_02transparentoverlaypresentation_8cc_03" ],
     [ "anonymous_namespace{transparentoverlayviewinfo.cc}", "namespaceanonymous__namespace_02transparentoverlayviewinfo_8cc_03.html", [
       [ "setToggleButtonColor", "namespaceanonymous__namespace_02transparentoverlayviewinfo_8cc_03.html#a706649399a1cf1938cfbfed014fd3917", null ]

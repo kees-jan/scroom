@@ -1,7 +1,5 @@
 <map id="libs/scroom/test/tweak&#45;view&#45;test&#45;helpers.hh" name="libs/scroom/test/tweak&#45;view&#45;test&#45;helpers.hh">
-<area shape="rect" id="Node000001" title=" " alt="" coords="181,5,350,50"/>
-<area shape="rect" id="Node000002" href="$transformpresentation__test_8cc.html" title=" " alt="" coords="5,98,281,143"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="227,58,174,100,171,95,222,60"/>
-<area shape="rect" id="Node000003" href="$tweak-view__test_8cc.html" title=" " alt="" coords="305,98,474,143"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="308,57,363,98,357,97,306,62"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,175,50"/>
+<area shape="rect" id="Node000002" href="$tweak-view__test_8cc.html" title=" " alt="" coords="5,98,175,143"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,64,93,99,87,97,88,68"/>
 </map>

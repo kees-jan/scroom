@@ -6,5 +6,5 @@ var dir_b07397adb0ba772398d0371ed0d7d338 =
     [ "global.hh", "global_8hh.html", "global_8hh" ],
     [ "showmetadata.hh", "showmetadata_8hh.html", "showmetadata_8hh" ],
     [ "transformpresentation.hh", "transformpresentation_8hh.html", "transformpresentation_8hh" ],
-    [ "tweak-view.hh", "tweak-view_8hh.html", "tweak-view_8hh" ]
+    [ "tweak-view.hh", "scroom_2inc_2scroom_2tweak-view_8hh.html", "scroom_2inc_2scroom_2tweak-view_8hh" ]
 ];

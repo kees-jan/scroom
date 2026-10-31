@@ -1634,7 +1634,7 @@
     <includes id="assertions_8hh" name="assertions.hh" local="no" import="no" module="no" objc="no">scroom/assertions.hh</includes>
     <includes id="cairo-helpers_8hh" name="cairo-helpers.hh" local="no" import="no" module="no" objc="no">scroom/cairo-helpers.hh</includes>
     <includes id="format__stuff_8hh" name="format_stuff.hh" local="no" import="no" module="no" objc="no">scroom/format_stuff.hh</includes>
-    <includes id="tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
+    <includes id="scroom_2inc_2scroom_2tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
     <includes id="callbacks_8hh" name="callbacks.hh" local="yes" import="no" module="no" objc="no">callbacks.hh</includes>
     <includes id="pluginmanager_8hh" name="pluginmanager.hh" local="yes" import="no" module="no" objc="no">pluginmanager.hh</includes>
     <namespace>anonymous_namespace{view.cc}</namespace>
@@ -1693,7 +1693,7 @@
     <includes id="presentationinterface_8hh" name="presentationinterface.hh" local="no" import="no" module="no" objc="no">scroom/presentationinterface.hh</includes>
     <includes id="scroominterface_8hh" name="scroominterface.hh" local="no" import="no" module="no" objc="no">scroom/scroominterface.hh</includes>
     <includes id="stuff_8hh" name="stuff.hh" local="no" import="no" module="no" objc="no">scroom/stuff.hh</includes>
-    <includes id="tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
+    <includes id="scroom_2inc_2scroom_2tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
     <includes id="utilities_8hh" name="utilities.hh" local="no" import="no" module="no" objc="no">scroom/utilities.hh</includes>
     <includes id="viewinterface_8hh" name="viewinterface.hh" local="no" import="no" module="no" objc="no">scroom/viewinterface.hh</includes>
     <includes id="progressbarmanager_8hh" name="progressbarmanager.hh" local="yes" import="no" module="no" objc="no">progressbarmanager.hh</includes>
@@ -2452,8 +2452,8 @@
   <compound kind="file">
     <name>tweak-view.hh</name>
     <path>libs/scroom/inc/scroom/gmock/</path>
-    <filename>gmock_2tweak-view_8hh.html</filename>
-    <includes id="tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
+    <filename>scroom_2inc_2scroom_2gmock_2tweak-view_8hh.html</filename>
+    <includes id="scroom_2inc_2scroom_2tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
     <class kind="class">Scroom::Utils::PresentationPositionTweakMock</class>
     <class kind="class">Scroom::Utils::RulerAreaTweakMock</class>
     <class kind="class">Scroom::Utils::SelectionTweakMock</class>
@@ -2465,7 +2465,7 @@
   <compound kind="file">
     <name>tweak-view.hh</name>
     <path>libs/scroom/inc/scroom/</path>
-    <filename>tweak-view_8hh.html</filename>
+    <filename>scroom_2inc_2scroom_2tweak-view_8hh.html</filename>
     <includes id="interface_8hh" name="interface.hh" local="no" import="no" module="no" objc="no">scroom/interface.hh</includes>
     <includes id="point_8hh" name="point.hh" local="no" import="no" module="no" objc="no">scroom/point.hh</includes>
     <includes id="rectangle_8hh" name="rectangle.hh" local="no" import="no" module="no" objc="no">scroom/rectangle.hh</includes>
@@ -2474,11 +2474,8 @@
     <class kind="class">Scroom::Utils::ITweakRulers</class>
     <class kind="class">Scroom::Utils::ITweakSelection</class>
     <class kind="class">Scroom::Utils::ITweakPositionTextBox</class>
-    <class kind="class">Scroom::Utils::PixelAlignPresentationPositions</class>
     <class kind="class">Scroom::Utils::CalculateViewAreaForRulers</class>
     <class kind="class">Scroom::Utils::TweakSelectionsAsRectangles</class>
-    <class kind="class">Scroom::Utils::SnapSelectionsToGrid</class>
-    <class kind="class">Scroom::Utils::ExpandSelectionsToPixelBoundaries</class>
     <class kind="class">Scroom::Utils::ParseAndFormatViewCentre</class>
     <class kind="class">Scroom::Utils::TweakPresentationPositionsWithAspectRatio</class>
     <class kind="class">Scroom::Utils::TweakRulersWithAspectRatio</class>
@@ -2486,6 +2483,17 @@
     <class kind="class">Scroom::Utils::ParseAndFormatViewCentreWithAspectRatio</class>
     <namespace>Scroom</namespace>
     <namespace>Scroom::Utils</namespace>
+  </compound>
+  <compound kind="file">
+    <name>tweak-view.hh</name>
+    <path>libs/tiled-bitmap/src/</path>
+    <filename>tiled-bitmap_2src_2tweak-view_8hh.html</filename>
+    <includes id="scroom_2inc_2scroom_2tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
+    <class kind="class">Scroom::TiledBitmap::PixelAlignPresentationPositions</class>
+    <class kind="class">Scroom::TiledBitmap::SnapSelectionsToGrid</class>
+    <class kind="class">Scroom::TiledBitmap::ExpandSelectionsToPixelBoundaries</class>
+    <namespace>Scroom</namespace>
+    <namespace>Scroom::TiledBitmap</namespace>
   </compound>
   <compound kind="file">
     <name>showmetadata.hh</name>
@@ -2641,7 +2649,7 @@
     <includes id="transformpresentation_8hh" name="transformpresentation.hh" local="no" import="no" module="no" objc="no">scroom/transformpresentation.hh</includes>
     <includes id="viewinterface_8hh" name="viewinterface.hh" local="no" import="no" module="no" objc="no">scroom/viewinterface.hh</includes>
     <includes id="cairo-helpers_8hh" name="cairo-helpers.hh" local="yes" import="no" module="no" objc="no">scroom/cairo-helpers.hh</includes>
-    <includes id="tweak-view_8hh" name="tweak-view.hh" local="yes" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
+    <includes id="scroom_2inc_2scroom_2tweak-view_8hh" name="tweak-view.hh" local="yes" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
     <namespace>Detail</namespace>
     <member kind="function">
       <type>Scroom::Utils::Point&lt; double &gt;</type>
@@ -2654,15 +2662,24 @@
   <compound kind="file">
     <name>tweak-view.cc</name>
     <path>libs/scroom/src/</path>
-    <filename>tweak-view_8cc.html</filename>
+    <filename>scroom_2src_2tweak-view_8cc.html</filename>
     <includes id="assertions_8hh" name="assertions.hh" local="no" import="no" module="no" objc="no">scroom/assertions.hh</includes>
     <includes id="cairo-helpers_8hh" name="cairo-helpers.hh" local="no" import="no" module="no" objc="no">scroom/cairo-helpers.hh</includes>
-    <includes id="tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
+    <includes id="scroom_2inc_2scroom_2tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
     <class kind="class">Scroom::Utils::anonymous_namespace{tweak-view.cc}::DefaultTweakPresentationPosition</class>
     <class kind="class">Scroom::Utils::anonymous_namespace{tweak-view.cc}::DefaultTweakSelection</class>
     <namespace>Scroom</namespace>
     <namespace>Scroom::Utils</namespace>
     <namespace>Scroom::Utils::anonymous_namespace{tweak-view.cc}</namespace>
+  </compound>
+  <compound kind="file">
+    <name>tweak-view.cc</name>
+    <path>libs/tiled-bitmap/src/</path>
+    <filename>tiled-bitmap_2src_2tweak-view_8cc.html</filename>
+    <includes id="tiled-bitmap_2src_2tweak-view_8hh" name="tweak-view.hh" local="yes" import="no" module="no" objc="no">tweak-view.hh</includes>
+    <includes id="cairo-helpers_8hh" name="cairo-helpers.hh" local="no" import="no" module="no" objc="no">scroom/cairo-helpers.hh</includes>
+    <namespace>Scroom</namespace>
+    <namespace>Scroom::TiledBitmap</namespace>
   </compound>
   <compound kind="file">
     <name>colormaphelpers_test.cc</name>
@@ -2800,313 +2817,10 @@
     </member>
   </compound>
   <compound kind="file">
-    <name>transformpresentation_test.cc</name>
-    <path>libs/scroom/test/</path>
-    <filename>transformpresentation__test_8cc.html</filename>
-    <includes id="bitmap-helpers_8hh" name="bitmap-helpers.hh" local="no" import="no" module="no" objc="no">scroom/bitmap-helpers.hh</includes>
-    <includes id="dont-delete_8hh" name="dont-delete.hh" local="no" import="no" module="no" objc="no">scroom/dont-delete.hh</includes>
-    <includes id="gmock_2presentationinterface_8hh" name="presentationinterface.hh" local="no" import="no" module="no" objc="no">scroom/gmock/presentationinterface.hh</includes>
-    <includes id="gmock_2tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/gmock/tweak-view.hh</includes>
-    <includes id="rectangle_8hh" name="rectangle.hh" local="no" import="no" module="no" objc="no">scroom/rectangle.hh</includes>
-    <includes id="transformpresentation_8hh" name="transformpresentation.hh" local="no" import="no" module="no" objc="no">scroom/transformpresentation.hh</includes>
-    <includes id="tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
-    <includes id="tweak-view-test-helpers_8hh" name="tweak-view-test-helpers.hh" local="yes" import="no" module="no" objc="no">tweak-view-test-helpers.hh</includes>
-    <class kind="class">anonymous_namespace{transformpresentation_test.cc}::TransformPresentationContextTest</class>
-    <class kind="class">BitmapSurface</class>
-    <namespace>anonymous_namespace{transformpresentation_test.cc}</namespace>
-    <member kind="function">
-      <type>bool</type>
-      <name>points_are_close</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a620a40d8b7004204196c9ac99dcfc811</anchor>
-      <arglist>(Scroom::Utils::Point&lt; double &gt; const &amp;a, Scroom::Utils::Point&lt; double &gt; const &amp;b)</arglist>
-    </member>
-    <member kind="function">
-      <type>bool</type>
-      <name>rects_are_close</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>af89367e1eca8a31753f6bbf9c7a5cd21</anchor>
-      <arglist>(Scroom::Utils::Rectangle&lt; double &gt; const &amp;a, Scroom::Utils::Rectangle&lt; double &gt; const &amp;b)</arglist>
-    </member>
-    <member kind="function">
-      <type>bool</type>
-      <name>operator==</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>afa39e2240697ef0604d44799f8ecb8cf</anchor>
-      <arglist>(ViewInterface::WeakPtr const &amp;a, ViewInterface::WeakPtr const &amp;b)</arglist>
-    </member>
-    <member kind="function">
-      <type>td</type>
-      <name>setAspectRatio</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>ad68ff24c60faace5763724252d5b0a01</anchor>
-      <arglist>(2, 3)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>EXPECT_PRED2</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>af8398cc675d9e6da56e83a49691e8d04</anchor>
-      <arglist>(points_are_close, Scroom::Utils::Point&lt; double &gt;(2, 3), td-&gt;getAspectRatio())</arglist>
-    </member>
-    <member kind="function">
-      <type>ViewInterface::Ptr const</type>
-      <name>vi</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a29307a602ceb25e5058558fff387a5c2</anchor>
-      <arglist>(reinterpret_cast&lt; ViewInterface * &gt;(1), DontDelete&lt; ViewInterface &gt;())</arglist>
-    </member>
-    <member kind="function">
-      <type>EXPECT_CALL *</type>
-      <name>cpm</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a518b6fb47299f6575ca24f913d1b190c</anchor>
-      <arglist>(_)).InSequence(seq).WillOnce(SaveArg&lt; 0 &gt;(&amp;viw)</arglist>
-    </member>
-    <member kind="function">
-      <type>EXPECT_CALL *</type>
-      <name>cpm</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a96f76ef524836c2ec582a45c226a46a2</anchor>
-      <arglist>(Eq(ByRef(viw)), _, _, _)).WillOnce(DoAll(SaveArg&lt; 2 &gt;(&amp;requested_to_be_drawn), SaveArg&lt; 3 &gt;(&amp;used_zoom))</arglist>
-    </member>
-    <member kind="function">
-      <type>EXPECT_CALL *</type>
-      <name>cpm</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a77297667700be141adf1edf3ffbc6acc</anchor>
-      <arglist>(Eq(ByRef(viw)))</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>EXPECT_PRED2</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>aad9a0af0cd567c6485884a936534759c</anchor>
-      <arglist>(rects_are_close, make_rect(2.0, 6.0, 6.0, 12.0), r)</arglist>
-    </member>
-    <member kind="function">
-      <type>tp</type>
-      <name>open</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a4243e33154f210598d8a52d9b316afa2</anchor>
-      <arglist>(vi)</arglist>
-    </member>
-    <member kind="function">
-      <type>tp</type>
-      <name>redraw</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a5836162259f4115260ab2eb81c78090d</anchor>
-      <arglist>(vi, cr, to_be_drawn, zoom_to_use)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>EXPECT_PRED2</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a9043c7e31aad3dc10159b5651188a709</anchor>
-      <arglist>(rects_are_close, make_rect(0.5, 1.5, 2.0, 3.0), requested_to_be_drawn)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>EXPECT_EQ</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a15faf71d0ee517d8a4c5c74d50fb53e9</anchor>
-      <arglist>(zoom_to_use, used_zoom)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>cairo_destroy</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a608745f30637ee1f30157b0294297580</anchor>
-      <arglist>(cr)</arglist>
-    </member>
-    <member kind="function">
-      <type>tp</type>
-      <name>close</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a5ee0f9f41a5eec084d0ddb6cbb09ac05</anchor>
-      <arglist>(vi)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a1f049b42a68df90bf435a19a11a5a3d2</anchor>
-      <arglist>(TransformPresentationContextTest, PreservesUnrelatedChildContextData)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>ad5fb9297e80163e914619f4f2d25cb35</anchor>
-      <arglist>(TransformPresentationContextTest, DecoratesTheChildPresentationPositionTweak)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a1df6d00d4a644b36465073cdebc6a228</anchor>
-      <arglist>(TransformPresentationContextTest, DecoratesTheChildRulerAreaTweak)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a1bc6ff40eeeff37705a7f98c5cb63d27</anchor>
-      <arglist>(TransformPresentationContextTest, DecoratesTheChildViewCentreParser)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a4ecf3abb62a7d04cff67f3dbff9dcb7e</anchor>
-      <arglist>(TransformPresentationContextTest, DecoratesTheChildViewCentreFormatter)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a35b4c8c3807f222b93154351977772d1</anchor>
-      <arglist>(TransformPresentationContextTest, KeepsEachSelectionTypeConnectedToItsOwnChildTweak)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>acfec4a97d345a33771fe041e74512af7</anchor>
-      <arglist>(TransformPresentationContextTest, SuppliesADefaultPositionTweakWhenTheChildHasNone)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a038d7d176de1c8f35ade63d602c02208</anchor>
-      <arglist>(TransformPresentationContextTest, SuppliesADefaultRulerAreaTweakWhenTheChildHasNone)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a72610a6b175487dfdd20f3a6ee6286e2</anchor>
-      <arglist>(TransformPresentationContextTest, SuppliesADefaultViewCentreConversionWhenTheChildHasNone)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a1862d4cef500b1a21715a2f6e31f311a</anchor>
-      <arglist>(TransformPresentationContextTest, AnAbsentSelectionMapGetsOnlyTheDefaultEntry)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a5956c8e83c18e39cf098537b96c7e9f9</anchor>
-      <arglist>(TransformPresentationContextTest, AnEmptySelectionMapGetsOnlyTheDefaultEntry)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a353e9f63ca33f2ca4d9cf4d40e0a4d44</anchor>
-      <arglist>(TransformPresentationContextTest, AddsAMissingDefaultWithoutSynthesizingOtherSelectionTypes)</arglist>
-    </member>
-    <member kind="function">
-      <type>Rectangle&lt; T &gt;</type>
-      <name>make_rect</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a8a866a6439fc60dfe259e168059aa65e</anchor>
-      <arglist>(T x, T y, T width, T height)</arglist>
-    </member>
-    <member kind="variable">
-      <type>ColormappablePresentationMock::Ptr const</type>
-      <name>cpm</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>ab6b607fa6bf76124b252a7995e6705e4</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>TransformPresentation::Ptr const</type>
-      <name>tp</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a7e49faf112f7504ab596677331e2f32d</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>ViewInterface::WeakPtr</type>
-      <name>viw</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a420f999c650cb70340c0104621be0755</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>Sequence const</type>
-      <name>seq</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>ac9b34495a75328abab9744eedabf994b</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>const Scroom::Utils::Rectangle&lt; double &gt;</type>
-      <name>to_be_drawn</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a5e71f91f7cba39e7eada96f439cba6a4</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>const int</type>
-      <name>zoom_to_use</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a7ee6083a819833302b1c5ce9741b7e13</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>Scroom::Utils::Rectangle&lt; double &gt;</type>
-      <name>requested_to_be_drawn</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a5f8ac48e481a27e270c6632c3881a15a</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>int</type>
-      <name>used_zoom</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a22d37d451e28572605df221079858faa</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>Scroom::Utils::Rectangle&lt; double &gt; const</type>
-      <name>r</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a0e8a17dea24fd000a1eabbea951fb099</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>BitmapSurface::Ptr const</type>
-      <name>s</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>aab0e3ec116bb87f30039fc772656b8ef</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>cairo_surface_t *</type>
-      <name>surface</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>a76e6dbb8b33b4373ca91aab3cab86245</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>cairo_t *</type>
-      <name>cr</name>
-      <anchorfile>transformpresentation__test_8cc.html</anchorfile>
-      <anchor>ac2efa4a51d11834112524e53b3dc0f62</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="file">
     <name>tweak-view-test-helpers.hh</name>
     <path>libs/scroom/test/</path>
     <filename>tweak-view-test-helpers_8hh.html</filename>
-    <includes id="tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
+    <includes id="scroom_2inc_2scroom_2tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
     <namespace>Scroom</namespace>
     <namespace>Scroom::Utils</namespace>
   </compound>
@@ -3114,184 +2828,14 @@
     <name>tweak-view_test.cc</name>
     <path>libs/scroom/test/</path>
     <filename>tweak-view__test_8cc.html</filename>
-    <includes id="gmock_2tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/gmock/tweak-view.hh</includes>
-    <includes id="tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
+    <includes id="scroom_2inc_2scroom_2gmock_2tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/gmock/tweak-view.hh</includes>
+    <includes id="scroom_2inc_2scroom_2tweak-view_8hh" name="tweak-view.hh" local="no" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
     <includes id="tweak-view-test-helpers_8hh" name="tweak-view-test-helpers.hh" local="yes" import="no" module="no" objc="no">tweak-view-test-helpers.hh</includes>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::PixelAlignPresentationPositionsTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::CalculateViewAreaForRulersTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::SnapSelectionsToGridTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::ExpandSelectionsToPixelBoundariesTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::TweakSelectionsAsRectanglesTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::ParseAndFormatViewCentreTest</class>
     <class kind="class">anonymous_namespace{tweak-view_test.cc}::TweakPresentationPositionsWithAspectRatioTest</class>
     <class kind="class">anonymous_namespace{tweak-view_test.cc}::TweakRulersWithAspectRatioTest</class>
     <class kind="class">anonymous_namespace{tweak-view_test.cc}::TweakSelectionsWithAspectRatioTest</class>
     <class kind="class">anonymous_namespace{tweak-view_test.cc}::ParseAndFormatViewCentreWithAspectRatioTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::DefaultTweakPresentationPositionTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::DefaultTweakSelectionTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::DefaultTweakSelectionMapTest</class>
     <namespace>anonymous_namespace{tweak-view_test.cc}</namespace>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>a2a4c4322004397cbfe91475e89f9c999</anchor>
-      <arglist>(PixelAlignPresentationPositionsTest, RoundsHalfwayCoordinatesAwayFromZero)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>aa8a99a7bf201eba4d0c6f9c8bb0b2404</anchor>
-      <arglist>(PixelAlignPresentationPositionsTest, ZoomingInAllowsHalfPixelSteps)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>ae1a6b5ff19fc4bc4c411a320dca2711a</anchor>
-      <arglist>(PixelAlignPresentationPositionsTest, ZoomingOutAlignsToEverySecondPixel)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>a14f4d55f3846ce1518531ba014d2e691</anchor>
-      <arglist>(PixelAlignPresentationPositionsTest, FourfoldZoomAllowsQuarterPixelSteps)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>a6f7887d8b0786097f55bd239b4baf175</anchor>
-      <arglist>(CalculateViewAreaForRulersTest, DescribesTheVisibleViewAtEachZoom)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>af01df2a2d1e9df4978b72be81881b73f</anchor>
-      <arglist>(CalculateViewAreaForRulersTest, AnEmptyViewDimensionRemainsEmptyWhenZoomedOut)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>a77fc08acbcb2682e43bb8620eb57e8ba</anchor>
-      <arglist>(SnapSelectionsToGridTest, SnapsEachCornerToTheNearestGridPoint)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>a5f2dbc46cb3f9afe4ee7b779458f1a32</anchor>
-      <arglist>(SnapSelectionsToGridTest, RoundsHalfwayCoordinatesAwayFromZero)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>a3d69120dd3269161fbcfac8a0f666103</anchor>
-      <arglist>(SnapSelectionsToGridTest, AClickOnAGridPointRemainsAClick)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>af313de80e65b5cd9ae42a9e8dd87cd4e</anchor>
-      <arglist>(SnapSelectionsToGridTest, AClickBetweenGridLinesSnapsToTheNearestGridPoint)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>a7eb47f64c2306104dc3f44bdca413e8b</anchor>
-      <arglist>(SnapSelectionsToGridTest, AVerticalDragDoesNotAcquireWidth)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>a31f333955bc63bd8680580263e54152a</anchor>
-      <arglist>(ExpandSelectionsToPixelBoundariesTest, ExpandsToTheEnclosingPixelCorners)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>a8fa4fe01ec78fd64e1279335ff367499</anchor>
-      <arglist>(ExpandSelectionsToPixelBoundariesTest, LeavesGridAlignedCornersUnchanged)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>aa968056443b2f1fc0b746e14cc661c7c</anchor>
-      <arglist>(ExpandSelectionsToPixelBoundariesTest, AVerticalDragDoesNotAcquireWidth)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>a00675bf2cc146f725881538b638d9d39</anchor>
-      <arglist>(ExpandSelectionsToPixelBoundariesTest, AClickBetweenGridLinesExpandsToTheContainingPixel)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>affcd51599b47e281f5d15c1399ddcde5</anchor>
-      <arglist>(TweakSelectionsAsRectanglesTest, RestoresTheDragDirectionAfterTweakingTheRectangle)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>a561d1f0d8a770b0c5fc55153df7607c6</anchor>
-      <arglist>(TweakSelectionsAsRectanglesTest, AClickUsesOppositeCornersOfTheTweakedRectangle)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>ada8723f6a9a02f016d9863cc894a0ea9</anchor>
-      <arglist>(ParseAndFormatViewCentreTest, EnteredCoordinatesSpecifyTheViewCentreAtEachZoom)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>ae04c335f81f8cadd518b5f06c3ebca1b</anchor>
-      <arglist>(ParseAndFormatViewCentreTest, DisplaysTheViewCentreRoundedToWholeCoordinates)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>ac7ba49feea25b5dfed22393159e02b63</anchor>
-      <arglist>(ParseAndFormatViewCentreTest, HandlesAnEmptyViewDimensionWhenZoomedOut)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>afd8af520011e9fd2810253f64675d699</anchor>
-      <arglist>(ParseAndFormatViewCentreTest, RejectsNonNumericCoordinates)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>aac2ddf98b321908fc466322545d36d41</anchor>
-      <arglist>(ParseAndFormatViewCentreTest, DisplaysTheSameCentreAtEachZoom)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>add3386b554ed990372726ff81c9328e7</anchor>
-      <arglist>(ParseAndFormatViewCentreTest, RejectsANonNumericYCoordinate)</arglist>
-    </member>
     <member kind="function">
       <type></type>
       <name>TEST_F</name>
@@ -3326,27 +2870,6 @@
       <anchorfile>tweak-view__test_8cc.html</anchorfile>
       <anchor>a5679e1a4bb6b493ff35b598babf174a1</anchor>
       <arglist>(ParseAndFormatViewCentreWithAspectRatioTest, ConvertsTheCentreBeforeAskingTheChildToDisplayIt)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>ac8c168affdc923f872948d1bb0feae5b</anchor>
-      <arglist>(DefaultTweakPresentationPositionTest, LeavesThePositionUnchanged)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>a8e1c0b6658ea891dd52401d7d8f2c0a8</anchor>
-      <arglist>(DefaultTweakSelectionTest, LeavesBothEndpointsUnchanged)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>TEST_F</name>
-      <anchorfile>tweak-view__test_8cc.html</anchorfile>
-      <anchor>af9778fa576d646698f7b256f07f19de2</anchor>
-      <arglist>(DefaultTweakSelectionMapTest, ContainsOnlyAnIdentityDefaultTweak)</arglist>
     </member>
   </compound>
   <compound kind="file">
@@ -3895,7 +3418,7 @@
       <type>clear(&amp;</type>
       <name>s</name>
       <anchorfile>function-additor-tests_8cc.html</anchorfile>
-      <anchor>a67940798aae287d8088e7f718b7b18c1</anchor>
+      <anchor>aea1eba3cbf0fd144fe09cfcf18b62d6e</anchor>
       <arglist>)()</arglist>
     </member>
     <member kind="variable">
@@ -5110,8 +4633,9 @@
     <includes id="tiled-bitmap_8hh" name="tiled-bitmap.hh" local="yes" import="no" module="no" objc="no">tiled-bitmap.hh</includes>
     <includes id="cairo-helpers_8hh" name="cairo-helpers.hh" local="no" import="no" module="no" objc="no">scroom/cairo-helpers.hh</includes>
     <includes id="semaphore_8hh" name="semaphore.hh" local="no" import="no" module="no" objc="no">scroom/semaphore.hh</includes>
-    <includes id="tweak-view_8hh" name="tweak-view.hh" local="yes" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
+    <includes id="scroom_2inc_2scroom_2tweak-view_8hh" name="tweak-view.hh" local="yes" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
     <includes id="tileviewstate_8hh" name="tileviewstate.hh" local="yes" import="no" module="no" objc="no">tileviewstate.hh</includes>
+    <includes id="tiled-bitmap_2src_2tweak-view_8hh" name="tweak-view.hh" local="yes" import="no" module="no" objc="no">tweak-view.hh</includes>
     <member kind="function">
       <type>TiledBitmapInterface::Ptr</type>
       <name>createTiledBitmap</name>
@@ -10197,101 +9721,6 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>BitmapSurface</name>
-    <filename>classBitmapSurface.html</filename>
-    <member kind="typedef">
-      <type>std::shared_ptr&lt; BitmapSurface &gt;</type>
-      <name>Ptr</name>
-      <anchorfile>classBitmapSurface.html</anchorfile>
-      <anchor>a2c5f307f8fb27e77610b97bbcd6e282c</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>~BitmapSurface</name>
-      <anchorfile>classBitmapSurface.html</anchorfile>
-      <anchor>a83d3ef3f4aafa31722db153e342a9bd4</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>BitmapSurface</name>
-      <anchorfile>classBitmapSurface.html</anchorfile>
-      <anchor>a01b392735034681d7dfabc4fc2f71cfa</anchor>
-      <arglist>(const BitmapSurface &amp;)=delete</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>BitmapSurface</name>
-      <anchorfile>classBitmapSurface.html</anchorfile>
-      <anchor>a619351678bc0f02602a08ff6e97c9a21</anchor>
-      <arglist>(BitmapSurface &amp;&amp;)=delete</arglist>
-    </member>
-    <member kind="function">
-      <type>BitmapSurface &amp;</type>
-      <name>operator=</name>
-      <anchorfile>classBitmapSurface.html</anchorfile>
-      <anchor>a75f5bb354efcb6950ed27c254fe1d878</anchor>
-      <arglist>(const BitmapSurface &amp;)=delete</arglist>
-    </member>
-    <member kind="function">
-      <type>BitmapSurface &amp;</type>
-      <name>operator=</name>
-      <anchorfile>classBitmapSurface.html</anchorfile>
-      <anchor>aa1ea6b8ee5f264244f2490683c7d2d4e</anchor>
-      <arglist>(BitmapSurface &amp;&amp;)=delete</arglist>
-    </member>
-    <member kind="function">
-      <type>cairo_surface_t *</type>
-      <name>get</name>
-      <anchorfile>classBitmapSurface.html</anchorfile>
-      <anchor>a4e20b367582344b95c31226ba88ae3a1</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static Ptr</type>
-      <name>create</name>
-      <anchorfile>classBitmapSurface.html</anchorfile>
-      <anchor>a697961480f8888e1a149d4be54adb9e7</anchor>
-      <arglist>(int width, int height, cairo_format_t format)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static Ptr</type>
-      <name>create</name>
-      <anchorfile>classBitmapSurface.html</anchorfile>
-      <anchor>abc68ac9074fc5fdfc62dd2a42ed22de2</anchor>
-      <arglist>(int width, int height, cairo_format_t format, int stride, std::shared_ptr&lt; unsigned char &gt; const &amp;data)</arglist>
-    </member>
-    <member kind="function" protection="private">
-      <type></type>
-      <name>BitmapSurface</name>
-      <anchorfile>classBitmapSurface.html</anchorfile>
-      <anchor>ad184ea423900d4ba43742e85ea103ce8</anchor>
-      <arglist>(int width, int height, cairo_format_t format)</arglist>
-    </member>
-    <member kind="function" protection="private">
-      <type></type>
-      <name>BitmapSurface</name>
-      <anchorfile>classBitmapSurface.html</anchorfile>
-      <anchor>a9e2d358a55132f7cfb16c7eed3e2ed06</anchor>
-      <arglist>(int width, int height, cairo_format_t format, int stride, std::shared_ptr&lt; unsigned char &gt; const &amp;data)</arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>cairo_surface_t *const</type>
-      <name>surface</name>
-      <anchorfile>classBitmapSurface.html</anchorfile>
-      <anchor>a52d5cf41eb8104774d48618032e21c2b</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>std::shared_ptr&lt; unsigned char &gt; const</type>
-      <name>data</name>
-      <anchorfile>classBitmapSurface.html</anchorfile>
-      <anchor>a2b2881d05a39782805c85b6c83c4c445</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
     <name>Scroom::Bitmap::BitmapSurface</name>
     <filename>classScroom_1_1Bitmap_1_1BitmapSurface.html</filename>
     <member kind="typedef">
@@ -10783,17 +10212,6 @@
       <anchorfile>classScroom_1_1Utils_1_1CalculateViewAreaForRulers.html</anchorfile>
       <anchor>a651e4d42cec8c134aadbd200cab5e6c4</anchor>
       <arglist>()</arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>anonymous_namespace{tweak-view_test.cc}::CalculateViewAreaForRulersTest</name>
-    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1CalculateViewAreaForRulersTest.html</filename>
-    <member kind="variable" protection="protected">
-      <type>const ITweakRulers::Ptr</type>
-      <name>m_calculateViewArea</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1CalculateViewAreaForRulersTest.html</anchorfile>
-      <anchor>a42f476aefbda409d82ed6d884bd08d26</anchor>
-      <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -12712,17 +12130,6 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>anonymous_namespace{tweak-view_test.cc}::DefaultTweakPresentationPositionTest</name>
-    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakPresentationPositionTest.html</filename>
-    <member kind="variable" protection="protected">
-      <type>const ITweakPresentationPosition::Ptr</type>
-      <name>m_tweak</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakPresentationPositionTest.html</anchorfile>
-      <anchor>a27a627f69bbc3730a7a7b422fb40b006</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
     <name>Scroom::Utils::anonymous_namespace{tweak-view.cc}::DefaultTweakSelection</name>
     <filename>classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakSelection.html</filename>
     <base>Scroom::Utils::ITweakSelection</base>
@@ -12732,28 +12139,6 @@
       <anchorfile>classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakSelection.html</anchorfile>
       <anchor>a69bfee814c9f4e5e85a5d5f83bc4c3b6</anchor>
       <arglist>(const Selection &amp;selection) const override</arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>anonymous_namespace{tweak-view_test.cc}::DefaultTweakSelectionMapTest</name>
-    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakSelectionMapTest.html</filename>
-    <member kind="variable" protection="protected">
-      <type>const ITweakSelection::Map</type>
-      <name>m_tweaks</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakSelectionMapTest.html</anchorfile>
-      <anchor>a7e1418c75f86e1c4ee8e636e7c04d01b</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>anonymous_namespace{tweak-view_test.cc}::DefaultTweakSelectionTest</name>
-    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakSelectionTest.html</filename>
-    <member kind="variable" protection="protected">
-      <type>const ITweakSelection::Ptr</type>
-      <name>m_tweak</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1DefaultTweakSelectionTest.html</anchorfile>
-      <anchor>ae4a5eb1c5301fde89d49303526f230c9</anchor>
-      <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -13466,40 +12851,29 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>Scroom::Utils::ExpandSelectionsToPixelBoundaries</name>
-    <filename>classScroom_1_1Utils_1_1ExpandSelectionsToPixelBoundaries.html</filename>
+    <name>Scroom::TiledBitmap::ExpandSelectionsToPixelBoundaries</name>
+    <filename>classScroom_1_1TiledBitmap_1_1ExpandSelectionsToPixelBoundaries.html</filename>
     <base>Scroom::Utils::TweakSelectionsAsRectangles</base>
     <member kind="function">
-      <type>Rectangle&lt; double &gt;</type>
+      <type>Utils::Rectangle&lt; double &gt;</type>
       <name>tweakSelection</name>
-      <anchorfile>classScroom_1_1Utils_1_1ExpandSelectionsToPixelBoundaries.html</anchorfile>
-      <anchor>a452ee0b3c96d9139c9e1b35e9a9b46e9</anchor>
-      <arglist>(const Rectangle&lt; double &gt; &amp;selectionArea) const override</arglist>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1ExpandSelectionsToPixelBoundaries.html</anchorfile>
+      <anchor>aafeed3b0cbbce15aff6a655753b6cc35</anchor>
+      <arglist>(const Utils::Rectangle&lt; double &gt; &amp;selectionArea) const override</arglist>
     </member>
     <member kind="function">
       <type>Selection</type>
       <name>tweakSelection</name>
-      <anchorfile>classScroom_1_1Utils_1_1ExpandSelectionsToPixelBoundaries.html</anchorfile>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1ExpandSelectionsToPixelBoundaries.html</anchorfile>
       <anchor>afff8c0400ef09e09474d5602a274ad63</anchor>
       <arglist>(const Selection &amp;selection) const override</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static ITweakSelection::Ptr</type>
+      <type>static Utils::ITweakSelection::Ptr</type>
       <name>create</name>
-      <anchorfile>classScroom_1_1Utils_1_1ExpandSelectionsToPixelBoundaries.html</anchorfile>
-      <anchor>afedfe1bcd453d10e969cea0d4ffbfcd9</anchor>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1ExpandSelectionsToPixelBoundaries.html</anchorfile>
+      <anchor>a9ceb6abca2df5b0bdd8f58525516c446</anchor>
       <arglist>()</arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>anonymous_namespace{tweak-view_test.cc}::ExpandSelectionsToPixelBoundariesTest</name>
-    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1ExpandSelectionsToPixelBoundariesTest.html</filename>
-    <member kind="variable" protection="protected">
-      <type>ExpandSelectionsToPixelBoundaries</type>
-      <name>m_expandToPixelBoundaries</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1ExpandSelectionsToPixelBoundariesTest.html</anchorfile>
-      <anchor>a3d29a6961271762fc970def2bc064a5c</anchor>
-      <arglist></arglist>
     </member>
   </compound>
   <compound kind="struct">
@@ -17002,24 +16376,6 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>anonymous_namespace{tweak-view_test.cc}::ParseAndFormatViewCentreTest</name>
-    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1ParseAndFormatViewCentreTest.html</filename>
-    <member kind="variable" protection="protected">
-      <type>const ITweakPositionTextBox::Ptr</type>
-      <name>m_parseAndFormat</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1ParseAndFormatViewCentreTest.html</anchorfile>
-      <anchor>af266d61ddd2b88f471eb0cbe16f7b303</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="protected">
-      <type>const Point&lt; int &gt;</type>
-      <name>m_viewSize</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1ParseAndFormatViewCentreTest.html</anchorfile>
-      <anchor>a2037e5a37bdcc1a1b20928ed7ee2bafa</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
     <name>Scroom::Utils::ParseAndFormatViewCentreWithAspectRatio</name>
     <filename>classScroom_1_1Utils_1_1ParseAndFormatViewCentreWithAspectRatio.html</filename>
     <base>Scroom::Utils::ITweakPositionTextBox</base>
@@ -17476,40 +16832,29 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>Scroom::Utils::PixelAlignPresentationPositions</name>
-    <filename>classScroom_1_1Utils_1_1PixelAlignPresentationPositions.html</filename>
+    <name>Scroom::TiledBitmap::PixelAlignPresentationPositions</name>
+    <filename>classScroom_1_1TiledBitmap_1_1PixelAlignPresentationPositions.html</filename>
     <base>Scroom::Utils::ITweakPresentationPosition</base>
     <member kind="typedef">
       <type>std::shared_ptr&lt; PixelAlignPresentationPositions &gt;</type>
       <name>Ptr</name>
-      <anchorfile>classScroom_1_1Utils_1_1PixelAlignPresentationPositions.html</anchorfile>
-      <anchor>a78cf5cd7d27d43add81060acb9691838</anchor>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1PixelAlignPresentationPositions.html</anchorfile>
+      <anchor>a7932a05ae094e72d8fd083bda48a1450</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
-      <type>Point&lt; double &gt;</type>
+      <type>Utils::Point&lt; double &gt;</type>
       <name>tweakPosition</name>
-      <anchorfile>classScroom_1_1Utils_1_1PixelAlignPresentationPositions.html</anchorfile>
-      <anchor>aa43407a86f6fe202788e0992ec1d5893</anchor>
-      <arglist>(const Point&lt; double &gt; &amp;currentPosition, int zoom) const override</arglist>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1PixelAlignPresentationPositions.html</anchorfile>
+      <anchor>ad75aa44a81a052691768124f044959eb</anchor>
+      <arglist>(const Utils::Point&lt; double &gt; &amp;currentPosition, int zoom) const override</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static ITweakPresentationPosition::Ptr</type>
+      <type>static Utils::ITweakPresentationPosition::Ptr</type>
       <name>create</name>
-      <anchorfile>classScroom_1_1Utils_1_1PixelAlignPresentationPositions.html</anchorfile>
-      <anchor>ae950ba4c2f3af15dcb6e40390885f7b6</anchor>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1PixelAlignPresentationPositions.html</anchorfile>
+      <anchor>acb748eaa21951ecccd0d4b3a0fe9ee0e</anchor>
       <arglist>()</arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>anonymous_namespace{tweak-view_test.cc}::PixelAlignPresentationPositionsTest</name>
-    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1PixelAlignPresentationPositionsTest.html</filename>
-    <member kind="variable" protection="protected">
-      <type>const ITweakPresentationPosition::Ptr</type>
-      <name>m_pixelAlign</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1PixelAlignPresentationPositionsTest.html</anchorfile>
-      <anchor>a7c40ee00620f17fa404512121c789306</anchor>
-      <arglist></arglist>
     </member>
   </compound>
   <compound kind="struct">
@@ -22983,40 +22328,29 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>Scroom::Utils::SnapSelectionsToGrid</name>
-    <filename>classScroom_1_1Utils_1_1SnapSelectionsToGrid.html</filename>
+    <name>Scroom::TiledBitmap::SnapSelectionsToGrid</name>
+    <filename>classScroom_1_1TiledBitmap_1_1SnapSelectionsToGrid.html</filename>
     <base>Scroom::Utils::TweakSelectionsAsRectangles</base>
     <member kind="function">
-      <type>Rectangle&lt; double &gt;</type>
+      <type>Utils::Rectangle&lt; double &gt;</type>
       <name>tweakSelection</name>
-      <anchorfile>classScroom_1_1Utils_1_1SnapSelectionsToGrid.html</anchorfile>
-      <anchor>a9a119927896132b7dda9446d44cceb82</anchor>
-      <arglist>(const Rectangle&lt; double &gt; &amp;selectionArea) const override</arglist>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1SnapSelectionsToGrid.html</anchorfile>
+      <anchor>a88ee44a13a20db1cb94dc45d88c2d3f1</anchor>
+      <arglist>(const Utils::Rectangle&lt; double &gt; &amp;selectionArea) const override</arglist>
     </member>
     <member kind="function">
       <type>Selection</type>
       <name>tweakSelection</name>
-      <anchorfile>classScroom_1_1Utils_1_1SnapSelectionsToGrid.html</anchorfile>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1SnapSelectionsToGrid.html</anchorfile>
       <anchor>afff8c0400ef09e09474d5602a274ad63</anchor>
       <arglist>(const Selection &amp;selection) const override</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static ITweakSelection::Ptr</type>
+      <type>static Utils::ITweakSelection::Ptr</type>
       <name>create</name>
-      <anchorfile>classScroom_1_1Utils_1_1SnapSelectionsToGrid.html</anchorfile>
-      <anchor>af655043919b4a717e0758c3e99e6d33a</anchor>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1SnapSelectionsToGrid.html</anchorfile>
+      <anchor>a767ba7bc84ddcdd821c55d7b51a074c5</anchor>
       <arglist>()</arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>anonymous_namespace{tweak-view_test.cc}::SnapSelectionsToGridTest</name>
-    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1SnapSelectionsToGridTest.html</filename>
-    <member kind="variable" protection="protected">
-      <type>SnapSelectionsToGrid</type>
-      <name>m_snapToGrid</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1SnapSelectionsToGridTest.html</anchorfile>
-      <anchor>afa6d2f565125b92fd228fcfb23e772c8</anchor>
-      <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -25686,59 +25020,6 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>anonymous_namespace{transformpresentation_test.cc}::TransformPresentationContextTest</name>
-    <filename>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TransformPresentationContextTest.html</filename>
-    <member kind="function" protection="protected">
-      <type>std::shared_ptr&lt; const Context &gt;</type>
-      <name>createPresentationContext</name>
-      <anchorfile>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TransformPresentationContextTest.html</anchorfile>
-      <anchor>a8240eb1ab0f3f50ca4e3c89d023965f4</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="variable" protection="protected">
-      <type>const Point&lt; double &gt;</type>
-      <name>m_aspectRatio</name>
-      <anchorfile>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TransformPresentationContextTest.html</anchorfile>
-      <anchor>a8abd91580af00ba007bfb261b40ec751</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="protected">
-      <type>const Point&lt; double &gt;</type>
-      <name>m_aPoint</name>
-      <anchorfile>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TransformPresentationContextTest.html</anchorfile>
-      <anchor>ab1f6094ae402a6d351a4a78a92b9d04d</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="protected">
-      <type>const Point&lt; int &gt;</type>
-      <name>m_viewSize</name>
-      <anchorfile>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TransformPresentationContextTest.html</anchorfile>
-      <anchor>aaa7d647c98be488264236db81a172178</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="protected">
-      <type>const Context::Ptr</type>
-      <name>m_childContext</name>
-      <anchorfile>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TransformPresentationContextTest.html</anchorfile>
-      <anchor>a94212d2d5acffeb2248022493926a833</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="protected">
-      <type>const ColormappablePresentationMock::Ptr</type>
-      <name>m_child</name>
-      <anchorfile>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TransformPresentationContextTest.html</anchorfile>
-      <anchor>a4d7244d2986a16e0627f1d3a0fff396e</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="protected">
-      <type>TransformPresentation::Ptr</type>
-      <name>m_presentation</name>
-      <anchorfile>classanonymous__namespace_02transformpresentation__test_8cc_03_1_1TransformPresentationContextTest.html</anchorfile>
-      <anchor>a56316df7cd0eeb556ccb1d7249627019</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
     <name>TransparentOverlay</name>
     <filename>classTransparentOverlay.html</filename>
     <base>PluginInformationInterface</base>
@@ -26251,17 +25532,6 @@
       <anchorfile>classScroom_1_1Utils_1_1TweakSelectionsAsRectanglesMock.html</anchorfile>
       <anchor>afff8c0400ef09e09474d5602a274ad63</anchor>
       <arglist>(const Selection &amp;selection) const override</arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>anonymous_namespace{tweak-view_test.cc}::TweakSelectionsAsRectanglesTest</name>
-    <filename>classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsAsRectanglesTest.html</filename>
-    <member kind="variable" protection="protected">
-      <type>testing::StrictMock&lt; TweakSelectionsAsRectanglesMock &gt;</type>
-      <name>m_tweak</name>
-      <anchorfile>classanonymous__namespace_02tweak-view__test_8cc_03_1_1TweakSelectionsAsRectanglesTest.html</anchorfile>
-      <anchor>a40ce3987bdf9f1c97689505055827d3a</anchor>
-      <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -28337,11 +27607,6 @@
     </member>
   </compound>
   <compound kind="namespace">
-    <name>anonymous_namespace{transformpresentation_test.cc}</name>
-    <filename>namespaceanonymous__namespace_02transformpresentation__test_8cc_03.html</filename>
-    <class kind="class">anonymous_namespace{transformpresentation_test.cc}::TransformPresentationContextTest</class>
-  </compound>
-  <compound kind="namespace">
     <name>anonymous_namespace{transparentoverlaypresentation.cc}</name>
     <filename>namespaceanonymous__namespace_02transparentoverlaypresentation_8cc_03.html</filename>
     <class kind="struct">anonymous_namespace{transparentoverlaypresentation.cc}::ColorComparer</class>
@@ -28367,46 +27632,16 @@
   <compound kind="namespace">
     <name>anonymous_namespace{tweak-view_test.cc}</name>
     <filename>namespaceanonymous__namespace_02tweak-view__test_8cc_03.html</filename>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::PixelAlignPresentationPositionsTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::CalculateViewAreaForRulersTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::SnapSelectionsToGridTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::ExpandSelectionsToPixelBoundariesTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::TweakSelectionsAsRectanglesTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::ParseAndFormatViewCentreTest</class>
     <class kind="class">anonymous_namespace{tweak-view_test.cc}::TweakPresentationPositionsWithAspectRatioTest</class>
     <class kind="class">anonymous_namespace{tweak-view_test.cc}::TweakRulersWithAspectRatioTest</class>
     <class kind="class">anonymous_namespace{tweak-view_test.cc}::TweakSelectionsWithAspectRatioTest</class>
     <class kind="class">anonymous_namespace{tweak-view_test.cc}::ParseAndFormatViewCentreWithAspectRatioTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::DefaultTweakPresentationPositionTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::DefaultTweakSelectionTest</class>
-    <class kind="class">anonymous_namespace{tweak-view_test.cc}::DefaultTweakSelectionMapTest</class>
-    <member kind="function">
-      <type>Point&lt; double &gt;</type>
-      <name>aBitAboveAndLeftOf</name>
-      <anchorfile>namespaceanonymous__namespace_02tweak-view__test_8cc_03.html</anchorfile>
-      <anchor>aa88cde59c7bc69e557b35bfa31f28752</anchor>
-      <arglist>(Point&lt; double &gt; point)</arglist>
-    </member>
-    <member kind="function">
-      <type>Point&lt; double &gt;</type>
-      <name>aBitBelowAndRightOf</name>
-      <anchorfile>namespaceanonymous__namespace_02tweak-view__test_8cc_03.html</anchorfile>
-      <anchor>a5820a849681cd8a3ea8e69b5820f0999</anchor>
-      <arglist>(Point&lt; double &gt; point)</arglist>
-    </member>
     <member kind="function">
       <type>Selection</type>
       <name>scaledBy</name>
       <anchorfile>namespaceanonymous__namespace_02tweak-view__test_8cc_03.html</anchorfile>
       <anchor>a5c4ec1d82b18b87ca3c82d456b7ccdaf</anchor>
       <arglist>(const Selection &amp;selection, Point&lt; double &gt; scale)</arglist>
-    </member>
-    <member kind="variable">
-      <type>constexpr int</type>
-      <name>TRUE_SIZE</name>
-      <anchorfile>namespaceanonymous__namespace_02tweak-view__test_8cc_03.html</anchorfile>
-      <anchor>ae557c30f01ce679a37d5612d9078640f</anchor>
-      <arglist></arglist>
     </member>
     <member kind="variable">
       <type>constexpr int</type>
@@ -29137,6 +28372,9 @@
     <class kind="struct">Scroom::TiledBitmap::BitmapMetaData</class>
     <class kind="class">Scroom::TiledBitmap::OpenTiledBitmapInterface</class>
     <class kind="class">Scroom::TiledBitmap::LayerSpecForBitmapper</class>
+    <class kind="class">Scroom::TiledBitmap::PixelAlignPresentationPositions</class>
+    <class kind="class">Scroom::TiledBitmap::SnapSelectionsToGrid</class>
+    <class kind="class">Scroom::TiledBitmap::ExpandSelectionsToPixelBoundaries</class>
     <member kind="typedef">
       <type>std::function&lt; Scroom::Utils::Stuff(const ProgressInterface::Ptr &amp;)&gt;</type>
       <name>ReloadFunction</name>
@@ -29282,11 +28520,8 @@
     <class kind="class">Scroom::Utils::ITweakRulers</class>
     <class kind="class">Scroom::Utils::ITweakSelection</class>
     <class kind="class">Scroom::Utils::ITweakPositionTextBox</class>
-    <class kind="class">Scroom::Utils::PixelAlignPresentationPositions</class>
     <class kind="class">Scroom::Utils::CalculateViewAreaForRulers</class>
     <class kind="class">Scroom::Utils::TweakSelectionsAsRectangles</class>
-    <class kind="class">Scroom::Utils::SnapSelectionsToGrid</class>
-    <class kind="class">Scroom::Utils::ExpandSelectionsToPixelBoundaries</class>
     <class kind="class">Scroom::Utils::ParseAndFormatViewCentre</class>
     <class kind="class">Scroom::Utils::TweakPresentationPositionsWithAspectRatio</class>
     <class kind="class">Scroom::Utils::TweakRulersWithAspectRatio</class>
@@ -30341,6 +29576,8 @@
     <file>tiledbitmapviewdata.hh</file>
     <file>tileviewstate.cc</file>
     <file>tileviewstate.hh</file>
+    <file>tweak-view.cc</file>
+    <file>tweak-view.hh</file>
   </compound>
   <compound kind="dir">
     <name>libs/util/src</name>
@@ -30440,7 +29677,6 @@
     <path>libs/scroom/test/</path>
     <filename>dir_7add75a70fc40af6e4afd427e3362646.html</filename>
     <file>colormaphelpers_test.cc</file>
-    <file>transformpresentation_test.cc</file>
     <file>tweak-view-test-helpers.hh</file>
     <file>tweak-view_test.cc</file>
   </compound>

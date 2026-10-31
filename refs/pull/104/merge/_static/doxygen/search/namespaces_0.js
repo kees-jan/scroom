@@ -17,9 +17,8 @@ var searchData=
   ['anonymous_5fnamespace_7bthreadpool_2ecc_7d_14',['anonymous_namespace{threadpool.cc}',['../namespaceanonymous__namespace_02threadpool_8cc_03.html',1,'']]],
   ['anonymous_5fnamespace_7btiffsource_2ecc_7d_15',['anonymous_namespace{tiffsource.cc}',['../namespaceanonymous__namespace_02tiffsource_8cc_03.html',1,'']]],
   ['anonymous_5fnamespace_7btiledbitmappresentation_2ecc_7d_16',['anonymous_namespace{tiledbitmappresentation.cc}',['../namespaceanonymous__namespace_02tiledbitmappresentation_8cc_03.html',1,'']]],
-  ['anonymous_5fnamespace_7btransformpresentation_5ftest_2ecc_7d_17',['anonymous_namespace{transformpresentation_test.cc}',['../namespaceanonymous__namespace_02transformpresentation__test_8cc_03.html',1,'']]],
-  ['anonymous_5fnamespace_7btransparentoverlaypresentation_2ecc_7d_18',['anonymous_namespace{transparentoverlaypresentation.cc}',['../namespaceanonymous__namespace_02transparentoverlaypresentation_8cc_03.html',1,'']]],
-  ['anonymous_5fnamespace_7btransparentoverlayviewinfo_2ecc_7d_19',['anonymous_namespace{transparentoverlayviewinfo.cc}',['../namespaceanonymous__namespace_02transparentoverlayviewinfo_8cc_03.html',1,'']]],
-  ['anonymous_5fnamespace_7btweak_2dview_5ftest_2ecc_7d_20',['anonymous_namespace{tweak-view_test.cc}',['../namespaceanonymous__namespace_02tweak-view__test_8cc_03.html',1,'']]],
-  ['anonymous_5fnamespace_7bview_2ecc_7d_21',['anonymous_namespace{view.cc}',['../namespaceanonymous__namespace_02view_8cc_03.html',1,'']]]
+  ['anonymous_5fnamespace_7btransparentoverlaypresentation_2ecc_7d_17',['anonymous_namespace{transparentoverlaypresentation.cc}',['../namespaceanonymous__namespace_02transparentoverlaypresentation_8cc_03.html',1,'']]],
+  ['anonymous_5fnamespace_7btransparentoverlayviewinfo_2ecc_7d_18',['anonymous_namespace{transparentoverlayviewinfo.cc}',['../namespaceanonymous__namespace_02transparentoverlayviewinfo_8cc_03.html',1,'']]],
+  ['anonymous_5fnamespace_7btweak_2dview_5ftest_2ecc_7d_19',['anonymous_namespace{tweak-view_test.cc}',['../namespaceanonymous__namespace_02tweak-view__test_8cc_03.html',1,'']]],
+  ['anonymous_5fnamespace_7bview_2ecc_7d_20',['anonymous_namespace{view.cc}',['../namespaceanonymous__namespace_02view_8cc_03.html',1,'']]]
 ];

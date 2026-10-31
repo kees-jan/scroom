@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-65-g3efeceea2</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-68-ga1add363f</span>
    </div>
   </td>
  </tr>
@@ -92,7 +92,7 @@ $(function(){initNavTree('classScroom_1_1Utils_1_1TweakSelectionsAsRectanglesMoc
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="gmock_2tweak-view_8hh_source.html">tweak-view.hh</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="scroom_2inc_2scroom_2gmock_2tweak-view_8hh_source.html">tweak-view.hh</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Scroom::Utils::TweakSelectionsAsRectanglesMock:</div>
 <div class="dyncontent">
@@ -248,18 +248,18 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="classScroom_1_1Utils_1_1TweakSelectionsAsRectangles.html#afff8c0400ef09e09474d5602a274ad63">Scroom::Utils::TweakSelectionsAsRectangles</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  115</span>  {</div>
-<div class="line"><span class="lineno">  116</span>    <span class="keyword">const</span> <span class="keyword">auto</span> selectionArea = <a class="code hl_function" href="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#a62ffcd00fc744f0023164975ad9adf39">toRectangle</a>(<a class="code hl_variable" href="pipette-tests_8cc.html#a253a9998ea77422057632a35f2b241ec">selection</a>);</div>
-<div class="line"><span class="lineno">  117</span>    <span class="keyword">const</span> <span class="keyword">auto</span> tweakedArea = <a class="code hl_function" href="#a920b5aafe58e2fd8a5875a24c7ec4989">tweakSelection</a>(selectionArea);</div>
-<div class="line"><span class="lineno">  118</span> </div>
-<div class="line"><span class="lineno">  119</span>    <span class="keyword">const</span> <span class="keyword">auto</span> startCorner = <a class="code hl_function" href="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#a18edb612c2f1bf15720b610652bc06dc">find_closest_corner</a>(<a class="code hl_variable" href="pipette-tests_8cc.html#a253a9998ea77422057632a35f2b241ec">selection</a>.start, selectionArea);</div>
-<div class="line"><span class="lineno">  120</span>    <span class="keyword">const</span> <span class="keyword">auto</span> endCorner = <a class="code hl_function" href="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#a6a9984486641cc1142db4a86b1a1410a">find_opposed_corner</a>(startCorner);</div>
-<div class="line"><span class="lineno">  121</span> </div>
-<div class="line"><span class="lineno">  122</span>    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a> = <a class="code hl_function" href="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#abd05feecca1f5d015d9e4e84c42099c5">corner_getter</a>(startCorner)(tweakedArea);</div>
-<div class="line"><span class="lineno">  123</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end = <a class="code hl_function" href="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#abd05feecca1f5d015d9e4e84c42099c5">corner_getter</a>(endCorner)(tweakedArea);</div>
-<div class="line"><span class="lineno">  124</span> </div>
-<div class="line"><span class="lineno">  125</span>    <span class="keywordflow">return</span> {<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a>, end};</div>
-<div class="line"><span class="lineno">  126</span>  }</div>
+<div class="fragment"><div class="line"><span class="lineno">  106</span>  {</div>
+<div class="line"><span class="lineno">  107</span>    <span class="keyword">const</span> <span class="keyword">auto</span> selectionArea = <a class="code hl_function" href="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#a62ffcd00fc744f0023164975ad9adf39">toRectangle</a>(<a class="code hl_variable" href="pipette-tests_8cc.html#a253a9998ea77422057632a35f2b241ec">selection</a>);</div>
+<div class="line"><span class="lineno">  108</span>    <span class="keyword">const</span> <span class="keyword">auto</span> tweakedArea = <a class="code hl_function" href="#a920b5aafe58e2fd8a5875a24c7ec4989">tweakSelection</a>(selectionArea);</div>
+<div class="line"><span class="lineno">  109</span> </div>
+<div class="line"><span class="lineno">  110</span>    <span class="keyword">const</span> <span class="keyword">auto</span> startCorner = <a class="code hl_function" href="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#a18edb612c2f1bf15720b610652bc06dc">find_closest_corner</a>(<a class="code hl_variable" href="pipette-tests_8cc.html#a253a9998ea77422057632a35f2b241ec">selection</a>.start, selectionArea);</div>
+<div class="line"><span class="lineno">  111</span>    <span class="keyword">const</span> <span class="keyword">auto</span> endCorner = <a class="code hl_function" href="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#a6a9984486641cc1142db4a86b1a1410a">find_opposed_corner</a>(startCorner);</div>
+<div class="line"><span class="lineno">  112</span> </div>
+<div class="line"><span class="lineno">  113</span>    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a> = <a class="code hl_function" href="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#abd05feecca1f5d015d9e4e84c42099c5">corner_getter</a>(startCorner)(tweakedArea);</div>
+<div class="line"><span class="lineno">  114</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end = <a class="code hl_function" href="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#abd05feecca1f5d015d9e4e84c42099c5">corner_getter</a>(endCorner)(tweakedArea);</div>
+<div class="line"><span class="lineno">  115</span> </div>
+<div class="line"><span class="lineno">  116</span>    <span class="keywordflow">return</span> {<a class="code hl_variable" href="sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526">start</a>, end};</div>
+<div class="line"><span class="lineno">  117</span>  }</div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1TweakSelectionsAsRectanglesMock_html_a920b5aafe58e2fd8a5875a24c7ec4989"><div class="ttname"><a href="#a920b5aafe58e2fd8a5875a24c7ec4989">Scroom::Utils::TweakSelectionsAsRectanglesMock::tweakSelection</a></div><div class="ttdeci">virtual Rectangle&lt; double &gt; tweakSelection(const Rectangle&lt; double &gt; &amp;selectionArea) const=0</div></div>
 <div class="ttc" id="anamespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_html_a18edb612c2f1bf15720b610652bc06dc"><div class="ttname"><a href="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#a18edb612c2f1bf15720b610652bc06dc">Scroom::Utils::anonymous_namespace{tweak-view.cc}::find_closest_corner</a></div><div class="ttdeci">Corner find_closest_corner(const Point&lt; double &gt; &amp;p, const Rectangle&lt; double &gt; &amp;r)</div><div class="ttdef"><b>Definition</b> tweak-view.cc:62</div></div>
 <div class="ttc" id="anamespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_html_a62ffcd00fc744f0023164975ad9adf39"><div class="ttname"><a href="namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#a62ffcd00fc744f0023164975ad9adf39">Scroom::Utils::anonymous_namespace{tweak-view.cc}::toRectangle</a></div><div class="ttdeci">Rectangle&lt; double &gt; toRectangle(const Selection &amp;s)</div><div class="ttdef"><b>Definition</b> tweak-view.cc:90</div></div>
@@ -271,7 +271,7 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>libs/scroom/inc/scroom/gmock/<a class="el" href="gmock_2tweak-view_8hh_source.html">tweak-view.hh</a></li>
+<li>libs/scroom/inc/scroom/gmock/<a class="el" href="scroom_2inc_2scroom_2gmock_2tweak-view_8hh_source.html">tweak-view.hh</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

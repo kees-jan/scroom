@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-65-g3efeceea2</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-68-ga1add363f</span>
    </div>
   </td>
  </tr>
@@ -142,7 +142,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0febc5a267ab940b43a8f55f428246f6" id="r_a0febc5a267ab940b43a8f55f428246f6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0febc5a267ab940b43a8f55f428246f6">addChild</a> (const <a class="el" href="classPresentationInterface.html#a86fed59a32467f97507308d9b67bfa5c">PresentationInterface::Ptr</a> &amp;child)</td></tr>
 <tr class="memitem:a47ebc647b5159d7b52a28e5241ea9f82" id="r_a47ebc647b5159d7b52a28e5241ea9f82"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPresentationInterface.html#a86fed59a32467f97507308d9b67bfa5c">PresentationInterface::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47ebc647b5159d7b52a28e5241ea9f82">getChild</a> (const <a class="el" href="classChildView.html#a07612c87b40469b94ac93e2f2905a21f">ChildView::Ptr</a> &amp;cv)</td></tr>
 <tr class="memitem:a10cd3619220caa76bf20c6865651b085" id="r_a10cd3619220caa76bf20c6865651b085"><td class="memItemLeft" align="right" valign="top"><a class="el" href="function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10cd3619220caa76bf20c6865651b085">close</a> ()</td></tr>
-<tr class="memitem:add1ffd6ec625dfd9633fd5dad6ad2b3f" id="r_add1ffd6ec625dfd9633fd5dad6ad2b3f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add1ffd6ec625dfd9633fd5dad6ad2b3f">redraw</a> (cairo_t *<a class="el" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, <a class="el" href="classScroom_1_1Utils_1_1Rectangle.html">Scroom::Utils::Rectangle</a>&lt; double &gt; const &amp;presentationArea, int zoom)</td></tr>
+<tr class="memitem:add1ffd6ec625dfd9633fd5dad6ad2b3f" id="r_add1ffd6ec625dfd9633fd5dad6ad2b3f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add1ffd6ec625dfd9633fd5dad6ad2b3f">redraw</a> (cairo_t *<a class="el" href="pipette-tests_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, <a class="el" href="classScroom_1_1Utils_1_1Rectangle.html">Scroom::Utils::Rectangle</a>&lt; double &gt; const &amp;presentationArea, int zoom)</td></tr>
 <tr class="memitem:ac68f53e66aa850baa7dfd3b9ed938581" id="r_ac68f53e66aa850baa7dfd3b9ed938581"><td class="memItemLeft" align="right" valign="top"><a class="el" href="function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac68f53e66aa850baa7dfd3b9ed938581">invalidate</a> ()</td></tr>
 <tr class="memitem:a1fdb43c917f2ca65ee6e92dc6ff4adf1" id="r_a1fdb43c917f2ca65ee6e92dc6ff4adf1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classProgressInterface.html#af8844a48f0d86dab4363bbcc3f62a66b">ProgressInterface::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1fdb43c917f2ca65ee6e92dc6ff4adf1">getProgressInterface</a> ()</td></tr>
 <tr class="memitem:aaf1b7ae3806c6a68a0423dc7750b8a14" id="r_aaf1b7ae3806c6a68a0423dc7750b8a14"><td class="memItemLeft" align="right" valign="top"><a class="el" href="function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf1b7ae3806c6a68a0423dc7750b8a14">toggled</a> (GtkToggleButton *button)</td></tr>
@@ -531,11 +531,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  107</span>{</div>
 <div class="line"><span class="lineno">  108</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> n = <a class="code hl_variable" href="#ab7afe5e192137e8f3cf1b5bc4243e82e">buttons</a>.size() + 1;</div>
-<div class="line"><span class="lineno">  109</span>  std::stringstream <a class="code hl_variable" href="transformpresentation__test_8cc.html#aab0e3ec116bb87f30039fc772656b8ef">s</a>;</div>
-<div class="line"><span class="lineno">  110</span>  <a class="code hl_variable" href="transformpresentation__test_8cc.html#aab0e3ec116bb87f30039fc772656b8ef">s</a> &lt;&lt; <span class="stringliteral">&quot;_&quot;</span> &lt;&lt; n;</div>
+<div class="line"><span class="lineno">  109</span>  std::stringstream <a class="code hl_variable" href="function-additor-tests_8cc.html#aea1eba3cbf0fd144fe09cfcf18b62d6e">s</a>;</div>
+<div class="line"><span class="lineno">  110</span>  <a class="code hl_variable" href="function-additor-tests_8cc.html#aea1eba3cbf0fd144fe09cfcf18b62d6e">s</a> &lt;&lt; <span class="stringliteral">&quot;_&quot;</span> &lt;&lt; n;</div>
 <div class="line"><span class="lineno">  111</span> </div>
 <div class="line"><span class="lineno">  112</span>  GtkToolItem* button = gtk_tool_item_new();</div>
-<div class="line"><span class="lineno">  113</span>  GtkWidget* toggleButton = gtk_toggle_button_new_with_mnemonic(<a class="code hl_variable" href="transformpresentation__test_8cc.html#aab0e3ec116bb87f30039fc772656b8ef">s</a>.str().c_str());</div>
+<div class="line"><span class="lineno">  113</span>  GtkWidget* toggleButton = gtk_toggle_button_new_with_mnemonic(<a class="code hl_variable" href="function-additor-tests_8cc.html#aea1eba3cbf0fd144fe09cfcf18b62d6e">s</a>.str().c_str());</div>
 <div class="line"><span class="lineno">  114</span>  <a class="code hl_function" href="namespaceanonymous__namespace_02transparentoverlayviewinfo_8cc_03.html#a706649399a1cf1938cfbfed014fd3917">setToggleButtonColor</a>(toggleButton, <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>);</div>
 <div class="line"><span class="lineno">  115</span>  gtk_widget_set_visible(toggleButton, <span class="keyword">true</span>);</div>
 <div class="line"><span class="lineno">  116</span>  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(toggleButton), <span class="keyword">true</span>);</div>
@@ -548,8 +548,8 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  123</span>  <a class="code hl_variable" href="#a5b428b9119ffd9106ae5cf5da65aab4b">parentView</a>-&gt;addToToolbar(button);</div>
 <div class="line"><span class="lineno">  124</span>}</div>
 <div class="ttc" id="adetermine-size-test_8cc_html_abf000ba68ab71a4284d8a6b1ed241f79"><div class="ttname"><a href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a></div><div class="ttdeci">PresentationInterfaceStub::Ptr const p</div><div class="ttdef"><b>Definition</b> determine-size-test.cc:172</div></div>
+<div class="ttc" id="afunction-additor-tests_8cc_html_aea1eba3cbf0fd144fe09cfcf18b62d6e"><div class="ttname"><a href="function-additor-tests_8cc.html#aea1eba3cbf0fd144fe09cfcf18b62d6e">s</a></div><div class="ttdeci">clear(&amp; s)()</div><div class="ttdef"><b>Definition</b> function-additor-tests.cc:30</div></div>
 <div class="ttc" id="anamespaceanonymous__namespace_02transparentoverlayviewinfo_8cc_03_html_a706649399a1cf1938cfbfed014fd3917"><div class="ttname"><a href="namespaceanonymous__namespace_02transparentoverlayviewinfo_8cc_03.html#a706649399a1cf1938cfbfed014fd3917">anonymous_namespace{transparentoverlayviewinfo.cc}::setToggleButtonColor</a></div><div class="ttdeci">void setToggleButtonColor(GtkWidget *w, PresentationInterface::Ptr const &amp;p)</div><div class="ttdef"><b>Definition</b> transparentoverlayviewinfo.cc:21</div></div>
-<div class="ttc" id="atransformpresentation__test_8cc_html_aab0e3ec116bb87f30039fc772656b8ef"><div class="ttname"><a href="transformpresentation__test_8cc.html#aab0e3ec116bb87f30039fc772656b8ef">s</a></div><div class="ttdeci">BitmapSurface::Ptr const s</div><div class="ttdef"><b>Definition</b> transformpresentation_test.cc:74</div></div>
 <div class="ttc" id="atransparentoverlayviewinfo_8cc_html_aafa184efb6eac85ffee43095f44fa12b"><div class="ttname"><a href="transparentoverlayviewinfo_8cc.html#aafa184efb6eac85ffee43095f44fa12b">on_toggled</a></div><div class="ttdeci">static void on_toggled(GtkToggleButton *button, gpointer data)</div><div class="ttdef"><b>Definition</b> transparentoverlayviewinfo.cc:101</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="#a0febc5a267ab940b43a8f55f428246f6">addChild()</a>.</p>
@@ -733,9 +733,9 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  195</span>    viewArea.height = presentationArea.height / pixelSize;</div>
 <div class="line"><span class="lineno">  196</span>  }</div>
 <div class="line"><span class="lineno">  197</span> </div>
-<div class="line"><span class="lineno">  198</span>  <a class="code hl_typedef" href="classBitmapSurface.html#a2c5f307f8fb27e77610b97bbcd6e282c">BitmapSurface::Ptr</a> <span class="keyword">const</span> <a class="code hl_variable" href="transformpresentation__test_8cc.html#aab0e3ec116bb87f30039fc772656b8ef">s</a> = <a class="code hl_function" href="classBitmapSurface.html#a697961480f8888e1a149d4be54adb9e7">BitmapSurface::create</a>(viewArea.width, viewArea.height, CAIRO_FORMAT_ARGB32);</div>
-<div class="line"><span class="lineno">  199</span>  cairo_surface_t* <a class="code hl_variable" href="transformpresentation__test_8cc.html#a76e6dbb8b33b4373ca91aab3cab86245">surface</a> = <a class="code hl_variable" href="transformpresentation__test_8cc.html#aab0e3ec116bb87f30039fc772656b8ef">s</a>-&gt;<a class="code hl_function" href="classBitmapSurface.html#a4e20b367582344b95c31226ba88ae3a1">get</a>();</div>
-<div class="line"><span class="lineno">  200</span>  cairo_t* cr_sub = cairo_create(<a class="code hl_variable" href="transformpresentation__test_8cc.html#a76e6dbb8b33b4373ca91aab3cab86245">surface</a>);</div>
+<div class="line"><span class="lineno">  198</span>  BitmapSurface::Ptr <span class="keyword">const</span> <a class="code hl_variable" href="function-additor-tests_8cc.html#aea1eba3cbf0fd144fe09cfcf18b62d6e">s</a> = BitmapSurface::create(viewArea.width, viewArea.height, CAIRO_FORMAT_ARGB32);</div>
+<div class="line"><span class="lineno">  199</span>  cairo_surface_t* surface = <a class="code hl_variable" href="function-additor-tests_8cc.html#aea1eba3cbf0fd144fe09cfcf18b62d6e">s</a>-&gt;get();</div>
+<div class="line"><span class="lineno">  200</span>  cairo_t* cr_sub = cairo_create(surface);</div>
 <div class="line"><span class="lineno">  201</span> </div>
 <div class="line"><span class="lineno">  202</span>  <span class="keywordtype">int</span> <a class="code hl_variable" href="pageprovider-tests_8cc.html#a951345011b75d2e8d9bfc18ca63510d2">count</a> = 0;</div>
 <div class="line"><span class="lineno">  203</span> </div>
@@ -769,15 +769,15 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  231</span>      <a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>-&gt;redraw(<a class="code hl_variable" href="#a54674b3eb164f2e16182896f9ab0ff34">childViews</a>[<a class="code hl_variable" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>], cr_sub, pa, zoom);</div>
 <div class="line"><span class="lineno">  232</span>      cairo_restore(cr_sub);</div>
 <div class="line"><span class="lineno">  233</span> </div>
-<div class="line"><span class="lineno">  234</span>      cairo_set_source_surface(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, <a class="code hl_variable" href="transformpresentation__test_8cc.html#a76e6dbb8b33b4373ca91aab3cab86245">surface</a>, 0, 0);</div>
+<div class="line"><span class="lineno">  234</span>      cairo_set_source_surface(<a class="code hl_variable" href="pipette-tests_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, surface, 0, 0);</div>
 <div class="line"><span class="lineno">  235</span> </div>
 <div class="line"><span class="lineno">  236</span>      <span class="keywordflow">if</span>(hasTransparentBackground)</div>
 <div class="line"><span class="lineno">  237</span>      {</div>
-<div class="line"><span class="lineno">  238</span>        cairo_paint(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>);</div>
+<div class="line"><span class="lineno">  238</span>        cairo_paint(<a class="code hl_variable" href="pipette-tests_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>);</div>
 <div class="line"><span class="lineno">  239</span>      }</div>
 <div class="line"><span class="lineno">  240</span>      <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  241</span>      {</div>
-<div class="line"><span class="lineno">  242</span>        cairo_paint_with_alpha(<a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, 1.0 / (<a class="code hl_variable" href="pageprovider-tests_8cc.html#a951345011b75d2e8d9bfc18ca63510d2">count</a> + 1));</div>
+<div class="line"><span class="lineno">  242</span>        cairo_paint_with_alpha(<a class="code hl_variable" href="pipette-tests_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, 1.0 / (<a class="code hl_variable" href="pageprovider-tests_8cc.html#a951345011b75d2e8d9bfc18ca63510d2">count</a> + 1));</div>
 <div class="line"><span class="lineno">  243</span>      }</div>
 <div class="line"><span class="lineno">  244</span> </div>
 <div class="line"><span class="lineno">  245</span>      <span class="keywordflow">if</span>(!hasTransparentBackground)</div>
@@ -787,33 +787,24 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  249</span>    }</div>
 <div class="line"><span class="lineno">  250</span>  }</div>
 <div class="line"><span class="lineno">  251</span> </div>
-<div class="line"><span class="lineno">  252</span>  <a class="code hl_function" href="transformpresentation__test_8cc.html#a608745f30637ee1f30157b0294297580">cairo_destroy</a>(cr_sub);</div>
+<div class="line"><span class="lineno">  252</span>  cairo_destroy(cr_sub);</div>
 <div class="line"><span class="lineno">  253</span>}</div>
-<div class="ttc" id="aclassBitmapSurface_html_a2c5f307f8fb27e77610b97bbcd6e282c"><div class="ttname"><a href="classBitmapSurface.html#a2c5f307f8fb27e77610b97bbcd6e282c">BitmapSurface::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; BitmapSurface &gt; Ptr</div><div class="ttdef"><b>Definition</b> bitmap-helpers.hh:26</div></div>
-<div class="ttc" id="aclassBitmapSurface_html_a4e20b367582344b95c31226ba88ae3a1"><div class="ttname"><a href="classBitmapSurface.html#a4e20b367582344b95c31226ba88ae3a1">BitmapSurface::get</a></div><div class="ttdeci">cairo_surface_t * get()</div><div class="ttdef"><b>Definition</b> bitmap-helpers.cc:26</div></div>
-<div class="ttc" id="aclassBitmapSurface_html_a697961480f8888e1a149d4be54adb9e7"><div class="ttname"><a href="classBitmapSurface.html#a697961480f8888e1a149d4be54adb9e7">BitmapSurface::create</a></div><div class="ttdeci">static Ptr create(int width, int height, cairo_format_t format)</div><div class="ttdef"><b>Definition</b> bitmap-helpers.cc:13</div></div>
 <div class="ttc" id="aclassColormappable_html_a5a0a12959d518d3f36185b07dc420383"><div class="ttname"><a href="classColormappable.html#a5a0a12959d518d3f36185b07dc420383">Colormappable::Ptr</a></div><div class="ttdeci">std::shared_ptr&lt; Colormappable &gt; Ptr</div><div class="ttdef"><b>Definition</b> colormappable.hh:114</div></div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1Rectangle_html_a2b1f95eea80820e7f6434cc7ec1bee52"><div class="ttname"><a href="classScroom_1_1Utils_1_1Rectangle.html#a2b1f95eea80820e7f6434cc7ec1bee52">Scroom::Utils::Rectangle::toGdkRectangle</a></div><div class="ttdeci">cairo_rectangle_int_t toGdkRectangle() const</div><div class="ttdef"><b>Definition</b> rectangle.hh:62</div></div>
 <div class="ttc" id="acolormappable_8hh_html_aa9ccccaacd6a2d008759fcaac53b9bf2"><div class="ttname"><a href="colormappable_8hh.html#aa9ccccaacd6a2d008759fcaac53b9bf2">TRANSPARENT_BACKGROUND_PROPERTY_NAME</a></div><div class="ttdeci">const std::string TRANSPARENT_BACKGROUND_PROPERTY_NAME</div><div class="ttdef"><b>Definition</b> colormappable.hh:21</div></div>
 <div class="ttc" id="apageprovider-tests_8cc_html_a951345011b75d2e8d9bfc18ca63510d2"><div class="ttname"><a href="pageprovider-tests_8cc.html#a951345011b75d2e8d9bfc18ca63510d2">count</a></div><div class="ttdeci">const size_t count</div><div class="ttdef"><b>Definition</b> pageprovider-tests.cc:21</div></div>
+<div class="ttc" id="apipette-tests_8cc_html_ac2efa4a51d11834112524e53b3dc0f62"><div class="ttname"><a href="pipette-tests_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a></div><div class="ttdeci">cairo_t * cr</div><div class="ttdef"><b>Definition</b> pipette-tests.cc:187</div></div>
 <div class="ttc" id="athreadpool-destruction-tests_8cc_html_a2a95d18e7f38634394c4104d0e759989"><div class="ttname"><a href="threadpool-destruction-tests_8cc.html#a2a95d18e7f38634394c4104d0e759989">c</a></div><div class="ttdeci">Semaphore c(0)</div></div>
-<div class="ttc" id="atransformpresentation__test_8cc_html_a608745f30637ee1f30157b0294297580"><div class="ttname"><a href="transformpresentation__test_8cc.html#a608745f30637ee1f30157b0294297580">cairo_destroy</a></div><div class="ttdeci">cairo_destroy(cr)</div></div>
-<div class="ttc" id="atransformpresentation__test_8cc_html_a76e6dbb8b33b4373ca91aab3cab86245"><div class="ttname"><a href="transformpresentation__test_8cc.html#a76e6dbb8b33b4373ca91aab3cab86245">surface</a></div><div class="ttdeci">cairo_surface_t * surface</div><div class="ttdef"><b>Definition</b> transformpresentation_test.cc:75</div></div>
-<div class="ttc" id="atransformpresentation__test_8cc_html_ac2efa4a51d11834112524e53b3dc0f62"><div class="ttname"><a href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a></div><div class="ttdeci">cairo_t * cr</div><div class="ttdef"><b>Definition</b> transformpresentation_test.cc:76</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classTransparentOverlayViewInfo_add1ffd6ec625dfd9633fd5dad6ad2b3f_cgraph.png" border="0" usemap="#aclassTransparentOverlayViewInfo_add1ffd6ec625dfd9633fd5dad6ad2b3f_cgraph" loading="lazy" alt=""/></div>
 <map name="aclassTransparentOverlayViewInfo_add1ffd6ec625dfd9633fd5dad6ad2b3f_cgraph" id="aclassTransparentOverlayViewInfo_add1ffd6ec625dfd9633fd5dad6ad2b3f_cgraph">
-<area shape="rect" title=" " alt="" coords="5,84,211,129"/>
-<area shape="rect" href="transformpresentation__test_8cc.html#a608745f30637ee1f30157b0294297580" title=" " alt="" coords="295,40,404,68"/>
-<area shape="poly" title=" " alt="" coords="210,82,282,68,277,71,212,87"/>
-<area shape="rect" href="classBitmapSurface.html#a697961480f8888e1a149d4be54adb9e7" title=" " alt="" coords="266,92,432,120"/>
-<area shape="poly" title=" " alt="" coords="210,104,253,105,248,108,212,109"/>
+<area shape="rect" title=" " alt="" coords="5,144,211,189"/>
 <area shape="rect" href="classScroom_1_1Utils_1_1Rectangle.html#a2b1f95eea80820e7f6434cc7ec1bee52" title=" " alt="" coords="259,144,440,189"/>
-<area shape="poly" title=" " alt="" coords="200,127,246,139,241,141,201,132"/>
+<area shape="poly" title=" " alt="" coords="211,164,245,165,240,167,212,169"/>
 <area shape="rect" href="namespaceScroom_1_1GtkHelpers.html#a5260b667cc757819028aac849da3304e" title=" " alt="" coords="488,5,674,50"/>
-<area shape="poly" title=" " alt="" coords="420,141,438,130,454,113,462,96,470,78,486,60,491,60,496,57,490,64,474,81,466,98,458,116,442,134,423,146"/>
+<area shape="poly" title=" " alt="" coords="374,141,425,101,487,60,501,55,497,58,489,65,428,105,377,146"/>
 <area shape="rect" href="classScroom_1_1Utils_1_1Rectangle.html#ac3ffb0067f3c0d0686ea2319cd5d5618" title=" " alt="" coords="490,75,672,119"/>
 <area shape="poly" title=" " alt="" coords="425,141,492,123,487,125,427,146"/>
 <area shape="rect" href="classScroom_1_1Utils_1_1Rectangle.html#ad623b0b902d4e2cd1d858300728c78d1" title=" " alt="" coords="490,144,672,189"/>

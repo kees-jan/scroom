@@ -31,7 +31,7 @@ var function_additor_tests_8cc =
     [ "void", "function-additor-tests_8cc.html#a9cba8100fc7683c321b425d57ff4b887", null ],
     [ "w", "function-additor-tests_8cc.html#a3d3d1412eb5e005670563707bee04e79", null ],
     [ "a", "function-additor-tests_8cc.html#a4124bc0a9335c27f086f24ba207a4912", null ],
-    [ "s", "function-additor-tests_8cc.html#a67940798aae287d8088e7f718b7b18c1", null ],
+    [ "s", "function-additor-tests_8cc.html#aea1eba3cbf0fd144fe09cfcf18b62d6e", null ],
     [ "s1", "function-additor-tests_8cc.html#a61e00d73b0e77b14182023980007c90d", null ],
     [ "s2", "function-additor-tests_8cc.html#a90c3f62a0eedce93b9c533c5415b5c0d", null ]
 ];

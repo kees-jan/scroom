@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-65-g3efeceea2</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-68-ga1add363f</span>
    </div>
   </td>
  </tr>
@@ -181,7 +181,7 @@ $(function(){initNavTree('viewinterface_8hh_source.html','',''); });
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="classPostRenderer.html#a3915bf497e6d8438c86cb9fedeb65e5e">   97</a></span>  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classPostRenderer.html#a3915bf497e6d8438c86cb9fedeb65e5e">render</a>(</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    std::shared_ptr&lt;ViewInterface&gt; <span class="keyword">const</span>&amp; <a class="code hl_variable" href="pipette-tests_8cc.html#a42c717015bd9a889714e98016e92c595">vi</a>,</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    cairo_t* <a class="code hl_variable" href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>,</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    cairo_t* <a class="code hl_variable" href="pipette-tests_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>,</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <a class="code hl_class" href="classScroom_1_1Utils_1_1Rectangle.html">Scroom::Utils::Rectangle&lt;double&gt;</a> presentationArea,</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordtype">int</span> zoom</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>  ) = 0;</div>
@@ -293,6 +293,7 @@ $(function(){initNavTree('viewinterface_8hh_source.html','',''); });
 <div class="ttc" id="apipette-tests_8cc_html_a253a9998ea77422057632a35f2b241ec"><div class="ttname"><a href="pipette-tests_8cc.html#a253a9998ea77422057632a35f2b241ec">selection</a></div><div class="ttdeci">auto selection</div><div class="ttdef"><b>Definition</b> pipette-tests.cc:157</div></div>
 <div class="ttc" id="apipette-tests_8cc_html_a42c717015bd9a889714e98016e92c595"><div class="ttname"><a href="pipette-tests_8cc.html#a42c717015bd9a889714e98016e92c595">vi</a></div><div class="ttdeci">ViewInterface::Ptr const vi</div><div class="ttdef"><b>Definition</b> pipette-tests.cc:186</div></div>
 <div class="ttc" id="apipette-tests_8cc_html_a451de4c4fbfbb1e66ca17e7cee7f8761"><div class="ttname"><a href="pipette-tests_8cc.html#a451de4c4fbfbb1e66ca17e7cee7f8761">view</a></div><div class="ttdeci">const auto view</div><div class="ttdef"><b>Definition</b> pipette-tests.cc:227</div></div>
+<div class="ttc" id="apipette-tests_8cc_html_ac2efa4a51d11834112524e53b3dc0f62"><div class="ttname"><a href="pipette-tests_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a></div><div class="ttdeci">cairo_t * cr</div><div class="ttdef"><b>Definition</b> pipette-tests.cc:187</div></div>
 <div class="ttc" id="aprogressinterface_8hh_html"><div class="ttname"><a href="progressinterface_8hh.html">progressinterface.hh</a></div></div>
 <div class="ttc" id="arectangle_8hh_html"><div class="ttname"><a href="rectangle_8hh.html">rectangle.hh</a></div></div>
 <div class="ttc" id="arectangletests_8cc_html_af6796373cc462aef8e6979a40acef5d3"><div class="ttname"><a href="rectangletests_8cc.html#af6796373cc462aef8e6979a40acef5d3">make_point</a></div><div class="ttdeci">Point&lt; T &gt; make_point(T x, T y)</div><div class="ttdef"><b>Definition</b> point.hh:116</div></div>
@@ -307,7 +308,6 @@ $(function(){initNavTree('viewinterface_8hh_source.html','',''); });
 <div class="ttc" id="astructSelection_html_a7d704930f3054ec384530cfbcb54c31d"><div class="ttname"><a href="structSelection.html#a7d704930f3054ec384530cfbcb54c31d">Selection::height</a></div><div class="ttdeci">double height() const</div><div class="ttdef"><b>Definition</b> viewinterface.hh:70</div></div>
 <div class="ttc" id="astructSelection_html_a826586b1cc1b40a03307b6bad5d2d3ff"><div class="ttname"><a href="structSelection.html#a826586b1cc1b40a03307b6bad5d2d3ff">Selection::Selection</a></div><div class="ttdeci">Selection(Point point)</div><div class="ttdef"><b>Definition</b> viewinterface.hh:51</div></div>
 <div class="ttc" id="astructSelection_html_a9c9dec2ae8c7eb3bedd9b6379ada05d1"><div class="ttname"><a href="structSelection.html#a9c9dec2ae8c7eb3bedd9b6379ada05d1">Selection::width</a></div><div class="ttdeci">double width() const</div><div class="ttdef"><b>Definition</b> viewinterface.hh:69</div></div>
-<div class="ttc" id="atransformpresentation__test_8cc_html_ac2efa4a51d11834112524e53b3dc0f62"><div class="ttname"><a href="transformpresentation__test_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a></div><div class="ttdeci">cairo_t * cr</div><div class="ttdef"><b>Definition</b> transformpresentation_test.cc:76</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

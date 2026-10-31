@@ -24,10 +24,9 @@ var searchData=
   ['views_21',['views',['../classPresentationBaseSimple.html#a606850aed5ddd17fb71fd745cd844a02',1,'PresentationBaseSimple::views'],['../classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#ab03f22e1a73aa438998bba87ad63b4b4',1,'anonymous_namespace{tiledbitmappresentation.cc}::TiledBitmapPresentation::views'],['../classScroom_1_1ColormapImpl_1_1ColormapProvider.html#afbe4c3f44be12beabfe6b8226f4f92c0',1,'Scroom::ColormapImpl::ColormapProvider::views'],['../classSizeDeterminer_1_1PresentationData.html#a79426d22ad20ff0a001cd57335fb6ac3',1,'SizeDeterminer::PresentationData::views'],['../callbacks_8cc.html#ad49710e0e7bbdfa292b7ac886a56a9fe',1,'views:&#160;callbacks.cc']]],
   ['viewsize_22',['viewSize',['../classView.html#a8cbef86ad117ed3d1d0e1df83884a1da',1,'View']]],
   ['viewstates_23',['viewStates',['../classCompressedTile.html#a6e31e3871482ff2d9bffb5be8b44a2de',1,'CompressedTile']]],
-  ['viw_24',['viw',['../transformpresentation__test_8cc.html#a420f999c650cb70340c0104621be0755',1,'transformpresentation_test.cc']]],
-  ['volatilestuff_25',['volatileStuff',['../classTiledBitmapViewData.html#a2853b453228e7924601b29cb42748fce',1,'TiledBitmapViewData']]],
-  ['vruler_26',['vruler',['../classView.html#ab25b996421407a3b1bbd8769539c1b27',1,'View']]],
-  ['vruler_5farea_27',['vruler_area',['../classView.html#a57c1e4035ac712fbb05d491d2975204b',1,'View']]],
-  ['vscrollbar_28',['vscrollbar',['../classView.html#af1697927d1053ca9576b544a3a7e97cd',1,'View']]],
-  ['vscrollbaradjustment_29',['vscrollbaradjustment',['../classView.html#afa1457c9c07dbcb62c2b21970e0370c7',1,'View']]]
+  ['volatilestuff_24',['volatileStuff',['../classTiledBitmapViewData.html#a2853b453228e7924601b29cb42748fce',1,'TiledBitmapViewData']]],
+  ['vruler_25',['vruler',['../classView.html#ab25b996421407a3b1bbd8769539c1b27',1,'View']]],
+  ['vruler_5farea_26',['vruler_area',['../classView.html#a57c1e4035ac712fbb05d491d2975204b',1,'View']]],
+  ['vscrollbar_27',['vscrollbar',['../classView.html#af1697927d1053ca9576b544a3a7e97cd',1,'View']]],
+  ['vscrollbaradjustment_28',['vscrollbaradjustment',['../classView.html#afa1457c9c07dbcb62c2b21970e0370c7',1,'View']]]
 ];

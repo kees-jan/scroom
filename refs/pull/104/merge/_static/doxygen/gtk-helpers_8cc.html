@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-65-g3efeceea2</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-68-ga1add363f</span>
    </div>
   </td>
  </tr>
@@ -131,7 +131,7 @@ Namespaces</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a2ade52a9fdfe46700036def64d00f9da" id="r_a2ade52a9fdfe46700036def64d00f9da"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1GtkHelpers.html#a2ade52a9fdfe46700036def64d00f9da">Scroom::GtkHelpers::on_ui_thread</a> ()</td></tr>
 <tr class="memitem:a68ad2ca25cec0ca8c5f9174039ea86fa" id="r_a68ad2ca25cec0ca8c5f9174039ea86fa"><td class="memItemLeft" align="right" valign="top">GtkWindow *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceScroom_1_1GtkHelpers.html#a68ad2ca25cec0ca8c5f9174039ea86fa">Scroom::GtkHelpers::get_parent_window</a> (GtkWidget *widget)</td></tr>
-<tr class="memitem:ad50ba3d7e3569e94ffc1d4e7c762e5d4" id="r_ad50ba3d7e3569e94ffc1d4e7c762e5d4"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad50ba3d7e3569e94ffc1d4e7c762e5d4">operator&lt;&lt;</a> (std::ostream &amp;os, cairo_rectangle_int_t const &amp;<a class="el" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>)</td></tr>
+<tr class="memitem:ad50ba3d7e3569e94ffc1d4e7c762e5d4" id="r_ad50ba3d7e3569e94ffc1d4e7c762e5d4"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad50ba3d7e3569e94ffc1d4e7c762e5d4">operator&lt;&lt;</a> (std::ostream &amp;os, cairo_rectangle_int_t const &amp;r)</td></tr>
 <tr class="memitem:aaaeaa77e12fcb4d8b994695602daf63f" id="r_aaaeaa77e12fcb4d8b994695602daf63f"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaaeaa77e12fcb4d8b994695602daf63f">operator&lt;&lt;</a> (std::ostream &amp;os, const GdkPoint &amp;<a class="el" href="determine-size-test_8cc.html#abf000ba68ab71a4284d8a6b1ed241f79">p</a>)</td></tr>
 </table>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
@@ -154,9 +154,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   30</span>{</div>
-<div class="line"><span class="lineno">   31</span>  <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;cairo_rectangle_int_t(&quot;</span> &lt;&lt; <a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>.x &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; <a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>.y &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; <a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>.width &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; <a class="code hl_variable" href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a>.height &lt;&lt; <span class="stringliteral">&quot;)&quot;</span>;</div>
+<div class="line"><span class="lineno">   31</span>  <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;cairo_rectangle_int_t(&quot;</span> &lt;&lt; r.x &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; r.y &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; r.width &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; r.height &lt;&lt; <span class="stringliteral">&quot;)&quot;</span>;</div>
 <div class="line"><span class="lineno">   32</span>}</div>
-<div class="ttc" id="atransformpresentation__test_8cc_html_a0e8a17dea24fd000a1eabbea951fb099"><div class="ttname"><a href="transformpresentation__test_8cc.html#a0e8a17dea24fd000a1eabbea951fb099">r</a></div><div class="ttdeci">Scroom::Utils::Rectangle&lt; double &gt; const r</div><div class="ttdef"><b>Definition</b> transformpresentation_test.cc:69</div></div>
 </div><!-- fragment -->
 </div>
 </div>
