@@ -6,12 +6,13 @@ var NAVTREEINDEX17 =
 "md_AGENTS.html#autotoc_md4":[0,3],
 "md_AGENTS.html#autotoc_md5":[0,4],
 "md_AGENTS.html#autotoc_md6":[0,5],
+"md_AGENTS.html#autotoc_md7":[0,6],
 "md_cmake-modules_2README.html":[1],
-"md_cmake-modules_2README.html#autotoc_md10":[1,3],
-"md_cmake-modules_2README.html#autotoc_md11":[1,4],
-"md_cmake-modules_2README.html#autotoc_md7":[1,0],
-"md_cmake-modules_2README.html#autotoc_md8":[1,1],
-"md_cmake-modules_2README.html#autotoc_md9":[1,2],
+"md_cmake-modules_2README.html#autotoc_md10":[1,2],
+"md_cmake-modules_2README.html#autotoc_md11":[1,3],
+"md_cmake-modules_2README.html#autotoc_md12":[1,4],
+"md_cmake-modules_2README.html#autotoc_md8":[1,0],
+"md_cmake-modules_2README.html#autotoc_md9":[1,1],
 "measure-framerate-callbacks_8cc.html":[5,0,3,4,3,0],
 "measure-framerate-callbacks_8cc.html#a02fd73d861ef2e4aabb38c0c9ff82947":[5,0,3,4,3,0,1],
 "measure-framerate-callbacks_8cc.html#a05753da6e97a1ef39125024fc989a6fa":[5,0,3,4,3,0,9],
@@ -248,6 +249,5 @@ var NAVTREEINDEX17 =
 "namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#abd05feecca1f5d015d9e4e84c42099c5":[2,0,25,4,0,3],
 "namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#add5ac7ed3f67a149282397b67c164559":[2,0,25,4,0,2],
 "namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#add5ac7ed3f67a149282397b67c164559a341b72aaab1308a3e6667af1e52f5def":[2,0,25,4,0,2,3],
-"namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#add5ac7ed3f67a149282397b67c164559a747385047b85ae751f83adb36435a3c1":[2,0,25,4,0,2,0],
-"namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#add5ac7ed3f67a149282397b67c164559a8d81ac82421d1b03da58fccb9174892e":[2,0,25,4,0,2,2]
+"namespaceScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03.html#add5ac7ed3f67a149282397b67c164559a747385047b85ae751f83adb36435a3c1":[2,0,25,4,0,2,0]
 };

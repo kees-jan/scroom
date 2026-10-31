@@ -1,5 +1,6 @@
 var NAVTREEINDEX20 =
 {
+"rectangletests_8cc.html#afaea434cedda5ae65c752010d67e3fc0":[5,0,3,5,2,12,131],
 "rectangletests_8cc.html#afb2fd4c7e21e37fa441037629691dbf7":[5,0,3,5,2,12,51],
 "rectangletests_8cc.html#afedd7ca17a7e1f95c63b275e4931397e":[5,0,3,5,2,12,87],
 "resizablepresentationinterface_8hh.html":[5,0,3,1,0,0,8],
@@ -248,6 +249,5 @@ var NAVTREEINDEX20 =
 "structfmt_1_1formatter_3_01Scroom_1_1Utils_1_1Rectangle_3_01T_01_4_01_4.html#a87b780f4b710b67f025c69c5c988d5fb":[4,0,10,1,0],
 "structfmt_1_1formatter_3_01TileViewState_1_1State_01_4.html":[4,0,10,0],
 "structfmt_1_1formatter_3_01TileViewState_1_1State_01_4.html#a02f3c5d9f1c4ce1fce00a75f37e01fdb":[4,0,10,0,1],
-"structfmt_1_1formatter_3_01TileViewState_1_1State_01_4.html#ad850a0eed3b224f7345eed499e556791":[4,0,10,0,0],
-"structfmt_1_1formatter_3_01std_1_1shared__ptr_3_01T_01_4_01_4.html":[4,0,10,3]
+"structfmt_1_1formatter_3_01TileViewState_1_1State_01_4.html#ad850a0eed3b224f7345eed499e556791":[4,0,10,0,0]
 };

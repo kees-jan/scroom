@@ -1,5 +1,6 @@
 var NAVTREEINDEX21 =
 {
+"structfmt_1_1formatter_3_01std_1_1shared__ptr_3_01T_01_4_01_4.html":[4,0,10,3],
 "structfmt_1_1formatter_3_01std_1_1shared__ptr_3_01T_01_4_01_4.html#a7708d8ce862f37d3fcee5ee9d57dc64a":[4,0,10,3,0],
 "structfmt_1_1formatter_3_01std_1_1weak__ptr_3_01T_01_4_01_4.html":[4,0,10,4],
 "structfmt_1_1formatter_3_01std_1_1weak__ptr_3_01T_01_4_01_4.html#aa311248aec7953ffae43d905f9608032":[4,0,10,4,0],
