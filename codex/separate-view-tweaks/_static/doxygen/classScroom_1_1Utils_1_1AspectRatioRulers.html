@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-69-gae966b932</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-71-g075b47df8</span>
    </div>
   </td>
  </tr>
@@ -308,24 +308,9 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classScroom_1_1Utils_1_1ITweakRulers.html#a778f5993d471621e119d5631580a56d2">Scroom::Utils::ITweakRulers</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  215</span>  {</div>
-<div class="line"><span class="lineno">  216</span>    <span class="comment">// Ruler coordinates are supplied by the child. Convert the viewport before</span></div>
-<div class="line"><span class="lineno">  217</span>    <span class="comment">// delegation, then correct its physical extent without rounding the size.</span></div>
-<div class="line"><span class="lineno">  218</span>    <span class="keyword">const</span> <span class="keyword">auto</span> rulers = <a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioRulers.html#a4f76d91396d34153b76d560366ac3b77">child</a>-&gt;tweakRulers(currentPosition / <a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioRulers.html#a18fdae45d8d956ddb9cce30d16a8f0f3">aspectRatio</a>, drawingAreaSize, zoom);</div>
-<div class="line"><span class="lineno">  219</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceScroom_1_1Utils.html#a8a866a6439fc60dfe259e168059aa65e">make_rect</a>(rulers.getTopLeft(), rulers.getSize() / <a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioRulers.html#a18fdae45d8d956ddb9cce30d16a8f0f3">aspectRatio</a>);</div>
-<div class="line"><span class="lineno">  220</span>  }</div>
-<div class="ttc" id="anamespaceScroom_1_1Utils_html_a8a866a6439fc60dfe259e168059aa65e"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#a8a866a6439fc60dfe259e168059aa65e">Scroom::Utils::make_rect</a></div><div class="ttdeci">Rectangle&lt; T &gt; make_rect(T x, T y, T width, T height)</div><div class="ttdef"><b>Definition</b> rectangle.hh:284</div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classScroom_1_1Utils_1_1AspectRatioRulers_a9ac95cf21f8861adcc9478fd37cb0e90_cgraph.png" border="0" usemap="#aclassScroom_1_1Utils_1_1AspectRatioRulers_a9ac95cf21f8861adcc9478fd37cb0e90_cgraph" alt=""/></div>
-<map name="aclassScroom_1_1Utils_1_1AspectRatioRulers_a9ac95cf21f8861adcc9478fd37cb0e90_cgraph" id="aclassScroom_1_1Utils_1_1AspectRatioRulers_a9ac95cf21f8861adcc9478fd37cb0e90_cgraph">
-<area shape="rect" title=" " alt="" coords="5,22,200,62"/>
-<area shape="rect" href="namespaceScroom_1_1Utils.html#a8a866a6439fc60dfe259e168059aa65e" title=" " alt="" coords="248,29,433,55"/>
-<area shape="poly" title=" " alt="" coords="200,39,234,39,234,45,200,45"/>
-<area shape="poly" title=" " alt="" coords="302,31,294,21,298,11,314,5,341,3,374,7,387,16,383,20,372,11,341,8,315,10,302,15,299,20,306,27"/>
-</map>
-</div>
-
+<div class="line"><span class="lineno">  216</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioRulers.html#a4f76d91396d34153b76d560366ac3b77">child</a>-&gt;tweakRulers(currentPosition, drawingAreaSize, zoom) / <a class="code hl_variable" href="classScroom_1_1Utils_1_1AspectRatioRulers.html#a18fdae45d8d956ddb9cce30d16a8f0f3">aspectRatio</a>;</div>
+<div class="line"><span class="lineno">  217</span>  }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
