@@ -1,13 +1,13 @@
 <map id="Scroom::TiledBitmap::Geometry::ReductionMapping" name="Scroom::TiledBitmap::Geometry::ReductionMapping">
-<area shape="rect" id="Node000001" title=" " alt="" coords="236,412,451,492"/>
-<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Point.html" title=" " alt="" coords="272,135,415,335"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="346,335,346,396,341,396,341,335"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,164,85"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="151,91,273,179,270,184,148,96"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="189,5,327,85"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="284,97,301,134,296,136,279,99"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="351,5,509,85"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="409,99,392,136,387,133,404,96"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="533,5,679,85"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="542,95,417,184,414,180,539,91"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="229,507,440,597"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Point.html" title=" " alt="" coords="265,144,404,412"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="336,410,337,492,332,489,333,414"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,160,95"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="142,102,268,214,263,216,142,107"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="184,5,320,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="273,106,289,144,283,144,273,111"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="344,5,490,95"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="398,106,386,145,381,143,395,111"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="514,5,649,95"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="521,106,406,215,402,212,525,103"/>
 </map>

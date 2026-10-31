@@ -1,5 +1,7 @@
 <map id="OperationsCMYK16::create" name="OperationsCMYK16::create">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,201,38"/>
-<area shape="rect" id="Node000002" href="$classOperationsCMYK16.html#ab0facecd39b0ed9dfcebbca8a6da7811" title=" " alt="" coords="249,5,476,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="201,23,236,23,236,28,201,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,14,201,42"/>
+<area shape="rect" id="Node000002" href="$classOperationsCMYK16.html#ab0facecd39b0ed9dfcebbca8a6da7811" title=" " alt="" coords="249,5,474,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="201,25,236,27,230,28,201,30"/>
+<area shape="rect" id="Node000003" href="$classPipetteCommonOperationsCMYK.html#a7cbc1f263cbfd217852f892716eb4f42" title=" " alt="" coords="522,5,765,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="474,25,509,28,504,28,474,30"/>
 </map>

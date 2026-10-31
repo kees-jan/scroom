@@ -1,13 +1,15 @@
 <map id="Scroom::Utils::Segment::intersects" name="Scroom::Utils::Segment::intersects">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,69,180,109"/>
-<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Segment.html#a671e0c8614114bf5eb99afd36a2dddc4" title=" " alt="" coords="228,5,403,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,67,231,47,233,52,164,72"/>
-<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Segment.html#a934a0a56d270e8d4fc4ceddb4dc7fb82" title=" " alt="" coords="228,69,403,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="180,87,214,87,214,92,180,92"/>
-<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Segment.html#a3ccc0b3193fcff305a0bec13424fdc4d" title=" " alt="" coords="228,133,403,173"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="164,107,233,127,231,132,162,112"/>
-<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Segment.html#abd475ea75311ffaed7e8175125d2d3b5" title=" " alt="" coords="451,104,625,144"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="403,139,437,135,438,140,403,144"/>
-<area shape="rect" id="Node000006" href="$namespaceScroom_1_1Utils.html#aee1ec40078d98263c9d8e298f864ae35" title=" " alt="" coords="459,169,617,194"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="403,162,446,167,445,172,403,167"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,109,180,154"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Segment.html#a671e0c8614114bf5eb99afd36a2dddc4" title=" " alt="" coords="228,5,402,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="134,107,227,60,243,55,238,58,229,65,137,111"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Segment.html#a934a0a56d270e8d4fc4ceddb4dc7fb82" title=" " alt="" coords="228,75,402,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="179,116,215,112,210,114,181,121"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Segment.html#a3ccc0b3193fcff305a0bec13424fdc4d" title=" " alt="" coords="228,144,402,189"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="180,143,215,150,210,151,180,148"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Segment.html#a72105b3913b1afea17fa50fb7ddaeb3b" title=" " alt="" coords="228,213,402,258"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="136,152,229,199,243,207,238,207,227,203,135,157"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Segment.html#abd475ea75311ffaed7e8175125d2d3b5" title=" " alt="" coords="450,115,624,159"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="402,152,437,150,432,151,403,157"/>
+<area shape="rect" id="Node000006" href="$namespaceScroom_1_1Utils.html#aee1ec40078d98263c9d8e298f864ae35" title=" " alt="" coords="458,183,616,211"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="402,176,446,184,440,184,402,181"/>
 </map>

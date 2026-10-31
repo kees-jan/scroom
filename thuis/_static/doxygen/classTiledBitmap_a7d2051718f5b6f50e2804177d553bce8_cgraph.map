@@ -1,7 +1,21 @@
 <map id="TiledBitmap::connect" name="TiledBitmap::connect">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,35,165,60"/>
-<area shape="rect" id="Node000002" href="$classLayerCoordinator.html#a2ced2ea05b51b8480e4a359156eff623" title=" " alt="" coords="231,5,414,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,35,217,28,218,34,166,40"/>
-<area shape="rect" id="Node000003" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#ab00ae45512b99a463ced3522e3c6db1e" title=" " alt="" coords="213,55,432,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="166,54,200,58,199,63,165,59"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,196,165,224"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a75924397bff2620d90faf5f424a16c34" title=" " alt="" coords="213,25,436,86"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,194,147,151,211,104,236,92,232,96,214,109,151,156,103,198"/>
+<area shape="rect" id="Node000004" href="$classLayerCoordinator.html#a2ced2ea05b51b8480e4a359156eff623" title=" " alt="" coords="233,118,416,146"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="116,194,212,156,244,149,239,151,214,161,119,198"/>
+<area shape="rect" id="Node000006" href="$classLayer.html#aa95b82451c1bf40bfc09200d4c1336ea" title=" " alt="" coords="239,170,410,198"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="164,199,226,194,221,196,166,204"/>
+<area shape="rect" id="Node000007" href="$classLayer.html#a7428a55d293b5d3a0c3a1da17bbb19c4" title=" " alt="" coords="269,222,380,250"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="165,216,256,227,252,230,165,221"/>
+<area shape="rect" id="Node000008" href="$classLayer.html#af90b35813138ca6b6881f78ab67cea33" title=" " alt="" coords="256,274,393,302"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="119,222,214,258,245,269,239,270,212,264,118,227"/>
+<area shape="rect" id="Node000009" href="$classLayer.html#ad3ca3869b234ba456c3add5bd67e4860" title=" " alt="" coords="240,326,409,354"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="100,222,148,267,180,290,214,311,233,321,227,320,211,315,177,295,145,271,99,227"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1Utils.html#a95153f4ab44349a7a3190c2184f92e97" title=" " alt="" coords="530,29,691,74"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="436,52,517,52,512,54,437,57"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="557,28,555,19,564,10,583,5,611,3,641,5,661,14,656,14,640,10,611,8,584,10,567,15,560,21,562,30"/>
+<area shape="rect" id="Node000005" href="$classLayerCoordinator.html#a3eafcda521a02dab43ce39423336214f" title=" " alt="" coords="484,122,737,150"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="415,130,471,133,466,134,416,136"/>
+<area shape="poly" id="edge6_Node000005_Node000005" title=" " alt="" coords="562,121,554,113,561,103,580,97,611,95,645,98,664,107,659,107,644,103,611,100,581,103,564,107,560,113,567,122"/>
 </map>

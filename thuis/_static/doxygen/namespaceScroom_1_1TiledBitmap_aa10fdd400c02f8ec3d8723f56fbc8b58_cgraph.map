@@ -1,23 +1,28 @@
 <map id="Scroom::TiledBitmap::CMYKBitmap" name="Scroom::TiledBitmap::CMYKBitmap">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,133,164,173"/>
-<area shape="rect" id="Node000002" href="$classOperationsCMYK32.html#af8f9ac296dabdbb18392d623e2be35d5" title=" " alt="" coords="212,25,408,50"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,131,157,100,211,70,252,52,255,57,213,74,160,105,115,135"/>
-<area shape="rect" id="Node000004" href="$classOperationsCMYK64.html#aeacc48497e058d5a8a73b4e2922c378f" title=" " alt="" coords="212,85,408,110"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="164,131,244,111,246,116,165,136"/>
-<area shape="rect" id="Node000006" href="$classOperationsCMYK16.html#ae8ef4df2467f4d476e274069a7f3124a" title=" " alt="" coords="212,141,408,166"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="165,151,198,151,198,156,165,156"/>
-<area shape="rect" id="Node000008" href="$classOperationsCMYK8.html#afddb0d2799e315acde82b39e8077dc4f" title=" " alt="" coords="216,197,404,222"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="165,170,246,191,244,196,164,176"/>
-<area shape="rect" id="Node000010" href="$classOperationsCMYK4.html#a5c42cfba9bd5a0b9211c903a606c1c3d" title=" " alt="" coords="216,261,404,286"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="116,171,161,201,213,231,262,253,260,258,211,236,158,205,113,176"/>
-<area shape="rect" id="Node000003" href="$classOperationsCMYK32.html#afdc3539bd4460a60ca9d2aaa3647b266" title=" " alt="" coords="456,5,683,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="408,30,442,29,442,34,408,35"/>
-<area shape="rect" id="Node000005" href="$classOperationsCMYK64.html#a0e9cbf60ef17dd496f383f021e067f8d" title=" " alt="" coords="456,69,683,109"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="408,92,442,91,442,96,408,97"/>
-<area shape="rect" id="Node000007" href="$classOperationsCMYK16.html#ab0facecd39b0ed9dfcebbca8a6da7811" title=" " alt="" coords="456,133,683,173"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="408,151,442,151,442,156,408,156"/>
-<area shape="rect" id="Node000009" href="$classOperationsCMYK8.html#af4820d4f04719b4a69345fcdd20c3ccd" title=" " alt="" coords="460,197,679,237"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="404,210,446,211,446,216,404,215"/>
-<area shape="rect" id="Node000011" href="$classOperationsCMYK4.html#ade8c4ed1a9a6fc48f8d148fea174a626" title=" " alt="" coords="460,261,679,301"/>
-<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="404,274,446,275,446,280,404,279"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,144,163,189"/>
+<area shape="rect" id="Node000002" href="$classOperationsCMYK16.html#ae8ef4df2467f4d476e274069a7f3124a" title=" " alt="" coords="211,27,406,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,142,158,110,209,79,255,59,251,63,212,83,161,115,117,145"/>
+<area shape="rect" id="Node000005" href="$classOperationsCMYK32.html#af8f9ac296dabdbb18392d623e2be35d5" title=" " alt="" coords="211,92,406,120"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="162,143,241,123,237,126,164,148"/>
+<area shape="rect" id="Node000007" href="$classOperationsCMYK4.html#a5c42cfba9bd5a0b9211c903a606c1c3d" title=" " alt="" coords="215,152,402,180"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="162,164,202,165,197,168,164,169"/>
+<area shape="rect" id="Node000009" href="$classOperationsCMYK64.html#aeacc48497e058d5a8a73b4e2922c378f" title=" " alt="" coords="211,214,406,242"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="163,185,243,208,238,210,163,190"/>
+<area shape="rect" id="Node000011" href="$classOperationsCMYK8.html#afddb0d2799e315acde82b39e8077dc4f" title=" " alt="" coords="215,274,402,302"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="114,187,160,219,212,251,248,268,243,268,209,255,157,224,113,192"/>
+<area shape="rect" id="Node000003" href="$classOperationsCMYK16.html#ab0facecd39b0ed9dfcebbca8a6da7811" title=" " alt="" coords="454,5,679,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="406,33,441,33,436,35,407,39"/>
+<area shape="rect" id="Node000004" href="$classPipetteCommonOperationsCMYK.html#a7cbc1f263cbfd217852f892716eb4f42" title=" " alt="" coords="727,109,971,154"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="645,48,680,60,784,103,779,103,678,65,645,53"/>
+<area shape="rect" id="Node000006" href="$classOperationsCMYK32.html#afdc3539bd4460a60ca9d2aaa3647b266" title=" " alt="" coords="454,75,679,119"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="406,100,441,101,436,102,407,105"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="680,108,714,115,709,115,680,114"/>
+<area shape="rect" id="Node000008" href="$classOperationsCMYK4.html#ade8c4ed1a9a6fc48f8d148fea174a626" title=" " alt="" coords="458,144,675,189"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="402,164,445,166,440,167,403,169"/>
+<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="675,150,715,148,709,149,676,156"/>
+<area shape="rect" id="Node000010" href="$classOperationsCMYK64.html#a0e9cbf60ef17dd496f383f021e067f8d" title=" " alt="" coords="454,213,679,258"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="406,228,441,231,436,232,407,233"/>
+<area shape="rect" id="Node000012" href="$classOperationsCMYK8.html#af4820d4f04719b4a69345fcdd20c3ccd" title=" " alt="" coords="458,283,675,327"/>
+<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="402,291,445,297,440,297,402,297"/>
+<area shape="poly" id="edge14_Node000012_Node000004" title=" " alt="" coords="653,280,678,268,717,244,753,217,812,166,817,164,756,221,720,249,681,273,654,285"/>
 </map>

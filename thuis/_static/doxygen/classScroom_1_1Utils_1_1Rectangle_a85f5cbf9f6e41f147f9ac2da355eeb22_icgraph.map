@@ -1,7 +1,13 @@
 <map id="Scroom::Utils::Rectangle::above" name="Scroom::Utils::Rectangle::above">
-<area shape="rect" id="Node000001" title=" " alt="" coords="469,5,652,45"/>
-<area shape="rect" id="Node000002" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a30ccf4173bcc57fc849325c24624ac3d" title=" " alt="" coords="208,5,421,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="456,28,422,28,422,23,456,23"/>
-<area shape="rect" id="Node000003" href="$classTiledBitmap.html#a98c2d60fc0736a77ab18aeeb461a1da8" title=" " alt="" coords="5,13,160,38"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="194,28,160,28,160,23,194,23"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="615,48,796,93"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a9f28d6196110a6aaee3254b3b89e5366" title=" " alt="" coords="330,5,537,67"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="597,58,538,52,537,47,603,57"/>
+<area shape="rect" id="Node000004" href="$cairo-helpers_8cc.html#a72b76dcfe2a11213e72c72dee13488d6" title=" " alt="" coords="300,92,567,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="597,85,548,94,547,88,602,84"/>
+<area shape="rect" id="Node000003" href="$classTiledBitmap.html#a98c2d60fc0736a77ab18aeeb461a1da8" title=" " alt="" coords="52,22,205,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="312,38,206,39,205,34,317,35"/>
+<area shape="rect" id="Node000005" href="$cairo-helpers_8cc.html#a27002d3ab3abd3af027354f53c85bec7" title=" " alt="" coords="5,78,252,122"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="281,104,252,105,251,100,286,102"/>
+<area shape="rect" id="Node000006" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a4c4db94fd7f968183ee7ab0aab24e35d" title=" " alt="" coords="18,146,239,225"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="360,125,240,159,239,154,365,123"/>
 </map>

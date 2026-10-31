@@ -1,7 +1,0 @@
-<map id="Scroom::TiledBitmap::Geometry::reductionMapping" name="Scroom::TiledBitmap::Geometry::reductionMapping">
-<area shape="rect" id="Node000001" title=" " alt="" coords="427,5,645,45"/>
-<area shape="rect" id="Node000002" href="$classTiledBitmap.html#a7d2051718f5b6f50e2804177d553bce8" title=" " alt="" coords="219,13,379,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="413,28,379,28,379,23,413,23"/>
-<area shape="rect" id="Node000003" href="$classTiledBitmap.html#a6b40bb63aa12b68f9678bb45b765b8e1" title=" " alt="" coords="5,13,171,38"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="205,28,171,28,171,23,205,23"/>
-</map>

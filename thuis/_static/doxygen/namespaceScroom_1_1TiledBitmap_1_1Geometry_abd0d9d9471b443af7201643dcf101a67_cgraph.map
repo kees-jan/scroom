@@ -1,0 +1,17 @@
+<map id="Scroom::TiledBitmap::Geometry::computeTileRangeForSampling" name="Scroom::TiledBitmap::Geometry::computeTileRangeForSampling">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,28,229,89"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html#a63d218d52a6e28b5f3af118feb624019" title=" " alt="" coords="290,5,472,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="228,43,277,39,272,41,230,48"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1Utils.html#aafbf8baa587d11858954f89021f9037b" title=" " alt="" coords="277,74,485,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="229,68,264,74,258,75,229,73"/>
+<area shape="rect" id="Node000004" href="$namespaceScroom_1_1Utils.html#ae81b515fbc80d3efdded8c600b5956e6" title=" " alt="" coords="538,5,729,50"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="442,71,520,54,526,53,443,76"/>
+<area shape="rect" id="Node000005" href="$rounding_8hh.html#aa1169552e0a4044595bc67a5b9361694" title=" " alt="" coords="533,74,734,102"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="485,85,520,87,515,88,486,90"/>
+<area shape="rect" id="Node000007" href="$rounding_8hh.html#a1b27314f9dc323dff1e495e265c88eca" title=" " alt="" coords="542,126,725,154"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="452,99,550,122,545,122,452,105"/>
+<area shape="rect" id="Node000006" href="$rounding_8hh.html#a08d4c4fef3e0764e999f269b7773286c" title=" " alt="" coords="782,74,919,102"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="734,85,770,88,764,88,735,90"/>
+<area shape="rect" id="Node000008" href="$rounding_8hh.html#a3705c07b90d6f60753b35c4aea0082b5" title=" " alt="" coords="785,126,916,154"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="725,137,773,140,767,140,725,142"/>
+</map>

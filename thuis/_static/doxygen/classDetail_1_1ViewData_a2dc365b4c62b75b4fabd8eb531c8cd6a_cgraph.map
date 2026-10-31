@@ -1,5 +1,7 @@
 <map id="Detail::ViewData::registerSelectionListener" name="Detail::ViewData::registerSelectionListener">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,196,45"/>
-<area shape="rect" id="Node000002" href="$classDetail_1_1ViewData.html#a6e447a860e908d3c38b4fd35b0f4570a" title=" " alt="" coords="244,13,427,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="196,23,231,23,231,28,196,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,28,195,72"/>
+<area shape="rect" id="Node000002" href="$classDetail_1_1ViewData.html#a6e447a860e908d3c38b4fd35b0f4570a" title=" " alt="" coords="267,5,448,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,36,254,31,249,32,196,41"/>
+<area shape="rect" id="Node000003" href="$classViewInterface.html#a9ef9525205c5b997fd578ef5212b1e9d" title=" " alt="" coords="243,57,472,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,58,230,64,224,65,195,63"/>
 </map>

@@ -1,19 +1,23 @@
 <map id="TiledBitmapViewData::tileLoaded" name="TiledBitmapViewData::tileLoaded">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,33,169,73"/>
-<area shape="rect" id="Node000002" href="$namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1" title=" " alt="" coords="797,5,956,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="169,48,783,26,783,31,170,53"/>
-<area shape="rect" id="Node000004" href="$tiledbitmapviewdata_8cc.html#a428ca3cfbaecfbe7aed16ea3ad4a61e5" title=" " alt="" coords="217,66,343,91"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="170,62,204,66,203,71,169,67"/>
-<area shape="rect" id="Node000003" href="$namespaceScroom_1_1GtkHelpers.html#ad5dcc56a509902bf106dbd6eb6a28964" title=" " alt="" coords="1004,5,1156,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="956,23,990,23,990,28,956,28"/>
-<area shape="rect" id="Node000005" href="$namespaceScroom_1_1GtkHelpers.html#a41d93c131774cfff3137ec807ead3e94" title=" " alt="" coords="391,67,543,107"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="343,79,377,80,377,85,343,84"/>
-<area shape="rect" id="Node000006" href="$namespaceScroom_1_1GtkHelpers.html#a37a36328ffc6b0e7468a02d64724c21d" title=" " alt="" coords="591,59,749,114"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="543,84,577,84,577,89,543,89"/>
-<area shape="rect" id="Node000007" href="$namespaceScroom_1_1GtkHelpers.html#a2ade52a9fdfe46700036def64d00f9da" title=" " alt="" coords="801,128,953,168"/>
-<area shape="poly" id="edge9_Node000005_Node000007" title=" " alt="" coords="521,104,591,124,692,138,787,144,787,149,692,143,590,129,520,109"/>
-<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="749,61,794,47,796,52,750,66"/>
-<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="750,108,796,121,794,126,749,113"/>
-<area shape="rect" id="Node000008" href="$function-additor-tests_8cc.html#a171d6ee6f5e4a249111a7ca7c7108209" title=" " alt="" coords="851,74,902,99"/>
-<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="750,84,838,84,838,89,750,89"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,27,169,71"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1" title=" " alt="" coords="828,5,986,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="169,44,813,27,812,33,169,50"/>
+<area shape="rect" id="Node000005" href="$tiledbitmapviewdata_8cc.html#a428ca3cfbaecfbe7aed16ea3ad4a61e5" title=" " alt="" coords="217,60,341,88"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="169,57,204,63,199,65,170,62"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1GtkHelpers.html#ad5dcc56a509902bf106dbd6eb6a28964" title=" " alt="" coords="1034,5,1185,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="986,25,1021,27,1016,28,986,30"/>
+<area shape="rect" id="Node000004" href="$namespaceScroom_1_1GtkHelpers_1_1Detail.html#a49fe9082a2e319cd57551e663b5a8f3e" title=" " alt="" coords="1233,5,1386,50"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1185,25,1220,27,1215,28,1186,30"/>
+<area shape="rect" id="Node000006" href="$classViewInterface.html#a0c19f67bde7e15534e876edad9e35a31" title=" " alt="" coords="389,60,573,88"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="341,72,376,74,371,75,341,77"/>
+<area shape="rect" id="Node000007" href="$namespaceScroom_1_1GtkHelpers.html#a41d93c131774cfff3137ec807ead3e94" title=" " alt="" coords="406,112,557,157"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="328,86,394,108,388,108,328,91"/>
+<area shape="rect" id="Node000008" href="$namespaceScroom_1_1GtkHelpers.html#a37a36328ffc6b0e7468a02d64724c21d" title=" " alt="" coords="621,61,780,122"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="557,117,603,110,609,110,557,122"/>
+<area shape="rect" id="Node000009" href="$namespaceScroom_1_1GtkHelpers.html#a2ade52a9fdfe46700036def64d00f9da" title=" " alt="" coords="831,133,982,178"/>
+<area shape="poly" id="edge11_Node000007_Node000009" title=" " alt="" coords="557,135,818,151,813,151,557,141"/>
+<area shape="poly" id="edge8_Node000008_Node000002" title=" " alt="" coords="779,65,815,56,821,55,781,70"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="780,114,821,128,815,128,780,119"/>
+<area shape="rect" id="Node000010" href="$function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54" title=" " alt="" coords="882,78,932,106"/>
+<area shape="poly" id="edge10_Node000008_Node000010" title=" " alt="" coords="780,89,869,92,864,92,780,94"/>
 </map>

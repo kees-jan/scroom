@@ -1,0 +1,19 @@
+<map id="Scroom::TiledBitmap::Geometry::computeTileRangeForRedraw" name="Scroom::TiledBitmap::Geometry::computeTileRangeForRedraw">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,253,229,314"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#afba759cca3290fe14eb87e593774fb04" title=" " alt="" coords="290,29,445,74"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="134,251,190,169,230,124,275,84,285,80,281,84,278,88,234,128,195,172,138,254"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1Utils.html#a95153f4ab44349a7a3190c2184f92e97" title=" " alt="" coords="287,123,448,167"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="159,250,213,213,275,177,291,172,286,176,278,182,216,218,162,254"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Rectangle.html#af497bd1988b10b5e521a82bc05285eed" title=" " alt="" coords="277,192,458,237"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="228,250,271,240,267,243,230,255"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Rectangle.html#ad623b0b902d4e2cd1d858300728c78d1" title=" " alt="" coords="277,261,458,306"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="228,281,263,283,258,285,230,286"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Rectangle.html#ac0a99c1ecbac98201ef36d88bf56eb40" title=" " alt="" coords="277,331,458,375"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="229,312,272,325,267,327,229,317"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Rectangle.html#a23ed938b3f63186f48c5828024a9d6ab" title=" " alt="" coords="277,400,458,445"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="161,312,216,349,278,385,291,393,286,393,275,390,213,354,160,318"/>
+<area shape="rect" id="Node000008" href="$classScroom_1_1Utils_1_1Rectangle.html#a63d218d52a6e28b5f3af118feb624019" title=" " alt="" coords="277,469,458,514"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="141,312,199,384,237,422,278,455,287,462,281,461,275,459,233,425,195,387,139,317"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="320,28,318,19,326,10,343,5,367,3,394,5,412,13,407,15,393,10,367,8,344,10,329,15,323,21,325,29"/>
+<area shape="poly" id="edge4_Node000003_Node000003" title=" " alt="" coords="320,121,318,113,326,104,343,98,367,96,394,99,412,107,407,108,393,104,367,101,344,103,329,108,323,114,325,123"/>
+</map>

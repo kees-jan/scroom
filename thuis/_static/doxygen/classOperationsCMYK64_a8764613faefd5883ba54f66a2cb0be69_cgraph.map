@@ -1,9 +1,12 @@
 <map id="OperationsCMYK64::cache" name="OperationsCMYK64::cache">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,63,199,88"/>
-<area shape="rect" id="Node000002" href="$classCommonOperations.html#ad73969df8b5e83b7b9a05e3b257b68d3" title=" " alt="" coords="247,5,496,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="159,60,246,41,293,31,294,36,247,46,160,65"/>
-<area shape="rect" id="Node000003" href="$classScroom_1_1Bitmap_1_1BitmapSurface.html#a697961480f8888e1a149d4be54adb9e7" title=" " alt="" coords="256,55,487,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="199,73,242,73,242,78,199,78"/>
-<area shape="rect" id="Node000004" href="$namespaceScroom_1_1Utils.html#ae993dff329fe71d3a12da2981b172fbf" title=" " alt="" coords="291,119,452,159"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="157,86,278,114,276,120,156,91"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,65,198,93"/>
+<area shape="rect" id="Node000002" href="$classCommonOperations.html#ad73969df8b5e83b7b9a05e3b257b68d3" title=" " alt="" coords="246,5,494,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,62,245,42,284,36,279,38,246,47,161,67"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Bitmap_1_1BitmapSurface.html#a697961480f8888e1a149d4be54adb9e7" title=" " alt="" coords="255,57,484,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="198,77,242,78,237,80,198,82"/>
+<area shape="rect" id="Node000005" href="$namespaceScroom_1_1Utils.html#ae993dff329fe71d3a12da2981b172fbf" title=" " alt="" coords="290,126,450,171"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="158,91,277,123,272,125,158,96"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Bitmap_1_1BitmapSurface.html#a01b392735034681d7dfabc4fc2f71cfa" title=" " alt="" coords="542,57,771,102"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="485,77,529,79,523,79,485,82"/>
+<area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="603,55,601,47,610,38,629,32,657,30,687,33,707,42,702,41,686,38,657,35,630,37,613,42,606,48,607,58"/>
 </map>

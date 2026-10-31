@@ -2,6 +2,7 @@ var sampleiterator_tests_8cc =
 [
     [ "SampleIterator_iterates", "classSampleIterator__iterates.html", null ],
     [ "SampleIterator_arithmetic", "classSampleIterator__arithmetic.html", null ],
+    [ "SampleIterator&lt; ConstBase &gt;", "classSampleIterator.html", "classSampleIterator" ],
     [ "ArithmeticParam", "sampleiterator-tests_8cc.html#a31d557b1ba9f8c46297af9925d94d8f2", null ],
     [ "EXPECT_EQ", "sampleiterator-tests_8cc.html#ac02c7349d65ead0a2a78e4d385697444", null ],
     [ "EXPECT_EQ", "sampleiterator-tests_8cc.html#a72eb9291a6c9521b6f6d9118f1961158", null ],
@@ -13,16 +14,16 @@ var sampleiterator_tests_8cc =
     [ "for", "sampleiterator-tests_8cc.html#a7761b437139a1903b3fb12eb94ad1b60", null ],
     [ "INSTANTIATE_TEST_SUITE_P", "sampleiterator-tests_8cc.html#af85b7f16c72f5b98c5f47e3e3485c61b", null ],
     [ "INSTANTIATE_TEST_SUITE_P", "sampleiterator-tests_8cc.html#ae3631013d5e465b720b0552357db58cc", null ],
-    [ "operator<<", "sampleiterator-tests_8cc.html#a76cf9cd4c10e26cab43bf82fb8ec8b53", null ],
-    [ "bit_depths", "sampleiterator-tests_8cc.html#aa69fb4a20df5ff7d8dd3b9bd3b5dd1c1", null ],
-    [ "deltas", "sampleiterator-tests_8cc.html#a437d26ece966bc7a8ba58cdaf7674e67", null ],
+    [ "Scroom::Bitmap::operator<<", "namespaceScroom_1_1Bitmap.html#a76cf9cd4c10e26cab43bf82fb8ec8b53", null ],
+    [ "anonymous_namespace{sampleiterator-tests.cc}::bit_depths", "namespaceanonymous__namespace_02sampleiterator-tests_8cc_03.html#aa69fb4a20df5ff7d8dd3b9bd3b5dd1c1", null ],
+    [ "anonymous_namespace{sampleiterator-tests.cc}::deltas", "namespaceanonymous__namespace_02sampleiterator-tests_8cc_03.html#a437d26ece966bc7a8ba58cdaf7674e67", null ],
     [ "expected", "sampleiterator-tests_8cc.html#a0fc54a060009b162908819311ed47c30", null ],
-    [ "initial_offsets", "sampleiterator-tests_8cc.html#aa7b9d1b6540dbb5b682005cb742562ae", null ],
+    [ "anonymous_namespace{sampleiterator-tests.cc}::initial_offsets", "namespaceanonymous__namespace_02sampleiterator-tests_8cc_03.html#aa7b9d1b6540dbb5b682005cb742562ae", null ],
     [ "it", "sampleiterator-tests_8cc.html#a53894e91bcfe1e36f402333502cbcfc2", null ],
     [ "mask", "sampleiterator-tests_8cc.html#af8d3c430a6b0df870e68904316c06101", null ],
     [ "out", "sampleiterator-tests_8cc.html#ac96fad5f67f5c291ac830dea7a8732a8", null ],
     [ "output", "sampleiterator-tests_8cc.html#a5d0785bb2feab5228fc445f0f5bf3719", null ],
     [ "result", "sampleiterator-tests_8cc.html#a937d4dd628a8858b443a399410d2600b", null ],
     [ "start", "sampleiterator-tests_8cc.html#a7a3cea2e816e69389742543574d72526", null ],
-    [ "testData", "sampleiterator-tests_8cc.html#a8f9ecb9b9edcd3f6d2b5865d6c1b8ab6", null ]
+    [ "anonymous_namespace{sampleiterator-tests.cc}::testData", "namespaceanonymous__namespace_02sampleiterator-tests_8cc_03.html#a8f9ecb9b9edcd3f6d2b5865d6c1b8ab6", null ]
 ];

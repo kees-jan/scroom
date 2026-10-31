@@ -1,30 +1,30 @@
 <map id="libs/tiled&#45;bitmap/tools/measure&#45;load&#45;performance.cc" name="libs/tiled&#45;bitmap/tools/measure&#45;load&#45;performance.cc">
-<area shape="rect" id="Node000001" title=" " alt="" coords="280,5,503,45"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,101,71,126"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="283,48,186,69,84,96,77,98,76,93,83,91,184,63,282,43"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="95,101,154,126"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="320,48,245,69,167,96,162,98,160,93,165,91,244,64,318,43"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="179,101,268,126"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="356,48,259,97,257,92,353,43"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="292,101,368,126"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="380,47,348,91,344,88,376,44"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="392,101,516,126"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="407,44,439,88,435,91,403,47"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="514,181,594,207"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="457,43,496,63,529,92,541,110,548,129,556,167,550,168,543,131,536,112,525,95,493,67,455,48"/>
-<area shape="rect" id="Node000008" href="$measure-framerate-callbacks_8hh.html" title=" " alt="" coords="591,101,826,126"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="462,43,654,95,653,100,460,48"/>
-<area shape="rect" id="Node000011" href="$measure-load-performance-tests_8hh.html" title=" " alt="" coords="853,93,1053,133"/>
-<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="503,40,838,91,840,91,839,96,838,96,503,46"/>
-<area shape="poly" id="edge10_Node000008_Node000007" title=" " alt="" coords="687,129,590,177,588,173,685,124"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="619,181,681,207"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="702,128,669,172,665,169,698,125"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="705,181,848,207"/>
-<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="721,124,760,169,756,173,717,128"/>
-<area shape="rect" id="Node000012" href="$semaphore_8hh.html" title=" " alt="" coords="872,181,1039,207"/>
-<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="956,133,957,167,952,167,951,134"/>
-<area shape="rect" id="Node000013" title=" " alt="" coords="785,255,952,295"/>
-<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="944,209,902,247,898,243,941,205"/>
-<area shape="rect" id="Node000014" title=" " alt="" coords="976,262,1108,287"/>
-<area shape="poly" id="edge14_Node000012_Node000014" title=" " alt="" coords="970,205,1021,251,1017,254,966,209"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="276,5,498,50"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,106,70,134"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="274,50,181,72,82,101,78,102,74,98,81,95,180,67,278,46"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="94,106,152,134"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="304,52,237,74,165,100,162,102,159,97,163,96,235,69,308,49"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="176,106,264,134"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="345,52,259,101,256,97,349,49"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="288,106,363,134"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="374,49,345,95,341,92,370,52"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="388,106,511,134"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="402,48,434,94,429,93,401,53"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="508,191,588,218"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="457,48,494,68,525,96,536,115,544,135,550,176,545,174,539,137,531,117,521,100,491,72,456,53"/>
+<area shape="rect" id="Node000008" href="$measure-framerate-callbacks_8hh.html" title=" " alt="" coords="586,106,820,134"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="463,48,645,101,640,102,462,53"/>
+<area shape="rect" id="Node000011" href="$measure-load-performance-tests_8hh.html" title=" " alt="" coords="847,98,1046,143"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="498,43,834,97,829,99,498,48"/>
+<area shape="poly" id="edge10_Node000008_Node000007" title=" " alt="" coords="681,134,588,185,586,180,675,136"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="612,191,674,218"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="695,133,663,180,660,176,691,136"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="698,191,841,218"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="715,132,752,180,747,178,713,137"/>
+<area shape="rect" id="Node000012" href="$semaphore_8hh.html" title=" " alt="" coords="865,191,1031,218"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="949,141,950,177,946,173,945,145"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="778,266,945,311"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="937,218,897,258,894,253,932,220"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="969,275,1100,302"/>
+<area shape="poly" id="edge14_Node000012_Node000014" title=" " alt="" coords="963,216,1013,265,1008,263,961,221"/>
 </map>

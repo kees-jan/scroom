@@ -1,5 +1,8 @@
 <map id="createTiledBitmap" name="createTiledBitmap">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,148,31"/>
-<area shape="rect" id="Node000002" href="$classTiledBitmap.html#aac0fd55f26ab59b362f0c64d27a9e139" title=" " alt="" coords="196,5,347,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,15,182,15,182,21,148,21"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,147,57"/>
+<area shape="rect" id="Node000002" href="$classTiledBitmap.html#aac0fd55f26ab59b362f0c64d27a9e139" title=" " alt="" coords="195,29,344,57"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,41,182,43,177,43,147,46"/>
+<area shape="rect" id="Node000003" href="$classTiledBitmap.html#ac362c97e106dd9a7099c553783681767" title=" " alt="" coords="392,29,579,57"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="344,41,379,43,373,43,344,46"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="448,28,442,20,447,11,462,5,486,3,511,5,526,14,521,14,510,10,486,8,463,10,451,15,448,20,453,30"/>
 </map>

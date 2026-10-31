@@ -1,7 +1,18 @@
 <map id="Scroom::Utils::roundOutward" name="Scroom::Utils::roundOutward">
-<area shape="rect" id="Node000001" title=" " alt="" coords="263,35,472,60"/>
-<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a72ac5080c6ef925d23e9d737f118ba2d" title=" " alt="" coords="5,5,215,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="249,37,215,33,215,27,249,31"/>
-<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1TweakPixelSelection.html#a592fd83aa7848be1ab0e421eae5500eb" title=" " alt="" coords="15,55,205,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="249,63,206,68,205,62,249,58"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="796,176,1005,203"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#ab646437d7ff4c75d3768ef061b0d09d7" title=" " alt="" coords="510,5,724,67"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="869,165,815,124,747,81,724,70,724,65,750,76,818,120,874,165"/>
+<area shape="rect" id="Node000005" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#abd0d9d9471b443af7201643dcf101a67" title=" " alt="" coords="506,91,729,152"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="822,172,729,151,730,146,828,171"/>
+<area shape="rect" id="Node000006" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a142fbdb6f783a07b6a90b3da46cc17f4" title=" " alt="" coords="218,121,438,200"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="778,185,439,168,438,163,783,182"/>
+<area shape="rect" id="Node000007" href="$namespaceScroom_1_1Utils.html#a72ac5080c6ef925d23e9d737f118ba2d" title=" " alt="" coords="513,226,721,254"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="807,206,699,228,698,223,802,207"/>
+<area shape="rect" id="Node000008" href="$classScroom_1_1TiledBitmap_1_1ExpandSelectionsToPixelBoundaries.html#aafeed3b0cbbce15aff6a655753b6cc35" title=" " alt="" coords="486,279,748,340"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="863,210,749,268,717,281,716,275,747,263,858,212"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a32c43a2dbc5152b6cdfa3bfe04c57afb" title=" " alt="" coords="222,5,434,67"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="492,37,435,39,434,34,497,35"/>
+<area shape="rect" id="Node000004" href="$classTiledBitmap.html#a6b40bb63aa12b68f9678bb45b765b8e1" title=" " alt="" coords="5,22,170,50"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="204,38,171,39,169,34,208,35"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="487,139,439,148,438,143,493,138"/>
 </map>

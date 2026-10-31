@@ -1,6 +1,16 @@
 <map id="Scroom::Utils::floored_divide_by" name="Scroom::Utils::floored_divide_by">
-<area shape="rect" id="Node000001" title=" " alt="" coords="216,29,379,69"/>
-<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="333,18,320,11,297,8,277,10,265,15,261,21,263,28,258,30,255,20,262,10,276,5,297,3,322,6,335,13"/>
-<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a61c6c4659d89099fb82db9e5b90f0462" title=" " alt="" coords="5,29,168,69"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="202,52,168,52,168,47,202,47"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="696,99,858,144"/>
+<area shape="poly" id="edge7_Node000001_Node000001" title=" " alt="" coords="815,84,802,80,777,78,755,80,741,85,735,91,736,100,732,97,730,89,738,80,753,74,777,73,803,75,820,84"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a75924397bff2620d90faf5f424a16c34" title=" " alt="" coords="425,5,648,67"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="695,94,625,70,626,65,701,94"/>
+<area shape="rect" id="Node000005" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a5335fed2614da9940dd377378b84bd25" title=" " alt="" coords="425,91,648,152"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="678,122,649,124,649,119,683,121"/>
+<area shape="rect" id="Node000007" href="$namespaceScroom_1_1Utils.html#a61c6c4659d89099fb82db9e5b90f0462" title=" " alt="" coords="456,176,617,221"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="697,149,649,167,612,179,611,173,648,162,691,150"/>
+<area shape="rect" id="Node000003" href="$classTiledBitmap.html#a7d2051718f5b6f50e2804177d553bce8" title=" " alt="" coords="218,22,377,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="407,37,378,39,377,34,412,36"/>
+<area shape="rect" id="Node000004" href="$classTiledBitmap.html#a6b40bb63aa12b68f9678bb45b765b8e1" title=" " alt="" coords="5,22,170,50"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="199,37,171,39,169,34,204,35"/>
+<area shape="rect" id="Node000006" href="$classTiledBitmap.html#a98c2d60fc0736a77ab18aeeb461a1da8" title=" " alt="" coords="221,108,374,135"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="407,122,375,124,374,119,412,121"/>
 </map>

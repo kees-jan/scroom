@@ -1,7 +1,7 @@
 <map id="Scroom::MemoryBlocks::getBlockFactoryInterface" name="Scroom::MemoryBlocks::getBlockFactoryInterface">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,197,53"/>
-<area shape="rect" id="Node000002" href="$classScroom_1_1MemoryBlocks_1_1Detail_1_1SwapBasedBlockAllocatorFactory.html#a05fb8d669b0cbf2cfacb0e5fd3c609a4" title=" " alt="" coords="245,5,492,60"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="197,30,232,30,232,35,197,35"/>
-<area shape="rect" id="Node000003" href="$classScroom_1_1MemoryBlocks_1_1Detail_1_1SwapBasedBlockAllocatorFactory.html#a8f524586f109d989a7bca28e28ef38f8" title=" " alt="" coords="540,5,832,60"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="492,30,526,30,526,35,492,35"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,14,197,58"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1MemoryBlocks_1_1Detail_1_1SwapBasedBlockAllocatorFactory.html#a05fb8d669b0cbf2cfacb0e5fd3c609a4" title=" " alt="" coords="245,5,490,67"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="197,34,232,36,226,36,197,39"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1MemoryBlocks_1_1Detail_1_1SwapBasedBlockAllocatorFactory.html#a8f524586f109d989a7bca28e28ef38f8" title=" " alt="" coords="538,5,829,67"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="490,34,525,36,520,36,490,39"/>
 </map>

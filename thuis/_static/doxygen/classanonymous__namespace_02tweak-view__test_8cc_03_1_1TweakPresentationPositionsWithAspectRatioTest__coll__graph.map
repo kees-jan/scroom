@@ -1,0 +1,19 @@
+<map id="anonymous_namespace{tweak&#45;view_test.cc}::TweakPresentationPositionsWithAspectRatioTest" name="anonymous_namespace{tweak&#45;view_test.cc}::TweakPresentationPositionsWithAspectRatioTest">
+<area shape="rect" id="Node000001" title=" " alt="" coords="393,530,594,653"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="172,264,262,336"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="228,349,247,404,260,431,277,455,302,482,332,506,396,547,390,547,329,510,299,486,273,458,255,433,242,406,226,354"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Point.html" title=" " alt="" coords="287,144,425,457"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="375,454,397,504,404,517,399,516,392,507,373,459"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,5,160,95"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="172,92,230,113,253,123,276,142,290,157,284,157,273,146,250,128,228,118,174,97"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="184,5,331,95"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="280,106,297,144,292,144,280,111"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="355,5,554,95"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="433,106,420,146,415,143,431,111"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="579,5,768,95"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="563,96,496,115,468,126,439,146,427,158,423,154,436,142,466,121,494,110,567,93"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="450,247,686,354"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="557,352,515,515,511,512,553,355"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="710,256,960,345"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="805,343,757,402,700,459,656,494,609,526,607,521,653,490,697,455,754,398,800,346"/>
+</map>

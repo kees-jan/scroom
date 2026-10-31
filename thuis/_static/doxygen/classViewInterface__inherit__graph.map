@@ -1,17 +1,17 @@
 <map id="ViewInterface" name="ViewInterface">
-<area shape="rect" id="Node000001" title=" " alt="" coords="537,219,711,384"/>
-<area shape="rect" id="Node000003" href="$classChildView.html" title=" " alt="" coords="5,547,179,772"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="524,311,444,324,357,346,312,362,270,382,229,406,192,434,169,458,150,486,122,548,117,545,146,484,165,455,189,430,226,401,267,377,310,357,355,341,443,318,523,306"/>
-<area shape="rect" id="Node000004" href="$classDetail_1_1ViewData.html" title=" " alt="" coords="203,527,376,792"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="526,342,454,381,420,405,390,434,357,478,332,527,327,525,353,475,386,430,417,401,451,376,523,337"/>
-<area shape="rect" id="Node000005" href="$classDummyView.html" title=" " alt="" coords="400,487,613,832"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="595,398,566,487,561,486,590,396"/>
-<area shape="rect" id="Node000006" href="$classView.html" title=" " alt="" coords="638,432,847,887"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="658,396,670,431,665,433,653,398"/>
-<area shape="rect" id="Node000007" href="$classViewInterfaceStub.html" title=" " alt="" coords="872,557,1045,762"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="725,337,797,376,831,401,862,430,885,459,904,490,933,555,928,557,899,493,880,462,858,434,828,405,794,381,722,342"/>
-<area shape="rect" id="Node000008" href="$classanonymous__namespace_02determine-size-test_8cc_03_1_1ViewInterfaceDummy.html" title=" " alt="" coords="1069,542,1251,777"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="725,307,805,319,893,342,937,358,981,378,1022,402,1059,430,1082,454,1102,481,1131,541,1127,543,1097,484,1078,457,1056,434,1019,406,978,382,935,363,891,347,804,324,724,312"/>
-<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="570,5,678,171"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="627,184,627,218,621,218,621,184"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="533,237,705,421"/>
+<area shape="rect" id="Node000003" href="$classChildView.html" title=" " alt="" coords="5,598,177,849"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="516,340,440,355,352,379,308,396,266,417,226,442,191,471,166,499,146,531,118,599,113,597,142,528,162,496,187,467,223,438,263,412,306,391,351,374,438,350,521,337"/>
+<area shape="rect" id="Node000004" href="$classDetail_1_1ViewData.html" title=" " alt="" coords="201,576,373,871"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="518,373,451,415,417,441,388,471,354,521,328,577,323,575,349,519,384,468,414,437,448,411,522,369"/>
+<area shape="rect" id="Node000005" href="$classDummyView.html" title=" " alt="" coords="398,531,609,916"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="590,433,562,532,558,530,587,438"/>
+<area shape="rect" id="Node000006" href="$classView.html" title=" " alt="" coords="633,469,841,978"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="652,433,663,470,658,469,650,438"/>
+<area shape="rect" id="Node000007" href="$classViewInterfaceStub.html" title=" " alt="" coords="865,609,1037,838"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="718,369,791,411,825,437,855,468,878,500,898,536,928,611,922,609,893,538,874,503,851,471,821,441,788,415,718,374"/>
+<area shape="rect" id="Node000008" href="$classanonymous__namespace_02determine-size-test_8cc_03_1_1ViewInterfaceDummy.html" title=" " alt="" coords="1062,592,1241,855"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="719,336,800,350,888,375,932,392,975,413,1015,438,1052,467,1076,494,1096,525,1126,593,1121,591,1092,528,1072,498,1048,471,1012,442,972,417,930,397,886,380,799,355,721,341"/>
+<area shape="rect" id="Node000002" href="$classInterface.html" title=" " alt="" coords="566,5,672,189"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="620,202,622,238,617,237,618,207"/>
 </map>

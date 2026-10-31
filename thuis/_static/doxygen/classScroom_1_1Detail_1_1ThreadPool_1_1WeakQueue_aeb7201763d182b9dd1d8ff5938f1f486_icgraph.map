@@ -1,5 +1,14 @@
 <map id="Scroom::Detail::ThreadPool::WeakQueue::WeakQueue" name="Scroom::Detail::ThreadPool::WeakQueue::WeakQueue">
-<area shape="rect" id="Node000001" title=" " alt="" coords="252,5,451,45"/>
-<area shape="rect" id="Node000002" href="$classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#a68659e2a375ce2929295fdf3d8bccf4c" title="WeakQueue." alt="" coords="5,5,204,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="238,28,204,28,204,23,238,23"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="252,109,450,154"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#a68659e2a375ce2929295fdf3d8bccf4c" title="WeakQueue." alt="" coords="5,5,204,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="265,103,203,77,143,53,142,48,205,72,270,101"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#a0f710afb89229b24f633028c8ed6581d" title=" " alt="" coords="5,75,204,119"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="234,117,205,114,204,108,239,115"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#ae3521fe929ecd2be73c7a10d5f6b9170" title=" " alt="" coords="5,144,204,189"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="234,149,205,155,203,150,238,147"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#a4db047a9d1c259137a52961074325f71" title=" " alt="" coords="5,213,204,258"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="289,163,205,203,175,215,172,210,203,199,293,160"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Detail_1_1ThreadPool_1_1WeakQueue.html#a7e28f87d329bb886faf5b955c7f3dc5b" title=" " alt="" coords="5,283,204,327"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="323,165,271,221,239,249,205,273,182,285,180,280,202,268,236,244,268,217,319,167"/>
+<area shape="poly" id="edge2_Node000002_Node000001" title=" " alt="" coords="218,54,325,108,320,110,218,59"/>
 </map>

@@ -1,0 +1,19 @@
+<map id="Scroom::Bookkeeping::Token::Token" name="Scroom::Bookkeeping::Token::Token">
+<area shape="rect" id="Node000001" title=" " alt="" coords="436,138,598,182"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Bookkeeping_1_1Token.html#ad7b83dd7e8567e8a8d6e5beaa01c7ce9" title=" " alt="" coords="223,60,386,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="436,132,368,108,368,103,442,131"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Bookkeeping_1_1Token.html#a7b71440e7f51ff59f90d034a7170dac6" title=" " alt="" coords="223,215,386,260"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="442,188,369,217,367,212,437,189"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Bookkeeping_1_1Detail_1_1TokenAddition.html#a81093f6665f51f277623386fcece68ea" title=" " alt="" coords="221,129,388,191"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="418,161,389,163,388,158,423,160"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Bookkeeping_1_1Detail_1_1TokenAddition.html#a115cbcf8737a5ddbe20bfc0ceae8d06f" title=" " alt="" coords="5,5,173,67"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="205,63,174,57,173,52,210,61"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Bookkeeping_1_1Detail_1_1TokenAddition.html#a237d223bf00698018a963aa8d5c20fa5" title=" " alt="" coords="5,91,173,152"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="205,102,175,109,172,104,210,99"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="224,121,219,120,195,100,171,81,154,70,154,65,174,77,198,96,222,115,229,121"/>
+<area shape="poly" id="edge9_Node000006_Node000004" title=" " alt="" coords="203,143,174,139,173,134,208,141"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Bookkeeping_1_1Detail_1_1TokenAddition.html#a768d5104b9ee603fd6727f360265714c" title=" " alt="" coords="5,176,173,238"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="203,183,174,191,172,186,208,180"/>
+<area shape="rect" id="Node000008" href="$classScroom_1_1Bookkeeping_1_1Detail_1_1TokenAddition.html#a1b5b0605d0baa2e318837d7d3cf716a6" title=" " alt="" coords="5,261,173,323"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="228,198,222,205,199,228,174,252,157,263,154,259,171,247,195,224,219,201,223,201"/>
+</map>

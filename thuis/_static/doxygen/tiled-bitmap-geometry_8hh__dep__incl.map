@@ -1,13 +1,13 @@
 <map id="libs/tiled&#45;bitmap/inc/scroom/tiled&#45;bitmap&#45;geometry.hh" name="libs/tiled&#45;bitmap/inc/scroom/tiled&#45;bitmap&#45;geometry.hh">
-<area shape="rect" id="Node000001" title=" " alt="" coords="394,5,553,60"/>
-<area shape="rect" id="Node000002" href="$layer_8cc.html" title=" " alt="" coords="5,115,157,155"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="381,58,170,111,144,118,143,113,169,105,380,53"/>
-<area shape="rect" id="Node000003" href="$tiled-bitmap-geometry_8cc.html" title=" " alt="" coords="182,115,373,155"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="411,69,316,117,313,113,409,64"/>
-<area shape="rect" id="Node000004" href="$tiled-bitmap_8cc.html" title=" " alt="" coords="397,115,549,155"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="476,74,476,115,471,115,471,74"/>
-<area shape="rect" id="Node000005" href="$tiledbitmappresentation_8cc.html" title=" " alt="" coords="574,115,775,155"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="539,64,638,113,635,117,537,68"/>
-<area shape="rect" id="Node000006" href="$tiled-bitmap-geometry-tests_8cc.html" title=" " alt="" coords="799,108,974,163"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="567,53,789,105,800,108,798,113,787,111,565,58"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="392,5,549,67"/>
+<area shape="rect" id="Node000002" href="$layer_8cc.html" title=" " alt="" coords="5,124,157,168"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="377,62,170,118,145,125,143,120,168,112,376,57"/>
+<area shape="rect" id="Node000003" href="$tiled-bitmap-geometry_8cc.html" title=" " alt="" coords="181,124,370,168"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="405,74,316,126,314,121,400,76"/>
+<area shape="rect" id="Node000004" href="$tiled-bitmap_8cc.html" title=" " alt="" coords="395,124,546,168"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="472,81,472,125,468,121,468,84"/>
+<area shape="rect" id="Node000005" href="$tiledbitmappresentation_8cc.html" title=" " alt="" coords="570,124,770,168"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="540,72,633,123,628,123,539,77"/>
+<area shape="rect" id="Node000006" href="$tiled-bitmap-geometry-tests_8cc.html" title=" " alt="" coords="794,115,968,177"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="565,57,783,112,797,118,791,118,782,118,564,62"/>
 </map>

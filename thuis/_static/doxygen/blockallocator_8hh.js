@@ -3,8 +3,8 @@ var blockallocator_8hh =
     [ "Scroom::MemoryBlocks::Page", "classScroom_1_1MemoryBlocks_1_1Page.html", "classScroom_1_1MemoryBlocks_1_1Page" ],
     [ "Scroom::MemoryBlocks::BlockInterface", "classScroom_1_1MemoryBlocks_1_1BlockInterface.html", "classScroom_1_1MemoryBlocks_1_1BlockInterface" ],
     [ "Scroom::MemoryBlocks::BlockFactoryInterface", "classScroom_1_1MemoryBlocks_1_1BlockFactoryInterface.html", "classScroom_1_1MemoryBlocks_1_1BlockFactoryInterface" ],
-    [ "PageList", "blockallocator_8hh.html#a1e99f7c5b462e84d8d2e4abdb4c0a2c4", null ],
-    [ "Ptr", "blockallocator_8hh.html#adea1c47b8e23abbfd3a1ac8f9648ae70", null ],
-    [ "WeakPtr", "blockallocator_8hh.html#a72f7bee76a0a83c657d03b961774733a", null ],
-    [ "getBlockFactoryInterface", "blockallocator_8hh.html#a69b514b38d03a4a952d9d7fec8da1ec1", null ]
+    [ "Scroom::MemoryBlocks::PageList", "namespaceScroom_1_1MemoryBlocks.html#ac50f25f16b9e918cd4c34edfd0928911", null ],
+    [ "Scroom::MemoryBlocks::RawPageData::Ptr", "namespaceScroom_1_1MemoryBlocks_1_1RawPageData.html#a1745bf4c287f5aaa6db962b15d037c27", null ],
+    [ "Scroom::MemoryBlocks::RawPageData::WeakPtr", "namespaceScroom_1_1MemoryBlocks_1_1RawPageData.html#a2370fc6791c02481a980b72e8cea668a", null ],
+    [ "Scroom::MemoryBlocks::getBlockFactoryInterface", "namespaceScroom_1_1MemoryBlocks.html#a69b514b38d03a4a952d9d7fec8da1ec1", null ]
 ];

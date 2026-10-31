@@ -1,0 +1,21 @@
+<map id="Scroom::TiledBitmap::Geometry::computePyramidSizes" name="Scroom::TiledBitmap::Geometry::computePyramidSizes">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,57,218,118"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#ab646437d7ff4c75d3768ef061b0d09d7" title=" " alt="" coords="266,57,480,118"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,85,253,87,247,88,218,90"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Rectangle.html#a63d218d52a6e28b5f3af118feb624019" title=" " alt="" coords="542,5,723,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="480,60,524,53,529,52,481,65"/>
+<area shape="rect" id="Node000004" href="$namespaceScroom_1_1Utils.html#aafbf8baa587d11858954f89021f9037b" title=" " alt="" coords="528,74,736,102"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="480,85,515,87,510,88,481,90"/>
+<area shape="rect" id="Node000010" href="$classRectangle.html#a925a9d6a8ef993a041f6918902d49967" title=" " alt="" coords="578,126,686,154"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="481,107,566,126,561,126,480,112"/>
+<area shape="rect" id="Node000005" href="$namespaceScroom_1_1Utils.html#ae81b515fbc80d3efdded8c600b5956e6" title=" " alt="" coords="789,5,981,50"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="693,71,772,54,777,53,694,76"/>
+<area shape="rect" id="Node000006" href="$rounding_8hh.html#aa1169552e0a4044595bc67a5b9361694" title=" " alt="" coords="784,74,986,102"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="737,85,772,88,766,88,737,90"/>
+<area shape="rect" id="Node000008" href="$rounding_8hh.html#a1b27314f9dc323dff1e495e265c88eca" title=" " alt="" coords="794,126,976,154"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="703,99,802,122,796,122,703,105"/>
+<area shape="rect" id="Node000007" href="$rounding_8hh.html#a08d4c4fef3e0764e999f269b7773286c" title=" " alt="" coords="1034,74,1170,102"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="986,85,1021,88,1016,88,986,90"/>
+<area shape="rect" id="Node000009" href="$rounding_8hh.html#a3705c07b90d6f60753b35c4aea0082b5" title=" " alt="" coords="1037,126,1167,154"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="977,137,1024,140,1019,140,977,142"/>
+</map>

@@ -35,11 +35,7 @@ var namespaces_dup =
     [ "anonymous_namespace{measure-framerate-tests.cc}", "namespaceanonymous__namespace_02measure-framerate-tests_8cc_03.html", [
       [ "logger", "namespaceanonymous__namespace_02measure-framerate-tests_8cc_03.html#a714dc8cbe8793eff2bad2272775f4c9e", null ]
     ] ],
-    [ "anonymous_namespace{pnmsource.cc}", "namespaceanonymous__namespace_02pnmsource_8cc_03.html", [
-      [ "approx", "namespaceanonymous__namespace_02pnmsource_8cc_03.html#aee4d3dc24c5fbd680740ed677c030cae", null ],
-      [ "consumeDataBoundary", "namespaceanonymous__namespace_02pnmsource_8cc_03.html#a0a5b6183200bcda12272059baa79c129", null ],
-      [ "skipComments", "namespaceanonymous__namespace_02pnmsource_8cc_03.html#afb616996f3eb9765077b0fcc8747c544", null ]
-    ] ],
+    [ "anonymous_namespace{pnmsource.cc}", "namespaceanonymous__namespace_02pnmsource_8cc_03.html", "namespaceanonymous__namespace_02pnmsource_8cc_03" ],
     [ "anonymous_namespace{progressbarmanager.cc}", "namespaceanonymous__namespace_02progressbarmanager_8cc_03.html", "namespaceanonymous__namespace_02progressbarmanager_8cc_03" ],
     [ "anonymous_namespace{ringbuffer-sink-tests.cc}", "namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html", [
       [ "createLogger", "namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html#a15a91985361401f76bc8ee0186a5470c", null ],
@@ -57,7 +53,8 @@ var namespaces_dup =
     ] ],
     [ "anonymous_namespace{threadpool.cc}", "namespaceanonymous__namespace_02threadpool_8cc_03.html", "namespaceanonymous__namespace_02threadpool_8cc_03" ],
     [ "anonymous_namespace{tiffsource.cc}", "namespaceanonymous__namespace_02tiffsource_8cc_03.html", [
-      [ "TagInfo", "namespaceanonymous__namespace_02tiffsource_8cc_03.html#a96015f6d1cd3f99d868d00b658fc6702", null ],
+      [ "TagInfo", "namespaceanonymous__namespace_02tiffsource_8cc_03.html#aea37e37d6504cd4c74f91742dc590fee", null ],
+      [ "TIFFPtr", "namespaceanonymous__namespace_02tiffsource_8cc_03.html#ae66c321d308d5c350f1b3de25b12a580", null ],
       [ "approx", "namespaceanonymous__namespace_02tiffsource_8cc_03.html#a21d7b2d4f86f5c8ebfd822f27f5f9417", null ],
       [ "TIFFCloseUnlessNull", "namespaceanonymous__namespace_02tiffsource_8cc_03.html#a7f913135a0ac4c36686a040acd700495", null ],
       [ "TIFFGetFieldChecked", "namespaceanonymous__namespace_02tiffsource_8cc_03.html#a62e82fb965088d37460d098c1084fca1", null ],
@@ -68,6 +65,7 @@ var namespaces_dup =
     [ "anonymous_namespace{transparentoverlayviewinfo.cc}", "namespaceanonymous__namespace_02transparentoverlayviewinfo_8cc_03.html", [
       [ "setToggleButtonColor", "namespaceanonymous__namespace_02transparentoverlayviewinfo_8cc_03.html#a706649399a1cf1938cfbfed014fd3917", null ]
     ] ],
+    [ "anonymous_namespace{tweak-view_test.cc}", "namespaceanonymous__namespace_02tweak-view__test_8cc_03.html", "namespaceanonymous__namespace_02tweak-view__test_8cc_03" ],
     [ "anonymous_namespace{view.cc}", "namespaceanonymous__namespace_02view_8cc_03.html", [
       [ "eventToPoint", "namespaceanonymous__namespace_02view_8cc_03.html#ac2ade1a4095158be9e06ab085168e2ad", null ],
       [ "eventToPoint", "namespaceanonymous__namespace_02view_8cc_03.html#a1ab23fe43b4b1aaecbd16e2d087776ae", null ],

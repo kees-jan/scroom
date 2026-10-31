@@ -10,5 +10,5 @@ var cairo_helpers_8hh =
     [ "setClip", "cairo-helpers_8hh.html#a00f6a1bea87bb5106913e515b35f4b99", null ],
     [ "setClip", "cairo-helpers_8hh.html#a7eaa96a970e5ff603afbea0a3a0bf761", null ],
     [ "traceRectangleContour", "cairo-helpers_8hh.html#a5d8088f5039ed37d44ccd366998c03b8", null ],
-    [ "OUT_OF_BOUNDS", "cairo-helpers_8hh.html#a2229f384a154a2dedc09dc7b2b7896dc", null ]
+    [ "Colors::OUT_OF_BOUNDS", "namespaceColors.html#a2229f384a154a2dedc09dc7b2b7896dc", null ]
 ];

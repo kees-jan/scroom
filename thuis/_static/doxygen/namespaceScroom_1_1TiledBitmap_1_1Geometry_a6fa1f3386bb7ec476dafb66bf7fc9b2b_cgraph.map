@@ -1,0 +1,6 @@
+<map id="Scroom::TiledBitmap::Geometry::computeTileCount" name="Scroom::TiledBitmap::Geometry::computeTileCount">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,226,74"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#afba759cca3290fe14eb87e593774fb04" title=" " alt="" coords="274,29,429,74"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="226,49,261,52,255,52,226,54"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="307,27,305,19,313,10,328,5,351,3,377,5,394,14,388,14,376,10,351,8,329,10,316,15,310,21,311,30"/>
+</map>

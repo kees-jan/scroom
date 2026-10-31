@@ -1,0 +1,7 @@
+<map id="ColormapHelper::create" name="ColormapHelper::create">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,14,182,42"/>
+<area shape="rect" id="Node000002" href="$classColormapHelper.html#ae541030ada684dfa7e0a216f1e1a4835" title=" " alt="" coords="230,5,428,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="182,25,217,27,211,28,182,30"/>
+<area shape="rect" id="Node000003" href="$classColormapHelperBase.html#a63ec49692e50c732fcc4e024b1102fd1" title=" " alt="" coords="476,5,643,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="428,25,463,28,457,28,428,30"/>
+</map>

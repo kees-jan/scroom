@@ -1,5 +1,8 @@
 <map id="OperationsRgb24bpp::cache" name="OperationsRgb24bpp::cache">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,164,45"/>
-<area shape="rect" id="Node000002" href="$classScroom_1_1Bitmap_1_1BitmapSurface.html#a697961480f8888e1a149d4be54adb9e7" title=" " alt="" coords="212,5,443,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,23,198,23,198,28,165,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,163,74"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Bitmap_1_1BitmapSurface.html#a697961480f8888e1a149d4be54adb9e7" title=" " alt="" coords="211,29,440,74"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,49,198,51,192,52,163,54"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Bitmap_1_1BitmapSurface.html#a01b392735034681d7dfabc4fc2f71cfa" title=" " alt="" coords="488,29,717,74"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="440,49,475,52,470,52,440,54"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="551,27,549,19,558,10,576,5,603,3,632,5,652,14,646,14,631,10,603,8,577,10,560,15,554,21,555,30"/>
 </map>

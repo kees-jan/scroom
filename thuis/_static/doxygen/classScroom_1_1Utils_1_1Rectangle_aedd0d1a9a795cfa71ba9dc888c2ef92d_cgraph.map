@@ -1,4 +1,6 @@
 <map id="Scroom::Utils::Rectangle::moveTo" name="Scroom::Utils::Rectangle::moveTo">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,188,69"/>
-<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="62,30,60,20,66,11,78,5,97,3,118,6,130,13,127,17,116,11,97,8,79,10,69,15,65,21,67,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,187,74"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="52,28,51,19,58,10,73,5,96,3,121,5,137,14,132,14,119,10,96,8,75,10,61,15,56,21,57,29"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html#a8bafbe715dcf9dc732ea2f197b9ecba1" title=" " alt="" coords="235,29,416,74"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="187,49,222,51,217,52,187,54"/>
 </map>

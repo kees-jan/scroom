@@ -1,9 +1,0 @@
-<map id="Scroom::TiledBitmap::Geometry::tileLocalIntersection" name="Scroom::TiledBitmap::Geometry::tileLocalIntersection">
-<area shape="rect" id="Node000001" title=" " alt="" coords="477,60,712,100"/>
-<area shape="rect" id="Node000002" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a142fbdb6f783a07b6a90b3da46cc17f4" title=" " alt="" coords="208,5,429,75"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="463,64,429,59,430,53,464,58"/>
-<area shape="rect" id="Node000003" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a3b5184e61e57e63a4bfff8b9dac609b5" title=" " alt="" coords="221,99,416,139"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="464,101,416,108,416,102,463,96"/>
-<area shape="rect" id="Node000004" href="$classTiledBitmap.html#a98c2d60fc0736a77ab18aeeb461a1da8" title=" " alt="" coords="5,106,160,131"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="208,121,160,121,160,116,208,116"/>
-</map>

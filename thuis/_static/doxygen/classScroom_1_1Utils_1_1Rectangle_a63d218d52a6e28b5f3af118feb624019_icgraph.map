@@ -1,19 +1,27 @@
 <map id="Scroom::Utils::Rectangle::isEmpty" name="Scroom::Utils::Rectangle::isEmpty">
-<area shape="rect" id="Node000001" title=" " alt="" coords="616,156,799,196"/>
-<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html#a2cdd80f81dcf15c6d223b7b16f8b3401" title=" " alt="" coords="343,5,525,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="678,148,629,102,599,79,567,60,525,43,527,38,569,55,602,75,632,98,681,144"/>
-<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Rectangle.html#a770dc77284af75f2bb9eb41e2016cdd2" title=" " alt="" coords="343,69,525,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="644,153,567,125,521,112,522,107,569,120,646,148"/>
-<area shape="rect" id="Node000004" href="$cairo-helpers_8cc.html#a72b76dcfe2a11213e72c72dee13488d6" title=" " alt="" coords="300,134,568,159"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="602,167,552,162,553,157,603,162"/>
-<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Rectangle.html#a3bfd9e7186a657fa13e9a034606e4214" title=" " alt="" coords="343,184,525,224"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="603,189,526,197,525,192,602,184"/>
-<area shape="rect" id="Node000008" href="$classScroom_1_1Utils_1_1Rectangle.html#a67601b0eaa9319fe17dfb17392a78b19" title=" " alt="" coords="343,248,525,288"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="654,204,569,239,526,251,525,246,567,233,652,199"/>
-<area shape="rect" id="Node000009" href="$classScroom_1_1Utils_1_1Rectangle.html#ade8a48db78cec3d62e905d70c2d9b413" title=" " alt="" coords="343,312,525,352"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="682,208,633,257,603,282,569,302,527,319,525,314,567,298,599,277,630,253,679,204"/>
-<area shape="rect" id="Node000005" href="$cairo-helpers_8cc.html#a27002d3ab3abd3af027354f53c85bec7" title=" " alt="" coords="5,88,252,128"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="319,135,252,126,253,121,320,130"/>
-<area shape="rect" id="Node000006" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a4c4db94fd7f968183ee7ab0aab24e35d" title=" " alt="" coords="18,152,239,221"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="323,164,240,175,239,170,323,159"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="757,280,939,325"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html#a2cdd80f81dcf15c6d223b7b16f8b3401" title=" " alt="" coords="507,5,688,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="833,264,815,220,788,166,753,111,731,86,708,64,689,52,689,47,711,60,735,83,757,108,793,163,820,218,838,266"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Rectangle.html#a770dc77284af75f2bb9eb41e2016cdd2" title=" " alt="" coords="507,75,688,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="824,266,776,199,744,164,708,134,689,123,688,117,711,129,748,160,781,196,829,267"/>
+<area shape="rect" id="Node000004" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#ab646437d7ff4c75d3768ef061b0d09d7" title=" " alt="" coords="490,144,705,205"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="799,271,708,219,685,208,685,203,711,215,804,271"/>
+<area shape="rect" id="Node000007" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a5335fed2614da9940dd377378b84bd25" title=" " alt="" coords="486,229,709,290"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="739,285,710,281,709,276,745,284"/>
+<area shape="rect" id="Node000009" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#abd0d9d9471b443af7201643dcf101a67" title=" " alt="" coords="486,314,709,376"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="739,321,710,329,709,323,745,320"/>
+<area shape="rect" id="Node000011" href="$classScroom_1_1Utils_1_1Rectangle.html#a3bfd9e7186a657fa13e9a034606e4214" title=" " alt="" coords="507,400,688,445"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="805,333,760,364,710,390,681,402,679,397,708,385,757,359,800,335"/>
+<area shape="rect" id="Node000012" href="$classScroom_1_1Utils_1_1Rectangle.html#a67601b0eaa9319fe17dfb17392a78b19" title=" " alt="" coords="507,469,688,514"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="826,336,778,401,746,432,711,459,688,471,686,466,708,455,742,428,774,397,821,339"/>
+<area shape="rect" id="Node000013" href="$classScroom_1_1Utils_1_1Rectangle.html#ade8a48db78cec3d62e905d70c2d9b413" title=" " alt="" coords="507,539,688,583"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="836,338,817,384,790,434,755,485,711,528,689,542,688,537,708,524,751,481,786,431,813,381,832,341"/>
+<area shape="rect" id="Node000005" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a32c43a2dbc5152b6cdfa3bfe04c57afb" title=" " alt="" coords="222,144,434,205"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="472,175,435,177,433,172,477,173"/>
+<area shape="rect" id="Node000006" href="$classTiledBitmap.html#a6b40bb63aa12b68f9678bb45b765b8e1" title=" " alt="" coords="5,160,170,188"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="204,176,171,177,169,172,208,173"/>
+<area shape="rect" id="Node000008" href="$classTiledBitmap.html#a98c2d60fc0736a77ab18aeeb461a1da8" title=" " alt="" coords="251,246,404,274"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="468,261,406,262,404,257,472,259"/>
+<area shape="rect" id="Node000010" href="$classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a142fbdb6f783a07b6a90b3da46cc17f4" title=" " alt="" coords="218,306,438,384"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="467,346,439,348,438,342,473,344"/>
 </map>

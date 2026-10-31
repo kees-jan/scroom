@@ -1,6 +1,12 @@
 <map id="Scroom::Utils::ceiled_divide_by" name="Scroom::Utils::ceiled_divide_by">
-<area shape="rect" id="Node000001" title=" " alt="" coords="209,29,365,69"/>
-<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="321,18,309,11,287,8,268,10,256,15,252,21,254,28,249,30,247,20,253,11,267,5,287,3,311,6,324,13"/>
-<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a210dca44e9179898d6c3a32b71e97c09" title=" " alt="" coords="5,29,161,69"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="196,52,161,52,161,47,196,47"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="478,75,633,119"/>
+<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="593,59,580,56,556,53,533,55,520,60,514,66,515,76,511,73,509,65,517,56,532,50,556,48,581,51,598,60"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#a210dca44e9179898d6c3a32b71e97c09" title=" " alt="" coords="241,5,396,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="461,70,396,53,396,48,466,70"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a6fa1f3386bb7ec476dafb66bf7fc9b2b" title=" " alt="" coords="208,75,428,119"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="460,97,429,100,429,94,465,97"/>
+<area shape="rect" id="Node000004" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a5335fed2614da9940dd377378b84bd25" title=" " alt="" coords="207,144,430,205"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="473,124,416,145,415,140,468,125"/>
+<area shape="rect" id="Node000005" href="$classTiledBitmap.html#a98c2d60fc0736a77ab18aeeb461a1da8" title=" " alt="" coords="5,160,159,188"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="188,175,159,177,159,172,194,174"/>
 </map>

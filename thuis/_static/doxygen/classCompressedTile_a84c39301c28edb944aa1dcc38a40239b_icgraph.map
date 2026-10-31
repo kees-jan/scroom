@@ -1,5 +1,8 @@
 <map id="CompressedTile::getTileSync" name="CompressedTile::getTileSync">
-<area shape="rect" id="Node000001" title=" " alt="" coords="244,5,455,31"/>
-<area shape="rect" id="Node000002" href="$classCompressedTile.html#a9c6389557145d0df0b1996dc203089da" title=" " alt="" coords="5,5,196,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="230,21,196,21,196,15,230,15"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="465,31,675,58"/>
+<area shape="rect" id="Node000002" href="$classCompressedTile.html#a9c6389557145d0df0b1996dc203089da" title=" " alt="" coords="227,5,417,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="447,32,417,32,417,26,452,32"/>
+<area shape="rect" id="Node000003" href="$classDataFetcher.html#aa47b487725b70a8a16000ed9e83ad927" title=" " alt="" coords="5,31,179,58"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="449,47,179,47,179,42,450,42"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="208,32,179,38,179,32,214,31"/>
 </map>

@@ -1,16 +1,16 @@
 <map id="PipetteCommonOperationsCMYK" name="PipetteCommonOperationsCMYK">
-<area shape="rect" id="Node000001" title=" " alt="" coords="71,685,325,771"/>
-<area shape="rect" id="Node000002" href="$classPipetteLayerOperations.html" title=" " alt="" coords="25,512,192,577"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="133,589,180,684,175,686,128,591"/>
-<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="7,229,149,394"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="93,408,107,511,102,512,88,408"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="5,48,151,128"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="81,142,81,228,75,228,75,142"/>
-<area shape="rect" id="Node000005" href="$classInterface.html" title=" " alt="" coords="204,5,312,171"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="226,184,214,219,189,312,163,405,124,512,119,511,158,403,184,311,209,218,221,183"/>
-<area shape="rect" id="Node000007" href="$classLayerOperations.html" title=" " alt="" coords="224,219,353,404"/>
-<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="274,184,279,218,273,219,269,184"/>
-<area shape="rect" id="Node000006" href="$classCommonOperations.html" title=" " alt="" coords="217,452,361,637"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="239,651,221,687,216,684,234,648"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="291,418,291,452,286,452,286,418"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="71,746,322,841"/>
+<area shape="rect" id="Node000002" href="$classPipetteLayerOperations.html" title=" " alt="" coords="26,559,190,631"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,642,178,746,173,746,128,647"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="7,248,145,432"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="90,445,106,559,101,559,89,450"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,53,147,142"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="76,154,79,249,74,249,76,159"/>
+<area shape="rect" id="Node000005" href="$classInterface.html" title=" " alt="" coords="200,5,306,189"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="219,201,211,238,185,341,160,444,123,560,118,558,155,443,180,340,206,237,218,206"/>
+<area shape="rect" id="Node000007" href="$classLayerOperations.html" title=" " alt="" coords="221,237,348,444"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="267,202,274,238,269,237,267,207"/>
+<area shape="rect" id="Node000006" href="$classCommonOperations.html" title=" " alt="" coords="214,492,354,698"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="234,710,219,748,215,744,230,713"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="285,456,287,493,282,491,283,461"/>
 </map>

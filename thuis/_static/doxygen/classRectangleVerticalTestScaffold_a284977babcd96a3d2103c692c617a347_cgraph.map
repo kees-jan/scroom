@@ -1,5 +1,11 @@
 <map id="RectangleVerticalTestScaffold::contains" name="RectangleVerticalTestScaffold::contains">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,220,45"/>
-<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html#a405cfffb11cdb9f2fa5600e2bf15231c" title=" " alt="" coords="268,5,451,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,23,254,23,254,28,220,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,65,219,110"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html#a214abe27a155259161e7bb317f5d32e2" title=" " alt="" coords="275,5,456,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="208,62,262,52,257,54,210,67"/>
+<area shape="rect" id="Node000003" href="$rectangletests_8cc.html#af6796373cc462aef8e6979a40acef5d3" title=" " alt="" coords="317,74,414,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="219,85,304,87,299,88,220,90"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Rectangle.html#a405cfffb11cdb9f2fa5600e2bf15231c" title=" " alt="" coords="267,126,464,154"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="219,107,283,122,277,122,219,112"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Rectangle.html#a23ed938b3f63186f48c5828024a9d6ab" title=" " alt="" coords="512,117,693,162"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="464,137,499,140,494,140,465,142"/>
 </map>

@@ -1,14 +1,15 @@
 var tiled_bitmap_geometry_8cc =
 [
-    [ "clippedDrawArea", "tiled-bitmap-geometry_8cc.html#a30ccf4173bcc57fc849325c24624ac3d", null ],
-    [ "computeRowLayout", "tiled-bitmap-geometry_8cc.html#aadebf5cd55b6cb5a46b1ac946a48ff02", null ],
-    [ "pyramidSizes", "tiled-bitmap-geometry_8cc.html#af271f41aee4bf0ed58f3d9dd974f137a", null ],
-    [ "redrawTileRange", "tiled-bitmap-geometry_8cc.html#a245345bfc91eba04f1f21e02497e099f", null ],
-    [ "reductionMapping", "tiled-bitmap-geometry_8cc.html#ab00ae45512b99a463ced3522e3c6db1e", null ],
-    [ "samplingTileRange", "tiled-bitmap-geometry_8cc.html#a776f611c5485d44eb2c1adc903fe56c0", null ],
-    [ "selectLayer", "tiled-bitmap-geometry_8cc.html#a104f2c73fce6dcc79c2c468c179da6f2", null ],
-    [ "tileCount", "tiled-bitmap-geometry_8cc.html#ad13cbd28bbcbaaa733f01d1203276fa8", null ],
-    [ "tileDrawAreas", "tiled-bitmap-geometry_8cc.html#a3b5184e61e57e63a4bfff8b9dac609b5", null ],
-    [ "tileOrigin", "tiled-bitmap-geometry_8cc.html#a966deba1a3a0bb678f79e914bc4c472f", null ],
-    [ "tileRectangle", "tiled-bitmap-geometry_8cc.html#a0875d7ca2687f853a12b1f3133bdf181", null ]
+    [ "Scroom::TiledBitmap::Geometry::computeClippedDrawArea", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a9f28d6196110a6aaee3254b3b89e5366", null ],
+    [ "Scroom::TiledBitmap::Geometry::computeLayerSelection", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a02ddf8c12d88dd035cc0e95bbf0a29b4", null ],
+    [ "Scroom::TiledBitmap::Geometry::computePyramidSizes", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a32c43a2dbc5152b6cdfa3bfe04c57afb", null ],
+    [ "Scroom::TiledBitmap::Geometry::computeReducedBounds", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html#ab646437d7ff4c75d3768ef061b0d09d7", null ],
+    [ "Scroom::TiledBitmap::Geometry::computeReductionMapping", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a75924397bff2620d90faf5f424a16c34", null ],
+    [ "Scroom::TiledBitmap::Geometry::computeRowLayout", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html#aadebf5cd55b6cb5a46b1ac946a48ff02", null ],
+    [ "Scroom::TiledBitmap::Geometry::computeTileCount", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a6fa1f3386bb7ec476dafb66bf7fc9b2b", null ],
+    [ "Scroom::TiledBitmap::Geometry::computeTileDrawAreas", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a9c3e9da6c45d3453d76c2c95eb8312a0", null ],
+    [ "Scroom::TiledBitmap::Geometry::computeTileOrigin", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html#ade7d95536adb23690abc1a76ec005585", null ],
+    [ "Scroom::TiledBitmap::Geometry::computeTileRangeForRedraw", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a5335fed2614da9940dd377378b84bd25", null ],
+    [ "Scroom::TiledBitmap::Geometry::computeTileRangeForSampling", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html#abd0d9d9471b443af7201643dcf101a67", null ],
+    [ "Scroom::TiledBitmap::Geometry::computeTileRectangle", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html#afacc768cbf40a16ec975a06c388f6468", null ]
 ];

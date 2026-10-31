@@ -1,6 +1,13 @@
 <map id="getAspectRatio" name="getAspectRatio">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,37,127,62"/>
-<area shape="rect" id="Node000002" href="$namespaceScroom_1_1Utils.html#af6796373cc462aef8e6979a40acef5d3" title=" " alt="" coords="175,29,328,69"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,47,160,47,160,52,127,52"/>
-<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="216,30,214,20,220,11,232,5,251,3,273,6,285,13,282,17,271,11,251,8,234,10,223,15,220,21,222,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,83,126,111"/>
+<area shape="rect" id="Node000002" href="$classPresentationInterface.html#a246215775d5c465dd62e5607943a111c" title=" " alt="" coords="174,5,336,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,80,179,54,175,58,107,85"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1Utils.html#af6796373cc462aef8e6979a40acef5d3" title=" " alt="" coords="179,75,331,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="125,94,165,96,160,98,126,100"/>
+<area shape="rect" id="Node000004" href="$namespaceScroom_1_1Utils.html#a069a23ac9bf5bb1ac6a546c1b7cbaf8e" title=" " alt="" coords="174,143,336,171"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="111,109,174,129,196,138,191,138,173,134,111,114"/>
+<area shape="rect" id="Node000005" href="$namespaceScroom_1_1Utils.html#a1df110b1fef13cbeaf6122b1ca752a97" title=" " alt="" coords="384,143,521,171"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="336,154,371,157,366,157,336,160"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Context.html#aa411d28e6b2dd90b062039070a381907" title=" " alt="" coords="569,143,766,171"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="522,154,557,157,551,157,522,160"/>
 </map>
