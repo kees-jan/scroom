@@ -227,9 +227,9 @@ void DataFetcher::operator()()
     Scroom::Utils::Stuff const s = ti->initialize();
     tiles.push_back(ti->getTileSync());
   }
-  const auto row = Geometry::computeRowLayout(currentRow, height, TILESIZE);
+  const auto rowLayout = Geometry::rowLayout(currentRow, height, TILESIZE);
 
-  sp->fillTiles(row.startLine, row.lineCount, TILESIZE, 0, tiles);
+  sp->fillTiles(rowLayout.startLine, rowLayout.lineCount, TILESIZE, 0, tiles);
 
   for(int x = 0; x < horTileCount; x++)
   {

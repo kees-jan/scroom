@@ -152,12 +152,12 @@ void TiledBitmap::connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, 
   for(int j = 0; j < verTileCount; j++)
   {
     const auto rowMapping = Geometry::reductionMapping({0, j});
-    const int voffset = rowMapping.offset.y;
+    const int voffset = rowMapping.sourceOffset.y;
     if(!voffset)
     {
       // New line of target tiles
       coordinators_.clear();
-      CompressedTileLine const& tileLine = layer->getTileLine(rowMapping.targetTile.y);
+      CompressedTileLine const& tileLine = layer->getTileLine(rowMapping.targetIndex.y);
       for(auto& z: tileLine)
       {
         LayerCoordinator::Ptr const lc = LayerCoordinator::create(z, prevLo);
@@ -169,8 +169,8 @@ void TiledBitmap::connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, 
     for(int i = 0; i < horTileCount; i++)
     {
       const auto mapping = Geometry::reductionMapping({i, j});
-      LayerCoordinator::Ptr const lc = coordinators_[mapping.targetTile.x];
-      lc->addSourceTile(mapping.offset.x, mapping.offset.y, prevLayer->getTile(i, j));
+      LayerCoordinator::Ptr const lc = coordinators_[mapping.targetIndex.x];
+      lc->addSourceTile(mapping.sourceOffset.x, mapping.sourceOffset.y, prevLayer->getTile(i, j));
     }
   }
 }
@@ -212,31 +212,33 @@ void TiledBitmap::redraw(
 )
 {
   TiledBitmapViewData::Ptr const viewData_ = viewData[vi];
-  const auto selection = Geometry::selectLayer(presentationArea, zoom, layers.size());
-  const auto layerNr = selection.layer;
-  zoom = selection.zoom;
-  const auto scaledRequestedPresentationArea = selection.area;
+  const auto layerSelection = Geometry::layerSelection(presentationArea, zoom, layers.size());
+  const auto layerNr = layerSelection.index;
+  const int layerZoom = layerSelection.zoom;
+  const auto presentationAreaInLayerCoordinates = layerSelection.presentationAreaInLayerCoordinates;
   Layer::Ptr const layer = layers[layerNr];
   LayerOperations::Ptr const layerOperations = ls[std::min(ls.size() - 1, layerNr)];
 
-  const auto tileRange = Geometry::redrawTileRange(scaledRequestedPresentationArea, TILESIZE);
+  const auto tileRange = Geometry::tileRangeForRedraw(presentationAreaInLayerCoordinates, TILESIZE);
 
-  viewData_->setNeededTiles(layer, tileRange.xBegin, tileRange.xEnd, tileRange.yBegin, tileRange.yEnd, zoom, layerOperations);
+  viewData_->setNeededTiles(layer, tileRange, layerZoom, layerOperations);
 
-  const double pixelSize = pixelSizeFromZoom(zoom);
+  const double layerPixelSize = pixelSizeFromZoom(layerZoom);
 
   layerOperations->initializeCairo(cr);
 
-  const auto clippedRequestedPresentationArea = Geometry::clippedDrawArea(scaledRequestedPresentationArea, layer->getRect());
+  const auto clippedPresentationAreaInLayerCoordinates =
+    Geometry::clippedArea(presentationAreaInLayerCoordinates, layer->getRect());
 
-  for(int i = tileRange.xBegin; i < tileRange.xEnd; i++)
+  for(int i = tileRange.getLeft(); i < tileRange.getRight(); i++)
   {
-    for(int j = tileRange.yBegin; j < tileRange.yEnd; j++)
+    for(int j = tileRange.getTop(); j < tileRange.getBottom(); j++)
     {
       Scroom::Utils::Point<int> const tileIndex(i, j);
 
-      const auto areas =
-        Geometry::tileDrawAreas(clippedRequestedPresentationArea, Geometry::tileRectangle(tileIndex, TILESIZE), pixelSize);
+      const auto drawAreas = Geometry::tileDrawAreas(
+        clippedPresentationAreaInLayerCoordinates, Geometry::tileAreaInLayerCoordinates(tileIndex, TILESIZE), layerPixelSize
+      );
 
       CompressedTile::Ptr const tile = layer->getTile(i, j);
       TileViewState::Ptr const tileViewState = tile->getViewState(vi);
@@ -246,15 +248,15 @@ void TiledBitmap::redraw(
       if(t)
       {
         cairo_save(cr);
-        layerOperations->draw(cr, t, areas.source, areas.destination, zoom, cacheResult);
+        layerOperations->draw(cr, t, drawAreas.tileArea, drawAreas.viewArea, layerZoom, cacheResult);
         cairo_restore(cr);
       }
       else
       {
-        layerOperations->drawState(cr, tile->getState(), areas.destination);
+        layerOperations->drawState(cr, tile->getState(), drawAreas.viewArea);
       }
 #ifdef DEBUG_TILES
-      drawTile(cr, tile, areas.destination);
+      drawTile(cr, tile, drawAreas.viewArea);
 #endif
     }
   }
