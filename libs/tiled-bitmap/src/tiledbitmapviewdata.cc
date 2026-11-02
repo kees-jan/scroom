@@ -31,27 +31,21 @@ TiledBitmapViewData::TiledBitmapViewData(const ViewInterface::WeakPtr& viewInter
 
 void TiledBitmapViewData::setNeededTiles(
   Layer::Ptr const& l,
-  int imin_,
-  int imax_,
-  int jmin_,
-  int jmax_,
+  Scroom::Utils::Rectangle<int> tileRange_,
   int zoom_,
   LayerOperations::Ptr layerOperations_
 )
 {
   boost::unique_lock<boost::mutex> lock(mut);
 
-  if(layer == l && imin <= imin_ && imax >= imax_ && jmin <= jmin_ && jmax >= jmax_ && zoom == zoom_)
+  if(layer == l && tileRange.contains(tileRange_) && zoom == zoom_)
   {
     // Nothing to do...
   }
   else
   {
     layer = l;
-    imin = imin_;
-    imax = imax_;
-    jmin = jmin_;
-    jmax = jmax_;
+    tileRange = tileRange_;
     zoom = zoom_;
     layerOperations = std::move(layerOperations_);
 
@@ -86,9 +80,9 @@ void TiledBitmapViewData::resetNeededTiles()
   // temporarily add registrations to the newStuff list, and add the newStuff to
   // stuff later.
 
-  for(int i = imin; i < imax; i++)
+  for(int i = tileRange.getLeft(); i < tileRange.getRight(); i++)
   {
-    for(int j = jmin; j < jmax; j++)
+    for(int j = tileRange.getTop(); j < tileRange.getBottom(); j++)
     {
       CompressedTile::Ptr const tile = layer->getTile(i, j);
 

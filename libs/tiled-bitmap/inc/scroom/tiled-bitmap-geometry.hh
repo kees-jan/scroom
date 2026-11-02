@@ -17,63 +17,63 @@ namespace Scroom::TiledBitmap::Geometry
   using Scroom::Utils::Point;
   using Scroom::Utils::Rectangle;
 
-  // These functions preserve the existing zero-origin arithmetic, including
-  // truncation in redrawTileRange(). Relocation/rounding contracts follow later.
+  Rectangle<int> reducedBounds(Rectangle<int> imageAreaInLayerCoordinates);
   std::vector<Point<int>> pyramidSizes(Point<int> bottomSize, int minimumReducedDimension);
   int tileCount(int size, int tileSize);
-  Point<int> tileOrigin(Point<int> tileIndex, int tileSize);
-  Rectangle<int> tileRectangle(Point<int> tileIndex, int tileSize);
+  Point<int> layerCoordinatesFromTileIndex(Point<int> tileIndex, int tileSize);
+  Rectangle<int> tileAreaInLayerCoordinates(Point<int> tileIndex, int tileSize);
 
-  // End indices are exclusive. Keep redraw and sampling rounding separate.
-  struct TileRange
-  {
-    int xBegin;
-    int xEnd;
-    int yBegin;
-    int yEnd;
-  };
+  Rectangle<int> tileRangeForRedraw(Rectangle<double> layerArea, int tileSize);
+  Rectangle<int> tileRangeForSampling(Rectangle<int> layerArea, int tileSize);
 
-  TileRange redrawTileRange(Rectangle<double> layerArea, int tileSize);
-  TileRange samplingTileRange(Rectangle<int> layerArea, int tileSize);
-
+  // The parent uses floor division; offsets are in [0, 8), also for negative indices.
   struct ReductionMapping
   {
-    Point<int> targetTile;
-    Point<int> offset;
+    Point<int> targetIndex;
+    Point<int> sourceOffset;
   };
 
-  ReductionMapping reductionMapping(Point<int> sourceTile);
+  ReductionMapping reductionMapping(Point<int> sourceTileIndex);
 
   struct LayerSelection
   {
-    std::size_t layer{};
+    std::size_t index{};
     int zoom{};
-    Rectangle<double> area;
+    // Requested presentation area expressed in the selected layer.
+    Rectangle<double> presentationAreaInLayerCoordinates;
   };
 
-  // layerCount must be nonzero; area is in bottom-layer coordinates.
-  LayerSelection selectLayer(Rectangle<double> area, int zoom, std::size_t layerCount);
-  Rectangle<double> clippedDrawArea(Rectangle<double> requestedArea, Rectangle<int> imageBounds);
+  // layerCount must be nonzero; presentation coordinates match the bottom layer.
+  LayerSelection layerSelection(Rectangle<double> presentationArea, int zoom, std::size_t layerCount);
+  // Clip trailing edges while retaining the requested view origin. Leading
+  // zero-origin image edges are handled by tileRangeForRedraw().
+  Rectangle<double> clippedArea(Rectangle<double> requestedArea, Rectangle<int> imageArea);
 
   template <typename T>
-  Rectangle<T> tileLocalIntersection(Rectangle<T> layerArea, Rectangle<int> tileBounds)
+  Rectangle<T> intersectionInTileCoordinates(Rectangle<T> areaInLayerCoordinates, Rectangle<int> tileAreaInLayerCoordinates)
   {
-    return tileBounds.intersection(layerArea) - Point<T>(tileBounds.getTopLeft());
+    const Rectangle<T> tileBoundsInLayerCoordinates(tileAreaInLayerCoordinates);
+    if(!tileBoundsInLayerCoordinates.intersects(areaInLayerCoordinates))
+    {
+      return {};
+    }
+    return tileBoundsInLayerCoordinates.intersection(areaInLayerCoordinates) - tileBoundsInLayerCoordinates.getTopLeft();
   }
 
   struct TileDrawAreas
   {
-    Rectangle<double> source;
-    Rectangle<double> destination;
+    Rectangle<double> tileArea;
+    Rectangle<double> viewArea;
   };
 
-  TileDrawAreas tileDrawAreas(Rectangle<double> clippedLayerArea, Rectangle<int> tileBounds, double pixelSize);
+  TileDrawAreas tileDrawAreas(Rectangle<double> requestedArea, Rectangle<int> tileBounds, double pixelSize);
 
-  struct LoadRow
+  struct RowLayout
   {
     int startLine;
     int lineCount;
   };
 
-  LoadRow computeRowLayout(int tileRow, int imageHeight, int tileSize);
+  // Rows at or past imageHeight contain zero lines. tileRow must be nonnegative.
+  RowLayout rowLayout(int tileRow, int imageHeight, int tileSize);
 } // namespace Scroom::TiledBitmap::Geometry

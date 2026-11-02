@@ -375,6 +375,12 @@ namespace Scroom::Utils
   }
 
   template <typename T>
+  Rectangle<T> make_rect_from_start_end(T left, T top, T right, T bottom)
+  {
+    return make_rect_from_start_end(Point<T>(left, top), Point<T>(right, bottom));
+  }
+
+  template <typename T>
   std::ostream& operator<<(std::ostream& os, const Rectangle<T>& r)
   {
     os << '<' << r.getLeft() << ',' << r.getTop() << ',' << r.getWidth() << ',' << r.getHeight() << '>';
