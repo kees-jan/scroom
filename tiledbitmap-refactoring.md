@@ -420,6 +420,33 @@ or death tests that merely verify the presence of `require()` guards.
   or lost reduction throttling. Document the public contracts and a concise
   example for future adapters, with no production compositing implementation.
 
+## Review Q&A (2026-11-03)
+
+Validation on the current machine: both `gcc-debug` and `clang22-debug` build
+successfully, sequentially with Ninja's default parallelism. Both presets pass
+all nine registered test suites with access to the existing desktop display:
+GCC in 15.36 seconds and Clang in 13.51 seconds. Sandbox-only GCC testing could
+not access the display; the elevated run passed. Step 3 has not started.
+
+**Q1. What equivalence should step 9 require for unaligned relocation?**
+
+Step 9 requires translated stacks to produce equivalent pixels after coordinate
+transformation, while constraint 4 keeps the reduction grid aligned to the shared
+origin. Arbitrary translations change which source pixels fall into each 8-by-8
+reduction block. For example, an 8-by-8 image of value 64 at (0, 0) reduces to
+one pixel of value 64. Moving it to (1, 0) on the same grid gives two reduced
+pixels of values 56 and 8 with the existing zero-filled boundary behavior
+(`Operations8bpp::reduce()` in `src/layeroperations.cc`). These are not translated
+copies of the original reduced pixel.
+
+**Proposed answer, awaiting user review:** retain the agreed common-origin grid.
+Require exact translation equivalence for bottom-layer pixels and for reduced
+levels when the translation is divisible by that level's scale (8, 64, etc.).
+For other translations, compare against independently computed reductions on
+the fixed grid, including boundary zeros, and verify the corresponding outward
+bounds and coordinate mappings. This clarifies the acceptance test without
+changing the agreed relocation design.
+
 ## Final acceptance
 
 The milestone is complete when an alternative presentation adapter can select
