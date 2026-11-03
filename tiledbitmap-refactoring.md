@@ -1,6 +1,7 @@
 # Tiled bitmap refactoring plan
 
-Status: steps 0–2 complete and accepted by the user. Step 3 has not started.
+Status: steps 0–3 complete and accepted by the user. Step 4 has not started.
+Step 3 platform CI passed on 2026-11-06.
 
 ## Goal and boundary
 
@@ -37,9 +38,10 @@ reduction. Implementation names below are provisional.
 - `TiledBitmapInterface` combines loading, bottom-layer access, drawing, view
   attachment, cache control, and context access. Its implementation also owns
   the layers, reduction coordinators, progress, and task registrations.
-- `LayerOperations` combines pixel format (`getBpp()`), reduction, drawing, and
-  rendering caches. `LayerSpecForBitmap()` sometimes changes format between
-  layers; separating operations must preserve those transitions and colormaps.
+- Step 3 separated reduction callables, storage bit depth, and rendering
+  operations. `LayerOperations` remains a compatibility facade; future extraction
+  must preserve the format transitions and shared colormaps supplied by
+  `LayerSpecForBitmap()`.
 - `Layer` and `CompressedTile` inherit `Viewable`; `CompressedTile` owns per-view
   `TileViewState` objects. Extracting only `TiledBitmap::redraw()` would leave the
   data structure coupled to rendering and prevent independent renderer caches.
@@ -67,9 +69,9 @@ reduction. Implementation names below are provisional.
   preserving old plugin binaries and changing the relic API version are not
   requirements. Public headers and CMake exports still need to be usable by
   alternative adapters.
-- Existing tiled-bitmap tests cover sample iteration and destruction of a large
-  stack, but do not characterize the stack geometry or its reduction lifecycle.
-  Performance tools and pipette code also consume the current API.
+- Tests cover geometry, sample iteration, reducers, layer descriptions, and stack
+  destruction. Population lifecycle coverage remains to be added. Performance
+  tools and pipette code also consume the current API.
 
 ### Reduction and coverage review
 
@@ -165,22 +167,15 @@ Follow `AGENTS.md` for configuration, headless displays, formatting, and test
 parallelism. Changes to public interfaces must rebuild all plugins and consumers;
 retain Ubuntu and Windows support and verify affected platform CI. Use the
 generated development environment for GUI smoke tests. Formatting and relevant
-clang-tidy checks apply to touched code. Do not run builds merely for this draft.
+clang-tidy checks apply to touched code.
 
-## Handoff after step 2
+## Guidance for remaining steps
 
-Continue with step 3 only when requested. Steps 0–2 have been accepted; do not
-reopen their design decisions merely to impose stricter generic contracts.
-Final validation on 2026-11-03 after all step 2 review edits: both compiler
-presets build successfully and pass all nine registered test suites directly on
-the desktop. GCC tests took 17.68 seconds and Clang tests took 17.70 seconds;
-the tiled-bitmap suite took 0.15 seconds in each. Builds and test runs were
-sequential, with at most six cores and normal ccache configuration.
-
-During implementation, use Clang for iteration and check GCC once a step is
-finished. Keep ccache enabled with its normal configuration. Follow the current
-machine's resource limits; the previous machine could sustain only one build at
-a time. Tests ran directly on its desktop without Xvfb.
+Steps 0–3 have been accepted; do not reopen their design decisions merely to
+impose stricter generic contracts. Continue with step 4 only when requested.
+Follow `AGENTS.md` for the current build and test workflow. Run GCC and Clang
+builds sequentially with Ninja's default parallelism; test suites may run in
+parallel.
 
 Apply naming conventions with context and judgement. Prefer result names such
 as `tileRangeForRedraw()` over `compute` prefixes. Avoid redundant type/context
@@ -294,8 +289,7 @@ or death tests that merely verify the presence of `require()` guards.
 
   Tests cover empty/outside requests, exact edges, negative coordinates,
   nonnegative parent offsets, repeated outward reduction, and valid coordinates
-  near integer limits. Death tests for precondition guards were removed: they
-  took 15.55 seconds, while the remaining suite took 0.11 seconds. Tests retain
+  near integer limits. Tests retain
   power-of-two zoom inputs and do not
   require arbitrary fractional viewports or a particular pyramid cutoff.
 
@@ -316,19 +310,68 @@ or death tests that merely verify the presence of `require()` guards.
   remain. Formatting and whitespace checks pass. User review accepted on
   2026-11-03. The completion gate is satisfied.
 
-- [ ] **3. Separate reduction and pixel-format contracts from drawing.** Introduce
+- [x] **3. Separate reduction and pixel-format contracts from drawing.** Introduce
   data-side layer format/reduction descriptions and renderer-side operations.
   Adapt existing operation classes and `LayerSpecForBitmap()` so the default
   path preserves format transitions, reduction results, colormaps, and pipette
   capabilities. Keep a compatibility facade where needed so this is a complete
-  migration step. Test representative packed, 8-bit, 16-bit, RGB, CMYK, and
+  migration step. Test representative sub-byte, 8-bit, 16-bit, RGB, CMYK, and
   colormapped transitions; reduction must work without drawing callbacks.
+
+  Implementation (working-tree changes, accepted on 2026-11-05):
+  `LayerReduction` is a `std::function` alias that reduces pixels independently
+  of `LayerRenderingOperations`. Each coordinator owns a callable copy;
+  stateless built-in reducers are functions. Colormap factories return lambdas
+  capturing only `bitsPerIndex` and forwarding to anonymous-namespace helpers
+  that compute the derived constants locally. `LayerDescription` pairs these
+  operations with the supplier-provided bits per pixel.
+  `LayerSpecForBitmap()` and performance tools construct descriptions
+  through the existing operation factories. `LayerOperations` remains a
+  renderer/factory compatibility facade. Coordinators retain only reducers;
+  tile-view caches and drawing accept only rendering operations. The supplier
+  selects reducers and ensures their output matches the next layer's storage and
+  renderer. Bitmap model names remain extensible through `BitmapMetaData::type`;
+  neither a closed model enum nor reducer input/output type descriptors are
+  required. Named factories provide the existing built-in reducers only.
+
+  All 13 reduction algorithms retain their existing behavior, including
+  two-indices-per-pixel transitions, native 16-bit storage, full-block boundary averages,
+  and the binary OR operation exposed by the existing `Operations1bppClipped`
+  facade. Its standalone factory is named `createBinaryOrReduction()` to
+  distinguish this operation from geometric clipping. The bit-count lookup was
+  replaced with `std::popcount()`; rendering/cache and pipette algorithms are
+  unchanged. Concrete tile buffers and view ownership remain for later steps.
+
+  `test/layer-reduction-tests.cc` verifies source-to-target pixel placement,
+  channel averages and bit-depth expansion, zero boundary contributions,
+  colormap-index frequency selection, and binary OR. Layer-description
+  integration lives in `test/layerspecforbitmap-tests.cc`: default format
+  transitions, pipette capabilities, shared-colormap rendering, and
+  reducers outliving their renderer. Both files use private sample-access and
+  setup helpers in `test/tile-sample-helpers.hh`. Construction with a custom
+  five-byte pixel encoding is checked in `test/tiledbitmap-tests.cc`.
+  `SampleIterator` tests cover byte and native 16-bit storage, sample widths,
+  positions, arithmetic, and writes preserving neighbouring samples. Test helpers
+  reuse that independently tested iterator. No default pyramid height or
+  production tile size is asserted.
+
+  Validation: both compiler presets build all plugins and consumers sequentially
+  with Ninja's default parallelism and normal ccache. All nine registered suites
+  pass in both presets with desktop-display access: GCC in 14.79 seconds and
+  Clang in 14.42 seconds; tiled-bitmap tests take 0.05 seconds in each. Formatting
+  and whitespace checks pass. Clang-tidy checked the touched C++ sources
+  without errors; nonfatal warnings remain. Later review edits were checked with
+  the GCC build and tiled-bitmap suite; the test-file split also passed the Clang
+  build and tiled-bitmap suite. User
+  review accepted on 2026-11-05. Ubuntu/Windows platform CI passed on 2026-11-06
+  ([build run 42161990161](https://github.com/kees-jan/scroom/actions/runs/42161990161)).
 
 - [ ] **4. Extract a reusable layer-stack owner.** Move layer topology,
   construction, reduction wiring, loading registrations, and data progress out
   of the renderer into a public stack abstraction. Expose read access to every
-  layer, its format, and geometry, with source-driven population access. Have the
-  existing `TiledBitmapInterface` delegate to the new stack and renderer so
+  layer, its storage bit depth, and geometry, with source-driven population
+  access. Have the existing `TiledBitmapInterface` delegate to the new stack
+  and renderer so
   existing callers continue working. Test constructing, loading, reading, and
   destroying a stack without a view. Keep UI progress forwarding in an adapter.
 
@@ -367,7 +410,10 @@ or death tests that merely verify the presence of `require()` guards.
   construction options for a bottom-only or default pyramid topology, caller
   supplied compatible layer implementations, and automatic or no reduced-layer
   population. Bind each populated layer to its fixed bitmap or reduction source.
-  Validate adjacent geometry and format compatibility before starting work.
+  Validate adjacent geometry and structural requirements before starting work.
+  The supplier is responsible for compatible pixel encodings and for pairing
+  reducers with the following layers' storage sizes and renderers; the builder
+  does not infer formats or select reducers.
   Unpopulated layers must not
   acquire automatic reduction observers or prevent progress from finishing.
   Define renderer behavior for unavailable levels: select an available level or
@@ -382,8 +428,13 @@ or death tests that merely verify the presence of `require()` guards.
   invalid pixels outside the bitmap. Test positive and negative offsets unaligned
   to the reduction factor or configured tile size, with the shared origin both inside and outside the image,
   multiple reduction levels, odd sizes, fractional viewports, and clipping on
-  all sides. Verify translated stacks produce equivalent pixels and selections
-  after transforming coordinates. Handle valid regions on all four boundaries
+  all sides. Require exact translation equivalence for bottom-layer pixels. At
+  reduced level n, require translated pixel equivalence when the offset is a
+  multiple of 8^n in each axis. Other offsets change the phase of the image
+  relative to the shared reduction grid: verify pixels against independently
+  calculated reductions on that fixed grid, including zero-filled boundary
+  samples, rather than expecting translated copies of the zero-offset result.
+  Verify coordinate mappings and selections for every offset. Handle valid regions on all four boundaries
   without changing the aligned tile mapping. Test tiles whose intersection with
   reduced image bounds is empty because caller-selected coverage includes areas
   outside the image. Verify outward rounding of pixel bounds and tile coverage on all
