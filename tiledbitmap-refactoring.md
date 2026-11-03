@@ -382,8 +382,13 @@ or death tests that merely verify the presence of `require()` guards.
   invalid pixels outside the bitmap. Test positive and negative offsets unaligned
   to the reduction factor or configured tile size, with the shared origin both inside and outside the image,
   multiple reduction levels, odd sizes, fractional viewports, and clipping on
-  all sides. Verify translated stacks produce equivalent pixels and selections
-  after transforming coordinates. Handle valid regions on all four boundaries
+  all sides. Require exact translation equivalence for bottom-layer pixels. At
+  reduced level n, require translated pixel equivalence when the offset is a
+  multiple of 8^n in each axis. Other offsets change the phase of the image
+  relative to the shared reduction grid: verify pixels against independently
+  calculated reductions on that fixed grid, including zero-filled boundary
+  samples, rather than expecting translated copies of the zero-offset result.
+  Verify coordinate mappings and selections for every offset. Handle valid regions on all four boundaries
   without changing the aligned tile mapping. Test tiles whose intersection with
   reduced image bounds is empty because caller-selected coverage includes areas
   outside the image. Verify outward rounding of pixel bounds and tile coverage on all
@@ -430,22 +435,23 @@ not access the display; the elevated run passed. Step 3 has not started.
 
 **Q1. What equivalence should step 9 require for unaligned relocation?**
 
-Step 9 requires translated stacks to produce equivalent pixels after coordinate
-transformation, while constraint 4 keeps the reduction grid aligned to the shared
-origin. Arbitrary translations change which source pixels fall into each 8-by-8
-reduction block. For example, an 8-by-8 image of value 64 at (0, 0) reduces to
-one pixel of value 64. Moving it to (1, 0) on the same grid gives two reduced
-pixels of values 56 and 8 with the existing zero-filled boundary behavior
-(`Operations8bpp::reduce()` in `src/layeroperations.cc`). These are not translated
-copies of the original reduced pixel.
+> Step 9 requires translated stacks to produce equivalent pixels after coordinate
+> transformation, while constraint 4 keeps the reduction grid aligned to the shared
+> origin. Arbitrary translations change which source pixels fall into each 8-by-8
+> reduction block. For example, an 8-by-8 image of value 64 at (0, 0) reduces to
+> one pixel of value 64. Moving it to (1, 0) on the same grid gives two reduced
+> pixels of values 56 and 8 with the existing zero-filled boundary behavior
+> (`Operations8bpp::reduce()` in `src/layeroperations.cc`). These are not translated
+> copies of the original reduced pixel.
 
-**Proposed answer, awaiting user review:** retain the agreed common-origin grid.
-Require exact translation equivalence for bottom-layer pixels and for reduced
-levels when the translation is divisible by that level's scale (8, 64, etc.).
-For other translations, compare against independently computed reductions on
-the fixed grid, including boundary zeros, and verify the corresponding outward
-bounds and coordinate mappings. This clarifies the acceptance test without
-changing the agreed relocation design.
+**Answer:** Correct. The general pixel-equivalence requirement was too strong;
+the shared-origin reduction grid remains the agreed design. Step 9 now requires
+translation equivalence at the bottom layer and at reduced levels where the
+offset is divisible by that level's scale in both axes. For unaligned offsets,
+it requires independently calculated fixed-grid reductions, including boundary
+zeros, together with correct bounds, coordinate mappings, and selections.
+Relocation changes the reduction samples in this case; it does not move the grid
+with the bitmap.
 
 ## Final acceptance
 
