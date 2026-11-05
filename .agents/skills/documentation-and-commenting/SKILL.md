@@ -10,6 +10,14 @@ concise and focused on project-specific knowledge, decisions, and constraints.
 Omit basic tool instructions and command examples unless explicitly requested
 or needed to convey a non-obvious requirement.
 
+In explanatory documentation and code comments, state the relevant facts,
+rationale, and constraints. Let readers draw routine conclusions rather than
+adding advice that merely restates what those facts imply.
+
+Give instructions when guidance is the purpose of the text—for example, usage
+documentation, procedures, coding guidelines, or architectural rules—or when a
+necessary action is not apparent from the explanation.
+
 State what is needed directly. Mention prohibited actions or approaches only
 when there is a strong practical reason, such as a likely mistake with meaningful
 consequences.
@@ -31,5 +39,9 @@ For code comments:
   already documented elsewhere.
 - Rely on clear code and appropriately named functions to convey what happens
   and how it works; avoid comments that narrate either.
+- Document non-obvious public API contracts with Doxygen on the operation they
+  describe. Reserve type-level documentation for contracts applying to the type
+  as a whole. Focus on behavior callers need to know beyond what signatures and
+  standard conventions already establish.
 - Leave existing comments untouched unless also editing their associated code.
   An explicit request to edit those comments takes precedence.

@@ -23,6 +23,45 @@ and verification requirements.
 When writing or modifying tests, apply
 [writing-tests](../writing-tests/SKILL.md).
 
+## Reuse and abstractions
+
+Look for existing, tested helpers before writing lower-level code. Reuse them
+when they express the intended operation clearly and make the code easier to
+understand.
+
+Propose new or improved abstractions when they would clarify responsibilities
+or simplify the implementation. Apply improvements within the authorized scope;
+discuss changes beyond that scope before proceeding.
+
+Add convenience overloads when they make calling code clearer by accepting
+inputs in the form callers naturally have. Forward them to one implementation
+so behavior stays consistent. Weigh the simpler calls against ambiguity and API
+complexity; callers constructing objects merely to unpack them again can indicate
+a useful overload.
+
+## Language features and consistency
+
+Use modern C++ features supported by the project's configured standard and
+supported platforms. Prefer them when they improve the code rather than
+imitating legacy idioms in surrounding code. The CMake `project_options` target
+is authoritative for the language standard.
+
+When introducing a language feature in a file, use it at every relevant
+opportunity in that file where it expresses the same intent. Prefer class
+template argument deduction for constructions whose arguments establish the
+intended type, such as points and rectangles. Keep explicit template arguments
+when they specify an intended conversion or numeric precision.
+
+## Constants and enumerations
+
+Use named `constexpr` constants when the numeric value is the meaning, such as
+an index, size, offset, or numeric parameter. Scope related constants in an
+appropriate namespace; keep scenario-specific constants local.
+
+Use `enum class` for categorical alternatives with meaningful type identity.
+Choose an enumeration to represent those alternatives, rather than as a
+convenient way to number constants.
+
 ## Naming
 
 Name types and variables by their actual responsibility. Before choosing a
