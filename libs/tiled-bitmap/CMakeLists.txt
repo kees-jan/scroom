@@ -1,8 +1,10 @@
 add_library(tiledbitmap src/tiledbitmappresentation.cc)
 set(HEADER_FILES
+    inc/scroom/layer-reduction.hh
+    inc/scroom/layer-rendering-operations.hh
     inc/scroom/layeroperations.hh
-    inc/scroom/tiled-bitmap-geometry.hh
     inc/scroom/tile.hh
+    inc/scroom/tiled-bitmap-geometry.hh
     inc/scroom/tiledbitmapinterface.hh
     inc/scroom/tiledbitmaplayer.hh
 )
@@ -10,6 +12,7 @@ target_sources(
   tiledbitmap
   PRIVATE src/cmyklayeroperations.cc
           src/compressedtile.cc
+          src/layer-reduction.cc
           src/layer.cc
           src/layercoordinator.cc
           src/layercoordinator.hh
@@ -113,8 +116,13 @@ target_link_libraries(
 if(ENABLE_GOOGLE_TEST)
   add_executable(tiledbitmap_tests)
   target_sources(
-    tiledbitmap_tests PRIVATE test/tiledbitmap-tests.cc test/sampleiterator-tests.cc
-                              test/tiled-bitmap-geometry-tests.cc
+    tiledbitmap_tests
+    PRIVATE test/layer-reduction-tests.cc
+            test/layerspecforbitmap-tests.cc
+            test/sampleiterator-tests.cc
+            test/tile-sample-helpers.hh
+            test/tiled-bitmap-geometry-tests.cc
+            test/tiledbitmap-tests.cc
   )
   target_link_libraries(
     tiledbitmap_tests

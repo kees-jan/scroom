@@ -69,7 +69,8 @@ private:
 
 private:
   static void drawTile(cairo_t* cr, const CompressedTile::Ptr& tile, const Scroom::Utils::Rectangle<double>& viewArea);
-  void connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, const LayerOperations::Ptr& prevLo);
+  void
+    connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, const Scroom::TiledBitmap::LayerReduction& reducePreviousLayer);
 
 public:
   ////////////////////////////////////////////////////////////////////////

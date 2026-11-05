@@ -5,96 +5,184 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include <cstring>
-#include <tuple>
+#include <array>
+#include <limits>
+#include <ostream>
 
-#include <gtest/gtest.h>
+#include <gmock/gmock.h>
 
 #include <scroom/bitmap-helpers.hh>
 
 using Scroom::Bitmap::SampleIterator;
+using testing::ElementsAre;
 
 namespace Scroom::Bitmap
 {
-  template <typename T>
-  std::ostream& operator<<(std::ostream& os, const SampleIterator<T>& it)
+  template <typename Base>
+  std::ostream& operator<<(std::ostream& os, const SampleIterator<Base>& iterator)
   {
-    return os << '(' << static_cast<const void*>(it.currentBase) << ", " << it.currentOffset << ", " << it.bps << ')';
+    const int sampleInElement = iterator.samplesPerBase - 1 - iterator.currentOffset;
+    return os << "(storage " << static_cast<const void*>(iterator.currentBase) << ", sample " << sampleInElement << ", "
+              << iterator.bps << " bits)";
   }
 } // namespace Scroom::Bitmap
 
 namespace
 {
-  const uint8_t testData[] = {0x65, 0xC7};
-  const int bit_depths[] = {1, 2, 4, 8};
-  const int initial_offsets[] = {0, 1};
-  const int deltas[] = {0, 1, 5};
+  template <typename Storage, int SAMPLE_BITS>
+  struct Packing
+  {
+    using Base = Storage;
+    static constexpr int sampleBits = SAMPLE_BITS;
+  };
 } // namespace
 
-class SampleIterator_iterates : public ::testing::TestWithParam<int>
+// These are the packed widths used by bitmap operations. Full-width samples
+// have a separate fixture because they occupy one whole storage element.
+using PackedWidths = testing::Types<
+  Packing<uint8_t, 1>,
+  Packing<uint8_t, 2>,
+  Packing<uint8_t, 4>,
+  Packing<uint16_t, 1>,
+  Packing<uint16_t, 2>,
+  Packing<uint16_t, 4>,
+  Packing<uint16_t, 8>>;
+
+template <typename Format>
+class PackedSampleIterator : public testing::Test
 {
+protected:
+  // The underscore avoids GCC 13 -Wshadow errors for the test bodies' Base aliases.
+  using Base_ = Format::Base;
+  static constexpr int sampleBits = Format::sampleBits;
+  static constexpr int storageBits = std::numeric_limits<Base_>::digits;
+  static constexpr int samplesPerElement = storageBits / sampleBits;
+  static constexpr Base_ maximumSample = (1U << sampleBits) - 1;
+  static constexpr Base_ maximumElement = std::numeric_limits<Base_>::max();
+  std::array<Base_, 3> storage{};
+  SampleIterator<const Base_> iterator{storage.data(), 0, sampleBits};
 };
 
-INSTANTIATE_TEST_SUITE_P(SampleIterator_Tests, SampleIterator_iterates, ::testing::ValuesIn(bit_depths));
+TYPED_TEST_SUITE(PackedSampleIterator, PackedWidths);
 
-TEST_P(SampleIterator_iterates, Test) // NOLINT
+TYPED_TEST(PackedSampleIterator, reads_the_first_and_last_samples_then_crosses_the_storage_boundary) // NOLINT
 {
-  const int bps = GetParam();
-  SampleIterator<const uint8_t> it(testData, 0, bps);
-  uint8_t output[] = {0, 0};
-  SampleIterator<uint8_t> out(output, 0, bps);
-  const unsigned int mask = (1 << bps) - 1;
+  using Base = TestFixture::Base_;
+  const Base firstSample = 0;
+  const Base lastSample = TestFixture::maximumSample;
+  const Base secondSampleInNextElement = 1;
+  // Put named samples in the first and last slots; intervening slots stay zero.
+  this->storage[0] = static_cast<Base>((firstSample << (TestFixture::storageBits - TestFixture::sampleBits)) | lastSample);
+  this->storage[1] = static_cast<Base>(secondSampleInNextElement << (TestFixture::storageBits - 2 * TestFixture::sampleBits));
 
-  for(auto i = 0; i < it.samplesPerBase; i++, it++, out++)
-  {
-    EXPECT_EQ((testData[0] >> (8 - bps * (i + 1))) & mask, *it);
-    EXPECT_EQ((testData[0] >> (8 - bps * (i + 1))) & mask, it.get());
-    out.set(*it);
-  }
-  for(auto i = 0; i < it.samplesPerBase; i++, it++, out++)
-  {
-    EXPECT_EQ((testData[1] >> (8 - bps * (i + 1))) & mask, *it);
-    EXPECT_EQ((testData[1] >> (8 - bps * (i + 1))) & mask, it.get());
-    out.set(*it);
-  }
-
-  EXPECT_EQ(0, memcmp(testData, output, 2));
+  EXPECT_EQ(firstSample, this->iterator.get());
+  this->iterator += TestFixture::samplesPerElement - 1;
+  EXPECT_EQ(lastSample, *this->iterator++);
+  EXPECT_EQ(0, *this->iterator);
+  EXPECT_EQ(secondSampleInNextElement, *++this->iterator);
 }
 
-TEST(SampleIterator_Tests, equality) // NOLINT
+TYPED_TEST(PackedSampleIterator, overwriting_the_last_sample_preserves_the_prefix_and_next_element) // NOLINT
 {
-  EXPECT_EQ(SampleIterator<uint8_t>(nullptr, 0, 1), SampleIterator<uint8_t>(nullptr, 0, 1));
-  EXPECT_NE(SampleIterator<const uint8_t>(nullptr, 0, 1), SampleIterator<const uint8_t>(testData, 0, 1));
-  EXPECT_NE(SampleIterator<uint8_t>(nullptr, 0, 1), SampleIterator<uint8_t>(nullptr, 1, 1));
-  EXPECT_NE(SampleIterator<uint8_t>(nullptr, 0, 1), SampleIterator<uint8_t>(nullptr, 0, 2));
+  using Base = TestFixture::Base_;
+  this->storage.fill(TestFixture::maximumElement);
+  const Base unchangedPrefix = TestFixture::maximumElement - TestFixture::maximumSample;
+  const Base replacement = 0;
+  SampleIterator<Base> lastSample(this->storage.data(), TestFixture::samplesPerElement - 1, TestFixture::sampleBits);
+
+  lastSample.set(replacement);
+  EXPECT_THAT(
+    this->storage, ElementsAre(unchangedPrefix + replacement, TestFixture::maximumElement, TestFixture::maximumElement)
+  );
+
+  lastSample.set(TestFixture::maximumSample);
+  EXPECT_THAT(this->storage, ElementsAre(TestFixture::maximumElement, TestFixture::maximumElement, TestFixture::maximumElement));
 }
 
-using ArithmeticParam = std::tuple<int, int, int>;
-
-class SampleIterator_arithmetic : public ::testing::TestWithParam<ArithmeticParam>
+TYPED_TEST(PackedSampleIterator, addition_can_skip_a_whole_element_from_its_last_sample) // NOLINT
 {
+  using Base = TestFixture::Base_;
+  const Base destinationValue = 1;
+  this->storage[1] = TestFixture::maximumElement;
+  this->storage[2] = static_cast<Base>(destinationValue << (TestFixture::storageBits - TestFixture::sampleBits));
+  const SampleIterator<const Base> start(this->storage.data(), TestFixture::samplesPerElement - 1, TestFixture::sampleBits);
+  const SampleIterator<const Base> destination(this->storage.data() + 2, 0, TestFixture::sampleBits);
+  const unsigned oneWholeElementAndOneSample = TestFixture::samplesPerElement + 1;
+
+  auto advanced = start;
+  advanced += oneWholeElementAndOneSample;
+
+  EXPECT_EQ(destination, advanced);
+  EXPECT_EQ(destination, start + oneWholeElementAndOneSample);
+  EXPECT_EQ(destination, oneWholeElementAndOneSample + start);
+  EXPECT_EQ(destinationValue, *advanced);
+  EXPECT_EQ(destinationValue, *(start + oneWholeElementAndOneSample));
+  EXPECT_EQ(destinationValue, *(oneWholeElementAndOneSample + start));
+  EXPECT_EQ(0, *++advanced);
+}
+
+template <typename Base>
+class FullWidthSampleIterator : public testing::Test
+{
+protected:
+  static constexpr int sampleBits = std::numeric_limits<Base>::digits;
+  std::array<Base, 3> storage{};
+  SampleIterator<const Base> iterator{storage.data(), 0, sampleBits};
 };
 
-INSTANTIATE_TEST_SUITE_P(
-  SampleIterator_Tests,
-  SampleIterator_arithmetic,
-  ::testing::Combine(::testing::ValuesIn(bit_depths), ::testing::ValuesIn(initial_offsets), ::testing::ValuesIn(deltas))
-);
+using StorageTypes = testing::Types<uint8_t, uint16_t>;
+TYPED_TEST_SUITE(FullWidthSampleIterator, StorageTypes);
 
-TEST_P(SampleIterator_arithmetic, Test) // NOLINT
+TYPED_TEST(FullWidthSampleIterator, reads_whole_elements_without_losing_the_high_bits) // NOLINT
 {
-  auto [bps, initial_offset, delta] = GetParam();
+  const TypeParam firstValue = std::numeric_limits<TypeParam>::max() - 1;
+  const TypeParam nextValue = std::numeric_limits<TypeParam>::max();
+  this->storage[0] = firstValue;
+  this->storage[1] = nextValue;
 
-  const SampleIterator<const uint8_t> start(nullptr, initial_offset, bps);
-  SampleIterator<const uint8_t> expected = start;
-  for(auto i = 0; i < delta; i++, expected++)
-  {
-  }
+  EXPECT_EQ(firstValue, this->iterator.get());
+  EXPECT_EQ(firstValue, *this->iterator++);
+  EXPECT_EQ(nextValue, *this->iterator);
+}
 
-  SampleIterator<const uint8_t> result = start;
-  result += delta;
+TYPED_TEST(FullWidthSampleIterator, writing_the_middle_sample_preserves_both_neighbours) // NOLINT
+{
+  const TypeParam before = 10;
+  const TypeParam original = 20;
+  const TypeParam after = 30;
+  const TypeParam replacement = 40;
+  this->storage = {before, original, after};
+  SampleIterator<TypeParam> middle(this->storage.data(), 1, TestFixture::sampleBits);
 
-  EXPECT_EQ(result, expected);
-  EXPECT_EQ(start + delta, expected);
-  EXPECT_EQ(delta + start, expected);
+  middle.set(replacement);
+
+  EXPECT_THAT(this->storage, ElementsAre(before, replacement, after));
+}
+
+TYPED_TEST(FullWidthSampleIterator, addition_reaches_the_selected_element) // NOLINT
+{
+  const TypeParam destinationValue = 30;
+  this->storage[2] = destinationValue;
+  const unsigned destinationIndex = 2;
+  auto advanced = this->iterator;
+
+  advanced += destinationIndex;
+
+  EXPECT_EQ(destinationValue, *advanced);
+  EXPECT_EQ(destinationValue, *(this->iterator + destinationIndex));
+  EXPECT_EQ(destinationValue, *(destinationIndex + this->iterator));
+}
+
+TYPED_TEST(FullWidthSampleIterator, equality_distinguishes_buffers_positions_and_sample_widths) // NOLINT
+{
+  const auto samePosition = this->iterator;
+  const SampleIterator<const TypeParam> nextPosition(this->storage.data(), 1, TestFixture::sampleBits);
+  const SampleIterator<const TypeParam> narrowerSample(this->storage.data(), 0, 1);
+  const std::array<TypeParam, 3> anotherBuffer{};
+  const SampleIterator<const TypeParam> otherBuffer(anotherBuffer.data(), 0, TestFixture::sampleBits);
+
+  EXPECT_EQ(samePosition, this->iterator);
+  EXPECT_NE(nextPosition, this->iterator);
+  EXPECT_NE(narrowerSample, this->iterator);
+  EXPECT_NE(otherBuffer, this->iterator);
 }

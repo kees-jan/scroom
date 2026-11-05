@@ -12,6 +12,7 @@
 #include <gtk/gtk.h>
 
 #include <scroom/bookkeeping.hh>
+#include <scroom/layer-rendering-operations.hh>
 #include <scroom/observable.hh>
 #include <scroom/rectangle.hh>
 #include <scroom/tiledbitmaplayer.hh>
@@ -34,7 +35,7 @@ private:
   Layer::Ptr layer;
   Scroom::Utils::Rectangle<int> tileRange;
   int zoom{0};
-  LayerOperations::Ptr layerOperations;
+  LayerRenderingOperations::Ptr layerOperations;
 
   /**
    * References to things we want to keep around.
@@ -64,8 +65,12 @@ private:
 public:
   static Ptr create(const ViewInterface::WeakPtr& viewInterface);
 
-  void
-    setNeededTiles(Layer::Ptr const& l, Scroom::Utils::Rectangle<int> tileRange, int zoom, LayerOperations::Ptr layerOperations);
+  void setNeededTiles(
+    Layer::Ptr const& l,
+    Scroom::Utils::Rectangle<int> tileRange,
+    int zoom,
+    LayerRenderingOperations::Ptr layerOperations
+  );
   void resetNeededTiles();
   void storeVolatileStuff(const Scroom::Utils::Stuff& stuff);
   void clearVolatileStuff();

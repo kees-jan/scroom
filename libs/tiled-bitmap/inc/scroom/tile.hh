@@ -13,6 +13,18 @@
 #include <scroom/global.hh>
 #include <scroom/memoryblobs.hh>
 
+/**
+ * Represent the state of one of the tiles that make up a layer in the
+ * bitmap.
+ */
+enum TileState
+{
+  TILE_UNINITIALIZED, /**< Tile does not yet contain any data */
+  TILE_UNLOADED, /**< Tile does contain data, but has been swapped out */
+  TILE_LOADED, /**< Tile does contain data, and data is in memory */
+  TILE_OUT_OF_BOUNDS /**< Tile is located outside the bitmap area */
+};
+
 class Tile
 {
 public:

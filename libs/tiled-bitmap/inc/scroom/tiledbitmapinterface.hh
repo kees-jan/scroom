@@ -8,6 +8,7 @@
 #pragma once
 
 #include <memory>
+#include <utility>
 #include <vector>
 
 #include <gdk/gdk.h>
@@ -17,6 +18,8 @@
 
 #include <scroom/context.hh>
 #include <scroom/interface.hh>
+#include <scroom/layer-reduction.hh>
+#include <scroom/layer-rendering-operations.hh>
 #include <scroom/presentationinterface.hh>
 #include <scroom/rectangle.hh>
 #include <scroom/scroominterface.hh>
@@ -24,164 +27,52 @@
 #include <scroom/tile.hh>
 #include <scroom/viewinterface.hh>
 
-/**
- * Represent the state of one of the tiles that make up a layer in the
- * bitmap.
- */
-enum TileState
-{
-  TILE_UNINITIALIZED, /**< Tile does not yet contain any data */
-  TILE_UNLOADED, /**< Tile does contain data, but has been swapped out */
-  TILE_LOADED, /**< Tile does contain data, and data is in memory */
-  TILE_OUT_OF_BOUNDS /**< Tile is located outside the bitmap area */
-};
-
-/**
- * Operations on a layer in the TiledBitmap
- *
- * Tasks of LayerOperations objects include:
- * @li Reducing the given Layer by a factor of 8, producing data that
- *    the LayerOperations object of the next layer will understand
- * @li Draw any portion of the given Layer, at the requested zoom level
- *
- * @see Layer
- */
-class LayerOperations : private Interface
+// Compatibility facade for existing operation factories. Data consumers retain
+// the independent reducer; renderers retain only LayerRenderingOperations.
+class LayerOperations : public LayerRenderingOperations
 {
 public:
   using Ptr = std::shared_ptr<LayerOperations>;
 
-public:
-  /**
-   * Return the number of bits per pixel that the layer will use.
-   *
-   * This number will be used to compute the amount of memory required
-   * to store one tile
-   */
-  virtual int getBpp() = 0;
+  [[nodiscard]] virtual int getBpp() const = 0;
+  [[nodiscard]] virtual Scroom::TiledBitmap::LayerReduction createReduction() const = 0;
+};
 
-  /**
-   * Initialize the canvas for drawing the bitmap
-   *
-   * When TiledBitmapInterface::redraw() is called, (a portion of) the
-   * Layer needs to be redrawn. TiledBitmap will compute which tiles
-   * are involved in the redraw, and call draw() or drawState() for
-   * each of them, as appropriate. However, before doing so, it will
-   * first call initializeCairo(). You can take this opportunity to
-   * set various properties that are needed in all subsequent calls to
-   * draw() and drawState(), such as anti-aliasing and line caps.
-   */
-  virtual void initializeCairo(cairo_t* cr) = 0;
+// The supplier ensures each reducer's output matches the following layer's
+// storage size and renderer. Pixel encodings remain the supplier's responsibility.
+struct LayerDescription
+{
+  int bpp;
+  Scroom::TiledBitmap::LayerReduction reduction;
+  LayerRenderingOperations::Ptr rendering;
 
-  /**
-   * Draw the given tileArea into the given viewArea at the requested zoom level
-   *
-   * @param cr The canvas on which to draw
-   * @param tile The tile to take data from
-   * @param tileArea Area of the tile that needs to be drawn
-   * @param viewArea Area of the canvas that the tile needs to be drawn in
-   * @param zoom The requested zoom level. One pixel of your
-   *    presentation should have size 2**@c zoom when drawn. @c zoom
-   *    will be negative for all but the first layer.
-   * @param cache Depending on whether the cacheZoom() function finished
-   *    already, this may either be an empty reference, or a reference
-   *    to the value returned by cacheZoom()
-   */
-  virtual void draw(
-    cairo_t* cr,
-    const ConstTile::Ptr& tile,
-    Scroom::Utils::Rectangle<double> tileArea,
-    Scroom::Utils::Rectangle<double> viewArea,
-    int zoom,
-    Scroom::Utils::Stuff cache
-  ) = 0;
-
-  /**
-   * Draw the given state into the given viewArea
-   *
-   * The associated tile is likely not loaded or not initialized or in
-   * whatever other TileState that doesn't allow its contents to be
-   * drawn.
-   *
-   * Something needs to be drawn in the given @c viewArea
-   * anyway. Implementors might want to just draw an empty rectangle,
-   * maybe color-coded to reflect the state of the tile.
-   */
-  virtual void drawState(cairo_t* cr, TileState s, Scroom::Utils::Rectangle<double> viewArea) = 0;
-
-  /**
-   * Cache data for use during later cacheZoom() calls.
-   *
-   * This function is called for a given tile, and then the results
-   * are passed to the cacheZoom() function. Because draw() is called
-   * relatively frequently (i.e. when scrolling), it is recommended to
-   * do cpu-intensive work in the cache() and cacheZoom() functions,
-   * and then re-use the data to make the draw() faster.
-   *
-   * The default implementation returns an empty reference, meaning
-   * nothing is cached. As a result, the draw() function will receive
-   * an empty reference.
-   *
-   * @param tile the Tile for which caching is requested
-   */
-  virtual Scroom::Utils::Stuff cache(const ConstTile::Ptr& /*tile*/) { return {}; }
-
-  /**
-   * Cache data for use during later draw() calls.
-   *
-   * This function is called for a given tile and zoom level, and then
-   * the results are passed to the draw() function. Because draw() is
-   * called relatively frequently (i.e. when scrolling), it is
-   * recommended to do cpu-intensive work in the cache() and
-   * cacheZoom() functions, and then re-use the data to make the
-   * draw() faster.
-   *
-   * The default implementation returns an empty reference, meaning
-   * nothing is cached. As a result, the draw() function will receive
-   * an empty reference.
-   *
-   * @param tile the Tile for which caching is requested
-   * @param zoom the requested zoom level
-   * @param cache the output of cache(const ConstTile::Ptr)
-   */
-  virtual Scroom::Utils::Stuff cacheZoom(const ConstTile::Ptr& /*tile*/, int /*zoom*/, Scroom::Utils::Stuff& /*cache*/)
+  LayerDescription(int bpp_, Scroom::TiledBitmap::LayerReduction reduction_, LayerRenderingOperations::Ptr rendering_)
+    : bpp(bpp_)
+    , reduction(std::move(reduction_))
+    , rendering(std::move(rendering_))
   {
-    return {};
   }
 
-  /**
-   * Reduce the source tile by a factor of 8
-   *
-   * The target tile will contain data for 8*8 source tiles. Offsets
-   * @c x and @c y indicate which of those 64 source tiles is
-   * currently being processed
-   *
-   * @param target Tile that will contain the reduced bitmap
-   * @param source Tile that is to be reduced
-   * @param x x-offset (0..7) of the source tile in the target tile
-   * @param y y-offset (0..7) of the source tile in the target tile
-   *
-   * @note The @c target tile belongs to a different layer, and hence
-   *    possibly has a different bpp than the current one, depending
-   *    on the ::LayerSpec given to ::createTiledBitmap()
-   *
-   */
-  virtual void reduce(Tile::Ptr target, ConstTile::Ptr source, int x, int y) = 0;
+  explicit LayerDescription(LayerOperations::Ptr operations)
+    : bpp(operations->getBpp())
+    , reduction(operations->createReduction())
+    , rendering(std::move(operations))
+  {
+  }
 };
 
 /**
- * Set of LayerOperations, that define how to draw and pre-scale a
+ * Layer descriptions defining how to draw and pre-scale a
  * TiledBitmap
  *
  * While creating a TiledBitmap, a number of layers will be
  * created. The base layer will contain raw bitmap data. Each
  * subsequent layer is reduced by a factor 8 with respect to the
- * previous. For each Layer, a LayerOperations object should be
- * provided. If the TiledBitmap creates more layers than there are
- * LayerOperations objects in the ::LayerSpec, then the last
- * LayerOperations object will be used for all remaining layers.
+ * previous. Each description supplies bits per pixel and independent reduction and rendering
+ * operations. If more layers are created than there are descriptions, the last
+ * description is reused for all remaining layers.
  */
-using LayerSpec = std::vector<LayerOperations::Ptr>;
+using LayerSpec = std::vector<LayerDescription>;
 
 /**
  * Provide bitmap data
@@ -295,10 +186,8 @@ public:
  * divided into tiles, such that only the relevant part can be loaded
  * into memory.
  *
- * Of course ::createTiledBitmap() doesn't know anything about how you
- * choose to represent your bitmap data, so you'll have to specify (by
- * implementing LayerOperations) how to draw portions of your bitmap
- * at given zoom levels, and how to pre-scale your bitmap.
+ * Supply layer descriptions with independent reduction and rendering operations.
+ * Existing LayerOperations factories can also be used to construct descriptions.
  *
  * @note When calling ::createTiledBitmap(), all the internal data
  * structures will be set up. You still have to fill your bitmap with
@@ -306,8 +195,7 @@ public:
  *
  * @param bitmapWidth the width of the bitmap
  * @param bitmapHeight the height of the bitmap
- * @param ls LayerOperations objects, specifying how to draw (portions
- *    of) your bitmap at given zoom levels
+ * @param ls Layer descriptions specifying bits per pixel, reduction, and rendering
  *
  * @return A pointer to a newly created TiledBitmapInterface. You can
  *    use this pointer to manipulate your bitmap.

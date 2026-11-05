@@ -115,12 +115,12 @@ namespace Scroom::TiledBitmap
 
     if(bmd.bitsPerSample == 8)
     {
-      return LayerSpecResult({OperationsRgb24bpp::create()}, nullptr);
+      return LayerSpecResult({LayerDescription(OperationsRgb24bpp::create())}, nullptr);
     }
 
     if(bmd.bitsPerSample == 16)
     {
-      return LayerSpecResult({OperationsRgb48bpp::create()}, nullptr);
+      return LayerSpecResult({LayerDescription(OperationsRgb48bpp::create())}, nullptr);
     }
 
     logger->error("RGB bitmaps with {} bits per sample are not supported", bmd.bitsPerSample);
@@ -198,20 +198,20 @@ namespace Scroom::TiledBitmap
 
     if(bmd.bitsPerSample == 2 || bmd.bitsPerSample == 4)
     {
-      ls.push_back(Operations::create(colormapHelper, bmd.bitsPerSample));
-      ls.push_back(OperationsColormapped::create(colormapHelper, bmd.bitsPerSample));
+      ls.emplace_back(Operations::create(colormapHelper, bmd.bitsPerSample));
+      ls.emplace_back(OperationsColormapped::create(colormapHelper, bmd.bitsPerSample));
     }
     else if(bmd.bitsPerSample == 16)
     {
-      ls.push_back(Operations16bpp::create(colormapHelper));
+      ls.emplace_back(Operations16bpp::create(colormapHelper));
     }
     else
     {
       if(bmd.bitsPerSample == 1)
       {
-        ls.push_back(Operations1bpp::create(colormapHelper));
+        ls.emplace_back(Operations1bpp::create(colormapHelper));
       }
-      ls.push_back(Operations8bpp::create(colormapHelper));
+      ls.emplace_back(Operations8bpp::create(colormapHelper));
     }
 
     return LayerSpecResult(ls, colormapHelper);
@@ -233,8 +233,8 @@ namespace Scroom::TiledBitmap
     }
 
     LayerSpec ls;
-    ls.push_back(Operations::create(bmd.colormapHelper, bmd.bitsPerSample));
-    ls.push_back(OperationsColormapped::create(bmd.colormapHelper, bmd.bitsPerSample));
+    ls.emplace_back(Operations::create(bmd.colormapHelper, bmd.bitsPerSample));
+    ls.emplace_back(OperationsColormapped::create(bmd.colormapHelper, bmd.bitsPerSample));
 
     return LayerSpecResult(ls, bmd.colormapHelper);
   }

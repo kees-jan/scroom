@@ -13,6 +13,7 @@
 
 #include <boost/thread.hpp>
 
+#include <scroom/layer-reduction.hh>
 #include <scroom/tiledbitmaplayer.hh>
 
 class LayerCoordinator
@@ -24,14 +25,14 @@ private:
   Tile::Ptr targetTileData;
   std::map<CompressedTile::Ptr, std::pair<int, int>> sourceTiles;
   Scroom::Utils::StuffList registrations;
-  LayerOperations::Ptr lo;
+  Scroom::TiledBitmap::LayerReduction reduceLayer;
   boost::mutex mut;
   int unfinishedSourceTiles{0};
 
 public:
   using Ptr = std::shared_ptr<LayerCoordinator>;
 
-  static Ptr create(CompressedTile::Ptr targetTile, LayerOperations::Ptr lo);
+  static Ptr create(CompressedTile::Ptr targetTile, Scroom::TiledBitmap::LayerReduction reduceLayer);
 
   ~LayerCoordinator() override;
   LayerCoordinator(const LayerCoordinator&) = delete;
@@ -42,7 +43,7 @@ public:
   void addSourceTile(int x, int y, const CompressedTile::Ptr& tile);
 
 private:
-  LayerCoordinator(CompressedTile::Ptr targetTile, LayerOperations::Ptr lo);
+  LayerCoordinator(CompressedTile::Ptr targetTile, Scroom::TiledBitmap::LayerReduction reduceLayer);
 
   void reduceSourceTile(const CompressedTile::Ptr& tile, ConstTile::Ptr const& tileData);
 

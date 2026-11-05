@@ -80,7 +80,7 @@ void TileViewState::setViewData(const TiledBitmapViewData::Ptr& tbvd_)
   kick();
 }
 
-void TileViewState::setZoom(LayerOperations::Ptr lo_, int zoom_)
+void TileViewState::setZoom(LayerRenderingOperations::Ptr lo_, int zoom_)
 {
   bool mustKick = false;
 
@@ -186,7 +186,7 @@ void TileViewState::process(const ThreadPool::WeakQueue::Ptr& wq)
 void TileViewState::computeBase(
   const ThreadPool::WeakQueue::Ptr& wq,
   const ConstTile::Ptr& tile_,
-  const LayerOperations::Ptr& lo_
+  const LayerRenderingOperations::Ptr& lo_
 )
 {
   Scroom::Utils::Stuff const baseCache_ = lo_->cache(tile_);
@@ -204,7 +204,7 @@ void TileViewState::computeBase(
 void TileViewState::computeZoom(
   const ThreadPool::WeakQueue::Ptr& wq,
   const ConstTile::Ptr& tile_,
-  const LayerOperations::Ptr& lo_,
+  const LayerRenderingOperations::Ptr& lo_,
   Scroom::Utils::Stuff baseCache_,
   int zoom_
 )

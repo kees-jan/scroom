@@ -15,14 +15,14 @@
 
 #include "local.hh"
 
-LayerCoordinator::Ptr LayerCoordinator::create(CompressedTile::Ptr targetTile, LayerOperations::Ptr lo)
+LayerCoordinator::Ptr LayerCoordinator::create(CompressedTile::Ptr targetTile, Scroom::TiledBitmap::LayerReduction reduceLayer)
 {
-  return LayerCoordinator::Ptr(new LayerCoordinator(std::move(targetTile), std::move(lo)));
+  return LayerCoordinator::Ptr(new LayerCoordinator(std::move(targetTile), std::move(reduceLayer)));
 }
 
-LayerCoordinator::LayerCoordinator(CompressedTile::Ptr targetTile_, LayerOperations::Ptr lo_)
+LayerCoordinator::LayerCoordinator(CompressedTile::Ptr targetTile_, Scroom::TiledBitmap::LayerReduction reduceLayer_)
   : targetTile(std::move(targetTile_))
-  , lo(std::move(lo_))
+  , reduceLayer(std::move(reduceLayer_))
 
 {
 }
@@ -76,7 +76,7 @@ void LayerCoordinator::reduceSourceTile(const CompressedTile::Ptr& tile, ConstTi
   }
   ConstTile::Ptr const source = tile->getConstTileSync();
 
-  lo->reduce(targetTileData, source, x, y);
+  reduceLayer(targetTileData, source, x, y);
 
   boost::unique_lock<boost::mutex> const lock(mut);
   unfinishedSourceTiles--;

@@ -402,7 +402,8 @@ namespace
     if(bottomLayer && !layerSpec.empty())
     {
       auto tiledBitmap = TiledBitmap::create(bottomLayer, layerSpec);
-      PipetteLayerOperations::Ptr const pipetteLayerOperation = std::dynamic_pointer_cast<PipetteLayerOperations>(layerSpec[0]);
+      PipetteLayerOperations::Ptr const pipetteLayerOperation =
+        std::dynamic_pointer_cast<PipetteLayerOperations>(layerSpec[0].rendering);
 
       std::map<std::string, std::string> properties;
       if(bmd.colormapHelper)

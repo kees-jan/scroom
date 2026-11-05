@@ -33,7 +33,7 @@ void TiledBitmapViewData::setNeededTiles(
   Layer::Ptr const& l,
   Scroom::Utils::Rectangle<int> tileRange_,
   int zoom_,
-  LayerOperations::Ptr layerOperations_
+  LayerRenderingOperations::Ptr layerOperations_
 )
 {
   boost::unique_lock<boost::mutex> lock(mut);

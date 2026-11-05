@@ -13,10 +13,10 @@
 
 #include <boost/thread.hpp>
 
+#include <scroom/layer-rendering-operations.hh>
 #include <scroom/observable.hh>
 #include <scroom/stuff.hh>
 #include <scroom/threadpool.hh>
-#include <scroom/tiledbitmapinterface.hh>
 #include <scroom/tiledbitmaplayer.hh>
 
 class TiledBitmapViewData;
@@ -50,7 +50,7 @@ private:
   Scroom::Utils::Stuff r;
   ConstTile::Ptr tile;
   std::weak_ptr<TiledBitmapViewData> tbvd;
-  LayerOperations::Ptr lo;
+  LayerRenderingOperations::Ptr lo;
   int zoom{0};
   Scroom::Utils::StuffWeak lifeTimeManager;
   Scroom::Utils::Stuff baseCache;
@@ -68,7 +68,7 @@ public:
 
   Scroom::Utils::Stuff getCacheResult();
   void setViewData(const std::shared_ptr<TiledBitmapViewData>& tbvd);
-  void setZoom(LayerOperations::Ptr lo, int zoom);
+  void setZoom(LayerRenderingOperations::Ptr lo, int zoom);
 
   // TileLoadingObserver /////////////////////////////////////////////////
   void tileLoaded(ConstTile::Ptr tile) override;
@@ -86,11 +86,11 @@ private:
    */
   void process(const ThreadPool::WeakQueue::Ptr& wq);
 
-  void computeBase(const ThreadPool::WeakQueue::Ptr& wq, const ConstTile::Ptr& tile_, const LayerOperations::Ptr& lo_);
+  void computeBase(const ThreadPool::WeakQueue::Ptr& wq, const ConstTile::Ptr& tile_, const LayerRenderingOperations::Ptr& lo_);
   void computeZoom(
     const ThreadPool::WeakQueue::Ptr& wq,
     const ConstTile::Ptr& tile,
-    const LayerOperations::Ptr& lo,
+    const LayerRenderingOperations::Ptr& lo,
     Scroom::Utils::Stuff baseCache,
     int zoom
   );

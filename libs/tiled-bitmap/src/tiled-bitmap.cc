@@ -105,34 +105,29 @@ TiledBitmap::TiledBitmap(int bitmapWidth_, int bitmapHeight_, LayerSpec ls_)
 void TiledBitmap::initialize(const Layer::Ptr& bottom)
 {
   const auto sizes = Geometry::pyramidSizes({bitmapWidth, bitmapHeight}, TILESIZE / 4);
-  LayerOperations::Ptr lo = ls[0];
+  auto reducePreviousLayer = ls[0].reduction;
   Scroom::MemoryBlobs::PageProvider::Ptr const provider = bottom->getPageProvider();
 
   registrations.emplace_back(bottom->registerObserver(shared_from_this<TileInitialisationObserver>()));
   layers.push_back(bottom);
 
   Layer::Ptr prevLayer = bottom;
-  LayerOperations::Ptr prevLo = lo;
 
   for(unsigned int i = 1; i < sizes.size(); i++)
   {
-    if(i < ls.size())
-    {
-      lo = ls[i];
-    }
-
-    Layer::Ptr const layer = Layer::create(i, sizes[i].x, sizes[i].y, lo->getBpp(), provider);
+    const auto& description = ls[std::min<std::size_t>(i, ls.size() - 1)];
+    Layer::Ptr const layer = Layer::create(i, sizes[i].x, sizes[i].y, description.bpp, provider);
     registrations.emplace_back(layer->registerObserver(shared_from_this<TileInitialisationObserver>()));
     layers.push_back(layer);
 
-    connect(layer, prevLayer, prevLo);
+    connect(layer, prevLayer, reducePreviousLayer);
 
     prevLayer = layer;
-    prevLo = lo;
+    reducePreviousLayer = description.reduction;
   }
 }
 
-void TiledBitmap::initialize() { initialize(Layer::create(bitmapWidth, bitmapHeight, ls[0]->getBpp())); }
+void TiledBitmap::initialize() { initialize(Layer::create(bitmapWidth, bitmapHeight, ls[0].bpp)); }
 
 TiledBitmap::~TiledBitmap()
 {
@@ -142,7 +137,11 @@ TiledBitmap::~TiledBitmap()
   layers.clear();
 }
 
-void TiledBitmap::connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, const LayerOperations::Ptr& prevLo)
+void TiledBitmap::connect(
+  Layer::Ptr const& layer,
+  Layer::Ptr const& prevLayer,
+  const Scroom::TiledBitmap::LayerReduction& reducePreviousLayer
+)
 {
   const int horTileCount = prevLayer->getHorTileCount();
   const int verTileCount = prevLayer->getVerTileCount();
@@ -160,7 +159,7 @@ void TiledBitmap::connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, 
       CompressedTileLine const& tileLine = layer->getTileLine(rowMapping.targetIndex.y);
       for(auto& z: tileLine)
       {
-        LayerCoordinator::Ptr const lc = LayerCoordinator::create(z, prevLo);
+        LayerCoordinator::Ptr const lc = LayerCoordinator::create(z, reducePreviousLayer);
         coordinators_.push_back(lc);
         coordinators.push_back(lc);
       }
@@ -217,7 +216,7 @@ void TiledBitmap::redraw(
   const int layerZoom = layerSelection.zoom;
   const auto presentationAreaInLayerCoordinates = layerSelection.presentationAreaInLayerCoordinates;
   Layer::Ptr const layer = layers[layerNr];
-  LayerOperations::Ptr const layerOperations = ls[std::min(ls.size() - 1, layerNr)];
+  LayerRenderingOperations::Ptr const layerOperations = ls[std::min(ls.size() - 1, layerNr)].rendering;
 
   const auto tileRange = Geometry::tileRangeForRedraw(presentationAreaInLayerCoordinates, TILESIZE);
 

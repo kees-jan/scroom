@@ -15,7 +15,10 @@
 
 #include <scroom/bitmap-helpers.hh>
 #include <scroom/cairo-helpers.hh>
+#include <scroom/layer-reduction.hh>
 #include <scroom/layeroperations.hh>
+
+using namespace Scroom::TiledBitmap;
 
 
 using Scroom::Utils::Stuff;
@@ -28,38 +31,6 @@ namespace
   std::shared_ptr<unsigned char> shared_malloc(size_t size) { return {static_cast<unsigned char*>(malloc(size)), free}; }
 
 } // namespace
-////////////////////////////////////////////////////////////////////////
-// BitCountLut
-
-class BitCountLut
-{
-private:
-  byte lut[256];
-
-public:
-  BitCountLut();
-
-  byte lookup(byte index);
-};
-
-BitCountLut bcl;
-
-// NOLINTNEXTLINE
-BitCountLut::BitCountLut()
-{
-  for(int i = 0; i < 256; i++)
-  {
-    int sum = 0;
-    for(int v = i; v; v >>= 1)
-    {
-      sum += v & 1;
-    }
-    lut[i] = sum;
-  }
-}
-
-inline byte BitCountLut::lookup(byte index) { return lut[index]; }
-
 ////////////////////////////////////////////////////////////////////////
 // CommonOperations
 
@@ -317,7 +288,9 @@ Operations1bpp::Operations1bpp(ColormapProvider::Ptr colormapProvider_)
 {
 }
 
-int Operations1bpp::getBpp() { return 1; }
+int Operations1bpp::getBpp() const { return 1; }
+
+LayerReduction Operations1bpp::createReduction() const { return createIntensityReduction(1); }
 
 Scroom::Utils::Stuff Operations1bpp::cache(const ConstTile::Ptr& tile)
 {
@@ -341,41 +314,6 @@ Scroom::Utils::Stuff Operations1bpp::cache(const ConstTile::Ptr& tile)
   return BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
 }
 
-void Operations1bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y)
-{
-  // Reducing by a factor 8. Source tile is 1bpp. Target tile is 8bpp
-  const int sourceStride = source->width / 8;
-  const byte* sourceBase = source->data.get();
-
-  const int targetStride = target->width;
-  byte* targetBase = target->data.get() + target->height * y * targetStride / 8 + target->width * x / 8;
-
-  for(int j = 0; j < source->height / 8; j++, targetBase += targetStride, sourceBase += sourceStride * 8)
-  {
-    // Iterate vertically over target
-    const byte* sourcePtr = sourceBase;
-    byte* targetPtr = targetBase;
-
-    for(int i = 0; i < source->width / 8; i++, sourcePtr++, targetPtr++)
-    {
-      // Iterate horizontally over target
-
-      // Goal is to compute a 8-bit grey value from a 8*8 black/white
-      // image. To do so, we take each of the 8 bytes, count the
-      // number of 1's in each, and add them. Finally, we divide that
-      // by 64 (the maximum number of ones in that area
-
-      const byte* current = sourcePtr;
-      int sum = 0;
-      for(int k = 0; k < 8; k++, current += sourceStride)
-      {
-        sum += bcl.lookup(*current);
-      }
-
-      *targetPtr = sum * 255 / 64;
-    }
-  }
-}
 
 void Operations1bpp::draw(
   cairo_t* cr,
@@ -436,7 +374,9 @@ Operations8bpp::Operations8bpp(ColormapProvider::Ptr colormapProvider_)
 {
 }
 
-int Operations8bpp::getBpp() { return 8; }
+int Operations8bpp::getBpp() const { return 8; }
+
+LayerReduction Operations8bpp::createReduction() const { return createIntensityReduction(8); }
 
 Scroom::Utils::Stuff Operations8bpp::cache(const ConstTile::Ptr& tile)
 {
@@ -464,41 +404,6 @@ Scroom::Utils::Stuff Operations8bpp::cache(const ConstTile::Ptr& tile)
   return BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
 }
 
-void Operations8bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y)
-{
-  // Reducing by a factor 8. Source tile is 8bpp. Target tile is 8bpp
-  const int sourceStride = source->width;
-  const byte* sourceBase = source->data.get();
-
-  const int targetStride = target->width;
-  byte* targetBase = target->data.get() + target->height * y * targetStride / 8 + target->width * x / 8;
-
-  for(int j = 0; j < source->height / 8; j++, targetBase += targetStride, sourceBase += sourceStride * 8)
-  {
-    // Iterate vertically over target
-    const byte* sourcePtr = sourceBase;
-    byte* targetPtr = targetBase;
-
-    for(int i = 0; i < source->width / 8; i++, sourcePtr += 8, targetPtr++)
-    {
-      // Iterate horizontally over target
-
-      // Goal is to compute a 8-bit grey value from a 8*8 grey image.
-      const byte* base = sourcePtr;
-      int sum = 0;
-      for(int k = 0; k < 8; k++, base += sourceStride)
-      {
-        const byte* current = base;
-        for(int l = 0; l < 8; l++, current++)
-        {
-          sum += *current;
-        }
-      }
-
-      *targetPtr = sum / 64;
-    }
-  }
-}
 
 void Operations8bpp::draw(
   cairo_t* cr,
@@ -558,7 +463,9 @@ Operations16bpp::Operations16bpp(ColormapProvider::Ptr colormapProvider_)
 {
 }
 
-int Operations16bpp::getBpp() { return 16; }
+int Operations16bpp::getBpp() const { return 16; }
+
+LayerReduction Operations16bpp::createReduction() const { return createIntensityReduction(16); }
 
 Scroom::Utils::Stuff Operations16bpp::cache(const ConstTile::Ptr& tile)
 {
@@ -586,42 +493,6 @@ Scroom::Utils::Stuff Operations16bpp::cache(const ConstTile::Ptr& tile)
   return BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
 }
 
-void Operations16bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y)
-{
-  // Reducing by a factor 8. Source tile is 16bpp. Target tile is 16bpp
-  const int sourceStride = source->width;
-  auto const* sourceBase = reinterpret_cast<uint16_t const*>(source->data.get());
-
-  const int targetStride = target->width;
-  auto* targetBase =
-    reinterpret_cast<uint16_t*>(target->data.get()) + target->height * y * targetStride / 8 + targetStride * x / 8;
-
-  for(int j = 0; j < source->height / 8; j++, targetBase += targetStride, sourceBase += sourceStride * 8)
-  {
-    // Iterate vertically over target
-    auto const* sourcePtr = sourceBase;
-    auto* targetPtr = targetBase;
-
-    for(int i = 0; i < source->width / 8; i++, sourcePtr += 8, targetPtr++)
-    {
-      // Iterate horizontally over target
-
-      // Goal is to compute a 16-bit grey value from a 8*8 grey image.
-      auto const* base = sourcePtr;
-      int sum = 0;
-      for(int k = 0; k < 8; k++, base += sourceStride)
-      {
-        auto const* current = base;
-        for(int l = 0; l < 8; l++, current++)
-        {
-          sum += *current;
-        }
-      }
-
-      *targetPtr = sum / 64;
-    }
-  }
-}
 
 void Operations16bpp::draw(
   cairo_t* cr,
@@ -640,14 +511,16 @@ void Operations16bpp::draw(
 ////////////////////////////////////////////////////////////////////////
 // Operations24bpp
 
-PipetteCommonOperationsRGB::Ptr OperationsRgb24bpp::create() { return PipetteCommonOperationsRGB::Ptr(new OperationsRgb24bpp()); }
+LayerOperations::Ptr OperationsRgb24bpp::create() { return LayerOperations::Ptr(new OperationsRgb24bpp()); }
 
 OperationsRgb24bpp::OperationsRgb24bpp()
   : PipetteCommonOperationsRGB(8)
 {
 }
 
-int OperationsRgb24bpp::getBpp() { return 24; }
+int OperationsRgb24bpp::getBpp() const { return 24; }
+
+LayerReduction OperationsRgb24bpp::createReduction() const { return createRgbReduction(8); }
 
 Scroom::Utils::Stuff OperationsRgb24bpp::cache(const ConstTile::Ptr& tile)
 {
@@ -672,58 +545,17 @@ Scroom::Utils::Stuff OperationsRgb24bpp::cache(const ConstTile::Ptr& tile)
   return BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
 }
 
-void OperationsRgb24bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y)
-{
-  // Reducing by a factor 8. Source tile is 24bpp. Target tile is 24bpp
-  const int sourceStride = 3 * source->width; // stride in bytes
-  const byte* sourceBase = source->data.get();
-
-  const int targetStride = 3 * target->width; // stride in bytes
-  byte* targetBase = target->data.get() + target->height * y * targetStride / 8 + targetStride * x / 8;
-
-  for(int j = 0; j < source->height / 8; j++, targetBase += targetStride, sourceBase += sourceStride * 8)
-  {
-    // Iterate vertically over target
-    const byte* sourcePtr = sourceBase;
-    byte* targetPtr = targetBase;
-
-    for(int i = 0; i < source->width / 8; i++, sourcePtr += 8 * 3, targetPtr += 3)
-    {
-      // Iterate horizontally over target
-
-      // Goal is to compute a average RGB value from a 8*8 RGB image.
-      const byte* base = sourcePtr;
-      int sum_r = 0;
-      int sum_g = 0;
-      int sum_b = 0;
-      for(int k = 0; k < 8; k++, base += sourceStride)
-      {
-        const byte* current = base;
-        for(int l = 0; l < 8; l++, current += 3)
-        {
-          sum_r += current[0];
-          sum_g += current[1];
-          sum_b += current[2];
-        }
-      }
-      targetPtr[0] = sum_r / 64;
-      targetPtr[1] = sum_g / 64;
-      targetPtr[2] = sum_b / 64;
-    }
-  }
-}
 
 ////////////////////////////////////////////////////////////////////////
 // Operations48bpp
 
-PipetteCommonOperationsRGB48bpp::Ptr OperationsRgb48bpp::create()
-{
-  return PipetteCommonOperationsRGB48bpp::Ptr(new OperationsRgb48bpp());
-}
+LayerOperations::Ptr OperationsRgb48bpp::create() { return LayerOperations::Ptr(new OperationsRgb48bpp()); }
 
 OperationsRgb48bpp::OperationsRgb48bpp() = default;
 
-int OperationsRgb48bpp::getBpp() { return 48; }
+int OperationsRgb48bpp::getBpp() const { return 48; }
+
+LayerReduction OperationsRgb48bpp::createReduction() const { return createRgbReduction(16); }
 
 Scroom::Utils::Stuff OperationsRgb48bpp::cache(const ConstTile::Ptr& tile)
 {
@@ -748,47 +580,6 @@ Scroom::Utils::Stuff OperationsRgb48bpp::cache(const ConstTile::Ptr& tile)
   return BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
 }
 
-void OperationsRgb48bpp::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y)
-{
-  // Reducing by a factor 8. Source tile is 48bpp. Target tile is 48bpp
-  const int sourceStride = 3 * source->width; // stride in uint16_t samples
-  auto const* sourceBase = reinterpret_cast<uint16_t const*>(source->data.get());
-
-  const int targetStride = 3 * target->width; // stride in uint16_t samples
-  auto* targetBase =
-    reinterpret_cast<uint16_t*>(target->data.get()) + target->height * y * targetStride / 8 + targetStride * x / 8;
-
-  for(int j = 0; j < source->height / 8; j++, targetBase += targetStride, sourceBase += sourceStride * 8)
-  {
-    // Iterate vertically over target
-    auto const* sourcePtr = sourceBase;
-    auto* targetPtr = targetBase;
-
-    for(int i = 0; i < source->width / 8; i++, sourcePtr += 8 * 3, targetPtr += 3)
-    {
-      // Iterate horizontally over target
-
-      // Goal is to compute an average RGB value from an 8*8 RGB image.
-      auto const* base = sourcePtr;
-      int sum_r = 0;
-      int sum_g = 0;
-      int sum_b = 0;
-      for(int k = 0; k < 8; k++, base += sourceStride)
-      {
-        auto const* current = base;
-        for(int l = 0; l < 8; l++, current += 3)
-        {
-          sum_r += current[0];
-          sum_g += current[1];
-          sum_b += current[2];
-        }
-      }
-      targetPtr[0] = sum_r / 64;
-      targetPtr[1] = sum_g / 64;
-      targetPtr[2] = sum_b / 64;
-    }
-  }
-}
 
 ////////////////////////////////////////////////////////////////////////
 // Operations
@@ -807,7 +598,9 @@ Operations::Operations(ColormapProvider::Ptr colormapProvider_, int bpp_)
 {
 }
 
-int Operations::getBpp() { return bpp; }
+int Operations::getBpp() const { return static_cast<int>(bpp); }
+
+LayerReduction Operations::createReduction() const { return createColormapReduction(static_cast<int>(bpp)); }
 
 Scroom::Utils::Stuff Operations::cache(const ConstTile::Ptr& tile)
 {
@@ -832,69 +625,6 @@ Scroom::Utils::Stuff Operations::cache(const ConstTile::Ptr& tile)
   return BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
 }
 
-void Operations::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y)
-{
-  // Reducing by a factor 8. Target is 2*bpp and expects two indices into the colormap
-  const int sourceStride = source->width / pixelsPerByte;
-  const byte* sourceBase = source->data.get();
-
-  const int targetMultiplier = 2; // target is 2*bpp
-  const int targetStride = targetMultiplier * target->width / pixelsPerByte;
-  byte* targetBase =
-    target->data.get() + target->height * targetStride * y / 8 + targetMultiplier * target->width * x / 8 / pixelsPerByte;
-
-  for(int j = 0; j < source->height / 8; j++, targetBase += targetStride, sourceBase += sourceStride * 8)
-  {
-    // Iterate vertically over target
-    const byte* sourcePtr = sourceBase;
-    SampleIterator<uint16_t> targetPtr(reinterpret_cast<uint16_t*>(targetBase), 0, targetMultiplier * bpp);
-
-    for(int i = 0; i < source->width / 8; i++, sourcePtr += 8 / pixelsPerByte, ++targetPtr)
-    {
-      // Iterate horizontally over target
-
-      // Goal is to determine which values occurs most often in a 8*8
-      // rectangle, and pick the top two.
-      const byte* base = sourcePtr;
-      byte lookup[pixelMask + 1];
-      memset(lookup, 0, sizeof(lookup));
-
-      for(int k = 0; k < 8; k++, base += sourceStride)
-      {
-        SampleIterator<const byte> current(base, 0, bpp);
-        for(int l = 0; l < 8; l++, ++current)
-        {
-          ++(lookup[*current]);
-        }
-      }
-      unsigned first = 0;
-      unsigned second = 1;
-      if(lookup[1] > lookup[0])
-      {
-        first = 1;
-        second = 0;
-      }
-      for(unsigned c = 2; c < pixelMask + 1; c++)
-      {
-        if(lookup[c] > lookup[first])
-        {
-          second = first;
-          first = c;
-        }
-        else if(lookup[c] > lookup[second])
-        {
-          second = c;
-        }
-      }
-      if(lookup[second] == 0)
-      {
-        second = first;
-      }
-
-      targetPtr.set(first << pixelOffset | second);
-    }
-  }
-}
 
 void Operations::draw(
   cairo_t* cr,
@@ -955,7 +685,9 @@ OperationsColormapped::OperationsColormapped(ColormapProvider::Ptr colormapProvi
 {
 }
 
-int OperationsColormapped::getBpp() { return 2 * bpp; }
+int OperationsColormapped::getBpp() const { return static_cast<int>(2 * bpp); }
+
+LayerReduction OperationsColormapped::createReduction() const { return createColormapPairReduction(static_cast<int>(bpp)); }
 
 Scroom::Utils::Stuff OperationsColormapped::cache(const ConstTile::Ptr& tile)
 {
@@ -983,70 +715,6 @@ Scroom::Utils::Stuff OperationsColormapped::cache(const ConstTile::Ptr& tile)
   return BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
 }
 
-void OperationsColormapped::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y)
-{
-  // Reducing by a factor 8. Source and target both 2*bpp, containing 2 colors
-  const int multiplier = 2; // data is 2*bpp, containing 2 colors
-  const int sourceStride = multiplier * source->width / pixelsPerByte;
-  const byte* sourceBase = source->data.get();
-
-  const int targetStride = multiplier * target->width / pixelsPerByte;
-  byte* targetBase =
-    target->data.get() + target->height * y * targetStride / 8 + multiplier * target->width * x / 8 / pixelsPerByte;
-
-  for(int j = 0; j < source->height / 8; j++, targetBase += targetStride, sourceBase += sourceStride * 8)
-  {
-    // Iterate vertically over target
-    const byte* sourcePtr = sourceBase;
-    SampleIterator<uint16_t> targetPtr(reinterpret_cast<uint16_t*>(targetBase), 0, multiplier * bpp);
-
-    for(int i = 0; i < source->width / 8; i++, sourcePtr += 8 * multiplier / pixelsPerByte, ++targetPtr)
-    {
-      // Iterate horizontally over target
-
-      // Goal is to determine which value occurs most often in a 8*8
-      // rectangle, and pick that value.
-      const byte* base = sourcePtr;
-      byte lookup[pixelMask + 1];
-      memset(lookup, 0, sizeof(lookup));
-
-      for(int k = 0; k < 8; k++, base += sourceStride)
-      {
-        SampleIterator<const uint16_t> current(reinterpret_cast<uint16_t const*>(base), 0, multiplier * bpp);
-        for(int l = 0; l < 8; l++, ++current)
-        {
-          ++lookup[*current & pixelMask];
-          ++lookup[*current >> pixelOffset];
-        }
-      }
-      unsigned first = 0;
-      unsigned second = 1;
-      if(lookup[1] > lookup[0])
-      {
-        first = 1;
-        second = 0;
-      }
-      for(unsigned c = 2; c < pixelMask + 1; c++)
-      {
-        if(lookup[c] > lookup[first])
-        {
-          second = first;
-          first = c;
-        }
-        else if(lookup[c] > lookup[second])
-        {
-          second = c;
-        }
-      }
-      if(lookup[second] == 0)
-      {
-        second = first;
-      }
-
-      targetPtr.set(first << pixelOffset | second);
-    }
-  }
-}
 
 ////////////////////////////////////////////////////////////////////////
 // Operations1bppClipped
@@ -1061,7 +729,9 @@ Operations1bppClipped::Operations1bppClipped(ColormapProvider::Ptr colormapProvi
 {
 }
 
-int Operations1bppClipped::getBpp() { return 1; }
+int Operations1bppClipped::getBpp() const { return 1; }
+
+LayerReduction Operations1bppClipped::createReduction() const { return createBinaryOrReduction(); }
 
 Scroom::Utils::Stuff Operations1bppClipped::cacheZoom(const ConstTile::Ptr& tile, int zoom, Stuff& /*cache*/)
 {
@@ -1112,40 +782,4 @@ Scroom::Utils::Stuff Operations1bppClipped::cacheZoom(const ConstTile::Ptr& tile
   }
 
   return BitmapSurface::create(outputWidth, outputHeight, CAIRO_FORMAT_ARGB32, stride, data);
-}
-
-void Operations1bppClipped::reduce(Tile::Ptr target, const ConstTile::Ptr source, int x, int y)
-{
-  // Reducing by a factor 8. Source tile is 1bpp. Target tile is 1bpp
-  const int sourceStride = source->width / 8;
-  const byte* sourceBase = source->data.get();
-
-  const int targetStride = target->width / 8;
-  byte* targetBase = target->data.get() + target->height * y * targetStride / 8 + target->width * x / 8 / 8;
-
-  for(int j = 0; j < source->height / 8; j++, targetBase += targetStride, sourceBase += sourceStride * 8)
-  {
-    // Iterate vertically over target
-    const byte* sourcePtr = sourceBase;
-    SampleIterator<byte> targetPtr(targetBase, 0);
-
-    for(int i = 0; i < source->width / 8; i++, sourcePtr++, targetPtr++)
-    {
-      // Iterate horizontally over target
-
-      // Goal is to compute a 8-bit grey value from a 8*8 black/white
-      // image. To do so, we take each of the 8 bytes, count the
-      // number of 1's in each, and add them. Finally, we divide that
-      // by 64 (the maximum number of ones in that area
-
-      const byte* current = sourcePtr;
-      int sum = 0;
-      for(int k = 0; k < 8; k++, current += sourceStride)
-      {
-        sum += bcl.lookup(*current);
-      }
-
-      targetPtr.set((sum > 0) ? 1 : 0);
-    }
-  }
 }

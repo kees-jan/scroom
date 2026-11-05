@@ -12,10 +12,13 @@
 
 #include <scroom/bitmap-helpers.hh>
 #include <scroom/global.hh>
+#include <scroom/layer-reduction.hh>
 #include <scroom/layeroperations.hh>
 #include <scroom/memoryblobs.hh>
 #include <scroom/stuff.hh>
 #include <scroom/tile.hh>
+
+using namespace Scroom::TiledBitmap;
 
 ////////////////////////////////////////////////////////////////////////
 // PipetteCommonOperationsCMYK64bpp
@@ -51,14 +54,16 @@ PipetteLayerOperations::PipetteColor
 ////////////////////////////////////////////////////////////////////////
 // OperationsCMYK32
 
-PipetteCommonOperationsCMYK::Ptr OperationsCMYK32::create() { return PipetteCommonOperationsCMYK::Ptr(new OperationsCMYK32()); }
+LayerOperations::Ptr OperationsCMYK32::create() { return LayerOperations::Ptr(new OperationsCMYK32()); }
 
 OperationsCMYK32::OperationsCMYK32()
   : PipetteCommonOperationsCMYK(8)
 {
 }
 
-int OperationsCMYK32::getBpp() { return 32; }
+int OperationsCMYK32::getBpp() const { return 32; }
+
+LayerReduction OperationsCMYK32::createReduction() const { return createCmykReduction(8); }
 
 /**
  * Cache the given tile
@@ -93,65 +98,17 @@ Scroom::Utils::Stuff OperationsCMYK32::cache(const ConstTile::Ptr& tile)
   return Scroom::Bitmap::BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
 }
 
-void OperationsCMYK32::reduce(Tile::Ptr target, const ConstTile::Ptr source, int top_left_x, int top_left_y)
-{
-  // Reducing by a factor 8
-  const int sourceStride = 8 * source->width / 2; // stride in bytes
-  const byte* sourceBase = source->data.get();
-
-  const int targetStride = 8 * target->width / 2; // stride in bytes
-  byte* targetBase = target->data.get() + (target->height * top_left_y + top_left_x) * targetStride / 8;
-
-  for(int y = 0; y < source->height / 8; y++)
-  {
-    byte* targetPtr = targetBase;
-
-    for(int x = 0; x < source->width / 8; x++)
-    {
-      // We want to store the average colour of the 8*8 pixel image
-      // with (x, y) as its top-left corner into targetPtr.
-      const byte* base = sourceBase + 8 * 4 * x; // start of the row
-      const byte* end = base + 8 * sourceStride; // end of the row
-
-      int sum_c = 0;
-      int sum_m = 0;
-      int sum_y = 0;
-      int sum_k = 0;
-      for(const byte* row = base; row < end; row += sourceStride)
-      {
-        for(size_t current = 0; current < 8 * 4; current += 4)
-        {
-          sum_c += row[current];
-          sum_m += row[current + 1];
-          sum_y += row[current + 2];
-          sum_k += row[current + 3];
-        }
-      }
-
-      targetPtr[0] = static_cast<byte>(sum_c / 64);
-      targetPtr[1] = static_cast<byte>(sum_m / 64);
-      targetPtr[2] = static_cast<byte>(sum_y / 64);
-      targetPtr[3] = static_cast<byte>(sum_k / 64);
-
-      targetPtr += 4;
-    }
-
-    targetBase += targetStride;
-    sourceBase += sourceStride * 8;
-  }
-}
 
 ////////////////////////////////////////////////////////////////////////
 // OperationsCMYK64
 
-PipetteCommonOperationsCMYK64bpp::Ptr OperationsCMYK64::create()
-{
-  return PipetteCommonOperationsCMYK64bpp::Ptr(new OperationsCMYK64());
-}
+LayerOperations::Ptr OperationsCMYK64::create() { return LayerOperations::Ptr(new OperationsCMYK64()); }
 
 OperationsCMYK64::OperationsCMYK64() = default;
 
-int OperationsCMYK64::getBpp() { return 64; }
+int OperationsCMYK64::getBpp() const { return 64; }
+
+LayerReduction OperationsCMYK64::createReduction() const { return createCmykReduction(16); }
 
 Scroom::Utils::Stuff OperationsCMYK64::cache(const ConstTile::Ptr& tile)
 {
@@ -178,64 +135,20 @@ Scroom::Utils::Stuff OperationsCMYK64::cache(const ConstTile::Ptr& tile)
   return Scroom::Bitmap::BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
 }
 
-void OperationsCMYK64::reduce(Tile::Ptr target, const ConstTile::Ptr source, int top_left_x, int top_left_y)
-{
-  // Reducing by a factor 8. Source tile is 64bpp. Target tile is 64bpp
-  const int sourceStride = 4 * source->width; // stride in uint16_t samples
-  auto const* sourceBase = reinterpret_cast<uint16_t const*>(source->data.get());
-
-  const int targetStride = 4 * target->width; // stride in uint16_t samples
-  uint16_t* targetBase =
-    reinterpret_cast<uint16_t*>(target->data.get()) + (target->height * top_left_y + top_left_x) * targetStride / 8;
-
-  for(int y = 0; y < source->height / 8; y++)
-  {
-    uint16_t* targetPtr = targetBase;
-
-    for(int x = 0; x < source->width / 8; x++)
-    {
-      const uint16_t* base = sourceBase + 8 * 4 * x;
-      const uint16_t* end = base + 8 * sourceStride;
-
-      int sum_c = 0;
-      int sum_m = 0;
-      int sum_y = 0;
-      int sum_k = 0;
-      for(const uint16_t* row = base; row < end; row += sourceStride)
-      {
-        for(size_t current = 0; current < 8 * 4; current += 4)
-        {
-          sum_c += row[current];
-          sum_m += row[current + 1];
-          sum_y += row[current + 2];
-          sum_k += row[current + 3];
-        }
-      }
-
-      targetPtr[0] = static_cast<uint16_t>(sum_c / 64);
-      targetPtr[1] = static_cast<uint16_t>(sum_m / 64);
-      targetPtr[2] = static_cast<uint16_t>(sum_y / 64);
-      targetPtr[3] = static_cast<uint16_t>(sum_k / 64);
-
-      targetPtr += 4;
-    }
-
-    targetBase += targetStride;
-    sourceBase += sourceStride * 8;
-  }
-}
 
 ////////////////////////////////////////////////////////////////////////
 // OperationsCMYK16
 
-PipetteCommonOperationsCMYK::Ptr OperationsCMYK16::create() { return PipetteCommonOperationsCMYK::Ptr(new OperationsCMYK16()); }
+LayerOperations::Ptr OperationsCMYK16::create() { return LayerOperations::Ptr(new OperationsCMYK16()); }
 
 OperationsCMYK16::OperationsCMYK16()
   : PipetteCommonOperationsCMYK(4)
 {
 }
 
-int OperationsCMYK16::getBpp() { return 16; }
+int OperationsCMYK16::getBpp() const { return 16; }
+
+LayerReduction OperationsCMYK16::createReduction() const { return createCmykReduction(4); }
 
 /**
  * Cache the given tile
@@ -270,65 +183,20 @@ Scroom::Utils::Stuff OperationsCMYK16::cache(const ConstTile::Ptr& tile)
   return Scroom::Bitmap::BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
 }
 
-void OperationsCMYK16::reduce(Tile::Ptr target, const ConstTile::Ptr source, int top_left_x, int top_left_y)
-{
-  // Reducing by a factor 8
-  const int sourceStride = 4 * source->width / 2; // stride in bytes
-  const byte* sourceBase = source->data.get();
-
-  const int targetStride = 8 * target->width / 2; // stride in bytes
-  byte* targetBase = target->data.get() + (target->height * top_left_y + top_left_x) * targetStride / 8;
-
-  for(int y = 0; y < source->height / 8; y++)
-  {
-    byte* targetPtr = targetBase;
-
-    for(int x = 0; x < source->width / 8; x++)
-    {
-      // We want to store the average colour of the 8*8 pixel image
-      // with (x, y) as its top-left corner into targetPtr.
-      const byte* base = sourceBase + 4 * 4 * x; // start of the row
-      const byte* end = base + 8 * sourceStride; // end of the row
-
-      int sum_c = 0;
-      int sum_m = 0;
-      int sum_y = 0;
-      int sum_k = 0;
-      for(const byte* row = base; row < end; row += sourceStride)
-      {
-        for(size_t current = 0; current < 8 * 2; current += 2)
-        {
-          sum_c += row[current] >> 4;
-          sum_m += row[current] & 15;
-          sum_y += row[current + 1] >> 4;
-          sum_k += row[current + 1] & 15;
-        }
-      }
-
-      targetPtr[0] = static_cast<byte>(sum_c * 255 / (15 * 64));
-      targetPtr[1] = static_cast<byte>(sum_m * 255 / (15 * 64));
-      targetPtr[2] = static_cast<byte>(sum_y * 255 / (15 * 64));
-      targetPtr[3] = static_cast<byte>(sum_k * 255 / (15 * 64));
-
-      targetPtr += 4;
-    }
-
-    targetBase += targetStride;
-    sourceBase += sourceStride * 8;
-  }
-}
 
 ////////////////////////////////////////////////////////////////////////
 // OperationsCMYK8
 
-PipetteCommonOperationsCMYK::Ptr OperationsCMYK8::create() { return PipetteCommonOperationsCMYK::Ptr(new OperationsCMYK8()); }
+LayerOperations::Ptr OperationsCMYK8::create() { return LayerOperations::Ptr(new OperationsCMYK8()); }
 
 OperationsCMYK8::OperationsCMYK8()
   : PipetteCommonOperationsCMYK(2)
 {
 }
 
-int OperationsCMYK8::getBpp() { return 8; }
+int OperationsCMYK8::getBpp() const { return 8; }
+
+LayerReduction OperationsCMYK8::createReduction() const { return createCmykReduction(2); }
 
 /**
  * Cache the given tile
@@ -364,65 +232,20 @@ Scroom::Utils::Stuff OperationsCMYK8::cache(const ConstTile::Ptr& tile)
   return Scroom::Bitmap::BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
 }
 
-void OperationsCMYK8::reduce(Tile::Ptr target, const ConstTile::Ptr source, int top_left_x, int top_left_y)
-{
-  // Reducing by a factor 8
-  const int sourceStride = source->width; // stride in bytes
-  const byte* sourceBase = source->data.get();
-
-  const int targetStride = 8 * target->width / 2; // stride in bytes
-  byte* targetBase = target->data.get() + (target->height * top_left_y + top_left_x) * targetStride / 8;
-
-  for(int y = 0; y < source->height / 8; y++)
-  {
-    for(int x = 0; x < source->width / 8; x++)
-    {
-      // We want to store the average colour of the 8*8 pixel image
-      // with (x, y) as its top-left corner into targetPtr.
-      const byte* base = sourceBase + 2 * 4 * x; // start of the row
-      const byte* end = base + 8 * sourceStride; // end of the row
-
-      int sum_c = 0;
-      int sum_m = 0;
-      int sum_y = 0;
-      int sum_k = 0;
-      for(const byte* row = base; row < end; row += sourceStride)
-      {
-        for(size_t current = 0; current < 8; current++)
-        {
-          sum_c += row[current] >> 6;
-          sum_m += (row[current] & 0x30) >> 4;
-          sum_y += (row[current] & 0x0C) >> 2;
-          sum_k += row[current] & 0x03;
-        }
-      }
-
-      targetBase[4 * x + 0] = static_cast<byte>(sum_c * 255 / 192);
-      targetBase[4 * x + 1] = static_cast<byte>(sum_m * 255 / 192);
-      targetBase[4 * x + 2] = static_cast<byte>(sum_y * 255 / 192);
-      targetBase[4 * x + 3] = static_cast<byte>(sum_k * 255 / 192);
-    }
-
-    targetBase += targetStride;
-    sourceBase += sourceStride * 8;
-  }
-}
 
 ////////////////////////////////////////////////////////////////////////
 // OperationsCMYK4
 
-PipetteCommonOperationsCMYK::Ptr OperationsCMYK4::create() { return PipetteCommonOperationsCMYK::Ptr(new OperationsCMYK4()); }
+LayerOperations::Ptr OperationsCMYK4::create() { return LayerOperations::Ptr(new OperationsCMYK4()); }
 
 OperationsCMYK4::OperationsCMYK4()
   : PipetteCommonOperationsCMYK(1)
 {
 }
 
-int OperationsCMYK4::getBpp()
-{
-  // CMYK has 4 channels -> 4 samples per pixel.
-  return 4;
-}
+int OperationsCMYK4::getBpp() const { return 4; }
+
+LayerReduction OperationsCMYK4::createReduction() const { return createCmykReduction(1); }
 
 /**
  * Cache the given tile
@@ -473,48 +296,4 @@ Scroom::Utils::Stuff OperationsCMYK4::cache(const ConstTile::Ptr& tile)
   }
 
   return Scroom::Bitmap::BitmapSurface::create(tile->width, tile->height, CAIRO_FORMAT_ARGB32, stride, data);
-}
-
-void OperationsCMYK4::reduce(Tile::Ptr target, const ConstTile::Ptr source, int top_left_x, int top_left_y)
-{
-  // Reducing by a factor 8
-  const int sourceStride = source->width / 2; // stride in bytes
-  const byte* sourceBase = source->data.get();
-
-  const int targetStride = 8 * target->width / 2; // stride in bytes
-  byte* targetBase = target->data.get() + (target->height * top_left_y + top_left_x) * targetStride / 8;
-
-  for(int y = 0; y < source->height / 8; y++)
-  {
-    for(int x = 0; x < source->width / 8; x++)
-    {
-      // We want to store the average colour of the 8*8 pixel image
-      // with (x, y) as its top-left corner into targetPtr.
-      const byte* base = sourceBase + 4 * x; // start of the row
-      const byte* end = base + 8 * sourceStride; // end of the row
-
-      int sum_c = 0;
-      int sum_m = 0;
-      int sum_y = 0;
-      int sum_k = 0;
-      for(const byte* row = base; row < end; row += sourceStride)
-      {
-        for(size_t current = 0; current < 4; current++)
-        {
-          sum_c += ((row[current] >> 7) & 1) + ((row[current] >> 3) & 1);
-          sum_m += ((row[current] >> 6) & 1) + ((row[current] >> 2) & 1);
-          sum_y += ((row[current] >> 5) & 1) + ((row[current] >> 1) & 1);
-          sum_k += ((row[current] >> 4) & 1) + ((row[current] >> 0) & 1);
-        }
-      }
-
-      targetBase[4 * x] = static_cast<uint8_t>(sum_c * 255 / 64);
-      targetBase[4 * x + 1] = static_cast<uint8_t>(sum_m * 255 / 64);
-      targetBase[4 * x + 2] = static_cast<uint8_t>(sum_y * 255 / 64);
-      targetBase[4 * x + 3] = static_cast<uint8_t>(sum_k * 255 / 64);
-    }
-
-    targetBase += targetStride;
-    sourceBase += sourceStride * 8;
-  }
 }
