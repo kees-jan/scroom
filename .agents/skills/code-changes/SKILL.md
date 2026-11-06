@@ -39,6 +39,16 @@ so behavior stays consistent. Weigh the simpler calls against ambiguity and API
 complexity; callers constructing objects merely to unpack them again can indicate
 a useful overload.
 
+## Headers and implementation hiding
+
+Prefer including a type's defining header over forward declarations. Making a
+dependency public is acceptable when it simplifies the design; public/private
+boundaries need not be preserved solely to hide implementation details.
+
+Keep a concrete class's state in the class. Introduce implementation hiding
+when it serves a concrete need; when hiding is warranted, prefer an interface and a
+factory returning an owning pointer over pImpl.
+
 ## Language features and consistency
 
 Use modern C++ features supported by the project's configured standard and
@@ -51,6 +61,12 @@ opportunity in that file where it expresses the same intent. Prefer class
 template argument deduction for constructions whose arguments establish the
 intended type, such as points and rectangles. Keep explicit template arguments
 when they specify an intended conversion or numeric precision.
+
+## Function definition spacing
+
+Leave a blank line before and after a function definition, including its attached
+comments or attributes. Definitions that fit entirely on the declaration line
+may remain grouped with adjacent declarations or other one-line definitions.
 
 ## Constants and enumerations
 

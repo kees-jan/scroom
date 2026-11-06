@@ -43,5 +43,10 @@ For code comments:
   describe. Reserve type-level documentation for contracts applying to the type
   as a whole. Focus on behavior callers need to know beyond what signatures and
   standard conventions already establish.
+- Put a blank line before standalone comments, including line comments and
+  single-line or multiline block comments. Treat consecutive comment lines as
+  one block. Trailing comments may remain on the code line without extra spacing.
+- Single-line Doxygen comments may use `/** ... */`. For multiline blocks, put
+  `/**` on its own line and align subsequent `*` prefixes and the closing `*/`.
 - Leave existing comments untouched unless also editing their associated code.
   An explicit request to edit those comments takes precedence.
