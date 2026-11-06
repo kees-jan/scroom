@@ -47,7 +47,6 @@ class DataFetcher
 private:
   Layer::Ptr layer;
   int height;
-  int horTileCount;
   int verTileCount;
   int currentRow{0};
   SourcePresentation::Ptr sp;
@@ -59,7 +58,6 @@ public:
   DataFetcher(
     Layer::Ptr layer,
     int height,
-    int horTileCount,
     int verTileCount,
     SourcePresentation::Ptr sp,
     ThreadPool::WeakQueue::Ptr queue,
@@ -80,22 +78,15 @@ Layer::Layer(int depth_, int layerWidth, int layerHeight, int bpp, Scroom::Memor
   , verTileCount(Geometry::tileCount(height, TILESIZE))
   , pageProvider(std::move(provider))
 {
-  for(int j = 0; j < verTileCount; j++)
+  tiles.resize(verTileCount);
+  const Scroom::Utils::Rectangle tileRange(0, 0, horTileCount, verTileCount);
+  for(const auto tileIndex: tileRange)
   {
-    tiles.emplace_back();
-    CompressedTileLine& tl = tiles[j];
-    for(int i = 0; i < horTileCount; i++)
-    {
-      CompressedTile::Ptr const tile = CompressedTile::create(depth_, i, j, bpp, pageProvider);
-      tl.push_back(tile);
-    }
+    tiles[tileIndex.y].push_back(CompressedTile::create(depth_, tileIndex.x, tileIndex.y, bpp, pageProvider));
   }
 
   outOfBounds = CompressedTile::create(depth_, -1, -1, bpp, pageProvider, TSI_OUT_OF_BOUNDS);
-  for(int i = 0; i < horTileCount; i++)
-  {
-    lineOutOfBounds.push_back(outOfBounds);
-  }
+  lineOutOfBounds.assign(horTileCount, outOfBounds);
 
   logger->debug("Layer {} ({} bpp), {}*{}, TileCount {}*{}", depth_, bpp, width, height, horTileCount, verTileCount);
 }
@@ -130,8 +121,9 @@ int Layer::getHorTileCount() const { return horTileCount; }
 
 int Layer::getVerTileCount() const { return verTileCount; }
 
-CompressedTile::Ptr Layer::getTile(int i, int j)
+CompressedTile::Ptr Layer::getTile(Scroom::Utils::Point<int> tileIndex)
 {
+  const auto [i, j] = tileIndex;
   if(0 <= i && i < horTileCount && 0 <= j && j < verTileCount)
   {
     return tiles[j][i];
@@ -152,7 +144,7 @@ CompressedTileLine& Layer::getTileLine(int j)
 
 void Layer::fetchData(SourcePresentation::Ptr sp, const ThreadPool::WeakQueue::Ptr& queue, std::function<void()> on_finished)
 {
-  DataFetcher df(shared_from_this<Layer>(), height, horTileCount, verTileCount, std::move(sp), queue, std::move(on_finished));
+  DataFetcher df(shared_from_this<Layer>(), height, verTileCount, std::move(sp), queue, std::move(on_finished));
   CpuBound()->post(df, DATAFETCH_PRIO, queue);
 }
 
@@ -196,7 +188,6 @@ void Layer::close(ViewInterface::WeakPtr vi)
 DataFetcher::DataFetcher(
   Layer::Ptr layer_,
   int height_,
-  int horTileCount_,
   int verTileCount_,
   SourcePresentation::Ptr sp_,
   ThreadPool::WeakQueue::Ptr queue_,
@@ -204,7 +195,6 @@ DataFetcher::DataFetcher(
 )
   : layer(std::move(layer_))
   , height(height_)
-  , horTileCount(horTileCount_)
   , verTileCount(verTileCount_)
   , sp(std::move(sp_))
   , threadPool(CpuBound())
@@ -221,9 +211,8 @@ void DataFetcher::operator()()
 
   CompressedTileLine& tileLine = layer->getTileLine(currentRow);
   std::vector<Tile::Ptr> tiles;
-  for(int x = 0; x < horTileCount; x++)
+  for(const auto& ti: tileLine)
   {
-    CompressedTile::Ptr const ti = tileLine[x];
     Scroom::Utils::Stuff const s = ti->initialize();
     tiles.push_back(ti->getTileSync());
   }
@@ -231,9 +220,9 @@ void DataFetcher::operator()()
 
   sp->fillTiles(rowLayout.startLine, rowLayout.lineCount, TILESIZE, 0, tiles);
 
-  for(int x = 0; x < horTileCount; x++)
+  for(const auto& tile: tileLine)
   {
-    tileLine[x]->reportFinished();
+    tile->reportFinished();
   }
 
   currentRow++;

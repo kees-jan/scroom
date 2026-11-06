@@ -32,18 +32,14 @@ protected:
   Tile::Ptr target{emptyTile(tileSize, format)};
   LayerReduction reduceLayer{createIntensityReduction(format.bitsPerSample)};
 
-  [[nodiscard]] uint8_t targetPixel(int x, int y) const { return sample<uint8_t>(target, format, x, y, 0); }
-
-  void fillSourceArea(Scroom::Utils::Rectangle<int> area, uint8_t value)
+  [[nodiscard]] uint8_t targetPixel(Scroom::Utils::Point<int> position) const
   {
-    for(int y = area.getTop(); y < area.getBottom(); ++y)
-    {
-      for(int x = area.getLeft(); x < area.getRight(); ++x)
-      {
-        setSample<uint8_t>(source, format, x, y, 0, value);
-      }
-    }
+    return sample<uint8_t>(target, format, position, 0);
   }
+
+  [[nodiscard]] uint8_t targetPixel(int x, int y) const { return targetPixel({x, y}); }
+
+  void fillSourceArea(Scroom::Utils::Rectangle<int> area, uint8_t value) { fillChannel<uint8_t>(source, format, area, 0, value); }
 };
 
 TEST_F(Intensity8Reduction, averages_two_equal_halves) // NOLINT
@@ -311,18 +307,18 @@ protected:
 
 TEST_F(BinaryOrLayerReduction, a_single_set_bit_marks_its_block_and_leaves_neighbouring_blocks_clear) // NOLINT
 {
-  const int blockColumn = 2;
-  const int blockRow = 3;
-  const int sourceColumn = blockColumn * reductionFactor + reductionFactor / 2;
-  const int sourceRow = blockRow * reductionFactor + reductionFactor / 2;
+  const Scroom::Utils::Point block(2, 3);
+  const auto sourcePixel = block * reductionFactor + Scroom::Utils::Point(reductionFactor / 2);
   const unsigned setBit = 1;
-  setSample(source, format, sourceColumn, sourceRow, 0, setBit);
+  setSample(source, format, sourcePixel, 0, setBit);
 
   reduceLayer(target, readOnly(source), 0, 0);
 
-  EXPECT_EQ(setBit, sample(target, format, blockColumn, blockRow, 0));
-  EXPECT_EQ(0, sample(target, format, blockColumn - 1, blockRow, 0));
-  EXPECT_EQ(0, sample(target, format, blockColumn + 1, blockRow, 0));
-  EXPECT_EQ(0, sample(target, format, blockColumn, blockRow - 1, 0));
-  EXPECT_EQ(0, sample(target, format, blockColumn, blockRow + 1, 0));
+  const Scroom::Utils::Point oneColumn(1, 0);
+  const Scroom::Utils::Point oneRow(0, 1);
+  EXPECT_EQ(setBit, sample(target, format, block, 0));
+  EXPECT_EQ(0, sample(target, format, block - oneColumn, 0));
+  EXPECT_EQ(0, sample(target, format, block + oneColumn, 0));
+  EXPECT_EQ(0, sample(target, format, block - oneRow, 0));
+  EXPECT_EQ(0, sample(target, format, block + oneRow, 0));
 }

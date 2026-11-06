@@ -256,22 +256,18 @@ namespace
 
     const auto tileRange = Geometry::tileRangeForSampling(sampledAreaInLayerCoordinates, TILESIZE);
 
-    for(int x = tileRange.getLeft(); x < tileRange.getRight(); x++)
+    for(const auto tileIndex: tileRange)
     {
-      for(int y = tileRange.getTop(); y < tileRange.getBottom(); y++)
-      {
-        ConstTile::Ptr const tile = bottomLayer->getTile(x, y)->getConstTileSync();
-        const auto tileOriginInLayerCoordinates = Geometry::layerCoordinatesFromTileIndex({x, y}, TILESIZE);
-        Scroom::Utils::Rectangle<int> const tileAreaInLayerCoordinates(
-          tileOriginInLayerCoordinates.x, tileOriginInLayerCoordinates.y, tile->width, tile->height
-        );
-        const auto sampledAreaInTileCoordinates =
-          Geometry::intersectionInTileCoordinates(sampledAreaInLayerCoordinates, tileAreaInLayerCoordinates);
+      ConstTile::Ptr const tile = bottomLayer->getTile(tileIndex)->getConstTileSync();
+      const auto tileOriginInLayerCoordinates = Geometry::layerCoordinatesFromTileIndex(tileIndex, TILESIZE);
+      const auto tileAreaInLayerCoordinates =
+        Scroom::Utils::Rectangle(0, 0, tile->width, tile->height) + tileOriginInLayerCoordinates;
+      const auto sampledAreaInTileCoordinates =
+        Geometry::intersectionInTileCoordinates(sampledAreaInLayerCoordinates, tileAreaInLayerCoordinates);
 
-        pipetteColors =
-          sumPipetteColors(pipetteColors, pipetteLayerOperation->sumPixelValues(sampledAreaInTileCoordinates, tile));
-      }
+      pipetteColors = sumPipetteColors(pipetteColors, pipetteLayerOperation->sumPixelValues(sampledAreaInTileCoordinates, tile));
     }
+
     return dividePipetteColors(pipetteColors, totalPixels);
   }
 

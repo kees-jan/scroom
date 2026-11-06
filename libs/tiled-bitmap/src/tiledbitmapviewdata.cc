@@ -80,19 +80,17 @@ void TiledBitmapViewData::resetNeededTiles()
   // temporarily add registrations to the newStuff list, and add the newStuff to
   // stuff later.
 
-  for(int i = tileRange.getLeft(); i < tileRange.getRight(); i++)
+  for(const auto tileIndex: tileRange)
   {
-    for(int j = tileRange.getTop(); j < tileRange.getBottom(); j++)
-    {
-      CompressedTile::Ptr const tile = layer->getTile(i, j);
+    CompressedTile::Ptr const tile = layer->getTile(tileIndex);
 
-      TileViewState::Ptr const tileViewState = tile->getViewState(viewInterface);
-      tileViewState->setViewData(shared_from_this<TiledBitmapViewData>());
-      tileViewState->setZoom(layerOperations, zoom);
-      newStuff.emplace_back(tileViewState);
-      newStuff.emplace_back(tileViewState->registerObserver(shared_from_this<TiledBitmapViewData>()));
-    }
+    TileViewState::Ptr const tileViewState = tile->getViewState(viewInterface);
+    tileViewState->setViewData(shared_from_this<TiledBitmapViewData>());
+    tileViewState->setZoom(layerOperations, zoom);
+    newStuff.emplace_back(tileViewState);
+    newStuff.emplace_back(tileViewState->registerObserver(shared_from_this<TiledBitmapViewData>()));
   }
+
 
   // At this point, everything we need is either in the stuff list, or the newStuff list.
   // Hence, this is an excellent time to clear the oldStuff list. We cannot clear the

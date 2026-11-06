@@ -342,19 +342,20 @@ void Operations1bpp::draw(
     auto offset = tileAreaInt.getTopLeft() - tileArea.getTopLeft();
     viewArea += offset * multiplier;
 
-    for(int y = 0; y < tileAreaInt.getHeight(); y++)
+    for(const int y: tileAreaInt.getVertically())
     {
       const byte* const data = tile->data.get();
-      SampleIterator<const byte> current(data + (tileAreaInt.getTop() + y) * stride, tileAreaInt.getLeft(), 1);
+      SampleIterator<const byte> current(data + y * stride, tileAreaInt.getLeft(), 1);
 
-      for(int x = 0; x < tileAreaInt.getWidth(); x++, ++current)
+      for(const int x: tileAreaInt.getHorizontally())
       {
-        const int value = *current;
+        const int value = *current++;
 
         cairo_save(cr);
-        drawPixelValue(
-          cr, viewArea.x() + multiplier * x, viewArea.y() + multiplier * y, multiplier, value, colormap->colors[value]
+        const Scroom::Utils::Point<int> viewPosition(
+          viewArea.getTopLeft() + (Scroom::Utils::Point(x, y) - tileAreaInt.getTopLeft()) * multiplier
         );
+        drawPixelValue(cr, viewPosition.x, viewPosition.y, multiplier, value, colormap->colors[value]);
         cairo_restore(cr);
       }
     }
@@ -435,17 +436,15 @@ void Operations8bpp::draw(
     auto offset = tileAreaInt.getTopLeft() - tileArea.getTopLeft();
     viewArea += offset * multiplier;
 
-    for(int x = 0; x < tileAreaInt.width(); x++)
+    for(const auto pixel: tileAreaInt)
     {
-      for(int y = 0; y < tileAreaInt.height(); y++)
-      {
-        const int value = data[(tileAreaInt.y() + y) * stride + tileAreaInt.x() + x];
-        Color const c = mix(c2, c1, 1.0 * value / 255);
+      const int value = data[pixel.y * stride + pixel.x];
+      Color const c = mix(c2, c1, 1.0 * value / 255);
+      const Scroom::Utils::Point<int> viewPosition(viewArea.getTopLeft() + (pixel - tileAreaInt.getTopLeft()) * multiplier);
 
-        cairo_save(cr);
-        drawPixelValue(cr, viewArea.x() + multiplier * x, viewArea.y() + multiplier * y, multiplier, value, c);
-        cairo_restore(cr);
-      }
+      cairo_save(cr);
+      drawPixelValue(cr, viewPosition.x, viewPosition.y, multiplier, value, c);
+      cairo_restore(cr);
     }
   }
 }
@@ -653,19 +652,20 @@ void Operations::draw(
     auto offset = tileAreaInt.getTopLeft() - tileArea.getTopLeft();
     viewArea += offset * multiplier;
 
-    for(int y = 0; y < tileAreaInt.height(); y++)
+    for(const int y: tileAreaInt.getVertically())
     {
       const byte* const data = tile->data.get();
-      SampleIterator<const byte> current(data + (tileAreaInt.y() + y) * stride, tileAreaInt.x(), bpp);
+      SampleIterator<const byte> current(data + y * stride, tileAreaInt.x(), bpp);
 
-      for(int x = 0; x < tileAreaInt.width(); x++, ++current)
+      for(const int x: tileAreaInt.getHorizontally())
       {
-        const int value = *current;
+        const int value = *current++;
 
         cairo_save(cr);
-        drawPixelValue(
-          cr, viewArea.x() + multiplier * x, viewArea.y() + multiplier * y, multiplier, value, colormap->colors[value]
+        const Scroom::Utils::Point<int> viewPosition(
+          viewArea.getTopLeft() + (Scroom::Utils::Point(x, y) - tileAreaInt.getTopLeft()) * multiplier
         );
+        drawPixelValue(cr, viewPosition.x, viewPosition.y, multiplier, value, colormap->colors[value]);
         cairo_restore(cr);
       }
     }

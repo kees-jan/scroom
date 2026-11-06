@@ -169,7 +169,7 @@ void TiledBitmap::connect(
     {
       const auto mapping = Geometry::reductionMapping({i, j});
       LayerCoordinator::Ptr const lc = coordinators_[mapping.targetIndex.x];
-      lc->addSourceTile(mapping.sourceOffset.x, mapping.sourceOffset.y, prevLayer->getTile(i, j));
+      lc->addSourceTile(mapping.sourceOffset, prevLayer->getTile({i, j}));
     }
   }
 }
@@ -229,35 +229,30 @@ void TiledBitmap::redraw(
   const auto clippedPresentationAreaInLayerCoordinates =
     Geometry::clippedArea(presentationAreaInLayerCoordinates, layer->getRect());
 
-  for(int i = tileRange.getLeft(); i < tileRange.getRight(); i++)
+  for(const auto tileIndex: tileRange)
   {
-    for(int j = tileRange.getTop(); j < tileRange.getBottom(); j++)
+    const auto drawAreas = Geometry::tileDrawAreas(
+      clippedPresentationAreaInLayerCoordinates, Geometry::tileAreaInLayerCoordinates(tileIndex, TILESIZE), layerPixelSize
+    );
+
+    CompressedTile::Ptr const tile = layer->getTile(tileIndex);
+    TileViewState::Ptr const tileViewState = tile->getViewState(vi);
+    Scroom::Utils::Stuff const cacheResult = tileViewState->getCacheResult();
+    ConstTile::Ptr const t = tile->getConstTileAsync();
+
+    if(t)
     {
-      Scroom::Utils::Point<int> const tileIndex(i, j);
-
-      const auto drawAreas = Geometry::tileDrawAreas(
-        clippedPresentationAreaInLayerCoordinates, Geometry::tileAreaInLayerCoordinates(tileIndex, TILESIZE), layerPixelSize
-      );
-
-      CompressedTile::Ptr const tile = layer->getTile(i, j);
-      TileViewState::Ptr const tileViewState = tile->getViewState(vi);
-      Scroom::Utils::Stuff const cacheResult = tileViewState->getCacheResult();
-      ConstTile::Ptr const t = tile->getConstTileAsync();
-
-      if(t)
-      {
-        cairo_save(cr);
-        layerOperations->draw(cr, t, drawAreas.tileArea, drawAreas.viewArea, layerZoom, cacheResult);
-        cairo_restore(cr);
-      }
-      else
-      {
-        layerOperations->drawState(cr, tile->getState(), drawAreas.viewArea);
-      }
-#ifdef DEBUG_TILES
-      drawTile(cr, tile, drawAreas.viewArea);
-#endif
+      cairo_save(cr);
+      layerOperations->draw(cr, t, drawAreas.tileArea, drawAreas.viewArea, layerZoom, cacheResult);
+      cairo_restore(cr);
     }
+    else
+    {
+      layerOperations->drawState(cr, tile->getState(), drawAreas.viewArea);
+    }
+#ifdef DEBUG_TILES
+    drawTile(cr, tile, drawAreas.viewArea);
+#endif
   }
 }
 

@@ -23,7 +23,7 @@ class LayerCoordinator
 private:
   CompressedTile::Ptr targetTile;
   Tile::Ptr targetTileData;
-  std::map<CompressedTile::Ptr, std::pair<int, int>> sourceTiles;
+  std::map<CompressedTile::Ptr, Scroom::Utils::Point<int>> sourceTiles;
   Scroom::Utils::StuffList registrations;
   Scroom::TiledBitmap::LayerReduction reduceLayer;
   boost::mutex mut;
@@ -40,7 +40,7 @@ public:
   LayerCoordinator operator=(const LayerCoordinator&) = delete;
   LayerCoordinator operator=(LayerCoordinator&&) = delete;
 
-  void addSourceTile(int x, int y, const CompressedTile::Ptr& tile);
+  void addSourceTile(Scroom::Utils::Point<int> sourceOffset, const CompressedTile::Ptr& tile);
 
 private:
   LayerCoordinator(CompressedTile::Ptr targetTile, Scroom::TiledBitmap::LayerReduction reduceLayer);

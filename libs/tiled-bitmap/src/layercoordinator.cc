@@ -33,11 +33,11 @@ LayerCoordinator::~LayerCoordinator()
   sourceTiles.clear();
 }
 
-void LayerCoordinator::addSourceTile(int x, int y, const CompressedTile::Ptr& tile)
+void LayerCoordinator::addSourceTile(Scroom::Utils::Point<int> sourceOffset, const CompressedTile::Ptr& tile)
 {
   boost::unique_lock<boost::mutex> const lock(mut);
 
-  sourceTiles[tile] = std::make_pair(x, y);
+  sourceTiles[tile] = sourceOffset;
   registrations.emplace_back(tile->registerObserver(shared_from_this<LayerCoordinator>()));
   unfinishedSourceTiles++;
 }
@@ -66,9 +66,7 @@ void LayerCoordinator::reduceSourceTile(const CompressedTile::Ptr& tile, ConstTi
   //
   // Other than that side-effect, we have no use for tileData
   Scroom::Utils::Stuff const s = targetTile->initialize();
-  const std::pair<int, int> location = sourceTiles[tile];
-  const int x = location.first;
-  const int y = location.second;
+  const auto sourceOffset = sourceTiles[tile];
 
   if(!targetTileData)
   {
@@ -76,7 +74,7 @@ void LayerCoordinator::reduceSourceTile(const CompressedTile::Ptr& tile, ConstTi
   }
   ConstTile::Ptr const source = tile->getConstTileSync();
 
-  reduceLayer(targetTileData, source, x, y);
+  reduceLayer(targetTileData, source, sourceOffset.x, sourceOffset.y);
 
   boost::unique_lock<boost::mutex> const lock(mut);
   unfinishedSourceTiles--;

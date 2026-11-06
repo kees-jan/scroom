@@ -270,7 +270,7 @@ public:
   int getHorTileCount() const;
   int getVerTileCount() const;
 
-  CompressedTile::Ptr getTile(int i, int j);
+  CompressedTile::Ptr getTile(Scroom::Utils::Point<int> tileIndex);
   CompressedTileLine& getTileLine(int j);
   void fetchData(SourcePresentation::Ptr sp, const ThreadPool::WeakQueue::Ptr& queue, std::function<void()> on_finished);
 

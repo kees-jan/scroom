@@ -55,55 +55,65 @@ namespace Scroom::TiledBitmap::Test
   }
 
   template <typename Base>
-  inline void setSample(const Tile::Ptr& tile, SampleLayout format, int x, int y, int channel, unsigned value)
+  inline void
+    setSample(const Tile::Ptr& tile, SampleLayout format, Scroom::Utils::Point<int> position, int channel, unsigned value)
   {
-    const int index = (y * tile->width + x) * format.channels + channel;
+    const int index = (position.y * tile->width + position.x) * format.channels + channel;
     Scroom::Bitmap::SampleIterator<Base> iterator(reinterpret_cast<Base*>(tile->data.get()), index, format.bitsPerSample);
     iterator.set(static_cast<Base>(value));
   }
 
   template <typename Base>
-  inline unsigned sample(const Tile::Ptr& tile, SampleLayout format, int x, int y, int channel)
+  inline unsigned sample(const Tile::Ptr& tile, SampleLayout format, Scroom::Utils::Point<int> position, int channel)
   {
-    const int index = (y * tile->width + x) * format.channels + channel;
+    const int index = (position.y * tile->width + position.x) * format.channels + channel;
     Scroom::Bitmap::SampleIterator<const Base> iterator(
       reinterpret_cast<const Base*>(tile->data.get()), index, format.bitsPerSample
     );
     return *iterator;
   }
 
-  inline void setSample(const Tile::Ptr& tile, SampleLayout format, int x, int y, int channel, unsigned value)
+  inline void
+    setSample(const Tile::Ptr& tile, SampleLayout format, Scroom::Utils::Point<int> position, int channel, unsigned value)
   {
     if(format.bitsPerSample == 16)
     {
-      setSample<uint16_t>(tile, format, x, y, channel, value);
+      setSample<uint16_t>(tile, format, position, channel, value);
     }
     else
     {
-      setSample<uint8_t>(tile, format, x, y, channel, value);
+      setSample<uint8_t>(tile, format, position, channel, value);
     }
+  }
+
+  inline unsigned sample(const Tile::Ptr& tile, SampleLayout format, Scroom::Utils::Point<int> position, int channel)
+  {
+    if(format.bitsPerSample == 16)
+    {
+      return sample<uint16_t>(tile, format, position, channel);
+    }
+    return sample<uint8_t>(tile, format, position, channel);
+  }
+
+
+  template <typename Base>
+  inline unsigned sample(const Tile::Ptr& tile, SampleLayout format, int x, int y, int channel)
+  {
+    return sample<Base>(tile, format, {x, y}, channel);
   }
 
   inline unsigned sample(const Tile::Ptr& tile, SampleLayout format, int x, int y, int channel)
   {
-    if(format.bitsPerSample == 16)
-    {
-      return sample<uint16_t>(tile, format, x, y, channel);
-    }
-    return sample<uint8_t>(tile, format, x, y, channel);
+    return sample(tile, format, {x, y}, channel);
   }
-
 
   template <typename Base>
   inline void
     fillChannel(const Tile::Ptr& tile, SampleLayout format, Scroom::Utils::Rectangle<int> area, int channel, unsigned value)
   {
-    for(int y = area.getTop(); y < area.getBottom(); ++y)
+    for(const auto position: area)
     {
-      for(int x = area.getLeft(); x < area.getRight(); ++x)
-      {
-        setSample<Base>(tile, format, x, y, channel, value);
-      }
+      setSample<Base>(tile, format, position, channel, value);
     }
   }
 
