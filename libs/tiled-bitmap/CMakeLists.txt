@@ -2,8 +2,11 @@ add_library(tiledbitmap src/tiledbitmappresentation.cc)
 set(HEADER_FILES
     inc/scroom/layer-reduction.hh
     inc/scroom/layer-rendering-operations.hh
+    inc/scroom/layer-stack.hh
+    inc/scroom/layercoordinator.hh
     inc/scroom/layeroperations.hh
     inc/scroom/tile.hh
+    inc/scroom/tiled-bitmap-data.hh
     inc/scroom/tiled-bitmap-geometry.hh
     inc/scroom/tiledbitmapinterface.hh
     inc/scroom/tiledbitmaplayer.hh
@@ -13,9 +16,9 @@ target_sources(
   PRIVATE src/cmyklayeroperations.cc
           src/compressedtile.cc
           src/layer-reduction.cc
+          src/layer-stack.cc
           src/layer.cc
           src/layercoordinator.cc
-          src/layercoordinator.hh
           src/layeroperations.cc
           src/layerspecforbitmap.cc
           src/local.hh
@@ -118,6 +121,7 @@ if(ENABLE_GOOGLE_TEST)
   target_sources(
     tiledbitmap_tests
     PRIVATE test/layer-reduction-tests.cc
+            test/layer-stack-tests.cc
             test/layerspecforbitmap-tests.cc
             test/sampleiterator-tests.cc
             test/tile-sample-helpers.hh

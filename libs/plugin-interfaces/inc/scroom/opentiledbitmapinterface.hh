@@ -16,28 +16,13 @@
 #include <scroom/logger.hh>
 #include <scroom/point.hh>
 #include <scroom/rectangle.hh>
+#include <scroom/scroominterface.hh>
 #include <scroom/showmetadata.hh>
+#include <scroom/tiled-bitmap-data.hh>
 #include <scroom/tiledbitmaplayer.hh>
 
 namespace Scroom::TiledBitmap
 {
-  /**
-   * Function type for starting the loading of the bottom Layer of a bitmap.
-   *
-   * This function is called on the UI thread. You cannot do a significant amount of work in this function, or you'll block the
-   * UI. Typical implementations will schedule work on the Sequentially() ThreadPool, such that bitmaps will be loaded
-   * sequentially.
-   *
-   * @param progressInterface call setProgress(0) on this once the work actually starts
-   * @return a shared pointer. Typically a ThreadPool::Queue or similar. The expectation is that when this object is destroyed
-   * by the caller, the loading is cancelled.
-   *
-   * @see Layer
-   * @see OpenTiledBitmapInterface::open()
-   * @see Sequentially()
-   * @see scheduleLoadingBitmap() for an example implementation
-   */
-  using ReloadFunction = std::function<Scroom::Utils::Stuff(const ProgressInterface::Ptr&)>;
 
   struct BitmapMetaData
   {

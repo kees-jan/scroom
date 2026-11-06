@@ -18,102 +18,14 @@
 
 #include <scroom/context.hh>
 #include <scroom/interface.hh>
-#include <scroom/layer-reduction.hh>
-#include <scroom/layer-rendering-operations.hh>
+#include <scroom/layer-stack.hh>
 #include <scroom/presentationinterface.hh>
 #include <scroom/rectangle.hh>
 #include <scroom/scroominterface.hh>
 #include <scroom/stuff.hh>
 #include <scroom/tile.hh>
+#include <scroom/tiled-bitmap-data.hh>
 #include <scroom/viewinterface.hh>
-
-// Compatibility facade for existing operation factories. Data consumers retain
-// the independent reducer; renderers retain only LayerRenderingOperations.
-class LayerOperations : public LayerRenderingOperations
-{
-public:
-  using Ptr = std::shared_ptr<LayerOperations>;
-
-  [[nodiscard]] virtual int getBpp() const = 0;
-  [[nodiscard]] virtual Scroom::TiledBitmap::LayerReduction createReduction() const = 0;
-};
-
-// The supplier ensures each reducer's output matches the following layer's
-// storage size and renderer. Pixel encodings remain the supplier's responsibility.
-struct LayerDescription
-{
-  int bpp;
-  Scroom::TiledBitmap::LayerReduction reduction;
-  LayerRenderingOperations::Ptr rendering;
-
-  LayerDescription(int bpp_, Scroom::TiledBitmap::LayerReduction reduction_, LayerRenderingOperations::Ptr rendering_)
-    : bpp(bpp_)
-    , reduction(std::move(reduction_))
-    , rendering(std::move(rendering_))
-  {
-  }
-
-  explicit LayerDescription(LayerOperations::Ptr operations)
-    : bpp(operations->getBpp())
-    , reduction(operations->createReduction())
-    , rendering(std::move(operations))
-  {
-  }
-};
-
-/**
- * Layer descriptions defining how to draw and pre-scale a
- * TiledBitmap
- *
- * While creating a TiledBitmap, a number of layers will be
- * created. The base layer will contain raw bitmap data. Each
- * subsequent layer is reduced by a factor 8 with respect to the
- * previous. Each description supplies bits per pixel and independent reduction and rendering
- * operations. If more layers are created than there are descriptions, the last
- * description is reused for all remaining layers.
- */
-using LayerSpec = std::vector<LayerDescription>;
-
-/**
- * Provide bitmap data
- */
-class SourcePresentation : private Interface
-{
-public:
-  using Ptr = std::shared_ptr<SourcePresentation>;
-
-public:
-  /**
-   * Provide bitmap data
-   *
-   * While the TiledBitmap is loaded, this function will be called
-   * several times. Each time, this function has to fill the provided
-   * tiles with bitmap data.
-   *
-   * The given tiles are horizontally adjacent.
-   *
-   * @param startLine @c y coordinate of the first line in the set of
-   *    tiles
-   * @param lineCount The number of lines that are to be filled. This
-   *    equals the height of the tiles
-   * @param tileWidth The width of one tile
-   * @param firstTile Index of the first tile provided. This means that
-   *    the first @c x coordinate is @c firsttile * @c tileWidth
-   * @param tiles The tiles that are to be filled.
-   */
-  virtual void fillTiles(int startLine, int lineCount, int tileWidth, int firstTile, std::vector<Tile::Ptr>& tiles) = 0;
-
-  /**
-   * Done reading bitmap data
-   *
-   * Any open files can be closed now
-   */
-  virtual void done() = 0;
-
-  virtual std::string getName() = 0;
-};
-
-class Layer;
 
 /**
  * Interact with your TiledBitmap
@@ -141,6 +53,9 @@ public:
    * @see setSource()
    */
   virtual std::shared_ptr<Layer> getBottomLayer() = 0;
+
+  /** Retains the data and population work independently of this renderer. */
+  virtual std::shared_ptr<Scroom::TiledBitmap::LayerStack> getLayerStack() = 0;
 
   /**
    * Redraw a portion of the bitmap.

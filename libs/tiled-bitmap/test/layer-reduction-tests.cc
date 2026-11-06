@@ -34,7 +34,7 @@ protected:
 
   [[nodiscard]] uint8_t targetPixel(Scroom::Utils::Point<int> position) const
   {
-    return sample<uint8_t>(target, format, position, 0);
+    return sample<uint8_t>(target, format, position);
   }
 
   [[nodiscard]] uint8_t targetPixel(int x, int y) const { return targetPixel({x, y}); }
@@ -316,9 +316,9 @@ TEST_F(BinaryOrLayerReduction, a_single_set_bit_marks_its_block_and_leaves_neigh
 
   const Scroom::Utils::Point oneColumn(1, 0);
   const Scroom::Utils::Point oneRow(0, 1);
-  EXPECT_EQ(setBit, sample(target, format, block, 0));
-  EXPECT_EQ(0, sample(target, format, block - oneColumn, 0));
-  EXPECT_EQ(0, sample(target, format, block + oneColumn, 0));
-  EXPECT_EQ(0, sample(target, format, block - oneRow, 0));
-  EXPECT_EQ(0, sample(target, format, block + oneRow, 0));
+  EXPECT_EQ(setBit, sample(target, format, block));
+  EXPECT_EQ(0, sample(target, format, block - oneColumn));
+  EXPECT_EQ(0, sample(target, format, block + oneColumn));
+  EXPECT_EQ(0, sample(target, format, block - oneRow));
+  EXPECT_EQ(0, sample(target, format, block + oneRow));
 }

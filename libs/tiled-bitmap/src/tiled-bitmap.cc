@@ -11,85 +11,77 @@
 #  include <config.h>
 #endif
 
-#include <cmath>
-#include <cstdio>
+#include <algorithm>
+#include <utility>
 
 #include <fmt/format.h>
-#include <spdlog/spdlog.h>
 
 #include <boost/thread/mutex.hpp>
 
 #include <scroom/cairo-helpers.hh>
-#include <scroom/semaphore.hh>
+#include <scroom/gtk-helpers.hh>
+#include <scroom/progressinterfacehelpers.hh>
 #include <scroom/tiled-bitmap-geometry.hh>
 
 #include "scroom/tweak-view.hh"
 #include "tileviewstate.hh"
 #include "tweak-view.hh"
 
+namespace Geometry = Scroom::TiledBitmap::Geometry;
+
+namespace
+{
+  class ForwardProgressToUiThread : public Scroom::Utils::ProgressInterfaceFromProgressStateInterface
+  {
+  public:
+    explicit ForwardProgressToUiThread(const ProgressInterface::Ptr& child)
+      : m_child(Scroom::Utils::ProgressStateInterfaceFromProgressInterfaceForwarder::create(child))
+    {
+    }
+
+  private:
+    Scroom::Utils::ProgressStateInterface::Ptr m_child;
+
+    void setProgress(State state, double progress) override
+    {
+      // Queued updates must not retain a closed view.
+      const Scroom::Utils::ProgressStateInterface::WeakPtr child = m_child;
+      Scroom::GtkHelpers::async_on_ui_thread(
+        [child, state, progress]
+        {
+          if(const auto target = child.lock())
+          {
+            target->setProgress(state, progress);
+          }
+        }
+      );
+    }
+  };
+} // namespace
+
 TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec const& ls)
 {
   return TiledBitmap::create(bitmapWidth, bitmapHeight, ls);
 }
 
-Scroom::Utils::Stuff Scroom::TiledBitmap::scheduleLoadingBitmap(
-  const SourcePresentation::Ptr& sp,
-  const Layer::Ptr& layer,
-  const ProgressInterface::Ptr& progress
-)
+TiledBitmap::Ptr TiledBitmap::create(int bitmapWidth, int bitmapHeight, const LayerSpec& ls)
 {
-  auto wait_until_done = std::make_shared<Scroom::Semaphore>();
-  auto queue = ThreadPool::Queue::createAsync();
-  auto weakQueue = queue->getWeak();
-  auto abort = [wait_until_done, queue]() mutable
-  {
-    queue.reset();
-    wait_until_done->V();
-  };
-
-  auto on_finished = [wait_until_done] { wait_until_done->V(); };
-  progress->setWaiting();
-
-  Sequentially()->post(
-    [progress, layer, sp, weakQueue, on_finished, wait_until_done]
-    {
-      Scroom::GtkHelpers::sync_on_ui_thread([=] { progress->setWorking(0); });
-      layer->fetchData(sp, weakQueue, on_finished);
-      wait_until_done->P();
-    }
-  );
-
-  return Scroom::Utils::on_destruction(abort);
+  return Ptr(new TiledBitmap(Scroom::TiledBitmap::LayerStack::create(bitmapWidth, bitmapHeight, ls), ls));
 }
 
-////////////////////////////////////////////////////////////////////////
-
-namespace Geometry = Scroom::TiledBitmap::Geometry;
-
-////////////////////////////////////////////////////////////////////////
-// TiledBitmap
-
-TiledBitmap::Ptr TiledBitmap::create(int bitmapWidth, int bitmapHeight, LayerSpec const& ls)
+TiledBitmap::Ptr TiledBitmap::create(const Layer::Ptr& bottom, const LayerSpec& ls)
 {
-  TiledBitmap::Ptr result(new TiledBitmap(bitmapWidth, bitmapHeight, ls));
-  result->initialize();
-  return result;
+  return Ptr(new TiledBitmap(Scroom::TiledBitmap::LayerStack::create(bottom, ls), ls));
 }
 
-TiledBitmap::Ptr TiledBitmap::create(const Layer::Ptr& bottom, LayerSpec const& ls)
-{
-  TiledBitmap::Ptr result(new TiledBitmap(bottom->getWidth(), bottom->getHeight(), ls));
-  result->initialize(bottom);
-  return result;
-}
-
-TiledBitmap::TiledBitmap(int bitmapWidth_, int bitmapHeight_, LayerSpec ls_)
-  : bitmapWidth(bitmapWidth_)
-  , bitmapHeight(bitmapHeight_)
-  , ls(std::move(ls_))
-  , progressBroadcaster(Scroom::Utils::ProgressInterfaceBroadcaster::create())
+TiledBitmap::TiledBitmap(Scroom::TiledBitmap::LayerStack::Ptr stack, const LayerSpec& ls)
+  : m_stack(std::move(stack))
   , context(Scroom::Utils::Context::create())
 {
+  for(const auto& description: ls)
+  {
+    m_rendering.push_back(description.rendering);
+  }
   set(context, Scroom::TiledBitmap::PixelAlignPresentationPositions::create());
   set(context, Scroom::Utils::ParseAndFormatViewCentre::create());
   set(context, Scroom::Utils::CalculateViewAreaForRulers::create());
@@ -102,87 +94,10 @@ TiledBitmap::TiledBitmap(int bitmapWidth_, int bitmapHeight_, LayerSpec ls_)
   );
 }
 
-void TiledBitmap::initialize(const Layer::Ptr& bottom)
-{
-  const auto sizes = Geometry::pyramidSizes({bitmapWidth, bitmapHeight}, TILESIZE / 4);
-  auto reducePreviousLayer = ls[0].reduction;
-  Scroom::MemoryBlobs::PageProvider::Ptr const provider = bottom->getPageProvider();
 
-  registrations.emplace_back(bottom->registerObserver(shared_from_this<TileInitialisationObserver>()));
-  layers.push_back(bottom);
-
-  Layer::Ptr prevLayer = bottom;
-
-  for(unsigned int i = 1; i < sizes.size(); i++)
-  {
-    const auto& description = ls[std::min<std::size_t>(i, ls.size() - 1)];
-    Layer::Ptr const layer = Layer::create(i, sizes[i].x, sizes[i].y, description.bpp, provider);
-    registrations.emplace_back(layer->registerObserver(shared_from_this<TileInitialisationObserver>()));
-    layers.push_back(layer);
-
-    connect(layer, prevLayer, reducePreviousLayer);
-
-    prevLayer = layer;
-    reducePreviousLayer = description.reduction;
-  }
-}
-
-void TiledBitmap::initialize() { initialize(Layer::create(bitmapWidth, bitmapHeight, ls[0].bpp)); }
-
-TiledBitmap::~TiledBitmap()
-{
-  logger->debug("TiledBitmap: Destructing...");
-
-  coordinators.clear();
-  layers.clear();
-}
-
-void TiledBitmap::connect(
-  Layer::Ptr const& layer,
-  Layer::Ptr const& prevLayer,
-  const Scroom::TiledBitmap::LayerReduction& reducePreviousLayer
-)
-{
-  const int horTileCount = prevLayer->getHorTileCount();
-  const int verTileCount = prevLayer->getVerTileCount();
-
-  std::vector<LayerCoordinator::Ptr> coordinators_;
-
-  for(int j = 0; j < verTileCount; j++)
-  {
-    const auto rowMapping = Geometry::reductionMapping({0, j});
-    const int voffset = rowMapping.sourceOffset.y;
-    if(!voffset)
-    {
-      // New line of target tiles
-      coordinators_.clear();
-      CompressedTileLine const& tileLine = layer->getTileLine(rowMapping.targetIndex.y);
-      for(auto& z: tileLine)
-      {
-        LayerCoordinator::Ptr const lc = LayerCoordinator::create(z, reducePreviousLayer);
-        coordinators_.push_back(lc);
-        coordinators.push_back(lc);
-      }
-    }
-
-    for(int i = 0; i < horTileCount; i++)
-    {
-      const auto mapping = Geometry::reductionMapping({i, j});
-      LayerCoordinator::Ptr const lc = coordinators_[mapping.targetIndex.x];
-      lc->addSourceTile(mapping.sourceOffset, prevLayer->getTile({i, j}));
-    }
-  }
-}
-
-////////////////////////////////////////////////////////////////////////
-// TiledBitmapInterface
-
-void TiledBitmap::setSource(SourcePresentation::Ptr sp)
-{
-  registrations.push_back(Scroom::TiledBitmap::scheduleLoadingBitmap(sp, layers[0], progressBroadcaster));
-}
-
-Layer::Ptr TiledBitmap::getBottomLayer() { return layers[0]; }
+void TiledBitmap::setSource(SourcePresentation::Ptr source) { m_stack->setSource(std::move(source)); }
+Layer::Ptr TiledBitmap::getBottomLayer() { return m_stack->getLevels().front().layer; }
+Scroom::TiledBitmap::LayerStack::Ptr TiledBitmap::getLayerStack() { return m_stack; }
 
 void TiledBitmap::drawTile(cairo_t* cr, const CompressedTile::Ptr& tile, const Scroom::Utils::Rectangle<double>& viewArea)
 {
@@ -211,12 +126,12 @@ void TiledBitmap::redraw(
 )
 {
   TiledBitmapViewData::Ptr const viewData_ = viewData[vi];
-  const auto layerSelection = Geometry::layerSelection(presentationArea, zoom, layers.size());
+  const auto layerSelection = Geometry::layerSelection(presentationArea, zoom, m_stack->getLevels().size());
   const auto layerNr = layerSelection.index;
   const int layerZoom = layerSelection.zoom;
   const auto presentationAreaInLayerCoordinates = layerSelection.presentationAreaInLayerCoordinates;
-  Layer::Ptr const layer = layers[layerNr];
-  LayerRenderingOperations::Ptr const layerOperations = ls[std::min(ls.size() - 1, layerNr)].rendering;
+  Layer::Ptr const layer = m_stack->getLevels()[layerNr].layer;
+  LayerRenderingOperations::Ptr const layerOperations = m_rendering[std::min(m_rendering.size() - 1, layerNr)];
 
   const auto tileRange = Geometry::tileRangeForRedraw(presentationAreaInLayerCoordinates, TILESIZE);
 
@@ -273,55 +188,25 @@ void TiledBitmap::open(ViewInterface::WeakPtr viewInterface)
   boost::mutex::scoped_lock lock(viewDataMutex);
   TiledBitmapViewData::Ptr const vd = TiledBitmapViewData::create(viewInterface);
   viewData[viewInterface] = vd;
-  vd->token.add(progressBroadcaster->subscribe(vd));
+  vd->token.add(m_stack->subscribeProgress(std::make_shared<ForwardProgressToUiThread>(vd)));
   lock.unlock();
 
-  for(Layer::Ptr const& l: layers)
+  for(const auto& level: m_stack->getLevels())
   {
-    l->open(viewInterface);
+    level.layer->open(viewInterface);
   }
 }
 
 void TiledBitmap::close(ViewInterface::WeakPtr vi)
 {
-  for(Layer::Ptr const& l: layers)
+  for(const auto& level: m_stack->getLevels())
   {
-    l->close(vi);
+    level.layer->close(vi);
   }
 
   boost::mutex::scoped_lock const lock(viewDataMutex);
   TiledBitmapViewData::Ptr const vd = viewData[vi];
-  // Yuk. ProgressBroadcaster has a reference to viewData, so erasing it
-  // from the map isn't enough.
+  // Release the progress subscription before removing the view data.
   vd->token.reset();
   viewData.erase(vi);
-}
-
-////////////////////////////////////////////////////////////////////////
-// TileInitialisationObserver
-
-void TiledBitmap::tileCreated(const CompressedTile::Ptr& /*tile*/) { tileCount++; }
-
-void TiledBitmap::tileFinished(const CompressedTile::Ptr& /*tile*/)
-{
-  boost::mutex::scoped_lock const lock(tileFinishedMutex);
-  tileFinishedCount++;
-  if(tileFinishedCount > tileCount)
-  {
-    defect_message("ERROR: Too many tiles are finished!");
-  }
-  else
-  {
-    Scroom::GtkHelpers::sync_on_ui_thread(
-      [this]
-      {
-        progressBroadcaster->setWorking(1.0 * tileFinishedCount / tileCount);
-        if(tileFinishedCount == tileCount)
-        {
-          progressBroadcaster->setFinished();
-          logger->info("Finished loading file");
-        }
-      }
-    );
-  }
 }

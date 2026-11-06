@@ -64,7 +64,7 @@ namespace Scroom::TiledBitmap::Test
   }
 
   template <typename Base>
-  inline unsigned sample(const Tile::Ptr& tile, SampleLayout format, Scroom::Utils::Point<int> position, int channel)
+  inline unsigned sample(const Tile::Ptr& tile, SampleLayout format, Scroom::Utils::Point<int> position, int channel = 0)
   {
     const int index = (position.y * tile->width + position.x) * format.channels + channel;
     Scroom::Bitmap::SampleIterator<const Base> iterator(
@@ -86,7 +86,7 @@ namespace Scroom::TiledBitmap::Test
     }
   }
 
-  inline unsigned sample(const Tile::Ptr& tile, SampleLayout format, Scroom::Utils::Point<int> position, int channel)
+  inline unsigned sample(const Tile::Ptr& tile, SampleLayout format, Scroom::Utils::Point<int> position, int channel = 0)
   {
     if(format.bitsPerSample == 16)
     {
@@ -97,12 +97,12 @@ namespace Scroom::TiledBitmap::Test
 
 
   template <typename Base>
-  inline unsigned sample(const Tile::Ptr& tile, SampleLayout format, int x, int y, int channel)
+  inline unsigned sample(const Tile::Ptr& tile, SampleLayout format, int x, int y, int channel = 0)
   {
     return sample<Base>(tile, format, {x, y}, channel);
   }
 
-  inline unsigned sample(const Tile::Ptr& tile, SampleLayout format, int x, int y, int channel)
+  inline unsigned sample(const Tile::Ptr& tile, SampleLayout format, int x, int y, int channel = 0)
   {
     return sample(tile, format, {x, y}, channel);
   }
@@ -132,6 +132,6 @@ namespace Scroom::TiledBitmap::Test
 
   inline Scroom::Utils::Rectangle<int> tileArea(const Tile::Ptr& tile) { return {0, 0, tile->width, tile->height}; }
 
-  inline unsigned firstSample(const Tile::Ptr& tile, SampleLayout format) { return sample(tile, format, 0, 0, 0); }
+  inline unsigned firstSample(const Tile::Ptr& tile, SampleLayout format) { return sample(tile, format, 0, 0); }
 
 } // namespace Scroom::TiledBitmap::Test

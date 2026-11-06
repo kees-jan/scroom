@@ -74,7 +74,6 @@ namespace
     Views views;
     ColormapHelperBase::Ptr colormapHelper;
     PipetteLayerOperations::Ptr pipetteLayerOperation;
-    Scroom::Utils::StuffList stuff;
     Scroom::Logger logger;
 
   public:
@@ -135,8 +134,6 @@ namespace
     ////////////////////////////////////////////////////////////////////////
     // Helpers
     ////////////////////////////////////////////////////////////////////////
-
-    void add(Scroom::Utils::Stuff s) { stuff.push_back(std::move(s)); }
 
   protected:
     ////////////////////////////////////////////////////////////////////////
@@ -414,7 +411,7 @@ namespace
 
       auto tiledBitmapPresentation =
         TiledBitmapPresentation::create(fileName, bmd, tiledBitmap, properties, colormapHelper, pipetteLayerOperation);
-      tiledBitmapPresentation->add(load(tiledBitmap->progressInterface()));
+      tiledBitmap->getLayerStack()->startLoading(load);
 
       if(bmd.aspectRatio)
       {

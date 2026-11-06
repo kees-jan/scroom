@@ -15,7 +15,8 @@
 
 #include "version.h"
 
-/** On Metadata button press, open and populate properties window
+/**
+ * On Metadata button press, open and populate properties window
  *
  *  @param user_data gpointer to the view passed on clicking metadata button
  *  @post metadata of image is shown in window if presentation != null

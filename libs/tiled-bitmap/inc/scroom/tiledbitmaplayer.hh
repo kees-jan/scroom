@@ -22,7 +22,7 @@
 #include <scroom/stuff.hh>
 #include <scroom/threadpool.hh>
 #include <scroom/tile.hh>
-#include <scroom/tiledbitmapinterface.hh>
+#include <scroom/tiled-bitmap-data.hh>
 
 #define TILESIZE 4096
 

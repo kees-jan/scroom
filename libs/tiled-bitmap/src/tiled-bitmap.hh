@@ -7,27 +7,21 @@
 
 #pragma once
 
-#include <list>
-#include <map>
 #include <memory>
+#include <vector>
 
 #include <boost/thread/mutex.hpp>
 
 #include <scroom/interface.hh>
-#include <scroom/logger.hh>
-#include <scroom/opentiledbitmapinterface.hh>
-#include <scroom/progressinterfacehelpers.hh>
+#include <scroom/layer-stack.hh>
 #include <scroom/scroominterface.hh>
-#include <scroom/threadpool.hh>
 #include <scroom/tiledbitmapinterface.hh>
 #include <scroom/tiledbitmaplayer.hh>
 
-#include "layercoordinator.hh"
 #include "tiledbitmapviewdata.hh"
 
 class TiledBitmap
   : public TiledBitmapInterface
-  , public TileInitialisationObserver
   , public virtual Scroom::Utils::Base
 {
 public:
@@ -36,41 +30,20 @@ public:
   using ViewDataMap = Scroom::Utils::WeakKeyMap<ViewInterface::WeakPtr, TiledBitmapViewData::Ptr>;
 
 private:
-  int bitmapWidth;
-  int bitmapHeight;
-  LayerSpec ls;
-  std::vector<Layer::Ptr> layers;
-  std::list<LayerCoordinator::Ptr> coordinators;
+  Scroom::TiledBitmap::LayerStack::Ptr m_stack;
+  std::vector<LayerRenderingOperations::Ptr> m_rendering;
   boost::mutex viewDataMutex;
   ViewDataMap viewData;
-  int tileCount{0};
-  boost::mutex tileFinishedMutex;
-  int tileFinishedCount{0};
-  Scroom::Utils::ProgressInterfaceBroadcaster::Ptr progressBroadcaster;
-  Scroom::Utils::StuffList registrations;
-  Scroom::Logger logger;
   Scroom::Utils::Context::Ptr context;
 
 public:
   static Ptr create(int bitmapWidth, int bitmapHeight, LayerSpec const& ls);
   static Ptr create(const Layer::Ptr& bottom, const LayerSpec& ls);
 
-  ~TiledBitmap() override;
-  TiledBitmap(const TiledBitmap&) = delete;
-  TiledBitmap(TiledBitmap&&) = delete;
-  TiledBitmap operator=(const TiledBitmap&) = delete;
-  TiledBitmap operator=(TiledBitmap&&) = delete;
-
 private:
-  TiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec ls);
+  TiledBitmap(Scroom::TiledBitmap::LayerStack::Ptr stack, const LayerSpec& ls);
 
-  void initialize();
-  void initialize(const Layer::Ptr& bottom);
-
-private:
   static void drawTile(cairo_t* cr, const CompressedTile::Ptr& tile, const Scroom::Utils::Rectangle<double>& viewArea);
-  void
-    connect(Layer::Ptr const& layer, Layer::Ptr const& prevLayer, const Scroom::TiledBitmap::LayerReduction& reducePreviousLayer);
 
 public:
   ////////////////////////////////////////////////////////////////////////
@@ -79,6 +52,7 @@ public:
 public:
   void setSource(SourcePresentation::Ptr sp) override;
   Layer::Ptr getBottomLayer() override;
+  Scroom::TiledBitmap::LayerStack::Ptr getLayerStack() override;
 
   void open(ViewInterface::WeakPtr viewInterface) override;
   void close(ViewInterface::WeakPtr vi) override;
@@ -91,14 +65,4 @@ public:
   void clearCaches(ViewInterface::Ptr vi) override;
 
   [[nodiscard]] Scroom::Utils::Context::ConstPtr getContext() const override;
-
-  ////////////////////////////////////////////////////////////////////////
-  // TileInitialisationObserver
-
-  void tileCreated(const CompressedTile::Ptr& tile) override;
-  void tileFinished(const CompressedTile::Ptr& tile) override;
-
-  ////////////////////////////////////////////////////////////////////////
-  // Helpers
-  ProgressInterface::Ptr progressInterface() { return progressBroadcaster; }
 };

@@ -5,11 +5,10 @@
  * SPDX-License-Identifier: LGPL-2.1
  */
 
-#include "layercoordinator.hh"
-
 #include <cstdio>
 #include <utility>
 
+#include <scroom/layercoordinator.hh>
 #include <scroom/threadpool.hh>
 #include <scroom/tiledbitmaplayer.hh>
 
