@@ -1,6 +1,7 @@
 # Tiled bitmap refactoring plan
 
-Status: steps 0–3 complete and accepted by the user. Step 4 has not started.
+Status: steps 0–3 complete and accepted by the user. Step 4 review is accepted
+and post-review local validation passed; platform CI remains to be verified.
 Step 3 platform CI passed on 2026-11-06.
 
 ## Goal and boundary
@@ -31,13 +32,9 @@ reduction. Implementation names below are provisional.
   presentation. It constructs `TiledBitmap` before invoking the loading callback.
   Both presentation classes in this file are private to the translation unit;
   external alternatives need public factories rather than private headers.
-- `TiledBitmap::initialize()` creates the smaller layers and `connect()` builds
-  one `LayerCoordinator` per target tile, observing up to 64 source tiles.
-  Dimensions are rounded upward after each division by 8. A reduced layer is
-  created only while its largest dimension exceeds `TILESIZE / 4`.
-- `TiledBitmapInterface` combines loading, bottom-layer access, drawing, view
-  attachment, cache control, and context access. Its implementation also owns
-  the layers, reduction coordinators, progress, and task registrations.
+- Step 4 moves layer construction, reduction coordinators, population
+  registrations, and progress counters into `LayerStack`. `TiledBitmap` delegates
+  data access and loading while retaining rendering and view state.
 - Step 3 separated reduction callables, storage bit depth, and rendering
   operations. `LayerOperations` remains a compatibility facade; future extraction
   must preserve the format transitions and shared colormaps supplied by
@@ -58,7 +55,7 @@ reduction. Implementation names below are provisional.
 - `DataFetcher` fills complete horizontal tile rows. TIFF and PNM sources use
   file-local coordinates; PNM source implementations read sequentially and
   ignore `startLine`. Relocation must preserve sequential source consumption.
-- `LayerCoordinator::unfinishedSourceTiles` and `TiledBitmap` completion counts
+- `LayerCoordinator::unfinishedSourceTiles` and stack completion counts
   are not reset for another load. Reduction work is posted outside the source
   loading queue. Target data initialization/access also needs a concurrency
   audit. These are risks to verify with tests, not established runtime diagnoses.
@@ -69,14 +66,15 @@ reduction. Implementation names below are provisional.
   preserving old plugin binaries and changing the relic API version are not
   requirements. Public headers and CMake exports still need to be usable by
   alternative adapters.
-- Tests cover geometry, sample iteration, reducers, layer descriptions, and stack
-  destruction. Population lifecycle coverage remains to be added. Performance
-  tools and pipette code also consume the current API.
+- Tests cover geometry, sample iteration, reducers, layer descriptions, and
+  nonvisual stack population and ownership. Repeatable-population lifecycle
+  coverage remains to be added. Performance tools and pipette code also consume
+  the current API.
 
 ### Reduction and coverage review
 
 Preserve the current outward rounding at both levels:
-`TiledBitmap::initialize()` uses `(dimension + 7) / 8` for reduced pixel sizes,
+`Geometry::reducedBounds()` rounds reduced pixel bounds outward,
 and `Layer` uses `(dimension + TILESIZE - 1) / TILESIZE` for tile counts. For
 relocated rectangles, round the scaled pixel bounds outward, then round coverage
 outward to the tile grid. Use floor for lower bounds and ceiling for upper bounds,
@@ -171,11 +169,13 @@ clang-tidy checks apply to touched code.
 
 ## Guidance for remaining steps
 
-Steps 0–3 have been accepted; do not reopen their design decisions merely to
-impose stricter generic contracts. Continue with step 4 only when requested.
-Follow `AGENTS.md` for the current build and test workflow. Run GCC and Clang
-builds sequentially with Ninja's default parallelism; test suites may run in
-parallel.
+Design decisions in steps 0–4 have been reviewed and accepted; do not reopen
+them merely to impose stricter generic contracts. Continue with step 5 only when
+requested. Follow `AGENTS.md` for the build and test workflow. During implementation
+and review iterations, build and test with Clang only. After review, before
+uploading to CI, run both compiler presets and GCC 13 compatibility checks.
+Run GCC and Clang builds sequentially with Ninja's default parallelism; test
+suites may run in parallel.
 
 Apply naming conventions with context and judgement. Prefer result names such
 as `tileRangeForRedraw()` over `compute` prefixes. Avoid redundant type/context
@@ -374,6 +374,37 @@ or death tests that merely verify the presence of `require()` guards.
   and renderer so
   existing callers continue working. Test constructing, loading, reading, and
   destroying a stack without a view. Keep UI progress forwarding in an adapter.
+
+  Implementation: public `layer-stack.hh` exposes an immutable sequence of
+  levels, each providing its concrete layer, storage bit depth, and layer geometry.
+  `LayerStack` owns its state directly and implements tile initialization
+  observation. Its coordinator definition is public in `layercoordinator.hh`;
+  shared descriptions and source contracts live in `tiled-bitmap-data.hh`,
+  avoiding cyclic header dependencies and forward declarations in the stack API.
+  The stack owns default pyramid construction, reduction wiring, loading
+  registrations, and data progress. It accepts a source directly or retains the
+  existing loading callback's lifetime token. Renderer
+  descriptions are not retained by the stack. `TiledBitmapInterface::getLayerStack()`
+  lets consumers retain data and loading independently of the rendering adapter.
+  The adapter forwards progress asynchronously to the UI thread; queued updates
+  use weak references so closing a view drops pending updates. No view or GTK
+  main loop is needed for stack construction, population, or reading.
+
+  `test/layer-stack-tests.cc` covers nonvisual geometry and storage descriptions,
+  source loading and reduction with pixel checks, release of layers and reduction
+  wiring, and ownership of injected load lifetime tokens after the renderer is released.
+  Repeatable population, source replacement rules, and coordinator synchronization
+  remain for the later planned steps.
+
+  Reviewed implementation: `bf39e0a39`; user review accepted on 2026-11-06.
+  Post-review validation: both compiler presets build all consumers and pass all
+  nine registered suites. The stack tests also pass with `DISPLAY` and
+  `WAYLAND_DISPLAY` unset. GCC 13 syntax checks pass for 12 source files changed
+  since step 3 and four independently included public headers. Clang-tidy passes
+  for those 12 source files, with nonfatal warnings remaining. Formatting checks
+  pass for 20 C++ files and the changed CMake file; whitespace and modified-skill
+  validation also pass. No code fixes were needed. Platform CI remains to be
+  verified; the step stays unchecked until then.
 
 - [ ] **5. Move view state and rendering caches out of data objects.** Make the
   renderer own view attachments, tile-view state, subscriptions, and caches.
