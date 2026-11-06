@@ -18,6 +18,69 @@
 namespace Scroom::Utils
 {
 
+  template <IntegralCoordinate T>
+  class RectangleIterator : public boost::addable2<RectangleIterator<T>, std::ptrdiff_t>
+  {
+  public:
+    using value_type = Point<T>;
+    using difference_type = std::ptrdiff_t;
+    using iterator_concept = std::forward_iterator_tag;
+    using iterator_category = std::input_iterator_tag;
+
+    RectangleIterator() = default;
+    RectangleIterator(T left, T top, T right, T bottom)
+      : m_left(left)
+      , m_right(right)
+      , m_bottom(bottom)
+      , m_x(left)
+      , m_y(left == right ? bottom : top)
+    {
+    }
+
+    Point<T> operator*() const { return {m_x, m_y}; }
+    RectangleIterator& operator++()
+    {
+      if(++m_x == m_right)
+      {
+        m_x = m_left;
+        ++m_y;
+      }
+      return *this;
+    }
+    RectangleIterator operator++(int)
+    {
+      auto previous = *this;
+      ++*this;
+      return previous;
+    }
+
+    /** Advances by a nonnegative point count; reaching or passing the end compares equal to the sentinel. */
+    RectangleIterator& operator+=(difference_type offset)
+    {
+      const auto width = static_cast<difference_type>(m_right - m_left);
+      auto rows = offset / width;
+      const auto column = static_cast<difference_type>(m_x - m_left) + (offset % width);
+      rows += column / width;
+      m_x = static_cast<T>(m_left + column % width);
+      m_y = static_cast<T>(m_y + rows);
+      return *this;
+    }
+
+    bool operator==(const RectangleIterator& other) const
+    {
+      return m_left == other.m_left && m_right == other.m_right && m_bottom == other.m_bottom && m_x == other.m_x
+             && m_y == other.m_y;
+    }
+    bool operator==(std::default_sentinel_t /*sentinel*/) const { return m_y >= m_bottom; }
+
+  private:
+    T m_left{};
+    T m_right{};
+    T m_bottom{};
+    T m_x{};
+    T m_y{};
+  };
+
   template <typename T>
   class Rectangle
     : public boost::addable2<Rectangle<T>, Point<T>>
@@ -103,6 +166,19 @@ namespace Scroom::Utils
       using R = std::common_type_t<T, U>;
 
       return Rectangle<R>(*this).intersection(Rectangle<R>(other));
+    }
+
+    /** Traverses a snapshot of the half-open rectangle bounds, with x changing first. */
+    [[nodiscard]] auto begin() const
+      requires IntegralCoordinate<T>
+    {
+      return RectangleIterator<T>(getLeft(), getTop(), getRight(), getBottom());
+    }
+
+    [[nodiscard]] std::default_sentinel_t end() const
+      requires IntegralCoordinate<T>
+    {
+      return {};
     }
 
     [[nodiscard]] value_type getTop() const { return vertically.getStart(); }

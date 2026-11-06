@@ -8,6 +8,9 @@
 #pragma once
 
 #include <cmath>
+#include <concepts>
+#include <cstddef>
+#include <iterator>
 #include <ostream>
 #include <type_traits>
 
@@ -39,6 +42,53 @@ namespace Scroom::Utils
   {
     return isZero(a - b);
   }
+
+  template <typename T>
+  concept IntegralCoordinate = std::integral<T> && !std::same_as<std::remove_cv_t<T>, bool>;
+
+  template <IntegralCoordinate T>
+  class SegmentIterator : public boost::addable2<SegmentIterator<T>, std::ptrdiff_t>
+  {
+  public:
+    using value_type = T;
+    using difference_type = std::ptrdiff_t;
+    using iterator_concept = std::forward_iterator_tag;
+    using iterator_category = std::input_iterator_tag;
+
+    SegmentIterator() = default;
+    SegmentIterator(T current, T end)
+      : m_current(current)
+      , m_end(end)
+    {
+    }
+
+    T operator*() const { return m_current; }
+    SegmentIterator& operator++()
+    {
+      ++m_current;
+      return *this;
+    }
+    SegmentIterator operator++(int)
+    {
+      auto previous = *this;
+      ++*this;
+      return previous;
+    }
+
+    /** Advances by a nonnegative offset; reaching or passing the end compares equal to the sentinel. */
+    SegmentIterator& operator+=(difference_type offset)
+    {
+      m_current = static_cast<T>(m_current + offset);
+      return *this;
+    }
+
+    bool operator==(const SegmentIterator& other) const { return m_current == other.m_current && m_end == other.m_end; }
+    bool operator==(std::default_sentinel_t /*sentinel*/) const { return m_current >= m_end; }
+
+  private:
+    T m_current{};
+    T m_end{};
+  };
 
   template <typename T>
   class Segment
@@ -128,6 +178,19 @@ namespace Scroom::Utils
         return Segment<value_type>(v, start + size - v);
       }
       return *this;
+    }
+
+    /** Returns an iterator retaining a snapshot of the segment bounds. */
+    [[nodiscard]] auto begin() const
+      requires IntegralCoordinate<T>
+    {
+      return SegmentIterator<T>(getStart(), getEnd());
+    }
+
+    [[nodiscard]] std::default_sentinel_t end() const
+      requires IntegralCoordinate<T>
+    {
+      return {};
     }
 
     [[nodiscard]] value_type getStart() const { return start; }

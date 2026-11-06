@@ -63,17 +63,18 @@ if(ENABLE_GOOGLE_TEST)
     util_tests
     PRIVATE test/bookkeeping-tests.cc
             test/context-tests.cc
+            test/coordinate-iteration-tests.cc
             test/counter-tests.cc
             test/gtkhelper-tests.cc
             test/logger-tests.cc
             test/observable-tests.cc
+            test/parent-context-tests.cc
             test/progressinterfacebroadcaster-tests.cc
             test/progressinterfaceconversion-tests.cc
             test/progressinterfacemultiplexer-tests.cc
             test/progressstateinterfacestub.cc
             test/progressstateinterfacestub.hh
             test/rectangletests.cc
-            test/parent-context-tests.cc
             test/scope-exit-tests.cpp
             test/single-context-tests.cc
   )
