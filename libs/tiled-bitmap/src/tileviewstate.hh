@@ -17,7 +17,7 @@
 #include <scroom/observable.hh>
 #include <scroom/stuff.hh>
 #include <scroom/threadpool.hh>
-#include <scroom/tiledbitmaplayer.hh>
+#include <scroom/tile-storage.hh>
 
 class TiledBitmapViewData;
 
@@ -41,7 +41,7 @@ public:
   };
 
 private:
-  std::shared_ptr<CompressedTile> parent;
+  TileStorage::Ptr parent;
   boost::mutex mut;
   State state{INIT};
   State desiredState{LOADED};
@@ -64,7 +64,7 @@ public:
   TileViewState operator=(const TileViewState&) = delete;
   TileViewState operator=(TileViewState&&) = delete;
 
-  static Ptr create(const std::shared_ptr<CompressedTile>& parent);
+  static Ptr create(const TileStorage::Ptr& parent);
 
   Scroom::Utils::Stuff getCacheResult();
   void setViewData(const std::shared_ptr<TiledBitmapViewData>& tbvd);
@@ -74,7 +74,7 @@ public:
   void tileLoaded(ConstTile::Ptr tile) override;
 
 private:
-  explicit TileViewState(std::shared_ptr<CompressedTile> parent);
+  explicit TileViewState(TileStorage::Ptr parent);
 
   /**
    * Kick the internal state machine into making some progress

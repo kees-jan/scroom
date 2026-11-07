@@ -7,11 +7,13 @@
 
 #pragma once
 
+#include <cstdint>
 #include <memory>
 #include <utility>
 
 #include <scroom/global.hh>
-#include <scroom/memoryblobs.hh>
+
+inline constexpr int TILESIZE = 4096;
 
 /**
  * Represent the state of one of the tiles that make up a layer in the
@@ -34,10 +36,10 @@ public:
   int width;
   int height;
   int bpp;
-  Scroom::MemoryBlobs::RawPageData::Ptr data;
+  std::shared_ptr<uint8_t> data;
 
 public:
-  Tile(int width_, int height_, int bpp_, Scroom::MemoryBlobs::RawPageData::Ptr data_)
+  Tile(int width_, int height_, int bpp_, std::shared_ptr<uint8_t> data_)
     : width(width_)
     , height(height_)
     , bpp(bpp_)
@@ -45,7 +47,7 @@ public:
   {
   }
 
-  static Tile::Ptr create(int width, int height, int bpp, Scroom::MemoryBlobs::RawPageData::Ptr data)
+  static Tile::Ptr create(int width, int height, int bpp, std::shared_ptr<uint8_t> data)
   {
     return std::make_shared<Tile>(width, height, bpp, std::move(data));
   }
@@ -60,10 +62,10 @@ public:
   int width;
   int height;
   int bpp;
-  Scroom::MemoryBlobs::RawPageData::ConstPtr data;
+  std::shared_ptr<const uint8_t> data;
 
 public:
-  ConstTile(int width_, int height_, int bpp_, Scroom::MemoryBlobs::RawPageData::ConstPtr data_)
+  ConstTile(int width_, int height_, int bpp_, std::shared_ptr<const uint8_t> data_)
     : width(width_)
     , height(height_)
     , bpp(bpp_)
@@ -71,7 +73,7 @@ public:
   {
   }
 
-  static ConstTile::Ptr create(int width, int height, int bpp, Scroom::MemoryBlobs::RawPageData::ConstPtr data)
+  static ConstTile::Ptr create(int width, int height, int bpp, std::shared_ptr<const uint8_t> data)
   {
     return std::make_shared<ConstTile>(width, height, bpp, std::move(data));
   }

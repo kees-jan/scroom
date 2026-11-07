@@ -72,7 +72,7 @@ namespace Scroom::TiledBitmap::Geometry
     return Scroom::Utils::make_rect_from_start_end(xBegin, yBegin, xEnd, yEnd).rightOf(0).below(0);
   }
 
-  Rectangle<int> tileRangeForSampling(Rectangle<int> layerArea, int tileSize)
+  Rectangle<int> enclosingTileRange(Rectangle<int> layerArea, int tileSize)
   {
     require(tileSize > 0);
     if(layerArea.isEmpty())

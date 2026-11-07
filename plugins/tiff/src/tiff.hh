@@ -47,6 +47,6 @@ public:
 
   std::list<GtkFileFilter*> getFilters() override;
 
-  std::tuple<Scroom::TiledBitmap::BitmapMetaData, Layer::Ptr, Scroom::TiledBitmap::ReloadFunction>
+  std::tuple<Scroom::TiledBitmap::BitmapMetaData, LayerInterface::Ptr, Scroom::TiledBitmap::ReloadFunction>
     open(const std::string& fileName) override;
 };

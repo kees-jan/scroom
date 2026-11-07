@@ -12,7 +12,6 @@
 #include <scroom/tiledbitmaplayer.hh>
 
 #include "local.hh"
-#include "tileviewstate.hh"
 
 using namespace Scroom::Utils;
 using namespace Scroom::MemoryBlobs;
@@ -90,30 +89,19 @@ ConstTile::Ptr CompressedTile::getConstTileAsync()
   return result;
 }
 
-Tile::Ptr CompressedTile::initialize()
+Scroom::Utils::Stuff CompressedTile::initialize()
 {
-  Scroom::Utils::Stuff s;
-  Tile::Ptr tile_;
+  boost::mutex::scoped_lock const stateLock(stateData);
+  boost::mutex::scoped_lock const dataLock(tileData);
 
-  bool didInitialize = false;
+  if(state == TSI_UNINITIALIZED)
   {
-    boost::mutex::scoped_lock const stateLock(stateData);
-    boost::mutex::scoped_lock const dataLock(tileData);
-
-    if(state == TSI_UNINITIALIZED)
-    {
-      s = data->initialize(0);
-      state = TSI_NORMAL;
-      didInitialize = true;
-    }
+    auto pixels = data->initialize(0);
+    state = TSI_NORMAL;
+    return pixels;
   }
 
-  if(didInitialize)
-  {
-    tile_ = getTileSync(); // Trigger notifyObservers(), without holding the lock
-  }
-
-  return tile_;
+  return constTile.lock();
 }
 
 void CompressedTile::reportFinished()
@@ -163,19 +151,6 @@ ConstTile::Ptr CompressedTile::do_load()
   return result;
 }
 
-TileViewState::Ptr CompressedTile::getViewState(const ViewInterface::WeakPtr& vi)
-{
-  TileViewState::Ptr result = viewStates[vi].lock();
-
-  if(!result)
-  {
-    result = TileViewState::create(shared_from_this<CompressedTile>());
-    viewStates[vi] = result;
-  }
-
-  return result;
-}
-
 TileState CompressedTile::getState()
 {
   TileState result = TILE_UNINITIALIZED;
@@ -206,11 +181,6 @@ TileState CompressedTile::getState()
     break;
   }
   return result;
-}
-
-void CompressedTile::observerAdded(TileInitialisationObserver::Ptr const& observer, Scroom::Bookkeeping::Token const& /*unused*/)
-{
-  observer->tileCreated(shared_from_this<CompressedTile>());
 }
 
 void CompressedTile::observerAdded(TileLoadingObserver::Ptr const& observer, Scroom::Bookkeeping::Token const& token)
@@ -278,17 +248,3 @@ void CompressedTile::notifyObservers(const ConstTile::Ptr& tile_)
     observer->tileLoaded(tile_);
   }
 }
-
-void CompressedTile::open(ViewInterface::WeakPtr /*vi*/)
-{
-  // On open, we do nothing. On close, we destroy any resources related to the view.
-}
-
-void CompressedTile::close(ViewInterface::WeakPtr vi) { viewStates.erase(vi); }
-
-////////////////////////////////////////////////////////////////////////
-/// TileInitialisationObserver
-
-void TileInitialisationObserver::tileFinished(const CompressedTile::Ptr& /*unused*/) {}
-
-void TileInitialisationObserver::tileCreated(const CompressedTile::Ptr& /*unused*/) {}

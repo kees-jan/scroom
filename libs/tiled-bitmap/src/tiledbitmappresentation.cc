@@ -10,6 +10,7 @@
 
 #include <spdlog/spdlog.h>
 
+#include <scroom/assertions.hh>
 #include <scroom/cairo-helpers.hh>
 #include <scroom/logger.hh>
 #include <scroom/opentiledbitmapinterface.hh>
@@ -17,6 +18,7 @@
 #include <scroom/showmetadata.hh>
 #include <scroom/showmetadatainterface.hh>
 #include <scroom/tiled-bitmap-geometry.hh>
+#include <scroom/tiledbitmaplayer.hh>
 #include <scroom/transformpresentation.hh>
 
 #include "tiled-bitmap.hh"
@@ -241,7 +243,7 @@ namespace
 
     auto sampledAreaInLayerCoordinates = roundOutward(presentationArea.intersection(getRect())).to<int>();
 
-    Layer::Ptr const bottomLayer = tbi->getBottomLayer();
+    LayerInterface::Ptr const bottomLayer = tbi->getBottomLayer();
     PipetteLayerOperations::PipetteColor pipetteColors;
 
     const int totalPixels = sampledAreaInLayerCoordinates.getWidth() * sampledAreaInLayerCoordinates.getHeight();
@@ -251,7 +253,7 @@ namespace
       return {};
     }
 
-    const auto tileRange = Geometry::tileRangeForSampling(sampledAreaInLayerCoordinates, TILESIZE);
+    const auto tileRange = Geometry::enclosingTileRange(sampledAreaInLayerCoordinates, TILESIZE);
 
     for(const auto tileIndex: tileRange)
     {
@@ -384,7 +386,7 @@ namespace
   {
     auto t = openTiledBitmapInterface->open(fileName);
     BitmapMetaData bmd = std::move(std::get<0>(t));
-    Layer::Ptr const bottomLayer = std::move(std::get<1>(t));
+    LayerInterface::Ptr const bottomLayer = std::move(std::get<1>(t));
     ReloadFunction const load = std::move(std::get<2>(t));
 
     auto lsr = LayerSpecForBitmap(bmd);
@@ -394,7 +396,11 @@ namespace
     PresentationInterface::Ptr result;
     if(bottomLayer && !layerSpec.empty())
     {
-      auto tiledBitmap = TiledBitmap::create(bottomLayer, layerSpec);
+      const auto compressedBottom = std::dynamic_pointer_cast<Layer>(bottomLayer);
+      verify(compressedBottom);
+      const auto stack =
+        LayerStack::create(bottomLayer, layerSpec, createCompressedLayerFactory(compressedBottom->getPageProvider()));
+      auto tiledBitmap = TiledBitmap::create(stack, layerSpec);
       PipetteLayerOperations::Ptr const pipetteLayerOperation =
         std::dynamic_pointer_cast<PipetteLayerOperations>(layerSpec[0].rendering);
 

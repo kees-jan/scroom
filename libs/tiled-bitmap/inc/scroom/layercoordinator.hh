@@ -14,16 +14,16 @@
 #include <boost/thread.hpp>
 
 #include <scroom/layer-reduction.hh>
-#include <scroom/tiledbitmaplayer.hh>
+#include <scroom/tile-storage.hh>
 
 class LayerCoordinator
   : public TileInitialisationObserver
   , public virtual Scroom::Utils::Base
 {
 private:
-  CompressedTile::Ptr targetTile;
+  TileStorage::Ptr targetTile;
   Tile::Ptr targetTileData;
-  std::map<CompressedTile::Ptr, Scroom::Utils::Point<int>> sourceTiles;
+  std::map<TileStorage::Ptr, Scroom::Utils::Point<int>> sourceTiles;
   Scroom::Utils::StuffList registrations;
   Scroom::TiledBitmap::LayerReduction reduceLayer;
   boost::mutex mut;
@@ -32,7 +32,7 @@ private:
 public:
   using Ptr = std::shared_ptr<LayerCoordinator>;
 
-  static Ptr create(CompressedTile::Ptr targetTile, Scroom::TiledBitmap::LayerReduction reduceLayer);
+  static Ptr create(TileStorage::Ptr targetTile, Scroom::TiledBitmap::LayerReduction reduceLayer);
 
   ~LayerCoordinator() override;
   LayerCoordinator(const LayerCoordinator&) = delete;
@@ -40,15 +40,15 @@ public:
   LayerCoordinator operator=(const LayerCoordinator&) = delete;
   LayerCoordinator operator=(LayerCoordinator&&) = delete;
 
-  void addSourceTile(Scroom::Utils::Point<int> sourceOffset, const CompressedTile::Ptr& tile);
+  void addSourceTile(Scroom::Utils::Point<int> sourceOffset, const TileStorage::Ptr& tile);
 
 private:
-  LayerCoordinator(CompressedTile::Ptr targetTile, Scroom::TiledBitmap::LayerReduction reduceLayer);
+  LayerCoordinator(TileStorage::Ptr targetTile, Scroom::TiledBitmap::LayerReduction reduceLayer);
 
-  void reduceSourceTile(const CompressedTile::Ptr& tile, ConstTile::Ptr const& tileData);
+  void reduceSourceTile(const TileStorage::Ptr& tile, ConstTile::Ptr const& tileData);
 
 public:
   ////////////////////////////////////////////////////////////////////////
   /// TileInitialisationObserver
-  void tileFinished(const CompressedTile::Ptr& tile) override;
+  void tileFinished(const TileStorage::Ptr& tile) override;
 };

@@ -31,11 +31,6 @@ namespace Scroom::Utils
 
     Point() = default;
 
-    explicit Point(value_type xy)
-      : Point(xy, xy)
-    {
-    }
-
     Point(value_type x_, value_type y_)
       : x(x_)
       , y(y_)

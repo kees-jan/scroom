@@ -34,25 +34,25 @@ TEST_P(TileGeometry, allocated_tiles_cover_the_image_without_an_extra_tile) // N
   }
 }
 
-TEST_P(TileGeometry, sampling_excludes_tiles_that_only_touch_the_requested_edge) // NOLINT
+TEST_P(TileGeometry, enclosing_range_excludes_tiles_that_only_touch_the_requested_edge) // NOLINT
 {
-  const auto range = Geometry::tileRangeForSampling({tileSize, 2 * tileSize, tileSize, tileSize}, tileSize);
+  const auto range = Geometry::enclosingTileRange({tileSize, 2 * tileSize, tileSize, tileSize}, tileSize);
   EXPECT_EQ(1, range.getLeft());
   EXPECT_EQ(2, range.getRight());
   EXPECT_EQ(2, range.getTop());
   EXPECT_EQ(3, range.getBottom());
 
-  const auto singlePixel = Geometry::tileRangeForSampling({tileSize - 1, 0, 1, 1}, tileSize);
+  const auto singlePixel = Geometry::enclosingTileRange({tileSize - 1, 0, 1, 1}, tileSize);
   EXPECT_EQ(0, singlePixel.getLeft());
   EXPECT_EQ(1, singlePixel.getRight());
   EXPECT_EQ(0, singlePixel.getTop());
   EXPECT_EQ(1, singlePixel.getBottom());
 }
 
-TEST_P(TileGeometry, sampling_range_covers_request_with_tiles_at_exact_grid_positions) // NOLINT
+TEST_P(TileGeometry, enclosing_range_covers_request_with_tiles_at_exact_grid_positions) // NOLINT
 {
   const Rectangle requestedAreaInLayerCoordinates(tileSize - 2, 2 * tileSize - 1, 5, 4);
-  const auto range = Geometry::tileRangeForSampling(requestedAreaInLayerCoordinates, tileSize);
+  const auto range = Geometry::enclosingTileRange(requestedAreaInLayerCoordinates, tileSize);
 
   ASSERT_LT(range.getLeft(), range.getRight());
   ASSERT_LT(range.getTop(), range.getBottom());
@@ -128,15 +128,15 @@ TEST_P(TileGeometry, empty_requests_do_not_select_tiles) // NOLINT
 {
   for(const auto& area: {Rectangle(tileSize - 1, 3, 0, 4), Rectangle(2, tileSize - 1, 5, 0)})
   {
-    EXPECT_TRUE(Geometry::tileRangeForSampling(area, tileSize).isEmpty());
+    EXPECT_TRUE(Geometry::enclosingTileRange(area, tileSize).isEmpty());
     EXPECT_TRUE(Geometry::tileRangeForRedraw(Rectangle<double>(area), tileSize).isEmpty());
   }
 }
 
-TEST_P(TileGeometry, sampling_rounds_negative_bounds_outward_on_the_same_grid) // NOLINT
+TEST_P(TileGeometry, enclosing_range_rounds_negative_bounds_outward_on_the_same_grid) // NOLINT
 {
   const Rectangle requestedAreaInLayerCoordinates(-tileSize - 2, -1, 3, tileSize + 2);
-  const auto range = Geometry::tileRangeForSampling(requestedAreaInLayerCoordinates, tileSize);
+  const auto range = Geometry::enclosingTileRange(requestedAreaInLayerCoordinates, tileSize);
   EXPECT_EQ(Rectangle(-2, -1, 2, 3), range);
   EXPECT_EQ(Rectangle(-2 * tileSize, -tileSize, tileSize, tileSize), Geometry::tileAreaInLayerCoordinates({-2, -1}, tileSize));
 }
@@ -314,7 +314,7 @@ TEST(LayerGeometry, outward_rounding_near_integer_limits_keeps_the_last_pixel) /
   const int maximum = std::numeric_limits<int>::max();
   EXPECT_EQ(maximum, Geometry::tileCount(maximum, 1));
   EXPECT_EQ(maximum / 8 + 1, Geometry::tileCount(maximum, 8));
-  EXPECT_EQ(Rectangle(maximum - 1, 0, 1, 1), Geometry::tileRangeForSampling({maximum - 1, 0, 1, 1}, 1));
+  EXPECT_EQ(Rectangle(maximum - 1, 0, 1, 1), Geometry::enclosingTileRange({maximum - 1, 0, 1, 1}, 1));
   EXPECT_EQ(Rectangle(0, 0, maximum / 8 + 1, 1), Geometry::reducedBounds({0, 0, maximum, 1}));
 
   const auto mapping = Geometry::reductionMapping({std::numeric_limits<int>::min(), maximum});

@@ -24,7 +24,7 @@ namespace Scroom::TiledBitmap::Geometry
   Rectangle<int> tileAreaInLayerCoordinates(Point<int> tileIndex, int tileSize);
 
   Rectangle<int> tileRangeForRedraw(Rectangle<double> layerArea, int tileSize);
-  Rectangle<int> tileRangeForSampling(Rectangle<int> layerArea, int tileSize);
+  Rectangle<int> enclosingTileRange(Rectangle<int> layerArea, int tileSize);
 
   // The parent uses floor division; offsets are in [0, 8), also for negative indices.
   struct ReductionMapping

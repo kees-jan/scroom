@@ -308,7 +308,7 @@ protected:
 TEST_F(BinaryOrLayerReduction, a_single_set_bit_marks_its_block_and_leaves_neighbouring_blocks_clear) // NOLINT
 {
   const Scroom::Utils::Point block(2, 3);
-  const auto sourcePixel = block * reductionFactor + Scroom::Utils::Point(reductionFactor / 2);
+  const auto sourcePixel = block * reductionFactor + Scroom::Utils::Point(reductionFactor / 2, reductionFactor / 2);
   const unsigned setBit = 1;
   setSample(source, format, sourcePixel, 0, setBit);
 

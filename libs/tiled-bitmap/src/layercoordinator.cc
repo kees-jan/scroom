@@ -10,16 +10,16 @@
 
 #include <scroom/layercoordinator.hh>
 #include <scroom/threadpool.hh>
-#include <scroom/tiledbitmaplayer.hh>
+#include <scroom/tile-storage.hh>
 
 #include "local.hh"
 
-LayerCoordinator::Ptr LayerCoordinator::create(CompressedTile::Ptr targetTile, Scroom::TiledBitmap::LayerReduction reduceLayer)
+LayerCoordinator::Ptr LayerCoordinator::create(TileStorage::Ptr targetTile, Scroom::TiledBitmap::LayerReduction reduceLayer)
 {
   return LayerCoordinator::Ptr(new LayerCoordinator(std::move(targetTile), std::move(reduceLayer)));
 }
 
-LayerCoordinator::LayerCoordinator(CompressedTile::Ptr targetTile_, Scroom::TiledBitmap::LayerReduction reduceLayer_)
+LayerCoordinator::LayerCoordinator(TileStorage::Ptr targetTile_, Scroom::TiledBitmap::LayerReduction reduceLayer_)
   : targetTile(std::move(targetTile_))
   , reduceLayer(std::move(reduceLayer_))
 
@@ -32,7 +32,7 @@ LayerCoordinator::~LayerCoordinator()
   sourceTiles.clear();
 }
 
-void LayerCoordinator::addSourceTile(Scroom::Utils::Point<int> sourceOffset, const CompressedTile::Ptr& tile)
+void LayerCoordinator::addSourceTile(Scroom::Utils::Point<int> sourceOffset, const TileStorage::Ptr& tile)
 {
   boost::unique_lock<boost::mutex> const lock(mut);
 
@@ -44,7 +44,7 @@ void LayerCoordinator::addSourceTile(Scroom::Utils::Point<int> sourceOffset, con
 ////////////////////////////////////////////////////////////////////////
 /// TileInitialisationObserver
 
-void LayerCoordinator::tileFinished(const CompressedTile::Ptr& tile)
+void LayerCoordinator::tileFinished(const TileStorage::Ptr& tile)
 {
   ConstTile::Ptr const tileData = tile->getConstTileAsync();
   require(tileData);
@@ -57,7 +57,7 @@ void LayerCoordinator::tileFinished(const CompressedTile::Ptr& tile)
 ////////////////////////////////////////////////////////////////////////
 /// Helpers
 
-void LayerCoordinator::reduceSourceTile(const CompressedTile::Ptr& tile, ConstTile::Ptr const& /*tileData*/)
+void LayerCoordinator::reduceSourceTile(const TileStorage::Ptr& tile, ConstTile::Ptr const& /*tileData*/)
 {
   // If tileData contains a valid pointer, then fetching
   // sourcetiledata, below, will be instananeous. Otherwise, it will

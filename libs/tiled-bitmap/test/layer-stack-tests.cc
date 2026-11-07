@@ -6,13 +6,19 @@
  */
 
 #include <chrono>
+#include <cstring>
 #include <future>
+#include <limits>
 
-#include <gtest/gtest.h>
+#include <gmock/gmock.h>
 
+#include <scroom/bitmap-helpers.hh>
 #include <scroom/layer-stack.hh>
+#include <scroom/layeroperations.hh>
 #include <scroom/tiledbitmapinterface.hh>
+#include <scroom/tiledbitmaplayer.hh>
 
+#include "in-memory-layer.hh"
 #include "tile-sample-helpers.hh"
 
 using namespace Scroom::TiledBitmap;
@@ -24,6 +30,23 @@ namespace
 {
   constexpr int reductionFactor = 8;
   constexpr auto completionTimeout = std::chrono::seconds(10);
+
+  enum class Backend
+  {
+    COMPRESSED,
+    IN_MEMORY
+  };
+
+  LayerFactory layerFactory(Backend backend, Point<int> imageSize, int bpp)
+  {
+    return backend == Backend::COMPRESSED ? createCompressedLayerFactory(createCompressedLayerPageProvider(imageSize, bpp))
+                                          : InMemoryLayer::factory();
+  }
+
+  std::string backendName(const testing::TestParamInfo<Backend>& info)
+  {
+    return info.param == Backend::COMPRESSED ? "Compressed" : "InMemory";
+  }
 
   class PopulationProgress : public ProgressInterface
   {
@@ -80,25 +103,35 @@ TEST(LayerStack, exposes_layer_geometry_and_storage_precision_without_rendering_
   const LayerSpec descriptions{
     LayerDescription(1, createIntensityReduction(1), {}), LayerDescription(8, createIntensityReduction(8), {})
   };
-  const auto stack = LayerStack::create(imageSize, descriptions);
+  const auto stack = LayerStack::create(
+    imageSize, descriptions, createCompressedLayerFactory(createCompressedLayerPageProvider(imageSize, descriptions.front().bpp))
+  );
   const auto levels = stack->getLevels();
 
   ASSERT_GE(levels.size(), 2U);
   EXPECT_EQ(1, levels.front().bpp);
   EXPECT_EQ(8, levels[1].bpp);
-  EXPECT_EQ(1, levels.front().layer->getTile({0, 0})->bpp);
-  EXPECT_EQ(8, levels[1].layer->getTile({0, 0})->bpp);
+  EXPECT_EQ(1, levels.front().layer->getTile({0, 0})->getBpp());
+  EXPECT_EQ(8, levels[1].layer->getTile({0, 0})->getBpp());
   const Rectangle imageArea(0, 0, imageSize.x, imageSize.y);
   EXPECT_EQ(imageArea, levels.front().layer->getRect());
   EXPECT_EQ(imageArea / reductionFactor, levels[1].layer->getRect());
 }
 
-TEST(LayerStack, loads_and_reduces_source_pixels_without_a_view_or_main_loop)
+using LayerStackPopulation = testing::TestWithParam<Backend>;
+
+INSTANTIATE_TEST_SUITE_P(Storage, LayerStackPopulation, testing::Values(Backend::COMPRESSED, Backend::IN_MEMORY), backendName);
+
+TEST_P(LayerStackPopulation, loads_and_reduces_source_pixels)
 {
   const unsigned leftStripValue = 20;
   const unsigned backgroundValue = 60;
   const LayerSpec descriptions{LayerDescription(8, createIntensityReduction(8), {})};
-  const auto stack = LayerStack::create(Point(3 * TILESIZE, reductionFactor), descriptions);
+  const Rectangle imageArea(0, 0, 3 * TILESIZE, reductionFactor);
+  auto createLayer = layerFactory(GetParam(), imageArea.getSize(), descriptions.front().bpp);
+  const auto suppliedBottom = createLayer(0, imageArea, descriptions.front().bpp);
+  const auto stack = LayerStack::create(suppliedBottom, descriptions, createLayer);
+  EXPECT_EQ(suppliedBottom, stack->getLevels().front().layer);
   ASSERT_GE(stack->getLevels().size(), 2U);
   const auto progress = std::make_shared<PopulationProgress>();
   auto populated = progress->finished();
@@ -124,10 +157,13 @@ TEST(LayerStack, loads_and_reduces_source_pixels_without_a_view_or_main_loop)
 TEST(LayerStack, releasing_the_stack_releases_its_layers_and_reduction_wiring)
 {
   const LayerSpec descriptions{LayerDescription(8, createIntensityReduction(8), {})};
-  auto stack = LayerStack::create(Point(3 * TILESIZE, reductionFactor), descriptions);
+  const Point imageSize(3 * TILESIZE, reductionFactor);
+  auto stack = LayerStack::create(
+    imageSize, descriptions, createCompressedLayerFactory(createCompressedLayerPageProvider(imageSize, descriptions.front().bpp))
+  );
   ASSERT_GE(stack->getLevels().size(), 2U);
-  const std::weak_ptr<Layer> bottom = stack->getLevels().front().layer;
-  const std::weak_ptr<Layer> reduced = stack->getLevels()[1].layer;
+  const std::weak_ptr<LayerInterface> bottom = stack->getLevels().front().layer;
+  const std::weak_ptr<LayerInterface> reduced = stack->getLevels()[1].layer;
 
   stack.reset();
 

@@ -8,6 +8,7 @@
 #include "pnm.hh"
 
 #include <scroom/opentiledbitmapinterface.hh>
+#include <scroom/tiledbitmaplayer.hh>
 #include <scroom/transformpresentation.hh>
 
 #include "pnmsource.hh"
@@ -50,7 +51,7 @@ std::list<GtkFileFilter*> Pnm::getFilters()
   return result;
 }
 
-std::tuple<BitmapMetaData, Layer::Ptr, ReloadFunction> Pnm::open(const std::string& fileName)
+std::tuple<BitmapMetaData, LayerInterface::Ptr, ReloadFunction> Pnm::open(const std::string& fileName)
 {
   auto r = Scroom::Pnm::open(m_logger, fileName);
   if(r)

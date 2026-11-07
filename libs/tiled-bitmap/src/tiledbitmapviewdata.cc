@@ -30,7 +30,7 @@ TiledBitmapViewData::TiledBitmapViewData(const ViewInterface::WeakPtr& viewInter
 }
 
 void TiledBitmapViewData::setNeededTiles(
-  Layer::Ptr const& l,
+  LayerInterface::Ptr const& l,
   Scroom::Utils::Rectangle<int> tileRange_,
   int zoom_,
   LayerRenderingOperations::Ptr layerOperations_
@@ -82,7 +82,7 @@ void TiledBitmapViewData::resetNeededTiles()
 
   for(const auto tileIndex: tileRange)
   {
-    CompressedTile::Ptr const tile = layer->getTile(tileIndex);
+    TileStorage::Ptr const tile = layer->getTile(tileIndex);
 
     TileViewState::Ptr const tileViewState = tile->getViewState(viewInterface);
     tileViewState->setViewData(shared_from_this<TiledBitmapViewData>());

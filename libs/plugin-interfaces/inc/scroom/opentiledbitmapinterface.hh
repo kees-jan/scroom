@@ -13,13 +13,13 @@
 
 #include <scroom/colormappable.hh>
 #include <scroom/interface.hh>
+#include <scroom/layer-interface.hh>
 #include <scroom/logger.hh>
 #include <scroom/point.hh>
 #include <scroom/rectangle.hh>
 #include <scroom/scroominterface.hh>
 #include <scroom/showmetadata.hh>
 #include <scroom/tiled-bitmap-data.hh>
-#include <scroom/tiledbitmaplayer.hh>
 
 namespace Scroom::TiledBitmap
 {
@@ -46,7 +46,7 @@ namespace Scroom::TiledBitmap
   public:
     virtual std::list<GtkFileFilter*> getFilters() = 0;
 
-    virtual std::tuple<BitmapMetaData, Layer::Ptr, ReloadFunction> open(const std::string& fileName) = 0;
+    virtual std::tuple<BitmapMetaData, LayerInterface::Ptr, ReloadFunction> open(const std::string& fileName) = 0;
   };
 
   OpenPresentationInterface::Ptr ToOpenPresentationInterface(OpenTiledBitmapInterface::Ptr openTiledBitmapInterface);
@@ -64,7 +64,10 @@ namespace Scroom::TiledBitmap
 
   LayerSpecResult LayerSpecForBitmap(const BitmapMetaData& bitmapMetaData);
 
-  Scroom::Utils::Stuff
-    scheduleLoadingBitmap(const SourcePresentation::Ptr& sp, const Layer::Ptr& layer, const ProgressInterface::Ptr& progress);
+  Scroom::Utils::Stuff scheduleLoadingBitmap(
+    const SourcePresentation::Ptr& sp,
+    const LayerInterface::Ptr& layer,
+    const ProgressInterface::Ptr& progress
+  );
 
 } // namespace Scroom::TiledBitmap

@@ -18,10 +18,12 @@
 
 #include <boost/thread/mutex.hpp>
 
+#include <scroom/assertions.hh>
 #include <scroom/cairo-helpers.hh>
 #include <scroom/gtk-helpers.hh>
 #include <scroom/progressinterfacehelpers.hh>
 #include <scroom/tiled-bitmap-geometry.hh>
+#include <scroom/tiledbitmaplayer.hh>
 
 #include "scroom/tweak-view.hh"
 #include "tileviewstate.hh"
@@ -64,14 +66,25 @@ TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight, L
   return TiledBitmap::create(bitmapWidth, bitmapHeight, ls);
 }
 
-TiledBitmap::Ptr TiledBitmap::create(int bitmapWidth, int bitmapHeight, const LayerSpec& ls)
+TiledBitmapInterface::Ptr createTiledBitmap(const Scroom::TiledBitmap::LayerStack::Ptr& stack, const LayerSpec& descriptions)
 {
-  return Ptr(new TiledBitmap(Scroom::TiledBitmap::LayerStack::create(bitmapWidth, bitmapHeight, ls), ls));
+  return TiledBitmap::create(stack, descriptions);
 }
 
-TiledBitmap::Ptr TiledBitmap::create(const Layer::Ptr& bottom, const LayerSpec& ls)
+TiledBitmap::Ptr TiledBitmap::create(Scroom::TiledBitmap::LayerStack::Ptr stack, const LayerSpec& descriptions)
 {
-  return Ptr(new TiledBitmap(Scroom::TiledBitmap::LayerStack::create(bottom, ls), ls));
+  require(stack);
+  require(!descriptions.empty());
+  return Ptr(new TiledBitmap(std::move(stack), descriptions));
+}
+
+TiledBitmap::Ptr TiledBitmap::create(int bitmapWidth, int bitmapHeight, const LayerSpec& ls)
+{
+  require(!ls.empty());
+  const auto provider = createCompressedLayerPageProvider({bitmapWidth, bitmapHeight}, ls.front().bpp);
+  return Ptr(new TiledBitmap(
+    Scroom::TiledBitmap::LayerStack::create(bitmapWidth, bitmapHeight, ls, createCompressedLayerFactory(provider)), ls
+  ));
 }
 
 TiledBitmap::TiledBitmap(Scroom::TiledBitmap::LayerStack::Ptr stack, const LayerSpec& ls)
@@ -96,10 +109,16 @@ TiledBitmap::TiledBitmap(Scroom::TiledBitmap::LayerStack::Ptr stack, const Layer
 
 
 void TiledBitmap::setSource(SourcePresentation::Ptr source) { m_stack->setSource(std::move(source)); }
-Layer::Ptr TiledBitmap::getBottomLayer() { return m_stack->getLevels().front().layer; }
+LayerInterface::Ptr TiledBitmap::getBottomLayer() { return m_stack->getLevels().front().layer; }
 Scroom::TiledBitmap::LayerStack::Ptr TiledBitmap::getLayerStack() { return m_stack; }
 
-void TiledBitmap::drawTile(cairo_t* cr, const CompressedTile::Ptr& tile, const Scroom::Utils::Rectangle<double>& viewArea)
+void TiledBitmap::drawTile(
+  cairo_t* cr,
+  std::size_t layerIndex,
+  Scroom::Utils::Point<int> tileIndex,
+  int bpp,
+  const Scroom::Utils::Rectangle<double>& viewArea
+)
 {
   const int margin = 5;
 
@@ -112,7 +131,7 @@ void TiledBitmap::drawTile(cairo_t* cr, const CompressedTile::Ptr& tile, const S
     cairo_set_source_rgb(cr, 0, 0, 0); // Black
     drawRectangleContour(cr, rect);
 
-    const std::string label = fmt::format("Layer {}, Tile ({}, {}), {} bpp", tile->depth, tile->x, tile->y, tile->bpp);
+    const std::string label = fmt::format("Layer {}, Tile ({}, {}), {} bpp", layerIndex, tileIndex.x, tileIndex.y, bpp);
     cairo_move_to(cr, rect.x() + 20, rect.y() + 20);
     cairo_show_text(cr, label.c_str());
   }
@@ -130,7 +149,7 @@ void TiledBitmap::redraw(
   const auto layerNr = layerSelection.index;
   const int layerZoom = layerSelection.zoom;
   const auto presentationAreaInLayerCoordinates = layerSelection.presentationAreaInLayerCoordinates;
-  Layer::Ptr const layer = m_stack->getLevels()[layerNr].layer;
+  LayerInterface::Ptr const layer = m_stack->getLevels()[layerNr].layer;
   LayerRenderingOperations::Ptr const layerOperations = m_rendering[std::min(m_rendering.size() - 1, layerNr)];
 
   const auto tileRange = Geometry::tileRangeForRedraw(presentationAreaInLayerCoordinates, TILESIZE);
@@ -150,7 +169,7 @@ void TiledBitmap::redraw(
       clippedPresentationAreaInLayerCoordinates, Geometry::tileAreaInLayerCoordinates(tileIndex, TILESIZE), layerPixelSize
     );
 
-    CompressedTile::Ptr const tile = layer->getTile(tileIndex);
+    TileStorage::Ptr const tile = layer->getTile(tileIndex);
     TileViewState::Ptr const tileViewState = tile->getViewState(vi);
     Scroom::Utils::Stuff const cacheResult = tileViewState->getCacheResult();
     ConstTile::Ptr const t = tile->getConstTileAsync();
@@ -166,7 +185,7 @@ void TiledBitmap::redraw(
       layerOperations->drawState(cr, tile->getState(), drawAreas.viewArea);
     }
 #ifdef DEBUG_TILES
-    drawTile(cr, tile, drawAreas.viewArea);
+    drawTile(cr, layerNr, tileIndex, layer->getBpp(), drawAreas.viewArea);
 #endif
   }
 }

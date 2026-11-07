@@ -67,5 +67,5 @@ protected:
 TEST_F(PluginLayerDescription, storage_size_is_supplied_independently_of_the_builtin_encodings) // NOLINT
 {
   const auto bitmap = createTiledBitmap(1, 1, descriptions);
-  EXPECT_EQ(pluginBpp, bitmap->getBottomLayer()->getTile({0, 0})->bpp);
+  EXPECT_EQ(pluginBpp, bitmap->getBottomLayer()->getTile({0, 0})->getBpp());
 }

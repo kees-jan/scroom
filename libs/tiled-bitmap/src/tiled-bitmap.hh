@@ -13,10 +13,10 @@
 #include <boost/thread/mutex.hpp>
 
 #include <scroom/interface.hh>
+#include <scroom/layer-interface.hh>
 #include <scroom/layer-stack.hh>
 #include <scroom/scroominterface.hh>
 #include <scroom/tiledbitmapinterface.hh>
-#include <scroom/tiledbitmaplayer.hh>
 
 #include "tiledbitmapviewdata.hh"
 
@@ -38,12 +38,18 @@ private:
 
 public:
   static Ptr create(int bitmapWidth, int bitmapHeight, LayerSpec const& ls);
-  static Ptr create(const Layer::Ptr& bottom, const LayerSpec& ls);
+  static Ptr create(Scroom::TiledBitmap::LayerStack::Ptr stack, const LayerSpec& descriptions);
 
 private:
   TiledBitmap(Scroom::TiledBitmap::LayerStack::Ptr stack, const LayerSpec& ls);
 
-  static void drawTile(cairo_t* cr, const CompressedTile::Ptr& tile, const Scroom::Utils::Rectangle<double>& viewArea);
+  static void drawTile(
+    cairo_t* cr,
+    std::size_t layerIndex,
+    Scroom::Utils::Point<int> tileIndex,
+    int bpp,
+    const Scroom::Utils::Rectangle<double>& viewArea
+  );
 
 public:
   ////////////////////////////////////////////////////////////////////////
@@ -51,7 +57,7 @@ public:
 
 public:
   void setSource(SourcePresentation::Ptr sp) override;
-  Layer::Ptr getBottomLayer() override;
+  LayerInterface::Ptr getBottomLayer() override;
   Scroom::TiledBitmap::LayerStack::Ptr getLayerStack() override;
 
   void open(ViewInterface::WeakPtr viewInterface) override;

@@ -24,9 +24,9 @@
 
 namespace Geometry = Scroom::TiledBitmap::Geometry;
 
-static Scroom::MemoryBlobs::PageProvider::Ptr createProvider(double width, double height, int bpp)
+Scroom::MemoryBlobs::PageProvider::Ptr createCompressedLayerPageProvider(Scroom::Utils::Point<int> imageSize, int bpp)
 {
-  const double tileCount = (width * height) / (TILESIZE * TILESIZE);
+  const double tileCount = (static_cast<double>(imageSize.x) * imageSize.y) / (TILESIZE * TILESIZE);
   const double tileSize = (bpp / 8.0) * TILESIZE * TILESIZE;
 
   const double guessedTileSizeAfterCompression = tileSize / 100;
@@ -42,38 +42,13 @@ static Scroom::MemoryBlobs::PageProvider::Ptr createProvider(double width, doubl
 }
 
 
-class DataFetcher
-{
-private:
-  Layer::Ptr layer;
-  int height;
-  int verTileCount;
-  int currentRow{0};
-  SourcePresentation::Ptr sp;
-  ThreadPool::Ptr threadPool;
-  ThreadPool::WeakQueue::Ptr queue;
-  std::function<void()> on_finished;
-
-public:
-  DataFetcher(
-    Layer::Ptr layer,
-    int height,
-    int verTileCount,
-    SourcePresentation::Ptr sp,
-    ThreadPool::WeakQueue::Ptr queue,
-    std::function<void()> on_finished
-  );
-
-  void operator()();
-};
-
 ////////////////////////////////////////////////////////////////////////
 /// Layer
 
-Layer::Layer(int depth_, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider)
-  : depth(depth_)
-  , width(layerWidth)
+Layer::Layer(int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider)
+  : width(layerWidth)
   , height(layerHeight)
+  , bitsPerPixel(bpp)
   , horTileCount(Geometry::tileCount(width, TILESIZE))
   , verTileCount(Geometry::tileCount(height, TILESIZE))
   , pageProvider(std::move(provider))
@@ -82,13 +57,12 @@ Layer::Layer(int depth_, int layerWidth, int layerHeight, int bpp, Scroom::Memor
   const Scroom::Utils::Rectangle tileRange(0, 0, horTileCount, verTileCount);
   for(const auto tileIndex: tileRange)
   {
-    tiles[tileIndex.y].push_back(CompressedTile::create(depth_, tileIndex.x, tileIndex.y, bpp, pageProvider));
+    tiles[tileIndex.y].push_back(CompressedTile::create(depth, tileIndex.x, tileIndex.y, bpp, pageProvider));
   }
 
-  outOfBounds = CompressedTile::create(depth_, -1, -1, bpp, pageProvider, TSI_OUT_OF_BOUNDS);
-  lineOutOfBounds.assign(horTileCount, outOfBounds);
+  outOfBounds = CompressedTile::create(depth, -1, -1, bpp, pageProvider, TSI_OUT_OF_BOUNDS);
 
-  logger->debug("Layer {} ({} bpp), {}*{}, TileCount {}*{}", depth_, bpp, width, height, horTileCount, verTileCount);
+  logger->debug("Layer {} ({} bpp), {}*{}, TileCount {}*{}", depth, bpp, width, height, horTileCount, verTileCount);
 }
 
 Layer::Ptr Layer::create(int depth, int layerWidth, int layerHeight, int bpp, Scroom::MemoryBlobs::PageProvider::Ptr provider)
@@ -98,30 +72,12 @@ Layer::Ptr Layer::create(int depth, int layerWidth, int layerHeight, int bpp, Sc
 
 Layer::Ptr Layer::create(int layerWidth, int layerHeight, int bpp)
 {
-  Scroom::MemoryBlobs::PageProvider::Ptr const provider = createProvider(layerWidth, layerHeight, bpp);
+  Scroom::MemoryBlobs::PageProvider::Ptr const provider = createCompressedLayerPageProvider({layerWidth, layerHeight}, bpp);
 
   return create(0, layerWidth, layerHeight, bpp, provider);
 }
 
-Scroom::Bookkeeping::Token Layer::registerObserver(const TileInitialisationObserver::Ptr& observer)
-{
-  Scroom::Bookkeeping::Token t;
-
-  for(auto& line: tiles)
-  {
-    for(auto& tile: line)
-    {
-      t.add(tile->registerObserver(observer));
-    }
-  }
-  return t;
-}
-
-int Layer::getHorTileCount() const { return horTileCount; }
-
-int Layer::getVerTileCount() const { return verTileCount; }
-
-CompressedTile::Ptr Layer::getTile(Scroom::Utils::Point<int> tileIndex)
+TileStorage::Ptr Layer::getTile(Scroom::Utils::Point<int> tileIndex)
 {
   const auto [i, j] = tileIndex;
   if(0 <= i && i < horTileCount && 0 <= j && j < verTileCount)
@@ -132,111 +88,12 @@ CompressedTile::Ptr Layer::getTile(Scroom::Utils::Point<int> tileIndex)
   return outOfBounds;
 }
 
-CompressedTileLine& Layer::getTileLine(int j)
+LayerFactory createCompressedLayerFactory(Scroom::MemoryBlobs::PageProvider::Ptr provider)
 {
-  if(0 <= j && j < verTileCount)
+  require(provider);
+  return [provider = std::move(provider)](int level, Scroom::Utils::Rectangle<int> imageArea, int bpp)
   {
-    return tiles[j];
-  }
-
-  return lineOutOfBounds;
-}
-
-void Layer::fetchData(SourcePresentation::Ptr sp, const ThreadPool::WeakQueue::Ptr& queue, std::function<void()> on_finished)
-{
-  DataFetcher df(shared_from_this<Layer>(), height, verTileCount, std::move(sp), queue, std::move(on_finished));
-  CpuBound()->post(df, DATAFETCH_PRIO, queue);
-}
-
-// Layer::Viewable /////////////////////////////////////////////////////
-
-void Layer::open(ViewInterface::WeakPtr vi)
-{
-  for(CompressedTileLine const& line: tiles)
-  {
-    for(const CompressedTile::Ptr& tile: line)
-    {
-      tile->open(vi);
-    }
-  }
-  for(const CompressedTile::Ptr& tile: lineOutOfBounds)
-  {
-    tile->open(vi);
-  }
-  outOfBounds->open(vi);
-}
-
-void Layer::close(ViewInterface::WeakPtr vi)
-{
-  for(CompressedTileLine const& line: tiles)
-  {
-    for(const CompressedTile::Ptr& tile: line)
-    {
-      tile->close(vi);
-    }
-  }
-  for(const CompressedTile::Ptr& tile: lineOutOfBounds)
-  {
-    tile->close(vi);
-  }
-  outOfBounds->close(vi);
-}
-
-////////////////////////////////////////////////////////////////////////
-/// DataFetcher
-
-DataFetcher::DataFetcher(
-  Layer::Ptr layer_,
-  int height_,
-  int verTileCount_,
-  SourcePresentation::Ptr sp_,
-  ThreadPool::WeakQueue::Ptr queue_,
-  std::function<void()> on_finished_
-)
-  : layer(std::move(layer_))
-  , height(height_)
-  , verTileCount(verTileCount_)
-  , sp(std::move(sp_))
-  , threadPool(CpuBound())
-  , queue(std::move(queue_))
-  , on_finished(std::move(on_finished_))
-{
-}
-
-void DataFetcher::operator()()
-{
-  QueueJumper::Ptr const qj = QueueJumper::create();
-
-  threadPool->post([qj] { std::invoke(*qj); }, REDUCE_PRIO, queue);
-
-  CompressedTileLine& tileLine = layer->getTileLine(currentRow);
-  std::vector<Tile::Ptr> tiles;
-  for(const auto& ti: tileLine)
-  {
-    Scroom::Utils::Stuff const s = ti->initialize();
-    tiles.push_back(ti->getTileSync());
-  }
-  const auto rowLayout = Geometry::rowLayout(currentRow, height, TILESIZE);
-
-  sp->fillTiles(rowLayout.startLine, rowLayout.lineCount, TILESIZE, 0, tiles);
-
-  for(const auto& tile: tileLine)
-  {
-    tile->reportFinished();
-  }
-
-  currentRow++;
-  if(currentRow < verTileCount)
-  {
-    DataFetcher successor(*this);
-    if(!qj->setWork(successor))
-    {
-      threadPool->post(successor, DATAFETCH_PRIO, queue);
-    }
-  }
-  else
-  {
-    sp->done();
-    on_finished();
-  }
+    require(imageArea.getTopLeft() == Scroom::Utils::Point(0, 0));
+    return Layer::create(level, imageArea.getWidth(), imageArea.getHeight(), bpp, provider);
+  };
 }

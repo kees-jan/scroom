@@ -10,6 +10,7 @@
 #include <tiffio.h>
 
 #include <scroom/opentiledbitmapinterface.hh>
+#include <scroom/tiledbitmaplayer.hh>
 #include <scroom/transformpresentation.hh>
 
 #include "tiffsource.hh"
@@ -49,7 +50,7 @@ std::list<GtkFileFilter*> Tiff::getFilters()
   return result;
 }
 
-std::tuple<BitmapMetaData, Layer::Ptr, ReloadFunction> Tiff::open(const std::string& fileName)
+std::tuple<BitmapMetaData, LayerInterface::Ptr, ReloadFunction> Tiff::open(const std::string& fileName)
 {
   auto r = Scroom::Tiff::open(logger, fileName);
   if(r)

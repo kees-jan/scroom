@@ -12,10 +12,10 @@
 #include <gtk/gtk.h>
 
 #include <scroom/bookkeeping.hh>
+#include <scroom/layer-interface.hh>
 #include <scroom/layer-rendering-operations.hh>
 #include <scroom/observable.hh>
 #include <scroom/rectangle.hh>
-#include <scroom/tiledbitmaplayer.hh>
 #include <scroom/viewinterface.hh>
 
 class TiledBitmapViewData
@@ -32,7 +32,7 @@ public:
   Scroom::Bookkeeping::Token token;
 
 private:
-  Layer::Ptr layer;
+  LayerInterface::Ptr layer;
   Scroom::Utils::Rectangle<int> tileRange;
   int zoom{0};
   LayerRenderingOperations::Ptr layerOperations;
@@ -66,7 +66,7 @@ public:
   static Ptr create(const ViewInterface::WeakPtr& viewInterface);
 
   void setNeededTiles(
-    Layer::Ptr const& l,
+    LayerInterface::Ptr const& l,
     Scroom::Utils::Rectangle<int> tileRange,
     int zoom,
     LayerRenderingOperations::Ptr layerOperations

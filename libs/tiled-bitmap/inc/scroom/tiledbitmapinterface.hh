@@ -52,7 +52,7 @@ public:
    *
    * @see setSource()
    */
-  virtual std::shared_ptr<Layer> getBottomLayer() = 0;
+  virtual LayerInterface::Ptr getBottomLayer() = 0;
 
   /** Retains the data and population work independently of this renderer. */
   virtual std::shared_ptr<Scroom::TiledBitmap::LayerStack> getLayerStack() = 0;
@@ -117,3 +117,6 @@ public:
  *
  */
 TiledBitmapInterface::Ptr createTiledBitmap(int bitmapWidth, int bitmapHeight, LayerSpec const& ls);
+
+/** Creates a rendering adapter for an existing stack with compatible rendering descriptions. */
+TiledBitmapInterface::Ptr createTiledBitmap(const Scroom::TiledBitmap::LayerStack::Ptr& stack, const LayerSpec& descriptions);

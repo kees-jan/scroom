@@ -45,7 +45,7 @@ namespace Scroom::TiledBitmap::Test
   inline Tile::Ptr emptyTile(int size, SampleLayout format)
   {
     const int byteCount = size * size * format.bitsPerPixel() / 8;
-    Scroom::MemoryBlobs::RawPageData::Ptr data(static_cast<uint8_t*>(calloc(byteCount, 1)), free);
+    std::shared_ptr<uint8_t> data(static_cast<uint8_t*>(calloc(byteCount, 1)), free);
     return Tile::create(size, size, format.bitsPerPixel(), std::move(data));
   }
 

@@ -14,21 +14,17 @@
 
 #include <boost/thread/mutex.hpp>
 
+#include <scroom/layer-interface.hh>
 #include <scroom/layercoordinator.hh>
 #include <scroom/logger.hh>
 #include <scroom/progressinterface.hh>
 #include <scroom/progressinterfacehelpers.hh>
 #include <scroom/stuff.hh>
 #include <scroom/tiled-bitmap-data.hh>
-#include <scroom/tiledbitmaplayer.hh>
 
 namespace Scroom::TiledBitmap
 {
 
-  /**
-   * Owns the default layer pyramid and its population work independently of views.
-   * Population currently supports a single pass.
-   */
   class LayerStack
     : public TileInitialisationObserver
     , public virtual Utils::Base
@@ -38,7 +34,7 @@ namespace Scroom::TiledBitmap
 
     struct Level
     {
-      Layer::Ptr layer;
+      LayerInterface::Ptr layer;
       int bpp;
     };
 
@@ -53,33 +49,37 @@ namespace Scroom::TiledBitmap
     boost::mutex m_progressMutex;
 
   public:
-    static Ptr create(Utils::Point<int> size, const LayerSpec& descriptions);
+    static Ptr create(Utils::Point<int> size, const LayerSpec& descriptions, const LayerFactory& createLayer);
 
-    static Ptr create(int width, int height, const LayerSpec& descriptions)
+    static Ptr create(int width, int height, const LayerSpec& descriptions, const LayerFactory& createLayer)
     {
-      return create(Utils::Point(width, height), descriptions);
+      return create(Utils::Point(width, height), descriptions, createLayer);
     }
 
-    /** Adopts an unpopulated bottom layer and builds its reduced levels. */
-    static Ptr create(const Layer::Ptr& bottom, const LayerSpec& descriptions);
+    /**
+     * Uses the supplied bottom layer. The factory creates only reduced levels.
+     */
+    static Ptr create(const LayerInterface::Ptr& bottom, const LayerSpec& descriptions, const LayerFactory& createLayer);
 
-    /** The level sequence remains valid for the lifetime of the stack. */
     [[nodiscard]] std::span<const Level> getLevels() const;
 
     void setSource(SourcePresentation::Ptr source);
 
-    /** Starts a decoder callback and retains its cancellation registration. */
-    void startLoading(const ReloadFunction& startLoading);
+    /** Retains the callback's result until the stack is destroyed. */
+    void startLoading(const ReloadFunction& startLoadingCallback);
 
-    /** Callbacks run on subscribing or population threads. Retain the returned subscription. */
     [[nodiscard]] Utils::Stuff subscribeProgress(const ProgressInterface::Ptr& progress);
 
-    void tileCreated(const CompressedTile::Ptr& tile) override;
-    void tileFinished(const CompressedTile::Ptr& tile) override;
+    void tileCreated(const TileStorage::Ptr& tile) override;
+    void tileFinished(const TileStorage::Ptr& tile) override;
 
   private:
     LayerStack() = default;
-    void initialize(const Layer::Ptr& bottom, const LayerSpec& descriptions);
-    void connect(const Layer::Ptr& layer, const Layer::Ptr& previousLayer, const LayerReduction& reducePreviousLayer);
+    void initialize(const LayerInterface::Ptr& bottom, const LayerSpec& descriptions, const LayerFactory& createLayer);
+    void connect(
+      const LayerInterface::Ptr& layer,
+      const LayerInterface::Ptr& previousLayer,
+      const LayerReduction& reducePreviousLayer
+    );
   };
 } // namespace Scroom::TiledBitmap

@@ -15,15 +15,15 @@
 #include <scroom/observable.hh>
 #include <scroom/stuff.hh>
 #include <scroom/threadpool.hh>
+#include <scroom/tile-storage.hh>
 #include <scroom/tiledbitmapinterface.hh>
-#include <scroom/tiledbitmaplayer.hh>
 
 #include "local.hh"
 #include "tiledbitmapviewdata.hh"
 
 TileViewState::~TileViewState() { r.reset(); }
 
-TileViewState::Ptr TileViewState::create(const std::shared_ptr<CompressedTile>& parent)
+TileViewState::Ptr TileViewState::create(const TileStorage::Ptr& parent)
 {
   TileViewState::Ptr result(new TileViewState(parent));
 
@@ -32,7 +32,7 @@ TileViewState::Ptr TileViewState::create(const std::shared_ptr<CompressedTile>& 
   return result;
 }
 
-TileViewState::TileViewState(std::shared_ptr<CompressedTile> parent_)
+TileViewState::TileViewState(TileStorage::Ptr parent_)
   : parent(std::move(parent_))
   , cpuBound(CpuBound())
 {
