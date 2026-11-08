@@ -39,6 +39,10 @@ so behavior stays consistent. Weigh the simpler calls against ambiguity and API
 complexity; callers constructing objects merely to unpack them again can indicate
 a useful overload.
 
+Use defaults sparingly. Require callers to supply important policy choices in
+low-level APIs; select application defaults at the layer responsible for that
+policy.
+
 ## Headers and implementation hiding
 
 Prefer including a type's defining header over forward declarations. Making a

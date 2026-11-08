@@ -35,6 +35,19 @@ explanation may reveal a constraint or decision worth documenting.
 
 For code comments:
 
+- Use comments sparingly: each must add information that is not obvious from
+  the code, interface, or implementation and is expected to remain true. Consider
+  likely upcoming changes when deciding whether a comment will earn its upkeep.
+- Use established names from the code to explain concrete relationships. Keep
+  comments within the responsibility being described rather than introducing
+  terminology or hypothetical concerns from other responsibilities.
+- Write comments for the final code. Explain non-obvious, lasting contracts and
+  rationale rather than information already conveyed by types, previous
+  implementations, or explanations that depend on the editing history.
+- Assume normal lifecycle use. Describe behavior outside that lifecycle, such
+  as accessing an object before initialization, only when the API deliberately
+  supports it and callers need that information. An implementation's incidental
+  behavior does not by itself merit documentation.
 - Explain why a choice is necessary when the reason is non-obvious and is not
   already documented elsewhere.
 - Rely on clear code and appropriately named functions to convey what happens
@@ -46,6 +59,9 @@ For code comments:
 - Put a blank line before standalone comments, including line comments and
   single-line or multiline block comments. Treat consecutive comment lines as
   one block. Trailing comments may remain on the code line without extra spacing.
+- Treat a comment block and the declaration it documents as one group. Put a
+  blank line after that declaration to make the comment's scope clear before
+  the next declaration.
 - Single-line Doxygen comments may use `/** ... */`. For multiline blocks, put
   `/**` on its own line and align subsequent `*` prefixes and the closing `*/`.
 - Leave existing comments untouched unless also editing their associated code.
