@@ -1,8 +1,8 @@
 # Tiled bitmap refactoring plan
 
-Status: steps 0–3 complete and accepted by the user. Step 4 review is accepted
-and post-review local validation passed; platform CI remains to be verified.
-Step 3 platform CI passed on 2026-11-06.
+Status: steps 0–4 complete and accepted by the user. Step 5 is skipped for now.
+Step 6 review is accepted and post-review local validation passed; platform CI
+remains to be verified. Step 4 platform CI passed on 2026-11-06.
 
 ## Goal and boundary
 
@@ -39,13 +39,13 @@ reduction. Implementation names below are provisional.
   operations. `LayerOperations` remains a compatibility facade; future extraction
   must preserve the format transitions and shared colormaps supplied by
   `LayerSpecForBitmap()`.
-- `Layer` and `CompressedTile` inherit `Viewable`; `CompressedTile` owns per-view
-  `TileViewState` objects. Extracting only `TiledBitmap::redraw()` would leave the
-  data structure coupled to rendering and prevent independent renderer caches.
-- `Layer` and `CompressedTile` have private constructors and concrete,
-  nonvirtual data APIs. `Tile`/`ConstTile` are public-field pixel buffers tied to
-  `RawPageData`. The substitution boundary must distinguish persistent tile
-  storage from borrowed mutable/const pixel access.
+- View state remains attached to tiles through `TileStorage`; alternative
+  backends share that per-tile/per-view cache protocol. Moving it to a renderer
+  is deferred (step 5).
+- `LayerInterface` and `TileStorage` provide backend-independent geometry,
+  lookup, state, and pixel access. `Layer`/`CompressedTile` remain the default
+  compressed backend. Pixel buffers use shared byte ownership independently of
+  `RawPageData`; compression and page-provider policy stay in the default backend.
 - `Layer::getRect()` always returns a zero-origin rectangle, although
   `BitmapMetaData::rect` includes an origin. Arithmetic is duplicated in layer
   allocation, reduction wiring, loading, redraw, and pipette sampling.
@@ -170,8 +170,7 @@ clang-tidy checks apply to touched code.
 ## Guidance for remaining steps
 
 Design decisions in steps 0–4 have been reviewed and accepted; do not reopen
-them merely to impose stricter generic contracts. Continue with step 5 only when
-requested. Follow `AGENTS.md` for the build and test workflow. During implementation
+them merely to impose stricter generic contracts. Step 5 is deferred. Follow `AGENTS.md` for the build and test workflow. During implementation
 and review iterations, build and test with Clang only. After review, before
 uploading to CI, run both compiler presets and GCC 13 compatibility checks.
 Run GCC and Clang builds sequentially with Ninja's default parallelism; test
@@ -366,7 +365,7 @@ or death tests that merely verify the presence of `require()` guards.
   review accepted on 2026-11-05. Ubuntu/Windows platform CI passed on 2026-11-06
   ([build run 42161990161](https://github.com/kees-jan/scroom/actions/runs/42161990161)).
 
-- [ ] **4. Extract a reusable layer-stack owner.** Move layer topology,
+- [x] **4. Extract a reusable layer-stack owner.** Move layer topology,
   construction, reduction wiring, loading registrations, and data progress out
   of the renderer into a public stack abstraction. Expose read access to every
   layer, its storage bit depth, and geometry, with source-driven population
@@ -403,28 +402,67 @@ or death tests that merely verify the presence of `require()` guards.
   since step 3 and four independently included public headers. Clang-tidy passes
   for those 12 source files, with nonfatal warnings remaining. Formatting checks
   pass for 20 C++ files and the changed CMake file; whitespace and modified-skill
-  validation also pass. No code fixes were needed. Platform CI remains to be
-  verified; the step stays unchecked until then.
+  validation also pass. No code fixes were needed. Platform CI passed on 2026-11-06
+  ([build run 42247728805](https://github.com/kees-jan/scroom/actions/runs/42247728805)).
 
-- [ ] **5. Move view state and rendering caches out of data objects.** Make the
-  renderer own view attachments, tile-view state, subscriptions, and caches.
-  Remove data-side dependence on `Viewable`, `ViewInterface`, and Cairo-facing
-  operation contracts. Reuse one stack in two independent renderers and in a
-  nonvisual consumer. Test cache isolation, colormap invalidation, tile residency,
-  redraw notification, and closing one renderer while the others retain data.
-  Keep any unavoidable GTK header dependency inherited from utility types
-  distinct from a runtime requirement for a view or GTK main loop.
+- [ ] **5. Move view state and rendering caches out of data objects — skipped for now.**
+  Retain the existing per-tile/per-layer/per-view cache ownership and `Viewable`
+  support. Moving this state into `TiledBitmap` would need parallel identity and
+  lifetime bookkeeping without an established benefit for the current goals.
+  Alternative storage can share the existing rendering protocol. Revisit this
+  separation if a concrete requirement warrants it.
 
 - [ ] **6. Introduce substitutable layers and tile storage.** Define minimal
   interfaces for layer lookup/iteration, tile state and notifications, and safe
-  mutable/const pixel access. Wrap the existing compressed implementation as the
-  default backend; keep memory-provider policy specific to that backend. Inject
-  factories rather than hard-coding `Layer::create()` and
-  `CompressedTile::create()`. Replace mutable concrete-grid exposure with the
-  operations actually needed by consumers. Add a simple in-memory alternative
-  layer/tile implementation in tests and run loading, reduction, rendering, and
-  sampling against both. This must prove runtime substitution, not just factory
-  callbacks returning the same concrete classes.
+  mutable/const pixel access. The caller supplies the entire bottom layer,
+  controlling its dimensions and implementation. A layer factory creates the
+  reduced layers when building the default pyramid. Default bottom-layer
+  construction can use the same factory; each layer backend selects and owns
+  its own tile implementation. Generic construction does not need a separate
+  tile factory. Keep memory-provider policy inside the compressed backend.
+  Replace mutable concrete-grid exposure with the operations consumers need.
+  Add an in-memory layer/tile backend in tests and exercise loading, reduction,
+  rendering, and sampling through both backends. Prove runtime substitution,
+  including an injected bottom layer and independently selected upper layers.
+  Bottom-only and other topology/population policies remain in step 8.
+
+  Implementation: `LayerInterface` supplies valid bounds, allocated tile indices,
+  storage bit depth, stable tile lookup, and pure virtual observation/view operations.
+  Optional `LayerBase` supplies tile-based observation and view forwarding;
+  `populateLayer()` separately schedules sequential source decoding through the
+  interface instead of exposing population as a layer operation. `TileStorage` supplies
+  initialization, mutable/const pixel handles, state, and notifications; it retains
+  the existing per-tile/per-view cache map. `TileViewState` and the rendering,
+  sampling, and reduction consumers now use these interfaces. `Tile`/`ConstTile`
+  use shared byte ownership without a `RawPageData` dependency; handles keep the
+  tightly stored, fixed-size tile buffers alive independently of their backend.
+
+  `LayerStack::create(bottom, descriptions, factory)` adopts the supplied bottom
+  object and calls the factory only for reduced levels. All stack construction
+  requires an explicit factory. The current rendering adapter selects the
+  compressed factory for the bottom as well. Factories receive a page provider
+  explicitly; callers can reuse one from a concrete compressed bottom layer. The plugin
+  presentation adapter currently checks/casts the plugin-provided bottom layer
+  there; step 10 replaces that opening contract. Provider creation remains
+  separate from factory construction, preserving the default allocation policy.
+  `createTiledBitmap(stack, descriptions)` attaches the existing rendering adapter
+  to an explicitly constructed stack. Zero-origin images and the default pyramid
+  policy remain in effect; relocation and topology choices are still later steps.
+
+  Tests use a separate in-memory layer/tile implementation, with no compressed
+  storage underneath. Both backends exercise source-driven loading and reduction.
+  Stack tests also cover geometry, release of layers and reduction wiring, and
+  retention of the loading callback's result.
+
+  Reviewed implementation: `bbe4e4c9e`; user review accepted on 2026-11-08.
+  Post-review checks found an unnecessary factory copy in stack construction;
+  factory parameters now use const references. Both compiler presets build all
+  consumers and pass all nine registered test suites. The five stack tests also
+  pass with `DISPLAY` and `WAYLAND_DISPLAY` unset under both compilers. GCC 13
+  syntax checks pass for all 18 changed source files and 12 independently included
+  public headers. Clang-tidy passes for the 18 source files, with nonfatal warnings
+  remaining. Formatting checks pass for 37 C++ files and the changed CMake file;
+  whitespace checks pass. Platform CI remains to be verified.
 
 - [ ] **7. Define and implement repeatable population sessions.** Add an explicit
   session/generation boundary for source-driven loading, tile completion, reduction scheduling,
