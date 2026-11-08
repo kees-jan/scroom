@@ -2,7 +2,6 @@ var classPoint =
 [
     [ "value_type", "classPoint.html#abc746dfcb215ff78d5f6574cc9517da7", null ],
     [ "Point", "classPoint.html#ab7ec1167a14f0508e5565116978285d3", null ],
-    [ "Point", "classPoint.html#af13b433f220ac3a094464460f31a54ec", null ],
     [ "Point", "classPoint.html#a3895bd735a06d13718a39b3d96fcc0d8", null ],
     [ "Point", "classPoint.html#a2875e9cb8b19a3cf92ec9d76b21c6471", null ],
     [ "Point", "classPoint.html#a47ccfe39feb58999b13d8c5cadfe984b", null ],

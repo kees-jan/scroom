@@ -1,0 +1,17 @@
+<map id="LayerInterface" name="LayerInterface">
+<area shape="rect" id="Node000001" title=" " alt="" coords="97,469,258,653"/>
+<area shape="rect" id="Node000006" href="$classLayerBase.html" title=" " alt="" coords="105,701,251,818"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="178,666,180,702,175,701,177,671"/>
+<area shape="rect" id="Node000002" href="$classViewable.html" title=" " alt="" coords="78,282,149,377"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,389,155,469,150,470,131,394"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="52,5,158,189"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="109,202,115,282,109,282,109,207"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="178,237,316,421"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="215,439,208,470,203,469,216,433"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="182,53,323,142"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="252,154,252,238,247,237,251,160"/>
+<area shape="rect" id="Node000007" href="$classLayer.html" title=" " alt="" coords="5,866,166,1229"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="156,830,146,868,141,866,154,835"/>
+<area shape="rect" id="Node000008" href="$classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryLayer.html" title=" " alt="" coords="191,891,352,1204"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="202,830,223,892,218,892,201,835"/>
+</map>

@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-81-g38a1e0dd1</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-85-g91de17b9</span>
    </div>
   </td>
  </tr>
@@ -182,11 +182,11 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   38</span>      : <a class="code hl_variable" href="#aa455d313534b1280fcf9cff7dbe0481c">m_child</a>(<a class="code hl_function" href="classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterfaceForwarder.html#a73d73bf699dfcbbdf08487617cd0a463">Scroom::Utils::ProgressStateInterfaceFromProgressInterfaceForwarder::create</a>(child))</div>
-<div class="line"><span class="lineno">   39</span>    {</div>
-<div class="line"><span class="lineno">   40</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   40</span>      : <a class="code hl_variable" href="#aa455d313534b1280fcf9cff7dbe0481c">m_child</a>(<a class="code hl_function" href="classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterfaceForwarder.html#a73d73bf699dfcbbdf08487617cd0a463">Scroom::Utils::ProgressStateInterfaceFromProgressInterfaceForwarder::create</a>(child))</div>
+<div class="line"><span class="lineno">   41</span>    {</div>
+<div class="line"><span class="lineno">   42</span>    }</div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterfaceForwarder_html_a73d73bf699dfcbbdf08487617cd0a463"><div class="ttname"><a href="classScroom_1_1Utils_1_1ProgressStateInterfaceFromProgressInterfaceForwarder.html#a73d73bf699dfcbbdf08487617cd0a463">Scroom::Utils::ProgressStateInterfaceFromProgressInterfaceForwarder::create</a></div><div class="ttdeci">static Ptr create(ProgressInterface::Ptr child)</div><div class="ttdef"><b>Definition</b> progressinterfacehelpers.cc:78</div></div>
-<div class="ttc" id="aclassanonymous__namespace_02tiled-bitmap_8cc_03_1_1ForwardProgressToUiThread_html_aa455d313534b1280fcf9cff7dbe0481c"><div class="ttname"><a href="#aa455d313534b1280fcf9cff7dbe0481c">anonymous_namespace{tiled-bitmap.cc}::ForwardProgressToUiThread::m_child</a></div><div class="ttdeci">Scroom::Utils::ProgressStateInterface::Ptr m_child</div><div class="ttdef"><b>Definition</b> tiled-bitmap.cc:43</div></div>
+<div class="ttc" id="aclassanonymous__namespace_02tiled-bitmap_8cc_03_1_1ForwardProgressToUiThread_html_aa455d313534b1280fcf9cff7dbe0481c"><div class="ttname"><a href="#aa455d313534b1280fcf9cff7dbe0481c">anonymous_namespace{tiled-bitmap.cc}::ForwardProgressToUiThread::m_child</a></div><div class="ttdeci">Scroom::Utils::ProgressStateInterface::Ptr m_child</div><div class="ttdef"><b>Definition</b> tiled-bitmap.cc:45</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -345,19 +345,19 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classScroom_1_1Utils_1_1ProgressStateInterface.html#acef4ad435b9653f03e9e0d32b93f95e1">Scroom::Utils::ProgressStateInterface</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   46</span>    {</div>
-<div class="line"><span class="lineno">   47</span>      <span class="comment">// Queued updates must not retain a closed view.</span></div>
-<div class="line"><span class="lineno">   48</span>      <span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Utils_1_1ProgressStateInterface.html#a536802c8a1f16403cb37125ae15654b3">Scroom::Utils::ProgressStateInterface::WeakPtr</a> child = <a class="code hl_variable" href="#aa455d313534b1280fcf9cff7dbe0481c">m_child</a>;</div>
-<div class="line"><span class="lineno">   49</span>      <a class="code hl_function" href="namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1">Scroom::GtkHelpers::async_on_ui_thread</a>(</div>
-<div class="line"><span class="lineno">   50</span>        [child, state, <a class="code hl_variable" href="progressinterfaceconversion-tests_8cc.html#afb6fe9a313a5197e6958d6f99188d26a">progress</a>]</div>
-<div class="line"><span class="lineno">   51</span>        {</div>
-<div class="line"><span class="lineno">   52</span>          <span class="keywordflow">if</span>(<span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_variable" href="layer-reduction-tests_8cc.html#a5d2c023108742a1ce78ba9823c06ea35">target</a> = child.lock())</div>
-<div class="line"><span class="lineno">   53</span>          {</div>
-<div class="line"><span class="lineno">   54</span>            <a class="code hl_variable" href="layer-reduction-tests_8cc.html#a5d2c023108742a1ce78ba9823c06ea35">target</a>-&gt;setProgress(state, <a class="code hl_variable" href="progressinterfaceconversion-tests_8cc.html#afb6fe9a313a5197e6958d6f99188d26a">progress</a>);</div>
-<div class="line"><span class="lineno">   55</span>          }</div>
-<div class="line"><span class="lineno">   56</span>        }</div>
-<div class="line"><span class="lineno">   57</span>      );</div>
-<div class="line"><span class="lineno">   58</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   48</span>    {</div>
+<div class="line"><span class="lineno">   49</span>      <span class="comment">// Queued updates must not retain a closed view.</span></div>
+<div class="line"><span class="lineno">   50</span>      <span class="keyword">const</span> <a class="code hl_typedef" href="classScroom_1_1Utils_1_1ProgressStateInterface.html#a536802c8a1f16403cb37125ae15654b3">Scroom::Utils::ProgressStateInterface::WeakPtr</a> child = <a class="code hl_variable" href="#aa455d313534b1280fcf9cff7dbe0481c">m_child</a>;</div>
+<div class="line"><span class="lineno">   51</span>      <a class="code hl_function" href="namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1">Scroom::GtkHelpers::async_on_ui_thread</a>(</div>
+<div class="line"><span class="lineno">   52</span>        [child, state, <a class="code hl_variable" href="progressinterfaceconversion-tests_8cc.html#afb6fe9a313a5197e6958d6f99188d26a">progress</a>]</div>
+<div class="line"><span class="lineno">   53</span>        {</div>
+<div class="line"><span class="lineno">   54</span>          <span class="keywordflow">if</span>(<span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_variable" href="layer-reduction-tests_8cc.html#a5d2c023108742a1ce78ba9823c06ea35">target</a> = child.lock())</div>
+<div class="line"><span class="lineno">   55</span>          {</div>
+<div class="line"><span class="lineno">   56</span>            <a class="code hl_variable" href="layer-reduction-tests_8cc.html#a5d2c023108742a1ce78ba9823c06ea35">target</a>-&gt;setProgress(state, <a class="code hl_variable" href="progressinterfaceconversion-tests_8cc.html#afb6fe9a313a5197e6958d6f99188d26a">progress</a>);</div>
+<div class="line"><span class="lineno">   57</span>          }</div>
+<div class="line"><span class="lineno">   58</span>        }</div>
+<div class="line"><span class="lineno">   59</span>      );</div>
+<div class="line"><span class="lineno">   60</span>    }</div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1ProgressStateInterface_html_a536802c8a1f16403cb37125ae15654b3"><div class="ttname"><a href="classScroom_1_1Utils_1_1ProgressStateInterface.html#a536802c8a1f16403cb37125ae15654b3">Scroom::Utils::ProgressStateInterface::WeakPtr</a></div><div class="ttdeci">std::weak_ptr&lt; ProgressStateInterface &gt; WeakPtr</div><div class="ttdef"><b>Definition</b> progressinterfacehelpers.hh:27</div></div>
 <div class="ttc" id="alayer-reduction-tests_8cc_html_a5d2c023108742a1ce78ba9823c06ea35"><div class="ttname"><a href="layer-reduction-tests_8cc.html#a5d2c023108742a1ce78ba9823c06ea35">target</a></div><div class="ttdeci">target</div><div class="ttdef"><b>Definition</b> layer-reduction-tests.cc:92</div></div>
 <div class="ttc" id="anamespaceScroom_1_1GtkHelpers_html_ac2709d76d34bc51f4310e34502d17ed1"><div class="ttname"><a href="namespaceScroom_1_1GtkHelpers.html#ac2709d76d34bc51f4310e34502d17ed1">Scroom::GtkHelpers::async_on_ui_thread</a></div><div class="ttdeci">void async_on_ui_thread(T f)</div><div class="ttdef"><b>Definition</b> gtk-helpers.hh:42</div></div>

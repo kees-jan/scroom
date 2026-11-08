@@ -45,6 +45,5 @@ var searchData=
   ['currentfolder_42',['currentFolder',['../callbacks_8cc.html#a88fd8bb6d81270fb4692717f792a401c',1,'callbacks.cc']]],
   ['currentjob_43',['currentJob',['../classPipetteHandler.html#a3a17e4d4570e25c39b84967a38085576',1,'PipetteHandler']]],
   ['currentoffset_44',['currentOffset',['../classScroom_1_1Bitmap_1_1SampleIterator.html#a992f5f28bafb677070cd9853e77ce638',1,'Scroom::Bitmap::SampleIterator::currentOffset'],['../classSampleIterator.html#a992f5f28bafb677070cd9853e77ce638',1,'SampleIterator::currentOffset']]],
-  ['currentrow_45',['currentRow',['../classDataFetcher.html#adf6b12f478232da42096269a6f3f2233',1,'DataFetcher']]],
-  ['cyan_46',['CYAN',['../namespaceScroom_1_1TiledBitmap_1_1Test_1_1CmykChannels.html#ac22810d84938541e9296efc5f6962728',1,'Scroom::TiledBitmap::Test::CmykChannels']]]
+  ['cyan_45',['CYAN',['../namespaceScroom_1_1TiledBitmap_1_1Test_1_1CmykChannels.html#ac22810d84938541e9296efc5f6962728',1,'Scroom::TiledBitmap::Test::CmykChannels']]]
 ];

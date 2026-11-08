@@ -1,0 +1,18 @@
+<map id="Scroom::TiledBitmap::Test::InMemoryTile" name="Scroom::TiledBitmap::Test::InMemoryTile">
+<area shape="rect" id="Node000001" title=" " alt="" coords="249,945,407,1235"/>
+<area shape="rect" id="Node000002" href="$classTileStorage.html" title=" " alt="" coords="249,668,407,897"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="329,910,330,946,325,944,327,914"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Observable.html" title=" " alt="" coords="5,375,210,620"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="211,629,251,679,246,680,212,635"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="148,143,286,327"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="172,343,161,376,156,374,174,338"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Observable.html" title=" " alt="" coords="234,375,422,620"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="261,338,279,375,273,375,262,343"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="146,5,288,95"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="217,107,220,143,214,143,217,112"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="328,633,330,669,325,668,327,638"/>
+<area shape="rect" id="Node000007" href="$classViewable.html" title=" " alt="" coords="446,450,516,545"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="462,556,437,622,409,670,404,667,432,619,460,561"/>
+<area shape="rect" id="Node000008" href="$classInterface.html" title=" " alt="" coords="428,143,534,327"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="482,339,484,451,478,450,480,344"/>
+</map>

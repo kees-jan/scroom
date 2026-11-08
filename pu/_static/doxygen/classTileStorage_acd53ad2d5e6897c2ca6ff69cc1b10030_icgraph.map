@@ -1,0 +1,9 @@
+<map id="TileStorage::getConstTileAsync" name="TileStorage::getConstTileAsync">
+<area shape="rect" id="Node000001" title=" " alt="" coords="270,49,455,94"/>
+<area shape="rect" id="Node000002" href="$classTileStorage.html#a97ee5ebf2d576195fa83205848927c24" title=" " alt="" coords="13,5,214,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="252,49,183,36,183,31,257,48"/>
+<area shape="rect" id="Node000003" href="$classTiledBitmap.html#a98c2d60fc0736a77ab18aeeb461a1da8" title=" " alt="" coords="37,57,190,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="252,72,191,74,190,69,257,71"/>
+<area shape="rect" id="Node000004" href="$classLayerCoordinator.html#a0d2070f92574c266f9b7c75d4be1780d" title="TileInitialisationObserver." alt="" coords="5,109,222,137"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="257,93,184,111,183,106,252,94"/>
+</map>

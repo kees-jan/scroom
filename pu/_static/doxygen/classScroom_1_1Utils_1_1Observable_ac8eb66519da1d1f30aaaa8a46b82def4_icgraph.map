@@ -1,7 +1,7 @@
 <map id="Scroom::Utils::Observable::registerStrongObserver" name="Scroom::Utils::Observable::registerStrongObserver">
-<area shape="rect" id="Node000001" title=" " alt="" coords="238,40,428,85"/>
-<area shape="rect" id="Node000002" href="$classCompressedTile.html#aa5784d47bed64ad72d9c3ae748a356e2" title=" " alt="" coords="5,5,190,50"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,47,190,44,190,39,225,46"/>
-<area shape="rect" id="Node000003" href="$classCompressedTile.html#a8fe577eafb7f52066eaa8f03f8438381" title=" " alt="" coords="5,75,190,119"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="220,79,191,86,190,81,225,78"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="249,40,439,85"/>
+<area shape="rect" id="Node000002" href="$classTileStorage.html#a18c0c6174e00a852d1a97e967afbbf38" title=" " alt="" coords="5,5,201,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="230,47,201,44,201,39,236,46"/>
+<area shape="rect" id="Node000003" href="$classTileStorage.html#a8b2f4ca499bfc55fe6a23c761dfccb31" title=" " alt="" coords="5,75,201,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="230,79,201,86,201,80,236,78"/>
 </map>

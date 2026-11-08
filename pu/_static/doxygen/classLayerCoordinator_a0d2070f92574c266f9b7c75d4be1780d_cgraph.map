@@ -1,0 +1,26 @@
+<map id="LayerCoordinator::tileFinished" name="LayerCoordinator::tileFinished">
+<area shape="rect" id="Node000001" title="TileInitialisationObserver." alt="" coords="5,96,222,124"/>
+<area shape="rect" id="Node000002" href="$threadpool_8cc.html#a4a99c6a6be48be73a9ecf92e6e3f6e9b" title=" " alt="" coords="319,5,406,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,93,269,42,306,33,301,35,271,47,147,98"/>
+<area shape="rect" id="Node000003" href="$classTileStorage.html#acd53ad2d5e6897c2ca6ff69cc1b10030" title=" " alt="" coords="270,57,455,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="221,94,257,91,252,93,223,99"/>
+<area shape="rect" id="Node000004" href="$classThreadPool.html#a3b6be78dc258ee937775128c101aa5fc" title=" " alt="" coords="297,125,428,153"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="222,120,284,129,279,130,222,125"/>
+<area shape="rect" id="Node000012" href="$classScroom_1_1Utils_1_1Base.html#aae9a071db1ff973ca6e844a69d3e10ea" title=" " alt="" coords="288,177,436,222"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="155,122,286,170,282,173,154,127"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Builder.html#a0709550b4e3927212a6c89cf719e5a29" title=" " alt="" coords="503,26,701,71"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="425,122,454,111,478,97,502,81,513,78,518,76,504,85,481,101,456,116,426,127"/>
+<area shape="rect" id="Node000007" href="$classThreadPool.html#af5ac6649a5a7711037747ef03c542f18" title=" " alt="" coords="507,95,697,122"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="427,128,494,122,489,123,428,133"/>
+<area shape="rect" id="Node000010" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a2119dca72a374f622eade1fc8f472878" title=" " alt="" coords="503,146,701,191"/>
+<area shape="poly" id="edge10_Node000004_Node000010" title=" " alt="" coords="428,144,490,154,485,155,428,150"/>
+<area shape="rect" id="Node000011" href="$classThreadPool.html#a17a52db60287eb770f1e0d546cbbbe01" title=" " alt="" coords="504,215,700,242"/>
+<area shape="poly" id="edge11_Node000004_Node000011" title=" " alt="" coords="428,151,456,162,471,172,481,182,490,192,504,201,518,209,513,208,502,206,487,196,477,186,468,176,454,167,427,156"/>
+<area shape="rect" id="Node000006" href="$threadpool-queue-tests_8cc.html#ae28512d7a9b9132257981ed5ecbce069" title=" " alt="" coords="826,35,871,62"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="702,46,813,48,808,49,702,51"/>
+<area shape="rect" id="Node000008" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#af8f6918d92f8388674bd7bdc1b75b2ec" title="Queue." alt="" coords="749,86,948,131"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="697,106,736,108,731,109,698,111"/>
+<area shape="rect" id="Node000009" href="$classScroom_1_1Detail_1_1ThreadPool_1_1Queue.html#a7cfca3637d57c4a9e37351b3426ffd40" title=" " alt="" coords="996,86,1194,131"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="948,115,982,117,977,118,948,120"/>
+<area shape="poly" id="edge9_Node000009_Node000008" title=" " alt="" coords="992,100,964,102,963,97,998,99"/>
+</map>

@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-81-g38a1e0dd1</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-85-g91de17b9</span>
    </div>
   </td>
  </tr>
@@ -92,7 +92,7 @@ $(function(){initNavTree('classTileInitialisationObserver.html','','classTileIni
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="tiledbitmaplayer_8hh_source.html">tiledbitmaplayer.hh</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="tile-storage_8hh_source.html">tile-storage.hh</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for TileInitialisationObserver:</div>
 <div class="dyncontent">
@@ -125,9 +125,8 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af1272eb9052fad56eed3fcdaa0b85829" id="r_af1272eb9052fad56eed3fcdaa0b85829"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1272eb9052fad56eed3fcdaa0b85829">tileCreated</a> (const std::shared_ptr&lt; <a class="el" href="classCompressedTile.html">CompressedTile</a> &gt; &amp;tile)</td></tr>
-<tr class="memitem:a1469a567cc8b3a84f895dc28a06d471d" id="r_a1469a567cc8b3a84f895dc28a06d471d"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1469a567cc8b3a84f895dc28a06d471d">tileFinished</a> (const std::shared_ptr&lt; <a class="el" href="classCompressedTile.html">CompressedTile</a> &gt; &amp;tile)</td></tr>
-<tr class="memdesc:a1469a567cc8b3a84f895dc28a06d471d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classTileInitialisationObserver.html">TileInitialisationObserver</a>.  <br /></td></tr>
+<tr class="memitem:a7cd532e288de16bd9479ff9e952ee67a" id="r_a7cd532e288de16bd9479ff9e952ee67a"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7cd532e288de16bd9479ff9e952ee67a">tileCreated</a> (const std::shared_ptr&lt; <a class="el" href="classTileStorage.html">TileStorage</a> &gt; &amp;tile)</td></tr>
+<tr class="memitem:a2d473f6c1399a7d91e67e17ef7bc87d6" id="r_a2d473f6c1399a7d91e67e17ef7bc87d6"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d473f6c1399a7d91e67e17ef7bc87d6">tileFinished</a> (const std::shared_ptr&lt; <a class="el" href="classTileStorage.html">TileStorage</a> &gt; &amp;tile)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-inherited" class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -171,8 +170,8 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="af1272eb9052fad56eed3fcdaa0b85829" name="af1272eb9052fad56eed3fcdaa0b85829"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1272eb9052fad56eed3fcdaa0b85829">&#9670;&#160;</a></span>tileCreated()</h2>
+<a id="a7cd532e288de16bd9479ff9e952ee67a" name="a7cd532e288de16bd9479ff9e952ee67a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cd532e288de16bd9479ff9e952ee67a">&#9670;&#160;</a></span>tileCreated()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -183,7 +182,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54">void</a> TileInitialisationObserver::tileCreated </td>
           <td>(</td>
-          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classCompressedTile.html">CompressedTile</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>tile</em></span></td><td>)</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classTileStorage.html">TileStorage</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>tile</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -197,13 +196,13 @@ Additional Inherited Members</h2></td></tr>
 <p>This event will be sent as soon as the observer is registered (because obvously the tile has already been created beforehand).</p>
 <dl class="section note"><dt>Note</dt><dd>This event will be sent using the thread that is registering the observer. Be careful with your mutexes :-) </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classScroom_1_1TiledBitmap_1_1LayerStack.html#aa5790714b519b4a7163d36ae640339f6">Scroom::TiledBitmap::LayerStack</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  294</span>{}</div>
+<p>Reimplemented in <a class="el" href="classScroom_1_1TiledBitmap_1_1LayerStack.html#a28ddcd2ffc9c897a1bb8dd83007be6b3">Scroom::TiledBitmap::LayerStack</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   60</span>{}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a1469a567cc8b3a84f895dc28a06d471d" name="a1469a567cc8b3a84f895dc28a06d471d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1469a567cc8b3a84f895dc28a06d471d">&#9670;&#160;</a></span>tileFinished()</h2>
+<a id="a2d473f6c1399a7d91e67e17ef7bc87d6" name="a2d473f6c1399a7d91e67e17ef7bc87d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d473f6c1399a7d91e67e17ef7bc87d6">&#9670;&#160;</a></span>tileFinished()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -214,7 +213,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54">void</a> TileInitialisationObserver::tileFinished </td>
           <td>(</td>
-          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classCompressedTile.html">CompressedTile</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>tile</em></span></td><td>)</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classTileStorage.html">TileStorage</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>tile</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -224,19 +223,17 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p><a class="el" href="classTileInitialisationObserver.html">TileInitialisationObserver</a>. </p>
 <p>This event will be sent when the tile is completely filled with data. This would be a good time to update progress bars and start prescaling.</p>
 <dl class="section note"><dt>Note</dt><dd>This event will be sent on the thread that is filling the tile with data. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classLayerCoordinator.html#aaed9f19d2d0be309e22c373551c27f9b">LayerCoordinator</a>, and <a class="el" href="classScroom_1_1TiledBitmap_1_1LayerStack.html#acae3e9dab125d5ed9fb81bb0c1da1886">Scroom::TiledBitmap::LayerStack</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  292</span>{}</div>
+<p>Reimplemented in <a class="el" href="classLayerCoordinator.html#a0d2070f92574c266f9b7c75d4be1780d">LayerCoordinator</a>, and <a class="el" href="classScroom_1_1TiledBitmap_1_1LayerStack.html#a9556ec811c6943ed3168b042b23de05f">Scroom::TiledBitmap::LayerStack</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   59</span>{}</div>
 </div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>libs/tiled-bitmap/inc/scroom/<a class="el" href="tiledbitmaplayer_8hh_source.html">tiledbitmaplayer.hh</a></li>
-<li>libs/tiled-bitmap/src/<a class="el" href="compressedtile_8cc.html">compressedtile.cc</a></li>
+<li>libs/tiled-bitmap/inc/scroom/<a class="el" href="tile-storage_8hh_source.html">tile-storage.hh</a></li>
+<li>libs/tiled-bitmap/src/<a class="el" href="tile-storage_8cc.html">tile-storage.cc</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

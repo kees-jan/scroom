@@ -1,0 +1,11 @@
+<map id="LayerBase::close" name="LayerBase::close">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,96,137,124"/>
+<area shape="rect" id="Node000002" href="$classTileStorage.html#a3dbad824337e0453ab1bdfa0ed517603" title=" " alt="" coords="221,5,358,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,93,133,67,184,42,208,35,204,38,186,47,136,72,95,98"/>
+<area shape="rect" id="Node000003" href="$classLayerInterface.html#a69bfa1a1fae074fdc7db03c769135e9a" title=" " alt="" coords="198,57,380,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="136,98,185,93,181,95,138,103"/>
+<area shape="rect" id="Node000004" href="$classLayerInterface.html#a3a4077ba1efd0e8afab783efe906f554" title=" " alt="" coords="205,125,374,153"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="137,116,192,125,187,127,137,121"/>
+<area shape="rect" id="Node000005" href="$classLayerInterface.html#a7917ade92a492e001b987ca3666670bd" title=" " alt="" coords="185,177,394,205"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="98,122,139,142,186,162,212,173,207,173,184,167,137,147,98,127"/>
+</map>

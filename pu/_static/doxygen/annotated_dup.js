@@ -19,6 +19,9 @@ var annotated_dup =
     [ "anonymous_namespace{pnmsource.cc}", "namespaceanonymous__namespace_02pnmsource_8cc_03.html", [
       [ "BitmapMetaData", "structanonymous__namespace_02pnmsource_8cc_03_1_1BitmapMetaData.html", "structanonymous__namespace_02pnmsource_8cc_03_1_1BitmapMetaData" ]
     ] ],
+    [ "anonymous_namespace{populate-layer.cc}", "namespaceanonymous__namespace_02populate-layer_8cc_03.html", [
+      [ "DataFetcher", "classanonymous__namespace_02populate-layer_8cc_03_1_1DataFetcher.html", "classanonymous__namespace_02populate-layer_8cc_03_1_1DataFetcher" ]
+    ] ],
     [ "anonymous_namespace{progressbarmanager.cc}", "namespaceanonymous__namespace_02progressbarmanager_8cc_03.html", [
       [ "ProgressBarPulser", "classanonymous__namespace_02progressbarmanager_8cc_03_1_1ProgressBarPulser.html", "classanonymous__namespace_02progressbarmanager_8cc_03_1_1ProgressBarPulser" ]
     ] ],
@@ -82,6 +85,8 @@ var annotated_dup =
           [ "Rectangle", "classScroom_1_1TiledBitmap_1_1Geometry_1_1Rectangle.html", "classScroom_1_1TiledBitmap_1_1Geometry_1_1Rectangle" ]
         ] ],
         [ "Test", "namespaceScroom_1_1TiledBitmap_1_1Test.html", [
+          [ "InMemoryTile", "classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryTile.html", "classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryTile" ],
+          [ "InMemoryLayer", "classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryLayer.html", "classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryLayer" ],
           [ "SampleLayout", "structScroom_1_1TiledBitmap_1_1Test_1_1SampleLayout.html", "structScroom_1_1TiledBitmap_1_1Test_1_1SampleLayout" ]
         ] ],
         [ "BitmapMetaData", "structScroom_1_1TiledBitmap_1_1BitmapMetaData.html", "structScroom_1_1TiledBitmap_1_1BitmapMetaData" ],
@@ -221,7 +226,6 @@ var annotated_dup =
     [ "CompressedTile", "classCompressedTile.html", "classCompressedTile" ],
     [ "ConstTile", "classConstTile.html", "classConstTile" ],
     [ "ContextTests", "classContextTests.html", "classContextTests" ],
-    [ "DataFetcher", "classDataFetcher.html", "classDataFetcher" ],
     [ "DontDelete", "classDontDelete.html", "classDontDelete" ],
     [ "Dummy", "structDummy.html", "structDummy" ],
     [ "DummyColormapProvider", "classDummyColormapProvider.html", "classDummyColormapProvider" ],
@@ -243,8 +247,10 @@ var annotated_dup =
     [ "InvalidatingCounter", "classInvalidatingCounter.html", "classInvalidatingCounter" ],
     [ "Invalidator", "classInvalidator.html", "classInvalidator" ],
     [ "Layer", "classLayer.html", "classLayer" ],
+    [ "LayerBase", "classLayerBase.html", "classLayerBase" ],
     [ "LayerCoordinator", "classLayerCoordinator.html", "classLayerCoordinator" ],
     [ "LayerDescription", "structLayerDescription.html", "structLayerDescription" ],
+    [ "LayerInterface", "classLayerInterface.html", "classLayerInterface" ],
     [ "LayerOperations", "classLayerOperations.html", "classLayerOperations" ],
     [ "LayerRenderingOperations", "classLayerRenderingOperations.html", "classLayerRenderingOperations" ],
     [ "Logger", "classLogger.html", "classLogger" ],
@@ -342,6 +348,7 @@ var annotated_dup =
     [ "TileGeometry", "classTileGeometry.html", "classTileGeometry" ],
     [ "TileInitialisationObserver", "classTileInitialisationObserver.html", "classTileInitialisationObserver" ],
     [ "TileLoadingObserver", "classTileLoadingObserver.html", "classTileLoadingObserver" ],
+    [ "TileStorage", "classTileStorage.html", "classTileStorage" ],
     [ "TileViewState", "classTileViewState.html", "classTileViewState" ],
     [ "ToolStateListener", "classToolStateListener.html", "classToolStateListener" ],
     [ "TransformationData", "classTransformationData.html", "classTransformationData" ],

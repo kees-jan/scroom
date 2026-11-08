@@ -42,7 +42,7 @@ var namespaceScroom_1_1TiledBitmap =
     [ "GreyscaleBitmap", "namespaceScroom_1_1TiledBitmap.html#a35eb5d0dba0fa7d585cf7d77b10947b3", null ],
     [ "LayerSpecForBitmap", "namespaceScroom_1_1TiledBitmap.html#a22a1bb4f862ef52ed08042515ffca9da", null ],
     [ "RGBBitmap", "namespaceScroom_1_1TiledBitmap.html#ae37bb5eadee0a9dc461de0b0880c51b1", null ],
-    [ "scheduleLoadingBitmap", "namespaceScroom_1_1TiledBitmap.html#ac13fd191f548c9c8d794f6cc704b6e39", null ],
+    [ "scheduleLoadingBitmap", "namespaceScroom_1_1TiledBitmap.html#a1b1b9bb278318980217eed6b585c9452", null ],
     [ "to_metadata", "namespaceScroom_1_1TiledBitmap.html#a57ca2a55cf5fd640d3e3e3e2d59c4a62", null ],
     [ "to_stream", "namespaceScroom_1_1TiledBitmap.html#ad48ffa08ebee955f5039811162e0df4a", null ],
     [ "to_string", "namespaceScroom_1_1TiledBitmap.html#a90b98df77076cf30312ea6e57d3e75d2", null ],

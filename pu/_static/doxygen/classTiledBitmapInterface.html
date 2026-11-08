@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-81-g38a1e0dd1</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-85-g91de17b9</span>
    </div>
   </td>
  </tr>
@@ -130,7 +130,7 @@ Public Types</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2e02aa68f0a137cb2ec85b2412d98335" id="r_a2e02aa68f0a137cb2ec85b2412d98335"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e02aa68f0a137cb2ec85b2412d98335">setSource</a> (<a class="el" href="classSourcePresentation.html#a7b2d8fe66f8ac185fe0aa68d98e559e0">SourcePresentation::Ptr</a> sp)=0</td></tr>
-<tr class="memitem:a03ba13bbaf20c3c2985d4298e6c6993e" id="r_a03ba13bbaf20c3c2985d4298e6c6993e"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; <a class="el" href="classLayer.html">Layer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03ba13bbaf20c3c2985d4298e6c6993e">getBottomLayer</a> ()=0</td></tr>
+<tr class="memitem:a7321070d7f92d2f0156bb357d6ad8842" id="r_a7321070d7f92d2f0156bb357d6ad8842"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classLayerInterface.html#a2a2ce1ea3ce6c128c9839e64d6bb3a51">LayerInterface::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7321070d7f92d2f0156bb357d6ad8842">getBottomLayer</a> ()=0</td></tr>
 <tr class="memitem:a3fc3f2fbd8322da070fea1fd2e364e3f" id="r_a3fc3f2fbd8322da070fea1fd2e364e3f"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; <a class="el" href="classScroom_1_1TiledBitmap_1_1LayerStack.html">Scroom::TiledBitmap::LayerStack</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3fc3f2fbd8322da070fea1fd2e364e3f">getLayerStack</a> ()=0</td></tr>
 <tr class="memitem:a24dd76d8800fb60b066e28a3bdb57888" id="r_a24dd76d8800fb60b066e28a3bdb57888"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24dd76d8800fb60b066e28a3bdb57888">redraw</a> (<a class="el" href="classViewInterface.html#ab8484d8a48d246c52ebcff8900a7ee99">ViewInterface::Ptr</a> const &amp;<a class="el" href="pipette-tests_8cc.html#a42c717015bd9a889714e98016e92c595">vi</a>, cairo_t *<a class="el" href="pipette-tests_8cc.html#ac2efa4a51d11834112524e53b3dc0f62">cr</a>, const <a class="el" href="classScroom_1_1Utils_1_1Rectangle.html">Scroom::Utils::Rectangle</a>&lt; double &gt; &amp;presentationArea, int zoom)=0</td></tr>
 <tr class="memitem:a4e53a7165efc43a94e2a407d583c8b13" id="r_a4e53a7165efc43a94e2a407d583c8b13"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4e53a7165efc43a94e2a407d583c8b13">clearCaches</a> (<a class="el" href="classViewInterface.html#ab8484d8a48d246c52ebcff8900a7ee99">ViewInterface::Ptr</a> <a class="el" href="pipette-tests_8cc.html#a42c717015bd9a889714e98016e92c595">vi</a>)=0</td></tr>
@@ -192,8 +192,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a03ba13bbaf20c3c2985d4298e6c6993e" name="a03ba13bbaf20c3c2985d4298e6c6993e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a03ba13bbaf20c3c2985d4298e6c6993e">&#9670;&#160;</a></span>getBottomLayer()</h2>
+<a id="a7321070d7f92d2f0156bb357d6ad8842" name="a7321070d7f92d2f0156bb357d6ad8842"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7321070d7f92d2f0156bb357d6ad8842">&#9670;&#160;</a></span>getBottomLayer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -202,7 +202,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual std::shared_ptr&lt; <a class="el" href="classLayer.html">Layer</a> &gt; TiledBitmapInterface::getBottomLayer </td>
+          <td class="memname">virtual <a class="el" href="classLayerInterface.html#a2a2ce1ea3ce6c128c9839e64d6bb3a51">LayerInterface::Ptr</a> TiledBitmapInterface::getBottomLayer </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -218,7 +218,7 @@ Public Member Functions</h2></td></tr>
 <p>This allows you to fill the layer with data yourself, instead of relying on <a class="el" href="#a2e02aa68f0a137cb2ec85b2412d98335">setSource()</a></p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#a2e02aa68f0a137cb2ec85b2412d98335">setSource()</a> </dd></dl>
 
-<p>Implemented in <a class="el" href="classTiledBitmap.html#a75f9b982627fe273f321a0643c42d300">TiledBitmap</a>.</p>
+<p>Implemented in <a class="el" href="classTiledBitmap.html#a49415b91b898167197681c4b42a6652a">TiledBitmap</a>.</p>
 
 </div>
 </div>

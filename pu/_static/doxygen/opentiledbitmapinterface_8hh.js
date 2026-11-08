@@ -5,7 +5,7 @@ var opentiledbitmapinterface_8hh =
     [ "Scroom::TiledBitmap::LayerSpecForBitmapFunc", "namespaceScroom_1_1TiledBitmap.html#a9464b28eb489c66726f22f436434a902", null ],
     [ "Scroom::TiledBitmap::LayerSpecResult", "namespaceScroom_1_1TiledBitmap.html#ab01a7ceaa4471a33865568d4904175d7", null ],
     [ "Scroom::TiledBitmap::LayerSpecForBitmap", "namespaceScroom_1_1TiledBitmap.html#a22a1bb4f862ef52ed08042515ffca9da", null ],
-    [ "Scroom::TiledBitmap::scheduleLoadingBitmap", "namespaceScroom_1_1TiledBitmap.html#ac13fd191f548c9c8d794f6cc704b6e39", null ],
+    [ "Scroom::TiledBitmap::scheduleLoadingBitmap", "namespaceScroom_1_1TiledBitmap.html#a1b1b9bb278318980217eed6b585c9452", null ],
     [ "Scroom::TiledBitmap::to_metadata", "namespaceScroom_1_1TiledBitmap.html#a57ca2a55cf5fd640d3e3e3e2d59c4a62", null ],
     [ "Scroom::TiledBitmap::to_stream", "namespaceScroom_1_1TiledBitmap.html#ad48ffa08ebee955f5039811162e0df4a", null ],
     [ "Scroom::TiledBitmap::to_string", "namespaceScroom_1_1TiledBitmap.html#a90b98df77076cf30312ea6e57d3e75d2", null ],

@@ -1,0 +1,17 @@
+<map id="Scroom::TiledBitmap::LayerStack::connect" name="Scroom::TiledBitmap::LayerStack::connect">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,100,166,144"/>
+<area shape="rect" id="Node000002" href="$classLayerCoordinator.html#adf0740fdb5340cab8910d1a1891477ee" title=" " alt="" coords="232,29,414,57"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,96,213,67,244,60,240,63,215,72,139,101"/>
+<area shape="rect" id="Node000004" href="$classLayerInterface.html#a3a4077ba1efd0e8afab783efe906f554" title=" " alt="" coords="239,81,407,109"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="166,110,225,105,221,108,167,115"/>
+<area shape="rect" id="Node000005" href="$classLayerInterface.html#a7917ade92a492e001b987ca3666670bd" title=" " alt="" coords="218,133,428,161"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="166,128,205,134,200,135,167,133"/>
+<area shape="rect" id="Node000006" href="$namespaceScroom_1_1TiledBitmap_1_1Geometry.html#adaed67d1986fc9ddb285ba60f3d493af" title=" " alt="" coords="214,185,432,230"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="142,142,215,170,237,180,231,180,213,175,141,147"/>
+<area shape="rect" id="Node000003" href="$classLayerCoordinator.html#a3eafcda521a02dab43ce39423336214f" title=" " alt="" coords="480,29,733,57"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="414,41,467,43,462,44,415,46"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="558,28,551,20,557,11,576,5,607,3,640,5,660,14,654,14,639,10,607,8,577,10,560,15,556,20,564,29"/>
+<area shape="rect" id="Node000007" href="$namespaceScroom_1_1Utils.html#a95153f4ab44349a7a3190c2184f92e97" title=" " alt="" coords="526,185,687,230"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="432,205,513,207,508,207,433,210"/>
+<area shape="poly" id="edge8_Node000007_Node000007" title=" " alt="" coords="553,183,551,175,561,166,579,160,607,158,637,161,657,170,651,169,636,166,607,163,580,165,563,170,556,176,558,186"/>
+</map>

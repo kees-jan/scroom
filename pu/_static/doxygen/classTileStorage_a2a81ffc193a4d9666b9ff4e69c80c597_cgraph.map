@@ -1,0 +1,9 @@
+<map id="TileStorage::reportFinished" name="TileStorage::reportFinished">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,65,202,93"/>
+<area shape="rect" id="Node000002" href="$classTileStorage.html#aa1e1a60f13ddd3249bdde5308de23d0a" title=" " alt="" coords="250,5,466,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,62,249,42,283,36,278,38,250,47,166,67"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Observable.html#ae215a3f722f5894dd8fdc1cb9b190c0e" title=" " alt="" coords="263,57,453,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="202,77,250,78,245,80,203,82"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Base.html#aae9a071db1ff973ca6e844a69d3e10ea" title=" " alt="" coords="284,126,432,171"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="157,91,271,123,266,126,157,96"/>
+</map>

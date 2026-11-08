@@ -2045,13 +2045,13 @@
     <filename>opentiledbitmapinterface_8hh.html</filename>
     <includes id="colormappable_8hh" name="colormappable.hh" local="no" import="no" module="no" objc="no">scroom/colormappable.hh</includes>
     <includes id="interface_8hh" name="interface.hh" local="no" import="no" module="no" objc="no">scroom/interface.hh</includes>
+    <includes id="layer-interface_8hh" name="layer-interface.hh" local="no" import="no" module="no" objc="no">scroom/layer-interface.hh</includes>
     <includes id="logger_8hh" name="logger.hh" local="no" import="no" module="no" objc="no">scroom/logger.hh</includes>
     <includes id="point_8hh" name="point.hh" local="no" import="no" module="no" objc="no">scroom/point.hh</includes>
     <includes id="rectangle_8hh" name="rectangle.hh" local="no" import="no" module="no" objc="no">scroom/rectangle.hh</includes>
     <includes id="scroominterface_8hh" name="scroominterface.hh" local="no" import="no" module="no" objc="no">scroom/scroominterface.hh</includes>
     <includes id="showmetadata_8hh" name="showmetadata.hh" local="no" import="no" module="no" objc="no">scroom/showmetadata.hh</includes>
     <includes id="tiled-bitmap-data_8hh" name="tiled-bitmap-data.hh" local="no" import="no" module="no" objc="no">scroom/tiled-bitmap-data.hh</includes>
-    <includes id="tiledbitmaplayer_8hh" name="tiledbitmaplayer.hh" local="no" import="no" module="no" objc="no">scroom/tiledbitmaplayer.hh</includes>
     <class kind="struct">Scroom::TiledBitmap::BitmapMetaData</class>
     <class kind="class">Scroom::TiledBitmap::OpenTiledBitmapInterface</class>
     <namespace>Scroom</namespace>
@@ -4116,6 +4116,28 @@
     </member>
   </compound>
   <compound kind="file">
+    <name>layer-base.hh</name>
+    <path>libs/tiled-bitmap/inc/scroom/</path>
+    <filename>layer-base_8hh.html</filename>
+    <includes id="layer-interface_8hh" name="layer-interface.hh" local="no" import="no" module="no" objc="no">scroom/layer-interface.hh</includes>
+    <class kind="class">LayerBase</class>
+  </compound>
+  <compound kind="file">
+    <name>layer-interface.hh</name>
+    <path>libs/tiled-bitmap/inc/scroom/</path>
+    <filename>layer-interface_8hh.html</filename>
+    <includes id="rectangle_8hh" name="rectangle.hh" local="no" import="no" module="no" objc="no">scroom/rectangle.hh</includes>
+    <includes id="tile-storage_8hh" name="tile-storage.hh" local="no" import="no" module="no" objc="no">scroom/tile-storage.hh</includes>
+    <class kind="class">LayerInterface</class>
+    <member kind="typedef">
+      <type>std::function&lt; LayerInterface::Ptr(int level, Scroom::Utils::Rectangle&lt; int &gt; imageArea, int bpp)&gt;</type>
+      <name>LayerFactory</name>
+      <anchorfile>layer-interface_8hh.html</anchorfile>
+      <anchor>a8467ed77e74fcabb667c33f9ba4a4b80</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="file">
     <name>layer-reduction.hh</name>
     <path>libs/tiled-bitmap/inc/scroom/</path>
     <filename>layer-reduction_8hh.html</filename>
@@ -4137,13 +4159,13 @@
     <name>layer-stack.hh</name>
     <path>libs/tiled-bitmap/inc/scroom/</path>
     <filename>layer-stack_8hh.html</filename>
+    <includes id="layer-interface_8hh" name="layer-interface.hh" local="no" import="no" module="no" objc="no">scroom/layer-interface.hh</includes>
     <includes id="layercoordinator_8hh" name="layercoordinator.hh" local="no" import="no" module="no" objc="no">scroom/layercoordinator.hh</includes>
     <includes id="logger_8hh" name="logger.hh" local="no" import="no" module="no" objc="no">scroom/logger.hh</includes>
     <includes id="progressinterface_8hh" name="progressinterface.hh" local="no" import="no" module="no" objc="no">scroom/progressinterface.hh</includes>
     <includes id="progressinterfacehelpers_8hh" name="progressinterfacehelpers.hh" local="no" import="no" module="no" objc="no">scroom/progressinterfacehelpers.hh</includes>
     <includes id="stuff_8hh" name="stuff.hh" local="no" import="no" module="no" objc="no">scroom/stuff.hh</includes>
     <includes id="tiled-bitmap-data_8hh" name="tiled-bitmap-data.hh" local="no" import="no" module="no" objc="no">scroom/tiled-bitmap-data.hh</includes>
-    <includes id="tiledbitmaplayer_8hh" name="tiledbitmaplayer.hh" local="no" import="no" module="no" objc="no">scroom/tiledbitmaplayer.hh</includes>
     <class kind="class">Scroom::TiledBitmap::LayerStack</class>
     <class kind="struct">Scroom::TiledBitmap::LayerStack::Level</class>
     <namespace>Scroom</namespace>
@@ -4154,7 +4176,7 @@
     <path>libs/tiled-bitmap/inc/scroom/</path>
     <filename>layercoordinator_8hh.html</filename>
     <includes id="layer-reduction_8hh" name="layer-reduction.hh" local="no" import="no" module="no" objc="no">scroom/layer-reduction.hh</includes>
-    <includes id="tiledbitmaplayer_8hh" name="tiledbitmaplayer.hh" local="no" import="no" module="no" objc="no">scroom/tiledbitmaplayer.hh</includes>
+    <includes id="tile-storage_8hh" name="tile-storage.hh" local="no" import="no" module="no" objc="no">scroom/tile-storage.hh</includes>
     <class kind="class">LayerCoordinator</class>
   </compound>
   <compound kind="file">
@@ -4186,11 +4208,37 @@
     <class kind="class">OperationsCMYK4</class>
   </compound>
   <compound kind="file">
+    <name>populate-layer.hh</name>
+    <path>libs/tiled-bitmap/inc/scroom/</path>
+    <filename>populate-layer_8hh.html</filename>
+    <includes id="layer-interface_8hh" name="layer-interface.hh" local="no" import="no" module="no" objc="no">scroom/layer-interface.hh</includes>
+    <includes id="threadpool_8hh" name="threadpool.hh" local="no" import="no" module="no" objc="no">scroom/threadpool.hh</includes>
+    <includes id="tiled-bitmap-data_8hh" name="tiled-bitmap-data.hh" local="no" import="no" module="no" objc="no">scroom/tiled-bitmap-data.hh</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>populateLayer</name>
+      <anchorfile>populate-layer_8hh.html</anchorfile>
+      <anchor>ae89ec799529926c454d7f5cfb56bcc5a</anchor>
+      <arglist>(LayerInterface::Ptr layer, SourcePresentation::Ptr source, const ThreadPool::WeakQueue::Ptr &amp;queue, std::function&lt; void()&gt; onFinished)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>tile-storage.hh</name>
+    <path>libs/tiled-bitmap/inc/scroom/</path>
+    <filename>tile-storage_8hh.html</filename>
+    <includes id="bookkeeping_8hh" name="bookkeeping.hh" local="no" import="no" module="no" objc="no">scroom/bookkeeping.hh</includes>
+    <includes id="observable_8hh" name="observable.hh" local="no" import="no" module="no" objc="no">scroom/observable.hh</includes>
+    <includes id="presentationinterface_8hh" name="presentationinterface.hh" local="no" import="no" module="no" objc="no">scroom/presentationinterface.hh</includes>
+    <includes id="tile_8hh" name="tile.hh" local="no" import="no" module="no" objc="no">scroom/tile.hh</includes>
+    <class kind="class">TileInitialisationObserver</class>
+    <class kind="class">TileLoadingObserver</class>
+    <class kind="class">TileStorage</class>
+  </compound>
+  <compound kind="file">
     <name>tile.hh</name>
     <path>libs/tiled-bitmap/inc/scroom/</path>
     <filename>tile_8hh.html</filename>
     <includes id="global_8hh" name="global.hh" local="no" import="no" module="no" objc="no">scroom/global.hh</includes>
-    <includes id="memoryblobs_8hh" name="memoryblobs.hh" local="no" import="no" module="no" objc="no">scroom/memoryblobs.hh</includes>
     <class kind="class">Tile</class>
     <class kind="class">ConstTile</class>
     <member kind="enumeration">
@@ -4222,6 +4270,13 @@
       <name>TILE_OUT_OF_BOUNDS</name>
       <anchorfile>tile_8hh.html</anchorfile>
       <anchor>ac84d9b534c1947f639684269d09f7921af9af66a665a3524fc0d049fc669b2d76</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>constexpr int</type>
+      <name>TILESIZE</name>
+      <anchorfile>tile_8hh.html</anchorfile>
+      <anchor>adac342fc113c4a0c4917b28f527fb1b4</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -4285,12 +4340,20 @@
       <anchor>afb81a705ea3c38444cb0f4fb12410f43</anchor>
       <arglist>(int bitmapWidth, int bitmapHeight, LayerSpec const &amp;ls)</arglist>
     </member>
+    <member kind="function">
+      <type>TiledBitmapInterface::Ptr</type>
+      <name>createTiledBitmap</name>
+      <anchorfile>tiledbitmapinterface_8hh.html</anchorfile>
+      <anchor>ab9892ecf3aa64e88a1ac58ec80cc6dc0</anchor>
+      <arglist>(const Scroom::TiledBitmap::LayerStack::Ptr &amp;stack, const LayerSpec &amp;descriptions)</arglist>
+    </member>
   </compound>
   <compound kind="file">
     <name>tiledbitmaplayer.hh</name>
     <path>libs/tiled-bitmap/inc/scroom/</path>
     <filename>tiledbitmaplayer_8hh.html</filename>
     <includes id="interface_8hh" name="interface.hh" local="no" import="no" module="no" objc="no">scroom/interface.hh</includes>
+    <includes id="layer-base_8hh" name="layer-base.hh" local="no" import="no" module="no" objc="no">scroom/layer-base.hh</includes>
     <includes id="logger_8hh" name="logger.hh" local="no" import="no" module="no" objc="no">scroom/logger.hh</includes>
     <includes id="memoryblobs_8hh" name="memoryblobs.hh" local="no" import="no" module="no" objc="no">scroom/memoryblobs.hh</includes>
     <includes id="observable_8hh" name="observable.hh" local="no" import="no" module="no" objc="no">scroom/observable.hh</includes>
@@ -4298,19 +4361,11 @@
     <includes id="rectangle_8hh" name="rectangle.hh" local="no" import="no" module="no" objc="no">scroom/rectangle.hh</includes>
     <includes id="stuff_8hh" name="stuff.hh" local="no" import="no" module="no" objc="no">scroom/stuff.hh</includes>
     <includes id="threadpool_8hh" name="threadpool.hh" local="no" import="no" module="no" objc="no">scroom/threadpool.hh</includes>
+    <includes id="tile-storage_8hh" name="tile-storage.hh" local="no" import="no" module="no" objc="no">scroom/tile-storage.hh</includes>
     <includes id="tile_8hh" name="tile.hh" local="no" import="no" module="no" objc="no">scroom/tile.hh</includes>
     <includes id="tiled-bitmap-data_8hh" name="tiled-bitmap-data.hh" local="no" import="no" module="no" objc="no">scroom/tiled-bitmap-data.hh</includes>
-    <class kind="class">TileInitialisationObserver</class>
-    <class kind="class">TileLoadingObserver</class>
     <class kind="class">CompressedTile</class>
     <class kind="class">Layer</class>
-    <member kind="define">
-      <type>#define</type>
-      <name>TILESIZE</name>
-      <anchorfile>tiledbitmaplayer_8hh.html</anchorfile>
-      <anchor>a07ae61ed7dc31e9cddbdf9da244567c7</anchor>
-      <arglist></arglist>
-    </member>
     <member kind="typedef">
       <type>std::vector&lt; CompressedTile::Ptr &gt;</type>
       <name>CompressedTileLine</name>
@@ -4362,6 +4417,20 @@
       <anchor>a4f52bb8f2d5da2afbcf302a471a7aa22a8257ad7491d95b6798756ab4058d7e1c</anchor>
       <arglist></arglist>
     </member>
+    <member kind="function">
+      <type>Scroom::MemoryBlobs::PageProvider::Ptr</type>
+      <name>createCompressedLayerPageProvider</name>
+      <anchorfile>tiledbitmaplayer_8hh.html</anchorfile>
+      <anchor>a710eff9f6362b7954c60d4e1ad32bd68</anchor>
+      <arglist>(Scroom::Utils::Point&lt; int &gt; imageSize, int bpp)</arglist>
+    </member>
+    <member kind="function">
+      <type>LayerFactory</type>
+      <name>createCompressedLayerFactory</name>
+      <anchorfile>tiledbitmaplayer_8hh.html</anchorfile>
+      <anchor>adf5b67e1d5c61aa0dc4e13984bf5450e</anchor>
+      <arglist>(Scroom::MemoryBlobs::PageProvider::Ptr provider)</arglist>
+    </member>
   </compound>
   <compound kind="file">
     <name>cmyklayeroperations.cc</name>
@@ -4381,7 +4450,12 @@
     <filename>compressedtile_8cc.html</filename>
     <includes id="tiledbitmaplayer_8hh" name="tiledbitmaplayer.hh" local="no" import="no" module="no" objc="no">scroom/tiledbitmaplayer.hh</includes>
     <includes id="local_8hh" name="local.hh" local="yes" import="no" module="no" objc="no">local.hh</includes>
-    <includes id="tileviewstate_8hh" name="tileviewstate.hh" local="yes" import="no" module="no" objc="no">tileviewstate.hh</includes>
+  </compound>
+  <compound kind="file">
+    <name>layer-base.cc</name>
+    <path>libs/tiled-bitmap/src/</path>
+    <filename>layer-base_8cc.html</filename>
+    <includes id="layer-base_8hh" name="layer-base.hh" local="no" import="no" module="no" objc="no">scroom/layer-base.hh</includes>
   </compound>
   <compound kind="file">
     <name>layer-reduction.cc</name>
@@ -4403,6 +4477,7 @@
     <includes id="layercoordinator_8hh" name="layercoordinator.hh" local="no" import="no" module="no" objc="no">scroom/layercoordinator.hh</includes>
     <includes id="logger_8hh" name="logger.hh" local="no" import="no" module="no" objc="no">scroom/logger.hh</includes>
     <includes id="opentiledbitmapinterface_8hh" name="opentiledbitmapinterface.hh" local="no" import="no" module="no" objc="no">scroom/opentiledbitmapinterface.hh</includes>
+    <includes id="populate-layer_8hh" name="populate-layer.hh" local="no" import="no" module="no" objc="no">scroom/populate-layer.hh</includes>
     <includes id="progressinterfacehelpers_8hh" name="progressinterfacehelpers.hh" local="no" import="no" module="no" objc="no">scroom/progressinterfacehelpers.hh</includes>
     <includes id="semaphore_8hh" name="semaphore.hh" local="no" import="no" module="no" objc="no">scroom/semaphore.hh</includes>
     <includes id="tiled-bitmap-geometry_8hh" name="tiled-bitmap-geometry.hh" local="no" import="no" module="no" objc="no">scroom/tiled-bitmap-geometry.hh</includes>
@@ -4422,13 +4497,19 @@
     <includes id="tiledbitmaplayer_8hh" name="tiledbitmaplayer.hh" local="no" import="no" module="no" objc="no">scroom/tiledbitmaplayer.hh</includes>
     <includes id="viewinterface_8hh" name="viewinterface.hh" local="no" import="no" module="no" objc="no">scroom/viewinterface.hh</includes>
     <includes id="local_8hh" name="local.hh" local="yes" import="no" module="no" objc="no">local.hh</includes>
-    <class kind="class">DataFetcher</class>
-    <member kind="function" static="yes">
-      <type>static Scroom::MemoryBlobs::PageProvider::Ptr</type>
-      <name>createProvider</name>
+    <member kind="function">
+      <type>Scroom::MemoryBlobs::PageProvider::Ptr</type>
+      <name>createCompressedLayerPageProvider</name>
       <anchorfile>layer_8cc.html</anchorfile>
-      <anchor>a84bb171aac649efd1dab4f77373d08a4</anchor>
-      <arglist>(double width, double height, int bpp)</arglist>
+      <anchor>a710eff9f6362b7954c60d4e1ad32bd68</anchor>
+      <arglist>(Scroom::Utils::Point&lt; int &gt; imageSize, int bpp)</arglist>
+    </member>
+    <member kind="function">
+      <type>LayerFactory</type>
+      <name>createCompressedLayerFactory</name>
+      <anchorfile>layer_8cc.html</anchorfile>
+      <anchor>adf5b67e1d5c61aa0dc4e13984bf5450e</anchor>
+      <arglist>(Scroom::MemoryBlobs::PageProvider::Ptr provider)</arglist>
     </member>
   </compound>
   <compound kind="file">
@@ -4437,7 +4518,7 @@
     <filename>layercoordinator_8cc.html</filename>
     <includes id="layercoordinator_8hh" name="layercoordinator.hh" local="no" import="no" module="no" objc="no">scroom/layercoordinator.hh</includes>
     <includes id="threadpool_8hh" name="threadpool.hh" local="no" import="no" module="no" objc="no">scroom/threadpool.hh</includes>
-    <includes id="tiledbitmaplayer_8hh" name="tiledbitmaplayer.hh" local="no" import="no" module="no" objc="no">scroom/tiledbitmaplayer.hh</includes>
+    <includes id="tile-storage_8hh" name="tile-storage.hh" local="no" import="no" module="no" objc="no">scroom/tile-storage.hh</includes>
     <includes id="local_8hh" name="local.hh" local="yes" import="no" module="no" objc="no">local.hh</includes>
   </compound>
   <compound kind="file">
@@ -4495,6 +4576,31 @@
     </member>
   </compound>
   <compound kind="file">
+    <name>populate-layer.cc</name>
+    <path>libs/tiled-bitmap/src/</path>
+    <filename>populate-layer_8cc.html</filename>
+    <includes id="populate-layer_8hh" name="populate-layer.hh" local="no" import="no" module="no" objc="no">scroom/populate-layer.hh</includes>
+    <includes id="tiled-bitmap-geometry_8hh" name="tiled-bitmap-geometry.hh" local="no" import="no" module="no" objc="no">scroom/tiled-bitmap-geometry.hh</includes>
+    <includes id="local_8hh" name="local.hh" local="yes" import="no" module="no" objc="no">local.hh</includes>
+    <class kind="class">anonymous_namespace{populate-layer.cc}::DataFetcher</class>
+    <namespace>anonymous_namespace{populate-layer.cc}</namespace>
+    <member kind="function">
+      <type>void</type>
+      <name>populateLayer</name>
+      <anchorfile>populate-layer_8cc.html</anchorfile>
+      <anchor>ae89ec799529926c454d7f5cfb56bcc5a</anchor>
+      <arglist>(LayerInterface::Ptr layer, SourcePresentation::Ptr source, const ThreadPool::WeakQueue::Ptr &amp;queue, std::function&lt; void()&gt; onFinished)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>tile-storage.cc</name>
+    <path>libs/tiled-bitmap/src/</path>
+    <filename>tile-storage_8cc.html</filename>
+    <includes id="assertions_8hh" name="assertions.hh" local="no" import="no" module="no" objc="no">scroom/assertions.hh</includes>
+    <includes id="tile-storage_8hh" name="tile-storage.hh" local="no" import="no" module="no" objc="no">scroom/tile-storage.hh</includes>
+    <includes id="tileviewstate_8hh" name="tileviewstate.hh" local="yes" import="no" module="no" objc="no">tileviewstate.hh</includes>
+  </compound>
+  <compound kind="file">
     <name>tiled-bitmap-geometry.cc</name>
     <path>libs/tiled-bitmap/src/</path>
     <filename>tiled-bitmap-geometry_8cc.html</filename>
@@ -4509,10 +4615,12 @@
     <path>libs/tiled-bitmap/src/</path>
     <filename>tiled-bitmap_8cc.html</filename>
     <includes id="tiled-bitmap_8hh" name="tiled-bitmap.hh" local="yes" import="no" module="no" objc="no">tiled-bitmap.hh</includes>
+    <includes id="assertions_8hh" name="assertions.hh" local="no" import="no" module="no" objc="no">scroom/assertions.hh</includes>
     <includes id="cairo-helpers_8hh" name="cairo-helpers.hh" local="no" import="no" module="no" objc="no">scroom/cairo-helpers.hh</includes>
     <includes id="gtk-helpers_8hh" name="gtk-helpers.hh" local="no" import="no" module="no" objc="no">scroom/gtk-helpers.hh</includes>
     <includes id="progressinterfacehelpers_8hh" name="progressinterfacehelpers.hh" local="no" import="no" module="no" objc="no">scroom/progressinterfacehelpers.hh</includes>
     <includes id="tiled-bitmap-geometry_8hh" name="tiled-bitmap-geometry.hh" local="no" import="no" module="no" objc="no">scroom/tiled-bitmap-geometry.hh</includes>
+    <includes id="tiledbitmaplayer_8hh" name="tiledbitmaplayer.hh" local="no" import="no" module="no" objc="no">scroom/tiledbitmaplayer.hh</includes>
     <includes id="scroom_2inc_2scroom_2tweak-view_8hh" name="tweak-view.hh" local="yes" import="no" module="no" objc="no">scroom/tweak-view.hh</includes>
     <includes id="tileviewstate_8hh" name="tileviewstate.hh" local="yes" import="no" module="no" objc="no">tileviewstate.hh</includes>
     <includes id="tiled-bitmap_2src_2tweak-view_8hh" name="tweak-view.hh" local="yes" import="no" module="no" objc="no">tweak-view.hh</includes>
@@ -4525,16 +4633,23 @@
       <anchor>afb81a705ea3c38444cb0f4fb12410f43</anchor>
       <arglist>(int bitmapWidth, int bitmapHeight, LayerSpec const &amp;ls)</arglist>
     </member>
+    <member kind="function">
+      <type>TiledBitmapInterface::Ptr</type>
+      <name>createTiledBitmap</name>
+      <anchorfile>tiled-bitmap_8cc.html</anchorfile>
+      <anchor>ab9892ecf3aa64e88a1ac58ec80cc6dc0</anchor>
+      <arglist>(const Scroom::TiledBitmap::LayerStack::Ptr &amp;stack, const LayerSpec &amp;descriptions)</arglist>
+    </member>
   </compound>
   <compound kind="file">
     <name>tiled-bitmap.hh</name>
     <path>libs/tiled-bitmap/src/</path>
     <filename>tiled-bitmap_8hh.html</filename>
     <includes id="interface_8hh" name="interface.hh" local="no" import="no" module="no" objc="no">scroom/interface.hh</includes>
+    <includes id="layer-interface_8hh" name="layer-interface.hh" local="no" import="no" module="no" objc="no">scroom/layer-interface.hh</includes>
     <includes id="layer-stack_8hh" name="layer-stack.hh" local="no" import="no" module="no" objc="no">scroom/layer-stack.hh</includes>
     <includes id="scroominterface_8hh" name="scroominterface.hh" local="no" import="no" module="no" objc="no">scroom/scroominterface.hh</includes>
     <includes id="tiledbitmapinterface_8hh" name="tiledbitmapinterface.hh" local="no" import="no" module="no" objc="no">scroom/tiledbitmapinterface.hh</includes>
-    <includes id="tiledbitmaplayer_8hh" name="tiledbitmaplayer.hh" local="no" import="no" module="no" objc="no">scroom/tiledbitmaplayer.hh</includes>
     <includes id="tiledbitmapviewdata_8hh" name="tiledbitmapviewdata.hh" local="yes" import="no" module="no" objc="no">tiledbitmapviewdata.hh</includes>
     <class kind="class">TiledBitmap</class>
   </compound>
@@ -4542,6 +4657,7 @@
     <name>tiledbitmappresentation.cc</name>
     <path>libs/tiled-bitmap/src/</path>
     <filename>tiledbitmappresentation_8cc.html</filename>
+    <includes id="assertions_8hh" name="assertions.hh" local="no" import="no" module="no" objc="no">scroom/assertions.hh</includes>
     <includes id="cairo-helpers_8hh" name="cairo-helpers.hh" local="no" import="no" module="no" objc="no">scroom/cairo-helpers.hh</includes>
     <includes id="logger_8hh" name="logger.hh" local="no" import="no" module="no" objc="no">scroom/logger.hh</includes>
     <includes id="opentiledbitmapinterface_8hh" name="opentiledbitmapinterface.hh" local="no" import="no" module="no" objc="no">scroom/opentiledbitmapinterface.hh</includes>
@@ -4549,6 +4665,7 @@
     <includes id="showmetadata_8hh" name="showmetadata.hh" local="no" import="no" module="no" objc="no">scroom/showmetadata.hh</includes>
     <includes id="showmetadatainterface_8hh" name="showmetadatainterface.hh" local="no" import="no" module="no" objc="no">scroom/showmetadatainterface.hh</includes>
     <includes id="tiled-bitmap-geometry_8hh" name="tiled-bitmap-geometry.hh" local="no" import="no" module="no" objc="no">scroom/tiled-bitmap-geometry.hh</includes>
+    <includes id="tiledbitmaplayer_8hh" name="tiledbitmaplayer.hh" local="no" import="no" module="no" objc="no">scroom/tiledbitmaplayer.hh</includes>
     <includes id="transformpresentation_8hh" name="transformpresentation.hh" local="no" import="no" module="no" objc="no">scroom/transformpresentation.hh</includes>
     <includes id="tiled-bitmap_8hh" name="tiled-bitmap.hh" local="yes" import="no" module="no" objc="no">tiled-bitmap.hh</includes>
     <class kind="class">anonymous_namespace{tiledbitmappresentation.cc}::TiledBitmapPresentation</class>
@@ -4578,10 +4695,10 @@
     <path>libs/tiled-bitmap/src/</path>
     <filename>tiledbitmapviewdata_8hh.html</filename>
     <includes id="bookkeeping_8hh" name="bookkeeping.hh" local="no" import="no" module="no" objc="no">scroom/bookkeeping.hh</includes>
+    <includes id="layer-interface_8hh" name="layer-interface.hh" local="no" import="no" module="no" objc="no">scroom/layer-interface.hh</includes>
     <includes id="layer-rendering-operations_8hh" name="layer-rendering-operations.hh" local="no" import="no" module="no" objc="no">scroom/layer-rendering-operations.hh</includes>
     <includes id="observable_8hh" name="observable.hh" local="no" import="no" module="no" objc="no">scroom/observable.hh</includes>
     <includes id="rectangle_8hh" name="rectangle.hh" local="no" import="no" module="no" objc="no">scroom/rectangle.hh</includes>
-    <includes id="tiledbitmaplayer_8hh" name="tiledbitmaplayer.hh" local="no" import="no" module="no" objc="no">scroom/tiledbitmaplayer.hh</includes>
     <includes id="viewinterface_8hh" name="viewinterface.hh" local="no" import="no" module="no" objc="no">scroom/viewinterface.hh</includes>
     <class kind="class">TiledBitmapViewData</class>
   </compound>
@@ -4593,8 +4710,8 @@
     <includes id="observable_8hh" name="observable.hh" local="no" import="no" module="no" objc="no">scroom/observable.hh</includes>
     <includes id="stuff_8hh" name="stuff.hh" local="no" import="no" module="no" objc="no">scroom/stuff.hh</includes>
     <includes id="threadpool_8hh" name="threadpool.hh" local="no" import="no" module="no" objc="no">scroom/threadpool.hh</includes>
+    <includes id="tile-storage_8hh" name="tile-storage.hh" local="no" import="no" module="no" objc="no">scroom/tile-storage.hh</includes>
     <includes id="tiledbitmapinterface_8hh" name="tiledbitmapinterface.hh" local="no" import="no" module="no" objc="no">scroom/tiledbitmapinterface.hh</includes>
-    <includes id="tiledbitmaplayer_8hh" name="tiledbitmaplayer.hh" local="no" import="no" module="no" objc="no">scroom/tiledbitmaplayer.hh</includes>
     <includes id="local_8hh" name="local.hh" local="yes" import="no" module="no" objc="no">local.hh</includes>
     <includes id="tiledbitmapviewdata_8hh" name="tiledbitmapviewdata.hh" local="yes" import="no" module="no" objc="no">tiledbitmapviewdata.hh</includes>
   </compound>
@@ -4606,7 +4723,7 @@
     <includes id="observable_8hh" name="observable.hh" local="no" import="no" module="no" objc="no">scroom/observable.hh</includes>
     <includes id="stuff_8hh" name="stuff.hh" local="no" import="no" module="no" objc="no">scroom/stuff.hh</includes>
     <includes id="threadpool_8hh" name="threadpool.hh" local="no" import="no" module="no" objc="no">scroom/threadpool.hh</includes>
-    <includes id="tiledbitmaplayer_8hh" name="tiledbitmaplayer.hh" local="no" import="no" module="no" objc="no">scroom/tiledbitmaplayer.hh</includes>
+    <includes id="tile-storage_8hh" name="tile-storage.hh" local="no" import="no" module="no" objc="no">scroom/tile-storage.hh</includes>
     <class kind="class">TileViewState</class>
     <class kind="struct">fmt::formatter&lt; TileViewState::State &gt;</class>
   </compound>
@@ -4677,6 +4794,19 @@
     <class kind="class">Scroom::TiledBitmap::ExpandSelectionsToPixelBoundaries</class>
     <namespace>Scroom</namespace>
     <namespace>Scroom::TiledBitmap</namespace>
+  </compound>
+  <compound kind="file">
+    <name>in-memory-layer.hh</name>
+    <path>libs/tiled-bitmap/test/</path>
+    <filename>in-memory-layer_8hh.html</filename>
+    <includes id="assertions_8hh" name="assertions.hh" local="no" import="no" module="no" objc="no">scroom/assertions.hh</includes>
+    <includes id="layer-base_8hh" name="layer-base.hh" local="no" import="no" module="no" objc="no">scroom/layer-base.hh</includes>
+    <includes id="tiled-bitmap-geometry_8hh" name="tiled-bitmap-geometry.hh" local="no" import="no" module="no" objc="no">scroom/tiled-bitmap-geometry.hh</includes>
+    <class kind="class">Scroom::TiledBitmap::Test::InMemoryTile</class>
+    <class kind="class">Scroom::TiledBitmap::Test::InMemoryLayer</class>
+    <namespace>Scroom</namespace>
+    <namespace>Scroom::TiledBitmap</namespace>
+    <namespace>Scroom::TiledBitmap::Test</namespace>
   </compound>
   <compound kind="file">
     <name>layer-reduction-tests.cc</name>
@@ -5362,13 +5492,24 @@
     <name>layer-stack-tests.cc</name>
     <path>libs/tiled-bitmap/test/</path>
     <filename>layer-stack-tests_8cc.html</filename>
+    <includes id="bitmap-helpers_8hh" name="bitmap-helpers.hh" local="no" import="no" module="no" objc="no">scroom/bitmap-helpers.hh</includes>
     <includes id="layer-stack_8hh" name="layer-stack.hh" local="no" import="no" module="no" objc="no">scroom/layer-stack.hh</includes>
+    <includes id="layeroperations_8hh" name="layeroperations.hh" local="no" import="no" module="no" objc="no">scroom/layeroperations.hh</includes>
     <includes id="tiledbitmapinterface_8hh" name="tiledbitmapinterface.hh" local="no" import="no" module="no" objc="no">scroom/tiledbitmapinterface.hh</includes>
+    <includes id="tiledbitmaplayer_8hh" name="tiledbitmaplayer.hh" local="no" import="no" module="no" objc="no">scroom/tiledbitmaplayer.hh</includes>
+    <includes id="in-memory-layer_8hh" name="in-memory-layer.hh" local="yes" import="no" module="no" objc="no">in-memory-layer.hh</includes>
     <includes id="tile-sample-helpers_8hh" name="tile-sample-helpers.hh" local="yes" import="no" module="no" objc="no">tile-sample-helpers.hh</includes>
     <class kind="class">anonymous_namespace{layer-stack-tests.cc}::PopulationProgress</class>
     <class kind="class">anonymous_namespace{layer-stack-tests.cc}::SourceWithContrastingLeftStrip</class>
     <class kind="class">Point</class>
     <namespace>anonymous_namespace{layer-stack-tests.cc}</namespace>
+    <member kind="typedef">
+      <type>testing::TestWithParam&lt; Backend &gt;</type>
+      <name>LayerStackPopulation</name>
+      <anchorfile>layer-stack-tests_8cc.html</anchorfile>
+      <anchor>a4d8bb4e2b41a5110ef3afb92e0fe47ee</anchor>
+      <arglist></arglist>
+    </member>
     <member kind="function">
       <type></type>
       <name>TEST</name>
@@ -5378,10 +5519,17 @@
     </member>
     <member kind="function">
       <type></type>
-      <name>TEST</name>
+      <name>INSTANTIATE_TEST_SUITE_P</name>
       <anchorfile>layer-stack-tests_8cc.html</anchorfile>
-      <anchor>a02a50b43dc6fd6a9f097a86964aa8945</anchor>
-      <arglist>(LayerStack, loads_and_reduces_source_pixels_without_a_view_or_main_loop)</arglist>
+      <anchor>ae88b4e6fff6b6c7487c61c3dad4e433c</anchor>
+      <arglist>(Storage, LayerStackPopulation, testing::Values(Backend::COMPRESSED, Backend::IN_MEMORY), backendName)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>TEST_P</name>
+      <anchorfile>layer-stack-tests_8cc.html</anchorfile>
+      <anchor>ae287c434383484069f1021307981842c</anchor>
+      <arglist>(LayerStackPopulation, loads_and_reduces_source_pixels)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -6038,8 +6186,8 @@
       <type></type>
       <name>EXPECT_EQ</name>
       <anchorfile>tiledbitmap-tests_8cc.html</anchorfile>
-      <anchor>a3bb0984fc6e25a3fbd7a50860564bb57</anchor>
-      <arglist>(pluginBpp, bitmap-&gt;getBottomLayer() -&gt;getTile({0, 0}) -&gt;bpp)</arglist>
+      <anchor>a0f482471870d93e597557b0035f2dc16</anchor>
+      <arglist>(pluginBpp, bitmap-&gt;getBottomLayer() -&gt;getTile({0, 0}) -&gt;getBpp())</arglist>
     </member>
     <member kind="variable">
       <type>const int</type>
@@ -10001,6 +10149,7 @@
     <filename>pnm_8cc.html</filename>
     <includes id="pnm_8hh" name="pnm.hh" local="yes" import="no" module="no" objc="no">pnm.hh</includes>
     <includes id="opentiledbitmapinterface_8hh" name="opentiledbitmapinterface.hh" local="no" import="no" module="no" objc="no">scroom/opentiledbitmapinterface.hh</includes>
+    <includes id="tiledbitmaplayer_8hh" name="tiledbitmaplayer.hh" local="no" import="no" module="no" objc="no">scroom/tiledbitmaplayer.hh</includes>
     <includes id="transformpresentation_8hh" name="transformpresentation.hh" local="no" import="no" module="no" objc="no">scroom/transformpresentation.hh</includes>
     <includes id="pnmsource_8hh" name="pnmsource.hh" local="yes" import="no" module="no" objc="no">pnmsource.hh</includes>
   </compound>
@@ -10047,6 +10196,7 @@
     <filename>tiff_8cc.html</filename>
     <includes id="tiff_8hh" name="tiff.hh" local="yes" import="no" module="no" objc="no">tiff.hh</includes>
     <includes id="opentiledbitmapinterface_8hh" name="opentiledbitmapinterface.hh" local="no" import="no" module="no" objc="no">scroom/opentiledbitmapinterface.hh</includes>
+    <includes id="tiledbitmaplayer_8hh" name="tiledbitmaplayer.hh" local="no" import="no" module="no" objc="no">scroom/tiledbitmaplayer.hh</includes>
     <includes id="transformpresentation_8hh" name="transformpresentation.hh" local="no" import="no" module="no" objc="no">scroom/transformpresentation.hh</includes>
     <includes id="tiffsource_8hh" name="tiffsource.hh" local="yes" import="no" module="no" objc="no">tiffsource.hh</includes>
   </compound>
@@ -12827,9 +12977,7 @@
   <compound kind="class">
     <name>CompressedTile</name>
     <filename>classCompressedTile.html</filename>
-    <base>Scroom::Utils::Observable&lt; TileInitialisationObserver &gt;</base>
-    <base>Scroom::Utils::Observable&lt; TileLoadingObserver &gt;</base>
-    <base>Viewable</base>
+    <base>TileStorage</base>
     <member kind="typedef">
       <type>std::shared_ptr&lt; CompressedTile &gt;</type>
       <name>Ptr</name>
@@ -12838,95 +12986,53 @@
       <arglist></arglist>
     </member>
     <member kind="function">
-      <type>Tile::Ptr</type>
+      <type>int</type>
+      <name>getBpp</name>
+      <anchorfile>classCompressedTile.html</anchorfile>
+      <anchor>acb1bfd14d140e58efce7b51eee56b346</anchor>
+      <arglist>() const override</arglist>
+    </member>
+    <member kind="function">
+      <type>Scroom::Utils::Stuff</type>
       <name>initialize</name>
       <anchorfile>classCompressedTile.html</anchorfile>
-      <anchor>a9c6389557145d0df0b1996dc203089da</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>Scroom::Bookkeeping::Token</type>
-      <name>registerStrongObserver</name>
-      <anchorfile>classCompressedTile.html</anchorfile>
-      <anchor>aa5784d47bed64ad72d9c3ae748a356e2</anchor>
-      <arglist>(TileInitialisationObserver::Ptr const &amp;observer)</arglist>
-    </member>
-    <member kind="function">
-      <type>Scroom::Bookkeeping::Token</type>
-      <name>registerObserver</name>
-      <anchorfile>classCompressedTile.html</anchorfile>
-      <anchor>ad40ea1dd54146b27258bf7f888e3dbc1</anchor>
-      <arglist>(TileInitialisationObserver::WeakPtr const &amp;observer)</arglist>
-    </member>
-    <member kind="function">
-      <type>Scroom::Bookkeeping::Token</type>
-      <name>registerStrongObserver</name>
-      <anchorfile>classCompressedTile.html</anchorfile>
-      <anchor>a8fe577eafb7f52066eaa8f03f8438381</anchor>
-      <arglist>(TileLoadingObserver::Ptr const &amp;observer)</arglist>
-    </member>
-    <member kind="function">
-      <type>Scroom::Bookkeeping::Token</type>
-      <name>registerObserver</name>
-      <anchorfile>classCompressedTile.html</anchorfile>
-      <anchor>a9444ae88da788c16906ba567ad07c012</anchor>
-      <arglist>(TileLoadingObserver::WeakPtr const &amp;observer)</arglist>
+      <anchor>a911612e5357d1f5fbb8f774790c5c03a</anchor>
+      <arglist>() override</arglist>
     </member>
     <member kind="function">
       <type>Tile::Ptr</type>
       <name>getTileSync</name>
       <anchorfile>classCompressedTile.html</anchorfile>
-      <anchor>a84c39301c28edb944aa1dcc38a40239b</anchor>
-      <arglist>()</arglist>
+      <anchor>ab69965dd8ef51f131a9160d8283bc2a9</anchor>
+      <arglist>() override</arglist>
     </member>
     <member kind="function">
       <type>ConstTile::Ptr</type>
       <name>getConstTileSync</name>
       <anchorfile>classCompressedTile.html</anchorfile>
-      <anchor>a0678ca6eecadd7783482c591fc11fe2b</anchor>
-      <arglist>()</arglist>
+      <anchor>a593963c6a40e65a70b6bfdaff9efc88d</anchor>
+      <arglist>() override</arglist>
     </member>
     <member kind="function">
       <type>ConstTile::Ptr</type>
       <name>getConstTileAsync</name>
       <anchorfile>classCompressedTile.html</anchorfile>
-      <anchor>a8ecffff153ac1595c1f6143eca1455e4</anchor>
-      <arglist>()</arglist>
+      <anchor>a96b3572bc4e5309e35b55fadbd10eac2</anchor>
+      <arglist>() override</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>reportFinished</name>
       <anchorfile>classCompressedTile.html</anchorfile>
-      <anchor>abb93373d26a2155d4fe3f8b235ea8d45</anchor>
-      <arglist>()</arglist>
+      <anchor>accdc8c41fcc2c76b1b2ac254d65db852</anchor>
+      <arglist>() override</arglist>
     </member>
     <member kind="function">
       <type>TileState</type>
       <name>getState</name>
       <anchorfile>classCompressedTile.html</anchorfile>
-      <anchor>a037333498f97a4c29f0c24b88a483aff</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>std::shared_ptr&lt; TileViewState &gt;</type>
-      <name>getViewState</name>
-      <anchorfile>classCompressedTile.html</anchorfile>
-      <anchor>a9a3305cbab3738c644239cc4ff2f040b</anchor>
-      <arglist>(const ViewInterface::WeakPtr &amp;vi)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>open</name>
-      <anchorfile>classCompressedTile.html</anchorfile>
-      <anchor>a95a09596787a0fb4265b6097005a78fa</anchor>
-      <arglist>(ViewInterface::WeakPtr vi) override</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>close</name>
-      <anchorfile>classCompressedTile.html</anchorfile>
-      <anchor>a070926227d5e3c868f4710ec2222935f</anchor>
-      <arglist>(ViewInterface::WeakPtr vi) override</arglist>
+      <anchor>adb1462b94e65500afbec0c8861954341</anchor>
+      <arglist>() override</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
@@ -12967,15 +13073,15 @@
       <type>void</type>
       <name>observerAdded</name>
       <anchorfile>classCompressedTile.html</anchorfile>
-      <anchor>a6dfed630388013d934bda84fe39d20a9</anchor>
-      <arglist>(TileInitialisationObserver::Ptr const &amp;observer, Scroom::Bookkeeping::Token const &amp;token) override</arglist>
+      <anchor>a097a41844c75d21396fb64db3c039c8a</anchor>
+      <arglist>(TileLoadingObserver::Ptr const &amp;observer, Scroom::Bookkeeping::Token const &amp;token) override</arglist>
     </member>
     <member kind="function" protection="protected">
       <type>void</type>
       <name>observerAdded</name>
       <anchorfile>classCompressedTile.html</anchorfile>
-      <anchor>a097a41844c75d21396fb64db3c039c8a</anchor>
-      <arglist>(TileLoadingObserver::Ptr const &amp;observer, Scroom::Bookkeeping::Token const &amp;token) override</arglist>
+      <anchor>ad5c946a861f0fb3c93726e3ef3897227</anchor>
+      <arglist>(const TileInitialisationObserver::Ptr &amp;observer, const Scroom::Bookkeeping::Token &amp;token) override</arglist>
     </member>
     <member kind="function" protection="private">
       <type></type>
@@ -13061,13 +13167,6 @@
       <anchor>a98aab628263791d6330cd6ccfa012d58</anchor>
       <arglist></arglist>
     </member>
-    <member kind="variable" protection="private">
-      <type>Scroom::Utils::WeakKeyMap&lt; ViewInterface::WeakPtr, std::weak_ptr&lt; TileViewState &gt; &gt;</type>
-      <name>viewStates</name>
-      <anchorfile>classCompressedTile.html</anchorfile>
-      <anchor>a6e31e3871482ff2d9bffb5be8b44a2de</anchor>
-      <arglist></arglist>
-    </member>
   </compound>
   <compound kind="class">
     <name>ConstTile</name>
@@ -13090,15 +13189,15 @@
       <type></type>
       <name>ConstTile</name>
       <anchorfile>classConstTile.html</anchorfile>
-      <anchor>a0a30e8ef4bf85ed4f56398c436c61bdd</anchor>
-      <arglist>(int width_, int height_, int bpp_, Scroom::MemoryBlobs::RawPageData::ConstPtr data_)</arglist>
+      <anchor>a7d17627c41b862a5659f9cbcd4f19715</anchor>
+      <arglist>(int width_, int height_, int bpp_, std::shared_ptr&lt; const uint8_t &gt; data_)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static ConstTile::Ptr</type>
       <name>create</name>
       <anchorfile>classConstTile.html</anchorfile>
-      <anchor>a0bee773e41ba11b043df595c9156d599</anchor>
-      <arglist>(int width, int height, int bpp, Scroom::MemoryBlobs::RawPageData::ConstPtr data)</arglist>
+      <anchor>a4b60632a61166b6e3e7f04220d8c307a</anchor>
+      <arglist>(int width, int height, int bpp, std::shared_ptr&lt; const uint8_t &gt; data)</arglist>
     </member>
     <member kind="variable">
       <type>int</type>
@@ -13122,10 +13221,10 @@
       <arglist></arglist>
     </member>
     <member kind="variable">
-      <type>Scroom::MemoryBlobs::RawPageData::ConstPtr</type>
+      <type>std::shared_ptr&lt; const uint8_t &gt;</type>
       <name>data</name>
       <anchorfile>classConstTile.html</anchorfile>
-      <anchor>a05039cb054fd3cf7d95bd1b0ac326203</anchor>
+      <anchor>adf20516cc61fbdc0d931ac848040069e</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -13449,76 +13548,62 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>DataFetcher</name>
-    <filename>classDataFetcher.html</filename>
+    <name>anonymous_namespace{populate-layer.cc}::DataFetcher</name>
+    <filename>classanonymous__namespace_02populate-layer_8cc_03_1_1DataFetcher.html</filename>
     <member kind="function">
       <type></type>
       <name>DataFetcher</name>
-      <anchorfile>classDataFetcher.html</anchorfile>
-      <anchor>a3a24a2e8d28e8550f0631b2af0faa924</anchor>
-      <arglist>(Layer::Ptr layer, int height, int verTileCount, SourcePresentation::Ptr sp, ThreadPool::WeakQueue::Ptr queue, std::function&lt; void()&gt; on_finished)</arglist>
+      <anchorfile>classanonymous__namespace_02populate-layer_8cc_03_1_1DataFetcher.html</anchorfile>
+      <anchor>ad0546cbcbfd30b3e85bf0a1130b9a3a2</anchor>
+      <arglist>(LayerInterface::Ptr layer, SourcePresentation::Ptr source, ThreadPool::WeakQueue::Ptr queue, std::function&lt; void()&gt; onFinished)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>operator()</name>
-      <anchorfile>classDataFetcher.html</anchorfile>
-      <anchor>aa47b487725b70a8a16000ed9e83ad927</anchor>
+      <anchorfile>classanonymous__namespace_02populate-layer_8cc_03_1_1DataFetcher.html</anchorfile>
+      <anchor>a9feaa3e1b5b2099fdb9594fc2bb9bc3a</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>Layer::Ptr</type>
-      <name>layer</name>
-      <anchorfile>classDataFetcher.html</anchorfile>
-      <anchor>a3a341857d909e1be2592d8effe8af5ba</anchor>
+      <type>ThreadPool::Ptr</type>
+      <name>m_cpuBound</name>
+      <anchorfile>classanonymous__namespace_02populate-layer_8cc_03_1_1DataFetcher.html</anchorfile>
+      <anchor>a129a8f6b550137d696006bc62d756751</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>int</type>
-      <name>height</name>
-      <anchorfile>classDataFetcher.html</anchorfile>
-      <anchor>ab03ecb5f32aa7727880ea7faf4c82c91</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>int</type>
-      <name>verTileCount</name>
-      <anchorfile>classDataFetcher.html</anchorfile>
-      <anchor>aaee3d602d5bfec28badc8c178041105c</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>int</type>
-      <name>currentRow</name>
-      <anchorfile>classDataFetcher.html</anchorfile>
-      <anchor>adf6b12f478232da42096269a6f3f2233</anchor>
+      <type>LayerInterface::Ptr</type>
+      <name>m_layer</name>
+      <anchorfile>classanonymous__namespace_02populate-layer_8cc_03_1_1DataFetcher.html</anchorfile>
+      <anchor>a27817b80a7e7fd9fccc16370798b96d2</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
       <type>SourcePresentation::Ptr</type>
-      <name>sp</name>
-      <anchorfile>classDataFetcher.html</anchorfile>
-      <anchor>af7045ef5e1262cb5b94148a295213db7</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>ThreadPool::Ptr</type>
-      <name>threadPool</name>
-      <anchorfile>classDataFetcher.html</anchorfile>
-      <anchor>a45e10065fbb9e73028f6fe866e7507aa</anchor>
+      <name>m_source</name>
+      <anchorfile>classanonymous__namespace_02populate-layer_8cc_03_1_1DataFetcher.html</anchorfile>
+      <anchor>a8464baf338a2ce02312e67b6cf036ffc</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
       <type>ThreadPool::WeakQueue::Ptr</type>
-      <name>queue</name>
-      <anchorfile>classDataFetcher.html</anchorfile>
-      <anchor>a6c8a97c9b2893903ea4472e750d5be30</anchor>
+      <name>m_queue</name>
+      <anchorfile>classanonymous__namespace_02populate-layer_8cc_03_1_1DataFetcher.html</anchorfile>
+      <anchor>a2e20f54ca4e258306b3154abb9d4a51e</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
       <type>std::function&lt; void()&gt;</type>
-      <name>on_finished</name>
-      <anchorfile>classDataFetcher.html</anchorfile>
-      <anchor>aa0c49fa455a4802c67cdd4078b76ff35</anchor>
+      <name>m_onFinished</name>
+      <anchorfile>classanonymous__namespace_02populate-layer_8cc_03_1_1DataFetcher.html</anchorfile>
+      <anchor>a318e35d92e9c48a8e1d88276eca1509e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>int</type>
+      <name>m_row</name>
+      <anchorfile>classanonymous__namespace_02populate-layer_8cc_03_1_1DataFetcher.html</anchorfile>
+      <anchor>afec39e5281c094b1ce0e5274057c0c65</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -14787,6 +14872,177 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>Scroom::TiledBitmap::Test::InMemoryLayer</name>
+    <filename>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryLayer.html</filename>
+    <base>LayerBase</base>
+    <member kind="function">
+      <type></type>
+      <name>InMemoryLayer</name>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryLayer.html</anchorfile>
+      <anchor>afbf9a5baa871e5386b65cb1865adddab</anchor>
+      <arglist>(Utils::Point&lt; int &gt; imageSize, int bpp)</arglist>
+    </member>
+    <member kind="function">
+      <type>Utils::Rectangle&lt; int &gt;</type>
+      <name>getRect</name>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryLayer.html</anchorfile>
+      <anchor>a9ba0eaf478acc11642eb735e32a9aa74</anchor>
+      <arglist>() const override</arglist>
+    </member>
+    <member kind="function">
+      <type>Utils::Rectangle&lt; int &gt;</type>
+      <name>getTileRange</name>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryLayer.html</anchorfile>
+      <anchor>a1cc767a57228cd94b0c7efc9799e66ed</anchor>
+      <arglist>() const override</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>getBpp</name>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryLayer.html</anchorfile>
+      <anchor>a1a225602b82cbc9bd3f5c340298f75e3</anchor>
+      <arglist>() const override</arglist>
+    </member>
+    <member kind="function">
+      <type>TileStorage::Ptr</type>
+      <name>getTile</name>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryLayer.html</anchorfile>
+      <anchor>ae70d435db7e4766f80b7d7324f991c1d</anchor>
+      <arglist>(Utils::Point&lt; int &gt; index) override</arglist>
+    </member>
+    <member kind="function">
+      <type>TileStorage::Ptr</type>
+      <name>getOutOfBoundTile</name>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryLayer.html</anchorfile>
+      <anchor>ac69659e449789a41c26da6f3d15c233f</anchor>
+      <arglist>() override</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static LayerFactory</type>
+      <name>factory</name>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryLayer.html</anchorfile>
+      <anchor>aed25bdabafe8887dfbc0418cce989c5d</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>Utils::Rectangle&lt; int &gt;</type>
+      <name>m_imageArea</name>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryLayer.html</anchorfile>
+      <anchor>afe26fb42eaca62f157fcb4008f211126</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>Utils::Rectangle&lt; int &gt;</type>
+      <name>m_tileRange</name>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryLayer.html</anchorfile>
+      <anchor>a2b62343136351befc6ef9de0692968a5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>int</type>
+      <name>m_bpp</name>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryLayer.html</anchorfile>
+      <anchor>afb8648a8bfb1a47bd7a64d42e6ec274a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>std::vector&lt; TileStorage::Ptr &gt;</type>
+      <name>m_tiles</name>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryLayer.html</anchorfile>
+      <anchor>a3cbe5b55115ec693c5ad8f3951303ccb</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>TileStorage::Ptr</type>
+      <name>m_outOfBounds</name>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryLayer.html</anchorfile>
+      <anchor>a2cfdee6bdb0fa921b4fa39ed4a8f88c1</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>Scroom::TiledBitmap::Test::InMemoryTile</name>
+    <filename>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryTile.html</filename>
+    <base>TileStorage</base>
+    <member kind="function">
+      <type></type>
+      <name>InMemoryTile</name>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryTile.html</anchorfile>
+      <anchor>a9c354fc1ac60595e1f015464e34e5880</anchor>
+      <arglist>(int bpp, bool outOfBounds=false)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>getBpp</name>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryTile.html</anchorfile>
+      <anchor>afc7151627718acdbab2fdc454aec7273</anchor>
+      <arglist>() const override</arglist>
+    </member>
+    <member kind="function">
+      <type>Utils::Stuff</type>
+      <name>initialize</name>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryTile.html</anchorfile>
+      <anchor>a47dc4bc3d652b11315c785687dd59b33</anchor>
+      <arglist>() override</arglist>
+    </member>
+    <member kind="function">
+      <type>Tile::Ptr</type>
+      <name>getTileSync</name>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryTile.html</anchorfile>
+      <anchor>a0e93885d4fb187733a480954bbef5f38</anchor>
+      <arglist>() override</arglist>
+    </member>
+    <member kind="function">
+      <type>ConstTile::Ptr</type>
+      <name>getConstTileSync</name>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryTile.html</anchorfile>
+      <anchor>ab9f78afa84df2f5f7f347b023ecc0b0f</anchor>
+      <arglist>() override</arglist>
+    </member>
+    <member kind="function">
+      <type>ConstTile::Ptr</type>
+      <name>getConstTileAsync</name>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryTile.html</anchorfile>
+      <anchor>a48c56198b0cf87931672f072613eb76a</anchor>
+      <arglist>() override</arglist>
+    </member>
+    <member kind="function">
+      <type>TileState</type>
+      <name>getState</name>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryTile.html</anchorfile>
+      <anchor>a7cf7d5d7992982cb4b11b05bdb0286ed</anchor>
+      <arglist>() override</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>int</type>
+      <name>m_bpp</name>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryTile.html</anchorfile>
+      <anchor>ac9063bf62740e025be39cf1a962f030f</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>bool</type>
+      <name>m_outOfBounds</name>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryTile.html</anchorfile>
+      <anchor>a6bf6ae735ef9f78effc8dc1614b65fa5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>Tile::Ptr</type>
+      <name>m_pixels</name>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryTile.html</anchorfile>
+      <anchor>a04ae70dac7a9b906950ecabc6c8696fb</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>std::mutex</type>
+      <name>m_mutex</name>
+      <anchorfile>classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryTile.html</anchorfile>
+      <anchor>a2b472f48d1d06e3ae84fe6871d29fc15</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>Intensity16Reduction</name>
     <filename>classIntensity16Reduction.html</filename>
     <member kind="variable" protection="protected">
@@ -15107,8 +15363,7 @@
   <compound kind="class">
     <name>Layer</name>
     <filename>classLayer.html</filename>
-    <base>Viewable</base>
-    <base virtualness="virtual">Scroom::Utils::Base</base>
+    <base>LayerBase</base>
     <member kind="typedef">
       <type>std::shared_ptr&lt; Layer &gt;</type>
       <name>Ptr</name>
@@ -15117,74 +15372,39 @@
       <arglist></arglist>
     </member>
     <member kind="function">
-      <type>int</type>
-      <name>getHorTileCount</name>
-      <anchorfile>classLayer.html</anchorfile>
-      <anchor>aa95b82451c1bf40bfc09200d4c1336ea</anchor>
-      <arglist>() const</arglist>
-    </member>
-    <member kind="function">
-      <type>int</type>
-      <name>getVerTileCount</name>
-      <anchorfile>classLayer.html</anchorfile>
-      <anchor>ad3ca3869b234ba456c3add5bd67e4860</anchor>
-      <arglist>() const</arglist>
-    </member>
-    <member kind="function">
-      <type>CompressedTile::Ptr</type>
+      <type>TileStorage::Ptr</type>
       <name>getTile</name>
       <anchorfile>classLayer.html</anchorfile>
-      <anchor>a33ecd700e957f05b4334d4a4f5d62b21</anchor>
-      <arglist>(Scroom::Utils::Point&lt; int &gt; tileIndex)</arglist>
+      <anchor>a74b1d8c28db614a26430577c8ef7bed9</anchor>
+      <arglist>(Scroom::Utils::Point&lt; int &gt; tileIndex) override</arglist>
     </member>
     <member kind="function">
-      <type>CompressedTileLine &amp;</type>
-      <name>getTileLine</name>
+      <type>TileStorage::Ptr</type>
+      <name>getOutOfBoundTile</name>
       <anchorfile>classLayer.html</anchorfile>
-      <anchor>af90b35813138ca6b6881f78ab67cea33</anchor>
-      <arglist>(int j)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>fetchData</name>
-      <anchorfile>classLayer.html</anchorfile>
-      <anchor>a3d2253a27e5b42cde01f15c85959580c</anchor>
-      <arglist>(SourcePresentation::Ptr sp, const ThreadPool::WeakQueue::Ptr &amp;queue, std::function&lt; void()&gt; on_finished)</arglist>
+      <anchor>a23c0c6dc49c29a4ed3e2f0ead656d70f</anchor>
+      <arglist>() override</arglist>
     </member>
     <member kind="function">
       <type>int</type>
-      <name>getWidth</name>
+      <name>getBpp</name>
       <anchorfile>classLayer.html</anchorfile>
-      <anchor>ac96bf85488cb3fb1f1e4f078f1d7c767</anchor>
-      <arglist>() const</arglist>
+      <anchor>aa90b8289c121bbb30bd6cb978c52c8a1</anchor>
+      <arglist>() const override</arglist>
     </member>
     <member kind="function">
-      <type>int</type>
-      <name>getHeight</name>
+      <type>Scroom::Utils::Rectangle&lt; int &gt;</type>
+      <name>getTileRange</name>
       <anchorfile>classLayer.html</anchorfile>
-      <anchor>a93762cbd22847abe210805c546329e51</anchor>
-      <arglist>() const</arglist>
-    </member>
-    <member kind="function">
-      <type>int</type>
-      <name>getDepth</name>
-      <anchorfile>classLayer.html</anchorfile>
-      <anchor>a7496892cad703e085e3e0145026f1c42</anchor>
-      <arglist>() const</arglist>
+      <anchor>a321e8b3caafbaeaa31011eba12165d25</anchor>
+      <arglist>() const override</arglist>
     </member>
     <member kind="function">
       <type>Scroom::Utils::Rectangle&lt; int &gt;</type>
       <name>getRect</name>
       <anchorfile>classLayer.html</anchorfile>
-      <anchor>a64534623548c1a074862f23cdaf62837</anchor>
-      <arglist>() const</arglist>
-    </member>
-    <member kind="function">
-      <type>Scroom::Bookkeeping::Token</type>
-      <name>registerObserver</name>
-      <anchorfile>classLayer.html</anchorfile>
-      <anchor>a48dc1b9f287e3552fc501292ee16ac36</anchor>
-      <arglist>(const TileInitialisationObserver::Ptr &amp;observer)</arglist>
+      <anchor>ad2cee949b0f5830be5f983b911f2009f</anchor>
+      <arglist>() const override</arglist>
     </member>
     <member kind="function">
       <type>Scroom::MemoryBlobs::PageProvider::Ptr</type>
@@ -15192,20 +15412,6 @@
       <anchorfile>classLayer.html</anchorfile>
       <anchor>a193fccd8bdd01f7d86b364cf6cecd042</anchor>
       <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>open</name>
-      <anchorfile>classLayer.html</anchorfile>
-      <anchor>afd25e081ea14b44723ccbf3bb1510b35</anchor>
-      <arglist>(ViewInterface::WeakPtr vi) override</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>close</name>
-      <anchorfile>classLayer.html</anchorfile>
-      <anchor>a0e1a9f997012b05c921c35c66677c347</anchor>
-      <arglist>(ViewInterface::WeakPtr vi) override</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
@@ -15230,13 +15436,6 @@
     </member>
     <member kind="variable" protection="private">
       <type>int</type>
-      <name>depth</name>
-      <anchorfile>classLayer.html</anchorfile>
-      <anchor>a1f53ce854eed0215bbe94d3b23e6bc25</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>int</type>
       <name>width</name>
       <anchorfile>classLayer.html</anchorfile>
       <anchor>a724d3020ddbe5f9280caa325541e70a3</anchor>
@@ -15247,6 +15446,13 @@
       <name>height</name>
       <anchorfile>classLayer.html</anchorfile>
       <anchor>a6a0bc24033339368a0ca9747485f0053</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>int</type>
+      <name>bitsPerPixel</name>
+      <anchorfile>classLayer.html</anchorfile>
+      <anchor>a9e13f589b559f0c9e2bd242c4372a4d2</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
@@ -15278,13 +15484,6 @@
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>CompressedTileLine</type>
-      <name>lineOutOfBounds</name>
-      <anchorfile>classLayer.html</anchorfile>
-      <anchor>a293b3e4be5e6edc8c3b83718f8c7ee33</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
       <type>Scroom::MemoryBlobs::PageProvider::Ptr</type>
       <name>pageProvider</name>
       <anchorfile>classLayer.html</anchorfile>
@@ -15297,6 +15496,32 @@
       <anchorfile>classLayer.html</anchorfile>
       <anchor>aacd6b91504ea059f1a4b9147abd38c9b</anchor>
       <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>LayerBase</name>
+    <filename>classLayerBase.html</filename>
+    <base>LayerInterface</base>
+    <member kind="function">
+      <type>Scroom::Bookkeeping::Token</type>
+      <name>registerObserver</name>
+      <anchorfile>classLayerBase.html</anchorfile>
+      <anchor>a084705407b679f0d29479f6211de09f7</anchor>
+      <arglist>(const TileInitialisationObserver::Ptr &amp;observer) override</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>open</name>
+      <anchorfile>classLayerBase.html</anchorfile>
+      <anchor>ad27399496de77db8db273704fa406cc5</anchor>
+      <arglist>(ViewInterface::WeakPtr view) override</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>close</name>
+      <anchorfile>classLayerBase.html</anchorfile>
+      <anchor>a24633fb4e8805ae2f711669c796fcc08</anchor>
+      <arglist>(ViewInterface::WeakPtr view) override</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -15350,42 +15575,42 @@
       <type>void</type>
       <name>addSourceTile</name>
       <anchorfile>classLayerCoordinator.html</anchorfile>
-      <anchor>a334fdd5f4765db4984557975af05c42f</anchor>
-      <arglist>(Scroom::Utils::Point&lt; int &gt; sourceOffset, const CompressedTile::Ptr &amp;tile)</arglist>
+      <anchor>a49500e112123a2d62ae0560705cbf6f9</anchor>
+      <arglist>(Scroom::Utils::Point&lt; int &gt; sourceOffset, const TileStorage::Ptr &amp;tile)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>tileFinished</name>
       <anchorfile>classLayerCoordinator.html</anchorfile>
-      <anchor>aaed9f19d2d0be309e22c373551c27f9b</anchor>
-      <arglist>(const CompressedTile::Ptr &amp;tile) override</arglist>
+      <anchor>a0d2070f92574c266f9b7c75d4be1780d</anchor>
+      <arglist>(const TileStorage::Ptr &amp;tile) override</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
       <name>create</name>
       <anchorfile>classLayerCoordinator.html</anchorfile>
-      <anchor>acfc6e73905a4860e84b73936b19eb1b0</anchor>
-      <arglist>(CompressedTile::Ptr targetTile, Scroom::TiledBitmap::LayerReduction reduceLayer)</arglist>
+      <anchor>adf0740fdb5340cab8910d1a1891477ee</anchor>
+      <arglist>(TileStorage::Ptr targetTile, Scroom::TiledBitmap::LayerReduction reduceLayer)</arglist>
     </member>
     <member kind="function" protection="private">
       <type></type>
       <name>LayerCoordinator</name>
       <anchorfile>classLayerCoordinator.html</anchorfile>
-      <anchor>a4d66ec1628008bba81a5eefcf806ed42</anchor>
-      <arglist>(CompressedTile::Ptr targetTile, Scroom::TiledBitmap::LayerReduction reduceLayer)</arglist>
+      <anchor>a9a49ed5c3ad25df077ed50f5f896f54d</anchor>
+      <arglist>(TileStorage::Ptr targetTile, Scroom::TiledBitmap::LayerReduction reduceLayer)</arglist>
     </member>
     <member kind="function" protection="private">
       <type>void</type>
       <name>reduceSourceTile</name>
       <anchorfile>classLayerCoordinator.html</anchorfile>
-      <anchor>abf1c504acb49c1f0bf7084b8490634ec</anchor>
-      <arglist>(const CompressedTile::Ptr &amp;tile, ConstTile::Ptr const &amp;tileData)</arglist>
+      <anchor>a1b9b527e29af70bb43a8abf480056598</anchor>
+      <arglist>(const TileStorage::Ptr &amp;tile, ConstTile::Ptr const &amp;tileData)</arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>CompressedTile::Ptr</type>
+      <type>TileStorage::Ptr</type>
       <name>targetTile</name>
       <anchorfile>classLayerCoordinator.html</anchorfile>
-      <anchor>a62cf504f112d2bcefde5f28cc8fbea0a</anchor>
+      <anchor>aba2316f44fb7ce13fe2b4890c492a8cc</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
@@ -15396,10 +15621,10 @@
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>std::map&lt; CompressedTile::Ptr, Scroom::Utils::Point&lt; int &gt; &gt;</type>
+      <type>std::map&lt; TileStorage::Ptr, Scroom::Utils::Point&lt; int &gt; &gt;</type>
       <name>sourceTiles</name>
       <anchorfile>classLayerCoordinator.html</anchorfile>
-      <anchor>ac3390cddec8f46fe92c4166567f5c3a3</anchor>
+      <anchor>a2c696f896b02b3fd0bc7b44edd2741f7</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
@@ -15468,6 +15693,75 @@
       <anchorfile>structLayerDescription.html</anchorfile>
       <anchor>aac70912bcae0678822cc7b06c3eb9f5e</anchor>
       <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>LayerInterface</name>
+    <filename>classLayerInterface.html</filename>
+    <base>Viewable</base>
+    <base virtualness="virtual">Scroom::Utils::Base</base>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; LayerInterface &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>classLayerInterface.html</anchorfile>
+      <anchor>a2a2ce1ea3ce6c128c9839e64d6bb3a51</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual Scroom::Utils::Rectangle&lt; int &gt;</type>
+      <name>getRect</name>
+      <anchorfile>classLayerInterface.html</anchorfile>
+      <anchor>a21210402e44787c84d16609c38f6480b</anchor>
+      <arglist>() const =0</arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual Scroom::Utils::Rectangle&lt; int &gt;</type>
+      <name>getTileRange</name>
+      <anchorfile>classLayerInterface.html</anchorfile>
+      <anchor>a7917ade92a492e001b987ca3666670bd</anchor>
+      <arglist>() const =0</arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual int</type>
+      <name>getBpp</name>
+      <anchorfile>classLayerInterface.html</anchorfile>
+      <anchor>a45715f4bbc99750bd3c67d7ae8314777</anchor>
+      <arglist>() const =0</arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual TileStorage::Ptr</type>
+      <name>getTile</name>
+      <anchorfile>classLayerInterface.html</anchorfile>
+      <anchor>a3a4077ba1efd0e8afab783efe906f554</anchor>
+      <arglist>(Scroom::Utils::Point&lt; int &gt; tileIndex)=0</arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual TileStorage::Ptr</type>
+      <name>getOutOfBoundTile</name>
+      <anchorfile>classLayerInterface.html</anchorfile>
+      <anchor>a69bfa1a1fae074fdc7db03c769135e9a</anchor>
+      <arglist>()=0</arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual Scroom::Bookkeeping::Token</type>
+      <name>registerObserver</name>
+      <anchorfile>classLayerInterface.html</anchorfile>
+      <anchor>a4c124376233e6ea819fa71b554a0d2d2</anchor>
+      <arglist>(const TileInitialisationObserver::Ptr &amp;observer)=0</arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>void</type>
+      <name>open</name>
+      <anchorfile>classLayerInterface.html</anchorfile>
+      <anchor>aeb5511041486704347305f3cd6ac6ac0</anchor>
+      <arglist>(ViewInterface::WeakPtr view) override=0</arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>void</type>
+      <name>close</name>
+      <anchorfile>classLayerInterface.html</anchorfile>
+      <anchor>a0af9bd174b4467c80cbd4f6f94b1dbc8</anchor>
+      <arglist>(ViewInterface::WeakPtr view) override=0</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -15652,8 +15946,8 @@
       <type>void</type>
       <name>startLoading</name>
       <anchorfile>classScroom_1_1TiledBitmap_1_1LayerStack.html</anchorfile>
-      <anchor>aaab876e55bb6c49c2d9fbff09b3bfe42</anchor>
-      <arglist>(const ReloadFunction &amp;startLoading)</arglist>
+      <anchor>aa52122f793a87cb5da37363c692f4d5d</anchor>
+      <arglist>(const ReloadFunction &amp;startLoadingCallback)</arglist>
     </member>
     <member kind="function">
       <type>Utils::Stuff</type>
@@ -15666,36 +15960,36 @@
       <type>void</type>
       <name>tileCreated</name>
       <anchorfile>classScroom_1_1TiledBitmap_1_1LayerStack.html</anchorfile>
-      <anchor>aa5790714b519b4a7163d36ae640339f6</anchor>
-      <arglist>(const CompressedTile::Ptr &amp;tile) override</arglist>
+      <anchor>a28ddcd2ffc9c897a1bb8dd83007be6b3</anchor>
+      <arglist>(const TileStorage::Ptr &amp;tile) override</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>tileFinished</name>
       <anchorfile>classScroom_1_1TiledBitmap_1_1LayerStack.html</anchorfile>
-      <anchor>acae3e9dab125d5ed9fb81bb0c1da1886</anchor>
-      <arglist>(const CompressedTile::Ptr &amp;tile) override</arglist>
+      <anchor>a9556ec811c6943ed3168b042b23de05f</anchor>
+      <arglist>(const TileStorage::Ptr &amp;tile) override</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
       <name>create</name>
       <anchorfile>classScroom_1_1TiledBitmap_1_1LayerStack.html</anchorfile>
-      <anchor>aae33189b8149d938c36081ec7a65c843</anchor>
-      <arglist>(Utils::Point&lt; int &gt; size, const LayerSpec &amp;descriptions)</arglist>
+      <anchor>aaf5997f9d01f98f0d4cba11f3385744a</anchor>
+      <arglist>(Utils::Point&lt; int &gt; size, const LayerSpec &amp;descriptions, const LayerFactory &amp;createLayer)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
       <name>create</name>
       <anchorfile>classScroom_1_1TiledBitmap_1_1LayerStack.html</anchorfile>
-      <anchor>a181bdf0d69d500424042b9210af9b266</anchor>
-      <arglist>(int width, int height, const LayerSpec &amp;descriptions)</arglist>
+      <anchor>a3160f59655fc9af1fa5dcda6e62de7af</anchor>
+      <arglist>(int width, int height, const LayerSpec &amp;descriptions, const LayerFactory &amp;createLayer)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Ptr</type>
       <name>create</name>
       <anchorfile>classScroom_1_1TiledBitmap_1_1LayerStack.html</anchorfile>
-      <anchor>ac5886a8b70b0a453a1c2741318343469</anchor>
-      <arglist>(const Layer::Ptr &amp;bottom, const LayerSpec &amp;descriptions)</arglist>
+      <anchor>a408e4b1e5cb666086699bd5a4cb1f621</anchor>
+      <arglist>(const LayerInterface::Ptr &amp;bottom, const LayerSpec &amp;descriptions, const LayerFactory &amp;createLayer)</arglist>
     </member>
     <member kind="function" protection="private">
       <type></type>
@@ -15708,15 +16002,15 @@
       <type>void</type>
       <name>initialize</name>
       <anchorfile>classScroom_1_1TiledBitmap_1_1LayerStack.html</anchorfile>
-      <anchor>ad527e9747f143348ab9f56879250a2f2</anchor>
-      <arglist>(const Layer::Ptr &amp;bottom, const LayerSpec &amp;descriptions)</arglist>
+      <anchor>a8555e3e1c8edffcae1bffac47b38db34</anchor>
+      <arglist>(const LayerInterface::Ptr &amp;bottom, const LayerSpec &amp;descriptions, const LayerFactory &amp;createLayer)</arglist>
     </member>
     <member kind="function" protection="private">
       <type>void</type>
       <name>connect</name>
       <anchorfile>classScroom_1_1TiledBitmap_1_1LayerStack.html</anchorfile>
-      <anchor>a7cd9c9945e9f212e2f71484485288164</anchor>
-      <arglist>(const Layer::Ptr &amp;layer, const Layer::Ptr &amp;previousLayer, const LayerReduction &amp;reducePreviousLayer)</arglist>
+      <anchor>adcd07b24c96c62f6a12103dcb45f9573</anchor>
+      <arglist>(const LayerInterface::Ptr &amp;layer, const LayerInterface::Ptr &amp;previousLayer, const LayerReduction &amp;reducePreviousLayer)</arglist>
     </member>
     <member kind="variable" protection="private">
       <type>std::vector&lt; Level &gt;</type>
@@ -15779,10 +16073,10 @@
     <name>Scroom::TiledBitmap::LayerStack::Level</name>
     <filename>structScroom_1_1TiledBitmap_1_1LayerStack_1_1Level.html</filename>
     <member kind="variable">
-      <type>Layer::Ptr</type>
+      <type>LayerInterface::Ptr</type>
       <name>layer</name>
       <anchorfile>structScroom_1_1TiledBitmap_1_1LayerStack_1_1Level.html</anchorfile>
-      <anchor>ace78a13b85d2fe4f7e929212893295d7</anchor>
+      <anchor>a14ff929fc81d357ab9ba5232238d7faa</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -17157,10 +17451,10 @@
       <arglist>()=0</arglist>
     </member>
     <member kind="function" virtualness="pure">
-      <type>virtual std::tuple&lt; BitmapMetaData, Layer::Ptr, ReloadFunction &gt;</type>
+      <type>virtual std::tuple&lt; BitmapMetaData, LayerInterface::Ptr, ReloadFunction &gt;</type>
       <name>open</name>
       <anchorfile>classScroom_1_1TiledBitmap_1_1OpenTiledBitmapInterface.html</anchorfile>
-      <anchor>acd4922a4daed0eb2b4e71c97e3e7d0f6</anchor>
+      <anchor>abbd2f83f7ceefc7ef4eb8c12bae8fe69</anchor>
       <arglist>(const std::string &amp;fileName)=0</arglist>
     </member>
   </compound>
@@ -19121,10 +19415,10 @@
       <arglist>() override</arglist>
     </member>
     <member kind="function">
-      <type>std::tuple&lt; Scroom::TiledBitmap::BitmapMetaData, Layer::Ptr, Scroom::TiledBitmap::ReloadFunction &gt;</type>
+      <type>std::tuple&lt; Scroom::TiledBitmap::BitmapMetaData, LayerInterface::Ptr, Scroom::TiledBitmap::ReloadFunction &gt;</type>
       <name>open</name>
       <anchorfile>classPnm.html</anchorfile>
-      <anchor>a512fa4ba81d11455c33b34b28588e629</anchor>
+      <anchor>aa4c9c4335e2c1bfe2ed1525a463b9340</anchor>
       <arglist>(const std::string &amp;fileName) override</arglist>
     </member>
     <member kind="function" static="yes">
@@ -19166,13 +19460,6 @@
       <anchorfile>classPoint.html</anchorfile>
       <anchor>ab7ec1167a14f0508e5565116978285d3</anchor>
       <arglist>()=default</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>Point</name>
-      <anchorfile>classPoint.html</anchorfile>
-      <anchor>af13b433f220ac3a094464460f31a54ec</anchor>
-      <arglist>(value_type xy)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -19316,13 +19603,6 @@
       <type></type>
       <name>Point</name>
       <anchorfile>classScroom_1_1TiledBitmap_1_1Geometry_1_1Point.html</anchorfile>
-      <anchor>af13b433f220ac3a094464460f31a54ec</anchor>
-      <arglist>(value_type xy)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>Point</name>
-      <anchorfile>classScroom_1_1TiledBitmap_1_1Geometry_1_1Point.html</anchorfile>
       <anchor>a3895bd735a06d13718a39b3d96fcc0d8</anchor>
       <arglist>(value_type x_, value_type y_)</arglist>
     </member>
@@ -19456,13 +19736,6 @@
       <anchorfile>classScroom_1_1Utils_1_1Point.html</anchorfile>
       <anchor>ab7ec1167a14f0508e5565116978285d3</anchor>
       <arglist>()=default</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>Point</name>
-      <anchorfile>classScroom_1_1Utils_1_1Point.html</anchorfile>
-      <anchor>af13b433f220ac3a094464460f31a54ec</anchor>
-      <arglist>(value_type xy)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -26165,10 +26438,10 @@
       <arglist>() override</arglist>
     </member>
     <member kind="function">
-      <type>std::tuple&lt; Scroom::TiledBitmap::BitmapMetaData, Layer::Ptr, Scroom::TiledBitmap::ReloadFunction &gt;</type>
+      <type>std::tuple&lt; Scroom::TiledBitmap::BitmapMetaData, LayerInterface::Ptr, Scroom::TiledBitmap::ReloadFunction &gt;</type>
       <name>open</name>
       <anchorfile>classTiff.html</anchorfile>
-      <anchor>a858a1b813e95709369796e88876049dc</anchor>
+      <anchor>a0b662f5a43eb67cbd7ffcc1f91d5c932</anchor>
       <arglist>(const std::string &amp;fileName) override</arglist>
     </member>
     <member kind="function" static="yes">
@@ -26214,15 +26487,15 @@
       <type></type>
       <name>Tile</name>
       <anchorfile>classTile.html</anchorfile>
-      <anchor>abc586fc35e0dbdd7be992cb6d694e263</anchor>
-      <arglist>(int width_, int height_, int bpp_, Scroom::MemoryBlobs::RawPageData::Ptr data_)</arglist>
+      <anchor>aefa0c4d8868f674f45db2b7eee160697</anchor>
+      <arglist>(int width_, int height_, int bpp_, std::shared_ptr&lt; uint8_t &gt; data_)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Tile::Ptr</type>
       <name>create</name>
       <anchorfile>classTile.html</anchorfile>
-      <anchor>ab17b08d3b447131b5b732ec338e9a7cb</anchor>
-      <arglist>(int width, int height, int bpp, Scroom::MemoryBlobs::RawPageData::Ptr data)</arglist>
+      <anchor>a0d1a8cdb009480467c918b6d38eb6705</anchor>
+      <arglist>(int width, int height, int bpp, std::shared_ptr&lt; uint8_t &gt; data)</arglist>
     </member>
     <member kind="variable">
       <type>int</type>
@@ -26246,10 +26519,10 @@
       <arglist></arglist>
     </member>
     <member kind="variable">
-      <type>Scroom::MemoryBlobs::RawPageData::Ptr</type>
+      <type>std::shared_ptr&lt; uint8_t &gt;</type>
       <name>data</name>
       <anchorfile>classTile.html</anchorfile>
-      <anchor>a061f4d9bca0cb0f1986edf58e57ed048</anchor>
+      <anchor>a6ade23f16504847740fe8882baae50ab</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -26287,10 +26560,10 @@
       <arglist>(SourcePresentation::Ptr sp) override</arglist>
     </member>
     <member kind="function">
-      <type>Layer::Ptr</type>
+      <type>LayerInterface::Ptr</type>
       <name>getBottomLayer</name>
       <anchorfile>classTiledBitmap.html</anchorfile>
-      <anchor>a75f9b982627fe273f321a0643c42d300</anchor>
+      <anchor>a49415b91b898167197681c4b42a6652a</anchor>
       <arglist>() override</arglist>
     </member>
     <member kind="function">
@@ -26346,8 +26619,8 @@
       <type>static Ptr</type>
       <name>create</name>
       <anchorfile>classTiledBitmap.html</anchorfile>
-      <anchor>a2c114e65ab730b8c4afa5d7064e8070e</anchor>
-      <arglist>(const Layer::Ptr &amp;bottom, const LayerSpec &amp;ls)</arglist>
+      <anchor>a49b4dee7c59b2cb5696868229cf9e683</anchor>
+      <arglist>(Scroom::TiledBitmap::LayerStack::Ptr stack, const LayerSpec &amp;descriptions)</arglist>
     </member>
     <member kind="function" protection="private">
       <type></type>
@@ -26360,8 +26633,8 @@
       <type>static void</type>
       <name>drawTile</name>
       <anchorfile>classTiledBitmap.html</anchorfile>
-      <anchor>a6254a409a4f8869cb3429c55a342cdbe</anchor>
-      <arglist>(cairo_t *cr, const CompressedTile::Ptr &amp;tile, const Scroom::Utils::Rectangle&lt; double &gt; &amp;viewArea)</arglist>
+      <anchor>a390424413f5413af34f195261134b010</anchor>
+      <arglist>(cairo_t *cr, std::size_t layerIndex, Scroom::Utils::Point&lt; int &gt; tileIndex, int bpp, const Scroom::Utils::Rectangle&lt; double &gt; &amp;viewArea)</arglist>
     </member>
     <member kind="variable" protection="private">
       <type>Scroom::TiledBitmap::LayerStack::Ptr</type>
@@ -26418,10 +26691,10 @@
       <arglist>(SourcePresentation::Ptr sp)=0</arglist>
     </member>
     <member kind="function" virtualness="pure">
-      <type>virtual std::shared_ptr&lt; Layer &gt;</type>
+      <type>virtual LayerInterface::Ptr</type>
       <name>getBottomLayer</name>
       <anchorfile>classTiledBitmapInterface.html</anchorfile>
-      <anchor>a03ba13bbaf20c3c2985d4298e6c6993e</anchor>
+      <anchor>a7321070d7f92d2f0156bb357d6ad8842</anchor>
       <arglist>()=0</arglist>
     </member>
     <member kind="function" virtualness="pure">
@@ -26702,8 +26975,8 @@
       <type>void</type>
       <name>setNeededTiles</name>
       <anchorfile>classTiledBitmapViewData.html</anchorfile>
-      <anchor>ae2d04ace8956735288874497654ca90d</anchor>
-      <arglist>(Layer::Ptr const &amp;l, Scroom::Utils::Rectangle&lt; int &gt; tileRange, int zoom, LayerRenderingOperations::Ptr layerOperations)</arglist>
+      <anchor>ade4a0fd9a5b8275e3c5b634fce82e5b7</anchor>
+      <arglist>(LayerInterface::Ptr const &amp;l, Scroom::Utils::Rectangle&lt; int &gt; tileRange, int zoom, LayerRenderingOperations::Ptr layerOperations)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
@@ -26797,10 +27070,10 @@
       <arglist>(const ViewInterface::WeakPtr &amp;viewInterface)</arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>Layer::Ptr</type>
+      <type>LayerInterface::Ptr</type>
       <name>layer</name>
       <anchorfile>classTiledBitmapViewData.html</anchorfile>
-      <anchor>a8763e9d5a41ec0562e5ba36bc67d166e</anchor>
+      <anchor>a188aaaa4962352845f0ade6e2466dcf4</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
@@ -26904,15 +27177,15 @@
       <type>virtual void</type>
       <name>tileCreated</name>
       <anchorfile>classTileInitialisationObserver.html</anchorfile>
-      <anchor>af1272eb9052fad56eed3fcdaa0b85829</anchor>
-      <arglist>(const std::shared_ptr&lt; CompressedTile &gt; &amp;tile)</arglist>
+      <anchor>a7cd532e288de16bd9479ff9e952ee67a</anchor>
+      <arglist>(const std::shared_ptr&lt; TileStorage &gt; &amp;tile)</arglist>
     </member>
     <member kind="function" virtualness="virtual">
       <type>virtual void</type>
       <name>tileFinished</name>
       <anchorfile>classTileInitialisationObserver.html</anchorfile>
-      <anchor>a1469a567cc8b3a84f895dc28a06d471d</anchor>
-      <arglist>(const std::shared_ptr&lt; CompressedTile &gt; &amp;tile)</arglist>
+      <anchor>a2d473f6c1399a7d91e67e17ef7bc87d6</anchor>
+      <arglist>(const std::shared_ptr&lt; TileStorage &gt; &amp;tile)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -26939,6 +27212,139 @@
       <anchorfile>classTileLoadingObserver.html</anchorfile>
       <anchor>afdd49a1d330076f47e13e494c39dc713</anchor>
       <arglist>(ConstTile::Ptr tile)=0</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>TileStorage</name>
+    <filename>classTileStorage.html</filename>
+    <base>Scroom::Utils::Observable&lt; TileInitialisationObserver &gt;</base>
+    <base>Scroom::Utils::Observable&lt; TileLoadingObserver &gt;</base>
+    <base>Viewable</base>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; TileStorage &gt;</type>
+      <name>Ptr</name>
+      <anchorfile>classTileStorage.html</anchorfile>
+      <anchor>a872d7ac6869481ebf71b9d8081bef73a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual int</type>
+      <name>getBpp</name>
+      <anchorfile>classTileStorage.html</anchorfile>
+      <anchor>a40ce224252cbba6b1c1e69be6740d4de</anchor>
+      <arglist>() const =0</arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual Scroom::Utils::Stuff</type>
+      <name>initialize</name>
+      <anchorfile>classTileStorage.html</anchorfile>
+      <anchor>aa4e0b6aee998625b1993ca7edc5cee38</anchor>
+      <arglist>()=0</arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual Tile::Ptr</type>
+      <name>getTileSync</name>
+      <anchorfile>classTileStorage.html</anchorfile>
+      <anchor>a1096e5ae766cf2d9a5d457e295e05270</anchor>
+      <arglist>()=0</arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual ConstTile::Ptr</type>
+      <name>getConstTileSync</name>
+      <anchorfile>classTileStorage.html</anchorfile>
+      <anchor>aa1e1a60f13ddd3249bdde5308de23d0a</anchor>
+      <arglist>()=0</arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual ConstTile::Ptr</type>
+      <name>getConstTileAsync</name>
+      <anchorfile>classTileStorage.html</anchorfile>
+      <anchor>acd53ad2d5e6897c2ca6ff69cc1b10030</anchor>
+      <arglist>()=0</arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual TileState</type>
+      <name>getState</name>
+      <anchorfile>classTileStorage.html</anchorfile>
+      <anchor>a9790d8eb797dabeaadce51b8410f08f6</anchor>
+      <arglist>()=0</arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual void</type>
+      <name>reportFinished</name>
+      <anchorfile>classTileStorage.html</anchorfile>
+      <anchor>a2a81ffc193a4d9666b9ff4e69c80c597</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>Scroom::Bookkeeping::Token</type>
+      <name>registerStrongObserver</name>
+      <anchorfile>classTileStorage.html</anchorfile>
+      <anchor>a18c0c6174e00a852d1a97e967afbbf38</anchor>
+      <arglist>(TileInitialisationObserver::Ptr const &amp;observer)</arglist>
+    </member>
+    <member kind="function">
+      <type>Scroom::Bookkeeping::Token</type>
+      <name>registerObserver</name>
+      <anchorfile>classTileStorage.html</anchorfile>
+      <anchor>a93f75e17e39dcab76ccc6bfbe871961b</anchor>
+      <arglist>(TileInitialisationObserver::WeakPtr const &amp;observer)</arglist>
+    </member>
+    <member kind="function">
+      <type>Scroom::Bookkeeping::Token</type>
+      <name>registerStrongObserver</name>
+      <anchorfile>classTileStorage.html</anchorfile>
+      <anchor>a8b2f4ca499bfc55fe6a23c761dfccb31</anchor>
+      <arglist>(TileLoadingObserver::Ptr const &amp;observer)</arglist>
+    </member>
+    <member kind="function">
+      <type>Scroom::Bookkeeping::Token</type>
+      <name>registerObserver</name>
+      <anchorfile>classTileStorage.html</anchorfile>
+      <anchor>a6d3c3b370533ff25741c73791b85676f</anchor>
+      <arglist>(TileLoadingObserver::WeakPtr const &amp;observer)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::shared_ptr&lt; TileViewState &gt;</type>
+      <name>getViewState</name>
+      <anchorfile>classTileStorage.html</anchorfile>
+      <anchor>a7783015c6ae6f9118fd83636cb37a823</anchor>
+      <arglist>(const ViewInterface::WeakPtr &amp;view)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>open</name>
+      <anchorfile>classTileStorage.html</anchorfile>
+      <anchor>adbd355518bc4b035ffbf0986b93148d5</anchor>
+      <arglist>(ViewInterface::WeakPtr view) override</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>close</name>
+      <anchorfile>classTileStorage.html</anchorfile>
+      <anchor>a3dbad824337e0453ab1bdfa0ed517603</anchor>
+      <arglist>(ViewInterface::WeakPtr view) override</arglist>
+    </member>
+    <member kind="function" protection="protected">
+      <type>void</type>
+      <name>observerAdded</name>
+      <anchorfile>classTileStorage.html</anchorfile>
+      <anchor>ad5c946a861f0fb3c93726e3ef3897227</anchor>
+      <arglist>(const TileInitialisationObserver::Ptr &amp;observer, const Scroom::Bookkeeping::Token &amp;token) override</arglist>
+    </member>
+    <member kind="function" protection="protected">
+      <type>void</type>
+      <name>observerAdded</name>
+      <anchorfile>classTileStorage.html</anchorfile>
+      <anchor>a97ee5ebf2d576195fa83205848927c24</anchor>
+      <arglist>(const TileLoadingObserver::Ptr &amp;observer, const Scroom::Bookkeeping::Token &amp;token) override</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>Scroom::Utils::WeakKeyMap&lt; ViewInterface::WeakPtr, std::weak_ptr&lt; TileViewState &gt; &gt;</type>
+      <name>m_viewStates</name>
+      <anchorfile>classTileStorage.html</anchorfile>
+      <anchor>a15305cd72795f008b3b3e7c7cb4f2f5a</anchor>
+      <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -27118,15 +27524,15 @@
       <type>static Ptr</type>
       <name>create</name>
       <anchorfile>classTileViewState.html</anchorfile>
-      <anchor>a7085eae554e8f9bab328c0a4ddfb557b</anchor>
-      <arglist>(const std::shared_ptr&lt; CompressedTile &gt; &amp;parent)</arglist>
+      <anchor>a93decd27737587150d126b2b2a503925</anchor>
+      <arglist>(const TileStorage::Ptr &amp;parent)</arglist>
     </member>
     <member kind="function" protection="private">
       <type></type>
       <name>TileViewState</name>
       <anchorfile>classTileViewState.html</anchorfile>
-      <anchor>afd3faa52db58a205c1304d33602bde01</anchor>
-      <arglist>(std::shared_ptr&lt; CompressedTile &gt; parent)</arglist>
+      <anchor>a51755db6a88cd5219e9566f2417fa8d0</anchor>
+      <arglist>(TileStorage::Ptr parent)</arglist>
     </member>
     <member kind="function" protection="private">
       <type>void</type>
@@ -27171,10 +27577,10 @@
       <arglist>()</arglist>
     </member>
     <member kind="variable" protection="private">
-      <type>std::shared_ptr&lt; CompressedTile &gt;</type>
+      <type>TileStorage::Ptr</type>
       <name>parent</name>
       <anchorfile>classTileViewState.html</anchorfile>
-      <anchor>aba757e6de54fcd9c0f0958f08660d4ee</anchor>
+      <anchor>aeccaa8569fd2f3412193618ac4f50de8</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
@@ -30071,6 +30477,29 @@
     <filename>namespaceanonymous__namespace_02layer-stack-tests_8cc_03.html</filename>
     <class kind="class">anonymous_namespace{layer-stack-tests.cc}::PopulationProgress</class>
     <class kind="class">anonymous_namespace{layer-stack-tests.cc}::SourceWithContrastingLeftStrip</class>
+    <member kind="enumeration">
+      <type></type>
+      <name>Backend</name>
+      <anchorfile>namespaceanonymous__namespace_02layer-stack-tests_8cc_03.html</anchorfile>
+      <anchor>ab6184211aa3703be1b1834423ce5f55f</anchor>
+      <arglist></arglist>
+      <enumvalue file="namespaceanonymous__namespace_02layer-stack-tests_8cc_03.html" anchor="ab6184211aa3703be1b1834423ce5f55fa724ba27218714b182f22d5b24b5e4317">COMPRESSED</enumvalue>
+      <enumvalue file="namespaceanonymous__namespace_02layer-stack-tests_8cc_03.html" anchor="ab6184211aa3703be1b1834423ce5f55fa722a256b864f768da20a4b31fdc6dfec">IN_MEMORY</enumvalue>
+    </member>
+    <member kind="function">
+      <type>LayerFactory</type>
+      <name>layerFactory</name>
+      <anchorfile>namespaceanonymous__namespace_02layer-stack-tests_8cc_03.html</anchorfile>
+      <anchor>aa9e26a042b4ec5b592e1eaf3d6539b8b</anchor>
+      <arglist>(Backend backend, Point&lt; int &gt; imageSize, int bpp)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::string</type>
+      <name>backendName</name>
+      <anchorfile>namespaceanonymous__namespace_02layer-stack-tests_8cc_03.html</anchorfile>
+      <anchor>adddcf02ba928a1dfbb9be0192b5d8c40</anchor>
+      <arglist>(const testing::TestParamInfo&lt; Backend &gt; &amp;info)</arglist>
+    </member>
     <member kind="variable">
       <type>constexpr int</type>
       <name>reductionFactor</name>
@@ -30197,6 +30626,11 @@
       <anchor>a0a5b6183200bcda12272059baa79c129</anchor>
       <arglist>(std::istream &amp;s)</arglist>
     </member>
+  </compound>
+  <compound kind="namespace">
+    <name>anonymous_namespace{populate-layer.cc}</name>
+    <filename>namespaceanonymous__namespace_02populate-layer_8cc_03.html</filename>
+    <class kind="class">anonymous_namespace{populate-layer.cc}::DataFetcher</class>
   </compound>
   <compound kind="namespace">
     <name>anonymous_namespace{progressbarmanager.cc}</name>
@@ -31101,8 +31535,8 @@
       <type>Scroom::Utils::Stuff</type>
       <name>scheduleLoadingBitmap</name>
       <anchorfile>namespaceScroom_1_1TiledBitmap.html</anchorfile>
-      <anchor>ac13fd191f548c9c8d794f6cc704b6e39</anchor>
-      <arglist>(const SourcePresentation::Ptr &amp;sp, const Layer::Ptr &amp;layer, const ProgressInterface::Ptr &amp;progress)</arglist>
+      <anchor>a1b1b9bb278318980217eed6b585c9452</anchor>
+      <arglist>(const SourcePresentation::Ptr &amp;sp, const LayerInterface::Ptr &amp;layer, const ProgressInterface::Ptr &amp;progress)</arglist>
     </member>
     <member kind="function">
       <type>LayerReduction</type>
@@ -31362,9 +31796,9 @@
     </member>
     <member kind="function">
       <type>Rectangle&lt; int &gt;</type>
-      <name>tileRangeForSampling</name>
+      <name>enclosingTileRange</name>
       <anchorfile>namespaceScroom_1_1TiledBitmap_1_1Geometry.html</anchorfile>
-      <anchor>a83ea70b09a7b52c492c678f8d3870826</anchor>
+      <anchor>adeab96595b0ab19cd26527f3df6321c3</anchor>
       <arglist>(Rectangle&lt; int &gt; layerArea, int tileSize)</arglist>
     </member>
     <member kind="function">
@@ -31415,6 +31849,8 @@
     <filename>namespaceScroom_1_1TiledBitmap_1_1Test.html</filename>
     <namespace>Scroom::TiledBitmap::Test::RgbChannels</namespace>
     <namespace>Scroom::TiledBitmap::Test::CmykChannels</namespace>
+    <class kind="class">Scroom::TiledBitmap::Test::InMemoryTile</class>
+    <class kind="class">Scroom::TiledBitmap::Test::InMemoryLayer</class>
     <class kind="struct">Scroom::TiledBitmap::Test::SampleLayout</class>
     <member kind="function">
       <type>Tile::Ptr</type>
@@ -32460,11 +32896,15 @@
     <name>libs/tiled-bitmap/inc/scroom</name>
     <path>libs/tiled-bitmap/inc/scroom/</path>
     <filename>dir_eda2f21fb84a1bf642e27439830dd9d0.html</filename>
+    <file>layer-base.hh</file>
+    <file>layer-interface.hh</file>
     <file>layer-reduction.hh</file>
     <file>layer-rendering-operations.hh</file>
     <file>layer-stack.hh</file>
     <file>layercoordinator.hh</file>
     <file>layeroperations.hh</file>
+    <file>populate-layer.hh</file>
+    <file>tile-storage.hh</file>
     <file>tile.hh</file>
     <file>tiled-bitmap-data.hh</file>
     <file>tiled-bitmap-geometry.hh</file>
@@ -32566,6 +33006,7 @@
     <filename>dir_6cf97d29360585fa7f1004e648779306.html</filename>
     <file>cmyklayeroperations.cc</file>
     <file>compressedtile.cc</file>
+    <file>layer-base.cc</file>
     <file>layer-reduction.cc</file>
     <file>layer-stack.cc</file>
     <file>layer.cc</file>
@@ -32573,6 +33014,8 @@
     <file>layeroperations.cc</file>
     <file>layerspecforbitmap.cc</file>
     <file>local.hh</file>
+    <file>populate-layer.cc</file>
+    <file>tile-storage.cc</file>
     <file>tiled-bitmap-geometry.cc</file>
     <file>tiled-bitmap.cc</file>
     <file>tiled-bitmap.hh</file>
@@ -32697,6 +33140,7 @@
     <name>libs/tiled-bitmap/test</name>
     <path>libs/tiled-bitmap/test/</path>
     <filename>dir_02d55b1c983a01e4a8233054a854d7e6.html</filename>
+    <file>in-memory-layer.hh</file>
     <file>layer-reduction-tests.cc</file>
     <file>layer-stack-tests.cc</file>
     <file>layerspecforbitmap-tests.cc</file>

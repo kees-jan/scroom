@@ -1,0 +1,7 @@
+<map id="Tile::create" name="Tile::create">
+<area shape="rect" id="Node000001" title=" " alt="" coords="211,52,305,80"/>
+<area shape="rect" id="Node000002" href="$namespaceScroom_1_1TiledBitmap_1_1Test.html#a8aed840c5d4dfe727b6427e7dfd2acf0" title=" " alt="" coords="5,5,163,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="193,53,163,48,163,42,198,52"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryTile.html#a47dc4bc3d652b11315c785687dd59b33" title=" " alt="" coords="5,74,163,136"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="193,81,163,90,162,85,198,79"/>
+</map>

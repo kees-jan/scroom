@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-81-g38a1e0dd1</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-85-g91de17b9</span>
    </div>
   </td>
  </tr>
@@ -101,9 +101,9 @@ $(function(){initNavTree('classTiledBitmap.html','',''); });
   <tr class="even"><td class="entry"><a class="el" href="classTiledBitmap.html#ac6c11e9ce82f6e03866c53d5d12a9ac0">close</a>(ViewInterface::WeakPtr vi) override</td><td class="entry"><a class="el" href="classTiledBitmap.html">TiledBitmap</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classTiledBitmap.html#a886ffa6837fea8c657e3d86a57120649">context</a></td><td class="entry"><a class="el" href="classTiledBitmap.html">TiledBitmap</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classTiledBitmap.html#aac0fd55f26ab59b362f0c64d27a9e139">create</a>(int bitmapWidth, int bitmapHeight, LayerSpec const &amp;ls)</td><td class="entry"><a class="el" href="classTiledBitmap.html">TiledBitmap</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classTiledBitmap.html#a2c114e65ab730b8c4afa5d7064e8070e">create</a>(const Layer::Ptr &amp;bottom, const LayerSpec &amp;ls)</td><td class="entry"><a class="el" href="classTiledBitmap.html">TiledBitmap</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classTiledBitmap.html#a6254a409a4f8869cb3429c55a342cdbe">drawTile</a>(cairo_t *cr, const CompressedTile::Ptr &amp;tile, const Scroom::Utils::Rectangle&lt; double &gt; &amp;viewArea)</td><td class="entry"><a class="el" href="classTiledBitmap.html">TiledBitmap</a></td><td class="entry"><span class="mlabel">private</span><span class="mlabel">static</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classTiledBitmap.html#a75f9b982627fe273f321a0643c42d300">getBottomLayer</a>() override</td><td class="entry"><a class="el" href="classTiledBitmap.html">TiledBitmap</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classTiledBitmap.html#a49b4dee7c59b2cb5696868229cf9e683">create</a>(Scroom::TiledBitmap::LayerStack::Ptr stack, const LayerSpec &amp;descriptions)</td><td class="entry"><a class="el" href="classTiledBitmap.html">TiledBitmap</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classTiledBitmap.html#a390424413f5413af34f195261134b010">drawTile</a>(cairo_t *cr, std::size_t layerIndex, Scroom::Utils::Point&lt; int &gt; tileIndex, int bpp, const Scroom::Utils::Rectangle&lt; double &gt; &amp;viewArea)</td><td class="entry"><a class="el" href="classTiledBitmap.html">TiledBitmap</a></td><td class="entry"><span class="mlabel">private</span><span class="mlabel">static</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classTiledBitmap.html#a49415b91b898167197681c4b42a6652a">getBottomLayer</a>() override</td><td class="entry"><a class="el" href="classTiledBitmap.html">TiledBitmap</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classTiledBitmap.html#a1ead3f8bc2e744cec2cdebd1fe58a049">getContext</a>() const override</td><td class="entry"><a class="el" href="classTiledBitmap.html">TiledBitmap</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classTiledBitmap.html#a97e0b421834a17d316685342fcbfd787">getLayerStack</a>() override</td><td class="entry"><a class="el" href="classTiledBitmap.html">TiledBitmap</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classInterface.html#ae0e5b08ef260a27c1aabb8adc4570ef5">Interface</a>()=default</td><td class="entry"><a class="el" href="classInterface.html">Interface</a></td><td class="entry"><span class="mlabel">private</span></td></tr>

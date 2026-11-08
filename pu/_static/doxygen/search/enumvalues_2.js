@@ -5,7 +5,8 @@ var searchData=
   ['column_5fpointer_2',['COLUMN_POINTER',['../namespaceScroom_1_1ColormapImpl.html#a14eaea2830b525ba8b88b8f3fdd8a12fa832330cba15b863a66c9c9d6177d551c',1,'Scroom::ColormapImpl']]],
   ['column_5ftext_3',['COLUMN_TEXT',['../view_8cc.html#a6c4d7d2005749685c9a72955f3dcad45ad5db438c58c4839d1e9bb25dc55a4130',1,'view.cc']]],
   ['column_5fzoom_4',['COLUMN_ZOOM',['../view_8cc.html#a6c4d7d2005749685c9a72955f3dcad45ac8558f41e7d91c7bb57659a23f80542c',1,'view.cc']]],
-  ['compressing_5',['COMPRESSING',['../classScroom_1_1MemoryBlobs_1_1Blob.html#a50973e173ac55206712bce2ecfe361cea79f7443f9062063b8cac1e41d3fa1fff',1,'Scroom::MemoryBlobs::Blob']]],
-  ['computing_5fbase_6',['COMPUTING_BASE',['../classTileViewState.html#a0a229ff2bb85654a101ca1842211842fae3bba76a5fdeb7f7704d3fba5d4200b3',1,'TileViewState']]],
-  ['computing_5fzoom_7',['COMPUTING_ZOOM',['../classTileViewState.html#a0a229ff2bb85654a101ca1842211842faf523ee5470d5a478616fae0a915b8083',1,'TileViewState']]]
+  ['compressed_5',['COMPRESSED',['../namespaceanonymous__namespace_02layer-stack-tests_8cc_03.html#ab6184211aa3703be1b1834423ce5f55fa724ba27218714b182f22d5b24b5e4317',1,'anonymous_namespace{layer-stack-tests.cc}']]],
+  ['compressing_6',['COMPRESSING',['../classScroom_1_1MemoryBlobs_1_1Blob.html#a50973e173ac55206712bce2ecfe361cea79f7443f9062063b8cac1e41d3fa1fff',1,'Scroom::MemoryBlobs::Blob']]],
+  ['computing_5fbase_7',['COMPUTING_BASE',['../classTileViewState.html#a0a229ff2bb85654a101ca1842211842fae3bba76a5fdeb7f7704d3fba5d4200b3',1,'TileViewState']]],
+  ['computing_5fzoom_8',['COMPUTING_ZOOM',['../classTileViewState.html#a0a229ff2bb85654a101ca1842211842faf523ee5470d5a478616fae0a915b8083',1,'TileViewState']]]
 ];

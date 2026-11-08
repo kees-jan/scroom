@@ -1,7 +1,7 @@
 var searchData=
 [
   ['data_0',['Data',['../structanonymous__namespace_02colormaphelpers__test_8cc_03_1_1Data.html#ae63841385eea9d5ea9b617ddb60bcad1',1,'anonymous_namespace{colormaphelpers_test.cc}::Data']]],
-  ['datafetcher_1',['DataFetcher',['../classDataFetcher.html#a3a24a2e8d28e8550f0631b2af0faa924',1,'DataFetcher']]],
+  ['datafetcher_1',['DataFetcher',['../classanonymous__namespace_02populate-layer_8cc_03_1_1DataFetcher.html#ad0546cbcbfd30b3e85bf0a1130b9a3a2',1,'anonymous_namespace{populate-layer.cc}::DataFetcher']]],
   ['debug_2',['debug',['../ringbuffer-sink-tests_8cc.html#ad95b233d5e21909b673611add77a8fdb',1,'debug(&quot;a&quot;):&#160;ringbuffer-sink-tests.cc'],['../ringbuffer-sink-tests_8cc.html#a1a6e70b8b814ae2612c2da4ae1b7f196',1,'debug(&quot;b&quot;):&#160;ringbuffer-sink-tests.cc'],['../ringbuffer-sink-tests_8cc.html#a11151ff946c61d20b558e544d493738a',1,'debug(&quot;c&quot;):&#160;ringbuffer-sink-tests.cc']]],
   ['dec_3',['dec',['../classScroom_1_1Utils_1_1Count.html#a4a079db4ca94588183b9ed1f3ed930ff',1,'Scroom::Utils::Count']]],
   ['decompressblob_4',['decompressBlob',['../namespaceScroom_1_1MemoryBlobs_1_1Detail.html#ad9ecb35eccaa1e782bf2a383f66d5998',1,'Scroom::MemoryBlobs::Detail::decompressBlob()'],['../compression-tests_8cc.html#a0a0ee6d8736caca8b6056f8ee1d89b78',1,'decompressBlob():&#160;compression-tests.cc']]],
@@ -38,7 +38,7 @@ var searchData=
   ['drawtickline_35',['drawTickLine',['../classRulerDrawStrategy.html#a68d18a5de72440ae64d749ccdf7767bf',1,'RulerDrawStrategy::drawTickLine()'],['../classHorizontalDrawStrategy.html#acc63ffbfa6d4dbcfcc11b1e1ecac7318',1,'HorizontalDrawStrategy::drawTickLine()'],['../classVerticalDrawStrategy.html#a0968963ac37a01f3e02a253e9521f972',1,'VerticalDrawStrategy::drawTickLine()']]],
   ['drawticks_36',['drawTicks',['../classRuler.html#a627f4b9a16378af7bdd87f00d8da84d0',1,'Ruler']]],
   ['drawticktext_37',['drawTickText',['../classRulerDrawStrategy.html#ab901f521ea9fecd6fecfe480b088bb43',1,'RulerDrawStrategy::drawTickText()'],['../classHorizontalDrawStrategy.html#a9e9201354fc44a0b6f296e7f74138cea',1,'HorizontalDrawStrategy::drawTickText()'],['../classVerticalDrawStrategy.html#a73624c51b9db33e291cbb70f10a686a6',1,'VerticalDrawStrategy::drawTickText()']]],
-  ['drawtile_38',['drawTile',['../classTiledBitmap.html#a6254a409a4f8869cb3429c55a342cdbe',1,'TiledBitmap']]],
+  ['drawtile_38',['drawTile',['../classTiledBitmap.html#a390424413f5413af34f195261134b010',1,'TiledBitmap']]],
   ['dummycolormapprovider_39',['DummyColormapProvider',['../classDummyColormapProvider.html#a9d99e0c941ca65c0ec0605c3372efeab',1,'DummyColormapProvider']]],
   ['dummypresentation_40',['DummyPresentation',['../classDummyPresentation.html#ad309c379cbf46c4a3d8ea77f4d17eff8',1,'DummyPresentation']]],
   ['dummyview_41',['DummyView',['../classDummyView.html#ad4e334704e54fe053c39386eee6a1732',1,'DummyView']]],

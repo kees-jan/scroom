@@ -1,0 +1,20 @@
+<map id="TileStorage" name="TileStorage">
+<area shape="rect" id="Node000001" title=" " alt="" coords="249,668,407,897"/>
+<area shape="rect" id="Node000008" href="$classCompressedTile.html" title=" " alt="" coords="158,945,316,1509"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="302,909,297,946,292,944,301,914"/>
+<area shape="rect" id="Node000009" href="$classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryTile.html" title=" " alt="" coords="341,1082,499,1372"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="355,909,392,1082,387,1082,353,914"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Observable.html" title=" " alt="" coords="5,375,210,620"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="211,629,251,679,246,681,212,635"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="150,143,287,327"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="173,343,162,375,157,374,175,338"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Utils_1_1Observable.html" title=" " alt="" coords="234,375,422,620"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="262,338,279,374,274,375,263,343"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="148,5,289,95"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="219,107,221,143,216,143,218,112"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="328,633,330,669,325,668,327,638"/>
+<area shape="rect" id="Node000006" href="$classViewable.html" title=" " alt="" coords="446,450,516,545"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="462,556,437,622,409,670,404,668,432,619,460,561"/>
+<area shape="rect" id="Node000007" href="$classInterface.html" title=" " alt="" coords="428,143,534,327"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="482,339,484,451,478,450,480,344"/>
+</map>

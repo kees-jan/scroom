@@ -13,6 +13,8 @@ var namespaceScroom_1_1TiledBitmap_1_1Test =
       [ "MAGENTA", "namespaceScroom_1_1TiledBitmap_1_1Test_1_1CmykChannels.html#aa1a58e10887c34c8187a15602d859cc4", null ],
       [ "YELLOW", "namespaceScroom_1_1TiledBitmap_1_1Test_1_1CmykChannels.html#a7731d7a294beaad0e229be2eb1288c86", null ]
     ] ],
+    [ "InMemoryTile", "classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryTile.html", "classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryTile" ],
+    [ "InMemoryLayer", "classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryLayer.html", "classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryLayer" ],
     [ "SampleLayout", "structScroom_1_1TiledBitmap_1_1Test_1_1SampleLayout.html", "structScroom_1_1TiledBitmap_1_1Test_1_1SampleLayout" ],
     [ "emptyTile", "namespaceScroom_1_1TiledBitmap_1_1Test.html#a8aed840c5d4dfe727b6427e7dfd2acf0", null ],
     [ "fillChannel", "namespaceScroom_1_1TiledBitmap_1_1Test.html#a0a429b682937bd6938223d92a8543d79", null ],

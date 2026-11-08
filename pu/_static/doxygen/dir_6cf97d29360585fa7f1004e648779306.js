@@ -2,6 +2,7 @@ var dir_6cf97d29360585fa7f1004e648779306 =
 [
     [ "cmyklayeroperations.cc", "cmyklayeroperations_8cc.html", null ],
     [ "compressedtile.cc", "compressedtile_8cc.html", null ],
+    [ "layer-base.cc", "layer-base_8cc.html", null ],
     [ "layer-reduction.cc", "layer-reduction_8cc.html", "layer-reduction_8cc" ],
     [ "layer-stack.cc", "layer-stack_8cc.html", "layer-stack_8cc" ],
     [ "layer.cc", "layer_8cc.html", "layer_8cc" ],
@@ -9,6 +10,8 @@ var dir_6cf97d29360585fa7f1004e648779306 =
     [ "layeroperations.cc", "layeroperations_8cc.html", "layeroperations_8cc" ],
     [ "layerspecforbitmap.cc", "layerspecforbitmap_8cc.html", "layerspecforbitmap_8cc" ],
     [ "local.hh", "local_8hh.html", "local_8hh" ],
+    [ "populate-layer.cc", "populate-layer_8cc.html", "populate-layer_8cc" ],
+    [ "tile-storage.cc", "tile-storage_8cc.html", null ],
     [ "tiled-bitmap-geometry.cc", "tiled-bitmap-geometry_8cc.html", "tiled-bitmap-geometry_8cc" ],
     [ "tiled-bitmap.cc", "tiled-bitmap_8cc.html", "tiled-bitmap_8cc" ],
     [ "tiled-bitmap.hh", "tiled-bitmap_8hh.html", "tiled-bitmap_8hh" ],

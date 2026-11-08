@@ -1,0 +1,9 @@
+<map id="LayerInterface::getRect" name="LayerInterface::getRect">
+<area shape="rect" id="Node000001" title=" " alt="" coords="219,83,392,111"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1TiledBitmap_1_1LayerStack.html#a408e4b1e5cb666086699bd5a4cb1f621" title=" " alt="" coords="9,5,167,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="243,79,160,53,161,48,248,77"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1TiledBitmap_1_1LayerStack.html#a8555e3e1c8edffcae1bffac47b38db34" title=" " alt="" coords="5,75,171,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="201,98,171,100,171,94,206,96"/>
+<area shape="rect" id="Node000004" href="$classTiledBitmap.html#a98c2d60fc0736a77ab18aeeb461a1da8" title=" " alt="" coords="11,143,165,171"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="240,115,142,145,140,140,235,116"/>
+</map>

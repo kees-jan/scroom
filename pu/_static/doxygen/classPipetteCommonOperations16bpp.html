@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-81-g38a1e0dd1</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-85-g91de17b9</span>
    </div>
   </td>
  </tr>
@@ -240,7 +240,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   94</span>{</div>
 <div class="line"><span class="lineno">   95</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> offset = area.<a class="code hl_function" href="classRectangle.html#a23ed938b3f63186f48c5828024a9d6ab">getTop</a>() * tile-&gt;<a class="code hl_variable" href="classConstTile.html#a1c76a49105f44d4091d359f16bf9bf84">width</a> + area.<a class="code hl_function" href="classRectangle.html#ad623b0b902d4e2cd1d858300728c78d1">getLeft</a>();</div>
 <div class="line"><span class="lineno">   96</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> stride = tile-&gt;<a class="code hl_variable" href="classConstTile.html#a1c76a49105f44d4091d359f16bf9bf84">width</a> - area.<a class="code hl_function" href="classRectangle.html#a3b8d627a36eb56f6f36eea5004591154">getWidth</a>();</div>
-<div class="line"><span class="lineno">   97</span>  <span class="keyword">auto</span> <span class="keyword">const</span>* <a class="code hl_function" href="namespaceScroom_1_1TiledBitmap_1_1Test.html#a3730de8e6dbdef7aa8c2d6b2addee26f">sample</a> = <span class="keyword">reinterpret_cast&lt;</span>uint16_t const*<span class="keyword">&gt;</span>(tile-&gt;<a class="code hl_variable" href="classConstTile.html#a05039cb054fd3cf7d95bd1b0ac326203">data</a>.get()) + offset;</div>
+<div class="line"><span class="lineno">   97</span>  <span class="keyword">auto</span> <span class="keyword">const</span>* <a class="code hl_function" href="namespaceScroom_1_1TiledBitmap_1_1Test.html#a3730de8e6dbdef7aa8c2d6b2addee26f">sample</a> = <span class="keyword">reinterpret_cast&lt;</span>uint16_t const*<span class="keyword">&gt;</span>(tile-&gt;<a class="code hl_variable" href="classConstTile.html#adf20516cc61fbdc0d931ac848040069e">data</a>.get()) + offset;</div>
 <div class="line"><span class="lineno">   98</span> </div>
 <div class="line"><span class="lineno">   99</span>  <span class="keywordtype">size_t</span> sum = 0;</div>
 <div class="line"><span class="lineno">  100</span> </div>
@@ -256,8 +256,8 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  110</span> </div>
 <div class="line"><span class="lineno">  111</span>  <span class="keywordflow">return</span> {{<span class="stringliteral">&quot;Value&quot;</span>, sum}};</div>
 <div class="line"><span class="lineno">  112</span>}</div>
-<div class="ttc" id="aclassConstTile_html_a05039cb054fd3cf7d95bd1b0ac326203"><div class="ttname"><a href="classConstTile.html#a05039cb054fd3cf7d95bd1b0ac326203">ConstTile::data</a></div><div class="ttdeci">Scroom::MemoryBlobs::RawPageData::ConstPtr data</div><div class="ttdef"><b>Definition</b> tile.hh:63</div></div>
-<div class="ttc" id="aclassConstTile_html_a1c76a49105f44d4091d359f16bf9bf84"><div class="ttname"><a href="classConstTile.html#a1c76a49105f44d4091d359f16bf9bf84">ConstTile::width</a></div><div class="ttdeci">int width</div><div class="ttdef"><b>Definition</b> tile.hh:60</div></div>
+<div class="ttc" id="aclassConstTile_html_a1c76a49105f44d4091d359f16bf9bf84"><div class="ttname"><a href="classConstTile.html#a1c76a49105f44d4091d359f16bf9bf84">ConstTile::width</a></div><div class="ttdeci">int width</div><div class="ttdef"><b>Definition</b> tile.hh:62</div></div>
+<div class="ttc" id="aclassConstTile_html_adf20516cc61fbdc0d931ac848040069e"><div class="ttname"><a href="classConstTile.html#adf20516cc61fbdc0d931ac848040069e">ConstTile::data</a></div><div class="ttdeci">std::shared_ptr&lt; const uint8_t &gt; data</div><div class="ttdef"><b>Definition</b> tile.hh:65</div></div>
 <div class="ttc" id="aclassRectangle_html_a23ed938b3f63186f48c5828024a9d6ab"><div class="ttname"><a href="classRectangle.html#a23ed938b3f63186f48c5828024a9d6ab">Rectangle::getTop</a></div><div class="ttdeci">value_type getTop() const</div><div class="ttdef"><b>Definition</b> rectangle.hh:184</div></div>
 <div class="ttc" id="aclassRectangle_html_a3b8d627a36eb56f6f36eea5004591154"><div class="ttname"><a href="classRectangle.html#a3b8d627a36eb56f6f36eea5004591154">Rectangle::getWidth</a></div><div class="ttdeci">value_type getWidth() const</div><div class="ttdef"><b>Definition</b> rectangle.hh:197</div></div>
 <div class="ttc" id="aclassRectangle_html_ac0a99c1ecbac98201ef36d88bf56eb40"><div class="ttname"><a href="classRectangle.html#ac0a99c1ecbac98201ef36d88bf56eb40">Rectangle::getRight</a></div><div class="ttdeci">value_type getRight() const</div><div class="ttdef"><b>Definition</b> rectangle.hh:190</div></div>

@@ -43,6 +43,7 @@ var namespaces_dup =
       [ "logger", "namespaceanonymous__namespace_02measure-framerate-tests_8cc_03.html#a714dc8cbe8793eff2bad2272775f4c9e", null ]
     ] ],
     [ "anonymous_namespace{pnmsource.cc}", "namespaceanonymous__namespace_02pnmsource_8cc_03.html", "namespaceanonymous__namespace_02pnmsource_8cc_03" ],
+    [ "anonymous_namespace{populate-layer.cc}", "namespaceanonymous__namespace_02populate-layer_8cc_03.html", "namespaceanonymous__namespace_02populate-layer_8cc_03" ],
     [ "anonymous_namespace{progressbarmanager.cc}", "namespaceanonymous__namespace_02progressbarmanager_8cc_03.html", "namespaceanonymous__namespace_02progressbarmanager_8cc_03" ],
     [ "anonymous_namespace{ringbuffer-sink-tests.cc}", "namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html", [
       [ "createLogger", "namespaceanonymous__namespace_02ringbuffer-sink-tests_8cc_03.html#a15a91985361401f76bc8ee0186a5470c", null ],

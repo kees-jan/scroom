@@ -1,0 +1,19 @@
+<map id="Scroom::TiledBitmap::Geometry::enclosingTileRange" name="Scroom::TiledBitmap::Geometry::enclosingTileRange">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,36,234,81"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Rectangle.html#a63d218d52a6e28b5f3af118feb624019" title=" " alt="" coords="295,5,476,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="234,43,282,39,277,41,235,48"/>
+<area shape="rect" id="Node000003" href="$namespaceScroom_1_1Utils.html#aafbf8baa587d11858954f89021f9037b" title=" " alt="" coords="282,74,490,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="234,68,269,74,264,75,234,74"/>
+<area shape="rect" id="Node000004" href="$namespaceScroom_1_1Utils.html#ae81b515fbc80d3efdded8c600b5956e6" title=" " alt="" coords="543,5,734,50"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="447,71,525,54,531,53,448,76"/>
+<area shape="rect" id="Node000006" href="$rounding_8hh.html#aa1169552e0a4044595bc67a5b9361694" title=" " alt="" coords="538,74,739,102"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="490,85,525,87,520,88,491,90"/>
+<area shape="rect" id="Node000008" href="$rounding_8hh.html#a1b27314f9dc323dff1e495e265c88eca" title=" " alt="" coords="548,126,730,154"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="457,99,555,122,550,122,457,105"/>
+<area shape="rect" id="Node000005" href="$sampleiterator-tests_8cc.html#aa2b1a5d4069a412fe370585d2c198a7a" title=" " alt="" coords="830,14,881,42"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="734,25,817,27,811,28,735,30"/>
+<area shape="rect" id="Node000007" href="$rounding_8hh.html#a08d4c4fef3e0764e999f269b7773286c" title=" " alt="" coords="787,74,924,102"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="739,85,775,88,769,88,740,90"/>
+<area shape="rect" id="Node000009" href="$rounding_8hh.html#a3705c07b90d6f60753b35c4aea0082b5" title=" " alt="" coords="790,126,921,154"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="730,137,778,140,772,140,730,142"/>
+</map>

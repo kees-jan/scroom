@@ -1,55 +1,56 @@
 <map id="libs/tiled&#45;bitmap/inc/scroom/tiledbitmapinterface.hh" name="libs/tiled&#45;bitmap/inc/scroom/tiledbitmapinterface.hh">
-<area shape="rect" id="Node000001" title=" " alt="" coords="1293,5,1523,50"/>
-<area shape="rect" id="Node000002" href="$layeroperations_8hh.html" title=" " alt="" coords="338,98,537,143"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1276,44,538,112,537,107,1278,39"/>
-<area shape="rect" id="Node000011" href="$layer_8cc.html" title=" " alt="" coords="980,98,1132,143"/>
-<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="1311,54,1132,102,1131,97,1306,55"/>
-<area shape="rect" id="Node000012" href="$tiled-bitmap_8hh.html" title=" " alt="" coords="1156,98,1308,143"/>
-<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="1355,57,1275,100,1273,95,1350,58"/>
-<area shape="rect" id="Node000015" href="$tileviewstate_8cc.html" title=" " alt="" coords="1332,98,1484,143"/>
-<area shape="poly" id="edge15_Node000001_Node000015" title=" " alt="" coords="1410,64,1410,99,1406,96,1406,68"/>
-<area shape="rect" id="Node000016" href="$layer-stack-tests_8cc.html" title=" " alt="" coords="1508,98,1665,143"/>
-<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="1465,55,1547,98,1541,97,1464,60"/>
-<area shape="rect" id="Node000017" href="$tiledbitmap-tests_8cc.html" title=" " alt="" coords="1689,98,1846,143"/>
-<area shape="poly" id="edge17_Node000001_Node000017" title=" " alt="" coords="1509,52,1692,99,1686,99,1508,57"/>
-<area shape="rect" id="Node000018" href="$measure-framerate-stubs_8hh.html" title=" " alt="" coords="744,98,957,143"/>
-<area shape="poly" id="edge18_Node000001_Node000018" title=" " alt="" coords="1275,49,968,101,958,102,957,97,967,95,1280,48"/>
-<area shape="rect" id="Node000020" href="$pnmsource_8hh.html" title=" " alt="" coords="1871,106,2091,134"/>
-<area shape="poly" id="edge23_Node000001_Node000020" title=" " alt="" coords="1538,46,1859,95,1909,106,1903,106,1858,101,1538,51"/>
-<area shape="rect" id="Node000023" href="$tiffsource_8hh.html" title=" " alt="" coords="2115,106,2314,134"/>
-<area shape="poly" id="edge26_Node000001_Node000023" title=" " alt="" coords="1538,36,1800,59,2104,95,2154,106,2148,106,2103,101,1800,64,1538,41"/>
-<area shape="rect" id="Node000003" href="$cmyklayeroperations_8cc.html" title=" " alt="" coords="250,191,432,235"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="406,152,365,193,362,188,401,155"/>
-<area shape="rect" id="Node000004" href="$layeroperations_8cc.html" title=" " alt="" coords="456,191,608,235"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="471,151,512,191,507,190,470,156"/>
-<area shape="rect" id="Node000005" href="$layerspecforbitmap_8cc.html" title=" " alt="" coords="5,191,176,235"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="338,149,174,193,173,188,341,145"/>
-<area shape="rect" id="Node000006" href="$test-helpers_8cc.html" title=" " alt="" coords="147,292,311,336"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="320,139,278,160,258,175,241,192,229,216,224,242,227,293,222,290,219,242,224,214,236,189,254,170,275,156,325,136"/>
-<area shape="rect" id="Node000007" href="$test-helpers_8hh.html" title=" " alt="" coords="631,191,795,235"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="518,145,650,190,644,190,517,151"/>
-<area shape="poly" id="edge10_Node000007_Node000006" title=" " alt="" coords="613,236,476,261,338,286,305,294,304,289,337,281,475,256,619,236"/>
-<area shape="rect" id="Node000008" href="$measure-framerate-callbacks_8cc.html" title=" " alt="" coords="350,292,586,336"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="648,241,522,294,521,289,643,242"/>
-<area shape="rect" id="Node000009" href="$measure-framerate-tests_8cc.html" title=" " alt="" coords="610,292,817,336"/>
-<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="715,249,715,293,711,290,711,253"/>
-<area shape="rect" id="Node000010" href="$measure-load-performance-tests_8cc.html" title=" " alt="" coords="841,283,1044,345"/>
-<area shape="poly" id="edge9_Node000007_Node000010" title=" " alt="" coords="778,239,875,283,870,282,777,245"/>
-<area shape="rect" id="Node000013" href="$tiled-bitmap_8cc.html" title=" " alt="" coords="1156,191,1308,235"/>
-<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="1234,156,1234,192,1230,189,1230,160"/>
-<area shape="rect" id="Node000014" href="$tiledbitmappresentation_8cc.html" title=" " alt="" coords="1332,191,1532,235"/>
-<area shape="poly" id="edge14_Node000012_Node000014" title=" " alt="" coords="1294,147,1387,190,1381,190,1293,152"/>
-<area shape="poly" id="edge22_Node000018_Node000007" title=" " alt="" coords="808,150,747,193,745,188,803,152"/>
-<area shape="poly" id="edge20_Node000018_Node000009" title=" " alt="" coords="844,156,831,198,810,237,781,268,749,294,747,289,777,265,806,234,826,196,840,159"/>
-<area shape="poly" id="edge21_Node000018_Node000010" title=" " alt="" coords="869,155,931,284,926,282,866,159"/>
-<area shape="rect" id="Node000019" href="$measure-framerate-stubs_8cc.html" title=" " alt="" coords="921,191,1132,235"/>
-<area shape="poly" id="edge19_Node000018_Node000019" title=" " alt="" coords="907,148,987,191,982,190,906,153"/>
-<area shape="rect" id="Node000021" href="$pnm_8cc.html" title=" " alt="" coords="1679,199,1854,227"/>
-<area shape="poly" id="edge24_Node000020_Node000021" title=" " alt="" coords="1939,140,1798,201,1797,196,1934,141"/>
-<area shape="rect" id="Node000022" href="$pnmsource_8cc.html" title=" " alt="" coords="1879,199,2097,227"/>
-<area shape="poly" id="edge25_Node000020_Node000022" title=" " alt="" coords="1985,147,1989,200,1985,197,1981,151"/>
-<area shape="rect" id="Node000024" href="$tiff_8cc.html" title=" " alt="" coords="2132,199,2286,227"/>
-<area shape="poly" id="edge27_Node000023_Node000024" title=" " alt="" coords="2215,148,2212,201,2208,197,2211,151"/>
-<area shape="rect" id="Node000025" href="$tiffsource_8cc.html" title=" " alt="" coords="2310,199,2506,227"/>
-<area shape="poly" id="edge28_Node000023_Node000025" title=" " alt="" coords="2257,139,2382,199,2377,198,2256,144"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="1323,5,1554,50"/>
+<area shape="rect" id="Node000002" href="$layeroperations_8hh.html" title=" " alt="" coords="417,98,617,143"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1306,44,618,112,617,107,1309,39"/>
+<area shape="rect" id="Node000006" href="$layer-stack-tests_8cc.html" title=" " alt="" coords="632,191,789,235"/>
+<area shape="poly" id="edge17_Node000001_Node000006" title=" " alt="" coords="1305,36,1225,46,1131,58,1034,76,939,101,885,121,832,145,746,192,744,188,829,140,883,116,938,95,1033,71,1130,53,1224,40,1311,35"/>
+<area shape="rect" id="Node000012" href="$layer_8cc.html" title=" " alt="" coords="1187,98,1338,143"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="1385,57,1305,100,1303,95,1380,58"/>
+<area shape="rect" id="Node000013" href="$tiled-bitmap_8hh.html" title=" " alt="" coords="1363,98,1514,143"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="1440,64,1440,99,1436,96,1437,68"/>
+<area shape="rect" id="Node000016" href="$tileviewstate_8cc.html" title=" " alt="" coords="1539,98,1690,143"/>
+<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="1495,55,1575,98,1570,97,1494,60"/>
+<area shape="rect" id="Node000017" href="$tiledbitmap-tests_8cc.html" title=" " alt="" coords="1714,98,1872,143"/>
+<area shape="poly" id="edge18_Node000001_Node000017" title=" " alt="" coords="1538,52,1717,99,1712,99,1538,57"/>
+<area shape="rect" id="Node000018" href="$measure-framerate-stubs_8hh.html" title=" " alt="" coords="951,98,1163,143"/>
+<area shape="poly" id="edge19_Node000001_Node000018" title=" " alt="" coords="1335,53,1149,100,1148,95,1330,55"/>
+<area shape="rect" id="Node000020" href="$pnmsource_8hh.html" title=" " alt="" coords="1896,106,2116,134"/>
+<area shape="poly" id="edge24_Node000001_Node000020" title=" " alt="" coords="1569,46,1884,95,1934,106,1928,106,1883,101,1569,51"/>
+<area shape="rect" id="Node000023" href="$tiffsource_8hh.html" title=" " alt="" coords="2179,106,2378,134"/>
+<area shape="poly" id="edge27_Node000001_Node000023" title=" " alt="" coords="1569,38,1829,63,2129,95,2192,106,2187,106,2129,101,1828,68,1569,43"/>
+<area shape="rect" id="Node000003" href="$cmyklayeroperations_8cc.html" title=" " alt="" coords="426,191,608,235"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="519,156,519,192,515,189,515,160"/>
+<area shape="rect" id="Node000004" href="$layeroperations_8cc.html" title=" " alt="" coords="5,191,157,235"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="401,146,170,193,158,196,156,191,168,188,403,141"/>
+<area shape="rect" id="Node000005" href="$layerspecforbitmap_8cc.html" title=" " alt="" coords="181,191,352,235"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="440,149,327,193,325,188,445,147"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="577,147,667,190,661,190,577,152"/>
+<area shape="rect" id="Node000007" href="$test-helpers_8cc.html" title=" " alt="" coords="326,292,490,336"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="456,150,434,171,417,192,407,217,403,243,406,293,401,290,398,243,402,215,412,189,430,167,451,152"/>
+<area shape="rect" id="Node000008" href="$test-helpers_8hh.html" title=" " alt="" coords="814,191,978,235"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="622,144,816,192,811,193,622,149"/>
+<area shape="poly" id="edge11_Node000008_Node000007" title=" " alt="" coords="801,235,658,261,520,286,486,294,485,289,519,281,657,256,796,236"/>
+<area shape="rect" id="Node000009" href="$measure-framerate-callbacks_8cc.html" title=" " alt="" coords="532,292,768,336"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="831,241,705,294,703,289,825,242"/>
+<area shape="rect" id="Node000010" href="$measure-framerate-tests_8cc.html" title=" " alt="" coords="792,292,999,336"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="898,249,898,293,894,290,894,253"/>
+<area shape="rect" id="Node000011" href="$measure-load-performance-tests_8cc.html" title=" " alt="" coords="1023,283,1227,345"/>
+<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="961,239,1057,283,1052,282,959,245"/>
+<area shape="rect" id="Node000014" href="$tiled-bitmap_8cc.html" title=" " alt="" coords="1563,191,1714,235"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="1501,147,1593,190,1588,190,1500,152"/>
+<area shape="rect" id="Node000015" href="$tiledbitmappresentation_8cc.html" title=" " alt="" coords="1338,191,1538,235"/>
+<area shape="poly" id="edge15_Node000013_Node000015" title=" " alt="" coords="1440,156,1440,192,1436,189,1437,160"/>
+<area shape="poly" id="edge23_Node000018_Node000008" title=" " alt="" coords="1008,150,935,193,933,188,1003,151"/>
+<area shape="poly" id="edge21_Node000018_Node000010" title=" " alt="" coords="1043,155,1021,197,992,237,961,268,929,294,927,289,958,264,988,234,1016,195,1038,158"/>
+<area shape="poly" id="edge22_Node000018_Node000011" title=" " alt="" coords="1068,155,1094,234,1114,284,1109,282,1089,236,1065,160"/>
+<area shape="rect" id="Node000019" href="$measure-framerate-stubs_8cc.html" title=" " alt="" coords="1104,191,1314,235"/>
+<area shape="poly" id="edge20_Node000018_Node000019" title=" " alt="" coords="1107,148,1176,191,1170,190,1106,154"/>
+<area shape="rect" id="Node000021" href="$pnm_8cc.html" title=" " alt="" coords="1981,199,2157,227"/>
+<area shape="poly" id="edge25_Node000020_Node000021" title=" " alt="" coords="2025,144,2062,200,2058,198,2023,149"/>
+<area shape="rect" id="Node000022" href="$pnmsource_8cc.html" title=" " alt="" coords="1738,199,1957,227"/>
+<area shape="poly" id="edge26_Node000020_Node000022" title=" " alt="" coords="1973,141,1872,201,1870,196,1968,143"/>
+<area shape="rect" id="Node000024" href="$tiff_8cc.html" title=" " alt="" coords="2400,199,2554,227"/>
+<area shape="poly" id="edge28_Node000023_Node000024" title=" " alt="" coords="2322,138,2451,199,2445,198,2320,144"/>
+<area shape="rect" id="Node000025" href="$tiffsource_8cc.html" title=" " alt="" coords="2180,199,2376,227"/>
+<area shape="poly" id="edge29_Node000023_Node000025" title=" " alt="" coords="2280,147,2280,201,2276,197,2276,151"/>
 </map>

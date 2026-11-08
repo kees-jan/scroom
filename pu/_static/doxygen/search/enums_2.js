@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['orientation_0',['Orientation',['../classRuler.html#aa50e16ab1a754e6558a58c346d07b297',1,'Ruler']]]
+  ['locationchangecause_0',['LocationChangeCause',['../classView.html#ae2d38f95cdcab0ebab25ea670f4ebdfb',1,'View']]]
 ];

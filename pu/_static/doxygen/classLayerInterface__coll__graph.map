@@ -1,0 +1,11 @@
+<map id="LayerInterface" name="LayerInterface">
+<area shape="rect" id="Node000001" title=" " alt="" coords="51,469,212,653"/>
+<area shape="rect" id="Node000002" href="$classViewable.html" title=" " alt="" coords="32,282,103,377"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,389,109,470,104,470,84,394"/>
+<area shape="rect" id="Node000003" href="$classInterface.html" title=" " alt="" coords="5,5,111,189"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="63,202,68,282,63,282,62,207"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="132,237,270,421"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="171,434,161,471,157,468,168,438"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="136,53,277,142"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="206,155,206,238,200,237,204,160"/>
+</map>

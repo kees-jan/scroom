@@ -7,6 +7,7 @@ var namespaceScroom_1_1TiledBitmap_1_1Geometry =
     [ "Point", "classScroom_1_1TiledBitmap_1_1Geometry_1_1Point.html", "classScroom_1_1TiledBitmap_1_1Geometry_1_1Point" ],
     [ "Rectangle", "classScroom_1_1TiledBitmap_1_1Geometry_1_1Rectangle.html", "classScroom_1_1TiledBitmap_1_1Geometry_1_1Rectangle" ],
     [ "clippedArea", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a8548b898854f64c1b8967031eebe7fba", null ],
+    [ "enclosingTileRange", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html#adeab96595b0ab19cd26527f3df6321c3", null ],
     [ "intersectionInTileCoordinates", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html#ad826ba013f3b1826d0790068d297a993", null ],
     [ "layerCoordinatesFromTileIndex", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a19c1526faedfd5c29702af54d815de36", null ],
     [ "layerSelection", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html#acec17c69ca9a293da8ecb05f9f8de730", null ],
@@ -17,6 +18,5 @@ var namespaceScroom_1_1TiledBitmap_1_1Geometry =
     [ "tileAreaInLayerCoordinates", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a3d7f7edb124452e4063dce685242daa9", null ],
     [ "tileCount", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html#ad13cbd28bbcbaaa733f01d1203276fa8", null ],
     [ "tileDrawAreas", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a2fc8db1932e29adc885269f90c29c37f", null ],
-    [ "tileRangeForRedraw", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html#aff9537068f1f2f16f90ce20e15ba497d", null ],
-    [ "tileRangeForSampling", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html#a83ea70b09a7b52c492c678f8d3870826", null ]
+    [ "tileRangeForRedraw", "namespaceScroom_1_1TiledBitmap_1_1Geometry.html#aff9537068f1f2f16f90ce20e15ba497d", null ]
 ];

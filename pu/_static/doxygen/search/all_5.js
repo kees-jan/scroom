@@ -1,7 +1,7 @@
 var searchData=
 [
   ['f_0',['f',['../classScroom_1_1Detail_1_1ThreadPool_1_1FunctionMultiplier.html#ae91dc833ceb27c932412d1f94212e479',1,'Scroom::Detail::ThreadPool::FunctionMultiplier::f'],['../classScroom_1_1Utils_1_1on__scope__exit.html#a8a55437f37f2013585251ae098167b05',1,'Scroom::Utils::on_scope_exit::f'],['../classScroom_1_1Utils_1_1optional__cleanup.html#a3b59d13e589a2c0c6175c47ce32a82a5',1,'Scroom::Utils::optional_cleanup::f'],['../gtkhelper-tests_8cc.html#a633de4b0c14ca52ea2432a3c8a5c4c31',1,'f:&#160;gtkhelper-tests.cc'],['../function-additor-tests_8cc.html#a6ebfd4cc1f55222647090cf09f11eabe',1,'f(destroy(p)):&#160;function-additor-tests.cc'],['../function-additor-tests_8cc.html#ac882485f9ef8f6d9d4118da5bbb77cb5',1,'f():&#160;gtkhelper-tests.cc']]],
-  ['fetchdata_1',['fetchData',['../classLayer.html#a3d2253a27e5b42cde01f15c85959580c',1,'Layer']]],
+  ['factory_1',['factory',['../classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryLayer.html#aed25bdabafe8887dfbc0418cce989c5d',1,'Scroom::TiledBitmap::Test::InMemoryLayer']]],
   ['filename_2',['fileName',['../classScroom_1_1Tiff_1_1Source.html#a5515f82ee6c27aa5a9df1a1d7f647b63',1,'Scroom::Tiff::Source']]],
   ['filenamemap_3',['FileNameMap',['../callbacks_8hh.html#a41696defd0adcd547709e64a0d3d16c0',1,'callbacks.hh']]],
   ['filenames_4',['filenames',['../callbacks_8cc.html#ab35928a72da8049cfafad38e61c458e0',1,'callbacks.cc']]],

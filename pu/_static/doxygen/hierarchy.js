@@ -51,7 +51,7 @@ var hierarchy =
     ] ],
     [ "Scroom::Utils::Counter", "classScroom_1_1Utils_1_1Counter.html", null ],
     [ "anonymous_namespace{colormaphelpers_test.cc}::Data", "structanonymous__namespace_02colormaphelpers__test_8cc_03_1_1Data.html", null ],
-    [ "DataFetcher", "classDataFetcher.html", null ],
+    [ "anonymous_namespace{populate-layer.cc}::DataFetcher", "classanonymous__namespace_02populate-layer_8cc_03_1_1DataFetcher.html", null ],
     [ "boost::dividable2", null, [
       [ "Scroom::Utils::Point< double >", "classScroom_1_1Utils_1_1Point.html", null ],
       [ "Scroom::Utils::Point< int >", "classScroom_1_1Utils_1_1Point.html", null ],
@@ -94,21 +94,29 @@ var hierarchy =
             ] ]
           ] ]
         ] ],
-        [ "Scroom::Utils::Observable< TileInitialisationObserver >", "classScroom_1_1Utils_1_1Observable.html", [
-          [ "CompressedTile", "classCompressedTile.html", null ]
-        ] ],
-        [ "Scroom::Utils::Observable< TileLoadingObserver >", "classScroom_1_1Utils_1_1Observable.html", [
-          [ "CompressedTile", "classCompressedTile.html", null ],
-          [ "TileViewState", "classTileViewState.html", null ]
-        ] ],
         [ "Scroom::Utils::Observable< TestObserver >", "classScroom_1_1Utils_1_1Observable.html", [
           [ "TestObservable", "classTestObservable.html", null ],
           [ "TestRecursiveObservable", "classTestRecursiveObservable.html", null ]
         ] ],
+        [ "Scroom::Utils::Observable< TileInitialisationObserver >", "classScroom_1_1Utils_1_1Observable.html", [
+          [ "TileStorage", "classTileStorage.html", [
+            [ "CompressedTile", "classCompressedTile.html", null ],
+            [ "Scroom::TiledBitmap::Test::InMemoryTile", "classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryTile.html", null ]
+          ] ]
+        ] ],
+        [ "Scroom::Utils::Observable< TileLoadingObserver >", "classScroom_1_1Utils_1_1Observable.html", [
+          [ "TileStorage", "classTileStorage.html", null ],
+          [ "TileViewState", "classTileViewState.html", null ]
+        ] ],
         [ "ChildView", "classChildView.html", null ],
         [ "Example", "classExample.html", null ],
-        [ "Layer", "classLayer.html", null ],
         [ "LayerCoordinator", "classLayerCoordinator.html", null ],
+        [ "LayerInterface", "classLayerInterface.html", [
+          [ "LayerBase", "classLayerBase.html", [
+            [ "Layer", "classLayer.html", null ],
+            [ "Scroom::TiledBitmap::Test::InMemoryLayer", "classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryLayer.html", null ]
+          ] ]
+        ] ],
         [ "Measure", "classMeasure.html", null ],
         [ "MeasureHandler", "classMeasureHandler.html", null ],
         [ "Metadata", "classMetadata.html", null ],
@@ -373,10 +381,10 @@ var hierarchy =
         [ "Pipette", "classPipette.html", null ]
       ] ],
       [ "Viewable", "classViewable.html", [
-        [ "CompressedTile", "classCompressedTile.html", null ],
-        [ "Layer", "classLayer.html", null ],
+        [ "LayerInterface", "classLayerInterface.html", null ],
         [ "PresentationInterface", "classPresentationInterface.html", null ],
         [ "Scroom::ColormapImpl::ColormapProvider", "classScroom_1_1ColormapImpl_1_1ColormapProvider.html", null ],
+        [ "TileStorage", "classTileStorage.html", null ],
         [ "TiledBitmapInterface", "classTiledBitmapInterface.html", [
           [ "TiledBitmap", "classTiledBitmap.html", null ]
         ] ]

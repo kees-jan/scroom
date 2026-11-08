@@ -1,5 +1,5 @@
 <map id="Scroom::TiledBitmap::Geometry::rowLayout" name="Scroom::TiledBitmap::Geometry::rowLayout">
-<area shape="rect" id="Node000001" title=" " alt="" coords="227,5,396,50"/>
-<area shape="rect" id="Node000002" href="$classDataFetcher.html#aa47b487725b70a8a16000ed9e83ad927" title=" " alt="" coords="5,14,179,42"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="209,28,179,30,179,25,214,27"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="235,14,404,58"/>
+<area shape="rect" id="Node000002" href="$classanonymous__namespace_02populate-layer_8cc_03_1_1DataFetcher.html#a9feaa3e1b5b2099fdb9594fc2bb9bc3a" title=" " alt="" coords="5,5,187,67"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="217,36,187,39,187,34,222,36"/>
 </map>

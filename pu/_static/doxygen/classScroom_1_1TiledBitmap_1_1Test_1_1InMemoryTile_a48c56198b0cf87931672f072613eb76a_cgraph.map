@@ -1,0 +1,7 @@
+<map id="Scroom::TiledBitmap::Test::InMemoryTile::getConstTileAsync" name="Scroom::TiledBitmap::Test::InMemoryTile::getConstTileAsync">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,163,67"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1TiledBitmap_1_1Test_1_1InMemoryTile.html#ab9f78afa84df2f5f7f347b023ecc0b0f" title=" " alt="" coords="211,5,368,67"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,34,198,36,192,36,163,39"/>
+<area shape="rect" id="Node000003" href="$classConstTile.html#a4b60632a61166b6e3e7f04220d8c307a" title=" " alt="" coords="416,22,547,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="368,34,403,36,398,36,368,39"/>
+</map>

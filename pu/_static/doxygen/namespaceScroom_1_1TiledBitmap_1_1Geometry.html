@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-81-g38a1e0dd1</span>
+   <div id="projectname">Scroom<span id="projectnumber">&#160;0.14-85-g91de17b9</span>
    </div>
   </td>
  </tr>
@@ -109,7 +109,7 @@ Functions</h2></td></tr>
 <tr class="memitem:a19c1526faedfd5c29702af54d815de36" id="r_a19c1526faedfd5c29702af54d815de36"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPoint.html">Point</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19c1526faedfd5c29702af54d815de36">layerCoordinatesFromTileIndex</a> (<a class="el" href="classPoint.html">Point</a>&lt; int &gt; tileIndex, int tileSize)</td></tr>
 <tr class="memitem:a3d7f7edb124452e4063dce685242daa9" id="r_a3d7f7edb124452e4063dce685242daa9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRectangle.html">Rectangle</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d7f7edb124452e4063dce685242daa9">tileAreaInLayerCoordinates</a> (<a class="el" href="classPoint.html">Point</a>&lt; int &gt; tileIndex, int tileSize)</td></tr>
 <tr class="memitem:aff9537068f1f2f16f90ce20e15ba497d" id="r_aff9537068f1f2f16f90ce20e15ba497d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRectangle.html">Rectangle</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff9537068f1f2f16f90ce20e15ba497d">tileRangeForRedraw</a> (<a class="el" href="classRectangle.html">Rectangle</a>&lt; double &gt; layerArea, int tileSize)</td></tr>
-<tr class="memitem:a83ea70b09a7b52c492c678f8d3870826" id="r_a83ea70b09a7b52c492c678f8d3870826"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRectangle.html">Rectangle</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83ea70b09a7b52c492c678f8d3870826">tileRangeForSampling</a> (<a class="el" href="classRectangle.html">Rectangle</a>&lt; int &gt; layerArea, int tileSize)</td></tr>
+<tr class="memitem:adeab96595b0ab19cd26527f3df6321c3" id="r_adeab96595b0ab19cd26527f3df6321c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRectangle.html">Rectangle</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adeab96595b0ab19cd26527f3df6321c3">enclosingTileRange</a> (<a class="el" href="classRectangle.html">Rectangle</a>&lt; int &gt; layerArea, int tileSize)</td></tr>
 <tr class="memitem:adaed67d1986fc9ddb285ba60f3d493af" id="r_adaed67d1986fc9ddb285ba60f3d493af"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structScroom_1_1TiledBitmap_1_1Geometry_1_1ReductionMapping.html">ReductionMapping</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adaed67d1986fc9ddb285ba60f3d493af">reductionMapping</a> (<a class="el" href="classPoint.html">Point</a>&lt; int &gt; sourceTileIndex)</td></tr>
 <tr class="memitem:acec17c69ca9a293da8ecb05f9f8de730" id="r_acec17c69ca9a293da8ecb05f9f8de730"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structScroom_1_1TiledBitmap_1_1Geometry_1_1LayerSelection.html">LayerSelection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acec17c69ca9a293da8ecb05f9f8de730">layerSelection</a> (<a class="el" href="classRectangle.html">Rectangle</a>&lt; double &gt; presentationArea, int zoom, std::size_t layerCount)</td></tr>
 <tr class="memitem:a8548b898854f64c1b8967031eebe7fba" id="r_a8548b898854f64c1b8967031eebe7fba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRectangle.html">Rectangle</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8548b898854f64c1b8967031eebe7fba">clippedArea</a> (<a class="el" href="classRectangle.html">Rectangle</a>&lt; double &gt; requestedArea, <a class="el" href="classRectangle.html">Rectangle</a>&lt; int &gt; imageArea)</td></tr>
@@ -168,6 +168,75 @@ Here is the caller graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="207,5,385,50"/>
 <area shape="rect" href="classTiledBitmap.html#a98c2d60fc0736a77ab18aeeb461a1da8" title=" " alt="" coords="5,14,159,42"/>
 <area shape="poly" title=" " alt="" coords="188,28,159,30,159,25,194,27"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="adeab96595b0ab19cd26527f3df6321c3" name="adeab96595b0ab19cd26527f3df6321c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adeab96595b0ab19cd26527f3df6321c3">&#9670;&#160;</a></span>enclosingTileRange()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classRectangle.html">Rectangle</a>&lt; int &gt; Scroom::TiledBitmap::Geometry::enclosingTileRange </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classRectangle.html">Rectangle</a>&lt; int &gt;</td>          <td class="paramname"><span class="paramname"><em>layerArea</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>tileSize</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   76</span>  {</div>
+<div class="line"><span class="lineno">   77</span>    <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(tileSize &gt; 0);</div>
+<div class="line"><span class="lineno">   78</span>    <span class="keywordflow">if</span>(layerArea.<a class="code hl_function" href="classRectangle.html#a63d218d52a6e28b5f3af118feb624019">isEmpty</a>())</div>
+<div class="line"><span class="lineno">   79</span>    {</div>
+<div class="line"><span class="lineno">   80</span>      <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">   81</span>    }</div>
+<div class="line"><span class="lineno">   82</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceScroom_1_1Utils.html#aafbf8baa587d11858954f89021f9037b">roundOutward</a>(<a class="code hl_class" href="classRectangle.html">Rectangle&lt;double&gt;</a>(layerArea) / tileSize).to&lt;<span class="keywordtype">int</span>&gt;();</div>
+<div class="line"><span class="lineno">   83</span>  }</div>
+<div class="ttc" id="aassertions_8hh_html_ae925d7587e34145cd52f674b2012539a"><div class="ttname"><a href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a></div><div class="ttdeci">#define require(expr)</div><div class="ttdef"><b>Definition</b> assertions.hh:30</div></div>
+<div class="ttc" id="aclassRectangle_html"><div class="ttname"><a href="classRectangle.html">Rectangle</a></div><div class="ttdef"><b>Definition</b> rectangle.hh:92</div></div>
+<div class="ttc" id="aclassRectangle_html_a63d218d52a6e28b5f3af118feb624019"><div class="ttname"><a href="classRectangle.html#a63d218d52a6e28b5f3af118feb624019">Rectangle::isEmpty</a></div><div class="ttdeci">bool isEmpty() const</div><div class="ttdef"><b>Definition</b> rectangle.hh:217</div></div>
+<div class="ttc" id="anamespaceScroom_1_1Utils_html_aafbf8baa587d11858954f89021f9037b"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#aafbf8baa587d11858954f89021f9037b">Scroom::Utils::roundOutward</a></div><div class="ttdeci">Segment&lt; double &gt; roundOutward(Segment&lt; double &gt; s)</div><div class="ttdef"><b>Definition</b> linearsegment.hh:303</div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a84184c3042d9c43e58bd4ac8806119db">anonymous_namespace{tiledbitmappresentation.cc}::TiledBitmapPresentation::getPixelAverages()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceScroom_1_1TiledBitmap_1_1Geometry_adeab96595b0ab19cd26527f3df6321c3_cgraph.png" border="0" usemap="#anamespaceScroom_1_1TiledBitmap_1_1Geometry_adeab96595b0ab19cd26527f3df6321c3_cgraph" loading="lazy" alt=""/></div>
+<map name="anamespaceScroom_1_1TiledBitmap_1_1Geometry_adeab96595b0ab19cd26527f3df6321c3_cgraph" id="anamespaceScroom_1_1TiledBitmap_1_1Geometry_adeab96595b0ab19cd26527f3df6321c3_cgraph">
+<area shape="rect" title=" " alt="" coords="5,36,234,81"/>
+<area shape="rect" href="classScroom_1_1Utils_1_1Rectangle.html#a63d218d52a6e28b5f3af118feb624019" title=" " alt="" coords="295,5,476,50"/>
+<area shape="poly" title=" " alt="" coords="234,43,282,39,277,41,235,48"/>
+<area shape="rect" href="namespaceScroom_1_1Utils.html#aafbf8baa587d11858954f89021f9037b" title=" " alt="" coords="282,74,490,102"/>
+<area shape="poly" title=" " alt="" coords="234,68,269,74,264,75,234,74"/>
+<area shape="rect" href="namespaceScroom_1_1Utils.html#ae81b515fbc80d3efdded8c600b5956e6" title=" " alt="" coords="543,5,734,50"/>
+<area shape="poly" title=" " alt="" coords="447,71,525,54,531,53,448,76"/>
+<area shape="rect" href="rounding_8hh.html#aa1169552e0a4044595bc67a5b9361694" title=" " alt="" coords="538,74,739,102"/>
+<area shape="poly" title=" " alt="" coords="490,85,525,87,520,88,491,90"/>
+<area shape="rect" href="rounding_8hh.html#a1b27314f9dc323dff1e495e265c88eca" title=" " alt="" coords="548,126,730,154"/>
+<area shape="poly" title=" " alt="" coords="457,99,555,122,550,122,457,105"/>
+<area shape="rect" href="sampleiterator-tests_8cc.html#aa2b1a5d4069a412fe370585d2c198a7a" title=" " alt="" coords="830,14,881,42"/>
+<area shape="poly" title=" " alt="" coords="734,25,817,27,811,28,735,30"/>
+<area shape="rect" href="rounding_8hh.html#a08d4c4fef3e0764e999f269b7773286c" title=" " alt="" coords="787,74,924,102"/>
+<area shape="poly" title=" " alt="" coords="739,85,775,88,769,88,740,90"/>
+<area shape="rect" href="rounding_8hh.html#a3705c07b90d6f60753b35c4aea0082b5" title=" " alt="" coords="790,126,921,154"/>
+<area shape="poly" title=" " alt="" coords="730,137,778,140,772,140,730,142"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceScroom_1_1TiledBitmap_1_1Geometry_adeab96595b0ab19cd26527f3df6321c3_icgraph.png" border="0" usemap="#anamespaceScroom_1_1TiledBitmap_1_1Geometry_adeab96595b0ab19cd26527f3df6321c3_icgraph" loading="lazy" alt=""/></div>
+<map name="anamespaceScroom_1_1TiledBitmap_1_1Geometry_adeab96595b0ab19cd26527f3df6321c3_icgraph" id="anamespaceScroom_1_1TiledBitmap_1_1Geometry_adeab96595b0ab19cd26527f3df6321c3_icgraph">
+<area shape="rect" title=" " alt="" coords="274,22,502,67"/>
+<area shape="rect" href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a84184c3042d9c43e58bd4ac8806119db" title=" " alt="" coords="5,5,226,84"/>
+<area shape="poly" title=" " alt="" coords="256,45,226,47,226,42,261,44"/>
 </map>
 </div>
 
@@ -263,7 +332,6 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   47</span>    <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(tileSize &gt; 0);</div>
 <div class="line"><span class="lineno">   48</span>    <span class="keywordflow">return</span> tileIndex * tileSize;</div>
 <div class="line"><span class="lineno">   49</span>  }</div>
-<div class="ttc" id="aassertions_8hh_html_ae925d7587e34145cd52f674b2012539a"><div class="ttname"><a href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a></div><div class="ttdeci">#define require(expr)</div><div class="ttdef"><b>Definition</b> assertions.hh:30</div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a84184c3042d9c43e58bd4ac8806119db">anonymous_namespace{tiledbitmappresentation.cc}::TiledBitmapPresentation::getPixelAverages()</a>.</p>
 <div class="dynheader">
@@ -360,11 +428,11 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   34</span>    }</div>
 <div class="line"><span class="lineno">   35</span>    <span class="keywordflow">return</span> sizes;</div>
 <div class="line"><span class="lineno">   36</span>  }</div>
-<div class="ttc" id="aclassScroom_1_1TiledBitmap_1_1Geometry_1_1Point_html_a8f69c38e2593833b1901ef73e935d820"><div class="ttname"><a href="classScroom_1_1TiledBitmap_1_1Geometry_1_1Point.html#a8f69c38e2593833b1901ef73e935d820">Scroom::TiledBitmap::Geometry::Point::y</a></div><div class="ttdeci">value_type y</div><div class="ttdef"><b>Definition</b> point.hh:112</div></div>
-<div class="ttc" id="aclassScroom_1_1TiledBitmap_1_1Geometry_1_1Point_html_aef05138a3536382db393d698c80a48ca"><div class="ttname"><a href="classScroom_1_1TiledBitmap_1_1Geometry_1_1Point.html#aef05138a3536382db393d698c80a48ca">Scroom::TiledBitmap::Geometry::Point::x</a></div><div class="ttdeci">value_type x</div><div class="ttdef"><b>Definition</b> point.hh:111</div></div>
+<div class="ttc" id="aclassScroom_1_1TiledBitmap_1_1Geometry_1_1Point_html_a8f69c38e2593833b1901ef73e935d820"><div class="ttname"><a href="classScroom_1_1TiledBitmap_1_1Geometry_1_1Point.html#a8f69c38e2593833b1901ef73e935d820">Scroom::TiledBitmap::Geometry::Point::y</a></div><div class="ttdeci">value_type y</div><div class="ttdef"><b>Definition</b> point.hh:107</div></div>
+<div class="ttc" id="aclassScroom_1_1TiledBitmap_1_1Geometry_1_1Point_html_aef05138a3536382db393d698c80a48ca"><div class="ttname"><a href="classScroom_1_1TiledBitmap_1_1Geometry_1_1Point.html#aef05138a3536382db393d698c80a48ca">Scroom::TiledBitmap::Geometry::Point::x</a></div><div class="ttdeci">value_type x</div><div class="ttdef"><b>Definition</b> point.hh:106</div></div>
 <div class="ttc" id="anamespaceScroom_1_1TiledBitmap_1_1Geometry_html_a1dce69533be291ce521eaa7703bddd3f"><div class="ttname"><a href="#a1dce69533be291ce521eaa7703bddd3f">Scroom::TiledBitmap::Geometry::reducedBounds</a></div><div class="ttdeci">Rectangle&lt; int &gt; reducedBounds(Rectangle&lt; int &gt; imageAreaInLayerCoordinates)</div><div class="ttdef"><b>Definition</b> tiled-bitmap-geometry.cc:15</div></div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="classScroom_1_1TiledBitmap_1_1LayerStack.html#ad527e9747f143348ab9f56879250a2f2">Scroom::TiledBitmap::LayerStack::initialize()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classScroom_1_1TiledBitmap_1_1LayerStack.html#a8555e3e1c8edffcae1bffac47b38db34">Scroom::TiledBitmap::LayerStack::initialize()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -399,7 +467,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="namespaceScroom_1_1TiledBitmap_1_1Geometry_af271f41aee4bf0ed58f3d9dd974f137a_icgraph.png" border="0" usemap="#anamespaceScroom_1_1TiledBitmap_1_1Geometry_af271f41aee4bf0ed58f3d9dd974f137a_icgraph" loading="lazy" alt=""/></div>
 <map name="anamespaceScroom_1_1TiledBitmap_1_1Geometry_af271f41aee4bf0ed58f3d9dd974f137a_icgraph" id="anamespaceScroom_1_1TiledBitmap_1_1Geometry_af271f41aee4bf0ed58f3d9dd974f137a_icgraph">
 <area shape="rect" title=" " alt="" coords="219,5,408,50"/>
-<area shape="rect" href="classScroom_1_1TiledBitmap_1_1LayerStack.html#ad527e9747f143348ab9f56879250a2f2" title=" " alt="" coords="5,5,171,50"/>
+<area shape="rect" href="classScroom_1_1TiledBitmap_1_1LayerStack.html#a8555e3e1c8edffcae1bffac47b38db34" title=" " alt="" coords="5,5,171,50"/>
 <area shape="poly" title=" " alt="" coords="200,28,171,30,171,25,206,27"/>
 </map>
 </div>
@@ -427,11 +495,8 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   20</span>    }</div>
 <div class="line"><span class="lineno">   21</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceScroom_1_1Utils.html#aafbf8baa587d11858954f89021f9037b">roundOutward</a>(<a class="code hl_class" href="classRectangle.html">Rectangle&lt;double&gt;</a>(imageAreaInLayerCoordinates) / 8).to&lt;<span class="keywordtype">int</span>&gt;();</div>
 <div class="line"><span class="lineno">   22</span>  }</div>
-<div class="ttc" id="aclassRectangle_html"><div class="ttname"><a href="classRectangle.html">Rectangle</a></div><div class="ttdef"><b>Definition</b> rectangle.hh:92</div></div>
-<div class="ttc" id="aclassRectangle_html_a63d218d52a6e28b5f3af118feb624019"><div class="ttname"><a href="classRectangle.html#a63d218d52a6e28b5f3af118feb624019">Rectangle::isEmpty</a></div><div class="ttdeci">bool isEmpty() const</div><div class="ttdef"><b>Definition</b> rectangle.hh:217</div></div>
-<div class="ttc" id="anamespaceScroom_1_1Utils_html_aafbf8baa587d11858954f89021f9037b"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#aafbf8baa587d11858954f89021f9037b">Scroom::Utils::roundOutward</a></div><div class="ttdeci">Segment&lt; double &gt; roundOutward(Segment&lt; double &gt; s)</div><div class="ttdef"><b>Definition</b> linearsegment.hh:303</div></div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="#af271f41aee4bf0ed58f3d9dd974f137a">pyramidSizes()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classScroom_1_1TiledBitmap_1_1LayerStack.html#a8555e3e1c8edffcae1bffac47b38db34">Scroom::TiledBitmap::LayerStack::initialize()</a>, and <a class="el" href="#af271f41aee4bf0ed58f3d9dd974f137a">pyramidSizes()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -464,10 +529,11 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="namespaceScroom_1_1TiledBitmap_1_1Geometry_a1dce69533be291ce521eaa7703bddd3f_icgraph.png" border="0" usemap="#anamespaceScroom_1_1TiledBitmap_1_1Geometry_a1dce69533be291ce521eaa7703bddd3f_icgraph" loading="lazy" alt=""/></div>
 <map name="anamespaceScroom_1_1TiledBitmap_1_1Geometry_a1dce69533be291ce521eaa7703bddd3f_icgraph" id="anamespaceScroom_1_1TiledBitmap_1_1Geometry_a1dce69533be291ce521eaa7703bddd3f_icgraph">
 <area shape="rect" title=" " alt="" coords="456,5,657,50"/>
-<area shape="rect" href="namespaceScroom_1_1TiledBitmap_1_1Geometry.html#af271f41aee4bf0ed58f3d9dd974f137a" title=" " alt="" coords="219,5,408,50"/>
-<area shape="poly" title=" " alt="" coords="438,28,409,30,408,25,443,28"/>
-<area shape="rect" href="classScroom_1_1TiledBitmap_1_1LayerStack.html#ad527e9747f143348ab9f56879250a2f2" title=" " alt="" coords="5,5,171,50"/>
-<area shape="poly" title=" " alt="" coords="200,28,171,30,171,25,206,27"/>
+<area shape="rect" href="classScroom_1_1TiledBitmap_1_1LayerStack.html#a8555e3e1c8edffcae1bffac47b38db34" title=" " alt="" coords="5,5,171,50"/>
+<area shape="poly" title=" " alt="" coords="437,23,408,25,219,25,171,26,171,21,219,20,408,20,443,23"/>
+<area shape="rect" href="namespaceScroom_1_1TiledBitmap_1_1Geometry.html#af271f41aee4bf0ed58f3d9dd974f137a" title=" " alt="" coords="219,35,408,79"/>
+<area shape="poly" title=" " alt="" coords="443,41,409,48,408,43,438,42"/>
+<area shape="poly" title=" " alt="" coords="200,43,171,41,171,36,206,42"/>
 </map>
 </div>
 
@@ -492,9 +558,9 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   88</span>    <span class="keywordflow">return</span> {targetTileIndex, sourceTileIndex - targetTileIndex * 8};</div>
 <div class="line"><span class="lineno">   89</span>  }</div>
 <div class="ttc" id="aclassScroom_1_1Utils_1_1Point_html"><div class="ttname"><a href="classScroom_1_1Utils_1_1Point.html">Scroom::Utils::Point</a></div><div class="ttdef"><b>Definition</b> point.hh:28</div></div>
-<div class="ttc" id="anamespaceScroom_1_1Utils_html_a95153f4ab44349a7a3190c2184f92e97"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#a95153f4ab44349a7a3190c2184f92e97">Scroom::Utils::floored_divide_by</a></div><div class="ttdeci">Point&lt; T &gt; floored_divide_by(Point&lt; T &gt; value, T factor)</div><div class="ttdef"><b>Definition</b> point.hh:200</div></div>
+<div class="ttc" id="anamespaceScroom_1_1Utils_html_a95153f4ab44349a7a3190c2184f92e97"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#a95153f4ab44349a7a3190c2184f92e97">Scroom::Utils::floored_divide_by</a></div><div class="ttdeci">Point&lt; T &gt; floored_divide_by(Point&lt; T &gt; value, T factor)</div><div class="ttdef"><b>Definition</b> point.hh:195</div></div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="classScroom_1_1TiledBitmap_1_1LayerStack.html#a7cd9c9945e9f212e2f71484485288164">Scroom::TiledBitmap::LayerStack::connect()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classScroom_1_1TiledBitmap_1_1LayerStack.html#adcd07b24c96c62f6a12103dcb45f9573">Scroom::TiledBitmap::LayerStack::connect()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -512,9 +578,9 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="namespaceScroom_1_1TiledBitmap_1_1Geometry_adaed67d1986fc9ddb285ba60f3d493af_icgraph.png" border="0" usemap="#anamespaceScroom_1_1TiledBitmap_1_1Geometry_adaed67d1986fc9ddb285ba60f3d493af_icgraph" loading="lazy" alt=""/></div>
 <map name="anamespaceScroom_1_1TiledBitmap_1_1Geometry_adaed67d1986fc9ddb285ba60f3d493af_icgraph" id="anamespaceScroom_1_1TiledBitmap_1_1Geometry_adaed67d1986fc9ddb285ba60f3d493af_icgraph">
 <area shape="rect" title=" " alt="" coords="427,5,645,50"/>
-<area shape="rect" href="classScroom_1_1TiledBitmap_1_1LayerStack.html#a7cd9c9945e9f212e2f71484485288164" title=" " alt="" coords="219,5,379,50"/>
+<area shape="rect" href="classScroom_1_1TiledBitmap_1_1LayerStack.html#adcd07b24c96c62f6a12103dcb45f9573" title=" " alt="" coords="219,5,379,50"/>
 <area shape="poly" title=" " alt="" coords="409,28,379,30,379,25,414,28"/>
-<area shape="rect" href="classScroom_1_1TiledBitmap_1_1LayerStack.html#ad527e9747f143348ab9f56879250a2f2" title=" " alt="" coords="5,5,171,50"/>
+<area shape="rect" href="classScroom_1_1TiledBitmap_1_1LayerStack.html#a8555e3e1c8edffcae1bffac47b38db34" title=" " alt="" coords="5,5,171,50"/>
 <area shape="poly" title=" " alt="" coords="201,28,171,30,171,25,206,27"/>
 </map>
 </div>
@@ -551,15 +617,15 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  130</span>    <span class="keywordflow">return</span> {startLine, std::max(0, std::min(tileSize, imageHeight - startLine))};</div>
 <div class="line"><span class="lineno">  131</span>  }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="classDataFetcher.html#aa47b487725b70a8a16000ed9e83ad927">DataFetcher::operator()()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classanonymous__namespace_02populate-layer_8cc_03_1_1DataFetcher.html#a9feaa3e1b5b2099fdb9594fc2bb9bc3a">anonymous_namespace{populate-layer.cc}::DataFetcher::operator()()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceScroom_1_1TiledBitmap_1_1Geometry_ae34684bd4359be276b592938954fa700_icgraph.png" border="0" usemap="#anamespaceScroom_1_1TiledBitmap_1_1Geometry_ae34684bd4359be276b592938954fa700_icgraph" loading="lazy" alt=""/></div>
 <map name="anamespaceScroom_1_1TiledBitmap_1_1Geometry_ae34684bd4359be276b592938954fa700_icgraph" id="anamespaceScroom_1_1TiledBitmap_1_1Geometry_ae34684bd4359be276b592938954fa700_icgraph">
-<area shape="rect" title=" " alt="" coords="227,5,396,50"/>
-<area shape="rect" href="classDataFetcher.html#aa47b487725b70a8a16000ed9e83ad927" title=" " alt="" coords="5,14,179,42"/>
-<area shape="poly" title=" " alt="" coords="209,28,179,30,179,25,214,27"/>
+<area shape="rect" title=" " alt="" coords="235,14,404,58"/>
+<area shape="rect" href="classanonymous__namespace_02populate-layer_8cc_03_1_1DataFetcher.html#a9feaa3e1b5b2099fdb9594fc2bb9bc3a" title=" " alt="" coords="5,5,187,67"/>
+<area shape="poly" title=" " alt="" coords="217,36,187,39,187,34,222,36"/>
 </map>
 </div>
 
@@ -632,7 +698,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   41</span>    <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(tileSize &gt; 0);</div>
 <div class="line"><span class="lineno">   42</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceScroom_1_1Utils.html#afba759cca3290fe14eb87e593774fb04">ceiled_divide_by</a>(size, tileSize);</div>
 <div class="line"><span class="lineno">   43</span>  }</div>
-<div class="ttc" id="anamespaceScroom_1_1Utils_html_afba759cca3290fe14eb87e593774fb04"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#afba759cca3290fe14eb87e593774fb04">Scroom::Utils::ceiled_divide_by</a></div><div class="ttdeci">Point&lt; T &gt; ceiled_divide_by(Point&lt; T &gt; value, T factor)</div><div class="ttdef"><b>Definition</b> point.hh:193</div></div>
+<div class="ttc" id="anamespaceScroom_1_1Utils_html_afba759cca3290fe14eb87e593774fb04"><div class="ttname"><a href="namespaceScroom_1_1Utils.html#afba759cca3290fe14eb87e593774fb04">Scroom::Utils::ceiled_divide_by</a></div><div class="ttdeci">Point&lt; T &gt; ceiled_divide_by(Point&lt; T &gt; value, T factor)</div><div class="ttdef"><b>Definition</b> point.hh:188</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -804,71 +870,6 @@ Here is the caller graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="207,5,439,50"/>
 <area shape="rect" href="classTiledBitmap.html#a98c2d60fc0736a77ab18aeeb461a1da8" title=" " alt="" coords="5,14,159,42"/>
 <area shape="poly" title=" " alt="" coords="189,28,159,30,159,25,194,27"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a83ea70b09a7b52c492c678f8d3870826" name="a83ea70b09a7b52c492c678f8d3870826"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83ea70b09a7b52c492c678f8d3870826">&#9670;&#160;</a></span>tileRangeForSampling()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classRectangle.html">Rectangle</a>&lt; int &gt; Scroom::TiledBitmap::Geometry::tileRangeForSampling </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classRectangle.html">Rectangle</a>&lt; int &gt;</td>          <td class="paramname"><span class="paramname"><em>layerArea</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>tileSize</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   76</span>  {</div>
-<div class="line"><span class="lineno">   77</span>    <a class="code hl_define" href="assertions_8hh.html#ae925d7587e34145cd52f674b2012539a">require</a>(tileSize &gt; 0);</div>
-<div class="line"><span class="lineno">   78</span>    <span class="keywordflow">if</span>(layerArea.<a class="code hl_function" href="classRectangle.html#a63d218d52a6e28b5f3af118feb624019">isEmpty</a>())</div>
-<div class="line"><span class="lineno">   79</span>    {</div>
-<div class="line"><span class="lineno">   80</span>      <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">   81</span>    }</div>
-<div class="line"><span class="lineno">   82</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceScroom_1_1Utils.html#aafbf8baa587d11858954f89021f9037b">roundOutward</a>(<a class="code hl_class" href="classRectangle.html">Rectangle&lt;double&gt;</a>(layerArea) / tileSize).to&lt;<span class="keywordtype">int</span>&gt;();</div>
-<div class="line"><span class="lineno">   83</span>  }</div>
-</div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a84184c3042d9c43e58bd4ac8806119db">anonymous_namespace{tiledbitmappresentation.cc}::TiledBitmapPresentation::getPixelAverages()</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="namespaceScroom_1_1TiledBitmap_1_1Geometry_a83ea70b09a7b52c492c678f8d3870826_cgraph.png" border="0" usemap="#anamespaceScroom_1_1TiledBitmap_1_1Geometry_a83ea70b09a7b52c492c678f8d3870826_cgraph" loading="lazy" alt=""/></div>
-<map name="anamespaceScroom_1_1TiledBitmap_1_1Geometry_a83ea70b09a7b52c492c678f8d3870826_cgraph" id="anamespaceScroom_1_1TiledBitmap_1_1Geometry_a83ea70b09a7b52c492c678f8d3870826_cgraph">
-<area shape="rect" title=" " alt="" coords="5,36,250,81"/>
-<area shape="rect" href="classScroom_1_1Utils_1_1Rectangle.html#a63d218d52a6e28b5f3af118feb624019" title=" " alt="" coords="311,5,492,50"/>
-<area shape="poly" title=" " alt="" coords="249,42,298,39,293,40,251,47"/>
-<area shape="rect" href="namespaceScroom_1_1Utils.html#aafbf8baa587d11858954f89021f9037b" title=" " alt="" coords="298,74,506,102"/>
-<area shape="poly" title=" " alt="" coords="250,69,285,75,279,75,250,74"/>
-<area shape="rect" href="namespaceScroom_1_1Utils.html#ae81b515fbc80d3efdded8c600b5956e6" title=" " alt="" coords="559,5,750,50"/>
-<area shape="poly" title=" " alt="" coords="463,71,541,54,547,53,464,76"/>
-<area shape="rect" href="rounding_8hh.html#aa1169552e0a4044595bc67a5b9361694" title=" " alt="" coords="554,74,755,102"/>
-<area shape="poly" title=" " alt="" coords="506,85,541,87,536,88,507,90"/>
-<area shape="rect" href="rounding_8hh.html#a1b27314f9dc323dff1e495e265c88eca" title=" " alt="" coords="564,126,746,154"/>
-<area shape="poly" title=" " alt="" coords="473,99,571,122,566,122,473,105"/>
-<area shape="rect" href="sampleiterator-tests_8cc.html#aa2b1a5d4069a412fe370585d2c198a7a" title=" " alt="" coords="846,14,897,42"/>
-<area shape="poly" title=" " alt="" coords="750,25,833,27,827,28,751,30"/>
-<area shape="rect" href="rounding_8hh.html#a08d4c4fef3e0764e999f269b7773286c" title=" " alt="" coords="803,74,940,102"/>
-<area shape="poly" title=" " alt="" coords="755,85,791,88,785,88,756,90"/>
-<area shape="rect" href="rounding_8hh.html#a3705c07b90d6f60753b35c4aea0082b5" title=" " alt="" coords="806,126,937,154"/>
-<area shape="poly" title=" " alt="" coords="746,137,794,140,788,140,746,142"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="namespaceScroom_1_1TiledBitmap_1_1Geometry_a83ea70b09a7b52c492c678f8d3870826_icgraph.png" border="0" usemap="#anamespaceScroom_1_1TiledBitmap_1_1Geometry_a83ea70b09a7b52c492c678f8d3870826_icgraph" loading="lazy" alt=""/></div>
-<map name="anamespaceScroom_1_1TiledBitmap_1_1Geometry_a83ea70b09a7b52c492c678f8d3870826_icgraph" id="anamespaceScroom_1_1TiledBitmap_1_1Geometry_a83ea70b09a7b52c492c678f8d3870826_icgraph">
-<area shape="rect" title=" " alt="" coords="274,22,518,67"/>
-<area shape="rect" href="classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a84184c3042d9c43e58bd4ac8806119db" title=" " alt="" coords="5,5,226,84"/>
-<area shape="poly" title=" " alt="" coords="255,45,226,47,226,42,261,44"/>
 </map>
 </div>
 

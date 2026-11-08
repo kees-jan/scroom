@@ -1,5 +1,5 @@
 <map id="Scroom::TiledBitmap::LayerStack::Level" name="Scroom::TiledBitmap::LayerStack::Level">
-<area shape="rect" id="Node000001" title=" " alt="" coords="19,151,166,240"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,179,78"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,75,95,134,90,133,91,80"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="48,151,194,240"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,237,78"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,75,124,134,119,133,120,80"/>
 </map>

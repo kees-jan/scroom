@@ -1,0 +1,15 @@
+<map id="TileStorage::registerStrongObserver" name="TileStorage::registerStrongObserver">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,109,201,154"/>
+<area shape="rect" id="Node000002" href="$classScroom_1_1Utils_1_1Observable.html#ac8eb66519da1d1f30aaaa8a46b82def4" title=" " alt="" coords="249,109,439,154"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="201,129,235,131,230,133,202,134"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Detail_1_1Registration.html#ad654b9391a2987d90185f7bc3595382c" title=" " alt="" coords="504,5,661,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="388,107,486,60,500,57,505,55,488,65,390,111"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Observable.html#a0985c831266bda7104445a9f0babee03" title=" " alt="" coords="487,75,677,119"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="439,115,474,112,469,114,440,120"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Utils_1_1Observable.html#acef811808cd92423e56ca29abd5ef880" title=" " alt="" coords="487,144,677,189"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="440,143,474,150,469,150,440,148"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Utils_1_1Base.html#aae9a071db1ff973ca6e844a69d3e10ea" title=" " alt="" coords="508,213,656,258"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="389,152,488,199,505,208,500,207,486,203,388,157"/>
+<area shape="rect" id="Node000005" href="$classScroom_1_1Bookkeeping_1_1Map.html#ab1c85f32de69734c55e5835bcaa6e419" title=" " alt="" coords="725,75,888,119"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="677,94,712,97,707,97,678,100"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="Scroom::TiledBitmap::Test::InMemoryTile::initialize" name="Scroom::TiledBitmap::Test::InMemoryTile::initialize">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,163,67"/>
+<area shape="rect" id="Node000002" href="$classTile.html#a0d1a8cdb009480467c918b6d38eb6705" title=" " alt="" coords="211,22,305,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,34,197,36,192,36,163,39"/>
+</map>

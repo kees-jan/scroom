@@ -16,7 +16,7 @@ var searchData=
   ['vertically_13',['vertically',['../classScroom_1_1Utils_1_1Rectangle.html#a35c6f8b7d9d5f4ca27de0949da1493d6',1,'Scroom::Utils::Rectangle::vertically'],['../classRectangle.html#a35c6f8b7d9d5f4ca27de0949da1493d6',1,'Rectangle::vertically'],['../classScroom_1_1TiledBitmap_1_1Geometry_1_1Rectangle.html#a35c6f8b7d9d5f4ca27de0949da1493d6',1,'Scroom::TiledBitmap::Geometry::Rectangle::vertically']]],
   ['verticalsize_14',['verticalSize',['../classRectangleHorizontalTestScaffold.html#adf00f6fd1a23ad1d0cc11454bed06fe6',1,'RectangleHorizontalTestScaffold']]],
   ['verticalstart_15',['verticalStart',['../classRectangleHorizontalTestScaffold.html#a504e3eaac31d21fa27c7ee7656d3dc9e',1,'RectangleHorizontalTestScaffold']]],
-  ['vertilecount_16',['verTileCount',['../classLayer.html#a8f270463756cb7dc9897564b3bff23d4',1,'Layer::verTileCount'],['../classDataFetcher.html#aaee3d602d5bfec28badc8c178041105c',1,'DataFetcher::verTileCount']]],
+  ['vertilecount_16',['verTileCount',['../classLayer.html#a8f270463756cb7dc9897564b3bff23d4',1,'Layer']]],
   ['vi_17',['vi',['../classTestData.html#aa90345181988b15e3f0f970fc27b6d42',1,'TestData::vi'],['../pipette-tests_8cc.html#a42c717015bd9a889714e98016e92c595',1,'vi:&#160;pipette-tests.cc']]],
   ['vi1_18',['vi1',['../determine-size-test_8cc.html#a34caf438ffeb127bdc7414d8e79d60be',1,'determine-size-test.cc']]],
   ['vi2_19',['vi2',['../determine-size-test_8cc.html#a31ab83fc2f67fec33d2a9ceb2f6247d8',1,'determine-size-test.cc']]],
@@ -47,12 +47,11 @@ var searchData=
   ['views_44',['Views',['../classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#a5e4e09b30c4ebb89dcc370a211ce6efc',1,'anonymous_namespace{tiledbitmappresentation.cc}::TiledBitmapPresentation::Views'],['../callbacks_8cc.html#ad491f41b303bd5466c401bf06988119a',1,'Views:&#160;callbacks.cc']]],
   ['views_45',['views',['../classPresentationBaseSimple.html#a606850aed5ddd17fb71fd745cd844a02',1,'PresentationBaseSimple::views'],['../classanonymous__namespace_02tiledbitmappresentation_8cc_03_1_1TiledBitmapPresentation.html#ab03f22e1a73aa438998bba87ad63b4b4',1,'anonymous_namespace{tiledbitmappresentation.cc}::TiledBitmapPresentation::views'],['../classScroom_1_1ColormapImpl_1_1ColormapProvider.html#afbe4c3f44be12beabfe6b8226f4f92c0',1,'Scroom::ColormapImpl::ColormapProvider::views'],['../classSizeDeterminer_1_1PresentationData.html#a79426d22ad20ff0a001cd57335fb6ac3',1,'SizeDeterminer::PresentationData::views'],['../callbacks_8cc.html#ad49710e0e7bbdfa292b7ac886a56a9fe',1,'views:&#160;callbacks.cc']]],
   ['viewsize_46',['viewSize',['../classView.html#a8cbef86ad117ed3d1d0e1df83884a1da',1,'View']]],
-  ['viewstates_47',['viewStates',['../classCompressedTile.html#a6e31e3871482ff2d9bffb5be8b44a2de',1,'CompressedTile']]],
-  ['void_48',['void',['../function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54',1,'void(clear(nullptr)+(5 *clear(nullptr)) *5):&#160;function-additor-tests.cc'],['../function-additor-tests_8cc.html#a9cba8100fc7683c321b425d57ff4b887',1,'void(clear(nullptr)+5 *(5 *clear(nullptr))):&#160;function-additor-tests.cc'],['../function-additor-tests_8cc.html#a7833ac6355dca72dc5157629f78bd367',1,'void(4 *(clear(nullptr)+clear(nullptr))):&#160;function-additor-tests.cc'],['../function-additor-tests_8cc.html#a71b77dfa98b53be3ea1d1ef266cf932a',1,'void((clear(nullptr)+clear(nullptr)) *4):&#160;function-additor-tests.cc']]],
-  ['volatilestuff_49',['volatileStuff',['../classTiledBitmapViewData.html#a2853b453228e7924601b29cb42748fce',1,'TiledBitmapViewData']]],
-  ['vruler_50',['vruler',['../classView.html#ab25b996421407a3b1bbd8769539c1b27',1,'View']]],
-  ['vruler_5farea_51',['vruler_area',['../classView.html#a57c1e4035ac712fbb05d491d2975204b',1,'View']]],
-  ['vscrollbar_52',['vscrollbar',['../classView.html#af1697927d1053ca9576b544a3a7e97cd',1,'View']]],
-  ['vscrollbaradjustment_53',['vscrollbaradjustment',['../classView.html#afa1457c9c07dbcb62c2b21970e0370c7',1,'View']]],
-  ['vtptr_54',['VTPtr',['../classScroom_1_1Bookkeeping_1_1Detail_1_1LValue.html#a481b63c7f7c922b184a3ec99b084fa1d',1,'Scroom::Bookkeeping::Detail::LValue']]]
+  ['void_47',['void',['../function-additor-tests_8cc.html#a25bc2876569dca30b22bcf572ff66d54',1,'void(clear(nullptr)+(5 *clear(nullptr)) *5):&#160;function-additor-tests.cc'],['../function-additor-tests_8cc.html#a9cba8100fc7683c321b425d57ff4b887',1,'void(clear(nullptr)+5 *(5 *clear(nullptr))):&#160;function-additor-tests.cc'],['../function-additor-tests_8cc.html#a7833ac6355dca72dc5157629f78bd367',1,'void(4 *(clear(nullptr)+clear(nullptr))):&#160;function-additor-tests.cc'],['../function-additor-tests_8cc.html#a71b77dfa98b53be3ea1d1ef266cf932a',1,'void((clear(nullptr)+clear(nullptr)) *4):&#160;function-additor-tests.cc']]],
+  ['volatilestuff_48',['volatileStuff',['../classTiledBitmapViewData.html#a2853b453228e7924601b29cb42748fce',1,'TiledBitmapViewData']]],
+  ['vruler_49',['vruler',['../classView.html#ab25b996421407a3b1bbd8769539c1b27',1,'View']]],
+  ['vruler_5farea_50',['vruler_area',['../classView.html#a57c1e4035ac712fbb05d491d2975204b',1,'View']]],
+  ['vscrollbar_51',['vscrollbar',['../classView.html#af1697927d1053ca9576b544a3a7e97cd',1,'View']]],
+  ['vscrollbaradjustment_52',['vscrollbaradjustment',['../classView.html#afa1457c9c07dbcb62c2b21970e0370c7',1,'View']]],
+  ['vtptr_53',['VTPtr',['../classScroom_1_1Bookkeeping_1_1Detail_1_1LValue.html#a481b63c7f7c922b184a3ec99b084fa1d',1,'Scroom::Bookkeeping::Detail::LValue']]]
 ];

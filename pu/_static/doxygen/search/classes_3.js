@@ -1,7 +1,7 @@
 var searchData=
 [
   ['data_0',['Data',['../structanonymous__namespace_02colormaphelpers__test_8cc_03_1_1Data.html',1,'anonymous_namespace{colormaphelpers_test.cc}']]],
-  ['datafetcher_1',['DataFetcher',['../classDataFetcher.html',1,'']]],
+  ['datafetcher_1',['DataFetcher',['../classanonymous__namespace_02populate-layer_8cc_03_1_1DataFetcher.html',1,'anonymous_namespace{populate-layer.cc}']]],
   ['defaulttweakpresentationposition_2',['DefaultTweakPresentationPosition',['../classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakPresentationPosition.html',1,'Scroom::Utils::anonymous_namespace{tweak-view.cc}']]],
   ['defaulttweakselection_3',['DefaultTweakSelection',['../classScroom_1_1Utils_1_1anonymous__namespace_02tweak-view_8cc_03_1_1DefaultTweakSelection.html',1,'Scroom::Utils::anonymous_namespace{tweak-view.cc}']]],
   ['dontdelete_4',['DontDelete',['../classDontDelete.html',1,'DontDelete&lt; T &gt;'],['../classScroom_1_1MemoryBlocks_1_1Detail_1_1anonymous__namespace_02swapbasedblockallocator_8cc_03_1_1DontDelete.html',1,'Scroom::MemoryBlocks::Detail::anonymous_namespace{swapbasedblockallocator.cc}::DontDelete&lt; T &gt;']]],

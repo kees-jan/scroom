@@ -1,10 +1,7 @@
 var tiledbitmaplayer_8hh =
 [
-    [ "TileInitialisationObserver", "classTileInitialisationObserver.html", "classTileInitialisationObserver" ],
-    [ "TileLoadingObserver", "classTileLoadingObserver.html", "classTileLoadingObserver" ],
     [ "CompressedTile", "classCompressedTile.html", "classCompressedTile" ],
     [ "Layer", "classLayer.html", "classLayer" ],
-    [ "TILESIZE", "tiledbitmaplayer_8hh.html#a07ae61ed7dc31e9cddbdf9da244567c7", null ],
     [ "CompressedTileGrid", "tiledbitmaplayer_8hh.html#a6a439d385552614de1a0814da3706395", null ],
     [ "CompressedTileLine", "tiledbitmaplayer_8hh.html#a3902e4a779f862590474adb2068255b5", null ],
     [ "TileStateInternal", "tiledbitmaplayer_8hh.html#a4f52bb8f2d5da2afbcf302a471a7aa22", [
@@ -13,5 +10,7 @@ var tiledbitmaplayer_8hh =
       [ "TSI_OUT_OF_BOUNDS", "tiledbitmaplayer_8hh.html#a4f52bb8f2d5da2afbcf302a471a7aa22a5a84d269a576456f9a8a1771672325a6", null ],
       [ "TSI_LOADING_SYNCHRONOUSLY", "tiledbitmaplayer_8hh.html#a4f52bb8f2d5da2afbcf302a471a7aa22acc1ed62bf86ee908bdf3b3d087e9287c", null ],
       [ "TSI_LOADING_ASYNCHRONOUSLY", "tiledbitmaplayer_8hh.html#a4f52bb8f2d5da2afbcf302a471a7aa22a8257ad7491d95b6798756ab4058d7e1c", null ]
-    ] ]
+    ] ],
+    [ "createCompressedLayerFactory", "tiledbitmaplayer_8hh.html#adf5b67e1d5c61aa0dc4e13984bf5450e", null ],
+    [ "createCompressedLayerPageProvider", "tiledbitmaplayer_8hh.html#a710eff9f6362b7954c60d4e1ad32bd68", null ]
 ];

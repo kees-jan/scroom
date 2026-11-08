@@ -1,0 +1,32 @@
+<map id="Scroom::TiledBitmap::Test::InMemoryTile" name="Scroom::TiledBitmap::Test::InMemoryTile">
+<area shape="rect" id="Node000001" title=" " alt="" coords="595,1522,753,1768"/>
+<area shape="rect" id="Node000002" href="$classTileStorage.html" title=" " alt="" coords="411,1220,569,1449"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="566,1459,604,1523,599,1522,564,1464"/>
+<area shape="rect" id="Node000003" href="$classScroom_1_1Utils_1_1Observable.html" title=" " alt="" coords="388,925,592,1171"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="491,1183,493,1222,488,1220,489,1188"/>
+<area shape="rect" id="Node000004" href="$classScroom_1_1Utils_1_1Base.html" title=" " alt="" coords="432,144,570,328"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="502,340,497,901,496,926,491,925,492,901,499,345"/>
+<area shape="rect" id="Node000007" href="$classScroom_1_1Bookkeeping_1_1MapBase.html" title=" " alt="" coords="187,401,388,619"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="422,339,374,402,370,400,424,334"/>
+<area shape="rect" id="Node000010" href="$classScroom_1_1Utils_1_1Observable.html" title=" " alt="" coords="176,925,364,1171"/>
+<area shape="poly" id="edge11_Node000010_Node000004" title=" " alt="" coords="495,340,476,690,459,903,440,917,419,919,399,920,377,928,366,935,362,932,374,923,398,914,419,914,438,912,455,900,471,690,494,346"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="430,5,572,95"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="501,107,503,145,498,144,500,112"/>
+<area shape="rect" id="Node000006" href="$classScroom_1_1Bookkeeping_1_1Map.html" title=" " alt="" coords="207,699,368,822"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="330,819,397,911,392,912,330,824"/>
+<area shape="poly" id="edge12_Node000010_Node000006" title=" " alt="" coords="225,824,210,849,197,877,192,909,187,908,192,876,206,846,227,819"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="288,631,290,699,285,699,287,636"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="5,200,143,272"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="110,281,206,401,201,402,111,286"/>
+<area shape="rect" id="Node000009" href="$structScroom_1_1Bookkeeping_1_1Detail_1_1MapType.html" title=" " alt="" coords="167,183,408,289"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="288,286,290,384,285,383,287,292"/>
+<area shape="poly" id="edge10_Node000002_Node000010" title=" " alt="" coords="373,1180,414,1231,409,1232,373,1185"/>
+<area shape="rect" id="Node000011" href="$classViewable.html" title=" " alt="" coords="616,1001,687,1096"/>
+<area shape="poly" id="edge13_Node000002_Node000011" title=" " alt="" coords="633,1107,607,1172,571,1231,567,1228,602,1170,630,1111"/>
+<area shape="rect" id="Node000012" href="$classInterface.html" title=" " alt="" coords="598,668,704,852"/>
+<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="653,865,654,1002,649,1000,650,870"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="593,1298,755,1371"/>
+<area shape="poly" id="edge15_Node000001_Node000013" title=" " alt="" coords="676,1369,677,1506,672,1504,672,1373"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="779,1298,860,1371"/>
+<area shape="poly" id="edge16_Node000001_Node000014" title=" " alt="" coords="808,1369,753,1499,748,1509,744,1505,748,1497,804,1372"/>
+</map>
